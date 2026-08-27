@@ -162,27 +162,27 @@
   "complianceLevel": 1,
   "downloads": {
     "client": {
-      "sha1": "d8c99a813b86518f1a13d48e9e6248f8164c8a8e",
-      "size": 30591242,
-      "url": "https://piston-data.mojang.com/v1/objects/d8c99a813b86518f1a13d48e9e6248f8164c8a8e/client.jar"
+      "sha1": "9a5c15fc2e9ee25d0013f49c27cd15db6a60e61d",
+      "size": 30591377,
+      "url": "https://piston-data.mojang.com/v1/objects/9a5c15fc2e9ee25d0013f49c27cd15db6a60e61d/client.jar"
     },
     "client_mappings": {
-      "sha1": "5e1219088ff7bb732e5b00bd994e12cadb23b753",
-      "size": 11509803,
-      "url": "https://piston-data.mojang.com/v1/objects/5e1219088ff7bb732e5b00bd994e12cadb23b753/client.txt"
+      "sha1": "10db0fa9e5e8d9185c685e4139ce9474d3111030",
+      "size": 11510156,
+      "url": "https://piston-data.mojang.com/v1/objects/10db0fa9e5e8d9185c685e4139ce9474d3111030/client.txt"
     },
     "server": {
-      "sha1": "cd046af3f42191edbcc4870f11e06e95582dbbda",
-      "size": 58640113,
-      "url": "https://piston-data.mojang.com/v1/objects/cd046af3f42191edbcc4870f11e06e95582dbbda/server.jar"
+      "sha1": "3ac631d2f5fb8a22591f5fbc9d24c6e44e3dc0da",
+      "size": 58640002,
+      "url": "https://piston-data.mojang.com/v1/objects/3ac631d2f5fb8a22591f5fbc9d24c6e44e3dc0da/server.jar"
     },
     "server_mappings": {
-      "sha1": "e86dffa9bbc75324d71e44a11adf8dcda686e076",
-      "size": 8472236,
-      "url": "https://piston-data.mojang.com/v1/objects/e86dffa9bbc75324d71e44a11adf8dcda686e076/server.txt"
+      "sha1": "78dbaa3603ba7147bc6143f8bc10fd7ad6682d1f",
+      "size": 8472589,
+      "url": "https://piston-data.mojang.com/v1/objects/78dbaa3603ba7147bc6143f8bc10fd7ad6682d1f/server.txt"
     }
   },
-  "id": "1.21.9-pre2",
+  "id": "1.21.9-pre3",
   "javaVersion": {
     "component": "java-runtime-delta",
     "majorVersion": 21
@@ -1908,7 +1908,7 @@
   },
   "mainClass": "net.minecraft.client.main.Main",
   "minimumLauncherVersion": 21,
-  "releaseTime": "2025-09-19T09:48:58+00:00",
-  "time": "2025-09-19T09:48:58+00:00",
+  "releaseTime": "2025-09-22T12:57:35+00:00",
+  "time": "2025-09-22T12:57:35+00:00",
   "type": "snapshot"
 }
