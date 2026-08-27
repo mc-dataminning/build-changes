@@ -16,11 +16,11 @@ public class alb {
    }
 
    private static int a(du $$0, ib $$1) throws CommandSyntaxException {
-      if (!($$0.f() instanceof bpq $$3)) {
+      if (!($$0.f() instanceof bpr $$3)) {
          throw a.create();
       } else {
-         byz $$4 = new byy($$3, $$0.e());
-         ejc $$5 = $$4.a($$1, 0);
+         bza $$4 = new byz($$3, $$0.e());
+         ejd $$5 = $$4.a($$1, 0);
          aew.a($$0.e(), $$3, $$5, $$4.q());
          if ($$5 == null) {
             throw b.create();

@@ -1,96 +1,26 @@
-public class fix {
-   private static final ajh a = new ajh("minecraft", "alt");
-   private static final wr b = wr.a.a(a);
-   private static final fix c = new fix();
-   private final axd d = axd.a();
-   private final String[] e = new String[]{
-      "the",
-      "elder",
-      "scrolls",
-      "klaatu",
-      "berata",
-      "niktu",
-      "xyzzy",
-      "bless",
-      "curse",
-      "light",
-      "darkness",
-      "fire",
-      "air",
-      "earth",
-      "water",
-      "hot",
-      "dry",
-      "cold",
-      "wet",
-      "ignite",
-      "snuff",
-      "embiggen",
-      "twist",
-      "shorten",
-      "stretch",
-      "fiddle",
-      "destroy",
-      "imbue",
-      "galvanize",
-      "enchant",
-      "free",
-      "limited",
-      "range",
-      "of",
-      "towards",
-      "inside",
-      "sphere",
-      "cube",
-      "self",
-      "other",
-      "ball",
-      "mental",
-      "physical",
-      "grow",
-      "shrink",
-      "demon",
-      "elemental",
-      "spirit",
-      "animal",
-      "creature",
-      "beast",
-      "humanoid",
-      "undead",
-      "fresh",
-      "stale",
-      "phnglui",
-      "mglwnafh",
-      "cthulhu",
-      "rlyeh",
-      "wgahnagl",
-      "fhtagn",
-      "baguette"
-   };
+public class fix extends fig<cmj> {
+   private static final ajh x = new ajh("textures/gui/container/dispenser.png");
 
-   private fix() {
+   public fix(cmj $$0, cit $$1, vu $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public static fix a() {
-      return c;
+   @Override
+   protected void aO_() {
+      super.aO_();
+      this.l = (this.c - this.i.a(this.e)) / 2;
    }
 
-   public vz a(far $$0, int $$1) {
-      StringBuilder $$2 = new StringBuilder();
-      int $$3 = this.d.a(2) + 3;
-
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         if ($$4 != 0) {
-            $$2.append(" ");
-         }
-
-         $$2.append(ac.a(this.e, this.d));
-      }
-
-      return $$0.b().a(vu.b($$2.toString()).c(b), $$1, wr.a);
+   @Override
+   public void a(fav $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
-   public void a(long $$0) {
-      this.d.b($$0);
+   @Override
+   protected void a(fav $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.g - this.c) / 2;
+      int $$5 = (this.h - this.k) / 2;
+      $$0.a(x, $$4, $$5, 0, 0, this.c, this.k);
    }
 }

@@ -1,73 +1,86 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Pair;
-import java.util.Map;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class cpy extends cox {
-   protected static final Map<daa, Pair<Predicate<csu>, Consumer<csu>>> a = Maps.newHashMap(
-      ImmutableMap.of(
-         dac.i,
-         Pair.of(cpy::b, b(dac.cC.o())),
-         dac.kE,
-         Pair.of(cpy::b, b(dac.cC.o())),
-         dac.j,
-         Pair.of(cpy::b, b(dac.cC.o())),
-         dac.k,
-         Pair.of(cpy::b, b(dac.j.o())),
-         dac.sH,
-         Pair.of((Predicate<csu>)$$0 -> true, a(dac.j.o(), cqn.dN))
-      )
-   );
+public class cpy extends cqh {
+   private static final vu a = vu.c("painting.random").a(n.h);
+   private final bpd<? extends cew> b;
 
-   protected cpy(crx $$0, int $$1, float $$2, cqf.a $$3) {
-      super((float)$$1, $$2, $$0, aun.bB, $$3);
+   public cpy(bpd<? extends cew> $$0, cqh.a $$1) {
+      super($$1);
+      this.b = $$0;
    }
 
    @Override
-   public bnc a(csu $$0) {
-      cwz $$1 = $$0.q();
-      ib $$2 = $$0.a();
-      Pair<Predicate<csu>, Consumer<csu>> $$3 = a.get($$1.a_($$2).b());
-      if ($$3 == null) {
-         return bnc.d;
+   public bnd a(csw $$0) {
+      ib $$1 = $$0.a();
+      ih $$2 = $$0.k();
+      ib $$3 = $$1.a($$2);
+      ciu $$4 = $$0.o();
+      cqm $$5 = $$0.n();
+      if ($$4 != null && !this.a($$4, $$2, $$5, $$3)) {
+         return bnd.e;
       } else {
-         Predicate<csu> $$4 = (Predicate<csu>)$$3.getFirst();
-         Consumer<csu> $$5 = (Consumer<csu>)$$3.getSecond();
-         if ($$4.test($$0)) {
-            cis $$6 = $$0.o();
-            $$1.a($$6, $$2, aty.lS, atz.e, 1.0F, 1.0F);
-            if (!$$1.B) {
-               $$5.accept($$0);
-               if ($$6 != null) {
-                  $$0.n().a(1, $$6, bpo.d($$0.p()));
-               }
+         cxb $$6 = $$0.q();
+         cew $$8;
+         if (this.b == bpd.av) {
+            Optional<cez> $$7 = cez.a($$6, $$3, $$2);
+            if ($$7.isEmpty()) {
+               return bnd.b;
             }
 
-            return bnc.a($$1.B);
+            $$8 = $$7.get();
+         } else if (this.b == bpd.aj) {
+            $$8 = new cex($$6, $$3, $$2);
          } else {
-            return bnc.d;
+            if (this.b != bpd.W) {
+               return bnd.a($$6.B);
+            }
+
+            $$8 = new cev($$6, $$3, $$2);
+         }
+
+         ta $$12 = $$5.w();
+         if ($$12 != null) {
+            bpd.a($$6, $$4, $$8, $$12);
+         }
+
+         if ($$8.z()) {
+            if (!$$6.B) {
+               $$8.C();
+               $$6.a($$4, drp.t, $$8.dk());
+               $$6.b($$8);
+            }
+
+            $$5.h(1);
+            return bnd.a($$6.B);
+         } else {
+            return bnd.b;
          }
       }
    }
 
-   public static Consumer<csu> b(dmz $$0) {
-      return $$1 -> {
-         $$1.q().a($$1.a(), $$0, 11);
-         $$1.q().a(drn.c, $$1.a(), drn.a.a($$1.o(), $$0));
-      };
+   protected boolean a(ciu $$0, ih $$1, cqm $$2, ib $$3) {
+      return !$$1.o().b() && $$0.a($$3, $$1, $$2);
    }
 
-   public static Consumer<csu> a(dmz $$0, cwy $$1) {
-      return $$2 -> {
-         $$2.q().a($$2.a(), $$0, 11);
-         $$2.q().a(drn.c, $$2.a(), drn.a.a($$2.o(), $$0));
-         daa.a($$2.q(), $$2.a(), $$2.k(), new cqk($$1));
-      };
-   }
-
-   public static boolean b(csu $$0) {
-      return $$0.k() != ih.a && $$0.q().a_($$0.a().c()).i();
+   @Override
+   public void a(cqm $$0, @Nullable cxb $$1, List<vu> $$2, csd $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.b == bpd.av) {
+         ta $$4 = $$0.w();
+         if ($$4 != null && $$4.b("EntityTag", 10)) {
+            ta $$5 = $$4.p("EntityTag");
+            cez.c($$5).ifPresentOrElse($$1x -> {
+               $$1x.e().ifPresent($$1xx -> {
+                  $$2.add(vu.c($$1xx.a().b("painting", "title")).a(n.o));
+                  $$2.add(vu.c($$1xx.a().b("painting", "author")).a(n.h));
+               });
+               $$2.add(vu.a("painting.dimensions", aww.e(((cfa)$$1x.a()).a(), 16), aww.e(((cfa)$$1x.a()).b(), 16)));
+            }, () -> $$2.add(a));
+         } else if ($$3.b()) {
+            $$2.add(a);
+         }
+      }
    }
 }

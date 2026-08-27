@@ -37,20 +37,20 @@ public class ang {
       );
    }
 
-   private static Collection<String> a(Collection<? extends bow> $$0) {
+   private static Collection<String> a(Collection<? extends box> $$0) {
       Set<String> $$1 = Sets.newHashSet();
 
-      for (bow $$2 : $$0) {
+      for (box $$2 : $$0) {
          $$1.addAll($$2.ak());
       }
 
       return $$1;
    }
 
-   private static int a(du $$0, Collection<? extends bow> $$1, String $$2) throws CommandSyntaxException {
+   private static int a(du $$0, Collection<? extends box> $$1, String $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
-      for (bow $$4 : $$1) {
+      for (box $$4 : $$1) {
          if ($$4.a($$2)) {
             $$3++;
          }
@@ -69,10 +69,10 @@ public class ang {
       }
    }
 
-   private static int b(du $$0, Collection<? extends bow> $$1, String $$2) throws CommandSyntaxException {
+   private static int b(du $$0, Collection<? extends box> $$1, String $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
-      for (bow $$4 : $$1) {
+      for (box $$4 : $$1) {
          if ($$4.b($$2)) {
             $$3++;
          }
@@ -91,15 +91,15 @@ public class ang {
       }
    }
 
-   private static int a(du $$0, Collection<? extends bow> $$1) {
+   private static int a(du $$0, Collection<? extends box> $$1) {
       Set<String> $$2 = Sets.newHashSet();
 
-      for (bow $$3 : $$1) {
+      for (box $$3 : $$1) {
          $$2.addAll($$3.ak());
       }
 
       if ($$1.size() == 1) {
-         bow $$4 = $$1.iterator().next();
+         box $$4 = $$1.iterator().next();
          if ($$2.isEmpty()) {
             $$0.a(() -> vu.a("commands.tag.list.single.empty", $$4.O_()), false);
          } else {

@@ -1,31 +1,51 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class ddz extends ddy {
-   public static final MapCodec<ddz> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ki.e.q().fieldOf("host").forGetter(ddy::b), u()).apply($$0, ddz::new));
-
-   @Override
-   public MapCodec<ddz> a() {
-      return b;
-   }
-
-   public ddz(daa $$0, dmy.d $$1) {
-      super($$0, $$1);
-      this.k(this.o().a(dgl.i, ih.a.b));
-   }
+public class ddz extends dds {
+   public static final MapCodec<ddz> e = b(ddz::new);
 
    @Override
-   protected dmz a(dmz $$0, dgm $$1) {
-      return dgl.b($$0, $$1);
+   public MapCodec<? extends ddz> a() {
+      return e;
    }
 
-   @Override
-   protected void a(dna.a<daa, dmz> $$0) {
-      $$0.a(dgl.i);
+   public ddz(dna.d $$0) {
+      super($$0);
+   }
+
+   public static dnb b() {
+      return dae.G.o();
    }
 
    @Override
-   public dmz a(css $$0) {
-      return this.o().a(dgl.i, $$0.k().o());
+   public void a(cxb $$0, ciu $$1, ib $$2, dnb $$3, @Nullable dki $$4, cqm $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if (cux.a(cuz.v, $$5) == 0) {
+         if ($$0.D_().i()) {
+            $$0.a($$2, false);
+            return;
+         }
+
+         dnb $$6 = $$0.a_($$2.d());
+         if ($$6.d() || $$6.k()) {
+            $$0.b($$2, b());
+         }
+      }
+   }
+
+   @Override
+   protected void b(dnb $$0, apf $$1, ib $$2, axd $$3) {
+      if ($$1.a(cxk.b, $$2) > 11 - $$0.b($$1, $$2)) {
+         this.d($$0, $$1, $$2);
+      }
+   }
+
+   protected void d(dnb $$0, cxb $$1, ib $$2) {
+      if ($$1.D_().i()) {
+         $$1.a($$2, false);
+      } else {
+         $$1.b($$2, b());
+         $$1.a($$2, b().b(), $$2);
+      }
    }
 }

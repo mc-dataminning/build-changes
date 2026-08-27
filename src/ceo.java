@@ -1,45 +1,63 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.lang.reflect.Constructor;
+import java.util.Arrays;
 
-public class ceo {
-   private static final Logger a = LogUtils.getLogger();
-   private final cdx b;
-   private final ceh[] c = new ceh[cen.c()];
-   @Nullable
-   private ceh d;
+public class ceo<T extends cei> {
+   private static ceo<?>[] l = new ceo[0];
+   public static final ceo<cee> a = a(cee.class, "HoldingPattern");
+   public static final ceo<cem> b = a(cem.class, "StrafePlayer");
+   public static final ceo<ceg> c = a(ceg.class, "LandingApproach");
+   public static final ceo<ceh> d = a(ceh.class, "Landing");
+   public static final ceo<cen> e = a(cen.class, "Takeoff");
+   public static final ceo<cek> f = a(cek.class, "SittingFlaming");
+   public static final ceo<cel> g = a(cel.class, "SittingScanning");
+   public static final ceo<cej> h = a(cej.class, "SittingAttacking");
+   public static final ceo<cec> i = a(cec.class, "ChargingPlayer");
+   public static final ceo<ced> j = a(ced.class, "Dying");
+   public static final ceo<cef> k = a(cef.class, "Hover");
+   private final Class<? extends cei> m;
+   private final int n;
+   private final String o;
 
-   public ceo(cdx $$0) {
-      this.b = $$0;
-      this.a(cen.k);
+   private ceo(int $$0, Class<? extends cei> $$1, String $$2) {
+      this.n = $$0;
+      this.m = $$1;
+      this.o = $$2;
    }
 
-   public void a(cen<?> $$0) {
-      if (this.d == null || $$0 != this.d.i()) {
-         if (this.d != null) {
-            this.d.e();
-         }
-
-         this.d = this.b((cen<ceh>)$$0);
-         if (!this.b.dM().B) {
-            this.b.an().a(cdx.b, $$0.b());
-         }
-
-         a.debug("Dragon is now in phase {} on the {}", $$0, this.b.dM().B ? "client" : "server");
-         this.d.d();
+   public cei a(cdy $$0) {
+      try {
+         Constructor<? extends cei> $$1 = this.a();
+         return $$1.newInstance($$0);
+      } catch (Exception var3) {
+         throw new Error(var3);
       }
    }
 
-   public ceh a() {
-      return this.d;
+   protected Constructor<? extends cei> a() throws NoSuchMethodException {
+      return this.m.getConstructor(cdy.class);
    }
 
-   public <T extends ceh> T b(cen<T> $$0) {
-      int $$1 = $$0.b();
-      if (this.c[$$1] == null) {
-         this.c[$$1] = $$0.a(this.b);
-      }
+   public int b() {
+      return this.n;
+   }
 
-      return (T)this.c[$$1];
+   @Override
+   public String toString() {
+      return this.o + " (#" + this.n + ")";
+   }
+
+   public static ceo<?> a(int $$0) {
+      return $$0 >= 0 && $$0 < l.length ? l[$$0] : a;
+   }
+
+   public static int c() {
+      return l.length;
+   }
+
+   private static <T extends cei> ceo<T> a(Class<T> $$0, String $$1) {
+      ceo<T> $$2 = new ceo<>(l.length, $$0, $$1);
+      l = Arrays.copyOf(l, l.length + 1);
+      l[$$2.b()] = $$2;
+      return $$2;
    }
 }

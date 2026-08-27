@@ -15,20 +15,20 @@ public record bo(Optional<cc> c, Optional<cc> d, Optional<cc> e, Optional<cc> f,
             )
             .apply($$0, bo::new)
    );
-   public static final bo b = bo.a.a().a(cc.a.a().a(cqn.uM).a(ckd.s().w())).b();
+   public static final bo b = bo.a.a().a(cc.a.a().a(cqp.uN).a(ckf.s().w())).b();
 
-   public boolean a(@Nullable bow $$0) {
-      if ($$0 instanceof bpo $$1) {
-         if (this.c.isPresent() && !this.c.get().a($$1.d(bpd.f))) {
+   public boolean a(@Nullable box $$0) {
+      if ($$0 instanceof bpp $$1) {
+         if (this.c.isPresent() && !this.c.get().a($$1.d(bpe.f))) {
             return false;
-         } else if (this.d.isPresent() && !this.d.get().a($$1.d(bpd.e))) {
+         } else if (this.d.isPresent() && !this.d.get().a($$1.d(bpe.e))) {
             return false;
-         } else if (this.e.isPresent() && !this.e.get().a($$1.d(bpd.d))) {
+         } else if (this.e.isPresent() && !this.e.get().a($$1.d(bpe.d))) {
             return false;
-         } else if (this.f.isPresent() && !this.f.get().a($$1.d(bpd.c))) {
+         } else if (this.f.isPresent() && !this.f.get().a($$1.d(bpe.c))) {
             return false;
          } else {
-            return this.g.isPresent() && !this.g.get().a($$1.d(bpd.a)) ? false : !this.h.isPresent() || this.h.get().a($$1.d(bpd.b));
+            return this.g.isPresent() && !this.g.get().a($$1.d(bpe.a)) ? false : !this.h.isPresent() || this.h.get().a($$1.d(bpe.b));
          }
       } else {
          return false;

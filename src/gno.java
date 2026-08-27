@@ -1,59 +1,62 @@
-import java.util.concurrent.locks.LockSupport;
+import javax.annotation.Nullable;
 
-public class gno extends bls<Runnable> {
-   private Thread a = this.b();
-   private volatile boolean b;
+public class gno {
+   private static final int a = 100;
+   private final axd b = axd.a();
+   private final ezi c;
+   @Nullable
+   private gmp d;
+   private int e = 100;
 
-   public gno() {
-      super("Sound executor");
-   }
-
-   private Thread b() {
-      Thread $$0 = new Thread(this::c);
-      $$0.setDaemon(true);
-      $$0.setName("Sound engine");
-      $$0.start();
-      return $$0;
-   }
-
-   @Override
-   protected Runnable f(Runnable $$0) {
-      return $$0;
-   }
-
-   @Override
-   protected boolean e(Runnable $$0) {
-      return !this.b;
-   }
-
-   @Override
-   protected Thread az() {
-      return this.a;
-   }
-
-   private void c() {
-      while (!this.b) {
-         this.c(() -> this.b);
-      }
-   }
-
-   @Override
-   protected void z() {
-      LockSupport.park("waiting for tasks");
+   public gno(ezi $$0) {
+      this.c = $$0;
    }
 
    public void a() {
-      this.b = true;
-      this.a.interrupt();
+      atv $$0 = this.c.al();
+      if (this.d != null) {
+         if (!$$0.a().a().a().equals(this.d.a()) && $$0.d()) {
+            this.c.ak().b(this.d);
+            this.e = aww.a(this.b, 0, $$0.b() / 2);
+         }
 
-      try {
-         this.a.join();
-      } catch (InterruptedException var2) {
-         Thread.currentThread().interrupt();
+         if (!this.c.ak().c(this.d)) {
+            this.d = null;
+            this.e = Math.min(this.e, aww.a(this.b, $$0.b(), $$0.c()));
+         }
       }
 
-      this.by();
-      this.b = false;
-      this.a = this.b();
+      this.e = Math.min(this.e, $$0.c());
+      if (this.d == null && this.e-- <= 0) {
+         this.a($$0);
+      }
+   }
+
+   public void a(atv $$0) {
+      this.d = gmk.a($$0.a().a());
+      if (this.d.b() != gnt.a) {
+         this.c.ak().a(this.d);
+      }
+
+      this.e = Integer.MAX_VALUE;
+   }
+
+   public void b(atv $$0) {
+      if (this.c($$0)) {
+         this.b();
+      }
+   }
+
+   public void b() {
+      if (this.d != null) {
+         this.c.ak().b(this.d);
+         this.d = null;
+      }
+
+      this.e += 100;
+   }
+
+   public boolean c(atv $$0) {
+      return this.d == null ? false : $$0.a().a().a().equals(this.d.a());
    }
 }

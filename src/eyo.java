@@ -1,14 +1,14 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class eyo extends eyg {
+public class eyo extends eyi {
    private static final Logger b = LogUtils.getLogger();
-   private static final vu c = vu.c("mco.minigame.world.slot.screen.title");
-   private final long d;
-   private final int e;
-   private final Runnable f;
+   private static final vu c = vu.c("mco.backup.restoring");
+   private final eux d;
+   private final long e;
+   private final ewr f;
 
-   public eyo(long $$0, int $$1, Runnable $$2) {
+   public eyo(eux $$0, long $$1, ewr $$2) {
       this.d = $$0;
       this.e = $$1;
       this.f = $$2;
@@ -16,31 +16,46 @@ public class eyo extends eyg {
 
    @Override
    public void run() {
-      eup $$0 = eup.a();
+      eur $$0 = eur.a();
+      int $$1 = 0;
 
-      for (int $$1 = 0; $$1 < 25; $$1++) {
+      while ($$1 < 25) {
          try {
             if (this.d()) {
                return;
             }
 
-            if ($$0.a(this.d, this.e)) {
-               this.f.run();
-               break;
+            $$0.b(this.e, this.d.a);
+            a(1L);
+            if (this.d()) {
+               return;
             }
-         } catch (ewd var4) {
+
+            a(this.f.f());
+            return;
+         } catch (ewf var4) {
             if (this.d()) {
                return;
             }
 
             a((long)var4.c);
-         } catch (Exception var5) {
+            $$1++;
+         } catch (ewe var5) {
             if (this.d()) {
                return;
             }
 
-            b.error("Couldn't switch world!");
-            this.a(var5);
+            b.error("Couldn't restore backup", var5);
+            a(new ewv(var5, this.f));
+            return;
+         } catch (Exception var6) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't restore backup", var6);
+            this.a(var6);
+            return;
          }
       }
    }

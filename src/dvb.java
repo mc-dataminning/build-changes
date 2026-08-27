@@ -1,48 +1,45 @@
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntListIterator;
-import java.util.stream.IntStream;
 
-public class dvb extends dvq<dyb> {
-   public dvb(Codec<dyb> $$0) {
+public class dvb extends dvs<dxo> {
+   public dvb(Codec<dxo> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dvs<dyb> $$0) {
-      axd $$1 = $$0.d();
-      cxu $$2 = $$0.b();
-      cwg $$3 = new cwg($$0.e());
-      IntArrayList $$4 = ac.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
-      IntArrayList $$5 = ac.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
-      ib.a $$6 = new ib.a();
-      IntListIterator var8 = $$4.iterator();
+   public boolean a(dvu<dxo> $$0) {
+      ib $$1 = $$0.e();
+      cxw $$2 = $$0.b();
+      axd $$3 = $$0.d();
+      dxo $$4 = $$0.f();
+      if ($$1.v() < $$2.I_() + 5) {
+         return false;
+      } else {
+         int $$5 = 2 + $$3.a(2);
+         int $$6 = 2 + $$3.a(2);
 
-      while (var8.hasNext()) {
-         Integer $$7 = (Integer)var8.next();
-         IntListIterator var10 = $$5.iterator();
-
-         while (var10.hasNext()) {
-            Integer $$8 = (Integer)var10.next();
-            $$6.d($$7, 0, $$8);
-            ib $$9 = $$2.a(dsm.a.f, $$6);
-            if ($$2.u($$9) || $$2.a_($$9).k($$2, $$9).c()) {
-               $$2.a($$9, dac.cv.o(), 2);
-               bnk.a($$2, $$1, $$9, eks.b);
-               dmz $$10 = dac.cp.o();
-
-               for (ih $$11 : ih.c.a) {
-                  ib $$12 = $$9.a($$11);
-                  if ($$10.a($$2, $$12)) {
-                     $$2.a($$12, $$10, 2);
-                  }
-               }
-
-               return true;
+         for (ib $$7 : ib.a($$1.b(-$$5, 0, -$$6), $$1.b($$5, 1, $$6))) {
+            int $$8 = $$1.u() - $$7.u();
+            int $$9 = $$1.w() - $$7.w();
+            if ((float)($$8 * $$8 + $$9 * $$9) <= $$3.i() * 10.0F - $$3.i() * 6.0F) {
+               this.a($$2, $$7, $$3, $$4);
+            } else if ((double)$$3.i() < 0.031) {
+               this.a($$2, $$7, $$3, $$4);
             }
          }
-      }
 
-      return false;
+         return true;
+      }
+   }
+
+   private boolean a(cxc $$0, ib $$1, axd $$2) {
+      ib $$3 = $$1.d();
+      dnb $$4 = $$0.a_($$3);
+      return $$4.a(dae.kE) ? $$2.h() : $$4.d($$0, $$3, ih.b);
+   }
+
+   private void a(cxc $$0, ib $$1, axd $$2, dxo $$3) {
+      if ($$0.u($$1) && this.a($$0, $$1, $$2)) {
+         $$0.a($$1, $$3.b.a($$2, $$1), 4);
+      }
    }
 }

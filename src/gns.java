@@ -1,7 +1,3 @@
-public interface gns<T> {
-   int e();
-
-   T b(axd var1);
-
-   void a(gnn var1);
+public interface gns {
+   void a(gmp var1, gnu var2, float var3);
 }

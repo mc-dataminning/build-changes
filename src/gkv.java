@@ -1,20 +1,12 @@
-public class gkv {
-   public static final gkw a = new gkw();
-   public static final boolean b = false;
-   public static final boolean c = false;
-   private final boolean d;
-   private final boolean e;
+import com.mojang.serialization.Codec;
+import java.util.Map;
 
-   public gkv(boolean $$0, boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
+public record gkv(Map<String, gki> d) {
+   public static final Codec<String> a = awe.b(1, 16);
+   public static final Codec<gkv> b = Codec.unboundedMap(a, gki.a).xmap(gkv::new, gkv::a);
+   public static final aro<gkv> c = aro.a("language", b);
 
-   public boolean a() {
+   public Map<String, gki> a() {
       return this.d;
-   }
-
-   public boolean b() {
-      return this.e;
    }
 }

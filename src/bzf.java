@@ -1,25 +1,19 @@
-public class bzf extends bzr {
-   public static final float a = 8.0F;
+import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
+import java.util.Set;
 
+public class bzf extends bzy<bos> {
    @Override
-   protected boolean a(bpo $$0, bpo $$1) {
-      return this.f($$0, $$1) && $$1.bf() && (this.b($$1) || this.e($$0, $$1)) && bzx.c($$0, $$1);
+   public Set<bys<?>> a() {
+      return ImmutableSet.of(bys.K, bys.h);
    }
 
-   private boolean e(bpo $$0, bpo $$1) {
-      return !$$0.dP().a(byr.U) && $$1.ai().a(auq.j);
+   protected void a(apf $$0, bos $$1) {
+      $$1.dP().c(bys.h).ifPresent($$1x -> this.a($$1, $$1x));
    }
 
-   private boolean b(bpo $$0) {
-      return $$0.ai().a(auq.i);
-   }
-
-   private boolean f(bpo $$0, bpo $$1) {
-      return $$1.g((bow)$$0) <= 64.0;
-   }
-
-   @Override
-   protected byr<bpo> b() {
-      return byr.B;
+   private void a(bos $$0, byu $$1) {
+      Optional<bos> $$2 = $$1.a($$1x -> $$1x.ai() == $$0.ai() && !$$1x.o_()).map(bos.class::cast);
+      $$0.dP().a(bys.K, $$2);
    }
 }

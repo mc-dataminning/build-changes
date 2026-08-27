@@ -16,7 +16,7 @@ public class ame {
    private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> vu.b("commands.place.template.invalid", $$0));
    private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(vu.c("commands.place.template.failed"));
    private static final SuggestionProvider<du> f = ($$0, $$1) -> {
-      ehd $$2 = ((du)$$0.getSource()).e().q();
+      ehf $$2 = ((du)$$0.getSource()).e().q();
       return dz.a($$2.a(), $$1);
    };
 
@@ -39,7 +39,7 @@ public class ame {
                               .then(
                                  dv.a("target", ev.a())
                                     .then(
-                                       ((RequiredArgumentBuilder)dv.a("max_depth", IntegerArgumentType.integer(1, 7))
+                                       ((RequiredArgumentBuilder)dv.a("max_depth", IntegerArgumentType.integer(1, 20))
                                              .executes(
                                                 $$0x -> a(
                                                       (du)$$0x.getSource(),
@@ -78,14 +78,14 @@ public class ame {
                   .then(
                      ((RequiredArgumentBuilder)dv.a("template", ev.a())
                            .suggests(f)
-                           .executes($$0x -> a((du)$$0x.getSource(), ev.e($$0x, "template"), ib.a(((du)$$0x.getSource()).d()), dgm.a, dew.a, 1.0F, 0)))
+                           .executes($$0x -> a((du)$$0x.getSource(), ev.e($$0x, "template"), ib.a(((du)$$0x.getSource()).d()), dgo.a, dey.a, 1.0F, 0)))
                         .then(
                            ((RequiredArgumentBuilder)dv.a("pos", fo.a())
-                                 .executes($$0x -> a((du)$$0x.getSource(), ev.e($$0x, "template"), fo.a($$0x, "pos"), dgm.a, dew.a, 1.0F, 0)))
+                                 .executes($$0x -> a((du)$$0x.getSource(), ev.e($$0x, "template"), fo.a($$0x, "pos"), dgo.a, dey.a, 1.0F, 0)))
                               .then(
                                  ((RequiredArgumentBuilder)dv.a("rotation", fg.a())
                                        .executes(
-                                          $$0x -> a((du)$$0x.getSource(), ev.e($$0x, "template"), fo.a($$0x, "pos"), fg.a($$0x, "rotation"), dew.a, 1.0F, 0)
+                                          $$0x -> a((du)$$0x.getSource(), ev.e($$0x, "template"), fo.a($$0x, "pos"), fg.a($$0x, "rotation"), dey.a, 1.0F, 0)
                                        ))
                                     .then(
                                        ((RequiredArgumentBuilder)dv.a("mirror", ff.a())
@@ -136,11 +136,11 @@ public class ame {
       );
    }
 
-   public static int a(du $$0, il.c<dvd<?, ?>> $$1, ib $$2) throws CommandSyntaxException {
+   public static int a(du $$0, il.c<dvf<?, ?>> $$1, ib $$2) throws CommandSyntaxException {
       apf $$3 = $$0.e();
-      dvd<?, ?> $$4 = $$1.a();
-      cwg $$5 = new cwg($$2);
-      a($$3, new cwg($$5.e - 1, $$5.f - 1), new cwg($$5.e + 1, $$5.f + 1));
+      dvf<?, ?> $$4 = $$1.a();
+      cwi $$5 = new cwi($$2);
+      a($$3, new cwi($$5.e - 1, $$5.f - 1), new cwi($$5.e + 1, $$5.f + 1));
       if (!$$4.a($$3, $$3.l().g(), $$3.E_(), $$2)) {
          throw a.create();
       } else {
@@ -150,9 +150,9 @@ public class ame {
       }
    }
 
-   public static int a(du $$0, il<eel> $$1, ajh $$2, int $$3, ib $$4) throws CommandSyntaxException {
+   public static int a(du $$0, il<een> $$1, ajh $$2, int $$3, ib $$4) throws CommandSyntaxException {
       apf $$5 = $$0.e();
-      if (!eef.a($$5, $$1, $$2, $$3, $$4, false)) {
+      if (!eeh.a($$5, $$1, $$2, $$3, $$4, false)) {
          throw b.create();
       } else {
          $$0.a(() -> vu.a("commands.place.jigsaw.success", $$4.u(), $$4.v(), $$4.w()), true);
@@ -160,30 +160,30 @@ public class ame {
       }
    }
 
-   public static int b(du $$0, il.c<edc> $$1, ib $$2) throws CommandSyntaxException {
+   public static int b(du $$0, il.c<ede> $$1, ib $$2) throws CommandSyntaxException {
       apf $$3 = $$0.e();
-      edc $$4 = $$1.a();
-      dow $$5 = $$3.l().g();
-      edk $$6 = $$4.a($$0.v(), $$5, $$5.c(), $$3.l().i(), $$3.q(), $$3.C(), new cwg($$2), 0, $$3, $$0x -> true);
+      ede $$4 = $$1.a();
+      doy $$5 = $$3.l().g();
+      edm $$6 = $$4.a($$0.v(), $$5, $$5.c(), $$3.l().i(), $$3.q(), $$3.C(), new cwi($$2), 0, $$3, $$0x -> true);
       if (!$$6.b()) {
          throw c.create();
       } else {
-         ecu $$7 = $$6.a();
-         cwg $$8 = new cwg(je.a($$7.h()), je.a($$7.j()));
-         cwg $$9 = new cwg(je.a($$7.k()), je.a($$7.m()));
+         ecw $$7 = $$6.a();
+         cwi $$8 = new cwi(je.a($$7.h()), je.a($$7.j()));
+         cwi $$9 = new cwi(je.a($$7.k()), je.a($$7.m()));
          a($$3, $$8, $$9);
-         cwg.a($$8, $$9).forEach($$3x -> $$6.a($$3, $$3.a(), $$5, $$3.E_(), new ecu($$3x.d(), $$3.I_(), $$3x.e(), $$3x.f(), $$3.ak(), $$3x.g()), $$3x));
+         cwi.a($$8, $$9).forEach($$3x -> $$6.a($$3, $$3.a(), $$5, $$3.E_(), new ecw($$3x.d(), $$3.I_(), $$3x.e(), $$3x.f(), $$3.ak(), $$3x.g()), $$3x));
          String $$10 = $$1.h().a().toString();
          $$0.a(() -> vu.a("commands.place.structure.success", $$10, $$2.u(), $$2.v(), $$2.w()), true);
          return 1;
       }
    }
 
-   public static int a(du $$0, ajh $$1, ib $$2, dgm $$3, dew $$4, float $$5, int $$6) throws CommandSyntaxException {
+   public static int a(du $$0, ajh $$1, ib $$2, dgo $$3, dey $$4, float $$5, int $$6) throws CommandSyntaxException {
       apf $$7 = $$0.e();
-      ehd $$8 = $$7.q();
+      ehf $$8 = $$7.q();
 
-      Optional<ehc> $$9;
+      Optional<ehe> $$9;
       try {
          $$9 = $$8.b($$1);
       } catch (z var13) {
@@ -193,14 +193,14 @@ public class ame {
       if ($$9.isEmpty()) {
          throw d.create($$1);
       } else {
-         ehc $$12 = $$9.get();
-         a($$7, new cwg($$2), new cwg($$2.a($$12.a())));
-         egy $$13 = new egy().a($$4).a($$3);
+         ehe $$12 = $$9.get();
+         a($$7, new cwi($$2), new cwi($$2.a($$12.a())));
+         eha $$13 = new eha().a($$4).a($$3);
          if ($$5 < 1.0F) {
-            $$13.b().a(new egg($$5)).a(dlu.b((long)$$6));
+            $$13.b().a(new egi($$5)).a(dlw.b((long)$$6));
          }
 
-         boolean $$14 = $$12.a($$7, $$2, $$2, $$13, dlu.b((long)$$6), 2);
+         boolean $$14 = $$12.a($$7, $$2, $$2, $$13, dlw.b((long)$$6), 2);
          if (!$$14) {
             throw e.create();
          } else {
@@ -210,8 +210,8 @@ public class ame {
       }
    }
 
-   private static void a(apf $$0, cwg $$1, cwg $$2) throws CommandSyntaxException {
-      if (cwg.a($$1, $$2).filter($$1x -> !$$0.p($$1x.l())).findAny().isPresent()) {
+   private static void a(apf $$0, cwi $$1, cwi $$2) throws CommandSyntaxException {
+      if (cwi.a($$1, $$2).filter($$1x -> !$$0.p($$1x.l())).findAny().isPresent()) {
          throw fo.a.create();
       }
    }

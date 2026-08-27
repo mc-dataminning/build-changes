@@ -1,70 +1,10 @@
-public abstract class cyf {
-   public static final ajg<cxy> a = a("the_void");
-   public static final ajg<cxy> b = a("plains");
-   public static final ajg<cxy> c = a("sunflower_plains");
-   public static final ajg<cxy> d = a("snowy_plains");
-   public static final ajg<cxy> e = a("ice_spikes");
-   public static final ajg<cxy> f = a("desert");
-   public static final ajg<cxy> g = a("swamp");
-   public static final ajg<cxy> h = a("mangrove_swamp");
-   public static final ajg<cxy> i = a("forest");
-   public static final ajg<cxy> j = a("flower_forest");
-   public static final ajg<cxy> k = a("birch_forest");
-   public static final ajg<cxy> l = a("dark_forest");
-   public static final ajg<cxy> m = a("old_growth_birch_forest");
-   public static final ajg<cxy> n = a("old_growth_pine_taiga");
-   public static final ajg<cxy> o = a("old_growth_spruce_taiga");
-   public static final ajg<cxy> p = a("taiga");
-   public static final ajg<cxy> q = a("snowy_taiga");
-   public static final ajg<cxy> r = a("savanna");
-   public static final ajg<cxy> s = a("savanna_plateau");
-   public static final ajg<cxy> t = a("windswept_hills");
-   public static final ajg<cxy> u = a("windswept_gravelly_hills");
-   public static final ajg<cxy> v = a("windswept_forest");
-   public static final ajg<cxy> w = a("windswept_savanna");
-   public static final ajg<cxy> x = a("jungle");
-   public static final ajg<cxy> y = a("sparse_jungle");
-   public static final ajg<cxy> z = a("bamboo_jungle");
-   public static final ajg<cxy> A = a("badlands");
-   public static final ajg<cxy> B = a("eroded_badlands");
-   public static final ajg<cxy> C = a("wooded_badlands");
-   public static final ajg<cxy> D = a("meadow");
-   public static final ajg<cxy> E = a("cherry_grove");
-   public static final ajg<cxy> F = a("grove");
-   public static final ajg<cxy> G = a("snowy_slopes");
-   public static final ajg<cxy> H = a("frozen_peaks");
-   public static final ajg<cxy> I = a("jagged_peaks");
-   public static final ajg<cxy> J = a("stony_peaks");
-   public static final ajg<cxy> K = a("river");
-   public static final ajg<cxy> L = a("frozen_river");
-   public static final ajg<cxy> M = a("beach");
-   public static final ajg<cxy> N = a("snowy_beach");
-   public static final ajg<cxy> O = a("stony_shore");
-   public static final ajg<cxy> P = a("warm_ocean");
-   public static final ajg<cxy> Q = a("lukewarm_ocean");
-   public static final ajg<cxy> R = a("deep_lukewarm_ocean");
-   public static final ajg<cxy> S = a("ocean");
-   public static final ajg<cxy> T = a("deep_ocean");
-   public static final ajg<cxy> U = a("cold_ocean");
-   public static final ajg<cxy> V = a("deep_cold_ocean");
-   public static final ajg<cxy> W = a("frozen_ocean");
-   public static final ajg<cxy> X = a("deep_frozen_ocean");
-   public static final ajg<cxy> Y = a("mushroom_fields");
-   public static final ajg<cxy> Z = a("dripstone_caves");
-   public static final ajg<cxy> aa = a("lush_caves");
-   public static final ajg<cxy> ab = a("deep_dark");
-   public static final ajg<cxy> ac = a("nether_wastes");
-   public static final ajg<cxy> ad = a("warped_forest");
-   public static final ajg<cxy> ae = a("crimson_forest");
-   public static final ajg<cxy> af = a("soul_sand_valley");
-   public static final ajg<cxy> ag = a("basalt_deltas");
-   public static final ajg<cxy> ah = a("the_end");
-   public static final ajg<cxy> ai = a("end_highlands");
-   public static final ajg<cxy> aj = a("end_midlands");
-   public static final ajg<cxy> ak = a("small_end_islands");
-   public static final ajg<cxy> al = a("end_barrens");
+import com.mojang.serialization.Codec;
 
-   private static ajg<cxy> a(String $$0) {
-      return ajg.a(kj.au, new ajh($$0));
+public class cyf {
+   public static Codec<? extends cye> a(iy<Codec<? extends cye>> $$0) {
+      iy.a($$0, "fixed", cyl.b);
+      iy.a($$0, "multi_noise", cyn.c);
+      iy.a($$0, "checkerboard", cyi.b);
+      return iy.a($$0, "the_end", cyr.b);
    }
 }

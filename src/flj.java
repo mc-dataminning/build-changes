@@ -1,155 +1,59 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.UUID;
 
-public class flj extends fhf {
-   private static final vu a = vu.c("gui.abuseReport.reason.title");
-   private static final vu b = vu.c("gui.abuseReport.reason.description");
-   private static final vu c = vu.c("gui.abuseReport.read_info");
-   private static final int k = 95;
-   private static final int l = 150;
-   private static final int m = 20;
-   private static final int n = 320;
-   private static final int o = 4;
-   @Nullable
-   private final fhf p;
-   @Nullable
-   private flj.a q;
-   @Nullable
-   fte r;
-   private final Consumer<fte> t;
+public class flj extends flf<ftd.a> {
+   private static final int r = 120;
+   private static final vu t = vu.c("gui.abuseReport.name.title");
+   private final fez u = fez.d().a(8);
+   private fca v;
+   private fbi w;
 
-   public flj(@Nullable fhf $$0, @Nullable fte $$1, Consumer<fte> $$2) {
-      super(a);
-      this.p = $$0;
-      this.r = $$1;
-      this.t = $$2;
+   private flj(fhh $$0, fti $$1, ftd.a $$2) {
+      super(t, $$0, $$1, $$2);
+   }
+
+   public flj(fhh $$0, fti $$1, UUID $$2, String $$3) {
+      this($$0, $$1, new ftd.a($$2, $$3, $$1.a().b()));
+   }
+
+   public flj(fhh $$0, fti $$1, ftd $$2) {
+      this($$0, $$1, new ftd.a($$2, $$1.a().b()));
    }
 
    @Override
    protected void aO_() {
-      this.q = this.c(new flj.a(this.f));
-      flj.a.a $$0 = x.a(this.r, this.q::a);
-      this.q.a($$0);
-      int $$1 = this.g / 2 - 150 - 5;
-      this.c(fbg.a(c, ffw.b(this, "https://aka.ms/aboutjavareporting")).a($$1, this.o(), 150, 20).a());
-      int $$2 = this.g / 2 + 5;
-      this.c(fbg.a(vt.d, $$0x -> {
-         flj.a.a $$1x = this.q.i();
-         if ($$1x != null) {
-            this.t.accept($$1x.b());
-         }
-
-         this.f.a(this.p);
-      }).a($$2, this.o(), 150, 20).a());
-      super.aO_();
+      this.u.c().b();
+      this.u.a(new fcp(this.e, this.i));
+      vu $$0 = vu.b(this.q.e().a()).a(n.o);
+      this.u.a(new fcp(vu.a("gui.abuseReport.name.reporting", $$0), this.i), $$0x -> $$0x.a().a(0, 8));
+      this.v = this.a(280, 9 * 8, $$0x -> {
+         this.q.a($$0x);
+         this.E();
+      });
+      this.u.a(fer.a(this.i, this.v, k, $$0x -> $$0x.e(12)));
+      fez $$1 = this.u.a(fez.e().a(8));
+      $$1.a(fbi.a(vt.k, $$0x -> this.d()).a(120).a());
+      this.w = $$1.a(fbi.a(a, $$0x -> this.o()).a(120).a());
+      this.E();
+      this.u.a($$1x -> {
+         fbg var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
    @Override
-   public void a(fat $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 16, 16777215);
-      $$0.a(this.E(), this.I(), this.H(), this.J(), 2130706432);
-      $$0.b(this.i, b, this.E() + 4, this.I() + 4, -8421505);
-      flj.a.a $$4 = this.q.i();
-      if ($$4 != null) {
-         int $$5 = this.E() + 4 + 16;
-         int $$6 = this.H() - 4;
-         int $$7 = this.I() + 4 + 9 + 2;
-         int $$8 = this.J() - 4;
-         int $$9 = $$6 - $$5;
-         int $$10 = $$8 - $$7;
-         int $$11 = this.i.b($$4.b.c(), $$9);
-         $$0.a(this.i, $$4.b.c(), $$5, $$7 + ($$10 - $$11) / 2, $$9, -1);
-      }
+   protected void c() {
+      this.u.a();
+      fet.a(this.u, this.F());
+   }
+
+   private void E() {
+      fte.b $$0 = this.q.c();
+      this.w.j = $$0 == null;
+      this.w.a(x.a($$0, fte.b::a));
    }
 
    @Override
-   public void b(fat $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
-   }
-
-   private int o() {
-      return this.h - 20 - 4;
-   }
-
-   private int E() {
-      return (this.g - 320) / 2;
-   }
-
-   private int H() {
-      return (this.g + 320) / 2;
-   }
-
-   private int I() {
-      return this.h - 95 + 4;
-   }
-
-   private int J() {
-      return this.o() - 4;
-   }
-
-   @Override
-   public void d() {
-      this.f.a(this.p);
-   }
-
-   public class a extends fcc<flj.a.a> {
-      public a(ezg $$1) {
-         super($$1, flj.this.g, flj.this.h - 95 - 40, 40, 18);
-
-         for (fte $$2 : fte.values()) {
-            this.b(new flj.a.a($$2));
-         }
-      }
-
-      @Nullable
-      public flj.a.a a(fte $$0) {
-         return this.l().stream().filter($$1 -> $$1.b == $$0).findFirst().orElse(null);
-      }
-
-      @Override
-      public int b() {
-         return 320;
-      }
-
-      @Override
-      protected int c() {
-         return this.r() - 2;
-      }
-
-      public void a(@Nullable flj.a.a $$0) {
-         super.a($$0);
-         flj.this.r = $$0 != null ? $$0.b() : null;
-      }
-
-      public class a extends fcc.a<flj.a.a> {
-         final fte b;
-
-         public a(fte $$1) {
-            this.b = $$1;
-         }
-
-         @Override
-         public void a(fat $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            int $$10 = $$3 + 1;
-            int $$11 = $$2 + ($$5 - 9) / 2 + 1;
-            $$0.b(flj.this.i, this.b.b(), $$10, $$11, -1);
-         }
-
-         @Override
-         public vu a() {
-            return vu.a("gui.abuseReport.reason.narration", this.b.b(), this.b.c());
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            a.this.a(this);
-            return true;
-         }
-
-         public fte b() {
-            return this.b;
-         }
-      }
+   public boolean b(double $$0, double $$1, int $$2) {
+      return super.b($$0, $$1, $$2) ? true : this.v.b($$0, $$1, $$2);
    }
 }

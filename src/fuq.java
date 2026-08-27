@@ -1,66 +1,79 @@
-public class fuq extends fvm {
-   fuq(fry $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+import javax.annotation.Nullable;
+
+public class fuq extends fwg {
+   private final float a;
+   private final fwb b;
+
+   fuq(fsa $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, fwb $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.b = $$7;
+      this.v = $$4;
+      this.w = $$5;
+      this.x = $$6;
+      float $$8 = 0.9F;
+      this.D *= 0.67499995F;
+      int $$9 = (int)(32.0 / (Math.random() * 0.8 + 0.2));
+      this.t = (int)Math.max((float)$$9 * 0.9F, 1.0F);
+      this.b($$7);
+      this.a = ((float)Math.random() - 0.5F) * 0.1F;
+      this.z = (float)Math.random() * (float) (Math.PI * 2);
    }
 
    @Override
-   public fvi b() {
-      return fvi.b;
-   }
-
-   @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
+   public fvk b() {
+      return fvk.b;
    }
 
    @Override
    public float b(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      return this.D * (1.0F - $$1 * $$1 * 0.5F);
+      return this.D * aww.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
-   public int a(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      $$1 = aww.a($$1, 0.0F, 1.0F);
-      int $$2 = super.a($$0);
-      int $$3 = $$2 & 0xFF;
-      int $$4 = $$2 >> 16 & 0xFF;
-      $$3 += (int)($$1 * 15.0F * 16.0F);
-      if ($$3 > 240) {
-         $$3 = 240;
-      }
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.b);
+         this.A = this.z;
+         this.z = this.z + (float) Math.PI * this.a * 2.0F;
+         if (this.m) {
+            this.A = this.z = 0.0F;
+         }
 
-      return $$3 | $$4 << 16;
-   }
-
-   public static class a implements fvh<kf> {
-      private final fvz a;
-
-      public a(fvz $$0) {
-         this.a = $$0;
-      }
-
-      public fve a(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fuq $$8 = new fuq($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+         this.a(this.j, this.k, this.l);
+         this.k -= 0.003F;
+         this.k = Math.max(this.k, -0.14F);
       }
    }
 
-   public static class b implements fvh<kf> {
-      private final fvz a;
+   public static class a implements fvj<ju> {
+      private final fwb a;
 
-      public b(fvz $$0) {
+      public a(fwb $$0) {
          this.a = $$0;
       }
 
-      public fve a(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fuq $$8 = new fuq($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         $$8.d(0.5F);
-         return $$8;
+      @Nullable
+      public fvg a(ju $$0, fsa $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         dnb $$8 = $$0.b();
+         if (!$$8.i() && $$8.l() == dgh.a) {
+            return null;
+         } else {
+            ib $$9 = ib.a($$2, $$3, $$4);
+            int $$10 = ezi.Q().aw().a($$8, $$1, $$9);
+            if ($$8.b() instanceof dcy) {
+               $$10 = ((dcy)$$8.b()).b($$8, $$1, $$9);
+            }
+
+            float $$11 = (float)($$10 >> 16 & 0xFF) / 255.0F;
+            float $$12 = (float)($$10 >> 8 & 0xFF) / 255.0F;
+            float $$13 = (float)($$10 & 0xFF) / 255.0F;
+            return new fuq($$1, $$2, $$3, $$4, $$11, $$12, $$13, this.a);
+         }
       }
    }
 }

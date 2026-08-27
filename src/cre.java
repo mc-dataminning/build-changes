@@ -1,60 +1,71 @@
+import com.google.common.collect.Maps;
+import java.util.List;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class cre extends cof {
-   public cre(daa $$0, cqf.a $$1) {
-      super($$0, $$1);
+public class cre extends cqh {
+   private static final Map<atx, cre> a = Maps.newHashMap();
+   private final int b;
+   private final atx c;
+   private final int d;
+
+   protected cre(int $$0, atx $$1, cqh.a $$2, int $$3) {
+      super($$2);
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$3 * 20;
+      a.put(this.c, this);
    }
 
-   @Nullable
    @Override
-   public css b(css $$0) {
-      ib $$1 = $$0.a();
-      cwz $$2 = $$0.q();
-      dmz $$3 = $$2.a_($$1);
-      daa $$4 = this.d();
-      if (!$$3.a($$4)) {
-         return dgo.a($$2, $$1) == 7 ? null : $$0;
+   public bnd a(csw $$0) {
+      cxb $$1 = $$0.q();
+      ib $$2 = $$0.a();
+      dnb $$3 = $$1.a_($$2);
+      if ($$3.a(dae.dT) && !$$3.c(dee.b)) {
+         cqm $$4 = $$0.n();
+         if (!$$1.B) {
+            ciu $$5 = $$0.o();
+            if ($$1.c_($$2) instanceof dlj $$6) {
+               $$6.a($$4.q());
+               $$1.a(drp.c, $$2, drp.a.a($$5, $$3));
+            }
+
+            $$4.h(1);
+            if ($$5 != null) {
+               $$5.a(aui.al);
+            }
+         }
+
+         return bnd.a($$1.B);
       } else {
-         ih $$5;
-         if ($$0.h()) {
-            $$5 = $$0.m() ? $$0.k().g() : $$0.k();
-         } else {
-            $$5 = $$0.k() == ih.b ? $$0.g() : ih.b;
-         }
-
-         int $$7 = 0;
-         ib.a $$8 = $$1.j().c($$5);
-
-         while ($$7 < 7) {
-            if (!$$2.B && !$$2.k($$8)) {
-               cis $$9 = $$0.o();
-               int $$10 = $$2.ak();
-               if ($$9 instanceof apg && $$8.v() >= $$10) {
-                  ((apg)$$9).b(vu.a("build.tooHigh", $$10 - 1).a(n.m), true);
-               }
-               break;
-            }
-
-            $$3 = $$2.a_($$8);
-            if (!$$3.a(this.d())) {
-               if ($$3.a($$0)) {
-                  return css.a($$0, $$8, $$5);
-               }
-               break;
-            }
-
-            $$8.c($$5);
-            if ($$5.o().d()) {
-               $$7++;
-            }
-         }
-
-         return null;
+         return bnd.d;
       }
    }
 
+   public int h() {
+      return this.b;
+   }
+
    @Override
-   protected boolean c() {
-      return false;
+   public void a(cqm $$0, @Nullable cxb $$1, List<vu> $$2, csd $$3) {
+      $$2.add(this.i().a(n.h));
+   }
+
+   public wi i() {
+      return vu.c(this.a() + ".desc");
+   }
+
+   @Nullable
+   public static cre a(atx $$0) {
+      return a.get($$0);
+   }
+
+   public atx j() {
+      return this.c;
+   }
+
+   public int y() {
+      return this.d;
    }
 }

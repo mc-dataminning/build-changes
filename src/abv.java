@@ -1,7 +1,7 @@
 public record abv(int b, float c) implements yb<aam> {
    public static final xs<uu, abv> a = yb.a(abv::a, abv::new);
 
-   public abv(bpo $$0) {
+   public abv(bpp $$0) {
       this($$0.aj(), $$0.eG());
    }
 

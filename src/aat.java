@@ -3,19 +3,19 @@ import java.util.function.BiFunction;
 public class aat implements yb<aam> {
    public static final xs<vf, aat> a = xs.a(ib.b, aat::b, xq.a(kj.h), aat::e, xq.k, aat::f, aat::new);
    private final ib b;
-   private final dki<?> c;
+   private final dkk<?> c;
    private final ta d;
 
-   public static aat a(dkg $$0, BiFunction<dkg, iz, ta> $$1) {
+   public static aat a(dki $$0, BiFunction<dki, iz, ta> $$1) {
       iz $$2 = $$0.i().H_();
       return new aat($$0.aC_(), $$0.r(), $$1.apply($$0, $$2));
    }
 
-   public static aat a(dkg $$0) {
-      return a($$0, dkg::a);
+   public static aat a(dki $$0) {
+      return a($$0, dki::a);
    }
 
-   private aat(ib $$0, dki<?> $$1, ta $$2) {
+   private aat(ib $$0, dkk<?> $$1, ta $$2) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -34,7 +34,7 @@ public class aat implements yb<aam> {
       return this.b;
    }
 
-   public dki<?> e() {
+   public dkk<?> e() {
       return this.c;
    }
 

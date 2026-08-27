@@ -3,7 +3,7 @@ public class adf implements yb<aam> {
    private final double b;
    private final double c;
 
-   public adf(doq $$0) {
+   public adf(dos $$0) {
       this.b = $$0.a();
       this.c = $$0.b();
    }

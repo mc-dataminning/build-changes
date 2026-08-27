@@ -1,48 +1,42 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-public class efk extends edc {
-   public static final Codec<efk> d = RecordCodecBuilder.create(
-      $$0 -> $$0.group(a($$0), ebj.c.fieldOf("height").forGetter($$0x -> $$0x.e)).apply($$0, efk::new)
+public class efk extends ede {
+   public static final blr<cym.c> d = blr.a(
+      new cym.c(bpd.j, 10, 2, 3), new cym.c(bpd.bx, 5, 4, 4), new cym.c(bpd.bq, 8, 5, 5), new cym.c(bpd.aN, 2, 5, 5), new cym.c(bpd.ap, 3, 4, 4)
    );
-   public final ebj e;
+   public static final Codec<efk> e = a(efk::new);
 
-   public efk(edc.c $$0, ebj $$1) {
+   public efk(ede.c $$0) {
       super($$0);
-      this.e = $$1;
    }
 
    @Override
-   public Optional<edc.b> a(edc.a $$0) {
-      dtl $$1 = $$0.f();
-      int $$2 = $$0.h().d() + $$1.a(16);
-      int $$3 = $$0.h().e() + $$1.a(16);
-      int $$4 = $$0.b().e();
-      dtj $$5 = new dtj($$0.b(), $$0.i());
-      int $$6 = this.e.a($$1, $$5);
-      cxl $$7 = $$0.b().a($$2, $$3, $$0.i(), $$0.d());
-      ib.a $$8 = new ib.a($$2, $$6, $$3);
+   public Optional<ede.b> a(ede.a $$0) {
+      cwi $$1 = $$0.h();
+      ib $$2 = new ib($$1.d(), 64, $$1.e());
+      return Optional.of(new ede.b($$2, (Consumer<edw>)($$1x -> a($$1x, $$0))));
+   }
 
-      while ($$6 > $$4) {
-         dmz $$9 = $$7.a($$6);
-         dmz $$10 = $$7.a(--$$6);
-         if ($$9.i() && ($$10.a(dac.dW) || $$10.d(cwo.a, $$8.q($$6), ih.b))) {
-            break;
-         }
+   private static void a(edw $$0, ede.a $$1) {
+      efj.q $$2 = new efj.q($$1.f(), $$1.h().a(2), $$1.h().b(2));
+      $$0.a($$2);
+      $$2.a($$2, $$0, $$1.f());
+      List<edi> $$3 = $$2.d;
+
+      while (!$$3.isEmpty()) {
+         int $$4 = $$1.f().a($$3.size());
+         edi $$5 = $$3.remove($$4);
+         $$5.a($$2, $$0, $$1.f());
       }
 
-      if ($$6 <= $$4) {
-         return Optional.empty();
-      } else {
-         ib $$11 = new ib($$2, $$6, $$3);
-         return Optional.of(new edc.b($$11, (Consumer<edu>)($$3x -> efj.a($$0.e(), $$3x, $$1, $$11))));
-      }
+      $$0.a($$1.f(), 48, 70);
    }
 
    @Override
-   public edl<?> e() {
-      return edl.i;
+   public edn<?> e() {
+      return edn.d;
    }
 }

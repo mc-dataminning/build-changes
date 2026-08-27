@@ -6,9 +6,9 @@ import java.util.Set;
 import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 
-public class ajy extends eqv {
+public class ajy extends eqx {
    private final MinecraftServer b;
-   private final Set<eqn> c = Sets.newHashSet();
+   private final Set<eqp> c = Sets.newHashSet();
    private final List<Runnable> d = Lists.newArrayList();
 
    public ajy(MinecraftServer $$0) {
@@ -16,7 +16,7 @@ public class ajy extends eqv {
    }
 
    @Override
-   protected void a(equ $$0, eqn $$1, eqs $$2) {
+   protected void a(eqw $$0, eqp $$1, equ $$2) {
       super.a($$0, $$1, $$2);
       if (this.c.contains($$1)) {
          this.b.ah().a(new adz($$0.cy(), $$1.b(), $$2.a(), Optional.ofNullable($$2.d()), Optional.ofNullable($$2.c())));
@@ -26,20 +26,20 @@ public class ajy extends eqv {
    }
 
    @Override
-   protected void a(equ $$0, eqn $$1) {
+   protected void a(eqw $$0, eqp $$1) {
       super.a($$0, $$1);
       this.a();
    }
 
    @Override
-   public void a(equ $$0) {
+   public void a(eqw $$0) {
       super.a($$0);
       this.b.ah().a(new acy($$0.cy(), null));
       this.a();
    }
 
    @Override
-   public void b(equ $$0, eqn $$1) {
+   public void b(eqw $$0, eqp $$1) {
       super.b($$0, $$1);
       if (this.c.contains($$1)) {
          this.b.ah().a(new acy($$0.cy(), $$1.b()));
@@ -49,8 +49,8 @@ public class ajy extends eqv {
    }
 
    @Override
-   public void a(eqm $$0, @Nullable eqn $$1) {
-      eqn $$2 = this.a($$0);
+   public void a(eqo $$0, @Nullable eqp $$1) {
+      eqp $$2 = this.a($$0);
       super.a($$0, $$1);
       if ($$2 != $$1 && $$2 != null) {
          if (this.h($$2) > 0) {
@@ -72,7 +72,7 @@ public class ajy extends eqv {
    }
 
    @Override
-   public boolean a(String $$0, eqq $$1) {
+   public boolean a(String $$0, eqs $$1) {
       if (super.a($$0, $$1)) {
          this.b.ah().a(ady.a($$1, $$0, ady.a.a));
          this.a();
@@ -83,20 +83,20 @@ public class ajy extends eqv {
    }
 
    @Override
-   public void b(String $$0, eqq $$1) {
+   public void b(String $$0, eqs $$1) {
       super.b($$0, $$1);
       this.b.ah().a(ady.a($$1, $$0, ady.a.b));
       this.a();
    }
 
    @Override
-   public void a(eqn $$0) {
+   public void a(eqp $$0) {
       super.a($$0);
       this.a();
    }
 
    @Override
-   public void b(eqn $$0) {
+   public void b(eqp $$0) {
       super.b($$0);
       if (this.c.contains($$0)) {
          this.b.ah().a(new adw($$0, 2));
@@ -106,7 +106,7 @@ public class ajy extends eqv {
    }
 
    @Override
-   public void c(eqn $$0) {
+   public void c(eqp $$0) {
       super.c($$0);
       if (this.c.contains($$0)) {
          this.g($$0);
@@ -116,21 +116,21 @@ public class ajy extends eqv {
    }
 
    @Override
-   public void a(eqq $$0) {
+   public void a(eqs $$0) {
       super.a($$0);
       this.b.ah().a(ady.a($$0, true));
       this.a();
    }
 
    @Override
-   public void b(eqq $$0) {
+   public void b(eqs $$0) {
       super.b($$0);
       this.b.ah().a(ady.a($$0, false));
       this.a();
    }
 
    @Override
-   public void c(eqq $$0) {
+   public void c(eqs $$0) {
       super.c($$0);
       this.b.ah().a(ady.a($$0));
       this.a();
@@ -146,24 +146,24 @@ public class ajy extends eqv {
       }
    }
 
-   public List<yb<?>> d(eqn $$0) {
+   public List<yb<?>> d(eqp $$0) {
       List<yb<?>> $$1 = Lists.newArrayList();
       $$1.add(new adw($$0, 0));
 
-      for (eqm $$2 : eqm.values()) {
+      for (eqo $$2 : eqo.values()) {
          if (this.a($$2) == $$0) {
             $$1.add(new adp($$2, $$0));
          }
       }
 
-      for (eqo $$3 : this.i($$0)) {
+      for (eqq $$3 : this.i($$0)) {
          $$1.add(new adz($$3.c(), $$0.b(), $$3.d(), Optional.ofNullable($$3.e()), Optional.ofNullable($$3.f())));
       }
 
       return $$1;
    }
 
-   public void e(eqn $$0) {
+   public void e(eqp $$0) {
       List<yb<?>> $$1 = this.d($$0);
 
       for (apg $$2 : this.b.ah().t()) {
@@ -175,11 +175,11 @@ public class ajy extends eqv {
       this.c.add($$0);
    }
 
-   public List<yb<?>> f(eqn $$0) {
+   public List<yb<?>> f(eqp $$0) {
       List<yb<?>> $$1 = Lists.newArrayList();
       $$1.add(new adw($$0, 1));
 
-      for (eqm $$2 : eqm.values()) {
+      for (eqo $$2 : eqo.values()) {
          if (this.a($$2) == $$0) {
             $$1.add(new adp($$2, $$0));
          }
@@ -188,7 +188,7 @@ public class ajy extends eqv {
       return $$1;
    }
 
-   public void g(eqn $$0) {
+   public void g(eqp $$0) {
       List<yb<?>> $$1 = this.f($$0);
 
       for (apg $$2 : this.b.ah().t()) {
@@ -200,10 +200,10 @@ public class ajy extends eqv {
       this.c.remove($$0);
    }
 
-   public int h(eqn $$0) {
+   public int h(eqp $$0) {
       int $$1 = 0;
 
-      for (eqm $$2 : eqm.values()) {
+      for (eqo $$2 : eqo.values()) {
          if (this.a($$2) == $$0) {
             $$1++;
          }
@@ -212,17 +212,17 @@ public class ajy extends eqv {
       return $$1;
    }
 
-   public ejs.a<eqw> b() {
-      return new ejs.a<>(this::i, this::a, ayc.n);
+   public eju.a<eqy> b() {
+      return new eju.a<>(this::i, this::a, ayc.n);
    }
 
-   private eqw i() {
-      eqw $$0 = new eqw(this);
+   private eqy i() {
+      eqy $$0 = new eqy(this);
       this.a($$0::c);
       return $$0;
    }
 
-   private eqw a(ta $$0, in.a $$1) {
+   private eqy a(ta $$0, in.a $$1) {
       return this.i().a($$0);
    }
 

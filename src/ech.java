@@ -1,42 +1,37 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ech extends dtj {
-   private final cxu a;
-   private final dow b;
-   private final Optional<ecg> c;
+public class ech extends ecp {
+   public static final Codec<ech> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.DOUBLE.fieldOf("noise_level").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("below_noise").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("above_noise").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, ech::new)
+   );
+   private final double c;
+   private final int d;
+   private final int e;
 
-   public ech(cxu $$0, dow $$1, Optional<ecg> $$2) {
-      super($$1, $$0);
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   private ech(double $$0, int $$1, int $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public int a(dsm.a $$0, int $$1, int $$2) {
-      return this.a.a($$0, $$1, $$2);
+   public static ech a(double $$0, int $$1, int $$2) {
+      return new ech($$0, $$1, $$2);
    }
 
-   public dou a(cwg $$0, dsi.a $$1) {
-      return ((dpq)this.a.a($$0.e, $$0.f)).b($$1);
+   @Override
+   protected int a(axd $$0, ib $$1) {
+      double $$2 = cya.e.a((double)$$1.u() / 200.0, (double)$$1.w() / 200.0, false);
+      return $$2 < this.c ? this.d : this.e;
    }
 
-   public dmz a(ib $$0) {
-      return this.a.a_($$0);
-   }
-
-   public int c() {
-      return this.a.I_();
-   }
-
-   public cxu d() {
-      return this.a;
-   }
-
-   public Optional<ecg> e() {
-      return this.c;
-   }
-
-   public dow f() {
-      return this.b;
+   @Override
+   public ecm<?> b() {
+      return ecm.h;
    }
 }

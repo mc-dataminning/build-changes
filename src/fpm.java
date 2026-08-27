@@ -1,29 +1,36 @@
-public class fpm<T extends bow> extends fol<T> {
-   private final frd a;
-   private final frd b;
-   private final frd f;
+public class fpm<T extends box> extends fon<T> {
+   private final frf a;
+   private final frf b;
+   private final frf f;
 
-   public fpm(frd $$0) {
+   public fpm(frf $$0) {
       this.a = $$0;
-      this.b = $$0.b("left_fin");
-      this.f = $$0.b("right_fin");
+      this.b = $$0.b("left_blue_fin");
+      this.f = $$0.b("right_blue_fin");
    }
 
-   public static frj b() {
-      frl $$0 = new frl();
-      frm $$1 = $$0.a();
-      int $$2 = 23;
-      $$1.a("body", fri.c().a(0, 27).a(-1.5F, -2.0F, -1.5F, 3.0F, 2.0F, 3.0F), frf.a(0.0F, 23.0F, 0.0F));
-      $$1.a("right_eye", fri.c().a(24, 6).a(-1.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), frf.a(0.0F, 20.0F, 0.0F));
-      $$1.a("left_eye", fri.c().a(28, 6).a(0.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), frf.a(0.0F, 20.0F, 0.0F));
-      $$1.a("back_fin", fri.c().a(-3, 0).a(-1.5F, 0.0F, 0.0F, 3.0F, 0.0F, 3.0F), frf.a(0.0F, 22.0F, 1.5F));
-      $$1.a("right_fin", fri.c().a(25, 0).a(-1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), frf.a(-1.5F, 22.0F, -1.5F));
-      $$1.a("left_fin", fri.c().a(25, 0).a(0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), frf.a(1.5F, 22.0F, -1.5F));
-      return frj.a($$0, 32, 32);
+   public static frl b() {
+      frn $$0 = new frn();
+      fro $$1 = $$0.a();
+      int $$2 = 22;
+      $$1.a("body", frk.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), frh.a(0.0F, 22.0F, 0.0F));
+      $$1.a("right_blue_fin", frk.c().a(24, 0).a(-2.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), frh.a(-4.0F, 15.0F, -2.0F));
+      $$1.a("left_blue_fin", frk.c().a(24, 3).a(0.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), frh.a(4.0F, 15.0F, -2.0F));
+      $$1.a("top_front_fin", frk.c().a(15, 17).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), frh.a(0.0F, 14.0F, -4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("top_middle_fin", frk.c().a(14, 16).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 1.0F), frh.a(0.0F, 14.0F, 0.0F));
+      $$1.a("top_back_fin", frk.c().a(23, 18).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), frh.a(0.0F, 14.0F, 4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_front_fin", frk.c().a(5, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), frh.a(-4.0F, 22.0F, -4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$1.a("left_front_fin", frk.c().a(1, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), frh.a(4.0F, 22.0F, -4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("bottom_front_fin", frk.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), frh.a(0.0F, 22.0F, -4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("bottom_middle_fin", frk.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), frh.a(0.0F, 22.0F, 0.0F));
+      $$1.a("bottom_back_fin", frk.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), frh.a(0.0F, 22.0F, 4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_back_fin", frk.c().a(9, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), frh.a(-4.0F, 22.0F, 4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("left_back_fin", frk.c().a(9, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), frh.a(4.0F, 22.0F, 4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      return frl.a($$0, 32, 32);
    }
 
    @Override
-   public frd a() {
+   public frf a() {
       return this.a;
    }
 

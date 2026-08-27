@@ -1,66 +1,45 @@
-public class cmn extends clo {
-   public static final int k = 5;
-   private final bmv l;
+public class cmn extends cnl {
+   private final ciu a;
+   private int b;
 
-   public cmn(int $$0, cir $$1) {
-      this($$0, $$1, new bnl(5));
-   }
-
-   public cmn(int $$0, cir $$1, bmv $$2) {
-      super(cmv.q, $$0);
-      this.l = $$2;
-      a($$2, 5);
-      $$2.d_($$1.m);
-      int $$3 = 51;
-
-      for (int $$4 = 0; $$4 < 5; $$4++) {
-         this.a(new cnj($$2, $$4, 44 + $$4 * 18, 20));
-      }
-
-      for (int $$5 = 0; $$5 < 3; $$5++) {
-         for (int $$6 = 0; $$6 < 9; $$6++) {
-            this.a(new cnj($$1, $$6 + $$5 * 9 + 9, 8 + $$6 * 18, $$5 * 18 + 51));
-         }
-      }
-
-      for (int $$7 = 0; $$7 < 9; $$7++) {
-         this.a(new cnj($$1, $$7, 8 + $$7 * 18, 109));
-      }
+   public cmn(ciu $$0, bmw $$1, int $$2, int $$3, int $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.a = $$0;
    }
 
    @Override
-   public boolean a(cis $$0) {
-      return this.l.a($$0);
+   public boolean a(cqm $$0) {
+      return false;
    }
 
    @Override
-   public cqk a(cis $$0, int $$1) {
-      cqk $$2 = cqk.h;
-      cnj $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cqk $$4 = $$3.g();
-         $$2 = $$4.q();
-         if ($$1 < this.l.b()) {
-            if (!this.a($$4, this.l.b(), this.i.size(), true)) {
-               return cqk.h;
-            }
-         } else if (!this.a($$4, 0, this.l.b(), false)) {
-            return cqk.h;
-         }
-
-         if ($$4.b()) {
-            $$3.e(cqk.h);
-         } else {
-            $$3.b();
-         }
+   public cqm a(int $$0) {
+      if (this.h()) {
+         this.b = this.b + Math.min($$0, this.g().M());
       }
 
-      return $$2;
+      return super.a($$0);
    }
 
    @Override
-   public void b(cis $$0) {
-      super.b($$0);
-      this.l.c($$0);
+   public void a(ciu $$0, cqm $$1) {
+      this.b_($$1);
+      super.a($$0, $$1);
+   }
+
+   @Override
+   protected void a(cqm $$0, int $$1) {
+      this.b += $$1;
+      this.b_($$0);
+   }
+
+   @Override
+   protected void b_(cqm $$0) {
+      $$0.a(this.a.dM(), this.a, this.b);
+      if (this.a instanceof apg $$1 && this.d instanceof djx $$2) {
+         $$2.a($$1);
+      }
+
+      this.b = 0;
    }
 }

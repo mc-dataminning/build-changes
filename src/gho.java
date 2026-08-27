@@ -1,35 +1,48 @@
-public class gho extends ghj<ccb, fqd<ccb>> {
-   private final fyk a;
-   private final gdw b;
+public class gho extends ghm<cca, fpv<cca>> {
+   private static final ajh a = new ajh("textures/entity/sheep/sheep_fur.png");
+   private final fpu<cca> b;
 
-   public gho(get<ccb, fqd<ccb>> $$0, fyk $$1, gdw $$2) {
+   public gho(gew<cca, fpv<cca>> $$0, frb $$1) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
+      this.b = new fpu<>($$1.a(fre.bi));
    }
 
-   public void a(etz $$0, fxq $$1, int $$2, ccb $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.s()) {
-         boolean $$10 = ezg.Q().b($$3) && $$3.ce();
-         if (!$$3.ce() || $$10) {
-            $$0.a();
-            this.c().c().a($$0);
-            float $$11 = 0.625F;
-            $$0.a(0.0F, -0.34375F, 0.0F);
-            $$0.a(a.d.rotationDegrees(180.0F));
-            $$0.b(0.625F, -0.625F, -0.625F);
-            cqk $$12 = new cqk(dac.ee);
-            if ($$10) {
-               dmz $$13 = dac.ee.o();
-               gkz $$14 = this.a.a($$13);
-               int $$15 = gdz.c($$3, 0.0F);
-               $$0.a(-0.5F, -0.5F, -0.5F);
-               this.a.b().a($$0.c(), $$1.getBuffer(fxy.r(giy.e)), $$13, $$14, 0.0F, 0.0F, 0.0F, $$2, $$15);
+   public void a(eub $$0, fxs $$1, int $$2, cca $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.y()) {
+         if ($$3.ce()) {
+            ezi $$10 = ezi.Q();
+            boolean $$11 = $$10.b($$3);
+            if ($$11) {
+               this.c().a(this.b);
+               this.b.a($$3, $$4, $$5, $$6);
+               this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
+               euf $$12 = $$1.getBuffer(fya.r(a));
+               this.b.a($$0, $$12, $$2, gec.c($$3, 0.0F), 0.0F, 0.0F, 0.0F, 1.0F);
+            }
+         } else {
+            float $$21;
+            float $$22;
+            float $$23;
+            if ($$3.ae() && "jeb_".equals($$3.ad().getString())) {
+               int $$13 = 25;
+               int $$14 = $$3.ah / 25 + $$3.aj();
+               int $$15 = cpd.values().length;
+               int $$16 = $$14 % $$15;
+               int $$17 = ($$14 + 1) % $$15;
+               float $$18 = ((float)($$3.ah % 25) + $$6) / 25.0F;
+               float[] $$19 = cca.a(cpd.a($$16));
+               float[] $$20 = cca.a(cpd.a($$17));
+               $$21 = $$19[0] * (1.0F - $$18) + $$20[0] * $$18;
+               $$22 = $$19[1] * (1.0F - $$18) + $$20[1] * $$18;
+               $$23 = $$19[2] * (1.0F - $$18) + $$20[2] * $$18;
             } else {
-               this.b.a($$3, $$12, cqh.f, false, $$0, $$1, $$3.dM(), $$2, gdz.c($$3, 0.0F), $$3.aj());
+               float[] $$24 = cca.a($$3.s());
+               $$21 = $$24[0];
+               $$22 = $$24[1];
+               $$23 = $$24[2];
             }
 
-            $$0.b();
+            a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$21, $$22, $$23);
          }
       }
    }

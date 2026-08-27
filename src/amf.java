@@ -76,7 +76,7 @@ public class amf {
          );
    }
 
-   private static int a(du $$0, Collection<apg> $$1, ajh $$2, atz $$3, epr $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
+   private static int a(du $$0, Collection<apg> $$1, ajh $$2, atz $$3, ept $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
       il<atx> $$8 = il.a(atx.a($$2));
       double $$9 = (double)aww.k($$8.a().a($$5));
       int $$10 = 0;
@@ -87,7 +87,7 @@ public class amf {
          double $$14 = $$4.d - $$12.dt();
          double $$15 = $$4.e - $$12.dx();
          double $$16 = $$13 * $$13 + $$14 * $$14 + $$15 * $$15;
-         epr $$17 = $$4;
+         ept $$17 = $$4;
          float $$18 = $$5;
          if ($$16 > $$9) {
             if ($$7 <= 0.0F) {
@@ -95,7 +95,7 @@ public class amf {
             }
 
             double $$19 = Math.sqrt($$16);
-            $$17 = new epr($$12.dr() + $$13 / $$19 * 2.0, $$12.dt() + $$14 / $$19 * 2.0, $$12.dx() + $$15 / $$19 * 2.0);
+            $$17 = new ept($$12.dr() + $$13 / $$19 * 2.0, $$12.dt() + $$14 / $$19 * 2.0, $$12.dx() + $$15 / $$19 * 2.0);
             $$18 = $$7;
          }
 

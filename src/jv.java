@@ -6,7 +6,7 @@ import java.util.Locale;
 import org.joml.Vector3f;
 
 public class jv extends jx {
-   public static final Vector3f a = epr.a(3790560).j();
+   public static final Vector3f a = ept.a(3790560).j();
    public static final jv b = new jv(a, jw.a, 1.0F);
    public static final Codec<jv> c = RecordCodecBuilder.create(
       $$0 -> $$0.group(

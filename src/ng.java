@@ -8,38 +8,38 @@ import javax.annotation.Nullable;
 
 public class ng implements nc {
    private final nd b;
-   private final cqf c;
+   private final cqh c;
    private final int d;
    private final List<String> e = Lists.newArrayList();
-   private final Map<Character, ctk> f = Maps.newLinkedHashMap();
+   private final Map<Character, ctm> f = Maps.newLinkedHashMap();
    private final Map<String, an<?>> g = new LinkedHashMap<>();
    @Nullable
    private String h;
    private boolean i = true;
 
-   public ng(nd $$0, cwy $$1, int $$2) {
+   public ng(nd $$0, cxa $$1, int $$2) {
       this.b = $$0;
       this.c = $$1.l();
       this.d = $$2;
    }
 
-   public static ng a(nd $$0, cwy $$1) {
+   public static ng a(nd $$0, cxa $$1) {
       return a($$0, $$1, 1);
    }
 
-   public static ng a(nd $$0, cwy $$1, int $$2) {
+   public static ng a(nd $$0, cxa $$1, int $$2) {
       return new ng($$0, $$1, $$2);
    }
 
-   public ng a(Character $$0, avd<cqf> $$1) {
-      return this.a($$0, ctk.a($$1));
+   public ng a(Character $$0, avd<cqh> $$1) {
+      return this.a($$0, ctm.a($$1));
    }
 
-   public ng a(Character $$0, cwy $$1) {
-      return this.a($$0, ctk.a($$1));
+   public ng a(Character $$0, cxa $$1) {
+      return this.a($$0, ctm.a($$1));
    }
 
-   public ng a(Character $$0, ctk $$1) {
+   public ng a(Character $$0, ctm $$1) {
       if (this.f.containsKey($$0)) {
          throw new IllegalArgumentException("Symbol '" + $$0 + "' is already defined!");
       } else if ($$0 == ' ') {
@@ -75,24 +75,24 @@ public class ng implements nc {
    }
 
    @Override
-   public cqf a() {
+   public cqh a() {
       return this.c;
    }
 
    @Override
    public void a(ne $$0, ajh $$1) {
-      ctv $$2 = this.a($$1);
+      ctx $$2 = this.a($$1);
       ae.a $$3 = $$0.a().a("has_the_recipe", cv.a($$1)).a(aj.a.c($$1)).a(ai.a.b);
       this.g.forEach($$3::a);
-      ctu $$4 = new ctu(Objects.requireNonNullElse(this.h, ""), nc.a(this.b), $$2, new cqk(this.c, this.d), this.i);
+      ctw $$4 = new ctw(Objects.requireNonNullElse(this.h, ""), nc.a(this.b), $$2, new cqm(this.c, this.d), this.i);
       $$0.a($$1, $$4, $$3.b($$1.d("recipes/" + this.b.a() + "/")));
    }
 
-   private ctv a(ajh $$0) {
+   private ctx a(ajh $$0) {
       if (this.g.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0);
       } else {
-         return ctv.a(this.f, this.e);
+         return ctx.a(this.f, this.e);
       }
    }
 }

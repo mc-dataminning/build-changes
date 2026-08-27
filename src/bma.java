@@ -3,52 +3,51 @@ import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.function.Function;
 
-public class bma extends bmh {
+public class bma extends bmi {
    public static final Codec<bma> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bmh.c.fieldOf("source").forGetter($$0x -> $$0x.b),
-                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.f),
-                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.g)
-               )
+         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
                .apply($$0, bma::new)
       )
       .comapFlatMap(
-         $$0 -> $$0.g < $$0.f
-               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.f + ", max_inclusive: " + $$0.g)
+         $$0 -> $$0.f < $$0.b
+               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
                : DataResult.success($$0),
          Function.identity()
       );
-   private final bmh b;
+   private final int b;
    private final int f;
-   private final int g;
 
-   public static bma a(bmh $$0, int $$1, int $$2) {
-      return new bma($$0, $$1, $$2);
-   }
-
-   public bma(bmh $$0, int $$1, int $$2) {
+   private bma(int $$0, int $$1) {
       this.b = $$0;
       this.f = $$1;
-      this.g = $$2;
+   }
+
+   public static bma a(int $$0, int $$1) {
+      return new bma($$0, $$1);
    }
 
    @Override
    public int a(axd $$0) {
-      return aww.a(this.b.a($$0), this.f, this.g);
+      return this.b + $$0.a($$0.a(this.f - this.b + 1) + 1);
    }
 
    @Override
    public int a() {
-      return Math.max(this.f, this.b.a());
+      return this.b;
    }
 
    @Override
    public int b() {
-      return Math.min(this.g, this.b.b());
+      return this.f;
    }
 
    @Override
-   public bmi<?> c() {
-      return bmi.d;
+   public bmj<?> c() {
+      return bmj.c;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.b + "-" + this.f + "]";
    }
 }

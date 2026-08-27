@@ -1,44 +1,65 @@
-public class gmc extends glv {
-   public static final int n = 20;
-   private final fws o;
-   private int p;
+public abstract class gmc extends gly {
+   private static final float o = 0.0F;
+   private static final float p = 1.2F;
+   private static final float q = 0.0F;
+   protected final cbf n;
+   private boolean r;
 
-   public gmc(fws $$0) {
-      super(aty.hL, atz.h, gmm.t());
-      this.o = $$0;
+   public gmc(cbf $$0, atx $$1, atz $$2) {
+      super($$1, $$2, gmp.t());
+      this.n = $$0;
+      this.f = (double)((float)$$0.dr());
+      this.g = (double)((float)$$0.dt());
+      this.h = (double)((float)$$0.dx());
       this.i = true;
       this.j = 0;
-      this.d = 0.1F;
+      this.d = 0.0F;
    }
 
    @Override
    public void q() {
-      this.p++;
-      if (!this.o.dH() && (this.p <= 20 || this.o.fB())) {
-         this.f = (double)((float)this.o.dr());
-         this.g = (double)((float)this.o.dt());
-         this.h = (double)((float)this.o.dx());
-         float $$0 = (float)this.o.dp().g();
-         if ((double)$$0 >= 1.0E-7) {
-            this.d = aww.a($$0 / 4.0F, 0.0F, 1.0F);
-         } else {
-            this.d = 0.0F;
-         }
+      boolean $$0 = this.p();
+      if ($$0 && !this.m()) {
+         ezi.Q().ak().a((gmq)this.o());
+         this.r = true;
+      }
 
-         if (this.p < 20) {
-            this.d = 0.0F;
-         } else if (this.p < 40) {
-            this.d = this.d * ((float)(this.p - 20) / 20.0F);
-         }
-
-         float $$1 = 0.8F;
-         if (this.d > 0.8F) {
-            this.e = 1.0F + (this.d - 0.8F);
+      if (!this.n.dH() && !this.r) {
+         this.f = (double)((float)this.n.dr());
+         this.g = (double)((float)this.n.dt());
+         this.h = (double)((float)this.n.dx());
+         float $$1 = (float)this.n.dp().h();
+         if ($$1 >= 0.01F) {
+            this.e = aww.i(aww.a($$1, this.u(), this.v()), this.u(), this.v());
+            this.d = aww.i(aww.a($$1, 0.0F, 0.5F), 0.0F, 1.2F);
          } else {
-            this.e = 1.0F;
+            this.e = 0.0F;
+            this.d = 0.0F;
          }
       } else {
          this.n();
       }
    }
+
+   private float u() {
+      return this.n.o_() ? 1.1F : 0.7F;
+   }
+
+   private float v() {
+      return this.n.o_() ? 1.5F : 1.1F;
+   }
+
+   @Override
+   public boolean r() {
+      return true;
+   }
+
+   @Override
+   public boolean s() {
+      return !this.n.aU();
+   }
+
+   protected abstract gly o();
+
+   protected abstract boolean p();
 }

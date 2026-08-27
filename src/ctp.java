@@ -1,34 +1,56 @@
-public record ctp<T extends ctn<?>>(ajh b, T c) {
-   public static final xs<vf, ctp<?>> a = xs.a(ajh.b, ctp::a, ctn.i, ctp::b, ctp::new);
+import com.mojang.serialization.Codec;
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof ctp<?> $$1 && this.b.equals($$1.b)) {
-            return true;
+public interface ctp<C extends bmw> {
+   Codec<ctp<?>> h = ki.t.q().dispatch(ctp::ar_, ctt::a);
+   xs<vf, ctp<?>> i = xq.a(kj.Y).b(ctp::ar_, ctt::b);
+
+   boolean a(C var1, cxb var2);
+
+   cqm a(C var1, iz var2);
+
+   boolean a(int var1, int var2);
+
+   cqm a(iz var1);
+
+   default iu<cqm> a(C $$0) {
+      iu<cqm> $$1 = iu.a($$0.b(), cqm.h);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         cqh $$3 = $$0.a($$2).d();
+         if ($$3.u()) {
+            $$1.set($$2, new cqm($$3.t()));
          }
-
-         return false;
       }
+
+      return $$1;
    }
 
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
+   default iu<ctm> a() {
+      return iu.a();
    }
 
-   @Override
-   public String toString() {
-      return this.b.toString();
+   default boolean aq_() {
+      return false;
    }
 
-   public ajh a() {
-      return this.b;
+   default boolean h() {
+      return true;
    }
 
-   public T b() {
-      return this.c;
+   default String c() {
+      return "";
+   }
+
+   default cqm g() {
+      return new cqm(dae.cA);
+   }
+
+   ctt<?> ar_();
+
+   ctu<?> e();
+
+   default boolean i() {
+      iu<ctm> $$0 = this.a();
+      return $$0.isEmpty() || $$0.stream().anyMatch($$0x -> $$0x.a().length == 0);
    }
 }

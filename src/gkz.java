@@ -1,20 +1,14 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.google.gson.JsonObject;
 
-public interface gkz {
-   List<fyn> a(@Nullable dmz var1, @Nullable ih var2, axd var3);
+public class gkz implements arn<gky> {
+   public gky b(JsonObject $$0) {
+      boolean $$1 = awm.a($$0, "blur", false);
+      boolean $$2 = awm.a($$0, "clamp", false);
+      return new gky($$1, $$2);
+   }
 
-   boolean a();
-
-   boolean b();
-
-   boolean c();
-
-   boolean d();
-
-   giz e();
-
-   fyz f();
-
-   fyx g();
+   @Override
+   public String a() {
+      return "texture";
+   }
 }

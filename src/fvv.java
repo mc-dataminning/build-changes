@@ -1,55 +1,43 @@
-public class fvv extends fvm {
-   private final fvz b;
-   protected boolean a;
+public class fvv extends fwg {
+   private final fwb a;
 
-   fvv(fry $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fvz $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.b = $$7;
-      this.d(1.5F);
+   protected fvv(fsa $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fwb $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.u = 0.225F;
+      this.B = 1.0F;
+      this.a = $$7;
+      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.D = 0.1F * (this.r.i() * this.r.i() * 1.0F + 1.0F);
+      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
       this.b($$7);
    }
 
    @Override
-   public int a(float $$0) {
-      return this.a ? 240 : super.a($$0);
-   }
-
-   @Override
-   public fvi b() {
-      return fvi.c;
+   public fvk b() {
+      return fvk.b;
    }
 
    @Override
    public void a() {
       super.a();
-      this.b(this.b);
+      this.b(this.a);
+      this.j *= 0.95F;
+      this.k *= 0.9F;
+      this.l *= 0.95F;
    }
 
-   public static class a implements fvh<kf> {
-      private final fvz a;
+   public static class a implements fvj<kf> {
+      private final fwb a;
 
-      public a(fvz $$0) {
+      public a(fwb $$0) {
          this.a = $$0;
       }
 
-      public fve a(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public fvg a(kf $$0, fsa $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          fvv $$8 = new fvv($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         $$8.a = true;
-         return $$8;
-      }
-   }
-
-   public static class b implements fvh<kf> {
-      private final fvz a;
-
-      public b(fvz $$0) {
-         this.a = $$0;
-      }
-
-      public fve a(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fvv $$8 = new fvv($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
+         $$8.a(0.923F, 0.964F, 0.999F);
          return $$8;
       }
    }

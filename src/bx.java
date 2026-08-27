@@ -9,8 +9,8 @@ public class bx extends cx<bx.a> {
       return bx.a.a;
    }
 
-   public void a(apg $$0, cqk $$1, cjg $$2, Collection<cqk> $$3) {
-      eku $$4 = br.b($$0, (bow)($$2.s() != null ? $$2.s() : $$2));
+   public void a(apg $$0, cqm $$1, cji $$2, Collection<cqm> $$3) {
+      ekw $$4 = br.b($$0, (box)($$2.s() != null ? $$2.s() : $$2));
       this.a($$0, $$3x -> $$3x.a($$1, $$4, $$3));
    }
 
@@ -29,7 +29,7 @@ public class bx extends cx<bx.a> {
          return am.E.a(new bx.a(Optional.empty(), $$0, br.a($$1), $$2));
       }
 
-      public boolean a(cqk $$0, eku $$1, Collection<cqk> $$2) {
+      public boolean a(cqm $$0, ekw $$1, Collection<cqm> $$2) {
          if (this.c.isPresent() && !this.c.get().a($$0)) {
             return false;
          } else if (this.d.isPresent() && !this.d.get().a($$1)) {
@@ -37,12 +37,12 @@ public class bx extends cx<bx.a> {
          } else {
             if (this.e.isPresent()) {
                boolean $$3 = false;
-               bow $$4 = $$1.c(enf.a);
-               if ($$4 instanceof cfd $$5 && this.e.get().a($$5.p())) {
+               box $$4 = $$1.c(enh.a);
+               if ($$4 instanceof cfe $$5 && this.e.get().a($$5.p())) {
                   $$3 = true;
                }
 
-               for (cqk $$6 : $$2) {
+               for (cqm $$6 : $$2) {
                   if (this.e.get().a($$6)) {
                      $$3 = true;
                      break;

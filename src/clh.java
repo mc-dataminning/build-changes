@@ -1,40 +1,93 @@
-import com.mojang.serialization.Codec;
-import java.util.Set;
-import java.util.stream.Collectors;
+import it.unimi.dsi.fastutil.HashCommon;
+import java.util.Arrays;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
-public class clh {
-   public static final cld a;
-   public static final cld b;
-   public static final cld c;
-   public static final cld d;
-   public static final cle e;
-   public static final Codec<clf> f;
-   public static final clf g;
-   public static final clf h;
+public final class clh {
+   private static final clh b = new clh(null, 0L);
+   public static final int a = 64;
+   @Nullable
+   private final cli c;
+   private final long d;
 
-   public static String a(clf $$0, clf $$1) {
-      return a(e, $$0, $$1);
+   private clh(@Nullable cli $$0, long $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public static String a(cle $$0, clf $$1, clf $$2) {
-      Set<ajh> $$3 = $$0.b($$2);
-      Set<ajh> $$4 = $$0.b($$1);
-      return $$3.stream().filter($$1x -> !$$4.contains($$1x)).map(ajh::toString).collect(Collectors.joining(", "));
+   static clh a(cli $$0, Collection<clf> $$1) {
+      if ($$1.isEmpty()) {
+         return b;
+      } else {
+         long $$2 = a($$0, 0L, $$1);
+         return new clh($$0, $$2);
+      }
    }
 
-   public static boolean a(clf $$0) {
-      return !$$0.a(g);
+   public static clh a() {
+      return b;
    }
 
-   static {
-      cle.a $$0 = new cle.a("main");
-      a = $$0.a("vanilla");
-      b = $$0.a("bundle");
-      d = $$0.a("trade_rebalance");
-      c = $$0.a("update_1_21");
-      e = $$0.a();
-      f = e.b();
-      g = clf.a(a);
-      h = g;
+   public static clh a(clf $$0) {
+      return new clh($$0.a, $$0.b);
+   }
+
+   public static clh a(clf $$0, clf... $$1) {
+      long $$2 = $$1.length == 0 ? $$0.b : a($$0.a, $$0.b, Arrays.asList($$1));
+      return new clh($$0.a, $$2);
+   }
+
+   private static long a(cli $$0, long $$1, Iterable<clf> $$2) {
+      for (clf $$3 : $$2) {
+         if ($$0 != $$3.a) {
+            throw new IllegalStateException("Mismatched feature universe, expected '" + $$0 + "', but got '" + $$3.a + "'");
+         }
+
+         $$1 |= $$3.b;
+      }
+
+      return $$1;
+   }
+
+   public boolean b(clf $$0) {
+      return this.c != $$0.a ? false : (this.d & $$0.b) != 0L;
+   }
+
+   public boolean a(clh $$0) {
+      if (this.c == null) {
+         return true;
+      } else {
+         return this.c != $$0.c ? false : (this.d & ~$$0.d) == 0L;
+      }
+   }
+
+   public clh b(clh $$0) {
+      if (this.c == null) {
+         return $$0;
+      } else if ($$0.c == null) {
+         return this;
+      } else if (this.c != $$0.c) {
+         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
+      } else {
+         return new clh(this.c, this.d | $$0.d);
+      }
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof clh $$1 && this.c == $$1.c && this.d == $$1.d) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return (int)HashCommon.mix(this.d);
    }
 }

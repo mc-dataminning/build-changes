@@ -21,7 +21,7 @@ public class du implements dw<du>, dz {
    public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vu.c("permissions.requires.player"));
    public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vu.c("permissions.requires.entity"));
    private final dt c;
-   private final epr d;
+   private final ept d;
    private final apf e;
    private final int f;
    private final String g;
@@ -29,27 +29,27 @@ public class du implements dw<du>, dz {
    private final MinecraftServer i;
    private final boolean j;
    @Nullable
-   private final bow k;
+   private final box k;
    private final dr l;
    private final eg.a m;
-   private final epq n;
+   private final eps n;
    private final ds o;
    private final axs p;
 
-   public du(dt $$0, epr $$1, epq $$2, apf $$3, int $$4, String $$5, vu $$6, MinecraftServer $$7, @Nullable bow $$8) {
+   public du(dt $$0, ept $$1, eps $$2, apf $$3, int $$4, String $$5, vu $$6, MinecraftServer $$7, @Nullable box $$8) {
       this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, dr.a, eg.a.a, ds.a, axs.immediate($$7));
    }
 
    protected du(
       dt $$0,
-      epr $$1,
-      epq $$2,
+      ept $$1,
+      eps $$2,
       apf $$3,
       int $$4,
       String $$5,
       vu $$6,
       MinecraftServer $$7,
-      @Nullable bow $$8,
+      @Nullable box $$8,
       boolean $$9,
       dr $$10,
       eg.a $$11,
@@ -76,17 +76,17 @@ public class du implements dw<du>, dz {
       return this.c == $$0 ? this : new du($$0, this.d, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p);
    }
 
-   public du a(bow $$0) {
+   public du a(box $$0) {
       return this.k == $$0
          ? this
          : new du(this.c, this.d, this.n, this.e, this.f, $$0.ad().getString(), $$0.O_(), this.i, $$0, this.j, this.l, this.m, this.o, this.p);
    }
 
-   public du a(epr $$0) {
+   public du a(ept $$0) {
       return this.d.equals($$0) ? this : new du(this.c, $$0, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p);
    }
 
-   public du a(epq $$0) {
+   public du a(eps $$0) {
       return this.n.c($$0) ? this : new du(this.c, this.d, $$0, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p);
    }
 
@@ -123,25 +123,25 @@ public class du implements dw<du>, dz {
       if ($$0 == this.e) {
          return this;
       } else {
-         double $$1 = dqm.a(this.e.D_(), $$0.D_());
-         epr $$2 = new epr(this.d.c * $$1, this.d.d, this.d.e * $$1);
+         double $$1 = dqo.a(this.e.D_(), $$0.D_());
+         ept $$2 = new ept(this.d.c * $$1, this.d.d, this.d.e * $$1);
          return new du(this.c, $$2, this.n, $$0, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p);
       }
    }
 
-   public du a(bow $$0, eg.a $$1) {
+   public du a(box $$0, eg.a $$1) {
       return this.b($$1.a($$0));
    }
 
-   public du b(epr $$0) {
-      epr $$1 = this.m.a(this);
+   public du b(ept $$0) {
+      ept $$1 = this.m.a(this);
       double $$2 = $$0.c - $$1.c;
       double $$3 = $$0.d - $$1.d;
       double $$4 = $$0.e - $$1.e;
       double $$5 = Math.sqrt($$2 * $$2 + $$4 * $$4);
       float $$6 = aww.g((float)(-(aww.d($$3, $$5) * 180.0F / (float)Math.PI)));
       float $$7 = aww.g((float)(aww.d($$4, $$2) * 180.0F / (float)Math.PI) - 90.0F);
-      return this.a(new epq($$6, $$7));
+      return this.a(new eps($$6, $$7));
    }
 
    public du a(ds $$0, axs $$1) {
@@ -163,7 +163,7 @@ public class du implements dw<du>, dz {
       return this.f >= $$0;
    }
 
-   public epr d() {
+   public ept d() {
       return this.d;
    }
 
@@ -172,11 +172,11 @@ public class du implements dw<du>, dz {
    }
 
    @Nullable
-   public bow f() {
+   public box f() {
       return this.k;
    }
 
-   public bow g() throws CommandSyntaxException {
+   public box g() throws CommandSyntaxException {
       if (this.k == null) {
          throw b.create();
       } else {
@@ -185,7 +185,7 @@ public class du implements dw<du>, dz {
    }
 
    public apg h() throws CommandSyntaxException {
-      bow var2 = this.k;
+      box var2 = this.k;
       if (var2 instanceof apg) {
          return (apg)var2;
       } else {
@@ -202,7 +202,7 @@ public class du implements dw<du>, dz {
       return this.k instanceof apg;
    }
 
-   public epq k() {
+   public eps k() {
       return this.n;
    }
 
@@ -266,7 +266,7 @@ public class du implements dw<du>, dz {
 
    private void c(vu $$0) {
       vu $$1 = vu.a("chat.type.admin", this.b(), $$0).a(n.h, n.u);
-      if (this.i.aN().b(cwv.p)) {
+      if (this.i.aN().b(cwx.p)) {
          for (apg $$2 : this.i.ah().t()) {
             if ($$2 != this.c && this.i.ah().f($$2.fY())) {
                $$2.a($$1);
@@ -274,7 +274,7 @@ public class du implements dw<du>, dz {
          }
       }
 
-      if (this.c != this.i && this.i.aN().b(cwv.m)) {
+      if (this.c != this.i && this.i.aN().b(cwx.m)) {
          this.i.a($$1);
       }
    }
@@ -324,7 +324,7 @@ public class du implements dw<du>, dz {
    }
 
    @Override
-   public Set<ajg<cwz>> u() {
+   public Set<ajg<cxb>> u() {
       return this.i.J();
    }
 
@@ -334,7 +334,7 @@ public class du implements dw<du>, dz {
    }
 
    @Override
-   public clf w() {
+   public clh w() {
       return this.e.I();
    }
 

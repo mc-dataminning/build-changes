@@ -21,19 +21,19 @@ public record aj(int c, List<ajh> d, List<ajh> e, Optional<dp> f) {
 
    public void a(apg $$0) {
       $$0.d(this.c);
-      ela $$1 = new ela.a($$0.z()).a(enf.a, $$0).a(enf.f, $$0.dk()).a(ene.l);
+      elc $$1 = new elc.a($$0.z()).a(enh.a, $$0).a(enh.f, $$0.dk()).a(eng.l);
       boolean $$2 = false;
 
       for (ajh $$3 : this.d) {
          ObjectListIterator var6 = $$0.e.aM().getLootTable($$3).a($$1).iterator();
 
          while (var6.hasNext()) {
-            cqk $$4 = (cqk)var6.next();
+            cqm $$4 = (cqm)var6.next();
             if ($$0.i($$4)) {
-               $$0.dM().a(null, $$0.dr(), $$0.dt(), $$0.dx(), aty.nh, atz.h, 0.2F, (($$0.ei().i() - $$0.ei().i()) * 0.7F + 1.0F) * 2.0F);
+               $$0.dM().a(null, $$0.dr(), $$0.dt(), $$0.dx(), aty.nl, atz.h, 0.2F, (($$0.ei().i() - $$0.ei().i()) * 0.7F + 1.0F) * 2.0F);
                $$2 = true;
             } else {
-               cfd $$5 = $$0.a($$4, false);
+               cfe $$5 = $$0.a($$4, false);
                if ($$5 != null) {
                   $$5.w();
                   $$5.b($$0.cw());

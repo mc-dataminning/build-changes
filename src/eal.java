@@ -1,59 +1,49 @@
 import com.mojang.serialization.Codec;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class eal extends eam {
-   public static final Codec<eal> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(eal::new, $$0 -> $$0.b).codec();
-   private final float b;
-
-   @Override
-   protected ean<?> a() {
-      return ean.b;
-   }
+public class eal extends eao {
+   public static final Codec<eal> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(eal::new, $$0 -> $$0.d).codec();
+   private static final ih b = ih.d;
+   private static final ih[] c = ih.c.a.a().filter($$0 -> $$0 != b.g()).toArray(ih[]::new);
+   private final float d;
 
    public eal(float $$0) {
-      this.b = $$0;
+      this.d = $$0;
    }
 
    @Override
-   public void a(eam.a $$0) {
-      axd $$1 = $$0.b();
-      $$0.d().forEach($$2 -> {
-         if ($$1.i() < this.b) {
-            ib $$3 = $$2.g();
-            if ($$0.a($$3)) {
-               a($$3, div.d, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            ib $$4 = $$2.h();
-            if ($$0.a($$4)) {
-               a($$4, div.f, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            ib $$5 = $$2.e();
-            if ($$0.a($$5)) {
-               a($$5, div.e, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            ib $$6 = $$2.f();
-            if ($$0.a($$6)) {
-               a($$6, div.c, $$0);
-            }
-         }
-      });
+   protected eap<?> a() {
+      return eap.d;
    }
 
-   private static void a(ib $$0, dnq $$1, eam.a $$2) {
-      $$2.a($$0, $$1);
-      int $$3 = 4;
+   @Override
+   public void a(eao.a $$0) {
+      axd $$1 = $$0.b();
+      if (!($$1.i() >= this.d)) {
+         List<ib> $$2 = $$0.d();
+         List<ib> $$3 = $$0.c();
+         int $$4 = !$$2.isEmpty() ? Math.max($$2.get(0).v() - 1, $$3.get(0).v() + 1) : Math.min($$3.get(0).v() + 1 + $$1.a(3), $$3.get($$3.size() - 1).v());
+         List<ib> $$5 = $$3.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
+         if (!$$5.isEmpty()) {
+            Collections.shuffle($$5);
+            Optional<ib> $$6 = $$5.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
+            if (!$$6.isEmpty()) {
+               $$0.a($$6.get(), dae.pe.o().a(czw.b, b));
+               $$0.a().a($$6.get(), dkk.H).ifPresent($$1x -> {
+                  int $$2x = 2 + $$1.a(2);
 
-      for (ib var4 = $$0.d(); $$2.a(var4) && $$3 > 0; $$3--) {
-         $$2.a(var4, $$1);
-         var4 = var4.d();
+                  for (int $$3x = 0; $$3x < $$2x; $$3x++) {
+                     ta $$4x = new ta();
+                     $$4x.a("id", ki.g.b(bpd.i).toString());
+                     $$1x.a($$4x, $$1.a(599), false);
+                  }
+               });
+            }
+         }
       }
    }
 }

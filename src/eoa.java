@@ -1,32 +1,23 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
 
-public record eoa(Optional<cc> b) implements ent {
-   public static final Codec<eoa> a = RecordCodecBuilder.create($$0 -> $$0.group(awe.a(cc.a, "predicate").forGetter(eoa::c)).apply($$0, eoa::new));
+public record eoa(float b) implements env {
+   public static final Codec<eoa> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(eoa::c)).apply($$0, eoa::new));
 
    @Override
-   public enu b() {
-      return env.k;
+   public enw b() {
+      return enx.e;
    }
 
-   @Override
-   public Set<enc<?>> a() {
-      return ImmutableSet.of(enf.i);
+   public boolean a(ekw $$0) {
+      return $$0.b().i() < this.b;
    }
 
-   public boolean a(eku $$0) {
-      cqk $$1 = $$0.c(enf.i);
-      return $$1 != null && (this.b.isEmpty() || this.b.get().a($$1));
+   public static env.a a(float $$0) {
+      return () -> new eoa($$0);
    }
 
-   public static ent.a a(cc.a $$0) {
-      return () -> new eoa(Optional.of($$0.b()));
-   }
-
-   public Optional<cc> c() {
+   public float c() {
       return this.b;
    }
 }

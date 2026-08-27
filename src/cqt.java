@@ -1,81 +1,381 @@
-public class cqt extends cqf {
-   private static final jo a = new jn() {
-      private final jn c = new jn();
+import com.google.common.collect.Iterables;
+import com.google.common.collect.LinkedHashMultiset;
+import com.google.common.collect.Multiset;
+import com.google.common.collect.Multisets;
+import java.util.List;
+import javax.annotation.Nullable;
 
-      @Override
-      public cqk a(jl $$0, cqk $$1) {
-         ih $$2 = $$0.d().c(dcf.b);
-         apf $$3 = $$0.b();
-         epr $$4 = $$0.a();
-         double $$5 = $$4.a() + (double)$$2.j() * 1.125;
-         double $$6 = Math.floor($$4.b()) + (double)$$2.k();
-         double $$7 = $$4.c() + (double)$$2.l() * 1.125;
-         ib $$8 = $$0.c().a($$2);
-         dmz $$9 = $$3.a_($$8);
-         dod $$10 = $$9.b() instanceof czp ? $$9.c(((czp)$$9.b()).c()) : dod.a;
-         double $$11;
-         if ($$9.a(aun.N)) {
-            if ($$10.b()) {
-               $$11 = 0.6;
-            } else {
-               $$11 = 0.1;
-            }
-         } else {
-            if (!$$9.i() || !$$3.a_($$8.d()).a(aun.N)) {
-               return this.c.dispense($$0, $$1);
-            }
+public class cqt extends cou {
+   public static final int a = 128;
+   public static final int b = 128;
+   private static final int e = -12173266;
+   private static final String f = "map";
+   public static final String c = "map_scale_direction";
+   public static final String d = "map_to_lock";
 
-            dmz $$13 = $$3.a_($$8.d());
-            dod $$14 = $$13.b() instanceof czp ? $$13.c(((czp)$$13.b()).c()) : dod.a;
-            if ($$2 != ih.a && $$14.b()) {
-               $$11 = -0.4;
-            } else {
-               $$11 = -0.9;
-            }
+   public cqt(cqh.a $$0) {
+      super($$0);
+   }
+
+   public static cqm a(cxb $$0, int $$1, int $$2, byte $$3, boolean $$4, boolean $$5) {
+      cqm $$6 = new cqm(cqp.rT);
+      a($$6, $$0, $$1, $$2, $$3, $$4, $$5, $$0.ad());
+      return $$6;
+   }
+
+   @Nullable
+   public static eka a(@Nullable ejy $$0, cxb $$1) {
+      return $$0 == null ? null : $$1.a($$0);
+   }
+
+   @Nullable
+   public static eka b(cqm $$0, cxb $$1) {
+      ejy $$2 = d($$0);
+      return a($$2, $$1);
+   }
+
+   @Nullable
+   public static ejy d(cqm $$0) {
+      ta $$1 = $$0.w();
+      return $$1 != null && $$1.b("map", 99) ? new ejy($$1.h("map")) : null;
+   }
+
+   private static ejy a(cxb $$0, int $$1, int $$2, int $$3, boolean $$4, boolean $$5, ajg<cxb> $$6) {
+      eka $$7 = eka.a((double)$$1, (double)$$2, (byte)$$3, $$4, $$5, $$6);
+      ejy $$8 = $$0.v();
+      $$0.a($$8, $$7);
+      return $$8;
+   }
+
+   private static void a(cqm $$0, ejy $$1) {
+      $$0.x().a("map", $$1.b());
+   }
+
+   private static void a(cqm $$0, cxb $$1, int $$2, int $$3, int $$4, boolean $$5, boolean $$6, ajg<cxb> $$7) {
+      ejy $$8 = a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      a($$0, $$8);
+   }
+
+   public void a(cxb $$0, box $$1, eka $$2) {
+      if ($$0.ad() == $$2.e && $$1 instanceof ciu) {
+         int $$3 = 1 << $$2.f;
+         int $$4 = $$2.c;
+         int $$5 = $$2.d;
+         int $$6 = aww.a($$1.dr() - (double)$$4) / $$3 + 64;
+         int $$7 = aww.a($$1.dx() - (double)$$5) / $$3 + 64;
+         int $$8 = 128 / $$3;
+         if ($$0.D_().h()) {
+            $$8 /= 2;
          }
 
-         ckn $$18 = ckn.a($$3, $$5, $$6 + $$11, $$7, ((cqt)$$1.d()).b, $$1, null);
-         $$3.b($$18);
-         $$1.h(1);
-         return $$1;
-      }
+         eka.a $$9 = $$2.a((ciu)$$1);
+         $$9.b++;
+         ib.a $$10 = new ib.a();
+         ib.a $$11 = new ib.a();
+         boolean $$12 = false;
 
-      @Override
-      protected void a(jl $$0) {
-         $$0.b().c(1000, $$0.c(), 0);
-      }
-   };
-   final ckn.a b;
+         for (int $$13 = $$6 - $$8 + 1; $$13 < $$6 + $$8; $$13++) {
+            if (($$13 & 15) == ($$9.b & 15) || $$12) {
+               $$12 = false;
+               double $$14 = 0.0;
 
-   public cqt(ckn.a $$0, cqf.a $$1) {
-      super($$1);
-      this.b = $$0;
-      dcf.a(this, a);
+               for (int $$15 = $$7 - $$8 - 1; $$15 < $$7 + $$8; $$15++) {
+                  if ($$13 >= 0 && $$15 >= -1 && $$13 < 128 && $$15 < 128) {
+                     int $$16 = aww.h($$13 - $$6) + aww.h($$15 - $$7);
+                     boolean $$17 = $$16 > ($$8 - 2) * ($$8 - 2);
+                     int $$18 = ($$4 / $$3 + $$13 - 64) * $$3;
+                     int $$19 = ($$5 / $$3 + $$15 - 64) * $$3;
+                     Multiset<eit> $$20 = LinkedHashMultiset.create();
+                     dpi $$21 = $$0.d(je.a($$18), je.a($$19));
+                     if (!$$21.C()) {
+                        int $$22 = 0;
+                        double $$23 = 0.0;
+                        if ($$0.D_().h()) {
+                           int $$24 = $$18 + $$19 * 231871;
+                           $$24 = $$24 * $$24 * 31287121 + $$24 * 11;
+                           if (($$24 >> 20 & 1) == 0) {
+                              $$20.add(dae.j.o().d($$0, ib.c), 10);
+                           } else {
+                              $$20.add(dae.b.o().d($$0, ib.c), 100);
+                           }
+
+                           $$23 = 100.0;
+                        } else {
+                           for (int $$25 = 0; $$25 < $$3; $$25++) {
+                              for (int $$26 = 0; $$26 < $$3; $$26++) {
+                                 $$10.d($$18 + $$25, 0, $$19 + $$26);
+                                 int $$27 = $$21.a(dso.a.b, $$10.u(), $$10.w()) + 1;
+                                 dnb $$31;
+                                 if ($$27 <= $$0.I_() + 1) {
+                                    $$31 = dae.F.o();
+                                 } else {
+                                    do {
+                                       $$10.q(--$$27);
+                                       $$31 = $$21.a_($$10);
+                                    } while ($$31.d($$0, $$10) == eit.a && $$27 > $$0.I_());
+
+                                    if ($$27 > $$0.I_() && !$$31.u().c()) {
+                                       int $$29 = $$27 - 1;
+                                       $$11.g($$10);
+
+                                       dnb $$30;
+                                       do {
+                                          $$11.q($$29--);
+                                          $$30 = $$21.a_($$11);
+                                          $$22++;
+                                       } while ($$29 > $$0.I_() && !$$30.u().c());
+
+                                       $$31 = this.a($$0, $$31, $$10);
+                                    }
+                                 }
+
+                                 $$2.a($$0, $$10.u(), $$10.w());
+                                 $$23 += (double)$$27 / (double)($$3 * $$3);
+                                 $$20.add($$31.d($$0, $$10));
+                              }
+                           }
+                        }
+
+                        $$22 /= $$3 * $$3;
+                        eit $$32 = (eit)Iterables.getFirst(Multisets.copyHighestCountFirst($$20), eit.a);
+                        eit.a $$34;
+                        if ($$32 == eit.m) {
+                           double $$33 = (double)$$22 * 0.1 + (double)($$13 + $$15 & 1) * 0.2;
+                           if ($$33 < 0.5) {
+                              $$34 = eit.a.c;
+                           } else if ($$33 > 0.9) {
+                              $$34 = eit.a.a;
+                           } else {
+                              $$34 = eit.a.b;
+                           }
+                        } else {
+                           double $$37 = ($$23 - $$14) * 4.0 / (double)($$3 + 4) + ((double)($$13 + $$15 & 1) - 0.5) * 0.4;
+                           if ($$37 > 0.6) {
+                              $$34 = eit.a.c;
+                           } else if ($$37 < -0.6) {
+                              $$34 = eit.a.a;
+                           } else {
+                              $$34 = eit.a.b;
+                           }
+                        }
+
+                        $$14 = $$23;
+                        if ($$15 >= 0 && $$16 < $$8 * $$8 && (!$$17 || ($$13 + $$15 & 1) != 0)) {
+                           $$12 |= $$2.a($$13, $$15, $$32.b($$34));
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   private dnb a(cxb $$0, dnb $$1, ib $$2) {
+      eip $$3 = $$1.u();
+      return !$$3.c() && !$$1.d($$0, $$2, ih.b) ? $$3.g() : $$1;
+   }
+
+   private static boolean a(boolean[] $$0, int $$1, int $$2) {
+      return $$0[$$2 * 128 + $$1];
+   }
+
+   public static void a(apf $$0, cqm $$1) {
+      eka $$2 = b($$1, $$0);
+      if ($$2 != null) {
+         if ($$0.ad() == $$2.e) {
+            int $$3 = 1 << $$2.f;
+            int $$4 = $$2.c;
+            int $$5 = $$2.d;
+            boolean[] $$6 = new boolean[16384];
+            int $$7 = $$4 / $$3 - 64;
+            int $$8 = $$5 / $$3 - 64;
+            ib.a $$9 = new ib.a();
+
+            for (int $$10 = 0; $$10 < 128; $$10++) {
+               for (int $$11 = 0; $$11 < 128; $$11++) {
+                  il<cya> $$12 = $$0.t($$9.d(($$7 + $$11) * $$3, 0, ($$8 + $$10) * $$3));
+                  $$6[$$10 * 128 + $$11] = $$12.a(aum.ab);
+               }
+            }
+
+            for (int $$13 = 1; $$13 < 127; $$13++) {
+               for (int $$14 = 1; $$14 < 127; $$14++) {
+                  int $$15 = 0;
+
+                  for (int $$16 = -1; $$16 < 2; $$16++) {
+                     for (int $$17 = -1; $$17 < 2; $$17++) {
+                        if (($$16 != 0 || $$17 != 0) && a($$6, $$13 + $$16, $$14 + $$17)) {
+                           $$15++;
+                        }
+                     }
+                  }
+
+                  eit.a $$18 = eit.a.d;
+                  eit $$19 = eit.a;
+                  if (a($$6, $$13, $$14)) {
+                     $$19 = eit.p;
+                     if ($$15 > 7 && $$14 % 2 == 0) {
+                        switch (($$13 + (int)(aww.a((float)$$14 + 0.0F) * 7.0F)) / 8 % 5) {
+                           case 0:
+                           case 4:
+                              $$18 = eit.a.a;
+                              break;
+                           case 1:
+                           case 3:
+                              $$18 = eit.a.b;
+                              break;
+                           case 2:
+                              $$18 = eit.a.c;
+                        }
+                     } else if ($$15 > 7) {
+                        $$19 = eit.a;
+                     } else if ($$15 > 5) {
+                        $$18 = eit.a.b;
+                     } else if ($$15 > 3) {
+                        $$18 = eit.a.a;
+                     } else if ($$15 > 1) {
+                        $$18 = eit.a.a;
+                     }
+                  } else if ($$15 > 0) {
+                     $$19 = eit.A;
+                     if ($$15 > 3) {
+                        $$18 = eit.a.b;
+                     } else {
+                        $$18 = eit.a.d;
+                     }
+                  }
+
+                  if ($$19 != eit.a) {
+                     $$2.b($$13, $$14, $$19.b($$18));
+                  }
+               }
+            }
+         }
+      }
    }
 
    @Override
-   public bnc a(csu $$0) {
-      cwz $$1 = $$0.q();
-      ib $$2 = $$0.a();
-      dmz $$3 = $$1.a_($$2);
-      if (!$$3.a(aun.N)) {
-         return bnc.e;
-      } else {
-         cqk $$4 = $$0.n();
-         if ($$1 instanceof apf $$5) {
-            dod $$6 = $$3.b() instanceof czp ? $$3.c(((czp)$$3.b()).c()) : dod.a;
-            double $$7 = 0.0;
-            if ($$6.b()) {
-               $$7 = 0.5;
+   public void a(cqm $$0, cxb $$1, box $$2, int $$3, boolean $$4) {
+      if (!$$1.B) {
+         eka $$5 = b($$0, $$1);
+         if ($$5 != null) {
+            if ($$2 instanceof ciu $$6) {
+               $$5.a($$6, $$0);
             }
 
-            ckn $$8 = ckn.a($$5, (double)$$2.u() + 0.5, (double)$$2.v() + 0.0625 + $$7, (double)$$2.w() + 0.5, this.b, $$4, $$0.o());
-            $$5.b($$8);
-            $$5.a(drn.t, $$2, drn.a.a($$0.o(), $$5.a_($$2.d())));
+            if (!$$5.h && ($$4 || $$2 instanceof ciu && ((ciu)$$2).eV() == $$0)) {
+               this.a($$1, $$2, $$5);
+            }
+         }
+      }
+   }
+
+   @Nullable
+   @Override
+   public yb<?> a(cqm $$0, cxb $$1, ciu $$2) {
+      ejy $$3 = d($$0);
+      eka $$4 = a($$3, $$1);
+      return $$4 != null ? $$4.a($$3, $$2) : null;
+   }
+
+   @Override
+   public void a(cqm $$0, cxb $$1) {
+      ta $$2 = $$0.w();
+      if ($$2 != null && $$2.b("map_scale_direction", 99)) {
+         a($$0, $$1, $$2.h("map_scale_direction"));
+         $$2.r("map_scale_direction");
+      } else if ($$2 != null && $$2.b("map_to_lock", 1) && $$2.q("map_to_lock")) {
+         a($$1, $$0);
+         $$2.r("map_to_lock");
+      }
+   }
+
+   private static void a(cqm $$0, cxb $$1, int $$2) {
+      eka $$3 = b($$0, $$1);
+      if ($$3 != null) {
+         ejy $$4 = $$1.v();
+         $$1.a($$4, $$3.a($$2));
+         a($$0, $$4);
+      }
+   }
+
+   public static void a(cxb $$0, cqm $$1) {
+      eka $$2 = b($$1, $$0);
+      if ($$2 != null) {
+         ejy $$3 = $$0.v();
+         eka $$4 = $$2.b();
+         $$0.a($$3, $$4);
+         a($$1, $$3);
+      }
+   }
+
+   @Override
+   public void a(cqm $$0, @Nullable cxb $$1, List<vu> $$2, csd $$3) {
+      ejy $$4 = d($$0);
+      eka $$5 = $$1 == null ? null : a($$4, $$1);
+      ta $$6 = $$0.w();
+      boolean $$7;
+      byte $$8;
+      if ($$6 != null) {
+         $$7 = $$6.q("map_to_lock");
+         $$8 = $$6.f("map_scale_direction");
+      } else {
+         $$7 = false;
+         $$8 = 0;
+      }
+
+      if ($$5 != null && ($$5.h || $$7)) {
+         $$2.add(vu.a("filled_map.locked", $$4.b()).a(n.h));
+      }
+
+      if ($$3.a()) {
+         if ($$5 != null) {
+            if (!$$7 && $$8 == 0) {
+               $$2.add(a($$4));
+            }
+
+            int $$11 = Math.min($$5.f + $$8, 4);
+            $$2.add(vu.a("filled_map.scale", 1 << $$11).a(n.h));
+            $$2.add(vu.a("filled_map.level", $$11, 4).a(n.h));
+         } else {
+            $$2.add(vu.c("filled_map.unknown").a(n.h));
+         }
+      }
+   }
+
+   private static vu a(ejy $$0) {
+      return vu.a("filled_map.id", $$0.b()).a(n.h);
+   }
+
+   public static vu k(cqm $$0) {
+      return a(d($$0));
+   }
+
+   public static int o(cqm $$0) {
+      ta $$1 = $$0.c("display");
+      if ($$1 != null && $$1.b("MapColor", 99)) {
+         int $$2 = $$1.h("MapColor");
+         return 0xFF000000 | $$2 & 16777215;
+      } else {
+         return -12173266;
+      }
+   }
+
+   @Override
+   public bnd a(csw $$0) {
+      dnb $$1 = $$0.q().a_($$0.a());
+      if ($$1.a(aun.G)) {
+         if (!$$0.q().B) {
+            eka $$2 = b($$0.n(), $$0.q());
+            if ($$2 != null && !$$2.a($$0.q(), $$0.a())) {
+               return bnd.e;
+            }
          }
 
-         $$4.h(1);
-         return bnc.a($$1.B);
+         return bnd.a($$0.q().B);
+      } else {
+         return super.a($$0);
       }
    }
 }

@@ -1,8 +1,21 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public enum don implements axq {
+   a("none"),
+   b("low"),
+   c("tall");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface don {
+   private final String d;
+
+   private don(String $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.c();
+   }
+
+   @Override
+   public String c() {
+      return this.d;
+   }
 }

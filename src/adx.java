@@ -5,9 +5,9 @@ public class adx implements yb<aam> {
    private final int b;
    private final int[] c;
 
-   public adx(bow $$0) {
+   public adx(box $$0) {
       this.b = $$0.aj();
-      List<bow> $$1 = $$0.cP();
+      List<box> $$1 = $$0.cP();
       this.c = new int[$$1.size()];
 
       for (int $$2 = 0; $$2 < $$1.size(); $$2++) {

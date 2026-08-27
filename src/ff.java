@@ -1,15 +1,15 @@
 import com.mojang.brigadier.context.CommandContext;
 
-public class ff extends fc<dew> {
+public class ff extends fc<dey> {
    private ff() {
-      super(dew.d, dew::values);
+      super(dey.d, dey::values);
    }
 
-   public static fc<dew> a() {
+   public static fc<dey> a() {
       return new ff();
    }
 
-   public static dew a(CommandContext<du> $$0, String $$1) {
-      return (dew)$$0.getArgument($$1, dew.class);
+   public static dey a(CommandContext<du> $$0, String $$1) {
+      return (dey)$$0.getArgument($$1, dey.class);
    }
 }

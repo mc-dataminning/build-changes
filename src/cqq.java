@@ -1,19 +1,50 @@
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class cqq extends crw {
-   public cqq(cqf.a $$0) {
+public class cqq extends cqh {
+   private static final String a = "Recipes";
+   private static final Logger b = LogUtils.getLogger();
+
+   public cqq(cqh.a $$0) {
       super($$0);
    }
 
    @Override
-   public void a(cqk $$0, @Nullable cwz $$1, List<vu> $$2, csb $$3) {
-      csj.a($$0, $$2, 0.25F, $$1 == null ? 20.0F : $$1.s().f());
-   }
+   public bne<cqm> a(cxb $$0, ciu $$1, bnc $$2) {
+      cqm $$3 = $$1.b($$2);
+      ta $$4 = $$3.w();
+      if (!$$1.fM()) {
+         $$1.a($$2, cqm.h);
+      }
 
-   @Override
-   public bnd<cqk> a(cwz $$0, cis $$1, bnb $$2) {
-      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), aty.nC, atz.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-      return super.a($$0, $$1, $$2);
+      if ($$4 != null && $$4.b("Recipes", 9)) {
+         if (!$$0.B) {
+            tg $$5 = $$4.c("Recipes", 8);
+            List<ctr<?>> $$6 = Lists.newArrayList();
+            cts $$7 = $$0.o().aJ();
+
+            for (int $$8 = 0; $$8 < $$5.size(); $$8++) {
+               String $$9 = $$5.j($$8);
+               Optional<ctr<?>> $$10 = $$7.a(new ajh($$9));
+               if (!$$10.isPresent()) {
+                  b.error("Invalid recipe: {}", $$9);
+                  return bne.d($$3);
+               }
+
+               $$6.add($$10.get());
+            }
+
+            $$1.a($$6);
+            $$1.b(aui.c.b(this));
+         }
+
+         return bne.a($$3, $$0.x_());
+      } else {
+         b.error("Tag not valid: {}", $$4);
+         return bne.d($$3);
+      }
    }
 }

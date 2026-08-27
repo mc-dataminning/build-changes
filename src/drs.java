@@ -1,14 +1,34 @@
-import com.mojang.serialization.Codec;
+public interface drs {
+   drs a = new drs() {
+      @Override
+      public boolean a() {
+         return true;
+      }
 
-public interface drs<T extends drr> {
-   drs<drj> a = a("block", new drj.a());
-   drs<drl> b = a("entity", new drl.a());
+      @Override
+      public void a(drr $$0) {
+      }
 
-   Codec<T> a();
+      @Override
+      public void b(drr $$0) {
+      }
 
-   xs<vf, T> b();
+      @Override
+      public boolean a(il<drp> $$0, ept $$1, drp.a $$2, drs.a $$3) {
+         return false;
+      }
+   };
 
-   static <S extends drs<T>, T extends drr> S a(String $$0, S $$1) {
-      return iy.a(ki.v, $$0, $$1);
+   boolean a();
+
+   void a(drr var1);
+
+   void b(drr var1);
+
+   boolean a(il<drp> var1, ept var2, drp.a var3, drs.a var4);
+
+   @FunctionalInterface
+   public interface a {
+      void visit(drr var1, ept var2);
    }
 }

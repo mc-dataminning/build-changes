@@ -42,11 +42,11 @@ public interface dz {
       return Collections.singleton(dz.b.b);
    }
 
-   Set<ajg<cwz>> u();
+   Set<ajg<cxb>> u();
 
    iz v();
 
-   clf w();
+   clh w();
 
    default void a(iy<?> $$0, dz.a $$1, SuggestionsBuilder $$2) {
       if ($$1.a()) {

@@ -1,13 +1,29 @@
-public interface ble {
-   void a();
+public class ble implements blf {
+   public static final blf a = new ble();
 
-   void b();
+   @Override
+   public void a() {
+   }
 
-   void c();
+   @Override
+   public void b() {
+   }
 
-   boolean e();
+   @Override
+   public void c() {
+   }
 
-   bjq f();
+   @Override
+   public boolean e() {
+      return false;
+   }
 
-   void d();
+   @Override
+   public bjr f() {
+      return bjo.a;
+   }
+
+   @Override
+   public void d() {
+   }
 }

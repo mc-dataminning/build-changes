@@ -1,121 +1,208 @@
-import com.google.common.collect.Multimap;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.ObjectArraySet;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
-import java.util.stream.Collectors;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
 public class bqs {
-   private static final Logger a = LogUtils.getLogger();
-   private final Map<il<bqq>, bqr> b = new Object2ObjectOpenHashMap();
-   private final Set<bqr> c = new ObjectOpenHashSet();
-   private final bqu d;
+   private final il<bqr> a;
+   private final Map<bqu.a, Set<bqu>> b = Maps.newEnumMap(bqu.a.class);
+   private final Map<UUID, bqu> c = new Object2ObjectArrayMap();
+   private final Set<bqu> d = new ObjectArraySet();
+   private double e;
+   private boolean f = true;
+   private double g;
+   private final Consumer<bqs> h;
 
-   public bqs(bqu $$0) {
-      this.d = $$0;
+   public bqs(il<bqr> $$0, Consumer<bqs> $$1) {
+      this.a = $$0;
+      this.h = $$1;
+      this.e = $$0.a().a();
    }
 
-   private void a(bqr $$0) {
-      if ($$0.a().a().b()) {
-         this.c.add($$0);
+   public il<bqr> a() {
+      return this.a;
+   }
+
+   public double b() {
+      return this.e;
+   }
+
+   public void a(double $$0) {
+      if ($$0 != this.e) {
+         this.e = $$0;
+         this.d();
       }
    }
 
-   public Set<bqr> a() {
-      return this.c;
+   public Set<bqu> a(bqu.a $$0) {
+      return this.b.computeIfAbsent($$0, $$0x -> Sets.newHashSet());
    }
 
-   public Collection<bqr> b() {
-      return this.b.values().stream().filter($$0 -> $$0.a().a().b()).collect(Collectors.toList());
+   public Set<bqu> c() {
+      return ImmutableSet.copyOf(this.c.values());
    }
 
    @Nullable
-   public bqr a(il<bqq> $$0) {
-      return this.b.computeIfAbsent($$0, $$0x -> this.d.a(this::a, $$0x));
+   public bqu a(UUID $$0) {
+      return this.c.get($$0);
    }
 
-   public boolean b(il<bqq> $$0) {
-      return this.b.get($$0) != null || this.d.c($$0);
+   public boolean a(bqu $$0) {
+      return this.c.get($$0.a()) != null;
    }
 
-   public boolean a(il<bqq> $$0, UUID $$1) {
-      bqr $$2 = this.b.get($$0);
-      return $$2 != null ? $$2.a($$1) != null : this.d.b($$0, $$1);
+   private void f(bqu $$0) {
+      bqu $$1 = this.c.putIfAbsent($$0.a(), $$0);
+      if ($$1 != null) {
+         throw new IllegalArgumentException("Modifier is already applied on this attribute!");
+      } else {
+         this.a($$0.b()).add($$0);
+         this.d();
+      }
    }
 
-   public double c(il<bqq> $$0) {
-      bqr $$1 = this.b.get($$0);
-      return $$1 != null ? $$1.f() : this.d.a($$0);
-   }
-
-   public double d(il<bqq> $$0) {
-      bqr $$1 = this.b.get($$0);
-      return $$1 != null ? $$1.b() : this.d.b($$0);
-   }
-
-   public double b(il<bqq> $$0, UUID $$1) {
-      bqr $$2 = this.b.get($$0);
-      return $$2 != null ? $$2.a($$1).c() : this.d.a($$0, $$1);
-   }
-
-   public void a(Multimap<il<bqq>, bqt> $$0) {
-      $$0.asMap().forEach(($$0x, $$1) -> {
-         bqr $$2 = this.b.get($$0x);
-         if ($$2 != null) {
-            $$1.forEach($$1x -> $$2.b($$1x.a()));
+   public void b(bqu $$0) {
+      bqu $$1 = this.c.putIfAbsent($$0.a(), $$0);
+      if ($$0 != $$1) {
+         Set<bqu> $$2 = this.a($$0.b());
+         if ($$1 != null) {
+            $$2.remove($$1);
          }
-      });
+
+         $$2.add($$0);
+         this.d();
+      }
    }
 
-   public void b(Multimap<il<bqq>, bqt> $$0) {
-      $$0.forEach(($$0x, $$1) -> {
-         bqr $$2 = this.a($$0x);
-         if ($$2 != null) {
-            $$2.b($$1.a());
-            $$2.c($$1);
-         }
-      });
+   public void c(bqu $$0) {
+      this.f($$0);
+   }
+
+   public void d(bqu $$0) {
+      this.f($$0);
+      this.d.add($$0);
+   }
+
+   protected void d() {
+      this.f = true;
+      this.h.accept(this);
+   }
+
+   public void e(bqu $$0) {
+      this.a($$0.b()).remove($$0);
+      this.c.remove($$0.a());
+      this.d.remove($$0);
+      this.d();
+   }
+
+   public void b(UUID $$0) {
+      bqu $$1 = this.a($$0);
+      if ($$1 != null) {
+         this.e($$1);
+      }
+   }
+
+   public boolean c(UUID $$0) {
+      bqu $$1 = this.a($$0);
+      if ($$1 != null && this.d.contains($$1)) {
+         this.e($$1);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public void e() {
+      for (bqu $$0 : this.c()) {
+         this.e($$0);
+      }
+   }
+
+   public double f() {
+      if (this.f) {
+         this.g = this.h();
+         this.f = false;
+      }
+
+      return this.g;
+   }
+
+   private double h() {
+      double $$0 = this.b();
+
+      for (bqu $$1 : this.b(bqu.a.a)) {
+         $$0 += $$1.c();
+      }
+
+      double $$2 = $$0;
+
+      for (bqu $$3 : this.b(bqu.a.b)) {
+         $$2 += $$0 * $$3.c();
+      }
+
+      for (bqu $$4 : this.b(bqu.a.c)) {
+         $$2 *= 1.0 + $$4.c();
+      }
+
+      return this.a.a().a($$2);
+   }
+
+   private Collection<bqu> b(bqu.a $$0) {
+      return this.b.getOrDefault($$0, Collections.emptySet());
    }
 
    public void a(bqs $$0) {
-      $$0.b.values().forEach($$0x -> {
-         bqr $$1 = this.a($$0x.a());
-         if ($$1 != null) {
-            $$1.a($$0x);
-         }
-      });
+      this.e = $$0.e;
+      this.c.clear();
+      this.c.putAll($$0.c);
+      this.d.clear();
+      this.d.addAll($$0.d);
+      this.b.clear();
+      $$0.b.forEach(($$0x, $$1) -> this.a($$0x).addAll($$1));
+      this.d();
    }
 
-   public tg c() {
-      tg $$0 = new tg();
+   public ta g() {
+      ta $$0 = new ta();
+      ajg<bqr> $$1 = this.a.e().orElseThrow(() -> new IllegalStateException("Tried to serialize unregistered attribute"));
+      $$0.a("Name", $$1.a().toString());
+      $$0.a("Base", this.e);
+      if (!this.d.isEmpty()) {
+         tg $$2 = new tg();
 
-      for (bqr $$1 : this.b.values()) {
-         $$0.add($$1.g());
+         for (bqu $$3 : this.d) {
+            $$2.add($$3.d());
+         }
+
+         $$0.a("Modifiers", $$2);
       }
 
       return $$0;
    }
 
-   public void a(tg $$0) {
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         ta $$2 = $$0.a($$1);
-         String $$3 = $$2.l("Name");
-         ajh $$4 = ajh.a($$3);
-         if ($$4 != null) {
-            ac.a(ki.u.c($$4), $$1x -> {
-               bqr $$2x = this.a($$1x);
-               if ($$2x != null) {
-                  $$2x.a($$2);
-               }
-            }, () -> a.warn("Ignoring unknown attribute '{}'", $$4));
-         } else {
-            a.warn("Ignoring malformed attribute '{}'", $$3);
+   public void a(ta $$0) {
+      this.e = $$0.k("Base");
+      if ($$0.b("Modifiers", 9)) {
+         tg $$1 = $$0.c("Modifiers", 10);
+
+         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+            bqu $$3 = bqu.a($$1.a($$2));
+            if ($$3 != null) {
+               this.c.put($$3.a(), $$3);
+               this.a($$3.b()).add($$3);
+               this.d.add($$3);
+            }
          }
       }
+
+      this.d();
    }
 }

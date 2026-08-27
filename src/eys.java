@@ -1,26 +1,30 @@
-public enum eys {
-   a(true, false),
-   b(false, false),
-   c(false, true);
+import java.util.function.IntFunction;
 
-   private static final eys[] d = values();
-   private final boolean e;
-   private final boolean f;
+public enum eys implements awy {
+   a(0, "options.off"),
+   b(1, "options.attack.crosshair"),
+   c(2, "options.attack.hotbar");
 
-   private eys(boolean $$0, boolean $$1) {
+   private static final IntFunction<eys> d = avn.a(eys::a, values(), avn.a.b);
+   private final int e;
+   private final String f;
+
+   private eys(int $$0, String $$1) {
       this.e = $$0;
       this.f = $$1;
    }
 
-   public boolean a() {
+   @Override
+   public int a() {
       return this.e;
    }
 
-   public boolean b() {
+   @Override
+   public String b() {
       return this.f;
    }
 
-   public eys c() {
-      return d[(this.ordinal() + 1) % d.length];
+   public static eys a(int $$0) {
+      return d.apply($$0);
    }
 }

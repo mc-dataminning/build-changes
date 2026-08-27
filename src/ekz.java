@@ -1,54 +1,89 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import java.util.Optional;
-import java.util.stream.Stream;
+import com.mojang.serialization.JsonOps;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class ekz<T> {
-   private static final Logger d = LogUtils.getLogger();
-   public static final ekz<ent> a = new ekz<>(env.a, "predicates", c());
-   public static final ekz<emh> b = new ekz<>(emj.b, "item_modifiers", c());
-   public static final ekz<elc> c = new ekz<>(elc.c, "loot_tables", d());
-   private final Codec<T> e;
-   private final String f;
-   private final ekz.a<T> g;
+public class ekz implements asi, ela {
+   private static final Logger b = LogUtils.getLogger();
+   private static final Gson c = new GsonBuilder().create();
+   public static final eky<ele> a = new eky<>(elb.c, eku.a);
+   private final in.a d;
+   private Map<eky<?>, ?> e = Map.of();
+   private Multimap<elb<?>, ajh> f = ImmutableMultimap.of();
 
-   private ekz(Codec<T> $$0, String $$1, ekz.a<T> $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public ekz(in.a $$0) {
+      this.d = $$0;
    }
 
-   public String a() {
-      return this.f;
+   @Override
+   public final CompletableFuture<Void> a(asi.a $$0, aso $$1, bjr $$2, bjr $$3, Executor $$4, Executor $$5) {
+      Map<elb<?>, Map<ajh, ?>> $$6 = new HashMap<>();
+      CompletableFuture<?>[] $$7 = elb.b().map($$3x -> a($$3x, this.d, $$1, $$4, $$6)).toArray(CompletableFuture[]::new);
+      return CompletableFuture.allOf($$7).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$6), $$5);
    }
 
-   public void a(eld $$0, ekw<T> $$1, T $$2) {
-      this.g.run($$0, $$1, $$2);
+   private static <T> CompletableFuture<?> a(elb<T> $$0, in.a $$1, aso $$2, Executor $$3, Map<elb<?>, Map<ajh, ?>> $$4) {
+      ajf<JsonElement> $$5 = $$1.a(JsonOps.INSTANCE);
+      Map<ajh, T> $$6 = new HashMap<>();
+      $$4.put($$0, $$6);
+      return CompletableFuture.runAsync(() -> {
+         Map<ajh, JsonElement> $$4x = new HashMap<>();
+         ass.a($$2, $$0.a(), c, $$4x);
+         $$4x.forEach(($$3xx, $$4xx) -> $$0.a($$3xx, $$5, $$4xx).ifPresent($$2xxx -> $$6.put($$3xx, (T)$$2xxx)));
+      }, $$3);
    }
 
-   public <V> Optional<T> a(ajh $$0, DynamicOps<V> $$1, V $$2) {
-      DataResult<T> $$3 = this.e.parse($$1, $$2);
-      $$3.error().ifPresent($$1x -> d.error("Couldn't parse element {}:{} - {}", new Object[]{this.f, $$0, $$1x.message()}));
-      return $$3.result();
+   private void a(Map<elb<?>, Map<ajh, ?>> $$0) {
+      Object $$1 = $$0.get(elb.c).remove(eku.a);
+      if ($$1 != null) {
+         b.warn("Datapack tried to redefine {} loot table, ignoring", eku.a);
+      }
+
+      Builder<eky<?>, Object> $$2 = ImmutableMap.builder();
+      com.google.common.collect.ImmutableMultimap.Builder<elb<?>, ajh> $$3 = ImmutableMultimap.builder();
+      $$0.forEach(($$2x, $$3x) -> $$3x.forEach(($$3xx, $$4x) -> {
+            $$2.put(new eky($$2x, $$3xx), $$4x);
+            $$3.put($$2x, $$3xx);
+         }));
+      $$2.put(a, ele.a);
+      axb.a $$4 = new axb.a();
+      final Map<eky<?>, ?> $$5 = $$2.build();
+      elf $$6 = new elf($$4, eng.p, new ela() {
+         @Nullable
+         @Override
+         public <T> T getElement(eky<T> $$0) {
+            return (T)$$5.get($$0);
+         }
+      });
+      $$5.forEach(($$1x, $$2x) -> a($$6, $$1x, $$2x));
+      $$4.a().forEach(($$0x, $$1x) -> b.warn("Found loot table element validation problem in {}: {}", $$0x, $$1x));
+      this.e = $$5;
+      this.f = $$3.build();
    }
 
-   public static Stream<ekz<?>> b() {
-      return Stream.of(a, b, c);
+   private static <T> void a(elf $$0, eky<T> $$1, Object $$2) {
+      $$1.a().a($$0, $$1, (T)$$2);
    }
 
-   private static <T extends ekv> ekz.a<T> c() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.a().f + ":" + $$1.b() + "}", $$1));
+   @Nullable
+   @Override
+   public <T> T getElement(eky<T> $$0) {
+      return (T)this.e.get($$0);
    }
 
-   private static ekz.a<elc> d() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.a().f + ":" + $$1.b() + "}", $$1));
-   }
-
-   @FunctionalInterface
-   public interface a<T> {
-      void run(eld var1, ekw<T> var2, T var3);
+   public Collection<ajh> a(elb<?> $$0) {
+      return this.f.get($$0);
    }
 }

@@ -1,43 +1,59 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public abstract class cyr extends czm {
-   private final cpb a;
+public class cyr extends cye {
+   public static final Codec<cyr> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ajf.d(cyh.ah), ajf.d(cyh.ai), ajf.d(cyh.aj), ajf.d(cyh.ak), ajf.d(cyh.al)).apply($$0, $$0.stable(cyr::new))
+   );
+   private final il<cya> c;
+   private final il<cya> d;
+   private final il<cya> e;
+   private final il<cya> f;
+   private final il<cya> g;
 
-   protected cyr(cpb $$0, dmy.d $$1) {
-      super($$1);
-      this.a = $$0;
+   public static cyr a(im<cya> $$0) {
+      return new cyr($$0.b(cyh.ah), $$0.b(cyh.ai), $$0.b(cyh.aj), $$0.b(cyh.ak), $$0.b(cyh.al));
+   }
+
+   private cyr(il<cya> $$0, il<cya> $$1, il<cya> $$2, il<cya> $$3, il<cya> $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
    @Override
-   protected abstract MapCodec<? extends cyr> a();
-
-   @Override
-   public boolean a(dmz $$0) {
-      return true;
+   protected Stream<il<cya>> b() {
+      return Stream.of(this.c, this.d, this.e, this.f, this.g);
    }
 
    @Override
-   public dkg a(ib $$0, dmz $$1) {
-      return new djw($$0, $$1, this.a);
+   protected Codec<? extends cye> a() {
+      return b;
    }
 
    @Override
-   public void a(cwz $$0, ib $$1, dmz $$2, @Nullable bpo $$3, cqk $$4) {
-      if ($$0.B) {
-         $$0.a($$1, dki.t).ifPresent($$1x -> $$1x.b($$4));
-      } else if ($$4.B()) {
-         $$0.a($$1, dki.t).ifPresent($$1x -> $$1x.a($$4.z()));
+   public il<cya> getNoiseBiome(int $$0, int $$1, int $$2, cyj.f $$3) {
+      int $$4 = iw.c($$0);
+      int $$5 = iw.c($$1);
+      int $$6 = iw.c($$2);
+      int $$7 = je.a($$4);
+      int $$8 = je.a($$6);
+      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
+         return this.c;
+      } else {
+         int $$9 = (je.a($$4) * 2 + 1) * 8;
+         int $$10 = (je.a($$6) * 2 + 1) * 8;
+         double $$11 = $$3.e().a(new dsh.e($$9, $$5, $$10));
+         if ($$11 > 0.25) {
+            return this.d;
+         } else if ($$11 >= -0.0625) {
+            return this.e;
+         } else {
+            return $$11 < -0.21875 ? this.f : this.g;
+         }
       }
-   }
-
-   @Override
-   public cqk a(cxc $$0, ib $$1, dmz $$2) {
-      dkg $$3 = $$0.c_($$1);
-      return $$3 instanceof djw ? ((djw)$$3).c() : super.a($$0, $$1, $$2);
-   }
-
-   public cpb b() {
-      return this.a;
    }
 }

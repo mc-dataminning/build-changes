@@ -88,7 +88,7 @@ public class aqg implements ahm, vi {
    @Override
    public void a(aho $$0) {
       Validate.validState(this.g == aqg.a.a, "Unexpected hello packet", new Object[0]);
-      Validate.validState(cis.c($$0.b()), "Invalid characters in username", new Object[0]);
+      Validate.validState(ciu.c($$0.b()), "Invalid characters in username", new Object[0]);
       this.i = $$0.b();
       GameProfile $$1 = this.e.S();
       if ($$1 != null && this.i.equalsIgnoreCase($$1.getName())) {

@@ -1,12 +1,11 @@
-public class gev extends gee<cbz, fpt<cbz>> {
-   private static final ajh a = new ajh("textures/entity/sheep/sheep.png");
+public class gev extends geh<cgf, fps> {
+   private static final ajh a = new ajh("textures/entity/illager/ravager.png");
 
-   public gev(gcy.a $$0) {
-      super($$0, new fpt<>($$0.a(frc.bd)), 0.7F);
-      this.a(new ghl(this, $$0.f()));
+   public gev(gdb.a $$0) {
+      super($$0, new fps($$0.a(fre.bf)), 1.1F);
    }
 
-   public ajh a(cbz $$0) {
+   public ajh a(cgf $$0) {
       return a;
    }
 }

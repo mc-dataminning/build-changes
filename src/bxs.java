@@ -1,48 +1,67 @@
 import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class bxs extends bwl {
-   private final cfk a;
+public class bxs extends bwm {
+   private static final int a = 10;
+   private final bpx b;
+   private final int c;
    @Nullable
-   private bpo b;
+   private ib d;
 
-   public bxs(cfk $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(bwl.a.a));
+   public bxs(bpx $$0, int $$1) {
+      this.b = $$0;
+      this.c = b($$1);
+      this.a(EnumSet.of(bwm.a.a));
    }
 
    @Override
    public boolean a() {
-      bpo $$0 = this.a.p();
-      return this.a.s() > 0 || $$0 != null && this.a.g((bow)$$0) < 9.0;
+      if (this.b.cO()) {
+         return false;
+      } else if (this.b.dM().P()) {
+         return false;
+      } else if (this.b.ei().a(this.c) != 0) {
+         return false;
+      } else {
+         apf $$0 = (apf)this.b.dM();
+         ib $$1 = this.b.dm();
+         if (!$$0.a($$1, 6)) {
+            return false;
+         } else {
+            ept $$2 = cam.a(this.b, 15, 7, $$1x -> (double)(-$$0.b(je.a($$1x))));
+            this.d = $$2 == null ? null : ib.a($$2);
+            return this.d != null;
+         }
+      }
    }
 
    @Override
-   public void c() {
-      this.a.K().n();
-      this.b = this.a.p();
-   }
-
-   @Override
-   public void d() {
-      this.b = null;
-   }
-
-   @Override
-   public boolean R_() {
-      return true;
+   public boolean b() {
+      return this.d != null && !this.b.K().l() && this.b.K().h().equals(this.d);
    }
 
    @Override
    public void e() {
-      if (this.b == null) {
-         this.a.b(-1);
-      } else if (this.a.g((bow)this.b) > 49.0) {
-         this.a.b(-1);
-      } else if (!this.a.M().a(this.b)) {
-         this.a.b(-1);
-      } else {
-         this.a.b(1);
+      if (this.d != null) {
+         bza $$0 = this.b.K();
+         if ($$0.l() && !this.d.a(this.b.dk(), 10.0)) {
+            ept $$1 = ept.c(this.d);
+            ept $$2 = this.b.dk();
+            ept $$3 = $$2.d($$1);
+            $$1 = $$3.a(0.4).e($$1);
+            ept $$4 = $$1.d($$2).d().a(10.0).e($$2);
+            ib $$5 = ib.a($$4);
+            $$5 = this.b.dM().a(dso.a.f, $$5);
+            if (!$$0.a((double)$$5.u(), (double)$$5.v(), (double)$$5.w(), 1.0)) {
+               this.h();
+            }
+         }
       }
+   }
+
+   private void h() {
+      axd $$0 = this.b.ei();
+      ib $$1 = this.b.dM().a(dso.a.f, this.b.dm().b(-8 + $$0.a(16), 0, -8 + $$0.a(16)));
+      this.b.K().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), 1.0);
    }
 }

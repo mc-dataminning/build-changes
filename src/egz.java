@@ -1,15 +1,16 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public abstract class egz {
-   @Nullable
-   public ehc.c a(cxc $$0, ib $$1, ib $$2, ehc.c $$3, ehc.c $$4, egy $$5) {
-      return $$4;
-   }
+public interface egz<P extends egy> {
+   egz<egc> a = a("always_true", egc.a);
+   egz<egh> b = a("block_match", egh.a);
+   egz<egj> c = a("blockstate_match", egj.a);
+   egz<ehg> d = a("tag_match", ehg.a);
+   egz<egv> e = a("random_block_match", egv.a);
+   egz<egw> f = a("random_blockstate_match", egw.a);
 
-   protected abstract ehb<?> a();
+   Codec<P> codec();
 
-   public List<ehc.c> a(cxo $$0, ib $$1, ib $$2, List<ehc.c> $$3, List<ehc.c> $$4, egy $$5) {
-      return $$4;
+   static <P extends egy> egz<P> a(String $$0, Codec<P> $$1) {
+      return iy.a(ki.o, $$0, () -> $$1);
    }
 }

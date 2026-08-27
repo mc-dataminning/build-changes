@@ -34,7 +34,7 @@ public class aaw implements yb<aam> {
       this.f = $$1.g.decode($$0);
    }
 
-   public static aaw a(bms $$0) {
+   public static aaw a(bmt $$0) {
       return new aaw($$0.i(), new aaw.a($$0));
    }
 
@@ -42,19 +42,19 @@ public class aaw implements yb<aam> {
       return new aaw($$0, g);
    }
 
-   public static aaw b(bms $$0) {
+   public static aaw b(bmt $$0) {
       return new aaw($$0.i(), new aaw.f($$0.k()));
    }
 
-   public static aaw c(bms $$0) {
+   public static aaw c(bmt $$0) {
       return new aaw($$0.i(), new aaw.e($$0.j()));
    }
 
-   public static aaw d(bms $$0) {
+   public static aaw d(bmt $$0) {
       return new aaw($$0.i(), new aaw.h($$0.l(), $$0.m()));
    }
 
-   public static aaw e(bms $$0) {
+   public static aaw e(bmt $$0) {
       return new aaw($$0.i(), new aaw.g($$0.n(), $$0.o(), $$0.p()));
    }
 
@@ -97,13 +97,13 @@ public class aaw implements yb<aam> {
    static class a implements aaw.c {
       private final vu a;
       private final float b;
-      private final bms.a c;
-      private final bms.b d;
+      private final bmt.a c;
+      private final bmt.b d;
       private final boolean e;
       private final boolean f;
       private final boolean g;
 
-      a(bms $$0) {
+      a(bmt $$0) {
          this.a = $$0.j();
          this.b = $$0.k();
          this.c = $$0.l();
@@ -116,8 +116,8 @@ public class aaw implements yb<aam> {
       private a(vf $$0) {
          this.a = vw.b.decode($$0);
          this.b = $$0.readFloat();
-         this.c = $$0.b(bms.a.class);
-         this.d = $$0.b(bms.b.class);
+         this.c = $$0.b(bmt.a.class);
+         this.d = $$0.b(bmt.b.class);
          int $$1 = $$0.readUnsignedByte();
          this.e = ($$1 & 1) > 0;
          this.f = ($$1 & 2) > 0;
@@ -145,7 +145,7 @@ public class aaw implements yb<aam> {
    }
 
    public interface b {
-      default void a(UUID $$0, vu $$1, float $$2, bms.a $$3, bms.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+      default void a(UUID $$0, vu $$1, float $$2, bmt.a $$3, bmt.b $$4, boolean $$5, boolean $$6, boolean $$7) {
       }
 
       default void a(UUID $$0) {
@@ -157,7 +157,7 @@ public class aaw implements yb<aam> {
       default void a(UUID $$0, vu $$1) {
       }
 
-      default void a(UUID $$0, bms.a $$1, bms.b $$2) {
+      default void a(UUID $$0, bmt.a $$1, bmt.b $$2) {
       }
 
       default void a(UUID $$0, boolean $$1, boolean $$2, boolean $$3) {
@@ -272,17 +272,17 @@ public class aaw implements yb<aam> {
    }
 
    static class h implements aaw.c {
-      private final bms.a a;
-      private final bms.b b;
+      private final bmt.a a;
+      private final bmt.b b;
 
-      h(bms.a $$0, bms.b $$1) {
+      h(bmt.a $$0, bmt.b $$1) {
          this.a = $$0;
          this.b = $$1;
       }
 
       private h(vf $$0) {
-         this.a = $$0.b(bms.a.class);
-         this.b = $$0.b(bms.b.class);
+         this.a = $$0.b(bmt.a.class);
+         this.b = $$0.b(bmt.b.class);
       }
 
       @Override

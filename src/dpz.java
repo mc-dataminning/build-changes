@@ -1,231 +1,98 @@
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.serialization.Codec;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.BitSet;
-import java.util.Iterator;
-import java.util.Map;
 import java.util.Optional;
-import java.util.Map.Entry;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.function.Function;
 import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dpz implements dpv, AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private final AtomicBoolean b = new AtomicBoolean();
-   private final blv<blx.b> c;
-   private final dqe d;
-   private final Map<cwg, dpz.a> e = Maps.newLinkedHashMap();
-   private final Long2ObjectLinkedOpenHashMap<CompletableFuture<BitSet>> f = new Long2ObjectLinkedOpenHashMap();
-   private static final int g = 1024;
+public class dpz implements AutoCloseable {
+   public static final int d = 1493;
+   private final dqb a;
+   protected final DataFixer e;
+   @Nullable
+   private volatile ecz b;
 
-   protected dpz(dqg $$0, Path $$1, boolean $$2) {
-      this.d = new dqe($$0, $$1, $$2);
-      this.c = new blv<>(new blx.a(dpz.b.values().length), ac.g(), "IOWorker-" + $$0.c());
+   public dpz(dqi $$0, Path $$1, DataFixer $$2, boolean $$3) {
+      this.e = $$2;
+      this.a = new dqb($$0, $$1, $$3);
    }
 
-   public boolean a(cwg $$0, int $$1) {
-      cwg $$2 = new cwg($$0.e - $$1, $$0.f - $$1);
-      cwg $$3 = new cwg($$0.e + $$1, $$0.f + $$1);
+   public boolean b(cwi $$0, int $$1) {
+      return this.a.a($$0, $$1);
+   }
 
-      for (int $$4 = $$2.h(); $$4 <= $$3.h(); $$4++) {
-         for (int $$5 = $$2.i(); $$5 <= $$3.i(); $$5++) {
-            BitSet $$6 = this.a($$4, $$5).join();
-            if (!$$6.isEmpty()) {
-               cwg $$7 = cwg.a($$4, $$5);
-               int $$8 = Math.max($$2.e - $$7.e, 0);
-               int $$9 = Math.max($$2.f - $$7.f, 0);
-               int $$10 = Math.min($$3.e - $$7.e, 31);
-               int $$11 = Math.min($$3.f - $$7.f, 31);
+   public ta a(ajg<cxb> $$0, Supplier<ekg> $$1, ta $$2, Optional<ajg<Codec<? extends doy>>> $$3) {
+      int $$4 = a($$2);
+      if ($$4 < 1493) {
+         $$2 = ayc.c.a(this.e, $$2, $$4, 1493);
+         if ($$2.p("Level").q("hasLegacyStructureData")) {
+            ecz $$5 = this.a($$0, $$1);
+            $$2 = $$5.a($$2);
+         }
+      }
 
-               for (int $$12 = $$8; $$12 <= $$10; $$12++) {
-                  for (int $$13 = $$9; $$13 <= $$11; $$13++) {
-                     int $$14 = $$13 * 32 + $$12;
-                     if ($$6.get($$14)) {
-                        return true;
-                     }
-                  }
-               }
+      a($$2, $$0, $$3);
+      $$2 = ayc.c.a(this.e, $$2, Math.max(1493, $$4));
+      if ($$4 < aa.b().d().c()) {
+         tp.f($$2);
+      }
+
+      $$2.r("__context");
+      return $$2;
+   }
+
+   private ecz a(ajg<cxb> $$0, Supplier<ekg> $$1) {
+      ecz $$2 = this.b;
+      if ($$2 == null) {
+         synchronized (this) {
+            $$2 = this.b;
+            if ($$2 == null) {
+               this.b = $$2 = ecz.a($$0, $$1.get());
             }
          }
       }
 
-      return false;
+      return $$2;
    }
 
-   private CompletableFuture<BitSet> a(int $$0, int $$1) {
-      long $$2 = cwg.c($$0, $$1);
-      synchronized (this.f) {
-         CompletableFuture<BitSet> $$3 = (CompletableFuture<BitSet>)this.f.getAndMoveToFirst($$2);
-         if ($$3 == null) {
-            $$3 = this.b($$0, $$1);
-            this.f.putAndMoveToFirst($$2, $$3);
-            if (this.f.size() > 1024) {
-               this.f.removeLast();
-            }
-         }
+   public static void a(ta $$0, ajg<cxb> $$1, Optional<ajg<Codec<? extends doy>>> $$2) {
+      ta $$3 = new ta();
+      $$3.a("dimension", $$1.a().toString());
+      $$2.ifPresent($$1x -> $$3.a("generator", $$1x.a().toString()));
+      $$0.a("__context", $$3);
+   }
 
-         return $$3;
+   public static int a(ta $$0) {
+      return tp.b($$0, -1);
+   }
+
+   public CompletableFuture<Optional<ta>> e(cwi $$0) {
+      return this.a.a($$0);
+   }
+
+   public CompletableFuture<Void> a(cwi $$0, ta $$1) {
+      this.f($$0);
+      return this.a.a($$0, $$1);
+   }
+
+   protected void f(cwi $$0) {
+      if (this.b != null) {
+         this.b.a($$0.a());
       }
    }
 
-   private CompletableFuture<BitSet> b(int $$0, int $$1) {
-      return CompletableFuture.supplyAsync(() -> {
-         cwg $$2 = cwg.a($$0, $$1);
-         cwg $$3 = cwg.b($$0, $$1);
-         BitSet $$4 = new BitSet();
-         cwg.a($$2, $$3).forEach($$1xx -> {
-            ue $$2x = new ue(new ug(tf.a, "DataVersion"), new ug(ta.b, "blending_data"));
-
-            try {
-               this.a($$1xx, $$2x).join();
-            } catch (Exception var7) {
-               a.warn("Failed to scan chunk {}", $$1xx, var7);
-               return;
-            }
-
-            if ($$2x.d() instanceof ta $$5 && this.a($$5)) {
-               int $$6 = $$1xx.k() * 32 + $$1xx.j();
-               $$4.set($$6);
-            }
-         });
-         return $$4;
-      }, ac.f());
-   }
-
-   private boolean a(ta $$0) {
-      return $$0.b("DataVersion", 99) && $$0.h("DataVersion") >= 3441 ? $$0.b("blending_data", 10) : true;
-   }
-
-   public CompletableFuture<Void> a(cwg $$0, @Nullable ta $$1) {
-      return this.a(() -> {
-         dpz.a $$2 = this.e.computeIfAbsent($$0, $$1xx -> new dpz.a($$1));
-         $$2.a = $$1;
-         return Either.left($$2.b);
-      }).thenCompose(Function.identity());
-   }
-
-   public CompletableFuture<Optional<ta>> a(cwg $$0) {
-      return this.a(() -> {
-         dpz.a $$1 = this.e.get($$0);
-         if ($$1 != null) {
-            return Either.left(Optional.ofNullable($$1.a));
-         } else {
-            try {
-               ta $$2 = this.d.a($$0);
-               return Either.left(Optional.ofNullable($$2));
-            } catch (Exception var4) {
-               a.warn("Failed to read chunk {}", $$0, var4);
-               return Either.right(var4);
-            }
-         }
-      });
-   }
-
-   public CompletableFuture<Void> a(boolean $$0) {
-      CompletableFuture<Void> $$1 = this.a(
-            () -> Either.left(CompletableFuture.allOf(this.e.values().stream().map($$0x -> $$0x.b).toArray(CompletableFuture[]::new)))
-         )
-         .thenCompose(Function.identity());
-      return $$0 ? $$1.thenCompose($$0x -> this.a(() -> {
-            try {
-               this.d.a();
-               return Either.left(null);
-            } catch (Exception var2x) {
-               a.warn("Failed to synchronize chunks", var2x);
-               return Either.right(var2x);
-            }
-         })) : $$1.thenCompose($$0x -> this.a(() -> Either.left(null)));
-   }
-
-   @Override
-   public CompletableFuture<Void> a(cwg $$0, tu $$1) {
-      return this.a(() -> {
-         try {
-            dpz.a $$2 = this.e.get($$0);
-            if ($$2 != null) {
-               if ($$2.a != null) {
-                  $$2.a.b($$1);
-               }
-            } else {
-               this.d.a($$0, $$1);
-            }
-
-            return Either.left(null);
-         } catch (Exception var4) {
-            a.warn("Failed to bulk scan chunk {}", $$0, var4);
-            return Either.right(var4);
-         }
-      });
-   }
-
-   private <T> CompletableFuture<T> a(Supplier<Either<T, Exception>> $$0) {
-      return this.c.c($$1 -> new blx.b(dpz.b.a.ordinal(), () -> {
-            if (!this.b.get()) {
-               $$1.a($$0.get());
-            }
-
-            this.b();
-         }));
-   }
-
-   private void a() {
-      if (!this.e.isEmpty()) {
-         Iterator<Entry<cwg, dpz.a>> $$0 = this.e.entrySet().iterator();
-         Entry<cwg, dpz.a> $$1 = $$0.next();
-         $$0.remove();
-         this.a($$1.getKey(), $$1.getValue());
-         this.b();
-      }
-   }
-
-   private void b() {
-      this.c.a(new blx.b(dpz.b.b.ordinal(), this::a));
-   }
-
-   private void a(cwg $$0, dpz.a $$1) {
-      try {
-         this.d.a($$0, $$1.a);
-         $$1.b.complete(null);
-      } catch (Exception var4) {
-         a.error("Failed to store chunk {}", $$0, var4);
-         $$1.b.completeExceptionally(var4);
-      }
+   public void o() {
+      this.a.a(true).join();
    }
 
    @Override
    public void close() throws IOException {
-      if (this.b.compareAndSet(false, true)) {
-         this.c.b($$0 -> new blx.b(dpz.b.c.ordinal(), () -> $$0.a(axy.a))).join();
-         this.c.close();
-
-         try {
-            this.d.close();
-         } catch (Exception var2) {
-            a.error("Failed to close storage", var2);
-         }
-      }
+      this.a.close();
    }
 
-   static class a {
-      @Nullable
-      ta a;
-      final CompletableFuture<Void> b = new CompletableFuture<>();
-
-      public a(@Nullable ta $$0) {
-         this.a = $$0;
-      }
-   }
-
-   static enum b {
-      a,
-      b,
-      c;
+   public dpx p() {
+      return this.a;
    }
 }

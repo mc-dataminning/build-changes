@@ -11,8 +11,8 @@ public class ani {
    public static void a(CommandDispatcher<du> $$0) {
       LiteralCommandNode<du> $$1 = $$0.register((LiteralArgumentBuilder)dv.a("teammsg").then(dv.a("message", el.a()).executes($$0x -> {
          du $$1x = (du)$$0x.getSource();
-         bow $$2 = $$1x.g();
-         eqq $$3 = $$2.cg();
+         box $$2 = $$1x.g();
+         eqs $$3 = $$2.cg();
          if ($$3 == null) {
             throw b.create();
          } else {
@@ -27,7 +27,7 @@ public class ani {
       $$0.register((LiteralArgumentBuilder)dv.a("tm").redirect($$1));
    }
 
-   private static void a(du $$0, bow $$1, eqq $$2, List<apg> $$3, wk $$4) {
+   private static void a(du $$0, box $$1, eqs $$2, List<apg> $$3, wk $$4) {
       vu $$5 = $$2.d().c(a);
       vq.a $$6 = vq.a(vq.g, $$0).c($$5);
       vq.a $$7 = vq.a(vq.h, $$0).c($$5);

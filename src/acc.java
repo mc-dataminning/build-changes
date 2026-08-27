@@ -13,7 +13,7 @@ public class acc {
    private final List<byte[]> f;
    private final List<byte[]> g;
 
-   public acc(cwg $$0, eic $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+   public acc(cwi $$0, eie $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
       this.b = new BitSet();
       this.c = new BitSet();
       this.d = new BitSet();
@@ -23,11 +23,11 @@ public class acc {
 
       for (int $$4 = 0; $$4 < $$1.c(); $$4++) {
          if ($$2 == null || $$2.get($$4)) {
-            this.a($$0, $$1, cxi.a, $$4, this.b, this.d, this.f);
+            this.a($$0, $$1, cxk.a, $$4, this.b, this.d, this.f);
          }
 
          if ($$3 == null || $$3.get($$4)) {
-            this.a($$0, $$1, cxi.b, $$4, this.c, this.e, this.g);
+            this.a($$0, $$1, cxk.b, $$4, this.c, this.e, this.g);
          }
       }
    }
@@ -50,8 +50,8 @@ public class acc {
       $$0.a(this.g, a);
    }
 
-   private void a(cwg $$0, eic $$1, cxi $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
-      dpb $$7 = $$1.a($$2).a(je.a($$0, $$1.d() + $$3));
+   private void a(cwi $$0, eie $$1, cxk $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
+      dpd $$7 = $$1.a($$2).a(je.a($$0, $$1.d() + $$3));
       if ($$7 != null) {
          if ($$7.d()) {
             $$5.set($$3);

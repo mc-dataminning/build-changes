@@ -1,91 +1,162 @@
-public class djy {
-   public static final ajg<djx> a = a("base");
-   public static final ajg<djx> b = a("square_bottom_left");
-   public static final ajg<djx> c = a("square_bottom_right");
-   public static final ajg<djx> d = a("square_top_left");
-   public static final ajg<djx> e = a("square_top_right");
-   public static final ajg<djx> f = a("stripe_bottom");
-   public static final ajg<djx> g = a("stripe_top");
-   public static final ajg<djx> h = a("stripe_left");
-   public static final ajg<djx> i = a("stripe_right");
-   public static final ajg<djx> j = a("stripe_center");
-   public static final ajg<djx> k = a("stripe_middle");
-   public static final ajg<djx> l = a("stripe_downright");
-   public static final ajg<djx> m = a("stripe_downleft");
-   public static final ajg<djx> n = a("small_stripes");
-   public static final ajg<djx> o = a("cross");
-   public static final ajg<djx> p = a("straight_cross");
-   public static final ajg<djx> q = a("triangle_bottom");
-   public static final ajg<djx> r = a("triangle_top");
-   public static final ajg<djx> s = a("triangles_bottom");
-   public static final ajg<djx> t = a("triangles_top");
-   public static final ajg<djx> u = a("diagonal_left");
-   public static final ajg<djx> v = a("diagonal_up_right");
-   public static final ajg<djx> w = a("diagonal_up_left");
-   public static final ajg<djx> x = a("diagonal_right");
-   public static final ajg<djx> y = a("circle");
-   public static final ajg<djx> z = a("rhombus");
-   public static final ajg<djx> A = a("half_vertical");
-   public static final ajg<djx> B = a("half_horizontal");
-   public static final ajg<djx> C = a("half_vertical_right");
-   public static final ajg<djx> D = a("half_horizontal_bottom");
-   public static final ajg<djx> E = a("border");
-   public static final ajg<djx> F = a("curly_border");
-   public static final ajg<djx> G = a("gradient");
-   public static final ajg<djx> H = a("gradient_up");
-   public static final ajg<djx> I = a("bricks");
-   public static final ajg<djx> J = a("globe");
-   public static final ajg<djx> K = a("creeper");
-   public static final ajg<djx> L = a("skull");
-   public static final ajg<djx> M = a("flower");
-   public static final ajg<djx> N = a("mojang");
-   public static final ajg<djx> O = a("piglin");
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   private static ajg<djx> a(String $$0) {
-      return ajg.a(kj.d, new ajh($$0));
+public class djy extends dki implements bni {
+   public static final int a = 6;
+   public static final String b = "Patterns";
+   public static final String c = "Pattern";
+   public static final String d = "Color";
+   @Nullable
+   private vu e;
+   private cpd f;
+   @Nullable
+   private tg g;
+   @Nullable
+   private List<Pair<il<djz>, cpd>> h;
+
+   public djy(ib $$0, dnb $$1) {
+      super(dkk.t, $$0, $$1);
+      this.f = ((cyt)$$1.b()).b();
    }
 
-   public static djx a(iy<djx> $$0) {
-      iy.a($$0, a, new djx("b"));
-      iy.a($$0, b, new djx("bl"));
-      iy.a($$0, c, new djx("br"));
-      iy.a($$0, d, new djx("tl"));
-      iy.a($$0, e, new djx("tr"));
-      iy.a($$0, f, new djx("bs"));
-      iy.a($$0, g, new djx("ts"));
-      iy.a($$0, h, new djx("ls"));
-      iy.a($$0, i, new djx("rs"));
-      iy.a($$0, j, new djx("cs"));
-      iy.a($$0, k, new djx("ms"));
-      iy.a($$0, l, new djx("drs"));
-      iy.a($$0, m, new djx("dls"));
-      iy.a($$0, n, new djx("ss"));
-      iy.a($$0, o, new djx("cr"));
-      iy.a($$0, p, new djx("sc"));
-      iy.a($$0, q, new djx("bt"));
-      iy.a($$0, r, new djx("tt"));
-      iy.a($$0, s, new djx("bts"));
-      iy.a($$0, t, new djx("tts"));
-      iy.a($$0, u, new djx("ld"));
-      iy.a($$0, v, new djx("rd"));
-      iy.a($$0, w, new djx("lud"));
-      iy.a($$0, x, new djx("rud"));
-      iy.a($$0, y, new djx("mc"));
-      iy.a($$0, z, new djx("mr"));
-      iy.a($$0, A, new djx("vh"));
-      iy.a($$0, B, new djx("hh"));
-      iy.a($$0, C, new djx("vhr"));
-      iy.a($$0, D, new djx("hhb"));
-      iy.a($$0, E, new djx("bo"));
-      iy.a($$0, F, new djx("cbo"));
-      iy.a($$0, G, new djx("gra"));
-      iy.a($$0, H, new djx("gru"));
-      iy.a($$0, I, new djx("bri"));
-      iy.a($$0, J, new djx("glb"));
-      iy.a($$0, K, new djx("cre"));
-      iy.a($$0, L, new djx("sku"));
-      iy.a($$0, M, new djx("flo"));
-      iy.a($$0, N, new djx("moj"));
-      return iy.a($$0, O, new djx("pig"));
+   public djy(ib $$0, dnb $$1, cpd $$2) {
+      this($$0, $$1);
+      this.f = $$2;
+   }
+
+   @Nullable
+   public static tg a(cqm $$0) {
+      tg $$1 = null;
+      ta $$2 = coh.a($$0);
+      if ($$2 != null && $$2.b("Patterns", 9)) {
+         $$1 = $$2.c("Patterns", 10).e();
+      }
+
+      return $$1;
+   }
+
+   public void a(cqm $$0, cpd $$1) {
+      this.f = $$1;
+      this.b($$0);
+   }
+
+   public void b(cqm $$0) {
+      this.g = a($$0);
+      this.h = null;
+      this.e = $$0.B() ? $$0.z() : null;
+   }
+
+   @Override
+   public vu ad() {
+      return (vu)(this.e != null ? this.e : vu.c("block.minecraft.banner"));
+   }
+
+   @Nullable
+   @Override
+   public vu af() {
+      return this.e;
+   }
+
+   public void a(vu $$0) {
+      this.e = $$0;
+   }
+
+   @Override
+   protected void b(ta $$0, in.a $$1) {
+      super.b($$0, $$1);
+      if (this.g != null) {
+         $$0.a("Patterns", this.g);
+      }
+
+      if (this.e != null) {
+         $$0.a("CustomName", vu.a.a(this.e));
+      }
+   }
+
+   @Override
+   public void a(ta $$0, in.a $$1) {
+      super.a($$0, $$1);
+      if ($$0.b("CustomName", 8)) {
+         this.e = vu.a.a($$0.l("CustomName"));
+      }
+
+      this.g = $$0.c("Patterns", 10);
+      this.h = null;
+   }
+
+   public aat a() {
+      return aat.a(this);
+   }
+
+   @Override
+   public ta a(in.a $$0) {
+      return this.d($$0);
+   }
+
+   public static int c(cqm $$0) {
+      ta $$1 = coh.a($$0);
+      return $$1 != null && $$1.e("Patterns") ? $$1.c("Patterns", 10).size() : 0;
+   }
+
+   public List<Pair<il<djz>, cpd>> b() {
+      if (this.h == null) {
+         this.h = a(this.f, this.g);
+      }
+
+      return this.h;
+   }
+
+   public static List<Pair<il<djz>, cpd>> a(cpd $$0, @Nullable tg $$1) {
+      List<Pair<il<djz>, cpd>> $$2 = Lists.newArrayList();
+      $$2.add(Pair.of(ki.am.g(dka.a), $$0));
+      if ($$1 != null) {
+         for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
+            ta $$4 = $$1.a($$3);
+            il<djz> $$5 = djz.a($$4.l("Pattern"));
+            if ($$5 != null) {
+               int $$6 = $$4.h("Color");
+               $$2.add(Pair.of($$5, cpd.a($$6)));
+            }
+         }
+      }
+
+      return $$2;
+   }
+
+   public static void d(cqm $$0) {
+      ta $$1 = coh.a($$0);
+      if ($$1 != null && $$1.b("Patterns", 9)) {
+         tg $$2 = $$1.c("Patterns", 10);
+         if (!$$2.isEmpty()) {
+            $$2.c($$2.size() - 1);
+            if ($$2.isEmpty()) {
+               $$1.r("Patterns");
+            }
+         }
+
+         $$1.r("id");
+         coh.a($$0, dkk.t, $$1);
+      }
+   }
+
+   public cqm c() {
+      cqm $$0 = new cqm(czh.a(this.f));
+      if (this.g != null && !this.g.isEmpty()) {
+         ta $$1 = new ta();
+         $$1.a("Patterns", this.g.e());
+         coh.a($$0, this.r(), $$1);
+      }
+
+      if (this.e != null) {
+         $$0.a(this.e);
+      }
+
+      return $$0;
+   }
+
+   public cpd f() {
+      return this.f;
    }
 }

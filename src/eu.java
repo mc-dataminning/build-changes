@@ -41,15 +41,15 @@ public class eu<T> implements ArgumentType<ajg<T>> {
       return a($$0, $$2).b($$4).orElseThrow(() -> $$3.create($$4.a()));
    }
 
-   public static il.c<dvd<?, ?>> a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static il.c<dvf<?, ?>> a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1, kj.ax, b);
    }
 
-   public static il.c<edc> b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static il.c<ede> b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1, kj.aE, c);
    }
 
-   public static il.c<eel> c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static il.c<een> c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1, kj.aH, d);
    }
 

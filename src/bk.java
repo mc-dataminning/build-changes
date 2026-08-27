@@ -9,8 +9,8 @@ public class bk extends cx<bk.a> {
       return bk.a.a;
    }
 
-   public void a(apg $$0, @Nullable bow $$1) {
-      eku $$2 = $$1 != null ? br.b($$0, $$1) : null;
+   public void a(apg $$0, @Nullable box $$1) {
+      ekw $$2 = $$1 != null ? br.b($$0, $$1) : null;
       this.a($$0, $$2x -> $$2x.a($$0, $$2));
    }
 
@@ -28,8 +28,8 @@ public class bk extends cx<bk.a> {
          return am.B.a(new bk.a(Optional.empty(), Optional.empty(), Optional.of(br.a($$0.b()))));
       }
 
-      public boolean a(apg $$0, @Nullable eku $$1) {
-         return this.c.isPresent() && !this.c.get().a((bpo)$$0) ? false : !this.d.isPresent() || $$1 != null && this.d.get().a($$1);
+      public boolean a(apg $$0, @Nullable ekw $$1) {
+         return this.c.isPresent() && !this.c.get().a((bpp)$$0) ? false : !this.d.isPresent() || $$1 != null && this.d.get().a($$1);
       }
 
       @Override

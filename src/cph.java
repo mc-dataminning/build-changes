@@ -1,53 +1,30 @@
-public class cph extends cqf {
-   public static final String a = "StoredEnchantments";
-
-   public cph(cqf.a $$0) {
+public class cph extends cqh implements cpo {
+   public cph(cqh.a $$0) {
       super($$0);
+      dch.a(this, cny.a);
+   }
+
+   public static boolean d(cqm $$0) {
+      return $$0.l() < $$0.m() - 1;
    }
 
    @Override
-   public boolean i(cqk $$0) {
-      return true;
+   public boolean a(cqm $$0, cqm $$1) {
+      return $$1.a(cqp.vO);
    }
 
    @Override
-   public boolean d_(cqk $$0) {
-      return false;
+   public bne<cqm> a(cxb $$0, ciu $$1, bnc $$2) {
+      return this.a(this, $$0, $$1, $$2);
    }
 
-   public static tg d(cqk $$0) {
-      ta $$1 = $$0.w();
-      return $$1 != null ? $$1.c("StoredEnchantments", 10) : new tg();
+   @Override
+   public il<atx> as_() {
+      return aty.ar;
    }
 
-   public static void a(cqk $$0, cuw $$1) {
-      tg $$2 = d($$0);
-      boolean $$3 = true;
-      ajh $$4 = cuv.a($$1.a);
-
-      for (int $$5 = 0; $$5 < $$2.size(); $$5++) {
-         ta $$6 = $$2.a($$5);
-         ajh $$7 = cuv.b($$6);
-         if ($$7 != null && $$7.equals($$4)) {
-            if (cuv.a($$6) < $$1.b) {
-               cuv.a($$6, $$1.b);
-            }
-
-            $$3 = false;
-            break;
-         }
-      }
-
-      if ($$3) {
-         $$2.add(cuv.a($$4, $$1.b));
-      }
-
-      $$0.x().a("StoredEnchantments", $$2);
-   }
-
-   public static cqk a(cuw $$0) {
-      cqk $$1 = new cqk(cqn.ut);
-      $$1.a($$0.a, $$0.b);
-      return $$1;
+   @Override
+   public bpe i() {
+      return bpe.e;
    }
 }

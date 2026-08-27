@@ -10,22 +10,22 @@ public class aa {
    @Deprecated
    public static final boolean a = true;
    @Deprecated
-   public static final int b = 3815;
+   public static final int b = 3817;
    @Deprecated
    public static final String c = "main";
    @Deprecated
-   public static final String d = "24w06a";
+   public static final String d = "24w07a";
    @Deprecated
    public static final int e = 766;
    @Deprecated
-   public static final int f = 176;
+   public static final int f = 177;
    public static final int g = 3798;
    private static final int bn = 30;
    public static final boolean h = true;
    @Deprecated
    public static final int i = 26;
    @Deprecated
-   public static final int j = 31;
+   public static final int j = 32;
    @Deprecated
    public static final int k = 1;
    public static final int l = 1;
@@ -182,10 +182,10 @@ public class aa {
    }
 
    public static int c() {
-      return 1073742000;
+      return 1073742001;
    }
 
-   public static boolean a(cwg $$0) {
+   public static boolean a(cwi $$0) {
       int $$1 = $$0.d();
       int $$2 = $$0.e();
       return !as ? false : $$1 > 8192 || $$1 < 0 || $$2 > 1024 || $$2 < 0;

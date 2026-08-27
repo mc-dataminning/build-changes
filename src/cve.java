@@ -1,20 +1,25 @@
-public class cve extends cuu {
-   public cve(cuu.a $$0, bpd... $$1) {
-      super($$0, auv.bp, $$1);
+public class cve extends cuw {
+   protected cve(cuw.a $$0, avd<cqh> $$1, bpe... $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
    public int a(int $$0) {
-      return 20;
+      return 15 + ($$0 - 1) * 9;
    }
 
    @Override
    public int b(int $$0) {
-      return 50;
+      return super.a($$0) + 50;
    }
 
    @Override
-   public boolean a(cuu $$0) {
-      return super.a($$0) && $$0 != cux.K;
+   public int a() {
+      return 3;
+   }
+
+   @Override
+   public boolean a(cuw $$0) {
+      return super.a($$0) && $$0 != cuz.v;
    }
 }

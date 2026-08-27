@@ -1,165 +1,53 @@
-import com.google.common.collect.ImmutableList;
 import java.util.List;
-import javax.annotation.Nullable;
 
-public class fdo implements fdp {
-   private static final ajh a = new ajh("toast/system");
-   private static final int d = 200;
-   private static final int e = 12;
-   private static final int f = 10;
-   private final fdo.a g;
-   private vu h;
-   private List<awi> i;
-   private long j;
-   private boolean k;
-   private final int l;
-   private boolean m;
+public class fdo implements fdr {
+   private static final ajh d = new ajh("toast/advancement");
+   public static final int a = 5000;
+   private final af e;
+   private boolean f;
 
-   public fdo(fdo.a $$0, vu $$1, @Nullable vu $$2) {
-      this($$0, $$1, a($$2), Math.max(160, 30 + Math.max(ezg.Q().h.a($$1), $$2 == null ? 0 : ezg.Q().h.a($$2))));
-   }
-
-   public static fdo a(ezg $$0, fdo.a $$1, vu $$2, vu $$3) {
-      far $$4 = $$0.h;
-      List<awi> $$5 = $$4.c($$3, 200);
-      int $$6 = Math.max(200, $$5.stream().mapToInt($$4::a).max().orElse(200));
-      return new fdo($$1, $$2, $$5, $$6 + 30);
-   }
-
-   private fdo(fdo.a $$0, vu $$1, List<awi> $$2, int $$3) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      this.l = $$3;
-   }
-
-   private static ImmutableList<awi> a(@Nullable vu $$0) {
-      return $$0 == null ? ImmutableList.of() : ImmutableList.of($$0.g());
+   public fdo(af $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public int a() {
-      return this.l;
-   }
+   public fdr.a a(fav $$0, fds $$1, long $$2) {
+      ar $$3 = this.e.b().c().orElse(null);
+      $$0.a(d, 0, 0, this.a(), this.b());
+      if ($$3 != null) {
+         List<awi> $$4 = $$1.b().h.c($$3.a(), 125);
+         int $$5 = $$3.e() == al.b ? 16746751 : 16776960;
+         if ($$4.size() == 1) {
+            $$0.a($$1.b().h, $$3.e().b(), 30, 7, $$5 | 0xFF000000, false);
+            $$0.a($$1.b().h, $$4.get(0), 30, 18, -1, false);
+         } else {
+            int $$6 = 1500;
+            float $$7 = 300.0F;
+            if ($$2 < 1500L) {
+               int $$8 = aww.d(aww.a((float)(1500L - $$2) / 300.0F, 0.0F, 1.0F) * 255.0F) << 24 | 67108864;
+               $$0.a($$1.b().h, $$3.e().b(), 30, 11, $$5 | $$8, false);
+            } else {
+               int $$9 = aww.d(aww.a((float)($$2 - 1500L) / 300.0F, 0.0F, 1.0F) * 252.0F) << 24 | 67108864;
+               int $$10 = this.b() / 2 - $$4.size() * 9 / 2;
 
-   @Override
-   public int b() {
-      return 20 + Math.max(this.i.size(), 1) * 12;
-   }
-
-   public void c() {
-      this.m = true;
-   }
-
-   @Override
-   public fdp.a a(fat $$0, fdq $$1, long $$2) {
-      if (this.k) {
-         this.j = $$2;
-         this.k = false;
-      }
-
-      int $$3 = this.a();
-      if ($$3 == 160 && this.i.size() <= 1) {
-         $$0.a(a, 0, 0, $$3, this.b());
-      } else {
-         int $$4 = this.b();
-         int $$5 = 28;
-         int $$6 = Math.min(4, $$4 - 28);
-         this.a($$0, $$3, 0, 0, 28);
-
-         for (int $$7 = 28; $$7 < $$4 - $$6; $$7 += 10) {
-            this.a($$0, $$3, 16, $$7, Math.min(16, $$4 - $$7 - $$6));
+               for (awi $$11 : $$4) {
+                  $$0.a($$1.b().h, $$11, 30, $$10, 16777215 | $$9, false);
+                  $$10 += 9;
+               }
+            }
          }
 
-         this.a($$0, $$3, 32 - $$6, $$4 - $$6, $$6);
-      }
-
-      if (this.i.isEmpty()) {
-         $$0.a($$1.b().h, this.h, 18, 12, -256, false);
-      } else {
-         $$0.a($$1.b().h, this.h, 18, 7, -256, false);
-
-         for (int $$8 = 0; $$8 < this.i.size(); $$8++) {
-            $$0.a($$1.b().h, this.i.get($$8), 18, 18 + $$8 * 12, -1, false);
+         if (!this.f && $$2 > 0L) {
+            this.f = true;
+            if ($$3.e() == al.b) {
+               $$1.b().ak().a(gmk.a(aty.zY, 1.0F, 1.0F));
+            }
          }
-      }
 
-      double $$9 = (double)this.g.h * $$1.c();
-      long $$10 = $$2 - this.j;
-      return !this.m && (double)$$10 < $$9 ? fdp.a.a : fdp.a.b;
-   }
-
-   private void a(fat $$0, int $$1, int $$2, int $$3, int $$4) {
-      int $$5 = $$2 == 0 ? 20 : 5;
-      int $$6 = Math.min(60, $$1 - $$5);
-      ajh $$7 = a;
-      $$0.a($$7, 160, 32, 0, $$2, 0, $$3, $$5, $$4);
-
-      for (int $$8 = $$5; $$8 < $$1 - $$6; $$8 += 64) {
-         $$0.a($$7, 160, 32, 32, $$2, $$8, $$3, Math.min(64, $$1 - $$8 - $$6), $$4);
-      }
-
-      $$0.a($$7, 160, 32, 160 - $$6, $$2, $$1 - $$6, $$3, $$6, $$4);
-   }
-
-   public void a(vu $$0, @Nullable vu $$1) {
-      this.h = $$0;
-      this.i = a($$1);
-      this.k = true;
-   }
-
-   public fdo.a d() {
-      return this.g;
-   }
-
-   public static void a(fdq $$0, fdo.a $$1, vu $$2, @Nullable vu $$3) {
-      $$0.a(new fdo($$1, $$2, $$3));
-   }
-
-   public static void b(fdq $$0, fdo.a $$1, vu $$2, @Nullable vu $$3) {
-      fdo $$4 = $$0.a(fdo.class, $$1);
-      if ($$4 == null) {
-         a($$0, $$1, $$2, $$3);
+         $$0.b($$3.c(), 8, 8);
+         return (double)$$2 >= 5000.0 * $$1.c() ? fdr.a.b : fdr.a.a;
       } else {
-         $$4.a($$2, $$3);
-      }
-   }
-
-   public static void a(fdq $$0, fdo.a $$1) {
-      fdo $$2 = $$0.a(fdo.class, $$1);
-      if ($$2 != null) {
-         $$2.c();
-      }
-   }
-
-   public static void a(ezg $$0, String $$1) {
-      a($$0.aA(), fdo.a.d, vu.c("selectWorld.access_failure"), vu.b($$1));
-   }
-
-   public static void b(ezg $$0, String $$1) {
-      a($$0.aA(), fdo.a.d, vu.c("selectWorld.delete_failure"), vu.b($$1));
-   }
-
-   public static void c(ezg $$0, String $$1) {
-      a($$0.aA(), fdo.a.e, vu.c("pack.copyFailure"), vu.b($$1));
-   }
-
-   public static class a {
-      public static final fdo.a a = new fdo.a();
-      public static final fdo.a b = new fdo.a();
-      public static final fdo.a c = new fdo.a();
-      public static final fdo.a d = new fdo.a();
-      public static final fdo.a e = new fdo.a();
-      public static final fdo.a f = new fdo.a();
-      public static final fdo.a g = new fdo.a(10000L);
-      final long h;
-
-      public a(long $$0) {
-         this.h = $$0;
-      }
-
-      public a() {
-         this(5000L);
+         return fdr.a.b;
       }
    }
 }

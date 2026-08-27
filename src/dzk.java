@@ -1,48 +1,39 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dzk extends dzg {
+public class dzk extends dzi {
    public static final Codec<dzk> a = RecordCodecBuilder.create(
-      $$0 -> b($$0).and(bmh.b(0, 24).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, dzk::new)
+      $$0 -> b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, dzk::new)
    );
-   private final bmh b;
+   protected final int b;
 
-   public dzk(bmh $$0, bmh $$1, bmh $$2) {
+   public dzk(bmi $$0, bmi $$1, int $$2) {
       super($$0, $$1);
       this.b = $$2;
    }
 
    @Override
-   protected dzh<?> a() {
-      return dzh.c;
+   protected dzj<?> a() {
+      return dzj.g;
    }
 
    @Override
-   protected void a(cxf $$0, dzg.b $$1, axd $$2, dyq $$3, int $$4, dzg.a $$5, int $$6, int $$7, int $$8) {
-      int $$9 = 0;
+   protected void a(cxh $$0, dzi.b $$1, axd $$2, dys $$3, int $$4, dzi.a $$5, int $$6, int $$7, int $$8) {
+      int $$9 = $$5.c() ? $$6 : 1 + $$2.a(2);
 
-      for (int $$10 = $$8; $$10 >= $$8 - $$6; $$10--) {
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$9, $$10, $$5.c());
-         if ($$9 >= 1 && $$10 == $$8 - $$6 + 1) {
-            $$9--;
-         } else if ($$9 < $$7 + $$5.b()) {
-            $$9++;
-         }
+      for (int $$10 = $$8; $$10 >= $$8 - $$9; $$10--) {
+         int $$11 = $$7 + $$5.b() + 1 - $$10;
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$11, $$10, $$5.c());
       }
    }
 
    @Override
-   public int a(axd $$0, int $$1) {
-      return super.a($$0, $$1) + $$0.a(Math.max($$1 + 1, 1));
-   }
-
-   @Override
-   public int a(axd $$0, int $$1, dyq $$2) {
-      return this.b.a($$0);
+   public int a(axd $$0, int $$1, dys $$2) {
+      return this.b;
    }
 
    @Override
    protected boolean a(axd $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
+      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
    }
 }

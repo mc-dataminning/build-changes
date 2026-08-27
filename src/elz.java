@@ -1,76 +1,59 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.Set;
 
-public class elz extends emg {
-   private static final Logger b = LogUtils.getLogger();
-   private static final Codec<ip<cuu>> c = ki.f.r().listOf().xmap(ip::a, $$0 -> $$0.a().toList());
-   public static final Codec<elz> a = RecordCodecBuilder.create($$0 -> a($$0).and(awe.a(c, "enchantments").forGetter($$0x -> $$0x.d)).apply($$0, elz::new));
-   private final Optional<ip<cuu>> d;
+public class elz extends emi {
+   public static final Codec<elz> a = RecordCodecBuilder.create($$0 -> a($$0).and(elz.a.e.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, elz::new));
+   private final elz.a b;
 
-   elz(List<ent> $$0, Optional<ip<cuu>> $$1) {
+   private elz(List<env> $$0, elz.a $$1) {
       super($$0);
-      this.d = $$1;
+      this.b = $$1;
    }
 
    @Override
-   public emi b() {
-      return emj.e;
+   public emk b() {
+      return eml.o;
    }
 
    @Override
-   public cqk a(cqk $$0, eku $$1) {
-      axd $$2 = $$1.b();
-      Optional<il<cuu>> $$3 = this.d.<il<cuu>>flatMap($$1x -> $$1x.a($$2)).or(() -> {
-         boolean $$2x = $$0.a(cqn.qO);
-         List<il.c<cuu>> $$3x = ki.f.h().filter($$0xx -> ((cuu)$$0xx.a()).j()).filter($$2xx -> $$2x || ((cuu)$$2xx.a()).a($$0)).toList();
-         return ac.b($$3x, $$2);
-      });
-      if ($$3.isEmpty()) {
-         b.warn("Couldn't find a compatible enchantment for {}", $$0);
-         return $$0;
-      } else {
-         return a($$0, $$3.get().a(), $$2);
-      }
+   public Set<ene<?>> a() {
+      return ImmutableSet.of(this.b.g);
    }
 
-   private static cqk a(cqk $$0, cuu $$1, axd $$2) {
-      int $$3 = aww.a($$2, $$1.f(), $$1.a());
-      if ($$0.a(cqn.qO)) {
-         $$0 = new cqk(cqn.ut);
+   @Override
+   public cqm a(cqm $$0, ekw $$1) {
+      if ($$1.c(this.b.g) instanceof bni $$3 && $$3.ae()) {
+         $$0.a($$3.O_());
       }
 
-      $$0.a($$1, $$3);
       return $$0;
    }
 
-   public static elz.a c() {
-      return new elz.a();
+   public static emi.a<?> a(elz.a $$0) {
+      return a($$1 -> new elz($$1, $$0));
    }
 
-   public static emg.a<?> d() {
-      return a($$0 -> new elz($$0, Optional.empty()));
-   }
+   public static enum a implements axq {
+      a("this", enh.a),
+      b("killer", enh.d),
+      c("killer_player", enh.b),
+      d("block_entity", enh.h);
 
-   public static class a extends emg.a<elz.a> {
-      private final List<il<cuu>> a = new ArrayList<>();
+      public static final Codec<elz.a> e = axq.a(elz.a::values);
+      private final String f;
+      final ene<?> g;
 
-      protected elz.a a() {
-         return this;
-      }
-
-      public elz.a a(cuu $$0) {
-         this.a.add($$0.k());
-         return this;
+      private a(String $$0, ene<?> $$1) {
+         this.f = $$0;
+         this.g = $$1;
       }
 
       @Override
-      public emh b() {
-         return new elz(this.g(), this.a.isEmpty() ? Optional.empty() : Optional.of(ip.a(this.a)));
+      public String c() {
+         return this.f;
       }
    }
 }

@@ -1,56 +1,87 @@
-import com.google.common.collect.Maps;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.util.Collection;
-import java.util.Map;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.Objects;
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
 public class gnm {
-   private final asr a;
-   private final Map<ajh, CompletableFuture<erz>> b = Maps.newHashMap();
+   private final Set<gnm.a> a = Sets.newIdentityHashSet();
+   final erw b;
+   final Executor c;
 
-   public gnm(asr $$0) {
-      this.a = $$0;
+   public gnm(erw $$0, Executor $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public CompletableFuture<erz> a(ajh $$0) {
-      return this.b.computeIfAbsent($$0, $$0x -> CompletableFuture.supplyAsync(() -> {
-            try {
-               erz var5;
-               try (
-                  InputStream $$1 = this.a.open($$0x);
-                  erx $$2 = new erx($$1);
-               ) {
-                  ByteBuffer $$3 = $$2.b();
-                  var5 = new erz($$3, $$2.a());
-               }
-
-               return var5;
-            } catch (IOException var10) {
-               throw new CompletionException(var10);
-            }
-         }, ac.f()));
-   }
-
-   public CompletableFuture<gni> a(ajh $$0, boolean $$1) {
-      return CompletableFuture.supplyAsync(() -> {
-         try {
-            InputStream $$2 = this.a.open($$0);
-            return (gni)($$1 ? new gnk(erx::new, $$2) : new erx($$2));
-         } catch (IOException var4) {
-            throw new CompletionException(var4);
+   public CompletableFuture<gnm.a> a(erw.c $$0) {
+      CompletableFuture<gnm.a> $$1 = new CompletableFuture<>();
+      this.c.execute(() -> {
+         erv $$2 = this.b.a($$0);
+         if ($$2 != null) {
+            gnm.a $$3 = new gnm.a($$2);
+            this.a.add($$3);
+            $$1.complete($$3);
+         } else {
+            $$1.complete(null);
          }
-      }, ac.f());
+      });
+      return $$1;
+   }
+
+   public void a(Consumer<Stream<erv>> $$0) {
+      this.c.execute(() -> $$0.accept(this.a.stream().map($$0xx -> $$0xx.b).filter(Objects::nonNull)));
    }
 
    public void a() {
-      this.b.values().forEach($$0 -> $$0.thenAccept(erz::b));
-      this.b.clear();
+      this.c.execute(() -> {
+         Iterator<gnm.a> $$0 = this.a.iterator();
+
+         while ($$0.hasNext()) {
+            gnm.a $$1 = $$0.next();
+            $$1.b.j();
+            if ($$1.b.h()) {
+               $$1.b();
+               $$0.remove();
+            }
+         }
+      });
    }
 
-   public CompletableFuture<?> a(Collection<gmj> $$0) {
-      return CompletableFuture.allOf($$0.stream().map($$0x -> this.a($$0x.b())).toArray(CompletableFuture[]::new));
+   public void b() {
+      this.a.forEach(gnm.a::b);
+      this.a.clear();
+   }
+
+   public class a {
+      @Nullable
+      erv b;
+      private boolean c;
+
+      public boolean a() {
+         return this.c;
+      }
+
+      public a(erv $$1) {
+         this.b = $$1;
+      }
+
+      public void a(Consumer<erv> $$0) {
+         gnm.this.c.execute(() -> {
+            if (this.b != null) {
+               $$0.accept(this.b);
+            }
+         });
+      }
+
+      public void b() {
+         this.c = true;
+         gnm.this.b.a(this.b);
+         this.b = null;
+      }
    }
 }

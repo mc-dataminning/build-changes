@@ -8,7 +8,7 @@ public class cv extends cx<cv.a> {
       return cv.a.a;
    }
 
-   public void a(apg $$0, ctp<?> $$1) {
+   public void a(apg $$0, ctr<?> $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -21,7 +21,7 @@ public class cv extends cx<cv.a> {
          $$0 -> $$0.group(awe.a(br.b, "player").forGetter(cv.a::a), ajh.a.fieldOf("recipe").forGetter(cv.a::b)).apply($$0, cv.a::new)
       );
 
-      public boolean a(ctp<?> $$0) {
+      public boolean a(ctr<?> $$0) {
          return this.c.equals($$0.a());
       }
 

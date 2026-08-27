@@ -1,13 +1,11 @@
-public class gfg extends gez {
-   private static final ajh a = new ajh("textures/entity/skeleton/stray.png");
+public class gfg extends gca<cjs> {
+   public static final ajh a = new ajh("textures/entity/projectiles/spectral_arrow.png");
 
-   public gfg(gcy.a $$0) {
-      super($$0, frc.bv, frc.bw, frc.bx);
-      this.a(new ghr<>(this, $$0.f()));
+   public gfg(gdb.a $$0) {
+      super($$0);
    }
 
-   @Override
-   public ajh a(cfh $$0) {
+   public ajh a(cjs $$0) {
       return a;
    }
 }

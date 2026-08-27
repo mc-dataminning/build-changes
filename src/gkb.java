@@ -1,42 +1,37 @@
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import javax.annotation.Nullable;
 
-public abstract class gkb implements asi, AutoCloseable {
-   private final giy a;
-   private final ajh b;
-   private final Set<arn<?>> c;
+public record gkb(ajh a, @Nullable String b, @Nullable ajh c, @Nullable ajh d, gkb.a e, boolean f) {
+   public static enum a {
+      a("slim"),
+      b("default");
 
-   public gkb(gja $$0, ajh $$1, ajh $$2) {
-      this($$0, $$1, $$2, giu.a);
-   }
+      private final String c;
 
-   public gkb(gja $$0, ajh $$1, ajh $$2, Set<arn<?>> $$3) {
-      this.b = $$2;
-      this.a = new giy($$1);
-      $$0.a(this.a.g(), this.a);
-      this.c = $$3;
-   }
+      private a(String $$0) {
+         this.c = $$0;
+      }
 
-   protected giz a(ajh $$0) {
-      return this.a.a($$0);
-   }
+      public static gkb.a a(@Nullable String $$0) {
+         if ($$0 == null) {
+            return b;
+         } else {
+            byte var2 = -1;
+            switch ($$0.hashCode()) {
+               case 3533117:
+                  if ($$0.equals("slim")) {
+                     var2 = 0;
+                  }
+               default:
+                  return switch (var2) {
+                     case 0 -> a;
+                     default -> b;
+                  };
+            }
+         }
+      }
 
-   @Override
-   public final CompletableFuture<Void> a(asi.a $$0, aso $$1, bjq $$2, bjq $$3, Executor $$4, Executor $$5) {
-      return giu.a(this.a).a($$1, this.b, 0, $$4, this.c).thenCompose(giu.a::a).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$1x, $$3), $$5);
-   }
-
-   private void a(giu.a $$0, bjq $$1) {
-      $$1.a();
-      $$1.a("upload");
-      this.a.a($$0);
-      $$1.c();
-      $$1.b();
-   }
-
-   @Override
-   public void close() {
-      this.a.f();
+      public String a() {
+         return this.c;
+      }
    }
 }

@@ -1,44 +1,121 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Collection;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-@FunctionalInterface
-public interface gjc {
-   Logger a = LogUtils.getLogger();
+public class gjc {
+   private final ajh a;
+   private final giw b;
+   final int c;
+   final int d;
+   private final float e;
+   private final float f;
+   private final float g;
+   private final float h;
 
-   static gjc create(Collection<arn<?>> $$0) {
-      return ($$1, $$2) -> {
-         asq $$3;
-         try {
-            $$3 = $$2.f().a($$0);
-         } catch (Exception var9) {
-            a.error("Unable to parse metadata from {}", $$1, var9);
-            return null;
-         }
+   protected gjc(ajh $$0, giw $$1, int $$2, int $$3, int $$4, int $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$4;
+      this.d = $$5;
+      this.e = (float)$$4 / (float)$$2;
+      this.f = (float)($$4 + $$1.a()) / (float)$$2;
+      this.g = (float)$$5 / (float)$$3;
+      this.h = (float)($$5 + $$1.b()) / (float)$$3;
+   }
 
-         eta $$7;
-         try (InputStream $$6 = $$2.d()) {
-            $$7 = eta.a($$6);
-         } catch (IOException var11) {
-            a.error("Using missing texture, unable to load {}", $$1, var11);
-            return null;
-         }
+   public int a() {
+      return this.c;
+   }
 
-         gkj $$11 = $$3.a(gkj.a).orElse(gkj.e);
-         gkl $$12 = $$11.a($$7.a(), $$7.b());
-         if (aww.c($$7.a(), $$12.a()) && aww.c($$7.b(), $$12.b())) {
-            return new git($$1, $$12, $$7, $$3);
-         } else {
-            a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
-            $$7.close();
-            return null;
-         }
-      };
+   public int b() {
+      return this.d;
+   }
+
+   public float c() {
+      return this.e;
+   }
+
+   public float d() {
+      return this.f;
+   }
+
+   public giw e() {
+      return this.b;
    }
 
    @Nullable
-   git loadSprite(ajh var1, asm var2);
+   public gjc.a f() {
+      final giy $$0 = this.b.e();
+      return $$0 != null ? new gjc.a() {
+         @Override
+         public void a() {
+            $$0.a(gjc.this.c, gjc.this.d);
+         }
+
+         @Override
+         public void close() {
+            $$0.close();
+         }
+      } : null;
+   }
+
+   public float a(float $$0) {
+      float $$1 = this.f - this.e;
+      return this.e + $$1 * $$0;
+   }
+
+   public float b(float $$0) {
+      float $$1 = this.f - this.e;
+      return ($$0 - this.e) / $$1;
+   }
+
+   public float g() {
+      return this.g;
+   }
+
+   public float h() {
+      return this.h;
+   }
+
+   public float c(float $$0) {
+      float $$1 = this.h - this.g;
+      return this.g + $$1 * $$0;
+   }
+
+   public float d(float $$0) {
+      float $$1 = this.h - this.g;
+      return ($$0 - this.g) / $$1;
+   }
+
+   public ajh i() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return "TextureAtlasSprite{contents='" + this.b + "', u0=" + this.e + ", u1=" + this.f + ", v0=" + this.g + ", v1=" + this.h + "}";
+   }
+
+   public void j() {
+      this.b.a(this.c, this.d);
+   }
+
+   private float l() {
+      float $$0 = (float)this.b.a() / (this.f - this.e);
+      float $$1 = (float)this.b.b() / (this.h - this.g);
+      return Math.max($$1, $$0);
+   }
+
+   public float k() {
+      return 4.0F / this.l();
+   }
+
+   public euf a(euf $$0) {
+      return new fyi($$0, this);
+   }
+
+   public interface a extends AutoCloseable {
+      void a();
+
+      @Override
+      void close();
+   }
 }

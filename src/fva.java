@@ -1,57 +1,76 @@
-public class fva extends fwe {
-   fva(fry $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.u = 0.75F;
-      this.B = 0.999F;
-      this.j *= 0.8F;
-      this.k *= 0.8F;
-      this.l *= 0.8F;
-      this.k = (double)(this.r.i() * 0.4F + 0.05F);
-      this.D = this.D * (this.r.i() * 2.0F + 0.2F);
-      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+public class fva extends fvg {
+   private static final int a = 3;
+   private final fxy b;
+   private final box D;
+   private final box E;
+   private int F;
+   private final gcz G;
+   private double H;
+   private double I;
+   private double J;
+   private double K;
+   private double L;
+   private double M;
+
+   public fva(gcz $$0, fxy $$1, fsa $$2, box $$3, box $$4) {
+      this($$0, $$1, $$2, $$3, $$4, $$3.dp());
+   }
+
+   private fva(gcz $$0, fxy $$1, fsa $$2, box $$3, box $$4, ept $$5) {
+      super($$2, $$3.dr(), $$3.dt(), $$3.dx(), $$5.c, $$5.d, $$5.e);
+      this.b = $$1;
+      this.D = this.a($$3);
+      this.E = $$4;
+      this.G = $$0;
+      this.c();
+      this.d();
+   }
+
+   private box a(box $$0) {
+      return (box)(!($$0 instanceof cfe) ? $$0 : ((cfe)$$0).C());
    }
 
    @Override
-   public fvi b() {
-      return fvi.b;
+   public fvk b() {
+      return fvk.e;
    }
 
    @Override
-   public int a(float $$0) {
-      int $$1 = super.a($$0);
-      int $$2 = 240;
-      int $$3 = $$1 >> 16 & 0xFF;
-      return 240 | $$3 << 16;
-   }
-
-   @Override
-   public float b(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      return this.D * (1.0F - $$1 * $$1);
+   public void a(euf $$0, eyt $$1, float $$2) {
+      float $$3 = ((float)this.F + $$2) / 3.0F;
+      $$3 *= $$3;
+      double $$4 = aww.d((double)$$2, this.K, this.H);
+      double $$5 = aww.d((double)$$2, this.L, this.I);
+      double $$6 = aww.d((double)$$2, this.M, this.J);
+      double $$7 = aww.d((double)$$3, this.D.dr(), $$4);
+      double $$8 = aww.d((double)$$3, this.D.dt(), $$5);
+      double $$9 = aww.d((double)$$3, this.D.dx(), $$6);
+      fxs.a $$10 = this.b.c();
+      ept $$11 = $$1.b();
+      this.G.a(this.D, $$7 - $$11.a(), $$8 - $$11.b(), $$9 - $$11.c(), this.D.dC(), $$2, new eub(), $$10, this.G.a(this.D, $$2));
+      $$10.b();
    }
 
    @Override
    public void a() {
-      super.a();
-      if (!this.o) {
-         float $$0 = (float)this.s / (float)this.t;
-         if (this.r.i() > $$0) {
-            this.c.a(kc.ac, this.g, this.h, this.i, this.j, this.k, this.l);
-         }
+      this.F++;
+      if (this.F == 3) {
+         this.k();
       }
+
+      this.d();
+      this.c();
    }
 
-   public static class a implements fvh<kf> {
-      private final fvz a;
+   private void c() {
+      this.H = this.E.dr();
+      this.I = (this.E.dt() + this.E.dv()) / 2.0;
+      this.J = this.E.dx();
+   }
 
-      public a(fvz $$0) {
-         this.a = $$0;
-      }
-
-      public fve a(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fva $$8 = new fva($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
-      }
+   private void d() {
+      this.K = this.H;
+      this.L = this.I;
+      this.M = this.J;
    }
 }

@@ -1,26 +1,21 @@
-public class ghn<T extends bpo> extends ghj<T, fqb<T>> {
-   private final foc<T> a;
+public class ghn<T extends box & bqe, M extends foe<T>> extends ghm<T, M> {
+   private final ajh a;
+   private final M b;
 
-   public ghn(get<T, fqb<T>> $$0, fqz $$1) {
+   public ghn(gew<T, M> $$0, M $$1, ajh $$2) {
       super($$0);
-      this.a = new fqb<>($$1.a(frc.bp));
+      this.b = $$1;
+      this.a = $$2;
    }
 
-   public void a(etz $$0, fxq $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      ezg $$10 = ezg.Q();
-      boolean $$11 = $$10.b($$3) && $$3.ce();
-      if (!$$3.ce() || $$11) {
-         eud $$12;
-         if ($$11) {
-            $$12 = $$1.getBuffer(fxy.r(this.a($$3)));
-         } else {
-            $$12 = $$1.getBuffer(fxy.i(this.a($$3)));
-         }
-
-         this.c().a(this.a);
-         this.a.a($$3, $$4, $$5, $$6);
-         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
-         this.a.a($$0, $$12, $$2, gdz.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
+   @Override
+   public void a(eub $$0, fxs $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.i()) {
+         this.c().a(this.b);
+         this.b.a($$3, $$4, $$5, $$6);
+         this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
+         euf $$10 = $$1.getBuffer(fya.e(this.a));
+         this.b.a($$0, $$10, $$2, git.d, 1.0F, 1.0F, 1.0F, 1.0F);
       }
    }
 }

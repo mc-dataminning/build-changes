@@ -1,90 +1,72 @@
-public class csy extends ctf {
-   public csy(ctd $$0) {
-      super($$0);
-   }
+public abstract class csy implements ctp<bmw> {
+   protected final ctu<?> a;
+   protected final cte b;
+   protected final String c;
+   protected final ctm d;
+   protected final cqm e;
+   protected final float f;
+   protected final int g;
 
-   public boolean a(cme $$0, cwz $$1) {
-      cpb $$2 = null;
-      cqk $$3 = null;
-      cqk $$4 = null;
-
-      for (int $$5 = 0; $$5 < $$0.b(); $$5++) {
-         cqk $$6 = $$0.a($$5);
-         if (!$$6.b()) {
-            cqf $$7 = $$6.d();
-            if (!($$7 instanceof coc)) {
-               return false;
-            }
-
-            coc $$8 = (coc)$$7;
-            if ($$2 == null) {
-               $$2 = $$8.b();
-            } else if ($$2 != $$8.b()) {
-               return false;
-            }
-
-            int $$9 = djw.c($$6);
-            if ($$9 > 6) {
-               return false;
-            }
-
-            if ($$9 > 0) {
-               if ($$3 != null) {
-                  return false;
-               }
-
-               $$3 = $$6;
-            } else {
-               if ($$4 != null) {
-                  return false;
-               }
-
-               $$4 = $$6;
-            }
-         }
-      }
-
-      return $$3 != null && $$4 != null;
-   }
-
-   public cqk a(cme $$0, iz $$1) {
-      for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
-         cqk $$3 = $$0.a($$2);
-         if (!$$3.b()) {
-            int $$4 = djw.c($$3);
-            if ($$4 > 0 && $$4 <= 6) {
-               return $$3.c(1);
-            }
-         }
-      }
-
-      return cqk.h;
-   }
-
-   public iu<cqk> a(cme $$0) {
-      iu<cqk> $$1 = iu.a($$0.b(), cqk.h);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cqk $$3 = $$0.a($$2);
-         if (!$$3.b()) {
-            if ($$3.d().u()) {
-               $$1.set($$2, new cqk($$3.d().t()));
-            } else if (djw.c($$3) > 0) {
-               $$1.set($$2, $$3.c(1));
-            }
-         }
-      }
-
-      return $$1;
+   public csy(ctu<?> $$0, String $$1, cte $$2, ctm $$3, cqm $$4, float $$5, int $$6) {
+      this.a = $$0;
+      this.b = $$2;
+      this.c = $$1;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
    }
 
    @Override
-   public ctr<?> ar_() {
-      return ctr.k;
+   public boolean a(bmw $$0, cxb $$1) {
+      return this.d.a($$0.a(0));
+   }
+
+   @Override
+   public cqm a(bmw $$0, iz $$1) {
+      return this.e.q();
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+      return true;
+   }
+
+   @Override
+   public iu<ctm> a() {
+      iu<ctm> $$0 = iu.a();
+      $$0.add(this.d);
+      return $$0;
+   }
+
+   public float b() {
+      return this.f;
+   }
+
+   @Override
+   public cqm a(iz $$0) {
+      return this.e;
+   }
+
+   @Override
+   public String c() {
+      return this.c;
+   }
+
+   public int d() {
+      return this.g;
+   }
+
+   @Override
+   public ctu<?> e() {
+      return this.a;
+   }
+
+   public cte f() {
+      return this.b;
+   }
+
+   public interface a<T extends csy> {
+      T create(String var1, cte var2, ctm var3, cqm var4, float var5, int var6);
    }
 }

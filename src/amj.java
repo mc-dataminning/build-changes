@@ -40,7 +40,7 @@ public class amj {
       );
    }
 
-   private static int a(du $$0, Collection<apg> $$1, Collection<ctp<?>> $$2) throws CommandSyntaxException {
+   private static int a(du $$0, Collection<apg> $$1, Collection<ctr<?>> $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
       for (apg $$4 : $$1) {
@@ -60,7 +60,7 @@ public class amj {
       }
    }
 
-   private static int b(du $$0, Collection<apg> $$1, Collection<ctp<?>> $$2) throws CommandSyntaxException {
+   private static int b(du $$0, Collection<apg> $$1, Collection<ctr<?>> $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
       for (apg $$4 : $$1) {

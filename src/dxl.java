@@ -1,53 +1,96 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record dxl(List<dxl.a> b, ih c, dtt d, boolean e) implements dxu {
-   public static final Codec<dxl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dxl.a.a.listOf().fieldOf("layers").forGetter(dxl::a),
-               ih.g.fieldOf("direction").forGetter(dxl::b),
-               dtt.b.fieldOf("allowed_placement").forGetter(dxl::c),
-               Codec.BOOL.fieldOf("prioritize_tip").forGetter(dxl::d)
-            )
-            .apply($$0, dxl::new)
-   );
+public class dxl extends dvs<dyd> {
+   private static final ih[] a = ih.values();
 
-   public static dxl.a a(bmh $$0, dzv $$1) {
-      return new dxl.a($$0, $$1);
+   public dxl(Codec<dyd> $$0) {
+      super($$0);
    }
 
-   public static dxl b(bmh $$0, dzv $$1) {
-      return new dxl(List.of(a($$0, $$1)), ih.b, dtt.c, false);
-   }
-
-   public List<dxl.a> a() {
-      return this.b;
-   }
-
-   public ih b() {
-      return this.c;
-   }
-
-   public dtt c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public static record a(bmh b, dzv c) {
-      public static final Codec<dxl.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bmh.d.fieldOf("height").forGetter(dxl.a::a), dzv.a.fieldOf("provider").forGetter(dxl.a::b)).apply($$0, dxl.a::new)
-      );
-
-      public bmh a() {
-         return this.b;
+   @Override
+   public boolean a(dvu<dyd> $$0) {
+      cxw $$1 = $$0.b();
+      ib $$2 = $$0.e();
+      axd $$3 = $$0.d();
+      if (!$$1.u($$2)) {
+         return false;
+      } else {
+         dnb $$4 = $$1.a_($$2.c());
+         if (!$$4.a(dae.dV) && !$$4.a(dae.kK)) {
+            return false;
+         } else {
+            this.a($$1, $$3, $$2);
+            this.b($$1, $$3, $$2);
+            return true;
+         }
       }
+   }
 
-      public dzv b() {
-         return this.c;
+   private void a(cxc $$0, axd $$1, ib $$2) {
+      $$0.a($$2, dae.kK.o(), 2);
+      ib.a $$3 = new ib.a();
+      ib.a $$4 = new ib.a();
+
+      for (int $$5 = 0; $$5 < 200; $$5++) {
+         $$3.a($$2, $$1.a(6) - $$1.a(6), $$1.a(2) - $$1.a(5), $$1.a(6) - $$1.a(6));
+         if ($$0.u($$3)) {
+            int $$6 = 0;
+
+            for (ih $$7 : a) {
+               dnb $$8 = $$0.a_($$4.a($$3, $$7));
+               if ($$8.a(dae.dV) || $$8.a(dae.kK)) {
+                  $$6++;
+               }
+
+               if ($$6 > 1) {
+                  break;
+               }
+            }
+
+            if ($$6 == 1) {
+               $$0.a($$3, dae.kK.o(), 2);
+            }
+         }
+      }
+   }
+
+   private void b(cxc $$0, axd $$1, ib $$2) {
+      ib.a $$3 = new ib.a();
+
+      for (int $$4 = 0; $$4 < 100; $$4++) {
+         $$3.a($$2, $$1.a(8) - $$1.a(8), $$1.a(2) - $$1.a(7), $$1.a(8) - $$1.a(8));
+         if ($$0.u($$3)) {
+            dnb $$5 = $$0.a_($$3.c());
+            if ($$5.a(dae.dV) || $$5.a(dae.kK)) {
+               int $$6 = aww.a($$1, 1, 8);
+               if ($$1.a(6) == 0) {
+                  $$6 *= 2;
+               }
+
+               if ($$1.a(5) == 0) {
+                  $$6 = 1;
+               }
+
+               int $$7 = 17;
+               int $$8 = 25;
+               a($$0, $$1, $$3, $$6, 17, 25);
+            }
+         }
+      }
+   }
+
+   public static void a(cxc $$0, axd $$1, ib.a $$2, int $$3, int $$4, int $$5) {
+      for (int $$6 = 0; $$6 <= $$3; $$6++) {
+         if ($$0.u($$2)) {
+            if ($$6 == $$3 || !$$0.u($$2.d())) {
+               $$0.a($$2, dae.oz.o().a(ddr.e, Integer.valueOf(aww.a($$1, $$4, $$5))), 2);
+               break;
+            }
+
+            $$0.a($$2, dae.oA.o(), 2);
+         }
+
+         $$2.c(ih.a);
       }
    }
 }

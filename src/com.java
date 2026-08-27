@@ -1,112 +1,110 @@
-public class com extends cqf {
-   public static final int a = 10;
-   private static final int b = 200;
+import java.util.function.Predicate;
 
-   public com(cqf.a $$0) {
+public class com extends crc {
+   public static final int a = 20;
+   public static final int b = 15;
+
+   public com(cqh.a $$0) {
       super($$0);
    }
 
    @Override
-   public bnc a(csu $$0) {
-      cis $$1 = $$0.o();
-      if ($$1 != null && this.a($$1).c() == epp.a.b) {
-         $$1.c($$0.p());
-      }
-
-      return bnc.b;
-   }
-
-   @Override
-   public csd c(cqk $$0) {
-      return csd.j;
-   }
-
-   @Override
-   public int b(cqk $$0) {
-      return 200;
-   }
-
-   @Override
-   public void a(cwz $$0, bpo $$1, cqk $$2, int $$3) {
-      if ($$3 >= 0 && $$1 instanceof cis $$4) {
-         epp $$6 = this.a($$4);
-         if ($$6 instanceof epn $$7 && $$6.c() == epp.a.b) {
-            int $$9 = this.b($$2) - $$3 + 1;
-            boolean $$10 = $$9 % 10 == 5;
-            if ($$10) {
-               ib $$11 = $$7.a();
-               dmz $$12 = $$0.a_($$11);
-               bpi $$13 = $$1.ft() == bnb.a ? $$4.fr() : $$4.fr().e();
-               if ($$12.z() && $$12.l() != dgf.a) {
-                  this.a($$0, $$7, $$12, $$1.f(0.0F), $$13);
-               }
-
-               atx $$15;
-               if ($$12.b() instanceof daf $$14) {
-                  $$15 = $$14.c();
-               } else {
-                  $$15 = aty.cN;
-               }
-
-               $$0.a($$4, $$11, $$15, atz.e);
-               if (!$$0.x_() && $$0.c_($$11) instanceof dkk $$17) {
-                  boolean $$18 = $$17.a($$0.X(), $$4, $$7.b());
-                  if ($$18) {
-                     bpd $$19 = $$2.equals($$4.d(bpd.b)) ? bpd.b : bpd.a;
-                     $$2.a(1, $$1, $$19);
-                  }
-               }
+   public void a(cqm $$0, cxb $$1, bpp $$2, int $$3) {
+      if ($$2 instanceof ciu $$4) {
+         boolean $$5 = $$4.fM() || cux.a(cuz.B, $$0) > 0;
+         cqm $$6 = $$4.g($$0);
+         if (!$$6.b() || $$5) {
+            if ($$6.b()) {
+               $$6 = new cqm(cqp.ou);
             }
 
-            return;
+            int $$7 = this.b($$0) - $$3;
+            float $$8 = a($$7);
+            if (!((double)$$8 < 0.1)) {
+               boolean $$9 = $$5 && $$6.a(cqp.ou);
+               if (!$$1.B) {
+                  coc $$10 = (coc)($$6.d() instanceof coc ? $$6.d() : cqp.ou);
+                  cja $$11 = $$10.a($$1, $$6, $$4);
+                  $$11.a($$4, $$4.dE(), $$4.dC(), 0.0F, $$8 * 3.0F, 1.0F);
+                  if ($$8 == 1.0F) {
+                     $$11.a(true);
+                  }
+
+                  int $$12 = cux.a(cuz.y, $$0);
+                  if ($$12 > 0) {
+                     $$11.h($$11.y() + (double)$$12 * 0.5 + 0.5);
+                  }
+
+                  int $$13 = cux.a(cuz.z, $$0);
+                  if ($$13 > 0) {
+                     $$11.b($$13);
+                  }
+
+                  if (cux.a(cuz.A, $$0) > 0) {
+                     $$11.g(100);
+                  }
+
+                  $$0.a(1, $$4, bpp.d($$4.ft()));
+                  if ($$9 || $$4.fM() && ($$6.a(cqp.vn) || $$6.a(cqp.vo))) {
+                     $$11.d = cja.a.c;
+                  }
+
+                  $$1.b($$11);
+               }
+
+               $$1.a(null, $$4.dr(), $$4.dt(), $$4.dx(), aty.aG, atz.h, 1.0F, 1.0F / ($$1.E_().i() * 0.4F + 1.2F) + $$8 * 0.5F);
+               if (!$$9 && !$$4.fM()) {
+                  $$6.h(1);
+                  if ($$6.b()) {
+                     $$4.fZ().g($$6);
+                  }
+               }
+
+               $$4.b(aui.c.b(this));
+            }
          }
+      }
+   }
 
-         $$1.fx();
+   public static float a(int $$0) {
+      float $$1 = (float)$$0 / 20.0F;
+      $$1 = ($$1 * $$1 + $$1 * 2.0F) / 3.0F;
+      if ($$1 > 1.0F) {
+         $$1 = 1.0F;
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public int b(cqm $$0) {
+      return 72000;
+   }
+
+   @Override
+   public csf c(cqm $$0) {
+      return csf.e;
+   }
+
+   @Override
+   public bne<cqm> a(cxb $$0, ciu $$1, bnc $$2) {
+      cqm $$3 = $$1.b($$2);
+      boolean $$4 = !$$1.g($$3).b();
+      if (!$$1.fM() && !$$4) {
+         return bne.d($$3);
       } else {
-         $$1.fx();
+         $$1.c($$2);
+         return bne.b($$3);
       }
    }
 
-   private epp a(cis $$0) {
-      return cjm.a($$0, $$0x -> !$$0x.N_() && $$0x.bw(), $$0.gz());
+   @Override
+   public Predicate<cqm> b() {
+      return c;
    }
 
-   private void a(cwz $$0, epn $$1, dmz $$2, epr $$3, bpi $$4) {
-      double $$5 = 3.0;
-      int $$6 = $$4 == bpi.b ? 1 : -1;
-      int $$7 = $$0.E_().b(7, 12);
-      ju $$8 = new ju(kc.c, $$2);
-      ih $$9 = $$1.b();
-      com.a $$10 = com.a.a($$3, $$9);
-      epr $$11 = $$1.e();
-
-      for (int $$12 = 0; $$12 < $$7; $$12++) {
-         $$0.a(
-            $$8,
-            $$11.c - (double)($$9 == ih.e ? 1.0E-6F : 0.0F),
-            $$11.d,
-            $$11.e - (double)($$9 == ih.c ? 1.0E-6F : 0.0F),
-            $$10.a() * (double)$$6 * 3.0 * $$0.E_().j(),
-            0.0,
-            $$10.c() * (double)$$6 * 3.0 * $$0.E_().j()
-         );
-      }
-   }
-
-   static record a(double a, double b, double c) {
-      private static final double d = 1.0;
-      private static final double e = 0.1;
-
-      public static com.a a(epr $$0, ih $$1) {
-         double $$2 = 0.0;
-
-         return switch ($$1) {
-            case a, b -> new com.a($$0.c(), 0.0, -$$0.a());
-            case c -> new com.a(1.0, 0.0, -0.1);
-            case d -> new com.a(-1.0, 0.0, 0.1);
-            case e -> new com.a(-0.1, 0.0, -1.0);
-            case f -> new com.a(0.1, 0.0, 1.0);
-         };
-      }
+   @Override
+   public int c() {
+      return 15;
    }
 }

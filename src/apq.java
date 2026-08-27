@@ -27,14 +27,14 @@ public class apq implements apo {
    }
 
    @Override
-   public void a(cwg $$0) {
+   public void a(cwi $$0) {
       this.e = ac.b();
       this.d = this.e;
    }
 
    @Override
-   public void a(cwg $$0, @Nullable dpa $$1) {
-      if ($$1 == dpa.n) {
+   public void a(cwi $$0, @Nullable dpc $$1) {
+      if ($$1 == dpc.n) {
          this.c++;
       }
 

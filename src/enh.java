@@ -1,41 +1,16 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+public class enh {
+   public static final ene<box> a = a("this_entity");
+   public static final ene<ciu> b = a("last_damage_player");
+   public static final ene<bnw> c = a("damage_source");
+   public static final ene<box> d = a("killer_entity");
+   public static final ene<box> e = a("direct_killer_entity");
+   public static final ene<ept> f = a("origin");
+   public static final ene<dnb> g = a("block_state");
+   public static final ene<dki> h = a("block_entity");
+   public static final ene<cqm> i = a("tool");
+   public static final ene<Float> j = a("explosion_radius");
 
-public class enh extends enk {
-   public static final Codec<enh> a = a(enh::new);
-   public static final Codec<enh> b = b(enh::new);
-
-   enh(List<ent> $$0) {
-      super($$0, ac.a($$0));
-   }
-
-   public static enh a(List<ent> $$0) {
-      return new enh(List.copyOf($$0));
-   }
-
-   @Override
-   public enu b() {
-      return env.d;
-   }
-
-   public static enh.a a(ent.a... $$0) {
-      return new enh.a($$0);
-   }
-
-   public static class a extends enk.a {
-      public a(ent.a... $$0) {
-         super($$0);
-      }
-
-      @Override
-      public enh.a and(ent.a $$0) {
-         this.a($$0);
-         return this;
-      }
-
-      @Override
-      protected ent a(List<ent> $$0) {
-         return new enh($$0);
-      }
+   private static <T> ene<T> a(String $$0) {
+      return new ene<>(new ajh($$0));
    }
 }

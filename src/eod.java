@@ -1,45 +1,55 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import java.util.Set;
 
-public record eod(Optional<Boolean> b, Optional<Boolean> c) implements ent {
+public record eod(Optional<Long> b, ekv c) implements env {
    public static final Codec<eod> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(awe.a(Codec.BOOL, "raining").forGetter(eod::d), awe.a(Codec.BOOL, "thundering").forGetter(eod::e)).apply($$0, eod::new)
+      $$0 -> $$0.group(awe.a(Codec.LONG, "period").forGetter(eod::c), ekv.a.fieldOf("value").forGetter(eod::d)).apply($$0, eod::new)
    );
 
    @Override
-   public enu b() {
-      return env.p;
+   public enw b() {
+      return enx.r;
    }
 
-   public boolean a(eku $$0) {
+   @Override
+   public Set<ene<?>> a() {
+      return this.c.a();
+   }
+
+   public boolean a(ekw $$0) {
       apf $$1 = $$0.d();
-      return this.b.isPresent() && this.b.get() != $$1.ab() ? false : !this.c.isPresent() || this.c.get() == $$1.aa();
+      long $$2 = $$1.Y();
+      if (this.b.isPresent()) {
+         $$2 %= this.b.get();
+      }
+
+      return this.c.b($$0, (int)$$2);
    }
 
-   public static eod.a c() {
-      return new eod.a();
+   public static eod.a a(ekv $$0) {
+      return new eod.a($$0);
    }
 
-   public Optional<Boolean> d() {
+   public Optional<Long> c() {
       return this.b;
    }
 
-   public Optional<Boolean> e() {
+   public ekv d() {
       return this.c;
    }
 
-   public static class a implements ent.a {
-      private Optional<Boolean> a = Optional.empty();
-      private Optional<Boolean> b = Optional.empty();
+   public static class a implements env.a {
+      private Optional<Long> a = Optional.empty();
+      private final ekv b;
 
-      public eod.a a(boolean $$0) {
-         this.a = Optional.of($$0);
-         return this;
+      public a(ekv $$0) {
+         this.b = $$0;
       }
 
-      public eod.a b(boolean $$0) {
-         this.b = Optional.of($$0);
+      public eod.a a(long $$0) {
+         this.a = Optional.of($$0);
          return this;
       }
 

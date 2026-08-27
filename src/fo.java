@@ -42,7 +42,7 @@ public class fo implements ArgumentType<fq> {
 
    public static ib c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       ib $$2 = b($$0, $$1);
-      if (!cwz.l($$2)) {
+      if (!cxb.l($$2)) {
          throw c.create();
       } else {
          return $$2;

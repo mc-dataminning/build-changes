@@ -1,35 +1,29 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+public enum drj {
+   a(false, false),
+   b(true, false),
+   c(true, true);
 
-public class drj implements drr {
-   public static final Codec<drj> a = RecordCodecBuilder.create($$0 -> $$0.group(ib.a.fieldOf("pos").forGetter($$0x -> $$0x.e)).apply($$0, drj::new));
-   public static final xs<vf, drj> b = xs.a(ib.b, $$0 -> $$0.e, drj::new);
-   private final ib e;
+   private final boolean d;
+   private final boolean e;
 
-   public drj(ib $$0) {
-      this.e = $$0;
+   private drj(boolean $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   @Override
-   public Optional<epr> a(cwz $$0) {
-      return Optional.of(epr.b(this.e));
+   public boolean a() {
+      return this.e;
    }
 
-   @Override
-   public drs<drj> a() {
-      return drs.a;
+   public boolean b() {
+      return this.d;
    }
 
-   public static class a implements drs<drj> {
-      @Override
-      public Codec<drj> a() {
-         return drj.a;
-      }
-
-      @Override
-      public xs<vf, drj> b() {
-         return drj.b;
+   public static drj a(aoy $$0) {
+      if ($$0.a(aoy.d)) {
+         return c;
+      } else {
+         return $$0.a(aoy.b) ? b : a;
       }
    }
 }

@@ -24,11 +24,11 @@ public class aqa {
       this.g = $$0;
    }
 
-   public void a(dpg $$0) {
+   public void a(dpi $$0) {
       this.f.add($$0.f().a());
    }
 
-   public void a(apg $$0, cwg $$1) {
+   public void a(apg $$0, cwi $$1) {
       if (!this.f.remove($$1.a()) && $$0.bA()) {
          $$0.d.b(new abs($$1));
       }
@@ -42,13 +42,13 @@ public class aqa {
             if (!this.f.isEmpty()) {
                apf $$2 = $$0.z();
                aop $$3 = $$2.l().a;
-               List<dpg> $$4 = this.a($$3, $$0.do());
+               List<dpi> $$4 = this.a($$3, $$0.do());
                if (!$$4.isEmpty()) {
                   aqe $$5 = $$0.d;
                   this.j++;
                   $$5.b(abb.a);
 
-                  for (dpg $$6 : $$4) {
+                  for (dpi $$6 : $$4) {
                      a($$5, $$2, $$6);
                   }
 
@@ -60,15 +60,15 @@ public class aqa {
       }
    }
 
-   private static void a(aqe $$0, apf $$1, dpg $$2) {
+   private static void a(aqe $$0, apf $$1, dpi $$2) {
       $$0.b(new aby($$2, $$1.y_(), null, null));
-      cwg $$3 = $$2.f();
+      cwi $$3 = $$2.f();
       aew.a($$1, $$3);
    }
 
-   private List<dpg> a(aop $$0, cwg $$1) {
+   private List<dpi> a(aop $$0, cwi $$1) {
       int $$2 = aww.d(this.i);
-      List<dpg> $$4;
+      List<dpi> $$4;
       if (!this.g && this.f.size() > $$2) {
          $$4 = this.f
             .stream()
@@ -82,7 +82,7 @@ public class aqa {
          $$4 = this.f.longStream().mapToObj($$0::d).filter(Objects::nonNull).sorted(Comparator.comparingInt($$1x -> $$1.b($$1x.f()))).toList();
       }
 
-      for (dpg $$5 : $$4) {
+      for (dpi $$5 : $$4) {
          this.f.remove($$5.f().a());
       }
 

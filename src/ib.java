@@ -103,8 +103,8 @@ public class ib extends jg {
       return $$0 == 0 && $$1 == 0 && $$2 == 0 ? this : new ib(this.u() + $$0, this.v() + $$1, this.w() + $$2);
    }
 
-   public epr b() {
-      return epr.b(this);
+   public ept b() {
+      return ept.b(this);
    }
 
    public ib a(jg $$0) {
@@ -190,7 +190,7 @@ public class ib extends jg {
       }
    }
 
-   public ib a(dgm $$0) {
+   public ib a(dgo $$0) {
       switch ($$0) {
          case a:
          default:
@@ -331,7 +331,7 @@ public class ib extends jg {
       return StreamSupport.stream(a($$0, $$1).spliterator(), false);
    }
 
-   public static Stream<ib> a(ecu $$0) {
+   public static Stream<ib> a(ecw $$0) {
       return a(
          Math.min($$0.h(), $$0.k()),
          Math.min($$0.i(), $$0.l()),
@@ -342,7 +342,7 @@ public class ib extends jg {
       );
    }
 
-   public static Stream<ib> a(epm $$0) {
+   public static Stream<ib> a(epo $$0) {
       return a(aww.a($$0.a), aww.a($$0.b), aww.a($$0.c), aww.a($$0.d), aww.a($$0.e), aww.a($$0.f));
    }
 
@@ -467,7 +467,7 @@ public class ib extends jg {
       }
 
       @Override
-      public ib a(dgm $$0) {
+      public ib a(dgo $$0) {
          return super.a($$0).i();
       }
 

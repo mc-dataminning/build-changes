@@ -1,291 +1,149 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class dgy extends czm {
-   public static final MapCodec<dgy> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(cpb.q.optionalFieldOf("color").forGetter($$0x -> Optional.ofNullable($$0x.l)), u())
-            .apply($$0, ($$0x, $$1) -> new dgy((cpb)$$0x.orElse(null), $$1))
-   );
-   private static final float d = 1.0F;
-   private static final eqk e = daa.a(0.0, 15.0, 0.0, 16.0, 16.0, 16.0);
-   private static final eqk f = daa.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
-   private static final eqk g = daa.a(0.0, 0.0, 0.0, 1.0, 16.0, 16.0);
-   private static final eqk h = daa.a(15.0, 0.0, 0.0, 16.0, 16.0, 16.0);
-   private static final eqk i = daa.a(0.0, 0.0, 0.0, 16.0, 16.0, 1.0);
-   private static final eqk j = daa.a(0.0, 0.0, 15.0, 16.0, 16.0, 16.0);
-   private static final Map<ih, eqk> k = ac.a(Maps.newEnumMap(ih.class), $$0 -> {
-      $$0.put(ih.c, i);
-      $$0.put(ih.f, h);
-      $$0.put(ih.d, j);
-      $$0.put(ih.e, g);
-      $$0.put(ih.b, e);
-      $$0.put(ih.a, f);
-   });
-   public static final dnx<ih> b = dcd.a;
-   public static final ajh c = new ajh("contents");
-   @Nullable
-   private final cpb l;
+public class dgy extends dal implements daf, dhc {
+   public static final MapCodec<dgy> a = b(dgy::new);
+   public static final int b = 4;
+   public static final dob c = dnr.aS;
+   public static final dns d = dnr.C;
+   protected static final eqm e = dac.a(6.0, 0.0, 6.0, 10.0, 6.0, 10.0);
+   protected static final eqm f = dac.a(3.0, 0.0, 3.0, 13.0, 6.0, 13.0);
+   protected static final eqm g = dac.a(2.0, 0.0, 2.0, 14.0, 6.0, 14.0);
+   protected static final eqm h = dac.a(2.0, 0.0, 2.0, 14.0, 7.0, 14.0);
 
    @Override
    public MapCodec<dgy> a() {
       return a;
    }
 
-   public dgy(@Nullable cpb $$0, dmy.d $$1) {
-      super($$1);
-      this.l = $$0;
-      this.k(this.E.b().a(b, ih.b));
-   }
-
-   @Override
-   public dkg a(ib $$0, dmz $$1) {
-      return new dlo(this.l, $$0, $$1);
+   protected dgy(dna.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(c, Integer.valueOf(1)).a(d, Boolean.valueOf(true)));
    }
 
    @Nullable
    @Override
-   public <T extends dkg> dkh<T> a(cwz $$0, dmz $$1, dki<T> $$2) {
-      return a($$2, dki.x, dlo::a);
-   }
-
-   @Override
-   protected dgf b_(dmz $$0) {
-      return dgf.b;
-   }
-
-   @Override
-   protected bnc a(dmz $$0, cwz $$1, ib $$2, cis $$3, epn $$4) {
-      if ($$1.B) {
-         return bnc.a;
-      } else if ($$3.N_()) {
-         return bnc.b;
-      } else if ($$1.c_($$2) instanceof dlo $$6) {
-         if (a($$0, $$1, $$2, $$6)) {
-            $$3.a($$6);
-            $$3.a(aui.aq);
-            chj.a($$3, true);
-         }
-
-         return bnc.b;
+   public dnb a(csu $$0) {
+      dnb $$1 = $$0.q().a_($$0.a());
+      if ($$1.a(this)) {
+         return $$1.a(c, Integer.valueOf(Math.min(4, $$1.c(c) + 1)));
       } else {
-         return bnc.d;
+         eip $$2 = $$0.q().b_($$0.a());
+         boolean $$3 = $$2.a() == eiq.c;
+         return super.a($$0).a(d, Boolean.valueOf($$3));
       }
    }
 
-   private static boolean a(dmz $$0, cwz $$1, ib $$2, dlo $$3) {
-      if ($$3.l() != dlo.a.a) {
-         return true;
+   public static boolean m(dnb $$0) {
+      return !$$0.c(d);
+   }
+
+   @Override
+   protected boolean b(dnb $$0, cwh $$1, ib $$2) {
+      return !$$0.k($$1, $$2).a(ih.b).c() || $$0.d($$1, $$2, ih.b);
+   }
+
+   @Override
+   protected boolean a(dnb $$0, cxe $$1, ib $$2) {
+      ib $$3 = $$2.d();
+      return this.b($$1.a_($$3), $$1, $$3);
+   }
+
+   @Override
+   protected dnb a(dnb $$0, ih $$1, dnb $$2, cxc $$3, ib $$4, ib $$5) {
+      if (!$$0.a($$3, $$4)) {
+         return dae.a.o();
       } else {
-         epm $$4 = cge.a(1.0F, $$0.c(b), 0.0F, 0.5F).a($$2).h(1.0E-6);
-         return $$1.b($$4);
-      }
-   }
-
-   @Override
-   public dmz a(css $$0) {
-      return this.o().a(b, $$0.k());
-   }
-
-   @Override
-   protected void a(dna.a<daa, dmz> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public dmz a(cwz $$0, ib $$1, dmz $$2, cis $$3) {
-      dkg $$4 = $$0.c_($$1);
-      if ($$4 instanceof dlo $$5) {
-         if (!$$0.B && $$3.f() && !$$5.ai_()) {
-            cqk $$6 = b(this.b());
-            $$4.a($$6, $$0.H_());
-            if ($$5.ae()) {
-               $$6.a($$5.af());
-            }
-
-            cfd $$7 = new cfd($$0, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, $$6);
-            $$7.s();
-            $$0.b($$7);
-         } else {
-            $$5.e_($$3);
-         }
-      }
-
-      return super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   protected List<cqk> a(dmz $$0, ela.a $$1) {
-      dkg $$2 = $$1.b(enf.h);
-      if ($$2 instanceof dlo $$3) {
-         $$1 = $$1.a(c, $$1x -> {
-            for (int $$2x = 0; $$2x < $$3.b(); $$2x++) {
-               $$1x.accept($$3.a($$2x));
-            }
-         });
-      }
-
-      return super.a($$0, $$1);
-   }
-
-   @Override
-   public void a(cwz $$0, ib $$1, dmz $$2, bpo $$3, cqk $$4) {
-      if ($$4.B()) {
-         dkg $$5 = $$0.c_($$1);
-         if ($$5 instanceof dlo) {
-            ((dlo)$$5).a($$4.z());
-         }
-      }
-   }
-
-   @Override
-   protected void a(dmz $$0, cwz $$1, ib $$2, dmz $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         dkg $$5 = $$1.c_($$2);
-         if ($$5 instanceof dlo) {
-            $$1.c($$2, $$0.b());
+         if ($$0.c(d)) {
+            $$3.a($$4, eiq.c, eiq.c.a($$3));
          }
 
-         super.a($$0, $$1, $$2, $$3, $$4);
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 
    @Override
-   public void a(cqk $$0, @Nullable cwf $$1, List<vu> $$2, csb $$3, @Nullable iz $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      ta $$5 = cof.a($$0);
-      if ($$5 != null) {
-         if ($$5.b("LootTable", 8)) {
-            $$2.add(vu.c("container.shulkerBox.unknownContents"));
-         }
+   protected boolean a(dnb $$0, csu $$1) {
+      return !$$1.h() && $$1.n().a(this.l()) && $$0.c(c) < 4 ? true : super.a($$0, $$1);
+   }
 
-         if ($$5.b("Items", 9)) {
-            iu<cqk> $$6 = iu.a(27, cqk.h);
-            bmw.b($$5, $$6);
-            int $$7 = 0;
-            int $$8 = 0;
-
-            for (cqk $$9 : $$6) {
-               if (!$$9.b()) {
-                  $$8++;
-                  if ($$7 <= 4) {
-                     $$7++;
-                     $$2.add(vu.a("container.shulkerBox.itemCount", $$9.z(), String.valueOf($$9.M())));
-                  }
-               }
-            }
-
-            if ($$8 - $$7 > 0) {
-               $$2.add(vu.a("container.shulkerBox.more", $$8 - $$7).a(n.u));
-            }
-         }
+   @Override
+   protected eqm a(dnb $$0, cwh $$1, ib $$2, epy $$3) {
+      switch ($$0.c(c)) {
+         case 1:
+         default:
+            return e;
+         case 2:
+            return f;
+         case 3:
+            return g;
+         case 4:
+            return h;
       }
    }
 
    @Override
-   protected eqk b_(dmz $$0, cwf $$1, ib $$2) {
-      if ($$1.c_($$2) instanceof dlo $$4 && !$$4.t()) {
-         return k.get($$0.c(b).g());
-      }
-
-      return eqh.b();
+   protected eip c_(dnb $$0) {
+      return $$0.c(d) ? eiq.c.a(false) : super.c_($$0);
    }
 
    @Override
-   protected eqk a(dmz $$0, cwf $$1, ib $$2, epw $$3) {
-      dkg $$4 = $$1.c_($$2);
-      return $$4 instanceof dlo ? eqh.a(((dlo)$$4).a($$0)) : eqh.b();
+   protected void a(dnc.a<dac, dnb> $$0) {
+      $$0.a(c, d);
    }
 
    @Override
-   protected boolean d_(dmz $$0) {
+   public boolean b(cxe $$0, ib $$1, dnb $$2) {
       return true;
    }
 
    @Override
-   protected int a(dmz $$0, cwz $$1, ib $$2) {
-      return clo.a($$1.c_($$2));
+   public boolean a(cxb $$0, axd $$1, ib $$2, dnb $$3) {
+      return true;
    }
 
    @Override
-   public cqk a(cxc $$0, ib $$1, dmz $$2) {
-      cqk $$3 = super.a($$0, $$1, $$2);
-      $$0.a($$1, dki.x).ifPresent($$2x -> $$2x.a($$3, $$0.H_()));
-      return $$3;
-   }
+   public void a(apf $$0, axd $$1, ib $$2, dnb $$3) {
+      if (!m($$3) && $$0.a_($$2.d()).a(aun.aq)) {
+         int $$4 = 5;
+         int $$5 = 1;
+         int $$6 = 2;
+         int $$7 = 0;
+         int $$8 = $$2.u() - 2;
+         int $$9 = 0;
 
-   @Nullable
-   public static cpb b(cqf $$0) {
-      return a(daa.a($$0));
-   }
+         for (int $$10 = 0; $$10 < 5; $$10++) {
+            for (int $$11 = 0; $$11 < $$5; $$11++) {
+               int $$12 = 2 + $$2.v() - 1;
 
-   @Nullable
-   public static cpb a(daa $$0) {
-      return $$0 instanceof dgy ? ((dgy)$$0).b() : null;
-   }
+               for (int $$13 = $$12 - 2; $$13 < $$12; $$13++) {
+                  ib $$14 = new ib($$8 + $$10, $$13, $$2.w() - $$9 + $$11);
+                  if ($$14 != $$2 && $$1.a(6) == 0 && $$0.a_($$14).a(dae.G)) {
+                     dnb $$15 = $$0.a_($$14.d());
+                     if ($$15.a(aun.aq)) {
+                        $$0.a($$14, dae.mV.o().a(c, Integer.valueOf($$1.a(4) + 1)), 3);
+                     }
+                  }
+               }
+            }
 
-   public static daa a(@Nullable cpb $$0) {
-      if ($$0 == null) {
-         return dac.kP;
-      } else {
-         switch ($$0) {
-            case a:
-               return dac.kQ;
-            case b:
-               return dac.kR;
-            case c:
-               return dac.kS;
-            case d:
-               return dac.kT;
-            case e:
-               return dac.kU;
-            case f:
-               return dac.kV;
-            case g:
-               return dac.kW;
-            case h:
-               return dac.kX;
-            case i:
-               return dac.kY;
-            case j:
-               return dac.kZ;
-            case k:
-            default:
-               return dac.la;
-            case l:
-               return dac.lb;
-            case m:
-               return dac.lc;
-            case n:
-               return dac.ld;
-            case o:
-               return dac.le;
-            case p:
-               return dac.lf;
+            if ($$7 < 2) {
+               $$5 += 2;
+               $$9++;
+            } else {
+               $$5 -= 2;
+               $$9--;
+            }
+
+            $$7++;
          }
+
+         $$0.a($$2, $$3.a(c, Integer.valueOf(4)), 2);
       }
    }
 
-   @Nullable
-   public cpb b() {
-      return this.l;
-   }
-
-   public static cqk b(@Nullable cpb $$0) {
-      return new cqk(a($$0));
-   }
-
    @Override
-   protected dmz a(dmz $$0, dgm $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dmz a(dmz $$0, dew $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   protected boolean a(dnb $$0, cwh $$1, ib $$2, eje $$3) {
+      return false;
    }
 }

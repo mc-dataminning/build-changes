@@ -1,47 +1,103 @@
-public class ffr extends fhf {
-   private static final int a = 90;
-   private final vu b;
-   private fbz c = fbz.a;
-   private final Runnable k;
-   private final vu l;
-   private final boolean m;
+import com.mojang.text2speech.Narrator;
+import javax.annotation.Nullable;
 
-   public ffr(Runnable $$0, vu $$1, vu $$2) {
-      this($$0, $$1, $$2, vt.k, true);
-   }
+public class ffr extends fhh {
+   private static final vu a = vu.c("accessibility.onboarding.screen.narrator");
+   private static final int b = 4;
+   private static final int c = 16;
+   private final fxu k = new fxu(fhm.b);
+   private final fbz l;
+   private final ezm m;
+   private final boolean n;
+   private boolean o;
+   private float p;
+   private final Runnable q;
+   @Nullable
+   private fbt r;
+   @Nullable
+   private fbg t;
 
-   public ffr(Runnable $$0, vu $$1, vu $$2, vu $$3, boolean $$4) {
-      super($$1);
-      this.k = $$0;
-      this.b = $$2;
-      this.l = $$3;
-      this.m = $$4;
-   }
-
-   @Override
-   public vu i() {
-      return vt.a(super.i(), this.b);
-   }
-
-   @Override
-   protected void aO_() {
-      super.aO_();
-      this.c = fbz.a(this.i, this.b, this.g - 50);
-      int $$0 = this.c.a() * 9;
-      int $$1 = aww.a(90 + $$0 + 12, this.h / 6 + 96, this.h - 24);
-      int $$2 = 150;
-      this.c(fbg.a(this.l, $$0x -> this.k.run()).a((this.g - 150) / 2, $$1, 150, 20).a());
+   public ffr(ezm $$0, Runnable $$1) {
+      super(vu.c("accessibility.onboarding.screen.title"));
+      this.m = $$0;
+      this.q = $$1;
+      this.l = new fbz(true);
+      this.n = ezi.Q().aY().a();
    }
 
    @Override
-   public void a(fat $$0, int $$1, int $$2, float $$3) {
+   public void aO_() {
+      int $$0 = this.o();
+      fet $$1 = new fet(this.g, this.h - $$0);
+      $$1.c().d().a(4);
+      fez $$2 = $$1.a(fez.d());
+      $$2.c().b().a(2);
+      this.r = new fbt(this.g - 16, this.e, this.i);
+      $$2.a(this.r, $$0x -> $$0x.e(16));
+      this.t = this.m.aq().a(this.m, 0, 0, 150);
+      this.t.j = this.n;
+      $$2.a(this.t);
+      $$2.a(fbm.b(150, $$0x -> this.a(new ffs(this, this.f.m)), false));
+      $$2.a(fbm.a(150, $$0x -> this.a(new fgq(this, this.f.m, this.f.ag())), false));
+      $$1.a(fbi.a(vt.j, $$0x -> this.d()).a(), $$1.b().f().a(8));
+      $$1.a();
+      fet.a($$1, 0, $$0, this.g, this.h, 0.5F, 0.0F);
+      $$1.a(this::c);
+   }
+
+   @Override
+   protected void aF_() {
+      if (this.n && this.t != null) {
+         this.b(this.t);
+      } else {
+         super.aF_();
+      }
+   }
+
+   private int o() {
+      return 90;
+   }
+
+   @Override
+   public void d() {
+      this.a(this.q);
+   }
+
+   private void a(fhh $$0) {
+      this.a(() -> this.f.a($$0));
+   }
+
+   private void a(Runnable $$0) {
+      this.m.ae = false;
+      this.m.at();
+      Narrator.getNarrator().clear();
+      $$0.run();
+   }
+
+   @Override
+   public void a(fav $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 70, 16777215);
-      this.c.a($$0, this.g / 2, 90);
+      this.E();
+      this.l.a($$0, this.g, 1.0F);
+      if (this.r != null) {
+         this.r.a($$0, $$1, $$2, $$3);
+      }
    }
 
    @Override
-   public boolean aM_() {
-      return this.m;
+   public void b(fav $$0, int $$1, int $$2, float $$3) {
+      this.k.a(0.0F, 1.0F);
+      $$0.a(0, 0, this.g, this.h, -1877995504);
+   }
+
+   private void E() {
+      if (!this.o && this.n) {
+         if (this.p < 40.0F) {
+            this.p++;
+         } else if (this.f.aC()) {
+            Narrator.getNarrator().say(a.getString(), true);
+            this.o = true;
+         }
+      }
    }
 }

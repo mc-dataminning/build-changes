@@ -1,47 +1,43 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.function.Supplier;
 
-public class bzz extends bzx<bpw> {
-   public static final int a = 10;
-   private static final cae c = cae.b().a(10.0).d();
-   private final ctk d;
+public class bzz<U extends bzy<?>> {
+   public static final bzz<bzi> a = a("dummy", bzi::new);
+   public static final bzz<bzq> b = a("nearest_items", bzq::new);
+   public static final bzz<bzr<bpp>> c = a("nearest_living_entities", bzr::new);
+   public static final bzz<bzv> d = a("nearest_players", bzv::new);
+   public static final bzz<bzp> e = a("nearest_bed", bzp::new);
+   public static final bzz<bzm> f = a("hurt_by", bzm::new);
+   public static final bzz<cac> g = a("villager_hostiles", cac::new);
+   public static final bzz<cab> h = a("villager_babies", cab::new);
+   public static final bzz<bzw> i = a("secondary_pois", bzw::new);
+   public static final bzz<bzk> j = a("golem_detected", bzk::new);
+   public static final bzz<bzo<ccl>> k = a("armadillo_scare_detected", () -> new bzo<>(5, ccl::j, ccl::gy, bys.G, 80));
+   public static final bzz<bzu> l = a("piglin_specific_sensor", bzu::new);
+   public static final bzz<bzt> m = a("piglin_brute_specific_sensor", bzt::new);
+   public static final bzz<bzl> n = a("hoglin_specific_sensor", bzl::new);
+   public static final bzz<bzf> o = a("nearest_adult", bzf::new);
+   public static final bzz<bzg> p = a("axolotl_attackables", bzg::new);
+   public static final bzz<caa> q = a("axolotl_temptations", () -> new caa(ccp.a()));
+   public static final bzz<caa> r = a("goat_temptations", () -> new caa(cdd.a()));
+   public static final bzz<caa> s = a("frog_temptations", () -> new caa(ccx.a()));
+   public static final bzz<caa> t = a("camel_temptations", () -> new caa(ccu.b()));
+   public static final bzz<caa> u = a("armadillo_temptations", () -> new caa(ccm.b()));
+   public static final bzz<bzj> v = a("frog_attackables", bzj::new);
+   public static final bzz<bzn> w = a("is_in_water", bzn::new);
+   public static final bzz<cad> x = a("warden_entity_sensor", cad::new);
+   public static final bzz<caa> y = a("sniffer_temptations", () -> new caa(cdu.a()));
+   public static final bzz<bzh> z = a("breeze_attack_entity_sensor", bzh::new);
+   private final Supplier<U> A;
 
-   public bzz(ctk $$0) {
-      this.d = $$0;
+   private bzz(Supplier<U> $$0) {
+      this.A = $$0;
    }
 
-   protected void a(apf $$0, bpw $$1) {
-      bqp<?> $$2 = $$1.dP();
-      List<cis> $$3 = $$0.x()
-         .stream()
-         .filter(bpb.f)
-         .filter($$1x -> c.a($$1, $$1x))
-         .filter($$1x -> $$1.a($$1x, 10.0))
-         .filter(this::a)
-         .filter($$1x -> !$$1.x($$1x))
-         .sorted(Comparator.comparingDouble($$1::g))
-         .collect(Collectors.toList());
-      if (!$$3.isEmpty()) {
-         cis $$4 = $$3.get(0);
-         $$2.a(byr.O, $$4);
-      } else {
-         $$2.b(byr.O);
-      }
+   public U a() {
+      return this.A.get();
    }
 
-   private boolean a(cis $$0) {
-      return this.a($$0.eU()) || this.a($$0.eV());
-   }
-
-   private boolean a(cqk $$0) {
-      return this.d.a($$0);
-   }
-
-   @Override
-   public Set<byr<?>> a() {
-      return ImmutableSet.of(byr.O);
+   private static <U extends bzy<?>> bzz<U> a(String $$0, Supplier<U> $$1) {
+      return iy.a(ki.C, new ajh($$0), new bzz<>($$1));
    }
 }

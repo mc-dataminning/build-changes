@@ -1,20 +1,11 @@
-public class gfe<T extends cgj> extends gee<T, fqe<T>> {
-   private static final ajh a = new ajh("textures/entity/spider/spider.png");
+public class gfe extends geh<cdt, fqe<cdt>> {
+   private static final ajh a = new ajh("textures/entity/sniffer/sniffer.png");
 
-   public gfe(gcy.a $$0) {
-      this($$0, frc.bt);
+   public gfe(gdb.a $$0) {
+      super($$0, new fqe<>($$0.a(fre.bu)), 1.1F);
    }
 
-   public gfe(gcy.a $$0, frb $$1) {
-      super($$0, new fqe<>($$0.a($$1)), 0.8F);
-      this.a(new ghp<>(this));
-   }
-
-   protected float b(T $$0) {
-      return 180.0F;
-   }
-
-   public ajh a(T $$0) {
+   public ajh a(cdt $$0) {
       return a;
    }
 }

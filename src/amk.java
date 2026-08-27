@@ -17,7 +17,7 @@ public class amk {
       });
    }
 
-   private static Collection<String> a(arz $$0, ekq $$1, Collection<String> $$2) {
+   private static Collection<String> a(arz $$0, eks $$1, Collection<String> $$2) {
       $$0.a();
       Collection<String> $$3 = Lists.newArrayList($$2);
       Collection<String> $$4 = $$1.D().a().b();
@@ -36,7 +36,7 @@ public class amk {
          du $$1 = (du)$$0x.getSource();
          MinecraftServer $$2 = $$1.l();
          arz $$3 = $$2.aG();
-         ekq $$4 = $$2.bc();
+         eks $$4 = $$2.bc();
          Collection<String> $$5 = $$3.d();
          Collection<String> $$6 = a($$3, $$4, $$5);
          $$1.a(() -> vu.c("commands.reload.success"), true);

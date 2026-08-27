@@ -1,224 +1,342 @@
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class exi extends gpb {
-   private static final int v = 2;
-   public static final List<bmz> a = ImmutableList.of(bmz.a, bmz.b, bmz.c, bmz.d);
-   private static final int w = 0;
-   public static final List<cww> b = ImmutableList.of(cww.a, cww.b, cww.c);
-   private static final vu x = vu.c("mco.configure.world.edit.slot.name");
-   static final vu y = vu.c("mco.configure.world.spawnProtection");
-   private static final vu z = vu.c("mco.configure.world.spawn_toggle.title").a(n.m, n.r);
-   private fbp A;
-   protected final ewp c;
-   private int B;
-   private int C;
-   private final evn D;
-   private final evg.d E;
-   private bmz F;
-   private cww G;
-   private final String H;
-   private String I;
-   private boolean J;
-   private boolean K;
-   private boolean L;
-   private boolean M;
-   int N;
-   private boolean O;
-   private boolean P;
-   exi.a Q;
+public class exi extends gpe {
+   static final Logger a = LogUtils.getLogger();
+   static final ajh b = new ajh("widget/slot_frame");
+   private static final vu c = vu.c("mco.template.button.select");
+   private static final vu v = vu.c("mco.template.button.trailer");
+   private static final vu w = vu.c("mco.template.button.publisher");
+   private static final int x = 100;
+   private static final int y = 10;
+   private final fev z = new fev(this);
+   final Consumer<evz> A;
+   exi.b B;
+   private final evi.d C;
+   private fbi D;
+   private fbi E;
+   private fbi F;
+   @Nullable
+   evz G = null;
+   @Nullable
+   String H;
+   @Nullable
+   private vu[] I;
+   @Nullable
+   List<exz.a> J;
 
-   public exi(ewp $$0, evn $$1, evg.d $$2, int $$3) {
-      super(vu.c("mco.configure.world.buttons.options"));
-      this.c = $$0;
-      this.D = $$1;
-      this.E = $$2;
-      this.F = a(a, $$1.h, 2);
-      this.G = a(b, $$1.i, 0);
-      this.H = $$1.b($$3);
-      this.a($$1.a($$3));
-      if ($$2 == evg.d.a) {
-         this.J = $$1.a;
-         this.N = $$1.e;
-         this.P = $$1.g;
-         this.L = $$1.b;
-         this.M = $$1.c;
-         this.K = $$1.d;
-         this.O = $$1.f;
+   public exi(vu $$0, Consumer<evz> $$1, evi.d $$2) {
+      this($$0, $$1, $$2, null);
+   }
+
+   public exi(vu $$0, Consumer<evz> $$1, evi.d $$2, @Nullable ewa $$3) {
+      super($$0);
+      this.A = $$1;
+      this.C = $$2;
+      if ($$3 == null) {
+         this.B = new exi.b();
+         this.a(new ewa(10));
       } else {
-         this.J = true;
-         this.N = 0;
-         this.P = false;
-         this.L = true;
-         this.M = true;
-         this.K = true;
-         this.O = true;
+         this.B = new exi.b(Lists.newArrayList($$3.a));
+         this.a($$3);
       }
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.f.a(this.c);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   private static <T> T a(List<T> $$0, int $$1, int $$2) {
-      try {
-         return $$0.get($$1);
-      } catch (IndexOutOfBoundsException var4) {
-         return $$0.get($$2);
-      }
-   }
-
-   private static <T> int a(List<T> $$0, T $$1, int $$2) {
-      int $$3 = $$0.indexOf($$1);
-      return $$3 == -1 ? $$2 : $$3;
+   public void a(vu... $$0) {
+      this.I = $$0;
    }
 
    @Override
    public void aO_() {
-      this.C = 170;
-      this.B = this.g / 2 - this.C;
-      int $$0 = this.g / 2 + 10;
-      if (this.E != evg.d.a) {
-         vu $$1;
-         if (this.E == evg.d.c) {
-            $$1 = vu.c("mco.configure.world.edit.subscreen.adventuremap");
-         } else if (this.E == evg.d.e) {
-            $$1 = vu.c("mco.configure.world.edit.subscreen.inspiration");
-         } else {
-            $$1 = vu.c("mco.configure.world.edit.subscreen.experience");
-         }
-
-         this.a(new goz($$1, this.g / 2, 26, 16711680));
-      }
-
-      this.A = this.d(new fbp(this.f.h, this.B, g(1), this.C, 20, null, vu.c("mco.configure.world.edit.slot.name")));
-      this.A.f(10);
-      this.A.a(this.I);
-      this.A.b(this::a);
-      fbn<Boolean> $$4 = this.c(fbn.b(this.J).a($$0, g(1), this.C, 20, vu.c("mco.configure.world.pvp"), ($$0x, $$1) -> this.J = $$1));
-      this.c(fbn.a(cww::e).a(b).a(this.G).a(this.B, g(3), this.C, 20, vu.c("selectWorld.gameMode"), ($$0x, $$1) -> this.G = $$1));
-      vu $$5 = vu.c("mco.configure.world.spawn_toggle.message");
-      fbn<Boolean> $$6 = this.c(fbn.b(this.L).a($$0, g(3), this.C, 20, vu.c("mco.configure.world.spawnAnimals"), this.a($$5, $$0x -> this.L = $$0x)));
-      fbn<Boolean> $$7 = fbn.b(this.F != bmz.a && this.M)
-         .a($$0, g(5), this.C, 20, vu.c("mco.configure.world.spawnMonsters"), this.a($$5, $$0x -> this.M = $$0x));
-      this.c(fbn.a(bmz::b).a(a).a(this.F).a(this.B, g(5), this.C, 20, vu.c("options.difficulty"), ($$1, $$2) -> {
-         this.F = $$2;
-         if (this.E == evg.d.a) {
-            boolean $$3 = this.F != bmz.a;
-            $$7.j = $$3;
-            $$7.a($$3 && this.M);
-         }
-      }));
-      this.c($$7);
-      this.Q = this.c(new exi.a(this.B, g(7), this.C, this.N, 0.0F, 16.0F));
-      fbn<Boolean> $$8 = this.c(
-         fbn.b(this.K)
-            .a(
-               $$0,
-               g(7),
-               this.C,
-               20,
-               vu.c("mco.configure.world.spawnNPCs"),
-               this.a(vu.c("mco.configure.world.spawn_toggle.message.npc"), $$0x -> this.K = $$0x)
-            )
-      );
-      fbn<Boolean> $$9 = this.c(fbn.b(this.P).a(this.B, g(9), this.C, 20, vu.c("mco.configure.world.forceGameMode"), ($$0x, $$1) -> this.P = $$1));
-      fbn<Boolean> $$10 = this.c(fbn.b(this.O).a($$0, g(9), this.C, 20, vu.c("mco.configure.world.commandBlocks"), ($$0x, $$1) -> this.O = $$1));
-      if (this.E != evg.d.a) {
-         $$4.j = false;
-         $$6.j = false;
-         $$8.j = false;
-         $$7.j = false;
-         this.Q.j = false;
-         $$10.j = false;
-         $$9.j = false;
-      }
-
-      if (this.F == bmz.a) {
-         $$7.j = false;
-      }
-
-      this.c(fbg.a(vu.c("mco.configure.world.buttons.done"), $$0x -> this.E()).a(this.B, g(13), this.C, 20).a());
-      this.c(fbg.a(vt.e, $$0x -> this.f.a(this.c)).a($$0, g(13), this.C, 20).a());
+      this.z.a(new fcp(this.e, this.i));
+      this.B = this.z.c(new exi.b(this.B.e()));
+      fez $$0 = this.z.b(fez.e().a(10));
+      $$0.c().b();
+      this.E = $$0.a(fbi.a(v, $$0x -> this.I()).a(100).a());
+      this.D = $$0.a(fbi.a(c, $$0x -> this.H()).a(100).a());
+      $$0.a(fbi.a(vt.e, $$0x -> this.d()).a(100).a());
+      this.F = $$0.a(fbi.a(w, $$0x -> this.J()).a(100).a());
+      this.E();
+      this.z.a($$1 -> {
+         fbg var10000 = this.c($$1);
+      });
+      this.c();
    }
 
-   private fbn.b<Boolean> a(vu $$0, Consumer<Boolean> $$1) {
-      return ($$2, $$3) -> {
-         if ($$3) {
-            $$1.accept(true);
-         } else {
-            this.f.a(new ffx($$1xx -> {
-               if ($$1xx) {
-                  $$1.accept(false);
-               }
-
-               this.f.a(this);
-            }, z, $$0, vt.i, vt.e));
-         }
-      };
+   @Override
+   protected void c() {
+      this.B.b(this.g, this.h - this.z.b() - this.K());
+      this.z.a();
    }
 
    @Override
    public vu i() {
-      return vt.a(this.p(), this.o());
+      List<vu> $$0 = Lists.newArrayListWithCapacity(2);
+      $$0.add(this.e);
+      if (this.I != null) {
+         $$0.addAll(Arrays.asList(this.I));
+      }
+
+      return vt.a($$0);
+   }
+
+   void E() {
+      this.F.k = this.G != null && !this.G.e.isEmpty();
+      this.E.k = this.G != null && !this.G.g.isEmpty();
+      this.D.j = this.G != null;
    }
 
    @Override
-   public void a(fat $$0, int $$1, int $$2, float $$3) {
+   public void d() {
+      this.A.accept(null);
+   }
+
+   private void H() {
+      if (this.G != null) {
+         this.A.accept(this.G);
+      }
+   }
+
+   private void I() {
+      if (this.G != null && !this.G.g.isBlank()) {
+         ffy.a(this, this.G.g);
+      }
+   }
+
+   private void J() {
+      if (this.G != null && !this.G.e.isBlank()) {
+         ffy.a(this, this.G.e);
+      }
+   }
+
+   private void a(final ewa $$0) {
+      (new Thread("realms-template-fetcher") {
+         @Override
+         public void run() {
+            ewa $$0 = $$0;
+            eur $$1 = eur.a();
+
+            while ($$0 != null) {
+               Either<ewa, Exception> $$2 = exi.this.a($$0, $$1);
+               $$0 = exi.this.f.a(() -> {
+                  if ($$2.right().isPresent()) {
+                     exi.a.error("Couldn't fetch templates", (Throwable)$$2.right().get());
+                     if (exi.this.B.d()) {
+                        exi.this.J = exz.a(gkh.a("mco.template.select.failure"));
+                     }
+
+                     return null;
+                  } else {
+                     ewa $$1x = (ewa)$$2.left().get();
+
+                     for (evz $$2x : $$1x.a) {
+                        exi.this.B.a($$2x);
+                     }
+
+                     if ($$1x.a.isEmpty()) {
+                        if (exi.this.B.d()) {
+                           String $$3 = gkh.a("mco.template.select.none", "%link");
+                           exz.b $$4 = exz.b.a(gkh.a("mco.template.select.none.linkTitle"), "https://aka.ms/MinecraftRealmsContentCreator");
+                           exi.this.J = exz.a($$3, $$4);
+                        }
+
+                        return null;
+                     } else {
+                        return $$1x;
+                     }
+                  }
+               }).join();
+            }
+         }
+      }).start();
+   }
+
+   Either<ewa, Exception> a(ewa $$0, eur $$1) {
+      try {
+         return Either.left($$1.a($$0.b + 1, $$0.c, this.C));
+      } catch (ewe var4) {
+         return Either.right(var4);
+      }
+   }
+
+   @Override
+   public void a(fav $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 17, -1);
-      $$0.a(this.i, x, this.B + this.C / 2 - this.i.a(x) / 2, g(0) - 5, -1, false);
-      this.A.a($$0, $$1, $$2, $$3);
-   }
+      this.H = null;
+      if (this.J != null) {
+         this.a($$0, $$1, $$2, this.J);
+      }
 
-   private void a(String $$0) {
-      if ($$0.equals(this.H)) {
-         this.I = "";
-      } else {
-         this.I = $$0;
+      if (this.I != null) {
+         for (int $$4 = 0; $$4 < this.I.length; $$4++) {
+            vu $$5 = this.I[$$4];
+            $$0.a(this.i, $$5, this.g / 2, g(-1 + $$4), -6250336);
+         }
       }
    }
 
-   private void E() {
-      int $$0 = a(a, this.F, 2);
-      int $$1 = a(b, this.G, 0);
-      if (this.E != evg.d.c && this.E != evg.d.d && this.E != evg.d.e) {
-         boolean $$2 = this.E == evg.d.a && this.F != bmz.a && this.M;
-         this.c.a(new evn(this.J, this.L, $$2, this.K, this.N, this.O, $$0, $$1, this.P, this.I, this.D.j, this.D.k));
-      } else {
-         this.c.a(new evn(this.D.a, this.D.b, this.D.c, this.D.d, this.D.e, this.D.f, $$0, $$1, this.D.g, this.I, this.D.j, this.D.k));
+   private void a(fav $$0, int $$1, int $$2, List<exz.a> $$3) {
+      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
+         exz.a $$5 = $$3.get($$4);
+         int $$6 = g(4 + $$4);
+         int $$7 = $$5.a.stream().mapToInt($$0x -> this.i.b($$0x.a())).sum();
+         int $$8 = this.g / 2 - $$7 / 2;
+
+         for (exz.b $$9 : $$5.a) {
+            int $$10 = $$9.b() ? 3368635 : -1;
+            int $$11 = $$0.b(this.i, $$9.a(), $$8, $$6, $$10);
+            if ($$9.b() && $$1 > $$8 && $$1 < $$11 && $$2 > $$6 - 3 && $$2 < $$6 + 8) {
+               this.d(vu.b($$9.c()));
+               this.H = $$9.c();
+            }
+
+            $$8 = $$11;
+         }
       }
    }
 
-   class a extends fbc {
-      private final double d;
-      private final double e;
+   int K() {
+      return this.I != null ? g(1) : 36;
+   }
 
-      public a(int $$0, int $$1, int $$2, int $$3, float $$4, float $$5) {
-         super($$0, $$1, $$2, 20, vt.a, 0.0);
-         this.d = (double)$$4;
-         this.e = (double)$$5;
-         this.c = (double)((aww.a((float)$$3, $$4, $$5) - $$4) / ($$5 - $$4));
-         this.b();
-      }
+   class a extends fce.a<exi.a> {
+      private static final fcv c = new fcv(new ajh("icon/link"), new ajh("icon/link_highlighted"));
+      private static final fcv d = new fcv(new ajh("icon/video_link"), new ajh("icon/video_link_highlighted"));
+      private static final vu e = vu.c("mco.template.info.tooltip");
+      private static final vu f = vu.c("mco.template.trailer.tooltip");
+      public final evz a;
+      private long g;
+      @Nullable
+      private fbu h;
+      @Nullable
+      private fbu i;
 
-      @Override
-      public void a() {
-         if (exi.this.Q.j) {
-            exi.this.N = (int)aww.d(aww.a(this.c, 0.0, 1.0), this.d, this.e);
+      public a(evz $$0) {
+         this.a = $$0;
+         if (!$$0.e.isBlank()) {
+            this.h = new fbu(15, 15, c, ffy.b(exi.this, $$0.e), e);
+            this.h.a(fct.a(e));
+         }
+
+         if (!$$0.g.isBlank()) {
+            this.i = new fbu(15, 15, d, ffy.b(exi.this, $$0.g), f);
+            this.i.a(fct.a(f));
          }
       }
 
       @Override
-      protected void b() {
-         this.b(vt.a(exi.y, (vu)(exi.this.N == 0 ? vt.c : vu.b(String.valueOf(exi.this.N)))));
+      public boolean a(double $$0, double $$1, int $$2) {
+         if ($$2 == 0) {
+            exi.this.G = this.a;
+            exi.this.E();
+            if (ac.b() - this.g < 250L && this.aJ_()) {
+               exi.this.A.accept(this.a);
+            }
+
+            this.g = ac.b();
+            if (this.h != null) {
+               this.h.a($$0, $$1, $$2);
+            }
+
+            if (this.i != null) {
+               this.i.a($$0, $$1, $$2);
+            }
+
+            return true;
+         } else {
+            return super.a($$0, $$1, $$2);
+         }
+      }
+
+      @Override
+      public void a(fav $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.a(exx.a(this.a.a, this.a.f), $$3 + 1, $$2 + 1 + 1, 0.0F, 0.0F, 38, 38, 38, 38);
+         $$0.a(exi.b, $$3, $$2 + 1, 40, 40);
+         int $$10 = 5;
+         int $$11 = exi.this.i.b(this.a.c);
+         if (this.h != null) {
+            this.h.c($$3 + $$4 - $$11 - this.h.w() - 10, $$2);
+            this.h.a($$0, $$6, $$7, $$9);
+         }
+
+         if (this.i != null) {
+            this.i.c($$3 + $$4 - $$11 - this.i.w() * 2 - 15, $$2);
+            this.i.a($$0, $$6, $$7, $$9);
+         }
+
+         int $$12 = $$3 + 45 + 20;
+         int $$13 = $$2 + 5;
+         $$0.a(exi.this.i, this.a.b, $$12, $$13, -1, false);
+         $$0.a(exi.this.i, this.a.c, $$3 + $$4 - $$11 - 5, $$13, 7105644, false);
+         $$0.a(exi.this.i, this.a.d, $$12, $$13 + 9 + 5, -6250336, false);
+         if (!this.a.h.isBlank()) {
+            $$0.a(exi.this.i, this.a.h, $$12, $$2 + $$5 - 9 / 2 - 5, 5000268, false);
+         }
+      }
+
+      @Override
+      public vu a() {
+         vu $$0 = vt.b(
+            vu.b(this.a.b), vu.a("mco.template.select.narrate.authors", this.a.d), vu.b(this.a.h), vu.a("mco.template.select.narrate.version", this.a.c)
+         );
+         return vu.a("narrator.select", $$0);
+      }
+   }
+
+   class b extends gpd<exi.a> {
+      public b() {
+         this(Collections.emptyList());
+      }
+
+      public b(Iterable<evz> $$0) {
+         super(exi.this.g, exi.this.h - 36 - exi.this.K(), exi.this.K(), 46);
+         $$0.forEach(this::a);
+      }
+
+      public void a(evz $$0) {
+         this.a((exi.a)(exi.this.new a($$0)));
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         if (exi.this.H != null) {
+            ffy.a(exi.this, exi.this.H);
+            return true;
+         } else {
+            return super.a($$0, $$1, $$2);
+         }
+      }
+
+      public void a(@Nullable exi.a $$0) {
+         super.a($$0);
+         exi.this.G = $$0 == null ? null : $$0.a;
+         exi.this.E();
+      }
+
+      @Override
+      public int a() {
+         return this.n() * 46;
+      }
+
+      @Override
+      public int b() {
+         return 300;
+      }
+
+      public boolean d() {
+         return this.n() == 0;
+      }
+
+      public List<evz> e() {
+         return this.l().stream().map($$0 -> $$0.a).collect(Collectors.toList());
       }
    }
 }

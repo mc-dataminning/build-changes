@@ -1,69 +1,82 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class emp extends emg {
+public class emp extends emi {
+   private static final Codec<Pair<il<djz>, cpd>> b = Codec.mapPair(ki.am.r().fieldOf("pattern"), cpd.q.fieldOf("color")).codec();
    public static final Codec<emp> a = RecordCodecBuilder.create(
       $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  ajh.a.fieldOf("name").forGetter($$0x -> $$0x.b),
-                  awe.a(Codec.LONG, "seed", 0L).forGetter($$0x -> $$0x.c),
-                  ki.k.r().fieldOf("type").forGetter($$0x -> $$0x.d)
-               )
-            )
+            .and($$0.group(b.listOf().fieldOf("patterns").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("append").forGetter($$0x -> $$0x.d)))
             .apply($$0, emp::new)
    );
-   private final ajh b;
-   private final long c;
-   private final il<dki<?>> d;
+   private final List<Pair<il<djz>, cpd>> c;
+   private final boolean d;
 
-   private emp(List<ent> $$0, ajh $$1, long $$2, il<dki<?>> $$3) {
+   emp(List<env> $$0, List<Pair<il<djz>, cpd>> $$1, boolean $$2) {
       super($$0);
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public emi b() {
-      return emj.s;
-   }
+   protected cqm a(cqm $$0, ekw $$1) {
+      ta $$2 = coh.a($$0);
+      if ($$2 == null) {
+         $$2 = new ta();
+      }
 
-   @Override
-   public cqk a(cqk $$0, eku $$1) {
-      if ($$0.b()) {
-         return $$0;
+      djz.a $$3 = new djz.a();
+      this.c.forEach($$3::a);
+      tg $$4 = $$3.a();
+      tg $$5;
+      if (this.d) {
+         $$5 = $$2.c("Patterns", 10).e();
+         $$5.addAll($$4);
       } else {
-         ta $$2 = cof.a($$0);
-         if ($$2 == null) {
-            $$2 = new ta();
-         }
-
-         $$2.a("LootTable", this.b.toString());
-         if (this.c != 0L) {
-            $$2.a("LootTableSeed", this.c);
-         }
-
-         cof.a($$0, this.d.a(), $$2);
-         return $$0;
+         $$5 = $$4;
       }
+
+      $$2.a("Patterns", $$5);
+      coh.a($$0, dkk.t, $$2);
+      return $$0;
    }
 
    @Override
-   public void a(eld $$0) {
-      super.a($$0);
-      ekw<elc> $$1 = new ekw<>(ekz.c, this.b);
-      if ($$0.a().getElementOptional($$1).isEmpty()) {
-         $$0.b("Missing loot table used for container: " + this.b);
+   public emk b() {
+      return eml.y;
+   }
+
+   public static emp.a a(boolean $$0) {
+      return new emp.a($$0);
+   }
+
+   public static class a extends emi.a<emp.a> {
+      private final Builder<Pair<il<djz>, cpd>> a = ImmutableList.builder();
+      private final boolean b;
+
+      a(boolean $$0) {
+         this.b = $$0;
       }
-   }
 
-   public static emg.a<?> a(dki<?> $$0, ajh $$1) {
-      return a($$2 -> new emp($$2, $$1, 0L, $$0.a()));
-   }
+      protected emp.a a() {
+         return this;
+      }
 
-   public static emg.a<?> a(dki<?> $$0, ajh $$1, long $$2) {
-      return a($$3 -> new emp($$3, $$1, $$2, $$0.a()));
+      @Override
+      public emj b() {
+         return new emp(this.g(), this.a.build(), this.b);
+      }
+
+      public emp.a a(ajg<djz> $$0, cpd $$1) {
+         return this.a(ki.am.g($$0), $$1);
+      }
+
+      public emp.a a(il<djz> $$0, cpd $$1) {
+         this.a.add(Pair.of($$0, $$1));
+         return this;
+      }
    }
 }

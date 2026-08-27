@@ -1,17 +1,17 @@
 public class agf implements yb<aez> {
    public static final xs<uu, agf> a = yb.a(agf::a, agf::new);
-   private final cnc b;
+   private final cne b;
    private final boolean c;
    private final boolean d;
 
-   public agf(cnc $$0, boolean $$1, boolean $$2) {
+   public agf(cne $$0, boolean $$1, boolean $$2) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
    }
 
    private agf(uu $$0) {
-      this.b = $$0.b(cnc.class);
+      this.b = $$0.b(cne.class);
       this.c = $$0.readBoolean();
       this.d = $$0.readBoolean();
    }
@@ -31,7 +31,7 @@ public class agf implements yb<aez> {
       $$0.a(this);
    }
 
-   public cnc b() {
+   public cne b() {
       return this.b;
    }
 

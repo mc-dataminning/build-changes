@@ -1,77 +1,61 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class djs extends dhb {
-   public static final MapCodec<djs> b = b(djs::new);
-   @Nullable
-   private static dne h;
-   @Nullable
-   private static dne i;
+public class djs extends dac {
+   public static final MapCodec<djs> a = b(djs::new);
 
    @Override
    public MapCodec<djs> a() {
-      return b;
+      return a;
    }
 
-   protected djs(dmy.d $$0) {
-      super(dhb.b.d, $$0);
+   protected djs(dna.d $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(cwz $$0, ib $$1, dmz $$2, @Nullable bpo $$3, cqk $$4) {
-      a($$0, $$1);
-   }
-
-   public static void a(cwz $$0, ib $$1) {
-      if ($$0.c_($$1) instanceof dlr $$2) {
-         a($$0, $$1, $$2);
+   protected void b(dnb $$0, cxb $$1, ib $$2, dnb $$3, boolean $$4) {
+      if ($$1.D_().i()) {
+         $$1.a($$2, dae.aO.o(), 3);
+         $$1.c(2009, $$2, 0);
+         $$1.a(null, $$2, aty.iN, atz.e, 1.0F, (1.0F + $$1.E_().i() * 0.2F) * 0.7F);
       }
    }
 
-   public static void a(cwz $$0, ib $$1, dlr $$2) {
-      if (!$$0.B) {
-         dmz $$3 = $$2.n();
-         boolean $$4 = $$3.a(dac.gG) || $$3.a(dac.gH);
-         if ($$4 && $$1.v() >= $$0.I_() && $$0.aj() != bmz.a) {
-            dne.b $$5 = s().a($$0, $$1);
-            if ($$5 != null) {
-               cer $$6 = bpc.bo.a($$0);
-               if ($$6 != null) {
-                  dau.a($$0, $$5);
-                  ib $$7 = $$5.a(1, 2, 0).d();
-                  $$6.b((double)$$7.u() + 0.5, (double)$$7.v() + 0.55, (double)$$7.w() + 0.5, $$5.b().o() == ih.a.a ? 0.0F : 90.0F, 0.0F);
-                  $$6.aX = $$5.b().o() == ih.a.a ? 0.0F : 90.0F;
-                  $$6.r();
-
-                  for (apg $$8 : $$0.a(apg.class, $$6.cH().g(50.0))) {
-                     am.o.a($$8, $$6);
+   @Override
+   public void a(dnb $$0, cxb $$1, ib $$2, axd $$3) {
+      ih $$4 = ih.b($$3);
+      if ($$4 != ih.b) {
+         ib $$5 = $$2.a($$4);
+         dnb $$6 = $$1.a_($$5);
+         if (!$$0.p() || !$$6.d($$1, $$5, $$4.g())) {
+            double $$7 = (double)$$2.u();
+            double $$8 = (double)$$2.v();
+            double $$9 = (double)$$2.w();
+            if ($$4 == ih.a) {
+               $$8 -= 0.05;
+               $$7 += $$3.j();
+               $$9 += $$3.j();
+            } else {
+               $$8 += $$3.j() * 0.8;
+               if ($$4.o() == ih.a.a) {
+                  $$9 += $$3.j();
+                  if ($$4 == ih.f) {
+                     $$7++;
+                  } else {
+                     $$7 += 0.05;
                   }
-
-                  $$0.b($$6);
-                  dau.b($$0, $$5);
+               } else {
+                  $$7 += $$3.j();
+                  if ($$4 == ih.d) {
+                     $$9++;
+                  } else {
+                     $$9 += 0.05;
+                  }
                }
             }
+
+            $$1.a(kc.m, $$7, $$8, $$9, 0.0, 0.0, 0.0);
          }
       }
-   }
-
-   public static boolean b(cwz $$0, ib $$1, cqk $$2) {
-      return $$2.a(cqn.uj) && $$1.v() >= $$0.I_() + 2 && $$0.aj() != bmz.a && !$$0.B ? y().a($$0, $$1) != null : false;
-   }
-
-   private static dne s() {
-      if (h == null) {
-         h = dnf.a().a("^^^", "###", "~#~").a('#', $$0 -> $$0.a().a(aun.aF)).a('^', dnd.a(dni.a(dac.gG).or(dni.a(dac.gH)))).a('~', $$0 -> $$0.a().i()).b();
-      }
-
-      return h;
-   }
-
-   private static dne y() {
-      if (i == null) {
-         i = dnf.a().a("   ", "###", "~#~").a('#', $$0 -> $$0.a().a(aun.aF)).a('~', $$0 -> $$0.a().i()).b();
-      }
-
-      return i;
    }
 }

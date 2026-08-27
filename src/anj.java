@@ -67,7 +67,7 @@ public class anj {
                                                             ((du)$$0x.getSource()).e(),
                                                             fv.b($$0x, "location"),
                                                             null,
-                                                            new anj.a(eh.a($$0x, "facingEntity"), eg.a.a)
+                                                            new anj.b(eh.a($$0x, "facingEntity"), eg.a.a)
                                                          )
                                                    ))
                                                 .then(
@@ -79,7 +79,7 @@ public class anj {
                                                                ((du)$$0x.getSource()).e(),
                                                                fv.b($$0x, "location"),
                                                                null,
-                                                               new anj.a(eh.a($$0x, "facingEntity"), eg.a($$0x, "facingAnchor"))
+                                                               new anj.b(eh.a($$0x, "facingEntity"), eg.a($$0x, "facingAnchor"))
                                                             )
                                                       )
                                                 )
@@ -94,7 +94,7 @@ public class anj {
                                                 ((du)$$0x.getSource()).e(),
                                                 fv.b($$0x, "location"),
                                                 null,
-                                                new anj.a(fv.a($$0x, "facingLocation"))
+                                                new anj.c(fv.a($$0x, "facingLocation"))
                                              )
                                        )
                                  )
@@ -106,9 +106,9 @@ public class anj {
       $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("tp").requires($$0x -> $$0x.c(2))).redirect($$1));
    }
 
-   private static int a(du $$0, Collection<? extends bow> $$1, bow $$2) throws CommandSyntaxException {
-      for (bow $$3 : $$1) {
-         a($$0, $$3, (apf)$$2.dM(), $$2.dr(), $$2.dt(), $$2.dx(), EnumSet.noneOf(bqb.class), $$2.dC(), $$2.dE(), null);
+   private static int a(du $$0, Collection<? extends box> $$1, box $$2) throws CommandSyntaxException {
+      for (box $$3 : $$1) {
+         a($$0, $$3, (apf)$$2.dM(), $$2.dr(), $$2.dt(), $$2.dx(), EnumSet.noneOf(bqc.class), $$2.dC(), $$2.dE(), null);
       }
 
       if ($$1.size() == 1) {
@@ -120,36 +120,36 @@ public class anj {
       return $$1.size();
    }
 
-   private static int a(du $$0, Collection<? extends bow> $$1, apf $$2, fq $$3, @Nullable fq $$4, @Nullable anj.a $$5) throws CommandSyntaxException {
-      epr $$6 = $$3.a($$0);
-      epq $$7 = $$4 == null ? null : $$4.b($$0);
-      Set<bqb> $$8 = EnumSet.noneOf(bqb.class);
+   private static int a(du $$0, Collection<? extends box> $$1, apf $$2, fq $$3, @Nullable fq $$4, @Nullable anj.a $$5) throws CommandSyntaxException {
+      ept $$6 = $$3.a($$0);
+      eps $$7 = $$4 == null ? null : $$4.b($$0);
+      Set<bqc> $$8 = EnumSet.noneOf(bqc.class);
       if ($$3.a()) {
-         $$8.add(bqb.a);
+         $$8.add(bqc.a);
       }
 
       if ($$3.b()) {
-         $$8.add(bqb.b);
+         $$8.add(bqc.b);
       }
 
       if ($$3.c()) {
-         $$8.add(bqb.c);
+         $$8.add(bqc.c);
       }
 
       if ($$4 == null) {
-         $$8.add(bqb.e);
-         $$8.add(bqb.d);
+         $$8.add(bqc.e);
+         $$8.add(bqc.d);
       } else {
          if ($$4.a()) {
-            $$8.add(bqb.e);
+            $$8.add(bqc.e);
          }
 
          if ($$4.b()) {
-            $$8.add(bqb.d);
+            $$8.add(bqc.d);
          }
       }
 
-      for (bow $$9 : $$1) {
+      for (box $$9 : $$1) {
          if ($$4 == null) {
             a($$0, $$9, $$2, $$6.c, $$6.d, $$6.e, $$8, $$9.dC(), $$9.dE(), $$5);
          } else {
@@ -170,57 +170,50 @@ public class anj {
       return String.format(Locale.ROOT, "%f", $$0);
    }
 
-   private static void a(du $$0, bow $$1, apf $$2, double $$3, double $$4, double $$5, Set<bqb> $$6, float $$7, float $$8, @Nullable anj.a $$9) throws CommandSyntaxException {
+   private static void a(du $$0, box $$1, apf $$2, double $$3, double $$4, double $$5, Set<bqc> $$6, float $$7, float $$8, @Nullable anj.a $$9) throws CommandSyntaxException {
       ib $$10 = ib.a($$3, $$4, $$5);
-      if (!cwz.l($$10)) {
+      if (!cxb.l($$10)) {
          throw a.create();
       } else {
          float $$11 = aww.g($$7);
          float $$12 = aww.g($$8);
          if ($$1.a($$2, $$3, $$4, $$5, $$6, $$11, $$12)) {
             if ($$9 != null) {
-               $$9.a($$0, $$1);
+               $$9.perform($$0, $$1);
             }
 
-            if (!($$1 instanceof bpo $$13) || !$$13.fB()) {
+            if (!($$1 instanceof bpp $$13) || !$$13.fB()) {
                $$1.g($$1.dp().d(1.0, 0.0, 1.0));
                $$1.c(true);
             }
 
-            if ($$1 instanceof bpw $$14) {
+            if ($$1 instanceof bpx $$14) {
                $$14.K().n();
             }
          }
       }
    }
 
-   static class a {
-      private final epr a;
-      private final bow b;
-      private final eg.a c;
+   @FunctionalInterface
+   interface a {
+      void perform(du var1, box var2);
+   }
 
-      public a(bow $$0, eg.a $$1) {
-         this.b = $$0;
-         this.c = $$1;
-         this.a = $$1.a($$0);
-      }
-
-      public a(epr $$0) {
-         this.b = null;
-         this.a = $$0;
-         this.c = null;
-      }
-
-      public void a(du $$0, bow $$1) {
-         if (this.b != null) {
-            if ($$1 instanceof apg) {
-               ((apg)$$1).a($$0.m(), this.b, this.c);
-            } else {
-               $$1.a($$0.m(), this.a);
-            }
+   static record b(box a, eg.a b) implements anj.a {
+      @Override
+      public void perform(du $$0, box $$1) {
+         if ($$1 instanceof apg $$2) {
+            $$2.a($$0.m(), this.a, this.b);
          } else {
-            $$1.a($$0.m(), this.a);
+            $$1.a($$0.m(), this.b.a(this.a));
          }
+      }
+   }
+
+   static record c(ept a) implements anj.a {
+      @Override
+      public void perform(du $$0, box $$1) {
+         $$1.a($$0.m(), this.a);
       }
    }
 }

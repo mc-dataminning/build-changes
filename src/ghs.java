@@ -1,32 +1,34 @@
-public abstract class ghs<T extends bpo, M extends fpi<T>> extends ghj<T, M> {
-   public ghs(gdz<T, M> $$0) {
+public class ghs extends ghm<ccc, fqf<ccc>> {
+   private final fym a;
+   private final gdz b;
+
+   public ghs(gew<ccc, fqf<ccc>> $$0, fym $$1, gdz $$2) {
       super($$0);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   protected abstract int a(T var1);
-
-   protected abstract void a(etz var1, fxq var2, int var3, bow var4, float var5, float var6, float var7, float var8);
-
-   public void a(etz $$0, fxq $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      int $$10 = this.a($$3);
-      axd $$11 = axd.a((long)$$3.aj());
-      if ($$10 > 0) {
-         for (int $$12 = 0; $$12 < $$10; $$12++) {
+   public void a(eub $$0, fxs $$1, int $$2, ccc $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.s()) {
+         boolean $$10 = ezi.Q().b($$3) && $$3.ce();
+         if (!$$3.ce() || $$10) {
             $$0.a();
-            frd $$13 = this.c().a($$11);
-            frd.a $$14 = $$13.a($$11);
-            $$13.a($$0);
-            float $$15 = $$11.i();
-            float $$16 = $$11.i();
-            float $$17 = $$11.i();
-            float $$18 = aww.i($$15, $$14.a, $$14.d) / 16.0F;
-            float $$19 = aww.i($$16, $$14.b, $$14.e) / 16.0F;
-            float $$20 = aww.i($$17, $$14.c, $$14.f) / 16.0F;
-            $$0.a($$18, $$19, $$20);
-            $$15 = -1.0F * ($$15 * 2.0F - 1.0F);
-            $$16 = -1.0F * ($$16 * 2.0F - 1.0F);
-            $$17 = -1.0F * ($$17 * 2.0F - 1.0F);
-            this.a($$0, $$1, $$2, $$3, $$15, $$16, $$17, $$6);
+            this.c().c().a($$0);
+            float $$11 = 0.625F;
+            $$0.a(0.0F, -0.34375F, 0.0F);
+            $$0.a(a.d.rotationDegrees(180.0F));
+            $$0.b(0.625F, -0.625F, -0.625F);
+            cqm $$12 = new cqm(dae.ee);
+            if ($$10) {
+               dnb $$13 = dae.ee.o();
+               glc $$14 = this.a.a($$13);
+               int $$15 = gec.c($$3, 0.0F);
+               $$0.a(-0.5F, -0.5F, -0.5F);
+               this.a.b().a($$0.c(), $$1.getBuffer(fya.r(gjb.e)), $$13, $$14, 0.0F, 0.0F, 0.0F, $$2, $$15);
+            } else {
+               this.b.a($$3, $$12, cqj.f, false, $$0, $$1, $$3.dM(), $$2, gec.c($$3, 0.0F), $$3.aj());
+            }
+
             $$0.b();
          }
       }

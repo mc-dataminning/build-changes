@@ -26,7 +26,7 @@ public class uz<T extends va> extends MessageToByteEncoder<yb<T>> {
             throw new IllegalArgumentException("Packet too big (is " + $$5 + ", should be less than 8388608): " + $$1);
          }
 
-         bjw.f.b(this.b.a(), $$3, $$0.channel().remoteAddress(), $$5);
+         bjx.f.b(this.b.a(), $$3, $$0.channel().remoteAddress(), $$5);
       } catch (Throwable var10) {
          a.error("Error sending packet {}", $$3, var10);
          if ($$1.c()) {

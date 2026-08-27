@@ -1,48 +1,34 @@
 import com.mojang.serialization.MapCodec;
 
-public class dgl extends daa {
-   public static final MapCodec<dgl> h = b(dgl::new);
-   public static final dnx<ih.a> i = dnp.I;
+public class dgl extends dac implements daf {
+   public static final MapCodec<dgl> a = b(dgl::new);
 
    @Override
-   public MapCodec<? extends dgl> a() {
-      return h;
+   public MapCodec<dgl> a() {
+      return a;
    }
 
-   public dgl(dmy.d $$0) {
+   public dgl(dna.d $$0) {
       super($$0);
-      this.k(this.o().a(i, ih.a.b));
    }
 
    @Override
-   protected dmz a(dmz $$0, dgm $$1) {
-      return b($$0, $$1);
-   }
-
-   public static dmz b(dmz $$0, dgm $$1) {
-      switch ($$1) {
-         case d:
-         case b:
-            switch ((ih.a)$$0.c(i)) {
-               case a:
-                  return $$0.a(i, ih.a.c);
-               case c:
-                  return $$0.a(i, ih.a.a);
-               default:
-                  return $$0;
-            }
-         default:
-            return $$0;
-      }
+   public boolean b(cxe $$0, ib $$1, dnb $$2) {
+      return $$0.a_($$1.d()).i();
    }
 
    @Override
-   protected void a(dna.a<daa, dmz> $$0) {
-      $$0.a(i);
+   public boolean a(cxb $$0, axd $$1, ib $$2, dnb $$3) {
+      return true;
    }
 
    @Override
-   public dmz a(css $$0) {
-      return this.o().a(i, $$0.k().o());
+   public void a(apf $$0, axd $$1, ib $$2, dnb $$3) {
+      $$0.b($$2.d(), dae.sG.o());
+   }
+
+   @Override
+   public ib a(ib $$0) {
+      return $$0.d();
    }
 }

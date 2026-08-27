@@ -1,56 +1,20 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
-
-public class ceb extends cdz {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = 10;
-   @Nullable
-   private epr d;
-   private int e;
-
-   public ceb(cdx $$0) {
+public abstract class ceb extends cea {
+   public ceb(cdy $$0) {
       super($$0);
    }
 
    @Override
-   public void c() {
-      if (this.d == null) {
-         b.warn("Aborting charge player as no target was set.");
-         this.a.gk().a(cen.a);
-      } else if (this.e > 0 && this.e++ >= 10) {
-         this.a.gk().a(cen.a);
+   public boolean a() {
+      return true;
+   }
+
+   @Override
+   public float a(bnw $$0, float $$1) {
+      if ($$0.c() instanceof cja) {
+         $$0.c().g(1);
+         return 0.0F;
       } else {
-         double $$0 = this.d.c(this.a.dr(), this.a.dt(), this.a.dx());
-         if ($$0 < 100.0 || $$0 > 22500.0 || this.a.P || this.a.Q) {
-            this.e++;
-         }
+         return super.a($$0, $$1);
       }
-   }
-
-   @Override
-   public void d() {
-      this.d = null;
-      this.e = 0;
-   }
-
-   public void a(epr $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public float f() {
-      return 3.0F;
-   }
-
-   @Nullable
-   @Override
-   public epr g() {
-      return this.d;
-   }
-
-   @Override
-   public cen<ceb> i() {
-      return cen.i;
    }
 }

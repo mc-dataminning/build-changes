@@ -3,211 +3,211 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 public class kl {
-   private static final Map<daa, km> ap = Maps.newHashMap();
+   private static final Map<dac, km> ap = Maps.newHashMap();
    private static final String aq = "wooden";
    private static final String ar = "has_planks";
-   public static final km a = a(dac.r)
-      .a(dac.gz)
-      .h(dac.kg)
-      .j(dac.jY)
-      .m(dac.dD)
-      .a(dac.cH, dac.cU)
-      .k(dac.jx)
-      .l(dac.hP)
-      .f(dac.ko)
-      .o(dac.eC)
+   public static final km a = a(dae.r)
+      .a(dae.gz)
+      .h(dae.kg)
+      .j(dae.jY)
+      .m(dae.dD)
+      .a(dae.cH, dae.cU)
+      .k(dae.jx)
+      .l(dae.hP)
+      .f(dae.ko)
+      .o(dae.eC)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final km b = a(dac.s)
-      .a(dac.gA)
-      .h(dac.kh)
-      .j(dac.jZ)
-      .m(dac.dE)
-      .a(dac.cI, dac.cV)
-      .k(dac.jy)
-      .l(dac.hQ)
-      .f(dac.kp)
-      .o(dac.eD)
+   public static final km b = a(dae.s)
+      .a(dae.gA)
+      .h(dae.kh)
+      .j(dae.jZ)
+      .m(dae.dE)
+      .a(dae.cI, dae.cV)
+      .k(dae.jy)
+      .l(dae.hQ)
+      .f(dae.kp)
+      .o(dae.eD)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final km c = a(dac.p)
-      .a(dac.gx)
-      .h(dac.ke)
-      .j(dac.jW)
-      .m(dac.dB)
-      .a(dac.cG, dac.cT)
-      .k(dac.jv)
-      .l(dac.fL)
-      .f(dac.km)
-      .o(dac.eA)
+   public static final km c = a(dae.p)
+      .a(dae.gx)
+      .h(dae.ke)
+      .j(dae.jW)
+      .m(dae.dB)
+      .a(dae.cG, dae.cT)
+      .k(dae.jv)
+      .l(dae.fL)
+      .f(dae.km)
+      .o(dae.eA)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final km d = a(dac.oE)
-      .a(dac.oS)
-      .h(dac.oK)
-      .j(dac.oO)
-      .m(dac.oI)
-      .a(dac.oW, dac.oY)
-      .k(dac.oG)
-      .l(dac.oQ)
-      .f(dac.oU)
-      .o(dac.oM)
+   public static final km d = a(dae.oE)
+      .a(dae.oS)
+      .h(dae.oK)
+      .j(dae.oO)
+      .m(dae.oI)
+      .a(dae.oW, dae.oY)
+      .k(dae.oG)
+      .l(dae.oQ)
+      .f(dae.oU)
+      .o(dae.oM)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final km e = a(dac.q)
-      .a(dac.gy)
-      .h(dac.kf)
-      .j(dac.jX)
-      .m(dac.dC)
-      .a(dac.cJ, dac.cW)
-      .k(dac.jw)
-      .l(dac.fM)
-      .f(dac.kn)
-      .o(dac.eB)
+   public static final km e = a(dae.q)
+      .a(dae.gy)
+      .h(dae.kf)
+      .j(dae.jX)
+      .m(dae.dC)
+      .a(dae.cJ, dae.cW)
+      .k(dae.jw)
+      .l(dae.fM)
+      .f(dae.kn)
+      .o(dae.eB)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final km f = a(dac.n)
-      .a(dac.gv)
-      .h(dac.dU)
-      .j(dac.fh)
-      .m(dac.dz)
-      .a(dac.cE, dac.cR)
-      .k(dac.jt)
-      .l(dac.cu)
-      .f(dac.cN)
-      .o(dac.ey)
+   public static final km f = a(dae.n)
+      .a(dae.gv)
+      .h(dae.dU)
+      .j(dae.fh)
+      .m(dae.dz)
+      .a(dae.cE, dae.cR)
+      .k(dae.jt)
+      .l(dae.cu)
+      .f(dae.cN)
+      .o(dae.ey)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final km g = a(dac.t)
-      .a(dac.gB)
-      .h(dac.ki)
-      .j(dac.ka)
-      .m(dac.dF)
-      .a(dac.cK, dac.cX)
-      .k(dac.jz)
-      .l(dac.hR)
-      .f(dac.kq)
-      .o(dac.eE)
+   public static final km g = a(dae.t)
+      .a(dae.gB)
+      .h(dae.ki)
+      .j(dae.ka)
+      .m(dae.dF)
+      .a(dae.cK, dae.cX)
+      .k(dae.jz)
+      .l(dae.hR)
+      .f(dae.kq)
+      .o(dae.eE)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final km h = a(dac.o)
-      .a(dac.gw)
-      .h(dac.kd)
-      .j(dac.jV)
-      .m(dac.dA)
-      .a(dac.cF, dac.cS)
-      .k(dac.ju)
-      .l(dac.fK)
-      .f(dac.kl)
-      .o(dac.ez)
+   public static final km h = a(dae.o)
+      .a(dae.gw)
+      .h(dae.kd)
+      .j(dae.jV)
+      .m(dae.dA)
+      .a(dae.cF, dae.cS)
+      .k(dae.ju)
+      .l(dae.fK)
+      .f(dae.kl)
+      .o(dae.ez)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final km i = a(dac.oF)
-      .a(dac.oT)
-      .h(dac.oL)
-      .j(dac.oP)
-      .m(dac.oJ)
-      .a(dac.oX, dac.oZ)
-      .k(dac.oH)
-      .l(dac.oR)
-      .f(dac.oV)
-      .o(dac.oN)
+   public static final km i = a(dae.oF)
+      .a(dae.oT)
+      .h(dae.oL)
+      .j(dae.oP)
+      .m(dae.oJ)
+      .a(dae.oX, dae.oZ)
+      .k(dae.oH)
+      .l(dae.oR)
+      .f(dae.oV)
+      .o(dae.oN)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final km j = a(dac.u)
-      .a(dac.gC)
-      .k(dac.jA)
-      .l(dac.hS)
-      .h(dac.kj)
-      .j(dac.kb)
-      .m(dac.dG)
-      .a(dac.cL, dac.cY)
-      .f(dac.kr)
-      .o(dac.eF)
+   public static final km j = a(dae.u)
+      .a(dae.gC)
+      .k(dae.jA)
+      .l(dae.hS)
+      .h(dae.kj)
+      .j(dae.kb)
+      .m(dae.dG)
+      .a(dae.cL, dae.cY)
+      .f(dae.kr)
+      .o(dae.eF)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final km k = a(dac.v)
-      .a(dac.gD)
-      .k(dac.jB)
-      .l(dac.hT)
-      .g(dac.kk)
-      .i(dac.kc)
-      .m(dac.dH)
-      .a(dac.cM, dac.cZ)
-      .f(dac.ks)
-      .o(dac.eG)
-      .c(dac.w)
+   public static final km k = a(dae.v)
+      .a(dae.gD)
+      .k(dae.jB)
+      .l(dae.hT)
+      .g(dae.kk)
+      .i(dae.kc)
+      .m(dae.dH)
+      .a(dae.cM, dae.cZ)
+      .f(dae.ks)
+      .o(dae.eG)
+      .c(dae.w)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final km l = a(dac.w).k(dac.jC).l(dac.hU).a();
-   public static final km m = a(dac.eM).p(dac.nL).l(dac.fk).k(dac.jL).a();
-   public static final km n = a(dac.g).p(dac.nN).l(dac.no).k(dac.nB).n(dac.h).a();
-   public static final km o = a(dac.h).l(dac.nq).k(dac.nD).a();
-   public static final km p = a(dac.pr).p(dac.pt).l(dac.ps).k(dac.pu).n(dac.pv).a();
-   public static final km q = a(dac.pv).p(dac.pH).m(dac.pF).a(dac.pG).l(dac.pD).k(dac.pE).n(dac.pw).b(dac.py).a();
-   public static final km r = a(dac.pw).p(dac.pB).l(dac.pA).k(dac.pz).d(dac.px).a();
-   public static final km s = a(dac.cj).p(dac.nF).l(dac.fi).k(dac.jJ).a();
-   public static final km t = a(dac.kz).p(dac.nQ).l(dac.nj).k(dac.nx).a();
-   public static final km u = a(dac.eI).p(dac.nI).l(dac.ng).k(dac.nu).a();
-   public static final km v = a(dac.qW).e(dac.rf).f(dac.rM).o(dac.rU).b().a();
-   public static final km w = a(dac.rf).k(dac.rv).l(dac.rr).b(dac.rj).b().a();
-   public static final km x = a(dac.rw).e(dac.rD).f(dac.rQ).o(dac.rY).a("waxed_cut_copper").b().a();
-   public static final km y = a(dac.rD).k(dac.rL).l(dac.rH).b(dac.rn).a("waxed_cut_copper").b().a();
-   public static final km z = a(dac.qX).e(dac.re).f(dac.rN).o(dac.rV).b().a();
-   public static final km A = a(dac.re).k(dac.ru).l(dac.rq).b(dac.ri).b().a();
-   public static final km B = a(dac.ry).e(dac.rC).f(dac.rR).o(dac.rZ).a("waxed_exposed_cut_copper").b().a();
-   public static final km C = a(dac.rC).k(dac.rK).l(dac.rG).b(dac.rm).a("waxed_exposed_cut_copper").b().a();
-   public static final km D = a(dac.qY).e(dac.rd).f(dac.rP).o(dac.rX).b().a();
-   public static final km E = a(dac.rd).k(dac.rt).l(dac.rp).b(dac.rh).b().a();
-   public static final km F = a(dac.rx).e(dac.rB).f(dac.rT).o(dac.sb).a("waxed_weathered_cut_copper").b().a();
-   public static final km G = a(dac.rB).k(dac.rJ).l(dac.rF).b(dac.rl).a("waxed_weathered_cut_copper").b().a();
-   public static final km H = a(dac.qZ).e(dac.rc).f(dac.rO).o(dac.rW).b().a();
-   public static final km I = a(dac.rc).k(dac.rs).l(dac.ro).b(dac.rg).b().a();
-   public static final km J = a(dac.rz).e(dac.rA).f(dac.rS).o(dac.sa).a("waxed_oxidized_cut_copper").b().a();
-   public static final km K = a(dac.rA).k(dac.rI).l(dac.rE).b(dac.rk).a("waxed_oxidized_cut_copper").b().a();
-   public static final km L = a(dac.m).p(dac.fP).l(dac.cQ).k(dac.jI).a();
-   public static final km M = a(dac.cn).p(dac.fQ).l(dac.ni).k(dac.nw).a();
-   public static final km N = a(dac.e).p(dac.nR).l(dac.nr).k(dac.nE).n(dac.f).a();
-   public static final km O = a(dac.f).l(dac.nh).k(dac.nv).a();
-   public static final km P = a(dac.c).p(dac.nJ).l(dac.nn).k(dac.nA).n(dac.d).a();
-   public static final km Q = a(dac.d).l(dac.ne).k(dac.ns).a();
-   public static final km R = a(dac.qz).p(dac.qC).l(dac.qB).k(dac.qA).b(dac.qH).n(dac.qD).a();
-   public static final km S = a(dac.qD).p(dac.qG).l(dac.qF).k(dac.qE).n(dac.qI).a();
-   public static final km T = a(dac.qI).p(dac.qL).l(dac.qK).k(dac.qJ).b(dac.qM).a();
-   public static final km U = a(dac.fn).h(dac.fo).p(dac.nM).l(dac.fp).k(dac.jM).b(dac.pI).d(dac.pJ).a();
-   public static final km V = a(dac.kL).k(dac.nC).l(dac.np).p(dac.nO).a();
-   public static final km W = a(dac.hZ).p(dac.nG).l(dac.ic).k(dac.if).a();
-   public static final km X = a(dac.kw).l(dac.ky).k(dac.jQ).c().a();
-   public static final km Y = a(dac.ia).l(dac.id).k(dac.ig).a();
-   public static final km Z = a(dac.ib).l(dac.ie).k(dac.ih).a();
-   public static final km aa = a(dac.hd).l(dac.hg).k(dac.jN).b(dac.he).c().a();
-   public static final km ab = a(dac.jT).l(dac.nm).k(dac.nz).a();
-   public static final km ac = a(dac.aV).p(dac.nP).l(dac.fD).k(dac.jF).b(dac.aW).e(dac.aX).c().a();
-   public static final km ad = a(dac.aX).k(dac.jG).a();
-   public static final km ae = a(dac.jS).k(dac.ny).l(dac.nl).a();
-   public static final km af = a(dac.jp).p(dac.nH).l(dac.js).k(dac.jO).b(dac.jq).e(dac.jr).c().a();
-   public static final km ag = a(dac.jr).k(dac.jP).a();
-   public static final km ah = a(dac.jU).k(dac.nt).l(dac.nf).a();
-   public static final km ai = a(dac.b).k(dac.jD).m(dac.dx).a(dac.dM).l(dac.nk).a();
-   public static final km aj = a(dac.eH).p(dac.nK).l(dac.fj).k(dac.jK).b(dac.eK).d(dac.eJ).c().a();
-   public static final km ak = a(dac.sJ).a();
-   public static final km al = a(dac.sK).k(dac.sM).l(dac.sL).p(dac.sN).b(dac.ta).n(dac.sO).a();
-   public static final km am = a(dac.sO).k(dac.sQ).l(dac.sP).p(dac.sR).a();
-   public static final km an = a(dac.sW).k(dac.sY).l(dac.sX).p(dac.sZ).d(dac.tb).a();
-   public static final km ao = a(dac.sS).k(dac.sU).l(dac.sT).p(dac.sV).d(dac.tc).a();
+   public static final km l = a(dae.w).k(dae.jC).l(dae.hU).a();
+   public static final km m = a(dae.eM).p(dae.nL).l(dae.fk).k(dae.jL).a();
+   public static final km n = a(dae.g).p(dae.nN).l(dae.no).k(dae.nB).n(dae.h).a();
+   public static final km o = a(dae.h).l(dae.nq).k(dae.nD).a();
+   public static final km p = a(dae.pr).p(dae.pt).l(dae.ps).k(dae.pu).n(dae.pv).a();
+   public static final km q = a(dae.pv).p(dae.pH).m(dae.pF).a(dae.pG).l(dae.pD).k(dae.pE).n(dae.pw).b(dae.py).a();
+   public static final km r = a(dae.pw).p(dae.pB).l(dae.pA).k(dae.pz).d(dae.px).a();
+   public static final km s = a(dae.cj).p(dae.nF).l(dae.fi).k(dae.jJ).a();
+   public static final km t = a(dae.kz).p(dae.nQ).l(dae.nj).k(dae.nx).a();
+   public static final km u = a(dae.eI).p(dae.nI).l(dae.ng).k(dae.nu).a();
+   public static final km v = a(dae.qW).e(dae.rf).f(dae.rM).o(dae.rU).b().a();
+   public static final km w = a(dae.rf).k(dae.rv).l(dae.rr).b(dae.rj).b().a();
+   public static final km x = a(dae.rw).e(dae.rD).f(dae.rQ).o(dae.rY).a("waxed_cut_copper").b().a();
+   public static final km y = a(dae.rD).k(dae.rL).l(dae.rH).b(dae.rn).a("waxed_cut_copper").b().a();
+   public static final km z = a(dae.qX).e(dae.re).f(dae.rN).o(dae.rV).b().a();
+   public static final km A = a(dae.re).k(dae.ru).l(dae.rq).b(dae.ri).b().a();
+   public static final km B = a(dae.ry).e(dae.rC).f(dae.rR).o(dae.rZ).a("waxed_exposed_cut_copper").b().a();
+   public static final km C = a(dae.rC).k(dae.rK).l(dae.rG).b(dae.rm).a("waxed_exposed_cut_copper").b().a();
+   public static final km D = a(dae.qY).e(dae.rd).f(dae.rP).o(dae.rX).b().a();
+   public static final km E = a(dae.rd).k(dae.rt).l(dae.rp).b(dae.rh).b().a();
+   public static final km F = a(dae.rx).e(dae.rB).f(dae.rT).o(dae.sb).a("waxed_weathered_cut_copper").b().a();
+   public static final km G = a(dae.rB).k(dae.rJ).l(dae.rF).b(dae.rl).a("waxed_weathered_cut_copper").b().a();
+   public static final km H = a(dae.qZ).e(dae.rc).f(dae.rO).o(dae.rW).b().a();
+   public static final km I = a(dae.rc).k(dae.rs).l(dae.ro).b(dae.rg).b().a();
+   public static final km J = a(dae.rz).e(dae.rA).f(dae.rS).o(dae.sa).a("waxed_oxidized_cut_copper").b().a();
+   public static final km K = a(dae.rA).k(dae.rI).l(dae.rE).b(dae.rk).a("waxed_oxidized_cut_copper").b().a();
+   public static final km L = a(dae.m).p(dae.fP).l(dae.cQ).k(dae.jI).a();
+   public static final km M = a(dae.cn).p(dae.fQ).l(dae.ni).k(dae.nw).a();
+   public static final km N = a(dae.e).p(dae.nR).l(dae.nr).k(dae.nE).n(dae.f).a();
+   public static final km O = a(dae.f).l(dae.nh).k(dae.nv).a();
+   public static final km P = a(dae.c).p(dae.nJ).l(dae.nn).k(dae.nA).n(dae.d).a();
+   public static final km Q = a(dae.d).l(dae.ne).k(dae.ns).a();
+   public static final km R = a(dae.qz).p(dae.qC).l(dae.qB).k(dae.qA).b(dae.qH).n(dae.qD).a();
+   public static final km S = a(dae.qD).p(dae.qG).l(dae.qF).k(dae.qE).n(dae.qI).a();
+   public static final km T = a(dae.qI).p(dae.qL).l(dae.qK).k(dae.qJ).b(dae.qM).a();
+   public static final km U = a(dae.fn).h(dae.fo).p(dae.nM).l(dae.fp).k(dae.jM).b(dae.pI).d(dae.pJ).a();
+   public static final km V = a(dae.kL).k(dae.nC).l(dae.np).p(dae.nO).a();
+   public static final km W = a(dae.hZ).p(dae.nG).l(dae.ic).k(dae.if).a();
+   public static final km X = a(dae.kw).l(dae.ky).k(dae.jQ).c().a();
+   public static final km Y = a(dae.ia).l(dae.id).k(dae.ig).a();
+   public static final km Z = a(dae.ib).l(dae.ie).k(dae.ih).a();
+   public static final km aa = a(dae.hd).l(dae.hg).k(dae.jN).b(dae.he).c().a();
+   public static final km ab = a(dae.jT).l(dae.nm).k(dae.nz).a();
+   public static final km ac = a(dae.aV).p(dae.nP).l(dae.fD).k(dae.jF).b(dae.aW).e(dae.aX).c().a();
+   public static final km ad = a(dae.aX).k(dae.jG).a();
+   public static final km ae = a(dae.jS).k(dae.ny).l(dae.nl).a();
+   public static final km af = a(dae.jp).p(dae.nH).l(dae.js).k(dae.jO).b(dae.jq).e(dae.jr).c().a();
+   public static final km ag = a(dae.jr).k(dae.jP).a();
+   public static final km ah = a(dae.jU).k(dae.nt).l(dae.nf).a();
+   public static final km ai = a(dae.b).k(dae.jD).m(dae.dx).a(dae.dM).l(dae.nk).a();
+   public static final km aj = a(dae.eH).p(dae.nK).l(dae.fj).k(dae.jK).b(dae.eK).d(dae.eJ).c().a();
+   public static final km ak = a(dae.sJ).a();
+   public static final km al = a(dae.sK).k(dae.sM).l(dae.sL).p(dae.sN).b(dae.ta).n(dae.sO).a();
+   public static final km am = a(dae.sO).k(dae.sQ).l(dae.sP).p(dae.sR).a();
+   public static final km an = a(dae.sW).k(dae.sY).l(dae.sX).p(dae.sZ).d(dae.tb).a();
+   public static final km ao = a(dae.sS).k(dae.sU).l(dae.sT).p(dae.sV).d(dae.tc).a();
 
-   private static km.a a(daa $$0) {
+   private static km.a a(dac $$0) {
       km.a $$1 = new km.a($$0);
       km $$2 = ap.put($$0, $$1.a());
       if ($$2 != null) {

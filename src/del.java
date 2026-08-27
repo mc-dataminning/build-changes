@@ -1,79 +1,124 @@
-public class del {
-   public static final int a = 1000;
-   public static final int b = 1001;
-   public static final int c = 1002;
-   public static final int d = 1003;
-   public static final int e = 1004;
-   public static final int f = 1009;
-   public static final int g = 1010;
-   public static final int h = 1011;
-   public static final int i = 1015;
-   public static final int j = 1016;
-   public static final int k = 1017;
-   public static final int l = 1018;
-   public static final int m = 1019;
-   public static final int n = 1020;
-   public static final int o = 1021;
-   public static final int p = 1022;
-   public static final int q = 1023;
-   public static final int r = 1024;
-   public static final int s = 1025;
-   public static final int t = 1026;
-   public static final int u = 1027;
-   public static final int v = 1028;
-   public static final int w = 1029;
-   public static final int x = 1030;
-   public static final int y = 1031;
-   public static final int z = 1032;
-   public static final int A = 1033;
-   public static final int B = 1034;
-   public static final int C = 1035;
-   public static final int D = 1038;
-   public static final int E = 1039;
-   public static final int F = 1040;
-   public static final int G = 1041;
-   public static final int H = 1042;
-   public static final int I = 1043;
-   public static final int J = 1044;
-   public static final int K = 1045;
-   public static final int L = 1046;
-   public static final int M = 1047;
-   public static final int N = 1048;
-   public static final int O = 1049;
-   public static final int P = 1050;
-   public static final int Q = 1500;
-   public static final int R = 1501;
-   public static final int S = 1502;
-   public static final int T = 1503;
-   public static final int U = 1504;
-   public static final int V = 1505;
-   public static final int W = 2000;
-   public static final int X = 2001;
-   public static final int Y = 2002;
-   public static final int Z = 2003;
-   public static final int aa = 2004;
-   public static final int ab = 2006;
-   public static final int ac = 2007;
-   public static final int ad = 2008;
-   public static final int ae = 2009;
-   public static final int af = 2010;
-   public static final int ag = 2011;
-   public static final int ah = 2012;
-   public static final int ai = 3000;
-   public static final int aj = 3001;
-   public static final int ak = 3002;
-   public static final int al = 3003;
-   public static final int am = 3004;
-   public static final int an = 3005;
-   public static final int ao = 3006;
-   public static final int ap = 3007;
-   public static final int aq = 3008;
-   public static final int ar = 3009;
-   public static final int as = 3011;
-   public static final int at = 3012;
-   public static final int au = 3013;
-   public static final int av = 3014;
-   public static final int aw = 3015;
-   public static final int ax = 3016;
-   public static final int ay = 3017;
+import com.mojang.serialization.MapCodec;
+import java.util.OptionalInt;
+
+public class del extends dac implements dhc {
+   public static final MapCodec<del> b = b(del::new);
+   public static final int c = 7;
+   public static final dob d = dnr.aC;
+   public static final dns e = dnr.v;
+   public static final dns f = dnr.C;
+   private static final int a = 1;
+
+   @Override
+   public MapCodec<? extends del> a() {
+      return b;
+   }
+
+   public del(dna.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(d, Integer.valueOf(7)).a(e, Boolean.valueOf(false)).a(f, Boolean.valueOf(false)));
+   }
+
+   @Override
+   protected eqm b_(dnb $$0, cwh $$1, ib $$2) {
+      return eqj.a();
+   }
+
+   @Override
+   protected boolean e_(dnb $$0) {
+      return $$0.c(d) == 7 && !$$0.c(e);
+   }
+
+   @Override
+   protected void b(dnb $$0, apf $$1, ib $$2, axd $$3) {
+      if (this.m($$0)) {
+         c($$0, $$1, $$2);
+         $$1.a($$2, false);
+      }
+   }
+
+   protected boolean m(dnb $$0) {
+      return !$$0.c(e) && $$0.c(d) == 7;
+   }
+
+   @Override
+   protected void a(dnb $$0, apf $$1, ib $$2, axd $$3) {
+      $$1.a($$2, a($$0, $$1, $$2), 3);
+   }
+
+   @Override
+   protected int g(dnb $$0, cwh $$1, ib $$2) {
+      return 1;
+   }
+
+   @Override
+   protected dnb a(dnb $$0, ih $$1, dnb $$2, cxc $$3, ib $$4, ib $$5) {
+      if ($$0.c(f)) {
+         $$3.a($$4, eiq.c, eiq.c.a($$3));
+      }
+
+      int $$6 = o($$2) + 1;
+      if ($$6 != 1 || $$0.c(d) != $$6) {
+         $$3.a($$4, this, 1);
+      }
+
+      return $$0;
+   }
+
+   private static dnb a(dnb $$0, cxc $$1, ib $$2) {
+      int $$3 = 7;
+      ib.a $$4 = new ib.a();
+
+      for (ih $$5 : ih.values()) {
+         $$4.a($$2, $$5);
+         $$3 = Math.min($$3, o($$1.a_($$4)) + 1);
+         if ($$3 == 1) {
+            break;
+         }
+      }
+
+      return $$0.a(d, Integer.valueOf($$3));
+   }
+
+   private static int o(dnb $$0) {
+      return n($$0).orElse(7);
+   }
+
+   public static OptionalInt n(dnb $$0) {
+      if ($$0.a(aun.t)) {
+         return OptionalInt.of(0);
+      } else {
+         return $$0.b(d) ? OptionalInt.of($$0.c(d)) : OptionalInt.empty();
+      }
+   }
+
+   @Override
+   protected eip c_(dnb $$0) {
+      return $$0.c(f) ? eiq.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   public void a(dnb $$0, cxb $$1, ib $$2, axd $$3) {
+      if ($$1.r($$2.c())) {
+         if ($$3.a(15) == 1) {
+            ib $$4 = $$2.d();
+            dnb $$5 = $$1.a_($$4);
+            if (!$$5.p() || !$$5.d($$1, $$4, ih.b)) {
+               awz.a($$1, $$2, $$3, kc.m);
+            }
+         }
+      }
+   }
+
+   @Override
+   protected void a(dnc.a<dac, dnb> $$0) {
+      $$0.a(d, e, f);
+   }
+
+   @Override
+   public dnb a(csu $$0) {
+      eip $$1 = $$0.q().b_($$0.a());
+      dnb $$2 = this.o().a(e, Boolean.valueOf(true)).a(f, Boolean.valueOf($$1.a() == eiq.c));
+      return a($$2, $$0.q(), $$0.a());
+   }
 }

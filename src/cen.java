@@ -1,63 +1,80 @@
-import java.lang.reflect.Constructor;
-import java.util.Arrays;
+import javax.annotation.Nullable;
 
-public class cen<T extends ceh> {
-   private static cen<?>[] l = new cen[0];
-   public static final cen<ced> a = a(ced.class, "HoldingPattern");
-   public static final cen<cel> b = a(cel.class, "StrafePlayer");
-   public static final cen<cef> c = a(cef.class, "LandingApproach");
-   public static final cen<ceg> d = a(ceg.class, "Landing");
-   public static final cen<cem> e = a(cem.class, "Takeoff");
-   public static final cen<cej> f = a(cej.class, "SittingFlaming");
-   public static final cen<cek> g = a(cek.class, "SittingScanning");
-   public static final cen<cei> h = a(cei.class, "SittingAttacking");
-   public static final cen<ceb> i = a(ceb.class, "ChargingPlayer");
-   public static final cen<cec> j = a(cec.class, "Dying");
-   public static final cen<cee> k = a(cee.class, "Hover");
-   private final Class<? extends ceh> m;
-   private final int n;
-   private final String o;
+public class cen extends cea {
+   private boolean b;
+   @Nullable
+   private ejd c;
+   @Nullable
+   private ept d;
 
-   private cen(int $$0, Class<? extends ceh> $$1, String $$2) {
-      this.n = $$0;
-      this.m = $$1;
-      this.o = $$2;
-   }
-
-   public ceh a(cdx $$0) {
-      try {
-         Constructor<? extends ceh> $$1 = this.a();
-         return $$1.newInstance($$0);
-      } catch (Exception var3) {
-         throw new Error(var3);
-      }
-   }
-
-   protected Constructor<? extends ceh> a() throws NoSuchMethodException {
-      return this.m.getConstructor(cdx.class);
-   }
-
-   public int b() {
-      return this.n;
+   public cen(cdy $$0) {
+      super($$0);
    }
 
    @Override
-   public String toString() {
-      return this.o + " (#" + this.n + ")";
+   public void c() {
+      if (!this.b && this.c != null) {
+         ib $$0 = this.a.dM().a(dso.a.f, dvr.a(this.a.r()));
+         if (!$$0.a(this.a.dk(), 10.0)) {
+            this.a.gk().a(ceo.a);
+         }
+      } else {
+         this.b = false;
+         this.j();
+      }
    }
 
-   public static cen<?> a(int $$0) {
-      return $$0 >= 0 && $$0 < l.length ? l[$$0] : a;
+   @Override
+   public void d() {
+      this.b = true;
+      this.c = null;
+      this.d = null;
    }
 
-   public static int c() {
-      return l.length;
+   private void j() {
+      int $$0 = this.a.y();
+      ept $$1 = this.a.F(1.0F);
+      int $$2 = this.a.r(-$$1.c * 40.0, 105.0, -$$1.e * 40.0);
+      if (this.a.gl() != null && this.a.gl().e() > 0) {
+         $$2 %= 12;
+         if ($$2 < 0) {
+            $$2 += 12;
+         }
+      } else {
+         $$2 -= 12;
+         $$2 &= 7;
+         $$2 += 12;
+      }
+
+      this.c = this.a.a($$0, $$2, null);
+      this.k();
    }
 
-   private static <T extends ceh> cen<T> a(Class<T> $$0, String $$1) {
-      cen<T> $$2 = new cen<>(l.length, $$0, $$1);
-      l = Arrays.copyOf(l, l.length + 1);
-      l[$$2.b()] = $$2;
-      return $$2;
+   private void k() {
+      if (this.c != null) {
+         this.c.a();
+         if (!this.c.c()) {
+            jg $$0 = this.c.g();
+            this.c.a();
+
+            double $$1;
+            do {
+               $$1 = (double)((float)$$0.v() + this.a.ei().i() * 20.0F);
+            } while ($$1 < (double)$$0.v());
+
+            this.d = new ept((double)$$0.u(), $$1, (double)$$0.w());
+         }
+      }
+   }
+
+   @Nullable
+   @Override
+   public ept g() {
+      return this.d;
+   }
+
+   @Override
+   public ceo<cen> i() {
+      return ceo.e;
    }
 }

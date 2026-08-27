@@ -1,132 +1,84 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
+import java.util.function.LongFunction;
 
-public class dtn implements axd {
-   private static final float c = 5.9604645E-8F;
-   private static final double d = 1.110223E-16F;
-   public static final Codec<dtn> b = dtm.a.xmap($$0 -> new dtn($$0), $$0 -> $$0.e);
-   private dtm e;
-   private final dso f = new dso(this);
+public class dtn extends dsp {
+   private final axd d;
+   private int e;
 
-   public dtn(long $$0) {
-      this.e = new dtm(dtb.c($$0));
+   public dtn(axd $$0) {
+      super(0L);
+      this.d = $$0;
    }
 
-   public dtn(dtb.a $$0) {
-      this.e = new dtm($$0);
-   }
-
-   public dtn(long $$0, long $$1) {
-      this.e = new dtm($$0, $$1);
-   }
-
-   private dtn(dtm $$0) {
-      this.e = $$0;
+   public int l() {
+      return this.e;
    }
 
    @Override
    public axd d() {
-      return new dtn(this.e.a(), this.e.a());
+      return this.d.d();
    }
 
    @Override
-   public dsz e() {
-      return new dtn.a(this.e.a(), this.e.a());
+   public dtb e() {
+      return this.d.e();
    }
 
    @Override
-   public void b(long $$0) {
-      this.e = new dtm(dtb.c($$0));
-      this.f.a();
+   public int c(int $$0) {
+      this.e++;
+      return this.d instanceof dsp $$1 ? $$1.c($$0) : (int)(this.d.g() >>> 64 - $$0);
    }
 
    @Override
-   public int f() {
-      return (int)this.e.a();
-   }
-
-   @Override
-   public int a(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Bound must be positive");
-      } else {
-         long $$1 = Integer.toUnsignedLong(this.f());
-         long $$2 = $$1 * (long)$$0;
-         long $$3 = $$2 & 4294967295L;
-         if ($$3 < (long)$$0) {
-            for (int $$4 = Integer.remainderUnsigned(~$$0 + 1, $$0); $$3 < (long)$$4; $$3 = $$2 & 4294967295L) {
-               $$1 = Integer.toUnsignedLong(this.f());
-               $$2 = $$1 * (long)$$0;
-            }
-         }
-
-         long $$5 = $$2 >> 32;
-         return (int)$$5;
+   public synchronized void b(long $$0) {
+      if (this.d != null) {
+         this.d.b($$0);
       }
    }
 
-   @Override
-   public long g() {
-      return this.e.a();
+   public long a(long $$0, int $$1, int $$2) {
+      this.b($$0);
+      long $$3 = this.g() | 1L;
+      long $$4 = this.g() | 1L;
+      long $$5 = (long)$$1 * $$3 + (long)$$2 * $$4 ^ $$0;
+      this.b($$5);
+      return $$5;
    }
 
-   @Override
-   public boolean h() {
-      return (this.e.a() & 1L) != 0L;
+   public void b(long $$0, int $$1, int $$2) {
+      long $$3 = $$0 + (long)$$1 + (long)(10000 * $$2);
+      this.b($$3);
    }
 
-   @Override
-   public float i() {
-      return (float)this.c(24) * 5.9604645E-8F;
+   public void c(long $$0, int $$1, int $$2) {
+      this.b($$0);
+      long $$3 = this.g();
+      long $$4 = this.g();
+      long $$5 = (long)$$1 * $$3 ^ (long)$$2 * $$4 ^ $$0;
+      this.b($$5);
    }
 
-   @Override
-   public double j() {
-      return (double)this.c(53) * 1.110223E-16F;
+   public void a(long $$0, int $$1, int $$2, int $$3) {
+      long $$4 = (long)$$1 * 341873128712L + (long)$$2 * 132897987541L + $$0 + (long)$$3;
+      this.b($$4);
    }
 
-   @Override
-   public double k() {
-      return this.f.b();
+   public static axd a(int $$0, int $$1, long $$2, long $$3) {
+      return axd.a($$2 + (long)($$0 * $$0 * 4987142) + (long)($$0 * 5947611) + (long)($$1 * $$1) * 4392871L + (long)($$1 * 389711) ^ $$3);
    }
 
-   @Override
-   public void b(int $$0) {
-      for (int $$1 = 0; $$1 < $$0; $$1++) {
-         this.e.a();
-      }
-   }
+   public static enum a {
+      a(dsp::new),
+      b(dtp::new);
 
-   private long c(int $$0) {
-      return this.e.a() >>> 64 - $$0;
-   }
+      private final LongFunction<axd> c;
 
-   public static class a implements dsz {
-      private final long a;
-      private final long b;
-
-      public a(long $$0, long $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      private a(LongFunction<axd> $$0) {
+         this.c = $$0;
       }
 
-      @Override
-      public axd a(int $$0, int $$1, int $$2) {
-         long $$3 = aww.b($$0, $$1, $$2);
-         long $$4 = $$3 ^ this.a;
-         return new dtn($$4, this.b);
-      }
-
-      @Override
-      public axd a(String $$0) {
-         dtb.a $$1 = dtb.a($$0);
-         return new dtn($$1.a(this.a, this.b));
-      }
-
-      @VisibleForTesting
-      @Override
-      public void a(StringBuilder $$0) {
-         $$0.append("seedLo: ").append(this.a).append(", seedHi: ").append(this.b);
+      public axd a(long $$0) {
+         return this.c.apply($$0);
       }
    }
 }

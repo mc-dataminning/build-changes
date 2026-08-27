@@ -1,62 +1,13 @@
-import com.mojang.logging.LogUtils;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
 
-public class ebl extends ebj {
-   public static final Codec<ebl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dtg.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
-               dtg.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
-               Codec.INT.optionalFieldOf("plateau", 0).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, ebl::new)
+public abstract class ebl {
+   private static final Codec<Either<dti, ebl>> a = Codec.either(dti.a, ki.N.q().dispatch(ebl::a, ebm::codec));
+   public static final Codec<ebl> c = a.xmap(
+      $$0 -> (ebl)$$0.map(ebk::a, $$0x -> $$0x), $$0 -> $$0.a() == ebm.a ? Either.left(((ebk)$$0).b()) : Either.right($$0)
    );
-   private static final Logger b = LogUtils.getLogger();
-   private final dtg d;
-   private final dtg e;
-   private final int f;
 
-   private ebl(dtg $$0, dtg $$1, int $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
+   public abstract int a(axd var1, dtl var2);
 
-   public static ebl a(dtg $$0, dtg $$1, int $$2) {
-      return new ebl($$0, $$1, $$2);
-   }
-
-   public static ebl a(dtg $$0, dtg $$1) {
-      return a($$0, $$1, 0);
-   }
-
-   @Override
-   public int a(axd $$0, dtj $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$2 > $$3) {
-         b.warn("Empty height range: {}", this);
-         return $$2;
-      } else {
-         int $$4 = $$3 - $$2;
-         if (this.f >= $$4) {
-            return aww.b($$0, $$2, $$3);
-         } else {
-            int $$5 = ($$4 - this.f) / 2;
-            int $$6 = $$4 - $$5;
-            return $$2 + aww.b($$0, 0, $$6) + aww.b($$0, 0, $$5);
-         }
-      }
-   }
-
-   @Override
-   public ebk<?> a() {
-      return ebk.e;
-   }
-
-   @Override
-   public String toString() {
-      return this.f == 0 ? "triangle (" + this.d + "-" + this.e + ")" : "trapezoid(" + this.f + ") in [" + this.d + "-" + this.e + "]";
-   }
+   public abstract ebm<?> a();
 }

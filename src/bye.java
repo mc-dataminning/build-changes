@@ -1,64 +1,102 @@
 import java.util.EnumSet;
-import java.util.function.Predicate;
+import java.util.Iterator;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class bye<T extends bpo> extends byl {
-   private static final int i = 10;
-   protected final Class<T> a;
-   protected final int b;
+public class bye extends bym {
+   private static final caf a = caf.a().d().e();
+   private static final int b = 10;
+   private boolean c;
+   private int d;
+   private final Class<?>[] i;
    @Nullable
-   protected bpo c;
-   protected cae d;
+   private Class<?>[] j;
 
-   public bye(bpq $$0, Class<T> $$1, boolean $$2) {
-      this($$0, $$1, 10, $$2, false, null);
-   }
-
-   public bye(bpq $$0, Class<T> $$1, boolean $$2, Predicate<bpo> $$3) {
-      this($$0, $$1, 10, $$2, false, $$3);
-   }
-
-   public bye(bpq $$0, Class<T> $$1, boolean $$2, boolean $$3) {
-      this($$0, $$1, 10, $$2, $$3, null);
-   }
-
-   public bye(bpq $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable Predicate<bpo> $$5) {
-      super($$0, $$3, $$4);
-      this.a = $$1;
-      this.b = b($$2);
-      this.a(EnumSet.of(bwl.a.d));
-      this.d = cae.a().a(this.l()).a($$5);
+   public bye(bpx $$0, Class<?>... $$1) {
+      super($$0, true);
+      this.i = $$1;
+      this.a(EnumSet.of(bwm.a.d));
    }
 
    @Override
    public boolean a() {
-      if (this.b > 0 && this.e.ei().a(this.b) != 0) {
+      int $$0 = this.e.ek();
+      bpp $$1 = this.e.ej();
+      if ($$0 != this.d && $$1 != null) {
+         if ($$1.ai() == bpd.by && this.e.dM().Z().b(cwx.O)) {
+            return false;
+         } else {
+            for (Class<?> $$2 : this.i) {
+               if ($$2.isAssignableFrom($$1.getClass())) {
+                  return false;
+               }
+            }
+
+            return this.a($$1, a);
+         }
+      } else {
          return false;
-      } else {
-         this.h();
-         return this.c != null;
       }
    }
 
-   protected epm a(double $$0) {
-      return this.e.cH().c($$0, 4.0, $$0);
-   }
-
-   protected void h() {
-      if (this.a != cis.class && this.a != apg.class) {
-         this.c = this.e.dM().a(this.e.dM().a(this.a, this.a(this.l()), $$0 -> true), this.d, this.e, this.e.dr(), this.e.dv(), this.e.dx());
-      } else {
-         this.c = this.e.dM().a(this.d, this.e, this.e.dr(), this.e.dv(), this.e.dx());
-      }
+   public bye a(Class<?>... $$0) {
+      this.c = true;
+      this.j = $$0;
+      return this;
    }
 
    @Override
    public void c() {
-      this.e.h(this.c);
+      this.e.h(this.e.ej());
+      this.g = this.e.p();
+      this.d = this.e.ek();
+      this.h = 300;
+      if (this.c) {
+         this.h();
+      }
+
       super.c();
    }
 
-   public void a(@Nullable bpo $$0) {
-      this.c = $$0;
+   protected void h() {
+      double $$0 = this.l();
+      epo $$1 = epo.a(this.e.dk()).c($$0, 10.0, $$0);
+      List<? extends bpr> $$2 = this.e.dM().a((Class<? extends bpr>)this.e.getClass(), $$1, bpc.f);
+      Iterator var5 = $$2.iterator();
+
+      while (true) {
+         bpr $$3;
+         while (true) {
+            if (!var5.hasNext()) {
+               return;
+            }
+
+            $$3 = (bpr)var5.next();
+            if (this.e != $$3 && $$3.p() == null && (!(this.e instanceof bql) || ((bql)this.e).P_() == ((bql)$$3).P_()) && !$$3.s(this.e.ej())) {
+               if (this.j == null) {
+                  break;
+               }
+
+               boolean $$4 = false;
+
+               for (Class<?> $$5 : this.j) {
+                  if ($$3.getClass() == $$5) {
+                     $$4 = true;
+                     break;
+                  }
+               }
+
+               if (!$$4) {
+                  break;
+               }
+            }
+         }
+
+         this.a($$3, this.e.ej());
+      }
+   }
+
+   protected void a(bpr $$0, bpp $$1) {
+      $$0.h($$1);
    }
 }

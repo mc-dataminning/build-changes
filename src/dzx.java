@@ -1,50 +1,17 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class dzx extends dzz {
-   public static final Codec<dzx> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               awo.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
-               ehq.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
-               awe.l.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
-            )
-            .and(b($$0))
-            .apply($$0, dzx::new)
-   );
-   private final awo<Integer> i;
-   private final ehq.a j;
-   private final float k;
-   private final ehq l;
+public abstract class dzx {
+   public static final Codec<dzx> a = ki.V.q().dispatch(dzx::a, dzy::a);
 
-   public dzx(awo<Integer> $$0, ehq.a $$1, float $$2, long $$3, ehq.a $$4, float $$5, List<dmz> $$6) {
-      super($$3, $$4, $$5, $$6);
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = ehq.b(new dtl(new dsn($$3)), $$1);
+   public static eag a(dnb $$0) {
+      return new eag($$0);
    }
 
-   @Override
-   protected dzw<?> a() {
-      return dzw.e;
+   public static eag a(dac $$0) {
+      return new eag($$0.o());
    }
 
-   @Override
-   public dmz a(axd $$0, ib $$1) {
-      double $$2 = this.a($$1);
-      int $$3 = (int)aww.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
-      List<dmz> $$4 = Lists.newArrayListWithCapacity($$3);
+   protected abstract dzy<?> a();
 
-      for (int $$5 = 0; $$5 < $$3; $$5++) {
-         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
-      }
-
-      return this.a($$4, $$1, (double)this.e);
-   }
-
-   protected double a(ib $$0) {
-      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
-   }
+   public abstract dnb a(axd var1, ib var2);
 }

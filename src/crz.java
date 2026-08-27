@@ -1,56 +1,13 @@
-import java.util.function.Supplier;
+public interface crz {
+   int a();
 
-public enum crz implements crx {
-   a(0, 59, 2.0F, 0.0F, 15, () -> ctk.a(auv.b)),
-   b(1, 131, 4.0F, 1.0F, 5, () -> ctk.a(auv.ax)),
-   c(2, 250, 6.0F, 2.0F, 14, () -> ctk.a(cqn.oD)),
-   d(3, 1561, 8.0F, 3.0F, 10, () -> ctk.a(cqn.ox)),
-   e(0, 32, 12.0F, 0.0F, 22, () -> ctk.a(cqn.oH)),
-   f(4, 2031, 9.0F, 4.0F, 15, () -> ctk.a(cqn.oI));
+   float b();
 
-   private final int g;
-   private final int h;
-   private final float i;
-   private final float j;
-   private final int k;
-   private final awr<ctk> l;
+   float c();
 
-   private crz(int $$0, int $$1, float $$2, float $$3, int $$4, Supplier<ctk> $$5) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      this.j = $$3;
-      this.k = $$4;
-      this.l = new awr<>($$5);
-   }
+   int d();
 
-   @Override
-   public int a() {
-      return this.h;
-   }
+   int e();
 
-   @Override
-   public float b() {
-      return this.i;
-   }
-
-   @Override
-   public float c() {
-      return this.j;
-   }
-
-   @Override
-   public int d() {
-      return this.g;
-   }
-
-   @Override
-   public int e() {
-      return this.k;
-   }
-
-   @Override
-   public ctk f() {
-      return this.l.a();
-   }
+   ctm f();
 }

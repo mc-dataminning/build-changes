@@ -7,11 +7,11 @@ public class adw implements yb<aam> {
    public static final int d = 2;
    private final String e;
    private final vu f;
-   private final eqy.a g;
+   private final era.a g;
    private final Optional<xk> h;
    private final int i;
 
-   public adw(eqn $$0, int $$1) {
+   public adw(eqp $$0, int $$1) {
       this.e = $$0.b();
       this.f = $$0.d();
       this.g = $$0.h();
@@ -24,11 +24,11 @@ public class adw implements yb<aam> {
       this.i = $$0.readByte();
       if (this.i != 0 && this.i != 2) {
          this.f = vt.a;
-         this.g = eqy.a.a;
+         this.g = era.a.a;
          this.h = Optional.empty();
       } else {
          this.f = vw.b.decode($$0);
-         this.g = $$0.b(eqy.a.class);
+         this.g = $$0.b(era.a.class);
          this.h = xm.d.decode($$0);
       }
    }
@@ -64,7 +64,7 @@ public class adw implements yb<aam> {
       return this.i;
    }
 
-   public eqy.a g() {
+   public era.a g() {
       return this.g;
    }
 

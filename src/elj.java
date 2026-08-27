@@ -1,70 +1,30 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.Consumer;
 
-public class elj extends elg {
-   public static final Codec<elj> a = a(elj::new);
+public class elj extends elr {
+   public static final Codec<elj> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ajh.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, elj::new)
+   );
+   private final ajh j;
 
-   elj(List<eln> $$0, List<ent> $$1) {
-      super($$0, $$1);
+   private elj(ajh $$0, int $$1, int $$2, List<env> $$3, List<emj> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
    @Override
-   public elo a() {
-      return ell.i;
+   public elq a() {
+      return eln.e;
    }
 
    @Override
-   protected elf a(List<? extends elf> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (elf)$$0.get(0);
-         case 2 -> {
-            elf $$1 = $$0.get(0);
-            elf $$2 = $$0.get(1);
-            yield ($$2x, $$3) -> {
-               $$1.expand($$2x, $$3);
-               $$2.expand($$2x, $$3);
-               return true;
-            };
-         }
-         default -> ($$1x, $$2x) -> {
-         for (elf $$3 : $$0) {
-            $$3.expand($$1x, $$2x);
-         }
-
-         return true;
-      };
-      };
+   public void a(Consumer<cqm> $$0, ekw $$1) {
+      $$1.a(this.j, $$0);
    }
 
-   public static elj.a a(eln.a<?>... $$0) {
-      return new elj.a($$0);
-   }
-
-   public static class a extends eln.a<elj.a> {
-      private final Builder<eln> a = ImmutableList.builder();
-
-      public a(eln.a<?>... $$0) {
-         for (eln.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
-
-      protected elj.a a() {
-         return this;
-      }
-
-      @Override
-      public elj.a b(eln.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      @Override
-      public eln b() {
-         return new elj(this.a.build(), this.f());
-      }
+   public static elr.a<?> a(ajh $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new elj($$0, $$1, $$2, $$3, $$4));
    }
 }

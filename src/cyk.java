@@ -1,134 +1,108 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList.Builder;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
 import java.util.function.Function;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.ToIntFunction;
+import java.util.stream.Collectors;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 public class cyk {
-   private static final Logger d = LogUtils.getLogger();
-   private static final float e = 0.1F;
-   public static final blq<cyk.c> a = blq.c();
-   public static final cyk b = new cyk.a().a();
-   public static final MapCodec<cyk> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 0.9999999F).optionalFieldOf("creature_spawn_probability", 0.1F).forGetter($$0x -> $$0x.f),
-               Codec.simpleMap(bpr.i, blq.c(cyk.c.a).promotePartial(ac.a("Spawn data: ", d::error)), axq.a(bpr.values()))
-                  .fieldOf("spawners")
-                  .forGetter($$0x -> $$0x.g),
-               Codec.simpleMap(ki.g.q(), cyk.b.a, ki.g).fieldOf("spawn_costs").forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, cyk::new)
-   );
-   private final float f;
-   private final Map<bpr, blq<cyk.c>> g;
-   private final Map<bpc<?>, cyk.b> h;
+   public static <T> List<cyk.b> a(List<T> $$0, Function<T, List<ip<eci>>> $$1, boolean $$2) {
+      Object2IntMap<eci> $$3 = new Object2IntOpenHashMap();
+      MutableInt $$4 = new MutableInt(0);
 
-   cyk(float $$0, Map<bpr, blq<cyk.c>> $$1, Map<bpc<?>, cyk.b> $$2) {
-      this.f = $$0;
-      this.g = ImmutableMap.copyOf($$1);
-      this.h = ImmutableMap.copyOf($$2);
+      record a(int a, int b, eci c) {
+      }
+
+      Comparator<a> $$5 = Comparator.comparingInt(a::b).thenComparingInt(a::a);
+      Map<a, Set<a>> $$6 = new TreeMap<>($$5);
+      int $$7 = 0;
+
+      for (T $$8 : $$0) {
+         List<a> $$9 = Lists.newArrayList();
+         List<ip<eci>> $$10 = $$1.apply($$8);
+         $$7 = Math.max($$7, $$10.size());
+
+         for (int $$11 = 0; $$11 < $$10.size(); $$11++) {
+            for (il<eci> $$12 : $$10.get($$11)) {
+               eci $$13 = $$12.a();
+               $$9.add(new a($$3.computeIfAbsent($$13, $$1x -> $$4.getAndIncrement()), $$11, $$13));
+            }
+         }
+
+         for (int $$14 = 0; $$14 < $$9.size(); $$14++) {
+            Set<a> $$15 = $$6.computeIfAbsent($$9.get($$14), $$1x -> new TreeSet<>($$5));
+            if ($$14 < $$9.size() - 1) {
+               $$15.add($$9.get($$14 + 1));
+            }
+         }
+      }
+
+      Set<a> $$16 = new TreeSet<>($$5);
+      Set<a> $$17 = new TreeSet<>($$5);
+      List<a> $$18 = Lists.newArrayList();
+
+      for (a $$19 : $$6.keySet()) {
+         if (!$$17.isEmpty()) {
+            throw new IllegalStateException("You somehow broke the universe; DFS bork (iteration finished with non-empty in-progress vertex set");
+         }
+
+         if (!$$16.contains($$19) && awl.a($$6, $$16, $$17, $$18::add, $$19)) {
+            if (!$$2) {
+               throw new IllegalStateException("Feature order cycle found");
+            }
+
+            List<T> $$20 = new ArrayList<>($$0);
+
+            int $$21;
+            do {
+               $$21 = $$20.size();
+               ListIterator<T> $$22 = $$20.listIterator();
+
+               while ($$22.hasNext()) {
+                  T $$23 = $$22.next();
+                  $$22.remove();
+
+                  try {
+                     a($$20, $$1, false);
+                  } catch (IllegalStateException var18) {
+                     continue;
+                  }
+
+                  $$22.add($$23);
+               }
+            } while ($$21 != $$20.size());
+
+            throw new IllegalStateException("Feature order cycle found, involved sources: " + $$20);
+         }
+      }
+
+      Collections.reverse($$18);
+      Builder<cyk.b> $$25 = ImmutableList.builder();
+
+      for (int $$26 = 0; $$26 < $$7; $$26++) {
+         int $$27 = $$26;
+         List<eci> $$28 = $$18.stream().filter($$1x -> $$1x.b() == $$27).map(a::c).collect(Collectors.toList());
+         $$25.add(new cyk.b($$28));
+      }
+
+      return $$25.build();
    }
 
-   public blq<cyk.c> a(bpr $$0) {
-      return this.g.getOrDefault($$0, a);
-   }
-
-   @Nullable
-   public cyk.b a(bpc<?> $$0) {
-      return this.h.get($$0);
-   }
-
-   public float a() {
-      return this.f;
-   }
-
-   public static class a {
-      private final Map<bpr, List<cyk.c>> a = Stream.of(bpr.values()).collect(ImmutableMap.toImmutableMap($$0 -> $$0, $$0 -> Lists.newArrayList()));
-      private final Map<bpc<?>, cyk.b> b = Maps.newLinkedHashMap();
-      private float c = 0.1F;
-
-      public cyk.a a(bpr $$0, cyk.c $$1) {
-         this.a.get($$0).add($$1);
-         return this;
-      }
-
-      public cyk.a a(bpc<?> $$0, double $$1, double $$2) {
-         this.b.put($$0, new cyk.b($$2, $$1));
-         return this;
-      }
-
-      public cyk.a a(float $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public cyk a() {
-         return new cyk(
-            this.c,
-            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> blq.a((List)$$0.getValue()))),
-            ImmutableMap.copyOf(this.b)
-         );
-      }
-   }
-
-   public static record b(double b, double c) {
-      public static final Codec<cyk.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.DOUBLE.fieldOf("energy_budget").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("charge").forGetter($$0x -> $$0x.c))
-               .apply($$0, cyk.b::new)
-      );
-
-      public double a() {
-         return this.b;
-      }
-
-      public double b() {
-         return this.c;
-      }
-   }
-
-   public static class c extends blo.a {
-      public static final Codec<cyk.c> a = awe.b(
-         RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     ki.g.q().fieldOf("type").forGetter($$0x -> $$0x.b),
-                     bln.a.fieldOf("weight").forGetter(blo.a::a),
-                     awe.k.fieldOf("minCount").forGetter($$0x -> $$0x.c),
-                     awe.k.fieldOf("maxCount").forGetter($$0x -> $$0x.d)
-                  )
-                  .apply($$0, cyk.c::new)
-         ),
-         (Function<cyk.c, DataResult<cyk.c>>)($$0 -> $$0.c > $$0.d
-               ? DataResult.error(() -> "minCount needs to be smaller or equal to maxCount")
-               : DataResult.success($$0))
-      );
-      public final bpc<?> b;
-      public final int c;
-      public final int d;
-
-      public c(bpc<?> $$0, int $$1, int $$2, int $$3) {
-         this($$0, bln.a($$1), $$2, $$3);
-      }
-
-      public c(bpc<?> $$0, bln $$1, int $$2, int $$3) {
-         super($$1);
-         this.b = $$0.f() == bpr.h ? bpc.ay : $$0;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      @Override
-      public String toString() {
-         return bpc.a(this.b) + "*(" + this.c + "-" + this.d + "):" + this.a();
+   public static record b(List<eci> a, ToIntFunction<eci> b) {
+      b(List<eci> $$0) {
+         this($$0, ac.h($$0));
       }
    }
 }

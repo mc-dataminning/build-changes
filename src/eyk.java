@@ -1,13 +1,36 @@
-public class eyk extends eyl {
-   private final evx b;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   public eyk(evx $$0, long $$1, vu $$2, Runnable $$3) {
-      super($$1, $$2, $$3);
-      this.b = $$0;
+public class eyk extends eyi {
+   private static final Logger b = LogUtils.getLogger();
+   private static final vu c = vu.c("mco.create.world.wait");
+   private final String d;
+   private final String e;
+   private final long f;
+
+   public eyk(long $$0, String $$1, String $$2) {
+      this.f = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
    @Override
-   protected void a(eup $$0, long $$1) throws ewc {
-      $$0.d($$1, this.b.a);
+   public void run() {
+      eur $$0 = eur.a();
+
+      try {
+         $$0.a(this.f, this.d, this.e);
+      } catch (ewe var3) {
+         b.error("Couldn't create world", var3);
+         this.a(var3);
+      } catch (Exception var4) {
+         b.error("Could not create world", var4);
+         this.a(var4);
+      }
+   }
+
+   @Override
+   public vu a() {
+      return c;
    }
 }

@@ -3,10 +3,10 @@ import javax.annotation.Nullable;
 
 public class adp implements yb<aam> {
    public static final xs<uu, adp> a = yb.a(adp::a, adp::new);
-   private final eqm b;
+   private final eqo b;
    private final String c;
 
-   public adp(eqm $$0, @Nullable eqn $$1) {
+   public adp(eqo $$0, @Nullable eqp $$1) {
       this.b = $$0;
       if ($$1 == null) {
          this.c = "";
@@ -16,12 +16,12 @@ public class adp implements yb<aam> {
    }
 
    private adp(uu $$0) {
-      this.b = $$0.a(eqm.u);
+      this.b = $$0.a(eqo.u);
       this.c = $$0.p();
    }
 
    private void a(uu $$0) {
-      $$0.a(eqm::a, this.b);
+      $$0.a(eqo::a, this.b);
       $$0.a(this.c);
    }
 
@@ -34,7 +34,7 @@ public class adp implements yb<aam> {
       $$0.a(this);
    }
 
-   public eqm b() {
+   public eqo b() {
       return this.b;
    }
 

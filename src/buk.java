@@ -1,33 +1,33 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class buk {
-   private static final int a = 10;
-   private static final int b = 7;
+   private static final int a = 16;
 
-   public static bsr<bpw> a(float $$0) {
-      return a($$0, 10, 7);
+   public static bri<bpp> a(Predicate<il<cav>> $$0, bys<ik> $$1) {
+      return buu.a((Function<buu.b<bpp>, ? extends App<buu.c<bpp>, bux<bpp>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
+               ik $$6 = $$2.b($$2x);
+               ib $$7 = $$6.b();
+               if ($$3.ad() == $$6.a() && $$7.a($$4.dk(), 16.0)) {
+                  apf $$8 = $$3.o().a($$6.a());
+                  if ($$8 == null || !$$8.y().a($$7, $$0)) {
+                     $$2x.b();
+                  } else if (a($$8, $$7, $$4)) {
+                     $$2x.b();
+                     $$3.y().b($$7);
+                     aew.c($$3, $$7);
+                  }
+
+                  return true;
+               } else {
+                  return false;
+               }
+            })));
    }
 
-   public static bsr<bpw> a(float $$0, int $$1, int $$2) {
-      return but.a((Function<but.b<bpw>, ? extends App<but.c<bpw>, buw<bpw>>>)($$3 -> $$3.group($$3.c(byr.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
-               ib $$7 = $$5.dm();
-               epr $$8;
-               if ($$4.c($$7)) {
-                  $$8 = cal.a($$5, $$1, $$2);
-               } else {
-                  je $$9 = je.a($$7);
-                  je $$10 = bri.a($$4, $$9, 2);
-                  if ($$10 != $$9) {
-                     $$8 = cai.a($$5, $$1, $$2, epr.c($$10.q()), (float) (Math.PI / 2));
-                  } else {
-                     $$8 = cal.a($$5, $$1, $$2);
-                  }
-               }
-
-               $$3x.a(Optional.ofNullable($$8).map($$1xxxx -> new byu($$1xxxx, $$0, 0)));
-               return true;
-            })));
+   private static boolean a(apf $$0, ib $$1, bpp $$2) {
+      dnb $$3 = $$0.a_($$1);
+      return $$3.a(aun.R) && $$3.c(czv.c) && !$$2.fI();
    }
 }

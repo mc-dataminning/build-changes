@@ -1,23 +1,22 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class csa extends cqh {
+   private final crz a;
 
-public class csa extends coa {
-   public csa(cqf.a $$0) {
-      super($$0);
+   public csa(crz $$0, cqh.a $$1) {
+      super($$1.b($$0.a()));
+      this.a = $$0;
+   }
+
+   public crz i() {
+      return this.a;
    }
 
    @Override
-   public cqk am_() {
-      return csj.a(super.am_(), csk.E);
+   public int e() {
+      return this.a.e();
    }
 
    @Override
-   public void a(cqk $$0, @Nullable cwz $$1, List<vu> $$2, csb $$3) {
-      csj.a($$0, $$2, 0.125F, $$1 == null ? 20.0F : $$1.s().f());
-   }
-
-   @Override
-   public String j(cqk $$0) {
-      return csh.a(csj.d($$0), this.a() + ".effect.");
+   public boolean a(cqm $$0, cqm $$1) {
+      return this.a.f().a($$1) || super.a($$0, $$1);
    }
 }

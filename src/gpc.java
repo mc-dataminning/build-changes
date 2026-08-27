@@ -1,29 +1,22 @@
-import com.google.common.util.concurrent.RateLimiter;
-import java.time.Duration;
-import java.util.concurrent.atomic.AtomicReference;
+public class gpc implements fcl {
+   private final vu a;
+   private final int b;
+   private final int c;
+   private final int d;
 
-public class gpc {
-   private final float a;
-   private final AtomicReference<gpc.a> b = new AtomicReference<>();
-
-   public gpc(Duration $$0) {
-      this.a = 1000.0F / (float)$$0.toMillis();
+   public gpc(vu $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public void a(eyy $$0, vu $$1) {
-      gpc.a $$2 = this.b.updateAndGet($$1x -> $$1x != null && $$1.equals($$1x.a) ? $$1x : new gpc.a($$1, RateLimiter.create((double)this.a)));
-      if ($$2.b.tryAcquire(1)) {
-         $$0.c($$1);
-      }
+   @Override
+   public void a(fav $$0, int $$1, int $$2, float $$3) {
+      $$0.a(ezi.Q().h, this.a, this.b, this.c, this.d);
    }
 
-   static class a {
-      final vu a;
-      final RateLimiter b;
-
-      a(vu $$0, RateLimiter $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   public vu a() {
+      return this.a;
    }
 }

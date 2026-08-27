@@ -1,68 +1,62 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record cii(String q, Predicate<il<cau>> r, Predicate<il<cau>> s, ImmutableSet<cqf> t, ImmutableSet<daa> u, @Nullable atx v) {
-   public static final Predicate<il<cau>> a = $$0 -> $$0.a(auy.a);
-   public static final cii b = a("none", cau.a, a, null);
-   public static final cii c = a("armorer", cav.a, aty.Au);
-   public static final cii d = a("butcher", cav.b, aty.Av);
-   public static final cii e = a("cartographer", cav.c, aty.Aw);
-   public static final cii f = a("cleric", cav.d, aty.Ax);
-   public static final cii g = a("farmer", cav.e, ImmutableSet.of(cqn.pv, cqn.pu, cqn.vi, cqn.rx), ImmutableSet.of(dac.cC), aty.Ay);
-   public static final cii h = a("fisherman", cav.f, aty.Az);
-   public static final cii i = a("fletcher", cav.g, aty.AA);
-   public static final cii j = a("leatherworker", cav.h, aty.AB);
-   public static final cii k = a("librarian", cav.i, aty.AC);
-   public static final cii l = a("mason", cav.j, aty.AD);
-   public static final cii m = a("nitwit", cau.a, cau.a, null);
-   public static final cii n = a("shepherd", cav.k, aty.AE);
-   public static final cii o = a("toolsmith", cav.l, aty.AF);
-   public static final cii p = a("weaponsmith", cav.m, aty.AG);
+public class cii {
+   public static final int a = 1;
+   public static final int b = 5;
+   private static final int[] e = new int[]{0, 10, 70, 150, 250};
+   public static final Codec<cii> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ki.y.q().fieldOf("type").orElseGet(() -> cim.c).forGetter($$0x -> $$0x.f),
+               ki.z.q().fieldOf("profession").orElseGet(() -> cik.b).forGetter($$0x -> $$0x.g),
+               Codec.INT.fieldOf("level").orElse(1).forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, cii::new)
+   );
+   public static final xs<vf, cii> d = xs.a(xq.a(kj.aq), $$0 -> $$0.f, xq.a(kj.ap), $$0 -> $$0.g, xq.d, $$0 -> $$0.h, cii::new);
+   private final cim f;
+   private final cik g;
+   private final int h;
 
-   @Override
-   public String toString() {
-      return this.q;
+   public cii(cim $$0, cik $$1, int $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = Math.max(1, $$2);
    }
 
-   private static cii a(String $$0, ajg<cau> $$1, @Nullable atx $$2) {
-      return a($$0, $$1x -> $$1x.a($$1), $$1x -> $$1x.a($$1), $$2);
+   public cim a() {
+      return this.f;
    }
 
-   private static cii a(String $$0, Predicate<il<cau>> $$1, Predicate<il<cau>> $$2, @Nullable atx $$3) {
-      return a($$0, $$1, $$2, ImmutableSet.of(), ImmutableSet.of(), $$3);
+   public cik b() {
+      return this.g;
    }
 
-   private static cii a(String $$0, ajg<cau> $$1, ImmutableSet<cqf> $$2, ImmutableSet<daa> $$3, @Nullable atx $$4) {
-      return a($$0, $$1x -> $$1x.a($$1), $$1x -> $$1x.a($$1), $$2, $$3, $$4);
+   public int c() {
+      return this.h;
    }
 
-   private static cii a(String $$0, Predicate<il<cau>> $$1, Predicate<il<cau>> $$2, ImmutableSet<cqf> $$3, ImmutableSet<daa> $$4, @Nullable atx $$5) {
-      return iy.a(ki.z, new ajh($$0), new cii($$0, $$1, $$2, $$3, $$4, $$5));
+   public cii a(cim $$0) {
+      return new cii($$0, this.g, this.h);
    }
 
-   public String a() {
-      return this.q;
+   public cii a(cik $$0) {
+      return new cii(this.f, $$0, this.h);
    }
 
-   public Predicate<il<cau>> b() {
-      return this.r;
+   public cii a(int $$0) {
+      return new cii(this.f, this.g, $$0);
    }
 
-   public Predicate<il<cau>> c() {
-      return this.s;
+   public static int b(int $$0) {
+      return d($$0) ? e[$$0 - 1] : 0;
    }
 
-   public ImmutableSet<cqf> d() {
-      return this.t;
+   public static int c(int $$0) {
+      return d($$0) ? e[$$0] : 0;
    }
 
-   public ImmutableSet<daa> e() {
-      return this.u;
-   }
-
-   @Nullable
-   public atx f() {
-      return this.v;
+   public static boolean d(int $$0) {
+      return $$0 >= 1 && $$0 < 5;
    }
 }

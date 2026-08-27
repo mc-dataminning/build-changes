@@ -1,120 +1,180 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.BiConsumer;
+import javax.annotation.Nullable;
 
-public class dam extends daa {
-   public static final MapCodec<dam> a = b(dam::new);
-   public static final int b = 6;
-   public static final dnz c = dnp.ay;
-   public static final int d = b(0);
-   protected static final float e = 1.0F;
-   protected static final float f = 2.0F;
-   protected static final eqk[] g = new eqk[]{
-      daa.a(1.0, 0.0, 1.0, 15.0, 8.0, 15.0),
-      daa.a(3.0, 0.0, 1.0, 15.0, 8.0, 15.0),
-      daa.a(5.0, 0.0, 1.0, 15.0, 8.0, 15.0),
-      daa.a(7.0, 0.0, 1.0, 15.0, 8.0, 15.0),
-      daa.a(9.0, 0.0, 1.0, 15.0, 8.0, 15.0),
-      daa.a(11.0, 0.0, 1.0, 15.0, 8.0, 15.0),
-      daa.a(13.0, 0.0, 1.0, 15.0, 8.0, 15.0)
-   };
+public class dam extends dcw {
+   public static final MapCodec<dam> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               dnq.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.N),
+               Codec.intRange(1, 1024).fieldOf("ticks_to_stay_pressed").forGetter($$0x -> $$0x.O),
+               u()
+            )
+            .apply($$0, dam::new)
+   );
+   public static final dns b = dnr.w;
+   private static final int L = 1;
+   private static final int M = 2;
+   protected static final int c = 2;
+   protected static final int d = 3;
+   protected static final eqm e = dac.a(6.0, 14.0, 5.0, 10.0, 16.0, 11.0);
+   protected static final eqm f = dac.a(5.0, 14.0, 6.0, 11.0, 16.0, 10.0);
+   protected static final eqm g = dac.a(6.0, 0.0, 5.0, 10.0, 2.0, 11.0);
+   protected static final eqm h = dac.a(5.0, 0.0, 6.0, 11.0, 2.0, 10.0);
+   protected static final eqm i = dac.a(5.0, 6.0, 14.0, 11.0, 10.0, 16.0);
+   protected static final eqm j = dac.a(5.0, 6.0, 0.0, 11.0, 10.0, 2.0);
+   protected static final eqm k = dac.a(14.0, 6.0, 5.0, 16.0, 10.0, 11.0);
+   protected static final eqm l = dac.a(0.0, 6.0, 5.0, 2.0, 10.0, 11.0);
+   protected static final eqm m = dac.a(6.0, 15.0, 5.0, 10.0, 16.0, 11.0);
+   protected static final eqm n = dac.a(5.0, 15.0, 6.0, 11.0, 16.0, 10.0);
+   protected static final eqm o = dac.a(6.0, 0.0, 5.0, 10.0, 1.0, 11.0);
+   protected static final eqm F = dac.a(5.0, 0.0, 6.0, 11.0, 1.0, 10.0);
+   protected static final eqm G = dac.a(5.0, 6.0, 15.0, 11.0, 10.0, 16.0);
+   protected static final eqm H = dac.a(5.0, 6.0, 0.0, 11.0, 10.0, 1.0);
+   protected static final eqm I = dac.a(15.0, 6.0, 5.0, 16.0, 10.0, 11.0);
+   protected static final eqm J = dac.a(0.0, 6.0, 5.0, 1.0, 10.0, 11.0);
+   private final dnq N;
+   private final int O;
 
    @Override
    public MapCodec<dam> a() {
       return a;
    }
 
-   protected dam(dmy.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(c, Integer.valueOf(0)));
+   protected dam(dnq $$0, int $$1, dna.d $$2) {
+      super($$2.a($$0.g()));
+      this.N = $$0;
+      this.k(this.E.b().a(aE, ih.c).a(b, Boolean.valueOf(false)).a(K, dnm.b));
+      this.O = $$1;
    }
 
    @Override
-   protected eqk a(dmz $$0, cwf $$1, ib $$2, epw $$3) {
-      return g[$$0.c(c)];
+   protected eqm a(dnb $$0, cwh $$1, ib $$2, epy $$3) {
+      ih $$4 = $$0.c(aE);
+      boolean $$5 = $$0.c(b);
+      switch ((dnm)$$0.c(K)) {
+         case a:
+            if ($$4.o() == ih.a.a) {
+               return $$5 ? o : g;
+            }
+
+            return $$5 ? F : h;
+         case b:
+            return switch ($$4) {
+               case f -> $$5 ? J : l;
+               case e -> $$5 ? I : k;
+               case d -> $$5 ? H : j;
+               case c, b, a -> $$5 ? G : i;
+            };
+         case c:
+         default:
+            if ($$4.o() == ih.a.a) {
+               return $$5 ? m : e;
+            } else {
+               return $$5 ? n : f;
+            }
+      }
    }
 
    @Override
-   protected bne a(cqk $$0, dmz $$1, cwz $$2, ib $$3, cis $$4, bnb $$5, epn $$6) {
-      cqf $$7 = $$0.d();
-      if ($$0.a(auv.ai) && $$1.c(c) == 0 && daa.a($$7) instanceof dap $$8) {
-         if (!$$4.f()) {
-            $$0.h(1);
-         }
-
-         $$2.a(null, $$3, aty.dm, atz.e, 1.0F, 1.0F);
-         $$2.b($$3, daq.a($$8));
-         $$2.a($$4, drn.c, $$3);
-         $$4.b(aui.c.b($$7));
-         return bne.a;
+   protected bnd a(dnb $$0, cxb $$1, ib $$2, ciu $$3, epp $$4) {
+      if ($$0.c(b)) {
+         return bnd.b;
       } else {
-         return bne.d;
+         this.d($$0, $$1, $$2);
+         this.a($$3, $$1, $$2, true);
+         $$1.a($$3, drp.a, $$2);
+         return bnd.a($$1.B);
       }
    }
 
    @Override
-   protected bnc a(dmz $$0, cwz $$1, ib $$2, cis $$3, epn $$4) {
-      if ($$1.B) {
-         if (a($$1, $$2, $$0, $$3).a()) {
-            return bnc.a;
-         }
-
-         if ($$3.b(bnb.a).b()) {
-            return bnc.b;
-         }
+   protected void a(dnb $$0, cxb $$1, ib $$2, cwt $$3, BiConsumer<cqm, ib> $$4) {
+      if ($$3.j() == cwt.a.d && !$$1.x_() && !$$0.c(b)) {
+         this.d($$0, $$1, $$2);
       }
 
-      return a($$1, $$2, $$0, $$3);
+      super.a($$0, $$1, $$2, $$3, $$4);
    }
 
-   protected static bnc a(cxa $$0, ib $$1, dmz $$2, cis $$3) {
-      if (!$$3.s(false)) {
-         return bnc.d;
-      } else {
-         $$3.a(aui.U);
-         $$3.gj().a(2, 0.1F);
-         int $$4 = $$2.c(c);
-         $$0.a($$3, drn.m, $$1);
-         if ($$4 < 6) {
-            $$0.a($$1, $$2.a(c, Integer.valueOf($$4 + 1)), 3);
-         } else {
-            $$0.a($$1, false);
-            $$0.a($$3, drn.f, $$1);
+   public void d(dnb $$0, cxb $$1, ib $$2) {
+      $$1.a($$2, $$0.a(b, Boolean.valueOf(true)), 3);
+      this.f($$0, $$1, $$2);
+      $$1.a($$2, this, this.O);
+   }
+
+   protected void a(@Nullable ciu $$0, cxc $$1, ib $$2, boolean $$3) {
+      $$1.a($$3 ? $$0 : null, $$2, this.a($$3), atz.e);
+   }
+
+   protected atx a(boolean $$0) {
+      return $$0 ? this.N.o() : this.N.n();
+   }
+
+   @Override
+   protected void a(dnb $$0, cxb $$1, ib $$2, dnb $$3, boolean $$4) {
+      if (!$$4 && !$$0.a($$3.b())) {
+         if ($$0.c(b)) {
+            this.f($$0, $$1, $$2);
          }
 
-         return bnc.a;
+         super.a($$0, $$1, $$2, $$3, $$4);
       }
    }
 
    @Override
-   protected dmz a(dmz $$0, ih $$1, dmz $$2, cxa $$3, ib $$4, ib $$5) {
-      return $$1 == ih.a && !$$0.a($$3, $$4) ? dac.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected int a(dnb $$0, cwh $$1, ib $$2, ih $$3) {
+      return $$0.c(b) ? 15 : 0;
    }
 
    @Override
-   protected boolean a(dmz $$0, cxc $$1, ib $$2) {
-      return $$1.a_($$2.d()).e();
+   protected int b(dnb $$0, cwh $$1, ib $$2, ih $$3) {
+      return $$0.c(b) && m($$0) == $$3 ? 15 : 0;
    }
 
    @Override
-   protected void a(dna.a<daa, dmz> $$0) {
-      $$0.a(c);
-   }
-
-   @Override
-   protected int a(dmz $$0, cwz $$1, ib $$2) {
-      return b($$0.c(c));
-   }
-
-   public static int b(int $$0) {
-      return (7 - $$0) * 2;
-   }
-
-   @Override
-   protected boolean d_(dmz $$0) {
+   protected boolean f_(dnb $$0) {
       return true;
    }
 
    @Override
-   protected boolean a(dmz $$0, cwf $$1, ib $$2, ejd $$3) {
-      return false;
+   protected void a(dnb $$0, apf $$1, ib $$2, axd $$3) {
+      if ($$0.c(b)) {
+         this.e($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   protected void a(dnb $$0, cxb $$1, ib $$2, box $$3) {
+      if (!$$1.B && this.N.e() && !$$0.c(b)) {
+         this.e($$0, $$1, $$2);
+      }
+   }
+
+   protected void e(dnb $$0, cxb $$1, ib $$2) {
+      cja $$3 = this.N.e() ? $$1.a(cja.class, $$0.j($$1, $$2).a().a($$2)).stream().findFirst().orElse(null) : null;
+      boolean $$4 = $$3 != null;
+      boolean $$5 = $$0.c(b);
+      if ($$4 != $$5) {
+         $$1.a($$2, $$0.a(b, Boolean.valueOf($$4)), 3);
+         this.f($$0, $$1, $$2);
+         this.a(null, $$1, $$2, $$4);
+         $$1.a($$3, $$4 ? drp.a : drp.e, $$2);
+      }
+
+      if ($$4) {
+         $$1.a(new ib($$2), this, this.O);
+      }
+   }
+
+   private void f(dnb $$0, cxb $$1, ib $$2) {
+      $$1.a($$2, this);
+      $$1.a($$2.a(m($$0).g()), this);
+   }
+
+   @Override
+   protected void a(dnc.a<dac, dnb> $$0) {
+      $$0.a(aE, b, K);
    }
 }

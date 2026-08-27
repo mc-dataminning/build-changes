@@ -6,12 +6,12 @@ import java.util.Collections;
 import java.util.Set;
 import java.util.function.Function;
 
-public class apc extends bms {
+public class apc extends bmt {
    private final Set<apg> h = Sets.newHashSet();
    private final Set<apg> i = Collections.unmodifiableSet(this.h);
    private boolean j = true;
 
-   public apc(vu $$0, bms.a $$1, bms.b $$2) {
+   public apc(vu $$0, bmt.a $$1, bmt.b $$2) {
       super(aww.a(), $$0, $$1, $$2);
    }
 
@@ -24,7 +24,7 @@ public class apc extends bms {
    }
 
    @Override
-   public void a(bms.a $$0) {
+   public void a(bmt.a $$0) {
       if ($$0 != this.c) {
          super.a($$0);
          this.a(aaw::d);
@@ -32,7 +32,7 @@ public class apc extends bms {
    }
 
    @Override
-   public void a(bms.b $$0) {
+   public void a(bmt.b $$0) {
       if ($$0 != this.d) {
          super.a($$0);
          this.a(aaw::d);
@@ -40,7 +40,7 @@ public class apc extends bms {
    }
 
    @Override
-   public bms a(boolean $$0) {
+   public bmt a(boolean $$0) {
       if ($$0 != this.e) {
          super.a($$0);
          this.a(aaw::e);
@@ -50,7 +50,7 @@ public class apc extends bms {
    }
 
    @Override
-   public bms b(boolean $$0) {
+   public bmt b(boolean $$0) {
       if ($$0 != this.f) {
          super.b($$0);
          this.a(aaw::e);
@@ -60,7 +60,7 @@ public class apc extends bms {
    }
 
    @Override
-   public bms c(boolean $$0) {
+   public bmt c(boolean $$0) {
       if ($$0 != this.g) {
          super.c($$0);
          this.a(aaw::e);
@@ -77,7 +77,7 @@ public class apc extends bms {
       }
    }
 
-   private void a(Function<bms, aaw> $$0) {
+   private void a(Function<bmt, aaw> $$0) {
       if (this.j) {
          aaw $$1 = $$0.apply(this);
 

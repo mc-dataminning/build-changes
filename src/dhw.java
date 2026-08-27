@@ -1,76 +1,53 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dhw extends daa {
-   public static final MapCodec<dhw> a = b(dhw::new);
-   private static final vu d = vu.c("container.stonecutter");
-   public static final dnt b = ddv.aE;
-   protected static final eqk c = daa.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
+public class dhw extends dhb {
+   public static final MapCodec<dhw> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(doo.a.fieldOf("wood_type").forGetter(dhb::d), u()).apply($$0, dhw::new));
+   public static final dob b = dnr.ba;
 
    @Override
    public MapCodec<dhw> a() {
       return a;
    }
 
-   public dhw(dmy.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, ih.c));
+   public dhw(doo $$0, dna.d $$1) {
+      super($$0, $$1.a($$0.d()));
+      this.k(this.E.b().a(b, Integer.valueOf(0)).a(f, Boolean.valueOf(false)));
    }
 
    @Override
-   public dmz a(css $$0) {
-      return this.o().a(b, $$0.g().g());
+   protected boolean a(dnb $$0, cxe $$1, ib $$2) {
+      return $$1.a_($$2.d()).e();
    }
 
    @Override
-   protected bnc a(dmz $$0, cwz $$1, ib $$2, cis $$3, epn $$4) {
-      if ($$1.B) {
-         return bnc.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(aui.ay);
-         return bnc.b;
-      }
-   }
-
-   @Nullable
-   @Override
-   protected bng b(dmz $$0, cwz $$1, ib $$2) {
-      return new bnm(($$2x, $$3, $$4) -> new cnn($$2x, $$3, clz.a($$1, $$2)), d);
+   public dnb a(csu $$0) {
+      eip $$1 = $$0.q().b_($$0.a());
+      return this.o().a(b, Integer.valueOf(doh.a($$0.i() + 180.0F))).a(f, Boolean.valueOf($$1.a() == eiq.c));
    }
 
    @Override
-   protected eqk a(dmz $$0, cwf $$1, ib $$2, epw $$3) {
-      return c;
+   protected dnb a(dnb $$0, ih $$1, dnb $$2, cxc $$3, ib $$4, ib $$5) {
+      return $$1 == ih.a && !this.a($$0, $$3, $$4) ? dae.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean g_(dmz $$0) {
-      return true;
+   public float g(dnb $$0) {
+      return doh.b($$0.c(b));
    }
 
    @Override
-   protected dgf b_(dmz $$0) {
-      return dgf.c;
+   protected dnb a(dnb $$0, dgo $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   protected dmz a(dmz $$0, dgm $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
+   protected dnb a(dnb $$0, dey $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   protected dmz a(dmz $$0, dew $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dna.a<daa, dmz> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected boolean a(dmz $$0, cwf $$1, ib $$2, ejd $$3) {
-      return false;
+   protected void a(dnc.a<dac, dnb> $$0) {
+      $$0.a(b, f);
    }
 }

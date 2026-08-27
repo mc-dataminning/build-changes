@@ -1,5 +1,6 @@
-public interface bqn<T> {
-   void a(T var1);
+import javax.annotation.Nullable;
 
-   T c();
+public interface bqn {
+   @Nullable
+   box af_();
 }

@@ -30,7 +30,12 @@ public interface ip<T> extends Iterable<il<T>> {
    @Deprecated
    @VisibleForTesting
    static <T> ip.c<T> a(io<T> $$0, avd<T> $$1) {
-      return new ip.c<>($$0, $$1);
+      return new ip.c<T>($$0, $$1) {
+         @Override
+         protected List<il<T>> e() {
+            throw new UnsupportedOperationException("Tag " + this.f() + " can't be dereferenced during construction");
+         }
+      };
    }
 
    @SafeVarargs

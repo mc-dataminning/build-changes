@@ -1,59 +1,41 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
 
-public class elx extends emg {
-   public static final Codec<elx> a = RecordCodecBuilder.create($$0 -> a($$0).and(elx.a.e.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, elx::new));
-   private final elx.a b;
+public class elx extends emi {
+   public static final Codec<elx> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, elx::new));
 
-   private elx(List<ent> $$0, elx.a $$1) {
+   private elx(List<env> $$0) {
       super($$0);
-      this.b = $$1;
    }
 
    @Override
-   public emi b() {
-      return emj.o;
+   public emk b() {
+      return eml.t;
    }
 
    @Override
-   public Set<enc<?>> a() {
-      return ImmutableSet.of(this.b.g);
-   }
+   public cqm a(cqm $$0, ekw $$1) {
+      Float $$2 = $$1.c(enh.j);
+      if ($$2 != null) {
+         axd $$3 = $$1.b();
+         float $$4 = 1.0F / $$2;
+         int $$5 = $$0.M();
+         int $$6 = 0;
 
-   @Override
-   public cqk a(cqk $$0, eku $$1) {
-      if ($$1.c(this.b.g) instanceof bnh $$3 && $$3.ae()) {
-         $$0.a($$3.O_());
+         for (int $$7 = 0; $$7 < $$5; $$7++) {
+            if ($$3.i() <= $$4) {
+               $$6++;
+            }
+         }
+
+         $$0.f($$6);
       }
 
       return $$0;
    }
 
-   public static emg.a<?> a(elx.a $$0) {
-      return a($$1 -> new elx($$1, $$0));
-   }
-
-   public static enum a implements axq {
-      a("this", enf.a),
-      b("killer", enf.d),
-      c("killer_player", enf.b),
-      d("block_entity", enf.h);
-
-      public static final Codec<elx.a> e = axq.a(elx.a::values);
-      private final String f;
-      final enc<?> g;
-
-      private a(String $$0, enc<?> $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
-
-      @Override
-      public String c() {
-         return this.f;
-      }
+   public static emi.a<?> c() {
+      return a(elx::new);
    }
 }

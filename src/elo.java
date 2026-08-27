@@ -1,4 +1,7 @@
-import com.mojang.serialization.Codec;
+import java.util.function.Consumer;
 
-public record elo(Codec<? extends eln> a) {
+public interface elo {
+   int a(float var1);
+
+   void a(Consumer<cqm> var1, ekw var2);
 }

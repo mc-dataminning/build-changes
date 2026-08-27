@@ -1,20 +1,20 @@
 import com.mojang.serialization.Codec;
 
-public class egh extends egw {
-   public static final Codec<egh> a = dmz.b.fieldOf("block_state").xmap(egh::new, $$0 -> $$0.b).codec();
-   private final dmz b;
+public class egh extends egy {
+   public static final Codec<egh> a = ki.e.q().fieldOf("block").xmap(egh::new, $$0 -> $$0.b).codec();
+   private final dac b;
 
-   public egh(dmz $$0) {
+   public egh(dac $$0) {
       this.b = $$0;
    }
 
    @Override
-   public boolean a(dmz $$0, axd $$1) {
-      return $$0 == this.b;
+   public boolean a(dnb $$0, axd $$1) {
+      return $$0.a(this.b);
    }
 
    @Override
-   protected egx<?> a() {
-      return egx.c;
+   protected egz<?> a() {
+      return egz.b;
    }
 }

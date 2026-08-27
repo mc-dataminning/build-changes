@@ -1,36 +1,22 @@
-import javax.annotation.Nullable;
-
-class boe extends bog {
-   private final boolean a;
-
-   public boe(boi $$0, int $$1, boolean $$2) {
+class boe extends boi {
+   protected boe(boj $$0, int $$1) {
       super($$0, $$1);
-      this.a = $$2;
    }
 
    @Override
-   public boolean a(bpo $$0, int $$1) {
-      if (this.a == $$0.ew()) {
-         $$0.c((float)Math.max(4 << $$1, 0));
-      } else {
-         $$0.a($$0.dN().o(), (float)(6 << $$1));
-      }
-
+   public boolean a(int $$0, int $$1) {
       return true;
    }
 
    @Override
-   public void a(@Nullable bow $$0, @Nullable bow $$1, bpo $$2, int $$3, double $$4) {
-      if (this.a == $$2.ew()) {
-         int $$5 = (int)($$4 * (double)(4 << $$3) + 0.5);
-         $$2.c((float)$$5);
-      } else {
-         int $$6 = (int)($$4 * (double)(6 << $$3) + 0.5);
-         if ($$0 == null) {
-            $$2.a($$2.dN().o(), (float)$$6);
-         } else {
-            $$2.a($$2.dN().c($$0, $$1), (float)$$6);
+   public boolean a(bpp $$0, int $$1) {
+      if ($$0 instanceof apg $$2 && !$$0.N_()) {
+         apf $$3 = $$2.z();
+         if ($$3.aj() != bna.a && $$3.c($$0.dm())) {
+            $$3.z().a($$2);
          }
       }
+
+      return true;
    }
 }

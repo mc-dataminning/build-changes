@@ -1,96 +1,43 @@
 import com.mojang.serialization.Codec;
 
-public class dxj extends dvq<dyb> {
-   private static final ih[] a = ih.values();
+public class dxj extends dvs<dyd> {
+   private static final ib a = new ib(8, 3, 8);
+   private static final cwi b = new cwi(a);
+   private static final int c = 16;
+   private static final int d = 1;
 
-   public dxj(Codec<dyb> $$0) {
+   public dxj(Codec<dyd> $$0) {
       super($$0);
    }
 
+   private static int a(int $$0, int $$1, int $$2, int $$3) {
+      return Math.max(Math.abs($$0 - $$2), Math.abs($$1 - $$3));
+   }
+
    @Override
-   public boolean a(dvs<dyb> $$0) {
-      cxu $$1 = $$0.b();
-      ib $$2 = $$0.e();
-      axd $$3 = $$0.d();
-      if (!$$1.u($$2)) {
-         return false;
+   public boolean a(dvu<dyd> $$0) {
+      cxw $$1 = $$0.b();
+      cwi $$2 = new cwi($$0.e());
+      if (a($$2.e, $$2.f, b.e, b.f) > 1) {
+         return true;
       } else {
-         dmz $$4 = $$1.a_($$2.c());
-         if (!$$4.a(dac.dV) && !$$4.a(dac.kK)) {
-            return false;
-         } else {
-            this.a($$1, $$3, $$2);
-            this.b($$1, $$3, $$2);
-            return true;
-         }
-      }
-   }
+         ib $$3 = a.h($$0.e().v() + a.v());
+         ib.a $$4 = new ib.a();
 
-   private void a(cxa $$0, axd $$1, ib $$2) {
-      $$0.a($$2, dac.kK.o(), 2);
-      ib.a $$3 = new ib.a();
-      ib.a $$4 = new ib.a();
-
-      for (int $$5 = 0; $$5 < 200; $$5++) {
-         $$3.a($$2, $$1.a(6) - $$1.a(6), $$1.a(2) - $$1.a(5), $$1.a(6) - $$1.a(6));
-         if ($$0.u($$3)) {
-            int $$6 = 0;
-
-            for (ih $$7 : a) {
-               dmz $$8 = $$0.a_($$4.a($$3, $$7));
-               if ($$8.a(dac.dV) || $$8.a(dac.kK)) {
-                  $$6++;
-               }
-
-               if ($$6 > 1) {
-                  break;
+         for (int $$5 = $$2.e(); $$5 <= $$2.g(); $$5++) {
+            for (int $$6 = $$2.d(); $$6 <= $$2.f(); $$6++) {
+               if (a($$3.u(), $$3.w(), $$6, $$5) <= 16) {
+                  $$4.d($$6, $$3.v(), $$5);
+                  if ($$4.equals($$3)) {
+                     $$1.a($$4, dae.m.o(), 2);
+                  } else {
+                     $$1.a($$4, dae.b.o(), 2);
+                  }
                }
             }
-
-            if ($$6 == 1) {
-               $$0.a($$3, dac.kK.o(), 2);
-            }
-         }
-      }
-   }
-
-   private void b(cxa $$0, axd $$1, ib $$2) {
-      ib.a $$3 = new ib.a();
-
-      for (int $$4 = 0; $$4 < 100; $$4++) {
-         $$3.a($$2, $$1.a(8) - $$1.a(8), $$1.a(2) - $$1.a(7), $$1.a(8) - $$1.a(8));
-         if ($$0.u($$3)) {
-            dmz $$5 = $$0.a_($$3.c());
-            if ($$5.a(dac.dV) || $$5.a(dac.kK)) {
-               int $$6 = aww.a($$1, 1, 8);
-               if ($$1.a(6) == 0) {
-                  $$6 *= 2;
-               }
-
-               if ($$1.a(5) == 0) {
-                  $$6 = 1;
-               }
-
-               int $$7 = 17;
-               int $$8 = 25;
-               a($$0, $$1, $$3, $$6, 17, 25);
-            }
-         }
-      }
-   }
-
-   public static void a(cxa $$0, axd $$1, ib.a $$2, int $$3, int $$4, int $$5) {
-      for (int $$6 = 0; $$6 <= $$3; $$6++) {
-         if ($$0.u($$2)) {
-            if ($$6 == $$3 || !$$0.u($$2.d())) {
-               $$0.a($$2, dac.oz.o().a(ddp.e, Integer.valueOf(aww.a($$1, $$4, $$5))), 2);
-               break;
-            }
-
-            $$0.a($$2, dac.oA.o(), 2);
          }
 
-         $$2.c(ih.a);
+         return true;
       }
    }
 }

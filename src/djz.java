@@ -1,108 +1,56 @@
-public class djz extends dlk {
-   private iu<cqk> e = iu.a(27, cqk.h);
-   private final dkt f = new dkt() {
-      @Override
-      protected void a(cwz $$0, ib $$1, dmz $$2) {
-         djz.this.a($$2, aty.bz);
-         djz.this.a($$2, true);
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
+import javax.annotation.Nullable;
+
+public class djz {
+   final String a;
+
+   public djz(String $$0) {
+      this.a = $$0;
+   }
+
+   public static ajh a(ajg<djz> $$0, boolean $$1) {
+      String $$2 = $$1 ? "banner" : "shield";
+      return $$0.a().d("entity/" + $$2 + "/");
+   }
+
+   public String a() {
+      return this.a;
+   }
+
+   @Nullable
+   public static il<djz> a(String $$0) {
+      return ki.am.h().filter($$1 -> $$1.a().a.equals($$0)).findAny().orElse(null);
+   }
+
+   public static class a {
+      private final List<Pair<il<djz>, cpd>> a = Lists.newArrayList();
+
+      public djz.a a(ajg<djz> $$0, cpd $$1) {
+         return this.a(ki.am.g($$0), $$1);
       }
 
-      @Override
-      protected void b(cwz $$0, ib $$1, dmz $$2) {
-         djz.this.a($$2, aty.by);
-         djz.this.a($$2, false);
+      public djz.a a(il<djz> $$0, cpd $$1) {
+         return this.a(Pair.of($$0, $$1));
       }
 
-      @Override
-      protected void a(cwz $$0, ib $$1, dmz $$2, int $$3, int $$4) {
+      public djz.a a(Pair<il<djz>, cpd> $$0) {
+         this.a.add($$0);
+         return this;
       }
 
-      @Override
-      protected boolean a(cis $$0) {
-         if ($$0.bZ instanceof clv) {
-            bmv $$1 = ((clv)$$0.bZ).l();
-            return $$1 == djz.this;
-         } else {
-            return false;
+      public tg a() {
+         tg $$0 = new tg();
+
+         for (Pair<il<djz>, cpd> $$1 : this.a) {
+            ta $$2 = new ta();
+            $$2.a("Pattern", ((djz)((il)$$1.getFirst()).a()).a);
+            $$2.a("Color", ((cpd)$$1.getSecond()).a());
+            $$0.add($$2);
          }
+
+         return $$0;
       }
-   };
-
-   public djz(ib $$0, dmz $$1) {
-      super(dki.A, $$0, $$1);
-   }
-
-   @Override
-   protected void b(ta $$0, in.a $$1) {
-      super.b($$0, $$1);
-      if (!this.b($$0)) {
-         bmw.a($$0, this.e);
-      }
-   }
-
-   @Override
-   public void a(ta $$0, in.a $$1) {
-      super.a($$0, $$1);
-      this.e = iu.a(this.b(), cqk.h);
-      if (!this.c_($$0)) {
-         bmw.b($$0, this.e);
-      }
-   }
-
-   @Override
-   public int b() {
-      return 27;
-   }
-
-   @Override
-   protected iu<cqk> j() {
-      return this.e;
-   }
-
-   @Override
-   protected void a(iu<cqk> $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   protected vu k() {
-      return vu.c("container.barrel");
-   }
-
-   @Override
-   protected clo a(int $$0, cir $$1) {
-      return clv.a($$0, $$1, this);
-   }
-
-   @Override
-   public void d_(cis $$0) {
-      if (!this.q && !$$0.N_()) {
-         this.f.a($$0, this.i(), this.aC_(), this.n());
-      }
-   }
-
-   @Override
-   public void c(cis $$0) {
-      if (!this.q && !$$0.N_()) {
-         this.f.b($$0, this.i(), this.aC_(), this.n());
-      }
-   }
-
-   public void l() {
-      if (!this.q) {
-         this.f.c(this.i(), this.aC_(), this.n());
-      }
-   }
-
-   void a(dmz $$0, boolean $$1) {
-      this.o.a(this.aC_(), $$0.a(czg.c, Boolean.valueOf($$1)), 3);
-   }
-
-   void a(dmz $$0, atx $$1) {
-      jg $$2 = $$0.c(czg.b).q();
-      double $$3 = (double)this.p.u() + 0.5 + (double)$$2.u() / 2.0;
-      double $$4 = (double)this.p.v() + 0.5 + (double)$$2.v() / 2.0;
-      double $$5 = (double)this.p.w() + 0.5 + (double)$$2.w() / 2.0;
-      this.o.a(null, $$3, $$4, $$5, $$1, atz.e, 0.5F, this.o.z.i() * 0.1F + 0.9F);
    }
 }

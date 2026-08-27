@@ -1,13 +1,13 @@
 import java.util.function.Supplier;
 
 public class awz {
-   public static void a(cwz $$0, ib $$1, ka $$2, bmh $$3) {
+   public static void a(cxb $$0, ib $$1, ka $$2, bmi $$3) {
       for (ih $$4 : ih.values()) {
          a($$0, $$1, $$2, $$3, $$4, () -> a($$0.z), 0.55);
       }
    }
 
-   public static void a(cwz $$0, ib $$1, ka $$2, bmh $$3, ih $$4, Supplier<epr> $$5, double $$6) {
+   public static void a(cxb $$0, ib $$1, ka $$2, bmi $$3, ih $$4, Supplier<ept> $$5, double $$6) {
       int $$7 = $$3.a($$0.z);
 
       for (int $$8 = 0; $$8 < $$7; $$8++) {
@@ -15,12 +15,12 @@ public class awz {
       }
    }
 
-   private static epr a(axd $$0) {
-      return new epr(aww.a($$0, -0.5, 0.5), aww.a($$0, -0.5, 0.5), aww.a($$0, -0.5, 0.5));
+   private static ept a(axd $$0) {
+      return new ept(aww.a($$0, -0.5, 0.5), aww.a($$0, -0.5, 0.5), aww.a($$0, -0.5, 0.5));
    }
 
-   public static void a(ih.a $$0, cwz $$1, ib $$2, double $$3, ka $$4, bmn $$5) {
-      epr $$6 = epr.b($$2);
+   public static void a(ih.a $$0, cxb $$1, ib $$2, double $$3, ka $$4, bmo $$5) {
+      ept $$6 = ept.b($$2);
       boolean $$7 = $$0 == ih.a.a;
       boolean $$8 = $$0 == ih.a.b;
       boolean $$9 = $$0 == ih.a.c;
@@ -37,8 +37,8 @@ public class awz {
       }
    }
 
-   public static void a(cwz $$0, ib $$1, ih $$2, ka $$3, epr $$4, double $$5) {
-      epr $$6 = epr.b($$1);
+   public static void a(cxb $$0, ib $$1, ih $$2, ka $$3, ept $$4, double $$5) {
+      ept $$6 = ept.b($$1);
       int $$7 = $$2.j();
       int $$8 = $$2.k();
       int $$9 = $$2.l();
@@ -51,21 +51,21 @@ public class awz {
       $$0.a($$3, $$10, $$11, $$12, $$13, $$14, $$15);
    }
 
-   public static void a(cwz $$0, ib $$1, axd $$2, ka $$3) {
+   public static void a(cxb $$0, ib $$1, axd $$2, ka $$3) {
       double $$4 = (double)$$1.u() + $$2.j();
       double $$5 = (double)$$1.v() - 0.05;
       double $$6 = (double)$$1.w() + $$2.j();
       $$0.a($$3, $$4, $$5, $$6, 0.0, 0.0, 0.0);
    }
 
-   public static void a(cxa $$0, ib $$1, int $$2, ka $$3) {
+   public static void a(cxc $$0, ib $$1, int $$2, ka $$3) {
       double $$4 = 0.5;
-      dmz $$5 = $$0.a_($$1);
+      dnb $$5 = $$0.a_($$1);
       double $$6 = $$5.i() ? 1.0 : $$5.j($$0, $$1).c(ih.a.b);
       a($$0, $$1, $$2, 0.5, $$6, true, $$3);
    }
 
-   public static void a(cxa $$0, ib $$1, int $$2, double $$3, double $$4, boolean $$5, ka $$6) {
+   public static void a(cxc $$0, ib $$1, int $$2, double $$3, double $$4, boolean $$5, ka $$6) {
       axd $$7 = $$0.E_();
 
       for (int $$8 = 0; $$8 < $$2; $$8++) {

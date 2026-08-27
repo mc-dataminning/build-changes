@@ -108,17 +108,17 @@ public class wa {
                )
                .apply($$0, wa.b::new)
       );
-      public final bpc<?> b;
+      public final bpd<?> b;
       public final UUID c;
       public final Optional<vu> d;
       @Nullable
       private List<vu> e;
 
-      public b(bpc<?> $$0, UUID $$1, @Nullable vu $$2) {
+      public b(bpd<?> $$0, UUID $$1, @Nullable vu $$2) {
          this($$0, $$1, Optional.ofNullable($$2));
       }
 
-      public b(bpc<?> $$0, UUID $$1, Optional<vu> $$2) {
+      public b(bpd<?> $$0, UUID $$1, Optional<vu> $$2) {
          this.b = $$0;
          this.c = $$1;
          this.d = $$2;
@@ -128,7 +128,7 @@ public class wa {
          try {
             ta $$1 = ty.a($$0.getString());
             vu $$2 = vu.a.a($$1.l("name"));
-            bpc<?> $$3 = ki.g.a(new ajh($$1.l("type")));
+            bpd<?> $$3 = ki.g.a(new ajh($$1.l("type")));
             UUID $$4 = UUID.fromString($$1.l("id"));
             return DataResult.success(new wa.b($$3, $$4, $$2));
          } catch (Exception var5) {
@@ -178,23 +178,23 @@ public class wa {
       );
       public static final Codec<wa.c> b = Codec.either(ki.h.q(), a)
          .xmap($$0 -> (wa.c)$$0.map($$0x -> new wa.c($$0x, 1, Optional.empty()), $$0x -> $$0x), Either::right);
-      private final cqf c;
+      private final cqh c;
       private final int d;
       private final Optional<ta> e;
       @Nullable
-      private cqk f;
+      private cqm f;
 
-      c(cqf $$0, int $$1, @Nullable ta $$2) {
+      c(cqh $$0, int $$1, @Nullable ta $$2) {
          this($$0, $$1, Optional.ofNullable($$2));
       }
 
-      c(cqf $$0, int $$1, Optional<ta> $$2) {
+      c(cqh $$0, int $$1, Optional<ta> $$2) {
          this.c = $$0;
          this.d = $$1;
          this.e = $$2;
       }
 
-      public c(cqk $$0) {
+      public c(cqm $$0) {
          this($$0.d(), $$0.M(), $$0.w() != null ? Optional.of($$0.w().h()) : Optional.empty());
       }
 
@@ -217,9 +217,9 @@ public class wa {
          return 31 * $$0 + this.e.hashCode();
       }
 
-      public cqk a() {
+      public cqm a() {
          if (this.f == null) {
-            this.f = new cqk(this.c, this.d);
+            this.f = new cqm(this.c, this.d);
             this.e.ifPresent(this.f::c);
          }
 
@@ -229,7 +229,7 @@ public class wa {
       private static DataResult<wa.c> a(vu $$0) {
          try {
             ta $$1 = ty.a($$0.getString());
-            return DataResult.success(new wa.c(cqk.a($$1)));
+            return DataResult.success(new wa.c(cqm.a($$1)));
          } catch (CommandSyntaxException var2) {
             return DataResult.error(() -> "Failed to parse item tag: " + var2.getMessage());
          }

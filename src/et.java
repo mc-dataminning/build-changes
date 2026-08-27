@@ -41,24 +41,24 @@ public class et<T> implements ArgumentType<il.c<T>> {
       }
    }
 
-   public static il.c<bqq> a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static il.c<bqr> a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, kj.c);
    }
 
-   public static il.c<dvd<?, ?>> b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static il.c<dvf<?, ?>> b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, kj.ax);
    }
 
-   public static il.c<edc> c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static il.c<ede> c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, kj.aE);
    }
 
-   public static il.c<bpc<?>> d(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static il.c<bpd<?>> d(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, kj.u);
    }
 
-   public static il.c<bpc<?>> e(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
-      il.c<bpc<?>> $$2 = a($$0, $$1, kj.u);
+   public static il.c<bpd<?>> e(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+      il.c<bpd<?>> $$2 = a($$0, $$1, kj.u);
       if (!$$2.a().c()) {
          throw d.create($$2.h().a().toString());
       } else {
@@ -66,11 +66,11 @@ public class et<T> implements ArgumentType<il.c<T>> {
       }
    }
 
-   public static il.c<boh> f(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static il.c<boi> f(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, kj.Q);
    }
 
-   public static il.c<cuu> g(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static il.c<cuw> g(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, kj.t);
    }
 

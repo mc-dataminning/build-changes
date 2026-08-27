@@ -1,42 +1,73 @@
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
 
-public class cnz extends cqf {
-   public cnz(cqf.a $$0) {
-      super($$0);
+public record cnz(Map<cny.a, Integer> b, int c, il<atx> d, Supplier<ctm> e, List<cnz.a> f, float g, float h) {
+   public static final Codec<il<cnz>> a = ki.as.r();
+
+   public int a(cny.a $$0) {
+      return this.b.getOrDefault($$0, 0);
    }
 
-   @Override
-   public bnc a(csu $$0) {
-      ih $$1 = $$0.k();
-      if ($$1 == ih.a) {
-         return bnc.e;
-      } else {
-         cwz $$2 = $$0.q();
-         css $$3 = new css($$0);
-         ib $$4 = $$3.a();
-         cqk $$5 = $$0.n();
-         epr $$6 = epr.c($$4);
-         epm $$7 = bpc.e.n().a($$6.a(), $$6.b(), $$6.c());
-         if ($$2.a(null, $$7) && $$2.a_(null, $$7).isEmpty()) {
-            if ($$2 instanceof apf $$8) {
-               Consumer<cet> $$9 = bpc.a($$8, $$5, $$0.o());
-               cet $$10 = bpc.e.b($$8, $$9, $$4, bps.m, true, true);
-               if ($$10 == null) {
-                  return bnc.e;
-               }
+   public Map<cny.a, Integer> a() {
+      return this.b;
+   }
 
-               float $$11 = (float)aww.d((aww.g($$0.i() - 180.0F) + 22.5F) / 45.0F) * 45.0F;
-               $$10.b($$10.dr(), $$10.dt(), $$10.dx(), $$11, 0.0F);
-               $$8.a_($$10);
-               $$2.a(null, $$10.dr(), $$10.dt(), $$10.dx(), aty.aD, atz.e, 0.75F, 0.8F);
-               $$10.a(drn.t, $$0.o());
-            }
+   public int b() {
+      return this.c;
+   }
 
-            $$5.h(1);
-            return bnc.a($$2.B);
-         } else {
-            return bnc.e;
-         }
+   public il<atx> c() {
+      return this.d;
+   }
+
+   public Supplier<ctm> d() {
+      return this.e;
+   }
+
+   public List<cnz.a> e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
+   }
+
+   public float g() {
+      return this.h;
+   }
+
+   public static final class a {
+      private final ajh a;
+      private final String b;
+      private final boolean c;
+      private final ajh d;
+      private final ajh e;
+
+      public a(ajh $$0, String $$1, boolean $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = this.b(true);
+         this.e = this.b(false);
+      }
+
+      public a(ajh $$0) {
+         this($$0, "", false);
+      }
+
+      private ajh b(boolean $$0) {
+         return this.a.a((UnaryOperator<String>)($$1 -> "textures/models/armor/" + this.a.a() + "_layer_" + ($$0 ? 2 : 1) + this.b + ".png"));
+      }
+
+      public ajh a(boolean $$0) {
+         return $$0 ? this.d : this.e;
+      }
+
+      public boolean a() {
+         return this.c;
       }
    }
 }

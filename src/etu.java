@@ -1,492 +1,90 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.IntConsumer;
-import java.nio.ByteBuffer;
-import java.nio.FloatBuffer;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Optional;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.joml.Vector3f;
-import org.lwjgl.system.MemoryUtil;
-import org.slf4j.Logger;
+import org.lwjgl.opengl.ARBTimerQuery;
+import org.lwjgl.opengl.GL;
+import org.lwjgl.opengl.GL32C;
 
-public class etu extends ety implements etw {
-   private static final int f = 2097152;
-   private static final Logger g = LogUtils.getLogger();
-   private ByteBuffer h;
-   private boolean i;
-   private int j;
-   private int k;
-   private int l;
-   private int m;
-   @Nullable
-   private euf n;
-   private int o;
-   private eue p;
-   private eue.b q;
-   private boolean r;
-   private boolean s;
-   private boolean t;
-   @Nullable
-   private Vector3f[] u;
-   @Nullable
-   private euh v;
-   private boolean w;
+public class etu {
+   private int a;
 
-   public etu(int $$0) {
-      this.h = esx.a($$0);
+   public static Optional<etu> a() {
+      return etu.b.a;
    }
 
-   private void m() {
-      this.d(this.p.b());
-   }
-
-   private void d(int $$0) {
-      if (this.l + $$0 > this.h.capacity()) {
-         int $$1 = this.h.capacity();
-         int $$2 = Math.min($$1, 2097152);
-         int $$3 = $$1 + $$0;
-         int $$4 = Math.max($$1 + $$2, $$3);
-         g.debug("Needed to grow BufferBuilder buffer: Old size {} bytes, new size {} bytes.", $$1, $$4);
-         ByteBuffer $$5 = esx.a(this.h, $$4);
-         $$5.rewind();
-         this.h = $$5;
-      }
-   }
-
-   public void a(euh $$0) {
-      if (this.q == eue.b.h) {
-         this.v = $$0;
-         if (this.u == null) {
-            this.u = this.o();
-         }
-      }
-   }
-
-   public etu.c a() {
-      return new etu.c(this.q, this.m, this.u, this.v);
-   }
-
-   private void n() {
-      if (this.i) {
-         throw new IllegalStateException("This BufferBuilder has been closed");
-      }
-   }
-
-   public void a(etu.c $$0) {
-      this.n();
-      this.h.rewind();
-      this.q = $$0.a;
-      this.m = $$0.b;
-      this.l = this.k;
-      this.u = $$0.c;
-      this.v = $$0.d;
-      this.w = true;
-   }
-
-   public void a(eue.b $$0, eue $$1) {
-      if (this.t) {
-         throw new IllegalStateException("Already building!");
+   public void b() {
+      RenderSystem.assertOnRenderThread();
+      if (this.a != 0) {
+         throw new IllegalStateException("Current profile not ended");
       } else {
-         this.n();
-         this.t = true;
-         this.q = $$0;
-         this.a($$1);
-         this.n = (euf)$$1.c().get(0);
-         this.o = 0;
-         this.h.rewind();
+         this.a = GL32C.glGenQueries();
+         GL32C.glBeginQuery(35007, this.a);
       }
    }
 
-   private void a(eue $$0) {
-      if (this.p != $$0) {
-         this.p = $$0;
-         boolean $$1 = $$0 == etx.k;
-         boolean $$2 = $$0 == etx.j;
-         this.r = $$1 || $$2;
-         this.s = $$1;
-      }
-   }
-
-   private IntConsumer a(int $$0, eue.a $$1) {
-      MutableInt $$2 = new MutableInt($$0);
-
-      return switch ($$1) {
-         case a -> $$1x -> this.h.putShort($$2.getAndAdd(2), (short)$$1x);
-         case b -> $$1x -> this.h.putInt($$2.getAndAdd(4), $$1x);
-      };
-   }
-
-   private Vector3f[] o() {
-      FloatBuffer $$0 = this.h.asFloatBuffer();
-      int $$1 = this.k / 4;
-      int $$2 = this.p.a();
-      int $$3 = $$2 * this.q.k;
-      int $$4 = this.m / this.q.k;
-      Vector3f[] $$5 = new Vector3f[$$4];
-
-      for (int $$6 = 0; $$6 < $$4; $$6++) {
-         float $$7 = $$0.get($$1 + $$6 * $$3 + 0);
-         float $$8 = $$0.get($$1 + $$6 * $$3 + 1);
-         float $$9 = $$0.get($$1 + $$6 * $$3 + 2);
-         float $$10 = $$0.get($$1 + $$6 * $$3 + $$2 * 2 + 0);
-         float $$11 = $$0.get($$1 + $$6 * $$3 + $$2 * 2 + 1);
-         float $$12 = $$0.get($$1 + $$6 * $$3 + $$2 * 2 + 2);
-         float $$13 = ($$7 + $$10) / 2.0F;
-         float $$14 = ($$8 + $$11) / 2.0F;
-         float $$15 = ($$9 + $$12) / 2.0F;
-         $$5[$$6] = new Vector3f($$13, $$14, $$15);
-      }
-
-      return $$5;
-   }
-
-   private void a(eue.a $$0) {
-      if (this.u != null && this.v != null) {
-         int[] $$1 = this.v.sort(this.u);
-         IntConsumer $$2 = this.a(this.l, $$0);
-
-         for (int $$3 : $$1) {
-            $$2.accept($$3 * this.q.k + 0);
-            $$2.accept($$3 * this.q.k + 1);
-            $$2.accept($$3 * this.q.k + 2);
-            $$2.accept($$3 * this.q.k + 2);
-            $$2.accept($$3 * this.q.k + 3);
-            $$2.accept($$3 * this.q.k + 0);
-         }
+   public etu.a c() {
+      RenderSystem.assertOnRenderThread();
+      if (this.a == 0) {
+         throw new IllegalStateException("endProfile called before beginProfile");
       } else {
-         throw new IllegalStateException("Sorting state uninitialized");
-      }
-   }
-
-   public boolean b() {
-      return this.m == 0;
-   }
-
-   @Nullable
-   public etu.b c() {
-      this.p();
-      if (this.b()) {
-         this.r();
-         return null;
-      } else {
-         etu.b $$0 = this.q();
-         this.r();
+         GL32C.glEndQuery(35007);
+         etu.a $$0 = new etu.a(this.a);
+         this.a = 0;
          return $$0;
       }
    }
 
-   public etu.b d() {
-      this.p();
-      etu.b $$0 = this.q();
-      this.r();
-      return $$0;
-   }
+   public static class a {
+      private static final long a = 0L;
+      private static final long b = -1L;
+      private final int c;
+      private long d;
 
-   private void p() {
-      if (!this.t) {
-         throw new IllegalStateException("Not building!");
-      }
-   }
-
-   private etu.b q() {
-      int $$0 = this.q.a(this.m);
-      int $$1 = !this.w ? this.m * this.p.b() : 0;
-      eue.a $$2 = eue.a.a(this.m);
-      boolean $$4;
-      int $$5;
-      if (this.u != null) {
-         int $$3 = aww.d($$0 * $$2.d, 4);
-         this.d($$3);
-         this.a($$2);
-         $$4 = false;
-         this.l += $$3;
-         $$5 = $$1 + $$3;
-      } else {
-         $$4 = true;
-         $$5 = $$1;
+      a(int $$0) {
+         this.c = $$0;
       }
 
-      int $$8 = this.k;
-      this.k += $$5;
-      this.j++;
-      etu.a $$9 = new etu.a(this.p, this.m, $$0, this.q, $$2, this.w, $$4);
-      return new etu.b($$8, $$9);
-   }
-
-   private void r() {
-      this.t = false;
-      this.m = 0;
-      this.n = null;
-      this.o = 0;
-      this.u = null;
-      this.v = null;
-      this.w = false;
-   }
-
-   @Override
-   public void a(int $$0, byte $$1) {
-      this.h.put(this.l + $$0, $$1);
-   }
-
-   @Override
-   public void a(int $$0, short $$1) {
-      this.h.putShort(this.l + $$0, $$1);
-   }
-
-   @Override
-   public void a(int $$0, float $$1) {
-      this.h.putFloat(this.l + $$0, $$1);
-   }
-
-   @Override
-   public void e() {
-      if (this.o != 0) {
-         throw new IllegalStateException("Not filled all elements of the vertex");
-      } else {
-         this.m++;
-         this.m();
-         if (this.q == eue.b.a || this.q == eue.b.b) {
-            int $$0 = this.p.b();
-            this.h.put(this.l, this.h, this.l - $$0, $$0);
-            this.l += $$0;
-            this.m++;
-            this.m();
+      public void a() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d == 0L) {
+            this.d = -1L;
+            GL32C.glDeleteQueries(this.c);
          }
       }
-   }
 
-   @Override
-   public void f() {
-      ImmutableList<euf> $$0 = this.p.c();
-      this.o = (this.o + 1) % $$0.size();
-      this.l = this.l + this.n.e();
-      euf $$1 = (euf)$$0.get(this.o);
-      this.n = $$1;
-      if ($$1.b() == euf.b.e) {
-         this.f();
-      }
-
-      if (this.a && this.n.b() == euf.b.c) {
-         etw.super.a(this.b, this.c, this.d, this.e);
-      }
-   }
-
-   @Override
-   public eud a(int $$0, int $$1, int $$2, int $$3) {
-      if (this.a) {
-         throw new IllegalStateException();
-      } else {
-         return etw.super.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   @Override
-   public void a(
-      float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9, int $$10, float $$11, float $$12, float $$13
-   ) {
-      if (this.a) {
-         throw new IllegalStateException();
-      } else if (this.r) {
-         this.a(0, $$0);
-         this.a(4, $$1);
-         this.a(8, $$2);
-         this.a(12, (byte)((int)($$3 * 255.0F)));
-         this.a(13, (byte)((int)($$4 * 255.0F)));
-         this.a(14, (byte)((int)($$5 * 255.0F)));
-         this.a(15, (byte)((int)($$6 * 255.0F)));
-         this.a(16, $$7);
-         this.a(20, $$8);
-         int $$14;
-         if (this.s) {
-            this.a(24, (short)($$9 & 65535));
-            this.a(26, (short)($$9 >> 16 & 65535));
-            $$14 = 28;
+      public boolean b() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d != 0L) {
+            return true;
+         } else if (1 == GL32C.glGetQueryObjecti(this.c, 34919)) {
+            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
+            GL32C.glDeleteQueries(this.c);
+            return true;
          } else {
-            $$14 = 24;
+            return false;
+         }
+      }
+
+      public long c() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d == 0L) {
+            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
+            GL32C.glDeleteQueries(this.c);
          }
 
-         this.a($$14 + 0, (short)($$10 & 65535));
-         this.a($$14 + 2, (short)($$10 >> 16 & 65535));
-         this.a($$14 + 4, etw.a($$11));
-         this.a($$14 + 5, etw.a($$12));
-         this.a($$14 + 6, etw.a($$13));
-         this.l += $$14 + 8;
-         this.e();
-      } else {
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12, $$13);
-      }
-   }
-
-   void s() {
-      if (this.j > 0 && --this.j == 0) {
-         this.g();
-      }
-   }
-
-   public void g() {
-      if (this.j > 0) {
-         g.warn("Clearing BufferBuilder with unused batches");
-      }
-
-      this.h();
-   }
-
-   public void h() {
-      this.j = 0;
-      this.k = 0;
-      this.l = 0;
-   }
-
-   public void i() {
-      if (this.j > 0) {
-         throw new IllegalStateException("BufferBuilder closed with unused batches");
-      } else if (this.t) {
-         throw new IllegalStateException("Cannot close BufferBuilder while it is building");
-      } else if (!this.i) {
-         this.i = true;
-         esx.a(this.h);
-      }
-   }
-
-   @Override
-   public euf j() {
-      if (this.n == null) {
-         throw new IllegalStateException("BufferBuilder not started");
-      } else {
-         return this.n;
-      }
-   }
-
-   public boolean k() {
-      return this.t;
-   }
-
-   ByteBuffer c(int $$0, int $$1) {
-      return MemoryUtil.memSlice(this.h, $$0, $$1 - $$0);
-   }
-
-   public static record a(eue a, int b, int c, eue.b d, eue.a e, boolean f, boolean g) {
-
-      public int a() {
-         return this.b * this.a.b();
-      }
-
-      public int b() {
-         return 0;
-      }
-
-      public int c() {
-         return this.a();
-      }
-
-      public int d() {
-         return this.f ? 0 : this.c();
-      }
-
-      public int e() {
-         return this.d() + this.n();
-      }
-
-      private int n() {
-         return this.g ? 0 : this.c * this.e.d;
-      }
-
-      public int f() {
-         return this.e();
-      }
-
-      public eue g() {
-         return this.a;
-      }
-
-      public int h() {
-         return this.b;
-      }
-
-      public int i() {
-         return this.c;
-      }
-
-      public eue.b j() {
          return this.d;
       }
-
-      public eue.a k() {
-         return this.e;
-      }
-
-      public boolean l() {
-         return this.f;
-      }
-
-      public boolean m() {
-         return this.g;
-      }
    }
 
-   public class b {
-      private final int b;
-      private final etu.a c;
-      private boolean d;
+   static class b {
+      static final Optional<etu> a = Optional.ofNullable(a());
 
-      b(int $$1, etu.a $$2) {
-         this.b = $$1;
-         this.c = $$2;
+      private b() {
       }
 
       @Nullable
-      public ByteBuffer a() {
-         if (this.c.l()) {
-            return null;
-         } else {
-            int $$0 = this.b + this.c.b();
-            int $$1 = this.b + this.c.c();
-            return etu.this.c($$0, $$1);
-         }
-      }
-
-      @Nullable
-      public ByteBuffer b() {
-         if (this.c.m()) {
-            return null;
-         } else {
-            int $$0 = this.b + this.c.d();
-            int $$1 = this.b + this.c.e();
-            return etu.this.c($$0, $$1);
-         }
-      }
-
-      public etu.a c() {
-         return this.c;
-      }
-
-      public boolean d() {
-         return this.c.b == 0;
-      }
-
-      public void e() {
-         if (this.d) {
-            throw new IllegalStateException("Buffer has already been released!");
-         } else {
-            etu.this.s();
-            this.d = true;
-         }
-      }
-   }
-
-   public static class c {
-      final eue.b a;
-      final int b;
-      @Nullable
-      final Vector3f[] c;
-      @Nullable
-      final euh d;
-
-      c(eue.b $$0, int $$1, @Nullable Vector3f[] $$2, @Nullable euh $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
+      private static etu a() {
+         return !GL.getCapabilities().GL_ARB_timer_query ? null : new etu();
       }
    }
 }

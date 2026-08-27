@@ -1,8 +1,8 @@
-public record abn(long[] b, bix c) implements yb<aam> {
+public record abn(long[] b, biy c) implements yb<aam> {
    public static final xs<uu, abn> a = yb.a(abn::a, abn::new);
 
    private abn(uu $$0) {
-      this($$0.d(), $$0.b(bix.class));
+      this($$0.d(), $$0.b(biy.class));
    }
 
    private void a(uu $$0) {
@@ -19,7 +19,7 @@ public record abn(long[] b, bix c) implements yb<aam> {
       $$0.a(this);
    }
 
-   public bix e() {
+   public biy e() {
       return this.c;
    }
 }

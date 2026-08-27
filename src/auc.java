@@ -4,50 +4,50 @@ import com.mojang.datafixers.util.Pair;
 import java.util.Map;
 
 public final class auc {
-   private static final Map<cnc, Pair<String, String>> a = ImmutableMap.of(
-      cnc.a,
+   private static final Map<cne, Pair<String, String>> a = ImmutableMap.of(
+      cne.a,
       Pair.of("isGuiOpen", "isFilteringCraftable"),
-      cnc.b,
+      cne.b,
       Pair.of("isFurnaceGuiOpen", "isFurnaceFilteringCraftable"),
-      cnc.c,
+      cne.c,
       Pair.of("isBlastingFurnaceGuiOpen", "isBlastingFurnaceFilteringCraftable"),
-      cnc.d,
+      cne.d,
       Pair.of("isSmokerGuiOpen", "isSmokerFilteringCraftable")
    );
-   private final Map<cnc, auc.a> b;
+   private final Map<cne, auc.a> b;
 
-   private auc(Map<cnc, auc.a> $$0) {
+   private auc(Map<cne, auc.a> $$0) {
       this.b = $$0;
    }
 
    public auc() {
-      this(ac.a(Maps.newEnumMap(cnc.class), $$0 -> {
-         for (cnc $$1 : cnc.values()) {
+      this(ac.a(Maps.newEnumMap(cne.class), $$0 -> {
+         for (cne $$1 : cne.values()) {
             $$0.put($$1, new auc.a(false, false));
          }
       }));
    }
 
-   public boolean a(cnc $$0) {
+   public boolean a(cne $$0) {
       return this.b.get($$0).a;
    }
 
-   public void a(cnc $$0, boolean $$1) {
+   public void a(cne $$0, boolean $$1) {
       this.b.get($$0).a = $$1;
    }
 
-   public boolean b(cnc $$0) {
+   public boolean b(cne $$0) {
       return this.b.get($$0).b;
    }
 
-   public void b(cnc $$0, boolean $$1) {
+   public void b(cne $$0, boolean $$1) {
       this.b.get($$0).b = $$1;
    }
 
    public static auc a(uu $$0) {
-      Map<cnc, auc.a> $$1 = Maps.newEnumMap(cnc.class);
+      Map<cne, auc.a> $$1 = Maps.newEnumMap(cne.class);
 
-      for (cnc $$2 : cnc.values()) {
+      for (cne $$2 : cne.values()) {
          boolean $$3 = $$0.readBoolean();
          boolean $$4 = $$0.readBoolean();
          $$1.put($$2, new auc.a($$3, $$4));
@@ -57,7 +57,7 @@ public final class auc {
    }
 
    public void b(uu $$0) {
-      for (cnc $$1 : cnc.values()) {
+      for (cne $$1 : cne.values()) {
          auc.a $$2 = this.b.get($$1);
          if ($$2 == null) {
             $$0.a(false);
@@ -70,7 +70,7 @@ public final class auc {
    }
 
    public static auc a(ta $$0) {
-      Map<cnc, auc.a> $$1 = Maps.newEnumMap(cnc.class);
+      Map<cne, auc.a> $$1 = Maps.newEnumMap(cne.class);
       a.forEach(($$2, $$3) -> {
          boolean $$4 = $$0.q((String)$$3.getFirst());
          boolean $$5 = $$0.q((String)$$3.getSecond());
@@ -88,9 +88,9 @@ public final class auc {
    }
 
    public auc a() {
-      Map<cnc, auc.a> $$0 = Maps.newEnumMap(cnc.class);
+      Map<cne, auc.a> $$0 = Maps.newEnumMap(cne.class);
 
-      for (cnc $$1 : cnc.values()) {
+      for (cne $$1 : cne.values()) {
          auc.a $$2 = this.b.get($$1);
          $$0.put($$1, $$2.a());
       }
@@ -101,7 +101,7 @@ public final class auc {
    public void a(auc $$0) {
       this.b.clear();
 
-      for (cnc $$1 : cnc.values()) {
+      for (cne $$1 : cne.values()) {
          auc.a $$2 = $$0.b.get($$1);
          this.b.put($$1, $$2.a());
       }

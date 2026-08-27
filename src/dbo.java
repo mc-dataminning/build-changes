@@ -1,59 +1,71 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dbo extends daa {
-   public static final MapCodec<dbo> a = b(dbo::new);
-   public static final dnq b = dnp.w;
-   public static final dnq c = dnp.r;
+public class dbo extends dcy {
+   public static final MapCodec<dbo> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ki.e.q().fieldOf("concrete").forGetter($$0x -> $$0x.b), u()).apply($$0, dbo::new)
+   );
+   private final dac b;
 
    @Override
-   protected MapCodec<? extends dbo> a() {
+   public MapCodec<dbo> a() {
       return a;
    }
 
-   public dbo(dmy.d $$0) {
-      super($$0);
-      this.k(this.o().a(c, Boolean.valueOf(false)).a(b, Boolean.valueOf(false)));
+   public dbo(dac $$0, dna.d $$1) {
+      super($$1);
+      this.b = $$0;
    }
 
    @Override
-   protected void b(dmz $$0, cwz $$1, ib $$2, dmz $$3, boolean $$4) {
-      if ($$3.b() != $$0.b() && $$1 instanceof apf $$5) {
-         this.a($$0, $$5, $$2);
+   public void a(cxb $$0, ib $$1, dnb $$2, dnb $$3, cfd $$4) {
+      if (a($$0, $$1, $$3)) {
+         $$0.a($$1, this.b.o(), 3);
       }
    }
 
    @Override
-   protected void a(dmz $$0, cwz $$1, ib $$2, daa $$3, ib $$4, boolean $$5) {
-      if ($$1 instanceof apf $$6) {
-         this.a($$0, $$6, $$2);
-      }
+   public dnb a(csu $$0) {
+      cwh $$1 = $$0.q();
+      ib $$2 = $$0.a();
+      dnb $$3 = $$1.a_($$2);
+      return a($$1, $$2, $$3) ? this.b.o() : super.a($$0);
    }
 
-   public void a(dmz $$0, apf $$1, ib $$2) {
-      boolean $$3 = $$1.C($$2);
-      if ($$3 != $$0.c(b)) {
-         dmz $$4 = $$0;
-         if (!$$0.c(b)) {
-            $$4 = $$0.a(c);
-            $$1.a(null, $$2, $$4.c(c) ? aty.fw : aty.fx, atz.e);
+   private static boolean a(cwh $$0, ib $$1, dnb $$2) {
+      return n($$2) || a($$0, $$1);
+   }
+
+   private static boolean a(cwh $$0, ib $$1) {
+      boolean $$2 = false;
+      ib.a $$3 = $$1.j();
+
+      for (ih $$4 : ih.values()) {
+         dnb $$5 = $$0.a_($$3);
+         if ($$4 != ih.a || n($$5)) {
+            $$3.a($$1, $$4);
+            $$5 = $$0.a_($$3);
+            if (n($$5) && !$$5.d($$0, $$1, $$4.g())) {
+               $$2 = true;
+               break;
+            }
          }
-
-         $$1.a($$2, $$4.a(b, Boolean.valueOf($$3)), 3);
       }
+
+      return $$2;
+   }
+
+   private static boolean n(dnb $$0) {
+      return $$0.u().a(aus.a);
    }
 
    @Override
-   protected void a(dna.a<daa, dmz> $$0) {
-      $$0.a(c, b);
+   protected dnb a(dnb $$0, ih $$1, dnb $$2, cxc $$3, ib $$4, ib $$5) {
+      return a($$3, $$4) ? this.b.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean d_(dmz $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dmz $$0, cwz $$1, ib $$2) {
-      return $$1.a_($$2).c(c) ? 15 : 0;
+   public int b(dnb $$0, cwh $$1, ib $$2) {
+      return $$0.d($$1, $$2).ak;
    }
 }

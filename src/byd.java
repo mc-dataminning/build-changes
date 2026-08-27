@@ -1,102 +1,42 @@
 import java.util.EnumSet;
-import java.util.Iterator;
 import java.util.List;
 import javax.annotation.Nullable;
 
-public class byd extends byl {
-   private static final cae a = cae.a().d().e();
-   private static final int b = 10;
-   private boolean c;
-   private int d;
-   private final Class<?>[] i;
+public class byd extends bym {
+   private final cbq a;
    @Nullable
-   private Class<?>[] j;
+   private bpp b;
+   private final caf c = caf.a().a(64.0);
 
-   public byd(bpw $$0, Class<?>... $$1) {
-      super($$0, true);
-      this.i = $$1;
-      this.a(EnumSet.of(bwl.a.d));
+   public byd(cbq $$0) {
+      super($$0, false, true);
+      this.a = $$0;
+      this.a(EnumSet.of(bwm.a.d));
    }
 
    @Override
    public boolean a() {
-      int $$0 = this.e.ek();
-      bpo $$1 = this.e.ej();
-      if ($$0 != this.d && $$1 != null) {
-         if ($$1.ai() == bpc.bx && this.e.dM().Z().b(cwv.O)) {
-            return false;
-         } else {
-            for (Class<?> $$2 : this.i) {
-               if ($$2.isAssignableFrom($$1.getClass())) {
-                  return false;
-               }
+      epo $$0 = this.a.cH().c(10.0, 8.0, 10.0);
+      List<? extends bpp> $$1 = this.a.dM().a(cih.class, this.c, this.a, $$0);
+      List<ciu> $$2 = this.a.dM().a(this.c, this.a, $$0);
+
+      for (bpp $$3 : $$1) {
+         cih $$4 = (cih)$$3;
+
+         for (ciu $$5 : $$2) {
+            int $$6 = $$4.g($$5);
+            if ($$6 <= -100) {
+               this.b = $$5;
             }
-
-            return this.a($$1, a);
          }
-      } else {
-         return false;
       }
-   }
 
-   public byd a(Class<?>... $$0) {
-      this.c = true;
-      this.j = $$0;
-      return this;
+      return this.b == null ? false : !(this.b instanceof ciu) || !this.b.N_() && !((ciu)this.b).f();
    }
 
    @Override
    public void c() {
-      this.e.h(this.e.ej());
-      this.g = this.e.p();
-      this.d = this.e.ek();
-      this.h = 300;
-      if (this.c) {
-         this.h();
-      }
-
+      this.a.h(this.b);
       super.c();
-   }
-
-   protected void h() {
-      double $$0 = this.l();
-      epm $$1 = epm.a(this.e.dk()).c($$0, 10.0, $$0);
-      List<? extends bpq> $$2 = this.e.dM().a((Class<? extends bpq>)this.e.getClass(), $$1, bpb.f);
-      Iterator var5 = $$2.iterator();
-
-      while (true) {
-         bpq $$3;
-         while (true) {
-            if (!var5.hasNext()) {
-               return;
-            }
-
-            $$3 = (bpq)var5.next();
-            if (this.e != $$3 && $$3.p() == null && (!(this.e instanceof bqk) || ((bqk)this.e).P_() == ((bqk)$$3).P_()) && !$$3.s(this.e.ej())) {
-               if (this.j == null) {
-                  break;
-               }
-
-               boolean $$4 = false;
-
-               for (Class<?> $$5 : this.j) {
-                  if ($$3.getClass() == $$5) {
-                     $$4 = true;
-                     break;
-                  }
-               }
-
-               if (!$$4) {
-                  break;
-               }
-            }
-         }
-
-         this.a($$3, this.e.ej());
-      }
-   }
-
-   protected void a(bpq $$0, bpo $$1) {
-      $$0.h($$1);
    }
 }

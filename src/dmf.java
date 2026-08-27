@@ -1,186 +1,70 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public enum dmf implements axq {
-   a("inactive", 0, dmf.b.a, -1.0, false),
-   b("waiting_for_players", 4, dmf.b.b, 200.0, true),
-   c("active", 8, dmf.b.c, 1000.0, true),
-   d("waiting_for_reward_ejection", 8, dmf.b.b, -1.0, false),
-   e("ejecting_reward", 8, dmf.b.b, -1.0, false),
-   f("cooldown", 0, dmf.b.d, -1.0, false);
+public record dmf(int c, int d, float e, float f, float g, float h, int i, int j, bln<cxs> k, bln<ajh> l) {
+   public static dmf a = new dmf(14, 4, 6.0F, 2.0F, 2.0F, 1.0F, 40, 36000, bln.b(), bln.<ajh>a().a(eku.aO).a(eku.aN).a());
+   public static MapCodec<dmf> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.intRange(1, 128).optionalFieldOf("required_player_range", a.c).forGetter(dmf::a),
+               Codec.intRange(1, 128).optionalFieldOf("spawn_range", a.d).forGetter(dmf::b),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("total_mobs", a.e).forGetter(dmf::c),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("simultaneous_mobs", a.f).forGetter(dmf::d),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("total_mobs_added_per_player", a.g).forGetter(dmf::e),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("simultaneous_mobs_added_per_player", a.h).forGetter(dmf::f),
+               Codec.intRange(0, Integer.MAX_VALUE).optionalFieldOf("ticks_between_spawn", a.i).forGetter(dmf::g),
+               Codec.intRange(0, Integer.MAX_VALUE).optionalFieldOf("target_cooldown_length", a.j).forGetter(dmf::h),
+               cxs.c.optionalFieldOf("spawn_potentials", bln.b()).forGetter(dmf::i),
+               bln.a(ajh.a).optionalFieldOf("loot_tables_to_eject", a.l).forGetter(dmf::j)
+            )
+            .apply($$0, dmf::new)
+   );
 
-   private static final float g = 40.0F;
-   private static final int h = aww.d(30.0F);
-   private final String i;
-   private final int j;
-   private final double k;
-   private final dmf.b l;
-   private final boolean m;
-
-   private dmf(String $$0, int $$1, dmf.b $$2, double $$3, boolean $$4) {
-      this.i = $$0;
-      this.j = $$1;
-      this.l = $$2;
-      this.k = $$3;
-      this.m = $$4;
+   public int a(int $$0) {
+      return (int)Math.floor((double)(this.e + this.g * (float)$$0));
    }
 
-   dmf a(ib $$0, dmc $$1, apf $$2) {
-      dme $$3 = $$1.c();
-      dmd $$4 = $$1.b();
-      dmb $$5 = $$1.f();
-      dmb.a $$6 = $$1.g();
-
-      return switch (this) {
-         case a -> $$3.a($$1, $$2, b) == null ? this : b;
-         case b -> {
-            if (!$$3.b()) {
-               yield a;
-            } else {
-               $$3.a($$2, $$0, $$5, $$6, $$4.a());
-               yield $$3.c.isEmpty() ? this : c;
-            }
-         }
-         case c -> {
-            if (!$$3.b()) {
-               yield a;
-            } else {
-               int $$7 = $$3.a($$0);
-               $$3.a($$2, $$0, $$5, $$6, $$4.a());
-               if ($$3.a($$4, $$7)) {
-                  if ($$3.c()) {
-                     $$3.e = $$2.X() + (long)$$4.h();
-                     $$3.g = 0;
-                     $$3.f = 0L;
-                     yield d;
-                  }
-               } else if ($$3.a($$2, $$4, $$7)) {
-                  $$1.a($$2, $$0).ifPresent($$4x -> {
-                     $$3.d.add($$4x);
-                     $$3.g++;
-                     $$3.f = $$2.X() + (long)$$4.g();
-                     $$3.j.b($$2.E_()).ifPresent($$2xx -> {
-                        $$3.h = Optional.of((cxq)$$2xx.b());
-                        $$1.e();
-                     });
-                  });
-               }
-
-               yield this;
-            }
-         }
-         case d -> {
-            if ($$3.a($$2, $$4, 40.0F)) {
-               $$2.a(null, $$0, aty.lP, atz.e);
-               yield e;
-            } else {
-               yield this;
-            }
-         }
-         case e -> {
-            if (!$$3.b($$2, $$4, (float)h)) {
-               yield this;
-            } else if ($$3.c.isEmpty()) {
-               $$2.a(null, $$0, aty.lQ, atz.e);
-               $$3.i = Optional.empty();
-               yield f;
-            } else {
-               if ($$3.i.isEmpty()) {
-                  $$3.i = $$4.j().a($$2.E_());
-               }
-
-               $$3.i.ifPresent($$3x -> $$1.a($$2, $$0, $$3x));
-               $$3.c.remove($$3.c.iterator().next());
-               yield this;
-            }
-         }
-         case f -> {
-            if ($$3.a($$2)) {
-               $$3.e = 0L;
-               yield b;
-            } else {
-               yield this;
-            }
-         }
-      };
+   public int b(int $$0) {
+      return (int)Math.floor((double)(this.f + this.h * (float)$$0));
    }
 
    public int a() {
-      return this.j;
+      return this.c;
    }
 
-   public double b() {
-      return this.k;
+   public int b() {
+      return this.d;
    }
 
-   public boolean d() {
-      return this.k >= 0.0;
+   public float c() {
+      return this.e;
    }
 
-   public boolean e() {
-      return this.m;
+   public float d() {
+      return this.f;
    }
 
-   public void a(cwz $$0, ib $$1) {
-      this.l.emit($$0, $$0.E_(), $$1);
+   public float e() {
+      return this.g;
    }
 
-   @Override
-   public String c() {
+   public float f() {
+      return this.h;
+   }
+
+   public int g() {
       return this.i;
    }
 
-   static class a {
-      private static final int a = 0;
-      private static final int b = 4;
-      private static final int c = 8;
-
-      private a() {
-      }
+   public int h() {
+      return this.j;
    }
 
-   interface b {
-      dmf.b a = ($$0, $$1, $$2) -> {
-      };
-      dmf.b b = ($$0, $$1, $$2) -> {
-         if ($$1.a(2) == 0) {
-            epr $$3 = $$2.b().a($$1, 0.9F);
-            a(kc.aH, $$3, $$0);
-         }
-      };
-      dmf.b c = ($$0, $$1, $$2) -> {
-         epr $$3 = $$2.b().a($$1, 1.0F);
-         a(kc.ac, $$3, $$0);
-         a(kc.F, $$3, $$0);
-      };
-      dmf.b d = ($$0, $$1, $$2) -> {
-         epr $$3 = $$2.b().a($$1, 0.9F);
-         if ($$1.a(3) == 0) {
-            a(kc.ac, $$3, $$0);
-         }
-
-         if ($$0.X() % 20L == 0L) {
-            epr $$4 = $$2.b().b(0.0, 0.5, 0.0);
-            int $$5 = $$0.E_().a(4) + 20;
-
-            for (int $$6 = 0; $$6 < $$5; $$6++) {
-               a(kc.ac, $$4, $$0);
-            }
-         }
-      };
-
-      private static void a(kf $$0, epr $$1, cwz $$2) {
-         $$2.a($$0, $$1.a(), $$1.b(), $$1.c(), 0.0, 0.0, 0.0);
-      }
-
-      void emit(cwz var1, axd var2, ib var3);
+   public bln<cxs> i() {
+      return this.k;
    }
 
-   static class c {
-      private static final double a = -1.0;
-      private static final double b = 200.0;
-      private static final double c = 1000.0;
-
-      private c() {
-      }
+   public bln<ajh> j() {
+      return this.l;
    }
 }

@@ -54,12 +54,12 @@ public class mw {
       return $$2;
    }
 
-   public static mw a(daa $$0) {
+   public static mw a(dac $$0) {
       ajh $$1 = G($$0);
       return b($$1);
    }
 
-   public static mw b(daa $$0) {
+   public static mw b(dac $$0) {
       ajh $$1 = G($$0);
       return a($$1);
    }
@@ -72,7 +72,7 @@ public class mw {
       return new mw().a(mx.a, $$0);
    }
 
-   public static mw c(daa $$0) {
+   public static mw c(dac $$0) {
       return d(mx.p, G($$0));
    }
 
@@ -80,7 +80,7 @@ public class mw {
       return d(mx.p, $$0);
    }
 
-   public static mw d(daa $$0) {
+   public static mw d(dac $$0) {
       return d(mx.q, G($$0));
    }
 
@@ -88,7 +88,7 @@ public class mw {
       return d(mx.q, $$0);
    }
 
-   public static mw e(daa $$0) {
+   public static mw e(dac $$0) {
       return d(mx.s, G($$0));
    }
 
@@ -96,11 +96,11 @@ public class mw {
       return d(mx.s, $$0);
    }
 
-   public static mw f(daa $$0) {
+   public static mw f(dac $$0) {
       return d(mx.t, G($$0));
    }
 
-   public static mw g(daa $$0) {
+   public static mw g(dac $$0) {
       return new mw().a(mx.P, G($$0)).a(mx.y, a($$0, "_stem"));
    }
 
@@ -108,19 +108,19 @@ public class mw {
       return d(mx.t, $$0);
    }
 
-   public static mw h(daa $$0) {
+   public static mw h(dac $$0) {
       return d(mx.y, G($$0));
    }
 
-   public static mw a(daa $$0, daa $$1) {
+   public static mw a(dac $$0, dac $$1) {
       return new mw().a(mx.y, G($$0)).a(mx.z, G($$1));
    }
 
-   public static mw i(daa $$0) {
+   public static mw i(dac $$0) {
       return d(mx.u, G($$0));
    }
 
-   public static mw j(daa $$0) {
+   public static mw j(dac $$0) {
       return d(mx.x, G($$0));
    }
 
@@ -128,7 +128,7 @@ public class mw {
       return d(mx.A, $$0);
    }
 
-   public static mw b(daa $$0, daa $$1) {
+   public static mw b(dac $$0, dac $$1) {
       return new mw().a(mx.v, G($$0)).a(mx.w, a($$1, "_top"));
    }
 
@@ -136,19 +136,19 @@ public class mw {
       return new mw().a($$0, $$1);
    }
 
-   public static mw k(daa $$0) {
+   public static mw k(dac $$0) {
       return new mw().a(mx.i, a($$0, "_side")).a(mx.d, a($$0, "_top"));
    }
 
-   public static mw l(daa $$0) {
+   public static mw l(dac $$0) {
       return new mw().a(mx.i, a($$0, "_side")).a(mx.f, a($$0, "_top"));
    }
 
-   public static mw m(daa $$0) {
+   public static mw m(dac $$0) {
       return new mw().a(mx.q, a($$0, "_plant")).a(mx.i, a($$0, "_side")).a(mx.f, a($$0, "_top"));
    }
 
-   public static mw n(daa $$0) {
+   public static mw n(dac $$0) {
       return new mw().a(mx.i, G($$0)).a(mx.d, a($$0, "_top")).a(mx.c, G($$0));
    }
 
@@ -156,24 +156,24 @@ public class mw {
       return new mw().a(mx.i, $$0).a(mx.d, $$1);
    }
 
-   public static mw o(daa $$0) {
+   public static mw o(dac $$0) {
       return new mw().a(mx.b, G($$0)).a(mx.i, a($$0, "_side")).a(mx.f, a($$0, "_top"));
    }
 
-   public static mw p(daa $$0) {
+   public static mw p(dac $$0) {
       return new mw().a(mx.b, G($$0)).a(mx.c, a($$0, "_particle"));
    }
 
-   public static mw q(daa $$0) {
+   public static mw q(dac $$0) {
       return new mw().a(mx.i, a($$0, "_side")).a(mx.f, a($$0, "_top")).a(mx.e, a($$0, "_bottom"));
    }
 
-   public static mw r(daa $$0) {
+   public static mw r(dac $$0) {
       ajh $$1 = G($$0);
       return new mw().a(mx.r, $$1).a(mx.i, $$1).a(mx.f, a($$0, "_top")).a(mx.e, a($$0, "_bottom"));
    }
 
-   public static mw s(daa $$0) {
+   public static mw s(dac $$0) {
       ajh $$1 = G($$0);
       return new mw().a(mx.b, $$1).a(mx.r, $$1).a(mx.i, $$1).a(mx.d, a($$0, "_top"));
    }
@@ -182,11 +182,11 @@ public class mw {
       return new mw().a(mx.f, $$0).a(mx.e, $$1);
    }
 
-   public static mw t(daa $$0) {
+   public static mw t(dac $$0) {
       return new mw().a(mx.f, a($$0, "_top")).a(mx.e, a($$0, "_bottom"));
    }
 
-   public static mw u(daa $$0) {
+   public static mw u(dac $$0) {
       return new mw().a(mx.c, G($$0));
    }
 
@@ -194,19 +194,19 @@ public class mw {
       return new mw().a(mx.c, $$0);
    }
 
-   public static mw v(daa $$0) {
+   public static mw v(dac $$0) {
       return new mw().a(mx.C, a($$0, "_0"));
    }
 
-   public static mw w(daa $$0) {
+   public static mw w(dac $$0) {
       return new mw().a(mx.C, a($$0, "_1"));
    }
 
-   public static mw x(daa $$0) {
+   public static mw x(dac $$0) {
       return new mw().a(mx.D, G($$0));
    }
 
-   public static mw y(daa $$0) {
+   public static mw y(dac $$0) {
       return new mw().a(mx.G, G($$0));
    }
 
@@ -214,39 +214,39 @@ public class mw {
       return new mw().a(mx.G, $$0);
    }
 
-   public static mw a(daa $$0, String $$1, String $$2) {
+   public static mw a(dac $$0, String $$1, String $$2) {
       return new mw().a(mx.i, a($$0, $$1)).a(mx.f, a($$0, $$2)).a(mx.e, a($$0, "_bottom"));
    }
 
-   public static mw a(daa $$0, String $$1, String $$2, String $$3, String $$4) {
+   public static mw a(dac $$0, String $$1, String $$2, String $$3, String $$4) {
       return new mw().a(mx.g, a($$0, $$1)).a(mx.i, a($$0, $$2)).a(mx.f, a($$0, $$3)).a(mx.e, a($$0, $$4));
    }
 
-   public static mw a(cqf $$0) {
+   public static mw a(cqh $$0) {
       return new mw().a(mx.c, c($$0));
    }
 
-   public static mw z(daa $$0) {
+   public static mw z(dac $$0) {
       return new mw().a(mx.i, a($$0, "_side")).a(mx.g, a($$0, "_front")).a(mx.h, a($$0, "_back"));
    }
 
-   public static mw A(daa $$0) {
+   public static mw A(dac $$0) {
       return new mw().a(mx.i, a($$0, "_side")).a(mx.g, a($$0, "_front")).a(mx.f, a($$0, "_top")).a(mx.e, a($$0, "_bottom"));
    }
 
-   public static mw B(daa $$0) {
+   public static mw B(dac $$0) {
       return new mw().a(mx.i, a($$0, "_side")).a(mx.g, a($$0, "_front")).a(mx.f, a($$0, "_top"));
    }
 
-   public static mw C(daa $$0) {
+   public static mw C(dac $$0) {
       return new mw().a(mx.i, a($$0, "_side")).a(mx.g, a($$0, "_front")).a(mx.d, a($$0, "_end"));
    }
 
-   public static mw D(daa $$0) {
+   public static mw D(dac $$0) {
       return new mw().a(mx.f, a($$0, "_top"));
    }
 
-   public static mw c(daa $$0, daa $$1) {
+   public static mw c(dac $$0, dac $$1) {
       return new mw()
          .a(mx.c, a($$0, "_front"))
          .a(mx.o, G($$1))
@@ -257,7 +257,7 @@ public class mw {
          .a(mx.m, a($$0, "_front"));
    }
 
-   public static mw d(daa $$0, daa $$1) {
+   public static mw d(dac $$0, dac $$1) {
       return new mw()
          .a(mx.c, a($$0, "_front"))
          .a(mx.o, G($$1))
@@ -270,53 +270,53 @@ public class mw {
 
    public static mw a(String $$0) {
       return new mw()
-         .a(mx.c, a(dac.mg, $$0 + "_north"))
-         .a(mx.e, a(dac.mg, $$0 + "_bottom"))
-         .a(mx.f, a(dac.mg, $$0 + "_top"))
-         .a(mx.j, a(dac.mg, $$0 + "_north"))
-         .a(mx.k, a(dac.mg, $$0 + "_south"))
-         .a(mx.l, a(dac.mg, $$0 + "_east"))
-         .a(mx.m, a(dac.mg, $$0 + "_west"));
+         .a(mx.c, a(dae.mg, $$0 + "_north"))
+         .a(mx.e, a(dae.mg, $$0 + "_bottom"))
+         .a(mx.f, a(dae.mg, $$0 + "_top"))
+         .a(mx.j, a(dae.mg, $$0 + "_north"))
+         .a(mx.k, a(dae.mg, $$0 + "_south"))
+         .a(mx.l, a(dae.mg, $$0 + "_east"))
+         .a(mx.m, a(dae.mg, $$0 + "_west"));
    }
 
-   public static mw E(daa $$0) {
+   public static mw E(dac $$0) {
       return new mw().a(mx.K, a($$0, "_log_lit")).a(mx.C, a($$0, "_fire"));
    }
 
-   public static mw a(daa $$0, boolean $$1) {
+   public static mw a(dac $$0, boolean $$1) {
       return new mw()
-         .a(mx.c, a(dac.eg, "_side"))
-         .a(mx.e, a(dac.eg, "_bottom"))
-         .a(mx.f, a(dac.eg, "_top"))
-         .a(mx.i, a(dac.eg, "_side"))
+         .a(mx.c, a(dae.eg, "_side"))
+         .a(mx.e, a(dae.eg, "_bottom"))
+         .a(mx.f, a(dae.eg, "_top"))
+         .a(mx.i, a(dae.eg, "_side"))
          .a(mx.L, a($$0, $$1 ? "_lit" : ""));
    }
 
    public static mw j(ajh $$0) {
       return new mw()
-         .a(mx.c, a(dac.ft, "_side"))
-         .a(mx.i, a(dac.ft, "_side"))
-         .a(mx.f, a(dac.ft, "_top"))
-         .a(mx.e, a(dac.ft, "_bottom"))
-         .a(mx.M, a(dac.ft, "_inner"))
+         .a(mx.c, a(dae.ft, "_side"))
+         .a(mx.i, a(dae.ft, "_side"))
+         .a(mx.f, a(dae.ft, "_top"))
+         .a(mx.e, a(dae.ft, "_bottom"))
+         .a(mx.M, a(dae.ft, "_inner"))
          .a(mx.N, $$0);
    }
 
    public static mw a(boolean $$0) {
       String $$1 = $$0 ? "_can_summon" : "";
       return new mw()
-         .a(mx.c, a(dac.qV, "_bottom"))
-         .a(mx.i, a(dac.qV, "_side"))
-         .a(mx.f, a(dac.qV, "_top"))
-         .a(mx.O, a(dac.qV, $$1 + "_inner_top"))
-         .a(mx.e, a(dac.qV, "_bottom"));
+         .a(mx.c, a(dae.qV, "_bottom"))
+         .a(mx.i, a(dae.qV, "_side"))
+         .a(mx.f, a(dae.qV, "_top"))
+         .a(mx.O, a(dae.qV, $$1 + "_inner_top"))
+         .a(mx.e, a(dae.qV, "_bottom"));
    }
 
-   public static mw b(cqf $$0) {
+   public static mw b(cqh $$0) {
       return new mw().a(mx.H, c($$0));
    }
 
-   public static mw F(daa $$0) {
+   public static mw F(dac $$0) {
       return new mw().a(mx.H, G($$0));
    }
 
@@ -332,22 +332,22 @@ public class mw {
       return new mw().a(mx.H, $$0).a(mx.I, $$1).a(mx.J, $$2);
    }
 
-   public static ajh G(daa $$0) {
+   public static ajh G(dac $$0) {
       ajh $$1 = ki.e.b($$0);
       return $$1.d("block/");
    }
 
-   public static ajh a(daa $$0, String $$1) {
+   public static ajh a(dac $$0, String $$1) {
       ajh $$2 = ki.e.b($$0);
       return $$2.a((UnaryOperator<String>)($$1x -> "block/" + $$1x + $$1));
    }
 
-   public static ajh c(cqf $$0) {
+   public static ajh c(cqh $$0) {
       ajh $$1 = ki.h.b($$0);
       return $$1.d("item/");
    }
 
-   public static ajh a(cqf $$0, String $$1) {
+   public static ajh a(cqh $$0, String $$1) {
       ajh $$2 = ki.h.b($$0);
       return $$2.a((UnaryOperator<String>)($$1x -> "item/" + $$1x + $$1));
    }

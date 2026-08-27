@@ -1,22 +1,9 @@
+import com.google.common.collect.ImmutableList;
+
 public class frn {
-   private final float a;
-   private final float b;
+   private final fro a = new fro(ImmutableList.of(), frh.a);
 
-   public frn(float $$0, float $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public float a() {
+   public fro a() {
       return this.a;
-   }
-
-   public float b() {
-      return this.b;
-   }
-
-   @Override
-   public String toString() {
-      return "(" + this.a + "," + this.b + ")";
    }
 }

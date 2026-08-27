@@ -1,44 +1,41 @@
-import java.util.Optional;
+public class brr implements bri<bpp> {
+   private final int a;
+   private final int b;
+   private brh.a c = brh.a.a;
+   private long d;
 
-public class brr implements bsu {
-   private final bow a;
-   private final boolean b;
-
-   public brr(bow $$0, boolean $$1) {
+   public brr(int $$0, int $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
    @Override
-   public epr a() {
-      return this.b ? this.a.dk().b(0.0, (double)this.a.cI(), 0.0) : this.a.dk();
+   public brh.a a() {
+      return this.c;
    }
 
    @Override
-   public ib b() {
-      return this.a.dm();
+   public final boolean e(apf $$0, bpp $$1, long $$2) {
+      this.c = brh.a.b;
+      int $$3 = this.a + $$0.E_().a(this.b + 1 - this.a);
+      this.d = $$2 + (long)$$3;
+      return true;
    }
 
    @Override
-   public boolean a(bpo $$0) {
-      if (this.a instanceof bpo $$1) {
-         if (!$$1.bA()) {
-            return false;
-         } else {
-            Optional<byt> $$3 = $$0.dP().c(byr.h);
-            return $$3.isPresent() && $$3.get().a($$1);
-         }
-      } else {
-         return true;
+   public final void f(apf $$0, bpp $$1, long $$2) {
+      if ($$2 > this.d) {
+         this.g($$0, $$1, $$2);
       }
    }
 
-   public bow c() {
-      return this.a;
+   @Override
+   public final void g(apf $$0, bpp $$1, long $$2) {
+      this.c = brh.a.a;
    }
 
    @Override
-   public String toString() {
-      return "EntityTracker for " + this.a;
+   public String b() {
+      return this.getClass().getSimpleName();
    }
 }

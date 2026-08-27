@@ -10,7 +10,7 @@ public class oa implements nz.a {
    }
 
    public static ta a(String $$0, ta $$1) {
-      ehc $$2 = new ehc();
+      ehe $$2 = new ehe();
       int $$3 = tp.b($$1, 500);
       int $$4 = 3798;
       if ($$3 < 3798) {

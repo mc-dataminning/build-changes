@@ -26,7 +26,7 @@ public class avf implements asi {
    }
 
    @Override
-   public CompletableFuture<Void> a(asi.a $$0, aso $$1, bjq $$2, bjq $$3, Executor $$4, Executor $$5) {
+   public CompletableFuture<Void> a(asi.a $$0, aso $$1, bjr $$2, bjr $$3, Executor $$4, Executor $$5) {
       List<? extends CompletableFuture<? extends avf.a<?>>> $$6 = this.b.c().map($$2x -> this.a($$1, $$4, $$2x)).toList();
       return CompletableFuture.allOf($$6.toArray(CompletableFuture[]::new))
          .thenCompose($$0::a)

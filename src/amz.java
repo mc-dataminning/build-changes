@@ -16,7 +16,7 @@ public class amz {
 
    private static int a(du $$0, ib $$1, float $$2) {
       apf $$3 = $$0.e();
-      if ($$3.ad() != cwz.h) {
+      if ($$3.ad() != cxb.h) {
          $$0.b(vu.c("commands.setworldspawn.failure.not_overworld"));
          return 0;
       } else {

@@ -1,37 +1,27 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
-import javax.annotation.Nullable;
 
 public class bsp {
-   public static bsr<bpo> a(float $$0) {
-      return but.a((Function<but.b<bpo>, ? extends App<but.c<bpo>, buw<bpo>>>)($$1 -> $$1.group($$1.c(byr.m)).apply($$1, $$1x -> ($$2, $$3, $$4) -> {
-               if ($$2.h($$3.dm())) {
-                  return false;
-               } else {
-                  Optional<epr> $$5 = Optional.ofNullable(a($$2, $$3));
-                  $$5.ifPresent($$2x -> $$1x.a(new byu($$2x, $$0, 0)));
-                  return true;
-               }
-            })));
-   }
+   private static final int a = 1;
 
-   @Nullable
-   private static epr a(apf $$0, bpo $$1) {
-      axd $$2 = $$1.ei();
-      ib $$3 = $$1.dm();
+   public static bri<bpp> a(float $$0) {
+      return buu.a(
+         (Function<buu.b<bpp>, ? extends App<buu.c<bpp>, bux<bpp>>>)($$1 -> $$1.group($$1.a(bys.n), $$1.c(bys.m), $$1.b(bys.s))
+               .apply($$1, ($$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
+                     if ($$6.bO()) {
+                        return false;
+                     } else {
+                        box $$8 = $$1.b($$4);
+                        if ($$8.a($$6, 1.0)) {
+                           $$6.n($$8);
+                        } else {
+                           $$2.a(new brs($$8, true));
+                           $$3.a(new byv(new brs($$8, false), $$0, 1));
+                        }
 
-      for (int $$4 = 0; $$4 < 10; $$4++) {
-         ib $$5 = $$3.b($$2.a(20) - 10, $$2.a(6) - 3, $$2.a(20) - 10);
-         if (a($$0, $$1, $$5)) {
-            return epr.c($$5);
-         }
-      }
-
-      return null;
-   }
-
-   public static boolean a(apf $$0, bpo $$1, ib $$2) {
-      return $$0.h($$2) && (double)$$0.a(dsm.a.e, $$2).v() <= $$1.dt();
+                        return true;
+                     }
+                  }))
+      );
    }
 }

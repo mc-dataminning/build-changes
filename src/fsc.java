@@ -1,6 +1,13 @@
-import com.mojang.authlib.GameProfile;
-import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public record fsc(GameProfile a, god b, iz.b c, clf d, @Nullable String e, @Nullable fsm f, @Nullable fhf g, Map<ajh, byte[]> h) {
+public enum fsc {
+   a,
+   b;
+
+   private static final List<fsc> c = List.of(values());
+   private static final iz.b d = iz.a(ki.at);
+
+   public static is<fsc> a() {
+      return new is<>(c).a(a, d);
+   }
 }

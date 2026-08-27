@@ -19,7 +19,7 @@ public abstract class ass extends ast<Map<ajh, JsonElement>> {
       this.c = $$1;
    }
 
-   protected Map<ajh, JsonElement> a(aso $$0, bjq $$1) {
+   protected Map<ajh, JsonElement> a(aso $$0, bjr $$1) {
       Map<ajh, JsonElement> $$2 = new HashMap<>();
       a($$0, this.c, this.b, $$2);
       return $$2;

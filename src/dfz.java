@@ -1,345 +1,37 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public class dfz {
-   private final cwz a;
-   private final ib b;
-   private final czp c;
-   private dmz d;
-   private final boolean e;
-   private final List<ib> f = Lists.newArrayList();
+public class dfz extends dac {
+   public static final MapCodec<dfz> a = b(dfz::new);
 
-   public dfz(cwz $$0, ib $$1, dmz $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.d = $$2;
-      this.c = (czp)$$2.b();
-      dod $$3 = $$2.c(this.c.c());
-      this.e = this.c.b();
-      this.a($$3);
+   @Override
+   public MapCodec<dfz> a() {
+      return a;
    }
 
-   public List<ib> a() {
-      return this.f;
+   protected dfz(dna.d $$0) {
+      super($$0);
    }
 
-   private void a(dod $$0) {
-      this.f.clear();
-      switch ($$0) {
-         case a:
-            this.f.add(this.b.e());
-            this.f.add(this.b.f());
-            break;
-         case b:
-            this.f.add(this.b.g());
-            this.f.add(this.b.h());
-            break;
-         case c:
-            this.f.add(this.b.g());
-            this.f.add(this.b.h().c());
-            break;
-         case d:
-            this.f.add(this.b.g().c());
-            this.f.add(this.b.h());
-            break;
-         case e:
-            this.f.add(this.b.e().c());
-            this.f.add(this.b.f());
-            break;
-         case f:
-            this.f.add(this.b.e());
-            this.f.add(this.b.f().c());
-            break;
-         case g:
-            this.f.add(this.b.h());
-            this.f.add(this.b.f());
-            break;
-         case h:
-            this.f.add(this.b.g());
-            this.f.add(this.b.f());
-            break;
-         case i:
-            this.f.add(this.b.g());
-            this.f.add(this.b.e());
-            break;
-         case j:
-            this.f.add(this.b.h());
-            this.f.add(this.b.e());
-      }
-   }
-
-   private void d() {
-      for (int $$0 = 0; $$0 < this.f.size(); $$0++) {
-         dfz $$1 = this.b(this.f.get($$0));
-         if ($$1 != null && $$1.a(this)) {
-            this.f.set($$0, $$1.b);
-         } else {
-            this.f.remove($$0--);
-         }
-      }
-   }
-
-   private boolean a(ib $$0) {
-      return czp.a(this.a, $$0) || czp.a(this.a, $$0.c()) || czp.a(this.a, $$0.d());
-   }
-
-   @Nullable
-   private dfz b(ib $$0) {
-      dmz $$2 = this.a.a_($$0);
-      if (czp.g($$2)) {
-         return new dfz(this.a, $$0, $$2);
+   @Override
+   protected bnf a(cqm $$0, dnb $$1, cxb $$2, ib $$3, ciu $$4, bnc $$5, epp $$6) {
+      if (!$$0.a(cqp.rU)) {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      } else if ($$2.B) {
+         return bnf.a($$2.B);
       } else {
-         ib $$1 = $$0.c();
-         $$2 = this.a.a_($$1);
-         if (czp.g($$2)) {
-            return new dfz(this.a, $$1, $$2);
-         } else {
-            $$1 = $$0.d();
-            $$2 = this.a.a_($$1);
-            return czp.g($$2) ? new dfz(this.a, $$1, $$2) : null;
-         }
+         ih $$7 = $$6.b();
+         ih $$8 = $$7.o() == ih.a.b ? $$4.cE().g() : $$7;
+         $$2.a(null, $$3, aty.ux, atz.e, 1.0F, 1.0F);
+         $$2.a($$3, dae.ee.o().a(daw.b, $$8), 11);
+         cfe $$9 = new cfe(
+            $$2, (double)$$3.u() + 0.5 + (double)$$8.j() * 0.65, (double)$$3.v() + 0.1, (double)$$3.w() + 0.5 + (double)$$8.l() * 0.65, new cqm(cqp.rX, 4)
+         );
+         $$9.o(0.05 * (double)$$8.j() + $$2.z.j() * 0.02, 0.05, 0.05 * (double)$$8.l() + $$2.z.j() * 0.02);
+         $$2.b($$9);
+         $$0.a(1, $$4, bpp.d($$5));
+         $$2.a($$4, drp.M, $$3);
+         $$4.b(aui.c.b(cqp.rU));
+         return bnf.a($$2.B);
       }
-   }
-
-   private boolean a(dfz $$0) {
-      return this.c($$0.b);
-   }
-
-   private boolean c(ib $$0) {
-      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
-         ib $$2 = this.f.get($$1);
-         if ($$2.u() == $$0.u() && $$2.w() == $$0.w()) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   protected int b() {
-      int $$0 = 0;
-
-      for (ih $$1 : ih.c.a) {
-         if (this.a(this.b.a($$1))) {
-            $$0++;
-         }
-      }
-
-      return $$0;
-   }
-
-   private boolean b(dfz $$0) {
-      return this.a($$0) || this.f.size() != 2;
-   }
-
-   private void c(dfz $$0) {
-      this.f.add($$0.b);
-      ib $$1 = this.b.e();
-      ib $$2 = this.b.f();
-      ib $$3 = this.b.g();
-      ib $$4 = this.b.h();
-      boolean $$5 = this.c($$1);
-      boolean $$6 = this.c($$2);
-      boolean $$7 = this.c($$3);
-      boolean $$8 = this.c($$4);
-      dod $$9 = null;
-      if ($$5 || $$6) {
-         $$9 = dod.a;
-      }
-
-      if ($$7 || $$8) {
-         $$9 = dod.b;
-      }
-
-      if (!this.e) {
-         if ($$6 && $$8 && !$$5 && !$$7) {
-            $$9 = dod.g;
-         }
-
-         if ($$6 && $$7 && !$$5 && !$$8) {
-            $$9 = dod.h;
-         }
-
-         if ($$5 && $$7 && !$$6 && !$$8) {
-            $$9 = dod.i;
-         }
-
-         if ($$5 && $$8 && !$$6 && !$$7) {
-            $$9 = dod.j;
-         }
-      }
-
-      if ($$9 == dod.a) {
-         if (czp.a(this.a, $$1.c())) {
-            $$9 = dod.e;
-         }
-
-         if (czp.a(this.a, $$2.c())) {
-            $$9 = dod.f;
-         }
-      }
-
-      if ($$9 == dod.b) {
-         if (czp.a(this.a, $$4.c())) {
-            $$9 = dod.c;
-         }
-
-         if (czp.a(this.a, $$3.c())) {
-            $$9 = dod.d;
-         }
-      }
-
-      if ($$9 == null) {
-         $$9 = dod.a;
-      }
-
-      this.d = this.d.a(this.c.c(), $$9);
-      this.a.a(this.b, this.d, 3);
-   }
-
-   private boolean d(ib $$0) {
-      dfz $$1 = this.b($$0);
-      if ($$1 == null) {
-         return false;
-      } else {
-         $$1.d();
-         return $$1.b(this);
-      }
-   }
-
-   public dfz a(boolean $$0, boolean $$1, dod $$2) {
-      ib $$3 = this.b.e();
-      ib $$4 = this.b.f();
-      ib $$5 = this.b.g();
-      ib $$6 = this.b.h();
-      boolean $$7 = this.d($$3);
-      boolean $$8 = this.d($$4);
-      boolean $$9 = this.d($$5);
-      boolean $$10 = this.d($$6);
-      dod $$11 = null;
-      boolean $$12 = $$7 || $$8;
-      boolean $$13 = $$9 || $$10;
-      if ($$12 && !$$13) {
-         $$11 = dod.a;
-      }
-
-      if ($$13 && !$$12) {
-         $$11 = dod.b;
-      }
-
-      boolean $$14 = $$8 && $$10;
-      boolean $$15 = $$8 && $$9;
-      boolean $$16 = $$7 && $$10;
-      boolean $$17 = $$7 && $$9;
-      if (!this.e) {
-         if ($$14 && !$$7 && !$$9) {
-            $$11 = dod.g;
-         }
-
-         if ($$15 && !$$7 && !$$10) {
-            $$11 = dod.h;
-         }
-
-         if ($$17 && !$$8 && !$$10) {
-            $$11 = dod.i;
-         }
-
-         if ($$16 && !$$8 && !$$9) {
-            $$11 = dod.j;
-         }
-      }
-
-      if ($$11 == null) {
-         if ($$12 && $$13) {
-            $$11 = $$2;
-         } else if ($$12) {
-            $$11 = dod.a;
-         } else if ($$13) {
-            $$11 = dod.b;
-         }
-
-         if (!this.e) {
-            if ($$0) {
-               if ($$14) {
-                  $$11 = dod.g;
-               }
-
-               if ($$15) {
-                  $$11 = dod.h;
-               }
-
-               if ($$16) {
-                  $$11 = dod.j;
-               }
-
-               if ($$17) {
-                  $$11 = dod.i;
-               }
-            } else {
-               if ($$17) {
-                  $$11 = dod.i;
-               }
-
-               if ($$16) {
-                  $$11 = dod.j;
-               }
-
-               if ($$15) {
-                  $$11 = dod.h;
-               }
-
-               if ($$14) {
-                  $$11 = dod.g;
-               }
-            }
-         }
-      }
-
-      if ($$11 == dod.a) {
-         if (czp.a(this.a, $$3.c())) {
-            $$11 = dod.e;
-         }
-
-         if (czp.a(this.a, $$4.c())) {
-            $$11 = dod.f;
-         }
-      }
-
-      if ($$11 == dod.b) {
-         if (czp.a(this.a, $$6.c())) {
-            $$11 = dod.c;
-         }
-
-         if (czp.a(this.a, $$5.c())) {
-            $$11 = dod.d;
-         }
-      }
-
-      if ($$11 == null) {
-         $$11 = $$2;
-      }
-
-      this.a($$11);
-      this.d = this.d.a(this.c.c(), $$11);
-      if ($$1 || this.a.a_(this.b) != this.d) {
-         this.a.a(this.b, this.d, 3);
-
-         for (int $$18 = 0; $$18 < this.f.size(); $$18++) {
-            dfz $$19 = this.b(this.f.get($$18));
-            if ($$19 != null) {
-               $$19.d();
-               if ($$19.b(this)) {
-                  $$19.c(this);
-               }
-            }
-         }
-      }
-
-      return this;
-   }
-
-   public dmz c() {
-      return this.d;
    }
 }

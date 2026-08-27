@@ -1,285 +1,108 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
+import com.mojang.logging.LogUtils;
+import java.util.Optional;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class cot {
-   private final vu a;
-   String b = "items.png";
-   boolean c = true;
-   boolean d = true;
-   boolean e = false;
-   private final cot.f f;
-   private final int g;
-   private final cot.h h;
+public class cot extends cqh {
+   private static final Logger d = LogUtils.getLogger();
+   public static final String a = "LodestonePos";
+   public static final String b = "LodestoneDimension";
+   public static final String c = "LodestoneTracked";
+
+   public cot(cqh.a $$0) {
+      super($$0);
+   }
+
+   public static boolean d(cqm $$0) {
+      ta $$1 = $$0.w();
+      return $$1 != null && ($$1.e("LodestoneDimension") || $$1.e("LodestonePos"));
+   }
+
+   private static Optional<ajg<cxb>> c(ta $$0) {
+      return cxb.g.parse(to.a, $$0.c("LodestoneDimension")).result();
+   }
+
    @Nullable
-   private cqk i;
-   private Collection<cqk> j = cql.a();
-   private Set<cqk> k = cql.a();
-   @Nullable
-   private Consumer<List<cqk>> l;
-   private final Supplier<cqk> m;
-   private final cot.b n;
-
-   cot(cot.f $$0, int $$1, cot.h $$2, vu $$3, Supplier<cqk> $$4, cot.b $$5) {
-      this.f = $$0;
-      this.g = $$1;
-      this.a = $$3;
-      this.m = $$4;
-      this.n = $$5;
-      this.h = $$2;
-   }
-
-   public static cot.a a(cot.f $$0, int $$1) {
-      return new cot.a($$0, $$1);
-   }
-
-   public vu a() {
-      return this.a;
-   }
-
-   public cqk b() {
-      if (this.i == null) {
-         this.i = this.m.get();
-      }
-
-      return this.i;
-   }
-
-   public String c() {
-      return this.b;
-   }
-
-   public boolean d() {
-      return this.d;
-   }
-
-   public boolean e() {
-      return this.c;
-   }
-
-   public int f() {
-      return this.g;
-   }
-
-   public cot.f g() {
-      return this.f;
-   }
-
-   public boolean h() {
-      return !this.j.isEmpty();
-   }
-
-   public boolean i() {
-      return this.h != cot.h.a || this.h();
-   }
-
-   public boolean j() {
-      return this.e;
-   }
-
-   public cot.h k() {
-      return this.h;
-   }
-
-   public void a(cot.d $$0) {
-      cot.c $$1 = new cot.c(this, $$0.a);
-      ajg<cot> $$2 = ki.ap.d(this).orElseThrow(() -> new IllegalStateException("Unregistered creative tab: " + this));
-      this.n.accept($$0, $$1);
-      this.j = $$1.a;
-      this.k = $$1.b;
-      this.n();
-   }
-
-   public Collection<cqk> l() {
-      return this.j;
-   }
-
-   public Collection<cqk> m() {
-      return this.k;
-   }
-
-   public boolean a(cqk $$0) {
-      return this.k.contains($$0);
-   }
-
-   public void a(Consumer<List<cqk>> $$0) {
-      this.l = $$0;
-   }
-
-   public void n() {
-      if (this.l != null) {
-         this.l.accept(Lists.newArrayList(this.k));
-      }
-   }
-
-   public static class a {
-      private static final cot.b a = ($$0, $$1) -> {
-      };
-      private final cot.f b;
-      private final int c;
-      private vu d = vu.i();
-      private Supplier<cqk> e = () -> cqk.h;
-      private cot.b f = a;
-      private boolean g = true;
-      private boolean h = true;
-      private boolean i = false;
-      private cot.h j = cot.h.a;
-      private String k = "items.png";
-
-      public a(cot.f $$0, int $$1) {
-         this.b = $$0;
-         this.c = $$1;
-      }
-
-      public cot.a a(vu $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public cot.a a(Supplier<cqk> $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public cot.a a(cot.b $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public cot.a a() {
-         this.i = true;
-         return this;
-      }
-
-      public cot.a b() {
-         this.h = false;
-         return this;
-      }
-
-      public cot.a c() {
-         this.g = false;
-         return this;
-      }
-
-      protected cot.a a(cot.h $$0) {
-         this.j = $$0;
-         return this;
-      }
-
-      public cot.a a(String $$0) {
-         this.k = $$0;
-         return this;
-      }
-
-      public cot d() {
-         if ((this.j == cot.h.c || this.j == cot.h.b) && this.f != a) {
-            throw new IllegalStateException("Special tabs can't have display items");
-         } else {
-            cot $$0 = new cot(this.b, this.c, this.j, this.d, this.e, this.f);
-            $$0.e = this.i;
-            $$0.d = this.h;
-            $$0.c = this.g;
-            $$0.b = this.k;
-            return $$0;
+   public static ik a(ta $$0) {
+      boolean $$1 = $$0.e("LodestonePos");
+      boolean $$2 = $$0.e("LodestoneDimension");
+      if ($$1 && $$2) {
+         Optional<ajg<cxb>> $$3 = c($$0);
+         if ($$3.isPresent()) {
+            Optional<ib> $$4 = tp.a($$0, "LodestonePos");
+            if ($$4.isPresent()) {
+               return ik.a($$3.get(), $$4.get());
+            }
          }
       }
+
+      return null;
    }
 
-   @FunctionalInterface
-   public interface b {
-      void accept(cot.d var1, cot.e var2);
+   @Nullable
+   public static ik a(cxb $$0) {
+      return $$0.D_().j() ? ik.a($$0.ad(), $$0.T()) : null;
    }
 
-   static class c implements cot.e {
-      public final Collection<cqk> a = cql.a();
-      public final Set<cqk> b = cql.a();
-      private final cot c;
-      private final clf d;
+   @Override
+   public boolean i(cqm $$0) {
+      return d($$0) || super.i($$0);
+   }
 
-      public c(cot $$0, clf $$1) {
-         this.c = $$0;
-         this.d = $$1;
-      }
+   @Override
+   public void a(cqm $$0, cxb $$1, box $$2, int $$3, boolean $$4) {
+      if (!$$1.B) {
+         if (d($$0)) {
+            ta $$5 = $$0.x();
+            if ($$5.e("LodestoneTracked") && !$$5.q("LodestoneTracked")) {
+               return;
+            }
 
-      @Override
-      public void a(cqk $$0, cot.g $$1) {
-         if ($$0.M() != 1) {
-            throw new IllegalArgumentException("Stack size must be exactly 1");
-         } else {
-            boolean $$2 = this.a.contains($$0) && $$1 != cot.g.c;
-            if ($$2) {
-               throw new IllegalStateException(
-                  "Accidentally adding the same item stack twice " + $$0.K().getString() + " to a Creative Mode Tab: " + this.c.a().getString()
-               );
-            } else {
-               if ($$0.d().a(this.d)) {
-                  switch ($$1) {
-                     case a:
-                        this.a.add($$0);
-                        this.b.add($$0);
-                        break;
-                     case b:
-                        this.a.add($$0);
-                        break;
-                     case c:
-                        this.b.add($$0);
-                  }
+            Optional<ajg<cxb>> $$6 = c($$5);
+            if ($$6.isPresent() && $$6.get() == $$1.ad() && $$5.e("LodestonePos")) {
+               Optional<ib> $$7 = tp.a($$5, "LodestonePos");
+               if ($$7.isEmpty() || !$$1.k($$7.get()) || !((apf)$$1).y().a(caw.s, $$7.get())) {
+                  $$5.r("LodestonePos");
                }
             }
          }
       }
    }
 
-   public static record d(clf a, boolean b, in.a c) {
+   @Override
+   public bnd a(csw $$0) {
+      ib $$1 = $$0.a();
+      cxb $$2 = $$0.q();
+      if (!$$2.a_($$1).a(dae.pq)) {
+         return super.a($$0);
+      } else {
+         $$2.a(null, $$1, aty.nW, atz.h, 1.0F, 1.0F);
+         ciu $$3 = $$0.o();
+         cqm $$4 = $$0.n();
+         boolean $$5 = !$$3.fM() && $$4.M() == 1;
+         if ($$5) {
+            this.a($$2.ad(), $$1, $$4.x());
+         } else {
+            cqm $$6 = $$4.a(cqp.qR, 1);
+            $$4.a(1, $$3);
+            this.a($$2.ad(), $$1, $$6.x());
+            if (!$$3.fZ().e($$6)) {
+               $$3.a($$6, false);
+            }
+         }
 
-      public boolean a(clf $$0, boolean $$1, in.a $$2) {
-         return !this.a.equals($$0) || this.b != $$1 || this.c != $$2;
+         return bnd.a($$2.B);
       }
    }
 
-   public interface e {
-      void a(cqk var1, cot.g var2);
-
-      default void a(cqk $$0) {
-         this.a($$0, cot.g.a);
-      }
-
-      default void a(cwy $$0, cot.g $$1) {
-         this.a(new cqk($$0), $$1);
-      }
-
-      default void a(cwy $$0) {
-         this.a(new cqk($$0), cot.g.a);
-      }
-
-      default void a(Collection<cqk> $$0, cot.g $$1) {
-         $$0.forEach($$1x -> this.a($$1x, $$1));
-      }
-
-      default void a(Collection<cqk> $$0) {
-         this.a($$0, cot.g.a);
-      }
+   private void a(ajg<cxb> $$0, ib $$1, ta $$2) {
+      $$2.a("LodestonePos", tp.a($$1));
+      cxb.g.encodeStart(to.a, $$0).resultOrPartial(d::error).ifPresent($$1x -> $$2.a("LodestoneDimension", $$1x));
+      $$2.a("LodestoneTracked", true);
    }
 
-   public static enum f {
-      a,
-      b;
-   }
-
-   protected static enum g {
-      a,
-      b,
-      c;
-   }
-
-   public static enum h {
-      a,
-      b,
-      c,
-      d;
+   @Override
+   public String j(cqm $$0) {
+      return d($$0) ? "item.minecraft.lodestone_compass" : super.j($$0);
    }
 }

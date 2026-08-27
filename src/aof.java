@@ -55,7 +55,7 @@ public class aof implements Runnable {
             p $$9 = $$8.a("Thread Dump");
             $$9.a("Threads", $$5);
             p $$10 = $$8.a("Performance stats");
-            $$10.a("Random tick rate", () -> this.d.bc().o().a(cwv.o).toString());
+            $$10.a("Random tick rate", () -> this.d.bc().o().a(cwx.o).toString());
             $$10.a("Level stats", () -> Streams.stream(this.d.K()).map($$0x -> $$0x.ad() + ": " + $$0x.F()).collect(Collectors.joining(",\n")));
             ajj.a("Crash report:\n" + $$8.e());
             File $$11 = new File(new File(this.d.C(), "crash-reports"), "crash-" + ac.e() + "-server.txt");

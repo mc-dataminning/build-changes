@@ -1,12 +1,15 @@
-public class ewc extends Exception {
-   public final eur a;
+import java.lang.Thread.UncaughtExceptionHandler;
+import org.slf4j.Logger;
 
-   public ewc(eur $$0) {
+public class ewc implements UncaughtExceptionHandler {
+   private final Logger a;
+
+   public ewc(Logger $$0) {
       this.a = $$0;
    }
 
    @Override
-   public String getMessage() {
-      return this.a.c();
+   public void uncaughtException(Thread $$0, Throwable $$1) {
+      this.a.error("Caught previously unhandled exception", $$1);
    }
 }

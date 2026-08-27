@@ -1,43 +1,136 @@
-public class fut extends fwe {
-   private final fvz a;
+public class fut extends fwg {
+   private final double a;
+   private final double b;
+   private final double F;
+   private final boolean G;
+   private final fvg.a H;
 
-   protected fut(fry $$0, double $$1, double $$2, double $$3, fvz $$4) {
+   fut(fsa $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, false, fvg.a.a);
+   }
+
+   fut(fsa $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7, fvg.a $$8) {
       super($$0, $$1, $$2, $$3);
-      this.a = $$4;
-      this.b($$4);
-      this.t = 12 + this.r.a(4);
-      this.D = 1.0F;
-      this.b(1.0F, 1.0F);
+      this.G = $$7;
+      this.H = $$8;
+      this.e($$8.b());
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.a = $$1;
+      this.b = $$2;
+      this.F = $$3;
+      this.d = $$1 + $$4;
+      this.e = $$2 + $$5;
+      this.f = $$3 + $$6;
+      this.g = this.d;
+      this.h = this.e;
+      this.i = this.f;
+      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
+      float $$9 = this.r.i() * 0.6F + 0.4F;
+      this.v = 0.9F * $$9;
+      this.w = 0.9F * $$9;
+      this.x = $$9;
+      this.n = false;
+      this.t = (int)(Math.random() * 10.0) + 30;
    }
 
    @Override
-   public fvi b() {
-      return fvi.d;
+   public fvk b() {
+      return this.H.a() ? fvk.b : fvk.c;
+   }
+
+   @Override
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
    }
 
    @Override
    public int a(float $$0) {
-      return 15728880;
+      if (this.G) {
+         return 240;
+      } else {
+         int $$1 = super.a($$0);
+         float $$2 = (float)this.s / (float)this.t;
+         $$2 *= $$2;
+         $$2 *= $$2;
+         int $$3 = $$1 & 0xFF;
+         int $$4 = $$1 >> 16 & 0xFF;
+         $$4 += (int)($$2 * 15.0F * 16.0F);
+         if ($$4 > 240) {
+            $$4 = 240;
+         }
+
+         return $$3 | $$4 << 16;
+      }
    }
 
    @Override
    public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
       if (this.s++ >= this.t) {
          this.k();
       } else {
-         this.b(this.a);
+         float $$0 = (float)this.s / (float)this.t;
+         $$0 = 1.0F - $$0;
+         float $$1 = 1.0F - $$0;
+         $$1 *= $$1;
+         $$1 *= $$1;
+         this.g = this.a + this.j * (double)$$0;
+         this.h = this.b + this.k * (double)$$0 - (double)($$1 * 1.2F);
+         this.i = this.F + this.l * (double)$$0;
       }
    }
 
-   public static class a implements fvh<kf> {
-      private final fvz a;
+   @Override
+   public void a(euf $$0, eyt $$1, float $$2) {
+      this.e(this.H.a(this.s, this.t, $$2));
+      super.a($$0, $$1, $$2);
+   }
 
-      public a(fvz $$0) {
+   public static class a implements fvj<kf> {
+      private final fwb a;
+
+      public a(fwb $$0) {
          this.a = $$0;
       }
 
-      public fve a(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fut($$1, $$2, $$3, $$4, this.a);
+      public fvg a(kf $$0, fsa $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fut $$8 = new fut($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class b implements fvj<kf> {
+      private final fwb a;
+
+      public b(fwb $$0) {
+         this.a = $$0;
+      }
+
+      public fvg a(kf $$0, fsa $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fut $$8 = new fut($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class c implements fvj<kf> {
+      private final fwb a;
+
+      public c(fwb $$0) {
+         this.a = $$0;
+      }
+
+      public fvg a(kf $$0, fsa $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fut $$8 = new fut($$1, $$2, $$3, $$4, $$5, $$6, $$7, true, new fvg.a(0.0F, 0.6F, 0.25F, 1.0F));
+         $$8.d(1.5F);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

@@ -1,61 +1,94 @@
-public class fnk extends foz {
-   private static final String a = "left_pages";
-   private static final String b = "right_pages";
-   private static final String c = "flip_page1";
-   private static final String d = "flip_page2";
-   private final frd e;
-   private final frd f;
-   private final frd g;
-   private final frd h;
-   private final frd i;
-   private final frd j;
-   private final frd k;
+import java.util.Arrays;
 
-   public fnk(frd $$0) {
-      super(fxy::c);
-      this.e = $$0;
-      this.f = $$0.b("left_lid");
-      this.g = $$0.b("right_lid");
-      this.h = $$0.b("left_pages");
-      this.i = $$0.b("right_pages");
-      this.j = $$0.b("flip_page1");
-      this.k = $$0.b("flip_page2");
+public class fnk<T extends box> extends fon<T> {
+   private final frf a;
+   private final frf[] b;
+   private final frf f;
+
+   public fnk(frf $$0) {
+      this.a = $$0;
+      this.f = $$0.b("head");
+      this.b = new frf[12];
+      Arrays.setAll(this.b, $$1 -> $$0.b(a($$1)));
    }
 
-   public static frj a() {
-      frl $$0 = new frl();
-      frm $$1 = $$0.a();
-      $$1.a("left_lid", fri.c().a(0, 0).a(-6.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), frf.a(0.0F, 0.0F, -1.0F));
-      $$1.a("right_lid", fri.c().a(16, 0).a(0.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), frf.a(0.0F, 0.0F, 1.0F));
-      $$1.a("seam", fri.c().a(12, 0).a(-1.0F, -5.0F, 0.0F, 2.0F, 10.0F, 0.005F), frf.b(0.0F, (float) (Math.PI / 2), 0.0F));
-      $$1.a("left_pages", fri.c().a(0, 10).a(0.0F, -4.0F, -0.99F, 5.0F, 8.0F, 1.0F), frf.a);
-      $$1.a("right_pages", fri.c().a(12, 10).a(0.0F, -4.0F, -0.01F, 5.0F, 8.0F, 1.0F), frf.a);
-      fri $$2 = fri.c().a(24, 10).a(0.0F, -4.0F, 0.0F, 5.0F, 8.0F, 0.005F);
-      $$1.a("flip_page1", $$2, frf.a);
-      $$1.a("flip_page2", $$2, frf.a);
-      return frj.a($$0, 64, 32);
+   private static String a(int $$0) {
+      return "part" + $$0;
+   }
+
+   public static frl b() {
+      frn $$0 = new frn();
+      fro $$1 = $$0.a();
+      $$1.a("head", frk.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), frh.a);
+      float $$2 = 0.0F;
+      frk $$3 = frk.c().a(0, 16).a(0.0F, 0.0F, 0.0F, 2.0F, 8.0F, 2.0F);
+
+      for (int $$4 = 0; $$4 < 4; $$4++) {
+         float $$5 = aww.b($$2) * 9.0F;
+         float $$6 = -2.0F + aww.b((float)($$4 * 2) * 0.25F);
+         float $$7 = aww.a($$2) * 9.0F;
+         $$1.a(a($$4), $$3, frh.a($$5, $$6, $$7));
+         $$2++;
+      }
+
+      $$2 = (float) (Math.PI / 4);
+
+      for (int $$8 = 4; $$8 < 8; $$8++) {
+         float $$9 = aww.b($$2) * 7.0F;
+         float $$10 = 2.0F + aww.b((float)($$8 * 2) * 0.25F);
+         float $$11 = aww.a($$2) * 7.0F;
+         $$1.a(a($$8), $$3, frh.a($$9, $$10, $$11));
+         $$2++;
+      }
+
+      $$2 = 0.47123894F;
+
+      for (int $$12 = 8; $$12 < 12; $$12++) {
+         float $$13 = aww.b($$2) * 5.0F;
+         float $$14 = 11.0F + aww.b((float)$$12 * 1.5F * 0.5F);
+         float $$15 = aww.a($$2) * 5.0F;
+         $$1.a(a($$12), $$3, frh.a($$13, $$14, $$15));
+         $$2++;
+      }
+
+      return frl.a($$0, 64, 32);
    }
 
    @Override
-   public void a(etz $$0, eud $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public frf a() {
+      return this.a;
    }
 
-   public void b(etz $$0, eud $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.e.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = $$3 * (float) Math.PI * -0.1F;
 
-   public void a(float $$0, float $$1, float $$2, float $$3) {
-      float $$4 = (aww.a($$0 * 0.02F) * 0.1F + 1.25F) * $$3;
-      this.f.f = (float) Math.PI + $$4;
-      this.g.f = -$$4;
-      this.h.f = $$4;
-      this.i.f = -$$4;
-      this.j.f = $$4 - $$4 * 2.0F * $$1;
-      this.k.f = $$4 - $$4 * 2.0F * $$2;
-      this.h.b = aww.a($$4);
-      this.i.b = aww.a($$4);
-      this.j.b = aww.a($$4);
-      this.k.b = aww.a($$4);
+      for (int $$7 = 0; $$7 < 4; $$7++) {
+         this.b[$$7].c = -2.0F + aww.b(((float)($$7 * 2) + $$3) * 0.25F);
+         this.b[$$7].b = aww.b($$6) * 9.0F;
+         this.b[$$7].d = aww.a($$6) * 9.0F;
+         $$6++;
+      }
+
+      $$6 = (float) (Math.PI / 4) + $$3 * (float) Math.PI * 0.03F;
+
+      for (int $$8 = 4; $$8 < 8; $$8++) {
+         this.b[$$8].c = 2.0F + aww.b(((float)($$8 * 2) + $$3) * 0.25F);
+         this.b[$$8].b = aww.b($$6) * 7.0F;
+         this.b[$$8].d = aww.a($$6) * 7.0F;
+         $$6++;
+      }
+
+      $$6 = 0.47123894F + $$3 * (float) Math.PI * -0.05F;
+
+      for (int $$9 = 8; $$9 < 12; $$9++) {
+         this.b[$$9].c = 11.0F + aww.b(((float)$$9 * 1.5F + $$3) * 0.5F);
+         this.b[$$9].b = aww.b($$6) * 5.0F;
+         this.b[$$9].d = aww.a($$6) * 5.0F;
+         $$6++;
+      }
+
+      this.f.f = $$4 * (float) (Math.PI / 180.0);
+      this.f.e = $$5 * (float) (Math.PI / 180.0);
    }
 }

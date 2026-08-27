@@ -1,63 +1,62 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dcn extends czm {
-   public static final MapCodec<dcn> a = b(dcn::new);
+public class dcn extends dch {
+   private static final Logger e = LogUtils.getLogger();
+   public static final MapCodec<dcn> d = b(dcn::new);
+   private static final jo f = new jn();
 
    @Override
    public MapCodec<dcn> a() {
-      return a;
+      return d;
    }
 
-   protected dcn(dmy.d $$0) {
+   public dcn(dna.d $$0) {
       super($$0);
    }
 
    @Override
-   public dkg a(ib $$0, dmz $$1) {
-      return new dlv($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dkg> dkh<T> a(cwz $$0, dmz $$1, dki<T> $$2) {
-      return a($$2, dki.v, $$0.B ? dlv::a : dlv::b);
+   protected jo a(cqm $$0) {
+      return f;
    }
 
    @Override
-   public void a(dmz $$0, cwz $$1, ib $$2, axd $$3) {
-      dkg $$4 = $$1.c_($$2);
-      if ($$4 instanceof dlv) {
-         int $$5 = ((dlv)$$4).f();
+   public dki a(ib $$0, dnb $$1) {
+      return new dlb($$0, $$1);
+   }
 
-         for (int $$6 = 0; $$6 < $$5; $$6++) {
-            double $$7 = (double)$$2.u() + $$3.j();
-            double $$8 = (double)$$2.v() + $$3.j();
-            double $$9 = (double)$$2.w() + $$3.j();
-            double $$10 = ($$3.j() - 0.5) * 0.5;
-            double $$11 = ($$3.j() - 0.5) * 0.5;
-            double $$12 = ($$3.j() - 0.5) * 0.5;
-            int $$13 = $$3.a(2) * 2 - 1;
-            if ($$3.h()) {
-               $$9 = (double)$$2.w() + 0.5 + 0.25 * (double)$$13;
-               $$12 = (double)($$3.i() * 2.0F * (float)$$13);
-            } else {
-               $$7 = (double)$$2.u() + 0.5 + 0.25 * (double)$$13;
-               $$10 = (double)($$3.i() * 2.0F * (float)$$13);
+   @Override
+   protected void a(apf $$0, dnb $$1, ib $$2) {
+      dla $$3 = $$0.a($$2, dkk.g).orElse(null);
+      if ($$3 == null) {
+         e.warn("Ignoring dispensing attempt for Dropper without matching block entity at {}", $$2);
+      } else {
+         jl $$4 = new jl($$0, $$2, $$1, $$3);
+         int $$5 = $$3.a($$0.z);
+         if ($$5 < 0) {
+            $$0.c(1001, $$2, 0);
+         } else {
+            cqm $$6 = $$3.a($$5);
+            if (!$$6.b()) {
+               ih $$7 = $$0.a_($$2).c(b);
+               bmw $$8 = dlh.a($$0, $$2.a($$7));
+               cqm $$9;
+               if ($$8 == null) {
+                  $$9 = f.dispense($$4, $$6);
+               } else {
+                  $$9 = dlh.a($$3, $$8, $$6.q().a(1), $$7.g());
+                  if ($$9.b()) {
+                     $$9 = $$6.q();
+                     $$9.h(1);
+                  } else {
+                     $$9 = $$6.q();
+                  }
+               }
+
+               $$3.a($$5, $$9);
             }
-
-            $$1.a(kc.aa, $$7, $$8, $$9, $$10, $$11, $$12);
          }
       }
-   }
-
-   @Override
-   public cqk a(cxc $$0, ib $$1, dmz $$2) {
-      return cqk.h;
-   }
-
-   @Override
-   protected boolean a(dmz $$0, eim $$1) {
-      return false;
    }
 }

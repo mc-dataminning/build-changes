@@ -1,30 +1,66 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
 public class etx {
-   public static final euf a = new euf(0, euf.a.a, euf.b.a, 3);
-   public static final euf b = new euf(0, euf.a.b, euf.b.c, 4);
-   public static final euf c = new euf(0, euf.a.a, euf.b.d, 2);
-   public static final euf d = new euf(1, euf.a.e, euf.b.d, 2);
-   public static final euf e = new euf(2, euf.a.e, euf.b.d, 2);
-   public static final euf f = new euf(0, euf.a.c, euf.b.b, 3);
-   public static final euf g = new euf(0, euf.a.c, euf.b.e, 1);
-   public static final euf h = c;
-   public static final eue i = new eue(ImmutableMap.builder().put("Position", a).put("UV", h).put("Color", b).build());
-   public static final eue j = new eue(
-      ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV2", e).put("Normal", f).put("Padding", g).build()
-   );
-   public static final eue k = new eue(
-      ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV1", d).put("UV2", e).put("Normal", f).put("Padding", g).build()
-   );
-   public static final eue l = new eue(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).put("UV2", e).build());
-   public static final eue m = new eue(ImmutableMap.builder().put("Position", a).build());
-   public static final eue n = new eue(ImmutableMap.builder().put("Position", a).put("Color", b).build());
-   public static final eue o = new eue(ImmutableMap.builder().put("Position", a).put("Color", b).put("Normal", f).put("Padding", g).build());
-   public static final eue p = new eue(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV2", e).build());
-   public static final eue q = new eue(ImmutableMap.builder().put("Position", a).put("UV0", c).build());
-   public static final eue r = new eue(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).build());
-   public static final eue s = new eue(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).build());
-   public static final eue t = new eue(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV2", e).build());
-   public static final eue u = new eue(ImmutableMap.builder().put("Position", a).put("UV0", c).put("UV2", e).put("Color", b).build());
-   public static final eue v = new eue(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).put("Normal", f).put("Padding", g).build());
+   @Nullable
+   private static eue a;
+
+   public static void a() {
+      if (a != null) {
+         b();
+         eue.b();
+      }
+   }
+
+   public static void b() {
+      a = null;
+   }
+
+   public static void a(etw.b $$0) {
+      if (!RenderSystem.isOnRenderThreadOrInit()) {
+         RenderSystem.recordRenderCall(() -> c($$0));
+      } else {
+         c($$0);
+      }
+   }
+
+   private static void c(etw.b $$0) {
+      eue $$1 = d($$0);
+      if ($$1 != null) {
+         $$1.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
+      }
+   }
+
+   public static void b(etw.b $$0) {
+      eue $$1 = d($$0);
+      if ($$1 != null) {
+         $$1.c();
+      }
+   }
+
+   @Nullable
+   private static eue d(etw.b $$0) {
+      RenderSystem.assertOnRenderThread();
+      if ($$0.d()) {
+         $$0.e();
+         return null;
+      } else {
+         eue $$1 = a($$0.c().g());
+         $$1.a($$0);
+         return $$1;
+      }
+   }
+
+   private static eue a(eug $$0) {
+      eue $$1 = $$0.g();
+      a($$1);
+      return $$1;
+   }
+
+   private static void a(eue $$0) {
+      if ($$0 != a) {
+         $$0.a();
+         a = $$0;
+      }
+   }
 }

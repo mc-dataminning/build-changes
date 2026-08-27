@@ -149,7 +149,7 @@ public class ami {
    }
 
    private static int a(du $$0, int $$1, boolean $$2, boolean $$3) {
-      bnj $$4 = $$0.e().J();
+      bnk $$4 = $$0.e().J();
       $$4.a($$1, $$2, $$3);
       int $$5 = $$4.a();
       $$0.a(() -> vu.a("commands.random.reset.all.success", $$5), false);

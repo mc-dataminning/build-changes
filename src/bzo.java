@@ -1,56 +1,52 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2LongMap;
-import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.BiPredicate;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
-public class bzo extends bzx<bpq> {
-   private static final int a = 40;
-   private static final int c = 5;
-   private static final int d = 20;
-   private final Long2LongMap e = new Long2LongOpenHashMap();
-   private int f;
-   private long g;
+public class bzo<T extends bpp> extends bzy<T> {
+   private final BiPredicate<T, bpp> a;
+   private final Predicate<T> c;
+   private final bys<Boolean> d;
+   private final int e;
 
-   public bzo() {
-      super(20);
+   public bzo(int $$0, BiPredicate<T, bpp> $$1, Predicate<T> $$2, bys<Boolean> $$3, int $$4) {
+      super($$0);
+      this.a = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
    @Override
-   public Set<byr<?>> a() {
-      return ImmutableSet.of(byr.w);
+   protected void a(apf $$0, T $$1) {
+      if (!this.c.test($$1)) {
+         this.c($$1);
+      } else {
+         this.a($$1);
+      }
    }
 
-   protected void a(apf $$0, bpq $$1) {
-      if ($$1.o_()) {
-         this.f = 0;
-         this.g = $$0.X() + (long)$$0.E_().a(20);
-         car $$2 = $$0.y();
-         Predicate<ib> $$3 = $$0x -> {
-            long $$1x = $$0x.a();
-            if (this.e.containsKey($$1x)) {
-               return false;
-            } else if (++this.f >= 5) {
-               return false;
-            } else {
-               this.e.put($$1x, this.g + 40L);
-               return true;
-            }
-         };
-         Set<Pair<il<cau>, ib>> $$4 = $$2.b($$0x -> $$0x.a(cav.n), $$3, $$1.dm(), 48, car.b.c).collect(Collectors.toSet());
-         ejc $$5 = bqz.a($$1, $$4);
-         if ($$5 != null && $$5.j()) {
-            ib $$6 = $$5.l();
-            Optional<il<cau>> $$7 = $$2.c($$6);
-            if ($$7.isPresent()) {
-               $$1.dP().a(byr.w, $$6);
-            }
-         } else if (this.f < 5) {
-            this.e.long2LongEntrySet().removeIf($$0x -> $$0x.getLongValue() < this.g);
+   @Override
+   public Set<bys<?>> a() {
+      return Set.of(bys.g);
+   }
+
+   public void a(T $$0) {
+      Optional<List<bpp>> $$1 = $$0.dP().c(bys.g);
+      if (!$$1.isEmpty()) {
+         boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
+         if ($$2) {
+            this.b($$0);
          }
       }
+   }
+
+   public void b(T $$0) {
+      $$0.dP().a(this.d, true, (long)this.e);
+   }
+
+   public void c(T $$0) {
+      $$0.dP().b(this.d);
    }
 }

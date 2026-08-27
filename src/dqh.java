@@ -1,206 +1,98 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.OptionalDynamic;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.io.BufferedOutputStream;
 import java.io.IOException;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import java.util.function.BooleanSupplier;
-import java.util.function.Function;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.zip.DeflaterOutputStream;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
+import java.util.zip.InflaterInputStream;
 import javax.annotation.Nullable;
+import net.jpountz.lz4.LZ4BlockInputStream;
+import net.jpountz.lz4.LZ4BlockOutputStream;
 import org.slf4j.Logger;
 
-public class dqh<R> implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "Sections";
-   private final dqi d;
-   private final Long2ObjectMap<Optional<R>> e = new Long2ObjectOpenHashMap();
-   private final LongLinkedOpenHashSet f = new LongLinkedOpenHashSet();
-   private final Function<Runnable, Codec<R>> g;
-   private final Function<Runnable, R> h;
-   private final iz i;
-   protected final cxb c;
+public class dqh {
+   private static final Logger g = LogUtils.getLogger();
+   private static final Int2ObjectMap<dqh> h = new Int2ObjectOpenHashMap();
+   private static final Object2ObjectMap<String, dqh> i = new Object2ObjectOpenHashMap();
+   public static final dqh a = a(new dqh(1, null, $$0 -> new awf(new GZIPInputStream($$0)), $$0 -> new BufferedOutputStream(new GZIPOutputStream($$0))));
+   public static final dqh b = a(
+      new dqh(2, "deflate", $$0 -> new awf(new InflaterInputStream($$0)), $$0 -> new BufferedOutputStream(new DeflaterOutputStream($$0)))
+   );
+   public static final dqh c = a(new dqh(3, "none", awf::new, BufferedOutputStream::new));
+   public static final dqh d = a(
+      new dqh(4, "lz4", $$0 -> new awf(new LZ4BlockInputStream($$0)), $$0 -> new BufferedOutputStream(new LZ4BlockOutputStream($$0)))
+   );
+   public static final dqh e = a(new dqh(127, null, $$0 -> {
+      throw new UnsupportedOperationException();
+   }, $$0 -> {
+      throw new UnsupportedOperationException();
+   }));
+   public static final dqh f = b;
+   private static volatile dqh j = f;
+   private final int k;
+   @Nullable
+   private final String l;
+   private final dqh.a<InputStream> m;
+   private final dqh.a<OutputStream> n;
 
-   public dqh(dqi $$0, Function<Runnable, Codec<R>> $$1, Function<Runnable, R> $$2, iz $$3, cxb $$4) {
-      this.d = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.c = $$4;
+   private dqh(int $$0, @Nullable String $$1, dqh.a<InputStream> $$2, dqh.a<OutputStream> $$3) {
+      this.k = $$0;
+      this.l = $$1;
+      this.m = $$2;
+      this.n = $$3;
    }
 
-   protected void a(BooleanSupplier $$0) {
-      while (this.a() && $$0.getAsBoolean()) {
-         cwg $$1 = je.a(this.f.firstLong()).r();
-         this.d($$1);
+   private static dqh a(dqh $$0) {
+      h.put($$0.k, $$0);
+      if ($$0.l != null) {
+         i.put($$0.l, $$0);
       }
-   }
 
-   public boolean a() {
-      return !this.f.isEmpty();
+      return $$0;
    }
 
    @Nullable
-   protected Optional<R> c(long $$0) {
-      return (Optional<R>)this.e.get($$0);
+   public static dqh a(int $$0) {
+      return (dqh)h.get($$0);
    }
 
-   protected Optional<R> d(long $$0) {
-      if (this.e($$0)) {
-         return Optional.empty();
+   public static void a(String $$0) {
+      dqh $$1 = (dqh)i.get($$0);
+      if ($$1 != null) {
+         j = $$1;
       } else {
-         Optional<R> $$1 = this.c($$0);
-         if ($$1 != null) {
-            return $$1;
-         } else {
-            this.b(je.a($$0).r());
-            $$1 = this.c($$0);
-            if ($$1 == null) {
-               throw (IllegalStateException)ac.b(new IllegalStateException());
-            } else {
-               return $$1;
-            }
-         }
+         g.error("Invalid `region-file-compression` value `{}` in server.properties. Please use one of: {}", $$0, String.join(", ", i.keySet()));
       }
    }
 
-   protected boolean e(long $$0) {
-      int $$1 = je.c(je.c($$0));
-      return this.c.d($$1);
+   public static dqh a() {
+      return j;
    }
 
-   protected R f(long $$0) {
-      if (this.e($$0)) {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("sectionPos out of bounds"));
-      } else {
-         Optional<R> $$1 = this.d($$0);
-         if ($$1.isPresent()) {
-            return $$1.get();
-         } else {
-            R $$2 = this.h.apply(() -> this.a($$0));
-            this.e.put($$0, Optional.of($$2));
-            return $$2;
-         }
-      }
+   public static boolean b(int $$0) {
+      return h.containsKey($$0);
    }
 
-   private void b(cwg $$0) {
-      Optional<ta> $$1 = this.c($$0).join();
-      ajf<tx> $$2 = ajf.a(to.a, this.i);
-      this.a($$0, $$2, $$1.orElse(null));
+   public int b() {
+      return this.k;
    }
 
-   private CompletableFuture<Optional<ta>> c(cwg $$0) {
-      return this.d.a($$0).exceptionally($$1 -> {
-         if ($$1 instanceof IOException $$2) {
-            a.error("Error reading chunk {} data from disk", $$0, $$2);
-            return Optional.empty();
-         } else {
-            throw new CompletionException($$1);
-         }
-      });
+   public OutputStream a(OutputStream $$0) throws IOException {
+      return this.n.wrap($$0);
    }
 
-   private void a(cwg $$0, ajf<tx> $$1, @Nullable ta $$2) {
-      if ($$2 == null) {
-         for (int $$3 = this.c.am(); $$3 < this.c.an(); $$3++) {
-            this.e.put(a($$0, $$3), Optional.empty());
-         }
-      } else {
-         Dynamic<tx> $$4 = new Dynamic($$1, $$2);
-         int $$5 = a($$4);
-         int $$6 = aa.b().d().c();
-         boolean $$7 = $$5 != $$6;
-         Dynamic<tx> $$8 = this.d.a($$4, $$5);
-         OptionalDynamic<tx> $$9 = $$8.get("Sections");
-
-         for (int $$10 = this.c.am(); $$10 < this.c.an(); $$10++) {
-            long $$11 = a($$0, $$10);
-            Optional<R> $$12 = $$9.get(Integer.toString($$10)).result().flatMap($$1x -> this.g.apply(() -> this.a($$11)).parse($$1x).resultOrPartial(a::error));
-            this.e.put($$11, $$12);
-            $$12.ifPresent($$2x -> {
-               this.b($$11);
-               if ($$7) {
-                  this.a($$11);
-               }
-            });
-         }
-      }
+   public InputStream a(InputStream $$0) throws IOException {
+      return this.m.wrap($$0);
    }
 
-   private void d(cwg $$0) {
-      ajf<tx> $$1 = ajf.a(to.a, this.i);
-      Dynamic<tx> $$2 = this.a($$0, $$1);
-      tx $$3 = (tx)$$2.getValue();
-      if ($$3 instanceof ta) {
-         this.d.a($$0, (ta)$$3);
-      } else {
-         a.error("Expected compound tag, got {}", $$3);
-      }
-   }
-
-   private <T> Dynamic<T> a(cwg $$0, DynamicOps<T> $$1) {
-      Map<T, T> $$2 = Maps.newHashMap();
-
-      for (int $$3 = this.c.am(); $$3 < this.c.an(); $$3++) {
-         long $$4 = a($$0, $$3);
-         this.f.remove($$4);
-         Optional<R> $$5 = (Optional<R>)this.e.get($$4);
-         if ($$5 != null && !$$5.isEmpty()) {
-            DataResult<T> $$6 = this.g.apply(() -> this.a($$4)).encodeStart($$1, $$5.get());
-            String $$7 = Integer.toString($$3);
-            $$6.resultOrPartial(a::error).ifPresent($$3x -> $$2.put((T)$$1.createString($$7), (T)$$3x));
-         }
-      }
-
-      return new Dynamic(
-         $$1, $$1.createMap(ImmutableMap.of($$1.createString("Sections"), $$1.createMap($$2), $$1.createString("DataVersion"), $$1.createInt(aa.b().d().c())))
-      );
-   }
-
-   private static long a(cwg $$0, int $$1) {
-      return je.b($$0.e, $$1, $$0.f);
-   }
-
-   protected void b(long $$0) {
-   }
-
-   protected void a(long $$0) {
-      Optional<R> $$1 = (Optional<R>)this.e.get($$0);
-      if ($$1 != null && !$$1.isEmpty()) {
-         this.f.add($$0);
-      } else {
-         a.warn("No data for position: {}", je.a($$0));
-      }
-   }
-
-   private static int a(Dynamic<?> $$0) {
-      return $$0.get("DataVersion").asInt(1945);
-   }
-
-   public void a(cwg $$0) {
-      if (this.a()) {
-         for (int $$1 = this.c.am(); $$1 < this.c.an(); $$1++) {
-            long $$2 = a($$0, $$1);
-            if (this.f.contains($$2)) {
-               this.d($$0);
-               return;
-            }
-         }
-      }
-   }
-
-   @Override
-   public void close() throws IOException {
-      this.d.close();
+   @FunctionalInterface
+   interface a<O> {
+      O wrap(O var1) throws IOException;
    }
 }

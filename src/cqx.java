@@ -1,18 +1,23 @@
-public class cqx extends cof {
-   public cqx(daa $$0, cqf.a $$1) {
-      super($$0, $$1);
+public class cqx extends cqh {
+   public cqx(cqh.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bnc a(csu $$0) {
-      return bnc.d;
-   }
+   public bnd a(cqm $$0, ciu $$1, bpp $$2, bnc $$3) {
+      if ($$0.B() && !($$2 instanceof ciu)) {
+         if (!$$1.dM().B && $$2.bA()) {
+            $$2.b($$0.z());
+            if ($$2 instanceof bpr) {
+               ((bpr)$$2).fS();
+            }
 
-   @Override
-   public bnd<cqk> a(cwz $$0, cis $$1, bnb $$2) {
-      epn $$3 = a($$0, $$1, cwi.b.b);
-      epn $$4 = $$3.a($$3.a().c());
-      bnc $$5 = super.a(new csu($$1, $$2, $$4));
-      return new bnd<>($$5, $$1.b($$2));
+            $$0.h(1);
+         }
+
+         return bnd.a($$1.dM().B);
+      } else {
+         return bnd.d;
+      }
    }
 }

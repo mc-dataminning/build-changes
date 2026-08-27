@@ -1,39 +1,65 @@
-import com.google.common.collect.Maps;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-
 public class ckj {
-   public static final int a = 2000;
-   public static final int b = 7000;
-   public static final ckj c = a("empty").a(0, ckh.b).a();
-   public static final ckj d = a("simple").a(5000, ckh.c).a(11000, ckh.e).a();
-   public static final ckj e = a("villager_baby").a(10, ckh.b).a(3000, ckh.d).a(6000, ckh.b).a(10000, ckh.d).a(12000, ckh.e).a();
-   public static final ckj f = a("villager_default").a(10, ckh.b).a(2000, ckh.c).a(9000, ckh.f).a(11000, ckh.b).a(12000, ckh.e).a();
-   private final Map<ckh, ckl> g = Maps.newHashMap();
+   public static final ckj a = a("core");
+   public static final ckj b = a("idle");
+   public static final ckj c = a("work");
+   public static final ckj d = a("play");
+   public static final ckj e = a("rest");
+   public static final ckj f = a("meet");
+   public static final ckj g = a("panic");
+   public static final ckj h = a("raid");
+   public static final ckj i = a("pre_raid");
+   public static final ckj j = a("hide");
+   public static final ckj k = a("fight");
+   public static final ckj l = a("celebrate");
+   public static final ckj m = a("admire_item");
+   public static final ckj n = a("avoid");
+   public static final ckj o = a("ride");
+   public static final ckj p = a("play_dead");
+   public static final ckj q = a("long_jump");
+   public static final ckj r = a("ram");
+   public static final ckj s = a("tongue");
+   public static final ckj t = a("swim");
+   public static final ckj u = a("lay_spawn");
+   public static final ckj v = a("sniff");
+   public static final ckj w = a("investigate");
+   public static final ckj x = a("roar");
+   public static final ckj y = a("emerge");
+   public static final ckj z = a("dig");
+   private final String A;
+   private final int B;
 
-   protected static ckk a(String $$0) {
-      ckj $$1 = iy.a(ki.D, $$0, new ckj());
-      return new ckk($$1);
+   private ckj(String $$0) {
+      this.A = $$0;
+      this.B = $$0.hashCode();
    }
 
-   protected void a(ckh $$0) {
-      if (!this.g.containsKey($$0)) {
-         this.g.put($$0, new ckl());
+   public String a() {
+      return this.A;
+   }
+
+   private static ckj a(String $$0) {
+      return iy.a(ki.E, $$0, new ckj($$0));
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         ckj $$1 = (ckj)$$0;
+         return this.A.equals($$1.A);
+      } else {
+         return false;
       }
    }
 
-   protected ckl b(ckh $$0) {
-      return this.g.get($$0);
+   @Override
+   public int hashCode() {
+      return this.B;
    }
 
-   protected List<ckl> c(ckh $$0) {
-      return this.g.entrySet().stream().filter($$1 -> $$1.getKey() != $$0).map(Entry::getValue).collect(Collectors.toList());
-   }
-
-   public ckh a(int $$0) {
-      return this.g.entrySet().stream().max(Comparator.comparingDouble($$1 -> (double)$$1.getValue().a($$0))).map(Entry::getKey).orElse(ckh.b);
+   @Override
+   public String toString() {
+      return this.a();
    }
 }

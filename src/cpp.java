@@ -1,120 +1,26 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
-
-public class cpp extends cqf {
-   public static final byte[] a = new byte[]{1, 2, 3};
-   public static final String b = "Fireworks";
-   public static final String c = "Explosion";
-   public static final String d = "Explosions";
-   public static final String e = "Flight";
-   public static final String f = "Type";
-   public static final String g = "Trail";
-   public static final String h = "Flicker";
-   public static final String i = "Colors";
-   public static final String j = "FadeColors";
-   public static final double k = 0.15;
-
-   public cpp(cqf.a $$0) {
+public class cpp extends cqh {
+   public cpp(cqh.a $$0) {
       super($$0);
    }
 
    @Override
-   public bnc a(csu $$0) {
-      cwz $$1 = $$0.q();
-      if (!$$1.B) {
-         cqk $$2 = $$0.n();
-         epr $$3 = $$0.l();
-         ih $$4 = $$0.k();
-         cjf $$5 = new cjf($$1, $$0.o(), $$3.c + (double)$$4.j() * 0.15, $$3.d + (double)$$4.k() * 0.15, $$3.e + (double)$$4.l() * 0.15, $$2);
-         $$1.b($$5);
-         $$2.h(1);
-      }
-
-      return bnc.a($$1.B);
+   public boolean i(cqm $$0) {
+      return true;
    }
 
    @Override
-   public bnd<cqk> a(cwz $$0, cis $$1, bnb $$2) {
-      if ($$1.fB()) {
-         cqk $$3 = $$1.b($$2);
-         if (!$$0.B) {
-            cjf $$4 = new cjf($$0, $$3, $$1);
-            $$0.b($$4);
-            $$3.a(1, $$1);
-            $$1.b(aui.c.b(this));
-         }
-
-         return bnd.a($$1.b($$2), $$0.x_());
-      } else {
-         return bnd.c($$1.b($$2));
-      }
-   }
-
-   @Override
-   public void a(cqk $$0, @Nullable cwz $$1, List<vu> $$2, csb $$3) {
-      ta $$4 = $$0.c("Fireworks");
-      if ($$4 != null) {
-         if ($$4.b("Flight", 99)) {
-            $$2.add(vu.c("item.minecraft.firework_rocket.flight").b(vt.v).f(String.valueOf($$4.f("Flight"))).a(n.h));
-         }
-
-         tg $$5 = $$4.c("Explosions", 10);
-         if (!$$5.isEmpty()) {
-            for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
-               ta $$7 = $$5.a($$6);
-               List<vu> $$8 = Lists.newArrayList();
-               cpq.a($$7, $$8);
-               if (!$$8.isEmpty()) {
-                  for (int $$9 = 1; $$9 < $$8.size(); $$9++) {
-                     $$8.set($$9, vu.b("  ").b($$8.get($$9)).a(n.h));
-                  }
-
-                  $$2.addAll($$8);
-               }
-            }
-         }
-      }
-   }
-
-   public static void a(cqk $$0, byte $$1) {
-      $$0.b("Fireworks").a("Flight", $$1);
-   }
-
-   @Override
-   public cqk am_() {
-      cqk $$0 = new cqk(this);
-      a($$0, (byte)1);
-      return $$0;
-   }
-
-   public static enum a {
-      a(0, "small_ball"),
-      b(1, "large_ball"),
-      c(2, "star"),
-      d(3, "creeper"),
-      e(4, "burst");
-
-      private static final IntFunction<cpp.a> f = avn.a(cpp.a::a, values(), avn.a.a);
-      private final int g;
-      private final String h;
-
-      private a(int $$0, String $$1) {
-         this.g = $$0;
-         this.h = $$1;
+   public bne<cqm> a(cxb $$0, ciu $$1, bnc $$2) {
+      cqm $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), aty.iz, atz.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+      if (!$$0.B) {
+         cjx $$4 = new cjx($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dE(), $$1.dC(), -20.0F, 0.7F, 1.0F);
+         $$0.b($$4);
       }
 
-      public int a() {
-         return this.g;
-      }
-
-      public String b() {
-         return this.h;
-      }
-
-      public static cpp.a a(int $$0) {
-         return f.apply($$0);
-      }
+      $$1.b(aui.c.b(this));
+      $$3.a(1, $$1);
+      return bne.a($$3, $$0.x_());
    }
 }

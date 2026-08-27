@@ -1,18 +1,17 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-
-public final class epy extends eqk {
-   protected epy(eqa $$0) {
-      super($$0);
+public interface epy {
+   static epy a() {
+      return eqd.a;
    }
 
-   @Override
-   protected DoubleList a(ih.a $$0) {
-      return new epx(this.a.c($$0));
+   static epy a(box $$0) {
+      return new eqd($$0);
    }
 
-   @Override
-   protected int a(ih.a $$0, double $$1) {
-      int $$2 = this.a.c($$0);
-      return aww.a(aww.a($$1 * (double)$$2, -1.0, (double)$$2));
-   }
+   boolean b();
+
+   boolean a(eqm var1, ib var2, boolean var3);
+
+   boolean a(cqh var1);
+
+   boolean a(eip var1, eip var2);
 }

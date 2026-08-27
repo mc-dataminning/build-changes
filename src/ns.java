@@ -21,7 +21,7 @@ public class ns implements kp {
    @Override
    public CompletableFuture<?> a(kn $$0) {
       return this.f.thenCompose($$1 -> {
-         DynamicOps<JsonElement> $$2 = ajf.a(JsonOps.INSTANCE, $$1);
+         DynamicOps<JsonElement> $$2 = $$1.a(JsonOps.INSTANCE);
          return CompletableFuture.allOf(ajc.a.stream().flatMap($$3 -> this.a($$0, $$1, $$2, (ajc.c<?>)$$3).stream()).toArray(CompletableFuture[]::new));
       });
    }

@@ -1,115 +1,48 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import java.nio.file.Path;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
-public class fdy extends gik implements gil {
-   private static final int e = 256;
-   private final fdz f;
-   private final boolean g;
-   private final fdy.a h;
+public enum fdy implements axq {
+   a("uniform"),
+   b("jp");
 
-   public fdy(fdz $$0, boolean $$1) {
-      this.g = $$1;
-      this.h = new fdy.a(0, 0, 256, 256);
-      TextureUtil.prepareImage($$1 ? eta.b.a : eta.b.d, this.a(), 256, 256);
-      this.f = $$0;
+   public static final Codec<fdy> c = axq.a(fdy::values);
+   private final String d;
+
+   private fdy(String $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public void a(aso $$0) {
+   public String c() {
+      return this.d;
    }
 
-   @Override
-   public void close() {
-      this.b();
-   }
+   public static class a {
+      private final Map<fdy, Boolean> c;
+      public static final Codec<fdy.a> a = Codec.unboundedMap(fdy.c, Codec.BOOL).xmap(fdy.a::new, $$0 -> $$0.c);
+      public static final fdy.a b = new fdy.a(Map.of());
 
-   @Nullable
-   public feb a(esd $$0) {
-      if ($$0.c() != this.g) {
-         return null;
-      } else {
-         fdy.a $$1 = this.h.a($$0);
-         if ($$1 != null) {
-            this.c();
-            $$0.a($$1.a, $$1.b);
-            float $$2 = 256.0F;
-            float $$3 = 256.0F;
-            float $$4 = 0.01F;
-            return new feb(
-               this.f,
-               ((float)$$1.a + 0.01F) / 256.0F,
-               ((float)$$1.a - 0.01F + (float)$$0.a()) / 256.0F,
-               ((float)$$1.b + 0.01F) / 256.0F,
-               ((float)$$1.b - 0.01F + (float)$$0.b()) / 256.0F,
-               $$0.e(),
-               $$0.f(),
-               $$0.g(),
-               $$0.h()
-            );
-         } else {
-            return null;
-         }
-      }
-   }
-
-   @Override
-   public void a(ajh $$0, Path $$1) {
-      String $$2 = $$0.c();
-      TextureUtil.writeAsPNG($$1, $$2, this.a(), 0, 256, 256, $$0x -> ($$0x & 0xFF000000) == 0 ? -16777216 : $$0x);
-   }
-
-   static class a {
-      final int a;
-      final int b;
-      private final int c;
-      private final int d;
-      @Nullable
-      private fdy.a e;
-      @Nullable
-      private fdy.a f;
-      private boolean g;
-
-      a(int $$0, int $$1, int $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
+      public a(Map<fdy, Boolean> $$0) {
+         this.c = $$0;
       }
 
-      @Nullable
-      fdy.a a(esd $$0) {
-         if (this.e != null && this.f != null) {
-            fdy.a $$1 = this.e.a($$0);
-            if ($$1 == null) {
-               $$1 = this.f.a($$0);
-            }
-
-            return $$1;
-         } else if (this.g) {
-            return null;
-         } else {
-            int $$2 = $$0.a();
-            int $$3 = $$0.b();
-            if ($$2 > this.c || $$3 > this.d) {
-               return null;
-            } else if ($$2 == this.c && $$3 == this.d) {
-               this.g = true;
-               return this;
-            } else {
-               int $$4 = this.c - $$2;
-               int $$5 = this.d - $$3;
-               if ($$4 > $$5) {
-                  this.e = new fdy.a(this.a, this.b, $$2, this.d);
-                  this.f = new fdy.a(this.a + $$2 + 1, this.b, this.c - $$2 - 1, this.d);
-               } else {
-                  this.e = new fdy.a(this.a, this.b, this.c, $$3);
-                  this.f = new fdy.a(this.a, this.b + $$3 + 1, this.c, this.d - $$3 - 1);
-               }
-
-               return this.e.a($$0);
+      public boolean a(Set<fdy> $$0) {
+         for (Entry<fdy, Boolean> $$1 : this.c.entrySet()) {
+            if ($$0.contains($$1.getKey()) != $$1.getValue()) {
+               return false;
             }
          }
+
+         return true;
+      }
+
+      public fdy.a a(fdy.a $$0) {
+         Map<fdy, Boolean> $$1 = new HashMap<>($$0.c);
+         $$1.putAll(this.c);
+         return new fdy.a(Map.copyOf($$1));
       }
    }
 }

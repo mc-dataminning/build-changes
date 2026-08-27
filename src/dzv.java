@@ -1,17 +1,18 @@
 import com.mojang.serialization.Codec;
 
-public abstract class dzv {
-   public static final Codec<dzv> a = ki.V.q().dispatch(dzv::a, dzw::a);
+public class dzv<P extends dzu> {
+   public static final dzv<dzt> a = a("mangrove_root_placer", dzt.c);
+   private final Codec<P> b;
 
-   public static eae a(dmz $$0) {
-      return new eae($$0);
+   private static <P extends dzu> dzv<P> a(String $$0, Codec<P> $$1) {
+      return iy.a(ki.Y, $$0, new dzv<>($$1));
    }
 
-   public static eae a(daa $$0) {
-      return new eae($$0.o());
+   private dzv(Codec<P> $$0) {
+      this.b = $$0;
    }
 
-   protected abstract dzw<?> a();
-
-   public abstract dmz a(axd var1, ib var2);
+   public Codec<P> a() {
+      return this.b;
+   }
 }

@@ -1,33 +1,26 @@
-import com.mojang.serialization.Codec;
+public enum eyu {
+   a(true, false),
+   b(false, false),
+   c(false, true);
 
-public enum eyu implements awy, axq {
-   a(0, "false", "options.off"),
-   b(1, "fast", "options.clouds.fast"),
-   c(2, "true", "options.clouds.fancy");
+   private static final eyu[] d = values();
+   private final boolean e;
+   private final boolean f;
 
-   public static final Codec<eyu> d = axq.a(eyu::values);
-   private final int e;
-   private final String f;
-   private final String g;
-
-   private eyu(int $$0, String $$1, String $$2) {
+   private eyu(boolean $$0, boolean $$1) {
       this.e = $$0;
       this.f = $$1;
-      this.g = $$2;
    }
 
-   @Override
-   public String c() {
-      return this.f;
-   }
-
-   @Override
-   public int a() {
+   public boolean a() {
       return this.e;
    }
 
-   @Override
-   public String b() {
-      return this.g;
+   public boolean b() {
+      return this.f;
+   }
+
+   public eyu c() {
+      return d[(this.ordinal() + 1) % d.length];
    }
 }

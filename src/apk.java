@@ -6,12 +6,12 @@ public class apk<T> {
    private final long k;
    public static final apk<axy> a = a("start", ($$0, $$1) -> 0);
    public static final apk<axy> b = a("dragon", ($$0, $$1) -> 0);
-   public static final apk<cwg> c = a("player", Comparator.comparingLong(cwg::a));
-   public static final apk<cwg> d = a("forced", Comparator.comparingLong(cwg::a));
-   public static final apk<cwg> e = a("light", Comparator.comparingLong(cwg::a));
+   public static final apk<cwi> c = a("player", Comparator.comparingLong(cwi::a));
+   public static final apk<cwi> d = a("forced", Comparator.comparingLong(cwi::a));
+   public static final apk<cwi> e = a("light", Comparator.comparingLong(cwi::a));
    public static final apk<ib> f = a("portal", jg::i, 300);
    public static final apk<Integer> g = a("post_teleport", Integer::compareTo, 5);
-   public static final apk<cwg> h = a("unknown", Comparator.comparingLong(cwg::a), 1);
+   public static final apk<cwi> h = a("unknown", Comparator.comparingLong(cwi::a), 1);
 
    public static <T> apk<T> a(String $$0, Comparator<T> $$1) {
       return new apk<>($$0, $$1, 0L);

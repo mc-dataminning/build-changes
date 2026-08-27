@@ -1,16 +1,33 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dyn implements dxu {
-   public static final Codec<dyn> a = awe.b(ecg.c).fieldOf("features").xmap(dyn::new, $$0 -> $$0.b).codec();
-   public final ip<ecg> b;
+public record dyn(int b, int c, int d, int e, int f, bmi g, float h) implements dxw {
+   public static final Codec<dyn> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(dyn::a),
+               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(dyn::b),
+               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(dyn::c),
+               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(dyn::d),
+               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(dyn::f),
+               bmi.c.fieldOf("extra_rare_growths").forGetter(dyn::g),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(dyn::h)
+            )
+            .apply($$0, dyn::new)
+   );
 
-   public dyn(ip<ecg> $$0) {
-      this.b = $$0;
+   public int a() {
+      return this.b;
    }
 
-   @Override
-   public Stream<dvd<?, ?>> e() {
-      return this.b.a().flatMap($$0 -> $$0.a().a());
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
    }
 }

@@ -1,52 +1,59 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class eyn extends eyg {
+public abstract class eyn extends eyi {
    private static final Logger b = LogUtils.getLogger();
-   private static final vu c = vu.c("mco.minigame.world.starting.screen.title");
-   private final long d;
-   private final evx e;
-   private final ewp f;
+   private final long c;
+   private final vu d;
+   private final Runnable e;
 
-   public eyn(long $$0, evx $$1, ewp $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public eyn(long $$0, vu $$1, Runnable $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
+
+   protected abstract void a(eur var1, long var2) throws ewe;
 
    @Override
    public void run() {
-      eup $$0 = eup.a();
+      eur $$0 = eur.a();
+      int $$1 = 0;
 
-      for (int $$1 = 0; $$1 < 25; $$1++) {
+      while ($$1 < 25) {
          try {
             if (this.d()) {
                return;
             }
 
-            if ($$0.c(this.d, this.e.a)) {
-               a(this.f);
-               break;
+            this.a($$0, this.c);
+            if (this.d()) {
+               return;
             }
-         } catch (ewd var4) {
+
+            this.e.run();
+            return;
+         } catch (ewf var4) {
             if (this.d()) {
                return;
             }
 
             a((long)var4.c);
+            $$1++;
          } catch (Exception var5) {
             if (this.d()) {
                return;
             }
 
-            b.error("Couldn't start mini game!");
+            b.error("Couldn't reset world");
             this.a(var5);
+            return;
          }
       }
    }
 
    @Override
    public vu a() {
-      return c;
+      return this.d;
    }
 }

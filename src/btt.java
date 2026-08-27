@@ -1,29 +1,34 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.function.BiPredicate;
+import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class btt {
-   public static brh<bpo> a(int $$0, BiPredicate<bpo, bpo> $$1) {
-      return but.a(
-         (Function<but.b<bpo>, ? extends App<but.c<bpo>, buw<bpo>>>)($$2 -> $$2.group($$2.b(byr.o), $$2.a(byr.ab), $$2.c(byr.ai), $$2.a(byr.aj))
-               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$7, $$8, $$9) -> {
-                     bpo $$10 = $$2.b($$3);
-                     if (!$$10.ey()) {
+   public static <E extends bpr> bri<E> a(Function<E, Optional<? extends bpp>> $$0) {
+      return a($$0x -> true, $$0);
+   }
+
+   public static <E extends bpr> bri<E> a(Predicate<E> $$0, Function<E, Optional<? extends bpp>> $$1) {
+      return buu.a(
+         (Function<buu.b<E>, ? extends App<buu.c<E>, bux<E>>>)($$2 -> $$2.group($$2.c(bys.o), $$2.a(bys.E)).apply($$2, ($$2x, $$3) -> ($$4, $$5, $$6) -> {
+                  if (!$$0.test((E)$$5)) {
+                     return false;
+                  } else {
+                     Optional<? extends bpp> $$7 = $$1.apply((E)$$5);
+                     if ($$7.isEmpty()) {
                         return false;
                      } else {
-                        if ($$1.test($$8, $$10)) {
-                           $$6.a(true, (long)$$0);
-                        }
-
-                        $$5.a($$10.dm(), (long)$$0);
-                        if ($$10.ai() != bpc.bx || $$7.Z().b(cwv.N)) {
+                        bpp $$8 = $$7.get();
+                        if (!$$5.c($$8)) {
+                           return false;
+                        } else {
+                           $$2x.a($$8);
                            $$3.b();
-                           $$4.b();
+                           return true;
                         }
-
-                        return true;
                      }
-                  }))
+                  }
+               }))
       );
    }
 }

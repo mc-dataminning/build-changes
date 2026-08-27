@@ -25,11 +25,11 @@ public class amn {
       );
    }
 
-   private static int a(du $$0, bow $$1, bow $$2) throws CommandSyntaxException {
-      bow $$3 = $$1.cZ();
+   private static int a(du $$0, box $$1, box $$2) throws CommandSyntaxException {
+      box $$3 = $$1.cZ();
       if ($$3 != null) {
          throw b.create($$1.O_(), $$3.O_());
-      } else if ($$2.ai() == bpc.bx) {
+      } else if ($$2.ai() == bpd.by) {
          throw d.create();
       } else if ($$1.cR().anyMatch($$1x -> $$1x == $$2)) {
          throw e.create();
@@ -43,8 +43,8 @@ public class amn {
       }
    }
 
-   private static int a(du $$0, bow $$1) throws CommandSyntaxException {
-      bow $$2 = $$1.cZ();
+   private static int a(du $$0, box $$1) throws CommandSyntaxException {
+      box $$2 = $$1.cZ();
       if ($$2 == null) {
          throw a.create($$1.O_());
       } else {

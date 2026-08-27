@@ -1,98 +1,165 @@
 import com.mojang.serialization.MapCodec;
 
-public class dga extends daa {
-   public static final MapCodec<dga> a = b(dga::new);
-   public static final dnq b = dgd.d;
+public class dga extends czr {
+   public static final MapCodec<dga> d = b(dga::new);
+   public static final dnz<dof> e = dnr.ag;
 
    @Override
    public MapCodec<dga> a() {
-      return a;
+      return d;
    }
 
-   public dga(dmy.d $$0) {
-      super($$0);
-      this.k(this.o().a(b, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected void a(dmz $$0, cwz $$1, ib $$2, cis $$3) {
-      d($$0, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3);
+   protected dga(dna.d $$0) {
+      super(false, $$0);
+      this.k(this.E.b().a(e, dof.a).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public void a(cwz $$0, ib $$1, dmz $$2, bow $$3) {
-      if (!$$3.bT()) {
-         d($$2, $$0, $$1);
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   protected bne a(cqk $$0, dmz $$1, cwz $$2, ib $$3, cis $$4, bnb $$5, epn $$6) {
-      if ($$2.B) {
-         a($$2, $$3);
-      } else {
-         d($$1, $$2, $$3);
-      }
-
-      return $$0.d() instanceof cof && new css($$4, $$5, $$0, $$6).b() ? bne.e : bne.a;
-   }
-
-   private static void d(dmz $$0, cwz $$1, ib $$2) {
-      a($$1, $$2);
-      if (!$$0.c(b)) {
-         $$1.a($$2, $$0.a(b, Boolean.valueOf(true)), 3);
+   protected void a(dnb $$0, cxb $$1, ib $$2, dac $$3) {
+      if ($$3.o().m() && new dgb($$1, $$2, $$0).b() == 3) {
+         this.a($$1, $$2, $$0, false);
       }
    }
 
    @Override
-   protected boolean e_(dmz $$0) {
-      return $$0.c(b);
+   public doe<dof> c() {
+      return e;
    }
 
    @Override
-   protected void b(dmz $$0, apf $$1, ib $$2, axd $$3) {
-      if ($$0.c(b)) {
-         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 3);
-      }
-   }
+   protected dnb a(dnb $$0, dgo $$1) {
+      dof $$2 = $$0.c(e);
 
-   @Override
-   protected void a(dmz $$0, apf $$1, ib $$2, cqk $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4 && cuv.a(cux.v, $$3) == 0) {
-         int $$5 = 1 + $$1.z.a(5);
-         this.a($$1, $$2, $$5);
-      }
-   }
-
-   @Override
-   public void a(dmz $$0, cwz $$1, ib $$2, axd $$3) {
-      if ($$0.c(b)) {
-         a($$1, $$2);
-      }
-   }
-
-   private static void a(cwz $$0, ib $$1) {
-      double $$2 = 0.5625;
-      axd $$3 = $$0.z;
-
-      for (ih $$4 : ih.values()) {
-         ib $$5 = $$1.a($$4);
-         if (!$$0.a_($$5).i($$0, $$5)) {
-            ih.a $$6 = $$4.o();
-            double $$7 = $$6 == ih.a.a ? 0.5 + 0.5625 * (double)$$4.j() : (double)$$3.i();
-            double $$8 = $$6 == ih.a.b ? 0.5 + 0.5625 * (double)$$4.k() : (double)$$3.i();
-            double $$9 = $$6 == ih.a.c ? 0.5 + 0.5625 * (double)$$4.l() : (double)$$3.i();
-            $$0.a(jw.b, (double)$$1.u() + $$7, (double)$$1.v() + $$8, (double)$$1.w() + $$9, 0.0, 0.0, 0.0);
+      return $$0.a(e, switch ($$1) {
+         case c -> {
+            switch ($$2) {
+               case a:
+                  yield dof.a;
+               case b:
+                  yield dof.b;
+               case c:
+                  yield dof.d;
+               case d:
+                  yield dof.c;
+               case e:
+                  yield dof.f;
+               case f:
+                  yield dof.e;
+               case g:
+                  yield dof.i;
+               case h:
+                  yield dof.j;
+               case i:
+                  yield dof.g;
+               case j:
+                  yield dof.h;
+               default:
+                  throw new IncompatibleClassChangeError();
+            }
          }
-      }
+         case d -> {
+            switch ($$2) {
+               case a:
+                  yield dof.b;
+               case b:
+                  yield dof.a;
+               case c:
+                  yield dof.e;
+               case d:
+                  yield dof.f;
+               case e:
+                  yield dof.d;
+               case f:
+                  yield dof.c;
+               case g:
+                  yield dof.j;
+               case h:
+                  yield dof.g;
+               case i:
+                  yield dof.h;
+               case j:
+                  yield dof.i;
+               default:
+                  throw new IncompatibleClassChangeError();
+            }
+         }
+         case b -> {
+            switch ($$2) {
+               case a:
+                  yield dof.b;
+               case b:
+                  yield dof.a;
+               case c:
+                  yield dof.f;
+               case d:
+                  yield dof.e;
+               case e:
+                  yield dof.c;
+               case f:
+                  yield dof.d;
+               case g:
+                  yield dof.h;
+               case h:
+                  yield dof.i;
+               case i:
+                  yield dof.j;
+               case j:
+                  yield dof.g;
+               default:
+                  throw new IncompatibleClassChangeError();
+            }
+         }
+         default -> $$2;
+      });
    }
 
    @Override
-   protected void a(dna.a<daa, dmz> $$0) {
-      $$0.a(b);
+   protected dnb a(dnb $$0, dey $$1) {
+      dof $$2 = $$0.c(e);
+      switch ($$1) {
+         case b:
+            switch ($$2) {
+               case e:
+                  return $$0.a(e, dof.f);
+               case f:
+                  return $$0.a(e, dof.e);
+               case g:
+                  return $$0.a(e, dof.j);
+               case h:
+                  return $$0.a(e, dof.i);
+               case i:
+                  return $$0.a(e, dof.h);
+               case j:
+                  return $$0.a(e, dof.g);
+               default:
+                  return super.a($$0, $$1);
+            }
+         case c:
+            switch ($$2) {
+               case c:
+                  return $$0.a(e, dof.d);
+               case d:
+                  return $$0.a(e, dof.c);
+               case e:
+               case f:
+               default:
+                  break;
+               case g:
+                  return $$0.a(e, dof.h);
+               case h:
+                  return $$0.a(e, dof.g);
+               case i:
+                  return $$0.a(e, dof.j);
+               case j:
+                  return $$0.a(e, dof.i);
+            }
+      }
+
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   protected void a(dnc.a<dac, dnb> $$0) {
+      $$0.a(e, c);
    }
 }

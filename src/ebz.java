@@ -1,28 +1,30 @@
 import com.mojang.serialization.Codec;
 
-public class ebz extends ecn {
-   public static final Codec<ebz> a = bmh.b(0, 256).fieldOf("count").xmap(ebz::new, $$0 -> $$0.c).codec();
-   private final bmh c;
+public enum ebz implements axq {
+   a(ih.b, 1, "ceiling"),
+   b(ih.a, -1, "floor");
 
-   private ebz(bmh $$0) {
-      this.c = $$0;
+   public static final Codec<ebz> c = axq.a(ebz::values);
+   private final ih d;
+   private final int e;
+   private final String f;
+
+   private ebz(ih $$0, int $$1, String $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public static ebz a(bmh $$0) {
-      return new ebz($$0);
+   public ih a() {
+      return this.d;
    }
 
-   public static ebz a(int $$0) {
-      return a(bme.a($$0));
+   public int b() {
+      return this.e;
    }
 
    @Override
-   protected int a(axd $$0, ib $$1) {
-      return this.c.a($$0);
-   }
-
-   @Override
-   public eck<?> b() {
-      return eck.f;
+   public String c() {
+      return this.f;
    }
 }

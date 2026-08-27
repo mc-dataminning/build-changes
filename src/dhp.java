@@ -1,53 +1,47 @@
 import com.mojang.serialization.MapCodec;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class dhp extends daa {
+public class dhp extends czo {
    public static final MapCodec<dhp> a = b(dhp::new);
-   private static final eqk b = daa.a(2.0, 13.0, 2.0, 14.0, 16.0, 14.0);
-   private static final int c = 14;
-   private static final int d = 10;
-   private static final int e = 10;
 
    @Override
    public MapCodec<dhp> a() {
       return a;
    }
 
-   public dhp(dmy.d $$0) {
+   protected dhp(dna.d $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean a(dmz $$0, cxc $$1, ib $$2) {
-      return daa.a($$1, $$2.c(), ih.a) && !$$1.z($$2);
+   public dki a(ib $$0, dnb $$1) {
+      return new dlv($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dki> dkj<T> a(cxb $$0, dnb $$1, dkk<T> $$2) {
+      return a($$2, dkk.j, $$0.B ? dlv::a : dlv::b);
    }
 
    @Override
-   protected dmz a(dmz $$0, ih $$1, dmz $$2, cxa $$3, ib $$4, ib $$5) {
-      return $$1 == ih.b && !this.a($$0, $$3, $$4) ? dac.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public void a(dmz $$0, cwz $$1, ib $$2, axd $$3) {
-      int $$4 = $$2.u();
-      int $$5 = $$2.v();
-      int $$6 = $$2.w();
-      double $$7 = (double)$$4 + $$3.j();
-      double $$8 = (double)$$5 + 0.7;
-      double $$9 = (double)$$6 + $$3.j();
-      $$1.a(kc.ax, $$7, $$8, $$9, 0.0, 0.0, 0.0);
-      ib.a $$10 = new ib.a();
-
-      for (int $$11 = 0; $$11 < 14; $$11++) {
-         $$10.d($$4 + aww.a($$3, -10, 10), $$5 - $$3.a(10), $$6 + aww.a($$3, -10, 10));
-         dmz $$12 = $$1.a_($$10);
-         if (!$$12.r($$1, $$10)) {
-            $$1.a(kc.aB, (double)$$10.u() + $$3.j(), (double)$$10.v() + $$3.j(), (double)$$10.w() + $$3.j(), 0.0, 0.0, 0.0);
-         }
+   protected void a(dnb $$0, apf $$1, ib $$2, cqm $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         int $$5 = 15 + $$1.z.a(15) + $$1.z.a(15);
+         this.a($$1, $$2, $$5);
       }
    }
 
    @Override
-   protected eqk a(dmz $$0, cwf $$1, ib $$2, epw $$3) {
-      return b;
+   protected dgh b_(dnb $$0) {
+      return dgh.c;
+   }
+
+   @Override
+   public void a(cqm $$0, @Nullable cwh $$1, List<vu> $$2, csd $$3, @Nullable iz $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      cxt.a($$0, $$2, "SpawnData");
    }
 }

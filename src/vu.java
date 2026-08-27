@@ -198,7 +198,7 @@ public interface vu extends Message, vz {
       return b($$0.toString());
    }
 
-   static vu a(cwg $$0) {
+   static vu a(cwi $$0) {
       return b($$0.toString());
    }
 

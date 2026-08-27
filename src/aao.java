@@ -6,7 +6,7 @@ public class aao implements yb<aam> {
    private final double e;
    private final int f;
 
-   public aao(bpe $$0) {
+   public aao(bpf $$0) {
       this.b = $$0.aj();
       this.c = $$0.dr();
       this.d = $$0.dt();

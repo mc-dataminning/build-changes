@@ -17,13 +17,13 @@ public class amc {
                ((RequiredArgumentBuilder)dv.a("name", er.a($$1))
                      .executes(
                         $$0x -> a(
-                              (du)$$0x.getSource(), er.a($$0x, "name"), ((du)$$0x.getSource()).d(), epr.b, 0.0F, 0, false, ((du)$$0x.getSource()).l().ah().t()
+                              (du)$$0x.getSource(), er.a($$0x, "name"), ((du)$$0x.getSource()).d(), ept.b, 0.0F, 0, false, ((du)$$0x.getSource()).l().ah().t()
                            )
                      ))
                   .then(
                      ((RequiredArgumentBuilder)dv.a("pos", fv.a())
                            .executes(
-                              $$0x -> a((du)$$0x.getSource(), er.a($$0x, "name"), fv.a($$0x, "pos"), epr.b, 0.0F, 0, false, ((du)$$0x.getSource()).l().ah().t())
+                              $$0x -> a((du)$$0x.getSource(), er.a($$0x, "name"), fv.a($$0x, "pos"), ept.b, 0.0F, 0, false, ((du)$$0x.getSource()).l().ah().t())
                            ))
                         .then(
                            dv.a("delta", fv.a(false))
@@ -111,7 +111,7 @@ public class amc {
       );
    }
 
-   private static int a(du $$0, ka $$1, epr $$2, epr $$3, float $$4, int $$5, boolean $$6, Collection<apg> $$7) throws CommandSyntaxException {
+   private static int a(du $$0, ka $$1, ept $$2, ept $$3, float $$4, int $$5, boolean $$6, Collection<apg> $$7) throws CommandSyntaxException {
       int $$8 = 0;
 
       for (apg $$9 : $$7) {

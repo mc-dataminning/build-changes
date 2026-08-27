@@ -1,19 +1,41 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ego extends egp {
-   public static final Codec<ego> a = Codec.unit(() -> ego.b);
-   public static final ego b = new ego();
+public class ego extends egr {
+   public static final Codec<ego> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
+               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
+               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, ego::new)
+   );
+   private final float b;
+   private final float d;
+   private final int e;
+   private final int f;
 
-   private ego() {
+   public ego(float $$0, float $$1, int $$2, int $$3) {
+      if ($$2 >= $$3) {
+         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
+      } else {
+         this.b = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+      }
    }
 
    @Override
    public boolean a(ib $$0, ib $$1, ib $$2, axd $$3) {
-      return true;
+      int $$4 = $$1.k($$2);
+      float $$5 = $$3.i();
+      return $$5 <= aww.b(this.b, this.d, aww.g((float)$$4, (float)this.e, (float)this.f));
    }
 
    @Override
-   protected egq<?> a() {
-      return egq.a;
+   protected egs<?> a() {
+      return egs.b;
    }
 }

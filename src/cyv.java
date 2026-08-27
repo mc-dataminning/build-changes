@@ -1,95 +1,76 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public abstract class cyv extends czm {
-   public static final dnt a = ddv.aE;
-   public static final dnq b = dnp.r;
-
-   protected cyv(dmy.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(a, ih.c).a(b, Boolean.valueOf(false)));
-   }
+public abstract class cyv extends dac {
+   private static final int d = 2;
+   private static final int e = 4;
+   private static final int f = 3;
+   private static final int g = 2;
+   protected static final int a = 4;
+   private static final eqm h = a(2.0, 4.0, 2.0, 14.0, 16.0, 14.0);
+   protected static final eqm b = eqj.a(
+      eqj.b(), eqj.a(a(0.0, 0.0, 4.0, 16.0, 3.0, 12.0), a(4.0, 0.0, 0.0, 12.0, 3.0, 16.0), a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0), h), epx.e
+   );
+   protected final ji.a c;
 
    @Override
    protected abstract MapCodec<? extends cyv> a();
 
-   @Override
-   protected bnc a(dmz $$0, cwz $$1, ib $$2, cis $$3, epn $$4) {
-      if ($$1.B) {
-         return bnc.a;
-      } else {
-         this.a($$1, $$2, $$3);
-         return bnc.b;
-      }
+   public cyv(dna.d $$0, ji.a $$1) {
+      super($$0);
+      this.c = $$1;
    }
 
-   protected abstract void a(cwz var1, ib var2, cis var3);
+   protected double b(dnb $$0) {
+      return 0.0;
+   }
 
-   @Override
-   public dmz a(css $$0) {
-      return this.o().a(a, $$0.g().g());
+   protected boolean a(dnb $$0, ib $$1, box $$2) {
+      return $$2.dt() < (double)$$1.v() + this.b($$0) && $$2.cH().e > (double)$$1.v() + 0.25;
    }
 
    @Override
-   public void a(cwz $$0, ib $$1, dmz $$2, bpo $$3, cqk $$4) {
-      if ($$4.B()) {
-         dkg $$5 = $$0.c_($$1);
-         if ($$5 instanceof djv) {
-            ((djv)$$5).a($$4.z());
-         }
-      }
+   protected bnf a(cqm $$0, dnb $$1, cxb $$2, ib $$3, ciu $$4, bnc $$5, epp $$6) {
+      ji $$7 = this.c.b().get($$0.d());
+      return $$7.interact($$1, $$2, $$3, $$4, $$5, $$0);
    }
 
    @Override
-   protected void a(dmz $$0, cwz $$1, ib $$2, dmz $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         dkg $$5 = $$1.c_($$2);
-         if ($$5 instanceof djv) {
-            if ($$1 instanceof apf) {
-               bmy.a($$1, $$2, (djv)$$5);
-               ((djv)$$5).a((apf)$$1, epr.b($$2));
-            }
-
-            super.a($$0, $$1, $$2, $$3, $$4);
-            $$1.c($$2, this);
-         } else {
-            super.a($$0, $$1, $$2, $$3, $$4);
-         }
-      }
+   protected eqm a(dnb $$0, cwh $$1, ib $$2, epy $$3) {
+      return b;
    }
 
    @Override
-   protected boolean d_(dmz $$0) {
+   protected eqm a(dnb $$0, cwh $$1, ib $$2) {
+      return h;
+   }
+
+   @Override
+   protected boolean d_(dnb $$0) {
       return true;
    }
 
    @Override
-   protected int a(dmz $$0, cwz $$1, ib $$2) {
-      return clo.a($$1.c_($$2));
+   protected boolean a(dnb $$0, cwh $$1, ib $$2, eje $$3) {
+      return false;
    }
+
+   public abstract boolean d(dnb var1);
 
    @Override
-   protected dgf b_(dmz $$0) {
-      return dgf.c;
+   protected void a(dnb $$0, apf $$1, ib $$2, axd $$3) {
+      ib $$4 = dft.a((cxb)$$1, $$2);
+      if ($$4 != null) {
+         eio $$5 = dft.a($$1, $$4);
+         if ($$5 != eiq.a && this.a($$5)) {
+            this.a($$0, $$1, $$2, $$5);
+         }
+      }
    }
 
-   @Override
-   protected dmz a(dmz $$0, dgm $$1) {
-      return $$0.a(a, $$1.a($$0.c(a)));
+   protected boolean a(eio $$0) {
+      return false;
    }
 
-   @Override
-   protected dmz a(dmz $$0, dew $$1) {
-      return $$0.a($$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected void a(dna.a<daa, dmz> $$0) {
-      $$0.a(a, b);
-   }
-
-   @Nullable
-   protected static <T extends dkg> dkh<T> a(cwz $$0, dki<T> $$1, dki<? extends djv> $$2) {
-      return $$0.B ? null : a($$1, $$2, djv::a);
+   protected void a(dnb $$0, cxb $$1, ib $$2, eio $$3) {
    }
 }

@@ -1,151 +1,165 @@
-import com.google.common.collect.Queues;
-import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.Deque;
+import com.google.common.collect.ImmutableList;
 import java.util.List;
 import javax.annotation.Nullable;
 
-public class fdq {
-   private static final int a = 5;
-   private static final int b = -1;
-   final ezg c;
-   private final List<fdq.a<?>> d = new ArrayList<>();
-   private final BitSet e = new BitSet(5);
-   private final Deque<fdp> f = Queues.newArrayDeque();
+public class fdq implements fdr {
+   private static final ajh a = new ajh("toast/system");
+   private static final int d = 200;
+   private static final int e = 12;
+   private static final int f = 10;
+   private final fdq.a g;
+   private vu h;
+   private List<awi> i;
+   private long j;
+   private boolean k;
+   private final int l;
+   private boolean m;
 
-   public fdq(ezg $$0) {
-      this.c = $$0;
+   public fdq(fdq.a $$0, vu $$1, @Nullable vu $$2) {
+      this($$0, $$1, a($$2), Math.max(160, 30 + Math.max(ezi.Q().h.a($$1), $$2 == null ? 0 : ezi.Q().h.a($$2))));
    }
 
-   public void a(fat $$0) {
-      if (!this.c.m.Z) {
-         int $$1 = $$0.a();
-         this.d.removeIf($$2 -> {
-            if ($$2 != null && $$2.a($$1, $$0)) {
-               this.e.clear($$2.d, $$2.d + $$2.e);
-               return true;
-            } else {
-               return false;
-            }
-         });
-         if (!this.f.isEmpty() && this.d() > 0) {
-            this.f.removeIf($$0x -> {
-               int $$1x = $$0x.f();
-               int $$2 = this.a($$1x);
-               if ($$2 != -1) {
-                  this.d.add(new fdq.a<>($$0x, $$2, $$1x));
-                  this.e.set($$2, $$2 + $$1x);
-                  return true;
-               } else {
-                  return false;
-               }
-            });
+   public static fdq a(ezi $$0, fdq.a $$1, vu $$2, vu $$3) {
+      fat $$4 = $$0.h;
+      List<awi> $$5 = $$4.c($$3, 200);
+      int $$6 = Math.max(200, $$5.stream().mapToInt($$4::a).max().orElse(200));
+      return new fdq($$1, $$2, $$5, $$6 + 30);
+   }
+
+   private fdq(fdq.a $$0, vu $$1, List<awi> $$2, int $$3) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      this.l = $$3;
+   }
+
+   private static ImmutableList<awi> a(@Nullable vu $$0) {
+      return $$0 == null ? ImmutableList.of() : ImmutableList.of($$0.g());
+   }
+
+   @Override
+   public int a() {
+      return this.l;
+   }
+
+   @Override
+   public int b() {
+      return 20 + Math.max(this.i.size(), 1) * 12;
+   }
+
+   public void c() {
+      this.m = true;
+   }
+
+   @Override
+   public fdr.a a(fav $$0, fds $$1, long $$2) {
+      if (this.k) {
+         this.j = $$2;
+         this.k = false;
+      }
+
+      int $$3 = this.a();
+      if ($$3 == 160 && this.i.size() <= 1) {
+         $$0.a(a, 0, 0, $$3, this.b());
+      } else {
+         int $$4 = this.b();
+         int $$5 = 28;
+         int $$6 = Math.min(4, $$4 - 28);
+         this.a($$0, $$3, 0, 0, 28);
+
+         for (int $$7 = 28; $$7 < $$4 - $$6; $$7 += 10) {
+            this.a($$0, $$3, 16, $$7, Math.min(16, $$4 - $$7 - $$6));
          }
+
+         this.a($$0, $$3, 32 - $$6, $$4 - $$6, $$6);
+      }
+
+      if (this.i.isEmpty()) {
+         $$0.a($$1.b().h, this.h, 18, 12, -256, false);
+      } else {
+         $$0.a($$1.b().h, this.h, 18, 7, -256, false);
+
+         for (int $$8 = 0; $$8 < this.i.size(); $$8++) {
+            $$0.a($$1.b().h, this.i.get($$8), 18, 18 + $$8 * 12, -1, false);
+         }
+      }
+
+      double $$9 = (double)this.g.h * $$1.c();
+      long $$10 = $$2 - this.j;
+      return !this.m && (double)$$10 < $$9 ? fdr.a.a : fdr.a.b;
+   }
+
+   private void a(fav $$0, int $$1, int $$2, int $$3, int $$4) {
+      int $$5 = $$2 == 0 ? 20 : 5;
+      int $$6 = Math.min(60, $$1 - $$5);
+      ajh $$7 = a;
+      $$0.a($$7, 160, 32, 0, $$2, 0, $$3, $$5, $$4);
+
+      for (int $$8 = $$5; $$8 < $$1 - $$6; $$8 += 64) {
+         $$0.a($$7, 160, 32, 32, $$2, $$8, $$3, Math.min(64, $$1 - $$8 - $$6), $$4);
+      }
+
+      $$0.a($$7, 160, 32, 160 - $$6, $$2, $$1 - $$6, $$3, $$6, $$4);
+   }
+
+   public void a(vu $$0, @Nullable vu $$1) {
+      this.h = $$0;
+      this.i = a($$1);
+      this.k = true;
+   }
+
+   public fdq.a d() {
+      return this.g;
+   }
+
+   public static void a(fds $$0, fdq.a $$1, vu $$2, @Nullable vu $$3) {
+      $$0.a(new fdq($$1, $$2, $$3));
+   }
+
+   public static void b(fds $$0, fdq.a $$1, vu $$2, @Nullable vu $$3) {
+      fdq $$4 = $$0.a(fdq.class, $$1);
+      if ($$4 == null) {
+         a($$0, $$1, $$2, $$3);
+      } else {
+         $$4.a($$2, $$3);
       }
    }
 
-   private int a(int $$0) {
-      if (this.d() >= $$0) {
-         int $$1 = 0;
+   public static void a(fds $$0, fdq.a $$1) {
+      fdq $$2 = $$0.a(fdq.class, $$1);
+      if ($$2 != null) {
+         $$2.c();
+      }
+   }
 
-         for (int $$2 = 0; $$2 < 5; $$2++) {
-            if (this.e.get($$2)) {
-               $$1 = 0;
-            } else if (++$$1 == $$0) {
-               return $$2 + 1 - $$1;
-            }
-         }
+   public static void a(ezi $$0, String $$1) {
+      a($$0.aA(), fdq.a.d, vu.c("selectWorld.access_failure"), vu.b($$1));
+   }
+
+   public static void b(ezi $$0, String $$1) {
+      a($$0.aA(), fdq.a.d, vu.c("selectWorld.delete_failure"), vu.b($$1));
+   }
+
+   public static void c(ezi $$0, String $$1) {
+      a($$0.aA(), fdq.a.e, vu.c("pack.copyFailure"), vu.b($$1));
+   }
+
+   public static class a {
+      public static final fdq.a a = new fdq.a();
+      public static final fdq.a b = new fdq.a();
+      public static final fdq.a c = new fdq.a();
+      public static final fdq.a d = new fdq.a();
+      public static final fdq.a e = new fdq.a();
+      public static final fdq.a f = new fdq.a();
+      public static final fdq.a g = new fdq.a(10000L);
+      final long h;
+
+      public a(long $$0) {
+         this.h = $$0;
       }
 
-      return -1;
-   }
-
-   private int d() {
-      return 5 - this.e.cardinality();
-   }
-
-   @Nullable
-   public <T extends fdp> T a(Class<? extends T> $$0, Object $$1) {
-      for (fdq.a<?> $$2 : this.d) {
-         if ($$2 != null && $$0.isAssignableFrom($$2.a().getClass()) && $$2.a().e().equals($$1)) {
-            return (T)$$2.a();
-         }
-      }
-
-      for (fdp $$3 : this.f) {
-         if ($$0.isAssignableFrom($$3.getClass()) && $$3.e().equals($$1)) {
-            return (T)$$3;
-         }
-      }
-
-      return null;
-   }
-
-   public void a() {
-      this.e.clear();
-      this.d.clear();
-      this.f.clear();
-   }
-
-   public void a(fdp $$0) {
-      this.f.add($$0);
-   }
-
-   public ezg b() {
-      return this.c;
-   }
-
-   public double c() {
-      return this.c.m.z().c();
-   }
-
-   class a<T extends fdp> {
-      private static final long b = 600L;
-      private final T c;
-      final int d;
-      final int e;
-      private long f = -1L;
-      private long g = -1L;
-      private fdp.a h = fdp.a.a;
-
-      a(T $$0, int $$1, int $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-      }
-
-      public T a() {
-         return this.c;
-      }
-
-      private float a(long $$0) {
-         float $$1 = aww.a((float)($$0 - this.f) / 600.0F, 0.0F, 1.0F);
-         $$1 *= $$1;
-         return this.h == fdp.a.b ? 1.0F - $$1 : $$1;
-      }
-
-      public boolean a(int $$0, fat $$1) {
-         long $$2 = ac.b();
-         if (this.f == -1L) {
-            this.f = $$2;
-            this.h.a(fdq.this.c.ak());
-         }
-
-         if (this.h == fdp.a.a && $$2 - this.f <= 600L) {
-            this.g = $$2;
-         }
-
-         $$1.c().a();
-         $$1.c().a((float)$$0 - (float)this.c.a() * this.a($$2), (float)(this.d * 32), 800.0F);
-         fdp.a $$3 = this.c.a($$1, fdq.this, $$2 - this.g);
-         $$1.c().b();
-         if ($$3 != this.h) {
-            this.f = $$2 - (long)((int)((1.0F - this.a($$2)) * 600.0F));
-            this.h = $$3;
-            this.h.a(fdq.this.c.ak());
-         }
-
-         return this.h == fdp.a.b && $$2 - this.f > 600L;
+      public a() {
+         this(5000L);
       }
    }
 }

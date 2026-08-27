@@ -1,19 +1,28 @@
 import com.mojang.serialization.Codec;
 
 public enum bnu implements axq {
-   a("never"),
-   b("when_caused_by_living_non_player"),
-   c("always");
+   a("hurt", aty.tM),
+   b("thorns", aty.yY),
+   c("drowning", aty.tN),
+   d("burning", aty.tP),
+   e("poking", aty.tQ),
+   f("freezing", aty.tO);
 
-   public static final Codec<bnu> d = axq.a(bnu::values);
-   private final String e;
+   public static final Codec<bnu> g = axq.a(bnu::values);
+   private final String h;
+   private final atx i;
 
-   private bnu(String $$0) {
-      this.e = $$0;
+   private bnu(String $$0, atx $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
    @Override
    public String c() {
-      return this.e;
+      return this.h;
+   }
+
+   public atx a() {
+      return this.i;
    }
 }

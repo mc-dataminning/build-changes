@@ -1,65 +1,176 @@
-public class ckh {
-   public static final ckh a = a("core");
-   public static final ckh b = a("idle");
-   public static final ckh c = a("work");
-   public static final ckh d = a("play");
-   public static final ckh e = a("rest");
-   public static final ckh f = a("meet");
-   public static final ckh g = a("panic");
-   public static final ckh h = a("raid");
-   public static final ckh i = a("pre_raid");
-   public static final ckh j = a("hide");
-   public static final ckh k = a("fight");
-   public static final ckh l = a("celebrate");
-   public static final ckh m = a("admire_item");
-   public static final ckh n = a("avoid");
-   public static final ckh o = a("ride");
-   public static final ckh p = a("play_dead");
-   public static final ckh q = a("long_jump");
-   public static final ckh r = a("ram");
-   public static final ckh s = a("tongue");
-   public static final ckh t = a("swim");
-   public static final ckh u = a("lay_spawn");
-   public static final ckh v = a("sniff");
-   public static final ckh w = a("investigate");
-   public static final ckh x = a("roar");
-   public static final ckh y = a("emerge");
-   public static final ckh z = a("dig");
-   private final String A;
-   private final int B;
+import com.google.common.collect.Maps;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-   private ckh(String $$0) {
-      this.A = $$0;
-      this.B = $$0.hashCode();
+public class ckh extends eju {
+   private static final String a = "raids";
+   private final Map<Integer, ckf> b = Maps.newHashMap();
+   private final apf c;
+   private int d;
+   private int e;
+
+   public static eju.a<ckh> a(apf $$0) {
+      return new eju.a<>(() -> new ckh($$0), ($$1, $$2) -> a($$0, $$1), ayc.l);
    }
 
-   public String a() {
-      return this.A;
+   public ckh(apf $$0) {
+      this.c = $$0;
+      this.d = 1;
+      this.c();
    }
 
-   private static ckh a(String $$0) {
-      return iy.a(ki.E, $$0, new ckh($$0));
+   public ckf a(int $$0) {
+      return this.b.get($$0);
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         ckh $$1 = (ckh)$$0;
-         return this.A.equals($$1.A);
+   public void a() {
+      this.e++;
+      Iterator<ckf> $$0 = this.b.values().iterator();
+
+      while ($$0.hasNext()) {
+         ckf $$1 = $$0.next();
+         if (this.c.Z().b(cwx.B)) {
+            $$1.n();
+         }
+
+         if ($$1.d()) {
+            $$0.remove();
+            this.c();
+         } else {
+            $$1.o();
+         }
+      }
+
+      if (this.e % 200 == 0) {
+         this.c();
+      }
+
+      aew.a(this.c, this.b.values());
+   }
+
+   public static boolean a(ckg $$0, ckf $$1) {
+      return $$0 != null && $$1 != null && $$1.i() != null ? $$0.bA() && $$0.gA() && $$0.en() <= 2400 && $$0.dM().D_() == $$1.i().D_() : false;
+   }
+
+   @Nullable
+   public ckf a(apg $$0) {
+      if ($$0.N_()) {
+         return null;
+      } else if (this.c.Z().b(cwx.B)) {
+         return null;
       } else {
-         return false;
+         dqo $$1 = $$0.dM().D_();
+         if (!$$1.c()) {
+            return null;
+         } else {
+            ib $$2 = $$0.dm();
+            List<cat> $$3 = this.c.y().c($$0x -> $$0x.a(auy.b), $$2, 64, cas.b.b).toList();
+            int $$4 = 0;
+            ept $$5 = ept.b;
+
+            for (cat $$6 : $$3) {
+               ib $$7 = $$6.f();
+               $$5 = $$5.b((double)$$7.u(), (double)$$7.v(), (double)$$7.w());
+               $$4++;
+            }
+
+            ib $$8;
+            if ($$4 > 0) {
+               $$5 = $$5.a(1.0 / (double)$$4);
+               $$8 = ib.a($$5);
+            } else {
+               $$8 = $$2;
+            }
+
+            ckf $$10 = this.a($$0.z(), $$8);
+            boolean $$11 = false;
+            if (!$$10.j()) {
+               if (!this.b.containsKey($$10.u())) {
+                  this.b.put($$10.u(), $$10);
+               }
+
+               $$11 = true;
+            } else if ($$10.m() < $$10.l()) {
+               $$11 = true;
+            } else {
+               $$0.e(bom.E);
+               $$0.d.b(new abq($$0, (byte)43));
+            }
+
+            if ($$11) {
+               $$10.a((ciu)$$0);
+               $$0.d.b(new abq($$0, (byte)43));
+               if (!$$10.c()) {
+                  $$0.a(aui.aA);
+                  am.J.a($$0);
+               }
+            }
+
+            this.c();
+            return $$10;
+         }
       }
    }
 
-   @Override
-   public int hashCode() {
-      return this.B;
+   private ckf a(apf $$0, ib $$1) {
+      ckf $$2 = $$0.d($$1);
+      return $$2 != null ? $$2 : new ckf(this.b(), $$0, $$1);
+   }
+
+   public static ckh a(apf $$0, ta $$1) {
+      ckh $$2 = new ckh($$0);
+      $$2.d = $$1.h("NextAvailableID");
+      $$2.e = $$1.h("Tick");
+      tg $$3 = $$1.c("Raids", 10);
+
+      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
+         ta $$5 = $$3.a($$4);
+         ckf $$6 = new ckf($$0, $$5);
+         $$2.b.put($$6.u(), $$6);
+      }
+
+      return $$2;
    }
 
    @Override
-   public String toString() {
-      return this.a();
+   public ta a(ta $$0, in.a $$1) {
+      $$0.a("NextAvailableID", this.d);
+      $$0.a("Tick", this.e);
+      tg $$2 = new tg();
+
+      for (ckf $$3 : this.b.values()) {
+         ta $$4 = new ta();
+         $$3.a($$4);
+         $$2.add($$4);
+      }
+
+      $$0.a("Raids", $$2);
+      return $$0;
+   }
+
+   public static String a(il<dqo> $$0) {
+      return $$0.a(dqm.c) ? "raids_end" : "raids";
+   }
+
+   private int b() {
+      return ++this.d;
+   }
+
+   @Nullable
+   public ckf a(ib $$0, int $$1) {
+      ckf $$2 = null;
+      double $$3 = (double)$$1;
+
+      for (ckf $$4 : this.b.values()) {
+         double $$5 = $$4.t().j($$0);
+         if ($$4.v() && $$5 < $$3) {
+            $$2 = $$4;
+            $$3 = $$5;
+         }
+      }
+
+      return $$2;
    }
 }

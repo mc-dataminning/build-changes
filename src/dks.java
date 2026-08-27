@@ -1,256 +1,146 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.UUID;
-import javax.annotation.Nullable;
-
-public class dks extends dkg {
-   private static final int b = 2;
-   private static final int c = 13;
-   private static final float d = -0.0375F;
-   private static final int e = 16;
-   private static final int f = 42;
-   private static final int g = 8;
-   private static final daa[] h = new daa[]{dac.hZ, dac.ia, dac.ii, dac.ib};
-   public int a;
-   private float i;
-   private boolean j;
-   private boolean k;
-   private final List<ib> l = Lists.newArrayList();
-   @Nullable
-   private bpo m;
-   @Nullable
-   private UUID n;
-   private long r;
-
-   public dks(ib $$0, dmz $$1) {
-      super(dki.z, $$0, $$1);
-   }
-
-   @Override
-   public void a(ta $$0, in.a $$1) {
-      super.a($$0, $$1);
-      if ($$0.b("Target")) {
-         this.n = $$0.a("Target");
-      } else {
-         this.n = null;
+public class dks extends dki {
+   private boolean a;
+   private boolean b;
+   private boolean c;
+   private final cwc d = new cwc() {
+      @Override
+      public void a(String $$0) {
+         super.a($$0);
+         dks.this.e();
       }
+
+      @Override
+      public apf e() {
+         return (apf)dks.this.o;
+      }
+
+      @Override
+      public void f() {
+         dnb $$0 = dks.this.o.a_(dks.this.p);
+         this.e().a(dks.this.p, $$0, $$0, 3);
+      }
+
+      @Override
+      public ept g() {
+         return ept.b(dks.this.p);
+      }
+
+      @Override
+      public du i() {
+         ih $$0 = dks.this.n().c(dbl.b);
+         return new du(this, ept.b(dks.this.p), new eps(0.0F, $$0.p()), this.e(), 2, this.n().getString(), this.n(), this.e().o(), null);
+      }
+
+      @Override
+      public boolean j() {
+         return !dks.this.o();
+      }
+   };
+
+   public dks(ib $$0, dnb $$1) {
+      super(dkk.w, $$0, $$1);
    }
 
    @Override
    protected void b(ta $$0, in.a $$1) {
       super.b($$0, $$1);
-      if (this.m != null) {
-         $$0.a("Target", this.m.cw());
-      }
-   }
-
-   public aat b() {
-      return aat.a(this);
+      this.d.a($$0);
+      $$0.a("powered", this.c());
+      $$0.a("conditionMet", this.j());
+      $$0.a("auto", this.d());
    }
 
    @Override
-   public ta a(in.a $$0) {
-      return this.d($$0);
+   public void a(ta $$0, in.a $$1) {
+      super.a($$0, $$1);
+      this.d.b($$0);
+      this.a = $$0.q("powered");
+      this.c = $$0.q("conditionMet");
+      this.b($$0.q("auto"));
    }
 
-   public static void a(cwz $$0, ib $$1, dmz $$2, dks $$3) {
-      $$3.a++;
-      long $$4 = $$0.X();
-      List<ib> $$5 = $$3.l;
-      if ($$4 % 40L == 0L) {
-         $$3.j = a($$0, $$1, $$5);
-         a($$3, $$5);
-      }
-
-      a($$0, $$1, $$3);
-      a($$0, $$1, $$5, $$3.m, $$3.a);
-      if ($$3.c()) {
-         $$3.i++;
-      }
+   @Override
+   public boolean q() {
+      return true;
    }
 
-   public static void b(cwz $$0, ib $$1, dmz $$2, dks $$3) {
-      $$3.a++;
-      long $$4 = $$0.X();
-      List<ib> $$5 = $$3.l;
-      if ($$4 % 40L == 0L) {
-         boolean $$6 = a($$0, $$1, $$5);
-         if ($$6 != $$3.j) {
-            atx $$7 = $$6 ? aty.fm : aty.fq;
-            $$0.a(null, $$1, $$7, atz.e, 1.0F, 1.0F);
-         }
-
-         $$3.j = $$6;
-         a($$3, $$5);
-         if ($$6) {
-            b($$0, $$1, $$5);
-            a($$0, $$1, $$2, $$5, $$3);
-         }
-      }
-
-      if ($$3.c()) {
-         if ($$4 % 80L == 0L) {
-            $$0.a(null, $$1, aty.fn, atz.e, 1.0F, 1.0F);
-         }
-
-         if ($$4 > $$3.r) {
-            $$3.r = $$4 + 60L + (long)$$0.E_().a(40);
-            $$0.a(null, $$1, aty.fo, atz.e, 1.0F, 1.0F);
-         }
-      }
+   public cwc b() {
+      return this.d;
    }
 
-   private static void a(dks $$0, List<ib> $$1) {
-      $$0.a($$1.size() >= 42);
-   }
-
-   private static boolean a(cwz $$0, ib $$1, List<ib> $$2) {
-      $$2.clear();
-
-      for (int $$3 = -1; $$3 <= 1; $$3++) {
-         for (int $$4 = -1; $$4 <= 1; $$4++) {
-            for (int $$5 = -1; $$5 <= 1; $$5++) {
-               ib $$6 = $$1.b($$3, $$4, $$5);
-               if (!$$0.z($$6)) {
-                  return false;
-               }
-            }
-         }
-      }
-
-      for (int $$7 = -2; $$7 <= 2; $$7++) {
-         for (int $$8 = -2; $$8 <= 2; $$8++) {
-            for (int $$9 = -2; $$9 <= 2; $$9++) {
-               int $$10 = Math.abs($$7);
-               int $$11 = Math.abs($$8);
-               int $$12 = Math.abs($$9);
-               if (($$10 > 1 || $$11 > 1 || $$12 > 1)
-                  && ($$7 == 0 && ($$11 == 2 || $$12 == 2) || $$8 == 0 && ($$10 == 2 || $$12 == 2) || $$9 == 0 && ($$10 == 2 || $$11 == 2))) {
-                  ib $$13 = $$1.b($$7, $$8, $$9);
-                  dmz $$14 = $$0.a_($$13);
-
-                  for (daa $$15 : h) {
-                     if ($$14.a($$15)) {
-                        $$2.add($$13);
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      return $$2.size() >= 16;
-   }
-
-   private static void b(cwz $$0, ib $$1, List<ib> $$2) {
-      int $$3 = $$2.size();
-      int $$4 = $$3 / 7 * 16;
-      int $$5 = $$1.u();
-      int $$6 = $$1.v();
-      int $$7 = $$1.w();
-      epm $$8 = new epm((double)$$5, (double)$$6, (double)$$7, (double)($$5 + 1), (double)($$6 + 1), (double)($$7 + 1))
-         .g((double)$$4)
-         .b(0.0, (double)$$0.J_(), 0.0);
-      List<cis> $$9 = $$0.a(cis.class, $$8);
-      if (!$$9.isEmpty()) {
-         for (cis $$10 : $$9) {
-            if ($$1.a($$10.dm(), (double)$$4) && $$10.bd()) {
-               $$10.b(new boj(bol.C, 260, 0, true, true));
-            }
-         }
-      }
-   }
-
-   private static void a(cwz $$0, ib $$1, dmz $$2, List<ib> $$3, dks $$4) {
-      bpo $$5 = $$4.m;
-      int $$6 = $$3.size();
-      if ($$6 < 42) {
-         $$4.m = null;
-      } else if ($$4.m == null && $$4.n != null) {
-         $$4.m = a($$0, $$1, $$4.n);
-         $$4.n = null;
-      } else if ($$4.m == null) {
-         List<bpo> $$7 = $$0.a(bpo.class, a($$1), $$0x -> $$0x instanceof cfq && $$0x.bd());
-         if (!$$7.isEmpty()) {
-            $$4.m = $$7.get($$0.z.a($$7.size()));
-         }
-      } else if (!$$4.m.bA() || !$$1.a($$4.m.dm(), 8.0)) {
-         $$4.m = null;
-      }
-
-      if ($$4.m != null) {
-         $$0.a(null, $$4.m.dr(), $$4.m.dt(), $$4.m.dx(), aty.fp, atz.e, 1.0F, 1.0F);
-         $$4.m.a($$0.ah().o(), 4.0F);
-      }
-
-      if ($$5 != $$4.m) {
-         $$0.a($$1, $$2, $$2, 2);
-      }
-   }
-
-   private static void a(cwz $$0, ib $$1, dks $$2) {
-      if ($$2.n == null) {
-         $$2.m = null;
-      } else if ($$2.m == null || !$$2.m.cw().equals($$2.n)) {
-         $$2.m = a($$0, $$1, $$2.n);
-         if ($$2.m == null) {
-            $$2.n = null;
-         }
-      }
-   }
-
-   private static epm a(ib $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      return new epm((double)$$1, (double)$$2, (double)$$3, (double)($$1 + 1), (double)($$2 + 1), (double)($$3 + 1)).g(8.0);
-   }
-
-   @Nullable
-   private static bpo a(cwz $$0, ib $$1, UUID $$2) {
-      List<bpo> $$3 = $$0.a(bpo.class, a($$1), $$1x -> $$1x.cw().equals($$2));
-      return $$3.size() == 1 ? $$3.get(0) : null;
-   }
-
-   private static void a(cwz $$0, ib $$1, List<ib> $$2, @Nullable bow $$3, int $$4) {
-      axd $$5 = $$0.z;
-      double $$6 = (double)(aww.a((float)($$4 + 35) * 0.1F) / 2.0F + 0.5F);
-      $$6 = ($$6 * $$6 + $$6) * 0.3F;
-      epr $$7 = new epr((double)$$1.u() + 0.5, (double)$$1.v() + 1.5 + $$6, (double)$$1.w() + 0.5);
-
-      for (ib $$8 : $$2) {
-         if ($$5.a(50) == 0) {
-            ib $$9 = $$8.b($$1);
-            float $$10 = -0.5F + $$5.i() + (float)$$9.u();
-            float $$11 = -2.0F + $$5.i() + (float)$$9.v();
-            float $$12 = -0.5F + $$5.i() + (float)$$9.w();
-            $$0.a(kc.ap, $$7.c, $$7.d, $$7.e, (double)$$10, (double)$$11, (double)$$12);
-         }
-      }
-
-      if ($$3 != null) {
-         epr $$13 = new epr($$3.dr(), $$3.dv(), $$3.dx());
-         float $$14 = (-0.5F + $$5.i()) * (3.0F + $$3.dg());
-         float $$15 = -1.0F + $$5.i() * $$3.dh();
-         float $$16 = (-0.5F + $$5.i()) * (3.0F + $$3.dg());
-         epr $$17 = new epr((double)$$14, (double)$$15, (double)$$16);
-         $$0.a(kc.ap, $$13.c, $$13.d, $$13.e, $$17.c, $$17.d, $$17.e);
-      }
+   public void a(boolean $$0) {
+      this.a = $$0;
    }
 
    public boolean c() {
-      return this.j;
+      return this.a;
    }
 
    public boolean d() {
-      return this.k;
+      return this.b;
    }
 
-   private void a(boolean $$0) {
-      this.k = $$0;
+   public void b(boolean $$0) {
+      boolean $$1 = this.b;
+      this.b = $$0;
+      if (!$$1 && $$0 && !this.a && this.o != null && this.l() != dks.a.a) {
+         this.t();
+      }
    }
 
-   public float a(float $$0) {
-      return (this.i + $$0) * -0.0375F;
+   public void f() {
+      dks.a $$0 = this.l();
+      if ($$0 == dks.a.b && (this.a || this.b) && this.o != null) {
+         this.t();
+      }
+   }
+
+   private void t() {
+      dac $$0 = this.n().b();
+      if ($$0 instanceof dbl) {
+         this.k();
+         this.o.a(this.p, $$0, 1);
+      }
+   }
+
+   public boolean j() {
+      return this.c;
+   }
+
+   public boolean k() {
+      this.c = true;
+      if (this.s()) {
+         ib $$0 = this.p.a(this.o.a_(this.p).c(dbl.b).g());
+         if (this.o.a_($$0).b() instanceof dbl) {
+            dki $$1 = this.o.c_($$0);
+            this.c = $$1 instanceof dks && ((dks)$$1).b().k() > 0;
+         } else {
+            this.c = false;
+         }
+      }
+
+      return this.c;
+   }
+
+   public dks.a l() {
+      dnb $$0 = this.n();
+      if ($$0.a(dae.fN)) {
+         return dks.a.c;
+      } else if ($$0.a(dae.kG)) {
+         return dks.a.b;
+      } else {
+         return $$0.a(dae.kH) ? dks.a.a : dks.a.c;
+      }
+   }
+
+   public boolean s() {
+      dnb $$0 = this.o.a_(this.aC_());
+      return $$0.b() instanceof dbl ? $$0.c(dbl.c) : false;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

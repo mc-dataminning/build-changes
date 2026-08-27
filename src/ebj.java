@@ -1,13 +1,52 @@
-import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.slf4j.Logger;
 
-public abstract class ebj {
-   private static final Codec<Either<dtg, ebj>> a = Codec.either(dtg.a, ki.N.q().dispatch(ebj::a, ebk::codec));
-   public static final Codec<ebj> c = a.xmap(
-      $$0 -> (ebj)$$0.map(ebi::a, $$0x -> $$0x), $$0 -> $$0.a() == ebk.a ? Either.left(((ebi)$$0).b()) : Either.right($$0)
+public class ebj extends ebl {
+   public static final Codec<ebj> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dti.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
+               dti.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, ebj::new)
    );
+   private static final Logger b = LogUtils.getLogger();
+   private final dti d;
+   private final dti e;
+   private final int f;
 
-   public abstract int a(axd var1, dtj var2);
+   private ebj(dti $$0, dti $$1, int $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+   }
 
-   public abstract ebk<?> a();
+   public static ebj a(dti $$0, dti $$1, int $$2) {
+      return new ebj($$0, $$1, $$2);
+   }
+
+   @Override
+   public int a(axd $$0, dtl $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$3 - $$2 - this.f + 1 <= 0) {
+         b.warn("Empty height range: {}", this);
+         return $$2;
+      } else {
+         int $$4 = $$0.a($$3 - $$2 - this.f + 1);
+         return $$0.a($$4 + this.f) + $$2;
+      }
+   }
+
+   @Override
+   public ebm<?> a() {
+      return ebm.c;
+   }
+
+   @Override
+   public String toString() {
+      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
+   }
 }

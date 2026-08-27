@@ -1,45 +1,15 @@
-import java.util.UUID;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public interface dre<T> {
+   void g(T var1);
 
-public class dre<T extends dqu> implements drd<T> {
-   private final dqw<T> a;
-   private final dqz<T> b;
+   void f(T var1);
 
-   public dre(dqw<T> $$0, dqz<T> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   void e(T var1);
 
-   @Nullable
-   @Override
-   public T a(int $$0) {
-      return this.a.a($$0);
-   }
+   void d(T var1);
 
-   @Nullable
-   @Override
-   public T a(UUID $$0) {
-      return this.a.a($$0);
-   }
+   void c(T var1);
 
-   @Override
-   public Iterable<T> a() {
-      return this.a.a();
-   }
+   void b(T var1);
 
-   @Override
-   public <U extends T> void a(drb<T, U> $$0, avj<U> $$1) {
-      this.a.a($$0, $$1);
-   }
-
-   @Override
-   public void a(epm $$0, Consumer<T> $$1) {
-      this.b.b($$0, avj.forConsumer($$1));
-   }
-
-   @Override
-   public <U extends T> void a(drb<T, U> $$0, epm $$1, avj<U> $$2) {
-      this.b.a($$0, $$1, $$2);
-   }
+   void a(T var1);
 }

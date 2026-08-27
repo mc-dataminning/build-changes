@@ -1,21 +1,20 @@
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class due implements dtt {
-   protected final jg f;
+class due extends dug {
+   public static final Codec<due> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, due::new));
 
-   protected static <P extends due> P1<Mu<P>, jg> a(Instance<P> $$0) {
-      return $$0.group(jg.v(16).optionalFieldOf("offset", jg.g).forGetter($$0x -> $$0x.f));
+   public due(jg $$0) {
+      super($$0);
    }
 
-   protected due(jg $$0) {
-      this.f = $$0;
+   @Override
+   protected boolean a(dnb $$0) {
+      return $$0.r();
    }
 
-   public final boolean a(cxu $$0, ib $$1) {
-      return this.a($$0.a_($$1.a(this.f)));
+   @Override
+   public dtw<?> a() {
+      return dtw.f;
    }
-
-   protected abstract boolean a(dmz var1);
 }

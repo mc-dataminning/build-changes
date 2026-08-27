@@ -3,7 +3,7 @@ public class acl implements yb<aam> {
    private final int b;
    private final ajh c;
 
-   public acl(int $$0, ctp<?> $$1) {
+   public acl(int $$0, ctr<?> $$1) {
       this.b = $$0;
       this.c = $$1.a();
    }

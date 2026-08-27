@@ -1,17 +1,24 @@
-public class fwl extends fwe {
-   protected fwl(fry $$0, double $$1, double $$2, double $$3) {
+public class fwl extends fwg {
+   private final fwb a;
+
+   fwl(fsa $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fwb $$7) {
       super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a = $$7;
       this.j *= 0.3F;
       this.k = Math.random() * 0.2F + 0.1F;
       this.l *= 0.3F;
       this.b(0.01F, 0.01F);
-      this.u = 0.06F;
       this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+      this.b($$7);
+      this.u = 0.0F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
    }
 
    @Override
-   public fvi b() {
-      return fvi.b;
+   public fvk b() {
+      return fvk.b;
    }
 
    @Override
@@ -19,6 +26,7 @@ public class fwl extends fwe {
       this.d = this.g;
       this.e = this.h;
       this.f = this.i;
+      int $$0 = 60 - this.t;
       if (this.t-- <= 0) {
          this.k();
       } else {
@@ -27,36 +35,21 @@ public class fwl extends fwe {
          this.j *= 0.98F;
          this.k *= 0.98F;
          this.l *= 0.98F;
-         if (this.m) {
-            if (Math.random() < 0.5) {
-               this.k();
-            }
-
-            this.j *= 0.7F;
-            this.l *= 0.7F;
-         }
-
-         ib $$0 = ib.a(this.g, this.h, this.i);
-         double $$1 = Math.max(
-            this.c.a_($$0).k(this.c, $$0).b(ih.a.b, this.g - (double)$$0.u(), this.i - (double)$$0.w()), (double)this.c.b_($$0).a((cwf)this.c, $$0)
-         );
-         if ($$1 > 0.0 && this.h < (double)$$0.v() + $$1) {
-            this.k();
-         }
+         float $$1 = (float)$$0 * 0.001F;
+         this.b($$1, $$1);
+         this.a(this.a.a($$0 % 4, 4));
       }
    }
 
-   public static class a implements fvh<kf> {
-      private final fvz a;
+   public static class a implements fvj<kf> {
+      private final fwb a;
 
-      public a(fvz $$0) {
+      public a(fwb $$0) {
          this.a = $$0;
       }
 
-      public fve a(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fwl $$8 = new fwl($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
+      public fvg a(kf $$0, fsa $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fwl($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

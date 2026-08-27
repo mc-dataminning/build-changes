@@ -1,27 +1,28 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.K1;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bsa {
-   public static brh<bpo> a(float $$0, boolean $$1, int $$2) {
-      return a($$0x -> true, $$0, $$1, $$2);
+   private static ib a(bpr $$0, ib $$1) {
+      axd $$2 = $$0.dM().z;
+      return $$1.b(a($$2), 0, a($$2));
    }
 
-   public static <E extends bpo> brh<E> a(Predicate<E> $$0, float $$1, boolean $$2, int $$3) {
-      return but.a((Function<but.b<E>, ? extends App<but.c<E>, buw<E>>>)($$4 -> {
-         but<E, ? extends buu<? extends K1, byu>> $$5 = $$2 ? $$4.a(byr.m) : $$4.c(byr.m);
-         return $$4.group($$4.a(byr.n), $$5, $$4.b(byr.L), $$4.a(byr.aP)).apply($$4, ($$4x, $$5x, $$6, $$7) -> ($$8, $$9, $$10) -> {
-               cfd $$11 = $$4.b($$6);
-               if ($$4.a($$7).isEmpty() && $$0.test((E)$$9) && $$11.a($$9, (double)$$3) && $$9.dM().C_().a($$11.dm())) {
-                  byu $$12 = new byu(new brr($$11, false), $$1, 0);
-                  $$4x.a(new brr($$11, true));
-                  $$5x.a($$12);
-                  return true;
-               } else {
-                  return false;
-               }
-            });
-      }));
+   private static int a(axd $$0) {
+      return $$0.a(3) - 1;
+   }
+
+   public static <E extends bpr> bss<E> a(bys<ib> $$0, int $$1, float $$2) {
+      return buu.a(
+         (Function<buu.b<E>, ? extends App<buu.c<E>, bux<E>>>)($$3 -> $$3.group($$3.b($$0), $$3.c(bys.o), $$3.c(bys.m), $$3.a(bys.n))
+               .apply($$3, ($$3x, $$4, $$5, $$6) -> ($$4x, $$5x, $$6x) -> {
+                     ib $$7 = $$3.b($$3x);
+                     boolean $$8 = $$7.a($$5x.dm(), (double)$$1);
+                     if (!$$8) {
+                        brj.a($$5x, a($$5x, $$7), $$2, $$1);
+                     }
+
+                     return true;
+                  }))
+      );
    }
 }

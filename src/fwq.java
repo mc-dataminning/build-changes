@@ -1,21 +1,8 @@
-public class fwq {
-   public float a;
-   public float b;
-   public boolean c;
-   public boolean d;
-   public boolean e;
-   public boolean f;
-   public boolean g;
-   public boolean h;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public void a(boolean $$0, float $$1) {
-   }
-
-   public epq a() {
-      return new epq(this.a, this.b);
-   }
-
-   public boolean b() {
-      return this.b > 1.0E-5F;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fwq {
 }

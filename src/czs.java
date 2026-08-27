@@ -1,61 +1,28 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class czs extends czm implements czr {
-   public static final MapCodec<czs> a = b(czs::new);
+public abstract class czs extends dac {
+   protected static final int a = 2;
+   protected static final eqm b = dac.a(6.0, 0.0, 6.0, 10.0, 10.0, 10.0);
 
-   @Override
-   public MapCodec<czs> a() {
-      return a;
-   }
-
-   public czs(dmy.d $$0) {
+   protected czs(dna.d $$0) {
       super($$0);
    }
 
    @Override
-   public cpb b() {
-      return cpb.a;
+   protected abstract MapCodec<? extends czs> a();
+
+   @Override
+   protected eqm a(dnb $$0, cwh $$1, ib $$2, epy $$3) {
+      return b;
    }
 
    @Override
-   public dkg a(ib $$0, dmz $$1) {
-      return new dkb($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dkg> dkh<T> a(cwz $$0, dmz $$1, dki<T> $$2) {
-      return a($$2, dki.o, dkb::a);
+   protected dnb a(dnb $$0, ih $$1, dnb $$2, cxc $$3, ib $$4, ib $$5) {
+      return $$1 == ih.a && !this.a($$0, $$3, $$4) ? dae.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected bnc a(dmz $$0, cwz $$1, ib $$2, cis $$3, epn $$4) {
-      if ($$1.B) {
-         return bnc.a;
-      } else {
-         dkg $$5 = $$1.c_($$2);
-         if ($$5 instanceof dkb) {
-            $$3.a((dkb)$$5);
-            $$3.a(aui.ab);
-         }
-
-         return bnc.b;
-      }
-   }
-
-   @Override
-   protected dgf b_(dmz $$0) {
-      return dgf.c;
-   }
-
-   @Override
-   public void a(cwz $$0, ib $$1, dmz $$2, bpo $$3, cqk $$4) {
-      if ($$4.B()) {
-         dkg $$5 = $$0.c_($$1);
-         if ($$5 instanceof dkb) {
-            ((dkb)$$5).a($$4.z());
-         }
-      }
+   protected boolean a(dnb $$0, cxe $$1, ib $$2) {
+      return a($$1, $$2.d(), ih.b);
    }
 }

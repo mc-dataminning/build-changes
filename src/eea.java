@@ -1,12 +1,25 @@
 import com.mojang.serialization.Codec;
 
-public interface eea<SP extends edz> {
-   eea<edx> a = a("random_spread", edx.a);
-   eea<edw> b = a("concentric_rings", edw.a);
+public enum eea implements axq {
+   a("linear"),
+   b("triangular");
 
-   Codec<SP> codec();
+   public static final Codec<eea> c = axq.a(eea::values);
+   private final String d;
 
-   private static <SP extends edz> eea<SP> a(String $$0, Codec<SP> $$1) {
-      return iy.a(ki.R, $$0, () -> $$1);
+   private eea(String $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public String c() {
+      return this.d;
+   }
+
+   public int a(axd $$0, int $$1) {
+      return switch (this) {
+         case a -> $$0.a($$1);
+         case b -> ($$0.a($$1) + $$0.a($$1)) / 2;
+      };
    }
 }

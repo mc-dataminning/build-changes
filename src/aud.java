@@ -11,11 +11,11 @@ public class aud extends aub {
    public static final String c = "recipeBook";
    private static final Logger d = LogUtils.getLogger();
 
-   public int a(Collection<ctp<?>> $$0, apg $$1) {
+   public int a(Collection<ctr<?>> $$0, apg $$1) {
       List<ajh> $$2 = Lists.newArrayList();
       int $$3 = 0;
 
-      for (ctp<?> $$4 : $$0) {
+      for (ctr<?> $$4 : $$0) {
          ajh $$5 = $$4.a();
          if (!this.a.contains($$5) && !$$4.b().aq_()) {
             this.a($$5);
@@ -33,11 +33,11 @@ public class aud extends aub {
       return $$3;
    }
 
-   public int b(Collection<ctp<?>> $$0, apg $$1) {
+   public int b(Collection<ctr<?>> $$0, apg $$1) {
       List<ajh> $$2 = Lists.newArrayList();
       int $$3 = 0;
 
-      for (ctp<?> $$4 : $$0) {
+      for (ctr<?> $$4 : $$0) {
          ajh $$5 = $$4.a();
          if (this.a.contains($$5)) {
             this.c($$5);
@@ -74,7 +74,7 @@ public class aud extends aub {
       return $$0;
    }
 
-   public void a(ta $$0, ctq $$1) {
+   public void a(ta $$0, cts $$1) {
       this.a(auc.a($$0));
       tg $$2 = $$0.c("recipes", 8);
       this.a($$2, this::a, $$1);
@@ -82,13 +82,13 @@ public class aud extends aub {
       this.a($$3, this::f, $$1);
    }
 
-   private void a(tg $$0, Consumer<ctp<?>> $$1, ctq $$2) {
+   private void a(tg $$0, Consumer<ctr<?>> $$1, cts $$2) {
       for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
          String $$4 = $$0.j($$3);
 
          try {
             ajh $$5 = new ajh($$4);
-            Optional<ctp<?>> $$6 = $$2.a($$5);
+            Optional<ctr<?>> $$6 = $$2.a($$5);
             if ($$6.isEmpty()) {
                d.error("Tried to load unrecognized recipe: {} removed now.", $$5);
             } else {

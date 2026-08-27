@@ -2,48 +2,48 @@ import com.google.common.annotations.VisibleForTesting;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-public class oj extends oq<drn> {
+public class oj extends oq<drp> {
    @VisibleForTesting
-   static final List<ajg<drn>> d = List.of(
-      drn.b.h(),
-      drn.c.h(),
-      drn.d.h(),
-      drn.f.h(),
-      drn.g.h(),
-      drn.h.h(),
-      drn.i.h(),
-      drn.a.h(),
-      drn.e.h(),
-      drn.j.h(),
-      drn.k.h(),
-      drn.l.h(),
-      drn.m.h(),
-      drn.n.h(),
-      drn.o.h(),
-      drn.p.h(),
-      drn.q.h(),
-      drn.r.h(),
-      drn.s.h(),
-      drn.t.h(),
-      drn.u.h(),
-      drn.v.h(),
-      drn.w.h(),
-      drn.y.h(),
-      drn.z.h(),
-      drn.A.h(),
-      drn.B.h(),
-      drn.C.h(),
-      drn.G.h(),
-      drn.H.h(),
-      drn.I.h(),
-      drn.J.h(),
-      drn.K.h(),
-      drn.M.h(),
-      drn.O.h(),
-      drn.P.h(),
-      drn.Q.h(),
-      drn.R.h(),
-      drn.S.h()
+   static final List<ajg<drp>> d = List.of(
+      drp.b.h(),
+      drp.c.h(),
+      drp.d.h(),
+      drp.f.h(),
+      drp.g.h(),
+      drp.h.h(),
+      drp.i.h(),
+      drp.a.h(),
+      drp.e.h(),
+      drp.j.h(),
+      drp.k.h(),
+      drp.l.h(),
+      drp.m.h(),
+      drp.n.h(),
+      drp.o.h(),
+      drp.p.h(),
+      drp.q.h(),
+      drp.r.h(),
+      drp.s.h(),
+      drp.t.h(),
+      drp.u.h(),
+      drp.v.h(),
+      drp.w.h(),
+      drp.y.h(),
+      drp.z.h(),
+      drp.A.h(),
+      drp.B.h(),
+      drp.C.h(),
+      drp.G.h(),
+      drp.H.h(),
+      drp.I.h(),
+      drp.J.h(),
+      drp.K.h(),
+      drp.M.h(),
+      drp.O.h(),
+      drp.P.h(),
+      drp.Q.h(),
+      drp.R.h(),
+      drp.S.h()
    );
 
    public oj(kr $$0, CompletableFuture<in.a> $$1) {
@@ -52,10 +52,10 @@ public class oj extends oq<drn> {
 
    @Override
    protected void a(in.a $$0) {
-      this.b(aut.a).a(d).a(drw.e_).a(drn.x.h());
-      this.b(aut.c).a(drn.L.h());
-      this.b(aut.b).a(d).a(drw.e_).a(drn.N.h()).b(aut.c);
-      this.b(aut.d).a(drn.A.h(), drn.K.h(), drn.P.h(), drn.Q.h(), drn.D.h(), drn.C.h());
-      this.b(aut.e).a(drn.H.h());
+      this.b(aut.a).a(d).a(dry.e_).a(drp.x.h());
+      this.b(aut.c).a(drp.L.h());
+      this.b(aut.b).a(d).a(dry.e_).a(drp.N.h()).b(aut.c);
+      this.b(aut.d).a(drp.A.h(), drp.K.h(), drp.P.h(), drp.Q.h(), drp.D.h(), drp.C.h());
+      this.b(aut.e).a(drp.H.h());
    }
 }

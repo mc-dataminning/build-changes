@@ -8,7 +8,7 @@ public class bv extends cx<bv.a> {
       return bv.a.a;
    }
 
-   public void a(apg $$0, cqk $$1) {
+   public void a(apg $$0, cqm $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -21,7 +21,7 @@ public class bv extends cx<bv.a> {
          return am.k.a(new bv.a(Optional.empty(), Optional.of($$0.b())));
       }
 
-      public boolean a(cqk $$0) {
+      public boolean a(cqm $$0) {
          return !this.c.isPresent() || this.c.get().a($$0);
       }
 

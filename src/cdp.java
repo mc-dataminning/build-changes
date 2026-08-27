@@ -1,57 +1,35 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.function.IntFunction;
 
-public class cdp extends cdf {
-   private static final boz bX = bpc.bu.n().a(boy.a().a(box.a, 0.0F, bpc.bu.l() - 0.03125F, 0.0F)).a(0.5F);
+public enum cdp implements axq {
+   a(0, "white"),
+   b(1, "creamy"),
+   c(2, "chestnut"),
+   d(3, "brown"),
+   e(4, "black"),
+   f(5, "gray"),
+   g(6, "dark_brown");
 
-   public cdp(bpc<? extends cdp> $$0, cwz $$1) {
-      super($$0, $$1);
+   public static final Codec<cdp> h = axq.a(cdp::values);
+   private static final IntFunction<cdp> i = avn.a(cdp::a, values(), avn.a.b);
+   private final int j;
+   private final String k;
+
+   private cdp(int $$0, String $$1) {
+      this.j = $$0;
+      this.k = $$1;
    }
 
-   public static bqu.a r() {
-      return gM().a(bqv.q, 15.0).a(bqv.r, 0.2F);
+   public int a() {
+      return this.j;
    }
 
-   public static boolean c(bpc<? extends cbd> $$0, cxa $$1, bps $$2, ib $$3, axd $$4) {
-      return !bps.a($$2) ? cbd.b($$0, $$1, $$2, $$3, $$4) : bps.b($$2) || a($$1, $$3);
-   }
-
-   @Override
-   protected void a(axd $$0) {
-      this.f(bqv.m).a(a($$0::j));
-   }
-
-   @Override
-   protected atx v() {
-      return aty.CQ;
-   }
-
-   @Override
-   protected atx n_() {
-      return aty.CR;
-   }
-
-   @Override
-   protected atx d(bnv $$0) {
-      return aty.CS;
-   }
-
-   @Nullable
-   @Override
-   public bor a(apf $$0, bor $$1) {
-      return bpc.bu.a((cwz)$$0);
+   public static cdp a(int $$0) {
+      return i.apply($$0);
    }
 
    @Override
-   public bnc b(cis $$0, bnb $$1) {
-      return !this.gC() ? bnc.d : super.b($$0, $$1);
-   }
-
-   @Override
-   protected void gD() {
-   }
-
-   @Override
-   public boz e(bpz $$0) {
-      return this.o_() ? bX : super.e($$0);
+   public String c() {
+      return this.k;
    }
 }

@@ -1,89 +1,134 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.util.Pair;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
+import java.util.Map.Entry;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class cym {
-   public static final Codec<cym> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(cym.a.c.fieldOf("preset").forGetter($$0x -> $$0x.c), ajf.c(kj.au)).apply($$0, cym::new)
+   private static final Logger d = LogUtils.getLogger();
+   private static final float e = 0.1F;
+   public static final blr<cym.c> a = blr.c();
+   public static final cym b = new cym.a().a();
+   public static final MapCodec<cym> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 0.9999999F).optionalFieldOf("creature_spawn_probability", 0.1F).forGetter($$0x -> $$0x.f),
+               Codec.simpleMap(bps.i, blr.c(cym.c.a).promotePartial(ac.a("Spawn data: ", d::error)), axq.a(bps.values()))
+                  .fieldOf("spawners")
+                  .forGetter($$0x -> $$0x.g),
+               Codec.simpleMap(ki.g.q(), cym.b.a, ki.g).fieldOf("spawn_costs").forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, cym::new)
    );
-   public static final Codec<il<cym>> b = ajd.a(kj.aM, a);
-   private final cym.a c;
-   private final cyh.c<il<cxy>> d;
+   private final float f;
+   private final Map<bps, blr<cym.c>> g;
+   private final Map<bpd<?>, cym.b> h;
 
-   public cym(cym.a $$0, im<cxy> $$1) {
-      this.c = $$0;
-      this.d = $$0.e.apply($$1::b);
+   cym(float $$0, Map<bps, blr<cym.c>> $$1, Map<bpd<?>, cym.b> $$2) {
+      this.f = $$0;
+      this.g = ImmutableMap.copyOf($$1);
+      this.h = ImmutableMap.copyOf($$2);
    }
 
-   public cyh.c<il<cxy>> a() {
-      return this.d;
+   public blr<cym.c> a(bps $$0) {
+      return this.g.getOrDefault($$0, a);
    }
 
-   public static Map<cym.a, cyh.c<ajg<cxy>>> b() {
-      return cym.a.f.values().stream().collect(Collectors.toMap($$0 -> (cym.a)$$0, $$0 -> $$0.c().apply($$0x -> $$0x)));
+   @Nullable
+   public cym.b a(bpd<?> $$0) {
+      return this.h.get($$0);
    }
 
-   public static record a(ajh d, cym.a.a e) {
-      public static final cym.a a = new cym.a(
-         new ajh("nether"),
-         new cym.a.a() {
-            @Override
-            public <T> cyh.c<T> apply(Function<ajg<cxy>, T> $$0) {
-               return new cyh.c<>(
-                  List.of(
-                     Pair.of(cyh.a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(cyf.ac)),
-                     Pair.of(cyh.a(0.0F, -0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(cyf.af)),
-                     Pair.of(cyh.a(0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(cyf.ae)),
-                     Pair.of(cyh.a(0.0F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.375F), $$0.apply(cyf.ad)),
-                     Pair.of(cyh.a(-0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.175F), $$0.apply(cyf.ag))
-                  )
-               );
-            }
-         }
-      );
-      public static final cym.a b = new cym.a(new ajh("overworld"), new cym.a.a() {
-         @Override
-         public <T> cyh.c<T> apply(Function<ajg<cxy>, T> $$0) {
-            return cym.a.a($$0);
-         }
-      });
-      static final Map<ajh, cym.a> f = Stream.of(a, b).collect(Collectors.toMap(cym.a::b, $$0 -> (cym.a)$$0));
-      public static final Codec<cym.a> c = ajh.a
-         .flatXmap(
-            $$0 -> Optional.ofNullable(f.get($$0)).<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown preset: " + $$0)),
-            $$0 -> DataResult.success($$0.d)
+   public float a() {
+      return this.f;
+   }
+
+   public static class a {
+      private final Map<bps, List<cym.c>> a = Stream.of(bps.values()).collect(ImmutableMap.toImmutableMap($$0 -> $$0, $$0 -> Lists.newArrayList()));
+      private final Map<bpd<?>, cym.b> b = Maps.newLinkedHashMap();
+      private float c = 0.1F;
+
+      public cym.a a(bps $$0, cym.c $$1) {
+         this.a.get($$0).add($$1);
+         return this;
+      }
+
+      public cym.a a(bpd<?> $$0, double $$1, double $$2) {
+         this.b.put($$0, new cym.b($$2, $$1));
+         return this;
+      }
+
+      public cym.a a(float $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public cym a() {
+         return new cym(
+            this.c,
+            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> blr.a((List)$$0.getValue()))),
+            ImmutableMap.copyOf(this.b)
          );
+      }
+   }
 
-      static <T> cyh.c<T> a(Function<ajg<cxy>, T> $$0) {
-         Builder<Pair<cyh.d, T>> $$1 = ImmutableList.builder();
-         new cyo().a($$2 -> $$1.add($$2.mapSecond($$0)));
-         return new cyh.c<>($$1.build());
+   public static record b(double b, double c) {
+      public static final Codec<cym.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.DOUBLE.fieldOf("energy_budget").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("charge").forGetter($$0x -> $$0x.c))
+               .apply($$0, cym.b::new)
+      );
+
+      public double a() {
+         return this.b;
       }
 
-      public Stream<ajg<cxy>> a() {
-         return this.e.apply($$0 -> $$0).a().stream().<ajg<cxy>>map(Pair::getSecond).distinct();
+      public double b() {
+         return this.c;
+      }
+   }
+
+   public static class c extends blp.a {
+      public static final Codec<cym.c> a = awe.b(
+         RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     ki.g.q().fieldOf("type").forGetter($$0x -> $$0x.b),
+                     blo.a.fieldOf("weight").forGetter(blp.a::a),
+                     awe.k.fieldOf("minCount").forGetter($$0x -> $$0x.c),
+                     awe.k.fieldOf("maxCount").forGetter($$0x -> $$0x.d)
+                  )
+                  .apply($$0, cym.c::new)
+         ),
+         (Function<cym.c, DataResult<cym.c>>)($$0 -> $$0.c > $$0.d
+               ? DataResult.error(() -> "minCount needs to be smaller or equal to maxCount")
+               : DataResult.success($$0))
+      );
+      public final bpd<?> b;
+      public final int c;
+      public final int d;
+
+      public c(bpd<?> $$0, int $$1, int $$2, int $$3) {
+         this($$0, blo.a($$1), $$2, $$3);
       }
 
-      public ajh b() {
-         return this.d;
+      public c(bpd<?> $$0, blo $$1, int $$2, int $$3) {
+         super($$1);
+         this.b = $$0.f() == bps.h ? bpd.az : $$0;
+         this.c = $$2;
+         this.d = $$3;
       }
 
-      public cym.a.a c() {
-         return this.e;
-      }
-
-      @FunctionalInterface
-      interface a {
-         <T> cyh.c<T> apply(Function<ajg<cxy>, T> var1);
+      @Override
+      public String toString() {
+         return bpd.a(this.b) + "*(" + this.c + "-" + this.d + "):" + this.a();
       }
    }
 }

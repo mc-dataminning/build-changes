@@ -1,8 +1,8 @@
-public record afq(bix b) implements yb<aez> {
+public record afq(biy b) implements yb<aez> {
    public static final xs<uu, afq> a = yb.a(afq::a, afq::new);
 
    private afq(uu $$0) {
-      this($$0.b(bix.class));
+      this($$0.b(biy.class));
    }
 
    private void a(uu $$0) {

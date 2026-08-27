@@ -1,22 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class dtz extends due {
-   private final ip<daa> e;
-   public static final Codec<dtz> a = RecordCodecBuilder.create($$0 -> a($$0).and(ja.a(kj.f).fieldOf("blocks").forGetter($$0x -> $$0x.e)).apply($$0, dtz::new));
+public class dtz implements dtv {
+   public static final Codec<dtz> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(jg.v(16).optionalFieldOf("offset", ib.c).forGetter($$0x -> $$0x.e)).apply($$0, dtz::new)
+   );
+   private final jg e;
 
-   public dtz(jg $$0, ip<daa> $$1) {
-      super($$0);
-      this.e = $$1;
+   public dtz(jg $$0) {
+      this.e = $$0;
+   }
+
+   public boolean a(cxw $$0, ib $$1) {
+      return !$$0.s($$1.a(this.e));
    }
 
    @Override
-   protected boolean a(dmz $$0) {
-      return $$0.a(this.e);
-   }
-
-   @Override
-   public dtu<?> a() {
-      return dtu.a;
+   public dtw<?> a() {
+      return dtw.h;
    }
 }

@@ -1,84 +1,35 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Map;
+import com.mojang.serialization.Codec;
 
-public class ctt extends ctf {
-   public ctt(ctd $$0) {
-      super($$0);
-   }
+public interface ctt<T extends ctp<?>> {
+   ctt<ctw> a = a("crafting_shaped", new ctw.a());
+   ctt<cty> b = a("crafting_shapeless", new cty.a());
+   ctt<csz> c = a("crafting_special_armordye", new cuc<>(csz::new));
+   ctt<ctc> d = a("crafting_special_bookcloning", new cuc<>(ctc::new));
+   ctt<ctn> e = a("crafting_special_mapcloning", new cuc<>(ctn::new));
+   ctt<cto> f = a("crafting_special_mapextending", new cuc<>(cto::new));
+   ctt<ctj> g = a("crafting_special_firework_rocket", new cuc<>(ctj::new));
+   ctt<ctl> h = a("crafting_special_firework_star", new cuc<>(ctl::new));
+   ctt<ctk> i = a("crafting_special_firework_star_fade", new cuc<>(ctk::new));
+   ctt<cul> j = a("crafting_special_tippedarrow", new cuc<>(cul::new));
+   ctt<cta> k = a("crafting_special_bannerduplicate", new cuc<>(cta::new));
+   ctt<ctz> l = a("crafting_special_shielddecoration", new cuc<>(ctz::new));
+   ctt<cua> m = a("crafting_special_shulkerboxcoloring", new cuc<>(cua::new));
+   ctt<cuk> n = a("crafting_special_suspiciousstew", new cuc<>(cuk::new));
+   ctt<ctv> o = a("crafting_special_repairitem", new cuc<>(ctv::new));
+   ctt<cue> p = a("smelting", new cub<>(cue::new, 200));
+   ctt<ctb> q = a("blasting", new cub<>(ctb::new, 100));
+   ctt<cui> r = a("smoking", new cub<>(cui::new, 100));
+   ctt<ctd> s = a("campfire_cooking", new cub<>(ctd::new, 100));
+   ctt<cuj> t = a("stonecutting", new cud.b<>(cuj::new));
+   ctt<cug> u = a("smithing_transform", new cug.a());
+   ctt<cuh> v = a("smithing_trim", new cuh.a());
+   ctt<cti> w = a("crafting_decorated_pot", new cuc<>(cti::new));
 
-   public boolean a(cme $$0, cwz $$1) {
-      List<cqk> $$2 = Lists.newArrayList();
+   Codec<T> a();
 
-      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
-         cqk $$4 = $$0.a($$3);
-         if (!$$4.b()) {
-            $$2.add($$4);
-            if ($$2.size() > 1) {
-               cqk $$5 = $$2.get(0);
-               if (!$$4.a($$5.d()) || $$5.M() != 1 || $$4.M() != 1 || !$$5.d().p()) {
-                  return false;
-               }
-            }
-         }
-      }
+   xs<vf, T> b();
 
-      return $$2.size() == 2;
-   }
-
-   public cqk a(cme $$0, iz $$1) {
-      List<cqk> $$2 = Lists.newArrayList();
-
-      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
-         cqk $$4 = $$0.a($$3);
-         if (!$$4.b()) {
-            $$2.add($$4);
-            if ($$2.size() > 1) {
-               cqk $$5 = $$2.get(0);
-               if (!$$4.a($$5.d()) || $$5.M() != 1 || $$4.M() != 1 || !$$5.d().p()) {
-                  return cqk.h;
-               }
-            }
-         }
-      }
-
-      if ($$2.size() == 2) {
-         cqk $$6 = $$2.get(0);
-         cqk $$7 = $$2.get(1);
-         if ($$6.a($$7.d()) && $$6.M() == 1 && $$7.M() == 1 && $$6.d().p()) {
-            cqf $$8 = $$6.d();
-            int $$9 = $$8.o() - $$6.l();
-            int $$10 = $$8.o() - $$7.l();
-            int $$11 = $$9 + $$10 + $$8.o() * 5 / 100;
-            int $$12 = $$8.o() - $$11;
-            if ($$12 < 0) {
-               $$12 = 0;
-            }
-
-            cqk $$13 = new cqk($$6.d());
-            $$13.b($$12);
-            Map<cuu, Integer> $$14 = cuv.a($$6);
-            Map<cuu, Integer> $$15 = cuv.a($$7);
-            ki.f.s().filter(cuu::c).forEach($$3x -> {
-               int $$4 = Math.max($$14.getOrDefault($$3x, 0), $$15.getOrDefault($$3x, 0));
-               if ($$4 > 0) {
-                  $$13.a($$3x, $$4);
-               }
-            });
-            return $$13;
-         }
-      }
-
-      return cqk.h;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
-   }
-
-   @Override
-   public ctr<?> ar_() {
-      return ctr.o;
+   static <S extends ctt<T>, T extends ctp<?>> S a(String $$0, S $$1) {
+      return iy.a(ki.t, $$0, $$1);
    }
 }

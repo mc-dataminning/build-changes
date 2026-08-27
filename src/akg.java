@@ -10,7 +10,7 @@ public class akg extends apc {
    private int k = 100;
 
    public akg(ajh $$0, vu $$1) {
-      super($$1, bms.a.g, bms.b.a);
+      super($$1, bmt.a.g, bmt.b.a);
       this.h = $$0;
       this.a(0.0F);
    }
@@ -141,8 +141,8 @@ public class akg extends apc {
       $$2.d($$0.q("Visible"));
       $$2.a($$0.h("Value"));
       $$2.b($$0.h("Max"));
-      $$2.a(bms.a.a($$0.l("Color")));
-      $$2.a(bms.b.a($$0.l("Overlay")));
+      $$2.a(bmt.a.a($$0.l("Color")));
+      $$2.a(bmt.b.a($$0.l("Overlay")));
       $$2.a($$0.q("DarkenScreen"));
       $$2.b($$0.q("PlayBossMusic"));
       $$2.c($$0.q("CreateWorldFog"));

@@ -1,99 +1,46 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.logging.LogUtils;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
 public class ezq {
    private static final Logger a = LogUtils.getLogger();
+   private final ezi b;
    @Nullable
-   private ezq.c b;
-   private int c;
+   private CompletableFuture<Boolean> c;
+   private boolean d;
 
-   public void a(ezq.b $$0, List<ara> $$1) {
-      this.c++;
-      if (this.b != null && !this.b.d) {
-         a.warn("Reload already ongoing, replacing");
-      }
-
-      this.b = new ezq.c($$0, $$1.stream().map(ara::b).collect(ImmutableList.toImmutableList()));
+   public ezq(ezi $$0) {
+      this.b = $$0;
    }
 
-   public void a(Throwable $$0) {
-      if (this.b == null) {
-         a.warn("Trying to signal reload recovery, but nothing was started");
-         this.b = new ezq.c(ezq.b.c, ImmutableList.of());
-      }
-
-      this.b.c = new ezq.a($$0);
-   }
-
-   public void a() {
-      if (this.b == null) {
-         a.warn("Trying to finish reload, but nothing was started");
-      } else {
-         this.b.d = true;
+   public void a(fhh $$0) {
+      if (!this.b.ah() && !this.b.m.w && !this.d && this.a()) {
+         this.b.a(new fkg($$0));
+         this.d = true;
       }
    }
 
-   public void a(o $$0) {
-      p $$1 = $$0.a("Last reload");
-      $$1.a("Reload number", this.c);
-      if (this.b != null) {
-         this.b.a($$1);
+   private Boolean a() {
+      if (this.c == null) {
+         this.c = CompletableFuture.supplyAsync(this::b, ac.f());
+      }
+
+      try {
+         return this.c.getNow(false);
+      } catch (CompletionException var2) {
+         a.warn("Failed to retrieve realms subscriptions", var2);
+         this.d = true;
+         return false;
       }
    }
 
-   static class a {
-      private final Throwable a;
-
-      a(Throwable $$0) {
-         this.a = $$0;
-      }
-
-      public void a(p $$0) {
-         $$0.a("Recovery", "Yes");
-         $$0.a("Recovery reason", () -> {
-            StringWriter $$0x = new StringWriter();
-            this.a.printStackTrace(new PrintWriter($$0x));
-            return $$0x.toString();
-         });
-      }
-   }
-
-   public static enum b {
-      a("initial"),
-      b("manual"),
-      c("unknown");
-
-      final String d;
-
-      private b(String $$0) {
-         this.d = $$0;
-      }
-   }
-
-   static class c {
-      private final ezq.b a;
-      private final List<String> b;
-      @Nullable
-      ezq.a c;
-      boolean d;
-
-      c(ezq.b $$0, List<String> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public void a(p $$0) {
-         $$0.a("Reload reason", this.a.d);
-         $$0.a("Finished", this.d ? "Yes" : "No");
-         $$0.a("Packs", () -> String.join(", ", this.b));
-         if (this.c != null) {
-            this.c.a($$0);
-         }
+   private boolean b() {
+      try {
+         return eur.a(this.b).b().a.stream().anyMatch($$0 -> !$$0.j && this.b.b($$0.g));
+      } catch (ewe var2) {
+         return false;
       }
    }
 }

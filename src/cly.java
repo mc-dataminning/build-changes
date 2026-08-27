@@ -1,7 +1,4 @@
-public interface cly {
-   int a(int var1);
-
-   void a(int var1, int var2);
-
-   int a();
+public enum cly {
+   a,
+   b;
 }

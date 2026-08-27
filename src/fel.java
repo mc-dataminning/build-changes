@@ -1,104 +1,28 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.util.List;
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.system.MemoryUtil;
-import org.lwjgl.util.freetype.FT_Face;
-import org.lwjgl.util.freetype.FreeType;
 
-public record fel(ajh c, float d, float e, fel.a f, String g) implements fei {
-   private static final Codec<String> h = awe.a(Codec.STRING, Codec.STRING.listOf(), $$0 -> String.join("", $$0));
-   public static final MapCodec<fel> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               ajh.a.fieldOf("file").forGetter(fel::c),
-               Codec.FLOAT.optionalFieldOf("size", 11.0F).forGetter(fel::d),
-               Codec.FLOAT.optionalFieldOf("oversample", 1.0F).forGetter(fel::e),
-               fel.a.b.optionalFieldOf("shift", fel.a.a).forGetter(fel::f),
-               h.optionalFieldOf("skip", "").forGetter(fel::g)
-            )
-            .apply($$0, fel::new)
-   );
+public enum fel implements axq {
+   a("bitmap", fei.a.a),
+   b("ttf", fen.a),
+   c("space", esg.a.a),
+   d("unihex", feo.b.a),
+   e("reference", fem.a);
 
-   @Override
-   public fej a() {
-      return fej.b;
+   public static final Codec<fel> f = axq.a(fel::values);
+   private final String g;
+   private final MapCodec<? extends fek> h;
+
+   private fel(String $$0, MapCodec<? extends fek> $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
    @Override
-   public Either<fei.b, fei.c> b() {
-      return Either.left(this::a);
+   public String c() {
+      return this.g;
    }
 
-   private esc a(aso $$0) throws IOException {
-      FT_Face $$1 = null;
-      ByteBuffer $$2 = null;
-
-      try {
-         esf var14;
-         try (InputStream $$3 = $$0.open(this.c.d("font/"))) {
-            $$2 = TextureUtil.readResource($$3);
-            $$2.flip();
-            MemoryStack $$4 = MemoryStack.stackPush();
-
-            try {
-               PointerBuffer $$5 = $$4.mallocPointer(1);
-               feh.a(FreeType.FT_New_Memory_Face(feh.a(), $$2, 0L, $$5), "Initializing font face");
-               $$1 = FT_Face.create($$5.get());
-            } catch (Throwable var10) {
-               if ($$4 != null) {
-                  try {
-                     $$4.close();
-                  } catch (Throwable var9) {
-                     var10.addSuppressed(var9);
-                  }
-               }
-
-               throw var10;
-            }
-
-            if ($$4 != null) {
-               $$4.close();
-            }
-
-            String $$6 = FreeType.FT_Get_Font_Format($$1);
-            if (!"TrueType".equals($$6)) {
-               throw new IOException("Font is not in TTF format, was " + $$6);
-            }
-
-            feh.a(FreeType.FT_Select_Charmap($$1, FreeType.FT_ENCODING_UNICODE), "Find unicode charmap");
-            var14 = new esf($$2, $$1, this.d, this.e, this.f.c, this.f.d, this.g);
-         }
-
-         return var14;
-      } catch (Exception var12) {
-         if ($$1 != null) {
-            FreeType.FT_Done_Face($$1);
-         }
-
-         MemoryUtil.memFree($$2);
-         throw var12;
-      }
-   }
-
-   public static record a(float c, float d) {
-      public static final fel.a a = new fel.a(0.0F, 0.0F);
-      public static final Codec<fel.a> b = Codec.FLOAT
-         .listOf()
-         .comapFlatMap($$0 -> ac.a($$0, 2).map($$0x -> new fel.a((Float)$$0x.get(0), (Float)$$0x.get(1))), $$0 -> List.of($$0.c, $$0.d));
-
-      public float a() {
-         return this.c;
-      }
-
-      public float b() {
-         return this.d;
-      }
+   public MapCodec<? extends fek> a() {
+      return this.h;
    }
 }

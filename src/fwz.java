@@ -1,72 +1,36 @@
-public class fwz {
-   public static final vu a = vu.c("quickplay.error.title");
-   private static final vu b = vu.c("quickplay.error.invalid_identifier");
-   private static final vu c = vu.c("quickplay.error.realm_connect");
-   private static final vu d = vu.c("quickplay.error.realm_permission");
-   private static final vu e = vu.c("gui.toTitle");
-   private static final vu f = vu.c("gui.toWorld");
-   private static final vu g = vu.c("gui.toRealms");
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Set;
+import java.util.function.LongSupplier;
+import java.util.function.Supplier;
 
-   public static void a(ezg $$0, fmt.c $$1, eup $$2) {
-      String $$3 = $$1.c();
-      String $$4 = $$1.d();
-      String $$5 = $$1.e();
-      if (!ac.b($$3)) {
-         a($$0, $$3);
-      } else if (!ac.b($$4)) {
-         b($$0, $$4);
-      } else if (!ac.b($$5)) {
-         a($$0, $$2, $$5);
+public class fwz implements bla {
+   private final fxq a;
+   private final Set<bky> b = new ObjectOpenHashSet();
+   private final blg c = new blg();
+
+   public fwz(LongSupplier $$0, fxq $$1) {
+      this.a = $$1;
+      this.b.add(blh.a($$0));
+      this.a();
+   }
+
+   private void a() {
+      this.b.addAll(blh.a());
+      this.b.add(bky.a("totalChunks", bkx.f, this.a, fxq::i));
+      this.b.add(bky.a("renderedChunks", bkx.f, this.a, fxq::k));
+      this.b.add(bky.a("lastViewDistance", bkx.f, this.a, fxq::j));
+      gas $$0 = this.a.h();
+      this.b.add(bky.a("toUpload", bkx.g, $$0, gas::c));
+      this.b.add(bky.a("freeBufferCount", bkx.g, $$0, gas::d));
+      this.b.add(bky.a("toBatchCount", bkx.g, $$0, gas::b));
+      if (etu.a().isPresent()) {
+         this.b.add(bky.a("gpuUtilization", bkx.i, ezi.Q(), ezi::v));
       }
    }
 
-   private static void a(ezg $$0, String $$1) {
-      if (!$$0.m().b($$1)) {
-         fhf $$2 = new fmb(new fhk());
-         $$0.a(new fgg($$2, a, b, f));
-      } else {
-         $$0.x().a($$1, () -> $$0.a(new fhk()));
-      }
-   }
-
-   private static void b(ezg $$0, String $$1) {
-      fsn $$2 = new fsn($$0);
-      $$2.a();
-      fsm $$3 = $$2.a($$1);
-      if ($$3 == null) {
-         $$3 = new fsm(gke.a("selectServer.defaultName"), $$1, fsm.c.c);
-         $$2.a($$3, true);
-         $$2.b();
-      }
-
-      ftp $$4 = ftp.a($$1);
-      ffy.a(new fkd(new fhk()), $$0, $$4, $$3, true, null);
-   }
-
-   private static void a(ezg $$0, eup $$1, String $$2) {
-      long $$3;
-      evi $$4;
-      try {
-         $$3 = Long.parseLong($$2);
-         $$4 = $$1.b();
-      } catch (NumberFormatException var9) {
-         fhf $$6 = new euk(new fhk());
-         $$0.a(new fgg($$6, a, b, g));
-         return;
-      } catch (ewc var10) {
-         fhf $$8 = new fhk();
-         $$0.a(new fgg($$8, a, c, e));
-         return;
-      }
-
-      evg $$11 = $$4.a.stream().filter($$1x -> $$1x.a == $$3).findFirst().orElse(null);
-      if ($$11 == null) {
-         fhf $$12 = new euk(new fhk());
-         $$0.a(new fgg($$12, a, d, g));
-      } else {
-         fhk $$13 = new fhk();
-         eyf $$14 = new eyf($$13, $$11);
-         $$0.a(new eww($$13, $$14));
-      }
+   @Override
+   public Set<bky> a(Supplier<bjp> $$0) {
+      this.b.addAll(this.c.a($$0));
+      return this.b;
    }
 }

@@ -1,49 +1,8 @@
-public class ffq extends fhh {
-   private static ezj<?>[] a(ezk $$0) {
-      return new ezj[]{
-         $$0.aq(),
-         $$0.U(),
-         $$0.r(),
-         $$0.F(),
-         $$0.p(),
-         $$0.W(),
-         $$0.n(),
-         $$0.o(),
-         $$0.y(),
-         $$0.z(),
-         $$0.aa(),
-         $$0.ab(),
-         $$0.ah(),
-         $$0.ai(),
-         $$0.aj(),
-         $$0.am(),
-         $$0.ak(),
-         $$0.al(),
-         $$0.b(),
-         $$0.a(),
-         $$0.q(),
-         $$0.c(),
-         $$0.s()
-      };
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public ffq(fhf $$0, ezk $$1) {
-      super($$0, $$1, vu.c("options.accessibility.title"), a($$1));
-   }
-
-   @Override
-   protected void aO_() {
-      super.aO_();
-      fbe $$0 = this.k.b(this.b.r());
-      if ($$0 != null && !this.f.ac().b().contains("high_contrast")) {
-         $$0.j = false;
-         $$0.a(fcr.a(vu.c("options.accessibility.high_contrast.error.tooltip")));
-      }
-   }
-
-   @Override
-   protected void j() {
-      this.c(fbg.a(vu.c("options.accessibility.link"), ffw.b(this, "https://aka.ms/MinecraftJavaAccessibility")).a(this.g / 2 - 155, this.h - 27, 150, 20).a());
-      this.c(fbg.a(vt.d, $$0 -> this.f.a(this.a)).a(this.g / 2 + 5, this.h - 27, 150, 20).a());
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ffq {
 }

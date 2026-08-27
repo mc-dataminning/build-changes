@@ -1,38 +1,38 @@
-public class ejg extends eja {
-   private float m = Float.MAX_VALUE;
-   private eja n;
-   private boolean o;
+public enum ejg {
+   a(-1.0F),
+   b(0.0F),
+   c(0.0F),
+   d(0.0F),
+   e(0.0F),
+   f(-1.0F),
+   g(0.0F),
+   h(-1.0F),
+   i(-1.0F),
+   j(8.0F),
+   k(8.0F),
+   l(0.0F),
+   m(-1.0F),
+   n(8.0F),
+   o(16.0F),
+   p(8.0F),
+   q(-1.0F),
+   r(0.0F),
+   s(-1.0F),
+   t(-1.0F),
+   u(4.0F),
+   v(-1.0F),
+   w(8.0F),
+   x(0.0F),
+   y(0.0F),
+   z(0.0F);
 
-   public ejg(eja $$0) {
-      super($$0.a, $$0.b, $$0.c);
+   private final float A;
+
+   private ejg(float $$0) {
+      this.A = $$0;
    }
 
-   public ejg(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   public void a(float $$0, eja $$1) {
-      if ($$0 < this.m) {
-         this.m = $$0;
-         this.n = $$1;
-      }
-   }
-
-   public eja d() {
-      return this.n;
-   }
-
-   public void e() {
-      this.o = true;
-   }
-
-   public boolean f() {
-      return this.o;
-   }
-
-   public static ejg c(uu $$0) {
-      ejg $$1 = new ejg($$0.readInt(), $$0.readInt(), $$0.readInt());
-      a($$0, $$1);
-      return $$1;
+   public float a() {
+      return this.A;
    }
 }

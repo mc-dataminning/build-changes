@@ -1,119 +1,66 @@
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P4;
-import com.mojang.serialization.Codec;
+import com.mojang.datafixers.Products.P1;
 import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
 import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
+import java.util.function.Predicate;
 
-public abstract class elp extends eln {
-   public static final int d = 1;
-   public static final int f = 0;
-   protected final int g;
-   protected final int h;
-   protected final List<emh> i;
-   final BiFunction<cqk, eku, cqk> a;
-   private final elm j = new elp.c() {
-      @Override
-      public void a(Consumer<cqk> $$0, eku $$1) {
-         elp.this.a(emh.a(elp.this.a, $$0, $$1), $$1);
-      }
-   };
+public abstract class elp implements elh {
+   protected final List<env> e;
+   private final Predicate<ekw> a;
 
-   protected elp(int $$0, int $$1, List<ent> $$2, List<emh> $$3) {
-      super($$2);
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$3;
-      this.a = emj.a($$3);
+   protected elp(List<env> $$0) {
+      this.e = $$0;
+      this.a = ac.a($$0);
    }
 
-   protected static <T extends elp> P4<Mu<T>, Integer, Integer, List<ent>, List<emh>> b(Instance<T> $$0) {
-      return $$0.group(
-            awe.a(Codec.INT, "weight", Integer.valueOf(1)).forGetter($$0x -> $$0x.g), awe.a(Codec.INT, "quality", Integer.valueOf(0)).forGetter($$0x -> $$0x.h)
-         )
-         .and(a($$0).t1())
-         .and(awe.a(emj.b.listOf(), "functions", List.of()).forGetter($$0x -> $$0x.i));
+   protected static <T extends elp> P1<Mu<T>, List<env>> a(Instance<T> $$0) {
+      return $$0.group(awe.a(enx.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.e));
    }
 
-   @Override
-   public void a(eld $$0) {
-      super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.i.size(); $$1++) {
-         this.i.get($$1).a($$0.a(".functions[" + $$1 + "]"));
+   public void a(elf $$0) {
+      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
+         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
       }
    }
 
-   protected abstract void a(Consumer<cqk> var1, eku var2);
-
-   @Override
-   public boolean expand(eku $$0, Consumer<elm> $$1) {
-      if (this.a($$0)) {
-         $$1.accept(this.j);
-         return true;
-      } else {
-         return false;
-      }
+   protected final boolean a(ekw $$0) {
+      return this.a.test($$0);
    }
 
-   public static elp.a<?> a(elp.d $$0) {
-      return new elp.b($$0);
-   }
+   public abstract elq a();
 
-   public abstract static class a<T extends elp.a<T>> extends eln.a<T> implements eme<T> {
-      protected int a = 1;
-      protected int b = 0;
-      private final Builder<emh> c = ImmutableList.builder();
+   public abstract static class a<T extends elp.a<T>> implements eno<T> {
+      private final Builder<env> a = ImmutableList.builder();
 
-      public T a(emh.a $$0) {
-         this.c.add($$0.b());
+      protected abstract T aE_();
+
+      public T a(env.a $$0) {
+         this.a.add($$0.build());
          return this.aE_();
       }
 
-      protected List<emh> a() {
-         return this.c.build();
-      }
-
-      public T a(int $$0) {
-         this.a = $$0;
+      public final T e() {
          return this.aE_();
       }
 
-      public T b(int $$0) {
-         this.b = $$0;
-         return this.aE_();
-      }
-   }
-
-   static class b extends elp.a<elp.b> {
-      private final elp.d c;
-
-      public b(elp.d $$0) {
-         this.c = $$0;
+      protected List<env> f() {
+         return this.a.build();
       }
 
-      protected elp.b g() {
-         return this;
+      public elg.a a(elp.a<?> $$0) {
+         return new elg.a(this, $$0);
       }
 
-      @Override
-      public eln b() {
-         return this.c.build(this.a, this.b, this.f(), this.a());
+      public ell.a b(elp.a<?> $$0) {
+         return new ell.a(this, $$0);
       }
-   }
 
-   protected abstract class c implements elm {
-      @Override
-      public int a(float $$0) {
-         return Math.max(aww.d((float)elp.this.g + (float)elp.this.h * $$0), 0);
+      public elt.a c(elp.a<?> $$0) {
+         return new elt.a(this, $$0);
       }
-   }
 
-   @FunctionalInterface
-   protected interface d {
-      elp build(int var1, int var2, List<ent> var3, List<emh> var4);
+      public abstract elp b();
    }
 }

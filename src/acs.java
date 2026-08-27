@@ -88,7 +88,7 @@ public class acs implements yb<aam> {
          $$0.a($$2.getProperties());
       }),
       b(($$0, $$1) -> $$0.g = $$1.c(wl.a::a), ($$0, $$1) -> $$0.a($$1.g, wl.a::a)),
-      c(($$0, $$1) -> $$0.e = cww.a($$1.l()), ($$0, $$1) -> $$0.c($$1.e().a())),
+      c(($$0, $$1) -> $$0.e = cwy.a($$1.l()), ($$0, $$1) -> $$0.c($$1.e().a())),
       d(($$0, $$1) -> $$0.c = $$1.readBoolean(), ($$0, $$1) -> $$0.a($$1.c())),
       e(($$0, $$1) -> $$0.d = $$1.l(), ($$0, $$1) -> $$0.c($$1.d())),
       f(($$0, $$1) -> $$0.f = uu.a($$1, vw.b), ($$0, $$1) -> uu.a($$0, $$1.f(), vw.b));
@@ -110,7 +110,7 @@ public class acs implements yb<aam> {
       }
    }
 
-   public static record b(UUID a, @Nullable GameProfile b, boolean c, int d, cww e, @Nullable vu f, @Nullable wl.a g) {
+   public static record b(UUID a, @Nullable GameProfile b, boolean c, int d, cwy e, @Nullable vu f, @Nullable wl.a g) {
 
       b(apg $$0) {
          this($$0.cw(), $$0.fY(), true, $$0.d.l(), $$0.f.b(), $$0.N(), x.a($$0.ab(), wl::a));
@@ -123,14 +123,14 @@ public class acs implements yb<aam> {
       GameProfile b;
       boolean c;
       int d;
-      cww e;
+      cwy e;
       @Nullable
       vu f;
       @Nullable
       wl.a g;
 
       c(UUID $$0) {
-         this.e = cww.e;
+         this.e = cwy.e;
          this.a = $$0;
       }
 

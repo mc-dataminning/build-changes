@@ -29,7 +29,7 @@ public record vq(vr j, vr k) {
       $$0.a(i, new vq(vr.a("chat.type.emote"), vr.a("chat.type.emote")));
    }
 
-   public static vq.a a(ajg<vq> $$0, bow $$1) {
+   public static vq.a a(ajg<vq> $$0, box $$1) {
       return a($$0, $$1.dM().H_(), $$1.O_());
    }
 

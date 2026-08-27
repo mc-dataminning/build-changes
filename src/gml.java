@@ -1,66 +1,31 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.List;
-import org.apache.commons.lang3.Validate;
+public class gml extends gly {
+   private static final float n = 1.0F;
+   private static final float o = 1.0F;
+   private final cdt p;
 
-public class gml implements JsonDeserializer<gmk> {
-   private static final bmf a = bmd.a(1.0F);
-
-   public gmk a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-      JsonObject $$3 = awm.m($$0, "entry");
-      boolean $$4 = awm.a($$3, "replace", false);
-      String $$5 = awm.a($$3, "subtitle", null);
-      List<gmj> $$6 = this.a($$3);
-      return new gmk($$6, $$4, $$5);
+   public gml(cdt $$0) {
+      super(aty.xV, atz.g, gmp.t());
+      this.p = $$0;
+      this.k = gmp.a.b;
+      this.i = false;
+      this.j = 0;
    }
 
-   private List<gmj> a(JsonObject $$0) {
-      List<gmj> $$1 = Lists.newArrayList();
-      if ($$0.has("sounds")) {
-         JsonArray $$2 = awm.v($$0, "sounds");
+   @Override
+   public boolean s() {
+      return !this.p.aU();
+   }
 
-         for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-            JsonElement $$4 = $$2.get($$3);
-            if (awm.a($$4)) {
-               String $$5 = awm.a($$4, "sound");
-               $$1.add(new gmj($$5, a, a, 1, gmj.a.a, false, false, 16));
-            } else {
-               $$1.add(this.b(awm.m($$4, "sound")));
-            }
-         }
+   @Override
+   public void q() {
+      if (!this.p.dH() && this.p.p() == null && this.p.gt()) {
+         this.f = (double)((float)this.p.dr());
+         this.g = (double)((float)this.p.dt());
+         this.h = (double)((float)this.p.dx());
+         this.d = 1.0F;
+         this.e = 1.0F;
+      } else {
+         this.n();
       }
-
-      return $$1;
-   }
-
-   private gmj b(JsonObject $$0) {
-      String $$1 = awm.i($$0, "name");
-      gmj.a $$2 = this.a($$0, gmj.a.a);
-      float $$3 = awm.a($$0, "volume", 1.0F);
-      Validate.isTrue($$3 > 0.0F, "Invalid volume", new Object[0]);
-      float $$4 = awm.a($$0, "pitch", 1.0F);
-      Validate.isTrue($$4 > 0.0F, "Invalid pitch", new Object[0]);
-      int $$5 = awm.a($$0, "weight", 1);
-      Validate.isTrue($$5 > 0, "Invalid weight", new Object[0]);
-      boolean $$6 = awm.a($$0, "preload", false);
-      boolean $$7 = awm.a($$0, "stream", false);
-      int $$8 = awm.a($$0, "attenuation_distance", 16);
-      return new gmj($$1, bmd.a($$3), bmd.a($$4), $$5, $$2, $$7, $$6, $$8);
-   }
-
-   private gmj.a a(JsonObject $$0, gmj.a $$1) {
-      gmj.a $$2 = $$1;
-      if ($$0.has("type")) {
-         $$2 = gmj.a.a(awm.i($$0, "type"));
-         Validate.notNull($$2, "Invalid type", new Object[0]);
-      }
-
-      return $$2;
    }
 }

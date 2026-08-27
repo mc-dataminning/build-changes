@@ -12,7 +12,7 @@ public class gf {
    private static final char c = '#';
    private static final char d = '{';
    static final Function<SuggestionsBuilder, CompletableFuture<Suggestions>> e = SuggestionsBuilder::buildFuture;
-   final in.b<cqf> f;
+   final in.b<cqh> f;
    final boolean g;
 
    public gf(in.a $$0, boolean $$1) {
@@ -83,7 +83,7 @@ public class gf {
          this.b.expect('#');
          this.c.a(this::c);
          ajh $$1 = ajh.a(this.b);
-         ip<cqf> $$2 = gf.this.f.a(avd.a(kj.F, $$1)).orElseThrow(() -> {
+         ip<cqh> $$2 = gf.this.f.a(avd.a(kj.F, $$1)).orElseThrow(() -> {
             this.b.setCursor($$0);
             return gf.b.createWithContext(this.b, $$1);
          });
@@ -131,10 +131,10 @@ public class gf {
    }
 
    public interface c {
-      default void a(il<cqf> $$0) {
+      default void a(il<cqh> $$0) {
       }
 
-      default void a(ip<cqf> $$0) {
+      default void a(ip<cqh> $$0) {
       }
 
       default void a(ta $$0) {

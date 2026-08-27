@@ -1,19 +1,20 @@
-public class crf extends cqg {
-   private final apg a;
-
-   public crf(apg $$0) {
-      this.a = $$0;
+public class crf extends cqh {
+   public crf(cqh.a $$0) {
+      super($$0);
    }
 
    @Override
-   protected void b(cqf $$0, int $$1) {
-      super.b($$0, $$1);
-      this.a.d.b(new abk($$0, $$1));
-   }
+   public bnd a(cqm $$0, ciu $$1, bpp $$2, bnc $$3) {
+      if ($$2 instanceof bqe $$4 && $$2.bA() && !$$4.i() && $$4.f()) {
+         if (!$$1.dM().B) {
+            $$4.a(atz.g);
+            $$2.dM().a($$2, drp.v, $$2.dk());
+            $$0.h(1);
+         }
 
-   @Override
-   protected void c(cqf $$0) {
-      super.c($$0);
-      this.a.d.b(new abk($$0, 0));
+         return bnd.a($$1.dM().B);
+      }
+
+      return bnd.d;
    }
 }

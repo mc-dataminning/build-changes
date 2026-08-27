@@ -1,74 +1,57 @@
-import javax.annotation.Nullable;
+public class cna extends cnl {
+   private final cmy a;
+   private final ciu b;
+   private int c;
+   private final cvy h;
 
-public class cna extends bnl {
-   @Nullable
-   private dlb c;
-
-   public cna() {
-      super(27);
-   }
-
-   public void a(dlb $$0) {
-      this.c = $$0;
-   }
-
-   public boolean b(dlb $$0) {
-      return this.c == $$0;
+   public cna(ciu $$0, cvy $$1, cmy $$2, int $$3, int $$4, int $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.b = $$0;
+      this.h = $$1;
+      this.a = $$2;
    }
 
    @Override
-   public void a(tg $$0) {
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         this.a($$1, cqk.h);
+   public boolean a(cqm $$0) {
+      return false;
+   }
+
+   @Override
+   public cqm a(int $$0) {
+      if (this.h()) {
+         this.c = this.c + Math.min($$0, this.g().M());
       }
 
-      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         ta $$3 = $$0.a($$2);
-         int $$4 = $$3.f("Slot") & 255;
-         if ($$4 >= 0 && $$4 < this.b()) {
-            this.a($$4, cqk.a($$3));
+      return super.a($$0);
+   }
+
+   @Override
+   protected void a(cqm $$0, int $$1) {
+      this.c += $$1;
+      this.b_($$0);
+   }
+
+   @Override
+   protected void b_(cqm $$0) {
+      $$0.a(this.b.dM(), this.b, this.c);
+      this.c = 0;
+   }
+
+   @Override
+   public void a(ciu $$0, cqm $$1) {
+      this.b_($$1);
+      cvz $$2 = this.a.g();
+      if ($$2 != null) {
+         cqm $$3 = this.a.a(0);
+         cqm $$4 = this.a.a(1);
+         if ($$2.b($$3, $$4) || $$2.b($$4, $$3)) {
+            this.h.a($$2);
+            $$0.a(aui.T);
+            this.a.a(0, $$3);
+            this.a.a(1, $$4);
          }
+
+         this.h.u(this.h.s() + $$2.p());
       }
-   }
-
-   @Override
-   public tg g() {
-      tg $$0 = new tg();
-
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         cqk $$2 = this.a($$1);
-         if (!$$2.b()) {
-            ta $$3 = new ta();
-            $$3.a("Slot", (byte)$$1);
-            $$2.b($$3);
-            $$0.add($$3);
-         }
-      }
-
-      return $$0;
-   }
-
-   @Override
-   public boolean a(cis $$0) {
-      return this.c != null && !this.c.c($$0) ? false : super.a($$0);
-   }
-
-   @Override
-   public void d_(cis $$0) {
-      if (this.c != null) {
-         this.c.a($$0);
-      }
-
-      super.d_($$0);
-   }
-
-   @Override
-   public void c(cis $$0) {
-      if (this.c != null) {
-         this.c.b($$0);
-      }
-
-      super.c($$0);
-      this.c = null;
    }
 }

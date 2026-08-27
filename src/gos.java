@@ -1,13 +1,12 @@
-public class gos implements gou {
-   private static final int a = 600;
-   private static final vu b = vu.c("tutorial.punch_tree.title");
-   private static final vu c = vu.a("tutorial.punch_tree.description", got.a("attack"));
-   private final got d;
-   private fdr e;
+public class gos implements gox {
+   private static final int a = 6000;
+   private static final vu b = vu.c("tutorial.find_tree.title");
+   private static final vu c = vu.c("tutorial.find_tree.description");
+   private final gow d;
+   private fdt e;
    private int f;
-   private int g;
 
-   public gos(got $$0) {
+   public gos(gow $$0) {
       this.d = $$0;
    }
 
@@ -15,25 +14,18 @@ public class gos implements gou {
    public void a() {
       this.f++;
       if (!this.d.f()) {
-         this.d.a(gov.f);
+         this.d.a(goy.f);
       } else {
          if (this.f == 1) {
-            fws $$0 = this.d.e().s;
-            if ($$0 != null) {
-               if ($$0.fZ().a(auv.r)) {
-                  this.d.a(gov.e);
-                  return;
-               }
-
-               if (gop.a($$0)) {
-                  this.d.a(gov.e);
-                  return;
-               }
+            fwu $$0 = this.d.e().s;
+            if ($$0 != null && (b($$0) || a($$0))) {
+               this.d.a(goy.e);
+               return;
             }
          }
 
-         if ((this.f >= 600 || this.g > 3) && this.e == null) {
-            this.e = new fdr(fdr.a.c, b, c, true);
+         if (this.f >= 6000 && this.e == null) {
+            this.e = new fdt(fdt.a.c, b, c, false);
             this.d.e().aA().a(this.e);
          }
       }
@@ -48,27 +40,34 @@ public class gos implements gou {
    }
 
    @Override
-   public void a(fry $$0, ib $$1, dmz $$2, float $$3) {
-      boolean $$4 = $$2.a(aun.t);
-      if ($$4 && $$3 > 0.0F) {
-         if (this.e != null) {
-            this.e.a($$3);
+   public void a(fsa $$0, epr $$1) {
+      if ($$1.c() == epr.a.b) {
+         dnb $$2 = $$0.a_(((epp)$$1).a());
+         if ($$2.a(aun.aj)) {
+            this.d.a(goy.c);
          }
-
-         if ($$3 >= 1.0F) {
-            this.d.a(gov.d);
-         }
-      } else if (this.e != null) {
-         this.e.a(0.0F);
-      } else if ($$4) {
-         this.g++;
       }
    }
 
    @Override
-   public void a(cqk $$0) {
-      if ($$0.a(auv.r)) {
-         this.d.a(gov.e);
+   public void a(cqm $$0) {
+      if ($$0.a(auv.al)) {
+         this.d.a(goy.e);
       }
+   }
+
+   private static boolean b(fwu $$0) {
+      return $$0.fZ().a_($$0x -> $$0x.a(auv.al));
+   }
+
+   public static boolean a(fwu $$0) {
+      for (il<dac> $$1 : ki.e.c(aun.aj)) {
+         dac $$2 = $$1.a();
+         if ($$0.j().a(aui.a.b($$2)) > 0) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

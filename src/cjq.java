@@ -1,45 +1,61 @@
-public class cjq extends ciy {
-   private static final cqk g = new cqk(cqn.vm);
-   private int h = 200;
-
-   public cjq(bpc<? extends cjq> $$0, cwz $$1) {
-      super($$0, $$1, g);
+public class cjq extends cjg {
+   public cjq(bpd<? extends cjq> $$0, cxb $$1) {
+      super($$0, $$1);
    }
 
-   public cjq(cwz $$0, bpo $$1, cqk $$2) {
-      super(bpc.aU, $$1, $$0, $$2);
+   public cjq(cxb $$0, bpp $$1, double $$2, double $$3, double $$4) {
+      super(bpd.aQ, $$1, $$2, $$3, $$4, $$0);
    }
 
-   public cjq(cwz $$0, double $$1, double $$2, double $$3, cqk $$4) {
-      super(bpc.aU, $$1, $$2, $$3, $$0, $$4);
+   public cjq(cxb $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super(bpd.aQ, $$1, $$2, $$3, $$4, $$5, $$6, $$0);
    }
 
    @Override
-   public void l() {
-      super.l();
-      if (this.dM().B && !this.b) {
-         this.dM().a(kc.Q, this.dr(), this.dt(), this.dx(), 0.0, 0.0, 0.0);
+   protected void a(epq $$0) {
+      super.a($$0);
+      if (!this.dM().B) {
+         box $$1 = $$0.a();
+         box $$2 = this.af_();
+         int $$3 = $$1.az();
+         $$1.g(5);
+         if (!$$1.a(this.dN().a((cjg)this, $$2), 5.0F)) {
+            $$1.i($$3);
+         } else if ($$2 instanceof bpp) {
+            this.a((bpp)$$2, $$1);
+         }
       }
    }
 
    @Override
-   protected void a(bpo $$0) {
+   protected void a(epp $$0) {
       super.a($$0);
-      boj $$1 = new boj(bol.x, this.h, 0);
-      $$0.b($$1, this.H());
-   }
-
-   @Override
-   public void a(ta $$0) {
-      super.a($$0);
-      if ($$0.e("Duration")) {
-         this.h = $$0.h("Duration");
+      if (!this.dM().B) {
+         box $$1 = this.af_();
+         if (!($$1 instanceof bpr) || this.dM().Z().b(cwx.c)) {
+            ib $$2 = $$0.a().a($$0.b());
+            if (this.dM().u($$2)) {
+               this.dM().b($$2, czp.a(this.dM(), $$2));
+            }
+         }
       }
    }
 
    @Override
-   public void b(ta $$0) {
-      super.b($$0);
-      $$0.a("Duration", this.h);
+   protected void a(epr $$0) {
+      super.a($$0);
+      if (!this.dM().B) {
+         this.am();
+      }
+   }
+
+   @Override
+   public boolean bw() {
+      return false;
+   }
+
+   @Override
+   public boolean a(bnw $$0, float $$1) {
+      return false;
    }
 }

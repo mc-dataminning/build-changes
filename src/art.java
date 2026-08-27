@@ -18,9 +18,9 @@ public abstract class art implements asb {
    private final arc d;
    private final are e;
    private final ajh f;
-   private final eph g;
+   private final epj g;
 
-   public art(arc $$0, are $$1, ajh $$2, eph $$3) {
+   public art(arc $$0, are $$1, ajh $$2, epj $$3) {
       this.d = $$0;
       this.e = $$1;
       this.f = $$2;

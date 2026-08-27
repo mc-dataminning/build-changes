@@ -1,420 +1,365 @@
-import java.util.Arrays;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.ToIntFunction;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableDouble;
 
 public interface dry {
-   static dry a(dsq $$0, cwg $$1, dss $$2, dsz $$3, int $$4, int $$5, dry.a $$6) {
-      return new dry.c($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   List<ajg<drp>> e_ = List.of(
+      drp.T.h(),
+      drp.U.h(),
+      drp.V.h(),
+      drp.W.h(),
+      drp.X.h(),
+      drp.Y.h(),
+      drp.Z.h(),
+      drp.aa.h(),
+      drp.ab.h(),
+      drp.ac.h(),
+      drp.ad.h(),
+      drp.ae.h(),
+      drp.af.h(),
+      drp.ag.h(),
+      drp.ah.h()
+   );
+   int f_ = 0;
+   ToIntFunction<ajg<drp>> g_ = ac.a(new Reference2IntOpenHashMap(), $$0 -> {
+      $$0.defaultReturnValue(0);
+      $$0.put(drp.P.h(), 1);
+      $$0.put(drp.Q.h(), 1);
+      $$0.put(drp.x.h(), 1);
+      $$0.put(drp.J.h(), 2);
+      $$0.put(drp.A.h(), 2);
+      $$0.put(drp.O.h(), 2);
+      $$0.put(drp.C.h(), 3);
+      $$0.put(drp.K.h(), 3);
+      $$0.put(drp.B.h(), 3);
+      $$0.put(drp.u.h(), 4);
+      $$0.put(drp.n.h(), 4);
+      $$0.put(drp.S.h(), 4);
+      $$0.put(drp.q.h(), 5);
+      $$0.put(drp.v.h(), 5);
+      $$0.put(drp.r.h(), 6);
+      $$0.put(drp.M.h(), 6);
+      $$0.put(drp.s.h(), 6);
+      $$0.put(drp.o.h(), 7);
+      $$0.put(drp.l.h(), 8);
+      $$0.put(drp.m.h(), 8);
+      $$0.put(drp.j.h(), 9);
+      $$0.put(drp.d.h(), 9);
+      $$0.put(drp.e.h(), 9);
+      $$0.put(drp.g.h(), 9);
+      $$0.put(drp.k.h(), 10);
+      $$0.put(drp.h.h(), 10);
+      $$0.put(drp.a.h(), 10);
+      $$0.put(drp.b.h(), 10);
+      $$0.put(drp.I.h(), 10);
+      $$0.put(drp.H.h(), 10);
+      $$0.put(drp.c.h(), 11);
+      $$0.put(drp.f.h(), 12);
+      $$0.put(drp.y.h(), 12);
+      $$0.put(drp.i.h(), 13);
+      $$0.put(drp.z.h(), 13);
+      $$0.put(drp.t.h(), 14);
+      $$0.put(drp.G.h(), 14);
+      $$0.put(drp.R.h(), 14);
+      $$0.put(drp.p.h(), 15);
+      $$0.put(drp.w.h(), 15);
+
+      for (int $$1 = 1; $$1 <= 15; $$1++) {
+         $$0.put(b($$1), $$1);
+      }
+   });
+
+   dry.a gp();
+
+   dry.d gq();
+
+   static int a_(il<drp> $$0) {
+      return $$0.e().map(dry::a).orElse(0);
    }
 
-   static dry a(final dry.a $$0) {
-      return new dry() {
-         @Nullable
-         @Override
-         public dmz a(dsf.b $$0x, double $$1) {
-            return $$1 > 0.0 ? null : $$0.computeFluid($$0.a(), $$0.b(), $$0.c()).a($$0.b());
-         }
-
-         @Override
-         public boolean a() {
-            return false;
-         }
-      };
+   static int a(ajg<drp> $$0) {
+      return g_.applyAsInt($$0);
    }
 
-   @Nullable
-   dmz a(dsf.b var1, double var2);
-
-   boolean a();
-
-   public interface a {
-      dry.b computeFluid(int var1, int var2, int var3);
+   static ajg<drp> b(int $$0) {
+      return e_.get($$0 - 1);
    }
 
-   public static final class b {
-      final int a;
-      final dmz b;
+   static int a_(float $$0, int $$1) {
+      double $$2 = 15.0 / (double)$$1;
+      return Math.max(1, 15 - aww.a($$2 * (double)$$0));
+   }
 
-      public b(int $$0, dmz $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   public static final class a {
+      public static Codec<dry.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  drw.a.optionalFieldOf("event").forGetter($$0x -> Optional.ofNullable($$0x.c)),
+                  drx.a.fieldOf("selector").forGetter(dry.a::a),
+                  awe.j.fieldOf("event_delay").orElse(0).forGetter(dry.a::c)
+               )
+               .apply($$0, ($$0x, $$1, $$2) -> new dry.a((drw)$$0x.orElse(null), $$1, $$2, true))
+      );
+      public static final String b = "listener";
+      @Nullable
+      drw c;
+      private int d;
+      final drx e;
+      private boolean f;
+
+      private a(@Nullable drw $$0, drx $$1, int $$2, boolean $$3) {
+         this.c = $$0;
+         this.d = $$2;
+         this.e = $$1;
+         this.f = $$3;
       }
 
-      public dmz a(int $$0) {
-         return $$0 < this.a ? this.b : dac.a.o();
-      }
-   }
-
-   public static class c implements dry {
-      private static final int a = 10;
-      private static final int b = 9;
-      private static final int c = 10;
-      private static final int d = 6;
-      private static final int e = 3;
-      private static final int f = 6;
-      private static final int g = 16;
-      private static final int h = 12;
-      private static final int i = 16;
-      private static final int j = 11;
-      private static final double k = a(aww.h(10), aww.h(12));
-      private final dsq l;
-      private final dsf m;
-      private final dsf n;
-      private final dsf o;
-      private final dsf p;
-      private final dsz q;
-      private final dry.b[] r;
-      private final long[] s;
-      private final dry.a t;
-      private final dsf u;
-      private final dsf v;
-      private boolean w;
-      private final int x;
-      private final int y;
-      private final int z;
-      private final int A;
-      private final int B;
-      private static final int[][] C = new int[][]{
-         {0, 0}, {-2, -1}, {-1, -1}, {0, -1}, {1, -1}, {-3, 0}, {-2, 0}, {-1, 0}, {1, 0}, {-2, 1}, {-1, 1}, {0, 1}, {1, 1}
-      };
-
-      c(dsq $$0, cwg $$1, dss $$2, dsz $$3, int $$4, int $$5, dry.a $$6) {
-         this.l = $$0;
-         this.m = $$2.a();
-         this.n = $$2.b();
-         this.o = $$2.c();
-         this.p = $$2.d();
-         this.u = $$2.h();
-         this.v = $$2.i();
-         this.q = $$3;
-         this.x = this.a($$1.d()) - 1;
-         this.t = $$6;
-         int $$7 = this.a($$1.f()) + 1;
-         this.A = $$7 - this.x + 1;
-         this.y = this.b($$4) - 1;
-         int $$8 = this.b($$4 + $$5) + 1;
-         int $$9 = $$8 - this.y + 1;
-         this.z = this.c($$1.e()) - 1;
-         int $$10 = this.c($$1.g()) + 1;
-         this.B = $$10 - this.z + 1;
-         int $$11 = this.A * $$9 * this.B;
-         this.r = new dry.b[$$11];
-         this.s = new long[$$11];
-         Arrays.fill(this.s, Long.MAX_VALUE);
+      public a() {
+         this(null, new drx(), 0, false);
       }
 
-      private int a(int $$0, int $$1, int $$2) {
-         int $$3 = $$0 - this.x;
-         int $$4 = $$1 - this.y;
-         int $$5 = $$2 - this.z;
-         return ($$4 * this.B + $$5) * this.A + $$3;
+      public drx a() {
+         return this.e;
       }
 
       @Nullable
-      @Override
-      public dmz a(dsf.b $$0, double $$1) {
-         int $$2 = $$0.a();
-         int $$3 = $$0.b();
-         int $$4 = $$0.c();
-         if ($$1 > 0.0) {
-            this.w = false;
-            return null;
-         } else {
-            dry.b $$5 = this.t.computeFluid($$2, $$3, $$4);
-            if ($$5.a($$3).a(dac.H)) {
-               this.w = false;
-               return dac.H.o();
-            } else {
-               int $$6 = Math.floorDiv($$2 - 5, 16);
-               int $$7 = Math.floorDiv($$3 + 1, 12);
-               int $$8 = Math.floorDiv($$4 - 5, 16);
-               int $$9 = Integer.MAX_VALUE;
-               int $$10 = Integer.MAX_VALUE;
-               int $$11 = Integer.MAX_VALUE;
-               long $$12 = 0L;
-               long $$13 = 0L;
-               long $$14 = 0L;
+      public drw b() {
+         return this.c;
+      }
 
-               for (int $$15 = 0; $$15 <= 1; $$15++) {
-                  for (int $$16 = -1; $$16 <= 1; $$16++) {
-                     for (int $$17 = 0; $$17 <= 1; $$17++) {
-                        int $$18 = $$6 + $$15;
-                        int $$19 = $$7 + $$16;
-                        int $$20 = $$8 + $$17;
-                        int $$21 = this.a($$18, $$19, $$20);
-                        long $$22 = this.s[$$21];
-                        long $$23;
-                        if ($$22 != Long.MAX_VALUE) {
-                           $$23 = $$22;
-                        } else {
-                           axd $$24 = this.q.a($$18, $$19, $$20);
-                           $$23 = ib.a($$18 * 16 + $$24.a(10), $$19 * 12 + $$24.a(9), $$20 * 16 + $$24.a(10));
-                           this.s[$$21] = $$23;
-                        }
+      public void a(@Nullable drw $$0) {
+         this.c = $$0;
+      }
 
-                        int $$26 = ib.a($$23) - $$2;
-                        int $$27 = ib.b($$23) - $$3;
-                        int $$28 = ib.c($$23) - $$4;
-                        int $$29 = $$26 * $$26 + $$27 * $$27 + $$28 * $$28;
-                        if ($$9 >= $$29) {
-                           $$14 = $$13;
-                           $$13 = $$12;
-                           $$12 = $$23;
-                           $$11 = $$10;
-                           $$10 = $$9;
-                           $$9 = $$29;
-                        } else if ($$10 >= $$29) {
-                           $$14 = $$13;
-                           $$13 = $$23;
-                           $$11 = $$10;
-                           $$10 = $$29;
-                        } else if ($$11 >= $$29) {
-                           $$14 = $$23;
-                           $$11 = $$29;
-                        }
-                     }
-                  }
-               }
+      public int c() {
+         return this.d;
+      }
 
-               dry.b $$30 = this.a($$12);
-               double $$31 = a($$9, $$10);
-               dmz $$32 = $$30.a($$3);
-               if ($$31 <= 0.0) {
-                  this.w = $$31 >= k;
-                  return $$32;
-               } else if ($$32.a(dac.G) && this.t.computeFluid($$2, $$3 - 1, $$4).a($$3 - 1).a(dac.H)) {
-                  this.w = true;
-                  return $$32;
-               } else {
-                  MutableDouble $$34 = new MutableDouble(Double.NaN);
-                  dry.b $$35 = this.a($$13);
-                  double $$36 = $$31 * this.a($$0, $$34, $$30, $$35);
-                  if ($$1 + $$36 > 0.0) {
-                     this.w = false;
-                     return null;
-                  } else {
-                     dry.b $$37 = this.a($$14);
-                     double $$38 = a($$9, $$11);
-                     if ($$38 > 0.0) {
-                        double $$39 = $$31 * $$38 * this.a($$0, $$34, $$30, $$37);
-                        if ($$1 + $$39 > 0.0) {
-                           this.w = false;
-                           return null;
-                        }
-                     }
+      public void a(int $$0) {
+         this.d = $$0;
+      }
 
-                     double $$40 = a($$10, $$11);
-                     if ($$40 > 0.0) {
-                        double $$41 = $$31 * $$40 * this.a($$0, $$34, $$35, $$37);
-                        if ($$1 + $$41 > 0.0) {
-                           this.w = false;
-                           return null;
-                        }
-                     }
+      public void d() {
+         this.d = Math.max(0, this.d - 1);
+      }
 
-                     this.w = true;
-                     return $$32;
-                  }
-               }
-            }
-         }
+      public boolean e() {
+         return this.f;
+      }
+
+      public void a(boolean $$0) {
+         this.f = $$0;
+      }
+   }
+
+   public static class b implements drr {
+      private final dry a;
+
+      public b(dry $$0) {
+         this.a = $$0;
       }
 
       @Override
-      public boolean a() {
-         return this.w;
+      public drt a() {
+         return this.a.gq().b();
       }
 
-      private static double a(int $$0, int $$1) {
-         double $$2 = 25.0;
-         return 1.0 - (double)Math.abs($$1 - $$0) / 25.0;
+      @Override
+      public int b() {
+         return this.a.gq().a();
       }
 
-      private double a(dsf.b $$0, MutableDouble $$1, dry.b $$2, dry.b $$3) {
-         int $$4 = $$0.b();
-         dmz $$5 = $$2.a($$4);
-         dmz $$6 = $$3.a($$4);
-         if ((!$$5.a(dac.H) || !$$6.a(dac.G)) && (!$$5.a(dac.G) || !$$6.a(dac.H))) {
-            int $$7 = Math.abs($$2.a - $$3.a);
-            if ($$7 == 0) {
-               return 0.0;
+      @Override
+      public boolean a(apf $$0, il<drp> $$1, drp.a $$2, ept $$3) {
+         dry.a $$4 = this.a.gp();
+         dry.d $$5 = this.a.gq();
+         if ($$4.b() != null) {
+            return false;
+         } else if (!$$5.a($$1, $$2)) {
+            return false;
+         } else {
+            Optional<ept> $$6 = $$5.b().a($$0);
+            if ($$6.isEmpty()) {
+               return false;
             } else {
-               double $$8 = 0.5 * (double)($$2.a + $$3.a);
-               double $$9 = (double)$$4 + 0.5 - $$8;
-               double $$10 = (double)$$7 / 2.0;
-               double $$11 = 0.0;
-               double $$12 = 2.5;
-               double $$13 = 1.5;
-               double $$14 = 3.0;
-               double $$15 = 10.0;
-               double $$16 = 3.0;
-               double $$17 = $$10 - Math.abs($$9);
-               double $$19;
-               if ($$9 > 0.0) {
-                  double $$18 = 0.0 + $$17;
-                  if ($$18 > 0.0) {
-                     $$19 = $$18 / 1.5;
-                  } else {
-                     $$19 = $$18 / 2.5;
-                  }
+               ept $$7 = $$6.get();
+               if (!$$5.a($$0, ib.a($$3), $$1, $$2)) {
+                  return false;
+               } else if (a($$0, $$3, $$7)) {
+                  return false;
                } else {
-                  double $$21 = 3.0 + $$17;
-                  if ($$21 > 0.0) {
-                     $$19 = $$21 / 3.0;
-                  } else {
-                     $$19 = $$21 / 10.0;
-                  }
-               }
-
-               double $$24 = 2.0;
-               double $$28;
-               if (!($$19 < -2.0) && !($$19 > 2.0)) {
-                  double $$26 = $$1.getValue();
-                  if (Double.isNaN($$26)) {
-                     double $$27 = this.m.a($$0);
-                     $$1.setValue($$27);
-                     $$28 = $$27;
-                  } else {
-                     $$28 = $$26;
-                  }
-               } else {
-                  $$28 = 0.0;
-               }
-
-               return 2.0 * ($$28 + $$19);
-            }
-         } else {
-            return 2.0;
-         }
-      }
-
-      private int a(int $$0) {
-         return Math.floorDiv($$0, 16);
-      }
-
-      private int b(int $$0) {
-         return Math.floorDiv($$0, 12);
-      }
-
-      private int c(int $$0) {
-         return Math.floorDiv($$0, 16);
-      }
-
-      private dry.b a(long $$0) {
-         int $$1 = ib.a($$0);
-         int $$2 = ib.b($$0);
-         int $$3 = ib.c($$0);
-         int $$4 = this.a($$1);
-         int $$5 = this.b($$2);
-         int $$6 = this.c($$3);
-         int $$7 = this.a($$4, $$5, $$6);
-         dry.b $$8 = this.r[$$7];
-         if ($$8 != null) {
-            return $$8;
-         } else {
-            dry.b $$9 = this.b($$1, $$2, $$3);
-            this.r[$$7] = $$9;
-            return $$9;
-         }
-      }
-
-      private dry.b b(int $$0, int $$1, int $$2) {
-         dry.b $$3 = this.t.computeFluid($$0, $$1, $$2);
-         int $$4 = Integer.MAX_VALUE;
-         int $$5 = $$1 + 12;
-         int $$6 = $$1 - 12;
-         boolean $$7 = false;
-
-         for (int[] $$8 : C) {
-            int $$9 = $$0 + je.c($$8[0]);
-            int $$10 = $$2 + je.c($$8[1]);
-            int $$11 = this.l.a($$9, $$10);
-            int $$12 = $$11 + 8;
-            boolean $$13 = $$8[0] == 0 && $$8[1] == 0;
-            if ($$13 && $$6 > $$12) {
-               return $$3;
-            }
-
-            boolean $$14 = $$5 > $$12;
-            if ($$14 || $$13) {
-               dry.b $$15 = this.t.computeFluid($$9, $$12, $$10);
-               if (!$$15.a($$12).i()) {
-                  if ($$13) {
-                     $$7 = true;
-                  }
-
-                  if ($$14) {
-                     return $$15;
-                  }
+                  this.a($$0, $$4, $$1, $$2, $$3, $$7);
+                  return true;
                }
             }
-
-            $$4 = Math.min($$4, $$11);
          }
-
-         int $$16 = this.a($$0, $$1, $$2, $$3, $$4, $$7);
-         return new dry.b($$16, this.a($$0, $$1, $$2, $$3, $$16));
       }
 
-      private int a(int $$0, int $$1, int $$2, dry.b $$3, int $$4, boolean $$5) {
-         dsf.e $$6 = new dsf.e($$0, $$1, $$2);
-         double $$7;
-         double $$8;
-         if (cyo.a(this.u, this.v, $$6)) {
-            $$7 = -1.0;
-            $$8 = -1.0;
-         } else {
-            int $$9 = $$4 + 8 - $$1;
-            int $$10 = 64;
-            double $$11 = $$5 ? aww.a((double)$$9, 0.0, 64.0, 1.0, 0.0) : 0.0;
-            double $$12 = aww.a(this.n.a($$6), -1.0, 1.0);
-            double $$13 = aww.b($$11, 1.0, 0.0, -0.3, 0.8);
-            double $$14 = aww.b($$11, 1.0, 0.0, -0.8, 0.4);
-            $$7 = $$12 - $$14;
-            $$8 = $$12 - $$13;
-         }
-
-         int $$17;
-         if ($$8 > 0.0) {
-            $$17 = $$3.a;
-         } else if ($$7 > 0.0) {
-            $$17 = this.a($$0, $$1, $$2, $$4);
-         } else {
-            $$17 = dqm.g;
-         }
-
-         return $$17;
+      public void b(apf $$0, il<drp> $$1, drp.a $$2, ept $$3) {
+         this.a.gq().b().a($$0).ifPresent($$4 -> this.a($$0, this.a.gp(), $$1, $$2, $$3, $$4));
       }
 
-      private int a(int $$0, int $$1, int $$2, int $$3) {
-         int $$4 = 16;
-         int $$5 = 40;
-         int $$6 = Math.floorDiv($$0, 16);
-         int $$7 = Math.floorDiv($$1, 40);
-         int $$8 = Math.floorDiv($$2, 16);
-         int $$9 = $$7 * 40 + 20;
-         int $$10 = 10;
-         double $$11 = this.o.a(new dsf.e($$6, $$7, $$8)) * 10.0;
-         int $$12 = aww.a($$11, 3);
-         int $$13 = $$9 + $$12;
-         return Math.min($$3, $$13);
+      private void a(apf $$0, dry.a $$1, il<drp> $$2, drp.a $$3, ept $$4, ept $$5) {
+         $$1.e.a(new drw($$2, (float)$$4.f($$5), $$4, $$3.a()), $$0.X());
       }
 
-      private dmz a(int $$0, int $$1, int $$2, dry.b $$3, int $$4) {
-         dmz $$5 = $$3.b;
-         if ($$4 <= -10 && $$4 != dqm.g && $$3.b != dac.H.o()) {
-            int $$6 = 64;
-            int $$7 = 40;
-            int $$8 = Math.floorDiv($$0, 64);
-            int $$9 = Math.floorDiv($$1, 40);
-            int $$10 = Math.floorDiv($$2, 64);
-            double $$11 = this.p.a(new dsf.e($$8, $$9, $$10));
-            if (Math.abs($$11) > 0.3) {
-               $$5 = dac.H.o();
+      public static float a(ib $$0, ib $$1) {
+         return (float)Math.sqrt($$0.j($$1));
+      }
+
+      private static boolean a(cxb $$0, ept $$1, ept $$2) {
+         ept $$3 = new ept((double)aww.a($$1.c) + 0.5, (double)aww.a($$1.d) + 0.5, (double)aww.a($$1.e) + 0.5);
+         ept $$4 = new ept((double)aww.a($$2.c) + 0.5, (double)aww.a($$2.d) + 0.5, (double)aww.a($$2.e) + 0.5);
+
+         for (ih $$5 : ih.values()) {
+            ept $$6 = $$3.a($$5, 1.0E-5F);
+            if ($$0.a(new cwj($$6, $$4, $$0x -> $$0x.a(aun.bq))).c() != epr.a.b) {
+               return false;
             }
          }
 
-         return $$5;
+         return true;
+      }
+   }
+
+   public interface c {
+      static void a(cxb $$0, dry.a $$1, dry.d $$2) {
+         if ($$0 instanceof apf $$3) {
+            if ($$1.c == null) {
+               a($$3, $$1, $$2);
+            }
+
+            if ($$1.c != null) {
+               boolean $$5 = $$1.c() > 0;
+               b($$3, $$1, $$2);
+               $$1.d();
+               if ($$1.c() <= 0) {
+                  $$5 = a($$3, $$1, $$2, $$1.c);
+               }
+
+               if ($$5) {
+                  $$2.e();
+               }
+            }
+         }
+      }
+
+      private static void a(apf $$0, dry.a $$1, dry.d $$2) {
+         $$1.a().a($$0.X()).ifPresent($$3 -> {
+            $$1.a($$3);
+            ept $$4 = $$3.c();
+            $$1.a($$2.a($$3.b()));
+            $$0.a(new kg($$2.b(), $$1.c()), $$4.c, $$4.d, $$4.e, 1, 0.0, 0.0, 0.0, 0.0);
+            $$2.e();
+            $$1.a().a();
+         });
+      }
+
+      private static void b(apf $$0, dry.a $$1, dry.d $$2) {
+         if ($$1.e()) {
+            if ($$1.c == null) {
+               $$1.a(false);
+            } else {
+               ept $$3 = $$1.c.c();
+               drt $$4 = $$2.b();
+               ept $$5 = $$4.a($$0).orElse($$3);
+               int $$6 = $$1.c();
+               int $$7 = $$2.a($$1.c.b());
+               double $$8 = 1.0 - (double)$$6 / (double)$$7;
+               double $$9 = aww.d($$8, $$3.c, $$5.c);
+               double $$10 = aww.d($$8, $$3.d, $$5.d);
+               double $$11 = aww.d($$8, $$3.e, $$5.e);
+               boolean $$12 = $$0.a(new kg($$4, $$6), $$9, $$10, $$11, 1, 0.0, 0.0, 0.0, 0.0) > 0;
+               if ($$12) {
+                  $$1.a(false);
+               }
+            }
+         }
+      }
+
+      private static boolean a(apf $$0, dry.a $$1, dry.d $$2, drw $$3) {
+         ib $$4 = ib.a($$3.c());
+         ib $$5 = $$2.b().a($$0).map(ib::a).orElse($$4);
+         if ($$2.f() && !a($$0, $$5)) {
+            return false;
+         } else {
+            $$2.a($$0, $$4, $$3.a(), $$3.a($$0).orElse(null), $$3.b($$0).orElse(null), dry.b.a($$4, $$5));
+            $$1.a(null);
+            return true;
+         }
+      }
+
+      private static boolean a(cxb $$0, ib $$1) {
+         cwi $$2 = new cwi($$1);
+
+         for (int $$3 = $$2.e - 1; $$3 <= $$2.e + 1; $$3++) {
+            for (int $$4 = $$2.f - 1; $$4 <= $$2.f + 1; $$4++) {
+               if (!$$0.a(cwi.c($$3, $$4)) || $$0.L().a($$3, $$4) == null) {
+                  return false;
+               }
+            }
+         }
+
+         return true;
+      }
+   }
+
+   public interface d {
+      int a();
+
+      drt b();
+
+      boolean a(apf var1, ib var2, il<drp> var3, drp.a var4);
+
+      void a(apf var1, ib var2, il<drp> var3, @Nullable box var4, @Nullable box var5, float var6);
+
+      default avd<drp> c() {
+         return aut.a;
+      }
+
+      default boolean d() {
+         return false;
+      }
+
+      default boolean f() {
+         return false;
+      }
+
+      default int a(float $$0) {
+         return aww.d($$0);
+      }
+
+      default boolean a(il<drp> $$0, drp.a $$1) {
+         if (!$$0.a(this.c())) {
+            return false;
+         } else {
+            box $$2 = $$1.a();
+            if ($$2 != null) {
+               if ($$2.N_()) {
+                  return false;
+               }
+
+               if ($$2.bT() && $$0.a(aut.d)) {
+                  if (this.d() && $$2 instanceof apg $$3) {
+                     am.ab.a($$3);
+                  }
+
+                  return false;
+               }
+
+               if ($$2.ba()) {
+                  return false;
+               }
+            }
+
+            return $$1.b() != null ? !$$1.b().a(aun.br) : true;
+         }
+      }
+
+      default void e() {
       }
    }
 }

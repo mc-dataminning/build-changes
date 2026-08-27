@@ -13,8 +13,8 @@ import java.util.List;
 
 public class alx {
    public static final SuggestionProvider<du> a = ($$0, $$1) -> {
-      ekx $$2 = ((du)$$0.getSource()).l().aM();
-      return dz.a($$2.a(ekz.c), $$1);
+      ekz $$2 = ((du)$$0.getSource()).l().aM();
+      return dz.a($$2.a(elb.c), $$1);
    };
    private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vu.b("commands.drop.no_held_items", $$0));
    private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> vu.b("commands.drop.no_loot_table", $$0));
@@ -30,7 +30,7 @@ public class alx {
                               .suggests(a)
                               .then(
                                  ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("pos", fo.a())
-                                             .executes($$1xx -> a($$1xx, ev.e($$1xx, "loot_table"), fo.a($$1xx, "pos"), cqk.h, $$2)))
+                                             .executes($$1xx -> a($$1xx, ev.e($$1xx, "loot_table"), fo.a($$1xx, "pos"), cqm.h, $$2)))
                                           .then(
                                              dv.a("tool", ga.a($$1))
                                                 .executes(
@@ -39,11 +39,11 @@ public class alx {
                                           ))
                                        .then(
                                           dv.a("mainhand")
-                                             .executes($$1xx -> a($$1xx, ev.e($$1xx, "loot_table"), fo.a($$1xx, "pos"), a((du)$$1xx.getSource(), bpd.a), $$2))
+                                             .executes($$1xx -> a($$1xx, ev.e($$1xx, "loot_table"), fo.a($$1xx, "pos"), a((du)$$1xx.getSource(), bpe.a), $$2))
                                        ))
                                     .then(
                                        dv.a("offhand")
-                                          .executes($$1xx -> a($$1xx, ev.e($$1xx, "loot_table"), fo.a($$1xx, "pos"), a((du)$$1xx.getSource(), bpd.b), $$2))
+                                          .executes($$1xx -> a($$1xx, ev.e($$1xx, "loot_table"), fo.a($$1xx, "pos"), a((du)$$1xx.getSource(), bpe.b), $$2))
                                     )
                               )
                         )
@@ -54,10 +54,10 @@ public class alx {
                      dv.a("mine")
                         .then(
                            ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)dv.a("pos", fo.a())
-                                       .executes($$1xx -> a($$1xx, fo.a($$1xx, "pos"), cqk.h, $$2)))
+                                       .executes($$1xx -> a($$1xx, fo.a($$1xx, "pos"), cqm.h, $$2)))
                                     .then(dv.a("tool", ga.a($$1)).executes($$1xx -> a($$1xx, fo.a($$1xx, "pos"), ga.a($$1xx, "tool").a(1, false), $$2))))
-                                 .then(dv.a("mainhand").executes($$1xx -> a($$1xx, fo.a($$1xx, "pos"), a((du)$$1xx.getSource(), bpd.a), $$2))))
-                              .then(dv.a("offhand").executes($$1xx -> a($$1xx, fo.a($$1xx, "pos"), a((du)$$1xx.getSource(), bpd.b), $$2)))
+                                 .then(dv.a("mainhand").executes($$1xx -> a($$1xx, fo.a($$1xx, "pos"), a((du)$$1xx.getSource(), bpe.a), $$2))))
+                              .then(dv.a("offhand").executes($$1xx -> a($$1xx, fo.a($$1xx, "pos"), a((du)$$1xx.getSource(), bpe.b), $$2)))
                         )
                   )
          )
@@ -115,20 +115,20 @@ public class alx {
          .then(dv.a("spawn").then($$1.construct(dv.a("targetPos", fv.a()), ($$0x, $$1x, $$2) -> a((du)$$0x.getSource(), fv.a($$0x, "targetPos"), $$1x, $$2))));
    }
 
-   private static bmv a(du $$0, ib $$1) throws CommandSyntaxException {
-      dkg $$2 = $$0.e().c_($$1);
-      if (!($$2 instanceof bmv)) {
+   private static bmw a(du $$0, ib $$1) throws CommandSyntaxException {
+      dki $$2 = $$0.e().c_($$1);
+      if (!($$2 instanceof bmw)) {
          throw alr.a.create($$1.u(), $$1.v(), $$1.w());
       } else {
-         return (bmv)$$2;
+         return (bmw)$$2;
       }
    }
 
-   private static int a(du $$0, ib $$1, List<cqk> $$2, alx.a $$3) throws CommandSyntaxException {
-      bmv $$4 = a($$0, $$1);
-      List<cqk> $$5 = Lists.newArrayListWithCapacity($$2.size());
+   private static int a(du $$0, ib $$1, List<cqm> $$2, alx.a $$3) throws CommandSyntaxException {
+      bmw $$4 = a($$0, $$1);
+      List<cqm> $$5 = Lists.newArrayListWithCapacity($$2.size());
 
-      for (cqk $$6 : $$2) {
+      for (cqm $$6 : $$2) {
          if (a($$4, $$6.q())) {
             $$4.e();
             $$5.add($$6);
@@ -139,11 +139,11 @@ public class alx {
       return $$5.size();
    }
 
-   private static boolean a(bmv $$0, cqk $$1) {
+   private static boolean a(bmw $$0, cqm $$1) {
       boolean $$2 = false;
 
       for (int $$3 = 0; $$3 < $$0.b() && !$$1.b(); $$3++) {
-         cqk $$4 = $$0.a($$3);
+         cqm $$4 = $$0.a($$3);
          if ($$0.b($$3, $$1)) {
             if ($$4.b()) {
                $$0.a($$3, $$1);
@@ -164,15 +164,15 @@ public class alx {
       return $$2;
    }
 
-   private static int a(du $$0, ib $$1, int $$2, int $$3, List<cqk> $$4, alx.a $$5) throws CommandSyntaxException {
-      bmv $$6 = a($$0, $$1);
+   private static int a(du $$0, ib $$1, int $$2, int $$3, List<cqm> $$4, alx.a $$5) throws CommandSyntaxException {
+      bmw $$6 = a($$0, $$1);
       int $$7 = $$6.b();
       if ($$2 >= 0 && $$2 < $$7) {
-         List<cqk> $$8 = Lists.newArrayListWithCapacity($$4.size());
+         List<cqm> $$8 = Lists.newArrayListWithCapacity($$4.size());
 
          for (int $$9 = 0; $$9 < $$3; $$9++) {
             int $$10 = $$2 + $$9;
-            cqk $$11 = $$9 < $$4.size() ? $$4.get($$9) : cqk.h;
+            cqm $$11 = $$9 < $$4.size() ? $$4.get($$9) : cqm.h;
             if ($$6.b($$10, $$11)) {
                $$6.a($$10, $$11);
                $$8.add($$11);
@@ -186,14 +186,14 @@ public class alx {
       }
    }
 
-   private static boolean a(cqk $$0, cqk $$1) {
-      return $$0.M() <= $$0.g() && cqk.c($$0, $$1);
+   private static boolean a(cqm $$0, cqm $$1) {
+      return $$0.M() <= $$0.g() && cqm.c($$0, $$1);
    }
 
-   private static int a(Collection<apg> $$0, List<cqk> $$1, alx.a $$2) throws CommandSyntaxException {
-      List<cqk> $$3 = Lists.newArrayListWithCapacity($$1.size());
+   private static int a(Collection<apg> $$0, List<cqm> $$1, alx.a $$2) throws CommandSyntaxException {
+      List<cqm> $$3 = Lists.newArrayListWithCapacity($$1.size());
 
-      for (cqk $$4 : $$1) {
+      for (cqm $$4 : $$1) {
          for (apg $$5 : $$0) {
             if ($$5.fZ().e($$4.q())) {
                $$3.add($$4);
@@ -205,20 +205,20 @@ public class alx {
       return $$3.size();
    }
 
-   private static void a(bow $$0, List<cqk> $$1, int $$2, int $$3, List<cqk> $$4) {
+   private static void a(box $$0, List<cqm> $$1, int $$2, int $$3, List<cqm> $$4) {
       for (int $$5 = 0; $$5 < $$3; $$5++) {
-         cqk $$6 = $$5 < $$1.size() ? $$1.get($$5) : cqk.h;
-         bqf $$7 = $$0.a_($$2 + $$5);
-         if ($$7 != bqf.b && $$7.a($$6.q())) {
+         cqm $$6 = $$5 < $$1.size() ? $$1.get($$5) : cqm.h;
+         bqg $$7 = $$0.a_($$2 + $$5);
+         if ($$7 != bqg.b && $$7.a($$6.q())) {
             $$4.add($$6);
          }
       }
    }
 
-   private static int a(Collection<? extends bow> $$0, int $$1, int $$2, List<cqk> $$3, alx.a $$4) throws CommandSyntaxException {
-      List<cqk> $$5 = Lists.newArrayListWithCapacity($$3.size());
+   private static int a(Collection<? extends box> $$0, int $$1, int $$2, List<cqm> $$3, alx.a $$4) throws CommandSyntaxException {
+      List<cqm> $$5 = Lists.newArrayListWithCapacity($$3.size());
 
-      for (bow $$6 : $$0) {
+      for (box $$6 : $$0) {
          if ($$6 instanceof apg $$7) {
             a($$6, $$3, $$1, $$2, $$5);
             $$7.bZ.d();
@@ -231,10 +231,10 @@ public class alx {
       return $$5.size();
    }
 
-   private static int a(du $$0, epr $$1, List<cqk> $$2, alx.a $$3) throws CommandSyntaxException {
+   private static int a(du $$0, ept $$1, List<cqm> $$2, alx.a $$3) throws CommandSyntaxException {
       apf $$4 = $$0.e();
       $$2.forEach($$2x -> {
-         cfd $$3x = new cfd($$4, $$1.c, $$1.d, $$1.e, $$2x.q());
+         cfe $$3x = new cfe($$4, $$1.c, $$1.d, $$1.e, $$2x.q());
          $$3x.s();
          $$4.b($$3x);
       });
@@ -242,94 +242,94 @@ public class alx {
       return $$2.size();
    }
 
-   private static void a(du $$0, List<cqk> $$1) {
+   private static void a(du $$0, List<cqm> $$1) {
       if ($$1.size() == 1) {
-         cqk $$2 = $$1.get(0);
+         cqm $$2 = $$1.get(0);
          $$0.a(() -> vu.a("commands.drop.success.single", $$2.M(), $$2.K()), false);
       } else {
          $$0.a(() -> vu.a("commands.drop.success.multiple", $$1.size()), false);
       }
    }
 
-   private static void a(du $$0, List<cqk> $$1, ajh $$2) {
+   private static void a(du $$0, List<cqm> $$1, ajh $$2) {
       if ($$1.size() == 1) {
-         cqk $$3 = $$1.get(0);
+         cqm $$3 = $$1.get(0);
          $$0.a(() -> vu.a("commands.drop.success.single_with_table", $$3.M(), $$3.K(), vu.a($$2)), false);
       } else {
          $$0.a(() -> vu.a("commands.drop.success.multiple_with_table", $$1.size(), vu.a($$2)), false);
       }
    }
 
-   private static cqk a(du $$0, bpd $$1) throws CommandSyntaxException {
-      bow $$2 = $$0.g();
-      if ($$2 instanceof bpo) {
-         return ((bpo)$$2).d($$1);
+   private static cqm a(du $$0, bpe $$1) throws CommandSyntaxException {
+      box $$2 = $$0.g();
+      if ($$2 instanceof bpp) {
+         return ((bpp)$$2).d($$1);
       } else {
          throw b.create($$2.O_());
       }
    }
 
-   private static int a(CommandContext<du> $$0, ib $$1, cqk $$2, alx.b $$3) throws CommandSyntaxException {
+   private static int a(CommandContext<du> $$0, ib $$1, cqm $$2, alx.b $$3) throws CommandSyntaxException {
       du $$4 = (du)$$0.getSource();
       apf $$5 = $$4.e();
-      dmz $$6 = $$5.a_($$1);
-      dkg $$7 = $$5.c_($$1);
-      ela.a $$8 = new ela.a($$5).a(enf.f, epr.b($$1)).a(enf.g, $$6).b(enf.h, $$7).b(enf.a, $$4.f()).a(enf.i, $$2);
-      List<cqk> $$9 = $$6.a($$8);
+      dnb $$6 = $$5.a_($$1);
+      dki $$7 = $$5.c_($$1);
+      elc.a $$8 = new elc.a($$5).a(enh.f, ept.b($$1)).a(enh.g, $$6).b(enh.h, $$7).b(enh.a, $$4.f()).a(enh.i, $$2);
+      List<cqm> $$9 = $$6.a($$8);
       return $$3.accept($$0, $$9, $$2x -> a($$4, $$2x, $$6.b().v()));
    }
 
-   private static int a(CommandContext<du> $$0, bow $$1, alx.b $$2) throws CommandSyntaxException {
-      if (!($$1 instanceof bpo)) {
+   private static int a(CommandContext<du> $$0, box $$1, alx.b $$2) throws CommandSyntaxException {
+      if (!($$1 instanceof bpp)) {
          throw c.create($$1.O_());
       } else {
-         ajh $$3 = ((bpo)$$1).eC();
+         ajh $$3 = ((bpp)$$1).eC();
          du $$4 = (du)$$0.getSource();
-         ela.a $$5 = new ela.a($$4.e());
-         bow $$6 = $$4.f();
-         if ($$6 instanceof cis $$7) {
-            $$5.a(enf.b, $$7);
+         elc.a $$5 = new elc.a($$4.e());
+         box $$6 = $$4.f();
+         if ($$6 instanceof ciu $$7) {
+            $$5.a(enh.b, $$7);
          }
 
-         $$5.a(enf.c, $$1.dN().o());
-         $$5.b(enf.e, $$6);
-         $$5.b(enf.d, $$6);
-         $$5.a(enf.a, $$1);
-         $$5.a(enf.f, $$4.d());
-         ela $$8 = $$5.a(ene.g);
-         elc $$9 = $$4.l().aM().getLootTable($$3);
-         List<cqk> $$10 = $$9.a($$8);
+         $$5.a(enh.c, $$1.dN().o());
+         $$5.b(enh.e, $$6);
+         $$5.b(enh.d, $$6);
+         $$5.a(enh.a, $$1);
+         $$5.a(enh.f, $$4.d());
+         elc $$8 = $$5.a(eng.g);
+         ele $$9 = $$4.l().aM().getLootTable($$3);
+         List<cqm> $$10 = $$9.a($$8);
          return $$2.accept($$0, $$10, $$2x -> a($$4, $$2x, $$3));
       }
    }
 
    private static int a(CommandContext<du> $$0, ajh $$1, alx.b $$2) throws CommandSyntaxException {
       du $$3 = (du)$$0.getSource();
-      ela $$4 = new ela.a($$3.e()).b(enf.a, $$3.f()).a(enf.f, $$3.d()).a(ene.c);
+      elc $$4 = new elc.a($$3.e()).b(enh.a, $$3.f()).a(enh.f, $$3.d()).a(eng.c);
       return a($$0, $$1, $$4, $$2);
    }
 
-   private static int a(CommandContext<du> $$0, ajh $$1, ib $$2, cqk $$3, alx.b $$4) throws CommandSyntaxException {
+   private static int a(CommandContext<du> $$0, ajh $$1, ib $$2, cqm $$3, alx.b $$4) throws CommandSyntaxException {
       du $$5 = (du)$$0.getSource();
-      ela $$6 = new ela.a($$5.e()).a(enf.f, epr.b($$2)).a(enf.i, $$3).b(enf.a, $$5.f()).a(ene.f);
+      elc $$6 = new elc.a($$5.e()).a(enh.f, ept.b($$2)).a(enh.i, $$3).b(enh.a, $$5.f()).a(eng.f);
       return a($$0, $$1, $$6, $$4);
    }
 
-   private static int a(CommandContext<du> $$0, ajh $$1, ela $$2, alx.b $$3) throws CommandSyntaxException {
+   private static int a(CommandContext<du> $$0, ajh $$1, elc $$2, alx.b $$3) throws CommandSyntaxException {
       du $$4 = (du)$$0.getSource();
-      elc $$5 = $$4.l().aM().getLootTable($$1);
-      List<cqk> $$6 = $$5.a($$2);
+      ele $$5 = $$4.l().aM().getLootTable($$1);
+      List<cqm> $$6 = $$5.a($$2);
       return $$3.accept($$0, $$6, $$1x -> a($$4, $$1x));
    }
 
    @FunctionalInterface
    interface a {
-      void accept(List<cqk> var1) throws CommandSyntaxException;
+      void accept(List<cqm> var1) throws CommandSyntaxException;
    }
 
    @FunctionalInterface
    interface b {
-      int accept(CommandContext<du> var1, List<cqk> var2, alx.a var3) throws CommandSyntaxException;
+      int accept(CommandContext<du> var1, List<cqm> var2, alx.a var3) throws CommandSyntaxException;
    }
 
    @FunctionalInterface

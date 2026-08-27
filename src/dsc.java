@@ -1,181 +1,97 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.BitSet;
 import java.util.Optional;
-import java.util.OptionalInt;
+import java.util.Set;
+import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.LongStream;
+import javax.annotation.Nullable;
 
-public abstract class dsc {
-   public static dsc.b a(int $$0, int $$1) {
-      return new dsc.b($$0 - 1, $$1 + 1);
-   }
-
-   public static dsc.b b(int $$0, int $$1) {
-      return new dsc.b($$0, $$1);
-   }
-
-   public static dsc a(int $$0) {
-      return new dsc.c($$0, false);
-   }
-
-   public static dsc b(int $$0) {
-      return new dsc.c($$0 + 1, false);
-   }
-
-   public static dsc c(int $$0) {
-      return new dsc.c($$0, true);
-   }
-
-   public static dsc d(int $$0) {
-      return new dsc.c($$0 - 1, true);
-   }
-
-   public static dsc a() {
-      return dsc.a.a;
-   }
-
-   public static dsc a(OptionalInt $$0, OptionalInt $$1) {
-      if ($$0.isPresent() && $$1.isPresent()) {
-         return b($$0.getAsInt(), $$1.getAsInt());
-      } else if ($$0.isPresent()) {
-         return c($$0.getAsInt());
-      } else {
-         return $$1.isPresent() ? a($$1.getAsInt()) : a();
-      }
-   }
-
-   public abstract OptionalInt b();
-
-   public abstract OptionalInt c();
-
-   public abstract OptionalInt d();
-
-   public dsc a(OptionalInt $$0) {
-      return a($$0, this.b());
-   }
-
-   public dsc b(OptionalInt $$0) {
-      return a(this.c(), $$0);
-   }
-
-   public static Optional<dsc> a(cxf $$0, ib $$1, int $$2, Predicate<dmz> $$3, Predicate<dmz> $$4) {
-      ib.a $$5 = $$1.j();
-      if (!$$0.a($$1, $$3)) {
-         return Optional.empty();
-      } else {
-         int $$6 = $$1.v();
-         OptionalInt $$7 = a($$0, $$2, $$3, $$4, $$5, $$6, ih.b);
-         OptionalInt $$8 = a($$0, $$2, $$3, $$4, $$5, $$6, ih.a);
-         return Optional.of(a($$8, $$7));
-      }
-   }
-
-   private static OptionalInt a(cxf $$0, int $$1, Predicate<dmz> $$2, Predicate<dmz> $$3, ib.a $$4, int $$5, ih $$6) {
-      $$4.q($$5);
-
-      for (int $$7 = 1; $$7 < $$1 && $$0.a($$4, $$2); $$7++) {
-         $$4.c($$6);
-      }
-
-      return $$0.a($$4, $$3) ? OptionalInt.of($$4.v()) : OptionalInt.empty();
-   }
-
-   public static final class a extends dsc {
-      static final dsc.a a = new dsc.a();
-
-      private a() {
+public final class dsc {
+   private static final BitSet c = new BitSet(0);
+   private static final Codec<BitSet> d = Codec.LONG_STREAM.xmap($$0 -> BitSet.valueOf($$0.toArray()), $$0 -> LongStream.of($$0.toLongArray()));
+   private static final Codec<dpc> e = ki.n
+      .q()
+      .comapFlatMap($$0 -> $$0 == dpc.c ? DataResult.error(() -> "target_status cannot be empty") : DataResult.success($$0), Function.identity());
+   public static final Codec<dsc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               e.fieldOf("target_status").forGetter(dsc::a),
+               d.optionalFieldOf("missing_bedrock").forGetter($$0x -> $$0x.h.isEmpty() ? Optional.empty() : Optional.of($$0x.h))
+            )
+            .apply($$0, dsc::new)
+   );
+   private static final Set<ajg<cya>> f = Set.of(cyh.aa, cyh.Z, cyh.ab);
+   public static final cxd b = new cxd() {
+      @Override
+      public int J_() {
+         return 64;
       }
 
       @Override
-      public OptionalInt b() {
-         return OptionalInt.empty();
+      public int I_() {
+         return -64;
       }
+   };
+   private final dpc g;
+   private final BitSet h;
 
-      @Override
-      public OptionalInt c() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public OptionalInt d() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public String toString() {
-         return "C(-)";
-      }
+   private dsc(dpc $$0, Optional<BitSet> $$1) {
+      this.g = $$0;
+      this.h = $$1.orElse(c);
    }
 
-   public static final class b extends dsc {
-      private final int a;
-      private final int b;
+   @Nullable
+   public static dsc a(ta $$0) {
+      dpc $$1 = dpc.a($$0.l("target_status"));
+      return $$1 == dpc.c ? null : new dsc($$1, Optional.of(BitSet.valueOf($$0.o("missing_bedrock"))));
+   }
 
-      protected b(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-         if (this.g() < 0) {
-            throw new IllegalArgumentException("Column of negative height: " + this);
+   public static void a(dps $$0) {
+      int $$1 = 4;
+      ib.b(0, 0, 0, 15, 4, 15).forEach($$1x -> {
+         if ($$0.a_($$1x).a(dae.F)) {
+            $$0.a($$1x, dae.sJ.o(), false);
+         }
+      });
+   }
+
+   public void b(dps $$0) {
+      cxd $$1 = $$0.z();
+      int $$2 = $$1.I_();
+      int $$3 = $$1.ak() - 1;
+
+      for (int $$4 = 0; $$4 < 16; $$4++) {
+         for (int $$5 = 0; $$5 < 16; $$5++) {
+            if (this.a($$4, $$5)) {
+               ib.b($$4, $$2, $$5, $$4, $$3, $$5).forEach($$1x -> $$0.a($$1x, dae.a.o(), false));
+            }
          }
       }
-
-      @Override
-      public OptionalInt b() {
-         return OptionalInt.of(this.b);
-      }
-
-      @Override
-      public OptionalInt c() {
-         return OptionalInt.of(this.a);
-      }
-
-      @Override
-      public OptionalInt d() {
-         return OptionalInt.of(this.g());
-      }
-
-      public int e() {
-         return this.b;
-      }
-
-      public int f() {
-         return this.a;
-      }
-
-      public int g() {
-         return this.b - this.a - 1;
-      }
-
-      @Override
-      public String toString() {
-         return "C(" + this.b + "-" + this.a + ")";
-      }
    }
 
-   public static final class c extends dsc {
-      private final int a;
-      private final boolean b;
+   public dpc a() {
+      return this.g;
+   }
 
-      public c(int $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   public boolean b() {
+      return !this.h.isEmpty();
+   }
 
-      @Override
-      public OptionalInt b() {
-         return this.b ? OptionalInt.empty() : OptionalInt.of(this.a);
-      }
+   public boolean a(int $$0, int $$1) {
+      return this.h.get(($$1 & 15) * 16 + ($$0 & 15));
+   }
 
-      @Override
-      public OptionalInt c() {
-         return this.b ? OptionalInt.of(this.a) : OptionalInt.empty();
-      }
-
-      @Override
-      public OptionalInt d() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public String toString() {
-         return this.b ? "C(" + this.a + "-)" : "C(-" + this.a + ")";
+   public static cyd a(cyd $$0, dox $$1) {
+      if (!$$1.y()) {
+         return $$0;
+      } else {
+         Predicate<ajg<cya>> $$2 = f::contains;
+         return ($$3, $$4, $$5, $$6) -> {
+            il<cya> $$7 = $$0.getNoiseBiome($$3, $$4, $$5, $$6);
+            return $$7.a($$2) ? $$7 : $$1.getNoiseBiome($$3, 0, $$5);
+         };
       }
    }
 }

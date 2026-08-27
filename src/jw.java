@@ -5,7 +5,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import org.joml.Vector3f;
 
 public class jw extends jx {
-   public static final Vector3f a = epr.a(16711680).j();
+   public static final Vector3f a = ept.a(16711680).j();
    public static final jw b = new jw(a, 1.0F);
    public static final Codec<jw> c = RecordCodecBuilder.create(
       $$0 -> $$0.group(awe.d.fieldOf("color").forGetter($$0x -> $$0x.h), Codec.FLOAT.fieldOf("scale").forGetter($$0x -> $$0x.i)).apply($$0, jw::new)

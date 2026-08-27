@@ -1,6 +1,11 @@
-class bod extends boh {
-   protected bod(boi $$0, int $$1) {
+class bod extends boi {
+   protected bod(boj $$0, int $$1) {
       super($$0, $$1);
+   }
+
+   @Override
+   public boolean a(bpp $$0, int $$1) {
+      return $$0.fp() > 0.0F || $$0.dM().B;
    }
 
    @Override
@@ -9,14 +14,8 @@ class bod extends boh {
    }
 
    @Override
-   public boolean a(bpo $$0, int $$1) {
-      if ($$0 instanceof apg $$2 && !$$0.N_()) {
-         apf $$3 = $$2.z();
-         if ($$3.aj() != bmz.a && $$3.c($$0.dm())) {
-            $$3.z().a($$2);
-         }
-      }
-
-      return true;
+   public void b(bpp $$0, int $$1) {
+      super.b($$0, $$1);
+      $$0.A(Math.max($$0.fp(), (float)(4 * (1 + $$1))));
    }
 }

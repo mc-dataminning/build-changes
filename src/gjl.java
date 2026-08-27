@@ -1,35 +1,29 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import org.slf4j.Logger;
 
-public class gjl implements gjd {
-   private static final Logger c = LogUtils.getLogger();
+public class gjl implements gjg {
    public static final Codec<gjl> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ajh.a.fieldOf("resource").forGetter($$0x -> $$0x.d), ajh.a.optionalFieldOf("sprite").forGetter($$0x -> $$0x.e)).apply($$0, gjl::new)
+      $$0 -> $$0.group(Codec.STRING.fieldOf("source").forGetter($$0x -> $$0x.c), Codec.STRING.fieldOf("prefix").forGetter($$0x -> $$0x.d)).apply($$0, gjl::new)
    );
-   private final ajh d;
-   private final Optional<ajh> e;
+   private final String c;
+   private final String d;
 
-   public gjl(ajh $$0, Optional<ajh> $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public gjl(String $$0, String $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public void a(aso $$0, gjd.a $$1) {
-      ajh $$2 = a.a(this.d);
-      Optional<asm> $$3 = $$0.getResource($$2);
-      if ($$3.isPresent()) {
-         $$1.a(this.e.orElse(this.d), $$3.get());
-      } else {
-         c.warn("Missing sprite: {}", $$2);
-      }
+   public void a(aso $$0, gjg.a $$1) {
+      aja $$2 = new aja("textures/" + this.c, ".png");
+      $$2.a($$0).forEach(($$2x, $$3) -> {
+         ajh $$4 = $$2.b($$2x).d(this.d);
+         $$1.a($$4, $$3);
+      });
    }
 
    @Override
-   public gjf a() {
-      return gjg.a;
+   public gji a() {
+      return gjj.b;
    }
 }

@@ -1,122 +1,113 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Pair;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class brv extends brg<cif> {
-   private static final int c = 5;
-   private static final int d = 600;
-   private static final int e = 6600;
-   private static final int f = 20;
-   private static final Map<cii, ajh> g = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(cii.c, eks.ax);
-      $$0.put(cii.d, eks.ay);
-      $$0.put(cii.e, eks.az);
-      $$0.put(cii.f, eks.aA);
-      $$0.put(cii.g, eks.aB);
-      $$0.put(cii.h, eks.aC);
-      $$0.put(cii.i, eks.aD);
-      $$0.put(cii.j, eks.aE);
-      $$0.put(cii.k, eks.aF);
-      $$0.put(cii.l, eks.aG);
-      $$0.put(cii.n, eks.aH);
-      $$0.put(cii.o, eks.aI);
-      $$0.put(cii.p, eks.aJ);
-   });
-   private static final float h = 0.5F;
-   private int i = 600;
-   private boolean j;
-   private long k;
+public class brv<E extends bpp> implements bri<E> {
+   private final Map<bys<?>, byt> a;
+   private final Set<bys<?>> b;
+   private final brv.a c;
+   private final brv.b d;
+   private final btq<bri<? super E>> e = new btq<>();
+   private brh.a f = brh.a.a;
 
-   public brv(int $$0) {
-      super(ImmutableMap.of(byr.m, bys.c, byr.n, bys.c, byr.q, bys.c, byr.k, bys.a), $$0);
+   public brv(Map<bys<?>, byt> $$0, Set<bys<?>> $$1, brv.a $$2, brv.b $$3, List<Pair<? extends bri<? super E>, Integer>> $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      $$4.forEach($$0x -> this.e.a((bri<? super E>)$$0x.getFirst(), (Integer)$$0x.getSecond()));
    }
 
-   protected boolean a(apf $$0, cif $$1) {
-      if (!this.b($$1)) {
-         return false;
-      } else if (this.i > 0) {
-         this.i--;
-         return false;
-      } else {
+   @Override
+   public brh.a a() {
+      return this.f;
+   }
+
+   private boolean a(E $$0) {
+      for (Entry<bys<?>, byt> $$1 : this.a.entrySet()) {
+         bys<?> $$2 = $$1.getKey();
+         byt $$3 = $$1.getValue();
+         if (!$$0.dP().a($$2, $$3)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   public final boolean e(apf $$0, E $$1, long $$2) {
+      if (this.a($$1)) {
+         this.f = brh.a.b;
+         this.c.a(this.e);
+         this.d.a(this.e.b(), $$0, $$1, $$2);
          return true;
-      }
-   }
-
-   protected void a(apf $$0, cif $$1, long $$2) {
-      this.j = false;
-      this.k = $$2;
-      cis $$3 = this.c($$1).get();
-      $$1.dP().a(byr.q, $$3);
-      bri.a($$1, $$3);
-   }
-
-   protected boolean b(apf $$0, cif $$1, long $$2) {
-      return this.b($$1) && !this.j;
-   }
-
-   protected void c(apf $$0, cif $$1, long $$2) {
-      cis $$3 = this.c($$1).get();
-      bri.a($$1, $$3);
-      if (this.a($$1, $$3)) {
-         if ($$2 - this.k > 20L) {
-            this.a($$1, (bpo)$$3);
-            this.j = true;
-         }
       } else {
-         bri.a($$1, $$3, 0.5F, 5);
+         return false;
       }
    }
 
-   protected void d(apf $$0, cif $$1, long $$2) {
-      this.i = a($$0);
-      $$1.dP().b(byr.q);
-      $$1.dP().b(byr.m);
-      $$1.dP().b(byr.n);
-   }
-
-   private void a(cif $$0, bpo $$1) {
-      for (cqk $$3 : this.a($$0)) {
-         bri.a($$0, $$3, $$1.dk());
+   @Override
+   public final void f(apf $$0, E $$1, long $$2) {
+      this.e.b().filter($$0x -> $$0x.a() == brh.a.b).forEach($$3 -> $$3.f($$0, $$1, $$2));
+      if (this.e.b().noneMatch($$0x -> $$0x.a() == brh.a.b)) {
+         this.g($$0, $$1, $$2);
       }
    }
 
-   private List<cqk> a(cif $$0) {
-      if ($$0.o_()) {
-         return ImmutableList.of(new cqk(cqn.dk));
-      } else {
-         cii $$1 = $$0.gy().b();
-         if (g.containsKey($$1)) {
-            elc $$2 = $$0.dM().o().aM().getLootTable(g.get($$1));
-            ela $$3 = new ela.a((apf)$$0.dM()).a(enf.f, $$0.dk()).a(enf.a, $$0).a(ene.i);
-            return $$2.a($$3);
-         } else {
-            return ImmutableList.of(new cqk(cqn.pu));
+   @Override
+   public final void g(apf $$0, E $$1, long $$2) {
+      this.f = brh.a.a;
+      this.e.b().filter($$0x -> $$0x.a() == brh.a.b).forEach($$3 -> $$3.g($$0, $$1, $$2));
+      this.b.forEach($$1.dP()::b);
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
+   }
+
+   @Override
+   public String toString() {
+      Set<? extends bri<? super E>> $$0 = this.e.b().filter($$0x -> $$0x.a() == brh.a.b).collect(Collectors.toSet());
+      return "(" + this.getClass().getSimpleName() + "): " + $$0;
+   }
+
+   public static enum a {
+      a($$0 -> {
+      }),
+      b(btq::a);
+
+      private final Consumer<btq<?>> c;
+
+      private a(Consumer<btq<?>> $$0) {
+         this.c = $$0;
+      }
+
+      public void a(btq<?> $$0) {
+         this.c.accept($$0);
+      }
+   }
+
+   public static enum b {
+      a {
+         @Override
+         public <E extends bpp> void a(Stream<bri<? super E>> $$0, apf $$1, E $$2, long $$3) {
+            $$0.filter($$0x -> $$0x.a() == brh.a.a).filter($$3x -> $$3x.e($$1, $$2, $$3)).findFirst();
          }
-      }
-   }
+      },
+      b {
+         @Override
+         public <E extends bpp> void a(Stream<bri<? super E>> $$0, apf $$1, E $$2, long $$3) {
+            $$0.filter($$0x -> $$0x.a() == brh.a.a).forEach($$3x -> $$3x.e($$1, $$2, $$3));
+         }
+      };
 
-   private boolean b(cif $$0) {
-      return this.c($$0).isPresent();
-   }
-
-   private Optional<cis> c(cif $$0) {
-      return $$0.dP().c(byr.k).filter(this::a);
-   }
-
-   private boolean a(cis $$0) {
-      return $$0.a(bol.F);
-   }
-
-   private boolean a(cif $$0, cis $$1) {
-      ib $$2 = $$1.dm();
-      ib $$3 = $$0.dm();
-      return $$3.a($$2, 5.0);
-   }
-
-   private static int a(apf $$0) {
-      return 600 + $$0.z.a(6001);
+      public abstract <E extends bpp> void a(Stream<bri<? super E>> var1, apf var2, E var3, long var4);
    }
 }

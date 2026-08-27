@@ -1,109 +1,54 @@
 import com.mojang.serialization.Codec;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class dws extends dvq<dyk> {
-   public dws(Codec<dyk> $$0) {
+public class dws extends dvs<dyl> {
+   public dws(Codec<dyl> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dvs<dyk> $$0) {
-      cxu $$1 = $$0.b();
-      ib $$2 = $$0.e();
-      if (!$$1.a_($$2).i()) {
+   public boolean a(dvu<dyl> $$0) {
+      dyl $$1 = $$0.f();
+      cxw $$2 = $$0.b();
+      axd $$3 = $$0.d();
+      dac $$4 = $$1.b.b();
+      ib $$5 = a($$2, $$0.e().j().a(ih.a.b, $$2.I_() + 1, $$2.ak() - 1), $$4);
+      if ($$5 == null) {
          return false;
       } else {
-         axd $$3 = $$0.d();
-         ib $$4 = $$0.e();
-         dyk $$5 = $$0.f();
-         ib.a $$6 = $$4.j();
-         if (a($$1, $$0.c(), $$5, $$3, $$6, $$4)) {
-            a($$1, $$5, $$3, $$4, $$6);
-         }
+         int $$6 = $$1.a().a($$3);
+         int $$7 = $$1.a().a($$3);
+         int $$8 = $$1.a().a($$3);
+         int $$9 = Math.max($$6, Math.max($$7, $$8));
+         boolean $$10 = false;
 
-         return true;
-      }
-   }
-
-   private static boolean a(cxu $$0, dyk $$1, ib $$2) {
-      ib.a $$3 = $$2.j();
-
-      for (int $$4 = 1; $$4 <= $$1.c; $$4++) {
-         $$3.c(ih.b);
-         dmz $$5 = $$0.a_($$3);
-         if (!a($$5, $$4, $$1.n)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   private static boolean a(dmz $$0, int $$1, int $$2) {
-      if ($$0.i()) {
-         return true;
-      } else {
-         int $$3 = $$1 + 1;
-         return $$3 <= $$2 && $$0.u().a(aus.a);
-      }
-   }
-
-   private static boolean a(cxu $$0, dow $$1, dyk $$2, axd $$3, ib.a $$4, ib $$5) {
-      for (int $$6 = 0; $$6 < $$2.h; $$6++) {
-         $$4.c(ih.b);
-         if ($$2.o.test($$0, $$4) && a($$0, $$2, $$4)) {
-            ib $$7 = $$4.d();
-            if ($$0.b_($$7).a(aus.b) || !$$0.a_($$7).e()) {
-               return false;
+         for (ib $$11 : ib.a($$5, $$6, $$7, $$8)) {
+            if ($$11.k($$5) > $$9) {
+               break;
             }
 
-            if ($$2.b.a().a($$0, $$1, $$3, $$4)) {
-               a($$5, $$5.v() + $$6, $$0, $$2, $$3);
-               return true;
+            dnb $$12 = $$2.a_($$11);
+            if ($$12.a($$4)) {
+               this.a($$2, $$11, $$1.c);
+               $$10 = true;
             }
          }
-      }
 
-      return false;
-   }
-
-   private static void a(ib $$0, int $$1, cxu $$2, dyk $$3, axd $$4) {
-      int $$5 = $$0.u();
-      int $$6 = $$0.w();
-      ib.a $$7 = $$0.j();
-
-      for (int $$8 = $$0.v(); $$8 < $$1; $$8++) {
-         a($$2, $$3, $$4, $$5, $$6, $$7.d($$5, $$8, $$6));
+         return $$10;
       }
    }
 
-   private static void a(cxu $$0, dyk $$1, axd $$2, int $$3, int $$4, ib.a $$5) {
-      int $$6 = $$1.d;
-      Predicate<dmz> $$7 = $$1x -> $$1x.a($$1.e);
-
-      for (int $$8 = 0; $$8 < $$1.g; $$8++) {
-         $$5.a($$5, $$2.a($$6) - $$2.a($$6), 0, $$2.a($$6) - $$2.a($$6));
-         if ($$7.test($$0.a_($$5))) {
-            $$0.a($$5, $$1.f.a($$2, $$5), 2);
+   @Nullable
+   private static ib a(cxc $$0, ib.a $$1, dac $$2) {
+      while ($$1.v() > $$0.I_() + 1) {
+         dnb $$3 = $$0.a_($$1);
+         if ($$3.a($$2)) {
+            return $$1;
          }
 
-         $$5.p($$3);
-         $$5.r($$4);
+         $$1.c(ih.a);
       }
-   }
 
-   private static void a(cxu $$0, dyk $$1, axd $$2, ib $$3, ib.a $$4) {
-      int $$5 = $$1.i;
-      int $$6 = $$1.j;
-
-      for (int $$7 = 0; $$7 < $$1.l; $$7++) {
-         $$4.a($$3, $$2.a($$5) - $$2.a($$5), $$2.a($$6) - $$2.a($$6), $$2.a($$5) - $$2.a($$5));
-         if ($$0.u($$4)) {
-            dmz $$8 = $$1.k.a($$2, $$4);
-            if ($$8.a($$0, $$4) && $$0.a_($$4.c()).d($$0, $$4, ih.a)) {
-               $$0.a($$4, $$8, 2);
-            }
-         }
-      }
+      return null;
    }
 }

@@ -1,21 +1,29 @@
-import java.util.concurrent.ConcurrentLinkedQueue;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.system.MemoryUtil;
+import java.util.function.Function;
 
-public class erp {
-   public static void a(esk $$0, float $$1) {
-      ConcurrentLinkedQueue<esj> $$2 = $$0.i();
+public class erp<T> implements erg<T> {
+   private final Function<ib, ern<T>> a;
+
+   public erp(Function<ib, ern<T>> $$0) {
+      this.a = $$0;
    }
 
-   public static void b(esk $$0, float $$1) {
-      ConcurrentLinkedQueue<esj> $$2 = $$0.j();
+   @Override
+   public boolean a(ib $$0, T $$1) {
+      return this.a.apply($$0).a($$0, $$1);
    }
 
-   public static void a() {
-      MemoryUtil.memSet(0L, 0, 1L);
+   @Override
+   public void a(erk<T> $$0) {
+      this.a.apply($$0.b()).a($$0);
    }
 
-   public static double b() {
-      return GLFW.glfwGetTime();
+   @Override
+   public boolean b(ib $$0, T $$1) {
+      return false;
+   }
+
+   @Override
+   public int a() {
+      return 0;
    }
 }

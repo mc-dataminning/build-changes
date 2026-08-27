@@ -25,8 +25,11 @@ public class bao extends DataFix {
 
    private <IS> TypeRewriteRule a(Type<IS> $$0) {
       Type<Pair<Either<List<IS>, Unit>, Dynamic<?>>> $$1 = DSL.and(DSL.optional(DSL.field("Equipment", DSL.list($$0))), DSL.remainderType());
-      Type<Pair<Either<List<IS>, Unit>, Pair<Either<List<IS>, Unit>, Dynamic<?>>>> $$2 = DSL.and(
-         DSL.optional(DSL.field("ArmorItems", DSL.list($$0))), DSL.optional(DSL.field("HandItems", DSL.list($$0))), DSL.remainderType()
+      Type<Pair<Either<List<IS>, Unit>, Pair<Either<List<IS>, Unit>, Pair<Either<IS, Unit>, Dynamic<?>>>>> $$2 = DSL.and(
+         DSL.optional(DSL.field("ArmorItems", DSL.list($$0))),
+         DSL.optional(DSL.field("HandItems", DSL.list($$0))),
+         DSL.optional(DSL.field("body_armor_item", $$0)),
+         DSL.remainderType()
       );
       OpticFinder<Pair<Either<List<IS>, Unit>, Dynamic<?>>> $$3 = DSL.typeFinder($$1);
       OpticFinder<List<IS>> $$4 = DSL.fieldFinder("Equipment", DSL.list($$0));
@@ -37,52 +40,53 @@ public class bao extends DataFix {
          $$4x -> {
             Either<List<IS>, Unit> $$5 = Either.right(DSL.unit());
             Either<List<IS>, Unit> $$6 = Either.right(DSL.unit());
-            Dynamic<?> $$7 = (Dynamic<?>)$$4x.getOrCreate(DSL.remainderFinder());
-            Optional<List<IS>> $$8 = $$4x.getOptional($$4);
-            if ($$8.isPresent()) {
-               List<IS> $$9 = $$8.get();
-               IS $$10 = (IS)((Pair)$$0.read($$7.emptyMap())
+            Either<IS, Unit> $$7 = Either.right(DSL.unit());
+            Dynamic<?> $$8 = (Dynamic<?>)$$4x.getOrCreate(DSL.remainderFinder());
+            Optional<List<IS>> $$9 = $$4x.getOptional($$4);
+            if ($$9.isPresent()) {
+               List<IS> $$10 = $$9.get();
+               IS $$11 = (IS)((Pair)$$0.read($$8.emptyMap())
                      .result()
                      .orElseThrow(() -> new IllegalStateException("Could not parse newly created empty itemstack.")))
                   .getFirst();
-               if (!$$9.isEmpty()) {
-                  $$5 = Either.left(Lists.newArrayList(new Object[]{$$9.get(0), $$10}));
+               if (!$$10.isEmpty()) {
+                  $$5 = Either.left(Lists.newArrayList(new Object[]{$$10.get(0), $$11}));
                }
 
-               if ($$9.size() > 1) {
-                  List<IS> $$11 = Lists.newArrayList(new Object[]{$$10, $$10, $$10, $$10});
+               if ($$10.size() > 1) {
+                  List<IS> $$12 = Lists.newArrayList(new Object[]{$$11, $$11, $$11, $$11});
 
-                  for (int $$12 = 1; $$12 < Math.min($$9.size(), 5); $$12++) {
-                     $$11.set($$12 - 1, $$9.get($$12));
+                  for (int $$13 = 1; $$13 < Math.min($$10.size(), 5); $$13++) {
+                     $$12.set($$13 - 1, $$10.get($$13));
                   }
 
-                  $$6 = Either.left($$11);
+                  $$6 = Either.left($$12);
                }
             }
 
-            Dynamic<?> $$13 = $$7;
-            Optional<? extends Stream<? extends Dynamic<?>>> $$14 = $$7.get("DropChances").asStreamOpt().result();
-            if ($$14.isPresent()) {
-               Iterator<? extends Dynamic<?>> $$15 = Stream.concat((Stream<? extends Dynamic<?>>)$$14.get(), Stream.generate(() -> $$13.createInt(0)))
+            Dynamic<?> $$14 = $$8;
+            Optional<? extends Stream<? extends Dynamic<?>>> $$15 = $$8.get("DropChances").asStreamOpt().result();
+            if ($$15.isPresent()) {
+               Iterator<? extends Dynamic<?>> $$16 = Stream.concat((Stream<? extends Dynamic<?>>)$$15.get(), Stream.generate(() -> $$14.createInt(0)))
                   .iterator();
-               float $$16 = $$15.next().asFloat(0.0F);
-               if ($$7.get("HandDropChances").result().isEmpty()) {
-                  Dynamic<?> $$17 = $$7.createList(Stream.of($$16, 0.0F).map($$7::createFloat));
-                  $$7 = $$7.set("HandDropChances", $$17);
+               float $$17 = $$16.next().asFloat(0.0F);
+               if ($$8.get("HandDropChances").result().isEmpty()) {
+                  Dynamic<?> $$18 = $$8.createList(Stream.of($$17, 0.0F).map($$8::createFloat));
+                  $$8 = $$8.set("HandDropChances", $$18);
                }
 
-               if ($$7.get("ArmorDropChances").result().isEmpty()) {
-                  Dynamic<?> $$18 = $$7.createList(
-                     Stream.of($$15.next().asFloat(0.0F), $$15.next().asFloat(0.0F), $$15.next().asFloat(0.0F), $$15.next().asFloat(0.0F))
-                        .map($$7::createFloat)
+               if ($$8.get("ArmorDropChances").result().isEmpty()) {
+                  Dynamic<?> $$19 = $$8.createList(
+                     Stream.of($$16.next().asFloat(0.0F), $$16.next().asFloat(0.0F), $$16.next().asFloat(0.0F), $$16.next().asFloat(0.0F))
+                        .map($$8::createFloat)
                   );
-                  $$7 = $$7.set("ArmorDropChances", $$18);
+                  $$8 = $$8.set("ArmorDropChances", $$19);
                }
 
-               $$7 = $$7.remove("DropChances");
+               $$8 = $$8.remove("DropChances");
             }
 
-            return $$4x.set($$3, $$2, Pair.of($$5, Pair.of($$6, $$7)));
+            return $$4x.set($$3, $$2, Pair.of($$5, Pair.of($$6, Pair.of($$7, $$8))));
          }
       );
    }

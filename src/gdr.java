@@ -1,11 +1,24 @@
-public abstract class gdr<T extends cfg> extends gee<T, foq<T>> {
-   protected gdr(gcy.a $$0, foq<T> $$1, float $$2) {
-      super($$0, $$1, $$2);
-      this.a(new ggo<>(this, $$0.f(), $$0.d()));
+import com.google.common.collect.Maps;
+import java.util.Map;
+
+public final class gdr extends gbv<cdi, fop<cdi>> {
+   private static final Map<cdp, ajh> a = ac.a(Maps.newEnumMap(cdp.class), $$0 -> {
+      $$0.put(cdp.a, new ajh("textures/entity/horse/horse_white.png"));
+      $$0.put(cdp.b, new ajh("textures/entity/horse/horse_creamy.png"));
+      $$0.put(cdp.c, new ajh("textures/entity/horse/horse_chestnut.png"));
+      $$0.put(cdp.d, new ajh("textures/entity/horse/horse_brown.png"));
+      $$0.put(cdp.e, new ajh("textures/entity/horse/horse_black.png"));
+      $$0.put(cdp.f, new ajh("textures/entity/horse/horse_gray.png"));
+      $$0.put(cdp.g, new ajh("textures/entity/horse/horse_darkbrown.png"));
+   });
+
+   public gdr(gdb.a $$0) {
+      super($$0, new fop<>($$0.a(fre.ap)), 1.1F);
+      this.a(new ghb(this));
+      this.a(new gha(this, $$0.f()));
    }
 
-   protected void a(T $$0, etz $$1, float $$2) {
-      float $$3 = 0.9375F;
-      $$1.b(0.9375F, 0.9375F, 0.9375F);
+   public ajh a(cdi $$0) {
+      return a.get($$0.r());
    }
 }

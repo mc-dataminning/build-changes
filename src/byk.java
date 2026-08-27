@@ -1,39 +1,40 @@
-import java.util.List;
+import java.util.EnumSet;
 
-public class byk<T extends bpq & bpu> extends bwl {
-   private static final int a = 10;
-   private final T b;
-   private final boolean c;
-   private int d;
+public class byk extends bym {
+   private final bql a;
+   private bpp b;
+   private int c;
 
-   public byk(T $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public byk(bql $$0) {
+      super($$0, false);
+      this.a = $$0;
+      this.a(EnumSet.of(bwm.a.d));
    }
 
    @Override
    public boolean a() {
-      return this.b.dM().Z().b(cwv.O) && this.h();
-   }
-
-   private boolean h() {
-      return this.b.ej() != null && this.b.ej().ai() == bpc.bx && this.b.ek() > this.d;
+      if (this.a.r() && !this.a.gn()) {
+         bpp $$0 = this.a.P_();
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.b = $$0.el();
+            int $$1 = $$0.em();
+            return $$1 != this.c && this.a(this.b, caf.a) && this.a.a(this.b, $$0);
+         }
+      } else {
+         return false;
+      }
    }
 
    @Override
    public void c() {
-      this.d = this.b.ek();
-      this.b.Z_();
-      if (this.c) {
-         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (bpu)$$0).forEach(bpu::Z_);
+      this.e.h(this.b);
+      bpp $$0 = this.a.P_();
+      if ($$0 != null) {
+         this.c = $$0.em();
       }
 
       super.c();
-   }
-
-   private List<? extends bpq> i() {
-      double $$0 = this.b.g(bqv.k);
-      epm $$1 = epm.a(this.b.dk()).c($$0, 10.0, $$0);
-      return this.b.dM().a((Class<? extends bpq>)this.b.getClass(), $$1, bpb.f);
    }
 }

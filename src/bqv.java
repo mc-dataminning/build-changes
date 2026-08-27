@@ -1,32 +1,96 @@
-public class bqv {
-   public static final il<bqq> a = a("generic.armor", new bqx("attribute.name.generic.armor", 0.0, 0.0, 30.0).a(true));
-   public static final il<bqq> b = a("generic.armor_toughness", new bqx("attribute.name.generic.armor_toughness", 0.0, 0.0, 20.0).a(true));
-   public static final il<bqq> c = a("generic.attack_damage", new bqx("attribute.name.generic.attack_damage", 2.0, 0.0, 2048.0));
-   public static final il<bqq> d = a("generic.attack_knockback", new bqx("attribute.name.generic.attack_knockback", 0.0, 0.0, 5.0));
-   public static final il<bqq> e = a("generic.attack_speed", new bqx("attribute.name.generic.attack_speed", 4.0, 0.0, 1024.0).a(true));
-   public static final il<bqq> f = a("player.block_break_speed", new bqx("attribute.name.player.block_break_speed", 1.0, 0.0, 1024.0).a(true));
-   public static final il<bqq> g = a("player.block_interaction_range", new bqx("attribute.name.player.block_interaction_range", 4.5, 0.0, 64.0).a(true));
-   public static final il<bqq> h = a("player.entity_interaction_range", new bqx("attribute.name.player.entity_interaction_range", 3.0, 0.0, 64.0).a(true));
-   public static final il<bqq> i = a("generic.fall_damage_multiplier", new bqx("attribute.name.generic.fall_damage_multiplier", 1.0, 0.0, 100.0).a(true));
-   public static final il<bqq> j = a("generic.flying_speed", new bqx("attribute.name.generic.flying_speed", 0.4F, 0.0, 1024.0).a(true));
-   public static final il<bqq> k = a("generic.follow_range", new bqx("attribute.name.generic.follow_range", 32.0, 0.0, 2048.0));
-   public static final il<bqq> l = a("generic.gravity", new bqx("attribute.name.generic.gravity", 0.08, -1.0, 1.0).a(true));
-   public static final il<bqq> m = a("generic.jump_strength", new bqx("attribute.name.generic.jump_strength", 0.42F, 0.0, 32.0).a(true));
-   public static final il<bqq> n = a("generic.knockback_resistance", new bqx("attribute.name.generic.knockback_resistance", 0.0, 0.0, 1.0));
-   public static final il<bqq> o = a("generic.luck", new bqx("attribute.name.generic.luck", 0.0, -1024.0, 1024.0).a(true));
-   public static final il<bqq> p = a("generic.max_absorption", new bqx("attribute.name.generic.max_absorption", 0.0, 0.0, 2048.0).a(true));
-   public static final il<bqq> q = a("generic.max_health", new bqx("attribute.name.generic.max_health", 20.0, 1.0, 1024.0).a(true));
-   public static final il<bqq> r = a("generic.movement_speed", new bqx("attribute.name.generic.movement_speed", 0.7F, 0.0, 1024.0).a(true));
-   public static final il<bqq> s = a("generic.safe_fall_distance", new bqx("attribute.name.generic.safe_fall_distance", 3.0, -1024.0, 1024.0).a(true));
-   public static final il<bqq> t = a("generic.scale", new bqx("attribute.name.generic.scale", 1.0, 0.0625, 16.0).a(true));
-   public static final il<bqq> u = a("zombie.spawn_reinforcements", new bqx("attribute.name.zombie.spawn_reinforcements", 0.0, 0.0, 1.0));
-   public static final il<bqq> v = a("generic.step_height", new bqx("attribute.name.generic.step_height", 0.6, 0.0, 10.0).a(true));
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
+import java.util.UUID;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   private static il<bqq> a(String $$0, bqq $$1) {
-      return iy.b(ki.u, new ajh($$0), $$1);
+public class bqv {
+   private final Map<il<bqr>, bqs> a;
+
+   bqv(Map<il<bqr>, bqs> $$0) {
+      this.a = $$0;
    }
 
-   public static il<bqq> a(iy<bqq> $$0) {
-      return q;
+   private bqs d(il<bqr> $$0) {
+      bqs $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         throw new IllegalArgumentException("Can't find attribute " + $$0.g());
+      } else {
+         return $$1;
+      }
+   }
+
+   public double a(il<bqr> $$0) {
+      return this.d($$0).f();
+   }
+
+   public double b(il<bqr> $$0) {
+      return this.d($$0).b();
+   }
+
+   public double a(il<bqr> $$0, UUID $$1) {
+      bqu $$2 = this.d($$0).a($$1);
+      if ($$2 == null) {
+         throw new IllegalArgumentException("Can't find modifier " + $$1 + " on attribute " + $$0.g());
+      } else {
+         return $$2.c();
+      }
+   }
+
+   @Nullable
+   public bqs a(Consumer<bqs> $$0, il<bqr> $$1) {
+      bqs $$2 = this.a.get($$1);
+      if ($$2 == null) {
+         return null;
+      } else {
+         bqs $$3 = new bqs($$1, $$0);
+         $$3.a($$2);
+         return $$3;
+      }
+   }
+
+   public static bqv.a a() {
+      return new bqv.a();
+   }
+
+   public boolean c(il<bqr> $$0) {
+      return this.a.containsKey($$0);
+   }
+
+   public boolean b(il<bqr> $$0, UUID $$1) {
+      bqs $$2 = this.a.get($$0);
+      return $$2 != null && $$2.a($$1) != null;
+   }
+
+   public static class a {
+      private final Builder<il<bqr>, bqs> a = ImmutableMap.builder();
+      private boolean b;
+
+      private bqs b(il<bqr> $$0) {
+         bqs $$1 = new bqs($$0, $$1x -> {
+            if (this.b) {
+               throw new UnsupportedOperationException("Tried to change value for default attribute instance: " + $$0.g());
+            }
+         });
+         this.a.put($$0, $$1);
+         return $$1;
+      }
+
+      public bqv.a a(il<bqr> $$0) {
+         this.b($$0);
+         return this;
+      }
+
+      public bqv.a a(il<bqr> $$0, double $$1) {
+         bqs $$2 = this.b($$0);
+         $$2.a($$1);
+         return this;
+      }
+
+      public bqv a() {
+         this.b = true;
+         return new bqv(this.a.buildKeepingLast());
+      }
    }
 }

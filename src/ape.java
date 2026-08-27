@@ -18,7 +18,7 @@ public class ape {
    public static final int a = 60;
    private static final int e = 400;
    private final apf f;
-   private final bow g;
+   private final box g;
    private final int h;
    private final boolean i;
    private final Consumer<yb<?>> j;
@@ -26,16 +26,16 @@ public class ape {
    private int l;
    private int m;
    private int n;
-   private epr o = epr.b;
+   private ept o = ept.b;
    private int p;
    private int q;
-   private List<bow> r = Collections.emptyList();
+   private List<box> r = Collections.emptyList();
    private boolean s;
    private boolean t;
    @Nullable
    private List<aiq.c<?>> u;
 
-   public ape(apf $$0, bow $$1, int $$2, boolean $$3, Consumer<yb<?>> $$4) {
+   public ape(apf $$0, box $$1, int $$2, boolean $$3, Consumer<yb<?>> $$4) {
       this.f = $$0;
       this.j = $$4;
       this.g = $$1;
@@ -50,7 +50,7 @@ public class ape {
    }
 
    public void a() {
-      List<bow> $$0 = this.g.cP();
+      List<box> $$0 = this.g.cP();
       if (!$$0.equals(this.r)) {
          this.j.accept(new adx(this.g));
          a($$0, this.r).forEach($$0x -> {
@@ -61,11 +61,11 @@ public class ape {
          this.r = $$0;
       }
 
-      if (this.g instanceof cew $$1 && this.p % 10 == 0) {
-         cqk $$2 = $$1.E();
-         if ($$2.d() instanceof cqr) {
-            ejw $$3 = cqr.d($$2);
-            ejy $$4 = cqr.a($$3, this.f);
+      if (this.g instanceof cex $$1 && this.p % 10 == 0) {
+         cqm $$2 = $$1.E();
+         if ($$2.d() instanceof cqt) {
+            ejy $$3 = cqt.d($$2);
+            eka $$4 = cqt.a($$3, this.f);
             if ($$4 != null) {
                for (apg $$5 : this.f.x()) {
                   $$4.a($$5, $$2);
@@ -98,14 +98,14 @@ public class ape {
             this.q++;
             int $$10 = aww.d(this.g.dC() * 256.0F / 360.0F);
             int $$11 = aww.d(this.g.dE() * 256.0F / 360.0F);
-            epr $$12 = this.g.dl();
+            ept $$12 = this.g.dl();
             boolean $$13 = this.k.d($$12).g() >= 7.6293945E-6F;
             yb<?> $$14 = null;
             boolean $$15 = $$13 || this.p % 60 == 0;
             boolean $$16 = Math.abs($$10 - this.l) >= 1 || Math.abs($$11 - this.m) >= 1;
             boolean $$17 = false;
             boolean $$18 = false;
-            if (this.p > 0 || this.g instanceof ciy) {
+            if (this.p > 0 || this.g instanceof cja) {
                long $$19 = this.k.a($$12);
                long $$20 = this.k.b($$12);
                long $$21 = this.k.c($$12);
@@ -116,7 +116,7 @@ public class ape {
                   $$14 = new aen(this.g);
                   $$17 = true;
                   $$18 = true;
-               } else if ((!$$15 || !$$16) && !(this.g instanceof ciy)) {
+               } else if ((!$$15 || !$$16) && !(this.g instanceof cja)) {
                   if ($$15) {
                      $$14 = new acg.a(this.g.aj(), (short)((int)$$19), (short)((int)$$20), (short)((int)$$21), this.g.aC());
                      $$17 = true;
@@ -131,8 +131,8 @@ public class ape {
                }
             }
 
-            if ((this.i || this.g.au || this.g instanceof bpo && ((bpo)this.g).fB()) && this.p > 0) {
-               epr $$23 = this.g.dp();
+            if ((this.i || this.g.au || this.g instanceof bpp && ((bpp)this.g).fB()) && this.p > 0) {
+               ept $$23 = this.g.dp();
                double $$24 = $$23.g(this.o);
                if ($$24 > 1.0E-7 || $$24 > 0.0 && $$23.g() == 0.0) {
                   this.o = $$23;
@@ -173,7 +173,7 @@ public class ape {
       }
    }
 
-   private static Stream<bow> a(List<bow> $$0, List<bow> $$1) {
+   private static Stream<box> a(List<box> $$0, List<box> $$1) {
       return $$1.stream().filter($$1x -> !$$0.contains($$1x));
    }
 
@@ -202,27 +202,27 @@ public class ape {
       }
 
       boolean $$3 = this.i;
-      if (this.g instanceof bpo) {
-         Collection<bqr> $$4 = ((bpo)this.g).eT().b();
+      if (this.g instanceof bpp) {
+         Collection<bqs> $$4 = ((bpp)this.g).eT().b();
          if (!$$4.isEmpty()) {
             $$1.accept(new aer(this.g.aj(), $$4));
          }
 
-         if (((bpo)this.g).fB()) {
+         if (((bpp)this.g).fB()) {
             $$3 = true;
          }
       }
 
       this.o = this.g.dp();
-      if ($$3 && !(this.g instanceof bpo)) {
+      if ($$3 && !(this.g instanceof bpp)) {
          $$1.accept(new ads(this.g.aj(), this.o));
       }
 
-      if (this.g instanceof bpo) {
-         List<Pair<bpd, cqk>> $$5 = Lists.newArrayList();
+      if (this.g instanceof bpp) {
+         List<Pair<bpe, cqm>> $$5 = Lists.newArrayList();
 
-         for (bpd $$6 : bpd.values()) {
-            cqk $$7 = ((bpo)this.g).d($$6);
+         for (bpe $$6 : bpe.values()) {
+            cqm $$7 = ((bpp)this.g).d($$6);
             if (!$$7.b()) {
                $$5.add(Pair.of($$6, $$7.q()));
             }
@@ -241,7 +241,7 @@ public class ape {
          $$1.accept(new adx(this.g.cZ()));
       }
 
-      if (this.g instanceof bpq $$8 && $$8.gb()) {
+      if (this.g instanceof bpr $$8 && $$8.gb()) {
          $$1.accept(new adr($$8, $$8.gc()));
       }
    }
@@ -254,8 +254,8 @@ public class ape {
          this.a(new adq(this.g.aj(), $$1));
       }
 
-      if (this.g instanceof bpo) {
-         Set<bqr> $$2 = ((bpo)this.g).eT().a();
+      if (this.g instanceof bpp) {
+         Set<bqs> $$2 = ((bpp)this.g).eT().a();
          if (!$$2.isEmpty()) {
             this.a(new aer(this.g.aj(), $$2));
          }

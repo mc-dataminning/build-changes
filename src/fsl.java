@@ -1,58 +1,101 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.google.common.base.Suppliers;
+import com.mojang.authlib.GameProfile;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
 public class fsl {
+   private final GameProfile a;
+   private final Supplier<gkb> b;
+   private cwy c = cwy.e;
+   private int d;
    @Nullable
-   private fsl.a a;
+   private vu e;
    @Nullable
-   private fsp b;
+   private wl f;
+   private wq g;
 
-   public void a(ajg<? extends iy<?>> $$0, List<jc.a> $$1) {
-      if (this.a == null) {
-         this.a = new fsl.a();
-      }
-
-      this.a.a($$0, $$1);
+   public fsl(GameProfile $$0, boolean $$1) {
+      this.a = $$0;
+      this.g = b($$1);
+      Supplier<Supplier<gkb>> $$2 = Suppliers.memoize(() -> a($$0));
+      this.b = () -> $$2.get().get();
    }
 
-   public void a(Map<ajg<? extends iy<?>>, avg.a> $$0) {
-      if (this.b == null) {
-         this.b = new fsp();
-      }
-
-      $$0.forEach(this.b::a);
+   private static Supplier<gkb> a(GameProfile $$0) {
+      ezi $$1 = ezi.Q();
+      gkc $$2 = $$1.an();
+      CompletableFuture<gkb> $$3 = $$2.c($$0);
+      boolean $$4 = !$$1.b($$0.getId());
+      gkb $$5 = gju.a($$0);
+      return () -> {
+         gkb $$3x = $$3.getNow($$5);
+         return $$4 && !$$3x.f() ? $$5 : $$3x;
+      };
    }
 
-   public iz.b a(asr $$0, iz $$1, boolean $$2) {
-      is<fsa> $$3 = fsa.a();
-      iz $$6;
-      if (this.a != null) {
-         iz.b $$4 = $$3.b(fsa.b);
-         iz.b $$5 = this.a.a($$0, $$4).d();
-         $$6 = $$3.a(fsa.b, $$5).a();
-      } else {
-         $$6 = $$1;
-      }
-
-      if (this.b != null) {
-         this.b.a($$6, $$2);
-      }
-
-      return $$6.d();
+   public GameProfile a() {
+      return this.a;
    }
 
-   static class a {
-      private final Map<ajg<? extends iy<?>>, List<jc.a>> a = new HashMap<>();
+   @Nullable
+   public wl b() {
+      return this.f;
+   }
 
-      public void a(ajg<? extends iy<?>> $$0, List<jc.a> $$1) {
-         this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>()).addAll($$1);
-      }
+   public wq c() {
+      return this.g;
+   }
 
-      public iz a(asr $$0, iz $$1) {
-         return ajc.a(this.a, $$0, $$1, ajc.c);
-      }
+   public boolean d() {
+      return this.f != null;
+   }
+
+   protected void a(wl $$0) {
+      this.f = $$0;
+      this.g = $$0.a(cix.b);
+   }
+
+   protected void a(boolean $$0) {
+      this.f = null;
+      this.g = b($$0);
+   }
+
+   private static wq b(boolean $$0) {
+      return $$0 ? wq.c : wq.b;
+   }
+
+   public cwy e() {
+      return this.c;
+   }
+
+   protected void a(cwy $$0) {
+      this.c = $$0;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   protected void a(int $$0) {
+      this.d = $$0;
+   }
+
+   public gkb g() {
+      return this.b.get();
+   }
+
+   @Nullable
+   public eqs h() {
+      return ezi.Q().r.K().e(this.a().getName());
+   }
+
+   public void a(@Nullable vu $$0) {
+      this.e = $$0;
+   }
+
+   @Nullable
+   public vu i() {
+      return this.e;
    }
 }

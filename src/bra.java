@@ -1,84 +1,125 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableLong;
 
-public class bra extends brg<cbd> {
-   private static final int c = 3;
-   private static final int d = 60;
-   private static final int e = 110;
-   private final bpc<? extends cbd> f;
-   private final float g;
-   private final int h;
-   private static final int i = 2;
-   private long j;
+public class bra {
+   public static final int a = 48;
 
-   public bra(bpc<? extends cbd> $$0) {
-      this($$0, 1.0F, 2);
+   public static bri<bpx> a(Predicate<il<cav>> $$0, bys<ik> $$1, boolean $$2, Optional<Byte> $$3) {
+      return a($$0, $$1, $$1, $$2, $$3);
    }
 
-   public bra(bpc<? extends cbd> $$0, float $$1, int $$2) {
-      super(ImmutableMap.of(byr.h, bys.a, byr.r, bys.b, byr.m, bys.c, byr.n, bys.c, byr.Z, bys.b), 110);
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
+   public static bri<bpx> a(Predicate<il<cav>> $$0, bys<ik> $$1, bys<ik> $$2, boolean $$3, Optional<Byte> $$4) {
+      int $$5 = 5;
+      int $$6 = 20;
+      MutableLong $$7 = new MutableLong(0L);
+      Long2ObjectMap<bra.a> $$8 = new Long2ObjectOpenHashMap();
+      bss<bpx> $$9 = buu.a(
+         (Function<buu.b<bpx>, ? extends App<buu.c<bpx>, bux<bpx>>>)($$6x -> $$6x.group($$6x.c($$2)).apply($$6x, $$5xx -> ($$6xx, $$7x, $$8x) -> {
+                  if ($$3 && $$7x.o_()) {
+                     return false;
+                  } else if ($$7.getValue() == 0L) {
+                     $$7.setValue($$6xx.X() + (long)$$6xx.z.a(20));
+                     return false;
+                  } else if ($$6xx.X() < $$7.getValue()) {
+                     return false;
+                  } else {
+                     $$7.setValue($$8x + 20L + (long)$$6xx.E_().a(20));
+                     cas $$9x = $$6xx.y();
+                     $$8.long2ObjectEntrySet().removeIf($$1xxxx -> !((bra.a)$$1xxxx.getValue()).b($$8x));
+                     Predicate<ib> $$10 = $$2xxxx -> {
+                        bra.a $$3xxxx = (bra.a)$$8.get($$2xxxx.a());
+                        if ($$3xxxx == null) {
+                           return true;
+                        } else if (!$$3xxxx.c($$8x)) {
+                           return false;
+                        } else {
+                           $$3xxxx.a($$8x);
+                           return true;
+                        }
+                     };
+                     Set<Pair<il<cav>, ib>> $$11 = $$9x.c($$0, $$10, $$7x.dm(), 48, cas.b.a).limit(5L).collect(Collectors.toSet());
+                     ejd $$12 = a($$7x, $$11);
+                     if ($$12 != null && $$12.j()) {
+                        ib $$13 = $$12.l();
+                        $$9x.c($$13).ifPresent($$8xx -> {
+                           $$9x.a($$0, ($$1xxxxx, $$2xxxxx) -> $$2xxxxx.equals($$13), $$13, 1);
+                           $$5xx.a(ik.a($$6xx.ad(), $$13));
+                           $$4.ifPresent($$2xxxxx -> $$6xx.a($$7x, $$2xxxxx));
+                           $$8.clear();
+                           aew.c($$6xx, $$13);
+                        });
+                     } else {
+                        for (Pair<il<cav>, ib> $$14 : $$11) {
+                           $$8.computeIfAbsent(((ib)$$14.getSecond()).a(), $$2xxxx -> new bra.a($$6xx.z, $$8x));
+                        }
+                     }
+
+                     return true;
+                  }
+               }))
+      );
+      return $$2 == $$1 ? $$9 : buu.a((Function<buu.b<bpx>, ? extends App<buu.c<bpx>, bux<bpx>>>)($$2x -> $$2x.group($$2x.c($$1)).apply($$2x, $$1xx -> $$9)));
    }
 
-   protected boolean a(apf $$0, cbd $$1) {
-      return $$1.gr() && this.c($$1).isPresent();
-   }
-
-   protected void a(apf $$0, cbd $$1, long $$2) {
-      cbd $$3 = this.c($$1).get();
-      $$1.dP().a(byr.r, $$3);
-      $$3.dP().a(byr.r, $$1);
-      bri.a($$1, (bpo)$$3, this.g, this.h);
-      int $$4 = 60 + $$1.ei().a(50);
-      this.j = $$2 + (long)$$4;
-   }
-
-   protected boolean b(apf $$0, cbd $$1, long $$2) {
-      if (!this.b($$1)) {
-         return false;
+   @Nullable
+   public static ejd a(bpr $$0, Set<Pair<il<cav>, ib>> $$1) {
+      if ($$1.isEmpty()) {
+         return null;
       } else {
-         cbd $$3 = this.a($$1);
-         return $$3.bA() && $$1.a($$3) && bri.a($$1.dP(), $$3) && $$2 <= this.j && !$$1.gk() && !$$3.gk();
+         Set<ib> $$2 = new HashSet<>();
+         int $$3 = 1;
+
+         for (Pair<il<cav>, ib> $$4 : $$1) {
+            $$3 = Math.max($$3, ((cav)((il)$$4.getFirst()).a()).c());
+            $$2.add((ib)$$4.getSecond());
+         }
+
+         return $$0.K().a($$2, $$3);
       }
    }
 
-   protected void c(apf $$0, cbd $$1, long $$2) {
-      cbd $$3 = this.a($$1);
-      bri.a($$1, (bpo)$$3, this.g, this.h);
-      if ($$1.a($$3, 3.0)) {
-         if ($$2 >= this.j) {
-            $$1.a($$0, $$3);
-            $$1.dP().b(byr.r);
-            $$3.dP().b(byr.r);
-         }
+   static class a {
+      private static final int a = 40;
+      private static final int b = 80;
+      private static final int c = 400;
+      private final axd d;
+      private long e;
+      private long f;
+      private int g;
+
+      a(axd $$0, long $$1) {
+         this.d = $$0;
+         this.a($$1);
       }
-   }
 
-   protected void d(apf $$0, cbd $$1, long $$2) {
-      $$1.dP().b(byr.r);
-      $$1.dP().b(byr.m);
-      $$1.dP().b(byr.n);
-      this.j = 0L;
-   }
+      public void a(long $$0) {
+         this.e = $$0;
+         int $$1 = this.g + this.d.a(40) + 40;
+         this.g = Math.min($$1, 400);
+         this.f = $$0 + (long)this.g;
+      }
 
-   private cbd a(cbd $$0) {
-      return (cbd)$$0.dP().c(byr.r).get();
-   }
+      public boolean b(long $$0) {
+         return $$0 - this.e < 400L;
+      }
 
-   private boolean b(cbd $$0) {
-      bqp<?> $$1 = $$0.dP();
-      return $$1.a(byr.r) && $$1.c(byr.r).get().ai() == this.f;
-   }
+      public boolean c(long $$0) {
+         return $$0 >= this.f;
+      }
 
-   private Optional<? extends cbd> c(cbd $$0) {
-      return $$0.dP().c(byr.h).get().a($$1 -> {
-         if ($$1.ai() == this.f && $$1 instanceof cbd $$2 && $$0.a($$2) && !$$2.gk()) {
-            return true;
-         }
-
-         return false;
-      }).map(cbd.class::cast);
+      @Override
+      public String toString() {
+         return "RetryMarker{, previousAttemptAt=" + this.e + ", nextScheduledAttemptAt=" + this.f + ", currentDelay=" + this.g + "}";
+      }
    }
 }

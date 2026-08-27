@@ -22,7 +22,7 @@ public class wo {
       };
    }
 
-   public wo.b a(civ $$0) {
+   public wo.b a(cix $$0) {
       axi $$1 = $$0.a();
       return ($$2, $$3) -> {
          wp $$4 = this.a();

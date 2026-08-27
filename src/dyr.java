@@ -1,23 +1,28 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dyr(int b, int c, int d) implements dxu {
+public class dyr implements dxw {
    public static final Codec<dyr> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               awe.k.fieldOf("spread_width").forGetter(dyr::a), awe.k.fieldOf("spread_height").forGetter(dyr::b), awe.k.fieldOf("max_height").forGetter(dyr::c)
+               eip.a.fieldOf("state").forGetter($$0x -> $$0x.b),
+               Codec.BOOL.fieldOf("requires_block_below").orElse(true).forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("rock_count").orElse(4).forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("hole_count").orElse(1).forGetter($$0x -> $$0x.e),
+               ja.a(kj.f).fieldOf("valid_blocks").forGetter($$0x -> $$0x.f)
             )
             .apply($$0, dyr::new)
    );
+   public final eip b;
+   public final boolean c;
+   public final int d;
+   public final int e;
+   public final ip<dac> f;
 
-   public int a() {
-      return this.b;
-   }
-
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
+   public dyr(eip $$0, boolean $$1, int $$2, int $$3, ip<dac> $$4) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
    }
 }

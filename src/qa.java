@@ -57,8 +57,8 @@ public class qa {
    }
 
    private static <C, I extends axw<C>> avy<C, I> a(I $$0, I $$1, float $$2, float $$3, axw<Float> $$4) {
-      float $$5 = dst.a(0.4F);
-      float $$6 = dst.a(0.56666666F);
+      float $$5 = dsv.a(0.4F);
+      float $$6 = dsv.a(0.56666666F);
       float $$7 = ($$5 + $$6) / 2.0F;
       avy.b<C, I> $$8 = avy.a($$1, $$4);
       $$8.a($$5, 0.0F);

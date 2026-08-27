@@ -1,33 +1,25 @@
-public class ghi<T extends cis, M extends foc<T> & fnc & fok> extends ghc<T, M> {
-   private final fxm a;
-   private static final float b = (float) (-Math.PI / 6);
-   private static final float c = (float) (Math.PI / 2);
+public class ghi extends ghm<cbt, fpe<cbt>> {
+   private final fxo a;
 
-   public ghi(get<T, M> $$0, fxm $$1) {
-      super($$0, $$1);
+   public ghi(gew<cbt, fpe<cbt>> $$0, fxo $$1) {
+      super($$0);
       this.a = $$1;
    }
 
-   @Override
-   protected void a(bpo $$0, cqk $$1, cqh $$2, bpi $$3, etz $$4, fxq $$5, int $$6) {
-      if ($$1.a(cqn.qW) && $$0.fu() == $$1 && $$0.aK == 0) {
-         this.a($$0, $$1, $$3, $$4, $$5, $$6);
-      } else {
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      }
-   }
+   public void a(eub $$0, fxs $$1, int $$2, cbt $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      cqm $$10 = $$3.d(bpe.a);
+      if ($$3.y() && !$$3.gF()) {
+         float $$11 = -0.6F;
+         float $$12 = 1.4F;
+         if ($$3.gt()) {
+            $$11 -= 0.2F * aww.a($$7 * 0.6F) + 0.2F;
+            $$12 -= 0.09F * aww.a($$7 * 0.6F);
+         }
 
-   private void a(bpo $$0, cqk $$1, bpi $$2, etz $$3, fxq $$4, int $$5) {
-      $$3.a();
-      frd $$6 = this.c().d();
-      float $$7 = $$6.e;
-      $$6.e = aww.a($$6.e, (float) (-Math.PI / 6), (float) (Math.PI / 2));
-      $$6.a($$3);
-      $$6.e = $$7;
-      ggo.a($$3, false);
-      boolean $$8 = $$2 == bpi.a;
-      $$3.a(($$8 ? -2.5F : 2.5F) / 16.0F, -0.0625F, 0.0F);
-      this.a.a($$0, $$1, cqh.f, false, $$3, $$4, $$5);
-      $$3.b();
+         $$0.a();
+         $$0.a(0.1F, $$12, $$11);
+         this.a.a($$3, $$10, cqj.h, false, $$0, $$1, $$2);
+         $$0.b();
+      }
    }
 }

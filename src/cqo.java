@@ -1,50 +1,41 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.stream.Stream;
 
-public class cqo extends cqf {
-   private static final String a = "Recipes";
-   private static final Logger b = LogUtils.getLogger();
-
-   public cqo(cqf.a $$0) {
-      super($$0);
+public class cqo {
+   public static bne<cqm> a(cxb $$0, ciu $$1, bnc $$2) {
+      $$1.c($$2);
+      return bne.b($$1.b($$2));
    }
 
-   @Override
-   public bnd<cqk> a(cwz $$0, cis $$1, bnb $$2) {
-      cqk $$3 = $$1.b($$2);
-      ta $$4 = $$3.w();
-      if (!$$1.fM()) {
-         $$1.a($$2, cqk.h);
-      }
-
-      if ($$4 != null && $$4.b("Recipes", 9)) {
-         if (!$$0.B) {
-            tg $$5 = $$4.c("Recipes", 8);
-            List<ctp<?>> $$6 = Lists.newArrayList();
-            ctq $$7 = $$0.o().aJ();
-
-            for (int $$8 = 0; $$8 < $$5.size(); $$8++) {
-               String $$9 = $$5.j($$8);
-               Optional<ctp<?>> $$10 = $$7.a(new ajh($$9));
-               if (!$$10.isPresent()) {
-                  b.error("Invalid recipe: {}", $$9);
-                  return bnd.d($$3);
-               }
-
-               $$6.add($$10.get());
-            }
-
-            $$1.a($$6);
-            $$1.b(aui.c.b(this));
+   public static cqm a(cqm $$0, ciu $$1, cqm $$2, boolean $$3) {
+      boolean $$4 = $$1.fM();
+      if ($$3 && $$4) {
+         if (!$$1.fZ().h($$2)) {
+            $$1.fZ().e($$2);
          }
 
-         return bnd.a($$3, $$0.x_());
+         return $$0;
       } else {
-         b.error("Tag not valid: {}", $$4);
-         return bnd.d($$3);
+         $$0.a(1, $$1);
+         if ($$0.b()) {
+            return $$2;
+         } else {
+            if (!$$1.fZ().e($$2)) {
+               $$1.a($$2, false);
+            }
+
+            return $$0;
+         }
+      }
+   }
+
+   public static cqm a(cqm $$0, ciu $$1, cqm $$2) {
+      return a($$0, $$1, $$2, true);
+   }
+
+   public static void a(cfe $$0, Stream<cqm> $$1) {
+      cxb $$2 = $$0.dM();
+      if (!$$2.B) {
+         $$1.forEach($$2x -> $$2.b(new cfe($$2, $$0.dr(), $$0.dt(), $$0.dx(), $$2x)));
       }
    }
 }

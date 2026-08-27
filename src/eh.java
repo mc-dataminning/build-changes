@@ -32,7 +32,7 @@ public class eh implements ArgumentType<gi> {
       return new eh(true, false);
    }
 
-   public static bow a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static box a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return ((gi)$$0.getArgument($$1, gi.class)).a((du)$$0.getSource());
    }
 
@@ -40,8 +40,8 @@ public class eh implements ArgumentType<gi> {
       return new eh(false, false);
    }
 
-   public static Collection<? extends bow> b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
-      Collection<? extends bow> $$2 = c($$0, $$1);
+   public static Collection<? extends box> b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+      Collection<? extends box> $$2 = c($$0, $$1);
       if ($$2.isEmpty()) {
          throw d.create();
       } else {
@@ -49,7 +49,7 @@ public class eh implements ArgumentType<gi> {
       }
    }
 
-   public static Collection<? extends bow> c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static Collection<? extends box> c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return ((gi)$$0.getArgument($$1, gi.class)).b((du)$$0.getSource());
    }
 

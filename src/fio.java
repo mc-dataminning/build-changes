@@ -1,82 +1,48 @@
-public class fio extends fid {
-   private final dkq m;
-   private fbn<dkq.a> n;
-   private fbn<Boolean> o;
-   private fbn<Boolean> p;
-   private dkq.a q = dkq.a.c;
-   private boolean r;
-   private boolean t;
+public class fio extends fig<clv> {
+   private static final ajh x = new ajh("container/brewing_stand/fuel_length");
+   private static final ajh y = new ajh("container/brewing_stand/brew_progress");
+   private static final ajh z = new ajh("container/brewing_stand/bubbles");
+   private static final ajh A = new ajh("textures/gui/container/brewing_stand.png");
+   private static final int[] B = new int[]{29, 24, 20, 16, 11, 6, 0};
 
-   public fio(dkq $$0) {
-      this.m = $$0;
-   }
-
-   @Override
-   cwa o() {
-      return this.m.b();
-   }
-
-   @Override
-   int E() {
-      return 135;
+   public fio(clv $$0, cit $$1, vu $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
    protected void aO_() {
       super.aO_();
-      this.n = this.c(fbn.<dkq.a>a($$0 -> {
-         return switch ($$0) {
-            case a -> vu.c("advMode.mode.sequence");
-            case b -> vu.c("advMode.mode.auto");
-            case c -> vu.c("advMode.mode.redstone");
-         };
-      }).a(dkq.a.values()).a().a(this.q).a(this.g / 2 - 50 - 100 - 4, 165, 100, 20, vu.c("advMode.mode"), ($$0, $$1) -> this.q = $$1));
-      this.o = this.c(
-         fbn.a(vu.c("advMode.mode.conditional"), vu.c("advMode.mode.unconditional"))
-            .a()
-            .a(this.r)
-            .a(this.g / 2 - 50, 165, 100, 20, vu.c("advMode.type"), ($$0, $$1) -> this.r = $$1)
-      );
-      this.p = this.c(
-         fbn.a(vu.c("advMode.mode.autoexec.bat"), vu.c("advMode.mode.redstoneTriggered"))
-            .a()
-            .a(this.t)
-            .a(this.g / 2 + 50 + 4, 165, 100, 20, vu.c("advMode.triggering"), ($$0, $$1) -> this.t = $$1)
-      );
-      this.e(false);
-   }
-
-   private void e(boolean $$0) {
-      this.c.j = $$0;
-      this.l.j = $$0;
-      this.n.j = $$0;
-      this.o.j = $$0;
-      this.p.j = $$0;
-   }
-
-   public void I() {
-      cwa $$0 = this.m.b();
-      this.a.a($$0.m());
-      boolean $$1 = $$0.o();
-      this.q = this.m.l();
-      this.r = this.m.s();
-      this.t = this.m.d();
-      this.l.a($$1);
-      this.n.a(this.q);
-      this.o.a(this.r);
-      this.p.a(this.t);
-      this.c($$1);
-      this.e(true);
+      this.l = (this.c - this.i.a(this.e)) / 2;
    }
 
    @Override
-   public void a(ezg $$0, int $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      this.e(true);
+   public void a(fav $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
    @Override
-   protected void a(cwa $$0) {
-      this.f.L().b(new agm(ib.a($$0.g()), this.a.a(), this.q, $$0.o(), this.r, this.t));
+   protected void a(fav $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.g - this.c) / 2;
+      int $$5 = (this.h - this.k) / 2;
+      $$0.a(A, $$4, $$5, 0, 0, this.c, this.k);
+      int $$6 = this.p.l();
+      int $$7 = aww.a((18 * $$6 + 20 - 1) / 20, 0, 18);
+      if ($$7 > 0) {
+         $$0.a(x, 18, 4, 0, 0, $$4 + 60, $$5 + 44, $$7, 4);
+      }
+
+      int $$8 = this.p.m();
+      if ($$8 > 0) {
+         int $$9 = (int)(28.0F * (1.0F - (float)$$8 / 400.0F));
+         if ($$9 > 0) {
+            $$0.a(y, 9, 28, 0, 0, $$4 + 97, $$5 + 16, 9, $$9);
+         }
+
+         $$9 = B[$$8 / 2 % 7];
+         if ($$9 > 0) {
+            $$0.a(z, 12, 29, 0, 29 - $$9, $$4 + 63, $$5 + 14 + 29 - $$9, 12, $$9);
+         }
+      }
    }
 }

@@ -1,87 +1,31 @@
-import com.mojang.authlib.GameProfile;
+public class fwt extends fws {
+   private final ezm i;
 
-public class fwt extends fwp {
-   private epr g = epr.b;
-   private int cu;
-
-   public fwt(fry $$0, GameProfile $$1) {
-      super($$0, $$1);
-      this.af = true;
+   public fwt(ezm $$0) {
+      this.i = $$0;
    }
 
-   @Override
-   public boolean a(double $$0) {
-      double $$1 = this.cH().a() * 10.0;
-      if (Double.isNaN($$1)) {
-         $$1 = 1.0;
-      }
-
-      $$1 *= 64.0 * cA();
-      return $$0 < $$1 * $$1;
-   }
-
-   @Override
-   public boolean a(bnv $$0, float $$1) {
-      return true;
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      this.q(false);
-   }
-
-   @Override
-   public void m_() {
-      if (this.bq > 0) {
-         this.a(this.bq, this.br, this.bs, this.bt, this.bu, this.bv);
-         this.bq--;
-      }
-
-      if (this.bx > 0) {
-         this.a(this.bx, this.bw);
-         this.bx--;
-      }
-
-      if (this.cu > 0) {
-         this.h(new epr((this.g.c - this.dp().c) / (double)this.cu, (this.g.d - this.dp().d) / (double)this.cu, (this.g.e - this.dp().e) / (double)this.cu));
-         this.cu--;
-      }
-
-      this.cc = this.cd;
-      this.eS();
-      float $$1;
-      if (this.aC() && !this.ey()) {
-         $$1 = (float)Math.min(0.1, this.dp().h());
+   private static float a(boolean $$0, boolean $$1) {
+      if ($$0 == $$1) {
+         return 0.0F;
       } else {
-         $$1 = 0.0F;
+         return $$0 ? 1.0F : -1.0F;
       }
-
-      this.cd = this.cd + ($$1 - this.cd) * 0.4F;
-      this.dM().ae().a("push");
-      this.q();
-      this.dM().ae().c();
    }
 
    @Override
-   public void l(double $$0, double $$1, double $$2) {
-      this.g = new epr($$0, $$1, $$2);
-      this.cu = this.ai().p() + 1;
-   }
-
-   @Override
-   protected void fS() {
-   }
-
-   @Override
-   public void a(vu $$0) {
-      ezg $$1 = ezg.Q();
-      $$1.l.d().a($$0);
-   }
-
-   @Override
-   public void a(aan $$0) {
-      super.a($$0);
-      this.bs();
+   public void a(boolean $$0, float $$1) {
+      this.c = this.i.x.e();
+      this.d = this.i.z.e();
+      this.e = this.i.y.e();
+      this.f = this.i.A.e();
+      this.b = a(this.c, this.d);
+      this.a = a(this.e, this.f);
+      this.g = this.i.B.e();
+      this.h = this.i.C.e();
+      if ($$0) {
+         this.a *= $$1;
+         this.b *= $$1;
+      }
    }
 }

@@ -1,17 +1,11 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class gci extends geh<cct, fno<cct>> {
+   private static final ajh a = new ajh("textures/entity/camel/camel.png");
 
-public class gci<T extends cde> extends gbt<T, fnq<T>> {
-   private static final Map<bpc<?>, ajh> a = Maps.newHashMap(
-      ImmutableMap.of(bpc.z, new ajh("textures/entity/horse/donkey.png"), bpc.as, new ajh("textures/entity/horse/mule.png"))
-   );
-
-   public gci(gcy.a $$0, float $$1, frb $$2) {
-      super($$0, new fnq<>($$0.a($$2)), $$1);
+   public gci(gdb.a $$0, frd $$1) {
+      super($$0, new fno<>($$0.a($$1)), 0.7F);
    }
 
-   public ajh a(T $$0) {
-      return a.get($$0.ai());
+   public ajh a(cct $$0) {
+      return a;
    }
 }

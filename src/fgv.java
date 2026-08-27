@@ -1,57 +1,40 @@
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Codec;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.apache.commons.compress.utils.Lists;
+import java.util.Arrays;
+import java.util.stream.Stream;
 
-public class fgv extends fhh {
-   @Nullable
-   private final ezj<Unit> l;
+public class fgv extends fgz {
+   private fcf c;
 
-   public static fgv a(ezg $$0, fhf $$1, ezk $$2) {
-      List<ezj<?>> $$3 = Lists.newArrayList();
-      $$3.add($$2.R());
-      $$3.add($$2.S());
-      ezj<Unit> $$4 = x.a(
-         $$0.r,
-         $$0x -> {
-            bmz $$1x = $$0x.aj();
-            return new ezj<>(
-               "options.difficulty.online",
-               ezj.a(),
-               ($$1xx, $$2x) -> $$1x.b(),
-               new ezj.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
-               Unit.INSTANCE,
-               $$0xx -> {
-               }
-            );
-         }
-      );
-      if ($$4 != null) {
-         $$3.add($$4);
-      }
-
-      return new fgv($$1, $$2, $$3.toArray(new ezj[0]), $$4);
+   private static ezl<?>[] a(ezm $$0) {
+      return new ezl[]{$$0.d(), $$0.P(), $$0.D(), $$0.Q(), $$0.X()};
    }
 
-   private fgv(fhf $$0, ezk $$1, ezj<?>[] $$2, @Nullable ezj<Unit> $$3) {
-      super($$0, $$1, vu.c("options.online.title"), $$2);
-      this.l = $$3;
+   public fgv(fhh $$0, ezm $$1) {
+      super($$0, $$1, vu.c("options.mouse_settings.title"));
    }
 
    @Override
    protected void aO_() {
-      super.aO_();
-      if (this.l != null) {
-         fbe $$0 = this.k.b(this.l);
-         if ($$0 != null) {
-            $$0.j = false;
-         }
+      this.c = this.c(new fcf(this.f, this.g, this.h - 64, 32, 25));
+      if (esw.a()) {
+         this.c.a(Stream.concat(Arrays.stream(a(this.b)), Stream.of(this.b.E())).toArray(ezl[]::new));
+      } else {
+         this.c.a(a(this.b));
       }
 
-      fbe $$1 = this.k.b(this.b.ag());
-      if ($$1 != null) {
-         $$1.j = this.f.D();
-      }
+      this.c(fbi.a(vt.d, $$0 -> {
+         this.b.at();
+         this.f.a(this.a);
+      }).a(this.g / 2 - 100, this.h - 27, 200, 20).a());
+   }
+
+   @Override
+   public void a(fav $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 5, 16777215);
+   }
+
+   @Override
+   public void b(fav $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 }

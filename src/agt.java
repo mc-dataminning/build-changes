@@ -27,7 +27,7 @@ public class agt implements yb<aez> {
    }
 
    @Nullable
-   public bow a(apf $$0) {
+   public box a(apf $$0) {
       return $$0.a(this.b);
    }
 }

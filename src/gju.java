@@ -1,45 +1,41 @@
-import com.google.common.base.Splitter;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.Map.Entry;
-import org.slf4j.Logger;
+import com.mojang.authlib.GameProfile;
+import java.util.UUID;
 
 public class gju {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Splitter a = Splitter.on('/');
+   private static final gkb[] a = new gkb[]{
+      a("textures/entity/player/slim/alex.png", gkb.a.a),
+      a("textures/entity/player/slim/ari.png", gkb.a.a),
+      a("textures/entity/player/slim/efe.png", gkb.a.a),
+      a("textures/entity/player/slim/kai.png", gkb.a.a),
+      a("textures/entity/player/slim/makena.png", gkb.a.a),
+      a("textures/entity/player/slim/noor.png", gkb.a.a),
+      a("textures/entity/player/slim/steve.png", gkb.a.a),
+      a("textures/entity/player/slim/sunny.png", gkb.a.a),
+      a("textures/entity/player/slim/zuri.png", gkb.a.a),
+      a("textures/entity/player/wide/alex.png", gkb.a.b),
+      a("textures/entity/player/wide/ari.png", gkb.a.b),
+      a("textures/entity/player/wide/efe.png", gkb.a.b),
+      a("textures/entity/player/wide/kai.png", gkb.a.b),
+      a("textures/entity/player/wide/makena.png", gkb.a.b),
+      a("textures/entity/player/wide/noor.png", gkb.a.b),
+      a("textures/entity/player/wide/steve.png", gkb.a.b),
+      a("textures/entity/player/wide/sunny.png", gkb.a.b),
+      a("textures/entity/player/wide/zuri.png", gkb.a.b)
+   };
 
-   public static Path a(Path $$0, String $$1) {
-      Path $$2 = $$0.resolve("objects");
-      ark.a $$3 = ark.c();
-      Path $$4 = $$0.resolve("indexes/" + $$1 + ".json");
+   public static ajh a() {
+      return a[6].a();
+   }
 
-      try (BufferedReader $$5 = Files.newBufferedReader($$4, StandardCharsets.UTF_8)) {
-         JsonObject $$6 = awm.a($$5);
-         JsonObject $$7 = awm.a($$6, "objects", null);
-         if ($$7 != null) {
-            for (Entry<String, JsonElement> $$8 : $$7.entrySet()) {
-               JsonObject $$9 = (JsonObject)$$8.getValue();
-               String $$10 = $$8.getKey();
-               List<String> $$11 = a.splitToList($$10);
-               String $$12 = awm.i($$9, "hash");
-               Path $$13 = $$2.resolve($$12.substring(0, 2) + "/" + $$12);
-               $$3.a($$11, $$13);
-            }
-         }
-      } catch (JsonParseException var17) {
-         b.error("Unable to parse resource index file: {}", $$4);
-      } catch (IOException var18) {
-         b.error("Can't open the resource index file: {}", $$4);
-      }
+   public static gkb a(UUID $$0) {
+      return a[Math.floorMod($$0.hashCode(), a.length)];
+   }
 
-      return $$3.a("index-" + $$1).getPath("/");
+   public static gkb a(GameProfile $$0) {
+      return a($$0.getId());
+   }
+
+   private static gkb a(String $$0, gkb.a $$1) {
+      return new gkb(new ajh($$0), null, null, null, $$1, true);
    }
 }

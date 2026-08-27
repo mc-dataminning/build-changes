@@ -1,43 +1,41 @@
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-public class bzk extends bzx<chc> {
-   @Override
-   public Set<byr<?>> a() {
-      return ImmutableSet.of(byr.h, byr.aw, byr.aq, byr.ap, byr.as, byr.at, new byr[0]);
+public class bzk extends bzy<bpp> {
+   private static final int a = 200;
+   private static final int c = 599;
+
+   public bzk() {
+      this(200);
    }
 
-   protected void a(apf $$0, chc $$1) {
-      bqp<?> $$2 = $$1.dP();
-      $$2.a(byr.aw, this.b($$0, $$1));
-      Optional<chi> $$3 = Optional.empty();
-      int $$4 = 0;
-      List<chc> $$5 = Lists.newArrayList();
-      byt $$6 = $$2.c(byr.h).orElse(byt.a());
+   public bzk(int $$0) {
+      super($$0);
+   }
 
-      for (bpo $$7 : $$6.b($$0x -> !$$0x.o_() && ($$0x instanceof chi || $$0x instanceof chc))) {
-         if ($$7 instanceof chi $$8) {
-            $$4++;
-            if ($$3.isEmpty()) {
-               $$3 = Optional.of($$8);
-            }
-         }
+   @Override
+   protected void a(apf $$0, bpp $$1) {
+      a($$1);
+   }
 
-         if ($$7 instanceof chc $$9) {
-            $$5.add($$9);
+   @Override
+   public Set<bys<?>> a() {
+      return ImmutableSet.of(bys.g);
+   }
+
+   public static void a(bpp $$0) {
+      Optional<List<bpp>> $$1 = $$0.dP().c(bys.g);
+      if (!$$1.isEmpty()) {
+         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.ai().equals(bpd.ag));
+         if ($$2) {
+            b($$0);
          }
       }
-
-      $$2.a(byr.aq, $$3);
-      $$2.a(byr.ap, $$5);
-      $$2.a(byr.as, $$4);
-      $$2.a(byr.at, $$5.size());
    }
 
-   private Optional<ib> b(apf $$0, chc $$1) {
-      return ib.a($$1.dm(), 8, 4, $$1x -> $$0.a_($$1x).a(aun.aS));
+   public static void b(bpp $$0) {
+      $$0.dP().a(bys.F, true, 599L);
    }
 }

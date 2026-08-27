@@ -1,76 +1,83 @@
-import java.util.List;
+import java.util.Set;
 import java.util.function.Predicate;
 
-public class bmw {
-   public static cqk a(List<cqk> $$0, int $$1, int $$2) {
-      return $$1 >= 0 && $$1 < $$0.size() && !$$0.get($$1).b() && $$2 > 0 ? $$0.get($$1).a($$2) : cqk.h;
+public interface bmw extends bmu {
+   int o_ = 64;
+   float p_ = 4.0F;
+
+   int b();
+
+   boolean ai_();
+
+   cqm a(int var1);
+
+   cqm a(int var1, int var2);
+
+   cqm b(int var1);
+
+   void a(int var1, cqm var2);
+
+   default int ak_() {
+      return 64;
    }
 
-   public static cqk a(List<cqk> $$0, int $$1) {
-      return $$1 >= 0 && $$1 < $$0.size() ? $$0.set($$1, cqk.h) : cqk.h;
+   void e();
+
+   boolean a(ciu var1);
+
+   default void d_(ciu $$0) {
    }
 
-   public static ta a(ta $$0, iu<cqk> $$1) {
-      return a($$0, $$1, true);
+   default void c(ciu $$0) {
    }
 
-   public static ta a(ta $$0, iu<cqk> $$1, boolean $$2) {
-      tg $$3 = new tg();
+   default boolean b(int $$0, cqm $$1) {
+      return true;
+   }
 
-      for (int $$4 = 0; $$4 < $$1.size(); $$4++) {
-         cqk $$5 = $$1.get($$4);
-         if (!$$5.b()) {
-            ta $$6 = new ta();
-            $$6.a("Slot", (byte)$$4);
-            $$5.b($$6);
-            $$3.add($$6);
+   default boolean a(bmw $$0, int $$1, cqm $$2) {
+      return true;
+   }
+
+   default int a_(cqh $$0) {
+      int $$1 = 0;
+
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         cqm $$3 = this.a($$2);
+         if ($$3.d().equals($$0)) {
+            $$1 += $$3.M();
          }
       }
 
-      if (!$$3.isEmpty() || $$2) {
-         $$0.a("Items", $$3);
-      }
-
-      return $$0;
+      return $$1;
    }
 
-   public static void b(ta $$0, iu<cqk> $$1) {
-      tg $$2 = $$0.c("Items", 10);
+   default boolean a(Set<cqh> $$0) {
+      return this.a_($$1 -> !$$1.b() && $$0.contains($$1.d()));
+   }
 
-      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-         ta $$4 = $$2.a($$3);
-         int $$5 = $$4.f("Slot") & 255;
-         if ($$5 >= 0 && $$5 < $$1.size()) {
-            $$1.set($$5, cqk.a($$4));
+   default boolean a_(Predicate<cqm> $$0) {
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         cqm $$2 = this.a($$1);
+         if ($$0.test($$2)) {
+            return true;
          }
       }
+
+      return false;
    }
 
-   public static int a(bmv $$0, Predicate<cqk> $$1, int $$2, boolean $$3) {
-      int $$4 = 0;
-
-      for (int $$5 = 0; $$5 < $$0.b(); $$5++) {
-         cqk $$6 = $$0.a($$5);
-         int $$7 = a($$6, $$1, $$2 - $$4, $$3);
-         if ($$7 > 0 && !$$3 && $$6.b()) {
-            $$0.a($$5, cqk.h);
-         }
-
-         $$4 += $$7;
-      }
-
-      return $$4;
+   static boolean a(dki $$0, ciu $$1) {
+      return a($$0, $$1, 4.0F);
    }
 
-   public static int a(cqk $$0, Predicate<cqk> $$1, int $$2, boolean $$3) {
-      if ($$0.b() || !$$1.test($$0)) {
-         return 0;
-      } else if ($$3) {
-         return $$0.M();
+   static boolean a(dki $$0, ciu $$1, float $$2) {
+      cxb $$3 = $$0.i();
+      ib $$4 = $$0.aC_();
+      if ($$3 == null) {
+         return false;
       } else {
-         int $$4 = $$2 < 0 ? $$0.M() : Math.min($$2, $$0.M());
-         $$0.h($$4);
-         return $$4;
+         return $$3.c_($$4) != $$0 ? false : $$1.a($$4, (double)$$2);
       }
    }
 }

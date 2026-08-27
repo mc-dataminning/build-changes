@@ -1,15 +1,31 @@
-public class fpa {
-   public static float a(float $$0, float $$1, float $$2) {
-      float $$3 = $$1 - $$0;
+public class fpa<T extends box> extends fon<T> {
+   private final frf a;
 
-      while ($$3 < (float) -Math.PI) {
-         $$3 += (float) (Math.PI * 2);
-      }
+   public fpa(frf $$0) {
+      this.a = $$0;
+   }
 
-      while ($$3 >= (float) Math.PI) {
-         $$3 -= (float) (Math.PI * 2);
-      }
+   public static frl b() {
+      frn $$0 = new frn();
+      fro $$1 = $$0.a();
+      int $$2 = 20;
+      int $$3 = 8;
+      int $$4 = 16;
+      int $$5 = 4;
+      $$1.a("bottom", frk.c().a(0, 10).a(-10.0F, -8.0F, -1.0F, 20.0F, 16.0F, 2.0F), frh.a(0.0F, 4.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      $$1.a("front", frk.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), frh.a(-9.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI * 3.0 / 2.0), 0.0F));
+      $$1.a("back", frk.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), frh.a(9.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
+      $$1.a("left", frk.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), frh.a(0.0F, 4.0F, -7.0F, 0.0F, (float) Math.PI, 0.0F));
+      $$1.a("right", frk.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), frh.a(0.0F, 4.0F, 7.0F));
+      return frl.a($$0, 64, 32);
+   }
 
-      return $$0 + $$2 * $$3;
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+   }
+
+   @Override
+   public frf a() {
+      return this.a;
    }
 }

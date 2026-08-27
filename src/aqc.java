@@ -44,7 +44,7 @@ public class aqc extends aqb implements aac, vi {
       this.b(new yi(new za(this.c.getServerModName())));
       is<ajq> $$0 = this.c.be();
       List<arv> $$1 = this.c.bg().b().flatMap($$0x -> $$0x.a().d().stream()).toList();
-      this.b(new zz(clh.e.b(this.c.bc().K())));
+      this.b(new zz(clj.e.b(this.c.bc().K())));
       this.k = new aqn($$1, $$0);
       this.h.add(this.k);
       this.o();

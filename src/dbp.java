@@ -1,56 +1,81 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class dbp extends daa {
-   public static final MapCodec<daa> a = ki.e.q().fieldOf("dead");
-   public static final MapCodec<dbp> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter($$0x -> $$0x.c), u()).apply($$0, dbp::new));
-   private final daa c;
-
-   public dbp(daa $$0, dmy.d $$1) {
-      super($$1);
-      this.c = $$0;
-   }
+public class dbp extends czo implements dhc {
+   public static final MapCodec<dbp> a = b(dbp::new);
+   public static final dns b = dnr.C;
+   private static final int d = 3;
+   protected static final eqm c = dac.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
 
    @Override
    public MapCodec<dbp> a() {
-      return b;
+      return a;
+   }
+
+   public dbp(dna.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(true)));
    }
 
    @Override
-   protected void a(dmz $$0, apf $$1, ib $$2, axd $$3) {
-      if (!this.a($$1, $$2)) {
-         $$1.a($$2, this.c.o(), 2);
-      }
+   protected void a(dnc.a<dac, dnb> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   protected dmz a(dmz $$0, ih $$1, dmz $$2, cxa $$3, ib $$4, ib $$5) {
-      if (!this.a($$3, $$4)) {
-         $$3.a($$4, this, 60 + $$3.E_().a(40));
+   public dki a(ib $$0, dnb $$1) {
+      return new dku($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dki> dkj<T> a(cxb $$0, dnb $$1, dkk<T> $$2) {
+      return a($$2, dkk.z, $$0.B ? dku::a : dku::b);
+   }
+
+   @Override
+   protected dgh b_(dnb $$0) {
+      return dgh.b;
+   }
+
+   @Override
+   protected eip c_(dnb $$0) {
+      return $$0.c(b) ? eiq.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   protected dnb a(dnb $$0, ih $$1, dnb $$2, cxc $$3, ib $$4, ib $$5) {
+      if ($$0.c(b)) {
+         $$3.a($$4, eiq.c, eiq.c.a($$3));
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   protected boolean a(cwf $$0, ib $$1) {
-      for (ih $$2 : ih.values()) {
-         ein $$3 = $$0.b_($$1.a($$2));
-         if ($$3.a(aus.a)) {
-            return true;
+   @Override
+   protected eqm a(dnb $$0, cwh $$1, ib $$2, epy $$3) {
+      return c;
+   }
+
+   @Override
+   public void a(cxb $$0, ib $$1, dnb $$2, @Nullable bpp $$3, cqm $$4) {
+      if ($$4.B()) {
+         dki $$5 = $$0.c_($$1);
+         if ($$5 instanceof dkd) {
+            ((dkd)$$5).a($$4.z());
          }
       }
-
-      return false;
    }
 
    @Nullable
    @Override
-   public dmz a(css $$0) {
-      if (!this.a($$0.q(), $$0.a())) {
-         $$0.q().a($$0.a(), this, 60 + $$0.q().E_().a(40));
-      }
+   public dnb a(csu $$0) {
+      eip $$1 = $$0.q().b_($$0.a());
+      return this.o().a(b, Boolean.valueOf($$1.a(aus.a) && $$1.e() == 8));
+   }
 
-      return this.o();
+   @Override
+   protected boolean a(dnb $$0, cwh $$1, ib $$2, eje $$3) {
+      return false;
    }
 }

@@ -12,8 +12,8 @@ public class alu {
       );
    }
 
-   private static int a(du $$0, Collection<? extends bow> $$1) {
-      for (bow $$2 : $$1) {
+   private static int a(du $$0, Collection<? extends box> $$1) {
+      for (box $$2 : $$1) {
          $$2.al();
       }
 

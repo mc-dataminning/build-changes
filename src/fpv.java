@@ -1,38 +1,26 @@
-public class fpv<T extends bow> extends fol<T> {
-   private static final String a = "main";
-   private final frd b;
-   private final frd f;
+public class fpv<T extends cca> extends fpp<T> {
+   private float j;
 
-   public fpv(frd $$0) {
-      this.b = $$0;
-      this.f = $$0.b("main");
+   public fpv(frf $$0) {
+      super($$0, false, 8.0F, 4.0F, 2.0F, 2.0F, 24);
    }
 
-   public static frj b() {
-      frl $$0 = new frl();
-      frm $$1 = $$0.a();
-      $$1.a(
-         "main",
-         fri.c()
-            .a(0, 0)
-            .a(-4.0F, -4.0F, -1.0F, 8.0F, 8.0F, 2.0F)
-            .a(0, 10)
-            .a(-1.0F, -4.0F, -4.0F, 2.0F, 8.0F, 8.0F)
-            .a(20, 0)
-            .a(-4.0F, -1.0F, -4.0F, 8.0F, 2.0F, 8.0F),
-         frf.a
-      );
-      return frj.a($$0, 64, 32);
+   public static frl c() {
+      frn $$0 = fpp.a(12, frj.a);
+      fro $$1 = $$0.a();
+      $$1.a("head", frk.c().a(0, 0).a(-3.0F, -4.0F, -6.0F, 6.0F, 6.0F, 8.0F), frh.a(0.0F, 6.0F, -8.0F));
+      $$1.a("body", frk.c().a(28, 8).a(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F), frh.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      return frl.a($$0, 64, 32);
    }
 
-   @Override
-   public frd a() {
-      return this.b;
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a.c = 6.0F + $$0.G($$3) * 9.0F;
+      this.j = $$0.H($$3);
    }
 
-   @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.f.f = $$4 * (float) (Math.PI / 180.0);
-      this.f.e = $$5 * (float) (Math.PI / 180.0);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      this.a.e = this.j;
    }
 }

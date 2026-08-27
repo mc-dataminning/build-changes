@@ -47,7 +47,7 @@ public class aqe extends aqb implements aez, aqh, vi {
    private double t;
    private double u;
    @Nullable
-   private bow v;
+   private box v;
    private double w;
    private double x;
    private double y;
@@ -55,7 +55,7 @@ public class aqe extends aqb implements aez, aqh, vi {
    private double A;
    private double B;
    @Nullable
-   private epr C;
+   private ept C;
    private int D;
    private int E;
    private boolean F;
@@ -98,7 +98,7 @@ public class aqe extends aqb implements aez, aqh, vi {
       this.l++;
       this.K = this.J;
       if (this.F && !this.e.fI() && !this.e.bO() && !this.e.ey()) {
-         if (++this.G > this.a((bow)this.e)) {
+         if (++this.G > this.a((box)this.e)) {
             g.warn("{} was kicked for floating too long!", this.e.ad().getString());
             this.b(vu.c("multiplayer.disconnect.flying"));
             return;
@@ -146,7 +146,7 @@ public class aqe extends aqb implements aez, aqh, vi {
       }
    }
 
-   private int a(bow $$0) {
+   private int a(box $$0) {
       double $$1 = 0.08 / $$0.aX();
       return aww.c(80.0 * Math.max($$1, 1.0));
    }
@@ -218,7 +218,7 @@ public class aqe extends aqb implements aez, aqh, vi {
       if (b($$0.b(), $$0.e(), $$0.f(), $$0.g(), $$0.h())) {
          this.b(vu.c("multiplayer.disconnect.invalid_vehicle_movement"));
       } else {
-         bow $$1 = this.e.cW();
+         box $$1 = this.e.cW();
          if ($$1 != this.e && $$1.cN() == this.e && $$1 == this.v) {
             apf $$2 = this.e.z();
             double $$3 = $$1.dr();
@@ -245,11 +245,11 @@ public class aqe extends aqb implements aez, aqh, vi {
             $$12 = $$7 - this.A - 1.0E-6;
             $$13 = $$8 - this.B;
             boolean $$17 = $$1.R;
-            if ($$1 instanceof bpo $$18 && $$18.p_()) {
+            if ($$1 instanceof bpp $$18 && $$18.p_()) {
                $$18.n();
             }
 
-            $$1.a(bpt.b, new epr($$11, $$12, $$13));
+            $$1.a(bpu.b, new ept($$11, $$12, $$13));
             $$11 = $$6 - $$1.dr();
             $$12 = $$7 - $$1.dt();
             if ($$12 > -0.5 || $$12 < 0.5) {
@@ -282,8 +282,8 @@ public class aqe extends aqb implements aez, aqh, vi {
       }
    }
 
-   private boolean b(bow $$0) {
-      return $$0.dM().a($$0.cH().g(0.0625).b(0.0, -0.55, 0.0)).allMatch(dmy.a::i);
+   private boolean b(box $$0) {
+      return $$0.dM().a($$0.cH().g(0.0625).b(0.0, -0.55, 0.0)).allMatch(dna.a::i);
    }
 
    @Override
@@ -351,27 +351,27 @@ public class aqe extends aqb implements aez, aqh, vi {
       } else if (!this.e.gw()) {
          this.e.a(vu.c("advMode.notAllowed"));
       } else {
-         cwa $$1 = null;
-         dkq $$2 = null;
+         cwc $$1 = null;
+         dks $$2 = null;
          ib $$3 = $$0.b();
-         dkg $$4 = this.e.dM().c_($$3);
-         if ($$4 instanceof dkq) {
-            $$2 = (dkq)$$4;
+         dki $$4 = this.e.dM().c_($$3);
+         if ($$4 instanceof dks) {
+            $$2 = (dks)$$4;
             $$1 = $$2.b();
          }
 
          String $$5 = $$0.e();
          boolean $$6 = $$0.f();
          if ($$1 != null) {
-            dkq.a $$7 = $$2.l();
-            dmz $$8 = this.e.dM().a_($$3);
-            ih $$9 = $$8.c(dbj.b);
+            dks.a $$7 = $$2.l();
+            dnb $$8 = this.e.dM().a_($$3);
+            ih $$9 = $$8.c(dbl.b);
 
-            dmz $$13 = (switch ($$0.i()) {
-               case a -> dac.kH.o();
-               case b -> dac.kG.o();
-               default -> dac.fN.o();
-            }).a(dbj.b, $$9).a(dbj.c, Boolean.valueOf($$0.g()));
+            dnb $$13 = (switch ($$0.i()) {
+               case a -> dae.kH.o();
+               case b -> dae.kG.o();
+               default -> dae.fN.o();
+            }).a(dbl.b, $$9).a(dbl.c, Boolean.valueOf($$0.g()));
             if ($$13 != $$8) {
                this.e.dM().a($$3, $$13, 2);
                $$4.b($$13);
@@ -405,7 +405,7 @@ public class aqe extends aqb implements aez, aqh, vi {
       } else if (!this.e.gw()) {
          this.e.a(vu.c("advMode.notAllowed"));
       } else {
-         cwa $$1 = $$0.a(this.e.dM());
+         cwc $$1 = $$0.a(this.e.dM());
          if ($$1 != null) {
             $$1.a($$0.b());
             $$1.a($$0.e());
@@ -431,7 +431,7 @@ public class aqe extends aqb implements aez, aqh, vi {
    @Override
    public void a(agh $$0) {
       ye.a($$0, this, this.e.z());
-      if (this.e.bZ instanceof clq $$1) {
+      if (this.e.bZ instanceof cls $$1) {
          if (!$$1.a(this.e)) {
             g.debug("Player {} interacted with invalid menu {}", this.e, $$1);
             return;
@@ -444,7 +444,7 @@ public class aqe extends aqb implements aez, aqh, vi {
    @Override
    public void a(agk $$0) {
       ye.a($$0, this, this.e.z());
-      if (this.e.bZ instanceof clr $$1) {
+      if (this.e.bZ instanceof clt $$1) {
          if (!this.e.bZ.a(this.e)) {
             g.debug("Player {} interacted with invalid menu {}", this.e, this.e.bZ);
             return;
@@ -459,8 +459,8 @@ public class aqe extends aqb implements aez, aqh, vi {
       ye.a($$0, this, this.e.z());
       if (this.e.gw()) {
          ib $$1 = $$0.b();
-         dmz $$2 = this.e.dM().a_($$1);
-         if (this.e.dM().c_($$1) instanceof dlu $$4) {
+         dnb $$2 = this.e.dM().a_($$1);
+         if (this.e.dM().c_($$1) instanceof dlw $$4) {
             $$4.a($$0.f());
             $$4.a($$0.g());
             $$4.a($$0.h());
@@ -475,13 +475,13 @@ public class aqe extends aqb implements aez, aqh, vi {
             $$4.a($$0.q());
             if ($$4.d()) {
                String $$5 = $$4.c();
-               if ($$0.e() == dlu.a.b) {
+               if ($$0.e() == dlw.a.b) {
                   if ($$4.y()) {
                      this.e.a(vu.a("structure_block.save_success", $$5), false);
                   } else {
                      this.e.a(vu.a("structure_block.save_failure", $$5), false);
                   }
-               } else if ($$0.e() == dlu.a.c) {
+               } else if ($$0.e() == dlw.a.c) {
                   if (!$$4.A()) {
                      this.e.a(vu.a("structure_block.load_not_found", $$5), false);
                   } else if ($$4.a(this.e.z())) {
@@ -489,7 +489,7 @@ public class aqe extends aqb implements aez, aqh, vi {
                   } else {
                      this.e.a(vu.a("structure_block.load_prepare", $$5), false);
                   }
-               } else if ($$0.e() == dlu.a.d) {
+               } else if ($$0.e() == dlw.a.d) {
                   if ($$4.x()) {
                      this.e.a(vu.a("structure_block.size_success", $$5), false);
                   } else {
@@ -511,8 +511,8 @@ public class aqe extends aqb implements aez, aqh, vi {
       ye.a($$0, this, this.e.z());
       if (this.e.gw()) {
          ib $$1 = $$0.b();
-         dmz $$2 = this.e.dM().a_($$1);
-         if (this.e.dM().c_($$1) instanceof dlg $$4) {
+         dnb $$2 = this.e.dM().a_($$1);
+         if (this.e.dM().c_($$1) instanceof dli $$4) {
             $$4.a($$0.e());
             $$4.b($$0.f());
             $$4.a(ajg.a(kj.aH, $$0.g()));
@@ -531,7 +531,7 @@ public class aqe extends aqb implements aez, aqh, vi {
       ye.a($$0, this, this.e.z());
       if (this.e.gw()) {
          ib $$1 = $$0.b();
-         if (this.e.dM().c_($$1) instanceof dlg $$3) {
+         if (this.e.dM().c_($$1) instanceof dli $$3) {
             $$3.a(this.e.z(), $$0.e(), $$0.f());
          }
       }
@@ -541,7 +541,7 @@ public class aqe extends aqb implements aez, aqh, vi {
    public void a(agj $$0) {
       ye.a($$0, this, this.e.z());
       int $$1 = $$0.b();
-      if (this.e.bZ instanceof cmx $$2) {
+      if (this.e.bZ instanceof cmz $$2) {
          if (!$$2.a(this.e)) {
             g.debug("Player {} interacted with invalid menu {}", this.e, $$2);
             return;
@@ -555,7 +555,7 @@ public class aqe extends aqb implements aez, aqh, vi {
    @Override
    public void a(afr $$0) {
       int $$1 = $$0.b();
-      if (cir.d($$1) || $$1 == 40) {
+      if (cit.d($$1) || $$1 == 40) {
          List<String> $$2 = Lists.newArrayList();
          Optional<String> $$3 = $$0.f();
          $$3.ifPresent($$2::add);
@@ -566,16 +566,16 @@ public class aqe extends aqb implements aez, aqh, vi {
    }
 
    private void a(List<apw> $$0, int $$1) {
-      cqk $$2 = this.e.fZ().a($$1);
-      if ($$2.a(cqn.tX)) {
+      cqm $$2 = this.e.fZ().a($$1);
+      if ($$2.a(cqp.tY)) {
          this.a($$0, UnaryOperator.identity(), $$2);
       }
    }
 
    private void a(apw $$0, List<apw> $$1, int $$2) {
-      cqk $$3 = this.e.fZ().a($$2);
-      if ($$3.a(cqn.tX)) {
-         cqk $$4 = $$3.a(cqn.tY, 1);
+      cqm $$3 = this.e.fZ().a($$2);
+      if ($$3.a(cqp.tY)) {
+         cqm $$4 = $$3.a(cqp.tZ, 1);
          $$4.a("author", tv.a(this.e.ad().getString()));
          if (this.e.Y()) {
             $$4.a("title", tv.a($$0.b()));
@@ -589,7 +589,7 @@ public class aqe extends aqb implements aez, aqh, vi {
       }
    }
 
-   private void a(List<apw> $$0, UnaryOperator<String> $$1, cqk $$2) {
+   private void a(List<apw> $$0, UnaryOperator<String> $$1, cqm $$2) {
       tg $$3 = new tg();
       if (this.e.Y()) {
          $$0.stream().map($$1x -> tv.a($$1.apply($$1x.b()))).forEach($$3::add);
@@ -618,7 +618,7 @@ public class aqe extends aqb implements aez, aqh, vi {
    public void a(afs $$0) {
       ye.a($$0, this, this.e.z());
       if (this.e.m(2)) {
-         bow $$1 = this.e.dM().a($$0.e());
+         box $$1 = this.e.dM().a($$0.e());
          if ($$1 != null) {
             ta $$2 = $$1.f(new ta());
             this.e.d.b(new ael($$0.b(), $$2));
@@ -630,7 +630,7 @@ public class aqe extends aqb implements aez, aqh, vi {
    public void a(afp $$0) {
       ye.a($$0, this, this.e.z());
       if (!this.e.N_() && $$0.e() == this.e.bZ.j) {
-         if (this.e.bZ instanceof cmc $$1 && $$1.m() instanceof dku $$2) {
+         if (this.e.bZ instanceof cme $$1 && $$1.m() instanceof dkw $$2) {
             $$2.a($$0.b(), $$0.f());
          }
       }
@@ -640,7 +640,7 @@ public class aqe extends aqb implements aez, aqh, vi {
    public void a(afc $$0) {
       ye.a($$0, this, this.e.z());
       if (this.e.m(2)) {
-         dkg $$1 = this.e.dM().c_($$0.e());
+         dki $$1 = this.e.dM().c_($$0.e());
          ta $$2 = $$1 != null ? $$1.d(this.e.dO()) : null;
          this.e.d.b(new ael($$0.b(), $$2));
       }
@@ -695,7 +695,7 @@ public class aqe extends aqb implements aez, aqh, vi {
                            $$15 = 1;
                         }
 
-                        if (!this.e.O() && (!this.e.dM().Z().b(cwv.t) || !this.e.fB())) {
+                        if (!this.e.O() && (!this.e.dM().Z().b(cwx.t) || !this.e.fB())) {
                            float $$16 = this.e.fB() ? 300.0F : 100.0F;
                            if ($$14 - $$13 > (double)($$16 * (float)$$15) && !this.i()) {
                               g.warn("{} moved too quickly! {},{},{}", new Object[]{this.e.ad().getString(), $$10, $$11, $$12});
@@ -705,7 +705,7 @@ public class aqe extends aqb implements aez, aqh, vi {
                         }
                      }
 
-                     epm $$17 = this.e.cH();
+                     epo $$17 = this.e.cH();
                      $$10 = $$2 - this.s;
                      $$11 = $$3 - this.t;
                      $$12 = $$4 - this.u;
@@ -715,7 +715,7 @@ public class aqe extends aqb implements aez, aqh, vi {
                      }
 
                      boolean $$19 = this.e.R;
-                     this.e.a(bpt.b, new epr($$10, $$11, $$12));
+                     this.e.a(bpu.b, new ept($$10, $$11, $$12));
                      $$10 = $$2 - this.e.dr();
                      $$11 = $$3 - this.e.dt();
                      if ($$11 > -0.5 || $$11 < 0.5) {
@@ -725,7 +725,7 @@ public class aqe extends aqb implements aez, aqh, vi {
                      $$12 = $$4 - this.e.dx();
                      $$14 = $$10 * $$10 + $$11 * $$11 + $$12 * $$12;
                      boolean $$21 = false;
-                     if (!this.e.O() && $$14 > 0.0625 && !this.e.fI() && !this.e.f.e() && this.e.f.b() != cww.d) {
+                     if (!this.e.O() && $$14 > 0.0625 && !this.e.fI() && !this.e.f.e() && this.e.f.b() != cwy.d) {
                         $$21 = true;
                         g.warn("{} moved wrongly!", this.e.ad().getString());
                      }
@@ -734,16 +734,16 @@ public class aqe extends aqb implements aez, aqh, vi {
                         this.e.a($$2, $$3, $$4, $$5, $$6);
                         this.F = $$11 >= -0.03125
                            && !$$19
-                           && this.e.f.b() != cww.d
+                           && this.e.f.b() != cwy.d
                            && !this.c.ae()
                            && !this.e.ga().c
-                           && !this.e.a(bol.y)
+                           && !this.e.a(bom.y)
                            && !this.e.fB()
                            && !this.e.fo()
                            && this.b(this.e);
                         this.e.z().l().a(this.e);
                         this.e.a(this.e.dr() - $$7, this.e.dt() - $$8, this.e.dx() - $$9, $$0.b());
-                        this.e.a($$0.b(), new epr(this.e.dr() - $$7, this.e.dt() - $$8, this.e.dx() - $$9));
+                        this.e.a($$0.b(), new ept(this.e.dr() - $$7, this.e.dt() - $$8, this.e.dx() - $$9));
                         if ($$18) {
                            this.e.n();
                         }
@@ -763,13 +763,13 @@ public class aqe extends aqb implements aez, aqh, vi {
       }
    }
 
-   private boolean a(cxc $$0, epm $$1, double $$2, double $$3, double $$4) {
-      epm $$5 = this.e.cH().d($$2 - this.e.dr(), $$3 - this.e.dt(), $$4 - this.e.dx());
-      Iterable<eqk> $$6 = $$0.d(this.e, $$5.h(1.0E-5F));
-      eqk $$7 = eqh.a($$1.h(1.0E-5F));
+   private boolean a(cxe $$0, epo $$1, double $$2, double $$3, double $$4) {
+      epo $$5 = this.e.cH().d($$2 - this.e.dr(), $$3 - this.e.dt(), $$4 - this.e.dx());
+      Iterable<eqm> $$6 = $$0.d(this.e, $$5.h(1.0E-5F));
+      eqm $$7 = eqj.a($$1.h(1.0E-5F));
 
-      for (eqk $$8 : $$6) {
-         if (!eqh.c($$8, $$7, epv.i)) {
+      for (eqm $$8 : $$6) {
+         if (!eqj.c($$8, $$7, epx.i)) {
             return true;
          }
       }
@@ -781,13 +781,13 @@ public class aqe extends aqb implements aez, aqh, vi {
       this.a($$0, $$1, $$2, $$3, $$4, Collections.emptySet());
    }
 
-   public void a(double $$0, double $$1, double $$2, float $$3, float $$4, Set<bqb> $$5) {
-      double $$6 = $$5.contains(bqb.a) ? this.e.dr() : 0.0;
-      double $$7 = $$5.contains(bqb.b) ? this.e.dt() : 0.0;
-      double $$8 = $$5.contains(bqb.c) ? this.e.dx() : 0.0;
-      float $$9 = $$5.contains(bqb.d) ? this.e.dC() : 0.0F;
-      float $$10 = $$5.contains(bqb.e) ? this.e.dE() : 0.0F;
-      this.C = new epr($$0, $$1, $$2);
+   public void a(double $$0, double $$1, double $$2, float $$3, float $$4, Set<bqc> $$5) {
+      double $$6 = $$5.contains(bqc.a) ? this.e.dr() : 0.0;
+      double $$7 = $$5.contains(bqc.b) ? this.e.dt() : 0.0;
+      double $$8 = $$5.contains(bqc.c) ? this.e.dx() : 0.0;
+      float $$9 = $$5.contains(bqc.d) ? this.e.dC() : 0.0F;
+      float $$10 = $$5.contains(bqc.e) ? this.e.dE() : 0.0F;
+      this.C = new ept($$0, $$1, $$2);
       if (++this.D == Integer.MAX_VALUE) {
          this.D = 0;
       }
@@ -807,9 +807,9 @@ public class aqe extends aqb implements aez, aqh, vi {
       switch ($$2) {
          case g:
             if (!this.e.N_()) {
-               cqk $$3 = this.e.b(bnb.b);
-               this.e.a(bnb.b, this.e.b(bnb.a));
-               this.e.a(bnb.a, $$3);
+               cqm $$3 = this.e.b(bnc.b);
+               this.e.a(bnc.b, this.e.b(bnc.a));
+               this.e.a(bnc.a, $$3);
                this.e.fy();
             }
 
@@ -840,12 +840,12 @@ public class aqe extends aqb implements aez, aqh, vi {
       }
    }
 
-   private static boolean a(apg $$0, cqk $$1) {
+   private static boolean a(apg $$0, cqm $$1) {
       if ($$1.b()) {
          return false;
       } else {
-         cqf $$2 = $$1.d();
-         return ($$2 instanceof cof || $$2 instanceof coo) && !$$0.gu().a($$2);
+         cqh $$2 = $$1.d();
+         return ($$2 instanceof coh || $$2 instanceof coq) && !$$0.gu().a($$2);
       }
    }
 
@@ -854,14 +854,14 @@ public class aqe extends aqb implements aez, aqh, vi {
       ye.a($$0, this, this.e.z());
       this.e.d.a($$0.f());
       apf $$1 = this.e.z();
-      bnb $$2 = $$0.b();
-      cqk $$3 = this.e.b($$2);
+      bnc $$2 = $$0.b();
+      cqm $$3 = this.e.b($$2);
       if ($$3.a($$1.I())) {
-         epn $$4 = $$0.e();
-         epr $$5 = $$4.e();
+         epp $$4 = $$0.e();
+         ept $$5 = $$4.e();
          ib $$6 = $$4.a();
          if (this.e.a($$6, 1.0)) {
-            epr $$7 = $$5.d(epr.b($$6));
+            ept $$7 = $$5.d(ept.b($$6));
             double $$8 = 1.0000001;
             if (Math.abs($$7.a()) < 1.0000001 && Math.abs($$7.b()) < 1.0000001 && Math.abs($$7.c()) < 1.0000001) {
                ih $$9 = $$4.b();
@@ -869,7 +869,7 @@ public class aqe extends aqb implements aez, aqh, vi {
                int $$10 = this.e.dM().ak();
                if ($$6.v() < $$10) {
                   if (this.C == null && $$1.a(this.e, $$6)) {
-                     bnc $$11 = this.e.f.a(this.e, $$1, $$3, $$2, $$4);
+                     bnd $$11 = this.e.f.a(this.e, $$1, $$3, $$2, $$4);
                      if ($$11.a()) {
                         am.P.a(this.e, $$4.a(), $$3.q());
                      }
@@ -900,11 +900,11 @@ public class aqe extends aqb implements aez, aqh, vi {
       ye.a($$0, this, this.e.z());
       this.a($$0.e());
       apf $$1 = this.e.z();
-      bnb $$2 = $$0.b();
-      cqk $$3 = this.e.b($$2);
+      bnc $$2 = $$0.b();
+      cqm $$3 = this.e.b($$2);
       this.e.G();
       if (!$$3.b() && $$3.a($$1.I())) {
-         bnc $$4 = this.e.f.a(this.e, $$1, $$3, $$2);
+         bnd $$4 = this.e.f.a(this.e, $$1, $$3, $$2);
          if ($$4.b()) {
             this.e.a($$2, true);
          }
@@ -916,7 +916,7 @@ public class aqe extends aqb implements aez, aqh, vi {
       ye.a($$0, this, this.e.z());
       if (this.e.N_()) {
          for (apf $$1 : this.c.K()) {
-            bow $$2 = $$0.a($$1);
+            box $$2 = $$0.a($$1);
             if ($$2 != null) {
                this.e.a($$1, $$2.dr(), $$2.dt(), $$2.dx(), $$2.dC(), $$2.dE());
                return;
@@ -928,7 +928,7 @@ public class aqe extends aqb implements aez, aqh, vi {
    @Override
    public void a(afy $$0) {
       ye.a($$0, this, this.e.z());
-      if (this.e.da() instanceof ckp $$2) {
+      if (this.e.da() instanceof ckr $$2) {
          $$2.a($$0.b(), $$0.e());
       }
    }
@@ -960,8 +960,8 @@ public class aqe extends aqb implements aez, aqh, vi {
    @Override
    public void a(agl $$0) {
       ye.a($$0, this, this.e.z());
-      if ($$0.b() >= 0 && $$0.b() < cir.g()) {
-         if (this.e.fZ().l != $$0.b() && this.e.ft() == bnb.a) {
+      if ($$0.b() >= 0 && $$0.b() < cit.g()) {
+         if (this.e.fZ().l != $$0.b() && this.e.ft() == bnc.a) {
             this.e.fy();
          }
 
@@ -1058,7 +1058,7 @@ public class aqe extends aqb implements aez, aqh, vi {
 
    private Optional<wb> a(wb.b $$0) {
       Optional<wb> $$1 = this.b($$0);
-      if (this.e.D() == ciq.c) {
+      if (this.e.D() == cis.c) {
          this.b(new aej(vu.c("chat.disabled.options").a(n.m), false));
          return Optional.empty();
       } else {
@@ -1147,7 +1147,7 @@ public class aqe extends aqb implements aez, aqh, vi {
             }
             break;
          case f:
-            if (this.e.da() instanceof bpy $$1) {
+            if (this.e.da() instanceof bpz $$1) {
                int $$2 = $$0.f();
                if ($$1.a() && $$2 > 0) {
                   $$1.c($$2);
@@ -1155,12 +1155,12 @@ public class aqe extends aqb implements aez, aqh, vi {
             }
             break;
          case g:
-            if (this.e.da() instanceof bpy $$3) {
+            if (this.e.da() instanceof bpz $$3) {
                $$3.b();
             }
             break;
          case h:
-            if (this.e.cZ() instanceof bph $$4) {
+            if (this.e.cZ() instanceof bpi $$4) {
                $$4.b(this.e);
             }
             break;
@@ -1219,7 +1219,7 @@ public class aqe extends aqb implements aez, aqh, vi {
    public void a(aft $$0) {
       ye.a($$0, this, this.e.z());
       final apf $$1 = this.e.z();
-      final bow $$2 = $$0.a($$1);
+      final box $$2 = $$0.a($$1);
       this.e.G();
       this.e.f($$0.b());
       if ($$2 != null) {
@@ -1227,14 +1227,14 @@ public class aqe extends aqb implements aez, aqh, vi {
             return;
          }
 
-         epm $$3 = $$2.cH();
+         epo $$3 = $$2.cH();
          if (this.e.a($$3, 1.0)) {
             $$0.a(new aft.c() {
-               private void a(bnb $$0, aqe.a $$1x) {
-                  cqk $$2 = aqe.this.e.b($$0);
+               private void a(bnc $$0, aqe.a $$1x) {
+                  cqm $$2 = aqe.this.e.b($$0);
                   if ($$2.a($$1.I())) {
-                     cqk $$3 = $$2.q();
-                     bnc $$4 = $$1.run(aqe.this.e, $$2, $$0);
+                     cqm $$3 = $$2.q();
+                     bnd $$4 = $$1.run(aqe.this.e, $$2, $$0);
                      if ($$4.a()) {
                         am.T.a(aqe.this.e, $$3, $$2);
                         if ($$4.b()) {
@@ -1245,19 +1245,19 @@ public class aqe extends aqb implements aez, aqh, vi {
                }
 
                @Override
-               public void a(bnb $$0) {
-                  this.a($$0, cis::a);
+               public void a(bnc $$0) {
+                  this.a($$0, ciu::a);
                }
 
                @Override
-               public void a(bnb $$0, epr $$1x) {
+               public void a(bnc $$0, ept $$1x) {
                   this.a($$0, ($$1xxx, $$2xx, $$3) -> $$2xx.a($$1xxx, $$1, $$3));
                }
 
                @Override
                public void a() {
-                  if (!($$2 instanceof cfd) && !($$2 instanceof bpe) && !($$2 instanceof ciy) && $$2 != aqe.this.e) {
-                     cqk $$0 = aqe.this.e.b(bnb.a);
+                  if (!($$2 instanceof cfe) && !($$2 instanceof bpf) && !($$2 instanceof cja) && $$2 != aqe.this.e) {
+                     cqm $$0 = aqe.this.e.b(bnc.a);
                      if ($$0.a($$1.I())) {
                         aqe.this.e.e($$2);
                      }
@@ -1281,7 +1281,7 @@ public class aqe extends aqb implements aez, aqh, vi {
             if (this.e.g) {
                this.e.g = false;
                this.e = this.c.ah().a(this.e, true);
-               am.w.a(this.e, cwz.j, cwz.h);
+               am.w.a(this.e, cxb.j, cxb.h);
             } else {
                if (this.e.ex() > 0.0F) {
                   return;
@@ -1289,8 +1289,8 @@ public class aqe extends aqb implements aez, aqh, vi {
 
                this.e = this.c.ah().a(this.e, false);
                if (this.c.j()) {
-                  this.e.a(cww.d);
-                  this.e.dM().Z().a(cwv.r).a(false, this.c);
+                  this.e.a(cwy.d);
+                  this.e.dM().Z().a(cwx.r).a(false, this.c);
                }
             }
             break;
@@ -1325,8 +1325,8 @@ public class aqe extends aqb implements aez, aqh, vi {
                ObjectIterator var4 = Int2ObjectMaps.fastIterable($$0.h()).iterator();
 
                while (var4.hasNext()) {
-                  Entry<cqk> $$3 = (Entry<cqk>)var4.next();
-                  this.e.bZ.b($$3.getIntKey(), (cqk)$$3.getValue());
+                  Entry<cqm> $$3 = (Entry<cqm>)var4.next();
+                  this.e.bZ.b($$3.getIntKey(), (cqm)$$3.getValue());
                }
 
                this.e.bZ.a($$0.g());
@@ -1345,11 +1345,11 @@ public class aqe extends aqb implements aez, aqh, vi {
    public void a(aga $$0) {
       ye.a($$0, this, this.e.z());
       this.e.G();
-      if (!this.e.N_() && this.e.bZ.j == $$0.b() && this.e.bZ instanceof cnb) {
+      if (!this.e.N_() && this.e.bZ.j == $$0.b() && this.e.bZ instanceof cnd) {
          if (!this.e.bZ.a(this.e)) {
             g.debug("Player {} interacted with invalid menu {}", this.e, this.e.bZ);
          } else {
-            this.c.aJ().a($$0.e()).ifPresent($$1 -> ((cnb)this.e.bZ).a($$0.f(), (ctp<?>)$$1, this.e));
+            this.c.aJ().a($$0.e()).ifPresent($$1 -> ((cnd)this.e.bZ).a($$0.f(), (ctr<?>)$$1, this.e));
          }
       }
    }
@@ -1375,16 +1375,16 @@ public class aqe extends aqb implements aez, aqh, vi {
       ye.a($$0, this, this.e.z());
       if (this.e.f.e()) {
          boolean $$1 = $$0.b() < 0;
-         cqk $$2 = $$0.e();
+         cqm $$2 = $$0.e();
          if (!$$2.a(this.e.dM().I())) {
             return;
          }
 
-         ta $$3 = cof.a($$2);
+         ta $$3 = coh.a($$2);
          if (!$$2.b() && $$3 != null && $$3.e("x") && $$3.e("y") && $$3.e("z")) {
-            ib $$4 = dkg.a($$3);
+            ib $$4 = dki.a($$3);
             if (this.e.dM().p($$4)) {
-               dkg $$5 = this.e.dM().c_($$4);
+               dki $$5 = this.e.dM().c_($$4);
                if ($$5 != null) {
                   $$5.a($$2, this.e.dM().H_());
                }
@@ -1414,7 +1414,7 @@ public class aqe extends aqb implements aez, aqh, vi {
       apf $$2 = this.e.z();
       ib $$3 = $$0.b();
       if ($$2.B($$3)) {
-         if (!($$2.c_($$3) instanceof dlp $$5)) {
+         if (!($$2.c_($$3) instanceof dlr $$5)) {
             return;
          }
 
@@ -1457,11 +1457,11 @@ public class aqe extends aqb implements aez, aqh, vi {
    public void a(afh $$0) {
       ye.a($$0, this, this.e.z());
       wl.a $$1 = $$0.b();
-      civ.a $$2 = this.L != null ? this.L.d().b() : null;
-      civ.a $$3 = $$1.b();
+      cix.a $$2 = this.L != null ? this.L.d().b() : null;
+      cix.a $$3 = $$1.b();
       if (!Objects.equals($$2, $$3)) {
          if ($$2 != null && $$3.b().isBefore($$2.b())) {
-            this.b(civ.a);
+            this.b(cix.a);
          } else {
             try {
                axi $$4 = this.c.as();
@@ -1471,7 +1471,7 @@ public class aqe extends aqb implements aez, aqh, vi {
                }
 
                this.a($$1.a(this.e.fY(), $$4));
-            } catch (civ.b var6) {
+            } catch (cix.b var6) {
                g.error("Failed to validate profile key: {}", var6.getMessage());
                this.b(var6.b());
             }
@@ -1516,6 +1516,6 @@ public class aqe extends aqb implements aez, aqh, vi {
 
    @FunctionalInterface
    interface a {
-      bnc run(apg var1, bow var2, bnb var3);
+      bnd run(apg var1, box var2, bnc var3);
    }
 }

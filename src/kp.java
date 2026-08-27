@@ -30,7 +30,7 @@ public interface kp {
    String a();
 
    static <T> CompletableFuture<?> a(kn $$0, in.a $$1, Codec<T> $$2, T $$3, Path $$4) {
-      ajf<JsonElement> $$5 = ajf.a(JsonOps.INSTANCE, $$1);
+      ajf<JsonElement> $$5 = $$1.a(JsonOps.INSTANCE);
       JsonElement $$6 = ac.a($$2.encodeStart($$5, $$3), IllegalStateException::new);
       return a($$0, $$6, $$4);
    }

@@ -10,40 +10,40 @@ import java.util.stream.Collectors;
 
 public abstract class lk implements lm {
    protected static final br.a a = br.a.a().a(bp.a.a().a(true));
-   private static final Set<bpc<?>> b = ImmutableSet.of(bpc.bx, bpc.e, bpc.af, bpc.aR, bpc.bi);
-   private final clf c;
-   private final clf d;
-   private final Map<bpc<?>, Map<ajh, elc.a>> e = Maps.newHashMap();
+   private static final Set<bpd<?>> b = ImmutableSet.of(bpd.by, bpd.e, bpd.ag, bpd.aS, bpd.bj);
+   private final clh c;
+   private final clh d;
+   private final Map<bpd<?>, Map<ajh, ele.a>> e = Maps.newHashMap();
 
-   protected lk(clf $$0) {
+   protected lk(clh $$0) {
       this($$0, $$0);
    }
 
-   protected lk(clf $$0, clf $$1) {
+   protected lk(clh $$0, clh $$1) {
       this.c = $$0;
       this.d = $$1;
    }
 
-   protected static elc.a a(cwy $$0) {
-      return elc.b().a(elb.a().a(eom.a(1.0F)).a(elk.a($$0))).a(elb.a().a(eom.a(1.0F)).a(elq.a(bpc.aI.j())));
+   protected static ele.a a(cxa $$0) {
+      return ele.b().a(eld.a().a(eoo.a(1.0F)).a(elm.a($$0))).a(eld.a().a(eoo.a(1.0F)).a(els.a(bpd.aJ.j())));
    }
 
    public abstract void a();
 
    @Override
-   public void generate(BiConsumer<ajh, elc.a> $$0) {
+   public void generate(BiConsumer<ajh, ele.a> $$0) {
       this.a();
       Set<ajh> $$1 = Sets.newHashSet();
       ki.g
          .h()
          .forEach(
             $$2 -> {
-               bpc<?> $$3 = $$2.a();
+               bpd<?> $$3 = $$2.a();
                if ($$3.a(this.c)) {
                   if (a($$3)) {
-                     Map<ajh, elc.a> $$4 = this.e.remove($$3);
+                     Map<ajh, ele.a> $$4 = this.e.remove($$3);
                      ajh $$5 = $$3.j();
-                     if (!$$5.equals(eks.a) && $$3.a(this.d) && ($$4 == null || !$$4.containsKey($$5))) {
+                     if (!$$5.equals(eku.a) && $$3.a(this.d) && ($$4 == null || !$$4.containsKey($$5))) {
                         throw new IllegalStateException(String.format(Locale.ROOT, "Missing loottable '%s' for '%s'", $$5, $$2.h().a()));
                      }
 
@@ -57,7 +57,7 @@ public abstract class lk implements lm {
                         });
                      }
                   } else {
-                     Map<ajh, elc.a> $$6 = this.e.remove($$3);
+                     Map<ajh, ele.a> $$6 = this.e.remove($$3);
                      if ($$6 != null) {
                         throw new IllegalStateException(
                            String.format(
@@ -77,23 +77,23 @@ public abstract class lk implements lm {
       }
    }
 
-   private static boolean a(bpc<?> $$0) {
-      return b.contains($$0) || $$0.f() != bpr.h;
+   private static boolean a(bpd<?> $$0) {
+      return b.contains($$0) || $$0.f() != bps.h;
    }
 
-   protected ent.a b() {
-      return enn.a(bg.a.a().b(br.a.a().a(bpc.R)));
+   protected env.a b() {
+      return enp.a(bg.a.a().b(br.a.a().a(bpd.S)));
    }
 
-   protected ent.a a(cbo $$0) {
-      return enn.a(bg.a.a().b(br.a.a().a(bpc.R).a(bs.a($$0))));
+   protected env.a a(cbp $$0) {
+      return enp.a(bg.a.a().b(br.a.a().a(bpd.S).a(bs.a($$0))));
    }
 
-   protected void a(bpc<?> $$0, elc.a $$1) {
+   protected void a(bpd<?> $$0, ele.a $$1) {
       this.a($$0, $$0.j(), $$1);
    }
 
-   protected void a(bpc<?> $$0, ajh $$1, elc.a $$2) {
+   protected void a(bpd<?> $$0, ajh $$1, ele.a $$2) {
       this.e.computeIfAbsent($$0, $$0x -> new HashMap<>()).put($$1, $$2);
    }
 }

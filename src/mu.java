@@ -22,19 +22,19 @@ public class mu {
       this.b = ImmutableSet.copyOf($$2);
    }
 
-   public ajh a(daa $$0) {
+   public ajh a(dac $$0) {
       return mt.a($$0, this.c.orElse(""));
    }
 
-   public ajh a(daa $$0, mw $$1, BiConsumer<ajh, Supplier<JsonElement>> $$2) {
+   public ajh a(dac $$0, mw $$1, BiConsumer<ajh, Supplier<JsonElement>> $$2) {
       return this.a(mt.a($$0, this.c.orElse("")), $$1, $$2);
    }
 
-   public ajh a(daa $$0, String $$1, mw $$2, BiConsumer<ajh, Supplier<JsonElement>> $$3) {
+   public ajh a(dac $$0, String $$1, mw $$2, BiConsumer<ajh, Supplier<JsonElement>> $$3) {
       return this.a(mt.a($$0, $$1 + this.c.orElse("")), $$2, $$3);
    }
 
-   public ajh b(daa $$0, String $$1, mw $$2, BiConsumer<ajh, Supplier<JsonElement>> $$3) {
+   public ajh b(dac $$0, String $$1, mw $$2, BiConsumer<ajh, Supplier<JsonElement>> $$3) {
       return this.a(mt.a($$0, $$1), $$2, $$3);
    }
 

@@ -1,37 +1,18 @@
-public class fox<T extends bow> extends fol<T> {
-   private static final String a = "main";
-   private final frd b;
+import java.util.function.Function;
 
-   public fox(frd $$0) {
-      this.b = $$0;
+public abstract class fox<E extends box> extends foe<E> {
+   public fox() {
+      this(fya::e);
    }
 
-   public static frj b() {
-      frl $$0 = new frl();
-      frm $$1 = $$0.a();
-      int $$2 = 2;
-      $$1.a(
-         "main",
-         fri.c()
-            .a(0, 0)
-            .a(-4.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .a(0.0F, -4.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .a(0.0F, 0.0F, -4.0F, 2.0F, 2.0F, 2.0F)
-            .a(0.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .a(2.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .a(0.0F, 2.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .a(0.0F, 0.0F, 2.0F, 2.0F, 2.0F, 2.0F),
-         frf.a
-      );
-      return frj.a($$0, 64, 32);
+   public fox(Function<ajh, fya> $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+   public void a(eub $$0, euf $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.d().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
    }
 
-   @Override
-   public frd a() {
-      return this.b;
-   }
+   public abstract Iterable<frf> d();
 }

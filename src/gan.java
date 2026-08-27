@@ -1,71 +1,30 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
+public class gan implements fzs<dmj> {
+   private final gdz a;
+   private final axd b = axd.a();
 
-class gan {
-   private final Map<ib, dkg> a;
-   @Nullable
-   private final List<dpo<dmz>> b;
-   private final boolean c;
-   private final dpg d;
-
-   gan(dpg $$0) {
-      this.d = $$0;
-      this.c = $$0.F().ag();
-      this.a = ImmutableMap.copyOf($$0.G());
-      if ($$0 instanceof dpc) {
-         this.b = null;
-      } else {
-         dph[] $$1 = $$0.d();
-         this.b = new ArrayList<>($$1.length);
-
-         for (dph $$2 : $$1) {
-            this.b.add($$2.c() ? null : $$2.h().d());
-         }
-      }
+   public gan(fzt.a $$0) {
+      this.a = $$0.d();
    }
 
-   @Nullable
-   public dkg a(ib $$0) {
-      return this.a.get($$0);
-   }
-
-   public dmz b(ib $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      if (this.c) {
-         dmz $$4 = null;
-         if ($$2 == 60) {
-            $$4 = dac.hW.o();
-         }
-
-         if ($$2 == 70) {
-            $$4 = dsd.a($$1, $$3);
-         }
-
-         return $$4 == null ? dac.a.o() : $$4;
-      } else if (this.b == null) {
-         return dac.a.o();
-      } else {
-         try {
-            int $$5 = this.d.e($$2);
-            if ($$5 >= 0 && $$5 < this.b.size()) {
-               dpo<dmz> $$6 = this.b.get($$5);
-               if ($$6 != null) {
-                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
-               }
+   public void a(dmj $$0, float $$1, eub $$2, fxs $$3, int $$4, int $$5) {
+      if (dmj.a.a($$0.c())) {
+         cxb $$6 = $$0.i();
+         if ($$6 != null) {
+            cqm $$7 = $$0.c().a();
+            if (!$$7.b()) {
+               this.b.b((long)gdx.a($$7));
+               dmk $$8 = $$0.d();
+               a($$1, $$6, $$2, $$3, $$4, $$7, this.a, $$8.b(), $$8.a(), this.b);
             }
-
-            return dac.a.o();
-         } catch (Throwable var8) {
-            o $$8 = o.a(var8, "Getting block state");
-            p $$9 = $$8.a("Block being got");
-            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
-            throw new y($$8);
          }
       }
+   }
+
+   public static void a(float $$0, cxb $$1, eub $$2, fxs $$3, int $$4, cqm $$5, gdz $$6, float $$7, float $$8, axd $$9) {
+      $$2.a();
+      $$2.a(0.5F, 0.4F, 0.5F);
+      $$2.a(a.d.rotationDegrees(aww.j($$0, $$7, $$8)));
+      gdx.a($$6, $$2, $$3, $$4, $$5, $$9, $$1);
+      $$2.b();
    }
 }

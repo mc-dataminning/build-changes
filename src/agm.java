@@ -8,9 +8,9 @@ public class agm implements yb<aez> {
    private final boolean g;
    private final boolean h;
    private final boolean i;
-   private final dkq.a j;
+   private final dks.a j;
 
-   public agm(ib $$0, String $$1, dkq.a $$2, boolean $$3, boolean $$4, boolean $$5) {
+   public agm(ib $$0, String $$1, dks.a $$2, boolean $$3, boolean $$4, boolean $$5) {
       this.e = $$0;
       this.f = $$1;
       this.g = $$3;
@@ -22,7 +22,7 @@ public class agm implements yb<aez> {
    private agm(uu $$0) {
       this.e = $$0.e();
       this.f = $$0.p();
-      this.j = $$0.b(dkq.a.class);
+      this.j = $$0.b(dks.a.class);
       int $$1 = $$0.readByte();
       this.g = ($$1 & 1) != 0;
       this.h = ($$1 & 2) != 0;
@@ -78,7 +78,7 @@ public class agm implements yb<aez> {
       return this.i;
    }
 
-   public dkq.a i() {
+   public dks.a i() {
       return this.j;
    }
 }

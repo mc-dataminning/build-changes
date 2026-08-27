@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 public class aob extends atb {
    private static final Logger a = LogUtils.getLogger();
 
-   public aob(aoc $$0, is<ajq> $$1, ekn $$2) {
+   public aob(aoc $$0, is<ajq> $$1, ekp $$2) {
       super($$0, $$1, $$2, $$0.a().H);
       aod $$3 = $$0.a();
       this.a($$3.F);

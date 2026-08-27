@@ -1,32 +1,61 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dun extends duk {
-   public static final Codec<dun> a = RecordCodecBuilder.create(
+public class dun {
+   public static final dun a = new dun(false, dae.gz.o(), dae.pL.o(), dae.ej.o(), dae.aQ.o());
+   public static final Codec<dun> b = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               duk.d.forGetter($$0x -> $$0x),
-               bmf.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
-               bmf.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
-               bmf.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
+               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(dun::a),
+               dnb.b.optionalFieldOf("air_state", a.b()).forGetter(dun::b),
+               dnb.b.optionalFieldOf("water_state", a.b()).forGetter(dun::c),
+               dnb.b.optionalFieldOf("lava_state", a.b()).forGetter(dun::d),
+               dnb.b.optionalFieldOf("barrier_state", a.b()).forGetter(dun::e)
             )
             .apply($$0, dun::new)
    );
-   public final bmf b;
-   public final bmf c;
-   final bmf j;
+   private final boolean c;
+   private final dnb d;
+   private final dnb e;
+   private final dnb f;
+   private final dnb g;
 
-   public dun(float $$0, ebj $$1, bmf $$2, dtg $$3, dul $$4, ip<daa> $$5, bmf $$6, bmf $$7, bmf $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.b = $$6;
-      this.c = $$7;
-      this.j = $$8;
+   public static dun a(boolean $$0, dnb $$1, dnb $$2, dnb $$3, dnb $$4) {
+      return new dun($$0, $$1, $$2, $$3, $$4);
    }
 
-   public dun(float $$0, ebj $$1, bmf $$2, dtg $$3, ip<daa> $$4, bmf $$5, bmf $$6, bmf $$7) {
-      this($$0, $$1, $$2, $$3, dul.a, $$4, $$5, $$6, $$7);
+   public static dun a(dnb $$0, dnb $$1, dnb $$2, dnb $$3) {
+      return new dun(false, $$0, $$1, $$2, $$3);
    }
 
-   public dun(duk $$0, bmf $$1, bmf $$2, bmf $$3) {
-      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
+   public static dun a(boolean $$0, dnb $$1) {
+      return new dun($$0, $$1, a.c(), a.d(), a.e());
+   }
+
+   private dun(boolean $$0, dnb $$1, dnb $$2, dnb $$3, dnb $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+   }
+
+   public boolean a() {
+      return this.c;
+   }
+
+   public dnb b() {
+      return this.d;
+   }
+
+   public dnb c() {
+      return this.e;
+   }
+
+   public dnb d() {
+      return this.f;
+   }
+
+   public dnb e() {
+      return this.g;
    }
 }

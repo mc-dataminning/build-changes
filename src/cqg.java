@@ -1,65 +1,27 @@
-import com.google.common.collect.Maps;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
+public interface cqg {
+   int a = 256;
+   int b = 140;
+   ajg<cqe> c = a("ponder_goat_horn");
+   ajg<cqe> d = a("sing_goat_horn");
+   ajg<cqe> e = a("seek_goat_horn");
+   ajg<cqe> f = a("feel_goat_horn");
+   ajg<cqe> g = a("admire_goat_horn");
+   ajg<cqe> h = a("call_goat_horn");
+   ajg<cqe> i = a("yearn_goat_horn");
+   ajg<cqe> j = a("dream_goat_horn");
 
-public class cqg {
-   private final Map<cqf, cqg.a> a = Maps.newHashMap();
-   private int b;
-
-   public boolean a(cqf $$0) {
-      return this.a($$0, 0.0F) > 0.0F;
+   private static ajg<cqe> a(String $$0) {
+      return ajg.a(kj.D, new ajh($$0));
    }
 
-   public float a(cqf $$0, float $$1) {
-      cqg.a $$2 = this.a.get($$0);
-      if ($$2 != null) {
-         float $$3 = (float)($$2.b - $$2.a);
-         float $$4 = (float)$$2.b - ((float)this.b + $$1);
-         return aww.a($$4 / $$3, 0.0F, 1.0F);
-      } else {
-         return 0.0F;
-      }
-   }
-
-   public void a() {
-      this.b++;
-      if (!this.a.isEmpty()) {
-         Iterator<Entry<cqf, cqg.a>> $$0 = this.a.entrySet().iterator();
-
-         while ($$0.hasNext()) {
-            Entry<cqf, cqg.a> $$1 = $$0.next();
-            if ($$1.getValue().b <= this.b) {
-               $$0.remove();
-               this.c($$1.getKey());
-            }
-         }
-      }
-   }
-
-   public void a(cqf $$0, int $$1) {
-      this.a.put($$0, new cqg.a(this.b, this.b + $$1));
-      this.b($$0, $$1);
-   }
-
-   public void b(cqf $$0) {
-      this.a.remove($$0);
-      this.c($$0);
-   }
-
-   protected void b(cqf $$0, int $$1) {
-   }
-
-   protected void c(cqf $$0) {
-   }
-
-   static class a {
-      final int a;
-      final int b;
-
-      a(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   static cqe a(iy<cqe> $$0) {
+      iy.a($$0, c, new cqe((il<atx>)aty.mo.get(0), 140, 256.0F));
+      iy.a($$0, d, new cqe((il<atx>)aty.mo.get(1), 140, 256.0F));
+      iy.a($$0, e, new cqe((il<atx>)aty.mo.get(2), 140, 256.0F));
+      iy.a($$0, f, new cqe((il<atx>)aty.mo.get(3), 140, 256.0F));
+      iy.a($$0, g, new cqe((il<atx>)aty.mo.get(4), 140, 256.0F));
+      iy.a($$0, h, new cqe((il<atx>)aty.mo.get(5), 140, 256.0F));
+      iy.a($$0, i, new cqe((il<atx>)aty.mo.get(6), 140, 256.0F));
+      return iy.a($$0, j, new cqe((il<atx>)aty.mo.get(7), 140, 256.0F));
    }
 }

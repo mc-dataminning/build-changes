@@ -17,14 +17,14 @@ public class any implements anv {
             return $$0.then(dv.a("storage").then($$1.apply(dv.a($$0, ev.a()).suggests(any.b))));
          }
       };
-   private final ekb c;
+   private final ekd c;
    private final ajh d;
 
-   static ekb a(CommandContext<du> $$0) {
+   static ekd a(CommandContext<du> $$0) {
       return ((du)$$0.getSource()).l().aL();
    }
 
-   any(ekb $$0, ajh $$1) {
+   any(ekd $$0, ajh $$1) {
       this.c = $$0;
       this.d = $$1;
    }

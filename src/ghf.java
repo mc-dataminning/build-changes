@@ -1,25 +1,39 @@
-public class ghf extends ghj<cbs, fpc<cbs>> {
-   private final fxm a;
+public class ghf<T extends bpp, M extends foe<T> & fne> extends ghm<T, M> {
+   private final fxo a;
 
-   public ghf(get<cbs, fpc<cbs>> $$0, fxm $$1) {
+   public ghf(gew<T, M> $$0, fxo $$1) {
       super($$0);
       this.a = $$1;
    }
 
-   public void a(etz $$0, fxq $$1, int $$2, cbs $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      cqk $$10 = $$3.d(bpd.a);
-      if ($$3.y() && !$$3.gF()) {
-         float $$11 = -0.6F;
-         float $$12 = 1.4F;
-         if ($$3.gt()) {
-            $$11 -= 0.2F * aww.a($$7 * 0.6F) + 0.2F;
-            $$12 -= 0.09F * aww.a($$7 * 0.6F);
+   public void a(eub $$0, fxs $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      boolean $$10 = $$3.fr() == bpj.b;
+      cqm $$11 = $$10 ? $$3.eV() : $$3.eU();
+      cqm $$12 = $$10 ? $$3.eU() : $$3.eV();
+      if (!$$11.b() || !$$12.b()) {
+         $$0.a();
+         if (this.c().e) {
+            float $$13 = 0.5F;
+            $$0.a(0.0F, 0.75F, 0.0F);
+            $$0.b(0.5F, 0.5F, 0.5F);
          }
 
-         $$0.a();
-         $$0.a(0.1F, $$12, $$11);
-         this.a.a($$3, $$10, cqh.h, false, $$0, $$1, $$2);
+         this.a($$3, $$12, cqj.c, bpj.b, $$0, $$1, $$2);
+         this.a($$3, $$11, cqj.b, bpj.a, $$0, $$1, $$2);
          $$0.b();
+      }
+   }
+
+   protected void a(bpp $$0, cqm $$1, cqj $$2, bpj $$3, eub $$4, fxs $$5, int $$6) {
+      if (!$$1.b()) {
+         $$4.a();
+         this.c().a($$3, $$4);
+         $$4.a(a.b.rotationDegrees(-90.0F));
+         $$4.a(a.d.rotationDegrees(180.0F));
+         boolean $$7 = $$3 == bpj.a;
+         $$4.a((float)($$7 ? -1 : 1) / 16.0F, 0.125F, -0.625F);
+         this.a.a($$0, $$1, $$2, $$7, $$4, $$5, $$6);
+         $$4.b();
       }
    }
 }

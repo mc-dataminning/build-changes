@@ -1,56 +1,104 @@
 import com.mojang.serialization.MapCodec;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class dco extends czm {
+public class dco extends czo {
    public static final MapCodec<dco> a = b(dco::new);
-   protected static final eqk b = daa.a(0.0, 6.0, 0.0, 16.0, 12.0, 16.0);
+   protected static final eqm b = dac.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0);
+   public static final List<ib> c = ib.a(-2, 0, -2, 2, 1, 2).filter($$0 -> Math.abs($$0.u()) == 2 || Math.abs($$0.w()) == 2).map(ib::i).toList();
 
    @Override
    public MapCodec<dco> a() {
       return a;
    }
 
-   protected dco(dmy.d $$0) {
+   protected dco(dna.d $$0) {
       super($$0);
    }
 
-   @Override
-   public dkg a(ib $$0, dmz $$1) {
-      return new dlw($$0, $$1);
+   public static boolean a(cxb $$0, ib $$1, ib $$2) {
+      return $$0.a_($$1.a((jg)$$2)).a(aun.cp) && $$0.a_($$1.b($$2.u() / 2, $$2.v(), $$2.w() / 2)).a(aun.cq);
    }
 
    @Override
-   protected eqk a(dmz $$0, cwf $$1, ib $$2, epw $$3) {
+   protected boolean g_(dnb $$0) {
+      return true;
+   }
+
+   @Override
+   protected eqm a(dnb $$0, cwh $$1, ib $$2, epy $$3) {
       return b;
    }
 
    @Override
-   protected void a(dmz $$0, cwz $$1, ib $$2, bow $$3) {
-      if ($$1 instanceof apf && $$3.ct() && eqh.c(eqh.a($$3.cH().d((double)(-$$2.u()), (double)(-$$2.v()), (double)(-$$2.w()))), $$0.j($$1, $$2), epv.i)) {
-         ajg<cwz> $$4 = $$1.ad() == cwz.j ? cwz.h : cwz.j;
-         apf $$5 = ((apf)$$1).o().a($$4);
-         if ($$5 == null) {
-            return;
-         }
+   public void a(dnb $$0, cxb $$1, ib $$2, axd $$3) {
+      super.a($$0, $$1, $$2, $$3);
 
-         $$3.b($$5);
+      for (ib $$4 : c) {
+         if ($$3.a(16) == 0 && a($$1, $$2, $$4)) {
+            $$1.a(
+               kc.t,
+               (double)$$2.u() + 0.5,
+               (double)$$2.v() + 2.0,
+               (double)$$2.w() + 0.5,
+               (double)((float)$$4.u() + $$3.i()) - 0.5,
+               (double)((float)$$4.v() - $$3.i() - 1.0F),
+               (double)((float)$$4.w() + $$3.i()) - 0.5
+            );
+         }
       }
    }
 
    @Override
-   public void a(dmz $$0, cwz $$1, ib $$2, axd $$3) {
-      double $$4 = (double)$$2.u() + $$3.j();
-      double $$5 = (double)$$2.v() + 0.8;
-      double $$6 = (double)$$2.w() + $$3.j();
-      $$1.a(kc.ac, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+   protected dgh b_(dnb $$0) {
+      return dgh.c;
    }
 
    @Override
-   public cqk a(cxc $$0, ib $$1, dmz $$2) {
-      return cqk.h;
+   public dki a(ib $$0, dnb $$1) {
+      return new dlc($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dki> dkj<T> a(cxb $$0, dnb $$1, dkk<T> $$2) {
+      return $$0.B ? a($$2, dkk.m, dlc::a) : null;
    }
 
    @Override
-   protected boolean a(dmz $$0, eim $$1) {
+   protected bnd a(dnb $$0, cxb $$1, ib $$2, ciu $$3, epp $$4) {
+      if ($$1.B) {
+         return bnd.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         return bnd.b;
+      }
+   }
+
+   @Nullable
+   @Override
+   protected bnh b(dnb $$0, cxb $$1, ib $$2) {
+      dki $$3 = $$1.c_($$2);
+      if ($$3 instanceof dlc) {
+         vu $$4 = ((bni)$$3).O_();
+         return new bnn(($$2x, $$3x, $$4x) -> new cmk($$2x, $$3x, cmb.a($$1, $$2)), $$4);
+      } else {
+         return null;
+      }
+   }
+
+   @Override
+   public void a(cxb $$0, ib $$1, dnb $$2, bpp $$3, cqm $$4) {
+      if ($$4.B()) {
+         dki $$5 = $$0.c_($$1);
+         if ($$5 instanceof dlc) {
+            ((dlc)$$5).a($$4.z());
+         }
+      }
+   }
+
+   @Override
+   protected boolean a(dnb $$0, cwh $$1, ib $$2, eje $$3) {
       return false;
    }
 }

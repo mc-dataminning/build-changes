@@ -1,13 +1,13 @@
 public class afd implements yb<aez> {
    public static final xs<uu, afd> a = yb.a(afd::a, afd::new);
-   private final bmz b;
+   private final bna b;
 
-   public afd(bmz $$0) {
+   public afd(bna $$0) {
       this.b = $$0;
    }
 
    private afd(uu $$0) {
-      this.b = bmz.a($$0.readUnsignedByte());
+      this.b = bna.a($$0.readUnsignedByte());
    }
 
    private void a(uu $$0) {
@@ -23,7 +23,7 @@ public class afd implements yb<aez> {
       $$0.a(this);
    }
 
-   public bmz b() {
+   public bna b() {
       return this.b;
    }
 }

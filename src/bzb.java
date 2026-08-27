@@ -1,43 +1,50 @@
-public class bzb extends byz {
-   private boolean p;
+import javax.annotation.Nullable;
 
-   public bzb(bpq $$0, cwz $$1) {
+public class bzb extends byz {
+   @Nullable
+   private ib p;
+
+   public bzb(bpr $$0, cxb $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected eje a(int $$0) {
-      this.p = this.a.ai() == bpc.y;
-      this.o = new ejf(this.p);
-      return new eje(this.o, $$0);
+   public ejd a(ib $$0, int $$1) {
+      this.p = $$0;
+      return super.a($$0, $$1);
    }
 
    @Override
-   protected boolean a() {
-      return this.p || this.a.bg();
+   public ejd a(box $$0, int $$1) {
+      this.p = $$0.dm();
+      return super.a($$0, $$1);
    }
 
    @Override
-   protected epr b() {
-      return new epr(this.a.dr(), this.a.e(0.5), this.a.dx());
+   public boolean a(box $$0, double $$1) {
+      ejd $$2 = this.a($$0, 0);
+      if ($$2 != null) {
+         return this.a($$2, $$1);
+      } else {
+         this.p = $$0.dm();
+         this.d = $$1;
+         return true;
+      }
    }
 
    @Override
-   protected double a(epr $$0) {
-      return $$0.d;
-   }
-
-   @Override
-   protected boolean a(epr $$0, epr $$1) {
-      return a(this.a, $$0, $$1, false);
-   }
-
-   @Override
-   public boolean a(ib $$0) {
-      return !this.b.a_($$0).i(this.b, $$0);
-   }
-
-   @Override
-   public void a(boolean $$0) {
+   public void c() {
+      if (!this.l()) {
+         super.c();
+      } else {
+         if (this.p != null) {
+            if (!this.p.a(this.a.dk(), (double)this.a.dg())
+               && (!(this.a.dt() > (double)this.p.v()) || !ib.a((double)this.p.u(), this.a.dt(), (double)this.p.w()).a(this.a.dk(), (double)this.a.dg()))) {
+               this.a.H().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
+            } else {
+               this.p = null;
+            }
+         }
+      }
    }
 }

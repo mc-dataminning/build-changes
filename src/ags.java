@@ -1,13 +1,13 @@
 public class ags implements yb<aez> {
    public static final xs<uu, ags> a = yb.a(ags::a, ags::new);
-   private final bnb b;
+   private final bnc b;
 
-   public ags(bnb $$0) {
+   public ags(bnc $$0) {
       this.b = $$0;
    }
 
    private ags(uu $$0) {
-      this.b = $$0.b(bnb.class);
+      this.b = $$0.b(bnc.class);
    }
 
    private void a(uu $$0) {
@@ -23,7 +23,7 @@ public class ags implements yb<aez> {
       $$0.a(this);
    }
 
-   public bnb b() {
+   public bnc b() {
       return this.b;
    }
 }

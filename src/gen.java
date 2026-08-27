@@ -1,41 +1,31 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+public class gen extends geh<cbu, fpf> {
+   private static final ajh a = new ajh("textures/entity/parrot/parrot_red_blue.png");
+   private static final ajh i = new ajh("textures/entity/parrot/parrot_blue.png");
+   private static final ajh j = new ajh("textures/entity/parrot/parrot_green.png");
+   private static final ajh k = new ajh("textures/entity/parrot/parrot_yellow_blue.png");
+   private static final ajh l = new ajh("textures/entity/parrot/parrot_grey.png");
 
-public class gen extends gdp<bpq, fph<bpq>> {
-   private static final Map<bpc<?>, ajh> a = ImmutableMap.of(
-      bpc.az,
-      new ajh("textures/entity/piglin/piglin.png"),
-      bpc.bw,
-      new ajh("textures/entity/piglin/zombified_piglin.png"),
-      bpc.aA,
-      new ajh("textures/entity/piglin/piglin_brute.png")
-   );
-   private static final float i = 1.0019531F;
-
-   public gen(gcy.a $$0, frb $$1, frb $$2, frb $$3, boolean $$4) {
-      super($$0, a($$0.f(), $$1, $$4), 0.5F, 1.0019531F, 1.0F, 1.0019531F);
-      this.a(new ggz<>(this, new foo($$0.a($$2)), new foo($$0.a($$3)), $$0.g()));
+   public gen(gdb.a $$0) {
+      super($$0, new fpf($$0.a(fre.aG)), 0.3F);
    }
 
-   private static fph<bpq> a(fqz $$0, frb $$1, boolean $$2) {
-      fph<bpq> $$3 = new fph<>($$0.a($$1));
-      if ($$2) {
-         $$3.a.k = false;
-      }
-
-      return $$3;
+   public ajh a(cbu $$0) {
+      return a($$0.gv());
    }
 
-   public ajh c(bpq $$0) {
-      ajh $$1 = a.get($$0.ai());
-      if ($$1 == null) {
-         throw new IllegalArgumentException("I don't know what texture to use for " + $$0.ai());
-      } else {
-         return $$1;
-      }
+   public static ajh a(cbu.b $$0) {
+      return switch ($$0) {
+         case a -> a;
+         case b -> i;
+         case c -> j;
+         case d -> k;
+         case e -> l;
+      };
    }
 
-   protected boolean d(bpq $$0) {
-      return super.a($$0) || $$0 instanceof chh && ((chh)$$0).gn();
+   public float a(cbu $$0, float $$1) {
+      float $$2 = aww.i($$1, $$0.cd, $$0.ca);
+      float $$3 = aww.i($$1, $$0.cc, $$0.cb);
+      return (aww.a($$2) + 1.0F) * $$3;
    }
 }

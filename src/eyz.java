@@ -1,39 +1,38 @@
-import java.util.function.IntFunction;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public enum eyz implements awy {
-   a(0, "options.graphics.fast"),
-   b(1, "options.graphics.fancy"),
-   c(2, "options.graphics.fabulous");
+public class eyz {
+   private final fsb a;
+   private int b = -1;
+   @Nullable
+   private Consumer<ta> c;
 
-   private static final IntFunction<eyz> d = avn.a(eyz::a, values(), avn.a.b);
-   private final int e;
-   private final String f;
-
-   private eyz(int $$0, String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public eyz(fsb $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public int a() {
-      return this.e;
+   public boolean a(int $$0, @Nullable ta $$1) {
+      if (this.b == $$0 && this.c != null) {
+         this.c.accept($$1);
+         this.c = null;
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   @Override
-   public String b() {
-      return this.f;
+   private int a(Consumer<ta> $$0) {
+      this.c = $$0;
+      return ++this.b;
    }
 
-   @Override
-   public String toString() {
-      return switch (this) {
-         case a -> "fast";
-         case b -> "fancy";
-         case c -> "fabulous";
-      };
+   public void a(int $$0, Consumer<ta> $$1) {
+      int $$2 = this.a($$1);
+      this.a.b(new afs($$2, $$0));
    }
 
-   public static eyz a(int $$0) {
-      return d.apply($$0);
+   public void a(ib $$0, Consumer<ta> $$1) {
+      int $$2 = this.a($$1);
+      this.a.b(new afc($$2, $$0));
    }
 }

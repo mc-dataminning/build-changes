@@ -52,15 +52,15 @@ public class my {
       return this;
    }
 
-   public ajh a(daa $$0, BiConsumer<ajh, Supplier<JsonElement>> $$1) {
+   public ajh a(dac $$0, BiConsumer<ajh, Supplier<JsonElement>> $$1) {
       return this.B.a($$0, this.A, $$1);
    }
 
-   public ajh a(daa $$0, String $$1, BiConsumer<ajh, Supplier<JsonElement>> $$2) {
+   public ajh a(dac $$0, String $$1, BiConsumer<ajh, Supplier<JsonElement>> $$2) {
       return this.B.a($$0, $$1, this.A, $$2);
    }
 
-   private static my.a a(Function<daa, mw> $$0, mu $$1) {
+   private static my.a a(Function<dac, mw> $$0, mu $$1) {
       return $$2 -> new my($$0.apply($$2), $$1);
    }
 
@@ -70,13 +70,13 @@ public class my {
 
    @FunctionalInterface
    public interface a {
-      my get(daa var1);
+      my get(dac var1);
 
-      default ajh create(daa $$0, BiConsumer<ajh, Supplier<JsonElement>> $$1) {
+      default ajh create(dac $$0, BiConsumer<ajh, Supplier<JsonElement>> $$1) {
          return this.get($$0).a($$0, $$1);
       }
 
-      default ajh createWithSuffix(daa $$0, String $$1, BiConsumer<ajh, Supplier<JsonElement>> $$2) {
+      default ajh createWithSuffix(dac $$0, String $$1, BiConsumer<ajh, Supplier<JsonElement>> $$2) {
          return this.get($$0).a($$0, $$1, $$2);
       }
 

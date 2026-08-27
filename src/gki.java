@@ -1,22 +1,17 @@
-public class gki {
-   public static final int a = -1;
-   private final int b;
-   private final int c;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public gki(int $$0) {
-      this($$0, -1);
-   }
+public record gki(String b, String c, boolean d) {
+   public static final Codec<gki> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               awe.w.fieldOf("region").forGetter(gki::b),
+               awe.w.fieldOf("name").forGetter(gki::c),
+               Codec.BOOL.optionalFieldOf("bidirectional", false).forGetter(gki::d)
+            )
+            .apply($$0, gki::new)
+   );
 
-   public gki(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   public int a(int $$0) {
-      return this.c == -1 ? $$0 : this.c;
-   }
-
-   public int a() {
-      return this.b;
+   public vu a() {
+      return vu.b(this.c + " (" + this.b + ")");
    }
 }

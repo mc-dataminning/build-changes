@@ -1,50 +1,40 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public class cru extends cqh {
+   public static final int a = 1200;
+   public static final float b = 0.1F;
 
-public class cru extends cqf {
-   public static final String a = "effects";
-   public static final int b = 160;
-
-   public cru(cqf.a $$0) {
+   public cru(cqh.a $$0) {
       super($$0);
    }
 
-   public static void a(cqk $$0, List<dib.a> $$1) {
-      ta $$2 = $$0.x();
-      dib.a.b.encodeStart(to.a, $$1).result().ifPresent($$1x -> $$2.a("effects", $$1x));
-   }
-
-   public static void b(cqk $$0, List<dib.a> $$1) {
-      ta $$2 = $$0.x();
-      List<dib.a> $$3 = new ArrayList<>();
-      a($$0, $$3::add);
-      $$3.addAll($$1);
-      dib.a.b.encodeStart(to.a, $$3).result().ifPresent($$1x -> $$2.a("effects", $$1x));
-   }
-
-   private static void a(cqk $$0, Consumer<dib.a> $$1) {
-      ta $$2 = $$0.w();
-      if ($$2 != null && $$2.b("effects", 9)) {
-         dib.a.b.parse(to.a, $$2.c("effects", 10)).result().ifPresent($$1x -> $$1x.forEach($$1));
-      }
+   @Override
+   public int b(cqm $$0) {
+      return 1200;
    }
 
    @Override
-   public void a(cqk $$0, @Nullable cwz $$1, List<vu> $$2, csb $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$3.b()) {
-         List<boj> $$4 = new ArrayList<>();
-         a($$0, $$1x -> $$4.add($$1x.a()));
-         csj.a($$4, $$2, 1.0F, $$1 == null ? 20.0F : $$1.s().f());
-      }
+   public csf c(cqm $$0) {
+      return csf.h;
    }
 
    @Override
-   public cqk a(cqk $$0, cwz $$1, bpo $$2) {
-      cqk $$3 = super.a($$0, $$1, $$2);
-      a($$3, $$1x -> $$2.b($$1x.a()));
-      return $$2.fM() ? $$3 : new cqk(cqn.pp);
+   public bne<cqm> a(cxb $$0, ciu $$1, bnc $$2) {
+      $$1.a(aty.yy, 1.0F, 1.0F);
+      $$1.b(aui.c.b(this));
+      return cqo.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public cqm a(cqm $$0, cxb $$1, bpp $$2) {
+      this.a($$2);
+      return $$0;
+   }
+
+   @Override
+   public void a(cqm $$0, cxb $$1, bpp $$2, int $$3) {
+      this.a($$2);
+   }
+
+   private void a(bpp $$0) {
+      $$0.a(aty.yz, 1.0F, 1.0F);
    }
 }

@@ -1,35 +1,36 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableMap;
 
-public class cac extends bzq<chw> {
-   @Override
-   public Set<byr<?>> a() {
-      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(byr.B)));
-   }
-
-   protected void a(apf $$0, chw $$1) {
-      super.a($$0, $$1);
-      a($$1, $$0x -> $$0x.ai() == bpc.bx)
-         .or(() -> a($$1, $$0xx -> $$0xx.ai() != bpc.bx))
-         .ifPresentOrElse($$1x -> $$1.dP().a(byr.B, $$1x), () -> $$1.dP().b(byr.B));
-   }
-
-   private static Optional<bpo> a(chw $$0, Predicate<bpo> $$1) {
-      return $$0.dP().c(byr.g).stream().flatMap(Collection::stream).filter($$0::b).filter($$1).findFirst();
-   }
+public class cac extends bzs {
+   private static final ImmutableMap<bpd<?>, Float> a = ImmutableMap.builder()
+      .put(bpd.C, 8.0F)
+      .put(bpd.K, 12.0F)
+      .put(bpd.ad, 8.0F)
+      .put(bpd.ae, 12.0F)
+      .put(bpd.aC, 15.0F)
+      .put(bpd.aH, 12.0F)
+      .put(bpd.bi, 8.0F)
+      .put(bpd.bk, 10.0F)
+      .put(bpd.bt, 10.0F)
+      .put(bpd.bu, 8.0F)
+      .put(bpd.bw, 8.0F)
+      .build();
 
    @Override
-   protected int b() {
-      return 24;
+   protected boolean a(bpp $$0, bpp $$1) {
+      return this.b($$1) && this.e($$0, $$1);
+   }
+
+   private boolean e(bpp $$0, bpp $$1) {
+      float $$2 = (Float)a.get($$1.ai());
+      return $$1.g((box)$$0) <= (double)($$2 * $$2);
    }
 
    @Override
-   protected int c() {
-      return 24;
+   protected bys<bpp> b() {
+      return bys.A;
+   }
+
+   private boolean b(bpp $$0) {
+      return a.containsKey($$0.ai());
    }
 }

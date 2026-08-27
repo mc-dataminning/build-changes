@@ -1,44 +1,24 @@
-import javax.annotation.Nullable;
+import java.util.function.IntFunction;
 
-public class cdk extends cde {
-   public cdk(bpc<? extends cdk> $$0, cwz $$1) {
-      super($$0, $$1);
+public enum cdk {
+   a(0),
+   b(1),
+   c(2),
+   d(3),
+   e(4);
+
+   private static final IntFunction<cdk> f = avn.a(cdk::a, values(), avn.a.b);
+   private final int g;
+
+   private cdk(int $$0) {
+      this.g = $$0;
    }
 
-   @Override
-   protected atx v() {
-      return aty.oZ;
+   public int a() {
+      return this.g;
    }
 
-   @Override
-   protected atx gL() {
-      return aty.pa;
-   }
-
-   @Override
-   protected atx n_() {
-      return aty.pc;
-   }
-
-   @Nullable
-   @Override
-   protected atx gu() {
-      return aty.pd;
-   }
-
-   @Override
-   protected atx d(bnv $$0) {
-      return aty.pe;
-   }
-
-   @Override
-   protected void gn() {
-      this.a(aty.pb, 1.0F, (this.ag.i() - this.ag.i()) * 0.2F + 1.0F);
-   }
-
-   @Nullable
-   @Override
-   public bor a(apf $$0, bor $$1) {
-      return bpc.as.a((cwz)$$0);
+   public static cdk a(int $$0) {
+      return f.apply($$0);
    }
 }

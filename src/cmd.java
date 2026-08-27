@@ -1,19 +1,9 @@
-public class cmd extends cnj {
-   private final cmc a;
+public interface cmd {
+   void a(clq var1, iu<cqm> var2, cqm var3, int[] var4);
 
-   public cmd(bmv $$0, int $$1, int $$2, int $$3, cmc $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.a = $$4;
-   }
+   void a(clq var1, int var2, cqm var3);
 
-   @Override
-   public boolean a(cqk $$0) {
-      return !this.a.e(this.e) && super.a($$0);
-   }
+   void a(clq var1, cqm var2);
 
-   @Override
-   public void b() {
-      super.b();
-      this.a.a(this.d);
-   }
+   void a(clq var1, int var2, int var3);
 }

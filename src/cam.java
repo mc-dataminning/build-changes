@@ -1,119 +1,58 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
 import java.util.function.ToDoubleFunction;
 import javax.annotation.Nullable;
 
 public class cam {
-   private static final int a = 10;
-
-   public static ib a(axd $$0, int $$1, int $$2) {
-      int $$3 = $$0.a(2 * $$1 + 1) - $$1;
-      int $$4 = $$0.a(2 * $$2 + 1) - $$2;
-      int $$5 = $$0.a(2 * $$1 + 1) - $$1;
-      return new ib($$3, $$4, $$5);
+   @Nullable
+   public static ept a(bpx $$0, int $$1, int $$2) {
+      return a($$0, $$1, $$2, $$0::h);
    }
 
    @Nullable
-   public static ib a(axd $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      double $$7 = aww.d($$5, $$4) - (float) (Math.PI / 2);
-      double $$8 = $$7 + (double)(2.0F * $$0.i() - 1.0F) * $$6;
-      double $$9 = Math.sqrt($$0.j()) * (double)aww.g * (double)$$1;
-      double $$10 = -$$9 * Math.sin($$8);
-      double $$11 = $$9 * Math.cos($$8);
-      if (!(Math.abs($$10) > (double)$$1) && !(Math.abs($$11) > (double)$$1)) {
-         int $$12 = $$0.a(2 * $$2 + 1) - $$2 + $$3;
-         return ib.a($$10, (double)$$12, $$11);
-      } else {
-         return null;
-      }
-   }
-
-   @VisibleForTesting
-   public static ib a(ib $$0, int $$1, Predicate<ib> $$2) {
-      if (!$$2.test($$0)) {
-         return $$0;
-      } else {
-         ib $$3 = $$0.c();
-
-         while ($$3.v() < $$1 && $$2.test($$3)) {
-            $$3 = $$3.c();
-         }
-
-         return $$3;
-      }
-   }
-
-   @VisibleForTesting
-   public static ib a(ib $$0, int $$1, int $$2, Predicate<ib> $$3) {
-      if ($$1 < 0) {
-         throw new IllegalArgumentException("aboveSolidAmount was " + $$1 + ", expected >= 0");
-      } else if (!$$3.test($$0)) {
-         return $$0;
-      } else {
-         ib $$4 = $$0.c();
-
-         while ($$4.v() < $$2 && $$3.test($$4)) {
-            $$4 = $$4.c();
-         }
-
-         ib $$5 = $$4;
-
-         while ($$5.v() < $$2 && $$5.v() - $$4.v() < $$1) {
-            ib $$6 = $$5.c();
-            if ($$3.test($$6)) {
-               break;
-            }
-
-            $$5 = $$6;
-         }
-
-         return $$5;
-      }
+   public static ept a(bpx $$0, int $$1, int $$2, ToDoubleFunction<ib> $$3) {
+      boolean $$4 = cak.a($$0, $$1);
+      return can.a(() -> {
+         ib $$4x = can.a($$0.ei(), $$1, $$2);
+         ib $$5 = a($$0, $$1, $$4, $$4x);
+         return $$5 == null ? null : a($$0, $$5);
+      }, $$3);
    }
 
    @Nullable
-   public static epr a(bpw $$0, Supplier<ib> $$1) {
-      return a($$1, $$0::h);
+   public static ept a(bpx $$0, int $$1, int $$2, ept $$3) {
+      ept $$4 = $$3.a($$0.dr(), $$0.dt(), $$0.dx());
+      boolean $$5 = cak.a($$0, $$1);
+      return a($$0, $$1, $$2, $$4, $$5);
    }
 
    @Nullable
-   public static epr a(Supplier<ib> $$0, ToDoubleFunction<ib> $$1) {
-      double $$2 = Double.NEGATIVE_INFINITY;
-      ib $$3 = null;
-
-      for (int $$4 = 0; $$4 < 10; $$4++) {
-         ib $$5 = $$0.get();
-         if ($$5 != null) {
-            double $$6 = $$1.applyAsDouble($$5);
-            if ($$6 > $$2) {
-               $$2 = $$6;
-               $$3 = $$5;
-            }
-         }
-      }
-
-      return $$3 != null ? epr.c($$3) : null;
+   public static ept b(bpx $$0, int $$1, int $$2, ept $$3) {
+      ept $$4 = $$0.dk().d($$3);
+      boolean $$5 = cak.a($$0, $$1);
+      return a($$0, $$1, $$2, $$4, $$5);
    }
 
-   public static ib a(bpw $$0, int $$1, axd $$2, ib $$3) {
-      int $$4 = $$3.u();
-      int $$5 = $$3.w();
-      if ($$0.fZ() && $$1 > 1) {
-         ib $$6 = $$0.fW();
-         if ($$0.dr() > (double)$$6.u()) {
-            $$4 -= $$2.a($$1 / 2);
+   @Nullable
+   private static ept a(bpx $$0, int $$1, int $$2, ept $$3, boolean $$4) {
+      return can.a($$0, () -> {
+         ib $$5 = can.a($$0.ei(), $$1, $$2, 0, $$3.c, $$3.e, (float) (Math.PI / 2));
+         if ($$5 == null) {
+            return null;
          } else {
-            $$4 += $$2.a($$1 / 2);
+            ib $$6 = a($$0, $$1, $$4, $$5);
+            return $$6 == null ? null : a($$0, $$6);
          }
+      });
+   }
 
-         if ($$0.dx() > (double)$$6.w()) {
-            $$5 -= $$2.a($$1 / 2);
-         } else {
-            $$5 += $$2.a($$1 / 2);
-         }
-      }
+   @Nullable
+   public static ib a(bpx $$0, ib $$1) {
+      $$1 = can.a($$1, $$0.dM().ak(), $$1x -> cak.c($$0, $$1x));
+      return !cak.a($$0, $$1) && !cak.b($$0, $$1) ? $$1 : null;
+   }
 
-      return ib.a((double)$$4 + $$0.dr(), (double)$$3.v() + $$0.dt(), (double)$$5 + $$0.dx());
+   @Nullable
+   public static ib a(bpx $$0, int $$1, boolean $$2, ib $$3) {
+      ib $$4 = can.a($$0, $$1, $$0.ei(), $$3);
+      return !cak.a($$4, $$0) && !cak.a($$2, $$0, $$4) && !cak.a($$0.K(), $$4) ? $$4 : null;
    }
 }

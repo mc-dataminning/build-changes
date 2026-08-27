@@ -186,7 +186,7 @@ public interface iy<T> extends Keyable, iq<T> {
    default in.b<T> u() {
       return new in.b.a<T>() {
          @Override
-         protected in.b<T> a() {
+         public in.b<T> a() {
             return iy.this.p();
          }
 

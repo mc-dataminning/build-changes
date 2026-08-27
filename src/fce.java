@@ -1,18 +1,57 @@
-public class fce extends fbg {
-   private final far a;
-   private final vu b;
-   private final vu c;
+import javax.annotation.Nullable;
 
-   public fce(int $$0, int $$1, int $$2, int $$3, vu $$4, fbg.c $$5, far $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, p);
-      this.a = $$6;
-      this.b = $$4;
-      this.c = vx.a($$4.f(), wr.a.c(true));
+public abstract class fce<E extends fce.a<E>> extends fbd<E> {
+   private static final vu a = vu.c("narration.selection.usage");
+
+   public fce(ezi $$0, int $$1, int $$2, int $$3, int $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Nullable
+   @Override
+   public fas a(ffk $$0) {
+      if (this.n() == 0) {
+         return null;
+      } else if (this.aJ_() && $$0 instanceof ffk.a $$1) {
+         E $$2 = this.a($$1.b());
+         return $$2 != null ? fas.a(this, fas.a($$2)) : null;
+      } else if (!this.aJ_()) {
+         E $$3 = this.i();
+         if ($$3 == null) {
+            $$3 = this.a($$0.a());
+         }
+
+         return $$3 == null ? null : fas.a(this, fas.a($$3));
+      } else {
+         return null;
+      }
    }
 
    @Override
-   public void b(fat $$0, int $$1, int $$2, float $$3) {
-      vu $$4 = this.z() ? this.c : this.b;
-      $$0.b(this.a, $$4, this.B(), this.C(), 16777215 | aww.f(this.l * 255.0F) << 24);
+   public void a(ffe $$0) {
+      E $$1 = this.t();
+      if ($$1 != null) {
+         this.a($$0.a(), $$1);
+         $$1.b($$0);
+      } else {
+         E $$2 = this.i();
+         if ($$2 != null) {
+            this.a($$0.a(), $$2);
+            $$2.b($$0);
+         }
+      }
+
+      if (this.aJ_()) {
+         $$0.a(ffd.d, a);
+      }
+   }
+
+   public abstract static class a<E extends fce.a<E>> extends fbd.a<E> implements fff {
+      public abstract vu a();
+
+      @Override
+      public void b(ffe $$0) {
+         $$0.a(ffd.a, this.a());
+      }
    }
 }

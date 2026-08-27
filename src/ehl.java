@@ -1,14 +1,18 @@
 import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public interface ehl<P extends ehk> {
-   ehl<ehi> a = a("clear", ehi.a);
-   ehl<ehj> b = a("passthrough", ehj.b);
-   ehl<ehh> c = a("append_static", ehh.a);
-   ehl<ehg> d = a("append_loot", ehg.a);
+public class ehl implements ehm {
+   public static final ehl a = new ehl();
+   public static final Codec<ehl> b = Codec.unit(a);
 
-   Codec<P> codec();
+   @Nullable
+   @Override
+   public ta a(axd $$0, @Nullable ta $$1) {
+      return $$1;
+   }
 
-   private static <P extends ehk> ehl<P> a(String $$0, Codec<P> $$1) {
-      return iy.a(ki.p, $$0, () -> $$1);
+   @Override
+   public ehn<?> a() {
+      return ehn.b;
    }
 }

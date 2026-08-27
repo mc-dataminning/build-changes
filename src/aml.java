@@ -37,8 +37,8 @@ public class aml {
       apf $$3 = $$0.e();
       apd $$4 = $$3.l();
       $$4.a.d();
-      epr $$5 = $$0.d();
-      cwg $$6 = new cwg(ib.a($$5));
+      ept $$5 = $$0.d();
+      cwi $$6 = new cwi(ib.a($$5));
       int $$7 = $$6.f - $$1;
       int $$8 = $$6.f + $$1;
       int $$9 = $$6.e - $$1;
@@ -46,42 +46,42 @@ public class aml {
 
       for (int $$11 = $$7; $$11 <= $$8; $$11++) {
          for (int $$12 = $$9; $$12 <= $$10; $$12++) {
-            cwg $$13 = new cwg($$12, $$11);
-            dpg $$14 = $$4.a($$12, $$11, false);
+            cwi $$13 = new cwi($$12, $$11);
+            dpi $$14 = $$4.a($$12, $$11, false);
             if ($$14 != null && (!$$2 || !$$14.s())) {
                for (ib $$15 : ib.b($$13.d(), $$3.I_(), $$13.e(), $$13.f(), $$3.ak() - 1, $$13.g())) {
-                  $$3.a($$15, dac.a.o(), 16);
+                  $$3.a($$15, dae.a.o(), 16);
                }
             }
          }
       }
 
-      blv<Runnable> $$16 = blv.a(ac.f(), "worldgen-resetchunks");
+      blw<Runnable> $$16 = blw.a(ac.f(), "worldgen-resetchunks");
       long $$17 = System.currentTimeMillis();
       int $$18 = ($$1 * 2 + 1) * ($$1 * 2 + 1);
-      UnmodifiableIterator var33 = ImmutableList.of(dpa.f, dpa.g, dpa.h, dpa.i, dpa.j, dpa.k).iterator();
+      UnmodifiableIterator var33 = ImmutableList.of(dpc.f, dpc.g, dpc.h, dpc.i, dpc.j, dpc.k).iterator();
 
       while (var33.hasNext()) {
-         dpa $$19 = (dpa)var33.next();
+         dpc $$19 = (dpc)var33.next();
          long $$20 = System.currentTimeMillis();
          CompletableFuture<Unit> $$21 = CompletableFuture.supplyAsync(() -> Unit.INSTANCE, $$16::a);
 
          for (int $$22 = $$6.f - $$1; $$22 <= $$6.f + $$1; $$22++) {
             for (int $$23 = $$6.e - $$1; $$23 <= $$6.e + $$1; $$23++) {
-               cwg $$24 = new cwg($$23, $$22);
-               dpg $$25 = $$4.a($$23, $$22, false);
+               cwi $$24 = new cwi($$23, $$22);
+               dpi $$25 = $$4.a($$23, $$22, false);
                if ($$25 != null && (!$$2 || !$$25.s())) {
-                  List<dov> $$26 = Lists.newArrayList();
+                  List<dox> $$26 = Lists.newArrayList();
                   int $$27 = Math.max(1, $$19.e());
 
                   for (int $$28 = $$24.f - $$27; $$28 <= $$24.f + $$27; $$28++) {
                      for (int $$29 = $$24.e - $$27; $$29 <= $$24.e + $$27; $$29++) {
-                        dov $$30 = $$4.a($$29, $$28, $$19.d(), true);
-                        dov $$31;
-                        if ($$30 instanceof dpf) {
-                           $$31 = new dpf(((dpf)$$30).C(), true);
-                        } else if ($$30 instanceof dpg) {
-                           $$31 = new dpf((dpg)$$30, true);
+                        dox $$30 = $$4.a($$29, $$28, $$19.d(), true);
+                        dox $$31;
+                        if ($$30 instanceof dph) {
+                           $$31 = new dph(((dph)$$30).C(), true);
+                        } else if ($$30 instanceof dpi) {
+                           $$31 = new dph((dpi)$$30, true);
                         } else {
                            $$31 = $$30;
                         }
@@ -93,8 +93,8 @@ public class aml {
                   $$21 = $$21.thenComposeAsync($$5x -> $$19.a($$16::a, $$3, $$4.g(), $$3.q(), $$4.a(), $$0xx -> {
                         throw new UnsupportedOperationException("Not creating full chunks here");
                      }, $$26).thenApply($$1xx -> {
-                        if ($$19 == dpa.g) {
-                           $$1xx.left().ifPresent($$0xxx -> dsm.a($$0xxx, dpa.b));
+                        if ($$19 == dpc.g) {
+                           $$1xx.left().ifPresent($$0xxx -> dso.a($$0xxx, dpc.b));
                         }
 
                         return Unit.INSTANCE;
@@ -111,8 +111,8 @@ public class aml {
 
       for (int $$35 = $$6.f - $$1; $$35 <= $$6.f + $$1; $$35++) {
          for (int $$36 = $$6.e - $$1; $$36 <= $$6.e + $$1; $$36++) {
-            cwg $$37 = new cwg($$36, $$35);
-            dpg $$38 = $$4.a($$36, $$35, false);
+            cwi $$37 = new cwi($$36, $$35);
+            dpi $$38 = $$4.a($$36, $$35, false);
             if ($$38 != null && (!$$2 || !$$38.s())) {
                for (ib $$39 : ib.b($$37.d(), $$3.I_(), $$37.e(), $$37.f(), $$3.ak() - 1, $$37.g())) {
                   $$4.a($$39);

@@ -1,173 +1,99 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.OptionalInt;
+import java.util.List;
 
-public class dvl extends dvq<dxs> {
-   public dvl(Codec<dxs> $$0) {
+public class dvl extends dvs<dyd> {
+   private static final dnk a = dnk.a(dae.I);
+   private final dnb b = dae.I.o();
+   private final dnb c = dae.jF.o();
+   private final dnb d = dae.aV.o();
+   private final dnb an = dae.G.o();
+
+   public dvl(Codec<dyd> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dvs<dxs> $$0) {
-      cxu $$1 = $$0.b();
+   public boolean a(dvu<dyd> $$0) {
+      cxw $$1 = $$0.b();
       ib $$2 = $$0.e();
-      dxs $$3 = $$0.f();
-      axd $$4 = $$0.d();
-      if (!dvm.a($$1, $$2)) {
+      $$2 = $$2.c();
+
+      while ($$1.u($$2) && $$2.v() > $$1.I_() + 2) {
+         $$2 = $$2.d();
+      }
+
+      if (!a.a($$1.a_($$2))) {
          return false;
       } else {
-         int $$5 = $$3.c.a($$4);
-         float $$6 = $$3.i.a($$4);
-         float $$7 = $$3.h.a($$4);
-         int $$8 = $$3.d.a($$4);
-         int $$9 = $$3.d.a($$4);
-
-         for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
-            for (int $$11 = -$$9; $$11 <= $$9; $$11++) {
-               double $$12 = this.a($$8, $$9, $$10, $$11, $$3);
-               ib $$13 = $$2.b($$10, 0, $$11);
-               this.a($$1, $$4, $$13, $$10, $$11, $$6, $$12, $$5, $$7, $$3);
+         for (int $$3 = -2; $$3 <= 2; $$3++) {
+            for (int $$4 = -2; $$4 <= 2; $$4++) {
+               if ($$1.u($$2.b($$3, -1, $$4)) && $$1.u($$2.b($$3, -2, $$4))) {
+                  return false;
+               }
             }
          }
 
+         for (int $$5 = -2; $$5 <= 0; $$5++) {
+            for (int $$6 = -2; $$6 <= 2; $$6++) {
+               for (int $$7 = -2; $$7 <= 2; $$7++) {
+                  $$1.a($$2.b($$6, $$5, $$7), this.d, 2);
+               }
+            }
+         }
+
+         $$1.a($$2, this.an, 2);
+
+         for (ih $$8 : ih.c.a) {
+            $$1.a($$2.a($$8), this.an, 2);
+         }
+
+         ib $$9 = $$2.d();
+         $$1.a($$9, this.b, 2);
+
+         for (ih $$10 : ih.c.a) {
+            $$1.a($$9.a($$10), this.b, 2);
+         }
+
+         for (int $$11 = -2; $$11 <= 2; $$11++) {
+            for (int $$12 = -2; $$12 <= 2; $$12++) {
+               if ($$11 == -2 || $$11 == 2 || $$12 == -2 || $$12 == 2) {
+                  $$1.a($$2.b($$11, 1, $$12), this.d, 2);
+               }
+            }
+         }
+
+         $$1.a($$2.b(2, 1, 0), this.c, 2);
+         $$1.a($$2.b(-2, 1, 0), this.c, 2);
+         $$1.a($$2.b(0, 1, 2), this.c, 2);
+         $$1.a($$2.b(0, 1, -2), this.c, 2);
+
+         for (int $$13 = -1; $$13 <= 1; $$13++) {
+            for (int $$14 = -1; $$14 <= 1; $$14++) {
+               if ($$13 == 0 && $$14 == 0) {
+                  $$1.a($$2.b($$13, 4, $$14), this.d, 2);
+               } else {
+                  $$1.a($$2.b($$13, 4, $$14), this.c, 2);
+               }
+            }
+         }
+
+         for (int $$15 = 1; $$15 <= 3; $$15++) {
+            $$1.a($$2.b(-1, $$15, -1), this.d, 2);
+            $$1.a($$2.b(-1, $$15, 1), this.d, 2);
+            $$1.a($$2.b(1, $$15, -1), this.d, 2);
+            $$1.a($$2.b(1, $$15, 1), this.d, 2);
+         }
+
+         List<ib> $$17 = List.of($$2, $$2.h(), $$2.f(), $$2.g(), $$2.e());
+         axd $$18 = $$0.d();
+         b($$1, ac.a($$17, $$18).c(1));
+         b($$1, ac.a($$17, $$18).c(2));
          return true;
       }
    }
 
-   private void a(cxu $$0, axd $$1, ib $$2, int $$3, int $$4, float $$5, double $$6, int $$7, float $$8, dxs $$9) {
-      Optional<dsc> $$10 = dsc.a($$0, $$2, $$9.b, dvm::c, dvm::d);
-      if (!$$10.isEmpty()) {
-         OptionalInt $$11 = $$10.get().b();
-         OptionalInt $$12 = $$10.get().c();
-         if (!$$11.isEmpty() || !$$12.isEmpty()) {
-            boolean $$13 = $$1.i() < $$5;
-            dsc $$15;
-            if ($$13 && $$12.isPresent() && this.b($$0, $$2.h($$12.getAsInt()))) {
-               int $$14 = $$12.getAsInt();
-               $$15 = $$10.get().a(OptionalInt.of($$14 - 1));
-               $$0.a($$2.h($$14), dac.G.o(), 2);
-            } else {
-               $$15 = $$10.get();
-            }
-
-            OptionalInt $$17 = $$15.c();
-            boolean $$18 = $$1.j() < $$6;
-            int $$22;
-            if ($$11.isPresent() && $$18 && !this.a((cxc)$$0, $$2.h($$11.getAsInt()))) {
-               int $$19 = $$9.g.a($$1);
-               this.a($$0, $$2.h($$11.getAsInt()), $$19, ih.b);
-               int $$20;
-               if ($$17.isPresent()) {
-                  $$20 = Math.min($$7, $$11.getAsInt() - $$17.getAsInt());
-               } else {
-                  $$20 = $$7;
-               }
-
-               $$22 = this.a($$1, $$3, $$4, $$8, $$20, $$9);
-            } else {
-               $$22 = 0;
-            }
-
-            boolean $$24 = $$1.j() < $$6;
-            int $$26;
-            if ($$17.isPresent() && $$24 && !this.a((cxc)$$0, $$2.h($$17.getAsInt()))) {
-               int $$25 = $$9.g.a($$1);
-               this.a($$0, $$2.h($$17.getAsInt()), $$25, ih.a);
-               if ($$11.isPresent()) {
-                  $$26 = Math.max(0, $$22 + aww.b($$1, -$$9.e, $$9.e));
-               } else {
-                  $$26 = this.a($$1, $$3, $$4, $$8, $$7, $$9);
-               }
-            } else {
-               $$26 = 0;
-            }
-
-            int $$36;
-            int $$35;
-            if ($$11.isPresent() && $$17.isPresent() && $$11.getAsInt() - $$22 <= $$17.getAsInt() + $$26) {
-               int $$29 = $$17.getAsInt();
-               int $$30 = $$11.getAsInt();
-               int $$31 = Math.max($$30 - $$22, $$29 + 1);
-               int $$32 = Math.min($$29 + $$26, $$30 - 1);
-               int $$33 = aww.b($$1, $$31, $$32 + 1);
-               int $$34 = $$33 - 1;
-               $$35 = $$30 - $$33;
-               $$36 = $$34 - $$29;
-            } else {
-               $$35 = $$22;
-               $$36 = $$26;
-            }
-
-            boolean $$39 = $$1.h() && $$35 > 0 && $$36 > 0 && $$15.d().isPresent() && $$35 + $$36 == $$15.d().getAsInt();
-            if ($$11.isPresent()) {
-               dvm.a($$0, $$2.h($$11.getAsInt() - 1), ih.a, $$35, $$39);
-            }
-
-            if ($$17.isPresent()) {
-               dvm.a($$0, $$2.h($$17.getAsInt() + 1), ih.b, $$36, $$39);
-            }
-         }
-      }
-   }
-
-   private boolean a(cxc $$0, ib $$1) {
-      return $$0.a_($$1).a(dac.H);
-   }
-
-   private int a(axd $$0, int $$1, int $$2, float $$3, int $$4, dxs $$5) {
-      if ($$0.i() > $$3) {
-         return 0;
-      } else {
-         int $$6 = Math.abs($$1) + Math.abs($$2);
-         float $$7 = (float)aww.a((double)$$6, 0.0, (double)$$5.l, (double)$$4 / 2.0, 0.0);
-         return (int)a($$0, 0.0F, (float)$$4, $$7, (float)$$5.f);
-      }
-   }
-
-   private boolean b(cxu $$0, ib $$1) {
-      dmz $$2 = $$0.a_($$1);
-      if (!$$2.a(dac.G) && !$$2.a(dac.su) && !$$2.a(dac.st)) {
-         if ($$0.a_($$1.c()).u().a(aus.a)) {
-            return false;
-         } else {
-            for (ih $$3 : ih.c.a) {
-               if (!this.a((cxa)$$0, $$1.a($$3))) {
-                  return false;
-               }
-            }
-
-            return this.a((cxa)$$0, $$1.d());
-         }
-      } else {
-         return false;
-      }
-   }
-
-   private boolean a(cxa $$0, ib $$1) {
-      dmz $$2 = $$0.a_($$1);
-      return $$2.a(aun.be) || $$2.u().a(aus.a);
-   }
-
-   private void a(cxu $$0, ib $$1, int $$2, ih $$3) {
-      ib.a $$4 = $$1.j();
-
-      for (int $$5 = 0; $$5 < $$2; $$5++) {
-         if (!dvm.c($$0, $$4)) {
-            return;
-         }
-
-         $$4.c($$3);
-      }
-   }
-
-   private double a(int $$0, int $$1, int $$2, int $$3, dxs $$4) {
-      int $$5 = $$0 - Math.abs($$2);
-      int $$6 = $$1 - Math.abs($$3);
-      int $$7 = Math.min($$5, $$6);
-      return (double)aww.b((float)$$7, 0.0F, (float)$$4.k, $$4.j, 1.0F);
-   }
-
-   private static float a(axd $$0, float $$1, float $$2, float $$3, float $$4) {
-      return bmb.a($$0, $$3, $$4, $$1, $$2);
+   private static void b(cxw $$0, ib $$1) {
+      $$0.a($$1, dae.J.o(), 3);
+      $$0.a($$1, dkk.N).ifPresent($$1x -> $$1x.a(eku.aP, $$1.a()));
    }
 }

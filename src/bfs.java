@@ -33,7 +33,7 @@ public class bfs extends Schema {
                      DSL.list(beh.t.in($$0))
                   )
                ),
-               bis.a,
+               bit.a,
                HookFunction.IDENTITY
             )
       );

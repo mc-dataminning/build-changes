@@ -1,47 +1,60 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import javax.annotation.Nullable;
 
-public class dhn extends czm {
+public class dhn extends dac {
    public static final MapCodec<dhn> a = b(dhn::new);
+   protected static final eqm b = dac.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
+   private static final int c = 20;
 
    @Override
    public MapCodec<dhn> a() {
       return a;
    }
 
-   protected dhn(dmy.d $$0) {
+   public dhn(dna.d $$0) {
       super($$0);
    }
 
    @Override
-   public dkg a(ib $$0, dmz $$1) {
-      return new dlt($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dkg> dkh<T> a(cwz $$0, dmz $$1, dki<T> $$2) {
-      return a($$2, dki.j, $$0.B ? dlt::a : dlt::b);
+   protected eqm b(dnb $$0, cwh $$1, ib $$2, epy $$3) {
+      return b;
    }
 
    @Override
-   protected void a(dmz $$0, apf $$1, ib $$2, cqk $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         int $$5 = 15 + $$1.z.a(15) + $$1.z.a(15);
-         this.a($$1, $$2, $$5);
+   protected eqm b_(dnb $$0, cwh $$1, ib $$2) {
+      return eqj.b();
+   }
+
+   @Override
+   protected eqm c(dnb $$0, cwh $$1, ib $$2, epy $$3) {
+      return eqj.b();
+   }
+
+   @Override
+   protected void a(dnb $$0, apf $$1, ib $$2, axd $$3) {
+      dai.b($$1, $$2.c(), $$0);
+   }
+
+   @Override
+   protected dnb a(dnb $$0, ih $$1, dnb $$2, cxc $$3, ib $$4, ib $$5) {
+      if ($$1 == ih.b && $$2.a(dae.G)) {
+         $$3.a($$4, this, 20);
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected dgf b_(dmz $$0) {
-      return dgf.c;
+   protected void b(dnb $$0, cxb $$1, ib $$2, dnb $$3, boolean $$4) {
+      $$1.a($$2, this, 20);
    }
 
    @Override
-   public void a(cqk $$0, @Nullable cwf $$1, List<vu> $$2, csb $$3, @Nullable iz $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      cxr.a($$0, $$2, "SpawnData");
+   protected boolean a(dnb $$0, cwh $$1, ib $$2, eje $$3) {
+      return false;
+   }
+
+   @Override
+   protected float d(dnb $$0, cwh $$1, ib $$2) {
+      return 0.2F;
    }
 }

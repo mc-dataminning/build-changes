@@ -28,15 +28,15 @@ public class aft implements yb<aez> {
       this.d = $$1;
    }
 
-   public static aft a(bow $$0, boolean $$1) {
+   public static aft a(box $$0, boolean $$1) {
       return new aft($$0.aj(), $$1, e);
    }
 
-   public static aft a(bow $$0, boolean $$1, bnb $$2) {
+   public static aft a(box $$0, boolean $$1, bnc $$2) {
       return new aft($$0.aj(), $$1, new aft.d($$2));
    }
 
-   public static aft a(bow $$0, boolean $$1, bnb $$2, epr $$3) {
+   public static aft a(box $$0, boolean $$1, bnc $$2, ept $$3) {
       return new aft($$0.aj(), $$1, new aft.e($$2, $$3));
    }
 
@@ -64,7 +64,7 @@ public class aft implements yb<aez> {
    }
 
    @Nullable
-   public bow a(apf $$0) {
+   public box a(apf $$0) {
       return $$0.b(this.b);
    }
 
@@ -97,22 +97,22 @@ public class aft implements yb<aez> {
    }
 
    public interface c {
-      void a(bnb var1);
+      void a(bnc var1);
 
-      void a(bnb var1, epr var2);
+      void a(bnc var1, ept var2);
 
       void a();
    }
 
    static class d implements aft.a {
-      private final bnb a;
+      private final bnc a;
 
-      d(bnb $$0) {
+      d(bnc $$0) {
          this.a = $$0;
       }
 
       private d(uu $$0) {
-         this.a = $$0.b(bnb.class);
+         this.a = $$0.b(bnc.class);
       }
 
       @Override
@@ -132,17 +132,17 @@ public class aft implements yb<aez> {
    }
 
    static class e implements aft.a {
-      private final bnb a;
-      private final epr b;
+      private final bnc a;
+      private final ept b;
 
-      e(bnb $$0, epr $$1) {
+      e(bnc $$0, ept $$1) {
          this.a = $$0;
          this.b = $$1;
       }
 
       private e(uu $$0) {
-         this.b = new epr((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
-         this.a = $$0.b(bnb.class);
+         this.b = new ept((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
+         this.a = $$0.b(bnc.class);
       }
 
       @Override

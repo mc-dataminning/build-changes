@@ -1,24 +1,20 @@
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
 import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public class eqi extends eqk {
-   private final eqk b;
-   private final ih.a c;
-   private static final DoubleList d = new epx(1);
+public class eqi extends AbstractDoubleList {
+   private final DoubleList a;
+   private final double b;
 
-   public eqi(eqk $$0, ih.a $$1, int $$2) {
-      super(a($$0.a, $$1, $$2));
-      this.b = $$0;
-      this.c = $$1;
+   public eqi(DoubleList $$0, double $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   private static eqa a(eqa $$0, ih.a $$1, int $$2) {
-      return new eqj(
-         $$0, $$1.a($$2, 0, 0), $$1.a(0, $$2, 0), $$1.a(0, 0, $$2), $$1.a($$2 + 1, $$0.a, $$0.a), $$1.a($$0.b, $$2 + 1, $$0.b), $$1.a($$0.c, $$0.c, $$2 + 1)
-      );
+   public double getDouble(int $$0) {
+      return this.a.getDouble($$0) + this.b;
    }
 
-   @Override
-   protected DoubleList a(ih.a $$0) {
-      return $$0 == this.c ? d : this.b.a($$0);
+   public int size() {
+      return this.a.size();
    }
 }

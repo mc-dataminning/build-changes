@@ -1,59 +1,71 @@
-import java.util.UUID;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class flh extends fld<ftb.a> {
-   private static final int r = 120;
-   private static final vu t = vu.c("gui.abuseReport.name.title");
-   private final fex u = fex.d().a(8);
-   private fby v;
-   private fbg w;
+public class flh {
+   private final fsu a;
+   private final ftc b;
+   private final Predicate<fsx.a> c;
+   @Nullable
+   private wp d = null;
+   private int e;
+   private int f;
+   @Nullable
+   private wk g;
 
-   private flh(fhf $$0, ftg $$1, ftb.a $$2) {
-      super(t, $$0, $$1, $$2);
+   public flh(fti $$0, Predicate<fsx.a> $$1) {
+      this.a = $$0.b();
+      this.b = new ftc($$0.a().b().leadingContextMessageCount());
+      this.c = $$1;
+      this.e = this.a.b();
    }
 
-   public flh(fhf $$0, ftg $$1, UUID $$2, String $$3) {
-      this($$0, $$1, new ftb.a($$2, $$3, $$1.a().b()));
+   public void a(int $$0, flh.a $$1) {
+      int $$2 = 0;
+
+      while ($$2 < $$0) {
+         fsw $$3 = this.a.b(this.e);
+         if ($$3 == null) {
+            break;
+         }
+
+         int $$4 = this.e--;
+         if ($$3 instanceof fsx.a $$5 && !$$5.g().equals(this.g)) {
+            if (this.a($$1, $$5)) {
+               if (this.f > 0) {
+                  $$1.a(vu.a("gui.chatSelection.fold", this.f));
+                  this.f = 0;
+               }
+
+               $$1.a($$4, $$5);
+               $$2++;
+            } else {
+               this.f++;
+            }
+
+            this.g = $$5.g();
+         }
+      }
    }
 
-   public flh(fhf $$0, ftg $$1, ftb $$2) {
-      this($$0, $$1, new ftb.a($$2, $$1.a().b()));
+   private boolean a(flh.a $$0, fsx.a $$1) {
+      wk $$2 = $$1.g();
+      boolean $$3 = this.b.b($$2);
+      if (this.c.test($$1)) {
+         this.b.a($$2);
+         if (this.d != null && !this.d.a($$2.k())) {
+            $$0.a(vu.a("gui.chatSelection.join", $$1.f().getName()).a(n.o));
+         }
+
+         this.d = $$2.k();
+         return true;
+      } else {
+         return $$3;
+      }
    }
 
-   @Override
-   protected void aO_() {
-      this.u.c().b();
-      this.u.a(new fcn(this.e, this.i));
-      vu $$0 = vu.b(this.q.e().a()).a(n.o);
-      this.u.a(new fcn(vu.a("gui.abuseReport.name.reporting", $$0), this.i), $$0x -> $$0x.a().a(0, 8));
-      this.v = this.a(280, 9 * 8, $$0x -> {
-         this.q.a($$0x);
-         this.E();
-      });
-      this.u.a(fep.a(this.i, this.v, k, $$0x -> $$0x.e(12)));
-      fex $$1 = this.u.a(fex.e().a(8));
-      $$1.a(fbg.a(vt.k, $$0x -> this.d()).a(120).a());
-      this.w = $$1.a(fbg.a(a, $$0x -> this.o()).a(120).a());
-      this.E();
-      this.u.a($$1x -> {
-         fbe var10000 = this.c($$1x);
-      });
-      this.c();
-   }
+   public interface a {
+      void a(int var1, fsx.a var2);
 
-   @Override
-   protected void c() {
-      this.u.a();
-      fer.a(this.u, this.F());
-   }
-
-   private void E() {
-      ftc.b $$0 = this.q.c();
-      this.w.j = $$0 == null;
-      this.w.a(x.a($$0, ftc.b::a));
-   }
-
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      return super.b($$0, $$1, $$2) ? true : this.v.b($$0, $$1, $$2);
+      void a(vu var1);
    }
 }

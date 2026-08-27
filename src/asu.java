@@ -21,7 +21,7 @@ public class asu<S> implements ask {
    private final AtomicInteger k = new AtomicInteger();
 
    public static asu<Void> a(aso $$0, List<asi> $$1, Executor $$2, Executor $$3, CompletableFuture<axy> $$4) {
-      return new asu<>($$2, $$3, $$0, $$1, ($$1x, $$2x, $$3x, $$4x, $$5) -> $$3x.a($$1x, $$2x, bjn.a, bjn.a, $$2, $$5), $$4);
+      return new asu<>($$2, $$3, $$0, $$1, ($$1x, $$2x, $$3x, $$4x, $$5) -> $$3x.a($$1x, $$2x, bjo.a, bjo.a, $$2, $$5), $$4);
    }
 
    protected asu(Executor $$0, final Executor $$1, aso $$2, List<asi> $$3, asu.a<S> $$4, CompletableFuture<axy> $$5) {

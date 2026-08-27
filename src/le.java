@@ -16,8 +16,8 @@ public class le implements kp {
    private static final Logger d = LogUtils.getLogger();
    private final Path e;
    private final CompletableFuture<in.a> f;
-   private static final MapCodec<ajg<cxy>> g = ajg.a(kj.au).fieldOf("biome");
-   private static final Codec<cyh.c<ajg<cxy>>> h = cyh.c.a(g).fieldOf("biomes").codec();
+   private static final MapCodec<ajg<cya>> g = ajg.a(kj.au).fieldOf("biome");
+   private static final Codec<cyj.c<ajg<cya>>> h = cyj.c.a(g).fieldOf("biomes").codec();
 
    public le(kr $$0, CompletableFuture<in.a> $$1) {
       this.e = $$0.a(kr.b.c).resolve("biome_parameters");
@@ -27,9 +27,9 @@ public class le implements kp {
    @Override
    public CompletableFuture<?> a(kn $$0) {
       return this.f.thenCompose($$1 -> {
-         DynamicOps<JsonElement> $$2 = ajf.a(JsonOps.INSTANCE, $$1);
+         DynamicOps<JsonElement> $$2 = $$1.a(JsonOps.INSTANCE);
          List<CompletableFuture<?>> $$3 = new ArrayList<>();
-         cym.b().forEach(($$3x, $$4) -> $$3.add(a(this.a($$3x.b()), $$0, $$2, h, $$4)));
+         cyo.b().forEach(($$3x, $$4) -> $$3.add(a(this.a($$3x.b()), $$0, $$2, h, $$4)));
          return CompletableFuture.allOf($$3.toArray(CompletableFuture[]::new));
       });
    }

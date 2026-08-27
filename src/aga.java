@@ -4,7 +4,7 @@ public class aga implements yb<aez> {
    private final ajh c;
    private final boolean d;
 
-   public aga(int $$0, ctp<?> $$1, boolean $$2) {
+   public aga(int $$0, ctr<?> $$1, boolean $$2) {
       this.b = $$0;
       this.c = $$1.a();
       this.d = $$2;

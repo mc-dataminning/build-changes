@@ -280,23 +280,23 @@ public class amt {
    private static LiteralArgumentBuilder<du> a() {
       LiteralArgumentBuilder<du> $$0 = dv.a("rendertype");
 
-      for (eqy.a $$1 : eqy.a.values()) {
+      for (era.a $$1 : era.a.values()) {
          $$0.then(dv.a($$1.a()).executes($$1x -> a((du)$$1x.getSource(), eo.a($$1x, "objective"), $$1)));
       }
 
       return $$0;
    }
 
-   private static CompletableFuture<Suggestions> a(du $$0, Collection<equ> $$1, SuggestionsBuilder $$2) {
+   private static CompletableFuture<Suggestions> a(du $$0, Collection<eqw> $$1, SuggestionsBuilder $$2) {
       List<String> $$3 = Lists.newArrayList();
-      eqv $$4 = $$0.l().aK();
+      eqx $$4 = $$0.l().aK();
 
-      for (eqn $$5 : $$4.c()) {
-         if ($$5.c() == eqy.c) {
+      for (eqp $$5 : $$4.c()) {
+         if ($$5.c() == era.c) {
             boolean $$6 = false;
 
-            for (equ $$7 : $$1) {
-               eqr $$8 = $$4.d($$7, $$5);
+            for (eqw $$7 : $$1) {
+               eqt $$8 = $$4.d($$7, $$5);
                if ($$8 == null || $$8.b()) {
                   $$6 = true;
                   break;
@@ -312,9 +312,9 @@ public class amt {
       return dz.b($$3, $$2);
    }
 
-   private static int a(du $$0, equ $$1, eqn $$2) throws CommandSyntaxException {
-      eqv $$3 = $$0.l().aK();
-      eqr $$4 = $$3.d($$1, $$2);
+   private static int a(du $$0, eqw $$1, eqp $$2) throws CommandSyntaxException {
+      eqx $$3 = $$0.l().aK();
+      eqt $$4 = $$3.d($$1, $$2);
       if ($$4 == null) {
          throw f.create($$2.b(), $$1.hb());
       } else {
@@ -323,19 +323,19 @@ public class amt {
       }
    }
 
-   private static vu a(Collection<equ> $$0) {
+   private static vu a(Collection<eqw> $$0) {
       return $$0.iterator().next().hb();
    }
 
-   private static int a(du $$0, Collection<equ> $$1, eqn $$2, eq.a $$3, Collection<equ> $$4, eqn $$5) throws CommandSyntaxException {
-      eqv $$6 = $$0.l().aK();
+   private static int a(du $$0, Collection<eqw> $$1, eqp $$2, eq.a $$3, Collection<eqw> $$4, eqp $$5) throws CommandSyntaxException {
+      eqx $$6 = $$0.l().aK();
       int $$7 = 0;
 
-      for (equ $$8 : $$1) {
-         eqt $$9 = $$6.c($$8, $$2);
+      for (eqw $$8 : $$1) {
+         eqv $$9 = $$6.c($$8, $$2);
 
-         for (equ $$10 : $$4) {
-            eqt $$11 = $$6.c($$10, $$5);
+         for (eqw $$10 : $$4) {
+            eqv $$11 = $$6.c($$10, $$5);
             $$3.apply($$9, $$11);
          }
 
@@ -352,15 +352,15 @@ public class amt {
       return $$7;
    }
 
-   private static int a(du $$0, Collection<equ> $$1, eqn $$2) throws CommandSyntaxException {
-      if ($$2.c() != eqy.c) {
+   private static int a(du $$0, Collection<eqw> $$1, eqp $$2) throws CommandSyntaxException {
+      if ($$2.c() != era.c) {
          throw e.create();
       } else {
-         eqv $$3 = $$0.l().aK();
+         eqx $$3 = $$0.l().aK();
          int $$4 = 0;
 
-         for (equ $$5 : $$1) {
-            eqt $$6 = $$3.c($$5, $$2);
+         for (eqw $$5 : $$1) {
+            eqv $$6 = $$3.c($$5, $$2);
             if ($$6.d()) {
                $$6.e();
                $$4++;
@@ -381,10 +381,10 @@ public class amt {
       }
    }
 
-   private static int a(du $$0, Collection<equ> $$1) {
-      eqv $$2 = $$0.l().aK();
+   private static int a(du $$0, Collection<eqw> $$1) {
+      eqx $$2 = $$0.l().aK();
 
-      for (equ $$3 : $$1) {
+      for (eqw $$3 : $$1) {
          $$2.b($$3);
       }
 
@@ -397,10 +397,10 @@ public class amt {
       return $$1.size();
    }
 
-   private static int b(du $$0, Collection<equ> $$1, eqn $$2) {
-      eqv $$3 = $$0.l().aK();
+   private static int b(du $$0, Collection<eqw> $$1, eqp $$2) {
+      eqx $$3 = $$0.l().aK();
 
-      for (equ $$4 : $$1) {
+      for (eqw $$4 : $$1) {
          $$3.e($$4, $$2);
       }
 
@@ -413,10 +413,10 @@ public class amt {
       return $$1.size();
    }
 
-   private static int a(du $$0, Collection<equ> $$1, eqn $$2, int $$3) {
-      eqv $$4 = $$0.l().aK();
+   private static int a(du $$0, Collection<eqw> $$1, eqp $$2, int $$3) {
+      eqx $$4 = $$0.l().aK();
 
-      for (equ $$5 : $$1) {
+      for (eqw $$5 : $$1) {
          $$4.c($$5, $$2).a($$3);
       }
 
@@ -429,10 +429,10 @@ public class amt {
       return $$3 * $$1.size();
    }
 
-   private static int a(du $$0, Collection<equ> $$1, eqn $$2, @Nullable vu $$3) {
-      eqv $$4 = $$0.l().aK();
+   private static int a(du $$0, Collection<eqw> $$1, eqp $$2, @Nullable vu $$3) {
+      eqx $$4 = $$0.l().aK();
 
-      for (equ $$5 : $$1) {
+      for (eqw $$5 : $$1) {
          $$4.c($$5, $$2).a($$3);
       }
 
@@ -451,10 +451,10 @@ public class amt {
       return $$1.size();
    }
 
-   private static int a(du $$0, Collection<equ> $$1, eqn $$2, @Nullable xk $$3) {
-      eqv $$4 = $$0.l().aK();
+   private static int a(du $$0, Collection<eqw> $$1, eqp $$2, @Nullable xk $$3) {
+      eqx $$4 = $$0.l().aK();
 
-      for (equ $$5 : $$1) {
+      for (eqw $$5 : $$1) {
          $$4.c($$5, $$2).a($$3);
       }
 
@@ -473,12 +473,12 @@ public class amt {
       return $$1.size();
    }
 
-   private static int b(du $$0, Collection<equ> $$1, eqn $$2, int $$3) {
-      eqv $$4 = $$0.l().aK();
+   private static int b(du $$0, Collection<eqw> $$1, eqp $$2, int $$3) {
+      eqx $$4 = $$0.l().aK();
       int $$5 = 0;
 
-      for (equ $$6 : $$1) {
-         eqt $$7 = $$4.c($$6, $$2);
+      for (eqw $$6 : $$1) {
+         eqv $$7 = $$4.c($$6, $$2);
          $$7.a($$7.a() + $$3);
          $$5 += $$7.a();
       }
@@ -493,12 +493,12 @@ public class amt {
       return $$5;
    }
 
-   private static int c(du $$0, Collection<equ> $$1, eqn $$2, int $$3) {
-      eqv $$4 = $$0.l().aK();
+   private static int c(du $$0, Collection<eqw> $$1, eqp $$2, int $$3) {
+      eqx $$4 = $$0.l().aK();
       int $$5 = 0;
 
-      for (equ $$6 : $$1) {
-         eqt $$7 = $$4.c($$6, $$2);
+      for (eqw $$6 : $$1) {
+         eqv $$7 = $$4.c($$6, $$2);
          $$7.a($$7.a() - $$3);
          $$5 += $$7.a();
       }
@@ -514,32 +514,32 @@ public class amt {
    }
 
    private static int a(du $$0) {
-      Collection<equ> $$1 = $$0.l().aK().e();
+      Collection<eqw> $$1 = $$0.l().aK().e();
       if ($$1.isEmpty()) {
          $$0.a(() -> vu.c("commands.scoreboard.players.list.empty"), false);
       } else {
-         $$0.a(() -> vu.a("commands.scoreboard.players.list.success", $$1.size(), vx.b($$1, equ::hb)), false);
+         $$0.a(() -> vu.a("commands.scoreboard.players.list.success", $$1.size(), vx.b($$1, eqw::hb)), false);
       }
 
       return $$1.size();
    }
 
-   private static int a(du $$0, equ $$1) {
-      Object2IntMap<eqn> $$2 = $$0.l().aK().c($$1);
+   private static int a(du $$0, eqw $$1) {
+      Object2IntMap<eqp> $$2 = $$0.l().aK().c($$1);
       if ($$2.isEmpty()) {
          $$0.a(() -> vu.a("commands.scoreboard.players.list.entity.empty", $$1.hb()), false);
       } else {
          $$0.a(() -> vu.a("commands.scoreboard.players.list.entity.success", $$1.hb(), $$2.size()), false);
          Object2IntMaps.fastForEach(
-            $$2, $$1x -> $$0.a(() -> vu.a("commands.scoreboard.players.list.entity.entry", ((eqn)$$1x.getKey()).g(), $$1x.getIntValue()), false)
+            $$2, $$1x -> $$0.a(() -> vu.a("commands.scoreboard.players.list.entity.entry", ((eqp)$$1x.getKey()).g(), $$1x.getIntValue()), false)
          );
       }
 
       return $$2.size();
    }
 
-   private static int a(du $$0, eqm $$1) throws CommandSyntaxException {
-      eqv $$2 = $$0.l().aK();
+   private static int a(du $$0, eqo $$1) throws CommandSyntaxException {
+      eqx $$2 = $$0.l().aK();
       if ($$2.a($$1) == null) {
          throw b.create();
       } else {
@@ -549,8 +549,8 @@ public class amt {
       }
    }
 
-   private static int a(du $$0, eqm $$1, eqn $$2) throws CommandSyntaxException {
-      eqv $$3 = $$0.l().aK();
+   private static int a(du $$0, eqo $$1, eqp $$2) throws CommandSyntaxException {
+      eqx $$3 = $$0.l().aK();
       if ($$3.a($$1) == $$2) {
          throw c.create();
       } else {
@@ -560,7 +560,7 @@ public class amt {
       }
    }
 
-   private static int a(du $$0, eqn $$1, vu $$2) {
+   private static int a(du $$0, eqp $$1, vu $$2) {
       if (!$$1.d().equals($$2)) {
          $$1.a($$2);
          $$0.a(() -> vu.a("commands.scoreboard.objectives.modify.displayname", $$1.b(), $$1.g()), true);
@@ -569,7 +569,7 @@ public class amt {
       return 0;
    }
 
-   private static int a(du $$0, eqn $$1, boolean $$2) {
+   private static int a(du $$0, eqp $$1, boolean $$2) {
       if ($$1.e() != $$2) {
          $$1.a($$2);
          if ($$2) {
@@ -582,7 +582,7 @@ public class amt {
       return 0;
    }
 
-   private static int a(du $$0, eqn $$1, @Nullable xk $$2) {
+   private static int a(du $$0, eqp $$1, @Nullable xk $$2) {
       $$1.b($$2);
       if ($$2 != null) {
          $$0.a(() -> vu.a("commands.scoreboard.objectives.modify.objectiveFormat.set", $$1.b()), true);
@@ -593,7 +593,7 @@ public class amt {
       return 0;
    }
 
-   private static int a(du $$0, eqn $$1, eqy.a $$2) {
+   private static int a(du $$0, eqp $$1, era.a $$2) {
       if ($$1.h() != $$2) {
          $$1.a($$2);
          $$0.a(() -> vu.a("commands.scoreboard.objectives.modify.rendertype", $$1.g()), true);
@@ -602,31 +602,31 @@ public class amt {
       return 0;
    }
 
-   private static int a(du $$0, eqn $$1) {
-      eqv $$2 = $$0.l().aK();
+   private static int a(du $$0, eqp $$1) {
+      eqx $$2 = $$0.l().aK();
       $$2.j($$1);
       $$0.a(() -> vu.a("commands.scoreboard.objectives.remove.success", $$1.g()), true);
       return $$2.c().size();
    }
 
-   private static int a(du $$0, String $$1, eqy $$2, vu $$3) throws CommandSyntaxException {
-      eqv $$4 = $$0.l().aK();
+   private static int a(du $$0, String $$1, era $$2, vu $$3) throws CommandSyntaxException {
+      eqx $$4 = $$0.l().aK();
       if ($$4.a($$1) != null) {
          throw a.create();
       } else {
          $$4.a($$1, $$2, $$3, $$2.f(), false, null);
-         eqn $$5 = $$4.a($$1);
+         eqp $$5 = $$4.a($$1);
          $$0.a(() -> vu.a("commands.scoreboard.objectives.add.success", $$5.g()), true);
          return $$4.c().size();
       }
    }
 
    private static int b(du $$0) {
-      Collection<eqn> $$1 = $$0.l().aK().c();
+      Collection<eqp> $$1 = $$0.l().aK().c();
       if ($$1.isEmpty()) {
          $$0.a(() -> vu.c("commands.scoreboard.objectives.list.empty"), false);
       } else {
-         $$0.a(() -> vu.a("commands.scoreboard.objectives.list.success", $$1.size(), vx.b($$1, eqn::g)), false);
+         $$0.a(() -> vu.a("commands.scoreboard.objectives.list.success", $$1.size(), vx.b($$1, eqp::g)), false);
       }
 
       return $$1.size();

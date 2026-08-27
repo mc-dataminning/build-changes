@@ -1,43 +1,59 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dbq extends czi {
-   public static final MapCodec<dbq> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dbp.a.forGetter($$0x -> $$0x.c), u()).apply($$0, dbq::new));
-   private final daa c;
-
-   @Override
-   public MapCodec<dbq> a() {
-      return b;
-   }
-
-   protected dbq(daa $$0, dmy.d $$1) {
-      super($$1);
-      this.c = $$0;
-   }
+public class dbq extends dac {
+   public static final MapCodec<dbq> a = b(dbq::new);
+   public static final dns b = dnr.w;
+   public static final dns c = dnr.r;
 
    @Override
-   protected void b(dmz $$0, cwz $$1, ib $$2, dmz $$3, boolean $$4) {
-      this.a($$0, (cxa)$$1, $$2);
+   protected MapCodec<? extends dbq> a() {
+      return a;
+   }
+
+   public dbq(dna.d $$0) {
+      super($$0);
+      this.k(this.o().a(c, Boolean.valueOf(false)).a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dmz $$0, apf $$1, ib $$2, axd $$3) {
-      if (!e($$0, $$1, $$2)) {
-         $$1.a($$2, this.c.o().a(d, Boolean.valueOf(false)), 2);
+   protected void b(dnb $$0, cxb $$1, ib $$2, dnb $$3, boolean $$4) {
+      if ($$3.b() != $$0.b() && $$1 instanceof apf $$5) {
+         this.a($$0, $$5, $$2);
       }
    }
 
    @Override
-   protected dmz a(dmz $$0, ih $$1, dmz $$2, cxa $$3, ib $$4, ib $$5) {
-      if ($$1 == ih.a && !$$0.a($$3, $$4)) {
-         return dac.a.o();
-      } else {
-         this.a($$0, $$3, $$4);
-         if ($$0.c(d)) {
-            $$3.a($$4, eio.c, eio.c.a($$3));
+   protected void a(dnb $$0, cxb $$1, ib $$2, dac $$3, ib $$4, boolean $$5) {
+      if ($$1 instanceof apf $$6) {
+         this.a($$0, $$6, $$2);
+      }
+   }
+
+   public void a(dnb $$0, apf $$1, ib $$2) {
+      boolean $$3 = $$1.C($$2);
+      if ($$3 != $$0.c(b)) {
+         dnb $$4 = $$0;
+         if (!$$0.c(b)) {
+            $$4 = $$0.a(c);
+            $$1.a(null, $$2, $$4.c(c) ? aty.fA : aty.fB, atz.e);
          }
 
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         $$1.a($$2, $$4.a(b, Boolean.valueOf($$3)), 3);
       }
+   }
+
+   @Override
+   protected void a(dnc.a<dac, dnb> $$0) {
+      $$0.a(c, b);
+   }
+
+   @Override
+   protected boolean d_(dnb $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dnb $$0, cxb $$1, ib $$2) {
+      return $$1.a_($$2).c(c) ? 15 : 0;
    }
 }

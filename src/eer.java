@@ -1,24 +1,24 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.stream.Stream;
+import java.util.Map;
+import java.util.Objects;
 
-record eer(blm<List<een>> c) implements een {
-   static Codec<eer> a = RecordCodecBuilder.create($$0 -> $$0.group(blm.b(Codec.list(een.b)).fieldOf("groups").forGetter(eer::c)).apply($$0, eer::new));
+@FunctionalInterface
+public interface eer {
+   eer a = $$0 -> $$0;
 
-   @Override
-   public void a(axd $$0, BiConsumer<ajg<eel>, ajg<eel>> $$1) {
-      this.c.b($$0).ifPresent($$2 -> $$2.b().forEach($$2x -> $$2x.a($$0, $$1)));
-   }
+   ajg<een> lookup(ajg<een> var1);
 
-   @Override
-   public Stream<ajg<eel>> a() {
-      return this.c.e().stream().flatMap($$0 -> $$0.b().stream()).flatMap(een::a);
-   }
-
-   @Override
-   public Codec<eer> b() {
-      return a;
+   static eer create(List<eep> $$0, ib $$1, long $$2) {
+      if ($$0.isEmpty()) {
+         return a;
+      } else {
+         axd $$3 = axd.a($$2).e().a($$1);
+         Builder<ajg<een>, ajg<een>> $$4 = ImmutableMap.builder();
+         $$0.forEach($$2x -> $$2x.a($$3, $$4::put));
+         Map<ajg<een>, ajg<een>> $$5 = $$4.build();
+         return $$1x -> Objects.requireNonNull($$5.getOrDefault($$1x, $$1x), () -> "alias " + $$1x + " was mapped to null value");
+      }
    }
 }

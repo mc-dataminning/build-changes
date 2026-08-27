@@ -25,7 +25,7 @@ public class akw {
    private static final SuggestionProvider<du> f = ($$0, $$1) -> {
       arz $$2 = ((du)$$0.getSource()).l().aG();
       Collection<String> $$3 = $$2.d();
-      clf $$4 = ((du)$$0.getSource()).w();
+      clh $$4 = ((du)$$0.getSource()).w();
       return dz.b(
          $$2.c().stream().filter($$1x -> $$1x.e().a($$4)).map(arw::g).filter($$1x -> !$$3.contains($$1x)).map(StringArgumentType::escapeIfRequired), $$1
       );
@@ -114,7 +114,7 @@ public class akw {
       $$1.a();
       Collection<arw> $$2 = $$1.f();
       Collection<arw> $$3 = $$1.c();
-      clf $$4 = $$0.w();
+      clh $$4 = $$0.w();
       List<arw> $$5 = $$3.stream().filter($$2x -> !$$2.contains($$2x) && $$2x.e().a($$4)).toList();
       if ($$5.isEmpty()) {
          $$0.a(() -> vu.c("commands.datapack.list.available.none"), false);
@@ -151,10 +151,10 @@ public class akw {
          } else if (!$$2 && !$$6) {
             throw c.create($$3);
          } else {
-            clf $$7 = ((du)$$0.getSource()).w();
-            clf $$8 = $$5.e();
+            clh $$7 = ((du)$$0.getSource()).w();
+            clh $$8 = $$5.e();
             if (!$$8.a($$7)) {
-               throw d.create($$3, clh.a($$7, $$8));
+               throw d.create($$3, clj.a($$7, $$8));
             } else {
                return $$5;
             }

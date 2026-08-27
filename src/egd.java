@@ -1,92 +1,48 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class egd extends egz {
-   public static final Codec<egd> a = Codec.FLOAT.fieldOf("mossiness").xmap(egd::new, $$0 -> $$0.f).codec();
-   private static final float b = 0.5F;
-   private static final float c = 0.5F;
-   private static final float d = 0.15F;
-   private static final dmz[] e = new dmz[]{dac.jD.o(), dac.jK.o()};
-   private final float f;
+public class egd extends egr {
+   public static final Codec<egd> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
+               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
+               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f),
+               ih.a.e.fieldOf("axis").orElse(ih.a.b).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, egd::new)
+   );
+   private final float b;
+   private final float d;
+   private final int e;
+   private final int f;
+   private final ih.a g;
 
-   public egd(float $$0) {
-      this.f = $$0;
-   }
-
-   @Nullable
-   @Override
-   public ehc.c a(cxc $$0, ib $$1, ib $$2, ehc.c $$3, ehc.c $$4, egy $$5) {
-      axd $$6 = $$5.b($$4.a());
-      dmz $$7 = $$4.b();
-      ib $$8 = $$4.a();
-      dmz $$9 = null;
-      if ($$7.a(dac.eH) || $$7.a(dac.b) || $$7.a(dac.eK)) {
-         $$9 = this.a($$6);
-      } else if ($$7.a(aun.J)) {
-         $$9 = this.a($$6, $$4.b());
-      } else if ($$7.a(aun.K)) {
-         $$9 = this.b($$6);
-      } else if ($$7.a(aun.L)) {
-         $$9 = this.c($$6);
-      } else if ($$7.a(dac.co)) {
-         $$9 = this.d($$6);
-      }
-
-      return $$9 != null ? new ehc.c($$8, $$9, $$4.c()) : $$4;
-   }
-
-   @Nullable
-   private dmz a(axd $$0) {
-      if ($$0.i() >= 0.5F) {
-         return null;
+   public egd(float $$0, float $$1, int $$2, int $$3, ih.a $$4) {
+      if ($$2 >= $$3) {
+         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
       } else {
-         dmz[] $$1 = new dmz[]{dac.eJ.o(), a($$0, dac.fj)};
-         dmz[] $$2 = new dmz[]{dac.eI.o(), a($$0, dac.ng)};
-         return this.a($$0, $$1, $$2);
+         this.b = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+         this.g = $$4;
       }
-   }
-
-   @Nullable
-   private dmz a(axd $$0, dmz $$1) {
-      ih $$2 = $$1.c(dht.b);
-      dny $$3 = $$1.c(dht.c);
-      if ($$0.i() >= 0.5F) {
-         return null;
-      } else {
-         dmz[] $$4 = new dmz[]{dac.ng.o().a(dht.b, $$2).a(dht.c, $$3), dac.nu.o()};
-         return this.a($$0, e, $$4);
-      }
-   }
-
-   @Nullable
-   private dmz b(axd $$0) {
-      return $$0.i() < this.f ? dac.nu.o() : null;
-   }
-
-   @Nullable
-   private dmz c(axd $$0) {
-      return $$0.i() < this.f ? dac.nI.o() : null;
-   }
-
-   @Nullable
-   private dmz d(axd $$0) {
-      return $$0.i() < 0.15F ? dac.pk.o() : null;
-   }
-
-   private static dmz a(axd $$0, daa $$1) {
-      return $$1.o().a(dht.b, ih.c.a.a($$0)).a(dht.c, ac.a(dny.values(), $$0));
-   }
-
-   private dmz a(axd $$0, dmz[] $$1, dmz[] $$2) {
-      return $$0.i() < this.f ? a($$0, $$2) : a($$0, $$1);
-   }
-
-   private static dmz a(axd $$0, dmz[] $$1) {
-      return $$1[$$0.a($$1.length)];
    }
 
    @Override
-   protected ehb<?> a() {
-      return ehb.k;
+   public boolean a(ib $$0, ib $$1, ib $$2, axd $$3) {
+      ih $$4 = ih.a(ih.b.a, this.g);
+      float $$5 = (float)Math.abs(($$1.u() - $$2.u()) * $$4.j());
+      float $$6 = (float)Math.abs(($$1.v() - $$2.v()) * $$4.k());
+      float $$7 = (float)Math.abs(($$1.w() - $$2.w()) * $$4.l());
+      int $$8 = (int)($$5 + $$6 + $$7);
+      float $$9 = $$3.i();
+      return $$9 <= aww.b(this.b, this.d, aww.g((float)$$8, (float)this.e, (float)this.f));
+   }
+
+   @Override
+   protected egs<?> a() {
+      return egs.c;
    }
 }

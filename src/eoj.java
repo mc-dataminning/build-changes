@@ -1,29 +1,11 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
 import javax.annotation.Nullable;
 
-public record eoj(ajh b) implements eoh {
-   public static final Codec<eoj> a = RecordCodecBuilder.create($$0 -> $$0.group(ajh.a.fieldOf("source").forGetter(eoj::c)).apply($$0, eoj::new));
-
-   @Override
-   public eog a() {
-      return eoi.b;
-   }
-
+public interface eoj {
    @Nullable
-   @Override
-   public tx a(eku $$0) {
-      return $$0.d().o().aL().a(this.b);
-   }
+   tx a(ekw var1);
 
-   @Override
-   public Set<enc<?>> b() {
-      return ImmutableSet.of();
-   }
+   Set<ene<?>> b();
 
-   public ajh c() {
-      return this.b;
-   }
+   eoi a();
 }

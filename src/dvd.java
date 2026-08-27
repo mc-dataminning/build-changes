@@ -1,29 +1,48 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntListIterator;
+import java.util.stream.IntStream;
 
-public record dvd<FC extends dxu, F extends dvq<FC>>(F d, FC e) {
-   public static final Codec<dvd<?, ?>> a = ki.Q.q().dispatch($$0 -> $$0.d, dvq::a);
-   public static final Codec<il<dvd<?, ?>>> b = ajd.a(kj.ax, a);
-   public static final Codec<ip<dvd<?, ?>>> c = ja.a(kj.ax, a);
-
-   public boolean a(cxu $$0, dow $$1, axd $$2, ib $$3) {
-      return this.d.a(this.e, $$0, $$1, $$2, $$3);
-   }
-
-   public Stream<dvd<?, ?>> a() {
-      return Stream.concat(Stream.of(this), this.e.e());
+public class dvd extends dvs<dyd> {
+   public dvd(Codec<dyd> $$0) {
+      super($$0);
    }
 
    @Override
-   public String toString() {
-      return "Configured: " + this.d + ": " + this.e;
-   }
+   public boolean a(dvu<dyd> $$0) {
+      axd $$1 = $$0.d();
+      cxw $$2 = $$0.b();
+      cwi $$3 = new cwi($$0.e());
+      IntArrayList $$4 = ac.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
+      IntArrayList $$5 = ac.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
+      ib.a $$6 = new ib.a();
+      IntListIterator var8 = $$4.iterator();
 
-   public F b() {
-      return this.d;
-   }
+      while (var8.hasNext()) {
+         Integer $$7 = (Integer)var8.next();
+         IntListIterator var10 = $$5.iterator();
 
-   public FC c() {
-      return this.e;
+         while (var10.hasNext()) {
+            Integer $$8 = (Integer)var10.next();
+            $$6.d($$7, 0, $$8);
+            ib $$9 = $$2.a(dso.a.f, $$6);
+            if ($$2.u($$9) || $$2.a_($$9).k($$2, $$9).c()) {
+               $$2.a($$9, dae.cv.o(), 2);
+               bnl.a($$2, $$1, $$9, eku.b);
+               dnb $$10 = dae.cp.o();
+
+               for (ih $$11 : ih.c.a) {
+                  ib $$12 = $$9.a($$11);
+                  if ($$10.a($$2, $$12)) {
+                     $$2.a($$12, $$10, 2);
+                  }
+               }
+
+               return true;
+            }
+         }
+      }
+
+      return false;
    }
 }

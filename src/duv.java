@@ -1,118 +1,73 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
 
-public class duv extends dvq<dxo> {
-   private static final ImmutableList<daa> a = ImmutableList.of(dac.H, dac.F, dac.kJ, dac.dW, dac.fn, dac.fo, dac.fp, dac.fq, dac.cv, dac.ct);
-   private static final int b = 5;
-   private static final int c = 50;
-   private static final int d = 8;
-   private static final int an = 15;
-
-   public duv(Codec<dxo> $$0) {
+public abstract class duv extends dvs<dxy> {
+   public duv(Codec<dxy> $$0) {
       super($$0);
    }
 
-   @Override
-   public boolean a(dvs<dxo> $$0) {
-      int $$1 = $$0.c().e();
-      ib $$2 = $$0.e();
-      cxu $$3 = $$0.b();
-      axd $$4 = $$0.d();
-      dxo $$5 = $$0.f();
-      if (!a($$3, $$1, $$2.j())) {
-         return false;
-      } else {
-         int $$6 = $$5.b().a($$4);
-         boolean $$7 = $$4.i() < 0.9F;
-         int $$8 = Math.min($$6, $$7 ? 5 : 8);
-         int $$9 = $$7 ? 50 : 15;
-         boolean $$10 = false;
-
-         for (ib $$11 : ib.a($$4, $$9, $$2.u() - $$8, $$2.v(), $$2.w() - $$8, $$2.u() + $$8, $$2.v(), $$2.w() + $$8)) {
-            int $$12 = $$6 - $$11.k($$2);
-            if ($$12 >= 0) {
-               $$10 |= this.a($$3, $$1, $$11, $$12, $$5.a().a($$4));
-            }
+   protected void a(cxc $$0, axd $$1, ib $$2, dxy $$3, int $$4, ib.a $$5) {
+      for (int $$6 = 0; $$6 < $$4; $$6++) {
+         $$5.g($$2).c(ih.b, $$6);
+         if (!$$0.a_($$5).i($$0, $$5)) {
+            this.a($$0, $$5, $$3.c.a($$1, $$2));
          }
-
-         return $$10;
       }
    }
 
-   private boolean a(cxa $$0, int $$1, ib $$2, int $$3, int $$4) {
-      boolean $$5 = false;
+   protected int a(axd $$0) {
+      int $$1 = $$0.a(3) + 4;
+      if ($$0.a(12) == 0) {
+         $$1 *= 2;
+      }
 
-      for (ib $$6 : ib.b($$2.u() - $$4, $$2.v(), $$2.w() - $$4, $$2.u() + $$4, $$2.v(), $$2.w() + $$4)) {
-         int $$7 = $$6.k($$2);
-         ib $$8 = a($$0, $$1, $$6) ? a($$0, $$1, $$6.j(), $$7) : a($$0, $$6.j(), $$7);
-         if ($$8 != null) {
-            int $$9 = $$3 - $$7 / 2;
+      return $$1;
+   }
 
-            for (ib.a $$10 = $$8.j(); $$9 >= 0; $$9--) {
-               if (a($$0, $$1, (ib)$$10)) {
-                  this.a($$0, $$10, dac.dY.o());
-                  $$10.c(ih.b);
-                  $$5 = true;
-               } else {
-                  if (!$$0.a_($$10).a(dac.dY)) {
-                     break;
+   protected boolean a(cxc $$0, ib $$1, int $$2, ib.a $$3, dxy $$4) {
+      int $$5 = $$1.v();
+      if ($$5 >= $$0.I_() + 1 && $$5 + $$2 + 1 < $$0.ak()) {
+         dnb $$6 = $$0.a_($$1.d());
+         if (!b($$6) && !$$6.a(aun.ba)) {
+            return false;
+         } else {
+            for (int $$7 = 0; $$7 <= $$2; $$7++) {
+               int $$8 = this.a(-1, -1, $$4.d, $$7);
+
+               for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
+                  for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
+                     dnb $$11 = $$0.a_($$3.a($$1, $$9, $$7, $$10));
+                     if (!$$11.i() && !$$11.a(aun.O)) {
+                        return false;
+                     }
                   }
-
-                  $$10.c(ih.b);
                }
             }
-         }
-      }
 
-      return $$5;
+            return true;
+         }
+      } else {
+         return false;
+      }
    }
 
-   @Nullable
-   private static ib a(cxa $$0, int $$1, ib.a $$2, int $$3) {
-      while ($$2.v() > $$0.I_() + 1 && $$3 > 0) {
-         $$3--;
-         if (a($$0, $$1, $$2)) {
-            return $$2;
-         }
-
-         $$2.c(ih.a);
-      }
-
-      return null;
-   }
-
-   private static boolean a(cxa $$0, int $$1, ib.a $$2) {
-      if (!a($$0, $$1, (ib)$$2)) {
+   @Override
+   public boolean a(dvu<dxy> $$0) {
+      cxw $$1 = $$0.b();
+      ib $$2 = $$0.e();
+      axd $$3 = $$0.d();
+      dxy $$4 = $$0.f();
+      int $$5 = this.a($$3);
+      ib.a $$6 = new ib.a();
+      if (!this.a($$1, $$2, $$5, $$6, $$4)) {
          return false;
       } else {
-         dmz $$3 = $$0.a_($$2.c(ih.a));
-         $$2.c(ih.b);
-         return !$$3.i() && !a.contains($$3.b());
+         this.a($$1, $$3, $$2, $$5, $$6, $$4);
+         this.a($$1, $$3, $$2, $$4, $$5, $$6);
+         return true;
       }
    }
 
-   @Nullable
-   private static ib a(cxa $$0, ib.a $$1, int $$2) {
-      while ($$1.v() < $$0.ak() && $$2 > 0) {
-         $$2--;
-         dmz $$3 = $$0.a_($$1);
-         if (a.contains($$3.b())) {
-            return null;
-         }
+   protected abstract int a(int var1, int var2, int var3, int var4);
 
-         if ($$3.i()) {
-            return $$1;
-         }
-
-         $$1.c(ih.b);
-      }
-
-      return null;
-   }
-
-   private static boolean a(cxa $$0, int $$1, ib $$2) {
-      dmz $$3 = $$0.a_($$2);
-      return $$3.i() || $$3.a(dac.H) && $$2.v() <= $$1;
-   }
+   protected abstract void a(cxc var1, axd var2, ib var3, int var4, ib.a var5, dxy var6);
 }

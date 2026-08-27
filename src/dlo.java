@@ -1,229 +1,117 @@
-import java.util.List;
-import java.util.stream.IntStream;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dlo extends dlk implements bno {
-   public static final int e = 9;
-   public static final int f = 3;
-   public static final int g = 27;
-   public static final int h = 1;
-   public static final int i = 10;
-   public static final float j = 0.5F;
-   public static final float k = 270.0F;
-   public static final String l = "Items";
-   private static final int[] r = IntStream.range(0, 27).toArray();
-   private iu<cqk> s = iu.a(27, cqk.h);
-   private int t;
-   private dlo.a u = dlo.a.a;
-   private float v;
-   private float w;
-   @Nullable
-   private final cpb x;
+public class dlo extends dki implements drr.b<dry.b>, dry {
+   private static final Logger b = LogUtils.getLogger();
+   private dry.a c;
+   private final dry.b d;
+   private final dry.d e = this.b();
+   private int h;
 
-   public dlo(@Nullable cpb $$0, ib $$1, dmz $$2) {
-      super(dki.x, $$1, $$2);
-      this.x = $$0;
+   protected dlo(dkk<?> $$0, ib $$1, dnb $$2) {
+      super($$0, $$1, $$2);
+      this.c = new dry.a();
+      this.d = new dry.b(this);
    }
 
-   public dlo(ib $$0, dmz $$1) {
-      super(dki.x, $$0, $$1);
-      this.x = dgy.a($$1.b());
+   public dlo(ib $$0, dnb $$1) {
+      this(dkk.I, $$0, $$1);
    }
 
-   public static void a(cwz $$0, ib $$1, dmz $$2, dlo $$3) {
-      $$3.b($$0, $$1, $$2);
-   }
-
-   private void b(cwz $$0, ib $$1, dmz $$2) {
-      this.w = this.v;
-      switch (this.u) {
-         case a:
-            this.v = 0.0F;
-            break;
-         case b:
-            this.v += 0.1F;
-            if (this.w == 0.0F) {
-               d($$0, $$1, $$2);
-            }
-
-            if (this.v >= 1.0F) {
-               this.u = dlo.a.c;
-               this.v = 1.0F;
-               d($$0, $$1, $$2);
-            }
-
-            this.c($$0, $$1, $$2);
-            break;
-         case d:
-            this.v -= 0.1F;
-            if (this.w == 1.0F) {
-               d($$0, $$1, $$2);
-            }
-
-            if (this.v <= 0.0F) {
-               this.u = dlo.a.a;
-               this.v = 0.0F;
-               d($$0, $$1, $$2);
-            }
-            break;
-         case c:
-            this.v = 1.0F;
-      }
-   }
-
-   public dlo.a l() {
-      return this.u;
-   }
-
-   public epm a(dmz $$0) {
-      return cge.a(1.0F, $$0.c(dgy.b), 0.5F * this.a(1.0F));
-   }
-
-   private void c(cwz $$0, ib $$1, dmz $$2) {
-      if ($$2.b() instanceof dgy) {
-         ih $$3 = $$2.c(dgy.b);
-         epm $$4 = cge.a(1.0F, $$3, this.w, this.v).a($$1);
-         List<bow> $$5 = $$0.a_(null, $$4);
-         if (!$$5.isEmpty()) {
-            for (bow $$6 : $$5) {
-               if ($$6.r_() != eis.d) {
-                  $$6.a(bpt.d, new epr(($$4.b() + 0.01) * (double)$$3.j(), ($$4.c() + 0.01) * (double)$$3.k(), ($$4.d() + 0.01) * (double)$$3.l()));
-               }
-            }
-         }
-      }
-   }
-
-   @Override
-   public int b() {
-      return this.s.size();
-   }
-
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.t = $$1;
-         if ($$1 == 0) {
-            this.u = dlo.a.d;
-         }
-
-         if ($$1 == 1) {
-            this.u = dlo.a.b;
-         }
-
-         return true;
-      } else {
-         return super.a_($$0, $$1);
-      }
-   }
-
-   private static void d(cwz $$0, ib $$1, dmz $$2) {
-      $$2.a($$0, $$1, 3);
-      $$0.a($$1, $$2.b());
-   }
-
-   @Override
-   public void d_(cis $$0) {
-      if (!this.q && !$$0.N_()) {
-         if (this.t < 0) {
-            this.t = 0;
-         }
-
-         this.t++;
-         this.o.a(this.p, this.n().b(), 1, this.t);
-         if (this.t == 1) {
-            this.o.a($$0, drn.k, this.p);
-            this.o.a(null, this.p, aty.wj, atz.e, 0.5F, this.o.z.i() * 0.1F + 0.9F);
-         }
-      }
-   }
-
-   @Override
-   public void c(cis $$0) {
-      if (!this.q && !$$0.N_()) {
-         this.t--;
-         this.o.a(this.p, this.n().b(), 1, this.t);
-         if (this.t <= 0) {
-            this.o.a($$0, drn.j, this.p);
-            this.o.a(null, this.p, aty.wi, atz.e, 0.5F, this.o.z.i() * 0.1F + 0.9F);
-         }
-      }
-   }
-
-   @Override
-   protected vu k() {
-      return vu.c("container.shulkerBox");
+   public dry.d b() {
+      return new dlo.a(this.aC_());
    }
 
    @Override
    public void a(ta $$0, in.a $$1) {
       super.a($$0, $$1);
-      this.c($$0);
+      this.h = $$0.h("last_vibration_frequency");
+      if ($$0.b("listener", 10)) {
+         dry.a.a.parse(new Dynamic(to.a, $$0.p("listener"))).resultOrPartial(b::error).ifPresent($$0x -> this.c = $$0x);
+      }
    }
 
    @Override
    protected void b(ta $$0, in.a $$1) {
       super.b($$0, $$1);
-      if (!this.b($$0)) {
-         bmw.a($$0, this.s, false);
+      $$0.a("last_vibration_frequency", this.h);
+      dry.a.a.encodeStart(to.a, this.c).resultOrPartial(b::error).ifPresent($$1x -> $$0.a("listener", $$1x));
+   }
+
+   @Override
+   public dry.a gp() {
+      return this.c;
+   }
+
+   @Override
+   public dry.d gq() {
+      return this.e;
+   }
+
+   public int d() {
+      return this.h;
+   }
+
+   public void a(int $$0) {
+      this.h = $$0;
+   }
+
+   public dry.b f() {
+      return this.d;
+   }
+
+   protected class a implements dry.d {
+      public static final int b = 8;
+      protected final ib c;
+      private final drt a;
+
+      public a(ib $$1) {
+         this.c = $$1;
+         this.a = new drl($$1);
       }
-   }
 
-   @Override
-   public void c(ta $$0) {
-      this.s = iu.a(this.b(), cqk.h);
-      if (!this.c_($$0) && $$0.b("Items", 9)) {
-         bmw.b($$0, this.s);
+      @Override
+      public int a() {
+         return 8;
       }
-   }
 
-   @Override
-   protected iu<cqk> j() {
-      return this.s;
-   }
+      @Override
+      public drt b() {
+         return this.a;
+      }
 
-   @Override
-   protected void a(iu<cqk> $$0) {
-      this.s = $$0;
-   }
+      @Override
+      public boolean d() {
+         return true;
+      }
 
-   @Override
-   public int[] a(ih $$0) {
-      return r;
-   }
+      @Override
+      public boolean a(apf $$0, ib $$1, il<drp> $$2, @Nullable drp.a $$3) {
+         return !$$1.equals(this.c) || !$$2.a(drp.f) && !$$2.a(drp.i) ? dgu.n(dlo.this.n()) : false;
+      }
 
-   @Override
-   public boolean a(int $$0, cqk $$1, @Nullable ih $$2) {
-      return !(daa.a($$1.d()) instanceof dgy);
-   }
+      @Override
+      public void a(apf $$0, ib $$1, il<drp> $$2, @Nullable box $$3, @Nullable box $$4, float $$5) {
+         dnb $$6 = dlo.this.n();
+         if (dgu.n($$6)) {
+            dlo.this.a(dry.a_($$2));
+            int $$7 = dry.a_($$5, this.a());
+            if ($$6.b() instanceof dgu $$8) {
+               $$8.a($$3, $$0, this.c, $$6, $$7, dlo.this.d());
+            }
+         }
+      }
 
-   @Override
-   public boolean b(int $$0, cqk $$1, ih $$2) {
-      return true;
-   }
+      @Override
+      public void e() {
+         dlo.this.e();
+      }
 
-   public float a(float $$0) {
-      return aww.i($$0, this.w, this.v);
-   }
-
-   @Nullable
-   public cpb s() {
-      return this.x;
-   }
-
-   @Override
-   protected clo a(int $$0, cir $$1) {
-      return new cng($$0, $$1, this);
-   }
-
-   public boolean t() {
-      return this.u == dlo.a.a;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+      @Override
+      public boolean f() {
+         return true;
+      }
    }
 }

@@ -21,10 +21,10 @@ public class anb {
       );
    }
 
-   private static int a(du $$0, @Nullable bow $$1, apg $$2) throws CommandSyntaxException {
+   private static int a(du $$0, @Nullable box $$1, apg $$2) throws CommandSyntaxException {
       if ($$2 == $$1) {
          throw a.create();
-      } else if ($$2.f.b() != cww.d) {
+      } else if ($$2.f.b() != cwy.d) {
          throw b.create($$2.O_());
       } else {
          $$2.d($$1);

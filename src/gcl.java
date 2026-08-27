@@ -1,11 +1,17 @@
-public class gcl extends gee<cbk, fnv<cbk>> {
-   private static final ajh a = new ajh("textures/entity/cow/cow.png");
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gcl(gcy.a $$0) {
-      super($$0, new fnv<>($$0.a(frc.C)), 0.7F);
+public class gcl<T extends cdf> extends gbv<T, fns<T>> {
+   private static final Map<bpd<?>, ajh> a = Maps.newHashMap(
+      ImmutableMap.of(bpd.A, new ajh("textures/entity/horse/donkey.png"), bpd.at, new ajh("textures/entity/horse/mule.png"))
+   );
+
+   public gcl(gdb.a $$0, float $$1, frd $$2) {
+      super($$0, new fns<>($$0.a($$2)), $$1);
    }
 
-   public ajh a(cbk $$0) {
-      return a;
+   public ajh a(T $$0) {
+      return a.get($$0.ai());
    }
 }

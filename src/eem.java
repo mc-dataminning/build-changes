@@ -1,25 +1,15 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.BiConsumer;
-import java.util.stream.Stream;
 
-record eem(ajg<eel> c, ajg<eel> d) implements een {
-   static Codec<eem> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ajg.a(kj.aH).fieldOf("alias").forGetter(eem::c), ajg.a(kj.aH).fieldOf("target").forGetter(eem::d)).apply($$0, eem::new)
-   );
+public interface eem<P extends eel> {
+   eem<eek> a = a("single_pool_element", eek.b);
+   eem<eej> b = a("list_pool_element", eej.a);
+   eem<eef> c = a("feature_pool_element", eef.a);
+   eem<eee> d = a("empty_pool_element", eee.a);
+   eem<eei> e = a("legacy_single_pool_element", eei.a);
 
-   @Override
-   public void a(axd $$0, BiConsumer<ajg<eel>, ajg<eel>> $$1) {
-      $$1.accept(this.c, this.d);
-   }
+   Codec<P> codec();
 
-   @Override
-   public Stream<ajg<eel>> a() {
-      return Stream.of(this.d);
-   }
-
-   @Override
-   public Codec<eem> b() {
-      return a;
+   static <P extends eel> eem<P> a(String $$0, Codec<P> $$1) {
+      return iy.a(ki.ai, $$0, () -> $$1);
    }
 }

@@ -1,15 +1,15 @@
 public class aaz implements yb<aam> {
    public static final xs<uu, aaz> a = yb.a(aaz::a, aaz::new);
-   private final bmz b;
+   private final bna b;
    private final boolean c;
 
-   public aaz(bmz $$0, boolean $$1) {
+   public aaz(bna $$0, boolean $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
    private aaz(uu $$0) {
-      this.b = bmz.a($$0.readUnsignedByte());
+      this.b = bna.a($$0.readUnsignedByte());
       this.c = $$0.readBoolean();
    }
 
@@ -31,7 +31,7 @@ public class aaz implements yb<aam> {
       return this.c;
    }
 
-   public bmz e() {
+   public bna e() {
       return this.b;
    }
 }

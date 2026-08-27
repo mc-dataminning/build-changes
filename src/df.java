@@ -8,8 +8,8 @@ public class df extends cx<df.a> {
       return df.a.a;
    }
 
-   public void a(apg $$0, bow $$1, epr $$2, int $$3) {
-      eku $$4 = br.b($$0, $$1);
+   public void a(apg $$0, box $$1, ept $$2, int $$3) {
+      ekw $$4 = br.b($$0, $$1);
       this.a($$0, $$3x -> $$3x.a($$4, $$2, $$3));
    }
 
@@ -27,7 +27,7 @@ public class df extends cx<df.a> {
          return am.M.a(new df.a(Optional.empty(), $$0, $$1));
       }
 
-      public boolean a(eku $$0, epr $$1, int $$2) {
+      public boolean a(ekw $$0, ept $$1, int $$2) {
          return !this.c.d($$2) ? false : !this.d.isPresent() || this.d.get().a($$0);
       }
 

@@ -1,40 +1,60 @@
 import com.mojang.serialization.Codec;
 
-public class dww extends dvq<dye> {
-   public dww(Codec<dye> $$0) {
+public class dww extends dvs<dyn> {
+   public dww(Codec<dyn> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dvs<dye> $$0) {
-      boolean $$1 = false;
-      axd $$2 = $$0.d();
-      cxu $$3 = $$0.b();
-      ib $$4 = $$0.e();
-      dye $$5 = $$0.f();
-      int $$6 = $$2.a(8) - $$2.a(8);
-      int $$7 = $$2.a(8) - $$2.a(8);
-      int $$8 = $$3.a(dsm.a.d, $$4.u() + $$6, $$4.w() + $$7);
-      ib $$9 = new ib($$4.u() + $$6, $$8, $$4.w() + $$7);
-      if ($$3.a_($$9).a(dac.G)) {
-         boolean $$10 = $$2.j() < (double)$$5.l;
-         dmz $$11 = $$10 ? dac.bx.o() : dac.bw.o();
-         if ($$11.a($$3, $$9)) {
-            if ($$10) {
-               dmz $$12 = $$11.a(dif.d, dnv.a);
-               ib $$13 = $$9.c();
-               if ($$3.a_($$13).a(dac.G)) {
-                  $$3.a($$9, $$11, 2);
-                  $$3.a($$13, $$12, 2);
-               }
-            } else {
-               $$3.a($$9, $$11, 2);
+   public boolean a(dvu<dyn> $$0) {
+      cxw $$1 = $$0.b();
+      ib $$2 = $$0.e();
+      if (!this.a($$1, $$2)) {
+         return false;
+      } else {
+         dyn $$3 = $$0.f();
+         axd $$4 = $$0.d();
+         dgw $$5 = dgw.b();
+         int $$6 = $$3.f() + $$3.d();
+
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
+               $$5.a($$2, $$3.b());
             }
 
-            $$1 = true;
-         }
-      }
+            boolean $$9 = $$7 < $$3.f();
 
-      return $$1;
+            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
+               $$5.a($$1, $$2, $$4, $$9);
+            }
+
+            $$5.j();
+         }
+
+         ib $$11 = $$2.d();
+         if ($$4.i() <= $$3.h() && $$1.a_($$11).r($$1, $$11)) {
+            $$1.a($$2, dae.qU.o(), 3);
+         }
+
+         int $$12 = $$3.g().a($$4);
+
+         for (int $$13 = 0; $$13 < $$12; $$13++) {
+            ib $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
+            if ($$1.a_($$14).i() && $$1.a_($$14.d()).d($$1, $$14.d(), ih.b)) {
+               $$1.a($$14, dae.qV.o().a(dgv.d, Boolean.valueOf(true)), 3);
+            }
+         }
+
+         return true;
+      }
+   }
+
+   private boolean a(cxc $$0, ib $$1) {
+      dnb $$2 = $$0.a_($$1);
+      if ($$2.b() instanceof dgr) {
+         return true;
+      } else {
+         return !$$2.i() && (!$$2.a(dae.G) || !$$2.u().b()) ? false : ih.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).r($$0, $$1x));
+      }
    }
 }

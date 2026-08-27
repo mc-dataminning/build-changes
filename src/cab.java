@@ -1,36 +1,28 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import java.util.List;
+import java.util.Set;
 
-public class cab extends bzr {
-   private static final ImmutableMap<bpc<?>, Float> a = ImmutableMap.builder()
-      .put(bpc.B, 8.0F)
-      .put(bpc.J, 12.0F)
-      .put(bpc.ac, 8.0F)
-      .put(bpc.ad, 12.0F)
-      .put(bpc.aB, 15.0F)
-      .put(bpc.aG, 12.0F)
-      .put(bpc.bh, 8.0F)
-      .put(bpc.bj, 10.0F)
-      .put(bpc.bs, 10.0F)
-      .put(bpc.bt, 8.0F)
-      .put(bpc.bv, 8.0F)
-      .build();
-
+public class cab extends bzy<bpp> {
    @Override
-   protected boolean a(bpo $$0, bpo $$1) {
-      return this.b($$1) && this.e($$0, $$1);
-   }
-
-   private boolean e(bpo $$0, bpo $$1) {
-      float $$2 = (Float)a.get($$1.ai());
-      return $$1.g((bow)$$0) <= (double)($$2 * $$2);
+   public Set<bys<?>> a() {
+      return ImmutableSet.of(bys.i);
    }
 
    @Override
-   protected byr<bpo> b() {
-      return byr.A;
+   protected void a(apf $$0, bpp $$1) {
+      $$1.dP().a(bys.i, this.a($$1));
    }
 
-   private boolean b(bpo $$0) {
-      return a.containsKey($$0.ai());
+   private List<bpp> a(bpp $$0) {
+      return ImmutableList.copyOf(this.c($$0).b(this::b));
+   }
+
+   private boolean b(bpp $$0) {
+      return $$0.ai() == bpd.bj && $$0.o_();
+   }
+
+   private byu c(bpp $$0) {
+      return $$0.dP().c(bys.h).orElse(byu.a());
    }
 }

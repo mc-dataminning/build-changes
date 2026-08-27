@@ -1,59 +1,82 @@
-public class fgu extends fhf {
-   private static final vu a = vu.c("symlink_warning.title.world").a(n.r);
-   private static final vu b = vu.a("symlink_warning.message.world", "https://aka.ms/MinecraftSymLinks");
-   private static final vu c = vu.c("symlink_warning.title.pack").a(n.r);
-   private static final vu k = vu.a("symlink_warning.message.pack", "https://aka.ms/MinecraftSymLinks");
-   private final vu l;
-   private final String m;
-   private final Runnable n;
-   private final fes o = new fes().b(10);
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.util.Map;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public fgu(vu $$0, vu $$1, String $$2, Runnable $$3) {
-      super($$0);
-      this.l = $$1;
-      this.m = $$2;
-      this.n = $$3;
+public class fgu {
+   private static final Logger a = LogUtils.getLogger();
+   private static final Map<cmx<?>, fgu.a<?, ?>> b = Maps.newHashMap();
+
+   public static <T extends clq> void a(cmx<T> $$0, ezi $$1, int $$2, vu $$3) {
+      fgu.a<T, ?> $$4 = a($$0);
+      if ($$4 == null) {
+         a.warn("Failed to create screen for menu type: {}", ki.r.b($$0));
+      } else {
+         $$4.a($$3, $$0, $$1, $$2);
+      }
    }
 
-   public static fhf a(Runnable $$0) {
-      return new fgu(a, b, "https://aka.ms/MinecraftSymLinks", $$0);
+   @Nullable
+   private static <T extends clq> fgu.a<T, ?> a(cmx<T> $$0) {
+      return (fgu.a<T, ?>)b.get($$0);
    }
 
-   public static fhf b(Runnable $$0) {
-      return new fgu(c, k, "https://aka.ms/MinecraftSymLinks", $$0);
+   private static <M extends clq, U extends fhh & fjl<M>> void a(cmx<? extends M> $$0, fgu.a<M, U> $$1) {
+      fgu.a<?, ?> $$2 = b.put($$0, $$1);
+      if ($$2 != null) {
+         throw new IllegalStateException("Duplicate registration for " + ki.r.b($$0));
+      }
    }
 
-   @Override
-   protected void aO_() {
-      super.aO_();
-      this.o.c().b();
-      fes.b $$0 = this.o.d(1);
-      $$0.a(new fcn(this.e, this.i));
-      $$0.a(new fca(this.l, this.i).c(this.g - 50).b(true));
-      int $$1 = 120;
-      fes $$2 = new fes().a(5);
-      fes.b $$3 = $$2.d(3);
-      $$3.a(fbg.a(vt.n, $$0x -> ac.j().a(this.m)).b(120, 20).a());
-      $$3.a(fbg.a(vt.o, $$0x -> this.f.o.a(this.m)).b(120, 20).a());
-      $$3.a(fbg.a(vt.k, $$0x -> this.d()).b(120, 20).a());
-      $$0.a($$2);
-      this.c();
-      this.o.a(this::c);
+   public static boolean a() {
+      boolean $$0 = false;
+
+      for (cmx<?> $$1 : ki.r) {
+         if (!b.containsKey($$1)) {
+            a.debug("Menu {} has no matching screen", ki.r.b($$1));
+            $$0 = true;
+         }
+      }
+
+      return $$0;
    }
 
-   @Override
-   protected void c() {
-      this.o.a();
-      fer.a(this.o, this.F());
+   static {
+      a(cmx.a, fir::new);
+      a(cmx.b, fir::new);
+      a(cmx.c, fir::new);
+      a(cmx.d, fir::new);
+      a(cmx.e, fir::new);
+      a(cmx.f, fir::new);
+      a(cmx.g, fix::new);
+      a(cmx.h, fis::new);
+      a(cmx.i, fij::new);
+      a(cmx.j, fik::new);
+      a(cmx.k, fil::new);
+      a(cmx.l, fio::new);
+      a(cmx.m, fit::new);
+      a(cmx.n, fja::new);
+      a(cmx.o, fjb::new);
+      a(cmx.p, fjc::new);
+      a(cmx.q, fje::new);
+      a(cmx.r, fjj::new);
+      a(cmx.s, fjk::new);
+      a(cmx.t, fjm::new);
+      a(cmx.u, fjp::new);
+      a(cmx.v, fjr::new);
+      a(cmx.w, fjs::new);
+      a(cmx.x, fip::new);
+      a(cmx.y, fjt::new);
    }
 
-   @Override
-   public vu i() {
-      return vt.a(super.i(), this.l);
-   }
+   interface a<T extends clq, U extends fhh & fjl<T>> {
+      default void a(vu $$0, cmx<T> $$1, ezi $$2, int $$3) {
+         U $$4 = this.create($$1.a($$3, $$2.s.fZ()), $$2.s.fZ(), $$0);
+         $$2.s.bZ = $$4.H();
+         $$2.a($$4);
+      }
 
-   @Override
-   public void d() {
-      this.n.run();
+      U create(T var1, cit var2, vu var3);
    }
 }

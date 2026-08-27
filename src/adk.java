@@ -4,7 +4,7 @@ public class adk implements yb<aam> {
    public static final xs<uu, adk> a = yb.a(adk::a, adk::new);
    private final int b;
 
-   public adk(bow $$0) {
+   public adk(box $$0) {
       this.b = $$0.aj();
    }
 
@@ -26,7 +26,7 @@ public class adk implements yb<aam> {
    }
 
    @Nullable
-   public bow a(cwz $$0) {
+   public box a(cxb $$0) {
       return $$0.a(this.b);
    }
 }

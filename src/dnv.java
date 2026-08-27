@@ -1,28 +1,27 @@
-public enum dnv implements axq {
-   a(ih.a),
-   b(ih.b);
+import com.google.common.collect.Lists;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-   private final ih c;
-
-   private dnv(ih $$0) {
-      this.c = $$0;
+public class dnv extends dnz<ih> {
+   protected dnv(String $$0, Collection<ih> $$1) {
+      super($$0, ih.class, $$1);
    }
 
-   public ih a() {
-      return this.c;
+   public static dnv a(String $$0) {
+      return a($$0, $$0x -> true);
    }
 
-   @Override
-   public String toString() {
-      return this.c();
+   public static dnv a(String $$0, Predicate<ih> $$1) {
+      return a($$0, Arrays.stream(ih.values()).filter($$1).collect(Collectors.toList()));
    }
 
-   @Override
-   public String c() {
-      return this == a ? "upper" : "lower";
+   public static dnv a(String $$0, ih... $$1) {
+      return a($$0, Lists.newArrayList($$1));
    }
 
-   public dnv b() {
-      return this == a ? b : a;
+   public static dnv a(String $$0, Collection<ih> $$1) {
+      return new dnv($$0, $$1);
    }
 }

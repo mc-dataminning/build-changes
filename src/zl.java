@@ -1,9 +1,9 @@
-public record zl(int c, ejc d, float e) implements zc {
+public record zl(int c, ejd d, float e) implements zc {
    public static final xs<uu, zl> a = zc.a(zl::a, zl::new);
    public static final zc.b<zl> b = zc.a("debug/path");
 
    private zl(uu $$0) {
-      this($$0.readInt(), ejc.b($$0), $$0.readFloat());
+      this($$0.readInt(), ejd.b($$0), $$0.readFloat());
    }
 
    private void a(uu $$0) {
@@ -21,7 +21,7 @@ public record zl(int c, ejc d, float e) implements zc {
       return this.c;
    }
 
-   public ejc c() {
+   public ejd c() {
       return this.d;
    }
 

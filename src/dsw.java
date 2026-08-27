@@ -1,68 +1,70 @@
-public final class dsw {
-   private static final float a = 0.4F;
-   private static final int b = 20;
-   private static final double c = 0.2;
-   private static final float d = 0.7F;
-   private static final float e = 0.1F;
-   private static final float f = 0.3F;
-   private static final float g = 0.6F;
-   private static final float h = 0.02F;
-   private static final float i = -0.3F;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-   private dsw() {
-   }
+public record dsw(int g, int h, int i, int j) {
+   public static final Codec<dsw> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.intRange(dqo.e, dqo.d).fieldOf("min_y").forGetter(dsw::c),
+                  Codec.intRange(0, dqo.c).fieldOf("height").forGetter(dsw::d),
+                  Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(dsw::e),
+                  Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(dsw::f)
+               )
+               .apply($$0, dsw::new)
+      )
+      .comapFlatMap(dsw::a, Function.identity());
+   protected static final dsw b = a(-64, 384, 1, 2);
+   protected static final dsw c = a(0, 128, 1, 2);
+   protected static final dsw d = a(0, 128, 2, 1);
+   protected static final dsw e = a(-64, 192, 1, 2);
+   protected static final dsw f = a(0, 256, 2, 1);
 
-   protected static dsq.c a(dsf $$0, dsf $$1, dsf $$2, dsz $$3) {
-      dmz $$4 = null;
-      return $$5 -> {
-         double $$6 = $$0.a($$5);
-         int $$7 = $$5.b();
-         dsw.a $$8 = $$6 > 0.0 ? dsw.a.a : dsw.a.b;
-         double $$9 = Math.abs($$6);
-         int $$10 = $$8.d - $$7;
-         int $$11 = $$7 - $$8.c;
-         if ($$11 >= 0 && $$10 >= 0) {
-            int $$12 = Math.min($$10, $$11);
-            double $$13 = aww.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
-            if ($$9 + $$13 < 0.4F) {
-               return $$4;
-            } else {
-               axd $$14 = $$3.a($$5.a(), $$7, $$5.c());
-               if ($$14.i() > 0.7F) {
-                  return $$4;
-               } else if ($$1.a($$5) >= 0.0) {
-                  return $$4;
-               } else {
-                  double $$15 = aww.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
-                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
-                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
-                  } else {
-                     return $$8.g;
-                  }
-               }
-            }
-         } else {
-            return $$4;
-         }
-      };
-   }
-
-   protected static enum a {
-      a(dac.ra.o(), dac.tg.o(), dac.c.o(), 0, 50),
-      b(dac.Q.o(), dac.tf.o(), dac.qz.o(), -60, -8);
-
-      final dmz e;
-      final dmz f;
-      final dmz g;
-      protected final int c;
-      protected final int d;
-
-      private a(dmz $$0, dmz $$1, dmz $$2, int $$3, int $$4) {
-         this.e = $$0;
-         this.f = $$1;
-         this.g = $$2;
-         this.c = $$3;
-         this.d = $$4;
+   private static DataResult<dsw> a(dsw $$0) {
+      if ($$0.c() + $$0.d() > dqo.d + 1) {
+         return DataResult.error(() -> "min_y + height cannot be higher than: " + (dqo.d + 1));
+      } else if ($$0.d() % 16 != 0) {
+         return DataResult.error(() -> "height has to be a multiple of 16");
+      } else {
+         return $$0.c() % 16 != 0 ? DataResult.error(() -> "min_y has to be a multiple of 16") : DataResult.success($$0);
       }
+   }
+
+   public static dsw a(int $$0, int $$1, int $$2, int $$3) {
+      dsw $$4 = new dsw($$0, $$1, $$2, $$3);
+      a($$4).error().ifPresent($$0x -> {
+         throw new IllegalStateException($$0x.message());
+      });
+      return $$4;
+   }
+
+   public int a() {
+      return iw.c(this.f());
+   }
+
+   public int b() {
+      return iw.c(this.e());
+   }
+
+   public dsw a(cxd $$0) {
+      int $$1 = Math.max(this.g, $$0.I_());
+      int $$2 = Math.min(this.g + this.h, $$0.ak()) - $$1;
+      return new dsw($$1, $$2, this.i, this.j);
+   }
+
+   public int c() {
+      return this.g;
+   }
+
+   public int d() {
+      return this.h;
+   }
+
+   public int e() {
+      return this.i;
+   }
+
+   public int f() {
+      return this.j;
    }
 }

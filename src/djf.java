@@ -1,33 +1,43 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class djf extends dbo implements dje {
-   public static final MapCodec<djf> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dje.a.e.fieldOf("weathering_state").forGetter(djf::i), u()).apply($$0, djf::new)
-   );
-   private final dje.a e;
+public class djf extends din implements dhc {
+   public static final MapCodec<djf> a = b(djf::new);
+   public static final dns c = dnr.C;
 
    @Override
-   protected MapCodec<djf> a() {
-      return d;
+   protected MapCodec<? extends djf> a() {
+      return a;
    }
 
-   public djf(dje.a $$0, dmy.d $$1) {
-      super($$1);
-      this.e = $$0;
+   protected djf(dna.d $$0) {
+      super($$0);
+      this.k(this.o().a(c, Boolean.valueOf(false)));
+   }
+
+   @Nullable
+   @Override
+   public dnb a(csu $$0) {
+      eip $$1 = $$0.q().b_($$0.a());
+      return super.a($$0).a(c, Boolean.valueOf($$1.b(eiq.c)));
    }
 
    @Override
-   protected void b(dmz $$0, apf $$1, ib $$2, axd $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   protected dnb a(dnb $$0, ih $$1, dnb $$2, cxc $$3, ib $$4, ib $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, eiq.c, eiq.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean e_(dmz $$0) {
-      return dje.c($$0.b()).isPresent();
+   protected eip c_(dnb $$0) {
+      return $$0.c(c) ? eiq.c.a(true) : super.c_($$0);
    }
 
-   public dje.a i() {
-      return this.e;
+   @Override
+   protected void a(dnc.a<dac, dnb> $$0) {
+      $$0.a(c);
    }
 }

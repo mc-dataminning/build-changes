@@ -1,32 +1,56 @@
-public interface csb {
-   csb.a a = new csb.a(false, false);
-   csb.a b = new csb.a(true, false);
+import java.util.function.Supplier;
 
-   boolean a();
+public enum csb implements crz {
+   a(0, 59, 2.0F, 0.0F, 15, () -> ctm.a(auv.b)),
+   b(1, 131, 4.0F, 1.0F, 5, () -> ctm.a(auv.ax)),
+   c(2, 250, 6.0F, 2.0F, 14, () -> ctm.a(cqp.oD)),
+   d(3, 1561, 8.0F, 3.0F, 10, () -> ctm.a(cqp.ox)),
+   e(0, 32, 12.0F, 0.0F, 22, () -> ctm.a(cqp.oH)),
+   f(4, 2031, 9.0F, 4.0F, 15, () -> ctm.a(cqp.oI));
 
-   boolean b();
+   private final int g;
+   private final int h;
+   private final float i;
+   private final float j;
+   private final int k;
+   private final awr<ctm> l;
 
-   public static record a(boolean c, boolean d) implements csb {
-      @Override
-      public boolean a() {
-         return this.c;
-      }
+   private csb(int $$0, int $$1, float $$2, float $$3, int $$4, Supplier<ctm> $$5) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      this.j = $$3;
+      this.k = $$4;
+      this.l = new awr<>($$5);
+   }
 
-      @Override
-      public boolean b() {
-         return this.d;
-      }
+   @Override
+   public int a() {
+      return this.h;
+   }
 
-      public csb.a c() {
-         return new csb.a(this.c, true);
-      }
+   @Override
+   public float b() {
+      return this.i;
+   }
 
-      public boolean d() {
-         return this.c;
-      }
+   @Override
+   public float c() {
+      return this.j;
+   }
 
-      public boolean e() {
-         return this.d;
-      }
+   @Override
+   public int d() {
+      return this.g;
+   }
+
+   @Override
+   public int e() {
+      return this.k;
+   }
+
+   @Override
+   public ctm f() {
+      return this.l.a();
    }
 }

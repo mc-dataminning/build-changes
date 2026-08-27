@@ -1,110 +1,90 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
-import java.util.Objects;
 
-public class fzb implements glh {
-   private final ajh a;
-   private final j b;
-   private final boolean c;
-   private final int d;
+public class fzb {
+   public static final fzb a = new fzb();
+   public final fza b;
+   public final fza c;
+   public final fza d;
+   public final fza e;
+   public final fza f;
+   public final fza g;
+   public final fza h;
+   public final fza i;
 
-   public fzb(ajh $$0, j $$1, boolean $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   private fzb() {
+      this(fza.a, fza.a, fza.a, fza.a, fza.a, fza.a, fza.a, fza.a);
    }
 
-   public ajh a() {
-      return this.a;
+   public fzb(fzb $$0) {
+      this.b = $$0.b;
+      this.c = $$0.c;
+      this.d = $$0.d;
+      this.e = $$0.e;
+      this.f = $$0.f;
+      this.g = $$0.g;
+      this.h = $$0.h;
+      this.i = $$0.i;
    }
 
-   @Override
-   public j b() {
-      return this.b;
+   public fzb(fza $$0, fza $$1, fza $$2, fza $$3, fza $$4, fza $$5, fza $$6, fza $$7) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
    }
 
-   @Override
-   public boolean c() {
-      return this.c;
+   public fza a(cqj $$0) {
+      return switch ($$0) {
+         case b -> this.b;
+         case c -> this.c;
+         case d -> this.d;
+         case e -> this.e;
+         case f -> this.f;
+         case g -> this.g;
+         case h -> this.h;
+         case i -> this.i;
+         default -> fza.a;
+      };
    }
 
-   public int d() {
-      return this.d;
+   public boolean b(cqj $$0) {
+      return this.a($$0) != fza.a;
    }
 
-   @Override
-   public String toString() {
-      return "Variant{modelLocation=" + this.a + ", rotation=" + this.b + ", uvLock=" + this.c + ", weight=" + this.d + "}";
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof fzb $$1) ? false : this.a.equals($$1.a) && Objects.equals(this.b, $$1.b) && this.c == $$1.c && this.d == $$1.d;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = this.a.hashCode();
-      $$0 = 31 * $$0 + this.b.hashCode();
-      $$0 = 31 * $$0 + Boolean.valueOf(this.c).hashCode();
-      return 31 * $$0 + this.d;
-   }
-
-   public static class a implements JsonDeserializer<fzb> {
-      @VisibleForTesting
-      static final boolean a = false;
-      @VisibleForTesting
-      static final int b = 1;
-      @VisibleForTesting
-      static final int c = 0;
-      @VisibleForTesting
-      static final int d = 0;
-
+   protected static class a implements JsonDeserializer<fzb> {
       public fzb a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
          JsonObject $$3 = $$0.getAsJsonObject();
-         ajh $$4 = this.b($$3);
-         gla $$5 = this.a($$3);
-         boolean $$6 = this.d($$3);
-         int $$7 = this.c($$3);
-         return new fzb($$4, $$5.b(), $$6, $$7);
-      }
-
-      private boolean d(JsonObject $$0) {
-         return awm.a($$0, "uvlock", false);
-      }
-
-      protected gla a(JsonObject $$0) {
-         int $$1 = awm.a($$0, "x", 0);
-         int $$2 = awm.a($$0, "y", 0);
-         gla $$3 = gla.a($$1, $$2);
-         if ($$3 == null) {
-            throw new JsonParseException("Invalid BlockModelRotation x: " + $$1 + ", y: " + $$2);
-         } else {
-            return $$3;
+         fza $$4 = this.a($$2, $$3, cqj.c);
+         fza $$5 = this.a($$2, $$3, cqj.b);
+         if ($$5 == fza.a) {
+            $$5 = $$4;
          }
-      }
 
-      protected ajh b(JsonObject $$0) {
-         return new ajh(awm.i($$0, "model"));
-      }
-
-      protected int c(JsonObject $$0) {
-         int $$1 = awm.a($$0, "weight", 1);
-         if ($$1 < 1) {
-            throw new JsonParseException("Invalid weight " + $$1 + " found, expected integer >= 1");
-         } else {
-            return $$1;
+         fza $$6 = this.a($$2, $$3, cqj.e);
+         fza $$7 = this.a($$2, $$3, cqj.d);
+         if ($$7 == fza.a) {
+            $$7 = $$6;
          }
+
+         fza $$8 = this.a($$2, $$3, cqj.f);
+         fza $$9 = this.a($$2, $$3, cqj.g);
+         fza $$10 = this.a($$2, $$3, cqj.h);
+         fza $$11 = this.a($$2, $$3, cqj.i);
+         return new fzb($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
+      }
+
+      private fza a(JsonDeserializationContext $$0, JsonObject $$1, cqj $$2) {
+         String $$3 = $$2.c();
+         return $$1.has($$3) ? (fza)$$0.deserialize($$1.get($$3), fza.class) : fza.a;
       }
    }
 }

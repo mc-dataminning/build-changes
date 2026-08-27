@@ -1,43 +1,70 @@
-import java.util.Locale;
+import com.mojang.logging.LogUtils;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public enum eul {
-   a,
-   b,
-   c,
-   d;
+public class eul {
+   private static final Logger a = LogUtils.getLogger();
+   @Nullable
+   private static CompletableFuture<eul.a> b;
 
-   private static final int e = 1024;
+   public static CompletableFuture<eul.a> a() {
+      if (b == null || a(b)) {
+         b = b();
+      }
 
-   public static eul a(long $$0) {
-      if ($$0 < 1024L) {
-         return a;
-      } else {
+      return b;
+   }
+
+   private static boolean a(CompletableFuture<eul.a> $$0) {
+      eul.a $$1 = $$0.getNow(null);
+      return $$1 != null && $$1.b() != null;
+   }
+
+   private static CompletableFuture<eul.a> b() {
+      return CompletableFuture.supplyAsync(() -> {
+         eur $$0 = eur.a();
+
          try {
-            int $$1 = (int)(Math.log((double)$$0) / Math.log(1024.0));
-            String $$2 = String.valueOf("KMGTPE".charAt($$1 - 1));
-            return valueOf($$2 + "B");
-         } catch (Exception var4) {
-            return d;
+            if ($$0.g() != eur.a.a) {
+               return new eul.a(eul.b.b);
+            } else {
+               return !$$0.f() ? new eul.a(eul.b.c) : new eul.a(eul.b.a);
+            }
+         } catch (ewe var2) {
+            a.error("Couldn't connect to realms", var2);
+            return var2.a.a() == 401 ? new eul.a(eul.b.d) : new eul.a(var2);
          }
+      }, ac.g());
+   }
+
+   public static record a(eul.b a, @Nullable ewe b) {
+      public a(eul.b $$0) {
+         this($$0, null);
+      }
+
+      public a(ewe $$0) {
+         this(eul.b.e, $$0);
+      }
+
+      @Nullable
+      public fhh a(fhh $$0) {
+         return (fhh)(switch (this.a) {
+            case a -> null;
+            case b -> new ewq($$0);
+            case c -> new exb($$0);
+            case d -> new ewv(vu.c("mco.error.invalid.session.title"), vu.c("mco.error.invalid.session.message"), $$0);
+            case e -> new ewv(Objects.requireNonNull(this.b), $$0);
+         });
       }
    }
 
-   public static double a(long $$0, eul $$1) {
-      return $$1 == a ? (double)$$0 : (double)$$0 / Math.pow(1024.0, (double)$$1.ordinal());
-   }
-
-   public static String b(long $$0) {
-      int $$1 = 1024;
-      if ($$0 < 1024L) {
-         return $$0 + " B";
-      } else {
-         int $$2 = (int)(Math.log((double)$$0) / Math.log(1024.0));
-         String $$3 = "KMGTPE".charAt($$2 - 1) + "";
-         return String.format(Locale.ROOT, "%.1f %sB", (double)$$0 / Math.pow(1024.0, (double)$$2), $$3);
-      }
-   }
-
-   public static String b(long $$0, eul $$1) {
-      return String.format(Locale.ROOT, "%." + ($$1 == d ? "1" : "0") + "f %s", a($$0, $$1), $$1.name());
+   public static enum b {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 }

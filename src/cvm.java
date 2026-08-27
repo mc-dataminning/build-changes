@@ -1,15 +1,35 @@
-public class cvm extends cuu {
-   public cvm(cuu.a $$0, bpd... $$1) {
-      super($$0, auv.bl, $$1);
+public class cvm extends cuw {
+   public cvm(cuw.a $$0, bpe... $$1) {
+      super($$0, auv.bc, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 25;
+      return $$0 * 25;
    }
 
    @Override
    public int b(int $$0) {
-      return 50;
+      return this.a($$0) + 50;
+   }
+
+   @Override
+   public boolean b() {
+      return true;
+   }
+
+   @Override
+   public boolean i() {
+      return false;
+   }
+
+   @Override
+   public boolean j() {
+      return false;
+   }
+
+   @Override
+   public int a() {
+      return 3;
    }
 }

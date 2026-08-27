@@ -1,9 +1,14 @@
 import com.mojang.serialization.Codec;
 
-public abstract class egp {
-   public static final Codec<egp> c = ki.q.q().dispatch("predicate_type", egp::a, egq::codec);
+public class egp extends ehb {
+   public static final Codec<egp> a = Codec.unit(() -> egp.b);
+   public static final egp b = new egp();
 
-   public abstract boolean a(ib var1, ib var2, ib var3, axd var4);
+   private egp() {
+   }
 
-   protected abstract egq<?> a();
+   @Override
+   protected ehd<?> a() {
+      return ehd.j;
+   }
 }

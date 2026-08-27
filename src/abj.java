@@ -5,9 +5,9 @@ public class abj implements yb<aam> {
    private final int d;
    private final int e;
    private final int f;
-   private final cqk g;
+   private final cqm g;
 
-   public abj(int $$0, int $$1, int $$2, cqk $$3) {
+   public abj(int $$0, int $$1, int $$2, cqm $$3) {
       this.d = $$0;
       this.e = $$1;
       this.f = $$2;
@@ -18,14 +18,14 @@ public class abj implements yb<aam> {
       this.d = $$0.readByte();
       this.e = $$0.l();
       this.f = $$0.readShort();
-      this.g = cqk.f.decode($$0);
+      this.g = cqm.f.decode($$0);
    }
 
    private void a(vf $$0) {
       $$0.k(this.d);
       $$0.c(this.e);
       $$0.l(this.f);
-      cqk.f.encode($$0, this.g);
+      cqm.f.encode($$0, this.g);
    }
 
    @Override
@@ -45,7 +45,7 @@ public class abj implements yb<aam> {
       return this.f;
    }
 
-   public cqk f() {
+   public cqm f() {
       return this.g;
    }
 

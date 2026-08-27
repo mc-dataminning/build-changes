@@ -1,12 +1,11 @@
-public class gfl extends gby<cja> {
-   public static final ajh a = new ajh("textures/entity/projectiles/arrow.png");
-   public static final ajh f = new ajh("textures/entity/projectiles/tipped_arrow.png");
+public class gfl extends geh<ccz, fqj<ccz>> {
+   private static final ajh a = new ajh("textures/entity/tadpole/tadpole.png");
 
-   public gfl(gcy.a $$0) {
-      super($$0);
+   public gfl(gdb.a $$0) {
+      super($$0, new fqj<>($$0.a(fre.bF)), 0.14F);
    }
 
-   public ajh a(cja $$0) {
-      return $$0.G() > 0 ? f : a;
+   public ajh a(ccz $$0) {
+      return a;
    }
 }

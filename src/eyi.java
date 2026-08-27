@@ -1,36 +1,56 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class eyi extends eyg {
+public abstract class eyi implements Runnable {
+   protected static final int a = 25;
    private static final Logger b = LogUtils.getLogger();
-   private static final vu c = vu.c("mco.create.world.wait");
-   private final String d;
-   private final String e;
-   private final long f;
+   private boolean c = false;
 
-   public eyi(long $$0, String $$1, String $$2) {
-      this.f = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   @Override
-   public void run() {
-      eup $$0 = eup.a();
-
+   protected static void a(long $$0) {
       try {
-         $$0.a(this.f, this.d, this.e);
-      } catch (ewc var3) {
-         b.error("Couldn't create world", var3);
-         this.a(var3);
-      } catch (Exception var4) {
-         b.error("Could not create world", var4);
-         this.a(var4);
+         Thread.sleep($$0 * 1000L);
+      } catch (InterruptedException var3) {
+         Thread.currentThread().interrupt();
+         b.error("", var3);
       }
    }
 
-   @Override
-   public vu a() {
-      return c;
+   public static void a(fhh $$0) {
+      ezi $$1 = ezi.Q();
+      $$1.execute(() -> $$1.a($$0));
+   }
+
+   protected void a(vu $$0) {
+      this.b();
+      ezi $$1 = ezi.Q();
+      $$1.execute(() -> $$1.a(new ewv($$0, new eum(new fhm()))));
+   }
+
+   protected void a(Exception $$0) {
+      if ($$0 instanceof ewe $$1) {
+         this.a($$1.a.b());
+      } else {
+         this.a(vu.b($$0.getMessage()));
+      }
+   }
+
+   protected void a(ewe $$0) {
+      this.a($$0.a.b());
+   }
+
+   public abstract vu a();
+
+   public boolean d() {
+      return this.c;
+   }
+
+   public void c() {
+   }
+
+   public void e() {
+   }
+
+   public void b() {
+      this.c = true;
    }
 }

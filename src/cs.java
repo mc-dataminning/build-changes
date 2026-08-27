@@ -18,12 +18,12 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public record cs(cm.d d, Optional<cww> e, List<cs.e<?>> f, Object2BooleanMap<ajh> g, Map<ajh, cs.c> h, Optional<br> i) implements bs {
+public record cs(cm.d d, Optional<cwy> e, List<cs.e<?>> f, Object2BooleanMap<ajh> g, Map<ajh, cs.c> h, Optional<br> i) implements bs {
    public static final int b = 100;
    public static final MapCodec<cs> c = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
                awe.a(cm.d.d, "level", cm.d.c).forGetter(cs::b),
-               cww.f.optionalFieldOf("gamemode").forGetter(cs::c),
+               cwy.f.optionalFieldOf("gamemode").forGetter(cs::c),
                awe.a(cs.e.a.listOf(), "stats", List.of()).forGetter(cs::d),
                awe.a(awe.d(ajh.a), "recipes", Object2BooleanMaps.emptyMap()).forGetter(cs::e),
                awe.a(Codec.unboundedMap(ajh.a, cs.c.b), "advancements", Map.of()).forGetter(cs::f),
@@ -33,7 +33,7 @@ public record cs(cm.d d, Optional<cww> e, List<cs.e<?>> f, Object2BooleanMap<ajh
    );
 
    @Override
-   public boolean a(bow $$0, apf $$1, @Nullable epr $$2) {
+   public boolean a(box $$0, apf $$1, @Nullable ept $$2) {
       if (!($$0 instanceof apg $$3)) {
          return false;
       } else if (!this.d.d($$3.cm)) {
@@ -72,15 +72,15 @@ public record cs(cm.d d, Optional<cww> e, List<cs.e<?>> f, Object2BooleanMap<ajh
          }
 
          if (this.i.isPresent()) {
-            epr $$13 = $$3.bu();
-            epr $$14 = $$3.f(1.0F);
-            epr $$15 = $$13.b($$14.c * 100.0, $$14.d * 100.0, $$14.e * 100.0);
-            epo $$16 = cjm.a($$3.dM(), $$3, $$13, $$15, new epm($$13, $$15).g(1.0), $$0x -> !$$0x.N_(), 0.0F);
-            if ($$16 == null || $$16.c() != epp.a.c) {
+            ept $$13 = $$3.bu();
+            ept $$14 = $$3.f(1.0F);
+            ept $$15 = $$13.b($$14.c * 100.0, $$14.d * 100.0, $$14.e * 100.0);
+            epq $$16 = cjo.a($$3.dM(), $$3, $$13, $$15, new epo($$13, $$15).g(1.0), $$0x -> !$$0x.N_(), 0.0F);
+            if ($$16 == null || $$16.c() != epr.a.c) {
                return false;
             }
 
-            bow $$17 = $$16.a();
+            box $$17 = $$16.a();
             if (!this.i.get().a($$3, $$17) || !$$3.E($$17)) {
                return false;
             }
@@ -99,7 +99,7 @@ public record cs(cm.d d, Optional<cww> e, List<cs.e<?>> f, Object2BooleanMap<ajh
       return this.d;
    }
 
-   public Optional<cww> c() {
+   public Optional<cwy> c() {
       return this.e;
    }
 
@@ -167,7 +167,7 @@ public record cs(cm.d d, Optional<cww> e, List<cs.e<?>> f, Object2BooleanMap<ajh
 
    public static class d {
       private cm.d a = cm.d.c;
-      private Optional<cww> b = Optional.empty();
+      private Optional<cwy> b = Optional.empty();
       private final Builder<cs.e<?>> c = ImmutableList.builder();
       private final Object2BooleanMap<ajh> d = new Object2BooleanOpenHashMap();
       private final Map<ajh, cs.c> e = Maps.newHashMap();
@@ -192,7 +192,7 @@ public record cs(cm.d d, Optional<cww> e, List<cs.e<?>> f, Object2BooleanMap<ajh
          return this;
       }
 
-      public cs.d a(cww $$0) {
+      public cs.d a(cwy $$0) {
          this.b = Optional.of($$0);
          return this;
       }

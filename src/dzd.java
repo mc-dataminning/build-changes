@@ -1,69 +1,42 @@
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class dzd extends dzg {
-   public static final Codec<dzd> a = RecordCodecBuilder.create(
-      $$0 -> b($$0)
-            .and(
-               $$0.group(
-                  bmh.b(4, 16).fieldOf("height").forGetter($$0x -> $$0x.b),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("wide_bottom_layer_hole_chance").forGetter($$0x -> $$0x.c),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("corner_hole_chance").forGetter($$0x -> $$0x.c),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_chance").forGetter($$0x -> $$0x.h),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_extension_chance").forGetter($$0x -> $$0x.i)
-               )
-            )
-            .apply($$0, dzd::new)
-   );
-   private final bmh b;
-   private final float c;
-   private final float g;
-   private final float h;
-   private final float i;
+public class dzd extends dzi {
+   public static final Codec<dzd> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dzd::new));
+   protected final int b;
 
-   public dzd(bmh $$0, bmh $$1, bmh $$2, float $$3, float $$4, float $$5, float $$6) {
+   protected static <P extends dzd> P3<Mu<P>, bmi, bmi, Integer> a(Instance<P> $$0) {
+      return b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b));
+   }
+
+   public dzd(bmi $$0, bmi $$1, int $$2) {
       super($$0, $$1);
       this.b = $$2;
-      this.c = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
    }
 
    @Override
-   protected dzh<?> a() {
-      return dzh.k;
+   protected dzj<?> a() {
+      return dzj.a;
    }
 
    @Override
-   protected void a(cxf $$0, dzg.b $$1, axd $$2, dyq $$3, int $$4, dzg.a $$5, int $$6, int $$7, int $$8) {
-      boolean $$9 = $$5.c();
-      ib $$10 = $$5.a().b($$8);
-      int $$11 = $$7 + $$5.b() - 1;
-      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 2, $$6 - 3, $$9);
-      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 1, $$6 - 4, $$9);
-
-      for (int $$12 = $$6 - 5; $$12 >= 0; $$12--) {
-         this.a($$0, $$1, $$2, $$3, $$10, $$11, $$12, $$9);
+   protected void a(cxh $$0, dzi.b $$1, axd $$2, dys $$3, int $$4, dzi.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = Math.max($$7 + $$5.b() - 1 - $$9 / 2, 0);
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
       }
-
-      this.a($$0, $$1, $$2, $$3, $$10, $$11, -1, $$9, this.h, this.i);
-      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 1, -2, $$9, this.h, this.i);
    }
 
    @Override
-   public int a(axd $$0, int $$1, dyq $$2) {
-      return this.b.a($$0);
+   public int a(axd $$0, int $$1, dys $$2) {
+      return this.b;
    }
 
    @Override
    protected boolean a(axd $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      if ($$2 == -1 && ($$1 == $$4 || $$3 == $$4) && $$0.i() < this.c) {
-         return true;
-      } else {
-         boolean $$6 = $$1 == $$4 && $$3 == $$4;
-         boolean $$7 = $$4 > 2;
-         return $$7 ? $$6 || $$1 + $$3 > $$4 * 2 - 2 && $$0.i() < this.g : $$6 && $$0.i() < this.g;
-      }
+      return $$1 == $$4 && $$3 == $$4 && ($$0.a(2) == 0 || $$2 == 0);
    }
 }

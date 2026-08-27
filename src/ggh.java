@@ -1,13 +1,17 @@
-public class ggh extends ghj<cgu, fnl<cgu>> {
-   private static final fxy a = fxy.q(new ajh("textures/entity/breeze/breeze_eyes.png"));
+public class ggh extends gds<cgu, fqy<cgu>> {
+   private static final ajh a = new ajh("textures/entity/zombie_villager/zombie_villager.png");
 
-   public ggh(get<cgu, fnl<cgu>> $$0) {
-      super($$0);
+   public ggh(gdb.a $$0) {
+      super($$0, new fqy<>($$0.a(fre.ck)), 0.5F);
+      this.a(new ghc<>(this, new fqy($$0.a(fre.cl)), new fqy($$0.a(fre.cm)), $$0.g()));
+      this.a(new ghx<>(this, $$0.e(), "zombie_villager"));
    }
 
-   public void a(etz $$0, fxq $$1, int $$2, cgu $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      eud $$10 = $$1.getBuffer(a);
-      fnl<cgu> $$11 = this.c();
-      gce.a($$11, $$11.b(), $$11.c()).a($$0, $$10, $$2, giq.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   public ajh a(cgu $$0) {
+      return a;
+   }
+
+   protected boolean b(cgu $$0) {
+      return super.a($$0) || $$0.gx();
    }
 }

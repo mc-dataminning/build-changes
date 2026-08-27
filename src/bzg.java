@@ -1,36 +1,25 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-
-public class bzg extends bzq<cgu> {
-   public static final int a = 24;
+public class bzg extends bzs {
+   public static final float a = 8.0F;
 
    @Override
-   public Set<byr<?>> a() {
-      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(byr.B)));
+   protected boolean a(bpp $$0, bpp $$1) {
+      return this.f($$0, $$1) && $$1.bf() && (this.b($$1) || this.e($$0, $$1)) && bzy.c($$0, $$1);
    }
 
-   protected void a(apf $$0, cgu $$1) {
-      super.a($$0, $$1);
-      $$1.dP()
-         .c(byr.g)
-         .stream()
-         .flatMap(Collection::stream)
-         .filter(bpb.e)
-         .filter($$1x -> bzx.c($$1, $$1x))
-         .findFirst()
-         .ifPresentOrElse($$1x -> $$1.dP().a(byr.B, $$1x), () -> $$1.dP().b(byr.B));
+   private boolean e(bpp $$0, bpp $$1) {
+      return !$$0.dP().a(bys.U) && $$1.ai().a(auq.j);
+   }
+
+   private boolean b(bpp $$0) {
+      return $$0.ai().a(auq.i);
+   }
+
+   private boolean f(bpp $$0, bpp $$1) {
+      return $$1.g((box)$$0) <= 64.0;
    }
 
    @Override
-   protected int b() {
-      return 24;
-   }
-
-   @Override
-   protected int c() {
-      return 24;
+   protected bys<bpp> b() {
+      return bys.B;
    }
 }

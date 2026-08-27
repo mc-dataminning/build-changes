@@ -1,20 +1,10 @@
-public class cuy extends cuu {
-   protected cuy(cuu.a $$0, bpd... $$1) {
-      super($$0, auv.bg, $$1);
-   }
+public class cuy extends blp.a {
+   public final cuw a;
+   public final int b;
 
-   @Override
-   public int a(int $$0) {
-      return 10 + 20 * ($$0 - 1);
-   }
-
-   @Override
-   public int b(int $$0) {
-      return super.a($$0) + 50;
-   }
-
-   @Override
-   public int a() {
-      return 2;
+   public cuy(cuw $$0, int $$1) {
+      super($$0.e().a());
+      this.a = $$0;
+      this.b = $$1;
    }
 }

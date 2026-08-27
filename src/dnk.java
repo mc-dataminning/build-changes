@@ -1,16 +1,51 @@
-public enum dnk implements axq {
-   a("floor"),
-   b("wall"),
-   c("ceiling");
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   private final String d;
+public class dnk implements Predicate<dnb> {
+   public static final Predicate<dnb> a = $$0 -> true;
+   private final dnc<dac, dnb> b;
+   private final Map<doe<?>, Predicate<Object>> c = Maps.newHashMap();
 
-   private dnk(String $$0) {
-      this.d = $$0;
+   private dnk(dnc<dac, dnb> $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   public String c() {
-      return this.d;
+   public static dnk a(dac $$0) {
+      return new dnk($$0.n());
+   }
+
+   public boolean a(@Nullable dnb $$0) {
+      if ($$0 != null && $$0.b().equals(this.b.c())) {
+         if (this.c.isEmpty()) {
+            return true;
+         } else {
+            for (Entry<doe<?>, Predicate<Object>> $$1 : this.c.entrySet()) {
+               if (!this.a($$0, $$1.getKey(), $$1.getValue())) {
+                  return false;
+               }
+            }
+
+            return true;
+         }
+      } else {
+         return false;
+      }
+   }
+
+   protected <T extends Comparable<T>> boolean a(dnb $$0, doe<T> $$1, Predicate<Object> $$2) {
+      T $$3 = $$0.c($$1);
+      return $$2.test($$3);
+   }
+
+   public <V extends Comparable<V>> dnk a(doe<V> $$0, Predicate<Object> $$1) {
+      if (!this.b.d().contains($$0)) {
+         throw new IllegalArgumentException(this.b + " cannot support property " + $$0);
+      } else {
+         this.c.put($$0, $$1);
+         return this;
+      }
    }
 }

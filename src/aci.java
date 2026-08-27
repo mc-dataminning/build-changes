@@ -1,13 +1,13 @@
 public class aci implements yb<aam> {
    public static final xs<uu, aci> a = yb.a(aci::a, aci::new);
-   private final bnb b;
+   private final bnc b;
 
-   public aci(bnb $$0) {
+   public aci(bnc $$0) {
       this.b = $$0;
    }
 
    private aci(uu $$0) {
-      this.b = $$0.b(bnb.class);
+      this.b = $$0.b(bnc.class);
    }
 
    private void a(uu $$0) {
@@ -23,7 +23,7 @@ public class aci implements yb<aam> {
       $$0.a(this);
    }
 
-   public bnb b() {
+   public bnc b() {
       return this.b;
    }
 }

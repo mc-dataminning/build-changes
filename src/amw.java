@@ -28,9 +28,9 @@ public class amw {
       );
    }
 
-   private static int a(du $$0, ib $$1, fj $$2, amw.b $$3, @Nullable Predicate<dnd> $$4) throws CommandSyntaxException {
+   private static int a(du $$0, ib $$1, fj $$2, amw.b $$3, @Nullable Predicate<dnf> $$4) throws CommandSyntaxException {
       apf $$5 = $$0.e();
-      if ($$4 != null && !$$4.test(new dnd($$5, $$1, true))) {
+      if ($$4 != null && !$$4.test(new dnf($$5, $$1, true))) {
          throw a.create();
       } else {
          boolean $$6;
@@ -38,8 +38,8 @@ public class amw {
             $$5.b($$1, true);
             $$6 = !$$2.a().i() || !$$5.a_($$1).i();
          } else {
-            dkg $$7 = $$5.c_($$1);
-            bmt.a_($$7);
+            dki $$7 = $$5.c_($$1);
+            bmu.a_($$7);
             $$6 = true;
          }
 
@@ -55,7 +55,7 @@ public class amw {
 
    public interface a {
       @Nullable
-      fj filter(ecu var1, ib var2, fj var3, apf var4);
+      fj filter(ecw var1, ib var2, fj var3, apf var4);
    }
 
    public static enum b {

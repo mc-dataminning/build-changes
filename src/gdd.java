@@ -1,28 +1,35 @@
-public class gdd extends gcx<cfc> {
-   private final fyk a;
+public class gdd extends gda<cje> {
+   private static final ajh a = new ajh("textures/entity/illager/evoker_fangs.png");
+   private final fof<cje> f;
 
-   public gdd(gcy.a $$0) {
+   public gdd(gdb.a $$0) {
       super($$0);
-      this.d = 0.5F;
-      this.a = $$0.c();
+      this.f = new fof<>($$0.a(fre.ac));
    }
 
-   public void a(cfc $$0, float $$1, float $$2, etz $$3, fxq $$4, int $$5) {
-      dmz $$6 = $$0.s();
-      if ($$6.l() == dgf.c) {
-         cwz $$7 = $$0.dM();
-         if ($$6 != $$7.a_($$0.dm()) && $$6.l() != dgf.a) {
-            $$3.a();
-            ib $$8 = ib.a($$0.dr(), $$0.cH().e, $$0.dx());
-            $$3.a(-0.5, 0.0, -0.5);
-            this.a.b().a($$7, this.a.a($$6), $$6, $$8, $$3, $$4.getBuffer(fxl.b($$6)), false, axd.a(), $$6.a($$0.p()), giq.d);
-            $$3.b();
-            super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public void a(cje $$0, float $$1, float $$2, eub $$3, fxs $$4, int $$5) {
+      float $$6 = $$0.a($$2);
+      if ($$6 != 0.0F) {
+         float $$7 = 2.0F;
+         if ($$6 > 0.9F) {
+            $$7 *= (1.0F - $$6) / 0.1F;
          }
+
+         $$3.a();
+         $$3.a(a.d.rotationDegrees(90.0F - $$0.dC()));
+         $$3.b(-$$7, -$$7, $$7);
+         float $$8 = 0.03125F;
+         $$3.a(0.0, -0.626, 0.0);
+         $$3.b(0.5F, 0.5F, 0.5F);
+         this.f.a($$0, $$6, 0.0F, 0.0F, $$0.dC(), $$0.dE());
+         euf $$9 = $$4.getBuffer(this.f.a(a));
+         this.f.a($$3, $$9, $$5, git.d, 1.0F, 1.0F, 1.0F, 1.0F);
+         $$3.b();
+         super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 
-   public ajh a(cfc $$0) {
-      return giy.e;
+   public ajh a(cje $$0) {
+      return a;
    }
 }

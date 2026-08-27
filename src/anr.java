@@ -23,7 +23,7 @@ public class anr {
       );
    }
 
-   private static int a(du $$0, int $$1, bmh $$2) {
+   private static int a(du $$0, int $$1, bmi $$2) {
       return $$1 == -1 ? $$2.a($$0.e().E_()) : $$1;
    }
 

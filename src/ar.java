@@ -5,7 +5,7 @@ import java.util.Optional;
 public class ar {
    public static final Codec<ar> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               cqk.b.fieldOf("icon").forGetter(ar::c),
+               cqm.b.fieldOf("icon").forGetter(ar::c),
                vw.a.fieldOf("title").forGetter(ar::a),
                vw.a.fieldOf("description").forGetter(ar::b),
                awe.a(ajh.a, "background").forGetter(ar::d),
@@ -19,7 +19,7 @@ public class ar {
    public static final xs<vf, ar> b = xs.a(ar::a, ar::b);
    private final vu c;
    private final vu d;
-   private final cqk e;
+   private final cqm e;
    private final Optional<ajh> f;
    private final al g;
    private final boolean h;
@@ -28,7 +28,7 @@ public class ar {
    private float k;
    private float l;
 
-   public ar(cqk $$0, vu $$1, vu $$2, Optional<ajh> $$3, al $$4, boolean $$5, boolean $$6, boolean $$7) {
+   public ar(cqm $$0, vu $$1, vu $$2, Optional<ajh> $$3, al $$4, boolean $$5, boolean $$6, boolean $$7) {
       this.c = $$1;
       this.d = $$2;
       this.e = $$0;
@@ -52,7 +52,7 @@ public class ar {
       return this.d;
    }
 
-   public cqk c() {
+   public cqm c() {
       return this.e;
    }
 
@@ -87,7 +87,7 @@ public class ar {
    private void a(vf $$0) {
       vw.b.encode($$0, this.c);
       vw.b.encode($$0, this.d);
-      cqk.f.encode($$0, this.e);
+      cqm.f.encode($$0, this.e);
       $$0.a(this.g);
       int $$1 = 0;
       if (this.f.isPresent()) {
@@ -111,7 +111,7 @@ public class ar {
    private static ar b(vf $$0) {
       vu $$1 = vw.b.decode($$0);
       vu $$2 = vw.b.decode($$0);
-      cqk $$3 = cqk.f.decode($$0);
+      cqm $$3 = cqm.f.decode($$0);
       al $$4 = $$0.b(al.class);
       int $$5 = $$0.readInt();
       Optional<ajh> $$6 = ($$5 & 1) != 0 ? Optional.of($$0.q()) : Optional.empty();

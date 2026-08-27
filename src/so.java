@@ -15,7 +15,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -176,7 +175,9 @@ public class so {
    }
 
    private static int a(rw $$0) {
+      $$0.f().a_(null, $$0.d()).stream().forEach($$0x -> $$0x.a(box.c.b));
       $$0.e().c($$0.f());
+      sm.a($$0.d(), $$0.f());
       a($$0.f(), "Reset succeded for: " + $$0.b(), n.k);
       return 1;
    }
@@ -190,7 +191,7 @@ public class so {
    }
 
    private static Optional<rw> a(ib $$0, apf $$1, sj $$2) {
-      dlu $$3 = (dlu)$$1.c_($$0);
+      dlw $$3 = (dlw)$$1.c_($$0);
       if ($$3 == null) {
          a($$1, "Structure block entity could not be found", n.m);
          return Optional.empty();
@@ -213,18 +214,11 @@ public class so {
       if ($$2 <= 48 && $$3 <= 48 && $$4 <= 48) {
          apf $$5 = $$0.e();
          ib $$6 = a($$0).d();
-         sm.a($$1.toLowerCase(), $$6, new jg($$2, $$3, $$4), dgm.a, $$5);
-
-         for (int $$7 = 0; $$7 < $$2; $$7++) {
-            for (int $$8 = 0; $$8 < $$4; $$8++) {
-               ib $$9 = new ib($$6.u() + $$7, $$6.v() + 1, $$6.w() + $$8);
-               daa $$10 = dac.h;
-               fj $$11 = new fj($$10.o(), Collections.emptySet(), null);
-               $$11.a($$5, $$9, 2);
-            }
-         }
-
-         sm.a($$6, new ib(1, 0, -1), dgm.a, $$5);
+         sm.a($$1.toLowerCase(), $$6, new jg($$2, $$3, $$4), dgo.a, $$5);
+         ib $$7 = $$6.c();
+         ib $$8 = $$7.b($$2 - 1, 0, $$4 - 1);
+         ib.b($$7, $$8).forEach($$1x -> $$5.b($$1x, dae.F.o()));
+         sm.a($$6, new ib(1, 0, -1), dgo.a, $$5);
          return 0;
       } else {
          throw new IllegalArgumentException("The structure must be less than 48 blocks big in each axis");
@@ -232,7 +226,7 @@ public class so {
    }
 
    private static int a(du $$0, String $$1) throws CommandSyntaxException {
-      epn $$2 = (epn)$$0.h().a(10.0, 1.0F, false);
+      epp $$2 = (epp)$$0.h().a(10.0, 1.0F, false);
       ib $$3 = $$2.a();
       apf $$4 = $$0.e();
       Optional<ib> $$5 = sm.a($$3, 15, $$4);
@@ -244,7 +238,7 @@ public class so {
          $$0.b(vu.b("Can't find a structure block that contains the targeted pos " + $$3));
          return 0;
       } else {
-         dlu $$6 = (dlu)$$4.c_($$5.get());
+         dlw $$6 = (dlw)$$4.c_($$5.get());
          if ($$6 == null) {
             a($$4, "Structure block entity could not be found", n.m);
             return 0;
@@ -281,7 +275,7 @@ public class so {
       return 1;
    }
 
-   static int a(du $$0, dlu $$1) {
+   static int a(du $$0, dlw $$1) {
       String $$2 = $$1.c();
       if (!$$1.b(true)) {
          c($$0, "Failed to save structure " + $$2);
@@ -323,7 +317,7 @@ public class so {
 
    static ib a(du $$0) {
       ib $$1 = ib.a($$0.d());
-      int $$2 = $$0.e().a(dsm.a.b, $$1).v();
+      int $$2 = $$0.e().a(dso.a.b, $$1).v();
       return new ib($$1.u(), $$2 + 1, $$1.w() + 3);
    }
 
@@ -385,11 +379,11 @@ public class so {
          apf $$1 = $$0.e();
          rz.a($$1);
          this.a(this.a.findStructureBlockPos(), $$1x -> {
-            dlu $$2 = (dlu)$$1.c_($$1x);
+            dlw $$2 = (dlw)$$1.c_($$1x);
             if ($$2 == null) {
                return 0;
             } else {
-               ecu $$3 = sm.b($$2);
+               ecw $$3 = sm.b($$2);
                sm.a($$3, $$1);
                return 1;
             }
@@ -402,7 +396,7 @@ public class so {
          du $$1 = this.a.a();
          apf $$2 = $$1.e();
          this.a(this.a.findStructureBlockPos(), $$3 -> {
-            dlu $$4 = (dlu)$$2.c_($$3);
+            dlw $$4 = (dlw)$$2.c_($$3);
             if ($$4 == null) {
                so.a($$2, "Structure block entity could not be found", n.m);
                $$0.setFalse();

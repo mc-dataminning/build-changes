@@ -18,8 +18,8 @@ public record ci(cm.d c, Optional<br> d) implements bs {
    }
 
    @Override
-   public boolean a(bow $$0, apf $$1, @Nullable epr $$2) {
-      return !($$0 instanceof bpn $$3) ? false : this.c.d($$3.r()) && (this.d.isEmpty() || $$3.s().anyMatch($$2x -> this.d.get().a($$1, $$2, $$2x)));
+   public boolean a(box $$0, apf $$1, @Nullable ept $$2) {
+      return !($$0 instanceof bpo $$3) ? false : this.c.d($$3.r()) && (this.d.isEmpty() || $$3.s().anyMatch($$2x -> this.d.get().a($$1, $$2, $$2x)));
    }
 
    public cm.d b() {

@@ -1,76 +1,71 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class gap {
-   private final Long2ObjectMap<gap.a> a = new Long2ObjectOpenHashMap();
+class gap {
+   private final Map<ib, dki> a;
+   @Nullable
+   private final List<dpq<dnb>> b;
+   private final boolean c;
+   private final dpi d;
+
+   gap(dpi $$0) {
+      this.d = $$0;
+      this.c = $$0.F().ag();
+      this.a = ImmutableMap.copyOf($$0.G());
+      if ($$0 instanceof dpe) {
+         this.b = null;
+      } else {
+         dpj[] $$1 = $$0.d();
+         this.b = new ArrayList<>($$1.length);
+
+         for (dpj $$2 : $$1) {
+            this.b.add($$2.c() ? null : $$2.h().d());
+         }
+      }
+   }
 
    @Nullable
-   public gao a(cwz $$0, ib $$1, ib $$2, int $$3) {
-      int $$4 = je.a($$1.u() - $$3);
-      int $$5 = je.a($$1.w() - $$3);
-      int $$6 = je.a($$2.u() + $$3);
-      int $$7 = je.a($$2.w() + $$3);
-      gap.a[][] $$8 = new gap.a[$$6 - $$4 + 1][$$7 - $$5 + 1];
+   public dki a(ib $$0) {
+      return this.a.get($$0);
+   }
 
-      for (int $$9 = $$4; $$9 <= $$6; $$9++) {
-         for (int $$10 = $$5; $$10 <= $$7; $$10++) {
-            $$8[$$9 - $$4][$$10 - $$5] = (gap.a)this.a.computeIfAbsent(cwg.c($$9, $$10), $$1x -> new gap.a($$0.d(cwg.a($$1x), cwg.b($$1x))));
+   public dnb b(ib $$0) {
+      int $$1 = $$0.u();
+      int $$2 = $$0.v();
+      int $$3 = $$0.w();
+      if (this.c) {
+         dnb $$4 = null;
+         if ($$2 == 60) {
+            $$4 = dae.hW.o();
          }
-      }
 
-      if (a($$1, $$2, $$4, $$5, $$8)) {
-         return null;
+         if ($$2 == 70) {
+            $$4 = dsf.a($$1, $$3);
+         }
+
+         return $$4 == null ? dae.a.o() : $$4;
+      } else if (this.b == null) {
+         return dae.a.o();
       } else {
-         gan[][] $$11 = new gan[$$6 - $$4 + 1][$$7 - $$5 + 1];
-
-         for (int $$12 = $$4; $$12 <= $$6; $$12++) {
-            for (int $$13 = $$5; $$13 <= $$7; $$13++) {
-               $$11[$$12 - $$4][$$13 - $$5] = $$8[$$12 - $$4][$$13 - $$5].b();
+         try {
+            int $$5 = this.d.e($$2);
+            if ($$5 >= 0 && $$5 < this.b.size()) {
+               dpq<dnb> $$6 = this.b.get($$5);
+               if ($$6 != null) {
+                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
+               }
             }
+
+            return dae.a.o();
+         } catch (Throwable var8) {
+            o $$8 = o.a(var8, "Getting block state");
+            p $$9 = $$8.a("Block being got");
+            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
+            throw new y($$8);
          }
-
-         return new gao($$0, $$4, $$5, $$11);
-      }
-   }
-
-   private static boolean a(ib $$0, ib $$1, int $$2, int $$3, gap.a[][] $$4) {
-      int $$5 = je.a($$0.u());
-      int $$6 = je.a($$0.w());
-      int $$7 = je.a($$1.u());
-      int $$8 = je.a($$1.w());
-
-      for (int $$9 = $$5; $$9 <= $$7; $$9++) {
-         for (int $$10 = $$6; $$10 <= $$8; $$10++) {
-            dpg $$11 = $$4[$$9 - $$2][$$10 - $$3].a();
-            if (!$$11.a($$0.v(), $$1.v())) {
-               return false;
-            }
-         }
-      }
-
-      return true;
-   }
-
-   static final class a {
-      private final dpg a;
-      @Nullable
-      private gan b;
-
-      a(dpg $$0) {
-         this.a = $$0;
-      }
-
-      public dpg a() {
-         return this.a;
-      }
-
-      public gan b() {
-         if (this.b == null) {
-            this.b = new gan(this.a);
-         }
-
-         return this.b;
       }
    }
 }

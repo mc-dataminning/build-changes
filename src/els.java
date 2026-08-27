@@ -3,58 +3,40 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class els extends elp {
+public class els extends elr {
    public static final Codec<els> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(avd.a(kj.F).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
-            .and(b($$0))
-            .apply($$0, els::new)
+      $$0 -> $$0.group(ajh.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, els::new)
    );
-   private final avd<cqf> j;
-   private final boolean k;
+   private final ajh j;
 
-   private els(avd<cqf> $$0, boolean $$1, int $$2, int $$3, List<ent> $$4, List<emh> $$5) {
-      super($$2, $$3, $$4, $$5);
+   private els(ajh $$0, int $$1, int $$2, List<env> $$3, List<emj> $$4) {
+      super($$1, $$2, $$3, $$4);
       this.j = $$0;
-      this.k = $$1;
    }
 
    @Override
-   public elo a() {
-      return ell.f;
+   public elq a() {
+      return eln.d;
    }
 
    @Override
-   public void a(Consumer<cqk> $$0, eku $$1) {
-      ki.h.c(this.j).forEach($$1x -> $$0.accept(new cqk($$1x)));
+   public void a(Consumer<cqm> $$0, ekw $$1) {
+      ele $$2 = $$1.a().getLootTable(this.j);
+      $$2.a($$1, $$0);
    }
 
-   private boolean a(eku $$0, Consumer<elm> $$1) {
-      if (!this.a($$0)) {
-         return false;
+   @Override
+   public void a(elf $$0) {
+      eky<ele> $$1 = new eky<>(elb.c, this.j);
+      if ($$0.a($$1)) {
+         $$0.b("Table " + this.j + " is recursively called");
       } else {
-         for (final il<cqf> $$2 : ki.h.c(this.j)) {
-            $$1.accept(new elp.c() {
-               @Override
-               public void a(Consumer<cqk> $$0, eku $$1) {
-                  $$0.accept(new cqk($$2));
-               }
-            });
-         }
-
-         return true;
+         super.a($$0);
+         $$0.a().getElementOptional($$1).ifPresentOrElse($$2 -> $$2.a($$0.a("->{" + this.j + "}", $$1)), () -> $$0.b("Unknown loot table called " + this.j));
       }
    }
 
-   @Override
-   public boolean expand(eku $$0, Consumer<elm> $$1) {
-      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
-   }
-
-   public static elp.a<?> a(avd<cqf> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new els($$0, false, $$1, $$2, $$3, $$4));
-   }
-
-   public static elp.a<?> b(avd<cqf> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new els($$0, true, $$1, $$2, $$3, $$4));
+   public static elr.a<?> a(ajh $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new els($$0, $$1, $$2, $$3, $$4));
    }
 }

@@ -1,30 +1,15 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-
-public enum ctd implements axq {
-   a("building", 0),
-   b("redstone", 1),
-   c("equipment", 2),
-   d("misc", 3);
-
-   public static final Codec<ctd> e = axq.a(ctd::values);
-   public static final IntFunction<ctd> f = avn.a(ctd::a, values(), avn.a.a);
-   public static final xs<ByteBuf, ctd> g = xq.a(f, ctd::a);
-   private final String h;
-   private final int i;
-
-   private ctd(String $$0, int $$1) {
-      this.h = $$0;
-      this.i = $$1;
+public class ctd extends csy {
+   public ctd(String $$0, cte $$1, ctm $$2, cqm $$3, float $$4, int $$5) {
+      super(ctu.e, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public String c() {
-      return this.h;
+   public cqm g() {
+      return new cqm(dae.og);
    }
 
-   private int a() {
-      return this.i;
+   @Override
+   public ctt<?> ar_() {
+      return ctt.s;
    }
 }

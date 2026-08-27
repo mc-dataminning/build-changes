@@ -1,18 +1,30 @@
 import com.google.common.collect.ImmutableSet;
 import java.util.Set;
 
-public class bzm extends bzx<bpo> {
+public class bzm extends bzy<bpp> {
    @Override
-   public Set<byr<?>> a() {
-      return ImmutableSet.of(byr.X);
+   public Set<bys<?>> a() {
+      return ImmutableSet.of(bys.x, bys.y);
    }
 
    @Override
-   protected void a(apf $$0, bpo $$1) {
-      if ($$1.bc()) {
-         $$1.dP().a(byr.X, axy.a);
+   protected void a(apf $$0, bpp $$1) {
+      bqq<?> $$2 = $$1.dP();
+      bnw $$3 = $$1.ez();
+      if ($$3 != null) {
+         $$2.a(bys.x, $$1.ez());
+         box $$4 = $$3.d();
+         if ($$4 instanceof bpp) {
+            $$2.a(bys.y, (bpp)$$4);
+         }
       } else {
-         $$1.dP().b(byr.X);
+         $$2.b(bys.x);
       }
+
+      $$2.c(bys.y).ifPresent($$2x -> {
+         if (!$$2x.bA() || $$2x.dM() != $$0) {
+            $$2.b(bys.y);
+         }
+      });
    }
 }

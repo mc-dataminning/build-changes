@@ -1,21 +1,9 @@
-import com.google.common.base.MoreObjects;
-import java.util.List;
+public interface fmo {
+   void a(fmm var1);
 
-public class fmo {
-   public static final int a = -1;
-   private final List<fmm> b;
-   private final int c;
+   vu aP_();
 
-   public fmo(List<fmm> $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+   void a(fav var1, float var2, int var3);
 
-   public fmm a(int $$0) {
-      return $$0 >= 0 && $$0 < this.b.size() ? (fmm)MoreObjects.firstNonNull(this.b.get($$0), fmk.a) : fmk.a;
-   }
-
-   public int a() {
-      return this.c;
-   }
+   boolean aQ_();
 }

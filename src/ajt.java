@@ -19,16 +19,16 @@ public class ajt extends ass {
    private Map<ajh, af> c = Map.of();
    private ak d = new ak();
    private final in.a e;
-   private final ekx f;
+   private final ekz f;
 
-   public ajt(in.a $$0, ekx $$1) {
+   public ajt(in.a $$0, ekz $$1) {
       super(b, "advancements");
       this.e = $$0;
       this.f = $$1;
    }
 
-   protected void a(Map<ajh, JsonElement> $$0, aso $$1, bjq $$2) {
-      ajf<JsonElement> $$3 = ajf.a(JsonOps.INSTANCE, this.e);
+   protected void a(Map<ajh, JsonElement> $$0, aso $$1, bjr $$2) {
+      ajf<JsonElement> $$3 = this.e.a(JsonOps.INSTANCE);
       Builder<ajh, af> $$4 = ImmutableMap.builder();
       $$0.forEach(($$2x, $$3x) -> {
          try {

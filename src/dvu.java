@@ -1,58 +1,43 @@
-import com.mojang.serialization.Codec;
-import org.apache.commons.lang3.mutable.MutableInt;
+import java.util.Optional;
 
-public class dvu extends dvq<dvv> {
-   public dvu(Codec<dvv> $$0) {
-      super($$0);
+public class dvu<FC extends dxw> {
+   private final Optional<dvf<?, ?>> a;
+   private final cxw b;
+   private final doy c;
+   private final axd d;
+   private final ib e;
+   private final FC f;
+
+   public dvu(Optional<dvf<?, ?>> $$0, cxw $$1, doy $$2, axd $$3, ib $$4, FC $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   @Override
-   public boolean a(dvs<dvv> $$0) {
-      axd $$1 = $$0.d();
-      cxu $$2 = $$0.b();
-      ib $$3 = $$0.e();
-      dgm $$4 = dgm.a($$1);
-      dvv $$5 = $$0.f();
-      int $$6 = $$1.a($$5.b.size());
-      ehd $$7 = $$2.E().o().bb();
-      ehc $$8 = $$7.a($$5.b.get($$6));
-      ehc $$9 = $$7.a($$5.c.get($$6));
-      cwg $$10 = new cwg($$3);
-      ecu $$11 = new ecu($$10.d() - 16, $$2.I_(), $$10.e() - 16, $$10.f() + 16, $$2.ak(), $$10.g() + 16);
-      egy $$12 = new egy().a($$4).a($$11).a($$1);
-      jg $$13 = $$8.a($$4);
-      ib $$14 = $$3.b(-$$13.u() / 2, 0, -$$13.w() / 2);
-      int $$15 = $$3.v();
-
-      for (int $$16 = 0; $$16 < $$13.u(); $$16++) {
-         for (int $$17 = 0; $$17 < $$13.w(); $$17++) {
-            $$15 = Math.min($$15, $$2.a(dsm.a.c, $$14.u() + $$16, $$14.w() + $$17));
-         }
-      }
-
-      int $$18 = Math.max($$15 - 15 - $$1.a(10), $$2.I_() + 10);
-      ib $$19 = $$8.a($$14.h($$18), dew.a, $$4);
-      if (a($$2, $$8.b($$12, $$19)) > $$5.f) {
-         return false;
-      } else {
-         $$12.b();
-         $$5.d.a().a().forEach($$12::a);
-         $$8.a($$2, $$19, $$19, $$12, $$1, 4);
-         $$12.b();
-         $$5.e.a().a().forEach($$12::a);
-         $$9.a($$2, $$19, $$19, $$12, $$1, 4);
-         return true;
-      }
+   public Optional<dvf<?, ?>> a() {
+      return this.a;
    }
 
-   private static int a(cxu $$0, ecu $$1) {
-      MutableInt $$2 = new MutableInt(0);
-      $$1.a($$2x -> {
-         dmz $$3 = $$0.a_($$2x);
-         if ($$3.i() || $$3.a(dac.H) || $$3.a(dac.G)) {
-            $$2.add(1);
-         }
-      });
-      return $$2.getValue();
+   public cxw b() {
+      return this.b;
+   }
+
+   public doy c() {
+      return this.c;
+   }
+
+   public axd d() {
+      return this.d;
+   }
+
+   public ib e() {
+      return this.e;
+   }
+
+   public FC f() {
+      return this.f;
    }
 }

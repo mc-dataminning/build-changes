@@ -1,21 +1,46 @@
-public class cpe extends cqf {
-   public cpe(cqf.a $$0) {
-      super($$0);
+import com.google.common.collect.Maps;
+import java.util.Map;
+
+public class cpe extends cqh implements crl {
+   private static final Map<cpd, cpe> a = Maps.newEnumMap(cpd.class);
+   private final cpd b;
+
+   public cpe(cpd $$0, cqh.a $$1) {
+      super($$1);
+      this.b = $$0;
+      a.put($$0, this);
    }
 
    @Override
-   public bnd<cqk> a(cwz $$0, cis $$1, bnb $$2) {
-      cqk $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), aty.hC, atz.h, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-      if (!$$0.B) {
-         cjt $$4 = new cjt($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dE(), $$1.dC(), 0.0F, 1.5F, 1.0F);
-         $$0.b($$4);
+   public bnd a(cqm $$0, ciu $$1, bpp $$2, bnc $$3) {
+      if ($$2 instanceof cca $$4 && $$4.bA() && !$$4.y() && $$4.s() != this.b) {
+         $$4.dM().a($$1, $$4, aty.hF, atz.h, 1.0F, 1.0F);
+         if (!$$1.dM().B) {
+            $$4.b(this.b);
+            $$0.h(1);
+         }
+
+         return bnd.a($$1.dM().B);
       }
 
-      $$1.b(aui.c.b(this));
-      $$3.a(1, $$1);
-      return bnd.a($$3, $$0.x_());
+      return bnd.d;
+   }
+
+   public cpd c() {
+      return this.b;
+   }
+
+   public static cpe a(cpd $$0) {
+      return a.get($$0);
+   }
+
+   @Override
+   public boolean a(cxb $$0, dlr $$1, boolean $$2, ciu $$3) {
+      if ($$1.a($$0x -> $$0x.a(this.c()), $$2)) {
+         $$0.a(null, $$1.aC_(), aty.hF, atz.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

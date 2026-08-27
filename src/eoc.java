@@ -1,36 +1,32 @@
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import java.util.Set;
 
-public record eoc(eoo b, ekt c) implements ent {
-   public static final Codec<eoc> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eop.a.fieldOf("value").forGetter(eoc::c), ekt.a.fieldOf("range").forGetter(eoc::d)).apply($$0, eoc::new)
-   );
+public record eoc(Optional<cc> b) implements env {
+   public static final Codec<eoc> a = RecordCodecBuilder.create($$0 -> $$0.group(awe.a(cc.a, "predicate").forGetter(eoc::c)).apply($$0, eoc::new));
 
    @Override
-   public enu b() {
-      return env.s;
+   public enw b() {
+      return enx.k;
    }
 
    @Override
-   public Set<enc<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
+   public Set<ene<?>> a() {
+      return ImmutableSet.of(enh.i);
    }
 
-   public boolean a(eku $$0) {
-      return this.c.b($$0, this.b.a($$0));
+   public boolean a(ekw $$0) {
+      cqm $$1 = $$0.c(enh.i);
+      return $$1 != null && (this.b.isEmpty() || this.b.get().a($$1));
    }
 
-   public static ent.a a(eoo $$0, ekt $$1) {
-      return () -> new eoc($$0, $$1);
+   public static env.a a(cc.a $$0) {
+      return () -> new eoc(Optional.of($$0.b()));
    }
 
-   public eoo c() {
+   public Optional<cc> c() {
       return this.b;
-   }
-
-   public ekt d() {
-      return this.c;
    }
 }

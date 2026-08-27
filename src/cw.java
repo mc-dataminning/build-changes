@@ -8,7 +8,7 @@ public class cw extends cx<cw.a> {
       return cw.a.a;
    }
 
-   public void a(apg $$0, cqk $$1) {
+   public void a(apg $$0, cqm $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -21,11 +21,11 @@ public class cw extends cx<cw.a> {
          return am.G.a(new cw.a(Optional.empty(), $$0));
       }
 
-      public static an<cw.a> a(cwy $$0) {
+      public static an<cw.a> a(cxa $$0) {
          return am.G.a(new cw.a(Optional.empty(), Optional.of(cc.a.a().a($$0).b())));
       }
 
-      public boolean a(cqk $$0) {
+      public boolean a(cqm $$0) {
          return this.c.isEmpty() || this.c.get().a($$0);
       }
 

@@ -1,4 +1,4 @@
-// 24w06a	2026-08-28T01:36:38.1552226	vanilla/Loot Tables
+// 24w07a	2026-08-28T01:39:10.9340974	vanilla/Loot Tables
 16627d78901fd7f72f23ebcc81e717877a2d5c67 data\minecraft\loot_tables\blocks\spruce_hanging_sign.json
 1fc86ccb339e075dc1ef8949f3f32cf0b63e6610 data\minecraft\loot_tables\blocks\deepslate.json
 747b419c8834a94b61e4bdd0a39e0f199bb60578 data\minecraft\loot_tables\archaeology\trail_ruins_common.json
@@ -66,6 +66,7 @@ ff2dd94cf4a467628e29eb7ceb0cb497ee0ef867 data\minecraft\loot_tables\blocks\magen
 ff948e42a2e55582467c15335d3d9ebe234fa686 data\minecraft\loot_tables\blocks\crimson_fungus.json
 081c6ff38e8f6ded89b23e95d82ffeab42e8554c data\minecraft\loot_tables\blocks\end_stone_brick_stairs.json
 5fddec9ab0815b4ce4b49e0d2d460ddc4abbbf28 data\minecraft\loot_tables\blocks\polished_blackstone.json
+ed230b71d3a627c59849fd62623a3583e7920f8e data\minecraft\loot_tables\gameplay\panda_sneeze.json
 83ee8059581c04589dc81d7018e5c69c9b9ee2cb data\minecraft\loot_tables\blocks\orange_concrete_powder.json
 5424699fa8666e7e5a5a68edad8f0e736f256c3d data\minecraft\loot_tables\blocks\acacia_button.json
 97d904855256422a56503d31b8916971582409d7 data\minecraft\loot_tables\blocks\fire_coral_block.json
@@ -485,6 +486,7 @@ ab552fe02ba65fc43f34105d2b99aedeb2264ad0 data\minecraft\loot_tables\blocks\blue_
 b8a677f9dc84581776adf2c373a39584081a38f6 data\minecraft\loot_tables\blocks\brown_stained_glass.json
 cf0d85676f70c5eca10e45078be24ecd88acca13 data\minecraft\loot_tables\blocks\acacia_hanging_sign.json
 fcaf6daf5b917f303452304a157cac497c778926 data\minecraft\loot_tables\blocks\cobblestone_wall.json
+1b1ce1ae05b2d02f80c60508fb6f74f839509d54 data\minecraft\loot_tables\entities\bogged.json
 4861f5ff4f290f99f746b4c5898bc4f826b05797 data\minecraft\loot_tables\blocks\pointed_dripstone.json
 a35b6da2ba6a9f7c55e1388ff4de564af5b58865 data\minecraft\loot_tables\blocks\birch_sapling.json
 4c5ada4c2188065f75649716a61c45534cc91a69 data\minecraft\loot_tables\blocks\magenta_carpet.json

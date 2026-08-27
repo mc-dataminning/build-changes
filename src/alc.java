@@ -10,11 +10,11 @@ public class alc {
       );
    }
 
-   private static int a(du $$0, cww $$1) {
+   private static int a(du $$0, cwy $$1) {
       int $$2 = 0;
       MinecraftServer $$3 = $$0.l();
       $$3.a($$1);
-      cww $$4 = $$3.bf();
+      cwy $$4 = $$3.bf();
       if ($$4 != null) {
          for (apg $$5 : $$3.ah().t()) {
             if ($$5.a($$4)) {

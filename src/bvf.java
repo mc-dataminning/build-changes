@@ -1,35 +1,20 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class bvf<E extends chw> extends brg<E> {
-   private static final double c = 6.0;
-   private static final double d = 20.0;
-
-   public bvf(int $$0) {
-      super(ImmutableMap.of(byr.aB, bys.a, byr.o, bys.b, byr.m, bys.b, byr.n, bys.c, byr.B, bys.c, byr.az, bys.c, byr.aG, bys.c), $$0);
-   }
-
-   protected boolean a(apf $$0, E $$1, long $$2) {
-      return true;
-   }
-
-   protected void b(apf $$0, E $$1, long $$2) {
-      $$1.a(aty.Bq, 5.0F, 1.0F);
-   }
-
-   protected void c(apf $$0, E $$1, long $$2) {
-      if ($$1.c(bpz.m)) {
-         $$1.b(bpz.a);
-      }
-
-      $$1.dP().b(byr.aB);
-      $$1.dP().c(byr.B).filter($$1::b).ifPresent($$1x -> {
-         if ($$1.a($$1x, 6.0, 20.0)) {
-            $$1.d($$1x);
-         }
-
-         if (!$$1.dP().a(byr.az)) {
-            chx.a($$1, $$1x.dm());
-         }
-      });
+public class bvf {
+   public static bri<bpp> a() {
+      return buu.a(
+         (Function<buu.b<bpp>, ? extends App<buu.c<bpp>, bux<bpp>>>)($$0 -> $$0.group($$0.a(bys.n), $$0.a(bys.az), $$0.a(bys.ay), $$0.c(bys.o))
+               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$4x, $$5, $$6) -> {
+                     Optional<ib> $$7 = $$0.<bpp>a($$3).map(box::dm).or(() -> $$0.a($$2));
+                     if ($$7.isEmpty()) {
+                        return false;
+                     } else {
+                        $$1.a(new brk($$7.get()));
+                        return true;
+                     }
+                  }))
+      );
    }
 }

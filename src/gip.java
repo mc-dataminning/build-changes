@@ -1,50 +1,77 @@
-import com.google.common.collect.ImmutableList;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.file.Path;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public final class gip {
-   private static final int a = 16;
-   private static final int b = 16;
-   private static final String c = "missingno";
-   private static final ajh d = new ajh("missingno");
-   private static final asq e = new asq.a().a(gkj.a, new gkj(ImmutableList.of(new gki(0, -1)), 16, 16, 1, false)).a();
+public class gip extends gin implements gio {
+   private static final Logger e = LogUtils.getLogger();
    @Nullable
-   private static gim f;
+   private etc f;
 
-   private static eta a(int $$0, int $$1) {
-      eta $$2 = new eta($$0, $$1, false);
-      int $$3 = -16777216;
-      int $$4 = -524040;
+   public gip(etc $$0) {
+      this.f = $$0;
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> {
+            TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
+            this.d();
+         });
+      } else {
+         TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
+         this.d();
+      }
+   }
 
-      for (int $$5 = 0; $$5 < $$1; $$5++) {
-         for (int $$6 = 0; $$6 < $$0; $$6++) {
-            if ($$5 < $$1 / 2 ^ $$6 < $$0 / 2) {
-               $$2.a($$6, $$5, -524040);
-            } else {
-               $$2.a($$6, $$5, -16777216);
-            }
-         }
+   public gip(int $$0, int $$1, boolean $$2) {
+      RenderSystem.assertOnGameThreadOrInit();
+      this.f = new etc($$0, $$1, $$2);
+      TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
+   }
+
+   @Override
+   public void a(aso $$0) {
+   }
+
+   @Override
+   public void d() {
+      if (this.f != null) {
+         this.c();
+         this.f.a(0, 0, 0, false);
+      } else {
+         e.warn("Trying to upload disposed texture {}", this.a());
+      }
+   }
+
+   @Nullable
+   public etc e() {
+      return this.f;
+   }
+
+   public void a(etc $$0) {
+      if (this.f != null) {
+         this.f.close();
       }
 
-      return $$2;
+      this.f = $$0;
    }
 
-   public static git a() {
-      eta $$0 = a(16, 16);
-      return new git(d, new gkl(16, 16), $$0, e);
-   }
-
-   public static ajh b() {
-      return d;
-   }
-
-   public static gim c() {
-      if (f == null) {
-         eta $$0 = a(16, 16);
-         $$0.i();
-         f = new gim($$0);
-         ezg.Q().aa().a(d, f);
+   @Override
+   public void close() {
+      if (this.f != null) {
+         this.f.close();
+         this.b();
+         this.f = null;
       }
+   }
 
-      return f;
+   @Override
+   public void a(ajh $$0, Path $$1) throws IOException {
+      if (this.f != null) {
+         String $$2 = $$0.c() + ".png";
+         Path $$3 = $$1.resolve($$2);
+         this.f.a($$3);
+      }
    }
 }

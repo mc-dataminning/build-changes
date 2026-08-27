@@ -1,111 +1,118 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import java.util.EnumSet;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class gaa extends gae {
-   private static final String a = "plank";
-   private static final String b = "vChains";
-   private static final String c = "normalChains";
-   private static final String d = "chainL1";
-   private static final String e = "chainL2";
-   private static final String f = "chainR1";
-   private static final String g = "chainR2";
-   private static final String h = "board";
-   private static final float i = 1.0F;
-   private static final float j = 0.9F;
-   private static final epr k = new epr(0.0, -0.32F, 0.073F);
-   private final Map<dom, gaa.a> l;
+public class gaa implements fzs<dky> {
+   private static final String a = "neck";
+   private static final String b = "front";
+   private static final String c = "back";
+   private static final String d = "left";
+   private static final String e = "right";
+   private static final String f = "top";
+   private static final String g = "bottom";
+   private final frf h;
+   private final frf i;
+   private final frf j;
+   private final frf k;
+   private final frf l;
+   private final frf m;
+   private final frf n;
+   private final glf o = Objects.requireNonNull(fyh.c(dkz.a));
+   private static final float p = 0.125F;
 
-   public gaa(fzr.a $$0) {
-      super($$0);
-      this.l = dom.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new gaa.a($$0.a(frc.b($$1)))));
+   public gaa(fzt.a $$0) {
+      frf $$1 = $$0.a(fre.K);
+      this.h = $$1.b("neck");
+      this.m = $$1.b("top");
+      this.n = $$1.b("bottom");
+      frf $$2 = $$0.a(fre.L);
+      this.i = $$2.b("front");
+      this.j = $$2.b("back");
+      this.k = $$2.b("left");
+      this.l = $$2.b("right");
    }
 
-   @Override
-   public float b() {
-      return 1.0F;
+   public static frl b() {
+      frn $$0 = new frn();
+      fro $$1 = $$0.a();
+      frj $$2 = new frj(0.2F);
+      frj $$3 = new frj(-0.1F);
+      $$1.a(
+         "neck",
+         frk.c().a(0, 0).a(4.0F, 17.0F, 4.0F, 8.0F, 3.0F, 8.0F, $$3).a(0, 5).a(5.0F, 20.0F, 5.0F, 6.0F, 1.0F, 6.0F, $$2),
+         frh.a(0.0F, 37.0F, 16.0F, (float) Math.PI, 0.0F, 0.0F)
+      );
+      frk $$4 = frk.c().a(-14, 13).a(0.0F, 0.0F, 0.0F, 14.0F, 0.0F, 14.0F);
+      $$1.a("top", $$4, frh.a(1.0F, 16.0F, 1.0F, 0.0F, 0.0F, 0.0F));
+      $$1.a("bottom", $$4, frh.a(1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F));
+      return frl.a($$0, 32, 32);
    }
 
-   @Override
-   public float c() {
-      return 0.9F;
+   public static frl c() {
+      frn $$0 = new frn();
+      fro $$1 = $$0.a();
+      frk $$2 = frk.c().a(1, 0).a(0.0F, 0.0F, 0.0F, 14.0F, 16.0F, 0.0F, EnumSet.of(ih.c));
+      $$1.a("back", $$2, frh.a(15.0F, 16.0F, 1.0F, 0.0F, 0.0F, (float) Math.PI));
+      $$1.a("left", $$2, frh.a(1.0F, 16.0F, 1.0F, 0.0F, (float) (-Math.PI / 2), (float) Math.PI));
+      $$1.a("right", $$2, frh.a(15.0F, 16.0F, 15.0F, 0.0F, (float) (Math.PI / 2), (float) Math.PI));
+      $$1.a("front", $$2, frh.a(1.0F, 16.0F, 15.0F, (float) Math.PI, 0.0F, 0.0F));
+      return frl.a($$0, 16, 16);
    }
 
-   @Override
-   public void a(dlp $$0, float $$1, etz $$2, fxq $$3, int $$4, int $$5) {
-      dmz $$6 = $$0.n();
-      dgz $$7 = (dgz)$$6.b();
-      dom $$8 = dgz.a($$7);
-      gaa.a $$9 = this.l.get($$8);
-      $$9.a($$6);
-      this.a($$0, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-   }
-
-   @Override
-   void a(etz $$0, float $$1, dmz $$2) {
-      $$0.a(0.5, 0.9375, 0.5);
-      $$0.a(a.d.rotationDegrees($$1));
-      $$0.a(0.0F, -0.3125F, 0.0F);
-   }
-
-   @Override
-   void a(etz $$0, int $$1, int $$2, foz $$3, eud $$4) {
-      gaa.a $$5 = (gaa.a)$$3;
-      $$5.a.a($$0, $$4, $$1, $$2);
-   }
-
-   @Override
-   glc a(dom $$0) {
-      return fyf.b($$0);
-   }
-
-   @Override
-   epr d() {
-      return k;
-   }
-
-   public static frj e() {
-      frl $$0 = new frl();
-      frm $$1 = $$0.a();
-      $$1.a("board", fri.c().a(0, 12).a(-7.0F, 0.0F, -1.0F, 14.0F, 10.0F, 2.0F), frf.a);
-      $$1.a("plank", fri.c().a(0, 0).a(-8.0F, -6.0F, -2.0F, 16.0F, 2.0F, 4.0F), frf.a);
-      frm $$2 = $$1.a("normalChains", fri.c(), frf.a);
-      $$2.a("chainL1", fri.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), frf.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("chainL2", fri.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), frf.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("chainR1", fri.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), frf.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("chainR2", fri.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), frf.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("vChains", fri.c().a(14, 6).a(-6.0F, -6.0F, 0.0F, 12.0F, 6.0F, 0.0F), frf.a);
-      return frj.a($$0, 64, 32);
-   }
-
-   public static final class a extends foz {
-      public final frd a;
-      public final frd b;
-      public final frd c;
-      public final frd d;
-
-      public a(frd $$0) {
-         super(fxy::e);
-         this.a = $$0;
-         this.b = $$0.b("plank");
-         this.d = $$0.b("normalChains");
-         this.c = $$0.b("vChains");
+   @Nullable
+   private static glf a(cqh $$0) {
+      glf $$1 = fyh.c(dkz.a($$0));
+      if ($$1 == null) {
+         $$1 = fyh.c(dkz.a(cqp.qK));
       }
 
-      public void a(dmz $$0) {
-         boolean $$1 = !($$0.b() instanceof daz);
-         this.b.k = $$1;
-         this.c.k = false;
-         this.d.k = true;
-         if (!$$1) {
-            boolean $$2 = $$0.c(dnp.a);
-            this.d.k = !$$2;
-            this.c.k = $$2;
+      return $$1;
+   }
+
+   public void a(dky $$0, float $$1, eub $$2, fxs $$3, int $$4, int $$5) {
+      $$2.a();
+      ih $$6 = $$0.k();
+      $$2.a(0.5, 0.0, 0.5);
+      $$2.a(a.d.rotationDegrees(180.0F - $$6.p()));
+      $$2.a(-0.5, 0.0, -0.5);
+      dky.b $$7 = $$0.i;
+      if ($$7 != null && $$0.i() != null) {
+         float $$8 = ((float)($$0.i().X() - $$0.h) + $$1) / (float)$$7.c;
+         if ($$8 >= 0.0F && $$8 <= 1.0F) {
+            if ($$7 == dky.b.a) {
+               float $$9 = 0.015625F;
+               float $$10 = $$8 * (float) (Math.PI * 2);
+               float $$11 = -1.5F * (aww.b($$10) + 0.5F) * aww.a($$10 / 2.0F);
+               $$2.a(a.b.rotation($$11 * 0.015625F), 0.5F, 0.0F, 0.5F);
+               float $$12 = aww.a($$10);
+               $$2.a(a.f.rotation($$12 * 0.015625F), 0.5F, 0.0F, 0.5F);
+            } else {
+               float $$13 = aww.a(-$$8 * 3.0F * (float) Math.PI) * 0.125F;
+               float $$14 = 1.0F - $$8;
+               $$2.a(a.d.rotation($$13 * $$14), 0.5F, 0.0F, 0.5F);
+            }
          }
       }
 
-      @Override
-      public void a(etz $$0, eud $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      euf $$15 = this.o.a($$3, fya::c);
+      this.h.a($$2, $$15, $$4, $$5);
+      this.m.a($$2, $$15, $$4, $$5);
+      this.n.a($$2, $$15, $$4, $$5);
+      dky.a $$16 = $$0.l();
+      this.a(this.i, $$2, $$3, $$4, $$5, a($$16.e()));
+      this.a(this.j, $$2, $$3, $$4, $$5, a($$16.b()));
+      this.a(this.k, $$2, $$3, $$4, $$5, a($$16.c()));
+      this.a(this.l, $$2, $$3, $$4, $$5, a($$16.d()));
+      $$2.b();
+   }
+
+   private void a(frf $$0, eub $$1, fxs $$2, int $$3, int $$4, @Nullable glf $$5) {
+      if ($$5 == null) {
+         $$5 = a(cqp.qK);
+      }
+
+      if ($$5 != null) {
+         $$0.a($$1, $$5.a($$2, fya::c), $$3, $$4);
       }
    }
 }

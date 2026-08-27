@@ -4,7 +4,7 @@ public class adg implements yb<aam> {
    private final double c;
    private final long d;
 
-   public adg(doq $$0) {
+   public adg(dos $$0) {
       this.b = $$0.i();
       this.c = $$0.k();
       this.d = $$0.j();

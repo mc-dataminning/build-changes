@@ -1,18 +1,60 @@
-public class gdb<T extends cgi> extends gdr<T> {
-   private static final ajh a = new ajh("textures/entity/illager/evoker.png");
+@FunctionalInterface
+public interface gdb<T extends box> {
+   gda<T> create(gdb.a var1);
 
-   public gdb(gcy.a $$0) {
-      super($$0, new foq<>($$0.a(frc.X)), 0.5F);
-      this.a(new ghc<T, foq<T>>(this, $$0.d()) {
-         public void a(etz $$0, fxq $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-            if ($$3.gx()) {
-               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-            }
-         }
-      });
-   }
+   public static class a {
+      private final gcz a;
+      private final gdz b;
+      private final fym c;
+      private final fxo d;
+      private final aso e;
+      private final frb f;
+      private final fat g;
 
-   public ajh a(T $$0) {
-      return a;
+      public a(gcz $$0, gdz $$1, fym $$2, fxo $$3, aso $$4, frb $$5, fat $$6) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+      }
+
+      public gcz a() {
+         return this.a;
+      }
+
+      public gdz b() {
+         return this.b;
+      }
+
+      public fym c() {
+         return this.c;
+      }
+
+      public fxo d() {
+         return this.d;
+      }
+
+      public aso e() {
+         return this.e;
+      }
+
+      public frb f() {
+         return this.f;
+      }
+
+      public gli g() {
+         return this.c.a().a();
+      }
+
+      public frf a(frd $$0) {
+         return this.f.a($$0);
+      }
+
+      public fat h() {
+         return this.g;
+      }
    }
 }

@@ -19,7 +19,7 @@ public class aqn implements apv {
    }
 
    private void a(Consumer<yb<?>> $$0, Set<arv> $$1) {
-      DynamicOps<tx> $$2 = ajf.a(to.a, this.c.a());
+      DynamicOps<tx> $$2 = this.c.a().a(to.a);
       jc.a($$2, this.c.c(ajq.b), $$1, ($$1x, $$2x) -> $$0.accept(new zx($$1x, $$2x)));
       $$0.accept(new yq(avg.a(this.c)));
    }

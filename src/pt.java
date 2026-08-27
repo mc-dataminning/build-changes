@@ -2,91 +2,91 @@ import com.google.common.collect.ImmutableList;
 import java.util.List;
 
 public class pt {
-   private static final ajg<eha> M = a("empty");
-   public static final ajg<eha> a = a("zombie_plains");
-   public static final ajg<eha> b = a("zombie_savanna");
-   public static final ajg<eha> c = a("zombie_snowy");
-   public static final ajg<eha> d = a("zombie_taiga");
-   public static final ajg<eha> e = a("zombie_desert");
-   public static final ajg<eha> f = a("mossify_10_percent");
-   public static final ajg<eha> g = a("mossify_20_percent");
-   public static final ajg<eha> h = a("mossify_70_percent");
-   public static final ajg<eha> i = a("street_plains");
-   public static final ajg<eha> j = a("street_savanna");
-   public static final ajg<eha> k = a("street_snowy_or_taiga");
-   public static final ajg<eha> l = a("farm_plains");
-   public static final ajg<eha> m = a("farm_savanna");
-   public static final ajg<eha> n = a("farm_snowy");
-   public static final ajg<eha> o = a("farm_taiga");
-   public static final ajg<eha> p = a("farm_desert");
-   public static final ajg<eha> q = a("outpost_rot");
-   public static final ajg<eha> r = a("bottom_rampart");
-   public static final ajg<eha> s = a("treasure_rooms");
-   public static final ajg<eha> t = a("housing");
-   public static final ajg<eha> u = a("side_wall_degradation");
-   public static final ajg<eha> v = a("stable_degradation");
-   public static final ajg<eha> w = a("bastion_generic_degradation");
-   public static final ajg<eha> x = a("rampart_degradation");
-   public static final ajg<eha> y = a("entrance_replacement");
-   public static final ajg<eha> z = a("bridge");
-   public static final ajg<eha> A = a("roof");
-   public static final ajg<eha> B = a("high_wall");
-   public static final ajg<eha> C = a("high_rampart");
-   public static final ajg<eha> D = a("fossil_rot");
-   public static final ajg<eha> E = a("fossil_coal");
-   public static final ajg<eha> F = a("fossil_diamonds");
-   public static final ajg<eha> G = a("ancient_city_start_degradation");
-   public static final ajg<eha> H = a("ancient_city_generic_degradation");
-   public static final ajg<eha> I = a("ancient_city_walls_degradation");
-   public static final ajg<eha> J = a("trail_ruins_houses_archaeology");
-   public static final ajg<eha> K = a("trail_ruins_roads_archaeology");
-   public static final ajg<eha> L = a("trail_ruins_tower_top_archaeology");
+   private static final ajg<ehc> M = a("empty");
+   public static final ajg<ehc> a = a("zombie_plains");
+   public static final ajg<ehc> b = a("zombie_savanna");
+   public static final ajg<ehc> c = a("zombie_snowy");
+   public static final ajg<ehc> d = a("zombie_taiga");
+   public static final ajg<ehc> e = a("zombie_desert");
+   public static final ajg<ehc> f = a("mossify_10_percent");
+   public static final ajg<ehc> g = a("mossify_20_percent");
+   public static final ajg<ehc> h = a("mossify_70_percent");
+   public static final ajg<ehc> i = a("street_plains");
+   public static final ajg<ehc> j = a("street_savanna");
+   public static final ajg<ehc> k = a("street_snowy_or_taiga");
+   public static final ajg<ehc> l = a("farm_plains");
+   public static final ajg<ehc> m = a("farm_savanna");
+   public static final ajg<ehc> n = a("farm_snowy");
+   public static final ajg<ehc> o = a("farm_taiga");
+   public static final ajg<ehc> p = a("farm_desert");
+   public static final ajg<ehc> q = a("outpost_rot");
+   public static final ajg<ehc> r = a("bottom_rampart");
+   public static final ajg<ehc> s = a("treasure_rooms");
+   public static final ajg<ehc> t = a("housing");
+   public static final ajg<ehc> u = a("side_wall_degradation");
+   public static final ajg<ehc> v = a("stable_degradation");
+   public static final ajg<ehc> w = a("bastion_generic_degradation");
+   public static final ajg<ehc> x = a("rampart_degradation");
+   public static final ajg<ehc> y = a("entrance_replacement");
+   public static final ajg<ehc> z = a("bridge");
+   public static final ajg<ehc> A = a("roof");
+   public static final ajg<ehc> B = a("high_wall");
+   public static final ajg<ehc> C = a("high_rampart");
+   public static final ajg<ehc> D = a("fossil_rot");
+   public static final ajg<ehc> E = a("fossil_coal");
+   public static final ajg<ehc> F = a("fossil_diamonds");
+   public static final ajg<ehc> G = a("ancient_city_start_degradation");
+   public static final ajg<ehc> H = a("ancient_city_generic_degradation");
+   public static final ajg<ehc> I = a("ancient_city_walls_degradation");
+   public static final ajg<ehc> J = a("trail_ruins_houses_archaeology");
+   public static final ajg<ehc> K = a("trail_ruins_roads_archaeology");
+   public static final ajg<ehc> L = a("trail_ruins_tower_top_archaeology");
 
-   private static ajg<eha> a(String $$0) {
+   private static ajg<ehc> a(String $$0) {
       return ajg.a(kj.aF, new ajh($$0));
    }
 
-   private static void a(pl<eha> $$0, ajg<eha> $$1, List<egz> $$2) {
-      $$0.a($$1, new eha($$2));
+   private static void a(pl<ehc> $$0, ajg<ehc> $$1, List<ehb> $$2) {
+      $$0.a($$1, new ehc($$2));
    }
 
-   public static void a(pl<eha> $$0) {
-      im<daa> $$1 = $$0.a(kj.f);
-      egr $$2 = new egr(new egt(dac.pr, 0.01F), ega.b, dac.pC.o());
-      egr $$3 = new egr(new egt(dac.pC, 0.5F), ega.b, dac.pr.o());
+   public static void a(pl<ehc> $$0) {
+      im<dac> $$1 = $$0.a(kj.f);
+      egt $$2 = new egt(new egv(dae.pr, 0.01F), egc.b, dae.pC.o());
+      egt $$3 = new egt(new egv(dae.pC, 0.5F), egc.b, dae.pr.o());
       a($$0, M, ImmutableList.of());
       a(
          $$0,
          a,
          ImmutableList.of(
-            new egv(
+            new egx(
                ImmutableList.of(
-                  new egr(new egt(dac.m, 0.8F), ega.b, dac.cn.o()),
-                  new egr(new ehe(aun.p), ega.b, dac.a.o()),
-                  new egr(new egf(dac.cp), ega.b, dac.a.o()),
-                  new egr(new egf(dac.cq), ega.b, dac.a.o()),
-                  new egr(new egt(dac.m, 0.07F), ega.b, dac.bs.o()),
-                  new egr(new egt(dac.cn, 0.07F), ega.b, dac.bs.o()),
-                  new egr(new egt(dac.hj, 0.07F), ega.b, dac.bs.o()),
-                  new egr(new egt(dac.U, 0.05F), ega.b, dac.bs.o()),
-                  new egr(new egt(dac.n, 0.1F), ega.b, dac.bs.o()),
-                  new egr(new egt(dac.cu, 0.1F), ega.b, dac.bs.o()),
-                  new egr(new egt(dac.al, 0.02F), ega.b, dac.bs.o()),
-                  new egr(new egt(dac.eY, 0.5F), ega.b, dac.bs.o()),
-                  new egr[]{
-                     new egr(
-                        new egh(dac.eY.o().a(dea.a, Boolean.valueOf(true)).a(dea.c, Boolean.valueOf(true))),
-                        ega.b,
-                        dac.hL.o().a(dea.a, Boolean.valueOf(true)).a(dea.c, Boolean.valueOf(true))
+                  new egt(new egv(dae.m, 0.8F), egc.b, dae.cn.o()),
+                  new egt(new ehg(aun.p), egc.b, dae.a.o()),
+                  new egt(new egh(dae.cp), egc.b, dae.a.o()),
+                  new egt(new egh(dae.cq), egc.b, dae.a.o()),
+                  new egt(new egv(dae.m, 0.07F), egc.b, dae.bs.o()),
+                  new egt(new egv(dae.cn, 0.07F), egc.b, dae.bs.o()),
+                  new egt(new egv(dae.hj, 0.07F), egc.b, dae.bs.o()),
+                  new egt(new egv(dae.U, 0.05F), egc.b, dae.bs.o()),
+                  new egt(new egv(dae.n, 0.1F), egc.b, dae.bs.o()),
+                  new egt(new egv(dae.cu, 0.1F), egc.b, dae.bs.o()),
+                  new egt(new egv(dae.al, 0.02F), egc.b, dae.bs.o()),
+                  new egt(new egv(dae.eY, 0.5F), egc.b, dae.bs.o()),
+                  new egt[]{
+                     new egt(
+                        new egj(dae.eY.o().a(dec.a, Boolean.valueOf(true)).a(dec.c, Boolean.valueOf(true))),
+                        egc.b,
+                        dae.hL.o().a(dec.a, Boolean.valueOf(true)).a(dec.c, Boolean.valueOf(true))
                      ),
-                     new egr(
-                        new egh(dac.eY.o().a(dea.b, Boolean.valueOf(true)).a(dea.d, Boolean.valueOf(true))),
-                        ega.b,
-                        dac.hL.o().a(dea.b, Boolean.valueOf(true)).a(dea.d, Boolean.valueOf(true))
+                     new egt(
+                        new egj(dae.eY.o().a(dec.b, Boolean.valueOf(true)).a(dec.d, Boolean.valueOf(true))),
+                        egc.b,
+                        dae.hL.o().a(dec.b, Boolean.valueOf(true)).a(dec.d, Boolean.valueOf(true))
                      ),
-                     new egr(new egt(dac.cB, 0.3F), ega.b, dac.gt.o()),
-                     new egr(new egt(dac.cB, 0.2F), ega.b, dac.gu.o()),
-                     new egr(new egt(dac.cB, 0.1F), ega.b, dac.kD.o())
+                     new egt(new egv(dae.cB, 0.3F), egc.b, dae.gt.o()),
+                     new egt(new egv(dae.cB, 0.2F), egc.b, dae.gu.o()),
+                     new egt(new egv(dae.cB, 0.1F), egc.b, dae.kD.o())
                   }
                )
             )
@@ -96,31 +96,31 @@ public class pt {
          $$0,
          b,
          ImmutableList.of(
-            new egv(
+            new egx(
                ImmutableList.of(
-                  new egr(new ehe(aun.p), ega.b, dac.a.o()),
-                  new egr(new egf(dac.cp), ega.b, dac.a.o()),
-                  new egr(new egf(dac.cq), ega.b, dac.a.o()),
-                  new egr(new egt(dac.r, 0.2F), ega.b, dac.bs.o()),
-                  new egr(new egt(dac.hP, 0.2F), ega.b, dac.bs.o()),
-                  new egr(new egt(dac.Y, 0.05F), ega.b, dac.bs.o()),
-                  new egr(new egt(dac.as, 0.05F), ega.b, dac.bs.o()),
-                  new egr(new egt(dac.hk, 0.05F), ega.b, dac.bs.o()),
-                  new egr(new egt(dac.hn, 0.05F), ega.b, dac.bs.o()),
-                  new egr(new egt(dac.hx, 0.05F), ega.b, dac.bs.o()),
-                  new egr(new egt(dac.eY, 0.5F), ega.b, dac.bs.o()),
-                  new egr(
-                     new egh(dac.eY.o().a(dea.a, Boolean.valueOf(true)).a(dea.c, Boolean.valueOf(true))),
-                     ega.b,
-                     dac.hL.o().a(dea.a, Boolean.valueOf(true)).a(dea.c, Boolean.valueOf(true))
+                  new egt(new ehg(aun.p), egc.b, dae.a.o()),
+                  new egt(new egh(dae.cp), egc.b, dae.a.o()),
+                  new egt(new egh(dae.cq), egc.b, dae.a.o()),
+                  new egt(new egv(dae.r, 0.2F), egc.b, dae.bs.o()),
+                  new egt(new egv(dae.hP, 0.2F), egc.b, dae.bs.o()),
+                  new egt(new egv(dae.Y, 0.05F), egc.b, dae.bs.o()),
+                  new egt(new egv(dae.as, 0.05F), egc.b, dae.bs.o()),
+                  new egt(new egv(dae.hk, 0.05F), egc.b, dae.bs.o()),
+                  new egt(new egv(dae.hn, 0.05F), egc.b, dae.bs.o()),
+                  new egt(new egv(dae.hx, 0.05F), egc.b, dae.bs.o()),
+                  new egt(new egv(dae.eY, 0.5F), egc.b, dae.bs.o()),
+                  new egt(
+                     new egj(dae.eY.o().a(dec.a, Boolean.valueOf(true)).a(dec.c, Boolean.valueOf(true))),
+                     egc.b,
+                     dae.hL.o().a(dec.a, Boolean.valueOf(true)).a(dec.c, Boolean.valueOf(true))
                   ),
-                  new egr[]{
-                     new egr(
-                        new egh(dac.eY.o().a(dea.b, Boolean.valueOf(true)).a(dea.d, Boolean.valueOf(true))),
-                        ega.b,
-                        dac.hL.o().a(dea.b, Boolean.valueOf(true)).a(dea.d, Boolean.valueOf(true))
+                  new egt[]{
+                     new egt(
+                        new egj(dae.eY.o().a(dec.b, Boolean.valueOf(true)).a(dec.d, Boolean.valueOf(true))),
+                        egc.b,
+                        dae.hL.o().a(dec.b, Boolean.valueOf(true)).a(dec.d, Boolean.valueOf(true))
                      ),
-                     new egr(new egt(dac.cB, 0.1F), ega.b, dac.fe.o())
+                     new egt(new egv(dae.cB, 0.1F), egc.b, dae.fe.o())
                   }
                )
             )
@@ -130,29 +130,29 @@ public class pt {
          $$0,
          c,
          ImmutableList.of(
-            new egv(
+            new egx(
                ImmutableList.of(
-                  new egr(new ehe(aun.p), ega.b, dac.a.o()),
-                  new egr(new egf(dac.cp), ega.b, dac.a.o()),
-                  new egr(new egf(dac.cq), ega.b, dac.a.o()),
-                  new egr(new egf(dac.oe), ega.b, dac.a.o()),
-                  new egr(new egt(dac.o, 0.2F), ega.b, dac.bs.o()),
-                  new egr(new egt(dac.ju, 0.4F), ega.b, dac.bs.o()),
-                  new egr(new egt(dac.af, 0.05F), ega.b, dac.bs.o()),
-                  new egr(new egt(dac.ax, 0.05F), ega.b, dac.bs.o()),
-                  new egr(new egt(dac.eY, 0.5F), ega.b, dac.bs.o()),
-                  new egr(
-                     new egh(dac.eY.o().a(dea.a, Boolean.valueOf(true)).a(dea.c, Boolean.valueOf(true))),
-                     ega.b,
-                     dac.hL.o().a(dea.a, Boolean.valueOf(true)).a(dea.c, Boolean.valueOf(true))
+                  new egt(new ehg(aun.p), egc.b, dae.a.o()),
+                  new egt(new egh(dae.cp), egc.b, dae.a.o()),
+                  new egt(new egh(dae.cq), egc.b, dae.a.o()),
+                  new egt(new egh(dae.oe), egc.b, dae.a.o()),
+                  new egt(new egv(dae.o, 0.2F), egc.b, dae.bs.o()),
+                  new egt(new egv(dae.ju, 0.4F), egc.b, dae.bs.o()),
+                  new egt(new egv(dae.af, 0.05F), egc.b, dae.bs.o()),
+                  new egt(new egv(dae.ax, 0.05F), egc.b, dae.bs.o()),
+                  new egt(new egv(dae.eY, 0.5F), egc.b, dae.bs.o()),
+                  new egt(
+                     new egj(dae.eY.o().a(dec.a, Boolean.valueOf(true)).a(dec.c, Boolean.valueOf(true))),
+                     egc.b,
+                     dae.hL.o().a(dec.a, Boolean.valueOf(true)).a(dec.c, Boolean.valueOf(true))
                   ),
-                  new egr(
-                     new egh(dac.eY.o().a(dea.b, Boolean.valueOf(true)).a(dea.d, Boolean.valueOf(true))),
-                     ega.b,
-                     dac.hL.o().a(dea.b, Boolean.valueOf(true)).a(dea.d, Boolean.valueOf(true))
+                  new egt(
+                     new egj(dae.eY.o().a(dec.b, Boolean.valueOf(true)).a(dec.d, Boolean.valueOf(true))),
+                     egc.b,
+                     dae.hL.o().a(dec.b, Boolean.valueOf(true)).a(dec.d, Boolean.valueOf(true))
                   ),
-                  new egr(new egt(dac.cB, 0.1F), ega.b, dac.gt.o()),
-                  new egr[]{new egr(new egt(dac.cB, 0.8F), ega.b, dac.gu.o())}
+                  new egt(new egv(dae.cB, 0.1F), egc.b, dae.gt.o()),
+                  new egt[]{new egt(new egv(dae.cB, 0.8F), egc.b, dae.gu.o())}
                )
             )
          )
@@ -161,29 +161,29 @@ public class pt {
          $$0,
          d,
          ImmutableList.of(
-            new egv(
+            new egx(
                ImmutableList.of(
-                  new egr(new egt(dac.m, 0.8F), ega.b, dac.cn.o()),
-                  new egr(new ehe(aun.p), ega.b, dac.a.o()),
-                  new egr(new egf(dac.cp), ega.b, dac.a.o()),
-                  new egr(new egf(dac.cq), ega.b, dac.a.o()),
-                  new egr(new egf(dac.og), ega.b, dac.og.o().a(dao.c, Boolean.valueOf(false))),
-                  new egr(new egt(dac.m, 0.08F), ega.b, dac.bs.o()),
-                  new egr(new egt(dac.V, 0.08F), ega.b, dac.bs.o()),
-                  new egr(new egt(dac.eY, 0.5F), ega.b, dac.bs.o()),
-                  new egr(
-                     new egh(dac.eY.o().a(dea.a, Boolean.valueOf(true)).a(dea.c, Boolean.valueOf(true))),
-                     ega.b,
-                     dac.hL.o().a(dea.a, Boolean.valueOf(true)).a(dea.c, Boolean.valueOf(true))
+                  new egt(new egv(dae.m, 0.8F), egc.b, dae.cn.o()),
+                  new egt(new ehg(aun.p), egc.b, dae.a.o()),
+                  new egt(new egh(dae.cp), egc.b, dae.a.o()),
+                  new egt(new egh(dae.cq), egc.b, dae.a.o()),
+                  new egt(new egh(dae.og), egc.b, dae.og.o().a(daq.c, Boolean.valueOf(false))),
+                  new egt(new egv(dae.m, 0.08F), egc.b, dae.bs.o()),
+                  new egt(new egv(dae.V, 0.08F), egc.b, dae.bs.o()),
+                  new egt(new egv(dae.eY, 0.5F), egc.b, dae.bs.o()),
+                  new egt(
+                     new egj(dae.eY.o().a(dec.a, Boolean.valueOf(true)).a(dec.c, Boolean.valueOf(true))),
+                     egc.b,
+                     dae.hL.o().a(dec.a, Boolean.valueOf(true)).a(dec.c, Boolean.valueOf(true))
                   ),
-                  new egr(
-                     new egh(dac.eY.o().a(dea.b, Boolean.valueOf(true)).a(dea.d, Boolean.valueOf(true))),
-                     ega.b,
-                     dac.hL.o().a(dea.b, Boolean.valueOf(true)).a(dea.d, Boolean.valueOf(true))
+                  new egt(
+                     new egj(dae.eY.o().a(dec.b, Boolean.valueOf(true)).a(dec.d, Boolean.valueOf(true))),
+                     egc.b,
+                     dae.hL.o().a(dec.b, Boolean.valueOf(true)).a(dec.d, Boolean.valueOf(true))
                   ),
-                  new egr(new egt(dac.cB, 0.3F), ega.b, dac.fd.o()),
-                  new egr(new egt(dac.cB, 0.2F), ega.b, dac.gu.o()),
-                  new egr[0]
+                  new egt(new egv(dae.cB, 0.3F), egc.b, dae.fd.o()),
+                  new egt(new egv(dae.cB, 0.2F), egc.b, dae.gu.o()),
+                  new egt[0]
                )
             )
          )
@@ -192,35 +192,35 @@ public class pt {
          $$0,
          e,
          ImmutableList.of(
-            new egv(
+            new egx(
                ImmutableList.of(
-                  new egr(new ehe(aun.p), ega.b, dac.a.o()),
-                  new egr(new egf(dac.cp), ega.b, dac.a.o()),
-                  new egr(new egf(dac.cq), ega.b, dac.a.o()),
-                  new egr(new egt(dac.jS, 0.08F), ega.b, dac.bs.o()),
-                  new egr(new egt(dac.aX, 0.1F), ega.b, dac.bs.o()),
-                  new egr(new egt(dac.iA, 0.08F), ega.b, dac.bs.o()),
-                  new egr(new egt(dac.nl, 0.08F), ega.b, dac.bs.o()),
-                  new egr(new egt(dac.ny, 0.08F), ega.b, dac.bs.o()),
-                  new egr(new egt(dac.cB, 0.2F), ega.b, dac.kD.o()),
-                  new egr(new egt(dac.cB, 0.1F), ega.b, dac.fe.o())
+                  new egt(new ehg(aun.p), egc.b, dae.a.o()),
+                  new egt(new egh(dae.cp), egc.b, dae.a.o()),
+                  new egt(new egh(dae.cq), egc.b, dae.a.o()),
+                  new egt(new egv(dae.jS, 0.08F), egc.b, dae.bs.o()),
+                  new egt(new egv(dae.aX, 0.1F), egc.b, dae.bs.o()),
+                  new egt(new egv(dae.iA, 0.08F), egc.b, dae.bs.o()),
+                  new egt(new egv(dae.nl, 0.08F), egc.b, dae.bs.o()),
+                  new egt(new egv(dae.ny, 0.08F), egc.b, dae.bs.o()),
+                  new egt(new egv(dae.cB, 0.2F), egc.b, dae.kD.o()),
+                  new egt(new egv(dae.cB, 0.1F), egc.b, dae.fe.o())
                )
             )
          )
       );
-      a($$0, f, ImmutableList.of(new egv(ImmutableList.of(new egr(new egt(dac.m, 0.1F), ega.b, dac.cn.o())))));
-      a($$0, g, ImmutableList.of(new egv(ImmutableList.of(new egr(new egt(dac.m, 0.2F), ega.b, dac.cn.o())))));
-      a($$0, h, ImmutableList.of(new egv(ImmutableList.of(new egr(new egt(dac.m, 0.7F), ega.b, dac.cn.o())))));
+      a($$0, f, ImmutableList.of(new egx(ImmutableList.of(new egt(new egv(dae.m, 0.1F), egc.b, dae.cn.o())))));
+      a($$0, g, ImmutableList.of(new egx(ImmutableList.of(new egt(new egv(dae.m, 0.2F), egc.b, dae.cn.o())))));
+      a($$0, h, ImmutableList.of(new egx(ImmutableList.of(new egt(new egv(dae.m, 0.7F), egc.b, dae.cn.o())))));
       a(
          $$0,
          i,
          ImmutableList.of(
-            new egv(
+            new egx(
                ImmutableList.of(
-                  new egr(new egf(dac.kE), new egf(dac.G), dac.n.o()),
-                  new egr(new egt(dac.kE, 0.1F), ega.b, dac.i.o()),
-                  new egr(new egf(dac.i), new egf(dac.G), dac.G.o()),
-                  new egr(new egf(dac.j), new egf(dac.G), dac.G.o())
+                  new egt(new egh(dae.kE), new egh(dae.G), dae.n.o()),
+                  new egt(new egv(dae.kE, 0.1F), egc.b, dae.i.o()),
+                  new egt(new egh(dae.i), new egh(dae.G), dae.G.o()),
+                  new egt(new egh(dae.j), new egh(dae.G), dae.G.o())
                )
             )
          )
@@ -229,12 +229,12 @@ public class pt {
          $$0,
          j,
          ImmutableList.of(
-            new egv(
+            new egx(
                ImmutableList.of(
-                  new egr(new egf(dac.kE), new egf(dac.G), dac.r.o()),
-                  new egr(new egt(dac.kE, 0.2F), ega.b, dac.i.o()),
-                  new egr(new egf(dac.i), new egf(dac.G), dac.G.o()),
-                  new egr(new egf(dac.j), new egf(dac.G), dac.G.o())
+                  new egt(new egh(dae.kE), new egh(dae.G), dae.r.o()),
+                  new egt(new egv(dae.kE, 0.2F), egc.b, dae.i.o()),
+                  new egt(new egh(dae.i), new egh(dae.G), dae.G.o()),
+                  new egt(new egh(dae.j), new egh(dae.G), dae.G.o())
                )
             )
          )
@@ -243,13 +243,13 @@ public class pt {
          $$0,
          k,
          ImmutableList.of(
-            new egv(
+            new egx(
                ImmutableList.of(
-                  new egr(new egf(dac.kE), new egf(dac.G), dac.o.o()),
-                  new egr(new egf(dac.kE), new egf(dac.dO), dac.o.o()),
-                  new egr(new egt(dac.kE, 0.2F), ega.b, dac.i.o()),
-                  new egr(new egf(dac.i), new egf(dac.G), dac.G.o()),
-                  new egr(new egf(dac.j), new egf(dac.G), dac.G.o())
+                  new egt(new egh(dae.kE), new egh(dae.G), dae.o.o()),
+                  new egt(new egh(dae.kE), new egh(dae.dO), dae.o.o()),
+                  new egt(new egv(dae.kE, 0.2F), egc.b, dae.i.o()),
+                  new egt(new egh(dae.i), new egh(dae.G), dae.G.o()),
+                  new egt(new egh(dae.j), new egh(dae.G), dae.G.o())
                )
             )
          )
@@ -258,76 +258,76 @@ public class pt {
          $$0,
          l,
          ImmutableList.of(
-            new egv(
+            new egx(
                ImmutableList.of(
-                  new egr(new egt(dac.cB, 0.3F), ega.b, dac.gt.o()),
-                  new egr(new egt(dac.cB, 0.2F), ega.b, dac.gu.o()),
-                  new egr(new egt(dac.cB, 0.1F), ega.b, dac.kD.o())
+                  new egt(new egv(dae.cB, 0.3F), egc.b, dae.gt.o()),
+                  new egt(new egv(dae.cB, 0.2F), egc.b, dae.gu.o()),
+                  new egt(new egv(dae.cB, 0.1F), egc.b, dae.kD.o())
                )
             )
          )
       );
-      a($$0, m, ImmutableList.of(new egv(ImmutableList.of(new egr(new egt(dac.cB, 0.1F), ega.b, dac.fe.o())))));
+      a($$0, m, ImmutableList.of(new egx(ImmutableList.of(new egt(new egv(dae.cB, 0.1F), egc.b, dae.fe.o())))));
       a(
          $$0,
          n,
-         ImmutableList.of(new egv(ImmutableList.of(new egr(new egt(dac.cB, 0.1F), ega.b, dac.gt.o()), new egr(new egt(dac.cB, 0.8F), ega.b, dac.gu.o()))))
+         ImmutableList.of(new egx(ImmutableList.of(new egt(new egv(dae.cB, 0.1F), egc.b, dae.gt.o()), new egt(new egv(dae.cB, 0.8F), egc.b, dae.gu.o()))))
       );
       a(
          $$0,
          o,
-         ImmutableList.of(new egv(ImmutableList.of(new egr(new egt(dac.cB, 0.3F), ega.b, dac.fd.o()), new egr(new egt(dac.cB, 0.2F), ega.b, dac.gu.o()))))
+         ImmutableList.of(new egx(ImmutableList.of(new egt(new egv(dae.cB, 0.3F), egc.b, dae.fd.o()), new egt(new egv(dae.cB, 0.2F), egc.b, dae.gu.o()))))
       );
       a(
          $$0,
          p,
-         ImmutableList.of(new egv(ImmutableList.of(new egr(new egt(dac.cB, 0.2F), ega.b, dac.kD.o()), new egr(new egt(dac.cB, 0.1F), ega.b, dac.fe.o()))))
+         ImmutableList.of(new egx(ImmutableList.of(new egt(new egv(dae.cB, 0.2F), egc.b, dae.kD.o()), new egt(new egv(dae.cB, 0.1F), egc.b, dae.fe.o()))))
       );
-      a($$0, q, ImmutableList.of(new egg(0.05F)));
+      a($$0, q, ImmutableList.of(new egi(0.05F)));
       a(
          $$0,
          r,
          ImmutableList.of(
-            new egv(ImmutableList.of(new egr(new egt(dac.kJ, 0.75F), ega.b, dac.px.o()), new egr(new egt(dac.px, 0.15F), ega.b, dac.pw.o()), $$3, $$2))
+            new egx(ImmutableList.of(new egt(new egv(dae.kJ, 0.75F), egc.b, dae.px.o()), new egt(new egv(dae.px, 0.15F), egc.b, dae.pw.o()), $$3, $$2))
          )
       );
       a(
          $$0,
          s,
          ImmutableList.of(
-            new egv(ImmutableList.of(new egr(new egt(dac.pw, 0.35F), ega.b, dac.px.o()), new egr(new egt(dac.py, 0.1F), ega.b, dac.px.o()), $$3, $$2))
+            new egx(ImmutableList.of(new egt(new egv(dae.pw, 0.35F), egc.b, dae.px.o()), new egt(new egv(dae.py, 0.1F), egc.b, dae.px.o()), $$3, $$2))
          )
       );
       a(
          $$0,
          t,
          ImmutableList.of(
-            new egv(ImmutableList.of(new egr(new egt(dac.pw, 0.3F), ega.b, dac.px.o()), new egr(new egt(dac.pr, 1.0E-4F), ega.b, dac.a.o()), $$3, $$2))
+            new egx(ImmutableList.of(new egt(new egv(dae.pw, 0.3F), egc.b, dae.px.o()), new egt(new egv(dae.pr, 1.0E-4F), egc.b, dae.a.o()), $$3, $$2))
          )
       );
       a(
          $$0,
          u,
          ImmutableList.of(
-            new egv(ImmutableList.of(new egr(new egt(dac.py, 0.5F), ega.b, dac.a.o()), new egr(new egt(dac.ch, 0.1F), ega.b, dac.px.o()), $$3, $$2))
+            new egx(ImmutableList.of(new egt(new egv(dae.py, 0.5F), egc.b, dae.a.o()), new egt(new egv(dae.ch, 0.1F), egc.b, dae.px.o()), $$3, $$2))
          )
       );
       a(
          $$0,
          v,
          ImmutableList.of(
-            new egv(ImmutableList.of(new egr(new egt(dac.pw, 0.1F), ega.b, dac.px.o()), new egr(new egt(dac.pr, 1.0E-4F), ega.b, dac.a.o()), $$3, $$2))
+            new egx(ImmutableList.of(new egt(new egv(dae.pw, 0.1F), egc.b, dae.px.o()), new egt(new egv(dae.pr, 1.0E-4F), egc.b, dae.a.o()), $$3, $$2))
          )
       );
       a(
          $$0,
          w,
          ImmutableList.of(
-            new egv(
+            new egx(
                ImmutableList.of(
-                  new egr(new egt(dac.pw, 0.3F), ega.b, dac.px.o()),
-                  new egr(new egt(dac.pr, 1.0E-4F), ega.b, dac.a.o()),
-                  new egr(new egt(dac.ch, 0.3F), ega.b, dac.px.o()),
+                  new egt(new egv(dae.pw, 0.3F), egc.b, dae.px.o()),
+                  new egt(new egv(dae.pr, 1.0E-4F), egc.b, dae.a.o()),
+                  new egt(new egv(dae.ch, 0.3F), egc.b, dae.px.o()),
                   $$3,
                   $$2
                )
@@ -338,13 +338,13 @@ public class pt {
          $$0,
          x,
          ImmutableList.of(
-            new egv(
+            new egx(
                ImmutableList.of(
-                  new egr(new egt(dac.pw, 0.4F), ega.b, dac.px.o()),
-                  new egr(new egt(dac.pr, 0.01F), ega.b, dac.px.o()),
-                  new egr(new egt(dac.pw, 1.0E-4F), ega.b, dac.a.o()),
-                  new egr(new egt(dac.pr, 1.0E-4F), ega.b, dac.a.o()),
-                  new egr(new egt(dac.ch, 0.3F), ega.b, dac.px.o()),
+                  new egt(new egv(dae.pw, 0.4F), egc.b, dae.px.o()),
+                  new egt(new egv(dae.pr, 0.01F), egc.b, dae.px.o()),
+                  new egt(new egv(dae.pw, 1.0E-4F), egc.b, dae.a.o()),
+                  new egt(new egv(dae.pr, 1.0E-4F), egc.b, dae.a.o()),
+                  new egt(new egv(dae.ch, 0.3F), egc.b, dae.px.o()),
                   $$3,
                   $$2
                )
@@ -355,23 +355,23 @@ public class pt {
          $$0,
          y,
          ImmutableList.of(
-            new egv(ImmutableList.of(new egr(new egt(dac.py, 0.5F), ega.b, dac.a.o()), new egr(new egt(dac.ch, 0.6F), ega.b, dac.px.o()), $$3, $$2))
+            new egx(ImmutableList.of(new egt(new egv(dae.py, 0.5F), egc.b, dae.a.o()), new egt(new egv(dae.ch, 0.6F), egc.b, dae.px.o()), $$3, $$2))
          )
       );
       a(
          $$0,
          z,
-         ImmutableList.of(new egv(ImmutableList.of(new egr(new egt(dac.pw, 0.3F), ega.b, dac.px.o()), new egr(new egt(dac.pr, 1.0E-4F), ega.b, dac.a.o()))))
+         ImmutableList.of(new egx(ImmutableList.of(new egt(new egv(dae.pw, 0.3F), egc.b, dae.px.o()), new egt(new egv(dae.pr, 1.0E-4F), egc.b, dae.a.o()))))
       );
       a(
          $$0,
          A,
          ImmutableList.of(
-            new egv(
+            new egx(
                ImmutableList.of(
-                  new egr(new egt(dac.pw, 0.3F), ega.b, dac.px.o()),
-                  new egr(new egt(dac.pw, 0.15F), ega.b, dac.a.o()),
-                  new egr(new egt(dac.pw, 0.3F), ega.b, dac.pr.o())
+                  new egt(new egv(dae.pw, 0.3F), egc.b, dae.px.o()),
+                  new egt(new egv(dae.pw, 0.15F), egc.b, dae.a.o()),
+                  new egt(new egv(dae.pw, 0.3F), egc.b, dae.pr.o())
                )
             )
          )
@@ -380,11 +380,11 @@ public class pt {
          $$0,
          B,
          ImmutableList.of(
-            new egv(
+            new egx(
                ImmutableList.of(
-                  new egr(new egt(dac.pw, 0.01F), ega.b, dac.a.o()),
-                  new egr(new egt(dac.pw, 0.5F), ega.b, dac.px.o()),
-                  new egr(new egt(dac.pw, 0.3F), ega.b, dac.pr.o()),
+                  new egt(new egv(dae.pw, 0.01F), egc.b, dae.a.o()),
+                  new egt(new egv(dae.pw, 0.5F), egc.b, dae.px.o()),
+                  new egt(new egv(dae.pw, 0.3F), egc.b, dae.pr.o()),
                   $$3
                )
             )
@@ -394,92 +394,92 @@ public class pt {
          $$0,
          C,
          ImmutableList.of(
-            new egv(
-               ImmutableList.of(new egr(new egt(dac.ch, 0.3F), ega.b, dac.px.o()), new egr(ega.b, ega.b, new egb(0.0F, 0.05F, 0, 100, ih.a.b), dac.a.o()), $$3)
+            new egx(
+               ImmutableList.of(new egt(new egv(dae.ch, 0.3F), egc.b, dae.px.o()), new egt(egc.b, egc.b, new egd(0.0F, 0.05F, 0, 100, ih.a.b), dae.a.o()), $$3)
             )
          )
       );
-      a($$0, D, ImmutableList.of(new egg(0.9F), new egs(aun.bI)));
-      a($$0, E, ImmutableList.of(new egg(0.1F), new egs(aun.bI)));
-      a($$0, F, ImmutableList.of(new egg(0.1F), new egv(ImmutableList.of(new egr(new egf(dac.R), ega.b, dac.cy.o()))), new egs(aun.bI)));
+      a($$0, D, ImmutableList.of(new egi(0.9F), new egu(aun.bI)));
+      a($$0, E, ImmutableList.of(new egi(0.1F), new egu(aun.bI)));
+      a($$0, F, ImmutableList.of(new egi(0.1F), new egx(ImmutableList.of(new egt(new egh(dae.R), egc.b, dae.cy.o()))), new egu(aun.bI)));
       a(
          $$0,
          G,
          ImmutableList.of(
-            new egv(
+            new egx(
                ImmutableList.of(
-                  new egr(new egt(dac.sW, 0.3F), ega.b, dac.tb.o()),
-                  new egr(new egt(dac.sS, 0.3F), ega.b, dac.tc.o()),
-                  new egr(new egt(dac.of, 0.05F), ega.b, dac.a.o())
+                  new egt(new egv(dae.sW, 0.3F), egc.b, dae.tb.o()),
+                  new egt(new egv(dae.sS, 0.3F), egc.b, dae.tc.o()),
+                  new egt(new egv(dae.of, 0.05F), egc.b, dae.a.o())
                )
             ),
-            new egs(aun.bI)
+            new egu(aun.bI)
          )
       );
       a(
          $$0,
          H,
          ImmutableList.of(
-            new egg($$1.b(aun.bO), 0.95F),
-            new egv(
+            new egi($$1.b(aun.bO), 0.95F),
+            new egx(
                ImmutableList.of(
-                  new egr(new egt(dac.sW, 0.3F), ega.b, dac.tb.o()),
-                  new egr(new egt(dac.sS, 0.3F), ega.b, dac.tc.o()),
-                  new egr(new egt(dac.of, 0.05F), ega.b, dac.a.o())
+                  new egt(new egv(dae.sW, 0.3F), egc.b, dae.tb.o()),
+                  new egt(new egv(dae.sS, 0.3F), egc.b, dae.tc.o()),
+                  new egt(new egv(dae.of, 0.05F), egc.b, dae.a.o())
                )
             ),
-            new egs(aun.bI)
+            new egu(aun.bI)
          )
       );
       a(
          $$0,
          I,
          ImmutableList.of(
-            new egg($$1.b(aun.bO), 0.95F),
-            new egv(
+            new egi($$1.b(aun.bO), 0.95F),
+            new egx(
                ImmutableList.of(
-                  new egr(new egt(dac.sW, 0.3F), ega.b, dac.tb.o()),
-                  new egr(new egt(dac.sS, 0.3F), ega.b, dac.tc.o()),
-                  new egr(new egt(dac.sU, 0.3F), ega.b, dac.a.o()),
-                  new egr(new egt(dac.of, 0.05F), ega.b, dac.a.o())
+                  new egt(new egv(dae.sW, 0.3F), egc.b, dae.tb.o()),
+                  new egt(new egv(dae.sS, 0.3F), egc.b, dae.tc.o()),
+                  new egt(new egv(dae.sU, 0.3F), egc.b, dae.a.o()),
+                  new egt(new egv(dae.of, 0.05F), egc.b, dae.a.o())
                )
             ),
-            new egs(aun.bI)
+            new egu(aun.bI)
          )
       );
       a(
          $$0,
          J,
          List.of(
-            new egv(
+            new egx(
                List.of(
-                  new egr(new egt(dac.L, 0.2F), ega.b, dac.j.o()),
-                  new egr(new egt(dac.L, 0.1F), ega.b, dac.k.o()),
-                  new egr(new egt(dac.eM, 0.1F), ega.b, dac.eL.o())
+                  new egt(new egv(dae.L, 0.2F), egc.b, dae.j.o()),
+                  new egt(new egv(dae.L, 0.1F), egc.b, dae.k.o()),
+                  new egt(new egv(dae.eM, 0.1F), egc.b, dae.eL.o())
                )
             ),
-            a(eks.aQ, 6),
-            a(eks.aR, 3)
+            a(eku.aR, 6),
+            a(eku.aS, 3)
          )
       );
       a(
          $$0,
          K,
          List.of(
-            new egv(
+            new egx(
                List.of(
-                  new egr(new egt(dac.L, 0.2F), ega.b, dac.j.o()),
-                  new egr(new egt(dac.L, 0.1F), ega.b, dac.k.o()),
-                  new egr(new egt(dac.eM, 0.1F), ega.b, dac.eL.o())
+                  new egt(new egv(dae.L, 0.2F), egc.b, dae.j.o()),
+                  new egt(new egv(dae.L, 0.1F), egc.b, dae.k.o()),
+                  new egt(new egv(dae.eM, 0.1F), egc.b, dae.eL.o())
                )
             ),
-            a(eks.aQ, 2)
+            a(eku.aR, 2)
          )
       );
-      a($$0, L, List.of(a(eks.aQ, 2)));
+      a($$0, L, List.of(a(eku.aR, 2)));
    }
 
-   private static egi a(ajh $$0, int $$1) {
-      return new egi(new egv(List.of(new egr(new ehe(aun.cn), ega.b, ego.b, dac.M.o(), new ehg($$0)))), bme.a($$1));
+   private static egk a(ajh $$0, int $$1) {
+      return new egk(new egx(List.of(new egt(new ehg(aun.cn), egc.b, egq.b, dae.M.o(), new ehi($$0)))), bmf.a($$1));
    }
 }

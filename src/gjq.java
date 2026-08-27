@@ -1,75 +1,123 @@
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Map;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gjq extends art {
-   private static final arp d = new arp(vu.c("resourcePack.vanilla.description"), aa.b().a(arc.a), Optional.empty());
-   private static final aqs e = aqs.a(arp.b, d);
-   public static final String c = "high_contrast";
-   private static final Map<String, vu> f = Map.of(
-      "programmer_art", vu.c("resourcePack.programmer_art.name"), "high_contrast", vu.c("resourcePack.high_contrast.name")
+public class gjq implements gjg {
+   static final Logger c = LogUtils.getLogger();
+   public static final Codec<gjq> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ajh.a.fieldOf("resource").forGetter($$0x -> $$0x.d),
+               awe.a(gjq.a.a.listOf()).fieldOf("regions").forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.optionalFieldOf("divisor_x", 1.0).forGetter($$0x -> $$0x.f),
+               Codec.DOUBLE.optionalFieldOf("divisor_y", 1.0).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, gjq::new)
    );
-   private static final aqz g = new aqz("vanilla", vu.c("resourcePack.vanilla.name"), asa.c, Optional.of(b));
-   private static final arb h = new arb(true, arw.b.b, false);
-   private static final arb i = new arb(false, arw.b.a, false);
-   private static final ajh j = new ajh("minecraft", "resourcepacks");
-   @Nullable
-   private final Path k;
+   private final ajh d;
+   private final List<gjq.a> e;
+   private final double f;
+   private final double g;
 
-   public gjq(Path $$0, eph $$1) {
-      super(arc.a, b($$0), j, $$1);
-      this.k = this.a($$0);
+   public gjq(ajh $$0, List<gjq.a> $$1, double $$2, double $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
-   private static aqz a(String $$0, vu $$1) {
-      return new aqz($$0, $$1, asa.c, Optional.of(arv.a($$0)));
-   }
+   @Override
+   public void a(aso $$0, gjg.a $$1) {
+      ajh $$2 = a.a(this.d);
+      Optional<asm> $$3 = $$0.getResource($$2);
+      if ($$3.isPresent()) {
+         gjm $$4 = new gjm($$2, $$3.get(), this.e.size());
 
-   @Nullable
-   private Path a(Path $$0) {
-      if (aa.aW && $$0.getFileSystem() == FileSystems.getDefault()) {
-         Path $$1 = $$0.getParent().resolve("resourcepacks");
-         if (Files.isDirectory($$1)) {
-            return $$1;
+         for (gjq.a $$5 : this.e) {
+            $$1.a($$5.b, new gjq.b($$4, $$5, this.f, this.g));
          }
+      } else {
+         c.warn("Missing sprite: {}", $$2);
+      }
+   }
+
+   @Override
+   public gji a() {
+      return gjj.d;
+   }
+
+   static record a(ajh b, double c, double d, double e, double f) {
+      public static final Codec<gjq.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  ajh.a.fieldOf("sprite").forGetter(gjq.a::a),
+                  Codec.DOUBLE.fieldOf("x").forGetter(gjq.a::b),
+                  Codec.DOUBLE.fieldOf("y").forGetter(gjq.a::c),
+                  Codec.DOUBLE.fieldOf("width").forGetter(gjq.a::d),
+                  Codec.DOUBLE.fieldOf("height").forGetter(gjq.a::e)
+               )
+               .apply($$0, gjq.a::new)
+      );
+
+      public ajh a() {
+         return this.b;
       }
 
-      return null;
+      public double b() {
+         return this.c;
+      }
+
+      public double c() {
+         return this.d;
+      }
+
+      public double d() {
+         return this.e;
+      }
+
+      public double e() {
+         return this.f;
+      }
    }
 
-   private static are b(Path $$0) {
-      arf $$1 = new arf().a(e).a("minecraft", "realms");
-      return $$1.b().a().a(arc.a, $$0).a(g);
-   }
+   static class b implements gjg.b {
+      private final gjm a;
+      private final gjq.a b;
+      private final double c;
+      private final double d;
 
-   @Override
-   protected vu a(String $$0) {
-      vu $$1 = f.get($$0);
-      return (vu)($$1 != null ? $$1 : vu.b($$0));
-   }
+      b(gjm $$0, gjq.a $$1, double $$2, double $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
 
-   @Nullable
-   @Override
-   protected arw a(ara $$0) {
-      return arw.a(g, b($$0), arc.a, h);
-   }
+      public giw a(gjf $$0) {
+         try {
+            etc $$1 = this.a.a();
+            double $$2 = (double)$$1.a() / this.c;
+            double $$3 = (double)$$1.b() / this.d;
+            int $$4 = aww.a(this.b.c * $$2);
+            int $$5 = aww.a(this.b.d * $$3);
+            int $$6 = aww.a(this.b.e * $$2);
+            int $$7 = aww.a(this.b.f * $$3);
+            etc $$8 = new etc(etc.a.a, $$6, $$7, false);
+            $$1.a($$8, $$4, $$5, 0, 0, $$6, $$7, false, false);
+            return new giw(this.b.b, new gko($$6, $$7), $$8, asq.a);
+         } catch (Exception var16) {
+            gjq.c.error("Failed to unstitch region {}", this.b.b, var16);
+         } finally {
+            this.a.b();
+         }
 
-   @Nullable
-   @Override
-   protected arw a(String $$0, arw.c $$1, vu $$2) {
-      return arw.a(a($$0, $$2), $$1, arc.a, i);
-   }
+         return gis.a();
+      }
 
-   @Override
-   protected void a(BiConsumer<String, Function<String, arw>> $$0) {
-      super.a($$0);
-      if (this.k != null) {
-         this.a(this.k, $$0);
+      @Override
+      public void a() {
+         this.a.b();
       }
    }
 }

@@ -1,34 +1,27 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.Optional;
 
-public class cwu extends ejs {
-   public static final String a = "chunks";
-   private static final String b = "Forced";
-   private final LongSet c;
-
-   public static ejs.a<cwu> a() {
-      return new ejs.a<>(cwu::new, cwu::b, ayc.i);
+public class cwu {
+   public Optional<Float> a(cwt $$0, cwh $$1, ib $$2, dnb $$3, eip $$4) {
+      return $$3.i() && $$4.c() ? Optional.empty() : Optional.of(Math.max($$3.b().e(), $$4.i()));
    }
 
-   private cwu(LongSet $$0) {
-      this.c = $$0;
+   public boolean a(cwt $$0, cwh $$1, ib $$2, dnb $$3, float $$4) {
+      return true;
    }
 
-   public cwu() {
-      this(new LongOpenHashSet());
+   public boolean a(cwt $$0, box $$1) {
+      return true;
    }
 
-   public static cwu b(ta $$0, in.a $$1) {
-      return new cwu(new LongOpenHashSet($$0.o("Forced")));
+   public float a() {
+      return 1.0F;
    }
 
-   @Override
-   public ta a(ta $$0, in.a $$1) {
-      $$0.a("Forced", this.c.toLongArray());
-      return $$0;
-   }
-
-   public LongSet b() {
-      return this.c;
+   public float b(cwt $$0, box $$1) {
+      float $$2 = $$0.a() * 2.0F;
+      ept $$3 = $$0.b();
+      double $$4 = Math.sqrt($$1.f($$3)) / (double)$$2;
+      double $$5 = (1.0 - $$4) * (double)cwt.a($$3, $$1);
+      return (float)(($$5 * $$5 + $$5) / 2.0 * 7.0 * (double)$$2 + 1.0);
    }
 }

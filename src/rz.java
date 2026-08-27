@@ -82,7 +82,7 @@ public class rz {
                   rz.this.k.d().accept(rz.this.c);
                   rz.this.g.forEach($$0xxx -> $$0xxx.b(rz.this.k));
                   LongSet $$0 = new LongArraySet(rz.this.c.w());
-                  $$0.forEach($$0xxx -> rz.this.c.a(cwg.a($$0xxx), cwg.b($$0xxx), false));
+                  $$0.forEach($$0xxx -> rz.this.c.a(cwi.a($$0xxx), cwi.b($$0xxx), false));
                   rz.this.a($$0 + 1);
                }
             }

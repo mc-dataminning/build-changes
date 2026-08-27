@@ -3,51 +3,60 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import org.slf4j.Logger;
 
-public class ebn extends ebj {
+public class ebn extends ebl {
    public static final Codec<ebn> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               dtg.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
-               dtg.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
+               dti.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
+               dti.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
+               Codec.INT.optionalFieldOf("plateau", 0).forGetter($$0x -> $$0x.f)
             )
             .apply($$0, ebn::new)
    );
    private static final Logger b = LogUtils.getLogger();
-   private final dtg d;
-   private final dtg e;
+   private final dti d;
+   private final dti e;
    private final int f;
 
-   private ebn(dtg $$0, dtg $$1, int $$2) {
+   private ebn(dti $$0, dti $$1, int $$2) {
       this.d = $$0;
       this.e = $$1;
       this.f = $$2;
    }
 
-   public static ebn a(dtg $$0, dtg $$1, int $$2) {
+   public static ebn a(dti $$0, dti $$1, int $$2) {
       return new ebn($$0, $$1, $$2);
    }
 
+   public static ebn a(dti $$0, dti $$1) {
+      return a($$0, $$1, 0);
+   }
+
    @Override
-   public int a(axd $$0, dtj $$1) {
+   public int a(axd $$0, dtl $$1) {
       int $$2 = this.d.a($$1);
       int $$3 = this.e.a($$1);
-      if ($$3 - $$2 - this.f + 1 <= 0) {
+      if ($$2 > $$3) {
          b.warn("Empty height range: {}", this);
          return $$2;
       } else {
-         int $$4 = aww.a($$0, $$2 + this.f, $$3);
-         int $$5 = aww.a($$0, $$2, $$4 - 1);
-         return aww.a($$0, $$2, $$5 - 1 + this.f);
+         int $$4 = $$3 - $$2;
+         if (this.f >= $$4) {
+            return aww.b($$0, $$2, $$3);
+         } else {
+            int $$5 = ($$4 - this.f) / 2;
+            int $$6 = $$4 - $$5;
+            return $$2 + aww.b($$0, 0, $$6) + aww.b($$0, 0, $$5);
+         }
       }
    }
 
    @Override
-   public ebk<?> a() {
-      return ebk.d;
+   public ebm<?> a() {
+      return ebm.e;
    }
 
    @Override
    public String toString() {
-      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
+      return this.f == 0 ? "triangle (" + this.d + "-" + this.e + ")" : "trapezoid(" + this.f + ") in [" + this.d + "-" + this.e + "]";
    }
 }

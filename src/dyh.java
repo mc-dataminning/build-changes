@@ -1,30 +1,21 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public record dyh(int b, int c, int d, il<ecg> e) implements dxu {
+public class dyh implements dxw {
    public static final Codec<dyh> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               awe.k.fieldOf("tries").orElse(128).forGetter(dyh::a),
-               awe.j.fieldOf("xz_spread").orElse(7).forGetter(dyh::b),
-               awe.j.fieldOf("y_spread").orElse(3).forGetter(dyh::c),
-               ecg.b.fieldOf("feature").forGetter(dyh::d)
-            )
-            .apply($$0, dyh::new)
+      $$0 -> $$0.group(eci.b.fieldOf("feature_true").forGetter($$0x -> $$0x.b), eci.b.fieldOf("feature_false").forGetter($$0x -> $$0x.c)).apply($$0, dyh::new)
    );
+   public final il<eci> b;
+   public final il<eci> c;
 
-   public int a() {
-      return this.b;
+   public dyh(il<eci> $$0, il<eci> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public il<ecg> d() {
-      return this.e;
+   @Override
+   public Stream<dvf<?, ?>> e() {
+      return Stream.concat(this.b.a().a(), this.c.a().a());
    }
 }

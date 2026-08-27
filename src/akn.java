@@ -95,7 +95,7 @@ public class akn {
                                                                                  fi.a($$0x, "uuid"),
                                                                                  StringArgumentType.getString($$0x, "name"),
                                                                                  DoubleArgumentType.getDouble($$0x, "value"),
-                                                                                 bqt.a.a
+                                                                                 bqu.a.a
                                                                               )
                                                                         )
                                                                   ))
@@ -109,7 +109,7 @@ public class akn {
                                                                               fi.a($$0x, "uuid"),
                                                                               StringArgumentType.getString($$0x, "name"),
                                                                               DoubleArgumentType.getDouble($$0x, "value"),
-                                                                              bqt.a.c
+                                                                              bqu.a.c
                                                                            )
                                                                      )
                                                                ))
@@ -123,7 +123,7 @@ public class akn {
                                                                            fi.a($$0x, "uuid"),
                                                                            StringArgumentType.getString($$0x, "name"),
                                                                            DoubleArgumentType.getDouble($$0x, "value"),
-                                                                           bqt.a.b
+                                                                           bqu.a.b
                                                                         )
                                                                   )
                                                             )
@@ -168,8 +168,8 @@ public class akn {
       );
    }
 
-   private static bqr a(bow $$0, il<bqq> $$1) throws CommandSyntaxException {
-      bqr $$2 = a($$0).eT().a($$1);
+   private static bqs a(box $$0, il<bqr> $$1) throws CommandSyntaxException {
+      bqs $$2 = a($$0).eT().a($$1);
       if ($$2 == null) {
          throw b.create($$0.ad(), a($$1));
       } else {
@@ -177,16 +177,16 @@ public class akn {
       }
    }
 
-   private static bpo a(bow $$0) throws CommandSyntaxException {
-      if (!($$0 instanceof bpo)) {
+   private static bpp a(box $$0) throws CommandSyntaxException {
+      if (!($$0 instanceof bpp)) {
          throw a.create($$0.ad());
       } else {
-         return (bpo)$$0;
+         return (bpp)$$0;
       }
    }
 
-   private static bpo b(bow $$0, il<bqq> $$1) throws CommandSyntaxException {
-      bpo $$2 = a($$0);
+   private static bpp b(box $$0, il<bqr> $$1) throws CommandSyntaxException {
+      bpp $$2 = a($$0);
       if (!$$2.eT().b($$1)) {
          throw b.create($$0.ad(), a($$1));
       } else {
@@ -194,23 +194,23 @@ public class akn {
       }
    }
 
-   private static int a(du $$0, bow $$1, il<bqq> $$2, double $$3) throws CommandSyntaxException {
-      bpo $$4 = b($$1, $$2);
+   private static int a(du $$0, box $$1, il<bqr> $$2, double $$3) throws CommandSyntaxException {
+      bpp $$4 = b($$1, $$2);
       double $$5 = $$4.g($$2);
       $$0.a(() -> vu.a("commands.attribute.value.get.success", a($$2), $$1.ad(), $$5), false);
       return (int)($$5 * $$3);
    }
 
-   private static int b(du $$0, bow $$1, il<bqq> $$2, double $$3) throws CommandSyntaxException {
-      bpo $$4 = b($$1, $$2);
+   private static int b(du $$0, box $$1, il<bqr> $$2, double $$3) throws CommandSyntaxException {
+      bpp $$4 = b($$1, $$2);
       double $$5 = $$4.h($$2);
       $$0.a(() -> vu.a("commands.attribute.base_value.get.success", a($$2), $$1.ad(), $$5), false);
       return (int)($$5 * $$3);
    }
 
-   private static int a(du $$0, bow $$1, il<bqq> $$2, UUID $$3, double $$4) throws CommandSyntaxException {
-      bpo $$5 = b($$1, $$2);
-      bqs $$6 = $$5.eT();
+   private static int a(du $$0, box $$1, il<bqr> $$2, UUID $$3, double $$4) throws CommandSyntaxException {
+      bpp $$5 = b($$1, $$2);
+      bqt $$6 = $$5.eT();
       if (!$$6.a($$2, $$3)) {
          throw c.create($$1.ad(), a($$2), $$3);
       } else {
@@ -220,15 +220,15 @@ public class akn {
       }
    }
 
-   private static int c(du $$0, bow $$1, il<bqq> $$2, double $$3) throws CommandSyntaxException {
+   private static int c(du $$0, box $$1, il<bqr> $$2, double $$3) throws CommandSyntaxException {
       a($$1, $$2).a($$3);
       $$0.a(() -> vu.a("commands.attribute.base_value.set.success", a($$2), $$1.ad(), $$3), false);
       return 1;
    }
 
-   private static int a(du $$0, bow $$1, il<bqq> $$2, UUID $$3, String $$4, double $$5, bqt.a $$6) throws CommandSyntaxException {
-      bqr $$7 = a($$1, $$2);
-      bqt $$8 = new bqt($$3, $$4, $$5, $$6);
+   private static int a(du $$0, box $$1, il<bqr> $$2, UUID $$3, String $$4, double $$5, bqu.a $$6) throws CommandSyntaxException {
+      bqs $$7 = a($$1, $$2);
+      bqu $$8 = new bqu($$3, $$4, $$5, $$6);
       if ($$7.a($$8)) {
          throw d.create($$1.ad(), a($$2), $$3);
       } else {
@@ -238,8 +238,8 @@ public class akn {
       }
    }
 
-   private static int a(du $$0, bow $$1, il<bqq> $$2, UUID $$3) throws CommandSyntaxException {
-      bqr $$4 = a($$1, $$2);
+   private static int a(du $$0, box $$1, il<bqr> $$2, UUID $$3) throws CommandSyntaxException {
+      bqs $$4 = a($$1, $$2);
       if ($$4.c($$3)) {
          $$0.a(() -> vu.a("commands.attribute.modifier.remove.success", vu.a($$3), a($$2), $$1.ad()), false);
          return 1;
@@ -248,7 +248,7 @@ public class akn {
       }
    }
 
-   private static vu a(il<bqq> $$0) {
+   private static vu a(il<bqr> $$0) {
       return vu.c($$0.a().c());
    }
 }

@@ -1,50 +1,37 @@
-import javax.annotation.Nullable;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Optional;
 
 public class gom {
-   private final got a;
-   private final ezk b;
-   @Nullable
-   private fdr c;
+   private static final int a = -1;
+   private Optional<Instant> b = Optional.empty();
+   private long c;
+   private long d;
 
-   public gom(got $$0, ezk $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   private void a() {
-      if (this.c != null) {
-         this.a.a(this.c);
-      }
-
-      vu $$0 = vu.c("tutorial.bundleInsert.title");
-      vu $$1 = vu.c("tutorial.bundleInsert.description");
-      this.c = new fdr(fdr.a.g, $$0, $$1, true);
-      this.a.a(this.c, 160);
-   }
-
-   private void b() {
-      if (this.c != null) {
-         this.a.a(this.c);
-         this.c = null;
-      }
-
-      if (!this.b.t) {
-         this.b.t = true;
-         this.b.at();
+   public void a() {
+      this.d = -1L;
+      if (this.b.isEmpty()) {
+         this.b = Optional.of(Instant.now());
       }
    }
 
-   public void a(cqk $$0, cqk $$1, clw $$2) {
-      if (!this.b.t) {
-         if (!$$0.b() && $$1.a(cqn.qT)) {
-            if ($$2 == clw.a) {
-               this.a();
-            } else if ($$2 == clw.b) {
-               this.b();
-            }
-         } else if ($$0.a(cqn.qT) && !$$1.b() && $$2 == clw.b) {
-            this.b();
-         }
+   public void a(long $$0) {
+      if (this.d != -1L) {
+         this.c = this.c + Math.max(0L, $$0 - this.d);
       }
+
+      this.d = $$0;
+   }
+
+   private int a(Instant $$0) {
+      Duration $$1 = Duration.between($$0, Instant.now());
+      return (int)$$1.toSeconds();
+   }
+
+   public void a(gob $$0) {
+      this.b.ifPresent($$1 -> $$0.send(goc.e, $$1x -> {
+            $$1x.a(goe.p, this.a($$1));
+            $$1x.a(goe.q, (int)this.c);
+         }));
    }
 }

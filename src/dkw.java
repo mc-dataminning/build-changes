@@ -1,189 +1,245 @@
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-public class dkw extends dkg implements bnk, erc.a {
-   public static final String e = "sherds";
-   public static final String f = "item";
-   public static final int g = 1;
-   public long h;
-   @Nullable
-   public dkw.b i;
-   private dkw.a l;
-   private cqk m = cqk.h;
-   @Nullable
-   protected ajh j;
-   protected long k;
+public class dkw extends dlm implements cmg {
+   public static final int e = 3;
+   public static final int f = 3;
+   public static final int g = 9;
+   public static final int h = 1;
+   public static final int i = 0;
+   public static final int j = 9;
+   public static final int k = 10;
+   private iu<cqm> r = iu.a(9, cqm.h);
+   private int s = 0;
+   protected final cma l = new cma() {
+      private final int[] b = new int[9];
+      private int c = 0;
 
-   public dkw(ib $$0, dmz $$1) {
-      super(dki.O, $$0, $$1);
-      this.l = dkw.a.a;
+      @Override
+      public int a(int $$0) {
+         return $$0 == 9 ? this.c : this.b[$$0];
+      }
+
+      @Override
+      public void a(int $$0, int $$1) {
+         if ($$0 == 9) {
+            this.c = $$1;
+         } else {
+            this.b[$$0] = $$1;
+         }
+      }
+
+      @Override
+      public int a() {
+         return 10;
+      }
+   };
+
+   public dkw(ib $$0, dnb $$1) {
+      super(dkk.P, $$0, $$1);
    }
 
    @Override
-   protected void b(ta $$0, in.a $$1) {
-      super.b($$0, $$1);
-      this.l.a($$0);
-      if (!this.b($$0) && !this.m.b()) {
-         $$0.a("item", this.m.b(new ta()));
+   protected vu k() {
+      return vu.c("container.crafter");
+   }
+
+   @Override
+   protected clq a(int $$0, cit $$1) {
+      return new cme($$0, $$1, this, this.l);
+   }
+
+   public void a(int $$0, boolean $$1) {
+      if (this.e($$0)) {
+         this.l.a($$0, $$1 ? 0 : 1);
+         this.e();
       }
+   }
+
+   public boolean c(int $$0) {
+      return $$0 >= 0 && $$0 < 9 ? this.l.a($$0) == 1 : false;
+   }
+
+   @Override
+   public boolean b(int $$0, cqm $$1) {
+      if (this.l.a($$0) == 1) {
+         return false;
+      } else {
+         cqm $$2 = this.r.get($$0);
+         int $$3 = $$2.M();
+         if ($$3 >= $$2.g()) {
+            return false;
+         } else {
+            return $$2.b() ? true : !this.a($$3, $$2, $$0);
+         }
+      }
+   }
+
+   private boolean a(int $$0, cqm $$1, int $$2) {
+      for (int $$3 = $$2 + 1; $$3 < 9; $$3++) {
+         if (!this.c($$3)) {
+            cqm $$4 = this.a($$3);
+            if ($$4.b() || $$4.M() < $$0 && cqm.c($$4, $$1)) {
+               return true;
+            }
+         }
+      }
+
+      return false;
    }
 
    @Override
    public void a(ta $$0, in.a $$1) {
       super.a($$0, $$1);
-      this.l = dkw.a.b($$0);
+      this.s = $$0.h("crafting_ticks_remaining");
+      this.r = iu.a(this.b(), cqm.h);
       if (!this.c_($$0)) {
-         if ($$0.b("item", 10)) {
-            this.m = cqk.a($$0.p("item"));
-         } else {
-            this.m = cqk.h;
+         bmx.b($$0, this.r);
+      }
+
+      int[] $$2 = $$0.n("disabled_slots");
+
+      for (int $$3 = 0; $$3 < 9; $$3++) {
+         this.l.a($$3, 0);
+      }
+
+      for (int $$4 : $$2) {
+         if (this.e($$4)) {
+            this.l.a($$4, 1);
+         }
+      }
+
+      this.l.a(9, $$0.h("triggered"));
+   }
+
+   @Override
+   protected void b(ta $$0, in.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("crafting_ticks_remaining", this.s);
+      if (!this.b($$0)) {
+         bmx.a($$0, this.r);
+      }
+
+      this.c($$0);
+      this.d($$0);
+   }
+
+   @Override
+   public int b() {
+      return 9;
+   }
+
+   @Override
+   public boolean ai_() {
+      for (cqm $$0 : this.r) {
+         if (!$$0.b()) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   public cqm a(int $$0) {
+      return this.r.get($$0);
+   }
+
+   @Override
+   public void a(int $$0, cqm $$1) {
+      if (this.c($$0)) {
+         this.a($$0, true);
+      }
+
+      super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(ciu $$0) {
+      return bmw.a(this, $$0);
+   }
+
+   @Override
+   public iu<cqm> j() {
+      return this.r;
+   }
+
+   @Override
+   protected void a(iu<cqm> $$0) {
+      this.r = $$0;
+   }
+
+   @Override
+   public int f() {
+      return 3;
+   }
+
+   @Override
+   public int g() {
+      return 3;
+   }
+
+   @Override
+   public void a(ciy $$0) {
+      for (cqm $$1 : this.r) {
+         $$0.a($$1);
+      }
+   }
+
+   private void c(ta $$0) {
+      IntList $$1 = new IntArrayList();
+
+      for (int $$2 = 0; $$2 < 9; $$2++) {
+         if (this.c($$2)) {
+            $$1.add($$2);
+         }
+      }
+
+      $$0.b("disabled_slots", $$1);
+   }
+
+   private void d(ta $$0) {
+      $$0.a("triggered", this.l.a(9));
+   }
+
+   public void a(boolean $$0) {
+      this.l.a(9, $$0 ? 1 : 0);
+   }
+
+   @VisibleForTesting
+   public boolean l() {
+      return this.l.a(9) == 1;
+   }
+
+   public static void a(cxb $$0, ib $$1, dnb $$2, dkw $$3) {
+      int $$4 = $$3.s - 1;
+      if ($$4 >= 0) {
+         $$3.s = $$4;
+         if ($$4 == 0) {
+            $$0.a($$1, $$2.a(dbv.b, Boolean.valueOf(false)), 3);
          }
       }
    }
 
-   public aat j() {
-      return aat.a(this);
+   public void d(int $$0) {
+      this.s = $$0;
    }
 
-   @Override
-   public ta a(in.a $$0) {
-      return this.d($$0);
-   }
+   public int s() {
+      int $$0 = 0;
 
-   public ih k() {
-      return this.n().c(dnp.R);
-   }
-
-   public dkw.a l() {
-      return this.l;
-   }
-
-   public void b(cqk $$0) {
-      this.l = dkw.a.b(cof.a($$0));
-   }
-
-   public cqk s() {
-      return a(this.l);
-   }
-
-   public static cqk a(dkw.a $$0) {
-      cqk $$1 = cqn.eB.am_();
-      ta $$2 = $$0.a(new ta());
-      cof.a($$1, dki.O, $$2);
-      return $$1;
-   }
-
-   @Nullable
-   @Override
-   public ajh aA_() {
-      return this.j;
-   }
-
-   @Override
-   public void a(@Nullable ajh $$0) {
-      this.j = $$0;
-   }
-
-   @Override
-   public long aB_() {
-      return this.k;
-   }
-
-   @Override
-   public void a(long $$0) {
-      this.k = $$0;
-   }
-
-   @Override
-   public cqk f() {
-      this.e_(null);
-      return this.m;
-   }
-
-   @Override
-   public cqk c(int $$0) {
-      this.e_(null);
-      cqk $$1 = this.m.a($$0);
-      if (this.m.b()) {
-         this.m = cqk.h;
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public void a(cqk $$0) {
-      this.e_(null);
-      this.m = $$0;
-   }
-
-   @Override
-   public dkg t() {
-      return this;
-   }
-
-   public void a(dkw.b $$0) {
-      if (this.o != null && !this.o.x_()) {
-         this.o.a(this.aC_(), this.n().b(), 1, $$0.ordinal());
-      }
-   }
-
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if (this.o != null && $$0 == 1 && $$1 >= 0 && $$1 < dkw.b.values().length) {
-         this.h = this.o.X();
-         this.i = dkw.b.values()[$$1];
-         return true;
-      } else {
-         return super.a_($$0, $$1);
-      }
-   }
-
-   public static record a(cqf b, cqf c, cqf d, cqf e) {
-      public static final dkw.a a = new dkw.a(cqn.qK, cqn.qK, cqn.qK, cqn.qK);
-
-      public ta a(ta $$0) {
-         if (this.equals(a)) {
-            return $$0;
-         } else {
-            tg $$1 = new tg();
-            this.a().forEach($$1x -> $$1.add(tv.a(ki.h.b($$1x).toString())));
-            $$0.a("sherds", $$1);
-            return $$0;
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         cqm $$2 = this.a($$1);
+         if (!$$2.b() || this.c($$1)) {
+            $$0++;
          }
       }
 
-      public Stream<cqf> a() {
-         return Stream.of(this.b, this.c, this.d, this.e);
-      }
-
-      public static dkw.a b(@Nullable ta $$0) {
-         if ($$0 != null && $$0.b("sherds", 9)) {
-            tg $$1 = $$0.c("sherds", 8);
-            return new dkw.a(a($$1, 0), a($$1, 1), a($$1, 2), a($$1, 3));
-         } else {
-            return a;
-         }
-      }
-
-      private static cqf a(tg $$0, int $$1) {
-         if ($$1 >= $$0.size()) {
-            return cqn.qK;
-         } else {
-            tx $$2 = $$0.k($$1);
-            return ki.h.a(ajh.a($$2.s_()));
-         }
-      }
+      return $$0;
    }
 
-   public static enum b {
-      a(7),
-      b(10);
-
-      public final int c;
-
-      private b(int $$0) {
-         this.c = $$0;
-      }
+   private boolean e(int $$0) {
+      return $$0 > -1 && $$0 < 9 && this.r.get($$0).b();
    }
 }

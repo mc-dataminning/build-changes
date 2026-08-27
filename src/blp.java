@@ -1,47 +1,52 @@
-import java.util.List;
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class blp {
-   private blp() {
+public interface blp {
+   blo a();
+
+   static <T> blp.b<T> a(T $$0, int $$1) {
+      return new blp.b<>($$0, blo.a($$1));
    }
 
-   public static int a(List<? extends blo> $$0) {
-      long $$1 = 0L;
+   public static class a implements blp {
+      private final blo a;
 
-      for (blo $$2 : $$0) {
-         $$1 += (long)$$2.a().a();
+      public a(int $$0) {
+         this.a = blo.a($$0);
       }
 
-      if ($$1 > 2147483647L) {
-         throw new IllegalArgumentException("Sum of weights must be <= 2147483647");
-      } else {
-         return (int)$$1;
+      public a(blo $$0) {
+         this.a = $$0;
       }
-   }
 
-   public static <T extends blo> Optional<T> a(axd $$0, List<T> $$1, int $$2) {
-      if ($$2 < 0) {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Negative total weight in getRandomItem"));
-      } else if ($$2 == 0) {
-         return Optional.empty();
-      } else {
-         int $$3 = $$0.a($$2);
-         return a($$1, $$3);
+      @Override
+      public blo a() {
+         return this.a;
       }
    }
 
-   public static <T extends blo> Optional<T> a(List<T> $$0, int $$1) {
-      for (T $$2 : $$0) {
-         $$1 -= $$2.a().a();
-         if ($$1 < 0) {
-            return Optional.of($$2);
-         }
+   public static class b<T> implements blp {
+      private final T a;
+      private final blo b;
+
+      b(T $$0, blo $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      return Optional.empty();
-   }
+      public T b() {
+         return this.a;
+      }
 
-   public static <T extends blo> Optional<T> a(axd $$0, List<T> $$1) {
-      return a($$0, $$1, a($$1));
+      @Override
+      public blo a() {
+         return this.b;
+      }
+
+      public static <E> Codec<blp.b<E>> a(Codec<E> $$0) {
+         return RecordCodecBuilder.create(
+            $$1 -> $$1.group($$0.fieldOf("data").forGetter(blp.b::b), blo.a.fieldOf("weight").forGetter(blp.b::a)).apply($$1, blp.b::new)
+         );
+      }
    }
 }

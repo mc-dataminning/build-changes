@@ -1,95 +1,76 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dei extends cyt {
-   public static final MapCodec<dei> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(cxy.c.d.fieldOf("precipitation").forGetter($$0x -> $$0x.j), ji.b.fieldOf("interactions").forGetter($$0x -> $$0x.c), u())
-            .apply($$0, dei::new)
-   );
-   public static final int e = 1;
-   public static final int f = 3;
-   public static final dnz g = dnp.aK;
-   private static final int h = 6;
-   private static final double i = 3.0;
-   private final cxy.c j;
+public class dei extends dac implements dhc {
+   public static final MapCodec<dei> a = b(dei::new);
+   public static final dns b = dnr.j;
+   public static final dns c = dnr.C;
+   protected static final eqm d = eqj.a(dac.a(5.0, 0.0, 5.0, 11.0, 7.0, 11.0), dac.a(6.0, 7.0, 6.0, 10.0, 9.0, 10.0));
+   protected static final eqm e = eqj.a(dac.a(5.0, 1.0, 5.0, 11.0, 8.0, 11.0), dac.a(6.0, 8.0, 6.0, 10.0, 10.0, 10.0));
 
    @Override
    public MapCodec<dei> a() {
-      return d;
+      return a;
    }
 
-   public dei(cxy.c $$0, ji.a $$1, dmy.d $$2) {
-      super($$2, $$1);
-      this.j = $$0;
-      this.k(this.E.b().a(g, Integer.valueOf(1)));
+   public dei(dna.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)));
    }
 
+   @Nullable
    @Override
-   public boolean d(dmz $$0) {
-      return $$0.c(g) == 3;
-   }
+   public dnb a(csu $$0) {
+      eip $$1 = $$0.q().b_($$0.a());
 
-   @Override
-   protected boolean a(eim $$0) {
-      return $$0 == eio.c && this.j == cxy.c.b;
-   }
-
-   @Override
-   protected double b(dmz $$0) {
-      return (6.0 + (double)$$0.c(g).intValue() * 3.0) / 16.0;
-   }
-
-   @Override
-   protected void a(dmz $$0, cwz $$1, ib $$2, bow $$3) {
-      if (!$$1.B && $$3.bN() && this.a($$0, $$2, $$3)) {
-         $$3.aA();
-         if ($$3.a($$1, $$2)) {
-            this.e($$0, $$1, $$2);
+      for (ih $$2 : $$0.f()) {
+         if ($$2.o() == ih.a.b) {
+            dnb $$3 = this.o().a(b, Boolean.valueOf($$2 == ih.b));
+            if ($$3.a((cxe)$$0.q(), $$0.a())) {
+               return $$3.a(c, Boolean.valueOf($$1.a() == eiq.c));
+            }
          }
       }
+
+      return null;
    }
 
-   private void e(dmz $$0, cwz $$1, ib $$2) {
-      if (this.j == cxy.c.c) {
-         d(dac.fu.o().a(g, $$0.c(g)), $$1, $$2);
-      } else {
-         d($$0, $$1, $$2);
+   @Override
+   protected eqm a(dnb $$0, cwh $$1, ib $$2, epy $$3) {
+      return $$0.c(b) ? e : d;
+   }
+
+   @Override
+   protected void a(dnc.a<dac, dnb> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   protected boolean a(dnb $$0, cxe $$1, ib $$2) {
+      ih $$3 = m($$0).g();
+      return dac.a($$1, $$2.a($$3), $$3.g());
+   }
+
+   protected static ih m(dnb $$0) {
+      return $$0.c(b) ? ih.a : ih.b;
+   }
+
+   @Override
+   protected dnb a(dnb $$0, ih $$1, dnb $$2, cxc $$3, ib $$4, ib $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, eiq.c, eiq.c.a($$3));
       }
-   }
 
-   public static void d(dmz $$0, cwz $$1, ib $$2) {
-      int $$3 = $$0.c(g) - 1;
-      dmz $$4 = $$3 == 0 ? dac.ft.o() : $$0.a(g, Integer.valueOf($$3));
-      $$1.b($$2, $$4);
-      $$1.a(drn.c, $$2, drn.a.a($$4));
+      return m($$0).g() == $$1 && !$$0.a($$3, $$4) ? dae.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void a(dmz $$0, cwz $$1, ib $$2, cxy.c $$3) {
-      if (dav.a($$1, $$3) && $$0.c(g) != 3 && $$3 == this.j) {
-         dmz $$4 = $$0.a(g);
-         $$1.b($$2, $$4);
-         $$1.a(drn.c, $$2, drn.a.a($$4));
-      }
+   protected eip c_(dnb $$0) {
+      return $$0.c(c) ? eiq.c.a(false) : super.c_($$0);
    }
 
    @Override
-   protected int a(dmz $$0, cwz $$1, ib $$2) {
-      return $$0.c(g);
-   }
-
-   @Override
-   protected void a(dna.a<daa, dmz> $$0) {
-      $$0.a(g);
-   }
-
-   @Override
-   protected void a(dmz $$0, cwz $$1, ib $$2, eim $$3) {
-      if (!this.d($$0)) {
-         dmz $$4 = $$0.a(g, Integer.valueOf($$0.c(g) + 1));
-         $$1.b($$2, $$4);
-         $$1.a(drn.c, $$2, drn.a.a($$4));
-         $$1.c(1047, $$2, 0);
-      }
+   protected boolean a(dnb $$0, cwh $$1, ib $$2, eje $$3) {
+      return false;
    }
 }

@@ -8,7 +8,7 @@ public class bq extends cx<bq.a> {
       return bq.a.a;
    }
 
-   public void a(apg $$0, bnv $$1, float $$2, float $$3, boolean $$4) {
+   public void a(apg $$0, bnw $$1, float $$2, float $$3, boolean $$4) {
       this.a($$0, $$5 -> $$5.a($$0, $$1, $$2, $$3, $$4));
    }
 
@@ -29,7 +29,7 @@ public class bq extends cx<bq.a> {
          return am.i.a(new bq.a(Optional.empty(), Optional.of($$0.b())));
       }
 
-      public boolean a(apg $$0, bnv $$1, float $$2, float $$3, boolean $$4) {
+      public boolean a(apg $$0, bnw $$1, float $$2, float $$3, boolean $$4) {
          return !this.c.isPresent() || this.c.get().a($$0, $$1, $$2, $$3, $$4);
       }
 

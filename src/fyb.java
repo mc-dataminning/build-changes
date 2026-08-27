@@ -1,24 +1,35 @@
-import java.util.Map;
-import java.util.stream.Collectors;
+public class fyb {
+   private final long[] a;
+   private int b;
+   private int c;
 
-public class fyb implements AutoCloseable {
-   public static final int a = fxy.H().stream().mapToInt(fxy::I).sum();
-   private final Map<fxy, etu> b = fxy.H().stream().collect(Collectors.toMap($$0 -> (fxy)$$0, $$0 -> new etu($$0.I())));
-
-   public etu a(fxy $$0) {
-      return this.b.get($$0);
+   public fyb(int $$0) {
+      this.a = new long[$$0];
    }
 
-   public void a() {
-      this.b.values().forEach(etu::g);
-   }
+   public long a(long $$0) {
+      if (this.b < this.a.length) {
+         this.b++;
+      }
 
-   public void b() {
-      this.b.values().forEach(etu::h);
-   }
+      this.a[this.c] = $$0;
+      this.c = (this.c + 1) % this.a.length;
+      long $$1 = Long.MAX_VALUE;
+      long $$2 = Long.MIN_VALUE;
+      long $$3 = 0L;
 
-   @Override
-   public void close() {
-      this.b.values().forEach(etu::i);
+      for (int $$4 = 0; $$4 < this.b; $$4++) {
+         long $$5 = this.a[$$4];
+         $$3 += $$5;
+         $$1 = Math.min($$1, $$5);
+         $$2 = Math.max($$2, $$5);
+      }
+
+      if (this.b > 2) {
+         $$3 -= $$1 + $$2;
+         return $$3 / (long)(this.b - 2);
+      } else {
+         return $$3 > 0L ? (long)this.b / $$3 : 0L;
+      }
    }
 }

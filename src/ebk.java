@@ -1,16 +1,34 @@
 import com.mojang.serialization.Codec;
 
-public interface ebk<P extends ebj> {
-   ebk<ebi> a = a("constant", ebi.b);
-   ebk<ebm> b = a("uniform", ebm.a);
-   ebk<ebh> c = a("biased_to_bottom", ebh.a);
-   ebk<ebn> d = a("very_biased_to_bottom", ebn.a);
-   ebk<ebl> e = a("trapezoid", ebl.a);
-   ebk<ebo> f = a("weighted_list", ebo.a);
+public class ebk extends ebl {
+   public static final ebk a = new ebk(dti.a(0));
+   public static final Codec<ebk> b = awe.e(dti.a, dti.a.fieldOf("value").codec()).xmap(ebk::new, ebk::b);
+   private final dti d;
 
-   Codec<P> codec();
+   public static ebk a(dti $$0) {
+      return new ebk($$0);
+   }
 
-   private static <P extends ebj> ebk<P> a(String $$0, Codec<P> $$1) {
-      return iy.a(ki.N, $$0, () -> $$1);
+   private ebk(dti $$0) {
+      this.d = $$0;
+   }
+
+   public dti b() {
+      return this.d;
+   }
+
+   @Override
+   public int a(axd $$0, dtl $$1) {
+      return this.d.a($$1);
+   }
+
+   @Override
+   public ebm<?> a() {
+      return ebm.a;
+   }
+
+   @Override
+   public String toString() {
+      return this.d.toString();
    }
 }

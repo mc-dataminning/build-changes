@@ -9,15 +9,15 @@ public interface aot {
       }
 
       @Override
-      public void a(Consumer<cwg> $$0) {
+      public void a(Consumer<cwi> $$0) {
       }
    };
 
-   static aot a(cwg $$0, int $$1) {
+   static aot a(cwi $$0, int $$1) {
       return new aot.a($$0, $$1);
    }
 
-   static void a(aot $$0, aot $$1, Consumer<cwg> $$2, Consumer<cwg> $$3) {
+   static void a(aot $$0, aot $$1, Consumer<cwi> $$2, Consumer<cwi> $$3) {
       if (!$$0.equals($$1)) {
          if ($$0 instanceof aot.a $$4 && $$1 instanceof aot.a $$5 && $$4.a($$5)) {
             int $$6 = Math.min($$4.c(), $$5.c());
@@ -31,9 +31,9 @@ public interface aot {
                   boolean $$13 = $$5.a($$10, $$11);
                   if ($$12 != $$13) {
                      if ($$13) {
-                        $$2.accept(new cwg($$10, $$11));
+                        $$2.accept(new cwi($$10, $$11));
                      } else {
-                        $$3.accept(new cwg($$10, $$11));
+                        $$3.accept(new cwi($$10, $$11));
                      }
                   }
                }
@@ -47,7 +47,7 @@ public interface aot {
       }
    }
 
-   default boolean a(cwg $$0) {
+   default boolean a(cwi $$0) {
       return this.a($$0.e, $$0.f);
    }
 
@@ -57,7 +57,7 @@ public interface aot {
 
    boolean a(int var1, int var2, boolean var3);
 
-   void a(Consumer<cwg> var1);
+   void a(Consumer<cwi> var1);
 
    default boolean b(int $$0, int $$1) {
       return this.a($$0, $$1, false);
@@ -77,7 +77,7 @@ public interface aot {
       return $$10 < (long)$$11;
    }
 
-   public static record a(cwg b, int c) implements aot {
+   public static record a(cwi b, int c) implements aot {
       int c() {
          return this.b.e - this.c - 1;
       }
@@ -105,17 +105,17 @@ public interface aot {
       }
 
       @Override
-      public void a(Consumer<cwg> $$0) {
+      public void a(Consumer<cwi> $$0) {
          for (int $$1 = this.c(); $$1 <= this.e(); $$1++) {
             for (int $$2 = this.d(); $$2 <= this.f(); $$2++) {
                if (this.a($$1, $$2)) {
-                  $$0.accept(new cwg($$1, $$2));
+                  $$0.accept(new cwi($$1, $$2));
                }
             }
          }
       }
 
-      public cwg a() {
+      public cwi a() {
          return this.b;
       }
 

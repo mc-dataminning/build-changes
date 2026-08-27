@@ -1,56 +1,67 @@
-import com.mojang.serialization.Codec;
+public class ctn extends cth {
+   public ctn(ctf $$0) {
+      super($$0);
+   }
 
-public interface ctn<C extends bmv> {
-   Codec<ctn<?>> h = ki.t.q().dispatch(ctn::ar_, ctr::a);
-   xs<vf, ctn<?>> i = xq.a(kj.Y).b(ctn::ar_, ctr::b);
+   public boolean a(cmg $$0, cxb $$1) {
+      int $$2 = 0;
+      cqm $$3 = cqm.h;
 
-   boolean a(C var1, cwz var2);
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cqm $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if ($$5.a(cqp.rT)) {
+               if (!$$3.b()) {
+                  return false;
+               }
 
-   cqk a(C var1, iz var2);
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cqp.uh)) {
+                  return false;
+               }
 
-   boolean a(int var1, int var2);
-
-   cqk a(iz var1);
-
-   default iu<cqk> a(C $$0) {
-      iu<cqk> $$1 = iu.a($$0.b(), cqk.h);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cqf $$3 = $$0.a($$2).d();
-         if ($$3.u()) {
-            $$1.set($$2, new cqk($$3.t()));
+               $$2++;
+            }
          }
       }
 
-      return $$1;
+      return !$$3.b() && $$2 > 0;
    }
 
-   default iu<ctk> a() {
-      return iu.a();
+   public cqm a(cmg $$0, iz $$1) {
+      int $$2 = 0;
+      cqm $$3 = cqm.h;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cqm $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if ($$5.a(cqp.rT)) {
+               if (!$$3.b()) {
+                  return cqm.h;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cqp.uh)) {
+                  return cqm.h;
+               }
+
+               $$2++;
+            }
+         }
+      }
+
+      return !$$3.b() && $$2 >= 1 ? $$3.c($$2 + 1) : cqm.h;
    }
 
-   default boolean aq_() {
-      return false;
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= 3 && $$1 >= 3;
    }
 
-   default boolean h() {
-      return true;
-   }
-
-   default String c() {
-      return "";
-   }
-
-   default cqk g() {
-      return new cqk(dac.cA);
-   }
-
-   ctr<?> ar_();
-
-   cts<?> e();
-
-   default boolean i() {
-      iu<ctk> $$0 = this.a();
-      return $$0.isEmpty() || $$0.stream().anyMatch($$0x -> $$0x.a().length == 0);
+   @Override
+   public ctt<?> ar_() {
+      return ctt.e;
    }
 }

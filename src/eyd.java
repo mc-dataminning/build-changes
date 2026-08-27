@@ -1,69 +1,53 @@
 import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class eyd extends eyg {
+public class eyd extends eyi {
    private static final Logger b = LogUtils.getLogger();
-   private static final vu c = vu.c("mco.snapshot.creating");
-   private final long d;
-   private final exz e;
-   private final String f;
-   private final String g;
-   private final euk h;
-   @Nullable
-   private eyi i;
-   @Nullable
-   private eyj j;
+   private static final vu c = vu.c("mco.configure.world.closing");
+   private final evi d;
+   private final ewr e;
 
-   public eyd(euk $$0, long $$1, exz $$2, String $$3, String $$4) {
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$0;
+   public eyd(evi $$0, ewr $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
    @Override
    public void run() {
-      eup $$0 = eup.a();
+      eur $$0 = eur.a();
 
-      try {
-         evg $$1 = $$0.a(Long.valueOf(this.d));
-         this.i = new eyi($$1.a, this.f, this.g);
-         this.j = new eyj(this.e, $$1.a, exe.a, () -> ezg.Q().execute(() -> euk.a($$1, this.h, true)));
+      for (int $$1 = 0; $$1 < 25; $$1++) {
          if (this.d()) {
             return;
          }
 
-         this.i.run();
-         if (this.d()) {
-            return;
-         }
+         try {
+            boolean $$2 = $$0.g(this.d.a);
+            if ($$2) {
+               this.e.b();
+               this.d.e = evi.c.a;
+               a(this.e);
+               break;
+            }
+         } catch (ewf var4) {
+            if (this.d()) {
+               return;
+            }
 
-         this.j.run();
-      } catch (ewc var3) {
-         b.error("Couldn't create snapshot world", var3);
-         this.a(var3);
-      } catch (Exception var4) {
-         b.error("Couldn't create snapshot world", var4);
-         this.a(var4);
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Failed to close server", var5);
+            this.a(var5);
+         }
       }
    }
 
    @Override
    public vu a() {
       return c;
-   }
-
-   @Override
-   public void b() {
-      super.b();
-      if (this.i != null) {
-         this.i.b();
-      }
-
-      if (this.j != null) {
-         this.j.b();
-      }
    }
 }

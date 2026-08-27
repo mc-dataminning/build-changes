@@ -1,4 +1,4 @@
-public record abs(cwg b) implements yb<aam> {
+public record abs(cwi b) implements yb<aam> {
    public static final xs<uu, abs> a = yb.a(abs::a, abs::new);
 
    private abs(uu $$0) {

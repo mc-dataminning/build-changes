@@ -1,7 +1,8 @@
-import java.util.Map;
-import java.util.UUID;
-import java.util.function.Consumer;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface glp {
-   void a(Map<UUID, aqv.c> var1, Consumer<aqv.b> var2);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface glp {
 }

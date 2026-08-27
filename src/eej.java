@@ -1,81 +1,81 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Function;
 import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.util.stream.Stream;
 
-public abstract class eej {
-   public static final Codec<eej> e = ki.ai.q().dispatch("element_type", eej::a, eek::codec);
-   private static final il<eha> a = il.a(new eha(List.of()));
-   @Nullable
-   private volatile eel.a b;
+public class eej extends eel {
+   public static final Codec<eej> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(eel.e.listOf().fieldOf("elements").forGetter($$0x -> $$0x.b), d()).apply($$0, eej::new)
+   );
+   private final List<eel> b;
 
-   protected static <E extends eej> RecordCodecBuilder<E, eel.a> d() {
-      return eel.a.c.fieldOf("projection").forGetter(eej::e);
-   }
-
-   protected eej(eel.a $$0) {
-      this.b = $$0;
-   }
-
-   public abstract jg a(ehd var1, dgm var2);
-
-   public abstract List<ehc.c> a(ehd var1, ib var2, dgm var3, axd var4);
-
-   public abstract ecu a(ehd var1, ib var2, dgm var3);
-
-   public abstract boolean a(ehd var1, cxu var2, cxs var3, dow var4, ib var5, ib var6, dgm var7, ecu var8, axd var9, boolean var10);
-
-   public abstract eek<?> a();
-
-   public void a(cxa $$0, ehc.c $$1, ib $$2, dgm $$3, axd $$4, ecu $$5) {
-   }
-
-   public eej a(eel.a $$0) {
-      this.b = $$0;
-      return this;
-   }
-
-   public eel.a e() {
-      eel.a $$0 = this.b;
-      if ($$0 == null) {
-         throw new IllegalStateException();
+   public eej(List<eel> $$0, een.a $$1) {
+      super($$1);
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Elements are empty");
       } else {
-         return $$0;
+         this.b = $$0;
+         this.b($$1);
       }
    }
 
-   public int f() {
-      return 1;
+   @Override
+   public jg a(ehf $$0, dgo $$1) {
+      int $$2 = 0;
+      int $$3 = 0;
+      int $$4 = 0;
+
+      for (eel $$5 : this.b) {
+         jg $$6 = $$5.a($$0, $$1);
+         $$2 = Math.max($$2, $$6.u());
+         $$3 = Math.max($$3, $$6.v());
+         $$4 = Math.max($$4, $$6.w());
+      }
+
+      return new jg($$2, $$3, $$4);
    }
 
-   public static Function<eel.a, eec> g() {
-      return $$0 -> eec.b;
+   @Override
+   public List<ehe.c> a(ehf $$0, ib $$1, dgo $$2, axd $$3) {
+      return this.b.get(0).a($$0, $$1, $$2, $$3);
    }
 
-   public static Function<eel.a, eeg> a(String $$0) {
-      return $$1 -> new eeg(Either.left(new ajh($$0)), a, $$1);
+   @Override
+   public ecw a(ehf $$0, ib $$1, dgo $$2) {
+      Stream<ecw> $$3 = this.b.stream().filter($$0x -> $$0x != eee.b).map($$3x -> $$3x.a($$0, $$1, $$2));
+      return ecw.b($$3::iterator).orElseThrow(() -> new IllegalStateException("Unable to calculate boundingbox for ListPoolElement"));
    }
 
-   public static Function<eel.a, eeg> a(String $$0, il<eha> $$1) {
-      return $$2 -> new eeg(Either.left(new ajh($$0)), $$1, $$2);
+   @Override
+   public boolean a(ehf $$0, cxw $$1, cxu $$2, doy $$3, ib $$4, ib $$5, dgo $$6, ecw $$7, axd $$8, boolean $$9) {
+      for (eel $$10 : this.b) {
+         if (!$$10.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   public static Function<eel.a, eei> b(String $$0) {
-      return $$1 -> new eei(Either.left(new ajh($$0)), a, $$1);
+   @Override
+   public eem<?> a() {
+      return eem.b;
    }
 
-   public static Function<eel.a, eei> b(String $$0, il<eha> $$1) {
-      return $$2 -> new eei(Either.left(new ajh($$0)), $$1, $$2);
+   @Override
+   public eel a(een.a $$0) {
+      super.a($$0);
+      this.b($$0);
+      return this;
    }
 
-   public static Function<eel.a, eed> a(il<ecg> $$0) {
-      return $$1 -> new eed($$0, $$1);
+   @Override
+   public String toString() {
+      return "List[" + this.b.stream().map(Object::toString).collect(Collectors.joining(", ")) + "]";
    }
 
-   public static Function<eel.a, eeh> b(List<Function<eel.a, ? extends eej>> $$0) {
-      return $$1 -> new eeh($$0.stream().map($$1x -> (eej)$$1x.apply($$1)).collect(Collectors.toList()), $$1);
+   private void b(een.a $$0) {
+      this.b.forEach($$1 -> $$1.a($$0));
    }
 }

@@ -1,11 +1,19 @@
-public interface dcv {
-   default void a(cwz $$0, ib $$1, dmz $$2, dmz $$3, cfc $$4) {
+import com.mojang.serialization.MapCodec;
+
+public class dcv extends daw implements cpo {
+   public static final MapCodec<dcv> c = b(dcv::new);
+
+   @Override
+   public MapCodec<dcv> a() {
+      return c;
    }
 
-   default void a(cwz $$0, ib $$1, cfc $$2) {
+   protected dcv(dna.d $$0) {
+      super($$0);
    }
 
-   default bnv a(bow $$0) {
-      return $$0.dN().a($$0);
+   @Override
+   public bpe i() {
+      return bpe.f;
    }
 }

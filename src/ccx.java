@@ -1,132 +1,137 @@
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
 
-public class ccx extends brg<ccv> {
-   public static final int c = 100;
-   public static final int d = 6;
-   public static final int e = 10;
-   private static final float h = 1.75F;
-   private static final float i = 0.75F;
-   public static final int f = 100;
-   public static final int g = 5;
-   private int j;
-   private int k;
-   private final atx l;
-   private final atx m;
-   private epr n;
-   private ccx.a o = ccx.a.d;
+public class ccx {
+   private static final float a = 2.0F;
+   private static final float b = 1.0F;
+   private static final float c = 1.0F;
+   private static final float d = 0.75F;
+   private static final bmo e = bmo.a(100, 140);
+   private static final int f = 2;
+   private static final int g = 4;
+   private static final float h = 3.5714288F;
+   private static final float i = 1.25F;
 
-   public ccx(atx $$0, atx $$1) {
-      super(ImmutableMap.of(byr.m, bys.b, byr.n, bys.c, byr.o, bys.a, byr.Z, bys.b), 100);
-      this.l = $$0;
-      this.m = $$1;
+   protected static void a(ccw $$0, axd $$1) {
+      $$0.dP().a(bys.S, e.a($$1));
    }
 
-   protected boolean a(apf $$0, ccv $$1) {
-      bpo $$2 = $$1.dP().c(byr.o).get();
-      boolean $$3 = this.a($$1, $$2);
-      if (!$$3) {
-         $$1.dP().b(byr.o);
-         this.b($$1, $$2);
-      }
-
-      return $$3 && $$1.ap() != bpz.i && ccv.j($$2);
+   protected static bqq<?> a(bqq<ccw> $$0) {
+      b($$0);
+      c($$0);
+      d($$0);
+      e($$0);
+      g($$0);
+      f($$0);
+      $$0.a(ImmutableSet.of(ckj.a));
+      $$0.b(ckj.b);
+      $$0.f();
+      return $$0;
    }
 
-   protected boolean a(apf $$0, ccv $$1, long $$2) {
-      return $$1.dP().a(byr.o) && this.o != ccx.a.d && !$$1.dP().a(byr.Z);
+   private static void b(bqq<ccw> $$0) {
+      $$0.a(ckj.a, 0, ImmutableList.of(new brc(2.0F), new bsn(45, 90), new bsr(), new brn(bys.P), new brn(bys.S)));
    }
 
-   protected void b(apf $$0, ccv $$1, long $$2) {
-      bpo $$3 = $$1.dP().c(byr.o).get();
-      bri.a($$1, $$3);
-      $$1.b($$3);
-      $$1.dP().a(byr.m, new byu($$3.dk(), 2.0F, 0));
-      this.k = 10;
-      this.o = ccx.a.a;
+   private static void c(bqq<ccw> $$0) {
+      $$0.a(
+         ckj.b,
+         ImmutableList.of(
+            Pair.of(0, bth.a(bpd.by, 6.0F, bmo.a(30, 60))),
+            Pair.of(0, new brb(bpd.S)),
+            Pair.of(1, new bru($$0x -> 1.25F)),
+            Pair.of(2, btt.a(ccx::b, $$0x -> $$0x.dP().c(bys.B))),
+            Pair.of(3, bue.a(6, 1.0F)),
+            Pair.of(
+               4,
+               new bte(
+                  ImmutableMap.of(bys.m, byt.b),
+                  ImmutableList.of(Pair.of(bsz.a(1.0F), 1), Pair.of(bto.a(1.0F, 3), 1), Pair.of(new bro(), 3), Pair.of(buu.a(box::aC), 2))
+               )
+            )
+         ),
+         ImmutableSet.of(Pair.of(bys.T, byt.b), Pair.of(bys.X, byt.b))
+      );
    }
 
-   protected void c(apf $$0, ccv $$1, long $$2) {
-      $$1.dP().b(byr.o);
-      $$1.r();
-      $$1.b(bpz.a);
+   private static void d(bqq<ccw> $$0) {
+      $$0.a(
+         ckj.t,
+         ImmutableList.of(
+            Pair.of(0, bth.a(bpd.by, 6.0F, bmo.a(30, 60))),
+            Pair.of(1, new bru($$0x -> 1.25F)),
+            Pair.of(2, btt.a(ccx::b, $$0x -> $$0x.dP().c(bys.B))),
+            Pair.of(3, bue.a(8, 1.5F)),
+            Pair.of(
+               5,
+               new brv(
+                  ImmutableMap.of(bys.m, byt.b),
+                  ImmutableSet.of(),
+                  brv.a.a,
+                  brv.b.b,
+                  ImmutableList.of(Pair.of(bsz.c(0.75F), 1), Pair.of(bsz.a(1.0F, true), 1), Pair.of(bto.a(1.0F, 3), 1), Pair.of(buu.a(box::bf), 5))
+               )
+            )
+         ),
+         ImmutableSet.of(Pair.of(bys.T, byt.b), Pair.of(bys.X, byt.a))
+      );
    }
 
-   private void b(apf $$0, ccv $$1) {
-      $$0.a(null, $$1, this.m, atz.g, 2.0F, 1.0F);
-      Optional<bow> $$2 = $$1.s();
-      if ($$2.isPresent()) {
-         bow $$3 = $$2.get();
-         if ($$3.bA()) {
-            $$1.C($$3);
-            if (!$$3.bA()) {
-               $$3.a(bow.c.a);
-            }
+   private static void e(bqq<ccw> $$0) {
+      $$0.a(
+         ckj.u,
+         ImmutableList.of(
+            Pair.of(0, bth.a(bpd.by, 6.0F, bmo.a(30, 60))),
+            Pair.of(1, btt.a(ccx::b, $$0x -> $$0x.dP().c(bys.B))),
+            Pair.of(2, buf.a(8, 1.0F)),
+            Pair.of(3, buh.a(dae.tn)),
+            Pair.of(4, new bte(ImmutableList.of(Pair.of(bsz.a(1.0F), 2), Pair.of(bto.a(1.0F, 3), 1), Pair.of(new bro(), 2), Pair.of(buu.a(box::aC), 1))))
+         ),
+         ImmutableSet.of(Pair.of(bys.T, byt.b), Pair.of(bys.Y, byt.a))
+      );
+   }
+
+   private static void f(bqq<ccw> $$0) {
+      $$0.a(
+         ckj.q,
+         ImmutableList.of(Pair.of(0, new bsi(e, aty.jK)), Pair.of(1, new bsj<>(e, 2, 4, 3.5714288F, $$0x -> aty.jJ, aun.bL, 0.5F, ccx::a))),
+         ImmutableSet.of(Pair.of(bys.O, byt.b), Pair.of(bys.r, byt.b), Pair.of(bys.S, byt.b), Pair.of(bys.X, byt.b))
+      );
+   }
+
+   private static void g(bqq<ccw> $$0) {
+      $$0.a(ckj.s, 0, ImmutableList.of(btw.a(), new ccy(aty.jL, aty.jG)), bys.o);
+   }
+
+   private static <E extends bpr> boolean a(E $$0, ib $$1) {
+      cxb $$2 = $$0.dM();
+      ib $$3 = $$1.d();
+      if ($$2.b_($$1).c() && $$2.b_($$3).c() && $$2.b_($$1.c()).c()) {
+         dnb $$4 = $$2.a_($$1);
+         dnb $$5 = $$2.a_($$3);
+         if (!$$4.a(aun.bL) && !$$5.a(aun.bL)) {
+            ejg $$6 = ejj.a($$2, $$1.j());
+            ejg $$7 = ejj.a($$2, $$3.j());
+            return $$6 != ejg.e && (!$$4.i() || $$7 != ejg.e) ? bsk.a($$0, $$1) : true;
+         } else {
+            return true;
          }
+      } else {
+         return false;
       }
    }
 
-   protected void d(apf $$0, ccv $$1, long $$2) {
-      bpo $$3 = $$1.dP().c(byr.o).get();
-      $$1.b($$3);
-      switch (this.o) {
-         case a:
-            if ($$3.f($$1) < 1.75F) {
-               $$0.a(null, $$1, this.l, atz.g, 2.0F, 1.0F);
-               $$1.b(bpz.j);
-               $$3.g($$3.dk().a($$1.dk()).d().a(0.75));
-               this.n = $$3.dk();
-               this.j = 0;
-               this.o = ccx.a.b;
-            } else if (this.k <= 0) {
-               $$1.dP().a(byr.m, new byu($$3.dk(), 2.0F, 0));
-               this.k = 10;
-            } else {
-               this.k--;
-            }
-            break;
-         case b:
-            if (this.j++ >= 6) {
-               this.o = ccx.a.c;
-               this.b($$0, $$1);
-            }
-            break;
-         case c:
-            if (this.j >= 10) {
-               this.o = ccx.a.d;
-            } else {
-               this.j++;
-            }
-         case d:
-      }
+   private static boolean b(ccw $$0) {
+      return !brj.a($$0);
    }
 
-   private boolean a(ccv $$0, bpo $$1) {
-      ejc $$2 = $$0.K().a($$1, 0);
-      return $$2 != null && $$2.m() < 1.75F;
+   public static void a(ccw $$0) {
+      $$0.dP().a(ImmutableList.of(ckj.s, ckj.u, ckj.q, ckj.t, ckj.b));
    }
 
-   private void b(ccv $$0, bpo $$1) {
-      List<UUID> $$2 = $$0.dP().c(byr.aa).orElseGet(ArrayList::new);
-      boolean $$3 = !$$2.contains($$1.cw());
-      if ($$2.size() == 5 && $$3) {
-         $$2.remove(0);
-      }
-
-      if ($$3) {
-         $$2.add($$1.cw());
-      }
-
-      $$0.dP().a(byr.aa, $$2, 100L);
-   }
-
-   static enum a {
-      a,
-      b,
-      c,
-      d;
+   public static ctm a() {
+      return ccw.bX;
    }
 }

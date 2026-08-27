@@ -5,11 +5,11 @@ public class ads implements yb<aam> {
    private final int d;
    private final int e;
 
-   public ads(bow $$0) {
+   public ads(box $$0) {
       this($$0.aj(), $$0.dp());
    }
 
-   public ads(int $$0, epr $$1) {
+   public ads(int $$0, ept $$1) {
       this.b = $$0;
       double $$2 = 3.9;
       double $$3 = aww.a($$1.c, -3.9, 3.9);

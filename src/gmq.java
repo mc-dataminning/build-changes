@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface gmq extends gmp {
+   boolean m();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gmq {
+   void q();
 }

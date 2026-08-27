@@ -1,22 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class dua extends due {
-   private final ip<eim> e;
-   public static final Codec<dua> a = RecordCodecBuilder.create($$0 -> a($$0).and(ja.a(kj.y).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, dua::new));
+public class dua extends dug {
+   final avd<dac> a;
+   public static final Codec<dua> e = RecordCodecBuilder.create($$0 -> a($$0).and(avd.a(kj.f).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, dua::new));
 
-   public dua(jg $$0, ip<eim> $$1) {
+   protected dua(jg $$0, avd<dac> $$1) {
       super($$0);
-      this.e = $$1;
+      this.a = $$1;
    }
 
    @Override
-   protected boolean a(dmz $$0) {
-      return $$0.u().a(this.e);
+   protected boolean a(dnb $$0) {
+      return $$0.a(this.a);
    }
 
    @Override
-   public dtu<?> a() {
-      return dtu.c;
+   public dtw<?> a() {
+      return dtw.b;
    }
 }

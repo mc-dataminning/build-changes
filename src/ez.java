@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 
-public class ez implements ArgumentType<eqm> {
+public class ez implements ArgumentType<eqo> {
    private static final Collection<String> b = Arrays.asList("sidebar", "foo.bar");
    public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vu.b("argument.scoreboardDisplaySlot.invalid", $$0));
 
@@ -20,13 +20,13 @@ public class ez implements ArgumentType<eqm> {
       return new ez();
    }
 
-   public static eqm a(CommandContext<du> $$0, String $$1) {
-      return (eqm)$$0.getArgument($$1, eqm.class);
+   public static eqo a(CommandContext<du> $$0, String $$1) {
+      return (eqo)$$0.getArgument($$1, eqo.class);
    }
 
-   public eqm a(StringReader $$0) throws CommandSyntaxException {
+   public eqo a(StringReader $$0) throws CommandSyntaxException {
       String $$1 = $$0.readUnquotedString();
-      eqm $$2 = eqm.t.a($$1);
+      eqo $$2 = eqo.t.a($$1);
       if ($$2 == null) {
          throw a.create($$1);
       } else {
@@ -35,7 +35,7 @@ public class ez implements ArgumentType<eqm> {
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return dz.b(Arrays.stream(eqm.values()).map(eqm::c), $$1);
+      return dz.b(Arrays.stream(eqo.values()).map(eqo::c), $$1);
    }
 
    public Collection<String> getExamples() {

@@ -1,3 +1,6 @@
-public interface ffd {
-   void b(ffc var1);
+public enum ffd {
+   a,
+   b,
+   c,
+   d;
 }

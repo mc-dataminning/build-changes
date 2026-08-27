@@ -1,10 +1,10 @@
 public class auw {
-   public static final avd<cez> a = a("placeable");
+   public static final avd<cfa> a = a("placeable");
 
    private auw() {
    }
 
-   private static avd<cez> a(String $$0) {
+   private static avd<cfa> a(String $$0) {
       return avd.a(kj.R, new ajh($$0));
    }
 }

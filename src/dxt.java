@@ -1,32 +1,30 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class dxt implements dxu {
+public record dxt(eaf b, dtv c, bmi d, int e) implements dxw {
    public static final Codec<dxt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ib.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, dxt::new)
+      $$0 -> $$0.group(
+               eaf.a.fieldOf("state_provider").forGetter(dxt::a),
+               dtv.b.fieldOf("target").forGetter(dxt::b),
+               bmi.b(0, 8).fieldOf("radius").forGetter(dxt::c),
+               Codec.intRange(0, 4).fieldOf("half_height").forGetter(dxt::d)
+            )
+            .apply($$0, dxt::new)
    );
-   private final Optional<ib> b;
-   private final boolean c;
 
-   private dxt(Optional<ib> $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   public static dxt a(ib $$0, boolean $$1) {
-      return new dxt(Optional.of($$0), $$1);
-   }
-
-   public static dxt a() {
-      return new dxt(Optional.empty(), false);
-   }
-
-   public Optional<ib> b() {
+   public eaf a() {
       return this.b;
    }
 
-   public boolean c() {
+   public dtv b() {
       return this.c;
+   }
+
+   public bmi c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
    }
 }

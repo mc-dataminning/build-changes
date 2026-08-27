@@ -36,19 +36,19 @@ public class alg {
       );
    }
 
-   private static int a(du $$0, Collection<? extends bow> $$1, il<cuu> $$2, int $$3) throws CommandSyntaxException {
-      cuu $$4 = $$2.a();
+   private static int a(du $$0, Collection<? extends box> $$1, il<cuw> $$2, int $$3) throws CommandSyntaxException {
+      cuw $$4 = $$2.a();
       if ($$3 > $$4.a()) {
          throw d.create($$3, $$4.a());
       } else {
          int $$5 = 0;
 
-         for (bow $$6 : $$1) {
-            if ($$6 instanceof bpo) {
-               bpo $$7 = (bpo)$$6;
-               cqk $$8 = $$7.eU();
+         for (box $$6 : $$1) {
+            if ($$6 instanceof bpp) {
+               bpp $$7 = (bpp)$$6;
+               cqm $$8 = $$7.eU();
                if (!$$8.b()) {
-                  if ($$4.a($$8) && cuv.a(cuv.a($$8).keySet(), $$4)) {
+                  if ($$4.a($$8) && cux.a(cux.a($$8).keySet(), $$4)) {
                      $$8.a($$4, $$3);
                      $$5++;
                   } else if ($$1.size() == 1) {

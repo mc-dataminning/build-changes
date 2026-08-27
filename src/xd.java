@@ -58,10 +58,10 @@ public class xd implements vv {
    }
 
    @Override
-   public wi a(@Nullable du $$0, @Nullable bow $$1, int $$2) throws CommandSyntaxException {
+   public wi a(@Nullable du $$0, @Nullable box $$1, int $$2) throws CommandSyntaxException {
       if ($$0 != null && this.f != null) {
          Optional<? extends vu> $$3 = vx.a($$0, this.c, $$1, $$2);
-         return vx.a(this.f.b($$0), $$3, bow::O_);
+         return vx.a(this.f.b($$0), $$3, box::O_);
       } else {
          return vu.i();
       }

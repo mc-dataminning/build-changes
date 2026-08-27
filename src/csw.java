@@ -1,72 +1,71 @@
-public abstract class csw implements ctn<bmv> {
-   protected final cts<?> a;
-   protected final ctc b;
-   protected final String c;
-   protected final ctk d;
-   protected final cqk e;
-   protected final float f;
-   protected final int g;
+import javax.annotation.Nullable;
 
-   public csw(cts<?> $$0, String $$1, ctc $$2, ctk $$3, cqk $$4, float $$5, int $$6) {
-      this.a = $$0;
+public class csw {
+   @Nullable
+   private final ciu a;
+   private final bnc b;
+   private final epp c;
+   private final cxb d;
+   private final cqm e;
+
+   public csw(ciu $$0, bnc $$1, epp $$2) {
+      this($$0.dM(), $$0, $$1, $$0.b($$1), $$2);
+   }
+
+   protected csw(cxb $$0, @Nullable ciu $$1, bnc $$2, cqm $$3, epp $$4) {
+      this.a = $$1;
       this.b = $$2;
-      this.c = $$1;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
+      this.c = $$4;
+      this.e = $$3;
+      this.d = $$0;
    }
 
-   @Override
-   public boolean a(bmv $$0, cwz $$1) {
-      return this.d.a($$0.a(0));
-   }
-
-   @Override
-   public cqk a(bmv $$0, iz $$1) {
-      return this.e.q();
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public iu<ctk> a() {
-      iu<ctk> $$0 = iu.a();
-      $$0.add(this.d);
-      return $$0;
-   }
-
-   public float b() {
-      return this.f;
-   }
-
-   @Override
-   public cqk a(iz $$0) {
-      return this.e;
-   }
-
-   @Override
-   public String c() {
+   protected final epp j() {
       return this.c;
    }
 
-   public int d() {
-      return this.g;
+   public ib a() {
+      return this.c.a();
    }
 
-   @Override
-   public cts<?> e() {
+   public ih k() {
+      return this.c.b();
+   }
+
+   public ept l() {
+      return this.c.e();
+   }
+
+   public boolean m() {
+      return this.c.d();
+   }
+
+   public cqm n() {
+      return this.e;
+   }
+
+   @Nullable
+   public ciu o() {
       return this.a;
    }
 
-   public ctc f() {
+   public bnc p() {
       return this.b;
    }
 
-   public interface a<T extends csw> {
-      T create(String var1, ctc var2, ctk var3, cqk var4, float var5, int var6);
+   public cxb q() {
+      return this.d;
+   }
+
+   public ih g() {
+      return this.a == null ? ih.c : this.a.cE();
+   }
+
+   public boolean h() {
+      return this.a != null && this.a.fO();
+   }
+
+   public float i() {
+      return this.a == null ? 0.0F : this.a.dC();
    }
 }

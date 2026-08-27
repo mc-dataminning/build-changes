@@ -42,9 +42,9 @@ public class all {
    }
 
    private static int a(du $$0, aov $$1) throws CommandSyntaxException {
-      cwg $$2 = $$1.a();
+      cwi $$2 = $$1.a();
       apf $$3 = $$0.e();
-      ajg<cwz> $$4 = $$3.ad();
+      ajg<cxb> $$4 = $$3.ad();
       boolean $$5 = $$3.w().contains($$2.a());
       if ($$5) {
          $$0.a(() -> vu.a("commands.forceload.query.success", vu.a($$2), vu.a($$4.a())), false);
@@ -56,11 +56,11 @@ public class all {
 
    private static int a(du $$0) {
       apf $$1 = $$0.e();
-      ajg<cwz> $$2 = $$1.ad();
+      ajg<cxb> $$2 = $$1.ad();
       LongSet $$3 = $$1.w();
       int $$4 = $$3.size();
       if ($$4 > 0) {
-         String $$5 = Joiner.on(", ").join($$3.stream().sorted().map(cwg::new).map(cwg::toString).iterator());
+         String $$5 = Joiner.on(", ").join($$3.stream().sorted().map(cwi::new).map(cwi::toString).iterator());
          if ($$4 == 1) {
             $$0.a(() -> vu.a("commands.forceload.list.single", vu.a($$2.a()), $$5), false);
          } else {
@@ -75,9 +75,9 @@ public class all {
 
    private static int b(du $$0) {
       apf $$1 = $$0.e();
-      ajg<cwz> $$2 = $$1.ad();
+      ajg<cxb> $$2 = $$1.ad();
       LongSet $$3 = $$1.w();
-      $$3.forEach($$1x -> $$1.a(cwg.a($$1x), cwg.b($$1x), false));
+      $$3.forEach($$1x -> $$1.a(cwi.a($$1x), cwi.b($$1x), false));
       $$0.a(() -> vu.a("commands.forceload.removed.all", vu.a($$2.a())), true);
       return 0;
    }
@@ -97,8 +97,8 @@ public class all {
             throw b.create(256, $$12);
          } else {
             apf $$13 = $$0.e();
-            ajg<cwz> $$14 = $$13.ad();
-            cwg $$15 = null;
+            ajg<cxb> $$14 = $$13.ad();
+            cwi $$15 = null;
             int $$16 = 0;
 
             for (int $$17 = $$8; $$17 <= $$10; $$17++) {
@@ -107,21 +107,21 @@ public class all {
                   if ($$19) {
                      $$16++;
                      if ($$15 == null) {
-                        $$15 = new cwg($$17, $$18);
+                        $$15 = new cwi($$17, $$18);
                      }
                   }
                }
             }
 
-            cwg $$20 = $$15;
+            cwi $$20 = $$15;
             if ($$16 == 0) {
                throw ($$3 ? d : e).create();
             } else {
                if ($$16 == 1) {
                   $$0.a(() -> vu.a("commands.forceload." + ($$3 ? "added" : "removed") + ".single", vu.a($$20), vu.a($$14.a())), true);
                } else {
-                  cwg $$21 = new cwg($$8, $$9);
-                  cwg $$22 = new cwg($$10, $$11);
+                  cwi $$21 = new cwi($$8, $$9);
+                  cwi $$22 = new cwi($$10, $$11);
                   $$0.a(() -> vu.a("commands.forceload." + ($$3 ? "added" : "removed") + ".multiple", vu.a($$20), vu.a($$14.a()), vu.a($$21), vu.a($$22)), true);
                }
 

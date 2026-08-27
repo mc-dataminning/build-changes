@@ -1,59 +1,66 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
-
-public class cri extends cox {
-   protected static final Map<daa, dmz> a = Maps.newHashMap(
-      new Builder()
-         .put(dac.i, dac.kE.o())
-         .put(dac.j, dac.kE.o())
-         .put(dac.l, dac.kE.o())
-         .put(dac.k, dac.kE.o())
-         .put(dac.fl, dac.kE.o())
-         .put(dac.sH, dac.kE.o())
-         .build()
-   );
-
-   public cri(crx $$0, float $$1, float $$2, cqf.a $$3) {
-      super($$1, $$2, $$0, aun.bD, $$3);
+public class cri extends cqh {
+   public cri(cqh.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bnc a(csu $$0) {
-      cwz $$1 = $$0.q();
-      ib $$2 = $$0.a();
-      dmz $$3 = $$1.a_($$2);
-      if ($$0.k() == ih.a) {
-         return bnc.d;
-      } else {
-         cis $$4 = $$0.o();
-         dmz $$5 = a.get($$3.b());
-         dmz $$6 = null;
-         if ($$5 != null && $$1.a_($$2.c()).i()) {
-            $$1.a($$4, $$2, aty.wg, atz.e, 1.0F, 1.0F);
-            $$6 = $$5;
-         } else if ($$3.b() instanceof dao && $$3.c(dao.c)) {
-            if (!$$1.x_()) {
-               $$1.a(null, 1009, $$2, 0);
-            }
-
-            dao.a($$0.o(), $$1, $$2, $$3);
-            $$6 = $$3.a(dao.c, Boolean.valueOf(false));
-         }
-
-         if ($$6 != null) {
-            if (!$$1.B) {
-               $$1.a($$2, $$6, 11);
-               $$1.a(drn.c, $$2, drn.a.a($$4, $$6));
-               if ($$4 != null) {
-                  $$0.n().a(1, $$4, bpo.d($$0.p()));
-               }
-            }
-
-            return bnc.a($$1.B);
-         } else {
-            return bnc.d;
-         }
+   public boolean a(cqm $$0, cxb $$1, dnb $$2, ib $$3, bpp $$4) {
+      if (!$$1.B && !$$2.a(aun.aK)) {
+         $$0.a(1, $$4, bpe.a);
       }
+
+      return !$$2.a(aun.O)
+            && !$$2.a(dae.bs)
+            && !$$2.a(dae.bt)
+            && !$$2.a(dae.bu)
+            && !$$2.a(dae.bv)
+            && !$$2.a(dae.sG)
+            && !$$2.a(dae.ff)
+            && !$$2.a(dae.fI)
+            && !$$2.a(aun.a)
+         ? super.a($$0, $$1, $$2, $$3, $$4)
+         : true;
+   }
+
+   @Override
+   public boolean a_(dnb $$0) {
+      return $$0.a(dae.bs) || $$0.a(dae.cw) || $$0.a(dae.fI);
+   }
+
+   @Override
+   public float a(cqm $$0, dnb $$1) {
+      if ($$1.a(dae.bs) || $$1.a(aun.O)) {
+         return 15.0F;
+      } else if ($$1.a(aun.a)) {
+         return 5.0F;
+      } else {
+         return !$$1.a(dae.ff) && !$$1.a(dae.fg) ? super.a($$0, $$1) : 2.0F;
+      }
+   }
+
+   @Override
+   public bnd a(csw $$0) {
+      cxb $$1 = $$0.q();
+      ib $$2 = $$0.a();
+      dnb $$3 = $$1.a_($$2);
+      if ($$3.b() instanceof ddr $$5 && !$$5.o($$3)) {
+         ciu $$6 = $$0.o();
+         cqm $$7 = $$0.n();
+         if ($$6 instanceof apg) {
+            am.N.a((apg)$$6, $$2, $$7);
+         }
+
+         $$1.a($$6, $$2, aty.li, atz.e, 1.0F, 1.0F);
+         dnb $$8 = $$5.n($$3);
+         $$1.b($$2, $$8);
+         $$1.a(drp.c, $$2, drp.a.a($$0.o(), $$8));
+         if ($$6 != null) {
+            $$7.a(1, $$6, bpp.d($$0.p()));
+         }
+
+         return bnd.a($$1.B);
+      }
+
+      return super.a($$0);
    }
 }

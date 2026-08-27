@@ -1,49 +1,77 @@
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import javax.annotation.Nullable;
 
-public interface eia extends eif {
+public abstract class eia<M extends eia<M>> {
+   private static final int b = 2;
+   private final long[] c = new long[2];
+   private final dpd[] d = new dpd[2];
+   private boolean e;
+   protected final Long2ObjectOpenHashMap<dpd> a;
+
+   protected eia(Long2ObjectOpenHashMap<dpd> $$0) {
+      this.a = $$0;
+      this.c();
+      this.e = true;
+   }
+
+   public abstract M b();
+
+   public dpd a(long $$0) {
+      dpd $$1 = ((dpd)this.a.get($$0)).b();
+      this.a.put($$0, $$1);
+      this.c();
+      return $$1;
+   }
+
+   public boolean b(long $$0) {
+      return this.a.containsKey($$0);
+   }
+
    @Nullable
-   dpb a(je var1);
+   public dpd c(long $$0) {
+      if (this.e) {
+         for (int $$1 = 0; $$1 < 2; $$1++) {
+            if ($$0 == this.c[$$1]) {
+               return this.d[$$1];
+            }
+         }
+      }
 
-   int b(ib var1);
-
-   public static enum a implements eia {
-      a;
-
-      @Nullable
-      @Override
-      public dpb a(je $$0) {
+      dpd $$2 = (dpd)this.a.get($$0);
+      if ($$2 == null) {
          return null;
-      }
+      } else {
+         if (this.e) {
+            for (int $$3 = 1; $$3 > 0; $$3--) {
+               this.c[$$3] = this.c[$$3 - 1];
+               this.d[$$3] = this.d[$$3 - 1];
+            }
 
-      @Override
-      public int b(ib $$0) {
-         return 0;
-      }
+            this.c[0] = $$0;
+            this.d[0] = $$2;
+         }
 
-      @Override
-      public void a(ib $$0) {
+         return $$2;
       }
+   }
 
-      @Override
-      public boolean K_() {
-         return false;
-      }
+   @Nullable
+   public dpd d(long $$0) {
+      return (dpd)this.a.remove($$0);
+   }
 
-      @Override
-      public int a() {
-         return 0;
-      }
+   public void a(long $$0, dpd $$1) {
+      this.a.put($$0, $$1);
+   }
 
-      @Override
-      public void a(je $$0, boolean $$1) {
+   public void c() {
+      for (int $$0 = 0; $$0 < 2; $$0++) {
+         this.c[$$0] = Long.MAX_VALUE;
+         this.d[$$0] = null;
       }
+   }
 
-      @Override
-      public void a(cwg $$0, boolean $$1) {
-      }
-
-      @Override
-      public void b(cwg $$0) {
-      }
+   public void d() {
+      this.e = false;
    }
 }

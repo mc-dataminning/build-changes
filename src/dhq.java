@@ -1,46 +1,73 @@
 import com.mojang.serialization.MapCodec;
 
-public abstract class dhq extends dhj {
-   protected dhq(dmy.d $$0) {
+public class dhq extends dac {
+   public static final MapCodec<dhq> a = b(dhq::new);
+   public static final int b = 6;
+   public static final int c = 64;
+   private static final ih[] d = ih.values();
+
+   @Override
+   public MapCodec<dhq> a() {
+      return a;
+   }
+
+   protected dhq(dna.d $$0) {
       super($$0);
    }
 
-   private static boolean b(dmz $$0, cxc $$1, ib $$2) {
-      ib $$3 = $$2.c();
-      dmz $$4 = $$1.a_($$3);
-      if ($$4.a(dac.dN) && $$4.c(dhi.c) == 1) {
-         return true;
-      } else if ($$4.u().e() == 8) {
-         return false;
-      } else {
-         int $$5 = eie.a($$1, $$0, $$2, $$4, $$3, ih.b, $$4.b($$1, $$3));
-         return $$5 < $$1.O();
+   @Override
+   protected void b(dnb $$0, cxb $$1, ib $$2, dnb $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$1, $$2);
       }
    }
 
    @Override
-   protected abstract MapCodec<? extends dhq> a();
-
-   private static boolean c(dmz $$0, cxc $$1, ib $$2) {
-      ib $$3 = $$2.c();
-      return b($$0, $$1, $$2) && !$$1.b_($$3).a(aus.a);
+   protected void a(dnb $$0, cxb $$1, ib $$2, dac $$3, ib $$4, boolean $$5) {
+      this.a($$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   protected void b(dmz $$0, apf $$1, ib $$2, axd $$3) {
-      if (!b($$0, $$1, $$2)) {
-         $$1.b($$2, dac.j.o());
-      } else {
-         if ($$1.A($$2.c()) >= 9) {
-            dmz $$4 = this.o();
+   protected void a(cxb $$0, ib $$1) {
+      if (this.b($$0, $$1)) {
+         $$0.a($$1, dae.aP.o(), 2);
+         $$0.a(null, $$1, aty.yx, atz.e, 1.0F, 1.0F);
+      }
+   }
 
-            for (int $$5 = 0; $$5 < 4; $$5++) {
-               ib $$6 = $$2.b($$3.a(3) - 1, $$3.a(5) - 3, $$3.a(3) - 1);
-               if ($$1.a_($$6).a(dac.j) && c($$4, $$1, $$6)) {
-                  $$1.b($$6, $$4.a(c, Boolean.valueOf($$1.a_($$6.c()).a(dac.dN))));
+   private boolean b(cxb $$0, ib $$1) {
+      return ib.a($$1, 6, 65, ($$0x, $$1x) -> {
+         for (ih $$2 : d) {
+            $$1x.accept($$0x.a($$2));
+         }
+      }, $$2 -> {
+         if ($$2.equals($$1)) {
+            return true;
+         } else {
+            dnb $$3 = $$0.a_($$2);
+            eip $$4 = $$0.b_($$2);
+            if (!$$4.a(aus.a)) {
+               return false;
+            } else {
+               if ($$3.b() instanceof daj $$6 && !$$6.a(null, $$0, $$2, $$3).b()) {
+                  return true;
                }
+
+               if ($$3.b() instanceof der) {
+                  $$0.a($$2, dae.a.o(), 3);
+               } else {
+                  if (!$$3.a(dae.mc) && !$$3.a(dae.md) && !$$3.a(dae.bw) && !$$3.a(dae.bx)) {
+                     return false;
+                  }
+
+                  dki $$7 = $$3.t() ? $$0.c_($$2) : null;
+                  a($$3, $$0, $$2, $$7);
+                  $$0.a($$2, dae.a.o(), 3);
+               }
+
+               return true;
             }
          }
-      }
+      }) > 1;
    }
 }

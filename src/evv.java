@@ -1,32 +1,40 @@
-import com.google.gson.annotations.SerializedName;
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public abstract class evv {
-   @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder("{");
+public class evv extends evx {
+   private static final Logger d = LogUtils.getLogger();
+   public long a;
+   public int b;
+   public evv.a c = evv.a.a;
 
-      for (Field $$1 : this.getClass().getFields()) {
-         if (!b($$1)) {
-            try {
-               $$0.append(a($$1)).append("=").append($$1.get(this)).append(" ");
-            } catch (IllegalAccessException var7) {
-            }
-         }
+   public static evv a(String $$0) {
+      evv $$1 = new evv();
+
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         $$1.a = exu.a("startDate", $$3, 0L);
+         $$1.b = exu.a("daysLeft", $$3, 0);
+         $$1.c = b(exu.b("subscriptionType", $$3, evv.a.a.name()));
+      } catch (Exception var4) {
+         d.error("Could not parse Subscription: {}", var4.getMessage());
       }
 
-      $$0.deleteCharAt($$0.length() - 1);
-      $$0.append('}');
-      return $$0.toString();
+      return $$1;
    }
 
-   private static String a(Field $$0) {
-      SerializedName $$1 = $$0.getAnnotation(SerializedName.class);
-      return $$1 != null ? $$1.value() : $$0.getName();
+   private static evv.a b(String $$0) {
+      try {
+         return evv.a.valueOf($$0);
+      } catch (Exception var2) {
+         return evv.a.a;
+      }
    }
 
-   private static boolean b(Field $$0) {
-      return Modifier.isStatic($$0.getModifiers());
+   public static enum a {
+      a,
+      b;
    }
 }

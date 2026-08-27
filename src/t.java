@@ -15,7 +15,7 @@ public class t implements ad {
    private final String c;
    private final String d;
    private final boolean e;
-   private final ekc f;
+   private final eke f;
    private final int g;
    private final int h;
    private final int i;
@@ -23,12 +23,12 @@ public class t implements ad {
 
    private t() {
       this.c = UUID.randomUUID().toString().replaceAll("-", "");
-      this.d = "24w06a";
+      this.d = "24w07a";
       this.e = false;
-      this.f = new ekc(3815, "main");
+      this.f = new eke(3817, "main");
       this.g = aa.c();
       this.h = 26;
-      this.i = 31;
+      this.i = 32;
       this.j = new Date();
    }
 
@@ -36,7 +36,7 @@ public class t implements ad {
       this.c = awm.i($$0, "id");
       this.d = awm.i($$0, "name");
       this.e = awm.k($$0, "stable");
-      this.f = new ekc(awm.o($$0, "world_version"), awm.a($$0, "series_id", ekc.a));
+      this.f = new eke(awm.o($$0, "world_version"), awm.a($$0, "series_id", eke.a));
       this.g = awm.o($$0, "protocol_version");
       JsonObject $$1 = awm.u($$0, "pack_version");
       this.h = awm.o($$1, "resource");
@@ -75,7 +75,7 @@ public class t implements ad {
    }
 
    @Override
-   public ekc d() {
+   public eke d() {
       return this.f;
    }
 

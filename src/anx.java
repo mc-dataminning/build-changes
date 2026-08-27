@@ -19,15 +19,15 @@ public class anx implements anv {
             return $$0.then(dv.a("entity").then($$1.apply(dv.a($$0, eh.a()))));
          }
       };
-   private final bow c;
+   private final box c;
 
-   public anx(bow $$0) {
+   public anx(box $$0) {
       this.c = $$0;
    }
 
    @Override
    public void a(ta $$0) throws CommandSyntaxException {
-      if (this.c instanceof cis) {
+      if (this.c instanceof ciu) {
          throw b.create();
       } else {
          UUID $$1 = this.c.cw();

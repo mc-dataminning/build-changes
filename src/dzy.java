@@ -1,30 +1,24 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public abstract class dzy extends dzv {
-   protected final long c;
-   protected final ehq.a d;
-   protected final float e;
-   protected final ehq f;
+public class dzy<P extends dzx> {
+   public static final dzy<eag> a = a("simple_state_provider", eag.b);
+   public static final dzy<eah> b = a("weighted_state_provider", eah.b);
+   public static final dzy<eac> c = a("noise_threshold_provider", eac.b);
+   public static final dzy<eab> d = a("noise_provider", eab.g);
+   public static final dzy<dzz> e = a("dual_noise_provider", dzz.b);
+   public static final dzy<eae> f = a("rotated_block_provider", eae.b);
+   public static final dzy<ead> g = a("randomized_int_state_provider", ead.b);
+   private final Codec<P> h;
 
-   protected static <P extends dzy> P3<Mu<P>, Long, ehq.a, Float> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
-         ehq.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
-         awe.l.fieldOf("scale").forGetter($$0x -> $$0x.e)
-      );
+   private static <P extends dzx> dzy<P> a(String $$0, Codec<P> $$1) {
+      return iy.a(ki.V, $$0, new dzy<>($$1));
    }
 
-   protected dzy(long $$0, ehq.a $$1, float $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = ehq.b(new dtl(new dsn($$0)), $$1);
+   private dzy(Codec<P> $$0) {
+      this.h = $$0;
    }
 
-   protected double a(ib $$0, double $$1) {
-      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
+   public Codec<P> a() {
+      return this.h;
    }
 }

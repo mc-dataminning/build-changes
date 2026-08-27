@@ -45,17 +45,17 @@ public class apl extends aos {
       this.b($$0, this.a($$2), false);
    }
 
-   public <T> void a(apk<T> $$0, cwg $$1, int $$2, T $$3) {
+   public <T> void a(apk<T> $$0, cwi $$1, int $$2, T $$3) {
       this.a($$1.a(), new apj<>($$0, $$2, $$3));
    }
 
-   public <T> void b(apk<T> $$0, cwg $$1, int $$2, T $$3) {
+   public <T> void b(apk<T> $$0, cwi $$1, int $$2, T $$3) {
       apj<T> $$4 = new apj<>($$0, $$2, $$3);
       this.b($$1.a(), $$4);
    }
 
    public void a(int $$0) {
-      List<Pair<apj<cwg>, Long>> $$1 = new ArrayList<>();
+      List<Pair<apj<cwi>, Long>> $$1 = new ArrayList<>();
       ObjectIterator var3 = this.d.long2ObjectEntrySet().iterator();
 
       while (var3.hasNext()) {
@@ -68,12 +68,12 @@ public class apl extends aos {
          }
       }
 
-      for (Pair<apj<cwg>, Long> $$4 : $$1) {
+      for (Pair<apj<cwi>, Long> $$4 : $$1) {
          Long $$5 = (Long)$$4.getSecond();
-         apj<cwg> $$6 = (apj<cwg>)$$4.getFirst();
+         apj<cwi> $$6 = (apj<cwi>)$$4.getFirst();
          this.b($$5, $$6);
-         cwg $$7 = new cwg($$5);
-         apk<cwg> $$8 = $$6.a();
+         cwi $$7 = new cwi($$5);
+         apk<cwi> $$8 = $$6.a();
          this.a($$8, $$7, $$0, $$7);
       }
    }
@@ -84,7 +84,7 @@ public class apl extends aos {
       return $$1 != null && !$$1.isEmpty() ? $$1.b().b() : Integer.MAX_VALUE;
    }
 
-   public int a(cwg $$0) {
+   public int a(cwi $$0) {
       return this.c($$0.a());
    }
 

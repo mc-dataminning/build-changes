@@ -1,125 +1,76 @@
-import com.google.common.collect.ImmutableSet;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class emb extends emg {
-   public static final avd<edc> a = auz.l;
-   public static final eju.a b = eju.a.i;
-   public static final byte c = 2;
-   public static final int d = 50;
-   public static final boolean e = true;
-   public static final Codec<emb> f = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  awe.a(avd.a(kj.aE), "destination", a).forGetter($$0x -> $$0x.h),
-                  eju.a.J.optionalFieldOf("decoration", b).forGetter($$0x -> $$0x.i),
-                  awe.a(Codec.BYTE, "zoom", Byte.valueOf((byte)2)).forGetter($$0x -> $$0x.j),
-                  awe.a(Codec.INT, "search_radius", Integer.valueOf(50)).forGetter($$0x -> $$0x.k),
-                  awe.a(Codec.BOOL, "skip_existing_chunks", true).forGetter($$0x -> $$0x.l)
-               )
-            )
-            .apply($$0, emb::new)
-   );
-   private final avd<edc> h;
-   private final eju.a i;
-   private final byte j;
-   private final int k;
-   private final boolean l;
+public class emb extends emi {
+   private static final Logger b = LogUtils.getLogger();
+   private static final Codec<ip<cuw>> c = ki.f.r().listOf().xmap(ip::a, $$0 -> $$0.a().toList());
+   public static final Codec<emb> a = RecordCodecBuilder.create($$0 -> a($$0).and(awe.a(c, "enchantments").forGetter($$0x -> $$0x.d)).apply($$0, emb::new));
+   private final Optional<ip<cuw>> d;
 
-   emb(List<ent> $$0, avd<edc> $$1, eju.a $$2, byte $$3, int $$4, boolean $$5) {
+   emb(List<env> $$0, Optional<ip<cuw>> $$1) {
       super($$0);
-      this.h = $$1;
-      this.i = $$2;
-      this.j = $$3;
-      this.k = $$4;
-      this.l = $$5;
+      this.d = $$1;
    }
 
    @Override
-   public emi b() {
-      return emj.m;
+   public emk b() {
+      return eml.e;
    }
 
    @Override
-   public Set<enc<?>> a() {
-      return ImmutableSet.of(enf.f);
-   }
-
-   @Override
-   public cqk a(cqk $$0, eku $$1) {
-      if (!$$0.a(cqn.ug)) {
+   public cqm a(cqm $$0, ekw $$1) {
+      axd $$2 = $$1.b();
+      Optional<il<cuw>> $$3 = this.d.<il<cuw>>flatMap($$1x -> $$1x.a($$2)).or(() -> {
+         boolean $$2x = $$0.a(cqp.qO);
+         List<il.c<cuw>> $$3x = ki.f.h().filter($$0xx -> ((cuw)$$0xx.a()).j()).filter($$2xx -> $$2x || ((cuw)$$2xx.a()).a($$0)).toList();
+         return ac.b($$3x, $$2);
+      });
+      if ($$3.isEmpty()) {
+         b.warn("Couldn't find a compatible enchantment for {}", $$0);
          return $$0;
       } else {
-         epr $$2 = $$1.c(enf.f);
-         if ($$2 != null) {
-            apf $$3 = $$1.d();
-            ib $$4 = $$3.a(this.h, ib.a($$2), this.k, this.l);
-            if ($$4 != null) {
-               cqk $$5 = cqr.a($$3, $$4.u(), $$4.w(), this.j, true, true);
-               cqr.a($$3, $$5);
-               ejy.a($$5, $$4, "+", this.i);
-               return $$5;
-            }
-         }
-
-         return $$0;
+         return a($$0, $$3.get().a(), $$2);
       }
+   }
+
+   private static cqm a(cqm $$0, cuw $$1, axd $$2) {
+      int $$3 = aww.a($$2, $$1.f(), $$1.a());
+      if ($$0.a(cqp.qO)) {
+         $$0 = new cqm(cqp.uu);
+      }
+
+      $$0.a($$1, $$3);
+      return $$0;
    }
 
    public static emb.a c() {
       return new emb.a();
    }
 
-   public static class a extends emg.a<emb.a> {
-      private avd<edc> a;
-      private eju.a b;
-      private byte c;
-      private int d;
-      private boolean e;
+   public static emi.a<?> d() {
+      return a($$0 -> new emb($$0, Optional.empty()));
+   }
 
-      public a() {
-         this.a = emb.a;
-         this.b = emb.b;
-         this.c = 2;
-         this.d = 50;
-         this.e = true;
-      }
+   public static class a extends emi.a<emb.a> {
+      private final List<il<cuw>> a = new ArrayList<>();
 
       protected emb.a a() {
          return this;
       }
 
-      public emb.a a(avd<edc> $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public emb.a a(eju.a $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public emb.a a(byte $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public emb.a a(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public emb.a a(boolean $$0) {
-         this.e = $$0;
+      public emb.a a(cuw $$0) {
+         this.a.add($$0.k());
          return this;
       }
 
       @Override
-      public emh b() {
-         return new emb(this.g(), this.a, this.b, this.c, this.d, this.e);
+      public emj b() {
+         return new emb(this.g(), this.a.isEmpty() ? Optional.empty() : Optional.of(ip.a(this.a)));
       }
    }
 }

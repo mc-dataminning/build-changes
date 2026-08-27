@@ -1,122 +1,111 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Consumer;
 
-public class fet implements feu {
-   public static final int a = 36;
-   private static final int b = 30;
-   private final fer c = new fer();
-   private final fer d = new fer();
-   private final fer e = new fer();
-   private final fhf f;
-   private int g;
-   private int h;
+public class fet extends feq {
+   private final List<fet.a> c = new ArrayList<>();
+   private int d;
+   private int e;
+   private final fey f = fey.i().a(0.5F, 0.5F);
 
-   public fet(fhf $$0) {
-      this($$0, 36);
+   public fet() {
+      this(0, 0, 0, 0);
    }
 
-   public fet(fhf $$0, int $$1) {
-      this($$0, $$1, $$1);
+   public fet(int $$0, int $$1) {
+      this(0, 0, $$0, $$1);
    }
 
-   public fet(fhf $$0, int $$1, int $$2) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.c.c().a(0.5F, 0.5F);
-      this.d.c().a(0.5F, 0.5F);
+   public fet(int $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.a($$2, $$3);
    }
 
-   @Override
-   public void m(int $$0) {
+   public fet a(int $$0, int $$1) {
+      return this.b($$0).a($$1);
    }
 
-   @Override
-   public void n(int $$0) {
+   public fet a(int $$0) {
+      this.e = $$0;
+      return this;
    }
 
-   @Override
-   public int B() {
-      return 0;
+   public fet b(int $$0) {
+      this.d = $$0;
+      return this;
    }
 
-   @Override
-   public int C() {
-      return 0;
+   public fey b() {
+      return this.f.g();
    }
 
-   @Override
-   public int w() {
-      return this.f.g;
-   }
-
-   @Override
-   public int u() {
-      return this.f.h;
-   }
-
-   public int b() {
-      return this.h;
-   }
-
-   public void a(int $$0) {
-      this.h = $$0;
-   }
-
-   public void b(int $$0) {
-      this.g = $$0;
-   }
-
-   public int c() {
-      return this.g;
-   }
-
-   @Override
-   public void b(Consumer<fev> $$0) {
-      this.c.b($$0);
-      this.e.b($$0);
-      this.d.b($$0);
+   public fey c() {
+      return this.f;
    }
 
    @Override
    public void a() {
-      int $$0 = this.c();
-      int $$1 = this.b();
-      this.c.b(this.f.g);
-      this.c.a($$0);
-      this.c.c(0, 0);
-      this.c.a();
-      this.d.b(this.f.g);
-      this.d.a($$1);
-      this.d.a();
-      this.d.n(this.f.h - $$1);
-      this.e.b(this.f.g);
-      this.e.a();
-      int $$2 = $$0 + 30;
-      int $$3 = this.f.h - $$1 - this.e.u();
-      this.e.c(0, Math.min($$2, $$3));
+      super.a();
+      int $$0 = this.d;
+      int $$1 = this.e;
+
+      for (fet.a $$2 : this.c) {
+         $$0 = Math.max($$0, $$2.b());
+         $$1 = Math.max($$1, $$2.a());
+      }
+
+      for (fet.a $$3 : this.c) {
+         $$3.a(this.B(), $$0);
+         $$3.b(this.C(), $$1);
+      }
+
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public <T extends fev> T a(T $$0) {
-      return this.c.a($$0);
+   public <T extends fex> T a(T $$0) {
+      return this.a($$0, this.b());
    }
 
-   public <T extends fev> T a(T $$0, Consumer<few> $$1) {
-      return this.c.a($$0, $$1);
+   public <T extends fex> T a(T $$0, fey $$1) {
+      this.c.add(new fet.a($$0, $$1));
+      return $$0;
    }
 
-   public <T extends fev> T b(T $$0) {
-      return this.d.a($$0);
+   public <T extends fex> T a(T $$0, Consumer<fey> $$1) {
+      return this.a($$0, ac.a(this.b(), $$1));
    }
 
-   public <T extends fev> T b(T $$0, Consumer<few> $$1) {
-      return this.d.a($$0, $$1);
+   @Override
+   public void b(Consumer<fex> $$0) {
+      this.c.forEach($$1 -> $$0.accept($$1.a));
    }
 
-   public <T extends fev> T c(T $$0) {
-      return this.e.a($$0);
+   public static void a(fex $$0, int $$1, int $$2, int $$3, int $$4) {
+      a($$0, $$1, $$2, $$3, $$4, 0.5F, 0.5F);
    }
 
-   public <T extends fev> T c(T $$0, Consumer<few> $$1) {
-      return this.e.a($$0, $$1);
+   public static void a(fex $$0, ffo $$1) {
+      a($$0, $$1.f().a(), $$1.f().b(), $$1.g(), $$1.h());
+   }
+
+   public static void a(fex $$0, ffo $$1, float $$2, float $$3) {
+      a($$0, $$1.d(), $$1.b(), $$1.g(), $$1.h(), $$2, $$3);
+   }
+
+   public static void a(fex $$0, int $$1, int $$2, int $$3, int $$4, float $$5, float $$6) {
+      a($$1, $$3, $$0.w(), $$0::m, $$5);
+      a($$2, $$4, $$0.u(), $$0::n, $$6);
+   }
+
+   public static void a(int $$0, int $$1, int $$2, Consumer<Integer> $$3, float $$4) {
+      int $$5 = (int)aww.i($$4, 0.0F, (float)($$1 - $$2));
+      $$3.accept($$0 + $$5);
+   }
+
+   static class a extends feq.a {
+      protected a(fex $$0, fey $$1) {
+         super($$0, $$1);
+      }
    }
 }

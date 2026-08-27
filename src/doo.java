@@ -1,58 +1,57 @@
-public interface doo {
-   void a(doq var1, double var2);
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
+import java.util.stream.Stream;
 
-   void a(doq var1, double var2, double var4, long var6);
+public record doo(String m, dnq n, dho o, dho p, atx q, atx r) {
+   private static final Map<String, doo> s = new Object2ObjectArrayMap();
+   public static final Codec<doo> a = awe.a(doo::b, s::get);
+   public static final doo b = a(new doo("oak", dnq.g));
+   public static final doo c = a(new doo("spruce", dnq.h));
+   public static final doo d = a(new doo("birch", dnq.i));
+   public static final doo e = a(new doo("acacia", dnq.j));
+   public static final doo f = a(new doo("cherry", dnq.k, dho.aU, dho.aX, aty.eL, aty.eM));
+   public static final doo g = a(new doo("jungle", dnq.l));
+   public static final doo h = a(new doo("dark_oak", dnq.m));
+   public static final doo i = a(new doo("crimson", dnq.n, dho.aT, dho.aQ, aty.qy, aty.qz));
+   public static final doo j = a(new doo("warped", dnq.o, dho.aT, dho.aQ, aty.qy, aty.qz));
+   public static final doo k = a(new doo("mangrove", dnq.p));
+   public static final doo l = a(new doo("bamboo", dnq.q, dho.aS, dho.aR, aty.bw, aty.bx));
 
-   void a(doq var1, double var2, double var4);
+   public doo(String $$0, dnq $$1) {
+      this($$0, $$1, dho.b, dho.aP, aty.iB, aty.iC);
+   }
 
-   void a(doq var1, int var2);
+   private static doo a(doo $$0) {
+      s.put($$0.b(), $$0);
+      return $$0;
+   }
 
-   void b(doq var1, int var2);
+   public static Stream<doo> a() {
+      return s.values().stream();
+   }
 
-   void b(doq var1, double var2);
+   public String b() {
+      return this.m;
+   }
 
-   void c(doq var1, double var2);
+   public dnq c() {
+      return this.n;
+   }
 
-   public static class a implements doo {
-      private final doq a;
+   public dho d() {
+      return this.o;
+   }
 
-      public a(doq $$0) {
-         this.a = $$0;
-      }
+   public dho e() {
+      return this.p;
+   }
 
-      @Override
-      public void a(doq $$0, double $$1) {
-         this.a.a($$1);
-      }
+   public atx f() {
+      return this.q;
+   }
 
-      @Override
-      public void a(doq $$0, double $$1, double $$2, long $$3) {
-         this.a.a($$1, $$2, $$3);
-      }
-
-      @Override
-      public void a(doq $$0, double $$1, double $$2) {
-         this.a.c($$1, $$2);
-      }
-
-      @Override
-      public void a(doq $$0, int $$1) {
-         this.a.b($$1);
-      }
-
-      @Override
-      public void b(doq $$0, int $$1) {
-         this.a.c($$1);
-      }
-
-      @Override
-      public void b(doq $$0, double $$1) {
-         this.a.c($$1);
-      }
-
-      @Override
-      public void c(doq $$0, double $$1) {
-         this.a.b($$1);
-      }
+   public atx g() {
+      return this.r;
    }
 }

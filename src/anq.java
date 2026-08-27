@@ -21,8 +21,8 @@ public class anq {
       );
    }
 
-   private static int a(du $$0, Collection<? extends cis> $$1, int $$2) {
-      for (cis $$3 : $$1) {
+   private static int a(du $$0, Collection<? extends ciu> $$1, int $$2) {
+      for (ciu $$3 : $$1) {
          $$3.aa().ifPresent($$1x -> $$1x.a($$2));
       }
 
@@ -35,9 +35,9 @@ public class anq {
       return $$1.size();
    }
 
-   private static int a(du $$0, Collection<? extends cis> $$1) {
-      for (cis $$2 : $$1) {
-         $$2.aa().ifPresent(chy::b);
+   private static int a(du $$0, Collection<? extends ciu> $$1) {
+      for (ciu $$2 : $$1) {
+         $$2.aa().ifPresent(cia::b);
       }
 
       if ($$1.size() == 1) {

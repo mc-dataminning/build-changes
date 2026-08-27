@@ -30,7 +30,7 @@ public class amd {
       if ($$1.aW()) {
          throw c.create();
       } else {
-         Consumer<bjp> $$2 = $$1x -> a($$0, $$1x);
+         Consumer<bjq> $$2 = $$1x -> a($$0, $$1x);
          Consumer<Path> $$3 = $$2x -> a($$0, $$2x, $$1);
          $$1.a($$2, $$3);
          $$0.a(() -> vu.c("commands.perf.started"), false);
@@ -53,14 +53,14 @@ public class amd {
 
       String $$4;
       try {
-         $$4 = v.a(bli.a, $$3, ".zip");
+         $$4 = v.a(blj.a, $$3, ".zip");
       } catch (IOException var11) {
          $$0.b(vu.c("commands.perf.reportFailed"));
          a.error("Failed to create report name", var11);
          return;
       }
 
-      try (awh $$7 = new awh(bli.a.resolve($$4))) {
+      try (awh $$7 = new awh(blj.a.resolve($$4))) {
          $$7.a(Paths.get("system.txt"), $$2.b(new ab()).a());
          $$7.a($$1);
       }
@@ -74,8 +74,8 @@ public class amd {
       $$0.a(() -> vu.a("commands.perf.reportSaved", $$4), false);
    }
 
-   private static void a(du $$0, bjp $$1) {
-      if ($$1 != bjl.a) {
+   private static void a(du $$0, bjq $$1) {
+      if ($$1 != bjm.a) {
          int $$2 = $$1.f();
          double $$3 = (double)$$1.g() / (double)axv.a;
          $$0.a(() -> vu.a("commands.perf.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2, String.format(Locale.ROOT, "%.2f", (double)$$2 / $$3)), false);

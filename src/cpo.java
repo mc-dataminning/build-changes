@@ -1,39 +1,48 @@
-public class cpo extends cqf {
-   public cpo(cqf.a $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public interface cpo {
+   bpe i();
+
+   default il<atx> as_() {
+      return aty.as;
    }
 
-   @Override
-   public bnc a(csu $$0) {
-      cwz $$1 = $$0.q();
-      ib $$2 = $$0.a();
-      dmz $$3 = $$1.a_($$2);
-      boolean $$4 = false;
-      if (!dao.h($$3) && !dap.g($$3) && !daq.g($$3)) {
-         $$2 = $$2.a($$0.k());
-         if (czn.a($$1, $$2, $$0.g())) {
-            this.a($$1, $$2);
-            $$1.b($$2, czn.a($$1, $$2));
-            $$1.a($$0.o(), drn.i, $$2);
-            $$4 = true;
+   default bne<cqm> a(cqh $$0, cxb $$1, ciu $$2, bnc $$3) {
+      cqm $$4 = $$2.b($$3);
+      bpe $$5 = bpr.h($$4);
+      if (!$$2.c($$5)) {
+         return bne.c($$4);
+      } else {
+         cqm $$6 = $$2.d($$5);
+         if ((!cux.d($$6) || $$2.f()) && !cqm.a($$4, $$6)) {
+            if (!$$1.x_()) {
+               $$2.b(aui.c.b($$0));
+            }
+
+            cqm $$7 = $$6.b() ? $$4 : $$6.c();
+            cqm $$8 = $$2.f() ? $$4.q() : $$4.c();
+            $$2.a($$5, $$8);
+            return bne.a($$7, $$1.x_());
+         } else {
+            return bne.d($$4);
          }
-      } else {
-         this.a($$1, $$2);
-         $$1.b($$2, $$3.a(dnp.r, Boolean.valueOf(true)));
-         $$1.a($$0.o(), drn.c, $$2);
-         $$4 = true;
-      }
-
-      if ($$4) {
-         $$0.n().h(1);
-         return bnc.a($$1.B);
-      } else {
-         return bnc.e;
       }
    }
 
-   private void a(cwz $$0, ib $$1) {
-      axd $$2 = $$0.E_();
-      $$0.a(null, $$1, aty.iz, atz.e, 1.0F, ($$2.i() - $$2.i()) * 0.2F + 1.0F);
+   @Nullable
+   static cpo c_(cqm $$0) {
+      cqh $$3 = $$0.d();
+      if ($$3 instanceof cpo) {
+         return (cpo)$$3;
+      } else {
+         if ($$0.d() instanceof coh $$2) {
+            dac var6 = $$2.d();
+            if (var6 instanceof cpo) {
+               return (cpo)var6;
+            }
+         }
+
+         return null;
+      }
    }
 }

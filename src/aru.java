@@ -19,9 +19,9 @@ public class aru implements asb {
    private final Path c;
    private final arc d;
    private final asa e;
-   private final eph f;
+   private final epj f;
 
-   public aru(Path $$0, arc $$1, asa $$2, eph $$3) {
+   public aru(Path $$0, arc $$1, asa $$2, epj $$3) {
       this.c = $$0;
       this.d = $$1;
       this.e = $$2;
@@ -53,16 +53,16 @@ public class aru implements asb {
       return new aqz("file/" + $$1, vu.b($$1), this.e, Optional.empty());
    }
 
-   public static void a(Path $$0, eph $$1, BiConsumer<Path, arw.c> $$2) throws IOException {
+   public static void a(Path $$0, epj $$1, BiConsumer<Path, arw.c> $$2) throws IOException {
       aru.a $$3 = new aru.a($$1);
 
       try (DirectoryStream<Path> $$4 = Files.newDirectoryStream($$0)) {
          for (Path $$5 : $$4) {
             try {
-               List<epi> $$6 = new ArrayList<>();
+               List<epk> $$6 = new ArrayList<>();
                arw.c $$7 = $$3.a($$5, $$6);
                if (!$$6.isEmpty()) {
-                  a.warn("Ignoring potential pack entry: {}", epg.a($$5, $$6));
+                  a.warn("Ignoring potential pack entry: {}", epi.a($$5, $$6));
                } else if ($$7 != null) {
                   $$2.accept($$5, $$7);
                } else {
@@ -76,7 +76,7 @@ public class aru implements asb {
    }
 
    static class a extends ary<arw.c> {
-      protected a(eph $$0) {
+      protected a(epj $$0) {
          super($$0);
       }
 

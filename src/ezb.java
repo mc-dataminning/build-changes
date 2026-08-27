@@ -1,74 +1,39 @@
-import javax.annotation.Nullable;
+import java.util.function.IntFunction;
 
-public record ezb(int a, @Nullable ezb.a b, @Nullable vu c, @Nullable String d) {
-   private static final vu e = vu.c("chat.tag.system");
-   private static final vu f = vu.c("chat.tag.system_single_player");
-   private static final vu g = vu.c("chat.tag.not_secure");
-   private static final vu h = vu.c("chat.tag.modified");
-   private static final vu i = vu.c("chat.tag.error");
-   private static final int j = 13684944;
-   private static final int k = 6316128;
-   private static final ezb l = new ezb(13684944, null, e, "System");
-   private static final ezb m = new ezb(13684944, null, f, "System");
-   private static final ezb n = new ezb(13684944, null, g, "Not Secure");
-   private static final ezb o = new ezb(16733525, null, i, "Chat Error");
+public enum ezb implements awy {
+   a(0, "options.graphics.fast"),
+   b(1, "options.graphics.fancy"),
+   c(2, "options.graphics.fabulous");
 
-   public static ezb a() {
-      return l;
+   private static final IntFunction<ezb> d = avn.a(ezb::a, values(), avn.a.b);
+   private final int e;
+   private final String f;
+
+   private ezb(int $$0, String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public static ezb b() {
-      return m;
+   @Override
+   public int a() {
+      return this.e;
    }
 
-   public static ezb c() {
-      return n;
+   @Override
+   public String b() {
+      return this.f;
    }
 
-   public static ezb a(String $$0) {
-      vu $$1 = vu.b($$0).a(n.h);
-      vu $$2 = vu.i().b(h).b(vt.s).b($$1);
-      return new ezb(6316128, ezb.a.a, $$2, "Modified");
+   @Override
+   public String toString() {
+      return switch (this) {
+         case a -> "fast";
+         case b -> "fancy";
+         case c -> "fabulous";
+      };
    }
 
-   public static ezb d() {
-      return o;
-   }
-
-   public int e() {
-      return this.a;
-   }
-
-   @Nullable
-   public ezb.a f() {
-      return this.b;
-   }
-
-   @Nullable
-   public vu g() {
-      return this.c;
-   }
-
-   @Nullable
-   public String h() {
-      return this.d;
-   }
-
-   public static enum a {
-      a(new ajh("icon/chat_modified"), 9, 9);
-
-      public final ajh b;
-      public final int c;
-      public final int d;
-
-      private a(ajh $$0, int $$1, int $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-      }
-
-      public void a(fat $$0, int $$1, int $$2) {
-         $$0.a(this.b, $$1, $$2, this.c, this.d);
-      }
+   public static ezb a(int $$0) {
+      return d.apply($$0);
    }
 }

@@ -9,11 +9,11 @@ public class aer implements yb<aam> {
    private final int b;
    private final List<aer.a> c;
 
-   public aer(int $$0, Collection<bqr> $$1) {
+   public aer(int $$0, Collection<bqs> $$1) {
       this.b = $$0;
       this.c = Lists.newArrayList();
 
-      for (bqr $$2 : $$1) {
+      for (bqs $$2 : $$1) {
          this.c.add(new aer.a($$2.a(), $$2.b(), $$2.c()));
       }
    }
@@ -40,13 +40,13 @@ public class aer implements yb<aam> {
       return this.c;
    }
 
-   public static record a(il<bqq> c, double d, Collection<bqt> e) {
-      public static final xs<ByteBuf, bqt> a = xs.a(
-         jf.g, bqt::a, xq.g, bqt::c, bqt.a.e, bqt::b, ($$0, $$1, $$2) -> new bqt($$0, "Unknown synced attribute modifier", $$1, $$2)
+   public static record a(il<bqr> c, double d, Collection<bqu> e) {
+      public static final xs<ByteBuf, bqu> a = xs.a(
+         jf.g, bqu::a, xq.g, bqu::c, bqu.a.e, bqu::b, ($$0, $$1, $$2) -> new bqu($$0, "Unknown synced attribute modifier", $$1, $$2)
       );
       public static final xs<vf, aer.a> b = xs.a(xq.b(kj.c), aer.a::a, xq.g, aer.a::b, a.a(xq.a(ArrayList::new)), aer.a::c, aer.a::new);
 
-      public il<bqq> a() {
+      public il<bqr> a() {
          return this.c;
       }
 
@@ -54,7 +54,7 @@ public class aer implements yb<aam> {
          return this.d;
       }
 
-      public Collection<bqt> c() {
+      public Collection<bqu> c() {
          return this.e;
       }
    }

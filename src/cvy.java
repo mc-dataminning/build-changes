@@ -1,48 +1,41 @@
-import com.mojang.serialization.Codec;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.function.Function;
+import java.util.OptionalInt;
 import javax.annotation.Nullable;
 
-public class cvy extends ArrayList<cvx> {
-   public static final Codec<cvy> a = cvx.a.listOf().fieldOf("Recipes").xmap(cvy::new, Function.identity()).codec();
-   public static final xs<vf, cvy> b = cvx.b.a(xq.a(cvy::new));
-
-   public cvy() {
-   }
-
-   private cvy(int $$0) {
-      super($$0);
-   }
-
-   private cvy(Collection<cvx> $$0) {
-      super($$0);
-   }
+public interface cvy {
+   void f(@Nullable ciu var1);
 
    @Nullable
-   public cvx a(cqk $$0, cqk $$1, int $$2) {
-      if ($$2 > 0 && $$2 < this.size()) {
-         cvx $$3 = this.get($$2);
-         return $$3.a($$0, $$1) ? $$3 : null;
-      } else {
-         for (int $$4 = 0; $$4 < this.size(); $$4++) {
-            cvx $$5 = this.get($$4);
-            if ($$5.a($$0, $$1)) {
-               return $$5;
-            }
+   ciu gn();
+
+   cwa gp();
+
+   void a(cwa var1);
+
+   void a(cvz var1);
+
+   void n(cqm var1);
+
+   int s();
+
+   void u(int var1);
+
+   boolean gq();
+
+   atx gr();
+
+   default boolean gz() {
+      return false;
+   }
+
+   default void a(ciu $$0, vu $$1, int $$2) {
+      OptionalInt $$3 = $$0.a(new bnn(($$0x, $$1x, $$2x) -> new cmz($$0x, $$1x, this), $$1));
+      if ($$3.isPresent()) {
+         cwa $$4 = this.gp();
+         if (!$$4.isEmpty()) {
+            $$0.a($$3.getAsInt(), $$4, $$2, this.s(), this.gq(), this.gz());
          }
-
-         return null;
       }
    }
 
-   public cvy a() {
-      cvy $$0 = new cvy(this.size());
-
-      for (cvx $$1 : this) {
-         $$0.add($$1.u());
-      }
-
-      return $$0;
-   }
+   boolean gv();
 }

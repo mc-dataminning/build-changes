@@ -1,53 +1,37 @@
-public class fnx<T extends bow> extends fol<T> {
-   private final frd a;
-   private final frd b;
-   private final frd f;
-   private final frd g;
-
-   public fnx(frd $$0) {
-      this.a = $$0;
-      this.b = $$0.b("body");
-      this.f = this.b.b("tail");
-      this.g = this.f.b("tail_fin");
+public class fnx<T extends box> extends fpp<T> {
+   public fnx(frf $$0) {
+      super($$0, false, 10.0F, 4.0F, 2.0F, 2.0F, 24);
    }
 
-   public static frj b() {
-      frl $$0 = new frl();
-      frm $$1 = $$0.a();
-      float $$2 = 18.0F;
-      float $$3 = -8.0F;
-      frm $$4 = $$1.a("body", fri.c().a(22, 0).a(-4.0F, -7.0F, 0.0F, 8.0F, 7.0F, 13.0F), frf.a(0.0F, 22.0F, -5.0F));
-      $$4.a("back_fin", fri.c().a(51, 0).a(-0.5F, 0.0F, 8.0F, 1.0F, 4.0F, 5.0F), frf.b((float) (Math.PI / 3), 0.0F, 0.0F));
-      $$4.a(
-         "left_fin",
-         fri.c().a(48, 20).a().a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
-         frf.a(2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (Math.PI * 2.0 / 3.0))
+   public static frl c() {
+      frn $$0 = new frn();
+      fro $$1 = $$0.a();
+      int $$2 = 12;
+      $$1.a(
+         "head",
+         frk.c()
+            .a(0, 0)
+            .a(-4.0F, -4.0F, -6.0F, 8.0F, 8.0F, 6.0F)
+            .a(22, 0)
+            .a("right_horn", -5.0F, -5.0F, -4.0F, 1.0F, 3.0F, 1.0F)
+            .a(22, 0)
+            .a("left_horn", 4.0F, -5.0F, -4.0F, 1.0F, 3.0F, 1.0F),
+         frh.a(0.0F, 4.0F, -8.0F)
       );
-      $$4.a(
-         "right_fin",
-         fri.c().a(48, 20).a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
-         frf.a(-2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (-Math.PI * 2.0 / 3.0))
+      $$1.a(
+         "body",
+         frk.c().a(18, 4).a(-6.0F, -10.0F, -7.0F, 12.0F, 18.0F, 10.0F).a(52, 0).a(-2.0F, 2.0F, -8.0F, 4.0F, 6.0F, 1.0F),
+         frh.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
       );
-      frm $$5 = $$4.a("tail", fri.c().a(0, 19).a(-2.0F, -2.5F, 0.0F, 4.0F, 5.0F, 11.0F), frf.a(0.0F, -2.5F, 11.0F, -0.10471976F, 0.0F, 0.0F));
-      $$5.a("tail_fin", fri.c().a(19, 20).a(-5.0F, -0.5F, 0.0F, 10.0F, 1.0F, 6.0F), frf.a(0.0F, 0.0F, 9.0F));
-      frm $$6 = $$4.a("head", fri.c().a(0, 0).a(-4.0F, -3.0F, -3.0F, 8.0F, 7.0F, 6.0F), frf.a(0.0F, -4.0F, -3.0F));
-      $$6.a("nose", fri.c().a(0, 13).a(-1.0F, 2.0F, -7.0F, 2.0F, 2.0F, 4.0F), frf.a);
-      return frj.a($$0, 64, 64);
+      frk $$3 = frk.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F);
+      $$1.a("right_hind_leg", $$3, frh.a(-4.0F, 12.0F, 7.0F));
+      $$1.a("left_hind_leg", $$3, frh.a(4.0F, 12.0F, 7.0F));
+      $$1.a("right_front_leg", $$3, frh.a(-4.0F, 12.0F, -6.0F));
+      $$1.a("left_front_leg", $$3, frh.a(4.0F, 12.0F, -6.0F));
+      return frl.a($$0, 64, 32);
    }
 
-   @Override
-   public frd a() {
+   public frf d() {
       return this.a;
-   }
-
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.e = $$5 * (float) (Math.PI / 180.0);
-      this.b.f = $$4 * (float) (Math.PI / 180.0);
-      if ($$0.dp().i() > 1.0E-7) {
-         this.b.e = this.b.e + (-0.05F - 0.05F * aww.b($$3 * 0.3F));
-         this.f.e = -0.1F * aww.b($$3 * 0.3F);
-         this.g.e = -0.2F * aww.b($$3 * 0.3F);
-      }
    }
 }

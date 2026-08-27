@@ -1,44 +1,74 @@
-public class gbq implements gbc.a {
-   private final ezg a;
+import com.google.common.collect.ImmutableList;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.DoubleSupplier;
 
-   public gbq(ezg $$0) {
+public class gbq implements gbe.a {
+   private final ezi a;
+   private double b = Double.MIN_VALUE;
+   private List<box> c = Collections.emptyList();
+
+   public gbq(ezi $$0) {
       this.a = $$0;
    }
 
    @Override
-   public void a(etz $$0, fxq $$1, double $$2, double $$3, double $$4) {
-      ib $$5 = this.a.s.dm();
-      cxc $$6 = this.a.s.dM();
-
-      for (ib $$7 : ib.a($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
-         ein $$8 = $$6.b_($$7);
-         if ($$8.a(aus.a)) {
-            double $$9 = (double)((float)$$7.v() + $$8.a($$6, $$7));
-            gbc.a(
-               $$0,
-               $$1,
-               new epm(
-                     (double)((float)$$7.u() + 0.01F),
-                     (double)((float)$$7.v() + 0.01F),
-                     (double)((float)$$7.w() + 0.01F),
-                     (double)((float)$$7.u() + 0.99F),
-                     $$9,
-                     (double)((float)$$7.w() + 0.99F)
-                  )
-                  .d(-$$2, -$$3, -$$4),
-               0.0F,
-               1.0F,
-               0.0F,
-               0.15F
-            );
-         }
+   public void a(eub $$0, fxs $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)ac.c();
+      if ($$5 - this.b > 1.0E8) {
+         this.b = $$5;
+         box $$6 = this.a.j.m().g();
+         this.c = ImmutableList.copyOf($$6.dM().a_($$6, $$6.cH().g(16.0)));
       }
 
-      for (ib $$10 : ib.a($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
-         ein $$11 = $$6.b_($$10);
-         if ($$11.a(aus.a)) {
-            gbc.a($$0, $$1, String.valueOf($$11.e()), (double)$$10.u() + 0.5, (double)((float)$$10.v() + $$11.a($$6, $$10)), (double)$$10.w() + 0.5, -16777216);
+      ciu $$7 = this.a.s;
+      if ($$7 != null && $$7.aD.isPresent()) {
+         this.a($$0, $$1, $$2, $$3, $$4, $$7, () -> 0.0, 1.0F, 0.0F, 0.0F);
+      }
+
+      for (box $$8 : this.c) {
+         if ($$8 != $$7) {
+            this.a($$0, $$1, $$2, $$3, $$4, $$8, () -> this.a($$8), 0.0F, 1.0F, 0.0F);
          }
       }
+   }
+
+   private void a(eub $$0, fxs $$1, double $$2, double $$3, double $$4, box $$5, DoubleSupplier $$6, float $$7, float $$8, float $$9) {
+      $$5.aD.ifPresent($$10 -> {
+         double $$11 = $$6.getAsDouble();
+         ib $$12 = $$5.aJ();
+         this.a($$12, $$0, $$2, $$3, $$4, $$1, 0.02 + $$11, $$7, $$8, $$9);
+         ib $$13 = $$5.aH();
+         if (!$$13.equals($$12)) {
+            this.a($$13, $$0, $$2, $$3, $$4, $$1, 0.04 + $$11, 0.0F, 1.0F, 1.0F);
+         }
+      });
+   }
+
+   private double a(box $$0) {
+      return 0.02 * (double)(String.valueOf((double)$$0.aj() + 0.132453657).hashCode() % 1000) / 1000.0;
+   }
+
+   private void a(ib $$0, eub $$1, double $$2, double $$3, double $$4, fxs $$5, double $$6, float $$7, float $$8, float $$9) {
+      double $$10 = (double)$$0.u() - $$2 - 2.0 * $$6;
+      double $$11 = (double)$$0.v() - $$3 - 2.0 * $$6;
+      double $$12 = (double)$$0.w() - $$4 - 2.0 * $$6;
+      double $$13 = $$10 + 1.0 + 4.0 * $$6;
+      double $$14 = $$11 + 1.0 + 4.0 * $$6;
+      double $$15 = $$12 + 1.0 + 4.0 * $$6;
+      fxq.a($$1, $$5.getBuffer(fya.y()), $$10, $$11, $$12, $$13, $$14, $$15, $$7, $$8, $$9, 0.4F);
+      fxq.a(
+         $$1,
+         $$5.getBuffer(fya.y()),
+         this.a.r.a_($$0).b(this.a.r, $$0, epy.a()).a((double)$$0.u(), (double)$$0.v(), (double)$$0.w()),
+         -$$2,
+         -$$3,
+         -$$4,
+         $$7,
+         $$8,
+         $$9,
+         1.0F,
+         false
+      );
    }
 }

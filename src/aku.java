@@ -16,7 +16,7 @@ public class aku {
    private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vu.c("commands.clone.overlap"));
    private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> vu.b("commands.clone.toobig", $$0, $$1));
    private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(vu.c("commands.clone.failed"));
-   public static final Predicate<dnd> a = $$0 -> !$$0.a().i();
+   public static final Predicate<dnf> a = $$0 -> !$$0.a().i();
 
    public static void a(CommandDispatcher<du> $$0, dq $$1) {
       $$0.register(
@@ -82,7 +82,7 @@ public class aku {
       aku.b<CommandContext<du>, aku.c> $$0,
       aku.b<CommandContext<du>, aku.c> $$1,
       aku.b<CommandContext<du>, aku.c> $$2,
-      aku.b<CommandContext<du>, Predicate<dnd>> $$3,
+      aku.b<CommandContext<du>, Predicate<dnf>> $$3,
       ArgumentBuilder<du, ?> $$4
    ) {
       return $$4.then(dv.a("force").executes($$4x -> a((du)$$4x.getSource(), $$0.apply($$4x), $$1.apply($$4x), $$2.apply($$4x), $$3.apply($$4x), aku.d.a)))
@@ -90,20 +90,20 @@ public class aku {
          .then(dv.a("normal").executes($$4x -> a((du)$$4x.getSource(), $$0.apply($$4x), $$1.apply($$4x), $$2.apply($$4x), $$3.apply($$4x), aku.d.c)));
    }
 
-   private static int a(du $$0, aku.c $$1, aku.c $$2, aku.c $$3, Predicate<dnd> $$4, aku.d $$5) throws CommandSyntaxException {
+   private static int a(du $$0, aku.c $$1, aku.c $$2, aku.c $$3, Predicate<dnf> $$4, aku.d $$5) throws CommandSyntaxException {
       ib $$6 = $$1.b();
       ib $$7 = $$2.b();
-      ecu $$8 = ecu.a($$6, $$7);
+      ecw $$8 = ecw.a($$6, $$7);
       ib $$9 = $$3.b();
       ib $$10 = $$9.a($$8.c());
-      ecu $$11 = ecu.a($$9, $$10);
+      ecw $$11 = ecw.a($$9, $$10);
       apf $$12 = $$1.a();
       apf $$13 = $$3.a();
       if (!$$5.a() && $$12 == $$13 && $$11.a($$8)) {
          throw b.create();
       } else {
          int $$14 = $$8.d() * $$8.e() * $$8.f();
-         int $$15 = $$0.e().Z().c(cwv.z);
+         int $$15 = $$0.e().Z().c(cwx.z);
          if ($$14 > $$15) {
             throw c.create($$15, $$14);
          } else if ($$12.a($$6, $$7) && $$13.a($$9, $$10)) {
@@ -118,10 +118,10 @@ public class aku {
                   for (int $$23 = $$8.h(); $$23 <= $$8.k(); $$23++) {
                      ib $$24 = new ib($$23, $$22, $$21);
                      ib $$25 = $$24.a((jg)$$20);
-                     dnd $$26 = new dnd($$12, $$24, false);
-                     dmz $$27 = $$26.a();
+                     dnf $$26 = new dnf($$12, $$24, false);
+                     dnb $$27 = $$26.a();
                      if ($$4.test($$26)) {
-                        dkg $$28 = $$12.c_($$24);
+                        dki $$28 = $$12.c_($$24);
                         if ($$28 != null) {
                            ta $$29 = $$28.d($$0.v());
                            $$17.add(new aku.a($$25, $$27, $$29));
@@ -140,13 +140,13 @@ public class aku {
 
             if ($$5 == aku.d.b) {
                for (ib $$30 : $$19) {
-                  dkg $$31 = $$12.c_($$30);
-                  bmt.a_($$31);
-                  $$12.a($$30, dac.hW.o(), 2);
+                  dki $$31 = $$12.c_($$30);
+                  bmu.a_($$31);
+                  $$12.a($$30, dae.hW.o(), 2);
                }
 
                for (ib $$32 : $$19) {
-                  $$12.a($$32, dac.a.o(), 3);
+                  $$12.a($$32, dae.a.o(), 3);
                }
             }
 
@@ -157,9 +157,9 @@ public class aku {
             List<aku.a> $$34 = Lists.reverse($$33);
 
             for (aku.a $$35 : $$34) {
-               dkg $$36 = $$13.c_($$35.a);
-               bmt.a_($$36);
-               $$13.a($$35.a, dac.hW.o(), 2);
+               dki $$36 = $$13.c_($$35.a);
+               bmu.a_($$36);
+               $$13.a($$35.a, dae.hW.o(), 2);
             }
 
             int $$37 = 0;
@@ -171,7 +171,7 @@ public class aku {
             }
 
             for (aku.a $$39 : $$17) {
-               dkg $$40 = $$13.c_($$39.a);
+               dki $$40 = $$13.c_($$39.a);
                if ($$39.c != null && $$40 != null) {
                   $$40.a($$39.c, $$13.H_());
                   $$40.e();
@@ -200,11 +200,11 @@ public class aku {
 
    static class a {
       public final ib a;
-      public final dmz b;
+      public final dnb b;
       @Nullable
       public final ta c;
 
-      public a(ib $$0, dmz $$1, @Nullable ta $$2) {
+      public a(ib $$0, dnb $$1, @Nullable ta $$2) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;

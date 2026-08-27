@@ -1,10 +1,3 @@
-import com.mojang.serialization.Codec;
-
-public class cyd {
-   public static Codec<? extends cyc> a(iy<Codec<? extends cyc>> $$0) {
-      iy.a($$0, "fixed", cyj.b);
-      iy.a($$0, "multi_noise", cyl.c);
-      iy.a($$0, "checkerboard", cyg.b);
-      return iy.a($$0, "the_end", cyp.b);
-   }
+public interface cyd {
+   il<cya> getNoiseBiome(int var1, int var2, int var3, cyj.f var4);
 }

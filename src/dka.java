@@ -1,73 +1,91 @@
-import javax.annotation.Nullable;
+public class dka {
+   public static final ajg<djz> a = a("base");
+   public static final ajg<djz> b = a("square_bottom_left");
+   public static final ajg<djz> c = a("square_bottom_right");
+   public static final ajg<djz> d = a("square_top_left");
+   public static final ajg<djz> e = a("square_top_right");
+   public static final ajg<djz> f = a("stripe_bottom");
+   public static final ajg<djz> g = a("stripe_top");
+   public static final ajg<djz> h = a("stripe_left");
+   public static final ajg<djz> i = a("stripe_right");
+   public static final ajg<djz> j = a("stripe_center");
+   public static final ajg<djz> k = a("stripe_middle");
+   public static final ajg<djz> l = a("stripe_downright");
+   public static final ajg<djz> m = a("stripe_downleft");
+   public static final ajg<djz> n = a("small_stripes");
+   public static final ajg<djz> o = a("cross");
+   public static final ajg<djz> p = a("straight_cross");
+   public static final ajg<djz> q = a("triangle_bottom");
+   public static final ajg<djz> r = a("triangle_top");
+   public static final ajg<djz> s = a("triangles_bottom");
+   public static final ajg<djz> t = a("triangles_top");
+   public static final ajg<djz> u = a("diagonal_left");
+   public static final ajg<djz> v = a("diagonal_up_right");
+   public static final ajg<djz> w = a("diagonal_up_left");
+   public static final ajg<djz> x = a("diagonal_right");
+   public static final ajg<djz> y = a("circle");
+   public static final ajg<djz> z = a("rhombus");
+   public static final ajg<djz> A = a("half_vertical");
+   public static final ajg<djz> B = a("half_horizontal");
+   public static final ajg<djz> C = a("half_vertical_right");
+   public static final ajg<djz> D = a("half_horizontal_bottom");
+   public static final ajg<djz> E = a("border");
+   public static final ajg<djz> F = a("curly_border");
+   public static final ajg<djz> G = a("gradient");
+   public static final ajg<djz> H = a("gradient_up");
+   public static final ajg<djz> I = a("bricks");
+   public static final ajg<djz> J = a("globe");
+   public static final ajg<djz> K = a("creeper");
+   public static final ajg<djz> L = a("skull");
+   public static final ajg<djz> M = a("flower");
+   public static final ajg<djz> N = a("mojang");
+   public static final ajg<djz> O = a("piglin");
 
-public abstract class dka extends dkg implements bmv, bng, bnh {
-   private bnf e = bnf.a;
-   @Nullable
-   private vu f;
-
-   protected dka(dki<?> $$0, ib $$1, dmz $$2) {
-      super($$0, $$1, $$2);
+   private static ajg<djz> a(String $$0) {
+      return ajg.a(kj.d, new ajh($$0));
    }
 
-   @Override
-   public void a(ta $$0, in.a $$1) {
-      super.a($$0, $$1);
-      this.e = bnf.b($$0);
-      if ($$0.b("CustomName", 8)) {
-         this.f = vu.a.a($$0.l("CustomName"));
-      }
+   public static djz a(iy<djz> $$0) {
+      iy.a($$0, a, new djz("b"));
+      iy.a($$0, b, new djz("bl"));
+      iy.a($$0, c, new djz("br"));
+      iy.a($$0, d, new djz("tl"));
+      iy.a($$0, e, new djz("tr"));
+      iy.a($$0, f, new djz("bs"));
+      iy.a($$0, g, new djz("ts"));
+      iy.a($$0, h, new djz("ls"));
+      iy.a($$0, i, new djz("rs"));
+      iy.a($$0, j, new djz("cs"));
+      iy.a($$0, k, new djz("ms"));
+      iy.a($$0, l, new djz("drs"));
+      iy.a($$0, m, new djz("dls"));
+      iy.a($$0, n, new djz("ss"));
+      iy.a($$0, o, new djz("cr"));
+      iy.a($$0, p, new djz("sc"));
+      iy.a($$0, q, new djz("bt"));
+      iy.a($$0, r, new djz("tt"));
+      iy.a($$0, s, new djz("bts"));
+      iy.a($$0, t, new djz("tts"));
+      iy.a($$0, u, new djz("ld"));
+      iy.a($$0, v, new djz("rd"));
+      iy.a($$0, w, new djz("lud"));
+      iy.a($$0, x, new djz("rud"));
+      iy.a($$0, y, new djz("mc"));
+      iy.a($$0, z, new djz("mr"));
+      iy.a($$0, A, new djz("vh"));
+      iy.a($$0, B, new djz("hh"));
+      iy.a($$0, C, new djz("vhr"));
+      iy.a($$0, D, new djz("hhb"));
+      iy.a($$0, E, new djz("bo"));
+      iy.a($$0, F, new djz("cbo"));
+      iy.a($$0, G, new djz("gra"));
+      iy.a($$0, H, new djz("gru"));
+      iy.a($$0, I, new djz("bri"));
+      iy.a($$0, J, new djz("glb"));
+      iy.a($$0, K, new djz("cre"));
+      iy.a($$0, L, new djz("sku"));
+      iy.a($$0, M, new djz("flo"));
+      iy.a($$0, N, new djz("moj"));
+      return iy.a($$0, O, new djz("pig"));
    }
-
-   @Override
-   protected void b(ta $$0, in.a $$1) {
-      super.b($$0, $$1);
-      this.e.a($$0);
-      if (this.f != null) {
-         $$0.a("CustomName", vu.a.a(this.f));
-      }
-   }
-
-   public void a(vu $$0) {
-      this.f = $$0;
-   }
-
-   @Override
-   public vu ad() {
-      return this.f != null ? this.f : this.k();
-   }
-
-   @Override
-   public vu O_() {
-      return this.ad();
-   }
-
-   @Nullable
-   @Override
-   public vu af() {
-      return this.f;
-   }
-
-   protected abstract vu k();
-
-   public boolean d(cis $$0) {
-      return a($$0, this.e, this.O_());
-   }
-
-   public static boolean a(cis $$0, bnf $$1, vu $$2) {
-      if (!$$0.N_() && !$$1.a($$0.eU())) {
-         $$0.a(vu.a("container.isLocked", $$2), true);
-         $$0.a(aty.eK, atz.e, 1.0F, 1.0F);
-         return false;
-      } else {
-         return true;
-      }
-   }
-
-   @Nullable
-   @Override
-   public clo createMenu(int $$0, cir $$1, cis $$2) {
-      return this.d($$2) ? this.a($$0, $$1) : null;
-   }
-
-   protected abstract clo a(int var1, cir var2);
 }

@@ -4,25 +4,25 @@ public class apa {
    @Nullable
    protected static ib a(apf $$0, int $$1, int $$2) {
       boolean $$3 = $$0.D_().h();
-      dpg $$4 = $$0.d(je.a($$1), je.a($$2));
-      int $$5 = $$3 ? $$0.l().g().a($$0) : $$4.a(dsm.a.e, $$1 & 15, $$2 & 15);
+      dpi $$4 = $$0.d(je.a($$1), je.a($$2));
+      int $$5 = $$3 ? $$0.l().g().a($$0) : $$4.a(dso.a.e, $$1 & 15, $$2 & 15);
       if ($$5 < $$0.I_()) {
          return null;
       } else {
-         int $$6 = $$4.a(dsm.a.b, $$1 & 15, $$2 & 15);
-         if ($$6 <= $$5 && $$6 > $$4.a(dsm.a.d, $$1 & 15, $$2 & 15)) {
+         int $$6 = $$4.a(dso.a.b, $$1 & 15, $$2 & 15);
+         if ($$6 <= $$5 && $$6 > $$4.a(dso.a.d, $$1 & 15, $$2 & 15)) {
             return null;
          } else {
             ib.a $$7 = new ib.a();
 
             for (int $$8 = $$5 + 1; $$8 >= $$0.I_(); $$8--) {
                $$7.d($$1, $$8, $$2);
-               dmz $$9 = $$0.a_($$7);
+               dnb $$9 = $$0.a_($$7);
                if (!$$9.u().c()) {
                   break;
                }
 
-               if (daa.a($$9.k($$0, $$7), ih.b)) {
+               if (dac.a($$9.k($$0, $$7), ih.b)) {
                   return $$7.c().i();
                }
             }
@@ -33,7 +33,7 @@ public class apa {
    }
 
    @Nullable
-   public static ib a(apf $$0, cwg $$1) {
+   public static ib a(apf $$0, cwi $$1) {
       if (aa.a($$1)) {
          return null;
       } else {

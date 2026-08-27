@@ -1,20 +1,24 @@
-public class gfv extends gee<chw, fqp<chw>> {
-   private static final ajh a = new ajh("textures/entity/warden/warden.png");
-   private static final ajh i = new ajh("textures/entity/warden/warden_bioluminescent_layer.png");
-   private static final ajh j = new ajh("textures/entity/warden/warden_heart.png");
-   private static final ajh k = new ajh("textures/entity/warden/warden_pulsating_spots_1.png");
-   private static final ajh l = new ajh("textures/entity/warden/warden_pulsating_spots_2.png");
+public class gfv extends geh<cih, fqq<cih>> {
+   private static final ajh a = new ajh("textures/entity/villager/villager.png");
 
-   public gfv(gcy.a $$0) {
-      super($$0, new fqp<>($$0.a(frc.bN)), 0.9F);
-      this.a(new ghv<>(this, i, ($$0x, $$1, $$2) -> 1.0F, fqp::e));
-      this.a(new ghv<>(this, k, ($$0x, $$1, $$2) -> Math.max(0.0F, aww.b($$2 * 0.045F) * 0.25F), fqp::f));
-      this.a(new ghv<>(this, l, ($$0x, $$1, $$2) -> Math.max(0.0F, aww.b($$2 * 0.045F + (float) Math.PI) * 0.25F), fqp::f));
-      this.a(new ghv<>(this, a, ($$0x, $$1, $$2) -> $$0x.G($$1), fqp::c));
-      this.a(new ghv<>(this, j, ($$0x, $$1, $$2) -> $$0x.H($$1), fqp::d));
+   public gfv(gdb.a $$0) {
+      super($$0, new fqq<>($$0.a(fre.bP)), 0.5F);
+      this.a(new ggr<>(this, $$0.f(), $$0.d()));
+      this.a(new ghx<>(this, $$0.e(), "villager"));
+      this.a(new ggq<>(this, $$0.d()));
    }
 
-   public ajh a(chw $$0) {
+   public ajh a(cih $$0) {
       return a;
+   }
+
+   protected void a(cih $$0, eub $$1, float $$2) {
+      float $$3 = 0.9375F * $$0.ea();
+      $$1.b($$3, $$3, $$3);
+   }
+
+   protected float b(cih $$0) {
+      float $$1 = super.b($$0);
+      return $$0.o_() ? $$1 * 0.5F : $$1;
    }
 }

@@ -5,7 +5,7 @@ public record aeo(float b, boolean c) implements yb<aam> {
       this($$0.readFloat(), $$0.readBoolean());
    }
 
-   public static aeo a(bnn $$0) {
+   public static aeo a(bno $$0) {
       return new aeo($$0.f(), $$0.l());
    }
 

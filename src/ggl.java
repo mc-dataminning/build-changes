@@ -1,16 +1,19 @@
-public class ggl extends ghj<cbg, fnn<cbg>> {
-   private static final ajh a = new ajh("textures/entity/cat/cat_collar.png");
-   private final fnn<cbg> b;
+public class ggl extends ghm<cgw, fnn<cgw>> {
+   private static final ajh a = new ajh("textures/entity/breeze/breeze_wind.png");
+   private static final fnn<cgw> b = new fnn<>(fnn.a(128, 128).a());
 
-   public ggl(get<cbg, fnn<cbg>> $$0, fqz $$1) {
+   public ggl(gew<cgw, fnn<cgw>> $$0) {
       super($$0);
-      this.b = new fnn<>($$1.a(frc.q));
    }
 
-   public void a(etz $$0, fxq $$1, int $$2, cbg $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.r()) {
-         float[] $$10 = $$3.gx().d();
-         a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$10[0], $$10[1], $$10[2]);
-      }
+   public void a(eub $$0, fxs $$1, int $$2, cgw $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      float $$10 = (float)$$3.ah + $$6;
+      euf $$11 = $$1.getBuffer(fya.a(a, this.a($$10) % 1.0F, 0.0F));
+      b.a($$3, $$4, $$5, $$7, $$8, $$9);
+      gch.a(b, b.e()).a($$0, $$11, $$2, git.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   }
+
+   private float a(float $$0) {
+      return $$0 * 0.02F;
    }
 }

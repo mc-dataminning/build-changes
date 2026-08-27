@@ -12,7 +12,7 @@ public interface vv {
       return Optional.empty();
    }
 
-   default wi a(@Nullable du $$0, @Nullable bow $$1, int $$2) throws CommandSyntaxException {
+   default wi a(@Nullable du $$0, @Nullable box $$1, int $$2) throws CommandSyntaxException {
       return wi.a(this);
    }
 

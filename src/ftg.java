@@ -1,73 +1,37 @@
-import com.mojang.authlib.minecraft.UserApiService;
-import java.util.Objects;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import java.util.Locale;
 
-public final class ftg {
-   private static final int a = 1024;
-   private final fsx b;
-   private final ftd c;
-   private final fss d;
-   @Nullable
-   private ftc e;
+public enum ftg {
+   a("generic"),
+   b("hate_speech"),
+   c("harassment_or_bullying"),
+   d("self_harm_or_suicide"),
+   e("imminent_harm"),
+   f("defamation_impersonation_false_information"),
+   g("alcohol_tobacco_drugs"),
+   h("child_sexual_exploitation_or_abuse"),
+   i("terrorism_or_violent_extremism"),
+   j("non_consensual_intimate_imagery");
 
-   public ftg(fsx $$0, ftd $$1, fss $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   private final String k;
+   private final vu l;
+   private final vu m;
+
+   private ftg(String $$0) {
+      this.k = $$0.toUpperCase(Locale.ROOT);
+      String $$1 = "gui.abuseReport.reason." + $$0;
+      this.l = vu.c($$1);
+      this.m = vu.c($$1 + ".description");
    }
 
-   public static ftg a(ftd $$0, UserApiService $$1) {
-      fss $$2 = new fss(1024);
-      fsx $$3 = fsx.a($$0, $$1);
-      return new ftg($$3, $$0, $$2);
+   public String a() {
+      return this.k;
    }
 
-   public void a(ezg $$0, fhf $$1, Runnable $$2, boolean $$3) {
-      if (this.e != null) {
-         ftc $$4 = this.e.b();
-         $$0.a(
-            new ffx(
-               $$4x -> {
-                  this.a(null);
-                  if ($$4x) {
-                     $$0.a($$4.a($$1, this));
-                  } else {
-                     $$2.run();
-                  }
-               },
-               vu.c($$3 ? "gui.abuseReport.draft.quittotitle.title" : "gui.abuseReport.draft.title"),
-               vu.c($$3 ? "gui.abuseReport.draft.quittotitle.content" : "gui.abuseReport.draft.content"),
-               vu.c("gui.abuseReport.draft.edit"),
-               vu.c("gui.abuseReport.draft.discard")
-            )
-         );
-      } else {
-         $$2.run();
-      }
+   public vu b() {
+      return this.l;
    }
 
-   public fsx a() {
-      return this.b;
-   }
-
-   public fss b() {
-      return this.d;
-   }
-
-   public boolean a(ftd $$0) {
-      return Objects.equals(this.c, $$0);
-   }
-
-   public void a(@Nullable ftc $$0) {
-      this.e = $$0;
-   }
-
-   public boolean c() {
-      return this.e != null;
-   }
-
-   public boolean a(UUID $$0) {
-      return this.c() && this.e.a($$0);
+   public vu c() {
+      return this.m;
    }
 }

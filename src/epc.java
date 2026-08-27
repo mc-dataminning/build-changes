@@ -1,26 +1,29 @@
-@FunctionalInterface
-public interface epc<T> {
-   void handle(T var1, epe<T> var2, long var3);
+import net.minecraft.server.MinecraftServer;
 
-   public abstract static class a<T, C extends epc<T>> {
-      private final ajh a;
-      private final Class<?> b;
+public class epc implements epe<MinecraftServer> {
+   final ajh a;
 
-      public a(ajh $$0, Class<?> $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   public epc(ajh $$0) {
+      this.a = $$0;
+   }
+
+   public void a(MinecraftServer $$0, epg<MinecraftServer> $$1, long $$2) {
+      ajv $$3 = $$0.aF();
+      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
+   }
+
+   public static class a extends epe.a<MinecraftServer, epc> {
+      public a() {
+         super(new ajh("function"), epc.class);
       }
 
-      public ajh a() {
-         return this.a;
+      public void a(ta $$0, epc $$1) {
+         $$0.a("Name", $$1.a.toString());
       }
 
-      public Class<?> b() {
-         return this.b;
+      public epc a(ta $$0) {
+         ajh $$1 = new ajh($$0.l("Name"));
+         return new epc($$1);
       }
-
-      public abstract void a(ta var1, C var2);
-
-      public abstract C b(ta var1);
    }
 }

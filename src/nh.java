@@ -5,48 +5,48 @@ import javax.annotation.Nullable;
 
 public class nh implements nc {
    private final nd b;
-   private final cqf c;
+   private final cqh c;
    private final int d;
-   private final iu<ctk> e = iu.a();
+   private final iu<ctm> e = iu.a();
    private final Map<String, an<?>> f = new LinkedHashMap<>();
    @Nullable
    private String g;
 
-   public nh(nd $$0, cwy $$1, int $$2) {
+   public nh(nd $$0, cxa $$1, int $$2) {
       this.b = $$0;
       this.c = $$1.l();
       this.d = $$2;
    }
 
-   public static nh a(nd $$0, cwy $$1) {
+   public static nh a(nd $$0, cxa $$1) {
       return new nh($$0, $$1, 1);
    }
 
-   public static nh a(nd $$0, cwy $$1, int $$2) {
+   public static nh a(nd $$0, cxa $$1, int $$2) {
       return new nh($$0, $$1, $$2);
    }
 
-   public nh a(avd<cqf> $$0) {
-      return this.a(ctk.a($$0));
+   public nh a(avd<cqh> $$0) {
+      return this.a(ctm.a($$0));
    }
 
-   public nh b(cwy $$0) {
+   public nh b(cxa $$0) {
       return this.a($$0, 1);
    }
 
-   public nh a(cwy $$0, int $$1) {
+   public nh a(cxa $$0, int $$1) {
       for (int $$2 = 0; $$2 < $$1; $$2++) {
-         this.a(ctk.a($$0));
+         this.a(ctm.a($$0));
       }
 
       return this;
    }
 
-   public nh a(ctk $$0) {
+   public nh a(ctm $$0) {
       return this.a($$0, 1);
    }
 
-   public nh a(ctk $$0, int $$1) {
+   public nh a(ctm $$0, int $$1) {
       for (int $$2 = 0; $$2 < $$1; $$2++) {
          this.e.add($$0);
       }
@@ -65,7 +65,7 @@ public class nh implements nc {
    }
 
    @Override
-   public cqf a() {
+   public cqh a() {
       return this.c;
    }
 
@@ -74,7 +74,7 @@ public class nh implements nc {
       this.a($$1);
       ae.a $$2 = $$0.a().a("has_the_recipe", cv.a($$1)).a(aj.a.c($$1)).a(ai.a.b);
       this.f.forEach($$2::a);
-      ctw $$3 = new ctw(Objects.requireNonNullElse(this.g, ""), nc.a(this.b), new cqk(this.c, this.d), this.e);
+      cty $$3 = new cty(Objects.requireNonNullElse(this.g, ""), nc.a(this.b), new cqm(this.c, this.d), this.e);
       $$0.a($$1, $$3, $$2.b($$1.d("recipes/" + this.b.a() + "/")));
    }
 

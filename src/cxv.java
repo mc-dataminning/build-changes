@@ -1,23 +1,23 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cxv {
-   public static final Codec<cxv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(atx.b.fieldOf("sound").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("tick_chance").forGetter($$0x -> $$0x.c)).apply($$0, cxv::new)
+public record cxv(cwp d, clh e) {
+   public static final String a = "enabled_features";
+   public static final Codec<cxv> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(cwp.b.optionalFieldOf("DataPacks", cwp.a).forGetter(cxv::a), clj.f.optionalFieldOf("enabled_features", clj.h).forGetter(cxv::b))
+            .apply($$0, cxv::new)
    );
-   private final il<atx> b;
-   private final double c;
+   public static final cxv c = new cxv(cwp.a, clj.h);
 
-   public cxv(il<atx> $$0, double $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public cxv a(clh $$0) {
+      return new cxv(this.d, this.e.b($$0));
    }
 
-   public il<atx> a() {
-      return this.b;
+   public cwp a() {
+      return this.d;
    }
 
-   public double b() {
-      return this.c;
+   public clh b() {
+      return this.e;
    }
 }

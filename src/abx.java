@@ -12,10 +12,10 @@ public class abx {
    private final byte[] c;
    private final List<abx.a> d;
 
-   public abx(dpg $$0) {
+   public abx(dpi $$0) {
       this.b = new ta();
 
-      for (Entry<dsm.a, dsm> $$1 : $$0.e()) {
+      for (Entry<dso.a, dso> $$1 : $$0.e()) {
          if ($$1.getKey().b()) {
             this.b.a($$1.getKey().a(), new th($$1.getValue().a()));
          }
@@ -25,7 +25,7 @@ public class abx {
       a(new uu(this.c()), $$0);
       this.d = Lists.newArrayList();
 
-      for (Entry<ib, dkg> $$2 : $$0.G().entrySet()) {
+      for (Entry<ib, dki> $$2 : $$0.G().entrySet()) {
          this.d.add(abx.a.a($$2.getValue()));
       }
    }
@@ -53,10 +53,10 @@ public class abx {
       abx.a.b.encode($$0, this.d);
    }
 
-   private static int a(dpg $$0) {
+   private static int a(dpi $$0) {
       int $$1 = 0;
 
-      for (dph $$2 : $$0.d()) {
+      for (dpj $$2 : $$0.d()) {
          $$1 += $$2.j();
       }
 
@@ -69,8 +69,8 @@ public class abx {
       return $$0;
    }
 
-   public static void a(uu $$0, dpg $$1) {
-      for (dph $$2 : $$1.d()) {
+   public static void a(uu $$0, dpi $$1) {
+      for (dpj $$2 : $$1.d()) {
          $$2.c($$0);
       }
    }
@@ -105,11 +105,11 @@ public class abx {
       public static final xs<vf, List<abx.a>> b = a.a(xq.a());
       final int c;
       final int d;
-      final dki<?> e;
+      final dkk<?> e;
       @Nullable
       final ta f;
 
-      private a(int $$0, int $$1, dki<?> $$2, @Nullable ta $$3) {
+      private a(int $$0, int $$1, dkk<?> $$2, @Nullable ta $$3) {
          this.c = $$0;
          this.d = $$1;
          this.e = $$2;
@@ -130,7 +130,7 @@ public class abx {
          $$0.a(this.f);
       }
 
-      static abx.a a(dkg $$0) {
+      static abx.a a(dki $$0) {
          ta $$1 = $$0.a($$0.i().H_());
          ib $$2 = $$0.aC_();
          int $$3 = je.b($$2.u()) << 4 | je.b($$2.w());
@@ -140,6 +140,6 @@ public class abx {
 
    @FunctionalInterface
    public interface b {
-      void accept(ib var1, dki<?> var2, @Nullable ta var3);
+      void accept(ib var1, dkk<?> var2, @Nullable ta var3);
    }
 }

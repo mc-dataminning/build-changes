@@ -4,11 +4,11 @@ public class agd implements yb<aez> {
    private final agd.a c;
    private final int d;
 
-   public agd(bow $$0, agd.a $$1) {
+   public agd(box $$0, agd.a $$1) {
       this($$0, $$1, 0);
    }
 
-   public agd(bow $$0, agd.a $$1, int $$2) {
+   public agd(box $$0, agd.a $$1, int $$2) {
       this.b = $$0.aj();
       this.c = $$1;
       this.d = $$2;

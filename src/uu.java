@@ -360,11 +360,11 @@ public class uu extends ByteBuf {
       $$0.writeLong($$1.a());
    }
 
-   public cwg f() {
-      return new cwg(this.readLong());
+   public cwi f() {
+      return new cwi(this.readLong());
    }
 
-   public uu a(cwg $$0) {
+   public uu a(cwi $$0) {
       this.b($$0.a());
       return this;
    }
@@ -379,7 +379,7 @@ public class uu extends ByteBuf {
    }
 
    public ik h() {
-      ajg<cwz> $$0 = this.a(kj.aN);
+      ajg<cxb> $$0 = this.a(kj.aN);
       ib $$1 = this.e();
       return ik.a($$0, $$1);
    }
@@ -426,11 +426,11 @@ public class uu extends ByteBuf {
       $$0.writeFloat($$1.w);
    }
 
-   public epr k() {
-      return new epr(this.readDouble(), this.readDouble(), this.readDouble());
+   public ept k() {
+      return new ept(this.readDouble(), this.readDouble(), this.readDouble());
    }
 
-   public void a(epr $$0) {
+   public void a(ept $$0) {
       this.a($$0.a());
       this.a($$0.b());
       this.a($$0.c());
@@ -607,21 +607,21 @@ public class uu extends ByteBuf {
       return this;
    }
 
-   public epn v() {
+   public epp v() {
       ib $$0 = this.e();
       ih $$1 = this.b(ih.class);
       float $$2 = this.readFloat();
       float $$3 = this.readFloat();
       float $$4 = this.readFloat();
       boolean $$5 = this.readBoolean();
-      return new epn(new epr((double)$$0.u() + (double)$$2, (double)$$0.v() + (double)$$3, (double)$$0.w() + (double)$$4), $$1, $$0, $$5);
+      return new epp(new ept((double)$$0.u() + (double)$$2, (double)$$0.v() + (double)$$3, (double)$$0.w() + (double)$$4), $$1, $$0, $$5);
    }
 
-   public void a(epn $$0) {
+   public void a(epp $$0) {
       ib $$1 = $$0.a();
       this.a($$1);
       this.a($$0.b());
-      epr $$2 = $$0.e();
+      ept $$2 = $$0.e();
       this.a((float)($$2.c - (double)$$1.u()));
       this.a((float)($$2.d - (double)$$1.v()));
       this.a((float)($$2.e - (double)$$1.w()));

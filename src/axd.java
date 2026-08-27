@@ -5,25 +5,25 @@ public interface axd {
    double a = 2.297;
 
    static axd a() {
-      return a(dtb.a());
+      return a(dtd.a());
    }
 
    @Deprecated
    static axd b() {
-      return new dtf(dtb.a());
+      return new dth(dtd.a());
    }
 
    static axd a(long $$0) {
-      return new dsn($$0);
+      return new dsp($$0);
    }
 
    static axd c() {
-      return new dtc(ThreadLocalRandom.current().nextLong());
+      return new dte(ThreadLocalRandom.current().nextLong());
    }
 
    axd d();
 
-   dsz e();
+   dtb e();
 
    void b(long var1);
 

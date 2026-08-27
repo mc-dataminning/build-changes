@@ -1,75 +1,99 @@
-import java.util.List;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.Arrays;
+import java.util.function.IntFunction;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.jetbrains.annotations.Contract;
 
-public interface cpd {
-   String a = "color";
-   String b = "display";
-   int c = 10511680;
+public enum cpd implements axq {
+   a(0, "white", 16383998, eit.i, 15790320, 16777215),
+   b(1, "orange", 16351261, eit.p, 15435844, 16738335),
+   c(2, "magenta", 13061821, eit.q, 12801229, 16711935),
+   d(3, "light_blue", 3847130, eit.r, 6719955, 10141901),
+   e(4, "yellow", 16701501, eit.s, 14602026, 16776960),
+   f(5, "lime", 8439583, eit.t, 4312372, 12582656),
+   g(6, "pink", 15961002, eit.u, 14188952, 16738740),
+   h(7, "gray", 4673362, eit.v, 4408131, 8421504),
+   i(8, "light_gray", 10329495, eit.w, 11250603, 13882323),
+   j(9, "cyan", 1481884, eit.x, 2651799, 65535),
+   k(10, "purple", 8991416, eit.y, 8073150, 10494192),
+   l(11, "blue", 3949738, eit.z, 2437522, 255),
+   m(12, "brown", 8606770, eit.A, 5320730, 9127187),
+   n(13, "green", 6192150, eit.B, 3887386, 65280),
+   o(14, "red", 11546150, eit.C, 11743532, 16711680),
+   p(15, "black", 1908001, eit.D, 1973019, 0);
 
-   static boolean a(cqk $$0) {
-      ta $$1 = $$0.c("display");
-      return $$1 != null && $$1.b("color", 99);
+   private static final IntFunction<cpd> r = avn.a(cpd::a, values(), avn.a.a);
+   private static final Int2ObjectOpenHashMap<cpd> s = new Int2ObjectOpenHashMap(
+      Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.x, $$0 -> (cpd)$$0))
+   );
+   public static final axq.a<cpd> q = axq.a(cpd::values);
+   private final int t;
+   private final String u;
+   private final eit v;
+   private final float[] w;
+   private final int x;
+   private final int y;
+
+   private cpd(int $$0, String $$1, int $$2, eit $$3, int $$4, int $$5) {
+      this.t = $$0;
+      this.u = $$1;
+      this.v = $$3;
+      this.y = $$5;
+      int $$6 = ($$2 & 0xFF0000) >> 16;
+      int $$7 = ($$2 & 0xFF00) >> 8;
+      int $$8 = ($$2 & 0xFF) >> 0;
+      this.w = new float[]{(float)$$6 / 255.0F, (float)$$7 / 255.0F, (float)$$8 / 255.0F};
+      this.x = $$4;
    }
 
-   static int b(cqk $$0) {
-      ta $$1 = $$0.c("display");
-      return $$1 != null && $$1.b("color", 99) ? $$1.h("color") : 10511680;
+   public int a() {
+      return this.t;
    }
 
-   static void c(cqk $$0) {
-      ta $$1 = $$0.c("display");
-      if ($$1 != null && $$1.e("color")) {
-         $$1.r("color");
-      }
+   public String b() {
+      return this.u;
    }
 
-   static void a(cqk $$0, int $$1) {
-      $$0.b("display").a("color", $$1);
+   public float[] d() {
+      return this.w;
    }
 
-   static cqk a(cqk $$0, List<cpc> $$1) {
-      if (!$$0.a(auv.ba)) {
-         return cqk.h;
-      } else {
-         int[] $$2 = new int[3];
-         int $$3 = 0;
-         int $$4 = 0;
-         cqk $$5 = $$0.c(1);
-         if (a($$0)) {
-            int $$6 = b($$5);
-            float $$7 = (float)($$6 >> 16 & 0xFF) / 255.0F;
-            float $$8 = (float)($$6 >> 8 & 0xFF) / 255.0F;
-            float $$9 = (float)($$6 & 0xFF) / 255.0F;
-            $$3 += (int)(Math.max($$7, Math.max($$8, $$9)) * 255.0F);
-            $$2[0] += (int)($$7 * 255.0F);
-            $$2[1] += (int)($$8 * 255.0F);
-            $$2[2] += (int)($$9 * 255.0F);
-            $$4++;
-         }
+   public eit e() {
+      return this.v;
+   }
 
-         for (cpc $$10 : $$1) {
-            float[] $$11 = $$10.c().d();
-            int $$12 = (int)($$11[0] * 255.0F);
-            int $$13 = (int)($$11[1] * 255.0F);
-            int $$14 = (int)($$11[2] * 255.0F);
-            $$3 += Math.max($$12, Math.max($$13, $$14));
-            $$2[0] += $$12;
-            $$2[1] += $$13;
-            $$2[2] += $$14;
-            $$4++;
-         }
+   public int f() {
+      return this.x;
+   }
 
-         int $$15 = $$2[0] / $$4;
-         int $$16 = $$2[1] / $$4;
-         int $$17 = $$2[2] / $$4;
-         float $$18 = (float)$$3 / (float)$$4;
-         float $$19 = (float)Math.max($$15, Math.max($$16, $$17));
-         $$15 = (int)((float)$$15 * $$18 / $$19);
-         $$16 = (int)((float)$$16 * $$18 / $$19);
-         $$17 = (int)((float)$$17 * $$18 / $$19);
-         int var24 = ($$15 << 8) + $$16;
-         var24 = (var24 << 8) + $$17;
-         a($$5, var24);
-         return $$5;
-      }
+   public int g() {
+      return this.y;
+   }
+
+   public static cpd a(int $$0) {
+      return r.apply($$0);
+   }
+
+   @Nullable
+   @Contract("_,!null->!null;_,null->_")
+   public static cpd a(String $$0, @Nullable cpd $$1) {
+      cpd $$2 = q.a($$0);
+      return $$2 != null ? $$2 : $$1;
+   }
+
+   @Nullable
+   public static cpd b(int $$0) {
+      return (cpd)s.get($$0);
+   }
+
+   @Override
+   public String toString() {
+      return this.u;
+   }
+
+   @Override
+   public String c() {
+      return this.u;
    }
 }

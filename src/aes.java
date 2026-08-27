@@ -5,12 +5,12 @@ public class aes implements yb<aam> {
    private static final int d = 4;
    private static final int e = 8;
    private final int f;
-   private final il<boh> g;
+   private final il<boi> g;
    private final int h;
    private final int i;
    private final byte j;
 
-   public aes(int $$0, boj $$1, boolean $$2) {
+   public aes(int $$0, bok $$1, boolean $$2) {
       this.f = $$0;
       this.g = $$1.b();
       this.h = $$1.d();
@@ -64,7 +64,7 @@ public class aes implements yb<aam> {
       return this.f;
    }
 
-   public il<boh> e() {
+   public il<boi> e() {
       return this.g;
    }
 

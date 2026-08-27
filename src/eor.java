@@ -1,42 +1,23 @@
-import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public record eor(eoo b, eoo c) implements eoo {
-   public static final Codec<eor> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eop.a.fieldOf("min").forGetter(eor::c), eop.a.fieldOf("max").forGetter(eor::d)).apply($$0, eor::new)
+public class eor {
+   private static final Codec<eoq> f = ki.I.q().dispatch(eoq::b, eop::a);
+   public static final Codec<eoq> a = awe.a(
+      (Supplier<Codec<eoq>>)(() -> {
+         Codec<eoq> $$0 = awe.e(f, eot.a);
+         return Codec.either(eoo.b, $$0)
+            .xmap($$0x -> (eoq)$$0x.map(Function.identity(), Function.identity()), $$0x -> $$0x instanceof eoo $$1 ? Either.left($$1) : Either.right($$0x));
+      })
    );
+   public static final eop b = a("constant", eoo.a);
+   public static final eop c = a("uniform", eot.a);
+   public static final eop d = a("binomial", eon.a);
+   public static final eop e = a("score", eos.a);
 
-   @Override
-   public eon b() {
-      return eop.c;
-   }
-
-   public static eor a(float $$0, float $$1) {
-      return new eor(eom.a($$0), eom.a($$1));
-   }
-
-   @Override
-   public int a(eku $$0) {
-      return aww.a($$0.b(), this.b.a($$0), this.c.a($$0));
-   }
-
-   @Override
-   public float b(eku $$0) {
-      return aww.a($$0.b(), this.b.b($$0), this.c.b($$0));
-   }
-
-   @Override
-   public Set<enc<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
-   }
-
-   public eoo c() {
-      return this.b;
-   }
-
-   public eoo d() {
-      return this.c;
+   private static eop a(String $$0, Codec<? extends eoq> $$1) {
+      return iy.a(ki.I, new ajh($$0), new eop($$1));
    }
 }

@@ -15,8 +15,8 @@ public class asj extends asu<asj.a> {
       super($$2, $$3, $$0, $$1, ($$1x, $$2x, $$3x, $$4x, $$5) -> {
          AtomicLong $$6 = new AtomicLong();
          AtomicLong $$7 = new AtomicLong();
-         bjj $$8 = new bjj(ac.b, () -> 0, false);
-         bjj $$9 = new bjj(ac.b, () -> 0, false);
+         bjk $$8 = new bjk(ac.b, () -> 0, false);
+         bjk $$9 = new bjk(ac.b, () -> 0, false);
          CompletableFuture<Void> $$10 = $$3x.a($$1x, $$2x, $$8, $$9, $$2xx -> $$4x.execute(() -> {
                long $$2xxx = ac.c();
                $$2xx.run();
@@ -41,8 +41,8 @@ public class asj extends asu<asj.a> {
       c.info("Resource reload finished after {} ms", this.d.elapsed(TimeUnit.MILLISECONDS));
 
       for (asj.a $$2 : $$0) {
-         bjp $$3 = $$2.b;
-         bjp $$4 = $$2.c;
+         bjq $$3 = $$2.b;
+         bjq $$4 = $$2.c;
          long $$5 = TimeUnit.NANOSECONDS.toMillis($$2.d.get());
          long $$6 = TimeUnit.NANOSECONDS.toMillis($$2.e.get());
          long $$7 = $$5 + $$6;
@@ -57,12 +57,12 @@ public class asj extends asu<asj.a> {
 
    public static class a {
       final String a;
-      final bjp b;
-      final bjp c;
+      final bjq b;
+      final bjq c;
       final AtomicLong d;
       final AtomicLong e;
 
-      a(String $$0, bjp $$1, bjp $$2, AtomicLong $$3, AtomicLong $$4) {
+      a(String $$0, bjq $$1, bjq $$2, AtomicLong $$3, AtomicLong $$4) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;

@@ -36,11 +36,11 @@ public class aoc extends MinecraftServer implements ajx {
    @Nullable
    private final aqk t;
    @Nullable
-   private biy u;
+   private biz u;
    @Nullable
-   private biv v;
+   private biw v;
 
-   public aoc(Thread $$0, ekk.c $$1, arz $$2, akd $$3, aoe $$4, DataFixer $$5, aka $$6, app $$7) {
+   public aoc(Thread $$0, ekm.c $$1, arz $$2, akd $$3, aoe $$4, DataFixer $$5, aka $$6, app $$7) {
       super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, $$5, $$6, $$7);
       this.r = $$4;
       this.p = new ato(this);
@@ -127,10 +127,10 @@ public class aoc extends MinecraftServer implements ajx {
          return false;
       } else {
          this.a(new aob(this, this.be(), this.g));
-         this.v = new biv(this.bq());
-         this.u = new biy(bjb.values().length, this.v, bix.a);
+         this.v = new biw(this.bq());
+         this.u = new biz(bjc.values().length, this.v, biy.a);
          long $$4 = ac.c();
-         dlr.a(this.i, this);
+         dlt.a(this.i, this);
          asx.a(this.Z());
          k.info("Preparing level \"{}\"", this.s());
          this.t_();
@@ -138,7 +138,7 @@ public class aoc extends MinecraftServer implements ajx {
          String $$6 = String.format(Locale.ROOT, "%.3fs", (double)$$5 / 1.0E9);
          k.info("Done ({})! For help, type \"help\"", $$6);
          if ($$1.o != null) {
-            this.aN().a(cwv.A).a($$1.o, this);
+            this.aN().a(cwx.A).a($$1.o, this);
          }
 
          if ($$1.p) {
@@ -160,7 +160,7 @@ public class aoc extends MinecraftServer implements ajx {
          }
 
          if ($$1.O) {
-            bjg.a(this);
+            bjh.a(this);
             k.info("JMX monitoring enabled");
          }
 
@@ -329,8 +329,8 @@ public class aoc extends MinecraftServer implements ajx {
    }
 
    @Override
-   public boolean a(apf $$0, ib $$1, cis $$2) {
-      if ($$0.ad() != cwz.h) {
+   public boolean a(apf $$0, ib $$1, ciu $$2) {
+      if ($$0.ad() != cxb.h) {
          return false;
       } else if (this.bq().k().c()) {
          return false;
@@ -500,7 +500,7 @@ public class aoc extends MinecraftServer implements ajx {
    public void v() {
       super.v();
       ac.i();
-      dlr.b();
+      dlt.b();
    }
 
    @Override
@@ -530,7 +530,7 @@ public class aoc extends MinecraftServer implements ajx {
 
    @Nullable
    @Override
-   public cww bf() {
+   public cwy bf() {
       return this.r.a().i ? this.j.k() : null;
    }
 
@@ -546,17 +546,17 @@ public class aoc extends MinecraftServer implements ajx {
    }
 
    @Override
-   public biz f() {
+   public bja f() {
       return this.u;
    }
 
    @Override
    public boolean g() {
-      return this.v.a(bix.a);
+      return this.v.a(biy.a);
    }
 
    @Override
-   public void a(apg $$0, bix $$1) {
+   public void a(apg $$0, biy $$1) {
       this.v.a($$0, $$1);
    }
 

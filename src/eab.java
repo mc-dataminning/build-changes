@@ -1,62 +1,40 @@
+import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.List;
 
-public class eab extends dzv {
-   public static final Codec<eab> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dzv.a.fieldOf("source").forGetter($$0x -> $$0x.c),
-               Codec.STRING.fieldOf("property").forGetter($$0x -> $$0x.d),
-               bmh.c.fieldOf("values").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, eab::new)
-   );
-   private final dzv c;
-   private final String d;
-   @Nullable
-   private dnz e;
-   private final bmh f;
+public class eab extends eaa {
+   public static final Codec<eab> g = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, eab::new));
+   protected final List<dnb> h;
 
-   public eab(dzv $$0, dnz $$1, bmh $$2) {
-      this.c = $$0;
-      this.e = $$1;
-      this.d = $$1.f();
-      this.f = $$2;
-      Collection<Integer> $$3 = $$1.a();
-
-      for (int $$4 = $$2.a(); $$4 <= $$2.b(); $$4++) {
-         if (!$$3.contains($$4)) {
-            throw new IllegalArgumentException("Property value out of range: " + $$1.f() + ": " + $$4);
-         }
-      }
+   protected static <P extends eab> P4<Mu<P>, Long, ehs.a, Float, List<dnb>> b(Instance<P> $$0) {
+      return a($$0).and(Codec.list(dnb.b).fieldOf("states").forGetter($$0x -> $$0x.h));
    }
 
-   public eab(dzv $$0, String $$1, bmh $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.f = $$2;
+   public eab(long $$0, ehs.a $$1, float $$2, List<dnb> $$3) {
+      super($$0, $$1, $$2);
+      this.h = $$3;
    }
 
    @Override
-   protected dzw<?> a() {
-      return dzw.g;
+   protected dzy<?> a() {
+      return dzy.d;
    }
 
    @Override
-   public dmz a(axd $$0, ib $$1) {
-      dmz $$2 = this.c.a($$0, $$1);
-      if (this.e == null || !$$2.b(this.e)) {
-         this.e = a($$2, this.d);
-      }
-
-      return $$2.a(this.e, Integer.valueOf(this.f.a($$0)));
+   public dnb a(axd $$0, ib $$1) {
+      return this.a(this.h, $$1, (double)this.e);
    }
 
-   private static dnz a(dmz $$0, String $$1) {
-      Collection<doc<?>> $$2 = $$0.B();
-      Optional<dnz> $$3 = $$2.stream().filter($$1x -> $$1x.f().equals($$1)).filter($$0x -> $$0x instanceof dnz).map($$0x -> (dnz)$$0x).findAny();
-      return $$3.orElseThrow(() -> new IllegalArgumentException("Illegal property: " + $$1));
+   protected dnb a(List<dnb> $$0, ib $$1, double $$2) {
+      double $$3 = this.a($$1, $$2);
+      return this.a($$0, $$3);
+   }
+
+   protected dnb a(List<dnb> $$0, double $$1) {
+      double $$2 = aww.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
+      return $$0.get((int)($$2 * (double)$$0.size()));
    }
 }

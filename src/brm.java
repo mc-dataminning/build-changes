@@ -1,37 +1,18 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class brm extends brg<bpo> {
-   private final byr<Integer> c;
-
-   public brm(byr<Integer> $$0) {
-      super(ImmutableMap.of($$0, bys.a));
-      this.c = $$0;
-   }
-
-   private Optional<Integer> b(bpo $$0) {
-      return $$0.dP().c(this.c);
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   @Override
-   protected boolean a(apf $$0, bpo $$1, long $$2) {
-      Optional<Integer> $$3 = this.b($$1);
-      return $$3.isPresent() && $$3.get() > 0;
-   }
-
-   @Override
-   protected void c(apf $$0, bpo $$1, long $$2) {
-      Optional<Integer> $$3 = this.b($$1);
-      $$1.dP().a(this.c, $$3.get() - 1);
-   }
-
-   @Override
-   protected void b(apf $$0, bpo $$1, long $$2) {
-      $$1.dP().b(this.c);
+public class brm {
+   public static <E extends bpp, T> bri<E> a(Predicate<E> $$0, bys<? extends T> $$1, bys<T> $$2, bmo $$3) {
+      return buu.a(
+         (Function<buu.b<E>, ? extends App<buu.c<E>, bux<E>>>)($$4 -> $$4.group($$4.b($$1), $$4.c($$2)).apply($$4, ($$3xx, $$4x) -> ($$5, $$6, $$7) -> {
+                  if (!$$0.test((E)$$6)) {
+                     return false;
+                  } else {
+                     $$4x.a($$4.b($$3xx), (long)$$3.a($$5.z));
+                     return true;
+                  }
+               }))
+      );
    }
 }

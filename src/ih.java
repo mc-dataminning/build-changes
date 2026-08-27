@@ -49,7 +49,7 @@ public enum ih implements axq {
       this.q = $$6;
    }
 
-   public static ih[] a(bow $$0) {
+   public static ih[] a(box $$0) {
       float $$1 = $$0.g(1.0F) * (float) (Math.PI / 180.0);
       float $$2 = -$$0.h(1.0F) * (float) (Math.PI / 180.0);
       float $$3 = aww.a($$1);
@@ -121,7 +121,7 @@ public enum ih implements axq {
       return this.p;
    }
 
-   public static ih a(bow $$0, ih.a $$1) {
+   public static ih a(box $$0, ih.a $$1) {
       return switch ($$1) {
          case a -> f.a($$0.h(1.0F)) ? f : e;
          case c -> d.a($$0.h(1.0F)) ? d : c;
@@ -504,6 +504,10 @@ public enum ih implements axq {
 
       public List<ih> c(axd $$0) {
          return ac.b(this.c, $$0);
+      }
+
+      public int b() {
+         return this.c.length;
       }
    }
 }

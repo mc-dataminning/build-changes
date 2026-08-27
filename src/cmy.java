@@ -1,57 +1,138 @@
-public class cmy extends cnj {
-   private final cmw a;
-   private final cis b;
-   private int c;
-   private final cvw h;
+import javax.annotation.Nullable;
 
-   public cmy(cis $$0, cvw $$1, cmw $$2, int $$3, int $$4, int $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.b = $$0;
-      this.h = $$1;
-      this.a = $$2;
+public class cmy implements bmw {
+   private final cvy c;
+   private final iu<cqm> d = iu.a(3, cqm.h);
+   @Nullable
+   private cvz e;
+   private int f;
+   private int g;
+
+   public cmy(cvy $$0) {
+      this.c = $$0;
    }
 
    @Override
-   public boolean a(cqk $$0) {
-      return false;
+   public int b() {
+      return this.d.size();
    }
 
    @Override
-   public cqk a(int $$0) {
-      if (this.h()) {
-         this.c = this.c + Math.min($$0, this.g().M());
+   public boolean ai_() {
+      for (cqm $$0 : this.d) {
+         if (!$$0.b()) {
+            return false;
+         }
       }
 
-      return super.a($$0);
+      return true;
    }
 
    @Override
-   protected void a(cqk $$0, int $$1) {
-      this.c += $$1;
-      this.b_($$0);
+   public cqm a(int $$0) {
+      return this.d.get($$0);
    }
 
    @Override
-   protected void b_(cqk $$0) {
-      $$0.a(this.b.dM(), this.b, this.c);
-      this.c = 0;
-   }
-
-   @Override
-   public void a(cis $$0, cqk $$1) {
-      this.b_($$1);
-      cvx $$2 = this.a.g();
-      if ($$2 != null) {
-         cqk $$3 = this.a.a(0);
-         cqk $$4 = this.a.a(1);
-         if ($$2.b($$3, $$4) || $$2.b($$4, $$3)) {
-            this.h.a($$2);
-            $$0.a(aui.T);
-            this.a.a(0, $$3);
-            this.a.a(1, $$4);
+   public cqm a(int $$0, int $$1) {
+      cqm $$2 = this.d.get($$0);
+      if ($$0 == 2 && !$$2.b()) {
+         return bmx.a(this.d, $$0, $$2.M());
+      } else {
+         cqm $$3 = bmx.a(this.d, $$0, $$1);
+         if (!$$3.b() && this.d($$0)) {
+            this.f();
          }
 
-         this.h.u(this.h.s() + $$2.p());
+         return $$3;
       }
+   }
+
+   private boolean d(int $$0) {
+      return $$0 == 0 || $$0 == 1;
+   }
+
+   @Override
+   public cqm b(int $$0) {
+      return bmx.a(this.d, $$0);
+   }
+
+   @Override
+   public void a(int $$0, cqm $$1) {
+      this.d.set($$0, $$1);
+      if (!$$1.b() && $$1.M() > this.ak_()) {
+         $$1.f(this.ak_());
+      }
+
+      if (this.d($$0)) {
+         this.f();
+      }
+   }
+
+   @Override
+   public boolean a(ciu $$0) {
+      return this.c.gn() == $$0;
+   }
+
+   @Override
+   public void e() {
+      this.f();
+   }
+
+   public void f() {
+      this.e = null;
+      cqm $$0;
+      cqm $$1;
+      if (this.d.get(0).b()) {
+         $$0 = this.d.get(1);
+         $$1 = cqm.h;
+      } else {
+         $$0 = this.d.get(0);
+         $$1 = this.d.get(1);
+      }
+
+      if ($$0.b()) {
+         this.a(2, cqm.h);
+         this.g = 0;
+      } else {
+         cwa $$4 = this.c.gp();
+         if (!$$4.isEmpty()) {
+            cvz $$5 = $$4.a($$0, $$1, this.f);
+            if ($$5 == null || $$5.q()) {
+               this.e = $$5;
+               $$5 = $$4.a($$1, $$0, this.f);
+            }
+
+            if ($$5 != null && !$$5.q()) {
+               this.e = $$5;
+               this.a(2, $$5.f());
+               this.g = $$5.p();
+            } else {
+               this.a(2, cqm.h);
+               this.g = 0;
+            }
+         }
+
+         this.c.n(this.a(2));
+      }
+   }
+
+   @Nullable
+   public cvz g() {
+      return this.e;
+   }
+
+   public void c(int $$0) {
+      this.f = $$0;
+      this.f();
+   }
+
+   @Override
+   public void a() {
+      this.d.clear();
+   }
+
+   public int h() {
+      return this.g;
    }
 }

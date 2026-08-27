@@ -25,23 +25,23 @@ public class anf {
       );
    }
 
-   public static bow a(du $$0, il.c<bpc<?>> $$1, epr $$2, ta $$3, boolean $$4) throws CommandSyntaxException {
+   public static box a(du $$0, il.c<bpd<?>> $$1, ept $$2, ta $$3, boolean $$4) throws CommandSyntaxException {
       ib $$5 = ib.a($$2);
-      if (!cwz.l($$5)) {
+      if (!cxb.l($$5)) {
          throw c.create();
       } else {
          ta $$6 = $$3.h();
          $$6.a("id", $$1.h().a().toString());
          apf $$7 = $$0.e();
-         bow $$8 = bpc.a($$6, $$7, $$1x -> {
+         box $$8 = bpd.a($$6, $$7, $$1x -> {
             $$1x.b($$2.c, $$2.d, $$2.e, $$1x.dC(), $$1x.dE());
             return $$1x;
          });
          if ($$8 == null) {
             throw a.create();
          } else {
-            if ($$4 && $$8 instanceof bpq) {
-               ((bpq)$$8).a($$0.e(), $$0.e().d_($$8.dm()), bps.n, null);
+            if ($$4 && $$8 instanceof bpr) {
+               ((bpr)$$8).a($$0.e(), $$0.e().d_($$8.dm()), bpt.n, null);
             }
 
             if (!$$7.e($$8)) {
@@ -53,8 +53,8 @@ public class anf {
       }
    }
 
-   private static int b(du $$0, il.c<bpc<?>> $$1, epr $$2, ta $$3, boolean $$4) throws CommandSyntaxException {
-      bow $$5 = a($$0, $$1, $$2, $$3, $$4);
+   private static int b(du $$0, il.c<bpd<?>> $$1, ept $$2, ta $$3, boolean $$4) throws CommandSyntaxException {
+      box $$5 = a($$0, $$1, $$2, $$3, $$4);
       $$0.a(() -> vu.a("commands.summon.success", $$5.O_()), true);
       return 1;
    }

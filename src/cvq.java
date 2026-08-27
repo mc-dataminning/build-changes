@@ -1,20 +1,20 @@
-public class cvq extends cuu {
-   protected cvq(cuu.a $$0, bpd... $$1) {
-      super($$0, auv.bj, $$1);
+public class cvq extends cuw {
+   public cvq(cuw.a $$0, bpe... $$1) {
+      super($$0, auv.bl, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 15;
+      return 5 + $$0 * 7;
    }
 
    @Override
    public int b(int $$0) {
-      return super.a($$0) + 50;
+      return 50;
    }
 
    @Override
-   public boolean a(cuu $$0) {
-      return super.a($$0) && $$0 != cux.x;
+   public int a() {
+      return 3;
    }
 }

@@ -1,78 +1,208 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Set;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class cgv {
-   public static final float a = 0.6F;
-   public static final float b = 4.0F;
-   public static final float c = 8.0F;
-   public static final float d = 20.0F;
-   static final List<bzy<? extends bzx<? super cgu>>> e = ImmutableList.of(bzy.c, bzy.f, bzy.d, bzy.z);
-   static final List<byr<?>> f = ImmutableList.of(
-      byr.n, byr.h, byr.B, byr.E, byr.o, byr.m, byr.aU, byr.aZ, byr.aV, byr.aW, byr.aX, byr.aY, new byr[]{byr.ba, byr.bb, byr.x, byr.y, byr.t}
-   );
+public class cgv extends cgt implements bpv {
+   private static final bpa c = bpd.bx.n().a(0.5F).b(0.97F);
+   private static final UUID d = UUID.fromString("49455A49-7EC5-45BA-B886-3B90B23A1718");
+   private static final bqu ca = new bqu(d, "Attacking speed boost", 0.05, bqu.a.a);
+   private static final bmo cb = axv.a(0, 1);
+   private int cc;
+   private static final bmo cd = axv.a(20, 39);
+   private int ce;
+   @Nullable
+   private UUID cf;
+   private static final int cg = 10;
+   private static final bmo ch = axv.a(4, 6);
+   private int ci;
 
-   protected static bqp<?> a(bqp<cgu> $$0) {
-      b($$0);
-      c($$0);
-      d($$0);
-      $$0.a(Set.of(ckh.a));
-      $$0.b(ckh.k);
-      $$0.f();
-      return $$0;
+   public cgv(bpd<? extends cgv> $$0, cxb $$1) {
+      super($$0, $$1);
+      this.a(ejg.i, 8.0F);
    }
 
-   private static void b(bqp<cgu> $$0) {
-      $$0.a(ckh.a, 0, ImmutableList.of(new bua(0.8F), new bsm(45, 90)));
+   @Override
+   public void a(@Nullable UUID $$0) {
+      this.cf = $$0;
    }
 
-   private static void c(bqp<cgu> $$0) {
-      $$0.a(
-         ckh.b,
-         ImmutableList.of(
-            Pair.of(0, bts.a($$0x -> $$0x.dP().c(byr.B))),
-            Pair.of(1, bts.a(cgu::go)),
-            Pair.of(2, new cgv.a(20, 40)),
-            Pair.of(3, new btd(ImmutableList.of(Pair.of(new brq(20, 100), 1), Pair.of(bsy.a(0.6F), 2))))
-         )
-      );
+   @Override
+   protected void s() {
+      this.bR.a(2, new byb(this, 1.0, false));
+      this.bR.a(7, new bxz(this, 1.0));
+      this.bS.a(1, new bye(this).a());
+      this.bS.a(2, new byf<>(this, ciu.class, 10, true, false, this::a_));
+      this.bS.a(3, new byl<>(this, true));
    }
 
-   private static void d(bqp<cgu> $$0) {
-      $$0.a(
-         ckh.k,
-         ImmutableList.of(Pair.of(0, btv.a()), Pair.of(1, new cgy()), Pair.of(2, new cgx()), Pair.of(3, new cgz()), Pair.of(4, new cha())),
-         ImmutableSet.of(Pair.of(byr.o, bys.a), Pair.of(byr.m, bys.b))
-      );
+   public static bqv.a gx() {
+      return cgt.gr().a(bqw.u, 0.0).a(bqw.r, 0.23F).a(bqw.c, 5.0);
    }
 
-   static void a(cgu $$0) {
-      $$0.dP().a(ImmutableList.of(ckh.k, ckh.b));
+   @Override
+   public bpa e(bqa $$0) {
+      return this.o_() ? c : super.e($$0);
    }
 
-   public static class a extends bsq {
-      @VisibleForTesting
-      public a(int $$0, int $$1) {
-         super($$0, $$1);
+   @Override
+   protected boolean gp() {
+      return false;
+   }
+
+   @Override
+   protected void Y() {
+      bqs $$0 = this.f(bqw.r);
+      if (this.Y_()) {
+         if (!this.o_() && !$$0.a(ca)) {
+            $$0.c(ca);
+         }
+
+         this.gy();
+      } else if ($$0.a(ca)) {
+         $$0.b(ca.a());
       }
 
-      @Override
-      protected void c(apf $$0, bpq $$1, long $$2) {
-         super.c($$0, $$1, $$2);
-         $$1.a(aty.cH);
-         $$1.b(bpz.p);
+      this.a((apf)this.dM(), true);
+      if (this.p() != null) {
+         this.gz();
       }
 
-      @Override
-      protected void b(apf $$0, bpq $$1, long $$2) {
-         super.b($$0, $$1, $$2);
-         $$1.b(bpz.a);
-         if ($$1.dP().a(byr.o)) {
-            $$1.dP().a(byr.aV, axy.a, 60L);
+      if (this.Y_()) {
+         this.bc = this.ah;
+      }
+
+      super.Y();
+   }
+
+   private void gy() {
+      if (this.cc > 0) {
+         this.cc--;
+         if (this.cc == 0) {
+            this.gB();
          }
       }
+   }
+
+   private void gz() {
+      if (this.ci > 0) {
+         this.ci--;
+      } else {
+         if (this.M().a(this.p())) {
+            this.gA();
+         }
+
+         this.ci = ch.a(this.ag);
+      }
+   }
+
+   private void gA() {
+      double $$0 = this.g(bqw.k);
+      epo $$1 = epo.a(this.dk()).c($$0, 10.0, $$0);
+      this.dM()
+         .a(cgv.class, $$1, bpc.f)
+         .stream()
+         .filter($$0x -> $$0x != this)
+         .filter($$0x -> $$0x.p() == null)
+         .filter($$0x -> !$$0x.s(this.p()))
+         .forEach($$0x -> $$0x.h(this.p()));
+   }
+
+   private void gB() {
+      this.a(aty.Db, this.fb() * 2.0F, this.fc() * 1.8F);
+   }
+
+   @Override
+   public void h(@Nullable bpp $$0) {
+      if (this.p() == null && $$0 != null) {
+         this.cc = cb.a(this.ag);
+         this.ci = ch.a(this.ag);
+      }
+
+      if ($$0 instanceof ciu) {
+         this.c((ciu)$$0);
+      }
+
+      super.h($$0);
+   }
+
+   @Override
+   public void c() {
+      this.a(cd.a(this.ag));
+   }
+
+   public static boolean b(bpd<cgv> $$0, cxc $$1, bpt $$2, ib $$3, axd $$4) {
+      return $$1.aj() != bna.a && !$$1.a_($$3.d()).a(dae.kK);
+   }
+
+   @Override
+   public boolean a(cxe $$0) {
+      return $$0.f(this) && !$$0.d(this.cH());
+   }
+
+   @Override
+   public void b(ta $$0) {
+      super.b($$0);
+      this.c($$0);
+   }
+
+   @Override
+   public void a(ta $$0) {
+      super.a($$0);
+      this.a(this.dM(), $$0);
+   }
+
+   @Override
+   public void a(int $$0) {
+      this.ce = $$0;
+   }
+
+   @Override
+   public int a() {
+      return this.ce;
+   }
+
+   @Override
+   protected atx v() {
+      return this.Y_() ? aty.Db : aty.Da;
+   }
+
+   @Override
+   protected atx d(bnw $$0) {
+      return aty.Dd;
+   }
+
+   @Override
+   protected atx n_() {
+      return aty.Dc;
+   }
+
+   @Override
+   protected void a(axd $$0, bnb $$1) {
+      this.a(bpe.a, new cqm(cqp.oU));
+   }
+
+   @Override
+   protected cqm go() {
+      return cqm.h;
+   }
+
+   @Override
+   protected void gw() {
+      this.f(bqw.u).a(0.0);
+   }
+
+   @Nullable
+   @Override
+   public UUID b() {
+      return this.cf;
+   }
+
+   @Override
+   public boolean f(ciu $$0) {
+      return this.a_((bpp)$$0);
+   }
+
+   @Override
+   public boolean k(cqm $$0) {
+      return this.j($$0);
    }
 }

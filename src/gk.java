@@ -136,7 +136,7 @@ public class gk {
                   }
                }
 
-               for (cww $$6 : cww.values()) {
+               for (cwy $$6 : cwy.values()) {
                   if ($$6.b().toLowerCase(Locale.ROOT).startsWith($$3x)) {
                      if ($$5) {
                         $$1x.suggest("!" + $$6.b());
@@ -157,7 +157,7 @@ public class gk {
                throw b.createWithContext($$0.g(), "gamemode");
             } else {
                String $$3 = $$0.g().readUnquotedString();
-               cww $$4 = cww.a($$3, null);
+               cwy $$4 = cwy.a($$3, null);
                if ($$4 == null) {
                   $$0.g().setCursor($$1);
                   throw g.createWithContext($$0.g(), $$3);
@@ -167,7 +167,7 @@ public class gk {
                      if (!($$2x instanceof apg)) {
                         return false;
                      } else {
-                        cww $$3x = ((apg)$$2x).f.b();
+                        cwy $$3x = ((apg)$$2x).f.b();
                         return $$2 ? $$3x != $$4 : $$3x == $$4;
                      }
                   });
@@ -183,10 +183,10 @@ public class gk {
             boolean $$1 = $$0.e();
             String $$2 = $$0.g().readUnquotedString();
             $$0.a($$2x -> {
-               if (!($$2x instanceof bpo)) {
+               if (!($$2x instanceof bpp)) {
                   return false;
                } else {
-                  eqx $$3 = $$2x.cg();
+                  eqz $$3 = $$2x.cg();
                   String $$4 = $$3 == null ? "" : $$3.b();
                   return $$4.equals($$2) != $$1;
                }
@@ -219,15 +219,15 @@ public class gk {
                }
 
                if ($$0.f()) {
-                  avd<bpc<?>> $$3 = avd.a(kj.u, ajh.a($$0.g()));
+                  avd<bpd<?>> $$3 = avd.a(kj.u, ajh.a($$0.g()));
                   $$0.a($$2x -> $$2x.ai().a($$3) != $$2);
                } else {
                   ajh $$4 = ajh.a($$0.g());
-                  bpc<?> $$5 = ki.g.b($$4).orElseThrow(() -> {
+                  bpd<?> $$5 = ki.g.b($$4).orElseThrow(() -> {
                      $$0.g().setCursor($$1);
                      return h.createWithContext($$0.g(), $$4.toString());
                   });
-                  if (Objects.equals(bpc.bx, $$5) && !$$2) {
+                  if (Objects.equals(bpd.by, $$5) && !$$2) {
                      $$0.a(false);
                   }
 
@@ -249,7 +249,7 @@ public class gk {
             $$0.a($$2x -> {
                ta $$3 = $$2x.f(new ta());
                if ($$2x instanceof apg) {
-                  cqk $$4 = ((apg)$$2x).fZ().f();
+                  cqm $$4 = ((apg)$$2x).fZ().f();
                   if (!$$4.b()) {
                      $$3.a("SelectedItem", $$4.b(new ta()));
                   }
@@ -281,15 +281,15 @@ public class gk {
             $$1.expect('}');
             if (!$$2.isEmpty()) {
                $$0.a($$1x -> {
-                  eqv $$2x = $$1x.cL().aK();
+                  eqx $$2x = $$1x.cL().aK();
 
                   for (Entry<String, cm.d> $$3x : $$2.entrySet()) {
-                     eqn $$4x = $$2x.a($$3x.getKey());
+                     eqp $$4x = $$2x.a($$3x.getKey());
                      if ($$4x == null) {
                         return false;
                      }
 
-                     eqr $$5 = $$2x.d($$1x, $$4x);
+                     eqt $$5 = $$2x.d($$1x, $$4x);
                      if ($$5 == null) {
                         return false;
                      }
@@ -393,13 +393,13 @@ public class gk {
                   return false;
                } else {
                   apf $$3 = (apf)$$2x.dM();
-                  ent $$4 = $$3.o().aM().getElement(ekz.a, $$2);
+                  env $$4 = $$3.o().aM().getElement(elb.a, $$2);
                   if ($$4 == null) {
                      return false;
                   } else {
-                     ela $$5 = new ela.a($$3).a(enf.a, $$2x).a(enf.f, $$2x.dk()).a(ene.e);
-                     eku $$6 = new eku.a($$5).a(Optional.empty());
-                     $$6.b(eku.a($$4));
+                     elc $$5 = new elc.a($$3).a(enh.a, $$2x).a(enh.f, $$2x.dk()).a(eng.e);
+                     ekw $$6 = new ekw.a($$5).a(Optional.empty());
+                     $$6.b(ekw.a($$4));
                      return $$1 ^ $$4.test($$6);
                   }
                }

@@ -1,18 +1,17 @@
-public class gft extends gdr<cgn> {
-   private static final ajh a = new ajh("textures/entity/illager/vindicator.png");
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gft(gcy.a $$0) {
-      super($$0, new foq<>($$0.a(frc.bM)), 0.5F);
-      this.a(new ghc<cgn, foq<cgn>>(this, $$0.d()) {
-         public void a(etz $$0, fxq $$1, int $$2, cgn $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-            if ($$3.gf()) {
-               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-            }
-         }
-      });
+public class gft extends gbv<cdg, fop<cdg>> {
+   private static final Map<bpd<?>, ajh> a = Maps.newHashMap(
+      ImmutableMap.of(bpd.bv, new ajh("textures/entity/horse/horse_zombie.png"), bpd.aO, new ajh("textures/entity/horse/horse_skeleton.png"))
+   );
+
+   public gft(gdb.a $$0, frd $$1) {
+      super($$0, new fop<>($$0.a($$1)), 1.0F);
    }
 
-   public ajh a(cgn $$0) {
-      return a;
+   public ajh a(cdg $$0) {
+      return a.get($$0.ai());
    }
 }

@@ -33,8 +33,8 @@ public class aod extends aog<aod> {
    public final String h = this.a("motd", "A Minecraft Server");
    public final boolean i = this.a("force-gamemode", false);
    public final boolean j = this.a("enforce-whitelist", false);
-   public final bmz k = this.a("difficulty", a(bmz::a, bmz::a), bmz::e, bmz.b);
-   public final cww l = this.a("gamemode", a(cww::a, cww::a), cww::b, cww.a);
+   public final bna k = this.a("difficulty", a(bna::a, bna::a), bna::e, bna.b);
+   public final cwy l = this.a("gamemode", a(cwy::a, cwy::a), cwy::b, cwy.a);
    public final String m = this.a("level-name", "world");
    public final int n = this.a("server-port", 25565);
    @Nullable
@@ -70,24 +70,24 @@ public class aod extends aog<aod> {
    public final int R = this.a("entity-broadcast-range-percentage", $$0x -> aww.a($$0x, 10, 1000), 100);
    public final String S = this.a("text-filtering-config", "");
    public final Optional<MinecraftServer.b> T;
-   public final cwn U;
+   public final cwp U;
    public final aog<aod>.a<Integer> V = this.b("player-idle-timeout", 0);
    public final aog<aod>.a<Boolean> W = this.b("white-list", false);
    public final boolean X = this.a("enforce-secure-profile", true);
    public final boolean Y = this.a("log-ips", true);
    private final aod.a af;
-   public final dtk Z;
+   public final dtm Z;
    public boolean aa = this.a("accepts-transfers", false);
 
    public aod(Properties $$0) {
       super($$0);
       String $$1 = this.a("level-seed", "");
       boolean $$2 = this.a("generate-structures", true);
-      long $$3 = dtk.a($$1).orElse(dtk.f());
-      this.Z = new dtk($$3, $$2, false);
+      long $$3 = dtm.a($$1).orElse(dtm.f());
+      this.Z = new dtm($$3, $$2, false);
       this.af = new aod.a(
          this.a("generator-settings", $$0x -> awm.a(!$$0x.isEmpty() ? $$0x : "{}"), new JsonObject()),
-         this.a("level-type", $$0x -> $$0x.toLowerCase(Locale.ROOT), ecs.a.a().toString())
+         this.a("level-type", $$0x -> $$0x.toLowerCase(Locale.ROOT), ecu.a.a().toString())
       );
       this.T = a(
          this.a("resource-pack-id", ""),
@@ -97,7 +97,7 @@ public class aod extends aog<aod> {
          this.a("require-resource-pack", false),
          this.a("resource-pack-prompt", "")
       );
-      this.U = b(this.a("initial-enabled-packs", String.join(",", cxt.c.a().a())), this.a("initial-disabled-packs", String.join(",", cxt.c.a().b())));
+      this.U = b(this.a("initial-enabled-packs", String.join(",", cxv.c.a().a())), this.a("initial-disabled-packs", String.join(",", cxv.c.a().b())));
    }
 
    public static aod a(Path $$0) {
@@ -162,25 +162,25 @@ public class aod extends aog<aod> {
       }
    }
 
-   private static cwn b(String $$0, String $$1) {
+   private static cwp b(String $$0, String $$1) {
       List<String> $$2 = ae.splitToList($$0);
       List<String> $$3 = ae.splitToList($$1);
-      return new cwn($$2, $$3);
+      return new cwp($$2, $$3);
    }
 
-   public dth a(iz $$0) {
+   public dtj a(iz $$0) {
       return this.af.a($$0);
    }
 
    static record a(JsonObject a, String b) {
-      private static final Map<String, ajg<ecr>> c = Map.of("default", ecs.a, "largebiomes", ecs.c);
+      private static final Map<String, ajg<ect>> c = Map.of("default", ecu.a, "largebiomes", ecu.c);
 
-      public dth a(iz $$0) {
-         iy<ecr> $$1 = $$0.d(kj.aL);
-         il.c<ecr> $$2 = $$1.b(ecs.a)
+      public dtj a(iz $$0) {
+         iy<ect> $$1 = $$0.d(kj.aL);
+         il.c<ect> $$2 = $$1.b(ecu.a)
             .or(() -> $$1.h().findAny())
             .orElseThrow(() -> new IllegalStateException("Invalid datapack contents: can't find default preset"));
-         il<ecr> $$3 = Optional.ofNullable(ajh.a(this.b))
+         il<ect> $$3 = Optional.ofNullable(ajh.a(this.b))
             .map($$0x -> ajg.a(kj.aL, $$0x))
             .or(() -> Optional.ofNullable(c.get(this.b)))
             .flatMap($$1::b)
@@ -188,12 +188,12 @@ public class aod extends aog<aod> {
                aod.ac.warn("Failed to parse level-type {}, defaulting to {}", this.b, $$2.h().a());
                return $$2;
             });
-         dth $$4 = $$3.a().a();
-         if ($$3.a(ecs.b)) {
-            ajf<JsonElement> $$5 = ajf.a(JsonOps.INSTANCE, $$0);
-            Optional<ebf> $$6 = ebf.a.parse(new Dynamic($$5, this.a())).resultOrPartial(aod.ac::error);
+         dtj $$4 = $$3.a().a();
+         if ($$3.a(ecu.b)) {
+            ajf<JsonElement> $$5 = $$0.a(JsonOps.INSTANCE);
+            Optional<ebh> $$6 = ebh.a.parse(new Dynamic($$5, this.a())).resultOrPartial(aod.ac::error);
             if ($$6.isPresent()) {
-               return $$4.a($$0, new dsh($$6.get()));
+               return $$4.a($$0, new dsj($$6.get()));
             }
          }
 

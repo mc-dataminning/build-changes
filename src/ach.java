@@ -6,7 +6,7 @@ public class ach implements yb<aam> {
    private final float e;
    private final float f;
 
-   public ach(bow $$0) {
+   public ach(box $$0) {
       this.b = $$0.dr();
       this.c = $$0.dt();
       this.d = $$0.dx();

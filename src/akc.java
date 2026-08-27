@@ -11,13 +11,13 @@ public class akc {
 
    public static <D, R> CompletableFuture<R> a(akc.c $$0, akc.f<D> $$1, akc.e<D, R> $$2, Executor $$3, Executor $$4) {
       try {
-         Pair<cxt, ase> $$5 = $$0.a.a();
+         Pair<cxv, ase> $$5 = $$0.a.a();
          ase $$6 = (ase)$$5.getSecond();
          is<ajq> $$7 = ajq.a();
          is<ajq> $$8 = b($$6, $$7, ajq.b, ajc.a);
          iz.b $$9 = $$8.b(ajq.c);
          iz.b $$10 = ajc.a($$6, $$9, ajc.b);
-         cxt $$11 = (cxt)$$5.getFirst();
+         cxv $$11 = (cxv)$$5.getFirst();
          akc.b<D> $$12 = $$1.get(new akc.a($$6, $$11, $$9, $$10));
          is<ajq> $$13 = $$8.a(ajq.c, $$12.b);
          iz.b $$14 = $$13.b(ajq.d);
@@ -44,7 +44,7 @@ public class akc {
       return $$1.a($$2, $$4);
    }
 
-   public static record a(aso a, cxt b, iz.b c, iz.b d) {
+   public static record a(aso a, cxv b, iz.b c, iz.b d) {
    }
 
    public static record b<D>(D a, iz.b b) {
@@ -53,10 +53,10 @@ public class akc {
    public static record c(akc.d a, dv.a b, int c) {
    }
 
-   public static record d(arz a, cxt b, boolean c, boolean d) {
-      public Pair<cxt, ase> a() {
-         clf $$0 = this.d ? clh.e.a() : this.b.b();
-         cxt $$1 = MinecraftServer.a(this.a, this.b.a(), this.c, $$0);
+   public static record d(arz a, cxv b, boolean c, boolean d) {
+      public Pair<cxv, ase> a() {
+         clh $$0 = this.d ? clj.e.a() : this.b.b();
+         cxv $$1 = MinecraftServer.a(this.a, this.b.a(), this.c, $$0);
          if (!this.d) {
             $$1 = $$1.a(this.b.b());
          }
@@ -70,7 +70,7 @@ public class akc {
          return this.a;
       }
 
-      public cxt c() {
+      public cxv c() {
          return this.b;
       }
 

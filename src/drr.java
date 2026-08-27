@@ -1,11 +1,20 @@
-import com.mojang.serialization.Codec;
-import java.util.Optional;
-
 public interface drr {
-   Codec<drr> c = ki.v.q().dispatch(drr::a, drs::a);
-   xs<vf, drr> d = xq.a(kj.V).b(drr::a, drs::b);
+   drt a();
 
-   Optional<epr> a(cwz var1);
+   int b();
 
-   drs<? extends drr> a();
+   boolean a(apf var1, il<drp> var2, drp.a var3, ept var4);
+
+   default drr.a c() {
+      return drr.a.a;
+   }
+
+   public static enum a {
+      a,
+      b;
+   }
+
+   public interface b<T extends drr> {
+      T c();
+   }
 }

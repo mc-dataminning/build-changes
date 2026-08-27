@@ -40,7 +40,7 @@ public abstract class atb {
    private final atj q = new atj(e);
    private final Map<UUID, aue> r = Maps.newHashMap();
    private final Map<UUID, ajp> s = Maps.newHashMap();
-   private final ekn t;
+   private final ekp t;
    private boolean u;
    private final is<ajq> v;
    protected final int h;
@@ -50,7 +50,7 @@ public abstract class atb {
    private static final boolean z = false;
    private int A;
 
-   public atb(MinecraftServer $$0, is<ajq> $$1, ekn $$2, int $$3) {
+   public atb(MinecraftServer $$0, is<ajq> $$1, ekp $$2, int $$3) {
       this.k = $$0;
       this.v = $$1;
       this.h = $$3;
@@ -70,7 +70,7 @@ public abstract class atb {
       }
 
       Optional<ta> $$8 = this.a($$1);
-      ajg<cwz> $$9 = $$8.<ajg<cwz>>flatMap($$0x -> dqm.a(new Dynamic(to.a, $$0x.c("Dimension"))).resultOrPartial(a::error)).orElse(cwz.h);
+      ajg<cxb> $$9 = $$8.<ajg<cxb>>flatMap($$0x -> dqo.a(new Dynamic(to.a, $$0x.c("Dimension"))).resultOrPartial(a::error)).orElse(cxb.h);
       apf $$10 = this.k.a($$9);
       apf $$11;
       if ($$10 == null) {
@@ -83,14 +83,14 @@ public abstract class atb {
       $$1.c($$11);
       String $$13 = $$0.a(this.k.bn());
       a.info("{}[{}] logged in with entity id {} at ({}, {}, {})", new Object[]{$$1.ad().getString(), $$13, $$1.aj(), $$1.dr(), $$1.dt(), $$1.dx()});
-      ekg $$14 = $$11.A_();
+      eki $$14 = $$11.A_();
       $$1.c($$8.orElse(null));
       aqe $$15 = new aqe(this.k, $$0, $$1, $$2);
       $$0.a(aey.a.bind(vf.a(this.k.bd())), $$15);
-      cwv $$16 = $$11.Z();
-      boolean $$17 = $$16.b(cwv.D);
-      boolean $$18 = $$16.b(cwv.q);
-      boolean $$19 = $$16.b(cwv.w);
+      cwx $$16 = $$11.Z();
+      boolean $$17 = $$16.b(cwx.D);
+      boolean $$18 = $$16.b(cwx.q);
+      boolean $$19 = $$16.b(cwx.w);
       $$15.b(new acd($$1.aj(), $$14.l(), this.k.J(), this.n(), this.w, this.x, $$18, !$$17, $$19, $$1.d($$11), this.k.aB()));
       $$15.b(new aaz($$14.q(), $$14.r()));
       $$15.b(new acm($$1.ga()));
@@ -123,13 +123,13 @@ public abstract class atb {
       $$11.c($$1);
       this.k.aO().a($$1);
 
-      for (boj $$23 : $$1.eu()) {
+      for (bok $$23 : $$1.eu()) {
          $$15.b(new aes($$1.aj(), $$23, false));
       }
 
       if ($$8.isPresent() && $$8.get().b("RootVehicle", 10)) {
          ta $$24 = $$8.get().p("RootVehicle");
-         bow $$25 = bpc.a($$24.p("Entity"), $$11, $$1x -> !$$11.c($$1x) ? null : $$1x);
+         box $$25 = bpd.a($$24.p("Entity"), $$11, $$1x -> !$$11.c($$1x) ? null : $$1x);
          if ($$25 != null) {
             UUID $$26;
             if ($$24.b("Attach")) {
@@ -141,7 +141,7 @@ public abstract class atb {
             if ($$25.cw().equals($$26)) {
                $$1.a($$25, true);
             } else {
-               for (bow $$28 : $$25.cT()) {
+               for (box $$28 : $$25.cT()) {
                   if ($$28.cw().equals($$26)) {
                      $$1.a($$28, true);
                      break;
@@ -153,7 +153,7 @@ public abstract class atb {
                a.warn("Couldn't reattach entity to player");
                $$25.am();
 
-               for (bow $$29 : $$25.cT()) {
+               for (box $$29 : $$25.cT()) {
                   $$29.am();
                }
             }
@@ -164,14 +164,14 @@ public abstract class atb {
    }
 
    protected void a(ajy $$0, apg $$1) {
-      Set<eqn> $$2 = Sets.newHashSet();
+      Set<eqp> $$2 = Sets.newHashSet();
 
-      for (eqq $$3 : $$0.g()) {
+      for (eqs $$3 : $$0.g()) {
          $$1.d.b(ady.a($$3, true));
       }
 
-      for (eqm $$4 : eqm.values()) {
-         eqn $$5 = $$0.a($$4);
+      for (eqo $$4 : eqo.values()) {
+         eqp $$5 = $$0.a($$4);
          if ($$5 != null && !$$2.contains($$5)) {
             for (yb<?> $$7 : $$0.d($$5)) {
                $$1.d.b($$7);
@@ -183,38 +183,38 @@ public abstract class atb {
    }
 
    public void a(apf $$0) {
-      $$0.C_().a(new doo() {
+      $$0.C_().a(new doq() {
          @Override
-         public void a(doq $$0, double $$1) {
+         public void a(dos $$0, double $$1) {
             atb.this.a(new adh($$0));
          }
 
          @Override
-         public void a(doq $$0, double $$1, double $$2, long $$3) {
+         public void a(dos $$0, double $$1, double $$2, long $$3) {
             atb.this.a(new adg($$0));
          }
 
          @Override
-         public void a(doq $$0, double $$1, double $$2) {
+         public void a(dos $$0, double $$1, double $$2) {
             atb.this.a(new adf($$0));
          }
 
          @Override
-         public void a(doq $$0, int $$1) {
+         public void a(dos $$0, int $$1) {
             atb.this.a(new adi($$0));
          }
 
          @Override
-         public void b(doq $$0, int $$1) {
+         public void b(dos $$0, int $$1) {
             atb.this.a(new adj($$0));
          }
 
          @Override
-         public void b(doq $$0, double $$1) {
+         public void b(dos $$0, double $$1) {
          }
 
          @Override
-         public void c(doq $$0, double $$1) {
+         public void c(dos $$0, double $$1) {
          }
       });
    }
@@ -251,16 +251,16 @@ public abstract class atb {
       $$0.a(aui.j);
       this.b($$0);
       if ($$0.bO()) {
-         bow $$2 = $$0.cW();
+         box $$2 = $$0.cW();
          if ($$2.cV()) {
             a.debug("Removing player mount");
             $$0.ac();
-            $$2.cS().forEach($$0x -> $$0x.b(bow.c.d));
+            $$2.cS().forEach($$0x -> $$0x.b(box.c.d));
          }
       }
 
       $$0.ag();
-      $$1.a($$0, bow.c.d);
+      $$1.a($$0, box.c.d);
       $$0.Q().a();
       this.l.remove($$0);
       this.k.aO().b($$0);
@@ -328,14 +328,14 @@ public abstract class atb {
 
    public apg a(apg $$0, boolean $$1) {
       this.l.remove($$0);
-      $$0.z().a($$0, bow.c.b);
+      $$0.z().a($$0, box.c.b);
       ib $$2 = $$0.R();
       float $$3 = $$0.S();
       boolean $$4 = $$0.U();
       apf $$5 = this.k.a($$0.T());
-      Optional<epr> $$6;
+      Optional<ept> $$6;
       if ($$5 != null && $$2 != null) {
-         $$6 = cis.a($$5, $$2, $$3, $$4, $$1);
+         $$6 = ciu.a($$5, $$2, $$3, $$4, $$1);
       } else {
          $$6 = Optional.empty();
       }
@@ -353,14 +353,14 @@ public abstract class atb {
 
       boolean $$11 = false;
       if ($$6.isPresent()) {
-         dmz $$12 = $$8.a_($$2);
-         boolean $$13 = $$12.a(dac.pl);
-         epr $$14 = $$6.get();
+         dnb $$12 = $$8.a_($$2);
+         boolean $$13 = $$12.a(dae.pl);
+         ept $$14 = $$6.get();
          float $$17;
          if (!$$12.a(aun.R) && !$$13) {
             $$17 = $$3;
          } else {
-            epr $$15 = epr.c($$2).d($$14).d();
+            ept $$15 = ept.c($$2).d($$14).d();
             $$17 = (float)aww.d(aww.d($$15.e, $$15.c) * 180.0F / (float)Math.PI - 90.0);
          }
 
@@ -377,7 +377,7 @@ public abstract class atb {
 
       byte $$18 = (byte)($$1 ? 1 : 0);
       apf $$19 = $$9.z();
-      ekg $$20 = $$19.A_();
+      eki $$20 = $$19.A_();
       $$9.d.b(new acz($$9.d($$19), $$18));
       $$9.d.a($$9.dr(), $$9.dt(), $$9.dx(), $$9.dC(), $$9.dE());
       $$9.d.b(new ado($$8.T(), $$8.U()));
@@ -391,7 +391,7 @@ public abstract class atb {
       $$9.h();
       $$9.t($$9.ex());
       if ($$11) {
-         $$9.d.b(new aeg(aty.uU, atz.e, (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 1.0F, 1.0F, $$8.E_().g()));
+         $$9.d.b(new aeg(aty.uZ, atz.e, (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 1.0F, 1.0F, $$8.E_().g()));
       }
 
       return $$9;
@@ -416,7 +416,7 @@ public abstract class atb {
       }
    }
 
-   public void a(yb<?> $$0, ajg<cwz> $$1) {
+   public void a(yb<?> $$0, ajg<cxb> $$1) {
       for (apg $$2 : this.l) {
          if ($$2.dM().ad() == $$1) {
             $$2.d.b($$0);
@@ -424,8 +424,8 @@ public abstract class atb {
       }
    }
 
-   public void a(cis $$0, vu $$1) {
-      eqx $$2 = $$0.cg();
+   public void a(ciu $$0, vu $$1) {
+      eqz $$2 = $$0.cg();
       if ($$2 != null) {
          for (String $$4 : $$2.g()) {
             apg $$5 = this.a($$4);
@@ -436,8 +436,8 @@ public abstract class atb {
       }
    }
 
-   public void b(cis $$0, vu $$1) {
-      eqx $$2 = $$0.cg();
+   public void b(ciu $$0, vu $$1) {
+      eqz $$2 = $$0.cg();
       if ($$2 == null) {
          this.a($$1, false);
       } else {
@@ -523,7 +523,7 @@ public abstract class atb {
       return null;
    }
 
-   public void a(@Nullable cis $$0, double $$1, double $$2, double $$3, double $$4, ajg<cwz> $$5, yb<?> $$6) {
+   public void a(@Nullable ciu $$0, double $$1, double $$2, double $$3, double $$4, ajg<cxb> $$5, yb<?> $$6) {
       for (int $$7 = 0; $$7 < this.l.size(); $$7++) {
          apg $$8 = this.l.get($$7);
          if ($$8 != $$0 && $$8.dM().ad() == $$5) {
@@ -563,9 +563,9 @@ public abstract class atb {
    }
 
    public void a(apg $$0, apf $$1) {
-      doq $$2 = this.k.I().C_();
+      dos $$2 = this.k.I().C_();
       $$0.d.b(new abw($$2));
-      $$0.d.b(new aec($$1.X(), $$1.Y(), $$1.Z().b(cwv.l)));
+      $$0.d.b(new aec($$1.X(), $$1.Y(), $$1.Z().b(cwx.l)));
       $$0.d.b(new ado($$1.T(), $$1.U()));
       if ($$1.ab()) {
          $$0.d.b(new abt(abt.c, 0.0F));
@@ -682,11 +682,11 @@ public abstract class atb {
       return $$0.i() && !$$0.a(Instant.now());
    }
 
-   public aue a(cis $$0) {
+   public aue a(ciu $$0) {
       UUID $$1 = $$0.cw();
       aue $$2 = this.r.get($$1);
       if ($$2 == null) {
-         File $$3 = this.k.a(eki.b).toFile();
+         File $$3 = this.k.a(ekk.b).toFile();
          File $$4 = new File($$3, $$1 + ".json");
          if (!$$4.exists()) {
             File $$5 = new File($$3, $$0.ad().getString() + ".json");
@@ -707,7 +707,7 @@ public abstract class atb {
       UUID $$1 = $$0.cw();
       ajp $$2 = this.s.get($$1);
       if ($$2 == null) {
-         Path $$3 = this.k.a(eki.a).resolve($$1 + ".json");
+         Path $$3 = this.k.a(ekk.a).resolve($$1 + ".json");
          $$2 = new ajp(this.k.aD(), this, this.k.aE(), $$3, $$0);
          this.s.put($$1, $$2);
       }

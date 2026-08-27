@@ -1,44 +1,29 @@
-public class gmg extends glv {
-   private static final float n = 0.0F;
-   private static final float o = 0.75F;
-   private final cis p;
-   private final ckn q;
-   private final boolean r;
+public class gmg extends gly {
+   private final box n;
 
-   public gmg(cis $$0, ckn $$1, boolean $$2) {
-      super($$2 ? aty.on : aty.oo, atz.g, gmm.t());
-      this.p = $$0;
-      this.q = $$1;
-      this.r = $$2;
-      this.k = gmm.a.a;
-      this.i = true;
-      this.j = 0;
-      this.d = 0.0F;
+   public gmg(atx $$0, atz $$1, float $$2, float $$3, box $$4, long $$5) {
+      super($$0, $$1, axd.a($$5));
+      this.d = $$2;
+      this.e = $$3;
+      this.n = $$4;
+      this.f = (double)((float)this.n.dr());
+      this.g = (double)((float)this.n.dt());
+      this.h = (double)((float)this.n.dx());
    }
 
    @Override
    public boolean s() {
-      return !this.q.aU();
-   }
-
-   @Override
-   public boolean r() {
-      return true;
+      return !this.n.aU();
    }
 
    @Override
    public void q() {
-      if (this.q.dH() || !this.p.bO() || this.p.cZ() != this.q) {
+      if (this.n.dH()) {
          this.n();
-      } else if (this.r != this.p.bh()) {
-         this.d = 0.0F;
       } else {
-         float $$0 = (float)this.q.dp().h();
-         if ($$0 >= 0.01F) {
-            this.d = aww.b(0.0F, 0.75F, $$0);
-         } else {
-            this.d = 0.0F;
-         }
+         this.f = (double)((float)this.n.dr());
+         this.g = (double)((float)this.n.dt());
+         this.h = (double)((float)this.n.dx());
       }
    }
 }

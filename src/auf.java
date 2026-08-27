@@ -1,7 +1,7 @@
 import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class auf<T> extends eqy {
+public class auf<T> extends era {
    public static final xs<vf, auf<?>> a = xq.a(kj.ag).b(auf::a, auh::a);
    private final aug o;
    private final T p;

@@ -3,18 +3,18 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Map;
 import java.util.Optional;
 
-public record bm(Optional<il<cuu>> b, cm.d c) {
+public record bm(Optional<il<cuw>> b, cm.d c) {
    public static final Codec<bm> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(awe.a(ki.f.r(), "enchantment").forGetter(bm::a), awe.a(cm.d.d, "levels", cm.d.c).forGetter(bm::b)).apply($$0, bm::new)
    );
 
-   public bm(cuu $$0, cm.d $$1) {
+   public bm(cuw $$0, cm.d $$1) {
       this(Optional.of($$0.k()), $$1);
    }
 
-   public boolean a(Map<cuu, Integer> $$0) {
+   public boolean a(Map<cuw, Integer> $$0) {
       if (this.b.isPresent()) {
-         cuu $$1 = this.b.get().a();
+         cuw $$1 = this.b.get().a();
          if (!$$0.containsKey($$1)) {
             return false;
          }
@@ -36,7 +36,7 @@ public record bm(Optional<il<cuu>> b, cm.d c) {
       return true;
    }
 
-   public Optional<il<cuu>> a() {
+   public Optional<il<cuw>> a() {
       return this.b;
    }
 

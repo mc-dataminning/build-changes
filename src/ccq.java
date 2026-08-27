@@ -1,21 +1,22 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class ccq {
-   public static brh<bpo> a() {
-      return but.a(
-         (Function<but.b<bpo>, ? extends App<but.c<bpo>, buw<bpo>>>)($$0 -> $$0.group($$0.b(byr.N), $$0.a(byr.y)).apply($$0, ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                  int $$6 = $$0.<Integer>b($$1);
-                  if ($$6 <= 0) {
-                     $$1.b();
-                     $$2.b();
-                     $$4.dP().f();
-                  } else {
-                     $$1.a($$6 - 1);
-                  }
+public class ccq extends brh<cco> {
+   public ccq() {
+      super(ImmutableMap.of(bys.N, byt.a, bys.y, byt.a), 200);
+   }
 
-                  return true;
-               }))
-      );
+   protected boolean a(apf $$0, cco $$1) {
+      return $$1.bf();
+   }
+
+   protected boolean a(apf $$0, cco $$1, long $$2) {
+      return $$1.bf() && $$1.dP().a(bys.N);
+   }
+
+   protected void b(apf $$0, cco $$1, long $$2) {
+      bqq<cco> $$3 = $$1.dP();
+      $$3.b(bys.m);
+      $$3.b(bys.n);
+      $$1.b(new bok(bom.j, 200, 0));
    }
 }

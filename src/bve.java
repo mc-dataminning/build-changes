@@ -3,15 +3,16 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class bve {
-   public static brh<bpo> a() {
-      return but.a(
-         (Function<but.b<bpo>, ? extends App<but.c<bpo>, buw<bpo>>>)($$0 -> $$0.group($$0.a(byr.n), $$0.a(byr.az), $$0.a(byr.ay), $$0.c(byr.o))
-               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$4x, $$5, $$6) -> {
-                     Optional<ib> $$7 = $$0.<bpo>a($$3).map(bow::dm).or(() -> $$0.a($$2));
-                     if ($$7.isEmpty()) {
+   public static <E extends chy> bri<E> a(Function<E, Optional<? extends bpp>> $$0) {
+      return buu.a(
+         (Function<buu.b<E>, ? extends App<buu.c<E>, bux<E>>>)($$1 -> $$1.group($$1.c(bys.ay), $$1.c(bys.o), $$1.a(bys.E))
+               .apply($$1, ($$1x, $$2, $$3) -> ($$3x, $$4, $$5) -> {
+                     Optional<? extends bpp> $$6 = $$0.apply((E)$$4);
+                     if ($$6.filter($$4::b).isEmpty()) {
                         return false;
                      } else {
-                        $$1.a(new brj($$7.get()));
+                        $$1x.a($$6.get());
+                        $$3.b();
                         return true;
                      }
                   }))

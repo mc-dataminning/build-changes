@@ -8,8 +8,8 @@ public class aby implements yb<aam> {
    private final abx d;
    private final acc e;
 
-   public aby(dpg $$0, eic $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      cwg $$4 = $$0.f();
+   public aby(dpi $$0, eie $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      cwi $$4 = $$0.f();
       this.b = $$4.e;
       this.c = $$4.f;
       this.d = new abx($$0);

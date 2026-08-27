@@ -10,15 +10,17 @@ public @interface rn {
 
    String b() default "defaultBatch";
 
-   int c() default 0;
+   boolean c() default false;
 
-   boolean d() default true;
+   int d() default 0;
 
-   String e() default "";
+   boolean e() default true;
 
-   long f() default 0L;
+   String f() default "";
 
-   int g() default 1;
+   long g() default 0L;
 
    int h() default 1;
+
+   int i() default 1;
 }

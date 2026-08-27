@@ -1,41 +1,41 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 public class fsg {
-   private final fws a;
-   private final fry b;
-   private final fxo c;
-   private fsg.a d = fsg.a.a;
+   private final arz a = asc.c();
+   private final Map<arv, String> b;
 
-   public fsg(fws $$0, fry $$1, fxo $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public fsg() {
+      this.a.a();
+      Builder<arv, String> $$0 = ImmutableMap.builder();
+      this.a.c().forEach($$1 -> {
+         aqz $$2 = $$1.a();
+         $$2.d().ifPresent($$2x -> $$0.put($$2x, $$2.a()));
+      });
+      this.b = $$0.build();
    }
 
-   public void a() {
-      switch (this.d) {
-         case b:
-            ib $$0 = this.a.dm();
-            boolean $$1 = this.b.d($$0.v());
-            if ($$1 || this.c.a($$0) || this.a.N_() || !this.a.bA()) {
-               this.d = fsg.a.c;
-            }
-         case a:
-         case c:
+   public List<arv> a(List<arv> $$0) {
+      List<arv> $$1 = new ArrayList<>($$0.size());
+      List<String> $$2 = new ArrayList<>($$0.size());
+
+      for (arv $$3 : $$0) {
+         String $$4 = this.b.get($$3);
+         if ($$4 != null) {
+            $$2.add($$4);
+            $$1.add($$3);
+         }
       }
+
+      this.a.a($$2);
+      return $$1;
    }
 
-   public boolean b() {
-      return this.d == fsg.a.c;
-   }
-
-   public void c() {
-      if (this.d == fsg.a.a) {
-         this.d = fsg.a.b;
-      }
-   }
-
-   static enum a {
-      a,
-      b,
-      c;
+   public ase a() {
+      List<ara> $$0 = this.a.g();
+      return new ash(arc.b, $$0);
    }
 }

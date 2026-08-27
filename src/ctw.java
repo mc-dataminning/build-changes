@@ -1,118 +1,120 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ctw implements cte {
-   final String a;
-   final ctd b;
-   final cqk c;
-   final iu<ctk> d;
+public class ctw implements ctg {
+   final ctx a;
+   final cqm b;
+   final String c;
+   final ctf d;
+   final boolean e;
 
-   public ctw(String $$0, ctd $$1, cqk $$2, iu<ctk> $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public ctw(String $$0, ctf $$1, ctx $$2, cqm $$3, boolean $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = $$3;
+      this.e = $$4;
+   }
+
+   public ctw(String $$0, ctf $$1, ctx $$2, cqm $$3) {
+      this($$0, $$1, $$2, $$3, true);
    }
 
    @Override
-   public ctr<?> ar_() {
-      return ctr.b;
+   public ctt<?> ar_() {
+      return ctt.a;
    }
 
    @Override
    public String c() {
-      return this.a;
-   }
-
-   @Override
-   public ctd d() {
-      return this.b;
-   }
-
-   @Override
-   public cqk a(iz $$0) {
       return this.c;
    }
 
    @Override
-   public iu<ctk> a() {
+   public ctf d() {
       return this.d;
    }
 
-   public boolean a(cme $$0, cwz $$1) {
-      ciw $$2 = new ciw();
-      int $$3 = 0;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cqk $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            $$3++;
-            $$2.a($$5, 1);
-         }
-      }
-
-      return $$3 == this.d.size() && $$2.a(this, null);
+   @Override
+   public cqm a(iz $$0) {
+      return this.b;
    }
 
-   public cqk a(cme $$0, iz $$1) {
-      return this.c.q();
+   @Override
+   public iu<ctm> a() {
+      return this.a.c();
+   }
+
+   @Override
+   public boolean h() {
+      return this.e;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= this.d.size();
+      return $$0 >= this.a.a() && $$1 >= this.a.b();
    }
 
-   public static class a implements ctr<ctw> {
-      private static final Codec<ctw> y = RecordCodecBuilder.create(
+   public boolean a(cmg $$0, cxb $$1) {
+      return this.a.a($$0);
+   }
+
+   public cqm a(cmg $$0, iz $$1) {
+      return this.a($$1).q();
+   }
+
+   public int j() {
+      return this.a.a();
+   }
+
+   public int k() {
+      return this.a.b();
+   }
+
+   @Override
+   public boolean i() {
+      iu<ctm> $$0 = this.a();
+      return $$0.isEmpty() || $$0.stream().filter($$0x -> !$$0x.c()).anyMatch($$0x -> $$0x.a().length == 0);
+   }
+
+   public static class a implements ctt<ctw> {
+      public static final Codec<ctw> x = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  awe.a(Codec.STRING, "group", "").forGetter($$0x -> $$0x.a),
-                  ctd.e.fieldOf("category").orElse(ctd.d).forGetter($$0x -> $$0x.b),
-                  cqk.c.fieldOf("result").forGetter($$0x -> $$0x.c),
-                  ctk.d.listOf().fieldOf("ingredients").flatXmap($$0x -> {
-                     ctk[] $$1 = $$0x.stream().filter($$0xx -> !$$0xx.c()).toArray(ctk[]::new);
-                     if ($$1.length == 0) {
-                        return DataResult.error(() -> "No ingredients for shapeless recipe");
-                     } else {
-                        return $$1.length > 9 ? DataResult.error(() -> "Too many ingredients for shapeless recipe") : DataResult.success(iu.a(ctk.a, $$1));
-                     }
-                  }, DataResult::success).forGetter($$0x -> $$0x.d)
+                  awe.a(Codec.STRING, "group", "").forGetter($$0x -> $$0x.c),
+                  ctf.e.fieldOf("category").orElse(ctf.d).forGetter($$0x -> $$0x.d),
+                  ctx.a.forGetter($$0x -> $$0x.a),
+                  cqm.c.fieldOf("result").forGetter($$0x -> $$0x.b),
+                  awe.a(Codec.BOOL, "show_notification", true).forGetter($$0x -> $$0x.e)
                )
                .apply($$0, ctw::new)
       );
-      public static final xs<vf, ctw> x = xs.a(ctw.a::a, ctw.a::a);
+      public static final xs<vf, ctw> y = xs.a(ctw.a::a, ctw.a::a);
 
       @Override
       public Codec<ctw> a() {
-         return y;
+         return x;
       }
 
       @Override
       public xs<vf, ctw> b() {
-         return x;
+         return y;
       }
 
       private static ctw a(vf $$0) {
          String $$1 = $$0.p();
-         ctd $$2 = $$0.b(ctd.class);
-         int $$3 = $$0.l();
-         iu<ctk> $$4 = iu.a($$3, ctk.a);
-         $$4.replaceAll($$1x -> ctk.b.decode($$0));
-         cqk $$5 = cqk.f.decode($$0);
-         return new ctw($$1, $$2, $$5, $$4);
+         ctf $$2 = $$0.b(ctf.class);
+         ctx $$3 = ctx.b.decode($$0);
+         cqm $$4 = cqm.f.decode($$0);
+         boolean $$5 = $$0.readBoolean();
+         return new ctw($$1, $$2, $$3, $$4, $$5);
       }
 
       private static void a(vf $$0, ctw $$1) {
-         $$0.a($$1.a);
-         $$0.a($$1.b);
-         $$0.c($$1.d.size());
-
-         for (ctk $$2 : $$1.d) {
-            ctk.b.encode($$0, $$2);
-         }
-
-         cqk.f.encode($$0, $$1.c);
+         $$0.a($$1.c);
+         $$0.a($$1.d);
+         ctx.b.encode($$0, $$1.a);
+         cqm.f.encode($$0, $$1.b);
+         $$0.a($$1.e);
       }
    }
 }

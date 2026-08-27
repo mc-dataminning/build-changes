@@ -3,7 +3,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
 public record ck(
-   Optional<ck.b> b, Optional<ajg<cxy>> c, Optional<ajg<edc>> d, Optional<ajg<cwz>> e, Optional<Boolean> f, Optional<ch> g, Optional<av> h, Optional<by> i
+   Optional<ck.b> b, Optional<ajg<cya>> c, Optional<ajg<ede>> d, Optional<ajg<cxb>> e, Optional<Boolean> f, Optional<ch> g, Optional<av> h, Optional<by> i
 ) {
    public static final Codec<ck> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
@@ -21,9 +21,9 @@ public record ck(
 
    private static Optional<ck> a(
       Optional<ck.b> $$0,
-      Optional<ajg<cxy>> $$1,
-      Optional<ajg<edc>> $$2,
-      Optional<ajg<cwz>> $$3,
+      Optional<ajg<cya>> $$1,
+      Optional<ajg<ede>> $$2,
+      Optional<ajg<cxb>> $$3,
       Optional<Boolean> $$4,
       Optional<ch> $$5,
       Optional<av> $$6,
@@ -44,7 +44,7 @@ public record ck(
          boolean $$5 = $$0.p($$4);
          if (!this.c.isPresent() || $$5 && $$0.t($$4).a(this.c.get())) {
             if (!this.d.isPresent() || $$5 && $$0.a().a($$4, this.d.get()).b()) {
-               if (!this.f.isPresent() || $$5 && this.f.get() == dao.a($$0, $$4)) {
+               if (!this.f.isPresent() || $$5 && this.f.get() == daq.a($$0, $$4)) {
                   if (this.g.isPresent() && !this.g.get().a($$0, $$4)) {
                      return false;
                   } else {
@@ -66,15 +66,15 @@ public record ck(
       return this.b;
    }
 
-   public Optional<ajg<cxy>> b() {
+   public Optional<ajg<cya>> b() {
       return this.c;
    }
 
-   public Optional<ajg<edc>> c() {
+   public Optional<ajg<ede>> c() {
       return this.d;
    }
 
-   public Optional<ajg<cwz>> d() {
+   public Optional<ajg<cxb>> d() {
       return this.e;
    }
 
@@ -98,9 +98,9 @@ public record ck(
       private cm.c a;
       private cm.c b;
       private cm.c c;
-      private Optional<ajg<cxy>> d;
-      private Optional<ajg<edc>> e;
-      private Optional<ajg<cwz>> f;
+      private Optional<ajg<cya>> d;
+      private Optional<ajg<ede>> e;
+      private Optional<ajg<cxb>> f;
       private Optional<Boolean> g;
       private Optional<ch> h;
       private Optional<av> i;
@@ -123,15 +123,15 @@ public record ck(
          return new ck.a();
       }
 
-      public static ck.a a(ajg<cxy> $$0) {
+      public static ck.a a(ajg<cya> $$0) {
          return a().d($$0);
       }
 
-      public static ck.a b(ajg<cwz> $$0) {
+      public static ck.a b(ajg<cxb> $$0) {
          return a().f($$0);
       }
 
-      public static ck.a c(ajg<edc> $$0) {
+      public static ck.a c(ajg<ede> $$0) {
          return a().e($$0);
       }
 
@@ -154,17 +154,17 @@ public record ck(
          return this;
       }
 
-      public ck.a d(ajg<cxy> $$0) {
+      public ck.a d(ajg<cya> $$0) {
          this.d = Optional.of($$0);
          return this;
       }
 
-      public ck.a e(ajg<edc> $$0) {
+      public ck.a e(ajg<ede> $$0) {
          this.e = Optional.of($$0);
          return this;
       }
 
-      public ck.a f(ajg<cwz> $$0) {
+      public ck.a f(ajg<cxb> $$0) {
          this.f = Optional.of($$0);
          return this;
       }

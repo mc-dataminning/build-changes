@@ -7,22 +7,22 @@ public class jy implements ka {
       public jy a(kb<jy> $$0, StringReader $$1, in.a $$2) throws CommandSyntaxException {
          $$1.expect(' ');
          gc.a $$3 = new gc($$2).a($$1);
-         cqk $$4 = new gb($$3.a(), $$3.b()).a(1, false);
+         cqm $$4 = new gb($$3.a(), $$3.b()).a(1, false);
          return new jy($$0, $$4);
       }
    };
    private final kb<jy> b;
-   private final cqk c;
+   private final cqm c;
 
    public static Codec<jy> a(kb<jy> $$0) {
-      return cqk.a.xmap($$1 -> new jy($$0, $$1), $$0x -> $$0x.c);
+      return cqm.a.xmap($$1 -> new jy($$0, $$1), $$0x -> $$0x.c);
    }
 
    public static xs<? super vf, jy> b(kb<jy> $$0) {
-      return cqk.f.a($$1 -> new jy($$0, $$1), $$0x -> $$0x.c);
+      return cqm.f.a($$1 -> new jy($$0, $$1), $$0x -> $$0x.c);
    }
 
-   public jy(kb<jy> $$0, cqk $$1) {
+   public jy(kb<jy> $$0, cqm $$1) {
       this.b = $$0;
       this.c = $$1;
    }
@@ -37,7 +37,7 @@ public class jy implements ka {
       return this.b;
    }
 
-   public cqk b() {
+   public cqm b() {
       return this.c;
    }
 }

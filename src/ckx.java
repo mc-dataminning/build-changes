@@ -1,106 +1,118 @@
-public class ckx extends cko implements dle {
-   private boolean e = true;
+public class ckx extends ckp {
+   static final aim<String> c = aiq.a(ckx.class, aio.e);
+   static final aim<vu> d = aiq.a(ckx.class, aio.f);
+   private final cwc e = new ckx.a();
+   private static final int i = 4;
+   private int j;
 
-   public ckx(bpc<? extends ckx> $$0, cwz $$1) {
+   public ckx(bpd<? extends ckx> $$0, cxb $$1) {
       super($$0, $$1);
    }
 
-   public ckx(cwz $$0, double $$1, double $$2, double $$3) {
-      super(bpc.aa, $$1, $$2, $$3, $$0);
+   public ckx(cxb $$0, double $$1, double $$2, double $$3) {
+      super(bpd.w, $$0, $$1, $$2, $$3);
    }
 
    @Override
-   public ckn.a v() {
-      return ckn.a.f;
+   protected cqh ah_() {
+      return cqp.nL;
    }
 
    @Override
-   public dmz x() {
-      return dac.hc.o();
-   }
-
-   @Override
-   public int z() {
-      return 1;
-   }
-
-   @Override
-   public int b() {
-      return 5;
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      boolean $$4 = !$$3;
-      if ($$4 != this.G()) {
-         this.p($$4);
-      }
-   }
-
-   public boolean G() {
-      return this.e;
-   }
-
-   public void p(boolean $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   public double H() {
-      return this.dr();
-   }
-
-   @Override
-   public double I() {
-      return this.dt() + 0.5;
-   }
-
-   @Override
-   public double J() {
-      return this.dx();
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      if (!this.dM().B && this.bA() && this.G() && this.K()) {
-         this.e();
-      }
-   }
-
-   public boolean K() {
-      if (dlf.a(this.dM(), this)) {
-         return true;
-      } else {
-         for (cfd $$1 : this.dM().a(cfd.class, this.cH().c(0.25, 0.0, 0.25), bpb.a)) {
-            if (dlf.a(this, $$1)) {
-               return true;
-            }
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   protected cqf ah_() {
-      return cqn.nP;
-   }
-
-   @Override
-   protected void b(ta $$0) {
-      super.b($$0);
-      $$0.a("Enabled", this.e);
+   protected void a(aiq.a $$0) {
+      super.a($$0);
+      $$0.a(c, "");
+      $$0.a(d, vt.a);
    }
 
    @Override
    protected void a(ta $$0) {
       super.a($$0);
-      this.e = $$0.e("Enabled") ? $$0.q("Enabled") : true;
+      this.e.b($$0);
+      this.an().a(c, this.B().m());
+      this.an().a(d, this.B().l());
    }
 
    @Override
-   public clo a(int $$0, cir $$1) {
-      return new cmn($$0, $$1, this);
+   protected void b(ta $$0) {
+      super.b($$0);
+      this.e.a($$0);
+   }
+
+   @Override
+   public ckp.a v() {
+      return ckp.a.g;
+   }
+
+   @Override
+   public dnb x() {
+      return dae.fN.o();
+   }
+
+   public cwc B() {
+      return this.e;
+   }
+
+   @Override
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      if ($$3 && this.ah - this.j >= 4) {
+         this.B().a(this.dM());
+         this.j = this.ah;
+      }
+   }
+
+   @Override
+   public bnd a(ciu $$0, bnc $$1) {
+      return this.e.a($$0);
+   }
+
+   @Override
+   public void a(aim<?> $$0) {
+      super.a($$0);
+      if (d.equals($$0)) {
+         try {
+            this.e.c(this.an().a(d));
+         } catch (Throwable var3) {
+         }
+      } else if (c.equals($$0)) {
+         this.e.a(this.an().a(c));
+      }
+   }
+
+   @Override
+   public boolean cM() {
+      return true;
+   }
+
+   public class a extends cwc {
+      @Override
+      public apf e() {
+         return (apf)ckx.this.dM();
+      }
+
+      @Override
+      public void f() {
+         ckx.this.an().a(ckx.c, this.m());
+         ckx.this.an().a(ckx.d, this.l());
+      }
+
+      @Override
+      public ept g() {
+         return ckx.this.dk();
+      }
+
+      public ckx h() {
+         return ckx.this;
+      }
+
+      @Override
+      public du i() {
+         return new du(this, ckx.this.dk(), ckx.this.bJ(), this.e(), 2, this.n().getString(), ckx.this.O_(), this.e().o(), ckx.this);
+      }
+
+      @Override
+      public boolean j() {
+         return !ckx.this.dH();
+      }
    }
 }

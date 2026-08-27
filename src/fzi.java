@@ -1,8 +1,19 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.google.common.collect.Streams;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fzi {
+public class fzi implements fzf {
+   public static final String a = "OR";
+   private final Iterable<? extends fzf> d;
+
+   public fzi(Iterable<? extends fzf> $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public Predicate<dnb> getPredicate(dnc<dac, dnb> $$0) {
+      List<Predicate<dnb>> $$1 = Streams.stream(this.d).map($$1x -> $$1x.getPredicate($$0)).collect(Collectors.toList());
+      return $$1x -> $$1.stream().anyMatch($$1xx -> $$1xx.test($$1x));
+   }
 }

@@ -15,7 +15,7 @@ public class aub {
       this.b.addAll($$0.b);
    }
 
-   public void a(ctp<?> $$0) {
+   public void a(ctr<?> $$0) {
       if (!$$0.b().aq_()) {
          this.a($$0.a());
       }
@@ -25,7 +25,7 @@ public class aub {
       this.a.add($$0);
    }
 
-   public boolean b(@Nullable ctp<?> $$0) {
+   public boolean b(@Nullable ctr<?> $$0) {
       return $$0 == null ? false : this.a.contains($$0.a());
    }
 
@@ -33,7 +33,7 @@ public class aub {
       return this.a.contains($$0);
    }
 
-   public void c(ctp<?> $$0) {
+   public void c(ctr<?> $$0) {
       this.c($$0.a());
    }
 
@@ -42,15 +42,15 @@ public class aub {
       this.b.remove($$0);
    }
 
-   public boolean d(ctp<?> $$0) {
+   public boolean d(ctr<?> $$0) {
       return this.b.contains($$0.a());
    }
 
-   public void e(ctp<?> $$0) {
+   public void e(ctr<?> $$0) {
       this.b.remove($$0.a());
    }
 
-   public void f(ctp<?> $$0) {
+   public void f(ctr<?> $$0) {
       this.d($$0.a());
    }
 
@@ -58,23 +58,23 @@ public class aub {
       this.b.add($$0);
    }
 
-   public boolean a(cnc $$0) {
+   public boolean a(cne $$0) {
       return this.c.a($$0);
    }
 
-   public void a(cnc $$0, boolean $$1) {
+   public void a(cne $$0, boolean $$1) {
       this.c.a($$0, $$1);
    }
 
-   public boolean a(cnb<?> $$0) {
+   public boolean a(cnd<?> $$0) {
       return this.b($$0.t());
    }
 
-   public boolean b(cnc $$0) {
+   public boolean b(cne $$0) {
       return this.c.b($$0);
    }
 
-   public void b(cnc $$0, boolean $$1) {
+   public void b(cne $$0, boolean $$1) {
       this.c.b($$0, $$1);
    }
 
@@ -86,7 +86,7 @@ public class aub {
       return this.c.a();
    }
 
-   public void a(cnc $$0, boolean $$1, boolean $$2) {
+   public void a(cne $$0, boolean $$1, boolean $$2) {
       this.c.a($$0, $$1);
       this.c.b($$0, $$2);
    }

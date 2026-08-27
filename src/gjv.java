@@ -1,17 +1,17 @@
 import java.io.IOException;
-import java.io.InputStream;
 
-public class gjv {
-   @Deprecated
-   public static int[] a(aso $$0, ajh $$1) throws IOException {
-      int[] var4;
-      try (
-         InputStream $$2 = $$0.open($$1);
-         eta $$3 = eta.a($$2);
-      ) {
-         var4 = $$3.e();
+public class gjv extends ast<int[]> {
+   private static final ajh a = new ajh("textures/colormap/foliage.png");
+
+   protected int[] a(aso $$0, bjr $$1) {
+      try {
+         return gjy.a($$0, a);
+      } catch (IOException var4) {
+         throw new IllegalStateException("Failed to load foliage color texture", var4);
       }
+   }
 
-      return var4;
+   protected void a(int[] $$0, aso $$1, bjr $$2) {
+      cwv.a($$0);
    }
 }

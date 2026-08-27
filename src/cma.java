@@ -1,5 +1,7 @@
 public interface cma {
-   void a(clo var1, int var2, cqk var3);
+   int a(int var1);
 
-   void a(clo var1, int var2, int var3);
+   void a(int var1, int var2);
+
+   int a();
 }

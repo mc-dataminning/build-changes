@@ -1,25 +1,21 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class dug implements dtt {
-   public static final Codec<dug> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(jg.v(16).optionalFieldOf("offset", jg.g).forGetter($$0x -> $$0x.e), dmz.b.fieldOf("state").forGetter($$0x -> $$0x.f))
-            .apply($$0, dug::new)
-   );
-   private final jg e;
-   private final dmz f;
+public abstract class dug implements dtv {
+   protected final jg f;
 
-   protected dug(jg $$0, dmz $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   protected static <P extends dug> P1<Mu<P>, jg> a(Instance<P> $$0) {
+      return $$0.group(jg.v(16).optionalFieldOf("offset", jg.g).forGetter($$0x -> $$0x.f));
    }
 
-   public boolean a(cxu $$0, ib $$1) {
-      return this.f.a($$0, $$1.a(this.e));
+   protected dug(jg $$0) {
+      this.f = $$0;
    }
 
-   @Override
-   public dtu<?> a() {
-      return dtu.g;
+   public final boolean a(cxw $$0, ib $$1) {
+      return this.a($$0.a_($$1.a(this.f)));
    }
+
+   protected abstract boolean a(dnb var1);
 }

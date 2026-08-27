@@ -1,57 +1,49 @@
-public class ffs extends fhf {
-   private final Runnable c;
-   protected final ffs.a a;
-   private final vu k;
-   private final boolean l;
-   private fbz m = fbz.a;
-   protected int b;
-   private fbi n;
+public class ffs extends fhj {
+   private static ezl<?>[] a(ezm $$0) {
+      return new ezl[]{
+         $$0.aq(),
+         $$0.U(),
+         $$0.r(),
+         $$0.F(),
+         $$0.p(),
+         $$0.W(),
+         $$0.n(),
+         $$0.o(),
+         $$0.y(),
+         $$0.z(),
+         $$0.aa(),
+         $$0.ab(),
+         $$0.ah(),
+         $$0.ai(),
+         $$0.aj(),
+         $$0.am(),
+         $$0.ak(),
+         $$0.al(),
+         $$0.b(),
+         $$0.a(),
+         $$0.q(),
+         $$0.c(),
+         $$0.s()
+      };
+   }
 
-   public ffs(Runnable $$0, ffs.a $$1, vu $$2, vu $$3, boolean $$4) {
-      super($$2);
-      this.c = $$0;
-      this.a = $$1;
-      this.k = $$3;
-      this.l = $$4;
+   public ffs(fhh $$0, ezm $$1) {
+      super($$0, $$1, vu.c("options.accessibility.title"), a($$1));
    }
 
    @Override
    protected void aO_() {
       super.aO_();
-      this.m = fbz.a(this.i, this.k, this.g - 50);
-      int $$0 = (this.m.a() + 1) * 9;
-      this.c(fbg.a(vu.c("selectWorld.backupJoinConfirmButton"), $$0x -> this.a.proceed(true, this.n.a())).a(this.g / 2 - 155, 100 + $$0, 150, 20).a());
-      this.c(fbg.a(vu.c("selectWorld.backupJoinSkipButton"), $$0x -> this.a.proceed(false, this.n.a())).a(this.g / 2 - 155 + 160, 100 + $$0, 150, 20).a());
-      this.c(fbg.a(vt.e, $$0x -> this.c.run()).a(this.g / 2 - 155 + 80, 124 + $$0, 150, 20).a());
-      this.n = fbi.a(vu.c("selectWorld.backupEraseCache"), this.i).a(this.g / 2 - 155 + 80, 76 + $$0).a();
-      if (this.l) {
-         this.c(this.n);
+      fbg $$0 = this.k.b(this.b.r());
+      if ($$0 != null && !this.f.ac().b().contains("high_contrast")) {
+         $$0.j = false;
+         $$0.a(fct.a(vu.c("options.accessibility.high_contrast.error.tooltip")));
       }
    }
 
    @Override
-   public void a(fat $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 50, 16777215);
-      this.m.a($$0, this.g / 2, 70);
-   }
-
-   @Override
-   public boolean aM_() {
-      return false;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.c.run();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   public interface a {
-      void proceed(boolean var1, boolean var2);
+   protected void j() {
+      this.c(fbi.a(vu.c("options.accessibility.link"), ffy.b(this, "https://aka.ms/MinecraftJavaAccessibility")).a(this.g / 2 - 155, this.h - 27, 150, 20).a());
+      this.c(fbi.a(vt.d, $$0 -> this.f.a(this.a)).a(this.g / 2 + 5, this.h - 27, 150, 20).a());
    }
 }

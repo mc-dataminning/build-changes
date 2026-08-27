@@ -28,7 +28,7 @@ public record wx(String d, @Nullable gi e) implements ww {
    @Override
    public Stream<ta> a(du $$0) throws CommandSyntaxException {
       if (this.e != null) {
-         List<? extends bow> $$1 = this.e.b($$0);
+         List<? extends box> $$1 = this.e.b($$0);
          return $$1.stream().map(co::b);
       } else {
          return Stream.empty();

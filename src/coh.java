@@ -1,127 +1,210 @@
+import java.util.List;
+import java.util.Map;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class coh extends cqf {
-   public static final int a = 3;
-   public static final int b = 1;
-   public static final int c = 3;
+public class coh extends cqh {
+   public static final String a = "BlockEntityTag";
+   public static final String b = "BlockStateTag";
+   @Deprecated
+   private final dac c;
 
-   public coh(cqf.a $$0) {
-      super($$0);
+   public coh(dac $$0, cqh.a $$1) {
+      super($$1);
+      this.c = $$0;
    }
 
    @Override
-   public bnc a(csu $$0) {
-      cwz $$1 = $$0.q();
-      ib $$2 = $$0.a();
-      ib $$3 = $$2.a($$0.k());
-      if (a($$0.n(), $$1, $$2)) {
-         if (!$$1.B) {
-            $$0.o().b(drn.C);
-            $$1.c(1505, $$2, 15);
-         }
-
-         return bnc.a($$1.B);
+   public bnd a(csw $$0) {
+      bnd $$1 = this.a(new csu($$0));
+      if (!$$1.a() && this.v()) {
+         bnd $$2 = this.a($$0.q(), $$0.o(), $$0.p()).a();
+         return $$2 == bnd.b ? bnd.c : $$2;
       } else {
-         dmz $$4 = $$1.a_($$2);
-         boolean $$5 = $$4.d($$1, $$2, $$0.k());
-         if ($$5 && a($$0.n(), $$1, $$3, $$0.k())) {
-            if (!$$1.B) {
-               $$0.o().b(drn.C);
-               $$1.c(1505, $$3, 15);
-            }
+         return $$1;
+      }
+   }
 
-            return bnc.a($$1.B);
+   public bnd a(csu $$0) {
+      if (!this.d().a($$0.q().I())) {
+         return bnd.e;
+      } else if (!$$0.b()) {
+         return bnd.e;
+      } else {
+         csu $$1 = this.b($$0);
+         if ($$1 == null) {
+            return bnd.e;
          } else {
-            return bnc.d;
+            dnb $$2 = this.c($$1);
+            if ($$2 == null) {
+               return bnd.e;
+            } else if (!this.a($$1, $$2)) {
+               return bnd.e;
+            } else {
+               ib $$3 = $$1.a();
+               cxb $$4 = $$1.q();
+               ciu $$5 = $$1.o();
+               cqm $$6 = $$1.n();
+               dnb $$7 = $$4.a_($$3);
+               if ($$7.a($$2.b())) {
+                  $$7 = this.a($$3, $$4, $$6, $$7);
+                  this.a($$3, $$4, $$5, $$6, $$7);
+                  $$7.b().a($$4, $$3, $$7, $$5, $$6);
+                  if ($$5 instanceof apg) {
+                     am.z.a((apg)$$5, $$3, $$6);
+                  }
+               }
+
+               dho $$8 = $$7.w();
+               $$4.a($$5, $$3, this.a($$7), atz.e, ($$8.a() + 1.0F) / 2.0F, $$8.b() * 0.8F);
+               $$4.a(drp.i, $$3, drp.a.a($$5, $$7));
+               $$6.a(1, $$5);
+               return bnd.a($$4.B);
+            }
          }
       }
    }
 
-   public static boolean a(cqk $$0, cwz $$1, ib $$2) {
-      dmz $$3 = $$1.a_($$2);
-      if ($$3.b() instanceof dad $$4 && $$4.b($$1, $$2, $$3)) {
-         if ($$1 instanceof apf) {
-            if ($$4.a($$1, $$1.z, $$2, $$3)) {
-               $$4.a((apf)$$1, $$1.z, $$2, $$3);
-            }
-
-            $$0.h(1);
-         }
-
-         return true;
-      }
-
-      return false;
+   protected atx a(dnb $$0) {
+      return $$0.w().e();
    }
 
-   public static boolean a(cqk $$0, cwz $$1, ib $$2, @Nullable ih $$3) {
-      if ($$1.a_($$2).a(dac.G) && $$1.b_($$2).e() == 8) {
-         if (!($$1 instanceof apf)) {
-            return true;
-         } else {
-            axd $$4 = $$1.E_();
+   @Nullable
+   public csu b(csu $$0) {
+      return $$0;
+   }
 
-            label78:
-            for (int $$5 = 0; $$5 < 128; $$5++) {
-               ib $$6 = $$2;
-               dmz $$7 = dac.bw.o();
+   protected boolean a(ib $$0, cxb $$1, @Nullable ciu $$2, cqm $$3, dnb $$4) {
+      return a($$1, $$2, $$0, $$3);
+   }
 
-               for (int $$8 = 0; $$8 < $$5 / 16; $$8++) {
-                  $$6 = $$6.b($$4.a(3) - 1, ($$4.a(3) - 1) * $$4.a(3) / 2, $$4.a(3) - 1);
-                  if ($$1.a_($$6).r($$1, $$6)) {
-                     continue label78;
-                  }
+   @Nullable
+   protected dnb c(csu $$0) {
+      dnb $$1 = this.d().a($$0);
+      return $$1 != null && this.b($$0, $$1) ? $$1 : null;
+   }
+
+   private dnb a(ib $$0, cxb $$1, cqm $$2, dnb $$3) {
+      dnb $$4 = $$3;
+      ta $$5 = $$2.w();
+      if ($$5 != null) {
+         ta $$6 = $$5.p("BlockStateTag");
+         dnc<dac, dnb> $$7 = $$3.b().n();
+
+         for (String $$8 : $$6.e()) {
+            doe<?> $$9 = $$7.a($$8);
+            if ($$9 != null) {
+               String $$10 = $$6.c($$8).s_();
+               $$4 = a($$4, $$9, $$10);
+            }
+         }
+      }
+
+      if ($$4 != $$3) {
+         $$1.a($$0, $$4, 2);
+      }
+
+      return $$4;
+   }
+
+   private static <T extends Comparable<T>> dnb a(dnb $$0, doe<T> $$1, String $$2) {
+      return $$1.b($$2).map($$2x -> $$0.a($$1, $$2x)).orElse($$0);
+   }
+
+   protected boolean b(csu $$0, dnb $$1) {
+      ciu $$2 = $$0.o();
+      epy $$3 = $$2 == null ? epy.a() : epy.a($$2);
+      return (!this.c() || $$1.a((cxe)$$0.q(), $$0.a())) && $$0.q().a($$1, $$0.a(), $$3);
+   }
+
+   protected boolean c() {
+      return true;
+   }
+
+   protected boolean a(csu $$0, dnb $$1) {
+      return $$0.q().a($$0.a(), $$1, 11);
+   }
+
+   public static boolean a(cxb $$0, @Nullable ciu $$1, ib $$2, cqm $$3) {
+      MinecraftServer $$4 = $$0.o();
+      if ($$4 == null) {
+         return false;
+      } else {
+         ta $$5 = a($$3);
+         if ($$5 != null) {
+            dki $$6 = $$0.c_($$2);
+            if ($$6 != null) {
+               if (!$$0.B && $$6.q() && ($$1 == null || !$$1.gw())) {
+                  return false;
                }
 
-               il<cxy> $$9 = $$1.t($$6);
-               if ($$9.a(aum.ac)) {
-                  if ($$5 == 0 && $$3 != null && $$3.o().d()) {
-                     $$7 = ki.e.a(aun.ar, $$1.z).map($$0x -> ((daa)$$0x.a()).o()).orElse($$7);
-                     if ($$7.b(czl.c)) {
-                        $$7 = $$7.a(czl.c, $$3);
-                     }
-                  } else if ($$4.a(4) == 0) {
-                     $$7 = ki.e.a(aun.ap, $$1.z).map($$0x -> ((daa)$$0x.a()).o()).orElse($$7);
-                  }
-               }
-
-               if ($$7.a(aun.ar, $$0x -> $$0x.b(czl.c))) {
-                  for (int $$10 = 0; !$$7.a((cxc)$$1, $$6) && $$10 < 4; $$10++) {
-                     $$7 = $$7.a(czl.c, ih.c.a.a($$4));
-                  }
-               }
-
-               if ($$7.a((cxc)$$1, $$6)) {
-                  dmz $$11 = $$1.a_($$6);
-                  if ($$11.a(dac.G) && $$1.b_($$6).e() == 8) {
-                     $$1.a($$6, $$7, 3);
-                  } else if ($$11.a(dac.bw) && $$4.a(10) == 0) {
-                     ((dad)dac.bw).a((apf)$$1, $$4, $$6, $$11);
-                  }
+               ta $$7 = $$6.d($$0.H_());
+               ta $$8 = $$7.h();
+               $$7.a($$5);
+               if (!$$7.equals($$8)) {
+                  $$6.a($$7, $$0.H_());
+                  $$6.e();
+                  return true;
                }
             }
-
-            $$0.h(1);
-            return true;
          }
-      } else {
+
          return false;
       }
    }
 
-   public static void a(cxa $$0, ib $$1, int $$2) {
-      dmz $$3 = $$0.a_($$1);
-      if ($$3.b() instanceof dad $$4) {
-         ib $$5 = $$4.a($$1);
-         switch ($$4.at_()) {
-            case a:
-               awz.a($$0, $$5, $$2 * 3, 3.0, 1.0, false, kc.N);
-               break;
-            case b:
-               awz.a($$0, $$5, $$2, kc.N);
+   @Override
+   public String a() {
+      return this.d().g();
+   }
+
+   @Override
+   public void a(cqm $$0, @Nullable cxb $$1, List<vu> $$2, csd $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.d().a($$0, $$1, $$2, $$3, $$1 != null ? $$1.H_() : null);
+   }
+
+   public dac d() {
+      return this.c;
+   }
+
+   public void a(Map<dac, cqh> $$0, cqh $$1) {
+      $$0.put(this.d(), $$1);
+   }
+
+   @Override
+   public boolean ap_() {
+      return !(this.c instanceof dha);
+   }
+
+   @Override
+   public void a(cfe $$0) {
+      if (this.c instanceof dha) {
+         cqm $$1 = $$0.p();
+         ta $$2 = a($$1);
+         if ($$2 != null && $$2.b("Items", 9)) {
+            tg $$3 = $$2.c("Items", 10);
+            cqo.a($$0, $$3.stream().map(ta.class::cast).map(cqm::a));
          }
-      } else if ($$3.a(dac.G)) {
-         awz.a($$0, $$1, $$2 * 3, 3.0, 1.0, false, kc.N);
       }
+   }
+
+   @Nullable
+   public static ta a(cqm $$0) {
+      return $$0.c("BlockEntityTag");
+   }
+
+   public static void a(cqm $$0, dkk<?> $$1, ta $$2) {
+      if ($$2.g()) {
+         $$0.d("BlockEntityTag");
+      } else {
+         dki.a($$2, $$1);
+         $$0.a("BlockEntityTag", $$2);
+      }
+   }
+
+   @Override
+   public clh m() {
+      return this.d().m();
    }
 }

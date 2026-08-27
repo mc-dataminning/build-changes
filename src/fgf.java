@@ -1,79 +1,147 @@
+import com.google.common.collect.Lists;
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class fgf extends fhf {
-   private static final vu a = vu.c("addServer.enterIp");
-   private fbg b;
-   private final fsm c;
-   private fbp k;
-   private final BooleanConsumer l;
-   private final fhf m;
+public class fgf extends fhh {
+   private static final ajh a = new ajh("icon/draft_report");
+   private int b;
+   private final vu c;
+   private final boolean k;
+   private vu l;
+   private final List<fbi> m = Lists.newArrayList();
+   @Nullable
+   private fbi n;
 
-   public fgf(fhf $$0, BooleanConsumer $$1, fsm $$2) {
-      super(vu.c("selectServer.direct"));
-      this.m = $$0;
-      this.c = $$2;
-      this.l = $$1;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (!this.b.j || this.aI_() != this.k || $$0 != 257 && $$0 != 335) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         this.o();
-         return true;
-      }
+   public fgf(@Nullable vu $$0, boolean $$1) {
+      super(vu.c($$1 ? "deathScreen.title.hardcore" : "deathScreen.title"));
+      this.c = $$0;
+      this.k = $$1;
    }
 
    @Override
    protected void aO_() {
-      this.k = new fbp(this.i, this.g / 2 - 100, 116, 200, 20, vu.c("addServer.enterIp"));
-      this.k.f(128);
-      this.k.a(this.f.m.aa);
-      this.k.b($$0 -> this.E());
-      this.d(this.k);
-      this.b = this.c(fbg.a(vu.c("selectServer.select"), $$0 -> this.o()).a(this.g / 2 - 100, this.h / 4 + 96 + 12, 200, 20).a());
-      this.c(fbg.a(vt.e, $$0 -> this.l.accept(false)).a(this.g / 2 - 100, this.h / 4 + 120 + 12, 200, 20).a());
-      this.E();
+      this.b = 0;
+      this.m.clear();
+      vu $$0 = this.k ? vu.c("deathScreen.spectate") : vu.c("deathScreen.respawn");
+      this.m.add(this.c(fbi.a($$0, $$0x -> {
+         this.f.s.fX();
+         $$0x.j = false;
+      }).a(this.g / 2 - 100, this.h / 4 + 72, 200, 20).a()));
+      this.n = this.c(
+         fbi.a(vu.c("deathScreen.titleScreen"), $$0x -> this.f.ba().a(this.f, this, this::o, true)).a(this.g / 2 - 100, this.h / 4 + 96, 200, 20).a()
+      );
+      this.m.add(this.n);
+      this.c(false);
+      this.l = vu.a("deathScreen.score.value", vu.b(Integer.toString(this.f.s.fT())).a(n.o));
    }
 
    @Override
-   protected void aF_() {
-      this.b(this.k);
-   }
-
-   @Override
-   public void a(ezg $$0, int $$1, int $$2) {
-      String $$3 = this.k.a();
-      this.b($$0, $$1, $$2);
-      this.k.a($$3);
+   public boolean aM_() {
+      return false;
    }
 
    private void o() {
-      this.c.b = this.k.a();
-      this.l.accept(true);
-   }
-
-   @Override
-   public void d() {
-      this.f.a(this.m);
-   }
-
-   @Override
-   public void k() {
-      this.f.m.aa = this.k.a();
-      this.f.m.at();
+      if (this.k) {
+         this.E();
+      } else {
+         ffz $$0 = new fgf.a($$0x -> {
+            if ($$0x) {
+               this.E();
+            } else {
+               this.f.s.fX();
+               this.f.a(null);
+            }
+         }, vu.c("deathScreen.quit.confirm"), vt.a, vu.c("deathScreen.titleScreen"), vu.c("deathScreen.respawn"));
+         this.f.a($$0);
+         $$0.b(20);
+      }
    }
 
    private void E() {
-      this.b.j = ftp.b(this.k.a());
+      if (this.f.r != null) {
+         this.f.r.W();
+      }
+
+      this.f.b(new fgn(vu.c("menu.savingLevel")));
+      this.f.a(new fhm());
    }
 
    @Override
-   public void a(fat $$0, int $$1, int $$2, float $$3) {
+   public void a(fav $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
-      $$0.b(this.i, a, this.g / 2 - 100 + 1, 100, 10526880);
-      this.k.a($$0, $$1, $$2, $$3);
+      $$0.c().a();
+      $$0.c().b(2.0F, 2.0F, 2.0F);
+      $$0.a(this.i, this.e, this.g / 2 / 2, 30, 16777215);
+      $$0.c().b();
+      if (this.c != null) {
+         $$0.a(this.i, this.c, this.g / 2, 85, 16777215);
+      }
+
+      $$0.a(this.i, this.l, this.g / 2, 100, 16777215);
+      if (this.c != null && $$2 > 85 && $$2 < 85 + 9) {
+         wr $$4 = this.a($$1);
+         $$0.a(this.i, $$4, $$1, $$2);
+      }
+
+      if (this.n != null && this.f.ba().c()) {
+         $$0.a(a, this.n.B() + this.n.w() - 17, this.n.C() + 3, 15, 15);
+      }
+   }
+
+   @Override
+   public void b(fav $$0, int $$1, int $$2, float $$3) {
+      $$0.b(0, 0, this.g, this.h, 1615855616, -1602211792);
+   }
+
+   @Nullable
+   private wr a(int $$0) {
+      if (this.c == null) {
+         return null;
+      } else {
+         int $$1 = this.f.h.a(this.c);
+         int $$2 = this.g / 2 - $$1 / 2;
+         int $$3 = this.g / 2 + $$1 / 2;
+         return $$0 >= $$2 && $$0 <= $$3 ? this.f.h.b().a(this.c, $$0 - $$2) : null;
+      }
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.c != null && $$1 > 85.0 && $$1 < (double)(85 + 9)) {
+         wr $$3 = this.a((int)$$0);
+         if ($$3 != null && $$3.h() != null && $$3.h().a() == vs.a.a) {
+            this.a($$3);
+            return false;
+         }
+      }
+
+      return super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean m() {
+      return false;
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      this.b++;
+      if (this.b == 20) {
+         this.c(true);
+      }
+   }
+
+   private void c(boolean $$0) {
+      for (fbi $$1 : this.m) {
+         $$1.j = $$0;
+      }
+   }
+
+   public static class a extends ffz {
+      public a(BooleanConsumer $$0, vu $$1, vu $$2, vu $$3, vu $$4) {
+         super($$0, $$1, $$2, $$3, $$4);
+      }
    }
 }

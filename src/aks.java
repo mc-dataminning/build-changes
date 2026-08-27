@@ -16,7 +16,7 @@ public class aks {
    private static final String d = "0.0.0.0";
    private static final int e = 10000;
    private static final int f = 100;
-   public static BiMap<String, ajg<cwz>> a = ImmutableBiMap.of("o", cwz.h, "n", cwz.i, "e", cwz.j);
+   public static BiMap<String, ajg<cxb>> a = ImmutableBiMap.of("o", cxb.h, "n", cxb.i, "e", cxb.j);
    @Nullable
    private static akk g;
    @Nullable

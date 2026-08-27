@@ -24,13 +24,13 @@ public class aqv implements AutoCloseable {
    private static final Logger a = LogUtils.getLogger();
    private static final int b = 20;
    private final Path c;
-   private final bjd<aqv.e> d;
-   private final blv<Runnable> e = blv.a(ac.h(), "download-queue");
+   private final bje<aqv.e> d;
+   private final blw<Runnable> e = blw.a(ac.h(), "download-queue");
 
    public aqv(Path $$0) throws IOException {
       this.c = $$0;
       v.c($$0);
-      this.d = bjd.a(aqv.e.a, $$0.resolve("log.json"));
+      this.d = bje.a(aqv.e.a, $$0.resolve("log.json"));
       aqu.a($$0, 20);
    }
 

@@ -1,30 +1,33 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class djn extends ddp {
-   public static final MapCodec<djn> c = b(djn::new);
-   protected static final eqk g = daa.a(4.0, 9.0, 4.0, 12.0, 16.0, 12.0);
+public class djn extends dio implements djg {
+   public static final MapCodec<djn> m = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dnq.a.fieldOf("block_set_type").forGetter(dio::i), djg.a.e.fieldOf("weathering_state").forGetter(djn::s), u()).apply($$0, djn::new)
+   );
+   private final djg.a n;
 
    @Override
    public MapCodec<djn> a() {
-      return c;
+      return m;
    }
 
-   public djn(dmy.d $$0) {
-      super($$0, ih.a, g, false, 0.1);
-   }
-
-   @Override
-   protected int a(axd $$0) {
-      return dff.a($$0);
+   protected djn(dnq $$0, djg.a $$1, dna.d $$2) {
+      super($$0, $$2);
+      this.n = $$1;
    }
 
    @Override
-   protected daa b() {
-      return dac.oA;
+   protected void b(dnb $$0, apf $$1, ib $$2, axd $$3) {
+      this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected boolean g(dmz $$0) {
-      return dff.a($$0);
+   protected boolean e_(dnb $$0) {
+      return djg.c($$0.b()).isPresent();
+   }
+
+   public djg.a s() {
+      return this.n;
    }
 }

@@ -9,8 +9,8 @@ public class cp extends cx<cp.a> {
       return cp.a.a;
    }
 
-   public void a(apg $$0, cqk $$1, @Nullable bow $$2) {
-      eku $$3 = br.b($$0, $$2);
+   public void a(apg $$0, cqm $$1, @Nullable box $$2) {
+      ekw $$3 = br.b($$0, $$2);
       this.a($$0, $$3x -> $$3x.a($$0, $$1, $$3));
    }
 
@@ -28,7 +28,7 @@ public class cp extends cx<cp.a> {
          return am.S.a(new cp.a($$0, $$1, $$2));
       }
 
-      public boolean a(apg $$0, cqk $$1, eku $$2) {
+      public boolean a(apg $$0, cqm $$1, ekw $$2) {
          return this.c.isPresent() && !this.c.get().a($$1) ? false : !this.d.isPresent() || this.d.get().a($$2);
       }
 

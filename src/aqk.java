@@ -319,7 +319,7 @@ public class aqk implements AutoCloseable {
 
       d(GameProfile $$0) {
          this.c = $$0;
-         blv<Runnable> $$1 = blv.a(aqk.this.m, "chat stream for " + $$0.getName());
+         blw<Runnable> $$1 = blw.a(aqk.this.m, "chat stream for " + $$0.getName());
          this.d = $$1::a;
       }
 

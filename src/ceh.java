@@ -1,26 +1,69 @@
 import javax.annotation.Nullable;
 
-public interface ceh {
-   boolean a();
+public class ceh extends cea {
+   @Nullable
+   private ept b;
 
-   void b();
+   public ceh(cdy $$0) {
+      super($$0);
+   }
 
-   void c();
+   @Override
+   public void b() {
+      ept $$0 = this.a.F(1.0F).d();
+      $$0.b((float) (-Math.PI / 4));
+      double $$1 = this.a.e.dr();
+      double $$2 = this.a.e.e(0.5);
+      double $$3 = this.a.e.dx();
 
-   void a(cdw var1, ib var2, bnv var3, @Nullable cis var4);
+      for (int $$4 = 0; $$4 < 8; $$4++) {
+         axd $$5 = this.a.ei();
+         double $$6 = $$1 + $$5.k() / 2.0;
+         double $$7 = $$2 + $$5.k() / 2.0;
+         double $$8 = $$3 + $$5.k() / 2.0;
+         ept $$9 = this.a.dp();
+         this.a.dM().a(kc.i, $$6, $$7, $$8, -$$0.c * 0.08F + $$9.c, -$$0.d * 0.3F + $$9.d, -$$0.e * 0.08F + $$9.e);
+         $$0.b((float) (Math.PI / 16));
+      }
+   }
 
-   void d();
+   @Override
+   public void c() {
+      if (this.b == null) {
+         this.b = ept.c(this.a.dM().a(dso.a.f, dvr.a(this.a.r())));
+      }
 
-   void e();
+      if (this.b.c(this.a.dr(), this.a.dt(), this.a.dx()) < 1.0) {
+         this.a.gk().b(ceo.f).j();
+         this.a.gk().a(ceo.g);
+      }
+   }
 
-   float f();
+   @Override
+   public float f() {
+      return 1.5F;
+   }
 
-   float h();
+   @Override
+   public float h() {
+      float $$0 = (float)this.a.dp().h() + 1.0F;
+      float $$1 = Math.min($$0, 40.0F);
+      return $$1 / $$0;
+   }
 
-   cen<? extends ceh> i();
+   @Override
+   public void d() {
+      this.b = null;
+   }
 
    @Nullable
-   epr g();
+   @Override
+   public ept g() {
+      return this.b;
+   }
 
-   float a(bnv var1, float var2);
+   @Override
+   public ceo<ceh> i() {
+      return ceo.d;
+   }
 }

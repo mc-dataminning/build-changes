@@ -1,23 +1,50 @@
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
+@FunctionalInterface
+public interface fzt<T extends dki> {
+   fzs<T> create(fzt.a var1);
 
-public class fzt<S extends dkg> implements dch.b<S, Int2IntFunction> {
-   public Int2IntFunction a(S $$0, S $$1) {
-      return $$2 -> {
-         int $$3 = fxo.a($$0.i(), $$0.aC_());
-         int $$4 = fxo.a($$1.i(), $$1.aC_());
-         int $$5 = fxp.a($$3);
-         int $$6 = fxp.a($$4);
-         int $$7 = fxp.b($$3);
-         int $$8 = fxp.b($$4);
-         return fxp.a(Math.max($$5, $$6), Math.max($$7, $$8));
-      };
-   }
+   public static class a {
+      private final fzr a;
+      private final fym b;
+      private final gdz c;
+      private final gcz d;
+      private final frb e;
+      private final fat f;
 
-   public Int2IntFunction a(S $$0) {
-      return $$0x -> $$0x;
-   }
+      public a(fzr $$0, fym $$1, gdz $$2, gcz $$3, frb $$4, fat $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+      }
 
-   public Int2IntFunction a() {
-      return $$0 -> $$0;
+      public fzr a() {
+         return this.a;
+      }
+
+      public fym b() {
+         return this.b;
+      }
+
+      public gcz c() {
+         return this.d;
+      }
+
+      public gdz d() {
+         return this.c;
+      }
+
+      public frb e() {
+         return this.e;
+      }
+
+      public frf a(frd $$0) {
+         return this.e.a($$0);
+      }
+
+      public fat f() {
+         return this.f;
+      }
    }
 }

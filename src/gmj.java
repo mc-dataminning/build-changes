@@ -1,99 +1,44 @@
-import javax.annotation.Nullable;
+public class gmj extends gly {
+   private static final float n = 0.0F;
+   private static final float o = 0.75F;
+   private final ciu p;
+   private final ckp q;
+   private final boolean r;
 
-public class gmj implements gns<gmj> {
-   public static final aja a = new aja("sounds", ".ogg");
-   private final ajh b;
-   private final bmk c;
-   private final bmk d;
-   private final int e;
-   private final gmj.a f;
-   private final boolean g;
-   private final boolean h;
-   private final int i;
-
-   public gmj(String $$0, bmk $$1, bmk $$2, int $$3, gmj.a $$4, boolean $$5, boolean $$6, int $$7) {
-      this.b = new ajh($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-   }
-
-   public ajh a() {
-      return this.b;
-   }
-
-   public ajh b() {
-      return a.a(this.b);
-   }
-
-   public bmk c() {
-      return this.c;
-   }
-
-   public bmk d() {
-      return this.d;
+   public gmj(ciu $$0, ckp $$1, boolean $$2) {
+      super($$2 ? aty.or : aty.os, atz.g, gmp.t());
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      this.k = gmp.a.a;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
    }
 
    @Override
-   public int e() {
-      return this.e;
-   }
-
-   public gmj a(axd $$0) {
-      return this;
+   public boolean s() {
+      return !this.q.aU();
    }
 
    @Override
-   public void a(gnn $$0) {
-      if (this.h) {
-         $$0.a(this);
-      }
-   }
-
-   public gmj.a f() {
-      return this.f;
-   }
-
-   public boolean g() {
-      return this.g;
-   }
-
-   public boolean h() {
-      return this.h;
-   }
-
-   public int i() {
-      return this.i;
+   public boolean r() {
+      return true;
    }
 
    @Override
-   public String toString() {
-      return "Sound[" + this.b + "]";
-   }
-
-   public static enum a {
-      a("file"),
-      b("event");
-
-      private final String c;
-
-      private a(String $$0) {
-         this.c = $$0;
-      }
-
-      @Nullable
-      public static gmj.a a(String $$0) {
-         for (gmj.a $$1 : values()) {
-            if ($$1.c.equals($$0)) {
-               return $$1;
-            }
+   public void q() {
+      if (this.q.dH() || !this.p.bO() || this.p.cZ() != this.q) {
+         this.n();
+      } else if (this.r != this.p.bh()) {
+         this.d = 0.0F;
+      } else {
+         float $$0 = (float)this.q.dp().h();
+         if ($$0 >= 0.01F) {
+            this.d = aww.b(0.0F, 0.75F, $$0);
+         } else {
+            this.d = 0.0F;
          }
-
-         return null;
       }
    }
 }

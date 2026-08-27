@@ -6,9 +6,9 @@ import java.util.Locale;
 
 public class kg implements ka {
    public static final Codec<kg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(drr.c.fieldOf("destination").forGetter(kg::b), Codec.INT.fieldOf("arrival_in_ticks").forGetter(kg::c)).apply($$0, kg::new)
+      $$0 -> $$0.group(drt.c.fieldOf("destination").forGetter(kg::b), Codec.INT.fieldOf("arrival_in_ticks").forGetter(kg::c)).apply($$0, kg::new)
    );
-   public static final xs<vf, kg> b = xs.a(drr.d, kg::b, xq.d, kg::c, kg::new);
+   public static final xs<vf, kg> b = xs.a(drt.d, kg::b, xq.d, kg::c, kg::new);
    public static final ka.a<kg> c = new ka.a<kg>() {
       public kg a(kb<kg> $$0, StringReader $$1, in.a $$2) throws CommandSyntaxException {
          $$1.expect(' ');
@@ -20,20 +20,20 @@ public class kg implements ka {
          $$1.expect(' ');
          int $$6 = $$1.readInt();
          ib $$7 = ib.a((double)$$3, (double)$$4, (double)$$5);
-         return new kg(new drj($$7), $$6);
+         return new kg(new drl($$7), $$6);
       }
    };
-   private final drr d;
+   private final drt d;
    private final int e;
 
-   public kg(drr $$0, int $$1) {
+   public kg(drt $$0, int $$1) {
       this.d = $$0;
       this.e = $$1;
    }
 
    @Override
    public String a(in.a $$0) {
-      epr $$1 = this.d.a(null).get();
+      ept $$1 = this.d.a(null).get();
       double $$2 = $$1.a();
       double $$3 = $$1.b();
       double $$4 = $$1.c();
@@ -45,7 +45,7 @@ public class kg implements ka {
       return kc.S;
    }
 
-   public drr b() {
+   public drt b() {
       return this.d;
    }
 

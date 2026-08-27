@@ -1,29 +1,33 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public class eyw {
-   private final List<vz> a = Lists.newArrayList();
+public enum eyw implements awy, axq {
+   a(0, "false", "options.off"),
+   b(1, "fast", "options.clouds.fast"),
+   c(2, "true", "options.clouds.fancy");
 
-   public void a(vz $$0) {
-      this.a.add($$0);
+   public static final Codec<eyw> d = axq.a(eyw::values);
+   private final int e;
+   private final String f;
+   private final String g;
+
+   private eyw(int $$0, String $$1, String $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   @Nullable
-   public vz a() {
-      if (this.a.isEmpty()) {
-         return null;
-      } else {
-         return this.a.size() == 1 ? this.a.get(0) : vz.a(this.a);
-      }
+   @Override
+   public String c() {
+      return this.f;
    }
 
-   public vz b() {
-      vz $$0 = this.a();
-      return $$0 != null ? $$0 : vz.b;
+   @Override
+   public int a() {
+      return this.e;
    }
 
-   public void c() {
-      this.a.clear();
+   @Override
+   public String b() {
+      return this.g;
    }
 }

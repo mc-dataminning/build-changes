@@ -1,59 +1,39 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
-import java.util.Collection;
+import com.google.common.collect.Maps;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 public class ckl {
-   private final List<cki> a = Lists.newArrayList();
-   private int b;
+   public static final int a = 2000;
+   public static final int b = 7000;
+   public static final ckl c = a("empty").a(0, ckj.b).a();
+   public static final ckl d = a("simple").a(5000, ckj.c).a(11000, ckj.e).a();
+   public static final ckl e = a("villager_baby").a(10, ckj.b).a(3000, ckj.d).a(6000, ckj.b).a(10000, ckj.d).a(12000, ckj.e).a();
+   public static final ckl f = a("villager_default").a(10, ckj.b).a(2000, ckj.c).a(9000, ckj.f).a(11000, ckj.b).a(12000, ckj.e).a();
+   private final Map<ckj, ckn> g = Maps.newHashMap();
 
-   public ImmutableList<cki> a() {
-      return ImmutableList.copyOf(this.a);
+   protected static ckm a(String $$0) {
+      ckl $$1 = iy.a(ki.D, $$0, new ckl());
+      return new ckm($$1);
    }
 
-   public ckl a(int $$0, float $$1) {
-      this.a.add(new cki($$0, $$1));
-      this.b();
-      return this;
-   }
-
-   public ckl a(Collection<cki> $$0) {
-      this.a.addAll($$0);
-      this.b();
-      return this;
-   }
-
-   private void b() {
-      Int2ObjectSortedMap<cki> $$0 = new Int2ObjectAVLTreeMap();
-      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
-      this.a.clear();
-      this.a.addAll($$0.values());
-      this.b = 0;
-   }
-
-   public float a(int $$0) {
-      if (this.a.size() <= 0) {
-         return 0.0F;
-      } else {
-         cki $$1 = this.a.get(this.b);
-         cki $$2 = this.a.get(this.a.size() - 1);
-         boolean $$3 = $$0 < $$1.a();
-         int $$4 = $$3 ? 0 : this.b;
-         float $$5 = $$3 ? $$2.b() : $$1.b();
-
-         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
-            cki $$7 = this.a.get($$6);
-            if ($$7.a() > $$0) {
-               break;
-            }
-
-            this.b = $$6;
-            $$5 = $$7.b();
-         }
-
-         return $$5;
+   protected void a(ckj $$0) {
+      if (!this.g.containsKey($$0)) {
+         this.g.put($$0, new ckn());
       }
+   }
+
+   protected ckn b(ckj $$0) {
+      return this.g.get($$0);
+   }
+
+   protected List<ckn> c(ckj $$0) {
+      return this.g.entrySet().stream().filter($$1 -> $$1.getKey() != $$0).map(Entry::getValue).collect(Collectors.toList());
+   }
+
+   public ckj a(int $$0) {
+      return this.g.entrySet().stream().max(Comparator.comparingDouble($$1 -> (double)$$1.getValue().a($$0))).map(Entry::getKey).orElse(ckj.b);
    }
 }

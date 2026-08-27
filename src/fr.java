@@ -15,27 +15,27 @@ public class fr implements fq {
    }
 
    @Override
-   public epr a(du $$0) {
-      epq $$1 = $$0.k();
-      epr $$2 = $$0.m().a($$0);
+   public ept a(du $$0) {
+      eps $$1 = $$0.k();
+      ept $$2 = $$0.m().a($$0);
       float $$3 = aww.b(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
       float $$4 = aww.a(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
       float $$5 = aww.b(-$$1.i * (float) (Math.PI / 180.0));
       float $$6 = aww.a(-$$1.i * (float) (Math.PI / 180.0));
       float $$7 = aww.b((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
       float $$8 = aww.a((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
-      epr $$9 = new epr((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
-      epr $$10 = new epr((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
-      epr $$11 = $$9.c($$10).a(-1.0);
+      ept $$9 = new ept((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
+      ept $$10 = new ept((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
+      ept $$11 = $$9.c($$10).a(-1.0);
       double $$12 = $$9.c * this.d + $$10.c * this.c + $$11.c * this.b;
       double $$13 = $$9.d * this.d + $$10.d * this.c + $$11.d * this.b;
       double $$14 = $$9.e * this.d + $$10.e * this.c + $$11.e * this.b;
-      return new epr($$2.c + $$12, $$2.d + $$13, $$2.e + $$14);
+      return new ept($$2.c + $$12, $$2.d + $$13, $$2.e + $$14);
    }
 
    @Override
-   public epq b(du $$0) {
-      return epq.a;
+   public eps b(du $$0) {
+      return eps.a;
    }
 
    @Override

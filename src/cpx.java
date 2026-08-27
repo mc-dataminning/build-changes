@@ -1,14 +1,15 @@
-public class cpx extends crk {
-   public cpx(daa $$0, daa $$1, cqf.a $$2) {
-      super($$2, $$0, $$1, ih.b);
+public class cpx extends cqh implements crl {
+   public cpx(cqh.a $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean a(cxc $$0, dmz $$1, ib $$2) {
-      if ($$1.b() instanceof diy $$3 && !$$3.b($$1, $$0, $$2)) {
+   public boolean a(cxb $$0, dlr $$1, boolean $$2, ciu $$3) {
+      if ($$1.a($$0x -> $$0x.a(true), $$2)) {
+         $$0.a(null, $$1.aC_(), aty.kt, atz.e, 1.0F, 1.0F);
+         return true;
+      } else {
          return false;
       }
-
-      return super.a($$0, $$1, $$2);
    }
 }

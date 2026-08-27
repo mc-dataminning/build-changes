@@ -1,4 +1,3 @@
-import javax.annotation.Nullable;
-
-public record bnq(bnv a, float b, @Nullable boa c, float d) {
+public interface bnq {
+   bnp a(dnb var1, cxc var2, ib var3);
 }

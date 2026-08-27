@@ -1,9 +1,31 @@
 public class fgk extends fhh {
-   private static ezj<?>[] a(ezk $$0) {
-      return new ezj[]{$$0.N(), $$0.O()};
+   private final vu a;
+
+   public fgk(vu $$0, vu $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
-   public fgk(fhf $$0, ezk $$1) {
-      super($$0, $$1, vu.c("options.font.title"), a($$1));
+   @Override
+   protected void aO_() {
+      super.aO_();
+      this.c(fbi.a(vt.e, $$0 -> this.f.a(null)).a(this.g / 2 - 100, 140, 200, 20).a());
+   }
+
+   @Override
+   public void a(fav $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 90, 16777215);
+      $$0.a(this.i, this.a, this.g / 2, 110, 16777215);
+   }
+
+   @Override
+   public void b(fav $$0, int $$1, int $$2, float $$3) {
+      $$0.b(0, 0, this.g, this.h, -12574688, -11530224);
+   }
+
+   @Override
+   public boolean aM_() {
+      return false;
    }
 }

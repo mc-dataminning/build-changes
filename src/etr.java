@@ -1,8 +1,11 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface etr {
+   int a();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@ers
-@err
-interface etr {
+   void b();
+
+   etp c();
+
+   etp d();
+
+   void e();
 }

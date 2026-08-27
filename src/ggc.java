@@ -1,11 +1,16 @@
-public class ggc extends gee<cgq, fom<cgq>> {
-   private static final ajh a = new ajh("textures/entity/hoglin/zoglin.png");
+public class ggc extends gfc {
+   private static final ajh a = new ajh("textures/entity/skeleton/wither_skeleton.png");
 
-   public ggc(gcy.a $$0) {
-      super($$0, new fom<>($$0.a(frc.ca)), 0.7F);
+   public ggc(gdb.a $$0) {
+      super($$0, fre.bX, fre.bY, fre.bZ);
    }
 
-   public ajh a(cgq $$0) {
+   @Override
+   public ajh a(cfi $$0) {
       return a;
+   }
+
+   protected void a(cfi $$0, eub $$1, float $$2) {
+      $$1.b(1.2F, 1.2F, 1.2F);
    }
 }

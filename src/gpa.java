@@ -1,63 +1,37 @@
-import java.util.Collection;
+public class gpa extends gpe {
+   private final vu a;
+   private fcb b = fcb.a;
+   private final fhh c;
+   private int v;
 
-public abstract class gpa<E extends fcc.a<E>> extends fcc<E> {
-   protected gpa(int $$0, int $$1, int $$2, int $$3) {
-      super(ezg.Q(), $$0, $$1, $$2, $$3);
-   }
-
-   public void p(int $$0) {
-      if ($$0 == -1) {
-         this.a(null);
-      } else if (super.n() != 0) {
-         this.a(this.d($$0));
-      }
+   public gpa(fhh $$0, vu $$1, vu $$2) {
+      super($$1);
+      this.c = $$0;
+      this.a = $$2;
    }
 
    @Override
-   public void a(int $$0) {
-      this.p($$0);
+   public void aO_() {
+      this.f.ae().i();
+      this.b = fcb.a(this.i, this.a, this.g - 50);
+      this.v = this.b.a() * 9;
+      this.c(fbi.a(vt.k, $$0 -> this.f.a(this.c)).a(this.g / 2 - 100, this.h / 2 + this.v / 2 + 9, 200, 20).a());
    }
 
    @Override
-   public int a() {
-      return 0;
+   public vu i() {
+      return vu.i().b(this.e).f(": ").b(this.a);
    }
 
    @Override
-   public int c() {
-      return this.q() + this.b();
+   public void d() {
+      ezi.Q().a(this.c);
    }
 
    @Override
-   public int b() {
-      return (int)((double)this.g * 0.6);
-   }
-
-   @Override
-   public void a(Collection<E> $$0) {
-      super.a($$0);
-   }
-
-   @Override
-   public int n() {
-      return super.n();
-   }
-
-   @Override
-   public int g(int $$0) {
-      return super.g($$0);
-   }
-
-   @Override
-   public int q() {
-      return super.q();
-   }
-
-   public int a(E $$0) {
-      return super.b($$0);
-   }
-
-   public void H() {
-      this.m();
+   public void a(fav $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, this.h / 2 - this.v / 2 - 9 * 2, 11184810);
+      this.b.a($$0, this.g / 2, this.h / 2 - this.v / 2);
    }
 }

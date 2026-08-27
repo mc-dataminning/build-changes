@@ -1,85 +1,141 @@
 import javax.annotation.Nullable;
 
-public class cdm extends bwl {
-   private final cdl a;
+public class cdm extends cdg {
+   private final cdn bX = new cdn(this);
+   private static final int bY = 18000;
+   private static final bpa ca = bpd.aO.n().a(boz.a().a(boy.a, 0.0F, bpd.aO.l() - 0.03125F, 0.0F)).a(0.5F);
+   private boolean cb;
+   private int cc;
 
-   public cdm(cdl $$0) {
-      this.a = $$0;
+   public cdm(bpd<? extends cdm> $$0, cxb $$1) {
+      super($$0, $$1);
+   }
+
+   public static bqv.a r() {
+      return gM().a(bqw.q, 15.0).a(bqw.r, 0.2F);
+   }
+
+   public static boolean c(bpd<? extends cbe> $$0, cxc $$1, bpt $$2, ib $$3, axd $$4) {
+      return !bpt.a($$2) ? cbe.b($$0, $$1, $$2, $$3, $$4) : bpt.b($$2) || a($$1, $$3);
    }
 
    @Override
-   public boolean a() {
-      return this.a.dM().a(this.a.dr(), this.a.dt(), this.a.dx(), 10.0);
+   protected void a(axd $$0) {
+      this.f(bqw.m).a(a($$0::j));
    }
 
    @Override
-   public void e() {
-      apf $$0 = (apf)this.a.dM();
-      bna $$1 = $$0.d_(this.a.dm());
-      this.a.w(false);
-      this.a.x(true);
-      this.a.c_(0);
-      bpn $$2 = bpc.al.a((cwz)$$0);
-      if ($$2 != null) {
-         $$2.e(this.a.dr(), this.a.dt(), this.a.dx());
-         $$2.a(true);
-         $$0.b($$2);
-         cgg $$3 = this.a($$1, this.a);
-         if ($$3 != null) {
-            $$3.n(this.a);
-            $$0.a_($$3);
+   protected void gD() {
+   }
 
-            for (int $$4 = 0; $$4 < 3; $$4++) {
-               cdf $$5 = this.a($$1);
-               if ($$5 != null) {
-                  cgg $$6 = this.a($$1, $$5);
-                  if ($$6 != null) {
-                     $$6.n($$5);
-                     $$5.j(this.a.ei().a(0.0, 1.1485), 0.0, this.a.ei().a(0.0, 1.1485));
-                     $$0.a_($$5);
-                  }
-               }
-            }
+   @Override
+   protected atx v() {
+      return this.a(aus.a) ? aty.wJ : aty.wF;
+   }
+
+   @Override
+   protected atx n_() {
+      return aty.wG;
+   }
+
+   @Override
+   protected atx d(bnw $$0) {
+      return aty.wH;
+   }
+
+   @Override
+   protected atx aN() {
+      if (this.aC()) {
+         if (!this.bP()) {
+            return aty.wM;
+         }
+
+         this.cx++;
+         if (this.cx > 5 && this.cx % 3 == 0) {
+            return aty.wK;
+         }
+
+         if (this.cx <= 5) {
+            return aty.wM;
+         }
+      }
+
+      return aty.wI;
+   }
+
+   @Override
+   protected void e(float $$0) {
+      if (this.aC()) {
+         super.e(0.3F);
+      } else {
+         super.e(Math.min(0.1F, $$0 * 25.0F));
+      }
+   }
+
+   @Override
+   protected void gT() {
+      if (this.bc()) {
+         this.a(aty.wL, 0.4F, 1.0F);
+      } else {
+         super.gT();
+      }
+   }
+
+   @Override
+   public bpa e(bqa $$0) {
+      return this.o_() ? ca : super.e($$0);
+   }
+
+   @Override
+   public void m_() {
+      super.m_();
+      if (this.s() && this.cc++ >= 18000) {
+         this.am();
+      }
+   }
+
+   @Override
+   public void b(ta $$0) {
+      super.b($$0);
+      $$0.a("SkeletonTrap", this.s());
+      $$0.a("SkeletonTrapTime", this.cc);
+   }
+
+   @Override
+   public void a(ta $$0) {
+      super.a($$0);
+      this.w($$0.q("SkeletonTrap"));
+      this.cc = $$0.h("SkeletonTrapTime");
+   }
+
+   @Override
+   protected float fi() {
+      return 0.96F;
+   }
+
+   public boolean s() {
+      return this.cb;
+   }
+
+   public void w(boolean $$0) {
+      if ($$0 != this.cb) {
+         this.cb = $$0;
+         if ($$0) {
+            this.bR.a(1, this.bX);
+         } else {
+            this.bR.a(this.bX);
          }
       }
    }
 
    @Nullable
-   private cdf a(bna $$0) {
-      cdl $$1 = bpc.aN.a(this.a.dM());
-      if ($$1 != null) {
-         $$1.a((apf)this.a.dM(), $$0, bps.k, null);
-         $$1.a_(this.a.dr(), this.a.dt(), this.a.dx());
-         $$1.al = 60;
-         $$1.fS();
-         $$1.x(true);
-         $$1.c_(0);
-      }
-
-      return $$1;
+   @Override
+   public bos a(apf $$0, bos $$1) {
+      return bpd.aO.a((cxb)$$0);
    }
 
-   @Nullable
-   private cgg a(bna $$0, cdf $$1) {
-      cgg $$2 = bpc.aM.a($$1.dM());
-      if ($$2 != null) {
-         $$2.a((apf)$$1.dM(), $$0, bps.k, null);
-         $$2.a_($$1.dr(), $$1.dt(), $$1.dx());
-         $$2.al = 60;
-         $$2.fS();
-         if ($$2.d(bpd.f).b()) {
-            $$2.a(bpd.f, new cqk(cqn.pF));
-         }
-
-         $$2.a(bpd.a, cuv.a($$2.ei(), this.a($$2.eU()), (int)(5.0F + $$0.d() * (float)$$2.ei().a(18)), false));
-         $$2.a(bpd.f, cuv.a($$2.ei(), this.a($$2.d(bpd.f)), (int)(5.0F + $$0.d() * (float)$$2.ei().a(18)), false));
-      }
-
-      return $$2;
-   }
-
-   private cqk a(cqk $$0) {
-      $$0.d("Enchantments");
-      return $$0;
+   @Override
+   public bnd b(ciu $$0, bnc $$1) {
+      return !this.gC() ? bnd.d : super.b($$0, $$1);
    }
 }

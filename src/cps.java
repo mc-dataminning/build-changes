@@ -1,40 +1,55 @@
-public class cps extends cqf {
-   public cps(cqf.a $$0) {
+import java.util.List;
+import javax.annotation.Nullable;
+
+public class cps extends cqh {
+   public cps(cqh.a $$0) {
       super($$0);
    }
 
    @Override
-   public bnc a(csu $$0) {
-      cis $$1 = $$0.o();
-      cwz $$2 = $$0.q();
-      ib $$3 = $$0.a();
-      dmz $$4 = $$2.a_($$3);
-      if (!dao.h($$4) && !dap.g($$4) && !daq.g($$4)) {
-         ib $$5 = $$3.a($$0.k());
-         if (czn.a($$2, $$5, $$0.g())) {
-            $$2.a($$1, $$5, aty.iO, atz.e, 1.0F, $$2.E_().i() * 0.4F + 0.8F);
-            dmz $$6 = czn.a($$2, $$5);
-            $$2.a($$5, $$6, 11);
-            $$2.a($$1, drn.i, $$3);
-            cqk $$7 = $$0.n();
-            if ($$1 instanceof apg) {
-               am.z.a((apg)$$1, $$5, $$7);
-               $$7.a(1, $$1, bpo.d($$0.p()));
-            }
-
-            return bnc.a($$2.x_());
-         } else {
-            return bnc.e;
-         }
-      } else {
-         $$2.a($$1, $$3, aty.iO, atz.e, 1.0F, $$2.E_().i() * 0.4F + 0.8F);
-         $$2.a($$3, $$4.a(dnp.r, Boolean.valueOf(true)), 11);
-         $$2.a($$1, drn.c, $$3);
-         if ($$1 != null) {
-            $$0.n().a(1, $$1, bpo.d($$0.p()));
-         }
-
-         return bnc.a($$2.x_());
+   public void a(cqm $$0, @Nullable cxb $$1, List<vu> $$2, csd $$3) {
+      ta $$4 = $$0.c("Explosion");
+      if ($$4 != null) {
+         a($$4, $$2);
       }
+   }
+
+   public static void a(ta $$0, List<vu> $$1) {
+      cpr.a $$2 = cpr.a.a($$0.f("Type"));
+      $$1.add(vu.c("item.minecraft.firework_star.shape." + $$2.b()).a(n.h));
+      int[] $$3 = $$0.n("Colors");
+      if ($$3.length > 0) {
+         $$1.add(a(vu.i().a(n.h), $$3));
+      }
+
+      int[] $$4 = $$0.n("FadeColors");
+      if ($$4.length > 0) {
+         $$1.add(a(vu.c("item.minecraft.firework_star.fade_to").b(vt.v).a(n.h), $$4));
+      }
+
+      if ($$0.q("Trail")) {
+         $$1.add(vu.c("item.minecraft.firework_star.trail").a(n.h));
+      }
+
+      if ($$0.q("Flicker")) {
+         $$1.add(vu.c("item.minecraft.firework_star.flicker").a(n.h));
+      }
+   }
+
+   private static vu a(wi $$0, int[] $$1) {
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         if ($$2 > 0) {
+            $$0.f(", ");
+         }
+
+         $$0.b(a($$1[$$2]));
+      }
+
+      return $$0;
+   }
+
+   private static vu a(int $$0) {
+      cpd $$1 = cpd.b($$0);
+      return $$1 == null ? vu.c("item.minecraft.firework_star.custom_color") : vu.c("item.minecraft.firework_star." + $$1.b());
    }
 }

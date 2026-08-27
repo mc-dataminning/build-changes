@@ -106,8 +106,8 @@ public class ale {
       );
    }
 
-   private static int a(du $$0, Collection<? extends bow> $$1, il<boh> $$2, @Nullable Integer $$3, int $$4, boolean $$5) throws CommandSyntaxException {
-      boh $$6 = $$2.a();
+   private static int a(du $$0, Collection<? extends box> $$1, il<boi> $$2, @Nullable Integer $$3, int $$4, boolean $$5) throws CommandSyntaxException {
+      boi $$6 = $$2.a();
       int $$7 = 0;
       int $$8;
       if ($$3 != null) {
@@ -124,10 +124,10 @@ public class ale {
          $$8 = 600;
       }
 
-      for (bow $$13 : $$1) {
-         if ($$13 instanceof bpo) {
-            boj $$14 = new boj($$2, $$8, $$4, false, $$5);
-            if (((bpo)$$13).b($$14, $$0.f())) {
+      for (box $$13 : $$1) {
+         if ($$13 instanceof bpp) {
+            bok $$14 = new bok($$2, $$8, $$4, false, $$5);
+            if (((bpp)$$13).b($$14, $$0.f())) {
                $$7++;
             }
          }
@@ -146,11 +146,11 @@ public class ale {
       }
    }
 
-   private static int a(du $$0, Collection<? extends bow> $$1) throws CommandSyntaxException {
+   private static int a(du $$0, Collection<? extends box> $$1) throws CommandSyntaxException {
       int $$2 = 0;
 
-      for (bow $$3 : $$1) {
-         if ($$3 instanceof bpo && ((bpo)$$3).et()) {
+      for (box $$3 : $$1) {
+         if ($$3 instanceof bpp && ((bpp)$$3).et()) {
             $$2++;
          }
       }
@@ -168,12 +168,12 @@ public class ale {
       }
    }
 
-   private static int a(du $$0, Collection<? extends bow> $$1, il<boh> $$2) throws CommandSyntaxException {
-      boh $$3 = $$2.a();
+   private static int a(du $$0, Collection<? extends box> $$1, il<boi> $$2) throws CommandSyntaxException {
+      boi $$3 = $$2.a();
       int $$4 = 0;
 
-      for (bow $$5 : $$1) {
-         if ($$5 instanceof bpo && ((bpo)$$5).e($$2)) {
+      for (box $$5 : $$1) {
+         if ($$5 instanceof bpp && ((bpp)$$5).e($$2)) {
             $$4++;
          }
       }

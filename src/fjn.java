@@ -1,21 +1,30 @@
-public class fjn extends fie<cng> {
-   private static final ajh x = new ajh("textures/gui/container/shulker_box.png");
+public class fjn extends fif {
+   private final cwc m;
 
-   public fjn(cng $$0, cir $$1, vu $$2) {
-      super($$0, $$1, $$2);
-      this.k++;
+   public fjn(cwc $$0) {
+      this.m = $$0;
    }
 
    @Override
-   public void a(fat $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   public cwc o() {
+      return this.m;
    }
 
    @Override
-   protected void a(fat $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.g - this.c) / 2;
-      int $$5 = (this.h - this.k) / 2;
-      $$0.a(x, $$4, $$5, 0, 0, this.c, this.k);
+   int E() {
+      return 150;
+   }
+
+   @Override
+   protected void aO_() {
+      super.aO_();
+      this.a.a(this.o().m());
+   }
+
+   @Override
+   protected void a(cwc $$0) {
+      if ($$0 instanceof ckx.a $$1) {
+         this.f.L().b(new agn($$1.h().aj(), this.a.a(), $$0.o()));
+      }
    }
 }

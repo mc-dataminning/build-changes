@@ -96,7 +96,7 @@ public class dv {
       anp.a(this.h);
       anr.a(this.h);
       ant.a(this.h);
-      if (bjw.f.d()) {
+      if (bjx.f.d()) {
          als.a(this.h);
       }
 
@@ -214,8 +214,8 @@ public class dv {
       gs<du> $$3 = f.get();
       boolean $$4 = $$3 == null;
       if ($$4) {
-         int $$5 = Math.max(1, $$2.aN().c(cwv.x));
-         int $$6 = $$2.aN().c(cwv.y);
+         int $$5 = Math.max(1, $$2.aN().c(cwx.x));
+         int $$6 = $$2.aN().c(cwx.y);
 
          try (gs<du> $$7 = new gs<>($$5, $$6, $$2.aU())) {
             f.set($$7);
@@ -325,7 +325,7 @@ public class dv {
          private <T> in.b.a<T> a(final in.b<T> $$0x) {
             return new in.b.a<T>() {
                @Override
-               protected in.b<T> a() {
+               public in.b<T> a() {
                   return $$0;
                }
 

@@ -1,45 +1,81 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.function.Function;
 
-public abstract class elg extends eln {
-   protected final List<eln> d;
-   private final elf a;
+public class elg extends eli {
+   public static final Codec<elg> a = a(elg::new);
 
-   protected elg(List<eln> $$0, List<ent> $$1) {
-      super($$1);
-      this.d = $$0;
-      this.a = this.a($$0);
+   elg(List<elp> $$0, List<env> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public void a(eld $$0) {
+   public elq a() {
+      return eln.g;
+   }
+
+   @Override
+   protected elh a(List<? extends elh> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> b;
+         case 1 -> (elh)$$0.get(0);
+         case 2 -> $$0.get(0).or($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (elh $$3 : $$0) {
+            if ($$3.expand($$1, $$2)) {
+               return true;
+            }
+         }
+
+         return false;
+      };
+      };
+   }
+
+   @Override
+   public void a(elf $$0) {
       super.a($$0);
-      if (this.d.isEmpty()) {
-         $$0.b("Empty children list");
+
+      for (int $$1 = 0; $$1 < this.d.size() - 1; $$1++) {
+         if (this.d.get($$1).e.isEmpty()) {
+            $$0.b("Unreachable entry!");
+         }
+      }
+   }
+
+   public static elg.a a(elp.a<?>... $$0) {
+      return new elg.a($$0);
+   }
+
+   public static <E> elg.a a(Collection<E> $$0, Function<E, elp.a<?>> $$1) {
+      return new elg.a($$0.stream().map($$1::apply).toArray(elp.a[]::new));
+   }
+
+   public static class a extends elp.a<elg.a> {
+      private final Builder<elp> a = ImmutableList.builder();
+
+      public a(elp.a<?>... $$0) {
+         for (elp.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
       }
 
-      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
-         this.d.get($$1).a($$0.a(".entry[" + $$1 + "]"));
+      protected elg.a a() {
+         return this;
       }
-   }
 
-   protected abstract elf a(List<? extends elf> var1);
+      @Override
+      public elg.a a(elp.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
 
-   @Override
-   public final boolean expand(eku $$0, Consumer<elm> $$1) {
-      return !this.a($$0) ? false : this.a.expand($$0, $$1);
-   }
-
-   public static <T extends elg> Codec<T> a(elg.a<T> $$0) {
-      return RecordCodecBuilder.create(
-         $$1 -> $$1.group(awe.a(ell.a.listOf(), "children", List.of()).forGetter($$0xx -> $$0xx.d)).and(a($$1).t1()).apply($$1, $$0::create)
-      );
-   }
-
-   @FunctionalInterface
-   public interface a<T extends elg> {
-      T create(List<eln> var1, List<ent> var2);
+      @Override
+      public elp b() {
+         return new elg(this.a.build(), this.f());
+      }
    }
 }

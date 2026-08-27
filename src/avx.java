@@ -6,7 +6,7 @@ public class avx {
    private avx() {
    }
 
-   public static epr a(epr $$0, avx.a $$1) {
+   public static ept a(ept $$0, avx.a $$1) {
       int $$2 = aww.a($$0.a());
       int $$3 = aww.a($$0.b());
       int $$4 = aww.a($$0.c());
@@ -14,7 +14,7 @@ public class avx {
       double $$6 = $$0.b() - (double)$$3;
       double $$7 = $$0.c() - (double)$$4;
       double $$8 = 0.0;
-      epr $$9 = epr.b;
+      ept $$9 = ept.b;
 
       for (int $$10 = 0; $$10 < 6; $$10++) {
          double $$11 = aww.d($$5, c[$$10 + 1], c[$$10]);
@@ -39,6 +39,6 @@ public class avx {
 
    @FunctionalInterface
    public interface a {
-      epr fetch(int var1, int var2, int var3);
+      ept fetch(int var1, int var2, int var3);
    }
 }

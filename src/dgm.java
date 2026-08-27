@@ -1,105 +1,26 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
 
-public enum dgm implements axq {
-   a("none", h.a),
-   b("clockwise_90", h.u),
-   c("180", h.c),
-   d("counterclockwise_90", h.v);
+public class dgm extends dal {
+   public static final MapCodec<dgm> a = b(dgm::new);
+   protected static final float b = 6.0F;
+   protected static final eqm c = dac.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
-   public static final Codec<dgm> e = axq.a(dgm::values);
-   private final String f;
-   private final h g;
-
-   private dgm(String $$0, h $$1) {
-      this.f = $$0;
-      this.g = $$1;
+   @Override
+   public MapCodec<dgm> a() {
+      return a;
    }
 
-   public dgm a(dgm $$0) {
-      switch ($$0) {
-         case c:
-            switch (this) {
-               case a:
-                  return c;
-               case b:
-                  return d;
-               case c:
-                  return a;
-               case d:
-                  return b;
-            }
-         case d:
-            switch (this) {
-               case a:
-                  return d;
-               case b:
-                  return a;
-               case c:
-                  return b;
-               case d:
-                  return c;
-            }
-         case b:
-            switch (this) {
-               case a:
-                  return b;
-               case b:
-                  return c;
-               case c:
-                  return d;
-               case d:
-                  return a;
-            }
-         default:
-            return this;
-      }
-   }
-
-   public h a() {
-      return this.g;
-   }
-
-   public ih a(ih $$0) {
-      if ($$0.o() == ih.a.b) {
-         return $$0;
-      } else {
-         switch (this) {
-            case b:
-               return $$0.h();
-            case c:
-               return $$0.g();
-            case d:
-               return $$0.i();
-            default:
-               return $$0;
-         }
-      }
-   }
-
-   public int a(int $$0, int $$1) {
-      switch (this) {
-         case b:
-            return ($$0 + $$1 / 4) % $$1;
-         case c:
-            return ($$0 + $$1 / 2) % $$1;
-         case d:
-            return ($$0 + $$1 * 3 / 4) % $$1;
-         default:
-            return $$0;
-      }
-   }
-
-   public static dgm a(axd $$0) {
-      return ac.a(values(), $$0);
-   }
-
-   public static List<dgm> b(axd $$0) {
-      return ac.b(values(), $$0);
+   protected dgm(dna.d $$0) {
+      super($$0);
    }
 
    @Override
-   public String c() {
-      return this.f;
+   protected eqm a(dnb $$0, cwh $$1, ib $$2, epy $$3) {
+      return c;
+   }
+
+   @Override
+   protected boolean b(dnb $$0, cwh $$1, ib $$2) {
+      return $$0.a(aun.aL) || $$0.a(dae.dX) || super.b($$0, $$1, $$2);
    }
 }

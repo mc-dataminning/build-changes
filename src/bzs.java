@@ -1,30 +1,27 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-public class bzs extends bzx<bpo> {
+public abstract class bzs extends bzy<bpp> {
+   protected abstract boolean a(bpp var1, bpp var2);
+
+   protected abstract bys<bpp> b();
+
    @Override
-   public Set<byr<?>> a() {
-      return ImmutableSet.of(byr.h, byr.M, byr.an);
+   public Set<bys<?>> a() {
+      return ImmutableSet.of(this.b());
    }
 
    @Override
-   protected void a(apf $$0, bpo $$1) {
-      bqp<?> $$2 = $$1.dP();
-      List<chh> $$3 = Lists.newArrayList();
-      byt $$4 = $$2.c(byr.h).orElse(byt.a());
-      Optional<bpq> $$5 = $$4.a($$0x -> $$0x instanceof cgp || $$0x instanceof cer).map(bpq.class::cast);
+   protected void a(apf $$0, bpp $$1) {
+      $$1.dP().a(this.b(), this.b($$1));
+   }
 
-      for (bpo $$7 : $$2.c(byr.g).orElse(ImmutableList.of())) {
-         if ($$7 instanceof chh && ((chh)$$7).go()) {
-            $$3.add((chh)$$7);
-         }
-      }
+   private Optional<bpp> b(bpp $$0) {
+      return this.a($$0).flatMap($$1 -> $$1.a($$1x -> this.a($$0, $$1x)));
+   }
 
-      $$2.a(byr.M, $$5);
-      $$2.a(byr.an, $$3);
+   protected Optional<byu> a(bpp $$0) {
+      return $$0.dP().c(bys.h);
    }
 }

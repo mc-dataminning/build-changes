@@ -1,70 +1,51 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Objects;
+import java.util.UUID;
+import java.util.function.Predicate;
 
-public record dmd(int c, int d, float e, float f, float g, float h, int i, int j, blm<cxq> k, blm<ajh> l) {
-   public static dmd a = new dmd(14, 4, 6.0F, 2.0F, 2.0F, 1.0F, 40, 36000, blm.b(), blm.<ajh>a().a(eks.aN).a(eks.aM).a());
-   public static MapCodec<dmd> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 128).optionalFieldOf("required_player_range", a.c).forGetter(dmd::a),
-               Codec.intRange(1, 128).optionalFieldOf("spawn_range", a.d).forGetter(dmd::b),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("total_mobs", a.e).forGetter(dmd::c),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("simultaneous_mobs", a.f).forGetter(dmd::d),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("total_mobs_added_per_player", a.g).forGetter(dmd::e),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("simultaneous_mobs_added_per_player", a.h).forGetter(dmd::f),
-               Codec.intRange(0, Integer.MAX_VALUE).optionalFieldOf("ticks_between_spawn", a.i).forGetter(dmd::g),
-               Codec.intRange(0, Integer.MAX_VALUE).optionalFieldOf("target_cooldown_length", a.j).forGetter(dmd::h),
-               cxq.c.optionalFieldOf("spawn_potentials", blm.b()).forGetter(dmd::i),
-               blm.a(ajh.a).optionalFieldOf("loot_tables_to_eject", a.l).forGetter(dmd::j)
-            )
-            .apply($$0, dmd::new)
-   );
+public interface dmd {
+   dmd a = ($$0, $$1, $$2, $$3) -> $$1.a($$0, $$2x -> $$2x.dm().a($$2, $$3) && !$$2x.f() && !$$2x.N_()).stream().map(box::cw).toList();
+   dmd b = ($$0, $$1, $$2, $$3) -> $$1.a($$0, $$2x -> $$2x.dm().a($$2, $$3) && !$$2x.N_()).stream().map(box::cw).toList();
+   dmd c = ($$0, $$1, $$2, $$3) -> {
+      epo $$4 = new epo($$2).g($$3);
+      return $$1.a($$0, bpd.aJ, $$4, bpp::bA).stream().map(box::cw).toList();
+   };
 
-   public int a(int $$0) {
-      return (int)Math.floor((double)(this.e + this.g * (float)$$0));
-   }
+   List<UUID> detect(apf var1, dmd.a var2, ib var3, double var4);
 
-   public int b(int $$0) {
-      return (int)Math.floor((double)(this.f + this.h * (float)$$0));
-   }
+   public interface a {
+      dmd.a a = new dmd.a() {
+         @Override
+         public List<apg> a(apf $$0, Predicate<? super ciu> $$1) {
+            return $$0.a($$1);
+         }
 
-   public int a() {
-      return this.c;
-   }
+         @Override
+         public <T extends box> List<T> a(apf $$0, drd<box, T> $$1, epo $$2, Predicate<? super T> $$3) {
+            return $$0.a($$1, $$2, $$3);
+         }
+      };
 
-   public int b() {
-      return this.d;
-   }
+      List<? extends ciu> a(apf var1, Predicate<? super ciu> var2);
 
-   public float c() {
-      return this.e;
-   }
+      <T extends box> List<T> a(apf var1, drd<box, T> var2, epo var3, Predicate<? super T> var4);
 
-   public float d() {
-      return this.f;
-   }
+      static dmd.a a(ciu $$0) {
+         return a(List.of($$0));
+      }
 
-   public float e() {
-      return this.g;
-   }
+      static dmd.a a(final List<ciu> $$0) {
+         return new dmd.a() {
+            @Override
+            public List<ciu> a(apf $$0x, Predicate<? super ciu> $$1) {
+               return $$0.stream().filter($$1).toList();
+            }
 
-   public float f() {
-      return this.h;
-   }
-
-   public int g() {
-      return this.i;
-   }
-
-   public int h() {
-      return this.j;
-   }
-
-   public blm<cxq> i() {
-      return this.k;
-   }
-
-   public blm<ajh> j() {
-      return this.l;
+            @Override
+            public <T extends box> List<T> a(apf $$0x, drd<box, T> $$1, epo $$2, Predicate<? super T> $$3) {
+               return $$0.stream().map($$1::a).filter(Objects::nonNull).filter($$3).toList();
+            }
+         };
+      }
    }
 }

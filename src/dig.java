@@ -1,91 +1,39 @@
 import com.mojang.serialization.MapCodec;
 
-public class dig extends daa {
+public class dig extends dal implements daf {
    public static final MapCodec<dig> a = b(dig::new);
-   private static final dnz b = dnp.aT;
-   private static final int c = 20;
-   private static final int d = 8;
+   protected static final float b = 6.0F;
+   protected static final eqm c = dac.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
    @Override
    public MapCodec<dig> a() {
       return a;
    }
 
-   public dig(dmy.d $$0) {
+   protected dig(dna.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Integer.valueOf(0)));
    }
 
    @Override
-   protected void a(cwz $$0, dmz $$1, epn $$2, cjk $$3) {
-      int $$4 = a((cxa)$$0, $$1, $$2, (bow)$$3);
-      if ($$3.af_() instanceof apg $$6) {
-         $$6.a(aui.aE);
-         am.M.a($$6, $$3, $$2.e(), $$4);
-      }
-   }
-
-   private static int a(cxa $$0, dmz $$1, epn $$2, bow $$3) {
-      int $$4 = a($$2, $$2.e());
-      int $$5 = $$3 instanceof ciy ? 20 : 8;
-      if (!$$0.N().a($$2.a(), $$1.b())) {
-         a($$0, $$1, $$4, $$2.a(), $$5);
-      }
-
-      return $$4;
-   }
-
-   private static int a(epn $$0, epr $$1) {
-      ih $$2 = $$0.b();
-      double $$3 = Math.abs(aww.e($$1.c) - 0.5);
-      double $$4 = Math.abs(aww.e($$1.d) - 0.5);
-      double $$5 = Math.abs(aww.e($$1.e) - 0.5);
-      ih.a $$6 = $$2.o();
-      double $$7;
-      if ($$6 == ih.a.b) {
-         $$7 = Math.max($$3, $$5);
-      } else if ($$6 == ih.a.c) {
-         $$7 = Math.max($$3, $$4);
-      } else {
-         $$7 = Math.max($$4, $$5);
-      }
-
-      return Math.max(1, aww.c(15.0 * aww.a((0.5 - $$7) / 0.5, 0.0, 1.0)));
-   }
-
-   private static void a(cxa $$0, dmz $$1, int $$2, ib $$3, int $$4) {
-      $$0.a($$3, $$1.a(b, Integer.valueOf($$2)), 3);
-      $$0.a($$3, $$1.b(), $$4);
+   protected eqm a(dnb $$0, cwh $$1, ib $$2, epy $$3) {
+      return c;
    }
 
    @Override
-   protected void a(dmz $$0, apf $$1, ib $$2, axd $$3) {
-      if ($$0.c(b) != 0) {
-         $$1.a($$2, $$0.a(b, Integer.valueOf(0)), 3);
-      }
-   }
-
-   @Override
-   protected int a(dmz $$0, cwf $$1, ib $$2, ih $$3) {
-      return $$0.c(b);
-   }
-
-   @Override
-   protected boolean f_(dmz $$0) {
+   public boolean b(cxe $$0, ib $$1, dnb $$2) {
       return true;
    }
 
    @Override
-   protected void a(dna.a<daa, dmz> $$0) {
-      $$0.a(b);
+   public boolean a(cxb $$0, axd $$1, ib $$2, dnb $$3) {
+      return true;
    }
 
    @Override
-   protected void b(dmz $$0, cwz $$1, ib $$2, dmz $$3, boolean $$4) {
-      if (!$$1.x_() && !$$0.a($$3.b())) {
-         if ($$0.c(b) > 0 && !$$1.N().a($$2, this)) {
-            $$1.a($$2, $$0.a(b, Integer.valueOf(0)), 18);
-         }
+   public void a(apf $$0, axd $$1, ib $$2, dnb $$3) {
+      dck $$4 = (dck)($$3.a(dae.bu) ? dae.iI : dae.iH);
+      if ($$4.o().a($$0, $$2) && $$0.u($$2.c())) {
+         dck.a($$0, $$4.o(), $$2, 2);
       }
    }
 }

@@ -1,4 +1,8 @@
-public class gon implements gou {
-   public gon(got $$0) {
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gon {
 }

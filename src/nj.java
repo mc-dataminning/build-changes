@@ -5,15 +5,15 @@ import javax.annotation.Nullable;
 
 public class nj implements nc {
    private final nd b;
-   private final cqf c;
-   private final ctk d;
+   private final cqh c;
+   private final ctm d;
    private final int e;
    private final Map<String, an<?>> f = new LinkedHashMap<>();
    @Nullable
    private String g;
-   private final cub.a<?> h;
+   private final cud.a<?> h;
 
-   public nj(nd $$0, cub.a<?> $$1, ctk $$2, cwy $$3, int $$4) {
+   public nj(nd $$0, cud.a<?> $$1, ctm $$2, cxa $$3, int $$4) {
       this.b = $$0;
       this.h = $$1;
       this.c = $$3.l();
@@ -21,12 +21,12 @@ public class nj implements nc {
       this.e = $$4;
    }
 
-   public static nj a(ctk $$0, nd $$1, cwy $$2) {
-      return new nj($$1, cuh::new, $$0, $$2, 1);
+   public static nj a(ctm $$0, nd $$1, cxa $$2) {
+      return new nj($$1, cuj::new, $$0, $$2, 1);
    }
 
-   public static nj a(ctk $$0, nd $$1, cwy $$2, int $$3) {
-      return new nj($$1, cuh::new, $$0, $$2, $$3);
+   public static nj a(ctm $$0, nd $$1, cxa $$2, int $$3) {
+      return new nj($$1, cuj::new, $$0, $$2, $$3);
    }
 
    public nj b(String $$0, an<?> $$1) {
@@ -40,7 +40,7 @@ public class nj implements nc {
    }
 
    @Override
-   public cqf a() {
+   public cqh a() {
       return this.c;
    }
 
@@ -49,7 +49,7 @@ public class nj implements nc {
       this.a($$1);
       ae.a $$2 = $$0.a().a("has_the_recipe", cv.a($$1)).a(aj.a.c($$1)).a(ai.a.b);
       this.f.forEach($$2::a);
-      cub $$3 = this.h.create(Objects.requireNonNullElse(this.g, ""), this.d, new cqk(this.c, this.e));
+      cud $$3 = this.h.create(Objects.requireNonNullElse(this.g, ""), this.d, new cqm(this.c, this.e));
       $$0.a($$1, $$3, $$2.b($$1.d("recipes/" + this.b.a() + "/")));
    }
 

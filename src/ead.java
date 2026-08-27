@@ -1,49 +1,62 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Collection;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record ead(dzv b, List<ead.a> c) {
-   public static final Codec<ead> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dzv.a.fieldOf("fallback").forGetter(ead::a), ead.a.a.listOf().fieldOf("rules").forGetter(ead::b)).apply($$0, ead::new)
+public class ead extends dzx {
+   public static final Codec<ead> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dzx.a.fieldOf("source").forGetter($$0x -> $$0x.c),
+               Codec.STRING.fieldOf("property").forGetter($$0x -> $$0x.d),
+               bmi.c.fieldOf("values").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, ead::new)
    );
+   private final dzx c;
+   private final String d;
+   @Nullable
+   private dob e;
+   private final bmi f;
 
-   public static ead a(dzv $$0) {
-      return new ead($$0, List.of());
-   }
+   public ead(dzx $$0, dob $$1, bmi $$2) {
+      this.c = $$0;
+      this.e = $$1;
+      this.d = $$1.f();
+      this.f = $$2;
+      Collection<Integer> $$3 = $$1.a();
 
-   public static ead a(daa $$0) {
-      return a(dzv.a($$0));
-   }
-
-   public dmz a(cxu $$0, axd $$1, ib $$2) {
-      for (ead.a $$3 : this.c) {
-         if ($$3.a().test($$0, $$2)) {
-            return $$3.b().a($$1, $$2);
+      for (int $$4 = $$2.a(); $$4 <= $$2.b(); $$4++) {
+         if (!$$3.contains($$4)) {
+            throw new IllegalArgumentException("Property value out of range: " + $$1.f() + ": " + $$4);
          }
       }
-
-      return this.b.a($$1, $$2);
    }
 
-   public dzv a() {
-      return this.b;
+   public ead(dzx $$0, String $$1, bmi $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.f = $$2;
    }
 
-   public List<ead.a> b() {
-      return this.c;
+   @Override
+   protected dzy<?> a() {
+      return dzy.g;
    }
 
-   public static record a(dtt b, dzv c) {
-      public static final Codec<ead.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(dtt.b.fieldOf("if_true").forGetter(ead.a::a), dzv.a.fieldOf("then").forGetter(ead.a::b)).apply($$0, ead.a::new)
-      );
-
-      public dtt a() {
-         return this.b;
+   @Override
+   public dnb a(axd $$0, ib $$1) {
+      dnb $$2 = this.c.a($$0, $$1);
+      if (this.e == null || !$$2.b(this.e)) {
+         this.e = a($$2, this.d);
       }
 
-      public dzv b() {
-         return this.c;
-      }
+      return $$2.a(this.e, Integer.valueOf(this.f.a($$0)));
+   }
+
+   private static dob a(dnb $$0, String $$1) {
+      Collection<doe<?>> $$2 = $$0.B();
+      Optional<dob> $$3 = $$2.stream().filter($$1x -> $$1x.f().equals($$1)).filter($$0x -> $$0x instanceof dob).map($$0x -> (dob)$$0x).findAny();
+      return $$3.orElseThrow(() -> new IllegalArgumentException("Illegal property: " + $$1));
    }
 }

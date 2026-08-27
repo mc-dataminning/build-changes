@@ -1,17 +1,41 @@
 public class fsi {
-   private final frz a;
-   private final biw b;
+   private final fwu a;
+   private final fsa b;
+   private final fxq c;
+   private fsi.a d = fsi.a.a;
 
-   public fsi(frz $$0, biw $$1) {
+   public fsi(fwu $$0, fsa $$1, fxq $$2) {
       this.a = $$0;
       this.b = $$1;
+      this.c = $$2;
    }
 
    public void a() {
-      this.a.b(new aic(ac.b()));
+      switch (this.d) {
+         case b:
+            ib $$0 = this.a.dm();
+            boolean $$1 = this.b.d($$0.v());
+            if ($$1 || this.c.a($$0) || this.a.N_() || !this.a.bA()) {
+               this.d = fsi.a.c;
+            }
+         case a:
+         case c:
+      }
    }
 
-   public void a(ahz $$0) {
-      this.b.a(ac.b() - $$0.b());
+   public boolean b() {
+      return this.d == fsi.a.c;
+   }
+
+   public void c() {
+      if (this.d == fsi.a.a) {
+         this.d = fsi.a.b;
+      }
+   }
+
+   static enum a {
+      a,
+      b,
+      c;
    }
 }

@@ -1,32 +1,36 @@
-public class cpt<T extends bow & bpl> extends cqf {
-   private final bpc<T> a;
-   private final int b;
-
-   public cpt(cqf.a $$0, bpc<T> $$1, int $$2) {
+public class cpt extends cqh {
+   public cpt(cqh.a $$0) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
    }
 
    @Override
-   public bnd<cqk> a(cwz $$0, cis $$1, bnb $$2) {
-      cqk $$3 = $$1.b($$2);
-      if ($$0.B) {
-         return bnd.c($$3);
-      } else {
-         bow $$4 = $$1.da();
-         if ($$1.bO() && $$4 instanceof bpl $$5 && $$4.ai() == this.a && $$5.a()) {
-            $$3.a(this.b, $$1, bpo.d($$2));
-            if ($$3.b()) {
-               cqk $$6 = $$3.b(cqn.qU, 1);
-               return bnd.a($$6);
-            }
+   public bne<cqm> a(cxb $$0, ciu $$1, bnc $$2) {
+      cqm $$3 = $$1.b($$2);
+      if ($$1.cr != null) {
+         if (!$$0.B) {
+            int $$4 = $$1.cr.a($$3);
+            $$3.a($$4, $$1, bpp.d($$2));
+         }
 
-            return bnd.a($$3);
+         $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), aty.iP, atz.g, 1.0F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+         $$1.b(drp.C);
+      } else {
+         $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), aty.iR, atz.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+         if (!$$0.B) {
+            int $$5 = cux.c($$3);
+            int $$6 = cux.b($$3);
+            $$0.b(new cji($$1, $$0, $$6, $$5));
          }
 
          $$1.b(aui.c.b(this));
-         return bnd.c($$3);
+         $$1.b(drp.D);
       }
+
+      return bne.a($$3, $$0.x_());
+   }
+
+   @Override
+   public int e() {
+      return 1;
    }
 }

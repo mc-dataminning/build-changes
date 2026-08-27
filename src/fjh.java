@@ -1,95 +1,50 @@
-public class fjh extends fil implements fjj<cms> {
-   private final cms q;
-   private final cma r = new cma() {
-      @Override
-      public void a(clo $$0, int $$1, cqk $$2) {
-         fjh.this.M();
-      }
+public abstract class fjh<T extends cms> extends fig<T> implements cmc {
+   private final ajh x;
 
-      @Override
-      public void a(clo $$0, int $$1, int $$2) {
-         if ($$1 == 0) {
-            fjh.this.N();
-         }
-      }
-   };
-
-   public fjh(cms $$0, cir $$1, vu $$2) {
-      this.q = $$0;
+   public fjh(T $$0, cit $$1, vu $$2, ajh $$3) {
+      super($$0, $$1, $$2);
+      this.x = $$3;
    }
 
-   public cms L() {
-      return this.q;
+   protected void I() {
    }
 
    @Override
    protected void aO_() {
       super.aO_();
-      this.q.a(this.r);
-   }
-
-   @Override
-   public void d() {
-      this.f.s.r();
-      super.d();
+      this.I();
+      this.p.a(this);
    }
 
    @Override
    public void k() {
       super.k();
-      this.q.b(this.r);
+      this.p.b(this);
    }
 
    @Override
-   protected void o() {
-      if (this.f.s.gl()) {
-         this.c(fbg.a(vt.d, $$0 -> this.d()).a(this.g / 2 - 100, 196, 98, 20).a());
-         this.c(fbg.a(vu.c("lectern.take_book"), $$0 -> this.g(3)).a(this.g / 2 + 2, 196, 98, 20).a());
-      } else {
-         super.o();
-      }
+   public void a(fav $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.d($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
+   }
+
+   protected void d(fav $$0, int $$1, int $$2, float $$3) {
    }
 
    @Override
-   protected void I() {
-      this.g(1);
+   protected void a(fav $$0, float $$1, int $$2, int $$3) {
+      $$0.a(this.x, this.t, this.u, 0, 0, this.c, this.k);
+      this.c($$0, this.t, this.u);
+   }
+
+   protected abstract void c(fav var1, int var2, int var3);
+
+   @Override
+   public void a(clq $$0, int $$1, int $$2) {
    }
 
    @Override
-   protected void J() {
-      this.g(2);
-   }
-
-   @Override
-   protected boolean b(int $$0) {
-      if ($$0 != this.q.m()) {
-         this.g(100 + $$0);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private void g(int $$0) {
-      this.f.q.a(this.q.j, $$0);
-   }
-
-   @Override
-   public boolean m() {
-      return false;
-   }
-
-   void M() {
-      cqk $$0 = this.q.l();
-      this.a(fil.a.a($$0));
-   }
-
-   void N() {
-      this.a(this.q.m());
-   }
-
-   @Override
-   protected void K() {
-      this.f.s.r();
+   public void a(clq $$0, int $$1, cqm $$2) {
    }
 }

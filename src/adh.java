@@ -2,7 +2,7 @@ public class adh implements yb<aam> {
    public static final xs<uu, adh> a = yb.a(adh::a, adh::new);
    private final double b;
 
-   public adh(doq $$0) {
+   public adh(dos $$0) {
       this.b = $$0.k();
    }
 

@@ -1,39 +1,19 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
 
-public class dyy extends dyv {
-   public static final Codec<dyy> d = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(0, 81).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.f),
-               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.g),
-               a()
-            )
-            .apply($$0, dyy::new)
-   );
-   private final int e;
-   private final int f;
-   private final int g;
+public class dyy<P extends dyx> {
+   public static final dyy<dza> a = a("two_layers_feature_size", dza.d);
+   public static final dyy<dyz> b = a("three_layers_feature_size", dyz.d);
+   private final Codec<P> c;
 
-   public dyy(int $$0, int $$1, int $$2) {
-      this($$0, $$1, $$2, OptionalInt.empty());
+   private static <P extends dyx> dyy<P> a(String $$0, Codec<P> $$1) {
+      return iy.a(ki.aa, $$0, new dyy<>($$1));
    }
 
-   public dyy(int $$0, int $$1, int $$2, OptionalInt $$3) {
-      super($$3);
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   private dyy(Codec<P> $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   protected dyw<?> b() {
-      return dyw.a;
-   }
-
-   @Override
-   public int a(int $$0, int $$1) {
-      return $$1 < this.e ? this.f : this.g;
+   public Codec<P> a() {
+      return this.c;
    }
 }

@@ -9,30 +9,30 @@ import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class apm implements cxu {
+public class apm implements cxw {
    private static final Logger a = LogUtils.getLogger();
-   private final List<dov> b;
-   private final dov c;
+   private final List<dox> b;
+   private final dox c;
    private final int d;
    private final apf e;
    private final long f;
-   private final ekg g;
+   private final eki g;
    private final axd h;
-   private final dqm i;
-   private final ern<daa> j = new ern<>($$0x -> this.y($$0x).o());
-   private final ern<eim> k = new ern<>($$0x -> this.y($$0x).p());
-   private final cya l;
-   private final cwg m;
-   private final cwg n;
-   private final cxs o;
-   private final dpa p;
+   private final dqo i;
+   private final erp<dac> j = new erp<>($$0x -> this.y($$0x).o());
+   private final erp<eio> k = new erp<>($$0x -> this.y($$0x).p());
+   private final cyc l;
+   private final cwi m;
+   private final cwi n;
+   private final cxu o;
+   private final dpc p;
    private final int q;
    @Nullable
    private Supplier<String> r;
    private final AtomicLong s = new AtomicLong();
    private static final ajh t = new ajh("worldgen_region_random");
 
-   public apm(apf $$0, List<dov> $$1, dpa $$2, int $$3) {
+   public apm(apf $$0, List<dox> $$1, dpc $$2, int $$3) {
       this.p = $$2;
       this.q = $$3;
       int $$4 = aww.a(Math.sqrt((double)$$1.size()));
@@ -47,18 +47,18 @@ public class apm implements cxu {
          this.g = $$0.A_();
          this.h = $$0.l().i().a(t).a(this.c.f().l());
          this.i = $$0.D_();
-         this.l = new cya(this, cya.a(this.f));
+         this.l = new cyc(this, cyc.a(this.f));
          this.m = $$1.get(0).f();
          this.n = $$1.get($$1.size() - 1).f();
          this.o = $$0.a().a(this);
       }
    }
 
-   public boolean a(cwg $$0, int $$1) {
+   public boolean a(cwi $$0, int $$1) {
       return this.e.l().a.b($$0, $$1);
    }
 
-   public cwg a() {
+   public cwi a() {
       return this.c.f();
    }
 
@@ -68,14 +68,14 @@ public class apm implements cxu {
    }
 
    @Override
-   public dov a(int $$0, int $$1) {
-      return this.a($$0, $$1, dpa.c);
+   public dox a(int $$0, int $$1) {
+      return this.a($$0, $$1, dpc.c);
    }
 
    @Nullable
    @Override
-   public dov a(int $$0, int $$1, dpa $$2, boolean $$3) {
-      dov $$6;
+   public dox a(int $$0, int $$1, dpc $$2, boolean $$3) {
+      dox $$6;
       if (this.b($$0, $$1)) {
          int $$4 = $$0 - this.m.e;
          int $$5 = $$1 - this.m.f;
@@ -105,18 +105,18 @@ public class apm implements cxu {
    }
 
    @Override
-   public dmz a_(ib $$0) {
+   public dnb a_(ib $$0) {
       return this.a(je.a($$0.u()), je.a($$0.w())).a_($$0);
    }
 
    @Override
-   public ein b_(ib $$0) {
+   public eip b_(ib $$0) {
       return this.y($$0).b_($$0);
    }
 
    @Nullable
    @Override
-   public cis a(double $$0, double $$1, double $$2, double $$3, Predicate<bow> $$4) {
+   public ciu a(double $$0, double $$1, double $$2, double $$3, Predicate<box> $$4) {
       return null;
    }
 
@@ -126,12 +126,12 @@ public class apm implements cxu {
    }
 
    @Override
-   public cya F_() {
+   public cyc F_() {
       return this.l;
    }
 
    @Override
-   public il<cxy> a(int $$0, int $$1, int $$2) {
+   public il<cya> a(int $$0, int $$1, int $$2) {
       return this.e.a($$0, $$1, $$2);
    }
 
@@ -141,44 +141,44 @@ public class apm implements cxu {
    }
 
    @Override
-   public eic y_() {
+   public eie y_() {
       return this.e.y_();
    }
 
    @Override
-   public boolean a(ib $$0, boolean $$1, @Nullable bow $$2, int $$3) {
-      dmz $$4 = this.a_($$0);
+   public boolean a(ib $$0, boolean $$1, @Nullable box $$2, int $$3) {
+      dnb $$4 = this.a_($$0);
       if ($$4.i()) {
          return false;
       } else {
          if ($$1) {
-            dkg $$5 = $$4.t() ? this.c_($$0) : null;
-            daa.a($$4, (cwz)this.e, $$0, $$5, $$2, cqk.h);
+            dki $$5 = $$4.t() ? this.c_($$0) : null;
+            dac.a($$4, (cxb)this.e, $$0, $$5, $$2, cqm.h);
          }
 
-         return this.a($$0, dac.a.o(), 3, $$3);
+         return this.a($$0, dae.a.o(), 3, $$3);
       }
    }
 
    @Nullable
    @Override
-   public dkg c_(ib $$0) {
-      dov $$1 = this.y($$0);
-      dkg $$2 = $$1.c_($$0);
+   public dki c_(ib $$0) {
+      dox $$1 = this.y($$0);
+      dki $$2 = $$1.c_($$0);
       if ($$2 != null) {
          return $$2;
       } else {
          ta $$3 = $$1.f($$0);
-         dmz $$4 = $$1.a_($$0);
+         dnb $$4 = $$1.a_($$0);
          if ($$3 != null) {
             if ("DUMMY".equals($$3.l("id"))) {
                if (!$$4.t()) {
                   return null;
                }
 
-               $$2 = ((dcs)$$4.b()).a($$0, $$4);
+               $$2 = ((dcu)$$4.b()).a($$0, $$4);
             } else {
-               $$2 = dkg.a($$0, $$4, $$3, this.e.H_());
+               $$2 = dki.a($$0, $$4, $$3, this.e.H_());
             }
 
             if ($$2 != null) {
@@ -199,12 +199,12 @@ public class apm implements cxu {
    public boolean f_(ib $$0) {
       int $$1 = je.a($$0.u());
       int $$2 = je.a($$0.w());
-      cwg $$3 = this.a();
+      cwi $$3 = this.a();
       int $$4 = Math.abs($$3.e - $$1);
       int $$5 = Math.abs($$3.f - $$2);
       if ($$4 <= this.q && $$5 <= this.q) {
          if (this.c.y()) {
-            cxb $$6 = this.c.z();
+            cxd $$6 = this.c.z();
             if ($$0.v() < $$6.I_() || $$0.v() >= $$6.ak()) {
                return false;
             }
@@ -228,19 +228,19 @@ public class apm implements cxu {
    }
 
    @Override
-   public boolean a(ib $$0, dmz $$1, int $$2, int $$3) {
+   public boolean a(ib $$0, dnb $$1, int $$2, int $$3) {
       if (!this.f_($$0)) {
          return false;
       } else {
-         dov $$4 = this.y($$0);
-         dmz $$5 = $$4.a($$0, $$1, false);
+         dox $$4 = this.y($$0);
+         dnb $$5 = $$4.a($$0, $$1, false);
          if ($$5 != null) {
             this.e.a($$0, $$5, $$1);
          }
 
          if ($$1.t()) {
-            if ($$4.j().g() == dpa.a.b) {
-               dkg $$6 = ((dcs)$$1.b()).a($$0, $$1);
+            if ($$4.j().g() == dpc.a.b) {
+               dki $$6 = ((dcu)$$1.b()).a($$0, $$1);
                if ($$6 != null) {
                   $$4.a($$6);
                } else {
@@ -271,7 +271,7 @@ public class apm implements cxu {
    }
 
    @Override
-   public boolean b(bow $$0) {
+   public boolean b(box $$0) {
       int $$1 = je.a($$0.dq());
       int $$2 = je.a($$0.dw());
       this.a($$1, $$2).a($$0);
@@ -280,11 +280,11 @@ public class apm implements cxu {
 
    @Override
    public boolean a(ib $$0, boolean $$1) {
-      return this.a($$0, dac.a.o(), 3);
+      return this.a($$0, dae.a.o(), 3);
    }
 
    @Override
-   public doq C_() {
+   public dos C_() {
       return this.e.C_();
    }
 
@@ -305,21 +305,21 @@ public class apm implements cxu {
    }
 
    @Override
-   public clf I() {
+   public clh I() {
       return this.e.I();
    }
 
    @Override
-   public ekg A_() {
+   public eki A_() {
       return this.g;
    }
 
    @Override
-   public bna d_(ib $$0) {
+   public bnb d_(ib $$0) {
       if (!this.b(je.a($$0.u()), je.a($$0.w()))) {
          throw new RuntimeException("We are asking a region for a chunk out of bound");
       } else {
-         return new bna(this.e.aj(), this.e.Y(), 0L, this.e.ao());
+         return new bnb(this.e.aj(), this.e.Y(), 0L, this.e.ao());
       }
    }
 
@@ -330,7 +330,7 @@ public class apm implements cxu {
    }
 
    @Override
-   public doz L() {
+   public dpb L() {
       return this.e.l();
    }
 
@@ -340,12 +340,12 @@ public class apm implements cxu {
    }
 
    @Override
-   public ere<daa> N() {
+   public erg<dac> N() {
       return this.j;
    }
 
    @Override
-   public ere<eim> M() {
+   public erg<eio> M() {
       return this.k;
    }
 
@@ -360,12 +360,12 @@ public class apm implements cxu {
    }
 
    @Override
-   public int a(dsm.a $$0, int $$1, int $$2) {
+   public int a(dso.a $$0, int $$1, int $$2) {
       return this.a(je.a($$1), je.a($$2)).a($$0, $$1 & 15, $$2 & 15) + 1;
    }
 
    @Override
-   public void a(@Nullable cis $$0, ib $$1, atx $$2, atz $$3, float $$4, float $$5) {
+   public void a(@Nullable ciu $$0, ib $$1, atx $$2, atz $$3, float $$4, float $$5) {
    }
 
    @Override
@@ -373,40 +373,40 @@ public class apm implements cxu {
    }
 
    @Override
-   public void a(@Nullable cis $$0, int $$1, ib $$2, int $$3) {
+   public void a(@Nullable ciu $$0, int $$1, ib $$2, int $$3) {
    }
 
    @Override
-   public void a(il<drn> $$0, epr $$1, drn.a $$2) {
+   public void a(il<drp> $$0, ept $$1, drp.a $$2) {
    }
 
    @Override
-   public dqm D_() {
+   public dqo D_() {
       return this.i;
    }
 
    @Override
-   public boolean a(ib $$0, Predicate<dmz> $$1) {
+   public boolean a(ib $$0, Predicate<dnb> $$1) {
       return $$1.test(this.a_($$0));
    }
 
    @Override
-   public boolean b(ib $$0, Predicate<ein> $$1) {
+   public boolean b(ib $$0, Predicate<eip> $$1) {
       return $$1.test(this.b_($$0));
    }
 
    @Override
-   public <T extends bow> List<T> a(drb<bow, T> $$0, epm $$1, Predicate<? super T> $$2) {
+   public <T extends box> List<T> a(drd<box, T> $$0, epo $$1, Predicate<? super T> $$2) {
       return Collections.emptyList();
    }
 
    @Override
-   public List<bow> a(@Nullable bow $$0, epm $$1, @Nullable Predicate<? super bow> $$2) {
+   public List<box> a(@Nullable box $$0, epo $$1, @Nullable Predicate<? super box> $$2) {
       return Collections.emptyList();
    }
 
    @Override
-   public List<cis> x() {
+   public List<ciu> x() {
       return Collections.emptyList();
    }
 

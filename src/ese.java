@@ -1,47 +1,24 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.ints.IntSets;
-import java.util.Map;
 import javax.annotation.Nullable;
 
-public class ese implements esc {
-   private final Int2ObjectMap<esb.a> b;
+public interface ese extends AutoCloseable {
+   float a = 7.0F;
 
-   public ese(Map<Integer, Float> $$0) {
-      this.b = new Int2ObjectOpenHashMap($$0.size());
-      $$0.forEach(($$0x, $$1) -> this.b.put($$0x, (esb.a)() -> $$1));
+   @Override
+   default void close() {
    }
 
    @Nullable
-   @Override
-   public esb a(int $$0) {
-      return (esb)this.b.get($$0);
+   default esd a(int $$0) {
+      return null;
    }
 
-   @Override
-   public IntSet a() {
-      return IntSets.unmodifiable(this.b.keySet());
-   }
+   IntSet a();
 
-   public static record a(Map<Integer, Float> c) implements fei {
-      public static final MapCodec<ese.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.unboundedMap(awe.x, Codec.FLOAT).fieldOf("advances").forGetter(ese.a::c)).apply($$0, ese.a::new)
-      );
-
+   public static record a(ese a, fdy.a b) implements AutoCloseable {
       @Override
-      public fej a() {
-         return fej.c;
-      }
-
-      @Override
-      public Either<fei.b, fei.c> b() {
-         fei.b $$0 = $$0x -> new ese(this.c);
-         return Either.left($$0);
+      public void close() {
+         this.a.close();
       }
    }
 }

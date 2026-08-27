@@ -1,30 +1,44 @@
 import com.mojang.serialization.Codec;
 
-public class dwv extends dvq<dxp> {
-   public dwv(Codec<dxp> $$0) {
+public class dwv extends dvs<dye> {
+   private static final int a = 7;
+
+   dwv(Codec<dye> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dvs<dxp> $$0) {
-      int $$1 = 0;
+   public boolean a(dvu<dye> $$0) {
+      cxw $$1 = $$0.b();
       axd $$2 = $$0.d();
-      cxu $$3 = $$0.b();
+      dye $$3 = $$0.f();
       ib $$4 = $$0.e();
-      int $$5 = $$0.f().a().a($$2);
+      int $$5 = $$2.a($$3.c + 1);
+      ib.a $$6 = new ib.a();
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         int $$7 = $$2.a(8) - $$2.a(8);
-         int $$8 = $$2.a(8) - $$2.a(8);
-         int $$9 = $$3.a(dsm.a.d, $$4.u() + $$7, $$4.w() + $$8);
-         ib $$10 = new ib($$4.u() + $$7, $$9, $$4.w() + $$8);
-         dmz $$11 = dac.mV.o().a(dgw.c, Integer.valueOf($$2.a(4) + 1));
-         if ($$3.a_($$10).a(dac.G) && $$11.a($$3, $$10)) {
-            $$3.a($$10, $$11, 2);
-            $$1++;
+      for (int $$7 = 0; $$7 < $$5; $$7++) {
+         this.a($$6, $$2, $$4, Math.min($$7, 7));
+         dnb $$8 = $$1.a_($$6);
+
+         for (dye.a $$9 : $$3.b) {
+            if (dwn.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
+               $$1.a($$6, $$9.c, 2);
+               break;
+            }
          }
       }
 
-      return $$1 > 0;
+      return true;
+   }
+
+   private void a(ib.a $$0, axd $$1, ib $$2, int $$3) {
+      int $$4 = this.a($$1, $$3);
+      int $$5 = this.a($$1, $$3);
+      int $$6 = this.a($$1, $$3);
+      $$0.a($$2, $$4, $$5, $$6);
+   }
+
+   private int a(axd $$0, int $$1) {
+      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
    }
 }

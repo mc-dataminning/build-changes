@@ -1,136 +1,197 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class eqy {
-   private static final Map<String, eqy> a = Maps.newHashMap();
-   private static final Map<String, eqy> o = Maps.newHashMap();
-   public static final eqy b = b("dummy");
-   public static final eqy c = b("trigger");
-   public static final eqy d = b("deathCount");
-   public static final eqy e = b("playerKillCount");
-   public static final eqy f = b("totalKillCount");
-   public static final eqy g = a("health", true, eqy.a.b);
-   public static final eqy h = a("food", true, eqy.a.a);
-   public static final eqy i = a("air", true, eqy.a.a);
-   public static final eqy j = a("armor", true, eqy.a.a);
-   public static final eqy k = a("xp", true, eqy.a.a);
-   public static final eqy l = a("level", true, eqy.a.a);
-   public static final eqy[] m = new eqy[]{
-      b("teamkill." + n.a.g()),
-      b("teamkill." + n.b.g()),
-      b("teamkill." + n.c.g()),
-      b("teamkill." + n.d.g()),
-      b("teamkill." + n.e.g()),
-      b("teamkill." + n.f.g()),
-      b("teamkill." + n.g.g()),
-      b("teamkill." + n.h.g()),
-      b("teamkill." + n.i.g()),
-      b("teamkill." + n.j.g()),
-      b("teamkill." + n.k.g()),
-      b("teamkill." + n.l.g()),
-      b("teamkill." + n.m.g()),
-      b("teamkill." + n.n.g()),
-      b("teamkill." + n.o.g()),
-      b("teamkill." + n.p.g())
-   };
-   public static final eqy[] n = new eqy[]{
-      b("killedByTeam." + n.a.g()),
-      b("killedByTeam." + n.b.g()),
-      b("killedByTeam." + n.c.g()),
-      b("killedByTeam." + n.d.g()),
-      b("killedByTeam." + n.e.g()),
-      b("killedByTeam." + n.f.g()),
-      b("killedByTeam." + n.g.g()),
-      b("killedByTeam." + n.h.g()),
-      b("killedByTeam." + n.i.g()),
-      b("killedByTeam." + n.j.g()),
-      b("killedByTeam." + n.k.g()),
-      b("killedByTeam." + n.l.g()),
-      b("killedByTeam." + n.m.g()),
-      b("killedByTeam." + n.n.g()),
-      b("killedByTeam." + n.o.g()),
-      b("killedByTeam." + n.p.g())
-   };
-   private final String p;
-   private final boolean q;
-   private final eqy.a r;
+public class eqy extends eju {
+   private static final Logger b = LogUtils.getLogger();
+   public static final String a = "scoreboard";
+   private final eqx c;
 
-   private static eqy a(String $$0, boolean $$1, eqy.a $$2) {
-      eqy $$3 = new eqy($$0, $$1, $$2);
-      a.put($$0, $$3);
-      return $$3;
+   public eqy(eqx $$0) {
+      this.c = $$0;
    }
 
-   private static eqy b(String $$0) {
-      return a($$0, false, eqy.a.a);
+   public eqy a(ta $$0) {
+      this.b($$0.c("Objectives", 10));
+      this.c.a($$0.c("PlayerScores", 10));
+      if ($$0.b("DisplaySlots", 10)) {
+         this.b($$0.p("DisplaySlots"));
+      }
+
+      if ($$0.b("Teams", 9)) {
+         this.a($$0.c("Teams", 10));
+      }
+
+      return this;
    }
 
-   protected eqy(String $$0) {
-      this($$0, false, eqy.a.a);
-   }
+   private void a(tg $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         ta $$2 = $$0.a($$1);
+         String $$3 = $$2.l("Name");
+         eqs $$4 = this.c.c($$3);
+         vu $$5 = vu.a.a($$2.l("DisplayName"));
+         if ($$5 != null) {
+            $$4.a($$5);
+         }
 
-   protected eqy(String $$0, boolean $$1, eqy.a $$2) {
-      this.p = $$0;
-      this.q = $$1;
-      this.r = $$2;
-      o.put($$0, this);
-   }
+         if ($$2.b("TeamColor", 8)) {
+            $$4.a(n.b($$2.l("TeamColor")));
+         }
 
-   public static Set<String> c() {
-      return ImmutableSet.copyOf(a.keySet());
-   }
+         if ($$2.b("AllowFriendlyFire", 99)) {
+            $$4.a($$2.q("AllowFriendlyFire"));
+         }
 
-   public static Optional<eqy> a(String $$0) {
-      eqy $$1 = o.get($$0);
-      if ($$1 != null) {
-         return Optional.of($$1);
-      } else {
-         int $$2 = $$0.indexOf(58);
-         return $$2 < 0 ? Optional.empty() : ki.x.b(ajh.a($$0.substring(0, $$2), '.')).flatMap($$2x -> a($$2x, ajh.a($$0.substring($$2 + 1), '.')));
+         if ($$2.b("SeeFriendlyInvisibles", 99)) {
+            $$4.b($$2.q("SeeFriendlyInvisibles"));
+         }
+
+         if ($$2.b("MemberNamePrefix", 8)) {
+            vu $$6 = vu.a.a($$2.l("MemberNamePrefix"));
+            if ($$6 != null) {
+               $$4.b($$6);
+            }
+         }
+
+         if ($$2.b("MemberNameSuffix", 8)) {
+            vu $$7 = vu.a.a($$2.l("MemberNameSuffix"));
+            if ($$7 != null) {
+               $$4.c($$7);
+            }
+         }
+
+         if ($$2.b("NameTagVisibility", 8)) {
+            eqz.b $$8 = eqz.b.a($$2.l("NameTagVisibility"));
+            if ($$8 != null) {
+               $$4.a($$8);
+            }
+         }
+
+         if ($$2.b("DeathMessageVisibility", 8)) {
+            eqz.b $$9 = eqz.b.a($$2.l("DeathMessageVisibility"));
+            if ($$9 != null) {
+               $$4.b($$9);
+            }
+         }
+
+         if ($$2.b("CollisionRule", 8)) {
+            eqz.a $$10 = eqz.a.a($$2.l("CollisionRule"));
+            if ($$10 != null) {
+               $$4.a($$10);
+            }
+         }
+
+         this.a($$4, $$2.c("Players", 8));
       }
    }
 
-   private static <T> Optional<eqy> a(auh<T> $$0, ajh $$1) {
-      return $$0.b().b($$1).map($$0::b);
+   private void a(eqs $$0, tg $$1) {
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         this.c.a($$1.j($$2), $$0);
+      }
    }
 
-   public String d() {
-      return this.p;
+   private void b(ta $$0) {
+      for (String $$1 : $$0.e()) {
+         eqo $$2 = eqo.t.a($$1);
+         if ($$2 != null) {
+            String $$3 = $$0.l($$1);
+            eqp $$4 = this.c.a($$3);
+            this.c.a($$2, $$4);
+         }
+      }
    }
 
-   public boolean e() {
-      return this.q;
+   private void b(tg $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         ta $$2 = $$0.a($$1);
+         String $$3 = $$2.l("CriteriaName");
+         era $$4 = era.a($$3).orElseGet(() -> {
+            b.warn("Unknown scoreboard criteria {}, replacing with {}", $$3, era.b.d());
+            return era.b;
+         });
+         String $$5 = $$2.l("Name");
+         vu $$6 = vu.a.a($$2.l("DisplayName"));
+         era.a $$7 = era.a.a($$2.l("RenderType"));
+         boolean $$8 = $$2.q("display_auto_update");
+         xk $$9 = (xk)xm.b.parse(to.a, $$2.c("format")).result().orElse(null);
+         this.c.a($$5, $$4, $$6, $$7, $$8, $$9);
+      }
    }
 
-   public eqy.a f() {
-      return this.r;
+   @Override
+   public ta a(ta $$0, in.a $$1) {
+      $$0.a("Objectives", this.b());
+      $$0.a("PlayerScores", this.c.h());
+      $$0.a("Teams", this.a());
+      this.c($$0);
+      return $$0;
    }
 
-   public static enum a implements axq {
-      a("integer"),
-      b("hearts");
+   private tg a() {
+      tg $$0 = new tg();
 
-      private final String d;
-      public static final axq.a<eqy.a> c = axq.a(eqy.a::values);
+      for (eqs $$2 : this.c.g()) {
+         ta $$3 = new ta();
+         $$3.a("Name", $$2.b());
+         $$3.a("DisplayName", vu.a.a($$2.c()));
+         if ($$2.n().b() >= 0) {
+            $$3.a("TeamColor", $$2.n().g());
+         }
 
-      private a(String $$0) {
-         this.d = $$0;
+         $$3.a("AllowFriendlyFire", $$2.h());
+         $$3.a("SeeFriendlyInvisibles", $$2.i());
+         $$3.a("MemberNamePrefix", vu.a.a($$2.e()));
+         $$3.a("MemberNameSuffix", vu.a.a($$2.f()));
+         $$3.a("NameTagVisibility", $$2.j().e);
+         $$3.a("DeathMessageVisibility", $$2.k().e);
+         $$3.a("CollisionRule", $$2.l().e);
+         tg $$4 = new tg();
+
+         for (String $$5 : $$2.g()) {
+            $$4.add(tv.a($$5));
+         }
+
+         $$3.a("Players", $$4);
+         $$0.add($$3);
       }
 
-      public String a() {
-         return this.d;
+      return $$0;
+   }
+
+   private void c(ta $$0) {
+      ta $$1 = new ta();
+
+      for (eqo $$2 : eqo.values()) {
+         eqp $$3 = this.c.a($$2);
+         if ($$3 != null) {
+            $$1.a($$2.c(), $$3.b());
+         }
       }
 
-      @Override
-      public String c() {
-         return this.d;
+      if (!$$1.g()) {
+         $$0.a("DisplaySlots", $$1);
+      }
+   }
+
+   private tg b() {
+      tg $$0 = new tg();
+
+      for (eqp $$2 : this.c.c()) {
+         ta $$3 = new ta();
+         $$3.a("Name", $$2.b());
+         $$3.a("CriteriaName", $$2.c().d());
+         $$3.a("DisplayName", vu.a.a($$2.d()));
+         $$3.a("RenderType", $$2.h().a());
+         $$3.a("display_auto_update", $$2.e());
+         xk $$4 = $$2.f();
+         if ($$4 != null) {
+            xm.b.encodeStart(to.a, $$4).result().ifPresent($$1 -> $$3.a("format", $$1));
+         }
+
+         $$0.add($$3);
       }
 
-      public static eqy.a a(String $$0) {
-         return c.a($$0, a);
-      }
+      return $$0;
    }
 }

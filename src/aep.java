@@ -5,7 +5,7 @@ public record aep(int b) implements yb<aam> {
       this($$0.l());
    }
 
-   public static aep a(bnn $$0) {
+   public static aep a(bno $$0) {
       return new aep($$0.k());
    }
 

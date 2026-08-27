@@ -1,4 +1,4 @@
-public record abk(cqf b, int c) implements yb<aam> {
+public record abk(cqh b, int c) implements yb<aam> {
    public static final xs<vf, abk> a = xs.a(xq.a(kj.F), abk::b, xq.d, abk::e, abk::new);
 
    @Override

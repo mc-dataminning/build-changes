@@ -1,20 +1,16 @@
 public enum dnm implements axq {
-   a("head"),
-   b("foot");
+   a("floor"),
+   b("wall"),
+   c("ceiling");
 
-   private final String c;
+   private final String d;
 
    private dnm(String $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.c;
+      this.d = $$0;
    }
 
    @Override
    public String c() {
-      return this.c;
+      return this.d;
    }
 }

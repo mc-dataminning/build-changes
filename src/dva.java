@@ -1,58 +1,66 @@
 import com.mojang.serialization.Codec;
 
-public class dva extends dvq<dyb> {
-   public dva(Codec<dyb> $$0) {
+public class dva extends dvs<dxn> {
+   public dva(Codec<dxn> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dvs<dyb> $$0) {
-      ib $$1 = $$0.e();
-      cxu $$2 = $$0.b();
+   public boolean a(dvu<dxn> $$0) {
+      cxw $$1 = $$0.b();
+      dxn $$2 = $$0.f();
       axd $$3 = $$0.d();
-      if ($$1.v() > $$2.z_() - 1) {
-         return false;
-      } else if (!$$2.a_($$1).a(dac.G) && !$$2.a_($$1.d()).a(dac.G)) {
+      int $$4 = $$2.a().size();
+      int[] $$5 = new int[$$4];
+      int $$6 = 0;
+
+      for (int $$7 = 0; $$7 < $$4; $$7++) {
+         $$5[$$7] = $$2.a().get($$7).a().a($$3);
+         $$6 += $$5[$$7];
+      }
+
+      if ($$6 == 0) {
          return false;
       } else {
-         boolean $$4 = false;
+         ib.a $$8 = $$0.e().j();
+         ib.a $$9 = $$8.j().c($$2.b());
 
-         for (ih $$5 : ih.values()) {
-            if ($$5 != ih.a && $$2.a_($$1.a($$5)).a(dac.iC)) {
-               $$4 = true;
+         for (int $$10 = 0; $$10 < $$6; $$10++) {
+            if (!$$2.c().test($$1, $$9)) {
+               a($$5, $$6, $$10, $$2.d());
                break;
             }
+
+            $$9.c($$2.b());
          }
 
-         if (!$$4) {
-            return false;
-         } else {
-            $$2.a($$1, dac.mW.o(), 2);
+         for (int $$11 = 0; $$11 < $$4; $$11++) {
+            int $$12 = $$5[$$11];
+            if ($$12 != 0) {
+               dxn.a $$13 = $$2.a().get($$11);
 
-            for (int $$6 = 0; $$6 < 200; $$6++) {
-               int $$7 = $$3.a(5) - $$3.a(6);
-               int $$8 = 3;
-               if ($$7 < 2) {
-                  $$8 += $$7 / 2;
-               }
-
-               if ($$8 >= 1) {
-                  ib $$9 = $$1.b($$3.a($$8) - $$3.a($$8), $$7, $$3.a($$8) - $$3.a($$8));
-                  dmz $$10 = $$2.a_($$9);
-                  if ($$10.i() || $$10.a(dac.G) || $$10.a(dac.iC) || $$10.a(dac.dO)) {
-                     for (ih $$11 : ih.values()) {
-                        dmz $$12 = $$2.a_($$9.a($$11));
-                        if ($$12.a(dac.mW)) {
-                           $$2.a($$9, dac.mW.o(), 2);
-                           break;
-                        }
-                     }
-                  }
+               for (int $$14 = 0; $$14 < $$12; $$14++) {
+                  $$1.a($$8, $$13.b().a($$3, $$8), 2);
+                  $$8.c($$2.b());
                }
             }
-
-            return true;
          }
+
+         return true;
+      }
+   }
+
+   private static void a(int[] $$0, int $$1, int $$2, boolean $$3) {
+      int $$4 = $$1 - $$2;
+      int $$5 = $$3 ? 1 : -1;
+      int $$6 = $$3 ? 0 : $$0.length - 1;
+      int $$7 = $$3 ? $$0.length : -1;
+
+      for (int $$8 = $$6; $$8 != $$7 && $$4 > 0; $$8 += $$5) {
+         int $$9 = $$0[$$8];
+         int $$10 = Math.min($$9, $$4);
+         $$4 -= $$10;
+         $$0[$$8] -= $$10;
       }
    }
 }

@@ -1,29 +1,24 @@
 import javax.annotation.Nullable;
 
-public class fbv extends fbe {
-   private final far a;
+public abstract class fbv extends fbg {
+   fbv(int $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3, vt.a);
+   }
 
-   public fbv(far $$0, vu $$1) {
-      super(0, 0, $$0.a($$1), 9 * 3, $$1);
-      this.a = $$0;
+   public static fbv a(int $$0, int $$1, ajh $$2, int $$3, int $$4) {
+      return new fbv.b(0, 0, $$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static fbv a(int $$0, int $$1, ajh $$2) {
+      return new fbv.a(0, 0, $$0, $$1, $$2);
    }
 
    @Override
-   protected void b(fat $$0, int $$1, int $$2, float $$3) {
-      int $$4 = this.B() + this.w() / 2;
-      int $$5 = this.C() + this.u() / 2;
-      vu $$6 = this.x();
-      $$0.a(this.a, $$6, $$4 - this.a.a($$6) / 2, $$5 - 9, -1, false);
-      String $$7 = fgq.a(ac.b());
-      $$0.a(this.a, $$7, $$4 - this.a.b($$7) / 2, $$5 + 9, -8355712, false);
+   protected void a(ffe $$0) {
    }
 
    @Override
-   protected void a(ffc $$0) {
-   }
-
-   @Override
-   public void a(gnq $$0) {
+   public void a(gnt $$0) {
    }
 
    @Override
@@ -33,7 +28,39 @@ public class fbv extends fbe {
 
    @Nullable
    @Override
-   public faq a(ffi $$0) {
+   public fas a(ffk $$0) {
       return null;
+   }
+
+   static class a extends fbv {
+      private final ajh a;
+
+      public a(int $$0, int $$1, int $$2, int $$3, ajh $$4) {
+         super($$0, $$1, $$2, $$3);
+         this.a = $$4;
+      }
+
+      @Override
+      public void b(fav $$0, int $$1, int $$2, float $$3) {
+         $$0.a(this.a, this.B(), this.C(), this.w(), this.u());
+      }
+   }
+
+   static class b extends fbv {
+      private final ajh a;
+      private final int b;
+      private final int c;
+
+      public b(int $$0, int $$1, int $$2, int $$3, ajh $$4, int $$5, int $$6) {
+         super($$0, $$1, $$2, $$3);
+         this.a = $$4;
+         this.b = $$5;
+         this.c = $$6;
+      }
+
+      @Override
+      protected void b(fav $$0, int $$1, int $$2, float $$3) {
+         $$0.a(this.a, this.B(), this.C(), this.w(), this.u(), 0.0F, 0.0F, this.w(), this.u(), this.b, this.c);
+      }
    }
 }

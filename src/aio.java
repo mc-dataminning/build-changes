@@ -15,32 +15,32 @@ public class aio {
    public static final ain<String> e = ain.a(xq.i);
    public static final ain<vu> f = ain.a(vw.b);
    public static final ain<Optional<vu>> g = ain.a(vw.c);
-   public static final ain<cqk> h = new ain<cqk>() {
+   public static final ain<cqm> h = new ain<cqm>() {
       @Override
-      public xs<? super vf, cqk> codec() {
-         return cqk.f;
+      public xs<? super vf, cqm> codec() {
+         return cqm.f;
       }
 
-      public cqk a(cqk $$0) {
+      public cqm a(cqm $$0) {
          return $$0.q();
       }
    };
-   public static final ain<dmz> i = ain.a(xq.a(daa.q));
-   private static final xs<ByteBuf, Optional<dmz>> E = new xs<ByteBuf, Optional<dmz>>() {
-      public void a(ByteBuf $$0, Optional<dmz> $$1) {
+   public static final ain<dnb> i = ain.a(xq.a(dac.q));
+   private static final xs<ByteBuf, Optional<dnb>> E = new xs<ByteBuf, Optional<dnb>>() {
+      public void a(ByteBuf $$0, Optional<dnb> $$1) {
          if ($$1.isPresent()) {
-            vl.a($$0, daa.i($$1.get()));
+            vl.a($$0, dac.i($$1.get()));
          } else {
             vl.a($$0, 0);
          }
       }
 
-      public Optional<dmz> a(ByteBuf $$0) {
+      public Optional<dnb> a(ByteBuf $$0) {
          int $$1 = vl.a($$0);
-         return $$1 == 0 ? Optional.empty() : Optional.of(daa.a($$1));
+         return $$1 == 0 ? Optional.empty() : Optional.of(dac.a($$1));
       }
    };
-   public static final ain<Optional<dmz>> j = ain.a(E);
+   public static final ain<Optional<dnb>> j = ain.a(E);
    public static final ain<Boolean> k = ain.a(xq.a);
    public static final ain<ka> l = ain.a(kc.aZ);
    public static final ain<jd> m = ain.a(jd.a);
@@ -59,7 +59,7 @@ public class aio {
          return $$0.h();
       }
    };
-   public static final ain<cig> t = ain.a(cig.d);
+   public static final ain<cii> t = ain.a(cii.d);
    private static final xs<ByteBuf, OptionalInt> F = new xs<ByteBuf, OptionalInt>() {
       public OptionalInt a(ByteBuf $$0) {
          int $$1 = vl.a($$0);
@@ -71,12 +71,12 @@ public class aio {
       }
    };
    public static final ain<OptionalInt> u = ain.a(F);
-   public static final ain<bpz> v = ain.a(bpz.t);
-   public static final ain<cbh> w = ain.a(xq.a(kj.l));
-   public static final ain<cbo> x = ain.a(xq.a(kj.A));
-   public static final ain<il<cez>> y = ain.a(xq.b(kj.R));
-   public static final ain<cck.a> z = ain.a(cck.a.e);
-   public static final ain<cds.a> A = ain.a(cds.a.i);
+   public static final ain<bqa> v = ain.a(bqa.t);
+   public static final ain<cbi> w = ain.a(xq.a(kj.l));
+   public static final ain<cbp> x = ain.a(xq.a(kj.A));
+   public static final ain<il<cfa>> y = ain.a(xq.b(kj.R));
+   public static final ain<ccl.a> z = ain.a(ccl.a.e);
+   public static final ain<cdt.a> A = ain.a(cdt.a.i);
    public static final ain<Vector3f> B = ain.a(xq.m);
    public static final ain<Quaternionf> C = ain.a(xq.n);
 

@@ -1,25 +1,15 @@
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.BiConsumer;
-import java.util.stream.Stream;
+import java.util.List;
 
-record eeq(ajg<eel> c, blm<ajg<eel>> d) implements een {
-   static Codec<eeq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ajg.a(kj.aH).fieldOf("alias").forGetter(eeq::c), blm.b(ajg.a(kj.aH)).fieldOf("targets").forGetter(eeq::d)).apply($$0, eeq::new)
-   );
-
-   @Override
-   public void a(axd $$0, BiConsumer<ajg<eel>, ajg<eel>> $$1) {
-      this.d.b($$0).ifPresent($$1x -> $$1.accept(this.c, (ajg<eel>)$$1x.b()));
+public class eeq {
+   public static Codec<? extends eep> a(iy<Codec<? extends eep>> $$0) {
+      iy.a($$0, "random", ees.a);
+      iy.a($$0, "random_group", eet.a);
+      return iy.a($$0, "direct", eeo.a);
    }
 
-   @Override
-   public Stream<ajg<eel>> a() {
-      return this.d.e().stream().map(blo.b::b);
-   }
-
-   @Override
-   public Codec<eeq> b() {
-      return a;
+   public static void a(pl<een> $$0, il<een> $$1, List<eep> $$2) {
+      $$2.stream().flatMap(eep::a).map($$0x -> $$0x.a().a()).forEach($$2x -> ps.a($$0, $$2x, new een($$1, List.of(Pair.of(eel.b($$2x), 1)), een.a.b)));
    }
 }

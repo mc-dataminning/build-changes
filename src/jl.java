@@ -1,5 +1,5 @@
-public record jl(apf a, ib b, dmz c, dky d) {
-   public epr a() {
+public record jl(apf a, ib b, dnb c, dla d) {
+   public ept a() {
       return this.b.b();
    }
 
@@ -11,11 +11,11 @@ public record jl(apf a, ib b, dmz c, dky d) {
       return this.b;
    }
 
-   public dmz d() {
+   public dnb d() {
       return this.c;
    }
 
-   public dky e() {
+   public dla e() {
       return this.d;
    }
 }

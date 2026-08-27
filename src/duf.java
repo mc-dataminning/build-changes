@@ -1,18 +1,21 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class duf implements dtt {
-   public static duf a = new duf();
-   public static final Codec<duf> e = Codec.unit(() -> a);
+@Deprecated
+public class duf extends dug {
+   public static final Codec<duf> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, duf::new));
 
-   private duf() {
-   }
-
-   public boolean a(cxu $$0, ib $$1) {
-      return true;
+   public duf(jg $$0) {
+      super($$0);
    }
 
    @Override
-   public dtu<?> a() {
-      return dtu.l;
+   protected boolean a(dnb $$0) {
+      return $$0.e();
+   }
+
+   @Override
+   public dtw<?> a() {
+      return dtw.e;
    }
 }

@@ -69,8 +69,8 @@ public class aev {
       "Fist"
    };
 
-   public static String a(bow $$0) {
-      if ($$0 instanceof cis) {
+   public static String a(box $$0) {
+      if ($$0 instanceof ciu) {
          return $$0.ad().getString();
       } else {
          vu $$1 = $$0.af();

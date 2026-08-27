@@ -8,8 +8,8 @@ public class cr extends cx<cr.a> {
       return cr.a.a;
    }
 
-   public void a(apg $$0, cqk $$1, bow $$2) {
-      eku $$3 = br.b($$0, $$2);
+   public void a(apg $$0, cqm $$1, box $$2) {
+      ekw $$3 = br.b($$0, $$2);
       this.a($$0, $$2x -> $$2x.a($$1, $$3));
    }
 
@@ -27,7 +27,7 @@ public class cr extends cx<cr.a> {
          return a(Optional.empty(), $$0, $$1);
       }
 
-      public boolean a(cqk $$0, eku $$1) {
+      public boolean a(cqm $$0, ekw $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : this.d.isEmpty() || this.d.get().a($$1);
       }
 

@@ -1,70 +1,110 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.function.Function;
 
-public record dsu(int g, int h, int i, int j) {
+public record dsu(dsh b, dsh c, dsh d, dsh e, dsh f, dsh g, dsh h, dsh i, dsh j, dsh k, dsh l, dsh m, dsh n, dsh o, dsh p) {
    public static final Codec<dsu> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.intRange(dqm.e, dqm.d).fieldOf("min_y").forGetter(dsu::c),
-                  Codec.intRange(0, dqm.c).fieldOf("height").forGetter(dsu::d),
-                  Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(dsu::e),
-                  Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(dsu::f)
-               )
-               .apply($$0, dsu::new)
-      )
-      .comapFlatMap(dsu::a, Function.identity());
-   protected static final dsu b = a(-64, 384, 1, 2);
-   protected static final dsu c = a(0, 128, 1, 2);
-   protected static final dsu d = a(0, 128, 2, 1);
-   protected static final dsu e = a(-64, 192, 1, 2);
-   protected static final dsu f = a(0, 256, 2, 1);
+      $$0 -> $$0.group(
+               a("barrier", dsu::a),
+               a("fluid_level_floodedness", dsu::b),
+               a("fluid_level_spread", dsu::c),
+               a("lava", dsu::d),
+               a("temperature", dsu::e),
+               a("vegetation", dsu::f),
+               a("continents", dsu::g),
+               a("erosion", dsu::h),
+               a("depth", dsu::i),
+               a("ridges", dsu::j),
+               a("initial_density_without_jaggedness", dsu::k),
+               a("final_density", dsu::l),
+               a("vein_toggle", dsu::m),
+               a("vein_ridged", dsu::n),
+               a("vein_gap", dsu::o)
+            )
+            .apply($$0, dsu::new)
+   );
 
-   private static DataResult<dsu> a(dsu $$0) {
-      if ($$0.c() + $$0.d() > dqm.d + 1) {
-         return DataResult.error(() -> "min_y + height cannot be higher than: " + (dqm.d + 1));
-      } else if ($$0.d() % 16 != 0) {
-         return DataResult.error(() -> "height has to be a multiple of 16");
-      } else {
-         return $$0.c() % 16 != 0 ? DataResult.error(() -> "min_y has to be a multiple of 16") : DataResult.success($$0);
-      }
+   private static RecordCodecBuilder<dsu, dsh> a(String $$0, Function<dsu, dsh> $$1) {
+      return dsh.d.fieldOf($$0).forGetter($$1);
    }
 
-   public static dsu a(int $$0, int $$1, int $$2, int $$3) {
-      dsu $$4 = new dsu($$0, $$1, $$2, $$3);
-      a($$4).error().ifPresent($$0x -> {
-         throw new IllegalStateException($$0x.message());
-      });
-      return $$4;
+   public dsu a(dsh.f $$0) {
+      return new dsu(
+         this.b.a($$0),
+         this.c.a($$0),
+         this.d.a($$0),
+         this.e.a($$0),
+         this.f.a($$0),
+         this.g.a($$0),
+         this.h.a($$0),
+         this.i.a($$0),
+         this.j.a($$0),
+         this.k.a($$0),
+         this.l.a($$0),
+         this.m.a($$0),
+         this.n.a($$0),
+         this.o.a($$0),
+         this.p.a($$0)
+      );
    }
 
-   public int a() {
-      return iw.c(this.f());
+   public dsh a() {
+      return this.b;
    }
 
-   public int b() {
-      return iw.c(this.e());
+   public dsh b() {
+      return this.c;
    }
 
-   public dsu a(cxb $$0) {
-      int $$1 = Math.max(this.g, $$0.I_());
-      int $$2 = Math.min(this.g + this.h, $$0.ak()) - $$1;
-      return new dsu($$1, $$2, this.i, this.j);
+   public dsh c() {
+      return this.d;
    }
 
-   public int c() {
+   public dsh d() {
+      return this.e;
+   }
+
+   public dsh e() {
+      return this.f;
+   }
+
+   public dsh f() {
       return this.g;
    }
 
-   public int d() {
+   public dsh g() {
       return this.h;
    }
 
-   public int e() {
+   public dsh h() {
       return this.i;
    }
 
-   public int f() {
+   public dsh i() {
       return this.j;
+   }
+
+   public dsh j() {
+      return this.k;
+   }
+
+   public dsh k() {
+      return this.l;
+   }
+
+   public dsh l() {
+      return this.m;
+   }
+
+   public dsh m() {
+      return this.n;
+   }
+
+   public dsh n() {
+      return this.o;
+   }
+
+   public dsh o() {
+      return this.p;
    }
 }

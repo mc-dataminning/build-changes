@@ -1,31 +1,51 @@
 import com.mojang.serialization.MapCodec;
 
-public class dhf extends dbu {
-   public static final MapCodec<dhf> b = b(dhf::new);
-   private static final vu c = vu.c("container.upgrade");
+public class dhf extends dds {
+   public static final MapCodec<dhf> a = b(dhf::new);
 
    @Override
    public MapCodec<dhf> a() {
-      return b;
+      return a;
    }
 
-   protected dhf(dmy.d $$0) {
+   public dhf(dna.d $$0) {
       super($$0);
    }
 
    @Override
-   protected bng b(dmz $$0, cwz $$1, ib $$2) {
-      return new bnm(($$2x, $$3, $$4) -> new cnk($$2x, $$3, clz.a($$1, $$2)), c);
+   public void a(cxb $$0, dnb $$1, ib $$2, box $$3, float $$4) {
+      if ($$3.bU()) {
+         super.a($$0, $$1, $$2, $$3, $$4);
+      } else {
+         $$3.a($$4, 0.0F, $$0.ah().k());
+      }
    }
 
    @Override
-   protected bnc a(dmz $$0, cwz $$1, ib $$2, cis $$3, epn $$4) {
-      if ($$1.B) {
-         return bnc.a;
+   public void a(cwh $$0, box $$1) {
+      if ($$1.bU()) {
+         super.a($$0, $$1);
       } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(aui.aF);
-         return bnc.b;
+         this.a($$1);
       }
+   }
+
+   private void a(box $$0) {
+      ept $$1 = $$0.dp();
+      if ($$1.d < 0.0) {
+         double $$2 = $$0 instanceof bpp ? 1.0 : 0.8;
+         $$0.o($$1.c, -$$1.d * $$2, $$1.e);
+      }
+   }
+
+   @Override
+   public void a(cxb $$0, ib $$1, dnb $$2, box $$3) {
+      double $$4 = Math.abs($$3.dp().d);
+      if ($$4 < 0.1 && !$$3.bT()) {
+         double $$5 = 0.4 + $$4 * 0.2;
+         $$3.g($$3.dp().d($$5, 1.0, $$5));
+      }
+
+      super.a($$0, $$1, $$2, $$3);
    }
 }

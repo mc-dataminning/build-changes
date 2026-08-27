@@ -1,47 +1,35 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dvx extends dvq<dyb> {
-   public dvx(Codec<dyb> $$0) {
-      super($$0);
-   }
+public class dvx implements dxw {
+   public static final Codec<dvx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ajh.a.listOf().fieldOf("fossil_structures").forGetter($$0x -> $$0x.b),
+               ajh.a.listOf().fieldOf("overlay_structures").forGetter($$0x -> $$0x.c),
+               ehd.d.fieldOf("fossil_processors").forGetter($$0x -> $$0x.d),
+               ehd.d.fieldOf("overlay_processors").forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 7).fieldOf("max_empty_corners_allowed").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, dvx::new)
+   );
+   public final List<ajh> b;
+   public final List<ajh> c;
+   public final il<ehc> d;
+   public final il<ehc> e;
+   public final int f;
 
-   @Override
-   public boolean a(dvs<dyb> $$0) {
-      cxu $$1 = $$0.b();
-      ib $$2 = $$0.e();
-      axd $$3 = $$0.d();
-      if (!$$1.u($$2)) {
-         return false;
+   public dvx(List<ajh> $$0, List<ajh> $$1, il<ehc> $$2, il<ehc> $$3, int $$4) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Fossil structure lists need at least one entry");
+      } else if ($$0.size() != $$1.size()) {
+         throw new IllegalArgumentException("Fossil structure lists must be equal lengths");
       } else {
-         dmz $$4 = $$1.a_($$2.c());
-         if (!$$4.a(dac.dV) && !$$4.a(dac.dY) && !$$4.a(dac.pr)) {
-            return false;
-         } else {
-            $$1.a($$2, dac.ec.o(), 2);
-
-            for (int $$5 = 0; $$5 < 1500; $$5++) {
-               ib $$6 = $$2.b($$3.a(8) - $$3.a(8), -$$3.a(12), $$3.a(8) - $$3.a(8));
-               if ($$1.a_($$6).i()) {
-                  int $$7 = 0;
-
-                  for (ih $$8 : ih.values()) {
-                     if ($$1.a_($$6.a($$8)).a(dac.ec)) {
-                        $$7++;
-                     }
-
-                     if ($$7 > 1) {
-                        break;
-                     }
-                  }
-
-                  if ($$7 == 1) {
-                     $$1.a($$6, dac.ec.o(), 2);
-                  }
-               }
-            }
-
-            return true;
-         }
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
       }
    }
 }

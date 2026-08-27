@@ -1,61 +1,45 @@
-import java.util.List;
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public class cfn extends cfu {
-   public static final float b = bpc.D.k() / bpc.Y.k();
-   private static final int e = 1200;
-   private static final int bX = 50;
-   private static final int bY = 6000;
-   private static final int bZ = 2;
-   private static final int ca = 1200;
+public interface cfn extends cge {
+   void b(boolean var1);
 
-   public cfn(bpc<? extends cfn> $$0, cwz $$1) {
-      super($$0, $$1);
-      this.fS();
-      if (this.d != null) {
-         this.d.c(400);
-      }
-   }
+   void a(bpp var1, cqm var2, cjm var3, float var4);
 
-   public static bqu.a r() {
-      return cfu.gn().a(bqv.r, 0.3F).a(bqv.c, 8.0).a(bqv.q, 80.0);
-   }
+   @Nullable
+   bpp p();
 
-   @Override
-   public int s() {
-      return 60;
-   }
+   void a();
 
-   @Override
-   protected atx v() {
-      return this.bf() ? aty.hD : aty.hE;
-   }
-
-   @Override
-   protected atx d(bnv $$0) {
-      return this.bf() ? aty.hJ : aty.hK;
-   }
-
-   @Override
-   protected atx n_() {
-      return this.bf() ? aty.hG : aty.hH;
-   }
-
-   @Override
-   protected atx y() {
-      return aty.hI;
-   }
-
-   @Override
-   protected void Y() {
-      super.Y();
-      if ((this.ah + this.aj()) % 1200 == 0) {
-         boj $$0 = new boj(bol.d, 6000, 2);
-         List<apg> $$1 = bok.a((apf)this.dM(), this, this.dk(), 50.0, $$0, 1200);
-         $$1.forEach($$0x -> $$0x.d.b(new abt(abt.l, this.aU() ? 0.0F : 1.0F)));
+   default void b(bpp $$0, float $$1) {
+      bnc $$2 = cjo.a($$0, cqp.vR);
+      cqm $$3 = $$0.b($$2);
+      if ($$0.b(cqp.vR)) {
+         cox.a($$0.dM(), $$0, $$2, $$3, $$1, (float)(14 - $$0.dM().aj().a() * 4));
       }
 
-      if (!this.fZ()) {
-         this.a(this.dm(), 16);
+      this.a();
+   }
+
+   default void a(bpp $$0, bpp $$1, cjm $$2, float $$3, float $$4) {
+      double $$5 = $$1.dr() - $$0.dr();
+      double $$6 = $$1.dx() - $$0.dx();
+      double $$7 = Math.sqrt($$5 * $$5 + $$6 * $$6);
+      double $$8 = $$1.e(0.3333333333333333) - $$2.dt() + $$7 * 0.2F;
+      Vector3f $$9 = this.a($$0, new ept($$5, $$8, $$6), $$3);
+      $$2.c((double)$$9.x(), (double)$$9.y(), (double)$$9.z(), $$4, (float)(14 - $$0.dM().aj().a() * 4));
+      $$0.a(aty.go, 1.0F, 1.0F / ($$0.ei().i() * 0.4F + 0.8F));
+   }
+
+   default Vector3f a(bpp $$0, ept $$1, float $$2) {
+      Vector3f $$3 = $$1.j().normalize();
+      Vector3f $$4 = new Vector3f($$3).cross(new Vector3f(0.0F, 1.0F, 0.0F));
+      if ((double)$$4.lengthSquared() <= 1.0E-7) {
+         ept $$5 = $$0.i(1.0F);
+         $$4 = new Vector3f($$3).cross($$5.j());
       }
+
+      Vector3f $$6 = new Vector3f($$3).rotateAxis((float) (Math.PI / 2), $$4.x, $$4.y, $$4.z);
+      return new Vector3f($$3).rotateAxis($$2 * (float) (Math.PI / 180.0), $$6.x, $$6.y, $$6.z);
    }
 }

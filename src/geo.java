@@ -1,12 +1,24 @@
-public class geo extends gdr<cgb> {
-   private static final ajh a = new ajh("textures/entity/illager/pillager.png");
+public class geo extends geh<cgc, fpg<cgc>> {
+   private static final ajh a = new ajh("textures/entity/phantom.png");
 
-   public geo(gcy.a $$0) {
-      super($$0, new foq<>($$0.a(frc.aN)), 0.5F);
-      this.a(new ghc<>(this, $$0.d()));
+   public geo(gdb.a $$0) {
+      super($$0, new fpg<>($$0.a(fre.aH)), 0.75F);
+      this.a(new ghk<>(this));
    }
 
-   public ajh a(cgb $$0) {
+   public ajh a(cgc $$0) {
       return a;
+   }
+
+   protected void a(cgc $$0, eub $$1, float $$2) {
+      int $$3 = $$0.r();
+      float $$4 = 1.0F + 0.15F * (float)$$3;
+      $$1.b($$4, $$4, $$4);
+      $$1.a(0.0F, 1.3125F, 0.1875F);
+   }
+
+   protected void a(cgc $$0, eub $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      $$1.a(a.b.rotationDegrees($$0.dE()));
    }
 }

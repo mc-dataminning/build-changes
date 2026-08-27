@@ -1,249 +1,103 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import java.util.Map;
-import java.util.Objects;
-import java.util.UUID;
-import java.util.function.BooleanSupplier;
+import java.util.Optional;
+import java.util.Map.Entry;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public abstract class frv implements yh {
-   private static final vu i = vu.c("disconnect.lost");
-   private static final Logger j = LogUtils.getLogger();
-   protected final ezg a;
-   protected final us b;
+public class frv {
+   private static final Logger a = LogUtils.getLogger();
+   private final ezi b;
+   private final gog c;
+   private final ak d = new ak();
+   private final Map<af, ah> e = new Object2ObjectOpenHashMap();
    @Nullable
-   protected final fsm c;
+   private frv.a f;
    @Nullable
-   protected String d;
-   protected final god e;
-   @Nullable
-   protected final fhf f;
-   protected boolean g;
-   private final List<frv.a> k = new ArrayList<>();
-   protected final Map<ajh, byte[]> h;
+   private af g;
 
-   protected frv(ezg $$0, us $$1, fsc $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2.f();
-      this.d = $$2.e();
-      this.e = $$2.b();
-      this.f = $$2.g();
-      this.h = $$2.h();
+   public frv(ezi $$0, gog $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   public void a(yk $$0) {
-      this.a(new yv($$0.b()), () -> !RenderSystem.isFrozenAtPollEvents(), Duration.ofMinutes(1L));
-   }
+   public void a(aeq $$0) {
+      if ($$0.g()) {
+         this.d.a();
+         this.e.clear();
+      }
 
-   @Override
-   public void a(yl $$0) {
-      ye.a($$0, this, this.a);
-      this.b(new yw($$0.b()));
-   }
+      this.d.a($$0.e());
+      this.d.a($$0.b());
 
-   @Override
-   public void a(yi $$0) {
-      zc $$1 = $$0.b();
-      if (!($$1 instanceof zd)) {
-         ye.a($$0, this, this.a);
-         if ($$1 instanceof za $$2) {
-            this.d = $$2.b();
-            this.e.a($$2.b());
+      for (Entry<ajh, ah> $$1 : $$0.f().entrySet()) {
+         ag $$2 = this.d.a($$1.getKey());
+         if ($$2 != null) {
+            ah $$3 = $$1.getValue();
+            $$3.a($$2.a().f());
+            this.e.put($$2.b(), $$3);
+            if (this.f != null) {
+               this.f.a($$2, $$3);
+            }
+
+            if (!$$0.g() && $$3.a()) {
+               if (this.b.r != null) {
+                  this.c.a(this.b.r, $$2.b());
+               }
+
+               Optional<ar> $$4 = $$2.a().c();
+               if ($$4.isPresent() && $$4.get().h()) {
+                  this.b.aA().a(new fdo($$2.b()));
+               }
+            }
          } else {
-            this.a($$1);
+            a.warn("Server informed client about progress for unknown advancement {}", $$1.getKey());
          }
       }
    }
 
-   protected abstract void a(zc var1);
-
-   @Override
-   public void a(yn $$0) {
-      ye.a($$0, this, this.a);
-      UUID $$1 = $$0.b();
-      URL $$2 = a($$0.e());
-      if ($$2 == null) {
-         this.b.a(new yx($$1, yx.a.f));
-      } else {
-         String $$3 = $$0.f();
-         boolean $$4 = $$0.g();
-         fsm.a $$5 = this.c != null ? this.c.b() : fsm.a.c;
-         if ($$5 != fsm.a.c && (!$$4 || $$5 != fsm.a.b)) {
-            this.a.ae().a($$1, $$2, $$3);
-         } else {
-            this.a.a(this.a($$1, $$2, $$3, $$4, $$0.h().orElse(null)));
-         }
-      }
-   }
-
-   @Override
-   public void a(ym $$0) {
-      ye.a($$0, this, this.a);
-      $$0.b().ifPresentOrElse($$0x -> this.a.ae().a($$0x), () -> this.a.ae().e());
-   }
-
-   static vu a(vu $$0, @Nullable vu $$1) {
-      return (vu)($$1 == null ? $$0 : vu.a("multiplayer.texturePrompt.serverPrompt", $$0, $$1));
-   }
-
-   @Nullable
-   private static URL a(String $$0) {
-      try {
-         URL $$1 = new URL($$0);
-         String $$2 = $$1.getProtocol();
-         return !"http".equals($$2) && !"https".equals($$2) ? null : $$1;
-      } catch (MalformedURLException var3) {
-         return null;
-      }
-   }
-
-   @Override
-   public void a(aah $$0) {
-      ye.a($$0, this, this.a);
-      this.b.a(new aak($$0.b(), this.h.get($$0.b())));
-   }
-
-   @Override
-   public void a(yo $$0) {
-      ye.a($$0, this, this.a);
-      this.h.put($$0.b(), $$0.e());
-   }
-
-   @Override
-   public void a(yp $$0) {
-      ye.a($$0, this, this.a);
-      if (this.c == null) {
-         throw new IllegalStateException("Cannot transfer to server from singleplayer");
-      } else {
-         this.g = true;
-         this.b.a(vu.c("disconnect.transfer"));
-         this.b.m();
-         this.b.n();
-         ftp $$1 = new ftp($$0.b(), $$0.e());
-         ffy.a(Objects.requireNonNullElseGet(this.f, fhk::new), this.a, $$1, this.c, false, new fsq(this.h));
-      }
-   }
-
-   @Override
-   public void a(yj $$0) {
-      this.b.a($$0.b());
-   }
-
-   protected void f() {
-      Iterator<frv.a> $$0 = this.k.iterator();
-
-      while ($$0.hasNext()) {
-         frv.a $$1 = $$0.next();
-         if ($$1.b().getAsBoolean()) {
-            this.b($$1.a);
-            $$0.remove();
-         } else if ($$1.c() <= ac.b()) {
-            $$0.remove();
-         }
-      }
-   }
-
-   public void b(yb<?> $$0) {
-      this.b.a($$0);
-   }
-
-   @Override
-   public void a(vu $$0) {
-      this.e.c();
-      this.a.a(this.b($$0), this.g);
-      j.warn("Client disconnected with reason: {}", $$0.getString());
-   }
-
-   @Override
-   public void a(p $$0) {
-      $$0.a("Server type", () -> this.c != null ? this.c.f().toString() : "<none>");
-      $$0.a("Server brand", () -> this.d);
-   }
-
-   protected fhf b(vu $$0) {
-      fhf $$1 = Objects.requireNonNullElseGet(this.f, () -> new fkd(new fhk()));
-      return (fhf)(this.c != null && this.c.e() ? new gox($$1, i, $$0) : new fgg($$1, i, $$0));
-   }
-
-   @Nullable
-   public String g() {
+   public ak a() {
       return this.d;
    }
 
-   private void a(yb<? extends vg> $$0, BooleanSupplier $$1, Duration $$2) {
-      if ($$1.getAsBoolean()) {
-         this.b($$0);
-      } else {
-         this.k.add(new frv.a($$0, $$1, ac.b() + $$2.toMillis()));
+   public void a(@Nullable af $$0, boolean $$1) {
+      fsb $$2 = this.b.L();
+      if ($$2 != null && $$0 != null && $$1) {
+         $$2.b(agi.a($$0));
+      }
+
+      if (this.g != $$0) {
+         this.g = $$0;
+         if (this.f != null) {
+            this.f.a($$0);
+         }
       }
    }
 
-   private fhf a(UUID $$0, URL $$1, String $$2, boolean $$3, @Nullable vu $$4) {
-      fhf $$5 = this.a.y;
-      return $$5 instanceof frv.b $$6 ? $$6.a(this.a, $$0, $$1, $$2, $$3, $$4) : new frv.b(this.a, $$5, List.of(new frv.b.a($$0, $$1, $$2)), $$3, $$4);
+   public void a(@Nullable frv.a $$0) {
+      this.f = $$0;
+      this.d.a($$0);
+      if ($$0 != null) {
+         this.e.forEach(($$1, $$2) -> {
+            ag $$3 = this.d.a($$1);
+            if ($$3 != null) {
+               $$0.a($$3, $$2);
+            }
+         });
+         $$0.a(this.g);
+      }
    }
 
-   static record a(yb<? extends vg> a, BooleanSupplier b, long c) {
+   @Nullable
+   public af a(ajh $$0) {
+      ag $$1 = this.d.a($$0);
+      return $$1 != null ? $$1.b() : null;
    }
 
-   class b extends ffx {
-      private final List<frv.b.a> l;
-      @Nullable
-      private final fhf m;
+   public interface a extends ak.a {
+      void a(ag var1, ah var2);
 
-      b(ezg $$0, @Nullable fhf $$1, List<frv.b.a> $$2, boolean $$3, @Nullable vu $$4) {
-         super(
-            $$5 -> {
-               $$0.a($$1);
-               glo $$6 = $$0.ae();
-               if ($$5) {
-                  if (frv.this.c != null) {
-                     frv.this.c.a(fsm.a.a);
-                  }
-
-                  $$6.g();
-               } else {
-                  $$6.h();
-                  if ($$3) {
-                     frv.this.b.a(vu.c("multiplayer.requiredTexturePrompt.disconnect"));
-                  } else if (frv.this.c != null) {
-                     frv.this.c.a(fsm.a.b);
-                  }
-               }
-
-               for (frv.b.a $$7 : $$2) {
-                  $$6.a($$7.a, $$7.b, $$7.c);
-               }
-
-               if (frv.this.c != null) {
-                  fsn.b(frv.this.c);
-               }
-            },
-            $$3 ? vu.c("multiplayer.requiredTexturePrompt.line1") : vu.c("multiplayer.texturePrompt.line1"),
-            frv.a($$3 ? vu.c("multiplayer.requiredTexturePrompt.line2").a(n.o, n.r) : vu.c("multiplayer.texturePrompt.line2"), $$4),
-            $$3 ? vt.i : vt.f,
-            $$3 ? vt.p : vt.g
-         );
-         this.l = $$2;
-         this.m = $$1;
-      }
-
-      public frv.b a(ezg $$0, UUID $$1, URL $$2, String $$3, boolean $$4, @Nullable vu $$5) {
-         List<frv.b.a> $$6 = ImmutableList.builderWithExpectedSize(this.l.size() + 1).addAll(this.l).add(new frv.b.a($$1, $$2, $$3)).build();
-         return frv.this.new b($$0, this.m, $$6, $$4, $$5);
-      }
-
-      static record a(UUID a, URL b, String c) {
-      }
+      void a(@Nullable af var1);
    }
 }

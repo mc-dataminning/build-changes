@@ -1,28 +1,31 @@
-public enum dia {
-   a {
-      @Override
-      public boolean a(dmz $$0, cwf $$1, ib $$2, ih $$3) {
-         return daa.a($$0.l($$1, $$2), $$3);
-      }
-   },
-   b {
-      private final int d = 1;
-      private final eqk e = daa.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0);
+import com.mojang.serialization.MapCodec;
 
-      @Override
-      public boolean a(dmz $$0, cwf $$1, ib $$2, ih $$3) {
-         return !eqh.c($$0.l($$1, $$2).a($$3), this.e, epv.c);
-      }
-   },
-   c {
-      private final int d = 2;
-      private final eqk e = eqh.a(eqh.b(), daa.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0), epv.e);
+public class dia extends dac {
+   public static final MapCodec<dia> a = b(dia::new);
+   private static final double b = 5.0;
+   private static final eqm c = dac.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
 
-      @Override
-      public boolean a(dmz $$0, cwf $$1, ib $$2, ih $$3) {
-         return !eqh.c($$0.l($$1, $$2).a($$3), this.e, epv.c);
-      }
-   };
+   @Override
+   public MapCodec<dia> a() {
+      return a;
+   }
 
-   public abstract boolean a(dmz var1, cwf var2, ib var3, ih var4);
+   protected dia(dna.d $$0) {
+      super($$0);
+   }
+
+   @Override
+   protected dgh b_(dnb $$0) {
+      return dgh.a;
+   }
+
+   @Override
+   protected eqm a(dnb $$0, cwh $$1, ib $$2, epy $$3) {
+      return c;
+   }
+
+   @Override
+   protected float d(dnb $$0, cwh $$1, ib $$2) {
+      return 1.0F;
+   }
 }

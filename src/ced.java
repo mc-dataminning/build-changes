@@ -1,124 +1,59 @@
 import javax.annotation.Nullable;
 
-public class ced extends cdz {
-   private static final cae b = cae.a().d();
+public class ced extends cea {
    @Nullable
-   private ejc c;
-   @Nullable
-   private epr d;
-   private boolean e;
+   private ept b;
+   private int c;
 
-   public ced(cdx $$0) {
+   public ced(cdy $$0) {
       super($$0);
    }
 
    @Override
-   public cen<ced> i() {
-      return cen.a;
+   public void b() {
+      if (this.c++ % 10 == 0) {
+         float $$0 = (this.a.ei().i() - 0.5F) * 8.0F;
+         float $$1 = (this.a.ei().i() - 0.5F) * 4.0F;
+         float $$2 = (this.a.ei().i() - 0.5F) * 8.0F;
+         this.a.dM().a(kc.w, this.a.dr() + (double)$$0, this.a.dt() + 2.0 + (double)$$1, this.a.dx() + (double)$$2, 0.0, 0.0, 0.0);
+      }
    }
 
    @Override
    public void c() {
-      double $$0 = this.d == null ? 0.0 : this.d.c(this.a.dr(), this.a.dt(), this.a.dx());
-      if ($$0 < 100.0 || $$0 > 22500.0 || this.a.P || this.a.Q) {
-         this.j();
+      this.c++;
+      if (this.b == null) {
+         ib $$0 = this.a.dM().a(dso.a.e, dvr.a(this.a.r()));
+         this.b = ept.c($$0);
+      }
+
+      double $$1 = this.b.c(this.a.dr(), this.a.dt(), this.a.dx());
+      if (!($$1 < 100.0) && !($$1 > 22500.0) && !this.a.P && !this.a.Q) {
+         this.a.t(1.0F);
+      } else {
+         this.a.t(0.0F);
       }
    }
 
    @Override
    public void d() {
-      this.c = null;
-      this.d = null;
+      this.b = null;
+      this.c = 0;
+   }
+
+   @Override
+   public float f() {
+      return 3.0F;
    }
 
    @Nullable
    @Override
-   public epr g() {
-      return this.d;
-   }
-
-   private void j() {
-      if (this.c != null && this.c.c()) {
-         ib $$0 = this.a.dM().a(dsm.a.f, new ib(dvp.a(this.a.r())));
-         int $$1 = this.a.gl() == null ? 0 : this.a.gl().e();
-         if (this.a.ei().a($$1 + 3) == 0) {
-            this.a.gk().a(cen.c);
-            return;
-         }
-
-         cis $$2 = this.a.dM().a(b, this.a, (double)$$0.u(), (double)$$0.v(), (double)$$0.w());
-         double $$3;
-         if ($$2 != null) {
-            $$3 = $$0.b($$2.dk()) / 512.0;
-         } else {
-            $$3 = 64.0;
-         }
-
-         if ($$2 != null && (this.a.ei().a((int)($$3 + 2.0)) == 0 || this.a.ei().a($$1 + 2) == 0)) {
-            this.a($$2);
-            return;
-         }
-      }
-
-      if (this.c == null || this.c.c()) {
-         int $$5 = this.a.y();
-         int $$6 = $$5;
-         if (this.a.ei().a(8) == 0) {
-            this.e = !this.e;
-            $$6 = $$5 + 6;
-         }
-
-         if (this.e) {
-            $$6++;
-         } else {
-            $$6--;
-         }
-
-         if (this.a.gl() != null && this.a.gl().e() >= 0) {
-            $$6 %= 12;
-            if ($$6 < 0) {
-               $$6 += 12;
-            }
-         } else {
-            $$6 -= 12;
-            $$6 &= 7;
-            $$6 += 12;
-         }
-
-         this.c = this.a.a($$5, $$6, null);
-         if (this.c != null) {
-            this.c.a();
-         }
-      }
-
-      this.k();
-   }
-
-   private void a(cis $$0) {
-      this.a.gk().a(cen.b);
-      this.a.gk().b(cen.b).a($$0);
-   }
-
-   private void k() {
-      if (this.c != null && !this.c.c()) {
-         jg $$0 = this.c.g();
-         this.c.a();
-         double $$1 = (double)$$0.u();
-         double $$2 = (double)$$0.w();
-
-         double $$3;
-         do {
-            $$3 = (double)((float)$$0.v() + this.a.ei().i() * 20.0F);
-         } while ($$3 < (double)$$0.v());
-
-         this.d = new epr($$1, $$3, $$2);
-      }
+   public ept g() {
+      return this.b;
    }
 
    @Override
-   public void a(cdw $$0, ib $$1, bnv $$2, @Nullable cis $$3) {
-      if ($$3 != null && this.a.c($$3)) {
-         this.a($$3);
-      }
+   public ceo<ced> i() {
+      return ceo.j;
    }
 }

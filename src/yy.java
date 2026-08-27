@@ -26,9 +26,9 @@ public record yy(yy.a c) implements zc {
       return this.c;
    }
 
-   public static record a(UUID a, int b, epr c, @Nullable ejc d, @Nullable ib e, @Nullable ib f, int g, Set<String> h, List<ib> i) {
+   public static record a(UUID a, int b, ept c, @Nullable ejd d, @Nullable ib e, @Nullable ib f, int g, Set<String> h, List<ib> i) {
       public a(uu $$0) {
-         this($$0.n(), $$0.readInt(), $$0.k(), $$0.c(ejc::b), $$0.c(ib.b), $$0.c(ib.b), $$0.readInt(), $$0.a(HashSet::new, uu::p), $$0.a(ib.b));
+         this($$0.n(), $$0.readInt(), $$0.k(), $$0.c(ejd::b), $$0.c(ib.b), $$0.c(ib.b), $$0.readInt(), $$0.a(HashSet::new, uu::p), $$0.a(ib.b));
       }
 
       public void a(uu $$0) {
@@ -64,12 +64,12 @@ public record yy(yy.a c) implements zc {
          return this.b;
       }
 
-      public epr d() {
+      public ept d() {
          return this.c;
       }
 
       @Nullable
-      public ejc e() {
+      public ejd e() {
          return this.d;
       }
 

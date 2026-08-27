@@ -1,21 +1,46 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 
-public class gjm implements gjd {
-   public static final Codec<gjm> b = RecordCodecBuilder.create($$0 -> $$0.group(axe.a.fieldOf("pattern").forGetter($$0x -> $$0x.c)).apply($$0, gjm::new));
-   private final axe c;
+public class gjm {
+   private final ajh a;
+   private final asm b;
+   private final AtomicReference<etc> c = new AtomicReference<>();
+   private final AtomicInteger d;
 
-   public gjm(axe $$0) {
-      this.c = $$0;
+   public gjm(ajh $$0, asm $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = new AtomicInteger($$2);
    }
 
-   @Override
-   public void a(aso $$0, gjd.a $$1) {
-      $$1.a(this.c.c());
+   public etc a() throws IOException {
+      etc $$0 = this.c.get();
+      if ($$0 == null) {
+         synchronized (this) {
+            $$0 = this.c.get();
+            if ($$0 == null) {
+               try (InputStream $$1 = this.b.d()) {
+                  $$0 = etc.a($$1);
+                  this.c.set($$0);
+               } catch (IOException var9) {
+                  throw new IOException("Failed to load image " + this.a, var9);
+               }
+            }
+         }
+      }
+
+      return $$0;
    }
 
-   @Override
-   public gjf a() {
-      return gjg.c;
+   public void b() {
+      int $$0 = this.d.decrementAndGet();
+      if ($$0 <= 0) {
+         etc $$1 = this.c.getAndSet(null);
+         if ($$1 != null) {
+            $$1.close();
+         }
+      }
    }
 }

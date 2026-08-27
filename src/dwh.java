@@ -1,115 +1,154 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dwh extends dvq<dyb> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final bpc<?>[] b = new bpc[]{bpc.aM, bpc.bt, bpc.bt, bpc.aV};
-   private static final dmz c = dac.nc.o();
+@Deprecated
+public class dwh extends dvs<dwh.a> {
+   private static final dnb a = dae.nc.o();
 
-   public dwh(Codec<dyb> $$0) {
+   public dwh(Codec<dwh.a> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dvs<dyb> $$0) {
-      Predicate<dmz> $$1 = dvq.a(aun.bI);
-      ib $$2 = $$0.e();
+   public boolean a(dvu<dwh.a> $$0) {
+      ib $$1 = $$0.e();
+      cxw $$2 = $$0.b();
       axd $$3 = $$0.d();
-      cxu $$4 = $$0.b();
-      int $$5 = 3;
-      int $$6 = $$3.a(2) + 2;
-      int $$7 = -$$6 - 1;
-      int $$8 = $$6 + 1;
-      int $$9 = -1;
-      int $$10 = 4;
-      int $$11 = $$3.a(2) + 2;
-      int $$12 = -$$11 - 1;
-      int $$13 = $$11 + 1;
-      int $$14 = 0;
+      dwh.a $$4 = $$0.f();
+      if ($$1.v() <= $$2.I_() + 4) {
+         return false;
+      } else {
+         $$1 = $$1.c(4);
+         boolean[] $$5 = new boolean[2048];
+         int $$6 = $$3.a(4) + 4;
 
-      for (int $$15 = $$7; $$15 <= $$8; $$15++) {
-         for (int $$16 = -1; $$16 <= 4; $$16++) {
-            for (int $$17 = $$12; $$17 <= $$13; $$17++) {
-               ib $$18 = $$2.b($$15, $$16, $$17);
-               boolean $$19 = $$4.a_($$18).e();
-               if ($$16 == -1 && !$$19) {
-                  return false;
-               }
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            double $$8 = $$3.j() * 6.0 + 3.0;
+            double $$9 = $$3.j() * 4.0 + 2.0;
+            double $$10 = $$3.j() * 6.0 + 3.0;
+            double $$11 = $$3.j() * (16.0 - $$8 - 2.0) + 1.0 + $$8 / 2.0;
+            double $$12 = $$3.j() * (8.0 - $$9 - 4.0) + 2.0 + $$9 / 2.0;
+            double $$13 = $$3.j() * (16.0 - $$10 - 2.0) + 1.0 + $$10 / 2.0;
 
-               if ($$16 == 4 && !$$19) {
-                  return false;
-               }
-
-               if (($$15 == $$7 || $$15 == $$8 || $$17 == $$12 || $$17 == $$13) && $$16 == 0 && $$4.u($$18) && $$4.u($$18.c())) {
-                  $$14++;
+            for (int $$14 = 1; $$14 < 15; $$14++) {
+               for (int $$15 = 1; $$15 < 15; $$15++) {
+                  for (int $$16 = 1; $$16 < 7; $$16++) {
+                     double $$17 = ((double)$$14 - $$11) / ($$8 / 2.0);
+                     double $$18 = ((double)$$16 - $$12) / ($$9 / 2.0);
+                     double $$19 = ((double)$$15 - $$13) / ($$10 / 2.0);
+                     double $$20 = $$17 * $$17 + $$18 * $$18 + $$19 * $$19;
+                     if ($$20 < 1.0) {
+                        $$5[($$14 * 16 + $$15) * 8 + $$16] = true;
+                     }
+                  }
                }
             }
          }
-      }
 
-      if ($$14 >= 1 && $$14 <= 5) {
-         for (int $$20 = $$7; $$20 <= $$8; $$20++) {
-            for (int $$21 = 3; $$21 >= -1; $$21--) {
-               for (int $$22 = $$12; $$22 <= $$13; $$22++) {
-                  ib $$23 = $$2.b($$20, $$21, $$22);
-                  dmz $$24 = $$4.a_($$23);
-                  if ($$20 == $$7 || $$21 == -1 || $$22 == $$12 || $$20 == $$8 || $$21 == 4 || $$22 == $$13) {
-                     if ($$23.v() >= $$4.I_() && !$$4.a_($$23.d()).e()) {
-                        $$4.a($$23, c, 2);
-                     } else if ($$24.e() && !$$24.a(dac.cv)) {
-                        if ($$21 == -1 && $$3.a(4) != 0) {
-                           this.a($$4, $$23, dac.cn.o(), $$1);
-                        } else {
-                           this.a($$4, $$23, dac.m.o(), $$1);
+         dnb $$21 = $$4.a().a($$3, $$1);
+
+         for (int $$22 = 0; $$22 < 16; $$22++) {
+            for (int $$23 = 0; $$23 < 16; $$23++) {
+               for (int $$24 = 0; $$24 < 8; $$24++) {
+                  boolean $$25 = !$$5[($$22 * 16 + $$23) * 8 + $$24]
+                     && (
+                        $$22 < 15 && $$5[(($$22 + 1) * 16 + $$23) * 8 + $$24]
+                           || $$22 > 0 && $$5[(($$22 - 1) * 16 + $$23) * 8 + $$24]
+                           || $$23 < 15 && $$5[($$22 * 16 + $$23 + 1) * 8 + $$24]
+                           || $$23 > 0 && $$5[($$22 * 16 + ($$23 - 1)) * 8 + $$24]
+                           || $$24 < 7 && $$5[($$22 * 16 + $$23) * 8 + $$24 + 1]
+                           || $$24 > 0 && $$5[($$22 * 16 + $$23) * 8 + ($$24 - 1)]
+                     );
+                  if ($$25) {
+                     dnb $$26 = $$2.a_($$1.b($$22, $$24, $$23));
+                     if ($$24 >= 4 && $$26.k()) {
+                        return false;
+                     }
+
+                     if ($$24 < 4 && !$$26.e() && $$2.a_($$1.b($$22, $$24, $$23)) != $$21) {
+                        return false;
+                     }
+                  }
+               }
+            }
+         }
+
+         for (int $$27 = 0; $$27 < 16; $$27++) {
+            for (int $$28 = 0; $$28 < 16; $$28++) {
+               for (int $$29 = 0; $$29 < 8; $$29++) {
+                  if ($$5[($$27 * 16 + $$28) * 8 + $$29]) {
+                     ib $$30 = $$1.b($$27, $$29, $$28);
+                     if (this.c($$2.a_($$30))) {
+                        boolean $$31 = $$29 >= 4;
+                        $$2.a($$30, $$31 ? a : $$21, 2);
+                        if ($$31) {
+                           $$2.a($$30, a.b(), 0);
+                           this.a($$2, $$30);
                         }
                      }
-                  } else if (!$$24.a(dac.cv) && !$$24.a(dac.ct)) {
-                     this.a($$4, $$23, c, $$1);
                   }
                }
             }
          }
 
-         for (int $$25 = 0; $$25 < 2; $$25++) {
-            for (int $$26 = 0; $$26 < 3; $$26++) {
-               int $$27 = $$2.u() + $$3.a($$6 * 2 + 1) - $$6;
-               int $$28 = $$2.v();
-               int $$29 = $$2.w() + $$3.a($$11 * 2 + 1) - $$11;
-               ib $$30 = new ib($$27, $$28, $$29);
-               if ($$4.u($$30)) {
-                  int $$31 = 0;
-
-                  for (ih $$32 : ih.c.a) {
-                     if ($$4.a_($$30.a($$32)).e()) {
-                        $$31++;
+         dnb $$32 = $$4.b().a($$3, $$1);
+         if (!$$32.i()) {
+            for (int $$33 = 0; $$33 < 16; $$33++) {
+               for (int $$34 = 0; $$34 < 16; $$34++) {
+                  for (int $$35 = 0; $$35 < 8; $$35++) {
+                     boolean $$36 = !$$5[($$33 * 16 + $$34) * 8 + $$35]
+                        && (
+                           $$33 < 15 && $$5[(($$33 + 1) * 16 + $$34) * 8 + $$35]
+                              || $$33 > 0 && $$5[(($$33 - 1) * 16 + $$34) * 8 + $$35]
+                              || $$34 < 15 && $$5[($$33 * 16 + $$34 + 1) * 8 + $$35]
+                              || $$34 > 0 && $$5[($$33 * 16 + ($$34 - 1)) * 8 + $$35]
+                              || $$35 < 7 && $$5[($$33 * 16 + $$34) * 8 + $$35 + 1]
+                              || $$35 > 0 && $$5[($$33 * 16 + $$34) * 8 + ($$35 - 1)]
+                        );
+                     if ($$36 && ($$35 < 4 || $$3.a(2) != 0)) {
+                        dnb $$37 = $$2.a_($$1.b($$33, $$35, $$34));
+                        if ($$37.e() && !$$37.a(aun.bJ)) {
+                           ib $$38 = $$1.b($$33, $$35, $$34);
+                           $$2.a($$38, $$32, 2);
+                           this.a($$2, $$38);
+                        }
                      }
                   }
-
-                  if ($$31 == 1) {
-                     this.a($$4, $$30, edg.a($$4, $$30, dac.cv.o()), $$1);
-                     bnk.a($$4, $$3, $$30, eks.d);
-                     break;
-                  }
                }
             }
          }
 
-         this.a($$4, $$2, dac.ct.o(), $$1);
-         if ($$4.c_($$2) instanceof dlt $$34) {
-            $$34.a(this.a($$3), $$3);
-         } else {
-            a.error("Failed to fetch mob spawner entity at ({}, {}, {})", new Object[]{$$2.u(), $$2.v(), $$2.w()});
+         if ($$21.u().a(aus.a)) {
+            for (int $$39 = 0; $$39 < 16; $$39++) {
+               for (int $$40 = 0; $$40 < 16; $$40++) {
+                  int $$41 = 4;
+                  ib $$42 = $$1.b($$39, 4, $$40);
+                  if ($$2.t($$42).a().a($$2, $$42, false) && this.c($$2.a_($$42))) {
+                     $$2.a($$42, dae.dO.o(), 2);
+                  }
+               }
+            }
          }
 
          return true;
-      } else {
-         return false;
       }
    }
 
-   private bpc<?> a(axd $$0) {
-      return ac.a(b, $$0);
+   private boolean c(dnb $$0) {
+      return !$$0.a(aun.bI);
+   }
+
+   public static record a(dzx b, dzx c) implements dxw {
+      public static final Codec<dwh.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(dzx.a.fieldOf("fluid").forGetter(dwh.a::a), dzx.a.fieldOf("barrier").forGetter(dwh.a::b)).apply($$0, dwh.a::new)
+      );
+
+      public dzx a() {
+         return this.b;
+      }
+
+      public dzx b() {
+         return this.c;
+      }
    }
 }

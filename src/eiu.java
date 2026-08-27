@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface eiu {
+public enum eiu {
+   a,
+   b,
+   c,
+   d,
+   e;
 }

@@ -1,21 +1,23 @@
 public enum dol implements axq {
-   a("none"),
-   b("low"),
-   c("tall");
+   a("save"),
+   b("load"),
+   c("corner"),
+   d("data");
 
-   private final String d;
+   private final String e;
+   private final vu f;
 
    private dol(String $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.c();
+      this.e = $$0;
+      this.f = vu.c("structure_block.mode_info." + $$0);
    }
 
    @Override
    public String c() {
-      return this.d;
+      return this.e;
+   }
+
+   public vu a() {
+      return this.f;
    }
 }

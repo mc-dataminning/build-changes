@@ -1,44 +1,41 @@
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class cec extends cdz {
+public class cec extends cea {
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 10;
    @Nullable
-   private epr b;
-   private int c;
+   private ept d;
+   private int e;
 
-   public cec(cdx $$0) {
+   public cec(cdy $$0) {
       super($$0);
    }
 
    @Override
-   public void b() {
-      if (this.c++ % 10 == 0) {
-         float $$0 = (this.a.ei().i() - 0.5F) * 8.0F;
-         float $$1 = (this.a.ei().i() - 0.5F) * 4.0F;
-         float $$2 = (this.a.ei().i() - 0.5F) * 8.0F;
-         this.a.dM().a(kc.w, this.a.dr() + (double)$$0, this.a.dt() + 2.0 + (double)$$1, this.a.dx() + (double)$$2, 0.0, 0.0, 0.0);
-      }
-   }
-
-   @Override
    public void c() {
-      this.c++;
-      if (this.b == null) {
-         ib $$0 = this.a.dM().a(dsm.a.e, dvp.a(this.a.r()));
-         this.b = epr.c($$0);
-      }
-
-      double $$1 = this.b.c(this.a.dr(), this.a.dt(), this.a.dx());
-      if (!($$1 < 100.0) && !($$1 > 22500.0) && !this.a.P && !this.a.Q) {
-         this.a.t(1.0F);
+      if (this.d == null) {
+         b.warn("Aborting charge player as no target was set.");
+         this.a.gk().a(ceo.a);
+      } else if (this.e > 0 && this.e++ >= 10) {
+         this.a.gk().a(ceo.a);
       } else {
-         this.a.t(0.0F);
+         double $$0 = this.d.c(this.a.dr(), this.a.dt(), this.a.dx());
+         if ($$0 < 100.0 || $$0 > 22500.0 || this.a.P || this.a.Q) {
+            this.e++;
+         }
       }
    }
 
    @Override
    public void d() {
-      this.b = null;
-      this.c = 0;
+      this.d = null;
+      this.e = 0;
+   }
+
+   public void a(ept $$0) {
+      this.d = $$0;
    }
 
    @Override
@@ -48,12 +45,12 @@ public class cec extends cdz {
 
    @Nullable
    @Override
-   public epr g() {
-      return this.b;
+   public ept g() {
+      return this.d;
    }
 
    @Override
-   public cen<cec> i() {
-      return cen.j;
+   public ceo<cec> i() {
+      return ceo.i;
    }
 }

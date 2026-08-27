@@ -1,87 +1,85 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class ddf extends ddx {
-   public static final MapCodec<ddf> a = b(ddf::new);
-   public static final int b = 3;
-   public static final dnz c = dnp.as;
-   private static final int f = 4;
-   private static final int g = 2;
+public class ddf extends dac {
+   public static final MapCodec<ddf> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ki.e.q().fieldOf("potted").forGetter($$0x -> $$0x.e), u()).apply($$0, ddf::new)
+   );
+   private static final Map<dac, dac> d = Maps.newHashMap();
+   public static final float b = 3.0F;
+   protected static final eqm c = dac.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
+   private final dac e;
 
    @Override
    public MapCodec<ddf> a() {
       return a;
    }
 
-   public ddf(dmy.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(c, Integer.valueOf(0)));
+   public ddf(dac $$0, dna.d $$1) {
+      super($$1);
+      this.e = $$0;
+      d.put($$0, this);
    }
 
    @Override
-   protected void b(dmz $$0, apf $$1, ib $$2, axd $$3) {
-      this.a($$0, $$1, $$2, $$3);
+   protected eqm a(dnb $$0, cwh $$1, ib $$2, epy $$3) {
+      return c;
    }
 
    @Override
-   protected void a(dmz $$0, apf $$1, ib $$2, axd $$3) {
-      if (($$3.a(3) == 0 || this.a($$1, $$2, 4)) && $$1.A($$2) > 11 - $$0.c(c) - $$0.b($$1, $$2) && this.e($$0, $$1, $$2)) {
-         ib.a $$4 = new ib.a();
-
-         for (ih $$5 : ih.values()) {
-            $$4.a($$2, $$5);
-            dmz $$6 = $$1.a_($$4);
-            if ($$6.a(this) && !this.e($$6, $$1, $$4)) {
-               $$1.a($$4, this, aww.a($$3, 20, 40));
-            }
-         }
+   protected bnf a(cqm $$0, dnb $$1, cxb $$2, ib $$3, ciu $$4, bnc $$5, epp $$6) {
+      dnb $$8 = ($$0.d() instanceof coh $$7 ? d.getOrDefault($$7.d(), dae.a) : dae.a).o();
+      if ($$8.i()) {
+         return bnf.d;
+      } else if (!this.i()) {
+         return bnf.b;
       } else {
-         $$1.a($$2, this, aww.a($$3, 20, 40));
+         $$2.a($$3, $$8, 3);
+         $$2.a($$4, drp.c, $$3);
+         $$4.a(aui.ah);
+         $$0.a(1, $$4);
+         return bnf.a($$2.B);
       }
    }
 
-   private boolean e(dmz $$0, cwz $$1, ib $$2) {
-      int $$3 = $$0.c(c);
-      if ($$3 < 3) {
-         $$1.a($$2, $$0.a(c, Integer.valueOf($$3 + 1)), 2);
-         return false;
+   @Override
+   protected bnd a(dnb $$0, cxb $$1, ib $$2, ciu $$3, epp $$4) {
+      if (this.i()) {
+         return bnd.b;
       } else {
-         this.d($$0, $$1, $$2);
-         return true;
-      }
-   }
-
-   @Override
-   protected void a(dmz $$0, cwz $$1, ib $$2, daa $$3, ib $$4, boolean $$5) {
-      if ($$3.o().a(this) && this.a($$1, $$2, 2)) {
-         this.d($$0, $$1, $$2);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   private boolean a(cwf $$0, ib $$1, int $$2) {
-      int $$3 = 0;
-      ib.a $$4 = new ib.a();
-
-      for (ih $$5 : ih.values()) {
-         $$4.a($$1, $$5);
-         if ($$0.a_($$4).a(this)) {
-            if (++$$3 >= $$2) {
-               return false;
-            }
+         cqm $$5 = new cqm(this.e);
+         if (!$$3.i($$5)) {
+            $$3.a($$5, false);
          }
+
+         $$1.a($$2, dae.fR.o(), 3);
+         $$1.a($$3, drp.c, $$2);
+         return bnd.a($$1.B);
       }
-
-      return true;
    }
 
    @Override
-   protected void a(dna.a<daa, dmz> $$0) {
-      $$0.a(c);
+   public cqm a(cxe $$0, ib $$1, dnb $$2) {
+      return this.i() ? super.a($$0, $$1, $$2) : new cqm(this.e);
+   }
+
+   private boolean i() {
+      return this.e == dae.a;
    }
 
    @Override
-   public cqk a(cxc $$0, ib $$1, dmz $$2) {
-      return cqk.h;
+   protected dnb a(dnb $$0, ih $$1, dnb $$2, cxc $$3, ib $$4, ib $$5) {
+      return $$1 == ih.a && !$$0.a($$3, $$4) ? dae.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public dac b() {
+      return this.e;
+   }
+
+   @Override
+   protected boolean a(dnb $$0, cwh $$1, ib $$2, eje $$3) {
+      return false;
    }
 }

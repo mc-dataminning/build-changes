@@ -1,15 +1,37 @@
-import java.util.function.Function;
+public class foz<T extends box> extends fon<T> {
+   private static final String a = "main";
+   private final frf b;
 
-public abstract class foz {
-   protected final Function<ajh, fxy> v;
-
-   public foz(Function<ajh, fxy> $$0) {
-      this.v = $$0;
+   public foz(frf $$0) {
+      this.b = $$0;
    }
 
-   public final fxy a(ajh $$0) {
-      return this.v.apply($$0);
+   public static frl b() {
+      frn $$0 = new frn();
+      fro $$1 = $$0.a();
+      int $$2 = 2;
+      $$1.a(
+         "main",
+         frk.c()
+            .a(0, 0)
+            .a(-4.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, -4.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, 0.0F, -4.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(2.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, 2.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, 0.0F, 2.0F, 2.0F, 2.0F, 2.0F),
+         frh.a
+      );
+      return frl.a($$0, 64, 32);
    }
 
-   public abstract void a(etz var1, eud var2, int var3, int var4, float var5, float var6, float var7, float var8);
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+   }
+
+   @Override
+   public frf a() {
+      return this.b;
+   }
 }

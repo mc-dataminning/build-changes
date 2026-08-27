@@ -34,9 +34,9 @@ public class agn implements yb<aez> {
    }
 
    @Nullable
-   public cwa a(cwz $$0) {
-      bow $$1 = $$0.a(this.b);
-      return $$1 instanceof ckv ? ((ckv)$$1).B() : null;
+   public cwc a(cxb $$0) {
+      box $$1 = $$0.a(this.b);
+      return $$1 instanceof ckx ? ((ckx)$$1).B() : null;
    }
 
    public String b() {

@@ -8,7 +8,7 @@ public class aap implements yb<aam> {
    private final int g;
    private final int h;
 
-   public aap(bow $$0, int $$1) {
+   public aap(box $$0, int $$1) {
       this.g = $$0.aj();
       this.h = $$1;
    }

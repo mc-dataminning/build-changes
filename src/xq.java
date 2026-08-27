@@ -184,12 +184,12 @@ public interface xq {
       return new xs<vf, T>() {
          public T a(vf $$0x) {
             tx $$1 = xq.j.decode($$0);
-            ajf<tx> $$2 = ajf.a(to.a, $$0.J());
+            ajf<tx> $$2 = $$0.J().a(to.a);
             return ac.a($$0.parse($$2, $$1), $$1x -> new DecoderException("Failed to decode: " + $$1x + " " + $$1));
          }
 
          public void a(vf $$0x, T $$1) {
-            ajf<tx> $$2 = ajf.a(to.a, $$0.J());
+            ajf<tx> $$2 = $$0.J().a(to.a);
             tx $$3 = ac.a($$0.encodeStart($$2, $$1), $$1x -> new EncoderException("Failed to encode: " + $$1x + " " + $$1));
             xq.j.encode($$0, $$3);
          }

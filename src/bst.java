@@ -1,54 +1,85 @@
+import com.google.common.collect.Maps;
 import com.mojang.datafixers.kinds.App;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Map.Entry;
 import java.util.function.Function;
 
 public class bst {
-   public static brh<cif> a() {
-      return but.a(
-         (Function<but.b<cif>, ? extends App<but.c<cif>, buw<cif>>>)($$0 -> $$0.group($$0.b(byr.c), $$0.b(byr.g))
-               .apply(
-                  $$0,
-                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                        ik $$6 = $$0.b($$1);
-                        $$3.y()
-                           .c($$6.b())
-                           .ifPresent(
-                              $$4x -> $$0.<List<bpo>>b($$2)
-                                    .stream()
-                                    .filter($$1xxx -> $$1xxx instanceof cif && $$1xxx != $$4)
-                                    .map($$0xxxx -> (cif)$$0xxxx)
-                                    .filter(bpo::bA)
-                                    .filter($$2xxx -> a($$6, $$4x, $$2xxx))
-                                    .reduce($$4, bst::a)
-                           );
-                        return true;
+   private static final int a = 20;
+   private static final int b = 8;
+   private static final float c = 0.6F;
+   private static final float d = 0.6F;
+   private static final int e = 5;
+   private static final int f = 10;
+
+   public static bri<bpx> a() {
+      return buu.a(
+         (Function<buu.b<bpx>, ? extends App<buu.c<bpx>, bux<bpx>>>)($$0 -> $$0.group($$0.b(bys.i), $$0.c(bys.m), $$0.a(bys.n), $$0.a(bys.q))
+               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
+                     if ($$5.E_().a(10) != 0) {
+                        return false;
+                     } else {
+                        List<bpp> $$8 = $$0.b($$1);
+                        Optional<bpp> $$9 = $$8.stream().filter($$1xx -> a((bpp)$$6, $$1xx)).findAny();
+                        if (!$$9.isPresent()) {
+                           Optional<bpp> $$12 = a($$8);
+                           if ($$12.isPresent()) {
+                              a($$4, $$3, $$2, $$12.get());
+                              return true;
+                           } else {
+                              $$8.stream().findAny().ifPresent($$3xx -> a($$4, $$3, $$2, $$3xx));
+                              return true;
+                           }
+                        } else {
+                           for (int $$10 = 0; $$10 < 10; $$10++) {
+                              ept $$11 = cam.a($$6, 20, 8);
+                              if ($$11 != null && $$5.c(ib.a($$11))) {
+                                 $$2.a(new byv($$11, 0.6F, 0));
+                                 break;
+                              }
+                           }
+
+                           return true;
+                        }
                      }
-               ))
+                  }))
       );
    }
 
-   private static cif a(cif $$0, cif $$1) {
-      cif $$2;
-      cif $$3;
-      if ($$0.s() > $$1.s()) {
-         $$2 = $$0;
-         $$3 = $$1;
-      } else {
-         $$2 = $$1;
-         $$3 = $$0;
-      }
-
-      $$3.dP().b(byr.c);
-      return $$2;
+   private static void a(buv<?, bpp> $$0, buv<?, bsv> $$1, buv<?, byv> $$2, bpp $$3) {
+      $$0.a($$3);
+      $$1.a(new brs($$3, true));
+      $$2.a(new byv(new brs($$3, false), 0.6F, 1));
    }
 
-   private static boolean a(ik $$0, il<cau> $$1, cif $$2) {
-      Optional<ik> $$3 = $$2.dP().c(byr.c);
-      return $$3.isPresent() && $$0.equals($$3.get()) && a($$1, $$2.gy().b());
+   private static Optional<bpp> a(List<bpp> $$0) {
+      Map<bpp, Integer> $$1 = b($$0);
+      return $$1.entrySet()
+         .stream()
+         .sorted(Comparator.comparingInt(Entry::getValue))
+         .filter($$0x -> (Integer)$$0x.getValue() > 0 && (Integer)$$0x.getValue() <= 5)
+         .map(Entry::getKey)
+         .findFirst();
    }
 
-   private static boolean a(il<cau> $$0, cii $$1) {
-      return $$1.b().test($$0);
+   private static Map<bpp, Integer> b(List<bpp> $$0) {
+      Map<bpp, Integer> $$1 = Maps.newHashMap();
+      $$0.stream().filter(bst::b).forEach($$1x -> $$1.compute(a($$1x), ($$0xx, $$1xx) -> $$1xx == null ? 1 : $$1xx + 1));
+      return $$1;
+   }
+
+   private static bpp a(bpp $$0) {
+      return $$0.dP().c(bys.q).get();
+   }
+
+   private static boolean b(bpp $$0) {
+      return $$0.dP().c(bys.q).isPresent();
+   }
+
+   private static boolean a(bpp $$0, bpp $$1) {
+      return $$1.dP().c(bys.q).filter($$1x -> $$1x == $$0).isPresent();
    }
 }

@@ -99,7 +99,7 @@ public class awm {
       return $$0.has($$1) ? a($$0.get($$1), $$1) : $$2;
    }
 
-   public static il<cqf> b(JsonElement $$0, String $$1) {
+   public static il<cqh> b(JsonElement $$0, String $$1) {
       if ($$0.isJsonPrimitive()) {
          String $$2 = $$0.getAsString();
          return ki.h.c(new ajh($$2)).orElseThrow(() -> new JsonSyntaxException("Expected " + $$1 + " to be an item, was unknown string '" + $$2 + "'"));
@@ -108,7 +108,7 @@ public class awm {
       }
    }
 
-   public static il<cqf> j(JsonObject $$0, String $$1) {
+   public static il<cqh> j(JsonObject $$0, String $$1) {
       if ($$0.has($$1)) {
          return b($$0.get($$1), $$1);
       } else {
@@ -118,7 +118,7 @@ public class awm {
 
    @Nullable
    @Contract("_,_,!null->!null;_,_,null->_")
-   public static il<cqf> a(JsonObject $$0, String $$1, @Nullable il<cqf> $$2) {
+   public static il<cqh> a(JsonObject $$0, String $$1, @Nullable il<cqh> $$2) {
       return $$0.has($$1) ? b($$0.get($$1), $$1) : $$2;
    }
 

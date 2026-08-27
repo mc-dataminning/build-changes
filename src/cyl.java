@@ -1,84 +1,57 @@
-import com.mojang.datafixers.util.Either;
+import com.google.common.collect.Sets;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class cyl extends cyc {
-   private static final MapCodec<il<cxy>> d = cxy.c.fieldOf("biome");
-   public static final MapCodec<cyh.c<il<cxy>>> b = cyh.c.a(d).fieldOf("biomes");
-   private static final MapCodec<il<cym>> e = cym.b.fieldOf("preset").withLifecycle(Lifecycle.stable());
-   public static final Codec<cyl> c = Codec.mapEither(b, e).xmap(cyl::new, $$0 -> $$0.f).codec();
-   private final Either<cyh.c<il<cxy>>, il<cym>> f;
+public class cyl extends cye implements cyc.a {
+   public static final Codec<cyl> b = cya.c.fieldOf("biome").xmap(cyl::new, $$0 -> $$0.c).stable().codec();
+   private final il<cya> c;
 
-   private cyl(Either<cyh.c<il<cxy>>, il<cym>> $$0) {
-      this.f = $$0;
-   }
-
-   public static cyl a(cyh.c<il<cxy>> $$0) {
-      return new cyl(Either.left($$0));
-   }
-
-   public static cyl a(il<cym> $$0) {
-      return new cyl(Either.right($$0));
-   }
-
-   private cyh.c<il<cxy>> d() {
-      return (cyh.c<il<cxy>>)this.f.map($$0 -> $$0, $$0 -> ((cym)$$0.a()).a());
+   public cyl(il<cya> $$0) {
+      this.c = $$0;
    }
 
    @Override
-   protected Stream<il<cxy>> b() {
-      return this.d().a().stream().map(Pair::getSecond);
+   protected Stream<il<cya>> b() {
+      return Stream.of(this.c);
    }
 
    @Override
-   protected Codec<? extends cyc> a() {
-      return c;
-   }
-
-   public boolean a(ajg<cym> $$0) {
-      Optional<il<cym>> $$1 = this.f.right();
-      return $$1.isPresent() && $$1.get().a($$0);
+   protected Codec<? extends cye> a() {
+      return b;
    }
 
    @Override
-   public il<cxy> getNoiseBiome(int $$0, int $$1, int $$2, cyh.f $$3) {
-      return this.a($$3.a($$0, $$1, $$2));
-   }
-
-   @axz
-   public il<cxy> a(cyh.h $$0) {
-      return this.d().a($$0);
+   public il<cya> getNoiseBiome(int $$0, int $$1, int $$2, cyj.f $$3) {
+      return this.c;
    }
 
    @Override
-   public void a(List<String> $$0, ib $$1, cyh.f $$2) {
-      int $$3 = iw.a($$1.u());
-      int $$4 = iw.a($$1.v());
-      int $$5 = iw.a($$1.w());
-      cyh.h $$6 = $$2.a($$3, $$4, $$5);
-      float $$7 = cyh.a($$6.d());
-      float $$8 = cyh.a($$6.e());
-      float $$9 = cyh.a($$6.b());
-      float $$10 = cyh.a($$6.c());
-      float $$11 = cyh.a($$6.g());
-      double $$12 = (double)dst.a($$11);
-      cyo $$13 = new cyo();
-      $$0.add(
-         "Biome builder PV: "
-            + cyo.a($$12)
-            + " C: "
-            + $$13.b((double)$$7)
-            + " E: "
-            + $$13.c((double)$$8)
-            + " T: "
-            + $$13.d((double)$$9)
-            + " H: "
-            + $$13.e((double)$$10)
-      );
+   public il<cya> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.c;
+   }
+
+   @Nullable
+   @Override
+   public Pair<ib, il<cya>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<il<cya>> $$5, axd $$6, boolean $$7, cyj.f $$8) {
+      if ($$5.test(this.c)) {
+         return $$7 ? Pair.of(new ib($$0, $$1, $$2), this.c) : Pair.of(new ib($$0 - $$3 + $$6.a($$3 * 2 + 1), $$1, $$2 - $$3 + $$6.a($$3 * 2 + 1)), this.c);
+      } else {
+         return null;
+      }
+   }
+
+   @Nullable
+   @Override
+   public Pair<ib, il<cya>> a(ib $$0, int $$1, int $$2, int $$3, Predicate<il<cya>> $$4, cyj.f $$5, cxe $$6) {
+      return $$4.test(this.c) ? Pair.of($$0, this.c) : null;
+   }
+
+   @Override
+   public Set<il<cya>> a(int $$0, int $$1, int $$2, int $$3, cyj.f $$4) {
+      return Sets.newHashSet(Set.of(this.c));
    }
 }

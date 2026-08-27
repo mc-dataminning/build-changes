@@ -1,98 +1,63 @@
-public class cfx extends cgh {
-   public cfx(bpc<? extends cfx> $$0, cwz $$1) {
+public class cfx extends cgt {
+   public cfx(bpd<? extends cfx> $$0, cxb $$1) {
       super($$0, $$1);
    }
 
-   public static bqu.a r() {
-      return cfy.gt().a(bqv.r, 0.2F);
-   }
-
-   public static boolean b(bpc<cfx> $$0, cxa $$1, bps $$2, ib $$3, axd $$4) {
-      return $$1.aj() != bmz.a;
+   public static boolean a(bpd<cfx> $$0, cxq $$1, bpt $$2, ib $$3, axd $$4) {
+      return b($$0, $$1, $$2, $$3, $$4) && (bpt.a($$2) || $$1.h($$3));
    }
 
    @Override
-   public boolean a(cxc $$0) {
-      return $$0.f(this) && !$$0.d(this.cH());
-   }
-
-   @Override
-   public void a(int $$0, boolean $$1) {
-      super.a($$0, $$1);
-      this.f(bqv.a).a((double)($$0 * 3));
-   }
-
-   @Override
-   public float br() {
-      return 1.0F;
-   }
-
-   @Override
-   protected ka s() {
-      return kc.F;
-   }
-
-   @Override
-   public boolean bN() {
+   protected boolean ad_() {
       return false;
    }
 
    @Override
-   protected int y() {
-      return super.y() * 4;
+   protected atx v() {
+      return aty.mI;
    }
 
    @Override
-   protected void gj() {
-      this.d *= 0.9F;
-   }
-
-   @Override
-   protected void fg() {
-      epr $$0 = this.dp();
-      float $$1 = (float)this.go() * 0.1F;
-      this.o($$0.c, (double)(this.fe() + $$1), $$0.e);
-      this.au = true;
-   }
-
-   @Override
-   protected void c(avd<eim> $$0) {
-      if ($$0 == aus.b) {
-         epr $$1 = this.dp();
-         this.o($$1.c, (double)(0.22F + (float)this.go() * 0.05F), $$1.e);
-         this.au = true;
-      } else {
-         super.c($$0);
-      }
-   }
-
-   @Override
-   protected boolean gk() {
-      return this.cY();
-   }
-
-   @Override
-   protected float gl() {
-      return super.gl() + 2.0F;
-   }
-
-   @Override
-   protected atx d(bnv $$0) {
-      return this.gp() ? aty.nV : aty.nU;
+   protected atx d(bnw $$0) {
+      return aty.mL;
    }
 
    @Override
    protected atx n_() {
-      return this.gp() ? aty.nM : aty.nT;
-   }
-
-   @Override
-   protected atx gm() {
-      return this.gp() ? aty.nY : aty.nX;
+      return aty.mK;
    }
 
    @Override
    protected atx gn() {
-      return aty.nW;
+      return aty.mM;
+   }
+
+   @Override
+   public boolean C(box $$0) {
+      boolean $$1 = super.C($$0);
+      if ($$1 && this.eU().b() && $$0 instanceof bpp) {
+         float $$2 = this.dM().d_(this.dm()).b();
+         ((bpp)$$0).b(new bok(bom.q, 140 * (int)$$2), this);
+      }
+
+      return $$1;
+   }
+
+   @Override
+   protected boolean gp() {
+      return true;
+   }
+
+   @Override
+   protected void ac_() {
+      this.b(bpd.bu);
+      if (!this.aU()) {
+         this.dM().a(null, 1041, this.dm(), 0);
+      }
+   }
+
+   @Override
+   protected cqm go() {
+      return cqm.h;
    }
 }

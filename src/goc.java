@@ -1,110 +1,129 @@
+import com.mojang.authlib.minecraft.TelemetryEvent;
+import com.mojang.authlib.minecraft.TelemetrySession;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.stream.Stream;
-import javax.annotation.Nullable;
 
 public class goc {
-   final Map<gob<?>, Object> a;
+   static final Map<String, goc> h = new Object2ObjectLinkedOpenHashMap();
+   public static final Codec<goc> a = Codec.STRING.comapFlatMap($$0 -> {
+      goc $$1 = h.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No TelemetryEventType with key: '" + $$0 + "'");
+   }, goc::a);
+   private static final List<goe<?>> i = List.of(goe.a, goe.b, goe.c, goe.d, goe.e, goe.f, goe.g, goe.h, goe.m, goe.l);
+   private static final List<goe<?>> j = Stream.concat(i.stream(), Stream.of(goe.i, goe.j, goe.k)).toList();
+   public static final goc b = a("world_loaded", "WorldLoaded").a(j).a(goe.n).a(goe.o).b();
+   public static final goc c = a("performance_metrics", "PerformanceMetrics").a(j).a(goe.r).a(goe.s).a(goe.t).a(goe.u).a(goe.v).a(goe.w).a().b();
+   public static final goc d = a("world_load_times", "WorldLoadTimes").a(j).a(goe.x).a(goe.y).a().b();
+   public static final goc e = a("world_unloaded", "WorldUnloaded").a(j).a(goe.p).a(goe.q).b();
+   public static final goc f = a("advancement_made", "AdvancementMade").a(j).a(goe.D).a(goe.E).a().b();
+   public static final goc g = a("game_load_times", "GameLoadTimes").a(i).a(goe.z).a(goe.A).a(goe.B).a(goe.C).a().b();
+   private final String k;
+   private final String l;
+   private final List<goe<?>> m;
+   private final boolean n;
+   private final Codec<gny> o;
 
-   goc(Map<gob<?>, Object> $$0) {
-      this.a = $$0;
+   goc(String $$0, String $$1, List<goe<?>> $$2, boolean $$3) {
+      this.k = $$0;
+      this.l = $$1;
+      this.m = $$2;
+      this.n = $$3;
+      this.o = gof.a($$2).xmap($$0x -> new gny(this, $$0x), gny::b);
    }
 
-   public static goc.a a() {
-      return new goc.a();
+   public static goc.a a(String $$0, String $$1) {
+      return new goc.a($$0, $$1);
    }
 
-   public static Codec<goc> a(final List<gob<?>> $$0) {
-      return (new MapCodec<goc>() {
-         public <T> RecordBuilder<T> a(goc $$0x, DynamicOps<T> $$1, RecordBuilder<T> $$2) {
-            RecordBuilder<T> $$3 = $$2;
-
-            for (gob<?> $$4 : $$0) {
-               $$3 = this.a($$0, $$3, $$4);
-            }
-
-            return $$3;
-         }
-
-         private <T, V> RecordBuilder<T> a(goc $$0x, RecordBuilder<T> $$1, gob<V> $$2) {
-            V $$3 = $$0.a($$2);
-            return $$3 != null ? $$1.add($$2.b(), $$3, $$2.d()) : $$1;
-         }
-
-         public <T> DataResult<goc> decode(DynamicOps<T> $$0x, MapLike<T> $$1) {
-            DataResult<goc.a> $$2 = DataResult.success(new goc.a());
-
-            for (gob<?> $$3 : $$0) {
-               $$2 = this.a($$2, $$0, $$1, $$3);
-            }
-
-            return $$2.map(goc.a::a);
-         }
-
-         private <T, V> DataResult<goc.a> a(DataResult<goc.a> $$0x, DynamicOps<T> $$1, MapLike<T> $$2, gob<V> $$3) {
-            T $$4 = (T)$$2.get($$3.b());
-            if ($$4 != null) {
-               DataResult<V> $$5 = $$3.d().parse($$1, $$4);
-               return $$0.apply2stable(($$1x, $$2x) -> $$1x.a($$3, (V)$$2x), $$5);
-            } else {
-               return $$0;
-            }
-         }
-
-         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
-            return $$0.stream().map(gob::b).map($$0::createString);
-         }
-      }).codec();
+   public String a() {
+      return this.k;
    }
 
-   @Nullable
-   public <T> T a(gob<T> $$0) {
-      return (T)this.a.get($$0);
+   public List<goe<?>> b() {
+      return this.m;
+   }
+
+   public Codec<gny> c() {
+      return this.o;
+   }
+
+   public boolean d() {
+      return this.n;
+   }
+
+   public TelemetryEvent a(TelemetrySession $$0, gof $$1) {
+      TelemetryEvent $$2 = $$0.createNewEvent(this.l);
+
+      for (goe<?> $$3 : this.m) {
+         $$3.a($$1, $$2);
+      }
+
+      return $$2;
+   }
+
+   public <T> boolean a(goe<T> $$0) {
+      return this.m.contains($$0);
    }
 
    @Override
    public String toString() {
-      return this.a.toString();
+      return "TelemetryEventType[" + this.k + "]";
    }
 
-   public Set<gob<?>> b() {
-      return this.a.keySet();
+   public wi e() {
+      return this.a("title");
+   }
+
+   public wi f() {
+      return this.a("description");
+   }
+
+   private wi a(String $$0) {
+      return vu.c("telemetry.event." + this.k + "." + $$0);
+   }
+
+   public static List<goc> g() {
+      return List.copyOf(h.values());
    }
 
    public static class a {
-      private final Map<gob<?>, Object> a = new Reference2ObjectOpenHashMap();
+      private final String a;
+      private final String b;
+      private final List<goe<?>> c = new ArrayList<>();
+      private boolean d;
 
-      a() {
+      a(String $$0, String $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      public <T> goc.a a(gob<T> $$0, T $$1) {
-         this.a.put($$0, $$1);
+      public goc.a a(List<goe<?>> $$0) {
+         this.c.addAll($$0);
          return this;
       }
 
-      public <T> goc.a b(gob<T> $$0, @Nullable T $$1) {
-         if ($$1 != null) {
-            this.a.put($$0, $$1);
+      public <T> goc.a a(goe<T> $$0) {
+         this.c.add($$0);
+         return this;
+      }
+
+      public goc.a a() {
+         this.d = true;
+         return this;
+      }
+
+      public goc b() {
+         goc $$0 = new goc(this.a, this.b, List.copyOf(this.c), this.d);
+         if (goc.h.putIfAbsent(this.a, $$0) != null) {
+            throw new IllegalStateException("Duplicate TelemetryEventType with key: '" + this.a + "'");
+         } else {
+            return $$0;
          }
-
-         return this;
-      }
-
-      public goc.a a(goc $$0) {
-         this.a.putAll($$0.a);
-         return this;
-      }
-
-      public goc a() {
-         return new goc(this.a);
       }
    }
 }

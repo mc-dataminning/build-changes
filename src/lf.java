@@ -15,14 +15,14 @@ public class lf implements kp {
    public CompletableFuture<?> a(kn $$0) {
       JsonObject $$1 = new JsonObject();
 
-      for (daa $$2 : ki.e) {
+      for (dac $$2 : ki.e) {
          ajh $$3 = ki.e.b($$2);
          JsonObject $$4 = new JsonObject();
-         dna<daa, dmz> $$5 = $$2.n();
+         dnc<dac, dnb> $$5 = $$2.n();
          if (!$$5.d().isEmpty()) {
             JsonObject $$6 = new JsonObject();
 
-            for (doc<?> $$7 : $$5.d()) {
+            for (doe<?> $$7 : $$5.d()) {
                JsonArray $$8 = new JsonArray();
 
                for (Comparable<?> $$9 : $$7.a()) {
@@ -39,11 +39,11 @@ public class lf implements kp {
          UnmodifiableIterator var17 = $$5.a().iterator();
 
          while (var17.hasNext()) {
-            dmz $$11 = (dmz)var17.next();
+            dnb $$11 = (dnb)var17.next();
             JsonObject $$12 = new JsonObject();
             JsonObject $$13 = new JsonObject();
 
-            for (doc<?> $$14 : $$5.d()) {
+            for (doe<?> $$14 : $$5.d()) {
                $$13.addProperty($$14.f(), ac.a($$14, $$11.c($$14)));
             }
 
@@ -51,7 +51,7 @@ public class lf implements kp {
                $$12.add("properties", $$13);
             }
 
-            $$12.addProperty("id", daa.i($$11));
+            $$12.addProperty("id", dac.i($$11));
             if ($$11 == $$2.o()) {
                $$12.addProperty("default", true);
             }

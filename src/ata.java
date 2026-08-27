@@ -405,7 +405,7 @@ public class ata {
    }
 
    private static File g(MinecraftServer $$0) {
-      return $$0.a(eki.d).toFile();
+      return $$0.a(ekk.d).toFile();
    }
 
    private static void b(File $$0) {

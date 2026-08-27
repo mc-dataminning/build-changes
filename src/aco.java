@@ -2,7 +2,7 @@ public class aco implements yb<aam> {
    public static final xs<uu, aco> a = yb.a(aco::a, aco::new);
    private final int b;
 
-   public aco(bns $$0) {
+   public aco(bnt $$0) {
       this($$0.b());
    }
 

@@ -1,59 +1,49 @@
-import javax.annotation.concurrent.Immutable;
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-@Immutable
-public class bna {
-   private static final float a = -72000.0F;
-   private static final float b = 1440000.0F;
-   private static final float c = 3600000.0F;
-   private final bmz d;
-   private final float e;
+public enum bna implements axq {
+   a(0, "peaceful"),
+   b(1, "easy"),
+   c(2, "normal"),
+   d(3, "hard");
 
-   public bna(bmz $$0, long $$1, long $$2, float $$3) {
-      this.d = $$0;
-      this.e = this.a($$0, $$1, $$2, $$3);
+   public static final axq.a<bna> e = axq.a(bna::values);
+   private static final IntFunction<bna> f = avn.a(bna::a, values(), avn.a.b);
+   private final int g;
+   private final String h;
+
+   private bna(int $$0, String $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   public bmz a() {
-      return this.d;
+   public int a() {
+      return this.g;
    }
 
-   public float b() {
-      return this.e;
+   public vu b() {
+      return vu.c("options.difficulty." + this.h);
    }
 
-   public boolean c() {
-      return this.e >= (float)bmz.d.ordinal();
+   public vu d() {
+      return vu.c("options.difficulty." + this.h + ".info");
    }
 
-   public boolean a(float $$0) {
-      return this.e > $$0;
+   public static bna a(int $$0) {
+      return f.apply($$0);
    }
 
-   public float d() {
-      if (this.e < 2.0F) {
-         return 0.0F;
-      } else {
-         return this.e > 4.0F ? 1.0F : (this.e - 2.0F) / 2.0F;
-      }
+   @Nullable
+   public static bna a(String $$0) {
+      return e.a($$0);
    }
 
-   private float a(bmz $$0, long $$1, long $$2, float $$3) {
-      if ($$0 == bmz.a) {
-         return 0.0F;
-      } else {
-         boolean $$4 = $$0 == bmz.d;
-         float $$5 = 0.75F;
-         float $$6 = aww.a(((float)$$1 + -72000.0F) / 1440000.0F, 0.0F, 1.0F) * 0.25F;
-         $$5 += $$6;
-         float $$7 = 0.0F;
-         $$7 += aww.a((float)$$2 / 3600000.0F, 0.0F, 1.0F) * ($$4 ? 1.0F : 0.75F);
-         $$7 += aww.a($$3 * 0.25F, 0.0F, $$6);
-         if ($$0 == bmz.b) {
-            $$7 *= 0.5F;
-         }
+   public String e() {
+      return this.h;
+   }
 
-         $$5 += $$7;
-         return (float)$$0.a() * $$5;
-      }
+   @Override
+   public String c() {
+      return this.h;
    }
 }

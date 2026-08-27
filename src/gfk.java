@@ -1,23 +1,28 @@
-public class gfk extends gcx<cjx> {
-   public static final ajh a = new ajh("textures/entity/trident.png");
-   private final fqi f;
+public class gfk extends geh<cgn, fqi<cgn>> {
+   private static final ajh a = new ajh("textures/entity/strider/strider.png");
+   private static final ajh i = new ajh("textures/entity/strider/strider_cold.png");
+   private static final float j = 0.5F;
 
-   public gfk(gcy.a $$0) {
-      super($$0);
-      this.f = new fqi($$0.a(frc.bE));
+   public gfk(gdb.a $$0) {
+      super($$0, new fqi<>($$0.a(fre.bD)), 0.5F);
+      this.a(new ghn<>(this, new fqi<>($$0.a(fre.bE)), new ajh("textures/entity/strider/strider_saddle.png")));
    }
 
-   public void a(cjx $$0, float $$1, float $$2, etz $$3, fxq $$4, int $$5) {
-      $$3.a();
-      $$3.a(a.d.rotationDegrees(aww.i($$2, $$0.N, $$0.dC()) - 90.0F));
-      $$3.a(a.f.rotationDegrees(aww.i($$2, $$0.O, $$0.dE()) + 90.0F));
-      eud $$6 = gdw.c($$4, this.f.a(this.a($$0)), false, $$0.G());
-      this.f.a($$3, $$6, $$5, giq.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public ajh a(cgn $$0) {
+      return $$0.r() ? i : a;
    }
 
-   public ajh a(cjx $$0) {
-      return a;
+   protected float b(cgn $$0) {
+      float $$1 = super.b($$0);
+      return $$0.o_() ? $$1 * 0.5F : $$1;
+   }
+
+   protected void a(cgn $$0, eub $$1, float $$2) {
+      float $$3 = $$0.ea();
+      $$1.b($$3, $$3, $$3);
+   }
+
+   protected boolean c(cgn $$0) {
+      return super.a($$0) || $$0.r();
    }
 }

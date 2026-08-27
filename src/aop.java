@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
 import org.apache.commons.lang3.mutable.MutableBoolean;
 import org.slf4j.Logger;
 
-public class aop extends dpx implements aon.d {
+public class aop extends dpz implements aon.d {
    private static final byte f = -1;
    private static final byte g = 0;
    private static final byte h = 1;
@@ -67,22 +67,22 @@ public class aop extends dpx implements aon.d {
    private final LongSet p = new LongOpenHashSet();
    final apf q;
    private final api r;
-   private final bls<Runnable> s;
-   private dow t;
-   private final dta u;
-   private final dox v;
-   private final Supplier<eke> w;
-   private final car x;
+   private final blt<Runnable> s;
+   private doy t;
+   private final dtc u;
+   private final doz v;
+   private final Supplier<ekg> w;
+   private final cas x;
    final LongSet y = new LongOpenHashSet();
    private boolean z;
    private final aor A;
-   private final blu<aor.a<Runnable>> B;
-   private final blu<aor.a<Runnable>> C;
+   private final blv<aor.a<Runnable>> B;
+   private final blv<aor.a<Runnable>> C;
    private final apo D;
-   private final dqt E;
+   private final dqv E;
    private final aop.a F;
    private final AtomicInteger G = new AtomicInteger();
-   private final ehd H;
+   private final ehf H;
    private final String I;
    private final aoz J = new aoz();
    private final Int2ObjectMap<aop.b> K = new Int2ObjectOpenHashMap();
@@ -93,20 +93,20 @@ public class aop extends dpx implements aon.d {
 
    public aop(
       apf $$0,
-      ekk.c $$1,
+      ekm.c $$1,
       DataFixer $$2,
-      ehd $$3,
+      ehf $$3,
       Executor $$4,
-      bls<Runnable> $$5,
-      dpj $$6,
-      dow $$7,
+      blt<Runnable> $$5,
+      dpl $$6,
+      doy $$7,
       apo $$8,
-      dqt $$9,
-      Supplier<eke> $$10,
+      dqv $$9,
+      Supplier<ekg> $$10,
       int $$11,
       boolean $$12
    ) {
-      super(new dqg($$1.d(), $$0.ad(), "chunk"), $$1.a($$0.ad()).resolve("region"), $$2, $$12);
+      super(new dqi($$1.d(), $$0.ad(), "chunk"), $$1.a($$0.ad()).resolve("region"), $$2, $$12);
       this.H = $$3;
       Path $$13 = $$1.a($$0.ad());
       this.I = $$13.getFileName().toString();
@@ -114,48 +114,48 @@ public class aop extends dpx implements aon.d {
       this.t = $$7;
       iz $$14 = $$0.H_();
       long $$15 = $$0.C();
-      if ($$7 instanceof dsp $$16) {
-         this.u = dta.a($$16.g().a(), $$14.b(kj.aC), $$15);
+      if ($$7 instanceof dsr $$16) {
+         this.u = dtc.a($$16.g().a(), $$14.b(kj.aC), $$15);
       } else {
-         this.u = dta.a(dsr.e(), $$14.b(kj.aC), $$15);
+         this.u = dtc.a(dst.e(), $$14.b(kj.aC), $$15);
       }
 
       this.v = $$7.a($$14.b(kj.aG), this.u, $$15);
       this.s = $$5;
-      blv<Runnable> $$17 = blv.a($$4, "worldgen");
-      blu<Runnable> $$18 = blu.a("main", $$5::i);
+      blw<Runnable> $$17 = blw.a($$4, "worldgen");
+      blv<Runnable> $$18 = blv.a("main", $$5::i);
       this.D = $$8;
       this.E = $$9;
-      blv<Runnable> $$19 = blv.a($$4, "light");
+      blw<Runnable> $$19 = blw.a($$4, "light");
       this.A = new aor(ImmutableList.of($$17, $$18, $$19), $$4, Integer.MAX_VALUE);
       this.B = this.A.a($$17, false);
       this.C = this.A.a($$18, false);
       this.r = new api($$6, this, this.q.D_().g(), $$19, this.A.a($$19, false));
       this.F = new aop.a($$4, $$5);
       this.w = $$10;
-      this.x = new car(new dqg($$1.d(), $$0.ad(), "poi"), $$13.resolve("poi"), $$2, $$12, $$14, $$0);
+      this.x = new cas(new dqi($$1.d(), $$0.ad(), "poi"), $$13.resolve("poi"), $$2, $$12, $$14, $$0);
       this.a($$11);
    }
 
-   protected dow a() {
+   protected doy a() {
       return this.t;
    }
 
-   protected dox b() {
+   protected doz b() {
       return this.v;
    }
 
-   protected dta c() {
+   protected dtc c() {
       return this.u;
    }
 
    public void d() {
-      DataResult<JsonElement> $$0 = dow.a.encodeStart(JsonOps.INSTANCE, this.t);
-      DataResult<dow> $$1 = $$0.flatMap($$0x -> dow.a.parse(JsonOps.INSTANCE, $$0x));
+      DataResult<JsonElement> $$0 = doy.a.encodeStart(JsonOps.INSTANCE, this.t);
+      DataResult<doy> $$1 = $$0.flatMap($$0x -> doy.a.parse(JsonOps.INSTANCE, $$0x));
       $$1.result().ifPresent($$0x -> this.t = $$0x);
    }
 
-   private static double a(cwg $$0, bow $$1) {
+   private static double a(cwi $$0, box $$1) {
       double $$2 = (double)je.a($$0.e, 8);
       double $$3 = (double)je.a($$0.f, 8);
       double $$4 = $$2 - $$1.dr();
@@ -164,7 +164,7 @@ public class aop extends dpx implements aon.d {
    }
 
    boolean a(apg $$0, int $$1, int $$2) {
-      return $$0.W().a($$1, $$2) && !$$0.d.f.a(cwg.c($$1, $$2));
+      return $$0.W().a($$1, $$2) && !$$0.d.f.a(cwi.c($$1, $$2));
    }
 
    private boolean b(apg $$0, int $$1, int $$2) {
@@ -204,14 +204,14 @@ public class aop extends dpx implements aon.d {
       };
    }
 
-   public String a(cwg $$0) {
+   public String a(cwi $$0) {
       aon $$1 = this.b($$0.a());
       if ($$1 == null) {
          return "null";
       } else {
          String $$2 = $$1.m() + "\n";
-         dpa $$3 = $$1.h();
-         dov $$4 = $$1.i();
+         dpc $$3 = $$1.h();
+         dox $$4 = $$1.i();
          if ($$3 != null) {
             $$2 = $$2 + "St: §" + $$3.c() + $$3 + "§r\n";
          }
@@ -226,21 +226,21 @@ public class aop extends dpx implements aon.d {
       }
    }
 
-   private CompletableFuture<Either<List<dov>, aon.a>> a(aon $$0, int $$1, IntFunction<dpa> $$2) {
+   private CompletableFuture<Either<List<dox>, aon.a>> a(aon $$0, int $$1, IntFunction<dpc> $$2) {
       if ($$1 == 0) {
-         dpa $$3 = $$2.apply(0);
+         dpc $$3 = $$2.apply(0);
          return $$0.a($$3, this).thenApply($$0x -> $$0x.mapLeft(List::of));
       } else {
-         List<CompletableFuture<Either<dov, aon.a>>> $$4 = new ArrayList<>();
+         List<CompletableFuture<Either<dox, aon.a>>> $$4 = new ArrayList<>();
          List<aon> $$5 = new ArrayList<>();
-         cwg $$6 = $$0.l();
+         cwi $$6 = $$0.l();
          int $$7 = $$6.e;
          int $$8 = $$6.f;
 
          for (int $$9 = -$$1; $$9 <= $$1; $$9++) {
             for (int $$10 = -$$1; $$10 <= $$1; $$10++) {
                int $$11 = Math.max(Math.abs($$10), Math.abs($$9));
-               final cwg $$12 = new cwg($$7 + $$10, $$8 + $$9);
+               final cwi $$12 = new cwi($$7 + $$10, $$8 + $$9);
                long $$13 = $$12.a();
                aon $$14 = this.a($$13);
                if ($$14 == null) {
@@ -252,30 +252,30 @@ public class aop extends dpx implements aon.d {
                   }));
                }
 
-               dpa $$15 = $$2.apply($$11);
-               CompletableFuture<Either<dov, aon.a>> $$16 = $$14.a($$15, this);
+               dpc $$15 = $$2.apply($$11);
+               CompletableFuture<Either<dox, aon.a>> $$16 = $$14.a($$15, this);
                $$5.add($$14);
                $$4.add($$16);
             }
          }
 
-         CompletableFuture<List<Either<dov, aon.a>>> $$17 = ac.d($$4);
-         CompletableFuture<Either<List<dov>, aon.a>> $$18 = $$17.thenApply($$3 -> {
-            List<dov> $$4x = Lists.newArrayList();
+         CompletableFuture<List<Either<dox, aon.a>>> $$17 = ac.d($$4);
+         CompletableFuture<Either<List<dox>, aon.a>> $$18 = $$17.thenApply($$3 -> {
+            List<dox> $$4x = Lists.newArrayList();
             int $$5x = 0;
 
-            for (final Either<dov, aon.a> $$6x : $$3) {
+            for (final Either<dox, aon.a> $$6x : $$3) {
                if ($$6x == null) {
                   throw this.a(new IllegalStateException("At least one of the chunk futures were null"), "n/a");
                }
 
-               Optional<dov> $$7x = $$6x.left();
+               Optional<dox> $$7x = $$6x.left();
                if ($$7x.isEmpty()) {
                   final int $$8x = $$5x;
                   return Either.right(new aon.a() {
                      @Override
                      public String toString() {
-                        return "Unloaded " + new cwg($$7 + $$8x % ($$1 * 2 + 1), $$8 + $$8x / ($$1 * 2 + 1)) + " " + $$6x.right().get();
+                        return "Unloaded " + new cwi($$7 + $$8x % ($$1 * 2 + 1), $$8 + $$8x / ($$1 * 2 + 1)) + " " + $$6x.right().get();
                      }
                   });
                }
@@ -298,8 +298,8 @@ public class aop extends dpx implements aon.d {
    public y a(IllegalStateException $$0, String $$1) {
       StringBuilder $$2 = new StringBuilder();
       Consumer<aon> $$3 = $$1x -> $$1x.q().forEach($$2x -> {
-            dpa $$3x = (dpa)$$2x.getFirst();
-            CompletableFuture<Either<dov, aon.a>> $$4x = (CompletableFuture<Either<dov, aon.a>>)$$2x.getSecond();
+            dpc $$3x = (dpc)$$2x.getFirst();
+            CompletableFuture<Either<dox, aon.a>> $$4x = (CompletableFuture<Either<dox, aon.a>>)$$2x.getSecond();
             if ($$4x != null && $$4x.isDone() && $$4x.join() == null) {
                $$2.append($$1x.l()).append(" - status: ").append($$3x).append(" future: ").append($$4x).append(System.lineSeparator());
             }
@@ -315,8 +315,8 @@ public class aop extends dpx implements aon.d {
       return new y($$4);
    }
 
-   public CompletableFuture<Either<dpg, aon.a>> a(aon $$0) {
-      return this.a($$0, 2, $$0x -> dpa.n).thenApplyAsync($$0x -> $$0x.mapLeft($$0xx -> (dpg)$$0xx.get($$0xx.size() / 2)), this.s);
+   public CompletableFuture<Either<dpi, aon.a>> a(aon $$0) {
+      return this.a($$0, 2, $$0x -> dpc.n).thenApplyAsync($$0x -> $$0x.mapLeft($$0xx -> (dpi)$$0xx.get($$0xx.size() / 2)), this.s);
    }
 
    @Nullable
@@ -341,7 +341,7 @@ public class aop extends dpx implements aon.d {
             if ($$2 != null) {
                $$2.a($$1);
             } else {
-               $$2 = new aon(new cwg($$0), $$1, this.q, this.r, this.A, this);
+               $$2 = new aon(new cwi($$0), $$1, this.q, this.r, this.A, this);
             }
 
             this.m.put($$0, $$2);
@@ -370,14 +370,14 @@ public class aop extends dpx implements aon.d {
          do {
             $$2.setFalse();
             $$1.stream().map($$0x -> {
-               CompletableFuture<dov> $$1x;
+               CompletableFuture<dox> $$1x;
                do {
                   $$1x = $$0x.j();
                   this.s.c($$1x::isDone);
                } while ($$1x != $$0x.j());
 
                return $$1x.join();
-            }).filter($$0x -> $$0x instanceof dpf || $$0x instanceof dpg).filter(this::a).forEach($$1x -> $$2.setTrue());
+            }).filter($$0x -> $$0x instanceof dph || $$0x instanceof dpi).filter(this::a).forEach($$1x -> $$2.setTrue());
          } while ($$2.isTrue());
 
          this.b((BooleanSupplier)(() -> true));
@@ -388,7 +388,7 @@ public class aop extends dpx implements aon.d {
    }
 
    protected void a(BooleanSupplier $$0) {
-      bjq $$1 = this.q.ae();
+      bjr $$1 = this.q.ae();
       $$1.a("poi");
       this.x.a($$0);
       $$1.b("chunk_unload");
@@ -436,19 +436,19 @@ public class aop extends dpx implements aon.d {
    }
 
    private void a(long $$0, aon $$1) {
-      CompletableFuture<dov> $$2 = $$1.j();
+      CompletableFuture<dox> $$2 = $$1.j();
       $$2.thenAcceptAsync($$3 -> {
-         CompletableFuture<dov> $$4 = $$1.j();
+         CompletableFuture<dox> $$4 = $$1.j();
          if ($$4 != $$2) {
             this.a($$0, $$1);
          } else {
             if (this.o.remove($$0, $$1) && $$3 != null) {
-               if ($$3 instanceof dpg) {
-                  ((dpg)$$3).c(false);
+               if ($$3 instanceof dpi) {
+                  ((dpi)$$3).c(false);
                }
 
                this.a($$3);
-               if (this.p.remove($$0) && $$3 instanceof dpg $$5) {
+               if (this.p.remove($$0) && $$3 instanceof dpi $$5) {
                   this.q.a($$5);
                }
 
@@ -475,19 +475,19 @@ public class aop extends dpx implements aon.d {
       }
    }
 
-   public CompletableFuture<Either<dov, aon.a>> a(aon $$0, dpa $$1) {
-      cwg $$2 = $$0.l();
-      if ($$1 == dpa.c) {
+   public CompletableFuture<Either<dox, aon.a>> a(aon $$0, dpc $$1) {
+      cwi $$2 = $$0.l();
+      if ($$1 == dpc.c) {
          return this.g($$2);
       } else {
-         if ($$1 == dpa.l) {
-            this.F.a(apk.e, $$2, aoo.a(dpa.l), $$2);
+         if ($$1 == dpc.l) {
+            this.F.a(apk.e, $$2, aoo.a(dpc.l), $$2);
          }
 
          if (!$$1.f()) {
-            Optional<dov> $$3 = $$0.a($$1.d(), this).getNow(aon.a).left();
+            Optional<dox> $$3 = $$0.a($$1.d(), this).getNow(aon.a).left();
             if ($$3.isPresent() && $$3.get().j().b($$1)) {
-               CompletableFuture<Either<dov, aon.a>> $$4 = $$1.a(this.q, this.H, this.r, $$1x -> this.d($$0), $$3.get());
+               CompletableFuture<Either<dox, aon.a>> $$4 = $$1.a(this.q, this.H, this.r, $$1x -> this.d($$0), $$3.get());
                this.D.a($$2, $$1);
                return $$4;
             }
@@ -497,7 +497,7 @@ public class aop extends dpx implements aon.d {
       }
    }
 
-   private CompletableFuture<Either<dov, aon.a>> g(cwg $$0) {
+   private CompletableFuture<Either<dox, aon.a>> g(cwi $$0) {
       return this.k($$0).thenApply($$1 -> $$1.filter($$1x -> {
             boolean $$2 = b($$1x);
             if (!$$2) {
@@ -508,7 +508,7 @@ public class aop extends dpx implements aon.d {
          })).thenApplyAsync($$1 -> {
          this.q.ae().d("chunkLoad");
          if ($$1.isPresent()) {
-            dov $$2 = dpw.a(this.q, this.x, $$0, $$1.get());
+            dox $$2 = dpy.a(this.q, this.x, $$0, $$1.get());
             this.a($$0, $$2.j().g());
             return Either.left($$2);
          } else {
@@ -521,44 +521,42 @@ public class aop extends dpx implements aon.d {
       return $$0.b("Status", 8);
    }
 
-   private Either<dov, aon.a> a(Throwable $$0, cwg $$1) {
-      if ($$0 instanceof y $$2) {
-         Throwable $$3 = $$2.getCause();
-         if (!($$3 instanceof IOException)) {
-            this.i($$1);
-            throw $$2;
-         }
-
+   private Either<dox, aon.a> a(Throwable $$0, cwi $$1) {
+      Throwable $$3 = $$0 instanceof y $$2 ? $$2.getCause() : $$0;
+      if ($$3 instanceof IOException) {
          i.error("Couldn't load chunk {}", $$1, $$3);
-      } else if ($$0 instanceof IOException) {
-         i.error("Couldn't load chunk {}", $$1, $$0);
+         return Either.left(this.h($$1));
+      } else {
+         o $$4 = o.a($$0, "Exception loading chunk");
+         p $$5 = $$4.a("Chunk being loaded");
+         $$5.a("pos", $$1);
+         this.i($$1);
+         throw new y($$4);
       }
-
-      return Either.left(this.h($$1));
    }
 
-   private dov h(cwg $$0) {
+   private dox h(cwi $$0) {
       this.i($$0);
-      return new dpq($$0, dpt.a, this.q, this.q.H_().d(kj.au), null);
+      return new dps($$0, dpv.a, this.q, this.q.H_().d(kj.au), null);
    }
 
-   private void i(cwg $$0) {
+   private void i(cwi $$0) {
       this.L.put($$0.a(), (byte)-1);
    }
 
-   private byte a(cwg $$0, dpa.a $$1) {
-      return this.L.put($$0.a(), (byte)($$1 == dpa.a.a ? -1 : 1));
+   private byte a(cwi $$0, dpc.a $$1) {
+      return this.L.put($$0.a(), (byte)($$1 == dpc.a.a ? -1 : 1));
    }
 
-   private CompletableFuture<Either<dov, aon.a>> b(aon $$0, dpa $$1) {
-      cwg $$2 = $$0.l();
-      CompletableFuture<Either<List<dov>, aon.a>> $$3 = this.a($$0, $$1.e(), $$1x -> this.a($$1, $$1x));
+   private CompletableFuture<Either<dox, aon.a>> b(aon $$0, dpc $$1) {
+      cwi $$2 = $$0.l();
+      CompletableFuture<Either<List<dox>, aon.a>> $$3 = this.a($$0, $$1.e(), $$1x -> this.a($$1, $$1x));
       this.q.ae().c(() -> "chunkGenerate " + $$1);
       Executor $$4 = $$1x -> this.B.a(aor.a($$0, $$1x));
-      return $$3.thenComposeAsync($$4x -> (CompletionStage<Either<dov, aon.a>>)$$4x.map($$4xx -> {
+      return $$3.thenComposeAsync($$4x -> (CompletionStage<Either<dox, aon.a>>)$$4x.map($$4xx -> {
             try {
-               dov $$5 = (dov)$$4xx.get($$4xx.size() / 2);
-               CompletableFuture<Either<dov, aon.a>> $$6;
+               dox $$5 = (dox)$$4xx.get($$4xx.size() / 2);
+               CompletableFuture<Either<dox, aon.a>> $$6;
                if ($$5.j().b($$1)) {
                   $$6 = $$1.a(this.q, this.H, this.r, $$1xxx -> this.d($$0), $$5);
                } else {
@@ -573,7 +571,7 @@ public class aop extends dpx implements aon.d {
                p $$10 = $$9.a("Chunk to be generated");
                $$10.a("Status being generated", () -> ki.n.b($$1).toString());
                $$10.a("Location", String.format(Locale.ROOT, "%d,%d", $$2.e, $$2.f));
-               $$10.a("Position hash", cwg.c($$2.e, $$2.f));
+               $$10.a("Position hash", cwi.c($$2.e, $$2.f));
                $$10.a("Generator", this.t);
                this.s.execute(() -> {
                   throw new y($$9);
@@ -586,16 +584,16 @@ public class aop extends dpx implements aon.d {
          }), $$4);
    }
 
-   protected void b(cwg $$0) {
-      this.s.i(ac.a((Runnable)(() -> this.F.b(apk.e, $$0, aoo.a(dpa.l), $$0)), (Supplier<String>)(() -> "release light ticket " + $$0)));
+   protected void b(cwi $$0) {
+      this.s.i(ac.a((Runnable)(() -> this.F.b(apk.e, $$0, aoo.a(dpc.l), $$0)), (Supplier<String>)(() -> "release light ticket " + $$0)));
    }
 
-   private dpa a(dpa $$0, int $$1) {
-      dpa $$2;
+   private dpc a(dpc $$0, int $$1) {
+      dpc $$2;
       if ($$1 == 0) {
          $$2 = $$0.d();
       } else {
-         $$2 = dpa.a(dpa.a($$0) + $$1);
+         $$2 = dpc.a(dpc.a($$0) + $$1);
       }
 
       return $$2;
@@ -603,23 +601,23 @@ public class aop extends dpx implements aon.d {
 
    private static void a(apf $$0, List<ta> $$1) {
       if (!$$1.isEmpty()) {
-         $$0.b(bpc.a($$1, $$0));
+         $$0.b(bpd.a($$1, $$0));
       }
    }
 
-   private CompletableFuture<Either<dov, aon.a>> d(aon $$0) {
-      CompletableFuture<Either<dov, aon.a>> $$1 = $$0.a(dpa.n.d());
+   private CompletableFuture<Either<dox, aon.a>> d(aon $$0) {
+      CompletableFuture<Either<dox, aon.a>> $$1 = $$0.a(dpc.n.d());
       return $$1.thenApplyAsync($$1x -> {
-         dpa $$2 = aoo.a($$0.m());
-         return !$$2.b(dpa.n) ? aon.a : $$1x.mapLeft($$1xx -> {
-            cwg $$2x = $$0.l();
-            dpq $$3 = (dpq)$$1xx;
-            dpg $$4;
-            if ($$3 instanceof dpf) {
-               $$4 = ((dpf)$$3).C();
+         dpc $$2 = aoo.a($$0.m());
+         return !$$2.b(dpc.n) ? aon.a : $$1x.mapLeft($$1xx -> {
+            cwi $$2x = $$0.l();
+            dps $$3 = (dps)$$1xx;
+            dpi $$4;
+            if ($$3 instanceof dph) {
+               $$4 = ((dph)$$3).C();
             } else {
-               $$4 = new dpg(this.q, $$3, $$1xxx -> a(this.q, $$3.E()));
-               $$0.a(new dpf($$4, false));
+               $$4 = new dpi(this.q, $$3, $$1xxx -> a(this.q, $$3.E()));
+               $$0.a(new dph($$4, false));
             }
 
             $$4.b(() -> aoo.b($$0.m()));
@@ -635,10 +633,10 @@ public class aop extends dpx implements aon.d {
       }, $$1x -> this.C.a(aor.a($$1x, $$0.l().a(), $$0::m)));
    }
 
-   public CompletableFuture<Either<dpg, aon.a>> b(aon $$0) {
-      CompletableFuture<Either<List<dov>, aon.a>> $$1 = this.a($$0, 1, $$0x -> dpa.n);
-      CompletableFuture<Either<dpg, aon.a>> $$2 = $$1.<Either>thenApplyAsync(
-            $$0x -> $$0x.mapLeft($$0xx -> (dpg)$$0xx.get($$0xx.size() / 2)), $$1x -> this.C.a(aor.a($$0, $$1x))
+   public CompletableFuture<Either<dpi, aon.a>> b(aon $$0) {
+      CompletableFuture<Either<List<dox>, aon.a>> $$1 = this.a($$0, 1, $$0x -> dpc.n);
+      CompletableFuture<Either<dpi, aon.a>> $$2 = $$1.<Either>thenApplyAsync(
+            $$0x -> $$0x.mapLeft($$0xx -> (dpi)$$0xx.get($$0xx.size() / 2)), $$1x -> this.C.a(aor.a($$0, $$1x))
          )
          .thenApplyAsync($$1x -> $$1x.ifLeft($$1xx -> {
                $$1xx.H();
@@ -657,8 +655,8 @@ public class aop extends dpx implements aon.d {
       return $$2;
    }
 
-   private void a(dpg $$0) {
-      cwg $$1 = $$0.f();
+   private void a(dpi $$0) {
+      cwi $$1 = $$0.f();
 
       for (apg $$2 : this.J.a()) {
          if ($$2.W().a($$1)) {
@@ -667,8 +665,8 @@ public class aop extends dpx implements aon.d {
       }
    }
 
-   public CompletableFuture<Either<dpg, aon.a>> c(aon $$0) {
-      return this.a($$0, 1, dpa::a).thenApplyAsync($$0x -> $$0x.mapLeft($$0xx -> (dpg)$$0xx.get($$0xx.size() / 2)), $$1 -> this.C.a(aor.a($$0, $$1)));
+   public CompletableFuture<Either<dpi, aon.a>> c(aon $$0) {
+      return this.a($$0, 1, dpc::a).thenApplyAsync($$0x -> $$0x.mapLeft($$0xx -> (dpi)$$0xx.get($$0xx.size() / 2)), $$1 -> this.C.a(aor.a($$0, $$1)));
    }
 
    public int h() {
@@ -679,8 +677,8 @@ public class aop extends dpx implements aon.d {
       if (!$$0.o()) {
          return false;
       } else {
-         dov $$1 = $$0.j().getNow(null);
-         if (!($$1 instanceof dpf) && !($$1 instanceof dpg)) {
+         dox $$1 = $$0.j().getNow(null);
+         if (!($$1 instanceof dph) && !($$1 instanceof dpi)) {
             return false;
          } else {
             long $$2 = $$1.f().a();
@@ -701,28 +699,28 @@ public class aop extends dpx implements aon.d {
       }
    }
 
-   private boolean a(dov $$0) {
+   private boolean a(dox $$0) {
       this.x.a($$0.f());
       if (!$$0.i()) {
          return false;
       } else {
          $$0.a(false);
-         cwg $$1 = $$0.f();
+         cwi $$1 = $$0.f();
 
          try {
-            dpa $$2 = $$0.j();
-            if ($$2.g() != dpa.a.b) {
+            dpc $$2 = $$0.j();
+            if ($$2.g() != dpc.a.b) {
                if (this.j($$1)) {
                   return false;
                }
 
-               if ($$2 == dpa.c && $$0.g().values().stream().noneMatch(edk::b)) {
+               if ($$2 == dpc.c && $$0.g().values().stream().noneMatch(edm::b)) {
                   return false;
                }
             }
 
             this.q.ae().d("chunkSave");
-            ta $$3 = dpw.a(this.q, $$0);
+            ta $$3 = dpy.a(this.q, $$0);
             this.a($$1, $$3);
             this.a($$1, $$2.g());
             return true;
@@ -733,7 +731,7 @@ public class aop extends dpx implements aon.d {
       }
    }
 
-   private boolean j(cwg $$0) {
+   private boolean j(cwi $$0) {
       byte $$1 = this.L.get($$0.a());
       if ($$1 != 0) {
          return $$1 == 1;
@@ -751,7 +749,7 @@ public class aop extends dpx implements aon.d {
             return false;
          }
 
-         dpa.a $$5 = dpw.a($$2);
+         dpc.a $$5 = dpy.a($$2);
          return this.a($$0, $$5) == 1;
       }
    }
@@ -772,23 +770,23 @@ public class aop extends dpx implements aon.d {
       return aww.a($$0.E(), 2, this.O);
    }
 
-   private void a(apg $$0, cwg $$1) {
-      dpg $$2 = this.d($$1.a());
+   private void a(apg $$0, cwi $$1) {
+      dpi $$2 = this.d($$1.a());
       if ($$2 != null) {
          a($$0, $$2);
       }
    }
 
-   private static void a(apg $$0, dpg $$1) {
+   private static void a(apg $$0, dpi $$1) {
       $$0.d.f.a($$1);
    }
 
-   private static void b(apg $$0, cwg $$1) {
+   private static void b(apg $$0, cwi $$1) {
       $$0.d.f.a($$0, $$1);
    }
 
    @Nullable
-   public dpg d(long $$0) {
+   public dpi d(long $$0) {
       aon $$1 = this.b($$0);
       return $$1 == null ? null : $$1.f();
    }
@@ -830,17 +828,17 @@ public class aop extends dpx implements aon.d {
       while (var4.hasNext()) {
          Entry<aon> $$3 = (Entry<aon>)var4.next();
          long $$4 = $$3.getLongKey();
-         cwg $$5 = new cwg($$4);
+         cwi $$5 = new cwi($$4);
          aon $$6 = (aon)$$3.getValue();
-         Optional<dov> $$7 = Optional.ofNullable($$6.i());
-         Optional<dpg> $$8 = $$7.flatMap($$0x -> $$0x instanceof dpg ? Optional.of((dpg)$$0x) : Optional.empty());
+         Optional<dox> $$7 = Optional.ofNullable($$6.i());
+         Optional<dpi> $$8 = $$7.flatMap($$0x -> $$0x instanceof dpi ? Optional.of((dpi)$$0x) : Optional.empty());
          $$1.a(
             $$5.e,
             $$5.f,
             $$6.m(),
             $$7.isPresent(),
-            $$7.map(dov::j).orElse(null),
-            $$8.map(dpg::D).orElse(null),
+            $$7.map(dox::j).orElse(null),
+            $$8.map(dpi::D).orElse(null),
             a($$6.c()),
             a($$6.a()),
             a($$6.b()),
@@ -855,9 +853,9 @@ public class aop extends dpx implements aon.d {
       }
    }
 
-   private static String a(CompletableFuture<Either<dpg, aon.a>> $$0) {
+   private static String a(CompletableFuture<Either<dpi, aon.a>> $$0) {
       try {
-         Either<dpg, aon.a> $$1 = $$0.getNow(null);
+         Either<dpi, aon.a> $$1 = $$0.getNow(null);
          return $$1 != null ? (String)$$1.map($$0x -> "done", $$0x -> "unloaded") : "not completed";
       } catch (CompletionException var2) {
          return "failed " + var2.getCause().getMessage();
@@ -866,7 +864,7 @@ public class aop extends dpx implements aon.d {
       }
    }
 
-   private CompletableFuture<Optional<ta>> k(cwg $$0) {
+   private CompletableFuture<Optional<ta>> k(cwi $$0) {
       return this.e($$0).thenApplyAsync($$0x -> $$0x.map(this::c), ac.f());
    }
 
@@ -874,7 +872,7 @@ public class aop extends dpx implements aon.d {
       return this.a(this.q.ad(), this.w, $$0, this.t.b());
    }
 
-   boolean c(cwg $$0) {
+   boolean c(cwi $$0) {
       if (!this.F.f($$0.a())) {
          return false;
       } else {
@@ -888,7 +886,7 @@ public class aop extends dpx implements aon.d {
       }
    }
 
-   public List<apg> d(cwg $$0) {
+   public List<apg> d(cwi $$0) {
       long $$1 = $$0.a();
       if (!this.F.f($$1)) {
          return List.of();
@@ -905,7 +903,7 @@ public class aop extends dpx implements aon.d {
       }
    }
 
-   private boolean c(apg $$0, cwg $$1) {
+   private boolean c(apg $$0, cwi $$1) {
       if ($$0.N_()) {
          return false;
       } else {
@@ -915,7 +913,7 @@ public class aop extends dpx implements aon.d {
    }
 
    private boolean c(apg $$0) {
-      return $$0.N_() && !this.q.Z().b(cwv.r);
+      return $$0.N_() && !this.q.Z().b(cwx.r);
    }
 
    void a(apg $$0, boolean $$1) {
@@ -986,7 +984,7 @@ public class aop extends dpx implements aon.d {
    }
 
    private void e(apg $$0) {
-      cwg $$1 = $$0.do();
+      cwi $$1 = $$0.do();
       int $$2 = this.b($$0);
       if ($$0.W() instanceof aot.a $$3 && $$3.a().equals($$1) && $$3.b() == $$2) {
          return;
@@ -1008,7 +1006,7 @@ public class aop extends dpx implements aon.d {
    }
 
    @Override
-   public List<apg> a(cwg $$0, boolean $$1) {
+   public List<apg> a(cwi $$0, boolean $$1) {
       Set<apg> $$2 = this.J.a();
       Builder<apg> $$3 = ImmutableList.builder();
 
@@ -1021,9 +1019,9 @@ public class aop extends dpx implements aon.d {
       return $$3.build();
    }
 
-   protected void a(bow $$0) {
-      if (!($$0 instanceof cdv)) {
-         bpc<?> $$1 = $$0.ai();
+   protected void a(box $$0) {
+      if (!($$0 instanceof cdw)) {
+         bpd<?> $$1 = $$0.ai();
          int $$2 = $$1.o() * 16;
          if ($$2 != 0) {
             int $$3 = $$1.p();
@@ -1049,7 +1047,7 @@ public class aop extends dpx implements aon.d {
       }
    }
 
-   protected void b(bow $$0) {
+   protected void b(box $$0) {
       if ($$0 instanceof apg $$1) {
          this.a($$1, false);
          ObjectIterator var3 = this.K.values().iterator();
@@ -1082,7 +1080,7 @@ public class aop extends dpx implements aon.d {
          boolean $$6 = !Objects.equals($$4, $$5);
          if ($$6) {
             $$3.a($$2);
-            bow $$7 = $$3.c;
+            box $$7 = $$3.c;
             if ($$7 instanceof apg) {
                $$1.add((apg)$$7);
             }
@@ -1105,27 +1103,27 @@ public class aop extends dpx implements aon.d {
       }
    }
 
-   public void a(bow $$0, yb<?> $$1) {
+   public void a(box $$0, yb<?> $$1) {
       aop.b $$2 = (aop.b)this.K.get($$0.aj());
       if ($$2 != null) {
          $$2.a($$1);
       }
    }
 
-   protected void b(bow $$0, yb<?> $$1) {
+   protected void b(box $$0, yb<?> $$1) {
       aop.b $$2 = (aop.b)this.K.get($$0.aj());
       if ($$2 != null) {
          $$2.b($$1);
       }
    }
 
-   public void a(List<dov> $$0) {
-      Map<apg, List<dpg>> $$1 = new HashMap<>();
+   public void a(List<dox> $$0) {
+      Map<apg, List<dpi>> $$1 = new HashMap<>();
 
-      for (dov $$2 : $$0) {
-         cwg $$3 = $$2.f();
-         dpg $$5;
-         if ($$2 instanceof dpg $$4) {
+      for (dox $$2 : $$0) {
+         cwi $$3 = $$2.f();
+         dpi $$5;
+         if ($$2 instanceof dpi $$4) {
             $$5 = $$4;
          } else {
             $$5 = this.q.d($$3.e, $$3.f);
@@ -1139,7 +1137,7 @@ public class aop extends dpx implements aon.d {
       $$1.forEach(($$0x, $$1x) -> $$0x.d.b(abc.a($$1x)));
    }
 
-   protected car m() {
+   protected cas m() {
       return this.x;
    }
 
@@ -1147,13 +1145,13 @@ public class aop extends dpx implements aon.d {
       return this.I;
    }
 
-   void a(cwg $$0, aoy $$1) {
+   void a(cwi $$0, aoy $$1) {
       this.E.onChunkStatusChange($$0, $$1);
    }
 
-   public void a(cwg $$0, int $$1) {
+   public void a(cwi $$0, int $$1) {
       int $$2 = $$1 + 1;
-      cwg.a($$0, $$2).forEach($$0x -> {
+      cwi.a($$0, $$2).forEach($$0x -> {
          aon $$1x = this.b($$0x.a());
          if ($$1x != null) {
             $$1x.a(this.r.a($$0x.e, $$0x.f));
@@ -1186,12 +1184,12 @@ public class aop extends dpx implements aon.d {
 
    class b {
       final ape b;
-      final bow c;
+      final box c;
       private final int d;
       je e;
       private final Set<aqh> f = Sets.newIdentityHashSet();
 
-      public b(bow $$0, int $$1, int $$2, boolean $$3) {
+      public b(box $$0, int $$1, int $$2, boolean $$3) {
          this.b = new ape(aop.this.q, $$0, $$2, $$3, this::a);
          this.c = $$0;
          this.d = $$1;
@@ -1235,7 +1233,7 @@ public class aop extends dpx implements aon.d {
 
       public void b(apg $$0) {
          if ($$0 != this.c) {
-            epr $$1 = $$0.dk().d(this.c.dk());
+            ept $$1 = $$0.dk().d(this.c.dk());
             int $$2 = aop.this.b($$0);
             double $$3 = (double)Math.min(this.b(), $$2 * 16);
             double $$4 = $$1.c * $$1.c + $$1.e * $$1.e;
@@ -1258,7 +1256,7 @@ public class aop extends dpx implements aon.d {
       private int b() {
          int $$0 = this.d;
 
-         for (bow $$1 : this.c.cT()) {
+         for (box $$1 : this.c.cT()) {
             int $$2 = $$1.ai().o() * 16;
             if ($$2 > $$0) {
                $$0 = $$2;

@@ -1,25 +1,20 @@
-public class cuq extends cuu {
-   public cuq(cuu.a $$0, bpd... $$1) {
-      super($$0, auv.bo, $$1);
+public class cuq extends cuw {
+   public cuq(cuw.a $$0, bpe... $$1) {
+      super($$0, auv.bn, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 25;
+      return 12 + ($$0 - 1) * 20;
    }
 
    @Override
    public int b(int $$0) {
-      return 50;
+      return this.a($$0) + 25;
    }
 
    @Override
-   public boolean b() {
-      return true;
-   }
-
-   @Override
-   public boolean c() {
-      return true;
+   public int a() {
+      return 2;
    }
 }

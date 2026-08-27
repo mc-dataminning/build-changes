@@ -9,7 +9,7 @@ public class ate {
    }
 
    public boolean a(int $$0, List<apg> $$1) {
-      int $$2 = (int)$$1.stream().filter(cis::gc).count();
+      int $$2 = (int)$$1.stream().filter(ciu::gc).count();
       return $$2 >= this.b($$0);
    }
 

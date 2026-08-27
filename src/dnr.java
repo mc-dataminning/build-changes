@@ -1,24 +1,132 @@
-public enum dnr implements axq {
-   a("single"),
-   b("left"),
-   c("right");
-
-   private final String d;
-
-   private dnr(String $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public String c() {
-      return this.d;
-   }
-
-   public dnr a() {
-      return switch (this) {
-         case a -> a;
-         case b -> c;
-         case c -> b;
-      };
-   }
+public class dnr {
+   public static final dns a = dns.a("attached");
+   public static final dns b = dns.a("bottom");
+   public static final dns c = dns.a("conditional");
+   public static final dns d = dns.a("disarmed");
+   public static final dns e = dns.a("drag");
+   public static final dns f = dns.a("enabled");
+   public static final dns g = dns.a("extended");
+   public static final dns h = dns.a("eye");
+   public static final dns i = dns.a("falling");
+   public static final dns j = dns.a("hanging");
+   public static final dns k = dns.a("has_bottle_0");
+   public static final dns l = dns.a("has_bottle_1");
+   public static final dns m = dns.a("has_bottle_2");
+   public static final dns n = dns.a("has_record");
+   public static final dns o = dns.a("has_book");
+   public static final dns p = dns.a("inverted");
+   public static final dns q = dns.a("in_wall");
+   public static final dns r = dns.a("lit");
+   public static final dns s = dns.a("locked");
+   public static final dns t = dns.a("occupied");
+   public static final dns u = dns.a("open");
+   public static final dns v = dns.a("persistent");
+   public static final dns w = dns.a("powered");
+   public static final dns x = dns.a("short");
+   public static final dns y = dns.a("signal_fire");
+   public static final dns z = dns.a("snowy");
+   public static final dns A = dns.a("triggered");
+   public static final dns B = dns.a("unstable");
+   public static final dns C = dns.a("waterlogged");
+   public static final dns D = dns.a("berries");
+   public static final dns E = dns.a("bloom");
+   public static final dns F = dns.a("shrieking");
+   public static final dns G = dns.a("can_summon");
+   public static final dnz<ih.a> H = dnz.a("axis", ih.a.class, ih.a.a, ih.a.c);
+   public static final dnz<ih.a> I = dnz.a("axis", ih.a.class);
+   public static final dns J = dns.a("up");
+   public static final dns K = dns.a("down");
+   public static final dns L = dns.a("north");
+   public static final dns M = dns.a("east");
+   public static final dns N = dns.a("south");
+   public static final dns O = dns.a("west");
+   public static final dnv P = dnv.a("facing", ih.c, ih.f, ih.d, ih.e, ih.b, ih.a);
+   public static final dnv Q = dnv.a("facing", $$0 -> $$0 != ih.b);
+   public static final dnv R = dnv.a("facing", ih.c.a);
+   public static final dob S = dob.a("flower_amount", 1, 4);
+   public static final dnz<ij> T = dnz.a("orientation", ij.class);
+   public static final dnz<dnm> U = dnz.a("face", dnm.class);
+   public static final dnz<dnp> V = dnz.a("attachment", dnp.class);
+   public static final dnz<don> W = dnz.a("east", don.class);
+   public static final dnz<don> X = dnz.a("north", don.class);
+   public static final dnz<don> Y = dnz.a("south", don.class);
+   public static final dnz<don> Z = dnz.a("west", don.class);
+   public static final dnz<dog> aa = dnz.a("east", dog.class);
+   public static final dnz<dog> ab = dnz.a("north", dog.class);
+   public static final dnz<dog> ac = dnz.a("south", dog.class);
+   public static final dnz<dog> ad = dnz.a("west", dog.class);
+   public static final dnz<dnx> ae = dnz.a("half", dnx.class);
+   public static final dnz<doa> af = dnz.a("half", doa.class);
+   public static final dnz<dof> ag = dnz.a("shape", dof.class);
+   public static final dnz<dof> ah = dnz.a("shape", dof.class, $$0 -> $$0 != dof.j && $$0 != dof.i && $$0 != dof.g && $$0 != dof.h);
+   public static final int ai = 1;
+   public static final int aj = 2;
+   public static final int ak = 3;
+   public static final int al = 4;
+   public static final int am = 5;
+   public static final int an = 7;
+   public static final int ao = 15;
+   public static final int ap = 25;
+   public static final dob aq = dob.a("age", 0, 1);
+   public static final dob ar = dob.a("age", 0, 2);
+   public static final dob as = dob.a("age", 0, 3);
+   public static final dob at = dob.a("age", 0, 4);
+   public static final dob au = dob.a("age", 0, 5);
+   public static final dob av = dob.a("age", 0, 7);
+   public static final dob aw = dob.a("age", 0, 15);
+   public static final dob ax = dob.a("age", 0, 25);
+   public static final dob ay = dob.a("bites", 0, 6);
+   public static final dob az = dob.a("candles", 1, 4);
+   public static final dob aA = dob.a("delay", 1, 4);
+   public static final int aB = 7;
+   public static final dob aC = dob.a("distance", 1, 7);
+   public static final dob aD = dob.a("eggs", 1, 4);
+   public static final dob aE = dob.a("hatch", 0, 2);
+   public static final dob aF = dob.a("layers", 1, 8);
+   public static final int aG = 0;
+   public static final int aH = 1;
+   public static final int aI = 3;
+   public static final int aJ = 8;
+   public static final dob aK = dob.a("level", 1, 3);
+   public static final dob aL = dob.a("level", 0, 8);
+   public static final dob aM = dob.a("level", 1, 8);
+   public static final dob aN = dob.a("honey_level", 0, 5);
+   public static final int aO = 15;
+   public static final dob aP = dob.a("level", 0, 15);
+   public static final dob aQ = dob.a("moisture", 0, 7);
+   public static final dob aR = dob.a("note", 0, 24);
+   public static final dob aS = dob.a("pickles", 1, 4);
+   public static final dob aT = dob.a("power", 0, 15);
+   public static final dob aU = dob.a("stage", 0, 1);
+   public static final int aV = 7;
+   public static final dob aW = dob.a("distance", 0, 7);
+   public static final int aX = 0;
+   public static final int aY = 4;
+   public static final dob aZ = dob.a("charges", 0, 4);
+   public static final dob ba = dob.a("rotation", 0, doh.a());
+   public static final dnz<dno> bb = dnz.a("part", dno.class);
+   public static final dnz<dnt> bc = dnz.a("type", dnt.class);
+   public static final dnz<dnu> bd = dnz.a("mode", dnu.class);
+   public static final dnz<dnw> be = dnz.a("hinge", dnw.class);
+   public static final dnz<doc> bf = dnz.a("instrument", doc.class);
+   public static final dnz<dod> bg = dnz.a("type", dod.class);
+   public static final dnz<doj> bh = dnz.a("type", doj.class);
+   public static final dnz<dok> bi = dnz.a("shape", dok.class);
+   public static final dnz<dol> bj = dnz.a("mode", dol.class);
+   public static final dnz<dnn> bk = dnz.a("leaves", dnn.class);
+   public static final dnz<dom> bl = dnz.a("tilt", dom.class);
+   public static final dnv bm = dnv.a("vertical_direction", ih.b, ih.a);
+   public static final dnz<dny> bn = dnz.a("thickness", dny.class);
+   public static final dnz<doi> bo = dnz.a("sculk_sensor_phase", doi.class);
+   public static final dns bp = dns.a("slot_0_occupied");
+   public static final dns bq = dns.a("slot_1_occupied");
+   public static final dns br = dns.a("slot_2_occupied");
+   public static final dns bs = dns.a("slot_3_occupied");
+   public static final dns bt = dns.a("slot_4_occupied");
+   public static final dns bu = dns.a("slot_5_occupied");
+   public static final dob bv = dob.a("dusted", 0, 3);
+   public static final dns bw = dns.a("cracked");
+   public static final dns bx = dns.a("crafting");
+   public static final dnz<dmh> by = dnz.a("trial_spawner_state", dmh.class);
+   public static final dnz<dmo> bz = dnz.a("vault_state", dmo.class);
 }

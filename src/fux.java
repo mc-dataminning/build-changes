@@ -1,27 +1,53 @@
-public class fux extends fvc {
-   fux(fry $$0, double $$1, double $$2, double $$3) {
+public class fux extends fwg {
+   fux(fsa $$0, double $$1, double $$2, double $$3) {
       super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.t = 8;
+      this.C = true;
+      this.B = 0.86F;
+      this.j *= 0.01F;
+      this.k *= 0.01F;
+      this.l *= 0.01F;
+      this.k += 0.1;
+      this.D *= 1.5F;
+      this.t = 16;
+      this.n = false;
    }
 
    @Override
-   public void a() {
-      for (int $$0 = 0; $$0 < 6; $$0++) {
-         double $$1 = this.g + (this.r.j() - this.r.j()) * 4.0;
-         double $$2 = this.h + (this.r.j() - this.r.j()) * 4.0;
-         double $$3 = this.i + (this.r.j() - this.r.j()) * 4.0;
-         this.c.a(kc.x, $$1, $$2, $$3, (double)((float)this.s / (float)this.t), 0.0, 0.0);
+   public fvk b() {
+      return fvk.b;
+   }
+
+   @Override
+   public float b(float $$0) {
+      return this.D * aww.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
+
+   public static class a implements fvj<kf> {
+      private final fwb a;
+
+      public a(fwb $$0) {
+         this.a = $$0;
       }
 
-      this.s++;
-      if (this.s == this.t) {
-         this.k();
+      public fvg a(kf $$0, fsa $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fux $$8 = new fux($$1, $$2, $$3 + 0.5, $$4);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
       }
    }
 
-   public static class a implements fvh<kf> {
-      public fve a(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fux($$1, $$2, $$3, $$4);
+   public static class b implements fvj<kf> {
+      private final fwb a;
+
+      public b(fwb $$0) {
+         this.a = $$0;
+      }
+
+      public fvg a(kf $$0, fsa $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fux $$8 = new fux($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

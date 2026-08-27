@@ -1,146 +1,54 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.mutable.MutableInt;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import java.util.Optional;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class elb {
-   public static final Codec<elb> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ell.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.b),
-               awe.a(env.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.c),
-               awe.a(emj.b.listOf(), "functions", List.of()).forGetter($$0x -> $$0x.e),
-               eop.a.fieldOf("rolls").forGetter($$0x -> $$0x.g),
-               eop.a.fieldOf("bonus_rolls").orElse(eom.a(0.0F)).forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, elb::new)
-   );
-   private final List<eln> b;
-   private final List<ent> c;
-   private final Predicate<eku> d;
-   private final List<emh> e;
-   private final BiFunction<cqk, eku, cqk> f;
-   private final eoo g;
-   private final eoo h;
+public class elb<T> {
+   private static final Logger d = LogUtils.getLogger();
+   public static final elb<env> a = new elb<>(enx.a, "predicates", c());
+   public static final elb<emj> b = new elb<>(eml.b, "item_modifiers", c());
+   public static final elb<ele> c = new elb<>(ele.c, "loot_tables", d());
+   private final Codec<T> e;
+   private final String f;
+   private final elb.a<T> g;
 
-   elb(List<eln> $$0, List<ent> $$1, List<emh> $$2, eoo $$3, eoo $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = ac.a($$1);
-      this.e = $$2;
-      this.f = emj.a($$2);
-      this.g = $$3;
-      this.h = $$4;
+   private elb(Codec<T> $$0, String $$1, elb.a<T> $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   private void b(Consumer<cqk> $$0, eku $$1) {
-      axd $$2 = $$1.b();
-      List<elm> $$3 = Lists.newArrayList();
-      MutableInt $$4 = new MutableInt();
-
-      for (eln $$5 : this.b) {
-         $$5.expand($$1, $$3x -> {
-            int $$4x = $$3x.a($$1.c());
-            if ($$4x > 0) {
-               $$3.add($$3x);
-               $$4.add($$4x);
-            }
-         });
-      }
-
-      int $$6 = $$3.size();
-      if ($$4.intValue() != 0 && $$6 != 0) {
-         if ($$6 == 1) {
-            $$3.get(0).a($$0, $$1);
-         } else {
-            int $$7 = $$2.a($$4.intValue());
-
-            for (elm $$8 : $$3) {
-               $$7 -= $$8.a($$1.c());
-               if ($$7 < 0) {
-                  $$8.a($$0, $$1);
-                  return;
-               }
-            }
-         }
-      }
+   public String a() {
+      return this.f;
    }
 
-   public void a(Consumer<cqk> $$0, eku $$1) {
-      if (this.d.test($$1)) {
-         Consumer<cqk> $$2 = emh.a(this.f, $$0, $$1);
-         int $$3 = this.g.a($$1) + aww.d(this.h.b($$1) * $$1.c());
-
-         for (int $$4 = 0; $$4 < $$3; $$4++) {
-            this.b($$2, $$1);
-         }
-      }
+   public void a(elf $$0, eky<T> $$1, T $$2) {
+      this.g.run($$0, $$1, $$2);
    }
 
-   public void a(eld $$0) {
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".condition[" + $$1 + "]"));
-      }
-
-      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
-         this.e.get($$2).a($$0.a(".functions[" + $$2 + "]"));
-      }
-
-      for (int $$3 = 0; $$3 < this.b.size(); $$3++) {
-         this.b.get($$3).a($$0.a(".entries[" + $$3 + "]"));
-      }
-
-      this.g.a($$0.a(".rolls"));
-      this.h.a($$0.a(".bonusRolls"));
+   public <V> Optional<T> a(ajh $$0, DynamicOps<V> $$1, V $$2) {
+      DataResult<T> $$3 = this.e.parse($$1, $$2);
+      $$3.error().ifPresent($$1x -> d.error("Couldn't parse element {}:{} - {}", new Object[]{this.f, $$0, $$1x.message()}));
+      return $$3.result();
    }
 
-   public static elb.a a() {
-      return new elb.a();
+   public static Stream<elb<?>> b() {
+      return Stream.of(a, b, c);
    }
 
-   public static class a implements eme<elb.a>, enm<elb.a> {
-      private final Builder<eln> a = ImmutableList.builder();
-      private final Builder<ent> b = ImmutableList.builder();
-      private final Builder<emh> c = ImmutableList.builder();
-      private eoo d = eom.a(1.0F);
-      private eoo e = eom.a(0.0F);
+   private static <T extends ekx> elb.a<T> c() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.a().f + ":" + $$1.b() + "}", $$1));
+   }
 
-      public elb.a a(eoo $$0) {
-         this.d = $$0;
-         return this;
-      }
+   private static elb.a<ele> d() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.a().f + ":" + $$1.b() + "}", $$1));
+   }
 
-      public elb.a a() {
-         return this;
-      }
-
-      public elb.a b(eoo $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public elb.a a(eln.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      public elb.a a(ent.a $$0) {
-         this.b.add($$0.build());
-         return this;
-      }
-
-      public elb.a a(emh.a $$0) {
-         this.c.add($$0.b());
-         return this;
-      }
-
-      public elb b() {
-         return new elb(this.a.build(), this.b.build(), this.c.build(), this.d, this.e);
-      }
+   @FunctionalInterface
+   public interface a<T> {
+      void run(elf var1, eky<T> var2, T var3);
    }
 }

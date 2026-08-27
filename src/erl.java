@@ -1,2 +1,5 @@
-public interface erl<T> extends erk<T> {
+import java.util.function.Function;
+
+public interface erl<T> {
+   tx b(long var1, Function<T, String> var3);
 }

@@ -1,30 +1,30 @@
 import com.mojang.serialization.Codec;
 
-public class dwx extends dvq<dym> {
-   public dwx(Codec<dym> $$0) {
+public class dwx extends dvs<dxr> {
+   public dwx(Codec<dxr> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dvs<dym> $$0) {
-      dym $$1 = $$0.f();
-      cxu $$2 = $$0.b();
-      ib $$3 = $$0.e();
-      dmz $$4 = $$1.a().a($$0.d(), $$3);
-      if ($$4.a($$2, $$3)) {
-         if ($$4.b() instanceof dci) {
-            if (!$$2.u($$3.c())) {
-               return false;
-            }
+   public boolean a(dvu<dxr> $$0) {
+      int $$1 = 0;
+      axd $$2 = $$0.d();
+      cxw $$3 = $$0.b();
+      ib $$4 = $$0.e();
+      int $$5 = $$0.f().a().a($$2);
 
-            dci.a($$2, $$4, $$3, 2);
-         } else {
-            $$2.a($$3, $$4, 2);
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         int $$7 = $$2.a(8) - $$2.a(8);
+         int $$8 = $$2.a(8) - $$2.a(8);
+         int $$9 = $$3.a(dso.a.d, $$4.u() + $$7, $$4.w() + $$8);
+         ib $$10 = new ib($$4.u() + $$7, $$9, $$4.w() + $$8);
+         dnb $$11 = dae.mV.o().a(dgy.c, Integer.valueOf($$2.a(4) + 1));
+         if ($$3.a_($$10).a(dae.G) && $$11.a($$3, $$10)) {
+            $$3.a($$10, $$11, 2);
+            $$1++;
          }
-
-         return true;
-      } else {
-         return false;
       }
+
+      return $$1 > 0;
    }
 }

@@ -1,113 +1,111 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dhe extends dci implements dad, dha {
-   public static final MapCodec<dhe> c = b(dhe::new);
-   private static final dnq g = dnp.C;
-   public static final dnt d = dnp.R;
-   protected static final float e = 6.0F;
-   protected static final eqk f = daa.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
+public class dhe extends dac implements dhc {
+   public static final MapCodec<dhe> a = b(dhe::new);
+   public static final dnz<doj> b = dnr.bh;
+   public static final dns c = dnr.C;
+   protected static final eqm d = dac.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
+   protected static final eqm e = dac.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0);
 
    @Override
-   public MapCodec<dhe> a() {
-      return c;
+   public MapCodec<? extends dhe> a() {
+      return a;
    }
 
-   public dhe(dmy.d $$0) {
+   public dhe(dna.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, dnv.b).a(g, Boolean.valueOf(false)).a(d, ih.c));
+      this.k(this.o().a(b, doj.b).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected eqk a(dmz $$0, cwf $$1, ib $$2, epw $$3) {
-      return f;
+   protected boolean g_(dnb $$0) {
+      return $$0.c(b) != doj.c;
    }
 
    @Override
-   protected boolean b(dmz $$0, cwf $$1, ib $$2) {
-      return $$0.a(aun.bx) || $$1.b_($$2.c()).a(eio.c) && super.b($$0, $$1, $$2);
+   protected void a(dnc.a<dac, dnb> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   protected eqm a(dnb $$0, cwh $$1, ib $$2, epy $$3) {
+      doj $$4 = $$0.c(b);
+      switch ($$4) {
+         case c:
+            return eqj.b();
+         case a:
+            return e;
+         default:
+            return d;
+      }
    }
 
    @Nullable
    @Override
-   public dmz a(css $$0) {
-      dmz $$1 = super.a($$0);
-      return $$1 != null ? c($$0.q(), $$0.a(), $$1.a(d, $$0.g().g())) : null;
-   }
-
-   @Override
-   public void a(cwz $$0, ib $$1, dmz $$2, bpo $$3, cqk $$4) {
-      if (!$$0.x_()) {
-         ib $$5 = $$1.c();
-         dmz $$6 = dci.c($$0, $$5, this.o().a(b, dnv.a).a(d, $$2.c(d)));
-         $$0.a($$5, $$6, 3);
-      }
-   }
-
-   @Override
-   protected ein c_(dmz $$0) {
-      return $$0.c(g) ? eio.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   protected boolean a(dmz $$0, cxc $$1, ib $$2) {
-      if ($$0.c(b) == dnv.a) {
-         return super.a($$0, $$1, $$2);
+   public dnb a(csu $$0) {
+      ib $$1 = $$0.a();
+      dnb $$2 = $$0.q().a_($$1);
+      if ($$2.a(this)) {
+         return $$2.a(b, doj.c).a(c, Boolean.valueOf(false));
       } else {
-         ib $$3 = $$2.d();
-         dmz $$4 = $$1.a_($$3);
-         return this.b($$4, $$1, $$3);
+         eip $$3 = $$0.q().b_($$1);
+         dnb $$4 = this.o().a(b, doj.b).a(c, Boolean.valueOf($$3.a() == eiq.c));
+         ih $$5 = $$0.k();
+         return $$5 != ih.a && ($$5 == ih.b || !($$0.l().d - (double)$$1.v() > 0.5)) ? $$4 : $$4.a(b, doj.a);
       }
    }
 
    @Override
-   protected dmz a(dmz $$0, ih $$1, dmz $$2, cxa $$3, ib $$4, ib $$5) {
-      if ($$0.c(g)) {
-         $$3.a($$4, eio.c, eio.c.a($$3));
+   protected boolean a(dnb $$0, csu $$1) {
+      cqm $$2 = $$1.n();
+      doj $$3 = $$0.c(b);
+      if ($$3 == doj.c || !$$2.a(this.l())) {
+         return false;
+      } else if ($$1.c()) {
+         boolean $$4 = $$1.l().d - (double)$$1.a().v() > 0.5;
+         ih $$5 = $$1.k();
+         return $$3 == doj.b ? $$5 == ih.b || $$4 && $$5.o().d() : $$5 == ih.a || !$$4 && $$5.o().d();
+      } else {
+         return true;
+      }
+   }
+
+   @Override
+   protected eip c_(dnb $$0) {
+      return $$0.c(c) ? eiq.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   public boolean a(cxc $$0, ib $$1, dnb $$2, eip $$3) {
+      return $$2.c(b) != doj.c ? dhc.super.a($$0, $$1, $$2, $$3) : false;
+   }
+
+   @Override
+   public boolean a(@Nullable ciu $$0, cwh $$1, ib $$2, dnb $$3, eio $$4) {
+      return $$3.c(b) != doj.c ? dhc.super.a($$0, $$1, $$2, $$3, $$4) : false;
+   }
+
+   @Override
+   protected dnb a(dnb $$0, ih $$1, dnb $$2, cxc $$3, ib $$4, ib $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, eiq.c, eiq.c.a($$3));
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected void a(dna.a<daa, dmz> $$0) {
-      $$0.a(b, g, d);
-   }
-
-   @Override
-   public boolean b(cxc $$0, ib $$1, dmz $$2) {
-      return true;
-   }
-
-   @Override
-   public boolean a(cwz $$0, axd $$1, ib $$2, dmz $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(apf $$0, axd $$1, ib $$2, dmz $$3) {
-      if ($$3.c(dci.b) == dnv.b) {
-         ib $$4 = $$2.c();
-         $$0.a($$4, $$0.b_($$4).g(), 18);
-         czx.a($$0, $$1, $$2, $$3.c(d));
-      } else {
-         ib $$5 = $$2.d();
-         this.a($$0, $$1, $$5, $$0.a_($$5));
+   protected boolean a(dnb $$0, cwh $$1, ib $$2, eje $$3) {
+      switch ($$3) {
+         case a:
+            return false;
+         case b:
+            return $$1.b_($$2).a(aus.a);
+         case c:
+            return false;
+         default:
+            return false;
       }
-   }
-
-   @Override
-   protected dmz a(dmz $$0, dgm $$1) {
-      return $$0.a(d, $$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected dmz a(dmz $$0, dew $$1) {
-      return $$0.a($$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected float aw_() {
-      return 0.1F;
    }
 }

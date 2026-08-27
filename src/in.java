@@ -1,3 +1,4 @@
+import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.Lifecycle;
 import java.util.Map;
 import java.util.Optional;
@@ -25,6 +26,10 @@ public interface in<T> extends im<T> {
 
       default <T> in.b<T> b(ajg<? extends iy<? extends T>> $$0) {
          return this.a($$0).orElseThrow(() -> new IllegalStateException("Registry " + $$0.a() + " not found"));
+      }
+
+      default <V> ajf<V> a(DynamicOps<V> $$0) {
+         return ajf.a((DynamicOps<T>)$$0, this);
       }
 
       default im.a b() {
@@ -57,14 +62,14 @@ public interface in<T> extends im<T> {
 
       Lifecycle g();
 
-      default in.b<T> a(clf $$0) {
-         return clc.bz.contains(this.f()) ? this.a($$1 -> ((clc)$$1).a($$0)) : this;
+      default in.b<T> a(clh $$0) {
+         return cle.bA.contains(this.f()) ? this.a($$1 -> ((cle)$$1).a($$0)) : this;
       }
 
       default in.b<T> a(final Predicate<T> $$0) {
          return new in.b.a<T>() {
             @Override
-            protected in.b<T> a() {
+            public in.b<T> a() {
                return b.this;
             }
 
@@ -80,36 +85,36 @@ public interface in<T> extends im<T> {
          };
       }
 
-      public abstract static class a<T> implements in.b<T> {
-         protected abstract in.b<T> a();
+      public interface a<T> extends in.b<T> {
+         in.b<T> a();
 
          @Override
-         public ajg<? extends iy<? extends T>> f() {
+         default ajg<? extends iy<? extends T>> f() {
             return this.a().f();
          }
 
          @Override
-         public Lifecycle g() {
+         default Lifecycle g() {
             return this.a().g();
          }
 
          @Override
-         public Optional<il.c<T>> a(ajg<T> $$0) {
+         default Optional<il.c<T>> a(ajg<T> $$0) {
             return this.a().a($$0);
          }
 
          @Override
-         public Stream<il.c<T>> b() {
+         default Stream<il.c<T>> b() {
             return this.a().b();
          }
 
          @Override
-         public Optional<ip.c<T>> a(avd<T> $$0) {
+         default Optional<ip.c<T>> a(avd<T> $$0) {
             return this.a().a($$0);
          }
 
          @Override
-         public Stream<ip.c<T>> d() {
+         default Stream<ip.c<T>> d() {
             return this.a().d();
          }
       }

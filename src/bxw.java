@@ -1,41 +1,30 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class bxw extends bwm {
+   private final bpx a;
 
-public class bxw<T extends bpq> extends bwl {
-   private final T a;
-   private final cqk b;
-   private final Predicate<? super T> c;
-   @Nullable
-   private final atx d;
-
-   public bxw(T $$0, cqk $$1, @Nullable atx $$2, Predicate<? super T> $$3) {
+   public bxw(bpx $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.d = $$2;
-      this.c = $$3;
    }
 
    @Override
    public boolean a() {
-      return this.c.test(this.a);
-   }
-
-   @Override
-   public boolean b() {
-      return this.a.fs();
+      return this.a.aC() && !this.a.dM().b_(this.a.dm()).a(aus.a);
    }
 
    @Override
    public void c() {
-      this.a.a(bpd.a, this.b.q());
-      this.a.c(bnb.a);
-   }
+      ib $$0 = null;
 
-   @Override
-   public void d() {
-      this.a.a(bpd.a, cqk.h);
-      if (this.d != null) {
-         this.a.a(this.d, 1.0F, this.a.ei().i() * 0.2F + 0.9F);
+      for (ib $$2 : ib.b(
+         aww.a(this.a.dr() - 2.0), aww.a(this.a.dt() - 2.0), aww.a(this.a.dx() - 2.0), aww.a(this.a.dr() + 2.0), this.a.ds(), aww.a(this.a.dx() + 2.0)
+      )) {
+         if (this.a.dM().b_($$2).a(aus.a)) {
+            $$0 = $$2;
+            break;
+         }
+      }
+
+      if ($$0 != null) {
+         this.a.H().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
       }
    }
 }

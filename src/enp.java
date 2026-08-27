@@ -1,36 +1,33 @@
 import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import java.util.Set;
 
-public class enp implements ent {
-   private static final enp b = new enp();
-   public static final Codec<enp> a = Codec.unit(b);
+public record enp(Optional<bg> b) implements env {
+   public static final Codec<enp> a = RecordCodecBuilder.create($$0 -> $$0.group(awe.a(bg.a, "predicate").forGetter(enp::c)).apply($$0, enp::new));
 
-   private enp() {
+   @Override
+   public enw b() {
+      return enx.n;
    }
 
    @Override
-   public enu b() {
-      return env.m;
+   public Set<ene<?>> a() {
+      return ImmutableSet.of(enh.f, enh.c);
    }
 
-   @Override
-   public Set<enc<?>> a() {
-      return ImmutableSet.of(enf.j);
+   public boolean a(ekw $$0) {
+      bnw $$1 = $$0.c(enh.c);
+      ept $$2 = $$0.c(enh.f);
+      return $$2 != null && $$1 != null ? this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1) : false;
    }
 
-   public boolean a(eku $$0) {
-      Float $$1 = $$0.c(enf.j);
-      if ($$1 != null) {
-         axd $$2 = $$0.b();
-         float $$3 = 1.0F / $$1;
-         return $$2.i() <= $$3;
-      } else {
-         return true;
-      }
+   public static env.a a(bg.a $$0) {
+      return () -> new enp(Optional.of($$0.b()));
    }
 
-   public static ent.a c() {
-      return () -> b;
+   public Optional<bg> c() {
+      return this.b;
    }
 }

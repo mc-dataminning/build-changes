@@ -1,4 +1,4 @@
-public abstract class apb extends ehz {
+public abstract class apb extends eib {
    protected apb(int $$0, int $$1, int $$2) {
       super($$0, $$1, $$2);
    }

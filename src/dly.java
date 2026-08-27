@@ -1,15 +1,13 @@
-public class dly extends dkn {
-   public dly(ib $$0, dmz $$1) {
-      super(dki.c, $$0, $$1);
+public class dly extends dki {
+   protected dly(dkk<?> $$0, ib $$1, dnb $$2) {
+      super($$0, $$1, $$2);
    }
 
-   @Override
-   protected void a(cwz $$0, ib $$1, dmz $$2, int $$3, int $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$3 != $$4) {
-         daa $$5 = $$2.b();
-         $$0.a($$1, $$5);
-         $$0.a($$1.d(), $$5);
-      }
+   public dly(ib $$0, dnb $$1) {
+      this(dkk.n, $$0, $$1);
+   }
+
+   public boolean a(ih $$0) {
+      return $$0.o() == ih.a.b;
    }
 }

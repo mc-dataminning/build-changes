@@ -1,20 +1,19 @@
 import com.mojang.serialization.MapCodec;
 
-public class djo extends ddo {
-   public static final MapCodec<djo> c = b(djo::new);
-   public static final eqk e = daa.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+public class djo extends dac {
+   public static final MapCodec<djo> a = b(djo::new);
 
    @Override
    public MapCodec<djo> a() {
-      return c;
+      return a;
    }
 
-   public djo(dmy.d $$0) {
-      super($$0, ih.a, e, false);
+   public djo(dna.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected ddp c() {
-      return (ddp)dac.oz;
+   protected void a(dnb $$0, cxb $$1, ib $$2, box $$3) {
+      $$3.a($$0, new ept(0.25, 0.05F, 0.25));
    }
 }

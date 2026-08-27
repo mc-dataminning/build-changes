@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public record cc(Optional<avd<cqf>> b, Optional<ip<cqf>> c, cm.d d, cm.d e, List<bm> f, List<bm> g, Optional<il<csh>> h, Optional<co> i) {
-   private static final Codec<ip<cqf>> j = ki.h.r().listOf().xmap(ip::a, $$0 -> $$0.a().toList());
+public record cc(Optional<avd<cqh>> b, Optional<ip<cqh>> c, cm.d d, cm.d e, List<bm> f, List<bm> g, Optional<il<csj>> h, Optional<co> i) {
+   private static final Codec<ip<cqh>> j = ki.h.r().listOf().xmap(ip::a, $$0 -> $$0.a().toList());
    public static final Codec<cc> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                awe.a(avd.a(kj.F), "tag").forGetter(cc::a),
@@ -22,7 +22,7 @@ public record cc(Optional<avd<cqf>> b, Optional<ip<cqf>> c, cm.d d, cm.d e, List
             .apply($$0, cc::new)
    );
 
-   public boolean a(cqk $$0) {
+   public boolean a(cqm $$0) {
       if (this.b.isPresent() && !$$0.a(this.b.get())) {
          return false;
       } else if (this.c.isPresent() && !$$0.a(this.c.get())) {
@@ -37,7 +37,7 @@ public record cc(Optional<avd<cqf>> b, Optional<ip<cqf>> c, cm.d d, cm.d e, List
          return false;
       } else {
          if (!this.f.isEmpty()) {
-            Map<cuu, Integer> $$1 = cuv.a($$0.y());
+            Map<cuw, Integer> $$1 = cux.a($$0.y());
 
             for (bm $$2 : this.f) {
                if (!$$2.a($$1)) {
@@ -47,7 +47,7 @@ public record cc(Optional<avd<cqf>> b, Optional<ip<cqf>> c, cm.d d, cm.d e, List
          }
 
          if (!this.g.isEmpty()) {
-            Map<cuu, Integer> $$3 = cuv.a(cph.d($$0));
+            Map<cuw, Integer> $$3 = cux.a(cpj.d($$0));
 
             for (bm $$4 : this.g) {
                if (!$$4.a($$3)) {
@@ -56,15 +56,15 @@ public record cc(Optional<avd<cqf>> b, Optional<ip<cqf>> c, cm.d d, cm.d e, List
             }
          }
 
-         return !this.h.isPresent() || this.h.get().equals(csj.d($$0));
+         return !this.h.isPresent() || this.h.get().equals(csl.d($$0));
       }
    }
 
-   public Optional<avd<cqf>> a() {
+   public Optional<avd<cqh>> a() {
       return this.b;
    }
 
-   public Optional<ip<cqf>> b() {
+   public Optional<ip<cqh>> b() {
       return this.c;
    }
 
@@ -84,7 +84,7 @@ public record cc(Optional<avd<cqf>> b, Optional<ip<cqf>> c, cm.d d, cm.d e, List
       return this.g;
    }
 
-   public Optional<il<csh>> g() {
+   public Optional<il<csj>> g() {
       return this.h;
    }
 
@@ -95,11 +95,11 @@ public record cc(Optional<avd<cqf>> b, Optional<ip<cqf>> c, cm.d d, cm.d e, List
    public static class a {
       private final Builder<bm> a = ImmutableList.builder();
       private final Builder<bm> b = ImmutableList.builder();
-      private Optional<ip<cqf>> c = Optional.empty();
-      private Optional<avd<cqf>> d = Optional.empty();
+      private Optional<ip<cqh>> c = Optional.empty();
+      private Optional<avd<cqh>> d = Optional.empty();
       private cm.d e = cm.d.c;
       private cm.d f = cm.d.c;
-      private Optional<il<csh>> g = Optional.empty();
+      private Optional<il<csj>> g = Optional.empty();
       private Optional<co> h = Optional.empty();
 
       private a() {
@@ -109,12 +109,12 @@ public record cc(Optional<avd<cqf>> b, Optional<ip<cqf>> c, cm.d d, cm.d e, List
          return new cc.a();
       }
 
-      public cc.a a(cwy... $$0) {
+      public cc.a a(cxa... $$0) {
          this.c = Optional.of(ip.a($$0x -> $$0x.l().k(), $$0));
          return this;
       }
 
-      public cc.a a(avd<cqf> $$0) {
+      public cc.a a(avd<cqh> $$0) {
          this.d = Optional.of($$0);
          return this;
       }
@@ -129,7 +129,7 @@ public record cc(Optional<avd<cqf>> b, Optional<ip<cqf>> c, cm.d d, cm.d e, List
          return this;
       }
 
-      public cc.a a(il<csh> $$0) {
+      public cc.a a(il<csj> $$0) {
          this.g = Optional.of($$0);
          return this;
       }

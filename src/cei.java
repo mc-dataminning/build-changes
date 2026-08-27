@@ -1,30 +1,26 @@
-public class cei extends cea {
-   private static final int b = 40;
-   private int c;
+import javax.annotation.Nullable;
 
-   public cei(cdx $$0) {
-      super($$0);
-   }
+public interface cei {
+   boolean a();
 
-   @Override
-   public void b() {
-      this.a.dM().a(this.a.dr(), this.a.dt(), this.a.dx(), aty.hT, this.a.db(), 2.5F, 0.8F + this.a.ei().i() * 0.3F, false);
-   }
+   void b();
 
-   @Override
-   public void c() {
-      if (this.c++ >= 40) {
-         this.a.gk().a(cen.f);
-      }
-   }
+   void c();
 
-   @Override
-   public void d() {
-      this.c = 0;
-   }
+   void a(cdx var1, ib var2, bnw var3, @Nullable ciu var4);
 
-   @Override
-   public cen<cei> i() {
-      return cen.h;
-   }
+   void d();
+
+   void e();
+
+   float f();
+
+   float h();
+
+   ceo<? extends cei> i();
+
+   @Nullable
+   ept g();
+
+   float a(bnw var1, float var2);
 }

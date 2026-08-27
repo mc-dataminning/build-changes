@@ -1,127 +1,39 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public abstract class byl extends bwl {
-   private static final int a = 0;
-   private static final int b = 1;
-   private static final int c = 2;
-   protected final bpq e;
-   protected final boolean f;
-   private final boolean d;
-   private int i;
-   private int j;
-   private int k;
-   @Nullable
-   protected bpo g;
-   protected int h = 60;
+public class byl<T extends bpr & bpv> extends bwm {
+   private static final int a = 10;
+   private final T b;
+   private final boolean c;
+   private int d;
 
-   public byl(bpq $$0, boolean $$1) {
-      this($$0, $$1, false);
-   }
-
-   public byl(bpq $$0, boolean $$1, boolean $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.d = $$2;
+   public byl(T $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public boolean b() {
-      bpo $$0 = this.e.p();
-      if ($$0 == null) {
-         $$0 = this.g;
-      }
-
-      if ($$0 == null) {
-         return false;
-      } else if (!this.e.c($$0)) {
-         return false;
-      } else {
-         eqx $$1 = this.e.cg();
-         eqx $$2 = $$0.cg();
-         if ($$1 != null && $$2 == $$1) {
-            return false;
-         } else {
-            double $$3 = this.l();
-            if (this.e.g($$0) > $$3 * $$3) {
-               return false;
-            } else {
-               if (this.f) {
-                  if (this.e.M().a($$0)) {
-                     this.k = 0;
-                  } else if (++this.k > b(this.h)) {
-                     return false;
-                  }
-               }
-
-               this.e.h($$0);
-               return true;
-            }
-         }
-      }
+   public boolean a() {
+      return this.b.dM().Z().b(cwx.O) && this.h();
    }
 
-   protected double l() {
-      return this.e.g(bqv.k);
+   private boolean h() {
+      return this.b.ej() != null && this.b.ej().ai() == bpd.by && this.b.ek() > this.d;
    }
 
    @Override
    public void c() {
-      this.i = 0;
-      this.j = 0;
-      this.k = 0;
-   }
-
-   @Override
-   public void d() {
-      this.e.h(null);
-      this.g = null;
-   }
-
-   protected boolean a(@Nullable bpo $$0, cae $$1) {
-      if ($$0 == null) {
-         return false;
-      } else if (!$$1.a(this.e, $$0)) {
-         return false;
-      } else if (!this.e.a($$0.dm())) {
-         return false;
-      } else {
-         if (this.d) {
-            if (--this.j <= 0) {
-               this.i = 0;
-            }
-
-            if (this.i == 0) {
-               this.i = this.a($$0) ? 1 : 2;
-            }
-
-            if (this.i == 2) {
-               return false;
-            }
-         }
-
-         return true;
+      this.d = this.b.ek();
+      this.b.Z_();
+      if (this.c) {
+         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (bpv)$$0).forEach(bpv::Z_);
       }
+
+      super.c();
    }
 
-   private boolean a(bpo $$0) {
-      this.j = b(10 + this.e.ei().a(5));
-      ejc $$1 = this.e.K().a($$0, 0);
-      if ($$1 == null) {
-         return false;
-      } else {
-         eja $$2 = $$1.d();
-         if ($$2 == null) {
-            return false;
-         } else {
-            int $$3 = $$2.a - $$0.dq();
-            int $$4 = $$2.c - $$0.dw();
-            return (double)($$3 * $$3 + $$4 * $$4) <= 2.25;
-         }
-      }
-   }
-
-   public byl c(int $$0) {
-      this.h = $$0;
-      return this;
+   private List<? extends bpr> i() {
+      double $$0 = this.b.g(bqw.k);
+      epo $$1 = epo.a(this.b.dk()).c($$0, 10.0, $$0);
+      return this.b.dM().a((Class<? extends bpr>)this.b.getClass(), $$1, bpc.f);
    }
 }

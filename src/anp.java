@@ -51,14 +51,14 @@ public class anp {
    }
 
    public static CompletableFuture<Suggestions> a(du $$0, SuggestionsBuilder $$1) {
-      equ $$2 = $$0.f();
+      eqw $$2 = $$0.f();
       List<String> $$3 = Lists.newArrayList();
       if ($$2 != null) {
-         eqv $$4 = $$0.l().aK();
+         eqx $$4 = $$0.l().aK();
 
-         for (eqn $$5 : $$4.c()) {
-            if ($$5.c() == eqy.c) {
-               eqr $$6 = $$4.d($$2, $$5);
+         for (eqp $$5 : $$4.c()) {
+            if ($$5.c() == era.c) {
+               eqt $$6 = $$4.d($$2, $$5);
                if ($$6 != null && !$$6.b()) {
                   $$3.add($$5.b());
                }
@@ -69,34 +69,34 @@ public class anp {
       return dz.b($$3, $$1);
    }
 
-   private static int a(du $$0, apg $$1, eqn $$2, int $$3) throws CommandSyntaxException {
-      eqt $$4 = a($$0.l().aK(), $$1, $$2);
+   private static int a(du $$0, apg $$1, eqp $$2, int $$3) throws CommandSyntaxException {
+      eqv $$4 = a($$0.l().aK(), $$1, $$2);
       int $$5 = $$4.b($$3);
       $$0.a(() -> vu.a("commands.trigger.add.success", $$2.g(), $$3), true);
       return $$5;
    }
 
-   private static int b(du $$0, apg $$1, eqn $$2, int $$3) throws CommandSyntaxException {
-      eqt $$4 = a($$0.l().aK(), $$1, $$2);
+   private static int b(du $$0, apg $$1, eqp $$2, int $$3) throws CommandSyntaxException {
+      eqv $$4 = a($$0.l().aK(), $$1, $$2);
       $$4.a($$3);
       $$0.a(() -> vu.a("commands.trigger.set.success", $$2.g(), $$3), true);
       return $$3;
    }
 
-   private static int a(du $$0, apg $$1, eqn $$2) throws CommandSyntaxException {
-      eqt $$3 = a($$0.l().aK(), $$1, $$2);
+   private static int a(du $$0, apg $$1, eqp $$2) throws CommandSyntaxException {
+      eqv $$3 = a($$0.l().aK(), $$1, $$2);
       int $$4 = $$3.b(1);
       $$0.a(() -> vu.a("commands.trigger.simple.success", $$2.g()), true);
       return $$4;
    }
 
-   private static eqt a(eqv $$0, equ $$1, eqn $$2) throws CommandSyntaxException {
-      if ($$2.c() != eqy.c) {
+   private static eqv a(eqx $$0, eqw $$1, eqp $$2) throws CommandSyntaxException {
+      if ($$2.c() != era.c) {
          throw b.create();
       } else {
-         eqr $$3 = $$0.d($$1, $$2);
+         eqt $$3 = $$0.d($$1, $$2);
          if ($$3 != null && !$$3.b()) {
-            eqt $$4 = $$0.c($$1, $$2);
+            eqv $$4 = $$0.c($$1, $$2);
             $$4.f();
             return $$4;
          } else {

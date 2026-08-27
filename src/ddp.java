@@ -1,106 +1,56 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public abstract class ddp extends ddn implements dad {
-   public static final dnz e = dnp.ax;
-   public static final int f = 25;
-   private final double c;
+public abstract class ddp extends dac {
+   protected final ih a;
+   protected final boolean b;
+   protected final eqm d;
 
-   protected ddp(dmy.d $$0, ih $$1, eqk $$2, boolean $$3, double $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.c = $$4;
-      this.k(this.E.b().a(e, Integer.valueOf(0)));
+   protected ddp(dna.d $$0, ih $$1, eqm $$2, boolean $$3) {
+      super($$0);
+      this.a = $$1;
+      this.d = $$2;
+      this.b = $$3;
    }
 
    @Override
    protected abstract MapCodec<? extends ddp> a();
 
+   @Nullable
    @Override
-   public dmz a(cxa $$0) {
-      return this.o().a(e, Integer.valueOf($$0.E_().a(25)));
+   public dnb a(csu $$0) {
+      dnb $$1 = $$0.q().a_($$0.a().a(this.a));
+      return !$$1.a(this.c()) && !$$1.a(this.b()) ? this.a($$0.q()) : this.b().o();
+   }
+
+   public dnb a(cxc $$0) {
+      return this.o();
    }
 
    @Override
-   protected boolean e_(dmz $$0) {
-      return $$0.c(e) < 25;
+   protected boolean a(dnb $$0, cxe $$1, ib $$2) {
+      ib $$3 = $$2.a(this.a.g());
+      dnb $$4 = $$1.a_($$3);
+      return !this.m($$4) ? false : $$4.a(this.c()) || $$4.a(this.b()) || $$4.d($$1, $$3, this.a);
    }
 
    @Override
-   protected void b(dmz $$0, apf $$1, ib $$2, axd $$3) {
-      if ($$0.c(e) < 25 && $$3.j() < this.c) {
-         ib $$4 = $$2.a(this.a);
-         if (this.g($$1.a_($$4))) {
-            $$1.b($$4, this.a($$0, $$1.z));
-         }
+   protected void a(dnb $$0, apf $$1, ib $$2, axd $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
       }
    }
 
-   protected dmz a(dmz $$0, axd $$1) {
-      return $$0.a(e);
-   }
-
-   public dmz n(dmz $$0) {
-      return $$0.a(e, Integer.valueOf(25));
-   }
-
-   public boolean o(dmz $$0) {
-      return $$0.c(e) == 25;
-   }
-
-   protected dmz a(dmz $$0, dmz $$1) {
-      return $$1;
-   }
-
-   @Override
-   protected dmz a(dmz $$0, ih $$1, dmz $$2, cxa $$3, ib $$4, ib $$5) {
-      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
-
-      if ($$1 != this.a || !$$2.a(this) && !$$2.a(this.b())) {
-         if (this.b) {
-            $$3.a($$4, eio.c, eio.c.a($$3));
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      } else {
-         return this.a($$0, this.b().o());
-      }
-   }
-
-   @Override
-   protected void a(dna.a<daa, dmz> $$0) {
-      $$0.a(e);
-   }
-
-   @Override
-   public boolean b(cxc $$0, ib $$1, dmz $$2) {
-      return this.g($$0.a_($$1.a(this.a)));
-   }
-
-   @Override
-   public boolean a(cwz $$0, axd $$1, ib $$2, dmz $$3) {
+   protected boolean m(dnb $$0) {
       return true;
    }
 
    @Override
-   public void a(apf $$0, axd $$1, ib $$2, dmz $$3) {
-      ib $$4 = $$2.a(this.a);
-      int $$5 = Math.min($$3.c(e) + 1, 25);
-      int $$6 = this.a($$1);
-
-      for (int $$7 = 0; $$7 < $$6 && this.g($$0.a_($$4)); $$7++) {
-         $$0.b($$4, $$3.a(e, Integer.valueOf($$5)));
-         $$4 = $$4.a(this.a);
-         $$5 = Math.min($$5 + 1, 25);
-      }
+   protected eqm a(dnb $$0, cwh $$1, ib $$2, epy $$3) {
+      return this.d;
    }
 
-   protected abstract int a(axd var1);
+   protected abstract ddr c();
 
-   protected abstract boolean g(dmz var1);
-
-   @Override
-   protected ddp c() {
-      return this;
-   }
+   protected abstract dac b();
 }

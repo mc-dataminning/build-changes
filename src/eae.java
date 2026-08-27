@@ -1,20 +1,21 @@
 import com.mojang.serialization.Codec;
 
-public class eae extends dzv {
-   public static final Codec<eae> b = dmz.b.fieldOf("state").xmap(eae::new, $$0 -> $$0.c).codec();
-   private final dmz c;
+public class eae extends dzx {
+   public static final Codec<eae> b = dnb.b.fieldOf("state").xmap(dna.a::b, dac::o).xmap(eae::new, $$0 -> $$0.c).codec();
+   private final dac c;
 
-   protected eae(dmz $$0) {
+   public eae(dac $$0) {
       this.c = $$0;
    }
 
    @Override
-   protected dzw<?> a() {
-      return dzw.a;
+   protected dzy<?> a() {
+      return dzy.f;
    }
 
    @Override
-   public dmz a(axd $$0, ib $$1) {
-      return this.c;
+   public dnb a(axd $$0, ib $$1) {
+      ih.a $$2 = ih.a.a($$0);
+      return this.c.o().a(dgn.i, $$2);
    }
 }

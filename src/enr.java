@@ -1,45 +1,36 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.Set;
 
-public record enr(Optional<ck> b, ib c) implements ent {
-   private static final MapCodec<ib> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               awe.a(Codec.INT, "offsetX", Integer.valueOf(0)).forGetter(jg::u),
-               awe.a(Codec.INT, "offsetY", Integer.valueOf(0)).forGetter(jg::v),
-               awe.a(Codec.INT, "offsetZ", Integer.valueOf(0)).forGetter(jg::w)
-            )
-            .apply($$0, ib::new)
-   );
-   public static final Codec<enr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(awe.a(ck.a, "predicate").forGetter(enr::c), d.forGetter(enr::d)).apply($$0, enr::new)
-   );
+public class enr implements env {
+   private static final enr b = new enr();
+   public static final Codec<enr> a = Codec.unit(b);
+
+   private enr() {
+   }
 
    @Override
-   public enu b() {
-      return env.o;
+   public enw b() {
+      return enx.m;
    }
 
-   public boolean a(eku $$0) {
-      epr $$1 = $$0.c(enf.f);
-      return $$1 != null
-         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
+   @Override
+   public Set<ene<?>> a() {
+      return ImmutableSet.of(enh.j);
    }
 
-   public static ent.a a(ck.a $$0) {
-      return () -> new enr(Optional.of($$0.b()), ib.c);
+   public boolean a(ekw $$0) {
+      Float $$1 = $$0.c(enh.j);
+      if ($$1 != null) {
+         axd $$2 = $$0.b();
+         float $$3 = 1.0F / $$1;
+         return $$2.i() <= $$3;
+      } else {
+         return true;
+      }
    }
 
-   public static ent.a a(ck.a $$0, ib $$1) {
-      return () -> new enr(Optional.of($$0.b()), $$1);
-   }
-
-   public Optional<ck> c() {
-      return this.b;
-   }
-
-   public ib d() {
-      return this.c;
+   public static env.a c() {
+      return () -> b;
    }
 }

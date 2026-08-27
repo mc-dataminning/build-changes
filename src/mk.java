@@ -7,19 +7,19 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class mk implements mi {
-   private final daa a;
+   private final dac a;
    private final List<mk.b> b = Lists.newArrayList();
 
-   private mk(daa $$0) {
+   private mk(dac $$0) {
       this.a = $$0;
    }
 
    @Override
-   public daa a() {
+   public dac a() {
       return this.a;
    }
 
-   public static mk a(daa $$0) {
+   public static mk a(dac $$0) {
       return new mk($$0);
    }
 
@@ -46,7 +46,7 @@ public class mk implements mi {
    }
 
    public JsonElement b() {
-      dna<daa, dmz> $$0 = this.a.n();
+      dnc<dac, dnb> $$0 = this.a.n();
       this.b.forEach($$1x -> $$1x.a($$0));
       JsonArray $$1 = new JsonArray();
       this.b.stream().map(mk.b::a).forEach($$1::add);
@@ -64,7 +64,7 @@ public class mk implements mi {
       }
 
       @Override
-      public void a(dna<?, ?> $$0) {
+      public void a(dnc<?, ?> $$0) {
          this.a.a($$0);
       }
 
@@ -81,7 +81,7 @@ public class mk implements mi {
          this.a = $$0;
       }
 
-      public void a(dna<?, ?> $$0) {
+      public void a(dnc<?, ?> $$0) {
       }
 
       public void a(JsonObject $$0) {

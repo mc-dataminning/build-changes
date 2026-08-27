@@ -1,77 +1,59 @@
-import java.util.UUID;
-import java.util.function.Supplier;
+public class flk extends fhh {
+   private static final vu a = vu.c("gui.abuseReport.title");
+   private static final vu b = vu.c("gui.abuseReport.message");
+   private static final vu c = vu.c("gui.abuseReport.type.chat");
+   private static final vu k = vu.c("gui.abuseReport.type.skin");
+   private static final vu l = vu.c("gui.abuseReport.type.name");
+   private static final int m = 6;
+   private final fhh n;
+   private final fti o;
+   private final flo p;
+   private final fez q = fez.d().a(6);
 
-public class flk extends fld<fth.a> {
-   private static final int r = 120;
-   private static final int t = 85;
-   private static final int u = 178;
-   private static final vu v = vu.c("gui.abuseReport.skin.title");
-   private final fex w = fex.d().a(8);
-   private fby x;
-   private fbg y;
-   private fbg z;
-
-   private flk(fhf $$0, ftg $$1, fth.a $$2) {
-      super(v, $$0, $$1, $$2);
+   public flk(fhh $$0, fti $$1, flo $$2) {
+      super(a);
+      this.n = $$0;
+      this.o = $$1;
+      this.p = $$2;
    }
 
-   public flk(fhf $$0, ftg $$1, UUID $$2, Supplier<gjy> $$3) {
-      this($$0, $$1, new fth.a($$2, $$3, $$1.a().b()));
-   }
-
-   public flk(fhf $$0, ftg $$1, fth $$2) {
-      this($$0, $$1, new fth.a($$2, $$1.a().b()));
+   @Override
+   public vu i() {
+      return vt.a(super.i(), b);
    }
 
    @Override
    protected void aO_() {
-      this.w.c().b();
-      this.w.a(new fcn(this.e, this.i));
-      fex $$0 = this.w.a(fex.e().a(8));
-      $$0.c().e();
-      $$0.a(new fcg(85, 120, this.f.aR(), this.q.e().a()));
-      fex $$1 = $$0.a(fex.d().a(8));
-      this.z = fbg.a(c, $$0x -> this.f.a(new flj(this, this.q.h(), $$0xx -> {
-            this.q.a($$0xx);
-            this.E();
-         }))).a(178).a();
-      $$1.a(fep.a(this.i, this.z, b));
-      this.x = this.a(178, 9 * 8, $$0x -> {
-         this.q.a($$0x);
-         this.E();
-      });
-      $$1.a(fep.a(this.i, this.x, k, $$0x -> $$0x.e(12)));
-      fex $$2 = this.w.a(fex.e().a(8));
-      $$2.a(fbg.a(vt.k, $$0x -> this.d()).a(120).a());
-      this.y = $$2.a(fbg.a(a, $$0x -> this.o()).a(120).a());
-      this.w.a($$1x -> {
-         fbe var10000 = this.c($$1x);
+      this.q.c().b();
+      this.q.a(new fcp(this.e, this.i), this.q.b().e(6));
+      this.q.a(new fcc(b, this.i).b(true), this.q.b().e(6));
+      fbi $$0 = this.q.a(fbi.a(c, $$0x -> this.f.a(new flg(this.n, this.o, this.p.c()))).a());
+      if (!this.p.j()) {
+         $$0.j = false;
+         $$0.a(fct.a(vu.c("gui.socialInteractions.tooltip.report.not_reportable")));
+      } else if (!this.p.i()) {
+         $$0.j = false;
+         $$0.a(fct.a(vu.a("gui.socialInteractions.tooltip.report.no_messages", this.p.b())));
+      }
+
+      this.q.a(fbi.a(k, $$0x -> this.f.a(new flm(this.n, this.o, this.p.c(), this.p.d()))).a());
+      this.q.a(fbi.a(l, $$0x -> this.f.a(new flj(this.n, this.o, this.p.c(), this.p.b()))).a());
+      this.q.a(ffa.b(20));
+      this.q.a(fbi.a(vt.e, $$0x -> this.d()).a());
+      this.q.a($$1 -> {
+         fbg var10000 = this.c($$1);
       });
       this.c();
-      this.E();
    }
 
    @Override
    protected void c() {
-      this.w.a();
-      fer.a(this.w, this.F());
-   }
-
-   private void E() {
-      fte $$0 = this.q.h();
-      if ($$0 != null) {
-         this.z.b($$0.b());
-      } else {
-         this.z.b(c);
-      }
-
-      ftc.b $$1 = this.q.c();
-      this.y.j = $$1 == null;
-      this.y.a(x.a($$1, ftc.b::a));
+      this.q.a();
+      fet.a(this.q, this.F());
    }
 
    @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      return super.b($$0, $$1, $$2) ? true : this.x.b($$0, $$1, $$2);
+   public void d() {
+      this.f.a(this.n);
    }
 }

@@ -1,71 +1,93 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class cka extends cjb {
+   private static final aim<Boolean> e = aiq.a(cka.class, aio.k);
 
-public abstract class cka extends ciz implements cjh {
-   public cka(bpc<? extends cka> $$0, cwz $$1) {
+   public cka(bpd<? extends cka> $$0, cxb $$1) {
       super($$0, $$1);
    }
 
-   public cka(bpc<? extends cka> $$0, cwz $$1, bow $$2, double $$3, double $$4, double $$5) {
-      super($$0, $$3, $$4, $$5, $$1);
-      this.c($$2);
-   }
-
-   cka(bpc<? extends cka> $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, cwz $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public cka(cxb $$0, bpp $$1, double $$2, double $$3, double $$4) {
+      super(bpd.br, $$1, $$2, $$3, $$4, $$0);
    }
 
    @Override
-   protected epm aq() {
-      float $$0 = this.ai().n().a() / 2.0F;
-      float $$1 = this.ai().n().b();
-      float $$2 = 0.15F;
-      return new epm(
-         this.dk().c - (double)$$0,
-         this.dk().d - 0.15F,
-         this.dk().e - (double)$$0,
-         this.dk().c + (double)$$0,
-         this.dk().d - 0.15F + (double)$$1,
-         this.dk().e + (double)$$0
-      );
+   protected float w() {
+      return this.y() ? 0.73F : super.w();
    }
 
    @Override
-   public boolean i(bow $$0) {
-      return $$0 instanceof cka ? false : super.i($$0);
+   public boolean bN() {
+      return false;
    }
 
    @Override
-   protected boolean b(bow $$0) {
-      return $$0 instanceof cka ? false : super.b($$0);
+   public float a(cwt $$0, cwh $$1, ib $$2, dnb $$3, eip $$4, float $$5) {
+      return this.y() && ces.d($$3) ? Math.min(0.8F, $$5) : $$5;
    }
 
    @Override
-   protected void a(epo $$0) {
+   protected void a(epq $$0) {
       super.a($$0);
       if (!this.dM().B) {
-         $$0.a().a(this.dN().c(this, this.af_() instanceof bpo $$1 ? $$1 : null), 1.0F);
-         this.y();
+         box $$1 = $$0.a();
+         boolean $$4;
+         if (this.af_() instanceof bpp $$3) {
+            $$4 = $$1.a(this.dN().a(this, $$3), 8.0F);
+            if ($$4) {
+               if ($$1.bA()) {
+                  this.a($$3, $$1);
+               } else {
+                  $$3.c(5.0F);
+               }
+            }
+         } else {
+            $$4 = $$1.a(this.dN().o(), 5.0F);
+         }
+
+         if ($$4 && $$1 instanceof bpp $$6) {
+            int $$7 = 0;
+            if (this.dM().aj() == bna.c) {
+               $$7 = 10;
+            } else if (this.dM().aj() == bna.d) {
+               $$7 = 40;
+            }
+
+            if ($$7 > 0) {
+               $$6.b(new bok(bom.t, 20 * $$7, 1), this.H());
+            }
+         }
       }
    }
 
-   protected abstract void y();
-
    @Override
-   protected void a(epn $$0) {
+   protected void a(epr $$0) {
       super.a($$0);
       if (!this.dM().B) {
-         this.y();
+         this.dM().a(this, this.dr(), this.dt(), this.dx(), 1.0F, false, cxb.a.c);
          this.am();
       }
    }
 
    @Override
-   protected void a(epp $$0) {
-      super.a($$0);
-      if (!this.dM().B) {
-         this.am();
-      }
+   public boolean bw() {
+      return false;
+   }
+
+   @Override
+   public boolean a(bnw $$0, float $$1) {
+      return false;
+   }
+
+   @Override
+   protected void a(aiq.a $$0) {
+      $$0.a(e, false);
+   }
+
+   public boolean y() {
+      return this.an.a(e);
+   }
+
+   public void a(boolean $$0) {
+      this.an.a(e, $$0);
    }
 
    @Override
@@ -74,40 +96,14 @@ public abstract class cka extends ciz implements cjh {
    }
 
    @Override
-   public cqk p() {
-      return cqk.h;
+   public void b(ta $$0) {
+      super.b($$0);
+      $$0.a("dangerous", this.y());
    }
 
    @Override
-   protected float w() {
-      return 1.0F;
-   }
-
-   @Override
-   protected float x() {
-      return this.w();
-   }
-
-   @Nullable
-   @Override
-   protected ka s() {
-      return null;
-   }
-
-   @Override
-   protected cwi.a ag_() {
-      return cwi.a.b;
-   }
-
-   public static class a extends cws {
-      @Override
-      public boolean a(cwr $$0, bow $$1) {
-         return false;
-      }
-
-      @Override
-      public Optional<Float> a(cwr $$0, cwf $$1, ib $$2, dmz $$3, ein $$4) {
-         return $$3.a(aun.cs) ? Optional.of(3600000.0F) : Optional.empty();
-      }
+   public void a(ta $$0) {
+      super.a($$0);
+      this.a($$0.q("dangerous"));
    }
 }

@@ -8,8 +8,8 @@ public class dg extends cx<dg.a> {
       return dg.a.a;
    }
 
-   public void a(apg $$0, cia $$1, cqk $$2) {
-      eku $$3 = br.b($$0, $$1);
+   public void a(apg $$0, cic $$1, cqm $$2) {
+      ekw $$3 = br.b($$0, $$1);
       this.a($$0, $$2x -> $$2x.a($$3, $$2));
    }
 
@@ -27,7 +27,7 @@ public class dg extends cx<dg.a> {
          return am.t.a(new dg.a(Optional.of(br.a($$0)), Optional.empty(), Optional.empty()));
       }
 
-      public boolean a(eku $$0, cqk $$1) {
+      public boolean a(ekw $$0, cqm $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || this.d.get().a($$1);
       }
 

@@ -1,9 +1,17 @@
-import com.google.common.collect.ImmutableList;
-
 public class frl {
-   private final frm a = new frm(ImmutableList.of(), frf.a);
+   private final frn a;
+   private final frm b;
 
-   public frm a() {
-      return this.a;
+   private frl(frn $$0, frm $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public frf a() {
+      return this.a.a().a(this.b.a, this.b.b);
+   }
+
+   public static frl a(frn $$0, int $$1, int $$2) {
+      return new frl($$0, new frm($$1, $$2));
    }
 }

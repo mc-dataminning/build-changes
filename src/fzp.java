@@ -1,95 +1,53 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+public class fzp implements fzs<dke> {
+   private final frf a;
+   private final frf b;
 
-public class fzp implements asp {
-   private Map<dki<?>, fzq<?>> d = ImmutableMap.of();
-   private final far e;
-   private final fqz f;
-   public cwz a;
-   public eyr b;
-   public epp c;
-   private final Supplier<fyk> g;
-   private final Supplier<gdw> h;
-   private final Supplier<gcw> i;
-
-   public fzp(far $$0, fqz $$1, Supplier<fyk> $$2, Supplier<gdw> $$3, Supplier<gcw> $$4) {
-      this.h = $$3;
-      this.i = $$4;
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public fzp(fzt.a $$0) {
+      this.a = $$0.a(fre.j);
+      this.b = $$0.a(fre.i);
    }
 
-   @Nullable
-   public <E extends dkg> fzq<E> a(E $$0) {
-      return (fzq<E>)this.d.get($$0.r());
+   public static frl b() {
+      frn $$0 = new frn();
+      fro $$1 = $$0.a();
+      $$1.a("main", frk.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), frh.a);
+      $$1.a("left_leg", frk.c().a(50, 6).a(0.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), frh.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI / 2)));
+      $$1.a("right_leg", frk.c().a(50, 18).a(-16.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), frh.b((float) (Math.PI / 2), 0.0F, (float) Math.PI));
+      return frl.a($$0, 64, 64);
    }
 
-   public void a(cwz $$0, eyr $$1, epp $$2) {
-      if (this.a != $$0) {
-         this.a($$0);
-      }
-
-      this.b = $$1;
-      this.c = $$2;
+   public static frl c() {
+      frn $$0 = new frn();
+      fro $$1 = $$0.a();
+      $$1.a("main", frk.c().a(0, 22).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), frh.a);
+      $$1.a("left_leg", frk.c().a(50, 0).a(0.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), frh.b((float) (Math.PI / 2), 0.0F, 0.0F));
+      $$1.a("right_leg", frk.c().a(50, 12).a(-16.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), frh.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 2.0)));
+      return frl.a($$0, 64, 64);
    }
 
-   public <E extends dkg> void a(E $$0, float $$1, etz $$2, fxq $$3) {
-      fzq<E> $$4 = this.a($$0);
-      if ($$4 != null) {
-         if ($$0.m() && $$0.r().a($$0.n())) {
-            if ($$4.a($$0, this.b.b())) {
-               a($$0, () -> a($$4, $$0, $$1, $$2, $$3));
-            }
-         }
-      }
-   }
-
-   private static <T extends dkg> void a(fzq<T> $$0, T $$1, float $$2, etz $$3, fxq $$4) {
-      cwz $$5 = $$1.i();
-      int $$6;
-      if ($$5 != null) {
-         $$6 = fxo.a($$5, $$1.aC_());
+   public void a(dke $$0, float $$1, eub $$2, fxs $$3, int $$4, int $$5) {
+      glf $$6 = fyh.p[$$0.c().a()];
+      cxb $$7 = $$0.i();
+      if ($$7 != null) {
+         dnb $$8 = $$0.n();
+         dcj.c<? extends dke> $$9 = dcj.a(dkk.y, czv::h, czv::g, dbf.c, $$8, $$7, $$0.aC_(), ($$0x, $$1x) -> false);
+         int $$10 = $$9.apply(new fzv<>()).get($$4);
+         this.a($$2, $$3, $$8.c(czv.b) == dno.a ? this.a : this.b, $$8.c(czv.aE), $$6, $$10, $$5, false);
       } else {
-         $$6 = 15728880;
-      }
-
-      $$0.a($$1, $$2, $$3, $$4, $$6, giq.d);
-   }
-
-   public <E extends dkg> boolean a(E $$0, etz $$1, fxq $$2, int $$3, int $$4) {
-      fzq<E> $$5 = this.a($$0);
-      if ($$5 == null) {
-         return true;
-      } else {
-         a($$0, () -> $$5.a($$0, 0.0F, $$1, $$2, $$3, $$4));
-         return false;
+         this.a($$2, $$3, this.a, ih.d, $$6, $$4, $$5, false);
+         this.a($$2, $$3, this.b, ih.d, $$6, $$4, $$5, true);
       }
    }
 
-   private static void a(dkg $$0, Runnable $$1) {
-      try {
-         $$1.run();
-      } catch (Throwable var5) {
-         o $$3 = o.a(var5, "Rendering Block Entity");
-         p $$4 = $$3.a("Block Entity Details");
-         $$0.a($$4);
-         throw new y($$3);
-      }
-   }
-
-   public void a(@Nullable cwz $$0) {
-      this.a = $$0;
-      if ($$0 == null) {
-         this.b = null;
-      }
-   }
-
-   @Override
-   public void a(aso $$0) {
-      fzr.a $$1 = new fzr.a(this, this.g.get(), this.h.get(), this.i.get(), this.f, this.e);
-      this.d = fzs.a($$1);
+   private void a(eub $$0, fxs $$1, frf $$2, ih $$3, glf $$4, int $$5, int $$6, boolean $$7) {
+      $$0.a();
+      $$0.a(0.0F, 0.5625F, $$7 ? -1.0F : 0.0F);
+      $$0.a(a.b.rotationDegrees(90.0F));
+      $$0.a(0.5F, 0.5F, 0.5F);
+      $$0.a(a.f.rotationDegrees(180.0F + $$3.p()));
+      $$0.a(-0.5F, -0.5F, -0.5F);
+      euf $$8 = $$4.a($$1, fya::c);
+      $$2.a($$0, $$8, $$5, $$6);
+      $$0.b();
    }
 }

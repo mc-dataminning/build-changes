@@ -22,17 +22,17 @@ public class ajj {
          if (ki.at.e().isEmpty()) {
             throw new IllegalStateException("Unable to load registries");
          } else {
-            dda.b();
-            dbl.b();
-            if (bpc.a(bpc.bx) == null) {
+            ddc.b();
+            dbn.b();
+            if (bpd.a(bpd.by) == null) {
                throw new IllegalStateException("Failed loading EntityTypes");
             } else {
-               csi.a();
+               csk.a();
                gk.a();
                jo.c();
                ji.a();
                ki.a();
-               cou.a();
+               cow.a();
                d();
                b.set(Duration.between($$0, Instant.now()).toMillis());
             }
@@ -52,9 +52,9 @@ public class ajj {
 
    private static void a(final Set<String> $$0) {
       final sv $$1 = sv.a();
-      cwv.a(new cwv.c() {
+      cwx.a(new cwx.c() {
          @Override
-         public <T extends cwv.g<T>> void a(cwv.e<T> $$0x, cwv.f<T> $$1x) {
+         public <T extends cwx.g<T>> void a(cwx.e<T> $$0x, cwx.f<T> $$1x) {
             if (!$$1.b($$0.b())) {
                $$0.add($$0.a());
             }
@@ -64,12 +64,12 @@ public class ajj {
 
    public static Set<String> b() {
       Set<String> $$0 = new TreeSet<>();
-      a(ki.u, bqq::c, $$0);
-      a(ki.g, bpc::g, $$0);
-      a(ki.d, boh::d, $$0);
-      a(ki.h, cqf::a, $$0);
-      a(ki.f, cuu::h, $$0);
-      a(ki.e, daa::g, $$0);
+      a(ki.u, bqr::c, $$0);
+      a(ki.g, bpd::g, $$0);
+      a(ki.d, boi::d, $$0);
+      a(ki.h, cqh::a, $$0);
+      a(ki.f, cuw::h, $$0);
+      a(ki.e, dac::g, $$0);
       a(ki.m, $$0x -> "stat." + $$0x.toString().replace(':', '.'), $$0);
       a($$0);
       return $$0;
@@ -99,7 +99,7 @@ public class ajj {
          dv.b();
       }
 
-      bqw.a();
+      bqx.a();
    }
 
    private static void d() {

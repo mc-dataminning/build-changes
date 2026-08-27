@@ -1,324 +1,108 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-
-public class dkb extends dkg implements bng, bnh {
-   private static final int f = 4;
-   public static final List<List<il<boh>>> a = List.of(List.of(bol.a, bol.c), List.of(bol.k, bol.h), List.of(bol.e), List.of(bol.j));
-   private static final Set<il<boh>> g = a.stream().flatMap(Collection::stream).collect(Collectors.toSet());
-   public static final int b = 0;
-   public static final int c = 1;
-   public static final int d = 2;
-   public static final int e = 3;
-   private static final int h = 10;
-   private static final vu i = vu.c("container.beacon");
-   private static final String j = "primary_effect";
-   private static final String k = "secondary_effect";
-   List<dkb.a> l = Lists.newArrayList();
-   private List<dkb.a> m = Lists.newArrayList();
-   int n;
-   private int r;
-   @Nullable
-   il<boh> s;
-   @Nullable
-   il<boh> t;
-   @Nullable
-   private vu u;
-   private bnf v = bnf.a;
-   private final cly w = new cly() {
+public class dkb extends dlm {
+   private iu<cqm> e = iu.a(27, cqm.h);
+   private final dkv f = new dkv() {
       @Override
-      public int a(int $$0) {
-         return switch ($$0) {
-            case 0 -> dkb.this.n;
-            case 1 -> clr.a(dkb.this.s);
-            case 2 -> clr.a(dkb.this.t);
-            default -> 0;
-         };
+      protected void a(cxb $$0, ib $$1, dnb $$2) {
+         dkb.this.a($$2, aty.bz);
+         dkb.this.a($$2, true);
       }
 
       @Override
-      public void a(int $$0, int $$1) {
-         switch ($$0) {
-            case 0:
-               dkb.this.n = $$1;
-               break;
-            case 1:
-               if (!dkb.this.o.B && !dkb.this.l.isEmpty()) {
-                  dkb.a(dkb.this.o, dkb.this.p, aty.bN);
-               }
+      protected void b(cxb $$0, ib $$1, dnb $$2) {
+         dkb.this.a($$2, aty.by);
+         dkb.this.a($$2, false);
+      }
 
-               dkb.this.s = dkb.a(clr.e($$1));
-               break;
-            case 2:
-               dkb.this.t = dkb.a(clr.e($$1));
+      @Override
+      protected void a(cxb $$0, ib $$1, dnb $$2, int $$3, int $$4) {
+      }
+
+      @Override
+      protected boolean a(ciu $$0) {
+         if ($$0.bZ instanceof clx) {
+            bmw $$1 = ((clx)$$0.bZ).l();
+            return $$1 == dkb.this;
+         } else {
+            return false;
          }
-      }
-
-      @Override
-      public int a() {
-         return 3;
       }
    };
 
-   @Nullable
-   static il<boh> a(@Nullable il<boh> $$0) {
-      return g.contains($$0) ? $$0 : null;
-   }
-
-   public dkb(ib $$0, dmz $$1) {
-      super(dki.o, $$0, $$1);
-   }
-
-   public static void a(cwz $$0, ib $$1, dmz $$2, dkb $$3) {
-      int $$4 = $$1.u();
-      int $$5 = $$1.v();
-      int $$6 = $$1.w();
-      ib $$7;
-      if ($$3.r < $$5) {
-         $$7 = $$1;
-         $$3.m = Lists.newArrayList();
-         $$3.r = $$1.v() - 1;
-      } else {
-         $$7 = new ib($$4, $$3.r + 1, $$6);
-      }
-
-      dkb.a $$9 = $$3.m.isEmpty() ? null : $$3.m.get($$3.m.size() - 1);
-      int $$10 = $$0.a(dsm.a.b, $$4, $$6);
-
-      for (int $$11 = 0; $$11 < 10 && $$7.v() <= $$10; $$11++) {
-         dmz $$12 = $$0.a_($$7);
-         daa $$13 = $$12.b();
-         if ($$13 instanceof czr) {
-            float[] $$14 = ((czr)$$13).b().d();
-            if ($$3.m.size() <= 1) {
-               $$9 = new dkb.a($$14);
-               $$3.m.add($$9);
-            } else if ($$9 != null) {
-               if (Arrays.equals($$14, $$9.a)) {
-                  $$9.a();
-               } else {
-                  $$9 = new dkb.a(new float[]{($$9.a[0] + $$14[0]) / 2.0F, ($$9.a[1] + $$14[1]) / 2.0F, ($$9.a[2] + $$14[2]) / 2.0F});
-                  $$3.m.add($$9);
-               }
-            }
-         } else {
-            if ($$9 == null || $$12.b((cwf)$$0, $$7) >= 15 && !$$12.a(dac.F)) {
-               $$3.m.clear();
-               $$3.r = $$10;
-               break;
-            }
-
-            $$9.a();
-         }
-
-         $$7 = $$7.c();
-         $$3.r++;
-      }
-
-      int $$15 = $$3.n;
-      if ($$0.X() % 80L == 0L) {
-         if (!$$3.l.isEmpty()) {
-            $$3.n = a($$0, $$4, $$5, $$6);
-         }
-
-         if ($$3.n > 0 && !$$3.l.isEmpty()) {
-            a($$0, $$1, $$3.n, $$3.s, $$3.t);
-            a($$0, $$1, aty.bL);
-         }
-      }
-
-      if ($$3.r >= $$10) {
-         $$3.r = $$0.I_() - 1;
-         boolean $$16 = $$15 > 0;
-         $$3.l = $$3.m;
-         if (!$$0.B) {
-            boolean $$17 = $$3.n > 0;
-            if (!$$16 && $$17) {
-               a($$0, $$1, aty.bK);
-
-               for (apg $$18 : $$0.a(apg.class, new epm((double)$$4, (double)$$5, (double)$$6, (double)$$4, (double)($$5 - 4), (double)$$6).c(10.0, 5.0, 10.0))) {
-                  am.m.a($$18, $$3.n);
-               }
-            } else if ($$16 && !$$17) {
-               a($$0, $$1, aty.bM);
-            }
-         }
-      }
-   }
-
-   private static int a(cwz $$0, int $$1, int $$2, int $$3) {
-      int $$4 = 0;
-
-      for (int $$5 = 1; $$5 <= 4; $$4 = $$5++) {
-         int $$6 = $$2 - $$5;
-         if ($$6 < $$0.I_()) {
-            break;
-         }
-
-         boolean $$7 = true;
-
-         for (int $$8 = $$1 - $$5; $$8 <= $$1 + $$5 && $$7; $$8++) {
-            for (int $$9 = $$3 - $$5; $$9 <= $$3 + $$5; $$9++) {
-               if (!$$0.a_(new ib($$8, $$6, $$9)).a(aun.aM)) {
-                  $$7 = false;
-                  break;
-               }
-            }
-         }
-
-         if (!$$7) {
-            break;
-         }
-      }
-
-      return $$4;
+   public dkb(ib $$0, dnb $$1) {
+      super(dkk.A, $$0, $$1);
    }
 
    @Override
-   public void az_() {
-      a(this.o, this.p, aty.bM);
-      super.az_();
-   }
-
-   private static void a(cwz $$0, ib $$1, int $$2, @Nullable il<boh> $$3, @Nullable il<boh> $$4) {
-      if (!$$0.B && $$3 != null) {
-         double $$5 = (double)($$2 * 10 + 10);
-         int $$6 = 0;
-         if ($$2 >= 4 && Objects.equals($$3, $$4)) {
-            $$6 = 1;
-         }
-
-         int $$7 = (9 + $$2 * 2) * 20;
-         epm $$8 = new epm($$1).g($$5).b(0.0, (double)$$0.J_(), 0.0);
-         List<cis> $$9 = $$0.a(cis.class, $$8);
-
-         for (cis $$10 : $$9) {
-            $$10.b(new boj($$3, $$7, $$6, true, true));
-         }
-
-         if ($$2 >= 4 && !Objects.equals($$3, $$4) && $$4 != null) {
-            for (cis $$11 : $$9) {
-               $$11.b(new boj($$4, $$7, 0, true, true));
-            }
-         }
-      }
-   }
-
-   public static void a(cwz $$0, ib $$1, atx $$2) {
-      $$0.a(null, $$1, $$2, atz.e, 1.0F, 1.0F);
-   }
-
-   public List<dkb.a> b() {
-      return (List<dkb.a>)(this.n == 0 ? ImmutableList.of() : this.l);
-   }
-
-   public aat c() {
-      return aat.a(this);
-   }
-
-   @Override
-   public ta a(in.a $$0) {
-      return this.d($$0);
-   }
-
-   private static void a(ta $$0, String $$1, @Nullable il<boh> $$2) {
-      if ($$2 != null) {
-         $$2.e().ifPresent($$2x -> $$0.a($$1, $$2x.a().toString()));
-      }
-   }
-
-   @Nullable
-   private static il<boh> a(ta $$0, String $$1) {
-      if ($$0.b($$1, 8)) {
-         ajh $$2 = ajh.a($$0.l($$1));
-         return $$2 == null ? null : ki.d.c($$2).map(dkb::a).orElse(null);
-      } else {
-         return null;
+   protected void b(ta $$0, in.a $$1) {
+      super.b($$0, $$1);
+      if (!this.b($$0)) {
+         bmx.a($$0, this.e);
       }
    }
 
    @Override
    public void a(ta $$0, in.a $$1) {
       super.a($$0, $$1);
-      this.s = a($$0, "primary_effect");
-      this.t = a($$0, "secondary_effect");
-      if ($$0.b("CustomName", 8)) {
-         this.u = vu.a.a($$0.l("CustomName"));
+      this.e = iu.a(this.b(), cqm.h);
+      if (!this.c_($$0)) {
+         bmx.b($$0, this.e);
       }
-
-      this.v = bnf.b($$0);
    }
 
    @Override
-   protected void b(ta $$0, in.a $$1) {
-      super.b($$0, $$1);
-      a($$0, "primary_effect", this.s);
-      a($$0, "secondary_effect", this.t);
-      $$0.a("Levels", this.n);
-      if (this.u != null) {
-         $$0.a("CustomName", vu.a.a(this.u));
-      }
-
-      this.v.a($$0);
-   }
-
-   public void a(@Nullable vu $$0) {
-      this.u = $$0;
-   }
-
-   @Nullable
-   @Override
-   public vu af() {
-      return this.u;
-   }
-
-   @Nullable
-   @Override
-   public clo createMenu(int $$0, cir $$1, cis $$2) {
-      return dka.a($$2, this.v, this.O_()) ? new clr($$0, $$1, this.w, clz.a(this.o, this.aC_())) : null;
+   public int b() {
+      return 27;
    }
 
    @Override
-   public vu O_() {
-      return this.ad();
+   protected iu<cqm> j() {
+      return this.e;
    }
 
    @Override
-   public vu ad() {
-      return this.u != null ? this.u : i;
+   protected void a(iu<cqm> $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public void a(cwz $$0) {
-      super.a($$0);
-      this.r = $$0.I_() - 1;
+   protected vu k() {
+      return vu.c("container.barrel");
    }
 
-   public static class a {
-      final float[] a;
-      private int b;
+   @Override
+   protected clq a(int $$0, cit $$1) {
+      return clx.a($$0, $$1, this);
+   }
 
-      public a(float[] $$0) {
-         this.a = $$0;
-         this.b = 1;
+   @Override
+   public void d_(ciu $$0) {
+      if (!this.q && !$$0.N_()) {
+         this.f.a($$0, this.i(), this.aC_(), this.n());
       }
+   }
 
-      protected void a() {
-         this.b++;
+   @Override
+   public void c(ciu $$0) {
+      if (!this.q && !$$0.N_()) {
+         this.f.b($$0, this.i(), this.aC_(), this.n());
       }
+   }
 
-      public float[] b() {
-         return this.a;
+   public void l() {
+      if (!this.q) {
+         this.f.c(this.i(), this.aC_(), this.n());
       }
+   }
 
-      public int c() {
-         return this.b;
-      }
+   void a(dnb $$0, boolean $$1) {
+      this.o.a(this.aC_(), $$0.a(czi.c, Boolean.valueOf($$1)), 3);
+   }
+
+   void a(dnb $$0, atx $$1) {
+      jg $$2 = $$0.c(czi.b).q();
+      double $$3 = (double)this.p.u() + 0.5 + (double)$$2.u() / 2.0;
+      double $$4 = (double)this.p.v() + 0.5 + (double)$$2.v() / 2.0;
+      double $$5 = (double)this.p.w() + 0.5 + (double)$$2.w() / 2.0;
+      this.o.a(null, $$3, $$4, $$5, $$1, atz.e, 0.5F, this.o.z.i() * 0.1F + 0.9F);
    }
 }

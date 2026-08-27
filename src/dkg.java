@@ -1,181 +1,147 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.List;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public abstract class dkg {
-   private static final Logger e = LogUtils.getLogger();
-   private final dki<?> f;
-   @Nullable
-   protected cwz o;
-   protected final ib p;
-   protected boolean q;
-   private dmz g;
+public class dkg extends dki {
+   private static final int d = 50;
+   private static final int e = 60;
+   private static final int f = 60;
+   private static final int g = 40;
+   private static final int h = 5;
+   private static final int i = 48;
+   private static final int j = 32;
+   private static final int k = 48;
+   private long l;
+   public int a;
+   public boolean b;
+   public ih c;
+   private List<bpp> m;
+   private boolean n;
+   private int r;
 
-   public dkg(dki<?> $$0, ib $$1, dmz $$2) {
-      this.f = $$0;
-      this.p = $$1.i();
-      this.g = $$2;
+   public dkg(ib $$0, dnb $$1) {
+      super(dkk.E, $$0, $$1);
    }
 
-   public static ib a(ta $$0) {
-      return new ib($$0.h("x"), $$0.h("y"), $$0.h("z"));
-   }
-
-   @Nullable
-   public cwz i() {
-      return this.o;
-   }
-
-   public void a(cwz $$0) {
-      this.o = $$0;
-   }
-
-   public boolean m() {
-      return this.o != null;
-   }
-
-   public void a(ta $$0, in.a $$1) {
-   }
-
-   protected void b(ta $$0, in.a $$1) {
-   }
-
-   public final ta b(in.a $$0) {
-      ta $$1 = this.d($$0);
-      this.d($$1);
-      return $$1;
-   }
-
-   public final ta c(in.a $$0) {
-      ta $$1 = this.d($$0);
-      this.c($$1);
-      return $$1;
-   }
-
-   public final ta d(in.a $$0) {
-      ta $$1 = new ta();
-      this.b($$1, $$0);
-      return $$1;
-   }
-
-   private void c(ta $$0) {
-      ajh $$1 = dki.a(this.r());
-      if ($$1 == null) {
-         throw new RuntimeException(this.getClass() + " is missing a mapping! This is a bug!");
-      } else {
-         $$0.a("id", $$1.toString());
-      }
-   }
-
-   public static void a(ta $$0, dki<?> $$1) {
-      $$0.a("id", dki.a($$1).toString());
-   }
-
-   public void a(cqk $$0, in.a $$1) {
-      cof.a($$0, this.r(), this.d($$1));
-   }
-
-   private void d(ta $$0) {
-      this.c($$0);
-      $$0.a("x", this.p.u());
-      $$0.a("y", this.p.v());
-      $$0.a("z", this.p.w());
-   }
-
-   @Nullable
-   public static dkg a(ib $$0, dmz $$1, ta $$2, in.a $$3) {
-      String $$4 = $$2.l("id");
-      ajh $$5 = ajh.a($$4);
-      if ($$5 == null) {
-         e.error("Block entity has invalid type: {}", $$4);
-         return null;
-      } else {
-         return ki.k.b($$5).map($$3x -> {
-            try {
-               return $$3x.a($$0, $$1);
-            } catch (Throwable var5x) {
-               e.error("Failed to create block entity {}", $$4, var5x);
-               return null;
-            }
-         }).map($$3x -> {
-            try {
-               $$3x.a($$2, $$3);
-               return $$3x;
-            } catch (Throwable var5x) {
-               e.error("Failed to load data for block entity {}", $$4, var5x);
-               return null;
-            }
-         }).orElseGet(() -> {
-            e.warn("Skipping BlockEntity with id {}", $$4);
-            return null;
-         });
-      }
-   }
-
-   public void e() {
-      if (this.o != null) {
-         a(this.o, this.p, this.g);
-      }
-   }
-
-   protected static void a(cwz $$0, ib $$1, dmz $$2) {
-      $$0.q($$1);
-      if (!$$2.i()) {
-         $$0.c($$1, $$2.b());
-      }
-   }
-
-   public ib aC_() {
-      return this.p;
-   }
-
-   public dmz n() {
-      return this.g;
-   }
-
-   @Nullable
-   public yb<aam> ay_() {
-      return null;
-   }
-
-   public ta a(in.a $$0) {
-      return new ta();
-   }
-
-   public boolean o() {
-      return this.q;
-   }
-
-   public void az_() {
-      this.q = true;
-   }
-
-   public void p() {
-      this.q = false;
-   }
-
+   @Override
    public boolean a_(int $$0, int $$1) {
-      return false;
-   }
-
-   public void a(p $$0) {
-      $$0.a("Name", () -> ki.k.b(this.r()) + " // " + this.getClass().getCanonicalName());
-      if (this.o != null) {
-         p.a($$0, this.o, this.p, this.n());
-         p.a($$0, this.o, this.p, this.o.a_(this.p));
+      if ($$0 == 1) {
+         this.b();
+         this.r = 0;
+         this.c = ih.a($$1);
+         this.a = 0;
+         this.b = true;
+         return true;
+      } else {
+         return super.a_($$0, $$1);
       }
    }
 
-   public boolean q() {
+   private static void a(cxb $$0, ib $$1, dnb $$2, dkg $$3, dkg.a $$4) {
+      if ($$3.b) {
+         $$3.a++;
+      }
+
+      if ($$3.a >= 50) {
+         $$3.b = false;
+         $$3.a = 0;
+      }
+
+      if ($$3.a >= 5 && $$3.r == 0 && a($$1, $$3.m)) {
+         $$3.n = true;
+         $$0.a(null, $$1, aty.ca, atz.e, 1.0F, 1.0F);
+      }
+
+      if ($$3.n) {
+         if ($$3.r < 40) {
+            $$3.r++;
+         } else {
+            $$4.run($$0, $$1, $$3.m);
+            $$3.n = false;
+         }
+      }
+   }
+
+   public static void a(cxb $$0, ib $$1, dnb $$2, dkg $$3) {
+      a($$0, $$1, $$2, $$3, dkg::b);
+   }
+
+   public static void b(cxb $$0, ib $$1, dnb $$2, dkg $$3) {
+      a($$0, $$1, $$2, $$3, dkg::a);
+   }
+
+   public void a(ih $$0) {
+      ib $$1 = this.aC_();
+      this.c = $$0;
+      if (this.b) {
+         this.a = 0;
+      } else {
+         this.b = true;
+      }
+
+      this.o.a($$1, this.n().b(), 1, $$0.d());
+   }
+
+   private void b() {
+      ib $$0 = this.aC_();
+      if (this.o.X() > this.l + 60L || this.m == null) {
+         this.l = this.o.X();
+         epo $$1 = new epo($$0).g(48.0);
+         this.m = this.o.a(bpp.class, $$1);
+      }
+
+      if (!this.o.B) {
+         for (bpp $$2 : this.m) {
+            if ($$2.bA() && !$$2.dH() && $$0.a($$2.dk(), 32.0)) {
+               $$2.dP().a(bys.D, this.o.X());
+            }
+         }
+      }
+   }
+
+   private static boolean a(ib $$0, List<bpp> $$1) {
+      for (bpp $$2 : $$1) {
+         if ($$2.bA() && !$$2.dH() && $$0.a($$2.dk(), 32.0) && $$2.ai().a(auq.c)) {
+            return true;
+         }
+      }
+
       return false;
    }
 
-   public dki<?> r() {
-      return this.f;
+   private static void a(cxb $$0, ib $$1, List<bpp> $$2) {
+      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach(dkg::a);
    }
 
-   @Deprecated
-   public void b(dmz $$0) {
-      this.g = $$0;
+   private static void b(cxb $$0, ib $$1, List<bpp> $$2) {
+      MutableInt $$3 = new MutableInt(16700985);
+      int $$4 = (int)$$2.stream().filter($$1x -> $$1.a($$1x.dk(), 48.0)).count();
+      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach($$4x -> {
+         float $$5 = 1.0F;
+         double $$6 = Math.sqrt(($$4x.dr() - (double)$$1.u()) * ($$4x.dr() - (double)$$1.u()) + ($$4x.dx() - (double)$$1.w()) * ($$4x.dx() - (double)$$1.w()));
+         double $$7 = (double)((float)$$1.u() + 0.5F) + 1.0 / $$6 * ($$4x.dr() - (double)$$1.u());
+         double $$8 = (double)((float)$$1.w() + 0.5F) + 1.0 / $$6 * ($$4x.dx() - (double)$$1.w());
+         int $$9 = aww.a(($$4 - 21) / -2, 3, 15);
+
+         for (int $$10 = 0; $$10 < $$9; $$10++) {
+            int $$11 = $$3.addAndGet(5);
+            double $$12 = (double)awg.b.b($$11) / 255.0;
+            double $$13 = (double)awg.b.c($$11) / 255.0;
+            double $$14 = (double)awg.b.d($$11) / 255.0;
+            $$0.a(kc.v, $$7, (double)((float)$$1.v() + 0.5F), $$8, $$12, $$13, $$14);
+         }
+      });
+   }
+
+   private static boolean a(ib $$0, bpp $$1) {
+      return $$1.bA() && !$$1.dH() && $$0.a($$1.dk(), 48.0) && $$1.ai().a(auq.c);
+   }
+
+   private static void a(bpp $$0) {
+      $$0.b(new bok(bom.x, 60));
+   }
+
+   @FunctionalInterface
+   interface a {
+      void run(cxb var1, ib var2, List<bpp> var3);
    }
 }

@@ -36,7 +36,7 @@ public abstract class acg implements yb<aam> {
    }
 
    @Nullable
-   public bow a(cwz $$0) {
+   public box a(cxb $$0) {
       return $$0.a(this.a);
    }
 

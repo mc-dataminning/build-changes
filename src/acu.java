@@ -7,10 +7,10 @@ public class acu implements yb<aam> {
    private final double d;
    private final float e;
    private final float f;
-   private final Set<bqb> g;
+   private final Set<bqc> g;
    private final int h;
 
-   public acu(double $$0, double $$1, double $$2, float $$3, float $$4, Set<bqb> $$5, int $$6) {
+   public acu(double $$0, double $$1, double $$2, float $$3, float $$4, Set<bqc> $$5, int $$6) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -26,7 +26,7 @@ public class acu implements yb<aam> {
       this.d = $$0.readDouble();
       this.e = $$0.readFloat();
       this.f = $$0.readFloat();
-      this.g = bqb.a($$0.readUnsignedByte());
+      this.g = bqc.a($$0.readUnsignedByte());
       this.h = $$0.l();
    }
 
@@ -36,7 +36,7 @@ public class acu implements yb<aam> {
       $$0.a(this.d);
       $$0.a(this.e);
       $$0.a(this.f);
-      $$0.k(bqb.a(this.g));
+      $$0.k(bqc.a(this.g));
       $$0.c(this.h);
    }
 
@@ -73,7 +73,7 @@ public class acu implements yb<aam> {
       return this.h;
    }
 
-   public Set<bqb> j() {
+   public Set<bqc> j() {
       return this.g;
    }
 }

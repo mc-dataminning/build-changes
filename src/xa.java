@@ -94,7 +94,7 @@ public class xa implements vv {
    }
 
    @Override
-   public wi a(@Nullable du $$0, @Nullable bow $$1, int $$2) throws CommandSyntaxException {
+   public wi a(@Nullable du $$0, @Nullable box $$1, int $$2) throws CommandSyntaxException {
       if ($$0 != null && this.c != null) {
          Stream<String> $$3 = this.h.a($$0).flatMap($$0x -> {
             try {

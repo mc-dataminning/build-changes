@@ -25,10 +25,10 @@ public abstract class mm {
    }
 
    private void c() {
-      List<doc<?>> $$0 = this.b();
+      List<doe<?>> $$0 = this.b();
       Stream<mn> $$1 = Stream.of(mn.a());
 
-      for (doc<?> $$2 : $$0) {
+      for (doe<?> $$2 : $$0) {
          $$1 = $$1.flatMap($$1x -> $$2.c().map($$1x::a));
       }
 
@@ -38,41 +38,41 @@ public abstract class mm {
       }
    }
 
-   abstract List<doc<?>> b();
+   abstract List<doe<?>> b();
 
-   public static <T1 extends Comparable<T1>> mm.a<T1> a(doc<T1> $$0) {
+   public static <T1 extends Comparable<T1>> mm.a<T1> a(doe<T1> $$0) {
       return new mm.a<>($$0);
    }
 
-   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>> mm.b<T1, T2> a(doc<T1> $$0, doc<T2> $$1) {
+   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>> mm.b<T1, T2> a(doe<T1> $$0, doe<T2> $$1) {
       return new mm.b<>($$0, $$1);
    }
 
-   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>> mm.c<T1, T2, T3> a(doc<T1> $$0, doc<T2> $$1, doc<T3> $$2) {
+   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>> mm.c<T1, T2, T3> a(doe<T1> $$0, doe<T2> $$1, doe<T3> $$2) {
       return new mm.c<>($$0, $$1, $$2);
    }
 
    public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>> mm.d<T1, T2, T3, T4> a(
-      doc<T1> $$0, doc<T2> $$1, doc<T3> $$2, doc<T4> $$3
+      doe<T1> $$0, doe<T2> $$1, doe<T3> $$2, doe<T4> $$3
    ) {
       return new mm.d<>($$0, $$1, $$2, $$3);
    }
 
    public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>, T5 extends Comparable<T5>> mm.e<T1, T2, T3, T4, T5> a(
-      doc<T1> $$0, doc<T2> $$1, doc<T3> $$2, doc<T4> $$3, doc<T5> $$4
+      doe<T1> $$0, doe<T2> $$1, doe<T3> $$2, doe<T4> $$3, doe<T5> $$4
    ) {
       return new mm.e<>($$0, $$1, $$2, $$3, $$4);
    }
 
    public static class a<T1 extends Comparable<T1>> extends mm {
-      private final doc<T1> a;
+      private final doe<T1> a;
 
-      a(doc<T1> $$0) {
+      a(doe<T1> $$0) {
          this.a = $$0;
       }
 
       @Override
-      public List<doc<?>> b() {
+      public List<doe<?>> b() {
          return ImmutableList.of(this.a);
       }
 
@@ -98,16 +98,16 @@ public abstract class mm {
    }
 
    public static class b<T1 extends Comparable<T1>, T2 extends Comparable<T2>> extends mm {
-      private final doc<T1> a;
-      private final doc<T2> b;
+      private final doe<T1> a;
+      private final doe<T2> b;
 
-      b(doc<T1> $$0, doc<T2> $$1) {
+      b(doe<T1> $$0, doe<T2> $$1) {
          this.a = $$0;
          this.b = $$1;
       }
 
       @Override
-      public List<doc<?>> b() {
+      public List<doe<?>> b() {
          return ImmutableList.of(this.a, this.b);
       }
 
@@ -133,18 +133,18 @@ public abstract class mm {
    }
 
    public static class c<T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>> extends mm {
-      private final doc<T1> a;
-      private final doc<T2> b;
-      private final doc<T3> c;
+      private final doe<T1> a;
+      private final doe<T2> b;
+      private final doe<T3> c;
 
-      c(doc<T1> $$0, doc<T2> $$1, doc<T3> $$2) {
+      c(doe<T1> $$0, doe<T2> $$1, doe<T3> $$2) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
       }
 
       @Override
-      public List<doc<?>> b() {
+      public List<doe<?>> b() {
          return ImmutableList.of(this.a, this.b, this.c);
       }
 
@@ -174,12 +174,12 @@ public abstract class mm {
    }
 
    public static class d<T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>> extends mm {
-      private final doc<T1> a;
-      private final doc<T2> b;
-      private final doc<T3> c;
-      private final doc<T4> d;
+      private final doe<T1> a;
+      private final doe<T2> b;
+      private final doe<T3> c;
+      private final doe<T4> d;
 
-      d(doc<T1> $$0, doc<T2> $$1, doc<T3> $$2, doc<T4> $$3) {
+      d(doe<T1> $$0, doe<T2> $$1, doe<T3> $$2, doe<T4> $$3) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
@@ -187,7 +187,7 @@ public abstract class mm {
       }
 
       @Override
-      public List<doc<?>> b() {
+      public List<doe<?>> b() {
          return ImmutableList.of(this.a, this.b, this.c, this.d);
       }
 
@@ -238,13 +238,13 @@ public abstract class mm {
 
    public static class e<T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>, T5 extends Comparable<T5>>
       extends mm {
-      private final doc<T1> a;
-      private final doc<T2> b;
-      private final doc<T3> c;
-      private final doc<T4> d;
-      private final doc<T5> e;
+      private final doe<T1> a;
+      private final doe<T2> b;
+      private final doe<T3> c;
+      private final doe<T4> d;
+      private final doe<T5> e;
 
-      e(doc<T1> $$0, doc<T2> $$1, doc<T3> $$2, doc<T4> $$3, doc<T5> $$4) {
+      e(doe<T1> $$0, doe<T2> $$1, doe<T3> $$2, doe<T4> $$3, doe<T5> $$4) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
@@ -253,7 +253,7 @@ public abstract class mm {
       }
 
       @Override
-      public List<doc<?>> b() {
+      public List<doe<?>> b() {
          return ImmutableList.of(this.a, this.b, this.c, this.d, this.e);
       }
 

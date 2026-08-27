@@ -2,7 +2,7 @@ public class adi implements yb<aam> {
    public static final xs<uu, adi> a = yb.a(adi::a, adi::new);
    private final int b;
 
-   public adi(doq $$0) {
+   public adi(dos $$0) {
       this.b = $$0.q();
    }
 

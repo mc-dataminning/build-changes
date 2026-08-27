@@ -1,57 +1,69 @@
-import javax.annotation.Nullable;
+import java.util.OptionalInt;
 
-public abstract class fcc<E extends fcc.a<E>> extends fbb<E> {
-   private static final vu a = vu.c("narration.selection.usage");
+public class fcc extends fbf {
+   private OptionalInt a = OptionalInt.empty();
+   private OptionalInt b = OptionalInt.empty();
+   private final axl<fcc.a, fcb> c;
+   private boolean d = false;
 
-   public fcc(ezg $$0, int $$1, int $$2, int $$3, int $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+   public fcc(vu $$0, fat $$1) {
+      this(0, 0, $$0, $$1);
    }
 
-   @Nullable
+   public fcc(int $$0, int $$1, vu $$2, fat $$3) {
+      super($$0, $$1, 0, 0, $$2, $$3);
+      this.c = ac.a($$1x -> $$1x.c.isPresent() ? fcb.a($$3, $$1x.a, $$1x.b, $$1x.c.getAsInt()) : fcb.a($$3, $$1x.a, $$1x.b));
+      this.j = false;
+   }
+
+   public fcc b(int $$0) {
+      super.a($$0);
+      return this;
+   }
+
+   public fcc c(int $$0) {
+      this.a = OptionalInt.of($$0);
+      return this;
+   }
+
+   public fcc d(int $$0) {
+      this.b = OptionalInt.of($$0);
+      return this;
+   }
+
+   public fcc b(boolean $$0) {
+      this.d = $$0;
+      return this;
+   }
+
    @Override
-   public faq a(ffi $$0) {
-      if (this.n() == 0) {
-         return null;
-      } else if (this.aJ_() && $$0 instanceof ffi.a $$1) {
-         E $$2 = this.a($$1.b());
-         return $$2 != null ? faq.a(this, faq.a($$2)) : null;
-      } else if (!this.aJ_()) {
-         E $$3 = this.i();
-         if ($$3 == null) {
-            $$3 = this.a($$0.a());
-         }
-
-         return $$3 == null ? null : faq.a(this, faq.a($$3));
-      } else {
-         return null;
-      }
+   public int w() {
+      return this.c.a(this.d()).b();
    }
 
    @Override
-   public void a(ffc $$0) {
-      E $$1 = this.t();
-      if ($$1 != null) {
-         this.a($$0.a(), $$1);
-         $$1.b($$0);
-      } else {
-         E $$2 = this.i();
-         if ($$2 != null) {
-            this.a($$0.a(), $$2);
-            $$2.b($$0);
-         }
-      }
+   public int u() {
+      return this.c.a(this.d()).a() * 9;
+   }
 
-      if (this.aJ_()) {
-         $$0.a(ffb.d, a);
+   @Override
+   public void b(fav $$0, int $$1, int $$2, float $$3) {
+      fcb $$4 = this.c.a(this.d());
+      int $$5 = this.B();
+      int $$6 = this.C();
+      int $$7 = 9;
+      int $$8 = this.b();
+      if (this.d) {
+         $$4.a($$0, $$5 + this.w() / 2, $$6, $$7, $$8);
+      } else {
+         $$4.b($$0, $$5, $$6, $$7, $$8);
       }
    }
 
-   public abstract static class a<E extends fcc.a<E>> extends fbb.a<E> implements ffd {
-      public abstract vu a();
+   private fcc.a d() {
+      return new fcc.a(this.x(), this.a.orElse(Integer.MAX_VALUE), this.b);
+   }
 
-      @Override
-      public void b(ffc $$0) {
-         $$0.a(ffb.a, this.a());
-      }
+   static record a(vu a, int b, OptionalInt c) {
    }
 }

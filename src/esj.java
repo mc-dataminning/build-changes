@@ -1,3 +1,8 @@
-public interface esj {
-   void execute();
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@eru
+@ert
+interface esj {
 }

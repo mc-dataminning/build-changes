@@ -1,28 +1,57 @@
 import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class dwo extends dvq<dyh> {
-   public dwo(Codec<dyh> $$0) {
+public class dwo extends dvs<dyf> {
+   public dwo(Codec<dyf> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dvs<dyh> $$0) {
-      dyh $$1 = $$0.f();
-      axd $$2 = $$0.d();
-      ib $$3 = $$0.e();
-      cxu $$4 = $$0.b();
-      int $$5 = 0;
-      ib.a $$6 = new ib.a();
-      int $$7 = $$1.b() + 1;
-      int $$8 = $$1.c() + 1;
+   public boolean a(dvu<dyf> $$0) {
+      cxc $$1 = $$0.b();
+      ib $$2 = $$0.e();
+      axd $$3 = $$0.d();
+      dyf $$4 = $$0.f();
+      Optional<ih> $$5 = a($$1, $$2, $$3);
+      if ($$5.isEmpty()) {
+         return false;
+      } else {
+         ib $$6 = $$2.a($$5.get().g());
+         a($$1, $$3, $$6, $$4);
+         int $$7 = $$3.i() < $$4.b && dvo.c($$1.a_($$2.a($$5.get()))) ? 2 : 1;
+         dvo.a($$1, $$2, $$5.get(), $$7, false);
+         return true;
+      }
+   }
 
-      for (int $$9 = 0; $$9 < $$1.a(); $$9++) {
-         $$6.a($$3, $$2.a($$7) - $$2.a($$7), $$2.a($$8) - $$2.a($$8), $$2.a($$7) - $$2.a($$7));
-         if ($$1.d().a().a($$4, $$0.c(), $$2, $$6)) {
-            $$5++;
+   private static Optional<ih> a(cxc $$0, ib $$1, axd $$2) {
+      boolean $$3 = dvo.b($$0.a_($$1.c()));
+      boolean $$4 = dvo.b($$0.a_($$1.d()));
+      if ($$3 && $$4) {
+         return Optional.of($$2.h() ? ih.a : ih.b);
+      } else if ($$3) {
+         return Optional.of(ih.a);
+      } else {
+         return $$4 ? Optional.of(ih.b) : Optional.empty();
+      }
+   }
+
+   private static void a(cxc $$0, axd $$1, ib $$2, dyf $$3) {
+      dvo.c($$0, $$2);
+
+      for (ih $$4 : ih.c.a) {
+         if (!($$1.i() > $$3.c)) {
+            ib $$5 = $$2.a($$4);
+            dvo.c($$0, $$5);
+            if (!($$1.i() > $$3.d)) {
+               ib $$6 = $$5.a(ih.b($$1));
+               dvo.c($$0, $$6);
+               if (!($$1.i() > $$3.e)) {
+                  ib $$7 = $$6.a(ih.b($$1));
+                  dvo.c($$0, $$7);
+               }
+            }
          }
       }
-
-      return $$5 > 0;
    }
 }

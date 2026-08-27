@@ -11,8 +11,8 @@ public class az extends cx<az.a> {
       return az.a.a;
    }
 
-   public void a(apg $$0, Collection<? extends bow> $$1) {
-      List<eku> $$2 = $$1.stream().map($$1x -> br.b($$0, $$1x)).collect(Collectors.toList());
+   public void a(apg $$0, Collection<? extends box> $$1) {
+      List<ekw> $$2 = $$1.stream().map($$1x -> br.b($$0, $$1x)).collect(Collectors.toList());
       this.a($$0, $$1x -> $$1x.a($$2));
    }
 
@@ -25,11 +25,11 @@ public class az extends cx<az.a> {
          return am.F.a(new az.a(Optional.empty(), br.a($$0)));
       }
 
-      public boolean a(Collection<? extends eku> $$0) {
+      public boolean a(Collection<? extends ekw> $$0) {
          for (bc $$1 : this.c) {
             boolean $$2 = false;
 
-            for (eku $$3 : $$0) {
+            for (ekw $$3 : $$0) {
                if ($$1.a($$3)) {
                   $$2 = true;
                   break;

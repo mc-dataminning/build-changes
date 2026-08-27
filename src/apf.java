@@ -36,96 +36,96 @@ import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class apf extends cwz implements cxu {
+public class apf extends cxb implements cxw {
    public static final ib a = new ib(100, 50, 0);
-   public static final bmh b = bmn.a(12000, 180000);
-   public static final bmh c = bmn.a(12000, 24000);
-   private static final bmh D = bmn.a(12000, 180000);
-   public static final bmh d = bmn.a(3600, 15600);
+   public static final bmi b = bmo.a(12000, 180000);
+   public static final bmi c = bmo.a(12000, 24000);
+   private static final bmi D = bmo.a(12000, 180000);
+   public static final bmi d = bmo.a(3600, 15600);
    private static final Logger E = LogUtils.getLogger();
    private static final int F = 300;
    private static final int G = 65536;
    final List<apg> H = Lists.newArrayList();
    private final apd I;
    private final MinecraftServer J;
-   private final ekp K;
+   private final ekr K;
    private int L;
-   final dra M = new dra();
-   private final drf<bow> N;
-   private final dro O;
+   final drc M = new drc();
+   private final drh<box> N;
+   private final drq O;
    public boolean e;
    private final ate P;
    private int Q;
-   private final ejj R;
-   private final erf<daa> S = new erf<>(this::d, this.af());
-   private final erf<eim> T = new erf<>(this::d, this.af());
-   final Set<bpq> U = new ObjectOpenHashSet();
+   private final ejl R;
+   private final erh<dac> S = new erh<>(this::d, this.af());
+   private final erh<eio> T = new erh<>(this::d, this.af());
+   final Set<bpr> U = new ObjectOpenHashSet();
    volatile boolean V;
-   protected final ckf f;
-   private final ObjectLinkedOpenHashSet<cwe> W = new ObjectLinkedOpenHashSet();
-   private final List<cwe> X = new ArrayList<>(64);
+   protected final ckh f;
+   private final ObjectLinkedOpenHashSet<cwg> W = new ObjectLinkedOpenHashSet();
+   private final List<cwg> X = new ArrayList<>(64);
    private boolean Y;
-   private final List<cwm> Z;
+   private final List<cwo> Z;
    @Nullable
-   private dqp aa;
-   final Int2ObjectMap<cdv> ab = new Int2ObjectOpenHashMap();
-   private final cxs ac;
-   private final edd ad;
+   private dqr aa;
+   final Int2ObjectMap<cdw> ab = new Int2ObjectOpenHashMap();
+   private final cxu ac;
+   private final edf ad;
    private final boolean ae;
-   private final bnj af;
+   private final bnk af;
 
    public apf(
       MinecraftServer $$0,
       Executor $$1,
-      ekk.c $$2,
-      ekp $$3,
-      ajg<cwz> $$4,
-      dqn $$5,
+      ekm.c $$2,
+      ekr $$3,
+      ajg<cxb> $$4,
+      dqp $$5,
       apo $$6,
       boolean $$7,
       long $$8,
-      List<cwm> $$9,
+      List<cwo> $$9,
       boolean $$10,
-      @Nullable bnj $$11
+      @Nullable bnk $$11
    ) {
       super($$3, $$4, $$0.bd(), $$5.a(), $$0::aU, false, $$7, $$8, $$0.bl());
       this.ae = $$10;
       this.J = $$0;
       this.Z = $$9;
       this.K = $$3;
-      dow $$12 = $$5.b();
+      doy $$12 = $$5.b();
       boolean $$13 = $$0.ba();
       DataFixer $$14 = $$0.aD();
-      dqx<bow> $$15 = new dpy(new dqi(new dqg($$2.d(), $$4, "entities"), $$2.a($$4).resolve("entities"), $$14, $$13, ayc.s), this, $$0);
-      this.N = new drf<>(bow.class, new apf.a(), $$15);
+      dqz<box> $$15 = new dqa(new dqk(new dqi($$2.d(), $$4, "entities"), $$2.a($$4).resolve("entities"), $$14, $$13, ayc.s), this, $$0);
+      this.N = new drh<>(box.class, new apf.a(), $$15);
       this.I = new apd(this, $$2, $$14, $$0.bb(), $$1, $$12, $$0.ah().p(), $$0.ah().q(), $$13, $$6, this.N::a, () -> $$0.I().u());
       this.I.h().b();
-      this.R = new ejj(this);
+      this.R = new ejl(this);
       this.S();
       this.V();
       this.C_().a($$0.ax());
-      this.f = this.u().a(ckf.a(this), ckf.a(this.ac()));
+      this.f = this.u().a(ckh.a(this), ckh.a(this.ac()));
       if (!$$0.T()) {
          $$3.a($$0.u_());
       }
 
       long $$16 = $$0.bc().y().b();
-      this.ad = new edd(this.I.m(), this.H_(), $$0.bb(), $$4, $$12, this.I.i(), this, $$12.c(), $$16, $$14);
-      this.ac = new cxs(this, $$0.bc().y(), this.ad);
-      if (this.ad() == cwz.j && this.ac().a(dqk.c)) {
-         this.aa = new dqp(this, $$16, $$0.bc().C());
+      this.ad = new edf(this.I.m(), this.H_(), $$0.bb(), $$4, $$12, this.I.i(), this, $$12.c(), $$16, $$14);
+      this.ac = new cxu(this, $$0.bc().y(), this.ad);
+      if (this.ad() == cxb.j && this.ac().a(dqm.c)) {
+         this.aa = new dqr(this, $$16, $$0.bc().C());
       } else {
          this.aa = null;
       }
 
       this.P = new ate();
-      this.O = new dro(this);
-      this.af = Objects.requireNonNullElseGet($$11, () -> this.u().a(bnj.a($$16), "random_sequences"));
+      this.O = new drq(this);
+      this.af = Objects.requireNonNullElseGet($$11, () -> this.u().a(bnk.a($$16), "random_sequences"));
    }
 
    @Deprecated
    @VisibleForTesting
-   public void a(@Nullable dqp $$0) {
+   public void a(@Nullable dqr $$0) {
       this.aa = $$0;
    }
 
@@ -138,18 +138,18 @@ public class apf extends cwz implements cxu {
    }
 
    @Override
-   public il<cxy> a(int $$0, int $$1, int $$2) {
+   public il<cya> a(int $$0, int $$1, int $$2) {
       return this.l().g().c().getNoiseBiome($$0, $$1, $$2, this.l().i().b());
    }
 
-   public cxs a() {
+   public cxu a() {
       return this.ac;
    }
 
    public void a(BooleanSupplier $$0) {
-      bjq $$1 = this.ae();
+      bjr $$1 = this.ae();
       this.Y = true;
-      bnn $$2 = this.s();
+      bno $$2 = this.s();
       boolean $$3 = $$2.i();
       if ($$3) {
          $$1.a("world border");
@@ -158,15 +158,15 @@ public class apf extends cwz implements cxu {
          this.as();
       }
 
-      int $$4 = this.Z().c(cwv.P);
+      int $$4 = this.Z().c(cwx.P);
       if (this.P.a($$4) && this.P.a($$4, this.H)) {
-         if (this.Z().b(cwv.l)) {
+         if (this.Z().b(cwx.l)) {
             long $$5 = this.A.d() + 24000L;
             this.b($$5 - $$5 % 24000L);
          }
 
          this.aq();
-         if (this.Z().b(cwv.v) && this.ab()) {
+         if (this.Z().b(cwx.v) && this.ab()) {
             this.g();
          }
       }
@@ -222,7 +222,7 @@ public class apf extends cwz implements cxu {
                   $$2x.dy();
                   $$1.c();
                   if (this.I.a.j().c($$2x.do().a())) {
-                     bow $$3x = $$2x.cZ();
+                     box $$3x = $$2x.cZ();
                      if ($$3x != null) {
                         if (!$$3x.dH() && $$3x.x($$2x)) {
                            return;
@@ -257,7 +257,7 @@ public class apf extends cwz implements cxu {
          long $$0 = this.A.c() + 1L;
          this.K.a($$0);
          this.K.s().a(this.J, $$0);
-         if (this.A.o().b(cwv.l)) {
+         if (this.A.o().b(cwx.l)) {
             this.b(this.A.d() + 1L);
          }
       }
@@ -268,34 +268,34 @@ public class apf extends cwz implements cxu {
    }
 
    public void a(boolean $$0, boolean $$1) {
-      for (cwm $$2 : this.Z) {
+      for (cwo $$2 : this.Z) {
          $$2.a(this, $$0, $$1);
       }
    }
 
-   private boolean i(bow $$0) {
-      return this.J.ab() || !($$0 instanceof cbd) && !($$0 instanceof ccf) ? !this.J.ac() && $$0 instanceof cie : true;
+   private boolean i(box $$0) {
+      return this.J.ab() || !($$0 instanceof cbe) && !($$0 instanceof ccg) ? !this.J.ac() && $$0 instanceof cig : true;
    }
 
    private void aq() {
       this.P.a();
-      this.H.stream().filter(bpo::fI).collect(Collectors.toList()).forEach($$0 -> $$0.a(false, false));
+      this.H.stream().filter(bpp::fI).collect(Collectors.toList()).forEach($$0 -> $$0.a(false, false));
    }
 
-   public void a(dpg $$0, int $$1) {
-      cwg $$2 = $$0.f();
+   public void a(dpi $$0, int $$1) {
+      cwi $$2 = $$0.f();
       boolean $$3 = this.ab();
       int $$4 = $$2.d();
       int $$5 = $$2.e();
-      bjq $$6 = this.ae();
+      bjr $$6 = this.ae();
       $$6.a("thunder");
       if ($$3 && this.aa() && this.z.a(100000) == 0) {
          ib $$7 = this.b(this.a($$4, 0, $$5, 15));
          if (this.r($$7)) {
-            bna $$8 = this.d_($$7);
-            boolean $$9 = this.Z().b(cwv.e) && this.z.j() < (double)$$8.b() * 0.01 && !this.a_($$7.d()).a(dac.ss);
+            bnb $$8 = this.d_($$7);
+            boolean $$9 = this.Z().b(cwx.e) && this.z.j() < (double)$$8.b() * 0.01 && !this.a_($$7.d()).a(dae.ss);
             if ($$9) {
-               cdl $$10 = bpc.aN.a((cwz)this);
+               cdm $$10 = bpd.aO.a((cxb)this);
                if ($$10 != null) {
                   $$10.w(true);
                   $$10.c_(0);
@@ -304,9 +304,9 @@ public class apf extends cwz implements cxu {
                }
             }
 
-            bpn $$11 = bpc.al.a((cwz)this);
+            bpo $$11 = bpd.am.a((cxb)this);
             if ($$11 != null) {
-               $$11.e(epr.c($$7));
+               $$11.e(ept.c($$7));
                $$11.a($$9);
                this.b($$11);
             }
@@ -323,10 +323,10 @@ public class apf extends cwz implements cxu {
 
       $$6.b("tickBlocks");
       if ($$1 > 0) {
-         dph[] $$13 = $$0.d();
+         dpj[] $$13 = $$0.d();
 
          for (int $$14 = 0; $$14 < $$13.length; $$14++) {
-            dph $$15 = $$13[$$14];
+            dpj $$15 = $$13[$$14];
             if ($$15.d()) {
                int $$16 = $$0.g($$14);
                int $$17 = je.c($$16);
@@ -334,12 +334,12 @@ public class apf extends cwz implements cxu {
                for (int $$18 = 0; $$18 < $$1; $$18++) {
                   ib $$19 = this.a($$4, $$17, $$5, 15);
                   $$6.a("randomTick");
-                  dmz $$20 = $$15.a($$19.u() - $$4, $$19.v() - $$17, $$19.w() - $$5);
+                  dnb $$20 = $$15.a($$19.u() - $$4, $$19.v() - $$17, $$19.w() - $$5);
                   if ($$20.v()) {
                      $$20.b(this, $$19, this.z);
                   }
 
-                  ein $$21 = $$20.u();
+                  eip $$21 = $$20.u();
                   if ($$21.f()) {
                      $$21.b(this, $$19, this.z);
                   }
@@ -355,50 +355,50 @@ public class apf extends cwz implements cxu {
 
    @VisibleForTesting
    public void a(ib $$0) {
-      ib $$1 = this.a(dsm.a.e, $$0);
+      ib $$1 = this.a(dso.a.e, $$0);
       ib $$2 = $$1.d();
-      cxy $$3 = this.t($$1).a();
+      cya $$3 = this.t($$1).a();
       if ($$3.a(this, $$2)) {
-         this.b($$2, dac.dO.o());
+         this.b($$2, dae.dO.o());
       }
 
       if (this.ab()) {
-         int $$4 = this.Z().c(cwv.T);
+         int $$4 = this.Z().c(cwx.T);
          if ($$4 > 0 && $$3.b(this, $$1)) {
-            dmz $$5 = this.a_($$1);
-            if ($$5.a(dac.dN)) {
-               int $$6 = $$5.c(dhi.c);
+            dnb $$5 = this.a_($$1);
+            if ($$5.a(dae.dN)) {
+               int $$6 = $$5.c(dhk.c);
                if ($$6 < Math.min($$4, 8)) {
-                  dmz $$7 = $$5.a(dhi.c, Integer.valueOf($$6 + 1));
-                  daa.a($$5, $$7, this, $$1);
+                  dnb $$7 = $$5.a(dhk.c, Integer.valueOf($$6 + 1));
+                  dac.a($$5, $$7, this, $$1);
                   this.b($$1, $$7);
                }
             } else {
-               this.b($$1, dac.dN.o());
+               this.b($$1, dae.dN.o());
             }
          }
 
-         cxy.c $$8 = $$3.a($$2);
-         if ($$8 != cxy.c.a) {
-            dmz $$9 = this.a_($$2);
+         cya.c $$8 = $$3.a($$2);
+         if ($$8 != cya.c.a) {
+            dnb $$9 = this.a_($$2);
             $$9.b().a($$9, this, $$2, $$8);
          }
       }
    }
 
    private Optional<ib> E(ib $$0) {
-      Optional<ib> $$1 = this.y().e($$0x -> $$0x.a(cav.t), $$0x -> $$0x.v() == this.a(dsm.a.b, $$0x.u(), $$0x.w()) - 1, $$0, 128, car.b.c);
+      Optional<ib> $$1 = this.y().e($$0x -> $$0x.a(caw.t), $$0x -> $$0x.v() == this.a(dso.a.b, $$0x.u(), $$0x.w()) - 1, $$0, 128, cas.b.c);
       return $$1.map($$0x -> $$0x.b(1));
    }
 
    protected ib b(ib $$0) {
-      ib $$1 = this.a(dsm.a.e, $$0);
+      ib $$1 = this.a(dso.a.e, $$0);
       Optional<ib> $$2 = this.E($$1);
       if ($$2.isPresent()) {
          return $$2.get();
       } else {
-         epm $$3 = epm.a($$1, new ib($$1.h(this.ak()))).g(3.0);
-         List<bpo> $$4 = this.a(bpo.class, $$3, $$0x -> $$0x != null && $$0x.bA() && this.h($$0x.dm()));
+         epo $$3 = epo.a($$1, new ib($$1.h(this.ak()))).g(3.0);
+         List<bpp> $$4 = this.a(bpp.class, $$3, $$0x -> $$0x != null && $$0x.bA() && this.h($$0x.dm()));
          if (!$$4.isEmpty()) {
             return $$4.get(this.z.a($$4.size())).dm();
          } else {
@@ -416,13 +416,13 @@ public class apf extends cwz implements cxu {
    }
 
    public boolean d() {
-      return this.Z().c(cwv.P) <= 100;
+      return this.Z().c(cwx.P) <= 100;
    }
 
    private void ar() {
       if (this.d()) {
          if (!this.o().T() || this.o().r()) {
-            int $$0 = this.Z().c(cwv.P);
+            int $$0 = this.Z().c(cwx.P);
             vu $$1;
             if (this.P.a($$0)) {
                $$1 = vu.c("sleep.skipping_night");
@@ -450,7 +450,7 @@ public class apf extends cwz implements cxu {
    private void as() {
       boolean $$0 = this.ab();
       if (this.D_().g()) {
-         if (this.Z().b(cwv.v)) {
+         if (this.Z().b(cwx.v)) {
             int $$1 = this.K.f();
             int $$2 = this.K.h();
             int $$3 = this.K.j();
@@ -541,54 +541,54 @@ public class apf extends cwz implements cxu {
       this.Q = 0;
    }
 
-   private void a(ib $$0, eim $$1) {
-      ein $$2 = this.b_($$0);
+   private void a(ib $$0, eio $$1) {
+      eip $$2 = this.b_($$0);
       if ($$2.b($$1)) {
-         $$2.a((cwz)this, $$0);
+         $$2.a((cxb)this, $$0);
       }
    }
 
-   private void d(ib $$0, daa $$1) {
-      dmz $$2 = this.a_($$0);
+   private void d(ib $$0, dac $$1) {
+      dnb $$2 = this.a_($$0);
       if ($$2.a($$1)) {
          $$2.a(this, $$0, this.z);
       }
    }
 
-   public void a(bow $$0) {
+   public void a(box $$0) {
       $$0.bs();
-      bjq $$1 = this.ae();
+      bjr $$1 = this.ae();
       $$0.ah++;
       this.ae().a(() -> ki.g.b($$0.ai()).toString());
       $$1.d("tickNonPassenger");
       $$0.l();
       this.ae().c();
 
-      for (bow $$2 : $$0.cP()) {
+      for (box $$2 : $$0.cP()) {
          this.a($$0, $$2);
       }
    }
 
-   private void a(bow $$0, bow $$1) {
+   private void a(box $$0, box $$1) {
       if ($$1.dH() || $$1.cZ() != $$0) {
          $$1.ac();
-      } else if ($$1 instanceof cis || this.M.c($$1)) {
+      } else if ($$1 instanceof ciu || this.M.c($$1)) {
          $$1.bs();
          $$1.ah++;
-         bjq $$2 = this.ae();
+         bjr $$2 = this.ae();
          $$2.a(() -> ki.g.b($$1.ai()).toString());
          $$2.d("tickPassenger");
          $$1.t();
          $$2.c();
 
-         for (bow $$3 : $$1.cP()) {
+         for (box $$3 : $$1.cP()) {
             this.a($$1, $$3);
          }
       }
    }
 
    @Override
-   public boolean a(cis $$0, ib $$1) {
+   public boolean a(ciu $$0, ib $$1) {
       return !this.J.a(this, $$1, $$0) && this.C_().a($$1);
    }
 
@@ -621,17 +621,17 @@ public class apf extends cwz implements cxu {
       this.l().k().a();
    }
 
-   public <T extends bow> List<? extends T> a(drb<bow, T> $$0, Predicate<? super T> $$1) {
+   public <T extends box> List<? extends T> a(drd<box, T> $$0, Predicate<? super T> $$1) {
       List<T> $$2 = Lists.newArrayList();
       this.a($$0, $$1, $$2);
       return $$2;
    }
 
-   public <T extends bow> void a(drb<bow, T> $$0, Predicate<? super T> $$1, List<? super T> $$2) {
+   public <T extends box> void a(drd<box, T> $$0, Predicate<? super T> $$1, List<? super T> $$2) {
       this.a($$0, $$1, $$2, Integer.MAX_VALUE);
    }
 
-   public <T extends bow> void a(drb<bow, T> $$0, Predicate<? super T> $$1, List<? super T> $$2, int $$3) {
+   public <T extends box> void a(drd<box, T> $$0, Predicate<? super T> $$1, List<? super T> $$2, int $$3) {
       this.G().a($$0, $$3x -> {
          if ($$1.test((T)$$3x)) {
             $$2.add((T)$$3x);
@@ -644,8 +644,8 @@ public class apf extends cwz implements cxu {
       });
    }
 
-   public List<? extends cdx> i() {
-      return this.a(bpc.F, bpo::bA);
+   public List<? extends cdy> i() {
+      return this.a(bpd.G, bpp::bA);
    }
 
    public List<apg> a(Predicate<? super apg> $$0) {
@@ -669,20 +669,20 @@ public class apf extends cwz implements cxu {
 
    @Nullable
    public apg j() {
-      List<apg> $$0 = this.a(bpo::bA);
+      List<apg> $$0 = this.a(bpp::bA);
       return $$0.isEmpty() ? null : $$0.get(this.z.a($$0.size()));
    }
 
    @Override
-   public boolean b(bow $$0) {
+   public boolean b(box $$0) {
       return this.j($$0);
    }
 
-   public boolean c(bow $$0) {
+   public boolean c(box $$0) {
       return this.j($$0);
    }
 
-   public void d(bow $$0) {
+   public void d(box $$0) {
       this.j($$0);
    }
 
@@ -703,27 +703,27 @@ public class apf extends cwz implements cxu {
    }
 
    private void e(apg $$0) {
-      bow $$1 = this.G().a($$0.cw());
+      box $$1 = this.G().a($$0.cw());
       if ($$1 != null) {
          E.warn("Force-added player with duplicate UUID {}", $$0.cw());
          $$1.ag();
-         this.a((apg)$$1, bow.c.b);
+         this.a((apg)$$1, box.c.b);
       }
 
       this.N.a($$0);
    }
 
-   private boolean j(bow $$0) {
+   private boolean j(box $$0) {
       if ($$0.dH()) {
-         E.warn("Tried to add entity {} but it was marked as removed already", bpc.a($$0.ai()));
+         E.warn("Tried to add entity {} but it was marked as removed already", bpd.a($$0.ai()));
          return false;
       } else {
          return this.N.a($$0);
       }
    }
 
-   public boolean e(bow $$0) {
-      if ($$0.cR().map(bow::cw).anyMatch(this.N::a)) {
+   public boolean e(box $$0) {
+      if ($$0.cR().map(box::cw).anyMatch(this.N::a)) {
          return false;
       } else {
          this.a_($$0);
@@ -731,12 +731,12 @@ public class apf extends cwz implements cxu {
       }
    }
 
-   public void a(dpg $$0) {
+   public void a(dpi $$0) {
       $$0.I();
       $$0.b(this);
    }
 
-   public void a(apg $$0, bow.c $$1) {
+   public void a(apg $$0, box.c $$1) {
       $$0.a($$1);
    }
 
@@ -755,18 +755,18 @@ public class apf extends cwz implements cxu {
    }
 
    @Override
-   public void a(@Nullable cis $$0, double $$1, double $$2, double $$3, il<atx> $$4, atz $$5, float $$6, float $$7, long $$8) {
+   public void a(@Nullable ciu $$0, double $$1, double $$2, double $$3, il<atx> $$4, atz $$5, float $$6, float $$7, long $$8) {
       this.J.ah().a($$0, $$1, $$2, $$3, (double)$$4.a().a($$6), this.ad(), new aeg($$4, $$5, $$1, $$2, $$3, $$6, $$7, $$8));
    }
 
    @Override
-   public void a(@Nullable cis $$0, bow $$1, il<atx> $$2, atz $$3, float $$4, float $$5, long $$6) {
+   public void a(@Nullable ciu $$0, box $$1, il<atx> $$2, atz $$3, float $$4, float $$5, long $$6) {
       this.J.ah().a($$0, $$1.dr(), $$1.dt(), $$1.dx(), (double)$$2.a().a($$4), this.ad(), new aef($$2, $$3, $$1, $$4, $$5, $$6));
    }
 
    @Override
    public void b(int $$0, ib $$1, int $$2) {
-      if (this.Z().b(cwv.W)) {
+      if (this.Z().b(cwx.W)) {
          this.J.ah().a(new abz($$0, $$1, $$2, true));
       } else {
          this.a(null, $$0, $$1, $$2);
@@ -774,7 +774,7 @@ public class apf extends cwz implements cxu {
    }
 
    @Override
-   public void a(@Nullable cis $$0, int $$1, ib $$2, int $$3) {
+   public void a(@Nullable ciu $$0, int $$1, ib $$2, int $$3) {
       this.J.ah().a($$0, (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 64.0, this.ad(), new abz($$1, $$2, $$3, false));
    }
 
@@ -783,25 +783,25 @@ public class apf extends cwz implements cxu {
    }
 
    @Override
-   public void a(il<drn> $$0, epr $$1, drn.a $$2) {
+   public void a(il<drp> $$0, ept $$1, drp.a $$2) {
       this.O.a($$0, $$1, $$2);
    }
 
    @Override
-   public void a(ib $$0, dmz $$1, dmz $$2, int $$3) {
+   public void a(ib $$0, dnb $$1, dnb $$2, int $$3) {
       if (this.V) {
          String $$4 = "recursive call to sendBlockUpdated";
          ac.a("recursive call to sendBlockUpdated", new IllegalStateException("recursive call to sendBlockUpdated"));
       }
 
       this.l().a($$0);
-      eqk $$5 = $$1.k(this, $$0);
-      eqk $$6 = $$2.k(this, $$0);
-      if (eqh.c($$5, $$6, epv.g)) {
-         List<byz> $$7 = new ObjectArrayList();
+      eqm $$5 = $$1.k(this, $$0);
+      eqm $$6 = $$2.k(this, $$0);
+      if (eqj.c($$5, $$6, epx.g)) {
+         List<bza> $$7 = new ObjectArrayList();
 
-         for (bpq $$8 : this.U) {
-            byz $$9 = $$8.K();
+         for (bpr $$8 : this.U) {
+            bza $$9 = $$8.K();
             if ($$9.b($$0)) {
                $$7.add($$9);
             }
@@ -810,7 +810,7 @@ public class apf extends cwz implements cxu {
          try {
             this.V = true;
 
-            for (byz $$10 : $$7) {
+            for (bza $$10 : $$7) {
                $$10.i();
             }
          } finally {
@@ -820,32 +820,32 @@ public class apf extends cwz implements cxu {
    }
 
    @Override
-   public void a(ib $$0, daa $$1) {
+   public void a(ib $$0, dac $$1) {
       this.s.a($$0, $$1, null);
    }
 
    @Override
-   public void a(ib $$0, daa $$1, ih $$2) {
+   public void a(ib $$0, dac $$1, ih $$2) {
       this.s.a($$0, $$1, $$2);
    }
 
    @Override
-   public void a(ib $$0, daa $$1, ib $$2) {
+   public void a(ib $$0, dac $$1, ib $$2) {
       this.s.a($$0, $$1, $$2);
    }
 
    @Override
-   public void a(dmz $$0, ib $$1, daa $$2, ib $$3, boolean $$4) {
+   public void a(dnb $$0, ib $$1, dac $$2, ib $$3, boolean $$4) {
       this.s.a($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   public void a(bow $$0, byte $$1) {
+   public void a(box $$0, byte $$1) {
       this.l().a($$0, new abq($$0, $$1));
    }
 
    @Override
-   public void a(bow $$0, bnv $$1) {
+   public void a(box $$0, bnw $$1) {
       this.l().a($$0, new abm($$0, $$1));
    }
 
@@ -854,21 +854,21 @@ public class apf extends cwz implements cxu {
    }
 
    @Override
-   public cwr a(
-      @Nullable bow $$0,
-      @Nullable bnv $$1,
-      @Nullable cws $$2,
+   public cwt a(
+      @Nullable box $$0,
+      @Nullable bnw $$1,
+      @Nullable cwu $$2,
       double $$3,
       double $$4,
       double $$5,
       float $$6,
       boolean $$7,
-      cwz.a $$8,
+      cxb.a $$8,
       ka $$9,
       ka $$10,
       il<atx> $$11
    ) {
-      cwr $$12 = this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, $$9, $$10, $$11);
+      cwt $$12 = this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, $$9, $$10, $$11);
       if (!$$12.d()) {
          $$12.h();
       }
@@ -883,15 +883,15 @@ public class apf extends cwz implements cxu {
    }
 
    @Override
-   public void a(ib $$0, daa $$1, int $$2, int $$3) {
-      this.W.add(new cwe($$0, $$1, $$2, $$3));
+   public void a(ib $$0, dac $$1, int $$2, int $$3) {
+      this.W.add(new cwg($$0, $$1, $$2, $$3));
    }
 
    private void au() {
       this.X.clear();
 
       while (!this.W.isEmpty()) {
-         cwe $$0 = (cwe)this.W.removeFirst();
+         cwg $$0 = (cwg)this.W.removeFirst();
          if (this.n($$0.a())) {
             if (this.a($$0)) {
                this.J.ah().a(null, (double)$$0.a().u(), (double)$$0.a().v(), (double)$$0.a().w(), 64.0, this.ad(), new aau($$0.a(), $$0.b(), $$0.c(), $$0.d()));
@@ -904,16 +904,16 @@ public class apf extends cwz implements cxu {
       this.W.addAll(this.X);
    }
 
-   private boolean a(cwe $$0) {
-      dmz $$1 = this.a_($$0.a());
+   private boolean a(cwg $$0) {
+      dnb $$1 = this.a_($$0.a());
       return $$1.a($$0.b()) ? $$1.a(this, $$0.a(), $$0.c(), $$0.d()) : false;
    }
 
-   public erf<daa> m() {
+   public erh<dac> m() {
       return this.S;
    }
 
-   public erf<eim> n() {
+   public erh<eio> n() {
       return this.T;
    }
 
@@ -923,11 +923,11 @@ public class apf extends cwz implements cxu {
       return this.J;
    }
 
-   public ejj p() {
+   public ejl p() {
       return this.R;
    }
 
-   public ehd q() {
+   public ehf q() {
       return this.J.bb();
    }
 
@@ -955,7 +955,7 @@ public class apf extends cwz implements cxu {
          return false;
       } else {
          ib $$6 = $$0.dm();
-         if ($$6.a(new epr($$2, $$3, $$4), $$1 ? 512.0 : 32.0)) {
+         if ($$6.a(new ept($$2, $$3, $$4), $$1 ? 512.0 : 32.0)) {
             $$0.d.b($$5);
             return true;
          } else {
@@ -966,49 +966,49 @@ public class apf extends cwz implements cxu {
 
    @Nullable
    @Override
-   public bow a(int $$0) {
+   public box a(int $$0) {
       return this.G().a($$0);
    }
 
    @Deprecated
    @Nullable
-   public bow b(int $$0) {
-      bow $$1 = this.G().a($$0);
-      return $$1 != null ? $$1 : (bow)this.ab.get($$0);
+   public box b(int $$0) {
+      box $$1 = this.G().a($$0);
+      return $$1 != null ? $$1 : (box)this.ab.get($$0);
    }
 
    @Nullable
-   public bow a(UUID $$0) {
+   public box a(UUID $$0) {
       return this.G().a($$0);
    }
 
    @Nullable
-   public ib a(avd<edc> $$0, ib $$1, int $$2, boolean $$3) {
+   public ib a(avd<ede> $$0, ib $$1, int $$2, boolean $$3) {
       if (!this.J.bc().y().c()) {
          return null;
       } else {
-         Optional<ip.c<edc>> $$4 = this.H_().d(kj.aE).b($$0);
+         Optional<ip.c<ede>> $$4 = this.H_().d(kj.aE).b($$0);
          if ($$4.isEmpty()) {
             return null;
          } else {
-            Pair<ib, il<edc>> $$5 = this.l().g().a(this, $$4.get(), $$1, $$2, $$3);
+            Pair<ib, il<ede>> $$5 = this.l().g().a(this, $$4.get(), $$1, $$2, $$3);
             return $$5 != null ? (ib)$$5.getFirst() : null;
          }
       }
    }
 
    @Nullable
-   public Pair<ib, il<cxy>> a(Predicate<il<cxy>> $$0, ib $$1, int $$2, int $$3, int $$4) {
+   public Pair<ib, il<cya>> a(Predicate<il<cya>> $$0, ib $$1, int $$2, int $$3, int $$4) {
       return this.l().g().c().a($$1, $$2, $$3, $$4, $$0, this.l().i().b(), this);
    }
 
    @Override
-   public ctq r() {
+   public cts r() {
       return this.J.aJ();
    }
 
    @Override
-   public bnn s() {
+   public bno s() {
       return this.J.aR();
    }
 
@@ -1017,24 +1017,24 @@ public class apf extends cwz implements cxu {
       return this.e;
    }
 
-   public eke u() {
+   public ekg u() {
       return this.l().k();
    }
 
    @Nullable
    @Override
-   public ejy a(ejw $$0) {
-      return this.o().I().u().b(ejy.a(), $$0.a());
+   public eka a(ejy $$0) {
+      return this.o().I().u().b(eka.a(), $$0.a());
    }
 
    @Override
-   public void a(ejw $$0, ejy $$1) {
+   public void a(ejy $$0, eka $$1) {
       this.o().I().u().a($$0.a(), $$1);
    }
 
    @Override
-   public ejw v() {
-      return this.o().I().u().a(ejx.a(), "idcounts").b();
+   public ejy v() {
+      return this.o().I().u().a(ejz.a(), "idcounts").b();
    }
 
    public void a(ib $$0, float $$1) {
@@ -1046,25 +1046,25 @@ public class apf extends cwz implements cxu {
       }
 
       if (this.L > 1) {
-         this.l().b(apk.a, new cwg($$2), this.L, axy.a);
+         this.l().b(apk.a, new cwi($$2), this.L, axy.a);
       }
 
-      int $$4 = this.Z().c(cwv.Z) + 1;
+      int $$4 = this.Z().c(cwx.Z) + 1;
       if ($$4 > 1) {
-         this.l().a(apk.a, new cwg($$0), $$4, axy.a);
+         this.l().a(apk.a, new cwi($$0), $$4, axy.a);
       }
 
       this.L = $$4;
    }
 
    public LongSet w() {
-      cwu $$0 = this.u().b(cwu.a(), "chunks");
+      cww $$0 = this.u().b(cww.a(), "chunks");
       return (LongSet)($$0 != null ? LongSets.unmodifiable($$0.b()) : LongSets.EMPTY_SET);
    }
 
    public boolean a(int $$0, int $$1, boolean $$2) {
-      cwu $$3 = this.u().a(cwu.a(), "chunks");
-      cwg $$4 = new cwg($$0, $$1);
+      cww $$3 = this.u().a(cww.a(), "chunks");
+      cwi $$4 = new cwi($$0, $$1);
       long $$5 = $$4.a();
       boolean $$6;
       if ($$2) {
@@ -1090,9 +1090,9 @@ public class apf extends cwz implements cxu {
    }
 
    @Override
-   public void a(ib $$0, dmz $$1, dmz $$2) {
-      Optional<il<cau>> $$3 = cav.a($$1);
-      Optional<il<cau>> $$4 = cav.a($$2);
+   public void a(ib $$0, dnb $$1, dnb $$2) {
+      Optional<il<cav>> $$3 = caw.a($$1);
+      Optional<il<cav>> $$4 = caw.a($$2);
       if (!Objects.equals($$3, $$4)) {
          ib $$5 = $$0.i();
          $$3.ifPresent($$1x -> this.o().execute(() -> {
@@ -1106,7 +1106,7 @@ public class apf extends cwz implements cxu {
       }
    }
 
-   public car y() {
+   public cas y() {
       return this.l().l();
    }
 
@@ -1126,12 +1126,12 @@ public class apf extends cwz implements cxu {
       return this.y().a($$0);
    }
 
-   public ckf z() {
+   public ckh z() {
       return this.f;
    }
 
    @Nullable
-   public ckd d(ib $$0) {
+   public ckf d(ib $$0) {
       return this.f.a($$0, 9216);
    }
 
@@ -1139,7 +1139,7 @@ public class apf extends cwz implements cxu {
       return this.d($$0) != null;
    }
 
-   public void a(cao $$0, bow $$1, bqc $$2) {
+   public void a(cap $$0, box $$1, bqd $$2) {
       $$2.a($$0, $$1);
    }
 
@@ -1148,13 +1148,13 @@ public class apf extends cwz implements cxu {
 
       try (Writer $$2 = Files.newBufferedWriter($$0.resolve("stats.txt"))) {
          $$2.write(String.format(Locale.ROOT, "spawning_chunks: %d\n", $$1.j().b()));
-         cxk.d $$3 = this.l().n();
+         cxm.d $$3 = this.l().n();
          if ($$3 != null) {
             ObjectIterator $$9 = $$3.b().object2IntEntrySet().iterator();
 
             while ($$9.hasNext()) {
-               Entry<bpr> $$4 = (Entry<bpr>)$$9.next();
-               $$2.write(String.format(Locale.ROOT, "spawn_count.%s: %d\n", ((bpr)$$4.getKey()).a(), $$4.getIntValue()));
+               Entry<bps> $$4 = (Entry<bps>)$$9.next();
+               $$2.write(String.format(Locale.ROOT, "spawn_count.%s: %d\n", ((bps)$$4.getKey()).a(), $$4.getIntValue()));
             }
          }
 
@@ -1198,10 +1198,10 @@ public class apf extends cwz implements cxu {
       }
    }
 
-   private static void a(Writer $$0, Iterable<bow> $$1) throws IOException {
+   private static void a(Writer $$0, Iterable<box> $$1) throws IOException {
       avw $$2 = avw.a().a("x").a("y").a("z").a("uuid").a("type").a("alive").a("display_name").a("custom_name").a($$0);
 
-      for (bow $$3 : $$1) {
+      for (box $$3 : $$1) {
          vu $$4 = $$3.af();
          vu $$5 = $$3.O_();
          $$2.a($$3.dr(), $$3.dt(), $$3.dx(), $$3.cw(), ki.g.b($$3.ai()), $$3.bA(), $$5.getString(), $$4 != null ? $$4.getString() : null);
@@ -1211,19 +1211,19 @@ public class apf extends cwz implements cxu {
    private void a(Writer $$0) throws IOException {
       avw $$1 = avw.a().a("x").a("y").a("z").a("type").a($$0);
 
-      for (dlx $$2 : this.r) {
+      for (dlz $$2 : this.r) {
          ib $$3 = $$2.c();
          $$1.a($$3.u(), $$3.v(), $$3.w(), $$2.d());
       }
    }
 
    @VisibleForTesting
-   public void a(ecu $$0) {
+   public void a(ecw $$0) {
       this.W.removeIf($$1 -> $$0.b($$1.a()));
    }
 
    @Override
-   public void b(ib $$0, daa $$1) {
+   public void b(ib $$0, dac $$1) {
       if (!this.ag()) {
          this.a($$0, $$1);
       }
@@ -1234,7 +1234,7 @@ public class apf extends cwz implements cxu {
       return 1.0F;
    }
 
-   public Iterable<bow> A() {
+   public Iterable<box> A() {
       return this.G().a();
    }
 
@@ -1253,7 +1253,7 @@ public class apf extends cwz implements cxu {
    }
 
    @Nullable
-   public dqp D() {
+   public dqr D() {
       return this.aa;
    }
 
@@ -1271,7 +1271,7 @@ public class apf extends cwz implements cxu {
          this.N.e(),
          a(this.N.d().a(), $$0 -> ki.g.b($$0.ai()).toString()),
          this.r.size(),
-         a(this.r, dlx::d),
+         a(this.r, dlz::d),
          this.m().a(),
          this.n().a(),
          this.H()
@@ -1303,28 +1303,28 @@ public class apf extends cwz implements cxu {
       int $$2 = $$1.u();
       int $$3 = $$1.v() - 2;
       int $$4 = $$1.w();
-      ib.b($$2 - 2, $$3 + 1, $$4 - 2, $$2 + 2, $$3 + 3, $$4 + 2).forEach($$1x -> $$0.b($$1x, dac.a.o()));
-      ib.b($$2 - 2, $$3, $$4 - 2, $$2 + 2, $$3, $$4 + 2).forEach($$1x -> $$0.b($$1x, dac.co.o()));
+      ib.b($$2 - 2, $$3 + 1, $$4 - 2, $$2 + 2, $$3 + 3, $$4 + 2).forEach($$1x -> $$0.b($$1x, dae.a.o()));
+      ib.b($$2 - 2, $$3, $$4 - 2, $$2 + 2, $$3, $$4 + 2).forEach($$1x -> $$0.b($$1x, dae.co.o()));
    }
 
    @Override
-   protected drd<bow> G() {
+   protected drf<box> G() {
       return this.N.d();
    }
 
-   public void a(Stream<bow> $$0) {
+   public void a(Stream<box> $$0) {
       this.N.a($$0);
    }
 
-   public void b(Stream<bow> $$0) {
+   public void b(Stream<box> $$0) {
       this.N.b($$0);
    }
 
-   public void b(dpg $$0) {
+   public void b(dpi $$0) {
       $$0.c(this.A_().c());
    }
 
-   public void a(dov $$0) {
+   public void a(dox $$0) {
       this.J.execute(() -> this.ad.a($$0.f(), $$0.g()));
    }
 
@@ -1348,19 +1348,19 @@ public class apf extends cwz implements cxu {
    }
 
    public boolean f(ib $$0) {
-      return this.N.a($$0) && this.I.a.j().c(cwg.a($$0));
+      return this.N.a($$0) && this.I.a.j().c(cwi.a($$0));
    }
 
    public boolean g(ib $$0) {
       return this.N.a($$0);
    }
 
-   public boolean a(cwg $$0) {
+   public boolean a(cwi $$0) {
       return this.N.a($$0);
    }
 
    @Override
-   public clf I() {
+   public clh I() {
       return this.J.bc().K();
    }
 
@@ -1368,7 +1368,7 @@ public class apf extends cwz implements cxu {
       return this.af.a($$0);
    }
 
-   public bnj J() {
+   public bnk J() {
       return this.af;
    }
 
@@ -1379,30 +1379,30 @@ public class apf extends cwz implements cxu {
       return $$1;
    }
 
-   final class a implements drc<bow> {
-      public void a(bow $$0) {
+   final class a implements dre<box> {
+      public void a(box $$0) {
       }
 
-      public void b(bow $$0) {
+      public void b(box $$0) {
          apf.this.f().a($$0);
       }
 
-      public void c(bow $$0) {
+      public void c(box $$0) {
          apf.this.M.a($$0);
       }
 
-      public void d(bow $$0) {
+      public void d(box $$0) {
          apf.this.M.b($$0);
       }
 
-      public void e(bow $$0) {
+      public void e(box $$0) {
          apf.this.l().b($$0);
          if ($$0 instanceof apg $$1) {
             apf.this.H.add($$1);
             apf.this.e();
          }
 
-         if ($$0 instanceof bpq $$2) {
+         if ($$0 instanceof bpr $$2) {
             if (apf.this.V) {
                String $$3 = "onTrackingStart called during navigation iteration";
                ac.a("onTrackingStart called during navigation iteration", new IllegalStateException("onTrackingStart called during navigation iteration"));
@@ -1411,23 +1411,23 @@ public class apf extends cwz implements cxu {
             apf.this.U.add($$2);
          }
 
-         if ($$0 instanceof cdx $$4) {
-            for (cdv $$5 : $$4.gj()) {
+         if ($$0 instanceof cdy $$4) {
+            for (cdw $$5 : $$4.gj()) {
                apf.this.ab.put($$5.aj(), $$5);
             }
          }
 
-         $$0.a(drk::a);
+         $$0.a(drm::a);
       }
 
-      public void f(bow $$0) {
+      public void f(box $$0) {
          apf.this.l().a($$0);
          if ($$0 instanceof apg $$1) {
             apf.this.H.remove($$1);
             apf.this.e();
          }
 
-         if ($$0 instanceof bpq $$2) {
+         if ($$0 instanceof bpr $$2) {
             if (apf.this.V) {
                String $$3 = "onTrackingStart called during navigation iteration";
                ac.a("onTrackingStart called during navigation iteration", new IllegalStateException("onTrackingStart called during navigation iteration"));
@@ -1436,17 +1436,17 @@ public class apf extends cwz implements cxu {
             apf.this.U.remove($$2);
          }
 
-         if ($$0 instanceof cdx $$4) {
-            for (cdv $$5 : $$4.gj()) {
+         if ($$0 instanceof cdy $$4) {
+            for (cdw $$5 : $$4.gj()) {
                apf.this.ab.remove($$5.aj());
             }
          }
 
-         $$0.a(drk::b);
+         $$0.a(drm::b);
       }
 
-      public void g(bow $$0) {
-         $$0.a(drk::c);
+      public void g(box $$0) {
+         $$0.a(drm::c);
       }
    }
 }

@@ -1,13 +1,19 @@
 import com.mojang.serialization.Codec;
 
-public interface egq<P extends egp> {
-   egq<ego> a = a("always_true", ego.a);
-   egq<egm> b = a("linear_pos", egm.a);
-   egq<egb> c = a("axis_aligned_linear_pos", egb.a);
+public class egq extends egr {
+   public static final Codec<egq> a = Codec.unit(() -> egq.b);
+   public static final egq b = new egq();
 
-   Codec<P> codec();
+   private egq() {
+   }
 
-   static <P extends egp> egq<P> a(String $$0, Codec<P> $$1) {
-      return iy.a(ki.q, $$0, () -> $$1);
+   @Override
+   public boolean a(ib $$0, ib $$1, ib $$2, axd $$3) {
+      return true;
+   }
+
+   @Override
+   protected egs<?> a() {
+      return egs.a;
    }
 }

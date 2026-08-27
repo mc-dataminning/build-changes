@@ -1,16 +1,12 @@
-public class gcr extends gdm {
-   public static final ajh a = new ajh("textures/entity/guardian_elder.png");
+public class gcr extends geh<cbm, fnz<cbm>> {
+   private static final ajh a = new ajh("textures/entity/dolphin.png");
 
-   public gcr(gcy.a $$0) {
-      super($$0, 1.2F, frc.R);
+   public gcr(gdb.a $$0) {
+      super($$0, new fnz<>($$0.a(fre.M)), 0.7F);
+      this.a(new ggt(this, $$0.d()));
    }
 
-   protected void a(cfu $$0, etz $$1, float $$2) {
-      $$1.b(cfn.b, cfn.b, cfn.b);
-   }
-
-   @Override
-   public ajh a(cfu $$0) {
+   public ajh a(cbm $$0) {
       return a;
    }
 }

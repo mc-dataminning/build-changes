@@ -1,86 +1,132 @@
-import java.util.List;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.EnumMap;
+import java.util.EnumSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
-public class bwn extends bxi {
-   private static final int i = 2;
-   private static final int j = 32;
-   private static final int k = 10;
-   private static final int l = 7;
+public class bwn {
+   private static final bya a = new bya(Integer.MAX_VALUE, new bwm() {
+      @Override
+      public boolean a() {
+         return false;
+      }
+   }) {
+      @Override
+      public boolean h() {
+         return false;
+      }
+   };
+   private final Map<bwm.a, bya> b = new EnumMap<>(bwm.a.class);
+   private final Set<bya> c = new ObjectLinkedOpenHashSet();
+   private final Supplier<bjr> d;
+   private final EnumSet<bwm.a> e = EnumSet.noneOf(bwm.a.class);
 
-   public bwn(bpw $$0, double $$1) {
-      super($$0, $$1, 240, false);
+   public bwn(Supplier<bjr> $$0) {
+      this.d = $$0;
    }
 
-   @Nullable
-   @Override
-   protected epr h() {
-      float $$0 = this.b.dM().z.i();
-      if (this.b.dM().z.i() < 0.3F) {
-         return this.k();
-      } else {
-         epr $$1;
-         if ($$0 < 0.7F) {
-            $$1 = this.l();
-            if ($$1 == null) {
-               $$1 = this.m();
-            }
-         } else {
-            $$1 = this.m();
-            if ($$1 == null) {
-               $$1 = this.l();
-            }
+   public void a(int $$0, bwm $$1) {
+      this.c.add(new bya($$0, $$1));
+   }
+
+   @VisibleForTesting
+   public void a(Predicate<bwm> $$0) {
+      this.c.removeIf($$1 -> $$0.test($$1.k()));
+   }
+
+   public void a(bwm $$0) {
+      for (bya $$1 : this.c) {
+         if ($$1.k() == $$0 && $$1.h()) {
+            $$1.d();
          }
-
-         return $$1 == null ? this.k() : $$1;
       }
+
+      this.c.removeIf($$1x -> $$1x.k() == $$0);
    }
 
-   @Nullable
-   private epr k() {
-      return cal.a(this.b, 10, 7);
+   private static boolean a(bya $$0, EnumSet<bwm.a> $$1) {
+      for (bwm.a $$2 : $$0.j()) {
+         if ($$1.contains($$2)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   @Nullable
-   private epr l() {
-      apf $$0 = (apf)this.b.dM();
-      List<cif> $$1 = $$0.a(bpc.bi, this.b.cH().g(32.0), this::a);
-      if ($$1.isEmpty()) {
-         return null;
+   private static boolean a(bya $$0, Map<bwm.a, bya> $$1) {
+      for (bwm.a $$2 : $$0.j()) {
+         if (!$$1.getOrDefault($$2, a).a($$0)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public void a() {
+      bjr $$0 = this.d.get();
+      $$0.a("goalCleanup");
+
+      for (bya $$1 : this.c) {
+         if ($$1.h() && (a($$1, this.e) || !$$1.b())) {
+            $$1.d();
+         }
+      }
+
+      this.b.entrySet().removeIf($$0x -> !((bya)$$0x.getValue()).h());
+      $$0.c();
+      $$0.a("goalUpdate");
+
+      for (bya $$2 : this.c) {
+         if (!$$2.h() && !a($$2, this.e) && a($$2, this.b) && $$2.a()) {
+            for (bwm.a $$3 : $$2.j()) {
+               bya $$4 = this.b.getOrDefault($$3, a);
+               $$4.d();
+               this.b.put($$3, $$2);
+            }
+
+            $$2.c();
+         }
+      }
+
+      $$0.c();
+      this.a(true);
+   }
+
+   public void a(boolean $$0) {
+      bjr $$1 = this.d.get();
+      $$1.a("goalTick");
+
+      for (bya $$2 : this.c) {
+         if ($$2.h() && ($$0 || $$2.R_())) {
+            $$2.e();
+         }
+      }
+
+      $$1.c();
+   }
+
+   public Set<bya> b() {
+      return this.c;
+   }
+
+   public void a(bwm.a $$0) {
+      this.e.add($$0);
+   }
+
+   public void b(bwm.a $$0) {
+      this.e.remove($$0);
+   }
+
+   public void a(bwm.a $$0, boolean $$1) {
+      if ($$1) {
+         this.b($$0);
       } else {
-         cif $$2 = $$1.get(this.b.dM().z.a($$1.size()));
-         epr $$3 = $$2.dk();
-         return cal.a(this.b, 10, 7, $$3);
+         this.a($$0);
       }
-   }
-
-   @Nullable
-   private epr m() {
-      je $$0 = this.n();
-      if ($$0 == null) {
-         return null;
-      } else {
-         ib $$1 = this.a($$0);
-         return $$1 == null ? null : cal.a(this.b, 10, 7, epr.c($$1));
-      }
-   }
-
-   @Nullable
-   private je n() {
-      apf $$0 = (apf)this.b.dM();
-      List<je> $$1 = je.a(je.a(this.b), 2).filter($$1x -> $$0.b($$1x) == 0).collect(Collectors.toList());
-      return $$1.isEmpty() ? null : $$1.get($$0.z.a($$1.size()));
-   }
-
-   @Nullable
-   private ib a(je $$0) {
-      apf $$1 = (apf)this.b.dM();
-      car $$2 = $$1.y();
-      List<ib> $$3 = $$2.c($$0x -> true, $$0.q(), 8, car.b.b).map(cas::f).collect(Collectors.toList());
-      return $$3.isEmpty() ? null : $$3.get($$1.z.a($$3.size()));
-   }
-
-   private boolean a(cif $$0) {
-      return $$0.a(this.b.dM().X());
    }
 }

@@ -1,533 +1,274 @@
-import java.util.Objects;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableList;
+import java.util.Collection;
+import java.util.List;
+import java.util.function.BooleanSupplier;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class fbp extends fbe implements fcj {
-   private static final fct d = new fct(new ajh("widget/text_field"), new ajh("widget/text_field_highlighted"));
-   public static final int a = -1;
-   public static final int b = 1;
-   private static final int e = 1;
-   private static final int f = -3092272;
-   private static final String m = "_";
-   public static final int c = 14737632;
-   private static final int n = 300;
-   private final far o;
-   private String p = "";
-   private int q = 32;
-   private boolean r = true;
-   private boolean t = true;
-   private boolean u = true;
-   private int v;
-   private int w;
-   private int x;
-   private int y = 14737632;
-   private int z = 7368816;
-   @Nullable
-   private String A;
-   @Nullable
-   private Consumer<String> B;
-   private Predicate<String> C = Objects::nonNull;
-   private BiFunction<String, Integer, awi> D = ($$0x, $$1x) -> awi.forward($$0x, wr.a);
-   @Nullable
-   private vu E;
-   private long F = ac.b();
+public class fbp<T> extends faz {
+   public static final BooleanSupplier a = fhh::w;
+   private static final List<Boolean> b = ImmutableList.of(Boolean.TRUE, Boolean.FALSE);
+   private final vu c;
+   private int d;
+   private T f;
+   private final fbp.c<T> m;
+   private final Function<T, vu> n;
+   private final Function<fbp<T>, wi> o;
+   private final fbp.b<T> p;
+   private final boolean q;
+   private final ezl.l<T> r;
 
-   public fbp(far $$0, int $$1, int $$2, vu $$3) {
-      this($$0, 0, 0, $$1, $$2, $$3);
+   fbp(
+      int $$0,
+      int $$1,
+      int $$2,
+      int $$3,
+      vu $$4,
+      vu $$5,
+      int $$6,
+      T $$7,
+      fbp.c<T> $$8,
+      Function<T, vu> $$9,
+      Function<fbp<T>, wi> $$10,
+      fbp.b<T> $$11,
+      ezl.l<T> $$12,
+      boolean $$13
+   ) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.c = $$5;
+      this.d = $$6;
+      this.f = $$7;
+      this.m = $$8;
+      this.n = $$9;
+      this.o = $$10;
+      this.p = $$11;
+      this.q = $$13;
+      this.r = $$12;
+      this.f();
    }
 
-   public fbp(far $$0, int $$1, int $$2, int $$3, int $$4, vu $$5) {
-      this($$0, $$1, $$2, $$3, $$4, null, $$5);
+   private void f() {
+      this.a(this.r.apply(this.f));
    }
 
-   public fbp(far $$0, int $$1, int $$2, int $$3, int $$4, @Nullable fbp $$5, vu $$6) {
-      super($$1, $$2, $$3, $$4, $$6);
-      this.o = $$0;
-      if ($$5 != null) {
-         this.a($$5.a());
+   @Override
+   public void b() {
+      if (fhh.v()) {
+         this.a(-1);
+      } else {
+         this.a(1);
       }
    }
 
-   public void b(Consumer<String> $$0) {
-      this.B = $$0;
+   private void a(int $$0) {
+      List<T> $$1 = this.m.a();
+      this.d = aww.b(this.d + $$0, $$1.size());
+      T $$2 = $$1.get(this.d);
+      this.b($$2);
+      this.p.onValueChange(this, $$2);
    }
 
-   public void a(BiFunction<String, Integer, awi> $$0) {
-      this.D = $$0;
+   private T b(int $$0) {
+      List<T> $$1 = this.m.a();
+      return $$1.get(aww.b(this.d + $$0, $$1.size()));
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      if ($$3 > 0.0) {
+         this.a(-1);
+      } else if ($$3 < 0.0) {
+         this.a(1);
+      }
+
+      return true;
+   }
+
+   public void a(T $$0) {
+      List<T> $$1 = this.m.a();
+      int $$2 = $$1.indexOf($$0);
+      if ($$2 != -1) {
+         this.d = $$2;
+      }
+
+      this.b($$0);
+   }
+
+   private void b(T $$0) {
+      vu $$1 = this.c($$0);
+      this.b($$1);
+      this.f = $$0;
+      this.f();
+   }
+
+   private vu c(T $$0) {
+      return (vu)(this.q ? this.n.apply($$0) : this.d($$0));
+   }
+
+   private wi d(T $$0) {
+      return vt.a(this.c, this.n.apply($$0));
+   }
+
+   public T a() {
+      return this.f;
    }
 
    @Override
    protected wi aL_() {
-      vu $$0 = this.x();
-      return vu.a("gui.narrate.editBox", $$0, this.p);
+      return this.o.apply(this);
    }
 
-   public void a(String $$0) {
-      if (this.C.test($$0)) {
-         if ($$0.length() > this.q) {
-            this.p = $$0.substring(0, this.q);
+   @Override
+   public void a(ffe $$0) {
+      $$0.a(ffd.a, this.aL_());
+      if (this.j) {
+         T $$1 = this.b(1);
+         vu $$2 = this.c($$1);
+         if (this.aJ_()) {
+            $$0.a(ffd.d, vu.a("narration.cycle_button.usage.focused", $$2));
          } else {
-            this.p = $$0;
-         }
-
-         this.c(false);
-         this.i(this.w);
-         this.d($$0);
-      }
-   }
-
-   public String a() {
-      return this.p;
-   }
-
-   public String b() {
-      int $$0 = Math.min(this.w, this.x);
-      int $$1 = Math.max(this.w, this.x);
-      return this.p.substring($$0, $$1);
-   }
-
-   public void a(Predicate<String> $$0) {
-      this.C = $$0;
-   }
-
-   public void b(String $$0) {
-      int $$1 = Math.min(this.w, this.x);
-      int $$2 = Math.max(this.w, this.x);
-      int $$3 = this.q - this.p.length() - ($$1 - $$2);
-      if ($$3 > 0) {
-         String $$4 = aa.a($$0);
-         int $$5 = $$4.length();
-         if ($$3 < $$5) {
-            if (Character.isHighSurrogate($$4.charAt($$3 - 1))) {
-               $$3--;
-            }
-
-            $$4 = $$4.substring(0, $$3);
-            $$5 = $$3;
-         }
-
-         String $$6 = new StringBuilder(this.p).replace($$1, $$2, $$4).toString();
-         if (this.C.test($$6)) {
-            this.p = $$6;
-            this.e($$1 + $$5);
-            this.i(this.w);
-            this.d(this.p);
+            $$0.a(ffd.d, vu.a("narration.cycle_button.usage.hovered", $$2));
          }
       }
    }
 
-   private void d(String $$0) {
-      if (this.B != null) {
-         this.B.accept($$0);
-      }
+   public wi d() {
+      return a_((vu)(this.q ? this.d(this.f) : this.x()));
    }
 
-   private void q(int $$0) {
-      if (fhf.t()) {
-         this.a($$0);
-      } else {
-         this.b($$0);
-      }
+   public static <T> fbp.a<T> a(Function<T, vu> $$0) {
+      return new fbp.a<>($$0);
    }
 
-   public void a(int $$0) {
-      if (!this.p.isEmpty()) {
-         if (this.x != this.w) {
-            this.b("");
+   public static fbp.a<Boolean> a(vu $$0, vu $$1) {
+      return new fbp.a<Boolean>($$2 -> $$2 ? $$0 : $$1).a(b);
+   }
+
+   public static fbp.a<Boolean> e() {
+      return new fbp.a<Boolean>($$0 -> $$0 ? vt.b : vt.c).a(b);
+   }
+
+   public static fbp.a<Boolean> b(boolean $$0) {
+      return e().a($$0);
+   }
+
+   public static class a<T> {
+      private int a;
+      @Nullable
+      private T b;
+      private final Function<T, vu> c;
+      private ezl.l<T> d = $$0x -> null;
+      private Function<fbp<T>, wi> e = fbp::d;
+      private fbp.c<T> f = fbp.c.a(ImmutableList.of());
+      private boolean g;
+
+      public a(Function<T, vu> $$0) {
+         this.c = $$0;
+      }
+
+      public fbp.a<T> a(Collection<T> $$0) {
+         return this.a(fbp.c.a($$0));
+      }
+
+      @SafeVarargs
+      public final fbp.a<T> a(T... $$0) {
+         return this.a(ImmutableList.copyOf($$0));
+      }
+
+      public fbp.a<T> a(List<T> $$0, List<T> $$1) {
+         return this.a(fbp.c.a(fbp.a, $$0, $$1));
+      }
+
+      public fbp.a<T> a(BooleanSupplier $$0, List<T> $$1, List<T> $$2) {
+         return this.a(fbp.c.a($$0, $$1, $$2));
+      }
+
+      public fbp.a<T> a(fbp.c<T> $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public fbp.a<T> a(ezl.l<T> $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public fbp.a<T> a(T $$0) {
+         this.b = $$0;
+         int $$1 = this.f.b().indexOf($$0);
+         if ($$1 != -1) {
+            this.a = $$1;
+         }
+
+         return this;
+      }
+
+      public fbp.a<T> a(Function<fbp<T>, wi> $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public fbp.a<T> a() {
+         this.g = true;
+         return this;
+      }
+
+      public fbp<T> a(int $$0, int $$1, int $$2, int $$3, vu $$4) {
+         return this.a($$0, $$1, $$2, $$3, $$4, ($$0x, $$1x) -> {
+         });
+      }
+
+      public fbp<T> a(int $$0, int $$1, int $$2, int $$3, vu $$4, fbp.b<T> $$5) {
+         List<T> $$6 = this.f.b();
+         if ($$6.isEmpty()) {
+            throw new IllegalStateException("No values for cycle button");
          } else {
-            this.c(this.d($$0));
+            T $$7 = this.b != null ? this.b : $$6.get(this.a);
+            vu $$8 = this.c.apply($$7);
+            vu $$9 = (vu)(this.g ? $$8 : vt.a($$4, $$8));
+            return new fbp<>($$0, $$1, $$2, $$3, $$9, $$4, this.a, $$7, this.f, this.c, this.e, $$5, this.d, this.g);
          }
       }
    }
 
-   public void b(int $$0) {
-      this.c(this.r($$0));
+   public interface b<T> {
+      void onValueChange(fbp<T> var1, T var2);
    }
 
-   public void c(int $$0) {
-      if (!this.p.isEmpty()) {
-         if (this.x != this.w) {
-            this.b("");
-         } else {
-            int $$1 = Math.min($$0, this.w);
-            int $$2 = Math.max($$0, this.w);
-            if ($$1 != $$2) {
-               String $$3 = new StringBuilder(this.p).delete($$1, $$2).toString();
-               if (this.C.test($$3)) {
-                  this.p = $$3;
-                  this.b($$1, false);
-               }
-            }
-         }
-      }
-   }
+   public interface c<T> {
+      List<T> a();
 
-   public int d(int $$0) {
-      return this.a($$0, this.e());
-   }
+      List<T> b();
 
-   private int a(int $$0, int $$1) {
-      return this.a($$0, $$1, true);
-   }
-
-   private int a(int $$0, int $$1, boolean $$2) {
-      int $$3 = $$1;
-      boolean $$4 = $$0 < 0;
-      int $$5 = Math.abs($$0);
-
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         if (!$$4) {
-            int $$7 = this.p.length();
-            $$3 = this.p.indexOf(32, $$3);
-            if ($$3 == -1) {
-               $$3 = $$7;
-            } else {
-               while ($$2 && $$3 < $$7 && this.p.charAt($$3) == ' ') {
-                  $$3++;
-               }
-            }
-         } else {
-            while ($$2 && $$3 > 0 && this.p.charAt($$3 - 1) == ' ') {
-               $$3--;
+      static <T> fbp.c<T> a(Collection<T> $$0) {
+         final List<T> $$1 = ImmutableList.copyOf($$0);
+         return new fbp.c<T>() {
+            @Override
+            public List<T> a() {
+               return $$1;
             }
 
-            while ($$3 > 0 && this.p.charAt($$3 - 1) != ' ') {
-               $$3--;
+            @Override
+            public List<T> b() {
+               return $$1;
             }
-         }
+         };
       }
 
-      return $$3;
-   }
-
-   public void a(int $$0, boolean $$1) {
-      this.b(this.r($$0), $$1);
-   }
-
-   private int r(int $$0) {
-      return ac.a(this.p, this.w, $$0);
-   }
-
-   public void b(int $$0, boolean $$1) {
-      this.e($$0);
-      if (!$$1) {
-         this.i(this.w);
-      }
-
-      this.d(this.p);
-   }
-
-   public void e(int $$0) {
-      this.w = aww.a($$0, 0, this.p.length());
-      this.s(this.w);
-   }
-
-   public void b(boolean $$0) {
-      this.b(0, $$0);
-   }
-
-   public void c(boolean $$0) {
-      this.b(this.p.length(), $$0);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.A() && this.aJ_()) {
-         switch ($$0) {
-            case 259:
-               if (this.u) {
-                  this.q(-1);
-               }
-
-               return true;
-            case 260:
-            case 264:
-            case 265:
-            case 266:
-            case 267:
-            default:
-               if (fhf.f($$0)) {
-                  this.c(false);
-                  this.i(0);
-                  return true;
-               } else if (fhf.e($$0)) {
-                  ezg.Q().o.a(this.b());
-                  return true;
-               } else if (fhf.d($$0)) {
-                  if (this.k()) {
-                     this.b(ezg.Q().o.a());
-                  }
-
-                  return true;
-               } else {
-                  if (fhf.c($$0)) {
-                     ezg.Q().o.a(this.b());
-                     if (this.k()) {
-                        this.b("");
-                     }
-
-                     return true;
-                  }
-
-                  return false;
-               }
-            case 261:
-               if (this.u) {
-                  this.q(1);
-               }
-
-               return true;
-            case 262:
-               if (fhf.t()) {
-                  this.b(this.d(1), fhf.v());
-               } else {
-                  this.a(1, fhf.v());
-               }
-
-               return true;
-            case 263:
-               if (fhf.t()) {
-                  this.b(this.d(-1), fhf.v());
-               } else {
-                  this.a(-1, fhf.v());
-               }
-
-               return true;
-            case 268:
-               this.b(fhf.v());
-               return true;
-            case 269:
-               this.c(fhf.v());
-               return true;
-         }
-      } else {
-         return false;
-      }
-   }
-
-   public boolean d() {
-      return this.A() && this.aJ_() && this.k();
-   }
-
-   @Override
-   public boolean a(char $$0, int $$1) {
-      if (!this.d()) {
-         return false;
-      } else if (aa.a($$0)) {
-         if (this.u) {
-            this.b(Character.toString($$0));
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public void a(double $$0, double $$1) {
-      int $$2 = aww.a($$0) - this.B();
-      if (this.r) {
-         $$2 -= 4;
-      }
-
-      String $$3 = this.o.a(this.p.substring(this.v), this.g());
-      this.b(this.o.a($$3, $$2).length() + this.v, fhf.v());
-   }
-
-   @Override
-   public void a(gnq $$0) {
-   }
-
-   @Override
-   public void b(fat $$0, int $$1, int $$2, float $$3) {
-      if (this.i()) {
-         if (this.f()) {
-            ajh $$4 = d.a(this.A(), this.aJ_());
-            $$0.a($$4, this.B(), this.C(), this.w(), this.u());
-         }
-
-         int $$5 = this.u ? this.y : this.z;
-         int $$6 = this.w - this.v;
-         String $$7 = this.o.a(this.p.substring(this.v), this.g());
-         boolean $$8 = $$6 >= 0 && $$6 <= $$7.length();
-         boolean $$9 = this.aJ_() && (ac.b() - this.F) / 300L % 2L == 0L && $$8;
-         int $$10 = this.r ? this.B() + 4 : this.B();
-         int $$11 = this.r ? this.C() + (this.h - 8) / 2 : this.C();
-         int $$12 = $$10;
-         int $$13 = aww.a(this.x - this.v, 0, $$7.length());
-         if (!$$7.isEmpty()) {
-            String $$14 = $$8 ? $$7.substring(0, $$6) : $$7;
-            $$12 = $$0.b(this.o, this.D.apply($$14, this.v), $$10, $$11, $$5);
-         }
-
-         boolean $$15 = this.w < this.p.length() || this.p.length() >= this.j();
-         int $$16 = $$12;
-         if (!$$8) {
-            $$16 = $$6 > 0 ? $$10 + this.g : $$10;
-         } else if ($$15) {
-            $$16 = $$12 - 1;
-            $$12--;
-         }
-
-         if (!$$7.isEmpty() && $$8 && $$6 < $$7.length()) {
-            $$0.b(this.o, this.D.apply($$7.substring($$6), this.w), $$12, $$11, $$5);
-         }
-
-         if (this.E != null && $$7.isEmpty() && !this.aJ_()) {
-            $$0.b(this.o, this.E, $$12, $$11, $$5);
-         }
-
-         if (!$$15 && this.A != null) {
-            $$0.b(this.o, this.A, $$16 - 1, $$11, -8355712);
-         }
-
-         if ($$9) {
-            if ($$15) {
-               $$0.a(fxy.E(), $$16, $$11 - 1, $$16 + 1, $$11 + 1 + 9, -3092272);
-            } else {
-               $$0.b(this.o, "_", $$16, $$11, $$5);
+      static <T> fbp.c<T> a(final BooleanSupplier $$0, List<T> $$1, List<T> $$2) {
+         final List<T> $$3 = ImmutableList.copyOf($$1);
+         final List<T> $$4 = ImmutableList.copyOf($$2);
+         return new fbp.c<T>() {
+            @Override
+            public List<T> a() {
+               return $$0.getAsBoolean() ? $$4 : $$3;
             }
-         }
 
-         if ($$13 != $$6) {
-            int $$17 = $$10 + this.o.b($$7.substring(0, $$13));
-            this.a($$0, $$16, $$11 - 1, $$17 - 1, $$11 + 1 + 9);
-         }
+            @Override
+            public List<T> b() {
+               return $$3;
+            }
+         };
       }
-   }
-
-   private void a(fat $$0, int $$1, int $$2, int $$3, int $$4) {
-      if ($$1 < $$3) {
-         int $$5 = $$1;
-         $$1 = $$3;
-         $$3 = $$5;
-      }
-
-      if ($$2 < $$4) {
-         int $$6 = $$2;
-         $$2 = $$4;
-         $$4 = $$6;
-      }
-
-      if ($$3 > this.B() + this.g) {
-         $$3 = this.B() + this.g;
-      }
-
-      if ($$1 > this.B() + this.g) {
-         $$1 = this.B() + this.g;
-      }
-
-      $$0.a(fxy.F(), $$1, $$2, $$3, $$4, -16776961);
-   }
-
-   public void f(int $$0) {
-      this.q = $$0;
-      if (this.p.length() > $$0) {
-         this.p = this.p.substring(0, $$0);
-         this.d(this.p);
-      }
-   }
-
-   private int j() {
-      return this.q;
-   }
-
-   public int e() {
-      return this.w;
-   }
-
-   public boolean f() {
-      return this.r;
-   }
-
-   public void d(boolean $$0) {
-      this.r = $$0;
-   }
-
-   public void g(int $$0) {
-      this.y = $$0;
-   }
-
-   public void h(int $$0) {
-      this.z = $$0;
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      if (this.t || $$0) {
-         super.a($$0);
-         if ($$0) {
-            this.F = ac.b();
-         }
-      }
-   }
-
-   private boolean k() {
-      return this.u;
-   }
-
-   public void e(boolean $$0) {
-      this.u = $$0;
-   }
-
-   public int g() {
-      return this.f() ? this.g - 8 : this.g;
-   }
-
-   public void i(int $$0) {
-      this.x = aww.a($$0, 0, this.p.length());
-      this.s(this.x);
-   }
-
-   private void s(int $$0) {
-      if (this.o != null) {
-         this.v = Math.min(this.v, this.p.length());
-         int $$1 = this.g();
-         String $$2 = this.o.a(this.p.substring(this.v), $$1);
-         int $$3 = $$2.length() + this.v;
-         if ($$0 == this.v) {
-            this.v = this.v - this.o.a(this.p, $$1, true).length();
-         }
-
-         if ($$0 > $$3) {
-            this.v += $$0 - $$3;
-         } else if ($$0 <= this.v) {
-            this.v = this.v - (this.v - $$0);
-         }
-
-         this.v = aww.a(this.v, 0, this.p.length());
-      }
-   }
-
-   public void f(boolean $$0) {
-      this.t = $$0;
-   }
-
-   public boolean i() {
-      return this.k;
-   }
-
-   public void g(boolean $$0) {
-      this.k = $$0;
-   }
-
-   public void c(@Nullable String $$0) {
-      this.A = $$0;
-   }
-
-   public int p(int $$0) {
-      return $$0 > this.p.length() ? this.B() : this.B() + this.o.b(this.p.substring(0, $$0));
-   }
-
-   @Override
-   public void a(ffc $$0) {
-      $$0.a(ffb.a, this.aL_());
-   }
-
-   public void c(vu $$0) {
-      this.E = $$0;
    }
 }

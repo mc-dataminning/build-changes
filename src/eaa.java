@@ -1,48 +1,30 @@
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class eaa extends dzy {
-   public static final Codec<eaa> b = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter($$0x -> $$0x.g),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter($$0x -> $$0x.h),
-                  dmz.b.fieldOf("default_state").forGetter($$0x -> $$0x.i),
-                  Codec.list(dmz.b).fieldOf("low_states").forGetter($$0x -> $$0x.j),
-                  Codec.list(dmz.b).fieldOf("high_states").forGetter($$0x -> $$0x.k)
-               )
-            )
-            .apply($$0, eaa::new)
-   );
-   private final float g;
-   private final float h;
-   private final dmz i;
-   private final List<dmz> j;
-   private final List<dmz> k;
+public abstract class eaa extends dzx {
+   protected final long c;
+   protected final ehs.a d;
+   protected final float e;
+   protected final ehs f;
 
-   public eaa(long $$0, ehq.a $$1, float $$2, float $$3, float $$4, dmz $$5, List<dmz> $$6, List<dmz> $$7) {
-      super($$0, $$1, $$2);
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
-      this.k = $$7;
+   protected static <P extends eaa> P3<Mu<P>, Long, ehs.a, Float> a(Instance<P> $$0) {
+      return $$0.group(
+         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
+         ehs.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
+         awe.l.fieldOf("scale").forGetter($$0x -> $$0x.e)
+      );
    }
 
-   @Override
-   protected dzw<?> a() {
-      return dzw.c;
+   protected eaa(long $$0, ehs.a $$1, float $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = ehs.b(new dtn(new dsp($$0)), $$1);
    }
 
-   @Override
-   public dmz a(axd $$0, ib $$1) {
-      double $$2 = this.a($$1, (double)this.e);
-      if ($$2 < (double)this.g) {
-         return ac.a(this.j, $$0);
-      } else {
-         return $$0.i() < this.h ? ac.a(this.k, $$0) : this.i;
-      }
+   protected double a(ib $$0, double $$1) {
+      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
    }
 }

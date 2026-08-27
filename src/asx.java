@@ -66,7 +66,7 @@ public class asx {
    }
 
    private static Optional<GameProfile> a(GameProfileRepository $$0, String $$1) {
-      if (!cis.c($$1)) {
+      if (!ciu.c($$1)) {
          return c($$1);
       } else {
          final AtomicReference<GameProfile> $$2 = new AtomicReference<>();

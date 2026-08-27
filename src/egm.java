@@ -1,41 +1,45 @@
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class egm extends egp {
-   public static final Codec<egm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
-               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
-               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, egm::new)
-   );
-   private final float b;
-   private final float d;
-   private final int e;
-   private final int f;
+public class egm extends ehb {
+   private static final Logger c = LogUtils.getLogger();
+   public static final Codec<egm> a = Codec.unit(() -> egm.b);
+   public static final egm b = new egm();
 
-   public egm(float $$0, float $$1, int $$2, int $$3) {
-      if ($$2 >= $$3) {
-         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
+   private egm() {
+   }
+
+   @Nullable
+   @Override
+   public ehe.c a(cxe $$0, ib $$1, ib $$2, ehe.c $$3, ehe.c $$4, eha $$5) {
+      dnb $$6 = $$4.b();
+      if ($$6.a(dae.pb)) {
+         if ($$4.c() == null) {
+            c.warn("Jigsaw block at {} is missing nbt, will not replace", $$1);
+            return $$4;
+         } else {
+            String $$7 = $$4.c().l("final_state");
+
+            dnb $$9;
+            try {
+               fm.a $$8 = fm.a($$0.a(kj.f), $$7, true);
+               $$9 = $$8.a();
+            } catch (CommandSyntaxException var11) {
+               throw new RuntimeException(var11);
+            }
+
+            return $$9.a(dae.kN) ? null : new ehe.c($$4.a(), $$9, null);
+         }
       } else {
-         this.b = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
+         return $$4;
       }
    }
 
    @Override
-   public boolean a(ib $$0, ib $$1, ib $$2, axd $$3) {
-      int $$4 = $$1.k($$2);
-      float $$5 = $$3.i();
-      return $$5 <= aww.b(this.b, this.d, aww.g((float)$$4, (float)this.e, (float)this.f));
-   }
-
-   @Override
-   protected egq<?> a() {
-      return egq.b;
+   protected ehd<?> a() {
+      return ehd.h;
    }
 }

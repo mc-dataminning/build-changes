@@ -1,117 +1,109 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dlm extends dkg implements drp.b<drw.b>, drw {
-   private static final Logger b = LogUtils.getLogger();
-   private drw.a c;
-   private final drw.b d;
-   private final drw.d e = this.b();
-   private int h;
+public abstract class dlm extends dkc implements bnl {
+   @Nullable
+   protected ajh m;
+   protected long n;
 
-   protected dlm(dki<?> $$0, ib $$1, dmz $$2) {
+   protected dlm(dkk<?> $$0, ib $$1, dnb $$2) {
       super($$0, $$1, $$2);
-      this.c = new drw.a();
-      this.d = new drw.b(this);
    }
 
-   public dlm(ib $$0, dmz $$1) {
-      this(dki.I, $$0, $$1);
-   }
-
-   public drw.d b() {
-      return new dlm.a(this.aC_());
+   @Nullable
+   @Override
+   public ajh aA_() {
+      return this.m;
    }
 
    @Override
-   public void a(ta $$0, in.a $$1) {
-      super.a($$0, $$1);
-      this.h = $$0.h("last_vibration_frequency");
-      if ($$0.b("listener", 10)) {
-         drw.a.a.parse(new Dynamic(to.a, $$0.p("listener"))).resultOrPartial(b::error).ifPresent($$0x -> this.c = $$0x);
-      }
+   public void a(@Nullable ajh $$0) {
+      this.m = $$0;
    }
 
    @Override
-   protected void b(ta $$0, in.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("last_vibration_frequency", this.h);
-      drw.a.a.encodeStart(to.a, this.c).resultOrPartial(b::error).ifPresent($$1x -> $$0.a("listener", $$1x));
+   public long aB_() {
+      return this.n;
    }
 
    @Override
-   public drw.a gp() {
-      return this.c;
+   public void a(long $$0) {
+      this.n = $$0;
    }
 
    @Override
-   public drw.d gq() {
-      return this.e;
-   }
+   public boolean ai_() {
+      this.e_(null);
 
-   public int d() {
-      return this.h;
-   }
-
-   public void a(int $$0) {
-      this.h = $$0;
-   }
-
-   public drw.b f() {
-      return this.d;
-   }
-
-   protected class a implements drw.d {
-      public static final int b = 8;
-      protected final ib c;
-      private final drr a;
-
-      public a(ib $$1) {
-         this.c = $$1;
-         this.a = new drj($$1);
-      }
-
-      @Override
-      public int a() {
-         return 8;
-      }
-
-      @Override
-      public drr b() {
-         return this.a;
-      }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
-
-      @Override
-      public boolean a(apf $$0, ib $$1, il<drn> $$2, @Nullable drn.a $$3) {
-         return !$$1.equals(this.c) || !$$2.a(drn.f) && !$$2.a(drn.i) ? dgs.n(dlm.this.n()) : false;
-      }
-
-      @Override
-      public void a(apf $$0, ib $$1, il<drn> $$2, @Nullable bow $$3, @Nullable bow $$4, float $$5) {
-         dmz $$6 = dlm.this.n();
-         if (dgs.n($$6)) {
-            dlm.this.a(drw.a_($$2));
-            int $$7 = drw.a_($$5, this.a());
-            if ($$6.b() instanceof dgs $$8) {
-               $$8.a($$3, $$0, this.c, $$6, $$7, dlm.this.d());
-            }
+      for (cqm $$0 : this.j()) {
+         if (!$$0.b()) {
+            return false;
          }
       }
 
-      @Override
-      public void e() {
-         dlm.this.e();
+      return true;
+   }
+
+   @Override
+   public cqm a(int $$0) {
+      this.e_(null);
+      return this.j().get($$0);
+   }
+
+   @Override
+   public cqm a(int $$0, int $$1) {
+      this.e_(null);
+      cqm $$2 = bmx.a(this.j(), $$0, $$1);
+      if (!$$2.b()) {
+         this.e();
       }
 
-      @Override
-      public boolean f() {
-         return true;
+      return $$2;
+   }
+
+   @Override
+   public cqm b(int $$0) {
+      this.e_(null);
+      return bmx.a(this.j(), $$0);
+   }
+
+   @Override
+   public void a(int $$0, cqm $$1) {
+      this.e_(null);
+      this.j().set($$0, $$1);
+      if ($$1.M() > this.ak_()) {
+         $$1.f(this.ak_());
+      }
+
+      this.e();
+   }
+
+   @Override
+   public boolean a(ciu $$0) {
+      return bmw.a(this, $$0);
+   }
+
+   @Override
+   public void a() {
+      this.j().clear();
+   }
+
+   protected abstract iu<cqm> j();
+
+   protected abstract void a(iu<cqm> var1);
+
+   @Override
+   public boolean d(ciu $$0) {
+      return super.d($$0) && (this.m == null || !$$0.N_());
+   }
+
+   @Nullable
+   @Override
+   public clq createMenu(int $$0, cit $$1, ciu $$2) {
+      if (this.d($$2)) {
+         this.e_($$1.m);
+         return this.a($$0, $$1);
+      } else {
+         return null;
       }
    }
 }

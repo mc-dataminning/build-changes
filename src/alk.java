@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 
 public class alk {
    private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> vu.b("commands.fill.toobig", $$0, $$1));
-   static final fj b = new fj(dac.a.o(), Collections.emptySet(), null);
+   static final fj b = new fj(dae.a.o(), Collections.emptySet(), null);
    private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vu.c("commands.fill.failed"));
 
    public static void a(CommandDispatcher<du> $$0, dq $$1) {
@@ -27,14 +27,14 @@ public class alk {
                                                 "block", fl.a($$1)
                                              )
                                              .executes(
-                                                $$0x -> a((du)$$0x.getSource(), ecu.a(fo.a($$0x, "from"), fo.a($$0x, "to")), fl.a($$0x, "block"), alk.a.a, null)
+                                                $$0x -> a((du)$$0x.getSource(), ecw.a(fo.a($$0x, "from"), fo.a($$0x, "to")), fl.a($$0x, "block"), alk.a.a, null)
                                              ))
                                           .then(
                                              ((LiteralArgumentBuilder)dv.a("replace")
                                                    .executes(
                                                       $$0x -> a(
                                                             (du)$$0x.getSource(),
-                                                            ecu.a(fo.a($$0x, "from"), fo.a($$0x, "to")),
+                                                            ecw.a(fo.a($$0x, "from"), fo.a($$0x, "to")),
                                                             fl.a($$0x, "block"),
                                                             alk.a.a,
                                                             null
@@ -45,7 +45,7 @@ public class alk {
                                                       .executes(
                                                          $$0x -> a(
                                                                (du)$$0x.getSource(),
-                                                               ecu.a(fo.a($$0x, "from"), fo.a($$0x, "to")),
+                                                               ecw.a(fo.a($$0x, "from"), fo.a($$0x, "to")),
                                                                fl.a($$0x, "block"),
                                                                alk.a.a,
                                                                fk.a($$0x, "filter")
@@ -58,7 +58,7 @@ public class alk {
                                              .executes(
                                                 $$0x -> a(
                                                       (du)$$0x.getSource(),
-                                                      ecu.a(fo.a($$0x, "from"), fo.a($$0x, "to")),
+                                                      ecw.a(fo.a($$0x, "from"), fo.a($$0x, "to")),
                                                       fl.a($$0x, "block"),
                                                       alk.a.a,
                                                       $$0xx -> $$0xx.c().u($$0xx.d())
@@ -68,18 +68,18 @@ public class alk {
                                     .then(
                                        dv.a("outline")
                                           .executes(
-                                             $$0x -> a((du)$$0x.getSource(), ecu.a(fo.a($$0x, "from"), fo.a($$0x, "to")), fl.a($$0x, "block"), alk.a.b, null)
+                                             $$0x -> a((du)$$0x.getSource(), ecw.a(fo.a($$0x, "from"), fo.a($$0x, "to")), fl.a($$0x, "block"), alk.a.b, null)
                                           )
                                     ))
                                  .then(
                                     dv.a("hollow")
                                        .executes(
-                                          $$0x -> a((du)$$0x.getSource(), ecu.a(fo.a($$0x, "from"), fo.a($$0x, "to")), fl.a($$0x, "block"), alk.a.c, null)
+                                          $$0x -> a((du)$$0x.getSource(), ecw.a(fo.a($$0x, "from"), fo.a($$0x, "to")), fl.a($$0x, "block"), alk.a.c, null)
                                        )
                                  ))
                               .then(
                                  dv.a("destroy")
-                                    .executes($$0x -> a((du)$$0x.getSource(), ecu.a(fo.a($$0x, "from"), fo.a($$0x, "to")), fl.a($$0x, "block"), alk.a.d, null))
+                                    .executes($$0x -> a((du)$$0x.getSource(), ecw.a(fo.a($$0x, "from"), fo.a($$0x, "to")), fl.a($$0x, "block"), alk.a.d, null))
                               )
                         )
                   )
@@ -87,9 +87,9 @@ public class alk {
       );
    }
 
-   private static int a(du $$0, ecu $$1, fj $$2, alk.a $$3, @Nullable Predicate<dnd> $$4) throws CommandSyntaxException {
+   private static int a(du $$0, ecw $$1, fj $$2, alk.a $$3, @Nullable Predicate<dnf> $$4) throws CommandSyntaxException {
       int $$5 = $$1.d() * $$1.e() * $$1.f();
-      int $$6 = $$0.e().Z().c(cwv.z);
+      int $$6 = $$0.e().Z().c(cwx.z);
       if ($$5 > $$6) {
          throw a.create($$6, $$5);
       } else {
@@ -98,11 +98,11 @@ public class alk {
          int $$9 = 0;
 
          for (ib $$10 : ib.b($$1.h(), $$1.i(), $$1.j(), $$1.k(), $$1.l(), $$1.m())) {
-            if ($$4 == null || $$4.test(new dnd($$8, $$10, true))) {
+            if ($$4 == null || $$4.test(new dnf($$8, $$10, true))) {
                fj $$11 = $$3.e.filter($$1, $$10, $$2, $$8);
                if ($$11 != null) {
-                  dkg $$12 = $$8.c_($$10);
-                  bmt.a_($$12);
+                  dki $$12 = $$8.c_($$10);
+                  bmu.a_($$12);
                   if ($$11.a($$8, $$10, 2)) {
                      $$7.add($$10.i());
                      $$9++;
@@ -112,7 +112,7 @@ public class alk {
          }
 
          for (ib $$13 : $$7) {
-            daa $$14 = $$8.a_($$13).b();
+            dac $$14 = $$8.a_($$13).b();
             $$8.b($$13, $$14);
          }
 

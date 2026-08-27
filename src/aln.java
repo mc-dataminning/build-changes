@@ -19,12 +19,12 @@ public class aln {
       );
    }
 
-   private static void a(du $$0, apg $$1, cww $$2) {
+   private static void a(du $$0, apg $$1, cwy $$2) {
       vu $$3 = vu.c("gameMode." + $$2.b());
       if ($$0.f() == $$1) {
          $$0.a(() -> vu.a("commands.gamemode.success.self", $$3), true);
       } else {
-         if ($$0.e().Z().b(cwv.p)) {
+         if ($$0.e().Z().b(cwx.p)) {
             $$1.a(vu.a("gameMode.changed", $$3));
          }
 
@@ -32,7 +32,7 @@ public class aln {
       }
    }
 
-   private static int a(CommandContext<du> $$0, Collection<apg> $$1, cww $$2) {
+   private static int a(CommandContext<du> $$0, Collection<apg> $$1, cwy $$2) {
       int $$3 = 0;
 
       for (apg $$4 : $$1) {

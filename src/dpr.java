@@ -1,89 +1,31 @@
+import com.mojang.serialization.DataResult;
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.Validate;
+import java.util.stream.LongStream;
 
-public class dpr<T> implements dpm<T> {
-   private final iq<T> a;
-   @Nullable
-   private T b;
-   private final dpn<T> c;
+public interface dpr<T> {
+   T a(int var1, int var2, int var3);
 
-   public dpr(iq<T> $$0, dpn<T> $$1, List<T> $$2) {
-      this.a = $$0;
-      this.c = $$1;
-      if ($$2.size() > 0) {
-         Validate.isTrue($$2.size() <= 1, "Can't initialize SingleValuePalette with %d values.", (long)$$2.size());
-         this.b = $$2.get(0);
-      }
+   void a(Consumer<T> var1);
+
+   void b(uu var1);
+
+   int c();
+
+   boolean a(Predicate<T> var1);
+
+   void a(dpq.b<T> var1);
+
+   dpq<T> e();
+
+   dpr.a<T> a(iq<T> var1, dpq.d var2);
+
+   public static record a<T>(List<T> a, Optional<LongStream> b) {
    }
 
-   public static <A> dpm<A> a(int $$0, iq<A> $$1, dpn<A> $$2, List<A> $$3) {
-      return new dpr<>($$1, $$2, $$3);
-   }
-
-   @Override
-   public int a(T $$0) {
-      if (this.b != null && this.b != $$0) {
-         return this.c.onResize(1, $$0);
-      } else {
-         this.b = $$0;
-         return 0;
-      }
-   }
-
-   @Override
-   public boolean a(Predicate<T> $$0) {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         return $$0.test(this.b);
-      }
-   }
-
-   @Override
-   public T a(int $$0) {
-      if (this.b != null && $$0 == 0) {
-         return this.b;
-      } else {
-         throw new IllegalStateException("Missing Palette entry for id " + $$0 + ".");
-      }
-   }
-
-   @Override
-   public void a(uu $$0) {
-      this.b = this.a.b($$0.l());
-   }
-
-   @Override
-   public void b(uu $$0) {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         $$0.c(this.a.a(this.b));
-      }
-   }
-
-   @Override
-   public int a() {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         return vl.a(this.a.a(this.b));
-      }
-   }
-
-   @Override
-   public int b() {
-      return 1;
-   }
-
-   @Override
-   public dpm<T> c() {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         return this;
-      }
+   public interface b<T, C extends dpr<T>> {
+      DataResult<C> read(iq<T> var1, dpq.d var2, dpr.a<T> var3);
    }
 }

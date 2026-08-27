@@ -56,15 +56,15 @@ public record br(
    }
 
    public static bc a(br $$0) {
-      ent $$1 = enw.a(eku.b.a, $$0).build();
+      env $$1 = eny.a(ekw.b.a, $$0).build();
       return new bc(List.of($$1));
    }
 
-   public boolean a(apg $$0, @Nullable bow $$1) {
+   public boolean a(apg $$0, @Nullable box $$1) {
       return this.a($$0.z(), $$0.dk(), $$1);
    }
 
-   public boolean a(apf $$0, @Nullable epr $$1, @Nullable bow $$2) {
+   public boolean a(apf $$0, @Nullable ept $$1, @Nullable box $$2) {
       if ($$2 == null) {
          return false;
       } else if (this.c.isPresent() && !this.c.get().b($$2.ai())) {
@@ -82,7 +82,7 @@ public record br(
             return false;
          } else {
             if (this.f.isPresent()) {
-               epr $$3 = epr.b($$2.aJ());
+               ept $$3 = ept.b($$2.aJ());
                if (!this.f.get().a($$0, $$3.a(), $$3.b(), $$3.c())) {
                   return false;
                }
@@ -102,11 +102,11 @@ public record br(
                return false;
             } else if (this.m.isPresent() && $$2.cP().stream().noneMatch($$2x -> this.m.get().a($$0, $$1, $$2x))) {
                return false;
-            } else if (this.n.isPresent() && !this.n.get().a($$0, $$1, $$2 instanceof bpq ? ((bpq)$$2).p() : null)) {
+            } else if (this.n.isPresent() && !this.n.get().a($$0, $$1, $$2 instanceof bpr ? ((bpr)$$2).p() : null)) {
                return false;
             } else {
                if (this.o.isPresent()) {
-                  eqx $$4 = $$2.cg();
+                  eqz $$4 = $$2.cg();
                   if ($$4 == null || !this.o.get().equals($$4.b())) {
                      return false;
                   }
@@ -118,9 +118,9 @@ public record br(
       }
    }
 
-   public static eku b(apg $$0, bow $$1) {
-      ela $$2 = new ela.a($$0.z()).a(enf.a, $$1).a(enf.f, $$0.dk()).a(ene.m);
-      return new eku.a($$2).a(Optional.empty());
+   public static ekw b(apg $$0, box $$1) {
+      elc $$2 = new elc.a($$0.z()).a(enh.a, $$1).a(enh.f, $$0.dk()).a(eng.m);
+      return new ekw.a($$2).a(Optional.empty());
    }
 
    public Optional<bt> a() {
@@ -194,12 +194,12 @@ public record br(
          return new br.a();
       }
 
-      public br.a a(bpc<?> $$0) {
+      public br.a a(bpd<?> $$0) {
          this.a = Optional.of(bt.a($$0));
          return this;
       }
 
-      public br.a a(avd<bpc<?>> $$0) {
+      public br.a a(avd<bpd<?>> $$0) {
          this.a = Optional.of(bt.a($$0));
          return this;
       }

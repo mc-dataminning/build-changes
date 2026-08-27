@@ -4,13 +4,13 @@ public class abh implements yb<aam> {
    public static final xs<vf, abh> a = yb.a(abh::a, abh::new);
    private final int b;
    private final int c;
-   private final List<cqk> d;
-   private final cqk e;
+   private final List<cqm> d;
+   private final cqm e;
 
-   public abh(int $$0, int $$1, iu<cqk> $$2, cqk $$3) {
+   public abh(int $$0, int $$1, iu<cqm> $$2, cqm $$3) {
       this.b = $$0;
       this.c = $$1;
-      this.d = iu.a($$2.size(), cqk.h);
+      this.d = iu.a($$2.size(), cqm.h);
 
       for (int $$4 = 0; $$4 < $$2.size(); $$4++) {
          this.d.set($$4, $$2.get($$4).q());
@@ -22,15 +22,15 @@ public class abh implements yb<aam> {
    private abh(vf $$0) {
       this.b = $$0.readUnsignedByte();
       this.c = $$0.l();
-      this.d = cqk.g.decode($$0);
-      this.e = cqk.f.decode($$0);
+      this.d = cqm.g.decode($$0);
+      this.e = cqm.f.decode($$0);
    }
 
    private void a(vf $$0) {
       $$0.k(this.b);
       $$0.c(this.c);
-      cqk.g.encode($$0, this.d);
-      cqk.f.encode($$0, this.e);
+      cqm.g.encode($$0, this.d);
+      cqm.f.encode($$0, this.e);
    }
 
    @Override
@@ -46,11 +46,11 @@ public class abh implements yb<aam> {
       return this.b;
    }
 
-   public List<cqk> e() {
+   public List<cqm> e() {
       return this.d;
    }
 
-   public cqk f() {
+   public cqm f() {
       return this.e;
    }
 

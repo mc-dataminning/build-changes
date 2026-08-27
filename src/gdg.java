@@ -1,27 +1,28 @@
-public class gdg extends gee<cbn, foe<cbn>> {
-   private static final ajh a = new ajh("textures/entity/fox/fox.png");
-   private static final ajh i = new ajh("textures/entity/fox/fox_sleep.png");
-   private static final ajh j = new ajh("textures/entity/fox/snow_fox.png");
-   private static final ajh k = new ajh("textures/entity/fox/snow_fox_sleep.png");
+public class gdg extends gda<cfd> {
+   private final fym a;
 
-   public gdg(gcy.a $$0) {
-      super($$0, new foe<>($$0.a(frc.Z)), 0.4F);
-      this.a(new ggw(this, $$0.d()));
+   public gdg(gdb.a $$0) {
+      super($$0);
+      this.d = 0.5F;
+      this.a = $$0.c();
    }
 
-   protected void a(cbn $$0, etz $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if ($$0.gt() || $$0.gn()) {
-         float $$6 = -aww.i($$4, $$0.O, $$0.dE());
-         $$1.a(a.b.rotationDegrees($$6));
+   public void a(cfd $$0, float $$1, float $$2, eub $$3, fxs $$4, int $$5) {
+      dnb $$6 = $$0.s();
+      if ($$6.l() == dgh.c) {
+         cxb $$7 = $$0.dM();
+         if ($$6 != $$7.a_($$0.dm()) && $$6.l() != dgh.a) {
+            $$3.a();
+            ib $$8 = ib.a($$0.dr(), $$0.cH().e, $$0.dx());
+            $$3.a(-0.5, 0.0, -0.5);
+            this.a.b().a($$7, this.a.a($$6), $$6, $$8, $$3, $$4.getBuffer(fxn.b($$6)), false, axd.a(), $$6.a($$0.p()), git.d);
+            $$3.b();
+            super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         }
       }
    }
 
-   public ajh a(cbn $$0) {
-      if ($$0.s() == cbn.v.a) {
-         return $$0.fI() ? i : a;
-      } else {
-         return $$0.fI() ? k : j;
-      }
+   public ajh a(cfd $$0) {
+      return gjb.e;
    }
 }

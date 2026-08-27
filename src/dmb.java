@@ -1,51 +1,72 @@
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
-import java.util.function.Predicate;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public interface dmb {
-   dmb a = ($$0, $$1, $$2, $$3) -> $$1.a($$0, $$2x -> $$2x.dm().a($$2, $$3) && !$$2x.f() && !$$2x.N_()).stream().map(bow::cw).toList();
-   dmb b = ($$0, $$1, $$2, $$3) -> $$1.a($$0, $$2x -> $$2x.dm().a($$2, $$3) && !$$2x.N_()).stream().map(bow::cw).toList();
-   dmb c = ($$0, $$1, $$2, $$3) -> {
-      epm $$4 = new epm($$2).g($$3);
-      return $$1.a($$0, bpc.aI, $$4, bpo::bA).stream().map(bow::cw).toList();
-   };
+public class dmb extends dki implements cxt, dme.a {
+   private static final Logger a = LogUtils.getLogger();
+   private dme b;
 
-   List<UUID> detect(apf var1, dmb.a var2, ib var3, double var4);
+   public dmb(ib $$0, dnb $$1) {
+      super(dkk.Q, $$0, $$1);
+      dmd $$2 = dmd.a;
+      dmd.a $$3 = dmd.a.a;
+      this.b = new dme(this, $$2, $$3);
+   }
 
-   public interface a {
-      dmb.a a = new dmb.a() {
-         @Override
-         public List<apg> a(apf $$0, Predicate<? super cis> $$1) {
-            return $$0.a($$1);
-         }
-
-         @Override
-         public <T extends bow> List<T> a(apf $$0, drb<bow, T> $$1, epm $$2, Predicate<? super T> $$3) {
-            return $$0.a($$1, $$2, $$3);
-         }
-      };
-
-      List<? extends cis> a(apf var1, Predicate<? super cis> var2);
-
-      <T extends bow> List<T> a(apf var1, drb<bow, T> var2, epm var3, Predicate<? super T> var4);
-
-      static dmb.a a(cis $$0) {
-         return a(List.of($$0));
+   @Override
+   public void a(ta $$0, in.a $$1) {
+      super.a($$0, $$1);
+      this.b.a().parse(to.a, $$0).resultOrPartial(a::error).ifPresent($$0x -> this.b = $$0x);
+      if (this.o != null) {
+         this.f();
       }
+   }
 
-      static dmb.a a(final List<cis> $$0) {
-         return new dmb.a() {
-            @Override
-            public List<cis> a(apf $$0x, Predicate<? super cis> $$1) {
-               return $$0.stream().filter($$1).toList();
-            }
+   @Override
+   protected void b(ta $$0, in.a $$1) {
+      super.b($$0, $$1);
+      this.b.a().encodeStart(to.a, this.b).get().ifLeft($$1x -> $$0.a((ta)$$1x)).ifRight($$0x -> a.warn("Failed to encode TrialSpawner {}", $$0x.message()));
+   }
 
-            @Override
-            public <T extends bow> List<T> a(apf $$0x, drb<bow, T> $$1, epm $$2, Predicate<? super T> $$3) {
-               return $$0.stream().map($$1::a).filter(Objects::nonNull).filter($$3).toList();
-            }
-         };
+   public aat b() {
+      return aat.a(this);
+   }
+
+   @Override
+   public ta a(in.a $$0) {
+      return this.b.c().a(this.n().c(diq.b));
+   }
+
+   @Override
+   public boolean q() {
+      return true;
+   }
+
+   @Override
+   public void a(bpd<?> $$0, axd $$1) {
+      this.b.c().a(this.b, $$1, $$0);
+      this.e();
+   }
+
+   public dme c() {
+      return this.b;
+   }
+
+   @Override
+   public dmh d() {
+      return !this.n().b(dnr.by) ? dmh.a : this.n().c(dnr.by);
+   }
+
+   @Override
+   public void a(cxb $$0, dmh $$1) {
+      this.e();
+      $$0.b(this.p, this.n().a(dnr.by, $$1));
+   }
+
+   @Override
+   public void f() {
+      this.e();
+      if (this.o != null) {
+         this.o.a(this.p, this.n(), this.n(), 3);
       }
    }
 }

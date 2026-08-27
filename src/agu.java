@@ -1,17 +1,17 @@
 public class agu implements yb<aez> {
    public static final xs<uu, agu> a = yb.a(agu::a, agu::new);
-   private final epn b;
-   private final bnb c;
+   private final epp b;
+   private final bnc c;
    private final int d;
 
-   public agu(bnb $$0, epn $$1, int $$2) {
+   public agu(bnc $$0, epp $$1, int $$2) {
       this.c = $$0;
       this.b = $$1;
       this.d = $$2;
    }
 
    private agu(uu $$0) {
-      this.c = $$0.b(bnb.class);
+      this.c = $$0.b(bnc.class);
       this.b = $$0.v();
       this.d = $$0.l();
    }
@@ -31,11 +31,11 @@ public class agu implements yb<aez> {
       $$0.a(this);
    }
 
-   public bnb b() {
+   public bnc b() {
       return this.c;
    }
 
-   public epn e() {
+   public epp e() {
       return this.b;
    }
 

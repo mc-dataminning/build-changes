@@ -7,7 +7,7 @@ public interface nc {
 
    nc a(@Nullable String var1);
 
-   cqf a();
+   cqh a();
 
    void a(ne var1, ajh var2);
 
@@ -25,16 +25,16 @@ public interface nc {
       }
    }
 
-   static ajh a(cwy $$0) {
+   static ajh a(cxa $$0) {
       return ki.h.b($$0.l());
    }
 
-   static ctd a(nd $$0) {
+   static ctf a(nd $$0) {
       return switch ($$0) {
-         case a -> ctd.a;
-         case e, f -> ctd.c;
-         case c -> ctd.b;
-         default -> ctd.d;
+         case a -> ctf.a;
+         case e, f -> ctf.c;
+         case c -> ctf.b;
+         default -> ctf.d;
       };
    }
 }

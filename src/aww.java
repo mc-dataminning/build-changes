@@ -299,7 +299,7 @@ public class aww {
       return ($$0 - $$1) / ($$2 - $$1);
    }
 
-   public static boolean a(epr $$0, epr $$1, epm $$2) {
+   public static boolean a(ept $$0, ept $$1, epo $$2) {
       double $$3 = ($$2.a + $$2.d) * 0.5;
       double $$4 = ($$2.d - $$2.a) * 0.5;
       double $$5 = $$0.c - $$3;

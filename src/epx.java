@@ -1,21 +1,20 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+public interface epx {
+   epx a = ($$0, $$1) -> false;
+   epx b = ($$0, $$1) -> !$$0 && !$$1;
+   epx c = ($$0, $$1) -> $$1 && !$$0;
+   epx d = ($$0, $$1) -> !$$0;
+   epx e = ($$0, $$1) -> $$0 && !$$1;
+   epx f = ($$0, $$1) -> !$$1;
+   epx g = ($$0, $$1) -> $$0 != $$1;
+   epx h = ($$0, $$1) -> !$$0 || !$$1;
+   epx i = ($$0, $$1) -> $$0 && $$1;
+   epx j = ($$0, $$1) -> $$0 == $$1;
+   epx k = ($$0, $$1) -> $$1;
+   epx l = ($$0, $$1) -> !$$0 || $$1;
+   epx m = ($$0, $$1) -> $$0;
+   epx n = ($$0, $$1) -> $$0 || !$$1;
+   epx o = ($$0, $$1) -> $$0 || $$1;
+   epx p = ($$0, $$1) -> true;
 
-public class epx extends AbstractDoubleList {
-   private final int a;
-
-   epx(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Need at least 1 part");
-      } else {
-         this.a = $$0;
-      }
-   }
-
-   public double getDouble(int $$0) {
-      return (double)$$0 / (double)this.a;
-   }
-
-   public int size() {
-      return this.a + 1;
-   }
+   boolean apply(boolean var1, boolean var2);
 }

@@ -1,15 +1,17 @@
-public class gly extends glz {
-   public gly(cbe $$0) {
-      super($$0, aty.bR, atz.g);
+public abstract class gly extends glx implements gmq {
+   private boolean n;
+
+   protected gly(atx $$0, atz $$1, axd $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected glv o() {
-      return new glx(this.n);
+   public boolean m() {
+      return this.n;
    }
 
-   @Override
-   protected boolean p() {
-      return this.n.Y_();
+   protected final void n() {
+      this.n = true;
+      this.i = false;
    }
 }

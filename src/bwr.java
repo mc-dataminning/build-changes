@@ -1,48 +1,36 @@
-import java.util.EnumSet;
+public class bwr extends bwm {
+   private final ccb a;
+   private apg b;
+   private boolean c;
 
-public class bwr extends bwl {
-   private final bpq a;
-   private bpo b;
-   private final float c;
-
-   public bwr(bpq $$0, float $$1) {
+   public bwr(ccb $$0) {
       this.a = $$0;
-      this.c = $$1;
-      this.a(EnumSet.of(bwl.a.c, bwl.a.a));
    }
 
    @Override
    public boolean a() {
-      if (this.a.cO()) {
-         return false;
-      } else {
-         this.b = this.a.p();
-         if (this.b == null) {
-            return false;
-         } else {
-            double $$0 = this.a.g(this.b);
-            if ($$0 < 4.0 || $$0 > 16.0) {
-               return false;
-            } else {
-               return !this.a.aC() ? false : this.a.ei().a(b(5)) == 0;
-            }
-         }
-      }
+      apg $$0 = (apg)this.a.P_();
+      boolean $$1 = $$0 != null && !$$0.N_() && !$$0.ga().b && !$$0.bc() && !$$0.aA;
+      return !this.a.gn() && $$1 && this.a.gw();
    }
 
    @Override
-   public boolean b() {
-      return !this.a.aC();
+   public boolean Q_() {
+      return !this.c;
    }
 
    @Override
    public void c() {
-      epr $$0 = this.a.dp();
-      epr $$1 = new epr(this.b.dr() - this.a.dr(), 0.0, this.b.dx() - this.a.dx());
-      if ($$1.g() > 1.0E-7) {
-         $$1 = $$1.d().a(0.4).e($$0.a(0.2));
-      }
+      this.b = (apg)this.a.P_();
+      this.c = false;
+   }
 
-      this.a.o($$1.c, (double)this.c, $$1.e);
+   @Override
+   public void e() {
+      if (!this.c && !this.a.y() && !this.a.gb()) {
+         if (this.a.cH().c(this.b.cH())) {
+            this.c = this.a.b(this.b);
+         }
+      }
    }
 }

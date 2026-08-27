@@ -1,20 +1,46 @@
-public interface epv {
-   epv a = ($$0, $$1) -> false;
-   epv b = ($$0, $$1) -> !$$0 && !$$1;
-   epv c = ($$0, $$1) -> $$1 && !$$0;
-   epv d = ($$0, $$1) -> !$$0;
-   epv e = ($$0, $$1) -> $$0 && !$$1;
-   epv f = ($$0, $$1) -> !$$1;
-   epv g = ($$0, $$1) -> $$0 != $$1;
-   epv h = ($$0, $$1) -> !$$0 || !$$1;
-   epv i = ($$0, $$1) -> $$0 && $$1;
-   epv j = ($$0, $$1) -> $$0 == $$1;
-   epv k = ($$0, $$1) -> $$1;
-   epv l = ($$0, $$1) -> !$$0 || $$1;
-   epv m = ($$0, $$1) -> $$0;
-   epv n = ($$0, $$1) -> $$0 || !$$1;
-   epv o = ($$0, $$1) -> $$0 || $$1;
-   epv p = ($$0, $$1) -> true;
+import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
+import java.util.Arrays;
 
-   boolean apply(boolean var1, boolean var2);
+public class epv extends eqm {
+   private final DoubleList b;
+   private final DoubleList c;
+   private final DoubleList d;
+
+   protected epv(eqc $$0, double[] $$1, double[] $$2, double[] $$3) {
+      this(
+         $$0,
+         DoubleArrayList.wrap(Arrays.copyOf($$1, $$0.b() + 1)),
+         DoubleArrayList.wrap(Arrays.copyOf($$2, $$0.c() + 1)),
+         DoubleArrayList.wrap(Arrays.copyOf($$3, $$0.d() + 1))
+      );
+   }
+
+   epv(eqc $$0, DoubleList $$1, DoubleList $$2, DoubleList $$3) {
+      super($$0);
+      int $$4 = $$0.b() + 1;
+      int $$5 = $$0.c() + 1;
+      int $$6 = $$0.d() + 1;
+      if ($$4 == $$1.size() && $$5 == $$2.size() && $$6 == $$3.size()) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      } else {
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Lengths of point arrays must be consistent with the size of the VoxelShape."));
+      }
+   }
+
+   @Override
+   protected DoubleList a(ih.a $$0) {
+      switch ($$0) {
+         case a:
+            return this.b;
+         case b:
+            return this.c;
+         case c:
+            return this.d;
+         default:
+            throw new IllegalArgumentException();
+      }
+   }
 }

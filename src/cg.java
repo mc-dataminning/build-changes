@@ -8,7 +8,7 @@ public class cg extends cx<cg.a> {
       return cg.a.a;
    }
 
-   public void a(apg $$0, epr $$1, int $$2) {
+   public void a(apg $$0, ept $$1, int $$2) {
       this.a($$0, $$3 -> $$3.a($$0, $$1, $$2));
    }
 
@@ -24,7 +24,7 @@ public class cg extends cx<cg.a> {
          return am.v.a(new cg.a(Optional.empty(), Optional.of($$0), cm.d.c));
       }
 
-      public boolean a(apg $$0, epr $$1, int $$2) {
+      public boolean a(apg $$0, ept $$1, int $$2) {
          return this.c.isPresent() && !this.c.get().a($$1.c, $$1.d, $$1.e, $$0.dr(), $$0.dt(), $$0.dx()) ? false : this.d.d($$2);
       }
 

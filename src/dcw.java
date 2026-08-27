@@ -1,7 +1,10 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public abstract class dcw extends daa implements dcv {
-   public dcw(dmy.d $$0) {
+public abstract class dcw extends ddx {
+   public static final dnz<dnm> K = dnr.U;
+
+   protected dcw(dna.d $$0) {
       super($$0);
    }
 
@@ -9,46 +12,47 @@ public abstract class dcw extends daa implements dcv {
    protected abstract MapCodec<? extends dcw> a();
 
    @Override
-   protected void b(dmz $$0, cwz $$1, ib $$2, dmz $$3, boolean $$4) {
-      $$1.a($$2, this, this.b());
+   protected boolean a(dnb $$0, cxe $$1, ib $$2) {
+      return b($$1, $$2, m($$0).g());
    }
 
+   public static boolean b(cxe $$0, ib $$1, ih $$2) {
+      ib $$3 = $$1.a($$2);
+      return $$0.a_($$3).d($$0, $$3, $$2.g());
+   }
+
+   @Nullable
    @Override
-   protected dmz a(dmz $$0, ih $$1, dmz $$2, cxa $$3, ib $$4, ib $$5) {
-      $$3.a($$4, this, this.b());
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
+   public dnb a(csu $$0) {
+      for (ih $$1 : $$0.f()) {
+         dnb $$2;
+         if ($$1.o() == ih.a.b) {
+            $$2 = this.o().a(K, $$1 == ih.b ? dnm.c : dnm.a).a(aE, $$0.g());
+         } else {
+            $$2 = this.o().a(K, dnm.b).a(aE, $$1.g());
+         }
 
-   @Override
-   protected void a(dmz $$0, apf $$1, ib $$2, axd $$3) {
-      if (m($$1.a_($$2.d())) && $$2.v() >= $$1.I_()) {
-         cfc $$4 = cfc.a($$1, $$2, $$0);
-         this.a($$4);
-      }
-   }
-
-   protected void a(cfc $$0) {
-   }
-
-   protected int b() {
-      return 2;
-   }
-
-   public static boolean m(dmz $$0) {
-      return $$0.i() || $$0.a(aun.aK) || $$0.k() || $$0.r();
-   }
-
-   @Override
-   public void a(dmz $$0, cwz $$1, ib $$2, axd $$3) {
-      if ($$3.a(16) == 0) {
-         ib $$4 = $$2.d();
-         if (m($$1.a_($$4))) {
-            awz.a($$1, $$2, $$3, new ju(kc.C, $$0));
+         if ($$2.a((cxe)$$0.q(), $$0.a())) {
+            return $$2;
          }
       }
+
+      return null;
    }
 
-   public int b(dmz $$0, cwf $$1, ib $$2) {
-      return -16777216;
+   @Override
+   protected dnb a(dnb $$0, ih $$1, dnb $$2, cxc $$3, ib $$4, ib $$5) {
+      return m($$0).g() == $$1 && !$$0.a($$3, $$4) ? dae.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   protected static ih m(dnb $$0) {
+      switch ((dnm)$$0.c(K)) {
+         case c:
+            return ih.a;
+         case a:
+            return ih.b;
+         default:
+            return $$0.c(aE);
+      }
    }
 }

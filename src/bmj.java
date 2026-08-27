@@ -1,25 +1,16 @@
-import java.util.Arrays;
+import com.mojang.serialization.Codec;
 
-public class bmj implements bmk {
-   private final bmk[] a;
+public interface bmj<P extends bmi> {
+   bmj<bmf> a = a("constant", bmf.b);
+   bmj<bmo> b = a("uniform", bmo.a);
+   bmj<bma> c = a("biased_to_bottom", bma.a);
+   bmj<bmb> d = a("clamped", bmb.a);
+   bmj<bmp> e = a("weighted_list", bmp.a);
+   bmj<bmd> f = a("clamped_normal", bmd.a);
 
-   public bmj(bmk... $$0) {
-      this.a = $$0;
-   }
+   Codec<P> codec();
 
-   @Override
-   public float a(axd $$0) {
-      float $$1 = 1.0F;
-
-      for (bmk $$2 : this.a) {
-         $$1 *= $$2.a($$0);
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public String toString() {
-      return "MultipliedFloats" + Arrays.toString((Object[])this.a);
+   static <P extends bmi> bmj<P> a(String $$0, Codec<P> $$1) {
+      return iy.a(ki.M, $$0, () -> $$1);
    }
 }

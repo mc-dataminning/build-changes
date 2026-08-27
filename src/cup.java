@@ -1,11 +1,11 @@
-public class cup extends cuu {
-   public cup(cuu.a $$0, bpd... $$1) {
-      super($$0, auv.bp, $$1);
+public class cup extends cuw {
+   public cup(cuw.a $$0, bpe... $$1) {
+      super($$0, auv.bn, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 1 + ($$0 - 1) * 10;
+      return 20;
    }
 
    @Override
@@ -14,12 +14,7 @@ public class cup extends cuu {
    }
 
    @Override
-   public int a() {
-      return 4;
-   }
-
-   @Override
-   public boolean a(cuu $$0) {
-      return super.a($$0) && $$0 != cux.I;
+   public boolean a(cuw $$0) {
+      return $$0 instanceof cvf ? false : super.a($$0);
    }
 }

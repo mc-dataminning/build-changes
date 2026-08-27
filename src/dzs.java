@@ -1,61 +1,40 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.Optional;
-import java.util.function.BiConsumer;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class dzs {
-   public static final Codec<dzs> d = ki.Y.q().dispatch(dzs::a, dzt::a);
-   protected final bmh e;
-   protected final dzv f;
-   protected final Optional<dzp> g;
+public record dzs(ip<dac> b, ip<dac> c, dzx d, int e, int f, float g) {
+   public static final Codec<dzs> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ja.a(kj.f).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
+               ja.a(kj.f).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
+               dzx.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
+               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, dzs::new)
+   );
 
-   protected static <P extends dzs> P3<Mu<P>, bmh, dzv, Optional<dzp>> a(Instance<P> $$0) {
-      return $$0.group(
-         bmh.c.fieldOf("trunk_offset_y").forGetter($$0x -> $$0x.e),
-         dzv.a.fieldOf("root_provider").forGetter($$0x -> $$0x.f),
-         dzp.a.optionalFieldOf("above_root_placement").forGetter($$0x -> $$0x.g)
-      );
+   public ip<dac> a() {
+      return this.b;
    }
 
-   public dzs(bmh $$0, dzv $$1, Optional<dzp> $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public ip<dac> b() {
+      return this.c;
    }
 
-   protected abstract dzt<?> a();
-
-   public abstract boolean a(cxf var1, BiConsumer<ib, dmz> var2, axd var3, ib var4, ib var5, dyq var6);
-
-   protected boolean a(cxf $$0, ib $$1) {
-      return dxc.c($$0, $$1);
+   public dzx c() {
+      return this.d;
    }
 
-   protected void a(cxf $$0, BiConsumer<ib, dmz> $$1, axd $$2, ib $$3, dyq $$4) {
-      if (this.a($$0, $$3)) {
-         $$1.accept($$3, this.a($$0, $$3, this.f.a($$2, $$3)));
-         if (this.g.isPresent()) {
-            dzp $$5 = this.g.get();
-            ib $$6 = $$3.c();
-            if ($$2.i() < $$5.b() && $$0.a($$6, dmy.a::i)) {
-               $$1.accept($$6, this.a($$0, $$6, $$5.a().a($$2, $$6)));
-            }
-         }
-      }
+   public int d() {
+      return this.e;
    }
 
-   protected dmz a(cxf $$0, ib $$1, dmz $$2) {
-      if ($$2.b(dnp.C)) {
-         boolean $$3 = $$0.b($$1, $$0x -> $$0x.a(aus.a));
-         return $$2.a(dnp.C, Boolean.valueOf($$3));
-      } else {
-         return $$2;
-      }
+   public int e() {
+      return this.f;
    }
 
-   public ib a(ib $$0, axd $$1) {
-      return $$0.b(this.e.a($$1));
+   public float f() {
+      return this.g;
    }
 }

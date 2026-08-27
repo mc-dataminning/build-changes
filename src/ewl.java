@@ -1,125 +1,59 @@
-import java.util.Locale;
+import java.util.List;
 
-public class ewl extends gpb {
-   private static final vu a = vu.c("mco.backup.info.title");
-   private static final vu b = vu.c("mco.backup.unknown");
-   private final fhf c;
-   final euv v;
-   final fet w = new fet(this);
-   private ewl.a x;
+public abstract class ewl {
+   public final int a;
+   public final int b;
+   public final int c;
+   public final int d;
 
-   public ewl(fhf $$0, euv $$1) {
-      super(a);
-      this.c = $$0;
-      this.v = $$1;
+   public ewl(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   @Override
-   public void aO_() {
-      this.w.a(new fcn(a, this.i));
-      this.x = this.w.c(new ewl.a(this.f));
-      this.w.b(fbg.a(vt.k, $$0 -> this.d()).a());
-      this.c();
-      this.w.a($$1 -> {
-         fbe var10000 = this.c($$1);
-      });
+   public void a(fav $$0, int $$1, int $$2, int $$3, int $$4) {
+      int $$5 = $$1 + this.c;
+      int $$6 = $$2 + this.d;
+      boolean $$7 = $$3 >= $$5 && $$3 <= $$5 + this.a && $$4 >= $$6 && $$4 <= $$6 + this.b;
+      this.a($$0, $$5, $$6, $$7);
    }
 
-   @Override
-   protected void c() {
-      this.x.b(this.g, this.h - this.w.b() - this.w.c());
-      this.w.a();
+   protected abstract void a(fav var1, int var2, int var3, boolean var4);
+
+   public int a() {
+      return this.c + this.a;
    }
 
-   @Override
-   public void d() {
-      this.f.a(this.c);
+   public int b() {
+      return this.d + this.b;
    }
 
-   vu a(String $$0, String $$1) {
-      String $$2 = $$0.toLowerCase(Locale.ROOT);
-      if ($$2.contains("game") && $$2.contains("mode")) {
-         return this.b($$1);
-      } else {
-         return (vu)($$2.contains("game") && $$2.contains("difficulty") ? this.a($$1) : vu.b($$1));
-      }
-   }
+   public abstract void a(int var1);
 
-   private vu a(String $$0) {
-      try {
-         return exi.a.get(Integer.parseInt($$0)).b();
-      } catch (Exception var3) {
-         return b;
-      }
-   }
-
-   private vu b(String $$0) {
-      try {
-         return exi.b.get(Integer.parseInt($$0)).e();
-      } catch (Exception var3) {
-         return b;
-      }
-   }
-
-   class a extends fcc<ewl.b> {
-      public a(ezg $$0) {
-         super($$0, ewl.this.g, ewl.this.h - ewl.this.w.b() - ewl.this.w.c(), ewl.this.w.c(), 36);
-         if (ewl.this.v.e != null) {
-            ewl.this.v.e.forEach(($$0x, $$1) -> this.b(ewl.this.new b($$0x, $$1)));
+   public static void a(fav $$0, List<ewl> $$1, gpd<?> $$2, int $$3, int $$4, int $$5, int $$6) {
+      for (ewl $$7 : $$1) {
+         if ($$2.b() > $$7.a()) {
+            $$7.a($$0, $$3, $$4, $$5, $$6);
          }
       }
    }
 
-   class b extends fcc.a<ewl.b> {
-      private static final vu b = vu.c("mco.backup.entry.templateName");
-      private static final vu c = vu.c("mco.backup.entry.gameDifficulty");
-      private static final vu d = vu.c("mco.backup.entry.name");
-      private static final vu e = vu.c("mco.backup.entry.gameServerVersion");
-      private static final vu f = vu.c("mco.backup.entry.uploaded");
-      private static final vu g = vu.c("mco.backup.entry.enabledPack");
-      private static final vu h = vu.c("mco.backup.entry.description");
-      private static final vu i = vu.c("mco.backup.entry.gameMode");
-      private static final vu j = vu.c("mco.backup.entry.seed");
-      private static final vu k = vu.c("mco.backup.entry.worldType");
-      private static final vu l = vu.c("mco.backup.entry.undefined");
-      private final String m;
-      private final String n;
+   public static void a(gpd<?> $$0, fce.a<?> $$1, List<ewl> $$2, int $$3, double $$4, double $$5) {
+      int $$6 = $$0.l().indexOf($$1);
+      if ($$6 > -1) {
+         $$0.a($$6);
+         int $$7 = $$0.q();
+         int $$8 = $$0.g($$6);
+         int $$9 = (int)($$4 - (double)$$7);
+         int $$10 = (int)($$5 - (double)$$8);
 
-      public b(String $$0, String $$1) {
-         this.m = $$0;
-         this.n = $$1;
-      }
-
-      @Override
-      public void a(fat $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         $$0.b(ewl.this.i, this.a(this.m), $$3, $$2, -6250336);
-         $$0.b(ewl.this.i, ewl.this.a(this.m, this.n), $$3, $$2 + 12, -1);
-      }
-
-      private vu a(String $$0) {
-         return switch ($$0) {
-            case "template_name" -> b;
-            case "game_difficulty" -> c;
-            case "name" -> d;
-            case "game_server_version" -> e;
-            case "uploaded" -> f;
-            case "enabled_packs" -> g;
-            case "description" -> h;
-            case "game_mode" -> i;
-            case "seed" -> j;
-            case "world_type" -> k;
-            default -> l;
-         };
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         return true;
-      }
-
-      @Override
-      public vu a() {
-         return vu.a("narrator.select", this.m + " " + this.n);
+         for (ewl $$11 : $$2) {
+            if ($$9 >= $$11.c && $$9 <= $$11.a() && $$10 >= $$11.d && $$10 <= $$11.b()) {
+               $$11.a($$6);
+            }
+         }
       }
    }
 }

@@ -1,44 +1,44 @@
 import com.mojang.serialization.Codec;
 
-public class bme extends bmh {
-   public static final bme a = new bme(0);
-   public static final Codec<bme> b = awe.e(Codec.INT, Codec.INT.fieldOf("value").codec()).xmap(bme::new, bme::d);
-   private final int f;
+public class bme extends bmg {
+   public static final bme a = new bme(0.0F);
+   public static final Codec<bme> b = awe.e(Codec.FLOAT, Codec.FLOAT.fieldOf("value").codec()).xmap(bme::new, bme::d);
+   private final float d;
 
-   public static bme a(int $$0) {
-      return $$0 == 0 ? a : new bme($$0);
+   public static bme a(float $$0) {
+      return $$0 == 0.0F ? a : new bme($$0);
    }
 
-   private bme(int $$0) {
-      this.f = $$0;
+   private bme(float $$0) {
+      this.d = $$0;
    }
 
-   public int d() {
-      return this.f;
-   }
-
-   @Override
-   public int a(axd $$0) {
-      return this.f;
+   public float d() {
+      return this.d;
    }
 
    @Override
-   public int a() {
-      return this.f;
+   public float a(axd $$0) {
+      return this.d;
    }
 
    @Override
-   public int b() {
-      return this.f;
+   public float a() {
+      return this.d;
    }
 
    @Override
-   public bmi<?> c() {
-      return bmi.a;
+   public float b() {
+      return this.d + 1.0F;
+   }
+
+   @Override
+   public bmh<?> c() {
+      return bmh.a;
    }
 
    @Override
    public String toString() {
-      return Integer.toString(this.f);
+      return Float.toString(this.d);
    }
 }

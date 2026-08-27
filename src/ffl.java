@@ -1,24 +1,29 @@
-public record ffl(int a, int b) {
-   public static ffl a(ffj $$0, int $$1, int $$2) {
-      return switch ($$0) {
-         case a -> new ffl($$1, $$2);
-         case b -> new ffl($$2, $$1);
+public enum ffl {
+   a,
+   b;
+
+   public ffl a() {
+      return switch (this) {
+         case a -> b;
+         case b -> a;
       };
    }
 
-   public ffl a(ffk $$0) {
-      return switch ($$0) {
-         case b -> new ffl(this.a, this.b + 1);
-         case a -> new ffl(this.a, this.b - 1);
-         case c -> new ffl(this.a - 1, this.b);
-         case d -> new ffl(this.a + 1, this.b);
+   public ffm b() {
+      return switch (this) {
+         case a -> ffm.d;
+         case b -> ffm.b;
       };
    }
 
-   public int a(ffj $$0) {
-      return switch ($$0) {
-         case a -> this.a;
-         case b -> this.b;
+   public ffm c() {
+      return switch (this) {
+         case a -> ffm.c;
+         case b -> ffm.a;
       };
+   }
+
+   public ffm a(boolean $$0) {
+      return $$0 ? this.b() : this.c();
    }
 }

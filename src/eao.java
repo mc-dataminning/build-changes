@@ -1,45 +1,66 @@
 import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Comparator;
+import java.util.Set;
+import java.util.function.BiConsumer;
 
-public class eao extends eam {
-   public static final Codec<eao> a = Codec.unit(() -> eao.b);
-   public static final eao b = new eao();
+public abstract class eao {
+   public static final Codec<eao> h = ki.Z.q().dispatch(eao::a, eap::a);
 
-   @Override
-   protected ean<?> a() {
-      return ean.a;
-   }
+   protected abstract eap<?> a();
 
-   @Override
-   public void a(eam.a $$0) {
-      axd $$1 = $$0.b();
-      $$0.c().forEach($$2 -> {
-         if ($$1.a(3) > 0) {
-            ib $$3 = $$2.g();
-            if ($$0.a($$3)) {
-               $$0.a($$3, div.d);
-            }
-         }
+   public abstract void a(eao.a var1);
 
-         if ($$1.a(3) > 0) {
-            ib $$4 = $$2.h();
-            if ($$0.a($$4)) {
-               $$0.a($$4, div.f);
-            }
-         }
+   public static final class a {
+      private final cxh a;
+      private final BiConsumer<ib, dnb> b;
+      private final axd c;
+      private final ObjectArrayList<ib> d;
+      private final ObjectArrayList<ib> e;
+      private final ObjectArrayList<ib> f;
 
-         if ($$1.a(3) > 0) {
-            ib $$5 = $$2.e();
-            if ($$0.a($$5)) {
-               $$0.a($$5, div.e);
-            }
-         }
+      public a(cxh $$0, BiConsumer<ib, dnb> $$1, axd $$2, Set<ib> $$3, Set<ib> $$4, Set<ib> $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.f = new ObjectArrayList($$5);
+         this.d = new ObjectArrayList($$3);
+         this.e = new ObjectArrayList($$4);
+         this.d.sort(Comparator.comparingInt(jg::v));
+         this.e.sort(Comparator.comparingInt(jg::v));
+         this.f.sort(Comparator.comparingInt(jg::v));
+      }
 
-         if ($$1.a(3) > 0) {
-            ib $$6 = $$2.f();
-            if ($$0.a($$6)) {
-               $$0.a($$6, div.c);
-            }
-         }
-      });
+      public void a(ib $$0, dns $$1) {
+         this.a($$0, dae.ff.o().a($$1, Boolean.valueOf(true)));
+      }
+
+      public void a(ib $$0, dnb $$1) {
+         this.b.accept($$0, $$1);
+      }
+
+      public boolean a(ib $$0) {
+         return this.a.a($$0, dna.a::i);
+      }
+
+      public cxh a() {
+         return this.a;
+      }
+
+      public axd b() {
+         return this.c;
+      }
+
+      public ObjectArrayList<ib> c() {
+         return this.d;
+      }
+
+      public ObjectArrayList<ib> d() {
+         return this.e;
+      }
+
+      public ObjectArrayList<ib> e() {
+         return this.f;
+      }
    }
 }

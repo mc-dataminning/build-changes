@@ -1,81 +1,83 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dgg extends dcc {
-   public static final MapCodec<dgg> a = b(dgg::new);
-   public static final dnq b = dnp.s;
-   public static final dnz e = dnp.aA;
+public class dgg extends dgf {
+   public static final MapCodec<dgg> h = b(dgg::new);
+   public static final dnv i = ddx.aE;
+   public static final dns j = dgf.d;
 
    @Override
    public MapCodec<dgg> a() {
-      return a;
+      return h;
    }
 
-   protected dgg(dmy.d $$0) {
+   protected dgg(dna.d $$0) {
       super($$0);
-      this.k(this.E.b().a(aE, ih.c).a(e, Integer.valueOf(1)).a(b, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
+      this.k(this.E.b().a(i, ih.c).a(j, Boolean.valueOf(true)));
    }
 
    @Override
-   protected bnc a(dmz $$0, cwz $$1, ib $$2, cis $$3, epn $$4) {
-      if (!$$3.ga().e) {
-         return bnc.d;
-      } else {
-         $$1.a($$2, $$0.a(e), 3);
-         return bnc.a($$1.B);
+   public String g() {
+      return this.l().a();
+   }
+
+   @Override
+   protected eqm a(dnb $$0, cwh $$1, ib $$2, epy $$3) {
+      return djd.m($$0);
+   }
+
+   @Override
+   protected boolean a(dnb $$0, cxe $$1, ib $$2) {
+      return djd.b($$1, $$2, $$0.c(i));
+   }
+
+   @Override
+   protected dnb a(dnb $$0, ih $$1, dnb $$2, cxc $$3, ib $$4, ib $$5) {
+      return $$1.g() == $$0.c(i) && !$$0.a($$3, $$4) ? dae.a.o() : $$0;
+   }
+
+   @Nullable
+   @Override
+   public dnb a(csu $$0) {
+      dnb $$1 = dae.cq.a($$0);
+      return $$1 == null ? null : this.o().a(i, $$1.c(i));
+   }
+
+   @Override
+   public void a(dnb $$0, cxb $$1, ib $$2, axd $$3) {
+      if ($$0.c(j)) {
+         ih $$4 = $$0.c(i).g();
+         double $$5 = 0.27;
+         double $$6 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.j();
+         double $$7 = (double)$$2.v() + 0.7 + ($$3.j() - 0.5) * 0.2 + 0.22;
+         double $$8 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.l();
+         $$1.a(jw.b, $$6, $$7, $$8, 0.0, 0.0, 0.0);
       }
    }
 
    @Override
-   protected int g(dmz $$0) {
-      return $$0.c(e) * 2;
+   protected boolean a(cxb $$0, ib $$1, dnb $$2) {
+      ih $$3 = $$2.c(i).g();
+      return $$0.b($$1.a($$3), $$3);
    }
 
    @Override
-   public dmz a(css $$0) {
-      dmz $$1 = super.a($$0);
-      return $$1.a(b, Boolean.valueOf(this.c($$0.q(), $$0.a(), $$1)));
+   protected int a(dnb $$0, cwh $$1, ib $$2, ih $$3) {
+      return $$0.c(j) && $$0.c(i) != $$3 ? 15 : 0;
    }
 
    @Override
-   protected dmz a(dmz $$0, ih $$1, dmz $$2, cxa $$3, ib $$4, ib $$5) {
-      if ($$1 == ih.a && !this.b($$3, $$5, $$2)) {
-         return dac.a.o();
-      } else {
-         return !$$3.x_() && $$1.o() != $$0.c(aE).o() ? $$0.a(b, Boolean.valueOf(this.c($$3, $$4, $$0))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
+   protected dnb a(dnb $$0, dgo $$1) {
+      return $$0.a(i, $$1.a($$0.c(i)));
    }
 
    @Override
-   public boolean c(cxc $$0, ib $$1, dmz $$2) {
-      return this.a((cxp)$$0, $$1, $$2) > 0;
+   protected dnb a(dnb $$0, dey $$1) {
+      return $$0.a($$1.a($$0.c(i)));
    }
 
    @Override
-   protected boolean b() {
-      return true;
-   }
-
-   @Override
-   public void a(dmz $$0, cwz $$1, ib $$2, axd $$3) {
-      if ($$0.c(d)) {
-         ih $$4 = $$0.c(aE);
-         double $$5 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2;
-         double $$6 = (double)$$2.v() + 0.4 + ($$3.j() - 0.5) * 0.2;
-         double $$7 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2;
-         float $$8 = -5.0F;
-         if ($$3.h()) {
-            $$8 = (float)($$0.c(e) * 2 - 1);
-         }
-
-         $$8 /= 16.0F;
-         double $$9 = (double)($$8 * (float)$$4.j());
-         double $$10 = (double)($$8 * (float)$$4.l());
-         $$1.a(jw.b, $$5 + $$9, $$6, $$7 + $$10, 0.0, 0.0, 0.0);
-      }
-   }
-
-   @Override
-   protected void a(dna.a<daa, dmz> $$0) {
-      $$0.a(aE, e, b, d);
+   protected void a(dnc.a<dac, dnb> $$0) {
+      $$0.a(i, j);
    }
 }

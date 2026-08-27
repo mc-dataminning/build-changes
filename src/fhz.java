@@ -1,77 +1,31 @@
-import javax.annotation.Nullable;
+public class fhz extends fgz {
+   private static final int c = 24;
 
-public class fhz extends fgx {
-   @Nullable
-   public eze c;
-   public long k;
-   private fhy l;
-   private fbg m;
-
-   public fhz(fhf $$0, ezk $$1) {
-      super($$0, $$1, vu.c("controls.keybinds.title"));
+   public fhz(fhh $$0, ezm $$1) {
+      super($$0, $$1, vu.c("controls.title"));
    }
 
    @Override
    protected void aO_() {
-      this.l = this.c(new fhy(this, this.f));
-      this.m = this.c(fbg.a(vu.c("controls.resetAll"), $$0 -> {
-         for (eze $$1 : this.b.X) {
-            $$1.b($$1.i());
-         }
-
-         this.l.d();
-      }).a(this.g / 2 - 155, this.h - 29, 150, 20).a());
-      this.c(fbg.a(vt.d, $$0 -> this.f.a(this.a)).a(this.g / 2 - 155 + 160, this.h - 29, 150, 20).a());
+      super.aO_();
+      int $$0 = this.g / 2 - 155;
+      int $$1 = $$0 + 160;
+      int $$2 = this.h / 6 - 12;
+      this.c(fbi.a(vu.c("options.mouse_settings"), $$0x -> this.f.a(new fgv(this, this.b))).a($$0, $$2, 150, 20).a());
+      this.c(fbi.a(vu.c("controls.keybinds"), $$0x -> this.f.a(new fib(this, this.b))).a($$1, $$2, 150, 20).a());
+      $$2 += 24;
+      this.c(this.b.aa().a(this.b, $$0, $$2, 150));
+      this.c(this.b.ab().a(this.b, $$1, $$2, 150));
+      $$2 += 24;
+      this.c(this.b.F().a(this.b, $$0, $$2, 150));
+      this.c(this.b.G().a(this.b, $$1, $$2, 150));
+      $$2 += 24;
+      this.c(fbi.a(vt.d, $$0x -> this.f.a(this.a)).a(this.g / 2 - 100, $$2, 200, 20).a());
    }
 
    @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.c != null) {
-         this.b.a(this.c, esu.b.c.a($$2));
-         this.c = null;
-         this.l.d();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.c != null) {
-         if ($$0 == 256) {
-            this.b.a(this.c, esu.bv);
-         } else {
-            this.b.a(this.c, esu.a($$0, $$1));
-         }
-
-         this.c = null;
-         this.k = ac.b();
-         this.l.d();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public void a(fat $$0, int $$1, int $$2, float $$3) {
+   public void a(fav $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 8, 16777215);
-      boolean $$4 = false;
-
-      for (eze $$5 : this.b.X) {
-         if (!$$5.l()) {
-            $$4 = true;
-            break;
-         }
-      }
-
-      this.m.j = $$4;
-   }
-
-   @Override
-   public void b(fat $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
+      $$0.a(this.i, this.e, this.g / 2, 15, 16777215);
    }
 }

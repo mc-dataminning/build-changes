@@ -1,26 +1,17 @@
-import com.mojang.authlib.minecraft.UserApiService;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
+public class fsk {
+   private final fsb a;
+   private final bix b;
 
-public interface fsk {
-   fsk a = new fsk() {
-      @Override
-      public CompletableFuture<Optional<ciu>> a() {
-         return CompletableFuture.completedFuture(Optional.empty());
-      }
-
-      @Override
-      public boolean b() {
-         return false;
-      }
-   };
-
-   static fsk a(UserApiService $$0, ezv $$1, Path $$2) {
-      return (fsk)($$1.g() == ezv.a.c ? new frr($$0, $$1.b(), $$2) : a);
+   public fsk(fsb $$0, bix $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   CompletableFuture<Optional<ciu>> a();
+   public void a() {
+      this.a.b(new aic(ac.b()));
+   }
 
-   boolean b();
+   public void a(ahz $$0) {
+      this.b.a(ac.b() - $$0.b());
+   }
 }

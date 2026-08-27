@@ -107,10 +107,10 @@ public class ry {
       String $$2 = $$0.getDeclaringClass().getSimpleName();
       String $$3 = $$2.toLowerCase();
       String $$4 = $$3 + "." + $$0.getName().toLowerCase();
-      String $$5 = $$1.e().isEmpty() ? $$4 : $$3 + "." + $$1.e();
+      String $$5 = $$1.f().isEmpty() ? $$4 : $$3 + "." + $$1.f();
       String $$6 = $$1.b();
-      dgm $$7 = sm.a($$1.c());
-      return new sq($$6, $$4, $$5, $$7, $$1.a(), $$1.f(), $$1.d(), $$1.h(), $$1.g(), (Consumer<rv>)d($$0));
+      dgo $$7 = sm.a($$1.d());
+      return new sq($$6, $$4, $$5, $$7, $$1.a(), $$1.g(), $$1.e(), $$1.i(), $$1.h(), $$1.c(), (Consumer<rv>)d($$0));
    }
 
    private static Consumer<?> d(Method $$0) {

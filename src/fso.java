@@ -1,181 +1,169 @@
-import com.google.common.collect.Lists;
-import com.mojang.authlib.GameProfile;
 import com.mojang.logging.LogUtils;
-import io.netty.bootstrap.Bootstrap;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelException;
-import io.netty.channel.ChannelHandler;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelOption;
-import io.netty.channel.EventLoopGroup;
-import io.netty.channel.socket.nio.NioSocketChannel;
-import java.net.InetSocketAddress;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.io.IOException;
+import java.util.Base64;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
 public class fso {
-   private static final Logger a = LogUtils.getLogger();
-   private static final vu b = vu.c("multiplayer.status.cannot_connect").b(-65536);
-   private final List<us> c = Collections.synchronizedList(Lists.newArrayList());
+   private static final Logger j = LogUtils.getLogger();
+   private static final int k = 1024;
+   public String a;
+   public String b;
+   public vu c;
+   public vu d;
+   @Nullable
+   public aig.b e;
+   public long f;
+   public int g = aa.b().e();
+   public vu h = vu.b(aa.b().c());
+   public List<vu> i = Collections.emptyList();
+   private fso.a l = fso.a.c;
+   @Nullable
+   private byte[] m;
+   private fso.c n;
+   private fso.b o = fso.b.a;
 
-   public void a(final fsm $$0, final Runnable $$1, final Runnable $$2) throws UnknownHostException {
-      final ftp $$3 = ftp.a($$0.b);
-      Optional<InetSocketAddress> $$4 = ftr.a.a($$3).map(fto::d);
-      if ($$4.isEmpty()) {
-         this.a(ffy.b, $$0);
-      } else {
-         final InetSocketAddress $$5 = $$4.get();
-         final us $$6 = us.a($$5, false, null);
-         this.c.add($$6);
-         $$0.d = vu.c("multiplayer.status.pinging");
-         $$0.i = Collections.emptyList();
-         aie $$7 = new aie() {
-            private boolean h;
-            private boolean i;
-            private long j;
+   public fso(String $$0, String $$1, fso.c $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.n = $$2;
+   }
 
-            @Override
-            public void a(aif $$0x) {
-               if (this.i) {
-                  $$6.a(vu.c("multiplayer.status.unrequested"));
-               } else {
-                  this.i = true;
-                  aig $$1 = $$0.b();
-                  $$0.d = $$1.a();
-                  $$1.c().ifPresentOrElse($$1xxx -> {
-                     $$0.h = vu.b($$1xxx.b());
-                     $$0.g = $$1xxx.c();
-                  }, () -> {
-                     $$0.h = vu.c("multiplayer.status.old");
-                     $$0.g = 0;
-                  });
-                  $$1.b().ifPresentOrElse($$1xxx -> {
-                     $$0.c = fso.a($$1xxx.b(), $$1xxx.a());
-                     $$0.e = $$1xxx;
-                     if (!$$1xxx.c().isEmpty()) {
-                        List<vu> $$2xx = new ArrayList<>($$1xxx.c().size());
+   public ta a() {
+      ta $$0 = new ta();
+      $$0.a("name", this.a);
+      $$0.a("ip", this.b);
+      if (this.m != null) {
+         $$0.a("icon", Base64.getEncoder().encodeToString(this.m));
+      }
 
-                        for (GameProfile $$3xx : $$1xxx.c()) {
-                           $$2xx.add(vu.b($$3xx.getName()));
-                        }
+      if (this.l == fso.a.a) {
+         $$0.a("acceptTextures", true);
+      } else if (this.l == fso.a.b) {
+         $$0.a("acceptTextures", false);
+      }
 
-                        if ($$1xxx.c().size() < $$1xxx.b()) {
-                           $$2xx.add(vu.a("multiplayer.status.and_more", $$1xxx.b() - $$1xxx.c().size()));
-                        }
+      return $$0;
+   }
 
-                        $$0.i = $$2xx;
-                     } else {
-                        $$0.i = List.of();
-                     }
-                  }, () -> $$0.c = vu.c("multiplayer.status.unknown").a(n.i));
-                  $$1.d().ifPresent($$2xx -> {
-                     if (!Arrays.equals($$2xx.a(), $$0.c())) {
-                        $$0.a(fsm.b($$2xx.a()));
-                        $$1.run();
-                     }
-                  });
-                  this.j = ac.b();
-                  $$6.a(new aic(this.j));
-                  this.h = true;
-               }
-            }
+   public fso.a b() {
+      return this.l;
+   }
 
-            @Override
-            public void a(ahz $$0x) {
-               long $$1 = this.j;
-               long $$2 = ac.b();
-               $$0.f = $$2 - $$1;
-               $$6.a(vu.c("multiplayer.status.finished"));
-               $$2.run();
-            }
+   public void a(fso.a $$0) {
+      this.l = $$0;
+   }
 
-            @Override
-            public void a(vu $$0x) {
-               if (!this.h) {
-                  fso.this.a($$0, $$0);
-                  fso.this.a($$5, $$3, $$0);
-               }
-            }
-
-            @Override
-            public boolean c() {
-               return $$6.i();
-            }
-         };
-
+   public static fso a(ta $$0) {
+      fso $$1 = new fso($$0.l("name"), $$0.l("ip"), fso.c.c);
+      if ($$0.b("icon", 8)) {
          try {
-            $$6.a($$3.a(), $$3.b(), $$7);
-            $$6.a(aii.a);
-         } catch (Throwable var10) {
-            a.error("Failed to ping server {}", $$3, var10);
+            byte[] $$2 = Base64.getDecoder().decode($$0.l("icon"));
+            $$1.a(b($$2));
+         } catch (IllegalArgumentException var3) {
+            j.warn("Malformed base64 server icon", var3);
          }
+      }
+
+      if ($$0.b("acceptTextures", 1)) {
+         if ($$0.q("acceptTextures")) {
+            $$1.a(fso.a.a);
+         } else {
+            $$1.a(fso.a.b);
+         }
+      } else {
+         $$1.a(fso.a.c);
+      }
+
+      return $$1;
+   }
+
+   @Nullable
+   public byte[] c() {
+      return this.m;
+   }
+
+   public void a(@Nullable byte[] $$0) {
+      this.m = $$0;
+   }
+
+   public boolean d() {
+      return this.n == fso.c.a;
+   }
+
+   public boolean e() {
+      return this.n == fso.c.b;
+   }
+
+   public fso.c f() {
+      return this.n;
+   }
+
+   public void a(fso $$0) {
+      this.b = $$0.b;
+      this.a = $$0.a;
+      this.m = $$0.m;
+   }
+
+   public void b(fso $$0) {
+      this.a($$0);
+      this.a($$0.b());
+      this.n = $$0.n;
+   }
+
+   public fso.b g() {
+      return this.o;
+   }
+
+   public void a(fso.b $$0) {
+      this.o = $$0;
+   }
+
+   @Nullable
+   public static byte[] b(@Nullable byte[] $$0) {
+      if ($$0 != null) {
+         try {
+            axa $$1 = axa.a($$0);
+            if ($$1.a() <= 1024 && $$1.b() <= 1024) {
+               return $$0;
+            }
+         } catch (IOException var2) {
+            j.warn("Failed to decode server icon", var2);
+         }
+      }
+
+      return null;
+   }
+
+   public static enum a {
+      a("enabled"),
+      b("disabled"),
+      c("prompt");
+
+      private final vu d;
+
+      private a(String $$0) {
+         this.d = vu.c("addServer.resourcePack." + $$0);
+      }
+
+      public vu a() {
+         return this.d;
       }
    }
 
-   void a(vu $$0, fsm $$1) {
-      a.error("Can't ping {}: {}", $$1.b, $$0.getString());
-      $$1.d = b;
-      $$1.c = vt.a;
+   public static enum b {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 
-   void a(InetSocketAddress $$0, final ftp $$1, final fsm $$2) {
-      ((Bootstrap)((Bootstrap)((Bootstrap)new Bootstrap().group((EventLoopGroup)us.e.get())).handler(new ChannelInitializer<Channel>() {
-         protected void initChannel(Channel $$0) {
-            try {
-               $$0.config().setOption(ChannelOption.TCP_NODELAY, true);
-            } catch (ChannelException var3) {
-            }
-
-            $$0.pipeline().addLast(new ChannelHandler[]{new fsf($$1, ($$1xx, $$2xx, $$3, $$4, $$5) -> {
-               $$2.a(fsm.b.d);
-               $$2.h = vu.b($$2xx);
-               $$2.d = vu.b($$3);
-               $$2.c = fso.a($$4, $$5);
-               $$2.e = new aig.b($$5, $$4, List.of());
-            })});
-         }
-      })).channel(NioSocketChannel.class)).connect($$0.getAddress(), $$0.getPort());
-   }
-
-   public static vu a(int $$0, int $$1) {
-      vu $$2 = vu.b(Integer.toString($$0)).a(n.h);
-      vu $$3 = vu.b(Integer.toString($$1)).a(n.h);
-      return vu.a("multiplayer.status.player_count", $$2, $$3).a(n.i);
-   }
-
-   public void a() {
-      synchronized (this.c) {
-         Iterator<us> $$0 = this.c.iterator();
-
-         while ($$0.hasNext()) {
-            us $$1 = $$0.next();
-            if ($$1.i()) {
-               $$1.b();
-            } else {
-               $$0.remove();
-               $$1.n();
-            }
-         }
-      }
-   }
-
-   public void b() {
-      synchronized (this.c) {
-         Iterator<us> $$0 = this.c.iterator();
-
-         while ($$0.hasNext()) {
-            us $$1 = $$0.next();
-            if ($$1.i()) {
-               $$0.remove();
-               $$1.a(vu.c("multiplayer.status.cancelled"));
-            }
-         }
-      }
+   public static enum c {
+      a,
+      b,
+      c;
    }
 }

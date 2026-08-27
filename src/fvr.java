@@ -1,80 +1,100 @@
+import java.util.function.Consumer;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
-public abstract class fvr extends fve {
-   protected float D;
-   private final Quaternionf a = new Quaternionf();
+public class fvr extends fwg {
+   private static final Vector3f a = new Vector3f(0.5F, 0.5F, 0.5F).normalize();
+   private static final Vector3f b = new Vector3f(-1.0F, -1.0F, 0.0F);
+   private static final float F = 1.0472F;
+   private int G;
 
-   protected fvr(fry $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.D = 0.1F * (this.r.i() * 0.5F + 0.5F) * 2.0F;
-   }
-
-   protected fvr(fry $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.D = 0.1F * (this.r.i() * 0.5F + 0.5F) * 2.0F;
-   }
-
-   public fvr.a p() {
-      return fvr.a.a;
+   fvr(fsa $$0, double $$1, double $$2, double $$3, int $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.D = 0.85F;
+      this.G = $$4;
+      this.t = 30;
+      this.u = 0.0F;
+      this.j = 0.0;
+      this.k = 0.1;
+      this.l = 0.0;
    }
 
    @Override
-   public void a(eud $$0, eyr $$1, float $$2) {
-      epr $$3 = $$1.b();
-      float $$4 = (float)(aww.d((double)$$2, this.d, this.g) - $$3.a());
-      float $$5 = (float)(aww.d((double)$$2, this.e, this.h) - $$3.b());
-      float $$6 = (float)(aww.d((double)$$2, this.f, this.i) - $$3.c());
-      this.p().setRotation(this.a, $$1, $$2);
-      if (this.z != 0.0F) {
-         this.a.rotateZ(aww.i($$2, this.A, this.z));
-      }
+   public float b(float $$0) {
+      return this.D * aww.a(((float)this.s + $$0) / (float)this.t * 0.75F, 0.0F, 1.0F);
+   }
 
-      Vector3f[] $$7 = new Vector3f[]{
+   @Override
+   public void a(euf $$0, eyt $$1, float $$2) {
+      if (this.G <= 0) {
+         this.y = 1.0F - aww.a(((float)this.s + $$2) / (float)this.t, 0.0F, 1.0F);
+         this.a($$0, $$1, $$2, $$0x -> $$0x.mul(new Quaternionf().rotationX(-1.0472F)));
+         this.a($$0, $$1, $$2, $$0x -> $$0x.mul(new Quaternionf().rotationYXZ((float) -Math.PI, 1.0472F, 0.0F)));
+      }
+   }
+
+   private void a(euf $$0, eyt $$1, float $$2, Consumer<Quaternionf> $$3) {
+      ept $$4 = $$1.b();
+      float $$5 = (float)(aww.d((double)$$2, this.d, this.g) - $$4.a());
+      float $$6 = (float)(aww.d((double)$$2, this.e, this.h) - $$4.b());
+      float $$7 = (float)(aww.d((double)$$2, this.f, this.i) - $$4.c());
+      Quaternionf $$8 = new Quaternionf().setAngleAxis(0.0F, a.x(), a.y(), a.z());
+      $$3.accept($$8);
+      $$8.transform(b);
+      Vector3f[] $$9 = new Vector3f[]{
          new Vector3f(-1.0F, -1.0F, 0.0F), new Vector3f(-1.0F, 1.0F, 0.0F), new Vector3f(1.0F, 1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F)
       };
-      float $$8 = this.b($$2);
+      float $$10 = this.b($$2);
 
-      for (int $$9 = 0; $$9 < 4; $$9++) {
-         Vector3f $$10 = $$7[$$9];
-         $$10.rotate(this.a);
-         $$10.mul($$8);
-         $$10.add($$4, $$5, $$6);
+      for (int $$11 = 0; $$11 < 4; $$11++) {
+         Vector3f $$12 = $$9[$$11];
+         $$12.rotate($$8);
+         $$12.mul($$10);
+         $$12.add($$5, $$6, $$7);
       }
 
-      float $$11 = this.c();
-      float $$12 = this.d();
-      float $$13 = this.e();
-      float $$14 = this.f();
-      int $$15 = this.a($$2);
-      $$0.a((double)$$7[0].x(), (double)$$7[0].y(), (double)$$7[0].z()).a($$12, $$14).a(this.v, this.w, this.x, this.y).b($$15).e();
-      $$0.a((double)$$7[1].x(), (double)$$7[1].y(), (double)$$7[1].z()).a($$12, $$13).a(this.v, this.w, this.x, this.y).b($$15).e();
-      $$0.a((double)$$7[2].x(), (double)$$7[2].y(), (double)$$7[2].z()).a($$11, $$13).a(this.v, this.w, this.x, this.y).b($$15).e();
-      $$0.a((double)$$7[3].x(), (double)$$7[3].y(), (double)$$7[3].z()).a($$11, $$14).a(this.v, this.w, this.x, this.y).b($$15).e();
+      int $$13 = this.a($$2);
+      this.a($$0, $$9[0], this.d(), this.f(), $$13);
+      this.a($$0, $$9[1], this.d(), this.e(), $$13);
+      this.a($$0, $$9[2], this.c(), this.e(), $$13);
+      this.a($$0, $$9[3], this.c(), this.f(), $$13);
    }
 
-   public float b(float $$0) {
-      return this.D;
+   private void a(euf $$0, Vector3f $$1, float $$2, float $$3, int $$4) {
+      $$0.a((double)$$1.x(), (double)$$1.y(), (double)$$1.z()).a($$2, $$3).a(this.v, this.w, this.x, this.y).b($$4).e();
    }
 
    @Override
-   public fve d(float $$0) {
-      this.D *= $$0;
-      return super.d($$0);
+   public int a(float $$0) {
+      return 240;
    }
 
-   protected abstract float c();
+   @Override
+   public fvk b() {
+      return fvk.c;
+   }
 
-   protected abstract float d();
+   @Override
+   public void a() {
+      if (this.G > 0) {
+         this.G--;
+      } else {
+         super.a();
+      }
+   }
 
-   protected abstract float e();
+   public static class a implements fvj<ke> {
+      private final fwb a;
 
-   protected abstract float f();
+      public a(fwb $$0) {
+         this.a = $$0;
+      }
 
-   public interface a {
-      fvr.a a = ($$0, $$1, $$2) -> $$0.set($$1.f());
-      fvr.a b = ($$0, $$1, $$2) -> $$0.set(0.0F, $$1.f().y, 0.0F, $$1.f().w);
-
-      void setRotation(Quaternionf var1, eyr var2, float var3);
+      public fvg a(ke $$0, fsa $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fvr $$8 = new fvr($$1, $$2, $$3, $$4, $$0.b());
+         $$8.a(this.a);
+         $$8.e(1.0F);
+         return $$8;
+      }
    }
 }

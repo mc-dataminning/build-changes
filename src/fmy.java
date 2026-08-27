@@ -1,60 +1,12 @@
-import java.util.function.Function;
-
-public abstract class fmy<E extends bow> extends foc<E> {
-   private final boolean a;
-   private final float b;
-   private final float f;
-   private final float g;
-   private final float h;
-   private final float i;
-
-   protected fmy(boolean $$0, float $$1, float $$2) {
-      this($$0, $$1, $$2, 2.0F, 2.0F, 24.0F);
-   }
-
-   protected fmy(boolean $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this(fxy::e, $$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   protected fmy(Function<ajh, fxy> $$0, boolean $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
+public abstract class fmy<T extends cga> extends fos<T> {
+   protected fmy(frf $$0) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
    }
 
-   protected fmy() {
-      this(false, 5.0F, 2.0F);
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      fnc.a(this.o, this.n, this.a($$0), this.c, $$3);
    }
 
-   @Override
-   public void a(etz $$0, eud $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      if (this.e) {
-         $$0.a();
-         if (this.a) {
-            float $$8 = 1.5F / this.g;
-            $$0.b($$8, $$8, $$8);
-         }
-
-         $$0.a(0.0F, this.b / 16.0F, this.f / 16.0F);
-         this.a().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-         $$0.b();
-         $$0.a();
-         float $$9 = 1.0F / this.h;
-         $$0.b($$9, $$9, $$9);
-         $$0.a(0.0F, this.i / 16.0F, 0.0F);
-         this.b().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-         $$0.b();
-      } else {
-         this.a().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-         this.b().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-      }
-   }
-
-   protected abstract Iterable<frd> a();
-
-   protected abstract Iterable<frd> b();
+   public abstract boolean a(T var1);
 }

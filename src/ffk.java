@@ -1,45 +1,32 @@
-import it.unimi.dsi.fastutil.ints.IntComparator;
+public interface ffk {
+   ffm a();
 
-public enum ffk {
-   a,
-   b,
-   c,
-   d;
+   public static record a(ffm a) implements ffk {
+      @Override
+      public ffm a() {
+         return this.a.a() == ffl.b ? this.a : ffm.b;
+      }
 
-   private final IntComparator e = ($$0, $$1) -> $$0 == $$1 ? 0 : (this.b($$0, $$1) ? -1 : 1);
-
-   public ffj a() {
-      return switch (this) {
-         case a, b -> ffj.b;
-         case c, d -> ffj.a;
-      };
+      public ffm b() {
+         return this.a;
+      }
    }
 
-   public ffk b() {
-      return switch (this) {
-         case a -> b;
-         case b -> a;
-         case c -> d;
-         case d -> c;
-      };
+   public static class b implements ffk {
+      @Override
+      public ffm a() {
+         return ffm.b;
+      }
    }
 
-   public boolean c() {
-      return switch (this) {
-         case a, c -> false;
-         case b, d -> true;
-      };
-   }
+   public static record c(boolean a) implements ffk {
+      @Override
+      public ffm a() {
+         return this.a ? ffm.b : ffm.a;
+      }
 
-   public boolean a(int $$0, int $$1) {
-      return this.c() ? $$0 > $$1 : $$1 > $$0;
-   }
-
-   public boolean b(int $$0, int $$1) {
-      return this.c() ? $$0 < $$1 : $$1 < $$0;
-   }
-
-   public IntComparator d() {
-      return this.e;
+      public boolean b() {
+         return this.a;
+      }
    }
 }

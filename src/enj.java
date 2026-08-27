@@ -1,47 +1,41 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-public record enj(il<cuu> b, List<Float> c) implements ent {
-   public static final Codec<enj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ki.f.r().fieldOf("enchantment").forGetter(enj::c), Codec.FLOAT.listOf().fieldOf("chances").forGetter(enj::d)).apply($$0, enj::new)
-   );
+public class enj extends enm {
+   public static final Codec<enj> a = a(enj::new);
+   public static final Codec<enj> b = b(enj::new);
 
-   @Override
-   public enu b() {
-      return env.l;
+   enj(List<env> $$0) {
+      super($$0, ac.a($$0));
+   }
+
+   public static enj a(List<env> $$0) {
+      return new enj(List.copyOf($$0));
    }
 
    @Override
-   public Set<enc<?>> a() {
-      return ImmutableSet.of(enf.i);
+   public enw b() {
+      return enx.d;
    }
 
-   public boolean a(eku $$0) {
-      cqk $$1 = $$0.c(enf.i);
-      int $$2 = $$1 != null ? cuv.a(this.b.a(), $$1) : 0;
-      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
-      return $$0.b().i() < $$3;
+   public static enj.a a(env.a... $$0) {
+      return new enj.a($$0);
    }
 
-   public static ent.a a(cuu $$0, float... $$1) {
-      List<Float> $$2 = new ArrayList<>($$1.length);
-
-      for (float $$3 : $$1) {
-         $$2.add($$3);
+   public static class a extends enm.a {
+      public a(env.a... $$0) {
+         super($$0);
       }
 
-      return () -> new enj($$0.k(), $$2);
-   }
+      @Override
+      public enj.a and(env.a $$0) {
+         this.a($$0);
+         return this;
+      }
 
-   public il<cuu> c() {
-      return this.b;
-   }
-
-   public List<Float> d() {
-      return this.c;
+      @Override
+      protected env a(List<env> $$0) {
+         return new enj($$0);
+      }
    }
 }

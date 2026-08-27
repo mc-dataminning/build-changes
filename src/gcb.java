@@ -1,18 +1,19 @@
-public class gcb extends gee<cbe, fnh<cbe>> {
-   private static final ajh a = new ajh("textures/entity/bee/bee_angry.png");
-   private static final ajh i = new ajh("textures/entity/bee/bee_angry_nectar.png");
-   private static final ajh j = new ajh("textures/entity/bee/bee.png");
-   private static final ajh k = new ajh("textures/entity/bee/bee_nectar.png");
+import com.google.common.collect.Maps;
+import java.util.Locale;
+import java.util.Map;
 
-   public gcb(gcy.a $$0) {
-      super($$0, new fnh<>($$0.a(frc.k)), 0.4F);
+public class gcb extends geh<cco, fnh<cco>> {
+   private static final Map<cco.d, ajh> a = ac.a(Maps.newHashMap(), $$0 -> {
+      for (cco.d $$1 : cco.d.values()) {
+         $$0.put($$1, new ajh(String.format(Locale.ROOT, "textures/entity/axolotl/axolotl_%s.png", $$1.b())));
+      }
+   });
+
+   public gcb(gdb.a $$0) {
+      super($$0, new fnh<>($$0.a(fre.f)), 0.5F);
    }
 
-   public ajh a(cbe $$0) {
-      if ($$0.Y_()) {
-         return $$0.gx() ? i : a;
-      } else {
-         return $$0.gx() ? k : j;
-      }
+   public ajh a(cco $$0) {
+      return a.get($$0.gn());
    }
 }

@@ -1,101 +1,61 @@
-public class cfp extends cfy {
-   private static final int b = 2400;
-   private int c;
+import java.util.List;
 
-   public cfp(bpc<? extends cfp> $$0, cwz $$1) {
+public class cfp extends cfw {
+   public static final float b = bpd.E.k() / bpd.Z.k();
+   private static final int e = 1200;
+   private static final int bX = 50;
+   private static final int bY = 6000;
+   private static final int bZ = 2;
+   private static final int ca = 1200;
+
+   public cfp(bpd<? extends cfp> $$0, cxb $$1) {
       super($$0, $$1);
-      this.bM = 3;
+      this.fS();
+      if (this.d != null) {
+         this.d.c(400);
+      }
+   }
+
+   public static bqv.a r() {
+      return cfw.gn().a(bqw.r, 0.3F).a(bqw.c, 8.0).a(bqw.q, 80.0);
    }
 
    @Override
-   protected void z() {
-      this.bR.a(1, new bwf(this));
-      this.bR.a(1, new bwa(this, this.dM()));
-      this.bR.a(2, new bwv(this, 1.0, false));
-      this.bR.a(3, new bxy(this, 1.0));
-      this.bR.a(7, new bwt(this, cis.class, 8.0F));
-      this.bR.a(8, new bxg(this));
-      this.bS.a(1, new byd(this).a());
-      this.bS.a(2, new bye<>(this, cis.class, true));
-   }
-
-   public static bqu.a r() {
-      return cfy.gt().a(bqv.q, 8.0).a(bqv.r, 0.25).a(bqv.c, 2.0);
-   }
-
-   @Override
-   protected bow.b aZ() {
-      return bow.b.c;
+   public int s() {
+      return 60;
    }
 
    @Override
    protected atx v() {
-      return aty.ie;
+      return this.bf() ? aty.hH : aty.hI;
    }
 
    @Override
-   protected atx d(bnv $$0) {
-      return aty.ig;
+   protected atx d(bnw $$0) {
+      return this.bf() ? aty.hN : aty.hO;
    }
 
    @Override
    protected atx n_() {
-      return aty.if;
+      return this.bf() ? aty.hK : aty.hL;
    }
 
    @Override
-   protected void b(ib $$0, dmz $$1) {
-      this.a(aty.ih, 0.15F, 1.0F);
+   protected atx y() {
+      return aty.hM;
    }
 
    @Override
-   public void a(ta $$0) {
-      super.a($$0);
-      this.c = $$0.h("Lifetime");
-   }
-
-   @Override
-   public void b(ta $$0) {
-      super.b($$0);
-      $$0.a("Lifetime", this.c);
-   }
-
-   @Override
-   public void l() {
-      this.aX = this.dC();
-      super.l();
-   }
-
-   @Override
-   public void o(float $$0) {
-      this.r($$0);
-      super.o($$0);
-   }
-
-   @Override
-   public void m_() {
-      super.m_();
-      if (this.dM().B) {
-         for (int $$0 = 0; $$0 < 2; $$0++) {
-            this.dM().a(kc.aa, this.d(0.5), this.du(), this.g(0.5), (this.ag.j() - 0.5) * 2.0, -this.ag.j(), (this.ag.j() - 0.5) * 2.0);
-         }
-      } else {
-         if (!this.fU()) {
-            this.c++;
-         }
-
-         if (this.c >= 2400) {
-            this.am();
-         }
+   protected void Y() {
+      super.Y();
+      if ((this.ah + this.aj()) % 1200 == 0) {
+         bok $$0 = new bok(bom.d, 6000, 2);
+         List<apg> $$1 = bol.a((apf)this.dM(), this, this.dk(), 50.0, $$0, 1200);
+         $$1.forEach($$0x -> $$0x.d.b(new abt(abt.l, this.aU() ? 0.0F : 1.0F)));
       }
-   }
 
-   public static boolean b(bpc<cfp> $$0, cxa $$1, bps $$2, ib $$3, axd $$4) {
-      if (c($$0, $$1, $$2, $$3, $$4)) {
-         cis $$5 = $$1.a((double)$$3.u() + 0.5, (double)$$3.v() + 0.5, (double)$$3.w() + 0.5, 5.0, true);
-         return $$5 == null;
-      } else {
-         return false;
+      if (!this.fZ()) {
+         this.a(this.dm(), 16);
       }
    }
 }

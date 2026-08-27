@@ -51,9 +51,9 @@ public class xc implements vv {
       return this.f;
    }
 
-   private equ a(du $$0) throws CommandSyntaxException {
+   private eqw a(du $$0) throws CommandSyntaxException {
       if (this.e != null) {
-         List<? extends bow> $$1 = this.e.b($$0);
+         List<? extends box> $$1 = this.e.b($$0);
          if (!$$1.isEmpty()) {
             if ($$1.size() != 1) {
                throw eh.a.create();
@@ -63,16 +63,16 @@ public class xc implements vv {
          }
       }
 
-      return equ.d(this.d);
+      return eqw.d(this.d);
    }
 
-   private wi a(equ $$0, du $$1) {
+   private wi a(eqw $$0, du $$1) {
       MinecraftServer $$2 = $$1.l();
       if ($$2 != null) {
-         eqv $$3 = $$2.aK();
-         eqn $$4 = $$3.a(this.f);
+         eqx $$3 = $$2.aK();
+         eqp $$4 = $$3.a(this.f);
          if ($$4 != null) {
-            eqr $$5 = $$3.d($$0, $$4);
+            eqt $$5 = $$3.d($$0, $$4);
             if ($$5 != null) {
                return $$5.a($$4.a(xn.b));
             }
@@ -83,12 +83,12 @@ public class xc implements vv {
    }
 
    @Override
-   public wi a(@Nullable du $$0, @Nullable bow $$1, int $$2) throws CommandSyntaxException {
+   public wi a(@Nullable du $$0, @Nullable box $$1, int $$2) throws CommandSyntaxException {
       if ($$0 == null) {
          return vu.i();
       } else {
-         equ $$3 = this.a($$0);
-         equ $$4 = (equ)($$1 != null && $$3.equals(equ.cy) ? $$1 : $$3);
+         eqw $$3 = this.a($$0);
+         eqw $$4 = (eqw)($$1 != null && $$3.equals(eqw.cy) ? $$1 : $$3);
          return this.a($$4, $$0);
       }
    }

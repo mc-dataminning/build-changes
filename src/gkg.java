@@ -1,74 +1,31 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.util.ArrayList;
+import com.google.common.collect.Lists;
+import com.ibm.icu.lang.UCharacter;
+import com.ibm.icu.text.ArabicShaping;
+import com.ibm.icu.text.Bidi;
+import com.ibm.icu.text.BidiRun;
 import java.util.List;
-import java.util.Map;
-import java.util.SortedMap;
-import java.util.TreeMap;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class gkg implements asp {
-   private static final Logger a = LogUtils.getLogger();
-   private static final gkf b = new gkf("US", "English", false);
-   private Map<String, gkf> c = ImmutableMap.of("en_us", b);
-   private String d;
+public class gkg {
+   public static awi a(vz $$0, boolean $$1) {
+      ws $$2 = ws.a($$0, UCharacter::getMirror, gkg::a);
+      Bidi $$3 = new Bidi($$2.a(), $$1 ? 127 : 126);
+      $$3.setReorderingMode(0);
+      List<awi> $$4 = Lists.newArrayList();
+      int $$5 = $$3.countRuns();
 
-   public gkg(String $$0) {
-      this.d = $$0;
-   }
-
-   private static Map<String, gkf> a(Stream<ara> $$0) {
-      Map<String, gkf> $$1 = Maps.newHashMap();
-      $$0.forEach($$1x -> {
-         try {
-            gks $$2 = $$1x.a(gks.c);
-            if ($$2 != null) {
-               $$2.a().forEach($$1::putIfAbsent);
-            }
-         } catch (IOException | RuntimeException var3) {
-            a.warn("Unable to parse language metadata section of resourcepack: {}", $$1x.b(), var3);
-         }
-      });
-      return ImmutableMap.copyOf($$1);
-   }
-
-   @Override
-   public void a(aso $$0) {
-      this.c = a($$0.b());
-      List<String> $$1 = new ArrayList<>(2);
-      boolean $$2 = b.d();
-      $$1.add("en_us");
-      if (!this.d.equals("en_us")) {
-         gkf $$3 = this.c.get(this.d);
-         if ($$3 != null) {
-            $$1.add(this.d);
-            $$2 = $$3.d();
-         }
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         BidiRun $$7 = $$3.getVisualRun($$6);
+         $$4.addAll($$2.a($$7.getStart(), $$7.getLength(), $$7.isOddRun()));
       }
 
-      gkc $$4 = gkc.a($$0, $$1, $$2);
-      gke.a($$4);
-      sv.a($$4);
+      return awi.composite($$4);
    }
 
-   public void a(String $$0) {
-      this.d = $$0;
-   }
-
-   public String a() {
-      return this.d;
-   }
-
-   public SortedMap<String, gkf> b() {
-      return new TreeMap<>(this.c);
-   }
-
-   @Nullable
-   public gkf b(String $$0) {
-      return this.c.get($$0);
+   private static String a(String $$0) {
+      try {
+         return new ArabicShaping(8).shape($$0);
+      } catch (Exception var2) {
+         return $$0;
+      }
    }
 }

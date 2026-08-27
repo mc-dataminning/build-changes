@@ -1,3 +1,7 @@
+import java.util.List;
+
 public interface fmn {
-   void a(fmk var1);
+   List<fmo> a();
+
+   vu b();
 }

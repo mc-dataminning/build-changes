@@ -1,65 +1,106 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class ddr extends daa implements dha {
-   public static final MapCodec<ddr> a = b(ddr::new);
-   private static final dnq c = dnp.C;
-   protected static final eqk b = daa.a(2.0, 10.0, 2.0, 14.0, 16.0, 14.0);
+public abstract class ddr extends ddp implements daf {
+   public static final dob e = dnr.ax;
+   public static final int f = 25;
+   private final double c;
 
-   @Override
-   public MapCodec<ddr> a() {
-      return a;
-   }
-
-   protected ddr(dmy.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(c, Boolean.valueOf(false)));
+   protected ddr(dna.d $$0, ih $$1, eqm $$2, boolean $$3, double $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.c = $$4;
+      this.k(this.E.b().a(e, Integer.valueOf(0)));
    }
 
    @Override
-   protected void a(dna.a<daa, dmz> $$0) {
-      $$0.a(c);
+   protected abstract MapCodec<? extends ddr> a();
+
+   @Override
+   public dnb a(cxc $$0) {
+      return this.o().a(e, Integer.valueOf($$0.E_().a(25)));
    }
 
    @Override
-   protected ein c_(dmz $$0) {
-      return $$0.c(c) ? eio.c.a(false) : super.c_($$0);
+   protected boolean e_(dnb $$0) {
+      return $$0.c(e) < 25;
    }
 
-   @Nullable
    @Override
-   public dmz a(css $$0) {
-      dmz $$1 = super.a($$0);
-      if ($$1 != null) {
-         ein $$2 = $$0.q().b_($$0.a());
-         return $$1.a(c, Boolean.valueOf($$2.a() == eio.c));
-      } else {
-         return null;
+   protected void b(dnb $$0, apf $$1, ib $$2, axd $$3) {
+      if ($$0.c(e) < 25 && $$3.j() < this.c) {
+         ib $$4 = $$2.a(this.a);
+         if (this.g($$1.a_($$4))) {
+            $$1.b($$4, this.a($$0, $$1.z));
+         }
       }
    }
 
-   @Override
-   protected boolean a(dmz $$0, cxc $$1, ib $$2) {
-      ib $$3 = $$2.c();
-      dmz $$4 = $$1.a_($$3);
-      return $$4.d($$1, $$3, ih.a);
+   protected dnb a(dnb $$0, axd $$1) {
+      return $$0.a(e);
+   }
+
+   public dnb n(dnb $$0) {
+      return $$0.a(e, Integer.valueOf(25));
+   }
+
+   public boolean o(dnb $$0) {
+      return $$0.c(e) == 25;
+   }
+
+   protected dnb a(dnb $$0, dnb $$1) {
+      return $$1;
    }
 
    @Override
-   protected eqk a(dmz $$0, cwf $$1, ib $$2, epw $$3) {
-      return b;
-   }
+   protected dnb a(dnb $$0, ih $$1, dnb $$2, cxc $$3, ib $$4, ib $$5) {
+      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+      }
 
-   @Override
-   protected dmz a(dmz $$0, ih $$1, dmz $$2, cxa $$3, ib $$4, ib $$5) {
-      if ($$1 == ih.b && !this.a($$0, $$3, $$4)) {
-         return dac.a.o();
-      } else {
-         if ($$0.c(c)) {
-            $$3.a($$4, eio.c, eio.c.a($$3));
+      if ($$1 != this.a || !$$2.a(this) && !$$2.a(this.b())) {
+         if (this.b) {
+            $$3.a($$4, eiq.c, eiq.c.a($$3));
          }
 
          return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      } else {
+         return this.a($$0, this.b().o());
       }
+   }
+
+   @Override
+   protected void a(dnc.a<dac, dnb> $$0) {
+      $$0.a(e);
+   }
+
+   @Override
+   public boolean b(cxe $$0, ib $$1, dnb $$2) {
+      return this.g($$0.a_($$1.a(this.a)));
+   }
+
+   @Override
+   public boolean a(cxb $$0, axd $$1, ib $$2, dnb $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(apf $$0, axd $$1, ib $$2, dnb $$3) {
+      ib $$4 = $$2.a(this.a);
+      int $$5 = Math.min($$3.c(e) + 1, 25);
+      int $$6 = this.a($$1);
+
+      for (int $$7 = 0; $$7 < $$6 && this.g($$0.a_($$4)); $$7++) {
+         $$0.b($$4, $$3.a(e, Integer.valueOf($$5)));
+         $$4 = $$4.a(this.a);
+         $$5 = Math.min($$5 + 1, 25);
+      }
+   }
+
+   protected abstract int a(axd var1);
+
+   protected abstract boolean g(dnb var1);
+
+   @Override
+   protected ddr c() {
+      return this;
    }
 }

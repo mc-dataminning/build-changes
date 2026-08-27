@@ -1,41 +1,36 @@
-public class gai extends gaj<dlv> {
-   private static final ajh c = new ajh("textures/entity/end_gateway_beam.png");
+public class gai implements fzs<dlv> {
+   private final gcz a;
 
-   public gai(fzr.a $$0) {
-      super($$0);
+   public gai(fzt.a $$0) {
+      this.a = $$0.c();
    }
 
-   public void a(dlv $$0, float $$1, etz $$2, fxq $$3, int $$4, int $$5) {
-      if ($$0.b() || $$0.c()) {
-         float $$6 = $$0.b() ? $$0.a($$1) : $$0.b($$1);
-         double $$7 = $$0.b() ? (double)$$0.i().ak() : 50.0;
-         $$6 = aww.a($$6 * (float) Math.PI);
-         int $$8 = aww.a((double)$$6 * $$7);
-         float[] $$9 = $$0.b() ? cpb.c.d() : cpb.k.d();
-         long $$10 = $$0.i().X();
-         fzm.a($$2, $$3, c, $$1, $$6, $$10, -$$8, $$8 * 2, $$9, 0.15F, 0.175F);
+   public void a(dlv $$0, float $$1, eub $$2, fxs $$3, int $$4, int $$5) {
+      cxb $$6 = $$0.i();
+      if ($$6 != null) {
+         cwd $$7 = $$0.c();
+         box $$8 = $$7.b($$6, $$0.aC_());
+         if ($$8 != null) {
+            a($$1, $$2, $$3, $$4, $$8, this.a, $$7.b(), $$7.a());
+         }
+      }
+   }
+
+   public static void a(float $$0, eub $$1, fxs $$2, int $$3, box $$4, gcz $$5, double $$6, double $$7) {
+      $$1.a();
+      $$1.a(0.5F, 0.0F, 0.5F);
+      float $$8 = 0.53125F;
+      float $$9 = Math.max($$4.dg(), $$4.dh());
+      if ((double)$$9 > 1.0) {
+         $$8 /= $$9;
       }
 
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected float b() {
-      return 1.0F;
-   }
-
-   @Override
-   protected float c() {
-      return 0.0F;
-   }
-
-   @Override
-   protected fxy d() {
-      return fxy.v();
-   }
-
-   @Override
-   public int aR_() {
-      return 256;
+      $$1.a(0.0F, 0.4F, 0.0F);
+      $$1.a(a.d.rotationDegrees((float)aww.d((double)$$0, $$6, $$7) * 10.0F));
+      $$1.a(0.0F, -0.2F, 0.0F);
+      $$1.a(a.b.rotationDegrees(-30.0F));
+      $$1.b($$8, $$8, $$8);
+      $$5.a($$4, 0.0, 0.0, 0.0, 0.0F, $$0, $$1, $$2, $$3);
+      $$1.b();
    }
 }

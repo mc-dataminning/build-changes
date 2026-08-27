@@ -1,105 +1,108 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
-public interface dsf {
-   Codec<dsf> b = dsg.b;
-   Codec<il<dsf>> c = ajd.a(kj.ay, b);
-   Codec<dsf> d = c.xmap(dsg.j::new, $$0 -> (il)($$0 instanceof dsg.j $$1 ? $$1.j() : new il.a<>($$0)));
+public class dsf extends doy {
+   public static final Codec<dsf> c = RecordCodecBuilder.create($$0 -> $$0.group(ajf.d(cyh.b)).apply($$0, $$0.stable(dsf::new)));
+   private static final int h = 2;
+   private static final List<dnb> i = StreamSupport.stream(ki.e.spliterator(), false).flatMap($$0 -> $$0.n().a().stream()).collect(Collectors.toList());
+   private static final int j = aww.f(aww.c((float)i.size()));
+   private static final int k = aww.f((float)i.size() / (float)j);
+   protected static final dnb d = dae.a.o();
+   protected static final dnb e = dae.hW.o();
+   public static final int f = 70;
+   public static final int g = 60;
 
-   double a(dsf.b var1);
-
-   void a(double[] var1, dsf.a var2);
-
-   dsf a(dsf.f var1);
-
-   double a();
-
-   double b();
-
-   awq<? extends dsf> c();
-
-   default dsf a(double $$0, double $$1) {
-      return new dsg.g(this, $$0, $$1);
+   public dsf(il.c<cya> $$0) {
+      super(new cyl($$0));
    }
 
-   default dsf d() {
-      return dsg.a(this, dsg.k.a.a);
+   @Override
+   protected Codec<? extends doy> a() {
+      return c;
    }
 
-   default dsf e() {
-      return dsg.a(this, dsg.k.a.b);
+   @Override
+   public void a(apm $$0, cxu $$1, dtc $$2, dox $$3) {
    }
 
-   default dsf f() {
-      return dsg.a(this, dsg.k.a.c);
-   }
+   @Override
+   public void a(cxw $$0, dox $$1, cxu $$2) {
+      ib.a $$3 = new ib.a();
+      cwi $$4 = $$1.f();
+      int $$5 = $$4.e;
+      int $$6 = $$4.f;
 
-   default dsf g() {
-      return dsg.a(this, dsg.k.a.d);
-   }
-
-   default dsf h() {
-      return dsg.a(this, dsg.k.a.e);
-   }
-
-   default dsf i() {
-      return dsg.a(this, dsg.k.a.f);
-   }
-
-   public interface a {
-      dsf.b a(int var1);
-
-      void a(double[] var1, dsf var2);
-   }
-
-   public interface b {
-      int a();
-
-      int b();
-
-      int c();
-
-      default dto d() {
-         return dto.a();
+      for (int $$7 = 0; $$7 < 16; $$7++) {
+         for (int $$8 = 0; $$8 < 16; $$8++) {
+            int $$9 = je.a($$5, $$7);
+            int $$10 = je.a($$6, $$8);
+            $$0.a($$3.d($$9, 60, $$10), e, 2);
+            dnb $$11 = a($$9, $$10);
+            $$0.a($$3.d($$9, 70, $$10), $$11, 2);
+         }
       }
    }
 
-   public static record c(il<ehq.a> b, @Nullable ehq c) {
-      public static final Codec<dsf.c> a = ehq.a.b.xmap($$0 -> new dsf.c($$0, null), dsf.c::b);
-
-      public c(il<ehq.a> $$0) {
-         this($$0, null);
-      }
-
-      public double a(double $$0, double $$1, double $$2) {
-         return this.c == null ? 0.0 : this.c.a($$0, $$1, $$2);
-      }
-
-      public double a() {
-         return this.c == null ? 2.0 : this.c.a();
-      }
+   @Override
+   public CompletableFuture<dox> a(Executor $$0, dtq $$1, dtc $$2, cxu $$3, dox $$4) {
+      return CompletableFuture.completedFuture($$4);
    }
 
-   public interface d extends dsf {
-      @Override
-      default void a(double[] $$0, dsf.a $$1) {
-         $$1.a($$0, this);
-      }
-
-      @Override
-      default dsf a(dsf.f $$0) {
-         return $$0.apply(this);
-      }
+   @Override
+   public int a(int $$0, int $$1, dso.a $$2, cxd $$3, dtc $$4) {
+      return 0;
    }
 
-   public static record e(int a, int b, int c) implements dsf.b {
+   @Override
+   public cxn a(int $$0, int $$1, cxd $$2, dtc $$3) {
+      return new cxn(0, new dnb[0]);
    }
 
-   public interface f {
-      dsf apply(dsf var1);
+   @Override
+   public void a(List<String> $$0, dtc $$1, ib $$2) {
+   }
 
-      default dsf.c a(dsf.c $$0) {
-         return $$0;
+   public static dnb a(int $$0, int $$1) {
+      dnb $$2 = d;
+      if ($$0 > 0 && $$1 > 0 && $$0 % 2 != 0 && $$1 % 2 != 0) {
+         $$0 /= 2;
+         $$1 /= 2;
+         if ($$0 <= j && $$1 <= k) {
+            int $$3 = aww.a($$0 * j + $$1);
+            if ($$3 < i.size()) {
+               $$2 = i.get($$3);
+            }
+         }
       }
+
+      return $$2;
+   }
+
+   @Override
+   public void a(apm $$0, long $$1, dtc $$2, cyc $$3, cxu $$4, dox $$5, dsk.a $$6) {
+   }
+
+   @Override
+   public void a(apm $$0) {
+   }
+
+   @Override
+   public int f() {
+      return 0;
+   }
+
+   @Override
+   public int d() {
+      return 384;
+   }
+
+   @Override
+   public int e() {
+      return 63;
    }
 }

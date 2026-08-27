@@ -21,7 +21,7 @@ public class amy {
    }
 
    private static int a(du $$0, Collection<apg> $$1, ib $$2, float $$3) {
-      ajg<cwz> $$4 = $$0.e().ad();
+      ajg<cxb> $$4 = $$0.e().ad();
 
       for (apg $$5 : $$1) {
          $$5.a($$4, $$2, $$3, true, false);

@@ -27,7 +27,7 @@ public class akv {
                                              (du)$$0x.getSource(),
                                              eh.a($$0x, "target"),
                                              FloatArgumentType.getFloat($$0x, "amount"),
-                                             new bnv(et.a($$0x, "damageType", kj.r))
+                                             new bnw(et.a($$0x, "damageType", kj.r))
                                           )
                                     ))
                                  .then(
@@ -39,7 +39,7 @@ public class akv {
                                                       (du)$$0x.getSource(),
                                                       eh.a($$0x, "target"),
                                                       FloatArgumentType.getFloat($$0x, "amount"),
-                                                      new bnv(et.a($$0x, "damageType", kj.r), fv.a($$0x, "location"))
+                                                      new bnw(et.a($$0x, "damageType", kj.r), fv.a($$0x, "location"))
                                                    )
                                              )
                                        )
@@ -53,7 +53,7 @@ public class akv {
                                                       (du)$$0x.getSource(),
                                                       eh.a($$0x, "target"),
                                                       FloatArgumentType.getFloat($$0x, "amount"),
-                                                      new bnv(et.a($$0x, "damageType", kj.r), eh.a($$0x, "entity"))
+                                                      new bnw(et.a($$0x, "damageType", kj.r), eh.a($$0x, "entity"))
                                                    )
                                              ))
                                           .then(
@@ -65,7 +65,7 @@ public class akv {
                                                                (du)$$0x.getSource(),
                                                                eh.a($$0x, "target"),
                                                                FloatArgumentType.getFloat($$0x, "amount"),
-                                                               new bnv(et.a($$0x, "damageType", kj.r), eh.a($$0x, "entity"), eh.a($$0x, "cause"))
+                                                               new bnw(et.a($$0x, "damageType", kj.r), eh.a($$0x, "entity"), eh.a($$0x, "cause"))
                                                             )
                                                       )
                                                 )
@@ -78,7 +78,7 @@ public class akv {
       );
    }
 
-   private static int a(du $$0, bow $$1, float $$2, bnv $$3) throws CommandSyntaxException {
+   private static int a(du $$0, box $$1, float $$2, bnw $$3) throws CommandSyntaxException {
       if ($$1.a($$3, $$2)) {
          $$0.a(() -> vu.a("commands.damage.success", $$2, $$1.O_()), true);
          return 1;

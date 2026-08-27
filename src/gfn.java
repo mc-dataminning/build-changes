@@ -1,34 +1,23 @@
-public class gfn extends gcx<cfe> {
-   private final fyk a;
+public class gfn extends gda<cjz> {
+   public static final ajh a = new ajh("textures/entity/trident.png");
+   private final fqk f;
 
-   public gfn(gcy.a $$0) {
+   public gfn(gdb.a $$0) {
       super($$0);
-      this.d = 0.5F;
-      this.a = $$0.c();
+      this.f = new fqk($$0.a(fre.bI));
    }
 
-   public void a(cfe $$0, float $$1, float $$2, etz $$3, fxq $$4, int $$5) {
+   public void a(cjz $$0, float $$1, float $$2, eub $$3, fxs $$4, int $$5) {
       $$3.a();
-      $$3.a(0.0F, 0.5F, 0.0F);
-      int $$6 = $$0.r();
-      if ((float)$$6 - $$2 + 1.0F < 10.0F) {
-         float $$7 = 1.0F - ((float)$$6 - $$2 + 1.0F) / 10.0F;
-         $$7 = aww.a($$7, 0.0F, 1.0F);
-         $$7 *= $$7;
-         $$7 *= $$7;
-         float $$8 = 1.0F + $$7 * 0.3F;
-         $$3.b($$8, $$8, $$8);
-      }
-
-      $$3.a(a.d.rotationDegrees(-90.0F));
-      $$3.a(-0.5F, -0.5F, 0.5F);
-      $$3.a(a.d.rotationDegrees(90.0F));
-      gfm.a(this.a, $$0.s(), $$3, $$4, $$5, $$6 / 5 % 2 == 0);
+      $$3.a(a.d.rotationDegrees(aww.i($$2, $$0.N, $$0.dC()) - 90.0F));
+      $$3.a(a.f.rotationDegrees(aww.i($$2, $$0.O, $$0.dE()) + 90.0F));
+      euf $$6 = gdz.c($$4, this.f.a(this.a($$0)), false, $$0.G());
+      this.f.a($$3, $$6, $$5, git.d, 1.0F, 1.0F, 1.0F, 1.0F);
       $$3.b();
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public ajh a(cfe $$0) {
-      return giy.e;
+   public ajh a(cjz $$0) {
+      return a;
    }
 }

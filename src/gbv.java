@@ -1,16 +1,13 @@
-public class gbv extends gee<cch, fmz> {
-   private static final ajh a = new ajh("textures/entity/allay/allay.png");
+public abstract class gbv<T extends cdg, M extends fop<T>> extends geh<T, M> {
+   private final float a;
 
-   public gbv(gcy.a $$0) {
-      super($$0, new fmz($$0.a(frc.a)), 0.4F);
-      this.a(new ghc<>(this, $$0.d()));
+   public gbv(gdb.a $$0, M $$1, float $$2) {
+      super($$0, $$1, 0.75F);
+      this.a = $$2;
    }
 
-   public ajh a(cch $$0) {
-      return a;
-   }
-
-   protected int a(cch $$0, ib $$1) {
-      return 15;
+   protected void a(T $$0, eub $$1, float $$2) {
+      $$1.b(this.a, this.a, this.a);
+      super.a($$0, $$1, $$2);
    }
 }

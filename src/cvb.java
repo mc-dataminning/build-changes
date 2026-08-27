@@ -1,11 +1,11 @@
-public class cvb extends cuu {
-   protected cvb(cuu.a $$0, bpd... $$1) {
-      super($$0, auv.bg, $$1);
+public class cvb extends cuw {
+   protected cvb(cuw.a $$0, avd<cqh> $$1, bpe... $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
    public int a(int $$0) {
-      return 5 + 20 * ($$0 - 1);
+      return 15 + ($$0 - 1) * 9;
    }
 
    @Override
@@ -15,6 +15,6 @@ public class cvb extends cuu {
 
    @Override
    public int a() {
-      return 2;
+      return 3;
    }
 }

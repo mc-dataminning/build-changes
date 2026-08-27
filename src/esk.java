@@ -1,94 +1,140 @@
 import com.google.common.collect.ImmutableList;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
 import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.Objects;
 
-public class esk {
-   private final List<ConcurrentLinkedQueue<esj>> a = ImmutableList.of(
-      new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue()
-   );
-   private volatile boolean b;
-   private volatile int c;
-   private volatile boolean d;
-   private volatile int e;
-   private volatile int f;
+public class esk extends esn {
+   public static final int a = 854;
+   public static final int b = 480;
+   static final esk.b l = new esk.b(854, 480);
 
-   public esk() {
-      this.c = this.e = this.f + 1;
-   }
-
-   public boolean a() {
-      return !this.b && this.c == this.e;
-   }
-
-   public boolean b() {
-      if (this.b) {
-         throw new RuntimeException("ALREADY RECORDING !!!");
-      } else if (this.a()) {
-         this.c = (this.e + 1) % this.a.size();
-         this.b = true;
-         return true;
+   public esk(int $$0, int $$1) {
+      super(true);
+      RenderSystem.assertOnRenderThreadOrInit();
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> this.b($$0, $$1));
       } else {
-         return false;
+         this.b($$0, $$1);
       }
    }
 
-   public void a(esj $$0) {
-      if (!this.b) {
-         throw new RuntimeException("NOT RECORDING !!!");
-      } else {
-         ConcurrentLinkedQueue<esj> $$1 = this.i();
-         $$1.add($$0);
+   private void b(int $$0, int $$1) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      esk.b $$2 = this.c($$0, $$1);
+      this.h = GlStateManager.glGenFramebuffers();
+      GlStateManager._glBindFramebuffer(36160, this.h);
+      GlStateManager._bindTexture(this.i);
+      GlStateManager._texParameter(3553, 10241, 9728);
+      GlStateManager._texParameter(3553, 10240, 9728);
+      GlStateManager._texParameter(3553, 10242, 33071);
+      GlStateManager._texParameter(3553, 10243, 33071);
+      GlStateManager._glFramebufferTexture2D(36160, 36064, 3553, this.i, 0);
+      GlStateManager._bindTexture(this.j);
+      GlStateManager._texParameter(3553, 34892, 0);
+      GlStateManager._texParameter(3553, 10241, 9728);
+      GlStateManager._texParameter(3553, 10240, 9728);
+      GlStateManager._texParameter(3553, 10242, 33071);
+      GlStateManager._texParameter(3553, 10243, 33071);
+      GlStateManager._glFramebufferTexture2D(36160, 36096, 3553, this.j, 0);
+      GlStateManager._bindTexture(0);
+      this.e = $$2.a;
+      this.f = $$2.b;
+      this.c = $$2.a;
+      this.d = $$2.b;
+      this.b();
+      GlStateManager._glBindFramebuffer(36160, 0);
+   }
+
+   private esk.b c(int $$0, int $$1) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      this.i = TextureUtil.generateTextureId();
+      this.j = TextureUtil.generateTextureId();
+      esk.a $$2 = esk.a.a;
+
+      for (esk.b $$3 : esk.b.a($$0, $$1)) {
+         $$2 = esk.a.a;
+         if (this.a($$3)) {
+            $$2 = $$2.a(esk.a.b);
+         }
+
+         if (this.b($$3)) {
+            $$2 = $$2.a(esk.a.c);
+         }
+
+         if ($$2 == esk.a.d) {
+            return $$3;
+         }
+      }
+
+      throw new RuntimeException("Unrecoverable GL_OUT_OF_MEMORY (allocated attachments = " + $$2.name() + ")");
+   }
+
+   private boolean a(esk.b $$0) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._getError();
+      GlStateManager._bindTexture(this.i);
+      GlStateManager._texImage2D(3553, 0, 32856, $$0.a, $$0.b, 0, 6408, 5121, null);
+      return GlStateManager._getError() != 1285;
+   }
+
+   private boolean b(esk.b $$0) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._getError();
+      GlStateManager._bindTexture(this.j);
+      GlStateManager._texImage2D(3553, 0, 6402, $$0.a, $$0.b, 0, 6402, 5126, null);
+      return GlStateManager._getError() != 1285;
+   }
+
+   static enum a {
+      a,
+      b,
+      c,
+      d;
+
+      private static final esk.a[] e = values();
+
+      esk.a a(esk.a $$0) {
+         return e[this.ordinal() | $$0.ordinal()];
       }
    }
 
-   public void c() {
-      if (this.b) {
-         this.b = false;
-      } else {
-         throw new RuntimeException("NOT RECORDING !!!");
+   static class b {
+      public final int a;
+      public final int b;
+
+      b(int $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
-   }
 
-   public boolean d() {
-      return !this.d && this.c != this.e;
-   }
-
-   public boolean e() {
-      if (this.d) {
-         throw new RuntimeException("ALREADY PROCESSING !!!");
-      } else if (this.d()) {
-         this.d = true;
-         return true;
-      } else {
-         return false;
+      static List<esk.b> a(int $$0, int $$1) {
+         RenderSystem.assertOnRenderThreadOrInit();
+         int $$2 = RenderSystem.maxSupportedTextureSize();
+         return $$0 > 0 && $$0 <= $$2 && $$1 > 0 && $$1 <= $$2 ? ImmutableList.of(new esk.b($$0, $$1), esk.l) : ImmutableList.of(esk.l);
       }
-   }
 
-   public void f() {
-      if (!this.d) {
-         throw new RuntimeException("NOT PROCESSING !!!");
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+            esk.b $$1 = (esk.b)$$0;
+            return this.a == $$1.a && this.b == $$1.b;
+         } else {
+            return false;
+         }
       }
-   }
 
-   public void g() {
-      if (this.d) {
-         this.d = false;
-         this.f = this.e;
-         this.e = this.c;
-      } else {
-         throw new RuntimeException("NOT PROCESSING !!!");
+      @Override
+      public int hashCode() {
+         return Objects.hash(this.a, this.b);
       }
-   }
 
-   public ConcurrentLinkedQueue<esj> h() {
-      return this.a.get(this.f);
-   }
-
-   public ConcurrentLinkedQueue<esj> i() {
-      return this.a.get(this.c);
-   }
-
-   public ConcurrentLinkedQueue<esj> j() {
-      return this.a.get(this.e);
+      @Override
+      public String toString() {
+         return this.a + "x" + this.b;
+      }
    }
 }

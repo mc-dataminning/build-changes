@@ -8,9 +8,9 @@ public class aen implements yb<aam> {
    private final byte g;
    private final boolean h;
 
-   public aen(bow $$0) {
+   public aen(box $$0) {
       this.b = $$0.aj();
-      epr $$1 = $$0.dl();
+      ept $$1 = $$0.dl();
       this.c = $$1.c;
       this.d = $$1.d;
       this.e = $$1.e;

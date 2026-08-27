@@ -1,26 +1,29 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-public class eaz<P extends eay> {
-   public static final eaz<eax> a = a("straight_trunk_placer", eax.a);
-   public static final eaz<eau> b = a("forking_trunk_placer", eau.a);
-   public static final eaz<eav> c = a("giant_trunk_placer", eav.a);
-   public static final eaz<eaw> d = a("mega_jungle_trunk_placer", eaw.b);
-   public static final eaz<eas> e = a("dark_oak_trunk_placer", eas.a);
-   public static final eaz<eat> f = a("fancy_trunk_placer", eat.a);
-   public static final eaz<eaq> g = a("bending_trunk_placer", eaq.a);
-   public static final eaz<eba> h = a("upwards_branching_trunk_placer", eba.a);
-   public static final eaz<ear> i = a("cherry_trunk_placer", ear.a);
-   private final Codec<P> j;
+public class eaz extends eba {
+   public static final Codec<eaz> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, eaz::new));
 
-   private static <P extends eay> eaz<P> a(String $$0, Codec<P> $$1) {
-      return iy.a(ki.X, $$0, new eaz<>($$1));
+   public eaz(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private eaz(Codec<P> $$0) {
-      this.j = $$0;
+   @Override
+   protected ebb<?> a() {
+      return ebb.a;
    }
 
-   public Codec<P> a() {
-      return this.j;
+   @Override
+   public List<dzi.a> a(cxh $$0, BiConsumer<ib, dnb> $$1, axd $$2, int $$3, ib $$4, dys $$5) {
+      a($$0, $$1, $$2, $$4.d(), $$5);
+
+      for (int $$6 = 0; $$6 < $$3; $$6++) {
+         this.b($$0, $$1, $$2, $$4.b($$6), $$5);
+      }
+
+      return ImmutableList.of(new dzi.a($$4.b($$3), 0, false));
    }
 }

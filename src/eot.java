@@ -1,30 +1,42 @@
-import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
-import javax.annotation.Nullable;
 
-public record eot(eku.b c) implements eow {
-   public static final Codec<eot> a = RecordCodecBuilder.create($$0 -> $$0.group(eku.b.e.fieldOf("target").forGetter(eot::c)).apply($$0, eot::new));
-   public static final Codec<eot> b = eku.b.e.xmap(eot::new, eot::c);
+public record eot(eoq b, eoq c) implements eoq {
+   public static final Codec<eot> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(eor.a.fieldOf("min").forGetter(eot::c), eor.a.fieldOf("max").forGetter(eot::d)).apply($$0, eot::new)
+   );
 
-   public static eow a(eku.b $$0) {
-      return new eot($$0);
+   @Override
+   public eop b() {
+      return eor.c;
+   }
+
+   public static eot a(float $$0, float $$1) {
+      return new eot(eoo.a($$0), eoo.a($$1));
    }
 
    @Override
-   public eov a() {
-      return eox.c;
-   }
-
-   @Nullable
-   @Override
-   public equ a(eku $$0) {
-      return $$0.c(this.c.a());
+   public int a(ekw $$0) {
+      return aww.a($$0.b(), this.b.a($$0), this.c.a($$0));
    }
 
    @Override
-   public Set<enc<?>> b() {
-      return ImmutableSet.of(this.c.a());
+   public float b(ekw $$0) {
+      return aww.a($$0.b(), this.b.b($$0), this.c.b($$0));
+   }
+
+   @Override
+   public Set<ene<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
+   }
+
+   public eoq c() {
+      return this.b;
+   }
+
+   public eoq d() {
+      return this.c;
    }
 }

@@ -11,27 +11,27 @@ public class nv {
       .a(kj.aF, pt::a)
       .a(kj.aH, ps::a)
       .a(kj.au, qi::a)
-      .a(kj.aM, cyn::a)
+      .a(kj.aM, cyp::a)
       .a(kj.aC, pp::a)
-      .a(kj.ay, dst::a)
-      .a(kj.aB, dsr::a)
-      .a(kj.aL, ecs::a)
-      .a(kj.aA, ebe::a)
+      .a(kj.ay, dsv::a)
+      .a(kj.aB, dst::a)
+      .a(kj.aL, ecu::a)
+      .a(kj.aA, ebg::a)
       .a(kj.av, vq::a)
-      .a(kj.aK, csq::a)
-      .a(kj.aJ, cso::a)
-      .a(kj.r, bny::a);
+      .a(kj.aK, css::a)
+      .a(kj.aJ, csq::a)
+      .a(kj.r, bnz::a);
 
    private static void a(in.a $$0) {
       a($$0.b(kj.aD), $$0.b(kj.au));
    }
 
-   public static void a(im<ecg> $$0, in<cxy> $$1) {
+   public static void a(im<eci> $$0, in<cya> $$1) {
       $$1.b().forEach($$1x -> {
          ajh $$2 = $$1x.h().a();
-         List<ip<ecg>> $$3 = ((cxy)$$1x.a()).d().b();
+         List<ip<eci>> $$3 = ((cya)$$1x.a()).d().b();
          $$3.stream().flatMap(ip::a).forEach($$3x -> $$3x.d().ifLeft($$2xx -> {
-               il.c<ecg> $$3xx = $$0.b($$2xx);
+               il.c<eci> $$3xx = $$0.b($$2xx);
                if (!a($$3xx.a())) {
                   ac.a("Placed feature " + $$2xx.a() + " in biome " + $$2 + " is missing BiomeFilter.biome()");
                }
@@ -43,8 +43,8 @@ public class nv {
       });
    }
 
-   private static boolean a(ecg $$0) {
-      return $$0.c().contains(ebu.a());
+   private static boolean a(eci $$0) {
+      return $$0.c().contains(ebw.a());
    }
 
    public static in.a a() {

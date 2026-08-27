@@ -1,9 +1,9 @@
 import javax.annotation.Nullable;
 
 public interface apo {
-   void a(cwg var1);
+   void a(cwi var1);
 
-   void a(cwg var1, @Nullable dpa var2);
+   void a(cwi var1, @Nullable dpc var2);
 
    void a();
 

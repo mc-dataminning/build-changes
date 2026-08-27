@@ -1,24 +1,18 @@
 import com.mojang.serialization.Codec;
 
-public class dwp extends dvq<dyg> {
-   public dwp(Codec<dyg> $$0) {
+public class dwp extends dvs<dyh> {
+   public dwp(Codec<dyh> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dvs<dyg> $$0) {
-      dyg $$1 = $$0.f();
-      axd $$2 = $$0.d();
-      cxu $$3 = $$0.b();
-      dow $$4 = $$0.c();
+   public boolean a(dvu<dyh> $$0) {
+      axd $$1 = $$0.d();
+      dyh $$2 = $$0.f();
+      cxw $$3 = $$0.b();
+      doy $$4 = $$0.c();
       ib $$5 = $$0.e();
-
-      for (dxk $$6 : $$1.b) {
-         if ($$2.i() < $$6.c) {
-            return $$6.a($$3, $$4, $$2, $$5);
-         }
-      }
-
-      return $$1.c.a().a($$3, $$4, $$2, $$5);
+      boolean $$6 = $$1.h();
+      return ($$6 ? $$2.b : $$2.c).a().a($$3, $$4, $$1, $$5);
    }
 }

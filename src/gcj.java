@@ -1,17 +1,32 @@
-public class gcj extends gee<cbi, fnr<cbi>> {
-   private static final ajh a = new ajh("textures/entity/chicken.png");
-
-   public gcj(gcy.a $$0) {
-      super($$0, new fnr<>($$0.a(frc.v)), 0.3F);
+public class gcj extends geh<cbh, fnp<cbh>> {
+   public gcj(gdb.a $$0) {
+      super($$0, new fnp<>($$0.a(fre.t)), 0.4F);
+      this.a(new ggo(this, $$0.f()));
    }
 
-   public ajh a(cbi $$0) {
-      return a;
+   public ajh a(cbh $$0) {
+      return $$0.gt();
    }
 
-   protected float a(cbi $$0, float $$1) {
-      float $$2 = aww.i($$1, $$0.cb, $$0.bX);
-      float $$3 = aww.i($$1, $$0.ca, $$0.bY);
-      return (aww.a($$2) + 1.0F) * $$3;
+   protected void a(cbh $$0, eub $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.b(0.8F, 0.8F, 0.8F);
+   }
+
+   protected void a(cbh $$0, eub $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      float $$6 = $$0.G($$4);
+      if ($$6 > 0.0F) {
+         $$1.a(0.4F * $$6, 0.15F * $$6, 0.1F * $$6);
+         $$1.a(a.f.rotationDegrees(aww.j($$6, 0.0F, 90.0F)));
+         ib $$7 = $$0.dm();
+
+         for (ciu $$9 : $$0.dM().a(ciu.class, new epo($$7).c(2.0, 2.0, 2.0))) {
+            if ($$9.fI()) {
+               $$1.a(0.15F * $$6, 0.0F, 0.0F);
+               break;
+            }
+         }
+      }
    }
 }

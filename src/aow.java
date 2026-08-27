@@ -64,20 +64,20 @@ public class aow extends aph {
    }
 
    @Override
-   public bnc a(apg $$0, cwz $$1, cqk $$2, bnb $$3) {
+   public bnd a(apg $$0, cxb $$1, cqm $$2, bnc $$3) {
       if (this.f) {
          this.f();
-         return bnc.d;
+         return bnd.d;
       } else {
          return super.a($$0, $$1, $$2, $$3);
       }
    }
 
    @Override
-   public bnc a(apg $$0, cwz $$1, cqk $$2, bnb $$3, epn $$4) {
+   public bnd a(apg $$0, cxb $$1, cqm $$2, bnc $$3, epp $$4) {
       if (this.f) {
          this.f();
-         return bnc.d;
+         return bnd.d;
       } else {
          return super.a($$0, $$1, $$2, $$3, $$4);
       }

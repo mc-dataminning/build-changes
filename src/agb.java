@@ -3,7 +3,7 @@ public class agb implements yb<aez> {
    private static final int b = 2;
    private final boolean c;
 
-   public agb(cip $$0) {
+   public agb(cir $$0) {
       this.c = $$0.b;
    }
 

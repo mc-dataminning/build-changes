@@ -1,34 +1,49 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dex extends daa implements dad {
+public class dex extends dac implements dhc {
    public static final MapCodec<dex> a = b(dex::new);
+   public static final dns b = dnr.C;
 
    @Override
    public MapCodec<dex> a() {
       return a;
    }
 
-   public dex(dmy.d $$0) {
+   protected dex(dna.d $$0) {
       super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public boolean b(cxc $$0, ib $$1, dmz $$2) {
-      return $$0.a_($$1.c()).i();
+   protected boolean a(dnb $$0, dnb $$1, ih $$2) {
+      return $$1.a(dae.ac) && $$2.o() == ih.a.b;
+   }
+
+   @Nullable
+   @Override
+   public dnb a(csu $$0) {
+      eip $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == eiq.c;
+      return super.a($$0).a(b, Boolean.valueOf($$2));
    }
 
    @Override
-   public boolean a(cwz $$0, axd $$1, ib $$2, dmz $$3) {
-      return true;
+   protected dnb a(dnb $$0, ih $$1, dnb $$2, cxc $$3, ib $$4, ib $$5) {
+      if ($$0.c(b)) {
+         $$3.a($$4, eiq.c, eiq.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void a(apf $$0, axd $$1, ib $$2, dmz $$3) {
-      $$0.H_().c(kj.ax).flatMap($$0x -> $$0x.b(qo.n)).ifPresent($$3x -> ((dvd)$$3x.a()).a($$0, $$0.l().g(), $$1, $$2.c()));
+   protected eip c_(dnb $$0) {
+      return $$0.c(b) ? eiq.c.a(false) : super.c_($$0);
    }
 
    @Override
-   public dad.a at_() {
-      return dad.a.a;
+   protected void a(dnc.a<dac, dnb> $$0) {
+      $$0.a(b);
    }
 }

@@ -63,7 +63,7 @@ public class Main {
 
          o.h();
          if ($$18.has($$15)) {
-            bjw.f.a(bju.b);
+            bjx.f.a(bjv.b);
          }
 
          ajj.a();
@@ -72,7 +72,7 @@ public class Main {
          Path $$20 = Paths.get("server.properties");
          aoe $$21 = new aoe($$20);
          $$21.b();
-         dqf.a($$21.a().N);
+         dqh.a($$21.a().N);
          Path $$22 = Paths.get("eula.txt");
          ajn $$23 = new ajn($$22);
          if ($$18.has($$3)) {
@@ -88,16 +88,16 @@ public class Main {
          File $$24 = new File((String)$$18.valueOf($$11));
          aka $$25 = aka.a(new YggdrasilAuthenticationService(Proxy.NO_PROXY), $$24);
          String $$26 = (String)Optional.ofNullable((String)$$18.valueOf($$12)).orElse($$21.a().m);
-         ekk $$27 = ekk.b($$24.toPath());
-         ekk.c $$28 = $$27.d($$26);
+         ekm $$27 = ekm.b($$24.toPath());
+         ekm.c $$28 = $$27.d($$26);
          Dynamic<?> $$29;
          if ($$28.k()) {
-            ekl $$30;
+            ekn $$30;
             try {
                $$29 = $$28.f();
                $$30 = $$28.a($$29);
             } catch (tl | tr | IOException var41) {
-               ekk.b $$32 = $$28.c();
+               ekm.b $$32 = $$28.c();
                a.warn("Failed to load world data from {}", $$32.b(), var41);
                a.info("Attempting to use fallback");
 
@@ -138,29 +138,29 @@ public class Main {
          try {
             akc.c $$42 = a($$21.a(), $$39, $$40, $$41);
             $$43 = ac.<akd>c($$6x -> akc.a($$42, $$5xx -> {
-                  iy<dqn> $$6xx = $$5xx.d().d(kj.aO);
+                  iy<dqp> $$6xx = $$5xx.d().d(kj.aO);
                   if ($$39 != null) {
-                     ekh $$7x = ekk.a($$39, $$5xx.b(), $$6xx, $$5xx.c());
+                     ekj $$7x = ekm.a($$39, $$5xx.b(), $$6xx, $$5xx.c());
                      return new akc.b<>($$7x.a(), $$7x.b().b());
                   } else {
                      a.info("No existing world data, creating new world");
-                     cxd $$8x;
-                     dtk $$9x;
-                     dth $$10x;
+                     cxf $$8x;
+                     dtm $$9x;
+                     dtj $$10x;
                      if ($$18.has($$4)) {
                         $$8x = MinecraftServer.d;
-                        $$9x = dtk.b;
-                        $$10x = ecs.a($$5xx.c());
+                        $$9x = dtm.b;
+                        $$10x = ecu.a($$5xx.c());
                      } else {
                         aod $$11x = $$21.a();
-                        $$8x = new cxd($$11x.m, $$11x.l, $$11x.u, $$11x.k, false, new cwv(), $$5xx.b());
+                        $$8x = new cxf($$11x.m, $$11x.l, $$11x.u, $$11x.k, false, new cwx(), $$5xx.b());
                         $$9x = $$18.has($$5) ? $$11x.Z.a(true) : $$11x.Z;
                         $$10x = $$11x.a($$5xx.c());
                      }
 
-                     dth.b $$15x = $$10x.a($$6xx);
+                     dtj.b $$15x = $$10x.a($$6xx);
                      Lifecycle $$16x = $$15x.a().add($$5xx.c().e());
-                     return new akc.b<>(new eko($$8x, $$9x, $$15x.d(), $$16x), $$15x.b());
+                     return new akc.b<>(new ekq($$8x, $$9x, $$15x.d(), $$16x), $$15x.b());
                   }
                }, akd::new, ac.f(), $$6x)).get();
          } catch (Exception var39) {
@@ -174,7 +174,7 @@ public class Main {
             a($$28, ayd.a(), $$18.has($$7), () -> true, $$46, $$47);
          }
 
-         ekq $$48 = $$43.d();
+         eks $$48 = $$43.d();
          $$28.a($$46, $$48);
          final aoc $$49 = MinecraftServer.a((Function<Thread, aoc>)($$11x -> {
             aoc $$12x = new aoc($$11x, $$28, $$41, $$43, $$21, ayd.a(), $$25, apq::b);
@@ -212,23 +212,23 @@ public class Main {
 
    private static akc.c a(aod $$0, @Nullable Dynamic<?> $$1, boolean $$2, arz $$3) {
       boolean $$5;
-      cxt $$6;
+      cxv $$6;
       if ($$1 != null) {
-         cxt $$4 = ekk.a($$1);
+         cxv $$4 = ekm.a($$1);
          $$5 = false;
          $$6 = $$4;
       } else {
          $$5 = true;
-         $$6 = new cxt($$0.U, clh.h);
+         $$6 = new cxv($$0.U, clj.h);
       }
 
       akc.d $$9 = new akc.d($$3, $$6, $$2, $$5);
       return new akc.c($$9, dv.a.b, $$0.B);
    }
 
-   private static void a(ekk.c $$0, DataFixer $$1, boolean $$2, BooleanSupplier $$3, iz $$4, boolean $$5) {
+   private static void a(ekm.c $$0, DataFixer $$1, boolean $$2, BooleanSupplier $$3, iz $$4, boolean $$5) {
       a.info("Forcing world upgrade!");
-      bmq $$6 = new bmq($$0, $$1, $$4, $$2, $$5);
+      bmr $$6 = new bmr($$0, $$1, $$4, $$2, $$5);
       vu $$7 = null;
 
       while (!$$6.b()) {

@@ -1,26 +1,56 @@
-public class fwm extends ftx {
-   private static final int a = 12235202;
+public class fwm extends fwg {
+   private float a;
 
-   protected fwm(fry $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fvz $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.0F, 20, 0.0125F, false);
-      this.v = (float)awg.b.b(12235202) / 255.0F;
-      this.w = (float)awg.b.c(12235202) / 255.0F;
-      this.x = (float)awg.b.d(12235202) / 255.0F;
+   fwm(fsa $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.t = (int)(Math.random() * 60.0) + 30;
+      this.n = false;
+      this.j = 0.0;
+      this.k = -0.05;
+      this.l = 0.0;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.u = 0.002F;
    }
 
-   public static class a implements fvh<kf> {
-      private final fvz a;
+   @Override
+   public fvk b() {
+      return fvk.b;
+   }
 
-      public a(fvz $$0) {
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         float $$0 = 0.6F;
+         this.j = this.j + (double)(0.6F * aww.b(this.a));
+         this.l = this.l + (double)(0.6F * aww.a(this.a));
+         this.j *= 0.07;
+         this.l *= 0.07;
+         this.a(this.j, this.k, this.l);
+         if (!this.c.b_(ib.a(this.g, this.h, this.i)).a(aus.a) || this.m) {
+            this.k();
+         }
+
+         this.a += 0.08F;
+      }
+   }
+
+   public static class a implements fvj<kf> {
+      private final fwb a;
+
+      public a(fwb $$0) {
          this.a = $$0;
       }
 
-      public fve a(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         axd $$8 = $$1.z;
-         double $$9 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
-         double $$10 = (double)$$8.i() * -0.5 * (double)$$8.i() * 0.1 * 5.0;
-         double $$11 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
-         return new fwm($$1, $$2, $$3, $$4, $$9, $$10, $$11, 1.0F, this.a);
+      public fvg a(kf $$0, fsa $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fwm $$8 = new fwm($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

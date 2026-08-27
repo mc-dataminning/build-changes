@@ -1,22 +1,74 @@
-import java.time.Duration;
-import javax.annotation.Nullable;
+import com.google.common.base.Stopwatch;
+import com.google.common.base.Ticker;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.OptionalLong;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
+import org.slf4j.Logger;
 
 public class goi {
-   private final boolean a;
-   @Nullable
-   private final Duration b;
+   public static final goi a = new goi(Ticker.systemTicker());
+   private static final Logger b = LogUtils.getLogger();
+   private final Ticker c;
+   private final Map<goe<goi.a>, Stopwatch> d = new HashMap<>();
+   private OptionalLong e = OptionalLong.empty();
 
-   public goi(boolean $$0, @Nullable Duration $$1) {
-      this.b = $$1;
-      this.a = $$0;
+   protected goi(Ticker $$0) {
+      this.c = $$0;
    }
 
-   public void a(gny $$0) {
-      if (this.b != null) {
-         $$0.send(gnz.d, $$0x -> {
-            $$0x.a(gob.x, (int)this.b.toMillis());
-            $$0x.a(gob.y, this.a);
-         });
+   public synchronized void a(goe<goi.a> $$0) {
+      this.a($$0, (Function<goe<goi.a>, Stopwatch>)($$0x -> Stopwatch.createStarted(this.c)));
+   }
+
+   public synchronized void a(goe<goi.a> $$0, Stopwatch $$1) {
+      this.a($$0, (Function<goe<goi.a>, Stopwatch>)($$1x -> $$1));
+   }
+
+   private synchronized void a(goe<goi.a> $$0, Function<goe<goi.a>, Stopwatch> $$1) {
+      this.d.computeIfAbsent($$0, $$1);
+   }
+
+   public synchronized void b(goe<goi.a> $$0) {
+      Stopwatch $$1 = this.d.get($$0);
+      if ($$1 == null) {
+         b.warn("Attempted to end step for {} before starting it", $$0.b());
+      } else {
+         if ($$1.isRunning()) {
+            $$1.stop();
+         }
+      }
+   }
+
+   public void a(gob $$0) {
+      $$0.send(goc.g, $$0x -> {
+         synchronized (this) {
+            this.d.forEach(($$1, $$2) -> {
+               if (!$$2.isRunning()) {
+                  long $$3 = $$2.elapsed(TimeUnit.MILLISECONDS);
+                  $$0x.a((goe<goi.a>)$$1, new goi.a((int)$$3));
+               } else {
+                  b.warn("Measurement {} was discarded since it was still ongoing when the event {} was sent.", $$1.b(), goc.g.a());
+               }
+            });
+            this.e.ifPresent($$1 -> $$0x.a(goe.B, new goi.a((int)$$1)));
+            this.d.clear();
+         }
+      });
+   }
+
+   public synchronized void a(long $$0) {
+      this.e = OptionalLong.of($$0);
+   }
+
+   public static record a(int b) {
+      public static final Codec<goi.a> a = Codec.INT.xmap(goi.a::new, $$0 -> $$0.b);
+
+      public int a() {
+         return this.b;
       }
    }
 }

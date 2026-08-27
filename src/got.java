@@ -1,136 +1,110 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+public class got implements gox {
+   private static final int a = 40;
+   private static final int b = 40;
+   private static final int c = 100;
+   private static final int d = 20;
+   private static final int e = -1;
+   private static final vu f = vu.a("tutorial.move.title", gow.a("forward"), gow.a("left"), gow.a("back"), gow.a("right"));
+   private static final vu g = vu.a("tutorial.move.description", gow.a("jump"));
+   private static final vu h = vu.c("tutorial.look.title");
+   private static final vu i = vu.c("tutorial.look.description");
+   private final gow j;
+   private fdt k;
+   private fdt l;
+   private int m;
+   private int n;
+   private int o;
+   private boolean p;
+   private boolean q;
+   private int r = -1;
+   private int s = -1;
 
-public class got {
-   private final ezg a;
-   @Nullable
-   private gou b;
-   private final List<got.a> c = Lists.newArrayList();
-   private final gom d;
-
-   public got(ezg $$0, ezk $$1) {
-      this.a = $$0;
-      this.d = new gom(this, $$1);
+   public got(gow $$0) {
+      this.j = $$0;
    }
 
-   public void a(fwq $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-   }
-
-   public void a(double $$0, double $$1) {
-      if (this.b != null) {
-         this.b.a($$0, $$1);
-      }
-   }
-
-   public void a(@Nullable fry $$0, @Nullable epp $$1) {
-      if (this.b != null && $$1 != null && $$0 != null) {
-         this.b.a($$0, $$1);
-      }
-   }
-
-   public void a(fry $$0, ib $$1, dmz $$2, float $$3) {
-      if (this.b != null) {
-         this.b.a($$0, $$1, $$2, $$3);
-      }
-   }
-
+   @Override
    public void a() {
-      if (this.b != null) {
-         this.b.c();
+      this.m++;
+      if (this.p) {
+         this.n++;
+         this.p = false;
+      }
+
+      if (this.q) {
+         this.o++;
+         this.q = false;
+      }
+
+      if (this.r == -1 && this.n > 40) {
+         if (this.k != null) {
+            this.k.c();
+            this.k = null;
+         }
+
+         this.r = this.m;
+      }
+
+      if (this.s == -1 && this.o > 40) {
+         if (this.l != null) {
+            this.l.c();
+            this.l = null;
+         }
+
+         this.s = this.m;
+      }
+
+      if (this.r != -1 && this.s != -1) {
+         if (this.j.f()) {
+            this.j.a(goy.b);
+         } else {
+            this.j.a(goy.f);
+         }
+      }
+
+      if (this.k != null) {
+         this.k.a((float)this.n / 40.0F);
+      }
+
+      if (this.l != null) {
+         this.l.a((float)this.o / 40.0F);
+      }
+
+      if (this.m >= 100) {
+         if (this.r == -1 && this.k == null) {
+            this.k = new fdt(fdt.a.a, f, g, true);
+            this.j.e().aA().a(this.k);
+         } else if (this.r != -1 && this.m - this.r >= 20 && this.s == -1 && this.l == null) {
+            this.l = new fdt(fdt.a.b, h, i, true);
+            this.j.e().aA().a(this.l);
+         }
       }
    }
 
-   public void a(cqk $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-   }
-
+   @Override
    public void b() {
-      if (this.b != null) {
-         this.b.b();
-         this.b = null;
+      if (this.k != null) {
+         this.k.c();
+         this.k = null;
+      }
+
+      if (this.l != null) {
+         this.l.c();
+         this.l = null;
       }
    }
 
-   public void c() {
-      if (this.b != null) {
-         this.b();
-      }
-
-      this.b = this.a.m.r.a(this);
-   }
-
-   public void a(fdr $$0, int $$1) {
-      this.c.add(new got.a($$0, $$1));
-      this.a.aA().a($$0);
-   }
-
-   public void a(fdr $$0) {
-      this.c.removeIf($$1 -> $$1.a == $$0);
-      $$0.c();
-   }
-
-   public void d() {
-      this.c.removeIf(got.a::a);
-      if (this.b != null) {
-         if (this.a.r != null) {
-            this.b.a();
-         } else {
-            this.b();
-         }
-      } else if (this.a.r != null) {
-         this.c();
+   @Override
+   public void a(fws $$0) {
+      if ($$0.c || $$0.d || $$0.e || $$0.f || $$0.g) {
+         this.p = true;
       }
    }
 
-   public void a(gov $$0) {
-      this.a.m.r = $$0;
-      this.a.m.at();
-      if (this.b != null) {
-         this.b.b();
-         this.b = $$0.a(this);
-      }
-   }
-
-   public ezg e() {
-      return this.a;
-   }
-
-   public boolean f() {
-      return this.a.q == null ? false : this.a.q.j() == cww.a;
-   }
-
-   public static vu a(String $$0) {
-      return vu.d("key." + $$0).a(n.r);
-   }
-
-   public void a(cqk $$0, cqk $$1, clw $$2) {
-      this.d.a($$0, $$1, $$2);
-   }
-
-   static final class a {
-      final fdr a;
-      private final int b;
-      private int c;
-
-      a(fdr $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      private boolean a() {
-         this.a.a(Math.min((float)(++this.c) / (float)this.b, 1.0F));
-         if (this.c > this.b) {
-            this.a.c();
-            return true;
-         } else {
-            return false;
-         }
+   @Override
+   public void a(double $$0, double $$1) {
+      if (Math.abs($$0) > 0.01 || Math.abs($$1) > 0.01) {
+         this.q = true;
       }
    }
 }

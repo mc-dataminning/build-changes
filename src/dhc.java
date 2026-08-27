@@ -1,111 +1,42 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class dhc extends daa implements dha {
-   public static final MapCodec<dhc> a = b(dhc::new);
-   public static final dnx<doh> b = dnp.bh;
-   public static final dnq c = dnp.C;
-   protected static final eqk d = daa.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-   protected static final eqk e = daa.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0);
-
+public interface dhc extends daj, des {
    @Override
-   public MapCodec<? extends dhc> a() {
-      return a;
-   }
-
-   public dhc(dmy.d $$0) {
-      super($$0);
-      this.k(this.o().a(b, doh.b).a(c, Boolean.valueOf(false)));
+   default boolean a(@Nullable ciu $$0, cwh $$1, ib $$2, dnb $$3, eio $$4) {
+      return $$4 == eiq.c;
    }
 
    @Override
-   protected boolean g_(dmz $$0) {
-      return $$0.c(b) != doh.c;
-   }
+   default boolean a(cxc $$0, ib $$1, dnb $$2, eip $$3) {
+      if (!$$2.c(dnr.C) && $$3.a() == eiq.c) {
+         if (!$$0.x_()) {
+            $$0.a($$1, $$2.a(dnr.C, Boolean.valueOf(true)), 3);
+            $$0.a($$1, $$3.a(), $$3.a().a($$0));
+         }
 
-   @Override
-   protected void a(dna.a<daa, dmz> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   protected eqk a(dmz $$0, cwf $$1, ib $$2, epw $$3) {
-      doh $$4 = $$0.c(b);
-      switch ($$4) {
-         case c:
-            return eqh.b();
-         case a:
-            return e;
-         default:
-            return d;
-      }
-   }
-
-   @Nullable
-   @Override
-   public dmz a(css $$0) {
-      ib $$1 = $$0.a();
-      dmz $$2 = $$0.q().a_($$1);
-      if ($$2.a(this)) {
-         return $$2.a(b, doh.c).a(c, Boolean.valueOf(false));
-      } else {
-         ein $$3 = $$0.q().b_($$1);
-         dmz $$4 = this.o().a(b, doh.b).a(c, Boolean.valueOf($$3.a() == eio.c));
-         ih $$5 = $$0.k();
-         return $$5 != ih.a && ($$5 == ih.b || !($$0.l().d - (double)$$1.v() > 0.5)) ? $$4 : $$4.a(b, doh.a);
-      }
-   }
-
-   @Override
-   protected boolean a(dmz $$0, css $$1) {
-      cqk $$2 = $$1.n();
-      doh $$3 = $$0.c(b);
-      if ($$3 == doh.c || !$$2.a(this.l())) {
-         return false;
-      } else if ($$1.c()) {
-         boolean $$4 = $$1.l().d - (double)$$1.a().v() > 0.5;
-         ih $$5 = $$1.k();
-         return $$3 == doh.b ? $$5 == ih.b || $$4 && $$5.o().d() : $$5 == ih.a || !$$4 && $$5.o().d();
-      } else {
          return true;
+      } else {
+         return false;
       }
    }
 
    @Override
-   protected ein c_(dmz $$0) {
-      return $$0.c(c) ? eio.c.a(false) : super.c_($$0);
-   }
+   default cqm a(@Nullable ciu $$0, cxc $$1, ib $$2, dnb $$3) {
+      if ($$3.c(dnr.C)) {
+         $$1.a($$2, $$3.a(dnr.C, Boolean.valueOf(false)), 3);
+         if (!$$3.a($$1, $$2)) {
+            $$1.b($$2, true);
+         }
 
-   @Override
-   public boolean a(cxa $$0, ib $$1, dmz $$2, ein $$3) {
-      return $$2.c(b) != doh.c ? dha.super.a($$0, $$1, $$2, $$3) : false;
-   }
-
-   @Override
-   public boolean a(@Nullable cis $$0, cwf $$1, ib $$2, dmz $$3, eim $$4) {
-      return $$3.c(b) != doh.c ? dha.super.a($$0, $$1, $$2, $$3, $$4) : false;
-   }
-
-   @Override
-   protected dmz a(dmz $$0, ih $$1, dmz $$2, cxa $$3, ib $$4, ib $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, eio.c, eio.c.a($$3));
+         return new cqm(cqp.qy);
+      } else {
+         return cqm.h;
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean a(dmz $$0, cwf $$1, ib $$2, ejd $$3) {
-      switch ($$3) {
-         case a:
-            return false;
-         case b:
-            return $$1.b_($$2).a(aus.a);
-         case c:
-            return false;
-         default:
-            return false;
-      }
+   default Optional<atx> av_() {
+      return eiq.c.j();
    }
 }

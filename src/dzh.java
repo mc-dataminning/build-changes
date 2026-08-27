@@ -1,28 +1,28 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dzh<P extends dzg> {
-   public static final dzh<dzb> a = a("blob_foliage_placer", dzb.a);
-   public static final dzh<dzm> b = a("spruce_foliage_placer", dzm.a);
-   public static final dzh<dzk> c = a("pine_foliage_placer", dzk.a);
-   public static final dzh<dza> d = a("acacia_foliage_placer", dza.a);
-   public static final dzh<dzc> e = a("bush_foliage_placer", dzc.c);
-   public static final dzh<dzf> f = a("fancy_foliage_placer", dzf.c);
-   public static final dzh<dzi> g = a("jungle_foliage_placer", dzi.a);
-   public static final dzh<dzj> h = a("mega_pine_foliage_placer", dzj.a);
-   public static final dzh<dze> i = a("dark_oak_foliage_placer", dze.a);
-   public static final dzh<dzl> j = a("random_spread_foliage_placer", dzl.a);
-   public static final dzh<dzd> k = a("cherry_foliage_placer", dzd.a);
-   private final Codec<P> l;
+public class dzh extends dzd {
+   public static final Codec<dzh> c = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dzh::new));
 
-   private static <P extends dzg> dzh<P> a(String $$0, Codec<P> $$1) {
-      return iy.a(ki.W, $$0, new dzh<>($$1));
+   public dzh(bmi $$0, bmi $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private dzh(Codec<P> $$0) {
-      this.l = $$0;
+   @Override
+   protected dzj<?> a() {
+      return dzj.f;
    }
 
-   public Codec<P> a() {
-      return this.l;
+   @Override
+   protected void a(cxh $$0, dzi.b $$1, axd $$2, dys $$3, int $$4, dzi.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = $$7 + ($$9 != $$8 && $$9 != $$8 - $$6 ? 1 : 0);
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
+      }
+   }
+
+   @Override
+   protected boolean a(axd $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return aww.k((float)$$1 + 0.5F) + aww.k((float)$$3 + 0.5F) > (float)($$4 * $$4);
    }
 }

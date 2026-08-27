@@ -1,60 +1,42 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 import java.util.Set;
 
-public record eob(Optional<Long> b, ekt c) implements ent {
+public record eob(float b, float c) implements env {
    public static final Codec<eob> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(awe.a(Codec.LONG, "period").forGetter(eob::c), ekt.a.fieldOf("value").forGetter(eob::d)).apply($$0, eob::new)
+      $$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(eob::c), Codec.FLOAT.fieldOf("looting_multiplier").forGetter(eob::d)).apply($$0, eob::new)
    );
 
    @Override
-   public enu b() {
-      return env.r;
+   public enw b() {
+      return enx.f;
    }
 
    @Override
-   public Set<enc<?>> a() {
-      return this.c.a();
+   public Set<ene<?>> a() {
+      return ImmutableSet.of(enh.d);
    }
 
-   public boolean a(eku $$0) {
-      apf $$1 = $$0.d();
-      long $$2 = $$1.Y();
-      if (this.b.isPresent()) {
-         $$2 %= this.b.get();
+   public boolean a(ekw $$0) {
+      box $$1 = $$0.c(enh.d);
+      int $$2 = 0;
+      if ($$1 instanceof bpp) {
+         $$2 = cux.h((bpp)$$1);
       }
 
-      return this.c.b($$0, (int)$$2);
+      return $$0.b().i() < this.b + (float)$$2 * this.c;
    }
 
-   public static eob.a a(ekt $$0) {
-      return new eob.a($$0);
+   public static env.a a(float $$0, float $$1) {
+      return () -> new eob($$0, $$1);
    }
 
-   public Optional<Long> c() {
+   public float c() {
       return this.b;
    }
 
-   public ekt d() {
+   public float d() {
       return this.c;
-   }
-
-   public static class a implements ent.a {
-      private Optional<Long> a = Optional.empty();
-      private final ekt b;
-
-      public a(ekt $$0) {
-         this.b = $$0;
-      }
-
-      public eob.a a(long $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public eob a() {
-         return new eob(this.a, this.b);
-      }
    }
 }

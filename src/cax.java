@@ -1,10 +1,8 @@
-public abstract class cax extends bpq {
-   protected cax(bpc<? extends cax> $$0, cwz $$1) {
-      super($$0, $$1);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   public boolean a(cis $$0) {
-      return false;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cax {
 }

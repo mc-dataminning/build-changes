@@ -1,21 +1,37 @@
 import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class byh<T extends bpo> extends bye<T> {
-   private final bqk i;
+public class byh<T extends bpp> extends byf<T> {
+   private static final int i = 200;
+   private int j = 0;
 
-   public byh(bqk $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<bpo> $$3) {
-      super($$0, $$1, 10, $$2, false, $$3);
-      this.i = $$0;
+   public byh(ckg $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<bpp> $$3) {
+      super($$0, $$1, 500, $$2, false, $$3);
+   }
+
+   public int i() {
+      return this.j;
+   }
+
+   public void k() {
+      this.j--;
    }
 
    @Override
    public boolean a() {
-      return !this.i.r() && super.a();
+      if (this.j > 0 || !this.e.ei().h()) {
+         return false;
+      } else if (!((ckg)this.e).gC()) {
+         return false;
+      } else {
+         this.h();
+         return this.c != null;
+      }
    }
 
    @Override
-   public boolean b() {
-      return this.d != null ? this.d.a(this.e, this.c) : super.b();
+   public void c() {
+      this.j = b(200);
+      super.c();
    }
 }

@@ -1,9 +1,121 @@
-public class fij extends fif<cls> {
-   private static final ajh y = new ajh("container/blast_furnace/lit_progress");
-   private static final ajh z = new ajh("container/blast_furnace/burn_progress");
-   private static final ajh A = new ajh("textures/gui/container/blast_furnace.png");
+public class fij extends fjh<cls> {
+   private static final ajh x = new ajh("container/anvil/text_field");
+   private static final ajh y = new ajh("container/anvil/text_field_disabled");
+   private static final ajh z = new ajh("container/anvil/error");
+   private static final ajh A = new ajh("textures/gui/container/anvil.png");
+   private static final vu B = vu.c("container.repair.expensive");
+   private fbr C;
+   private final ciu D;
 
-   public fij(cls $$0, cir $$1, vu $$2) {
-      super($$0, new fkq(), $$1, $$2, A, y, z);
+   public fij(cls $$0, cit $$1, vu $$2) {
+      super($$0, $$1, $$2, A);
+      this.D = $$1.m;
+      this.l = 60;
+   }
+
+   @Override
+   protected void I() {
+      int $$0 = (this.g - this.c) / 2;
+      int $$1 = (this.h - this.k) / 2;
+      this.C = new fbr(this.i, $$0 + 62, $$1 + 24, 103, 12, vu.c("container.repair"));
+      this.C.f(false);
+      this.C.g(-1);
+      this.C.h(-1);
+      this.C.d(false);
+      this.C.f(50);
+      this.C.b(this::a);
+      this.C.a("");
+      this.d(this.C);
+      this.C.e(this.p.b(0).h());
+   }
+
+   @Override
+   protected void aF_() {
+      this.b(this.C);
+   }
+
+   @Override
+   public void a(ezi $$0, int $$1, int $$2) {
+      String $$3 = this.C.a();
+      this.b($$0, $$1, $$2);
+      this.C.a($$3);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.f.s.r();
+      }
+
+      return !this.C.a($$0, $$1, $$2) && !this.C.d() ? super.a($$0, $$1, $$2) : true;
+   }
+
+   private void a(String $$0) {
+      cnl $$1 = this.p.b(0);
+      if ($$1.h()) {
+         String $$2 = $$0;
+         if (!$$1.g().B() && $$0.equals($$1.g().z().getString())) {
+            $$2 = "";
+         }
+
+         if (this.p.a($$2)) {
+            this.f.s.cu.b(new agh($$2));
+         }
+      }
+   }
+
+   @Override
+   protected void b(fav $$0, int $$1, int $$2) {
+      super.b($$0, $$1, $$2);
+      int $$3 = this.p.n();
+      if ($$3 > 0) {
+         int $$4 = 8453920;
+         vu $$5;
+         if ($$3 >= 40 && !this.f.s.ga().d) {
+            $$5 = B;
+            $$4 = 16736352;
+         } else if (!this.p.b(2).h()) {
+            $$5 = null;
+         } else {
+            $$5 = vu.a("container.repair.cost", $$3);
+            if (!this.p.b(2).a(this.D)) {
+               $$4 = 16736352;
+            }
+         }
+
+         if ($$5 != null) {
+            int $$8 = this.c - 8 - this.i.a($$5) - 2;
+            int $$9 = 69;
+            $$0.a($$8 - 2, 67, this.c - 8, 79, 1325400064);
+            $$0.b(this.i, $$5, $$8, 69, $$4);
+         }
+      }
+   }
+
+   @Override
+   protected void a(fav $$0, float $$1, int $$2, int $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p.b(0).h() ? x : y, this.t + 59, this.u + 20, 110, 16);
+   }
+
+   @Override
+   public void d(fav $$0, int $$1, int $$2, float $$3) {
+      this.C.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected void c(fav $$0, int $$1, int $$2) {
+      if ((this.p.b(0).h() || this.p.b(1).h()) && !this.p.b(this.p.o()).h()) {
+         $$0.a(z, $$1 + 99, $$2 + 45, 28, 21);
+      }
+   }
+
+   @Override
+   public void a(clq $$0, int $$1, cqm $$2) {
+      if ($$1 == 0) {
+         this.C.a($$2.b() ? "" : $$2.z().getString());
+         this.C.e(!$$2.b());
+         this.a(this.C);
+      }
    }
 }

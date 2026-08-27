@@ -180,7 +180,7 @@ public class xf implements vv {
    }
 
    @Override
-   public wi a(@Nullable du $$0, @Nullable bow $$1, int $$2) throws CommandSyntaxException {
+   public wi a(@Nullable du $$0, @Nullable box $$1, int $$2) throws CommandSyntaxException {
       Object[] $$3 = new Object[this.j.length];
 
       for (int $$4 = 0; $$4 < $$3.length; $$4++) {

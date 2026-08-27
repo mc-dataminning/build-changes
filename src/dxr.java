@@ -1,30 +1,18 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dxr(ead b, dtt c, bmh d, int e) implements dxu {
-   public static final Codec<dxr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ead.a.fieldOf("state_provider").forGetter(dxr::a),
-               dtt.b.fieldOf("target").forGetter(dxr::b),
-               bmh.b(0, 8).fieldOf("radius").forGetter(dxr::c),
-               Codec.intRange(0, 4).fieldOf("half_height").forGetter(dxr::d)
-            )
-            .apply($$0, dxr::new)
-   );
+public class dxr implements dxw {
+   public static final Codec<dxr> a = bmi.b(0, 256).fieldOf("count").xmap(dxr::new, dxr::a).codec();
+   private final bmi b;
 
-   public ead a() {
+   public dxr(int $$0) {
+      this.b = bmf.a($$0);
+   }
+
+   public dxr(bmi $$0) {
+      this.b = $$0;
+   }
+
+   public bmi a() {
       return this.b;
-   }
-
-   public dtt b() {
-      return this.c;
-   }
-
-   public bmh c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
    }
 }

@@ -1,43 +1,47 @@
-import java.util.function.Supplier;
+import java.util.Set;
 
-public class bzy<U extends bzx<?>> {
-   public static final bzy<bzh> a = a("dummy", bzh::new);
-   public static final bzy<bzp> b = a("nearest_items", bzp::new);
-   public static final bzy<bzq<bpo>> c = a("nearest_living_entities", bzq::new);
-   public static final bzy<bzu> d = a("nearest_players", bzu::new);
-   public static final bzy<bzo> e = a("nearest_bed", bzo::new);
-   public static final bzy<bzl> f = a("hurt_by", bzl::new);
-   public static final bzy<cab> g = a("villager_hostiles", cab::new);
-   public static final bzy<caa> h = a("villager_babies", caa::new);
-   public static final bzy<bzv> i = a("secondary_pois", bzv::new);
-   public static final bzy<bzj> j = a("golem_detected", bzj::new);
-   public static final bzy<bzn<cck>> k = a("armadillo_scare_detected", () -> new bzn<>(5, cck::j, cck::gy, byr.G, 80));
-   public static final bzy<bzt> l = a("piglin_specific_sensor", bzt::new);
-   public static final bzy<bzs> m = a("piglin_brute_specific_sensor", bzs::new);
-   public static final bzy<bzk> n = a("hoglin_specific_sensor", bzk::new);
-   public static final bzy<bze> o = a("nearest_adult", bze::new);
-   public static final bzy<bzf> p = a("axolotl_attackables", bzf::new);
-   public static final bzy<bzz> q = a("axolotl_temptations", () -> new bzz(cco.a()));
-   public static final bzy<bzz> r = a("goat_temptations", () -> new bzz(cdc.a()));
-   public static final bzy<bzz> s = a("frog_temptations", () -> new bzz(ccw.a()));
-   public static final bzy<bzz> t = a("camel_temptations", () -> new bzz(cct.b()));
-   public static final bzy<bzz> u = a("armadillo_temptations", () -> new bzz(ccl.b()));
-   public static final bzy<bzi> v = a("frog_attackables", bzi::new);
-   public static final bzy<bzm> w = a("is_in_water", bzm::new);
-   public static final bzy<cac> x = a("warden_entity_sensor", cac::new);
-   public static final bzy<bzz> y = a("sniffer_temptations", () -> new bzz(cdt.a()));
-   public static final bzy<bzg> z = a("breeze_attack_entity_sensor", bzg::new);
-   private final Supplier<U> A;
+public abstract class bzy<E extends bpp> {
+   private static final axd a = axd.b();
+   private static final int c = 20;
+   protected static final int b = 16;
+   private static final caf d = caf.b().a(16.0);
+   private static final caf e = caf.b().a(16.0).e();
+   private static final caf f = caf.a().a(16.0);
+   private static final caf g = caf.a().a(16.0).e();
+   private static final caf h = caf.a().a(16.0).d();
+   private static final caf i = caf.a().a(16.0).d().e();
+   private final int j;
+   private long k;
 
-   private bzy(Supplier<U> $$0) {
-      this.A = $$0;
+   public bzy(int $$0) {
+      this.j = $$0;
+      this.k = (long)a.a($$0);
    }
 
-   public U a() {
-      return this.A.get();
+   public bzy() {
+      this(20);
    }
 
-   private static <U extends bzx<?>> bzy<U> a(String $$0, Supplier<U> $$1) {
-      return iy.a(ki.C, new ajh($$0), new bzy<>($$1));
+   public final void b(apf $$0, E $$1) {
+      if (--this.k <= 0L) {
+         this.k = (long)this.j;
+         this.a($$0, $$1);
+      }
+   }
+
+   protected abstract void a(apf var1, E var2);
+
+   public abstract Set<bys<?>> a();
+
+   public static boolean b(bpp $$0, bpp $$1) {
+      return $$0.dP().b(bys.o, $$1) ? e.a($$0, $$1) : d.a($$0, $$1);
+   }
+
+   public static boolean c(bpp $$0, bpp $$1) {
+      return $$0.dP().b(bys.o, $$1) ? g.a($$0, $$1) : f.a($$0, $$1);
+   }
+
+   public static boolean d(bpp $$0, bpp $$1) {
+      return $$0.dP().b(bys.o, $$1) ? i.a($$0, $$1) : h.a($$0, $$1);
    }
 }

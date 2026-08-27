@@ -1,56 +1,75 @@
-public class fng extends fol<cay> {
-   private final frd a;
-   private final frd b;
-   private final frd f;
-   private final frd g;
-   private final frd h;
-   private final frd i;
-   private final frd j;
-   private final frd k;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterables;
 
-   public fng(frd $$0) {
-      super(fxy::d);
-      this.a = $$0;
-      this.f = $$0.b("body");
-      this.b = $$0.b("head");
-      this.g = this.f.b("right_wing");
-      this.i = this.g.b("right_wing_tip");
-      this.h = this.f.b("left_wing");
-      this.j = this.h.b("left_wing_tip");
-      this.k = this.f.b("feet");
+public class fng extends fnf {
+   private static final String a = "right_body_stick";
+   private static final String b = "left_body_stick";
+   private static final String w = "shoulder_stick";
+   private static final String x = "base_plate";
+   private final frf y;
+   private final frf z;
+   private final frf A;
+   private final frf B;
+
+   public fng(frf $$0) {
+      super($$0);
+      this.y = $$0.b("right_body_stick");
+      this.z = $$0.b("left_body_stick");
+      this.A = $$0.b("shoulder_stick");
+      this.B = $$0.b("base_plate");
+      this.l.k = false;
    }
 
-   public static frj b() {
-      frl $$0 = new frl();
-      frm $$1 = $$0.a();
-      frm $$2 = $$1.a("body", fri.c().a(0, 0).a(-1.5F, 0.0F, -1.0F, 3.0F, 5.0F, 2.0F), frf.a(0.0F, 17.0F, 0.0F));
-      frm $$3 = $$1.a("head", fri.c().a(0, 7).a(-2.0F, -3.0F, -1.0F, 4.0F, 3.0F, 2.0F), frf.a(0.0F, 17.0F, 0.0F));
-      $$3.a("right_ear", fri.c().a(1, 15).a(-2.5F, -4.0F, 0.0F, 3.0F, 5.0F, 0.0F), frf.a(-1.5F, -2.0F, 0.0F));
-      $$3.a("left_ear", fri.c().a(8, 15).a(-0.1F, -3.0F, 0.0F, 3.0F, 5.0F, 0.0F), frf.a(1.1F, -3.0F, 0.0F));
-      frm $$4 = $$2.a("right_wing", fri.c().a(12, 0).a(-2.0F, -2.0F, 0.0F, 2.0F, 7.0F, 0.0F), frf.a(-1.5F, 0.0F, 0.0F));
-      $$4.a("right_wing_tip", fri.c().a(16, 0).a(-6.0F, -2.0F, 0.0F, 6.0F, 8.0F, 0.0F), frf.a(-2.0F, 0.0F, 0.0F));
-      frm $$5 = $$2.a("left_wing", fri.c().a(12, 7).a(0.0F, -2.0F, 0.0F, 2.0F, 7.0F, 0.0F), frf.a(1.5F, 0.0F, 0.0F));
-      $$5.a("left_wing_tip", fri.c().a(16, 8).a(0.0F, -2.0F, 0.0F, 6.0F, 8.0F, 0.0F), frf.a(2.0F, 0.0F, 0.0F));
-      $$2.a("feet", fri.c().a(16, 16).a(-1.5F, 0.0F, 0.0F, 3.0F, 2.0F, 0.0F), frf.a(0.0F, 5.0F, 0.0F));
-      return frj.a($$0, 32, 32);
+   public static frl c() {
+      frn $$0 = fos.a(frj.a, 0.0F);
+      fro $$1 = $$0.a();
+      $$1.a("head", frk.c().a(0, 0).a(-1.0F, -7.0F, -1.0F, 2.0F, 7.0F, 2.0F), frh.a(0.0F, 1.0F, 0.0F));
+      $$1.a("body", frk.c().a(0, 26).a(-6.0F, 0.0F, -1.5F, 12.0F, 3.0F, 3.0F), frh.a);
+      $$1.a("right_arm", frk.c().a(24, 0).a(-2.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), frh.a(-5.0F, 2.0F, 0.0F));
+      $$1.a("left_arm", frk.c().a(32, 16).a().a(0.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), frh.a(5.0F, 2.0F, 0.0F));
+      $$1.a("right_leg", frk.c().a(8, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 11.0F, 2.0F), frh.a(-1.9F, 12.0F, 0.0F));
+      $$1.a("left_leg", frk.c().a(40, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 11.0F, 2.0F), frh.a(1.9F, 12.0F, 0.0F));
+      $$1.a("right_body_stick", frk.c().a(16, 0).a(-3.0F, 3.0F, -1.0F, 2.0F, 7.0F, 2.0F), frh.a);
+      $$1.a("left_body_stick", frk.c().a(48, 16).a(1.0F, 3.0F, -1.0F, 2.0F, 7.0F, 2.0F), frh.a);
+      $$1.a("shoulder_stick", frk.c().a(0, 48).a(-4.0F, 10.0F, -1.0F, 8.0F, 2.0F, 2.0F), frh.a);
+      $$1.a("base_plate", frk.c().a(0, 32).a(-6.0F, 11.0F, -6.0F, 12.0F, 1.0F, 12.0F), frh.a(0.0F, 12.0F, 0.0F));
+      return frl.a($$0, 64, 64);
+   }
+
+   public void a(ceu $$0, float $$1, float $$2, float $$3) {
+      this.B.e = 0.0F;
+      this.B.f = (float) (Math.PI / 180.0) * -aww.j($$3, $$0.N, $$0.dC());
+      this.B.g = 0.0F;
    }
 
    @Override
-   public frd a() {
-      return this.a;
+   public void a(ceu $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      this.o.k = $$0.v();
+      this.n.k = $$0.v();
+      this.B.k = !$$0.y();
+      this.y.e = (float) (Math.PI / 180.0) * $$0.B().b();
+      this.y.f = (float) (Math.PI / 180.0) * $$0.B().c();
+      this.y.g = (float) (Math.PI / 180.0) * $$0.B().d();
+      this.z.e = (float) (Math.PI / 180.0) * $$0.B().b();
+      this.z.f = (float) (Math.PI / 180.0) * $$0.B().c();
+      this.z.g = (float) (Math.PI / 180.0) * $$0.B().d();
+      this.A.e = (float) (Math.PI / 180.0) * $$0.B().b();
+      this.A.f = (float) (Math.PI / 180.0) * $$0.B().c();
+      this.A.g = (float) (Math.PI / 180.0) * $$0.B().d();
    }
 
-   public void a(cay $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a().e().forEach(frd::c);
-      if ($$0.s()) {
-         this.a($$4);
-      }
-
-      this.a($$0.d, fab.b, $$3, 1.0F);
-      this.a($$0.e, fab.a, $$3, 1.0F);
+   @Override
+   protected Iterable<frf> b() {
+      return Iterables.concat(super.b(), ImmutableList.of(this.y, this.z, this.A, this.B));
    }
 
-   private void a(float $$0) {
-      this.b.f = $$0 * (float) (Math.PI / 180.0);
+   @Override
+   public void a(bpj $$0, eub $$1) {
+      frf $$2 = this.a($$0);
+      boolean $$3 = $$2.k;
+      $$2.k = true;
+      super.a($$0, $$1);
+      $$2.k = $$3;
    }
 }

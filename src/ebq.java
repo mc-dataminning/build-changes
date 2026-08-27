@@ -1,17 +1,23 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ebq(List<dsq.c> a) implements dsq.c {
-   @Nullable
+public class ebq extends ebl {
+   public static final Codec<ebq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(bln.b(ebl.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, ebq::new)
+   );
+   private final bln<ebl> b;
+
+   public ebq(bln<ebl> $$0) {
+      this.b = $$0;
+   }
+
    @Override
-   public dmz calculate(dsf.b $$0) {
-      for (dsq.c $$1 : this.a) {
-         dmz $$2 = $$1.calculate($$0);
-         if ($$2 != null) {
-            return $$2;
-         }
-      }
+   public int a(axd $$0, dtl $$1) {
+      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0, $$1);
+   }
 
-      return null;
+   @Override
+   public ebm<?> a() {
+      return ebm.f;
    }
 }

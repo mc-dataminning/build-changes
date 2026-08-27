@@ -1,34 +1,20 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dfs extends dbv {
-   public static final MapCodec<dfs> a = b(dfs::new);
-   private static final eqk[] b = new eqk[]{
-      daa.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      daa.a(0.0, 0.0, 0.0, 16.0, 3.0, 16.0),
-      daa.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      daa.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
-      daa.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      daa.a(0.0, 0.0, 0.0, 16.0, 7.0, 16.0),
-      daa.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-      daa.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0)
-   };
+public class dfs extends djc {
+   public static final MapCodec<dfs> b = b(dfs::new);
 
    @Override
    public MapCodec<dfs> a() {
-      return a;
+      return b;
    }
 
-   public dfs(dmy.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected cwy d() {
-      return cqn.ud;
+   protected dfs(dna.d $$0) {
+      super(dhd.b.e, $$0);
    }
 
    @Override
-   protected eqk a(dmz $$0, cwf $$1, ib $$2, epw $$3) {
-      return b[this.g($$0)];
+   public void a(cxb $$0, ib $$1, dnb $$2, @Nullable bpp $$3, cqm $$4) {
+      dfr.b($$0, $$1, $$4);
    }
 }

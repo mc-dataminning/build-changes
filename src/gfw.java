@@ -1,25 +1,18 @@
-public class gfw extends gcx<cka> {
-   private static final ajh a = new ajh("textures/entity/projectiles/wind_charge.png");
-   private final fqr f;
+public class gfw extends gdu<cgp> {
+   private static final ajh a = new ajh("textures/entity/illager/vindicator.png");
 
-   public gfw(gcy.a $$0) {
-      super($$0);
-      this.f = new fqr($$0.a(frc.bP));
+   public gfw(gdb.a $$0) {
+      super($$0, new fot<>($$0.a(fre.bQ)), 0.5F);
+      this.a(new ghf<cgp, fot<cgp>>(this, $$0.d()) {
+         public void a(eub $$0, fxs $$1, int $$2, cgp $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+            if ($$3.gf()) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+            }
+         }
+      });
    }
 
-   public void a(cka $$0, float $$1, float $$2, etz $$3, fxq $$4, int $$5) {
-      float $$6 = (float)$$0.ah + $$2;
-      eud $$7 = $$4.getBuffer(fxy.a(a, this.a($$6) % 1.0F, 0.0F));
-      this.f.a($$0, 0.0F, 0.0F, $$6, 0.0F, 0.0F);
-      this.f.a($$3, $$7, $$5, giq.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   protected float a(float $$0) {
-      return $$0 * 0.03F;
-   }
-
-   public ajh a(cka $$0) {
+   public ajh a(cgp $$0) {
       return a;
    }
 }

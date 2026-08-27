@@ -80,7 +80,7 @@ public class eq implements ArgumentType<eq.a> {
 
    @FunctionalInterface
    public interface a {
-      void apply(eqt var1, eqt var2) throws CommandSyntaxException;
+      void apply(eqv var1, eqv var2) throws CommandSyntaxException;
    }
 
    @FunctionalInterface
@@ -88,7 +88,7 @@ public class eq implements ArgumentType<eq.a> {
       int apply(int var1, int var2) throws CommandSyntaxException;
 
       @Override
-      default void apply(eqt $$0, eqt $$1) throws CommandSyntaxException {
+      default void apply(eqv $$0, eqv $$1) throws CommandSyntaxException {
          $$0.a(this.apply($$0.a(), $$1.a()));
       }
    }

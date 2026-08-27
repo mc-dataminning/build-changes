@@ -1,18 +1,15 @@
-public class gdq extends ggd {
-   private static final ajh a = new ajh("textures/entity/zombie/husk.png");
+public class gdq extends geh<che, foo<che>> {
+   private static final ajh a = new ajh("textures/entity/hoglin/hoglin.png");
 
-   public gdq(gcy.a $$0) {
-      super($$0, frc.an, frc.ao, frc.ap);
+   public gdq(gdb.a $$0) {
+      super($$0, new foo<>($$0.a(fre.an)), 0.7F);
    }
 
-   protected void a(cgr $$0, etz $$1, float $$2) {
-      float $$3 = 1.0625F;
-      $$1.b(1.0625F, 1.0625F, 1.0625F);
-      super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public ajh a(cgr $$0) {
+   public ajh a(che $$0) {
       return a;
+   }
+
+   protected boolean b(che $$0) {
+      return super.a($$0) || $$0.y();
    }
 }

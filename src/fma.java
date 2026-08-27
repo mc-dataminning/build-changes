@@ -1,32 +1,83 @@
-import java.util.Map;
-import java.util.Optional;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2BooleanLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 
-public interface fma {
-   Map<Optional<ajg<ecr>>, fma> a = Map.of(Optional.of(ecs.b), ($$0, $$1) -> {
-      dow $$2 = $$1.d().a();
-      iz $$3 = $$1.a();
-      im<cxy> $$4 = $$3.b(kj.au);
-      im<edi> $$5 = $$3.b(kj.aG);
-      im<ecg> $$6 = $$3.b(kj.aD);
-      return new fga($$0, $$1x -> $$0.o().a(a($$1x)), $$2 instanceof dsh ? ((dsh)$$2).g() : ebf.a($$4, $$5, $$6));
-   }, Optional.of(ecs.e), ($$0, $$1) -> new ffz($$0, $$1, $$1x -> $$0.o().a(a($$1x))));
+public class fma extends fhh {
+   private static final int a = 310;
+   private final fev b = new fev(this);
+   private final fhh c;
+   private final arz k;
+   private final Consumer<arz> l;
+   private final Object2BooleanMap<arw> m = new Object2BooleanLinkedOpenHashMap();
 
-   fhf createEditScreen(flv var1, fmd var2);
+   public fma(fhh $$0, arz $$1, Consumer<arz> $$2) {
+      super(vu.c("experiments_screen.title"));
+      this.c = $$0;
+      this.k = $$1;
+      this.l = $$2;
 
-   private static fmd.a a(ebf $$0) {
-      return ($$1, $$2) -> {
-         dow $$3 = new dsh($$0);
-         return $$2.a($$1, $$3);
-      };
+      for (arw $$3 : $$1.c()) {
+         if ($$3.l() == asa.d) {
+            this.m.put($$3, $$1.f().contains($$3));
+         }
+      }
    }
 
-   private static fmd.a a(il<cxy> $$0) {
-      return ($$1, $$2) -> {
-         iy<dsr> $$3 = $$1.d(kj.aB);
-         il<dsr> $$4 = $$3.g(dsr.c);
-         cyc $$5 = new cyj($$0);
-         dow $$6 = new dsp($$5, $$4);
-         return $$2.a($$1, $$6);
-      };
+   @Override
+   protected void aO_() {
+      this.b.a(new fcp(vu.c("selectWorld.experiments"), this.i));
+      fez $$0 = this.b.c(fez.d());
+      $$0.a(new fcc(vu.c("selectWorld.experiments.info").a(n.m), this.i).c(310), $$0x -> $$0x.e(15));
+      fme.a $$1 = fme.a(310).a(2, true).b(4);
+      this.m.forEach(($$1x, $$2x) -> $$1.a(a($$1x), () -> this.m.getBoolean($$1x), $$1xx -> this.m.put($$1x, $$1xx)).a($$1x.c()));
+      $$1.a($$0::a);
+      feu.b $$2 = this.b.b(new feu().a(10)).d(2);
+      $$2.a(fbi.a(vt.d, $$0x -> this.o()).a());
+      $$2.a(fbi.a(vt.e, $$0x -> this.d()).a());
+      this.b.a($$1x -> {
+         fbg var10000 = this.c($$1x);
+      });
+      this.c();
+   }
+
+   private static vu a(arw $$0) {
+      String $$1 = "dataPack." + $$0.g() + ".name";
+      return (vu)(gkh.a($$1) ? vu.c($$1) : $$0.b());
+   }
+
+   @Override
+   public void d() {
+      this.f.a(this.c);
+   }
+
+   private void o() {
+      List<arw> $$0 = new ArrayList<>(this.k.f());
+      List<arw> $$1 = new ArrayList<>();
+      this.m.forEach(($$2, $$3) -> {
+         $$0.remove($$2);
+         if ($$3) {
+            $$1.add($$2);
+         }
+      });
+      $$0.addAll(Lists.reverse($$1));
+      this.k.a($$0.stream().map(arw::g).toList());
+      this.l.accept(this.k);
+   }
+
+   @Override
+   protected void c() {
+      this.b.a();
+   }
+
+   @Override
+   public void b(fav $$0, int $$1, int $$2, float $$3) {
+      super.b($$0, $$1, $$2, $$3);
+      $$0.a(0.125F, 0.125F, 0.125F, 1.0F);
+      int $$4 = 32;
+      $$0.a(d, 0, this.b.c(), 0.0F, 0.0F, this.g, this.h - this.b.c() - this.b.b(), 32, 32);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
    }
 }

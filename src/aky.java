@@ -49,7 +49,7 @@ public class aky {
       if (!$$1.bi()) {
          throw b.create();
       } else {
-         bjp $$2 = $$1.bk();
+         bjq $$2 = $$1.bk();
          double $$3 = (double)$$2.g() / (double)axv.a;
          double $$4 = (double)$$2.f() / $$3;
          $$0.a(() -> vu.a("commands.debug.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2.f(), String.format(Locale.ROOT, "%.2f", $$4)), true);

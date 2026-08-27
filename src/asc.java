@@ -5,14 +5,14 @@ import javax.annotation.Nullable;
 
 public class asc extends art {
    private static final arp c = new arp(vu.c("dataPack.vanilla.description"), aa.b().a(arc.b), Optional.empty());
-   private static final aqw d = new aqw(clh.h);
+   private static final aqw d = new aqw(clj.h);
    private static final aqs e = aqs.a(arp.b, c, aqw.a, d);
    private static final aqz f = new aqz("vanilla", vu.c("dataPack.vanilla.name"), asa.c, Optional.of(b));
    private static final arb g = new arb(false, arw.b.b, false);
    private static final arb h = new arb(false, arw.b.a, false);
    private static final ajh i = new ajh("minecraft", "datapacks");
 
-   public asc(eph $$0) {
+   public asc(epj $$0) {
       super(arc.b, b(), i, $$0);
    }
 
@@ -42,15 +42,15 @@ public class asc extends art {
       return arw.a(a($$0, $$2), $$1, arc.b, h);
    }
 
-   public static arz a(Path $$0, eph $$1) {
+   public static arz a(Path $$0, epj $$1) {
       return new arz(new asc($$1), new aru($$0, arc.b, asa.e, $$1));
    }
 
    public static arz c() {
-      return new arz(new asc(new eph($$0 -> true)));
+      return new arz(new asc(new epj($$0 -> true)));
    }
 
-   public static arz a(ekk.c $$0) {
-      return a($$0.a(eki.j), $$0.b().e());
+   public static arz a(ekm.c $$0) {
+      return a($$0.a(ekk.j), $$0.b().e());
    }
 }

@@ -1,127 +1,60 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+public class dta implements cwo {
+   private int a;
 
-public final class dta {
-   final dsz a;
-   private final im<ehq.a> b;
-   private final dss c;
-   private final cyh.f d;
-   private final dte e;
-   private final dsz f;
-   private final dsz g;
-   private final Map<ajg<ehq.a>, ehq> h;
-   private final Map<ajh, dsz> i;
-
-   public static dta a(im.a $$0, ajg<dsr> $$1, long $$2) {
-      return a($$0.b(kj.aB).b($$1).a(), $$0.b(kj.aC), $$2);
-   }
-
-   public static dta a(dsr $$0, im<ehq.a> $$1, long $$2) {
-      return new dta($$0, $$1, $$2);
-   }
-
-   private dta(dsr $$0, im<ehq.a> $$1, final long $$2) {
-      this.a = $$0.d().a($$2).e();
-      this.b = $$1;
-      this.f = this.a.a(new ajh("aquifer")).e();
-      this.g = this.a.a(new ajh("ore")).e();
-      this.h = new ConcurrentHashMap<>();
-      this.i = new ConcurrentHashMap<>();
-      this.e = new dte(this, $$0.g(), $$0.l(), this.a);
-      final boolean $$3 = $$0.n();
-
-      class a implements dsf.f {
-         private final Map<dsf, dsf> d = new HashMap<>();
-
-         private axd a(long $$0) {
-            return new dsn($$2 + $$0);
-         }
-
-         @Override
-         public dsf.c a(dsf.c $$0) {
-            il<ehq.a> $$1 = $$0.b();
-            if ($$3) {
-               if ($$1.a(dsv.a)) {
-                  ehq $$2 = ehq.a(this.a(0L), new ehq.a(-7, 1.0, 1.0));
-                  return new dsf.c($$1, $$2);
-               }
-
-               if ($$1.a(dsv.b)) {
-                  ehq $$3 = ehq.a(this.a(1L), new ehq.a(-7, 1.0, 1.0));
-                  return new dsf.c($$1, $$3);
-               }
-
-               if ($$1.a(dsv.j)) {
-                  ehq $$4 = ehq.b(dta.this.a.a(dsv.j.a()), new ehq.a(0, 0.0));
-                  return new dsf.c($$1, $$4);
-               }
-            }
-
-            ehq $$5 = dta.this.a($$1.e().orElseThrow());
-            return new dsf.c($$1, $$5);
-         }
-
-         private dsf a(dsf $$0) {
-            if ($$0 instanceof ehn $$1) {
-               axd $$2 = $$3 ? this.a(0L) : dta.this.a.a(new ajh("terrain"));
-               return $$1.a($$2);
+   @Override
+   public int a(apf $$0, boolean $$1, boolean $$2) {
+      if (!$$1) {
+         return 0;
+      } else if (!$$0.Z().b(cwx.C)) {
+         return 0;
+      } else {
+         axd $$3 = $$0.z;
+         this.a--;
+         if (this.a > 0) {
+            return 0;
+         } else {
+            this.a = this.a + (60 + $$3.a(60)) * 20;
+            if ($$0.B_() < 5 && $$0.D_().g()) {
+               return 0;
             } else {
-               return (dsf)($$0 instanceof dsg.i ? new dsg.i($$2) : $$0);
-            }
-         }
+               int $$4 = 0;
 
-         @Override
-         public dsf apply(dsf $$0) {
-            return this.d.computeIfAbsent($$0, this::a);
+               for (apg $$5 : $$0.x()) {
+                  if (!$$5.N_()) {
+                     ib $$6 = $$5.dm();
+                     if (!$$0.D_().g() || $$6.v() >= $$0.z_() && $$0.h($$6)) {
+                        bnb $$7 = $$0.d_($$6);
+                        if ($$7.a($$3.i() * 3.0F)) {
+                           aue $$8 = $$5.H();
+                           int $$9 = aww.a($$8.a(aui.i.b(aui.n)), 1, Integer.MAX_VALUE);
+                           int $$10 = 24000;
+                           if ($$3.a($$9) >= 72000) {
+                              ib $$11 = $$6.b(20 + $$3.a(15)).g(-10 + $$3.a(21)).e(-10 + $$3.a(21));
+                              dnb $$12 = $$0.a_($$11);
+                              eip $$13 = $$0.b_($$11);
+                              if (cxm.a($$0, $$11, $$12, $$13, bpd.ay)) {
+                                 bqh $$14 = null;
+                                 int $$15 = 1 + $$3.a($$7.a().a() + 1);
+
+                                 for (int $$16 = 0; $$16 < $$15; $$16++) {
+                                    cgc $$17 = bpd.ay.a((cxb)$$0);
+                                    if ($$17 != null) {
+                                       $$17.a($$11, 0.0F, 0.0F);
+                                       $$14 = $$17.a($$0, $$7, bpt.a, $$14);
+                                       $$0.a_($$17);
+                                       $$4++;
+                                    }
+                                 }
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
+
+               return $$4;
+            }
          }
       }
-
-      this.c = $$0.i().a(new a());
-      dsf.f $$4 = new dsf.f() {
-         private final Map<dsf, dsf> b = new HashMap<>();
-
-         private dsf a(dsf $$0) {
-            if ($$0 instanceof dsg.j $$1) {
-               return $$1.j().a();
-            } else {
-               return $$0 instanceof dsg.l $$2 ? $$2.k() : $$0;
-            }
-         }
-
-         @Override
-         public dsf apply(dsf $$0) {
-            return this.b.computeIfAbsent($$0, this::a);
-         }
-      };
-      this.d = new cyh.f(this.c.e().a($$4), this.c.f().a($$4), this.c.g().a($$4), this.c.h().a($$4), this.c.i().a($$4), this.c.j().a($$4), $$0.k());
-   }
-
-   public ehq a(ajg<ehq.a> $$0) {
-      return this.h.computeIfAbsent($$0, $$1 -> dsv.a(this.b, this.a, $$0));
-   }
-
-   public dsz a(ajh $$0) {
-      return this.i.computeIfAbsent($$0, $$1 -> this.a.a($$0).e());
-   }
-
-   public dss a() {
-      return this.c;
-   }
-
-   public cyh.f b() {
-      return this.d;
-   }
-
-   public dte c() {
-      return this.e;
-   }
-
-   public dsz d() {
-      return this.f;
-   }
-
-   public dsz e() {
-      return this.g;
    }
 }

@@ -1,49 +1,53 @@
-import java.util.List;
+public class cpj extends cqh {
+   public static final String a = "StoredEnchantments";
 
-public class cpj extends cqf {
-   public cpj(cqf.a $$0) {
+   public cpj(cqh.a $$0) {
       super($$0);
    }
 
    @Override
-   public bnc a(csu $$0) {
-      cwz $$1 = $$0.q();
-      ib $$2 = $$0.a();
-      dmz $$3 = $$1.a_($$2);
-      if (!$$3.a(dac.co) && !$$3.a(dac.F)) {
-         return bnc.e;
-      } else {
-         ib $$4 = $$2.c();
-         if (!$$1.u($$4)) {
-            return bnc.e;
-         } else {
-            double $$5 = (double)$$4.u();
-            double $$6 = (double)$$4.v();
-            double $$7 = (double)$$4.w();
-            List<bow> $$8 = $$1.a_(null, new epm($$5, $$6, $$7, $$5 + 1.0, $$6 + 2.0, $$7 + 1.0));
-            if (!$$8.isEmpty()) {
-               return bnc.e;
-            } else {
-               if ($$1 instanceof apf) {
-                  cdw $$9 = new cdw($$1, $$5 + 0.5, $$6, $$7 + 0.5);
-                  $$9.a(false);
-                  $$1.b($$9);
-                  $$1.a($$0.o(), drn.t, $$4);
-                  dqp $$10 = ((apf)$$1).D();
-                  if ($$10 != null) {
-                     $$10.g();
-                  }
-               }
-
-               $$0.n().h(1);
-               return bnc.a($$1.B);
-            }
-         }
-      }
+   public boolean i(cqm $$0) {
+      return true;
    }
 
    @Override
-   public boolean i(cqk $$0) {
-      return true;
+   public boolean d_(cqm $$0) {
+      return false;
+   }
+
+   public static tg d(cqm $$0) {
+      ta $$1 = $$0.w();
+      return $$1 != null ? $$1.c("StoredEnchantments", 10) : new tg();
+   }
+
+   public static void a(cqm $$0, cuy $$1) {
+      tg $$2 = d($$0);
+      boolean $$3 = true;
+      ajh $$4 = cux.a($$1.a);
+
+      for (int $$5 = 0; $$5 < $$2.size(); $$5++) {
+         ta $$6 = $$2.a($$5);
+         ajh $$7 = cux.b($$6);
+         if ($$7 != null && $$7.equals($$4)) {
+            if (cux.a($$6) < $$1.b) {
+               cux.a($$6, $$1.b);
+            }
+
+            $$3 = false;
+            break;
+         }
+      }
+
+      if ($$3) {
+         $$2.add(cux.a($$4, $$1.b));
+      }
+
+      $$0.x().a("StoredEnchantments", $$2);
+   }
+
+   public static cqm a(cuy $$0) {
+      cqm $$1 = new cqm(cqp.uu);
+      $$1.a($$0.a, $$0.b);
+      return $$1;
    }
 }

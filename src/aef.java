@@ -7,7 +7,7 @@ public class aef implements yb<aam> {
    private final float f;
    private final long g;
 
-   public aef(il<atx> $$0, atz $$1, bow $$2, float $$3, float $$4, long $$5) {
+   public aef(il<atx> $$0, atz $$1, box $$2, float $$3, float $$4, long $$5) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2.aj();

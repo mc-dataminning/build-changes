@@ -1,31 +1,22 @@
-import java.util.UUID;
+public class fbu extends fbi {
+   protected final fcv a;
 
-public class fbu extends bms {
-   private static final long j = 100L;
-   protected float h;
-   protected long i;
+   public fbu(int $$0, int $$1, int $$2, int $$3, fcv $$4, fbi.c $$5) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, vt.a);
+   }
 
-   public fbu(UUID $$0, vu $$1, float $$2, bms.a $$3, bms.b $$4, boolean $$5, boolean $$6, boolean $$7) {
-      super($$0, $$1, $$3, $$4);
-      this.h = $$2;
-      this.b = $$2;
-      this.i = ac.b();
-      this.a($$5);
-      this.b($$6);
-      this.c($$7);
+   public fbu(int $$0, int $$1, int $$2, int $$3, fcv $$4, fbi.c $$5, vu $$6) {
+      super($$0, $$1, $$2, $$3, $$6, $$5, p);
+      this.a = $$4;
+   }
+
+   public fbu(int $$0, int $$1, fcv $$2, fbi.c $$3, vu $$4) {
+      this(0, 0, $$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   public void a(float $$0) {
-      this.b = this.k();
-      this.h = $$0;
-      this.i = ac.b();
-   }
-
-   @Override
-   public float k() {
-      long $$0 = ac.b() - this.i;
-      float $$1 = aww.a((float)$$0 / 100.0F, 0.0F, 1.0F);
-      return aww.i($$1, this.b, this.h);
+   public void b(fav $$0, int $$1, int $$2, float $$3) {
+      ajh $$4 = this.a.a(this.A(), this.z());
+      $$0.a($$4, this.B(), this.C(), this.g, this.h);
    }
 }

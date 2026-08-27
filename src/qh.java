@@ -1,5 +1,5 @@
 public class qh {
-   public static void a(pl<eel> $$0) {
+   public static void a(pl<een> $$0) {
       pr.a($$0);
       pv.a($$0);
       pu.a($$0);

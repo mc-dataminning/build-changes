@@ -1,29 +1,7 @@
-import com.mojang.authlib.minecraft.TelemetryEvent;
-import com.mojang.authlib.minecraft.TelemetrySession;
-import com.mojang.serialization.Codec;
+public interface gnv<T> {
+   int e();
 
-public record gnv(gnz b, goc c) {
-   public static final Codec<gnv> a = gnz.a.dispatchStable(gnv::a, gnz::c);
+   T b(axd var1);
 
-   public gnv(gnz b, goc c) {
-      c.b().forEach($$1x -> {
-         if (!$$0.a($$1x)) {
-            throw new IllegalArgumentException("Property '" + $$1x.b() + "' not expected for event: '" + $$0.a() + "'");
-         }
-      });
-      this.b = b;
-      this.c = c;
-   }
-
-   public TelemetryEvent a(TelemetrySession $$0) {
-      return this.b.a($$0, this.c);
-   }
-
-   public gnz a() {
-      return this.b;
-   }
-
-   public goc b() {
-      return this.c;
-   }
+   void a(gnq var1);
 }

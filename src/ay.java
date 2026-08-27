@@ -8,11 +8,11 @@ public class ay extends cx<ay.a> {
       return ay.a.a;
    }
 
-   public void a(apg $$0, ajg<cwz> $$1, ajg<cwz> $$2) {
+   public void a(apg $$0, ajg<cxb> $$1, ajg<cxb> $$2) {
       this.a($$0, $$2x -> $$2x.b($$1, $$2));
    }
 
-   public static record a(Optional<bc> b, Optional<ajg<cwz>> c, Optional<ajg<cwz>> d) implements cx.a {
+   public static record a(Optional<bc> b, Optional<ajg<cxb>> c, Optional<ajg<cxb>> d) implements cx.a {
       public static final Codec<ay.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   awe.a(br.b, "player").forGetter(ay.a::a), awe.a(ajg.a(kj.aN), "from").forGetter(ay.a::c), awe.a(ajg.a(kj.aN), "to").forGetter(ay.a::d)
@@ -24,19 +24,19 @@ public class ay extends cx<ay.a> {
          return am.w.a(new ay.a(Optional.empty(), Optional.empty(), Optional.empty()));
       }
 
-      public static an<ay.a> a(ajg<cwz> $$0, ajg<cwz> $$1) {
+      public static an<ay.a> a(ajg<cxb> $$0, ajg<cxb> $$1) {
          return am.w.a(new ay.a(Optional.empty(), Optional.of($$0), Optional.of($$1)));
       }
 
-      public static an<ay.a> a(ajg<cwz> $$0) {
+      public static an<ay.a> a(ajg<cxb> $$0) {
          return am.w.a(new ay.a(Optional.empty(), Optional.empty(), Optional.of($$0)));
       }
 
-      public static an<ay.a> b(ajg<cwz> $$0) {
+      public static an<ay.a> b(ajg<cxb> $$0) {
          return am.w.a(new ay.a(Optional.empty(), Optional.of($$0), Optional.empty()));
       }
 
-      public boolean b(ajg<cwz> $$0, ajg<cwz> $$1) {
+      public boolean b(ajg<cxb> $$0, ajg<cxb> $$1) {
          return this.c.isPresent() && this.c.get() != $$0 ? false : !this.d.isPresent() || this.d.get() == $$1;
       }
 

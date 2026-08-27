@@ -1,19 +1,38 @@
-import java.util.UUID;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public interface drd<T extends dqu> {
-   @Nullable
-   T a(int var1);
+public interface drd<B, T extends B> {
+   static <B, T extends B> drd<B, T> a(final Class<T> $$0) {
+      return new drd<B, T>() {
+         @Nullable
+         @Override
+         public T a(B $$0x) {
+            return (T)($$0.isInstance($$0) ? $$0 : null);
+         }
+
+         @Override
+         public Class<? extends B> a() {
+            return $$0;
+         }
+      };
+   }
+
+   static <B, T extends B> drd<B, T> b(final Class<T> $$0) {
+      return new drd<B, T>() {
+         @Nullable
+         @Override
+         public T a(B $$0x) {
+            return (T)($$0.equals($$0.getClass()) ? $$0 : null);
+         }
+
+         @Override
+         public Class<? extends B> a() {
+            return $$0;
+         }
+      };
+   }
 
    @Nullable
-   T a(UUID var1);
+   T a(B var1);
 
-   Iterable<T> a();
-
-   <U extends T> void a(drb<T, U> var1, avj<U> var2);
-
-   void a(epm var1, Consumer<T> var2);
-
-   <U extends T> void a(drb<T, U> var1, epm var2, avj<U> var3);
+   Class<? extends B> a();
 }

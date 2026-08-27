@@ -30,17 +30,17 @@ public class alw {
       );
    }
 
-   private static Optional<? extends ip.b<edc>> a(ex.c<edc> $$0, iy<edc> $$1) {
-      return (Optional<? extends ip.b<edc>>)$$0.a().map($$1x -> $$1.b($$1x).map($$0xx -> ip.a($$0xx)), $$1::b);
+   private static Optional<? extends ip.b<ede>> a(ex.c<ede> $$0, iy<ede> $$1) {
+      return (Optional<? extends ip.b<ede>>)$$0.a().map($$1x -> $$1.b($$1x).map($$0xx -> ip.a($$0xx)), $$1::b);
    }
 
-   private static int a(du $$0, ex.c<edc> $$1) throws CommandSyntaxException {
-      iy<edc> $$2 = $$0.e().H_().d(kj.aE);
-      ip<edc> $$3 = (ip<edc>)a($$1, $$2).orElseThrow(() -> c.create($$1.b()));
+   private static int a(du $$0, ex.c<ede> $$1) throws CommandSyntaxException {
+      iy<ede> $$2 = $$0.e().H_().d(kj.aE);
+      ip<ede> $$3 = (ip<ede>)a($$1, $$2).orElseThrow(() -> c.create($$1.b()));
       ib $$4 = ib.a($$0.d());
       apf $$5 = $$0.e();
       Stopwatch $$6 = Stopwatch.createStarted(ac.c);
-      Pair<ib, il<edc>> $$7 = $$5.l().g().a($$5, $$3, $$4, 100, false);
+      Pair<ib, il<ede>> $$7 = $$5.l().g().a($$5, $$3, $$4, 100, false);
       $$6.stop();
       if ($$7 == null) {
          throw b.create($$1.b());
@@ -49,10 +49,10 @@ public class alw {
       }
    }
 
-   private static int a(du $$0, ew.c<cxy> $$1) throws CommandSyntaxException {
+   private static int a(du $$0, ew.c<cya> $$1) throws CommandSyntaxException {
       ib $$2 = ib.a($$0.d());
       Stopwatch $$3 = Stopwatch.createStarted(ac.c);
-      Pair<ib, il<cxy>> $$4 = $$0.e().a($$1, $$2, 6400, 32, 64);
+      Pair<ib, il<cya>> $$4 = $$0.e().a($$1, $$2, 6400, 32, 64);
       $$3.stop();
       if ($$4 == null) {
          throw d.create($$1.b());
@@ -61,11 +61,11 @@ public class alw {
       }
    }
 
-   private static int b(du $$0, ew.c<cau> $$1) throws CommandSyntaxException {
+   private static int b(du $$0, ew.c<cav> $$1) throws CommandSyntaxException {
       ib $$2 = ib.a($$0.d());
       apf $$3 = $$0.e();
       Stopwatch $$4 = Stopwatch.createStarted(ac.c);
-      Optional<Pair<il<cau>, ib>> $$5 = $$3.y().e($$1, $$2, 256, car.b.c);
+      Optional<Pair<il<cav>, ib>> $$5 = $$3.y().e($$1, $$2, 256, cas.b.c);
       $$4.stop();
       if ($$5.isEmpty()) {
          throw e.create($$1.b());

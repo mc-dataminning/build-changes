@@ -27,16 +27,16 @@ public class ev implements ArgumentType<ajh> {
       }
    }
 
-   public static ctp<?> b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
-      ctq $$2 = ((du)$$0.getSource()).l().aJ();
+   public static ctr<?> b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+      cts $$2 = ((du)$$0.getSource()).l().aJ();
       ajh $$3 = e($$0, $$1);
       return $$2.a($$3).orElseThrow(() -> c.create($$3));
    }
 
-   public static ent c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static env c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       ajh $$2 = e($$0, $$1);
-      ekx $$3 = ((du)$$0.getSource()).l().aM();
-      ent $$4 = $$3.getElement(ekz.a, $$2);
+      ekz $$3 = ((du)$$0.getSource()).l().aM();
+      env $$4 = $$3.getElement(elb.a, $$2);
       if ($$4 == null) {
          throw d.create($$2);
       } else {
@@ -44,10 +44,10 @@ public class ev implements ArgumentType<ajh> {
       }
    }
 
-   public static emh d(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static emj d(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       ajh $$2 = e($$0, $$1);
-      ekx $$3 = ((du)$$0.getSource()).l().aM();
-      emh $$4 = $$3.getElement(ekz.b, $$2);
+      ekz $$3 = ((du)$$0.getSource()).l().aM();
+      emj $$4 = $$3.getElement(elb.b, $$2);
       if ($$4 == null) {
          throw e.create($$2);
       } else {

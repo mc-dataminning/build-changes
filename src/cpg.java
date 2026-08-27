@@ -1,27 +1,21 @@
-public class cpg extends cos {
-   public cpg(cqf.a $$0) {
+public class cpg extends cqh {
+   public cpg(cqh.a $$0) {
       super($$0);
    }
 
    @Override
-   public bnd<cqk> a(cwz $$0, cis $$1, bnb $$2) {
-      cqk $$3 = $$1.b($$2);
-      if ($$0.B) {
-         return bnd.a($$3);
-      } else {
-         $$3.a(1, $$1);
-         $$1.b(aui.c.b(this));
-         $$1.dM().a(null, $$1, aty.zQ, $$1.db(), 1.0F, 1.0F);
-         cqk $$4 = cqr.a($$0, $$1.dq(), $$1.dw(), (byte)0, true, false);
-         if ($$3.b()) {
-            return bnd.b($$4);
-         } else {
-            if (!$$1.fZ().e($$4.q())) {
-               $$1.a($$4, false);
-            }
-
-            return bnd.b($$3);
-         }
+   public bne<cqm> a(cxb $$0, ciu $$1, bnc $$2) {
+      cqm $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), aty.hG, atz.h, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+      if (!$$0.B) {
+         cjv $$4 = new cjv($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dE(), $$1.dC(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
       }
+
+      $$1.b(aui.c.b(this));
+      $$3.a(1, $$1);
+      return bne.a($$3, $$0.x_());
    }
 }

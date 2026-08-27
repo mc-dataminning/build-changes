@@ -1,61 +1,29 @@
-public class fwh extends fwe {
-   private final fvz a;
-   private static final int b = 8;
-
-   protected fwh(fry $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fvz $$8) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$8;
-      this.B = 0.96F;
-      this.u = -0.1F;
-      this.C = true;
-      this.j *= 0.0;
-      this.k *= 0.9;
-      this.l *= 0.0;
-      this.j += $$4;
-      this.k += $$5;
-      this.l += $$6;
-      this.D *= 0.75F * $$7;
-      this.t = (int)(8.0F / aww.b(this.r, 0.5F, 1.0F) * $$7);
-      this.t = Math.max(this.t, 1);
-      this.b($$8);
-      this.n = true;
+public class fwh extends fvs {
+   fwh(fsa $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fwb $$7) {
+      super($$0, $$1, $$2, $$3, $$7, 1.25F);
+      this.B = 0.6F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.D *= 0.75F;
+      this.t = 60 + this.r.a(12);
+      this.b($$7);
+      if (this.r.a(4) == 0) {
+         this.a(0.6F + this.r.i() * 0.2F, 0.6F + this.r.i() * 0.3F, this.r.i() * 0.2F);
+      } else {
+         this.a(0.1F + this.r.i() * 0.2F, 0.4F + this.r.i() * 0.3F, this.r.i() * 0.2F);
+      }
    }
 
-   @Override
-   public fvi b() {
-      return fvi.b;
-   }
+   public static class a implements fvj<kf> {
+      private final fwb a;
 
-   @Override
-   public int a(float $$0) {
-      return 240;
-   }
-
-   @Override
-   public fvr.a p() {
-      return fvr.a.b;
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
-   }
-
-   @Override
-   public float b(float $$0) {
-      return this.D * aww.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
-
-   public static class a implements fvh<kf> {
-      private final fvz a;
-
-      public a(fvz $$0) {
+      public a(fwb $$0) {
          this.a = $$0;
       }
 
-      public fve a(kf $$0, fry $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fwh($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.5F, this.a);
+      public fvg a(kf $$0, fsa $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fwh($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

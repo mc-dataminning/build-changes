@@ -1,89 +1,102 @@
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.datafixers.util.Either;
-import java.time.Instant;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntCollection;
+import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
+import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
-public abstract class ftc {
-   protected final UUID a;
-   protected final Instant b;
-   protected final UUID c;
-   protected String d = "";
-   @Nullable
-   protected fte e;
+public class ftc {
+   final int a;
+   private final List<ftc.a> b = new ArrayList<>();
 
-   public ftc(UUID $$0, Instant $$1, UUID $$2) {
+   public ftc(int $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
    }
 
-   public boolean a(UUID $$0) {
-      return $$0.equals(this.c);
-   }
+   public void a(fsu $$0, IntCollection $$1, ftc.b $$2) {
+      IntSortedSet $$3 = new IntRBTreeSet($$1);
 
-   public abstract ftc b();
-
-   public abstract fhf a(fhf var1, ftg var2);
-
-   public abstract static class a<R extends ftc> {
-      protected final R a;
-      protected final AbuseReportLimits b;
-
-      protected a(R $$0, AbuseReportLimits $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public R e() {
-         return this.a;
-      }
-
-      public UUID f() {
-         return this.a.c;
-      }
-
-      public String g() {
-         return this.a.d;
-      }
-
-      public void a(String $$0) {
-         this.a.d = $$0;
-      }
-
-      @Nullable
-      public fte h() {
-         return this.a.e;
-      }
-
-      public void a(fte $$0) {
-         this.a.e = $$0;
-      }
-
-      public abstract boolean b();
-
-      @Nullable
-      public abstract ftc.b c();
-
-      public abstract Either<ftc.c, ftc.b> a(ftg var1);
-   }
-
-   public static record b(vu e) {
-      public static final ftc.b a = new ftc.b(vu.c("gui.abuseReport.send.no_reason"));
-      public static final ftc.b b = new ftc.b(vu.c("gui.chatReport.send.no_reported_messages"));
-      public static final ftc.b c = new ftc.b(vu.c("gui.chatReport.send.too_many_messages"));
-      public static final ftc.b d = new ftc.b(vu.c("gui.abuseReport.send.comment_too_long"));
-
-      public fcr a() {
-         return fcr.a(this.e);
-      }
-
-      public vu b() {
-         return this.e;
+      for (int $$4 = $$3.lastInt(); $$4 >= $$0.a() && (this.a() || !$$3.isEmpty()); $$4--) {
+         fsw $$6 = $$0.b($$4);
+         if ($$6 instanceof fsx.a) {
+            fsx.a $$5 = (fsx.a)$$6;
+            boolean $$6x = this.b($$5.g());
+            if ($$3.remove($$4)) {
+               this.a($$5.g());
+               $$2.accept($$4, $$5);
+            } else if ($$6x) {
+               $$2.accept($$4, $$5);
+            }
+         }
       }
    }
 
-   public static record c(UUID a, ftf b, AbuseReport c) {
+   public void a(wk $$0) {
+      this.b.add(new ftc.a($$0));
+   }
+
+   public boolean b(wk $$0) {
+      boolean $$1 = false;
+      Iterator<ftc.a> $$2 = this.b.iterator();
+
+      while ($$2.hasNext()) {
+         ftc.a $$3 = $$2.next();
+         if ($$3.a($$0)) {
+            $$1 = true;
+            if ($$3.a()) {
+               $$2.remove();
+            }
+         }
+      }
+
+      return $$1;
+   }
+
+   public boolean a() {
+      return !this.b.isEmpty();
+   }
+
+   class a {
+      private final Set<wg> b;
+      private wk c;
+      private boolean d = true;
+      private int e;
+
+      a(wk $$0) {
+         this.b = new ObjectOpenHashSet($$0.m().d().a());
+         this.c = $$0;
+      }
+
+      boolean a(wk $$0) {
+         if ($$0.equals(this.c)) {
+            return false;
+         } else {
+            boolean $$1 = this.b.remove($$0.l());
+            if (this.d && this.c.g().equals($$0.g())) {
+               if (this.c.k().a($$0.k())) {
+                  $$1 = true;
+                  this.c = $$0;
+               } else {
+                  this.d = false;
+               }
+            }
+
+            if ($$1) {
+               this.e++;
+            }
+
+            return $$1;
+         }
+      }
+
+      boolean a() {
+         return this.e >= ftc.this.a || !this.d && this.b.isEmpty();
+      }
+   }
+
+   public interface b {
+      void accept(int var1, fsx.a var2);
    }
 }

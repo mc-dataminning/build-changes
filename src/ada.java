@@ -3,7 +3,7 @@ public class ada implements yb<aam> {
    private final int b;
    private final byte c;
 
-   public ada(bow $$0, byte $$1) {
+   public ada(box $$0, byte $$1) {
       this.b = $$0.aj();
       this.c = $$1;
    }
@@ -27,7 +27,7 @@ public class ada implements yb<aam> {
       $$0.a(this);
    }
 
-   public bow a(cwz $$0) {
+   public box a(cxb $$0) {
       return $$0.a(this.b);
    }
 

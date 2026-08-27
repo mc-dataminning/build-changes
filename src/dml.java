@@ -1,76 +1,64 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.Set;
-import java.util.UUID;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
-public class dml {
-   static final String a = "shared_data";
-   static Codec<dml> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               cqk.a("display_item").forGetter($$0x -> $$0x.d),
-               jf.c.optionalFieldOf("connected_players", Set.of()).forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.optionalFieldOf("connected_particles_range", dmj.b.d()).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dml::new)
+public record dml(ajh d, double e, double f, cqm g, Optional<ajh> h, dmd i, dmd.a j) {
+   static final String a = "config";
+   static dml b = new dml();
+   static Codec<dml> c = awe.b(
+      RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  ajh.a.optionalFieldOf("loot_table", b.b()).forGetter(dml::b),
+                  Codec.DOUBLE.optionalFieldOf("activation_range", b.c()).forGetter(dml::c),
+                  Codec.DOUBLE.optionalFieldOf("deactivation_range", b.d()).forGetter(dml::d),
+                  cqm.a.optionalFieldOf("key_item", b.e()).forGetter(dml::e),
+                  ajh.a.optionalFieldOf("override_loot_table_to_display").forGetter(dml::f)
+               )
+               .apply($$0, dml::new)
+      ),
+      dml::h
    );
-   private cqk d = cqk.h;
-   private Set<UUID> e = new ObjectLinkedOpenHashSet();
-   private double f = dmj.b.d();
-   boolean c;
 
-   dml(cqk $$0, Set<UUID> $$1, double $$2) {
-      this.d = $$0;
-      this.e.addAll($$1);
-      this.f = $$2;
+   private dml() {
+      this(eku.S, 4.0, 4.5, new cqm(cqp.yq), Optional.empty(), dmd.b, dmd.a.a);
    }
 
-   dml() {
+   public dml(ajh $$0, double $$1, double $$2, cqm $$3, Optional<ajh> $$4) {
+      this($$0, $$1, $$2, $$3, $$4, b.a(), b.g());
    }
 
-   public cqk a() {
+   public dmd a() {
+      return this.i;
+   }
+
+   private DataResult<dml> h() {
+      return this.e > this.f
+         ? DataResult.error(() -> "Activation range must (" + this.e + ") be less or equal to deactivation range (" + this.f + ")")
+         : DataResult.success(this);
+   }
+
+   public ajh b() {
       return this.d;
    }
 
-   public boolean b() {
-      return !this.d.b();
-   }
-
-   public void a(cqk $$0) {
-      if (!cqk.a(this.d, $$0)) {
-         this.d = $$0.q();
-         this.f();
-      }
-   }
-
-   boolean c() {
-      return !this.e.isEmpty();
-   }
-
-   Set<UUID> d() {
+   public double c() {
       return this.e;
    }
 
-   double e() {
+   public double d() {
       return this.f;
    }
 
-   void a(apf $$0, ib $$1, dmk $$2, dmj $$3, double $$4) {
-      Set<UUID> $$5 = $$3.a().detect($$0, $$3.g(), $$1, $$4).stream().filter($$1x -> !$$2.b().contains($$1x)).collect(Collectors.toSet());
-      if (!this.e.equals($$5)) {
-         this.e = $$5;
-         this.f();
-      }
+   public cqm e() {
+      return this.g;
    }
 
-   private void f() {
-      this.c = true;
+   public Optional<ajh> f() {
+      return this.h;
    }
 
-   void a(dml $$0) {
-      this.d = $$0.d;
-      this.e = $$0.e;
-      this.f = $$0.f;
+   public dmd.a g() {
+      return this.j;
    }
 }

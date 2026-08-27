@@ -1,5 +1,5 @@
 public class ov {
-   public static void a(pl<bnx> $$0) {
-      $$0.a(bny.G, new bnx("mob", 0.1F));
+   public static void a(pl<bny> $$0) {
+      $$0.a(bnz.G, new bny("mob", 0.1F));
    }
 }

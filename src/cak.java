@@ -1,22 +1,33 @@
-import javax.annotation.Nullable;
-
 public class cak {
-   @Nullable
-   public static epr a(bpw $$0, int $$1, int $$2, double $$3, double $$4, float $$5, int $$6, int $$7) {
-      boolean $$8 = caj.a($$0, $$1);
-      return cam.a($$0, () -> {
-         ib $$9 = cam.a($$0.ei(), $$1, $$2, 0, $$3, $$4, (double)$$5);
-         if ($$9 == null) {
-            return null;
-         } else {
-            ib $$10 = cal.a($$0, $$1, $$8, $$9);
-            if ($$10 == null) {
-               return null;
-            } else {
-               $$10 = cam.a($$10, $$0.ei().a($$6 - $$7 + 1) + $$7, $$0.dM().ak(), $$1xx -> caj.c($$0, $$1xx));
-               return !caj.a($$0, $$10) && !caj.b($$0, $$10) ? $$10 : null;
-            }
-         }
-      });
+   public static boolean a(bpr $$0) {
+      return $$0.K() instanceof byz;
+   }
+
+   public static boolean a(bpx $$0, int $$1) {
+      return $$0.fZ() && $$0.fW().a($$0.dk(), (double)($$0.fX() + (float)$$1) + 1.0);
+   }
+
+   public static boolean a(ib $$0, bpx $$1) {
+      return $$0.v() < $$1.dM().I_() || $$0.v() > $$1.dM().ak();
+   }
+
+   public static boolean a(boolean $$0, bpx $$1, ib $$2) {
+      return $$0 && !$$1.a($$2);
+   }
+
+   public static boolean a(bza $$0, ib $$1) {
+      return !$$0.a($$1);
+   }
+
+   public static boolean a(bpx $$0, ib $$1) {
+      return $$0.dM().b_($$1).a(aus.a);
+   }
+
+   public static boolean b(bpx $$0, ib $$1) {
+      return $$0.a(ejj.a($$0.dM(), $$1.j())) != 0.0F;
+   }
+
+   public static boolean c(bpx $$0, ib $$1) {
+      return $$0.dM().a_($$1).e();
    }
 }

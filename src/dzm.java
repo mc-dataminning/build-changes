@@ -1,44 +1,44 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dzm extends dzg {
+public class dzm extends dzi {
    public static final Codec<dzm> a = RecordCodecBuilder.create(
-      $$0 -> b($$0).and(bmh.b(0, 24).fieldOf("trunk_height").forGetter($$0x -> $$0x.b)).apply($$0, dzm::new)
+      $$0 -> b($$0).and(bmi.b(0, 24).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, dzm::new)
    );
-   private final bmh b;
+   private final bmi b;
 
-   public dzm(bmh $$0, bmh $$1, bmh $$2) {
+   public dzm(bmi $$0, bmi $$1, bmi $$2) {
       super($$0, $$1);
       this.b = $$2;
    }
 
    @Override
-   protected dzh<?> a() {
-      return dzh.b;
+   protected dzj<?> a() {
+      return dzj.c;
    }
 
    @Override
-   protected void a(cxf $$0, dzg.b $$1, axd $$2, dyq $$3, int $$4, dzg.a $$5, int $$6, int $$7, int $$8) {
-      ib $$9 = $$5.a();
-      int $$10 = $$2.a(2);
-      int $$11 = 1;
-      int $$12 = 0;
+   protected void a(cxh $$0, dzi.b $$1, axd $$2, dys $$3, int $$4, dzi.a $$5, int $$6, int $$7, int $$8) {
+      int $$9 = 0;
 
-      for (int $$13 = $$8; $$13 >= -$$6; $$13--) {
-         this.a($$0, $$1, $$2, $$3, $$9, $$10, $$13, $$5.c());
-         if ($$10 >= $$11) {
-            $$10 = $$12;
-            $$12 = 1;
-            $$11 = Math.min($$11 + 1, $$7 + $$5.b());
-         } else {
-            $$10++;
+      for (int $$10 = $$8; $$10 >= $$8 - $$6; $$10--) {
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$9, $$10, $$5.c());
+         if ($$9 >= 1 && $$10 == $$8 - $$6 + 1) {
+            $$9--;
+         } else if ($$9 < $$7 + $$5.b()) {
+            $$9++;
          }
       }
    }
 
    @Override
-   public int a(axd $$0, int $$1, dyq $$2) {
-      return Math.max(4, $$1 - this.b.a($$0));
+   public int a(axd $$0, int $$1) {
+      return super.a($$0, $$1) + $$0.a(Math.max($$1 + 1, 1));
+   }
+
+   @Override
+   public int a(axd $$0, int $$1, dys $$2) {
+      return this.b.a($$0);
    }
 
    @Override

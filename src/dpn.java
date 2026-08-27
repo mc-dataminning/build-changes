@@ -1,3 +1,5 @@
-interface dpn<T> {
-   int onResize(int var1, T var2);
+public class dpn extends RuntimeException {
+   public dpn(int $$0) {
+      super("Missing Palette entry for index " + $$0 + ".");
+   }
 }

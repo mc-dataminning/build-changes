@@ -1,70 +1,36 @@
-import com.mojang.logging.LogUtils;
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.primitives.Floats;
+import it.unimi.dsi.fastutil.ints.IntArrays;
+import org.joml.Vector3f;
 
-public class euj {
-   private static final Logger a = LogUtils.getLogger();
-   @Nullable
-   private static CompletableFuture<euj.a> b;
+public interface euj {
+   euj a = a(0.0F, 0.0F, 0.0F);
+   euj b = a((euj.a)($$0 -> -$$0.z()));
 
-   public static CompletableFuture<euj.a> a() {
-      if (b == null || a(b)) {
-         b = b();
-      }
-
-      return b;
+   static euj a(float $$0, float $$1, float $$2) {
+      return a(new Vector3f($$0, $$1, $$2));
    }
 
-   private static boolean a(CompletableFuture<euj.a> $$0) {
-      euj.a $$1 = $$0.getNow(null);
-      return $$1 != null && $$1.b() != null;
+   static euj a(Vector3f $$0) {
+      return a($$0::distanceSquared);
    }
 
-   private static CompletableFuture<euj.a> b() {
-      return CompletableFuture.supplyAsync(() -> {
-         eup $$0 = eup.a();
+   static euj a(euj.a $$0) {
+      return $$1 -> {
+         float[] $$2 = new float[$$1.length];
+         int[] $$3 = new int[$$1.length];
 
-         try {
-            if ($$0.g() != eup.a.a) {
-               return new euj.a(euj.b.b);
-            } else {
-               return !$$0.f() ? new euj.a(euj.b.c) : new euj.a(euj.b.a);
-            }
-         } catch (ewc var2) {
-            a.error("Couldn't connect to realms", var2);
-            return var2.a.a() == 401 ? new euj.a(euj.b.d) : new euj.a(var2);
+         for (int $$4 = 0; $$4 < $$1.length; $$3[$$4] = $$4++) {
+            $$2[$$4] = $$0.apply($$1[$$4]);
          }
-      }, ac.g());
+
+         IntArrays.mergeSort($$3, ($$1x, $$2x) -> Floats.compare($$2[$$2x], $$2[$$1x]));
+         return $$3;
+      };
    }
 
-   public static record a(euj.b a, @Nullable ewc b) {
-      public a(euj.b $$0) {
-         this($$0, null);
-      }
+   int[] sort(Vector3f[] var1);
 
-      public a(ewc $$0) {
-         this(euj.b.e, $$0);
-      }
-
-      @Nullable
-      public fhf a(fhf $$0) {
-         return (fhf)(switch (this.a) {
-            case a -> null;
-            case b -> new ewo($$0);
-            case c -> new ewz($$0);
-            case d -> new ewt(vu.c("mco.error.invalid.session.title"), vu.c("mco.error.invalid.session.message"), $$0);
-            case e -> new ewt(Objects.requireNonNull(this.b), $$0);
-         });
-      }
-   }
-
-   public static enum b {
-      a,
-      b,
-      c,
-      d,
-      e;
+   public interface a {
+      float apply(Vector3f var1);
    }
 }

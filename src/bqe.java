@@ -1,5 +1,13 @@
-public interface bqe {
-   void a(atz var1);
+import javax.annotation.Nullable;
 
-   boolean a();
+public interface bqe {
+   boolean f();
+
+   void a(@Nullable atz var1);
+
+   default atx X_() {
+      return aty.mz;
+   }
+
+   boolean i();
 }

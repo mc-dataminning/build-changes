@@ -1,12 +1,12 @@
 public class aui {
-   public static final auh<daa> a = a("mined", ki.e);
-   public static final auh<cqf> b = a("crafted", ki.h);
-   public static final auh<cqf> c = a("used", ki.h);
-   public static final auh<cqf> d = a("broken", ki.h);
-   public static final auh<cqf> e = a("picked_up", ki.h);
-   public static final auh<cqf> f = a("dropped", ki.h);
-   public static final auh<bpc<?>> g = a("killed", ki.g);
-   public static final auh<bpc<?>> h = a("killed_by", ki.g);
+   public static final auh<dac> a = a("mined", ki.e);
+   public static final auh<cqh> b = a("crafted", ki.h);
+   public static final auh<cqh> c = a("used", ki.h);
+   public static final auh<cqh> d = a("broken", ki.h);
+   public static final auh<cqh> e = a("picked_up", ki.h);
+   public static final auh<cqh> f = a("dropped", ki.h);
+   public static final auh<bpd<?>> g = a("killed", ki.g);
+   public static final auh<bpd<?>> h = a("killed_by", ki.g);
    public static final auh<ajh> i = a("custom", ki.m);
    public static final ajh j = a("leave_game", aug.b);
    public static final ajh k = a("play_time", aug.e);

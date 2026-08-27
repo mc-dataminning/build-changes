@@ -1,34 +1,37 @@
 import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-public class brn extends brg<ccv> {
-   private static final int c = 60;
-   private static final int d = 100;
-   private int e;
+public class brn extends brh<bpp> {
+   private final bys<Integer> c;
 
-   public brn() {
-      super(ImmutableMap.of(byr.m, bys.b), 100);
+   public brn(bys<Integer> $$0) {
+      super(ImmutableMap.of($$0, byt.a));
+      this.c = $$0;
    }
 
-   protected boolean a(apf $$0, ccv $$1) {
-      return $$1.ap() == bpz.a;
+   private Optional<Integer> b(bpp $$0) {
+      return $$0.dP().c(this.c);
    }
 
-   protected boolean a(apf $$0, ccv $$1, long $$2) {
-      return this.e < 60;
+   @Override
+   protected boolean a(long $$0) {
+      return false;
    }
 
-   protected void b(apf $$0, ccv $$1, long $$2) {
-      if (!$$1.bg()) {
-         $$1.b(bpz.i);
-         this.e = 0;
-      }
+   @Override
+   protected boolean a(apf $$0, bpp $$1, long $$2) {
+      Optional<Integer> $$3 = this.b($$1);
+      return $$3.isPresent() && $$3.get() > 0;
    }
 
-   protected void c(apf $$0, ccv $$1, long $$2) {
-      $$1.b(bpz.a);
+   @Override
+   protected void c(apf $$0, bpp $$1, long $$2) {
+      Optional<Integer> $$3 = this.b($$1);
+      $$1.dP().a(this.c, $$3.get() - 1);
    }
 
-   protected void d(apf $$0, ccv $$1, long $$2) {
-      this.e++;
+   @Override
+   protected void b(apf $$0, bpp $$1, long $$2) {
+      $$1.dP().b(this.c);
    }
 }

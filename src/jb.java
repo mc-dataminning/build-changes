@@ -1,6 +1,6 @@
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Sets;
 import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.Lifecycle;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 import org.apache.commons.lang3.mutable.MutableObject;
 
 public class jb {
-   private final List<jb.i<?>> a = new ArrayList<>();
+   private final List<jb.k<?>> a = new ArrayList<>();
 
    static <T> im<T> a(final in.b<T> $$0) {
       return new jb.c<T>($$0) {
@@ -28,8 +28,8 @@ public class jb {
       };
    }
 
-   static <T> in.b<T> a(final ajg<? extends iy<? extends T>> $$0, final Lifecycle $$1, final Map<ajg<T>, il.c<T>> $$2) {
-      return new in.b<T>() {
+   static <T> in.b<T> a(final ajg<? extends iy<? extends T>> $$0, final Lifecycle $$1, io<T> $$2, final Map<ajg<T>, il.c<T>> $$3) {
+      return new jb.e<T>($$2) {
          @Override
          public ajg<? extends iy<? extends T>> f() {
             return $$0;
@@ -42,61 +42,87 @@ public class jb {
 
          @Override
          public Optional<il.c<T>> a(ajg<T> $$0x) {
-            return Optional.ofNullable($$2.get($$0));
+            return Optional.ofNullable($$3.get($$0));
          }
 
          @Override
          public Stream<il.c<T>> b() {
-            return $$2.values().stream();
-         }
-
-         @Override
-         public Optional<ip.c<T>> a(avd<T> $$0x) {
-            return Optional.empty();
-         }
-
-         @Override
-         public Stream<ip.c<T>> d() {
-            return Stream.empty();
+            return $$3.values().stream();
          }
       };
    }
 
-   public <T> jb a(ajg<? extends iy<T>> $$0, Lifecycle $$1, jb.g<T> $$2) {
-      this.a.add(new jb.i<>($$0, $$1, $$2));
+   public <T> jb a(ajg<? extends iy<T>> $$0, Lifecycle $$1, jb.i<T> $$2) {
+      this.a.add(new jb.k<>($$0, $$1, $$2));
       return this;
    }
 
-   public <T> jb a(ajg<? extends iy<T>> $$0, jb.g<T> $$1) {
+   public <T> jb a(ajg<? extends iy<T>> $$0, jb.i<T> $$1) {
       return this.a($$0, Lifecycle.stable(), $$1);
    }
 
-   private jb.a b(iz $$0) {
-      jb.a $$1 = jb.a.a($$0, this.a.stream().map(jb.i::a));
+   private jb.b b(iz $$0) {
+      jb.b $$1 = jb.b.a($$0, this.a.stream().map(jb.k::a));
       this.a.forEach($$1x -> $$1x.b($$1));
       return $$1;
    }
 
-   private static in.a a(iz $$0, Stream<in.b<?>> $$1) {
-      Stream<in.b<?>> $$2 = $$0.c().map($$0x -> $$0x.b().p());
-      return in.a.a(Stream.concat($$2, $$1));
+   private static in.a a(jb.m $$0, iz $$1, Stream<in.b<?>> $$2) {
+      record a<T>(in.b<T> a, ajf.a<T> b) {
+         public static <T> a<T> a(in.b<T> $$0) {
+            return new a<>(new jb.d<>($$0, $$0), ajf.a.a($$0));
+         }
+
+         public static <T> a<T> a(jb.m $$0, in.b<T> $$1) {
+            return new a<>(new jb.d<>($$0.a(), $$1), new ajf.a<>($$0.a(), $$1, $$1.g()));
+         }
+      }
+
+      final Map<ajg<? extends iy<?>>, a<?>> $$3 = new HashMap<>();
+      $$1.c().forEach($$1x -> $$3.put($$1x.a(), jb$a.a($$1x.b().p())));
+      $$2.forEach($$2x -> $$3.put($$2x.f(), jb$a.a($$0, $$2x)));
+      return new in.a() {
+         @Override
+         public Stream<ajg<? extends iy<?>>> a() {
+            return $$3.keySet().stream();
+         }
+
+         <T> Optional<a<T>> c(ajg<? extends iy<? extends T>> $$0) {
+            return Optional.ofNullable((a<T>)$$3.get($$0));
+         }
+
+         @Override
+         public <T> Optional<in.b<T>> a(ajg<? extends iy<? extends T>> $$0) {
+            return this.c($$0).map(a::a);
+         }
+
+         @Override
+         public <V> ajf<V> a(DynamicOps<V> $$0) {
+            return ajf.a($$0, new ajf.b() {
+               @Override
+               public <T> Optional<ajf.a<T>> a(ajg<? extends iy<? extends T>> $$0) {
+                  return c($$0).map(a::b);
+               }
+            });
+         }
+      };
    }
 
    public in.a a(iz $$0) {
-      jb.a $$1 = this.b($$0);
+      jb.b $$1 = this.b($$0);
       Stream<in.b<?>> $$2 = this.a.stream().map($$1x -> $$1x.a($$1).a($$1.a));
-      in.a $$3 = a($$0, $$2);
+      in.a $$3 = a($$1.a, $$0, $$2);
       $$1.c();
       $$1.b();
       $$1.d();
       return $$3;
    }
 
-   private in.a a(iz $$0, in.a $$1, ic.a $$2, Map<ajg<? extends iy<?>>, jb.h<?>> $$3, in.a $$4) {
-      jb.b $$5 = new jb.b();
+   private in.a a(iz $$0, in.a $$1, ic.a $$2, Map<ajg<? extends iy<?>>, jb.j<?>> $$3, in.a $$4) {
+      jb.m $$5 = new jb.m();
       MutableObject<in.a> $$6 = new MutableObject();
-      List<in.b<?>> $$7 = $$3.keySet().stream().map($$5x -> this.a($$5, $$2, $$5x, $$4, $$1, $$6)).peek($$5::b).collect(Collectors.toUnmodifiableList());
-      in.a $$8 = a($$0, $$7.stream());
+      List<in.b<?>> $$7 = $$3.keySet().stream().map($$5x -> this.a($$5, $$2, $$5x, $$4, $$1, $$6)).collect(Collectors.toUnmodifiableList());
+      in.a $$8 = a($$5, $$0, $$7.stream());
       $$6.setValue($$8);
       return $$8;
    }
@@ -110,7 +136,7 @@ public class jb {
          in.b<T> $$8 = $$3.b($$2);
          $$8.b().forEach($$5x -> {
             ajg<T> $$6x = $$5x.h();
-            jb.d<T> $$7x = new jb.d<>($$0, $$6x);
+            jb.f<T> $$7x = new jb.f<>($$0, $$6x);
             $$7x.a = () -> $$6.a((T)$$5x.a(), $$3, (in.a)$$5.getValue());
             $$7.put($$6x, $$7x);
          });
@@ -118,57 +144,57 @@ public class jb {
          $$9.b().forEach($$5x -> {
             ajg<T> $$6x = $$5x.h();
             $$7.computeIfAbsent($$6x, $$6xx -> {
-               jb.d<T> $$7x = new jb.d<>($$0, $$6x);
+               jb.f<T> $$7x = new jb.f<>($$0, $$6x);
                $$7x.a = () -> $$6.a((T)$$5x.a(), $$4, (in.a)$$5.getValue());
                return $$7x;
             });
          });
          Lifecycle $$10 = $$8.g().add($$9.g());
-         return a($$2, $$10, $$7);
+         return a($$2, $$10, $$0, $$7);
       }
    }
 
-   public jb.e a(iz $$0, in.a $$1, ic.a $$2) {
-      jb.a $$3 = this.b($$0);
-      Map<ajg<? extends iy<?>>, jb.h<?>> $$4 = new HashMap<>();
+   public jb.g a(iz $$0, in.a $$1, ic.a $$2) {
+      jb.b $$3 = this.b($$0);
+      Map<ajg<? extends iy<?>>, jb.j<?>> $$4 = new HashMap<>();
       this.a.stream().map($$1x -> $$1x.a($$3)).forEach($$1x -> $$4.put($$1x.a, $$1x));
       Set<ajg<? extends iy<?>>> $$5 = $$0.a().collect(Collectors.toUnmodifiableSet());
-      $$1.a().filter($$1x -> !$$5.contains($$1x)).forEach($$1x -> $$4.putIfAbsent($$1x, new jb.h($$1x, Lifecycle.stable(), Map.of())));
+      $$1.a().filter($$1x -> !$$5.contains($$1x)).forEach($$1x -> $$4.putIfAbsent($$1x, new jb.j($$1x, Lifecycle.stable(), Map.of())));
       Stream<in.b<?>> $$6 = $$4.values().stream().map($$1x -> $$1x.a($$3.a));
-      in.a $$7 = a($$0, $$6);
+      in.a $$7 = a($$3.a, $$0, $$6);
       $$3.b();
       $$3.d();
       in.a $$8 = this.a($$0, $$1, $$2, $$4, $$7);
-      return new jb.e($$8, $$7);
+      return new jb.g($$8, $$7);
    }
 
-   static record a(jb.b a, jb.j b, Map<ajh, im<?>> c, Map<ajg<?>, jb.f<?>> d, List<RuntimeException> e) {
+   static record b(jb.m a, jb.l b, Map<ajh, im<?>> c, Map<ajg<?>, jb.h<?>> d, List<RuntimeException> e) {
 
-      public static jb.a a(iz $$0, Stream<ajg<? extends iy<?>>> $$1) {
-         jb.b $$2 = new jb.b();
+      public static jb.b a(iz $$0, Stream<ajg<? extends iy<?>>> $$1) {
+         jb.m $$2 = new jb.m();
          List<RuntimeException> $$3 = new ArrayList<>();
-         jb.j $$4 = new jb.j($$2);
+         jb.l $$4 = new jb.l($$2);
          Builder<ajh, im<?>> $$5 = ImmutableMap.builder();
          $$0.c().forEach($$1x -> $$5.put($$1x.a().a(), jb.a($$1x.b().p())));
          $$1.forEach($$2x -> $$5.put($$2x.a(), $$4));
-         return new jb.a($$2, $$4, $$5.build(), new HashMap<>(), $$3);
+         return new jb.b($$2, $$4, $$5.build(), new HashMap<>(), $$3);
       }
 
       public <T> pl<T> a() {
          return new pl<T>() {
             @Override
             public il.c<T> a(ajg<T> $$0, T $$1, Lifecycle $$2) {
-               jb.f<?> $$3 = a.this.d.put($$0, new jb.f($$1, $$2));
+               jb.h<?> $$3 = b.this.d.put($$0, new jb.h($$1, $$2));
                if ($$3 != null) {
-                  a.this.e.add(new IllegalStateException("Duplicate registration for " + $$0 + ", new=" + $$1 + ", old=" + $$3.a));
+                  b.this.e.add(new IllegalStateException("Duplicate registration for " + $$0 + ", new=" + $$1 + ", old=" + $$3.a));
                }
 
-               return a.this.b.c($$0);
+               return b.this.b.c($$0);
             }
 
             @Override
             public <S> im<S> a(ajg<? extends iy<? extends S>> $$0) {
-               return (im<S>)a.this.c.getOrDefault($$0.a(), a.this.b);
+               return (im<S>)b.this.c.getOrDefault($$0.a(), b.this.b);
             }
          };
       }
@@ -195,11 +221,11 @@ public class jb {
          }
       }
 
-      public jb.b e() {
+      public jb.m e() {
          return this.a;
       }
 
-      public jb.j f() {
+      public jb.l f() {
          return this.b;
       }
 
@@ -207,7 +233,7 @@ public class jb {
          return this.c;
       }
 
-      public Map<ajg<?>, jb.f<?>> h() {
+      public Map<ajg<?>, jb.h<?>> h() {
          return this.d;
       }
 
@@ -216,41 +242,49 @@ public class jb {
       }
    }
 
-   static class b implements io<Object> {
-      private final Set<io<?>> a = Sets.newIdentityHashSet();
-
-      @Override
-      public boolean a(io<Object> $$0) {
-         return this.a.contains($$0);
-      }
-
-      public void b(io<?> $$0) {
-         this.a.add($$0);
-      }
-
-      public <T> io<T> a() {
-         return this;
-      }
-   }
-
    abstract static class c<T> implements im<T> {
-      protected final io<T> b;
+      protected final io<T> d;
 
       protected c(io<T> $$0) {
-         this.b = $$0;
+         this.d = $$0;
       }
 
       @Override
       public Optional<ip.c<T>> a(avd<T> $$0) {
-         return Optional.of(ip.a(this.b, $$0));
+         return Optional.of(ip.a(this.d, $$0));
       }
    }
 
-   static class d<T> extends il.c<T> {
+   static class d<T> extends jb.e<T> implements in.b.a<T> {
+      private final in.b<T> a;
+
+      d(io<T> $$0, in.b<T> $$1) {
+         super($$0);
+         this.a = $$1;
+      }
+
+      @Override
+      public in.b<T> a() {
+         return this.a;
+      }
+   }
+
+   abstract static class e<T> extends jb.c<T> implements in.b<T> {
+      protected e(io<T> $$0) {
+         super($$0);
+      }
+
+      @Override
+      public Stream<ip.c<T>> d() {
+         throw new UnsupportedOperationException("Tags are not available in datagen");
+      }
+   }
+
+   static class f<T> extends il.c<T> {
       @Nullable
       Supplier<T> a;
 
-      protected d(io<T> $$0, @Nullable ajg<T> $$1) {
+      protected f(io<T> $$0, @Nullable ajg<T> $$1) {
          super(il.c.a.a, $$0, $$1, null);
       }
 
@@ -270,60 +304,58 @@ public class jb {
       }
    }
 
-   public static record e(in.a a, in.a b) {
+   public static record g(in.a a, in.a b) {
    }
 
-   static record f<T>(T a, Lifecycle b) {
+   static record h<T>(T a, Lifecycle b) {
    }
 
    @FunctionalInterface
-   public interface g<T> {
+   public interface i<T> {
       void run(pl<T> var1);
    }
 
-   static record h<T>(ajg<? extends iy<? extends T>> a, Lifecycle b, Map<ajg<T>, jb.k<T>> c) {
+   static record j<T>(ajg<? extends iy<? extends T>> a, Lifecycle b, Map<ajg<T>, jb.n<T>> c) {
 
-      public in.b<T> a(jb.b $$0) {
+      public in.b<T> a(jb.m $$0) {
          Map<ajg<T>, il.c<T>> $$1 = this.c.entrySet().stream().collect(Collectors.toUnmodifiableMap(Entry::getKey, $$1x -> {
-            jb.k<T> $$2x = (jb.k<T>)$$1x.getValue();
-            il.c<T> $$3 = $$2x.b().orElseGet(() -> il.c.a($$0.a(), (ajg<T>)$$1x.getKey()));
-            $$3.b($$2x.a().a());
+            jb.n<T> $$2 = (jb.n<T>)$$1x.getValue();
+            il.c<T> $$3 = $$2.b().orElseGet(() -> il.c.a($$0.a(), (ajg<T>)$$1x.getKey()));
+            $$3.b($$2.a().a());
             return $$3;
          }));
-         in.b<T> $$2 = jb.a(this.a, this.b, $$1);
-         $$0.b($$2);
-         return $$2;
+         return jb.a(this.a, this.b, $$0.a(), $$1);
       }
    }
 
-   static record i<T>(ajg<? extends iy<T>> a, Lifecycle b, jb.g<T> c) {
-      void b(jb.a $$0) {
+   static record k<T>(ajg<? extends iy<T>> a, Lifecycle b, jb.i<T> c) {
+      void b(jb.b $$0) {
          this.c.run($$0.a());
       }
 
-      public jb.h<T> a(jb.a $$0) {
-         Map<ajg<T>, jb.k<T>> $$1 = new HashMap<>();
-         Iterator<Entry<ajg<?>, jb.f<?>>> $$2 = $$0.d.entrySet().iterator();
+      public jb.j<T> a(jb.b $$0) {
+         Map<ajg<T>, jb.n<T>> $$1 = new HashMap<>();
+         Iterator<Entry<ajg<?>, jb.h<?>>> $$2 = $$0.d.entrySet().iterator();
 
          while ($$2.hasNext()) {
-            Entry<ajg<?>, jb.f<?>> $$3 = $$2.next();
+            Entry<ajg<?>, jb.h<?>> $$3 = $$2.next();
             ajg<?> $$4 = $$3.getKey();
             if ($$4.c(this.a)) {
-               jb.f<T> $$6 = (jb.f<T>)$$3.getValue();
+               jb.h<T> $$6 = (jb.h<T>)$$3.getValue();
                il.c<T> $$7 = (il.c<T>)$$0.b.a.remove($$4);
-               $$1.put((ajg<T>)$$4, new jb.k<>($$6, Optional.ofNullable($$7)));
+               $$1.put((ajg<T>)$$4, new jb.n<>($$6, Optional.ofNullable($$7)));
                $$2.remove();
             }
          }
 
-         return new jb.h<>(this.a, this.b, $$1);
+         return new jb.j<>(this.a, this.b, $$1);
       }
    }
 
-   static class j extends jb.c<Object> {
+   static class l extends jb.c<Object> {
       final Map<ajg<Object>, il.c<Object>> a = new HashMap<>();
 
-      public j(io<Object> $$0) {
+      public l(io<Object> $$0) {
          super($$0);
       }
 
@@ -333,10 +365,16 @@ public class jb {
       }
 
       <T> il.c<T> c(ajg<T> $$0) {
-         return (il.c<T>)this.a.computeIfAbsent($$0, $$0x -> il.c.a(this.b, $$0x));
+         return (il.c<T>)this.a.computeIfAbsent($$0, $$0x -> il.c.a(this.d, $$0x));
       }
    }
 
-   static record k<T>(jb.f<T> a, Optional<il.c<T>> b) {
+   static class m implements io<Object> {
+      public <T> io<T> a() {
+         return this;
+      }
+   }
+
+   static record n<T>(jb.h<T> a, Optional<il.c<T>> b) {
    }
 }

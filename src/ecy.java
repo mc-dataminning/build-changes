@@ -1,106 +1,40 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.List;
-import java.util.Locale;
-import org.slf4j.Logger;
+public interface ecy {
+   ajg<ede> a = a("pillager_outpost");
+   ajg<ede> b = a("mineshaft");
+   ajg<ede> c = a("mineshaft_mesa");
+   ajg<ede> d = a("mansion");
+   ajg<ede> e = a("jungle_pyramid");
+   ajg<ede> f = a("desert_pyramid");
+   ajg<ede> g = a("igloo");
+   ajg<ede> h = a("shipwreck");
+   ajg<ede> i = a("shipwreck_beached");
+   ajg<ede> j = a("swamp_hut");
+   ajg<ede> k = a("stronghold");
+   ajg<ede> l = a("monument");
+   ajg<ede> m = a("ocean_ruin_cold");
+   ajg<ede> n = a("ocean_ruin_warm");
+   ajg<ede> o = a("fortress");
+   ajg<ede> p = a("nether_fossil");
+   ajg<ede> q = a("end_city");
+   ajg<ede> r = a("buried_treasure");
+   ajg<ede> s = a("bastion_remnant");
+   ajg<ede> t = a("village_plains");
+   ajg<ede> u = a("village_desert");
+   ajg<ede> v = a("village_savanna");
+   ajg<ede> w = a("village_snowy");
+   ajg<ede> x = a("village_taiga");
+   ajg<ede> y = a("ruined_portal");
+   ajg<ede> z = a("ruined_portal_desert");
+   ajg<ede> A = a("ruined_portal_jungle");
+   ajg<ede> B = a("ruined_portal_swamp");
+   ajg<ede> C = a("ruined_portal_mountain");
+   ajg<ede> D = a("ruined_portal_ocean");
+   ajg<ede> E = a("ruined_portal_nether");
+   ajg<ede> F = a("ancient_city");
+   ajg<ede> G = a("trail_ruins");
+   ajg<ede> H = a("trial_chambers");
 
-public class ecy extends edg {
-   private static final Logger d = LogUtils.getLogger();
-   protected final eej a;
-   protected ib b;
-   private final int h;
-   protected final dgm c;
-   private final List<eee> i = Lists.newArrayList();
-   private final ehd j;
-
-   public ecy(ehd $$0, eej $$1, ib $$2, int $$3, dgm $$4, ecu $$5) {
-      super(edt.ad, 0, $$5);
-      this.j = $$0;
-      this.a = $$1;
-      this.b = $$2;
-      this.h = $$3;
-      this.c = $$4;
-   }
-
-   public ecy(eds $$0, ta $$1) {
-      super(edt.ad, $$1);
-      this.j = $$0.c();
-      this.b = new ib($$1.h("PosX"), $$1.h("PosY"), $$1.h("PosZ"));
-      this.h = $$1.h("ground_level_delta");
-      DynamicOps<tx> $$2 = ajf.a(to.a, $$0.b());
-      this.a = (eej)eej.e
-         .parse($$2, $$1.p("pool_element"))
-         .resultOrPartial(d::error)
-         .orElseThrow(() -> new IllegalStateException("Invalid pool element found"));
-      this.c = dgm.valueOf($$1.l("rotation"));
-      this.f = this.a.a(this.j, this.b, this.c);
-      tg $$3 = $$1.c("junctions", 10);
-      this.i.clear();
-      $$3.forEach($$1x -> this.i.add(eee.a(new Dynamic($$2, $$1x))));
-   }
-
-   @Override
-   protected void a(eds $$0, ta $$1) {
-      $$1.a("PosX", this.b.u());
-      $$1.a("PosY", this.b.v());
-      $$1.a("PosZ", this.b.w());
-      $$1.a("ground_level_delta", this.h);
-      DynamicOps<tx> $$2 = ajf.a(to.a, $$0.b());
-      eej.e.encodeStart($$2, this.a).resultOrPartial(d::error).ifPresent($$1x -> $$1.a("pool_element", $$1x));
-      $$1.a("rotation", this.c.name());
-      tg $$3 = new tg();
-
-      for (eee $$4 : this.i) {
-         $$3.add((tx)$$4.a($$2).getValue());
-      }
-
-      $$1.a("junctions", $$3);
-   }
-
-   @Override
-   public void a(cxu $$0, cxs $$1, dow $$2, axd $$3, ecu $$4, cwg $$5, ib $$6) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$6, false);
-   }
-
-   public void a(cxu $$0, cxs $$1, dow $$2, axd $$3, ecu $$4, ib $$5, boolean $$6) {
-      this.a.a(this.j, $$0, $$1, $$2, this.b, $$5, this.c, $$4, $$3, $$6);
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      this.b = this.b.b($$0, $$1, $$2);
-   }
-
-   @Override
-   public dgm a() {
-      return this.c;
-   }
-
-   @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "<%s | %s | %s | %s>", this.getClass().getSimpleName(), this.b, this.c, this.a);
-   }
-
-   public eej b() {
-      return this.a;
-   }
-
-   public ib c() {
-      return this.b;
-   }
-
-   public int d() {
-      return this.h;
-   }
-
-   public void a(eee $$0) {
-      this.i.add($$0);
-   }
-
-   public List<eee> e() {
-      return this.i;
+   private static ajg<ede> a(String $$0) {
+      return ajg.a(kj.aE, new ajh($$0));
    }
 }

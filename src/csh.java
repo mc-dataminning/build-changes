@@ -1,49 +1,34 @@
-import java.util.List;
-import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class csh {
-   @Nullable
-   private final String a;
-   private final List<boj> b;
-
-   public static il<csh> a(String $$0) {
-      ajh $$1 = ajh.a($$0);
-      return $$1 == null ? csk.b : ki.i.c($$1).map(Function.identity()).orElse(csk.b);
+public class csh extends cqh {
+   public csh(cqh.a $$0) {
+      super($$0);
    }
 
-   public csh(boj... $$0) {
-      this(null, $$0);
+   @Override
+   public bne<cqm> a(cxb $$0, ciu $$1, bnc $$2) {
+      cqm $$3 = $$1.b($$2);
+      $$1.a($$3, $$2);
+      $$1.b(aui.c.b(this));
+      return bne.a($$3, $$0.x_());
    }
 
-   public csh(@Nullable String $$0, boj... $$1) {
-      this.a = $$0;
-      this.b = List.of($$1);
-   }
-
-   public static String a(il<csh> $$0, String $$1) {
-      String $$2 = $$0.a().a;
-      if ($$2 != null) {
-         return $$1 + $$2;
+   public static boolean a(@Nullable ta $$0) {
+      if ($$0 == null) {
+         return false;
+      } else if (!$$0.b("pages", 9)) {
+         return false;
       } else {
-         ajg<csh> $$3 = $$0.e().orElse(csk.a);
-         return $$1 + $$3.a().a();
-      }
-   }
+         tg $$1 = $$0.c("pages", 8);
 
-   public List<boj> a() {
-      return this.b;
-   }
-
-   public boolean b() {
-      if (!this.b.isEmpty()) {
-         for (boj $$0 : this.b) {
-            if ($$0.b().a().a()) {
-               return true;
+         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+            String $$3 = $$1.j($$2);
+            if ($$3.length() > 32767) {
+               return false;
             }
          }
-      }
 
-      return false;
+         return true;
+      }
    }
 }

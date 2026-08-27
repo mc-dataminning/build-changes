@@ -1,52 +1,52 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.slf4j.Logger;
 
-public interface blo {
-   bln a();
+public class blo {
+   public static final Codec<blo> a = Codec.INT.xmap(blo::a, blo::a);
+   private static final blo b = new blo(1);
+   private static final Logger c = LogUtils.getLogger();
+   private final int d;
 
-   static <T> blo.b<T> a(T $$0, int $$1) {
-      return new blo.b<>($$0, bln.a($$1));
+   private blo(int $$0) {
+      this.d = $$0;
    }
 
-   public static class a implements blo {
-      private final bln a;
-
-      public a(int $$0) {
-         this.a = bln.a($$0);
-      }
-
-      public a(bln $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public bln a() {
-         return this.a;
+   public static blo a(int $$0) {
+      if ($$0 == 1) {
+         return b;
+      } else {
+         b($$0);
+         return new blo($$0);
       }
    }
 
-   public static class b<T> implements blo {
-      private final T a;
-      private final bln b;
+   public int a() {
+      return this.d;
+   }
 
-      b(T $$0, bln $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   private static void b(int $$0) {
+      if ($$0 < 0) {
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Weight should be >= 0"));
+      } else {
+         if ($$0 == 0 && aa.aW) {
+            c.warn("Found 0 weight, make sure this is intentional!");
+         }
       }
+   }
 
-      public T b() {
-         return this.a;
-      }
+   @Override
+   public String toString() {
+      return Integer.toString(this.d);
+   }
 
-      @Override
-      public bln a() {
-         return this.b;
-      }
+   @Override
+   public int hashCode() {
+      return Integer.hashCode(this.d);
+   }
 
-      public static <E> Codec<blo.b<E>> a(Codec<E> $$0) {
-         return RecordCodecBuilder.create(
-            $$1 -> $$1.group($$0.fieldOf("data").forGetter(blo.b::b), bln.a.fieldOf("weight").forGetter(blo.b::a)).apply($$1, blo.b::new)
-         );
-      }
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof blo && this.d == ((blo)$$0).d;
    }
 }

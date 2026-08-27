@@ -2,8 +2,8 @@ public record aov(int a, int b) {
    private static final long c = 32L;
    private static final long d = 4294967295L;
 
-   public cwg a() {
-      return new cwg(je.a(this.a), je.a(this.b));
+   public cwi a() {
+      return new cwi(je.a(this.a), je.a(this.b));
    }
 
    public long b() {
@@ -29,7 +29,7 @@ public record aov(int a, int b) {
 
    @Override
    public int hashCode() {
-      return cwg.d(this.a, this.b);
+      return cwi.d(this.a, this.b);
    }
 
    public int c() {

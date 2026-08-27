@@ -2,7 +2,7 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 public interface dq extends in.a {
-   static dq a(final in.a $$0, final clf $$1) {
+   static dq a(final in.a $$0, final clh $$1) {
       return new dq() {
          @Override
          public Stream<ajg<? extends iy<?>>> a() {

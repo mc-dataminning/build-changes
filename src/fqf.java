@@ -1,49 +1,54 @@
-import java.util.Arrays;
+public class fqf<T extends box> extends fon<T> {
+   private static final String a = "upper_body";
+   private final frf b;
+   private final frf f;
+   private final frf g;
+   private final frf h;
+   private final frf i;
 
-public class fqf<T extends bow> extends fol<T> {
-   private final frd[] a = new frd[8];
-   private final frd b;
-
-   public fqf(frd $$0) {
+   public fqf(frf $$0) {
       this.b = $$0;
-      Arrays.setAll(this.a, $$1 -> $$0.b(a($$1)));
+      this.g = $$0.b("head");
+      this.h = $$0.b("left_arm");
+      this.i = $$0.b("right_arm");
+      this.f = $$0.b("upper_body");
    }
 
-   private static String a(int $$0) {
-      return "tentacle" + $$0;
-   }
-
-   public static frj b() {
-      frl $$0 = new frl();
-      frm $$1 = $$0.a();
-      frh $$2 = new frh(0.02F);
-      int $$3 = -16;
-      $$1.a("body", fri.c().a(0, 0).a(-6.0F, -8.0F, -6.0F, 12.0F, 16.0F, 12.0F, $$2), frf.a(0.0F, 8.0F, 0.0F));
-      int $$4 = 8;
-      fri $$5 = fri.c().a(48, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 18.0F, 2.0F);
-
-      for (int $$6 = 0; $$6 < 8; $$6++) {
-         double $$7 = (double)$$6 * Math.PI * 2.0 / 8.0;
-         float $$8 = (float)Math.cos($$7) * 5.0F;
-         float $$9 = 15.0F;
-         float $$10 = (float)Math.sin($$7) * 5.0F;
-         $$7 = (double)$$6 * Math.PI * -2.0 / 8.0 + (Math.PI / 2);
-         float $$11 = (float)$$7;
-         $$1.a(a($$6), $$5, frf.a($$8, 15.0F, $$10, 0.0F, $$11, 0.0F));
-      }
-
-      return frj.a($$0, 64, 32);
+   public static frl b() {
+      frn $$0 = new frn();
+      fro $$1 = $$0.a();
+      float $$2 = 4.0F;
+      frj $$3 = new frj(-0.5F);
+      $$1.a("head", frk.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$3), frh.a(0.0F, 4.0F, 0.0F));
+      frk $$4 = frk.c().a(32, 0).a(-1.0F, 0.0F, -1.0F, 12.0F, 2.0F, 2.0F, $$3);
+      $$1.a("left_arm", $$4, frh.a(5.0F, 6.0F, 1.0F, 0.0F, 0.0F, 1.0F));
+      $$1.a("right_arm", $$4, frh.a(-5.0F, 6.0F, -1.0F, 0.0F, (float) Math.PI, -1.0F));
+      $$1.a("upper_body", frk.c().a(0, 16).a(-5.0F, -10.0F, -5.0F, 10.0F, 10.0F, 10.0F, $$3), frh.a(0.0F, 13.0F, 0.0F));
+      $$1.a("lower_body", frk.c().a(0, 36).a(-6.0F, -12.0F, -6.0F, 12.0F, 12.0F, 12.0F, $$3), frh.a(0.0F, 24.0F, 0.0F));
+      return frl.a($$0, 64, 64);
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      for (frd $$6 : this.a) {
-         $$6.e = $$3;
-      }
+      this.g.f = $$4 * (float) (Math.PI / 180.0);
+      this.g.e = $$5 * (float) (Math.PI / 180.0);
+      this.f.f = $$4 * (float) (Math.PI / 180.0) * 0.25F;
+      float $$6 = aww.a(this.f.f);
+      float $$7 = aww.b(this.f.f);
+      this.h.f = this.f.f;
+      this.i.f = this.f.f + (float) Math.PI;
+      this.h.b = $$7 * 5.0F;
+      this.h.d = -$$6 * 5.0F;
+      this.i.b = -$$7 * 5.0F;
+      this.i.d = $$6 * 5.0F;
    }
 
    @Override
-   public frd a() {
+   public frf a() {
       return this.b;
+   }
+
+   public frf c() {
+      return this.g;
    }
 }

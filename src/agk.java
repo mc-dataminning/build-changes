@@ -1,6 +1,6 @@
 import java.util.Optional;
 
-public record agk(Optional<il<boh>> b, Optional<il<boh>> c) implements yb<aez> {
+public record agk(Optional<il<boi>> b, Optional<il<boi>> c) implements yb<aez> {
    public static final xs<vf, agk> a = xs.a(xq.b(kj.Q).a(xq::a), agk::b, xq.b(kj.Q).a(xq::a), agk::e, agk::new);
 
    @Override
@@ -12,7 +12,7 @@ public record agk(Optional<il<boh>> b, Optional<il<boh>> c) implements yb<aez> {
       $$0.a(this);
    }
 
-   public Optional<il<boh>> e() {
+   public Optional<il<boi>> e() {
       return this.c;
    }
 }

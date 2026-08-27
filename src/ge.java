@@ -14,16 +14,16 @@ public class ge {
       this.a = new gf($$0, true);
    }
 
-   public Predicate<cqk> a(StringReader $$0) throws CommandSyntaxException {
-      final List<Predicate<cqk>> $$1 = new ArrayList<>();
+   public Predicate<cqm> a(StringReader $$0) throws CommandSyntaxException {
+      final List<Predicate<cqm>> $$1 = new ArrayList<>();
       this.a.a($$0, new gf.c() {
          @Override
-         public void a(il<cqf> $$0) {
+         public void a(il<cqh> $$0) {
             $$1.add($$1xx -> $$1xx.a($$0));
          }
 
          @Override
-         public void a(ip<cqf> $$0) {
+         public void a(ip<cqh> $$0) {
             $$1.add($$1xx -> $$1xx.a($$0));
          }
 

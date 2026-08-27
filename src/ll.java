@@ -32,10 +32,10 @@ public class ll implements kp {
    }
 
    private CompletableFuture<?> a(kn $$0, in.a $$1) {
-      final Map<ajh, elc> $$2 = Maps.newHashMap();
-      Map<dtb.a, ajh> $$3 = new Object2ObjectOpenHashMap();
+      final Map<ajh, ele> $$2 = Maps.newHashMap();
+      Map<dtd.a, ajh> $$3 = new Object2ObjectOpenHashMap();
       this.g.forEach($$2x -> $$2x.a().get().generate(($$3x, $$4x) -> {
-            ajh $$5x = $$3.put(bni.a($$3x), $$3x);
+            ajh $$5x = $$3.put(bnj.a($$3x), $$3x);
             if ($$5x != null) {
                ac.a("Loot table random sequence seed collision on " + $$5x + " and " + $$3x);
             }
@@ -46,11 +46,11 @@ public class ll implements kp {
             }
          }));
       axb.a $$4 = new axb.a();
-      eld $$5 = new eld($$4, ene.p, new eky() {
+      elf $$5 = new elf($$4, eng.p, new ela() {
          @Nullable
          @Override
-         public <T> T getElement(ekw<T> $$0) {
-            return (T)($$0.a() == ekz.c ? $$2.get($$0.b()) : null);
+         public <T> T getElement(eky<T> $$0) {
+            return (T)($$0.a() == elb.c ? $$2.get($$0.b()) : null);
          }
       });
 
@@ -58,7 +58,7 @@ public class ll implements kp {
          $$4.b("Missing built-in table: " + $$7);
       }
 
-      $$2.forEach(($$1x, $$2x) -> $$2x.a($$5.a($$2x.a()).a("{" + $$1x + "}", new ekw<>(ekz.c, $$1x))));
+      $$2.forEach(($$1x, $$2x) -> $$2x.a($$5.a($$2x.a()).a("{" + $$1x + "}", new eky<>(elb.c, $$1x))));
       Multimap<String, String> $$8 = $$4.a();
       if (!$$8.isEmpty()) {
          $$8.forEach(($$0x, $$1x) -> d.warn("Found validation problem in {}: {}", $$0x, $$1x));
@@ -66,9 +66,9 @@ public class ll implements kp {
       } else {
          return CompletableFuture.allOf($$2.entrySet().stream().map($$2x -> {
             ajh $$3x = (ajh)$$2x.getKey();
-            elc $$4x = (elc)$$2x.getValue();
+            ele $$4x = (ele)$$2x.getValue();
             Path $$5x = this.e.a($$3x);
-            return kp.a($$0, $$1, elc.c, $$4x, $$5x);
+            return kp.a($$0, $$1, ele.c, $$4x, $$5x);
          }).toArray(CompletableFuture[]::new));
       }
    }
@@ -78,6 +78,6 @@ public class ll implements kp {
       return "Loot Tables";
    }
 
-   public static record a(Supplier<lm> a, end b) {
+   public static record a(Supplier<lm> a, enf b) {
    }
 }

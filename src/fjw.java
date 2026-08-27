@@ -1,24 +1,26 @@
-import org.joml.Matrix4f;
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
 
-public class fjw implements fjx {
-   private final awi a;
+public class fjw implements fka {
+   private final ffo a;
 
-   public fjw(awi $$0) {
+   public fjw(ffo $$0) {
       this.a = $$0;
    }
 
    @Override
-   public int a(far $$0) {
-      return $$0.a(this.a);
-   }
+   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      Vector2i $$6 = new Vector2i();
+      $$6.x = this.a.d() + 3;
+      $$6.y = this.a.c() + 3 + 1;
+      if ($$6.y + $$5 + 3 > $$1) {
+         $$6.y = this.a.b() - $$5 - 3 - 1;
+      }
 
-   @Override
-   public int a() {
-      return 10;
-   }
+      if ($$6.x + $$4 > $$0) {
+         $$6.x = Math.max(this.a.e() - $$4 - 3, 4);
+      }
 
-   @Override
-   public void a(far $$0, int $$1, int $$2, Matrix4f $$3, fxq.a $$4) {
-      $$0.a(this.a, (float)$$1, (float)$$2, -1, true, $$3, $$4, far.a.a, 0, 15728880);
+      return $$6;
    }
 }

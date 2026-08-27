@@ -110,7 +110,7 @@ public class akj {
    }
 
    private Optional<akj.a> b(Scanner $$0) {
-      ajg<cwz> $$1 = (ajg<cwz>)aks.a.get($$0.next());
+      ajg<cxb> $$1 = (ajg<cxb>)aks.a.get($$0.next());
       if ($$1 == null) {
          return Optional.empty();
       } else {
@@ -119,7 +119,7 @@ public class akj {
          float $$4 = $$0.nextFloat();
          float $$5 = $$0.nextFloat();
          float $$6 = $$0.nextFloat();
-         return Optional.of(new akj.a($$1, new epr((double)$$2, (double)$$3, (double)$$4), new epq($$6, $$5)));
+         return Optional.of(new akj.a($$1, new ept((double)$$2, (double)$$3, (double)$$4), new eps($$6, $$5)));
       }
    }
 
@@ -129,13 +129,13 @@ public class akj {
          if (!$$1.isEmpty()) {
             apg $$2 = $$1.get(0);
             apf $$3 = this.e.I();
-            du $$4 = new du($$2, epr.a($$3.T()), epq.a, $$3, 4, "", vt.a, this.e, $$2);
+            du $$4 = new du($$2, ept.a($$3.T()), eps.a, $$3, 4, "", vt.a, this.e, $$2);
             dv $$5 = this.e.aH();
             $$5.a($$4, $$0);
          }
       });
    }
 
-   static record a(ajg<cwz> a, epr b, epq c) {
+   static record a(ajg<cxb> a, ept b, eps c) {
    }
 }

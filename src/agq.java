@@ -4,13 +4,13 @@ public class agq implements yb<aez> {
    private static final int c = 2;
    private static final int d = 4;
    private final ib e;
-   private final dlu.a f;
-   private final doj g;
+   private final dlw.a f;
+   private final dol g;
    private final String h;
    private final ib i;
    private final jg j;
-   private final dew k;
-   private final dgm l;
+   private final dey k;
+   private final dgo l;
    private final String m;
    private final boolean n;
    private final boolean o;
@@ -19,7 +19,7 @@ public class agq implements yb<aez> {
    private final long r;
 
    public agq(
-      ib $$0, dlu.a $$1, doj $$2, String $$3, ib $$4, jg $$5, dew $$6, dgm $$7, String $$8, boolean $$9, boolean $$10, boolean $$11, float $$12, long $$13
+      ib $$0, dlw.a $$1, dol $$2, String $$3, ib $$4, jg $$5, dey $$6, dgo $$7, String $$8, boolean $$9, boolean $$10, boolean $$11, float $$12, long $$13
    ) {
       this.e = $$0;
       this.f = $$1;
@@ -39,15 +39,15 @@ public class agq implements yb<aez> {
 
    private agq(uu $$0) {
       this.e = $$0.e();
-      this.f = $$0.b(dlu.a.class);
-      this.g = $$0.b(doj.class);
+      this.f = $$0.b(dlw.a.class);
+      this.g = $$0.b(dol.class);
       this.h = $$0.p();
       int $$1 = 48;
       this.i = new ib(aww.a($$0.readByte(), -48, 48), aww.a($$0.readByte(), -48, 48), aww.a($$0.readByte(), -48, 48));
       int $$2 = 48;
       this.j = new jg(aww.a($$0.readByte(), 0, 48), aww.a($$0.readByte(), 0, 48), aww.a($$0.readByte(), 0, 48));
-      this.k = $$0.b(dew.class);
-      this.l = $$0.b(dgm.class);
+      this.k = $$0.b(dey.class);
+      this.l = $$0.b(dgo.class);
       this.m = $$0.d(128);
       this.q = aww.a($$0.readFloat(), 0.0F, 1.0F);
       this.r = $$0.m();
@@ -102,11 +102,11 @@ public class agq implements yb<aez> {
       return this.e;
    }
 
-   public dlu.a e() {
+   public dlw.a e() {
       return this.f;
    }
 
-   public doj f() {
+   public dol f() {
       return this.g;
    }
 
@@ -122,11 +122,11 @@ public class agq implements yb<aez> {
       return this.j;
    }
 
-   public dew j() {
+   public dey j() {
       return this.k;
    }
 
-   public dgm k() {
+   public dgo k() {
       return this.l;
    }
 

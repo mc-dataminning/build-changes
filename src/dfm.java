@@ -1,89 +1,105 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.BiFunction;
 
-public class dfm extends daj implements dad {
-   public static final MapCodec<dfm> a = b(dfm::new);
-   public static final int b = 1;
-   public static final int c = 4;
-   public static final dnt d = dnp.R;
-   public static final dnz e = dnp.S;
-   private static final BiFunction<ih, Integer, eqk> f = ac.a(
-      ($$0, $$1) -> {
-         eqk[] $$2 = new eqk[]{
-            daa.a(8.0, 0.0, 8.0, 16.0, 3.0, 16.0),
-            daa.a(8.0, 0.0, 0.0, 16.0, 3.0, 8.0),
-            daa.a(0.0, 0.0, 0.0, 8.0, 3.0, 8.0),
-            daa.a(0.0, 0.0, 8.0, 8.0, 3.0, 16.0)
-         };
-         eqk $$3 = eqh.a();
-
-         for (int $$4 = 0; $$4 < $$1; $$4++) {
-            int $$5 = Math.floorMod($$4 - $$0.e(), 4);
-            $$3 = eqh.a($$3, $$2[$$5]);
-         }
-
-         return $$3.b();
-      }
-   );
+public class dfm extends dcf {
+   public static final MapCodec<dfm> b = b(dfm::new);
+   public static final dns c = dnr.w;
 
    @Override
    public MapCodec<dfm> a() {
-      return a;
+      return b;
    }
 
-   protected dfm(dmy.d $$0) {
+   public dfm(dna.d $$0) {
       super($$0);
-      this.k(this.E.b().a(d, ih.c).a(e, Integer.valueOf(1)));
+      this.k(this.E.b().a(a, ih.d).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public dmz a(dmz $$0, dgm $$1) {
-      return $$0.a(d, $$1.a($$0.c(d)));
+   protected void a(dnc.a<dac, dnb> $$0) {
+      $$0.a(a, c);
    }
 
    @Override
-   public dmz a(dmz $$0, dew $$1) {
-      return $$0.a($$1.a($$0.c(d)));
+   protected dnb a(dnb $$0, dgo $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
    }
 
    @Override
-   public boolean a(dmz $$0, css $$1) {
-      return !$$1.h() && $$1.n().a(this.l()) && $$0.c(e) < 4 ? true : super.a($$0, $$1);
+   protected dnb a(dnb $$0, dey $$1) {
+      return $$0.a($$1.a($$0.c(a)));
    }
 
    @Override
-   public eqk a(dmz $$0, cwf $$1, ib $$2, epw $$3) {
-      return f.apply($$0.c(d), $$0.c(e));
-   }
-
-   @Override
-   public dmz a(css $$0) {
-      dmz $$1 = $$0.q().a_($$0.a());
-      return $$1.a(this) ? $$1.a(e, Integer.valueOf(Math.min(4, $$1.c(e) + 1))) : this.o().a(d, $$0.g().g());
-   }
-
-   @Override
-   protected void a(dna.a<daa, dmz> $$0) {
-      $$0.a(d, e);
-   }
-
-   @Override
-   public boolean b(cxc $$0, ib $$1, dmz $$2) {
-      return true;
-   }
-
-   @Override
-   public boolean a(cwz $$0, axd $$1, ib $$2, dmz $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(apf $$0, axd $$1, ib $$2, dmz $$3) {
-      int $$4 = $$3.c(e);
-      if ($$4 < 4) {
-         $$0.a($$2, $$3.a(e, Integer.valueOf($$4 + 1)), 2);
+   protected void a(dnb $$0, apf $$1, ib $$2, axd $$3) {
+      if ($$0.c(c)) {
+         $$1.a($$2, $$0.a(c, Boolean.valueOf(false)), 2);
       } else {
-         a($$0, $$2, new cqk(this));
+         $$1.a($$2, $$0.a(c, Boolean.valueOf(true)), 2);
+         $$1.a($$2, this, 2);
       }
+
+      this.a($$1, $$2, $$0);
+   }
+
+   @Override
+   protected dnb a(dnb $$0, ih $$1, dnb $$2, cxc $$3, ib $$4, ib $$5) {
+      if ($$0.c(a) == $$1 && !$$0.c(c)) {
+         this.a($$3, $$4);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   private void a(cxc $$0, ib $$1) {
+      if (!$$0.x_() && !$$0.N().a($$1, this)) {
+         $$0.a($$1, this, 2);
+      }
+   }
+
+   protected void a(cxb $$0, ib $$1, dnb $$2) {
+      ih $$3 = $$2.c(a);
+      ib $$4 = $$1.a($$3.g());
+      $$0.a($$4, this, $$1);
+      $$0.a($$4, this, $$3);
+   }
+
+   @Override
+   protected boolean f_(dnb $$0) {
+      return true;
+   }
+
+   @Override
+   protected int b(dnb $$0, cwh $$1, ib $$2, ih $$3) {
+      return $$0.b($$1, $$2, $$3);
+   }
+
+   @Override
+   protected int a(dnb $$0, cwh $$1, ib $$2, ih $$3) {
+      return $$0.c(c) && $$0.c(a) == $$3 ? 15 : 0;
+   }
+
+   @Override
+   protected void b(dnb $$0, cxb $$1, ib $$2, dnb $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if (!$$1.x_() && $$0.c(c) && !$$1.N().a($$2, this)) {
+            dnb $$5 = $$0.a(c, Boolean.valueOf(false));
+            $$1.a($$2, $$5, 18);
+            this.a($$1, $$2, $$5);
+         }
+      }
+   }
+
+   @Override
+   protected void a(dnb $$0, cxb $$1, ib $$2, dnb $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if (!$$1.B && $$0.c(c) && $$1.N().a($$2, this)) {
+            this.a($$1, $$2, $$0.a(c, Boolean.valueOf(false)));
+         }
+      }
+   }
+
+   @Override
+   public dnb a(csu $$0) {
+      return this.o().a(a, $$0.d().g().g());
    }
 }

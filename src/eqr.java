@@ -1,19 +1,46 @@
-import java.util.Objects;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.Collections;
+import java.util.Map;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public interface eqr {
-   int a();
-
-   boolean b();
+class eqr {
+   private final Reference2ObjectOpenHashMap<eqp, equ> a = new Reference2ObjectOpenHashMap(16, 0.5F);
 
    @Nullable
-   xk c();
-
-   default wi a(xk $$0) {
-      return Objects.requireNonNullElse(this.c(), $$0).a(this.a());
+   public equ a(eqp $$0) {
+      return (equ)this.a.get($$0);
    }
 
-   static wi a(@Nullable eqr $$0, xk $$1) {
-      return $$0 != null ? $$0.a($$1) : $$1.a(0);
+   public equ a(eqp $$0, Consumer<equ> $$1) {
+      return (equ)this.a.computeIfAbsent($$0, $$1x -> {
+         equ $$2 = new equ();
+         $$1.accept($$2);
+         return $$2;
+      });
+   }
+
+   public boolean b(eqp $$0) {
+      return this.a.remove($$0) != null;
+   }
+
+   public boolean a() {
+      return !this.a.isEmpty();
+   }
+
+   public Object2IntMap<eqp> b() {
+      Object2IntMap<eqp> $$0 = new Object2IntOpenHashMap();
+      this.a.forEach(($$1, $$2) -> $$0.put($$1, $$2.a()));
+      return $$0;
+   }
+
+   void a(eqp $$0, equ $$1) {
+      this.a.put($$0, $$1);
+   }
+
+   Map<eqp, equ> c() {
+      return Collections.unmodifiableMap(this.a);
    }
 }

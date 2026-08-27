@@ -1,11 +1,11 @@
 public class avh {
-   public static final avd<ecr> a = a("normal");
-   public static final avd<ecr> b = a("extended");
+   public static final avd<ect> a = a("normal");
+   public static final avd<ect> b = a("extended");
 
    private avh() {
    }
 
-   private static avd<ecr> a(String $$0) {
+   private static avd<ect> a(String $$0) {
       return avd.a(kj.aL, new ajh($$0));
    }
 }

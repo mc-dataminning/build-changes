@@ -1,96 +1,51 @@
-public interface bny {
-   ajg<bnx> a = ajg.a(kj.r, new ajh("in_fire"));
-   ajg<bnx> b = ajg.a(kj.r, new ajh("lightning_bolt"));
-   ajg<bnx> c = ajg.a(kj.r, new ajh("on_fire"));
-   ajg<bnx> d = ajg.a(kj.r, new ajh("lava"));
-   ajg<bnx> e = ajg.a(kj.r, new ajh("hot_floor"));
-   ajg<bnx> f = ajg.a(kj.r, new ajh("in_wall"));
-   ajg<bnx> g = ajg.a(kj.r, new ajh("cramming"));
-   ajg<bnx> h = ajg.a(kj.r, new ajh("drown"));
-   ajg<bnx> i = ajg.a(kj.r, new ajh("starve"));
-   ajg<bnx> j = ajg.a(kj.r, new ajh("cactus"));
-   ajg<bnx> k = ajg.a(kj.r, new ajh("fall"));
-   ajg<bnx> l = ajg.a(kj.r, new ajh("fly_into_wall"));
-   ajg<bnx> m = ajg.a(kj.r, new ajh("out_of_world"));
-   ajg<bnx> n = ajg.a(kj.r, new ajh("generic"));
-   ajg<bnx> o = ajg.a(kj.r, new ajh("magic"));
-   ajg<bnx> p = ajg.a(kj.r, new ajh("wither"));
-   ajg<bnx> q = ajg.a(kj.r, new ajh("dragon_breath"));
-   ajg<bnx> r = ajg.a(kj.r, new ajh("dry_out"));
-   ajg<bnx> s = ajg.a(kj.r, new ajh("sweet_berry_bush"));
-   ajg<bnx> t = ajg.a(kj.r, new ajh("freeze"));
-   ajg<bnx> u = ajg.a(kj.r, new ajh("stalagmite"));
-   ajg<bnx> v = ajg.a(kj.r, new ajh("falling_block"));
-   ajg<bnx> w = ajg.a(kj.r, new ajh("falling_anvil"));
-   ajg<bnx> x = ajg.a(kj.r, new ajh("falling_stalactite"));
-   ajg<bnx> y = ajg.a(kj.r, new ajh("sting"));
-   ajg<bnx> z = ajg.a(kj.r, new ajh("mob_attack"));
-   ajg<bnx> A = ajg.a(kj.r, new ajh("mob_attack_no_aggro"));
-   ajg<bnx> B = ajg.a(kj.r, new ajh("player_attack"));
-   ajg<bnx> C = ajg.a(kj.r, new ajh("arrow"));
-   ajg<bnx> D = ajg.a(kj.r, new ajh("trident"));
-   ajg<bnx> E = ajg.a(kj.r, new ajh("mob_projectile"));
-   ajg<bnx> F = ajg.a(kj.r, new ajh("spit"));
-   ajg<bnx> G = ajg.a(kj.r, new ajh("wind_charge"));
-   ajg<bnx> H = ajg.a(kj.r, new ajh("fireworks"));
-   ajg<bnx> I = ajg.a(kj.r, new ajh("fireball"));
-   ajg<bnx> J = ajg.a(kj.r, new ajh("unattributed_fireball"));
-   ajg<bnx> K = ajg.a(kj.r, new ajh("wither_skull"));
-   ajg<bnx> L = ajg.a(kj.r, new ajh("thrown"));
-   ajg<bnx> M = ajg.a(kj.r, new ajh("indirect_magic"));
-   ajg<bnx> N = ajg.a(kj.r, new ajh("thorns"));
-   ajg<bnx> O = ajg.a(kj.r, new ajh("explosion"));
-   ajg<bnx> P = ajg.a(kj.r, new ajh("player_explosion"));
-   ajg<bnx> Q = ajg.a(kj.r, new ajh("sonic_boom"));
-   ajg<bnx> R = ajg.a(kj.r, new ajh("bad_respawn_point"));
-   ajg<bnx> S = ajg.a(kj.r, new ajh("outside_border"));
-   ajg<bnx> T = ajg.a(kj.r, new ajh("generic_kill"));
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   static void a(pl<bnx> $$0) {
-      $$0.a(a, new bnx("inFire", 0.1F, bnt.d));
-      $$0.a(b, new bnx("lightningBolt", 0.1F));
-      $$0.a(c, new bnx("onFire", 0.0F, bnt.d));
-      $$0.a(d, new bnx("lava", 0.1F, bnt.d));
-      $$0.a(e, new bnx("hotFloor", 0.1F, bnt.d));
-      $$0.a(f, new bnx("inWall", 0.0F));
-      $$0.a(g, new bnx("cramming", 0.0F));
-      $$0.a(h, new bnx("drown", 0.0F, bnt.c));
-      $$0.a(i, new bnx("starve", 0.0F));
-      $$0.a(j, new bnx("cactus", 0.1F));
-      $$0.a(k, new bnx("fall", bnu.b, 0.0F, bnt.a, bnz.b));
-      $$0.a(l, new bnx("flyIntoWall", 0.0F));
-      $$0.a(m, new bnx("outOfWorld", 0.0F));
-      $$0.a(n, new bnx("generic", 0.0F));
-      $$0.a(o, new bnx("magic", 0.0F));
-      $$0.a(p, new bnx("wither", 0.0F));
-      $$0.a(q, new bnx("dragonBreath", 0.0F));
-      $$0.a(r, new bnx("dryout", 0.1F));
-      $$0.a(s, new bnx("sweetBerryBush", 0.1F, bnt.e));
-      $$0.a(t, new bnx("freeze", 0.0F, bnt.f));
-      $$0.a(u, new bnx("stalagmite", 0.0F));
-      $$0.a(v, new bnx("fallingBlock", 0.1F));
-      $$0.a(w, new bnx("anvil", 0.1F));
-      $$0.a(x, new bnx("fallingStalactite", 0.1F));
-      $$0.a(y, new bnx("sting", 0.1F));
-      $$0.a(z, new bnx("mob", 0.1F));
-      $$0.a(A, new bnx("mob", 0.1F));
-      $$0.a(B, new bnx("player", 0.1F));
-      $$0.a(C, new bnx("arrow", 0.1F));
-      $$0.a(D, new bnx("trident", 0.1F));
-      $$0.a(E, new bnx("mob", 0.1F));
-      $$0.a(F, new bnx("mob", 0.1F));
-      $$0.a(H, new bnx("fireworks", 0.1F));
-      $$0.a(J, new bnx("onFire", 0.1F, bnt.d));
-      $$0.a(I, new bnx("fireball", 0.1F, bnt.d));
-      $$0.a(K, new bnx("witherSkull", 0.1F));
-      $$0.a(L, new bnx("thrown", 0.1F));
-      $$0.a(M, new bnx("indirectMagic", 0.0F));
-      $$0.a(N, new bnx("thorns", 0.1F, bnt.b));
-      $$0.a(O, new bnx("explosion", bnu.c, 0.1F));
-      $$0.a(P, new bnx("explosion.player", bnu.c, 0.1F));
-      $$0.a(Q, new bnx("sonic_boom", bnu.c, 0.0F));
-      $$0.a(R, new bnx("badRespawnPoint", bnu.c, 0.1F, bnt.a, bnz.c));
-      $$0.a(S, new bnx("outsideBorder", 0.0F));
-      $$0.a(T, new bnx("genericKill", 0.0F));
+public record bny(String b, bnv c, float d, bnu e, boa f) {
+   public static final Codec<bny> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("message_id").forGetter(bny::a),
+               bnv.d.fieldOf("scaling").forGetter(bny::b),
+               Codec.FLOAT.fieldOf("exhaustion").forGetter(bny::c),
+               bnu.g.optionalFieldOf("effects", bnu.a).forGetter(bny::d),
+               boa.d.optionalFieldOf("death_message_type", boa.a).forGetter(bny::e)
+            )
+            .apply($$0, bny::new)
+   );
+
+   public bny(String $$0, bnv $$1, float $$2) {
+      this($$0, $$1, $$2, bnu.a, boa.a);
+   }
+
+   public bny(String $$0, bnv $$1, float $$2, bnu $$3) {
+      this($$0, $$1, $$2, $$3, boa.a);
+   }
+
+   public bny(String $$0, float $$1, bnu $$2) {
+      this($$0, bnv.b, $$1, $$2);
+   }
+
+   public bny(String $$0, float $$1) {
+      this($$0, bnv.b, $$1);
+   }
+
+   public String a() {
+      return this.b;
+   }
+
+   public bnv b() {
+      return this.c;
+   }
+
+   public float c() {
+      return this.d;
+   }
+
+   public bnu d() {
+      return this.e;
+   }
+
+   public boa e() {
+      return this.f;
    }
 }

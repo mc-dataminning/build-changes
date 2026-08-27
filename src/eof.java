@@ -1,92 +1,50 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class eof implements eoh {
-   private static final String d = "block_entity";
-   private static final eof.a e = new eof.a() {
-      @Override
-      public tx a(eku $$0) {
-         dkg $$1 = $$0.c(enf.h);
-         return $$1 != null ? $$1.b($$1.i().H_()) : null;
-      }
-
-      @Override
-      public String a() {
-         return "block_entity";
-      }
-
-      @Override
-      public Set<enc<?>> b() {
-         return ImmutableSet.of(enf.h);
-      }
-   };
-   public static final eof a = new eof(e);
-   private static final Codec<eof.a> f = Codec.STRING.xmap($$0 -> {
-      if ($$0.equals("block_entity")) {
-         return e;
-      } else {
-         eku.b $$1 = eku.b.a($$0);
-         return b($$1);
-      }
-   }, eof.a::a);
-   public static final Codec<eof> b = RecordCodecBuilder.create($$0 -> $$0.group(f.fieldOf("target").forGetter($$0x -> $$0x.g)).apply($$0, eof::new));
-   public static final Codec<eof> c = f.xmap(eof::new, $$0 -> $$0.g);
-   private final eof.a g;
-
-   private static eof.a b(final eku.b $$0) {
-      return new eof.a() {
-         @Nullable
-         @Override
-         public tx a(eku $$0x) {
-            bow $$1 = $$0.c($$0.a());
-            return $$1 != null ? co.b($$1) : null;
-         }
-
-         @Override
-         public String a() {
-            return $$0.name();
-         }
-
-         @Override
-         public Set<enc<?>> b() {
-            return ImmutableSet.of($$0.a());
-         }
-      };
-   }
-
-   private eof(eof.a $$0) {
-      this.g = $$0;
-   }
+public record eof(Optional<Boolean> b, Optional<Boolean> c) implements env {
+   public static final Codec<eof> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(awe.a(Codec.BOOL, "raining").forGetter(eof::d), awe.a(Codec.BOOL, "thundering").forGetter(eof::e)).apply($$0, eof::new)
+   );
 
    @Override
-   public eog a() {
-      return eoi.c;
+   public enw b() {
+      return enx.p;
    }
 
-   @Nullable
-   @Override
-   public tx a(eku $$0) {
-      return this.g.a($$0);
+   public boolean a(ekw $$0) {
+      apf $$1 = $$0.d();
+      return this.b.isPresent() && this.b.get() != $$1.ab() ? false : !this.c.isPresent() || this.c.get() == $$1.aa();
    }
 
-   @Override
-   public Set<enc<?>> b() {
-      return this.g.b();
+   public static eof.a c() {
+      return new eof.a();
    }
 
-   public static eoh a(eku.b $$0) {
-      return new eof(b($$0));
+   public Optional<Boolean> d() {
+      return this.b;
    }
 
-   interface a {
-      @Nullable
-      tx a(eku var1);
+   public Optional<Boolean> e() {
+      return this.c;
+   }
 
-      String a();
+   public static class a implements env.a {
+      private Optional<Boolean> a = Optional.empty();
+      private Optional<Boolean> b = Optional.empty();
 
-      Set<enc<?>> b();
+      public eof.a a(boolean $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public eof.a b(boolean $$0) {
+         this.b = Optional.of($$0);
+         return this;
+      }
+
+      public eof a() {
+         return new eof(this.a, this.b);
+      }
    }
 }

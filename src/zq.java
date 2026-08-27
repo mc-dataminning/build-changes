@@ -1,6 +1,6 @@
 import java.util.List;
 
-public record zq(ajg<cwz> c, ecu d, List<zq.a> e) implements zc {
+public record zq(ajg<cxb> c, ecw d, List<zq.a> e) implements zc {
    public static final xs<uu, zq> a = zc.a(zq::a, zq::new);
    public static final zc.b<zq> b = zc.a("debug/structures");
 
@@ -19,11 +19,11 @@ public record zq(ajg<cwz> c, ecu d, List<zq.a> e) implements zc {
       return b;
    }
 
-   static ecu b(uu $$0) {
-      return new ecu($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
+   static ecw b(uu $$0) {
+      return new ecw($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
    }
 
-   static void a(uu $$0, ecu $$1) {
+   static void a(uu $$0, ecw $$1) {
       $$0.p($$1.h());
       $$0.p($$1.i());
       $$0.p($$1.j());
@@ -32,11 +32,11 @@ public record zq(ajg<cwz> c, ecu d, List<zq.a> e) implements zc {
       $$0.p($$1.m());
    }
 
-   public ajg<cwz> b() {
+   public ajg<cxb> b() {
       return this.c;
    }
 
-   public ecu c() {
+   public ecw c() {
       return this.d;
    }
 
@@ -44,7 +44,7 @@ public record zq(ajg<cwz> c, ecu d, List<zq.a> e) implements zc {
       return this.e;
    }
 
-   public static record a(ecu a, boolean b) {
+   public static record a(ecw a, boolean b) {
       public a(uu $$0) {
          this(zq.b($$0), $$0.readBoolean());
       }

@@ -1,49 +1,28 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dzj extends dzg {
-   public static final Codec<dzj> a = RecordCodecBuilder.create(
-      $$0 -> b($$0).and(bmh.b(0, 24).fieldOf("crown_height").forGetter($$0x -> $$0x.b)).apply($$0, dzj::new)
-   );
-   private final bmh b;
+public class dzj<P extends dzi> {
+   public static final dzj<dzd> a = a("blob_foliage_placer", dzd.a);
+   public static final dzj<dzo> b = a("spruce_foliage_placer", dzo.a);
+   public static final dzj<dzm> c = a("pine_foliage_placer", dzm.a);
+   public static final dzj<dzc> d = a("acacia_foliage_placer", dzc.a);
+   public static final dzj<dze> e = a("bush_foliage_placer", dze.c);
+   public static final dzj<dzh> f = a("fancy_foliage_placer", dzh.c);
+   public static final dzj<dzk> g = a("jungle_foliage_placer", dzk.a);
+   public static final dzj<dzl> h = a("mega_pine_foliage_placer", dzl.a);
+   public static final dzj<dzg> i = a("dark_oak_foliage_placer", dzg.a);
+   public static final dzj<dzn> j = a("random_spread_foliage_placer", dzn.a);
+   public static final dzj<dzf> k = a("cherry_foliage_placer", dzf.a);
+   private final Codec<P> l;
 
-   public dzj(bmh $$0, bmh $$1, bmh $$2) {
-      super($$0, $$1);
-      this.b = $$2;
+   private static <P extends dzi> dzj<P> a(String $$0, Codec<P> $$1) {
+      return iy.a(ki.W, $$0, new dzj<>($$1));
    }
 
-   @Override
-   protected dzh<?> a() {
-      return dzh.h;
+   private dzj(Codec<P> $$0) {
+      this.l = $$0;
    }
 
-   @Override
-   protected void a(cxf $$0, dzg.b $$1, axd $$2, dyq $$3, int $$4, dzg.a $$5, int $$6, int $$7, int $$8) {
-      ib $$9 = $$5.a();
-      int $$10 = 0;
-
-      for (int $$11 = $$9.v() - $$6 + $$8; $$11 <= $$9.v() + $$8; $$11++) {
-         int $$12 = $$9.v() - $$11;
-         int $$13 = $$7 + $$5.b() + aww.d((float)$$12 / (float)$$6 * 3.5F);
-         int $$14;
-         if ($$12 > 0 && $$13 == $$10 && ($$11 & 1) == 0) {
-            $$14 = $$13 + 1;
-         } else {
-            $$14 = $$13;
-         }
-
-         this.a($$0, $$1, $$2, $$3, new ib($$9.u(), $$11, $$9.w()), $$14, 0, $$5.c());
-         $$10 = $$13;
-      }
-   }
-
-   @Override
-   public int a(axd $$0, int $$1, dyq $$2) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   protected boolean a(axd $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
+   public Codec<P> a() {
+      return this.l;
    }
 }

@@ -1,12 +1,38 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
 
-public record gkp(gkq d) {
-   public static final gkp a = new gkp(gkq.b);
-   public static final Codec<gkp> b = RecordCodecBuilder.create($$0 -> $$0.group(awe.a(gkq.a, "scaling", gkq.b).forGetter(gkp::a)).apply($$0, gkp::new));
-   public static final aro<gkp> c = aro.a("gui", b);
+public class gkp {
+   public static final gkq a = new gkq();
+   public static final String b = "villager";
+   private final gkp.a c;
 
-   public gkq a() {
-      return this.d;
+   public gkp(gkp.a $$0) {
+      this.c = $$0;
+   }
+
+   public gkp.a a() {
+      return this.c;
+   }
+
+   public static enum a {
+      a("none"),
+      b("partial"),
+      c("full");
+
+      private static final Map<String, gkp.a> d = Arrays.stream(values()).collect(Collectors.toMap(gkp.a::a, $$0 -> (gkp.a)$$0));
+      private final String e;
+
+      private a(String $$0) {
+         this.e = $$0;
+      }
+
+      public String a() {
+         return this.e;
+      }
+
+      public static gkp.a a(String $$0) {
+         return d.getOrDefault($$0, a);
+      }
    }
 }

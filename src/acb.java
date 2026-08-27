@@ -7,7 +7,7 @@ public class acb implements yb<aam> {
    private final int c;
    private final acc d;
 
-   public acb(cwg $$0, eic $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+   public acb(cwi $$0, eie $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
       this.b = $$0.e;
       this.c = $$0.f;
       this.d = new acc($$0, $$1, $$2, $$3);

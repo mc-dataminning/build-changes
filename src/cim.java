@@ -1,138 +1,61 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public class cim implements cwm {
-   private static final int b = 1200;
-   public static final int a = 24000;
-   private static final int c = 25;
-   private static final int d = 75;
-   private static final int e = 25;
-   private static final int f = 10;
-   private static final int g = 10;
-   private final axd h = axd.a();
-   private final ekp i;
-   private int j;
-   private int k;
-   private int l;
+public final class cim {
+   public static final cim a = a("desert");
+   public static final cim b = a("jungle");
+   public static final cim c = a("plains");
+   public static final cim d = a("savanna");
+   public static final cim e = a("snow");
+   public static final cim f = a("swamp");
+   public static final cim g = a("taiga");
+   private final String h;
+   private static final Map<ajg<cya>, cim> i = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(cyh.A, a);
+      $$0.put(cyh.f, a);
+      $$0.put(cyh.B, a);
+      $$0.put(cyh.C, a);
+      $$0.put(cyh.z, b);
+      $$0.put(cyh.x, b);
+      $$0.put(cyh.y, b);
+      $$0.put(cyh.s, d);
+      $$0.put(cyh.r, d);
+      $$0.put(cyh.w, d);
+      $$0.put(cyh.X, e);
+      $$0.put(cyh.W, e);
+      $$0.put(cyh.L, e);
+      $$0.put(cyh.e, e);
+      $$0.put(cyh.N, e);
+      $$0.put(cyh.q, e);
+      $$0.put(cyh.d, e);
+      $$0.put(cyh.F, e);
+      $$0.put(cyh.G, e);
+      $$0.put(cyh.H, e);
+      $$0.put(cyh.I, e);
+      $$0.put(cyh.g, f);
+      $$0.put(cyh.h, f);
+      $$0.put(cyh.o, g);
+      $$0.put(cyh.n, g);
+      $$0.put(cyh.u, g);
+      $$0.put(cyh.t, g);
+      $$0.put(cyh.p, g);
+      $$0.put(cyh.v, g);
+   });
 
-   public cim(ekp $$0) {
-      this.i = $$0;
-      this.j = 1200;
-      this.k = $$0.t();
-      this.l = $$0.u();
-      if (this.k == 0 && this.l == 0) {
-         this.k = 24000;
-         $$0.d(this.k);
-         this.l = 25;
-         $$0.e(this.l);
-      }
+   private cim(String $$0) {
+      this.h = $$0;
    }
 
    @Override
-   public int a(apf $$0, boolean $$1, boolean $$2) {
-      if (!$$0.Z().b(cwv.L)) {
-         return 0;
-      } else if (--this.j > 0) {
-         return 0;
-      } else {
-         this.j = 1200;
-         this.k -= 1200;
-         this.i.d(this.k);
-         if (this.k > 0) {
-            return 0;
-         } else {
-            this.k = 24000;
-            if (!$$0.Z().b(cwv.e)) {
-               return 0;
-            } else {
-               int $$3 = this.l;
-               this.l = aww.a(this.l + 25, 25, 75);
-               this.i.e(this.l);
-               if (this.h.a(100) > $$3) {
-                  return 0;
-               } else if (this.a($$0)) {
-                  this.l = 25;
-                  return 1;
-               } else {
-                  return 0;
-               }
-            }
-         }
-      }
+   public String toString() {
+      return this.h;
    }
 
-   private boolean a(apf $$0) {
-      cis $$1 = $$0.j();
-      if ($$1 == null) {
-         return true;
-      } else if (this.h.a(10) != 0) {
-         return false;
-      } else {
-         ib $$2 = $$1.dm();
-         int $$3 = 48;
-         car $$4 = $$0.y();
-         Optional<ib> $$5 = $$4.d($$0x -> $$0x.a(cav.o), $$0x -> true, $$2, 48, car.b.c);
-         ib $$6 = $$5.orElse($$2);
-         ib $$7 = this.a($$0, $$6, 48);
-         if ($$7 != null && this.a($$0, $$7)) {
-            if ($$0.t($$7).a(aum.ah)) {
-               return false;
-            }
-
-            cil $$8 = bpc.bk.a($$0, $$7, bps.h);
-            if ($$8 != null) {
-               for (int $$9 = 0; $$9 < 2; $$9++) {
-                  this.a($$0, $$8, 4);
-               }
-
-               this.i.a($$8.cw());
-               $$8.v(48000);
-               $$8.i($$6);
-               $$8.a($$6, 16);
-               return true;
-            }
-         }
-
-         return false;
-      }
+   private static cim a(String $$0) {
+      return iy.a(ki.y, new ajh($$0), new cim($$0));
    }
 
-   private void a(apf $$0, cil $$1, int $$2) {
-      ib $$3 = this.a($$0, $$1.dm(), $$2);
-      if ($$3 != null) {
-         cdn $$4 = bpc.bd.a($$0, $$3, bps.h);
-         if ($$4 != null) {
-            $$4.b($$1, true);
-         }
-      }
-   }
-
-   @Nullable
-   private ib a(cxc $$0, ib $$1, int $$2) {
-      ib $$3 = null;
-      bqh $$4 = bqj.a(bpc.bk);
-
-      for (int $$5 = 0; $$5 < 10; $$5++) {
-         int $$6 = $$1.u() + this.h.a($$2 * 2) - $$2;
-         int $$7 = $$1.w() + this.h.a($$2 * 2) - $$2;
-         int $$8 = $$0.a(dsm.a.b, $$6, $$7);
-         ib $$9 = new ib($$6, $$8, $$7);
-         if ($$4.isSpawnPositionOk($$0, $$9, bpc.bk)) {
-            $$3 = $$9;
-            break;
-         }
-      }
-
-      return $$3;
-   }
-
-   private boolean a(cwf $$0, ib $$1) {
-      for (ib $$2 : ib.a($$1, $$1.b(1, 2, 1))) {
-         if (!$$0.a_($$2).k($$0, $$2).c()) {
-            return false;
-         }
-      }
-
-      return true;
+   public static cim a(il<cya> $$0) {
+      return $$0.e().map(i::get).orElse(c);
    }
 }

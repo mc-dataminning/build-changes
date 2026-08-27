@@ -1,24 +1,24 @@
-import java.util.UUID;
+import java.util.List;
 import java.util.stream.Stream;
 
-public interface dqu {
-   int aj();
+public class dqu<T> {
+   private final cwi a;
+   private final List<T> b;
 
-   UUID cw();
+   public dqu(cwi $$0, List<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   ib dm();
+   public cwi a() {
+      return this.a;
+   }
 
-   epm cH();
+   public Stream<T> b() {
+      return this.b.stream();
+   }
 
-   void a(dqv var1);
-
-   Stream<? extends dqu> cR();
-
-   Stream<? extends dqu> cS();
-
-   void b(bow.c var1);
-
-   boolean dK();
-
-   boolean dL();
+   public boolean c() {
+      return this.b.isEmpty();
+   }
 }

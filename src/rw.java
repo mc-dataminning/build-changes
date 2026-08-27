@@ -30,13 +30,13 @@ public class rw {
    private final sj o;
    private final Stopwatch p = Stopwatch.createUnstarted();
    private boolean q;
-   private final dgm r;
+   private final dgo r;
    @Nullable
    private Throwable s;
    @Nullable
-   private dlu t;
+   private dlw t;
 
-   public rw(sq $$0, dgm $$1, apf $$2, sj $$3) {
+   public rw(sq $$0, dgo $$1, apf $$2, sj $$3) {
       this.a = $$0;
       this.d = $$2;
       this.o = $$3;
@@ -60,9 +60,9 @@ public class rw {
       } else {
          this.j = 0;
          this.k = true;
-         dlu $$0 = this.e();
+         dlw $$0 = this.e();
          $$0.c(this.d);
-         ecu $$1 = sm.b($$0);
+         ecw $$1 = sm.b($$0);
          this.d.m().a($$1);
          this.d.a($$1);
          return this;
@@ -165,18 +165,18 @@ public class rw {
       return this.b;
    }
 
-   public epm d() {
-      dlu $$0 = this.e();
+   public epo d() {
+      dlw $$0 = this.e();
       return sm.a($$0);
    }
 
-   public dlu e() {
+   public dlw e() {
       if (this.t == null) {
          if (this.b == null) {
             throw new IllegalStateException("Could not find a structureBlockEntity for this GameTestInfo");
          }
 
-         this.t = (dlu)this.d.c_(this.b);
+         this.t = (dlw)this.d.c_(this.b);
          if (this.t == null) {
             throw new IllegalStateException("Could not find a structureBlockEntity at the given coordinate " + this.b);
          }
@@ -221,9 +221,9 @@ public class rw {
    public void l() {
       if (this.s == null) {
          this.F();
-         epm $$0 = this.d();
-         List<bow> $$1 = this.f().a(bow.class, $$0.g(1.0), $$0x -> !($$0x instanceof cis));
-         $$1.forEach($$0x -> $$0x.a(bow.c.b));
+         epo $$0 = this.d();
+         List<box> $$1 = this.f().a(box.class, $$0.g(1.0), $$0x -> !($$0x instanceof ciu));
+         $$1.forEach($$0x -> $$0x.a(box.c.b));
       }
    }
 
@@ -251,6 +251,7 @@ public class rw {
       this.t = sm.a(this, $$0, this.t(), this.d);
       this.b = this.t.aC_();
       sm.a(this.b, new ib(1, 0, -1), this.t(), this.d);
+      sm.a(this.d(), this.d, !this.a.k());
       this.e.forEach($$0x -> $$0x.a(this));
       return this;
    }
@@ -277,7 +278,7 @@ public class rw {
       return this.a.d();
    }
 
-   public dgm t() {
+   public dgo t() {
       return this.r;
    }
 
@@ -324,7 +325,7 @@ public class rw {
 
    private ib G() {
       if (this.c == null) {
-         ecu $$0 = sm.b(this.e());
+         ecw $$0 = sm.b(this.e());
          this.c = new ib($$0.h(), $$0.i(), $$0.j());
       }
 

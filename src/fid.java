@@ -1,135 +1,214 @@
-public abstract class fid extends fhf {
-   private static final vu m = vu.c("advMode.setCommand");
-   private static final vu n = vu.c("advMode.command");
-   private static final vu o = vu.c("advMode.previousOutput");
-   protected fbp a;
-   protected fbp b;
-   protected fbg c;
-   protected fbg k;
-   protected fbn<Boolean> l;
-   fbj p;
+import com.google.common.collect.Lists;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.List;
+
+public class fid extends fhh {
+   static final ajh a = new ajh("gamemode_switcher/slot");
+   static final ajh b = new ajh("gamemode_switcher/selection");
+   private static final ajh c = new ajh("textures/gui/container/gamemode_switcher.png");
+   private static final int k = 128;
+   private static final int l = 128;
+   private static final int m = 26;
+   private static final int n = 5;
+   private static final int o = 31;
+   private static final int p = 5;
+   private static final int q = fid.a.values().length * 31 - 5;
+   private static final vu r = vu.a("debug.gamemodes.select_next", vu.c("debug.gamemodes.press_f4").a(n.l));
+   private final fid.a t;
+   private fid.a u;
+   private int v;
+   private int w;
+   private boolean x;
+   private final List<fid.b> y = Lists.newArrayList();
 
    public fid() {
-      super(eyy.a);
+      super(eza.a);
+      this.t = fid.a.a(this.o());
+      this.u = this.t;
    }
 
-   @Override
-   public void e() {
-      if (!this.o().j()) {
-         this.d();
+   private cwy o() {
+      fsj $$0 = ezi.Q().q;
+      cwy $$1 = $$0.i();
+      if ($$1 != null) {
+         return $$1;
+      } else {
+         return $$0.j() == cwy.b ? cwy.a : cwy.b;
       }
    }
-
-   abstract cwa o();
-
-   abstract int E();
 
    @Override
    protected void aO_() {
-      this.c = this.c(fbg.a(vt.d, $$0x -> this.H()).a(this.g / 2 - 4 - 150, this.h / 4 + 120 + 12, 150, 20).a());
-      this.k = this.c(fbg.a(vt.e, $$0x -> this.d()).a(this.g / 2 + 4, this.h / 4 + 120 + 12, 150, 20).a());
-      boolean $$0 = this.o().o();
-      this.l = this.c(fbn.a(vu.b("O"), vu.b("X")).a($$0).a().a(this.g / 2 + 150 - 20, this.E(), 20, 20, vu.c("advMode.trackOutput"), ($$0x, $$1) -> {
-         cwa $$2 = this.o();
-         $$2.a($$1);
-         this.c($$1);
-      }));
-      this.a = new fbp(this.i, this.g / 2 - 150, 50, 300, 20, vu.c("advMode.command")) {
-         @Override
-         protected wi aL_() {
-            return super.aL_().b(fid.this.p.e());
-         }
-      };
-      this.a.f(32500);
-      this.a.b(this::a);
-      this.d(this.a);
-      this.b = new fbp(this.i, this.g / 2 - 150, this.E(), 276, 20, vu.c("advMode.previousOutput"));
-      this.b.f(32500);
-      this.b.e(false);
-      this.b.a("-");
-      this.d(this.b);
-      this.p = new fbj(this.f, this, this.a, this.i, true, true, 0, 7, false, Integer.MIN_VALUE);
-      this.p.a(true);
-      this.p.d();
-      this.c($$0);
-   }
+      super.aO_();
+      this.u = this.t;
 
-   @Override
-   protected void aF_() {
-      this.b(this.a);
-   }
-
-   @Override
-   protected vu B() {
-      return this.p.a() ? this.p.b() : super.B();
-   }
-
-   @Override
-   public void a(ezg $$0, int $$1, int $$2) {
-      String $$3 = this.a.a();
-      this.b($$0, $$1, $$2);
-      this.a.a($$3);
-      this.p.d();
-   }
-
-   @Override
-   protected void c(boolean $$0) {
-      this.b.a($$0 ? this.o().l().getString() : "-");
-   }
-
-   protected void H() {
-      cwa $$0 = this.o();
-      this.a($$0);
-      if (!$$0.o()) {
-         $$0.c(null);
+      for (int $$0 = 0; $$0 < fid.a.e.length; $$0++) {
+         fid.a $$1 = fid.a.e[$$0];
+         this.y.add(new fid.b($$1, this.g / 2 - q / 2 + $$0 * 31, this.h / 2 - 31));
       }
-
-      this.f.a(null);
    }
 
-   protected abstract void a(cwa var1);
+   @Override
+   public void a(fav $$0, int $$1, int $$2, float $$3) {
+      if (!this.H()) {
+         $$0.c().a();
+         RenderSystem.enableBlend();
+         int $$4 = this.g / 2 - 62;
+         int $$5 = this.h / 2 - 31 - 27;
+         $$0.a(c, $$4, $$5, 0.0F, 0.0F, 125, 75, 128, 128);
+         $$0.c().b();
+         super.a($$0, $$1, $$2, $$3);
+         $$0.a(this.i, this.u.a(), this.g / 2, this.h / 2 - 31 - 20, -1);
+         $$0.a(this.i, r, this.g / 2, this.h / 2 + 5, 16777215);
+         if (!this.x) {
+            this.v = $$1;
+            this.w = $$2;
+            this.x = true;
+         }
 
-   private void a(String $$0) {
-      this.p.d();
+         boolean $$6 = this.v == $$1 && this.w == $$2;
+
+         for (fid.b $$7 : this.y) {
+            $$7.a($$0, $$1, $$2, $$3);
+            $$7.b(this.u == $$7.b);
+            if (!$$6 && $$7.z()) {
+               this.u = $$7.b;
+            }
+         }
+      }
+   }
+
+   @Override
+   public void b(fav $$0, int $$1, int $$2, float $$3) {
+   }
+
+   private void E() {
+      a(this.f, this.u);
+   }
+
+   private static void a(ezi $$0, fid.a $$1) {
+      if ($$0.q != null && $$0.s != null) {
+         fid.a $$2 = fid.a.a($$0.q.j());
+         if ($$0.s.m(2) && $$1 != $$2) {
+            $$0.s.cu.d($$1.b());
+         }
+      }
+   }
+
+   private boolean H() {
+      if (!esw.a(this.f.aO().i(), 292)) {
+         this.E();
+         this.f.a(null);
+         return true;
+      } else {
+         return false;
+      }
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
-      if (this.p.a($$0, $$1, $$2)) {
+      if ($$0 == 293) {
+         this.x = false;
+         this.u = this.u.c();
          return true;
-      } else if (super.a($$0, $$1, $$2)) {
-         return true;
-      } else if ($$0 != 257 && $$0 != 335) {
-         return false;
       } else {
-         this.H();
-         return true;
+         return super.a($$0, $$1, $$2);
       }
    }
 
    @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      return this.p.a($$3) ? true : super.a($$0, $$1, $$2, $$3);
+   public boolean m() {
+      return false;
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      return this.p.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
-   }
+   static enum a {
+      a(vu.c("gameMode.creative"), "gamemode creative", new cqm(dae.i)),
+      b(vu.c("gameMode.survival"), "gamemode survival", new cqm(cqp.oZ)),
+      c(vu.c("gameMode.adventure"), "gamemode adventure", new cqm(cqp.uh)),
+      d(vu.c("gameMode.spectator"), "gamemode spectator", new cqm(cqp.sr));
 
-   @Override
-   public void a(fat $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, m, this.g / 2, 20, 16777215);
-      $$0.b(this.i, n, this.g / 2 - 150 + 1, 40, 10526880);
-      this.a.a($$0, $$1, $$2, $$3);
-      int $$4 = 75;
-      if (!this.b.a().isEmpty()) {
-         $$4 += 5 * 9 + 1 + this.E() - 135;
-         $$0.b(this.i, o, this.g / 2 - 150 + 1, $$4 + 4, 10526880);
-         this.b.a($$0, $$1, $$2, $$3);
+      protected static final fid.a[] e = values();
+      private static final int j = 16;
+      protected static final int f = 5;
+      final vu g;
+      final String h;
+      final cqm i;
+
+      private a(vu $$0, String $$1, cqm $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
       }
 
-      this.p.a($$0, $$1, $$2);
+      void a(fav $$0, int $$1, int $$2) {
+         $$0.a(this.i, $$1, $$2);
+      }
+
+      vu a() {
+         return this.g;
+      }
+
+      String b() {
+         return this.h;
+      }
+
+      fid.a c() {
+         return switch (this) {
+            case a -> b;
+            case b -> c;
+            case c -> d;
+            case d -> a;
+         };
+      }
+
+      static fid.a a(cwy $$0) {
+         return switch ($$0) {
+            case d -> d;
+            case a -> b;
+            case b -> a;
+            case c -> c;
+         };
+      }
+   }
+
+   public class b extends fbg {
+      final fid.a b;
+      private boolean c;
+
+      public b(fid.a $$1, int $$2, int $$3) {
+         super($$2, $$3, 26, 26, $$1.a());
+         this.b = $$1;
+      }
+
+      @Override
+      public void b(fav $$0, int $$1, int $$2, float $$3) {
+         this.a($$0);
+         this.b.a($$0, this.B() + 5, this.C() + 5);
+         if (this.c) {
+            this.b($$0);
+         }
+      }
+
+      @Override
+      public void a(ffe $$0) {
+         this.c($$0);
+      }
+
+      @Override
+      public boolean z() {
+         return super.z() || this.c;
+      }
+
+      public void b(boolean $$0) {
+         this.c = $$0;
+      }
+
+      private void a(fav $$0) {
+         $$0.a(fid.a, this.B(), this.C(), 26, 26);
+      }
+
+      private void b(fav $$0) {
+         $$0.a(fid.b, this.B(), this.C(), 26, 26);
+      }
    }
 }

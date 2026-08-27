@@ -8,9 +8,9 @@ public class be extends cx<be.a> {
       return be.a.a;
    }
 
-   public void a(apg $$0, cgr $$1, cif $$2) {
-      eku $$3 = br.b($$0, $$1);
-      eku $$4 = br.b($$0, $$2);
+   public void a(apg $$0, cgt $$1, cih $$2) {
+      ekw $$3 = br.b($$0, $$1);
+      ekw $$4 = br.b($$0, $$2);
       this.a($$0, $$2x -> $$2x.a($$3, $$4));
    }
 
@@ -24,7 +24,7 @@ public class be extends cx<be.a> {
          return am.s.a(new be.a(Optional.empty(), Optional.empty(), Optional.empty()));
       }
 
-      public boolean a(eku $$0, eku $$1) {
+      public boolean a(ekw $$0, ekw $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || this.d.get().a($$1);
       }
 

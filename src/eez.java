@@ -1,31 +1,52 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.Set;
 
-public class eez extends edc {
+public class eez extends edd {
    public static final Codec<eez> d = a(eez::new);
 
-   public eez(edc.c $$0) {
-      super($$0);
+   public eez(ede.c $$0) {
+      super(eey::new, 21, 21, $$0);
    }
 
    @Override
-   public Optional<edc.b> a(edc.a $$0) {
-      dgm $$1 = dgm.a($$0.f());
-      ib $$2 = this.a($$0, $$1);
-      return $$2.v() < 60 ? Optional.empty() : Optional.of(new edc.b($$2, (Consumer<edu>)($$3 -> this.a($$3, $$2, $$1, $$0))));
+   public void a(cxw $$0, cxu $$1, doy $$2, axd $$3, ecw $$4, cwi $$5, edt $$6) {
+      Set<ib> $$7 = axn.a(jg::i);
+
+      for (edi $$8 : $$6.c()) {
+         if ($$8 instanceof eey $$9) {
+            $$7.addAll($$9.b());
+            a($$4, $$0, $$9.c());
+         }
+      }
+
+      ObjectArrayList<ib> $$10 = new ObjectArrayList($$7.stream().toList());
+      axd $$11 = axd.a($$0.C()).e().a($$6.b().g());
+      ac.c($$10, $$11);
+      int $$12 = Math.min($$7.size(), $$11.b(5, 8));
+      ObjectListIterator var12 = $$10.iterator();
+
+      while (var12.hasNext()) {
+         ib $$13 = (ib)var12.next();
+         if ($$12 > 0) {
+            $$12--;
+            a($$4, $$0, $$13);
+         } else if ($$4.b($$13)) {
+            $$0.a($$13, dae.I.o(), 2);
+         }
+      }
    }
 
-   private void a(edu $$0, ib $$1, dgm $$2, edc.a $$3) {
-      List<edg> $$4 = Lists.newArrayList();
-      eey.a($$3.e(), $$1, $$2, $$4, $$3.f());
-      $$4.forEach($$0::a);
+   private static void a(ecw $$0, cxw $$1, ib $$2) {
+      if ($$0.b($$2)) {
+         $$1.a($$2, dae.J.o(), 2);
+         $$1.a($$2, dkk.N).ifPresent($$1x -> $$1x.a(eku.aQ, $$2.a()));
+      }
    }
 
    @Override
-   public edl<?> e() {
-      return edl.c;
+   public edn<?> e() {
+      return edn.b;
    }
 }

@@ -20,11 +20,11 @@ public class act implements yb<aam> {
       this.g = null;
    }
 
-   public act(eg.a $$0, bow $$1, eg.a $$2) {
+   public act(eg.a $$0, box $$1, eg.a $$2) {
       this.f = $$0;
       this.e = $$1.aj();
       this.g = $$2;
-      epr $$3 = $$2.a($$1);
+      ept $$3 = $$2.a($$1);
       this.b = $$3.c;
       this.c = $$3.d;
       this.d = $$3.e;
@@ -72,12 +72,12 @@ public class act implements yb<aam> {
    }
 
    @Nullable
-   public epr a(cwz $$0) {
+   public ept a(cxb $$0) {
       if (this.h) {
-         bow $$1 = $$0.a(this.e);
-         return $$1 == null ? new epr(this.b, this.c, this.d) : this.g.a($$1);
+         box $$1 = $$0.a(this.e);
+         return $$1 == null ? new ept(this.b, this.c, this.d) : this.g.a($$1);
       } else {
-         return new epr(this.b, this.c, this.d);
+         return new ept(this.b, this.c, this.d);
       }
    }
 }

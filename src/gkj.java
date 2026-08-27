@@ -1,58 +1,74 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gkj {
-   public static final gkk a = new gkk();
-   public static final String b = "animation";
-   public static final int c = 1;
-   public static final int d = -1;
-   public static final gkj e = new gkj(Lists.newArrayList(), -1, -1, 1, false) {
-      @Override
-      public gkl a(int $$0, int $$1) {
-         return new gkl($$0, $$1);
+public class gkj implements asp {
+   private static final Logger a = LogUtils.getLogger();
+   private static final gki b = new gki("US", "English", false);
+   private Map<String, gki> c = ImmutableMap.of("en_us", b);
+   private String d;
+
+   public gkj(String $$0) {
+      this.d = $$0;
+   }
+
+   private static Map<String, gki> a(Stream<ara> $$0) {
+      Map<String, gki> $$1 = Maps.newHashMap();
+      $$0.forEach($$1x -> {
+         try {
+            gkv $$2 = $$1x.a(gkv.c);
+            if ($$2 != null) {
+               $$2.a().forEach($$1::putIfAbsent);
+            }
+         } catch (IOException | RuntimeException var3) {
+            a.warn("Unable to parse language metadata section of resourcepack: {}", $$1x.b(), var3);
+         }
+      });
+      return ImmutableMap.copyOf($$1);
+   }
+
+   @Override
+   public void a(aso $$0) {
+      this.c = a($$0.b());
+      List<String> $$1 = new ArrayList<>(2);
+      boolean $$2 = b.d();
+      $$1.add("en_us");
+      if (!this.d.equals("en_us")) {
+         gki $$3 = this.c.get(this.d);
+         if ($$3 != null) {
+            $$1.add(this.d);
+            $$2 = $$3.d();
+         }
       }
-   };
-   private final List<gki> f;
-   private final int g;
-   private final int h;
-   private final int i;
-   private final boolean j;
 
-   public gkj(List<gki> $$0, int $$1, int $$2, int $$3, boolean $$4) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.j = $$4;
+      gkf $$4 = gkf.a($$0, $$1, $$2);
+      gkh.a($$4);
+      sv.a($$4);
    }
 
-   public gkl a(int $$0, int $$1) {
-      if (this.g != -1) {
-         return this.h != -1 ? new gkl(this.g, this.h) : new gkl(this.g, $$1);
-      } else if (this.h != -1) {
-         return new gkl($$0, this.h);
-      } else {
-         int $$2 = Math.min($$0, $$1);
-         return new gkl($$2, $$2);
-      }
+   public void a(String $$0) {
+      this.d = $$0;
    }
 
-   public int a() {
-      return this.i;
+   public String a() {
+      return this.d;
    }
 
-   public boolean b() {
-      return this.j;
+   public SortedMap<String, gki> b() {
+      return new TreeMap<>(this.c);
    }
 
-   public void a(gkj.a $$0) {
-      for (gki $$1 : this.f) {
-         $$0.accept($$1.a(), $$1.a(this.i));
-      }
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void accept(int var1, int var2);
+   @Nullable
+   public gki b(String $$0) {
+      return this.c.get($$0);
    }
 }

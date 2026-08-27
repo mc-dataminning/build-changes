@@ -8,8 +8,8 @@ public class cq extends cx<cq.a> {
       return cq.a.a;
    }
 
-   public void a(apg $$0, bow $$1, bnv $$2, float $$3, float $$4, boolean $$5) {
-      eku $$6 = br.b($$0, $$1);
+   public void a(apg $$0, box $$1, bnw $$2, float $$3, float $$4, boolean $$5) {
+      ekw $$6 = br.b($$0, $$1);
       this.a($$0, $$6x -> $$6x.a($$0, $$6, $$2, $$3, $$4, $$5));
    }
 
@@ -43,7 +43,7 @@ public class cq extends cx<cq.a> {
          return am.h.a(new cq.a(Optional.empty(), Optional.of($$0.b()), br.a($$1)));
       }
 
-      public boolean a(apg $$0, eku $$1, bnv $$2, float $$3, float $$4, boolean $$5) {
+      public boolean a(apg $$0, ekw $$1, bnw $$2, float $$3, float $$4, boolean $$5) {
          return this.c.isPresent() && !this.c.get().a($$0, $$2, $$3, $$4, $$5) ? false : !this.d.isPresent() || this.d.get().a($$1);
       }
 

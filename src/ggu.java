@@ -1,24 +1,13 @@
-public abstract class ggu<T extends bow & bqa, M extends foc<T>> extends ghj<T, M> {
-   public ggu(get<T, M> $$0) {
+public class ggu<T extends cfo> extends ghm<T, foa<T>> {
+   private static final ajh a = new ajh("textures/entity/zombie/drowned_outer_layer.png");
+   private final foa<T> b;
+
+   public ggu(gew<T, foa<T>> $$0, frb $$1) {
       super($$0);
+      this.b = new foa<>($$1.a(fre.U));
    }
 
-   @Override
-   public void a(etz $$0, fxq $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.a()) {
-         float $$10 = (float)$$3.ah + $$6;
-         foc<T> $$11 = this.b();
-         $$11.a($$3, $$4, $$5, $$6);
-         this.c().a($$11);
-         eud $$12 = $$1.getBuffer(fxy.b(this.a(), this.a($$10) % 1.0F, $$10 * 0.01F % 1.0F));
-         $$11.a($$3, $$4, $$5, $$7, $$8, $$9);
-         $$11.a($$0, $$12, $$2, giq.d, 0.5F, 0.5F, 0.5F, 1.0F);
-      }
+   public void a(eub $$0, fxs $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, 1.0F, 1.0F, 1.0F);
    }
-
-   protected abstract float a(float var1);
-
-   protected abstract ajh a();
-
-   protected abstract foc<T> b();
 }

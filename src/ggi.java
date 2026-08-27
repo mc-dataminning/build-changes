@@ -1,19 +1,24 @@
-public class ggi extends ghj<cgu, fnl<cgu>> {
-   private static final ajh a = new ajh("textures/entity/breeze/breeze_wind.png");
-   private static final fnl<cgu> b = new fnl<>(fnl.a(128, 128).a());
+public class ggi<T extends bpp, M extends fpk<T>> extends ghv<T, M> {
+   private final gcz a;
 
-   public ggi(get<cgu, fnl<cgu>> $$0) {
-      super($$0);
+   public ggi(gdb.a $$0, gec<T, M> $$1) {
+      super($$1);
+      this.a = $$0.a();
    }
 
-   public void a(etz $$0, fxq $$1, int $$2, cgu $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      float $$10 = (float)$$3.ah + $$6;
-      eud $$11 = $$1.getBuffer(fxy.a(a, this.a($$10) % 1.0F, 0.0F));
-      b.a($$3, $$4, $$5, $$7, $$8, $$9);
-      gce.a(b, b.e()).a($$0, $$11, $$2, giq.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   @Override
+   protected int a(T $$0) {
+      return $$0.eQ();
    }
 
-   private float a(float $$0) {
-      return $$0 * 0.02F;
+   @Override
+   protected void a(eub $$0, fxs $$1, int $$2, box $$3, float $$4, float $$5, float $$6, float $$7) {
+      float $$8 = aww.c($$4 * $$4 + $$6 * $$6);
+      cjc $$9 = new cjc($$3.dM(), $$3.dr(), $$3.dt(), $$3.dx(), cqm.h);
+      $$9.r((float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI));
+      $$9.s((float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI));
+      $$9.N = $$9.dC();
+      $$9.O = $$9.dE();
+      this.a.a($$9, 0.0, 0.0, 0.0, 0.0F, $$7, $$0, $$1, $$2);
    }
 }

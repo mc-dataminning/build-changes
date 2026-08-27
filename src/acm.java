@@ -11,7 +11,7 @@ public class acm implements yb<aam> {
    private final float j;
    private final float k;
 
-   public acm(cip $$0) {
+   public acm(cir $$0) {
       this.f = $$0.a;
       this.g = $$0.b;
       this.h = $$0.c;

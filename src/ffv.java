@@ -1,226 +1,91 @@
-import javax.annotation.Nullable;
+import com.mojang.authlib.minecraft.BanDetails;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.time.Duration;
+import java.time.Instant;
 import org.apache.commons.lang3.StringUtils;
 
-public class ffv extends fhf {
-   public static final double a = 7.0;
-   private static final vu c = vu.c("chat_screen.usage");
-   private static final int k = 210;
-   private String l = "";
-   private int m = -1;
-   protected fbp b;
-   private String n;
-   fbj o;
+public class ffv {
+   private static final vu b = vu.c("gui.banned.title.temporary").a(n.r);
+   private static final vu c = vu.c("gui.banned.title.permanent").a(n.r);
+   public static final vu a = vu.c("gui.banned.name.title").a(n.r);
+   private static final vu d = vu.c("gui.banned.skin.title").a(n.r);
+   private static final vu e = vu.a("gui.banned.skin.description", vu.b("https://aka.ms/mcjavamoderation"));
 
-   public ffv(String $$0) {
-      super(vu.c("chat_screen.title"));
-      this.n = $$0;
+   public static ffy a(BooleanConsumer $$0, BanDetails $$1) {
+      return new ffy($$0, a($$1), b($$1), "https://aka.ms/mcjavamoderation", vt.m, true);
    }
 
-   @Override
-   protected void aO_() {
-      this.m = this.f.l.d().c().size();
-      this.b = new fbp(this.f.i, 4, this.h - 12, this.g - 4, 12, vu.c("chat.editBox")) {
-         @Override
-         protected wi aL_() {
-            return super.aL_().b(ffv.this.o.e());
-         }
-      };
-      this.b.f(256);
-      this.b.d(false);
-      this.b.a(this.n);
-      this.b.b(this::b);
-      this.b.f(false);
-      this.d(this.b);
-      this.o = new fbj(this.f, this, this.b, this.i, false, false, 1, 10, true, -805306368);
-      this.o.b(false);
-      this.o.d();
-   }
-
-   @Override
-   protected void aF_() {
-      this.b(this.b);
-   }
-
-   @Override
-   public void a(ezg $$0, int $$1, int $$2) {
-      String $$3 = this.b.a();
-      this.b($$0, $$1, $$2);
-      this.c($$3);
-      this.o.d();
-   }
-
-   @Override
-   public void k() {
-      this.f.l.d().d();
-   }
-
-   private void b(String $$0) {
-      String $$1 = this.b.a();
-      this.o.a(!$$1.equals(this.n));
-      this.o.d();
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.o.a($$0, $$1, $$2)) {
-         return true;
-      } else if (super.a($$0, $$1, $$2)) {
-         return true;
-      } else if ($$0 == 256) {
-         this.f.a(null);
-         return true;
-      } else if ($$0 == 257 || $$0 == 335) {
-         this.b(this.b.a(), true);
-         this.f.a(null);
-         return true;
-      } else if ($$0 == 265) {
-         this.a(-1);
-         return true;
-      } else if ($$0 == 264) {
-         this.a(1);
-         return true;
-      } else if ($$0 == 266) {
-         this.f.l.d().a(this.f.l.d().j() - 1);
-         return true;
-      } else if ($$0 == 267) {
-         this.f.l.d().a(-this.f.l.d().j() + 1);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      $$3 = aww.a($$3, -1.0, 1.0);
-      if (this.o.a($$3)) {
-         return true;
-      } else {
-         if (!v()) {
-            $$3 *= 7.0;
+   public static ffy a(Runnable $$0) {
+      String $$1 = "https://aka.ms/mcjavamoderation";
+      return new ffy($$1x -> {
+         if ($$1x) {
+            ac.j().a("https://aka.ms/mcjavamoderation");
          }
 
-         this.f.l.d().a((int)$$3);
-         return true;
-      }
+         $$0.run();
+      }, d, e, "https://aka.ms/mcjavamoderation", vt.m, true);
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.o.a((double)((int)$$0), (double)((int)$$1), $$2)) {
-         return true;
-      } else {
-         if ($$2 == 0) {
-            fbh $$3 = this.f.l.d();
-            if ($$3.a($$0, $$1)) {
-               return true;
-            }
-
-            wr $$4 = this.b($$0, $$1);
-            if ($$4 != null && this.a($$4)) {
-               this.n = this.b.a();
-               return true;
-            }
+   public static ffy a(String $$0, Runnable $$1) {
+      String $$2 = "https://aka.ms/mcjavamoderation";
+      return new ffy($$1x -> {
+         if ($$1x) {
+            ac.j().a("https://aka.ms/mcjavamoderation");
          }
 
-         return this.b.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
-      }
+         $$1.run();
+      }, a, vu.a("gui.banned.name.description", vu.b($$0).a(n.o), "https://aka.ms/mcjavamoderation"), "https://aka.ms/mcjavamoderation", vt.m, true);
    }
 
-   @Override
-   protected void a_(String $$0, boolean $$1) {
-      if ($$1) {
-         this.b.a($$0);
-      } else {
-         this.b.b($$0);
-      }
+   private static vu a(BanDetails $$0) {
+      return f($$0) ? b : c;
    }
 
-   public void a(int $$0) {
-      int $$1 = this.m + $$0;
-      int $$2 = this.f.l.d().c().size();
-      $$1 = aww.a($$1, 0, $$2);
-      if ($$1 != this.m) {
-         if ($$1 == $$2) {
-            this.m = $$2;
-            this.b.a(this.l);
+   private static vu b(BanDetails $$0) {
+      return vu.a("gui.banned.description", c($$0), d($$0), vu.b("https://aka.ms/mcjavamoderation"));
+   }
+
+   private static vu c(BanDetails $$0) {
+      String $$1 = $$0.reason();
+      String $$2 = $$0.reasonMessage();
+      if (StringUtils.isNumeric($$1)) {
+         int $$3 = Integer.parseInt($$1);
+         fta $$4 = fta.a($$3);
+         vu $$5;
+         if ($$4 != null) {
+            $$5 = vx.a($$4.a().f(), wr.a.a(true));
+         } else if ($$2 != null) {
+            $$5 = vu.a("gui.banned.description.reason_id_message", $$3, $$2).a(n.r);
          } else {
-            if (this.m == $$2) {
-               this.l = this.b.a();
-            }
-
-            this.b.a(this.f.l.d().c().get($$1));
-            this.o.a(false);
-            this.m = $$1;
+            $$5 = vu.a("gui.banned.description.reason_id", $$3).a(n.r);
          }
-      }
-   }
 
-   @Override
-   public void a(fat $$0, int $$1, int $$2, float $$3) {
-      this.f.l.d().a($$0, this.f.l.e(), $$1, $$2, true);
-      $$0.a(2, this.h - 14, this.g - 2, this.h - 2, this.f.m.a(Integer.MIN_VALUE));
-      this.b.a($$0, $$1, $$2, $$3);
-      super.a($$0, $$1, $$2, $$3);
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, 200.0F);
-      this.o.a($$0, $$1, $$2);
-      $$0.c().b();
-      ezb $$4 = this.f.l.d().c((double)$$1, (double)$$2);
-      if ($$4 != null && $$4.g() != null) {
-         $$0.b(this.i, this.i.c($$4.g(), 210), $$1, $$2);
+         return vu.a("gui.banned.description.reason", $$5);
       } else {
-         wr $$5 = this.b((double)$$1, (double)$$2);
-         if ($$5 != null && $$5.i() != null) {
-            $$0.a(this.i, $$5, $$1, $$2);
-         }
+         return vu.c("gui.banned.description.unknownreason");
       }
    }
 
-   @Override
-   public void b(fat $$0, int $$1, int $$2, float $$3) {
-   }
-
-   @Override
-   public boolean m() {
-      return false;
-   }
-
-   private void c(String $$0) {
-      this.b.a($$0);
-   }
-
-   @Override
-   protected void a(ffc $$0) {
-      $$0.a(ffb.a, this.p());
-      $$0.a(ffb.d, c);
-      String $$1 = this.b.a();
-      if (!$$1.isEmpty()) {
-         $$0.a().a(ffb.a, vu.a("chat_screen.message", $$1));
+   private static vu d(BanDetails $$0) {
+      if (f($$0)) {
+         vu $$1 = e($$0);
+         return vu.a("gui.banned.description.temporary", vu.a("gui.banned.description.temporary.duration", $$1).a(n.r));
+      } else {
+         return vu.c("gui.banned.description.permanent").a(n.r);
       }
    }
 
-   @Nullable
-   private wr b(double $$0, double $$1) {
-      return this.f.l.d().b($$0, $$1);
-   }
-
-   public void b(String $$0, boolean $$1) {
-      $$0 = this.a($$0);
-      if (!$$0.isEmpty()) {
-         if ($$1) {
-            this.f.l.d().a($$0);
-         }
-
-         if ($$0.startsWith("/")) {
-            this.f.s.cu.c($$0.substring(1));
-         } else {
-            this.f.s.cu.b($$0);
-         }
+   private static vu e(BanDetails $$0) {
+      Duration $$1 = Duration.between(Instant.now(), $$0.expires());
+      long $$2 = $$1.toHours();
+      if ($$2 > 72L) {
+         return vt.a($$1.toDays());
+      } else {
+         return $$2 < 1L ? vt.c($$1.toMinutes()) : vt.b($$1.toHours());
       }
    }
 
-   public String a(String $$0) {
-      return axr.e(StringUtils.normalizeSpace($$0.trim()));
+   private static boolean f(BanDetails $$0) {
+      return $$0.expires() != null;
    }
 }

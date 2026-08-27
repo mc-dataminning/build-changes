@@ -1,11 +1,17 @@
 import com.mojang.serialization.Codec;
 import javax.annotation.Nullable;
 
-public interface ehk {
-   Codec<ehk> c = ki.p.q().dispatch(ehk::a, ehl::codec);
+public class ehk implements ehm {
+   private static final ehk b = new ehk();
+   public static final Codec<ehk> a = Codec.unit(b);
 
-   @Nullable
-   ta a(axd var1, @Nullable ta var2);
+   @Override
+   public ta a(axd $$0, @Nullable ta $$1) {
+      return new ta();
+   }
 
-   ehl<?> a();
+   @Override
+   public ehn<?> a() {
+      return ehn.a;
+   }
 }

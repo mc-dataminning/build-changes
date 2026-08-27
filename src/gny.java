@@ -1,16 +1,29 @@
-import java.util.function.Consumer;
+import com.mojang.authlib.minecraft.TelemetryEvent;
+import com.mojang.authlib.minecraft.TelemetrySession;
+import com.mojang.serialization.Codec;
 
-@FunctionalInterface
-public interface gny {
-   gny a = ($$0, $$1) -> {
-   };
+public record gny(goc b, gof c) {
+   public static final Codec<gny> a = goc.a.dispatchStable(gny::a, goc::c);
 
-   default gny decorate(Consumer<goc.a> $$0) {
-      return ($$1, $$2) -> this.send($$1, $$2x -> {
-            $$2.accept($$2x);
-            $$0.accept($$2x);
-         });
+   public gny(goc b, gof c) {
+      c.b().forEach($$1x -> {
+         if (!$$0.a($$1x)) {
+            throw new IllegalArgumentException("Property '" + $$1x.b() + "' not expected for event: '" + $$0.a() + "'");
+         }
+      });
+      this.b = b;
+      this.c = c;
    }
 
-   void send(gnz var1, Consumer<goc.a> var2);
+   public TelemetryEvent a(TelemetrySession $$0) {
+      return this.b.a($$0, this.c);
+   }
+
+   public goc a() {
+      return this.b;
+   }
+
+   public gof b() {
+      return this.c;
+   }
 }

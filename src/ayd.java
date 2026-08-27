@@ -45,7 +45,7 @@ public class ayd {
    }
 
    private static void a(DataFixerBuilder $$0) {
-      $$0.addSchema(99, bis::new);
+      $$0.addSchema(99, bit::new);
       Schema $$1 = $$0.addSchema(100, bfr::new);
       $$0.addFixer(new bao($$1, true));
       Schema $$2 = $$0.addSchema(101, b);
@@ -77,30 +77,30 @@ public class ayd {
       $$0.addFixer(new bah($$14, true));
       Schema $$15 = $$0.addSchema(165, b);
       $$0.addFixer(new bcs($$15, true));
-      Schema $$16 = $$0.addSchema(501, bik::new);
+      Schema $$16 = $$0.addSchema(501, bil::new);
       $$0.addFixer(new ayl($$16, "Add 1.10 entities fix", beh.y));
       Schema $$17 = $$0.addSchema(502, b);
       $$0.addFixer(bci.a($$17, "cooked_fished item renamer", $$0x -> Objects.equals(bfq.a($$0x), "minecraft:cooked_fished") ? "minecraft:cooked_fish" : $$0x));
       $$0.addFixer(new bbp($$17, false));
       Schema $$18 = $$0.addSchema(505, b);
       $$0.addFixer(new bds($$18, false));
-      Schema $$19 = $$0.addSchema(700, bil::new);
+      Schema $$19 = $$0.addSchema(700, bim::new);
       $$0.addFixer(new ban($$19, true));
-      Schema $$20 = $$0.addSchema(701, bim::new);
+      Schema $$20 = $$0.addSchema(701, bin::new);
       $$0.addFixer(new bbh($$20, true));
-      Schema $$21 = $$0.addSchema(702, bin::new);
+      Schema $$21 = $$0.addSchema(702, bio::new);
       $$0.addFixer(new bbo($$21, true));
-      Schema $$22 = $$0.addSchema(703, bio::new);
+      Schema $$22 = $$0.addSchema(703, bip::new);
       $$0.addFixer(new bas($$22, true));
-      Schema $$23 = $$0.addSchema(704, bip::new);
+      Schema $$23 = $$0.addSchema(704, biq::new);
       $$0.addFixer(new ayx($$23, true));
-      Schema $$24 = $$0.addSchema(705, biq::new);
+      Schema $$24 = $$0.addSchema(705, bir::new);
       $$0.addFixer(new bat($$24, true));
       Schema $$25 = $$0.addSchema(804, c);
       $$0.addFixer(new bcc($$25, true));
       Schema $$26 = $$0.addSchema(806, c);
       $$0.addFixer(new bcr($$26, false));
-      Schema $$27 = $$0.addSchema(808, bir::new);
+      Schema $$27 = $$0.addSchema(808, bis::new);
       $$0.addFixer(new ayl($$27, "added shulker box", beh.s));
       Schema $$28 = $$0.addSchema(808, 1, c);
       $$0.addFixer(new bbf($$28, false));
@@ -198,40 +198,40 @@ public class ayd {
          bci.a($$50, "Colorless shulker item fixer", $$0x -> Objects.equals(bfq.a($$0x), "minecraft:purple_shulker_box") ? "minecraft:shulker_box" : $$0x)
       );
       Schema $$51 = $$0.addSchema(1475, c);
-      $$0.addFixer(azh.a($$51, "Flowing fixer", a(ImmutableMap.of("minecraft:flowing_water", "minecraft:water", "minecraft:flowing_lava", "minecraft:lava"))));
+      $$0.addFixer(azh.a($$51, "Flowing fixer", b(ImmutableMap.of("minecraft:flowing_water", "minecraft:water", "minecraft:flowing_lava", "minecraft:lava"))));
       Schema $$52 = $$0.addSchema(1480, c);
-      $$0.addFixer(azh.a($$52, "Rename coral blocks", a(bem.a)));
-      $$0.addFixer(bci.a($$52, "Rename coral items", a(bem.a)));
+      $$0.addFixer(azh.a($$52, "Rename coral blocks", b(bem.a)));
+      $$0.addFixer(bci.a($$52, "Rename coral items", b(bem.a)));
       Schema $$53 = $$0.addSchema(1481, bgj::new);
       $$0.addFixer(new ayl($$53, "Add conduit", beh.s));
       Schema $$54 = $$0.addSchema(1483, bgk::new);
       $$0.addFixer(new bba($$54, true));
-      $$0.addFixer(bci.a($$54, "Rename pufferfish egg item", a(bba.a)));
+      $$0.addFixer(bci.a($$54, "Rename pufferfish egg item", b(bba.a)));
       Schema $$55 = $$0.addSchema(1484, c);
       $$0.addFixer(
          bci.a(
             $$55,
             "Rename seagrass items",
-            a(ImmutableMap.of("minecraft:sea_grass", "minecraft:seagrass", "minecraft:tall_sea_grass", "minecraft:tall_seagrass"))
+            b(ImmutableMap.of("minecraft:sea_grass", "minecraft:seagrass", "minecraft:tall_sea_grass", "minecraft:tall_seagrass"))
          )
       );
       $$0.addFixer(
          azh.a(
             $$55,
             "Rename seagrass blocks",
-            a(ImmutableMap.of("minecraft:sea_grass", "minecraft:seagrass", "minecraft:tall_sea_grass", "minecraft:tall_seagrass"))
+            b(ImmutableMap.of("minecraft:sea_grass", "minecraft:seagrass", "minecraft:tall_sea_grass", "minecraft:tall_seagrass"))
          )
       );
       $$0.addFixer(new bbz($$55, false));
       Schema $$56 = $$0.addSchema(1486, bgl::new);
       $$0.addFixer(new bal($$56, true));
-      $$0.addFixer(bci.a($$56, "Rename cod/salmon egg items", a(bal.b)));
+      $$0.addFixer(bci.a($$56, "Rename cod/salmon egg items", b(bal.b)));
       Schema $$57 = $$0.addSchema(1487, c);
       $$0.addFixer(
          bci.a(
             $$57,
             "Rename prismarine_brick(s)_* blocks",
-            a(
+            b(
                ImmutableMap.of(
                   "minecraft:prismarine_bricks_slab",
                   "minecraft:prismarine_brick_slab",
@@ -245,7 +245,7 @@ public class ayd {
          azh.a(
             $$57,
             "Rename prismarine_brick(s)_* items",
-            a(
+            b(
                ImmutableMap.of(
                   "minecraft:prismarine_bricks_slab",
                   "minecraft:prismarine_brick_slab",
@@ -256,7 +256,7 @@ public class ayd {
          )
       );
       Schema $$58 = $$0.addSchema(1488, c);
-      $$0.addFixer(azh.a($$58, "Rename kelp/kelptop", a(ImmutableMap.of("minecraft:kelp_top", "minecraft:kelp", "minecraft:kelp", "minecraft:kelp_plant"))));
+      $$0.addFixer(azh.a($$58, "Rename kelp/kelptop", b(ImmutableMap.of("minecraft:kelp_top", "minecraft:kelp", "minecraft:kelp", "minecraft:kelp_plant"))));
       $$0.addFixer(bci.a($$58, "Rename kelptop", a("minecraft:kelp_top", "minecraft:kelp")));
       $$0.addFixer(new bdh($$58, false, "Command block block entity custom name fix", beh.s, "minecraft:command_block") {
          @Override
@@ -277,7 +277,7 @@ public class ayd {
          bci.a(
             $$59,
             "Rename melon_block/melon/speckled_melon",
-            a(
+            b(
                ImmutableMap.of(
                   "minecraft:melon_block",
                   "minecraft:melon",
@@ -300,13 +300,13 @@ public class ayd {
       Schema $$64 = $$0.addSchema(1501, c);
       $$0.addFixer(new aym($$64, false));
       Schema $$65 = $$0.addSchema(1502, c);
-      $$0.addFixer(new bdj($$65, "Recipes fix", beh.G, a(bee.a)));
+      $$0.addFixer(new bdj($$65, "Recipes fix", beh.G, b(bee.a)));
       Schema $$66 = $$0.addSchema(1506, c);
       $$0.addFixer(new bcx($$66, false));
       Schema $$67 = $$0.addSchema(1510, bgm::new);
-      $$0.addFixer(azh.a($$67, "Block renamening fix", a(bbj.b)));
-      $$0.addFixer(bci.a($$67, "Item renamening fix", a(bbj.c)));
-      $$0.addFixer(new bdj($$67, "Recipes renamening fix", beh.G, a(bef.a)));
+      $$0.addFixer(azh.a($$67, "Block renamening fix", b(bbj.b)));
+      $$0.addFixer(bci.a($$67, "Item renamening fix", b(bbj.c)));
+      $$0.addFixer(new bdj($$67, "Recipes renamening fix", beh.G, b(bef.a)));
       $$0.addFixer(new bbj($$67, true));
       $$0.addFixer(
          new bev(
@@ -320,12 +320,12 @@ public class ayd {
       $$0.addFixer(new bfa($$68, false));
       $$0.addFixer(new bdm($$68, false));
       Schema $$69 = $$0.addSchema(1515, c);
-      $$0.addFixer(azh.a($$69, "Rename coral fan blocks", a(bel.a)));
+      $$0.addFixer(azh.a($$69, "Rename coral fan blocks", b(bel.a)));
       Schema $$70 = $$0.addSchema(1624, c);
       $$0.addFixer(new bfb($$70, false));
       Schema $$71 = $$0.addSchema(1800, bgn::new);
       $$0.addFixer(new ayl($$71, "Added 1.14 mobs fix", beh.y));
-      $$0.addFixer(bci.a($$71, "Rename dye items", a(baf.a)));
+      $$0.addFixer(bci.a($$71, "Rename dye items", b(baf.a)));
       Schema $$72 = $$0.addSchema(1801, bgo::new);
       $$0.addFixer(new ayl($$72, "Added Illager Beast", beh.y));
       Schema $$73 = $$0.addSchema(1802, c);
@@ -333,7 +333,7 @@ public class ayd {
          azh.a(
             $$73,
             "Rename sign blocks & stone slabs",
-            a(
+            b(
                ImmutableMap.of(
                   "minecraft:stone_slab",
                   "minecraft:smooth_stone_slab",
@@ -349,7 +349,7 @@ public class ayd {
          bci.a(
             $$73,
             "Rename sign item & stone slabs",
-            a(ImmutableMap.of("minecraft:stone_slab", "minecraft:smooth_stone_slab", "minecraft:sign", "minecraft:oak_sign"))
+            b(ImmutableMap.of("minecraft:stone_slab", "minecraft:smooth_stone_slab", "minecraft:sign", "minecraft:oak_sign"))
          )
       );
       Schema $$74 = $$0.addSchema(1803, c);
@@ -379,7 +379,7 @@ public class ayd {
       $$0.addFixer(new bdc($$84, false));
       Schema $$85 = $$0.addSchema(1928, bgt::new);
       $$0.addFixer(new bbb($$85, true));
-      $$0.addFixer(bci.a($$85, "Rename ravager egg item", a(bbb.a)));
+      $$0.addFixer(bci.a($$85, "Rename ravager egg item", b(bbb.a)));
       Schema $$86 = $$0.addSchema(1929, bgu::new);
       $$0.addFixer(new ayl($$86, "Add Wandering Trader and Trader Llama", beh.y));
       Schema $$87 = $$0.addSchema(1931, bgv::new);
@@ -402,7 +402,7 @@ public class ayd {
       Schema $$95 = $$0.addSchema(2100, bgw::new);
       $$0.addFixer(new ayl($$95, "Added Bee and Bee Stinger", beh.y));
       $$0.addFixer(new ayl($$95, "Add beehive", beh.s));
-      $$0.addFixer(new bdj($$95, "Rename sugar recipe", beh.G, a("minecraft:sugar", "sugar_from_sugar_cane")));
+      $$0.addFixer(new bdj($$95, "Rename sugar recipe", beh.G, a("minecraft:sugar", "minecraft:sugar_from_sugar_cane")));
       $$0.addFixer(new ayn($$95, false, "Rename sugar recipe advancement", a("minecraft:recipes/misc/sugar", "minecraft:recipes/misc/sugar_from_sugar_cane")));
       Schema $$96 = $$0.addSchema(2202, c);
       $$0.addFixer(new azp($$96, false));
@@ -430,19 +430,19 @@ public class ayd {
          bci.a(
             $$105,
             "Renamed fungi items to fungus",
-            a(ImmutableMap.of("minecraft:warped_fungi", "minecraft:warped_fungus", "minecraft:crimson_fungi", "minecraft:crimson_fungus"))
+            b(ImmutableMap.of("minecraft:warped_fungi", "minecraft:warped_fungus", "minecraft:crimson_fungi", "minecraft:crimson_fungus"))
          )
       );
       $$0.addFixer(
          azh.a(
             $$105,
             "Renamed fungi blocks to fungus",
-            a(ImmutableMap.of("minecraft:warped_fungi", "minecraft:warped_fungus", "minecraft:crimson_fungi", "minecraft:crimson_fungus"))
+            b(ImmutableMap.of("minecraft:warped_fungi", "minecraft:warped_fungus", "minecraft:crimson_fungi", "minecraft:crimson_fungus"))
          )
       );
       Schema $$106 = $$0.addSchema(2509, bha::new);
       $$0.addFixer(new bbq($$106));
-      $$0.addFixer(bci.a($$106, "Rename zombie pigman egg item", a(bbq.a)));
+      $$0.addFixer(bci.a($$106, "Rename zombie pigman egg item", b(bbq.a)));
       Schema $$107 = $$0.addSchema(2511, c);
       $$0.addFixer(new baz($$107));
       Schema $$108 = $$0.addSchema(2514, c);
@@ -469,24 +469,24 @@ public class ayd {
             "Attribute renames",
             a(
                ImmutableMap.builder()
-                  .put("generic.maxHealth", "generic.max_health")
-                  .put("Max Health", "generic.max_health")
-                  .put("zombie.spawnReinforcements", "zombie.spawn_reinforcements")
-                  .put("Spawn Reinforcements Chance", "zombie.spawn_reinforcements")
-                  .put("horse.jumpStrength", "horse.jump_strength")
-                  .put("Jump Strength", "horse.jump_strength")
-                  .put("generic.followRange", "generic.follow_range")
-                  .put("Follow Range", "generic.follow_range")
-                  .put("generic.knockbackResistance", "generic.knockback_resistance")
-                  .put("Knockback Resistance", "generic.knockback_resistance")
-                  .put("generic.movementSpeed", "generic.movement_speed")
-                  .put("Movement Speed", "generic.movement_speed")
-                  .put("generic.flyingSpeed", "generic.flying_speed")
-                  .put("Flying Speed", "generic.flying_speed")
-                  .put("generic.attackDamage", "generic.attack_damage")
-                  .put("generic.attackKnockback", "generic.attack_knockback")
-                  .put("generic.attackSpeed", "generic.attack_speed")
-                  .put("generic.armorToughness", "generic.armor_toughness")
+                  .put("generic.maxHealth", "minecraft:generic.max_health")
+                  .put("Max Health", "minecraft:generic.max_health")
+                  .put("zombie.spawnReinforcements", "minecraft:zombie.spawn_reinforcements")
+                  .put("Spawn Reinforcements Chance", "minecraft:zombie.spawn_reinforcements")
+                  .put("horse.jumpStrength", "minecraft:horse.jump_strength")
+                  .put("Jump Strength", "minecraft:horse.jump_strength")
+                  .put("generic.followRange", "minecraft:generic.follow_range")
+                  .put("Follow Range", "minecraft:generic.follow_range")
+                  .put("generic.knockbackResistance", "minecraft:generic.knockback_resistance")
+                  .put("Knockback Resistance", "minecraft:generic.knockback_resistance")
+                  .put("generic.movementSpeed", "minecraft:generic.movement_speed")
+                  .put("Movement Speed", "minecraft:generic.movement_speed")
+                  .put("generic.flyingSpeed", "minecraft:generic.flying_speed")
+                  .put("Flying Speed", "minecraft:generic.flying_speed")
+                  .put("generic.attackDamage", "minecraft:generic.attack_damage")
+                  .put("generic.attackKnockback", "minecraft:generic.attack_knockback")
+                  .put("generic.attackSpeed", "minecraft:generic.attack_speed")
+                  .put("generic.armorToughness", "minecraft:generic.armor_toughness")
                   .build()
             )
          )
@@ -498,14 +498,14 @@ public class ayd {
          bci.a(
             $$115,
             "Rename soul fire torch and soul fire lantern",
-            a(ImmutableMap.of("minecraft:soul_fire_torch", "minecraft:soul_torch", "minecraft:soul_fire_lantern", "minecraft:soul_lantern"))
+            b(ImmutableMap.of("minecraft:soul_fire_torch", "minecraft:soul_torch", "minecraft:soul_fire_lantern", "minecraft:soul_lantern"))
          )
       );
       $$0.addFixer(
          azh.a(
             $$115,
             "Rename soul fire torch and soul fire lantern",
-            a(
+            b(
                ImmutableMap.of(
                   "minecraft:soul_fire_torch",
                   "minecraft:soul_torch",
@@ -534,7 +534,7 @@ public class ayd {
       Schema $$123 = $$0.addSchema(2552, c);
       $$0.addFixer(new bdj($$123, "Nether biome rename", beh.H, a("minecraft:nether", "minecraft:nether_wastes")));
       Schema $$124 = $$0.addSchema(2553, c);
-      $$0.addFixer(new bdj($$124, "Biomes fix", beh.H, a(ayq.a)));
+      $$0.addFixer(new bdj($$124, "Biomes fix", beh.H, b(ayq.a)));
       Schema $$125 = $$0.addSchema(2558, c);
       $$0.addFixer(new bde($$125, false));
       $$0.addFixer(new bdx($$125, false, "Rename swapHands setting", "key_key.swapHands", "key_key.swapOffhand"));
@@ -577,8 +577,8 @@ public class ayd {
          .put("minecraft:waxed_semi_weathered_cut_copper_slab", "minecraft:waxed_weathered_cut_copper_slab")
          .put("minecraft:waxed_lightly_weathered_cut_copper_slab", "minecraft:waxed_exposed_cut_copper_slab")
          .build();
-      $$0.addFixer(bci.a($$133, "Renamed copper block items to new oxidized terms", a($$134)));
-      $$0.addFixer(azh.a($$133, "Renamed copper blocks to new oxidized terms", a($$134)));
+      $$0.addFixer(bci.a($$133, "Renamed copper block items to new oxidized terms", b($$134)));
+      $$0.addFixer(azh.a($$133, "Renamed copper blocks to new oxidized terms", b($$134)));
       Schema $$135 = $$0.addSchema(2691, c);
       ImmutableMap<String, String> $$136 = ImmutableMap.builder()
          .put("minecraft:waxed_copper", "minecraft:waxed_copper_block")
@@ -586,8 +586,8 @@ public class ayd {
          .put("minecraft:weathered_copper_block", "minecraft:weathered_copper")
          .put("minecraft:exposed_copper_block", "minecraft:exposed_copper")
          .build();
-      $$0.addFixer(bci.a($$135, "Rename copper item suffixes", a($$136)));
-      $$0.addFixer(azh.a($$135, "Rename copper blocks suffixes", a($$136)));
+      $$0.addFixer(bci.a($$135, "Rename copper item suffixes", b($$136)));
+      $$0.addFixer(azh.a($$135, "Rename copper blocks suffixes", b($$136)));
       Schema $$137 = $$0.addSchema(2693, c);
       $$0.addFixer(new ayk($$137, beh.J, "has_increased_height_already", false));
       Schema $$138 = $$0.addSchema(2696, c);
@@ -610,14 +610,14 @@ public class ayd {
          .put("minecraft:grimstone_brick_wall", "minecraft:deepslate_brick_wall")
          .put("minecraft:chiseled_grimstone", "minecraft:chiseled_deepslate")
          .build();
-      $$0.addFixer(bci.a($$138, "Renamed grimstone block items to deepslate", a($$139)));
-      $$0.addFixer(azh.a($$138, "Renamed grimstone blocks to deepslate", a($$139)));
+      $$0.addFixer(bci.a($$138, "Renamed grimstone block items to deepslate", b($$139)));
+      $$0.addFixer(azh.a($$138, "Renamed grimstone blocks to deepslate", b($$139)));
       Schema $$140 = $$0.addSchema(2700, c);
       $$0.addFixer(
          azh.a(
             $$140,
             "Renamed cave vines blocks",
-            a(ImmutableMap.of("minecraft:cave_vines_head", "minecraft:cave_vines", "minecraft:cave_vines_body", "minecraft:cave_vines_plant"))
+            b(ImmutableMap.of("minecraft:cave_vines_head", "minecraft:cave_vines", "minecraft:cave_vines_body", "minecraft:cave_vines_plant"))
          )
       );
       Schema $$141 = $$0.addSchema(2701, c);
@@ -632,9 +632,9 @@ public class ayd {
       Schema $$145 = $$0.addSchema(2710, c);
       $$0.addFixer(new bev($$145, "Renamed play_one_minute stat to play_time", ImmutableMap.of("minecraft:play_one_minute", "minecraft:play_time")));
       Schema $$146 = $$0.addSchema(2717, c);
-      $$0.addFixer(bci.a($$146, "Rename azalea_leaves_flowers", a(ImmutableMap.of("minecraft:azalea_leaves_flowers", "minecraft:flowering_azalea_leaves"))));
+      $$0.addFixer(bci.a($$146, "Rename azalea_leaves_flowers", b(ImmutableMap.of("minecraft:azalea_leaves_flowers", "minecraft:flowering_azalea_leaves"))));
       $$0.addFixer(
-         azh.a($$146, "Rename azalea_leaves_flowers items", a(ImmutableMap.of("minecraft:azalea_leaves_flowers", "minecraft:flowering_azalea_leaves")))
+         azh.a($$146, "Rename azalea_leaves_flowers items", b(ImmutableMap.of("minecraft:azalea_leaves_flowers", "minecraft:flowering_azalea_leaves")))
       );
       Schema $$147 = $$0.addSchema(2825, c);
       $$0.addFixer(new ayk($$147, beh.J, "has_increased_height_already", false));
@@ -646,7 +646,7 @@ public class ayd {
       Schema $$150 = $$0.addSchema(2833, c);
       $$0.addFixer(new bfj($$150));
       Schema $$151 = $$0.addSchema(2838, c);
-      $$0.addFixer(new bdj($$151, "Caves and Cliffs biome renames", beh.H, a(azm.a)));
+      $$0.addFixer(new bdj($$151, "Caves and Cliffs biome renames", beh.H, b(azm.a)));
       Schema $$152 = $$0.addSchema(2841, c);
       $$0.addFixer(new azv($$152));
       Schema $$153 = $$0.addSchema(2842, bhn::new);
@@ -660,7 +660,7 @@ public class ayd {
             $$155,
             false,
             "Rename some C&C part 2 advancements",
-            a(
+            b(
                ImmutableMap.of(
                   "minecraft:husbandry/play_jukebox_in_meadows",
                   "minecraft:adventure/play_jukebox_in_meadows",
@@ -698,7 +698,7 @@ public class ayd {
             $$165,
             "game_event_renames_3084",
             beh.B,
-            a(
+            b(
                ImmutableMap.builder()
                   .put("minecraft:block_press", "minecraft:block_activate")
                   .put("minecraft:block_switch", "minecraft:block_activate")
@@ -804,7 +804,7 @@ public class ayd {
          bci.a(
             $$187,
             "Pottery shard renaming",
-            a(
+            b(
                ImmutableMap.of(
                   "minecraft:pottery_shard_archer",
                   "minecraft:archer_pottery_shard",
@@ -832,7 +832,7 @@ public class ayd {
          bci.a(
             $$191,
             "Pottery shard item renaming to Pottery sherd",
-            a(
+            b(
                Stream.of(
                      "minecraft:angler_pottery_shard",
                      "minecraft:archer_pottery_shard",
@@ -866,7 +866,7 @@ public class ayd {
          new bei(
             $$193,
             "Remove liquid_carvers and heightmap chunk statuses",
-            a(Map.of("minecraft:liquid_carvers", "minecraft:carvers", "minecraft:heightmaps", "minecraft:spawn"))
+            b(Map.of("minecraft:liquid_carvers", "minecraft:carvers", "minecraft:heightmaps", "minecraft:spawn"))
          )
       );
       Schema $$194 = $$0.addSchema(3451, c);
@@ -892,13 +892,13 @@ public class ayd {
       $$0.addFixer(new ayl($$203, "Added Breeze", beh.y));
       $$0.addFixer(new ayl($$203, "Added Trial Spawner", beh.s));
       Schema $$204 = $$0.addSchema(3692, c);
-      UnaryOperator<String> $$205 = a(Map.of("minecraft:grass", "minecraft:short_grass"));
+      UnaryOperator<String> $$205 = b(Map.of("minecraft:grass", "minecraft:short_grass"));
       $$0.addFixer(azh.a($$204, "Rename grass block to short_grass", $$205));
       $$0.addFixer(bci.a($$204, "Rename grass item to short_grass", $$205));
       Schema $$206 = $$0.addSchema(3799, big::new);
       $$0.addFixer(new ayl($$206, "Added Armadillo", beh.y));
       Schema $$207 = $$0.addSchema(3800, c);
-      UnaryOperator<String> $$208 = a(Map.of("minecraft:scute", "minecraft:turtle_scute"));
+      UnaryOperator<String> $$208 = b(Map.of("minecraft:scute", "minecraft:turtle_scute"));
       $$0.addFixer(bci.a($$207, "Rename scute item to turtle_scute", $$208));
       Schema $$209 = $$0.addSchema(3803, c);
       $$0.addFixer(new bek($$209, "Rename sweeping enchant to sweeping_edge", Map.of("minecraft:sweeping", "minecraft:sweeping_edge")));
@@ -918,13 +918,19 @@ public class ayd {
       $$0.addFixer(new azg($$216));
       Schema $$217 = $$0.addSchema(3814, c);
       $$0.addFixer(new ayo($$217, "Rename jump strength attribute", a("minecraft:horse.jump_strength", "minecraft:generic.jump_strength")));
+      Schema $$218 = $$0.addSchema(3816, bik::new);
+      $$0.addFixer(new ayl($$218, "Added Bogged", beh.y));
    }
 
    private static UnaryOperator<String> a(Map<String, String> $$0) {
       return $$1 -> $$0.getOrDefault($$1, $$1);
    }
 
+   private static UnaryOperator<String> b(Map<String, String> $$0) {
+      return $$1 -> $$0.getOrDefault(bfq.a($$1), $$1);
+   }
+
    private static UnaryOperator<String> a(String $$0, String $$1) {
-      return $$2 -> Objects.equals($$2, $$0) ? $$1 : $$2;
+      return $$2 -> Objects.equals(bfq.a($$2), $$0) ? $$1 : $$2;
    }
 }

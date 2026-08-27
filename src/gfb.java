@@ -1,11 +1,15 @@
-public class gfb extends gee<cds, fqc<cds>> {
-   private static final ajh a = new ajh("textures/entity/sniffer/sniffer.png");
+public class gfb extends geh<cgh, fpz<cgh>> {
+   private static final ajh a = new ajh("textures/entity/silverfish.png");
 
-   public gfb(gcy.a $$0) {
-      super($$0, new fqc<>($$0.a(frc.bq)), 1.1F);
+   public gfb(gdb.a $$0) {
+      super($$0, new fpz<>($$0.a(fre.bm)), 0.3F);
    }
 
-   public ajh a(cds $$0) {
+   protected float a(cgh $$0) {
+      return 180.0F;
+   }
+
+   public ajh b(cgh $$0) {
       return a;
    }
 }

@@ -6,7 +6,7 @@ public class afx implements yb<aez> {
    private final float e;
    private final float f;
 
-   public afx(bow $$0) {
+   public afx(box $$0) {
       this.b = $$0.dr();
       this.c = $$0.dt();
       this.d = $$0.dx();

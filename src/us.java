@@ -386,7 +386,7 @@ public class us extends SimpleChannelInboundHandler<yb<?>> {
       return this.k.a();
    }
 
-   public static us a(InetSocketAddress $$0, boolean $$1, @Nullable biw $$2) {
+   public static us a(InetSocketAddress $$0, boolean $$1, @Nullable bix $$2) {
       us $$3 = new us(yc.b);
       if ($$2 != null) {
          $$3.a($$2);
@@ -547,7 +547,7 @@ public class us extends SimpleChannelInboundHandler<yb<?>> {
       return this.x;
    }
 
-   public void a(biw $$0) {
+   public void a(bix $$0) {
       this.B = new ul($$0);
    }
 }

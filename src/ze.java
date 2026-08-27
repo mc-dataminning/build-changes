@@ -1,4 +1,4 @@
-public record ze(ajg<drn> c, epr d) implements zc {
+public record ze(ajg<drp> c, ept d) implements zc {
    public static final xs<uu, ze> a = zc.a(ze::a, ze::new);
    public static final zc.b<ze> b = zc.a("debug/game_event");
 
@@ -16,11 +16,11 @@ public record ze(ajg<drn> c, epr d) implements zc {
       return b;
    }
 
-   public ajg<drn> b() {
+   public ajg<drp> b() {
       return this.c;
    }
 
-   public epr c() {
+   public ept c() {
       return this.d;
    }
 }

@@ -1,30 +1,67 @@
 import com.mojang.serialization.Codec;
-import java.util.function.Supplier;
+import com.mojang.serialization.DataResult;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public interface fsu {
-   Codec<fsu> a = axq.a(fsu.a::values).dispatch(fsu::a, fsu.a::a);
+public class fsu {
+   private final fsw[] a;
+   private int b;
 
-   fsu.a a();
+   public static Codec<fsu> a(int $$0) {
+      return Codec.list(fsw.a)
+         .comapFlatMap(
+            $$1 -> {
+               int $$2 = $$1.size();
+               return $$2 > $$0
+                  ? DataResult.error(() -> "Expected: a buffer of size less than or equal to " + $$0 + " but: " + $$2 + " is greater than " + $$0)
+                  : DataResult.success(new fsu($$0, $$1));
+            },
+            fsu::c
+         );
+   }
 
-   public static enum a implements axq {
-      a("player", () -> fsv.a.b),
-      b("system", () -> fsv.b.b);
+   public fsu(int $$0) {
+      this.a = new fsw[$$0];
+   }
 
-      private final String c;
-      private final Supplier<Codec<? extends fsu>> d;
+   private fsu(int $$0, List<fsw> $$1) {
+      this.a = $$1.toArray(fsw[]::new);
+      this.b = $$1.size();
+   }
 
-      private a(String $$0, Supplier<Codec<? extends fsu>> $$1) {
-         this.c = $$0;
-         this.d = $$1;
+   private List<fsw> c() {
+      List<fsw> $$0 = new ArrayList<>(this.d());
+
+      for (int $$1 = this.a(); $$1 <= this.b(); $$1++) {
+         $$0.add(this.b($$1));
       }
 
-      private Codec<? extends fsu> a() {
-         return this.d.get();
-      }
+      return $$0;
+   }
 
-      @Override
-      public String c() {
-         return this.c;
-      }
+   public void a(fsw $$0) {
+      this.a[this.c(this.b++)] = $$0;
+   }
+
+   @Nullable
+   public fsw b(int $$0) {
+      return $$0 >= this.a() && $$0 <= this.b() ? this.a[this.c($$0)] : null;
+   }
+
+   private int c(int $$0) {
+      return $$0 % this.a.length;
+   }
+
+   public int a() {
+      return Math.max(this.b - this.a.length, 0);
+   }
+
+   public int b() {
+      return this.b - 1;
+   }
+
+   private int d() {
+      return this.b() - this.a() + 1;
    }
 }

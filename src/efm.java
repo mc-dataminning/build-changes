@@ -1,60 +1,48 @@
 import com.mojang.serialization.Codec;
-import java.util.Objects;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import java.util.function.Consumer;
 
-public class efm extends edc {
-   public static final Codec<efm> d = a(efm::new);
+public class efm extends ede {
+   public static final Codec<efm> d = RecordCodecBuilder.create(
+      $$0 -> $$0.group(a($$0), ebl.c.fieldOf("height").forGetter($$0x -> $$0x.e)).apply($$0, efm::new)
+   );
+   public final ebl e;
 
-   public efm(edc.c $$0) {
+   public efm(ede.c $$0, ebl $$1) {
       super($$0);
+      this.e = $$1;
    }
 
    @Override
-   public Optional<edc.b> a(edc.a $$0) {
-      int $$1 = $$0.h().a(9);
-      int $$2 = $$0.h().b(9);
+   public Optional<ede.b> a(ede.a $$0) {
+      dtn $$1 = $$0.f();
+      int $$2 = $$0.h().d() + $$1.a(16);
+      int $$3 = $$0.h().e() + $$1.a(16);
+      int $$4 = $$0.b().e();
+      dtl $$5 = new dtl($$0.b(), $$0.i());
+      int $$6 = this.e.a($$1, $$5);
+      cxn $$7 = $$0.b().a($$2, $$3, $$0.i(), $$0.d());
+      ib.a $$8 = new ib.a($$2, $$6, $$3);
 
-      for (il<cxy> $$4 : $$0.c().a($$1, $$0.b().e(), $$2, 29, $$0.d().b())) {
-         if (!$$4.a(aum.X)) {
-            return Optional.empty();
+      while ($$6 > $$4) {
+         dnb $$9 = $$7.a($$6);
+         dnb $$10 = $$7.a(--$$6);
+         if ($$9.i() && ($$10.a(dae.dW) || $$10.d(cwq.a, $$8.q($$6), ih.b))) {
+            break;
          }
       }
 
-      return a($$0, dsm.a.c, $$1x -> a($$1x, $$0));
-   }
-
-   private static edg a(cwg $$0, dtl $$1) {
-      int $$2 = $$0.d() - 29;
-      int $$3 = $$0.e() - 29;
-      ih $$4 = ih.c.a.a($$1);
-      return new efl.h($$1, $$2, $$3, $$4);
-   }
-
-   private static void a(edu $$0, edc.a $$1) {
-      $$0.a(a($$1.h(), $$1.f()));
-   }
-
-   public static edr a(cwg $$0, long $$1, edr $$2) {
-      if ($$2.a()) {
-         return $$2;
+      if ($$6 <= $$4) {
+         return Optional.empty();
       } else {
-         dtl $$3 = new dtl(new dsn(dtb.a()));
-         $$3.c($$1, $$0.e, $$0.f);
-         edg $$4 = $$2.c().get(0);
-         ecu $$5 = $$4.f();
-         int $$6 = $$5.h();
-         int $$7 = $$5.j();
-         ih $$8 = ih.c.a.a($$3);
-         ih $$9 = Objects.requireNonNullElse($$4.i(), $$8);
-         edg $$10 = new efl.h($$3, $$6, $$7, $$9);
-         edu $$11 = new edu();
-         $$11.a($$10);
-         return $$11.a();
+         ib $$11 = new ib($$2, $$6, $$3);
+         return Optional.of(new ede.b($$11, (Consumer<edw>)($$3x -> efl.a($$0.e(), $$3x, $$1, $$11))));
       }
    }
 
    @Override
-   public edl<?> e() {
-      return edl.j;
+   public edn<?> e() {
+      return edn.i;
    }
 }

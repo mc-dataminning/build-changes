@@ -11,7 +11,7 @@ public class anu implements anv {
          @Override
          public anv a(CommandContext<du> $$0x) throws CommandSyntaxException {
             ib $$1 = fo.a($$0, $$0 + "Pos");
-            dkg $$2 = ((du)$$0.getSource()).e().c_($$1);
+            dki $$2 = ((du)$$0.getSource()).e().c_($$1);
             if ($$2 == null) {
                throw anu.b.create();
             } else {
@@ -24,17 +24,17 @@ public class anu implements anv {
             return $$0.then(dv.a("block").then($$1.apply(dv.a($$0 + "Pos", fo.a()))));
          }
       };
-   private final dkg c;
+   private final dki c;
    private final ib d;
 
-   public anu(dkg $$0, ib $$1) {
+   public anu(dki $$0, ib $$1) {
       this.c = $$0;
       this.d = $$1;
    }
 
    @Override
    public void a(ta $$0) {
-      dmz $$1 = this.c.i().a_(this.d);
+      dnb $$1 = this.c.i().a_(this.d);
       this.c.a($$0, this.c.i().H_());
       this.c.e();
       this.c.i().a(this.d, $$1, $$1, 3);

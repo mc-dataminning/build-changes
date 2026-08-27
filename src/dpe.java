@@ -1,111 +1,69 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class dpe<T> implements dpm<T> {
-   private final iq<T> a;
-   private final avt<T> b;
-   private final dpn<T> c;
-   private final int d;
+public class dpe extends dpi {
+   private final il<cya> n;
 
-   public dpe(iq<T> $$0, int $$1, dpn<T> $$2, List<T> $$3) {
-      this($$0, $$1, $$2);
-      $$3.forEach(this.b::d);
-   }
-
-   public dpe(iq<T> $$0, int $$1, dpn<T> $$2) {
-      this($$0, $$1, $$2, avt.c(1 << $$1));
-   }
-
-   private dpe(iq<T> $$0, int $$1, dpn<T> $$2, avt<T> $$3) {
-      this.a = $$0;
-      this.d = $$1;
-      this.c = $$2;
-      this.b = $$3;
-   }
-
-   public static <A> dpm<A> a(int $$0, iq<A> $$1, dpn<A> $$2, List<A> $$3) {
-      return new dpe<>($$1, $$0, $$2, $$3);
+   public dpe(cxb $$0, cwi $$1, il<cya> $$2) {
+      super($$0, $$1);
+      this.n = $$2;
    }
 
    @Override
-   public int a(T $$0) {
-      int $$1 = this.b.a($$0);
-      if ($$1 == -1) {
-         $$1 = this.b.d($$0);
-         if ($$1 >= 1 << this.d) {
-            $$1 = this.c.onResize(this.d + 1, $$0);
-         }
-      }
+   public dnb a_(ib $$0) {
+      return dae.nb.o();
+   }
 
-      return $$1;
+   @Nullable
+   @Override
+   public dnb a(ib $$0, dnb $$1, boolean $$2) {
+      return null;
    }
 
    @Override
-   public boolean a(Predicate<T> $$0) {
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         if ($$0.test(this.b.a($$1))) {
-            return true;
-         }
-      }
-
-      return false;
+   public eip b_(ib $$0) {
+      return eiq.a.g();
    }
 
    @Override
-   public T a(int $$0) {
-      T $$1 = this.b.a($$0);
-      if ($$1 == null) {
-         throw new dpl($$0);
-      } else {
-         return $$1;
-      }
+   public int i(ib $$0) {
+      return 0;
+   }
+
+   @Nullable
+   @Override
+   public dki a(ib $$0, dpi.b $$1) {
+      return null;
    }
 
    @Override
-   public void a(uu $$0) {
-      this.b.a();
-      int $$1 = $$0.l();
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         this.b.d(this.a.b($$0.l()));
-      }
+   public void b(dki $$0) {
    }
 
    @Override
-   public void b(uu $$0) {
-      int $$1 = this.b();
-      $$0.c($$1);
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         $$0.c(this.a.a(this.b.a($$2)));
-      }
+   public void a(dki $$0) {
    }
 
    @Override
-   public int a() {
-      int $$0 = vl.a(this.b());
-
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         $$0 += vl.a(this.a.a(this.b.a($$1)));
-      }
-
-      return $$0;
-   }
-
-   public List<T> d() {
-      ArrayList<T> $$0 = new ArrayList<>();
-      this.b.iterator().forEachRemaining($$0::add);
-      return $$0;
+   public void d(ib $$0) {
    }
 
    @Override
-   public int b() {
-      return this.b.b();
+   public boolean C() {
+      return true;
    }
 
    @Override
-   public dpm<T> c() {
-      return new dpe<>(this.a, this.d, this.c, this.b.c());
+   public boolean a(int $$0, int $$1) {
+      return true;
+   }
+
+   @Override
+   public aoy D() {
+      return aoy.b;
+   }
+
+   @Override
+   public il<cya> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.n;
    }
 }

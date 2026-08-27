@@ -27,9 +27,9 @@ public class fu implements ArgumentType<fq> {
       return new fu($$0);
    }
 
-   public static epq a(CommandContext<du> $$0, String $$1) {
-      epr $$2 = ((fq)$$0.getArgument($$1, fq.class)).a((du)$$0.getSource());
-      return new epq((float)$$2.c, (float)$$2.e);
+   public static eps a(CommandContext<du> $$0, String $$1) {
+      ept $$2 = ((fq)$$0.getArgument($$1, fq.class)).a((du)$$0.getSource());
+      return new eps((float)$$2.c, (float)$$2.e);
    }
 
    public fq a(StringReader $$0) throws CommandSyntaxException {

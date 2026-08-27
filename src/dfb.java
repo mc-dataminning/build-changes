@@ -1,99 +1,253 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.EnumSet;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class dfb extends daj implements dad {
-   public static final MapCodec<dfb> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ajg.a(kj.ax).fieldOf("feature").forGetter($$0x -> $$0x.d), u()).apply($$0, dfb::new)
-   );
-   protected static final float b = 3.0F;
-   protected static final eqk c = daa.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
-   private final ajg<dvd<?, ?>> d;
+public abstract class dfb extends dac {
+   private static final float a = 1.0F;
+   private static final eqm c = dac.a(0.0, 15.0, 0.0, 16.0, 16.0, 16.0);
+   private static final eqm d = dac.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
+   private static final eqm e = dac.a(0.0, 0.0, 0.0, 1.0, 16.0, 16.0);
+   private static final eqm f = dac.a(15.0, 0.0, 0.0, 16.0, 16.0, 16.0);
+   private static final eqm g = dac.a(0.0, 0.0, 0.0, 16.0, 16.0, 1.0);
+   private static final eqm h = dac.a(0.0, 0.0, 15.0, 16.0, 16.0, 16.0);
+   private static final Map<ih, dns> i = dfp.h;
+   private static final Map<ih, eqm> j = ac.a(Maps.newEnumMap(ih.class), $$0 -> {
+      $$0.put(ih.c, g);
+      $$0.put(ih.f, f);
+      $$0.put(ih.d, h);
+      $$0.put(ih.e, e);
+      $$0.put(ih.b, c);
+      $$0.put(ih.a, d);
+   });
+   protected static final ih[] b = ih.values();
+   private final ImmutableMap<dnb, eqm> k;
+   private final boolean l;
+   private final boolean m;
+   private final boolean n;
 
-   @Override
-   public MapCodec<dfb> a() {
-      return a;
-   }
-
-   public dfb(ajg<dvd<?, ?>> $$0, dmy.d $$1) {
-      super($$1);
-      this.d = $$0;
-   }
-
-   @Override
-   protected eqk a(dmz $$0, cwf $$1, ib $$2, epw $$3) {
-      return c;
-   }
-
-   @Override
-   protected void b(dmz $$0, apf $$1, ib $$2, axd $$3) {
-      if ($$3.a(25) == 0) {
-         int $$4 = 5;
-         int $$5 = 4;
-
-         for (ib $$6 : ib.a($$2.b(-4, -1, -4), $$2.b(4, 1, 4))) {
-            if ($$1.a_($$6).a(this)) {
-               if (--$$4 <= 0) {
-                  return;
-               }
-            }
-         }
-
-         ib $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
-
-         for (int $$8 = 0; $$8 < 4; $$8++) {
-            if ($$1.u($$7) && $$0.a($$1, $$7)) {
-               $$2 = $$7;
-            }
-
-            $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
-         }
-
-         if ($$1.u($$7) && $$0.a($$1, $$7)) {
-            $$1.a($$7, $$0, 2);
-         }
-      }
+   public dfb(dna.d $$0) {
+      super($$0);
+      this.k(a(this.E));
+      this.k = this.a(dfb::o);
+      this.l = ih.c.a.a().allMatch(this::a);
+      this.m = ih.c.a.a().filter(ih.a.a).filter(this::a).count() % 2L == 0L;
+      this.n = ih.c.a.a().filter(ih.a.c).filter(this::a).count() % 2L == 0L;
    }
 
    @Override
-   protected boolean b(dmz $$0, cwf $$1, ib $$2) {
-      return $$0.i($$1, $$2);
-   }
+   protected abstract MapCodec<? extends dfb> a();
 
-   @Override
-   protected boolean a(dmz $$0, cxc $$1, ib $$2) {
-      ib $$3 = $$2.d();
-      dmz $$4 = $$1.a_($$3);
-      return $$4.a(aun.ba) ? true : $$1.b($$2, 0) < 13 && this.b($$4, $$1, $$3);
-   }
-
-   public boolean a(apf $$0, ib $$1, dmz $$2, axd $$3) {
-      Optional<? extends il<dvd<?, ?>>> $$4 = $$0.H_().d(kj.ax).b(this.d);
-      if ($$4.isEmpty()) {
-         return false;
+   public static Set<ih> m(dnb $$0) {
+      if (!($$0.b() instanceof dfb)) {
+         return Set.of();
       } else {
-         $$0.a($$1, false);
-         if ($$4.get().a().a($$0, $$0.l().g(), $$3, $$1)) {
-            return true;
-         } else {
-            $$0.a($$1, $$2, 3);
-            return false;
+         Set<ih> $$1 = EnumSet.noneOf(ih.class);
+
+         for (ih $$2 : ih.values()) {
+            if (a($$0, $$2)) {
+               $$1.add($$2);
+            }
          }
+
+         return $$1;
       }
    }
 
-   @Override
-   public boolean b(cxc $$0, ib $$1, dmz $$2) {
+   public static Set<ih> a(byte $$0) {
+      Set<ih> $$1 = EnumSet.noneOf(ih.class);
+
+      for (ih $$2 : ih.values()) {
+         if (($$0 & (byte)(1 << $$2.ordinal())) > 0) {
+            $$1.add($$2);
+         }
+      }
+
+      return $$1;
+   }
+
+   public static byte a(Collection<ih> $$0) {
+      byte $$1 = 0;
+
+      for (ih $$2 : $$0) {
+         $$1 = (byte)($$1 | 1 << $$2.ordinal());
+      }
+
+      return $$1;
+   }
+
+   protected boolean a(ih $$0) {
       return true;
    }
 
    @Override
-   public boolean a(cwz $$0, axd $$1, ib $$2, dmz $$3) {
-      return (double)$$1.i() < 0.4;
+   protected void a(dnc.a<dac, dnb> $$0) {
+      for (ih $$1 : b) {
+         if (this.a($$1)) {
+            $$0.a(b($$1));
+         }
+      }
    }
 
    @Override
-   public void a(apf $$0, axd $$1, ib $$2, dmz $$3) {
-      this.a($$0, $$2, $$3, $$1);
+   protected dnb a(dnb $$0, ih $$1, dnb $$2, cxc $$3, ib $$4, ib $$5) {
+      if (!n($$0)) {
+         return dae.a.o();
+      } else {
+         return a($$0, $$1) && !a($$3, $$1, $$5, $$2) ? a($$0, b($$1)) : $$0;
+      }
    }
+
+   @Override
+   protected eqm a(dnb $$0, cwh $$1, ib $$2, epy $$3) {
+      return (eqm)this.k.get($$0);
+   }
+
+   @Override
+   protected boolean a(dnb $$0, cxe $$1, ib $$2) {
+      boolean $$3 = false;
+
+      for (ih $$4 : b) {
+         if (a($$0, $$4)) {
+            ib $$5 = $$2.a($$4);
+            if (!a($$1, $$4, $$5, $$1.a_($$5))) {
+               return false;
+            }
+
+            $$3 = true;
+         }
+      }
+
+      return $$3;
+   }
+
+   @Override
+   protected boolean a(dnb $$0, csu $$1) {
+      return p($$0);
+   }
+
+   @Nullable
+   @Override
+   public dnb a(csu $$0) {
+      cxb $$1 = $$0.q();
+      ib $$2 = $$0.a();
+      dnb $$3 = $$1.a_($$2);
+      return Arrays.stream($$0.f()).map($$3x -> this.c($$3, $$1, $$2, $$3x)).filter(Objects::nonNull).findFirst().orElse(null);
+   }
+
+   public boolean a(cwh $$0, dnb $$1, ib $$2, ih $$3) {
+      if (this.a($$3) && (!$$1.a(this) || !a($$1, $$3))) {
+         ib $$4 = $$2.a($$3);
+         return a($$0, $$3, $$4, $$0.a_($$4));
+      } else {
+         return false;
+      }
+   }
+
+   @Nullable
+   public dnb c(dnb $$0, cwh $$1, ib $$2, ih $$3) {
+      if (!this.a($$1, $$0, $$2, $$3)) {
+         return null;
+      } else {
+         dnb $$4;
+         if ($$0.a(this)) {
+            $$4 = $$0;
+         } else if (this.i() && $$0.u().a(eiq.c)) {
+            $$4 = this.o().a(dnr.C, Boolean.valueOf(true));
+         } else {
+            $$4 = this.o();
+         }
+
+         return $$4.a(b($$3), Boolean.valueOf(true));
+      }
+   }
+
+   @Override
+   protected dnb a(dnb $$0, dgo $$1) {
+      return !this.l ? $$0 : this.a($$0, $$1::a);
+   }
+
+   @Override
+   protected dnb a(dnb $$0, dey $$1) {
+      if ($$1 == dey.c && !this.m) {
+         return $$0;
+      } else {
+         return $$1 == dey.b && !this.n ? $$0 : this.a($$0, $$1::b);
+      }
+   }
+
+   private dnb a(dnb $$0, Function<ih, ih> $$1) {
+      dnb $$2 = $$0;
+
+      for (ih $$3 : b) {
+         if (this.a($$3)) {
+            $$2 = $$2.a(b($$1.apply($$3)), $$0.c(b($$3)));
+         }
+      }
+
+      return $$2;
+   }
+
+   public static boolean a(dnb $$0, ih $$1) {
+      dns $$2 = b($$1);
+      return $$0.b($$2) && $$0.c($$2);
+   }
+
+   public static boolean a(cwh $$0, ih $$1, ib $$2, dnb $$3) {
+      return dac.a($$3.l($$0, $$2), $$1.g()) || dac.a($$3.k($$0, $$2), $$1.g());
+   }
+
+   private boolean i() {
+      return this.E.d().contains(dnr.C);
+   }
+
+   private static dnb a(dnb $$0, dns $$1) {
+      dnb $$2 = $$0.a($$1, Boolean.valueOf(false));
+      return n($$2) ? $$2 : dae.a.o();
+   }
+
+   public static dns b(ih $$0) {
+      return i.get($$0);
+   }
+
+   private static dnb a(dnc<dac, dnb> $$0) {
+      dnb $$1 = $$0.b();
+
+      for (dns $$2 : i.values()) {
+         if ($$1.b($$2)) {
+            $$1 = $$1.a($$2, Boolean.valueOf(false));
+         }
+      }
+
+      return $$1;
+   }
+
+   private static eqm o(dnb $$0) {
+      eqm $$1 = eqj.a();
+
+      for (ih $$2 : b) {
+         if (a($$0, $$2)) {
+            $$1 = eqj.a($$1, j.get($$2));
+         }
+      }
+
+      return $$1.c() ? eqj.b() : $$1;
+   }
+
+   protected static boolean n(dnb $$0) {
+      return Arrays.stream(b).anyMatch($$1 -> a($$0, $$1));
+   }
+
+   private static boolean p(dnb $$0) {
+      return Arrays.stream(b).anyMatch($$1 -> !a($$0, $$1));
+   }
+
+   public abstract dfc c();
 }

@@ -10,8 +10,8 @@ public record cz(cm.d c) implements bs {
    }
 
    @Override
-   public boolean a(bow $$0, apf $$1, @Nullable epr $$2) {
-      return $$0 instanceof cgh $$3 ? this.c.d($$3.go()) : false;
+   public boolean a(box $$0, apf $$1, @Nullable ept $$2) {
+      return $$0 instanceof cgj $$3 ? this.c.d($$3.go()) : false;
    }
 
    @Override

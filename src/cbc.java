@@ -1,110 +1,35 @@
-import java.util.List;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public abstract class cbc extends cba {
-   @Nullable
-   private cbc b;
-   private int c = 1;
-
-   public cbc(bpc<? extends cbc> $$0, cwz $$1) {
+public abstract class cbc extends bpx {
+   protected cbc(bpd<? extends cbc> $$0, cxb $$1) {
       super($$0, $$1);
    }
 
+   @Nullable
    @Override
-   protected void z() {
-      super.z();
-      this.bR.a(5, new bwh(this));
-   }
-
-   @Override
-   public int fO() {
-      return this.gp();
-   }
-
-   public int gp() {
-      return super.fO();
-   }
-
-   @Override
-   protected boolean gn() {
-      return !this.gq();
-   }
-
-   public boolean gq() {
-      return this.b != null && this.b.bA();
-   }
-
-   public cbc a(cbc $$0) {
-      this.b = $$0;
-      $$0.gw();
-      return $$0;
-   }
-
-   public void gr() {
-      this.b.gx();
-      this.b = null;
-   }
-
-   private void gw() {
-      this.c++;
-   }
-
-   private void gx() {
-      this.c--;
-   }
-
-   public boolean gs() {
-      return this.gt() && this.c < this.gp();
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      if (this.gt() && this.dM().z.a(200) == 1) {
-         List<? extends cba> $$0 = this.dM().a((Class<? extends cba>)this.getClass(), this.cH().c(8.0, 8.0, 8.0));
-         if ($$0.size() <= 1) {
-            this.c = 1;
-         }
-      }
-   }
-
-   public boolean gt() {
-      return this.c > 1;
-   }
-
-   public boolean gu() {
-      return this.g(this.b) <= 121.0;
-   }
-
-   public void gv() {
-      if (this.gq()) {
-         this.K().a(this.b, 1.0);
-      }
-   }
-
-   public void a(Stream<? extends cbc> $$0) {
-      $$0.limit((long)(this.gp() - this.c)).filter($$0x -> $$0x != this).forEach($$0x -> $$0x.a(this));
+   protected atx v() {
+      return null;
    }
 
    @Nullable
    @Override
-   public bqg a(cxo $$0, bna $$1, bps $$2, @Nullable bqg $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$3 == null) {
-         $$3 = new cbc.a(this);
-      } else {
-         this.a(((cbc.a)$$3).a);
-      }
-
-      return $$3;
+   protected atx d(bnw $$0) {
+      return null;
    }
 
-   public static class a implements bqg {
-      public final cbc a;
+   @Nullable
+   @Override
+   protected atx n_() {
+      return null;
+   }
 
-      public a(cbc $$0) {
-         this.a = $$0;
-      }
+   @Override
+   public int O() {
+      return 120;
+   }
+
+   @Override
+   public boolean h(double $$0) {
+      return false;
    }
 }

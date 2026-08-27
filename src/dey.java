@@ -1,40 +1,57 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public class dey extends daa {
-   public static final MapCodec<dey> a = b(dey::new);
-   protected static final eqk b = daa.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
+public enum dey implements axq {
+   a("none", h.a),
+   b("left_right", h.B),
+   c("front_back", h.z);
 
-   @Override
-   public MapCodec<dey> a() {
-      return a;
+   public static final Codec<dey> d = axq.a(dey::values);
+   private final String e;
+   private final vu f;
+   private final h g;
+
+   private dey(String $$0, h $$1) {
+      this.e = $$0;
+      this.f = vu.c("mirror." + $$0);
+      this.g = $$1;
    }
 
-   public dey(dmy.d $$0) {
-      super($$0);
+   public int a(int $$0, int $$1) {
+      int $$2 = $$1 / 2;
+      int $$3 = $$0 > $$2 ? $$0 - $$1 : $$0;
+      switch (this) {
+         case c:
+            return ($$1 - $$3) % $$1;
+         case b:
+            return ($$2 - $$3 + $$1) % $$1;
+         default:
+            return $$0;
+      }
+   }
+
+   public dgo a(ih $$0) {
+      ih.a $$1 = $$0.o();
+      return (this != b || $$1 != ih.a.c) && (this != c || $$1 != ih.a.a) ? dgo.a : dgo.c;
+   }
+
+   public ih b(ih $$0) {
+      if (this == c && $$0.o() == ih.a.a) {
+         return $$0.g();
+      } else {
+         return this == b && $$0.o() == ih.a.c ? $$0.g() : $$0;
+      }
+   }
+
+   public h a() {
+      return this.g;
+   }
+
+   public vu b() {
+      return this.f;
    }
 
    @Override
-   protected eqk b(dmz $$0, cwf $$1, ib $$2, epw $$3) {
-      return b;
-   }
-
-   @Override
-   protected eqk b_(dmz $$0, cwf $$1, ib $$2) {
-      return eqh.b();
-   }
-
-   @Override
-   protected eqk c(dmz $$0, cwf $$1, ib $$2, epw $$3) {
-      return eqh.b();
-   }
-
-   @Override
-   protected boolean a(dmz $$0, cwf $$1, ib $$2, ejd $$3) {
-      return false;
-   }
-
-   @Override
-   protected float d(dmz $$0, cwf $$1, ib $$2) {
-      return 0.2F;
+   public String c() {
+      return this.e;
    }
 }

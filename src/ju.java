@@ -10,17 +10,17 @@ public class ju implements ka {
       }
    };
    private final kb<ju> b;
-   private final dmz c;
+   private final dnb c;
 
    public static Codec<ju> a(kb<ju> $$0) {
-      return dmz.b.xmap($$1 -> new ju($$0, $$1), $$0x -> $$0x.c);
+      return dnb.b.xmap($$1 -> new ju($$0, $$1), $$0x -> $$0x.c);
    }
 
    public static xs<? super vf, ju> b(kb<ju> $$0) {
-      return xq.a(daa.q).a($$1 -> new ju($$0, $$1), $$0x -> $$0x.c);
+      return xq.a(dac.q).a($$1 -> new ju($$0, $$1), $$0x -> $$0x.c);
    }
 
-   public ju(kb<ju> $$0, dmz $$1) {
+   public ju(kb<ju> $$0, dnb $$1) {
       this.b = $$0;
       this.c = $$1;
    }
@@ -35,7 +35,7 @@ public class ju implements ka {
       return this.b;
    }
 
-   public dmz b() {
+   public dnb b() {
       return this.c;
    }
 }

@@ -1,41 +1,25 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+public final class cxn implements dou {
+   private final int a;
+   private final dnb[] b;
 
-public class cxn {
-   private final List<cxn.a> a = Lists.newArrayList();
-
-   public void a(ib $$0, double $$1) {
-      if ($$1 != 0.0) {
-         this.a.add(new cxn.a($$0, $$1));
-      }
+   public cxn(int $$0, dnb[] $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public double b(ib $$0, double $$1) {
-      if ($$1 == 0.0) {
-         return 0.0;
+   @Override
+   public dnb a(int $$0) {
+      int $$1 = $$0 - this.a;
+      return $$1 >= 0 && $$1 < this.b.length ? this.b[$$1] : dae.a.o();
+   }
+
+   @Override
+   public void a(int $$0, dnb $$1) {
+      int $$2 = $$0 - this.a;
+      if ($$2 >= 0 && $$2 < this.b.length) {
+         this.b[$$2] = $$1;
       } else {
-         double $$2 = 0.0;
-
-         for (cxn.a $$3 : this.a) {
-            $$2 += $$3.a($$0);
-         }
-
-         return $$2 * $$1;
-      }
-   }
-
-   static class a {
-      private final ib a;
-      private final double b;
-
-      public a(ib $$0, double $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public double a(ib $$0) {
-         double $$1 = this.a.j($$0);
-         return $$1 == 0.0 ? Double.POSITIVE_INFINITY : this.b / Math.sqrt($$1);
+         throw new IllegalArgumentException("Outside of column height: " + $$0);
       }
    }
 }

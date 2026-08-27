@@ -54,21 +54,21 @@ public class akr {
                                              ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a(
                                                                      "color"
                                                                   )
-                                                                  .then(dv.a("pink").executes($$0x -> a((du)$$0x.getSource(), a($$0x), bms.a.a))))
-                                                               .then(dv.a("blue").executes($$0x -> a((du)$$0x.getSource(), a($$0x), bms.a.b))))
-                                                            .then(dv.a("red").executes($$0x -> a((du)$$0x.getSource(), a($$0x), bms.a.c))))
-                                                         .then(dv.a("green").executes($$0x -> a((du)$$0x.getSource(), a($$0x), bms.a.d))))
-                                                      .then(dv.a("yellow").executes($$0x -> a((du)$$0x.getSource(), a($$0x), bms.a.e))))
-                                                   .then(dv.a("purple").executes($$0x -> a((du)$$0x.getSource(), a($$0x), bms.a.f))))
-                                                .then(dv.a("white").executes($$0x -> a((du)$$0x.getSource(), a($$0x), bms.a.g)))
+                                                                  .then(dv.a("pink").executes($$0x -> a((du)$$0x.getSource(), a($$0x), bmt.a.a))))
+                                                               .then(dv.a("blue").executes($$0x -> a((du)$$0x.getSource(), a($$0x), bmt.a.b))))
+                                                            .then(dv.a("red").executes($$0x -> a((du)$$0x.getSource(), a($$0x), bmt.a.c))))
+                                                         .then(dv.a("green").executes($$0x -> a((du)$$0x.getSource(), a($$0x), bmt.a.d))))
+                                                      .then(dv.a("yellow").executes($$0x -> a((du)$$0x.getSource(), a($$0x), bmt.a.e))))
+                                                   .then(dv.a("purple").executes($$0x -> a((du)$$0x.getSource(), a($$0x), bmt.a.f))))
+                                                .then(dv.a("white").executes($$0x -> a((du)$$0x.getSource(), a($$0x), bmt.a.g)))
                                           ))
                                        .then(
                                           ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("style")
-                                                         .then(dv.a("progress").executes($$0x -> a((du)$$0x.getSource(), a($$0x), bms.b.a))))
-                                                      .then(dv.a("notched_6").executes($$0x -> a((du)$$0x.getSource(), a($$0x), bms.b.b))))
-                                                   .then(dv.a("notched_10").executes($$0x -> a((du)$$0x.getSource(), a($$0x), bms.b.c))))
-                                                .then(dv.a("notched_12").executes($$0x -> a((du)$$0x.getSource(), a($$0x), bms.b.d))))
-                                             .then(dv.a("notched_20").executes($$0x -> a((du)$$0x.getSource(), a($$0x), bms.b.e)))
+                                                         .then(dv.a("progress").executes($$0x -> a((du)$$0x.getSource(), a($$0x), bmt.b.a))))
+                                                      .then(dv.a("notched_6").executes($$0x -> a((du)$$0x.getSource(), a($$0x), bmt.b.b))))
+                                                   .then(dv.a("notched_10").executes($$0x -> a((du)$$0x.getSource(), a($$0x), bmt.b.c))))
+                                                .then(dv.a("notched_12").executes($$0x -> a((du)$$0x.getSource(), a($$0x), bmt.b.d))))
+                                             .then(dv.a("notched_20").executes($$0x -> a((du)$$0x.getSource(), a($$0x), bmt.b.e)))
                                        ))
                                     .then(
                                        dv.a("value")
@@ -135,7 +135,7 @@ public class akr {
       if ($$1.h().isEmpty()) {
          $$0.a(() -> vu.a("commands.bossbar.get.players.none", $$1.e()), true);
       } else {
-         $$0.a(() -> vu.a("commands.bossbar.get.players.some", $$1.e(), $$1.h().size(), vx.b($$1.h(), cis::O_)), true);
+         $$0.a(() -> vu.a("commands.bossbar.get.players.some", $$1.e(), $$1.h().size(), vx.b($$1.h(), ciu::O_)), true);
       }
 
       return $$1.h().size();
@@ -180,7 +180,7 @@ public class akr {
       }
    }
 
-   private static int a(du $$0, akg $$1, bms.a $$2) throws CommandSyntaxException {
+   private static int a(du $$0, akg $$1, bmt.a $$2) throws CommandSyntaxException {
       if ($$1.l().equals($$2)) {
          throw f.create();
       } else {
@@ -190,7 +190,7 @@ public class akr {
       }
    }
 
-   private static int a(du $$0, akg $$1, bms.b $$2) throws CommandSyntaxException {
+   private static int a(du $$0, akg $$1, bmt.b $$2) throws CommandSyntaxException {
       if ($$1.m().equals($$2)) {
          throw g.create();
       } else {
@@ -219,7 +219,7 @@ public class akr {
          if ($$1.h().isEmpty()) {
             $$0.a(() -> vu.a("commands.bossbar.set.players.success.none", $$1.e()), true);
          } else {
-            $$0.a(() -> vu.a("commands.bossbar.set.players.success.some", $$1.e(), $$2.size(), vx.b($$2, cis::O_)), true);
+            $$0.a(() -> vu.a("commands.bossbar.set.players.success.some", $$1.e(), $$2.size(), vx.b($$2, ciu::O_)), true);
          }
 
          return $$1.h().size();

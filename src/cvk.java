@@ -1,16 +1,16 @@
-public class cvk extends cuu {
-   public cvk(cuu.a $$0, bpd... $$1) {
-      super($$0, auv.bc, $$1);
+public class cvk extends cuw {
+   public cvk(cuw.a $$0, bpe... $$1) {
+      super($$0, auv.bb, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return $$0 * 25;
+      return $$0 * 10;
    }
 
    @Override
    public int b(int $$0) {
-      return this.a($$0) + 50;
+      return this.a($$0) + 15;
    }
 
    @Override

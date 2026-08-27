@@ -10,7 +10,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class fl implements ArgumentType<fj> {
    private static final Collection<String> a = Arrays.asList("stone", "minecraft:stone", "stone[foo=bar]", "foo{bar=baz}");
-   private final in<daa> b;
+   private final in<dac> b;
 
    public fl(dq $$0) {
       this.b = $$0.b(kj.f);

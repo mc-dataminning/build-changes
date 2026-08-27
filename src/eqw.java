@@ -1,197 +1,53 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.mojang.authlib.GameProfile;
+import javax.annotation.Nullable;
 
-public class eqw extends ejs {
-   private static final Logger b = LogUtils.getLogger();
-   public static final String a = "scoreboard";
-   private final eqv c;
+public interface eqw {
+   String a_ = "*";
+   eqw cy = new eqw() {
+      @Override
+      public String cy() {
+         return "*";
+      }
+   };
 
-   public eqw(eqv $$0) {
-      this.c = $$0;
+   String cy();
+
+   @Nullable
+   default vu O_() {
+      return null;
    }
 
-   public eqw a(ta $$0) {
-      this.b($$0.c("Objectives", 10));
-      this.c.a($$0.c("PlayerScores", 10));
-      if ($$0.b("DisplaySlots", 10)) {
-         this.b($$0.p("DisplaySlots"));
-      }
-
-      if ($$0.b("Teams", 9)) {
-         this.a($$0.c("Teams", 10));
-      }
-
-      return this;
+   default vu hb() {
+      vu $$0 = this.O_();
+      return $$0 != null ? $$0.f().a($$0x -> $$0x.a(new wa(wa.a.a, vu.b(this.cy())))) : vu.b(this.cy());
    }
 
-   private void a(tg $$0) {
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         ta $$2 = $$0.a($$1);
-         String $$3 = $$2.l("Name");
-         eqq $$4 = this.c.c($$3);
-         vu $$5 = vu.a.a($$2.l("DisplayName"));
-         if ($$5 != null) {
-            $$4.a($$5);
-         }
-
-         if ($$2.b("TeamColor", 8)) {
-            $$4.a(n.b($$2.l("TeamColor")));
-         }
-
-         if ($$2.b("AllowFriendlyFire", 99)) {
-            $$4.a($$2.q("AllowFriendlyFire"));
-         }
-
-         if ($$2.b("SeeFriendlyInvisibles", 99)) {
-            $$4.b($$2.q("SeeFriendlyInvisibles"));
-         }
-
-         if ($$2.b("MemberNamePrefix", 8)) {
-            vu $$6 = vu.a.a($$2.l("MemberNamePrefix"));
-            if ($$6 != null) {
-               $$4.b($$6);
+   static eqw d(final String $$0) {
+      if ($$0.equals("*")) {
+         return cy;
+      } else {
+         final vu $$1 = vu.b($$0);
+         return new eqw() {
+            @Override
+            public String cy() {
+               return $$0;
             }
-         }
 
-         if ($$2.b("MemberNameSuffix", 8)) {
-            vu $$7 = vu.a.a($$2.l("MemberNameSuffix"));
-            if ($$7 != null) {
-               $$4.c($$7);
+            @Override
+            public vu hb() {
+               return $$1;
             }
-         }
-
-         if ($$2.b("NameTagVisibility", 8)) {
-            eqx.b $$8 = eqx.b.a($$2.l("NameTagVisibility"));
-            if ($$8 != null) {
-               $$4.a($$8);
-            }
-         }
-
-         if ($$2.b("DeathMessageVisibility", 8)) {
-            eqx.b $$9 = eqx.b.a($$2.l("DeathMessageVisibility"));
-            if ($$9 != null) {
-               $$4.b($$9);
-            }
-         }
-
-         if ($$2.b("CollisionRule", 8)) {
-            eqx.a $$10 = eqx.a.a($$2.l("CollisionRule"));
-            if ($$10 != null) {
-               $$4.a($$10);
-            }
-         }
-
-         this.a($$4, $$2.c("Players", 8));
+         };
       }
    }
 
-   private void a(eqq $$0, tg $$1) {
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         this.c.a($$1.j($$2), $$0);
-      }
-   }
-
-   private void b(ta $$0) {
-      for (String $$1 : $$0.e()) {
-         eqm $$2 = eqm.t.a($$1);
-         if ($$2 != null) {
-            String $$3 = $$0.l($$1);
-            eqn $$4 = this.c.a($$3);
-            this.c.a($$2, $$4);
+   static eqw a(GameProfile $$0) {
+      final String $$1 = $$0.getName();
+      return new eqw() {
+         @Override
+         public String cy() {
+            return $$1;
          }
-      }
-   }
-
-   private void b(tg $$0) {
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         ta $$2 = $$0.a($$1);
-         String $$3 = $$2.l("CriteriaName");
-         eqy $$4 = eqy.a($$3).orElseGet(() -> {
-            b.warn("Unknown scoreboard criteria {}, replacing with {}", $$3, eqy.b.d());
-            return eqy.b;
-         });
-         String $$5 = $$2.l("Name");
-         vu $$6 = vu.a.a($$2.l("DisplayName"));
-         eqy.a $$7 = eqy.a.a($$2.l("RenderType"));
-         boolean $$8 = $$2.q("display_auto_update");
-         xk $$9 = (xk)xm.b.parse(to.a, $$2.c("format")).result().orElse(null);
-         this.c.a($$5, $$4, $$6, $$7, $$8, $$9);
-      }
-   }
-
-   @Override
-   public ta a(ta $$0, in.a $$1) {
-      $$0.a("Objectives", this.b());
-      $$0.a("PlayerScores", this.c.h());
-      $$0.a("Teams", this.a());
-      this.c($$0);
-      return $$0;
-   }
-
-   private tg a() {
-      tg $$0 = new tg();
-
-      for (eqq $$2 : this.c.g()) {
-         ta $$3 = new ta();
-         $$3.a("Name", $$2.b());
-         $$3.a("DisplayName", vu.a.a($$2.c()));
-         if ($$2.n().b() >= 0) {
-            $$3.a("TeamColor", $$2.n().g());
-         }
-
-         $$3.a("AllowFriendlyFire", $$2.h());
-         $$3.a("SeeFriendlyInvisibles", $$2.i());
-         $$3.a("MemberNamePrefix", vu.a.a($$2.e()));
-         $$3.a("MemberNameSuffix", vu.a.a($$2.f()));
-         $$3.a("NameTagVisibility", $$2.j().e);
-         $$3.a("DeathMessageVisibility", $$2.k().e);
-         $$3.a("CollisionRule", $$2.l().e);
-         tg $$4 = new tg();
-
-         for (String $$5 : $$2.g()) {
-            $$4.add(tv.a($$5));
-         }
-
-         $$3.a("Players", $$4);
-         $$0.add($$3);
-      }
-
-      return $$0;
-   }
-
-   private void c(ta $$0) {
-      ta $$1 = new ta();
-
-      for (eqm $$2 : eqm.values()) {
-         eqn $$3 = this.c.a($$2);
-         if ($$3 != null) {
-            $$1.a($$2.c(), $$3.b());
-         }
-      }
-
-      if (!$$1.g()) {
-         $$0.a("DisplaySlots", $$1);
-      }
-   }
-
-   private tg b() {
-      tg $$0 = new tg();
-
-      for (eqn $$2 : this.c.c()) {
-         ta $$3 = new ta();
-         $$3.a("Name", $$2.b());
-         $$3.a("CriteriaName", $$2.c().d());
-         $$3.a("DisplayName", vu.a.a($$2.d()));
-         $$3.a("RenderType", $$2.h().a());
-         $$3.a("display_auto_update", $$2.e());
-         xk $$4 = $$2.f();
-         if ($$4 != null) {
-            xm.b.encodeStart(to.a, $$4).result().ifPresent($$1 -> $$3.a("format", $$1));
-         }
-
-         $$0.add($$3);
-      }
-
-      return $$0;
+      };
    }
 }

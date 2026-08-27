@@ -5,7 +5,7 @@ public class adr implements yb<aam> {
    private final int b;
    private final int c;
 
-   public adr(bow $$0, @Nullable bow $$1) {
+   public adr(box $$0, @Nullable box $$1) {
       this.b = $$0.aj();
       this.c = $$1 != null ? $$1.aj() : 0;
    }

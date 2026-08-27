@@ -1,73 +1,32 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Supplier;
+import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
-public record cnx(Map<cnw.a, Integer> b, int c, il<atx> d, Supplier<ctk> e, List<cnx.a> f, float g, float h) {
-   public static final Codec<il<cnx>> a = ki.as.r();
+public class cnx extends cny {
+   private final ajh d;
+   private final cnx.a e;
 
-   public int a(cnw.a $$0) {
-      return this.b.getOrDefault($$0, 0);
+   public cnx(il<cnz> $$0, cnx.a $$1, cqh.a $$2) {
+      super($$0, cny.a.e, $$2);
+      this.e = $$1;
+      this.d = $$1.c.apply($$0.e().orElseThrow().a());
    }
 
-   public Map<cnw.a, Integer> a() {
-      return this.b;
-   }
-
-   public int b() {
-      return this.c;
-   }
-
-   public il<atx> c() {
+   public ajh b() {
       return this.d;
    }
 
-   public Supplier<ctk> d() {
+   public cnx.a c() {
       return this.e;
    }
 
-   public List<cnx.a> e() {
-      return this.f;
-   }
+   public static enum a {
+      a($$0 -> $$0.a((UnaryOperator<String>)($$0x -> "textures/entity/horse/armor/horse_armor_" + $$0x + ".png"))),
+      b($$0 -> $$0.c("textures/entity/wolf/wolf_armor.png"));
 
-   public float f() {
-      return this.g;
-   }
+      final Function<ajh, ajh> c;
 
-   public float g() {
-      return this.h;
-   }
-
-   public static final class a {
-      private final ajh a;
-      private final String b;
-      private final boolean c;
-      private final ajh d;
-      private final ajh e;
-
-      public a(ajh $$0, String $$1, boolean $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = this.b(true);
-         this.e = this.b(false);
-      }
-
-      public a(ajh $$0) {
-         this($$0, "", false);
-      }
-
-      private ajh b(boolean $$0) {
-         return this.a.a((UnaryOperator<String>)($$1 -> "textures/models/armor/" + this.a.a() + "_layer_" + ($$0 ? 2 : 1) + this.b + ".png"));
-      }
-
-      public ajh a(boolean $$0) {
-         return $$0 ? this.d : this.e;
-      }
-
-      public boolean a() {
-         return this.c;
+      private a(Function<ajh, ajh> $$0) {
+         this.c = $$0;
       }
    }
 }

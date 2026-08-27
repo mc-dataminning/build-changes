@@ -1,6 +1,6 @@
 import net.minecraft.server.MinecraftServer;
 
-public class ajz extends bnn {
+public class ajz extends bno {
    private long g = 0L;
    private long h = 0L;
    private long i = 0L;

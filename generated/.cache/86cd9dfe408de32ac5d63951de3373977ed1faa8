@@ -1,4 +1,4 @@
-// 24w06a	2026-08-28T01:36:38.1659866	vanilla/Tags for minecraft:block
+// 24w07a	2026-08-28T01:39:10.945967	vanilla/Tags for minecraft:block
 882f7161808179f92ed953b9200fdaf74eec6c36 data\minecraft\tags\blocks\infiniburn_overworld.json
 84150f9be2fa26f9202962b031c722718dd23ca0 data\minecraft\tags\blocks\stone_ore_replaceables.json
 60f661a9b26b7f6b1910e5390a40644354fe0919 data\minecraft\tags\blocks\frogs_spawnable_on.json
@@ -40,6 +40,7 @@ db6195d77bd598771b111d12750ba39f41fe35c7 data\minecraft\tags\blocks\strider_warm
 e552b504472828620709403e49e9aca495f2e6ef data\minecraft\tags\blocks\snow_layer_can_survive_on.json
 4ffaa49e8fe60af1f5992d2fdb73e4b1bc5fcf98 data\minecraft\tags\blocks\crops.json
 c998cf5cbc50fe6ebff96350e415e3db67a94c6b data\minecraft\tags\blocks\wooden_pressure_plates.json
+50e0ff26fd3c916d924204208650a91a98d622fd data\minecraft\tags\blocks\does_not_block_hoppers.json
 4b636e8a202b80de17ec8352bba191763ed63d3c data\minecraft\tags\blocks\wooden_doors.json
 d89ad094b9c42adca9e4e2addfcde9c9e6b76c08 data\minecraft\tags\blocks\bamboo_plantable_on.json
 31c793313c9b85d3bd3d53198d21098ea2adaf78 data\minecraft\tags\blocks\camel_sand_step_sound_blocks.json
@@ -153,8 +154,8 @@ f28dc9f2c7d071fef84fb760a59427d564938731 data\minecraft\tags\blocks\diamond_ores
 7ff1531dc7f287a36682c786f864934ac10ba0dc data\minecraft\tags\blocks\portals.json
 51ce2bcc8e2afb893169c1f8562e87206632ea5a data\minecraft\tags\blocks\sword_efficient.json
 3e070569b31d1100ac334efd44a58e52df25df1a data\minecraft\tags\blocks\flowers.json
-88e03262431177ee3001a61830532ea6b37dfcce data\minecraft\tags\blocks\wall_signs.json
 76ac0bd2e48021aef9ecffd104321ebc03c694eb data\minecraft\tags\blocks\standing_signs.json
+88e03262431177ee3001a61830532ea6b37dfcce data\minecraft\tags\blocks\wall_signs.json
 5b7a16c4ba8e702114347cf2a688167b9789cd58 data\minecraft\tags\blocks\wall_post_override.json
 74f68e22bf93a751191e1ec35390adcf191a2880 data\minecraft\tags\blocks\fences.json
 19f48b0aa7f4f0432b1625d6afe2e73994b2e6ca data\minecraft\tags\blocks\mangrove_logs.json

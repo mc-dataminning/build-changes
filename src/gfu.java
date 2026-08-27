@@ -1,18 +1,17 @@
-public class gfu extends gee<cil, fqo<cil>> {
-   private static final ajh a = new ajh("textures/entity/wandering_trader.png");
+public class gfu extends geh<cgo, fqo> {
+   private static final ajh a = new ajh("textures/entity/illager/vex.png");
+   private static final ajh i = new ajh("textures/entity/illager/vex_charging.png");
 
-   public gfu(gcy.a $$0) {
-      super($$0, new fqo<>($$0.a(frc.bO)), 0.5F);
-      this.a(new ggo<>(this, $$0.f(), $$0.d()));
-      this.a(new ggn<>(this, $$0.d()));
+   public gfu(gdb.a $$0) {
+      super($$0, new fqo($$0.a(fre.bO)), 0.3F);
+      this.a(new ghf<>(this, $$0.d()));
    }
 
-   public ajh a(cil $$0) {
-      return a;
+   protected int a(cgo $$0, ib $$1) {
+      return 15;
    }
 
-   protected void a(cil $$0, etz $$1, float $$2) {
-      float $$3 = 0.9375F;
-      $$1.b(0.9375F, 0.9375F, 0.9375F);
+   public ajh a(cgo $$0) {
+      return $$0.gn() ? i : a;
    }
 }

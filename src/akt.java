@@ -31,7 +31,7 @@ public class akt {
       );
    }
 
-   private static int a(du $$0, Collection<apg> $$1, Predicate<cqk> $$2, int $$3) throws CommandSyntaxException {
+   private static int a(du $$0, Collection<apg> $$1, Predicate<cqm> $$2, int $$3) throws CommandSyntaxException {
       int $$4 = 0;
 
       for (apg $$5 : $$1) {

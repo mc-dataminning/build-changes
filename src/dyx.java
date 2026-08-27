@@ -1,45 +1,29 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import java.util.OptionalInt;
 
-public class dyx extends dyv {
-   public static final Codec<dyx> d = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(0, 80).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 80).fieldOf("upper_limit").orElse(1).forGetter($$0x -> $$0x.f),
-               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.g),
-               Codec.intRange(0, 16).fieldOf("middle_size").orElse(1).forGetter($$0x -> $$0x.h),
-               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.i),
-               a()
-            )
-            .apply($$0, dyx::new)
-   );
-   private final int e;
-   private final int f;
-   private final int g;
-   private final int h;
-   private final int i;
+public abstract class dyx {
+   public static final Codec<dyx> a = ki.aa.q().dispatch(dyx::b, dyy::a);
+   protected static final int b = 16;
+   protected final OptionalInt c;
 
-   public dyx(int $$0, int $$1, int $$2, int $$3, int $$4, OptionalInt $$5) {
-      super($$5);
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
+   protected static <S extends dyx> RecordCodecBuilder<S, OptionalInt> a() {
+      return Codec.intRange(0, 80)
+         .optionalFieldOf("min_clipped_height")
+         .xmap($$0 -> $$0.map(OptionalInt::of).orElse(OptionalInt.empty()), $$0 -> $$0.isPresent() ? Optional.of($$0.getAsInt()) : Optional.empty())
+         .forGetter($$0 -> $$0.c);
    }
 
-   @Override
-   protected dyw<?> b() {
-      return dyw.b;
+   public dyx(OptionalInt $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public int a(int $$0, int $$1) {
-      if ($$1 < this.e) {
-         return this.g;
-      } else {
-         return $$1 >= $$0 - this.f ? this.i : this.h;
-      }
+   protected abstract dyy<?> b();
+
+   public abstract int a(int var1, int var2);
+
+   public OptionalInt c() {
+      return this.c;
    }
 }

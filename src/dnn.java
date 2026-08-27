@@ -1,17 +1,21 @@
 public enum dnn implements axq {
-   a("floor"),
-   b("ceiling"),
-   c("single_wall"),
-   d("double_wall");
+   a("none"),
+   b("small"),
+   c("large");
 
-   private final String e;
+   private final String d;
 
    private dnn(String $$0) {
-      this.e = $$0;
+      this.d = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.d;
    }
 
    @Override
    public String c() {
-      return this.e;
+      return this.d;
    }
 }

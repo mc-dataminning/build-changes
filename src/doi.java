@@ -1,23 +1,21 @@
 public enum doi implements axq {
-   a("straight"),
-   b("inner_left"),
-   c("inner_right"),
-   d("outer_left"),
-   e("outer_right");
+   a("inactive"),
+   b("active"),
+   c("cooldown");
 
-   private final String f;
+   private final String d;
 
    private doi(String $$0) {
-      this.f = $$0;
+      this.d = $$0;
    }
 
    @Override
    public String toString() {
-      return this.f;
+      return this.d;
    }
 
    @Override
    public String c() {
-      return this.f;
+      return this.d;
    }
 }

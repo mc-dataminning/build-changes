@@ -1,54 +1,117 @@
 public class clm {
-   public static final cll a = new cll.a().a(4).a(0.3F).d();
-   public static final cll b = new cll.a().a(5).a(0.6F).d();
-   public static final cll c = new cll.a().a(3).a(0.3F).a().d();
-   public static final cll d = new cll.a().a(1).a(0.6F).d();
-   public static final cll e = a(6).d();
-   public static final cll f = new cll.a().a(5).a(0.6F).d();
-   public static final cll g = new cll.a().a(3).a(0.6F).d();
-   public static final cll h = new cll.a().a(2).a(0.3F).a(new boj(bol.q, 600, 0), 0.3F).a().d();
-   public static final cll i = new cll.a().a(4).a(0.3F).b().d();
-   public static final cll j = new cll.a().a(2).a(0.1F).d();
-   public static final cll k = new cll.a().a(8).a(0.8F).a().d();
-   public static final cll l = new cll.a().a(6).a(0.6F).a().d();
-   public static final cll m = new cll.a().a(5).a(0.6F).d();
-   public static final cll n = new cll.a().a(6).a(0.8F).a().d();
-   public static final cll o = new cll.a().a(8).a(0.8F).a().d();
-   public static final cll p = new cll.a().a(5).a(0.6F).a().d();
-   public static final cll q = new cll.a().a(6).a(0.8F).d();
-   public static final cll r = new cll.a().a(2).a(0.1F).d();
-   public static final cll s = new cll.a().a(1).a(0.3F).c().d();
-   public static final cll t = new cll.a()
-      .a(4)
-      .a(1.2F)
-      .a(new boj(bol.j, 400, 1), 1.0F)
-      .a(new boj(bol.k, 6000, 0), 1.0F)
-      .a(new boj(bol.l, 6000, 0), 1.0F)
-      .a(new boj(bol.v, 2400, 3), 1.0F)
-      .b()
-      .d();
-   public static final cll u = new cll.a().a(4).a(1.2F).a(new boj(bol.j, 100, 1), 1.0F).a(new boj(bol.v, 2400, 0), 1.0F).b().d();
-   public static final cll v = new cll.a().a(6).a(1.2F).d();
-   public static final cll w = new cll.a().a(6).a(0.1F).d();
-   public static final cll x = new cll.a().a(2).a(0.3F).d();
-   public static final cll y = a(6).d();
-   public static final cll z = new cll.a().a(2).a(0.3F).a().d();
-   public static final cll A = new cll.a().a(2).a(0.3F).a(new boj(bol.s, 100, 0), 0.6F).d();
-   public static final cll B = new cll.a().a(3).a(0.3F).a().d();
-   public static final cll C = new cll.a().a(1).a(0.3F).d();
-   public static final cll D = new cll.a().a(1).a(0.1F).a(new boj(bol.s, 1200, 1), 1.0F).a(new boj(bol.q, 300, 2), 1.0F).a(new boj(bol.i, 300, 0), 1.0F).d();
-   public static final cll E = new cll.a().a(8).a(0.3F).d();
-   public static final cll F = new cll.a().a(3).a(0.3F).a().d();
-   public static final cll G = a(10).d();
-   public static final cll H = new cll.a().a(4).a(0.1F).a(new boj(bol.q, 600, 0), 0.8F).a().d();
-   public static final cll I = new cll.a().a(2).a(0.1F).d();
-   public static final cll J = new cll.a().a(2).a(0.8F).a(new boj(bol.s, 100, 0), 1.0F).d();
-   public static final cll K = a(6).b().d();
-   public static final cll L = new cll.a().a(2).a(0.1F).d();
-   public static final cll M = new cll.a().a(2).a(0.1F).d();
-   public static final cll N = new cll.a().a(1).a(0.1F).d();
+   private int a = 20;
+   private float b;
+   private float c;
+   private int d;
+   private int e = 20;
 
-   private static cll.a a(int $$0) {
-      return new cll.a().a($$0).a(0.6F);
+   public clm() {
+      this.b = 5.0F;
+   }
+
+   public void a(int $$0, float $$1) {
+      this.a = Math.min($$0 + this.a, 20);
+      this.b = Math.min(this.b + (float)$$0 * $$1 * 2.0F, (float)this.a);
+   }
+
+   public void a(cqh $$0, cqm $$1) {
+      if ($$0.v()) {
+         cln $$2 = $$0.w();
+         this.a($$2.a(), $$2.b());
+      }
+   }
+
+   public void a(ciu $$0) {
+      bna $$1 = $$0.dM().aj();
+      this.e = this.a;
+      if (this.c > 4.0F) {
+         this.c -= 4.0F;
+         if (this.b > 0.0F) {
+            this.b = Math.max(this.b - 1.0F, 0.0F);
+         } else if ($$1 != bna.a) {
+            this.a = Math.max(this.a - 1, 0);
+         }
+      }
+
+      boolean $$2 = $$0.dM().Z().b(cwx.k);
+      if ($$2 && this.b > 0.0F && $$0.gk() && this.a >= 20) {
+         this.d++;
+         if (this.d >= 10) {
+            float $$3 = Math.min(this.b, 6.0F);
+            $$0.c($$3 / 6.0F);
+            this.a($$3);
+            this.d = 0;
+         }
+      } else if ($$2 && this.a >= 18 && $$0.gk()) {
+         this.d++;
+         if (this.d >= 80) {
+            $$0.c(1.0F);
+            this.a(6.0F);
+            this.d = 0;
+         }
+      } else if (this.a <= 0) {
+         this.d++;
+         if (this.d >= 80) {
+            if ($$0.ex() > 10.0F || $$1 == bna.d || $$0.ex() > 1.0F && $$1 == bna.c) {
+               $$0.a($$0.dN().i(), 1.0F);
+            }
+
+            this.d = 0;
+         }
+      } else {
+         this.d = 0;
+      }
+   }
+
+   public void a(ta $$0) {
+      if ($$0.b("foodLevel", 99)) {
+         this.a = $$0.h("foodLevel");
+         this.d = $$0.h("foodTickTimer");
+         this.b = $$0.j("foodSaturationLevel");
+         this.c = $$0.j("foodExhaustionLevel");
+      }
+   }
+
+   public void b(ta $$0) {
+      $$0.a("foodLevel", this.a);
+      $$0.a("foodTickTimer", this.d);
+      $$0.a("foodSaturationLevel", this.b);
+      $$0.a("foodExhaustionLevel", this.c);
+   }
+
+   public int a() {
+      return this.a;
+   }
+
+   public int b() {
+      return this.e;
+   }
+
+   public boolean c() {
+      return this.a < 20;
+   }
+
+   public void a(float $$0) {
+      this.c = Math.min(this.c + $$0, 40.0F);
+   }
+
+   public float d() {
+      return this.c;
+   }
+
+   public float e() {
+      return this.b;
+   }
+
+   public void a(int $$0) {
+      this.a = $$0;
+   }
+
+   public void b(float $$0) {
+      this.b = $$0;
+   }
+
+   public void c(float $$0) {
+      this.c = $$0;
    }
 }

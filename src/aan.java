@@ -6,7 +6,7 @@ public class aan implements yb<aam> {
    private static final double c = 3.9;
    private final int d;
    private final UUID e;
-   private final bpc<?> f;
+   private final bpd<?> f;
    private final double g;
    private final double h;
    private final double i;
@@ -18,19 +18,19 @@ public class aan implements yb<aam> {
    private final byte o;
    private final int p;
 
-   public aan(bow $$0) {
+   public aan(box $$0) {
       this($$0, 0);
    }
 
-   public aan(bow $$0, int $$1) {
+   public aan(box $$0, int $$1) {
       this($$0.aj(), $$0.cw(), $$0.dr(), $$0.dt(), $$0.dx(), $$0.dE(), $$0.dC(), $$0.ai(), $$1, $$0.dp(), (double)$$0.cp());
    }
 
-   public aan(bow $$0, int $$1, ib $$2) {
+   public aan(box $$0, int $$1, ib $$2) {
       this($$0.aj(), $$0.cw(), (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), $$0.dE(), $$0.dC(), $$0.ai(), $$1, $$0.dp(), (double)$$0.cp());
    }
 
-   public aan(int $$0, UUID $$1, double $$2, double $$3, double $$4, float $$5, float $$6, bpc<?> $$7, int $$8, epr $$9, double $$10) {
+   public aan(int $$0, UUID $$1, double $$2, double $$3, double $$4, float $$5, float $$6, bpd<?> $$7, int $$8, ept $$9, double $$10) {
       this.d = $$0;
       this.e = $$1;
       this.g = $$2;
@@ -95,7 +95,7 @@ public class aan implements yb<aam> {
       return this.e;
    }
 
-   public bpc<?> f() {
+   public bpd<?> f() {
       return this.f;
    }
 

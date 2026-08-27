@@ -1,26 +1,37 @@
-public enum bne {
-   a,
-   b,
-   c,
-   d,
-   e,
-   f;
+public class bne<T> {
+   private final bnd a;
+   private final T b;
 
-   public boolean a() {
-      return this.b().a();
+   public bne(bnd $$0, T $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static bne a(boolean $$0) {
-      return $$0 ? a : b;
+   public bnd a() {
+      return this.a;
    }
 
-   public bnc b() {
-      return switch (this) {
-         case a -> bnc.a;
-         case b -> bnc.b;
-         case c -> bnc.c;
-         case d, e -> bnc.d;
-         case f -> bnc.e;
-      };
+   public T b() {
+      return this.b;
+   }
+
+   public static <T> bne<T> a(T $$0) {
+      return new bne<>(bnd.a, $$0);
+   }
+
+   public static <T> bne<T> b(T $$0) {
+      return new bne<>(bnd.b, $$0);
+   }
+
+   public static <T> bne<T> c(T $$0) {
+      return new bne<>(bnd.d, $$0);
+   }
+
+   public static <T> bne<T> d(T $$0) {
+      return new bne<>(bnd.e, $$0);
+   }
+
+   public static <T> bne<T> a(T $$0, boolean $$1) {
+      return $$1 ? a($$0) : b($$0);
    }
 }

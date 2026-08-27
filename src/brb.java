@@ -1,79 +1,84 @@
-import java.util.Map;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
 
-public class brb<E extends bpw> extends brg<E> {
-   private static final int c = 100;
-   private static final int d = 120;
-   private static final int e = 5;
-   private static final int f = 4;
-   private static final Predicate<bpw> g = $$0 -> $$0.ej() != null || $$0.dB() || $$0.bN();
-   private final float h;
-   private final Predicate<E> i;
+public class brb extends brh<cbe> {
+   private static final int c = 3;
+   private static final int d = 60;
+   private static final int e = 110;
+   private final bpd<? extends cbe> f;
+   private final float g;
+   private final int h;
+   private static final int i = 2;
+   private long j;
 
-   public brb(float $$0) {
-      this($$0, g::test);
+   public brb(bpd<? extends cbe> $$0) {
+      this($$0, 1.0F, 2);
    }
 
-   public brb(float $$0, Predicate<E> $$1) {
-      super(Map.of(byr.Z, bys.c, byr.x, bys.c), 100, 120);
-      this.h = $$0;
-      this.i = $$1;
+   public brb(bpd<? extends cbe> $$0, float $$1, int $$2) {
+      super(ImmutableMap.of(bys.h, byt.a, bys.r, byt.b, bys.m, byt.c, bys.n, byt.c, bys.Z, byt.b), 110);
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
    }
 
-   protected boolean a(apf $$0, E $$1) {
-      return this.i.test($$1) && ($$1.dP().a(byr.x) || $$1.dP().a(byr.Z));
+   protected boolean a(apf $$0, cbe $$1) {
+      return $$1.gr() && this.c($$1).isPresent();
    }
 
-   protected boolean a(apf $$0, E $$1, long $$2) {
-      return true;
+   protected void a(apf $$0, cbe $$1, long $$2) {
+      cbe $$3 = this.c($$1).get();
+      $$1.dP().a(bys.r, $$3);
+      $$3.dP().a(bys.r, $$1);
+      brj.a($$1, (bpp)$$3, this.g, this.h);
+      int $$4 = 60 + $$1.ei().a(50);
+      this.j = $$2 + (long)$$4;
    }
 
-   protected void b(apf $$0, E $$1, long $$2) {
-      $$1.dP().a(byr.Z, true);
-      $$1.dP().b(byr.m);
-   }
-
-   protected void c(apf $$0, E $$1, long $$2) {
-      bqp<?> $$3 = $$1.dP();
-      $$3.b(byr.Z);
-   }
-
-   protected void d(apf $$0, E $$1, long $$2) {
-      if ($$1.K().l()) {
-         epr $$3 = this.a($$1, $$0);
-         if ($$3 != null) {
-            $$1.dP().a(byr.m, new byu($$3, this.h, 0));
-         }
-      }
-   }
-
-   @Nullable
-   private epr a(E $$0, apf $$1) {
-      if ($$0.bN()) {
-         Optional<epr> $$2 = this.a((cwf)$$1, $$0).map(epr::c);
-         if ($$2.isPresent()) {
-            return $$2.get();
-         }
-      }
-
-      return cal.a($$0, 5, 4);
-   }
-
-   private Optional<ib> a(cwf $$0, bow $$1) {
-      ib $$2 = $$1.dm();
-      if (!$$0.a_($$2).k($$0, $$2).c()) {
-         return Optional.empty();
+   protected boolean b(apf $$0, cbe $$1, long $$2) {
+      if (!this.b($$1)) {
+         return false;
       } else {
-         Predicate<ib> $$3;
-         if (aww.f($$1.dg()) == 2) {
-            $$3 = $$1x -> ib.a($$1x).allMatch($$1xx -> $$0.b_($$1xx).a(aus.a));
-         } else {
-            $$3 = $$1x -> $$0.b_($$1x).a(aus.a);
+         cbe $$3 = this.a($$1);
+         return $$3.bA() && $$1.a($$3) && brj.a($$1.dP(), $$3) && $$2 <= this.j && !$$1.gk() && !$$3.gk();
+      }
+   }
+
+   protected void c(apf $$0, cbe $$1, long $$2) {
+      cbe $$3 = this.a($$1);
+      brj.a($$1, (bpp)$$3, this.g, this.h);
+      if ($$1.a($$3, 3.0)) {
+         if ($$2 >= this.j) {
+            $$1.a($$0, $$3);
+            $$1.dP().b(bys.r);
+            $$3.dP().b(bys.r);
+         }
+      }
+   }
+
+   protected void d(apf $$0, cbe $$1, long $$2) {
+      $$1.dP().b(bys.r);
+      $$1.dP().b(bys.m);
+      $$1.dP().b(bys.n);
+      this.j = 0L;
+   }
+
+   private cbe a(cbe $$0) {
+      return (cbe)$$0.dP().c(bys.r).get();
+   }
+
+   private boolean b(cbe $$0) {
+      bqq<?> $$1 = $$0.dP();
+      return $$1.a(bys.r) && $$1.c(bys.r).get().ai() == this.f;
+   }
+
+   private Optional<? extends cbe> c(cbe $$0) {
+      return $$0.dP().c(bys.h).get().a($$1 -> {
+         if ($$1.ai() == this.f && $$1 instanceof cbe $$2 && $$0.a($$2) && !$$2.gk()) {
+            return true;
          }
 
-         return ib.a($$2, 5, 1, $$3);
-      }
+         return false;
+      }).map(cbe.class::cast);
    }
 }

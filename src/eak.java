@@ -1,36 +1,71 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-public class eak extends eam {
-   public static final Codec<eak> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(eak::new, $$0 -> $$0.b).codec();
-   private final float b;
+public class eak extends eao {
+   public static final Codec<eak> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.b),
+               Codec.intRange(0, 16).fieldOf("exclusion_radius_xz").forGetter($$0x -> $$0x.c),
+               Codec.intRange(0, 16).fieldOf("exclusion_radius_y").forGetter($$0x -> $$0x.d),
+               dzx.a.fieldOf("block_provider").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 16).fieldOf("required_empty_blocks").forGetter($$0x -> $$0x.f),
+               awe.a(ih.g.listOf()).fieldOf("directions").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, eak::new)
+   );
+   protected final float b;
+   protected final int c;
+   protected final int d;
+   protected final dzx e;
+   protected final int f;
+   protected final List<ih> g;
 
-   public eak(float $$0) {
+   public eak(float $$0, int $$1, int $$2, dzx $$3, int $$4, List<ih> $$5) {
       this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 
    @Override
-   protected ean<?> a() {
-      return ean.c;
-   }
+   public void a(eao.a $$0) {
+      Set<ib> $$1 = new HashSet<>();
+      axd $$2 = $$0.b();
 
-   @Override
-   public void a(eam.a $$0) {
-      axd $$1 = $$0.b();
-      if (!($$1.i() >= this.b)) {
-         List<ib> $$2 = $$0.c();
-         int $$3 = $$2.get(0).v();
-         $$2.stream().filter($$1x -> $$1x.v() - $$3 <= 2).forEach($$2x -> {
-            for (ih $$3x : ih.c.a) {
-               if ($$1.i() <= 0.25F) {
-                  ih $$4 = $$3x.g();
-                  ib $$5 = $$2x.b($$4.j(), 0, $$4.l());
-                  if ($$0.a($$5)) {
-                     $$0.a($$5, dac.fC.o().a(dbh.c, Integer.valueOf($$1.a(3))).a(dbh.aE, $$3x));
-                  }
-               }
+      for (ib $$3 : ac.a($$0.d(), $$2)) {
+         ih $$4 = ac.a(this.g, $$2);
+         ib $$5 = $$3.a($$4);
+         if (!$$1.contains($$5) && $$2.i() < this.b && this.a($$0, $$3, $$4)) {
+            ib $$6 = $$5.b(-this.c, -this.d, -this.c);
+            ib $$7 = $$5.b(this.c, this.d, this.c);
+
+            for (ib $$8 : ib.a($$6, $$7)) {
+               $$1.add($$8.i());
             }
-         });
+
+            $$0.a($$5, this.e.a($$2, $$5));
+         }
       }
+   }
+
+   private boolean a(eao.a $$0, ib $$1, ih $$2) {
+      for (int $$3 = 1; $$3 <= this.f; $$3++) {
+         ib $$4 = $$1.a($$2, $$3);
+         if (!$$0.a($$4)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   protected eap<?> a() {
+      return eap.f;
    }
 }

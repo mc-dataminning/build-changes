@@ -1,54 +1,51 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class ejv {
-   private final ib a;
-   private final int b;
-   private final int c;
-
-   public ejv(ib $$0, int $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
+public record ejv(ib c, cpd d, Optional<vu> e) {
+   public static final Codec<ejv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ib.a.fieldOf("pos").forGetter(ejv::c), cpd.q.optionalFieldOf("color", cpd.a).forGetter(ejv::d), vw.e.optionalFieldOf("name").forGetter(ejv::e)
+            )
+            .apply($$0, ejv::new)
+   );
+   public static final Codec<List<ejv>> b = a.listOf();
 
    @Nullable
-   public static ejv a(ta $$0) {
-      Optional<ib> $$1 = tp.a($$0, "pos");
-      if ($$1.isEmpty()) {
-         return null;
+   public static ejv a(cwh $$0, ib $$1) {
+      if ($$0.c_($$1) instanceof djy $$3) {
+         cpd $$4 = $$3.f();
+         Optional<vu> $$5 = Optional.ofNullable($$3.af());
+         return new ejv($$1, $$4, $$5);
       } else {
-         int $$2 = $$0.h("rotation");
-         int $$3 = $$0.h("entity_id");
-         return new ejv($$1.get(), $$2, $$3);
+         return null;
       }
    }
 
-   public ta a() {
-      ta $$0 = new ta();
-      $$0.a("pos", tp.a(this.a));
-      $$0.a("rotation", this.b);
-      $$0.a("entity_id", this.c);
-      return $$0;
+   public ejw.a a() {
+      return switch (this.d) {
+         case a -> ejw.a.k;
+         case b -> ejw.a.l;
+         case c -> ejw.a.m;
+         case d -> ejw.a.n;
+         case e -> ejw.a.o;
+         case f -> ejw.a.p;
+         case g -> ejw.a.q;
+         case h -> ejw.a.r;
+         case i -> ejw.a.s;
+         case j -> ejw.a.t;
+         case k -> ejw.a.u;
+         case l -> ejw.a.v;
+         case m -> ejw.a.w;
+         case n -> ejw.a.x;
+         case o -> ejw.a.y;
+         default -> ejw.a.z;
+      };
    }
 
-   public ib b() {
-      return this.a;
-   }
-
-   public int c() {
-      return this.b;
-   }
-
-   public int d() {
-      return this.c;
-   }
-
-   public String e() {
-      return a(this.a);
-   }
-
-   public static String a(ib $$0) {
-      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
+   public String b() {
+      return "banner-" + this.c.u() + "," + this.c.v() + "," + this.c.w();
    }
 }

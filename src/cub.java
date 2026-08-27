@@ -1,88 +1,57 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class cub implements ctn<bmv> {
-   protected final ctk a;
-   protected final cqk b;
-   private final cts<?> d;
-   private final ctr<?> e;
-   protected final String c;
+public class cub<T extends csy> implements ctt<T> {
+   private final csy.a<T> x;
+   private final Codec<T> y;
+   private final xs<vf, T> z;
 
-   public cub(cts<?> $$0, ctr<?> $$1, String $$2, ctk $$3, cqk $$4) {
-      this.d = $$0;
-      this.e = $$1;
-      this.c = $$2;
-      this.a = $$3;
-      this.b = $$4;
+   public cub(csy.a<T> $$0, int $$1) {
+      this.x = $$0;
+      this.y = RecordCodecBuilder.create(
+         $$2 -> $$2.group(
+                  awe.a(Codec.STRING, "group", "").forGetter($$0xx -> $$0xx.c),
+                  cte.d.fieldOf("category").orElse(cte.c).forGetter($$0xx -> $$0xx.b),
+                  ctm.d.fieldOf("ingredient").forGetter($$0xx -> $$0xx.d),
+                  ki.h.q().xmap(cqm::new, cqm::d).fieldOf("result").forGetter($$0xx -> $$0xx.e),
+                  Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter($$0xx -> $$0xx.f),
+                  Codec.INT.fieldOf("cookingtime").orElse($$1).forGetter($$0xx -> $$0xx.g)
+               )
+               .apply($$2, $$0::create)
+      );
+      this.z = xs.a(this::a, this::a);
    }
 
    @Override
-   public cts<?> e() {
-      return this.d;
+   public Codec<T> a() {
+      return this.y;
    }
 
    @Override
-   public ctr<?> ar_() {
-      return this.e;
+   public xs<vf, T> b() {
+      return this.z;
    }
 
-   @Override
-   public String c() {
-      return this.c;
+   private T a(vf $$0) {
+      String $$1 = $$0.p();
+      cte $$2 = $$0.b(cte.class);
+      ctm $$3 = ctm.b.decode($$0);
+      cqm $$4 = cqm.f.decode($$0);
+      float $$5 = $$0.readFloat();
+      int $$6 = $$0.l();
+      return this.x.create($$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   @Override
-   public cqk a(iz $$0) {
-      return this.b;
+   private void a(vf $$0, T $$1) {
+      $$0.a($$1.c);
+      $$0.a($$1.f());
+      ctm.b.encode($$0, $$1.d);
+      cqm.f.encode($$0, $$1.e);
+      $$0.a($$1.f);
+      $$0.c($$1.g);
    }
 
-   @Override
-   public iu<ctk> a() {
-      iu<ctk> $$0 = iu.a();
-      $$0.add(this.a);
-      return $$0;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public cqk a(bmv $$0, iz $$1) {
-      return this.b.q();
-   }
-
-   public interface a<T extends cub> {
-      T create(String var1, ctk var2, cqk var3);
-   }
-
-   public static class b<T extends cub> implements ctr<T> {
-      final cub.a<T> x;
-      private final Codec<T> y;
-      private final xs<vf, T> z;
-
-      protected b(cub.a<T> $$0) {
-         this.x = $$0;
-         this.y = RecordCodecBuilder.create(
-            $$1 -> $$1.group(
-                     awe.a(Codec.STRING, "group", "").forGetter($$0xx -> $$0xx.c),
-                     ctk.d.fieldOf("ingredient").forGetter($$0xx -> $$0xx.a),
-                     cqk.e.forGetter($$0xx -> $$0xx.b)
-                  )
-                  .apply($$1, $$0::create)
-         );
-         this.z = xs.a(xq.i, $$0x -> $$0x.c, ctk.b, $$0x -> $$0x.a, cqk.f, $$0x -> $$0x.b, $$0::create);
-      }
-
-      @Override
-      public Codec<T> a() {
-         return this.y;
-      }
-
-      @Override
-      public xs<vf, T> b() {
-         return this.z;
-      }
+   public csy a(String $$0, cte $$1, ctm $$2, cqm $$3, float $$4, int $$5) {
+      return this.x.create($$0, $$1, $$2, $$3, $$4, $$5);
    }
 }

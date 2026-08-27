@@ -1,17 +1,17 @@
 import java.util.List;
 
 public class rf {
-   public static final ecj a = ecc.a(dsm.a.e);
-   public static final ecj b = ecc.a(dsm.a.c);
-   public static final ecj c = ecc.a(dsm.a.a);
-   public static final ecj d = ecc.a(dsm.a.d);
-   public static final ecj e = ecb.a(dtg.a(), dtg.b());
-   public static final ecj f = ecb.a(dtg.b(10), dtg.c(10));
-   public static final ecj g = ecb.a(dtg.b(8), dtg.c(8));
-   public static final ecj h = ecb.a(dtg.b(4), dtg.c(4));
-   public static final ecj i = ecb.a(dtg.a(), dtg.a(256));
+   public static final ecl a = ece.a(dso.a.e);
+   public static final ecl b = ece.a(dso.a.c);
+   public static final ecl c = ece.a(dso.a.a);
+   public static final ecl d = ece.a(dso.a.d);
+   public static final ecl e = ecd.a(dti.a(), dti.b());
+   public static final ecl f = ecd.a(dti.b(10), dti.c(10));
+   public static final ecl g = ecd.a(dti.b(8), dti.c(8));
+   public static final ecl h = ecd.a(dti.b(4), dti.c(4));
+   public static final ecl i = ecd.a(dti.a(), dti.a(256));
 
-   public static void a(pl<ecg> $$0) {
+   public static void a(pl<eci> $$0) {
       qz.a($$0);
       ra.a($$0);
       rb.a($$0);
@@ -23,49 +23,49 @@ public class rf {
       ri.a($$0);
    }
 
-   public static ajg<ecg> a(String $$0) {
+   public static ajg<eci> a(String $$0) {
       return ajg.a(kj.aD, new ajh($$0));
    }
 
-   public static void a(pl<ecg> $$0, ajg<ecg> $$1, il<dvd<?, ?>> $$2, List<ecj> $$3) {
-      $$0.a($$1, new ecg($$2, List.copyOf($$3)));
+   public static void a(pl<eci> $$0, ajg<eci> $$1, il<dvf<?, ?>> $$2, List<ecl> $$3) {
+      $$0.a($$1, new eci($$2, List.copyOf($$3)));
    }
 
-   public static void a(pl<ecg> $$0, ajg<ecg> $$1, il<dvd<?, ?>> $$2, ecj... $$3) {
+   public static void a(pl<eci> $$0, ajg<eci> $$1, il<dvf<?, ?>> $$2, ecl... $$3) {
       a($$0, $$1, $$2, List.of($$3));
    }
 
-   public static ecj a(int $$0, float $$1, int $$2) {
+   public static ecl a(int $$0, float $$1, int $$2) {
       float $$3 = 1.0F / $$1;
       if (Math.abs($$3 - (float)((int)$$3)) > 1.0E-5F) {
          throw new IllegalStateException("Chance data cannot be represented as list weight");
       } else {
-         blm<bmh> $$4 = blm.<bmh>a().a(bme.a($$0), (int)$$3 - 1).a(bme.a($$0 + $$2), 1).a();
-         return ebz.a(new bmo($$4));
+         bln<bmi> $$4 = bln.<bmi>a().a(bmf.a($$0), (int)$$3 - 1).a(bmf.a($$0 + $$2), 1).a();
+         return ecb.a(new bmp($$4));
       }
    }
 
-   public static eci a() {
-      return ebv.a(dtt.c);
+   public static eck a() {
+      return ebx.a(dtv.c);
    }
 
-   public static ebv a(daa $$0) {
-      return ebv.a(dtt.a($$0.o(), ib.c));
+   public static ebx a(dac $$0) {
+      return ebx.a(dtv.a($$0.o(), ib.c));
    }
 
-   public static il<ecg> a(il<dvd<?, ?>> $$0, ecj... $$1) {
-      return il.a(new ecg($$0, List.of($$1)));
+   public static il<eci> a(il<dvf<?, ?>> $$0, ecl... $$1) {
+      return il.a(new eci($$0, List.of($$1)));
    }
 
-   public static <FC extends dxu, F extends dvq<FC>> il<ecg> a(F $$0, FC $$1, ecj... $$2) {
-      return a(il.a(new dvd($$0, $$1)), $$2);
+   public static <FC extends dxw, F extends dvs<FC>> il<eci> a(F $$0, FC $$1, ecl... $$2) {
+      return a(il.a(new dvf($$0, $$1)), $$2);
    }
 
-   public static <FC extends dxu, F extends dvq<FC>> il<ecg> a(F $$0, FC $$1) {
-      return a($$0, $$1, dtt.c);
+   public static <FC extends dxw, F extends dvs<FC>> il<eci> a(F $$0, FC $$1) {
+      return a($$0, $$1, dtv.c);
    }
 
-   public static <FC extends dxu, F extends dvq<FC>> il<ecg> a(F $$0, FC $$1, dtt $$2) {
-      return a($$0, $$1, ebv.a($$2));
+   public static <FC extends dxw, F extends dvs<FC>> il<eci> a(F $$0, FC $$1, dtv $$2) {
+      return a($$0, $$1, ebx.a($$2));
    }
 }

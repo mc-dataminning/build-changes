@@ -1,14 +1,14 @@
 public class aav implements yb<aam> {
-   public static final xs<vf, aav> a = xs.a(ib.b, aav::e, xq.a(daa.q), aav::b, aav::new);
+   public static final xs<vf, aav> a = xs.a(ib.b, aav::e, xq.a(dac.q), aav::b, aav::new);
    private final ib b;
-   private final dmz c;
+   private final dnb c;
 
-   public aav(ib $$0, dmz $$1) {
+   public aav(ib $$0, dnb $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   public aav(cwf $$0, ib $$1) {
+   public aav(cwh $$0, ib $$1) {
       this($$1, $$0.a_($$1));
    }
 
@@ -21,7 +21,7 @@ public class aav implements yb<aam> {
       $$0.a(this);
    }
 
-   public dmz b() {
+   public dnb b() {
       return this.c;
    }
 

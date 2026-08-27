@@ -1,7 +1,7 @@
 import com.google.common.collect.Sets;
 import java.util.Set;
 
-public record acd(int b, boolean c, Set<ajg<cwz>> d, int e, int f, int g, boolean h, boolean i, boolean j, aeu k, boolean l) implements yb<aam> {
+public record acd(int b, boolean c, Set<ajg<cxb>> d, int e, int f, int g, boolean h, boolean i, boolean j, aeu k, boolean l) implements yb<aam> {
    public static final xs<vf, acd> a = yb.a(acd::a, acd::new);
 
    private acd(vf $$0) {
@@ -47,7 +47,7 @@ public record acd(int b, boolean c, Set<ajg<cwz>> d, int e, int f, int g, boolea
       return this.c;
    }
 
-   public Set<ajg<cwz>> f() {
+   public Set<ajg<cxb>> f() {
       return this.d;
    }
 

@@ -1,42 +1,28 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
 
-public class emz extends emg {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Codec<emz> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, emz::new));
+public class emz extends emi {
+   public static final Codec<emz> a = RecordCodecBuilder.create($$0 -> a($$0).and(ki.i.r().fieldOf("id").forGetter($$0x -> $$0x.b)).apply($$0, emz::new));
+   private final il<csj> b;
 
-   private emz(List<ent> $$0) {
+   private emz(List<env> $$0, il<csj> $$1) {
       super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public emi b() {
-      return emj.h;
+   public emk b() {
+      return eml.z;
    }
 
    @Override
-   public cqk a(cqk $$0, eku $$1) {
-      if ($$0.b()) {
-         return $$0;
-      } else {
-         Optional<ctp<cuc>> $$2 = $$1.d().r().a(cts.b, new bnl($$0), $$1.d());
-         if ($$2.isPresent()) {
-            cqk $$3 = $$2.get().b().a($$1.d().H_());
-            if (!$$3.b()) {
-               return $$3.c($$0.M());
-            }
-         }
-
-         b.warn("Couldn't smelt {} because there is no smelting recipe", $$0);
-         return $$0;
-      }
+   public cqm a(cqm $$0, ekw $$1) {
+      csl.a($$0, this.b);
+      return $$0;
    }
 
-   public static emg.a<?> c() {
-      return a(emz::new);
+   public static emi.a<?> a(il<csj> $$0) {
+      return a($$1 -> new emz($$1, $$0));
    }
 }

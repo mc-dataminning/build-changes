@@ -1,74 +1,110 @@
-import com.google.common.base.Stopwatch;
-import com.google.common.base.Ticker;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import java.util.HashMap;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.OptionalLong;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
-import org.slf4j.Logger;
+import java.util.Set;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
 public class gof {
-   public static final gof a = new gof(Ticker.systemTicker());
-   private static final Logger b = LogUtils.getLogger();
-   private final Ticker c;
-   private final Map<gob<gof.a>, Stopwatch> d = new HashMap<>();
-   private OptionalLong e = OptionalLong.empty();
+   final Map<goe<?>, Object> a;
 
-   protected gof(Ticker $$0) {
-      this.c = $$0;
+   gof(Map<goe<?>, Object> $$0) {
+      this.a = $$0;
    }
 
-   public synchronized void a(gob<gof.a> $$0) {
-      this.a($$0, (Function<gob<gof.a>, Stopwatch>)($$0x -> Stopwatch.createStarted(this.c)));
+   public static gof.a a() {
+      return new gof.a();
    }
 
-   public synchronized void a(gob<gof.a> $$0, Stopwatch $$1) {
-      this.a($$0, (Function<gob<gof.a>, Stopwatch>)($$1x -> $$1));
-   }
+   public static Codec<gof> a(final List<goe<?>> $$0) {
+      return (new MapCodec<gof>() {
+         public <T> RecordBuilder<T> a(gof $$0x, DynamicOps<T> $$1, RecordBuilder<T> $$2) {
+            RecordBuilder<T> $$3 = $$2;
 
-   private synchronized void a(gob<gof.a> $$0, Function<gob<gof.a>, Stopwatch> $$1) {
-      this.d.computeIfAbsent($$0, $$1);
-   }
+            for (goe<?> $$4 : $$0) {
+               $$3 = this.a($$0, $$3, $$4);
+            }
 
-   public synchronized void b(gob<gof.a> $$0) {
-      Stopwatch $$1 = this.d.get($$0);
-      if ($$1 == null) {
-         b.warn("Attempted to end step for {} before starting it", $$0.b());
-      } else {
-         if ($$1.isRunning()) {
-            $$1.stop();
+            return $$3;
          }
+
+         private <T, V> RecordBuilder<T> a(gof $$0x, RecordBuilder<T> $$1, goe<V> $$2) {
+            V $$3 = $$0.a($$2);
+            return $$3 != null ? $$1.add($$2.b(), $$3, $$2.d()) : $$1;
+         }
+
+         public <T> DataResult<gof> decode(DynamicOps<T> $$0x, MapLike<T> $$1) {
+            DataResult<gof.a> $$2 = DataResult.success(new gof.a());
+
+            for (goe<?> $$3 : $$0) {
+               $$2 = this.a($$2, $$0, $$1, $$3);
+            }
+
+            return $$2.map(gof.a::a);
+         }
+
+         private <T, V> DataResult<gof.a> a(DataResult<gof.a> $$0x, DynamicOps<T> $$1, MapLike<T> $$2, goe<V> $$3) {
+            T $$4 = (T)$$2.get($$3.b());
+            if ($$4 != null) {
+               DataResult<V> $$5 = $$3.d().parse($$1, $$4);
+               return $$0.apply2stable(($$1x, $$2x) -> $$1x.a($$3, (V)$$2x), $$5);
+            } else {
+               return $$0;
+            }
+         }
+
+         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
+            return $$0.stream().map(goe::b).map($$0::createString);
+         }
+      }).codec();
+   }
+
+   @Nullable
+   public <T> T a(goe<T> $$0) {
+      return (T)this.a.get($$0);
+   }
+
+   @Override
+   public String toString() {
+      return this.a.toString();
+   }
+
+   public Set<goe<?>> b() {
+      return this.a.keySet();
+   }
+
+   public static class a {
+      private final Map<goe<?>, Object> a = new Reference2ObjectOpenHashMap();
+
+      a() {
       }
-   }
 
-   public void a(gny $$0) {
-      $$0.send(gnz.g, $$0x -> {
-         synchronized (this) {
-            this.d.forEach(($$1, $$2) -> {
-               if (!$$2.isRunning()) {
-                  long $$3 = $$2.elapsed(TimeUnit.MILLISECONDS);
-                  $$0x.a((gob<gof.a>)$$1, new gof.a((int)$$3));
-               } else {
-                  b.warn("Measurement {} was discarded since it was still ongoing when the event {} was sent.", $$1.b(), gnz.g.a());
-               }
-            });
-            this.e.ifPresent($$1 -> $$0x.a(gob.B, new gof.a((int)$$1)));
-            this.d.clear();
+      public <T> gof.a a(goe<T> $$0, T $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
+
+      public <T> gof.a b(goe<T> $$0, @Nullable T $$1) {
+         if ($$1 != null) {
+            this.a.put($$0, $$1);
          }
-      });
-   }
 
-   public synchronized void a(long $$0) {
-      this.e = OptionalLong.of($$0);
-   }
+         return this;
+      }
 
-   public static record a(int b) {
-      public static final Codec<gof.a> a = Codec.INT.xmap(gof.a::new, $$0 -> $$0.b);
+      public gof.a a(gof $$0) {
+         this.a.putAll($$0.a);
+         return this;
+      }
 
-      public int a() {
-         return this.b;
+      public gof a() {
+         return new gof(this.a);
       }
    }
 }

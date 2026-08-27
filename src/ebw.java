@@ -1,26 +1,26 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
 
-public class ebw extends ecj {
-   public static final Codec<ebw> a = dsi.a.c.fieldOf("step").xmap(ebw::new, $$0 -> $$0.c).codec();
-   private final dsi.a c;
+public class ebw extends eck {
+   private static final ebw c = new ebw();
+   public static Codec<ebw> a = Codec.unit(() -> c);
 
-   private ebw(dsi.a $$0) {
-      this.c = $$0;
+   private ebw() {
    }
 
-   public static ebw a(dsi.a $$0) {
-      return new ebw($$0);
-   }
-
-   @Override
-   public Stream<ib> a_(ech $$0, axd $$1, ib $$2) {
-      cwg $$3 = new cwg($$2);
-      return $$0.a($$3, this.c).a($$3);
+   public static ebw a() {
+      return c;
    }
 
    @Override
-   public eck<?> b() {
-      return eck.o;
+   protected boolean a(ecj $$0, axd $$1, ib $$2) {
+      eci $$3 = $$0.e()
+         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
+      il<cya> $$4 = $$0.d().t($$2);
+      return $$0.f().a($$4).a($$3);
+   }
+
+   @Override
+   public ecm<?> b() {
+      return ecm.e;
    }
 }

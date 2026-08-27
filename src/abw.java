@@ -20,7 +20,7 @@ public class abw implements yb<aam> {
       this.i = $$0.l();
    }
 
-   public abw(doq $$0) {
+   public abw(dos $$0) {
       this.b = $$0.a();
       this.c = $$0.b();
       this.d = $$0.i();

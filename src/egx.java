@@ -1,16 +1,36 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.serialization.Codec;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public interface egx<P extends egw> {
-   egx<ega> a = a("always_true", ega.a);
-   egx<egf> b = a("block_match", egf.a);
-   egx<egh> c = a("blockstate_match", egh.a);
-   egx<ehe> d = a("tag_match", ehe.a);
-   egx<egt> e = a("random_block_match", egt.a);
-   egx<egu> f = a("random_blockstate_match", egu.a);
+public class egx extends ehb {
+   public static final Codec<egx> a = egt.b.listOf().fieldOf("rules").xmap(egx::new, $$0 -> $$0.b).codec();
+   private final ImmutableList<egt> b;
 
-   Codec<P> codec();
+   public egx(List<? extends egt> $$0) {
+      this.b = ImmutableList.copyOf($$0);
+   }
 
-   static <P extends egw> egx<P> a(String $$0, Codec<P> $$1) {
-      return iy.a(ki.o, $$0, () -> $$1);
+   @Nullable
+   @Override
+   public ehe.c a(cxe $$0, ib $$1, ib $$2, ehe.c $$3, ehe.c $$4, eha $$5) {
+      axd $$6 = axd.a(aww.a($$4.a()));
+      dnb $$7 = $$0.a_($$4.a());
+      UnmodifiableIterator var9 = this.b.iterator();
+
+      while (var9.hasNext()) {
+         egt $$8 = (egt)var9.next();
+         if ($$8.a($$4.b(), $$7, $$3.a(), $$4.a(), $$2, $$6)) {
+            return new ehe.c($$4.a(), $$8.a(), $$8.a($$6, $$4.c()));
+         }
+      }
+
+      return $$4;
+   }
+
+   @Override
+   protected ehd<?> a() {
+      return ehd.i;
    }
 }

@@ -93,8 +93,8 @@ public class arz {
       return this.c.stream().map(arw::g).collect(ImmutableSet.toImmutableSet());
    }
 
-   public clf e() {
-      return this.f().stream().map(arw::e).reduce(clf::b).orElse(clf.a());
+   public clh e() {
+      return this.f().stream().map(arw::e).reduce(clh::b).orElse(clh.a());
    }
 
    public Collection<arw> f() {

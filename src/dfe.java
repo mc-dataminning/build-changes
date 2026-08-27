@@ -1,25 +1,22 @@
 import com.mojang.serialization.MapCodec;
 
-public class dfe extends daj {
+public class dfe extends dhs {
    public static final MapCodec<dfe> a = b(dfe::new);
-   protected static final eqk b = daa.a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0);
 
    @Override
    public MapCodec<dfe> a() {
       return a;
    }
 
-   public dfe(dmy.d $$0) {
+   public dfe(dna.d $$0) {
       super($$0);
    }
 
    @Override
-   protected eqk a(dmz $$0, cwf $$1, ib $$2, epw $$3) {
-      return b;
-   }
-
-   @Override
-   protected boolean b(dmz $$0, cwf $$1, ib $$2) {
-      return $$0.a(aun.aL) || $$0.a(dac.dX) || super.b($$0, $$1, $$2);
+   public void a(dnb $$0, cxb $$1, ib $$2, axd $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$3.a(10) == 0) {
+         $$1.a(kc.X, (double)$$2.u() + $$3.j(), (double)$$2.v() + 1.1, (double)$$2.w() + $$3.j(), 0.0, 0.0, 0.0);
+      }
    }
 }

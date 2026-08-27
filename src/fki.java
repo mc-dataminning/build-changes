@@ -1,59 +1,50 @@
-import javax.annotation.Nullable;
+public class fki extends fhh {
+   private static final int a = 600;
+   private final us b;
+   private fbi c;
+   private int k;
+   private final fez l = fez.d();
 
-public abstract class fki extends fhf {
-   private final vu b;
-   @Nullable
-   private final vu c;
-   private final vu k;
-   @Nullable
-   protected fbi a;
-   private fbz l = fbz.a;
-
-   protected fki(vu $$0, vu $$1, vu $$2) {
-      this($$0, $$1, null, $$2);
-   }
-
-   protected fki(vu $$0, vu $$1, @Nullable vu $$2, vu $$3) {
+   public fki(vu $$0, us $$1) {
       super($$0);
       this.b = $$1;
-      this.c = $$2;
-      this.k = $$3;
    }
 
-   protected abstract void a(int var1);
+   @Override
+   public boolean aM_() {
+      return false;
+   }
 
    @Override
    protected void aO_() {
-      super.aO_();
-      this.l = fbz.a(this.i, this.b, this.g - 100);
-      int $$0 = (this.l.a() + 1) * this.o();
-      if (this.c != null) {
-         int $$1 = this.i.a(this.c);
-         this.a = fbi.a(this.c, this.i).a(this.g / 2 - $$1 / 2 - 8, 76 + $$0).a();
-         this.c(this.a);
+      this.l.c().b().a(10);
+      this.l.a(new fcp(this.e, this.i));
+      this.c = this.l.a(fbi.a(vt.p, $$0 -> this.b.a(fga.a)).a());
+      this.c.j = false;
+      this.l.a();
+      this.l.a($$1 -> {
+         fbg var10000 = this.c($$1);
+      });
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      fet.a(this.l, this.F());
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      this.k++;
+      if (this.k == 600) {
+         this.c.j = true;
       }
 
-      this.a($$0);
-   }
-
-   @Override
-   public vu i() {
-      return this.k;
-   }
-
-   @Override
-   public void a(fat $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.c($$0);
-      int $$4 = this.g / 2 - this.l.b() / 2;
-      this.l.b($$0, $$4, 70, this.o(), 16777215);
-   }
-
-   protected void c(fat $$0) {
-      $$0.b(this.i, this.e, 25, 30, 16777215);
-   }
-
-   protected int o() {
-      return 9 * 2;
+      if (this.b.i()) {
+         this.b.b();
+      } else {
+         this.b.n();
+      }
    }
 }

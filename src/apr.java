@@ -3,12 +3,12 @@ import javax.annotation.Nullable;
 
 public class apr implements apo {
    private final apo a;
-   private final blv<Runnable> b;
+   private final blw<Runnable> b;
    private boolean c;
 
    private apr(apo $$0, Executor $$1) {
       this.a = $$0;
-      this.b = blv.a($$1, "progressListener");
+      this.b = blw.a($$1, "progressListener");
    }
 
    public static apr a(apo $$0, Executor $$1) {
@@ -18,12 +18,12 @@ public class apr implements apo {
    }
 
    @Override
-   public void a(cwg $$0) {
+   public void a(cwi $$0) {
       this.b.a(() -> this.a.a($$0));
    }
 
    @Override
-   public void a(cwg $$0, @Nullable dpa $$1) {
+   public void a(cwi $$0, @Nullable dpc $$1) {
       if (this.c) {
          this.b.a(() -> this.a.a($$0, $$1));
       }

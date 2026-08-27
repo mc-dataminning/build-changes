@@ -1,34 +1,41 @@
 import com.mojang.serialization.MapCodec;
 
-public class det extends dej implements dad {
+public class det extends ddx {
    public static final MapCodec<det> a = b(det::new);
+   private static final vu b = vu.c("container.loom");
 
    @Override
    public MapCodec<det> a() {
       return a;
    }
 
-   public det(dmy.d $$0) {
+   protected det(dna.d $$0) {
       super($$0);
    }
 
    @Override
-   public boolean b(cxc $$0, ib $$1, dmz $$2) {
-      return $$0.a_($$1.d()).i();
+   protected bnd a(dnb $$0, cxb $$1, ib $$2, ciu $$3, epp $$4) {
+      if ($$1.B) {
+         return bnd.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(aui.ax);
+         return bnd.b;
+      }
    }
 
    @Override
-   public boolean a(cwz $$0, axd $$1, ib $$2, dmz $$3) {
-      return true;
+   protected bnh b(dnb $$0, cxb $$1, ib $$2) {
+      return new bnn(($$2x, $$3, $$4) -> new cmv($$2x, $$3, cmb.a($$1, $$2)), b);
    }
 
    @Override
-   public void a(apf $$0, axd $$1, ib $$2, dmz $$3) {
-      $$0.a($$2.d(), deu.c(), 2);
+   public dnb a(csu $$0) {
+      return this.o().a(aE, $$0.g().g());
    }
 
    @Override
-   public ib a(ib $$0) {
-      return $$0.d();
+   protected void a(dnc.a<dac, dnb> $$0) {
+      $$0.a(aE);
    }
 }

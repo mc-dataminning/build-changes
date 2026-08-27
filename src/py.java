@@ -2,201 +2,201 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
 
 public class py {
-   private static final dtd.o a = a(dac.a);
-   private static final dtd.o b = a(dac.F);
-   private static final dtd.o c = a(dac.hj);
-   private static final dtd.o d = a(dac.hk);
-   private static final dtd.o e = a(dac.iA);
-   private static final dtd.o f = a(dac.K);
-   private static final dtd.o g = a(dac.jp);
-   private static final dtd.o h = a(dac.b);
-   private static final dtd.o i = a(dac.sJ);
-   private static final dtd.o j = a(dac.j);
-   private static final dtd.o k = a(dac.l);
-   private static final dtd.o l = a(dac.k);
-   private static final dtd.o m = a(dac.fl);
-   private static final dtd.o n = a(dac.i);
-   private static final dtd.o o = a(dac.qN);
-   private static final dtd.o p = a(dac.L);
-   private static final dtd.o q = a(dac.I);
-   private static final dtd.o r = a(dac.aV);
-   private static final dtd.o s = a(dac.iC);
-   private static final dtd.o t = a(dac.dP);
-   private static final dtd.o u = a(dac.sI);
-   private static final dtd.o v = a(dac.qP);
-   private static final dtd.o w = a(dac.dO);
-   private static final dtd.o x = a(dac.G);
-   private static final dtd.o y = a(dac.H);
-   private static final dtd.o z = a(dac.dV);
-   private static final dtd.o A = a(dac.dW);
-   private static final dtd.o B = a(dac.dX);
-   private static final dtd.o C = a(dac.dY);
-   private static final dtd.o D = a(dac.pr);
-   private static final dtd.o E = a(dac.op);
-   private static final dtd.o F = a(dac.on);
-   private static final dtd.o G = a(dac.kK);
-   private static final dtd.o H = a(dac.ow);
-   private static final dtd.o I = a(dac.fz);
+   private static final dtf.o a = a(dae.a);
+   private static final dtf.o b = a(dae.F);
+   private static final dtf.o c = a(dae.hj);
+   private static final dtf.o d = a(dae.hk);
+   private static final dtf.o e = a(dae.iA);
+   private static final dtf.o f = a(dae.K);
+   private static final dtf.o g = a(dae.jp);
+   private static final dtf.o h = a(dae.b);
+   private static final dtf.o i = a(dae.sJ);
+   private static final dtf.o j = a(dae.j);
+   private static final dtf.o k = a(dae.l);
+   private static final dtf.o l = a(dae.k);
+   private static final dtf.o m = a(dae.fl);
+   private static final dtf.o n = a(dae.i);
+   private static final dtf.o o = a(dae.qN);
+   private static final dtf.o p = a(dae.L);
+   private static final dtf.o q = a(dae.I);
+   private static final dtf.o r = a(dae.aV);
+   private static final dtf.o s = a(dae.iC);
+   private static final dtf.o t = a(dae.dP);
+   private static final dtf.o u = a(dae.sI);
+   private static final dtf.o v = a(dae.qP);
+   private static final dtf.o w = a(dae.dO);
+   private static final dtf.o x = a(dae.G);
+   private static final dtf.o y = a(dae.H);
+   private static final dtf.o z = a(dae.dV);
+   private static final dtf.o A = a(dae.dW);
+   private static final dtf.o B = a(dae.dX);
+   private static final dtf.o C = a(dae.dY);
+   private static final dtf.o D = a(dae.pr);
+   private static final dtf.o E = a(dae.op);
+   private static final dtf.o F = a(dae.on);
+   private static final dtf.o G = a(dae.kK);
+   private static final dtf.o H = a(dae.ow);
+   private static final dtf.o I = a(dae.fz);
 
-   private static dtd.o a(daa $$0) {
-      return dtd.a($$0.o());
+   private static dtf.o a(dac $$0) {
+      return dtf.a($$0.o());
    }
 
-   public static dtd.o a() {
+   public static dtf.o a() {
       return a(true, false, true);
    }
 
-   public static dtd.o a(boolean $$0, boolean $$1, boolean $$2) {
-      dtd.f $$3 = dtd.a(dtg.a(97), 2);
-      dtd.f $$4 = dtd.a(dtg.a(256), 0);
-      dtd.f $$5 = dtd.b(dtg.a(63), -1);
-      dtd.f $$6 = dtd.b(dtg.a(74), 1);
-      dtd.f $$7 = dtd.a(dtg.a(60), 0);
-      dtd.f $$8 = dtd.a(dtg.a(62), 0);
-      dtd.f $$9 = dtd.a(dtg.a(63), 0);
-      dtd.f $$10 = dtd.a(-1, 0);
-      dtd.f $$11 = dtd.a(0, 0);
-      dtd.f $$12 = dtd.b(-6, -1);
-      dtd.f $$13 = dtd.b();
-      dtd.f $$14 = dtd.a(cyf.W, cyf.X);
-      dtd.f $$15 = dtd.a();
-      dtd.o $$16 = dtd.a(dtd.a($$11, n), j);
-      dtd.o $$17 = dtd.a(dtd.a(dtd.e, r), q);
-      dtd.o $$18 = dtd.a(dtd.a(dtd.e, h), p);
-      dtd.f $$19 = dtd.a(cyf.P, cyf.M, cyf.N);
-      dtd.f $$20 = dtd.a(cyf.f);
-      dtd.o $$21 = dtd.a(
-         dtd.a(dtd.a(cyf.J), dtd.a(dtd.a(dtd.a(dsv.X, -0.0125, 0.0125), o), h)),
-         dtd.a(dtd.a(cyf.O), dtd.a(dtd.a(dtd.a(dsv.Y, -0.05, 0.05), $$18), h)),
-         dtd.a(dtd.a(cyf.t), dtd.a(a(1.0), h)),
-         dtd.a($$19, $$17),
-         dtd.a($$20, $$17),
-         dtd.a(dtd.a(cyf.Z), h)
+   public static dtf.o a(boolean $$0, boolean $$1, boolean $$2) {
+      dtf.f $$3 = dtf.a(dti.a(97), 2);
+      dtf.f $$4 = dtf.a(dti.a(256), 0);
+      dtf.f $$5 = dtf.b(dti.a(63), -1);
+      dtf.f $$6 = dtf.b(dti.a(74), 1);
+      dtf.f $$7 = dtf.a(dti.a(60), 0);
+      dtf.f $$8 = dtf.a(dti.a(62), 0);
+      dtf.f $$9 = dtf.a(dti.a(63), 0);
+      dtf.f $$10 = dtf.a(-1, 0);
+      dtf.f $$11 = dtf.a(0, 0);
+      dtf.f $$12 = dtf.b(-6, -1);
+      dtf.f $$13 = dtf.b();
+      dtf.f $$14 = dtf.a(cyh.W, cyh.X);
+      dtf.f $$15 = dtf.a();
+      dtf.o $$16 = dtf.a(dtf.a($$11, n), j);
+      dtf.o $$17 = dtf.a(dtf.a(dtf.e, r), q);
+      dtf.o $$18 = dtf.a(dtf.a(dtf.e, h), p);
+      dtf.f $$19 = dtf.a(cyh.P, cyh.M, cyh.N);
+      dtf.f $$20 = dtf.a(cyh.f);
+      dtf.o $$21 = dtf.a(
+         dtf.a(dtf.a(cyh.J), dtf.a(dtf.a(dtf.a(dsx.X, -0.0125, 0.0125), o), h)),
+         dtf.a(dtf.a(cyh.O), dtf.a(dtf.a(dtf.a(dsx.Y, -0.05, 0.05), $$18), h)),
+         dtf.a(dtf.a(cyh.t), dtf.a(a(1.0), h)),
+         dtf.a($$19, $$17),
+         dtf.a($$20, $$17),
+         dtf.a(dtf.a(cyh.Z), h)
       );
-      dtd.o $$22 = dtd.a(dtd.a(dsv.Z, 0.45, 0.58), dtd.a($$11, v));
-      dtd.o $$23 = dtd.a(dtd.a(dsv.Z, 0.35, 0.6), dtd.a($$11, v));
-      dtd.o $$24 = dtd.a(
-         dtd.a(dtd.a(cyf.H), dtd.a(dtd.a($$15, s), dtd.a(dtd.a(dsv.aa, -0.5, 0.2), s), dtd.a(dtd.a(dsv.ab, -0.0625, 0.025), w), dtd.a($$11, t))),
-         dtd.a(dtd.a(cyf.G), dtd.a(dtd.a($$15, h), $$22, dtd.a($$11, t))),
-         dtd.a(dtd.a(cyf.I), h),
-         dtd.a(dtd.a(cyf.F), dtd.a($$22, j)),
+      dtf.o $$22 = dtf.a(dtf.a(dsx.Z, 0.45, 0.58), dtf.a($$11, v));
+      dtf.o $$23 = dtf.a(dtf.a(dsx.Z, 0.35, 0.6), dtf.a($$11, v));
+      dtf.o $$24 = dtf.a(
+         dtf.a(dtf.a(cyh.H), dtf.a(dtf.a($$15, s), dtf.a(dtf.a(dsx.aa, -0.5, 0.2), s), dtf.a(dtf.a(dsx.ab, -0.0625, 0.025), w), dtf.a($$11, t))),
+         dtf.a(dtf.a(cyh.G), dtf.a(dtf.a($$15, h), $$22, dtf.a($$11, t))),
+         dtf.a(dtf.a(cyh.I), h),
+         dtf.a(dtf.a(cyh.F), dtf.a($$22, j)),
          $$21,
-         dtd.a(dtd.a(cyf.w), dtd.a(a(1.75), h)),
-         dtd.a(dtd.a(cyf.u), dtd.a(dtd.a(a(2.0), $$18), dtd.a(a(1.0), h), dtd.a(a(-1.0), j), $$18)),
-         dtd.a(dtd.a(cyf.h), u),
+         dtf.a(dtf.a(cyh.w), dtf.a(a(1.75), h)),
+         dtf.a(dtf.a(cyh.u), dtf.a(dtf.a(a(2.0), $$18), dtf.a(a(1.0), h), dtf.a(a(-1.0), j), $$18)),
+         dtf.a(dtf.a(cyh.h), u),
          j
       );
-      dtd.o $$25 = dtd.a(
-         dtd.a(dtd.a(cyf.H), dtd.a(dtd.a($$15, s), dtd.a(dtd.a(dsv.aa, 0.0, 0.2), s), dtd.a(dtd.a(dsv.ab, 0.0, 0.025), w), dtd.a($$11, t))),
-         dtd.a(dtd.a(cyf.G), dtd.a(dtd.a($$15, h), $$23, dtd.a($$11, t))),
-         dtd.a(dtd.a(cyf.I), dtd.a(dtd.a($$15, h), dtd.a($$11, t))),
-         dtd.a(dtd.a(cyf.F), dtd.a($$23, dtd.a($$11, t))),
+      dtf.o $$25 = dtf.a(
+         dtf.a(dtf.a(cyh.H), dtf.a(dtf.a($$15, s), dtf.a(dtf.a(dsx.aa, 0.0, 0.2), s), dtf.a(dtf.a(dsx.ab, 0.0, 0.025), w), dtf.a($$11, t))),
+         dtf.a(dtf.a(cyh.G), dtf.a(dtf.a($$15, h), $$23, dtf.a($$11, t))),
+         dtf.a(dtf.a(cyh.I), dtf.a(dtf.a($$15, h), dtf.a($$11, t))),
+         dtf.a(dtf.a(cyh.F), dtf.a($$23, dtf.a($$11, t))),
          $$21,
-         dtd.a(dtd.a(cyf.w), dtd.a(dtd.a(a(1.75), h), dtd.a(a(-0.5), l))),
-         dtd.a(dtd.a(cyf.u), dtd.a(dtd.a(a(2.0), $$18), dtd.a(a(1.0), h), dtd.a(a(-1.0), $$16), $$18)),
-         dtd.a(dtd.a(cyf.n, cyf.o), dtd.a(dtd.a(a(1.75), l), dtd.a(a(-0.95), k))),
-         dtd.a(dtd.a(cyf.e), dtd.a($$11, t)),
-         dtd.a(dtd.a(cyf.h), u),
-         dtd.a(dtd.a(cyf.Y), m),
+         dtf.a(dtf.a(cyh.w), dtf.a(dtf.a(a(1.75), h), dtf.a(a(-0.5), l))),
+         dtf.a(dtf.a(cyh.u), dtf.a(dtf.a(a(2.0), $$18), dtf.a(a(1.0), h), dtf.a(a(-1.0), $$16), $$18)),
+         dtf.a(dtf.a(cyh.n, cyh.o), dtf.a(dtf.a(a(1.75), l), dtf.a(a(-0.95), k))),
+         dtf.a(dtf.a(cyh.e), dtf.a($$11, t)),
+         dtf.a(dtf.a(cyh.h), u),
+         dtf.a(dtf.a(cyh.Y), m),
          $$16
       );
-      dtd.f $$26 = dtd.a(dsv.N, -0.909, -0.5454);
-      dtd.f $$27 = dtd.a(dsv.N, -0.1818, 0.1818);
-      dtd.f $$28 = dtd.a(dsv.N, 0.5454, 0.909);
-      dtd.o $$29 = dtd.a(
-         dtd.a(
-            dtd.a,
-            dtd.a(
-               dtd.a(dtd.a(cyf.C), dtd.a($$3, dtd.a(dtd.a($$26, l), dtd.a($$27, l), dtd.a($$28, l), $$16))),
-               dtd.a(dtd.a(cyf.g), dtd.a($$8, dtd.a(dtd.a($$9), dtd.a(dtd.a(dsv.W, 0.0), x)))),
-               dtd.a(dtd.a(cyf.h), dtd.a($$7, dtd.a(dtd.a($$9), dtd.a(dtd.a(dsv.W, 0.0), x))))
+      dtf.f $$26 = dtf.a(dsx.N, -0.909, -0.5454);
+      dtf.f $$27 = dtf.a(dsx.N, -0.1818, 0.1818);
+      dtf.f $$28 = dtf.a(dsx.N, 0.5454, 0.909);
+      dtf.o $$29 = dtf.a(
+         dtf.a(
+            dtf.a,
+            dtf.a(
+               dtf.a(dtf.a(cyh.C), dtf.a($$3, dtf.a(dtf.a($$26, l), dtf.a($$27, l), dtf.a($$28, l), $$16))),
+               dtf.a(dtf.a(cyh.g), dtf.a($$8, dtf.a(dtf.a($$9), dtf.a(dtf.a(dsx.W, 0.0), x)))),
+               dtf.a(dtf.a(cyh.h), dtf.a($$7, dtf.a(dtf.a($$9), dtf.a(dtf.a(dsx.W, 0.0), x))))
             )
          ),
-         dtd.a(
-            dtd.a(cyf.A, cyf.B, cyf.C),
-            dtd.a(
-               dtd.a(
-                  dtd.a,
-                  dtd.a(
-                     dtd.a($$4, d),
-                     dtd.a($$6, dtd.a(dtd.a($$26, e), dtd.a($$27, e), dtd.a($$28, e), dtd.e())),
-                     dtd.a($$10, dtd.a(dtd.a(dtd.e, g), f)),
-                     dtd.a(dtd.a($$13), d),
-                     dtd.a($$12, c),
+         dtf.a(
+            dtf.a(cyh.A, cyh.B, cyh.C),
+            dtf.a(
+               dtf.a(
+                  dtf.a,
+                  dtf.a(
+                     dtf.a($$4, d),
+                     dtf.a($$6, dtf.a(dtf.a($$26, e), dtf.a($$27, e), dtf.a($$28, e), dtf.e())),
+                     dtf.a($$10, dtf.a(dtf.a(dtf.e, g), f)),
+                     dtf.a(dtf.a($$13), d),
+                     dtf.a($$12, c),
                      $$18
                   )
                ),
-               dtd.a($$5, dtd.a(dtd.a($$9, dtd.a(dtd.a($$6), d)), dtd.e())),
-               dtd.a(dtd.b, dtd.a($$12, c))
+               dtf.a($$5, dtf.a(dtf.a($$9, dtf.a(dtf.a($$6), d)), dtf.e())),
+               dtf.a(dtf.b, dtf.a($$12, c))
             )
          ),
-         dtd.a(dtd.a, dtd.a($$10, dtd.a(dtd.a($$14, dtd.a($$13, dtd.a(dtd.a($$11, a), dtd.a(dtd.d(), w), x))), $$25))),
-         dtd.a($$12, dtd.a(dtd.a(dtd.a, dtd.a($$14, dtd.a($$13, x))), dtd.a(dtd.b, $$24), dtd.a($$19, dtd.a(dtd.c, r)), dtd.a($$20, dtd.a(dtd.d, r)))),
-         dtd.a(dtd.a, dtd.a(dtd.a(dtd.a(cyf.H, cyf.I), h), dtd.a(dtd.a(cyf.P, cyf.Q, cyf.R), $$17), $$18))
+         dtf.a(dtf.a, dtf.a($$10, dtf.a(dtf.a($$14, dtf.a($$13, dtf.a(dtf.a($$11, a), dtf.a(dtf.d(), w), x))), $$25))),
+         dtf.a($$12, dtf.a(dtf.a(dtf.a, dtf.a($$14, dtf.a($$13, x))), dtf.a(dtf.b, $$24), dtf.a($$19, dtf.a(dtf.c, r)), dtf.a($$20, dtf.a(dtf.d, r)))),
+         dtf.a(dtf.a, dtf.a(dtf.a(dtf.a(cyh.H, cyh.I), h), dtf.a(dtf.a(cyh.P, cyh.Q, cyh.R), $$17), $$18))
       );
-      Builder<dtd.o> $$30 = ImmutableList.builder();
+      Builder<dtf.o> $$30 = ImmutableList.builder();
       if ($$1) {
-         $$30.add(dtd.a(dtd.a(dtd.a("bedrock_roof", dtg.c(5), dtg.b())), b));
+         $$30.add(dtf.a(dtf.a(dtf.a("bedrock_roof", dti.c(5), dti.b())), b));
       }
 
       if ($$2) {
-         $$30.add(dtd.a(dtd.a("bedrock_floor", dtg.a(), dtg.b(5)), b));
+         $$30.add(dtf.a(dtf.a("bedrock_floor", dti.a(), dti.b(5)), b));
       }
 
-      dtd.o $$31 = dtd.a(dtd.c(), $$29);
+      dtf.o $$31 = dtf.a(dtf.c(), $$29);
       $$30.add($$0 ? $$31 : $$29);
-      $$30.add(dtd.a(dtd.a("deepslate", dtg.a(0), dtg.a(8)), i));
-      return dtd.a((dtd.o[])$$30.build().toArray(dtd.o[]::new));
+      $$30.add(dtf.a(dtf.a("deepslate", dti.a(0), dti.a(8)), i));
+      return dtf.a((dtf.o[])$$30.build().toArray(dtf.o[]::new));
    }
 
-   public static dtd.o b() {
-      dtd.f $$0 = dtd.a(dtg.a(31), 0);
-      dtd.f $$1 = dtd.a(dtg.a(32), 0);
-      dtd.f $$2 = dtd.b(dtg.a(30), 0);
-      dtd.f $$3 = dtd.a(dtd.b(dtg.a(35), 0));
-      dtd.f $$4 = dtd.a(dtg.c(5), 0);
-      dtd.f $$5 = dtd.b();
-      dtd.f $$6 = dtd.a(dsv.ac, -0.012);
-      dtd.f $$7 = dtd.a(dsv.ad, -0.012);
-      dtd.f $$8 = dtd.a(dsv.ae, -0.012);
-      dtd.f $$9 = dtd.a(dsv.af, 0.54);
-      dtd.f $$10 = dtd.a(dsv.ag, 1.17);
-      dtd.f $$11 = dtd.a(dsv.ah, 0.0);
-      dtd.o $$12 = dtd.a($$8, dtd.a($$2, dtd.a($$3, p)));
-      return dtd.a(
-         dtd.a(dtd.a("bedrock_floor", dtg.a(), dtg.b(5)), b),
-         dtd.a(dtd.a(dtd.a("bedrock_roof", dtg.c(5), dtg.b())), b),
-         dtd.a($$4, z),
-         dtd.a(dtd.a(cyf.ag), dtd.a(dtd.a(dtd.f, C), dtd.a(dtd.b, dtd.a($$12, dtd.a($$11, C), D)))),
-         dtd.a(dtd.a(cyf.af), dtd.a(dtd.a(dtd.f, dtd.a(dtd.a($$11, A), B)), dtd.a(dtd.b, dtd.a($$12, dtd.a($$11, A), B)))),
-         dtd.a(
-            dtd.a,
-            dtd.a(
-               dtd.a(dtd.a($$1), dtd.a($$5, y)),
-               dtd.a(dtd.a(cyf.ad), dtd.a(dtd.a($$9), dtd.a($$0, dtd.a(dtd.a($$10, E), F)))),
-               dtd.a(dtd.a(cyf.ae), dtd.a(dtd.a($$9), dtd.a($$0, dtd.a(dtd.a($$10, G), H))))
+   public static dtf.o b() {
+      dtf.f $$0 = dtf.a(dti.a(31), 0);
+      dtf.f $$1 = dtf.a(dti.a(32), 0);
+      dtf.f $$2 = dtf.b(dti.a(30), 0);
+      dtf.f $$3 = dtf.a(dtf.b(dti.a(35), 0));
+      dtf.f $$4 = dtf.a(dti.c(5), 0);
+      dtf.f $$5 = dtf.b();
+      dtf.f $$6 = dtf.a(dsx.ac, -0.012);
+      dtf.f $$7 = dtf.a(dsx.ad, -0.012);
+      dtf.f $$8 = dtf.a(dsx.ae, -0.012);
+      dtf.f $$9 = dtf.a(dsx.af, 0.54);
+      dtf.f $$10 = dtf.a(dsx.ag, 1.17);
+      dtf.f $$11 = dtf.a(dsx.ah, 0.0);
+      dtf.o $$12 = dtf.a($$8, dtf.a($$2, dtf.a($$3, p)));
+      return dtf.a(
+         dtf.a(dtf.a("bedrock_floor", dti.a(), dti.b(5)), b),
+         dtf.a(dtf.a(dtf.a("bedrock_roof", dti.c(5), dti.b())), b),
+         dtf.a($$4, z),
+         dtf.a(dtf.a(cyh.ag), dtf.a(dtf.a(dtf.f, C), dtf.a(dtf.b, dtf.a($$12, dtf.a($$11, C), D)))),
+         dtf.a(dtf.a(cyh.af), dtf.a(dtf.a(dtf.f, dtf.a(dtf.a($$11, A), B)), dtf.a(dtf.b, dtf.a($$12, dtf.a($$11, A), B)))),
+         dtf.a(
+            dtf.a,
+            dtf.a(
+               dtf.a(dtf.a($$1), dtf.a($$5, y)),
+               dtf.a(dtf.a(cyh.ad), dtf.a(dtf.a($$9), dtf.a($$0, dtf.a(dtf.a($$10, E), F)))),
+               dtf.a(dtf.a(cyh.ae), dtf.a(dtf.a($$9), dtf.a($$0, dtf.a(dtf.a($$10, G), H))))
             )
          ),
-         dtd.a(
-            dtd.a(cyf.ac),
-            dtd.a(
-               dtd.a(dtd.b, dtd.a($$6, dtd.a(dtd.a(dtd.a($$5), dtd.a($$2, dtd.a($$3, A))), z))),
-               dtd.a(dtd.a, dtd.a($$0, dtd.a($$3, dtd.a($$7, dtd.a(dtd.a($$1, p), dtd.a(dtd.a($$5), p))))))
+         dtf.a(
+            dtf.a(cyh.ac),
+            dtf.a(
+               dtf.a(dtf.b, dtf.a($$6, dtf.a(dtf.a(dtf.a($$5), dtf.a($$2, dtf.a($$3, A))), z))),
+               dtf.a(dtf.a, dtf.a($$0, dtf.a($$3, dtf.a($$7, dtf.a(dtf.a($$1, p), dtf.a(dtf.a($$5), p))))))
             )
          ),
          z
       );
    }
 
-   public static dtd.o c() {
+   public static dtf.o c() {
       return I;
    }
 
-   public static dtd.o d() {
+   public static dtf.o d() {
       return a;
    }
 
-   private static dtd.f a(double $$0) {
-      return dtd.a(dsv.N, $$0 / 8.25, Double.MAX_VALUE);
+   private static dtf.f a(double $$0) {
+      return dtf.a(dsx.N, $$0 / 8.25, Double.MAX_VALUE);
    }
 }

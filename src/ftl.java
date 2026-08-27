@@ -1,4 +1,8 @@
-@FunctionalInterface
-public interface ftl {
-   yb<aez> predict(int var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ftl {
 }

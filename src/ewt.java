@@ -1,62 +1,79 @@
-public class ewt extends gpb {
-   private final fhf a;
-   private final ewt.a b;
-   private fbz c = fbz.a;
+public class ewt extends gpe {
+   private static final vu a = vu.c("mco.selectServer.create");
+   private static final vu b = vu.c("mco.configure.world.name");
+   private static final vu c = vu.c("mco.configure.world.description");
+   private static final int v = 10;
+   private static final int w = 210;
+   private final eum x;
+   private final fev y = new fev(this);
+   private fbr z;
+   private fbr A;
+   private final Runnable B;
 
-   public ewt(ewc $$0, fhf $$1) {
-      super(eyy.a);
-      this.a = $$1;
-      this.b = a($$0);
+   public ewt(eum $$0, evi $$1) {
+      super(a);
+      this.x = $$0;
+      this.B = () -> this.a($$1);
    }
 
-   public ewt(vu $$0, fhf $$1) {
-      super(eyy.a);
-      this.a = $$1;
-      this.b = a($$0);
-   }
-
-   public ewt(vu $$0, vu $$1, fhf $$2) {
-      super(eyy.a);
-      this.a = $$2;
-      this.b = a($$0, $$1);
-   }
-
-   private static ewt.a a(ewc $$0) {
-      eur $$1 = $$0.a;
-      return a(vu.a("mco.errorMessage.realmsService.realmsError", $$1.a()), $$1.b());
-   }
-
-   private static ewt.a a(vu $$0) {
-      return a(vu.c("mco.errorMessage.generic"), $$0);
-   }
-
-   private static ewt.a a(vu $$0, vu $$1) {
-      return new ewt.a($$0, $$1);
+   public ewt(eum $$0, long $$1) {
+      super(a);
+      this.x = $$0;
+      this.B = () -> this.a($$1);
    }
 
    @Override
    public void aO_() {
-      this.c(fbg.a(vt.h, $$0 -> this.d()).a(this.g / 2 - 100, this.h - 52, 200, 20).a());
-      this.c = fbz.a(this.i, this.b.b, this.g * 3 / 4);
+      this.y.a(new fcp(this.e, this.i));
+      fez $$0 = this.y.c(fez.d()).a(10);
+      fbi $$1 = fbi.a(vt.j, $$0x -> this.B.run()).a();
+      $$1.j = false;
+      this.z = new fbr(this.i, 210, 20, b);
+      this.z.b($$1x -> $$1.j = !ac.b($$1x));
+      this.A = new fbr(this.i, 210, 20, c);
+      $$0.a(fer.a(this.i, this.z, b));
+      $$0.a(fer.a(this.i, this.A, c));
+      fez $$2 = this.y.b(fez.e().a(10));
+      $$2.a($$1);
+      $$2.a(fbi.a(vt.k, $$0x -> this.d()).a());
+      this.y.a($$1x -> {
+         fbg var10000 = this.c($$1x);
+      });
+      this.c();
+   }
+
+   @Override
+   protected void aF_() {
+      this.b(this.z);
+   }
+
+   @Override
+   protected void c() {
+      this.y.a();
+   }
+
+   private void a(evi $$0) {
+      eyk $$1 = new eyk($$0.a, this.z.a(), this.A.a());
+      exg $$2 = exg.a(this, $$0, $$1, () -> this.f.execute(() -> {
+            eum.g();
+            this.f.a(this.x);
+         }));
+      this.f.a($$2);
+   }
+
+   private void a(long $$0) {
+      fhh $$1 = new exf($$1x -> {
+         if ($$1x == null) {
+            this.f.a(this);
+         } else {
+            this.f.a(new ewy(this, new eyf(this.x, $$0, $$1x, this.z.a(), this.A.a())));
+         }
+      }, a);
+      this.f.a($$1);
    }
 
    @Override
    public void d() {
-      this.f.a(this.a);
-   }
-
-   @Override
-   public vu i() {
-      return vu.i().b(this.b.a).f(": ").b(this.b.b);
-   }
-
-   @Override
-   public void a(fat $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.b.a, this.g / 2, 80, -1);
-      this.c.a($$0, this.g / 2, 100, 9, -2142128);
-   }
-
-   static record a(vu a, vu b) {
+      this.f.a(this.x);
    }
 }

@@ -14,33 +14,33 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class apd extends doz {
-   private static final List<dpa> b = dpa.a();
+public class apd extends dpb {
+   private static final List<dpc> b = dpc.a();
    private final aox c;
    final apf d;
    final Thread e;
    final api f;
    private final apd.b g;
    public final aop a;
-   private final eke h;
+   private final ekg h;
    private long i;
    private boolean j = true;
    private boolean k = true;
    private static final int l = 4;
    private final long[] m = new long[4];
-   private final dpa[] n = new dpa[4];
-   private final dov[] o = new dov[4];
+   private final dpc[] n = new dpc[4];
+   private final dox[] o = new dox[4];
    @Nullable
    @axz
-   private cxk.d p;
+   private cxm.d p;
 
-   public apd(apf $$0, ekk.c $$1, DataFixer $$2, ehd $$3, Executor $$4, dow $$5, int $$6, int $$7, boolean $$8, apo $$9, dqt $$10, Supplier<eke> $$11) {
+   public apd(apf $$0, ekm.c $$1, DataFixer $$2, ehf $$3, Executor $$4, doy $$5, int $$6, int $$7, boolean $$8, apo $$9, dqv $$10, Supplier<ekg> $$11) {
       this.d = $$0;
       this.g = new apd.b($$0);
       this.e = Thread.currentThread();
       File $$12 = $$1.a($$0.ad()).resolve("data").toFile();
       $$12.mkdirs();
-      this.h = new eke($$12, $$2, $$0.H_());
+      this.h = new ekg($$12, $$2, $$0.H_());
       this.a = new aop($$0, $$1, $$2, $$3, $$4, this.g, this, $$5, $$9, $$10, $$11, $$6, $$8);
       this.f = this.a.e();
       this.c = this.a.j();
@@ -61,7 +61,7 @@ public class apd extends doz {
       return this.a.h();
    }
 
-   private void a(long $$0, dov $$1, dpa $$2) {
+   private void a(long $$0, dox $$1, dpc $$2) {
       for (int $$3 = 3; $$3 > 0; $$3--) {
          this.m[$$3] = this.m[$$3 - 1];
          this.n[$$3] = this.n[$$3 - 1];
@@ -75,17 +75,17 @@ public class apd extends doz {
 
    @Nullable
    @Override
-   public dov a(int $$0, int $$1, dpa $$2, boolean $$3) {
+   public dox a(int $$0, int $$1, dpc $$2, boolean $$3) {
       if (Thread.currentThread() != this.e) {
-         return CompletableFuture.<dov>supplyAsync(() -> this.a($$0, $$1, $$2, $$3), this.g).join();
+         return CompletableFuture.<dox>supplyAsync(() -> this.a($$0, $$1, $$2, $$3), this.g).join();
       } else {
-         bjq $$4 = this.d.ae();
+         bjr $$4 = this.d.ae();
          $$4.d("getChunk");
-         long $$5 = cwg.c($$0, $$1);
+         long $$5 = cwi.c($$0, $$1);
 
          for (int $$6 = 0; $$6 < 4; $$6++) {
             if ($$5 == this.m[$$6] && $$2 == this.n[$$6]) {
-               dov $$7 = this.o[$$6];
+               dox $$7 = this.o[$$6];
                if ($$7 != null || !$$3) {
                   return $$7;
                }
@@ -93,9 +93,9 @@ public class apd extends doz {
          }
 
          $$4.d("getChunkCacheMiss");
-         CompletableFuture<Either<dov, aon.a>> $$8 = this.c($$0, $$1, $$2, $$3);
+         CompletableFuture<Either<dox, aon.a>> $$8 = this.c($$0, $$1, $$2, $$3);
          this.g.c($$8::isDone);
-         dov $$9 = (dov)$$8.join().map($$0x -> $$0x, $$1x -> {
+         dox $$9 = (dox)$$8.join().map($$0x -> $$0x, $$1x -> {
             if ($$3) {
                throw (IllegalStateException)ac.b(new IllegalStateException("Chunk not there when requested: " + $$1x));
             } else {
@@ -109,17 +109,17 @@ public class apd extends doz {
 
    @Nullable
    @Override
-   public dpg a(int $$0, int $$1) {
+   public dpi a(int $$0, int $$1) {
       if (Thread.currentThread() != this.e) {
          return null;
       } else {
          this.d.ae().d("getChunkNow");
-         long $$2 = cwg.c($$0, $$1);
+         long $$2 = cwi.c($$0, $$1);
 
          for (int $$3 = 0; $$3 < 4; $$3++) {
-            if ($$2 == this.m[$$3] && this.n[$$3] == dpa.n) {
-               dov $$4 = this.o[$$3];
-               return $$4 instanceof dpg ? (dpg)$$4 : null;
+            if ($$2 == this.m[$$3] && this.n[$$3] == dpc.n) {
+               dox $$4 = this.o[$$3];
+               return $$4 instanceof dpi ? (dpi)$$4 : null;
             }
          }
 
@@ -127,15 +127,15 @@ public class apd extends doz {
          if ($$5 == null) {
             return null;
          } else {
-            Either<dov, aon.a> $$6 = $$5.b(dpa.n).getNow(null);
+            Either<dox, aon.a> $$6 = $$5.b(dpc.n).getNow(null);
             if ($$6 == null) {
                return null;
             } else {
-               dov $$7 = (dov)$$6.left().orElse(null);
+               dox $$7 = (dox)$$6.left().orElse(null);
                if ($$7 != null) {
-                  this.a($$2, $$7, dpa.n);
-                  if ($$7 instanceof dpg) {
-                     return (dpg)$$7;
+                  this.a($$2, $$7, dpc.n);
+                  if ($$7 instanceof dpi) {
+                     return (dpi)$$7;
                   }
                }
 
@@ -146,33 +146,33 @@ public class apd extends doz {
    }
 
    private void r() {
-      Arrays.fill(this.m, cwg.a);
+      Arrays.fill(this.m, cwi.a);
       Arrays.fill(this.n, null);
       Arrays.fill(this.o, null);
    }
 
-   public CompletableFuture<Either<dov, aon.a>> b(int $$0, int $$1, dpa $$2, boolean $$3) {
+   public CompletableFuture<Either<dox, aon.a>> b(int $$0, int $$1, dpc $$2, boolean $$3) {
       boolean $$4 = Thread.currentThread() == this.e;
-      CompletableFuture<Either<dov, aon.a>> $$5;
+      CompletableFuture<Either<dox, aon.a>> $$5;
       if ($$4) {
          $$5 = this.c($$0, $$1, $$2, $$3);
          this.g.c($$5::isDone);
       } else {
-         $$5 = CompletableFuture.<CompletableFuture<Either<dov, aon.a>>>supplyAsync(() -> this.c($$0, $$1, $$2, $$3), this.g).thenCompose($$0x -> $$0x);
+         $$5 = CompletableFuture.<CompletableFuture<Either<dox, aon.a>>>supplyAsync(() -> this.c($$0, $$1, $$2, $$3), this.g).thenCompose($$0x -> $$0x);
       }
 
       return $$5;
    }
 
-   private CompletableFuture<Either<dov, aon.a>> c(int $$0, int $$1, dpa $$2, boolean $$3) {
-      cwg $$4 = new cwg($$0, $$1);
+   private CompletableFuture<Either<dox, aon.a>> c(int $$0, int $$1, dpc $$2, boolean $$3) {
+      cwi $$4 = new cwi($$0, $$1);
       long $$5 = $$4.a();
       int $$6 = aoo.a($$2);
       aon $$7 = this.b($$5);
       if ($$3) {
          this.c.a(apk.h, $$4, $$6, $$4);
          if (this.a($$7, $$6)) {
-            bjq $$8 = this.d.ae();
+            bjr $$8 = this.d.ae();
             $$8.a("chunkLoad");
             this.s();
             $$7 = this.b($$5);
@@ -192,15 +192,15 @@ public class apd extends doz {
 
    @Override
    public boolean b(int $$0, int $$1) {
-      aon $$2 = this.b(new cwg($$0, $$1).a());
-      int $$3 = aoo.a(dpa.n);
+      aon $$2 = this.b(new cwi($$0, $$1).a());
+      int $$3 = aoo.a(dpc.n);
       return !this.a($$2, $$3);
    }
 
    @Nullable
    @Override
-   public dpi c(int $$0, int $$1) {
-      long $$2 = cwg.c($$0, $$1);
+   public dpk c(int $$0, int $$1) {
+      long $$2 = cwi.c($$0, $$1);
       aon $$3 = this.b($$2);
       if ($$3 == null) {
          return null;
@@ -208,13 +208,13 @@ public class apd extends doz {
          int $$4 = b.size() - 1;
 
          while (true) {
-            dpa $$5 = b.get($$4);
-            Optional<dov> $$6 = $$3.a($$5).getNow(aon.a).left();
+            dpc $$5 = b.get($$4);
+            Optional<dox> $$6 = $$3.a($$5).getNow(aon.a).left();
             if ($$6.isPresent()) {
                return $$6.get();
             }
 
-            if ($$5 == dpa.k.d()) {
+            if ($$5 == dpc.k.d()) {
                return null;
             }
 
@@ -223,7 +223,7 @@ public class apd extends doz {
       }
    }
 
-   public cwz c() {
+   public cxb c() {
       return this.d;
    }
 
@@ -249,7 +249,7 @@ public class apd extends doz {
       } else if (!this.d.a($$0)) {
          return false;
       } else {
-         Either<dpg, aon.a> $$2 = $$1.a().getNow(null);
+         Either<dpi, aon.a> $$2 = $$1.a().getNow(null);
          return $$2 != null && $$2.left().isPresent();
       }
    }
@@ -269,7 +269,10 @@ public class apd extends doz {
    @Override
    public void a(BooleanSupplier $$0, boolean $$1) {
       this.d.ae().a("purge");
-      this.c.a();
+      if (this.d.s().i() || !$$1) {
+         this.c.a();
+      }
+
       this.s();
       this.d.ae().b("chunks");
       if ($$1) {
@@ -288,36 +291,36 @@ public class apd extends doz {
       long $$1 = $$0 - this.i;
       this.i = $$0;
       if (!this.d.ag()) {
-         bjq $$2 = this.d.ae();
+         bjr $$2 = this.d.ae();
          $$2.a("pollingChunks");
          $$2.a("filteringLoadedChunks");
          List<apd.a> $$3 = Lists.newArrayListWithCapacity(this.a.i());
 
          for (aon $$4 : this.a.k()) {
-            dpg $$5 = $$4.d();
+            dpi $$5 = $$4.d();
             if ($$5 != null) {
                $$3.add(new apd.a($$5, $$4));
             }
          }
 
-         if (this.d.o().aR().i()) {
+         if (this.d.s().i()) {
             $$2.b("naturalSpawnCount");
             int $$6 = this.c.b();
-            cxk.d $$7 = cxk.a($$6, this.d.A(), this::a, new cxj(this.a));
+            cxm.d $$7 = cxm.a($$6, this.d.A(), this::a, new cxl(this.a));
             this.p = $$7;
             $$2.b("spawnAndTick");
-            boolean $$8 = this.d.Z().b(cwv.e);
+            boolean $$8 = this.d.Z().b(cwx.e);
             ac.c($$3, this.d.z);
-            int $$9 = this.d.Z().c(cwv.o);
+            int $$9 = this.d.Z().c(cwx.o);
             boolean $$10 = this.d.A_().c() % 400L == 0L;
 
             for (apd.a $$11 : $$3) {
-               dpg $$12 = $$11.a;
-               cwg $$13 = $$12.f();
+               dpi $$12 = $$11.a;
+               cwi $$13 = $$12.f();
                if (this.d.a($$13) && this.a.c($$13)) {
                   $$12.a($$1);
                   if ($$8 && (this.j || this.k) && this.d.C_().a($$13)) {
-                     cxk.a(this.d, $$12, $$7, this.k, this.j, $$10);
+                     cxm.a(this.d, $$12, $$7, this.k, this.j, $$10);
                   }
 
                   if (this.d.a($$13.a())) {
@@ -339,7 +342,7 @@ public class apd extends doz {
       }
    }
 
-   private void a(long $$0, Consumer<dpg> $$1) {
+   private void a(long $$0, Consumer<dpi> $$1) {
       aon $$2 = this.b($$0);
       if ($$2 != null) {
          $$2.c().getNow(aon.c).left().ifPresent($$1);
@@ -356,15 +359,15 @@ public class apd extends doz {
       return this.g.bw();
    }
 
-   public dow g() {
+   public doy g() {
       return this.a.a();
    }
 
-   public dox h() {
+   public doz h() {
       return this.a.b();
    }
 
-   public dta i() {
+   public dtc i() {
       return this.a.c();
    }
 
@@ -376,14 +379,14 @@ public class apd extends doz {
    public void a(ib $$0) {
       int $$1 = je.a($$0.u());
       int $$2 = je.a($$0.w());
-      aon $$3 = this.b(cwg.c($$1, $$2));
+      aon $$3 = this.b(cwi.c($$1, $$2));
       if ($$3 != null) {
          $$3.a($$0);
       }
    }
 
    @Override
-   public void a(cxi $$0, je $$1) {
+   public void a(cxk $$0, je $$1) {
       this.g.execute(() -> {
          aon $$2 = this.b($$1.r().a());
          if ($$2 != null) {
@@ -392,16 +395,16 @@ public class apd extends doz {
       });
    }
 
-   public <T> void a(apk<T> $$0, cwg $$1, int $$2, T $$3) {
+   public <T> void a(apk<T> $$0, cwi $$1, int $$2, T $$3) {
       this.c.c($$0, $$1, $$2, $$3);
    }
 
-   public <T> void b(apk<T> $$0, cwg $$1, int $$2, T $$3) {
+   public <T> void b(apk<T> $$0, cwi $$1, int $$2, T $$3) {
       this.c.d($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public void a(cwg $$0, boolean $$1) {
+   public void a(cwi $$0, boolean $$1) {
       this.c.a($$0, $$1);
    }
 
@@ -411,19 +414,19 @@ public class apd extends doz {
       }
    }
 
-   public void a(bow $$0) {
+   public void a(box $$0) {
       this.a.b($$0);
    }
 
-   public void b(bow $$0) {
+   public void b(box $$0) {
       this.a.a($$0);
    }
 
-   public void a(bow $$0, yb<?> $$1) {
+   public void a(box $$0, yb<?> $$1) {
       this.a.b($$0, $$1);
    }
 
-   public void b(bow $$0, yb<?> $$1) {
+   public void b(box $$0, yb<?> $$1) {
       this.a.a($$0, $$1);
    }
 
@@ -441,25 +444,25 @@ public class apd extends doz {
       this.k = $$1;
    }
 
-   public String a(cwg $$0) {
+   public String a(cwi $$0) {
       return this.a.a($$0);
    }
 
-   public eke k() {
+   public ekg k() {
       return this.h;
    }
 
-   public car l() {
+   public cas l() {
       return this.a.m();
    }
 
-   public dpv m() {
+   public dpx m() {
       return this.a.p();
    }
 
    @Nullable
    @axz
-   public cxk.d n() {
+   public cxm.d n() {
       return this.p;
    }
 
@@ -467,11 +470,11 @@ public class apd extends doz {
       this.c.e();
    }
 
-   static record a(dpg a, aon b) {
+   static record a(dpi a, aon b) {
    }
 
-   final class b extends bls<Runnable> {
-      b(cwz $$0) {
+   final class b extends blt<Runnable> {
+      b(cxb $$0) {
          super("Chunk source main thread executor for " + $$0.ad().a());
       }
 

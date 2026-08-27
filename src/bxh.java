@@ -1,47 +1,42 @@
-public class bxh extends bwl {
-   private final cdf a;
-   private int b;
+import java.util.EnumSet;
 
-   public bxh(cdf $$0) {
+public class bxh extends bwm {
+   private final bpr a;
+   private double b;
+   private double c;
+   private int d;
+
+   public bxh(bpr $$0) {
       this.a = $$0;
-      this.a($$0);
-   }
-
-   @Override
-   public void c() {
-      this.a.gR();
-      this.h();
-   }
-
-   private void h() {
-      atx $$0 = this.a.gQ();
-      if ($$0 != null) {
-         this.a.a($$0);
-      }
-   }
-
-   @Override
-   public boolean b() {
-      return false;
+      this.a(EnumSet.of(bwm.a.a, bwm.a.b));
    }
 
    @Override
    public boolean a() {
-      this.b++;
-      if (this.b > 0 && this.a.ei().a(1000) < this.b) {
-         this.a(this.a);
-         return !this.a.fd() && this.a.ei().a(10) == 0;
-      } else {
-         return false;
-      }
+      return this.a.ei().i() < 0.02F;
    }
 
-   private void a(cdf $$0) {
-      this.b = -$$0.gV();
+   @Override
+   public boolean b() {
+      return this.d >= 0;
+   }
+
+   @Override
+   public void c() {
+      double $$0 = (Math.PI * 2) * this.a.ei().j();
+      this.b = Math.cos($$0);
+      this.c = Math.sin($$0);
+      this.d = 20 + this.a.ei().a(20);
    }
 
    @Override
    public boolean R_() {
       return true;
+   }
+
+   @Override
+   public void e() {
+      this.d--;
+      this.a.G().a(this.a.dr() + this.b, this.a.dv(), this.a.dx() + this.c);
    }
 }

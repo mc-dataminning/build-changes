@@ -1,204 +1,249 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.exceptions.AuthenticationException;
-import com.mojang.authlib.exceptions.AuthenticationUnavailableException;
-import com.mojang.authlib.exceptions.ForcedUsernameChangeException;
-import com.mojang.authlib.exceptions.InsufficientPrivilegesException;
-import com.mojang.authlib.exceptions.InvalidCredentialsException;
-import com.mojang.authlib.exceptions.UserBannedException;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
+import com.google.common.collect.ImmutableList;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import java.math.BigInteger;
-import java.security.PublicKey;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.Duration;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Consumer;
+import java.util.Objects;
+import java.util.UUID;
+import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
-import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
-import net.minecraft.client.ClientBrandRetriever;
 import org.slf4j.Logger;
 
-public class frx implements ahe {
-   private static final Logger a = LogUtils.getLogger();
-   private final ezg b;
+public abstract class frx implements yh {
+   private static final vu i = vu.c("disconnect.lost");
+   private static final Logger j = LogUtils.getLogger();
+   protected final ezi a;
+   protected final us b;
    @Nullable
-   private final fsm c;
+   protected final fso c;
    @Nullable
-   private final fhf d;
-   private final Consumer<vu> e;
-   private final us f;
-   private final boolean g;
+   protected String d;
+   protected final gog e;
    @Nullable
-   private final Duration h;
-   @Nullable
-   private String i;
-   private final Map<ajh, byte[]> j;
-   private final boolean k;
-   private final AtomicReference<frx.a> l = new AtomicReference<>(frx.a.a);
+   protected final fhh f;
+   protected boolean g;
+   private final List<frx.a> k = new ArrayList<>();
+   protected final Map<ajh, byte[]> h;
 
-   public frx(us $$0, ezg $$1, @Nullable fsm $$2, @Nullable fhf $$3, boolean $$4, @Nullable Duration $$5, Consumer<vu> $$6, @Nullable fsq $$7) {
-      this.f = $$0;
+   protected frx(ezi $$0, us $$1, fse $$2) {
+      this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$6;
-      this.g = $$4;
-      this.h = $$5;
-      this.j = $$7 != null ? new HashMap<>($$7.a()) : new HashMap<>();
-      this.k = $$7 != null;
-   }
-
-   private void a(frx.a $$0) {
-      frx.a $$1 = this.l.updateAndGet($$1x -> {
-         if (!$$0.f.contains($$1x)) {
-            throw new IllegalStateException("Tried to switch to " + $$0 + " from " + $$1x + ", but expected one of " + $$0.f);
-         } else {
-            return $$0;
-         }
-      });
-      this.e.accept($$1.e);
+      this.c = $$2.f();
+      this.d = $$2.e();
+      this.e = $$2.b();
+      this.f = $$2.g();
+      this.h = $$2.h();
    }
 
    @Override
-   public void a(ahh $$0) {
-      this.a(frx.a.b);
+   public void a(yk $$0) {
+      this.a(new yv($$0.b()), () -> !RenderSystem.isFrozenAtPollEvents(), Duration.ofMinutes(1L));
+   }
 
-      Cipher $$4;
-      Cipher $$5;
-      String $$3;
-      ahp $$7;
-      try {
-         SecretKey $$1 = avu.a();
-         PublicKey $$2 = $$0.e();
-         $$3 = new BigInteger(avu.a($$0.b(), $$2, $$1)).toString(16);
-         $$4 = avu.a(2, $$1);
-         $$5 = avu.a(1, $$1);
-         byte[] $$6 = $$0.f();
-         $$7 = new ahp($$1, $$2, $$6);
-      } catch (Exception var9) {
-         throw new IllegalStateException("Protocol error", var9);
-      }
+   @Override
+   public void a(yl $$0) {
+      ye.a($$0, this, this.a);
+      this.b(new yw($$0.b()));
+   }
 
-      if ($$0.g()) {
-         ac.g().submit(() -> {
-            vu $$4x = this.b($$3);
-            if ($$4x != null) {
-               if (this.c == null || !this.c.d()) {
-                  this.f.a($$4x);
-                  return;
-               }
-
-               a.warn($$4x.getString());
-            }
-
-            this.a($$7, $$4, $$5);
-         });
-      } else {
-         this.a($$7, $$4, $$5);
+   @Override
+   public void a(yi $$0) {
+      zc $$1 = $$0.b();
+      if (!($$1 instanceof zd)) {
+         ye.a($$0, this, this.a);
+         if ($$1 instanceof za $$2) {
+            this.d = $$2.b();
+            this.e.a($$2.b());
+         } else {
+            this.a($$1);
+         }
       }
    }
 
-   private void a(ahp $$0, Cipher $$1, Cipher $$2) {
-      this.a(frx.a.c);
-      this.f.a($$0, vb.a(() -> this.f.a($$1, $$2)));
+   protected abstract void a(zc var1);
+
+   @Override
+   public void a(yn $$0) {
+      ye.a($$0, this, this.a);
+      UUID $$1 = $$0.b();
+      URL $$2 = a($$0.e());
+      if ($$2 == null) {
+         this.b.a(new yx($$1, yx.a.f));
+      } else {
+         String $$3 = $$0.f();
+         boolean $$4 = $$0.g();
+         fso.a $$5 = this.c != null ? this.c.b() : fso.a.c;
+         if ($$5 != fso.a.c && (!$$4 || $$5 != fso.a.b)) {
+            this.a.ae().a($$1, $$2, $$3);
+         } else {
+            this.a.a(this.a($$1, $$2, $$3, $$4, $$0.h().orElse(null)));
+         }
+      }
+   }
+
+   @Override
+   public void a(ym $$0) {
+      ye.a($$0, this, this.a);
+      $$0.b().ifPresentOrElse($$0x -> this.a.ae().a($$0x), () -> this.a.ae().e());
+   }
+
+   static vu a(vu $$0, @Nullable vu $$1) {
+      return (vu)($$1 == null ? $$0 : vu.a("multiplayer.texturePrompt.serverPrompt", $$0, $$1));
    }
 
    @Nullable
-   private vu b(String $$0) {
+   private static URL a(String $$0) {
       try {
-         this.e().joinServer(this.b.X().b(), this.b.X().d(), $$0);
+         URL $$1 = new URL($$0);
+         String $$2 = $$1.getProtocol();
+         return !"http".equals($$2) && !"https".equals($$2) ? null : $$1;
+      } catch (MalformedURLException var3) {
          return null;
-      } catch (AuthenticationUnavailableException var3) {
-         return vu.a("disconnect.loginFailedInfo", vu.c("disconnect.loginFailedInfo.serversUnavailable"));
-      } catch (InvalidCredentialsException var4) {
-         return vu.a("disconnect.loginFailedInfo", vu.c("disconnect.loginFailedInfo.invalidSession"));
-      } catch (InsufficientPrivilegesException var5) {
-         return vu.a("disconnect.loginFailedInfo", vu.c("disconnect.loginFailedInfo.insufficientPrivileges"));
-      } catch (ForcedUsernameChangeException | UserBannedException var6) {
-         return vu.a("disconnect.loginFailedInfo", vu.c("disconnect.loginFailedInfo.userBanned"));
-      } catch (AuthenticationException var7) {
-         return vu.a("disconnect.loginFailedInfo", var7.getMessage());
       }
-   }
-
-   private MinecraftSessionService e() {
-      return this.b.am();
-   }
-
-   @Override
-   public void a(ahg $$0) {
-      this.a(frx.a.d);
-      GameProfile $$1 = $$0.b();
-      this.f.a(aab.b, new frw(this.b, this.f, new fsc($$1, this.b.u().a(this.g, this.h, this.i), fsa.a().a(), clh.h, null, this.c, this.d, this.j)));
-      this.f.a(ahq.a);
-      this.f.a(aab.a);
-      this.f.a(new yu(new za(ClientBrandRetriever.getClientModName())));
-      this.f.a(new yt(this.b.m.au()));
-   }
-
-   @Override
-   public void a(vu $$0) {
-      vu $$1 = this.k ? vt.q : vt.r;
-      if (this.c != null && this.c.e()) {
-         this.b.a(new gox(this.d, $$1, $$0));
-      } else {
-         this.b.a(new fgg(this.d, $$1, $$0));
-      }
-   }
-
-   @Override
-   public boolean c() {
-      return this.f.i();
-   }
-
-   @Override
-   public void a(ahj $$0) {
-      this.f.a($$0.b());
-   }
-
-   @Override
-   public void a(ahi $$0) {
-      if (!this.f.e()) {
-         this.f.a($$0.b(), false);
-      }
-   }
-
-   @Override
-   public void a(ahf $$0) {
-      this.e.accept(vu.c("connect.negotiating"));
-      this.f.a(new ahn($$0.b(), null));
-   }
-
-   public void a(@Nullable String $$0) {
-      this.i = $$0;
    }
 
    @Override
    public void a(aah $$0) {
-      this.f.a(new aak($$0.b(), this.j.get($$0.b())));
+      ye.a($$0, this, this.a);
+      this.b.a(new aak($$0.b(), this.h.get($$0.b())));
+   }
+
+   @Override
+   public void a(yo $$0) {
+      ye.a($$0, this, this.a);
+      this.h.put($$0.b(), $$0.e());
+   }
+
+   @Override
+   public void a(yp $$0) {
+      ye.a($$0, this, this.a);
+      if (this.c == null) {
+         throw new IllegalStateException("Cannot transfer to server from singleplayer");
+      } else {
+         this.g = true;
+         this.b.a(vu.c("disconnect.transfer"));
+         this.b.m();
+         this.b.n();
+         ftr $$1 = new ftr($$0.b(), $$0.e());
+         fga.a(Objects.requireNonNullElseGet(this.f, fhm::new), this.a, $$1, this.c, false, new fss(this.h));
+      }
+   }
+
+   @Override
+   public void a(yj $$0) {
+      this.b.a($$0.b());
+   }
+
+   protected void f() {
+      Iterator<frx.a> $$0 = this.k.iterator();
+
+      while ($$0.hasNext()) {
+         frx.a $$1 = $$0.next();
+         if ($$1.b().getAsBoolean()) {
+            this.b($$1.a);
+            $$0.remove();
+         } else if ($$1.c() <= ac.b()) {
+            $$0.remove();
+         }
+      }
+   }
+
+   public void b(yb<?> $$0) {
+      this.b.a($$0);
+   }
+
+   @Override
+   public void a(vu $$0) {
+      this.e.c();
+      this.a.a(this.b($$0), this.g);
+      j.warn("Client disconnected with reason: {}", $$0.getString());
    }
 
    @Override
    public void a(p $$0) {
-      $$0.a("Server type", () -> this.c != null ? this.c.f().toString() : "<unknown>");
-      $$0.a("Login phase", () -> this.l.get().toString());
+      $$0.a("Server type", () -> this.c != null ? this.c.f().toString() : "<none>");
+      $$0.a("Server brand", () -> this.d);
    }
 
-   static enum a {
-      a(vu.c("connect.connecting"), Set.of()),
-      b(vu.c("connect.authorizing"), Set.of(a)),
-      c(vu.c("connect.encrypting"), Set.of(b)),
-      d(vu.c("connect.joining"), Set.of(c, a));
+   protected fhh b(vu $$0) {
+      fhh $$1 = Objects.requireNonNullElseGet(this.f, () -> new fkf(new fhm()));
+      return (fhh)(this.c != null && this.c.e() ? new gpa($$1, i, $$0) : new fgi($$1, i, $$0));
+   }
 
-      final vu e;
-      final Set<frx.a> f;
+   @Nullable
+   public String g() {
+      return this.d;
+   }
 
-      private a(vu $$0, Set<frx.a> $$1) {
-         this.e = $$0;
-         this.f = $$1;
+   private void a(yb<? extends vg> $$0, BooleanSupplier $$1, Duration $$2) {
+      if ($$1.getAsBoolean()) {
+         this.b($$0);
+      } else {
+         this.k.add(new frx.a($$0, $$1, ac.b() + $$2.toMillis()));
+      }
+   }
+
+   private fhh a(UUID $$0, URL $$1, String $$2, boolean $$3, @Nullable vu $$4) {
+      fhh $$5 = this.a.y;
+      return $$5 instanceof frx.b $$6 ? $$6.a(this.a, $$0, $$1, $$2, $$3, $$4) : new frx.b(this.a, $$5, List.of(new frx.b.a($$0, $$1, $$2)), $$3, $$4);
+   }
+
+   static record a(yb<? extends vg> a, BooleanSupplier b, long c) {
+   }
+
+   class b extends ffz {
+      private final List<frx.b.a> l;
+      @Nullable
+      private final fhh m;
+
+      b(ezi $$0, @Nullable fhh $$1, List<frx.b.a> $$2, boolean $$3, @Nullable vu $$4) {
+         super(
+            $$5 -> {
+               $$0.a($$1);
+               glr $$6 = $$0.ae();
+               if ($$5) {
+                  if (frx.this.c != null) {
+                     frx.this.c.a(fso.a.a);
+                  }
+
+                  $$6.g();
+               } else {
+                  $$6.h();
+                  if ($$3) {
+                     frx.this.b.a(vu.c("multiplayer.requiredTexturePrompt.disconnect"));
+                  } else if (frx.this.c != null) {
+                     frx.this.c.a(fso.a.b);
+                  }
+               }
+
+               for (frx.b.a $$7 : $$2) {
+                  $$6.a($$7.a, $$7.b, $$7.c);
+               }
+
+               if (frx.this.c != null) {
+                  fsp.b(frx.this.c);
+               }
+            },
+            $$3 ? vu.c("multiplayer.requiredTexturePrompt.line1") : vu.c("multiplayer.texturePrompt.line1"),
+            frx.a($$3 ? vu.c("multiplayer.requiredTexturePrompt.line2").a(n.o, n.r) : vu.c("multiplayer.texturePrompt.line2"), $$4),
+            $$3 ? vt.i : vt.f,
+            $$3 ? vt.p : vt.g
+         );
+         this.l = $$2;
+         this.m = $$1;
+      }
+
+      public frx.b a(ezi $$0, UUID $$1, URL $$2, String $$3, boolean $$4, @Nullable vu $$5) {
+         List<frx.b.a> $$6 = ImmutableList.builderWithExpectedSize(this.l.size() + 1).addAll(this.l).add(new frx.b.a($$1, $$2, $$3)).build();
+         return frx.this.new b($$0, this.m, $$6, $$4, $$5);
+      }
+
+      static record a(UUID a, URL b, String c) {
       }
    }
 }

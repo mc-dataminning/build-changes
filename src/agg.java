@@ -2,7 +2,7 @@ public class agg implements yb<aez> {
    public static final xs<uu, agg> a = yb.a(agg::a, agg::new);
    private final ajh b;
 
-   public agg(ctp<?> $$0) {
+   public agg(ctr<?> $$0) {
       this.b = $$0.a();
    }
 

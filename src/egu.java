@@ -1,26 +1,22 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class egu extends egw {
-   public static final Codec<egu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dmz.b.fieldOf("block_state").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d))
-            .apply($$0, egu::new)
-   );
-   private final dmz b;
-   private final float d;
+public class egu extends ehb {
+   public final avd<dac> a;
+   public static final Codec<egu> b = avd.b(kj.f).xmap(egu::new, $$0 -> $$0.a);
 
-   public egu(dmz $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
+   public egu(avd<dac> $$0) {
+      this.a = $$0;
+   }
+
+   @Nullable
+   @Override
+   public ehe.c a(cxe $$0, ib $$1, ib $$2, ehe.c $$3, ehe.c $$4, eha $$5) {
+      return dvs.a(this.a).test($$0.a_($$4.a())) ? $$4 : null;
    }
 
    @Override
-   public boolean a(dmz $$0, axd $$1) {
-      return $$0 == this.b && $$1.i() < this.d;
-   }
-
-   @Override
-   protected egx<?> a() {
-      return egx.f;
+   protected ehd<?> a() {
+      return ehd.n;
    }
 }

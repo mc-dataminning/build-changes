@@ -18,10 +18,10 @@ public class eo implements ArgumentType<String> {
       return new eo();
    }
 
-   public static eqn a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static eqp a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       String $$2 = (String)$$0.getArgument($$1, String.class);
-      eqv $$3 = ((du)$$0.getSource()).l().aK();
-      eqn $$4 = $$3.a($$2);
+      eqx $$3 = ((du)$$0.getSource()).l().aK();
+      eqp $$4 = $$3.a($$2);
       if ($$4 == null) {
          throw b.create($$2);
       } else {
@@ -29,8 +29,8 @@ public class eo implements ArgumentType<String> {
       }
    }
 
-   public static eqn b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
-      eqn $$2 = a($$0, $$1);
+   public static eqp b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+      eqp $$2 = a($$0, $$1);
       if ($$2.c().e()) {
          throw c.create($$2.b());
       } else {

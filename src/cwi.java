@@ -1,76 +1,205 @@
-import java.util.function.Predicate;
+import java.util.Spliterators.AbstractSpliterator;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
+import javax.annotation.Nullable;
 
 public class cwi {
-   private final epr a;
-   private final epr b;
-   private final cwi.a c;
-   private final cwi.b d;
-   private final epw e;
+   private static final int g = 1056;
+   public static final long a = c(1875066, 1875066);
+   public static final cwi b = new cwi(0, 0);
+   private static final long h = 32L;
+   private static final long i = 4294967295L;
+   private static final int j = 5;
+   public static final int c = 32;
+   private static final int k = 31;
+   public static final int d = 31;
+   public final int e;
+   public final int f;
+   private static final int l = 1664525;
+   private static final int m = 1013904223;
+   private static final int n = -559038737;
 
-   public cwi(epr $$0, epr $$1, cwi.a $$2, cwi.b $$3, bow $$4) {
-      this($$0, $$1, $$2, $$3, epw.a($$4));
+   public cwi(int $$0, int $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public cwi(epr $$0, epr $$1, cwi.a $$2, cwi.b $$3, epw $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   public cwi(ib $$0) {
+      this.e = je.a($$0.u());
+      this.f = je.a($$0.w());
    }
 
-   public epr a() {
-      return this.b;
+   public cwi(long $$0) {
+      this.e = (int)$$0;
+      this.f = (int)($$0 >> 32);
    }
 
-   public epr b() {
-      return this.a;
+   public static cwi a(int $$0, int $$1) {
+      return new cwi($$0 << 5, $$1 << 5);
    }
 
-   public eqk a(dmz $$0, cwf $$1, ib $$2) {
-      return this.c.get($$0, $$1, $$2, this.e);
+   public static cwi b(int $$0, int $$1) {
+      return new cwi(($$0 << 5) + 31, ($$1 << 5) + 31);
    }
 
-   public eqk a(ein $$0, cwf $$1, ib $$2) {
-      return this.d.a($$0) ? $$0.d($$1, $$2) : eqh.a();
+   public long a() {
+      return c(this.e, this.f);
    }
 
-   public static enum a implements cwi.c {
-      a(dmy.a::b),
-      b(dmy.a::a),
-      c(dmy.a::c),
-      d(($$0, $$1, $$2, $$3) -> $$0.a(aun.aQ) ? eqh.b() : eqh.a());
+   public static long c(int $$0, int $$1) {
+      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
+   }
 
-      private final cwi.c e;
+   public static long a(ib $$0) {
+      return c(je.a($$0.u()), je.a($$0.w()));
+   }
 
-      private a(cwi.c $$0) {
-         this.e = $$0;
+   public static int a(long $$0) {
+      return (int)($$0 & 4294967295L);
+   }
+
+   public static int b(long $$0) {
+      return (int)($$0 >>> 32 & 4294967295L);
+   }
+
+   @Override
+   public int hashCode() {
+      return d(this.e, this.f);
+   }
+
+   public static int d(int $$0, int $$1) {
+      int $$2 = 1664525 * $$0 + 1013904223;
+      int $$3 = 1664525 * ($$1 ^ -559038737) + 1013904223;
+      return $$2 ^ $$3;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof cwi $$1) ? false : this.e == $$1.e && this.f == $$1.f;
       }
-
-      @Override
-      public eqk get(dmz $$0, cwf $$1, ib $$2, epw $$3) {
-         return this.e.get($$0, $$1, $$2, $$3);
-      }
    }
 
-   public static enum b {
-      a($$0 -> false),
-      b(ein::b),
-      c($$0 -> !$$0.c()),
-      d($$0 -> $$0.a(aus.a));
-
-      private final Predicate<ein> e;
-
-      private b(Predicate<ein> $$0) {
-         this.e = $$0;
-      }
-
-      public boolean a(ein $$0) {
-         return this.e.test($$0);
-      }
+   public int b() {
+      return this.a(8);
    }
 
-   public interface c {
-      eqk get(dmz var1, cwf var2, ib var3, epw var4);
+   public int c() {
+      return this.b(8);
+   }
+
+   public int d() {
+      return je.c(this.e);
+   }
+
+   public int e() {
+      return je.c(this.f);
+   }
+
+   public int f() {
+      return this.a(15);
+   }
+
+   public int g() {
+      return this.b(15);
+   }
+
+   public int h() {
+      return this.e >> 5;
+   }
+
+   public int i() {
+      return this.f >> 5;
+   }
+
+   public int j() {
+      return this.e & 31;
+   }
+
+   public int k() {
+      return this.f & 31;
+   }
+
+   public ib a(int $$0, int $$1, int $$2) {
+      return new ib(this.a($$0), $$1, this.b($$2));
+   }
+
+   public int a(int $$0) {
+      return je.a(this.e, $$0);
+   }
+
+   public int b(int $$0) {
+      return je.a(this.f, $$0);
+   }
+
+   public ib c(int $$0) {
+      return new ib(this.b(), $$0, this.c());
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.e + ", " + this.f + "]";
+   }
+
+   public ib l() {
+      return new ib(this.d(), 0, this.e());
+   }
+
+   public int a(cwi $$0) {
+      return Math.max(Math.abs(this.e - $$0.e), Math.abs(this.f - $$0.f));
+   }
+
+   public int b(cwi $$0) {
+      return this.e($$0.e, $$0.f);
+   }
+
+   public int c(long $$0) {
+      return this.e(a($$0), b($$0));
+   }
+
+   private int e(int $$0, int $$1) {
+      int $$2 = $$0 - this.e;
+      int $$3 = $$1 - this.f;
+      return $$2 * $$2 + $$3 * $$3;
+   }
+
+   public static Stream<cwi> a(cwi $$0, int $$1) {
+      return a(new cwi($$0.e - $$1, $$0.f - $$1), new cwi($$0.e + $$1, $$0.f + $$1));
+   }
+
+   public static Stream<cwi> a(final cwi $$0, final cwi $$1) {
+      int $$2 = Math.abs($$0.e - $$1.e) + 1;
+      int $$3 = Math.abs($$0.f - $$1.f) + 1;
+      final int $$4 = $$0.e < $$1.e ? 1 : -1;
+      final int $$5 = $$0.f < $$1.f ? 1 : -1;
+      return StreamSupport.stream(new AbstractSpliterator<cwi>((long)($$2 * $$3), 64) {
+         @Nullable
+         private cwi e;
+
+         @Override
+         public boolean tryAdvance(Consumer<? super cwi> $$0x) {
+            if (this.e == null) {
+               this.e = $$0;
+            } else {
+               int $$1 = this.e.e;
+               int $$2 = this.e.f;
+               if ($$1 == $$1.e) {
+                  if ($$2 == $$1.f) {
+                     return false;
+                  }
+
+                  this.e = new cwi($$0.e, $$2 + $$5);
+               } else {
+                  this.e = new cwi($$1 + $$4, $$2);
+               }
+            }
+
+            $$0.accept(this.e);
+            return true;
+         }
+      }, false);
    }
 }

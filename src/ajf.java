@@ -26,7 +26,7 @@ public class ajf<T> extends aiz<T> {
       return a($$0, a(new ajf.b() {
          @Override
          public <E> Optional<ajf.a<E>> a(ajg<? extends iy<? extends E>> $$0) {
-            return $$1.a($$0).map($$0x -> (ajf.a<E>)(new ajf.a<>($$0x, $$0x, $$0x.g())));
+            return $$1.a($$0).map(ajf.a::a);
          }
       }));
    }
@@ -36,7 +36,7 @@ public class ajf<T> extends aiz<T> {
    }
 
    public static <T> Dynamic<T> a(Dynamic<T> $$0, in.a $$1) {
-      return new Dynamic(a($$0.getOps(), $$1), $$0.getValue());
+      return new Dynamic($$1.a($$0.getOps()), $$0.getValue());
    }
 
    private ajf(DynamicOps<T> $$0, ajf.b $$1) {
@@ -76,6 +76,9 @@ public class ajf<T> extends aiz<T> {
    }
 
    public static record a<T>(io<T> a, im<T> b, Lifecycle c) {
+      public static <T> ajf.a<T> a(in.b<T> $$0) {
+         return new ajf.a<>($$0, $$0, $$0.g());
+      }
    }
 
    public interface b {

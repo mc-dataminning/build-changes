@@ -1,229 +1,232 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
-import java.util.stream.Stream;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class frc {
-   private static final String cm = "main";
-   private static final Set<frb> cn = Sets.newHashSet();
-   public static final frb a = a("allay");
-   public static final frb b = a("armadillo");
-   public static final frb c = a("armor_stand");
-   public static final frb d = b("armor_stand");
-   public static final frb e = c("armor_stand");
-   public static final frb f = a("axolotl");
-   public static final frb g = a("banner");
-   public static final frb h = a("bat");
-   public static final frb i = a("bed_foot");
-   public static final frb j = a("bed_head");
-   public static final frb k = a("bee");
-   public static final frb l = a("bell");
-   public static final frb m = a("blaze");
-   public static final frb n = a("book");
-   public static final frb o = a("breeze");
-   public static final frb p = a("cat");
-   public static final frb q = a("cat", "collar");
-   public static final frb r = a("camel");
-   public static final frb s = a("cave_spider");
-   public static final frb t = a("chest");
-   public static final frb u = a("chest_minecart");
-   public static final frb v = a("chicken");
-   public static final frb w = a("cod");
-   public static final frb x = a("command_block_minecart");
-   public static final frb y = a("conduit", "cage");
-   public static final frb z = a("conduit", "eye");
-   public static final frb A = a("conduit", "shell");
-   public static final frb B = a("conduit", "wind");
-   public static final frb C = a("cow");
-   public static final frb D = a("creeper");
-   public static final frb E = a("creeper", "armor");
-   public static final frb F = a("creeper_head");
-   public static final frb G = a("decorated_pot_base");
-   public static final frb H = a("decorated_pot_sides");
-   public static final frb I = a("dolphin");
-   public static final frb J = a("donkey");
-   public static final frb K = a("double_chest_left");
-   public static final frb L = a("double_chest_right");
-   public static final frb M = a("dragon_skull");
-   public static final frb N = a("drowned");
-   public static final frb O = b("drowned");
-   public static final frb P = c("drowned");
-   public static final frb Q = a("drowned", "outer");
-   public static final frb R = a("elder_guardian");
-   public static final frb S = a("elytra");
-   public static final frb T = a("enderman");
-   public static final frb U = a("endermite");
-   public static final frb V = a("ender_dragon");
-   public static final frb W = a("end_crystal");
-   public static final frb X = a("evoker");
-   public static final frb Y = a("evoker_fangs");
-   public static final frb Z = a("fox");
-   public static final frb aa = a("frog");
-   public static final frb ab = a("furnace_minecart");
-   public static final frb ac = a("ghast");
-   public static final frb ad = a("giant");
-   public static final frb ae = b("giant");
-   public static final frb af = c("giant");
-   public static final frb ag = a("glow_squid");
-   public static final frb ah = a("goat");
-   public static final frb ai = a("guardian");
-   public static final frb aj = a("hoglin");
-   public static final frb ak = a("hopper_minecart");
-   public static final frb al = a("horse");
-   public static final frb am = a("horse_armor");
-   public static final frb an = a("husk");
-   public static final frb ao = b("husk");
-   public static final frb ap = c("husk");
-   public static final frb aq = a("illusioner");
-   public static final frb ar = a("iron_golem");
-   public static final frb as = a("leash_knot");
-   public static final frb at = a("llama");
-   public static final frb au = a("llama", "decor");
-   public static final frb av = a("llama_spit");
-   public static final frb aw = a("magma_cube");
-   public static final frb ax = a("minecart");
-   public static final frb ay = a("mooshroom");
-   public static final frb az = a("mule");
-   public static final frb aA = a("ocelot");
-   public static final frb aB = a("panda");
-   public static final frb aC = a("parrot");
-   public static final frb aD = a("phantom");
-   public static final frb aE = a("pig");
-   public static final frb aF = a("piglin");
-   public static final frb aG = a("piglin_brute");
-   public static final frb aH = b("piglin_brute");
-   public static final frb aI = c("piglin_brute");
-   public static final frb aJ = a("piglin_head");
-   public static final frb aK = b("piglin");
-   public static final frb aL = c("piglin");
-   public static final frb aM = a("pig", "saddle");
-   public static final frb aN = a("pillager");
-   public static final frb aO = a("player");
-   public static final frb aP = a("player_head");
-   public static final frb aQ = b("player");
-   public static final frb aR = c("player");
-   public static final frb aS = a("player_slim");
-   public static final frb aT = b("player_slim");
-   public static final frb aU = c("player_slim");
-   public static final frb aV = a("spin_attack");
-   public static final frb aW = a("polar_bear");
-   public static final frb aX = a("pufferfish_big");
-   public static final frb aY = a("pufferfish_medium");
-   public static final frb aZ = a("pufferfish_small");
-   public static final frb ba = a("rabbit");
-   public static final frb bb = a("ravager");
-   public static final frb bc = a("salmon");
-   public static final frb bd = a("sheep");
-   public static final frb be = a("sheep", "fur");
-   public static final frb bf = a("shield");
-   public static final frb bg = a("shulker");
-   public static final frb bh = a("shulker_bullet");
-   public static final frb bi = a("silverfish");
-   public static final frb bj = a("skeleton");
-   public static final frb bk = a("skeleton_horse");
-   public static final frb bl = b("skeleton");
-   public static final frb bm = c("skeleton");
-   public static final frb bn = a("skeleton_skull");
-   public static final frb bo = a("slime");
-   public static final frb bp = a("slime", "outer");
-   public static final frb bq = a("sniffer");
-   public static final frb br = a("snow_golem");
-   public static final frb bs = a("spawner_minecart");
-   public static final frb bt = a("spider");
-   public static final frb bu = a("squid");
-   public static final frb bv = a("stray");
-   public static final frb bw = b("stray");
-   public static final frb bx = c("stray");
-   public static final frb by = a("stray", "outer");
-   public static final frb bz = a("strider");
-   public static final frb bA = a("strider", "saddle");
-   public static final frb bB = a("tadpole");
-   public static final frb bC = a("tnt_minecart");
-   public static final frb bD = a("trader_llama");
-   public static final frb bE = a("trident");
-   public static final frb bF = a("tropical_fish_large");
-   public static final frb bG = a("tropical_fish_large", "pattern");
-   public static final frb bH = a("tropical_fish_small");
-   public static final frb bI = a("tropical_fish_small", "pattern");
-   public static final frb bJ = a("turtle");
-   public static final frb bK = a("vex");
-   public static final frb bL = a("villager");
-   public static final frb bM = a("vindicator");
-   public static final frb bN = a("warden");
-   public static final frb bO = a("wandering_trader");
-   public static final frb bP = a("wind_charge");
-   public static final frb bQ = a("witch");
-   public static final frb bR = a("wither");
-   public static final frb bS = a("wither", "armor");
-   public static final frb bT = a("wither_skeleton");
-   public static final frb bU = b("wither_skeleton");
-   public static final frb bV = c("wither_skeleton");
-   public static final frb bW = a("wither_skeleton_skull");
-   public static final frb bX = a("wither_skull");
-   public static final frb bY = a("wolf");
-   public static final frb bZ = a("wolf_armor");
-   public static final frb ca = a("zoglin");
-   public static final frb cb = a("zombie");
-   public static final frb cc = a("zombie_head");
-   public static final frb cd = a("zombie_horse");
-   public static final frb ce = b("zombie");
-   public static final frb cf = c("zombie");
-   public static final frb cg = a("zombie_villager");
-   public static final frb ch = b("zombie_villager");
-   public static final frb ci = c("zombie_villager");
-   public static final frb cj = a("zombified_piglin");
-   public static final frb ck = b("zombified_piglin");
-   public static final frb cl = c("zombified_piglin");
+   private static final frj a = new frj(0.008F);
+   private static final frj b = new frj(1.0F);
+   private static final frj c = new frj(0.5F);
 
-   private static frb a(String $$0) {
-      return a($$0, "main");
-   }
+   public static Map<frd, frl> a() {
+      Builder<frd, frl> $$0 = ImmutableMap.builder();
+      frl $$1 = frl.a(fos.a(frj.a, 0.0F), 64, 64);
+      frl $$2 = frl.a(foq.a(b), 64, 32);
+      frl $$3 = frl.a(foq.a(new frj(1.02F)), 64, 32);
+      frl $$4 = frl.a(foq.a(c), 64, 32);
+      frl $$5 = fpa.b();
+      frl $$6 = fqb.c();
+      frl $$7 = frl.a(fop.a(frj.a), 64, 64);
+      frl $$8 = fot.b();
+      frl $$9 = fnx.c();
+      frl $$10 = frl.a(fpd.a(frj.a), 64, 32);
+      frl $$11 = frl.a(fpj.a(frj.a), 64, 64);
+      frl $$12 = frl.a(fpi.a(), 64, 64);
+      frl $$13 = fqb.b();
+      frl $$14 = foy.a(frj.a);
+      frl $$15 = fqi.b();
+      frl $$16 = foo.c();
+      frl $$17 = fqa.c();
+      frl $$18 = frl.a(fqq.b(), 64, 64);
+      frl $$19 = fqg.b();
+      $$0.put(fre.a, fnb.b());
+      $$0.put(fre.b, fnd.b());
+      $$0.put(fre.c, fng.c());
+      $$0.put(fre.d, fnf.a(c));
+      $$0.put(fre.e, fnf.a(b));
+      $$0.put(fre.f, fnh.c());
+      $$0.put(fre.g, fzn.a());
+      $$0.put(fre.h, fni.b());
+      $$0.put(fre.i, fzp.c());
+      $$0.put(fre.j, fzp.b());
+      $$0.put(fre.k, fnj.c());
+      $$0.put(fre.l, fzq.b());
+      $$0.put(fre.m, fnk.b());
+      $$0.put(fre.n, $$17);
+      $$0.put(fre.o, $$4);
+      $$0.put(fre.p, $$2);
+      $$0.put(fre.q, frl.a(fos.a(new frj(0.2F), 0.0F), 64, 32));
+      $$0.put(fre.r, fnm.a());
+      $$0.put(fre.s, fnn.a(32, 32));
+      $$0.put(fre.t, $$10);
+      $$0.put(fre.u, frl.a(fpd.a(new frj(0.01F)), 64, 32));
+      $$0.put(fre.v, fno.b());
+      $$0.put(fre.w, $$19);
+      $$0.put(fre.x, fzy.b());
+      $$0.put(fre.y, $$5);
+      $$0.put(fre.z, fnt.c());
+      $$0.put(fre.A, fnu.b());
+      $$0.put(fre.B, $$5);
+      $$0.put(fre.D, fzz.b());
+      $$0.put(fre.F, fzz.c());
+      $$0.put(fre.E, fzz.d());
+      $$0.put(fre.C, fzz.e());
+      $$0.put(fre.G, $$9);
+      $$0.put(fre.H, fny.a(frj.a));
+      $$0.put(fre.I, fny.a(new frj(2.0F)));
+      $$0.put(fre.J, $$6);
+      $$0.put(fre.K, gaa.b());
+      $$0.put(fre.L, gaa.c());
+      $$0.put(fre.M, fnz.b());
+      $$0.put(fre.N, fns.c());
+      $$0.put(fre.O, fzy.d());
+      $$0.put(fre.P, fzy.c());
+      $$0.put(fre.Q, fqz.a());
+      $$0.put(fre.R, foa.a(frj.a));
+      $$0.put(fre.S, $$4);
+      $$0.put(fre.T, $$4);
+      $$0.put(fre.U, foa.a(new frj(0.25F)));
+      $$0.put(fre.V, fol.b());
+      $$0.put(fre.W, fob.c());
+      $$0.put(fre.X, foc.c());
+      $$0.put(fre.Y, fod.b());
+      $$0.put(fre.Z, gcw.a());
+      $$0.put(fre.aa, gcv.a());
+      $$0.put(fre.ab, $$8);
+      $$0.put(fre.ac, fof.b());
+      $$0.put(fre.ad, fog.c());
+      $$0.put(fre.ae, foh.b());
+      $$0.put(fre.af, $$5);
+      $$0.put(fre.ag, foi.b());
+      $$0.put(fre.ah, $$1);
+      $$0.put(fre.ai, $$4);
+      $$0.put(fre.aj, $$2);
+      $$0.put(fre.ak, fqh.b());
+      $$0.put(fre.al, fok.c());
+      $$0.put(fre.am, fol.b());
+      $$0.put(fre.an, $$16);
+      $$0.put(fre.ao, $$5);
+      $$0.put(fre.ap, $$7);
+      $$0.put(fre.aq, frl.a(fop.a(new frj(0.1F)), 64, 64));
+      $$0.put(fre.ar, $$1);
+      $$0.put(fre.as, $$4);
+      $$0.put(fre.at, $$2);
+      $$0.put(fre.au, $$8);
+      $$0.put(fre.av, fou.b());
+      $$0.put(fre.aw, fow.b());
+      $$0.put(fre.ax, $$14);
+      $$0.put(fre.ay, foy.a(new frj(0.5F)));
+      $$0.put(fre.az, foz.b());
+      $$0.put(fre.aA, fov.b());
+      $$0.put(fre.aB, $$5);
+      $$0.put(fre.aC, $$9);
+      $$0.put(fre.aD, fns.c());
+      $$0.put(fre.aE, $$10);
+      $$0.put(fre.aF, fpe.c());
+      $$0.put(fre.aG, fpf.b());
+      $$0.put(fre.aH, fpg.b());
+      $$0.put(fre.aI, fph.a(frj.a));
+      $$0.put(fre.aQ, fph.a(new frj(0.5F)));
+      $$0.put(fre.aJ, $$11);
+      $$0.put(fre.aO, $$4);
+      $$0.put(fre.aP, $$3);
+      $$0.put(fre.aK, $$11);
+      $$0.put(fre.aL, $$4);
+      $$0.put(fre.aM, $$3);
+      $$0.put(fre.aN, $$12);
+      $$0.put(fre.aR, $$8);
+      $$0.put(fre.aS, frl.a(fpk.a(frj.a, false), 64, 64));
+      $$0.put(fre.aT, $$13);
+      $$0.put(fre.aU, $$4);
+      $$0.put(fre.aV, $$2);
+      $$0.put(fre.aW, frl.a(fpk.a(frj.a, true), 64, 64));
+      $$0.put(fre.aX, $$4);
+      $$0.put(fre.aY, $$2);
+      $$0.put(fre.aZ, ghu.a());
+      $$0.put(fre.ba, fpl.c());
+      $$0.put(fre.bb, fpm.b());
+      $$0.put(fre.bc, fpn.b());
+      $$0.put(fre.bd, fpo.b());
+      $$0.put(fre.be, fpq.a());
+      $$0.put(fre.bf, fps.b());
+      $$0.put(fre.bg, fpt.b());
+      $$0.put(fre.bh, fpv.c());
+      $$0.put(fre.bi, fpu.c());
+      $$0.put(fre.bj, fpw.a());
+      $$0.put(fre.bk, fpy.a());
+      $$0.put(fre.bl, fpx.b());
+      $$0.put(fre.bm, fpz.b());
+      $$0.put(fre.bn, $$17);
+      $$0.put(fre.bp, $$4);
+      $$0.put(fre.bq, $$2);
+      $$0.put(fre.bo, $$7);
+      $$0.put(fre.br, $$6);
+      $$0.put(fre.bs, fqd.c());
+      $$0.put(fre.bt, fqd.b());
+      $$0.put(fre.bu, fqe.b());
+      $$0.put(fre.bv, fqf.b());
+      $$0.put(fre.bw, $$5);
+      $$0.put(fre.bx, $$19);
+      $$0.put(fre.by, fqh.b());
+      $$0.put(fre.bz, $$17);
+      $$0.put(fre.bA, $$4);
+      $$0.put(fre.bB, $$2);
+      $$0.put(fre.bC, frl.a(fos.a(new frj(0.25F), 0.0F), 64, 32));
+      $$0.put(fre.bD, $$15);
+      $$0.put(fre.bE, $$15);
+      $$0.put(fre.bF, fqj.c());
+      $$0.put(fre.bG, $$5);
+      $$0.put(fre.bH, $$14);
+      $$0.put(fre.bI, fqk.a());
+      $$0.put(fre.bJ, fqm.a(frj.a));
+      $$0.put(fre.bK, fqm.a(a));
+      $$0.put(fre.bL, fql.a(frj.a));
+      $$0.put(fre.bM, fql.a(a));
+      $$0.put(fre.bN, fqn.c());
+      $$0.put(fre.bO, fqo.b());
+      $$0.put(fre.bP, $$18);
+      $$0.put(fre.bQ, $$8);
+      $$0.put(fre.bR, fqr.b());
+      $$0.put(fre.bS, $$18);
+      $$0.put(fre.bT, fqt.b());
+      $$0.put(fre.bU, fqu.c());
+      $$0.put(fre.bV, fqv.a(frj.a));
+      $$0.put(fre.bW, fqv.a(c));
+      $$0.put(fre.cb, ggd.a());
+      $$0.put(fre.bX, $$17);
+      $$0.put(fre.bY, $$4);
+      $$0.put(fre.bZ, $$2);
+      $$0.put(fre.ca, $$6);
+      $$0.put(fre.cc, frl.a(fqw.a(frj.a), 64, 32));
+      $$0.put(fre.cd, frl.a(fqw.a(new frj(0.2F)), 64, 32));
+      $$0.put(fre.ce, $$16);
+      $$0.put(fre.cf, $$1);
+      $$0.put(fre.ci, $$4);
+      $$0.put(fre.cj, $$2);
+      $$0.put(fre.cg, $$13);
+      $$0.put(fre.ch, $$7);
+      $$0.put(fre.ck, fqy.c());
+      $$0.put(fre.cl, fqy.a(c));
+      $$0.put(fre.cm, fqy.a(b));
+      $$0.put(fre.cn, $$11);
+      $$0.put(fre.co, $$4);
+      $$0.put(fre.cp, $$3);
+      frl $$20 = fnl.a();
+      frl $$21 = fnq.e();
+      frl $$22 = fpr.b();
+      frl $$23 = fnr.a();
 
-   private static frb a(String $$0, String $$1) {
-      frb $$2 = b($$0, $$1);
-      if (!cn.add($$2)) {
-         throw new IllegalStateException("Duplicate registration for " + $$2);
-      } else {
-         return $$2;
+      for (ckr.b $$24 : ckr.b.values()) {
+         if ($$24 == ckr.b.i) {
+            $$0.put(fre.c($$24), $$22);
+            $$0.put(fre.d($$24), $$23);
+         } else {
+            $$0.put(fre.c($$24), $$20);
+            $$0.put(fre.d($$24), $$21);
+         }
       }
-   }
 
-   private static frb b(String $$0, String $$1) {
-      return new frb(new ajh("minecraft", $$0), $$1);
-   }
-
-   private static frb b(String $$0) {
-      return a($$0, "inner_armor");
-   }
-
-   private static frb c(String $$0) {
-      return a($$0, "outer_armor");
-   }
-
-   public static frb a(ckp.b $$0) {
-      return b("raft/" + $$0.a(), "main");
-   }
-
-   public static frb b(ckp.b $$0) {
-      return b("chest_raft/" + $$0.a(), "main");
-   }
-
-   public static frb c(ckp.b $$0) {
-      return b("boat/" + $$0.a(), "main");
-   }
-
-   public static frb d(ckp.b $$0) {
-      return b("chest_boat/" + $$0.a(), "main");
-   }
-
-   public static frb a(dom $$0) {
-      return b("sign/" + $$0.b(), "main");
-   }
-
-   public static frb b(dom $$0) {
-      return b("hanging_sign/" + $$0.b(), "main");
-   }
-
-   public static Stream<frb> a() {
-      return cn.stream();
+      frl $$25 = gag.f();
+      doo.a().forEach($$2x -> $$0.put(fre.a($$2x), $$25));
+      frl $$26 = gac.e();
+      doo.a().forEach($$2x -> $$0.put(fre.b($$2x), $$26));
+      ImmutableMap<frd, frl> $$27 = $$0.build();
+      List<frd> $$28 = fre.a().filter($$1x -> !$$27.containsKey($$1x)).collect(Collectors.toList());
+      if (!$$28.isEmpty()) {
+         throw new IllegalStateException("Missing layer definitions: " + $$28);
+      } else {
+         return $$27;
+      }
    }
 }
