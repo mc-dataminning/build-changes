@@ -12,8 +12,8 @@ public class ia<T> {
    }
 
    public T a(T $$0, il.b $$1, il.b $$2) {
-      DynamicOps<Object> $$3 = aiw.a(awa.a, $$1);
-      DynamicOps<Object> $$4 = aiw.a(awa.a, $$2);
+      DynamicOps<Object> $$3 = aiw.a(awb.a, $$1);
+      DynamicOps<Object> $$4 = aiw.a(awb.a, $$2);
       Object $$5 = ac.a(this.a.encodeStart($$3, $$0), $$0x -> new IllegalStateException("Failed to encode: " + $$0x));
       return ac.a(this.a.parse($$4, $$5), $$0x -> new IllegalStateException("Failed to decode: " + $$0x));
    }

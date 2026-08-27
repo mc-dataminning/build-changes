@@ -20,7 +20,7 @@ public class abp implements xx<aag> {
       this.i = $$0.n();
    }
 
-   public abp(dmw $$0) {
+   public abp(dna $$0) {
       this.b = $$0.a();
       this.c = $$0.b();
       this.d = $$0.i();

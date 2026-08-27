@@ -1,60 +1,44 @@
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
+public class fzs implements fze.a {
+   private final exo a;
 
-public abstract class fzs<T extends chn> extends gar<T> {
-   public fzs(gas.a $$0) {
-      super($$0);
+   public fzs(exo $$0) {
+      this.a = $$0;
    }
 
-   public void a(T $$0, float $$1, float $$2, esa $$3, fvl $$4, int $$5) {
-      $$3.a();
-      $$3.a(a.d.rotationDegrees(awh.i($$2, $$0.M, $$0.dC()) - 90.0F));
-      $$3.a(a.f.rotationDegrees(awh.i($$2, $$0.N, $$0.dE())));
-      int $$6 = 0;
-      float $$7 = 0.0F;
-      float $$8 = 0.5F;
-      float $$9 = 0.0F;
-      float $$10 = 0.15625F;
-      float $$11 = 0.0F;
-      float $$12 = 0.15625F;
-      float $$13 = 0.15625F;
-      float $$14 = 0.3125F;
-      float $$15 = 0.05625F;
-      float $$16 = (float)$$0.e - $$2;
-      if ($$16 > 0.0F) {
-         float $$17 = -awh.a($$16 * 3.0F) * $$16;
-         $$3.a(a.f.rotationDegrees($$17));
+   @Override
+   public void a(esh $$0, fvt $$1, double $$2, double $$3, double $$4) {
+      hz $$5 = this.a.s.dm();
+      cvu $$6 = this.a.s.dM();
+
+      for (hz $$7 : hz.a($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
+         egw $$8 = $$6.b_($$7);
+         if ($$8.a(auf.a)) {
+            double $$9 = (double)((float)$$7.v() + $$8.a($$6, $$7));
+            fze.a(
+               $$0,
+               $$1,
+               new enu(
+                     (double)((float)$$7.u() + 0.01F),
+                     (double)((float)$$7.v() + 0.01F),
+                     (double)((float)$$7.w() + 0.01F),
+                     (double)((float)$$7.u() + 0.99F),
+                     $$9,
+                     (double)((float)$$7.w() + 0.99F)
+                  )
+                  .d(-$$2, -$$3, -$$4),
+               0.0F,
+               1.0F,
+               0.0F,
+               0.15F
+            );
+         }
       }
 
-      $$3.a(a.b.rotationDegrees(45.0F));
-      $$3.b(0.05625F, 0.05625F, 0.05625F);
-      $$3.a(-4.0F, 0.0F, 0.0F);
-      ese $$18 = $$4.getBuffer(fvt.d(this.a($$0)));
-      esa.a $$19 = $$3.c();
-      Matrix4f $$20 = $$19.a();
-      Matrix3f $$21 = $$19.b();
-      this.a($$20, $$21, $$18, -7, -2, -2, 0.0F, 0.15625F, -1, 0, 0, $$5);
-      this.a($$20, $$21, $$18, -7, -2, 2, 0.15625F, 0.15625F, -1, 0, 0, $$5);
-      this.a($$20, $$21, $$18, -7, 2, 2, 0.15625F, 0.3125F, -1, 0, 0, $$5);
-      this.a($$20, $$21, $$18, -7, 2, -2, 0.0F, 0.3125F, -1, 0, 0, $$5);
-      this.a($$20, $$21, $$18, -7, 2, -2, 0.0F, 0.15625F, 1, 0, 0, $$5);
-      this.a($$20, $$21, $$18, -7, 2, 2, 0.15625F, 0.15625F, 1, 0, 0, $$5);
-      this.a($$20, $$21, $$18, -7, -2, 2, 0.15625F, 0.3125F, 1, 0, 0, $$5);
-      this.a($$20, $$21, $$18, -7, -2, -2, 0.0F, 0.3125F, 1, 0, 0, $$5);
-
-      for (int $$22 = 0; $$22 < 4; $$22++) {
-         $$3.a(a.b.rotationDegrees(90.0F));
-         this.a($$20, $$21, $$18, -8, -2, 0, 0.0F, 0.0F, 0, 1, 0, $$5);
-         this.a($$20, $$21, $$18, 8, -2, 0, 0.5F, 0.0F, 0, 1, 0, $$5);
-         this.a($$20, $$21, $$18, 8, 2, 0, 0.5F, 0.15625F, 0, 1, 0, $$5);
-         this.a($$20, $$21, $$18, -8, 2, 0, 0.0F, 0.15625F, 0, 1, 0, $$5);
+      for (hz $$10 : hz.a($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
+         egw $$11 = $$6.b_($$10);
+         if ($$11.a(auf.a)) {
+            fze.a($$0, $$1, String.valueOf($$11.e()), (double)$$10.u() + 0.5, (double)((float)$$10.v() + $$11.a($$6, $$10)), (double)$$10.w() + 0.5, -16777216);
+         }
       }
-
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public void a(Matrix4f $$0, Matrix3f $$1, ese $$2, int $$3, int $$4, int $$5, float $$6, float $$7, int $$8, int $$9, int $$10, int $$11) {
-      $$2.a($$0, (float)$$3, (float)$$4, (float)$$5).a(255, 255, 255, 255).a($$6, $$7).c(ggk.d).b($$11).a($$1, (float)$$8, (float)$$10, (float)$$9).e();
    }
 }

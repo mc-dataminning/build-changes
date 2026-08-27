@@ -1,28 +1,15 @@
-public class gax extends gar<cdr> {
-   private final fwf a;
+public class gax extends gcg<cei, fmh<cei>> {
+   private static final aiy a = new aiy("textures/entity/endermite.png");
 
-   public gax(gas.a $$0) {
-      super($$0);
-      this.d = 0.5F;
-      this.a = $$0.c();
+   public gax(gba.a $$0) {
+      super($$0, new fmh<>($$0.a(fpi.U)), 0.3F);
    }
 
-   public void a(cdr $$0, float $$1, float $$2, esa $$3, fvl $$4, int $$5) {
-      dlf $$6 = $$0.u();
-      if ($$6.l() == det.c) {
-         cvn $$7 = $$0.dM();
-         if ($$6 != $$7.a_($$0.dm()) && $$6.l() != det.a) {
-            $$3.a();
-            hz $$8 = hz.a($$0.dr(), $$0.cH().e, $$0.dx());
-            $$3.a(-0.5, 0.0, -0.5);
-            this.a.b().a($$7, this.a.a($$6), $$6, $$8, $$3, $$4.getBuffer(fvg.b($$6)), false, awo.a(), $$6.a($$0.q()), ggk.d);
-            $$3.b();
-            super.a($$0, $$1, $$2, $$3, $$4, $$5);
-         }
-      }
+   protected float a(cei $$0) {
+      return 180.0F;
    }
 
-   public aiy a(cdr $$0) {
-      return ggs.e;
+   public aiy b(cei $$0) {
+      return a;
    }
 }

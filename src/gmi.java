@@ -1,65 +1,53 @@
-public class gmi implements gmo {
-   private static final int a = 1200;
-   private static final vq b = vq.c("tutorial.craft_planks.title");
-   private static final vq c = vq.c("tutorial.craft_planks.description");
-   private final gmn d;
-   private fbs e;
-   private int f;
+import it.unimi.dsi.fastutil.longs.LongArrayList;
+import it.unimi.dsi.fastutil.longs.LongList;
 
-   public gmi(gmn $$0) {
-      this.d = $$0;
+public final class gmi extends gmg {
+   private static final long a = a(Runtime.getRuntime().maxMemory());
+   private final LongList b = new LongArrayList();
+   private final LongList c = new LongArrayList();
+   private final LongList d = new LongArrayList();
+
+   @Override
+   public void a(gma $$0) {
+      if (exo.P().B()) {
+         super.a($$0);
+      }
+   }
+
+   private void g() {
+      this.b.clear();
+      this.c.clear();
+      this.d.clear();
    }
 
    @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(gmp.f);
-      } else {
-         if (this.f == 1) {
-            fun $$0 = this.d.e().s;
-            if ($$0 != null) {
-               if ($$0.fT().a(auh.b)) {
-                  this.d.a(gmp.f);
-                  return;
-               }
+   public void f() {
+      this.b.add((long)exo.P().n());
+      this.h();
+      this.c.add(exo.P().o());
+   }
 
-               if (a($$0, auh.b)) {
-                  this.d.a(gmp.f);
-                  return;
-               }
-            }
-         }
-
-         if (this.f >= 1200 && this.e == null) {
-            this.e = new fbs(fbs.a.e, b, c, false);
-            this.d.e().ay().a(this.e);
-         }
-      }
+   private void h() {
+      long $$0 = Runtime.getRuntime().totalMemory();
+      long $$1 = Runtime.getRuntime().freeMemory();
+      long $$2 = $$0 - $$1;
+      this.d.add(a($$2));
    }
 
    @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.c();
-         this.e = null;
-      }
+   public void b(gma $$0) {
+      $$0.send(gmb.c, $$0x -> {
+         $$0x.a(gmd.r, new LongArrayList(this.b));
+         $$0x.a(gmd.s, new LongArrayList(this.c));
+         $$0x.a(gmd.t, new LongArrayList(this.d));
+         $$0x.a(gmd.u, this.e());
+         $$0x.a(gmd.v, exo.P().m.aA());
+         $$0x.a(gmd.w, (int)a);
+      });
+      this.g();
    }
 
-   @Override
-   public void a(coz $$0) {
-      if ($$0.a(auh.b)) {
-         this.d.a(gmp.f);
-      }
-   }
-
-   public static boolean a(fun $$0, auo<cou> $$1) {
-      for (ij<cou> $$2 : kf.h.c($$1)) {
-         if ($$0.j().a(atu.b.b($$2.a())) > 0) {
-            return true;
-         }
-      }
-
-      return false;
+   private static long a(long $$0) {
+      return $$0 / 1000L;
    }
 }

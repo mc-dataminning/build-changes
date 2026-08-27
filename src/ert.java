@@ -1,90 +1,40 @@
 import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Optional;
-import javax.annotation.Nullable;
-import org.lwjgl.opengl.ARBTimerQuery;
-import org.lwjgl.opengl.GL;
-import org.lwjgl.opengl.GL32C;
+import java.io.IOException;
+import java.io.InputStream;
 
-public class ert {
-   private int a;
+public class ert extends erv {
+   private static final ero a = new ero() {
+      @Override
+      public String a(boolean $$0, String $$1) {
+         return "#error Import statement not supported";
+      }
+   };
+   private int b;
 
-   public static Optional<ert> a() {
-      return ert.b.a;
+   private ert(erv.a $$0, int $$1, String $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public void b() {
+   public void a(ers $$0) {
       RenderSystem.assertOnRenderThread();
-      if (this.a != 0) {
-         throw new IllegalStateException("Current profile not ended");
-      } else {
-         this.a = GL32C.glGenQueries();
-         GL32C.glBeginQuery(35007, this.a);
-      }
+      this.b++;
+      this.a($$0);
    }
 
-   public ert.a c() {
+   @Override
+   public void a() {
       RenderSystem.assertOnRenderThread();
-      if (this.a == 0) {
-         throw new IllegalStateException("endProfile called before beginProfile");
-      } else {
-         GL32C.glEndQuery(35007);
-         ert.a $$0 = new ert.a(this.a);
-         this.a = 0;
-         return $$0;
+      this.b--;
+      if (this.b <= 0) {
+         super.a();
       }
    }
 
-   public static class a {
-      private static final long a = 0L;
-      private static final long b = -1L;
-      private final int c;
-      private long d;
-
-      a(int $$0) {
-         this.c = $$0;
-      }
-
-      public void a() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d == 0L) {
-            this.d = -1L;
-            GL32C.glDeleteQueries(this.c);
-         }
-      }
-
-      public boolean b() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d != 0L) {
-            return true;
-         } else if (1 == GL32C.glGetQueryObjecti(this.c, 34919)) {
-            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
-            GL32C.glDeleteQueries(this.c);
-            return true;
-         } else {
-            return false;
-         }
-      }
-
-      public long c() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d == 0L) {
-            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
-            GL32C.glDeleteQueries(this.c);
-         }
-
-         return this.d;
-      }
-   }
-
-   static class b {
-      static final Optional<ert> a = Optional.ofNullable(a());
-
-      private b() {
-      }
-
-      @Nullable
-      private static ert a() {
-         return !GL.getCapabilities().GL_ARB_timer_query ? null : new ert();
-      }
+   public static ert a(erv.a $$0, String $$1, InputStream $$2, String $$3) throws IOException {
+      RenderSystem.assertOnRenderThread();
+      int $$4 = b($$0, $$1, $$2, $$3, a);
+      ert $$5 = new ert($$0, $$4, $$1);
+      $$0.c().put($$1, $$5);
+      return $$5;
    }
 }

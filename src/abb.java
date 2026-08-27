@@ -4,13 +4,13 @@ public class abb implements xx<aag> {
    public static final xo<vb, abb> a = xx.a(abb::a, abb::new);
    private final int b;
    private final int c;
-   private final List<coz> d;
-   private final coz e;
+   private final List<cpd> d;
+   private final cpd e;
 
-   public abb(int $$0, int $$1, is<coz> $$2, coz $$3) {
+   public abb(int $$0, int $$1, is<cpd> $$2, cpd $$3) {
       this.b = $$0;
       this.c = $$1;
-      this.d = is.a($$2.size(), coz.h);
+      this.d = is.a($$2.size(), cpd.h);
 
       for (int $$4 = 0; $$4 < $$2.size(); $$4++) {
          this.d.set($$4, $$2.get($$4).q());
@@ -22,15 +22,15 @@ public class abb implements xx<aag> {
    private abb(vb $$0) {
       this.b = $$0.readUnsignedByte();
       this.c = $$0.n();
-      this.d = coz.g.decode($$0);
-      this.e = coz.f.decode($$0);
+      this.d = cpd.g.decode($$0);
+      this.e = cpd.f.decode($$0);
    }
 
    private void a(vb $$0) {
       $$0.k(this.b);
       $$0.c(this.c);
-      coz.g.encode($$0, this.d);
-      coz.f.encode($$0, this.e);
+      cpd.g.encode($$0, this.d);
+      cpd.f.encode($$0, this.e);
    }
 
    @Override
@@ -46,11 +46,11 @@ public class abb implements xx<aag> {
       return this.b;
    }
 
-   public List<coz> e() {
+   public List<cpd> e() {
       return this.d;
    }
 
-   public coz f() {
+   public cpd f() {
       return this.e;
    }
 

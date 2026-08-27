@@ -1,7 +1,7 @@
 public interface dq {
    <T> il<T> a(aix<? extends iv<T>> var1);
 
-   static dq a(final il.b $$0, final cjs $$1) {
+   static dq a(final il.b $$0, final cjw $$1) {
       return new dq() {
          @Override
          public <T> il<T> a(aix<? extends iv<T>> $$0x) {
@@ -10,7 +10,7 @@ public interface dq {
       };
    }
 
-   static dq.a a(final iw $$0, final cjs $$1) {
+   static dq.a a(final iw $$0, final cjw $$1) {
       return new dq.a() {
          dq.b c = dq.b.b;
 

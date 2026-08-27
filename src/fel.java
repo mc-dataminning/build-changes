@@ -1,82 +1,49 @@
-import javax.annotation.Nullable;
+public class fel extends ffl {
+   private static final aiy a = new aiy("textures/gui/demo_background.png");
+   private fah b = fah.a;
+   private fah c = fah.a;
 
-public class fel extends ffe {
-   private static final int a = 80;
-   private static final int b = 120;
-   private static final int c = 360;
-   @Nullable
-   private final vq k;
-   private final vq l;
-   private final Runnable m;
-   @Nullable
-   private faa n;
-   private ezh o;
-   private int p;
-
-   public static fel a(vq $$0, vq $$1, Runnable $$2) {
-      return new fel($$0, null, $$1, $$2, 0);
-   }
-
-   public static fel a(vq $$0, vq $$1, vq $$2, Runnable $$3) {
-      return new fel($$0, $$1, $$2, $$3, 20);
-   }
-
-   protected fel(vq $$0, @Nullable vq $$1, vq $$2, Runnable $$3, int $$4) {
-      super($$0);
-      this.k = $$1;
-      this.l = $$2;
-      this.m = $$3;
-      this.p = $$4;
+   public fel() {
+      super(vq.c("demo.help.title"));
    }
 
    @Override
    protected void aQ_() {
-      super.aQ_();
-      if (this.k != null) {
-         this.n = faa.a(this.i, this.k, 360);
-      }
-
-      int $$0 = 150;
-      int $$1 = 20;
-      int $$2 = this.n != null ? this.n.a() : 1;
-      int $$3 = Math.max($$2, 5) * 9;
-      int $$4 = Math.min(120 + $$3, this.h - 40);
-      this.o = this.d(ezh.a(this.l, $$0x -> this.d()).a((this.g - 150) / 2, $$4, 150, 20).a());
+      int $$0 = -16;
+      this.c(ezo.a(vq.c("demo.help.buy"), $$0x -> {
+         $$0x.j = false;
+         ac.j().a("https://aka.ms/BuyMinecraftJava");
+      }).a(this.g / 2 - 116, this.h / 2 + 62 + -16, 114, 20).a());
+      this.c(ezo.a(vq.c("demo.help.later"), $$0x -> {
+         this.f.a(null);
+         this.f.n.i();
+      }).a(this.g / 2 + 2, this.h / 2 + 62 + -16, 114, 20).a());
+      exs $$1 = this.f.m;
+      this.b = fah.a(
+         this.i,
+         vq.a("demo.help.movementShort", $$1.x.k(), $$1.y.k(), $$1.z.k(), $$1.A.k()),
+         vq.c("demo.help.movementMouse"),
+         vq.a("demo.help.jump", $$1.B.k()),
+         vq.a("demo.help.inventory", $$1.E.k())
+      );
+      this.c = fah.a(this.i, vq.c("demo.help.fullWrapped"), 218);
    }
 
    @Override
-   public void e() {
-      if (this.p > 0) {
-         this.p--;
-      }
-
-      this.o.j = this.p == 0;
+   public void b(ezb $$0, int $$1, int $$2, float $$3) {
+      super.b($$0, $$1, $$2, $$3);
+      int $$4 = (this.g - 248) / 2;
+      int $$5 = (this.h - 166) / 2;
+      $$0.a(a, $$4, $$5, 0, 0, 248, 166);
    }
 
    @Override
-   public void a(eyu $$0, int $$1, int $$2, float $$3) {
+   public void a(ezb $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 80, 16777215);
-      if (this.n == null) {
-         String $$4 = fep.a(ac.b());
-         $$0.a(this.i, $$4, this.g / 2, 120, 10526880);
-      } else {
-         this.n.a($$0, this.g / 2, 120);
-      }
-   }
-
-   @Override
-   public boolean aO_() {
-      return this.n != null && this.o.j;
-   }
-
-   @Override
-   public void d() {
-      this.m.run();
-   }
-
-   @Override
-   public vq i() {
-      return vp.a(this.e, this.k != null ? this.k : vp.a);
+      int $$4 = (this.g - 248) / 2 + 10;
+      int $$5 = (this.h - 166) / 2 + 8;
+      $$0.a(this.i, this.e, $$4, $$5, 2039583, false);
+      $$5 = this.b.c($$0, $$4, $$5 + 12, 12, 5197647);
+      this.c.c($$0, $$4, $$5 + 20, 9, 2039583);
    }
 }

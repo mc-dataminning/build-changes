@@ -1,24 +1,25 @@
-public class fid extends fih {
-   private static final vq b = vq.c("title.32bit.deprecation.realms.header").a(n.r);
-   private static final vq c = vq.c("title.32bit.deprecation.realms");
-   private static final vq k = vq.c("title.32bit.deprecation.realms.check");
-   private static final vq l = b.f().f("\n").b(c);
-   private final ffe m;
+import org.joml.Matrix4f;
 
-   public fid(ffe $$0) {
-      super(b, c, k, l);
-      this.m = $$0;
+public interface fid {
+   static fid a(avu $$0) {
+      return new fic($$0);
    }
 
-   @Override
-   protected void a(int $$0) {
-      this.d(ezh.a(vp.d, $$0x -> {
-         if (this.a.a()) {
-            this.f.m.w = true;
-            this.f.m.as();
-         }
+   static fid a(cmi $$0) {
+      if ($$0 instanceof cmh) {
+         return new fib((cmh)$$0);
+      } else {
+         throw new IllegalArgumentException("Unknown TooltipComponent");
+      }
+   }
 
-         this.f.a(this.m);
-      }).a(this.g / 2 - 75, 100 + $$0, 150, 20).a());
+   int a();
+
+   int a(eyz var1);
+
+   default void a(eyz $$0, int $$1, int $$2, Matrix4f $$3, fvt.a $$4) {
+   }
+
+   default void a(eyz $$0, int $$1, int $$2, ezb $$3) {
    }
 }

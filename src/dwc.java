@@ -1,21 +1,32 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dwc extends dvo {
-   public static final Codec<dwc> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dxx.a.fieldOf("state_provider").forGetter($$0x -> $$0x.b),
-               avp.j.fieldOf("spread_width").forGetter($$0x -> $$0x.d),
-               avp.j.fieldOf("spread_height").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, dwc::new)
+public class dwc implements dwd {
+   public static final Codec<dwc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(hz.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, dwc::new)
    );
-   public final int d;
-   public final int e;
+   private final Optional<hz> b;
+   private final boolean c;
 
-   public dwc(dxx $$0, int $$1, int $$2) {
-      super($$0);
-      this.d = $$1;
-      this.e = $$2;
+   private dwc(Optional<hz> $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   public static dwc a(hz $$0, boolean $$1) {
+      return new dwc(Optional.of($$0), $$1);
+   }
+
+   public static dwc a() {
+      return new dwc(Optional.empty(), false);
+   }
+
+   public Optional<hz> b() {
+      return this.b;
+   }
+
+   public boolean c() {
+      return this.c;
    }
 }

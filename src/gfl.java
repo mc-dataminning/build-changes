@@ -1,13 +1,48 @@
-public class gfl<T extends boi & cer, M extends fmb<T>> extends gfd<T, M> {
-   private static final aiy a = new aiy("textures/entity/skeleton/stray_overlay.png");
-   private final fnw<T> b;
+public abstract class gfl<T extends bnq, M extends fmi<T>> {
+   private final gcv<T, M> a;
 
-   public gfl(gcn<T, M> $$0, foy $$1) {
-      super($$0);
-      this.b = new fnw<>($$1.a(fpb.by));
+   public gfl(gcv<T, M> $$0) {
+      this.a = $$0;
    }
 
-   public void a(esa $$0, fvl $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, 1.0F, 1.0F, 1.0F);
+   protected static <T extends boi> void a(
+      fmi<T> $$0,
+      fmi<T> $$1,
+      aiy $$2,
+      esh $$3,
+      fvt $$4,
+      int $$5,
+      T $$6,
+      float $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15
+   ) {
+      if (!$$6.ce()) {
+         $$0.a($$1);
+         $$1.a($$6, $$7, $$8, $$12);
+         $$1.a($$6, $$7, $$8, $$9, $$10, $$11);
+         a($$1, $$2, $$3, $$4, $$5, $$6, $$13, $$14, $$15);
+      }
    }
+
+   protected static <T extends boi> void a(fmi<T> $$0, aiy $$1, esh $$2, fvt $$3, int $$4, T $$5, float $$6, float $$7, float $$8) {
+      esl $$9 = $$3.getBuffer(fwb.e($$1));
+      $$0.a($$2, $$9, $$4, gcb.c($$5, 0.0F), $$6, $$7, $$8, 1.0F);
+   }
+
+   public M c() {
+      return this.a.a();
+   }
+
+   protected aiy a(T $$0) {
+      return this.a.a($$0);
+   }
+
+   public abstract void a(esh var1, fvt var2, int var3, T var4, float var5, float var6, float var7, float var8, float var9, float var10);
 }

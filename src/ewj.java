@@ -1,31 +1,48 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class ewj extends ewh {
+public class ewj extends ewo {
    private static final Logger b = LogUtils.getLogger();
-   private static final vq c = vq.c("mco.create.world.wait");
-   private final String d;
-   private final String e;
-   private final long f;
+   private static final vq c = vq.c("mco.configure.world.closing");
+   private final eto d;
+   private final eux e;
 
-   public ewj(long $$0, String $$1, String $$2) {
-      this.f = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public ewj(eto $$0, eux $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
    @Override
    public void run() {
-      esq $$0 = esq.a();
+      esx $$0 = esx.a();
 
-      try {
-         $$0.a(this.f, this.d, this.e);
-      } catch (eud var3) {
-         b.error("Couldn't create world", var3);
-         this.a(var3);
-      } catch (Exception var4) {
-         b.error("Could not create world", var4);
-         this.a(var4);
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         if (this.d()) {
+            return;
+         }
+
+         try {
+            boolean $$2 = $$0.g(this.d.a);
+            if ($$2) {
+               this.e.b();
+               this.d.e = eto.c.a;
+               a(this.e);
+               break;
+            }
+         } catch (eul var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Failed to close server", var5);
+            this.a(var5);
+         }
       }
    }
 

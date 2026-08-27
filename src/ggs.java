@@ -1,156 +1,59 @@
-import com.mojang.blaze3d.platform.TextureUtil;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.Writer;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ggs extends gge implements ggf, ggv {
-   private static final Logger g = LogUtils.getLogger();
-   @Deprecated
-   public static final aiy e = clc.v;
-   @Deprecated
-   public static final aiy f = new aiy("textures/atlas/particles.png");
-   private List<ggn> h = List.of();
-   private List<ggt.a> i = List.of();
-   private Map<aiy, ggt> j = Map.of();
-   @Nullable
-   private ggt k;
-   private final aiy l;
-   private final int m;
-   private int n;
-   private int o;
-   private int p;
+public class ggs implements AutoCloseable {
+   private static final int e = 16;
+   public static final int a = 0;
+   public static final int b = 3;
+   public static final int c = 10;
+   public static final int d = a(0, 10);
+   private final ggo f = new ggo(16, 16, false);
 
-   public ggs(aiy $$0) {
-      this.l = $$0;
-      this.m = RenderSystem.maxSupportedTextureSize();
-   }
+   public ggs() {
+      eri $$0 = this.f.e();
 
-   @Override
-   public void a(asa $$0) {
-   }
-
-   public void a(ggo.a $$0) {
-      g.info("Created: {}x{}x{} {}-atlas", new Object[]{$$0.b(), $$0.c(), $$0.d(), this.l});
-      TextureUtil.prepareImage(this.a(), $$0.d(), $$0.b(), $$0.c());
-      this.n = $$0.b();
-      this.o = $$0.c();
-      this.p = $$0.d();
-      this.f();
-      this.j = Map.copyOf($$0.f());
-      this.k = this.j.get(ggj.b());
-      if (this.k == null) {
-         throw new IllegalStateException("Atlas '" + this.l + "' (" + this.j.size() + " sprites) has no missing texture sprite");
-      } else {
-         List<ggn> $$1 = new ArrayList<>();
-         List<ggt.a> $$2 = new ArrayList<>();
-
-         for (ggt $$3 : $$0.f().values()) {
-            $$1.add($$3.e());
-
-            try {
-               $$3.j();
-            } catch (Throwable var9) {
-               o $$5 = o.a(var9, "Stitching texture atlas");
-               p $$6 = $$5.a("Texture being stitched together");
-               $$6.a("Atlas path", this.l);
-               $$6.a("Sprite", $$3);
-               throw new y($$5);
-            }
-
-            ggt.a $$7 = $$3.f();
-            if ($$7 != null) {
-               $$2.add($$7);
+      for (int $$1 = 0; $$1 < 16; $$1++) {
+         for (int $$2 = 0; $$2 < 16; $$2++) {
+            if ($$1 < 8) {
+               $$0.a($$2, $$1, -1308622593);
+            } else {
+               int $$3 = (int)((1.0F - (float)$$2 / 15.0F * 0.75F) * 255.0F);
+               $$0.a($$2, $$1, $$3 << 24 | 16777215);
             }
          }
-
-         this.h = List.copyOf($$1);
-         this.i = List.copyOf($$2);
       }
+
+      RenderSystem.activeTexture(33985);
+      this.f.c();
+      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), false, true, false, false);
+      RenderSystem.activeTexture(33984);
    }
 
    @Override
-   public void a(aiy $$0, Path $$1) throws IOException {
-      String $$2 = $$0.c();
-      TextureUtil.writeAsPNG($$1, $$2, this.a(), this.p, this.n, this.o);
-      a($$1, $$2, this.j);
+   public void close() {
+      this.f.close();
    }
 
-   private static void a(Path $$0, String $$1, Map<aiy, ggt> $$2) {
-      Path $$3 = $$0.resolve($$1 + ".txt");
-
-      try (Writer $$4 = Files.newBufferedWriter($$3)) {
-         for (Entry<aiy, ggt> $$5 : $$2.entrySet().stream().sorted(Entry.comparingByKey()).toList()) {
-            ggt $$6 = $$5.getValue();
-            $$4.write(String.format(Locale.ROOT, "%s\tx=%d\ty=%d\tw=%d\th=%d%n", $$5.getKey(), $$6.a(), $$6.b(), $$6.e().a(), $$6.e().b()));
-         }
-      } catch (IOException var10) {
-         g.warn("Failed to write file {}", $$3, var10);
-      }
+   public void a() {
+      RenderSystem.setupOverlayColor(this.f::a, 16);
    }
 
-   @Override
-   public void d() {
-      this.c();
-
-      for (ggt.a $$0 : this.i) {
-         $$0.a();
-      }
+   public static int a(float $$0) {
+      return (int)($$0 * 15.0F);
    }
 
-   @Override
-   public void e() {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(this::d);
-      } else {
-         this.d();
-      }
+   public static int a(boolean $$0) {
+      return $$0 ? 3 : 10;
    }
 
-   public ggt a(aiy $$0) {
-      ggt $$1 = this.j.getOrDefault($$0, this.k);
-      if ($$1 == null) {
-         throw new IllegalStateException("Tried to lookup sprite, but atlas is not initialized");
-      } else {
-         return $$1;
-      }
+   public static int a(int $$0, int $$1) {
+      return $$0 | $$1 << 16;
    }
 
-   public void f() {
-      this.h.forEach(ggn::close);
-      this.i.forEach(ggt.a::close);
-      this.h = List.of();
-      this.i = List.of();
-      this.j = Map.of();
-      this.k = null;
+   public static int a(float $$0, boolean $$1) {
+      return a(a($$0), a($$1));
    }
 
-   public aiy g() {
-      return this.l;
-   }
-
-   public int h() {
-      return this.m;
-   }
-
-   int i() {
-      return this.n;
-   }
-
-   int j() {
-      return this.o;
-   }
-
-   public void b(ggo.a $$0) {
-      this.a(false, $$0.d() > 0);
+   public void b() {
+      RenderSystem.teardownOverlayColor();
    }
 }

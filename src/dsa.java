@@ -1,22 +1,25 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dsa extends dsg {
-   final auo<cyo> a;
-   public static final Codec<dsa> e = RecordCodecBuilder.create($$0 -> a($$0).and(auo.a(kg.f).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, dsa::new));
+class dsa extends dse {
+   public static final Codec<dsa> a = a(dsa::new);
 
-   protected dsa(jd $$0, auo<cyo> $$1) {
+   public dsa(List<dsc> $$0) {
       super($$0);
-      this.a = $$1;
+   }
+
+   public boolean a(cwm $$0, hz $$1) {
+      for (dsc $$2 : this.e) {
+         if (!$$2.test($$0, $$1)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
    @Override
-   protected boolean a(dlf $$0) {
-      return $$0.a(this.a);
-   }
-
-   @Override
-   public drw<?> a() {
-      return drw.b;
+   public dsd<?> a() {
+      return dsd.j;
    }
 }

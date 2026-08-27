@@ -1,24 +1,73 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class dur extends dts<dwi> {
+public class dur extends dtz<dwi> {
    public dur(Codec<dwi> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dtu<dwi> $$0) {
-      dwi $$1 = $$0.f();
-      awo $$2 = $$0.d();
-      cwi $$3 = $$0.b();
-      dnc $$4 = $$0.c();
-      hz $$5 = $$0.e();
+   public boolean a(dub<dwi> $$0) {
+      cwm $$1 = $$0.b();
+      hz $$2 = $$0.e();
+      awp $$3 = $$0.d();
+      dwi $$4 = $$0.f();
+      if (!c($$1.a_($$2))) {
+         return false;
+      } else {
+         List<ie> $$5 = $$4.a($$3);
+         if (a($$1, $$2, $$1.a_($$2), $$4, $$3, $$5)) {
+            return true;
+         } else {
+            hz.a $$6 = $$2.j();
 
-      for (dvm $$6 : $$1.b) {
-         if ($$2.i() < $$6.c) {
-            return $$6.a($$3, $$4, $$2, $$5);
+            for (ie $$7 : $$5) {
+               $$6.g($$2);
+               List<ie> $$8 = $$4.a($$3, $$7.g());
+
+               for (int $$9 = 0; $$9 < $$4.c; $$9++) {
+                  $$6.a($$2, $$7);
+                  dlj $$10 = $$1.a_($$6);
+                  if (!c($$10) && !$$10.a($$4.b)) {
+                     break;
+                  }
+
+                  if (a($$1, $$6, $$10, $$4, $$3, $$8)) {
+                     return true;
+                  }
+               }
+            }
+
+            return false;
+         }
+      }
+   }
+
+   public static boolean a(cwm $$0, hz $$1, dlj $$2, dwi $$3, awp $$4, List<ie> $$5) {
+      hz.a $$6 = $$1.j();
+
+      for (ie $$7 : $$5) {
+         dlj $$8 = $$0.a_($$6.a($$1, $$7));
+         if ($$8.a($$3.h)) {
+            dlj $$9 = $$3.b.c($$2, $$0, $$1, $$7);
+            if ($$9 == null) {
+               return false;
+            }
+
+            $$0.a($$1, $$9, 3);
+            $$0.y($$1).e($$1);
+            if ($$4.i() < $$3.g) {
+               $$3.b.c().a($$9, $$0, $$1, $$7, $$4, true);
+            }
+
+            return true;
          }
       }
 
-      return $$1.c.a().a($$3, $$4, $$2, $$5);
+      return false;
+   }
+
+   private static boolean c(dlj $$0) {
+      return $$0.i() || $$0.a(cyu.G);
    }
 }

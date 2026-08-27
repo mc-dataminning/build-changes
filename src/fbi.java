@@ -1,26 +1,36 @@
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class fbi implements fbj {
-   private final vq b;
-   protected final fcs a = new fcs();
-
-   public fbi(vq $$0) {
-      this.b = $$0;
-   }
+public abstract class fbi implements fbj {
+   @Nullable
+   private fbk a;
+   private boolean b;
 
    @Override
-   public vq a() {
+   public final boolean aJ_() {
       return this.b;
    }
 
    @Override
-   public void a(Consumer<ezf> $$0) {
-      this.a.a($$0);
+   public final void b(boolean $$0) {
+      this.b = $$0;
+   }
+
+   @Nullable
+   @Override
+   public fbk aK_() {
+      return this.a;
    }
 
    @Override
-   public void a(fdm $$0) {
-      this.a.a();
-      fcr.a(this.a, $$0, 0.5F, 0.16666667F);
+   public void a(@Nullable fbk $$0) {
+      if (this.a != null) {
+         this.a.a(false);
+      }
+
+      if ($$0 != null) {
+         $$0.a(true);
+      }
+
+      this.a = $$0;
    }
 }

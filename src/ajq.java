@@ -1,6 +1,6 @@
 import net.minecraft.server.MinecraftServer;
 
-public class ajq extends bmf {
+public class ajq extends bmh {
    private long g = 0L;
    private long h = 0L;
    private long i = 0L;
@@ -23,11 +23,11 @@ public class ajq extends bmf {
    }
 
    private void n() {
-      this.l.ae().a(aeh.a(this));
+      this.l.ag().a(aeh.a(this));
    }
 
    private void o() {
-      this.l.ae().a(aei.a(this));
+      this.l.ag().a(aei.a(this));
    }
 
    public boolean a(int $$0) {
@@ -76,10 +76,10 @@ public class ajq extends bmf {
       String $$3 = String.format("%.2f", $$0 == 0L ? (double)this.g() : $$1 / (double)$$0);
       this.j = 0L;
       this.i = 0L;
-      this.l.aF().a(() -> vq.a("commands.tick.sprint.report", $$2, $$3), true);
+      this.l.aH().a(() -> vq.a("commands.tick.sprint.report", $$2, $$3), true);
       this.g = 0L;
       this.a(this.k);
-      this.l.B();
+      this.l.C();
    }
 
    public boolean d() {
@@ -102,11 +102,11 @@ public class ajq extends bmf {
    @Override
    public void a(float $$0) {
       super.a($$0);
-      this.l.B();
+      this.l.C();
       this.n();
    }
 
-   public void a(aow $$0) {
+   public void a(aox $$0) {
       $$0.d.b(aeh.a(this));
       $$0.d.b(aei.a(this));
    }

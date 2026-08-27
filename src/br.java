@@ -20,28 +20,28 @@ public record br(
    Optional<br> n,
    Optional<String> o
 ) {
-   public static final Codec<br> a = avp.a(
+   public static final Codec<br> a = avq.a(
       "EntityPredicate",
       $$0 -> RecordCodecBuilder.create(
             $$1 -> $$1.group(
-                     avp.a(bt.a, "type").forGetter(br::a),
-                     avp.a(bi.a, "distance").forGetter(br::b),
-                     avp.a(ck.a, "location").forGetter(br::c),
-                     avp.a(ck.a, "stepping_on").forGetter(br::d),
-                     avp.a(cn.a, "effects").forGetter(br::e),
-                     avp.a(co.a, "nbt").forGetter(br::f),
-                     avp.a(bp.a, "flags").forGetter(br::g),
-                     avp.a(bo.a, "equipment").forGetter(br::h),
-                     avp.a(bs.a, "type_specific").forGetter(br::i),
-                     avp.a($$0, "vehicle").forGetter(br::j),
-                     avp.a($$0, "passenger").forGetter(br::k),
-                     avp.a($$0, "targeted_entity").forGetter(br::l),
-                     avp.a(Codec.STRING, "team").forGetter(br::m)
+                     avq.a(bt.a, "type").forGetter(br::a),
+                     avq.a(bi.a, "distance").forGetter(br::b),
+                     avq.a(ck.a, "location").forGetter(br::c),
+                     avq.a(ck.a, "stepping_on").forGetter(br::d),
+                     avq.a(cn.a, "effects").forGetter(br::e),
+                     avq.a(co.a, "nbt").forGetter(br::f),
+                     avq.a(bp.a, "flags").forGetter(br::g),
+                     avq.a(bo.a, "equipment").forGetter(br::h),
+                     avq.a(bs.a, "type_specific").forGetter(br::i),
+                     avq.a($$0, "vehicle").forGetter(br::j),
+                     avq.a($$0, "passenger").forGetter(br::k),
+                     avq.a($$0, "targeted_entity").forGetter(br::l),
+                     avq.a(Codec.STRING, "team").forGetter(br::m)
                   )
                   .apply($$1, br::new)
          )
    );
-   public static final Codec<bc> b = avp.a(bc.a, a, br::a);
+   public static final Codec<bc> b = avq.a(bc.a, a, br::a);
 
    public static bc a(br.a $$0) {
       return a($$0.b());
@@ -56,15 +56,15 @@ public record br(
    }
 
    public static bc a(br $$0) {
-      elu $$1 = elx.a(eiv.b.a, $$0).build();
+      emb $$1 = eme.a(ejc.b.a, $$0).build();
       return new bc(List.of($$1));
    }
 
-   public boolean a(aow $$0, @Nullable bno $$1) {
+   public boolean a(aox $$0, @Nullable bnq $$1) {
       return this.a($$0.z(), $$0.dk(), $$1);
    }
 
-   public boolean a(aov $$0, @Nullable ens $$1, @Nullable bno $$2) {
+   public boolean a(aow $$0, @Nullable enz $$1, @Nullable bnq $$2) {
       if ($$2 == null) {
          return false;
       } else if (this.c.isPresent() && !this.c.get().b($$2.ai())) {
@@ -82,7 +82,7 @@ public record br(
             return false;
          } else {
             if (this.f.isPresent()) {
-               ens $$3 = ens.b($$2.aJ());
+               enz $$3 = enz.b($$2.aJ());
                if (!this.f.get().a($$0, $$3.a(), $$3.b(), $$3.c())) {
                   return false;
                }
@@ -102,11 +102,11 @@ public record br(
                return false;
             } else if (this.m.isPresent() && $$2.cP().stream().noneMatch($$2x -> this.m.get().a($$0, $$1, $$2x))) {
                return false;
-            } else if (this.n.isPresent() && !this.n.get().a($$0, $$1, $$2 instanceof boi ? ((boi)$$2).q() : null)) {
+            } else if (this.n.isPresent() && !this.n.get().a($$0, $$1, $$2 instanceof bok ? ((bok)$$2).q() : null)) {
                return false;
             } else {
                if (this.o.isPresent()) {
-                  eoy $$4 = $$2.cg();
+                  epf $$4 = $$2.cg();
                   if ($$4 == null || !this.o.get().equals($$4.b())) {
                      return false;
                   }
@@ -118,9 +118,9 @@ public record br(
       }
    }
 
-   public static eiv b(aow $$0, bno $$1) {
-      ejb $$2 = new ejb.a($$0.z()).a(elg.a, $$1).a(elg.f, $$0.dk()).a(elf.l);
-      return new eiv.a($$2).a(Optional.empty());
+   public static ejc b(aox $$0, bnq $$1) {
+      eji $$2 = new eji.a($$0.z()).a(eln.a, $$1).a(eln.f, $$0.dk()).a(elm.l);
+      return new ejc.a($$2).a(Optional.empty());
    }
 
    public Optional<bt> a() {
@@ -194,12 +194,12 @@ public record br(
          return new br.a();
       }
 
-      public br.a a(bnu<?> $$0) {
+      public br.a a(bnw<?> $$0) {
          this.a = Optional.of(bt.a($$0));
          return this;
       }
 
-      public br.a a(auo<bnu<?>> $$0) {
+      public br.a a(aup<bnw<?>> $$0) {
          this.a = Optional.of(bt.a($$0));
          return this;
       }

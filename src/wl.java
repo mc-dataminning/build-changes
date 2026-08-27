@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 
 public record wl(int b, UUID c, UUID d) {
    public static final Codec<wl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(avp.i.fieldOf("index").forGetter(wl::b), jc.a.fieldOf("sender").forGetter(wl::c), jc.a.fieldOf("session_id").forGetter(wl::d))
+      $$0 -> $$0.group(avq.i.fieldOf("index").forGetter(wl::b), jc.a.fieldOf("sender").forGetter(wl::c), jc.a.fieldOf("session_id").forGetter(wl::d))
             .apply($$0, wl::new)
    );
 

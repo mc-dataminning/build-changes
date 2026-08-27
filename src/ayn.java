@@ -47,7 +47,7 @@ public class ayn extends bcn {
       if (!"null".equals($$2) && !StringUtils.isEmpty($$2)) {
          if ($$2.charAt(0) == '"' && $$2.charAt($$2.length() - 1) == '"' || $$2.charAt(0) == '{' && $$2.charAt($$2.length() - 1) == '}') {
             try {
-               $$3 = avx.b(a, $$2, vq.class, true);
+               $$3 = avy.b(a, $$2, vq.class, true);
                if ($$3 == null) {
                   $$3 = vp.a;
                }

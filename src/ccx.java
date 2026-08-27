@@ -1,30 +1,43 @@
-public class ccx extends ccp {
-   private static final int b = 40;
-   private int c;
+import javax.annotation.Nullable;
 
-   public ccx(ccm $$0) {
+public class ccx extends ccs {
+   @Nullable
+   private enz b;
+
+   public ccx(ccq $$0) {
       super($$0);
    }
 
    @Override
-   public void b() {
-      this.a.dM().a(this.a.dr(), this.a.dt(), this.a.dx(), atk.hP, this.a.db(), 2.5F, 0.8F + this.a.eh().i() * 0.3F, false);
-   }
-
-   @Override
    public void c() {
-      if (this.c++ >= 40) {
-         this.a.gd().a(cdc.f);
+      if (this.b == null) {
+         this.b = this.a.dk();
       }
    }
 
    @Override
-   public void d() {
-      this.c = 0;
+   public boolean a() {
+      return true;
    }
 
    @Override
-   public cdc<ccx> i() {
-      return cdc.h;
+   public void d() {
+      this.b = null;
+   }
+
+   @Override
+   public float f() {
+      return 1.0F;
+   }
+
+   @Nullable
+   @Override
+   public enz g() {
+      return this.b;
+   }
+
+   @Override
+   public cdg<ccx> i() {
+      return cdg.k;
    }
 }

@@ -29,8 +29,8 @@ public class ali {
       ($$0, $$1) -> vq.b("commands.item.target.no_changed.known_item", $$0, $$1)
    );
    private static final SuggestionProvider<du> g = ($$0, $$1) -> {
-      eiy $$2 = ((du)$$0.getSource()).l().aJ();
-      return dz.a($$2.a(eja.b), $$1);
+      ejf $$2 = ((du)$$0.getSource()).l().aL();
+      return dz.a($$2.a(ejh.b), $$1);
    };
 
    public static void a(CommandDispatcher<du> $$0, dq $$1) {
@@ -275,10 +275,10 @@ public class ali {
       );
    }
 
-   private static int a(du $$0, hz $$1, int $$2, eki $$3) throws CommandSyntaxException {
-      bln $$4 = a($$0, $$1, a);
+   private static int a(du $$0, hz $$1, int $$2, ekp $$3) throws CommandSyntaxException {
+      blp $$4 = a($$0, $$1, a);
       if ($$2 >= 0 && $$2 < $$4.b()) {
-         coz $$5 = a($$0, $$3, $$4.a($$2));
+         cpd $$5 = a($$0, $$3, $$4.a($$2));
          $$4.a($$2, $$5);
          $$0.a(() -> vq.a("commands.item.block.set.success", $$1.u(), $$1.v(), $$1.w(), $$5.K()), true);
          return 1;
@@ -287,17 +287,17 @@ public class ali {
       }
    }
 
-   private static int a(du $$0, Collection<? extends bno> $$1, int $$2, eki $$3) throws CommandSyntaxException {
-      Map<bno, coz> $$4 = Maps.newHashMapWithExpectedSize($$1.size());
+   private static int a(du $$0, Collection<? extends bnq> $$1, int $$2, ekp $$3) throws CommandSyntaxException {
+      Map<bnq, cpd> $$4 = Maps.newHashMapWithExpectedSize($$1.size());
 
-      for (bno $$5 : $$1) {
-         box $$6 = $$5.a_($$2);
-         if ($$6 != box.b) {
-            coz $$7 = a($$0, $$3, $$6.a().q());
+      for (bnq $$5 : $$1) {
+         boz $$6 = $$5.a_($$2);
+         if ($$6 != boz.b) {
+            cpd $$7 = a($$0, $$3, $$6.a().q());
             if ($$6.a($$7)) {
                $$4.put($$5, $$7);
-               if ($$5 instanceof aow) {
-                  ((aow)$$5).bW.d();
+               if ($$5 instanceof aox) {
+                  ((aox)$$5).bW.d();
                }
             }
          }
@@ -307,7 +307,7 @@ public class ali {
          throw e.create($$2);
       } else {
          if ($$4.size() == 1) {
-            Entry<bno, coz> $$8 = $$4.entrySet().iterator().next();
+            Entry<bnq, cpd> $$8 = $$4.entrySet().iterator().next();
             $$0.a(() -> vq.a("commands.item.entity.set.success.single", $$8.getKey().Q_(), $$8.getValue().K()), true);
          } else {
             $$0.a(() -> vq.a("commands.item.entity.set.success.multiple", $$4.size()), true);
@@ -317,8 +317,8 @@ public class ali {
       }
    }
 
-   private static int a(du $$0, hz $$1, int $$2, coz $$3) throws CommandSyntaxException {
-      bln $$4 = a($$0, $$1, a);
+   private static int a(du $$0, hz $$1, int $$2, cpd $$3) throws CommandSyntaxException {
+      blp $$4 = a($$0, $$1, a);
       if ($$2 >= 0 && $$2 < $$4.b()) {
          $$4.a($$2, $$3);
          $$0.a(() -> vq.a("commands.item.block.set.success", $$1.u(), $$1.v(), $$1.w(), $$3.K()), true);
@@ -328,24 +328,24 @@ public class ali {
       }
    }
 
-   private static bln a(du $$0, hz $$1, Dynamic3CommandExceptionType $$2) throws CommandSyntaxException {
-      dit $$3 = $$0.e().c_($$1);
-      if (!($$3 instanceof bln)) {
+   private static blp a(du $$0, hz $$1, Dynamic3CommandExceptionType $$2) throws CommandSyntaxException {
+      dix $$3 = $$0.e().c_($$1);
+      if (!($$3 instanceof blp)) {
          throw $$2.create($$1.u(), $$1.v(), $$1.w());
       } else {
-         return (bln)$$3;
+         return (blp)$$3;
       }
    }
 
-   private static int a(du $$0, Collection<? extends bno> $$1, int $$2, coz $$3) throws CommandSyntaxException {
-      List<bno> $$4 = Lists.newArrayListWithCapacity($$1.size());
+   private static int a(du $$0, Collection<? extends bnq> $$1, int $$2, cpd $$3) throws CommandSyntaxException {
+      List<bnq> $$4 = Lists.newArrayListWithCapacity($$1.size());
 
-      for (bno $$5 : $$1) {
-         box $$6 = $$5.a_($$2);
-         if ($$6 != box.b && $$6.a($$3.q())) {
+      for (bnq $$5 : $$1) {
+         boz $$6 = $$5.a_($$2);
+         if ($$6 != boz.b && $$6.a($$3.q())) {
             $$4.add($$5);
-            if ($$5 instanceof aow) {
-               ((aow)$$5).bW.d();
+            if ($$5 instanceof aox) {
+               ((aox)$$5).bW.d();
             }
          }
       }
@@ -363,11 +363,11 @@ public class ali {
       }
    }
 
-   private static int a(du $$0, hz $$1, int $$2, Collection<? extends bno> $$3, int $$4) throws CommandSyntaxException {
+   private static int a(du $$0, hz $$1, int $$2, Collection<? extends bnq> $$3, int $$4) throws CommandSyntaxException {
       return a($$0, $$3, $$4, a($$0, $$1, $$2));
    }
 
-   private static int a(du $$0, hz $$1, int $$2, Collection<? extends bno> $$3, int $$4, eki $$5) throws CommandSyntaxException {
+   private static int a(du $$0, hz $$1, int $$2, Collection<? extends bnq> $$3, int $$4, ekp $$5) throws CommandSyntaxException {
       return a($$0, $$3, $$4, a($$0, $$5, a($$0, $$1, $$2)));
    }
 
@@ -375,45 +375,45 @@ public class ali {
       return a($$0, $$3, $$4, a($$0, $$1, $$2));
    }
 
-   private static int a(du $$0, hz $$1, int $$2, hz $$3, int $$4, eki $$5) throws CommandSyntaxException {
+   private static int a(du $$0, hz $$1, int $$2, hz $$3, int $$4, ekp $$5) throws CommandSyntaxException {
       return a($$0, $$3, $$4, a($$0, $$5, a($$0, $$1, $$2)));
    }
 
-   private static int a(du $$0, bno $$1, int $$2, hz $$3, int $$4) throws CommandSyntaxException {
+   private static int a(du $$0, bnq $$1, int $$2, hz $$3, int $$4) throws CommandSyntaxException {
       return a($$0, $$3, $$4, a($$1, $$2));
    }
 
-   private static int a(du $$0, bno $$1, int $$2, hz $$3, int $$4, eki $$5) throws CommandSyntaxException {
+   private static int a(du $$0, bnq $$1, int $$2, hz $$3, int $$4, ekp $$5) throws CommandSyntaxException {
       return a($$0, $$3, $$4, a($$0, $$5, a($$1, $$2)));
    }
 
-   private static int a(du $$0, bno $$1, int $$2, Collection<? extends bno> $$3, int $$4) throws CommandSyntaxException {
+   private static int a(du $$0, bnq $$1, int $$2, Collection<? extends bnq> $$3, int $$4) throws CommandSyntaxException {
       return a($$0, $$3, $$4, a($$1, $$2));
    }
 
-   private static int a(du $$0, bno $$1, int $$2, Collection<? extends bno> $$3, int $$4, eki $$5) throws CommandSyntaxException {
+   private static int a(du $$0, bnq $$1, int $$2, Collection<? extends bnq> $$3, int $$4, ekp $$5) throws CommandSyntaxException {
       return a($$0, $$3, $$4, a($$0, $$5, a($$1, $$2)));
    }
 
-   private static coz a(du $$0, eki $$1, coz $$2) {
-      aov $$3 = $$0.e();
-      ejb $$4 = new ejb.a($$3).a(elg.f, $$0.d()).b(elg.a, $$0.f()).a(elf.d);
-      eiv $$5 = new eiv.a($$4).a(Optional.empty());
-      $$5.b(eiv.a($$1));
+   private static cpd a(du $$0, ekp $$1, cpd $$2) {
+      aow $$3 = $$0.e();
+      eji $$4 = new eji.a($$3).a(eln.f, $$0.d()).b(eln.a, $$0.f()).a(elm.d);
+      ejc $$5 = new ejc.a($$4).a(Optional.empty());
+      $$5.b(ejc.a($$1));
       return $$1.apply($$2, $$5);
    }
 
-   private static coz a(bno $$0, int $$1) throws CommandSyntaxException {
-      box $$2 = $$0.a_($$1);
-      if ($$2 == box.b) {
+   private static cpd a(bnq $$0, int $$1) throws CommandSyntaxException {
+      boz $$2 = $$0.a_($$1);
+      if ($$2 == boz.b) {
          throw d.create($$1);
       } else {
          return $$2.a().q();
       }
    }
 
-   private static coz a(du $$0, hz $$1, int $$2) throws CommandSyntaxException {
-      bln $$3 = a($$0, $$1, c);
+   private static cpd a(du $$0, hz $$1, int $$2) throws CommandSyntaxException {
+      blp $$3 = a($$0, $$1, c);
       if ($$2 >= 0 && $$2 < $$3.b()) {
          return $$3.a($$2).q();
       } else {

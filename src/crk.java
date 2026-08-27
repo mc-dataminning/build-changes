@@ -1,72 +1,77 @@
-public abstract class crk implements csb<bln> {
-   protected final csg<?> a;
-   protected final crq b;
-   protected final String c;
-   protected final cry d;
-   protected final coz e;
-   protected final float f;
-   protected final int g;
+import javax.annotation.Nullable;
 
-   public crk(csg<?> $$0, String $$1, crq $$2, cry $$3, coz $$4, float $$5, int $$6) {
-      this.a = $$0;
-      this.b = $$2;
-      this.c = $$1;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
+public class crk extends crm {
+   private final hz b;
+   protected boolean a = true;
+
+   public crk(chl $$0, blv $$1, cpd $$2, env $$3) {
+      this($$0.dM(), $$0, $$1, $$2, $$3);
+   }
+
+   public crk(crm $$0) {
+      this($$0.q(), $$0.o(), $$0.p(), $$0.n(), $$0.j());
+   }
+
+   protected crk(cvr $$0, @Nullable chl $$1, blv $$2, cpd $$3, env $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.b = $$4.a().a($$4.b());
+      this.a = $$0.a_($$4.a()).a(this);
+   }
+
+   public static crk a(crk $$0, hz $$1, ie $$2) {
+      return new crk(
+         $$0.q(),
+         $$0.o(),
+         $$0.p(),
+         $$0.n(),
+         new env(
+            new enz((double)$$1.u() + 0.5 + (double)$$2.j() * 0.5, (double)$$1.v() + 0.5 + (double)$$2.k() * 0.5, (double)$$1.w() + 0.5 + (double)$$2.l() * 0.5),
+            $$2,
+            $$1,
+            false
+         )
+      );
    }
 
    @Override
-   public boolean a(bln $$0, cvn $$1) {
-      return this.d.a($$0.a(0));
+   public hz a() {
+      return this.a ? super.a() : this.b;
    }
 
-   @Override
-   public coz a(bln $$0, iw $$1) {
-      return this.e.q();
+   public boolean b() {
+      return this.a || this.q().a_(this.a()).a(this);
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public is<cry> a() {
-      is<cry> $$0 = is.a();
-      $$0.add(this.d);
-      return $$0;
-   }
-
-   public float b() {
-      return this.f;
-   }
-
-   @Override
-   public coz a(iw $$0) {
-      return this.e;
-   }
-
-   @Override
-   public String c() {
-      return this.c;
-   }
-
-   public int d() {
-      return this.g;
-   }
-
-   @Override
-   public csg<?> e() {
+   public boolean c() {
       return this.a;
    }
 
-   public crq f() {
-      return this.b;
+   public ie d() {
+      return ie.a(this.o())[0];
    }
 
-   public interface a<T extends crk> {
-      T create(String var1, crq var2, cry var3, coz var4, float var5, int var6);
+   public ie e() {
+      return ie.a(this.o(), ie.a.b);
+   }
+
+   public ie[] f() {
+      ie[] $$0 = ie.a(this.o());
+      if (this.a) {
+         return $$0;
+      } else {
+         ie $$1 = this.k();
+         int $$2 = 0;
+
+         while ($$2 < $$0.length && $$0[$$2] != $$1.g()) {
+            $$2++;
+         }
+
+         if ($$2 > 0) {
+            System.arraycopy($$0, 0, $$0, 1, $$2);
+            $$0[0] = $$1.g();
+         }
+
+         return $$0;
+      }
    }
 }

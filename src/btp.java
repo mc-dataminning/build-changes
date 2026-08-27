@@ -1,31 +1,53 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.Const;
+import com.mojang.datafixers.kinds.IdF;
+import com.mojang.datafixers.kinds.K1;
+import com.mojang.datafixers.kinds.OptionalBox;
+import com.mojang.datafixers.kinds.Const.Mu;
+import com.mojang.datafixers.util.Unit;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class btp<E extends cgl> extends bpw<E> {
-   public btp(int $$0) {
-      super(ImmutableMap.of(bxh.o, bxi.b, bxh.m, bxi.b), $$0);
-   }
+public interface btp<F extends K1, Value> {
+   bxl<Value> a();
 
-   protected boolean a(aov $$0, E $$1, long $$2) {
-      return $$1.dI() == null;
-   }
+   bxm b();
 
-   protected boolean a(aov $$0, E $$1) {
-      return $$1.aC() || $$1.aZ() || $$1.bn();
-   }
+   @Nullable
+   bto<F, Value> a(bpj<?> var1, Optional<Value> var2);
 
-   protected void b(aov $$0, E $$1, long $$2) {
-      if ($$1.aC()) {
-         $$1.b(bor.o);
-         $$1.a(atk.AP, 5.0F, 1.0F);
-      } else {
-         $$1.a(atk.AK, 5.0F, 1.0F);
-         this.c($$0, $$1, $$2);
+   public static record a<Value>(bxl<Value> a) implements btp<Mu<Unit>, Value> {
+      @Override
+      public bxm b() {
+         return bxm.b;
+      }
+
+      @Override
+      public bto<Mu<Unit>, Value> a(bpj<?> $$0, Optional<Value> $$1) {
+         return $$1.isPresent() ? null : new bto<>($$0, this.a, Const.create(Unit.INSTANCE));
       }
    }
 
-   protected void c(aov $$0, E $$1, long $$2) {
-      if ($$1.dI() == null) {
-         $$1.a(bno.c.b);
+   public static record b<Value>(bxl<Value> a) implements btp<com.mojang.datafixers.kinds.IdF.Mu, Value> {
+      @Override
+      public bxm b() {
+         return bxm.a;
+      }
+
+      @Override
+      public bto<com.mojang.datafixers.kinds.IdF.Mu, Value> a(bpj<?> $$0, Optional<Value> $$1) {
+         return $$1.isEmpty() ? null : new bto<>($$0, this.a, IdF.create($$1.get()));
+      }
+   }
+
+   public static record c<Value>(bxl<Value> a) implements btp<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> {
+      @Override
+      public bxm b() {
+         return bxm.c;
+      }
+
+      @Override
+      public bto<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> a(bpj<?> $$0, Optional<Value> $$1) {
+         return new bto<>($$0, this.a, OptionalBox.create($$1));
       }
    }
 }

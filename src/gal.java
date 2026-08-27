@@ -1,16 +1,17 @@
-public class gal extends gbg {
-   public static final aiy a = new aiy("textures/entity/guardian_elder.png");
+public class gal extends gcg<cac, flx<cac>> {
+   private static final aiy a = new aiy("textures/entity/chicken.png");
 
-   public gal(gas.a $$0) {
-      super($$0, 1.2F, fpb.R);
+   public gal(gba.a $$0) {
+      super($$0, new flx<>($$0.a(fpi.v)), 0.3F);
    }
 
-   protected void a(cej $$0, esa $$1, float $$2) {
-      $$1.b(cec.b, cec.b, cec.b);
-   }
-
-   @Override
-   public aiy a(cej $$0) {
+   public aiy a(cac $$0) {
       return a;
+   }
+
+   protected float a(cac $$0, float $$1) {
+      float $$2 = awi.i($$1, $$0.bX, $$0.bT);
+      float $$3 = awi.i($$1, $$0.bW, $$0.bU);
+      return (awi.a($$2) + 1.0F) * $$3;
    }
 }

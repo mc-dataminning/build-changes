@@ -1,37 +1,9 @@
+import java.util.function.Consumer;
+
 public interface fbq {
-   Object b = new Object();
-   int c = 32;
+   vq a();
 
-   fbq.a a(eyu var1, fbr var2, long var3);
+   void a(Consumer<ezm> var1);
 
-   default Object e() {
-      return b;
-   }
-
-   default int a() {
-      return 160;
-   }
-
-   default int b() {
-      return 32;
-   }
-
-   default int f() {
-      return awh.e(this.b(), 32);
-   }
-
-   public static enum a {
-      a(atk.zQ),
-      b(atk.zR);
-
-      private final atj c;
-
-      private a(atj $$0) {
-         this.c = $$0;
-      }
-
-      public void a(glk $$0) {
-         $$0.a(gkb.a(this.c, 1.0F, 1.0F));
-      }
-   }
+   void a(fdt var1);
 }

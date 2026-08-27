@@ -1,88 +1,61 @@
-import com.google.common.collect.Maps;
-import java.util.Comparator;
-import java.util.Map;
 import java.util.function.Consumer;
 
-public class fdf {
-   int a;
-   final Map<fdf.a, fdf.b> b = Maps.newTreeMap(Comparator.<fdf.a, fdb>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
+public class fdf implements fdc {
+   private int a;
+   private int b;
+   private final int c;
+   private final int d;
 
-   public void a(Consumer<fdc> $$0) {
-      this.a++;
-      $$0.accept(new fdf.c(0));
+   public fdf(int $$0, int $$1) {
+      this(0, 0, $$0, $$1);
    }
 
-   public String a(boolean $$0) {
-      final StringBuilder $$1 = new StringBuilder();
-      Consumer<String> $$2 = new Consumer<String>() {
-         private boolean c = true;
-
-         public void a(String $$0) {
-            if (!this.c) {
-               $$1.append(". ");
-            }
-
-            this.c = false;
-            $$1.append($$0);
-         }
-      };
-      this.b.forEach(($$2x, $$3) -> {
-         if ($$3.b == this.a && ($$0 || !$$3.c)) {
-            $$3.a.a($$2);
-            $$3.c = true;
-         }
-      });
-      return $$1.toString();
+   public fdf(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   static class a {
-      final fdb a;
-      final int b;
-
-      a(fdb $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   public static fdf a(int $$0) {
+      return new fdf($$0, 0);
    }
 
-   static class b {
-      fde<?> a;
-      int b;
-      boolean c;
-
-      b() {
-         this.a = fde.a;
-         this.b = -1;
-      }
-
-      public fdf.b a(int $$0, fde<?> $$1) {
-         if (!this.a.equals($$1)) {
-            this.a = $$1;
-            this.c = false;
-         } else if (this.b + 1 != $$0) {
-            this.c = false;
-         }
-
-         this.b = $$0;
-         return this;
-      }
+   public static fdf b(int $$0) {
+      return new fdf(0, $$0);
    }
 
-   class c implements fdc {
-      private final int b;
+   @Override
+   public void m(int $$0) {
+      this.a = $$0;
+   }
 
-      c(int $$0) {
-         this.b = $$0;
-      }
+   @Override
+   public void n(int $$0) {
+      this.b = $$0;
+   }
 
-      @Override
-      public void a(fdb $$0, fde<?> $$1) {
-         fdf.this.b.computeIfAbsent(new fdf.a($$0, this.b), $$0x -> new fdf.b()).a(fdf.this.a, $$1);
-      }
+   @Override
+   public int B() {
+      return this.a;
+   }
 
-      @Override
-      public fdc a() {
-         return fdf.this.new c(this.b + 1);
-      }
+   @Override
+   public int C() {
+      return this.b;
+   }
+
+   @Override
+   public int w() {
+      return this.c;
+   }
+
+   @Override
+   public int u() {
+      return this.d;
+   }
+
+   @Override
+   public void a(Consumer<ezm> $$0) {
    }
 }

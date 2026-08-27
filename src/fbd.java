@@ -1,58 +1,89 @@
-import javax.annotation.Nullable;
+public abstract class fbd {
+   protected static final int a = 14737632;
+   protected static final int b = 60;
+   protected static final int c = 1;
+   protected final eyz d;
+   protected final bhx e;
 
-public interface fbd extends far {
-   long s = 250L;
-
-   default void f(double $$0, double $$1) {
+   protected fbd(eyz $$0, bhx $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   default boolean a(double $$0, double $$1, int $$2) {
-      return false;
+   public int a(int $$0) {
+      return Math.min(this.e.a() + 2, $$0);
    }
 
-   default boolean b(double $$0, double $$1, int $$2) {
-      return false;
+   public void a(ezb $$0, int $$1, int $$2) {
+      int $$3 = $$0.b();
+      $$0.a(fwb.C(), $$1, $$3 - 60, $$1 + $$2, $$3, -1873784752);
+      long $$4 = 0L;
+      long $$5 = 2147483647L;
+      long $$6 = -2147483648L;
+      int $$7 = Math.max(0, this.e.a() - ($$2 - 2));
+      int $$8 = this.e.b() - $$7;
+
+      for (int $$9 = 0; $$9 < $$8; $$9++) {
+         int $$10 = $$1 + $$9 + 1;
+         int $$11 = $$7 + $$9;
+         long $$12 = this.b($$11);
+         $$5 = Math.min($$5, $$12);
+         $$6 = Math.max($$6, $$12);
+         $$4 += $$12;
+         this.a($$0, $$3, $$10, $$11);
+      }
+
+      $$0.a(fwb.C(), $$1, $$1 + $$2 - 1, $$3 - 60, -1);
+      $$0.a(fwb.C(), $$1, $$1 + $$2 - 1, $$3 - 1, -1);
+      $$0.b(fwb.C(), $$1, $$3 - 60, $$3, -1);
+      $$0.b(fwb.C(), $$1 + $$2 - 1, $$3 - 60, $$3, -1);
+      if ($$8 > 0) {
+         String $$13 = this.a((double)$$5) + " min";
+         String $$14 = this.a((double)$$4 / (double)$$8) + " avg";
+         String $$15 = this.a((double)$$6) + " max";
+         $$0.b(this.d, $$13, $$1 + 2, $$3 - 60 - 9, 14737632);
+         $$0.a(this.d, $$14, $$1 + $$2 / 2, $$3 - 60 - 9, 14737632);
+         $$0.b(this.d, $$15, $$1 + $$2 - this.d.b($$15) - 2, $$3 - 60 - 9, 14737632);
+      }
+
+      this.d($$0, $$1, $$2, $$3);
    }
 
-   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      return false;
+   protected void a(ezb $$0, int $$1, int $$2, int $$3) {
+      this.b($$0, $$1, $$2, $$3);
+      this.c($$0, $$1, $$2, $$3);
    }
 
-   default boolean a(double $$0, double $$1, double $$2, double $$3) {
-      return false;
+   protected void b(ezb $$0, int $$1, int $$2, int $$3) {
+      long $$4 = this.e.a($$3);
+      int $$5 = this.b((double)$$4);
+      int $$6 = this.a($$4);
+      $$0.a(fwb.C(), $$2, $$1 - $$5, $$2 + 1, $$1, $$6);
    }
 
-   default boolean a(int $$0, int $$1, int $$2) {
-      return false;
+   protected void c(ezb $$0, int $$1, int $$2, int $$3) {
    }
 
-   default boolean b(int $$0, int $$1, int $$2) {
-      return false;
+   protected long b(int $$0) {
+      return this.e.a($$0);
    }
 
-   default boolean a(char $$0, int $$1) {
-      return false;
+   protected void d(ezb $$0, int $$1, int $$2, int $$3) {
    }
 
-   @Nullable
-   default eyr a(fdi $$0) {
-      return null;
+   protected void a(ezb $$0, String $$1, int $$2, int $$3) {
+      $$0.a(fwb.C(), $$2, $$3, $$2 + this.d.b($$1) + 1, $$3 + 9, -1873784752);
+      $$0.a(this.d, $$1, $$2 + 1, $$3 + 1, 14737632, false);
    }
 
-   default boolean c(double $$0, double $$1) {
-      return false;
-   }
+   protected abstract String a(double var1);
 
-   void a(boolean var1);
+   protected abstract int b(double var1);
 
-   boolean aL_();
+   protected abstract int a(long var1);
 
-   @Nullable
-   default eyr aM_() {
-      return this.aL_() ? eyr.a(this) : null;
-   }
-
-   default fdm F() {
-      return fdm.a();
+   protected int a(double $$0, double $$1, int $$2, double $$3, int $$4, double $$5, int $$6) {
+      $$0 = awi.a($$0, $$1, $$5);
+      return $$0 < $$3 ? avs.b.a((float)(($$0 - $$1) / ($$3 - $$1)), $$2, $$4) : avs.b.a((float)(($$0 - $$3) / ($$5 - $$3)), $$4, $$6);
    }
 }

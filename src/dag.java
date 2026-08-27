@@ -1,43 +1,59 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dag extends cxz {
-   public static final MapCodec<dag> e = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dad.a.forGetter($$0x -> $$0x.f), u()).apply($$0, dag::new));
-   private final cyo f;
-
-   @Override
-   public MapCodec<dag> a() {
-      return e;
-   }
-
-   protected dag(cyo $$0, dle.d $$1) {
-      super($$1);
-      this.f = $$0;
-   }
+public class dag extends cys {
+   public static final MapCodec<dag> a = b(dag::new);
+   public static final dma b = dlz.w;
+   public static final dma c = dlz.r;
 
    @Override
-   protected void b(dlf $$0, cvn $$1, hz $$2, dlf $$3, boolean $$4) {
-      this.a($$0, (cvo)$$1, $$2);
+   protected MapCodec<? extends dag> a() {
+      return a;
+   }
+
+   public dag(dli.d $$0) {
+      super($$0);
+      this.k(this.o().a(c, Boolean.valueOf(false)).a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dlf $$0, aov $$1, hz $$2, awo $$3) {
-      if (!e($$0, $$1, $$2)) {
-         $$1.a($$2, this.f.o().a(d, Boolean.valueOf(false)).a(c, $$0.c(c)), 2);
+   protected void b(dlj $$0, cvr $$1, hz $$2, dlj $$3, boolean $$4) {
+      if ($$3.b() != $$0.b() && $$1 instanceof aow $$5) {
+         this.a($$0, $$5, $$2);
       }
    }
 
    @Override
-   protected dlf a(dlf $$0, ie $$1, dlf $$2, cvo $$3, hz $$4, hz $$5) {
-      if ($$1.g() == $$0.c(c) && !$$0.a($$3, $$4)) {
-         return cyq.a.o();
-      } else {
-         if ($$0.c(d)) {
-            $$3.a($$4, egq.c, egq.c.a($$3));
+   protected void a(dlj $$0, cvr $$1, hz $$2, cys $$3, hz $$4, boolean $$5) {
+      if ($$1 instanceof aow $$6) {
+         this.a($$0, $$6, $$2);
+      }
+   }
+
+   public void a(dlj $$0, aow $$1, hz $$2) {
+      boolean $$3 = $$1.C($$2);
+      if ($$3 != $$0.c(b)) {
+         dlj $$4 = $$0;
+         if (!$$0.c(b)) {
+            $$4 = $$0.a(c);
+            $$1.a(null, $$2, $$4.c(c) ? atl.ft : atl.fu, atm.e);
          }
 
-         this.a($$0, $$3, $$4);
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         $$1.a($$2, $$4.a(b, Boolean.valueOf($$3)), 3);
       }
+   }
+
+   @Override
+   protected void a(dlk.a<cys, dlj> $$0) {
+      $$0.a(c, b);
+   }
+
+   @Override
+   protected boolean d_(dlj $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dlj $$0, cvr $$1, hz $$2) {
+      return $$1.a_($$2).c(c) ? 15 : 0;
    }
 }

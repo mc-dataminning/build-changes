@@ -1,141 +1,89 @@
-public class cjj extends cja {
-   private static final aie<Boolean> e = aih.a(cjj.class, aig.k);
-   private int i;
-   public double c;
-   public double d;
-   private static final cry j = cry.a(cpc.ov, cpc.ow);
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   public cjj(bnu<? extends cjj> $$0, cvn $$1) {
-      super($$0, $$1);
+public class cjj {
+   public static int[][] a(ie $$0) {
+      ie $$1 = $$0.h();
+      ie $$2 = $$1.g();
+      ie $$3 = $$0.g();
+      return new int[][]{
+         {$$1.j(), $$1.l()},
+         {$$2.j(), $$2.l()},
+         {$$3.j() + $$1.j(), $$3.l() + $$1.l()},
+         {$$3.j() + $$2.j(), $$3.l() + $$2.l()},
+         {$$0.j() + $$1.j(), $$0.l() + $$1.l()},
+         {$$0.j() + $$2.j(), $$0.l() + $$2.l()},
+         {$$3.j(), $$3.l()},
+         {$$0.j(), $$0.l()}
+      };
    }
 
-   public cjj(cvn $$0, double $$1, double $$2, double $$3) {
-      super(bnu.R, $$0, $$1, $$2, $$3);
+   public static boolean a(double $$0) {
+      return !Double.isInfinite($$0) && $$0 < 1.0;
    }
 
-   @Override
-   public cja.a w() {
-      return cja.a.c;
-   }
-
-   @Override
-   protected void c_() {
-      super.c_();
-      this.am.a(e, false);
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      if (!this.dM().y_()) {
-         if (this.i > 0) {
-            this.i--;
+   public static boolean a(cvb $$0, boi $$1, enu $$2) {
+      for (eos $$4 : $$0.e($$1, $$2)) {
+         if (!$$4.c()) {
+            return false;
          }
-
-         if (this.i <= 0) {
-            this.c = 0.0;
-            this.d = 0.0;
-         }
-
-         this.p(this.i > 0);
       }
 
-      if (this.C() && this.af.a(4) == 0) {
-         this.dM().a(jz.U, this.dr(), this.dt() + 0.8, this.dx(), 0.0, 0.0, 0.0);
-      }
+      return $$0.D_().a($$2);
    }
 
-   @Override
-   protected double q() {
-      return (this.aZ() ? 3.0 : 4.0) / 20.0;
+   public static boolean a(cvb $$0, enz $$1, boi $$2, bot $$3) {
+      return a($$0, $$2, $$2.f($$3).c($$1));
    }
 
-   @Override
-   protected cou ai_() {
-      return cpc.nN;
+   public static eos a(cux $$0, hz $$1) {
+      dlj $$2 = $$0.a_($$1);
+      return !$$2.a(aua.aO) && (!($$2.b() instanceof dhe) || !$$2.c(dhe.b)) ? $$2.k($$0, $$1) : eop.a();
    }
 
-   @Override
-   protected void c(hz $$0, dlf $$1) {
-      double $$2 = 1.0E-4;
-      double $$3 = 0.001;
-      super.c($$0, $$1);
-      ens $$4 = this.dp();
-      double $$5 = $$4.i();
-      double $$6 = this.c * this.c + this.d * this.d;
-      if ($$6 > 1.0E-4 && $$5 > 0.001) {
-         double $$7 = Math.sqrt($$5);
-         double $$8 = Math.sqrt($$6);
-         this.c = $$4.c / $$7 * $$8;
-         this.d = $$4.e / $$7 * $$8;
-      }
-   }
+   public static double a(hz $$0, int $$1, Function<hz, eos> $$2) {
+      hz.a $$3 = $$0.j();
+      int $$4 = 0;
 
-   @Override
-   protected void u() {
-      double $$0 = this.c * this.c + this.d * this.d;
-      if ($$0 > 1.0E-7) {
-         $$0 = Math.sqrt($$0);
-         this.c /= $$0;
-         this.d /= $$0;
-         ens $$1 = this.dp().d(0.8, 0.0, 0.8).b(this.c, 0.0, this.d);
-         if (this.aZ()) {
-            $$1 = $$1.a(0.1);
+      while ($$4 < $$1) {
+         eos $$5 = $$2.apply($$3);
+         if (!$$5.c()) {
+            return (double)($$0.v() + $$4) + $$5.b(ie.a.b);
          }
 
-         this.g($$1);
+         $$4++;
+         $$3.c(ie.b);
+      }
+
+      return Double.POSITIVE_INFINITY;
+   }
+
+   @Nullable
+   public static enz a(bnw<?> $$0, cvb $$1, hz $$2, boolean $$3) {
+      if ($$3 && $$0.a($$1.a_($$2))) {
+         return null;
       } else {
-         this.g(this.dp().d(0.98, 0.0, 0.98));
-      }
+         double $$4 = $$1.a(a((cux)$$1, $$2), () -> a((cux)$$1, $$2.d()));
+         if (!a($$4)) {
+            return null;
+         } else if ($$3 && $$4 <= 0.0 && $$0.a($$1.a_($$2.d()))) {
+            return null;
+         } else {
+            enz $$5 = enz.a($$2, $$4);
+            enu $$6 = $$0.n().a($$5);
 
-      super.u();
-   }
+            for (eos $$8 : $$1.e(null, $$6)) {
+               if (!$$8.c()) {
+                  return null;
+               }
+            }
 
-   @Override
-   public blu a(chh $$0, blt $$1) {
-      coz $$2 = $$0.b($$1);
-      if (j.a($$2) && this.i + 3600 <= 32000) {
-         if (!$$0.fU().d) {
-            $$2.h(1);
+            if ($$0 != bnw.bw || !$$1.a_($$2).a(aua.cj) && !$$1.a_($$2.c()).a(aua.cj)) {
+               return !$$1.D_().a($$6) ? null : $$5;
+            } else {
+               return null;
+            }
          }
-
-         this.i += 3600;
       }
-
-      if (this.i > 0) {
-         this.c = this.dr() - $$0.dr();
-         this.d = this.dx() - $$0.dx();
-      }
-
-      return blu.a(this.dM().B);
-   }
-
-   @Override
-   protected void b(sw $$0) {
-      super.b($$0);
-      $$0.a("PushX", this.c);
-      $$0.a("PushZ", this.d);
-      $$0.a("Fuel", (short)this.i);
-   }
-
-   @Override
-   protected void a(sw $$0) {
-      super.a($$0);
-      this.c = $$0.k("PushX");
-      this.d = $$0.k("PushZ");
-      this.i = $$0.g("Fuel");
-   }
-
-   protected boolean C() {
-      return this.am.b(e);
-   }
-
-   protected void p(boolean $$0) {
-      this.am.b(e, $$0);
-   }
-
-   @Override
-   public dlf y() {
-      return cyq.cD.o().a(dbv.a, ie.c).a(dbv.b, Boolean.valueOf(this.C()));
    }
 }

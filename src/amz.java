@@ -11,12 +11,12 @@ public class amz {
    public static void a(CommandDispatcher<du> $$0) {
       LiteralCommandNode<du> $$1 = $$0.register((LiteralArgumentBuilder)dv.a("teammsg").then(dv.a("message", el.a()).executes($$0x -> {
          du $$1x = (du)$$0x.getSource();
-         bno $$2 = $$1x.g();
-         eor $$3 = $$2.cg();
+         bnq $$2 = $$1x.g();
+         eoy $$3 = $$2.cg();
          if ($$3 == null) {
             throw b.create();
          } else {
-            List<aow> $$4 = $$1x.l().ae().t().stream().filter($$2x -> $$2x == $$2 || $$2x.cg() == $$3).toList();
+            List<aox> $$4 = $$1x.l().ag().t().stream().filter($$2x -> $$2x == $$2 || $$2x.cg() == $$3).toList();
             if (!$$4.isEmpty()) {
                el.a($$0x, "message", $$4x -> a($$1x, $$2, $$3, $$4, $$4x));
             }
@@ -27,14 +27,14 @@ public class amz {
       $$0.register((LiteralArgumentBuilder)dv.a("tm").redirect($$1));
    }
 
-   private static void a(du $$0, bno $$1, eor $$2, List<aow> $$3, wg $$4) {
+   private static void a(du $$0, bnq $$1, eoy $$2, List<aox> $$3, wg $$4) {
       vq $$5 = $$2.d().c(a);
       vm.a $$6 = vm.a(vm.g, $$0).c($$5);
       vm.a $$7 = vm.a(vm.h, $$0).c($$5);
       wf $$8 = wf.a($$4);
       boolean $$9 = false;
 
-      for (aow $$10 : $$3) {
+      for (aox $$10 : $$3) {
          vm.a $$11 = $$10 == $$1 ? $$7 : $$6;
          boolean $$12 = $$0.a($$10);
          $$10.a($$8, $$12, $$11);
@@ -42,7 +42,7 @@ public class amz {
       }
 
       if ($$9) {
-         $$0.a(asn.f);
+         $$0.a(aso.f);
       }
    }
 }

@@ -1,29 +1,25 @@
-import com.google.common.util.concurrent.RateLimiter;
-import java.time.Duration;
-import java.util.concurrent.atomic.AtomicReference;
-
-public class gmw {
-   private final float a;
-   private final AtomicReference<gmw.a> b = new AtomicReference<>();
-
-   public gmw(Duration $$0) {
-      this.a = 1000.0F / (float)$$0.toMillis();
+public interface gmw {
+   default void b() {
    }
 
-   public void a(ewz $$0, vq $$1) {
-      gmw.a $$2 = this.b.updateAndGet($$1x -> $$1x != null && $$1.equals($$1x.a) ? $$1x : new gmw.a($$1, RateLimiter.create((double)this.a)));
-      if ($$2.b.tryAcquire(1)) {
-         $$0.c($$1);
-      }
+   default void a() {
    }
 
-   static class a {
-      final vq a;
-      final RateLimiter b;
+   default void a(fut $$0) {
+   }
 
-      a(vq $$0, RateLimiter $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   default void a(double $$0, double $$1) {
+   }
+
+   default void a(fqe $$0, enx $$1) {
+   }
+
+   default void a(fqe $$0, hz $$1, dlj $$2, float $$3) {
+   }
+
+   default void c() {
+   }
+
+   default void a(cpd $$0) {
    }
 }

@@ -1,46 +1,74 @@
-public abstract class bnx extends boi {
-   protected bnx(bnu<? extends bnx> $$0, cvn $$1) {
-      super($$0, $$1);
+public enum bnx implements axc {
+   a(bnx.a.a, 0, 0, "mainhand"),
+   b(bnx.a.a, 1, 5, "offhand"),
+   c(bnx.a.b, 0, 1, "feet"),
+   d(bnx.a.b, 1, 2, "legs"),
+   e(bnx.a.b, 2, 3, "chest"),
+   f(bnx.a.b, 3, 4, "head");
+
+   public static final axc.a<bnx> g = axc.a(bnx::values);
+   private final bnx.a h;
+   private final int i;
+   private final int j;
+   private final String k;
+
+   private bnx(bnx.a $$0, int $$1, int $$2, String $$3) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
+      this.k = $$3;
+   }
+
+   public bnx.a a() {
+      return this.h;
+   }
+
+   public int b() {
+      return this.i;
+   }
+
+   public int a(int $$0) {
+      return $$0 + this.i;
+   }
+
+   public int d() {
+      return this.j;
+   }
+
+   public String e() {
+      return this.k;
+   }
+
+   public boolean f() {
+      return this.h == bnx.a.b;
    }
 
    @Override
-   protected void a(double $$0, boolean $$1, dlf $$2, hz $$3) {
+   public String c() {
+      return this.k;
    }
 
-   @Override
-   public void a(ens $$0) {
-      if (this.cX()) {
-         if (this.aZ()) {
-            this.a(0.02F, $$0);
-            this.a(bol.a, this.dp());
-            this.g(this.dp().a(0.8F));
-         } else if (this.bn()) {
-            this.a(0.02F, $$0);
-            this.a(bol.a, this.dp());
-            this.g(this.dp().a(0.5));
-         } else {
-            float $$1 = 0.91F;
-            if (this.aC()) {
-               $$1 = this.dM().a_(this.aI()).b().i() * 0.91F;
-            }
+   public static bnx a(String $$0) {
+      bnx $$1 = g.a($$0);
+      if ($$1 != null) {
+         return $$1;
+      } else {
+         throw new IllegalArgumentException("Invalid slot '" + $$0 + "'");
+      }
+   }
 
-            float $$2 = 0.16277137F / ($$1 * $$1 * $$1);
-            $$1 = 0.91F;
-            if (this.aC()) {
-               $$1 = this.dM().a_(this.aI()).b().i() * 0.91F;
-            }
-
-            this.a(this.aC() ? 0.1F * $$2 : 0.02F, $$0);
-            this.a(bol.a, this.dp());
-            this.g(this.dp().a((double)$$1));
+   public static bnx a(bnx.a $$0, int $$1) {
+      for (bnx $$2 : values()) {
+         if ($$2.a() == $$0 && $$2.b() == $$1) {
+            return $$2;
          }
       }
 
-      this.q(false);
+      throw new IllegalArgumentException("Invalid slot '" + $$0 + "': " + $$1);
    }
 
-   @Override
-   public boolean e_() {
-      return false;
+   public static enum a {
+      a,
+      b;
    }
 }

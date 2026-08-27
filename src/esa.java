@@ -1,97 +1,90 @@
-import com.google.common.collect.Queues;
-import java.util.Deque;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Optional;
+import javax.annotation.Nullable;
+import org.lwjgl.opengl.ARBTimerQuery;
+import org.lwjgl.opengl.GL;
+import org.lwjgl.opengl.GL32C;
 
 public class esa {
-   private final Deque<esa.a> a = ac.a(Queues.newArrayDeque(), $$0 -> {
-      Matrix4f $$1 = new Matrix4f();
-      Matrix3f $$2 = new Matrix3f();
-      $$0.add(new esa.a($$1, $$2));
-   });
+   private int a;
 
-   public void a(double $$0, double $$1, double $$2) {
-      this.a((float)$$0, (float)$$1, (float)$$2);
-   }
-
-   public void a(float $$0, float $$1, float $$2) {
-      esa.a $$3 = this.a.getLast();
-      $$3.a.translate($$0, $$1, $$2);
-   }
-
-   public void b(float $$0, float $$1, float $$2) {
-      esa.a $$3 = this.a.getLast();
-      $$3.a.scale($$0, $$1, $$2);
-      if ($$0 == $$1 && $$1 == $$2) {
-         if ($$0 > 0.0F) {
-            return;
-         }
-
-         $$3.b.scale(-1.0F);
-      }
-
-      float $$4 = 1.0F / $$0;
-      float $$5 = 1.0F / $$1;
-      float $$6 = 1.0F / $$2;
-      float $$7 = awh.j($$4 * $$5 * $$6);
-      $$3.b.scale($$7 * $$4, $$7 * $$5, $$7 * $$6);
-   }
-
-   public void a(Quaternionf $$0) {
-      esa.a $$1 = this.a.getLast();
-      $$1.a.rotate($$0);
-      $$1.b.rotate($$0);
-   }
-
-   public void a(Quaternionf $$0, float $$1, float $$2, float $$3) {
-      esa.a $$4 = this.a.getLast();
-      $$4.a.rotateAround($$0, $$1, $$2, $$3);
-      $$4.b.rotate($$0);
-   }
-
-   public void a() {
-      esa.a $$0 = this.a.getLast();
-      this.a.addLast(new esa.a(new Matrix4f($$0.a), new Matrix3f($$0.b)));
+   public static Optional<esa> a() {
+      return esa.b.a;
    }
 
    public void b() {
-      this.a.removeLast();
+      RenderSystem.assertOnRenderThread();
+      if (this.a != 0) {
+         throw new IllegalStateException("Current profile not ended");
+      } else {
+         this.a = GL32C.glGenQueries();
+         GL32C.glBeginQuery(35007, this.a);
+      }
    }
 
    public esa.a c() {
-      return this.a.getLast();
+      RenderSystem.assertOnRenderThread();
+      if (this.a == 0) {
+         throw new IllegalStateException("endProfile called before beginProfile");
+      } else {
+         GL32C.glEndQuery(35007);
+         esa.a $$0 = new esa.a(this.a);
+         this.a = 0;
+         return $$0;
+      }
    }
 
-   public boolean d() {
-      return this.a.size() == 1;
-   }
+   public static class a {
+      private static final long a = 0L;
+      private static final long b = -1L;
+      private final int c;
+      private long d;
 
-   public void e() {
-      esa.a $$0 = this.a.getLast();
-      $$0.a.identity();
-      $$0.b.identity();
-   }
-
-   public void a(Matrix4f $$0) {
-      this.a.getLast().a.mul($$0);
-   }
-
-   public static final class a {
-      final Matrix4f a;
-      final Matrix3f b;
-
-      a(Matrix4f $$0, Matrix3f $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      a(int $$0) {
+         this.c = $$0;
       }
 
-      public Matrix4f a() {
-         return this.a;
+      public void a() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d == 0L) {
+            this.d = -1L;
+            GL32C.glDeleteQueries(this.c);
+         }
       }
 
-      public Matrix3f b() {
-         return this.b;
+      public boolean b() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d != 0L) {
+            return true;
+         } else if (1 == GL32C.glGetQueryObjecti(this.c, 34919)) {
+            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
+            GL32C.glDeleteQueries(this.c);
+            return true;
+         } else {
+            return false;
+         }
+      }
+
+      public long c() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d == 0L) {
+            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
+            GL32C.glDeleteQueries(this.c);
+         }
+
+         return this.d;
+      }
+   }
+
+   static class b {
+      static final Optional<esa> a = Optional.ofNullable(a());
+
+      private b() {
+      }
+
+      @Nullable
+      private static esa a() {
+         return !GL.getCapabilities().GL_ARB_timer_query ? null : new esa();
       }
    }
 }

@@ -1,22 +1,31 @@
-public enum evu {
-   a(0, eau.a),
-   b(1, eau.b),
-   c(2, eau.c),
-   d(3, eau.d);
+import javax.annotation.Nullable;
 
-   private final int e;
-   private final vq f;
+public class evu {
+   public final int a;
+   @Nullable
+   public final String b;
 
-   private evu(int $$0, aix<eat> $$1) {
-      this.e = $$0;
-      this.f = vq.c($$1.a().f("generator"));
+   evu(int $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public vq a() {
-      return this.f;
-   }
+   public static class a {
+      private int a = -1;
+      private String b;
 
-   public int b() {
-      return this.e;
+      public evu.a a(int $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public evu.a a(@Nullable String $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public evu a() {
+         return new evu(this.a, this.b);
+      }
    }
 }

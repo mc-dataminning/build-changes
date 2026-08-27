@@ -1,71 +1,57 @@
+import com.mojang.datafixers.util.Unit;
+import com.mojang.serialization.Codec;
+import java.util.List;
 import javax.annotation.Nullable;
+import org.apache.commons.compress.utils.Lists;
 
-public class ffb extends ffe implements awn {
+public class ffb extends ffn {
    @Nullable
-   private vq a;
-   @Nullable
-   private vq b;
-   private int c;
-   private boolean k;
-   private final boolean l;
+   private final exr<Unit> l;
 
-   public ffb(boolean $$0) {
-      super(ewz.a);
-      this.l = $$0;
-   }
-
-   @Override
-   public boolean aO_() {
-      return false;
-   }
-
-   @Override
-   protected boolean aP_() {
-      return false;
-   }
-
-   @Override
-   public void a(vq $$0) {
-      this.b($$0);
-   }
-
-   @Override
-   public void b(vq $$0) {
-      this.a = $$0;
-      this.c(vq.c("menu.working"));
-   }
-
-   @Override
-   public void c(vq $$0) {
-      this.b = $$0;
-      this.a(0);
-   }
-
-   @Override
-   public void a(int $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public void a() {
-      this.k = true;
-   }
-
-   @Override
-   public void a(eyu $$0, int $$1, int $$2, float $$3) {
-      if (this.k) {
-         if (this.l) {
-            this.f.a(null);
+   public static ffb a(exo $$0, ffl $$1, exs $$2) {
+      List<exr<?>> $$3 = Lists.newArrayList();
+      $$3.add($$2.Q());
+      $$3.add($$2.R());
+      exr<Unit> $$4 = x.a(
+         $$0.r,
+         $$0x -> {
+            blt $$1x = $$0x.aj();
+            return new exr<>(
+               "options.difficulty.online",
+               exr.a(),
+               ($$1xx, $$2x) -> $$1x.b(),
+               new exr.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
+               Unit.INSTANCE,
+               $$0xx -> {
+               }
+            );
          }
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-         if (this.a != null) {
-            $$0.a(this.i, this.a, this.g / 2, 70, 16777215);
-         }
+      );
+      if ($$4 != null) {
+         $$3.add($$4);
+      }
 
-         if (this.b != null && this.c != 0) {
-            $$0.a(this.i, vq.i().b(this.b).f(" " + this.c + "%"), this.g / 2, 90, 16777215);
+      return new ffb($$1, $$2, $$3.toArray(new exr[0]), $$4);
+   }
+
+   private ffb(ffl $$0, exs $$1, exr<?>[] $$2, @Nullable exr<Unit> $$3) {
+      super($$0, $$1, vq.c("options.online.title"), $$2);
+      this.l = $$3;
+   }
+
+   @Override
+   protected void aQ_() {
+      super.aQ_();
+      if (this.l != null) {
+         ezm $$0 = this.k.b(this.l);
+         if ($$0 != null) {
+            $$0.j = false;
          }
+      }
+
+      ezm $$1 = this.k.b(this.b.af());
+      if ($$1 != null) {
+         $$1.j = this.f.C();
       }
    }
 }

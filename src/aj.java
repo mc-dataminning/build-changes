@@ -10,30 +10,30 @@ import net.minecraft.server.MinecraftServer;
 public record aj(int c, List<aiy> d, List<aiy> e, Optional<dp> f) {
    public static final Codec<aj> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               avp.a(Codec.INT, "experience", Integer.valueOf(0)).forGetter(aj::a),
-               avp.a(aiy.a.listOf(), "loot", List.of()).forGetter(aj::b),
-               avp.a(aiy.a.listOf(), "recipes", List.of()).forGetter(aj::c),
-               avp.a(dp.a, "function").forGetter(aj::d)
+               avq.a(Codec.INT, "experience", Integer.valueOf(0)).forGetter(aj::a),
+               avq.a(aiy.a.listOf(), "loot", List.of()).forGetter(aj::b),
+               avq.a(aiy.a.listOf(), "recipes", List.of()).forGetter(aj::c),
+               avq.a(dp.a, "function").forGetter(aj::d)
             )
             .apply($$0, aj::new)
    );
    public static final aj b = new aj(0, List.of(), List.of(), Optional.empty());
 
-   public void a(aow $$0) {
+   public void a(aox $$0) {
       $$0.d(this.c);
-      ejb $$1 = new ejb.a($$0.z()).a(elg.a, $$0).a(elg.f, $$0.dk()).a(elf.k);
+      eji $$1 = new eji.a($$0.z()).a(eln.a, $$0).a(eln.f, $$0.dk()).a(elm.k);
       boolean $$2 = false;
 
       for (aiy $$3 : this.d) {
-         ObjectListIterator var6 = $$0.e.aJ().getLootTable($$3).a($$1).iterator();
+         ObjectListIterator var6 = $$0.e.aL().getLootTable($$3).a($$1).iterator();
 
          while (var6.hasNext()) {
-            coz $$4 = (coz)var6.next();
+            cpd $$4 = (cpd)var6.next();
             if ($$0.i($$4)) {
-               $$0.dM().a(null, $$0.dr(), $$0.dt(), $$0.dx(), atk.nd, atl.h, 0.2F, (($$0.eh().i() - $$0.eh().i()) * 0.7F + 1.0F) * 2.0F);
+               $$0.dM().a(null, $$0.dr(), $$0.dt(), $$0.dx(), atl.ne, atm.h, 0.2F, (($$0.eh().i() - $$0.eh().i()) * 0.7F + 1.0F) * 2.0F);
                $$2 = true;
             } else {
-               cds $$5 = $$0.a($$4, false);
+               cdw $$5 = $$0.a($$4, false);
                if ($$5 != null) {
                   $$5.x();
                   $$5.b($$0.cw());
@@ -51,7 +51,7 @@ public record aj(int c, List<aiy> d, List<aiy> e, Optional<dp> f) {
       }
 
       MinecraftServer $$6 = $$0.e;
-      this.f.flatMap($$1x -> $$1x.a($$6.aC())).ifPresent($$2x -> $$6.aC().a($$2x, $$0.dd().a().a(2)));
+      this.f.flatMap($$1x -> $$1x.a($$6.aE())).ifPresent($$2x -> $$6.aE().a($$2x, $$0.dd().a().a(2)));
    }
 
    public int a() {

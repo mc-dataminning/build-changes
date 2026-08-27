@@ -1,111 +1,112 @@
-import com.mojang.logging.LogUtils;
-import java.util.Optional;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class cnd extends coy {
+   public static final int a = 10;
+   private static final int b = 200;
 
-public class cnd extends cou {
-   private static final Logger d = LogUtils.getLogger();
-   public static final String a = "LodestonePos";
-   public static final String b = "LodestoneDimension";
-   public static final String c = "LodestoneTracked";
-
-   public cnd(cou.a $$0) {
+   public cnd(coy.a $$0) {
       super($$0);
    }
 
-   public static boolean d(coz $$0) {
-      sw $$1 = $$0.w();
-      return $$1 != null && ($$1.e("LodestoneDimension") || $$1.e("LodestonePos"));
-   }
-
-   private static Optional<aix<cvn>> c(sw $$0) {
-      return cvn.g.parse(tk.a, $$0.c("LodestoneDimension")).result();
-   }
-
-   @Nullable
-   public static ii a(sw $$0) {
-      boolean $$1 = $$0.e("LodestonePos");
-      boolean $$2 = $$0.e("LodestoneDimension");
-      if ($$1 && $$2) {
-         Optional<aix<cvn>> $$3 = c($$0);
-         if ($$3.isPresent()) {
-            hz $$4 = tl.b($$0.p("LodestonePos"));
-            return ii.a($$3.get(), $$4);
-         }
+   @Override
+   public blw a(crm $$0) {
+      chl $$1 = $$0.o();
+      if ($$1 != null && this.a($$1).c() == enx.a.b) {
+         $$1.c($$0.p());
       }
 
-      return null;
-   }
-
-   @Nullable
-   public static ii a(cvn $$0) {
-      return $$0.E_().j() ? ii.a($$0.ae(), $$0.T()) : null;
+      return blw.b;
    }
 
    @Override
-   public boolean i(coz $$0) {
-      return d($$0) || super.i($$0);
+   public cqw c(cpd $$0) {
+      return cqw.j;
    }
 
    @Override
-   public void a(coz $$0, cvn $$1, bno $$2, int $$3, boolean $$4) {
-      if (!$$1.B) {
-         if (d($$0)) {
-            sw $$5 = $$0.x();
-            if ($$5.e("LodestoneTracked") && !$$5.q("LodestoneTracked")) {
-               return;
-            }
+   public int b(cpd $$0) {
+      return 200;
+   }
 
-            Optional<aix<cvn>> $$6 = c($$5);
-            if ($$6.isPresent() && $$6.get() == $$1.ae() && $$5.e("LodestonePos")) {
-               hz $$7 = tl.b($$5.p("LodestonePos"));
-               if (!$$1.k($$7) || !((aov)$$1).y().a(bzl.s, $$7)) {
-                  $$5.r("LodestonePos");
+   @Override
+   public void a(cvr $$0, boi $$1, cpd $$2, int $$3) {
+      if ($$3 >= 0 && $$1 instanceof chl $$4) {
+         enx $$6 = this.a($$4);
+         if ($$6 instanceof env $$7 && $$6.c() == enx.a.b) {
+            int $$9 = this.b($$2) - $$3 + 1;
+            boolean $$10 = $$9 % 10 == 5;
+            if ($$10) {
+               hz $$11 = $$7.a();
+               dlj $$12 = $$0.a_($$11);
+               boc $$13 = $$1.fo() == blv.a ? $$4.fm() : $$4.fm().e();
+               if ($$12.z() && $$12.l() != dex.a) {
+                  this.a($$0, $$7, $$12, $$1.f(0.0F), $$13);
+               }
+
+               atk $$15;
+               if ($$12.b() instanceof cyx $$14) {
+                  $$15 = $$14.c();
+               } else {
+                  $$15 = atl.cK;
+               }
+
+               $$0.a($$4, $$11, $$15, atm.e);
+               if (!$$0.y_() && $$0.c_($$11) instanceof djb $$17) {
+                  boolean $$18 = $$17.a($$0.X(), $$4, $$7.b());
+                  if ($$18) {
+                     bnx $$19 = $$2.equals($$4.c(bnx.b)) ? bnx.b : bnx.a;
+                     $$2.a(1, $$1, $$19);
+                  }
                }
             }
-         }
-      }
-   }
 
-   @Override
-   public blu a(cri $$0) {
-      hz $$1 = $$0.a();
-      cvn $$2 = $$0.q();
-      if (!$$2.a_($$1).a(cyq.pq)) {
-         return super.a($$0);
+            return;
+         }
+
+         $$1.fs();
       } else {
-         $$2.a(null, $$1, atk.nO, atl.h, 1.0F, 1.0F);
-         chh $$3 = $$0.o();
-         coz $$4 = $$0.n();
-         boolean $$5 = !$$3.fU().d && $$4.M() == 1;
-         if ($$5) {
-            this.a($$2.ae(), $$1, $$4.x());
-         } else {
-            coz $$6 = new coz(cpc.qR, 1);
-            sw $$7 = $$4.v() ? $$4.w().h() : new sw();
-            $$6.c($$7);
-            if (!$$3.fU().d) {
-               $$4.h(1);
-            }
-
-            this.a($$2.ae(), $$1, $$7);
-            if (!$$3.fT().e($$6)) {
-               $$3.a($$6, false);
-            }
-         }
-
-         return blu.a($$2.B);
+         $$1.fs();
       }
    }
 
-   private void a(aix<cvn> $$0, hz $$1, sw $$2) {
-      $$2.a("LodestonePos", tl.a($$1));
-      cvn.g.encodeStart(tk.a, $$0).resultOrPartial(d::error).ifPresent($$1x -> $$2.a("LodestoneDimension", $$1x));
-      $$2.a("LodestoneTracked", true);
+   private enx a(chl $$0) {
+      return cif.a($$0, $$0x -> !$$0x.P_() && $$0x.bt(), $$0.gt());
    }
 
-   @Override
-   public String j(coz $$0) {
-      return d($$0) ? "item.minecraft.lodestone_compass" : super.j($$0);
+   private void a(cvr $$0, env $$1, dlj $$2, enz $$3, boc $$4) {
+      double $$5 = 3.0;
+      int $$6 = $$4 == boc.b ? 1 : -1;
+      int $$7 = $$0.F_().b(7, 12);
+      jr $$8 = new jr(jz.c, $$2);
+      ie $$9 = $$1.b();
+      cnd.a $$10 = cnd.a.a($$3, $$9);
+      enz $$11 = $$1.e();
+
+      for (int $$12 = 0; $$12 < $$7; $$12++) {
+         $$0.a(
+            $$8,
+            $$11.c - (double)($$9 == ie.e ? 1.0E-6F : 0.0F),
+            $$11.d,
+            $$11.e - (double)($$9 == ie.c ? 1.0E-6F : 0.0F),
+            $$10.a() * (double)$$6 * 3.0 * $$0.F_().j(),
+            0.0,
+            $$10.c() * (double)$$6 * 3.0 * $$0.F_().j()
+         );
+      }
+   }
+
+   static record a(double a, double b, double c) {
+      private static final double d = 1.0;
+      private static final double e = 0.1;
+
+      public static cnd.a a(enz $$0, ie $$1) {
+         double $$2 = 0.0;
+
+         return switch ($$1) {
+            case a, b -> new cnd.a($$0.c(), 0.0, -$$0.a());
+            case c -> new cnd.a(1.0, 0.0, -0.1);
+            case d -> new cnd.a(-1.0, 0.0, 0.1);
+            case e -> new cnd.a(-0.1, 0.0, -1.0);
+            case f -> new cnd.a(0.1, 0.0, 1.0);
+         };
+      }
    }
 }

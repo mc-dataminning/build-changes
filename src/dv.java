@@ -41,7 +41,7 @@ public class dv {
       akk.a(this.h, $$1);
       akl.a(this.h, $$1);
       akm.a(this.h, $$1);
-      anm.a(this.h);
+      ann.a(this.h);
       akn.a(this.h);
       akp.a(this.h);
       akt.a(this.h);
@@ -92,10 +92,10 @@ public class dv {
       anc.a(this.h);
       and.a(this.h);
       ane.a(this.h);
-      anf.a(this.h);
-      anh.a(this.h);
-      anj.a(this.h);
-      if (bir.e.d()) {
+      ang.a(this.h);
+      ani.a(this.h);
+      ank.a(this.h);
+      if (bit.e.d()) {
          alj.a(this.h);
       }
 
@@ -105,7 +105,7 @@ public class dv {
          aly.a(this.h);
          aks.a(this.h);
          akr.a(this.h);
-         ang.a(this.h);
+         anh.a(this.h);
          amr.a(this.h);
          amm.a(this.h);
          if ($$0.e) {
@@ -127,7 +127,8 @@ public class dv {
          amh.a(this.h);
          amo.a(this.h);
          amu.a(this.h);
-         ani.a(this.h);
+         anf.a(this.h);
+         anj.a(this.h);
       }
 
       if ($$0.d) {
@@ -150,7 +151,7 @@ public class dv {
 
    public void a(ParseResults<du> $$0, String $$1) {
       du $$2 = (du)$$0.getContext().getSource();
-      $$2.l().aR().a(() -> "/" + $$1);
+      $$2.l().aT().a(() -> "/" + $$1);
       ContextChain<du> $$3 = a($$0, $$1, $$2);
 
       try {
@@ -174,7 +175,7 @@ public class dv {
             g.error("'/{}' threw an exception", $$1, var12);
          }
       } finally {
-         $$2.l().aR().c();
+         $$2.l().aT().c();
       }
    }
 
@@ -212,10 +213,10 @@ public class dv {
       gq<du> $$3 = f.get();
       boolean $$4 = $$3 == null;
       if ($$4) {
-         int $$5 = Math.max(1, $$2.aK().c(cvj.x));
-         int $$6 = $$2.aK().c(cvj.y);
+         int $$5 = Math.max(1, $$2.aM().c(cvn.x));
+         int $$6 = $$2.aM().c(cvn.y);
 
-         try (gq<du> $$7 = new gq<>($$5, $$6, $$2.aR())) {
+         try (gq<du> $$7 = new gq<>($$5, $$6, $$2.aT())) {
             f.set($$7);
             $$1.accept($$7);
             $$7.a();
@@ -227,7 +228,7 @@ public class dv {
       }
    }
 
-   public void a(aow $$0) {
+   public void a(aox $$0) {
       Map<CommandNode<du>, CommandNode<dz>> $$1 = Maps.newHashMap();
       RootCommandNode<dz> $$2 = new RootCommandNode();
       $$1.put(this.h.getRoot(), $$2);
@@ -315,12 +316,12 @@ public class dv {
             final il.c<T> $$1 = $$0.b($$0);
             return new il.a<T>($$1) {
                @Override
-               public Optional<in.c<T>> a(auo<T> $$0x) {
+               public Optional<in.c<T>> a(aup<T> $$0x) {
                   return Optional.of(this.b($$0));
                }
 
                @Override
-               public in.c<T> b(auo<T> $$0x) {
+               public in.c<T> b(aup<T> $$0x) {
                   Optional<in.c<T>> $$1 = $$1.a($$0);
                   return $$1.orElseGet(() -> in.a($$1, $$0));
                }

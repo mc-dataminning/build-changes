@@ -28,15 +28,15 @@ public class afl implements xx<aes> {
       this.d = $$1;
    }
 
-   public static afl a(bno $$0, boolean $$1) {
+   public static afl a(bnq $$0, boolean $$1) {
       return new afl($$0.aj(), $$1, e);
    }
 
-   public static afl a(bno $$0, boolean $$1, blt $$2) {
+   public static afl a(bnq $$0, boolean $$1, blv $$2) {
       return new afl($$0.aj(), $$1, new afl.d($$2));
    }
 
-   public static afl a(bno $$0, boolean $$1, blt $$2, ens $$3) {
+   public static afl a(bnq $$0, boolean $$1, blv $$2, enz $$3) {
       return new afl($$0.aj(), $$1, new afl.e($$2, $$3));
    }
 
@@ -64,7 +64,7 @@ public class afl implements xx<aes> {
    }
 
    @Nullable
-   public bno a(aov $$0) {
+   public bnq a(aow $$0) {
       return $$0.b(this.b);
    }
 
@@ -97,22 +97,22 @@ public class afl implements xx<aes> {
    }
 
    public interface c {
-      void a(blt var1);
+      void a(blv var1);
 
-      void a(blt var1, ens var2);
+      void a(blv var1, enz var2);
 
       void a();
    }
 
    static class d implements afl.a {
-      private final blt a;
+      private final blv a;
 
-      d(blt $$0) {
+      d(blv $$0) {
          this.a = $$0;
       }
 
       private d(uq $$0) {
-         this.a = $$0.b(blt.class);
+         this.a = $$0.b(blv.class);
       }
 
       @Override
@@ -132,17 +132,17 @@ public class afl implements xx<aes> {
    }
 
    static class e implements afl.a {
-      private final blt a;
-      private final ens b;
+      private final blv a;
+      private final enz b;
 
-      e(blt $$0, ens $$1) {
+      e(blv $$0, enz $$1) {
          this.a = $$0;
          this.b = $$1;
       }
 
       private e(uq $$0) {
-         this.b = new ens((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
-         this.a = $$0.b(blt.class);
+         this.b = new enz((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
+         this.a = $$0.b(blv.class);
       }
 
       @Override

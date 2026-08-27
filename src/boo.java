@@ -1,83 +1,118 @@
-public abstract class boo extends boi {
-   protected static final float bS = 0.0F;
+import java.util.Objects;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   protected boo(bnu<? extends boo> $$0, cvn $$1) {
-      super($$0, $$1);
+public interface boo {
+   String b_ = "AngerTime";
+   String c_ = "AngryAt";
+
+   int a();
+
+   void a(int var1);
+
+   @Nullable
+   UUID b();
+
+   void a(@Nullable UUID var1);
+
+   void c();
+
+   default void c(sw $$0) {
+      $$0.a("AngerTime", this.a());
+      if (this.b() != null) {
+         $$0.a("AngryAt", this.b());
+      }
    }
 
-   public float h(hz $$0) {
-      return this.a($$0, this.dM());
+   default void a(cvr $$0, sw $$1) {
+      this.a($$1.h("AngerTime"));
+      if ($$0 instanceof aow) {
+         if (!$$1.b("AngryAt")) {
+            this.a(null);
+         } else {
+            UUID $$2 = $$1.a("AngryAt");
+            this.a($$2);
+            bnq $$3 = ((aow)$$0).a($$2);
+            if ($$3 != null) {
+               if ($$3 instanceof bok) {
+                  this.a((bok)$$3);
+               }
+
+               if ($$3.ai() == bnw.bw) {
+                  this.c((chl)$$3);
+               }
+            }
+         }
+      }
    }
 
-   public float a(hz $$0, cvq $$1) {
-      return 0.0F;
-   }
-
-   @Override
-   public boolean a(cvo $$0, bok $$1) {
-      return this.a(this.dm(), $$0) >= 0.0F;
-   }
-
-   public boolean gc() {
-      return !this.N().l();
-   }
-
-   public boolean gd() {
-      if (this.bz.a(bxh.Z)) {
-         return this.bz.c(bxh.Z).isPresent();
+   default void a(aow $$0, boolean $$1) {
+      boi $$2 = this.q();
+      UUID $$3 = this.b();
+      if (($$2 == null || $$2.ex()) && $$3 != null && $$0.a($$3) instanceof bok) {
+         this.X_();
       } else {
-         for (bwp $$0 : this.bO.b()) {
-            if ($$0.h() && $$0.k() instanceof bvu) {
-               return true;
-            }
+         if ($$2 != null && !Objects.equals($$3, $$2.cw())) {
+            this.a($$2.cw());
+            this.c();
          }
 
+         if (this.a() > 0 && ($$2 == null || $$2.ai() != bnw.bw || !$$1)) {
+            this.a(this.a() - 1);
+            if (this.a() == 0) {
+               this.X_();
+            }
+         }
+      }
+   }
+
+   default boolean a_(boi $$0) {
+      if (!this.c($$0)) {
          return false;
+      } else {
+         return $$0.ai() == bnw.bw && this.a_($$0.dM()) ? true : $$0.cw().equals(this.b());
       }
    }
 
-   @Override
-   protected void fT() {
-      super.fT();
-      bno $$0 = this.fV();
-      if ($$0 != null && $$0.dM() == this.dM()) {
-         this.a($$0.dm(), 5);
-         float $$1 = this.e($$0);
-         if (this instanceof bpa && ((bpa)this).A()) {
-            if ($$1 > 10.0F) {
-               this.a(true, true);
-            }
+   default boolean a_(cvr $$0) {
+      return $$0.Z().b(cvn.O) && this.aa_() && this.b() == null;
+   }
 
-            return;
-         }
+   default boolean aa_() {
+      return this.a() > 0;
+   }
 
-         this.D($$1);
-         if ($$1 > 10.0F) {
-            this.a(true, true);
-            this.bO.a(bvb.a.a);
-         } else if ($$1 > 6.0F) {
-            double $$2 = ($$0.dr() - this.dr()) / (double)$$1;
-            double $$3 = ($$0.dt() - this.dt()) / (double)$$1;
-            double $$4 = ($$0.dx() - this.dx()) / (double)$$1;
-            this.g(this.dp().b(Math.copySign($$2 * $$2 * 0.4, $$2), Math.copySign($$3 * $$3 * 0.4, $$3), Math.copySign($$4 * $$4 * 0.4, $$4)));
-            this.cn();
-         } else if (this.ge() && !this.gd()) {
-            this.bO.b(bvb.a.a);
-            float $$5 = 2.0F;
-            ens $$6 = new ens($$0.dr() - this.dr(), $$0.dt() - this.dt(), $$0.dx() - this.dx()).d().a((double)Math.max($$1 - 2.0F, 0.0F));
-            this.N().a(this.dr() + $$6.c, this.dt() + $$6.d, this.dx() + $$6.e, this.gf());
+   default void a_(chl $$0) {
+      if ($$0.dM().Z().b(cvn.N)) {
+         if ($$0.cw().equals(this.b())) {
+            this.X_();
          }
       }
    }
 
-   protected boolean ge() {
-      return true;
+   default void ab_() {
+      this.X_();
+      this.c();
    }
 
-   protected double gf() {
-      return 1.0;
+   default void X_() {
+      this.a(null);
+      this.a(null);
+      this.h(null);
+      this.a(0);
    }
 
-   protected void D(float $$0) {
-   }
+   @Nullable
+   boi ei();
+
+   void a(@Nullable boi var1);
+
+   void c(@Nullable chl var1);
+
+   void h(@Nullable boi var1);
+
+   boolean c(boi var1);
+
+   @Nullable
+   boi q();
 }

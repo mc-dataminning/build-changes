@@ -1,412 +1,313 @@
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.shorts.Short2BooleanMap;
-import it.unimi.dsi.fastutil.shorts.Short2BooleanOpenHashMap;
-import it.unimi.dsi.fastutil.shorts.Short2ObjectMap;
-import it.unimi.dsi.fastutil.shorts.Short2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.Map.Entry;
+import it.unimi.dsi.fastutil.longs.LongArrayFIFOQueue;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import java.util.Arrays;
+import javax.annotation.Nullable;
 
-public abstract class egn extends ego {
-   public static final dlw a = dlv.i;
-   public static final dmf b = dlv.aM;
-   private static final int e = 200;
-   private static final ThreadLocal<Object2ByteLinkedOpenHashMap<cyo.a>> f = ThreadLocal.withInitial(() -> {
-      Object2ByteLinkedOpenHashMap<cyo.a> $$0 = new Object2ByteLinkedOpenHashMap<cyo.a>(200) {
-         protected void rehash(int $$0) {
-         }
-      };
-      $$0.defaultReturnValue((byte)127);
-      return $$0;
-   });
-   private final Map<egp, eol> g = Maps.newIdentityHashMap();
+public abstract class egn<M extends egh<M>, S extends egk<M>> implements egj {
+   public static final int a = 15;
+   protected static final int b = 1;
+   protected static final long c = egn.a.a(1);
+   private static final int g = 512;
+   protected static final ie[] d = ie.values();
+   protected final dnt e;
+   protected final S f;
+   private final LongOpenHashSet h = new LongOpenHashSet(512, 0.5F);
+   private final LongArrayFIFOQueue i = new LongArrayFIFOQueue();
+   private final LongArrayFIFOQueue j = new LongArrayFIFOQueue();
+   private final hz.a k = new hz.a();
+   private static final int l = 2;
+   private final long[] m = new long[2];
+   private final dns[] n = new dns[2];
 
-   @Override
-   protected void a(dlg.a<ego, egp> $$0) {
-      $$0.a(a);
+   protected egn(dnt $$0, S $$1) {
+      this.e = $$0;
+      this.f = $$1;
+      this.c();
    }
 
-   @Override
-   public ens a(cut $$0, hz $$1, egp $$2) {
-      double $$3 = 0.0;
-      double $$4 = 0.0;
-      hz.a $$5 = new hz.a();
-
-      for (ie $$6 : ie.c.a) {
-         $$5.a($$1, $$6);
-         egp $$7 = $$0.b_($$5);
-         if (this.g($$7)) {
-            float $$8 = $$7.d();
-            float $$9 = 0.0F;
-            if ($$8 == 0.0F) {
-               if (!$$0.a_($$5).d()) {
-                  hz $$10 = $$5.d();
-                  egp $$11 = $$0.b_($$10);
-                  if (this.g($$11)) {
-                     $$8 = $$11.d();
-                     if ($$8 > 0.0F) {
-                        $$9 = $$2.d() - ($$8 - 0.8888889F);
-                     }
-                  }
-               }
-            } else if ($$8 > 0.0F) {
-               $$9 = $$2.d() - $$8;
-            }
-
-            if ($$9 != 0.0F) {
-               $$3 += (double)((float)$$6.j() * $$9);
-               $$4 += (double)((float)$$6.l() * $$9);
-            }
-         }
-      }
-
-      ens $$12 = new ens($$3, 0.0, $$4);
-      if ($$2.c(a)) {
-         for (ie $$13 : ie.c.a) {
-            $$5.a($$1, $$13);
-            if (this.a($$0, $$5, $$13) || this.a($$0, $$5.c(), $$13)) {
-               $$12 = $$12.d().b(0.0, -6.0, 0.0);
-               break;
-            }
-         }
-      }
-
-      return $$12.d();
+   public static boolean a(cux $$0, hz $$1, dlj $$2, dlj $$3) {
+      return $$3 == $$2 ? false : $$3.b($$0, $$1) != $$2.b($$0, $$1) || $$3.h() != $$2.h() || $$3.g() || $$2.g();
    }
 
-   private boolean g(egp $$0) {
-      return $$0.c() || $$0.a().a(this);
-   }
-
-   protected boolean a(cut $$0, hz $$1, ie $$2) {
-      dlf $$3 = $$0.a_($$1);
-      egp $$4 = $$0.b_($$1);
-      if ($$4.a().a(this)) {
-         return false;
-      } else if ($$2 == ie.b) {
-         return true;
+   public static int a(cux $$0, dlj $$1, hz $$2, dlj $$3, hz $$4, ie $$5, int $$6) {
+      boolean $$7 = a($$1);
+      boolean $$8 = a($$3);
+      if ($$7 && $$8) {
+         return $$6;
       } else {
-         return $$3.b() instanceof dcl ? false : $$3.d($$0, $$1, $$2);
+         eos $$9 = $$7 ? eop.a() : $$1.c($$0, $$2);
+         eos $$10 = $$8 ? eop.a() : $$3.c($$0, $$4);
+         return eop.b($$9, $$10, $$5) ? 16 : $$6;
       }
    }
 
-   protected void a(cvn $$0, hz $$1, egp $$2) {
-      if (!$$2.c()) {
-         dlf $$3 = $$0.a_($$1);
-         hz $$4 = $$1.d();
-         dlf $$5 = $$0.a_($$4);
-         egp $$6 = this.a($$0, $$4, $$5);
-         if (this.a($$0, $$1, $$3, ie.a, $$4, $$5, $$0.b_($$4), $$6.a())) {
-            this.a($$0, $$4, $$5, ie.a, $$6);
-            if (this.a($$0, $$1) >= 3) {
-               this.a($$0, $$1, $$2, $$3);
-            }
-         } else if ($$2.b() || !this.a($$0, $$6.a(), $$1, $$3, $$4, $$5)) {
-            this.a($$0, $$1, $$2, $$3);
-         }
-      }
+   public static eos a(cux $$0, hz $$1, dlj $$2, ie $$3) {
+      return a($$2) ? eop.a() : $$2.a($$0, $$1, $$3);
    }
 
-   private void a(cvn $$0, hz $$1, egp $$2, dlf $$3) {
-      int $$4 = $$2.e() - this.c($$0);
-      if ($$2.c(a)) {
-         $$4 = 7;
-      }
-
-      if ($$4 > 0) {
-         Map<ie, egp> $$5 = this.b($$0, $$1, $$3);
-
-         for (Entry<ie, egp> $$6 : $$5.entrySet()) {
-            ie $$7 = $$6.getKey();
-            egp $$8 = $$6.getValue();
-            hz $$9 = $$1.a($$7);
-            dlf $$10 = $$0.a_($$9);
-            if (this.a($$0, $$1, $$3, $$7, $$9, $$10, $$0.b_($$9), $$8.a())) {
-               this.a($$0, $$9, $$10, $$7, $$8);
-            }
-         }
-      }
+   protected static boolean a(dlj $$0) {
+      return !$$0.p() || !$$0.g();
    }
 
-   protected egp a(cvn $$0, hz $$1, dlf $$2) {
-      int $$3 = 0;
-      int $$4 = 0;
+   protected dlj c(hz $$0) {
+      int $$1 = jb.a($$0.u());
+      int $$2 = jb.a($$0.w());
+      dns $$3 = this.a($$1, $$2);
+      return $$3 == null ? cyu.F.o() : $$3.a_($$0);
+   }
 
-      for (ie $$5 : ie.c.a) {
-         hz $$6 = $$1.a($$5);
-         dlf $$7 = $$0.a_($$6);
-         egp $$8 = $$7.u();
-         if ($$8.a().a(this) && this.a($$5, $$0, $$1, $$2, $$6, $$7)) {
-            if ($$8.b()) {
-               $$4++;
-            }
+   protected int a(dlj $$0, hz $$1) {
+      return Math.max(1, $$0.b(this.e.q(), $$1));
+   }
 
-            $$3 = Math.max($$3, $$8.e());
+   protected boolean a(long $$0, dlj $$1, long $$2, dlj $$3, ie $$4) {
+      eos $$5 = this.a($$1, $$0, $$4);
+      eos $$6 = this.a($$3, $$2, $$4.g());
+      return eop.b($$5, $$6);
+   }
+
+   protected eos a(dlj $$0, long $$1, ie $$2) {
+      return a(this.e.q(), this.k.f($$1), $$0, $$2);
+   }
+
+   @Nullable
+   protected dns a(int $$0, int $$1) {
+      long $$2 = cuy.c($$0, $$1);
+
+      for (int $$3 = 0; $$3 < 2; $$3++) {
+         if ($$2 == this.m[$$3]) {
+            return this.n[$$3];
          }
       }
 
-      if (this.a($$0) && $$4 >= 2) {
-         dlf $$9 = $$0.a_($$1.d());
-         egp $$10 = $$9.u();
-         if ($$9.e() || this.h($$10)) {
-            return this.a(false);
-         }
+      dns $$4 = this.e.c($$0, $$1);
+
+      for (int $$5 = 1; $$5 > 0; $$5--) {
+         this.m[$$5] = this.m[$$5 - 1];
+         this.n[$$5] = this.n[$$5 - 1];
       }
 
-      hz $$11 = $$1.c();
-      dlf $$12 = $$0.a_($$11);
-      egp $$13 = $$12.u();
-      if (!$$13.c() && $$13.a().a(this) && this.a(ie.b, $$0, $$1, $$2, $$11, $$12)) {
-         return this.a(8, true);
-      } else {
-         int $$14 = $$3 - this.c($$0);
-         return $$14 <= 0 ? egq.a.g() : this.a($$14, false);
-      }
-   }
-
-   private boolean a(ie $$0, cut $$1, hz $$2, dlf $$3, hz $$4, dlf $$5) {
-      Object2ByteLinkedOpenHashMap<cyo.a> $$7;
-      if (!$$3.b().p() && !$$5.b().p()) {
-         $$7 = f.get();
-      } else {
-         $$7 = null;
-      }
-
-      cyo.a $$8;
-      if ($$7 != null) {
-         $$8 = new cyo.a($$3, $$5, $$0);
-         byte $$9 = $$7.getAndMoveToFirst($$8);
-         if ($$9 != 127) {
-            return $$9 != 0;
-         }
-      } else {
-         $$8 = null;
-      }
-
-      eol $$11 = $$3.k($$1, $$2);
-      eol $$12 = $$5.k($$1, $$4);
-      boolean $$13 = !eoi.b($$11, $$12, $$0);
-      if ($$7 != null) {
-         if ($$7.size() == 200) {
-            $$7.removeLastByte();
-         }
-
-         $$7.putAndMoveToFirst($$8, (byte)($$13 ? 1 : 0));
-      }
-
-      return $$13;
-   }
-
-   public abstract ego d();
-
-   public egp a(int $$0, boolean $$1) {
-      return this.d().g().a(b, $$0).a(a, $$1);
-   }
-
-   public abstract ego e();
-
-   public egp a(boolean $$0) {
-      return this.e().g().a(a, $$0);
-   }
-
-   protected abstract boolean a(cvn var1);
-
-   protected void a(cvo $$0, hz $$1, dlf $$2, ie $$3, egp $$4) {
-      if ($$2.b() instanceof dde) {
-         ((dde)$$2.b()).a($$0, $$1, $$2, $$4);
-      } else {
-         if (!$$2.i()) {
-            this.a($$0, $$1, $$2);
-         }
-
-         $$0.a($$1, $$4.g(), 3);
-      }
-   }
-
-   protected abstract void a(cvo var1, hz var2, dlf var3);
-
-   private static short a(hz $$0, hz $$1) {
-      int $$2 = $$1.u() - $$0.u();
-      int $$3 = $$1.w() - $$0.w();
-      return (short)(($$2 + 128 & 0xFF) << 8 | $$3 + 128 & 0xFF);
-   }
-
-   protected int a(cvq $$0, hz $$1, int $$2, ie $$3, dlf $$4, hz $$5, Short2ObjectMap<Pair<dlf, egp>> $$6, Short2BooleanMap $$7) {
-      int $$8 = 1000;
-
-      for (ie $$9 : ie.c.a) {
-         if ($$9 != $$3) {
-            hz $$10 = $$1.a($$9);
-            short $$11 = a($$5, $$10);
-            Pair<dlf, egp> $$12 = (Pair<dlf, egp>)$$6.computeIfAbsent($$11, $$2x -> {
-               dlf $$3x = $$0.a_($$10);
-               return Pair.of($$3x, $$3x.u());
-            });
-            dlf $$13 = (dlf)$$12.getFirst();
-            egp $$14 = (egp)$$12.getSecond();
-            if (this.a($$0, this.d(), $$1, $$4, $$9, $$10, $$13, $$14)) {
-               boolean $$15 = $$7.computeIfAbsent($$11, $$3x -> {
-                  hz $$4x = $$10.d();
-                  dlf $$5x = $$0.a_($$4x);
-                  return this.a($$0, this.d(), $$10, $$13, $$4x, $$5x);
-               });
-               if ($$15) {
-                  return $$2;
-               }
-
-               if ($$2 < this.b($$0)) {
-                  int $$16 = this.a($$0, $$10, $$2 + 1, $$9.g(), $$13, $$5, $$6, $$7);
-                  if ($$16 < $$8) {
-                     $$8 = $$16;
-                  }
-               }
-            }
-         }
-      }
-
-      return $$8;
-   }
-
-   private boolean a(cut $$0, ego $$1, hz $$2, dlf $$3, hz $$4, dlf $$5) {
-      if (!this.a(ie.a, $$0, $$2, $$3, $$4, $$5)) {
-         return false;
-      } else {
-         return $$5.u().a().a(this) ? true : this.a($$0, $$4, $$5, $$1);
-      }
-   }
-
-   private boolean a(cut $$0, ego $$1, hz $$2, dlf $$3, ie $$4, hz $$5, dlf $$6, egp $$7) {
-      return !this.h($$7) && this.a($$4, $$0, $$2, $$3, $$5, $$6) && this.a($$0, $$5, $$6, $$1);
-   }
-
-   private boolean h(egp $$0) {
-      return $$0.a().a(this) && $$0.b();
-   }
-
-   protected abstract int b(cvq var1);
-
-   private int a(cvq $$0, hz $$1) {
-      int $$2 = 0;
-
-      for (ie $$3 : ie.c.a) {
-         hz $$4 = $$1.a($$3);
-         egp $$5 = $$0.b_($$4);
-         if (this.h($$5)) {
-            $$2++;
-         }
-      }
-
-      return $$2;
-   }
-
-   protected Map<ie, egp> b(cvn $$0, hz $$1, dlf $$2) {
-      int $$3 = 1000;
-      Map<ie, egp> $$4 = Maps.newEnumMap(ie.class);
-      Short2ObjectMap<Pair<dlf, egp>> $$5 = new Short2ObjectOpenHashMap();
-      Short2BooleanMap $$6 = new Short2BooleanOpenHashMap();
-
-      for (ie $$7 : ie.c.a) {
-         hz $$8 = $$1.a($$7);
-         short $$9 = a($$1, $$8);
-         Pair<dlf, egp> $$10 = (Pair<dlf, egp>)$$5.computeIfAbsent($$9, $$2x -> {
-            dlf $$3x = $$0.a_($$8);
-            return Pair.of($$3x, $$3x.u());
-         });
-         dlf $$11 = (dlf)$$10.getFirst();
-         egp $$12 = (egp)$$10.getSecond();
-         egp $$13 = this.a($$0, $$8, $$11);
-         if (this.a($$0, $$13.a(), $$1, $$2, $$7, $$8, $$11, $$12)) {
-            hz $$14 = $$8.d();
-            boolean $$15 = $$6.computeIfAbsent($$9, $$4x -> {
-               dlf $$5x = $$0.a_($$14);
-               return this.a($$0, this.d(), $$8, $$11, $$14, $$5x);
-            });
-            int $$16;
-            if ($$15) {
-               $$16 = 0;
-            } else {
-               $$16 = this.a($$0, $$8, 1, $$7.g(), $$11, $$1, $$5, $$6);
-            }
-
-            if ($$16 < $$3) {
-               $$4.clear();
-            }
-
-            if ($$16 <= $$3) {
-               $$4.put($$7, $$13);
-               $$3 = $$16;
-            }
-         }
-      }
-
+      this.m[0] = $$2;
+      this.n[0] = $$4;
       return $$4;
    }
 
-   private boolean a(cut $$0, hz $$1, dlf $$2, ego $$3) {
-      cyo $$4 = $$2.b();
-      if ($$4 instanceof dde $$5) {
-         return $$5.a(null, $$0, $$1, $$2, $$3);
-      } else if ($$4 instanceof dau || $$2.a(atz.aw) || $$2.a(cyq.cO) || $$2.a(cyq.dS) || $$2.a(cyq.nd)) {
-         return false;
-      } else {
-         return !$$2.a(cyq.ed) && !$$2.a(cyq.fx) && !$$2.a(cyq.kF) && !$$2.a(cyq.kN) ? !$$2.d() : false;
-      }
-   }
-
-   protected boolean a(cut $$0, hz $$1, dlf $$2, ie $$3, hz $$4, dlf $$5, egp $$6, ego $$7) {
-      return $$6.a($$0, $$4, $$7, $$3) && this.a($$3, $$0, $$1, $$2, $$4, $$5) && this.a($$0, $$4, $$5, $$7);
-   }
-
-   protected abstract int c(cvq var1);
-
-   protected int a(cvn $$0, hz $$1, egp $$2, egp $$3) {
-      return this.a((cvq)$$0);
+   private void c() {
+      Arrays.fill(this.m, cuy.a);
+      Arrays.fill(this.n, null);
    }
 
    @Override
-   public void b(cvn $$0, hz $$1, egp $$2) {
-      if (!$$2.b()) {
-         egp $$3 = this.a($$0, $$1, $$0.a_($$1));
-         int $$4 = this.a($$0, $$1, $$2, $$3);
-         if ($$3.c()) {
-            $$2 = $$3;
-            $$0.a($$1, cyq.a.o(), 3);
-         } else if (!$$3.equals($$2)) {
-            $$2 = $$3;
-            dlf $$5 = $$3.g();
-            $$0.a($$1, $$5, 2);
-            $$0.a($$1, $$3.a(), $$4);
-            $$0.a($$1, $$5.b());
+   public void a(hz $$0) {
+      this.h.add($$0.a());
+   }
+
+   public void a(long $$0, @Nullable dnl $$1) {
+      this.f.a($$0, $$1);
+   }
+
+   public void b(cuy $$0, boolean $$1) {
+      this.f.c(jb.b($$0.e, $$0.f), $$1);
+   }
+
+   @Override
+   public void a(jb $$0, boolean $$1) {
+      this.f.d($$0.s(), $$1);
+   }
+
+   @Override
+   public void a(cuy $$0, boolean $$1) {
+      this.f.b(jb.b($$0.e, $$0.f), $$1);
+   }
+
+   @Override
+   public int a() {
+      LongIterator $$0 = this.h.iterator();
+
+      while ($$0.hasNext()) {
+         this.a($$0.nextLong());
+      }
+
+      this.h.clear();
+      this.h.trim(512);
+      int $$1 = 0;
+      $$1 += this.e();
+      $$1 += this.d();
+      this.c();
+      this.f.a(this);
+      this.f.b();
+      return $$1;
+   }
+
+   private int d() {
+      int $$0;
+      for ($$0 = 0; !this.j.isEmpty(); $$0++) {
+         long $$1 = this.j.dequeueLong();
+         long $$2 = this.j.dequeueLong();
+         int $$3 = this.f.e($$1);
+         int $$4 = egn.a.a($$2);
+         if (egn.a.c($$2) && $$3 < $$4) {
+            this.f.a($$1, $$4);
+            $$3 = $$4;
+         }
+
+         if ($$3 == $$4) {
+            this.a($$1, $$2, $$3);
          }
       }
 
-      this.a($$0, $$1, $$2);
+      return $$0;
    }
 
-   protected static int e(egp $$0) {
-      return $$0.b() ? 0 : 8 - Math.min($$0.e(), 8) + ($$0.c(a) ? 8 : 0);
+   private int e() {
+      int $$0;
+      for ($$0 = 0; !this.i.isEmpty(); $$0++) {
+         long $$1 = this.i.dequeueLong();
+         long $$2 = this.i.dequeueLong();
+         this.a($$1, $$2);
+      }
+
+      return $$0;
    }
 
-   private static boolean c(egp $$0, cut $$1, hz $$2) {
-      return $$0.a().a($$1.b_($$2.c()).a());
+   protected void b(long $$0, long $$1) {
+      this.i.enqueue($$0);
+      this.i.enqueue($$1);
+   }
+
+   protected void c(long $$0, long $$1) {
+      this.j.enqueue($$0);
+      this.j.enqueue($$1);
    }
 
    @Override
-   public float a(egp $$0, cut $$1, hz $$2) {
-      return c($$0, $$1, $$2) ? 1.0F : $$0.d();
+   public boolean L_() {
+      return this.f.a() || !this.h.isEmpty() || !this.i.isEmpty() || !this.j.isEmpty();
+   }
+
+   @Nullable
+   @Override
+   public dnl a(jb $$0) {
+      return this.f.d($$0.s());
    }
 
    @Override
-   public float a(egp $$0) {
-      return (float)$$0.e() / 9.0F;
+   public int b(hz $$0) {
+      return this.f.a($$0.a());
    }
 
-   @Override
-   public abstract int d(egp var1);
+   public String b(long $$0) {
+      return this.c($$0).a();
+   }
 
-   @Override
-   public eol b(egp $$0, cut $$1, hz $$2) {
-      return $$0.e() == 9 && c($$0, $$1, $$2) ? eoi.b() : this.g.computeIfAbsent($$0, $$2x -> eoi.a(0.0, 0.0, 0.0, 1.0, (double)$$2x.a($$1, $$2), 1.0));
+   public egk.b c(long $$0) {
+      return this.f.k($$0);
+   }
+
+   protected abstract void a(long var1);
+
+   protected abstract void a(long var1, long var3, int var5);
+
+   protected abstract void a(long var1, long var3);
+
+   public static class a {
+      private static final int a = 4;
+      private static final int b = 6;
+      private static final long c = 15L;
+      private static final long d = 1008L;
+      private static final long e = 1024L;
+      private static final long f = 2048L;
+
+      public static long a(int $$0, ie $$1) {
+         long $$2 = c(1008L, $$1);
+         return a($$2, $$0);
+      }
+
+      public static long a(int $$0) {
+         return a(1008L, $$0);
+      }
+
+      public static long a(int $$0, boolean $$1) {
+         long $$2 = 1008L;
+         $$2 |= 2048L;
+         if ($$1) {
+            $$2 |= 1024L;
+         }
+
+         return a($$2, $$0);
+      }
+
+      public static long a(int $$0, boolean $$1, ie $$2) {
+         long $$3 = c(1008L, $$2);
+         if ($$1) {
+            $$3 |= 1024L;
+         }
+
+         return a($$3, $$0);
+      }
+
+      public static long b(int $$0, boolean $$1, ie $$2) {
+         long $$3 = 0L;
+         if ($$1) {
+            $$3 |= 1024L;
+         }
+
+         $$3 = b($$3, $$2);
+         return a($$3, $$0);
+      }
+
+      public static long a(boolean $$0, boolean $$1, boolean $$2, boolean $$3, boolean $$4) {
+         long $$5 = a(0L, 15);
+         if ($$0) {
+            $$5 = b($$5, ie.a);
+         }
+
+         if ($$1) {
+            $$5 = b($$5, ie.c);
+         }
+
+         if ($$2) {
+            $$5 = b($$5, ie.d);
+         }
+
+         if ($$3) {
+            $$5 = b($$5, ie.e);
+         }
+
+         if ($$4) {
+            $$5 = b($$5, ie.f);
+         }
+
+         return $$5;
+      }
+
+      public static int a(long $$0) {
+         return (int)($$0 & 15L);
+      }
+
+      public static boolean b(long $$0) {
+         return ($$0 & 1024L) != 0L;
+      }
+
+      public static boolean c(long $$0) {
+         return ($$0 & 2048L) != 0L;
+      }
+
+      public static boolean a(long $$0, ie $$1) {
+         return ($$0 & 1L << $$1.ordinal() + 4) != 0L;
+      }
+
+      private static long a(long $$0, int $$1) {
+         return $$0 & -16L | (long)$$1 & 15L;
+      }
+
+      private static long b(long $$0, ie $$1) {
+         return $$0 | 1L << $$1.ordinal() + 4;
+      }
+
+      private static long c(long $$0, ie $$1) {
+         return $$0 & ~(1L << $$1.ordinal() + 4);
+      }
    }
 }

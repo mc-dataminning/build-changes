@@ -28,9 +28,9 @@ public class amn {
       );
    }
 
-   private static int a(du $$0, hz $$1, fj $$2, amn.b $$3, @Nullable Predicate<dlj> $$4) throws CommandSyntaxException {
-      aov $$5 = $$0.e();
-      if ($$4 != null && !$$4.test(new dlj($$5, $$1, true))) {
+   private static int a(du $$0, hz $$1, fj $$2, amn.b $$3, @Nullable Predicate<dln> $$4) throws CommandSyntaxException {
+      aow $$5 = $$0.e();
+      if ($$4 != null && !$$4.test(new dln($$5, $$1, true))) {
          throw a.create();
       } else {
          boolean $$6;
@@ -38,8 +38,8 @@ public class amn {
             $$5.b($$1, true);
             $$6 = !$$2.a().i() || !$$5.a_($$1).i();
          } else {
-            dit $$7 = $$5.c_($$1);
-            bll.a_($$7);
+            dix $$7 = $$5.c_($$1);
+            bln.a_($$7);
             $$6 = true;
          }
 
@@ -55,7 +55,7 @@ public class amn {
 
    public interface a {
       @Nullable
-      fj filter(eaw var1, hz var2, fj var3, aov var4);
+      fj filter(ebd var1, hz var2, fj var3, aow var4);
    }
 
    public static enum b {

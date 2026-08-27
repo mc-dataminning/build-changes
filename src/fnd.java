@@ -1,16 +1,31 @@
-public class fnd<T extends bno> extends fnl<T> {
-   public fnd(fpc $$0) {
-      super($$0, false, 4.0F, 4.0F, 2.0F, 2.0F, 24);
+public class fnd<T extends bnq> extends fmr<T> {
+   private final fpj a;
+
+   public fnd(fpj $$0) {
+      this.a = $$0;
    }
 
-   public static fpi a(fpg $$0) {
-      fpk $$1 = fnl.a(6, $$0);
-      fpl $$2 = $$1.a();
-      $$2.a(
-         "head",
-         fph.c().a(0, 0).a(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F, $$0).a(16, 16).a(-2.0F, 0.0F, -9.0F, 4.0F, 3.0F, 1.0F, $$0),
-         fpe.a(0.0F, 12.0F, -6.0F)
-      );
-      return fpi.a($$1, 64, 32);
+   public static fpp b() {
+      fpr $$0 = new fpr();
+      fps $$1 = $$0.a();
+      int $$2 = 20;
+      int $$3 = 8;
+      int $$4 = 16;
+      int $$5 = 4;
+      $$1.a("bottom", fpo.c().a(0, 10).a(-10.0F, -8.0F, -1.0F, 20.0F, 16.0F, 2.0F), fpl.a(0.0F, 4.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      $$1.a("front", fpo.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), fpl.a(-9.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI * 3.0 / 2.0), 0.0F));
+      $$1.a("back", fpo.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), fpl.a(9.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
+      $$1.a("left", fpo.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), fpl.a(0.0F, 4.0F, -7.0F, 0.0F, (float) Math.PI, 0.0F));
+      $$1.a("right", fpo.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), fpl.a(0.0F, 4.0F, 7.0F));
+      return fpp.a($$0, 64, 32);
+   }
+
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+   }
+
+   @Override
+   public fpj a() {
+      return this.a;
    }
 }

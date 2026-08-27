@@ -36,9 +36,9 @@ public class gh {
    public static final SimpleCommandExceptionType h = new SimpleCommandExceptionType(vq.c("argument.entity.selector.missing"));
    public static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(vq.c("argument.entity.options.unterminated"));
    public static final DynamicCommandExceptionType j = new DynamicCommandExceptionType($$0 -> vq.b("argument.entity.options.valueless", $$0));
-   public static final BiConsumer<ens, List<? extends bno>> k = ($$0, $$1) -> $$1.sort(($$1x, $$2) -> Doubles.compare($$1x.f($$0), $$2.f($$0)));
-   public static final BiConsumer<ens, List<? extends bno>> l = ($$0, $$1) -> $$1.sort(($$1x, $$2) -> Doubles.compare($$2.f($$0), $$1x.f($$0)));
-   public static final BiConsumer<ens, List<? extends bno>> m = ($$0, $$1) -> Collections.shuffle($$1);
+   public static final BiConsumer<enz, List<? extends bnq>> k = ($$0, $$1) -> $$1.sort(($$1x, $$2) -> Doubles.compare($$1x.f($$0), $$2.f($$0)));
+   public static final BiConsumer<enz, List<? extends bnq>> l = ($$0, $$1) -> $$1.sort(($$1x, $$2) -> Doubles.compare($$2.f($$0), $$1x.f($$0)));
+   public static final BiConsumer<enz, List<? extends bnq>> m = ($$0, $$1) -> Collections.shuffle($$1);
    public static final BiFunction<SuggestionsBuilder, Consumer<SuggestionsBuilder>, CompletableFuture<Suggestions>> n = ($$0, $$1) -> $$0.buildFuture();
    private final StringReader w;
    private final boolean x;
@@ -61,8 +61,8 @@ public class gh {
    private Double I;
    private dk J = dk.a;
    private dk K = dk.a;
-   private Predicate<bno> L = $$0x -> true;
-   private BiConsumer<ens, List<? extends bno>> M = gg.b;
+   private Predicate<bnq> L = $$0x -> true;
+   private BiConsumer<enz, List<? extends bnq>> M = gg.b;
    private boolean N;
    @Nullable
    private String O;
@@ -79,7 +79,7 @@ public class gh {
    private boolean Y;
    private boolean Z;
    @Nullable
-   private bnu<?> aa;
+   private bnw<?> aa;
    private boolean ab;
    private boolean ac;
    private boolean ad;
@@ -95,11 +95,11 @@ public class gh {
    }
 
    public gg a() {
-      enn $$2;
+      enu $$2;
       if (this.G == null && this.H == null && this.I == null) {
          if (this.B.b().isPresent()) {
             double $$1 = this.B.b().get();
-            $$2 = new enn(-$$1, -$$1, -$$1, $$1 + 1.0, $$1 + 1.0, $$1 + 1.0);
+            $$2 = new enu(-$$1, -$$1, -$$1, $$1 + 1.0, $$1 + 1.0, $$1 + 1.0);
          } else {
             $$2 = null;
          }
@@ -107,17 +107,17 @@ public class gh {
          $$2 = this.a(this.G == null ? 0.0 : this.G, this.H == null ? 0.0 : this.H, this.I == null ? 0.0 : this.I);
       }
 
-      Function<ens, ens> $$4;
+      Function<enz, enz> $$4;
       if (this.D == null && this.E == null && this.F == null) {
          $$4 = $$0 -> $$0;
       } else {
-         $$4 = $$0 -> new ens(this.D == null ? $$0.c : this.D, this.E == null ? $$0.d : this.E, this.F == null ? $$0.e : this.F);
+         $$4 = $$0 -> new enz(this.D == null ? $$0.c : this.D, this.E == null ? $$0.d : this.E, this.F == null ? $$0.e : this.F);
       }
 
       return new gg(this.y, this.z, this.A, this.L, this.B, $$4, $$2, this.M, this.N, this.O, this.Q, this.aa, this.ae);
    }
 
-   private enn a(double $$0, double $$1, double $$2) {
+   private enu a(double $$0, double $$1, double $$2) {
       boolean $$3 = $$0 < 0.0;
       boolean $$4 = $$1 < 0.0;
       boolean $$5 = $$2 < 0.0;
@@ -127,28 +127,28 @@ public class gh {
       double $$9 = ($$3 ? 0.0 : $$0) + 1.0;
       double $$10 = ($$4 ? 0.0 : $$1) + 1.0;
       double $$11 = ($$5 ? 0.0 : $$2) + 1.0;
-      return new enn($$6, $$7, $$8, $$9, $$10, $$11);
+      return new enu($$6, $$7, $$8, $$9, $$10, $$11);
    }
 
    private void I() {
       if (this.J != dk.a) {
-         this.L = this.L.and(this.a(this.J, bno::dE));
+         this.L = this.L.and(this.a(this.J, bnq::dE));
       }
 
       if (this.K != dk.a) {
-         this.L = this.L.and(this.a(this.K, bno::dC));
+         this.L = this.L.and(this.a(this.K, bnq::dC));
       }
 
       if (!this.C.c()) {
-         this.L = this.L.and($$0 -> !($$0 instanceof aow) ? false : this.C.d(((aow)$$0).cj));
+         this.L = this.L.and($$0 -> !($$0 instanceof aox) ? false : this.C.d(((aox)$$0).cj));
       }
    }
 
-   private Predicate<bno> a(dk $$0, ToDoubleFunction<bno> $$1) {
-      double $$2 = (double)awh.g($$0.b() == null ? 0.0F : $$0.b());
-      double $$3 = (double)awh.g($$0.c() == null ? 359.0F : $$0.c());
+   private Predicate<bnq> a(dk $$0, ToDoubleFunction<bnq> $$1) {
+      double $$2 = (double)awi.g($$0.b() == null ? 0.0F : $$0.b());
+      double $$3 = (double)awi.g($$0.c() == null ? 359.0F : $$0.c());
       return $$3x -> {
-         double $$4 = awh.d($$1.applyAsDouble($$3x));
+         double $$4 = awi.d($$1.applyAsDouble($$3x));
          return $$2 > $$3 ? $$4 >= $$2 || $$4 <= $$3 : $$4 >= $$2 && $$4 <= $$3;
       };
    }
@@ -165,17 +165,17 @@ public class gh {
             this.y = 1;
             this.z = false;
             this.M = k;
-            this.a(bnu.bw);
+            this.a(bnw.bw);
          } else if ($$1 == 'a') {
             this.y = Integer.MAX_VALUE;
             this.z = false;
             this.M = gg.b;
-            this.a(bnu.bw);
+            this.a(bnw.bw);
          } else if ($$1 == 'r') {
             this.y = 1;
             this.z = false;
             this.M = m;
-            this.a(bnu.bw);
+            this.a(bnw.bw);
          } else if ($$1 == 's') {
             this.y = 1;
             this.z = true;
@@ -189,7 +189,7 @@ public class gh {
             this.y = Integer.MAX_VALUE;
             this.z = true;
             this.M = gg.b;
-            this.L = bno::bx;
+            this.L = bnq::bx;
          }
 
          this.R = this::e;
@@ -293,7 +293,7 @@ public class gh {
       return this.w;
    }
 
-   public void a(Predicate<bno> $$0) {
+   public void a(Predicate<bnq> $$0) {
       this.L = this.L.and($$0);
    }
 
@@ -395,11 +395,11 @@ public class gh {
       this.z = $$0;
    }
 
-   public BiConsumer<ens, List<? extends bno>> s() {
+   public BiConsumer<enz, List<? extends bnq>> s() {
       return this.M;
    }
 
-   public void a(BiConsumer<ens, List<? extends bno>> $$0) {
+   public void a(BiConsumer<enz, List<? extends bnq>> $$0) {
       this.M = $$0;
    }
 
@@ -554,7 +554,7 @@ public class gh {
       this.Z = $$0;
    }
 
-   public void a(bnu<?> $$0) {
+   public void a(bnw<?> $$0) {
       this.aa = $$0;
    }
 

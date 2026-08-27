@@ -1,83 +1,37 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Set;
+public final class fph {
+   private final aiy a;
+   private final String b;
 
-public class fph {
-   private static final Set<ie> a = EnumSet.allOf(ie.class);
-   private final List<fpf> b = Lists.newArrayList();
-   private int c;
-   private int d;
-   private boolean e;
-
-   public fph a(int $$0, int $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      return this;
+   public fph(aiy $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public fph a() {
-      return this.a(true);
+   public aiy a() {
+      return this.a;
    }
 
-   public fph a(boolean $$0) {
-      this.e = $$0;
-      return this;
+   public String b() {
+      return this.b;
    }
 
-   public fph a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, fpg $$7, int $$8, int $$9) {
-      this.a($$8, $$9);
-      this.b.add(new fpf($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, $$7, this.e, 1.0F, 1.0F, a));
-      return this;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof fph $$1) ? false : this.a.equals($$1.a) && this.b.equals($$1.b);
+      }
    }
 
-   public fph a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
-      this.a($$7, $$8);
-      this.b.add(new fpf($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, fpg.a, this.e, 1.0F, 1.0F, a));
-      return this;
+   @Override
+   public int hashCode() {
+      int $$0 = this.a.hashCode();
+      return 31 * $$0 + this.b.hashCode();
    }
 
-   public fph a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.add(new fpf(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fpg.a, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fph a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, Set<ie> $$6) {
-      this.b.add(new fpf(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fpg.a, this.e, 1.0F, 1.0F, $$6));
-      return this;
-   }
-
-   public fph a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
-      this.b.add(new fpf($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, fpg.a, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fph a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, fpg $$7) {
-      this.b.add(new fpf($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fph a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, boolean $$6) {
-      this.b.add(new fpf(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fpg.a, $$6, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public fph a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, fpg $$6, float $$7, float $$8) {
-      this.b.add(new fpf(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, $$7, $$8, a));
-      return this;
-   }
-
-   public fph a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, fpg $$6) {
-      this.b.add(new fpf(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public List<fpf> b() {
-      return ImmutableList.copyOf(this.b);
-   }
-
-   public static fph c() {
-      return new fph();
+   @Override
+   public String toString() {
+      return this.a + "#" + this.b;
    }
 }

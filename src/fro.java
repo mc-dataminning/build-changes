@@ -1,8 +1,4 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fro {
+@FunctionalInterface
+public interface fro {
+   xx<aes> predict(int var1);
 }

@@ -1,151 +1,121 @@
-import com.google.common.hash.HashCode;
-import com.google.common.hash.HashFunction;
-import com.mojang.datafixers.util.Either;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.io.IOException;
-import java.net.Proxy;
-import java.net.URL;
+import java.io.UncheckedIOException;
+import java.nio.file.DirectoryNotEmptyException;
+import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
-import java.time.Instant;
-import java.util.HashMap;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.nio.file.attribute.FileTime;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
-import java.util.Map;
-import java.util.Optional;
+import java.util.List;
 import java.util.Set;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class aqk implements AutoCloseable {
+public class aqk {
    private static final Logger a = LogUtils.getLogger();
-   private static final int b = 20;
-   private final Path c;
-   private final bhy<aqk.e> d;
-   private final bkn<Runnable> e = bkn.a(ac.h(), "download-queue");
 
-   public aqk(Path $$0) throws IOException {
-      this.c = $$0;
-      v.c($$0);
-      this.d = bhy.a(aqk.e.a, $$0.resolve("log.json"));
-      aqj.a($$0, 20);
-   }
+   public static void a(Path $$0, int $$1) {
+      try {
+         List<aqk.b> $$2 = a($$0);
+         int $$3 = $$2.size() - $$1;
+         if ($$3 <= 0) {
+            return;
+         }
 
-   private aqk.b b(aqk.a $$0, Map<UUID, aqk.c> $$1) {
-      aqk.b $$2 = new aqk.b();
-      $$1.forEach(
-         ($$2x, $$3) -> {
-            Path $$4 = this.c.resolve($$2x.toString());
-            Path $$5 = null;
+         $$2.sort(aqk.b.a);
+         List<aqk.a> $$4 = a($$2);
+         Collections.reverse($$4);
+         $$4.sort(aqk.a.a);
+         Set<Path> $$5 = new HashSet<>();
 
-            try {
-               $$5 = avy.a($$4, $$3.a, $$0.c, $$0.a, $$3.b, $$0.b, $$0.d, $$0.e);
-               $$2.a.put($$2x, $$5);
-            } catch (Exception var9) {
-               a.error("Failed to download {}", $$3.a, var9);
-               $$2.b.add($$2x);
-            }
+         for (int $$6 = 0; $$6 < $$3; $$6++) {
+            aqk.a $$7 = $$4.get($$6);
+            Path $$8 = $$7.b;
 
             try {
-               this.d
-                  .a(
-                     new aqk.e(
-                        $$2x,
-                        $$3.a.toString(),
-                        Instant.now(),
-                        Optional.ofNullable($$3.b).map(HashCode::toString),
-                        $$5 != null ? this.a($$5) : Either.left("download_failed")
-                     )
-                  );
-            } catch (Exception var8) {
-               a.error("Failed to log download of {}", $$3.a, var8);
+               Files.delete($$8);
+               if ($$7.c == 0) {
+                  $$5.add($$8.getParent());
+               }
+            } catch (IOException var12) {
+               a.warn("Failed to delete cache file {}", $$8, var12);
             }
          }
-      );
-      return $$2;
+
+         $$5.remove($$0);
+
+         for (Path $$10 : $$5) {
+            try {
+               Files.delete($$10);
+            } catch (DirectoryNotEmptyException var10) {
+            } catch (IOException var11) {
+               a.warn("Failed to delete empty(?) cache directory {}", $$10, var11);
+            }
+         }
+      } catch (UncheckedIOException | IOException var13) {
+         a.error("Failed to vacuum cache dir {}", $$0, var13);
+      }
    }
 
-   private Either<String, aqk.d> a(Path $$0) {
+   private static List<aqk.b> a(final Path $$0) throws IOException {
       try {
-         long $$1 = Files.size($$0);
-         Path $$2 = this.c.relativize($$0);
-         return Either.right(new aqk.d($$2.toString(), $$1));
-      } catch (IOException var5) {
-         a.error("Failed to get file size of {}", $$0, var5);
-         return Either.left("no_access");
+         final List<aqk.b> $$1 = new ArrayList<>();
+         Files.walkFileTree($$0, new SimpleFileVisitor<Path>() {
+            public FileVisitResult a(Path $$0x, BasicFileAttributes $$1) {
+               if ($$1.isRegularFile() && !$$0.getParent().equals($$0)) {
+                  FileTime $$2 = $$1.lastModifiedTime();
+                  $$1.add(new aqk.b($$0, $$2));
+               }
+
+               return FileVisitResult.CONTINUE;
+            }
+         });
+         return $$1;
+      } catch (NoSuchFileException var2) {
+         return List.of();
       }
    }
 
-   public CompletableFuture<aqk.b> a(aqk.a $$0, Map<UUID, aqk.c> $$1) {
-      return CompletableFuture.supplyAsync(() -> this.b($$0, $$1), this.e::a);
-   }
+   private static List<aqk.a> a(List<aqk.b> $$0) {
+      List<aqk.a> $$1 = new ArrayList<>();
+      Object2IntOpenHashMap<Path> $$2 = new Object2IntOpenHashMap();
 
-   @Override
-   public void close() throws IOException {
-      this.e.close();
-      this.d.close();
-   }
-
-   public static record a(HashFunction a, int b, Map<String, String> c, Proxy d, avy.a e) {
-   }
-
-   public static record b(Map<UUID, Path> a, Set<UUID> b) {
-
-      public b() {
-         this(new HashMap<>(), new HashSet<>());
+      for (aqk.b $$3 : $$0) {
+         int $$4 = $$2.addTo($$3.b.getParent(), 1);
+         $$1.add(new aqk.a($$3.b, $$4));
       }
+
+      return $$1;
    }
 
-   public static record c(URL a, @Nullable HashCode b) {
-   }
+   static record a(Path b, int c) {
+      public static final Comparator<aqk.a> a = Comparator.comparing(aqk.a::b).reversed();
 
-   static record d(String b, long c) {
-      public static final Codec<aqk.d> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(aqk.d::a), Codec.LONG.fieldOf("size").forGetter(aqk.d::b)).apply($$0, aqk.d::new)
-      );
-
-      public String a() {
+      public Path a() {
          return this.b;
       }
 
-      public long b() {
+      public int b() {
          return this.c;
       }
    }
 
-   static record e(UUID b, String c, Instant d, Optional<String> e, Either<String, aqk.d> f) {
-      public static final Codec<aqk.e> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  jc.c.fieldOf("id").forGetter(aqk.e::a),
-                  Codec.STRING.fieldOf("url").forGetter(aqk.e::b),
-                  avp.m.fieldOf("time").forGetter(aqk.e::c),
-                  Codec.STRING.optionalFieldOf("hash").forGetter(aqk.e::d),
-                  Codec.mapEither(Codec.STRING.fieldOf("error"), aqk.d.a.fieldOf("file")).forGetter(aqk.e::e)
-               )
-               .apply($$0, aqk.e::new)
-      );
+   static record b(Path b, FileTime c) {
+      public static final Comparator<aqk.b> a = Comparator.comparing(aqk.b::b).reversed();
 
-      public UUID a() {
+      public Path a() {
          return this.b;
       }
 
-      public String b() {
+      public FileTime b() {
          return this.c;
-      }
-
-      public Instant c() {
-         return this.d;
-      }
-
-      public Optional<String> d() {
-         return this.e;
-      }
-
-      public Either<String, aqk.d> e() {
-         return this.f;
       }
    }
 }

@@ -1,111 +1,97 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Stream;
+import java.util.BitSet;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.LongStream;
+import javax.annotation.Nullable;
 
-public class dqj extends dnc {
-   public static final Codec<dqj> c = RecordCodecBuilder.create($$0 -> $$0.group(dzh.a.fieldOf("settings").forGetter(dqj::g)).apply($$0, $$0.stable(dqj::new)));
-   private final dzh d;
+public final class dqj {
+   private static final BitSet c = new BitSet(0);
+   private static final Codec<BitSet> d = Codec.LONG_STREAM.xmap($$0 -> BitSet.valueOf($$0.toArray()), $$0 -> LongStream.of($$0.toLongArray()));
+   private static final Codec<dnk> e = kf.n
+      .q()
+      .comapFlatMap($$0 -> $$0 == dnk.c ? DataResult.error(() -> "target_status cannot be empty") : DataResult.success($$0), Function.identity());
+   public static final Codec<dqj> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               e.fieldOf("target_status").forGetter(dqj::a),
+               d.optionalFieldOf("missing_bedrock").forGetter($$0x -> $$0x.h.isEmpty() ? Optional.empty() : Optional.of($$0x.h))
+            )
+            .apply($$0, dqj::new)
+   );
+   private static final Set<aix<cwq>> f = Set.of(cwx.aa, cwx.Z, cwx.ab);
+   public static final cvt b = new cvt() {
+      @Override
+      public int K_() {
+         return 64;
+      }
 
-   public dqj(dzh $$0) {
-      super(new cwx($$0.d()), ac.b($$0::a));
-      this.d = $$0;
+      @Override
+      public int J_() {
+         return -64;
+      }
+   };
+   private final dnk g;
+   private final BitSet h;
+
+   private dqj(dnk $$0, Optional<BitSet> $$1) {
+      this.g = $$0;
+      this.h = $$1.orElse(c);
    }
 
-   @Override
-   public dnd a(il<ebk> $$0, drc $$1, long $$2) {
-      Stream<ij<ebk>> $$3 = this.d.c().map(in::a).orElseGet(() -> $$0.b().map($$0xx -> $$0xx));
-      return dnd.a($$1, $$2, this.b, $$3);
+   @Nullable
+   public static dqj a(sw $$0) {
+      dnk $$1 = dnk.a($$0.l("target_status"));
+      return $$1 == dnk.c ? null : new dqj($$1, Optional.of(BitSet.valueOf($$0.o("missing_bedrock"))));
    }
 
-   @Override
-   protected Codec<? extends dnc> a() {
-      return c;
+   public static void a(doa $$0) {
+      int $$1 = 4;
+      hz.b(0, 0, 0, 15, 4, 15).forEach($$1x -> {
+         if ($$0.a_($$1x).a(cyu.F)) {
+            $$0.a($$1x, cyu.sJ.o(), false);
+         }
+      });
    }
 
-   public dzh g() {
-      return this.d;
-   }
+   public void b(doa $$0) {
+      cvt $$1 = $$0.z();
+      int $$2 = $$1.J_();
+      int $$3 = $$1.ak() - 1;
 
-   @Override
-   public void a(apc $$0, cwg $$1, drc $$2, dnb $$3) {
-   }
-
-   @Override
-   public int a(cvp $$0) {
-      return $$0.J_() + Math.min($$0.K_(), this.d.f().size());
-   }
-
-   @Override
-   public CompletableFuture<dnb> a(Executor $$0, drq $$1, drc $$2, cwg $$3, dnb $$4) {
-      List<dlf> $$5 = this.d.f();
-      hz.a $$6 = new hz.a();
-      dqo $$7 = $$4.a(dqo.a.c);
-      dqo $$8 = $$4.a(dqo.a.a);
-
-      for (int $$9 = 0; $$9 < Math.min($$4.K_(), $$5.size()); $$9++) {
-         dlf $$10 = $$5.get($$9);
-         if ($$10 != null) {
-            int $$11 = $$4.J_() + $$9;
-
-            for (int $$12 = 0; $$12 < 16; $$12++) {
-               for (int $$13 = 0; $$13 < 16; $$13++) {
-                  $$4.a($$6.d($$12, $$11, $$13), $$10, false);
-                  $$7.a($$12, $$11, $$13, $$10);
-                  $$8.a($$12, $$11, $$13, $$10);
-               }
+      for (int $$4 = 0; $$4 < 16; $$4++) {
+         for (int $$5 = 0; $$5 < 16; $$5++) {
+            if (this.a($$4, $$5)) {
+               hz.b($$4, $$2, $$5, $$4, $$3, $$5).forEach($$1x -> $$0.a($$1x, cyu.a.o(), false));
             }
          }
       }
-
-      return CompletableFuture.completedFuture($$4);
    }
 
-   @Override
-   public int a(int $$0, int $$1, dqo.a $$2, cvp $$3, drc $$4) {
-      List<dlf> $$5 = this.d.f();
+   public dnk a() {
+      return this.g;
+   }
 
-      for (int $$6 = Math.min($$5.size(), $$3.al()) - 1; $$6 >= 0; $$6--) {
-         dlf $$7 = $$5.get($$6);
-         if ($$7 != null && $$2.e().test($$7)) {
-            return $$3.J_() + $$6 + 1;
-         }
+   public boolean b() {
+      return !this.h.isEmpty();
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return this.h.get(($$1 & 15) * 16 + ($$0 & 15));
+   }
+
+   public static cwt a(cwt $$0, dnf $$1) {
+      if (!$$1.y()) {
+         return $$0;
+      } else {
+         Predicate<aix<cwq>> $$2 = f::contains;
+         return ($$3, $$4, $$5, $$6) -> {
+            ij<cwq> $$7 = $$0.getNoiseBiome($$3, $$4, $$5, $$6);
+            return $$7.a($$2) ? $$7 : $$1.getNoiseBiome($$3, 0, $$5);
+         };
       }
-
-      return $$3.J_();
-   }
-
-   @Override
-   public cvz a(int $$0, int $$1, cvp $$2, drc $$3) {
-      return new cvz($$2.J_(), this.d.f().stream().limit((long)$$2.K_()).map($$0x -> $$0x == null ? cyq.a.o() : $$0x).toArray(dlf[]::new));
-   }
-
-   @Override
-   public void a(List<String> $$0, drc $$1, hz $$2) {
-   }
-
-   @Override
-   public void a(apc $$0, long $$1, drc $$2, cwo $$3, cwg $$4, dnb $$5, dqk.a $$6) {
-   }
-
-   @Override
-   public void a(apc $$0) {
-   }
-
-   @Override
-   public int f() {
-      return 0;
-   }
-
-   @Override
-   public int d() {
-      return 384;
-   }
-
-   @Override
-   public int e() {
-      return -63;
    }
 }

@@ -1,22 +1,18 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dvy implements dvw {
-   public static final Codec<dvy> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dxx.a.fieldOf("cap_provider").forGetter($$0x -> $$0x.b),
-               dxx.a.fieldOf("stem_provider").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("foliage_radius").orElse(2).forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, dvy::new)
-   );
-   public final dxx b;
-   public final dxx c;
-   public final int d;
+public class dvy implements dwd {
+   public static final Codec<dvy> a = blb.b(0, 256).fieldOf("count").xmap(dvy::new, dvy::a).codec();
+   private final blb b;
 
-   public dvy(dxx $$0, dxx $$1, int $$2) {
+   public dvy(int $$0) {
+      this.b = bky.a($$0);
+   }
+
+   public dvy(blb $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   }
+
+   public blb a() {
+      return this.b;
    }
 }

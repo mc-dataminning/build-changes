@@ -1,34 +1,35 @@
-public interface dps {
-   dps a = new dps() {
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+
+public class dps implements dqa {
+   public static final Codec<dps> a = RecordCodecBuilder.create($$0 -> $$0.group(hz.a.fieldOf("pos").forGetter($$0x -> $$0x.e)).apply($$0, dps::new));
+   public static final xo<vb, dps> b = xo.a(hz.b, $$0 -> $$0.e, dps::new);
+   private final hz e;
+
+   public dps(hz $$0) {
+      this.e = $$0;
+   }
+
+   @Override
+   public Optional<enz> a(cvr $$0) {
+      return Optional.of(enz.b(this.e));
+   }
+
+   @Override
+   public dqb<dps> a() {
+      return dqb.a;
+   }
+
+   public static class a implements dqb<dps> {
       @Override
-      public boolean a() {
-         return true;
+      public Codec<dps> a() {
+         return dps.a;
       }
 
       @Override
-      public void a(dpr $$0) {
+      public xo<vb, dps> b() {
+         return dps.b;
       }
-
-      @Override
-      public void b(dpr $$0) {
-      }
-
-      @Override
-      public boolean a(ij<dpp> $$0, ens $$1, dpp.a $$2, dps.a $$3) {
-         return false;
-      }
-   };
-
-   boolean a();
-
-   void a(dpr var1);
-
-   void b(dpr var1);
-
-   boolean a(ij<dpp> var1, ens var2, dpp.a var3, dps.a var4);
-
-   @FunctionalInterface
-   public interface a {
-      void visit(dpr var1, ens var2);
    }
 }

@@ -1,28 +1,37 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import java.util.List;
-import java.util.Set;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
 
-public class byq extends byn<bog> {
-   @Override
-   public Set<bxh<?>> a() {
-      return ImmutableSet.of(bxh.i);
+public class byq {
+   private final bok a;
+   private final IntSet b = new IntOpenHashSet();
+   private final IntSet c = new IntOpenHashSet();
+
+   public byq(bok $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   protected void a(aov $$0, bog $$1) {
-      $$1.dO().a(bxh.i, this.a($$1));
+   public void a() {
+      this.b.clear();
+      this.c.clear();
    }
 
-   private List<bog> a(bog $$0) {
-      return ImmutableList.copyOf(this.c($$0).b(this::b));
-   }
+   public boolean a(bnq $$0) {
+      int $$1 = $$0.aj();
+      if (this.b.contains($$1)) {
+         return true;
+      } else if (this.c.contains($$1)) {
+         return false;
+      } else {
+         this.a.dM().ae().a("hasLineOfSight");
+         boolean $$2 = this.a.D($$0);
+         this.a.dM().ae().c();
+         if ($$2) {
+            this.b.add($$1);
+         } else {
+            this.c.add($$1);
+         }
 
-   private boolean b(bog $$0) {
-      return $$0.ai() == bnu.bh && $$0.o_();
-   }
-
-   private bxj c(bog $$0) {
-      return $$0.dO().c(bxh.h).orElse(bxj.a());
+         return $$2;
+      }
    }
 }

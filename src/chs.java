@@ -1,39 +1,39 @@
-public class chs extends bno implements chw {
-   private static final aie<coz> b = aih.a(chs.class, aig.h);
-   private double c;
-   private double d;
-   private double e;
-   private int f;
-   private boolean g;
+import javax.annotation.Nullable;
 
-   public chs(bnu<? extends chs> $$0, cvn $$1) {
+public abstract class chs extends cid {
+   public double b;
+   public double c;
+   public double d;
+
+   protected chs(bnw<? extends chs> $$0, cvr $$1) {
       super($$0, $$1);
    }
 
-   public chs(cvn $$0, double $$1, double $$2, double $$3) {
-      this(bnu.M, $$0);
+   protected chs(bnw<? extends chs> $$0, double $$1, double $$2, double $$3, cvr $$4) {
+      this($$0, $$4);
       this.a_($$1, $$2, $$3);
    }
 
-   public void a(coz $$0) {
-      if (!$$0.a(cpc.sr) || $$0.v()) {
-         this.an().b(b, $$0.c(1));
+   public chs(bnw<? extends chs> $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, cvr $$7) {
+      this($$0, $$7);
+      this.b($$1, $$2, $$3, this.dC(), this.dE());
+      this.ar();
+      double $$8 = Math.sqrt($$4 * $$4 + $$5 * $$5 + $$6 * $$6);
+      if ($$8 != 0.0) {
+         this.b = $$4 / $$8 * 0.1;
+         this.c = $$5 / $$8 * 0.1;
+         this.d = $$6 / $$8 * 0.1;
       }
    }
 
-   private coz s() {
-      return this.an().b(b);
-   }
-
-   @Override
-   public coz q() {
-      coz $$0 = this.s();
-      return $$0.b() ? new coz(cpc.sr) : $$0;
+   public chs(bnw<? extends chs> $$0, boi $$1, double $$2, double $$3, double $$4, cvr $$5) {
+      this($$0, $$1.dr(), $$1.dt(), $$1.dx(), $$2, $$3, $$4, $$5);
+      this.b($$1);
+      this.a($$1.dC(), $$1.dE());
    }
 
    @Override
    protected void c_() {
-      this.an().a(b, coz.h);
    }
 
    @Override
@@ -47,105 +47,128 @@ public class chs extends bno implements chw {
       return $$0 < $$1 * $$1;
    }
 
-   public void a(hz $$0) {
-      double $$1 = (double)$$0.u();
-      int $$2 = $$0.v();
-      double $$3 = (double)$$0.w();
-      double $$4 = $$1 - this.dr();
-      double $$5 = $$3 - this.dx();
-      double $$6 = Math.sqrt($$4 * $$4 + $$5 * $$5);
-      if ($$6 > 12.0) {
-         this.c = this.dr() + $$4 / $$6 * 12.0;
-         this.e = this.dx() + $$5 / $$6 * 12.0;
-         this.d = this.dt() + 8.0;
-      } else {
-         this.c = $$1;
-         this.d = (double)$$2;
-         this.e = $$3;
-      }
-
-      this.f = 0;
-      this.g = this.af.a(5) > 0;
-   }
-
-   @Override
-   public void l(double $$0, double $$1, double $$2) {
-      this.o($$0, $$1, $$2);
-      if (this.N == 0.0F && this.M == 0.0F) {
-         double $$3 = Math.sqrt($$0 * $$0 + $$2 * $$2);
-         this.r((float)(awh.d($$0, $$2) * 180.0F / (float)Math.PI));
-         this.s((float)(awh.d($$1, $$3) * 180.0F / (float)Math.PI));
-         this.M = this.dC();
-         this.N = this.dE();
-      }
+   protected cva.a ah_() {
+      return cva.a.a;
    }
 
    @Override
    public void l() {
-      super.l();
-      ens $$0 = this.dp();
-      double $$1 = this.dr() + $$0.c;
-      double $$2 = this.dt() + $$0.d;
-      double $$3 = this.dx() + $$0.e;
-      double $$4 = $$0.h();
-      this.s(chz.d(this.N, (float)(awh.d($$0.d, $$4) * 180.0F / (float)Math.PI)));
-      this.r(chz.d(this.M, (float)(awh.d($$0.c, $$0.e) * 180.0F / (float)Math.PI)));
-      if (!this.dM().B) {
-         double $$5 = this.c - $$1;
-         double $$6 = this.e - $$3;
-         float $$7 = (float)Math.sqrt($$5 * $$5 + $$6 * $$6);
-         float $$8 = (float)awh.d($$6, $$5);
-         double $$9 = awh.d(0.0025, $$4, (double)$$7);
-         double $$10 = $$0.d;
-         if ($$7 < 1.0F) {
-            $$9 *= 0.8;
-            $$10 *= 0.8;
+      bnq $$0 = this.w();
+      if (this.dM().B || ($$0 == null || !$$0.dH()) && this.dM().B(this.dm())) {
+         super.l();
+         if (this.s()) {
+            this.g(1);
          }
 
-         int $$11 = this.dt() < this.d ? 1 : -1;
-         $$0 = new ens(Math.cos((double)$$8) * $$9, $$10 + ((double)$$11 - $$10) * 0.015F, Math.sin((double)$$8) * $$9);
-         this.g($$0);
-      }
-
-      float $$12 = 0.25F;
-      if (this.aZ()) {
-         for (int $$13 = 0; $$13 < 4; $$13++) {
-            this.dM().a(jz.e, $$1 - $$0.c * 0.25, $$2 - $$0.d * 0.25, $$3 - $$0.e * 0.25, $$0.c, $$0.d, $$0.e);
+         enx $$1 = cif.a(this, this::a, this.ah_());
+         if ($$1.c() != enx.a.a) {
+            this.a($$1);
          }
-      } else {
-         this.dM()
-            .a(jz.Z, $$1 - $$0.c * 0.25 + this.af.j() * 0.6 - 0.3, $$2 - $$0.d * 0.25 - 0.5, $$3 - $$0.e * 0.25 + this.af.j() * 0.6 - 0.3, $$0.c, $$0.d, $$0.e);
-      }
 
-      if (!this.dM().B) {
-         this.a_($$1, $$2, $$3);
-         this.f++;
-         if (this.f > 80 && !this.dM().B) {
-            this.a(atk.hS, 1.0F, 1.0F);
-            this.am();
-            if (this.g) {
-               this.dM().b(new cds(this.dM(), this.dr(), this.dt(), this.dx(), this.q()));
-            } else {
-               this.dM().c(2003, this.dm(), 0);
+         this.aQ();
+         enz $$2 = this.dp();
+         double $$3 = this.dr() + $$2.c;
+         double $$4 = this.dt() + $$2.d;
+         double $$5 = this.dx() + $$2.e;
+         cif.a(this, 0.2F);
+         float $$8;
+         if (this.aZ()) {
+            for (int $$6 = 0; $$6 < 4; $$6++) {
+               float $$7 = 0.25F;
+               this.dM().a(jz.e, $$3 - $$2.c * 0.25, $$4 - $$2.d * 0.25, $$5 - $$2.e * 0.25, $$2.c, $$2.d, $$2.e);
             }
+
+            $$8 = this.y();
+         } else {
+            $$8 = this.x();
          }
+
+         this.g($$2.b(this.b, this.c, this.d).a((double)$$8));
+         jx $$10 = this.u();
+         if ($$10 != null) {
+            this.dM().a($$10, $$3, $$4 + 0.5, $$5, 0.0, 0.0, 0.0);
+         }
+
+         this.a_($$3, $$4, $$5);
       } else {
-         this.p($$1, $$2, $$3);
+         this.am();
       }
+   }
+
+   @Override
+   protected boolean a(bnq $$0) {
+      return super.a($$0) && !$$0.ae;
+   }
+
+   @Override
+   protected boolean s() {
+      return true;
+   }
+
+   @Nullable
+   protected jx u() {
+      return jz.ab;
+   }
+
+   protected float x() {
+      return 0.95F;
+   }
+
+   protected float y() {
+      return 0.8F;
    }
 
    @Override
    public void b(sw $$0) {
-      coz $$1 = this.s();
-      if (!$$1.b()) {
-         $$0.a("Item", $$1.b(new sw()));
-      }
+      super.b($$0);
+      $$0.a("power", this.a(new double[]{this.b, this.c, this.d}));
    }
 
    @Override
    public void a(sw $$0) {
-      coz $$1 = coz.a($$0.p("Item"));
-      this.a($$1);
+      super.a($$0);
+      if ($$0.b("power", 9)) {
+         tc $$1 = $$0.c("power", 6);
+         if ($$1.size() == 3) {
+            this.b = $$1.h(0);
+            this.c = $$1.h(1);
+            this.d = $$1.h(2);
+         }
+      }
+   }
+
+   @Override
+   public boolean bt() {
+      return true;
+   }
+
+   @Override
+   public float bE() {
+      return 1.0F;
+   }
+
+   @Override
+   public boolean a(bmp $$0, float $$1) {
+      if (this.b($$0)) {
+         return false;
+      } else {
+         this.bq();
+         bnq $$2 = $$0.d();
+         if ($$2 != null) {
+            if (!this.dM().B) {
+               enz $$3 = $$2.bF();
+               this.g($$3);
+               this.b = $$3.c * 0.1;
+               this.c = $$3.d * 0.1;
+               this.d = $$3.e * 0.1;
+               this.b($$2);
+            }
+
+            return true;
+         } else {
+            return false;
+         }
+      }
    }
 
    @Override
@@ -154,7 +177,23 @@ public class chs extends bno implements chw {
    }
 
    @Override
-   public boolean cq() {
-      return false;
+   public xx<aag> di() {
+      bnq $$0 = this.w();
+      int $$1 = $$0 == null ? 0 : $$0.aj();
+      return new aah(this.aj(), this.cw(), this.dr(), this.dt(), this.dx(), this.dE(), this.dC(), this.ai(), $$1, new enz(this.b, this.c, this.d), 0.0);
+   }
+
+   @Override
+   public void a(aah $$0) {
+      super.a($$0);
+      double $$1 = $$0.j();
+      double $$2 = $$0.k();
+      double $$3 = $$0.l();
+      double $$4 = Math.sqrt($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
+      if ($$4 != 0.0) {
+         this.b = $$1 / $$4 * 0.1;
+         this.c = $$2 / $$4 * 0.1;
+         this.d = $$3 / $$4 * 0.1;
+      }
    }
 }

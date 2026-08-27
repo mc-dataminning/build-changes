@@ -1,18 +1,19 @@
-public class gbk extends gdx {
-   private static final aiy a = new aiy("textures/entity/zombie/husk.png");
+public class gbk extends gcg<cel, fmm<cel>> {
+   private static final aiy a = new aiy("textures/entity/ghast/ghast.png");
+   private static final aiy i = new aiy("textures/entity/ghast/ghast_shooting.png");
 
-   public gbk(gas.a $$0) {
-      super($$0, fpb.an, fpb.ao, fpb.ap);
+   public gbk(gba.a $$0) {
+      super($$0, new fmm<>($$0.a(fpi.ac)), 1.5F);
    }
 
-   protected void a(cfg $$0, esa $$1, float $$2) {
-      float $$3 = 1.0625F;
-      $$1.b(1.0625F, 1.0625F, 1.0625F);
-      super.a($$0, $$1, $$2);
+   public aiy a(cel $$0) {
+      return $$0.u() ? i : a;
    }
 
-   @Override
-   public aiy a(cfg $$0) {
-      return a;
+   protected void a(cel $$0, esh $$1, float $$2) {
+      float $$3 = 1.0F;
+      float $$4 = 4.5F;
+      float $$5 = 4.5F;
+      $$1.b(4.5F, 4.5F, 4.5F);
    }
 }

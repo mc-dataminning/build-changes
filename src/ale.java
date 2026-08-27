@@ -19,12 +19,12 @@ public class ale {
       );
    }
 
-   private static void a(du $$0, aow $$1, cvk $$2) {
+   private static void a(du $$0, aox $$1, cvo $$2) {
       vq $$3 = vq.c("gameMode." + $$2.b());
       if ($$0.f() == $$1) {
          $$0.a(() -> vq.a("commands.gamemode.success.self", $$3), true);
       } else {
-         if ($$0.e().Z().b(cvj.p)) {
+         if ($$0.e().Z().b(cvn.p)) {
             $$1.a(vq.a("gameMode.changed", $$3));
          }
 
@@ -32,10 +32,10 @@ public class ale {
       }
    }
 
-   private static int a(CommandContext<du> $$0, Collection<aow> $$1, cvk $$2) {
+   private static int a(CommandContext<du> $$0, Collection<aox> $$1, cvo $$2) {
       int $$3 = 0;
 
-      for (aow $$4 : $$1) {
+      for (aox $$4 : $$1) {
          if ($$4.a($$2)) {
             a((du)$$0.getSource(), $$4, $$2);
             $$3++;

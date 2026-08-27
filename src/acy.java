@@ -3,7 +3,7 @@ public class acy implements xx<aag> {
    private final double b;
    private final double c;
 
-   public acy(dmw $$0) {
+   public acy(dna $$0) {
       this.b = $$0.a();
       this.c = $$0.b();
    }

@@ -1,162 +1,218 @@
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
+import com.mojang.logging.LogUtils;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.concurrent.atomic.AtomicReferenceArray;
+import java.util.function.BooleanSupplier;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fqa implements dz {
-   private final fpy a;
-   private final exh b;
-   private int c = -1;
+public class fqa extends dnj {
+   static final Logger a = LogUtils.getLogger();
+   private final dnq b;
+   private final egl c;
+   volatile fqa.a d;
+   final fqe e;
+
+   public fqa(fqe $$0, int $$1) {
+      this.e = $$0;
+      this.b = new dnm($$0, new cuy(0, 0), $$0.I_().d(kg.at).f(cwx.b));
+      this.c = new egl(this, true, $$0.E_().g());
+      this.d = new fqa.a(b($$1));
+   }
+
+   @Override
+   public egl p() {
+      return this.c;
+   }
+
+   private static boolean a(@Nullable dnq $$0, int $$1, int $$2) {
+      if ($$0 == null) {
+         return false;
+      } else {
+         cuy $$3 = $$0.f();
+         return $$3.e == $$1 && $$3.f == $$2;
+      }
+   }
+
+   public void a(cuy $$0) {
+      if (this.d.b($$0.e, $$0.f)) {
+         int $$1 = this.d.a($$0.e, $$0.f);
+         dnq $$2 = this.d.a($$1);
+         if (a($$2, $$0.e, $$0.f)) {
+            this.d.a($$1, $$2, null);
+         }
+      }
+   }
+
    @Nullable
-   private CompletableFuture<Suggestions> d;
-   private final Set<String> e = new HashSet<>();
-
-   public fqa(fpy $$0, exh $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   @Override
-   public Collection<String> q() {
-      List<String> $$0 = Lists.newArrayList();
-
-      for (fqg $$1 : this.a.o()) {
-         $$0.add($$1.a().getName());
+   public dnq b(int $$0, int $$1, dnk $$2, boolean $$3) {
+      if (this.d.b($$0, $$1)) {
+         dnq $$4 = this.d.a(this.d.a($$0, $$1));
+         if (a($$4, $$0, $$1)) {
+            return $$4;
+         }
       }
 
-      return $$0;
+      return $$3 ? this.b : null;
    }
 
    @Override
-   public Collection<String> z() {
-      if (this.e.isEmpty()) {
-         return this.q();
+   public cux q() {
+      return this.e;
+   }
+
+   public void a(int $$0, int $$1, uq $$2) {
+      if (!this.d.b($$0, $$1)) {
+         a.warn("Ignoring chunk since it's not in the view range: {}, {}", $$0, $$1);
       } else {
-         Set<String> $$0 = new HashSet<>(this.q());
-         $$0.addAll(this.e);
-         return $$0;
+         int $$3 = this.d.a($$0, $$1);
+         dnq $$4 = this.d.b.get($$3);
+         if (!a($$4, $$0, $$1)) {
+            a.warn("Ignoring chunk since it's not present: {}, {}", $$0, $$1);
+         } else {
+            $$4.a($$2);
+         }
       }
    }
 
-   @Override
-   public Collection<String> A() {
-      return (Collection<String>)(this.b.v != null && this.b.v.c() == enq.a.c ? Collections.singleton(((enp)this.b.v).a().cx()) : Collections.emptyList());
-   }
-
-   @Override
-   public Collection<String> r() {
-      return this.a.z().f();
-   }
-
-   @Override
-   public Stream<aiy> s() {
-      return this.b.ai().d().stream();
-   }
-
-   @Override
-   public Stream<aiy> t() {
-      return this.a.l().d();
-   }
-
-   @Override
-   public boolean c(int $$0) {
-      fun $$1 = this.b.s;
-      return $$1 != null ? $$1.m($$0) : $$0 == 0;
-   }
-
-   @Override
-   public CompletableFuture<Suggestions> a(aix<? extends iv<?>> $$0, dz.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
-      return this.v().c($$0).map($$2x -> {
-         this.a($$2x, $$1, $$2);
-         return $$2.buildFuture();
-      }).orElseGet(() -> this.a($$3));
-   }
-
-   @Override
-   public CompletableFuture<Suggestions> a(CommandContext<?> $$0) {
-      if (this.d != null) {
-         this.d.cancel(false);
-      }
-
-      this.d = new CompletableFuture<>();
-      int $$1 = ++this.c;
-      this.a.b(new afd($$1, $$0.getInput()));
-      return this.d;
-   }
-
-   private static String a(double $$0) {
-      return String.format(Locale.ROOT, "%.2f", $$0);
-   }
-
-   private static String a(int $$0) {
-      return Integer.toString($$0);
-   }
-
-   @Override
-   public Collection<dz.b> B() {
-      enq $$0 = this.b.v;
-      if ($$0 != null && $$0.c() == enq.a.b) {
-         hz $$1 = ((eno)$$0).a();
-         return Collections.singleton(new dz.b(a($$1.u()), a($$1.v()), a($$1.w())));
+   @Nullable
+   public dnq a(int $$0, int $$1, uq $$2, sw $$3, Consumer<abq.b> $$4) {
+      if (!this.d.b($$0, $$1)) {
+         a.warn("Ignoring chunk since it's not in the view range: {}, {}", $$0, $$1);
+         return null;
       } else {
-         return dz.super.B();
+         int $$5 = this.d.a($$0, $$1);
+         dnq $$6 = this.d.b.get($$5);
+         cuy $$7 = new cuy($$0, $$1);
+         if (!a($$6, $$0, $$1)) {
+            $$6 = new dnq(this.e, $$7);
+            $$6.a($$2, $$3, $$4);
+            this.d.a($$5, $$6);
+         } else {
+            $$6.a($$2, $$3, $$4);
+         }
+
+         this.e.a($$7);
+         return $$6;
       }
    }
 
    @Override
-   public Collection<dz.b> C() {
-      enq $$0 = this.b.v;
-      if ($$0 != null && $$0.c() == enq.a.b) {
-         ens $$1 = $$0.e();
-         return Collections.singleton(new dz.b(a($$1.c), a($$1.d), a($$1.e)));
-      } else {
-         return dz.super.C();
+   public void a(BooleanSupplier $$0, boolean $$1) {
+   }
+
+   public void d(int $$0, int $$1) {
+      this.d.e = $$0;
+      this.d.f = $$1;
+   }
+
+   public void a(int $$0) {
+      int $$1 = this.d.c;
+      int $$2 = b($$0);
+      if ($$1 != $$2) {
+         fqa.a $$3 = new fqa.a($$2);
+         $$3.e = this.d.e;
+         $$3.f = this.d.f;
+
+         for (int $$4 = 0; $$4 < this.d.b.length(); $$4++) {
+            dnq $$5 = this.d.b.get($$4);
+            if ($$5 != null) {
+               cuy $$6 = $$5.f();
+               if ($$3.b($$6.e, $$6.f)) {
+                  $$3.a($$3.a($$6.e, $$6.f), $$5);
+               }
+            }
+         }
+
+         this.d = $$3;
       }
    }
 
-   @Override
-   public Set<aix<cvn>> u() {
-      return this.a.w();
+   private static int b(int $$0) {
+      return Math.max(2, $$0) + 3;
    }
 
    @Override
-   public iw v() {
-      return this.a.f();
+   public String e() {
+      return this.d.b.length() + ", " + this.j();
    }
 
    @Override
-   public cjs w() {
-      return this.a.y();
+   public int j() {
+      return this.d.g;
    }
 
-   public void a(int $$0, Suggestions $$1) {
-      if ($$0 == this.c) {
-         this.d.complete($$1);
-         this.d = null;
-         this.c = -1;
+   @Override
+   public void a(cwa $$0, jb $$1) {
+      exo.P().f.b($$1.a(), $$1.b(), $$1.c());
+   }
+
+   final class a {
+      final AtomicReferenceArray<dnq> b;
+      final int c;
+      private final int d;
+      volatile int e;
+      volatile int f;
+      int g;
+
+      a(int $$0) {
+         this.c = $$0;
+         this.d = $$0 * 2 + 1;
+         this.b = new AtomicReferenceArray<>(this.d * this.d);
       }
-   }
 
-   public void a(abf.a $$0, List<String> $$1) {
-      switch ($$0) {
-         case a:
-            this.e.addAll($$1);
-            break;
-         case b:
-            $$1.forEach(this.e::remove);
-            break;
-         case c:
-            this.e.clear();
-            this.e.addAll($$1);
+      int a(int $$0, int $$1) {
+         return Math.floorMod($$1, this.d) * this.d + Math.floorMod($$0, this.d);
+      }
+
+      protected void a(int $$0, @Nullable dnq $$1) {
+         dnq $$2 = this.b.getAndSet($$0, $$1);
+         if ($$2 != null) {
+            this.g--;
+            fqa.this.e.a($$2);
+         }
+
+         if ($$1 != null) {
+            this.g++;
+         }
+      }
+
+      protected dnq a(int $$0, dnq $$1, @Nullable dnq $$2) {
+         if (this.b.compareAndSet($$0, $$1, $$2) && $$2 == null) {
+            this.g--;
+         }
+
+         fqa.this.e.a($$1);
+         return $$1;
+      }
+
+      boolean b(int $$0, int $$1) {
+         return Math.abs($$0 - this.e) <= this.c && Math.abs($$1 - this.f) <= this.c;
+      }
+
+      @Nullable
+      protected dnq a(int $$0) {
+         return this.b.get($$0);
+      }
+
+      private void a(String $$0) {
+         try (FileOutputStream $$1 = new FileOutputStream($$0)) {
+            int $$2 = fqa.this.d.c;
+
+            for (int $$3 = this.f - $$2; $$3 <= this.f + $$2; $$3++) {
+               for (int $$4 = this.e - $$2; $$4 <= this.e + $$2; $$4++) {
+                  dnq $$5 = fqa.this.d.b.get(fqa.this.d.a($$4, $$3));
+                  if ($$5 != null) {
+                     cuy $$6 = $$5.f();
+                     $$1.write(($$6.e + "\t" + $$6.f + "\t" + $$5.C() + "\n").getBytes(StandardCharsets.UTF_8));
+                  }
+               }
+            }
+         } catch (IOException var10) {
+            fqa.a.error("Failed to dump chunks to file {}", $$0, var10);
+         }
       }
    }
 }

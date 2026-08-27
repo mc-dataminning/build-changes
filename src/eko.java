@@ -1,82 +1,77 @@
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class eko extends ekh {
-   private static final Codec<Pair<ij<dik>, cnn>> b = Codec.mapPair(kf.am.r().fieldOf("pattern"), cnn.q.fieldOf("color")).codec();
-   public static final Codec<eko> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and($$0.group(b.listOf().fieldOf("patterns").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("append").forGetter($$0x -> $$0x.d)))
-            .apply($$0, eko::new)
-   );
-   private final List<Pair<ij<dik>, cnn>> c;
-   private final boolean d;
+public abstract class eko implements ekp {
+   protected final List<emb> g;
+   private final Predicate<ejc> a;
 
-   eko(List<elu> $$0, List<Pair<ij<dik>, cnn>> $$1, boolean $$2) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
+   protected eko(List<emb> $$0) {
+      this.g = $$0;
+      this.a = emd.a($$0);
    }
+
+   protected static <T extends eko> P1<Mu<T>, List<emb>> a(Instance<T> $$0) {
+      return $$0.group(avq.a(emd.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.g));
+   }
+
+   public final cpd b(cpd $$0, ejc $$1) {
+      return this.a.test($$1) ? this.a($$0, $$1) : $$0;
+   }
+
+   protected abstract cpd a(cpd var1, ejc var2);
 
    @Override
-   protected coz a(coz $$0, eiv $$1) {
-      sw $$2 = cms.a($$0);
-      if ($$2 == null) {
-         $$2 = new sw();
-      }
+   public void a(ejl $$0) {
+      ekp.super.a($$0);
 
-      dik.a $$3 = new dik.a();
-      this.c.forEach($$3::a);
-      tc $$4 = $$3.a();
-      tc $$5;
-      if (this.d) {
-         $$5 = $$2.c("Patterns", 10).e();
-         $$5.addAll($$4);
-      } else {
-         $$5 = $$4;
+      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
+         this.g.get($$1).a($$0.a(".conditions[" + $$1 + "]"));
       }
-
-      $$2.a("Patterns", $$5);
-      cms.a($$0, div.t, $$2);
-      return $$0;
    }
 
-   @Override
-   public ekj b() {
-      return ekk.y;
+   protected static eko.a<?> a(Function<List<emb>, ekp> $$0) {
+      return new eko.b($$0);
    }
 
-   public static eko.a a(boolean $$0) {
-      return new eko.a($$0);
-   }
+   public abstract static class a<T extends eko.a<T>> implements ekp.a, elu<T> {
+      private final Builder<emb> a = ImmutableList.builder();
 
-   public static class a extends ekh.a<eko.a> {
-      private final Builder<Pair<ij<dik>, cnn>> a = ImmutableList.builder();
-      private final boolean b;
-
-      a(boolean $$0) {
-         this.b = $$0;
+      public T a(emb.a $$0) {
+         this.a.add($$0.build());
+         return this.c();
       }
 
-      protected eko.a a() {
+      public final T f() {
+         return this.c();
+      }
+
+      protected abstract T c();
+
+      protected List<emb> g() {
+         return this.a.build();
+      }
+   }
+
+   static final class b extends eko.a<eko.b> {
+      private final Function<List<emb>, ekp> a;
+
+      public b(Function<List<emb>, ekp> $$0) {
+         this.a = $$0;
+      }
+
+      protected eko.b a() {
          return this;
       }
 
       @Override
-      public eki b() {
-         return new eko(this.g(), this.a.build(), this.b);
-      }
-
-      public eko.a a(aix<dik> $$0, cnn $$1) {
-         return this.a(kf.am.f($$0), $$1);
-      }
-
-      public eko.a a(ij<dik> $$0, cnn $$1) {
-         this.a.add(Pair.of($$0, $$1));
-         return this;
+      public ekp b() {
+         return this.a.apply(this.g());
       }
    }
 }

@@ -1,29 +1,43 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
-import java.util.OptionalInt;
+import javax.annotation.Nullable;
 
-public abstract class dwx {
-   public static final Codec<dwx> a = kf.aa.q().dispatch(dwx::b, dwy::a);
-   protected static final int b = 16;
-   protected final OptionalInt c;
+public class dwx implements dwd {
+   public static final Codec<dwx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.fieldOf("crystal_invulnerable").orElse(false).forGetter($$0x -> $$0x.b),
+               dvj.a.a.listOf().fieldOf("spikes").forGetter($$0x -> $$0x.c),
+               hz.a.optionalFieldOf("crystal_beam_target").forGetter($$0x -> Optional.ofNullable($$0x.d))
+            )
+            .apply($$0, dwx::new)
+   );
+   private final boolean b;
+   private final List<dvj.a> c;
+   @Nullable
+   private final hz d;
 
-   protected static <S extends dwx> RecordCodecBuilder<S, OptionalInt> a() {
-      return Codec.intRange(0, 80)
-         .optionalFieldOf("min_clipped_height")
-         .xmap($$0 -> $$0.map(OptionalInt::of).orElse(OptionalInt.empty()), $$0 -> $$0.isPresent() ? Optional.of($$0.getAsInt()) : Optional.empty())
-         .forGetter($$0 -> $$0.c);
+   public dwx(boolean $$0, List<dvj.a> $$1, @Nullable hz $$2) {
+      this($$0, $$1, Optional.ofNullable($$2));
    }
 
-   public dwx(OptionalInt $$0) {
-      this.c = $$0;
+   private dwx(boolean $$0, List<dvj.a> $$1, Optional<hz> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2.orElse(null);
    }
 
-   protected abstract dwy<?> b();
+   public boolean a() {
+      return this.b;
+   }
 
-   public abstract int a(int var1, int var2);
-
-   public OptionalInt c() {
+   public List<dvj.a> b() {
       return this.c;
+   }
+
+   @Nullable
+   public hz c() {
+      return this.d;
    }
 }

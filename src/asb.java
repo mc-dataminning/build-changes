@@ -1,17 +1,52 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-public interface asb extends aru {
-   @Override
-   default CompletableFuture<Void> a(aru.a $$0, asa $$1, bil $$2, bil $$3, Executor $$4, Executor $$5) {
-      return $$0.a(axk.a).thenRunAsync(() -> {
-         $$3.a();
-         $$3.a("listener");
-         this.a($$1);
-         $$3.c();
-         $$3.b();
-      }, $$5);
+public interface asb extends ase {
+   Set<String> a();
+
+   List<arz> a(aiy var1);
+
+   Map<aiy, arz> b(String var1, Predicate<aiy> var2);
+
+   Map<aiy, List<arz>> c(String var1, Predicate<aiy> var2);
+
+   Stream<aqp> b();
+
+   public static enum a implements asb {
+      a;
+
+      @Override
+      public Set<String> a() {
+         return Set.of();
+      }
+
+      @Override
+      public Optional<arz> getResource(aiy $$0) {
+         return Optional.empty();
+      }
+
+      @Override
+      public List<arz> a(aiy $$0) {
+         return List.of();
+      }
+
+      @Override
+      public Map<aiy, arz> b(String $$0, Predicate<aiy> $$1) {
+         return Map.of();
+      }
+
+      @Override
+      public Map<aiy, List<arz>> c(String $$0, Predicate<aiy> $$1) {
+         return Map.of();
+      }
+
+      @Override
+      public Stream<aqp> b() {
+         return Stream.of();
+      }
    }
-
-   void a(asa var1);
 }

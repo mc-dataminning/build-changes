@@ -1,20 +1,22 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class dsd implements drv {
-   public static final Codec<dsd> a = RecordCodecBuilder.create($$0 -> $$0.group(drv.b.fieldOf("predicate").forGetter($$0x -> $$0x.e)).apply($$0, dsd::new));
-   private final drv e;
+public interface dsd<P extends dsc> {
+   dsd<dsi> a = a("matching_blocks", dsi.a);
+   dsd<dsh> b = a("matching_block_tag", dsh.e);
+   dsd<dsj> c = a("matching_fluids", dsj.a);
+   dsd<dsf> d = a("has_sturdy_face", dsf.a);
+   dsd<dsm> e = a("solid", dsm.a);
+   dsd<dsl> f = a("replaceable", dsl.a);
+   dsd<dsp> g = a("would_survive", dsp.a);
+   dsd<dsg> h = a("inside_world_bounds", dsg.a);
+   dsd<dsb> i = a("any_of", dsb.a);
+   dsd<dsa> j = a("all_of", dsa.a);
+   dsd<dsk> k = a("not", dsk.a);
+   dsd<dso> l = a("true", dso.e);
 
-   public dsd(drv $$0) {
-      this.e = $$0;
-   }
+   Codec<P> codec();
 
-   public boolean a(cwi $$0, hz $$1) {
-      return !this.e.test($$0, $$1);
-   }
-
-   @Override
-   public drw<?> a() {
-      return drw.k;
+   private static <P extends dsc> dsd<P> a(String $$0, Codec<P> $$1) {
+      return iv.a(kf.O, $$0, () -> $$1);
    }
 }

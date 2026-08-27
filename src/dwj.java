@@ -1,30 +1,21 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dwj(int b, int c, int d, ij<eai> e) implements dvw {
-   public static final Codec<dwj> a = RecordCodecBuilder.create(
+public class dwj extends dvv {
+   public static final Codec<dwj> c = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               avp.j.fieldOf("tries").orElse(128).forGetter(dwj::a),
-               avp.i.fieldOf("xz_spread").orElse(7).forGetter(dwj::b),
-               avp.i.fieldOf("y_spread").orElse(3).forGetter(dwj::c),
-               eai.b.fieldOf("feature").forGetter(dwj::d)
+               dye.a.fieldOf("state_provider").forGetter($$0x -> $$0x.b),
+               avq.j.fieldOf("spread_width").forGetter($$0x -> $$0x.d),
+               avq.j.fieldOf("spread_height").forGetter($$0x -> $$0x.e)
             )
             .apply($$0, dwj::new)
    );
+   public final int d;
+   public final int e;
 
-   public int a() {
-      return this.b;
-   }
-
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public ij<eai> d() {
-      return this.e;
+   public dwj(dye $$0, int $$1, int $$2) {
+      super($$0);
+      this.d = $$1;
+      this.e = $$2;
    }
 }

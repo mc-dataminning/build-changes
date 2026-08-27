@@ -13,15 +13,15 @@ public class fx implements fq {
    }
 
    @Override
-   public ens a(du $$0) {
-      ens $$1 = $$0.d();
-      return new ens(this.a.a($$1.c), this.b.a($$1.d), this.c.a($$1.e));
+   public enz a(du $$0) {
+      enz $$1 = $$0.d();
+      return new enz(this.a.a($$1.c), this.b.a($$1.d), this.c.a($$1.e));
    }
 
    @Override
-   public enr b(du $$0) {
-      enr $$1 = $$0.k();
-      return new enr((float)this.a.a((double)$$1.i), (float)this.b.a((double)$$1.j));
+   public eny b(du $$0) {
+      eny $$1 = $$0.k();
+      return new eny((float)this.a.a((double)$$1.i), (float)this.b.a((double)$$1.j));
    }
 
    @Override
@@ -96,7 +96,7 @@ public class fx implements fq {
       return new fx(new fw(false, $$0), new fw(false, $$1), new fw(false, $$2));
    }
 
-   public static fx a(enr $$0) {
+   public static fx a(eny $$0) {
       return new fx(new fw(false, (double)$$0.i), new fw(false, (double)$$0.j), new fw(true, 0.0));
    }
 

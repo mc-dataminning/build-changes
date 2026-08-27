@@ -1,13 +1,8 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class bxx extends byn<bog> {
-   @Override
-   protected void a(aov $$0, bog $$1) {
-   }
-
-   @Override
-   public Set<bxh<?>> a() {
-      return ImmutableSet.of();
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bxx {
 }

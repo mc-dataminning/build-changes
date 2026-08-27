@@ -1,24 +1,29 @@
 import com.mojang.serialization.MapCodec;
 
-public class dgv extends dgz {
-   public static final MapCodec<dgv> a = b(dgv::new);
+public class dgv extends dba implements cyv {
+   public static final MapCodec<dgv> c = b(dgv::new);
 
    @Override
    public MapCodec<dgv> a() {
-      return a;
+      return c;
    }
 
-   public dgv(dle.d $$0) {
+   public dgv(dli.d $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean a_(dlf $$0, cut $$1, hz $$2) {
-      return false;
+   public boolean b(cvu $$0, hz $$1, dlj $$2) {
+      return true;
    }
 
    @Override
-   protected int g(dlf $$0, cut $$1, hz $$2) {
-      return $$1.O();
+   public boolean a(cvr $$0, awp $$1, hz $$2, dlj $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aow $$0, awp $$1, hz $$2, dlj $$3) {
+      a($$0, $$2, new cpd(this));
    }
 }

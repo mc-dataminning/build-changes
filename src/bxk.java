@@ -1,35 +1,59 @@
-public class bxk {
-   private final brk a;
-   private final float b;
-   private final int c;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-   public bxk(hz $$0, float $$1, int $$2) {
-      this(new bpz($$0), $$1, $$2);
-   }
+public class bxk<T> {
+   private final T a;
+   private long b;
 
-   public bxk(ens $$0, float $$1, int $$2) {
-      this(new bpz(hz.a($$0)), $$1, $$2);
-   }
-
-   public bxk(bno $$0, float $$1, int $$2) {
-      this(new bqh($$0, false), $$1, $$2);
-   }
-
-   public bxk(brk $$0, float $$1, int $$2) {
+   public bxk(T $$0, long $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
    }
 
-   public brk a() {
-      return this.a;
+   public void a() {
+      if (this.e()) {
+         this.b--;
+      }
    }
 
-   public float b() {
+   public static <T> bxk<T> a(T $$0) {
+      return new bxk<>($$0, Long.MAX_VALUE);
+   }
+
+   public static <T> bxk<T> a(T $$0, long $$1) {
+      return new bxk<>($$0, $$1);
+   }
+
+   public long b() {
       return this.b;
    }
 
-   public int c() {
-      return this.c;
+   public T c() {
+      return this.a;
+   }
+
+   public boolean d() {
+      return this.b <= 0L;
+   }
+
+   @Override
+   public String toString() {
+      return this.a + (this.e() ? " (ttl: " + this.b + ")" : "");
+   }
+
+   @axl
+   public boolean e() {
+      return this.b != Long.MAX_VALUE;
+   }
+
+   public static <T> Codec<bxk<T>> a(Codec<T> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(
+                  $$0.fieldOf("value").forGetter($$0xx -> $$0xx.a),
+                  Codec.LONG.optionalFieldOf("ttl").forGetter($$0xx -> $$0xx.e() ? Optional.of($$0xx.b) : Optional.empty())
+               )
+               .apply($$1, ($$0xx, $$1x) -> new bxk<>($$0xx, $$1x.orElse(Long.MAX_VALUE)))
+      );
    }
 }

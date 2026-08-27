@@ -1,244 +1,255 @@
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.mojang.blaze3d.systems.RenderSystem;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class fir implements fak, fbd {
-   private static final aiy b = new aiy("recipe_book/overlay_recipe");
-   static final aiy c = new aiy("recipe_book/furnace_overlay_highlighted");
-   static final aiy d = new aiy("recipe_book/furnace_overlay");
-   static final aiy e = new aiy("recipe_book/crafting_overlay_highlighted");
-   static final aiy f = new aiy("recipe_book/crafting_overlay");
-   static final aiy g = new aiy("recipe_book/furnace_overlay_disabled_highlighted");
-   static final aiy h = new aiy("recipe_book/furnace_overlay_disabled");
-   static final aiy i = new aiy("recipe_book/crafting_overlay_disabled_highlighted");
-   static final aiy j = new aiy("recipe_book/crafting_overlay_disabled");
-   private static final int k = 4;
-   private static final int l = 5;
-   private static final float m = 0.375F;
-   public static final int a = 25;
-   private final List<fir.a> n = Lists.newArrayList();
-   private boolean o;
-   private int p;
-   private int q;
-   private exh r;
-   private fiw t;
-   @Nullable
-   private csd<?> u;
-   float v;
-   boolean w;
+public class fir {
+   private final arm a;
+   final List<arj> b;
+   final List<arj> c;
+   final Function<arj, aiy> d;
+   final Runnable e;
+   private final Consumer<arm> f;
 
-   public void a(exh $$0, fiw $$1, int $$2, int $$3, int $$4, int $$5, float $$6) {
-      this.r = $$0;
-      this.t = $$1;
-      if ($$0.s.bW instanceof ckc) {
-         this.w = true;
+   public fir(Runnable $$0, Function<arj, aiy> $$1, arm $$2, Consumer<arm> $$3) {
+      this.e = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = Lists.newArrayList($$2.f());
+      Collections.reverse(this.b);
+      this.c = Lists.newArrayList($$2.c());
+      this.c.removeAll(this.b);
+      this.f = $$3;
+   }
+
+   public Stream<fir.a> a() {
+      return this.c.stream().map($$0 -> new fir.d($$0));
+   }
+
+   public Stream<fir.a> b() {
+      return this.b.stream().map($$0 -> new fir.c($$0));
+   }
+
+   void e() {
+      this.a.a(Lists.reverse(this.b).stream().map(arj::f).collect(ImmutableList.toImmutableList()));
+   }
+
+   public void c() {
+      this.e();
+      this.f.accept(this.a);
+   }
+
+   public void d() {
+      this.a.a();
+      this.b.retainAll(this.a.c());
+      this.c.clear();
+      this.c.addAll(this.a.c());
+      this.c.removeAll(this.b);
+   }
+
+   public interface a {
+      aiy a();
+
+      ark b();
+
+      String c();
+
+      vq d();
+
+      vq e();
+
+      arn f();
+
+      default vq g() {
+         return this.f().a(this.e());
       }
 
-      boolean $$7 = $$0.s.m().a((clo<?>)$$0.s.bW);
-      List<csd<?>> $$8 = $$1.b(true);
-      List<csd<?>> $$9 = $$7 ? Collections.emptyList() : $$1.b(false);
-      int $$10 = $$8.size();
-      int $$11 = $$10 + $$9.size();
-      int $$12 = $$11 <= 16 ? 4 : 5;
-      int $$13 = (int)Math.ceil((double)((float)$$11 / (float)$$12));
-      this.p = $$2;
-      this.q = $$3;
-      float $$14 = (float)(this.p + Math.min($$11, $$12) * 25);
-      float $$15 = (float)($$4 + 50);
-      if ($$14 > $$15) {
-         this.p = (int)((float)this.p - $$6 * (float)((int)(($$14 - $$15) / $$6)));
+      boolean h();
+
+      boolean i();
+
+      void j();
+
+      void k();
+
+      void l();
+
+      void m();
+
+      boolean n();
+
+      default boolean o() {
+         return !this.n();
       }
 
-      float $$16 = (float)(this.q + $$13 * 25);
-      float $$17 = (float)($$5 + 50);
-      if ($$16 > $$17) {
-         this.q = (int)((float)this.q - $$6 * (float)awh.f(($$16 - $$17) / $$6));
+      default boolean p() {
+         return this.n() && !this.i();
       }
 
-      float $$18 = (float)this.q;
-      float $$19 = (float)($$5 - 100);
-      if ($$18 < $$19) {
-         this.q = (int)((float)this.q - $$6 * (float)awh.f(($$18 - $$19) / $$6));
+      boolean q();
+
+      boolean r();
+   }
+
+   abstract class b implements fir.a {
+      private final arj b;
+
+      public b(arj $$0) {
+         this.b = $$0;
       }
 
-      this.o = true;
-      this.n.clear();
+      protected abstract List<arj> s();
 
-      for (int $$20 = 0; $$20 < $$11; $$20++) {
-         boolean $$21 = $$20 < $$10;
-         csd<?> $$22 = $$21 ? $$8.get($$20) : $$9.get($$20 - $$10);
-         int $$23 = this.p + 4 + 25 * ($$20 % $$12);
-         int $$24 = this.q + 5 + 25 * ($$20 / $$12);
-         if (this.w) {
-            this.n.add(new fir.b($$23, $$24, $$22, $$21));
-         } else {
-            this.n.add(new fir.a($$23, $$24, $$22, $$21));
+      protected abstract List<arj> t();
+
+      @Override
+      public aiy a() {
+         return fir.this.d.apply(this.b);
+      }
+
+      @Override
+      public ark b() {
+         return this.b.c();
+      }
+
+      @Override
+      public String c() {
+         return this.b.f();
+      }
+
+      @Override
+      public vq d() {
+         return this.b.a();
+      }
+
+      @Override
+      public vq e() {
+         return this.b.b();
+      }
+
+      @Override
+      public arn f() {
+         return this.b.j();
+      }
+
+      @Override
+      public boolean h() {
+         return this.b.h();
+      }
+
+      @Override
+      public boolean i() {
+         return this.b.g();
+      }
+
+      protected void u() {
+         this.s().remove(this.b);
+         this.b.i().a(this.t(), this.b, Function.identity(), true);
+         fir.this.e.run();
+         fir.this.e();
+         this.v();
+      }
+
+      private void v() {
+         if (this.b.f().equals("high_contrast")) {
+            exr<Boolean> $$0 = exo.P().m.r();
+            $$0.a(!$$0.c());
          }
       }
 
-      this.u = null;
+      protected void a(int $$0) {
+         List<arj> $$1 = this.s();
+         int $$2 = $$1.indexOf(this.b);
+         $$1.remove($$2);
+         $$1.add($$2 + $$0, this.b);
+         fir.this.e.run();
+      }
+
+      @Override
+      public boolean q() {
+         List<arj> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 > 0 && !$$0.get($$1 - 1).h();
+      }
+
+      @Override
+      public void l() {
+         this.a(-1);
+      }
+
+      @Override
+      public boolean r() {
+         List<arj> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 >= 0 && $$1 < $$0.size() - 1 && !$$0.get($$1 + 1).h();
+      }
+
+      @Override
+      public void m() {
+         this.a(1);
+      }
    }
 
-   public fiw a() {
-      return this.t;
+   class c extends fir.b {
+      public c(arj $$0) {
+         super($$0);
+      }
+
+      @Override
+      protected List<arj> s() {
+         return fir.this.b;
+      }
+
+      @Override
+      protected List<arj> t() {
+         return fir.this.c;
+      }
+
+      @Override
+      public boolean n() {
+         return true;
+      }
+
+      @Override
+      public void j() {
+      }
+
+      @Override
+      public void k() {
+         this.u();
+      }
    }
 
-   @Nullable
-   public csd<?> b() {
-      return this.u;
-   }
+   class d extends fir.b {
+      public d(arj $$0) {
+         super($$0);
+      }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if ($$2 != 0) {
+      @Override
+      protected List<arj> s() {
+         return fir.this.c;
+      }
+
+      @Override
+      protected List<arj> t() {
+         return fir.this.b;
+      }
+
+      @Override
+      public boolean n() {
          return false;
-      } else {
-         for (fir.a $$3 : this.n) {
-            if ($$3.a($$0, $$1, $$2)) {
-               this.u = $$3.c;
-               return true;
-            }
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public boolean c(double $$0, double $$1) {
-      return false;
-   }
-
-   @Override
-   public void a(eyu $$0, int $$1, int $$2, float $$3) {
-      if (this.o) {
-         this.v += $$3;
-         RenderSystem.enableBlend();
-         $$0.c().a();
-         $$0.c().a(0.0F, 0.0F, 1000.0F);
-         int $$4 = this.n.size() <= 16 ? 4 : 5;
-         int $$5 = Math.min(this.n.size(), $$4);
-         int $$6 = awh.f((float)this.n.size() / (float)$$4);
-         int $$7 = 4;
-         $$0.a(b, this.p, this.q, $$5 * 25 + 8, $$6 * 25 + 8);
-         RenderSystem.disableBlend();
-
-         for (fir.a $$8 : this.n) {
-            $$8.a($$0, $$1, $$2, $$3);
-         }
-
-         $$0.c().b();
-      }
-   }
-
-   public void b(boolean $$0) {
-      this.o = $$0;
-   }
-
-   public boolean c() {
-      return this.o;
-   }
-
-   @Override
-   public void a(boolean $$0) {
-   }
-
-   @Override
-   public boolean aL_() {
-      return false;
-   }
-
-   class a extends ezf implements ail<cry> {
-      final csd<?> c;
-      private final boolean d;
-      protected final List<fir.a.a> a = Lists.newArrayList();
-
-      public a(int $$0, int $$1, csd<?> $$2, boolean $$3) {
-         super($$0, $$1, 200, 20, vp.a);
-         this.g = 24;
-         this.h = 24;
-         this.c = $$2;
-         this.d = $$3;
-         this.a($$2);
-      }
-
-      protected void a(csd<?> $$0) {
-         this.a(3, 3, -1, $$0, $$0.b().a().iterator(), 0);
       }
 
       @Override
-      public void a(fdc $$0) {
-         this.c($$0);
+      public void j() {
+         this.u();
       }
 
       @Override
-      public void a(Iterator<cry> $$0, int $$1, int $$2, int $$3, int $$4) {
-         coz[] $$5 = $$0.next().a();
-         if ($$5.length != 0) {
-            this.a.add(new fir.a.a(3 + $$4 * 7, 3 + $$3 * 7, $$5));
-         }
-      }
-
-      @Override
-      public void b(eyu $$0, int $$1, int $$2, float $$3) {
-         aiy $$4;
-         if (this.d) {
-            if (fir.this.w) {
-               $$4 = this.z() ? fir.c : fir.d;
-            } else {
-               $$4 = this.z() ? fir.e : fir.f;
-            }
-         } else if (fir.this.w) {
-            $$4 = this.z() ? fir.g : fir.h;
-         } else {
-            $$4 = this.z() ? fir.i : fir.j;
-         }
-
-         $$0.a($$4, this.B(), this.C(), this.g, this.h);
-         $$0.c().a();
-         $$0.c().a((double)(this.B() + 2), (double)(this.C() + 2), 150.0);
-
-         for (fir.a.a $$8 : this.a) {
-            $$0.c().a();
-            $$0.c().a((double)$$8.b, (double)$$8.c, 0.0);
-            $$0.c().b(0.375F, 0.375F, 1.0F);
-            $$0.c().a(-8.0, -8.0, 0.0);
-            if ($$8.a.length > 0) {
-               $$0.a($$8.a[awh.d(fir.this.v / 30.0F) % $$8.a.length], 0, 0);
-            }
-
-            $$0.c().b();
-         }
-
-         $$0.c().b();
-      }
-
-      protected class a {
-         public final coz[] a;
-         public final int b;
-         public final int c;
-
-         public a(int $$1, int $$2, coz[] $$3) {
-            this.b = $$1;
-            this.c = $$2;
-            this.a = $$3;
-         }
-      }
-   }
-
-   class b extends fir.a {
-      public b(int $$0, int $$1, csd<?> $$2, boolean $$3) {
-         super($$0, $$1, $$2, $$3);
-      }
-
-      @Override
-      protected void a(csd<?> $$0) {
-         cry $$1 = $$0.b().a().get(0);
-         coz[] $$2 = $$1.a();
-         this.a.add(new fir.a.a(10, 10, $$2));
+      public void k() {
       }
    }
 }

@@ -1,136 +1,106 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import java.util.Map;
-import java.util.NoSuchElementException;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.Set;
-import java.util.function.Consumer;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
 public class ejb {
-   private final aov a;
-   private final Map<eld<?>, Object> b;
-   private final Map<aiy, ejb.b> c;
-   private final float d;
+   private static final Codec<ejb> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(avq.a(emx.a, "min").forGetter($$0x -> Optional.ofNullable($$0x.c)), avq.a(emx.a, "max").forGetter($$0x -> Optional.ofNullable($$0x.d)))
+            .apply($$0, ejb::new)
+   );
+   public static final Codec<ejb> a = Codec.either(Codec.INT, b).xmap($$0 -> (ejb)$$0.map(ejb::a, Function.identity()), $$0 -> {
+      OptionalInt $$1 = $$0.b();
+      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
+   });
+   @Nullable
+   private final emw c;
+   @Nullable
+   private final emw d;
+   private final ejb.b e;
+   private final ejb.a f;
 
-   public ejb(aov $$0, Map<eld<?>, Object> $$1, Map<aiy, ejb.b> $$2, float $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public Set<elk<?>> a() {
+      Builder<elk<?>> $$0 = ImmutableSet.builder();
+      if (this.c != null) {
+         $$0.addAll(this.c.a());
+      }
+
+      if (this.d != null) {
+         $$0.addAll(this.d.a());
+      }
+
+      return $$0.build();
    }
 
-   public aov a() {
-      return this.a;
+   private ejb(Optional<emw> $$0, Optional<emw> $$1) {
+      this($$0.orElse(null), $$1.orElse(null));
    }
 
-   public boolean a(eld<?> $$0) {
-      return this.b.containsKey($$0);
-   }
-
-   public <T> T b(eld<T> $$0) {
-      T $$1 = (T)this.b.get($$0);
-      if ($$1 == null) {
-         throw new NoSuchElementException($$0.a().toString());
+   private ejb(@Nullable emw $$0, @Nullable emw $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      if ($$0 == null) {
+         if ($$1 == null) {
+            this.e = ($$0x, $$1x) -> $$1x;
+            this.f = ($$0x, $$1x) -> true;
+         } else {
+            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
+            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
+         }
+      } else if ($$1 == null) {
+         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
+         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
       } else {
-         return $$1;
+         this.e = ($$2, $$3) -> awi.a($$3, $$0.a($$2), $$1.a($$2));
+         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
       }
    }
 
-   @Nullable
-   public <T> T c(eld<T> $$0) {
-      return (T)this.b.get($$0);
+   public static ejb a(int $$0) {
+      emu $$1 = emu.a((float)$$0);
+      return new ejb(Optional.of($$1), Optional.of($$1));
    }
 
-   @Nullable
-   public <T> T d(eld<T> $$0) {
-      return (T)this.b.get($$0);
+   public static ejb a(int $$0, int $$1) {
+      return new ejb(Optional.of(emu.a((float)$$0)), Optional.of(emu.a((float)$$1)));
    }
 
-   public void a(aiy $$0, Consumer<coz> $$1) {
-      ejb.b $$2 = this.c.get($$0);
-      if ($$2 != null) {
-         $$2.add($$1);
-      }
+   public static ejb b(int $$0) {
+      return new ejb(Optional.of(emu.a((float)$$0)), Optional.empty());
    }
 
-   public float b() {
-      return this.d;
+   public static ejb c(int $$0) {
+      return new ejb(Optional.empty(), Optional.of(emu.a((float)$$0)));
    }
 
-   public static class a {
-      private final aov a;
-      private final Map<eld<?>, Object> b = Maps.newIdentityHashMap();
-      private final Map<aiy, ejb.b> c = Maps.newHashMap();
-      private float d;
+   public int a(ejc $$0, int $$1) {
+      return this.e.apply($$0, $$1);
+   }
 
-      public a(aov $$0) {
-         this.a = $$0;
-      }
+   public boolean b(ejc $$0, int $$1) {
+      return this.f.test($$0, $$1);
+   }
 
-      public aov a() {
-         return this.a;
-      }
-
-      public <T> ejb.a a(eld<T> $$0, T $$1) {
-         this.b.put($$0, $$1);
-         return this;
-      }
-
-      public <T> ejb.a b(eld<T> $$0, @Nullable T $$1) {
-         if ($$1 == null) {
-            this.b.remove($$0);
-         } else {
-            this.b.put($$0, $$1);
-         }
-
-         return this;
-      }
-
-      public <T> T a(eld<T> $$0) {
-         T $$1 = (T)this.b.get($$0);
-         if ($$1 == null) {
-            throw new NoSuchElementException($$0.a().toString());
-         } else {
-            return $$1;
-         }
-      }
-
-      @Nullable
-      public <T> T b(eld<T> $$0) {
-         return (T)this.b.get($$0);
-      }
-
-      public ejb.a a(aiy $$0, ejb.b $$1) {
-         ejb.b $$2 = this.c.put($$0, $$1);
-         if ($$2 != null) {
-            throw new IllegalStateException("Duplicated dynamic drop '" + this.c + "'");
-         } else {
-            return this;
-         }
-      }
-
-      public ejb.a a(float $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public ejb a(ele $$0) {
-         Set<eld<?>> $$1 = Sets.difference(this.b.keySet(), $$0.b());
-         if (!$$1.isEmpty()) {
-            throw new IllegalArgumentException("Parameters not allowed in this parameter set: " + $$1);
-         } else {
-            Set<eld<?>> $$2 = Sets.difference($$0.a(), this.b.keySet());
-            if (!$$2.isEmpty()) {
-               throw new IllegalArgumentException("Missing required parameters: " + $$2);
-            } else {
-               return new ejb(this.a, this.b, this.c, this.d);
-            }
-         }
-      }
+   private OptionalInt b() {
+      return Objects.equals(this.c, this.d) && this.c instanceof emu $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
+         ? OptionalInt.of((int)$$0.c())
+         : OptionalInt.empty();
    }
 
    @FunctionalInterface
-   public interface b {
-      void add(Consumer<coz> var1);
+   interface a {
+      boolean test(ejc var1, int var2);
+   }
+
+   @FunctionalInterface
+   interface b {
+      int apply(ejc var1, int var2);
    }
 }

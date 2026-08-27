@@ -1,96 +1,170 @@
-import com.google.common.base.Joiner;
-import com.google.common.collect.Lists;
+import com.google.common.collect.ArrayTable;
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
-import java.lang.reflect.Array;
-import java.util.List;
+import com.google.common.collect.Table;
+import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Map.Entry;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.StringUtils;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class dll {
-   private static final Joiner a = Joiner.on(",");
-   private final List<String[]> b = Lists.newArrayList();
-   private final Map<Character, Predicate<dlj>> c = Maps.newHashMap();
-   private int d;
-   private int e;
+public abstract class dll<O, S> {
+   public static final String c = "Name";
+   public static final String d = "Properties";
+   private static final Function<Entry<dmm<?>, Comparable<?>>, String> a = new Function<Entry<dmm<?>, Comparable<?>>, String>() {
+      public String a(@Nullable Entry<dmm<?>, Comparable<?>> $$0) {
+         if ($$0 == null) {
+            return "<NULL>";
+         } else {
+            dmm<?> $$1 = $$0.getKey();
+            return $$1.f() + "=" + this.a($$1, $$0.getValue());
+         }
+      }
 
-   private dll() {
-      this.c.put(' ', $$0 -> true);
+      private <T extends Comparable<T>> String a(dmm<T> $$0, Comparable<?> $$1) {
+         return $$0.a((T)$$1);
+      }
+   };
+   protected final O e;
+   private final ImmutableMap<dmm<?>, Comparable<?>> b;
+   private Table<dmm<?>, Comparable<?>, S> g;
+   protected final MapCodec<S> f;
+
+   protected dll(O $$0, ImmutableMap<dmm<?>, Comparable<?>> $$1, MapCodec<S> $$2) {
+      this.e = $$0;
+      this.b = $$1;
+      this.f = $$2;
    }
 
-   public dll a(String... $$0) {
-      if (!ArrayUtils.isEmpty($$0) && !StringUtils.isEmpty($$0[0])) {
-         if (this.b.isEmpty()) {
-            this.d = $$0.length;
-            this.e = $$0[0].length();
-         }
+   public <T extends Comparable<T>> S a(dmm<T> $$0) {
+      return this.a($$0, a($$0.a(), this.c($$0)));
+   }
 
-         if ($$0.length != this.d) {
-            throw new IllegalArgumentException("Expected aisle with height of " + this.d + ", but was given one with a height of " + $$0.length + ")");
-         } else {
-            for (String $$1 : $$0) {
-               if ($$1.length() != this.e) {
-                  throw new IllegalArgumentException(
-                     "Not all rows in the given aisle are the correct width (expected " + this.e + ", found one with " + $$1.length() + ")"
-                  );
-               }
+   protected static <T> T a(Collection<T> $$0, T $$1) {
+      Iterator<T> $$2 = $$0.iterator();
 
-               for (char $$2 : $$1.toCharArray()) {
-                  if (!this.c.containsKey($$2)) {
-                     this.c.put($$2, null);
-                  }
-               }
+      while ($$2.hasNext()) {
+         if ($$2.next().equals($$1)) {
+            if ($$2.hasNext()) {
+               return $$2.next();
             }
 
-            this.b.add($$0);
-            return this;
+            return $$0.iterator().next();
+         }
+      }
+
+      return $$2.next();
+   }
+
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append(this.e);
+      if (!this.C().isEmpty()) {
+         $$0.append('[');
+         $$0.append(this.C().entrySet().stream().map(a).collect(Collectors.joining(",")));
+         $$0.append(']');
+      }
+
+      return $$0.toString();
+   }
+
+   public Collection<dmm<?>> B() {
+      return Collections.unmodifiableCollection(this.b.keySet());
+   }
+
+   public <T extends Comparable<T>> boolean b(dmm<T> $$0) {
+      return this.b.containsKey($$0);
+   }
+
+   public <T extends Comparable<T>> T c(dmm<T> $$0) {
+      Comparable<?> $$1 = (Comparable<?>)this.b.get($$0);
+      if ($$1 == null) {
+         throw new IllegalArgumentException("Cannot get property " + $$0 + " as it does not exist in " + this.e);
+      } else {
+         return $$0.g().cast($$1);
+      }
+   }
+
+   public <T extends Comparable<T>> Optional<T> d(dmm<T> $$0) {
+      Comparable<?> $$1 = (Comparable<?>)this.b.get($$0);
+      return $$1 == null ? Optional.empty() : Optional.of($$0.g().cast($$1));
+   }
+
+   public <T extends Comparable<T>, V extends T> S a(dmm<T> $$0, V $$1) {
+      Comparable<?> $$2 = (Comparable<?>)this.b.get($$0);
+      if ($$2 == null) {
+         throw new IllegalArgumentException("Cannot set property " + $$0 + " as it does not exist in " + this.e);
+      } else if ($$2.equals($$1)) {
+         return (S)this;
+      } else {
+         S $$3 = (S)this.g.get($$0, $$1);
+         if ($$3 == null) {
+            throw new IllegalArgumentException("Cannot set property " + $$0 + " to " + $$1 + " on " + this.e + ", it is not an allowed value");
+         } else {
+            return $$3;
+         }
+      }
+   }
+
+   public <T extends Comparable<T>, V extends T> S b(dmm<T> $$0, V $$1) {
+      Comparable<?> $$2 = (Comparable<?>)this.b.get($$0);
+      if ($$2 != null && !$$2.equals($$1)) {
+         S $$3 = (S)this.g.get($$0, $$1);
+         if ($$3 == null) {
+            throw new IllegalArgumentException("Cannot set property " + $$0 + " to " + $$1 + " on " + this.e + ", it is not an allowed value");
+         } else {
+            return $$3;
          }
       } else {
-         throw new IllegalArgumentException("Empty pattern for aisle");
+         return (S)this;
       }
    }
 
-   public static dll a() {
-      return new dll();
-   }
+   public void a(Map<Map<dmm<?>, Comparable<?>>, S> $$0) {
+      if (this.g != null) {
+         throw new IllegalStateException();
+      } else {
+         Table<dmm<?>, Comparable<?>, S> $$1 = HashBasedTable.create();
+         UnmodifiableIterator var3 = this.b.entrySet().iterator();
 
-   public dll a(char $$0, Predicate<dlj> $$1) {
-      this.c.put($$0, $$1);
-      return this;
-   }
+         while (var3.hasNext()) {
+            Entry<dmm<?>, Comparable<?>> $$2 = (Entry<dmm<?>, Comparable<?>>)var3.next();
+            dmm<?> $$3 = $$2.getKey();
 
-   public dlk b() {
-      return new dlk(this.c());
-   }
-
-   private Predicate<dlj>[][][] c() {
-      this.d();
-      Predicate<dlj>[][][] $$0 = (Predicate<dlj>[][][])Array.newInstance(Predicate.class, this.b.size(), this.d, this.e);
-
-      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
-         for (int $$2 = 0; $$2 < this.d; $$2++) {
-            for (int $$3 = 0; $$3 < this.e; $$3++) {
-               $$0[$$1][$$2][$$3] = this.c.get(this.b.get($$1)[$$2].charAt($$3));
+            for (Comparable<?> $$4 : $$3.a()) {
+               if (!$$4.equals($$2.getValue())) {
+                  $$1.put($$3, $$4, $$0.get(this.c($$3, $$4)));
+               }
             }
          }
-      }
 
-      return $$0;
+         this.g = (Table<dmm<?>, Comparable<?>, S>)($$1.isEmpty() ? $$1 : ArrayTable.create($$1));
+      }
    }
 
-   private void d() {
-      List<Character> $$0 = Lists.newArrayList();
+   private Map<dmm<?>, Comparable<?>> c(dmm<?> $$0, Comparable<?> $$1) {
+      Map<dmm<?>, Comparable<?>> $$2 = Maps.newHashMap(this.b);
+      $$2.put($$0, $$1);
+      return $$2;
+   }
 
-      for (Entry<Character, Predicate<dlj>> $$1 : this.c.entrySet()) {
-         if ($$1.getValue() == null) {
-            $$0.add($$1.getKey());
-         }
-      }
+   public ImmutableMap<dmm<?>, Comparable<?>> C() {
+      return this.b;
+   }
 
-      if (!$$0.isEmpty()) {
-         throw new IllegalStateException("Predicates for character(s) " + a.join($$0) + " are missing");
-      }
+   protected static <O, S extends dll<O, S>> Codec<S> a(Codec<O> $$0, Function<O, S> $$1) {
+      return $$0.dispatch("Name", $$0x -> $$0x.e, $$1x -> {
+         S $$2 = $$1.apply((O)$$1x);
+         return $$2.C().isEmpty() ? Codec.unit($$2) : $$2.f.codec().optionalFieldOf("Properties").xmap($$1xx -> $$1xx.orElse($$2), Optional::of).codec();
+      });
    }
 }

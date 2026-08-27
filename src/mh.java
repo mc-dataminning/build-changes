@@ -12,12 +12,12 @@ import java.util.TreeMap;
 import java.util.stream.Stream;
 
 public class mh implements me {
-   private final cyo a;
+   private final cys a;
    private final List<mk> b;
-   private final Set<dmi<?>> c = Sets.newHashSet();
+   private final Set<dmm<?>> c = Sets.newHashSet();
    private final List<mi> d = Lists.newArrayList();
 
-   private mh(cyo $$0, List<mk> $$1) {
+   private mh(cys $$0, List<mk> $$1) {
       this.a = $$0;
       this.b = $$1;
    }
@@ -60,19 +60,19 @@ public class mh implements me {
    }
 
    @Override
-   public cyo a() {
+   public cys a() {
       return this.a;
    }
 
-   public static mh a(cyo $$0) {
+   public static mh a(cys $$0) {
       return new mh($$0, ImmutableList.of(mk.a()));
    }
 
-   public static mh a(cyo $$0, mk $$1) {
+   public static mh a(cys $$0, mk $$1) {
       return new mh($$0, ImmutableList.of($$1));
    }
 
-   public static mh a(cyo $$0, mk... $$1) {
+   public static mh a(cys $$0, mk... $$1) {
       return new mh($$0, ImmutableList.copyOf($$1));
    }
 }

@@ -1,110 +1,63 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.BitSet;
-import java.util.Collections;
-import java.util.List;
+import java.util.Arrays;
 import java.util.Map;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.tuple.Pair;
+import java.util.stream.Collectors;
+import org.joml.Quaternionf;
 
-public class gjc implements git {
-   private final List<Pair<Predicate<dlf>, git>> g;
-   protected final boolean a;
-   protected final boolean b;
-   protected final boolean c;
-   protected final ggt d;
-   protected final fwu e;
-   protected final fws f;
-   private final Map<dlf, BitSet> h = new Reference2ObjectOpenHashMap();
+public enum gjc implements gjj {
+   a(0, 0),
+   b(0, 90),
+   c(0, 180),
+   d(0, 270),
+   e(90, 0),
+   f(90, 90),
+   g(90, 180),
+   h(90, 270),
+   i(180, 0),
+   j(180, 90),
+   k(180, 180),
+   l(180, 270),
+   m(270, 0),
+   n(270, 90),
+   o(270, 180),
+   p(270, 270);
 
-   public gjc(List<Pair<Predicate<dlf>, git>> $$0) {
-      this.g = $$0;
-      git $$1 = (git)$$0.iterator().next().getRight();
-      this.a = $$1.a();
-      this.b = $$1.b();
-      this.c = $$1.c();
-      this.d = $$1.e();
-      this.e = $$1.f();
-      this.f = $$1.g();
+   private static final int q = 360;
+   private static final Map<Integer, gjc> r = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.u, $$0 -> (gjc)$$0));
+   private final j s;
+   private final h t;
+   private final int u;
+
+   private static int b(int $$0, int $$1) {
+      return $$0 * 360 + $$1;
    }
 
-   @Override
-   public List<fwi> a(@Nullable dlf $$0, @Nullable ie $$1, awo $$2) {
-      if ($$0 == null) {
-         return Collections.emptyList();
-      } else {
-         BitSet $$3 = this.h.get($$0);
-         if ($$3 == null) {
-            $$3 = new BitSet();
+   private gjc(int $$0, int $$1) {
+      this.u = b($$0, $$1);
+      Quaternionf $$2 = new Quaternionf().rotateYXZ((float)(-$$1) * (float) (Math.PI / 180.0), (float)(-$$0) * (float) (Math.PI / 180.0), 0.0F);
+      h $$3 = h.a;
 
-            for (int $$4 = 0; $$4 < this.g.size(); $$4++) {
-               Pair<Predicate<dlf>, git> $$5 = this.g.get($$4);
-               if (((Predicate)$$5.getLeft()).test($$0)) {
-                  $$3.set($$4);
-               }
-            }
-
-            this.h.put($$0, $$3);
-         }
-
-         List<fwi> $$6 = Lists.newArrayList();
-         long $$7 = $$2.g();
-
-         for (int $$8 = 0; $$8 < $$3.length(); $$8++) {
-            if ($$3.get($$8)) {
-               $$6.addAll(((git)this.g.get($$8).getRight()).a($$0, $$1, awo.a($$7)));
-            }
-         }
-
-         return $$6;
-      }
-   }
-
-   @Override
-   public boolean a() {
-      return this.a;
-   }
-
-   @Override
-   public boolean b() {
-      return this.b;
-   }
-
-   @Override
-   public boolean c() {
-      return this.c;
-   }
-
-   @Override
-   public boolean d() {
-      return false;
-   }
-
-   @Override
-   public ggt e() {
-      return this.d;
-   }
-
-   @Override
-   public fwu f() {
-      return this.e;
-   }
-
-   @Override
-   public fws g() {
-      return this.f;
-   }
-
-   public static class a {
-      private final List<Pair<Predicate<dlf>, git>> a = Lists.newArrayList();
-
-      public void a(Predicate<dlf> $$0, git $$1) {
-         this.a.add(Pair.of($$0, $$1));
+      for (int $$4 = 0; $$4 < $$1; $$4 += 90) {
+         $$3 = $$3.a(h.u);
       }
 
-      public git a() {
-         return new gjc(this.a);
+      for (int $$5 = 0; $$5 < $$0; $$5 += 90) {
+         $$3 = $$3.a(h.s);
       }
+
+      this.s = new j(null, $$2, null, null);
+      this.t = $$3;
+   }
+
+   @Override
+   public j b() {
+      return this.s;
+   }
+
+   public static gjc a(int $$0, int $$1) {
+      return r.get(b(awi.b($$0, 360), awi.b($$1, 360)));
+   }
+
+   public h a() {
+      return this.t;
    }
 }

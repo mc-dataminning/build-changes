@@ -39,13 +39,13 @@ public class fb implements ArgumentType<Integer> {
          $$0.put("horse." + $$6, 500 + $$6);
       }
 
-      $$0.put("weapon", bnv.a.a(98));
-      $$0.put("weapon.mainhand", bnv.a.a(98));
-      $$0.put("weapon.offhand", bnv.b.a(98));
-      $$0.put("armor.head", bnv.f.a(100));
-      $$0.put("armor.chest", bnv.e.a(100));
-      $$0.put("armor.legs", bnv.d.a(100));
-      $$0.put("armor.feet", bnv.c.a(100));
+      $$0.put("weapon", bnx.a.a(98));
+      $$0.put("weapon.mainhand", bnx.a.a(98));
+      $$0.put("weapon.offhand", bnx.b.a(98));
+      $$0.put("armor.head", bnx.f.a(100));
+      $$0.put("armor.chest", bnx.e.a(100));
+      $$0.put("armor.legs", bnx.d.a(100));
+      $$0.put("armor.feet", bnx.c.a(100));
       $$0.put("horse.saddle", 400);
       $$0.put("horse.armor", 401);
       $$0.put("horse.chest", 499);

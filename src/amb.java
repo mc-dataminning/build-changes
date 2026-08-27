@@ -17,7 +17,7 @@ public class amb {
       });
    }
 
-   private static Collection<String> a(arl $$0, eir $$1, Collection<String> $$2) {
+   private static Collection<String> a(arm $$0, eiy $$1, Collection<String> $$2) {
       $$0.a();
       Collection<String> $$3 = Lists.newArrayList($$2);
       Collection<String> $$4 = $$1.D().a().b();
@@ -35,8 +35,8 @@ public class amb {
       $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("reload").requires($$0x -> $$0x.c(2))).executes($$0x -> {
          du $$1 = (du)$$0x.getSource();
          MinecraftServer $$2 = $$1.l();
-         arl $$3 = $$2.aD();
-         eir $$4 = $$2.aY();
+         arm $$3 = $$2.aF();
+         eiy $$4 = $$2.ba();
          Collection<String> $$5 = $$3.d();
          Collection<String> $$6 = a($$3, $$4, $$5);
          $$1.a(() -> vq.c("commands.reload.success"), true);

@@ -1,99 +1,62 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.Arrays;
-import java.util.function.IntFunction;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import org.jetbrains.annotations.Contract;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMultimap.Builder;
 
-public enum cnn implements axc {
-   a(0, "white", 16383998, egt.i, 15790320, 16777215),
-   b(1, "orange", 16351261, egt.p, 15435844, 16738335),
-   c(2, "magenta", 13061821, egt.q, 12801229, 16711935),
-   d(3, "light_blue", 3847130, egt.r, 6719955, 10141901),
-   e(4, "yellow", 16701501, egt.s, 14602026, 16776960),
-   f(5, "lime", 8439583, egt.t, 4312372, 12582656),
-   g(6, "pink", 15961002, egt.u, 14188952, 16738740),
-   h(7, "gray", 4673362, egt.v, 4408131, 8421504),
-   i(8, "light_gray", 10329495, egt.w, 11250603, 13882323),
-   j(9, "cyan", 1481884, egt.x, 2651799, 65535),
-   k(10, "purple", 8991416, egt.y, 8073150, 10494192),
-   l(11, "blue", 3949738, egt.z, 2437522, 255),
-   m(12, "brown", 8606770, egt.A, 5320730, 9127187),
-   n(13, "green", 6192150, egt.B, 3887386, 65280),
-   o(14, "red", 11546150, egt.C, 11743532, 16711680),
-   p(15, "black", 1908001, egt.D, 1973019, 0);
+public class cnn extends cqr {
+   private final aup<cys> a;
+   protected final float b;
+   private final float c;
+   private final Multimap<ij<bpk>, bpn> d;
 
-   private static final IntFunction<cnn> r = auz.a(cnn::a, values(), auz.a.a);
-   private static final Int2ObjectOpenHashMap<cnn> s = new Int2ObjectOpenHashMap(
-      Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.x, $$0 -> (cnn)$$0))
-   );
-   public static final axc.a<cnn> q = axc.a(cnn::values);
-   private final int t;
-   private final String u;
-   private final egt v;
-   private final float[] w;
-   private final int x;
-   private final int y;
-
-   private cnn(int $$0, String $$1, int $$2, egt $$3, int $$4, int $$5) {
-      this.t = $$0;
-      this.u = $$1;
-      this.v = $$3;
-      this.y = $$5;
-      int $$6 = ($$2 & 0xFF0000) >> 16;
-      int $$7 = ($$2 & 0xFF00) >> 8;
-      int $$8 = ($$2 & 0xFF) >> 0;
-      this.w = new float[]{(float)$$6 / 255.0F, (float)$$7 / 255.0F, (float)$$8 / 255.0F};
-      this.x = $$4;
-   }
-
-   public int a() {
-      return this.t;
-   }
-
-   public String b() {
-      return this.u;
-   }
-
-   public float[] d() {
-      return this.w;
-   }
-
-   public egt e() {
-      return this.v;
-   }
-
-   public int f() {
-      return this.x;
-   }
-
-   public int g() {
-      return this.y;
-   }
-
-   public static cnn a(int $$0) {
-      return r.apply($$0);
-   }
-
-   @Nullable
-   @Contract("_,!null->!null;_,null->_")
-   public static cnn a(String $$0, @Nullable cnn $$1) {
-      cnn $$2 = q.a($$0);
-      return $$2 != null ? $$2 : $$1;
-   }
-
-   @Nullable
-   public static cnn b(int $$0) {
-      return (cnn)s.get($$0);
+   protected cnn(float $$0, float $$1, cqq $$2, aup<cys> $$3, coy.a $$4) {
+      super($$2, $$4);
+      this.a = $$3;
+      this.b = $$2.b();
+      this.c = $$0 + $$2.c();
+      Builder<ij<bpk>, bpn> $$5 = ImmutableMultimap.builder();
+      $$5.put(bpp.c, new bpn(m, "Tool modifier", (double)this.c, bpn.a.a));
+      $$5.put(bpp.e, new bpn(n, "Tool modifier", (double)$$1, bpn.a.a));
+      this.d = $$5.build();
    }
 
    @Override
-   public String toString() {
-      return this.u;
+   public float a(cpd $$0, dlj $$1) {
+      return $$1.a(this.a) ? this.b : 1.0F;
    }
 
    @Override
-   public String c() {
-      return this.u;
+   public boolean a(cpd $$0, boi $$1, boi $$2) {
+      $$0.a(2, $$2, bnx.a);
+      return true;
+   }
+
+   @Override
+   public boolean a(cpd $$0, cvr $$1, dlj $$2, hz $$3, boi $$4) {
+      if (!$$1.B && $$2.h($$1, $$3) != 0.0F) {
+         $$0.a(1, $$4, bnx.a);
+      }
+
+      return true;
+   }
+
+   @Override
+   public Multimap<ij<bpk>, bpn> a(bnx $$0) {
+      return $$0 == bnx.a ? this.d : super.a($$0);
+   }
+
+   public float d() {
+      return this.c;
+   }
+
+   @Override
+   public boolean a_(dlj $$0) {
+      int $$1 = this.w().d();
+      if ($$1 < 3 && $$0.a(aua.bE)) {
+         return false;
+      } else if ($$1 < 2 && $$0.a(aua.bF)) {
+         return false;
+      } else {
+         return $$1 < 1 && $$0.a(aua.bG) ? false : $$0.a(this.a);
+      }
    }
 }

@@ -1,19 +1,20 @@
 import com.mojang.serialization.Codec;
 
-public class eeq extends eer {
-   public static final Codec<eeq> a = Codec.unit(() -> eeq.b);
-   public static final eeq b = new eeq();
+public class eeq extends eff {
+   public static final Codec<eeq> a = dlj.b.fieldOf("block_state").xmap(eeq::new, $$0 -> $$0.b).codec();
+   private final dlj b;
 
-   private eeq() {
+   public eeq(dlj $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public boolean a(hz $$0, hz $$1, hz $$2, awo $$3) {
-      return true;
+   public boolean a(dlj $$0, awp $$1) {
+      return $$0 == this.b;
    }
 
    @Override
-   protected ees<?> a() {
-      return ees.a;
+   protected efg<?> a() {
+      return efg.c;
    }
 }

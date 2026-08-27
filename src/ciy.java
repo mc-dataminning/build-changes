@@ -1,59 +1,65 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
-import java.util.Collection;
-import java.util.List;
-
 public class ciy {
-   private final List<civ> a = Lists.newArrayList();
-   private int b;
+   public static final ciy a = a("core");
+   public static final ciy b = a("idle");
+   public static final ciy c = a("work");
+   public static final ciy d = a("play");
+   public static final ciy e = a("rest");
+   public static final ciy f = a("meet");
+   public static final ciy g = a("panic");
+   public static final ciy h = a("raid");
+   public static final ciy i = a("pre_raid");
+   public static final ciy j = a("hide");
+   public static final ciy k = a("fight");
+   public static final ciy l = a("celebrate");
+   public static final ciy m = a("admire_item");
+   public static final ciy n = a("avoid");
+   public static final ciy o = a("ride");
+   public static final ciy p = a("play_dead");
+   public static final ciy q = a("long_jump");
+   public static final ciy r = a("ram");
+   public static final ciy s = a("tongue");
+   public static final ciy t = a("swim");
+   public static final ciy u = a("lay_spawn");
+   public static final ciy v = a("sniff");
+   public static final ciy w = a("investigate");
+   public static final ciy x = a("roar");
+   public static final ciy y = a("emerge");
+   public static final ciy z = a("dig");
+   private final String A;
+   private final int B;
 
-   public ImmutableList<civ> a() {
-      return ImmutableList.copyOf(this.a);
+   private ciy(String $$0) {
+      this.A = $$0;
+      this.B = $$0.hashCode();
    }
 
-   public ciy a(int $$0, float $$1) {
-      this.a.add(new civ($$0, $$1));
-      this.b();
-      return this;
+   public String a() {
+      return this.A;
    }
 
-   public ciy a(Collection<civ> $$0) {
-      this.a.addAll($$0);
-      this.b();
-      return this;
+   private static ciy a(String $$0) {
+      return iv.a(kf.E, $$0, new ciy($$0));
    }
 
-   private void b() {
-      Int2ObjectSortedMap<civ> $$0 = new Int2ObjectAVLTreeMap();
-      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
-      this.a.clear();
-      this.a.addAll($$0.values());
-      this.b = 0;
-   }
-
-   public float a(int $$0) {
-      if (this.a.size() <= 0) {
-         return 0.0F;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         ciy $$1 = (ciy)$$0;
+         return this.A.equals($$1.A);
       } else {
-         civ $$1 = this.a.get(this.b);
-         civ $$2 = this.a.get(this.a.size() - 1);
-         boolean $$3 = $$0 < $$1.a();
-         int $$4 = $$3 ? 0 : this.b;
-         float $$5 = $$3 ? $$2.b() : $$1.b();
-
-         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
-            civ $$7 = this.a.get($$6);
-            if ($$7.a() > $$0) {
-               break;
-            }
-
-            this.b = $$6;
-            $$5 = $$7.b();
-         }
-
-         return $$5;
+         return false;
       }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.B;
+   }
+
+   @Override
+   public String toString() {
+      return this.a();
    }
 }

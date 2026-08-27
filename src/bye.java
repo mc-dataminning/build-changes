@@ -1,56 +1,43 @@
 import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2LongMap;
-import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
+import com.google.common.collect.Lists;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
-public class bye extends byn<boi> {
-   private static final int a = 40;
-   private static final int c = 5;
-   private static final int d = 20;
-   private final Long2LongMap e = new Long2LongOpenHashMap();
-   private int f;
-   private long g;
-
-   public bye() {
-      super(20);
-   }
-
+public class bye extends byr<cfv> {
    @Override
-   public Set<bxh<?>> a() {
-      return ImmutableSet.of(bxh.w);
+   public Set<bxl<?>> a() {
+      return ImmutableSet.of(bxl.h, bxl.aw, bxl.aq, bxl.ap, bxl.as, bxl.at, new bxl[0]);
    }
 
-   protected void a(aov $$0, boi $$1) {
-      if ($$1.o_()) {
-         this.f = 0;
-         this.g = $$0.X() + (long)$$0.F_().a(20);
-         bzh $$2 = $$0.y();
-         Predicate<hz> $$3 = $$0x -> {
-            long $$1x = $$0x.a();
-            if (this.e.containsKey($$1x)) {
-               return false;
-            } else if (++this.f >= 5) {
-               return false;
-            } else {
-               this.e.put($$1x, this.g + 40L);
-               return true;
+   protected void a(aow $$0, cfv $$1) {
+      bpj<?> $$2 = $$1.dO();
+      $$2.a(bxl.aw, this.b($$0, $$1));
+      Optional<cgb> $$3 = Optional.empty();
+      int $$4 = 0;
+      List<cfv> $$5 = Lists.newArrayList();
+      bxn $$6 = $$2.c(bxl.h).orElse(bxn.a());
+
+      for (boi $$7 : $$6.b($$0x -> !$$0x.o_() && ($$0x instanceof cgb || $$0x instanceof cfv))) {
+         if ($$7 instanceof cgb $$8) {
+            $$4++;
+            if ($$3.isEmpty()) {
+               $$3 = Optional.of($$8);
             }
-         };
-         Set<Pair<ij<bzk>, hz>> $$4 = $$2.b($$0x -> $$0x.a(bzl.n), $$3, $$1.dm(), 48, bzh.b.c).collect(Collectors.toSet());
-         ehe $$5 = bpp.a($$1, $$4);
-         if ($$5 != null && $$5.j()) {
-            hz $$6 = $$5.l();
-            Optional<ij<bzk>> $$7 = $$2.c($$6);
-            if ($$7.isPresent()) {
-               $$1.dO().a(bxh.w, $$6);
-            }
-         } else if (this.f < 5) {
-            this.e.long2LongEntrySet().removeIf($$0x -> $$0x.getLongValue() < this.g);
+         }
+
+         if ($$7 instanceof cfv $$9) {
+            $$5.add($$9);
          }
       }
+
+      $$2.a(bxl.aq, $$3);
+      $$2.a(bxl.ap, $$5);
+      $$2.a(bxl.as, $$4);
+      $$2.a(bxl.at, $$5.size());
+   }
+
+   private Optional<hz> b(aow $$0, cfv $$1) {
+      return hz.a($$1.dm(), 8, 4, $$1x -> $$0.a_($$1x).a(aua.aR));
    }
 }

@@ -1,37 +1,41 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public class fzj implements fyw.a {
-   private static final int a = 60;
-   private final Set<jb> b = Sets.newHashSet();
+public class fzj implements fze.a {
+   private final exo a;
+   private static final int b = 10;
 
-   fzj() {
+   public fzj(exo $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void a() {
-      this.b.clear();
-   }
+   public void a(esh $$0, fvt $$1, double $$2, double $$3, double $$4) {
+      cvr $$5 = this.a.r;
+      hz $$6 = hz.a($$2, $$3, $$4);
+      LongSet $$7 = new LongOpenHashSet();
 
-   public void a(jb $$0) {
-      this.b.add($$0);
-   }
-
-   public void b(jb $$0) {
-      this.b.remove($$0);
-   }
-
-   @Override
-   public void a(esa $$0, fvl $$1, double $$2, double $$3, double $$4) {
-      hz $$5 = hz.a($$2, $$3, $$4);
-      this.b.forEach($$3x -> {
-         if ($$5.a($$3x.q(), 60.0)) {
-            a($$0, $$1, $$3x);
+      for (hz $$8 : hz.a($$6.b(-10, -10, -10), $$6.b(10, 10, 10))) {
+         int $$9 = $$5.a(cwa.a, $$8);
+         float $$10 = (float)(15 - $$9) / 15.0F * 0.5F + 0.16F;
+         int $$11 = awi.h($$10, 0.9F, 0.9F);
+         long $$12 = jb.e($$8.a());
+         if ($$7.add($$12)) {
+            fze.a(
+               $$0,
+               $$1,
+               $$5.L().p().a(cwa.a, jb.a($$12)),
+               (double)jb.a(jb.b($$12), 8),
+               (double)jb.a(jb.c($$12), 8),
+               (double)jb.a(jb.d($$12), 8),
+               16711680,
+               0.3F
+            );
          }
-      });
-   }
 
-   private static void a(esa $$0, fvl $$1, jb $$2) {
-      fyw.a($$0, $$1, $$2.q(), 0.2F, 1.0F, 0.2F, 0.15F);
+         if ($$9 != 15) {
+            fze.a($$0, $$1, String.valueOf($$9), (double)$$8.u() + 0.5, (double)$$8.v() + 0.25, (double)$$8.w() + 0.5, $$11);
+         }
+      }
    }
 }

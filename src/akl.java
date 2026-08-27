@@ -16,7 +16,7 @@ public class akl {
    private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vq.c("commands.clone.overlap"));
    private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> vq.b("commands.clone.toobig", $$0, $$1));
    private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(vq.c("commands.clone.failed"));
-   public static final Predicate<dlj> a = $$0 -> !$$0.a().i();
+   public static final Predicate<dln> a = $$0 -> !$$0.a().i();
 
    public static void a(CommandDispatcher<du> $$0, dq $$1) {
       $$0.register(
@@ -26,7 +26,7 @@ public class akl {
       );
    }
 
-   private static ArgumentBuilder<du, ?> a(dq $$0, akl.b<CommandContext<du>, aov> $$1) {
+   private static ArgumentBuilder<du, ?> a(dq $$0, akl.b<CommandContext<du>, aow> $$1) {
       return dv.a("begin", fo.a())
          .then(
             ((RequiredArgumentBuilder)dv.a("end", fo.a()).then(a($$0, $$1, $$0x -> ((du)$$0x.getSource()).e())))
@@ -34,12 +34,12 @@ public class akl {
          );
    }
 
-   private static akl.c a(CommandContext<du> $$0, aov $$1, String $$2) throws CommandSyntaxException {
+   private static akl.c a(CommandContext<du> $$0, aow $$1, String $$2) throws CommandSyntaxException {
       hz $$3 = fo.a($$0, $$1, $$2);
       return new akl.c($$1, $$3);
    }
 
-   private static ArgumentBuilder<du, ?> a(dq $$0, akl.b<CommandContext<du>, aov> $$1, akl.b<CommandContext<du>, aov> $$2) {
+   private static ArgumentBuilder<du, ?> a(dq $$0, akl.b<CommandContext<du>, aow> $$1, akl.b<CommandContext<du>, aow> $$2) {
       akl.b<CommandContext<du>, akl.c> $$3 = $$1x -> a($$1x, $$1.apply($$1x), "begin");
       akl.b<CommandContext<du>, akl.c> $$4 = $$1x -> a($$1x, $$1.apply($$1x), "end");
       akl.b<CommandContext<du>, akl.c> $$5 = $$1x -> a($$1x, $$2.apply($$1x), "destination");
@@ -82,7 +82,7 @@ public class akl {
       akl.b<CommandContext<du>, akl.c> $$0,
       akl.b<CommandContext<du>, akl.c> $$1,
       akl.b<CommandContext<du>, akl.c> $$2,
-      akl.b<CommandContext<du>, Predicate<dlj>> $$3,
+      akl.b<CommandContext<du>, Predicate<dln>> $$3,
       ArgumentBuilder<du, ?> $$4
    ) {
       return $$4.then(dv.a("force").executes($$4x -> a((du)$$4x.getSource(), $$0.apply($$4x), $$1.apply($$4x), $$2.apply($$4x), $$3.apply($$4x), akl.d.a)))
@@ -90,20 +90,20 @@ public class akl {
          .then(dv.a("normal").executes($$4x -> a((du)$$4x.getSource(), $$0.apply($$4x), $$1.apply($$4x), $$2.apply($$4x), $$3.apply($$4x), akl.d.c)));
    }
 
-   private static int a(du $$0, akl.c $$1, akl.c $$2, akl.c $$3, Predicate<dlj> $$4, akl.d $$5) throws CommandSyntaxException {
+   private static int a(du $$0, akl.c $$1, akl.c $$2, akl.c $$3, Predicate<dln> $$4, akl.d $$5) throws CommandSyntaxException {
       hz $$6 = $$1.b();
       hz $$7 = $$2.b();
-      eaw $$8 = eaw.a($$6, $$7);
+      ebd $$8 = ebd.a($$6, $$7);
       hz $$9 = $$3.b();
       hz $$10 = $$9.a($$8.c());
-      eaw $$11 = eaw.a($$9, $$10);
-      aov $$12 = $$1.a();
-      aov $$13 = $$3.a();
+      ebd $$11 = ebd.a($$9, $$10);
+      aow $$12 = $$1.a();
+      aow $$13 = $$3.a();
       if (!$$5.a() && $$12 == $$13 && $$11.a($$8)) {
          throw b.create();
       } else {
          int $$14 = $$8.d() * $$8.e() * $$8.f();
-         int $$15 = $$0.e().Z().c(cvj.z);
+         int $$15 = $$0.e().Z().c(cvn.z);
          if ($$14 > $$15) {
             throw c.create($$15, $$14);
          } else if ($$12.a($$6, $$7) && $$13.a($$9, $$10)) {
@@ -118,10 +118,10 @@ public class akl {
                   for (int $$23 = $$8.h(); $$23 <= $$8.k(); $$23++) {
                      hz $$24 = new hz($$23, $$22, $$21);
                      hz $$25 = $$24.a((jd)$$20);
-                     dlj $$26 = new dlj($$12, $$24, false);
-                     dlf $$27 = $$26.a();
+                     dln $$26 = new dln($$12, $$24, false);
+                     dlj $$27 = $$26.a();
                      if ($$4.test($$26)) {
-                        dit $$28 = $$12.c_($$24);
+                        dix $$28 = $$12.c_($$24);
                         if ($$28 != null) {
                            sw $$29 = $$28.q();
                            $$17.add(new akl.a($$25, $$27, $$29));
@@ -140,13 +140,13 @@ public class akl {
 
             if ($$5 == akl.d.b) {
                for (hz $$30 : $$19) {
-                  dit $$31 = $$12.c_($$30);
-                  bll.a_($$31);
-                  $$12.a($$30, cyq.hW.o(), 2);
+                  dix $$31 = $$12.c_($$30);
+                  bln.a_($$31);
+                  $$12.a($$30, cyu.hW.o(), 2);
                }
 
                for (hz $$32 : $$19) {
-                  $$12.a($$32, cyq.a.o(), 3);
+                  $$12.a($$32, cyu.a.o(), 3);
                }
             }
 
@@ -157,9 +157,9 @@ public class akl {
             List<akl.a> $$34 = Lists.reverse($$33);
 
             for (akl.a $$35 : $$34) {
-               dit $$36 = $$13.c_($$35.a);
-               bll.a_($$36);
-               $$13.a($$35.a, cyq.hW.o(), 2);
+               dix $$36 = $$13.c_($$35.a);
+               bln.a_($$36);
+               $$13.a($$35.a, cyu.hW.o(), 2);
             }
 
             int $$37 = 0;
@@ -171,7 +171,7 @@ public class akl {
             }
 
             for (akl.a $$39 : $$17) {
-               dit $$40 = $$13.c_($$39.a);
+               dix $$40 = $$13.c_($$39.a);
                if ($$39.c != null && $$40 != null) {
                   $$40.a($$39.c);
                   $$40.e();
@@ -200,11 +200,11 @@ public class akl {
 
    static class a {
       public final hz a;
-      public final dlf b;
+      public final dlj b;
       @Nullable
       public final sw c;
 
-      public a(hz $$0, dlf $$1, @Nullable sw $$2) {
+      public a(hz $$0, dlj $$1, @Nullable sw $$2) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
@@ -216,7 +216,7 @@ public class akl {
       R apply(T var1) throws CommandSyntaxException;
    }
 
-   static record c(aov a, hz b) {
+   static record c(aow a, hz b) {
    }
 
    static enum d {

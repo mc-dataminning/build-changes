@@ -1,84 +1,206 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
+import com.google.common.collect.ImmutableList.Builder;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class fbs implements fbq {
-   private static final aiy g = new aiy("toast/tutorial");
-   public static final int a = 154;
-   public static final int d = 1;
-   public static final int e = 3;
-   public static final int f = 28;
-   private final fbs.a h;
-   private final vq i;
-   @Nullable
-   private final vq j;
-   private fbq.a k = fbq.a.a;
-   private long l;
-   private float m;
-   private float n;
-   private final boolean o;
+public class fbs extends fbi implements far, fdh {
+   private static final int a = -1;
+   private static final int b = 400;
+   private static final int c = 24;
+   private static final int d = 14;
+   private static final vq e = vq.c("narration.tab_navigation.usage");
+   private final fcz f;
+   private int g;
+   private final fbr h;
+   private final ImmutableList<fbq> i;
+   private final ImmutableList<fax> j;
 
-   public fbs(fbs.a $$0, vq $$1, @Nullable vq $$2, boolean $$3) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
-      this.o = $$3;
+   fbs(int $$0, fbr $$1, Iterable<fbq> $$2) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = ImmutableList.copyOf($$2);
+      this.f = new fcz(0, 0);
+      this.f.c().b();
+      Builder<fax> $$3 = ImmutableList.builder();
+      int $$4 = 0;
+
+      for (fbq $$5 : $$2) {
+         $$3.add(this.f.a(new fax($$1, $$5, 0, 24), 0, $$4++));
+      }
+
+      this.j = $$3.build();
+   }
+
+   public static fbs.a a(fbr $$0, int $$1) {
+      return new fbs.a($$0, $$1);
+   }
+
+   public void a(int $$0) {
+      this.g = $$0;
    }
 
    @Override
-   public fbq.a a(eyu $$0, fbr $$1, long $$2) {
-      $$0.a(g, 0, 0, this.a(), this.b());
-      this.h.a($$0, 6, 6);
-      if (this.j == null) {
-         $$0.a($$1.b().h, this.i, 30, 12, -11534256, false);
-      } else {
-         $$0.a($$1.b().h, this.i, 30, 7, -11534256, false);
-         $$0.a($$1.b().h, this.j, 30, 18, -16777216, false);
+   public void a(boolean $$0) {
+      super.a($$0);
+      if (this.aK_() != null) {
+         this.aK_().a($$0);
+      }
+   }
+
+   @Override
+   public void a(@Nullable fbk $$0) {
+      super.a($$0);
+      if ($$0 instanceof fax $$1) {
+         this.h.a($$1.a(), true);
+      }
+   }
+
+   @Nullable
+   @Override
+   public eyy a(fdp $$0) {
+      if (!this.aL_()) {
+         fax $$1 = this.c();
+         if ($$1 != null) {
+            return eyy.a(this, eyy.a($$1));
+         }
       }
 
-      if (this.o) {
-         $$0.a(3, 28, 157, 29, -1);
-         float $$3 = awh.b(this.m, this.n, (float)($$2 - this.l) / 100.0F);
-         int $$4;
-         if (this.n >= this.m) {
-            $$4 = -16755456;
-         } else {
-            $$4 = -11206656;
+      return $$0 instanceof fdp.c ? null : super.a($$0);
+   }
+
+   @Override
+   public List<? extends fbk> l() {
+      return this.j;
+   }
+
+   @Override
+   public fdh.a s() {
+      return this.j.stream().map(ezm::s).max(Comparator.naturalOrder()).orElse(fdh.a.a);
+   }
+
+   @Override
+   public void b(fdj $$0) {
+      Optional<fax> $$1 = this.j.stream().filter(ezm::y).findFirst().or(() -> Optional.ofNullable(this.c()));
+      $$1.ifPresent($$1x -> {
+         this.a($$0.a(), $$1x);
+         $$1x.b($$0);
+      });
+      if (this.aL_()) {
+         $$0.a(fdi.d, e);
+      }
+   }
+
+   protected void a(fdj $$0, fax $$1) {
+      if (this.i.size() > 1) {
+         int $$2 = this.j.indexOf($$1);
+         if ($$2 != -1) {
+            $$0.a(fdi.b, vq.a("narrator.position.tab", $$2 + 1, this.i.size()));
+         }
+      }
+   }
+
+   @Override
+   public void a(ezb $$0, int $$1, int $$2, float $$3) {
+      $$0.a(0, 0, this.g, 24, -16777216);
+      $$0.a(fkb.a, 0, this.f.C() + this.f.u() - 2, 0.0F, 0.0F, this.g, 2, 32, 2);
+      UnmodifiableIterator var5 = this.j.iterator();
+
+      while (var5.hasNext()) {
+         fax $$4 = (fax)var5.next();
+         $$4.a($$0, $$1, $$2, $$3);
+      }
+   }
+
+   @Override
+   public fdt F() {
+      return this.f.F();
+   }
+
+   public void a() {
+      int $$0 = Math.min(400, this.g) - 28;
+      int $$1 = awi.d($$0 / this.i.size(), 2);
+      UnmodifiableIterator var3 = this.j.iterator();
+
+      while (var3.hasNext()) {
+         fax $$2 = (fax)var3.next();
+         $$2.k($$1);
+      }
+
+      this.f.a();
+      this.f.m(awi.d((this.g - $$0) / 2, 2));
+      this.f.n(0);
+   }
+
+   public void a(int $$0, boolean $$1) {
+      if (this.aL_()) {
+         this.a((fbk)this.j.get($$0));
+      } else {
+         this.h.a((fbq)this.i.get($$0), $$1);
+      }
+   }
+
+   public boolean b(int $$0) {
+      if (ffl.t()) {
+         int $$1 = this.c($$0);
+         if ($$1 != -1) {
+            this.a(awi.a($$1, 0, this.i.size() - 1), true);
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   private int c(int $$0) {
+      if ($$0 >= 49 && $$0 <= 57) {
+         return $$0 - 49;
+      } else {
+         if ($$0 == 258) {
+            int $$1 = this.b();
+            if ($$1 != -1) {
+               int $$2 = ffl.v() ? $$1 - 1 : $$1 + 1;
+               return Math.floorMod($$2, this.i.size());
+            }
          }
 
-         $$0.a(3, 28, (int)(3.0F + 154.0F * $$3), 29, $$4);
-         this.m = $$3;
-         this.l = $$2;
+         return -1;
+      }
+   }
+
+   private int b() {
+      fbq $$0 = this.h.a();
+      int $$1 = this.i.indexOf($$0);
+      return $$1 != -1 ? $$1 : -1;
+   }
+
+   @Nullable
+   private fax c() {
+      int $$0 = this.b();
+      return $$0 != -1 ? (fax)this.j.get($$0) : null;
+   }
+
+   public static class a {
+      private final int a;
+      private final fbr b;
+      private final List<fbq> c = new ArrayList<>();
+
+      a(fbr $$0, int $$1) {
+         this.b = $$0;
+         this.a = $$1;
       }
 
-      return this.k;
-   }
-
-   public void c() {
-      this.k = fbq.a.b;
-   }
-
-   public void a(float $$0) {
-      this.n = $$0;
-   }
-
-   public static enum a {
-      a(new aiy("toast/movement_keys")),
-      b(new aiy("toast/mouse")),
-      c(new aiy("toast/tree")),
-      d(new aiy("toast/recipe_book")),
-      e(new aiy("toast/wooden_planks")),
-      f(new aiy("toast/social_interactions")),
-      g(new aiy("toast/right_click"));
-
-      private final aiy h;
-
-      private a(aiy $$0) {
-         this.h = $$0;
+      public fbs.a a(fbq... $$0) {
+         Collections.addAll(this.c, $$0);
+         return this;
       }
 
-      public void a(eyu $$0, int $$1, int $$2) {
-         RenderSystem.enableBlend();
-         $$0.a(this.h, $$1, $$2, 20, 20);
+      public fbs a() {
+         return new fbs(this.a, this.b, this.c);
       }
    }
 }

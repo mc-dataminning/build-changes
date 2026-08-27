@@ -1,60 +1,23 @@
-@FunctionalInterface
-public interface gas<T extends bno> {
-   gar<T> create(gas.a var1);
+public class gas extends fzw<cef, fme<cef>> {
+   private static final aiy a = new aiy("textures/entity/zombie/drowned.png");
 
-   public static class a {
-      private final gaq a;
-      private final gbq b;
-      private final fwf c;
-      private final fvh d;
-      private final asa e;
-      private final foy f;
-      private final eys g;
+   public gas(gba.a $$0) {
+      super($$0, new fme<>($$0.a(fpi.N)), new fme<>($$0.a(fpi.O)), new fme<>($$0.a(fpi.P)));
+      this.a(new get<>(this, $$0.f()));
+   }
 
-      public a(gaq $$0, gbq $$1, fwf $$2, fvh $$3, asa $$4, foy $$5, eys $$6) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-      }
+   @Override
+   public aiy a(cfk $$0) {
+      return a;
+   }
 
-      public gaq a() {
-         return this.a;
-      }
-
-      public gbq b() {
-         return this.b;
-      }
-
-      public fwf c() {
-         return this.c;
-      }
-
-      public fvh d() {
-         return this.d;
-      }
-
-      public asa e() {
-         return this.e;
-      }
-
-      public foy f() {
-         return this.f;
-      }
-
-      public giz g() {
-         return this.c.a().a();
-      }
-
-      public fpc a(fpa $$0) {
-         return this.f.a($$0);
-      }
-
-      public eys h() {
-         return this.g;
+   protected void a(cef $$0, esh $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      float $$6 = $$0.a($$4);
+      if ($$6 > 0.0F) {
+         float $$7 = -10.0F - $$0.dE();
+         float $$8 = awi.i($$6, 0.0F, $$7);
+         $$1.a(a.b.rotationDegrees($$8), 0.0F, $$0.dh() / 2.0F / $$5, 0.0F);
       }
    }
 }

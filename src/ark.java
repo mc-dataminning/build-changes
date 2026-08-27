@@ -1,55 +1,33 @@
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.util.List;
-import javax.annotation.Nullable;
+public enum ark {
+   a("old"),
+   b("new"),
+   c("compatible");
 
-public abstract class ark<T> {
-   private final eni a;
+   private final vq d;
+   private final vq e;
 
-   protected ark(eni $$0) {
-      this.a = $$0;
+   private ark(String $$0) {
+      this.d = vq.c("pack.incompatible." + $$0).a(n.h);
+      this.e = vq.c("pack.incompatible.confirm." + $$0);
    }
 
-   @Nullable
-   public T a(Path $$0, List<enj> $$1) throws IOException {
-      Path $$2 = $$0;
+   public boolean a() {
+      return this == c;
+   }
 
-      BasicFileAttributes $$3;
-      try {
-         $$3 = Files.readAttributes($$0, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
-      } catch (NoSuchFileException var6) {
-         return null;
-      }
-
-      if ($$3.isSymbolicLink()) {
-         this.a.a($$0, $$1);
-         if (!$$1.isEmpty()) {
-            return null;
-         }
-
-         $$2 = Files.readSymbolicLink($$0);
-         $$3 = Files.readAttributes($$2, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
-      }
-
-      if ($$3.isDirectory()) {
-         this.a.b($$2, $$1);
-         if (!$$1.isEmpty()) {
-            return null;
-         } else {
-            return !Files.isRegularFile($$2.resolve("pack.mcmeta")) ? null : this.c($$2);
-         }
+   public static ark a(awa<Integer> $$0, int $$1) {
+      if ($$0.b() < $$1) {
+         return a;
       } else {
-         return $$3.isRegularFile() && $$2.getFileName().toString().endsWith(".zip") ? this.d($$2) : null;
+         return $$1 < $$0.a() ? b : c;
       }
    }
 
-   @Nullable
-   protected abstract T d(Path var1) throws IOException;
+   public vq b() {
+      return this.d;
+   }
 
-   @Nullable
-   protected abstract T c(Path var1) throws IOException;
+   public vq c() {
+      return this.e;
+   }
 }

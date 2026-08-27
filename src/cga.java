@@ -1,118 +1,112 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Dynamic;
 import javax.annotation.Nullable;
 
-public class cga extends cfw {
-   private static final int bU = 50;
-   private static final float bV = 0.35F;
-   private static final int bW = 7;
-   protected static final ImmutableList<byo<? extends byn<? super cga>>> e = ImmutableList.of(byo.c, byo.d, byo.b, byo.f, byo.m);
-   protected static final ImmutableList<bxh<?>> bT = ImmutableList.of(
-      bxh.n, bxh.v, bxh.g, bxh.h, bxh.k, bxh.l, bxh.ao, bxh.an, bxh.x, bxh.y, bxh.m, bxh.E, new bxh[]{bxh.o, bxh.p, bxh.q, bxh.t, bxh.ab, bxh.M, bxh.b}
-   );
+public abstract class cga extends cer {
+   protected static final aie<Boolean> b = aih.a(cga.class, aig.k);
+   protected static final int c = 300;
+   protected int d;
 
-   public cga(bnu<? extends cga> $$0, cvn $$1) {
+   public cga(bnw<? extends cga> $$0, cvr $$1) {
       super($$0, $$1);
-      this.bJ = 20;
+      this.s(true);
+      this.A();
+      this.a(ehh.n, 16.0F);
+      this.a(ehh.o, -1.0F);
    }
 
-   public static bpk.a A() {
-      return cen.gm().a(bpl.n, 50.0).a(bpl.o, 0.35F).a(bpl.c, 7.0);
-   }
-
-   @Nullable
-   @Override
-   public boy a(cwc $$0, bls $$1, bok $$2, @Nullable boy $$3, @Nullable sw $$4) {
-      cgb.a(this);
-      this.a($$0.F_(), $$1);
-      return super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   protected void a(awo $$0, bls $$1) {
-      this.a(bnv.a, new coz(cpc.oX));
-   }
-
-   @Override
-   protected bpf.b<cga> dP() {
-      return bpf.a(bT, e);
-   }
-
-   @Override
-   protected bpf<?> a(Dynamic<?> $$0) {
-      return cgb.a(this, this.dP().a($$0));
-   }
-
-   @Override
-   public bpf<cga> dO() {
-      return (bpf<cga>)super.dO();
-   }
-
-   @Override
-   public boolean u() {
-      return false;
-   }
-
-   @Override
-   public boolean k(coz $$0) {
-      return $$0.a(cpc.oX) ? super.k($$0) : false;
-   }
-
-   @Override
-   protected void aa() {
-      this.dM().af().a("piglinBruteBrain");
-      this.dO().a((aov)this.dM(), this);
-      this.dM().af().c();
-      cgb.b(this);
-      cgb.c(this);
-      super.aa();
-   }
-
-   @Override
-   public cfz gi() {
-      return this.fY() && this.gj() ? cfz.a : cfz.f;
-   }
-
-   @Override
-   public boolean a(bmn $$0, float $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      if (this.dM().B) {
-         return false;
-      } else {
-         if ($$2 && $$0.d() instanceof bog) {
-            cgb.a(this, (bog)$$0.d());
-         }
-
-         return $$2;
+   private void A() {
+      if (bzd.a(this)) {
+         ((bxs)this.N()).b(true);
       }
    }
 
    @Override
-   protected atj y() {
-      return atk.th;
+   protected abstract boolean u();
+
+   public void w(boolean $$0) {
+      this.an().b(b, $$0);
+   }
+
+   protected boolean w() {
+      return this.an().b(b);
    }
 
    @Override
-   protected atj d(bmn $$0) {
-      return atk.tk;
+   protected void c_() {
+      super.c_();
+      this.am.a(b, false);
    }
 
    @Override
-   protected atj n_() {
-      return atk.tj;
+   public void b(sw $$0) {
+      super.b($$0);
+      if (this.w()) {
+         $$0.a("IsImmuneToZombification", true);
+      }
+
+      $$0.a("TimeInOverworld", this.d);
    }
 
    @Override
-   protected void b(hz $$0, dlf $$1) {
-      this.a(atk.tl, 0.15F, 1.0F);
-   }
-
-   protected void gn() {
-      this.b(atk.ti);
+   public void a(sw $$0) {
+      super.a($$0);
+      this.w($$0.q("IsImmuneToZombification"));
+      this.d = $$0.h("TimeInOverworld");
    }
 
    @Override
-   protected void gk() {
-      this.b(atk.tm);
+   protected void aa() {
+      super.aa();
+      if (this.gg()) {
+         this.d++;
+      } else {
+         this.d = 0;
+      }
+
+      if (this.d > 300) {
+         this.gk();
+         this.c((aow)this.dM());
+      }
    }
+
+   public boolean gg() {
+      return !this.dM().E_().b() && !this.w() && !this.fW();
+   }
+
+   protected void c(aow $$0) {
+      cfm $$1 = this.a(bnw.bv, true);
+      if ($$1 != null) {
+         $$1.b(new bnd(bnf.i, 200, 0));
+      }
+   }
+
+   public boolean gh() {
+      return !this.o_();
+   }
+
+   public abstract cgd gi();
+
+   @Nullable
+   @Override
+   public boi q() {
+      return this.bz.c(bxl.o).orElse(null);
+   }
+
+   protected boolean gj() {
+      return this.eT().d() instanceof cqr;
+   }
+
+   @Override
+   public void R() {
+      if (cgc.d(this)) {
+         super.R();
+      }
+   }
+
+   @Override
+   protected void Z() {
+      super.Z();
+      aep.a(this);
+   }
+
+   protected abstract void gk();
 }

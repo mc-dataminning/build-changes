@@ -1,74 +1,71 @@
-public enum bnv implements axc {
-   a(bnv.a.a, 0, 0, "mainhand"),
-   b(bnv.a.a, 1, 5, "offhand"),
-   c(bnv.a.b, 0, 1, "feet"),
-   d(bnv.a.b, 1, 2, "legs"),
-   e(bnv.a.b, 2, 3, "chest"),
-   f(bnv.a.b, 3, 4, "head");
+import com.google.common.base.Predicates;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   public static final axc.a<bnv> g = axc.a(bnv::values);
-   private final bnv.a h;
-   private final int i;
-   private final int j;
-   private final String k;
+public final class bnv {
+   public static final Predicate<bnq> a = bnq::bx;
+   public static final Predicate<bnq> b = $$0 -> $$0.bx() && $$0 instanceof boi;
+   public static final Predicate<bnq> c = $$0 -> $$0.bx() && !$$0.bP() && !$$0.bO();
+   public static final Predicate<bnq> d = $$0 -> $$0 instanceof blp && $$0.bx();
+   public static final Predicate<bnq> e = $$0 -> !($$0 instanceof chl) || !$$0.P_() && !((chl)$$0).f();
+   public static final Predicate<bnq> f = $$0 -> !$$0.P_();
+   public static final Predicate<bnq> g = f.and(bnq::bz);
 
-   private bnv(bnv.a $$0, int $$1, int $$2, String $$3) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
-      this.k = $$3;
+   private bnv() {
    }
 
-   public bnv.a a() {
-      return this.h;
+   public static Predicate<bnq> a(double $$0, double $$1, double $$2, double $$3) {
+      double $$4 = $$3 * $$3;
+      return $$4x -> $$4x != null && $$4x.i($$0, $$1, $$2) <= $$4;
    }
 
-   public int b() {
-      return this.i;
+   public static Predicate<bnq> a(bnq $$0) {
+      epf $$1 = $$0.cg();
+      epf.a $$2 = $$1 == null ? epf.a.a : $$1.l();
+      return (Predicate<bnq>)($$2 == epf.a.b ? Predicates.alwaysFalse() : f.and($$3 -> {
+         if (!$$3.bu()) {
+            return false;
+         } else if (!$$0.dM().B || $$3 instanceof chl && ((chl)$$3).g()) {
+            epf $$4 = $$3.cg();
+            epf.a $$5 = $$4 == null ? epf.a.a : $$4.l();
+            if ($$5 == epf.a.b) {
+               return false;
+            } else {
+               boolean $$6 = $$1 != null && $$1.a($$4);
+               return ($$2 == epf.a.d || $$5 == epf.a.d) && $$6 ? false : $$2 != epf.a.c && $$5 != epf.a.c || $$6;
+            }
+         } else {
+            return false;
+         }
+      }));
    }
 
-   public int a(int $$0) {
-      return $$0 + this.i;
+   public static Predicate<bnq> b(bnq $$0) {
+      return $$1 -> {
+         while ($$1.bO()) {
+            $$1 = $$1.cZ();
+            if ($$1 == $$0) {
+               return false;
+            }
+         }
+
+         return true;
+      };
    }
 
-   public int d() {
-      return this.j;
-   }
+   public static class a implements Predicate<bnq> {
+      private final cpd a;
 
-   public String e() {
-      return this.k;
-   }
-
-   public boolean f() {
-      return this.h == bnv.a.b;
-   }
-
-   @Override
-   public String c() {
-      return this.k;
-   }
-
-   public static bnv a(String $$0) {
-      bnv $$1 = g.a($$0);
-      if ($$1 != null) {
-         return $$1;
-      } else {
-         throw new IllegalArgumentException("Invalid slot '" + $$0 + "'");
+      public a(cpd $$0) {
+         this.a = $$0;
       }
-   }
 
-   public static bnv a(bnv.a $$0, int $$1) {
-      for (bnv $$2 : values()) {
-         if ($$2.a() == $$0 && $$2.b() == $$1) {
-            return $$2;
+      public boolean a(@Nullable bnq $$0) {
+         if (!$$0.bx()) {
+            return false;
+         } else {
+            return !($$0 instanceof boi $$1) ? false : $$1.f(this.a);
          }
       }
-
-      throw new IllegalArgumentException("Invalid slot '" + $$0 + "': " + $$1);
-   }
-
-   public static enum a {
-      a,
-      b;
    }
 }

@@ -1,31 +1,55 @@
-public class fum extends ful {
-   private final exl i;
+public class fum extends fuh {
+   private final fuc a;
 
-   public fum(exl $$0) {
-      this.i = $$0;
-   }
-
-   private static float a(boolean $$0, boolean $$1) {
-      if ($$0 == $$1) {
-         return 0.0F;
-      } else {
-         return $$0 ? 1.0F : -1.0F;
-      }
+   fum(fqe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fuc $$7) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a = $$7;
+      this.j *= 0.3F;
+      this.k = Math.random() * 0.2F + 0.1F;
+      this.l *= 0.3F;
+      this.b(0.01F, 0.01F);
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+      this.b($$7);
+      this.u = 0.0F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
    }
 
    @Override
-   public void a(boolean $$0, float $$1) {
-      this.c = this.i.x.e();
-      this.d = this.i.z.e();
-      this.e = this.i.y.e();
-      this.f = this.i.A.e();
-      this.b = a(this.c, this.d);
-      this.a = a(this.e, this.f);
-      this.g = this.i.B.e();
-      this.h = this.i.C.e();
-      if ($$0) {
-         this.a *= $$1;
-         this.b *= $$1;
+   public ftl b() {
+      return ftl.b;
+   }
+
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      int $$0 = 60 - this.t;
+      if (this.t-- <= 0) {
+         this.k();
+      } else {
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         this.j *= 0.98F;
+         this.k *= 0.98F;
+         this.l *= 0.98F;
+         float $$1 = (float)$$0 * 0.001F;
+         this.b($$1, $$1);
+         this.a(this.a.a($$0 % 4, 4));
+      }
+   }
+
+   public static class a implements ftk<kc> {
+      private final fuc a;
+
+      public a(fuc $$0) {
+         this.a = $$0;
+      }
+
+      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fum($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

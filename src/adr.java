@@ -24,15 +24,15 @@ public class adr implements xx<aag> {
       this.k = ImmutableList.copyOf($$3);
    }
 
-   public static adr a(eor $$0, boolean $$1) {
+   public static adr a(eoy $$0, boolean $$1) {
       return new adr($$0.b(), $$1 ? 0 : 2, Optional.of(new adr.b($$0)), (Collection<String>)($$1 ? $$0.g() : ImmutableList.of()));
    }
 
-   public static adr a(eor $$0) {
+   public static adr a(eoy $$0) {
       return new adr($$0.b(), 1, Optional.empty(), ImmutableList.of());
    }
 
-   public static adr a(eor $$0, String $$1, adr.a $$2) {
+   public static adr a(eoy $$0, String $$1, adr.a $$2) {
       return new adr($$0.b(), $$2 == adr.a.a ? 3 : 4, Optional.empty(), ImmutableList.of($$1));
    }
 
@@ -134,7 +134,7 @@ public class adr implements xx<aag> {
       private final n f;
       private final int g;
 
-      public b(eor $$0) {
+      public b(eoy $$0) {
          this.a = $$0.c();
          this.g = $$0.m();
          this.d = $$0.j().e;

@@ -1,65 +1,58 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
+import org.slf4j.Logger;
 
-public record elt(ij<cyo> b, Optional<db> c) implements elu {
-   public static final Codec<elt> a = avp.a(
-      RecordCodecBuilder.create($$0 -> $$0.group(kf.e.r().fieldOf("block").forGetter(elt::c), avp.a(db.a, "properties").forGetter(elt::d)).apply($$0, elt::new)),
-      elt::a
-   );
+public record elt(aiy b) implements emb {
+   private static final Logger c = LogUtils.getLogger();
+   public static final Codec<elt> a = RecordCodecBuilder.create($$0 -> $$0.group(aiy.a.fieldOf("name").forGetter(elt::c)).apply($$0, elt::new));
 
-   private static DataResult<elt> a(elt $$0) {
-      return $$0.d()
-         .flatMap($$1 -> $$1.a($$0.c().a().n()))
-         .map($$1 -> DataResult.error(() -> "Block " + $$0.c() + " has no property" + $$1))
-         .orElse(DataResult.success($$0));
+   @Override
+   public emc b() {
+      return emd.q;
    }
 
    @Override
-   public elv b() {
-      return elw.j;
+   public void a(ejl $$0) {
+      eje<emb> $$1 = new eje<>(ejh.a, this.b);
+      if ($$0.a($$1)) {
+         $$0.b("Condition " + this.b + " is recursively called");
+      } else {
+         emb.super.a($$0);
+         $$0.a()
+            .getElementOptional($$1)
+            .ifPresentOrElse($$2 -> $$2.a($$0.a(".{" + this.b + "}", $$1)), () -> $$0.b("Unknown condition table called " + this.b));
+      }
    }
 
-   @Override
-   public Set<eld<?>> a() {
-      return Set.of(elg.g);
+   public boolean a(ejc $$0) {
+      emb $$1 = $$0.a().getElement(ejh.a, this.b);
+      if ($$1 == null) {
+         c.warn("Tried using unknown condition table called {}", this.b);
+         return false;
+      } else {
+         ejc.c<?> $$2 = ejc.a($$1);
+         if ($$0.b($$2)) {
+            boolean var4;
+            try {
+               var4 = $$1.test($$0);
+            } finally {
+               $$0.c($$2);
+            }
+
+            return var4;
+         } else {
+            c.warn("Detected infinite loop in loot tables");
+            return false;
+         }
+      }
    }
 
-   public boolean a(eiv $$0) {
-      dlf $$1 = $$0.c(elg.g);
-      return $$1 != null && $$1.a(this.b) && (this.c.isEmpty() || this.c.get().a($$1));
+   public static emb.a a(aiy $$0) {
+      return () -> new elt($$0);
    }
 
-   public static elt.a a(cyo $$0) {
-      return new elt.a($$0);
-   }
-
-   public ij<cyo> c() {
+   public aiy c() {
       return this.b;
-   }
-
-   public Optional<db> d() {
-      return this.c;
-   }
-
-   public static class a implements elu.a {
-      private final ij<cyo> a;
-      private Optional<db> b = Optional.empty();
-
-      public a(cyo $$0) {
-         this.a = $$0.r();
-      }
-
-      public elt.a a(db.a $$0) {
-         this.b = $$0.b();
-         return this;
-      }
-
-      @Override
-      public elu build() {
-         return new elt(this.a, this.b);
-      }
    }
 }

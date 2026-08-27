@@ -2,7 +2,7 @@ import com.mojang.authlib.GameProfile;
 import java.time.Duration;
 import java.util.UUID;
 
-public record wh(UUID a, chk b) {
+public record wh(UUID a, cho b) {
    public wm a(Duration $$0) {
       return new wm.a(this.b.a(), () -> this.b.b().a($$0));
    }
@@ -23,13 +23,13 @@ public record wh(UUID a, chk b) {
       return this.a;
    }
 
-   public chk d() {
+   public cho d() {
       return this.b;
    }
 
-   public static record a(UUID a, chk.a b) {
+   public static record a(UUID a, cho.a b) {
       public static wh.a a(uq $$0) {
-         return new wh.a($$0.p(), new chk.a($$0));
+         return new wh.a($$0.p(), new cho.a($$0));
       }
 
       public static void a(uq $$0, wh.a $$1) {
@@ -37,8 +37,8 @@ public record wh(UUID a, chk b) {
          $$1.b.a($$0);
       }
 
-      public wh a(GameProfile $$0, awu $$1) throws chk.b {
-         return new wh(this.a, chk.a($$1, $$0.getId(), this.b));
+      public wh a(GameProfile $$0, awu $$1) throws cho.b {
+         return new wh(this.a, cho.a($$1, $$0.getId(), this.b));
       }
    }
 }

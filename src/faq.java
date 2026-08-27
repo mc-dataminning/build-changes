@@ -1,61 +1,152 @@
-public class faq extends ezf {
-   private static final fau a = new fau(
-      new aiy("widget/tab_selected"), new aiy("widget/tab"), new aiy("widget/tab_selected_highlighted"), new aiy("widget/tab_highlighted")
-   );
-   private static final int b = 3;
-   private static final int c = 1;
-   private static final int d = 1;
-   private static final int e = 4;
-   private static final int f = 2;
-   private final fbk m;
-   private final fbj n;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   public faq(fbk $$0, fbj $$1, int $$2, int $$3) {
-      super(0, 0, $$2, $$3, $$1.a());
-      this.m = $$0;
-      this.n = $$1;
+public class faq extends ffl {
+   private static final aiy a = new aiy("popup/background");
+   private static final int b = 12;
+   private static final int c = 18;
+   private static final int k = 6;
+   private static final int l = 130;
+   private static final int m = 64;
+   private static final int n = 250;
+   private final ffl o;
+   @Nullable
+   private final aiy p;
+   private final vq q;
+   private final List<faq.b> r;
+   @Nullable
+   private final Runnable t;
+   private final int u;
+   private final fde v = fde.d();
+
+   faq(ffl $$0, int $$1, @Nullable aiy $$2, vq $$3, vq $$4, List<faq.b> $$5, @Nullable Runnable $$6) {
+      super($$3);
+      this.o = $$0;
+      this.p = $$2;
+      this.q = $$4;
+      this.r = $$5;
+      this.t = $$6;
+      this.u = $$1 - 36;
    }
 
    @Override
-   public void b(eyu $$0, int $$1, int $$2, float $$3) {
-      $$0.a(a.a(this.b(), this.z()), this.B(), this.C(), this.g, this.h);
-      eys $$4 = exh.O().h;
-      int $$5 = this.j ? -1 : -6250336;
-      this.a($$0, $$4, $$5);
-      if (this.b()) {
-         this.b($$0, $$4, $$5);
+   public void aI_() {
+      super.aI_();
+      this.o.q();
+   }
+
+   @Override
+   protected void aQ_() {
+      this.v.a(12).c().b();
+      this.v.a(new fai(this.e.f().a(n.r), this.i).c(this.u).b(true));
+      if (this.p != null) {
+         this.v.a(fab.a(130, 64, this.p, 130, 64));
+      }
+
+      this.v.a(new fai(this.q, this.i).c(this.u).b(true));
+      this.v.a(this.o());
+      this.v.a($$1 -> {
+         ezm var10000 = this.c($$1);
+      });
+      this.c();
+   }
+
+   private fde o() {
+      int $$0 = 6 * (this.r.size() - 1);
+      int $$1 = Math.min((this.u - $$0) / this.r.size(), 150);
+      fde $$2 = fde.e();
+      $$2.a(6);
+
+      for (faq.b $$3 : this.r) {
+         $$2.a(ezo.a($$3.a(), $$1x -> $$3.b().accept(this)).a($$1).a());
+      }
+
+      return $$2;
+   }
+
+   @Override
+   protected void c() {
+      this.o.a(this.f, this.g, this.h);
+      this.v.a();
+      fcy.a(this.v, this.F());
+   }
+
+   @Override
+   public void b(ezb $$0, int $$1, int $$2, float $$3) {
+      this.o.a($$0, -1, -1, $$3);
+      $$0.e();
+      RenderSystem.clear(256, exo.a);
+      this.a($$0);
+      $$0.a(a, this.v.B() - 18, this.v.C() - 18, this.v.w() + 36, this.v.u() + 36);
+   }
+
+   @Override
+   public vq i() {
+      return vp.a(this.e, this.q);
+   }
+
+   @Override
+   public void d() {
+      if (this.t != null) {
+         this.t.run();
+      }
+
+      this.f.a(this.o);
+   }
+
+   public static class a {
+      private final ffl a;
+      private final vq b;
+      private vq c = vp.a;
+      private int d = 250;
+      @Nullable
+      private aiy e;
+      private final List<faq.b> f = new ArrayList<>();
+      @Nullable
+      private Runnable g = null;
+
+      public a(ffl $$0, vq $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public faq.a a(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public faq.a a(aiy $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public faq.a a(vq $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public faq.a a(vq $$0, Consumer<faq> $$1) {
+         this.f.add(new faq.b($$0, $$1));
+         return this;
+      }
+
+      public faq.a a(Runnable $$0) {
+         this.g = $$0;
+         return this;
+      }
+
+      public faq a() {
+         if (this.f.isEmpty()) {
+            throw new IllegalStateException("Popup must have at least one button");
+         } else {
+            return new faq(this.a, this.d, this.e, this.b, this.c, List.copyOf(this.f), this.g);
+         }
       }
    }
 
-   public void a(eyu $$0, eys $$1, int $$2) {
-      int $$3 = this.B() + 1;
-      int $$4 = this.C() + (this.b() ? 0 : 3);
-      int $$5 = this.B() + this.w() - 1;
-      int $$6 = this.C() + this.u();
-      a($$0, $$1, this.x(), $$3, $$4, $$5, $$6, $$2);
-   }
-
-   private void b(eyu $$0, eys $$1, int $$2) {
-      int $$3 = Math.min($$1.a(this.x()), this.w() - 4);
-      int $$4 = this.B() + (this.w() - $$3) / 2;
-      int $$5 = this.C() + this.u() - 2;
-      $$0.a($$4, $$5, $$4 + $$3, $$5 + 1, $$2);
-   }
-
-   @Override
-   protected void a(fdc $$0) {
-      $$0.a(fdb.a, vq.a("gui.narrate.tab", this.n.a()));
-   }
-
-   @Override
-   public void a(glk $$0) {
-   }
-
-   public fbj a() {
-      return this.n;
-   }
-
-   public boolean b() {
-      return this.m.a() == this.n;
+   static record b(vq a, Consumer<faq> b) {
    }
 }

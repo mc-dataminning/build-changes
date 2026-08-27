@@ -1,125 +1,28 @@
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableLong;
-
 public class bpp {
-   public static final int a = 48;
+   public static final ij<bpk> a = a("generic.armor", new bpr("attribute.name.generic.armor", 0.0, 0.0, 30.0).a(true));
+   public static final ij<bpk> b = a("generic.armor_toughness", new bpr("attribute.name.generic.armor_toughness", 0.0, 0.0, 20.0).a(true));
+   public static final ij<bpk> c = a("generic.attack_damage", new bpr("attribute.name.generic.attack_damage", 2.0, 0.0, 2048.0));
+   public static final ij<bpk> d = a("generic.attack_knockback", new bpr("attribute.name.generic.attack_knockback", 0.0, 0.0, 5.0));
+   public static final ij<bpk> e = a("generic.attack_speed", new bpr("attribute.name.generic.attack_speed", 4.0, 0.0, 1024.0).a(true));
+   public static final ij<bpk> f = a("player.block_interaction_range", new bpr("attribute.name.player.block_interaction_range", 4.5, 0.0, 64.0).a(true));
+   public static final ij<bpk> g = a("player.entity_interaction_range", new bpr("attribute.name.player.entity_interaction_range", 3.0, 0.0, 64.0).a(true));
+   public static final ij<bpk> h = a("generic.flying_speed", new bpr("attribute.name.generic.flying_speed", 0.4F, 0.0, 1024.0).a(true));
+   public static final ij<bpk> i = a("generic.follow_range", new bpr("attribute.name.generic.follow_range", 32.0, 0.0, 2048.0));
+   public static final ij<bpk> j = a("horse.jump_strength", new bpr("attribute.name.horse.jump_strength", 0.7, 0.0, 2.0).a(true));
+   public static final ij<bpk> k = a("generic.knockback_resistance", new bpr("attribute.name.generic.knockback_resistance", 0.0, 0.0, 1.0));
+   public static final ij<bpk> l = a("generic.luck", new bpr("attribute.name.generic.luck", 0.0, -1024.0, 1024.0).a(true));
+   public static final ij<bpk> m = a("generic.max_absorption", new bpr("attribute.name.generic.max_absorption", 0.0, 0.0, 2048.0).a(true));
+   public static final ij<bpk> n = a("generic.max_health", new bpr("attribute.name.generic.max_health", 20.0, 1.0, 1024.0).a(true));
+   public static final ij<bpk> o = a("generic.movement_speed", new bpr("attribute.name.generic.movement_speed", 0.7F, 0.0, 1024.0).a(true));
+   public static final ij<bpk> p = a("generic.scale", new bpr("attribute.name.generic.scale", 1.0, 0.0625, 16.0).a(true));
+   public static final ij<bpk> q = a("zombie.spawn_reinforcements", new bpr("attribute.name.zombie.spawn_reinforcements", 0.0, 0.0, 1.0));
+   public static final ij<bpk> r = a("generic.step_height", new bpr("attribute.name.generic.step_height", 0.6, 0.0, 10.0).a(true));
 
-   public static bpx<boo> a(Predicate<ij<bzk>> $$0, bxh<ii> $$1, boolean $$2, Optional<Byte> $$3) {
-      return a($$0, $$1, $$1, $$2, $$3);
+   private static ij<bpk> a(String $$0, bpk $$1) {
+      return iv.b(kf.u, new aiy($$0), $$1);
    }
 
-   public static bpx<boo> a(Predicate<ij<bzk>> $$0, bxh<ii> $$1, bxh<ii> $$2, boolean $$3, Optional<Byte> $$4) {
-      int $$5 = 5;
-      int $$6 = 20;
-      MutableLong $$7 = new MutableLong(0L);
-      Long2ObjectMap<bpp.a> $$8 = new Long2ObjectOpenHashMap();
-      brh<boo> $$9 = btj.a(
-         (Function<btj.b<boo>, ? extends App<btj.c<boo>, btm<boo>>>)($$6x -> $$6x.group($$6x.c($$2)).apply($$6x, $$5xx -> ($$6xx, $$7x, $$8x) -> {
-                  if ($$3 && $$7x.o_()) {
-                     return false;
-                  } else if ($$7.getValue() == 0L) {
-                     $$7.setValue($$6xx.X() + (long)$$6xx.z.a(20));
-                     return false;
-                  } else if ($$6xx.X() < $$7.getValue()) {
-                     return false;
-                  } else {
-                     $$7.setValue($$8x + 20L + (long)$$6xx.F_().a(20));
-                     bzh $$9x = $$6xx.y();
-                     $$8.long2ObjectEntrySet().removeIf($$1xxxx -> !((bpp.a)$$1xxxx.getValue()).b($$8x));
-                     Predicate<hz> $$10 = $$2xxxx -> {
-                        bpp.a $$3xxxx = (bpp.a)$$8.get($$2xxxx.a());
-                        if ($$3xxxx == null) {
-                           return true;
-                        } else if (!$$3xxxx.c($$8x)) {
-                           return false;
-                        } else {
-                           $$3xxxx.a($$8x);
-                           return true;
-                        }
-                     };
-                     Set<Pair<ij<bzk>, hz>> $$11 = $$9x.c($$0, $$10, $$7x.dm(), 48, bzh.b.a).limit(5L).collect(Collectors.toSet());
-                     ehe $$12 = a($$7x, $$11);
-                     if ($$12 != null && $$12.j()) {
-                        hz $$13 = $$12.l();
-                        $$9x.c($$13).ifPresent($$8xx -> {
-                           $$9x.a($$0, ($$1xxxxx, $$2xxxxx) -> $$2xxxxx.equals($$13), $$13, 1);
-                           $$5xx.a(ii.a($$6xx.ae(), $$13));
-                           $$4.ifPresent($$2xxxxx -> $$6xx.a($$7x, $$2xxxxx));
-                           $$8.clear();
-                           aep.c($$6xx, $$13);
-                        });
-                     } else {
-                        for (Pair<ij<bzk>, hz> $$14 : $$11) {
-                           $$8.computeIfAbsent(((hz)$$14.getSecond()).a(), $$2xxxx -> new bpp.a($$6xx.z, $$8x));
-                        }
-                     }
-
-                     return true;
-                  }
-               }))
-      );
-      return $$2 == $$1 ? $$9 : btj.a((Function<btj.b<boo>, ? extends App<btj.c<boo>, btm<boo>>>)($$2x -> $$2x.group($$2x.c($$1)).apply($$2x, $$1xx -> $$9)));
-   }
-
-   @Nullable
-   public static ehe a(boi $$0, Set<Pair<ij<bzk>, hz>> $$1) {
-      if ($$1.isEmpty()) {
-         return null;
-      } else {
-         Set<hz> $$2 = new HashSet<>();
-         int $$3 = 1;
-
-         for (Pair<ij<bzk>, hz> $$4 : $$1) {
-            $$3 = Math.max($$3, ((bzk)((ij)$$4.getFirst()).a()).c());
-            $$2.add((hz)$$4.getSecond());
-         }
-
-         return $$0.N().a($$2, $$3);
-      }
-   }
-
-   static class a {
-      private static final int a = 40;
-      private static final int b = 80;
-      private static final int c = 400;
-      private final awo d;
-      private long e;
-      private long f;
-      private int g;
-
-      a(awo $$0, long $$1) {
-         this.d = $$0;
-         this.a($$1);
-      }
-
-      public void a(long $$0) {
-         this.e = $$0;
-         int $$1 = this.g + this.d.a(40) + 40;
-         this.g = Math.min($$1, 400);
-         this.f = $$0 + (long)this.g;
-      }
-
-      public boolean b(long $$0) {
-         return $$0 - this.e < 400L;
-      }
-
-      public boolean c(long $$0) {
-         return $$0 >= this.f;
-      }
-
-      @Override
-      public String toString() {
-         return "RetryMarker{, previousAttemptAt=" + this.e + ", nextScheduledAttemptAt=" + this.f + ", currentDelay=" + this.g + "}";
-      }
+   public static ij<bpk> a(iv<bpk> $$0) {
+      return n;
    }
 }

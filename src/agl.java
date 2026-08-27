@@ -27,7 +27,7 @@ public class agl implements xx<aes> {
    }
 
    @Nullable
-   public bno a(aov $$0) {
+   public bnq a(aow $$0) {
       return $$0.a(this.b);
    }
 }

@@ -1,8 +1,17 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class drs {
+   private final int a;
+   private final int b;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface drs {
+   public drs(dng $$0, cvt $$1) {
+      this.a = Math.max($$1.J_(), $$0.f());
+      this.b = Math.min($$1.K_(), $$0.d());
+   }
+
+   public int a() {
+      return this.a;
+   }
+
+   public int b() {
+      return this.b;
+   }
 }

@@ -1,15 +1,10 @@
-public class cmv extends cou {
-   public cmv(cou.a $$0) {
-      super($$0);
+public class cmv extends cmw {
+   public cmv(cys $$0, coy.a $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public boolean d_(coz $$0) {
-      return $$0.M() == 1;
-   }
-
-   @Override
-   public int an_() {
-      return 1;
+   protected boolean a(crk $$0, dlj $$1) {
+      return $$0.q().a($$0.a(), $$1, 26);
    }
 }

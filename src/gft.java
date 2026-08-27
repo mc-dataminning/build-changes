@@ -1,15 +1,13 @@
-public class gft extends gfd<caw, fot<caw>> {
-   private static final aiy a = new aiy("textures/entity/wolf/wolf_collar.png");
+public class gft<T extends bok & cev, M extends fmi<T>> extends gfl<T, M> {
+   private static final aiy a = new aiy("textures/entity/skeleton/stray_overlay.png");
+   private final fod<T> b;
 
-   public gft(gcn<caw, fot<caw>> $$0) {
+   public gft(gcv<T, M> $$0, fpf $$1) {
       super($$0);
+      this.b = new fod<>($$1.a(fpi.by));
    }
 
-   public void a(esa $$0, fvl $$1, int $$2, caw $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.u() && !$$3.ce()) {
-         float[] $$10 = $$3.gp().d();
-         ese $$11 = $$1.getBuffer(fvt.e(a));
-         this.c().a($$0, $$11, $$2, ggk.d, $$10[0], $$10[1], $$10[2], 1.0F);
-      }
+   public void a(esh $$0, fvt $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, 1.0F, 1.0F, 1.0F);
    }
 }

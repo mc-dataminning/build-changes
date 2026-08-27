@@ -1,17 +1,77 @@
-public interface egh {
-   void a(hz var1);
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
-   boolean L_();
+public abstract class egh<M extends egh<M>> {
+   private static final int b = 2;
+   private final long[] c = new long[2];
+   private final dnl[] d = new dnl[2];
+   private boolean e;
+   protected final Long2ObjectOpenHashMap<dnl> a;
 
-   int a();
-
-   default void a(hz $$0, boolean $$1) {
-      this.a(jb.a($$0), $$1);
+   protected egh(Long2ObjectOpenHashMap<dnl> $$0) {
+      this.a = $$0;
+      this.c();
+      this.e = true;
    }
 
-   void a(jb var1, boolean var2);
+   public abstract M b();
 
-   void a(cuu var1, boolean var2);
+   public dnl a(long $$0) {
+      dnl $$1 = ((dnl)this.a.get($$0)).b();
+      this.a.put($$0, $$1);
+      this.c();
+      return $$1;
+   }
 
-   void b(cuu var1);
+   public boolean b(long $$0) {
+      return this.a.containsKey($$0);
+   }
+
+   @Nullable
+   public dnl c(long $$0) {
+      if (this.e) {
+         for (int $$1 = 0; $$1 < 2; $$1++) {
+            if ($$0 == this.c[$$1]) {
+               return this.d[$$1];
+            }
+         }
+      }
+
+      dnl $$2 = (dnl)this.a.get($$0);
+      if ($$2 == null) {
+         return null;
+      } else {
+         if (this.e) {
+            for (int $$3 = 1; $$3 > 0; $$3--) {
+               this.c[$$3] = this.c[$$3 - 1];
+               this.d[$$3] = this.d[$$3 - 1];
+            }
+
+            this.c[0] = $$0;
+            this.d[0] = $$2;
+         }
+
+         return $$2;
+      }
+   }
+
+   @Nullable
+   public dnl d(long $$0) {
+      return (dnl)this.a.remove($$0);
+   }
+
+   public void a(long $$0, dnl $$1) {
+      this.a.put($$0, $$1);
+   }
+
+   public void c() {
+      for (int $$0 = 0; $$0 < 2; $$0++) {
+         this.c[$$0] = Long.MAX_VALUE;
+         this.d[$$0] = null;
+      }
+   }
+
+   public void d() {
+      this.e = false;
+   }
 }

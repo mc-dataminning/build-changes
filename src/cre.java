@@ -1,52 +1,100 @@
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
+import org.slf4j.Logger;
 
 public class cre {
-   public static final aix<crd> a = a("sentry");
-   public static final aix<crd> b = a("dune");
-   public static final aix<crd> c = a("coast");
-   public static final aix<crd> d = a("wild");
-   public static final aix<crd> e = a("ward");
-   public static final aix<crd> f = a("eye");
-   public static final aix<crd> g = a("vex");
-   public static final aix<crd> h = a("tide");
-   public static final aix<crd> i = a("snout");
-   public static final aix<crd> j = a("rib");
-   public static final aix<crd> k = a("spire");
-   public static final aix<crd> l = a("wayfinder");
-   public static final aix<crd> m = a("shaper");
-   public static final aix<crd> n = a("silence");
-   public static final aix<crd> o = a("raiser");
-   public static final aix<crd> p = a("host");
+   public static final Codec<cre> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(crf.b.fieldOf("material").forGetter(cre::b), crh.b.fieldOf("pattern").forGetter(cre::a)).apply($$0, cre::new)
+   );
+   private static final Logger c = LogUtils.getLogger();
+   public static final String b = "Trim";
+   private static final vq d = vq.c(ac.a("item", new aiy("smithing_template.upgrade"))).a(n.h);
+   private final ij<crf> e;
+   private final ij<crh> f;
+   private final Function<cmo, aiy> g;
+   private final Function<cmo, aiy> h;
 
-   public static void a(ph<crd> $$0) {
-      a($$0, cpc.xn, a);
-      a($$0, cpc.xo, b);
-      a($$0, cpc.xp, c);
-      a($$0, cpc.xq, d);
-      a($$0, cpc.xr, e);
-      a($$0, cpc.xs, f);
-      a($$0, cpc.xt, g);
-      a($$0, cpc.xu, h);
-      a($$0, cpc.xv, i);
-      a($$0, cpc.xw, j);
-      a($$0, cpc.xx, k);
-      a($$0, cpc.xy, l);
-      a($$0, cpc.xz, m);
-      a($$0, cpc.xA, n);
-      a($$0, cpc.xB, o);
-      a($$0, cpc.xC, p);
+   public cre(ij<crf> $$0, ij<crh> $$1) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = ac.b($$1x -> {
+         aiy $$2 = $$1.a().a();
+         String $$3 = this.c($$1x);
+         return $$2.a((UnaryOperator<String>)($$1xx -> "trims/models/armor/" + $$1xx + "_leggings_" + $$3));
+      });
+      this.h = ac.b($$1x -> {
+         aiy $$2 = $$1.a().a();
+         String $$3 = this.c($$1x);
+         return $$2.a((UnaryOperator<String>)($$1xx -> "trims/models/armor/" + $$1xx + "_" + $$3));
+      });
    }
 
-   public static Optional<ij.c<crd>> a(iw $$0, coz $$1) {
-      return $$0.d(kg.aJ).h().filter($$1x -> $$1.a(((crd)$$1x.a()).b())).findFirst();
+   private String c(cmo $$0) {
+      Map<cmp, String> $$1 = this.e.a().d();
+      return $$0 instanceof cmp && $$1.containsKey($$0) ? $$1.get($$0) : this.e.a().a();
    }
 
-   private static void a(ph<crd> $$0, cou $$1, aix<crd> $$2) {
-      crd $$3 = new crd($$2.a(), kf.h.e($$1), vq.c(ac.a("trim_pattern", $$2.a())), false);
-      $$0.a($$2, $$3);
+   public boolean a(ij<crh> $$0, ij<crf> $$1) {
+      return $$0.equals(this.f) && $$1.equals(this.e);
    }
 
-   private static aix<crd> a(String $$0) {
-      return aix.a(kg.aJ, new aiy($$0));
+   public ij<crh> a() {
+      return this.f;
+   }
+
+   public ij<crf> b() {
+      return this.e;
+   }
+
+   public aiy a(cmo $$0) {
+      return this.g.apply($$0);
+   }
+
+   public aiy b(cmo $$0) {
+      return this.h.apply($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return !($$0 instanceof cre $$1) ? false : this.f.equals($$1.f) && this.e.equals($$1.e);
+   }
+
+   public static boolean a(iw $$0, cpd $$1, cre $$2) {
+      if ($$1.a(aui.aM)) {
+         $$1.x().a("Trim", (tt)a.encodeStart(aiw.a(tk.a, $$0), $$2).result().orElseThrow());
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public static Optional<cre> a(iw $$0, cpd $$1, boolean $$2) {
+      if ($$1.a(aui.aM) && $$1.w() != null && $$1.w().e("Trim")) {
+         sw $$3 = $$1.b("Trim");
+         cre $$4 = (cre)a.parse(aiw.a(tk.a, $$0), $$3).resultOrPartial($$1x -> {
+            if (!$$2) {
+               c.warn($$1x);
+            }
+         }).orElse(null);
+         return Optional.ofNullable($$4);
+      } else {
+         return Optional.empty();
+      }
+   }
+
+   public static void a(cpd $$0, iw $$1, List<vq> $$2) {
+      Optional<cre> $$3 = a($$1, $$0, true);
+      if ($$3.isPresent()) {
+         cre $$4 = $$3.get();
+         $$2.add(d);
+         $$2.add(vp.a().b($$4.a().a().a($$4.b())));
+         $$2.add(vp.a().b($$4.b().a().e()));
+      }
    }
 }

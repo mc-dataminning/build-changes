@@ -36,7 +36,7 @@ public abstract class abz implements xx<aag> {
    }
 
    @Nullable
-   public bno a(cvn $$0) {
+   public bnq a(cvr $$0) {
       return $$0.a(this.a);
    }
 

@@ -1,180 +1,142 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.BiConsumer;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class cyy extends dbi {
-   public static final MapCodec<cyy> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               dlu.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.N),
-               Codec.intRange(1, 1024).fieldOf("ticks_to_stay_pressed").forGetter($$0x -> $$0x.O),
-               u()
-            )
-            .apply($$0, cyy::new)
-   );
-   public static final dlw b = dlv.w;
-   private static final int L = 1;
-   private static final int M = 2;
-   protected static final int c = 2;
-   protected static final int d = 3;
-   protected static final eol e = cyo.a(6.0, 14.0, 5.0, 10.0, 16.0, 11.0);
-   protected static final eol f = cyo.a(5.0, 14.0, 6.0, 11.0, 16.0, 10.0);
-   protected static final eol g = cyo.a(6.0, 0.0, 5.0, 10.0, 2.0, 11.0);
-   protected static final eol h = cyo.a(5.0, 0.0, 6.0, 11.0, 2.0, 10.0);
-   protected static final eol i = cyo.a(5.0, 6.0, 14.0, 11.0, 10.0, 16.0);
-   protected static final eol j = cyo.a(5.0, 6.0, 0.0, 11.0, 10.0, 2.0);
-   protected static final eol k = cyo.a(14.0, 6.0, 5.0, 16.0, 10.0, 11.0);
-   protected static final eol l = cyo.a(0.0, 6.0, 5.0, 2.0, 10.0, 11.0);
-   protected static final eol m = cyo.a(6.0, 15.0, 5.0, 10.0, 16.0, 11.0);
-   protected static final eol n = cyo.a(5.0, 15.0, 6.0, 11.0, 16.0, 10.0);
-   protected static final eol o = cyo.a(6.0, 0.0, 5.0, 10.0, 1.0, 11.0);
-   protected static final eol F = cyo.a(5.0, 0.0, 6.0, 11.0, 1.0, 10.0);
-   protected static final eol G = cyo.a(5.0, 6.0, 15.0, 11.0, 10.0, 16.0);
-   protected static final eol H = cyo.a(5.0, 6.0, 0.0, 11.0, 10.0, 1.0);
-   protected static final eol I = cyo.a(15.0, 6.0, 5.0, 16.0, 10.0, 11.0);
-   protected static final eol J = cyo.a(0.0, 6.0, 5.0, 1.0, 10.0, 11.0);
-   private final dlu N;
-   private final int O;
+public class cyy extends cys implements cyz {
+   public static final MapCodec<cyy> a = b(cyy::new);
+   public static final dma b = dlz.e;
+   private static final int c = 5;
 
    @Override
    public MapCodec<cyy> a() {
       return a;
    }
 
-   protected cyy(dlu $$0, int $$1, dle.d $$2) {
-      super($$2.a($$0.g()));
-      this.N = $$0;
-      this.k(this.E.b().a(aE, ie.c).a(b, Boolean.valueOf(false)).a(K, dlq.b));
-      this.O = $$1;
+   public cyy(dli.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(true)));
    }
 
    @Override
-   protected eol a(dlf $$0, cut $$1, hz $$2, enx $$3) {
-      ie $$4 = $$0.c(aE);
-      boolean $$5 = $$0.c(b);
-      switch ((dlq)$$0.c(K)) {
-         case a:
-            if ($$4.o() == ie.a.a) {
-               return $$5 ? o : g;
+   protected void a(dlj $$0, cvr $$1, hz $$2, bnq $$3) {
+      dlj $$4 = $$1.a_($$2.c());
+      if ($$4.i()) {
+         $$3.k($$0.c(b));
+         if (!$$1.B) {
+            aow $$5 = (aow)$$1;
+
+            for (int $$6 = 0; $$6 < 2; $$6++) {
+               $$5.a(jz.aj, (double)$$2.u() + $$1.z.j(), (double)($$2.v() + 1), (double)$$2.w() + $$1.z.j(), 1, 0.0, 0.0, 0.0, 1.0);
+               $$5.a(jz.e, (double)$$2.u() + $$1.z.j(), (double)($$2.v() + 1), (double)$$2.w() + $$1.z.j(), 1, 0.0, 0.01, 0.0, 0.2);
             }
-
-            return $$5 ? F : h;
-         case b:
-            return switch ($$4) {
-               case f -> $$5 ? J : l;
-               case e -> $$5 ? I : k;
-               case d -> $$5 ? H : j;
-               case c, b, a -> $$5 ? G : i;
-            };
-         case c:
-         default:
-            if ($$4.o() == ie.a.a) {
-               return $$5 ? m : e;
-            } else {
-               return $$5 ? n : f;
-            }
-      }
-   }
-
-   @Override
-   protected blu a(dlf $$0, cvn $$1, hz $$2, chh $$3, eno $$4) {
-      if ($$0.c(b)) {
-         return blu.b;
-      } else {
-         this.d($$0, $$1, $$2);
-         this.a($$3, $$1, $$2, true);
-         $$1.a($$3, dpp.a, $$2);
-         return blu.a($$1.B);
-      }
-   }
-
-   @Override
-   protected void a(dlf $$0, cvn $$1, hz $$2, cvf $$3, BiConsumer<coz, hz> $$4) {
-      if ($$3.j() == cvf.a.d && !$$1.y_() && !$$0.c(b)) {
-         this.d($$0, $$1, $$2);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public void d(dlf $$0, cvn $$1, hz $$2) {
-      $$1.a($$2, $$0.a(b, Boolean.valueOf(true)), 3);
-      this.f($$0, $$1, $$2);
-      $$1.a($$2, this, this.O);
-   }
-
-   protected void a(@Nullable chh $$0, cvo $$1, hz $$2, boolean $$3) {
-      $$1.a($$3 ? $$0 : null, $$2, this.a($$3), atl.e);
-   }
-
-   protected atj a(boolean $$0) {
-      return $$0 ? this.N.o() : this.N.n();
-   }
-
-   @Override
-   protected void a(dlf $$0, cvn $$1, hz $$2, dlf $$3, boolean $$4) {
-      if (!$$4 && !$$0.a($$3.b())) {
-         if ($$0.c(b)) {
-            this.f($$0, $$1, $$2);
          }
-
-         super.a($$0, $$1, $$2, $$3, $$4);
+      } else {
+         $$3.l($$0.c(b));
       }
    }
 
    @Override
-   protected int a(dlf $$0, cut $$1, hz $$2, ie $$3) {
-      return $$0.c(b) ? 15 : 0;
+   protected void a(dlj $$0, aow $$1, hz $$2, awp $$3) {
+      a($$1, $$2, $$0, $$1.a_($$2.d()));
    }
 
    @Override
-   protected int b(dlf $$0, cut $$1, hz $$2, ie $$3) {
-      return $$0.c(b) && m($$0) == $$3 ? 15 : 0;
+   protected egw c_(dlj $$0) {
+      return egx.c.a(false);
+   }
+
+   public static void b(cvs $$0, hz $$1, dlj $$2) {
+      a($$0, $$1, $$0.a_($$1), $$2);
+   }
+
+   public static void a(cvs $$0, hz $$1, dlj $$2, dlj $$3) {
+      if (m($$2)) {
+         dlj $$4 = n($$3);
+         $$0.a($$1, $$4, 2);
+         hz.a $$5 = $$1.j().c(ie.b);
+
+         while (m($$0.a_($$5))) {
+            if (!$$0.a($$5, $$4, 2)) {
+               return;
+            }
+
+            $$5.c(ie.b);
+         }
+      }
+   }
+
+   private static boolean m(dlj $$0) {
+      return $$0.a(cyu.nd) || $$0.a(cyu.G) && $$0.u().e() >= 8 && $$0.u().b();
+   }
+
+   private static dlj n(dlj $$0) {
+      if ($$0.a(cyu.nd)) {
+         return $$0;
+      } else if ($$0.a(cyu.dW)) {
+         return cyu.nd.o().a(b, Boolean.valueOf(false));
+      } else {
+         return $$0.a(cyu.kJ) ? cyu.nd.o().a(b, Boolean.valueOf(true)) : cyu.G.o();
+      }
    }
 
    @Override
-   protected boolean f_(dlf $$0) {
-      return true;
-   }
-
-   @Override
-   protected void a(dlf $$0, aov $$1, hz $$2, awo $$3) {
+   public void a(dlj $$0, cvr $$1, hz $$2, awp $$3) {
+      double $$4 = (double)$$2.u();
+      double $$5 = (double)$$2.v();
+      double $$6 = (double)$$2.w();
       if ($$0.c(b)) {
-         this.e($$0, $$1, $$2);
+         $$1.b(jz.am, $$4 + 0.5, $$5 + 0.8, $$6, 0.0, 0.0, 0.0);
+         if ($$3.a(200) == 0) {
+            $$1.a($$4, $$5, $$6, atl.cS, atm.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
+         }
+      } else {
+         $$1.b(jz.an, $$4 + 0.5, $$5, $$6 + 0.5, 0.0, 0.04, 0.0);
+         $$1.b(jz.an, $$4 + (double)$$3.i(), $$5 + (double)$$3.i(), $$6 + (double)$$3.i(), 0.0, 0.04, 0.0);
+         if ($$3.a(200) == 0) {
+            $$1.a($$4, $$5, $$6, atl.cQ, atm.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
+         }
       }
    }
 
    @Override
-   protected void a(dlf $$0, cvn $$1, hz $$2, bno $$3) {
-      if (!$$1.B && this.N.e() && !$$0.c(b)) {
-         this.e($$0, $$1, $$2);
-      }
-   }
-
-   protected void e(dlf $$0, cvn $$1, hz $$2) {
-      chn $$3 = this.N.e() ? $$1.a(chn.class, $$0.j($$1, $$2).a().a($$2)).stream().findFirst().orElse(null) : null;
-      boolean $$4 = $$3 != null;
-      boolean $$5 = $$0.c(b);
-      if ($$4 != $$5) {
-         $$1.a($$2, $$0.a(b, Boolean.valueOf($$4)), 3);
-         this.f($$0, $$1, $$2);
-         this.a(null, $$1, $$2, $$4);
-         $$1.a($$3, $$4 ? dpp.a : dpp.e, $$2);
+   protected dlj a(dlj $$0, ie $$1, dlj $$2, cvs $$3, hz $$4, hz $$5) {
+      $$3.a($$4, egx.c, egx.c.a($$3));
+      if (!$$0.a($$3, $$4) || $$1 == ie.a || $$1 == ie.b && !$$2.a(cyu.nd) && m($$2)) {
+         $$3.a($$4, this, 5);
       }
 
-      if ($$4) {
-         $$1.a(new hz($$2), this, this.O);
-      }
-   }
-
-   private void f(dlf $$0, cvn $$1, hz $$2) {
-      $$1.a($$2, this);
-      $$1.a($$2.a(m($$0).g()), this);
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected void a(dlg.a<cyo, dlf> $$0) {
-      $$0.a(aE, b, K);
+   protected boolean a(dlj $$0, cvu $$1, hz $$2) {
+      dlj $$3 = $$1.a_($$2.d());
+      return $$3.a(cyu.nd) || $$3.a(cyu.kJ) || $$3.a(cyu.dW);
+   }
+
+   @Override
+   protected eos a(dlj $$0, cux $$1, hz $$2, eoe $$3) {
+      return eop.a();
+   }
+
+   @Override
+   protected dex b_(dlj $$0) {
+      return dex.a;
+   }
+
+   @Override
+   protected void a(dlk.a<cys, dlj> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   public cpd a(@Nullable chl $$0, cvs $$1, hz $$2, dlj $$3) {
+      $$1.a($$2, cyu.a.o(), 11);
+      return new cpd(cpg.qy);
+   }
+
+   @Override
+   public Optional<atk> ax_() {
+      return egx.c.j();
    }
 }

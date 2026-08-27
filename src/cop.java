@@ -1,92 +1,86 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.BiMap;
-import com.google.common.collect.ImmutableBiMap;
+import java.util.List;
 import java.util.Optional;
-import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class cop extends cou implements cpy {
-   public static final Supplier<BiMap<cyo, cyo>> a = Suppliers.memoize(
-      () -> ImmutableBiMap.builder()
-            .put(cyq.qW, cyq.rw)
-            .put(cyq.qX, cyq.ry)
-            .put(cyq.qY, cyq.rx)
-            .put(cyq.qZ, cyq.rz)
-            .put(cyq.rf, cyq.rD)
-            .put(cyq.re, cyq.rC)
-            .put(cyq.rd, cyq.rB)
-            .put(cyq.rc, cyq.rA)
-            .put(cyq.rv, cyq.rL)
-            .put(cyq.ru, cyq.rK)
-            .put(cyq.rt, cyq.rJ)
-            .put(cyq.rs, cyq.rI)
-            .put(cyq.rr, cyq.rH)
-            .put(cyq.rq, cyq.rG)
-            .put(cyq.rp, cyq.rF)
-            .put(cyq.ro, cyq.rE)
-            .put(cyq.rj, cyq.rn)
-            .put(cyq.ri, cyq.rm)
-            .put(cyq.rh, cyq.rl)
-            .put(cyq.rg, cyq.rk)
-            .put(cyq.rM, cyq.rQ)
-            .put(cyq.rN, cyq.rR)
-            .put(cyq.rP, cyq.rT)
-            .put(cyq.rO, cyq.rS)
-            .put(cyq.rU, cyq.rY)
-            .put(cyq.rV, cyq.rZ)
-            .put(cyq.rX, cyq.sb)
-            .put(cyq.rW, cyq.sa)
-            .put(cyq.sc, cyq.sg)
-            .put(cyq.sd, cyq.sh)
-            .put(cyq.se, cyq.si)
-            .put(cyq.sf, cyq.sj)
-            .put(cyq.sk, cyq.so)
-            .put(cyq.sl, cyq.sp)
-            .put(cyq.sm, cyq.sq)
-            .put(cyq.sn, cyq.sr)
-            .build()
-   );
-   public static final Supplier<BiMap<cyo, cyo>> b = Suppliers.memoize(() -> a.get().inverse());
+public class cop extends coy {
+   private static final vq a = vq.c("painting.random").a(n.h);
+   private final bnw<? extends cdo> b;
 
-   public cop(cou.a $$0) {
-      super($$0);
+   public cop(bnw<? extends cdo> $$0, coy.a $$1) {
+      super($$1);
+      this.b = $$0;
    }
 
    @Override
-   public blu a(cri $$0) {
-      cvn $$1 = $$0.q();
-      hz $$2 = $$0.a();
-      dlf $$3 = $$1.a_($$2);
-      return b($$3).map($$3x -> {
-         chh $$4 = $$0.o();
-         coz $$5 = $$0.n();
-         if ($$4 instanceof aow) {
-            am.N.a((aow)$$4, $$2, $$5);
+   public blw a(crm $$0) {
+      hz $$1 = $$0.a();
+      ie $$2 = $$0.k();
+      hz $$3 = $$1.a($$2);
+      chl $$4 = $$0.o();
+      cpd $$5 = $$0.n();
+      if ($$4 != null && !this.a($$4, $$2, $$5, $$3)) {
+         return blw.e;
+      } else {
+         cvr $$6 = $$0.q();
+         cdo $$8;
+         if (this.b == bnw.at) {
+            Optional<cdr> $$7 = cdr.a($$6, $$3, $$2);
+            if ($$7.isEmpty()) {
+               return blw.b;
+            }
+
+            $$8 = $$7.get();
+         } else if (this.b == bnw.ah) {
+            $$8 = new cdp($$6, $$3, $$2);
+         } else {
+            if (this.b != bnw.U) {
+               return blw.a($$6.B);
+            }
+
+            $$8 = new cdn($$6, $$3, $$2);
          }
 
-         $$5.h(1);
-         $$1.a($$2, $$3x, 11);
-         $$1.a(dpp.c, $$2, dpp.a.a($$4, $$3x));
-         $$1.a($$4, 3003, $$2, 0);
-         return blu.a($$1.B);
-      }).orElse(blu.d);
-   }
+         sw $$12 = $$5.w();
+         if ($$12 != null) {
+            bnw.a($$6, $$4, $$8, $$12);
+         }
 
-   public static Optional<dlf> b(dlf $$0) {
-      return Optional.ofNullable((cyo)a.get().get($$0.b())).map($$1 -> ((cyo)$$1).l($$0));
-   }
+         if ($$8.A()) {
+            if (!$$6.B) {
+               $$8.D();
+               $$6.a($$4, dpw.t, $$8.dk());
+               $$6.b($$8);
+            }
 
-   @Override
-   public boolean a(cvn $$0, dkc $$1, boolean $$2, chh $$3) {
-      if ($$1.b(true)) {
-         $$0.a(null, 3003, $$1.aE_(), 0);
-         return true;
-      } else {
-         return false;
+            $$5.h(1);
+            return blw.a($$6.B);
+         } else {
+            return blw.b;
+         }
       }
    }
 
+   protected boolean a(chl $$0, ie $$1, cpd $$2, hz $$3) {
+      return !$$1.o().b() && $$0.a($$3, $$1, $$2);
+   }
+
    @Override
-   public boolean a(dkd $$0, chh $$1) {
-      return true;
+   public void a(cpd $$0, @Nullable cvr $$1, List<vq> $$2, cqu $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.b == bnw.at) {
+         sw $$4 = $$0.w();
+         if ($$4 != null && $$4.b("EntityTag", 10)) {
+            sw $$5 = $$4.p("EntityTag");
+            cdr.c($$5).ifPresentOrElse($$1x -> {
+               $$1x.e().ifPresent($$1xx -> {
+                  $$2.add(vq.c($$1xx.a().b("painting", "title")).a(n.o));
+                  $$2.add(vq.c($$1xx.a().b("painting", "author")).a(n.h));
+               });
+               $$2.add(vq.a("painting.dimensions", awi.e(((cds)$$1x.a()).a(), 16), awi.e(((cds)$$1x.a()).b(), 16)));
+            }, () -> $$2.add(a));
+         } else if ($$3.b()) {
+            $$2.add(a);
+         }
+      }
    }
 }

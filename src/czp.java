@@ -1,51 +1,72 @@
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
 
-public interface czp<T extends Enum<T>> {
-   int y_ = 4;
+public class czp extends dch implements cyv, czo {
+   public static final MapCodec<czp> c = b(czp::new);
+   private static final float g = 0.11F;
 
-   Optional<dlf> j_(dlf var1);
-
-   float az_();
-
-   default void a_(dlf $$0, aov $$1, hz $$2, awo $$3) {
-      float $$4 = 0.05688889F;
-      if ($$3.i() < 0.05688889F) {
-         this.c($$0, $$1, $$2, $$3).ifPresent($$2x -> $$1.b($$2, $$2x));
-      }
+   @Override
+   public MapCodec<czp> a() {
+      return c;
    }
 
-   T c();
+   public czp(dli.d $$0) {
+      super($$0, ie.a, t_, false, 0.1);
+      this.k(this.E.b().a(e, Integer.valueOf(0)).a(u_, Boolean.valueOf(false)));
+   }
 
-   default Optional<dlf> c(dlf $$0, aov $$1, hz $$2, awo $$3) {
-      int $$4 = this.c().ordinal();
-      int $$5 = 0;
-      int $$6 = 0;
+   @Override
+   protected int a(awp $$0) {
+      return 1;
+   }
 
-      for (hz $$7 : hz.a($$2, 4, 4, 4)) {
-         int $$8 = $$7.k($$2);
-         if ($$8 > 4) {
-            break;
-         }
+   @Override
+   protected boolean g(dlj $$0) {
+      return $$0.i();
+   }
 
-         if (!$$7.equals($$2) && $$1.a_($$7).b() instanceof czp<?> $$9) {
-            Enum<?> $$10 = $$9.c();
-            if (this.c().getClass() == $$10.getClass()) {
-               int $$11 = $$10.ordinal();
-               if ($$11 < $$4) {
-                  return Optional.empty();
-               }
+   @Override
+   protected cys b() {
+      return cyu.sw;
+   }
 
-               if ($$11 > $$4) {
-                  $$6++;
-               } else {
-                  $$5++;
-               }
-            }
-         }
-      }
+   @Override
+   protected dlj a(dlj $$0, dlj $$1) {
+      return $$1.a(u_, $$0.c(u_));
+   }
 
-      float $$12 = (float)($$6 + 1) / (float)($$6 + $$5 + 1);
-      float $$13 = $$12 * $$12 * this.az_();
-      return $$3.i() < $$13 ? this.j_($$0) : Optional.empty();
+   @Override
+   protected dlj a(dlj $$0, awp $$1) {
+      return super.a($$0, $$1).a(u_, Boolean.valueOf($$1.i() < 0.11F));
+   }
+
+   @Override
+   public cpd a(cvu $$0, hz $$1, dlj $$2) {
+      return new cpd(cpg.wm);
+   }
+
+   @Override
+   protected blw a(dlj $$0, cvr $$1, hz $$2, chl $$3, env $$4) {
+      return czo.a($$3, $$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(dlk.a<cys, dlj> $$0) {
+      super.a($$0);
+      $$0.a(u_);
+   }
+
+   @Override
+   public boolean b(cvu $$0, hz $$1, dlj $$2) {
+      return !$$2.c(u_);
+   }
+
+   @Override
+   public boolean a(cvr $$0, awp $$1, hz $$2, dlj $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aow $$0, awp $$1, hz $$2, dlj $$3) {
+      $$0.a($$2, $$3.a(u_, Boolean.valueOf(true)), 2);
    }
 }

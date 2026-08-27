@@ -1,57 +1,43 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public enum ddk implements axc {
-   a("none", h.a),
-   b("left_right", h.B),
-   c("front_back", h.z);
+public class ddk extends cys {
+   public static final MapCodec<ddk> a = b(ddk::new);
+   private static final int b = 20;
 
-   public static final Codec<ddk> d = axc.a(ddk::values);
-   private final String e;
-   private final vq f;
-   private final h g;
-
-   private ddk(String $$0, h $$1) {
-      this.e = $$0;
-      this.f = vq.c("mirror." + $$0);
-      this.g = $$1;
+   @Override
+   public MapCodec<ddk> a() {
+      return a;
    }
 
-   public int a(int $$0, int $$1) {
-      int $$2 = $$1 / 2;
-      int $$3 = $$0 > $$2 ? $$0 - $$1 : $$0;
-      switch (this) {
-         case c:
-            return ($$1 - $$3) % $$1;
-         case b:
-            return ($$2 - $$3 + $$1) % $$1;
-         default:
-            return $$0;
-      }
-   }
-
-   public dfa a(ie $$0) {
-      ie.a $$1 = $$0.o();
-      return (this != b || $$1 != ie.a.c) && (this != c || $$1 != ie.a.a) ? dfa.a : dfa.c;
-   }
-
-   public ie b(ie $$0) {
-      if (this == c && $$0.o() == ie.a.a) {
-         return $$0.g();
-      } else {
-         return this == b && $$0.o() == ie.a.c ? $$0.g() : $$0;
-      }
-   }
-
-   public h a() {
-      return this.g;
-   }
-
-   public vq b() {
-      return this.f;
+   public ddk(dli.d $$0) {
+      super($$0);
    }
 
    @Override
-   public String c() {
-      return this.e;
+   public void a(cvr $$0, hz $$1, dlj $$2, bnq $$3) {
+      if (!$$3.bT() && $$3 instanceof boi && !ctn.j((boi)$$3)) {
+         $$3.a($$0.ah().e(), 1.0F);
+      }
+
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected void a(dlj $$0, aow $$1, hz $$2, awp $$3) {
+      cyy.b($$1, $$2.c(), $$0);
+   }
+
+   @Override
+   protected dlj a(dlj $$0, ie $$1, dlj $$2, cvs $$3, hz $$4, hz $$5) {
+      if ($$1 == ie.b && $$2.a(cyu.G)) {
+         $$3.a($$4, this, 20);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected void b(dlj $$0, cvr $$1, hz $$2, dlj $$3, boolean $$4) {
+      $$1.a($$2, this, 20);
    }
 }

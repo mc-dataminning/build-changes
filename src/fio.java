@@ -1,60 +1,59 @@
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
 import javax.annotation.Nullable;
 
-public abstract class fio extends fis {
-   private static final fau i = new fau(
-      new aiy("recipe_book/furnace_filter_enabled"),
-      new aiy("recipe_book/furnace_filter_disabled"),
-      new aiy("recipe_book/furnace_filter_enabled_highlighted"),
-      new aiy("recipe_book/furnace_filter_disabled_highlighted")
-   );
+public abstract class fio extends ffl {
+   private final vq b;
    @Nullable
-   private cry j;
+   private final vq c;
+   private final vq k;
+   @Nullable
+   protected ezq a;
+   private fah l = fah.a;
+
+   protected fio(vq $$0, vq $$1, vq $$2) {
+      this($$0, $$1, null, $$2);
+   }
+
+   protected fio(vq $$0, vq $$1, @Nullable vq $$2, vq $$3) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
+      this.k = $$3;
+   }
+
+   protected abstract void a(int var1);
 
    @Override
-   protected void a() {
-      this.f.a(i);
+   protected void aQ_() {
+      super.aQ_();
+      this.l = fah.a(this.i, this.b, this.g - 100);
+      int $$0 = (this.l.a() + 1) * this.o();
+      if (this.c != null) {
+         int $$1 = this.i.a(this.c);
+         this.a = ezq.a(this.c, this.i).a(this.g / 2 - $$1 / 2 - 8, 76 + $$0).a();
+         this.c(this.a);
+      }
+
+      this.a($$0);
    }
 
    @Override
-   public void a(@Nullable clw $$0) {
-      super.a($$0);
-      if ($$0 != null && $$0.e < this.g.p()) {
-         this.e.a();
-      }
+   public vq i() {
+      return this.k;
    }
 
    @Override
-   public void a(csd<?> $$0, List<clw> $$1) {
-      coz $$2 = $$0.b().a(this.h.r.I_());
-      this.e.a($$0);
-      this.e.a(cry.a($$2), $$1.get(2).f, $$1.get(2).g);
-      is<cry> $$3 = $$0.b().a();
-      clw $$4 = $$1.get(1);
-      if ($$4.g().b()) {
-         if (this.j == null) {
-            this.j = cry.a(this.b().stream().filter($$0x -> $$0x.a(this.h.r.I())).map(coz::new));
-         }
-
-         this.e.a(this.j, $$4.f, $$4.g);
-      }
-
-      Iterator<cry> $$5 = $$3.iterator();
-
-      for (int $$6 = 0; $$6 < 2; $$6++) {
-         if (!$$5.hasNext()) {
-            return;
-         }
-
-         cry $$7 = $$5.next();
-         if (!$$7.c()) {
-            clw $$8 = $$1.get($$6);
-            this.e.a($$7, $$8.f, $$8.g);
-         }
-      }
+   public void a(ezb $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.c($$0);
+      int $$4 = this.g / 2 - this.l.b() / 2;
+      this.l.b($$0, $$4, 70, this.o(), 16777215);
    }
 
-   protected abstract Set<cou> b();
+   protected void c(ezb $$0) {
+      $$0.b(this.i, this.e, 25, 30, 16777215);
+   }
+
+   protected int o() {
+      return 9 * 2;
+   }
 }

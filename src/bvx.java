@@ -1,47 +1,32 @@
-public class bvx extends bvb {
-   private final cbv a;
+public class bvx extends buw {
+   private final boolean a;
    private int b;
 
-   public bvx(cbv $$0) {
-      this.a = $$0;
-      this.a($$0);
-   }
-
-   @Override
-   public void c() {
-      this.a.gL();
-      this.h();
-   }
-
-   private void h() {
-      atj $$0 = this.a.gK();
-      if ($$0 != null) {
-         this.a.a($$0);
-      }
+   public bvx(bok $$0, boolean $$1) {
+      super($$0);
+      this.d = $$0;
+      this.a = $$1;
    }
 
    @Override
    public boolean b() {
-      return false;
+      return this.a && this.b > 0 && super.b();
    }
 
    @Override
-   public boolean a() {
-      this.b++;
-      if (this.b > 0 && this.a.eh().a(1000) < this.b) {
-         this.a(this.a);
-         return !this.a.eY() && this.a.eh().a(10) == 0;
-      } else {
-         return false;
-      }
-   }
-
-   private void a(cbv $$0) {
-      this.b = -$$0.gR();
+   public void c() {
+      this.b = 20;
+      this.a(true);
    }
 
    @Override
-   public boolean T_() {
-      return true;
+   public void d() {
+      this.a(false);
+   }
+
+   @Override
+   public void e() {
+      this.b--;
+      super.e();
    }
 }

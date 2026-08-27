@@ -1,29 +1,19 @@
-public enum fdj {
-   a,
-   b;
+import com.google.common.collect.ImmutableList;
 
-   public fdj a() {
-      return switch (this) {
-         case a -> b;
-         case b -> a;
-      };
+public interface fdj {
+   default void a(fdi $$0, vq $$1) {
+      this.a($$0, fdl.a($$1.getString()));
    }
 
-   public fdk b() {
-      return switch (this) {
-         case a -> fdk.d;
-         case b -> fdk.b;
-      };
+   default void a(fdi $$0, String $$1) {
+      this.a($$0, fdl.a($$1));
    }
 
-   public fdk c() {
-      return switch (this) {
-         case a -> fdk.c;
-         case b -> fdk.a;
-      };
+   default void a(fdi $$0, vq... $$1) {
+      this.a($$0, fdl.a(ImmutableList.copyOf($$1)));
    }
 
-   public fdk a(boolean $$0) {
-      return $$0 ? this.b() : this.c();
-   }
+   void a(fdi var1, fdl<?> var2);
+
+   fdj a();
 }

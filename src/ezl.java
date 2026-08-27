@@ -1,10 +1,26 @@
-public class ezl {
-   public static fam a(int $$0, ezh.c $$1, boolean $$2) {
-      return fam.a(vq.c("options.language"), $$1, $$2).a($$0).a(new aiy("icon/language"), 15, 15).a();
+public abstract class ezl extends ezm {
+   private final eyz a;
+   private int b = 16777215;
+
+   public ezl(int $$0, int $$1, int $$2, int $$3, vq $$4, eyz $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.a = $$5;
    }
 
-   public static fam b(int $$0, ezh.c $$1, boolean $$2) {
-      vq $$3 = $$2 ? vq.c("options.accessibility") : vq.c("accessibility.onboarding.accessibility.button");
-      return fam.a($$3, $$1, $$2).a($$0).a(new aiy("icon/accessibility"), 15, 15).a();
+   @Override
+   protected void a(fdj $$0) {
+   }
+
+   public ezl a(int $$0) {
+      this.b = $$0;
+      return this;
+   }
+
+   protected final eyz a() {
+      return this.a;
+   }
+
+   protected final int b() {
+      return this.b;
    }
 }

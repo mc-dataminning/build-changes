@@ -1,28 +1,39 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.OptionalInt;
 
-public class dxh extends dxd {
-   public static final Codec<dxh> c = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dxh::new));
+public class dxh extends dxe {
+   public static final Codec<dxh> d = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.intRange(0, 81).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.f),
+               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.g),
+               a()
+            )
+            .apply($$0, dxh::new)
+   );
+   private final int e;
+   private final int f;
+   private final int g;
 
-   public dxh(bkz $$0, bkz $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public dxh(int $$0, int $$1, int $$2) {
+      this($$0, $$1, $$2, OptionalInt.empty());
+   }
+
+   public dxh(int $$0, int $$1, int $$2, OptionalInt $$3) {
+      super($$3);
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
    @Override
-   protected dxj<?> a() {
-      return dxj.f;
+   protected dxf<?> b() {
+      return dxf.a;
    }
 
    @Override
-   protected void a(cvt $$0, dxi.b $$1, awo $$2, dws $$3, int $$4, dxi.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = $$7 + ($$9 != $$8 && $$9 != $$8 - $$6 ? 1 : 0);
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
-      }
-   }
-
-   @Override
-   protected boolean a(awo $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return awh.k((float)$$1 + 0.5F) + awh.k((float)$$3 + 0.5F) > (float)($$4 * $$4);
+   public int a(int $$0, int $$1) {
+      return $$1 < this.e ? this.f : this.g;
    }
 }

@@ -1,48 +1,107 @@
-public class fgl extends fgd<ckg> {
-   private static final aiy x = new aiy("container/brewing_stand/fuel_length");
-   private static final aiy y = new aiy("container/brewing_stand/brew_progress");
-   private static final aiy z = new aiy("container/brewing_stand/bubbles");
-   private static final aiy A = new aiy("textures/gui/container/brewing_stand.png");
-   private static final int[] B = new int[]{29, 24, 20, 16, 11, 6, 0};
+public abstract class fgl<T extends ckg> extends fgk<T> implements fjf {
+   public final fiv x;
+   private boolean y;
+   private final aiy z;
+   private final aiy A;
+   private final aiy B;
 
-   public fgl(ckg $$0, chg $$1, vq $$2) {
-      super($$0, $$1, $$2);
+   public fgl(T $$0, fiv $$1, chk $$2, vq $$3, aiy $$4, aiy $$5, aiy $$6) {
+      super($$0, $$2, $$3);
+      this.x = $$1;
+      this.z = $$4;
+      this.A = $$5;
+      this.B = $$6;
    }
 
    @Override
-   protected void aQ_() {
+   public void aQ_() {
       super.aQ_();
+      this.y = this.g < 379;
+      this.x.a(this.g, this.h, this.f, this.y, this.p);
+      this.t = this.x.a(this.g, this.c);
+      this.c(new faa(this.t + 20, this.h / 2 - 49, 20, 18, fiz.a, $$0 -> {
+         this.x.e();
+         this.t = this.x.a(this.g, this.c);
+         $$0.c(this.t + 20, this.h / 2 - 49);
+      }));
       this.l = (this.c - this.i.a(this.e)) / 2;
    }
 
    @Override
-   public void a(eyu $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   public void E() {
+      super.E();
+      this.x.g();
    }
 
    @Override
-   protected void a(eyu $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.g - this.c) / 2;
-      int $$5 = (this.h - this.k) / 2;
-      $$0.a(A, $$4, $$5, 0, 0, this.c, this.k);
-      int $$6 = this.p.l();
-      int $$7 = awh.a((18 * $$6 + 20 - 1) / 20, 0, 18);
-      if ($$7 > 0) {
-         $$0.a(x, 18, 4, 0, 0, $$4 + 60, $$5 + 44, $$7, 4);
+   public void a(ezb $$0, int $$1, int $$2, float $$3) {
+      if (this.x.f() && this.y) {
+         this.b($$0, $$1, $$2, $$3);
+         this.x.a($$0, $$1, $$2, $$3);
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+         this.x.a($$0, $$1, $$2, $$3);
+         this.x.a($$0, this.t, this.u, true, $$3);
       }
 
-      int $$8 = this.p.m();
-      if ($$8 > 0) {
-         int $$9 = (int)(28.0F * (1.0F - (float)$$8 / 400.0F));
-         if ($$9 > 0) {
-            $$0.a(y, 9, 28, 0, 0, $$4 + 97, $$5 + 16, 9, $$9);
-         }
+      this.a($$0, $$1, $$2);
+      this.x.a($$0, this.t, this.u, $$1, $$2);
+   }
 
-         $$9 = B[$$8 / 2 % 7];
-         if ($$9 > 0) {
-            $$0.a(z, 12, 29, 0, 29 - $$9, $$4 + 63, $$5 + 14 + 29 - $$9, 12, $$9);
-         }
+   @Override
+   protected void a(ezb $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.t;
+      int $$5 = this.u;
+      $$0.a(this.z, $$4, $$5, 0, 0, this.c, this.k);
+      if (this.p.s()) {
+         int $$6 = 14;
+         int $$7 = awi.f(this.p.r() * 13.0F) + 1;
+         $$0.a(this.A, 14, 14, 0, 14 - $$7, $$4 + 56, $$5 + 36 + 14 - $$7, 14, $$7);
       }
+
+      int $$8 = 24;
+      int $$9 = awi.f(this.p.q() * 24.0F);
+      $$0.a(this.B, 24, 16, 0, 0, $$4 + 79, $$5 + 34, $$9, 16);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.x.a($$0, $$1, $$2)) {
+         return true;
+      } else {
+         return this.y && this.x.f() ? true : super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   protected void a(cma $$0, int $$1, int $$2, cko $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.x.a($$0);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      return this.x.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
+      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.c) || $$1 >= (double)($$3 + this.k);
+      return this.x.a($$0, $$1, this.t, this.u, this.c, this.k, $$4) && $$5;
+   }
+
+   @Override
+   public boolean a(char $$0, int $$1) {
+      return this.x.a($$0, $$1) ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   public void I() {
+      this.x.i();
+   }
+
+   @Override
+   public fiz J() {
+      return this.x;
    }
 }

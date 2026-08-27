@@ -1,38 +1,24 @@
-import javax.annotation.Nullable;
+import java.util.UUID;
+import java.util.stream.Stream;
 
-public interface dpd<B, T extends B> {
-   static <B, T extends B> dpd<B, T> a(final Class<T> $$0) {
-      return new dpd<B, T>() {
-         @Nullable
-         @Override
-         public T a(B $$0x) {
-            return (T)($$0.isInstance($$0) ? $$0 : null);
-         }
+public interface dpd {
+   int aj();
 
-         @Override
-         public Class<? extends B> a() {
-            return $$0;
-         }
-      };
-   }
+   UUID cw();
 
-   static <B, T extends B> dpd<B, T> b(final Class<T> $$0) {
-      return new dpd<B, T>() {
-         @Nullable
-         @Override
-         public T a(B $$0x) {
-            return (T)($$0.equals($$0.getClass()) ? $$0 : null);
-         }
+   hz dm();
 
-         @Override
-         public Class<? extends B> a() {
-            return $$0;
-         }
-      };
-   }
+   enu cH();
 
-   @Nullable
-   T a(B var1);
+   void a(dpe var1);
 
-   Class<? extends B> a();
+   Stream<? extends dpd> cR();
+
+   Stream<? extends dpd> cS();
+
+   void b(bnq.c var1);
+
+   boolean dK();
+
+   boolean dL();
 }

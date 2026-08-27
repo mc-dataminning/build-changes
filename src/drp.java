@@ -1,132 +1,93 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
+import java.util.function.Function;
 
-public class drp implements awo {
-   private static final float c = 5.9604645E-8F;
-   private static final double d = 1.110223E-16F;
-   public static final Codec<drp> b = dro.a.xmap($$0 -> new drp($$0), $$0 -> $$0.e);
-   private dro e;
-   private final dqq f = new dqq(this);
+public interface drp {
+   Codec<drp> a = avq.a(drp.b.d, avq.a(drp.a.d, drp.c.d)).xmap(drp::a, drp::a);
+   drp b = b(0);
+   drp c = c(0);
 
-   public drp(long $$0) {
-      this.e = new dro(drd.c($$0));
+   static drp a(int $$0) {
+      return new drp.b($$0);
    }
 
-   public drp(drd.a $$0) {
-      this.e = new dro($$0);
+   static drp b(int $$0) {
+      return new drp.a($$0);
    }
 
-   public drp(long $$0, long $$1) {
-      this.e = new dro($$0, $$1);
+   static drp c(int $$0) {
+      return new drp.c($$0);
    }
 
-   private drp(dro $$0) {
-      this.e = $$0;
+   static drp a() {
+      return b;
    }
 
-   @Override
-   public awo d() {
-      return new drp(this.e.a(), this.e.a());
+   static drp b() {
+      return c;
    }
 
-   @Override
-   public drb e() {
-      return new drp.a(this.e.a(), this.e.a());
+   private static drp a(Either<drp.b, Either<drp.a, drp.c>> $$0) {
+      return (drp)$$0.map(Function.identity(), $$0x -> (Record)$$0x.map(Function.identity(), Function.identity()));
    }
 
-   @Override
-   public void b(long $$0) {
-      this.e = new dro(drd.c($$0));
-      this.f.a();
+   private static Either<drp.b, Either<drp.a, drp.c>> a(drp $$0) {
+      return $$0 instanceof drp.b ? Either.left((drp.b)$$0) : Either.right($$0 instanceof drp.a ? Either.left((drp.a)$$0) : Either.right((drp.c)$$0));
    }
 
-   @Override
-   public int f() {
-      return (int)this.e.a();
-   }
+   int a(drs var1);
 
-   @Override
-   public int a(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Bound must be positive");
-      } else {
-         long $$1 = Integer.toUnsignedLong(this.f());
-         long $$2 = $$1 * (long)$$0;
-         long $$3 = $$2 & 4294967295L;
-         if ($$3 < (long)$$0) {
-            for (int $$4 = Integer.remainderUnsigned(~$$0 + 1, $$0); $$3 < (long)$$4; $$3 = $$2 & 4294967295L) {
-               $$1 = Integer.toUnsignedLong(this.f());
-               $$2 = $$1 * (long)$$0;
-            }
-         }
+   public static record a(int e) implements drp {
+      public static final Codec<drp.a> d = Codec.intRange(dov.e, dov.d).fieldOf("above_bottom").xmap(drp.a::new, drp.a::c).codec();
 
-         long $$5 = $$2 >> 32;
-         return (int)$$5;
-      }
-   }
-
-   @Override
-   public long g() {
-      return this.e.a();
-   }
-
-   @Override
-   public boolean h() {
-      return (this.e.a() & 1L) != 0L;
-   }
-
-   @Override
-   public float i() {
-      return (float)this.c(24) * 5.9604645E-8F;
-   }
-
-   @Override
-   public double j() {
-      return (double)this.c(53) * 1.110223E-16F;
-   }
-
-   @Override
-   public double k() {
-      return this.f.b();
-   }
-
-   @Override
-   public void b(int $$0) {
-      for (int $$1 = 0; $$1 < $$0; $$1++) {
-         this.e.a();
-      }
-   }
-
-   private long c(int $$0) {
-      return this.e.a() >>> 64 - $$0;
-   }
-
-   public static class a implements drb {
-      private final long a;
-      private final long b;
-
-      public a(long $$0, long $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      @Override
+      public int a(drs $$0) {
+         return $$0.a() + this.e;
       }
 
       @Override
-      public awo a(int $$0, int $$1, int $$2) {
-         long $$3 = awh.b($$0, $$1, $$2);
-         long $$4 = $$3 ^ this.a;
-         return new drp($$4, this.b);
+      public String toString() {
+         return this.e + " above bottom";
+      }
+
+      public int c() {
+         return this.e;
+      }
+   }
+
+   public static record b(int e) implements drp {
+      public static final Codec<drp.b> d = Codec.intRange(dov.e, dov.d).fieldOf("absolute").xmap(drp.b::new, drp.b::c).codec();
+
+      @Override
+      public int a(drs $$0) {
+         return this.e;
       }
 
       @Override
-      public awo a(String $$0) {
-         drd.a $$1 = drd.a($$0);
-         return new drp($$1.a(this.a, this.b));
+      public String toString() {
+         return this.e + " absolute";
       }
 
-      @VisibleForTesting
+      public int c() {
+         return this.e;
+      }
+   }
+
+   public static record c(int e) implements drp {
+      public static final Codec<drp.c> d = Codec.intRange(dov.e, dov.d).fieldOf("below_top").xmap(drp.c::new, drp.c::c).codec();
+
       @Override
-      public void a(StringBuilder $$0) {
-         $$0.append("seedLo: ").append(this.a).append(", seedHi: ").append(this.b);
+      public int a(drs $$0) {
+         return $$0.b() - 1 + $$0.a() - this.e;
+      }
+
+      @Override
+      public String toString() {
+         return this.e + " below top";
+      }
+
+      public int c() {
+         return this.e;
       }
    }
 }

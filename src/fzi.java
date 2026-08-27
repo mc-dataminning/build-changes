@@ -1,74 +1,64 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.DoubleSupplier;
+import java.util.Map.Entry;
+import org.joml.Vector3f;
 
-public class fzi implements fyw.a {
-   private final exh a;
-   private double b = Double.MIN_VALUE;
-   private List<bno> c = Collections.emptyList();
+public class fzi implements fze.a {
+   private final exo a;
+   private static final int b = 2;
+   private static final float c = 0.09375F;
 
-   public fzi(exh $$0) {
+   public fzi(exo $$0) {
       this.a = $$0;
    }
 
    @Override
-   public void a(esa $$0, fvl $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)ac.c();
-      if ($$5 - this.b > 1.0E8) {
-         this.b = $$5;
-         bno $$6 = this.a.j.m().g();
-         this.c = ImmutableList.copyOf($$6.dM().a_($$6, $$6.cH().g(16.0)));
-      }
+   public void a(esh $$0, fvt $$1, double $$2, double $$3, double $$4) {
+      cvs $$5 = this.a.r;
+      esl $$6 = $$1.getBuffer(fwb.y());
+      hz $$7 = hz.a($$2, 0.0, $$4);
 
-      chh $$7 = this.a.s;
-      if ($$7 != null && $$7.aC.isPresent()) {
-         this.a($$0, $$1, $$2, $$3, $$4, $$7, () -> 0.0, 1.0F, 0.0F, 0.0F);
-      }
+      for (int $$8 = -2; $$8 <= 2; $$8++) {
+         for (int $$9 = -2; $$9 <= 2; $$9++) {
+            dnf $$10 = $$5.y($$7.b($$8 * 16, 0, $$9 * 16));
 
-      for (bno $$8 : this.c) {
-         if ($$8 != $$7) {
-            this.a($$0, $$1, $$2, $$3, $$4, $$8, () -> this.a($$8), 0.0F, 1.0F, 0.0F);
+            for (Entry<dqv.a, dqv> $$11 : $$10.e()) {
+               dqv.a $$12 = $$11.getKey();
+               cuy $$13 = $$10.f();
+               Vector3f $$14 = this.a($$12);
+
+               for (int $$15 = 0; $$15 < 16; $$15++) {
+                  for (int $$16 = 0; $$16 < 16; $$16++) {
+                     int $$17 = jb.a($$13.e, $$15);
+                     int $$18 = jb.a($$13.f, $$16);
+                     float $$19 = (float)((double)((float)$$5.a($$12, $$17, $$18) + (float)$$12.ordinal() * 0.09375F) - $$3);
+                     fvr.b(
+                        $$0,
+                        $$6,
+                        (double)((float)$$17 + 0.25F) - $$2,
+                        (double)$$19,
+                        (double)((float)$$18 + 0.25F) - $$4,
+                        (double)((float)$$17 + 0.75F) - $$2,
+                        (double)($$19 + 0.09375F),
+                        (double)((float)$$18 + 0.75F) - $$4,
+                        $$14.x(),
+                        $$14.y(),
+                        $$14.z(),
+                        1.0F
+                     );
+                  }
+               }
+            }
          }
       }
    }
 
-   private void a(esa $$0, fvl $$1, double $$2, double $$3, double $$4, bno $$5, DoubleSupplier $$6, float $$7, float $$8, float $$9) {
-      $$5.aC.ifPresent($$10 -> {
-         double $$11 = $$6.getAsDouble();
-         hz $$12 = $$5.aJ();
-         this.a($$12, $$0, $$2, $$3, $$4, $$1, 0.02 + $$11, $$7, $$8, $$9);
-         hz $$13 = $$5.aH();
-         if (!$$13.equals($$12)) {
-            this.a($$13, $$0, $$2, $$3, $$4, $$1, 0.04 + $$11, 0.0F, 1.0F, 1.0F);
-         }
-      });
-   }
-
-   private double a(bno $$0) {
-      return 0.02 * (double)(String.valueOf((double)$$0.aj() + 0.132453657).hashCode() % 1000) / 1000.0;
-   }
-
-   private void a(hz $$0, esa $$1, double $$2, double $$3, double $$4, fvl $$5, double $$6, float $$7, float $$8, float $$9) {
-      double $$10 = (double)$$0.u() - $$2 - 2.0 * $$6;
-      double $$11 = (double)$$0.v() - $$3 - 2.0 * $$6;
-      double $$12 = (double)$$0.w() - $$4 - 2.0 * $$6;
-      double $$13 = $$10 + 1.0 + 4.0 * $$6;
-      double $$14 = $$11 + 1.0 + 4.0 * $$6;
-      double $$15 = $$12 + 1.0 + 4.0 * $$6;
-      fvj.a($$1, $$5.getBuffer(fvt.w()), $$10, $$11, $$12, $$13, $$14, $$15, $$7, $$8, $$9, 0.4F);
-      fvj.a(
-         $$1,
-         $$5.getBuffer(fvt.w()),
-         this.a.r.a_($$0).b(this.a.r, $$0, enx.a()).a((double)$$0.u(), (double)$$0.v(), (double)$$0.w()),
-         -$$2,
-         -$$3,
-         -$$4,
-         $$7,
-         $$8,
-         $$9,
-         1.0F,
-         false
-      );
+   private Vector3f a(dqv.a $$0) {
+      return switch ($$0) {
+         case a -> new Vector3f(1.0F, 1.0F, 0.0F);
+         case c -> new Vector3f(1.0F, 0.0F, 1.0F);
+         case b -> new Vector3f(0.0F, 0.7F, 0.0F);
+         case d -> new Vector3f(0.0F, 0.0F, 0.5F);
+         case e -> new Vector3f(0.0F, 0.3F, 0.3F);
+         case f -> new Vector3f(0.0F, 0.5F, 0.5F);
+      };
    }
 }

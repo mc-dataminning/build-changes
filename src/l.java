@@ -103,10 +103,10 @@ public class l {
       return new Pair(new l.b($$1, $$2 - 1), $$3);
    }
 
-   public static Optional<hz> a(cut $$0, hz $$1, cyo $$2, ie $$3, cyo $$4) {
+   public static Optional<hz> a(cux $$0, hz $$1, cys $$2, ie $$3, cys $$4) {
       hz.a $$5 = $$1.j();
 
-      dlf $$6;
+      dlj $$6;
       do {
          $$5.c($$3);
          $$6 = $$0.a_($$5);

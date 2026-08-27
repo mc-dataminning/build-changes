@@ -1,28 +1,22 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class bsq extends bpw<boi> {
-   private final float c;
-
-   public bsq(float $$0) {
-      super(ImmutableMap.of());
-      this.c = $$0;
-   }
-
-   public static boolean a(boi $$0) {
-      return $$0.aZ() && $$0.b(aue.a) > $$0.df() || $$0.bn();
-   }
-
-   protected boolean a(aov $$0, boi $$1) {
-      return a($$1);
-   }
-
-   protected boolean a(aov $$0, boi $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(aov $$0, boi $$1, long $$2) {
-      if ($$1.eh().i() < this.c) {
-         $$1.M().a();
-      }
+public class bsq {
+   public static bqb<boi> a() {
+      return btn.a(
+         (Function<btn.b<boi>, ? extends App<btn.c<boi>, btq<boi>>>)($$0 -> $$0.group($$0.b(bxl.ab))
+               .apply(
+                  $$0,
+                  $$1 -> ($$2, $$3, $$4) -> {
+                        Optional.ofNullable($$2.a($$0.b($$1)))
+                           .map($$0xxx -> $$0xxx instanceof boi $$1xx ? $$1xx : null)
+                           .filter(boi::ex)
+                           .filter($$1xx -> $$1xx.ai() != bnw.bw || $$2.Z().b(cvn.N))
+                           .ifPresent($$1xx -> $$1.b());
+                        return true;
+                     }
+               ))
+      );
    }
 }

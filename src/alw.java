@@ -12,14 +12,14 @@ public class alw {
    public static void a(CommandDispatcher<du> $$0) {
       RequiredArgumentBuilder<du, aiy> $$1 = dv.a("sound", ev.a()).suggests(hp.c);
 
-      for (atl $$2 : atl.values()) {
+      for (atm $$2 : atm.values()) {
          $$1.then(a($$2));
       }
 
       $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("playsound").requires($$0x -> $$0x.c(2))).then($$1));
    }
 
-   private static LiteralArgumentBuilder<du> a(atl $$0) {
+   private static LiteralArgumentBuilder<du> a(atm $$0) {
       return (LiteralArgumentBuilder<du>)dv.a($$0.a())
          .then(
             ((RequiredArgumentBuilder)dv.a("targets", eh.d())
@@ -76,18 +76,18 @@ public class alw {
          );
    }
 
-   private static int a(du $$0, Collection<aow> $$1, aiy $$2, atl $$3, ens $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
-      ij<atj> $$8 = ij.a(atj.a($$2));
-      double $$9 = (double)awh.k($$8.a().a($$5));
+   private static int a(du $$0, Collection<aox> $$1, aiy $$2, atm $$3, enz $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
+      ij<atk> $$8 = ij.a(atk.a($$2));
+      double $$9 = (double)awi.k($$8.a().a($$5));
       int $$10 = 0;
       long $$11 = $$0.e().F_().g();
 
-      for (aow $$12 : $$1) {
+      for (aox $$12 : $$1) {
          double $$13 = $$4.c - $$12.dr();
          double $$14 = $$4.d - $$12.dt();
          double $$15 = $$4.e - $$12.dx();
          double $$16 = $$13 * $$13 + $$14 * $$14 + $$15 * $$15;
-         ens $$17 = $$4;
+         enz $$17 = $$4;
          float $$18 = $$5;
          if ($$16 > $$9) {
             if ($$7 <= 0.0F) {
@@ -95,7 +95,7 @@ public class alw {
             }
 
             double $$19 = Math.sqrt($$16);
-            $$17 = new ens($$12.dr() + $$13 / $$19 * 2.0, $$12.dt() + $$14 / $$19 * 2.0, $$12.dx() + $$15 / $$19 * 2.0);
+            $$17 = new enz($$12.dr() + $$13 / $$19 * 2.0, $$12.dt() + $$14 / $$19 * 2.0, $$12.dx() + $$15 / $$19 * 2.0);
             $$18 = $$7;
          }
 

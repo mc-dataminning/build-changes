@@ -1,15 +1,15 @@
 public class agn implements xx<aes> {
    public static final xo<uq, agn> a = xx.a(agn::a, agn::new);
-   private final blt b;
+   private final blv b;
    private final int c;
 
-   public agn(blt $$0, int $$1) {
+   public agn(blv $$0, int $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
    private agn(uq $$0) {
-      this.b = $$0.b(blt.class);
+      this.b = $$0.b(blv.class);
       this.c = $$0.n();
    }
 
@@ -27,7 +27,7 @@ public class agn implements xx<aes> {
       $$0.a(this);
    }
 
-   public blt b() {
+   public blv b() {
       return this.b;
    }
 

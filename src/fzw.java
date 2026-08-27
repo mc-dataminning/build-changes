@@ -1,15 +1,16 @@
-public class fzw extends gby<cdx, flh<cdx>> {
-   private static final aiy a = new aiy("textures/entity/blaze.png");
+public abstract class fzw<T extends cfk, M extends fpb<T>> extends gbr<T, M> {
+   private static final aiy a = new aiy("textures/entity/zombie/zombie.png");
 
-   public fzw(gas.a $$0) {
-      super($$0, new flh<>($$0.a(fpb.m)), 0.5F);
+   protected fzw(gba.a $$0, M $$1, M $$2, M $$3) {
+      super($$0, $$1, 0.5F);
+      this.a(new gfb<>(this, $$2, $$3, $$0.g()));
    }
 
-   protected int a(cdx $$0, hz $$1) {
-      return 15;
-   }
-
-   public aiy a(cdx $$0) {
+   public aiy a(cfk $$0) {
       return a;
+   }
+
+   protected boolean b(T $$0) {
+      return super.a($$0) || $$0.gn();
    }
 }

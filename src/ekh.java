@@ -1,77 +1,78 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public abstract class ekh implements eki {
-   protected final List<elu> g;
-   private final Predicate<eiv> a;
+public class ekh extends eko {
+   private static final Logger b = LogUtils.getLogger();
+   private static final Codec<in<ctm>> c = kf.f.r().listOf().xmap(in::a, $$0 -> $$0.a().toList());
+   public static final Codec<ekh> a = RecordCodecBuilder.create($$0 -> a($$0).and(avq.a(c, "enchantments").forGetter($$0x -> $$0x.d)).apply($$0, ekh::new));
+   private final Optional<in<ctm>> d;
 
-   protected ekh(List<elu> $$0) {
-      this.g = $$0;
-      this.a = elw.a($$0);
+   ekh(List<emb> $$0, Optional<in<ctm>> $$1) {
+      super($$0);
+      this.d = $$1;
    }
-
-   protected static <T extends ekh> P1<Mu<T>, List<elu>> a(Instance<T> $$0) {
-      return $$0.group(avp.a(elw.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.g));
-   }
-
-   public final coz b(coz $$0, eiv $$1) {
-      return this.a.test($$1) ? this.a($$0, $$1) : $$0;
-   }
-
-   protected abstract coz a(coz var1, eiv var2);
 
    @Override
-   public void a(eje $$0) {
-      eki.super.a($$0);
+   public ekq b() {
+      return ekr.e;
+   }
 
-      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
-         this.g.get($$1).a($$0.a(".conditions[" + $$1 + "]"));
+   @Override
+   public cpd a(cpd $$0, ejc $$1) {
+      awp $$2 = $$1.b();
+      Optional<ij<ctm>> $$3 = this.d.<ij<ctm>>flatMap($$1x -> $$1x.a($$2)).or(() -> {
+         boolean $$2x = $$0.a(cpg.qO);
+         List<ij.c<ctm>> $$3x = kf.f.h().filter($$0xx -> ((ctm)$$0xx.a()).j()).filter($$2xx -> $$2x || ((ctm)$$2xx.a()).a($$0)).toList();
+         return ac.b($$3x, $$2);
+      });
+      if ($$3.isEmpty()) {
+         b.warn("Couldn't find a compatible enchantment for {}", $$0);
+         return $$0;
+      } else {
+         return a($$0, $$3.get().a(), $$2);
       }
    }
 
-   protected static ekh.a<?> a(Function<List<elu>, eki> $$0) {
-      return new ekh.b($$0);
+   private static cpd a(cpd $$0, ctm $$1, awp $$2) {
+      int $$3 = awi.a($$2, $$1.f(), $$1.a());
+      if ($$0.a(cpg.qO)) {
+         $$0 = new cpd(cpg.us);
+         cnz.a($$0, new cto($$1, $$3));
+      } else {
+         $$0.a($$1, $$3);
+      }
+
+      return $$0;
    }
 
-   public abstract static class a<T extends ekh.a<T>> implements eki.a, eln<T> {
-      private final Builder<elu> a = ImmutableList.builder();
-
-      public T a(elu.a $$0) {
-         this.a.add($$0.build());
-         return this.c();
-      }
-
-      public final T f() {
-         return this.c();
-      }
-
-      protected abstract T c();
-
-      protected List<elu> g() {
-         return this.a.build();
-      }
+   public static ekh.a c() {
+      return new ekh.a();
    }
 
-   static final class b extends ekh.a<ekh.b> {
-      private final Function<List<elu>, eki> a;
+   public static eko.a<?> d() {
+      return a($$0 -> new ekh($$0, Optional.empty()));
+   }
 
-      public b(Function<List<elu>, eki> $$0) {
-         this.a = $$0;
+   public static class a extends eko.a<ekh.a> {
+      private final List<ij<ctm>> a = new ArrayList<>();
+
+      protected ekh.a a() {
+         return this;
       }
 
-      protected ekh.b a() {
+      public ekh.a a(ctm $$0) {
+         this.a.add($$0.k());
          return this;
       }
 
       @Override
-      public eki b() {
-         return this.a.apply(this.g());
+      public ekp b() {
+         return new ekh(this.g(), this.a.isEmpty() ? Optional.empty() : Optional.of(in.a(this.a)));
       }
    }
 }

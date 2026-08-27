@@ -10,7 +10,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class ga implements ArgumentType<gb> {
    private static final Collection<String> a = Arrays.asList("stick", "minecraft:stick", "stick{foo=bar}");
-   private final il<cou> b;
+   private final il<coy> b;
 
    public ga(dq $$0) {
       this.b = $$0.a(kg.F);

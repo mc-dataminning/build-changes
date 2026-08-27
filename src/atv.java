@@ -1,28 +1,98 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-
 public class atv {
-   protected final Object2IntMap<atr<?>> a = Object2IntMaps.synchronize(new Object2IntOpenHashMap());
+   public static final atu<cys> a = a("mined", kf.e);
+   public static final atu<coy> b = a("crafted", kf.h);
+   public static final atu<coy> c = a("used", kf.h);
+   public static final atu<coy> d = a("broken", kf.h);
+   public static final atu<coy> e = a("picked_up", kf.h);
+   public static final atu<coy> f = a("dropped", kf.h);
+   public static final atu<bnw<?>> g = a("killed", kf.g);
+   public static final atu<bnw<?>> h = a("killed_by", kf.g);
+   public static final atu<aiy> i = a("custom", kf.m);
+   public static final aiy j = a("leave_game", att.b);
+   public static final aiy k = a("play_time", att.e);
+   public static final aiy l = a("total_world_time", att.e);
+   public static final aiy m = a("time_since_death", att.e);
+   public static final aiy n = a("time_since_rest", att.e);
+   public static final aiy o = a("sneak_time", att.e);
+   public static final aiy p = a("walk_one_cm", att.d);
+   public static final aiy q = a("crouch_one_cm", att.d);
+   public static final aiy r = a("sprint_one_cm", att.d);
+   public static final aiy s = a("walk_on_water_one_cm", att.d);
+   public static final aiy t = a("fall_one_cm", att.d);
+   public static final aiy u = a("climb_one_cm", att.d);
+   public static final aiy v = a("fly_one_cm", att.d);
+   public static final aiy w = a("walk_under_water_one_cm", att.d);
+   public static final aiy x = a("minecart_one_cm", att.d);
+   public static final aiy y = a("boat_one_cm", att.d);
+   public static final aiy z = a("pig_one_cm", att.d);
+   public static final aiy A = a("horse_one_cm", att.d);
+   public static final aiy B = a("aviate_one_cm", att.d);
+   public static final aiy C = a("swim_one_cm", att.d);
+   public static final aiy D = a("strider_one_cm", att.d);
+   public static final aiy E = a("jump", att.b);
+   public static final aiy F = a("drop", att.b);
+   public static final aiy G = a("damage_dealt", att.c);
+   public static final aiy H = a("damage_dealt_absorbed", att.c);
+   public static final aiy I = a("damage_dealt_resisted", att.c);
+   public static final aiy J = a("damage_taken", att.c);
+   public static final aiy K = a("damage_blocked_by_shield", att.c);
+   public static final aiy L = a("damage_absorbed", att.c);
+   public static final aiy M = a("damage_resisted", att.c);
+   public static final aiy N = a("deaths", att.b);
+   public static final aiy O = a("mob_kills", att.b);
+   public static final aiy P = a("animals_bred", att.b);
+   public static final aiy Q = a("player_kills", att.b);
+   public static final aiy R = a("fish_caught", att.b);
+   public static final aiy S = a("talked_to_villager", att.b);
+   public static final aiy T = a("traded_with_villager", att.b);
+   public static final aiy U = a("eat_cake_slice", att.b);
+   public static final aiy V = a("fill_cauldron", att.b);
+   public static final aiy W = a("use_cauldron", att.b);
+   public static final aiy X = a("clean_armor", att.b);
+   public static final aiy Y = a("clean_banner", att.b);
+   public static final aiy Z = a("clean_shulker_box", att.b);
+   public static final aiy aa = a("interact_with_brewingstand", att.b);
+   public static final aiy ab = a("interact_with_beacon", att.b);
+   public static final aiy ac = a("inspect_dropper", att.b);
+   public static final aiy ad = a("inspect_hopper", att.b);
+   public static final aiy ae = a("inspect_dispenser", att.b);
+   public static final aiy af = a("play_noteblock", att.b);
+   public static final aiy ag = a("tune_noteblock", att.b);
+   public static final aiy ah = a("pot_flower", att.b);
+   public static final aiy ai = a("trigger_trapped_chest", att.b);
+   public static final aiy aj = a("open_enderchest", att.b);
+   public static final aiy ak = a("enchant_item", att.b);
+   public static final aiy al = a("play_record", att.b);
+   public static final aiy am = a("interact_with_furnace", att.b);
+   public static final aiy an = a("interact_with_crafting_table", att.b);
+   public static final aiy ao = a("open_chest", att.b);
+   public static final aiy ap = a("sleep_in_bed", att.b);
+   public static final aiy aq = a("open_shulker_box", att.b);
+   public static final aiy ar = a("open_barrel", att.b);
+   public static final aiy as = a("interact_with_blast_furnace", att.b);
+   public static final aiy at = a("interact_with_smoker", att.b);
+   public static final aiy au = a("interact_with_lectern", att.b);
+   public static final aiy av = a("interact_with_campfire", att.b);
+   public static final aiy aw = a("interact_with_cartography_table", att.b);
+   public static final aiy ax = a("interact_with_loom", att.b);
+   public static final aiy ay = a("interact_with_stonecutter", att.b);
+   public static final aiy az = a("bell_ring", att.b);
+   public static final aiy aA = a("raid_trigger", att.b);
+   public static final aiy aB = a("raid_win", att.b);
+   public static final aiy aC = a("interact_with_anvil", att.b);
+   public static final aiy aD = a("interact_with_grindstone", att.b);
+   public static final aiy aE = a("target_hit", att.b);
+   public static final aiy aF = a("interact_with_smithing_table", att.b);
 
-   public atv() {
-      this.a.defaultReturnValue(0);
+   private static aiy a(String $$0, att $$1) {
+      aiy $$2 = new aiy($$0);
+      iv.a(kf.m, $$0, $$2);
+      i.a($$2, $$1);
+      return $$2;
    }
 
-   public void b(chh $$0, atr<?> $$1, int $$2) {
-      int $$3 = (int)Math.min((long)this.a($$1) + (long)$$2, 2147483647L);
-      this.a($$0, $$1, $$3);
-   }
-
-   public void a(chh $$0, atr<?> $$1, int $$2) {
-      this.a.put($$1, $$2);
-   }
-
-   public <T> int a(att<T> $$0, T $$1) {
-      return $$0.a($$1) ? this.a($$0.b($$1)) : 0;
-   }
-
-   public int a(atr<?> $$0) {
-      return this.a.getInt($$0);
+   private static <T> atu<T> a(String $$0, iv<T> $$1) {
+      vq $$2 = vq.c("stat_type.minecraft." + $$0);
+      return iv.a(kf.x, $$0, new atu<>($$1, $$2));
    }
 }

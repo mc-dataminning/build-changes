@@ -1,25 +1,25 @@
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public interface cuz extends cve, cvq, cvs {
-   @Override
-   default <T extends dit> Optional<T> a(hz $$0, div<T> $$1) {
-      return cvq.super.a($$0, $$1);
+public class cuz {
+   private final enz a;
+   private final enz b;
+   private final Predicate<dlj> c;
+
+   public cuz(enz $$0, enz $$1, Predicate<dlj> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   default List<eol> c(@Nullable bno $$0, enn $$1) {
-      return cve.super.c($$0, $$1);
+   public enz a() {
+      return this.b;
    }
 
-   @Override
-   default boolean a(@Nullable bno $$0, eol $$1) {
-      return cve.super.a($$0, $$1);
+   public enz b() {
+      return this.a;
    }
 
-   @Override
-   default hz a(dqo.a $$0, hz $$1) {
-      return cvq.super.a($$0, $$1);
+   public Predicate<dlj> c() {
+      return this.c;
    }
 }

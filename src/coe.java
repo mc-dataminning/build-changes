@@ -1,55 +1,44 @@
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class coe extends cou {
-   public coe(cou.a $$0) {
-      super($$0);
+public interface coe {
+   bnx g();
+
+   default atk au_() {
+      return atl.aq;
    }
 
-   @Override
-   public void a(coz $$0, @Nullable cvn $$1, List<vq> $$2, cqq $$3) {
-      sw $$4 = $$0.b("Explosion");
-      if ($$4 != null) {
-         a($$4, $$2);
-      }
-   }
-
-   public static void a(sw $$0, List<vq> $$1) {
-      cod.a $$2 = cod.a.a($$0.f("Type"));
-      $$1.add(vq.c("item.minecraft.firework_star.shape." + $$2.b()).a(n.h));
-      int[] $$3 = $$0.n("Colors");
-      if ($$3.length > 0) {
-         $$1.add(a(vq.i().a(n.h), $$3));
-      }
-
-      int[] $$4 = $$0.n("FadeColors");
-      if ($$4.length > 0) {
-         $$1.add(a(vq.c("item.minecraft.firework_star.fade_to").b(vp.v).a(n.h), $$4));
-      }
-
-      if ($$0.q("Trail")) {
-         $$1.add(vq.c("item.minecraft.firework_star.trail").a(n.h));
-      }
-
-      if ($$0.q("Flicker")) {
-         $$1.add(vq.c("item.minecraft.firework_star.flicker").a(n.h));
-      }
-   }
-
-   private static vq a(we $$0, int[] $$1) {
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         if ($$2 > 0) {
-            $$0.f(", ");
+   default blx<cpd> a(coy $$0, cvr $$1, chl $$2, blv $$3) {
+      cpd $$4 = $$2.b($$3);
+      bnx $$5 = bok.h($$4);
+      cpd $$6 = $$2.c($$5);
+      if ((!ctn.d($$6) || $$2.f()) && !cpd.a($$4, $$6)) {
+         if (!$$1.y_()) {
+            $$2.b(atv.c.b($$0));
          }
 
-         $$0.b(a($$1[$$2]));
+         cpd $$7 = $$6.b() ? $$4 : $$6.c();
+         cpd $$8 = $$2.f() ? $$4.q() : $$4.c();
+         $$2.a($$5, $$8);
+         return blx.a($$7, $$1.y_());
+      } else {
+         return blx.d($$4);
       }
-
-      return $$0;
    }
 
-   private static vq a(int $$0) {
-      cnn $$1 = cnn.b($$0);
-      return $$1 == null ? vq.c("item.minecraft.firework_star.custom_color") : vq.c("item.minecraft.firework_star." + $$1.b());
+   @Nullable
+   static coe c_(cpd $$0) {
+      coy $$3 = $$0.d();
+      if ($$3 instanceof coe) {
+         return (coe)$$3;
+      } else {
+         if ($$0.d() instanceof cmw $$2) {
+            cys var6 = $$2.e();
+            if (var6 instanceof coe) {
+               return (coe)var6;
+            }
+         }
+
+         return null;
+      }
    }
 }

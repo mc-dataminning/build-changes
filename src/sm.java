@@ -1,11 +1,11 @@
 import java.util.function.Consumer;
 
-public record sm(String a, String b, String c, dfa d, int e, long f, boolean g, int h, int i, Consumer<rr> j) {
+public record sm(String a, String b, String c, dfe d, int e, long f, boolean g, int h, int i, Consumer<rr> j) {
    public sm(String $$0, String $$1, String $$2, int $$3, long $$4, boolean $$5, Consumer<rr> $$6) {
-      this($$0, $$1, $$2, dfa.a, $$3, $$4, $$5, 1, 1, $$6);
+      this($$0, $$1, $$2, dfe.a, $$3, $$4, $$5, 1, 1, $$6);
    }
 
-   public sm(String $$0, String $$1, String $$2, dfa $$3, int $$4, long $$5, boolean $$6, Consumer<rr> $$7) {
+   public sm(String $$0, String $$1, String $$2, dfe $$3, int $$4, long $$5, boolean $$6, Consumer<rr> $$7) {
       this($$0, $$1, $$2, $$3, $$4, $$5, $$6, 1, 1, $$7);
    }
 
@@ -34,7 +34,7 @@ public record sm(String a, String b, String c, dfa d, int e, long f, boolean g, 
       return this.c;
    }
 
-   public dfa e() {
+   public dfe e() {
       return this.d;
    }
 

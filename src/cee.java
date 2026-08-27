@@ -1,101 +1,45 @@
-public class cee extends cen {
-   private static final int b = 2400;
-   private int c;
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-   public cee(bnu<? extends cee> $$0, cvn $$1) {
-      super($$0, $$1);
-      this.bJ = 3;
-   }
+public interface cee extends cev {
+   void b(boolean var1);
 
-   @Override
-   protected void B() {
-      this.bO.a(1, new buv(this));
-      this.bO.a(1, new buq(this, this.dM()));
-      this.bO.a(2, new bvl(this, 1.0, false));
-      this.bO.a(3, new bwo(this, 1.0));
-      this.bO.a(7, new bvj(this, chh.class, 8.0F));
-      this.bO.a(8, new bvw(this));
-      this.bP.a(1, new bwt(this).a());
-      this.bP.a(2, new bwu<>(this, chh.class, true));
-   }
+   void a(boi var1, cpd var2, cid var3, float var4);
 
-   public static bpk.a u() {
-      return cen.gm().a(bpl.n, 8.0).a(bpl.o, 0.25).a(bpl.c, 2.0);
-   }
+   @Nullable
+   boi q();
 
-   @Override
-   protected bno.b aW() {
-      return bno.b.c;
-   }
+   void a();
 
-   @Override
-   protected atj y() {
-      return atk.ia;
-   }
-
-   @Override
-   protected atj d(bmn $$0) {
-      return atk.ic;
-   }
-
-   @Override
-   protected atj n_() {
-      return atk.ib;
-   }
-
-   @Override
-   protected void b(hz $$0, dlf $$1) {
-      this.a(atk.id, 0.15F, 1.0F);
-   }
-
-   @Override
-   public void a(sw $$0) {
-      super.a($$0);
-      this.c = $$0.h("Lifetime");
-   }
-
-   @Override
-   public void b(sw $$0) {
-      super.b($$0);
-      $$0.a("Lifetime", this.c);
-   }
-
-   @Override
-   public void l() {
-      this.aU = this.dC();
-      super.l();
-   }
-
-   @Override
-   public void o(float $$0) {
-      this.r($$0);
-      super.o($$0);
-   }
-
-   @Override
-   public void d_() {
-      super.d_();
-      if (this.dM().B) {
-         for (int $$0 = 0; $$0 < 2; $$0++) {
-            this.dM().a(jz.Z, this.d(0.5), this.du(), this.g(0.5), (this.af.j() - 0.5) * 2.0, -this.af.j(), (this.af.j() - 0.5) * 2.0);
-         }
-      } else {
-         if (!this.fN()) {
-            this.c++;
-         }
-
-         if (this.c >= 2400) {
-            this.am();
-         }
+   default void b(boi $$0, float $$1) {
+      blv $$2 = cif.a($$0, cpg.vP);
+      cpd $$3 = $$0.b($$2);
+      if ($$0.b(cpg.vP)) {
+         cnl.a($$0.dM(), $$0, $$2, $$3, $$1, (float)(14 - $$0.dM().aj().a() * 4));
       }
+
+      this.a();
    }
 
-   public static boolean b(bnu<cee> $$0, cvo $$1, bok $$2, hz $$3, awo $$4) {
-      if (c($$0, $$1, $$2, $$3, $$4)) {
-         chh $$5 = $$1.a((double)$$3.u() + 0.5, (double)$$3.v() + 0.5, (double)$$3.w() + 0.5, 5.0, true);
-         return $$5 == null;
-      } else {
-         return false;
+   default void a(boi $$0, boi $$1, cid $$2, float $$3, float $$4) {
+      double $$5 = $$1.dr() - $$0.dr();
+      double $$6 = $$1.dx() - $$0.dx();
+      double $$7 = Math.sqrt($$5 * $$5 + $$6 * $$6);
+      double $$8 = $$1.e(0.3333333333333333) - $$2.dt() + $$7 * 0.2F;
+      Vector3f $$9 = this.a($$0, new enz($$5, $$8, $$6), $$3);
+      $$2.c((double)$$9.x(), (double)$$9.y(), (double)$$9.z(), $$4, (float)(14 - $$0.dM().aj().a() * 4));
+      $$0.a(atl.gh, 1.0F, 1.0F / ($$0.eh().i() * 0.4F + 0.8F));
+   }
+
+   default Vector3f a(boi $$0, enz $$1, float $$2) {
+      Vector3f $$3 = $$1.j().normalize();
+      Vector3f $$4 = new Vector3f($$3).cross(new Vector3f(0.0F, 1.0F, 0.0F));
+      if ((double)$$4.lengthSquared() <= 1.0E-7) {
+         enz $$5 = $$0.i(1.0F);
+         $$4 = new Vector3f($$3).cross($$5.j());
       }
+
+      Vector3f $$6 = new Vector3f($$3).rotateAxis((float) (Math.PI / 2), $$4.x, $$4.y, $$4.z);
+      return new Vector3f($$3).rotateAxis($$2 * (float) (Math.PI / 180.0), $$6.x, $$6.y, $$6.z);
    }
 }

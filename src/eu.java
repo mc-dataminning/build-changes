@@ -33,7 +33,7 @@ public class eu<T> implements ArgumentType<aix<T>> {
    }
 
    private static <T> iv<T> a(CommandContext<du> $$0, aix<? extends iv<T>> $$1) {
-      return ((du)$$0.getSource()).l().aZ().d($$1);
+      return ((du)$$0.getSource()).l().bb().d($$1);
    }
 
    private static <T> ij.c<T> b(CommandContext<du> $$0, String $$1, aix<iv<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
@@ -41,15 +41,15 @@ public class eu<T> implements ArgumentType<aix<T>> {
       return a($$0, $$2).b($$4).orElseThrow(() -> $$3.create($$4.a()));
    }
 
-   public static ij.c<dtf<?, ?>> a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static ij.c<dtm<?, ?>> a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1, kg.aw, b);
    }
 
-   public static ij.c<ebe> b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static ij.c<ebl> b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1, kg.aD, c);
    }
 
-   public static ij.c<ecn> c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static ij.c<ecu> c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1, kg.aG, d);
    }
 

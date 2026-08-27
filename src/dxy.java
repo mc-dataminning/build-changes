@@ -1,24 +1,20 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dxy<P extends dxx> {
-   public static final dxy<dyg> a = a("simple_state_provider", dyg.b);
-   public static final dxy<dyh> b = a("weighted_state_provider", dyh.b);
-   public static final dxy<dyc> c = a("noise_threshold_provider", dyc.b);
-   public static final dxy<dyb> d = a("noise_provider", dyb.g);
-   public static final dxy<dxz> e = a("dual_noise_provider", dxz.b);
-   public static final dxy<dye> f = a("rotated_block_provider", dye.b);
-   public static final dxy<dyd> g = a("randomized_int_state_provider", dyd.b);
-   private final Codec<P> h;
+public record dxy(dye b, float c) {
+   public static final Codec<dxy> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dye.a.fieldOf("above_root_provider").forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("above_root_placement_chance").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, dxy::new)
+   );
 
-   private static <P extends dxx> dxy<P> a(String $$0, Codec<P> $$1) {
-      return iv.a(kf.V, $$0, new dxy<>($$1));
+   public dye a() {
+      return this.b;
    }
 
-   private dxy(Codec<P> $$0) {
-      this.h = $$0;
-   }
-
-   public Codec<P> a() {
-      return this.h;
+   public float b() {
+      return this.c;
    }
 }

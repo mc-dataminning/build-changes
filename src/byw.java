@@ -1,25 +1,35 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Iterables;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class byw {
-   @Nullable
-   public static ens a(boo $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      boolean $$7 = byz.a($$0, $$1);
-      return bzc.a($$0, () -> a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+public class byw extends byk<cgp> {
+   @Override
+   public Set<bxl<?>> a() {
+      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(bxl.B)));
    }
 
-   @Nullable
-   public static hz a(boo $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6, boolean $$7) {
-      hz $$8 = bzc.a($$0.eh(), $$1, $$2, $$3, $$4, $$5, $$6);
-      if ($$8 == null) {
-         return null;
-      } else {
-         hz $$9 = bzc.a($$0, $$1, $$0.eh(), $$8);
-         if (!byz.a($$9, $$0) && !byz.a($$7, $$0, $$9)) {
-            $$9 = bzc.a($$9, $$0.dM().al(), $$1x -> byz.c($$0, $$1x));
-            return byz.b($$0, $$9) ? null : $$9;
-         } else {
-            return null;
-         }
-      }
+   protected void a(aow $$0, cgp $$1) {
+      super.a($$0, $$1);
+      a($$1, $$0x -> $$0x.ai() == bnw.bw)
+         .or(() -> a($$1, $$0xx -> $$0xx.ai() != bnw.bw))
+         .ifPresentOrElse($$1x -> $$1.dO().a(bxl.B, $$1x), () -> $$1.dO().b(bxl.B));
+   }
+
+   private static Optional<boi> a(cgp $$0, Predicate<boi> $$1) {
+      return $$0.dO().c(bxl.g).stream().flatMap(Collection::stream).filter($$0::a).filter($$1).findFirst();
+   }
+
+   @Override
+   protected int b() {
+      return 24;
+   }
+
+   @Override
+   protected int c() {
+      return 24;
    }
 }

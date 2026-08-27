@@ -1,108 +1,35 @@
-import javax.annotation.Nullable;
-
 public class fwc {
-   protected final fvj a;
-   protected final cvn b;
-   protected int c;
-   protected int d;
-   protected int e;
-   private int g;
-   public fyk.b[] f;
+   private final long[] a;
+   private int b;
+   private int c;
 
-   public fwc(fyk $$0, cvn $$1, int $$2, fvj $$3) {
-      this.a = $$3;
-      this.b = $$1;
-      this.a($$2);
-      this.a($$0);
+   public fwc(int $$0) {
+      this.a = new long[$$0];
    }
 
-   protected void a(fyk $$0) {
-      if (!exh.O().br()) {
-         throw new IllegalStateException("createSections called from wrong thread: " + Thread.currentThread().getName());
+   public long a(long $$0) {
+      if (this.b < this.a.length) {
+         this.b++;
+      }
+
+      this.a[this.c] = $$0;
+      this.c = (this.c + 1) % this.a.length;
+      long $$1 = Long.MAX_VALUE;
+      long $$2 = Long.MIN_VALUE;
+      long $$3 = 0L;
+
+      for (int $$4 = 0; $$4 < this.b; $$4++) {
+         long $$5 = this.a[$$4];
+         $$3 += $$5;
+         $$1 = Math.min($$1, $$5);
+         $$2 = Math.max($$2, $$5);
+      }
+
+      if (this.b > 2) {
+         $$3 -= $$1 + $$2;
+         return $$3 / (long)(this.b - 2);
       } else {
-         int $$1 = this.d * this.c * this.e;
-         this.f = new fyk.b[$$1];
-
-         for (int $$2 = 0; $$2 < this.d; $$2++) {
-            for (int $$3 = 0; $$3 < this.c; $$3++) {
-               for (int $$4 = 0; $$4 < this.e; $$4++) {
-                  int $$5 = this.a($$2, $$3, $$4);
-                  this.f[$$5] = $$0.new b($$5, $$2 * 16, this.b.J_() + $$3 * 16, $$4 * 16);
-               }
-            }
-         }
-      }
-   }
-
-   public void a() {
-      for (fyk.b $$0 : this.f) {
-         $$0.e();
-      }
-   }
-
-   private int a(int $$0, int $$1, int $$2) {
-      return ($$2 * this.c + $$1) * this.d + $$0;
-   }
-
-   protected void a(int $$0) {
-      int $$1 = $$0 * 2 + 1;
-      this.d = $$1;
-      this.c = this.b.am();
-      this.e = $$1;
-      this.g = $$0;
-   }
-
-   public int b() {
-      return this.g;
-   }
-
-   public cvp c() {
-      return this.b;
-   }
-
-   public void a(double $$0, double $$1) {
-      int $$2 = awh.c($$0);
-      int $$3 = awh.c($$1);
-
-      for (int $$4 = 0; $$4 < this.d; $$4++) {
-         int $$5 = this.d * 16;
-         int $$6 = $$2 - 8 - $$5 / 2;
-         int $$7 = $$6 + Math.floorMod($$4 * 16 - $$6, $$5);
-
-         for (int $$8 = 0; $$8 < this.e; $$8++) {
-            int $$9 = this.e * 16;
-            int $$10 = $$3 - 8 - $$9 / 2;
-            int $$11 = $$10 + Math.floorMod($$8 * 16 - $$10, $$9);
-
-            for (int $$12 = 0; $$12 < this.c; $$12++) {
-               int $$13 = this.b.J_() + $$12 * 16;
-               fyk.b $$14 = this.f[this.a($$4, $$12, $$8)];
-               hz $$15 = $$14.f();
-               if ($$7 != $$15.u() || $$13 != $$15.v() || $$11 != $$15.w()) {
-                  $$14.a($$7, $$13, $$11);
-               }
-            }
-         }
-      }
-   }
-
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      int $$4 = Math.floorMod($$0, this.d);
-      int $$5 = Math.floorMod($$1 - this.b.an(), this.c);
-      int $$6 = Math.floorMod($$2, this.e);
-      fyk.b $$7 = this.f[this.a($$4, $$5, $$6)];
-      $$7.a($$3);
-   }
-
-   @Nullable
-   protected fyk.b a(hz $$0) {
-      int $$1 = awh.a($$0.v() - this.b.J_(), 16);
-      if ($$1 >= 0 && $$1 < this.c) {
-         int $$2 = awh.b(awh.a($$0.u(), 16), this.d);
-         int $$3 = awh.b(awh.a($$0.w(), 16), this.e);
-         return this.f[this.a($$2, $$1, $$3)];
-      } else {
-         return null;
+         return $$3 > 0L ? (long)this.b / $$3 : 0L;
       }
    }
 }

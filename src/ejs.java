@@ -1,64 +1,30 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.Consumer;
 
-public class ejs extends ejh {
-   public static final Codec<ejs> a = a(ejs::new);
+public class ejs extends ejx {
+   public static final Codec<ejs> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(kf.h.r().fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, ejs::new)
+   );
+   private final ij<coy> j;
 
-   ejs(List<ejo> $$0, List<elu> $$1) {
-      super($$0, $$1);
+   private ejs(ij<coy> $$0, int $$1, int $$2, List<emb> $$3, List<ekp> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
    @Override
-   public ejp a() {
-      return ejm.h;
+   public ejw a() {
+      return ejt.c;
    }
 
    @Override
-   protected ejg a(List<? extends ejg> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (ejg)$$0.get(0);
-         case 2 -> $$0.get(0).and($$0.get(1));
-         default -> ($$1, $$2) -> {
-         for (ejg $$3 : $$0) {
-            if (!$$3.expand($$1, $$2)) {
-               return false;
-            }
-         }
-
-         return true;
-      };
-      };
+   public void a(Consumer<cpd> $$0, ejc $$1) {
+      $$0.accept(new cpd(this.j));
    }
 
-   public static ejs.a a(ejo.a<?>... $$0) {
-      return new ejs.a($$0);
-   }
-
-   public static class a extends ejo.a<ejs.a> {
-      private final Builder<ejo> a = ImmutableList.builder();
-
-      public a(ejo.a<?>... $$0) {
-         for (ejo.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
-
-      protected ejs.a a() {
-         return this;
-      }
-
-      @Override
-      public ejs.a c(ejo.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      @Override
-      public ejo b() {
-         return new ejs(this.a.build(), this.f());
-      }
+   public static ejx.a<?> a(cvq $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new ejs($$0.j().i(), $$1, $$2, $$3, $$4));
    }
 }

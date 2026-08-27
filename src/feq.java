@@ -1,169 +1,74 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.IntSupplier;
+import com.google.common.hash.Hashing;
+import javax.annotation.Nullable;
 
-public class feq extends fey {
-   static final aiy c = new aiy("textures/gui/title/mojangstudios.png");
-   private static final int d = avr.b.a(255, 239, 50, 61);
-   private static final int e = avr.b.a(255, 0, 0, 0);
-   private static final IntSupplier f = () -> exh.O().m.a().c() ? e : d;
-   private static final int g = 240;
-   private static final float h = 60.0F;
-   private static final int i = 60;
-   private static final int j = 120;
-   private static final float k = 0.0625F;
-   private static final float l = 0.95F;
-   public static final long a = 1000L;
-   public static final long b = 500L;
-   private final exh m;
-   private final arw n;
-   private final Consumer<Optional<Throwable>> o;
-   private final boolean p;
-   private float q;
-   private long r = -1L;
-   private long s = -1L;
+public class feq implements AutoCloseable {
+   private static final aiy a = new aiy("textures/misc/unknown_server.png");
+   private static final int b = 64;
+   private static final int c = 64;
+   private final ghc d;
+   private final aiy e;
+   @Nullable
+   private ggo f;
+   private boolean g;
 
-   public feq(exh $$0, arw $$1, Consumer<Optional<Throwable>> $$2, boolean $$3) {
-      this.m = $$0;
-      this.n = $$1;
-      this.o = $$2;
-      this.p = $$3;
+   private feq(ghc $$0, aiy $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public static void a(exh $$0) {
-      $$0.Y().a(c, new feq.a());
+   public static feq a(ghc $$0, String $$1) {
+      return new feq($$0, new aiy("minecraft", "worlds/" + ac.a($$1, aiy::b) + "/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
    }
 
-   private static int a(int $$0, int $$1) {
-      return $$0 & 16777215 | $$1 << 24;
+   public static feq b(ghc $$0, String $$1) {
+      return new feq($$0, new aiy("minecraft", "servers/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
    }
 
-   @Override
-   public void a(eyu $$0, int $$1, int $$2, float $$3) {
-      int $$4 = $$0.a();
-      int $$5 = $$0.b();
-      long $$6 = ac.b();
-      if (this.p && this.s == -1L) {
-         this.s = $$6;
-      }
-
-      float $$7 = this.r > -1L ? (float)($$6 - this.r) / 1000.0F : -1.0F;
-      float $$8 = this.s > -1L ? (float)($$6 - this.s) / 500.0F : -1.0F;
-      float $$10;
-      if ($$7 >= 1.0F) {
-         if (this.m.y != null) {
-            this.m.y.a($$0, 0, 0, $$3);
-         }
-
-         int $$9 = awh.f((1.0F - awh.a($$7 - 1.0F, 0.0F, 1.0F)) * 255.0F);
-         $$0.a(fvt.C(), 0, 0, $$4, $$5, a(f.getAsInt(), $$9));
-         $$10 = 1.0F - awh.a($$7 - 1.0F, 0.0F, 1.0F);
-      } else if (this.p) {
-         if (this.m.y != null && $$8 < 1.0F) {
-            this.m.y.a($$0, $$1, $$2, $$3);
-         }
-
-         int $$11 = awh.c(awh.a((double)$$8, 0.15, 1.0) * 255.0);
-         $$0.a(fvt.C(), 0, 0, $$4, $$5, a(f.getAsInt(), $$11));
-         $$10 = awh.a($$8, 0.0F, 1.0F);
-      } else {
-         int $$13 = f.getAsInt();
-         float $$14 = (float)($$13 >> 16 & 0xFF) / 255.0F;
-         float $$15 = (float)($$13 >> 8 & 0xFF) / 255.0F;
-         float $$16 = (float)($$13 & 0xFF) / 255.0F;
-         GlStateManager._clearColor($$14, $$15, $$16, 1.0F);
-         GlStateManager._clear(16384, exh.a);
-         $$10 = 1.0F;
-      }
-
-      int $$18 = (int)((double)$$0.a() * 0.5);
-      int $$19 = (int)((double)$$0.b() * 0.5);
-      double $$20 = Math.min((double)$$0.a() * 0.75, (double)$$0.b()) * 0.25;
-      int $$21 = (int)($$20 * 0.5);
-      double $$22 = $$20 * 4.0;
-      int $$23 = (int)($$22 * 0.5);
-      RenderSystem.disableDepthTest();
-      RenderSystem.depthMask(false);
-      RenderSystem.enableBlend();
-      RenderSystem.blendFunc(770, 1);
-      $$0.a(1.0F, 1.0F, 1.0F, $$10);
-      $$0.a(c, $$18 - $$23, $$19 - $$21, $$23, (int)$$20, -0.0625F, 0.0F, 120, 60, 120, 120);
-      $$0.a(c, $$18, $$19 - $$21, $$23, (int)$$20, 0.0625F, 60.0F, 120, 60, 120, 120);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      RenderSystem.defaultBlendFunc();
-      RenderSystem.disableBlend();
-      RenderSystem.depthMask(true);
-      RenderSystem.enableDepthTest();
-      int $$24 = (int)((double)$$0.b() * 0.8325);
-      float $$25 = this.n.b();
-      this.q = awh.a(this.q * 0.95F + $$25 * 0.050000012F, 0.0F, 1.0F);
-      if ($$7 < 1.0F) {
-         this.a($$0, $$4 / 2 - $$23, $$24 - 5, $$4 / 2 + $$23, $$24 + 5, 1.0F - awh.a($$7, 0.0F, 1.0F));
-      }
-
-      if ($$7 >= 2.0F) {
-         this.m.a(null);
-      }
-
-      if (this.r == -1L && this.n.c() && (!this.p || $$8 >= 2.0F)) {
+   public void a(eri $$0) {
+      if ($$0.a() == 64 && $$0.b() == 64) {
          try {
-            this.n.d();
-            this.o.accept(Optional.empty());
-         } catch (Throwable var23) {
-            this.o.accept(Optional.of(var23));
-         }
+            this.c();
+            if (this.f == null) {
+               this.f = new ggo($$0);
+            } else {
+               this.f.a($$0);
+               this.f.d();
+            }
 
-         this.r = ac.b();
-         if (this.m.y != null) {
-            this.m.y.b(this.m, $$0.a(), $$0.b());
+            this.d.a(this.e, this.f);
+         } catch (Throwable var3) {
+            $$0.close();
+            this.a();
+            throw var3;
          }
+      } else {
+         $$0.close();
+         throw new IllegalArgumentException("Icon must be 64x64, but was " + $$0.a() + "x" + $$0.b());
       }
    }
 
-   private void a(eyu $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
-      int $$6 = awh.f((float)($$3 - $$1 - 2) * this.q);
-      int $$7 = Math.round($$5 * 255.0F);
-      int $$8 = avr.b.a($$7, 255, 255, 255);
-      $$0.a($$1 + 2, $$2 + 2, $$1 + $$6, $$4 - 2, $$8);
-      $$0.a($$1 + 1, $$2, $$3 - 1, $$2 + 1, $$8);
-      $$0.a($$1 + 1, $$4, $$3 - 1, $$4 - 1, $$8);
-      $$0.a($$1, $$2, $$1 + 1, $$4, $$8);
-      $$0.a($$3, $$2, $$3 - 1, $$4, $$8);
+   public void a() {
+      this.c();
+      if (this.f != null) {
+         this.d.c(this.e);
+         this.f.close();
+         this.f = null;
+      }
+   }
+
+   public aiy b() {
+      return this.f != null ? this.e : a;
    }
 
    @Override
-   public boolean a() {
-      return true;
+   public void close() {
+      this.a();
+      this.g = true;
    }
 
-   static class a extends ggm {
-      public a() {
-         super(feq.c);
-      }
-
-      @Override
-      protected ggm.a b(asa $$0) {
-         aqr $$1 = exh.O().ab();
-         ars<InputStream> $$2 = $$1.a(aqp.a, feq.c);
-         if ($$2 == null) {
-            return new ggm.a(new FileNotFoundException(feq.c.toString()));
-         } else {
-            try {
-               ggm.a var5;
-               try (InputStream $$3 = $$2.get()) {
-                  var5 = new ggm.a(new gip(true, true), erb.a($$3));
-               }
-
-               return var5;
-            } catch (IOException var9) {
-               return new ggm.a(var9);
-            }
-         }
+   private void c() {
+      if (this.g) {
+         throw new IllegalStateException("Icon already closed");
       }
    }
 }

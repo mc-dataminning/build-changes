@@ -1,85 +1,77 @@
-public class bur extends bvf {
-   private static final int[] a = new int[]{0, 1, 4, 5, 6, 7};
-   private final cab b;
-   private final int c;
-   private boolean d;
+import java.util.EnumSet;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public bur(cab $$0, int $$1) {
-      this.b = $$0;
-      this.c = b($$1);
+public class bur extends bvf {
+   private static final byy d = byy.b().a(8.0).d();
+   protected final bzx a;
+   private final Class<? extends bzx> e;
+   protected final cvr b;
+   @Nullable
+   protected bzx c;
+   private int f;
+   private final double g;
+
+   public bur(bzx $$0, double $$1) {
+      this($$0, $$1, (Class<? extends bzx>)$$0.getClass());
+   }
+
+   public bur(bzx $$0, double $$1, Class<? extends bzx> $$2) {
+      this.a = $$0;
+      this.b = $$0.dM();
+      this.e = $$2;
+      this.g = $$1;
+      this.a(EnumSet.of(bvf.a.a, bvf.a.b));
    }
 
    @Override
    public boolean a() {
-      if (this.b.eh().a(this.c) != 0) {
+      if (!this.a.gk()) {
          return false;
       } else {
-         ie $$0 = this.b.cF();
-         int $$1 = $$0.j();
-         int $$2 = $$0.l();
-         hz $$3 = this.b.dm();
-
-         for (int $$4 : a) {
-            if (!this.a($$3, $$1, $$2, $$4) || !this.b($$3, $$1, $$2, $$4)) {
-               return false;
-            }
-         }
-
-         return true;
+         this.c = this.h();
+         return this.c != null;
       }
-   }
-
-   private boolean a(hz $$0, int $$1, int $$2, int $$3) {
-      hz $$4 = $$0.b($$1 * $$3, 0, $$2 * $$3);
-      return this.b.dM().b_($$4).a(aue.a) && !this.b.dM().a_($$4).d();
-   }
-
-   private boolean b(hz $$0, int $$1, int $$2, int $$3) {
-      return this.b.dM().a_($$0.b($$1 * $$3, 1, $$2 * $$3)).i() && this.b.dM().a_($$0.b($$1 * $$3, 2, $$2 * $$3)).i();
    }
 
    @Override
    public boolean b() {
-      double $$0 = this.b.dp().d;
-      return (!($$0 * $$0 < 0.03F) || this.b.dE() == 0.0F || !(Math.abs(this.b.dE()) < 10.0F) || !this.b.aZ()) && !this.b.aC();
-   }
-
-   @Override
-   public boolean S_() {
-      return false;
-   }
-
-   @Override
-   public void c() {
-      ie $$0 = this.b.cF();
-      this.b.g(this.b.dp().b((double)$$0.j() * 0.6, 0.7, (double)$$0.l() * 0.6));
-      this.b.N().n();
+      return this.c.bx() && this.c.gk() && this.f < 60 && !this.c.gd();
    }
 
    @Override
    public void d() {
-      this.b.s(0.0F);
+      this.c = null;
+      this.f = 0;
    }
 
    @Override
    public void e() {
-      boolean $$0 = this.d;
-      if (!$$0) {
-         egp $$1 = this.b.dM().b_(this.b.dm());
-         this.d = $$1.a(aue.a);
+      this.a.I().a(this.c, 10.0F, (float)this.a.ab());
+      this.a.N().a(this.c, this.g);
+      this.f++;
+      if (this.f >= this.a(60) && this.a.f(this.c) < 9.0) {
+         this.g();
+      }
+   }
+
+   @Nullable
+   private bzx h() {
+      List<? extends bzx> $$0 = this.b.a(this.e, d, this.a, this.a.cH().g(8.0));
+      double $$1 = Double.MAX_VALUE;
+      bzx $$2 = null;
+
+      for (bzx $$3 : $$0) {
+         if (this.a.a($$3) && !$$3.gd() && this.a.f($$3) < $$1) {
+            $$2 = $$3;
+            $$1 = this.a.f($$3);
+         }
       }
 
-      if (this.d && !$$0) {
-         this.b.a(atk.gN, 1.0F, 1.0F);
-      }
+      return $$2;
+   }
 
-      ens $$2 = this.b.dp();
-      if ($$2.d * $$2.d < 0.03F && this.b.dE() != 0.0F) {
-         this.b.s(awh.j(0.2F, this.b.dE(), 0.0F));
-      } else if ($$2.f() > 1.0E-5F) {
-         double $$3 = $$2.h();
-         double $$4 = Math.atan2(-$$2.d, $$3) * 180.0F / (float)Math.PI;
-         this.b.s((float)$$4);
-      }
+   protected void g() {
+      this.a.a((aow)this.b, this.c);
    }
 }

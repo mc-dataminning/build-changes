@@ -1,17 +1,17 @@
 public class agm implements xx<aes> {
    public static final xo<uq, agm> a = xx.a(agm::a, agm::new);
-   private final eno b;
-   private final blt c;
+   private final env b;
+   private final blv c;
    private final int d;
 
-   public agm(blt $$0, eno $$1, int $$2) {
+   public agm(blv $$0, env $$1, int $$2) {
       this.c = $$0;
       this.b = $$1;
       this.d = $$2;
    }
 
    private agm(uq $$0) {
-      this.c = $$0.b(blt.class);
+      this.c = $$0.b(blv.class);
       this.b = $$0.x();
       this.d = $$0.n();
    }
@@ -31,11 +31,11 @@ public class agm implements xx<aes> {
       $$0.a(this);
    }
 
-   public blt b() {
+   public blv b() {
       return this.c;
    }
 
-   public eno e() {
+   public env e() {
       return this.b;
    }
 

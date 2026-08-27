@@ -106,8 +106,8 @@ public class akv {
       );
    }
 
-   private static int a(du $$0, Collection<? extends bno> $$1, ij<bmz> $$2, @Nullable Integer $$3, int $$4, boolean $$5) throws CommandSyntaxException {
-      bmz $$6 = $$2.a();
+   private static int a(du $$0, Collection<? extends bnq> $$1, ij<bnb> $$2, @Nullable Integer $$3, int $$4, boolean $$5) throws CommandSyntaxException {
+      bnb $$6 = $$2.a();
       int $$7 = 0;
       int $$8;
       if ($$3 != null) {
@@ -124,10 +124,10 @@ public class akv {
          $$8 = 600;
       }
 
-      for (bno $$13 : $$1) {
-         if ($$13 instanceof bog) {
-            bnb $$14 = new bnb($$2, $$8, $$4, false, $$5);
-            if (((bog)$$13).b($$14, $$0.f())) {
+      for (bnq $$13 : $$1) {
+         if ($$13 instanceof boi) {
+            bnd $$14 = new bnd($$2, $$8, $$4, false, $$5);
+            if (((boi)$$13).b($$14, $$0.f())) {
                $$7++;
             }
          }
@@ -146,11 +146,11 @@ public class akv {
       }
    }
 
-   private static int a(du $$0, Collection<? extends bno> $$1) throws CommandSyntaxException {
+   private static int a(du $$0, Collection<? extends bnq> $$1) throws CommandSyntaxException {
       int $$2 = 0;
 
-      for (bno $$3 : $$1) {
-         if ($$3 instanceof bog && ((bog)$$3).es()) {
+      for (bnq $$3 : $$1) {
+         if ($$3 instanceof boi && ((boi)$$3).es()) {
             $$2++;
          }
       }
@@ -168,12 +168,12 @@ public class akv {
       }
    }
 
-   private static int a(du $$0, Collection<? extends bno> $$1, ij<bmz> $$2) throws CommandSyntaxException {
-      bmz $$3 = $$2.a();
+   private static int a(du $$0, Collection<? extends bnq> $$1, ij<bnb> $$2) throws CommandSyntaxException {
+      bnb $$3 = $$2.a();
       int $$4 = 0;
 
-      for (bno $$5 : $$1) {
-         if ($$5 instanceof bog && ((bog)$$5).e($$2)) {
+      for (bnq $$5 : $$1) {
+         if ($$5 instanceof boi && ((boi)$$5).e($$2)) {
             $$4++;
          }
       }

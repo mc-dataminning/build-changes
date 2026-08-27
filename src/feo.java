@@ -1,103 +1,80 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class feo extends ffe {
-   private static final long a = 2000L;
-   private final api b;
-   private long c = -1L;
-   private boolean k;
-   private static final Object2IntMap<dng> l = ac.a(new Object2IntOpenHashMap(), $$0 -> {
-      $$0.defaultReturnValue(0);
-      $$0.put(dng.c, 5526612);
-      $$0.put(dng.d, 10066329);
-      $$0.put(dng.e, 6250897);
-      $$0.put(dng.f, 8434258);
-      $$0.put(dng.g, 13750737);
-      $$0.put(dng.h, 7497737);
-      $$0.put(dng.i, 3159410);
-      $$0.put(dng.j, 2213376);
-      $$0.put(dng.k, 13421772);
-      $$0.put(dng.l, 16769184);
-      $$0.put(dng.m, 15884384);
-      $$0.put(dng.n, 16777215);
-   });
+public class feo extends ffl {
+   private static final vq a = vq.c("addServer.enterName");
+   private static final vq b = vq.c("addServer.enterIp");
+   private ezo c;
+   private final BooleanConsumer k;
+   private final fqq l;
+   private ezx m;
+   private ezx n;
+   private final ffl o;
 
-   public feo(api $$0) {
-      super(ewz.a);
-      this.b = $$0;
+   public feo(ffl $$0, BooleanConsumer $$1, fqq $$2) {
+      super(vq.c("addServer.title"));
+      this.o = $$0;
+      this.k = $$1;
+      this.l = $$2;
    }
 
    @Override
-   public boolean aO_() {
-      return false;
+   protected void aQ_() {
+      this.n = new ezx(this.i, this.g / 2 - 100, 66, 200, 20, vq.c("addServer.enterName"));
+      this.n.a(this.l.a);
+      this.n.b($$0 -> this.E());
+      this.d(this.n);
+      this.m = new ezx(this.i, this.g / 2 - 100, 106, 200, 20, vq.c("addServer.enterIp"));
+      this.m.f(128);
+      this.m.a(this.l.b);
+      this.m.b($$0 -> this.E());
+      this.d(this.m);
+      this.c(
+         ezv.a(fqq.a::a)
+            .a(fqq.a.values())
+            .a(this.l.b())
+            .a(this.g / 2 - 100, this.h / 4 + 72, 200, 20, vq.c("addServer.resourcePack"), ($$0, $$1) -> this.l.a($$1))
+      );
+      this.c = this.c(ezo.a(vq.c("addServer.add"), $$0 -> this.o()).a(this.g / 2 - 100, this.h / 4 + 96 + 18, 200, 20).a());
+      this.c(ezo.a(vp.e, $$0 -> this.k.accept(false)).a(this.g / 2 - 100, this.h / 4 + 120 + 18, 200, 20).a());
+      this.E();
    }
 
    @Override
-   protected boolean aP_() {
-      return false;
+   protected void aH_() {
+      this.b(this.n);
    }
 
    @Override
-   public void k() {
-      this.k = true;
-      this.d(true);
+   public void a(exo $$0, int $$1, int $$2) {
+      String $$3 = this.m.a();
+      String $$4 = this.n.a();
+      this.b($$0, $$1, $$2);
+      this.m.a($$3);
+      this.n.a($$4);
+   }
+
+   private void o() {
+      this.l.a = this.n.a();
+      this.l.b = this.m.a();
+      this.k.accept(true);
    }
 
    @Override
-   protected void b(fdc $$0) {
-      if (this.k) {
-         $$0.a(fdb.a, vq.c("narrator.loading.done"));
-      } else {
-         $$0.a(fdb.a, this.o());
-      }
+   public void d() {
+      this.f.a(this.o);
    }
 
-   private vq o() {
-      return vq.a("loading.progress", awh.a(this.b.f(), 0, 100));
+   private void E() {
+      this.c.j = frs.b(this.m.a()) && !this.n.a().isEmpty();
    }
 
    @Override
-   public void a(eyu $$0, int $$1, int $$2, float $$3) {
+   public void a(ezb $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      long $$4 = ac.b();
-      if ($$4 - this.c > 2000L) {
-         this.c = $$4;
-         this.d(true);
-      }
-
-      int $$5 = this.g / 2;
-      int $$6 = this.h / 2;
-      int $$7 = 30;
-      a($$0, this.b, $$5, $$6 + 30, 2, 0);
-      $$0.a(this.i, this.o(), $$5, $$6 - 9 / 2 - 30, 16777215);
-   }
-
-   public static void a(eyu $$0, api $$1, int $$2, int $$3, int $$4, int $$5) {
-      int $$6 = $$4 + $$5;
-      int $$7 = $$1.d();
-      int $$8 = $$7 * $$6 - $$5;
-      int $$9 = $$1.e();
-      int $$10 = $$9 * $$6 - $$5;
-      int $$11 = $$2 - $$10 / 2;
-      int $$12 = $$3 - $$10 / 2;
-      int $$13 = $$8 / 2 + 1;
-      int $$14 = -16772609;
-      $$0.a(() -> {
-         if ($$5 != 0) {
-            $$0.a($$2 - $$13, $$3 - $$13, $$2 - $$13 + 1, $$3 + $$13, -16772609);
-            $$0.a($$2 + $$13 - 1, $$3 - $$13, $$2 + $$13, $$3 + $$13, -16772609);
-            $$0.a($$2 - $$13, $$3 - $$13, $$2 + $$13, $$3 - $$13 + 1, -16772609);
-            $$0.a($$2 - $$13, $$3 + $$13 - 1, $$2 + $$13, $$3 + $$13, -16772609);
-         }
-
-         for (int $$11x = 0; $$11x < $$9; $$11x++) {
-            for (int $$12x = 0; $$12x < $$9; $$12x++) {
-               dng $$13x = $$1.a($$11x, $$12x);
-               int $$14x = $$11 + $$11x * $$6;
-               int $$15 = $$12 + $$12x * $$6;
-               $$0.a($$14x, $$15, $$14x + $$4, $$15 + $$4, l.getInt($$13x) | 0xFF000000);
-            }
-         }
-      });
+      $$0.a(this.i, this.e, this.g / 2, 17, 16777215);
+      $$0.b(this.i, a, this.g / 2 - 100 + 1, 53, 10526880);
+      $$0.b(this.i, b, this.g / 2 - 100 + 1, 94, 10526880);
+      this.n.a($$0, $$1, $$2, $$3);
+      this.m.a($$0, $$1, $$2, $$3);
    }
 }

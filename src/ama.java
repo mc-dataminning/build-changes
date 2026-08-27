@@ -22,7 +22,7 @@ public class ama {
                                     .suggests(hp.b)
                                     .executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), Collections.singleton(ev.b($$0x, "recipe"))))
                               ))
-                           .then(dv.a("*").executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), ((du)$$0x.getSource()).l().aG().b())))
+                           .then(dv.a("*").executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), ((du)$$0x.getSource()).l().aI().b())))
                      )
                ))
             .then(
@@ -34,16 +34,16 @@ public class ama {
                                  .suggests(hp.b)
                                  .executes($$0x -> b((du)$$0x.getSource(), eh.f($$0x, "targets"), Collections.singleton(ev.b($$0x, "recipe"))))
                            ))
-                        .then(dv.a("*").executes($$0x -> b((du)$$0x.getSource(), eh.f($$0x, "targets"), ((du)$$0x.getSource()).l().aG().b())))
+                        .then(dv.a("*").executes($$0x -> b((du)$$0x.getSource(), eh.f($$0x, "targets"), ((du)$$0x.getSource()).l().aI().b())))
                   )
             )
       );
    }
 
-   private static int a(du $$0, Collection<aow> $$1, Collection<csd<?>> $$2) throws CommandSyntaxException {
+   private static int a(du $$0, Collection<aox> $$1, Collection<csh<?>> $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
-      for (aow $$4 : $$1) {
+      for (aox $$4 : $$1) {
          $$3 += $$4.a($$2);
       }
 
@@ -60,10 +60,10 @@ public class ama {
       }
    }
 
-   private static int b(du $$0, Collection<aow> $$1, Collection<csd<?>> $$2) throws CommandSyntaxException {
+   private static int b(du $$0, Collection<aox> $$1, Collection<csh<?>> $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
-      for (aow $$4 : $$1) {
+      for (aox $$4 : $$1) {
          $$3 += $$4.b($$2);
       }
 

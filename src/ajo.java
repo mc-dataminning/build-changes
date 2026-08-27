@@ -1,5 +1,5 @@
 public interface ajo extends ajn {
-   ant a();
+   anu a();
 
    String b();
 
@@ -7,7 +7,7 @@ public interface ajo extends ajn {
 
    String f();
 
-   String[] L();
+   String[] N();
 
    String q();
 

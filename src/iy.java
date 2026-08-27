@@ -51,7 +51,7 @@ public class iy {
          }
 
          @Override
-         public Optional<in.c<T>> a(auo<T> $$0x) {
+         public Optional<in.c<T>> a(aup<T> $$0x) {
             return Optional.empty();
          }
 
@@ -241,7 +241,7 @@ public class iy {
       }
 
       @Override
-      public Optional<in.c<T>> a(auo<T> $$0) {
+      public Optional<in.c<T>> a(aup<T> $$0) {
          return Optional.of(in.a(this.b, $$0));
       }
    }

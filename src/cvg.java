@@ -1,23 +1,31 @@
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class cvg {
-   public Optional<Float> a(cvf $$0, cut $$1, hz $$2, dlf $$3, egp $$4) {
-      return $$3.i() && $$4.c() ? Optional.empty() : Optional.of(Math.max($$3.b().e(), $$4.i()));
+public enum cvg implements cux {
+   a;
+
+   @Nullable
+   @Override
+   public dix c_(hz $$0) {
+      return null;
    }
 
-   public boolean a(cvf $$0, cut $$1, hz $$2, dlf $$3, float $$4) {
-      return true;
+   @Override
+   public dlj a_(hz $$0) {
+      return cyu.a.o();
    }
 
-   public boolean a(cvf $$0, bno $$1) {
-      return true;
+   @Override
+   public egw b_(hz $$0) {
+      return egx.a.g();
    }
 
-   public float b(cvf $$0, bno $$1) {
-      float $$2 = $$0.a() * 2.0F;
-      ens $$3 = $$0.b();
-      double $$4 = Math.sqrt($$1.f($$3)) / (double)$$2;
-      double $$5 = (1.0 - $$4) * (double)cvf.a($$3, $$1);
-      return (float)(($$5 * $$5 + $$5) / 2.0 * 7.0 * (double)$$2 + 1.0);
+   @Override
+   public int J_() {
+      return 0;
+   }
+
+   @Override
+   public int K_() {
+      return 0;
    }
 }

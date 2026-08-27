@@ -10,17 +10,17 @@ public class jr implements jx {
       }
    };
    private final jy<jr> b;
-   private final dlf c;
+   private final dlj c;
 
    public static Codec<jr> a(jy<jr> $$0) {
-      return dlf.b.xmap($$1 -> new jr($$0, $$1), $$0x -> $$0x.c);
+      return dlj.b.xmap($$1 -> new jr($$0, $$1), $$0x -> $$0x.c);
    }
 
    public static xo<? super vb, jr> b(jy<jr> $$0) {
-      return xm.a(cyo.q).a($$1 -> new jr($$0, $$1), $$0x -> $$0x.c);
+      return xm.a(cys.q).a($$1 -> new jr($$0, $$1), $$0x -> $$0x.c);
    }
 
-   public jr(jy<jr> $$0, dlf $$1) {
+   public jr(jy<jr> $$0, dlj $$1) {
       this.b = $$0;
       this.c = $$1;
    }
@@ -35,7 +35,7 @@ public class jr implements jx {
       return this.b;
    }
 
-   public dlf c() {
+   public dlj c() {
       return this.c;
    }
 }

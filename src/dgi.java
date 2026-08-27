@@ -1,53 +1,46 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dgi extends dfn {
-   public static final MapCodec<dgi> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dms.a.fieldOf("wood_type").forGetter(dfn::d), u()).apply($$0, dgi::new));
-   public static final dmf b = dlv.ba;
-
-   @Override
-   public MapCodec<dgi> a() {
-      return a;
+public abstract class dgi extends dgb {
+   protected dgi(dli.d $$0) {
+      super($$0);
    }
 
-   public dgi(dms $$0, dle.d $$1) {
-      super($$0, $$1.a($$0.d()));
-      this.k(this.E.b().a(b, Integer.valueOf(0)).a(f, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected boolean a(dlf $$0, cvq $$1, hz $$2) {
-      return $$1.a_($$2.d()).e();
-   }
-
-   @Override
-   public dlf a(crg $$0) {
-      egp $$1 = $$0.q().b_($$0.a());
-      return this.o().a(b, Integer.valueOf(dml.a($$0.i() + 180.0F))).a(f, Boolean.valueOf($$1.a() == egq.c));
+   private static boolean b(dlj $$0, cvu $$1, hz $$2) {
+      hz $$3 = $$2.c();
+      dlj $$4 = $$1.a_($$3);
+      if ($$4.a(cyu.dN) && $$4.c(dga.c) == 1) {
+         return true;
+      } else if ($$4.u().e() == 8) {
+         return false;
+      } else {
+         int $$5 = egn.a($$1, $$0, $$2, $$4, $$3, ie.b, $$4.b($$1, $$3));
+         return $$5 < $$1.O();
+      }
    }
 
    @Override
-   protected dlf a(dlf $$0, ie $$1, dlf $$2, cvo $$3, hz $$4, hz $$5) {
-      return $$1 == ie.a && !this.a($$0, $$3, $$4) ? cyq.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected abstract MapCodec<? extends dgi> a();
+
+   private static boolean c(dlj $$0, cvu $$1, hz $$2) {
+      hz $$3 = $$2.c();
+      return b($$0, $$1, $$2) && !$$1.b_($$3).a(auf.a);
    }
 
    @Override
-   public float g(dlf $$0) {
-      return dml.b($$0.c(b));
-   }
+   protected void b(dlj $$0, aow $$1, hz $$2, awp $$3) {
+      if (!b($$0, $$1, $$2)) {
+         $$1.b($$2, cyu.j.o());
+      } else {
+         if ($$1.A($$2.c()) >= 9) {
+            dlj $$4 = this.o();
 
-   @Override
-   protected dlf a(dlf $$0, dfa $$1) {
-      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
-   }
-
-   @Override
-   protected dlf a(dlf $$0, ddk $$1) {
-      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
-   }
-
-   @Override
-   protected void a(dlg.a<cyo, dlf> $$0) {
-      $$0.a(b, f);
+            for (int $$5 = 0; $$5 < 4; $$5++) {
+               hz $$6 = $$2.b($$3.a(3) - 1, $$3.a(5) - 3, $$3.a(3) - 1);
+               if ($$1.a_($$6).a(cyu.j) && c($$4, $$1, $$6)) {
+                  $$1.b($$6, $$4.a(c, Boolean.valueOf($$1.a_($$6.c()).a(cyu.dN))));
+               }
+            }
+         }
+      }
    }
 }

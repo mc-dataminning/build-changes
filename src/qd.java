@@ -1,5 +1,5 @@
 public class qd {
-   public static void a(ph<ecn> $$0) {
+   public static void a(ph<ecu> $$0) {
       pn.a($$0);
       pr.a($$0);
       pq.a($$0);

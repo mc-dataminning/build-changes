@@ -37,20 +37,20 @@ public class amx {
       );
    }
 
-   private static Collection<String> a(Collection<? extends bno> $$0) {
+   private static Collection<String> a(Collection<? extends bnq> $$0) {
       Set<String> $$1 = Sets.newHashSet();
 
-      for (bno $$2 : $$0) {
+      for (bnq $$2 : $$0) {
          $$1.addAll($$2.ak());
       }
 
       return $$1;
    }
 
-   private static int a(du $$0, Collection<? extends bno> $$1, String $$2) throws CommandSyntaxException {
+   private static int a(du $$0, Collection<? extends bnq> $$1, String $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
-      for (bno $$4 : $$1) {
+      for (bnq $$4 : $$1) {
          if ($$4.a($$2)) {
             $$3++;
          }
@@ -69,10 +69,10 @@ public class amx {
       }
    }
 
-   private static int b(du $$0, Collection<? extends bno> $$1, String $$2) throws CommandSyntaxException {
+   private static int b(du $$0, Collection<? extends bnq> $$1, String $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
-      for (bno $$4 : $$1) {
+      for (bnq $$4 : $$1) {
          if ($$4.b($$2)) {
             $$3++;
          }
@@ -91,15 +91,15 @@ public class amx {
       }
    }
 
-   private static int a(du $$0, Collection<? extends bno> $$1) {
+   private static int a(du $$0, Collection<? extends bnq> $$1) {
       Set<String> $$2 = Sets.newHashSet();
 
-      for (bno $$3 : $$1) {
+      for (bnq $$3 : $$1) {
          $$2.addAll($$3.ak());
       }
 
       if ($$1.size() == 1) {
-         bno $$4 = $$1.iterator().next();
+         bnq $$4 = $$1.iterator().next();
          if ($$2.isEmpty()) {
             $$0.a(() -> vq.a("commands.tag.list.single.empty", $$4.Q_()), false);
          } else {

@@ -385,16 +385,16 @@ public class wn {
    public static class b {
       public static final MapCodec<wn> a = RecordCodecBuilder.mapCodec(
          $$0 -> $$0.group(
-                  avp.a(wp.a, "color").forGetter($$0x -> Optional.ofNullable($$0x.c)),
-                  avp.a(Codec.BOOL, "bold").forGetter($$0x -> Optional.ofNullable($$0x.d)),
-                  avp.a(Codec.BOOL, "italic").forGetter($$0x -> Optional.ofNullable($$0x.e)),
-                  avp.a(Codec.BOOL, "underlined").forGetter($$0x -> Optional.ofNullable($$0x.f)),
-                  avp.a(Codec.BOOL, "strikethrough").forGetter($$0x -> Optional.ofNullable($$0x.g)),
-                  avp.a(Codec.BOOL, "obfuscated").forGetter($$0x -> Optional.ofNullable($$0x.h)),
-                  avp.a(vo.a, "clickEvent").forGetter($$0x -> Optional.ofNullable($$0x.i)),
-                  avp.a(vw.a, "hoverEvent").forGetter($$0x -> Optional.ofNullable($$0x.j)),
-                  avp.a(Codec.STRING, "insertion").forGetter($$0x -> Optional.ofNullable($$0x.k)),
-                  avp.a(aiy.a, "font").forGetter($$0x -> Optional.ofNullable($$0x.l))
+                  avq.a(wp.a, "color").forGetter($$0x -> Optional.ofNullable($$0x.c)),
+                  avq.a(Codec.BOOL, "bold").forGetter($$0x -> Optional.ofNullable($$0x.d)),
+                  avq.a(Codec.BOOL, "italic").forGetter($$0x -> Optional.ofNullable($$0x.e)),
+                  avq.a(Codec.BOOL, "underlined").forGetter($$0x -> Optional.ofNullable($$0x.f)),
+                  avq.a(Codec.BOOL, "strikethrough").forGetter($$0x -> Optional.ofNullable($$0x.g)),
+                  avq.a(Codec.BOOL, "obfuscated").forGetter($$0x -> Optional.ofNullable($$0x.h)),
+                  avq.a(vo.a, "clickEvent").forGetter($$0x -> Optional.ofNullable($$0x.i)),
+                  avq.a(vw.a, "hoverEvent").forGetter($$0x -> Optional.ofNullable($$0x.j)),
+                  avq.a(Codec.STRING, "insertion").forGetter($$0x -> Optional.ofNullable($$0x.k)),
+                  avq.a(aiy.a, "font").forGetter($$0x -> Optional.ofNullable($$0x.l))
                )
                .apply($$0, wn::a)
       );

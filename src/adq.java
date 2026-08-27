@@ -5,9 +5,9 @@ public class adq implements xx<aag> {
    private final int b;
    private final int[] c;
 
-   public adq(bno $$0) {
+   public adq(bnq $$0) {
       this.b = $$0.aj();
-      List<bno> $$1 = $$0.cP();
+      List<bnq> $$1 = $$0.cP();
       this.c = new int[$$1.size()];
 
       for (int $$2 = 0; $$2 < $$1.size(); $$2++) {

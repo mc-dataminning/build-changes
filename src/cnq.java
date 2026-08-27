@@ -1,5 +1,14 @@
-public class cnq extends cmj implements cnr {
-   public cnq(cmk $$0, cmj.a $$1, cou.a $$2) {
-      super($$0, $$1, $$2);
+public class cnq extends cmw {
+   public cnq(cys $$0, coy.a $$1) {
+      super($$0, $$1);
+   }
+
+   @Override
+   protected boolean a(crk $$0, dlj $$1) {
+      cvr $$2 = $$0.q();
+      hz $$3 = $$0.a().c();
+      dlj $$4 = $$2.z($$3) ? cyu.G.o() : cyu.a.o();
+      $$2.a($$3, $$4, 27);
+      return super.a($$0, $$1);
    }
 }

@@ -1,22 +1,17 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class cmh implements cmi {
+   private final is<cpd> a;
+   private final int b;
 
-public class cmh extends cou {
-   private final cyo a;
-
-   public cmh(cyo $$0, cou.a $$1) {
-      super($$1);
+   public cmh(is<cpd> $$0, int $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public String a() {
-      return this.a.h();
+   public is<cpd> a() {
+      return this.a;
    }
 
-   @Override
-   public void a(coz $$0, @Nullable cvn $$1, List<vq> $$2, cqq $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a.a($$0, $$1, $$2, $$3);
+   public int b() {
+      return this.b;
    }
 }

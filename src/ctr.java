@@ -1,20 +1,20 @@
-public class ctr extends cti {
-   public ctr(cti.a $$0, bnv... $$1) {
-      super($$0, auh.bl, $$1);
+public class ctr extends ctm {
+   protected ctr(ctm.a $$0, aup<coy> $$1, bnx... $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
    public int a(int $$0) {
-      return $$0 * 25;
+      return 15 + ($$0 - 1) * 9;
    }
 
    @Override
    public int b(int $$0) {
-      return this.a($$0) + 50;
+      return super.a($$0) + 50;
    }
 
    @Override
-   public boolean b() {
-      return true;
+   public int a() {
+      return 3;
    }
 }

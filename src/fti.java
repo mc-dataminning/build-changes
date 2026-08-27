@@ -1,40 +1,27 @@
-public class fti extends ftz {
-   private final ftu a;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Streams;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import java.util.List;
 
-   fti(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ftu $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.a = $$7;
-      this.d(1.5F);
-      this.n = false;
-      this.b($$7);
+public class fti {
+   private final List<aiy> a;
+
+   private fti(List<aiy> $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public int a(float $$0) {
-      return 240;
+   public List<aiy> a() {
+      return this.a;
    }
 
-   @Override
-   public ftd b() {
-      return ftd.c;
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
-   }
-
-   public static record a(ftu a) implements ftc<ka> {
-      public fsz a(ka $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fti $$8 = new fti($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         $$8.b($$5, $$6, $$7);
-         $$8.A = $$0.c();
-         $$8.z = $$0.c();
-         $$8.a($$1.z.a(12) + 8);
-         return $$8;
+   public static fti a(JsonObject $$0) {
+      JsonArray $$1 = avy.a($$0, "textures", null);
+      if ($$1 == null) {
+         return new fti(List.of());
+      } else {
+         List<aiy> $$2 = Streams.stream($$1).map($$0x -> avy.a($$0x, "texture")).map(aiy::new).collect(ImmutableList.toImmutableList());
+         return new fti($$2);
       }
    }
 }

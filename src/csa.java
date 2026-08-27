@@ -1,54 +1,68 @@
-import java.util.Map;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public class csa extends csi {
-   public csa(crr $$0) {
-      super("", $$0, csj.a(Map.of('#', cry.a(cpc.qN), 'x', cry.a(cpc.rT)), "###", "#x#", "###"), new coz(cpc.uf));
+public class csa extends crx {
+   private static final csc a = csc.a(cpg.ur);
+
+   public csa(crv $$0) {
+      super($$0);
    }
 
-   @Override
-   public boolean a(ckr $$0, cvn $$1) {
-      if (!super.a($$0, $$1)) {
-         return false;
-      } else {
-         coz $$2 = a($$0);
-         if ($$2.b()) {
-            return false;
-         } else {
-            ehz $$3 = cpg.b($$2, $$1);
-            if ($$3 == null) {
-               return false;
+   public boolean a(ckv $$0, cvr $$1) {
+      boolean $$2 = false;
+      boolean $$3 = false;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cpd $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if ($$5.d() instanceof cns) {
+               $$2 = true;
             } else {
-               return $$3.f() ? false : $$3.f < 4;
+               if (!a.a($$5)) {
+                  return false;
+               }
+
+               if ($$3) {
+                  return false;
+               }
+
+               $$3 = true;
             }
          }
       }
+
+      return $$3 && $$2;
    }
 
-   @Override
-   public coz a(ckr $$0, iw $$1) {
-      coz $$2 = a($$0).c(1);
-      $$2.x().a("map_scale_direction", 1);
-      return $$2;
-   }
+   public cpd a(ckv $$0, iw $$1) {
+      List<Integer> $$2 = Lists.newArrayList();
+      cpd $$3 = null;
 
-   private static coz a(ckr $$0) {
-      for (int $$1 = 0; $$1 < $$0.b(); $$1++) {
-         coz $$2 = $$0.a($$1);
-         if ($$2.a(cpc.rT)) {
-            return $$2;
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cpd $$5 = $$0.a($$4);
+         coy $$6 = $$5.d();
+         if ($$6 instanceof cns) {
+            $$2.add(((cns)$$6).d().f());
+         } else if (a.a($$5)) {
+            $$3 = $$5.c(1);
          }
       }
 
-      return coz.h;
+      if ($$3 != null && !$$2.isEmpty()) {
+         $$3.a("Explosion").b("FadeColors", $$2);
+         return $$3;
+      } else {
+         return cpd.h;
+      }
    }
 
    @Override
-   public boolean as_() {
-      return true;
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= 2;
    }
 
    @Override
-   public csf<?> at_() {
-      return csf.f;
+   public csj<?> at_() {
+      return csj.i;
    }
 }

@@ -1,45 +1,59 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public record els(Optional<ck> b, hz c) implements elu {
-   private static final MapCodec<hz> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               avp.a(Codec.INT, "offsetX", Integer.valueOf(0)).forGetter(jd::u),
-               avp.a(Codec.INT, "offsetY", Integer.valueOf(0)).forGetter(jd::v),
-               avp.a(Codec.INT, "offsetZ", Integer.valueOf(0)).forGetter(jd::w)
-            )
-            .apply($$0, hz::new)
-   );
-   public static final Codec<els> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(avp.a(ck.a, "predicate").forGetter(els::c), d.forGetter(els::d)).apply($$0, els::new)
-   );
+public abstract class els implements emb {
+   protected final List<emb> c;
+   private final Predicate<ejc> a;
+
+   protected els(List<emb> $$0, Predicate<ejc> $$1) {
+      this.c = $$0;
+      this.a = $$1;
+   }
+
+   protected static <T extends els> Codec<T> a(Function<List<emb>, T> $$0) {
+      return RecordCodecBuilder.create($$1 -> $$1.group(emd.a.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
+   }
+
+   protected static <T extends els> Codec<T> b(Function<List<emb>, T> $$0) {
+      return emd.a.listOf().xmap($$0, $$0x -> $$0x.c);
+   }
+
+   public final boolean a(ejc $$0) {
+      return this.a.test($$0);
+   }
 
    @Override
-   public elv b() {
-      return elw.o;
+   public void a(ejl $$0) {
+      emb.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".term[" + $$1 + "]"));
+      }
    }
 
-   public boolean a(eiv $$0) {
-      ens $$1 = $$0.c(elg.f);
-      return $$1 != null
-         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
-   }
+   public abstract static class a implements emb.a {
+      private final Builder<emb> a = ImmutableList.builder();
 
-   public static elu.a a(ck.a $$0) {
-      return () -> new els(Optional.of($$0.b()), hz.c);
-   }
+      protected a(emb.a... $$0) {
+         for (emb.a $$1 : $$0) {
+            this.a.add($$1.build());
+         }
+      }
 
-   public static elu.a a(ck.a $$0, hz $$1) {
-      return () -> new els(Optional.of($$0.b()), $$1);
-   }
+      public void a(emb.a $$0) {
+         this.a.add($$0.build());
+      }
 
-   public Optional<ck> c() {
-      return this.b;
-   }
+      @Override
+      public emb build() {
+         return this.a(this.a.build());
+      }
 
-   public hz d() {
-      return this.c;
+      protected abstract emb a(List<emb> var1);
    }
 }

@@ -1,95 +1,24 @@
-public class fhg extends fgk implements fhi<clf> {
-   private final clf q;
-   private final ckn r = new ckn() {
-      @Override
-      public void a(ckb $$0, int $$1, coz $$2) {
-         fhg.this.M();
+public class fhg extends fgk<cld> {
+   private static final aiy x = new aiy("container/grindstone/error");
+   private static final aiy y = new aiy("textures/gui/container/grindstone.png");
+
+   public fhg(cld $$0, chk $$1, vq $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   @Override
+   public void a(ezb $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(ezb $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.g - this.c) / 2;
+      int $$5 = (this.h - this.k) / 2;
+      $$0.a(y, $$4, $$5, 0, 0, this.c, this.k);
+      if ((this.p.b(0).h() || this.p.b(1).h()) && !this.p.b(2).h()) {
+         $$0.a(x, $$4 + 92, $$5 + 31, 28, 21);
       }
-
-      @Override
-      public void a(ckb $$0, int $$1, int $$2) {
-         if ($$1 == 0) {
-            fhg.this.N();
-         }
-      }
-   };
-
-   public fhg(clf $$0, chg $$1, vq $$2) {
-      this.q = $$0;
-   }
-
-   public clf L() {
-      return this.q;
-   }
-
-   @Override
-   protected void aQ_() {
-      super.aQ_();
-      this.q.a(this.r);
-   }
-
-   @Override
-   public void d() {
-      this.f.s.r();
-      super.d();
-   }
-
-   @Override
-   public void k() {
-      super.k();
-      this.q.b(this.r);
-   }
-
-   @Override
-   protected void o() {
-      if (this.f.s.gf()) {
-         this.d(ezh.a(vp.d, $$0 -> this.d()).a(this.g / 2 - 100, 196, 98, 20).a());
-         this.d(ezh.a(vq.c("lectern.take_book"), $$0 -> this.g(3)).a(this.g / 2 + 2, 196, 98, 20).a());
-      } else {
-         super.o();
-      }
-   }
-
-   @Override
-   protected void I() {
-      this.g(1);
-   }
-
-   @Override
-   protected void J() {
-      this.g(2);
-   }
-
-   @Override
-   protected boolean b(int $$0) {
-      if ($$0 != this.q.m()) {
-         this.g(100 + $$0);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private void g(int $$0) {
-      this.f.q.a(this.q.j, $$0);
-   }
-
-   @Override
-   public boolean m() {
-      return false;
-   }
-
-   void M() {
-      coz $$0 = this.q.l();
-      this.a(fgk.a.a($$0));
-   }
-
-   void N() {
-      this.a(this.q.m());
-   }
-
-   @Override
-   protected void K() {
-      this.f.s.r();
    }
 }

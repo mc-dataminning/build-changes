@@ -1,147 +1,148 @@
+import com.google.common.base.Joiner;
+import com.google.common.collect.Sets;
 import com.mojang.logging.LogUtils;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.NotDirectoryException;
 import java.nio.file.Path;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.Locale;
 import java.util.Set;
-import java.util.function.Consumer;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class aqr implements aqo {
+public class aqr extends aqh {
    private static final Logger c = LogUtils.getLogger();
-   private final aqh d;
-   private final Set<String> e;
-   private final List<Path> f;
-   private final Map<aqp, List<Path>> g;
+   private static final Joiner d = Joiner.on("/");
+   private final Path e;
 
-   aqr(aqh $$0, Set<String> $$1, List<Path> $$2, Map<aqp, List<Path>> $$3) {
-      this.d = $$0;
+   public aqr(String $$0, Path $$1, boolean $$2) {
+      super($$0, $$2);
       this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
    }
 
    @Nullable
    @Override
-   public ars<InputStream> a(String... $$0) {
+   public art<InputStream> a(String... $$0) {
       v.a($$0);
-      List<String> $$1 = List.of($$0);
-
-      for (Path $$2 : this.f) {
-         Path $$3 = v.a($$2, $$1);
-         if (Files.exists($$3) && aqq.a($$3)) {
-            return ars.create($$3);
-         }
-      }
-
-      return null;
+      Path $$1 = v.a(this.e, List.of($$0));
+      return Files.exists($$1) ? art.create($$1) : null;
    }
 
-   public void a(aqp $$0, aiy $$1, Consumer<Path> $$2) {
-      v.c($$1.a()).get().ifLeft($$3 -> {
-         String $$4 = $$1.b();
-
-         for (Path $$5 : this.g.get($$0)) {
-            Path $$6 = $$5.resolve($$4);
-            $$2.accept(v.a($$6, $$3));
-         }
-      }).ifRight($$1x -> c.error("Invalid path {}: {}", $$1, $$1x.message()));
-   }
-
-   @Override
-   public void a(aqp $$0, String $$1, String $$2, aqo.a $$3) {
-      v.c($$2).get().ifLeft($$3x -> {
-         List<Path> $$4 = this.g.get($$0);
-         int $$5 = $$4.size();
-         if ($$5 == 1) {
-            a($$3, $$1, $$4.get(0), $$3x);
-         } else if ($$5 > 1) {
-            Map<aiy, ars<InputStream>> $$6 = new HashMap<>();
-
-            for (int $$7 = 0; $$7 < $$5 - 1; $$7++) {
-               a($$6::putIfAbsent, $$1, $$4.get($$7), $$3x);
-            }
-
-            Path $$8 = $$4.get($$5 - 1);
-            if ($$6.isEmpty()) {
-               a($$3, $$1, $$8, $$3x);
-            } else {
-               a($$6::putIfAbsent, $$1, $$8, $$3x);
-               $$6.forEach($$3);
-            }
-         }
-      }).ifRight($$1x -> c.error("Invalid path {}: {}", $$2, $$1x.message()));
-   }
-
-   private static void a(aqo.a $$0, String $$1, Path $$2, List<String> $$3) {
-      Path $$4 = $$2.resolve($$1);
-      aqq.a($$1, $$4, $$3, $$0);
+   public static boolean a(Path $$0) {
+      return true;
    }
 
    @Nullable
    @Override
-   public ars<InputStream> a(aqp $$0, aiy $$1) {
-      return (ars<InputStream>)v.c($$1.a()).get().map($$2 -> {
-         String $$3 = $$1.b();
+   public art<InputStream> a(aqq $$0, aiy $$1) {
+      Path $$2 = this.e.resolve($$0.a()).resolve($$1.b());
+      return a($$1, $$2);
+   }
 
-         for (Path $$4 : this.g.get($$0)) {
-            Path $$5 = v.a($$4.resolve($$3), $$2);
-            if (Files.exists($$5) && aqq.a($$5)) {
-               return ars.create($$5);
-            }
-         }
-
-         return null;
+   public static art<InputStream> a(aiy $$0, Path $$1) {
+      return (art<InputStream>)v.c($$0.a()).get().map($$1x -> {
+         Path $$2 = v.a($$1, $$1x);
+         return b($$2);
       }, $$1x -> {
-         c.error("Invalid path {}: {}", $$1, $$1x.message());
+         c.error("Invalid path {}: {}", $$0, $$1x.message());
          return null;
       });
    }
 
-   @Override
-   public Set<String> a(aqp $$0) {
-      return this.e;
+   @Nullable
+   private static art<InputStream> b(Path $$0) {
+      return Files.exists($$0) && a($$0) ? art.create($$0) : null;
    }
 
-   @Nullable
    @Override
-   public <T> T a(ara<T> $$0) {
-      ars<InputStream> $$1 = this.a("pack.mcmeta");
-      if ($$1 != null) {
-         try (InputStream $$2 = $$1.get()) {
-            T $$3 = aqg.a($$0, $$2);
-            if ($$3 != null) {
-               return $$3;
-            }
+   public void a(aqq $$0, String $$1, String $$2, aqp.a $$3) {
+      v.c($$2).get().ifLeft($$3x -> {
+         Path $$4 = this.e.resolve($$0.a()).resolve($$1);
+         a($$1, $$4, $$3x, $$3);
+      }).ifRight($$1x -> c.error("Invalid path {}: {}", $$2, $$1x.message()));
+   }
 
-            return this.d.a($$0);
-         } catch (IOException var8) {
+   public static void a(String $$0, Path $$1, List<String> $$2, aqp.a $$3) {
+      Path $$4 = v.a($$1, $$2);
+
+      try (Stream<Path> $$5 = Files.find($$4, Integer.MAX_VALUE, ($$0x, $$1x) -> $$1x.isRegularFile())) {
+         $$5.forEach($$3x -> {
+            String $$4x = d.join($$1.relativize($$3x));
+            aiy $$5x = aiy.a($$0, $$4x);
+            if ($$5x == null) {
+               ac.a(String.format(Locale.ROOT, "Invalid path in pack: %s:%s, ignoring", $$0, $$4x));
+            } else {
+               $$3.accept($$5x, art.create($$3x));
+            }
+         });
+      } catch (NotDirectoryException | NoSuchFileException var10) {
+      } catch (IOException var11) {
+         c.error("Failed to list path {}", $$4, var11);
+      }
+   }
+
+   @Override
+   public Set<String> a(aqq $$0) {
+      Set<String> $$1 = Sets.newHashSet();
+      Path $$2 = this.e.resolve($$0.a());
+
+      try (DirectoryStream<Path> $$3 = Files.newDirectoryStream($$2)) {
+         for (Path $$4 : $$3) {
+            String $$5 = $$4.getFileName().toString();
+            if (aiy.h($$5)) {
+               $$1.add($$5);
+            } else {
+               c.warn("Non [a-z0-9_.-] character in namespace {} in pack {}, ignoring", $$5, this.e);
+            }
          }
+      } catch (NotDirectoryException | NoSuchFileException var10) {
+      } catch (IOException var11) {
+         c.error("Failed to list path {}", $$2, var11);
       }
 
-      return this.d.a($$0);
-   }
-
-   @Override
-   public String a() {
-      return "vanilla";
-   }
-
-   @Override
-   public boolean b() {
-      return true;
+      return $$1;
    }
 
    @Override
    public void close() {
    }
 
-   public asd c() {
-      return $$0 -> Optional.ofNullable(this.a(aqp.a, $$0)).map($$0x -> new ary(this, $$0x));
+   public static class a implements arj.c {
+      private final Path a;
+      private final boolean b;
+
+      public a(Path $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public aqp a(String $$0) {
+         return new aqr($$0, this.a, this.b);
+      }
+
+      @Override
+      public aqp a(String $$0, arj.a $$1) {
+         aqp $$2 = this.a($$0);
+         List<String> $$3 = $$1.d();
+         if ($$3.isEmpty()) {
+            return $$2;
+         } else {
+            List<aqp> $$4 = new ArrayList<>($$3.size());
+
+            for (String $$5 : $$3) {
+               Path $$6 = this.a.resolve($$5);
+               $$4.add(new aqr($$0, $$6, this.b));
+            }
+
+            return new aqj($$2, $$4);
+         }
+      }
    }
 }

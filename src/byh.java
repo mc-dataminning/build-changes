@@ -1,27 +1,52 @@
-import com.google.common.collect.ImmutableSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.BiPredicate;
+import java.util.function.Predicate;
 
-public abstract class byh extends byn<bog> {
-   protected abstract boolean a(bog var1, bog var2);
+public class byh<T extends boi> extends byr<T> {
+   private final BiPredicate<T, boi> a;
+   private final Predicate<T> c;
+   private final bxl<Boolean> d;
+   private final int e;
 
-   protected abstract bxh<bog> b();
-
-   @Override
-   public Set<bxh<?>> a() {
-      return ImmutableSet.of(this.b());
+   public byh(int $$0, BiPredicate<T, boi> $$1, Predicate<T> $$2, bxl<Boolean> $$3, int $$4) {
+      super($$0);
+      this.a = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
    @Override
-   protected void a(aov $$0, bog $$1) {
-      $$1.dO().a(this.b(), this.b($$1));
+   protected void a(aow $$0, T $$1) {
+      if (!this.c.test($$1)) {
+         this.c($$1);
+      } else {
+         this.a($$1);
+      }
    }
 
-   private Optional<bog> b(bog $$0) {
-      return this.a($$0).flatMap($$1 -> $$1.a($$1x -> this.a($$0, $$1x)));
+   @Override
+   public Set<bxl<?>> a() {
+      return Set.of(bxl.g);
    }
 
-   protected Optional<bxj> a(bog $$0) {
-      return $$0.dO().c(bxh.h);
+   public void a(T $$0) {
+      Optional<List<boi>> $$1 = $$0.dO().c(bxl.g);
+      if (!$$1.isEmpty()) {
+         boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
+         if ($$2) {
+            this.b($$0);
+         }
+      }
+   }
+
+   public void b(T $$0) {
+      $$0.dO().a(this.d, true, (long)this.e);
+   }
+
+   public void c(T $$0) {
+      $$0.dO().b(this.d);
    }
 }

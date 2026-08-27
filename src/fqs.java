@@ -1,85 +1,181 @@
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.exceptions.MinecraftClientHttpException;
-import com.mojang.authlib.minecraft.UserApiService;
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
-import com.mojang.datafixers.util.Unit;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
+import com.google.common.collect.Lists;
+import com.mojang.authlib.GameProfile;
+import com.mojang.logging.LogUtils;
+import io.netty.bootstrap.Bootstrap;
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelException;
+import io.netty.channel.ChannelHandler;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
+import io.netty.channel.EventLoopGroup;
+import io.netty.channel.socket.nio.NioSocketChannel;
+import java.net.InetSocketAddress;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public interface fqs {
-   static fqs a(fqy $$0, UserApiService $$1) {
-      return new fqs.b($$0, $$1);
-   }
+public class fqs {
+   private static final Logger a = LogUtils.getLogger();
+   private static final vq b = vq.c("multiplayer.status.cannot_connect").b(-65536);
+   private final List<uo> c = Collections.synchronizedList(Lists.newArrayList());
 
-   CompletableFuture<Unit> a(UUID var1, fra var2, AbuseReport var3);
+   public void a(final fqq $$0, final Runnable $$1, final Runnable $$2) throws UnknownHostException {
+      final frs $$3 = frs.a($$0.b);
+      Optional<InetSocketAddress> $$4 = fru.a.a($$3).map(frr::d);
+      if ($$4.isEmpty()) {
+         this.a(fef.b, $$0);
+      } else {
+         final InetSocketAddress $$5 = $$4.get();
+         final uo $$6 = uo.a($$5, false, null);
+         this.c.add($$6);
+         $$0.d = vq.c("multiplayer.status.pinging");
+         $$0.i = Collections.emptyList();
+         ahw $$7 = new ahw() {
+            private boolean h;
+            private boolean i;
+            private long j;
 
-   boolean a();
+            @Override
+            public void a(ahx $$0x) {
+               if (this.i) {
+                  $$6.a(vq.c("multiplayer.status.unrequested"));
+               } else {
+                  this.i = true;
+                  ahy $$1 = $$0.b();
+                  $$0.d = $$1.a();
+                  $$1.c().ifPresentOrElse($$1xxx -> {
+                     $$0.h = vq.b($$1xxx.b());
+                     $$0.g = $$1xxx.c();
+                  }, () -> {
+                     $$0.h = vq.c("multiplayer.status.old");
+                     $$0.g = 0;
+                  });
+                  $$1.b().ifPresentOrElse($$1xxx -> {
+                     $$0.c = fqs.a($$1xxx.b(), $$1xxx.a());
+                     $$0.e = $$1xxx;
+                     if (!$$1xxx.c().isEmpty()) {
+                        List<vq> $$2xx = new ArrayList<>($$1xxx.c().size());
 
-   default AbuseReportLimits b() {
-      return AbuseReportLimits.DEFAULTS;
-   }
+                        for (GameProfile $$3xx : $$1xxx.c()) {
+                           $$2xx.add(vq.b($$3xx.getName()));
+                        }
 
-   public static class a extends wq {
-      public a(vq $$0, Throwable $$1) {
-         super($$0, $$1);
-      }
-   }
+                        if ($$1xxx.c().size() < $$1xxx.b()) {
+                           $$2xx.add(vq.a("multiplayer.status.and_more", $$1xxx.b() - $$1xxx.c().size()));
+                        }
 
-   public static record b(fqy a, UserApiService b) implements fqs {
-      private static final vq c = vq.c("gui.abuseReport.send.service_unavailable");
-      private static final vq d = vq.c("gui.abuseReport.send.http_error");
-      private static final vq e = vq.c("gui.abuseReport.send.json_error");
-
-      @Override
-      public CompletableFuture<Unit> a(UUID $$0, fra $$1, AbuseReport $$2) {
-         return CompletableFuture.supplyAsync(() -> {
-            AbuseReportRequest $$3 = new AbuseReportRequest(1, $$0, $$2, this.a.b(), this.a.c(), this.a.d(), $$1.a());
-
-            try {
-               this.b.reportAbuse($$3);
-               return Unit.INSTANCE;
-            } catch (MinecraftClientHttpException var7) {
-               vq $$5 = this.a(var7);
-               throw new CompletionException(new fqs.a($$5, var7));
-            } catch (MinecraftClientException var8) {
-               vq $$7 = this.a(var8);
-               throw new CompletionException(new fqs.a($$7, var8));
+                        $$0.i = $$2xx;
+                     } else {
+                        $$0.i = List.of();
+                     }
+                  }, () -> $$0.c = vq.c("multiplayer.status.unknown").a(n.i));
+                  $$1.d().ifPresent($$2xx -> {
+                     if (!Arrays.equals($$2xx.a(), $$0.c())) {
+                        $$0.a(fqq.b($$2xx.a()));
+                        $$1.run();
+                     }
+                  });
+                  this.j = ac.b();
+                  $$6.a(new ahu(this.j));
+                  this.h = true;
+               }
             }
-         }, ac.g());
-      }
 
-      @Override
-      public boolean a() {
-         return this.b.canSendReports();
-      }
+            @Override
+            public void a(ahr $$0x) {
+               long $$1 = this.j;
+               long $$2 = ac.b();
+               $$0.f = $$2 - $$1;
+               $$6.a(vq.c("multiplayer.status.finished"));
+               $$2.run();
+            }
 
-      private vq a(MinecraftClientHttpException $$0) {
-         return vq.a("gui.abuseReport.send.error_message", $$0.getMessage());
-      }
+            @Override
+            public void a(vq $$0x) {
+               if (!this.h) {
+                  fqs.this.a($$0, $$0);
+                  fqs.this.a($$5, $$3, $$0);
+               }
+            }
 
-      private vq a(MinecraftClientException $$0) {
-         return switch ($$0.getType()) {
-            case SERVICE_UNAVAILABLE -> c;
-            case HTTP_ERROR -> d;
-            case JSON_ERROR -> e;
-            default -> throw new IncompatibleClassChangeError();
+            @Override
+            public boolean c() {
+               return $$6.i();
+            }
          };
-      }
 
-      @Override
-      public AbuseReportLimits b() {
-         return this.b.getAbuseReportLimits();
+         try {
+            $$6.a($$3.a(), $$3.b(), $$7);
+            $$6.a(aia.a);
+         } catch (Throwable var10) {
+            a.error("Failed to ping server {}", $$3, var10);
+         }
       }
+   }
 
-      public fqy c() {
-         return this.a;
+   void a(vq $$0, fqq $$1) {
+      a.error("Can't ping {}: {}", $$1.b, $$0.getString());
+      $$1.d = b;
+      $$1.c = vp.a;
+   }
+
+   void a(InetSocketAddress $$0, final frs $$1, final fqq $$2) {
+      ((Bootstrap)((Bootstrap)((Bootstrap)new Bootstrap().group((EventLoopGroup)uo.e.get())).handler(new ChannelInitializer<Channel>() {
+         protected void initChannel(Channel $$0) {
+            try {
+               $$0.config().setOption(ChannelOption.TCP_NODELAY, true);
+            } catch (ChannelException var3) {
+            }
+
+            $$0.pipeline().addLast(new ChannelHandler[]{new fqj($$1, ($$1xx, $$2xx, $$3, $$4, $$5) -> {
+               $$2.a(fqq.b.d);
+               $$2.h = vq.b($$2xx);
+               $$2.d = vq.b($$3);
+               $$2.c = fqs.a($$4, $$5);
+               $$2.e = new ahy.b($$5, $$4, List.of());
+            })});
+         }
+      })).channel(NioSocketChannel.class)).connect($$0.getAddress(), $$0.getPort());
+   }
+
+   public static vq a(int $$0, int $$1) {
+      vq $$2 = vq.b(Integer.toString($$0)).a(n.h);
+      vq $$3 = vq.b(Integer.toString($$1)).a(n.h);
+      return vq.a("multiplayer.status.player_count", $$2, $$3).a(n.i);
+   }
+
+   public void a() {
+      synchronized (this.c) {
+         Iterator<uo> $$0 = this.c.iterator();
+
+         while ($$0.hasNext()) {
+            uo $$1 = $$0.next();
+            if ($$1.i()) {
+               $$1.b();
+            } else {
+               $$0.remove();
+               $$1.n();
+            }
+         }
       }
+   }
 
-      public UserApiService d() {
-         return this.b;
+   public void b() {
+      synchronized (this.c) {
+         Iterator<uo> $$0 = this.c.iterator();
+
+         while ($$0.hasNext()) {
+            uo $$1 = $$0.next();
+            if ($$1.i()) {
+               $$0.remove();
+               $$1.a(vq.c("multiplayer.status.cancelled"));
+            }
+         }
       }
    }
 }

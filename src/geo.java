@@ -1,24 +1,24 @@
-public abstract class geo<T extends bno & bos, M extends fmb<T>> extends gfd<T, M> {
-   public geo(gcn<T, M> $$0) {
+public class geo extends gew<ced, fmc<ced>> {
+   private static final aiy a = new aiy("textures/entity/creeper/creeper_armor.png");
+   private final fmc<ced> b;
+
+   public geo(gcv<ced, fmc<ced>> $$0, fpf $$1) {
       super($$0);
+      this.b = new fmc<>($$1.a(fpi.E));
    }
 
    @Override
-   public void a(esa $$0, fvl $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.a()) {
-         float $$10 = (float)$$3.ag + $$6;
-         fmb<T> $$11 = this.b();
-         $$11.a($$3, $$4, $$5, $$6);
-         this.c().a($$11);
-         ese $$12 = $$1.getBuffer(fvt.b(this.a(), this.a($$10) % 1.0F, $$10 * 0.01F % 1.0F));
-         $$11.a($$3, $$4, $$5, $$7, $$8, $$9);
-         $$11.a($$0, $$12, $$2, ggk.d, 0.5F, 0.5F, 0.5F, 1.0F);
-      }
+   protected float a(float $$0) {
+      return $$0 * 0.01F;
    }
 
-   protected abstract float a(float var1);
+   @Override
+   protected aiy a() {
+      return a;
+   }
 
-   protected abstract aiy a();
-
-   protected abstract fmb<T> b();
+   @Override
+   protected fmi<ced> b() {
+      return this.b;
+   }
 }

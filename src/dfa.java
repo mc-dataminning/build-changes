@@ -1,105 +1,44 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
 
-public enum dfa implements axc {
-   a("none", h.a),
-   b("clockwise_90", h.u),
-   c("180", h.c),
-   d("counterclockwise_90", h.v);
+public abstract class dfa extends dav {
+   protected static final float f = 6.0F;
+   protected static final float g = 10.0F;
+   protected static final eos h = cys.a(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
+   protected static final eos i = cys.a(6.0, 6.0, 0.0, 10.0, 10.0, 16.0);
+   protected static final eos j = cys.a(0.0, 6.0, 6.0, 16.0, 10.0, 10.0);
 
-   public static final Codec<dfa> e = axc.a(dfa::values);
-   private final String f;
-   private final h g;
-
-   private dfa(String $$0, h $$1) {
-      this.f = $$0;
-      this.g = $$1;
-   }
-
-   public dfa a(dfa $$0) {
-      switch ($$0) {
-         case c:
-            switch (this) {
-               case a:
-                  return c;
-               case b:
-                  return d;
-               case c:
-                  return a;
-               case d:
-                  return b;
-            }
-         case d:
-            switch (this) {
-               case a:
-                  return d;
-               case b:
-                  return a;
-               case c:
-                  return b;
-               case d:
-                  return c;
-            }
-         case b:
-            switch (this) {
-               case a:
-                  return b;
-               case b:
-                  return c;
-               case c:
-                  return d;
-               case d:
-                  return a;
-            }
-         default:
-            return this;
-      }
-   }
-
-   public h a() {
-      return this.g;
-   }
-
-   public ie a(ie $$0) {
-      if ($$0.o() == ie.a.b) {
-         return $$0;
-      } else {
-         switch (this) {
-            case b:
-               return $$0.h();
-            case c:
-               return $$0.g();
-            case d:
-               return $$0.i();
-            default:
-               return $$0;
-         }
-      }
-   }
-
-   public int a(int $$0, int $$1) {
-      switch (this) {
-         case b:
-            return ($$0 + $$1 / 4) % $$1;
-         case c:
-            return ($$0 + $$1 / 2) % $$1;
-         case d:
-            return ($$0 + $$1 * 3 / 4) % $$1;
-         default:
-            return $$0;
-      }
-   }
-
-   public static dfa a(awo $$0) {
-      return ac.a(values(), $$0);
-   }
-
-   public static List<dfa> b(awo $$0) {
-      return ac.b(values(), $$0);
+   protected dfa(dli.d $$0) {
+      super($$0);
    }
 
    @Override
-   public String c() {
-      return this.f;
+   protected abstract MapCodec<? extends dfa> a();
+
+   @Override
+   protected eos a(dlj $$0, cux $$1, hz $$2, eoe $$3) {
+      switch ($$0.c(a).o()) {
+         case a:
+         default:
+            return j;
+         case c:
+            return i;
+         case b:
+            return h;
+      }
+   }
+
+   @Override
+   protected dlj a(dlj $$0, dfe $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected dlj a(dlj $$0, ddo $$1) {
+      return $$0.a(a, $$1.b($$0.c(a)));
+   }
+
+   @Override
+   protected boolean a(dlj $$0, cux $$1, hz $$2, ehm $$3) {
+      return false;
    }
 }

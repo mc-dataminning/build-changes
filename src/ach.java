@@ -2,7 +2,7 @@ public class ach implements xx<aag> {
    public static final xo<uq, ach> a = xx.a(ach::a, ach::new);
    private final int b;
 
-   public ach(bmk $$0) {
+   public ach(bmm $$0) {
       this($$0.b());
    }
 

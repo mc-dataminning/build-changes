@@ -1,91 +1,21 @@
-public class dil {
-   public static final aix<dik> a = a("base");
-   public static final aix<dik> b = a("square_bottom_left");
-   public static final aix<dik> c = a("square_bottom_right");
-   public static final aix<dik> d = a("square_top_left");
-   public static final aix<dik> e = a("square_top_right");
-   public static final aix<dik> f = a("stripe_bottom");
-   public static final aix<dik> g = a("stripe_top");
-   public static final aix<dik> h = a("stripe_left");
-   public static final aix<dik> i = a("stripe_right");
-   public static final aix<dik> j = a("stripe_center");
-   public static final aix<dik> k = a("stripe_middle");
-   public static final aix<dik> l = a("stripe_downright");
-   public static final aix<dik> m = a("stripe_downleft");
-   public static final aix<dik> n = a("small_stripes");
-   public static final aix<dik> o = a("cross");
-   public static final aix<dik> p = a("straight_cross");
-   public static final aix<dik> q = a("triangle_bottom");
-   public static final aix<dik> r = a("triangle_top");
-   public static final aix<dik> s = a("triangles_bottom");
-   public static final aix<dik> t = a("triangles_top");
-   public static final aix<dik> u = a("diagonal_left");
-   public static final aix<dik> v = a("diagonal_up_right");
-   public static final aix<dik> w = a("diagonal_up_left");
-   public static final aix<dik> x = a("diagonal_right");
-   public static final aix<dik> y = a("circle");
-   public static final aix<dik> z = a("rhombus");
-   public static final aix<dik> A = a("half_vertical");
-   public static final aix<dik> B = a("half_horizontal");
-   public static final aix<dik> C = a("half_vertical_right");
-   public static final aix<dik> D = a("half_horizontal_bottom");
-   public static final aix<dik> E = a("border");
-   public static final aix<dik> F = a("curly_border");
-   public static final aix<dik> G = a("gradient");
-   public static final aix<dik> H = a("gradient_up");
-   public static final aix<dik> I = a("bricks");
-   public static final aix<dik> J = a("globe");
-   public static final aix<dik> K = a("creeper");
-   public static final aix<dik> L = a("skull");
-   public static final aix<dik> M = a("flower");
-   public static final aix<dik> N = a("mojang");
-   public static final aix<dik> O = a("piglin");
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   private static aix<dik> a(String $$0) {
-      return aix.a(kg.d, new aiy($$0));
+public class dil extends czj {
+   public static final MapCodec<dil> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cnr.q.fieldOf("color").forGetter(dil::b), u()).apply($$0, dil::new));
+   private final cnr d;
+
+   @Override
+   public MapCodec<dil> a() {
+      return c;
    }
 
-   public static dik a(iv<dik> $$0) {
-      iv.a($$0, a, new dik("b"));
-      iv.a($$0, b, new dik("bl"));
-      iv.a($$0, c, new dik("br"));
-      iv.a($$0, d, new dik("tl"));
-      iv.a($$0, e, new dik("tr"));
-      iv.a($$0, f, new dik("bs"));
-      iv.a($$0, g, new dik("ts"));
-      iv.a($$0, h, new dik("ls"));
-      iv.a($$0, i, new dik("rs"));
-      iv.a($$0, j, new dik("cs"));
-      iv.a($$0, k, new dik("ms"));
-      iv.a($$0, l, new dik("drs"));
-      iv.a($$0, m, new dik("dls"));
-      iv.a($$0, n, new dik("ss"));
-      iv.a($$0, o, new dik("cr"));
-      iv.a($$0, p, new dik("sc"));
-      iv.a($$0, q, new dik("bt"));
-      iv.a($$0, r, new dik("tt"));
-      iv.a($$0, s, new dik("bts"));
-      iv.a($$0, t, new dik("tts"));
-      iv.a($$0, u, new dik("ld"));
-      iv.a($$0, v, new dik("rd"));
-      iv.a($$0, w, new dik("lud"));
-      iv.a($$0, x, new dik("rud"));
-      iv.a($$0, y, new dik("mc"));
-      iv.a($$0, z, new dik("mr"));
-      iv.a($$0, A, new dik("vh"));
-      iv.a($$0, B, new dik("hh"));
-      iv.a($$0, C, new dik("vhr"));
-      iv.a($$0, D, new dik("hhb"));
-      iv.a($$0, E, new dik("bo"));
-      iv.a($$0, F, new dik("cbo"));
-      iv.a($$0, G, new dik("gra"));
-      iv.a($$0, H, new dik("gru"));
-      iv.a($$0, I, new dik("bri"));
-      iv.a($$0, J, new dik("glb"));
-      iv.a($$0, K, new dik("cre"));
-      iv.a($$0, L, new dik("sku"));
-      iv.a($$0, M, new dik("flo"));
-      iv.a($$0, N, new dik("moj"));
-      return iv.a($$0, O, new dik("pig"));
+   protected dil(cnr $$0, dli.d $$1) {
+      super($$1);
+      this.d = $$0;
+   }
+
+   public cnr b() {
+      return this.d;
    }
 }

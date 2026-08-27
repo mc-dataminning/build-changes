@@ -1,41 +1,18 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import java.util.Map;
 
-public class gch extends gbj<boi, fnf<boi>> {
-   private static final Map<bnu<?>, aiy> a = ImmutableMap.of(
-      bnu.ay,
-      new aiy("textures/entity/piglin/piglin.png"),
-      bnu.bv,
-      new aiy("textures/entity/piglin/zombified_piglin.png"),
-      bnu.az,
-      new aiy("textures/entity/piglin/piglin_brute.png")
-   );
-   private static final float i = 1.0019531F;
+public class gch extends gcg<cak, fmb<cak>> {
+   private static final Map<cak.a, aiy> a = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(cak.a.b, new aiy("textures/entity/cow/brown_mooshroom.png"));
+      $$0.put(cak.a.a, new aiy("textures/entity/cow/red_mooshroom.png"));
+   });
 
-   public gch(gas.a $$0, fpa $$1, fpa $$2, fpa $$3, boolean $$4) {
-      super($$0, a($$0.f(), $$1, $$4), 0.5F, 1.0019531F, 1.0F, 1.0019531F);
-      this.a(new get<>(this, new fmn($$0.a($$2)), new fmn($$0.a($$3)), $$0.g()));
+   public gch(gba.a $$0) {
+      super($$0, new fmb<>($$0.a(fpi.ay)), 0.7F);
+      this.a(new gfg<>(this, $$0.c()));
    }
 
-   private static fnf<boi> a(foy $$0, fpa $$1, boolean $$2) {
-      fnf<boi> $$3 = new fnf<>($$0.a($$1));
-      if ($$2) {
-         $$3.a.k = false;
-      }
-
-      return $$3;
-   }
-
-   public aiy c(boi $$0) {
-      aiy $$1 = a.get($$0.ai());
-      if ($$1 == null) {
-         throw new IllegalArgumentException("I don't know what texture to use for " + $$0.ai());
-      } else {
-         return $$1;
-      }
-   }
-
-   protected boolean d(boi $$0) {
-      return super.a($$0) || $$0 instanceof cfw && ((cfw)$$0).gg();
+   public aiy a(cak $$0) {
+      return a.get($$0.w());
    }
 }

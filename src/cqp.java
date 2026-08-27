@@ -1,23 +1,23 @@
-import java.util.List;
-import javax.annotation.Nullable;
-
-public class cqp extends cmn {
-   public cqp(cou.a $$0) {
+public class cqp extends cps {
+   public cqp(coy.a $$0) {
       super($$0);
    }
 
    @Override
-   public coz ao_() {
-      return cqx.a(super.ao_(), cqy.E);
-   }
+   public blx<cpd> a(cvr $$0, chl $$1, blv $$2) {
+      cpd $$3 = $$1.b($$2);
+      if (!$$0.B) {
+         cip $$4 = new cip($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dE(), $$1.dC(), -20.0F, 0.5F, 1.0F);
+         $$0.b($$4);
+      }
 
-   @Override
-   public void a(coz $$0, @Nullable cvn $$1, List<vq> $$2, cqq $$3) {
-      cqx.a($$0, $$2, 0.125F, $$1 == null ? 20.0F : $$1.s().f());
-   }
+      $$1.b(atv.c.b(this));
+      if (!$$1.fU().d) {
+         $$3.h(1);
+      }
 
-   @Override
-   public String j(coz $$0) {
-      return cqv.a(cqx.d($$0), this.a() + ".effect.");
+      return blx.a($$3, $$0.y_());
    }
 }

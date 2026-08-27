@@ -1,164 +1,390 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import java.util.Arrays;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-import java.util.function.ToIntFunction;
-import javax.annotation.Nullable;
-
 public class eym {
-   private static final int a = 256;
-   private final ThreadLocal<eym.b> b = ThreadLocal.withInitial(eym.b::new);
-   private final Long2ObjectLinkedOpenHashMap<eym.a> c = new Long2ObjectLinkedOpenHashMap(256, 0.25F);
-   private final ReentrantReadWriteLock d = new ReentrantReadWriteLock();
-   private final ToIntFunction<hz> e;
-
-   public eym(ToIntFunction<hz> $$0) {
-      this.e = $$0;
-   }
-
-   public int a(hz $$0) {
-      int $$1 = jb.a($$0.u());
-      int $$2 = jb.a($$0.w());
-      eym.b $$3 = this.b.get();
-      if ($$3.a != $$1 || $$3.b != $$2 || $$3.c == null || $$3.c.a()) {
-         $$3.a = $$1;
-         $$3.b = $$2;
-         $$3.c = this.b($$1, $$2);
-      }
-
-      int[] $$4 = $$3.c.a($$0.v());
-      int $$5 = $$0.u() & 15;
-      int $$6 = $$0.w() & 15;
-      int $$7 = $$6 << 4 | $$5;
-      int $$8 = $$4[$$7];
-      if ($$8 != -1) {
-         return $$8;
-      } else {
-         int $$9 = this.e.applyAsInt($$0);
-         $$4[$$7] = $$9;
-         return $$9;
-      }
-   }
-
-   public void a(int $$0, int $$1) {
-      try {
-         this.d.writeLock().lock();
-
-         for (int $$2 = -1; $$2 <= 1; $$2++) {
-            for (int $$3 = -1; $$3 <= 1; $$3++) {
-               long $$4 = cuu.c($$0 + $$2, $$1 + $$3);
-               eym.a $$5 = (eym.a)this.c.remove($$4);
-               if ($$5 != null) {
-                  $$5.b();
-               }
-            }
-         }
-      } finally {
-         this.d.writeLock().unlock();
-      }
-   }
-
-   public void a() {
-      try {
-         this.d.writeLock().lock();
-         this.c.values().forEach(eym.a::b);
-         this.c.clear();
-      } finally {
-         this.d.writeLock().unlock();
-      }
-   }
-
-   private eym.a b(int $$0, int $$1) {
-      long $$2 = cuu.c($$0, $$1);
-      this.d.readLock().lock();
-
-      try {
-         eym.a $$3 = (eym.a)this.c.get($$2);
-         if ($$3 != null) {
-            return $$3;
-         }
-      } finally {
-         this.d.readLock().unlock();
-      }
-
-      this.d.writeLock().lock();
-
-      eym.a $$5;
-      try {
-         eym.a $$4 = (eym.a)this.c.get($$2);
-         if ($$4 == null) {
-            $$5 = new eym.a();
-            if (this.c.size() >= 256) {
-               eym.a $$6 = (eym.a)this.c.removeFirst();
-               if ($$6 != null) {
-                  $$6.b();
-               }
-            }
-
-            this.c.put($$2, $$5);
-            return $$5;
-         }
-
-         $$5 = $$4;
-      } finally {
-         this.d.writeLock().unlock();
-      }
-
-      return $$5;
-   }
-
-   static class a {
-      private final Int2ObjectArrayMap<int[]> a = new Int2ObjectArrayMap(16);
-      private final ReentrantReadWriteLock b = new ReentrantReadWriteLock();
-      private static final int c = awh.h(16);
-      private volatile boolean d;
-
-      public int[] a(int $$0) {
-         this.b.readLock().lock();
-
-         try {
-            int[] $$1 = (int[])this.a.get($$0);
-            if ($$1 != null) {
-               return $$1;
-            }
-         } finally {
-            this.b.readLock().unlock();
-         }
-
-         this.b.writeLock().lock();
-
-         int[] var12;
-         try {
-            var12 = (int[])this.a.computeIfAbsent($$0, $$0x -> this.c());
-         } finally {
-            this.b.writeLock().unlock();
-         }
-
-         return var12;
-      }
-
-      private int[] c() {
-         int[] $$0 = new int[c];
-         Arrays.fill($$0, -1);
-         return $$0;
-      }
-
-      public boolean a() {
-         return this.d;
-      }
-
-      public void b() {
-         this.d = true;
-      }
-   }
-
-   static class b {
-      public int a = Integer.MIN_VALUE;
-      public int b = Integer.MIN_VALUE;
-      @Nullable
-      eym.a c;
-
-      private b() {
-      }
-   }
+   public static final eyf a = eyf.a.a(3.0F)
+      .a(
+         "croaking_body",
+         new eye(
+            eye.d.a,
+            new eyg(0.0F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a),
+            new eyg(0.375F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a),
+            new eyg(0.4167F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a),
+            new eyg(0.4583F, eyh.a(0.0F, 1.0F, 0.0F), eye.b.a),
+            new eyg(2.9583F, eyh.a(0.0F, 1.0F, 0.0F), eye.b.a),
+            new eyg(3.0F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a)
+         )
+      )
+      .a(
+         "croaking_body",
+         new eye(
+            eye.d.c,
+            new eyg(0.0F, eyh.a(0.0, 0.0, 0.0), eye.b.a),
+            new eyg(0.375F, eyh.a(0.0, 0.0, 0.0), eye.b.a),
+            new eyg(0.4167F, eyh.a(1.0, 1.0, 1.0), eye.b.a),
+            new eyg(0.4583F, eyh.a(1.0, 1.0, 1.0), eye.b.a),
+            new eyg(0.5417F, eyh.a(1.3F, 2.1F, 1.6F), eye.b.a),
+            new eyg(0.625F, eyh.a(1.3F, 2.1F, 1.6F), eye.b.a),
+            new eyg(0.7083F, eyh.a(1.0, 1.0, 1.0), eye.b.a),
+            new eyg(2.25F, eyh.a(1.0, 1.0, 1.0), eye.b.a),
+            new eyg(2.3333F, eyh.a(1.3F, 2.1F, 1.6F), eye.b.a),
+            new eyg(2.4167F, eyh.a(1.3F, 2.1F, 1.6F), eye.b.a),
+            new eyg(2.5F, eyh.a(1.0, 1.0, 1.0), eye.b.a),
+            new eyg(2.5833F, eyh.a(1.0, 1.0, 1.0), eye.b.a),
+            new eyg(2.6667F, eyh.a(1.3F, 2.1F, 1.6F), eye.b.a),
+            new eyg(2.875F, eyh.a(1.3F, 2.1F, 1.6F), eye.b.a),
+            new eyg(2.9583F, eyh.a(1.0, 1.0, 1.0), eye.b.a),
+            new eyg(3.0F, eyh.a(0.0, 0.0, 0.0), eye.b.a)
+         )
+      )
+      .b();
+   public static final eyf b = eyf.a.a(1.25F)
+      .a()
+      .a(
+         "left_arm",
+         new eye(
+            eye.d.b,
+            new eyg(0.0F, eyh.b(0.0F, -5.0F, 0.0F), eye.b.a),
+            new eyg(0.2917F, eyh.b(7.5F, -2.67F, -7.5F), eye.b.a),
+            new eyg(0.625F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
+            new eyg(0.7917F, eyh.b(22.5F, 0.0F, 0.0F), eye.b.a),
+            new eyg(1.125F, eyh.b(-45.0F, 0.0F, 0.0F), eye.b.a),
+            new eyg(1.25F, eyh.b(0.0F, -5.0F, 0.0F), eye.b.a)
+         )
+      )
+      .a(
+         "left_arm",
+         new eye(
+            eye.d.a,
+            new eyg(0.0F, eyh.a(0.0F, 0.1F, -2.0F), eye.b.a),
+            new eyg(0.2917F, eyh.a(-0.5F, -0.25F, -0.13F), eye.b.a),
+            new eyg(0.625F, eyh.a(-0.5F, 0.1F, 2.0F), eye.b.a),
+            new eyg(0.9583F, eyh.a(0.5F, 1.0F, -0.11F), eye.b.a),
+            new eyg(1.25F, eyh.a(0.0F, 0.1F, -2.0F), eye.b.a)
+         )
+      )
+      .a(
+         "right_arm",
+         new eye(
+            eye.d.b,
+            new eyg(0.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
+            new eyg(0.125F, eyh.b(22.5F, 0.0F, 0.0F), eye.b.a),
+            new eyg(0.4583F, eyh.b(-45.0F, 0.0F, 0.0F), eye.b.a),
+            new eyg(0.625F, eyh.b(0.0F, 5.0F, 0.0F), eye.b.a),
+            new eyg(0.9583F, eyh.b(7.5F, 2.33F, 7.5F), eye.b.a),
+            new eyg(1.25F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a)
+         )
+      )
+      .a(
+         "right_arm",
+         new eye(
+            eye.d.a,
+            new eyg(0.0F, eyh.a(0.5F, 0.1F, 2.0F), eye.b.a),
+            new eyg(0.2917F, eyh.a(-0.5F, 1.0F, 0.12F), eye.b.a),
+            new eyg(0.625F, eyh.a(0.0F, 0.1F, -2.0F), eye.b.a),
+            new eyg(0.9583F, eyh.a(0.5F, -0.25F, -0.13F), eye.b.a),
+            new eyg(1.25F, eyh.a(0.5F, 0.1F, 2.0F), eye.b.a)
+         )
+      )
+      .a(
+         "left_leg",
+         new eye(
+            eye.d.b,
+            new eyg(0.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
+            new eyg(0.1667F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
+            new eyg(0.2917F, eyh.b(45.0F, 0.0F, 0.0F), eye.b.a),
+            new eyg(0.625F, eyh.b(-45.0F, 0.0F, 0.0F), eye.b.a),
+            new eyg(0.7917F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
+            new eyg(1.25F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a)
+         )
+      )
+      .a(
+         "left_leg",
+         new eye(
+            eye.d.a,
+            new eyg(0.0F, eyh.a(0.0F, 0.1F, 1.2F), eye.b.a),
+            new eyg(0.1667F, eyh.a(0.0F, 0.1F, 2.0F), eye.b.a),
+            new eyg(0.4583F, eyh.a(0.0F, 2.0F, 1.06F), eye.b.a),
+            new eyg(0.7917F, eyh.a(0.0F, 0.1F, -1.0F), eye.b.a),
+            new eyg(1.25F, eyh.a(0.0F, 0.1F, 1.2F), eye.b.a)
+         )
+      )
+      .a(
+         "right_leg",
+         new eye(
+            eye.d.b,
+            new eyg(0.0F, eyh.b(-33.75F, 0.0F, 0.0F), eye.b.a),
+            new eyg(0.0417F, eyh.b(-45.0F, 0.0F, 0.0F), eye.b.a),
+            new eyg(0.1667F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
+            new eyg(0.7917F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
+            new eyg(0.9583F, eyh.b(45.0F, 0.0F, 0.0F), eye.b.a),
+            new eyg(1.25F, eyh.b(-33.75F, 0.0F, 0.0F), eye.b.a)
+         )
+      )
+      .a(
+         "right_leg",
+         new eye(
+            eye.d.a,
+            new eyg(0.0F, eyh.a(0.0F, 1.14F, 0.11F), eye.b.a),
+            new eyg(0.1667F, eyh.a(0.0F, 0.1F, -1.0F), eye.b.a),
+            new eyg(0.7917F, eyh.a(0.0F, 0.1F, 2.0F), eye.b.a),
+            new eyg(1.125F, eyh.a(0.0F, 2.0F, 0.95F), eye.b.a),
+            new eyg(1.25F, eyh.a(0.0F, 1.14F, 0.11F), eye.b.a)
+         )
+      )
+      .a(
+         "body",
+         new eye(
+            eye.d.b,
+            new eyg(0.0F, eyh.b(0.0F, 5.0F, 0.0F), eye.b.a),
+            new eyg(0.2917F, eyh.b(-7.5F, 0.33F, 7.5F), eye.b.a),
+            new eyg(0.625F, eyh.b(0.0F, -5.0F, 0.0F), eye.b.a),
+            new eyg(0.9583F, eyh.b(-7.5F, 0.33F, -7.5F), eye.b.a),
+            new eyg(1.25F, eyh.b(0.0F, 5.0F, 0.0F), eye.b.a)
+         )
+      )
+      .b();
+   public static final eyf c = eyf.a.a(0.5F)
+      .a("body", new eye(eye.d.b, new eyg(0.0F, eyh.b(-22.5F, 0.0F, 0.0F), eye.b.a), new eyg(0.5F, eyh.b(-22.5F, 0.0F, 0.0F), eye.b.a)))
+      .a("body", new eye(eye.d.a, new eyg(0.0F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a), new eyg(0.5F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a)))
+      .a("left_arm", new eye(eye.d.b, new eyg(0.0F, eyh.b(-56.14F, 0.0F, 0.0F), eye.b.a), new eyg(0.5F, eyh.b(-56.14F, 0.0F, 0.0F), eye.b.a)))
+      .a("left_arm", new eye(eye.d.a, new eyg(0.0F, eyh.a(0.0F, 1.0F, 0.0F), eye.b.a), new eyg(0.5F, eyh.a(0.0F, 1.0F, 0.0F), eye.b.a)))
+      .a("right_arm", new eye(eye.d.b, new eyg(0.0F, eyh.b(-56.14F, 0.0F, 0.0F), eye.b.a), new eyg(0.5F, eyh.b(-56.14F, 0.0F, 0.0F), eye.b.a)))
+      .a("right_arm", new eye(eye.d.a, new eyg(0.0F, eyh.a(0.0F, 1.0F, 0.0F), eye.b.a), new eyg(0.5F, eyh.a(0.0F, 1.0F, 0.0F), eye.b.a)))
+      .a("left_leg", new eye(eye.d.b, new eyg(0.0F, eyh.b(45.0F, 0.0F, 0.0F), eye.b.a), new eyg(0.5F, eyh.b(45.0F, 0.0F, 0.0F), eye.b.a)))
+      .a("left_leg", new eye(eye.d.a, new eyg(0.0F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a), new eyg(0.5F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a)))
+      .a("right_leg", new eye(eye.d.b, new eyg(0.0F, eyh.b(45.0F, 0.0F, 0.0F), eye.b.a), new eyg(0.5F, eyh.b(45.0F, 0.0F, 0.0F), eye.b.a)))
+      .a("right_leg", new eye(eye.d.a, new eyg(0.0F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a), new eyg(0.5F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.a)))
+      .b();
+   public static final eyf d = eyf.a.a(0.5F)
+      .a(
+         "head",
+         new eye(
+            eye.d.b,
+            new eyg(0.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
+            new eyg(0.0833F, eyh.b(-60.0F, 0.0F, 0.0F), eye.b.a),
+            new eyg(0.4167F, eyh.b(-60.0F, 0.0F, 0.0F), eye.b.a),
+            new eyg(0.5F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a)
+         )
+      )
+      .a(
+         "head",
+         new eye(
+            eye.d.c,
+            new eyg(0.0F, eyh.b(1.0F, 1.0F, 1.0F), eye.b.a),
+            new eyg(0.0833F, eyh.b(0.998F, 1.0F, 1.0F), eye.b.a),
+            new eyg(0.4167F, eyh.b(0.998F, 1.0F, 1.0F), eye.b.a),
+            new eyg(0.5F, eyh.b(1.0F, 1.0F, 1.0F), eye.b.a)
+         )
+      )
+      .a(
+         "tongue",
+         new eye(
+            eye.d.b,
+            new eyg(0.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
+            new eyg(0.0833F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a),
+            new eyg(0.4167F, eyh.b(-18.0F, 0.0F, 0.0F), eye.b.a),
+            new eyg(0.5F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.a)
+         )
+      )
+      .a(
+         "tongue",
+         new eye(
+            eye.d.c,
+            new eyg(0.0833F, eyh.a(1.0, 1.0, 1.0), eye.b.a),
+            new eyg(0.1667F, eyh.a(0.5, 1.0, 5.0), eye.b.a),
+            new eyg(0.4167F, eyh.a(1.0, 1.0, 1.0), eye.b.a)
+         )
+      )
+      .b();
+   public static final eyf e = eyf.a.a(1.04167F)
+      .a()
+      .a(
+         "body",
+         new eye(
+            eye.d.b,
+            new eyg(0.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.b),
+            new eyg(0.3333F, eyh.b(10.0F, 0.0F, 0.0F), eye.b.b),
+            new eyg(0.6667F, eyh.b(-10.0F, 0.0F, 0.0F), eye.b.b),
+            new eyg(1.0417F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new eye(
+            eye.d.b,
+            new eyg(0.0F, eyh.b(90.0F, 22.5F, 0.0F), eye.b.b),
+            new eyg(0.4583F, eyh.b(45.0F, 22.5F, 0.0F), eye.b.b),
+            new eyg(0.6667F, eyh.b(-22.5F, -22.5F, -22.5F), eye.b.b),
+            new eyg(0.875F, eyh.b(-45.0F, -22.5F, 0.0F), eye.b.b),
+            new eyg(0.9583F, eyh.b(22.5F, 0.0F, 22.5F), eye.b.b),
+            new eyg(1.0417F, eyh.b(90.0F, 22.5F, 0.0F), eye.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new eye(
+            eye.d.a,
+            new eyg(0.0F, eyh.a(0.0F, -0.64F, 2.0F), eye.b.b),
+            new eyg(0.4583F, eyh.a(0.0F, -0.64F, 0.0F), eye.b.b),
+            new eyg(0.6667F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.b),
+            new eyg(0.875F, eyh.a(0.0F, -0.27F, -1.14F), eye.b.b),
+            new eyg(0.9583F, eyh.a(0.0F, -1.45F, 0.43F), eye.b.b),
+            new eyg(1.0417F, eyh.a(0.0F, -0.64F, 2.0F), eye.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new eye(
+            eye.d.b,
+            new eyg(0.0F, eyh.b(90.0F, -22.5F, 0.0F), eye.b.b),
+            new eyg(0.4583F, eyh.b(45.0F, -22.5F, 0.0F), eye.b.b),
+            new eyg(0.6667F, eyh.b(-22.5F, 22.5F, 22.5F), eye.b.b),
+            new eyg(0.875F, eyh.b(-45.0F, 22.5F, 0.0F), eye.b.b),
+            new eyg(0.9583F, eyh.b(22.5F, 0.0F, -22.5F), eye.b.b),
+            new eyg(1.0417F, eyh.b(90.0F, -22.5F, 0.0F), eye.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new eye(
+            eye.d.a,
+            new eyg(0.0F, eyh.a(0.0F, -0.64F, 2.0F), eye.b.b),
+            new eyg(0.4583F, eyh.a(0.0F, -0.64F, 0.0F), eye.b.b),
+            new eyg(0.6667F, eyh.a(0.0F, 0.0F, 0.0F), eye.b.b),
+            new eyg(0.875F, eyh.a(0.0F, -0.27F, -1.14F), eye.b.b),
+            new eyg(0.9583F, eyh.a(0.0F, -1.45F, 0.43F), eye.b.b),
+            new eyg(1.0417F, eyh.a(0.0F, -0.64F, 2.0F), eye.b.b)
+         )
+      )
+      .a(
+         "left_leg",
+         new eye(
+            eye.d.b,
+            new eyg(0.0F, eyh.b(90.0F, 0.0F, 0.0F), eye.b.b),
+            new eyg(0.25F, eyh.b(90.0F, 0.0F, 0.0F), eye.b.b),
+            new eyg(0.4583F, eyh.b(67.5F, -45.0F, 0.0F), eye.b.b),
+            new eyg(0.7917F, eyh.b(90.0F, 45.0F, 0.0F), eye.b.b),
+            new eyg(0.9583F, eyh.b(90.0F, 0.0F, 0.0F), eye.b.b),
+            new eyg(1.0417F, eyh.b(90.0F, 0.0F, 0.0F), eye.b.b)
+         )
+      )
+      .a(
+         "left_leg",
+         new eye(
+            eye.d.a,
+            new eyg(0.0F, eyh.a(-2.5F, 0.0F, 1.0F), eye.b.b),
+            new eyg(0.25F, eyh.a(-2.0F, 0.0F, 1.0F), eye.b.b),
+            new eyg(0.4583F, eyh.a(1.0F, -2.0F, -1.0F), eye.b.b),
+            new eyg(0.7917F, eyh.a(0.58F, 0.0F, -2.83F), eye.b.b),
+            new eyg(0.9583F, eyh.a(-2.5F, 0.0F, 1.0F), eye.b.b),
+            new eyg(1.0417F, eyh.a(-2.5F, 0.0F, 1.0F), eye.b.b)
+         )
+      )
+      .a(
+         "right_leg",
+         new eye(
+            eye.d.b,
+            new eyg(0.0F, eyh.b(90.0F, 0.0F, 0.0F), eye.b.b),
+            new eyg(0.25F, eyh.b(90.0F, 0.0F, 0.0F), eye.b.b),
+            new eyg(0.4583F, eyh.b(67.5F, 45.0F, 0.0F), eye.b.b),
+            new eyg(0.7917F, eyh.b(90.0F, -45.0F, 0.0F), eye.b.b),
+            new eyg(0.9583F, eyh.b(90.0F, 0.0F, 0.0F), eye.b.b),
+            new eyg(1.0417F, eyh.b(90.0F, 0.0F, 0.0F), eye.b.b)
+         )
+      )
+      .a(
+         "right_leg",
+         new eye(
+            eye.d.a,
+            new eyg(0.0F, eyh.a(2.5F, 0.0F, 1.0F), eye.b.b),
+            new eyg(0.25F, eyh.a(2.0F, 0.0F, 1.0F), eye.b.b),
+            new eyg(0.4583F, eyh.a(-1.0F, -2.0F, -1.0F), eye.b.b),
+            new eyg(0.7917F, eyh.a(-0.58F, 0.0F, -2.83F), eye.b.b),
+            new eyg(0.9583F, eyh.a(2.5F, 0.0F, 1.0F), eye.b.b),
+            new eyg(1.0417F, eyh.a(2.5F, 0.0F, 1.0F), eye.b.b)
+         )
+      )
+      .b();
+   public static final eyf f = eyf.a.a(3.0F)
+      .a()
+      .a(
+         "body",
+         new eye(
+            eye.d.b,
+            new eyg(0.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.b),
+            new eyg(1.625F, eyh.b(-10.0F, 0.0F, 0.0F), eye.b.b),
+            new eyg(3.0F, eyh.b(0.0F, 0.0F, 0.0F), eye.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new eye(
+            eye.d.b,
+            new eyg(0.0F, eyh.b(0.0F, 0.0F, -22.5F), eye.b.b),
+            new eyg(2.2083F, eyh.b(0.0F, 0.0F, -45.0F), eye.b.b),
+            new eyg(3.0F, eyh.b(0.0F, 0.0F, -22.5F), eye.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new eye(
+            eye.d.a,
+            new eyg(0.0F, eyh.a(-1.0F, 0.0F, 0.0F), eye.b.b),
+            new eyg(2.2083F, eyh.a(-1.0F, -0.5F, 0.0F), eye.b.b),
+            new eyg(3.0F, eyh.a(-1.0F, 0.0F, 0.0F), eye.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new eye(
+            eye.d.b,
+            new eyg(0.0F, eyh.b(0.0F, 0.0F, 22.5F), eye.b.b),
+            new eyg(2.2083F, eyh.b(0.0F, 0.0F, 45.0F), eye.b.b),
+            new eyg(3.0F, eyh.b(0.0F, 0.0F, 22.5F), eye.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new eye(
+            eye.d.a,
+            new eyg(0.0F, eyh.a(1.0F, 0.0F, 0.0F), eye.b.b),
+            new eyg(2.2083F, eyh.a(1.0F, -0.5F, 0.0F), eye.b.b),
+            new eyg(3.0F, eyh.a(1.0F, 0.0F, 0.0F), eye.b.b)
+         )
+      )
+      .a(
+         "left_leg",
+         new eye(
+            eye.d.b,
+            new eyg(0.0F, eyh.b(22.5F, -22.5F, 0.0F), eye.b.b),
+            new eyg(1.0F, eyh.b(22.5F, -22.5F, -45.0F), eye.b.b),
+            new eyg(3.0F, eyh.b(22.5F, -22.5F, 0.0F), eye.b.b)
+         )
+      )
+      .a(
+         "left_leg",
+         new eye(
+            eye.d.a,
+            new eyg(0.0F, eyh.a(0.0F, 0.0F, 1.0F), eye.b.b),
+            new eyg(1.0F, eyh.a(0.0F, -1.0F, 1.0F), eye.b.b),
+            new eyg(3.0F, eyh.a(0.0F, 0.0F, 1.0F), eye.b.b)
+         )
+      )
+      .a(
+         "right_leg",
+         new eye(
+            eye.d.b,
+            new eyg(0.0F, eyh.b(22.5F, 22.5F, 0.0F), eye.b.b),
+            new eyg(1.0F, eyh.b(22.5F, 22.5F, 45.0F), eye.b.b),
+            new eyg(3.0F, eyh.b(22.5F, 22.5F, 0.0F), eye.b.b)
+         )
+      )
+      .a(
+         "right_leg",
+         new eye(
+            eye.d.a,
+            new eyg(0.0F, eyh.a(0.0F, 0.0F, 1.0F), eye.b.b),
+            new eyg(1.0F, eyh.a(0.0F, -1.0F, 1.0F), eye.b.b),
+            new eyg(3.0F, eyh.a(0.0F, 0.0F, 1.0F), eye.b.b)
+         )
+      )
+      .b();
 }

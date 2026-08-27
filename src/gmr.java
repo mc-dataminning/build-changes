@@ -1,37 +1,73 @@
-public class gmr extends gmv {
-   private final vq a;
-   private faa b = faa.a;
-   private final ffe c;
-   private int v;
+public class gmr implements gmw {
+   private static final int a = 6000;
+   private static final vq b = vq.c("tutorial.find_tree.title");
+   private static final vq c = vq.c("tutorial.find_tree.description");
+   private final gmv d;
+   private fbz e;
+   private int f;
 
-   public gmr(ffe $$0, vq $$1, vq $$2) {
-      super($$1);
-      this.c = $$0;
-      this.a = $$2;
+   public gmr(gmv $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public void aQ_() {
-      this.f.ac().i();
-      this.b = faa.a(this.i, this.a, this.g - 50);
-      this.v = this.b.a() * 9;
-      this.d(ezh.a(vp.k, $$0 -> this.f.a(this.c)).a(this.g / 2 - 100, this.h / 2 + this.v / 2 + 9, 200, 20).a());
+   public void a() {
+      this.f++;
+      if (!this.d.f()) {
+         this.d.a(gmx.f);
+      } else {
+         if (this.f == 1) {
+            fuv $$0 = this.d.e().s;
+            if ($$0 != null && (b($$0) || a($$0))) {
+               this.d.a(gmx.e);
+               return;
+            }
+         }
+
+         if (this.f >= 6000 && this.e == null) {
+            this.e = new fbz(fbz.a.c, b, c, false);
+            this.d.e().az().a(this.e);
+         }
+      }
    }
 
    @Override
-   public vq i() {
-      return vq.i().b(this.e).f(": ").b(this.a);
+   public void b() {
+      if (this.e != null) {
+         this.e.c();
+         this.e = null;
+      }
    }
 
    @Override
-   public void d() {
-      exh.O().a(this.c);
+   public void a(fqe $$0, enx $$1) {
+      if ($$1.c() == enx.a.b) {
+         dlj $$2 = $$0.a_(((env)$$1).a());
+         if ($$2.a(aua.ai)) {
+            this.d.a(gmx.c);
+         }
+      }
    }
 
    @Override
-   public void a(eyu $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, this.h / 2 - this.v / 2 - 9 * 2, 11184810);
-      this.b.a($$0, this.g / 2, this.h / 2 - this.v / 2);
+   public void a(cpd $$0) {
+      if ($$0.a(aui.al)) {
+         this.d.a(gmx.e);
+      }
+   }
+
+   private static boolean b(fuv $$0) {
+      return $$0.fT().a_($$0x -> $$0x.a(aui.al));
+   }
+
+   public static boolean a(fuv $$0) {
+      for (ij<cys> $$1 : kf.e.c(aua.ai)) {
+         cys $$2 = $$1.a();
+         if ($$0.j().a(atv.a.b($$2)) > 0) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

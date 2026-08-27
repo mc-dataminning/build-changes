@@ -1,8 +1,20 @@
-import javax.annotation.Nullable;
+public class gix {
+   public static final giy a = new giy();
+   public static final boolean b = false;
+   public static final boolean c = false;
+   private final boolean d;
+   private final boolean e;
 
-public interface gix {
-   gje a(aiy var1);
+   public gix(boolean $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
+   }
 
-   @Nullable
-   git a(aiy var1, gjb var2);
+   public boolean a() {
+      return this.d;
+   }
+
+   public boolean b() {
+      return this.e;
+   }
 }

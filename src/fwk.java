@@ -1,49 +1,108 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
 import javax.annotation.Nullable;
 
 public class fwk {
-   public static final int a = -1;
-   public final ie b;
-   public final int c;
-   public final String d;
-   public final fwm e;
+   protected final fvr a;
+   protected final cvr b;
+   protected int c;
+   protected int d;
+   protected int e;
+   private int g;
+   public fys.b[] f;
 
-   public fwk(@Nullable ie $$0, int $$1, String $$2, fwm $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   public fwk(fys $$0, cvr $$1, int $$2, fvr $$3) {
+      this.a = $$3;
+      this.b = $$1;
+      this.a($$2);
+      this.a($$0);
    }
 
-   protected static class a implements JsonDeserializer<fwk> {
-      private static final int a = -1;
+   protected void a(fys $$0) {
+      if (!exo.P().bt()) {
+         throw new IllegalStateException("createSections called from wrong thread: " + Thread.currentThread().getName());
+      } else {
+         int $$1 = this.d * this.c * this.e;
+         this.f = new fys.b[$$1];
 
-      public fwk a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         ie $$4 = this.c($$3);
-         int $$5 = this.a($$3);
-         String $$6 = this.b($$3);
-         fwm $$7 = (fwm)$$2.deserialize($$3, fwm.class);
-         return new fwk($$4, $$5, $$6, $$7);
+         for (int $$2 = 0; $$2 < this.d; $$2++) {
+            for (int $$3 = 0; $$3 < this.c; $$3++) {
+               for (int $$4 = 0; $$4 < this.e; $$4++) {
+                  int $$5 = this.a($$2, $$3, $$4);
+                  this.f[$$5] = $$0.new b($$5, $$2 * 16, this.b.J_() + $$3 * 16, $$4 * 16);
+               }
+            }
+         }
       }
+   }
 
-      protected int a(JsonObject $$0) {
-         return avx.a($$0, "tintindex", -1);
+   public void a() {
+      for (fys.b $$0 : this.f) {
+         $$0.e();
       }
+   }
 
-      private String b(JsonObject $$0) {
-         return avx.i($$0, "texture");
+   private int a(int $$0, int $$1, int $$2) {
+      return ($$2 * this.c + $$1) * this.d + $$0;
+   }
+
+   protected void a(int $$0) {
+      int $$1 = $$0 * 2 + 1;
+      this.d = $$1;
+      this.c = this.b.al();
+      this.e = $$1;
+      this.g = $$0;
+   }
+
+   public int b() {
+      return this.g;
+   }
+
+   public cvt c() {
+      return this.b;
+   }
+
+   public void a(double $$0, double $$1) {
+      int $$2 = awi.c($$0);
+      int $$3 = awi.c($$1);
+
+      for (int $$4 = 0; $$4 < this.d; $$4++) {
+         int $$5 = this.d * 16;
+         int $$6 = $$2 - 8 - $$5 / 2;
+         int $$7 = $$6 + Math.floorMod($$4 * 16 - $$6, $$5);
+
+         for (int $$8 = 0; $$8 < this.e; $$8++) {
+            int $$9 = this.e * 16;
+            int $$10 = $$3 - 8 - $$9 / 2;
+            int $$11 = $$10 + Math.floorMod($$8 * 16 - $$10, $$9);
+
+            for (int $$12 = 0; $$12 < this.c; $$12++) {
+               int $$13 = this.b.J_() + $$12 * 16;
+               fys.b $$14 = this.f[this.a($$4, $$12, $$8)];
+               hz $$15 = $$14.f();
+               if ($$7 != $$15.u() || $$13 != $$15.v() || $$11 != $$15.w()) {
+                  $$14.a($$7, $$13, $$11);
+               }
+            }
+         }
       }
+   }
 
-      @Nullable
-      private ie c(JsonObject $$0) {
-         String $$1 = avx.a($$0, "cullface", "");
-         return ie.a($$1);
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      int $$4 = Math.floorMod($$0, this.d);
+      int $$5 = Math.floorMod($$1 - this.b.am(), this.c);
+      int $$6 = Math.floorMod($$2, this.e);
+      fys.b $$7 = this.f[this.a($$4, $$5, $$6)];
+      $$7.a($$3);
+   }
+
+   @Nullable
+   protected fys.b a(hz $$0) {
+      int $$1 = awi.a($$0.v() - this.b.J_(), 16);
+      if ($$1 >= 0 && $$1 < this.c) {
+         int $$2 = awi.b(awi.a($$0.u(), 16), this.d);
+         int $$3 = awi.b(awi.a($$0.w(), 16), this.e);
+         return this.f[this.a($$2, $$1, $$3)];
+      } else {
+         return null;
       }
    }
 }

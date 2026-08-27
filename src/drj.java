@@ -1,166 +1,127 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.stream.Stream;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-public record drj(iv<dop> b) {
-   public static final MapCodec<drj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ix.b(kg.aN, Lifecycle.stable(), dop.a).fieldOf("dimensions").forGetter(drj::d)).apply($$0, $$0.stable(drj::new))
-   );
-   private static final Set<aix<dop>> c = ImmutableSet.of(dop.b, dop.c, dop.d);
-   private static final int d = c.size();
+public final class drj {
+   final dri a;
+   private final ik<efz.a> b;
+   private final drb c;
+   private final cwz.f d;
+   private final drn e;
+   private final dri f;
+   private final dri g;
+   private final Map<aix<efz.a>, efz> h;
+   private final Map<aiy, dri> i;
 
-   public drj(iv<dop> b) {
-      dop $$1 = b.a(dop.b);
-      if ($$1 == null) {
-         throw new IllegalStateException("Overworld settings missing");
-      } else {
-         this.b = b;
-      }
+   public static drj a(ik.a $$0, aix<dra> $$1, long $$2) {
+      return a($$0.b(kg.aA).b($$1).a(), $$0.b(kg.aB), $$2);
    }
 
-   public static Stream<aix<dop>> a(Stream<aix<dop>> $$0) {
-      return Stream.concat(c.stream(), $$0.filter($$0x -> !c.contains($$0x)));
+   public static drj a(dra $$0, ik<efz.a> $$1, long $$2) {
+      return new drj($$0, $$1, $$2);
    }
 
-   public drj a(iw $$0, dnc $$1) {
-      iv<doo> $$2 = $$0.d(kg.ay);
-      iv<dop> $$3 = a($$2, this.b, $$1);
-      return new drj($$3);
-   }
+   private drj(dra $$0, ik<efz.a> $$1, final long $$2) {
+      this.a = $$0.d().a($$2).e();
+      this.b = $$1;
+      this.f = this.a.a(new aiy("aquifer")).e();
+      this.g = this.a.a(new aiy("ore")).e();
+      this.h = new ConcurrentHashMap<>();
+      this.i = new ConcurrentHashMap<>();
+      this.e = new drn(this, $$0.g(), $$0.l(), this.a);
+      final boolean $$3 = $$0.n();
 
-   public static iv<dop> a(iv<doo> $$0, iv<dop> $$1, dnc $$2) {
-      dop $$3 = $$1.a(dop.b);
-      ij<doo> $$4 = (ij<doo>)($$3 == null ? $$0.f(dom.a) : $$3.a());
-      return a($$1, $$4, $$2);
-   }
+      class a implements dqo.f {
+         private final Map<dqo, dqo> d = new HashMap<>();
 
-   public static iv<dop> a(iv<dop> $$0, ij<doo> $$1, dnc $$2) {
-      je<dop> $$3 = new ir<>(kg.aN, Lifecycle.experimental());
-      $$3.a(dop.b, new dop($$1, $$2), Lifecycle.stable());
+         private awp a(long $$0) {
+            return new dqw($$2 + $$0);
+         }
 
-      for (Entry<aix<dop>, dop> $$4 : $$0.g()) {
-         aix<dop> $$5 = $$4.getKey();
-         if ($$5 != dop.b) {
-            $$3.a($$5, $$4.getValue(), $$0.f($$4.getValue()));
+         @Override
+         public dqo.c a(dqo.c $$0) {
+            ij<efz.a> $$1 = $$0.b();
+            if ($$3) {
+               if ($$1.a(dre.a)) {
+                  efz $$2 = efz.a(this.a(0L), new efz.a(-7, 1.0, 1.0));
+                  return new dqo.c($$1, $$2);
+               }
+
+               if ($$1.a(dre.b)) {
+                  efz $$3 = efz.a(this.a(1L), new efz.a(-7, 1.0, 1.0));
+                  return new dqo.c($$1, $$3);
+               }
+
+               if ($$1.a(dre.j)) {
+                  efz $$4 = efz.b(drj.this.a.a(dre.j.a()), new efz.a(0, 0.0));
+                  return new dqo.c($$1, $$4);
+               }
+            }
+
+            efz $$5 = drj.this.a($$1.e().orElseThrow());
+            return new dqo.c($$1, $$5);
+         }
+
+         private dqo a(dqo $$0) {
+            if ($$0 instanceof efw $$1) {
+               awp $$2 = $$3 ? this.a(0L) : drj.this.a.a(new aiy("terrain"));
+               return $$1.a($$2);
+            } else {
+               return (dqo)($$0 instanceof dqp.i ? new dqp.i($$2) : $$0);
+            }
+         }
+
+         @Override
+         public dqo apply(dqo $$0) {
+            return this.d.computeIfAbsent($$0, this::a);
          }
       }
 
-      return $$3.l();
-   }
+      this.c = $$0.i().a(new a());
+      dqo.f $$4 = new dqo.f() {
+         private final Map<dqo, dqo> b = new HashMap<>();
 
-   public dnc a() {
-      dop $$0 = this.b.a(dop.b);
-      if ($$0 == null) {
-         throw new IllegalStateException("Overworld settings missing");
-      } else {
-         return $$0.b();
-      }
-   }
-
-   public Optional<dop> a(aix<dop> $$0) {
-      return this.b.d($$0);
-   }
-
-   public ImmutableSet<aix<cvn>> b() {
-      return this.d().g().stream().map(Entry::getKey).map(kg::a).collect(ImmutableSet.toImmutableSet());
-   }
-
-   public boolean c() {
-      return this.a() instanceof dqf;
-   }
-
-   private static eip.a b(iv<dop> $$0) {
-      return $$0.d(dop.b).map($$0x -> {
-         dnc $$1 = $$0x.b();
-         if ($$1 instanceof dqf) {
-            return eip.a.c;
-         } else {
-            return $$1 instanceof dqj ? eip.a.b : eip.a.a;
-         }
-      }).orElse(eip.a.a);
-   }
-
-   static Lifecycle a(aix<dop> $$0, dop $$1) {
-      return b($$0, $$1) ? Lifecycle.stable() : Lifecycle.experimental();
-   }
-
-   private static boolean b(aix<dop> $$0, dop $$1) {
-      if ($$0 == dop.b) {
-         return a($$1);
-      } else if ($$0 == dop.c) {
-         return b($$1);
-      } else {
-         return $$0 == dop.d ? c($$1) : false;
-      }
-   }
-
-   private static boolean a(dop $$0) {
-      ij<doo> $$1 = $$0.a();
-      if (!$$1.a(dom.a) && !$$1.a(dom.d)) {
-         return false;
-      } else {
-         if ($$0.b().c() instanceof cwz $$2 && !$$2.a(cxb.b)) {
-            return false;
+         private dqo a(dqo $$0) {
+            if ($$0 instanceof dqp.j $$1) {
+               return $$1.j().a();
+            } else {
+               return $$0 instanceof dqp.l $$2 ? $$2.k() : $$0;
+            }
          }
 
-         return true;
-      }
-   }
-
-   private static boolean b(dop $$0) {
-      return $$0.a().a(dom.b) && $$0.b() instanceof dqr $$1 && $$1.a(dqt.f) && $$1.c() instanceof cwz $$2 && $$2.a(cxb.a);
-   }
-
-   private static boolean c(dop $$0) {
-      return $$0.a().a(dom.c) && $$0.b() instanceof dqr $$1 && $$1.a(dqt.g) && $$1.c() instanceof cxd;
-   }
-
-   public drj.b a(iv<dop> $$0) {
-      Stream<aix<dop>> $$1 = Stream.concat($$0.f().stream(), this.b.f().stream()).distinct();
-
-      record a(aix<dop> a, dop b) {
-
-         Lifecycle c() {
-            return drj.a(this.a, this.b);
+         @Override
+         public dqo apply(dqo $$0) {
+            return this.b.computeIfAbsent($$0, this::a);
          }
-      }
-
-      List<a> $$2 = new ArrayList<>();
-      a($$1).forEach($$2x -> $$0.d($$2x).or(() -> this.b.d($$2x)).ifPresent($$2xx -> $$2.add(new a($$2x, $$2xx))));
-      Lifecycle $$3 = $$2.size() == d ? Lifecycle.stable() : Lifecycle.experimental();
-      je<dop> $$4 = new ir<>(kg.aN, $$3);
-      $$2.forEach($$1x -> $$4.a($$1x.a, $$1x.b, $$1x.c()));
-      iv<dop> $$5 = $$4.l();
-      eip.a $$6 = b($$5);
-      return new drj.b($$5.l(), $$6);
+      };
+      this.d = new cwz.f(this.c.e().a($$4), this.c.f().a($$4), this.c.g().a($$4), this.c.h().a($$4), this.c.i().a($$4), this.c.j().a($$4), $$0.k());
    }
 
-   public iv<dop> d() {
-      return this.b;
+   public efz a(aix<efz.a> $$0) {
+      return this.h.computeIfAbsent($$0, $$1 -> dre.a(this.b, this.a, $$0));
    }
 
-   public static record b(iv<dop> a, eip.a b) {
-      public Lifecycle a() {
-         return this.a.d();
-      }
+   public dri a(aiy $$0) {
+      return this.i.computeIfAbsent($$0, $$1 -> this.a.a($$0).e());
+   }
 
-      public iw.b b() {
-         return new iw.c(List.of(this.a)).d();
-      }
+   public drb a() {
+      return this.c;
+   }
 
-      public iv<dop> c() {
-         return this.a;
-      }
+   public cwz.f b() {
+      return this.d;
+   }
 
-      public eip.a d() {
-         return this.b;
-      }
+   public drn c() {
+      return this.e;
+   }
+
+   public dri d() {
+      return this.f;
+   }
+
+   public dri e() {
+      return this.g;
    }
 }

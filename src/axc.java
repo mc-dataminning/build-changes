@@ -83,7 +83,7 @@ public interface axc {
       private final Codec<S> a;
 
       public b(S[] $$0, Function<String, S> $$1, ToIntFunction<S> $$2) {
-         this.a = avp.b(avp.a(axc::c, $$1), avp.a($$2, $$1x -> $$1x >= 0 && $$1x < $$0.length ? $$0[$$1x] : null, -1));
+         this.a = avq.b(avq.a(axc::c, $$1), avq.a($$2, $$1x -> $$1x >= 0 && $$1x < $$0.length ? $$0[$$1x] : null, -1));
       }
 
       public <T> DataResult<Pair<S, T>> decode(DynamicOps<T> $$0, T $$1) {

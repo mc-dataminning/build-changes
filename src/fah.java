@@ -1,86 +1,146 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.joml.Matrix4f;
+import com.google.common.collect.ImmutableList;
+import java.util.Arrays;
+import java.util.List;
 
-public class fah extends ezf {
-   private static final float a = 0.0625F;
-   private static final float b = 2.125F;
-   private static final float c = 100.0F;
-   private static final float d = 2.5F;
-   private static final float e = -5.0F;
-   private static final float f = 30.0F;
-   private static final float m = 50.0F;
-   private final fah.a n;
-   private final Supplier<ghs> o;
-   private float p = -5.0F;
-   private float q = 30.0F;
-
-   public fah(int $$0, int $$1, foy $$2, Supplier<ghs> $$3) {
-      super(0, 0, $$0, $$1, vp.a);
-      this.n = fah.a.a($$2);
-      this.o = $$3;
-   }
-
-   @Override
-   protected void b(eyu $$0, int $$1, int $$2, float $$3) {
-      $$0.c().a();
-      $$0.c().a((float)this.B() + (float)this.w() / 2.0F, (float)(this.C() + this.u()), 100.0F);
-      float $$4 = (float)this.u() / 2.125F;
-      $$0.c().b($$4, $$4, $$4);
-      $$0.c().a(0.0F, -0.0625F, 0.0F);
-      Matrix4f $$5 = $$0.c().c().a();
-      $$5.rotateAround(a.b.rotationDegrees(this.p), 0.0F, -1.0625F, 0.0F);
-      $$0.c().a(a.d.rotationDegrees(this.q));
-      this.n.a($$0, this.o.get());
-      $$0.c().b();
-   }
-
-   @Override
-   protected void b(double $$0, double $$1, double $$2, double $$3) {
-      this.p = awh.a(this.p - (float)$$3 * 2.5F, -50.0F, 50.0F);
-      this.q += (float)$$2 * 2.5F;
-   }
-
-   @Override
-   public void a(glk $$0) {
-   }
-
-   @Override
-   protected void a(fdc $$0) {
-   }
-
-   @Override
-   public boolean A() {
-      return false;
-   }
-
-   @Nullable
-   @Override
-   public eyr a(fdi $$0) {
-      return null;
-   }
-
-   static record a(fng<?> a, fng<?> b) {
-      public static fah.a a(foy $$0) {
-         fng<?> $$1 = new fng($$0.a(fpb.aO), false);
-         fng<?> $$2 = new fng($$0.a(fpb.aS), true);
-         $$1.e = false;
-         $$2.e = false;
-         return new fah.a($$1, $$2);
+public interface fah {
+   fah a = new fah() {
+      @Override
+      public int a(ezb $$0, int $$1, int $$2) {
+         return $$2;
       }
 
-      public void a(eyu $$0, ghs $$1) {
-         $$0.e();
-         eqw.c();
-         $$0.c().a();
-         $$0.c().a(new Matrix4f().scaling(1.0F, 1.0F, -1.0F));
-         $$0.c().a(0.0F, -1.5F, 0.0F);
-         fng<?> $$2 = $$1.e() == ghs.a.a ? this.b : this.a;
-         fvt $$3 = $$2.a($$1.a());
-         $$2.a($$0.c(), $$0.d().getBuffer($$3), 15728880, ggk.d, 1.0F, 1.0F, 1.0F, 1.0F);
-         $$0.c().b();
-         $$0.e();
-         eqw.b();
+      @Override
+      public int a(ezb $$0, int $$1, int $$2, int $$3, int $$4) {
+         return $$2;
+      }
+
+      @Override
+      public int b(ezb $$0, int $$1, int $$2, int $$3, int $$4) {
+         return $$2;
+      }
+
+      @Override
+      public int c(ezb $$0, int $$1, int $$2, int $$3, int $$4) {
+         return $$2;
+      }
+
+      @Override
+      public void a(ezb $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      }
+
+      @Override
+      public int a() {
+         return 0;
+      }
+
+      @Override
+      public int b() {
+         return 0;
+      }
+   };
+
+   static fah a(eyz $$0, vv $$1, int $$2) {
+      return b($$0, $$0.c($$1, $$2).stream().map($$1x -> new fah.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   }
+
+   static fah a(eyz $$0, vv $$1, int $$2, int $$3) {
+      return b($$0, $$0.c($$1, $$2).stream().limit((long)$$3).map($$1x -> new fah.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   }
+
+   static fah a(eyz $$0, vq... $$1) {
+      return b($$0, Arrays.stream($$1).map(vq::g).map($$1x -> new fah.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   }
+
+   static fah a(eyz $$0, List<vq> $$1) {
+      return b($$0, $$1.stream().map(vq::g).map($$1x -> new fah.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   }
+
+   static fah b(final eyz $$0, final List<fah.a> $$1) {
+      return $$1.isEmpty() ? a : new fah() {
+         private final int d = $$1.stream().mapToInt($$0x -> $$0x.b).max().orElse(0);
+
+         @Override
+         public int a(ezb $$0x, int $$1x, int $$2) {
+            return this.a($$0, $$1, $$2, 9, 16777215);
+         }
+
+         @Override
+         public int a(ezb $$0x, int $$1x, int $$2, int $$3, int $$4) {
+            int $$5 = $$2;
+
+            for (fah.a $$6 : $$1) {
+               $$0.b($$0, $$6.a, $$1 - $$6.b / 2, $$5, $$4);
+               $$5 += $$3;
+            }
+
+            return $$5;
+         }
+
+         @Override
+         public int b(ezb $$0x, int $$1x, int $$2, int $$3, int $$4) {
+            int $$5 = $$2;
+
+            for (fah.a $$6 : $$1) {
+               $$0.b($$0, $$6.a, $$1, $$5, $$4);
+               $$5 += $$3;
+            }
+
+            return $$5;
+         }
+
+         @Override
+         public int c(ezb $$0x, int $$1x, int $$2, int $$3, int $$4) {
+            int $$5 = $$2;
+
+            for (fah.a $$6 : $$1) {
+               $$0.a($$0, $$6.a, $$1, $$5, $$4, false);
+               $$5 += $$3;
+            }
+
+            return $$5;
+         }
+
+         @Override
+         public void a(ezb $$0x, int $$1x, int $$2, int $$3, int $$4, int $$5) {
+            int $$6 = $$1.stream().mapToInt($$0xx -> $$0xx.b).max().orElse(0);
+            if ($$6 > 0) {
+               $$0.a($$1 - $$6 / 2 - $$4, $$2 - $$4, $$1 + $$6 / 2 + $$4, $$2 + $$1.size() * $$3 + $$4, $$5);
+            }
+         }
+
+         @Override
+         public int a() {
+            return $$1.size();
+         }
+
+         @Override
+         public int b() {
+            return this.d;
+         }
+      };
+   }
+
+   int a(ezb var1, int var2, int var3);
+
+   int a(ezb var1, int var2, int var3, int var4, int var5);
+
+   int b(ezb var1, int var2, int var3, int var4, int var5);
+
+   int c(ezb var1, int var2, int var3, int var4, int var5);
+
+   void a(ezb var1, int var2, int var3, int var4, int var5, int var6);
+
+   int a();
+
+   int b();
+
+   public static class a {
+      final avu a;
+      final int b;
+
+      a(avu $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
    }
 }

@@ -1,25 +1,24 @@
-public class gfa<T extends chh> extends gfd<T, fng<T>> {
-   private final fnb a;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gfa(gcn<T, fng<T>> $$0, foy $$1) {
+public class gfa extends gfl<ccb, fmt<ccb>> {
+   private static final Map<ccd, aiy> a = ac.a(Maps.newEnumMap(ccd.class), $$0 -> {
+      $$0.put(ccd.a, null);
+      $$0.put(ccd.b, new aiy("textures/entity/horse/horse_markings_white.png"));
+      $$0.put(ccd.c, new aiy("textures/entity/horse/horse_markings_whitefield.png"));
+      $$0.put(ccd.d, new aiy("textures/entity/horse/horse_markings_whitedots.png"));
+      $$0.put(ccd.e, new aiy("textures/entity/horse/horse_markings_blackdots.png"));
+   });
+
+   public gfa(gcv<ccb, fmt<ccb>> $$0) {
       super($$0);
-      this.a = new fnb($$1.a(fpb.aC));
    }
 
-   public void a(esa $$0, fvl $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, true);
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, false);
-   }
-
-   private void a(esa $$0, fvl $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8) {
-      sw $$9 = $$8 ? $$3.gk() : $$3.gl();
-      bnu.a($$9.l("id")).filter($$0x -> $$0x == bnu.av).ifPresent($$10 -> {
-         $$0.a();
-         $$0.a($$8 ? 0.4F : -0.4F, $$3.bX() ? -1.3F : -1.5F, 0.0F);
-         caj.b $$11 = caj.b.a($$9.h("Variant"));
-         ese $$12 = $$1.getBuffer(this.a.a(gce.a($$11)));
-         this.a.a($$0, $$12, $$2, ggk.d, $$4, $$5, $$6, $$7, $$3.ag);
-         $$0.b();
-      });
+   public void a(esh $$0, fvt $$1, int $$2, ccb $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      aiy $$10 = a.get($$3.gg());
+      if ($$10 != null && !$$3.ce()) {
+         esl $$11 = $$1.getBuffer(fwb.i($$10));
+         this.c().a($$0, $$11, $$2, gcb.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
+      }
    }
 }

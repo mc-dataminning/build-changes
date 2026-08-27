@@ -1,10 +1,8 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public abstract class cye extends cyo {
-   protected static final int a = 2;
-   protected static final eol b = cyo.a(6.0, 0.0, 6.0, 10.0, 10.0, 10.0);
-
-   protected cye(dle.d $$0) {
+public abstract class cye extends cys implements dbk {
+   protected cye(dli.d $$0) {
       super($$0);
    }
 
@@ -12,17 +10,26 @@ public abstract class cye extends cyo {
    protected abstract MapCodec<? extends cye> a();
 
    @Override
-   protected eol a(dlf $$0, cut $$1, hz $$2, enx $$3) {
-      return b;
+   protected dex b_(dlj $$0) {
+      return dex.a;
    }
 
    @Override
-   protected dlf a(dlf $$0, ie $$1, dlf $$2, cvo $$3, hz $$4, hz $$5) {
-      return $$1 == ie.a && !this.a($$0, $$3, $$4) ? cyq.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected boolean a(dlj $$0, cvr $$1, hz $$2, int $$3, int $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      dix $$5 = $$1.c_($$2);
+      return $$5 == null ? false : $$5.a_($$3, $$4);
    }
 
+   @Nullable
    @Override
-   protected boolean a(dlf $$0, cvq $$1, hz $$2) {
-      return a($$1, $$2.d(), ie.b);
+   protected bma b(dlj $$0, cvr $$1, hz $$2) {
+      dix $$3 = $$1.c_($$2);
+      return $$3 instanceof bma ? (bma)$$3 : null;
+   }
+
+   @Nullable
+   protected static <E extends dix, A extends dix> diy<A> a(diz<A> $$0, diz<E> $$1, diy<? super E> $$2) {
+      return $$1 == $$0 ? $$2 : null;
    }
 }

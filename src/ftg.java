@@ -1,40 +1,38 @@
-public class ftg extends ftf {
-   ftg(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+public class ftg extends fuh {
+   ftg(fqe $$0, double $$1, double $$2, double $$3, double $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.B = 0.66F;
+      this.C = true;
+      this.j *= 0.01F;
+      this.k *= 0.01F;
+      this.l *= 0.01F;
+      this.k += 0.2;
+      this.v = Math.max(0.0F, awi.a(((float)$$4 + 0.0F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.w = Math.max(0.0F, awi.a(((float)$$4 + 0.33333334F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.x = Math.max(0.0F, awi.a(((float)$$4 + 0.6666667F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
       this.D *= 1.5F;
-      this.t = (int)(Math.random() * 2.0) + 60;
+      this.t = 6;
+   }
+
+   @Override
+   public ftl b() {
+      return ftl.b;
    }
 
    @Override
    public float b(float $$0) {
-      float $$1 = 1.0F - ((float)this.s + $$0) / ((float)this.t * 1.5F);
-      return this.D * $$1;
+      return this.D * awi.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         float $$0 = (float)this.s / (float)this.t;
-         this.g = this.g + this.j * (double)$$0;
-         this.h = this.h + this.k * (double)$$0;
-         this.i = this.i + this.l * (double)$$0;
-      }
-   }
+   public static class a implements ftk<kc> {
+      private final fuc a;
 
-   public static class a implements ftc<kc> {
-      private final ftu a;
-
-      public a(ftu $$0) {
+      public a(fuc $$0) {
          this.a = $$0;
       }
 
-      public fsz a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ftg $$8 = new ftg($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ftg $$8 = new ftg($$1, $$2, $$3, $$4, $$5);
          $$8.a(this.a);
          return $$8;
       }

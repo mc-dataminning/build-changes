@@ -1,10 +1,10 @@
 import com.google.common.collect.Sets;
 import java.util.Set;
 
-public record abw(int b, boolean c, Set<aix<cvn>> d, int e, int f, int g, boolean h, boolean i, boolean j, aen k, boolean l) implements xx<aag> {
-   public static final xo<uq, abw> a = xx.a(abw::a, abw::new);
+public record abw(int b, boolean c, Set<aix<cvr>> d, int e, int f, int g, boolean h, boolean i, boolean j, aen k, boolean l) implements xx<aag> {
+   public static final xo<vb, abw> a = xx.a(abw::a, abw::new);
 
-   private abw(uq $$0) {
+   private abw(vb $$0) {
       this(
          $$0.readInt(),
          $$0.readBoolean(),
@@ -20,7 +20,7 @@ public record abw(int b, boolean c, Set<aix<cvn>> d, int e, int f, int g, boolea
       );
    }
 
-   private void a(uq $$0) {
+   private void a(vb $$0) {
       $$0.p(this.b);
       $$0.a(this.c);
       $$0.a(this.d, uq::b);
@@ -47,7 +47,7 @@ public record abw(int b, boolean c, Set<aix<cvn>> d, int e, int f, int g, boolea
       return this.c;
    }
 
-   public Set<aix<cvn>> f() {
+   public Set<aix<cvr>> f() {
       return this.d;
    }
 

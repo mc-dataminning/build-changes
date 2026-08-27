@@ -1,226 +1,275 @@
-import com.google.common.collect.ImmutableList;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class evj extends gmv {
-   private static final int v = 2;
-   public static final List<blr> a = ImmutableList.of(blr.a, blr.b, blr.c, blr.d);
-   private static final int w = 0;
-   public static final List<cvk> b = ImmutableList.of(cvk.a, cvk.b, cvk.c);
-   private static final vq x = vq.c("mco.configure.world.edit.slot.name");
-   static final vq y = vq.c("mco.configure.world.spawnProtection");
-   private static final vq z = vq.c("mco.configure.world.spawn_toggle.title").a(n.m, n.r);
-   private ezq A;
-   protected final euq c;
-   private int B;
-   private int C;
-   private final eto D;
-   private final eth.d E;
-   private blr F;
-   private cvk G;
-   private final String H;
-   private String I;
-   private boolean J;
-   private boolean K;
-   private boolean L;
-   private boolean M;
-   int N;
-   private boolean O;
-   private boolean P;
-   evj.a Q;
+public class evj extends gnd {
+   private static final Logger a = LogUtils.getLogger();
+   private static final aiy b = new aiy("minecraft", "textures/gui/options_background.png");
+   private static final vq c = vq.c("mco.question");
+   static final vq v = vq.c("mco.configure.world.invites.normal.tooltip");
+   static final vq w = vq.c("mco.configure.world.invites.ops.tooltip");
+   static final vq x = vq.c("mco.configure.world.invites.remove.tooltip");
+   private static final int y = -1;
+   private final eux z;
+   final eto A;
+   evj.b B;
+   int C;
+   int D;
+   private ezo E;
+   private ezo F;
+   int G = -1;
+   private boolean H;
 
-   public evj(euq $$0, eto $$1, eth.d $$2, int $$3) {
-      super(vq.c("mco.configure.world.buttons.options"));
-      this.c = $$0;
-      this.D = $$1;
-      this.E = $$2;
-      this.F = a(a, $$1.h, 2);
-      this.G = a(b, $$1.i, 0);
-      this.H = $$1.b($$3);
-      this.a($$1.a($$3));
-      if ($$2 == eth.d.a) {
-         this.J = $$1.a;
-         this.N = $$1.e;
-         this.P = $$1.g;
-         this.L = $$1.b;
-         this.M = $$1.c;
-         this.K = $$1.d;
-         this.O = $$1.f;
-      } else {
-         this.J = true;
-         this.N = 0;
-         this.P = false;
-         this.L = true;
-         this.M = true;
-         this.K = true;
-         this.O = true;
+   public evj(eux $$0, eto $$1) {
+      super(vq.c("mco.configure.world.players.title"));
+      this.z = $$0;
+      this.A = $$1;
+   }
+
+   @Override
+   public void aQ_() {
+      this.C = this.g / 2 - 160;
+      this.D = 150;
+      int $$0 = this.g / 2 + 12;
+      this.B = this.c(new evj.b());
+      this.B.m(this.C);
+
+      for (etk $$1 : this.A.h) {
+         this.B.a($$1);
       }
+
+      this.G = -1;
+      this.c(ezo.a(vq.c("mco.configure.world.buttons.invite"), $$0x -> this.f.a(new evc(this.z, this, this.A))).a($$0, g(1), this.D + 10, 20).a());
+      this.E = this.c(ezo.a(vq.c("mco.configure.world.invites.remove.tooltip"), $$0x -> this.k(this.G)).a($$0, g(7), this.D + 10, 20).a());
+      this.F = this.c(ezo.a(vq.c("mco.configure.world.invites.ops.tooltip"), $$0x -> {
+         if (this.A.h.get(this.G).c()) {
+            this.j(this.G);
+         } else {
+            this.i(this.G);
+         }
+      }).a($$0, g(9), this.D + 10, 20).a());
+      this.c(ezo.a(vp.k, $$0x -> this.H()).a($$0 + this.D / 2 + 2, g(12), this.D / 2 + 10 - 2, 20).a());
+      this.E();
+   }
+
+   void E() {
+      this.E.k = this.h(this.G);
+      this.F.k = this.h(this.G);
+      this.B.d();
+   }
+
+   private boolean h(int $$0) {
+      return $$0 != -1;
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
       if ($$0 == 256) {
-         this.f.a(this.c);
+         this.H();
          return true;
       } else {
          return super.a($$0, $$1, $$2);
       }
    }
 
-   private static <T> T a(List<T> $$0, int $$1, int $$2) {
+   private void H() {
+      if (this.H) {
+         this.f.a(this.z.f());
+      } else {
+         this.f.a(this.z);
+      }
+   }
+
+   void i(int $$0) {
+      esx $$1 = esx.a();
+      UUID $$2 = this.A.h.get($$0).b();
+
       try {
-         return $$0.get($$1);
-      } catch (IndexOutOfBoundsException var4) {
-         return $$0.get($$2);
+         this.a($$1.b(this.A.a, $$2));
+      } catch (euk var5) {
+         a.error("Couldn't op the user", var5);
+      }
+
+      this.E();
+   }
+
+   void j(int $$0) {
+      esx $$1 = esx.a();
+      UUID $$2 = this.A.h.get($$0).b();
+
+      try {
+         this.a($$1.c(this.A.a, $$2));
+      } catch (euk var5) {
+         a.error("Couldn't deop the user", var5);
+      }
+
+      this.E();
+   }
+
+   private void a(etg $$0) {
+      for (etk $$1 : this.A.h) {
+         $$1.a($$0.a.contains($$1.a()));
       }
    }
 
-   private static <T> int a(List<T> $$0, T $$1, int $$2) {
-      int $$3 = $$0.indexOf($$1);
-      return $$3 == -1 ? $$2 : $$3;
-   }
+   void k(int $$0) {
+      this.E();
+      if ($$0 >= 0 && $$0 < this.A.h.size()) {
+         etk $$1 = this.A.h.get($$0);
+         euy $$2 = new euy($$1x -> {
+            if ($$1x) {
+               esx $$2x = esx.a();
 
-   @Override
-   public void aQ_() {
-      this.C = 170;
-      this.B = this.g / 2 - this.C;
-      int $$0 = this.g / 2 + 10;
-      if (this.E != eth.d.a) {
-         vq $$1;
-         if (this.E == eth.d.c) {
-            $$1 = vq.c("mco.configure.world.edit.subscreen.adventuremap");
-         } else if (this.E == eth.d.e) {
-            $$1 = vq.c("mco.configure.world.edit.subscreen.inspiration");
-         } else {
-            $$1 = vq.c("mco.configure.world.edit.subscreen.experience");
-         }
-
-         this.a(new gmt($$1, this.g / 2, 26, 16711680));
-      }
-
-      this.A = new ezq(this.f.h, this.B, g(1), this.C, 20, null, vq.c("mco.configure.world.edit.slot.name"));
-      this.A.f(10);
-      this.A.a(this.I);
-      this.A.b(this::a);
-      this.b(this.A);
-      ezo<Boolean> $$4 = this.d(ezo.b(this.J).a($$0, g(1), this.C, 20, vq.c("mco.configure.world.pvp"), ($$0x, $$1) -> this.J = $$1));
-      this.d(ezo.a(cvk::e).a(b).a(this.G).a(this.B, g(3), this.C, 20, vq.c("selectWorld.gameMode"), ($$0x, $$1) -> this.G = $$1));
-      vq $$5 = vq.c("mco.configure.world.spawn_toggle.message");
-      ezo<Boolean> $$6 = this.d(ezo.b(this.L).a($$0, g(3), this.C, 20, vq.c("mco.configure.world.spawnAnimals"), this.a($$5, $$0x -> this.L = $$0x)));
-      ezo<Boolean> $$7 = ezo.b(this.F != blr.a && this.M)
-         .a($$0, g(5), this.C, 20, vq.c("mco.configure.world.spawnMonsters"), this.a($$5, $$0x -> this.M = $$0x));
-      this.d(ezo.a(blr::b).a(a).a(this.F).a(this.B, g(5), this.C, 20, vq.c("options.difficulty"), ($$1, $$2) -> {
-         this.F = $$2;
-         if (this.E == eth.d.a) {
-            boolean $$3 = this.F != blr.a;
-            $$7.j = $$3;
-            $$7.a($$3 && this.M);
-         }
-      }));
-      this.d($$7);
-      this.Q = this.d(new evj.a(this.B, g(7), this.C, this.N, 0.0F, 16.0F));
-      ezo<Boolean> $$8 = this.d(
-         ezo.b(this.K)
-            .a(
-               $$0,
-               g(7),
-               this.C,
-               20,
-               vq.c("mco.configure.world.spawnNPCs"),
-               this.a(vq.c("mco.configure.world.spawn_toggle.message.npc"), $$0x -> this.K = $$0x)
-            )
-      );
-      ezo<Boolean> $$9 = this.d(ezo.b(this.P).a(this.B, g(9), this.C, 20, vq.c("mco.configure.world.forceGameMode"), ($$0x, $$1) -> this.P = $$1));
-      ezo<Boolean> $$10 = this.d(ezo.b(this.O).a($$0, g(9), this.C, 20, vq.c("mco.configure.world.commandBlocks"), ($$0x, $$1) -> this.O = $$1));
-      if (this.E != eth.d.a) {
-         $$4.j = false;
-         $$6.j = false;
-         $$8.j = false;
-         $$7.j = false;
-         this.Q.j = false;
-         $$10.j = false;
-         $$9.j = false;
-      }
-
-      if (this.F == blr.a) {
-         $$7.j = false;
-      }
-
-      this.d(ezh.a(vq.c("mco.configure.world.buttons.done"), $$0x -> this.E()).a(this.B, g(13), this.C, 20).a());
-      this.d(ezh.a(vp.e, $$0x -> this.f.a(this.c)).a($$0, g(13), this.C, 20).a());
-      this.e(this.A);
-   }
-
-   private ezo.b<Boolean> a(vq $$0, Consumer<Boolean> $$1) {
-      return ($$2, $$3) -> {
-         if ($$3) {
-            $$1.accept(true);
-         } else {
-            this.f.a(new fdx($$1xx -> {
-               if ($$1xx) {
-                  $$1.accept(false);
+               try {
+                  $$2x.a(this.A.a, $$1.b());
+               } catch (euk var5) {
+                  a.error("Couldn't uninvite user", var5);
                }
 
-               this.f.a(this);
-            }, z, $$0, vp.i, vp.e));
-         }
-      };
+               this.A.h.remove(this.G);
+               this.G = -1;
+               this.E();
+            }
+
+            this.H = true;
+            this.f.a(this);
+         }, c, vq.a("mco.configure.world.uninvite.player", $$1.a()));
+         this.f.a($$2);
+      }
    }
 
    @Override
-   public vq i() {
-      return vp.a(this.p(), this.o());
-   }
-
-   @Override
-   public void a(eyu $$0, int $$1, int $$2, float $$3) {
+   public void a(ezb $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
       $$0.a(this.i, this.e, this.g / 2, 17, -1);
-      $$0.a(this.i, x, this.B + this.C / 2 - this.i.a(x) / 2, g(0) - 5, -1, false);
-      this.A.a($$0, $$1, $$2, $$3);
+      int $$4 = g(12) + 20;
+      $$0.a(0.25F, 0.25F, 0.25F, 1.0F);
+      $$0.a(b, 0, $$4, 0.0F, 0.0F, this.g, this.h - $$4, 32, 32);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      String $$5 = this.A.h != null ? Integer.toString(this.A.h.size()) : "0";
+      $$0.a(this.i, vq.a("mco.configure.world.invited.number", $$5), this.C, g(0), -1, false);
    }
 
-   private void a(String $$0) {
-      if ($$0.equals(this.H)) {
-         this.I = "";
-      } else {
-         this.I = $$0;
-      }
-   }
+   class a extends fak.a<evj.a> {
+      private static final int b = 3;
+      private static final int c = 1;
+      private static final int d = 8;
+      private static final int e = 7;
+      private static final fbb f = new fbb(new aiy("player_list/remove_player"), new aiy("player_list/remove_player_highlighted"));
+      private static final fbb g = new fbb(new aiy("player_list/make_operator"), new aiy("player_list/make_operator_highlighted"));
+      private static final fbb h = new fbb(new aiy("player_list/remove_operator"), new aiy("player_list/remove_operator_highlighted"));
+      private final etk i;
+      private final List<ezm> j = new ArrayList<>();
+      private final faa k;
+      private final faa l;
+      private final faa m;
 
-   private void E() {
-      int $$0 = a(a, this.F, 2);
-      int $$1 = a(b, this.G, 0);
-      if (this.E != eth.d.c && this.E != eth.d.d && this.E != eth.d.e) {
-         boolean $$2 = this.E == eth.d.a && this.F != blr.a && this.M;
-         this.c.a(new eto(this.J, this.L, $$2, this.K, this.N, this.O, $$0, $$1, this.P, this.I, this.D.j, this.D.k));
-      } else {
-         this.c.a(new eto(this.D.a, this.D.b, this.D.c, this.D.d, this.D.e, this.D.f, $$0, $$1, this.D.g, this.I, this.D.j, this.D.k));
-      }
-   }
-
-   class a extends ezd {
-      private final double d;
-      private final double e;
-
-      public a(int $$0, int $$1, int $$2, int $$3, float $$4, float $$5) {
-         super($$0, $$1, $$2, 20, vp.a, 0.0);
-         this.d = (double)$$4;
-         this.e = (double)$$5;
-         this.c = (double)((awh.a((float)$$3, $$4, $$5) - $$4) / ($$5 - $$4));
+      public a(etk $$0) {
+         this.i = $$0;
+         int $$1 = evj.this.A.h.indexOf(this.i);
+         int $$2 = evj.this.B.r() - 16 - 9;
+         int $$3 = evj.this.B.g($$1) + 1;
+         this.k = new faa($$2, $$3, 8, 7, f, $$1x -> evj.this.k($$1), vp.a);
+         this.k.a(faz.a(evj.x));
+         this.j.add(this.k);
+         $$2 += 11;
+         this.l = new faa($$2, $$3, 8, 7, g, $$1x -> evj.this.i($$1), vp.a);
+         this.l.a(faz.a(evj.v));
+         this.j.add(this.l);
+         this.m = new faa($$2, $$3, 8, 7, h, $$1x -> evj.this.j($$1), vp.a);
+         this.m.a(faz.a(evj.w));
+         this.j.add(this.m);
          this.b();
       }
 
-      @Override
-      public void a() {
-         if (evj.this.Q.j) {
-            evj.this.N = (int)awh.d(awh.a(this.c, 0.0, 1.0), this.d, this.e);
-         }
+      public void b() {
+         this.l.k = !this.i.c();
+         this.m.k = !this.l.k;
       }
 
       @Override
-      protected void b() {
-         this.b(vp.a(evj.y, (vq)(evj.this.N == 0 ? vp.c : vq.b(String.valueOf(evj.this.N)))));
+      public boolean a(double $$0, double $$1, int $$2) {
+         if (!this.l.a($$0, $$1, $$2)) {
+            this.m.a($$0, $$1, $$2);
+         }
+
+         this.k.a($$0, $$1, $$2);
+         return true;
+      }
+
+      @Override
+      public void a(ezb $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10;
+         if (!this.i.d()) {
+            $$10 = -6250336;
+         } else if (this.i.e()) {
+            $$10 = 8388479;
+         } else {
+            $$10 = -1;
+         }
+
+         ewe.a($$0, evj.this.C + 2 + 2, $$2 + 1, 8, this.i.b());
+         $$0.a(evj.this.i, this.i.a(), evj.this.C + 3 + 12, $$2 + 1, $$10, false);
+         this.j.forEach($$5x -> {
+            $$5x.n($$2 + 1);
+            $$5x.a($$0, $$6, $$7, $$9);
+         });
+      }
+
+      @Override
+      public vq a() {
+         return vq.a("narrator.select", this.i.a());
+      }
+   }
+
+   class b extends gnc<evj.a> {
+      public b() {
+         super(evj.this.D + 10, evj.g(12) + 20, evj.g(1), 13);
+      }
+
+      public void d() {
+         if (evj.this.G != -1) {
+            this.d(evj.this.G).b();
+         }
+      }
+
+      public void a(etk $$0) {
+         this.a((evj.a)(evj.this.new a($$0)));
+      }
+
+      @Override
+      public int b() {
+         return (int)((double)this.g * 1.0);
+      }
+
+      @Override
+      public void a(int $$0) {
+         super.a($$0);
+         this.b($$0);
+      }
+
+      public void b(int $$0) {
+         evj.this.G = $$0;
+         evj.this.E();
+      }
+
+      public void a(@Nullable evj.a $$0) {
+         super.a($$0);
+         evj.this.G = this.l().indexOf($$0);
+         evj.this.E();
+      }
+
+      @Override
+      public int c() {
+         return evj.this.C + this.g;
+      }
+
+      @Override
+      public int a() {
+         return this.n() * 13;
       }
    }
 }

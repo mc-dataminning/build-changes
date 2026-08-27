@@ -5,10 +5,10 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import org.joml.Vector3f;
 
 public class jt extends ju {
-   public static final Vector3f a = ens.a(16711680).j();
+   public static final Vector3f a = enz.a(16711680).j();
    public static final jt b = new jt(a, 1.0F);
    public static final Codec<jt> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(avp.d.fieldOf("color").forGetter($$0x -> $$0x.h), Codec.FLOAT.fieldOf("scale").forGetter($$0x -> $$0x.i)).apply($$0, jt::new)
+      $$0 -> $$0.group(avq.d.fieldOf("color").forGetter($$0x -> $$0x.h), Codec.FLOAT.fieldOf("scale").forGetter($$0x -> $$0x.i)).apply($$0, jt::new)
    );
    public static final xo<vb, jt> d = xo.a(xm.l, $$0 -> $$0.h, xm.f, $$0 -> $$0.i, jt::new);
    public static final jx.a<jt> e = new jx.a<jt>() {

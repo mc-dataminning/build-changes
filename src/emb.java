@@ -1,32 +1,22 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
+import java.util.function.Predicate;
 
-public record emb(Optional<cc> b) implements elu {
-   public static final Codec<emb> a = RecordCodecBuilder.create($$0 -> $$0.group(avp.a(cc.a, "predicate").forGetter(emb::c)).apply($$0, emb::new));
+public interface emb extends ejd, Predicate<ejc> {
+   emc b();
 
-   @Override
-   public elv b() {
-      return elw.k;
-   }
+   @FunctionalInterface
+   public interface a {
+      emb build();
 
-   @Override
-   public Set<eld<?>> a() {
-      return ImmutableSet.of(elg.i);
-   }
+      default emb.a invert() {
+         return ely.a(this);
+      }
 
-   public boolean a(eiv $$0) {
-      coz $$1 = $$0.c(elg.i);
-      return $$1 != null && (this.b.isEmpty() || this.b.get().a($$1));
-   }
+      default elq.a or(emb.a $$0) {
+         return elq.a(this, $$0);
+      }
 
-   public static elu.a a(cc.a $$0) {
-      return () -> new emb(Optional.of($$0.b()));
-   }
-
-   public Optional<cc> c() {
-      return this.b;
+      default elp.a and(emb.a $$0) {
+         return elp.a(this, $$0);
+      }
    }
 }

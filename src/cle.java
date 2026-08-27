@@ -1,73 +1,66 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+public class cle extends ckf {
+   public static final int k = 5;
+   private final blp l;
 
-public class cle {
-   private final List<cle.b> a;
-   private final cle.b b;
+   public cle(int $$0, chk $$1) {
+      this($$0, $$1, new bmf(5));
+   }
 
-   cle(List<cle.b> $$0, cle.b $$1) {
-      if (!$$0.isEmpty() && !$$1.equals(cle.b.e)) {
-         this.a = $$0;
-         this.b = $$1;
-      } else {
-         throw new IllegalArgumentException("Need to define both inputSlots and resultSlot");
+   public cle(int $$0, chk $$1, blp $$2) {
+      super(clm.q, $$0);
+      this.l = $$2;
+      a($$2, 5);
+      $$2.d_($$1.m);
+      int $$3 = 51;
+
+      for (int $$4 = 0; $$4 < 5; $$4++) {
+         this.a(new cma($$2, $$4, 44 + $$4 * 18, 20));
+      }
+
+      for (int $$5 = 0; $$5 < 3; $$5++) {
+         for (int $$6 = 0; $$6 < 9; $$6++) {
+            this.a(new cma($$1, $$6 + $$5 * 9 + 9, 8 + $$6 * 18, $$5 * 18 + 51));
+         }
+      }
+
+      for (int $$7 = 0; $$7 < 9; $$7++) {
+         this.a(new cma($$1, $$7, 8 + $$7 * 18, 109));
       }
    }
 
-   public static cle.a a() {
-      return new cle.a();
+   @Override
+   public boolean a(chl $$0) {
+      return this.l.a($$0);
    }
 
-   public boolean a(int $$0) {
-      return this.a.size() >= $$0;
-   }
+   @Override
+   public cpd a(chl $$0, int $$1) {
+      cpd $$2 = cpd.h;
+      cma $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cpd $$4 = $$3.g();
+         $$2 = $$4.q();
+         if ($$1 < this.l.b()) {
+            if (!this.a($$4, this.l.b(), this.i.size(), true)) {
+               return cpd.h;
+            }
+         } else if (!this.a($$4, 0, this.l.b(), false)) {
+            return cpd.h;
+         }
 
-   public cle.b b(int $$0) {
-      return this.a.get($$0);
-   }
-
-   public cle.b b() {
-      return this.b;
-   }
-
-   public List<cle.b> c() {
-      return this.a;
-   }
-
-   public int d() {
-      return this.a.size();
-   }
-
-   public int e() {
-      return this.d();
-   }
-
-   public List<Integer> f() {
-      return this.a.stream().map(cle.b::a).collect(Collectors.toList());
-   }
-
-   public static class a {
-      private final List<cle.b> a = new ArrayList<>();
-      private cle.b b = cle.b.e;
-
-      public cle.a a(int $$0, int $$1, int $$2, Predicate<coz> $$3) {
-         this.a.add(new cle.b($$0, $$1, $$2, $$3));
-         return this;
+         if ($$4.b()) {
+            $$3.e(cpd.h);
+         } else {
+            $$3.b();
+         }
       }
 
-      public cle.a a(int $$0, int $$1, int $$2) {
-         this.b = new cle.b($$0, $$1, $$2, $$0x -> false);
-         return this;
-      }
-
-      public cle a() {
-         return new cle(this.a, this.b);
-      }
+      return $$2;
    }
 
-   public static record b(int a, int b, int c, Predicate<coz> d) {
-      static final cle.b e = new cle.b(0, 0, 0, $$0 -> true);
+   @Override
+   public void b(chl $$0) {
+      super.b($$0);
+      this.l.c($$0);
    }
 }

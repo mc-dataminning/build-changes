@@ -10,7 +10,7 @@ public record aaw(List<aaw.a> b) implements xx<aag> {
       this($$0.a(aaw.a::new));
    }
 
-   public static aaw a(List<dnm> $$0) {
+   public static aaw a(List<dnq> $$0) {
       return new aaw($$0.stream().map(aaw.a::new).toList());
    }
 
@@ -27,8 +27,8 @@ public record aaw(List<aaw.a> b) implements xx<aag> {
       $$0.a(this);
    }
 
-   public static record a(cuu a, byte[] b) {
-      public a(dnm $$0) {
+   public static record a(cuy a, byte[] b) {
+      public a(dnq $$0) {
          this($$0.f(), new byte[a($$0)]);
          a(new uq(this.d()), $$0);
       }
@@ -37,10 +37,10 @@ public record aaw(List<aaw.a> b) implements xx<aag> {
          this($$0.f(), $$0.a(2097152));
       }
 
-      private static int a(dnm $$0) {
+      private static int a(dnq $$0) {
          int $$1 = 0;
 
-         for (dnn $$2 : $$0.d()) {
+         for (dnr $$2 : $$0.d()) {
             $$1 += $$2.i().c();
          }
 
@@ -57,8 +57,8 @@ public record aaw(List<aaw.a> b) implements xx<aag> {
          return $$0;
       }
 
-      public static void a(uq $$0, dnm $$1) {
-         for (dnn $$2 : $$1.d()) {
+      public static void a(uq $$0, dnq $$1) {
+         for (dnr $$2 : $$1.d()) {
             $$2.i().b($$0);
          }
       }
@@ -68,7 +68,7 @@ public record aaw(List<aaw.a> b) implements xx<aag> {
          $$0.a(this.b);
       }
 
-      public cuu b() {
+      public cuy b() {
          return this.a;
       }
 

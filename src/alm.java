@@ -12,16 +12,16 @@ public class alm {
    }
 
    private static int a(du $$0) {
-      return a($$0, chh::Q_);
+      return a($$0, chl::Q_);
    }
 
    private static int b(du $$0) {
       return a($$0, $$0x -> vq.a("commands.list.nameAndId", $$0x.ad(), vq.a($$0x.fS().getId())));
    }
 
-   private static int a(du $$0, Function<aow, vq> $$1) {
-      asn $$2 = $$0.l().ae();
-      List<aow> $$3 = $$2.t();
+   private static int a(du $$0, Function<aox, vq> $$1) {
+      aso $$2 = $$0.l().ag();
+      List<aox> $$3 = $$2.t();
       vq $$4 = vt.b($$3, $$1);
       $$0.a(() -> vq.a("commands.list.players", $$3.size(), $$2.n(), $$4), false);
       return $$3.size();

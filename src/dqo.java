@@ -1,171 +1,105 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.EnumSet;
-import java.util.Set;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class dqo {
-   private static final Logger a = LogUtils.getLogger();
-   static final Predicate<dlf> b = $$0 -> !$$0.i();
-   static final Predicate<dlf> c = dle.a::d;
-   private final auw d;
-   private final Predicate<dlf> e;
-   private final dnb f;
+public interface dqo {
+   Codec<dqo> b = dqp.b;
+   Codec<ij<dqo>> c = aiu.a(kg.ax, b);
+   Codec<dqo> d = c.xmap(dqp.j::new, $$0 -> (ij)($$0 instanceof dqp.j $$1 ? $$1.j() : new ij.a<>($$0)));
 
-   public dqo(dnb $$0, dqo.a $$1) {
-      this.e = $$1.e();
-      this.f = $$0;
-      int $$2 = awh.e($$0.K_() + 1);
-      this.d = new aww($$2, 256);
+   double a(dqo.b var1);
+
+   void a(double[] var1, dqo.a var2);
+
+   dqo a(dqo.f var1);
+
+   double a();
+
+   double b();
+
+   awc<? extends dqo> c();
+
+   default dqo a(double $$0, double $$1) {
+      return new dqp.g(this, $$0, $$1);
    }
 
-   public static void a(dnb $$0, Set<dqo.a> $$1) {
-      int $$2 = $$1.size();
-      ObjectList<dqo> $$3 = new ObjectArrayList($$2);
-      ObjectListIterator<dqo> $$4 = $$3.iterator();
-      int $$5 = $$0.b() + 16;
-      hz.a $$6 = new hz.a();
+   default dqo d() {
+      return dqp.a(this, dqp.k.a.a);
+   }
 
-      for (int $$7 = 0; $$7 < 16; $$7++) {
-         for (int $$8 = 0; $$8 < 16; $$8++) {
-            for (dqo.a $$9 : $$1) {
-               $$3.add($$0.a($$9));
-            }
+   default dqo e() {
+      return dqp.a(this, dqp.k.a.b);
+   }
 
-            for (int $$10 = $$5 - 1; $$10 >= $$0.J_(); $$10--) {
-               $$6.d($$7, $$10, $$8);
-               dlf $$11 = $$0.a_($$6);
-               if (!$$11.a(cyq.a)) {
-                  while ($$4.hasNext()) {
-                     dqo $$12 = (dqo)$$4.next();
-                     if ($$12.e.test($$11)) {
-                        $$12.a($$7, $$8, $$10 + 1);
-                        $$4.remove();
-                     }
-                  }
+   default dqo f() {
+      return dqp.a(this, dqp.k.a.c);
+   }
 
-                  if ($$3.isEmpty()) {
-                     break;
-                  }
+   default dqo g() {
+      return dqp.a(this, dqp.k.a.d);
+   }
 
-                  $$4.back($$2);
-               }
-            }
-         }
+   default dqo h() {
+      return dqp.a(this, dqp.k.a.e);
+   }
+
+   default dqo i() {
+      return dqp.a(this, dqp.k.a.f);
+   }
+
+   public interface a {
+      dqo.b a(int var1);
+
+      void a(double[] var1, dqo var2);
+   }
+
+   public interface b {
+      int a();
+
+      int b();
+
+      int c();
+
+      default drx d() {
+         return drx.a();
       }
    }
 
-   public boolean a(int $$0, int $$1, int $$2, dlf $$3) {
-      int $$4 = this.a($$0, $$2);
-      if ($$1 <= $$4 - 2) {
-         return false;
-      } else {
-         if (this.e.test($$3)) {
-            if ($$1 >= $$4) {
-               this.a($$0, $$2, $$1 + 1);
-               return true;
-            }
-         } else if ($$4 - 1 == $$1) {
-            hz.a $$5 = new hz.a();
+   public static record c(ij<efz.a> b, @Nullable efz c) {
+      public static final Codec<dqo.c> a = efz.a.b.xmap($$0 -> new dqo.c($$0, null), dqo.c::b);
 
-            for (int $$6 = $$1 - 1; $$6 >= this.f.J_(); $$6--) {
-               $$5.d($$0, $$6, $$2);
-               if (this.e.test(this.f.a_($$5))) {
-                  this.a($$0, $$2, $$6 + 1);
-                  return true;
-               }
-            }
+      public c(ij<efz.a> $$0) {
+         this($$0, null);
+      }
 
-            this.a($$0, $$2, this.f.J_());
-            return true;
-         }
+      public double a(double $$0, double $$1, double $$2) {
+         return this.c == null ? 0.0 : this.c.a($$0, $$1, $$2);
+      }
 
-         return false;
+      public double a() {
+         return this.c == null ? 2.0 : this.c.a();
       }
    }
 
-   public int a(int $$0, int $$1) {
-      return this.a(c($$0, $$1));
-   }
-
-   public int b(int $$0, int $$1) {
-      return this.a(c($$0, $$1)) - 1;
-   }
-
-   private int a(int $$0) {
-      return this.d.a($$0) + this.f.J_();
-   }
-
-   private void a(int $$0, int $$1, int $$2) {
-      this.d.b(c($$0, $$1), $$2 - this.f.J_());
-   }
-
-   public void a(dnb $$0, dqo.a $$1, long[] $$2) {
-      long[] $$3 = this.d.a();
-      if ($$3.length == $$2.length) {
-         System.arraycopy($$2, 0, $$3, 0, $$2.length);
-      } else {
-         a.warn("Ignoring heightmap data for chunk " + $$0.f() + ", size does not match; expected: " + $$3.length + ", got: " + $$2.length);
-         a($$0, EnumSet.of($$1));
-      }
-   }
-
-   public long[] a() {
-      return this.d.a();
-   }
-
-   private static int c(int $$0, int $$1) {
-      return $$0 + $$1 * 16;
-   }
-
-   public static enum a implements axc {
-      a("WORLD_SURFACE_WG", dqo.b.a, dqo.b),
-      b("WORLD_SURFACE", dqo.b.c, dqo.b),
-      c("OCEAN_FLOOR_WG", dqo.b.a, dqo.c),
-      d("OCEAN_FLOOR", dqo.b.b, dqo.c),
-      e("MOTION_BLOCKING", dqo.b.c, $$0 -> $$0.d() || !$$0.u().c()),
-      f("MOTION_BLOCKING_NO_LEAVES", dqo.b.b, $$0 -> ($$0.d() || !$$0.u().c()) && !($$0.b() instanceof dcx));
-
-      public static final Codec<dqo.a> g = axc.a(dqo.a::values);
-      private final String h;
-      private final dqo.b i;
-      private final Predicate<dlf> j;
-
-      private a(String $$0, dqo.b $$1, Predicate<dlf> $$2) {
-         this.h = $$0;
-         this.i = $$1;
-         this.j = $$2;
-      }
-
-      public String a() {
-         return this.h;
-      }
-
-      public boolean b() {
-         return this.i == dqo.b.c;
-      }
-
-      public boolean d() {
-         return this.i != dqo.b.a;
-      }
-
-      public Predicate<dlf> e() {
-         return this.j;
+   public interface d extends dqo {
+      @Override
+      default void a(double[] $$0, dqo.a $$1) {
+         $$1.a($$0, this);
       }
 
       @Override
-      public String c() {
-         return this.h;
+      default dqo a(dqo.f $$0) {
+         return $$0.apply(this);
       }
    }
 
-   public static enum b {
-      a,
-      b,
-      c;
+   public static record e(int a, int b, int c) implements dqo.b {
+   }
+
+   public interface f {
+      dqo apply(dqo var1);
+
+      default dqo.c a(dqo.c $$0) {
+         return $$0;
+      }
    }
 }

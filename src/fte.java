@@ -1,79 +1,37 @@
-public class fte extends ftz {
-   private final ftu a;
+public class fte extends fth {
+   private final fne a;
+   private final fwb b = fwb.i(gat.a);
 
-   fte(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ftu $$7) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.96F;
-      this.a = $$7;
-      float $$8 = 2.5F;
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4;
-      this.k += $$5;
-      this.l += $$6;
-      float $$9 = 1.0F - (float)(Math.random() * 0.3F);
-      this.v = $$9;
-      this.w = $$9;
-      this.x = $$9;
-      this.D *= 1.875F;
-      int $$10 = (int)(8.0 / (Math.random() * 0.8 + 0.3));
-      this.t = (int)Math.max((float)$$10 * 2.5F, 1.0F);
-      this.n = false;
-      this.b($$7);
+   fte(fqe $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.a = new fmp(exo.P().aQ().a(fpi.R));
+      this.u = 0.0F;
+      this.t = 30;
    }
 
    @Override
-   public ftd b() {
-      return ftd.c;
+   public ftl b() {
+      return ftl.e;
    }
 
    @Override
-   public float b(float $$0) {
-      return this.D * awh.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   public void a(esl $$0, ewz $$1, float $$2) {
+      float $$3 = ((float)this.s + $$2) / (float)this.t;
+      float $$4 = 0.05F + 0.5F * awi.a($$3 * (float) Math.PI);
+      esh $$5 = new esh();
+      $$5.a($$1.f());
+      $$5.a(a.b.rotationDegrees(150.0F * $$3 - 60.0F));
+      $$5.b(-1.0F, -1.0F, 1.0F);
+      $$5.a(0.0F, -1.101F, 1.5F);
+      fvt.a $$6 = exo.P().aP().c();
+      esl $$7 = $$6.getBuffer(this.b);
+      this.a.a($$5, $$7, 15728880, ggs.d, 1.0F, 1.0F, 1.0F, $$4);
+      $$6.b();
    }
 
-   @Override
-   public void a() {
-      super.a();
-      if (!this.o) {
-         this.b(this.a);
-         chh $$0 = this.c.a(this.g, this.h, this.i, 2.0, false);
-         if ($$0 != null) {
-            double $$1 = $$0.dt();
-            if (this.h > $$1) {
-               this.h = this.h + ($$1 - this.h) * 0.2;
-               this.k = this.k + ($$0.dp().d - this.k) * 0.2;
-               this.c(this.g, this.h, this.i);
-            }
-         }
-      }
-   }
-
-   public static class a implements ftc<kc> {
-      private final ftu a;
-
-      public a(ftu $$0) {
-         this.a = $$0;
-      }
-
-      public fsz a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fte($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
-   }
-
-   public static class b implements ftc<kc> {
-      private final ftu a;
-
-      public b(ftu $$0) {
-         this.a = $$0;
-      }
-
-      public fsz a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fsz $$8 = new fte($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.a(200.0F, 50.0F, 120.0F);
-         $$8.e(0.4F);
-         return $$8;
+   public static class a implements ftk<kc> {
+      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fte($$1, $$2, $$3, $$4);
       }
    }
 }

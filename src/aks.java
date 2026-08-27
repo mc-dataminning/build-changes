@@ -16,11 +16,11 @@ public class aks {
    }
 
    private static int a(du $$0, hz $$1) throws CommandSyntaxException {
-      if (!($$0.f() instanceof boi $$3)) {
+      if (!($$0.f() instanceof bok $$3)) {
          throw a.create();
       } else {
-         bxp $$4 = new bxo($$3, $$0.e());
-         ehe $$5 = $$4.a($$1, 0);
+         bxt $$4 = new bxs($$3, $$0.e());
+         ehl $$5 = $$4.a($$1, 0);
          aep.a($$0.e(), $$3, $$5, $$4.q());
          if ($$5 == null) {
             throw b.create();

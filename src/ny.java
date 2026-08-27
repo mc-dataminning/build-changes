@@ -1,54 +1,54 @@
 import java.util.concurrent.CompletableFuture;
 
-public class ny extends om<dik> {
+public class ny extends om<dio> {
    public ny(ko $$0, CompletableFuture<il.b> $$1) {
       super($$0, kg.d, $$1);
    }
 
    @Override
    protected void a(il.b $$0) {
-      this.b(atx.a)
+      this.b(aty.a)
          .a(
-            dil.b,
-            dil.c,
-            dil.d,
-            dil.e,
-            dil.f,
-            dil.g,
-            dil.h,
-            dil.i,
-            dil.j,
-            dil.k,
-            dil.l,
-            dil.m,
-            dil.n,
-            dil.o,
-            dil.p,
-            dil.q,
-            dil.r,
-            dil.s,
-            dil.t,
-            dil.u,
-            dil.v,
-            dil.w,
-            dil.x,
-            dil.y,
-            dil.z,
-            dil.A,
-            dil.B,
-            dil.C,
-            dil.D,
-            dil.E,
-            dil.F,
-            dil.G,
-            dil.H,
-            dil.I
+            dip.b,
+            dip.c,
+            dip.d,
+            dip.e,
+            dip.f,
+            dip.g,
+            dip.h,
+            dip.i,
+            dip.j,
+            dip.k,
+            dip.l,
+            dip.m,
+            dip.n,
+            dip.o,
+            dip.p,
+            dip.q,
+            dip.r,
+            dip.s,
+            dip.t,
+            dip.u,
+            dip.v,
+            dip.w,
+            dip.x,
+            dip.y,
+            dip.z,
+            dip.A,
+            dip.B,
+            dip.C,
+            dip.D,
+            dip.E,
+            dip.F,
+            dip.G,
+            dip.H,
+            dip.I
          );
-      this.b(atx.b).a(dil.M);
-      this.b(atx.c).a(dil.K);
-      this.b(atx.d).a(dil.L);
-      this.b(atx.e).a(dil.N);
-      this.b(atx.f).a(dil.J);
-      this.b(atx.g).a(dil.O);
+      this.b(aty.b).a(dip.M);
+      this.b(aty.c).a(dip.K);
+      this.b(aty.d).a(dip.L);
+      this.b(aty.e).a(dip.N);
+      this.b(aty.f).a(dip.J);
+      this.b(aty.g).a(dip.O);
    }
 }

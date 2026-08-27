@@ -1,22 +1,33 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dwu implements dvw {
+public record dwu(int b, int c, int d, int e, int f, blb g, float h) implements dwd {
    public static final Codec<dwu> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(0, 512).fieldOf("floor_search_range").forGetter($$0x -> $$0x.b),
-               Codec.intRange(0, 64).fieldOf("placement_radius_around_floor").forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("placement_probability_per_valid_position").forGetter($$0x -> $$0x.d)
+               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(dwu::a),
+               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(dwu::b),
+               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(dwu::c),
+               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(dwu::d),
+               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(dwu::f),
+               blb.c.fieldOf("extra_rare_growths").forGetter(dwu::g),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(dwu::h)
             )
             .apply($$0, dwu::new)
    );
-   public final int b;
-   public final int c;
-   public final float d;
 
-   public dwu(int $$0, int $$1, float $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public int a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
    }
 }

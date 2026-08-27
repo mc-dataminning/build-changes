@@ -1,82 +1,75 @@
 import com.mojang.serialization.MapCodec;
+import java.util.Map;
 
-public class dco extends dak {
-   public static final MapCodec<dco> i = b(dco::new);
+public class dco extends cys {
+   public static final MapCodec<dco> a = b(dco::new);
+   public static final dma b = def.b;
+   public static final dma c = def.c;
+   public static final dma d = def.d;
+   public static final dma e = def.e;
+   public static final dma f = def.f;
+   public static final dma g = def.g;
+   private static final Map<ie, dma> h = def.h;
 
    @Override
-   public MapCodec<? extends dco> a() {
-      return i;
+   public MapCodec<dco> a() {
+      return a;
    }
 
-   protected dco(dle.d $$0) {
-      super(1.0F, 1.0F, 16.0F, 16.0F, 16.0F, $$0);
+   public dco(dli.d $$0) {
+      super($$0);
       this.k(
          this.E
             .b()
-            .a(a, Boolean.valueOf(false))
-            .a(b, Boolean.valueOf(false))
-            .a(c, Boolean.valueOf(false))
-            .a(d, Boolean.valueOf(false))
-            .a(e, Boolean.valueOf(false))
+            .a(b, Boolean.valueOf(true))
+            .a(c, Boolean.valueOf(true))
+            .a(d, Boolean.valueOf(true))
+            .a(e, Boolean.valueOf(true))
+            .a(f, Boolean.valueOf(true))
+            .a(g, Boolean.valueOf(true))
       );
    }
 
    @Override
-   public dlf a(crg $$0) {
-      cut $$1 = $$0.q();
+   public dlj a(crk $$0) {
+      cux $$1 = $$0.q();
       hz $$2 = $$0.a();
-      egp $$3 = $$0.q().b_($$0.a());
-      hz $$4 = $$2.e();
-      hz $$5 = $$2.f();
-      hz $$6 = $$2.g();
-      hz $$7 = $$2.h();
-      dlf $$8 = $$1.a_($$4);
-      dlf $$9 = $$1.a_($$5);
-      dlf $$10 = $$1.a_($$6);
-      dlf $$11 = $$1.a_($$7);
       return this.o()
-         .a(a, Boolean.valueOf(this.a($$8, $$8.d($$1, $$4, ie.d))))
-         .a(c, Boolean.valueOf(this.a($$9, $$9.d($$1, $$5, ie.c))))
-         .a(d, Boolean.valueOf(this.a($$10, $$10.d($$1, $$6, ie.f))))
-         .a(b, Boolean.valueOf(this.a($$11, $$11.d($$1, $$7, ie.e))))
-         .a(e, Boolean.valueOf($$3.a() == egq.c));
+         .a(g, Boolean.valueOf(!$$1.a_($$2.d()).a(this)))
+         .a(f, Boolean.valueOf(!$$1.a_($$2.c()).a(this)))
+         .a(b, Boolean.valueOf(!$$1.a_($$2.e()).a(this)))
+         .a(c, Boolean.valueOf(!$$1.a_($$2.h()).a(this)))
+         .a(d, Boolean.valueOf(!$$1.a_($$2.f()).a(this)))
+         .a(e, Boolean.valueOf(!$$1.a_($$2.g()).a(this)));
    }
 
    @Override
-   protected dlf a(dlf $$0, ie $$1, dlf $$2, cvo $$3, hz $$4, hz $$5) {
-      if ($$0.c(e)) {
-         $$3.a($$4, egq.c, egq.c.a($$3));
-      }
-
-      return $$1.o().d() ? $$0.a(f.get($$1), Boolean.valueOf(this.a($$2, $$2.d($$3, $$5, $$1.g())))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected dlj a(dlj $$0, ie $$1, dlj $$2, cvs $$3, hz $$4, hz $$5) {
+      return $$2.a(this) ? $$0.a(h.get($$1), Boolean.valueOf(false)) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected eol c(dlf $$0, cut $$1, hz $$2, enx $$3) {
-      return eoi.a();
+   protected dlj a(dlj $$0, dfe $$1) {
+      return $$0.a(h.get($$1.a(ie.c)), $$0.c(b))
+         .a(h.get($$1.a(ie.d)), $$0.c(d))
+         .a(h.get($$1.a(ie.f)), $$0.c(c))
+         .a(h.get($$1.a(ie.e)), $$0.c(e))
+         .a(h.get($$1.a(ie.b)), $$0.c(f))
+         .a(h.get($$1.a(ie.a)), $$0.c(g));
    }
 
    @Override
-   protected boolean a(dlf $$0, dlf $$1, ie $$2) {
-      if ($$1.a(this)) {
-         if (!$$2.o().d()) {
-            return true;
-         }
-
-         if ($$0.c(f.get($$2)) && $$1.c(f.get($$2.g()))) {
-            return true;
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   public final boolean a(dlf $$0, boolean $$1) {
-      return !j($$0) && $$1 || $$0.b() instanceof dco || $$0.a(atz.L);
+   protected dlj a(dlj $$0, ddo $$1) {
+      return $$0.a(h.get($$1.b(ie.c)), $$0.c(b))
+         .a(h.get($$1.b(ie.d)), $$0.c(d))
+         .a(h.get($$1.b(ie.f)), $$0.c(c))
+         .a(h.get($$1.b(ie.e)), $$0.c(e))
+         .a(h.get($$1.b(ie.b)), $$0.c(f))
+         .a(h.get($$1.b(ie.a)), $$0.c(g));
    }
 
    @Override
-   protected void a(dlg.a<cyo, dlf> $$0) {
-      $$0.a(a, b, d, c, e);
+   protected void a(dlk.a<cys, dlj> $$0) {
+      $$0.a(f, g, b, c, d, e);
    }
 }

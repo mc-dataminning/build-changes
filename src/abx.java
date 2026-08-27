@@ -9,11 +9,11 @@ public class abx implements xx<aag> {
    private final byte c;
    private final boolean d;
    @Nullable
-   private final List<ehw> e;
+   private final List<eid> e;
    @Nullable
-   private final ehz.b f;
+   private final eig.b f;
 
-   public abx(int $$0, byte $$1, boolean $$2, @Nullable Collection<ehw> $$3, @Nullable ehz.b $$4) {
+   public abx(int $$0, byte $$1, boolean $$2, @Nullable Collection<eid> $$3, @Nullable eig.b $$4) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -25,13 +25,13 @@ public class abx implements xx<aag> {
       this.b = $$0.n();
       this.c = $$0.readByte();
       this.d = $$0.readBoolean();
-      this.e = $$0.c((xp<? super uq, List<ehw>>)($$0x -> $$0x.a((xp<? super uq, ehw>)($$0xx -> {
-            ehw.a $$1x = $$0xx.b(ehw.a.class);
+      this.e = $$0.c((xp<? super uq, List<eid>>)($$0x -> $$0x.a((xp<? super uq, eid>)($$0xx -> {
+            eid.a $$1x = $$0xx.b(eid.a.class);
             byte $$2x = $$0xx.readByte();
             byte $$3x = $$0xx.readByte();
             byte $$4x = (byte)($$0xx.readByte() & 15);
             vq $$5x = $$0xx.c(uq::m);
-            return new ehw($$1x, $$2x, $$3x, $$4x, $$5x);
+            return new eid($$1x, $$2x, $$3x, $$4x, $$5x);
          }))));
       int $$1 = $$0.readUnsignedByte();
       if ($$1 > 0) {
@@ -39,7 +39,7 @@ public class abx implements xx<aag> {
          int $$3 = $$0.readUnsignedByte();
          int $$4 = $$0.readUnsignedByte();
          byte[] $$5 = $$0.b();
-         this.f = new ehz.b($$3, $$4, $$1, $$2, $$5);
+         this.f = new eig.b($$3, $$4, $$1, $$2, $$5);
       } else {
          this.f = null;
       }
@@ -80,7 +80,7 @@ public class abx implements xx<aag> {
       return this.b;
    }
 
-   public void a(ehz $$0) {
+   public void a(eig $$0) {
       if (this.e != null) {
          $$0.a(this.e);
       }

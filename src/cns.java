@@ -1,24 +1,46 @@
-public class cns extends cou {
-   public cns(cou.a $$0) {
-      super($$0);
+import com.google.common.collect.Maps;
+import java.util.Map;
+
+public class cns extends coy implements cqc {
+   private static final Map<cnr, cns> a = Maps.newEnumMap(cnr.class);
+   private final cnr b;
+
+   public cns(cnr $$0, coy.a $$1) {
+      super($$1);
+      this.b = $$0;
+      a.put($$0, this);
    }
 
    @Override
-   public blv<coz> a(cvn $$0, chh $$1, blt $$2) {
-      coz $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), atk.hy, atl.h, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
-      if (!$$0.B) {
-         cii $$4 = new cii($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dE(), $$1.dC(), 0.0F, 1.5F, 1.0F);
-         $$0.b($$4);
+   public blw a(cpd $$0, chl $$1, boi $$2, blv $$3) {
+      if ($$2 instanceof cat $$4 && $$4.bx() && !$$4.A() && $$4.w() != this.b) {
+         $$4.dM().a($$1, $$4, atl.hy, atm.h, 1.0F, 1.0F);
+         if (!$$1.dM().B) {
+            $$4.b(this.b);
+            $$0.h(1);
+         }
+
+         return blw.a($$1.dM().B);
       }
 
-      $$1.b(atu.c.b(this));
-      if (!$$1.fU().d) {
-         $$3.h(1);
-      }
+      return blw.d;
+   }
 
-      return blv.a($$3, $$0.y_());
+   public cnr d() {
+      return this.b;
+   }
+
+   public static cns a(cnr $$0) {
+      return a.get($$0);
+   }
+
+   @Override
+   public boolean a(cvr $$0, dkg $$1, boolean $$2, chl $$3) {
+      if ($$1.a($$0x -> $$0x.a(this.d()), $$2)) {
+         $$0.a(null, $$1.aE_(), atl.hy, atm.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

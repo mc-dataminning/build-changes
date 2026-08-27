@@ -1,37 +1,43 @@
-public class fsw extends fsz {
-   private final fmx a;
-   private final fvt b = fvt.i(gal.a);
+public class fsw extends fuh {
+   private final fuc a;
 
-   fsw(fpx $$0, double $$1, double $$2, double $$3) {
+   protected fsw(fqe $$0, double $$1, double $$2, double $$3, fuc $$4) {
       super($$0, $$1, $$2, $$3);
-      this.a = new fmi(exh.O().aP().a(fpb.R));
-      this.u = 0.0F;
-      this.t = 30;
+      this.a = $$4;
+      this.b($$4);
+      this.t = 12 + this.r.a(4);
+      this.D = 1.0F;
+      this.b(1.0F, 1.0F);
    }
 
    @Override
-   public ftd b() {
-      return ftd.e;
+   public ftl b() {
+      return ftl.d;
    }
 
    @Override
-   public void a(ese $$0, ews $$1, float $$2) {
-      float $$3 = ((float)this.s + $$2) / (float)this.t;
-      float $$4 = 0.05F + 0.5F * awh.a($$3 * (float) Math.PI);
-      esa $$5 = new esa();
-      $$5.a($$1.f());
-      $$5.a(a.b.rotationDegrees(150.0F * $$3 - 60.0F));
-      $$5.b(-1.0F, -1.0F, 1.0F);
-      $$5.a(0.0F, -1.101F, 1.5F);
-      fvl.a $$6 = exh.O().aO().c();
-      ese $$7 = $$6.getBuffer(this.b);
-      this.a.a($$5, $$7, 15728880, ggk.d, 1.0F, 1.0F, 1.0F, $$4);
-      $$6.b();
+   public int a(float $$0) {
+      return 15728880;
    }
 
-   public static class a implements ftc<kc> {
-      public fsz a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fsw($$1, $$2, $$3, $$4);
+   @Override
+   public void a() {
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.a);
+      }
+   }
+
+   public static class a implements ftk<kc> {
+      private final fuc a;
+
+      public a(fuc $$0) {
+         this.a = $$0;
+      }
+
+      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fsw($$1, $$2, $$3, $$4, this.a);
       }
    }
 }

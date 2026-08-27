@@ -41,7 +41,7 @@ public class amm {
    }
 
    private static void a(du $$0, xx<?> $$1) {
-      $$0.l().af().e().forEach($$1x -> $$1x.a($$1));
+      $$0.l().ah().e().forEach($$1x -> $$1x.a($$1));
    }
 
    private static int a(du $$0, String $$1, Optional<UUID> $$2, Optional<String> $$3) {

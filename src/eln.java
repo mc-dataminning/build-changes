@@ -1,17 +1,16 @@
-import java.util.function.Function;
+public class eln {
+   public static final elk<bnq> a = a("this_entity");
+   public static final elk<chl> b = a("last_damage_player");
+   public static final elk<bmp> c = a("damage_source");
+   public static final elk<bnq> d = a("killer_entity");
+   public static final elk<bnq> e = a("direct_killer_entity");
+   public static final elk<enz> f = a("origin");
+   public static final elk<dlj> g = a("block_state");
+   public static final elk<dix> h = a("block_entity");
+   public static final elk<cpd> i = a("tool");
+   public static final elk<Float> j = a("explosion_radius");
 
-public interface eln<T extends eln<T>> {
-   T b(elu.a var1);
-
-   default <E> T a_(Iterable<E> $$0, Function<E, elu.a> $$1) {
-      T $$2 = this.d();
-
-      for (E $$3 : $$0) {
-         $$2 = $$2.b($$1.apply($$3));
-      }
-
-      return $$2;
+   private static <T> elk<T> a(String $$0) {
+      return new elk<>(new aiy($$0));
    }
-
-   T d();
 }

@@ -1,58 +1,34 @@
-import java.io.BufferedInputStream;
-import java.io.FilterInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import javax.sound.sampled.AudioFormat;
+import com.mojang.authlib.GameProfile;
+import java.net.SocketAddress;
 
-public class gle implements glc {
-   private final gle.a a;
-   private glc b;
-   private final BufferedInputStream c;
+public class gle extends aso {
+   private sw a;
 
-   public gle(gle.a $$0, InputStream $$1) throws IOException {
-      this.a = $$0;
-      this.c = new BufferedInputStream($$1);
-      this.c.mark(Integer.MAX_VALUE);
-      this.b = $$0.create(new gle.b(this.c));
+   public gle(glf $$0, iq<ajh> $$1, eiv $$2) {
+      super($$0, $$1, $$2, 8);
+      this.a(10);
    }
 
    @Override
-   public AudioFormat a() {
-      return this.b.a();
+   protected void b(aox $$0) {
+      if (this.b().a($$0.fS())) {
+         this.a = $$0.f(new sw());
+      }
+
+      super.b($$0);
    }
 
    @Override
-   public ByteBuffer a(int $$0) throws IOException {
-      ByteBuffer $$1 = this.b.a($$0);
-      if (!$$1.hasRemaining()) {
-         this.b.close();
-         this.c.reset();
-         this.b = this.a.create(new gle.b(this.c));
-         $$1 = this.b.a($$0);
-      }
+   public vq a(SocketAddress $$0, GameProfile $$1) {
+      return (vq)(this.b().a($$1) && this.a($$1.getName()) != null ? vq.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
+   }
 
-      return $$1;
+   public glf b() {
+      return (glf)super.c();
    }
 
    @Override
-   public void close() throws IOException {
-      this.b.close();
-      this.c.close();
-   }
-
-   @FunctionalInterface
-   public interface a {
-      glc create(InputStream var1) throws IOException;
-   }
-
-   static class b extends FilterInputStream {
-      b(InputStream $$0) {
-         super($$0);
-      }
-
-      @Override
-      public void close() {
-      }
+   public sw r() {
+      return this.a;
    }
 }

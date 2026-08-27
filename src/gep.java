@@ -1,13 +1,17 @@
-public abstract class gep<T extends bno, M extends fmb<T>> extends gfd<T, M> {
-   public gep(gcn<T, M> $$0) {
+public class gep<T extends boi, M extends fmi<T>> extends gfl<T, M> {
+   private final fvp a;
+
+   public gep(gcv<T, M> $$0, fvp $$1) {
       super($$0);
+      this.a = $$1;
    }
 
-   @Override
-   public void a(esa $$0, fvl $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      ese $$10 = $$1.getBuffer(this.a());
-      this.c().a($$0, $$10, 15728640, ggk.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   public void a(esh $$0, fvt $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      $$0.a();
+      $$0.a(0.0F, 0.4F, -0.4F);
+      $$0.a(a.b.rotationDegrees(180.0F));
+      cpd $$10 = $$3.c(bnx.a);
+      this.a.a($$3, $$10, cpa.h, false, $$0, $$1, $$2);
+      $$0.b();
    }
-
-   public abstract fvt a();
 }

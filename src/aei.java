@@ -5,7 +5,7 @@ public record aei(int b) implements xx<aag> {
       this($$0.n());
    }
 
-   public static aei a(bmf $$0) {
+   public static aei a(bmh $$0) {
       return new aei($$0.k());
    }
 

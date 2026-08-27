@@ -7,9 +7,9 @@ public class aeb implements xx<aag> {
    @Nullable
    private final aiy d;
    @Nullable
-   private final atl e;
+   private final atm e;
 
-   public aeb(@Nullable aiy $$0, @Nullable atl $$1) {
+   public aeb(@Nullable aiy $$0, @Nullable atm $$1) {
       this.d = $$0;
       this.e = $$1;
    }
@@ -17,7 +17,7 @@ public class aeb implements xx<aag> {
    private aeb(uq $$0) {
       int $$1 = $$0.readByte();
       if (($$1 & 1) > 0) {
-         this.e = $$0.b(atl.class);
+         this.e = $$0.b(atm.class);
       } else {
          this.e = null;
       }
@@ -62,7 +62,7 @@ public class aeb implements xx<aag> {
    }
 
    @Nullable
-   public atl e() {
+   public atm e() {
       return this.e;
    }
 }

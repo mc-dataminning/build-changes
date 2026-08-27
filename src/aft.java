@@ -3,7 +3,7 @@ public class aft implements xx<aes> {
    private static final int b = 2;
    private final boolean c;
 
-   public aft(che $$0) {
+   public aft(chi $$0) {
       this.c = $$0.b;
    }
 

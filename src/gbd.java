@@ -1,19 +1,18 @@
-public class gbd extends gby<cei, fmo<cei>> {
-   private static final aiy a = new aiy("textures/entity/zombie/zombie.png");
-   private final float i;
+public class gbd<T extends cfb> extends gbt<T> {
+   private static final aiy a = new aiy("textures/entity/illager/evoker.png");
 
-   public gbd(gas.a $$0, float $$1) {
-      super($$0, new fmg($$0.a(fpb.ad)), 0.5F * $$1);
-      this.i = $$1;
-      this.a(new gew<>(this, $$0.d()));
-      this.a(new get<>(this, new fmg($$0.a(fpb.ae)), new fmg($$0.a(fpb.af)), $$0.g()));
+   public gbd(gba.a $$0) {
+      super($$0, new fmw<>($$0.a(fpi.X)), 0.5F);
+      this.a(new gfe<T, fmw<T>>(this, $$0.d()) {
+         public void a(esh $$0, fvt $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+            if ($$3.gq()) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+            }
+         }
+      });
    }
 
-   protected void a(cei $$0, esa $$1, float $$2) {
-      $$1.b(this.i, this.i, this.i);
-   }
-
-   public aiy a(cei $$0) {
+   public aiy a(T $$0) {
       return a;
    }
 }

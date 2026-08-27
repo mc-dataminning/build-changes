@@ -1,7 +1,7 @@
 public interface fq {
-   ens a(du var1);
+   enz a(du var1);
 
-   enr b(du var1);
+   eny b(du var1);
 
    default hz c(du $$0) {
       return hz.a(this.a($$0));

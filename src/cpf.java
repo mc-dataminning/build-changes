@@ -1,19 +1,44 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.stream.Stream;
 
-public class cpf extends cql {
-   public cpf(cou.a $$0) {
-      super($$0);
+public class cpf {
+   public static blx<cpd> a(cvr $$0, chl $$1, blv $$2) {
+      $$1.c($$2);
+      return blx.b($$1.b($$2));
    }
 
-   @Override
-   public void a(coz $$0, @Nullable cvn $$1, List<vq> $$2, cqq $$3) {
-      cqx.a($$0, $$2, 0.25F, $$1 == null ? 20.0F : $$1.s().f());
+   public static cpd a(cpd $$0, chl $$1, cpd $$2, boolean $$3) {
+      boolean $$4 = $$1.fU().d;
+      if ($$3 && $$4) {
+         if (!$$1.fT().h($$2)) {
+            $$1.fT().e($$2);
+         }
+
+         return $$0;
+      } else {
+         if (!$$4) {
+            $$0.h(1);
+         }
+
+         if ($$0.b()) {
+            return $$2;
+         } else {
+            if (!$$1.fT().e($$2)) {
+               $$1.a($$2, false);
+            }
+
+            return $$0;
+         }
+      }
    }
 
-   @Override
-   public blv<coz> a(cvn $$0, chh $$1, blt $$2) {
-      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), atk.ny, atl.g, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
-      return super.a($$0, $$1, $$2);
+   public static cpd a(cpd $$0, chl $$1, cpd $$2) {
+      return a($$0, $$1, $$2, true);
+   }
+
+   public static void a(cdw $$0, Stream<cpd> $$1) {
+      cvr $$2 = $$0.dM();
+      if (!$$2.B) {
+         $$1.forEach($$2x -> $$2.b(new cdw($$2, $$0.dr(), $$0.dt(), $$0.dx(), $$2x)));
+      }
    }
 }

@@ -1,103 +1,95 @@
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class fxs implements fxl<djf> {
-   public static final giw a = new giw(ggs.e, new aiy("entity/conduit/base"));
-   public static final giw b = new giw(ggs.e, new aiy("entity/conduit/cage"));
-   public static final giw c = new giw(ggs.e, new aiy("entity/conduit/wind"));
-   public static final giw d = new giw(ggs.e, new aiy("entity/conduit/wind_vertical"));
-   public static final giw e = new giw(ggs.e, new aiy("entity/conduit/open_eye"));
-   public static final giw f = new giw(ggs.e, new aiy("entity/conduit/closed_eye"));
-   private final fpc g;
-   private final fpc h;
-   private final fpc i;
-   private final fpc j;
-   private final fxk k;
+public class fxs implements asc {
+   private Map<diz<?>, fxt<?>> d = ImmutableMap.of();
+   private final eyz e;
+   private final fpf f;
+   public cvr a;
+   public ewz b;
+   public enx c;
+   private final Supplier<fwn> g;
+   private final Supplier<gby> h;
+   private final Supplier<gay> i;
 
-   public fxs(fxm.a $$0) {
-      this.k = $$0.a();
-      this.g = $$0.a(fpb.z);
-      this.h = $$0.a(fpb.B);
-      this.i = $$0.a(fpb.A);
-      this.j = $$0.a(fpb.y);
+   public fxs(eyz $$0, fpf $$1, Supplier<fwn> $$2, Supplier<gby> $$3, Supplier<gay> $$4) {
+      this.h = $$3;
+      this.i = $$4;
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public static fpi b() {
-      fpk $$0 = new fpk();
-      fpl $$1 = $$0.a();
-      $$1.a("eye", fph.c().a(0, 0).a(-4.0F, -4.0F, 0.0F, 8.0F, 8.0F, 0.0F, new fpg(0.01F)), fpe.a);
-      return fpi.a($$0, 16, 16);
+   @Nullable
+   public <E extends dix> fxt<E> a(E $$0) {
+      return (fxt<E>)this.d.get($$0.v());
    }
 
-   public static fpi c() {
-      fpk $$0 = new fpk();
-      fpl $$1 = $$0.a();
-      $$1.a("wind", fph.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), fpe.a);
-      return fpi.a($$0, 64, 32);
-   }
-
-   public static fpi d() {
-      fpk $$0 = new fpk();
-      fpl $$1 = $$0.a();
-      $$1.a("shell", fph.c().a(0, 0).a(-3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F), fpe.a);
-      return fpi.a($$0, 32, 16);
-   }
-
-   public static fpi e() {
-      fpk $$0 = new fpk();
-      fpl $$1 = $$0.a();
-      $$1.a("shell", fph.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fpe.a);
-      return fpi.a($$0, 32, 16);
-   }
-
-   public void a(djf $$0, float $$1, esa $$2, fvl $$3, int $$4, int $$5) {
-      float $$6 = (float)$$0.a + $$1;
-      if (!$$0.d()) {
-         float $$7 = $$0.a(0.0F);
-         ese $$8 = a.a($$3, fvt::c);
-         $$2.a();
-         $$2.a(0.5F, 0.5F, 0.5F);
-         $$2.a(new Quaternionf().rotationY($$7 * (float) (Math.PI / 180.0)));
-         this.i.a($$2, $$8, $$4, $$5);
-         $$2.b();
-      } else {
-         float $$9 = $$0.a($$1) * (180.0F / (float)Math.PI);
-         float $$10 = awh.a($$6 * 0.1F) / 2.0F + 0.5F;
-         $$10 = $$10 * $$10 + $$10;
-         $$2.a();
-         $$2.a(0.5F, 0.3F + $$10 * 0.2F, 0.5F);
-         Vector3f $$11 = new Vector3f(0.5F, 1.0F, 0.5F).normalize();
-         $$2.a(new Quaternionf().rotationAxis($$9 * (float) (Math.PI / 180.0), $$11));
-         this.j.a($$2, b.a($$3, fvt::e), $$4, $$5);
-         $$2.b();
-         int $$12 = $$0.a / 66 % 3;
-         $$2.a();
-         $$2.a(0.5F, 0.5F, 0.5F);
-         if ($$12 == 1) {
-            $$2.a(new Quaternionf().rotationX((float) (Math.PI / 2)));
-         } else if ($$12 == 2) {
-            $$2.a(new Quaternionf().rotationZ((float) (Math.PI / 2)));
-         }
-
-         ese $$13 = ($$12 == 1 ? d : c).a($$3, fvt::e);
-         this.h.a($$2, $$13, $$4, $$5);
-         $$2.b();
-         $$2.a();
-         $$2.a(0.5F, 0.5F, 0.5F);
-         $$2.b(0.875F, 0.875F, 0.875F);
-         $$2.a(new Quaternionf().rotationXYZ((float) Math.PI, 0.0F, (float) Math.PI));
-         this.h.a($$2, $$13, $$4, $$5);
-         $$2.b();
-         ews $$14 = this.k.b;
-         $$2.a();
-         $$2.a(0.5F, 0.3F + $$10 * 0.2F, 0.5F);
-         $$2.b(0.5F, 0.5F, 0.5F);
-         float $$15 = -$$14.e();
-         $$2.a(new Quaternionf().rotationYXZ($$15 * (float) (Math.PI / 180.0), $$14.d() * (float) (Math.PI / 180.0), (float) Math.PI));
-         float $$16 = 1.3333334F;
-         $$2.b(1.3333334F, 1.3333334F, 1.3333334F);
-         this.g.a($$2, ($$0.f() ? e : f).a($$3, fvt::e), $$4, $$5);
-         $$2.b();
+   public void a(cvr $$0, ewz $$1, enx $$2) {
+      if (this.a != $$0) {
+         this.a($$0);
       }
+
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   public <E extends dix> void a(E $$0, float $$1, esh $$2, fvt $$3) {
+      fxt<E> $$4 = this.a($$0);
+      if ($$4 != null) {
+         if ($$0.n() && $$0.v().a($$0.r())) {
+            if ($$4.a($$0, this.b.b())) {
+               a($$0, () -> a($$4, $$0, $$1, $$2, $$3));
+            }
+         }
+      }
+   }
+
+   private static <T extends dix> void a(fxt<T> $$0, T $$1, float $$2, esh $$3, fvt $$4) {
+      cvr $$5 = $$1.i();
+      int $$6;
+      if ($$5 != null) {
+         $$6 = fvr.a($$5, $$1.aE_());
+      } else {
+         $$6 = 15728880;
+      }
+
+      $$0.a($$1, $$2, $$3, $$4, $$6, ggs.d);
+   }
+
+   public <E extends dix> boolean a(E $$0, esh $$1, fvt $$2, int $$3, int $$4) {
+      fxt<E> $$5 = this.a($$0);
+      if ($$5 == null) {
+         return true;
+      } else {
+         a($$0, () -> $$5.a($$0, 0.0F, $$1, $$2, $$3, $$4));
+         return false;
+      }
+   }
+
+   private static void a(dix $$0, Runnable $$1) {
+      try {
+         $$1.run();
+      } catch (Throwable var5) {
+         o $$3 = o.a(var5, "Rendering Block Entity");
+         p $$4 = $$3.a("Block Entity Details");
+         $$0.a($$4);
+         throw new y($$3);
+      }
+   }
+
+   public void a(@Nullable cvr $$0) {
+      this.a = $$0;
+      if ($$0 == null) {
+         this.b = null;
+      }
+   }
+
+   @Override
+   public void a(asb $$0) {
+      fxu.a $$1 = new fxu.a(this, this.g.get(), this.h.get(), this.i.get(), this.f, this.e);
+      this.d = fxv.a($$1);
    }
 }

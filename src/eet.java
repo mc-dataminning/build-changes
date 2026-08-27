@@ -1,51 +1,45 @@
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class eet {
-   public static final efl a = efl.a;
-   public static final Codec<eet> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eey.c.fieldOf("input_predicate").forGetter($$0x -> $$0x.c),
-               eey.c.fieldOf("location_predicate").forGetter($$0x -> $$0x.d),
-               eer.c.optionalFieldOf("position_predicate", eeq.b).forGetter($$0x -> $$0x.e),
-               dlf.b.fieldOf("output_state").forGetter($$0x -> $$0x.f),
-               efm.c.optionalFieldOf("block_entity_modifier", a).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, eet::new)
-   );
-   private final eey c;
-   private final eey d;
-   private final eer e;
-   private final dlf f;
-   private final efm g;
+public class eet extends efi {
+   private static final Logger c = LogUtils.getLogger();
+   public static final Codec<eet> a = Codec.unit(() -> eet.b);
+   public static final eet b = new eet();
 
-   public eet(eey $$0, eey $$1, dlf $$2) {
-      this($$0, $$1, eeq.b, $$2);
-   }
-
-   public eet(eey $$0, eey $$1, eer $$2, dlf $$3) {
-      this($$0, $$1, $$2, $$3, a);
-   }
-
-   public eet(eey $$0, eey $$1, eer $$2, dlf $$3, efm $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-   }
-
-   public boolean a(dlf $$0, dlf $$1, hz $$2, hz $$3, hz $$4, awo $$5) {
-      return this.c.a($$0, $$5) && this.d.a($$1, $$5) && this.e.a($$2, $$3, $$4, $$5);
-   }
-
-   public dlf a() {
-      return this.f;
+   private eet() {
    }
 
    @Nullable
-   public sw a(awo $$0, @Nullable sw $$1) {
-      return this.g.a($$0, $$1);
+   @Override
+   public efl.c a(cvu $$0, hz $$1, hz $$2, efl.c $$3, efl.c $$4, efh $$5) {
+      dlj $$6 = $$4.b();
+      if ($$6.a(cyu.pb)) {
+         if ($$4.c() == null) {
+            c.warn("Jigsaw block at {} is missing nbt, will not replace", $$1);
+            return $$4;
+         } else {
+            String $$7 = $$4.c().l("final_state");
+
+            dlj $$9;
+            try {
+               fm.a $$8 = fm.a($$0.a(kg.f), $$7, true);
+               $$9 = $$8.a();
+            } catch (CommandSyntaxException var11) {
+               throw new RuntimeException(var11);
+            }
+
+            return $$9.a(cyu.kN) ? null : new efl.c($$4.a(), $$9, null);
+         }
+      } else {
+         return $$4;
+      }
+   }
+
+   @Override
+   protected efk<?> a() {
+      return efk.h;
    }
 }

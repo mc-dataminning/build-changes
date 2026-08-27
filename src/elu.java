@@ -1,22 +1,17 @@
-import java.util.function.Predicate;
+import java.util.function.Function;
 
-public interface elu extends eiw, Predicate<eiv> {
-   elv b();
+public interface elu<T extends elu<T>> {
+   T b(emb.a var1);
 
-   @FunctionalInterface
-   public interface a {
-      elu build();
+   default <E> T a_(Iterable<E> $$0, Function<E, emb.a> $$1) {
+      T $$2 = this.d();
 
-      default elu.a invert() {
-         return elr.a(this);
+      for (E $$3 : $$0) {
+         $$2 = $$2.b($$1.apply($$3));
       }
 
-      default elj.a or(elu.a $$0) {
-         return elj.a(this, $$0);
-      }
-
-      default eli.a and(elu.a $$0) {
-         return eli.a(this, $$0);
-      }
+      return $$2;
    }
+
+   T d();
 }

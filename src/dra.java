@@ -1,60 +1,117 @@
-public class dra implements cva {
-   private int a;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-   @Override
-   public int a(aov $$0, boolean $$1, boolean $$2) {
-      if (!$$1) {
-         return 0;
-      } else if (!$$0.Z().b(cvj.C)) {
-         return 0;
-      } else {
-         awo $$3 = $$0.z;
-         this.a--;
-         if (this.a > 0) {
-            return 0;
-         } else {
-            this.a = this.a + (60 + $$3.a(60)) * 20;
-            if ($$0.C_() < 5 && $$0.E_().g()) {
-               return 0;
-            } else {
-               int $$4 = 0;
+public record dra(drd j, dlj k, dlj l, drb m, drm.o n, List<cwz.d> o, int p, boolean q, boolean r, boolean s, boolean t) {
+   public static final Codec<dra> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               drd.a.fieldOf("noise").forGetter(dra::f),
+               dlj.b.fieldOf("default_block").forGetter(dra::g),
+               dlj.b.fieldOf("default_fluid").forGetter(dra::h),
+               drb.a.fieldOf("noise_router").forGetter(dra::i),
+               drm.o.b.fieldOf("surface_rule").forGetter(dra::j),
+               cwz.d.a.listOf().fieldOf("spawn_target").forGetter(dra::k),
+               Codec.INT.fieldOf("sea_level").forGetter(dra::l),
+               Codec.BOOL.fieldOf("disable_mob_generation").forGetter(dra::a),
+               Codec.BOOL.fieldOf("aquifers_enabled").forGetter(dra::b),
+               Codec.BOOL.fieldOf("ore_veins_enabled").forGetter(dra::c),
+               Codec.BOOL.fieldOf("legacy_random_source").forGetter(dra::n)
+            )
+            .apply($$0, dra::new)
+   );
+   public static final Codec<ij<dra>> b = aiu.a(kg.aA, a);
+   public static final aix<dra> c = aix.a(kg.aA, new aiy("overworld"));
+   public static final aix<dra> d = aix.a(kg.aA, new aiy("large_biomes"));
+   public static final aix<dra> e = aix.a(kg.aA, new aiy("amplified"));
+   public static final aix<dra> f = aix.a(kg.aA, new aiy("nether"));
+   public static final aix<dra> g = aix.a(kg.aA, new aiy("end"));
+   public static final aix<dra> h = aix.a(kg.aA, new aiy("caves"));
+   public static final aix<dra> i = aix.a(kg.aA, new aiy("floating_islands"));
 
-               for (aow $$5 : $$0.x()) {
-                  if (!$$5.P_()) {
-                     hz $$6 = $$5.dm();
-                     if (!$$0.E_().g() || $$6.v() >= $$0.A_() && $$0.h($$6)) {
-                        bls $$7 = $$0.d_($$6);
-                        if ($$7.a($$3.i() * 3.0F)) {
-                           atq $$8 = $$5.H();
-                           int $$9 = awh.a($$8.a(atu.i.b(atu.n)), 1, Integer.MAX_VALUE);
-                           int $$10 = 24000;
-                           if ($$3.a($$9) >= 72000) {
-                              hz $$11 = $$6.b(20 + $$3.a(15)).g(-10 + $$3.a(21)).e(-10 + $$3.a(21));
-                              dlf $$12 = $$0.a_($$11);
-                              egp $$13 = $$0.b_($$11);
-                              if (cvy.a($$0, $$11, $$12, $$13, bnu.aw)) {
-                                 boy $$14 = null;
-                                 int $$15 = 1 + $$3.a($$7.a().a() + 1);
+   @Deprecated
+   public boolean a() {
+      return this.q;
+   }
 
-                                 for (int $$16 = 0; $$16 < $$15; $$16++) {
-                                    cep $$17 = bnu.aw.a((cvn)$$0);
-                                    if ($$17 != null) {
-                                       $$17.a($$11, 0.0F, 0.0F);
-                                       $$14 = $$17.a($$0, $$7, bok.a, $$14, null);
-                                       $$0.a_($$17);
-                                       $$4++;
-                                    }
-                                 }
-                              }
-                           }
-                        }
-                     }
-                  }
-               }
+   public boolean b() {
+      return this.r;
+   }
 
-               return $$4;
-            }
-         }
-      }
+   public boolean c() {
+      return this.s;
+   }
+
+   public dru.a d() {
+      return this.t ? dru.a.a : dru.a.b;
+   }
+
+   public static void a(ph<dra> $$0) {
+      $$0.a(c, a($$0, false, false));
+      $$0.a(d, a($$0, false, true));
+      $$0.a(e, a($$0, true, false));
+      $$0.a(f, c($$0));
+      $$0.a(g, b($$0));
+      $$0.a(h, d($$0));
+      $$0.a(i, e($$0));
+   }
+
+   private static dra b(ph<?> $$0) {
+      return new dra(drd.d, cyu.fz.o(), cyu.a.o(), drc.a($$0.a(kg.ax)), pu.c(), List.of(), 0, true, false, false, true);
+   }
+
+   private static dra c(ph<?> $$0) {
+      return new dra(drd.c, cyu.dV.o(), cyu.H.o(), drc.a($$0.a(kg.ax), $$0.a(kg.aB)), pu.b(), List.of(), 32, false, false, false, true);
+   }
+
+   private static dra a(ph<?> $$0, boolean $$1, boolean $$2) {
+      return new dra(drd.b, cyu.b.o(), cyu.G.o(), drc.a($$0.a(kg.ax), $$0.a(kg.aB), $$2, $$1), pu.a(), new cxg().a(), 63, false, true, true, false);
+   }
+
+   private static dra d(ph<?> $$0) {
+      return new dra(drd.e, cyu.b.o(), cyu.G.o(), drc.b($$0.a(kg.ax), $$0.a(kg.aB)), pu.a(false, true, true), List.of(), 32, false, false, false, true);
+   }
+
+   private static dra e(ph<?> $$0) {
+      return new dra(drd.f, cyu.b.o(), cyu.G.o(), drc.c($$0.a(kg.ax), $$0.a(kg.aB)), pu.a(false, false, false), List.of(), -64, false, false, false, true);
+   }
+
+   public static dra e() {
+      return new dra(drd.b, cyu.b.o(), cyu.a.o(), drc.a(), pu.d(), List.of(), 63, true, false, false, false);
+   }
+
+   public drd f() {
+      return this.j;
+   }
+
+   public dlj g() {
+      return this.k;
+   }
+
+   public dlj h() {
+      return this.l;
+   }
+
+   public drb i() {
+      return this.m;
+   }
+
+   public drm.o j() {
+      return this.n;
+   }
+
+   public List<cwz.d> k() {
+      return this.o;
+   }
+
+   public int l() {
+      return this.p;
+   }
+
+   public boolean m() {
+      return this.r;
+   }
+
+   public boolean n() {
+      return this.t;
    }
 }

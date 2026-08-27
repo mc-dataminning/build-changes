@@ -1,84 +1,69 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.logging.LogUtils;
-import java.io.Closeable;
-import java.io.File;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.FileSystem;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+public class avs {
+   public static class a {
+      public static int a(int $$0) {
+         return $$0 >>> 24;
+      }
 
-public class avs implements Closeable {
-   private static final Logger a = LogUtils.getLogger();
-   private final Path b;
-   private final Path c;
-   private final FileSystem d;
+      public static int b(int $$0) {
+         return $$0 & 0xFF;
+      }
 
-   public avs(Path $$0) {
-      this.b = $$0;
-      this.c = $$0.resolveSibling($$0.getFileName().toString() + "_tmp");
+      public static int c(int $$0) {
+         return $$0 >> 8 & 0xFF;
+      }
 
-      try {
-         this.d = ac.e.newFileSystem(this.c, ImmutableMap.of("create", "true"));
-      } catch (IOException var3) {
-         throw new UncheckedIOException(var3);
+      public static int d(int $$0) {
+         return $$0 >> 16 & 0xFF;
+      }
+
+      public static int e(int $$0) {
+         return $$0 & 16777215;
+      }
+
+      public static int f(int $$0) {
+         return $$0 | 0xFF000000;
+      }
+
+      public static int a(int $$0, int $$1, int $$2, int $$3) {
+         return $$0 << 24 | $$1 << 16 | $$2 << 8 | $$3;
+      }
+
+      public static int a(int $$0, int $$1) {
+         return $$0 << 24 | $$1 & 16777215;
       }
    }
 
-   public void a(Path $$0, String $$1) {
-      try {
-         Path $$2 = this.d.getPath(File.separator);
-         Path $$3 = $$2.resolve($$0.toString());
-         Files.createDirectories($$3.getParent());
-         Files.write($$3, $$1.getBytes(StandardCharsets.UTF_8));
-      } catch (IOException var5) {
-         throw new UncheckedIOException(var5);
+   public static class b {
+      public static int a(int $$0) {
+         return $$0 >>> 24;
       }
-   }
 
-   public void a(Path $$0, File $$1) {
-      try {
-         Path $$2 = this.d.getPath(File.separator);
-         Path $$3 = $$2.resolve($$0.toString());
-         Files.createDirectories($$3.getParent());
-         Files.copy($$1.toPath(), $$3);
-      } catch (IOException var5) {
-         throw new UncheckedIOException(var5);
+      public static int b(int $$0) {
+         return $$0 >> 16 & 0xFF;
       }
-   }
 
-   public void a(Path $$0) {
-      try {
-         Path $$1 = this.d.getPath(File.separator);
-         if (Files.isRegularFile($$0)) {
-            Path $$2 = $$1.resolve($$0.getParent().relativize($$0).toString());
-            Files.copy($$2, $$0);
-         } else {
-            try (Stream<Path> $$3 = Files.find($$0, Integer.MAX_VALUE, ($$0x, $$1x) -> $$1x.isRegularFile())) {
-               for (Path $$4 : $$3.collect(Collectors.toList())) {
-                  Path $$5 = $$1.resolve($$0.relativize($$4).toString());
-                  Files.createDirectories($$5.getParent());
-                  Files.copy($$4, $$5);
-               }
-            }
-         }
-      } catch (IOException var9) {
-         throw new UncheckedIOException(var9);
+      public static int c(int $$0) {
+         return $$0 >> 8 & 0xFF;
       }
-   }
 
-   @Override
-   public void close() {
-      try {
-         this.d.close();
-         Files.move(this.c, this.b);
-         a.info("Compressed to {}", this.b);
-      } catch (IOException var2) {
-         throw new UncheckedIOException(var2);
+      public static int d(int $$0) {
+         return $$0 & 0xFF;
+      }
+
+      public static int a(int $$0, int $$1, int $$2, int $$3) {
+         return $$0 << 24 | $$1 << 16 | $$2 << 8 | $$3;
+      }
+
+      public static int a(int $$0, int $$1) {
+         return a(a($$0) * a($$1) / 255, b($$0) * b($$1) / 255, c($$0) * c($$1) / 255, d($$0) * d($$1) / 255);
+      }
+
+      public static int a(float $$0, int $$1, int $$2) {
+         int $$3 = awi.a($$0, a($$1), a($$2));
+         int $$4 = awi.a($$0, b($$1), b($$2));
+         int $$5 = awi.a($$0, c($$1), c($$2));
+         int $$6 = awi.a($$0, d($$1), d($$2));
+         return a($$3, $$4, $$5, $$6);
       }
    }
 }

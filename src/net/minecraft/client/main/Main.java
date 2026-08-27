@@ -35,8 +35,8 @@ public class Main {
    public static void main(String[] $$0) {
       Stopwatch $$1 = Stopwatch.createStarted(Ticker.systemTicker());
       Stopwatch $$2 = Stopwatch.createStarted(Ticker.systemTicker());
-      glz.a.a(glv.z, $$1);
-      glz.a.a(glv.A, $$2);
+      gmh.a.a(gmd.z, $$1);
+      gmh.a.a(gmd.A, $$2);
       aa.a();
       aa.d();
       OptionParser $$3 = new OptionParser();
@@ -71,7 +71,7 @@ public class Main {
       OptionSpec<String> $$26 = $$3.accepts("userProperties").withRequiredArg().defaultsTo("{}", new String[0]);
       OptionSpec<String> $$27 = $$3.accepts("profileProperties").withRequiredArg().defaultsTo("{}", new String[0]);
       OptionSpec<String> $$28 = $$3.accepts("assetIndex").withRequiredArg();
-      OptionSpec<String> $$29 = $$3.accepts("userType").withRequiredArg().defaultsTo(exw.a.a.a(), new String[0]);
+      OptionSpec<String> $$29 = $$3.accepts("userType").withRequiredArg().defaultsTo(eyd.a.a.a(), new String[0]);
       OptionSpec<String> $$30 = $$3.accepts("versionType").withRequiredArg().defaultsTo("release", new String[0]);
       OptionSpec<String> $$31 = $$3.nonOptions();
       OptionSet $$32 = $$3.parse($$0);
@@ -110,8 +110,8 @@ public class Main {
       boolean $$45 = $$32.has("disableChat");
       String $$46 = a($$32, $$21);
       Gson $$47 = new GsonBuilder().registerTypeAdapter(PropertyMap.class, new Serializer()).create();
-      PropertyMap $$48 = avx.a($$47, a($$32, $$26), PropertyMap.class);
-      PropertyMap $$49 = avx.a($$47, a($$32, $$27), PropertyMap.class);
+      PropertyMap $$48 = avy.a($$47, a($$32, $$26), PropertyMap.class);
+      PropertyMap $$49 = avy.a($$47, a($$32, $$27), PropertyMap.class);
       String $$50 = a($$32, $$30);
       File $$51 = a($$32, $$9);
       File $$52 = $$32.has($$10) ? a($$32, $$10) : new File($$51, "assets/");
@@ -125,45 +125,45 @@ public class Main {
       String $$60 = a(a($$32, $$7));
       String $$61 = a(a($$32, $$8));
       if ($$32.has($$4)) {
-         bir.e.a(bip.a);
+         bit.e.a(bir.a);
       }
 
       o.h();
 
       try {
          aja.a();
-         glz.a.a(aja.b.get());
+         gmh.a.a(aja.b.get());
          aja.c();
       } catch (Throwable var84) {
          o $$63 = o.a(var84, "Bootstrap");
          p $$64 = $$63.a("Initialization");
-         awi.a($$64);
-         exh.a(null, null, $$46, null, $$63);
-         exh.a(null, $$51, $$63);
+         awj.a($$64);
+         exo.a(null, null, $$46, null, $$63);
+         exo.a(null, $$51, $$63);
          return;
       }
 
       String $$65 = (String)$$29.value($$32);
-      exw.a $$66 = exw.a.a($$65);
+      eyd.a $$66 = eyd.a.a($$65);
       if ($$66 == null) {
          a.warn("Unrecognized user type: {}", $$65);
       }
 
-      exw $$67 = new exw((String)$$16.value($$32), $$54, (String)$$20.value($$32), b($$56), b($$57), $$66);
-      fks $$68 = new fks(
-         new fks.d($$67, $$48, $$49, $$35),
-         new eqr($$38, $$39, $$40, $$41, $$42),
-         new fks.a($$51, $$53, $$52, $$55),
-         new fks.b($$43, $$46, $$50, $$44, $$45),
-         new fks.c($$58, $$59, $$60, $$61)
+      eyd $$67 = new eyd((String)$$16.value($$32), $$54, (String)$$20.value($$32), b($$56), b($$57), $$66);
+      fkz $$68 = new fkz(
+         new fkz.d($$67, $$48, $$49, $$35),
+         new eqy($$38, $$39, $$40, $$41, $$42),
+         new fkz.a($$51, $$53, $$52, $$55),
+         new fkz.b($$43, $$46, $$50, $$44, $$45),
+         new fkz.c($$58, $$59, $$60, $$61)
       );
       ac.l();
       Thread $$69 = new Thread("Client Shutdown Thread") {
          @Override
          public void run() {
-            exh $$0 = exh.O();
+            exo $$0 = exo.P();
             if ($$0 != null) {
-               gkx $$1 = $$0.T();
+               glf $$1 = $$0.U();
                if ($$1 != null) {
                   $$1.a(true);
                }
@@ -172,30 +172,30 @@ public class Main {
       };
       $$69.setUncaughtExceptionHandler(new r(a));
       Runtime.getRuntime().addShutdownHook($$69);
-      final exh $$70 = null;
+      final exo $$70 = null;
 
       try {
          Thread.currentThread().setName("Render thread");
          RenderSystem.initRenderThread();
          RenderSystem.beginInitialization();
-         $$70 = new exh($$68);
+         $$70 = new exo($$68);
          RenderSystem.finishInitialization();
-      } catch (fkt var82) {
+      } catch (fla var82) {
          ac.i();
          a.warn("Failed to create window: ", var82);
          return;
       } catch (Throwable var83) {
          o $$73 = o.a(var83, "Initializing game");
          p $$74 = $$73.a("Initialization");
-         awi.a($$74);
-         exh.a($$70, null, $$68.d.b, null, $$73);
-         exh.a($$70, $$68.c.a, $$73);
+         awj.a($$74);
+         exo.a($$70, null, $$68.d.b, null, $$73);
+         exo.a($$70, $$68.c.a, $$73);
          return;
       }
 
-      exh $$75 = $$70;
+      exo $$75 = $$70;
       Thread $$76;
-      if ($$70.aL()) {
+      if ($$70.aM()) {
          $$76 = new Thread("Game thread") {
             @Override
             public void run() {
@@ -222,7 +222,7 @@ public class Main {
          }
       }
 
-      erw.a();
+      esd.a();
 
       try {
          $$75.p();

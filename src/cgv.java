@@ -1,62 +1,64 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class cgv {
-   public static final int a = 1;
-   public static final int b = 5;
-   private static final int[] e = new int[]{0, 10, 70, 150, 250};
-   public static final Codec<cgv> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               kf.y.q().fieldOf("type").orElseGet(() -> cgz.c).forGetter($$0x -> $$0x.f),
-               kf.z.q().fieldOf("profession").orElseGet(() -> cgx.b).forGetter($$0x -> $$0x.g),
-               Codec.INT.fieldOf("level").orElse(1).forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, cgv::new)
-   );
-   public static final xo<vb, cgv> d = xo.a(xm.a(kg.aq), $$0 -> $$0.f, xm.a(kg.ap), $$0 -> $$0.g, xm.d, $$0 -> $$0.h, cgv::new);
-   private final cgz f;
-   private final cgx g;
-   private final int h;
+public class cgv implements cuo {
+   private final chl a;
+   private cuq b = new cuq();
+   private int c;
 
-   public cgv(cgz $$0, cgx $$1, int $$2) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = Math.max(1, $$2);
+   public cgv(chl $$0) {
+      this.a = $$0;
    }
 
-   public cgz a() {
-      return this.f;
+   @Override
+   public chl gg() {
+      return this.a;
    }
 
-   public cgx b() {
-      return this.g;
+   @Override
+   public void f(@Nullable chl $$0) {
    }
 
-   public int c() {
-      return this.h;
+   @Override
+   public cuq gi() {
+      return this.b;
    }
 
-   public cgv a(cgz $$0) {
-      return new cgv($$0, this.g, this.h);
+   @Override
+   public void a(cuq $$0) {
+      this.b = $$0;
    }
 
-   public cgv a(cgx $$0) {
-      return new cgv(this.f, $$0, this.h);
+   @Override
+   public void a(cup $$0) {
+      $$0.j();
    }
 
-   public cgv a(int $$0) {
-      return new cgv(this.f, this.g, $$0);
+   @Override
+   public void l(cpd $$0) {
    }
 
-   public static int b(int $$0) {
-      return d($$0) ? e[$$0 - 1] : 0;
+   @Override
+   public boolean go() {
+      return this.a.dM().B;
    }
 
-   public static int c(int $$0) {
-      return d($$0) ? e[$$0] : 0;
+   @Override
+   public int w() {
+      return this.c;
    }
 
-   public static boolean d(int $$0) {
-      return $$0 >= 1 && $$0 < 5;
+   @Override
+   public void u(int $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public boolean gj() {
+      return true;
+   }
+
+   @Override
+   public atk gk() {
+      return atl.Ad;
    }
 }

@@ -1,28 +1,23 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bss {
-   public static <E extends bog> brh<E> a(List<Pair<? extends btm<? super E>, Integer>> $$0) {
-      return a($$0, bqk.a.b, bqk.b.a);
-   }
-
-   public static <E extends bog> brh<E> a(List<Pair<? extends btm<? super E>, Integer>> $$0, bqk.a $$1, bqk.b $$2) {
-      bsf<btm<? super E>> $$3 = new bsf<>();
-      $$0.forEach($$1x -> $$3.a((btm<? super E>)$$1x.getFirst(), (Integer)$$1x.getSecond()));
-      return btj.a((Function<btj.b<E>, ? extends App<btj.c<E>, btm<E>>>)($$3x -> $$3x.a((btm<E>)(($$3xx, $$4, $$5) -> {
-            if ($$1 == bqk.a.b) {
-               $$3.a();
-            }
-
-            for (btm<? super E> $$6 : $$3) {
-               if ($$6.trigger($$3xx, $$4, $$5) && $$2 == bqk.b.a) {
-                  break;
-               }
-            }
-
-            return true;
-         }))));
+   public static bqb<boq> a(bxl<ii> $$0, float $$1, int $$2, int $$3) {
+      MutableLong $$4 = new MutableLong(0L);
+      return btn.a(
+         (Function<btn.b<boq>, ? extends App<btn.c<boq>, btq<boq>>>)($$5 -> $$5.group($$5.a(bxl.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                  ii $$10 = $$5.b($$6);
+                  if ($$7.ad() != $$10.a() || !$$10.b().a($$8.dk(), (double)$$3)) {
+                     return false;
+                  } else if ($$9 <= $$4.getValue()) {
+                     return true;
+                  } else {
+                     $$5x.a(new bxo($$10.b(), $$1, $$2));
+                     $$4.setValue($$9 + 80L);
+                     return true;
+                  }
+               }))
+      );
    }
 }

@@ -1,47 +1,20 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Collection;
-import java.util.Optional;
+public enum dlw implements axc {
+   a("head"),
+   b("foot");
 
-public class dlw extends dmi<Boolean> {
-   private final ImmutableSet<Boolean> a = ImmutableSet.of(true, false);
+   private final String c;
 
-   protected dlw(String $$0) {
-      super($$0, Boolean.class);
+   private dlw(String $$0) {
+      this.c = $$0;
    }
 
    @Override
-   public Collection<Boolean> a() {
-      return this.a;
-   }
-
-   public static dlw a(String $$0) {
-      return new dlw($$0);
+   public String toString() {
+      return this.c;
    }
 
    @Override
-   public Optional<Boolean> b(String $$0) {
-      return !"true".equals($$0) && !"false".equals($$0) ? Optional.empty() : Optional.of(Boolean.valueOf($$0));
-   }
-
-   public String a(Boolean $$0) {
-      return $$0.toString();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof dlw $$1 && super.equals($$0)) {
-            return this.a.equals($$1.a);
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int b() {
-      return 31 * super.b() + this.a.hashCode();
+   public String c() {
+      return this.c;
    }
 }

@@ -1,36 +1,31 @@
 import com.mojang.serialization.MapCodec;
 
-public class dfx extends cyo {
+public class dfx extends dam {
    public static final MapCodec<dfx> b = b(dfx::new);
-   public static final dlw c = dlv.z;
+   private static final vq c = vq.c("container.upgrade");
 
    @Override
-   protected MapCodec<? extends dfx> a() {
+   public MapCodec<dfx> a() {
       return b;
    }
 
-   protected dfx(dle.d $$0) {
+   protected dfx(dli.d $$0) {
       super($$0);
-      this.k(this.E.b().a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected dlf a(dlf $$0, ie $$1, dlf $$2, cvo $$3, hz $$4, hz $$5) {
-      return $$1 == ie.b ? $$0.a(c, Boolean.valueOf(m($$2))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected bma b(dlj $$0, cvr $$1, hz $$2) {
+      return new bmg(($$2x, $$3, $$4) -> new cmb($$2x, $$3, ckq.a($$1, $$2)), c);
    }
 
    @Override
-   public dlf a(crg $$0) {
-      dlf $$1 = $$0.q().a_($$0.a().c());
-      return this.o().a(c, Boolean.valueOf(m($$1)));
-   }
-
-   private static boolean m(dlf $$0) {
-      return $$0.a(atz.by);
-   }
-
-   @Override
-   protected void a(dlg.a<cyo, dlf> $$0) {
-      $$0.a(c);
+   protected blw a(dlj $$0, cvr $$1, hz $$2, chl $$3, env $$4) {
+      if ($$1.B) {
+         return blw.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(atv.aF);
+         return blw.b;
+      }
    }
 }

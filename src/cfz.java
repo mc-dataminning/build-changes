@@ -1,8 +1,8 @@
-public enum cfz {
-   a,
-   b,
-   c,
-   d,
-   e,
-   f;
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cfz {
 }

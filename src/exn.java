@@ -1,157 +1,486 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.math.LongMath;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2BooleanFunction;
-import java.io.Reader;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.Map.Entry;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.stream.Collectors;
+import com.google.common.base.MoreObjects;
+import com.mojang.blaze3d.platform.TextureUtil;
+import java.nio.file.Path;
+import java.text.MessageFormat;
+import java.util.Locale;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class exn extends asf<Map<String, List<exn.a>>> implements AutoCloseable {
-   private static final Codec<Map<String, List<exn.a>>> a = Codec.unboundedMap(
-      Codec.STRING,
-      RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     Codec.LONG.optionalFieldOf("delay", 0L).forGetter(exn.a::a),
-                     Codec.LONG.fieldOf("period").forGetter(exn.a::b),
-                     Codec.STRING.fieldOf("title").forGetter(exn.a::c),
-                     Codec.STRING.fieldOf("message").forGetter(exn.a::d)
-                  )
-                  .apply($$0, exn.a::new)
-         )
-         .listOf()
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final aiy c;
-   private final Object2BooleanFunction<String> d;
-   @Nullable
-   private Timer e;
-   @Nullable
-   private exn.b f;
+public class exn {
+   public static final int a = 10000;
+   private final exo b;
+   private final eqw c = new eqw();
+   private long d = -1L;
+   private long e = -1L;
+   private long f = -1L;
+   private boolean g;
 
-   public exn(aiy $$0, Object2BooleanFunction<String> $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public exn(exo $$0) {
+      this.b = $$0;
    }
 
-   protected Map<String, List<exn.a>> a(asa $$0, bil $$1) {
-      try {
-         Map var4;
-         try (Reader $$2 = $$0.openAsReader(this.c)) {
-            var4 = (Map)a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$2)).result().orElseThrow();
-         }
+   private boolean a(int $$0) {
+      switch ($$0) {
+         case 69:
+            this.b.B = !this.b.B;
+            this.c("SectionPath: {0}", this.b.B ? "shown" : "hidden");
+            return true;
+         case 76:
+            this.b.D = !this.b.D;
+            this.c("SmartCull: {0}", this.b.D ? "enabled" : "disabled");
+            return true;
+         case 85:
+            if (ffl.v()) {
+               this.b.f.n();
+               this.c("Killed frustum");
+            } else {
+               this.b.f.m();
+               this.c("Captured frustum");
+            }
 
-         return var4;
-      } catch (Exception var8) {
-         b.warn("Failed to load {}", this.c, var8);
-         return ImmutableMap.of();
+            return true;
+         case 86:
+            this.b.C = !this.b.C;
+            this.c("SectionVisibility: {0}", this.b.C ? "enabled" : "disabled");
+            return true;
+         case 87:
+            this.b.A = !this.b.A;
+            this.c("WireFrame: {0}", this.b.A ? "enabled" : "disabled");
+            return true;
+         default:
+            return false;
       }
    }
 
-   protected void a(Map<String, List<exn.a>> $$0, asa $$1, bil $$2) {
-      List<exn.a> $$3 = $$0.entrySet()
-         .stream()
-         .filter($$0x -> (Boolean)this.d.apply((String)$$0x.getKey()))
-         .map(Entry::getValue)
-         .flatMap(Collection::stream)
-         .collect(Collectors.toList());
-      if ($$3.isEmpty()) {
-         this.a();
-      } else if ($$3.stream().anyMatch($$0x -> $$0x.b == 0L)) {
-         ac.a("A periodic notification in " + this.c + " has a period of zero minutes");
-         this.a();
+   private void a(n $$0, vq $$1) {
+      this.b.l.d().a(vq.i().b(vq.c("debug.prefix").a($$0, n.r)).b(vp.v).b($$1));
+   }
+
+   private void a(vq $$0) {
+      this.a(n.o, $$0);
+   }
+
+   private void a(String $$0, Object... $$1) {
+      this.a(vq.b($$0, $$1));
+   }
+
+   private void b(String $$0, Object... $$1) {
+      this.a(n.m, vq.b($$0, $$1));
+   }
+
+   private void c(String $$0, Object... $$1) {
+      this.a(vq.b(MessageFormat.format($$0, $$1)));
+   }
+
+   private boolean b(int $$0) {
+      if (this.d > 0L && this.d < ac.b() - 100L) {
+         return true;
       } else {
-         long $$4 = this.a($$3);
-         long $$5 = this.a($$3, $$4);
-         if (this.e == null) {
-            this.e = new Timer();
+         switch ($$0) {
+            case 49:
+               this.b.aO().j();
+               return true;
+            case 50:
+               this.b.aO().i();
+               return true;
+            case 51:
+               this.b.aO().h();
+               return true;
+            case 65:
+               this.b.f.f();
+               this.a("debug.reload_chunks.message");
+               return true;
+            case 66:
+               boolean $$1 = !this.b.ap().a();
+               this.b.ap().b($$1);
+               this.a($$1 ? "debug.show_hitboxes.on" : "debug.show_hitboxes.off");
+               return true;
+            case 67:
+               if (this.b.s.gj()) {
+                  return false;
+               } else {
+                  fqf $$7 = this.b.s.cq;
+                  if ($$7 == null) {
+                     return false;
+                  }
+
+                  this.a("debug.copy_location.message");
+                  this.a(
+                     String.format(
+                        Locale.ROOT,
+                        "/execute in %s run tp @s %.2f %.2f %.2f %.2f %.2f",
+                        this.b.s.dM().ad().a(),
+                        this.b.s.dr(),
+                        this.b.s.dt(),
+                        this.b.s.dx(),
+                        this.b.s.dC(),
+                        this.b.s.dE()
+                     )
+                  );
+                  return true;
+               }
+            case 68:
+               if (this.b.l != null) {
+                  this.b.l.d().a(false);
+               }
+
+               return true;
+            case 71:
+               boolean $$2 = this.b.k.b();
+               this.a($$2 ? "debug.chunk_boundaries.on" : "debug.chunk_boundaries.off");
+               return true;
+            case 72:
+               this.b.m.m = !this.b.m.m;
+               this.a(this.b.m.m ? "debug.advanced_tooltips.on" : "debug.advanced_tooltips.off");
+               this.b.m.as();
+               return true;
+            case 73:
+               if (!this.b.s.gj()) {
+                  this.a(this.b.s.m(2), !ffl.v());
+               }
+
+               return true;
+            case 76:
+               if (this.b.a(this::a)) {
+                  this.a("debug.profiling.start", 10);
+               }
+
+               return true;
+            case 78:
+               if (!this.b.s.m(2)) {
+                  this.a("debug.creative_spectator.error");
+               } else if (!this.b.s.P_()) {
+                  this.b.s.cq.d("gamemode spectator");
+               } else {
+                  this.b.s.cq.d("gamemode " + ((cvo)MoreObjects.firstNonNull(this.b.q.i(), cvo.b)).b());
+               }
+
+               return true;
+            case 80:
+               this.b.m.n = !this.b.m.n;
+               this.b.m.as();
+               this.a(this.b.m.n ? "debug.pause_focus.on" : "debug.pause_focus.off");
+               return true;
+            case 81:
+               this.a("debug.help.message");
+               ezp $$3 = this.b.l.d();
+               $$3.a(vq.c("debug.reload_chunks.help"));
+               $$3.a(vq.c("debug.show_hitboxes.help"));
+               $$3.a(vq.c("debug.copy_location.help"));
+               $$3.a(vq.c("debug.clear_chat.help"));
+               $$3.a(vq.c("debug.chunk_boundaries.help"));
+               $$3.a(vq.c("debug.advanced_tooltips.help"));
+               $$3.a(vq.c("debug.inspect.help"));
+               $$3.a(vq.c("debug.profiling.help"));
+               $$3.a(vq.c("debug.creative_spectator.help"));
+               $$3.a(vq.c("debug.pause_focus.help"));
+               $$3.a(vq.c("debug.help.help"));
+               $$3.a(vq.c("debug.dump_dynamic_textures.help"));
+               $$3.a(vq.c("debug.reload_resourcepacks.help"));
+               $$3.a(vq.c("debug.pause.help"));
+               $$3.a(vq.c("debug.gamemodes.help"));
+               return true;
+            case 83:
+               Path $$4 = this.b.p.toPath().toAbsolutePath();
+               Path $$5 = TextureUtil.getDebugTexturePath($$4);
+               this.b.Z().a($$5);
+               vq $$6 = vq.b($$4.relativize($$5).toString()).a(n.t).a($$1x -> $$1x.a(new vo(vo.a.b, $$5.toFile().toString())));
+               this.a("debug.dump_dynamic_textures", $$6);
+               return true;
+            case 84:
+               this.a("debug.reload_resourcepacks.message");
+               this.b.k();
+               return true;
+            case 293:
+               if (!this.b.s.m(2)) {
+                  this.a("debug.gamemodes.error");
+               } else {
+                  this.b.a(new fgh());
+               }
+
+               return true;
+            default:
+               return false;
+         }
+      }
+   }
+
+   private void a(boolean $$0, boolean $$1) {
+      enx $$2 = this.b.v;
+      if ($$2 != null) {
+         switch ($$2.c()) {
+            case b:
+               hz $$3 = ((env)$$2).a();
+               dlj $$4 = this.b.s.dM().a_($$3);
+               if ($$0) {
+                  if ($$1) {
+                     this.b.s.cq.t().a($$3, $$2x -> {
+                        this.a($$4, $$3, $$2x);
+                        this.a("debug.inspect.server.block");
+                     });
+                  } else {
+                     dix $$5 = this.b.s.dM().c_($$3);
+                     sw $$6 = $$5 != null ? $$5.q() : null;
+                     this.a($$4, $$3, $$6);
+                     this.a("debug.inspect.client.block");
+                  }
+               } else {
+                  this.a($$4, $$3, null);
+                  this.a("debug.inspect.client.block");
+               }
+               break;
+            case c:
+               bnq $$7 = ((enw)$$2).a();
+               aiy $$8 = kf.g.b($$7.ai());
+               if ($$0) {
+                  if ($$1) {
+                     this.b.s.cq.t().a($$7.aj(), $$2x -> {
+                        this.a($$8, $$7.dk(), $$2x);
+                        this.a("debug.inspect.server.entity");
+                     });
+                  } else {
+                     sw $$9 = $$7.f(new sw());
+                     this.a($$8, $$7.dk(), $$9);
+                     this.a("debug.inspect.client.entity");
+                  }
+               } else {
+                  this.a($$8, $$7.dk(), null);
+                  this.a("debug.inspect.client.entity");
+               }
+         }
+      }
+   }
+
+   private void a(dlj $$0, hz $$1, @Nullable sw $$2) {
+      StringBuilder $$3 = new StringBuilder(fm.a($$0));
+      if ($$2 != null) {
+         $$3.append($$2);
+      }
+
+      String $$4 = String.format(Locale.ROOT, "/setblock %d %d %d %s", $$1.u(), $$1.v(), $$1.w(), $$3);
+      this.a($$4);
+   }
+
+   private void a(aiy $$0, enz $$1, @Nullable sw $$2) {
+      String $$4;
+      if ($$2 != null) {
+         $$2.r("UUID");
+         $$2.r("Pos");
+         $$2.r("Dimension");
+         String $$3 = tl.c((tt)$$2).getString();
+         $$4 = String.format(Locale.ROOT, "/summon %s %.2f %.2f %.2f %s", $$0, $$1.c, $$1.d, $$1.e, $$3);
+      } else {
+         $$4 = String.format(Locale.ROOT, "/summon %s %.2f %.2f %.2f", $$0, $$1.c, $$1.d, $$1.e);
+      }
+
+      this.a($$4);
+   }
+
+   public void a(long $$0, int $$1, int $$2, int $$3, int $$4) {
+      if ($$0 == this.b.aN().i()) {
+         boolean $$5 = erc.a(exo.P().aN().i(), 292);
+         if (this.d > 0L) {
+            if (!erc.a(exo.P().aN().i(), 67) || !$$5) {
+               this.d = -1L;
+            }
+         } else if (erc.a(exo.P().aN().i(), 67) && $$5) {
+            this.g = true;
+            this.d = ac.b();
+            this.e = ac.b();
+            this.f = 0L;
          }
 
-         if (this.f == null) {
-            this.f = new exn.b($$3, $$4, $$5);
-         } else {
-            this.f = this.f.a($$3, $$5);
+         ffl $$6 = this.b.y;
+         if ($$6 != null) {
+            switch ($$1) {
+               case 258:
+                  this.b.a(exl.d);
+               case 259:
+               case 260:
+               case 261:
+               default:
+                  break;
+               case 262:
+               case 263:
+               case 264:
+               case 265:
+                  this.b.a(exl.c);
+            }
          }
 
-         this.e.scheduleAtFixedRate(this.f, TimeUnit.MINUTES.toMillis($$4), TimeUnit.MINUTES.toMillis($$5));
-      }
-   }
+         if ($$3 == 1 && (!(this.b.y instanceof fgf) || ((fgf)$$6).k <= ac.b() - 20L)) {
+            if (this.b.m.R.a($$1, $$2)) {
+               this.b.aN().h();
+               this.b.m.X().a(this.b.aN().j());
+               return;
+            }
 
-   @Override
-   public void close() {
-      this.a();
-   }
+            if (this.b.m.O.a($$1, $$2)) {
+               if (ffl.t()) {
+               }
 
-   private void a() {
-      if (this.e != null) {
-         this.e.cancel();
-      }
-   }
+               exz.a(this.b.p, this.b.g(), $$0x -> this.b.execute(() -> this.b.l.d().a($$0x)));
+               return;
+            }
+         }
 
-   private long a(List<exn.a> $$0, long $$1) {
-      return $$0.stream().mapToLong($$1x -> {
-         long $$2 = $$1x.a - $$1;
-         return LongMath.gcd($$2, $$1x.b);
-      }).reduce(LongMath::gcd).orElseThrow(() -> new IllegalStateException("Empty notifications from: " + this.c));
-   }
+         if (this.b.aX().a() && this.b.m.s().c()) {
+            boolean $$9 = $$6 == null || !($$6.aK_() instanceof ezx $$7) || !$$7.d();
+            if ($$3 != 0 && $$1 == 66 && ffl.t() && $$9) {
+               boolean $$10 = this.b.m.ap().c() == exq.a;
+               this.b.m.ap().a(exq.a(this.b.m.ap().c().a() + 1));
+               this.b.m.as();
+               if ($$6 instanceof ffn) {
+                  ((ffn)$$6).o();
+               }
 
-   private long a(List<exn.a> $$0) {
-      return $$0.stream().mapToLong($$0x -> $$0x.a).min().orElse(0L);
-   }
-
-   public static record a(long a, long b, String c, String d) {
-
-      public a(long a, long b, String c, String d) {
-         this.a = a != 0L ? a : b;
-         this.b = b;
-         this.c = c;
-         this.d = d;
-      }
-   }
-
-   static class b extends TimerTask {
-      private final exh a = exh.O();
-      private final List<exn.a> b;
-      private final long c;
-      private final AtomicLong d;
-
-      public b(List<exn.a> $$0, long $$1, long $$2) {
-         this.b = $$0;
-         this.c = $$2;
-         this.d = new AtomicLong($$1);
-      }
-
-      public exn.b a(List<exn.a> $$0, long $$1) {
-         this.cancel();
-         return new exn.b($$0, this.d.get(), $$1);
-      }
-
-      @Override
-      public void run() {
-         long $$0 = this.d.getAndAdd(this.c);
-         long $$1 = this.d.get();
-
-         for (exn.a $$2 : this.b) {
-            if ($$0 >= $$2.a) {
-               long $$3 = $$0 / $$2.b;
-               long $$4 = $$1 / $$2.b;
-               if ($$3 != $$4) {
-                  this.a.execute(() -> fbp.a(exh.O().ay(), fbp.a.f, vq.a($$2.c, $$3), vq.a($$2.d, $$3)));
-                  return;
+               if ($$10 && $$6 != null) {
+                  $$6.C();
                }
             }
+         }
+
+         if ($$6 != null) {
+            boolean[] $$11 = new boolean[]{false};
+            ffl.a(() -> {
+               if ($$3 == 1 || $$3 == 2) {
+                  $$6.z();
+                  $$11[0] = $$6.a($$1, $$2, $$4);
+               } else if ($$3 == 0) {
+                  $$11[0] = $$6.b($$1, $$2, $$4);
+               }
+            }, "keyPressed event handler", $$6.getClass().getCanonicalName());
+            if ($$11[0]) {
+               return;
+            }
+         }
+
+         erc.a $$12;
+         boolean $$13;
+         boolean var20;
+         label185: {
+            $$12 = erc.a($$1, $$2);
+            $$13 = this.b.y == null;
+            label144:
+            if (!$$13) {
+               if (this.b.y instanceof ffg $$14 && !$$14.o()) {
+                  break label144;
+               }
+
+               var20 = false;
+               break label185;
+            }
+
+            var20 = true;
+         }
+
+         boolean $$15 = var20;
+         if ($$3 == 0) {
+            exm.a($$12, false);
+            if ($$15 && $$1 == 292) {
+               if (this.g) {
+                  this.g = false;
+               } else {
+                  this.b.aO().g();
+               }
+            }
+         } else {
+            boolean $$16 = false;
+            if ($$15) {
+               if ($$1 == 293 && this.b.j != null) {
+                  this.b.j.c();
+               }
+
+               if ($$1 == 256) {
+                  this.b.c($$5);
+                  $$16 |= $$5;
+               }
+
+               $$16 |= $$5 && this.b($$1);
+               this.g |= $$16;
+               if ($$1 == 290) {
+                  this.b.m.Z = !this.b.m.Z;
+               }
+
+               if (this.b.aO().e() && !$$5 && $$1 >= 48 && $$1 <= 57) {
+                  this.b.a($$1 - 48);
+               }
+            }
+
+            if ($$13) {
+               if ($$16) {
+                  exm.a($$12, false);
+               } else {
+                  exm.a($$12, true);
+                  exm.a($$12);
+               }
+            }
+         }
+      }
+   }
+
+   private void a(long $$0, int $$1, int $$2) {
+      if ($$0 == this.b.aN().i()) {
+         fbk $$3 = this.b.y;
+         if ($$3 != null && this.b.aK() == null) {
+            if (Character.charCount($$1) == 1) {
+               ffl.a(() -> $$3.a((char)$$1, $$2), "charTyped event handler", $$3.getClass().getCanonicalName());
+            } else {
+               for (char $$4 : Character.toChars($$1)) {
+                  ffl.a(() -> $$3.a($$4, $$2), "charTyped event handler", $$3.getClass().getCanonicalName());
+               }
+            }
+         }
+      }
+   }
+
+   public void a(long $$0) {
+      erc.a(
+         $$0,
+         ($$0x, $$1, $$2, $$3, $$4) -> this.b.execute(() -> this.a($$0x, $$1, $$2, $$3, $$4)),
+         ($$0x, $$1, $$2) -> this.b.execute(() -> this.a($$0x, $$1, $$2))
+      );
+   }
+
+   public String a() {
+      return this.c.a(this.b.aN().i(), ($$0, $$1) -> {
+         if ($$0 != 65545) {
+            this.b.aN().a($$0, $$1);
+         }
+      });
+   }
+
+   public void a(String $$0) {
+      if (!$$0.isEmpty()) {
+         this.c.a(this.b.aN().i(), $$0);
+      }
+   }
+
+   public void b() {
+      if (this.d > 0L) {
+         long $$0 = ac.b();
+         long $$1 = 10000L - ($$0 - this.d);
+         long $$2 = $$0 - this.e;
+         if ($$1 < 0L) {
+            if (ffl.t()) {
+               epx.a();
+            }
+
+            String $$3 = "Manually triggered debug crash";
+            o $$4 = new o("Manually triggered debug crash", new Throwable("Manually triggered debug crash"));
+            p $$5 = $$4.a("Manual crash details");
+            awj.a($$5);
+            throw new y($$4);
+         }
+
+         if ($$2 >= 1000L) {
+            if (this.f == 0L) {
+               this.a("debug.crash.message");
+            } else {
+               this.b("debug.crash.warning", awi.f((float)$$1 / 1000.0F));
+            }
+
+            this.e = $$0;
+            this.f++;
          }
       }
    }

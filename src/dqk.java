@@ -1,54 +1,55 @@
-import com.mojang.serialization.Codec;
+public interface dqk extends awp {
+   float b = 5.9604645E-8F;
+   double c = 1.110223E-16F;
 
-public class dqk {
-   public static enum a implements axc {
-      a("air"),
-      b("liquid");
+   int c(int var1);
 
-      public static final Codec<dqk.a> c = axc.a(dqk.a::values);
-      private final String d;
+   @Override
+   default int f() {
+      return this.c(32);
+   }
 
-      private a(String $$0) {
-         this.d = $$0;
-      }
+   @Override
+   default int a(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Bound must be positive");
+      } else if (($$0 & $$0 - 1) == 0) {
+         return (int)((long)$$0 * (long)this.c(31) >> 31);
+      } else {
+         int $$1;
+         int $$2;
+         do {
+            $$1 = this.c(31);
+            $$2 = $$1 % $$0;
+         } while ($$1 - $$2 + ($$0 - 1) < 0);
 
-      public String a() {
-         return this.d;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
+         return $$2;
       }
    }
 
-   public static enum b implements axc {
-      a("raw_generation"),
-      b("lakes"),
-      c("local_modifications"),
-      d("underground_structures"),
-      e("surface_structures"),
-      f("strongholds"),
-      g("underground_ores"),
-      h("underground_decoration"),
-      i("fluid_springs"),
-      j("vegetal_decoration"),
-      k("top_layer_modification");
+   @Override
+   default long g() {
+      int $$0 = this.c(32);
+      int $$1 = this.c(32);
+      long $$2 = (long)$$0 << 32;
+      return $$2 + (long)$$1;
+   }
 
-      public static final Codec<dqk.b> l = axc.a(dqk.b::values);
-      private final String m;
+   @Override
+   default boolean h() {
+      return this.c(1) != 0;
+   }
 
-      private b(String $$0) {
-         this.m = $$0;
-      }
+   @Override
+   default float i() {
+      return (float)this.c(24) * 5.9604645E-8F;
+   }
 
-      public String a() {
-         return this.m;
-      }
-
-      @Override
-      public String c() {
-         return this.m;
-      }
+   @Override
+   default double j() {
+      int $$0 = this.c(26);
+      int $$1 = this.c(27);
+      long $$2 = ((long)$$0 << 27) + (long)$$1;
+      return (double)$$2 * 1.110223E-16F;
    }
 }

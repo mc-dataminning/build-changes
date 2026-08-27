@@ -1,23 +1,24 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public abstract class ewm extends ewh {
+public class ewm extends ewo {
    private static final Logger b = LogUtils.getLogger();
-   private final long c;
-   private final vq d;
-   private final Runnable e;
+   private static final vq c = vq.c("mco.download.preparing");
+   private final long d;
+   private final int e;
+   private final ffl f;
+   private final String g;
 
-   public ewm(long $$0, vq $$1, Runnable $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public ewm(long $$0, int $$1, String $$2, ffl $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$3;
+      this.g = $$2;
    }
-
-   protected abstract void a(esq var1, long var2) throws eud;
 
    @Override
    public void run() {
-      esq $$0 = esq.a();
+      esx $$0 = esx.a();
       int $$1 = 0;
 
       while ($$1 < 25) {
@@ -26,27 +27,37 @@ public abstract class ewm extends ewh {
                return;
             }
 
-            this.a($$0, this.c);
+            eue $$2 = $$0.b(this.d, this.e);
+            a(1L);
             if (this.d()) {
                return;
             }
 
-            this.e.run();
+            a(new eva(this.f, $$2, this.g, $$0x -> {
+            }));
             return;
-         } catch (eue var4) {
+         } catch (eul var4) {
             if (this.d()) {
                return;
             }
 
             a((long)var4.c);
             $$1++;
-         } catch (Exception var5) {
+         } catch (euk var5) {
             if (this.d()) {
                return;
             }
 
-            b.error("Couldn't reset world");
-            this.a(var5);
+            b.error("Couldn't download world data", var5);
+            a(new evb(var5, this.f));
+            return;
+         } catch (Exception var6) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't download world data", var6);
+            this.a(var6);
             return;
          }
       }
@@ -54,6 +65,6 @@ public abstract class ewm extends ewh {
 
    @Override
    public vq a() {
-      return this.d;
+      return c;
    }
 }

@@ -1,16 +1,107 @@
-public class fzp extends gby<cax, fky> {
-   private static final aiy a = new aiy("textures/entity/allay/allay.png");
+import com.google.common.collect.Maps;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-   public fzp(gas.a $$0) {
-      super($$0, new fky($$0.a(fpb.a)), 0.4F);
-      this.a(new gew<>(this, $$0.d()));
+public class fzp implements fze.a {
+   private final exo a;
+   private final Map<aix<cvr>, Map<String, ebd>> b = Maps.newIdentityHashMap();
+   private final Map<aix<cvr>, Map<String, zm.a>> c = Maps.newIdentityHashMap();
+   private static final int d = 500;
+
+   public fzp(exo $$0) {
+      this.a = $$0;
    }
 
-   public aiy a(cax $$0) {
-      return a;
+   @Override
+   public void a(esh $$0, fvt $$1, double $$2, double $$3, double $$4) {
+      ewz $$5 = this.a.j.m();
+      aix<cvr> $$6 = this.a.r.ad();
+      hz $$7 = hz.a($$5.b().c, 0.0, $$5.b().e);
+      esl $$8 = $$1.getBuffer(fwb.w());
+      if (this.b.containsKey($$6)) {
+         for (ebd $$9 : this.b.get($$6).values()) {
+            if ($$7.a($$9.g(), 500.0)) {
+               fvr.a(
+                  $$0,
+                  $$8,
+                  (double)$$9.h() - $$2,
+                  (double)$$9.i() - $$3,
+                  (double)$$9.j() - $$4,
+                  (double)($$9.k() + 1) - $$2,
+                  (double)($$9.l() + 1) - $$3,
+                  (double)($$9.m() + 1) - $$4,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F
+               );
+            }
+         }
+      }
+
+      Map<String, zm.a> $$10 = this.c.get($$6);
+      if ($$10 != null) {
+         for (zm.a $$11 : $$10.values()) {
+            ebd $$12 = $$11.a();
+            if ($$7.a($$12.g(), 500.0)) {
+               if ($$11.b()) {
+                  fvr.a(
+                     $$0,
+                     $$8,
+                     (double)$$12.h() - $$2,
+                     (double)$$12.i() - $$3,
+                     (double)$$12.j() - $$4,
+                     (double)($$12.k() + 1) - $$2,
+                     (double)($$12.l() + 1) - $$3,
+                     (double)($$12.m() + 1) - $$4,
+                     0.0F,
+                     1.0F,
+                     0.0F,
+                     1.0F,
+                     0.0F,
+                     1.0F,
+                     0.0F
+                  );
+               } else {
+                  fvr.a(
+                     $$0,
+                     $$8,
+                     (double)$$12.h() - $$2,
+                     (double)$$12.i() - $$3,
+                     (double)$$12.j() - $$4,
+                     (double)($$12.k() + 1) - $$2,
+                     (double)($$12.l() + 1) - $$3,
+                     (double)($$12.m() + 1) - $$4,
+                     0.0F,
+                     0.0F,
+                     1.0F,
+                     1.0F,
+                     0.0F,
+                     0.0F,
+                     1.0F
+                  );
+               }
+            }
+         }
+      }
    }
 
-   protected int a(cax $$0, hz $$1) {
-      return 15;
+   public void a(ebd $$0, List<zm.a> $$1, aix<cvr> $$2) {
+      this.b.computeIfAbsent($$2, $$0x -> new HashMap<>()).put($$0.toString(), $$0);
+      Map<String, zm.a> $$3 = this.c.computeIfAbsent($$2, $$0x -> new HashMap<>());
+
+      for (zm.a $$4 : $$1) {
+         $$3.put($$4.a().toString(), $$4);
+      }
+   }
+
+   @Override
+   public void a() {
+      this.b.clear();
+      this.c.clear();
    }
 }

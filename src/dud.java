@@ -1,53 +1,58 @@
 import com.mojang.serialization.Codec;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public class dud extends dsv {
-   public dud(Codec<dvy> $$0) {
+public class dud extends dtz<due> {
+   public dud(Codec<due> $$0) {
       super($$0);
    }
 
    @Override
-   protected void a(cvo $$0, awo $$1, hz $$2, int $$3, hz.a $$4, dvy $$5) {
-      for (int $$6 = $$3 - 3; $$6 <= $$3; $$6++) {
-         int $$7 = $$6 < $$3 ? $$5.d : $$5.d - 1;
-         int $$8 = $$5.d - 2;
+   public boolean a(dub<due> $$0) {
+      awp $$1 = $$0.d();
+      cwm $$2 = $$0.b();
+      hz $$3 = $$0.e();
+      dfe $$4 = dfe.a($$1);
+      due $$5 = $$0.f();
+      int $$6 = $$1.a($$5.b.size());
+      efm $$7 = $$2.E().o().aZ();
+      efl $$8 = $$7.a($$5.b.get($$6));
+      efl $$9 = $$7.a($$5.c.get($$6));
+      cuy $$10 = new cuy($$3);
+      ebd $$11 = new ebd($$10.d() - 16, $$2.J_(), $$10.e() - 16, $$10.f() + 16, $$2.ak(), $$10.g() + 16);
+      efh $$12 = new efh().a($$4).a($$11).a($$1);
+      jd $$13 = $$8.a($$4);
+      hz $$14 = $$3.b(-$$13.u() / 2, 0, -$$13.w() / 2);
+      int $$15 = $$3.v();
 
-         for (int $$9 = -$$7; $$9 <= $$7; $$9++) {
-            for (int $$10 = -$$7; $$10 <= $$7; $$10++) {
-               boolean $$11 = $$9 == -$$7;
-               boolean $$12 = $$9 == $$7;
-               boolean $$13 = $$10 == -$$7;
-               boolean $$14 = $$10 == $$7;
-               boolean $$15 = $$11 || $$12;
-               boolean $$16 = $$13 || $$14;
-               if ($$6 >= $$3 || $$15 != $$16) {
-                  $$4.a($$2, $$9, $$6, $$10);
-                  if (!$$0.a_($$4).i($$0, $$4)) {
-                     dlf $$17 = $$5.b.a($$1, $$2);
-                     if ($$17.b(dck.e) && $$17.b(dck.c) && $$17.b(dck.b) && $$17.b(dck.d) && $$17.b(dck.f)) {
-                        $$17 = $$17.a(dck.f, Boolean.valueOf($$6 >= $$3 - 1))
-                           .a(dck.e, Boolean.valueOf($$9 < -$$8))
-                           .a(dck.c, Boolean.valueOf($$9 > $$8))
-                           .a(dck.b, Boolean.valueOf($$10 < -$$8))
-                           .a(dck.d, Boolean.valueOf($$10 > $$8));
-                     }
-
-                     this.a($$0, $$4, $$17);
-                  }
-               }
-            }
+      for (int $$16 = 0; $$16 < $$13.u(); $$16++) {
+         for (int $$17 = 0; $$17 < $$13.w(); $$17++) {
+            $$15 = Math.min($$15, $$2.a(dqv.a.c, $$14.u() + $$16, $$14.w() + $$17));
          }
+      }
+
+      int $$18 = Math.max($$15 - 15 - $$1.a(10), $$2.J_() + 10);
+      hz $$19 = $$8.a($$14.h($$18), ddo.a, $$4);
+      if (a($$2, $$8.b($$12, $$19)) > $$5.f) {
+         return false;
+      } else {
+         $$12.b();
+         $$5.d.a().a().forEach($$12::a);
+         $$8.a($$2, $$19, $$19, $$12, $$1, 4);
+         $$12.b();
+         $$5.e.a().a().forEach($$12::a);
+         $$9.a($$2, $$19, $$19, $$12, $$1, 4);
+         return true;
       }
    }
 
-   @Override
-   protected int a(int $$0, int $$1, int $$2, int $$3) {
-      int $$4 = 0;
-      if ($$3 < $$1 && $$3 >= $$1 - 3) {
-         $$4 = $$2;
-      } else if ($$3 == $$1) {
-         $$4 = $$2;
-      }
-
-      return $$4;
+   private static int a(cwm $$0, ebd $$1) {
+      MutableInt $$2 = new MutableInt(0);
+      $$1.a($$2x -> {
+         dlj $$3 = $$0.a_($$2x);
+         if ($$3.i() || $$3.a(cyu.H) || $$3.a(cyu.G)) {
+            $$2.add(1);
+         }
+      });
+      return $$2.getValue();
    }
 }

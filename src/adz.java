@@ -1,8 +1,8 @@
 public class adz implements xx<aag> {
    public static final xo<vb, adz> a = xx.a(adz::a, adz::new);
    public static final float b = 8.0F;
-   private final ij<atj> c;
-   private final atl d;
+   private final ij<atk> c;
+   private final atm d;
    private final int e;
    private final int f;
    private final int g;
@@ -10,7 +10,7 @@ public class adz implements xx<aag> {
    private final float i;
    private final long j;
 
-   public adz(ij<atj> $$0, atl $$1, double $$2, double $$3, double $$4, float $$5, float $$6, long $$7) {
+   public adz(ij<atk> $$0, atm $$1, double $$2, double $$3, double $$4, float $$5, float $$6, long $$7) {
       this.c = $$0;
       this.d = $$1;
       this.e = (int)($$2 * 8.0);
@@ -22,8 +22,8 @@ public class adz implements xx<aag> {
    }
 
    private adz(vb $$0) {
-      this.c = atj.d.decode($$0);
-      this.d = $$0.b(atl.class);
+      this.c = atk.d.decode($$0);
+      this.d = $$0.b(atm.class);
       this.e = $$0.readInt();
       this.f = $$0.readInt();
       this.g = $$0.readInt();
@@ -33,7 +33,7 @@ public class adz implements xx<aag> {
    }
 
    private void a(vb $$0) {
-      atj.d.encode($$0, this.c);
+      atk.d.encode($$0, this.c);
       $$0.a(this.d);
       $$0.p(this.e);
       $$0.p(this.f);
@@ -52,11 +52,11 @@ public class adz implements xx<aag> {
       $$0.a(this);
    }
 
-   public ij<atj> b() {
+   public ij<atk> b() {
       return this.c;
    }
 
-   public atl e() {
+   public atm e() {
       return this.d;
    }
 

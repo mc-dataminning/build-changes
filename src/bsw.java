@@ -1,34 +1,28 @@
 import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
 import java.util.function.Function;
 
 public class bsw {
-   public static bpx<bog> a(cyo $$0) {
-      return btj.a(
-         (Function<btj.b<bog>, ? extends App<btj.c<bog>, btm<bog>>>)($$1 -> $$1.group($$1.c(bxh.o), $$1.b(bxh.m), $$1.b(bxh.Y))
-               .apply($$1, ($$1x, $$2, $$3) -> ($$2x, $$3x, $$4) -> {
-                     if (!$$3x.aZ() && $$3x.aC()) {
-                        hz $$5 = $$3x.dm().d();
+   public static <E extends boi> brl<E> a(List<Pair<? extends btq<? super E>, Integer>> $$0) {
+      return a($$0, bqo.a.b, bqo.b.a);
+   }
 
-                        for (ie $$6 : ie.c.a) {
-                           hz $$7 = $$5.a($$6);
-                           if ($$2x.a_($$7).k($$2x, $$7).a(ie.b).c() && $$2x.b_($$7).b(egq.c)) {
-                              hz $$8 = $$7.c();
-                              if ($$2x.a_($$8).i()) {
-                                 dlf $$9 = $$0.o();
-                                 $$2x.a($$8, $$9, 3);
-                                 $$2x.a(dpp.i, $$8, dpp.a.a($$3x, $$9));
-                                 $$2x.a(null, $$3x, atk.jA, atl.e, 1.0F, 1.0F);
-                                 $$3.b();
-                                 return true;
-                              }
-                           }
-                        }
+   public static <E extends boi> brl<E> a(List<Pair<? extends btq<? super E>, Integer>> $$0, bqo.a $$1, bqo.b $$2) {
+      bsj<btq<? super E>> $$3 = new bsj<>();
+      $$0.forEach($$1x -> $$3.a((btq<? super E>)$$1x.getFirst(), (Integer)$$1x.getSecond()));
+      return btn.a((Function<btn.b<E>, ? extends App<btn.c<E>, btq<E>>>)($$3x -> $$3x.a((btq<E>)(($$3xx, $$4, $$5) -> {
+            if ($$1 == bqo.a.b) {
+               $$3.a();
+            }
 
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+            for (btq<? super E> $$6 : $$3) {
+               if ($$6.trigger($$3xx, $$4, $$5) && $$2 == bqo.b.a) {
+                  break;
+               }
+            }
+
+            return true;
+         }))));
    }
 }

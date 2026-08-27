@@ -30,17 +30,17 @@ public class aln {
       );
    }
 
-   private static Optional<? extends in.b<ebe>> a(ex.c<ebe> $$0, iv<ebe> $$1) {
-      return (Optional<? extends in.b<ebe>>)$$0.a().map($$1x -> $$1.b($$1x).map($$0xx -> in.a($$0xx)), $$1::b);
+   private static Optional<? extends in.b<ebl>> a(ex.c<ebl> $$0, iv<ebl> $$1) {
+      return (Optional<? extends in.b<ebl>>)$$0.a().map($$1x -> $$1.b($$1x).map($$0xx -> in.a($$0xx)), $$1::b);
    }
 
-   private static int a(du $$0, ex.c<ebe> $$1) throws CommandSyntaxException {
-      iv<ebe> $$2 = $$0.e().I_().d(kg.aD);
-      in<ebe> $$3 = (in<ebe>)a($$1, $$2).orElseThrow(() -> c.create($$1.b()));
+   private static int a(du $$0, ex.c<ebl> $$1) throws CommandSyntaxException {
+      iv<ebl> $$2 = $$0.e().I_().d(kg.aD);
+      in<ebl> $$3 = (in<ebl>)a($$1, $$2).orElseThrow(() -> c.create($$1.b()));
       hz $$4 = hz.a($$0.d());
-      aov $$5 = $$0.e();
+      aow $$5 = $$0.e();
       Stopwatch $$6 = Stopwatch.createStarted(ac.c);
-      Pair<hz, ij<ebe>> $$7 = $$5.l().g().a($$5, $$3, $$4, 100, false);
+      Pair<hz, ij<ebl>> $$7 = $$5.l().g().a($$5, $$3, $$4, 100, false);
       $$6.stop();
       if ($$7 == null) {
          throw b.create($$1.b());
@@ -49,10 +49,10 @@ public class aln {
       }
    }
 
-   private static int a(du $$0, ew.c<cwm> $$1) throws CommandSyntaxException {
+   private static int a(du $$0, ew.c<cwq> $$1) throws CommandSyntaxException {
       hz $$2 = hz.a($$0.d());
       Stopwatch $$3 = Stopwatch.createStarted(ac.c);
-      Pair<hz, ij<cwm>> $$4 = $$0.e().a($$1, $$2, 6400, 32, 64);
+      Pair<hz, ij<cwq>> $$4 = $$0.e().a($$1, $$2, 6400, 32, 64);
       $$3.stop();
       if ($$4 == null) {
          throw d.create($$1.b());
@@ -61,11 +61,11 @@ public class aln {
       }
    }
 
-   private static int b(du $$0, ew.c<bzk> $$1) throws CommandSyntaxException {
+   private static int b(du $$0, ew.c<bzo> $$1) throws CommandSyntaxException {
       hz $$2 = hz.a($$0.d());
-      aov $$3 = $$0.e();
+      aow $$3 = $$0.e();
       Stopwatch $$4 = Stopwatch.createStarted(ac.c);
-      Optional<Pair<ij<bzk>, hz>> $$5 = $$3.y().e($$1, $$2, 256, bzh.b.c);
+      Optional<Pair<ij<bzo>, hz>> $$5 = $$3.y().e($$1, $$2, 256, bzl.b.c);
       $$4.stop();
       if ($$5.isEmpty()) {
          throw e.create($$1.b());
@@ -86,7 +86,7 @@ public class aln {
 
    private static int a(du $$0, hz $$1, Pair<hz, ? extends ij<?>> $$2, String $$3, boolean $$4, String $$5, Duration $$6) {
       hz $$7 = (hz)$$2.getFirst();
-      int $$8 = $$4 ? awh.d(awh.c((float)$$1.j($$7))) : awh.d(a($$1.u(), $$1.w(), $$7.u(), $$7.w()));
+      int $$8 = $$4 ? awi.d(awi.c((float)$$1.j($$7))) : awi.d(a($$1.u(), $$1.w(), $$7.u(), $$7.w()));
       String $$9 = $$4 ? String.valueOf($$7.v()) : "~";
       vq $$10 = vt.a((vq)vq.a("chat.coordinates", $$7.u(), $$9, $$7.w()))
          .a($$2x -> $$2x.a(n.k).a(new vo(vo.a.d, "/tp @s " + $$7.u() + " " + $$9 + " " + $$7.w())).a(new vw(vw.a.a, vq.c("chat.coordinates.tooltip"))));
@@ -98,6 +98,6 @@ public class aln {
    private static float a(int $$0, int $$1, int $$2, int $$3) {
       int $$4 = $$2 - $$0;
       int $$5 = $$3 - $$1;
-      return awh.c((float)($$4 * $$4 + $$5 * $$5));
+      return awi.c((float)($$4 * $$4 + $$5 * $$5));
    }
 }

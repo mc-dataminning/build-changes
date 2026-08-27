@@ -1,83 +1,98 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class des extends der {
-   public static final MapCodec<des> h = b(des::new);
-   public static final dlz i = dcj.aE;
-   public static final dlw j = der.d;
+public class des extends cys {
+   public static final MapCodec<des> a = b(des::new);
+   public static final dma b = dev.d;
 
    @Override
    public MapCodec<des> a() {
-      return h;
+      return a;
    }
 
-   protected des(dle.d $$0) {
+   public des(dli.d $$0) {
       super($$0);
-      this.k(this.E.b().a(i, ie.c).a(j, Boolean.valueOf(true)));
+      this.k(this.o().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public String h() {
-      return this.j().a();
+   protected void a(dlj $$0, cvr $$1, hz $$2, chl $$3) {
+      d($$0, $$1, $$2);
+      super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected eol a(dlf $$0, cut $$1, hz $$2, enx $$3) {
-      return dho.m($$0);
+   public void a(cvr $$0, hz $$1, dlj $$2, bnq $$3) {
+      if (!$$3.bT()) {
+         d($$2, $$0, $$1);
+      }
+
+      super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected boolean a(dlf $$0, cvq $$1, hz $$2) {
-      return dho.b($$1, $$2, $$0.c(i));
+   protected bly a(cpd $$0, dlj $$1, cvr $$2, hz $$3, chl $$4, blv $$5, env $$6) {
+      if ($$2.B) {
+         a($$2, $$3);
+      } else {
+         d($$1, $$2, $$3);
+      }
+
+      return $$0.d() instanceof cmw && new crk($$4, $$5, $$0, $$6).b() ? bly.e : bly.a;
    }
 
-   @Override
-   protected dlf a(dlf $$0, ie $$1, dlf $$2, cvo $$3, hz $$4, hz $$5) {
-      return $$1.g() == $$0.c(i) && !$$0.a($$3, $$4) ? cyq.a.o() : $$0;
-   }
-
-   @Nullable
-   @Override
-   public dlf a(crg $$0) {
-      dlf $$1 = cyq.cq.a($$0);
-      return $$1 == null ? null : this.o().a(i, $$1.c(i));
-   }
-
-   @Override
-   public void a(dlf $$0, cvn $$1, hz $$2, awo $$3) {
-      if ($$0.c(j)) {
-         ie $$4 = $$0.c(i).g();
-         double $$5 = 0.27;
-         double $$6 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.j();
-         double $$7 = (double)$$2.v() + 0.7 + ($$3.j() - 0.5) * 0.2 + 0.22;
-         double $$8 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.l();
-         $$1.a(jt.b, $$6, $$7, $$8, 0.0, 0.0, 0.0);
+   private static void d(dlj $$0, cvr $$1, hz $$2) {
+      a($$1, $$2);
+      if (!$$0.c(b)) {
+         $$1.a($$2, $$0.a(b, Boolean.valueOf(true)), 3);
       }
    }
 
    @Override
-   protected boolean a(cvn $$0, hz $$1, dlf $$2) {
-      ie $$3 = $$2.c(i).g();
-      return $$0.b($$1.a($$3), $$3);
+   protected boolean e_(dlj $$0) {
+      return $$0.c(b);
    }
 
    @Override
-   protected int a(dlf $$0, cut $$1, hz $$2, ie $$3) {
-      return $$0.c(j) && $$0.c(i) != $$3 ? 15 : 0;
+   protected void b(dlj $$0, aow $$1, hz $$2, awp $$3) {
+      if ($$0.c(b)) {
+         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 3);
+      }
    }
 
    @Override
-   protected dlf a(dlf $$0, dfa $$1) {
-      return $$0.a(i, $$1.a($$0.c(i)));
+   protected void a(dlj $$0, aow $$1, hz $$2, cpd $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4 && ctn.a(ctp.v, $$3) == 0) {
+         int $$5 = 1 + $$1.z.a(5);
+         this.a($$1, $$2, $$5);
+      }
    }
 
    @Override
-   protected dlf a(dlf $$0, ddk $$1) {
-      return $$0.a($$1.a($$0.c(i)));
+   public void a(dlj $$0, cvr $$1, hz $$2, awp $$3) {
+      if ($$0.c(b)) {
+         a($$1, $$2);
+      }
+   }
+
+   private static void a(cvr $$0, hz $$1) {
+      double $$2 = 0.5625;
+      awp $$3 = $$0.z;
+
+      for (ie $$4 : ie.values()) {
+         hz $$5 = $$1.a($$4);
+         if (!$$0.a_($$5).i($$0, $$5)) {
+            ie.a $$6 = $$4.o();
+            double $$7 = $$6 == ie.a.a ? 0.5 + 0.5625 * (double)$$4.j() : (double)$$3.i();
+            double $$8 = $$6 == ie.a.b ? 0.5 + 0.5625 * (double)$$4.k() : (double)$$3.i();
+            double $$9 = $$6 == ie.a.c ? 0.5 + 0.5625 * (double)$$4.l() : (double)$$3.i();
+            $$0.a(jt.b, (double)$$1.u() + $$7, (double)$$1.v() + $$8, (double)$$1.w() + $$9, 0.0, 0.0, 0.0);
+         }
+      }
    }
 
    @Override
-   protected void a(dlg.a<cyo, dlf> $$0) {
-      $$0.a(i, j);
+   protected void a(dlk.a<cys, dlj> $$0) {
+      $$0.a(b);
    }
 }

@@ -35,7 +35,7 @@ public class aaq implements xx<aag> {
       this.f = $$1.g.apply($$0);
    }
 
-   public static aaq a(blk $$0) {
+   public static aaq a(blm $$0) {
       return new aaq($$0.i(), new aaq.a($$0));
    }
 
@@ -43,19 +43,19 @@ public class aaq implements xx<aag> {
       return new aaq($$0, g);
    }
 
-   public static aaq b(blk $$0) {
+   public static aaq b(blm $$0) {
       return new aaq($$0.i(), new aaq.f($$0.k()));
    }
 
-   public static aaq c(blk $$0) {
+   public static aaq c(blm $$0) {
       return new aaq($$0.i(), new aaq.e($$0.j()));
    }
 
-   public static aaq d(blk $$0) {
+   public static aaq d(blm $$0) {
       return new aaq($$0.i(), new aaq.h($$0.l(), $$0.m()));
    }
 
-   public static aaq e(blk $$0) {
+   public static aaq e(blm $$0) {
       return new aaq($$0.i(), new aaq.g($$0.n(), $$0.o(), $$0.p()));
    }
 
@@ -98,13 +98,13 @@ public class aaq implements xx<aag> {
    static class a implements aaq.c {
       private final vq a;
       private final float b;
-      private final blk.a c;
-      private final blk.b d;
+      private final blm.a c;
+      private final blm.b d;
       private final boolean e;
       private final boolean f;
       private final boolean g;
 
-      a(blk $$0) {
+      a(blm $$0) {
          this.a = $$0.j();
          this.b = $$0.k();
          this.c = $$0.l();
@@ -117,8 +117,8 @@ public class aaq implements xx<aag> {
       private a(uq $$0) {
          this.a = $$0.m();
          this.b = $$0.readFloat();
-         this.c = $$0.b(blk.a.class);
-         this.d = $$0.b(blk.b.class);
+         this.c = $$0.b(blm.a.class);
+         this.d = $$0.b(blm.b.class);
          int $$1 = $$0.readUnsignedByte();
          this.e = ($$1 & 1) > 0;
          this.f = ($$1 & 2) > 0;
@@ -146,7 +146,7 @@ public class aaq implements xx<aag> {
    }
 
    public interface b {
-      default void a(UUID $$0, vq $$1, float $$2, blk.a $$3, blk.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+      default void a(UUID $$0, vq $$1, float $$2, blm.a $$3, blm.b $$4, boolean $$5, boolean $$6, boolean $$7) {
       }
 
       default void a(UUID $$0) {
@@ -158,7 +158,7 @@ public class aaq implements xx<aag> {
       default void a(UUID $$0, vq $$1) {
       }
 
-      default void a(UUID $$0, blk.a $$1, blk.b $$2) {
+      default void a(UUID $$0, blm.a $$1, blm.b $$2) {
       }
 
       default void a(UUID $$0, boolean $$1, boolean $$2, boolean $$3) {
@@ -277,17 +277,17 @@ public class aaq implements xx<aag> {
    }
 
    static class h implements aaq.c {
-      private final blk.a a;
-      private final blk.b b;
+      private final blm.a a;
+      private final blm.b b;
 
-      h(blk.a $$0, blk.b $$1) {
+      h(blm.a $$0, blm.b $$1) {
          this.a = $$0;
          this.b = $$1;
       }
 
       private h(uq $$0) {
-         this.a = $$0.b(blk.a.class);
-         this.b = $$0.b(blk.b.class);
+         this.a = $$0.b(blm.a.class);
+         this.b = $$0.b(blm.b.class);
       }
 
       @Override

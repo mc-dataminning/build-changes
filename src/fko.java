@@ -1,49 +1,36 @@
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.List;
+import com.mojang.authlib.GameProfile;
+import java.util.function.Supplier;
 
-public class fko implements fkk, fkl {
-   private static final aiy a = new aiy("spectator/teleport_to_player");
-   private static final Comparator<fqg> b = Comparator.comparing($$0 -> $$0.a().getId());
-   private static final vq c = vq.c("spectatorMenu.teleport");
-   private static final vq d = vq.c("spectatorMenu.teleport.prompt");
-   private final List<fkl> e;
+public class fko implements fks {
+   private final GameProfile a;
+   private final Supplier<gia> b;
+   private final vq c;
 
-   public fko() {
-      this(exh.O().J().n());
-   }
-
-   public fko(Collection<fqg> $$0) {
-      this.e = $$0.stream().filter($$0x -> $$0x.e() != cvk.d).sorted(b).map($$0x -> new fkh($$0x.a())).toList();
+   public fko(GameProfile $$0) {
+      this.a = $$0;
+      this.b = exo.P().am().a($$0);
+      this.c = vq.b($$0.getName());
    }
 
    @Override
-   public List<fkl> a() {
-      return this.e;
-   }
-
-   @Override
-   public vq b() {
-      return d;
-   }
-
-   @Override
-   public void a(fkj $$0) {
-      $$0.a(this);
+   public void a(fkq $$0) {
+      exo.P().K().b(new agl(this.a.getId()));
    }
 
    @Override
    public vq aR_() {
-      return c;
+      return this.c;
    }
 
    @Override
-   public void a(eyu $$0, float $$1, int $$2) {
-      $$0.a(a, 0, 0, 16, 16);
+   public void a(ezb $$0, float $$1, int $$2) {
+      $$0.a(1.0F, 1.0F, 1.0F, (float)$$2 / 255.0F);
+      fan.a($$0, this.b.get(), 2, 2, 12);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
    }
 
    @Override
    public boolean aS_() {
-      return !this.e.isEmpty();
+      return true;
    }
 }

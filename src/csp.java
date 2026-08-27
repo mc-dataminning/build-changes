@@ -1,88 +1,75 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public abstract class csp implements csb<bln> {
-   protected final cry a;
-   protected final coz b;
-   private final csg<?> d;
-   private final csf<?> e;
-   protected final String c;
-
-   public csp(csg<?> $$0, csf<?> $$1, String $$2, cry $$3, coz $$4) {
-      this.d = $$0;
-      this.e = $$1;
-      this.c = $$2;
-      this.a = $$3;
-      this.b = $$4;
+public class csp extends crx {
+   public csp(crv $$0) {
+      super($$0);
    }
 
-   @Override
-   public csg<?> e() {
-      return this.d;
+   public boolean a(ckv $$0, cvr $$1) {
+      cpd $$2 = cpd.h;
+      cpd $$3 = cpd.h;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cpd $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if ($$5.d() instanceof cmt) {
+               if (!$$3.b()) {
+                  return false;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cpg.vo)) {
+                  return false;
+               }
+
+               if (!$$2.b()) {
+                  return false;
+               }
+
+               if (cmw.a($$5) != null) {
+                  return false;
+               }
+
+               $$2 = $$5;
+            }
+         }
+      }
+
+      return !$$2.b() && !$$3.b();
    }
 
-   @Override
-   public csf<?> at_() {
-      return this.e;
-   }
+   public cpd a(ckv $$0, iw $$1) {
+      cpd $$2 = cpd.h;
+      cpd $$3 = cpd.h;
 
-   @Override
-   public String c() {
-      return this.c;
-   }
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cpd $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if ($$5.d() instanceof cmt) {
+               $$2 = $$5;
+            } else if ($$5.a(cpg.vo)) {
+               $$3 = $$5.q();
+            }
+         }
+      }
 
-   @Override
-   public coz a(iw $$0) {
-      return this.b;
-   }
-
-   @Override
-   public is<cry> a() {
-      is<cry> $$0 = is.a();
-      $$0.add(this.a);
-      return $$0;
+      if ($$3.b()) {
+         return $$3;
+      } else {
+         sw $$6 = cmw.a($$2);
+         sw $$7 = $$6 == null ? new sw() : $$6.h();
+         $$7.a("Base", ((cmt)$$2.d()).b().a());
+         cmw.a($$3, diz.t, $$7);
+         return $$3;
+      }
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return true;
+      return $$0 * $$1 >= 2;
    }
 
    @Override
-   public coz a(bln $$0, iw $$1) {
-      return this.b.q();
-   }
-
-   public interface a<T extends csp> {
-      T create(String var1, cry var2, coz var3);
-   }
-
-   public static class b<T extends csp> implements csf<T> {
-      final csp.a<T> x;
-      private final Codec<T> y;
-      private final xo<vb, T> z;
-
-      protected b(csp.a<T> $$0) {
-         this.x = $$0;
-         this.y = RecordCodecBuilder.create(
-            $$1 -> $$1.group(
-                     avp.a(Codec.STRING, "group", "").forGetter($$0xx -> $$0xx.c),
-                     cry.d.fieldOf("ingredient").forGetter($$0xx -> $$0xx.a),
-                     coz.e.forGetter($$0xx -> $$0xx.b)
-                  )
-                  .apply($$1, $$0::create)
-         );
-         this.z = xo.a(xm.h, $$0x -> $$0x.c, cry.b, $$0x -> $$0x.a, coz.f, $$0x -> $$0x.b, $$0::create);
-      }
-
-      @Override
-      public Codec<T> a() {
-         return this.y;
-      }
-
-      @Override
-      public xo<vb, T> b() {
-         return this.z;
-      }
+   public csj<?> at_() {
+      return csj.l;
    }
 }

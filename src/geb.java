@@ -1,13 +1,16 @@
-public class geb extends gfd<cfj, flk<cfj>> {
-   private static final fvt a = fvt.q(new aiy("textures/entity/breeze/breeze_eyes.png"));
+public class geb extends gdb {
+   private static final aiy a = new aiy("textures/entity/skeleton/wither_skeleton.png");
 
-   public geb(gcn<cfj, flk<cfj>> $$0) {
-      super($$0);
+   public geb(gba.a $$0) {
+      super($$0, fpi.bT, fpi.bU, fpi.bV);
    }
 
-   public void a(esa $$0, fvl $$1, int $$2, cfj $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      ese $$10 = $$1.getBuffer(a);
-      flk<cfj> $$11 = this.c();
-      fzy.a($$11, $$11.b(), $$11.c()).a($$0, $$10, $$2, ggk.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   @Override
+   public aiy a(cea $$0) {
+      return a;
+   }
+
+   protected void a(cea $$0, esh $$1, float $$2) {
+      $$1.b(1.2F, 1.2F, 1.2F);
    }
 }

@@ -1,254 +1,229 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.google.common.collect.ImmutableList.Builder;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.Collection;
+import java.util.Locale;
 import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
+import java.util.UUID;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class fjv extends ffe {
-   private final Consumer<Optional<cvj>> a;
-   private fjv.g b;
-   private final Set<fjv.f> c = Sets.newHashSet();
-   private ezh k;
+public class fjv extends ffl {
+   private static final aiy c = new aiy("social_interactions/background");
+   private static final aiy k = new aiy("icon/search");
+   private static final vq l = vq.c("gui.socialInteractions.tab_all");
+   private static final vq m = vq.c("gui.socialInteractions.tab_hidden");
+   private static final vq n = vq.c("gui.socialInteractions.tab_blocked");
+   private static final vq o = l.e().a(n.t);
+   private static final vq p = m.e().a(n.t);
+   private static final vq q = n.e().a(n.t);
+   private static final vq r = vq.c("gui.socialInteractions.search_hint").a(n.u).a(n.h);
+   static final vq t = vq.c("gui.socialInteractions.search_empty").a(n.h);
+   private static final vq u = vq.c("gui.socialInteractions.empty_hidden").a(n.h);
+   private static final vq v = vq.c("gui.socialInteractions.empty_blocked").a(n.h);
+   private static final vq w = vq.c("gui.socialInteractions.blocking_hint");
+   private static final int x = 8;
+   private static final int y = 236;
+   private static final int z = 16;
+   private static final int A = 64;
+   public static final int a = 72;
+   public static final int b = 88;
+   private static final int B = 238;
+   private static final int C = 20;
+   private static final int D = 36;
+   fju E;
+   ezx F;
+   private String G = "";
+   private fjv.a H = fjv.a.a;
+   private ezo I;
+   private ezo J;
+   private ezo K;
+   private ezo L;
    @Nullable
-   private List<avt> l;
-   private final cvj m;
+   private vq M;
+   private int N;
+   private boolean O;
 
-   public fjv(cvj $$0, Consumer<Optional<cvj>> $$1) {
-      super(vq.c("editGamerule.title"));
-      this.m = $$0;
-      this.a = $$1;
+   public fjv() {
+      super(vq.c("gui.socialInteractions.title"));
+      this.a(exo.P());
+   }
+
+   private int o() {
+      return Math.max(52, this.h - 128 - 16);
+   }
+
+   private int E() {
+      return 80 + this.o() - 8;
+   }
+
+   private int H() {
+      return (this.g - 238) / 2;
+   }
+
+   @Override
+   public vq i() {
+      return (vq)(this.M != null ? vp.a(super.i(), this.M) : super.i());
    }
 
    @Override
    protected void aQ_() {
-      this.b = this.d(new fjv.g(this.m));
-      fcs.b $$0 = new fcs().a(10).d(2);
-      this.k = $$0.a(ezh.a(vp.d, $$0x -> this.a.accept(Optional.of(this.m))).a());
-      $$0.a(ezh.a(vp.e, $$0x -> this.a.accept(Optional.empty())).a());
-      $$0.a().a($$1 -> {
-         ezf var10000 = this.d($$1);
-      });
-      $$0.a().c(this.g / 2 - 155, this.h - 28);
-      $$0.a().a();
+      if (this.O) {
+         this.E.a(this.g, this.E() - 88, 0, 88);
+      } else {
+         this.E = new fju(this, this.f, this.g, this.E() - 88, 88, 36);
+      }
+
+      int $$0 = this.E.b() / 3;
+      int $$1 = this.E.q();
+      int $$2 = this.E.r();
+      int $$3 = this.i.a(w) + 40;
+      int $$4 = 64 + this.o();
+      int $$5 = (this.g - $$3) / 2 + 3;
+      this.I = this.c(ezo.a(l, $$0x -> this.a(fjv.a.a)).a($$1, 45, $$0, 20).a());
+      this.J = this.c(ezo.a(m, $$0x -> this.a(fjv.a.b)).a(($$1 + $$2 - $$0) / 2 + 1, 45, $$0, 20).a());
+      this.K = this.c(ezo.a(n, $$0x -> this.a(fjv.a.c)).a($$2 - $$0 + 1, 45, $$0, 20).a());
+      String $$6 = this.F != null ? this.F.a() : "";
+      this.F = new ezx(this.i, this.H() + 28, 74, 200, 15, r) {
+         @Override
+         protected we aN_() {
+            return !fjv.this.F.a().isEmpty() && fjv.this.E.d() ? super.aN_().f(", ").b(fjv.t) : super.aN_();
+         }
+      };
+      this.F.f(16);
+      this.F.g(true);
+      this.F.g(16777215);
+      this.F.a($$6);
+      this.F.c(r);
+      this.F.b(this::a);
+      this.d(this.F);
+      this.d(this.E);
+      this.L = this.c(ezo.a(w, fed.b(this, "https://aka.ms/javablocking")).a($$5, $$4, $$3, 20).a());
+      this.O = true;
+      this.a(this.H);
+   }
+
+   private void a(fjv.a $$0) {
+      this.H = $$0;
+      this.I.b(l);
+      this.J.b(m);
+      this.K.b(n);
+      boolean $$1 = false;
+      switch ($$0) {
+         case a:
+            this.I.b(o);
+            Collection<UUID> $$2 = this.f.s.cq.o();
+            this.E.a($$2, this.E.o(), true);
+            break;
+         case b:
+            this.J.b(p);
+            Set<UUID> $$3 = this.f.aL().c();
+            $$1 = $$3.isEmpty();
+            this.E.a($$3, this.E.o(), false);
+            break;
+         case c:
+            this.K.b(q);
+            fjt $$4 = this.f.aL();
+            Set<UUID> $$5 = this.f.s.cq.o().stream().filter($$4::e).collect(Collectors.toSet());
+            $$1 = $$5.isEmpty();
+            this.E.a($$5, this.E.o(), false);
+      }
+
+      exg $$6 = this.f.aX();
+      if (!this.F.a().isEmpty() && this.E.d() && !this.F.aL_()) {
+         $$6.c(t);
+      } else if ($$1) {
+         if ($$0 == fjv.a.b) {
+            $$6.c(u);
+         } else if ($$0 == fjv.a.c) {
+            $$6.c(v);
+         }
+      }
    }
 
    @Override
-   public void d() {
-      this.a.accept(Optional.empty());
+   public void b(ezb $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.H() + 3;
+      super.b($$0, $$1, $$2, $$3);
+      $$0.a(c, $$4, 64, 236, this.o() + 16);
+      $$0.a(k, $$4 + 10, 76, 12, 12);
    }
 
    @Override
-   public void a(eyu $$0, int $$1, int $$2, float $$3) {
+   public void a(ezb $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.l = null;
-      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
-   }
-
-   private void o() {
-      this.k.j = this.c.isEmpty();
-   }
-
-   void a(fjv.f $$0) {
-      this.c.add($$0);
-      this.o();
-   }
-
-   void b(fjv.f $$0) {
-      this.c.remove($$0);
-      this.o();
-   }
-
-   public class a extends fjv.d {
-      private final ezo<Boolean> d;
-
-      public a(vq $$1, List<avt> $$2, String $$3, cvj.a $$4) {
-         super($$2, $$1);
-         this.d = ezo.b($$4.a()).a().a($$1x -> $$1x.d().f("\n").f($$3)).a(10, 5, 44, 20, $$1, ($$1x, $$2x) -> $$4.a($$2x, null));
-         this.b.add(this.d);
+      this.a(this.f);
+      if (this.M != null) {
+         $$0.b(this.f.h, this.M, this.H() + 8, 35, -1);
       }
 
-      @Override
-      public void a(eyu $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         this.a($$0, $$2, $$3);
-         this.d.m($$3 + $$4 - 45);
-         this.d.n($$2);
-         this.d.a($$0, $$6, $$7, $$9);
+      if (!this.E.d()) {
+         this.E.a($$0, $$1, $$2, $$3);
+      } else if (!this.F.a().isEmpty()) {
+         $$0.a(this.f.h, t, this.g / 2, (72 + this.E()) / 2, -1);
+      } else if (this.H == fjv.a.b) {
+         $$0.a(this.f.h, u, this.g / 2, (72 + this.E()) / 2, -1);
+      } else if (this.H == fjv.a.c) {
+         $$0.a(this.f.h, v, this.g / 2, (72 + this.E()) / 2, -1);
+      }
+
+      this.F.a($$0, $$1, $$2, $$3);
+      this.L.k = this.H == fjv.a.c;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (!this.F.aL_() && this.f.m.N.a($$0, $$1)) {
+         this.f.a(null);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
       }
    }
 
-   public class b extends fjv.f {
-      final vq b;
+   @Override
+   public boolean m() {
+      return false;
+   }
 
-      public b(vq $$1) {
-         super(null);
-         this.b = $$1;
-      }
-
-      @Override
-      public void a(eyu $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         $$0.a(fjv.this.f.h, this.b, $$3 + $$4 / 2, $$2 + 5, 16777215);
-      }
-
-      @Override
-      public List<? extends fbd> l() {
-         return ImmutableList.of();
-      }
-
-      @Override
-      public List<? extends fda> a() {
-         return ImmutableList.of(new fda() {
-            @Override
-            public fda.a s() {
-               return fda.a.b;
-            }
-
-            @Override
-            public void b(fdc $$0) {
-               $$0.a(fdb.a, b.this.b);
-            }
-         });
+   private void a(String $$0) {
+      $$0 = $$0.toLowerCase(Locale.ROOT);
+      if (!$$0.equals(this.G)) {
+         this.E.a($$0);
+         this.G = $$0;
+         this.a(this.H);
       }
    }
 
-   @FunctionalInterface
-   interface c<T extends cvj.g<T>> {
-      fjv.f create(vq var1, List<avt> var2, String var3, T var4);
-   }
-
-   public abstract class d extends fjv.f {
-      private final List<avt> a;
-      protected final List<ezf> b = Lists.newArrayList();
-
-      public d(@Nullable List<avt> $$1, vq $$2) {
-         super($$1);
-         this.a = fjv.this.f.h.c($$2, 175);
-      }
-
-      @Override
-      public List<? extends fbd> l() {
-         return this.b;
-      }
-
-      @Override
-      public List<? extends fda> a() {
-         return this.b;
-      }
-
-      protected void a(eyu $$0, int $$1, int $$2) {
-         if (this.a.size() == 1) {
-            $$0.a(fjv.this.f.h, this.a.get(0), $$2, $$1 + 5, 16777215, false);
-         } else if (this.a.size() >= 2) {
-            $$0.a(fjv.this.f.h, this.a.get(0), $$2, $$1, 16777215, false);
-            $$0.a(fjv.this.f.h, this.a.get(1), $$2, $$1 + 10, 16777215, false);
+   private void a(exo $$0) {
+      int $$1 = $$0.K().n().size();
+      if (this.N != $$1) {
+         String $$2 = "";
+         fqq $$3 = $$0.R();
+         if ($$0.S()) {
+            $$2 = $$0.U().ae();
+         } else if ($$3 != null) {
+            $$2 = $$3.a;
          }
-      }
-   }
 
-   public class e extends fjv.d {
-      private final ezq d;
-
-      public e(vq $$1, List<avt> $$2, String $$3, cvj.d $$4) {
-         super($$2, $$1);
-         this.d = new ezq(fjv.this.f.h, 10, 5, 44, 20, $$1.f().f("\n").f($$3).f("\n"));
-         this.d.a(Integer.toString($$4.a()));
-         this.d.b($$1x -> {
-            if ($$4.b($$1x)) {
-               this.d.g(14737632);
-               fjv.this.b(this);
-            } else {
-               this.d.g(16711680);
-               fjv.this.a(this);
-            }
-         });
-         this.b.add(this.d);
-      }
-
-      @Override
-      public void a(eyu $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         this.a($$0, $$2, $$3);
-         this.d.m($$3 + $$4 - 45);
-         this.d.n($$2);
-         this.d.a($$0, $$6, $$7, $$9);
-      }
-   }
-
-   public abstract static class f extends ezn.a<fjv.f> {
-      @Nullable
-      final List<avt> a;
-
-      public f(@Nullable List<avt> $$0) {
-         this.a = $$0;
-      }
-   }
-
-   public class g extends ezn<fjv.f> {
-      public g(final cvj $$1) {
-         super(fjv.this.f, fjv.this.g, fjv.this.h - 75, 43, 24);
-         final Map<cvj.b, Map<cvj.e<?>, fjv.f>> $$2 = Maps.newHashMap();
-         cvj.a(new cvj.c() {
-            @Override
-            public void b(cvj.e<cvj.a> $$0, cvj.f<cvj.a> $$1x) {
-               this.a($$0, ($$0x, $$1xxx, $$2xx, $$3) -> fjv.this.new a($$0x, $$1xxx, $$2xx, $$3));
-            }
-
-            @Override
-            public void c(cvj.e<cvj.d> $$0, cvj.f<cvj.d> $$1x) {
-               this.a($$0, ($$0x, $$1xxx, $$2xx, $$3) -> fjv.this.new e($$0x, $$1xxx, $$2xx, $$3));
-            }
-
-            private <T extends cvj.g<T>> void a(cvj.e<T> $$0, fjv.c<T> $$1x) {
-               vq $$2 = vq.c($$0.b());
-               vq $$3 = vq.b($$0.a()).a(n.o);
-               T $$4 = $$1.a($$0);
-               String $$5 = $$4.b();
-               vq $$6 = vq.a("editGamerule.default", vq.b($$5)).a(n.h);
-               String $$7 = $$0.b() + ".description";
-               List<avt> $$10;
-               String $$11;
-               if (ghy.a($$7)) {
-                  Builder<avt> $$8 = ImmutableList.builder().add($$3.g());
-                  vq $$9 = vq.c($$7);
-                  fjv.this.i.c($$9, 150).forEach($$8::add);
-                  $$10 = $$8.add($$6.g()).build();
-                  $$11 = $$9.getString() + "\n" + $$6.getString();
-               } else {
-                  $$10 = ImmutableList.of($$3.g(), $$6.g());
-                  $$11 = $$6.getString();
-               }
-
-               $$2.computeIfAbsent($$0.c(), $$0x -> Maps.newHashMap()).put($$0, $$1.create($$2, $$10, $$11, $$4));
-            }
-         });
-         $$2.entrySet()
-            .stream()
-            .sorted(Entry.comparingByKey())
-            .forEach(
-               $$0x -> {
-                  this.b(fjv.this.new b(vq.c(((cvj.b)$$0x.getKey()).a()).a(n.r, n.o)));
-                  ((Map)$$0x.getValue())
-                     .entrySet()
-                     .stream()
-                     .sorted(Entry.comparingByKey(Comparator.comparing(cvj.e::a)))
-                     .forEach($$0xx -> this.b((fjv.f)$$0xx.getValue()));
-               }
-            );
-      }
-
-      @Override
-      public void b(eyu $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         fjv.f $$4 = this.t();
-         if ($$4 != null && $$4.a != null) {
-            fjv.this.b($$4.a);
+         if ($$1 > 1) {
+            this.M = vq.a("gui.socialInteractions.server_label.multiple", $$2, $$1);
+         } else {
+            this.M = vq.a("gui.socialInteractions.server_label.single", $$2, $$1);
          }
+
+         this.N = $$1;
       }
+   }
+
+   public void a(fqn $$0) {
+      this.E.a($$0, this.H);
+   }
+
+   public void a(UUID $$0) {
+      this.E.a($$0);
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

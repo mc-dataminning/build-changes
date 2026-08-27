@@ -1,37 +1,29 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface ecp {
-   Codec<ecp> b = kf.aj.q().dispatch(ecp::b, Function.identity());
+public class ecp extends ecr {
+   public static final Codec<ecp> a = RecordCodecBuilder.create($$0 -> $$0.group(c(), b(), d()).apply($$0, ecp::new));
 
-   void a(awo var1, BiConsumer<aix<ecn>, aix<ecn>> var2);
-
-   Stream<aix<ecn>> a();
-
-   static eco a(String $$0, String $$1) {
-      return a(po.a($$0), po.a($$1));
+   protected ecp(Either<aiy, efl> $$0, ij<efj> $$1, ecu.a $$2) {
+      super($$0, $$1, $$2);
    }
 
-   static eco a(aix<ecn> $$0, aix<ecn> $$1) {
-      return new eco($$0, $$1);
+   @Override
+   protected efh a(dfe $$0, ebd $$1, boolean $$2) {
+      efh $$3 = super.a($$0, $$1, $$2);
+      $$3.b(een.b);
+      $$3.a(een.d);
+      return $$3;
    }
 
-   static ecs a(String $$0, bke<String> $$1) {
-      bke.a<aix<ecn>> $$2 = bke.a();
-      $$1.e().forEach($$1x -> $$2.a(po.a((String)$$1x.b()), $$1x.a().a()));
-      return a(po.a($$0), $$2.a());
+   @Override
+   public ect<?> a() {
+      return ect.e;
    }
 
-   static ecs a(aix<ecn> $$0, bke<aix<ecn>> $$1) {
-      return new ecs($$0, $$1);
+   @Override
+   public String toString() {
+      return "LegacySingle[" + this.c + "]";
    }
-
-   static ect a(bke<List<ecp>> $$0) {
-      return new ect($$0);
-   }
-
-   Codec<? extends ecp> b();
 }

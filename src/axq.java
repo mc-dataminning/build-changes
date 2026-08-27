@@ -8,7 +8,7 @@ public class axq {
    private final int e;
 
    public axq(int $$0, int $$1) {
-      this($$0, $$1, new long[awh.d($$1 * $$0, 64) / 64]);
+      this($$0, $$1, new long[awi.d($$1 * $$0, 64) / 64]);
    }
 
    public axq(int $$0, int $$1, long[] $$2) {
@@ -17,7 +17,7 @@ public class axq {
       this.c = $$0;
       this.b = $$2;
       this.d = (1L << $$0) - 1L;
-      int $$3 = awh.d($$1 * $$0, 64) / 64;
+      int $$3 = awi.d($$1 * $$0, 64) / 64;
       if ($$2.length != $$3) {
          throw new IllegalArgumentException("Invalid length given for storage, got: " + $$2.length + " but expected: " + $$3);
       }

@@ -10,20 +10,20 @@ public class aku {
    public static void a(CommandDispatcher<du> $$0) {
       LiteralArgumentBuilder<du> $$1 = dv.a("difficulty");
 
-      for (blr $$2 : blr.values()) {
+      for (blt $$2 : blt.values()) {
          $$1.then(dv.a($$2.e()).executes($$1x -> a((du)$$1x.getSource(), $$2)));
       }
 
       $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)$$1.requires($$0x -> $$0x.c(2))).executes($$0x -> {
-         blr $$1x = ((du)$$0x.getSource()).e().ak();
+         blt $$1x = ((du)$$0x.getSource()).e().aj();
          ((du)$$0x.getSource()).a(() -> vq.a("commands.difficulty.query", $$1x.b()), false);
          return $$1x.a();
       }));
    }
 
-   public static int a(du $$0, blr $$1) throws CommandSyntaxException {
+   public static int a(du $$0, blt $$1) throws CommandSyntaxException {
       MinecraftServer $$2 = $$0.l();
-      if ($$2.aY().q() == $$1) {
+      if ($$2.ba().q() == $$1) {
          throw a.create($$1.e());
       } else {
          $$2.a($$1, true);

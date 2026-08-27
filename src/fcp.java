@@ -1,20 +1,18 @@
-import java.util.function.Consumer;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import java.io.IOException;
 
-public class fcp {
-   private static final int a = 4;
+public interface fcp {
+   Codec<fcp> b = fcq.f.dispatch(fcp::a, $$0 -> $$0.a().codec());
 
-   private fcp() {
+   fcq a();
+
+   Either<fcp.a, fcp.b> b();
+
+   public interface a {
+      eqk load(asb var1) throws IOException;
    }
 
-   public static fcu a(eys $$0, fcv $$1, vq $$2) {
-      return a($$0, $$1, $$2, $$0x -> {
-      });
-   }
-
-   public static fcu a(eys $$0, fcv $$1, vq $$2, Consumer<fcw> $$3) {
-      fcx $$4 = fcx.d().a(4);
-      $$4.a(new fao($$2, $$0));
-      $$4.a($$1, $$3);
-      return $$4;
+   public static record b(aiy a) {
    }
 }

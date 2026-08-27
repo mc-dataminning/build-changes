@@ -1,28 +1,24 @@
 public enum dmb implements axc {
-   a(ie.a),
-   b(ie.b);
+   a("single"),
+   b("left"),
+   c("right");
 
-   private final ie c;
+   private final String d;
 
-   private dmb(ie $$0) {
-      this.c = $$0;
-   }
-
-   public ie a() {
-      return this.c;
-   }
-
-   @Override
-   public String toString() {
-      return this.c();
+   private dmb(String $$0) {
+      this.d = $$0;
    }
 
    @Override
    public String c() {
-      return this == a ? "upper" : "lower";
+      return this.d;
    }
 
-   public dmb b() {
-      return this == a ? b : a;
+   public dmb a() {
+      return switch (this) {
+         case a -> a;
+         case b -> c;
+         case c -> b;
+      };
    }
 }

@@ -1,154 +1,185 @@
-import com.google.common.base.MoreObjects;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSortedMap;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Decoder;
-import com.mojang.serialization.Encoder;
-import com.mojang.serialization.MapCodec;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
 
-public class dlg<O, S extends dlh<O, S>> {
-   static final Pattern a = Pattern.compile("^[a-z0-9_]+$");
-   private final O b;
-   private final ImmutableSortedMap<String, dmi<?>> c;
-   private final ImmutableList<S> d;
+public class dlg {
+   public static final int a = 12;
+   private final cvr b;
+   private final hz c;
+   private final boolean d;
+   private final hz e;
+   private final ie f;
+   private final List<hz> g = Lists.newArrayList();
+   private final List<hz> h = Lists.newArrayList();
+   private final ie i;
 
-   protected dlg(Function<O, S> $$0, O $$1, dlg.b<O, S> $$2, Map<String, dmi<?>> $$3) {
-      this.b = $$1;
-      this.c = ImmutableSortedMap.copyOf($$3);
-      Supplier<S> $$4 = () -> $$0.apply($$1);
-      MapCodec<S> $$5 = MapCodec.of(Encoder.empty(), Decoder.unit($$4));
-      UnmodifiableIterator $$7 = this.c.entrySet().iterator();
-
-      while ($$7.hasNext()) {
-         Entry<String, dmi<?>> $$6 = (Entry<String, dmi<?>>)$$7.next();
-         $$5 = a($$5, $$4, $$6.getKey(), $$6.getValue());
+   public dlg(cvr $$0, hz $$1, ie $$2, boolean $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.i = $$2;
+      this.d = $$3;
+      if ($$3) {
+         this.f = $$2;
+         this.e = $$1.a($$2);
+      } else {
+         this.f = $$2.g();
+         this.e = $$1.a($$2, 2);
       }
-
-      MapCodec<S> $$7x = $$5;
-      Map<Map<dmi<?>, Comparable<?>>, S> $$8 = Maps.newLinkedHashMap();
-      List<S> $$9 = Lists.newArrayList();
-      Stream<List<Pair<dmi<?>, Comparable<?>>>> $$10 = Stream.of(Collections.emptyList());
-      UnmodifiableIterator var11 = this.c.values().iterator();
-
-      while (var11.hasNext()) {
-         dmi<?> $$11 = (dmi<?>)var11.next();
-         $$10 = $$10.flatMap($$1x -> $$11.a().stream().map($$2x -> {
-               List<Pair<dmi<?>, Comparable<?>>> $$3x = Lists.newArrayList($$1x);
-               $$3x.add(Pair.of($$11, $$2x));
-               return $$3x;
-            }));
-      }
-
-      $$10.forEach($$5x -> {
-         ImmutableMap<dmi<?>, Comparable<?>> $$6 = $$5x.stream().collect(ImmutableMap.toImmutableMap(Pair::getFirst, Pair::getSecond));
-         S $$7xx = $$2.create($$1, $$6, $$7);
-         $$8.put($$6, $$7xx);
-         $$9.add($$7xx);
-      });
-
-      for (S $$12 : $$9) {
-         $$12.a($$8);
-      }
-
-      this.d = ImmutableList.copyOf($$9);
    }
 
-   private static <S extends dlh<?, S>, T extends Comparable<T>> MapCodec<S> a(MapCodec<S> $$0, Supplier<S> $$1, String $$2, dmi<T> $$3) {
-      return Codec.mapPair($$0, $$3.e().fieldOf($$2).orElseGet($$0x -> {
-      }, () -> $$3.a($$1.get()))).xmap($$1x -> (dlh)((dlh)$$1x.getFirst()).a($$3, ((dmi.a)$$1x.getSecond()).b()), $$1x -> Pair.of($$1x, $$3.a($$1x)));
-   }
-
-   public ImmutableList<S> a() {
-      return this.d;
-   }
-
-   public S b() {
-      return (S)this.d.get(0);
-   }
-
-   public O c() {
-      return this.b;
-   }
-
-   public Collection<dmi<?>> d() {
-      return this.c.values();
-   }
-
-   @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this)
-         .add("block", this.b)
-         .add("properties", this.c.values().stream().map(dmi::f).collect(Collectors.toList()))
-         .toString();
-   }
-
-   @Nullable
-   public dmi<?> a(String $$0) {
-      return (dmi<?>)this.c.get($$0);
-   }
-
-   public static class a<O, S extends dlh<O, S>> {
-      private final O a;
-      private final Map<String, dmi<?>> b = Maps.newHashMap();
-
-      public a(O $$0) {
-         this.a = $$0;
-      }
-
-      public dlg.a<O, S> a(dmi<?>... $$0) {
-         for (dmi<?> $$1 : $$0) {
-            this.a($$1);
-            this.b.put($$1.f(), $$1);
+   public boolean a() {
+      this.g.clear();
+      this.h.clear();
+      dlj $$0 = this.b.a_(this.e);
+      if (!dlc.a($$0, this.b, this.e, this.f, false, this.i)) {
+         if (this.d && $$0.o() == ehb.b) {
+            this.h.add(this.e);
+            return true;
+         } else {
+            return false;
+         }
+      } else if (!this.a(this.e, this.f)) {
+         return false;
+      } else {
+         for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
+            hz $$2 = this.g.get($$1);
+            if (a(this.b.a_($$2)) && !this.a($$2)) {
+               return false;
+            }
          }
 
-         return this;
+         return true;
       }
+   }
 
-      private <T extends Comparable<T>> void a(dmi<T> $$0) {
-         String $$1 = $$0.f();
-         if (!dlg.a.matcher($$1).matches()) {
-            throw new IllegalArgumentException(this.a + " has invalidly named property: " + $$1);
+   private static boolean a(dlj $$0) {
+      return $$0.a(cyu.hV) || $$0.a(cyu.pg);
+   }
+
+   private static boolean a(dlj $$0, dlj $$1) {
+      if ($$0.a(cyu.pg) && $$1.a(cyu.hV)) {
+         return false;
+      } else {
+         return $$0.a(cyu.hV) && $$1.a(cyu.pg) ? false : a($$0) || a($$1);
+      }
+   }
+
+   private boolean a(hz $$0, ie $$1) {
+      dlj $$2 = this.b.a_($$0);
+      if ($$2.i()) {
+         return true;
+      } else if (!dlc.a($$2, this.b, $$0, this.f, false, $$1)) {
+         return true;
+      } else if ($$0.equals(this.c)) {
+         return true;
+      } else if (this.g.contains($$0)) {
+         return true;
+      } else {
+         int $$3 = 1;
+         if ($$3 + this.g.size() > 12) {
+            return false;
          } else {
-            Collection<T> $$2 = $$0.a();
-            if ($$2.size() <= 1) {
-               throw new IllegalArgumentException(this.a + " attempted use property " + $$1 + " with <= 1 possible values");
-            } else {
-               for (T $$3 : $$2) {
-                  String $$4 = $$0.a($$3);
-                  if (!dlg.a.matcher($$4).matches()) {
-                     throw new IllegalArgumentException(this.a + " has property: " + $$1 + " with invalidly named value: " + $$4);
-                  }
+            while (a($$2)) {
+               hz $$4 = $$0.a(this.f.g(), $$3);
+               dlj $$5 = $$2;
+               $$2 = this.b.a_($$4);
+               if ($$2.i() || !a($$5, $$2) || !dlc.a($$2, this.b, $$4, this.f, false, this.f.g()) || $$4.equals(this.c)) {
+                  break;
                }
 
-               if (this.b.containsKey($$1)) {
-                  throw new IllegalArgumentException(this.a + " has duplicate property: " + $$1);
+               if (++$$3 + this.g.size() > 12) {
+                  return false;
                }
+            }
+
+            int $$6 = 0;
+
+            for (int $$7 = $$3 - 1; $$7 >= 0; $$7--) {
+               this.g.add($$0.a(this.f.g(), $$7));
+               $$6++;
+            }
+
+            int $$8 = 1;
+
+            while (true) {
+               hz $$9 = $$0.a(this.f, $$8);
+               int $$10 = this.g.indexOf($$9);
+               if ($$10 > -1) {
+                  this.a($$6, $$10);
+
+                  for (int $$11 = 0; $$11 <= $$10 + $$6; $$11++) {
+                     hz $$12 = this.g.get($$11);
+                     if (a(this.b.a_($$12)) && !this.a($$12)) {
+                        return false;
+                     }
+                  }
+
+                  return true;
+               }
+
+               $$2 = this.b.a_($$9);
+               if ($$2.i()) {
+                  return true;
+               }
+
+               if (!dlc.a($$2, this.b, $$9, this.f, true, this.f) || $$9.equals(this.c)) {
+                  return false;
+               }
+
+               if ($$2.o() == ehb.b) {
+                  this.h.add($$9);
+                  return true;
+               }
+
+               if (this.g.size() >= 12) {
+                  return false;
+               }
+
+               this.g.add($$9);
+               $$6++;
+               $$8++;
+            }
+         }
+      }
+   }
+
+   private void a(int $$0, int $$1) {
+      List<hz> $$2 = Lists.newArrayList();
+      List<hz> $$3 = Lists.newArrayList();
+      List<hz> $$4 = Lists.newArrayList();
+      $$2.addAll(this.g.subList(0, $$1));
+      $$3.addAll(this.g.subList(this.g.size() - $$0, this.g.size()));
+      $$4.addAll(this.g.subList($$1, this.g.size() - $$0));
+      this.g.clear();
+      this.g.addAll($$2);
+      this.g.addAll($$3);
+      this.g.addAll($$4);
+   }
+
+   private boolean a(hz $$0) {
+      dlj $$1 = this.b.a_($$0);
+
+      for (ie $$2 : ie.values()) {
+         if ($$2.o() != this.f.o()) {
+            hz $$3 = $$0.a($$2);
+            dlj $$4 = this.b.a_($$3);
+            if (a($$4, $$1) && !this.a($$3, $$2)) {
+               return false;
             }
          }
       }
 
-      public dlg<O, S> a(Function<O, S> $$0, dlg.b<O, S> $$1) {
-         return new dlg<>($$0, this.a, $$1, this.b);
-      }
+      return true;
    }
 
-   public interface b<O, S> {
-      S create(O var1, ImmutableMap<dmi<?>, Comparable<?>> var2, MapCodec<S> var3);
+   public ie b() {
+      return this.f;
+   }
+
+   public List<hz> c() {
+      return this.g;
+   }
+
+   public List<hz> d() {
+      return this.h;
    }
 }

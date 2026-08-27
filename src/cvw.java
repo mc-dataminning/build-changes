@@ -1,4 +1,2 @@
-public enum cvw {
-   a,
-   b;
+public interface cvw extends cvx, cvz {
 }

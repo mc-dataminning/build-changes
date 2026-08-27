@@ -1,34 +1,26 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
 
-public class ead extends eal {
-   public static final Codec<ead> a = RecordCodecBuilder.create($$0 -> $$0.group(dzl.c.fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, ead::new));
-   private final dzl c;
+public class ead extends ear {
+   private static final ead c = new ead();
+   public static Codec<ead> a = Codec.unit(() -> c);
 
-   private ead(dzl $$0) {
-      this.c = $$0;
+   private ead() {
    }
 
-   public static ead a(dzl $$0) {
-      return new ead($$0);
-   }
-
-   public static ead a(dri $$0, dri $$1) {
-      return a(dzo.a($$0, $$1));
-   }
-
-   public static ead b(dri $$0, dri $$1) {
-      return a(dzn.a($$0, $$1));
+   public static ead a() {
+      return c;
    }
 
    @Override
-   public Stream<hz> a_(eaj $$0, awo $$1, hz $$2) {
-      return Stream.of($$2.h(this.c.a($$1, $$0)));
+   protected boolean a(eaq $$0, awp $$1, hz $$2) {
+      eap $$3 = $$0.e()
+         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
+      ij<cwq> $$4 = $$0.d().t($$2);
+      return $$0.f().a($$4).a($$3);
    }
 
    @Override
-   public eam<?> b() {
-      return eam.l;
+   public eat<?> b() {
+      return eat.e;
    }
 }

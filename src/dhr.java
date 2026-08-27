@@ -1,96 +1,78 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.BiMap;
-import com.google.common.collect.ImmutableBiMap;
-import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.function.Supplier;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public interface dhr extends czp<dhr.a> {
-   Supplier<BiMap<cyo, cyo>> w_ = Suppliers.memoize(
-      () -> ImmutableBiMap.builder()
-            .put(cyq.qW, cyq.qX)
-            .put(cyq.qX, cyq.qY)
-            .put(cyq.qY, cyq.qZ)
-            .put(cyq.rf, cyq.re)
-            .put(cyq.re, cyq.rd)
-            .put(cyq.rd, cyq.rc)
-            .put(cyq.rj, cyq.ri)
-            .put(cyq.ri, cyq.rh)
-            .put(cyq.rh, cyq.rg)
-            .put(cyq.rv, cyq.ru)
-            .put(cyq.ru, cyq.rt)
-            .put(cyq.rt, cyq.rs)
-            .put(cyq.rr, cyq.rq)
-            .put(cyq.rq, cyq.rp)
-            .put(cyq.rp, cyq.ro)
-            .put(cyq.rM, cyq.rN)
-            .put(cyq.rN, cyq.rP)
-            .put(cyq.rP, cyq.rO)
-            .put(cyq.rU, cyq.rV)
-            .put(cyq.rV, cyq.rX)
-            .put(cyq.rX, cyq.rW)
-            .put(cyq.sc, cyq.sd)
-            .put(cyq.sd, cyq.se)
-            .put(cyq.se, cyq.sf)
-            .put(cyq.sk, cyq.sl)
-            .put(cyq.sl, cyq.sm)
-            .put(cyq.sm, cyq.sn)
-            .build()
+public class dhr extends cxo {
+   public static final MapCodec<dhr> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dft.a.b.fieldOf("kind").forGetter(cxo::b), u()).apply($$0, dhr::new));
+   public static final dmd d = dcn.aE;
+   private static final Map<ie, eos> b = Maps.newEnumMap(
+      ImmutableMap.of(
+         ie.c,
+         cys.a(4.0, 4.0, 8.0, 12.0, 12.0, 16.0),
+         ie.d,
+         cys.a(4.0, 4.0, 0.0, 12.0, 12.0, 8.0),
+         ie.f,
+         cys.a(0.0, 4.0, 4.0, 8.0, 12.0, 12.0),
+         ie.e,
+         cys.a(8.0, 4.0, 4.0, 16.0, 12.0, 12.0)
+      )
    );
-   Supplier<BiMap<cyo, cyo>> x_ = Suppliers.memoize(() -> w_.get().inverse());
 
-   static Optional<cyo> a(cyo $$0) {
-      return Optional.ofNullable((cyo)x_.get().get($$0));
+   @Override
+   public MapCodec<? extends dhr> a() {
+      return c;
    }
 
-   static cyo b(cyo $$0) {
-      cyo $$1 = $$0;
-
-      for (cyo $$2 = (cyo)x_.get().get($$0); $$2 != null; $$2 = (cyo)x_.get().get($$2)) {
-         $$1 = $$2;
-      }
-
-      return $$1;
-   }
-
-   static Optional<dlf> b(dlf $$0) {
-      return a($$0.b()).map($$1 -> $$1.l($$0));
-   }
-
-   static Optional<cyo> c(cyo $$0) {
-      return Optional.ofNullable((cyo)w_.get().get($$0));
-   }
-
-   static dlf c(dlf $$0) {
-      return b($$0.b()).l($$0);
+   protected dhr(dft.a $$0, dli.d $$1) {
+      super($$0, $$1);
+      this.k(this.o().a(d, ie.c));
    }
 
    @Override
-   default Optional<dlf> j_(dlf $$0) {
-      return c($$0.b()).map($$1 -> $$1.l($$0));
+   public String h() {
+      return this.j().a();
    }
 
    @Override
-   default float az_() {
-      return this.c() == dhr.a.a ? 0.75F : 1.0F;
+   protected eos a(dlj $$0, cux $$1, hz $$2, eoe $$3) {
+      return b.get($$0.c(d));
    }
 
-   public static enum a implements axc {
-      a("unaffected"),
-      b("exposed"),
-      c("weathered"),
-      d("oxidized");
+   @Override
+   public dlj a(crk $$0) {
+      dlj $$1 = super.a($$0);
+      cux $$2 = $$0.q();
+      hz $$3 = $$0.a();
+      ie[] $$4 = $$0.f();
 
-      public static final Codec<dhr.a> e = axc.a(dhr.a::values);
-      private final String f;
-
-      private a(String $$0) {
-         this.f = $$0;
+      for (ie $$5 : $$4) {
+         if ($$5.o().d()) {
+            ie $$6 = $$5.g();
+            $$1 = $$1.a(d, $$6);
+            if (!$$2.a_($$3.a($$5)).a($$0)) {
+               return $$1;
+            }
+         }
       }
 
-      @Override
-      public String c() {
-         return this.f;
-      }
+      return null;
+   }
+
+   @Override
+   protected dlj a(dlj $$0, dfe $$1) {
+      return $$0.a(d, $$1.a($$0.c(d)));
+   }
+
+   @Override
+   protected dlj a(dlj $$0, ddo $$1) {
+      return $$0.a($$1.a($$0.c(d)));
+   }
+
+   @Override
+   protected void a(dlk.a<cys, dlj> $$0) {
+      super.a($$0);
+      $$0.a(d);
    }
 }

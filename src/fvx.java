@@ -1,64 +1,88 @@
-import com.google.common.collect.Queues;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
+import com.google.common.collect.Lists;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.io.IOException;
 import java.util.List;
-import java.util.Queue;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.IntSupplier;
+import org.joml.Matrix4f;
 
-public class fvx {
-   private static final Logger b = LogUtils.getLogger();
-   public static final int a = 4;
-   private final Queue<fvw> c;
-   private volatile int d;
+public class fvx implements AutoCloseable {
+   private final fvj c;
+   public final eqt a;
+   public final eqt b;
+   private final List<IntSupplier> d = Lists.newArrayList();
+   private final List<String> e = Lists.newArrayList();
+   private final List<Integer> f = Lists.newArrayList();
+   private final List<Integer> g = Lists.newArrayList();
+   private Matrix4f h;
 
-   private fvx(List<fvw> $$0) {
-      this.c = Queues.newArrayDeque($$0);
-      this.d = this.c.size();
+   public fvx(asb $$0, String $$1, eqt $$2, eqt $$3) throws IOException {
+      this.c = new fvj($$0, $$1);
+      this.a = $$2;
+      this.b = $$3;
    }
 
-   public static fvx a(int $$0) {
-      int $$1 = Math.max(1, (int)((double)Runtime.getRuntime().maxMemory() * 0.3) / fvw.a);
-      int $$2 = Math.max(1, Math.min($$0, $$1));
-      List<fvw> $$3 = new ArrayList<>($$2);
+   @Override
+   public void close() {
+      this.c.close();
+   }
 
-      try {
-         for (int $$4 = 0; $$4 < $$2; $$4++) {
-            $$3.add(new fvw());
-         }
-      } catch (OutOfMemoryError var7) {
-         b.warn("Allocated only {}/{} buffers", $$3.size(), $$2);
-         int $$6 = Math.min($$3.size() * 2 / 3, $$3.size() - 1);
+   public final String a() {
+      return this.c.h();
+   }
 
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            $$3.remove($$3.size() - 1).close();
-         }
+   public void a(String $$0, IntSupplier $$1, int $$2, int $$3) {
+      this.e.add(this.e.size(), $$0);
+      this.d.add(this.d.size(), $$1);
+      this.f.add(this.f.size(), $$2);
+      this.g.add(this.g.size(), $$3);
+   }
+
+   public void a(Matrix4f $$0) {
+      this.h = $$0;
+   }
+
+   public void a(float $$0) {
+      this.a.e();
+      float $$1 = (float)this.b.c;
+      float $$2 = (float)this.b.d;
+      RenderSystem.viewport(0, 0, (int)$$1, (int)$$2);
+      this.c.a("DiffuseSampler", this.a::f);
+
+      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
+         this.c.a(this.e.get($$3), this.d.get($$3));
+         this.c.b("AuxSize" + $$3).a((float)this.f.get($$3).intValue(), (float)this.g.get($$3).intValue());
       }
 
-      return new fvx($$3);
-   }
+      this.c.b("ProjMat").a(this.h);
+      this.c.b("InSize").a((float)this.a.c, (float)this.a.d);
+      this.c.b("OutSize").a($$1, $$2);
+      this.c.b("Time").a($$0);
+      exo $$4 = exo.P();
+      this.c.b("ScreenSize").a((float)$$4.aN().k(), (float)$$4.aN().l());
+      this.c.g();
+      this.b.b(exo.a);
+      this.b.a(false);
+      RenderSystem.depthFunc(519);
+      esc $$5 = esj.b().d();
+      $$5.a(esm.b.h, esf.m);
+      $$5.a(0.0, 0.0, 500.0).e();
+      $$5.a((double)$$1, 0.0, 500.0).e();
+      $$5.a((double)$$1, (double)$$2, 500.0).e();
+      $$5.a(0.0, (double)$$2, 500.0).e();
+      esd.b($$5.d());
+      RenderSystem.depthFunc(515);
+      this.c.f();
+      this.b.e();
+      this.a.d();
 
-   @Nullable
-   public fvw a() {
-      fvw $$0 = this.c.poll();
-      if ($$0 != null) {
-         this.d = this.c.size();
-         return $$0;
-      } else {
-         return null;
+      for (Object $$6 : this.d) {
+         if ($$6 instanceof eqt) {
+            ((eqt)$$6).d();
+         }
       }
    }
 
-   public void a(fvw $$0) {
-      this.c.add($$0);
-      this.d = this.c.size();
-   }
-
-   public boolean b() {
-      return this.c.isEmpty();
-   }
-
-   public int c() {
-      return this.d;
+   public fvj b() {
+      return this.c;
    }
 }

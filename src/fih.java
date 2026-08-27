@@ -1,59 +1,47 @@
-import javax.annotation.Nullable;
+public class fih {
+   public static final int a = 12;
+   private static final int f = 3;
+   public static final int b = 3;
+   public static final int c = 3;
+   public static final int d = 3;
+   public static final int e = 3;
+   private static final int g = -267386864;
+   private static final int h = 1347420415;
+   private static final int i = 1344798847;
 
-public abstract class fih extends ffe {
-   private final vq b;
-   @Nullable
-   private final vq c;
-   private final vq k;
-   @Nullable
-   protected ezj a;
-   private faa l = faa.a;
-
-   protected fih(vq $$0, vq $$1, vq $$2) {
-      this($$0, $$1, null, $$2);
+   public static void a(ezb $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      int $$6 = $$1 - 3;
+      int $$7 = $$2 - 3;
+      int $$8 = $$3 + 3 + 3;
+      int $$9 = $$4 + 3 + 3;
+      c($$0, $$6, $$7 - 1, $$8, $$5, -267386864);
+      c($$0, $$6, $$7 + $$9, $$8, $$5, -267386864);
+      b($$0, $$6, $$7, $$8, $$9, $$5, -267386864);
+      b($$0, $$6 - 1, $$7, $$9, $$5, -267386864);
+      b($$0, $$6 + $$8, $$7, $$9, $$5, -267386864);
+      a($$0, $$6, $$7 + 1, $$8, $$9, $$5, 1347420415, 1344798847);
    }
 
-   protected fih(vq $$0, vq $$1, @Nullable vq $$2, vq $$3) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
-      this.k = $$3;
+   private static void a(ezb $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
+      a($$0, $$1, $$2, $$4 - 2, $$5, $$6, $$7);
+      a($$0, $$1 + $$3 - 1, $$2, $$4 - 2, $$5, $$6, $$7);
+      c($$0, $$1, $$2 - 1, $$3, $$5, $$6);
+      c($$0, $$1, $$2 - 1 + $$4 - 1, $$3, $$5, $$7);
    }
 
-   protected abstract void a(int var1);
-
-   @Override
-   protected void aQ_() {
-      super.aQ_();
-      this.l = faa.a(this.i, this.b, this.g - 100);
-      int $$0 = (this.l.a() + 1) * this.o();
-      if (this.c != null) {
-         int $$1 = this.i.a(this.c);
-         this.a = ezj.a(this.c, this.i).a(this.g / 2 - $$1 / 2 - 8, 76 + $$0).a();
-         this.d(this.a);
-      }
-
-      this.a($$0);
+   private static void b(ezb $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      $$0.a($$1, $$2, $$1 + 1, $$2 + $$3, $$4, $$5);
    }
 
-   @Override
-   public vq i() {
-      return this.k;
+   private static void a(ezb $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      $$0.a($$1, $$2, $$1 + 1, $$2 + $$3, $$4, $$5, $$6);
    }
 
-   @Override
-   public void a(eyu $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.c($$0);
-      int $$4 = this.g / 2 - this.l.b() / 2;
-      this.l.b($$0, $$4, 70, this.o(), 16777215);
+   private static void c(ezb $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      $$0.a($$1, $$2, $$1 + $$3, $$2 + 1, $$4, $$5);
    }
 
-   protected void c(eyu $$0) {
-      $$0.b(this.i, this.e, 25, 30, 16777215);
-   }
-
-   protected int o() {
-      return 9 * 2;
+   private static void b(ezb $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      $$0.a($$1, $$2, $$1 + $$3, $$2 + $$4, $$5, $$6);
    }
 }

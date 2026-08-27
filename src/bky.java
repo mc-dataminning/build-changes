@@ -1,14 +1,44 @@
 import com.mojang.serialization.Codec;
 
-public interface bky<P extends bkx> {
-   bky<bkv> a = a("constant", bkv.b);
-   bky<ble> b = a("uniform", ble.a);
-   bky<bkt> c = a("clamped_normal", bkt.a);
-   bky<bld> d = a("trapezoid", bld.a);
+public class bky extends blb {
+   public static final bky a = new bky(0);
+   public static final Codec<bky> b = avq.e(Codec.INT, Codec.INT.fieldOf("value").codec()).xmap(bky::new, bky::d);
+   private final int f;
 
-   Codec<P> codec();
+   public static bky a(int $$0) {
+      return $$0 == 0 ? a : new bky($$0);
+   }
 
-   static <P extends bkx> bky<P> a(String $$0, Codec<P> $$1) {
-      return iv.a(kf.L, $$0, () -> $$1);
+   private bky(int $$0) {
+      this.f = $$0;
+   }
+
+   public int d() {
+      return this.f;
+   }
+
+   @Override
+   public int a(awp $$0) {
+      return this.f;
+   }
+
+   @Override
+   public int a() {
+      return this.f;
+   }
+
+   @Override
+   public int b() {
+      return this.f;
+   }
+
+   @Override
+   public blc<?> c() {
+      return blc.a;
+   }
+
+   @Override
+   public String toString() {
+      return Integer.toString(this.f);
    }
 }

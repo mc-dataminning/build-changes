@@ -1,33 +1,56 @@
-import java.time.Duration;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
+import org.slf4j.Logger;
 
-public class eug {
-   public final evp a = new evp(ac.g(), TimeUnit.MILLISECONDS, ac.b);
-   private final List<evp.e<?>> h;
-   public final evp.e<List<etg>> b;
-   public final evp.e<eug.a> c;
-   public final evp.e<Integer> d;
-   public final evp.e<Boolean> e;
-   public final evp.e<etf> f;
-   public final euh g = new euh(new evv());
+public class eug extends eud {
+   private static final Logger e = LogUtils.getLogger();
+   public List<euf> a;
+   public int b;
+   public int c;
+   public int d;
 
-   public eug(esq $$0) {
-      this.c = this.a.a("server list", () -> {
-         etj $$1 = $$0.b();
-         return esl.b() ? new eug.a($$1.a, $$0.c()) : new eug.a($$1.a, List.of());
-      }, Duration.ofSeconds(60L), evq.a);
-      this.d = this.a.a("pending invite count", $$0::h, Duration.ofSeconds(10L), evq.a(360));
-      this.e = this.a.a("trial availablity", $$0::l, Duration.ofSeconds(60L), evq.a(60));
-      this.f = this.a.a("unread news", $$0::k, Duration.ofMinutes(5L), evq.a);
-      this.b = this.a.a("notifications", $$0::d, Duration.ofMinutes(5L), evq.a);
-      this.h = List.of(this.b, this.c, this.d, this.e, this.f);
+   public eug() {
    }
 
-   public List<evp.e<?>> a() {
-      return this.h;
+   public eug(int $$0) {
+      this.a = Collections.emptyList();
+      this.b = 0;
+      this.c = $$0;
+      this.d = -1;
    }
 
-   public static record a(List<eth> a, List<eth> b) {
+   public boolean a() {
+      return this.b * this.c >= this.d && this.b > 0 && this.d > 0 && this.c > 0;
+   }
+
+   public static eug a(String $$0) {
+      eug $$1 = new eug();
+      $$1.a = Lists.newArrayList();
+
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         if ($$3.get("templates").isJsonArray()) {
+            Iterator<JsonElement> $$4 = $$3.get("templates").getAsJsonArray().iterator();
+
+            while ($$4.hasNext()) {
+               $$1.a.add(euf.a($$4.next().getAsJsonObject()));
+            }
+         }
+
+         $$1.b = ewa.a("page", $$3, 0);
+         $$1.c = ewa.a("size", $$3, 0);
+         $$1.d = ewa.a("total", $$3, 0);
+      } catch (Exception var5) {
+         e.error("Could not parse WorldTemplatePaginatedList: {}", var5.getMessage());
+      }
+
+      return $$1;
    }
 }

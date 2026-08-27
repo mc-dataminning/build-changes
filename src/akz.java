@@ -76,14 +76,14 @@ public class akz {
       $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("xp").requires($$0x -> $$0x.c(2))).redirect($$1));
    }
 
-   private static int a(du $$0, aow $$1, akz.a $$2) {
+   private static int a(du $$0, aox $$1, akz.a $$2) {
       int $$3 = $$2.f.applyAsInt($$1);
       $$0.a(() -> vq.a("commands.experience.query." + $$2.e, $$1.Q_(), $$3), false);
       return $$3;
    }
 
-   private static int a(du $$0, Collection<? extends aow> $$1, int $$2, akz.a $$3) {
-      for (aow $$4 : $$1) {
+   private static int a(du $$0, Collection<? extends aox> $$1, int $$2, akz.a $$3) {
+      for (aox $$4 : $$1) {
          $$3.c.accept($$4, $$2);
       }
 
@@ -96,10 +96,10 @@ public class akz {
       return $$1.size();
    }
 
-   private static int b(du $$0, Collection<? extends aow> $$1, int $$2, akz.a $$3) throws CommandSyntaxException {
+   private static int b(du $$0, Collection<? extends aox> $$1, int $$2, akz.a $$3) throws CommandSyntaxException {
       int $$4 = 0;
 
-      for (aow $$5 : $$1) {
+      for (aox $$5 : $$1) {
          if ($$3.d.test($$5, $$2)) {
             $$4++;
          }
@@ -119,25 +119,25 @@ public class akz {
    }
 
    static enum a {
-      a("points", chh::d, ($$0, $$1) -> {
+      a("points", chl::d, ($$0, $$1) -> {
          if ($$1 >= $$0.gc()) {
             return false;
          } else {
             $$0.a($$1);
             return true;
          }
-      }, $$0 -> awh.d($$0.cl * (float)$$0.gc())),
-      b("levels", aow::c, ($$0, $$1) -> {
+      }, $$0 -> awi.d($$0.cl * (float)$$0.gc())),
+      b("levels", aox::c, ($$0, $$1) -> {
          $$0.b($$1);
          return true;
       }, $$0 -> $$0.cj);
 
-      public final BiConsumer<aow, Integer> c;
-      public final BiPredicate<aow, Integer> d;
+      public final BiConsumer<aox, Integer> c;
+      public final BiPredicate<aox, Integer> d;
       public final String e;
-      final ToIntFunction<aow> f;
+      final ToIntFunction<aox> f;
 
-      private a(String $$0, BiConsumer<aow, Integer> $$1, BiPredicate<aow, Integer> $$2, ToIntFunction<aow> $$3) {
+      private a(String $$0, BiConsumer<aox, Integer> $$1, BiPredicate<aox, Integer> $$2, ToIntFunction<aox> $$3) {
          this.c = $$1;
          this.e = $$0;
          this.d = $$2;

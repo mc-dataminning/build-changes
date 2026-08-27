@@ -1,36 +1,75 @@
-import com.mojang.authlib.GameProfile;
-import java.util.function.Supplier;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fkh implements fkl {
-   private final GameProfile a;
-   private final Supplier<ghs> b;
-   private final vq c;
+public class fkh extends ffl {
+   private static final Logger k = LogUtils.getLogger();
+   public static final drt a = new drt((long)"test1".hashCode(), true, false);
+   protected final ffl b;
+   private ezo l;
+   private ezo m;
+   private ezo n;
+   private ezo o;
+   protected ezx c;
+   private fkm p;
 
-   public fkh(GameProfile $$0) {
-      this.a = $$0;
-      this.b = exh.O().al().a($$0);
-      this.c = vq.b($$0.getName());
+   public fkh(ffl $$0) {
+      super(vq.c("selectWorld.title"));
+      this.b = $$0;
    }
 
    @Override
-   public void a(fkj $$0) {
-      exh.O().J().b(new agl(this.a.getId()));
+   protected void aQ_() {
+      this.c = new ezx(this.i, this.g / 2 - 100, 22, 200, 20, this.c, vq.c("selectWorld.search"));
+      this.c.b($$0 -> this.p.a($$0));
+      this.d(this.c);
+      this.p = this.c(new fkm(this, this.f, this.g, this.h - 112, 48, 36, this.c.a(), this.p));
+      this.m = this.c(ezo.a(eit.a, $$0 -> this.p.d().ifPresent(fkm.c::c)).a(this.g / 2 - 154, this.h - 52, 150, 20).a());
+      this.c(ezo.a(vq.c("selectWorld.create"), $$0 -> fkb.a(this.f, this)).a(this.g / 2 + 4, this.h - 52, 150, 20).a());
+      this.n = this.c(ezo.a(vq.c("selectWorld.edit"), $$0 -> this.p.d().ifPresent(fkm.c::f)).a(this.g / 2 - 154, this.h - 28, 72, 20).a());
+      this.l = this.c(ezo.a(vq.c("selectWorld.delete"), $$0 -> this.p.d().ifPresent(fkm.c::d)).a(this.g / 2 - 76, this.h - 28, 72, 20).a());
+      this.o = this.c(ezo.a(vq.c("selectWorld.recreate"), $$0 -> this.p.d().ifPresent(fkm.c::g)).a(this.g / 2 + 4, this.h - 28, 72, 20).a());
+      this.c(ezo.a(vp.k, $$0 -> this.f.a(this.b)).a(this.g / 2 + 82, this.h - 28, 72, 20).a());
+      this.a(null);
    }
 
    @Override
-   public vq aR_() {
-      return this.c;
+   protected void aH_() {
+      this.b(this.c);
    }
 
    @Override
-   public void a(eyu $$0, float $$1, int $$2) {
-      $$0.a(1.0F, 1.0F, 1.0F, (float)$$2 / 255.0F);
-      fag.a($$0, this.b.get(), 2, 2, 12);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+   public void d() {
+      this.f.a(this.b);
    }
 
    @Override
-   public boolean aS_() {
-      return true;
+   public void a(ezb $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.c.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 8, 16777215);
+   }
+
+   public void a(@Nullable eit $$0) {
+      if ($$0 == null) {
+         this.m.b(eit.a);
+         this.m.j = false;
+         this.n.j = false;
+         this.o.j = false;
+         this.l.j = false;
+      } else {
+         this.m.b($$0.t());
+         this.m.j = $$0.u();
+         this.n.j = $$0.w();
+         this.o.j = $$0.x();
+         this.l.j = $$0.y();
+      }
+   }
+
+   @Override
+   public void k() {
+      if (this.p != null) {
+         this.p.l().forEach(fkm.a::close);
+      }
    }
 }

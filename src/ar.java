@@ -5,21 +5,21 @@ import java.util.Optional;
 public class ar {
    public static final Codec<ar> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               coz.b.fieldOf("icon").forGetter(ar::c),
+               cpd.b.fieldOf("icon").forGetter(ar::c),
                vs.a.fieldOf("title").forGetter(ar::a),
                vs.a.fieldOf("description").forGetter(ar::b),
-               avp.a(aiy.a, "background").forGetter(ar::d),
-               avp.a(al.d, "frame", al.a).forGetter(ar::e),
-               avp.a(Codec.BOOL, "show_toast", true).forGetter(ar::h),
-               avp.a(Codec.BOOL, "announce_to_chat", true).forGetter(ar::i),
-               avp.a(Codec.BOOL, "hidden", false).forGetter(ar::j)
+               avq.a(aiy.a, "background").forGetter(ar::d),
+               avq.a(al.d, "frame", al.a).forGetter(ar::e),
+               avq.a(Codec.BOOL, "show_toast", true).forGetter(ar::h),
+               avq.a(Codec.BOOL, "announce_to_chat", true).forGetter(ar::i),
+               avq.a(Codec.BOOL, "hidden", false).forGetter(ar::j)
             )
             .apply($$0, ar::new)
    );
    public static final xo<vb, ar> b = xo.a(ar::a, ar::b);
    private final vq c;
    private final vq d;
-   private final coz e;
+   private final cpd e;
    private final Optional<aiy> f;
    private final al g;
    private final boolean h;
@@ -28,7 +28,7 @@ public class ar {
    private float k;
    private float l;
 
-   public ar(coz $$0, vq $$1, vq $$2, Optional<aiy> $$3, al $$4, boolean $$5, boolean $$6, boolean $$7) {
+   public ar(cpd $$0, vq $$1, vq $$2, Optional<aiy> $$3, al $$4, boolean $$5, boolean $$6, boolean $$7) {
       this.c = $$1;
       this.d = $$2;
       this.e = $$0;
@@ -52,7 +52,7 @@ public class ar {
       return this.d;
    }
 
-   public coz c() {
+   public cpd c() {
       return this.e;
    }
 
@@ -87,7 +87,7 @@ public class ar {
    private void a(vb $$0) {
       $$0.a(this.c);
       $$0.a(this.d);
-      coz.f.encode($$0, this.e);
+      cpd.f.encode($$0, this.e);
       $$0.a(this.g);
       int $$1 = 0;
       if (this.f.isPresent()) {
@@ -111,7 +111,7 @@ public class ar {
    private static ar b(vb $$0) {
       vq $$1 = $$0.m();
       vq $$2 = $$0.m();
-      coz $$3 = coz.f.decode($$0);
+      cpd $$3 = cpd.f.decode($$0);
       al $$4 = $$0.b(al.class);
       int $$5 = $$0.readInt();
       Optional<aiy> $$6 = ($$5 & 1) != 0 ? Optional.of($$0.s()) : Optional.empty();

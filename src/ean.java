@@ -1,42 +1,37 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
 
-public class ean extends eal {
+public class ean extends eaw {
    public static final Codec<ean> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(bkz.b(-16, 16).fieldOf("xz_spread").forGetter($$0x -> $$0x.c), bkz.b(-16, 16).fieldOf("y_spread").forGetter($$0x -> $$0x.d))
+      $$0 -> $$0.group(
+               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
+               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
+               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
+            )
             .apply($$0, ean::new)
    );
-   private final bkz c;
-   private final bkz d;
+   private final int c;
+   private final double d;
+   private final double e;
 
-   public static ean a(bkz $$0, bkz $$1) {
-      return new ean($$0, $$1);
-   }
-
-   public static ean a(bkz $$0) {
-      return new ean(bkw.a(0), $$0);
-   }
-
-   public static ean b(bkz $$0) {
-      return new ean($$0, bkw.a(0));
-   }
-
-   private ean(bkz $$0, bkz $$1) {
+   private ean(int $$0, double $$1, double $$2) {
       this.c = $$0;
       this.d = $$1;
+      this.e = $$2;
+   }
+
+   public static ean a(int $$0, double $$1, double $$2) {
+      return new ean($$0, $$1, $$2);
    }
 
    @Override
-   public Stream<hz> a_(eaj $$0, awo $$1, hz $$2) {
-      int $$3 = $$2.u() + this.c.a($$1);
-      int $$4 = $$2.v() + this.d.a($$1);
-      int $$5 = $$2.w() + this.c.a($$1);
-      return Stream.of(new hz($$3, $$4, $$5));
+   protected int a(awp $$0, hz $$1) {
+      double $$2 = cwq.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
+      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
    }
 
    @Override
-   public eam<?> b() {
-      return eam.n;
+   public eat<?> b() {
+      return eat.g;
    }
 }

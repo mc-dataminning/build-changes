@@ -1,59 +1,42 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
+import java.util.function.Consumer;
 
-public class ejy extends ekh {
-   public static final Codec<ejy> a = RecordCodecBuilder.create($$0 -> a($$0).and(ejy.a.e.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, ejy::new));
-   private final ejy.a b;
+public class ejy extends ejx {
+   public static final Codec<ejy> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aiy.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, ejy::new)
+   );
+   private final aiy j;
 
-   private ejy(List<elu> $$0, ejy.a $$1) {
-      super($$0);
-      this.b = $$1;
+   private ejy(aiy $$0, int $$1, int $$2, List<emb> $$3, List<ekp> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
    @Override
-   public ekj b() {
-      return ekk.o;
+   public ejw a() {
+      return ejt.d;
    }
 
    @Override
-   public Set<eld<?>> a() {
-      return ImmutableSet.of(this.b.g);
+   public void a(Consumer<cpd> $$0, ejc $$1) {
+      ejk $$2 = $$1.a().getLootTable(this.j);
+      $$2.a($$1, $$0);
    }
 
    @Override
-   public coz a(coz $$0, eiv $$1) {
-      if ($$1.c(this.b.g) instanceof blz $$3 && $$3.ae()) {
-         $$0.a($$3.Q_());
+   public void a(ejl $$0) {
+      eje<ejk> $$1 = new eje<>(ejh.c, this.j);
+      if ($$0.a($$1)) {
+         $$0.b("Table " + this.j + " is recursively called");
+      } else {
+         super.a($$0);
+         $$0.a().getElementOptional($$1).ifPresentOrElse($$2 -> $$2.a($$0.a("->{" + this.j + "}", $$1)), () -> $$0.b("Unknown loot table called " + this.j));
       }
-
-      return $$0;
    }
 
-   public static ekh.a<?> a(ejy.a $$0) {
-      return a($$1 -> new ejy($$1, $$0));
-   }
-
-   public static enum a implements axc {
-      a("this", elg.a),
-      b("killer", elg.d),
-      c("killer_player", elg.b),
-      d("block_entity", elg.h);
-
-      public static final Codec<ejy.a> e = axc.a(ejy.a::values);
-      private final String f;
-      final eld<?> g;
-
-      private a(String $$0, eld<?> $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
-
-      @Override
-      public String c() {
-         return this.f;
-      }
+   public static ejx.a<?> a(aiy $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new ejy($$0, $$1, $$2, $$3, $$4));
    }
 }

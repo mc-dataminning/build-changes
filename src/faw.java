@@ -1,71 +1,143 @@
-public abstract class faw {
-   protected static final int a = 14737632;
-   protected static final int b = 60;
-   protected static final int c = 1;
-   protected final eys d;
-   protected final awq e;
+import com.google.common.collect.Lists;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-   protected faw(eys $$0, awq $$1) {
-      this.d = $$0;
-      this.e = $$1;
+public class faw implements glr {
+   private static final long a = 3000L;
+   private final exo b;
+   private final List<faw.a> c = Lists.newArrayList();
+   private boolean d;
+   private final List<faw.a> e = new ArrayList<>();
+
+   public faw(exo $$0) {
+      this.b = $$0;
    }
 
-   public int a(int $$0) {
-      return Math.min(this.e.a() + 2, $$0);
-   }
-
-   public void a(eyu $$0, int $$1, int $$2) {
-      int $$3 = $$0.b();
-      $$0.a(fvt.C(), $$1, $$3 - 60, $$1 + $$2, $$3, -1873784752);
-      long $$4 = 0L;
-      long $$5 = 2147483647L;
-      long $$6 = -2147483648L;
-      int $$7 = Math.max(0, this.e.a() - ($$2 - 2));
-      int $$8 = this.e.b() - $$7;
-
-      for (int $$9 = 0; $$9 < $$8; $$9++) {
-         int $$10 = $$1 + $$9 + 1;
-         long $$11 = this.e.a($$7 + $$9);
-         $$5 = Math.min($$5, $$11);
-         $$6 = Math.max($$6, $$11);
-         $$4 += $$11;
-         int $$12 = this.b((double)$$11);
-         int $$13 = this.a($$11);
-         $$0.a(fvt.C(), $$10, $$3 - $$12, $$10 + 1, $$3, $$13);
+   public void a(ezb $$0) {
+      gls $$1 = this.b.aj();
+      if (!this.d && this.b.m.T().c()) {
+         $$1.a(this);
+         this.d = true;
+      } else if (this.d && !this.b.m.T().c()) {
+         $$1.b(this);
+         this.d = false;
       }
 
-      $$0.a(fvt.C(), $$1, $$1 + $$2 - 1, $$3 - 60, -1);
-      $$0.a(fvt.C(), $$1, $$1 + $$2 - 1, $$3 - 1, -1);
-      $$0.b(fvt.C(), $$1, $$3 - 60, $$3, -1);
-      $$0.b(fvt.C(), $$1 + $$2 - 1, $$3 - 60, $$3, -1);
-      if ($$8 > 0) {
-         String $$14 = this.a((double)$$5) + " min";
-         String $$15 = this.a((double)$$4 / (double)$$8) + " avg";
-         String $$16 = this.a((double)$$6) + " max";
-         $$0.b(this.d, $$14, $$1 + 2, $$3 - 60 - 9, 14737632);
-         $$0.a(this.d, $$15, $$1 + $$2 / 2, $$3 - 60 - 9, 14737632);
-         $$0.b(this.d, $$16, $$1 + $$2 - this.d.b($$16) - 2, $$3 - 60 - 9, 14737632);
+      if (this.d) {
+         eqe $$2 = $$1.b();
+         enz $$3 = $$2.b();
+         enz $$4 = $$2.c();
+         enz $$5 = $$2.a();
+         this.e.clear();
+
+         for (faw.a $$6 : this.c) {
+            if ($$6.b($$3)) {
+               this.e.add($$6);
+            }
+         }
+
+         if (!this.e.isEmpty()) {
+            int $$7 = 0;
+            int $$8 = 0;
+            double $$9 = this.b.m.z().c();
+            Iterator<faw.a> $$10 = this.e.iterator();
+
+            while ($$10.hasNext()) {
+               faw.a $$11 = $$10.next();
+               if ((double)$$11.b() + 3000.0 * $$9 <= (double)ac.b()) {
+                  $$10.remove();
+               } else {
+                  $$8 = Math.max($$8, this.b.h.a($$11.a()));
+               }
+            }
+
+            $$8 += this.b.h.b("<") + this.b.h.b(" ") + this.b.h.b(">") + this.b.h.b(" ");
+
+            for (faw.a $$12 : this.e) {
+               int $$13 = 255;
+               vq $$14 = $$12.a();
+               enz $$15 = $$12.c().d($$3).d();
+               double $$16 = $$5.b($$15);
+               double $$17 = $$4.b($$15);
+               boolean $$18 = $$17 > 0.5;
+               int $$19 = $$8 / 2;
+               int $$20 = 9;
+               int $$21 = $$20 / 2;
+               float $$22 = 1.0F;
+               int $$23 = this.b.h.a($$14);
+               int $$24 = awi.d(awi.b(255.0F, 75.0F, (float)(ac.b() - $$12.b()) / (float)(3000.0 * $$9)));
+               int $$25 = $$24 << 16 | $$24 << 8 | $$24;
+               $$0.c().a();
+               $$0.c().a((float)$$0.a() - (float)$$19 * 1.0F - 2.0F, (float)($$0.b() - 35) - (float)($$7 * ($$20 + 1)) * 1.0F, 0.0F);
+               $$0.c().b(1.0F, 1.0F, 1.0F);
+               $$0.a(-$$19 - 1, -$$21 - 1, $$19 + 1, $$21 + 1, this.b.m.b(0.8F));
+               int $$26 = $$25 + -16777216;
+               if (!$$18) {
+                  if ($$16 > 0.0) {
+                     $$0.b(this.b.h, ">", $$19 - this.b.h.b(">"), -$$21, $$26);
+                  } else if ($$16 < 0.0) {
+                     $$0.b(this.b.h, "<", -$$19, -$$21, $$26);
+                  }
+               }
+
+               $$0.b(this.b.h, $$14, -$$23 / 2, -$$21, $$26);
+               $$0.c().b();
+               $$7++;
+            }
+         }
+      }
+   }
+
+   @Override
+   public void a(gko $$0, glt $$1, float $$2) {
+      if ($$1.a() != null) {
+         vq $$3 = $$1.a();
+         if (!this.c.isEmpty()) {
+            for (faw.a $$4 : this.c) {
+               if ($$4.a().equals($$3)) {
+                  $$4.a(new enz($$0.h(), $$0.i(), $$0.j()));
+                  return;
+               }
+            }
+         }
+
+         this.c.add(new faw.a($$3, $$2, new enz($$0.h(), $$0.i(), $$0.j())));
+      }
+   }
+
+   public static class a {
+      private final vq a;
+      private final float b;
+      private long c;
+      private enz d;
+
+      public a(vq $$0, float $$1, enz $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.d = $$2;
+         this.c = ac.b();
       }
 
-      this.a($$0, $$1, $$2, $$3);
-   }
+      public vq a() {
+         return this.a;
+      }
 
-   protected void a(eyu $$0, int $$1, int $$2, int $$3) {
-   }
+      public long b() {
+         return this.c;
+      }
 
-   protected void a(eyu $$0, String $$1, int $$2, int $$3) {
-      $$0.a(fvt.C(), $$2, $$3, $$2 + this.d.b($$1) + 1, $$3 + 9, -1873784752);
-      $$0.a(this.d, $$1, $$2 + 1, $$3 + 1, 14737632, false);
-   }
+      public enz c() {
+         return this.d;
+      }
 
-   protected abstract String a(double var1);
+      public void a(enz $$0) {
+         this.d = $$0;
+         this.c = ac.b();
+      }
 
-   protected abstract int b(double var1);
-
-   protected abstract int a(long var1);
-
-   protected int a(double $$0, double $$1, int $$2, double $$3, int $$4, double $$5, int $$6) {
-      $$0 = awh.a($$0, $$1, $$5);
-      return $$0 < $$3 ? avr.b.a((float)($$0 / ($$3 - $$1)), $$2, $$4) : avr.b.a((float)(($$0 - $$3) / ($$5 - $$3)), $$4, $$6);
+      public boolean b(enz $$0) {
+         return Float.isInfinite(this.b) || $$0.a((it)this.d, (double)this.b);
+      }
    }
 }

@@ -1,130 +1,43 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.JsonOps;
-import java.io.Reader;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import com.google.common.collect.Interner;
+import com.google.common.collect.Interners;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class aup<T> {
-   private static final Logger a = LogUtils.getLogger();
-   final Function<aiy, Optional<? extends T>> b;
-   private final String c;
+public record aup<T>(aix<? extends iv<T>> a, aiy b) {
+   private static final Interner<aup<?>> c = Interners.newWeakInterner();
 
-   public aup(Function<aiy, Optional<? extends T>> $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   @Deprecated
+   public aup(aix<? extends iv<T>> a, aiy b) {
+      this.a = a;
+      this.b = b;
    }
 
-   public Map<aiy, List<aup.a>> a(asa $$0) {
-      Map<aiy, List<aup.a>> $$1 = Maps.newHashMap();
-      air $$2 = air.a(this.c);
-
-      for (Entry<aiy, List<ary>> $$3 : $$2.b($$0).entrySet()) {
-         aiy $$4 = $$3.getKey();
-         aiy $$5 = $$2.b($$4);
-
-         for (ary $$6 : $$3.getValue()) {
-            try (Reader $$7 = $$6.e()) {
-               JsonElement $$8 = JsonParser.parseReader($$7);
-               List<aup.a> $$9 = $$1.computeIfAbsent($$5, $$0x -> new ArrayList<>());
-               aun $$10 = (aun)aun.a.parse(new Dynamic(JsonOps.INSTANCE, $$8)).getOrThrow(false, a::error);
-               if ($$10.b()) {
-                  $$9.clear();
-               }
-
-               String $$11 = $$6.b();
-               $$10.a().forEach($$2x -> $$9.add(new aup.a($$2x, $$11)));
-            } catch (Exception var17) {
-               a.error("Couldn't read tag list {} from {} in data pack {}", new Object[]{$$5, $$4, $$6.b(), var17});
-            }
-         }
-      }
-
-      return $$1;
+   public static <T> Codec<aup<T>> a(aix<? extends iv<T>> $$0) {
+      return aiy.a.xmap($$1 -> a($$0, $$1), aup::b);
    }
 
-   private Either<Collection<aup.a>, Collection<T>> a(aum.a<T> $$0, List<aup.a> $$1) {
-      Builder<T> $$2 = ImmutableSet.builder();
-      List<aup.a> $$3 = new ArrayList<>();
-
-      for (aup.a $$4 : $$1) {
-         if (!$$4.a().a($$0, $$2::add)) {
-            $$3.add($$4);
-         }
-      }
-
-      return $$3.isEmpty() ? Either.right($$2.build()) : Either.left($$3);
+   public static <T> Codec<aup<T>> b(aix<? extends iv<T>> $$0) {
+      return Codec.STRING
+         .comapFlatMap(
+            $$1 -> $$1.startsWith("#") ? aiy.b($$1.substring(1)).map($$1x -> a($$0, $$1x)) : DataResult.error(() -> "Not a tag id"), $$0x -> "#" + $$0x.b
+         );
    }
 
-   public Map<aiy, Collection<T>> a(Map<aiy, List<aup.a>> $$0) {
-      final Map<aiy, Collection<T>> $$1 = Maps.newHashMap();
-      aum.a<T> $$2 = new aum.a<T>() {
-         @Nullable
-         @Override
-         public T a(aiy $$0) {
-            return (T)aup.this.b.apply($$0).orElse(null);
-         }
-
-         @Nullable
-         @Override
-         public Collection<T> b(aiy $$0) {
-            return $$1.get($$0);
-         }
-      };
-      avm<aiy, aup.b> $$3 = new avm<>();
-      $$0.forEach(($$1x, $$2x) -> $$3.a($$1x, new aup.b($$2x)));
-      $$3.a(
-         ($$2x, $$3x) -> this.a($$2, $$3x.a)
-               .ifLeft(
-                  $$1xx -> a.error(
-                        "Couldn't load tag {} as it is missing following references: {}",
-                        $$2x,
-                        $$1xx.stream().map(Objects::toString).collect(Collectors.joining(", "))
-                     )
-               )
-               .ifRight($$2xx -> $$1.put($$2x, $$2xx))
-      );
-      return $$1;
+   public static <T> aup<T> a(aix<? extends iv<T>> $$0, aiy $$1) {
+      return (aup<T>)c.intern(new aup<>($$0, $$1));
    }
 
-   public Map<aiy, Collection<T>> b(asa $$0) {
-      return this.a(this.a($$0));
+   public boolean c(aix<? extends iv<?>> $$0) {
+      return this.a == $$0;
    }
 
-   public static record a(aum a, String b) {
-
-      @Override
-      public String toString() {
-         return this.a + " (from " + this.b + ")";
-      }
+   public <E> Optional<aup<E>> d(aix<? extends iv<E>> $$0) {
+      return this.c($$0) ? Optional.of((aup<E>)this) : Optional.empty();
    }
 
-   static record b(List<aup.a> a) implements avm.a<aiy> {
-
-      @Override
-      public void a(Consumer<aiy> $$0) {
-         this.a.forEach($$1 -> $$1.a.a($$0));
-      }
-
-      @Override
-      public void b(Consumer<aiy> $$0) {
-         this.a.forEach($$1 -> $$1.a.b($$0));
-      }
+   @Override
+   public String toString() {
+      return "TagKey[" + this.a.a() + " / " + this.b + "]";
    }
 }

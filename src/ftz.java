@@ -1,45 +1,115 @@
-public abstract class ftz extends ftm {
-   protected ggt E;
+public class ftz extends fuh {
+   private static final awp a = awp.a();
+   private final fuc b;
 
-   protected ftz(fpx $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-   }
+   ftz(fqe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fuc $$7) {
+      super($$0, $$1, $$2, $$3, 0.5 - a.j(), $$5, 0.5 - a.j());
+      this.B = 0.96F;
+      this.u = -0.1F;
+      this.C = true;
+      this.b = $$7;
+      this.k *= 0.2F;
+      if ($$4 == 0.0 && $$6 == 0.0) {
+         this.j *= 0.1F;
+         this.l *= 0.1F;
+      }
 
-   protected ftz(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   protected void a(ggt $$0) {
-      this.E = $$0;
-   }
-
-   @Override
-   protected float c() {
-      return this.E.c();
-   }
-
-   @Override
-   protected float d() {
-      return this.E.d();
-   }
-
-   @Override
-   protected float e() {
-      return this.E.g();
+      this.D *= 0.75F;
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+      this.n = false;
+      this.b($$7);
+      if (this.g()) {
+         this.e(0.0F);
+      }
    }
 
    @Override
-   protected float f() {
-      return this.E.h();
+   public ftl b() {
+      return ftl.c;
    }
 
-   public void a(ftu $$0) {
-      this.a($$0.a(this.r));
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.b);
+      if (this.g()) {
+         this.e(0.0F);
+      } else {
+         this.e(awi.i(0.05F, this.y, 1.0F));
+      }
    }
 
-   public void b(ftu $$0) {
-      if (!this.o) {
-         this.a($$0.a(this.s, this.t));
+   private boolean g() {
+      exo $$0 = exo.P();
+      fuv $$1 = $$0.s;
+      return $$1 != null && $$1.br().c(this.g, this.h, this.i) <= 9.0 && $$0.m.ax().a() && $$1.gr();
+   }
+
+   public static class a implements ftk<kc> {
+      private final fuc a;
+
+      public a(fuc $$0) {
+         this.a = $$0;
+      }
+
+      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fth $$8 = new ftz($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(0.15F);
+         $$8.a((float)$$5, (float)$$6, (float)$$7);
+         return $$8;
+      }
+   }
+
+   public static class b implements ftk<kc> {
+      private final fuc a;
+
+      public b(fuc $$0) {
+         this.a = $$0;
+      }
+
+      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new ftz($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
+   }
+
+   public static class c implements ftk<kc> {
+      private final fuc a;
+
+      public c(fuc $$0) {
+         this.a = $$0;
+      }
+
+      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fth $$8 = new ftz($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.a((float)$$5, (float)$$6, (float)$$7);
+         return $$8;
+      }
+   }
+
+   public static class d implements ftk<kc> {
+      private final fuc a;
+
+      public d(fuc $$0) {
+         this.a = $$0;
+      }
+
+      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new ftz($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
+   }
+
+   public static class e implements ftk<kc> {
+      private final fuc a;
+
+      public e(fuc $$0) {
+         this.a = $$0;
+      }
+
+      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ftz $$8 = new ftz($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         float $$9 = $$1.z.i() * 0.5F + 0.35F;
+         $$8.a(1.0F * $$9, 0.0F * $$9, 1.0F * $$9);
+         return $$8;
       }
    }
 }

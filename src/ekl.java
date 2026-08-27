@@ -1,83 +1,60 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
+import org.slf4j.Logger;
 
-public class ekl extends ekh {
-   public static final int a = 0;
-   public static final Codec<ekl> b = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and($$0.group(emq.a.fieldOf("count").forGetter($$0x -> $$0x.c), avp.a(Codec.INT, "limit", Integer.valueOf(0)).forGetter($$0x -> $$0x.d)))
-            .apply($$0, ekl::new)
-   );
-   private final emp c;
-   private final int d;
+public class ekl extends eko {
+   private static final Logger b = LogUtils.getLogger();
+   public static final Codec<ekl> a = RecordCodecBuilder.create($$0 -> a($$0).and(aiy.a.fieldOf("name").forGetter($$0x -> $$0x.c)).apply($$0, ekl::new));
+   private final aiy c;
 
-   ekl(List<elu> $$0, emp $$1, int $$2) {
+   private ekl(List<emb> $$0, aiy $$1) {
       super($$0);
       this.c = $$1;
-      this.d = $$2;
    }
 
    @Override
-   public ekj b() {
-      return ekk.i;
+   public ekq b() {
+      return ekr.B;
    }
 
    @Override
-   public Set<eld<?>> a() {
-      return Sets.union(ImmutableSet.of(elg.d), this.c.a());
-   }
-
-   private boolean c() {
-      return this.d > 0;
+   public void a(ejl $$0) {
+      eje<ekp> $$1 = new eje<>(ejh.b, this.c);
+      if ($$0.a($$1)) {
+         $$0.b("Function " + this.c + " is recursively called");
+      } else {
+         super.a($$0);
+         $$0.a().getElementOptional($$1).ifPresentOrElse($$2 -> $$2.a($$0.a(".{" + this.c + "}", $$1)), () -> $$0.b("Unknown function table called " + this.c));
+      }
    }
 
    @Override
-   public coz a(coz $$0, eiv $$1) {
-      bno $$2 = $$1.c(elg.d);
-      if ($$2 instanceof bog) {
-         int $$3 = ctj.h((bog)$$2);
-         if ($$3 == 0) {
+   protected cpd a(cpd $$0, ejc $$1) {
+      ekp $$2 = $$1.a().getElement(ejh.b, this.c);
+      if ($$2 == null) {
+         b.warn("Unknown function: {}", this.c);
+         return $$0;
+      } else {
+         ejc.c<?> $$3 = ejc.a($$2);
+         if ($$1.b($$3)) {
+            cpd var5;
+            try {
+               var5 = $$2.apply($$0, $$1);
+            } finally {
+               $$1.c($$3);
+            }
+
+            return var5;
+         } else {
+            b.warn("Detected infinite loop in loot tables");
             return $$0;
          }
-
-         float $$4 = (float)$$3 * this.c.b($$1);
-         $$0.g(Math.round($$4));
-         if (this.c() && $$0.M() > this.d) {
-            $$0.f(this.d);
-         }
       }
-
-      return $$0;
    }
 
-   public static ekl.a a(emp $$0) {
-      return new ekl.a($$0);
-   }
-
-   public static class a extends ekh.a<ekl.a> {
-      private final emp a;
-      private int b = 0;
-
-      public a(emp $$0) {
-         this.a = $$0;
-      }
-
-      protected ekl.a a() {
-         return this;
-      }
-
-      public ekl.a a(int $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      @Override
-      public eki b() {
-         return new ekl(this.g(), this.a, this.b);
-      }
+   public static eko.a<?> a(aiy $$0) {
+      return a($$1 -> new ekl($$1, $$0));
    }
 }

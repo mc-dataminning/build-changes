@@ -1,14 +1,14 @@
 public class aap implements xx<aag> {
-   public static final xo<vb, aap> a = xo.a(hz.b, aap::e, xm.a(cyo.q), aap::b, aap::new);
+   public static final xo<vb, aap> a = xo.a(hz.b, aap::e, xm.a(cys.q), aap::b, aap::new);
    private final hz b;
-   private final dlf c;
+   private final dlj c;
 
-   public aap(hz $$0, dlf $$1) {
+   public aap(hz $$0, dlj $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   public aap(cut $$0, hz $$1) {
+   public aap(cux $$0, hz $$1) {
       this($$1, $$0.a_($$1));
    }
 
@@ -21,7 +21,7 @@ public class aap implements xx<aag> {
       $$0.a(this);
    }
 
-   public dlf b() {
+   public dlj b() {
       return this.c;
    }
 

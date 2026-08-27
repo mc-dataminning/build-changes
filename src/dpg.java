@@ -1,45 +1,14 @@
-import java.util.UUID;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
 
-public class dpg<T extends dow> implements dpf<T> {
-   private final doy<T> a;
-   private final dpb<T> b;
+public interface dpg<T> extends AutoCloseable {
+   CompletableFuture<dpb<T>> a(cuy var1);
 
-   public dpg(doy<T> $$0, dpb<T> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   void a(dpb<T> var1);
 
-   @Nullable
-   @Override
-   public T a(int $$0) {
-      return this.a.a($$0);
-   }
-
-   @Nullable
-   @Override
-   public T a(UUID $$0) {
-      return this.a.a($$0);
-   }
+   void a(boolean var1);
 
    @Override
-   public Iterable<T> a() {
-      return this.a.a();
-   }
-
-   @Override
-   public <U extends T> void a(dpd<T, U> $$0, auu<U> $$1) {
-      this.a.a($$0, $$1);
-   }
-
-   @Override
-   public void a(enn $$0, Consumer<T> $$1) {
-      this.b.b($$0, auu.forConsumer($$1));
-   }
-
-   @Override
-   public <U extends T> void a(dpd<T, U> $$0, enn $$1, auu<U> $$2) {
-      this.b.a($$0, $$1, $$2);
+   default void close() throws IOException {
    }
 }

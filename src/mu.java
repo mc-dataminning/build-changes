@@ -52,15 +52,15 @@ public class mu {
       return this;
    }
 
-   public aiy a(cyo $$0, BiConsumer<aiy, Supplier<JsonElement>> $$1) {
+   public aiy a(cys $$0, BiConsumer<aiy, Supplier<JsonElement>> $$1) {
       return this.B.a($$0, this.A, $$1);
    }
 
-   public aiy a(cyo $$0, String $$1, BiConsumer<aiy, Supplier<JsonElement>> $$2) {
+   public aiy a(cys $$0, String $$1, BiConsumer<aiy, Supplier<JsonElement>> $$2) {
       return this.B.a($$0, $$1, this.A, $$2);
    }
 
-   private static mu.a a(Function<cyo, ms> $$0, mq $$1) {
+   private static mu.a a(Function<cys, ms> $$0, mq $$1) {
       return $$2 -> new mu($$0.apply($$2), $$1);
    }
 
@@ -70,13 +70,13 @@ public class mu {
 
    @FunctionalInterface
    public interface a {
-      mu get(cyo var1);
+      mu get(cys var1);
 
-      default aiy create(cyo $$0, BiConsumer<aiy, Supplier<JsonElement>> $$1) {
+      default aiy create(cys $$0, BiConsumer<aiy, Supplier<JsonElement>> $$1) {
          return this.get($$0).a($$0, $$1);
       }
 
-      default aiy createWithSuffix(cyo $$0, String $$1, BiConsumer<aiy, Supplier<JsonElement>> $$2) {
+      default aiy createWithSuffix(cys $$0, String $$1, BiConsumer<aiy, Supplier<JsonElement>> $$2) {
          return this.get($$0).a($$0, $$1, $$2);
       }
 

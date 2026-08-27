@@ -106,9 +106,9 @@ public class ana {
       $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("tp").requires($$0x -> $$0x.c(2))).redirect($$1));
    }
 
-   private static int a(du $$0, Collection<? extends bno> $$1, bno $$2) throws CommandSyntaxException {
-      for (bno $$3 : $$1) {
-         a($$0, $$3, (aov)$$2.dM(), $$2.dr(), $$2.dt(), $$2.dx(), EnumSet.noneOf(bot.class), $$2.dC(), $$2.dE(), null);
+   private static int a(du $$0, Collection<? extends bnq> $$1, bnq $$2) throws CommandSyntaxException {
+      for (bnq $$3 : $$1) {
+         a($$0, $$3, (aow)$$2.dM(), $$2.dr(), $$2.dt(), $$2.dx(), EnumSet.noneOf(bov.class), $$2.dC(), $$2.dE(), null);
       }
 
       if ($$1.size() == 1) {
@@ -120,36 +120,36 @@ public class ana {
       return $$1.size();
    }
 
-   private static int a(du $$0, Collection<? extends bno> $$1, aov $$2, fq $$3, @Nullable fq $$4, @Nullable ana.a $$5) throws CommandSyntaxException {
-      ens $$6 = $$3.a($$0);
-      enr $$7 = $$4 == null ? null : $$4.b($$0);
-      Set<bot> $$8 = EnumSet.noneOf(bot.class);
+   private static int a(du $$0, Collection<? extends bnq> $$1, aow $$2, fq $$3, @Nullable fq $$4, @Nullable ana.a $$5) throws CommandSyntaxException {
+      enz $$6 = $$3.a($$0);
+      eny $$7 = $$4 == null ? null : $$4.b($$0);
+      Set<bov> $$8 = EnumSet.noneOf(bov.class);
       if ($$3.a()) {
-         $$8.add(bot.a);
+         $$8.add(bov.a);
       }
 
       if ($$3.b()) {
-         $$8.add(bot.b);
+         $$8.add(bov.b);
       }
 
       if ($$3.c()) {
-         $$8.add(bot.c);
+         $$8.add(bov.c);
       }
 
       if ($$4 == null) {
-         $$8.add(bot.e);
-         $$8.add(bot.d);
+         $$8.add(bov.e);
+         $$8.add(bov.d);
       } else {
          if ($$4.a()) {
-            $$8.add(bot.e);
+            $$8.add(bov.e);
          }
 
          if ($$4.b()) {
-            $$8.add(bot.d);
+            $$8.add(bov.d);
          }
       }
 
-      for (bno $$9 : $$1) {
+      for (bnq $$9 : $$1) {
          if ($$4 == null) {
             a($$0, $$9, $$2, $$6.c, $$6.d, $$6.e, $$8, $$9.dC(), $$9.dE(), $$5);
          } else {
@@ -170,24 +170,24 @@ public class ana {
       return String.format(Locale.ROOT, "%f", $$0);
    }
 
-   private static void a(du $$0, bno $$1, aov $$2, double $$3, double $$4, double $$5, Set<bot> $$6, float $$7, float $$8, @Nullable ana.a $$9) throws CommandSyntaxException {
+   private static void a(du $$0, bnq $$1, aow $$2, double $$3, double $$4, double $$5, Set<bov> $$6, float $$7, float $$8, @Nullable ana.a $$9) throws CommandSyntaxException {
       hz $$10 = hz.a($$3, $$4, $$5);
-      if (!cvn.l($$10)) {
+      if (!cvr.l($$10)) {
          throw a.create();
       } else {
-         float $$11 = awh.g($$7);
-         float $$12 = awh.g($$8);
+         float $$11 = awi.g($$7);
+         float $$12 = awi.g($$8);
          if ($$1.a($$2, $$3, $$4, $$5, $$6, $$11, $$12)) {
             if ($$9 != null) {
                $$9.a($$0, $$1);
             }
 
-            if (!($$1 instanceof bog $$13) || !$$13.fw()) {
+            if (!($$1 instanceof boi $$13) || !$$13.fw()) {
                $$1.g($$1.dp().d(1.0, 0.0, 1.0));
                $$1.c(true);
             }
 
-            if ($$1 instanceof boo $$14) {
+            if ($$1 instanceof boq $$14) {
                $$14.N().n();
             }
          }
@@ -195,26 +195,26 @@ public class ana {
    }
 
    static class a {
-      private final ens a;
-      private final bno b;
+      private final enz a;
+      private final bnq b;
       private final eg.a c;
 
-      public a(bno $$0, eg.a $$1) {
+      public a(bnq $$0, eg.a $$1) {
          this.b = $$0;
          this.c = $$1;
          this.a = $$1.a($$0);
       }
 
-      public a(ens $$0) {
+      public a(enz $$0) {
          this.b = null;
          this.a = $$0;
          this.c = null;
       }
 
-      public void a(du $$0, bno $$1) {
+      public void a(du $$0, bnq $$1) {
          if (this.b != null) {
-            if ($$1 instanceof aow) {
-               ((aow)$$1).a($$0.m(), this.b, this.c);
+            if ($$1 instanceof aox) {
+               ((aox)$$1).a($$0.m(), this.b, this.c);
             } else {
                $$1.a($$0.m(), this.a);
             }

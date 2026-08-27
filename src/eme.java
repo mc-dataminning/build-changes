@@ -1,50 +1,47 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import java.util.Set;
 
-public record eme(Optional<Boolean> b, Optional<Boolean> c) implements elu {
+public record eme(Optional<br> b, ejc.b c) implements emb {
    public static final Codec<eme> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(avp.a(Codec.BOOL, "raining").forGetter(eme::d), avp.a(Codec.BOOL, "thundering").forGetter(eme::e)).apply($$0, eme::new)
+      $$0 -> $$0.group(avq.a(br.a, "predicate").forGetter(eme::c), ejc.b.e.fieldOf("entity").forGetter(eme::d)).apply($$0, eme::new)
    );
 
    @Override
-   public elv b() {
-      return elw.p;
+   public emc b() {
+      return emd.g;
    }
 
-   public boolean a(eiv $$0) {
-      aov $$1 = $$0.d();
-      return this.b.isPresent() && this.b.get() != $$1.ab() ? false : !this.c.isPresent() || this.c.get() == $$1.aa();
+   @Override
+   public Set<elk<?>> a() {
+      return ImmutableSet.of(eln.f, this.c.a());
    }
 
-   public static eme.a c() {
-      return new eme.a();
+   public boolean a(ejc $$0) {
+      bnq $$1 = $$0.c(this.c.a());
+      enz $$2 = $$0.c(eln.f);
+      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
    }
 
-   public Optional<Boolean> d() {
+   public static emb.a a(ejc.b $$0) {
+      return a($$0, br.a.a());
+   }
+
+   public static emb.a a(ejc.b $$0, br.a $$1) {
+      return () -> new eme(Optional.of($$1.b()), $$0);
+   }
+
+   public static emb.a a(ejc.b $$0, br $$1) {
+      return () -> new eme(Optional.of($$1), $$0);
+   }
+
+   public Optional<br> c() {
       return this.b;
    }
 
-   public Optional<Boolean> e() {
+   public ejc.b d() {
       return this.c;
-   }
-
-   public static class a implements elu.a {
-      private Optional<Boolean> a = Optional.empty();
-      private Optional<Boolean> b = Optional.empty();
-
-      public eme.a a(boolean $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public eme.a b(boolean $$0) {
-         this.b = Optional.of($$0);
-         return this;
-      }
-
-      public eme a() {
-         return new eme(this.a, this.b);
-      }
    }
 }

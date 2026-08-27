@@ -6,9 +6,9 @@ import java.util.Locale;
 
 public class kd implements jx {
    public static final Codec<kd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dpt.c.fieldOf("destination").forGetter(kd::c), Codec.INT.fieldOf("arrival_in_ticks").forGetter(kd::d)).apply($$0, kd::new)
+      $$0 -> $$0.group(dqa.c.fieldOf("destination").forGetter(kd::c), Codec.INT.fieldOf("arrival_in_ticks").forGetter(kd::d)).apply($$0, kd::new)
    );
-   public static final xo<vb, kd> b = xo.a(dpt.d, kd::c, xm.d, kd::d, kd::new);
+   public static final xo<vb, kd> b = xo.a(dqa.d, kd::c, xm.d, kd::d, kd::new);
    public static final jx.a<kd> c = new jx.a<kd>() {
       public kd a(jy<kd> $$0, StringReader $$1) throws CommandSyntaxException {
          $$1.expect(' ');
@@ -20,20 +20,20 @@ public class kd implements jx {
          $$1.expect(' ');
          int $$5 = $$1.readInt();
          hz $$6 = hz.a((double)$$2, (double)$$3, (double)$$4);
-         return new kd(new dpl($$6), $$5);
+         return new kd(new dps($$6), $$5);
       }
    };
-   private final dpt d;
+   private final dqa d;
    private final int e;
 
-   public kd(dpt $$0, int $$1) {
+   public kd(dqa $$0, int $$1) {
       this.d = $$0;
       this.e = $$1;
    }
 
    @Override
    public String a() {
-      ens $$0 = this.d.a(null).get();
+      enz $$0 = this.d.a(null).get();
       double $$1 = $$0.a();
       double $$2 = $$0.b();
       double $$3 = $$0.c();
@@ -45,7 +45,7 @@ public class kd implements jx {
       return jz.R;
    }
 
-   public dpt c() {
+   public dqa c() {
       return this.d;
    }
 

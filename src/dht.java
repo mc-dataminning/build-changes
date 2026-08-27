@@ -1,35 +1,35 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dht extends dau implements dhr {
-   public static final MapCodec<dht> l = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dlu.a.fieldOf("block_set_type").forGetter(dau::b), dhr.a.e.fieldOf("weathering_state").forGetter(dht::g), u()).apply($$0, dht::new)
-   );
-   private final dhr.a m;
+public class dht extends czb {
+   public static final MapCodec<dht> a = b(dht::new);
+   protected static final eos b = cys.a(1.0, 0.0, 1.0, 15.0, 1.5, 15.0);
 
    @Override
    public MapCodec<dht> a() {
-      return l;
+      return a;
    }
 
-   protected dht(dlu $$0, dhr.a $$1, dle.d $$2) {
-      super($$0, $$2);
-      this.m = $$1;
+   protected dht(dli.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected void b(dlf $$0, aov $$1, hz $$2, awo $$3) {
-      if ($$0.c(dau.f) == dmb.b) {
-         this.a_($$0, $$1, $$2, $$3);
+   protected void a(dlj $$0, cvr $$1, hz $$2, bnq $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$1 instanceof aow && $$3 instanceof cjg) {
+         $$1.a(new hz($$2), true, $$3);
       }
    }
 
    @Override
-   protected boolean e_(dlf $$0) {
-      return dhr.c($$0.b()).isPresent();
+   protected eos a(dlj $$0, cux $$1, hz $$2, eoe $$3) {
+      return b;
    }
 
-   public dhr.a g() {
-      return this.m;
+   @Override
+   protected boolean b(dlj $$0, cux $$1, hz $$2) {
+      egw $$3 = $$1.b_($$2);
+      egw $$4 = $$1.b_($$2.c());
+      return ($$3.a() == egx.c || $$0.b() instanceof dcp) && $$4.a() == egx.a;
    }
 }

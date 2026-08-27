@@ -2,7 +2,7 @@ public class adb implements xx<aag> {
    public static final xo<uq, adb> a = xx.a(adb::a, adb::new);
    private final int b;
 
-   public adb(dmw $$0) {
+   public adb(dna $$0) {
       this.b = $$0.q();
    }
 

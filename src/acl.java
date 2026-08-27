@@ -12,17 +12,17 @@ public class acl implements xx<aag> {
    private final EnumSet<acl.a> b;
    private final List<acl.b> c;
 
-   public acl(EnumSet<acl.a> $$0, Collection<aow> $$1) {
+   public acl(EnumSet<acl.a> $$0, Collection<aox> $$1) {
       this.b = $$0;
       this.c = $$1.stream().map(acl.b::new).toList();
    }
 
-   public acl(acl.a $$0, aow $$1) {
+   public acl(acl.a $$0, aox $$1) {
       this.b = EnumSet.of($$0);
       this.c = List.of(new acl.b($$1));
    }
 
-   public static acl a(Collection<aow> $$0) {
+   public static acl a(Collection<aox> $$0) {
       EnumSet<acl.a> $$1 = EnumSet.of(acl.a.a, acl.a.b, acl.a.c, acl.a.d, acl.a.e, acl.a.f);
       return new acl($$1, $$0);
    }
@@ -88,7 +88,7 @@ public class acl implements xx<aag> {
          $$0.a($$2.getProperties());
       }),
       b(($$0, $$1) -> $$0.g = $$1.c(wh.a::a), ($$0, $$1) -> $$0.a($$1.g, wh.a::a)),
-      c(($$0, $$1) -> $$0.e = cvk.a($$1.n()), ($$0, $$1) -> $$0.c($$1.e().a())),
+      c(($$0, $$1) -> $$0.e = cvo.a($$1.n()), ($$0, $$1) -> $$0.c($$1.e().a())),
       d(($$0, $$1) -> $$0.c = $$1.readBoolean(), ($$0, $$1) -> $$0.a($$1.c())),
       e(($$0, $$1) -> $$0.d = $$1.n(), ($$0, $$1) -> $$0.c($$1.d())),
       f(($$0, $$1) -> $$0.f = $$1.c(uq::m), ($$0, $$1) -> $$0.a($$1.f(), uq::a));
@@ -110,9 +110,9 @@ public class acl implements xx<aag> {
       }
    }
 
-   public static record b(UUID a, @Nullable GameProfile b, boolean c, int d, cvk e, @Nullable vq f, @Nullable wh.a g) {
+   public static record b(UUID a, @Nullable GameProfile b, boolean c, int d, cvo e, @Nullable vq f, @Nullable wh.a g) {
 
-      b(aow $$0) {
+      b(aox $$0) {
          this($$0.cw(), $$0.fS(), true, $$0.d.l(), $$0.f.b(), $$0.N(), x.a($$0.ab(), wh::a));
       }
    }
@@ -123,14 +123,14 @@ public class acl implements xx<aag> {
       GameProfile b;
       boolean c;
       int d;
-      cvk e;
+      cvo e;
       @Nullable
       vq f;
       @Nullable
       wh.a g;
 
       c(UUID $$0) {
-         this.e = cvk.e;
+         this.e = cvo.e;
          this.a = $$0;
       }
 

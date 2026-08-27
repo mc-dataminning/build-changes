@@ -21,11 +21,11 @@ public class fo implements ArgumentType<fq> {
    }
 
    public static hz a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
-      aov $$2 = ((du)$$0.getSource()).e();
+      aow $$2 = ((du)$$0.getSource()).e();
       return a($$0, $$2, $$1);
    }
 
-   public static hz a(CommandContext<du> $$0, aov $$1, String $$2) throws CommandSyntaxException {
+   public static hz a(CommandContext<du> $$0, aow $$1, String $$2) throws CommandSyntaxException {
       hz $$3 = b($$0, $$2);
       if (!$$1.B($$3)) {
          throw a.create();
@@ -42,7 +42,7 @@ public class fo implements ArgumentType<fq> {
 
    public static hz c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       hz $$2 = b($$0, $$1);
-      if (!cvn.l($$2)) {
+      if (!cvr.l($$2)) {
          throw c.create();
       } else {
          return $$2;

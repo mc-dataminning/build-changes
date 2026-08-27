@@ -1,20 +1,21 @@
-public interface enw {
-   enw a = ($$0, $$1) -> false;
-   enw b = ($$0, $$1) -> !$$0 && !$$1;
-   enw c = ($$0, $$1) -> $$1 && !$$0;
-   enw d = ($$0, $$1) -> !$$0;
-   enw e = ($$0, $$1) -> $$0 && !$$1;
-   enw f = ($$0, $$1) -> !$$1;
-   enw g = ($$0, $$1) -> $$0 != $$1;
-   enw h = ($$0, $$1) -> !$$0 || !$$1;
-   enw i = ($$0, $$1) -> $$0 && $$1;
-   enw j = ($$0, $$1) -> $$0 == $$1;
-   enw k = ($$0, $$1) -> $$1;
-   enw l = ($$0, $$1) -> !$$0 || $$1;
-   enw m = ($$0, $$1) -> $$0;
-   enw n = ($$0, $$1) -> $$0 || !$$1;
-   enw o = ($$0, $$1) -> $$0 || $$1;
-   enw p = ($$0, $$1) -> true;
+public class enw extends enx {
+   private final bnq b;
 
-   boolean apply(boolean var1, boolean var2);
+   public enw(bnq $$0) {
+      this($$0, $$0.dk());
+   }
+
+   public enw(bnq $$0, enz $$1) {
+      super($$1);
+      this.b = $$0;
+   }
+
+   public bnq a() {
+      return this.b;
+   }
+
+   @Override
+   public enx.a c() {
+      return enx.a.c;
+   }
 }

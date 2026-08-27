@@ -1,66 +1,81 @@
-public class csl extends crt {
-   public csl(crr $$0) {
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.List;
+import java.util.Map;
+
+public class csl extends crx {
+   public csl(crv $$0) {
       super($$0);
    }
 
-   public boolean a(ckr $$0, cvn $$1) {
-      coz $$2 = coz.h;
-      coz $$3 = coz.h;
+   public boolean a(ckv $$0, cvr $$1) {
+      List<cpd> $$2 = Lists.newArrayList();
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         coz $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.d() instanceof cmp) {
-               if (!$$3.b()) {
+      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
+         cpd $$4 = $$0.a($$3);
+         if (!$$4.b()) {
+            $$2.add($$4);
+            if ($$2.size() > 1) {
+               cpd $$5 = $$2.get(0);
+               if (!$$4.a($$5.d()) || $$5.M() != 1 || $$4.M() != 1 || !$$5.d().n()) {
                   return false;
                }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cpc.vo)) {
-                  return false;
-               }
-
-               if (!$$2.b()) {
-                  return false;
-               }
-
-               if (cms.a($$5) != null) {
-                  return false;
-               }
-
-               $$2 = $$5;
             }
          }
       }
 
-      return !$$2.b() && !$$3.b();
+      return $$2.size() == 2;
    }
 
-   public coz a(ckr $$0, iw $$1) {
-      coz $$2 = coz.h;
-      coz $$3 = coz.h;
+   public cpd a(ckv $$0, iw $$1) {
+      List<cpd> $$2 = Lists.newArrayList();
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         coz $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.d() instanceof cmp) {
-               $$2 = $$5;
-            } else if ($$5.a(cpc.vo)) {
-               $$3 = $$5.q();
+      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
+         cpd $$4 = $$0.a($$3);
+         if (!$$4.b()) {
+            $$2.add($$4);
+            if ($$2.size() > 1) {
+               cpd $$5 = $$2.get(0);
+               if (!$$4.a($$5.d()) || $$5.M() != 1 || $$4.M() != 1 || !$$5.d().n()) {
+                  return cpd.h;
+               }
             }
          }
       }
 
-      if ($$3.b()) {
-         return $$3;
-      } else {
-         sw $$6 = cms.a($$2);
-         sw $$7 = $$6 == null ? new sw() : $$6.h();
-         $$7.a("Base", ((cmp)$$2.d()).b().a());
-         cms.a($$3, div.t, $$7);
-         return $$3;
+      if ($$2.size() == 2) {
+         cpd $$6 = $$2.get(0);
+         cpd $$7 = $$2.get(1);
+         if ($$6.a($$7.d()) && $$6.M() == 1 && $$7.M() == 1 && $$6.d().n()) {
+            coy $$8 = $$6.d();
+            int $$9 = $$8.l() - $$6.l();
+            int $$10 = $$8.l() - $$7.l();
+            int $$11 = $$9 + $$10 + $$8.l() * 5 / 100;
+            int $$12 = $$8.l() - $$11;
+            if ($$12 < 0) {
+               $$12 = 0;
+            }
+
+            cpd $$13 = new cpd($$6.d());
+            $$13.b($$12);
+            Map<ctm, Integer> $$14 = Maps.newHashMap();
+            Map<ctm, Integer> $$15 = ctn.a($$6);
+            Map<ctm, Integer> $$16 = ctn.a($$7);
+            kf.f.s().filter(ctm::c).forEach($$3x -> {
+               int $$4 = Math.max($$15.getOrDefault($$3x, 0), $$16.getOrDefault($$3x, 0));
+               if ($$4 > 0) {
+                  $$14.put($$3x, $$4);
+               }
+            });
+            if (!$$14.isEmpty()) {
+               ctn.a($$14, $$13);
+            }
+
+            return $$13;
+         }
       }
+
+      return cpd.h;
    }
 
    @Override
@@ -69,7 +84,7 @@ public class csl extends crt {
    }
 
    @Override
-   public csf<?> at_() {
-      return csf.l;
+   public csj<?> at_() {
+      return csj.o;
    }
 }

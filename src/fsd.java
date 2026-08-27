@@ -1,43 +1,40 @@
-import org.joml.Vector3f;
-
-public class fsd extends fsf<js> {
-   private final Vector3f a;
-   private final Vector3f b;
-
-   protected fsd(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, js $$7, ftu $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
-      float $$9 = this.r.i() * 0.4F + 0.6F;
-      this.a = this.a($$7.c(), $$9);
-      this.b = this.a($$7.d(), $$9);
-   }
-
-   private Vector3f a(Vector3f $$0, float $$1) {
-      return new Vector3f(this.a($$0.x(), $$1), this.a($$0.y(), $$1), this.a($$0.z(), $$1));
-   }
-
-   private void f(float $$0) {
-      float $$1 = ((float)this.s + $$0) / ((float)this.t + 1.0F);
-      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
-      this.v = $$2.x();
-      this.w = $$2.y();
-      this.x = $$2.z();
+public class fsd extends fuh {
+   fsd(fqe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3);
+      this.u = -0.125F;
+      this.B = 0.85F;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.t = (int)(40.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
-   public void a(ese $$0, ews $$1, float $$2) {
-      this.f($$2);
-      super.a($$0, $$1, $$2);
+   public void a() {
+      super.a();
+      if (!this.o && !this.c.b_(hz.a(this.g, this.h, this.i)).a(auf.a)) {
+         this.k();
+      }
    }
 
-   public static class a implements ftc<js> {
-      private final ftu a;
+   @Override
+   public ftl b() {
+      return ftl.b;
+   }
 
-      public a(ftu $$0) {
+   public static class a implements ftk<kc> {
+      private final fuc a;
+
+      public a(fuc $$0) {
          this.a = $$0;
       }
 
-      public fsz a(js $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fsd($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
+      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fsd $$8 = new fsd($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

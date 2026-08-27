@@ -1,22 +1,15 @@
-public abstract class crt implements crs {
-   private final crr a;
-
-   public crt(crr $$0) {
-      this.a = $$0;
+public class crt extends cro {
+   public crt(String $$0, cru $$1, csc $$2, cpd $$3, float $$4, int $$5) {
+      super(csk.e, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean as_() {
-      return true;
+   public cpd g() {
+      return new cpd(cyu.og);
    }
 
    @Override
-   public coz a(iw $$0) {
-      return coz.h;
-   }
-
-   @Override
-   public crr d() {
-      return this.a;
+   public csj<?> at_() {
+      return csj.s;
    }
 }

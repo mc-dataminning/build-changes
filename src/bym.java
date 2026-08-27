@@ -1,37 +1,30 @@
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public class bym {
-   private final boi a;
-   private final IntSet b = new IntOpenHashSet();
-   private final IntSet c = new IntOpenHashSet();
-
-   public bym(boi $$0) {
-      this.a = $$0;
+public class bym extends byr<boi> {
+   @Override
+   public Set<bxl<?>> a() {
+      return ImmutableSet.of(bxl.h, bxl.M, bxl.an);
    }
 
-   public void a() {
-      this.b.clear();
-      this.c.clear();
-   }
+   @Override
+   protected void a(aow $$0, boi $$1) {
+      bpj<?> $$2 = $$1.dO();
+      List<cga> $$3 = Lists.newArrayList();
+      bxn $$4 = $$2.c(bxl.h).orElse(bxn.a());
+      Optional<bok> $$5 = $$4.a($$0x -> $$0x instanceof cfi || $$0x instanceof cdk).map(bok.class::cast);
 
-   public boolean a(bno $$0) {
-      int $$1 = $$0.aj();
-      if (this.b.contains($$1)) {
-         return true;
-      } else if (this.c.contains($$1)) {
-         return false;
-      } else {
-         this.a.dM().af().a("hasLineOfSight");
-         boolean $$2 = this.a.D($$0);
-         this.a.dM().af().c();
-         if ($$2) {
-            this.b.add($$1);
-         } else {
-            this.c.add($$1);
+      for (boi $$7 : $$2.c(bxl.g).orElse(ImmutableList.of())) {
+         if ($$7 instanceof cga && ((cga)$$7).gh()) {
+            $$3.add((cga)$$7);
          }
-
-         return $$2;
       }
+
+      $$2.a(bxl.M, $$5);
+      $$2.a(bxl.an, $$3);
    }
 }

@@ -26,11 +26,11 @@ public class vt {
       }
    }
 
-   public static Optional<we> a(@Nullable du $$0, Optional<vq> $$1, @Nullable bno $$2, int $$3) throws CommandSyntaxException {
+   public static Optional<we> a(@Nullable du $$0, Optional<vq> $$1, @Nullable bnq $$2, int $$3) throws CommandSyntaxException {
       return $$1.isPresent() ? Optional.of(a($$0, $$1.get(), $$2, $$3)) : Optional.empty();
    }
 
-   public static we a(@Nullable du $$0, vq $$1, @Nullable bno $$2, int $$3) throws CommandSyntaxException {
+   public static we a(@Nullable du $$0, vq $$1, @Nullable bnq $$2, int $$3) throws CommandSyntaxException {
       if ($$3 > 100) {
          return $$1.f();
       } else {
@@ -44,7 +44,7 @@ public class vt {
       }
    }
 
-   private static wn a(@Nullable du $$0, wn $$1, @Nullable bno $$2, int $$3) throws CommandSyntaxException {
+   private static wn a(@Nullable du $$0, wn $$1, @Nullable bnq $$2, int $$3) throws CommandSyntaxException {
       vw $$4 = $$1.i();
       if ($$4 != null) {
          vq $$5 = $$4.a(vw.a.a);

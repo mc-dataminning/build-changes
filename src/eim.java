@@ -1,313 +1,119 @@
-import java.nio.file.Path;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.PushbackInputStream;
+import java.util.Map;
+import java.util.function.Function;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
 
-public class eim implements Comparable<eim> {
-   public static final vq a = vq.c("selectWorld.select");
-   private final cvr b;
-   private final ein c;
-   private final String d;
-   private final boolean e;
-   private final boolean f;
-   private final boolean g;
-   private final Path h;
-   @Nullable
-   private vq i;
+public class eim {
+   private static final Logger a = LogUtils.getLogger();
+   private final Map<String, eib> b = Maps.newHashMap();
+   private final DataFixer c;
+   private final File d;
 
-   public eim(cvr $$0, ein $$1, String $$2, boolean $$3, boolean $$4, boolean $$5, Path $$6) {
-      this.b = $$0;
+   public eim(File $$0, DataFixer $$1) {
       this.c = $$1;
-      this.d = $$2;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.e = $$3;
+      this.d = $$0;
    }
 
-   public String a() {
-      return this.d;
+   private File a(String $$0) {
+      return new File(this.d, $$0 + ".dat");
    }
 
-   public String b() {
-      return StringUtils.isEmpty(this.b.a()) ? this.d : this.b.a();
-   }
-
-   public Path c() {
-      return this.h;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public boolean e() {
-      return this.g;
-   }
-
-   public long f() {
-      return this.c.b();
-   }
-
-   public int a(eim $$0) {
-      if (this.f() < $$0.f()) {
-         return 1;
+   public <T extends eib> T a(eib.a<T> $$0, String $$1) {
+      T $$2 = this.b($$0, $$1);
+      if ($$2 != null) {
+         return $$2;
       } else {
-         return this.f() > $$0.f() ? -1 : this.d.compareTo($$0.d);
+         T $$3 = (T)$$0.a().get();
+         this.a($$1, $$3);
+         return $$3;
       }
    }
 
-   public cvr g() {
-      return this.b;
-   }
-
-   public cvk h() {
-      return this.b.b();
-   }
-
-   public boolean i() {
-      return this.b.c();
-   }
-
-   public boolean j() {
-      return this.b.e();
-   }
-
-   public we k() {
-      return axd.b(this.c.c()) ? vq.c("selectWorld.versionUnknown") : vq.b(this.c.c());
-   }
-
-   public ein l() {
-      return this.c;
-   }
-
-   public boolean m() {
-      return this.o().a();
-   }
-
-   public boolean n() {
-      return this.o() == eim.a.b;
-   }
-
-   public eim.a o() {
-      ad $$0 = aa.b();
-      int $$1 = $$0.d().c();
-      int $$2 = this.c.d().c();
-      if (!$$0.g() && $$2 < $$1) {
-         return eim.a.c;
-      } else {
-         return $$2 > $$1 ? eim.a.b : eim.a.a;
-      }
-   }
-
-   public boolean p() {
-      return this.f;
-   }
-
-   public boolean q() {
-      return !this.p() && !this.d() ? !this.r() : true;
-   }
-
-   public boolean r() {
-      return aa.b().d().a(this.c.d());
-   }
-
-   public vq s() {
-      if (this.i == null) {
-         this.i = this.z();
+   @Nullable
+   public <T extends eib> T b(eib.a<T> $$0, String $$1) {
+      eib $$2 = this.b.get($$1);
+      if ($$2 == null && !this.b.containsKey($$1)) {
+         $$2 = this.a($$0.b(), $$0.c(), $$1);
+         this.b.put($$1, $$2);
       }
 
-      return this.i;
+      return (T)$$2;
    }
 
-   private vq z() {
-      if (this.p()) {
-         return vq.c("selectWorld.locked").a(n.m);
-      } else if (this.d()) {
-         return vq.c("selectWorld.conversion").a(n.m);
-      } else if (!this.r()) {
-         return vq.a("selectWorld.incompatible.info", this.k()).a(n.m);
-      } else {
-         we $$0 = this.i() ? vq.i().b(vq.c("gameMode.hardcore").b(-65536)) : vq.c("gameMode." + this.h().b());
-         if (this.j()) {
-            $$0.f(", ").b(vq.c("selectWorld.cheats"));
+   @Nullable
+   private <T extends eib> T a(Function<sw, T> $$0, axo $$1, String $$2) {
+      try {
+         File $$3 = this.a($$2);
+         if ($$3.exists()) {
+            sw $$4 = this.a($$2, $$1, aa.b().d().c());
+            return $$0.apply($$4.p("data"));
          }
+      } catch (Exception var6) {
+         a.error("Error loading saved data: {}", $$2, var6);
+      }
 
-         if (this.e()) {
-            $$0.f(", ").b(vq.c("selectWorld.experimental").a(n.o));
-         }
+      return null;
+   }
 
-         we $$1 = this.k();
-         we $$2 = vq.b(", ").b(vq.c("selectWorld.version")).b(vp.v);
-         if (this.m()) {
-            $$2.b($$1.a(this.n() ? n.m : n.u));
+   public void a(String $$0, eib $$1) {
+      this.b.put($$0, $$1);
+   }
+
+   public sw a(String $$0, axo $$1, int $$2) throws IOException {
+      File $$3 = this.a($$0);
+
+      sw var9;
+      try (
+         FileInputStream $$4 = new FileInputStream($$3);
+         PushbackInputStream $$5 = new PushbackInputStream($$4, 2);
+      ) {
+         sw $$6;
+         if (this.a($$5)) {
+            $$6 = tj.a($$5, tf.a());
          } else {
-            $$2.b($$1);
+            try (DataInputStream $$7 = new DataInputStream($$5)) {
+               $$6 = tj.a($$7);
+            }
          }
 
-         $$0.b($$2);
-         return $$0;
+         int $$10 = tl.b($$6, 1343);
+         var9 = $$1.a(this.c, $$6, $$10, $$2);
       }
+
+      return var9;
    }
 
-   public vq t() {
-      return a;
+   private boolean a(PushbackInputStream $$0) throws IOException {
+      byte[] $$1 = new byte[2];
+      boolean $$2 = false;
+      int $$3 = $$0.read($$1, 0, 2);
+      if ($$3 == 2) {
+         int $$4 = ($$1[1] & 255) << 8 | $$1[0] & 255;
+         if ($$4 == 35615) {
+            $$2 = true;
+         }
+      }
+
+      if ($$3 != 0) {
+         $$0.unread($$1, 0, $$3);
+      }
+
+      return $$2;
    }
 
-   public boolean u() {
-      return !this.q();
-   }
-
-   public boolean v() {
-      return !this.d() && !this.p();
-   }
-
-   public boolean w() {
-      return !this.q();
-   }
-
-   public boolean x() {
-      return !this.q();
-   }
-
-   public boolean y() {
-      return true;
-   }
-
-   public static enum a {
-      a(false, false, ""),
-      b(true, true, "downgrade"),
-      c(true, false, "snapshot");
-
-      private final boolean d;
-      private final boolean e;
-      private final String f;
-
-      private a(boolean $$0, boolean $$1, String $$2) {
-         this.d = $$0;
-         this.e = $$1;
-         this.f = $$2;
-      }
-
-      public boolean a() {
-         return this.d;
-      }
-
-      public boolean b() {
-         return this.e;
-      }
-
-      public String c() {
-         return this.f;
-      }
-   }
-
-   public static class b extends eim {
-      private static final vq b = vq.c("recover_world.warning").a($$0 -> $$0.a(-65536));
-      private static final vq c = vq.c("recover_world.button");
-      private final long d;
-
-      public b(String $$0, Path $$1, long $$2) {
-         super(null, null, $$0, false, false, false, $$1);
-         this.d = $$2;
-      }
-
-      @Override
-      public String b() {
-         return this.a();
-      }
-
-      @Override
-      public vq s() {
-         return b;
-      }
-
-      @Override
-      public long f() {
-         return this.d;
-      }
-
-      @Override
-      public boolean q() {
-         return false;
-      }
-
-      @Override
-      public vq t() {
-         return c;
-      }
-
-      @Override
-      public boolean u() {
-         return true;
-      }
-
-      @Override
-      public boolean v() {
-         return false;
-      }
-
-      @Override
-      public boolean w() {
-         return false;
-      }
-
-      @Override
-      public boolean x() {
-         return false;
-      }
-   }
-
-   public static class c extends eim {
-      private static final vq b = vq.c("symlink_warning.more_info");
-      private static final vq c = vq.c("symlink_warning.title").b(-65536);
-
-      public c(String $$0, Path $$1) {
-         super(null, null, $$0, false, false, false, $$1);
-      }
-
-      @Override
-      public String b() {
-         return this.a();
-      }
-
-      @Override
-      public vq s() {
-         return c;
-      }
-
-      @Override
-      public long f() {
-         return -1L;
-      }
-
-      @Override
-      public boolean q() {
-         return false;
-      }
-
-      @Override
-      public vq t() {
-         return b;
-      }
-
-      @Override
-      public boolean u() {
-         return true;
-      }
-
-      @Override
-      public boolean v() {
-         return false;
-      }
-
-      @Override
-      public boolean w() {
-         return false;
-      }
-
-      @Override
-      public boolean x() {
-         return false;
-      }
+   public void a() {
+      this.b.forEach(($$0, $$1) -> {
+         if ($$1 != null) {
+            $$1.a(this.a($$0));
+         }
+      });
    }
 }

@@ -41,24 +41,24 @@ public class et<T> implements ArgumentType<ij.c<T>> {
       }
    }
 
-   public static ij.c<bpg> a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static ij.c<bpk> a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, kg.c);
    }
 
-   public static ij.c<dtf<?, ?>> b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static ij.c<dtm<?, ?>> b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, kg.aw);
    }
 
-   public static ij.c<ebe> c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static ij.c<ebl> c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, kg.aD);
    }
 
-   public static ij.c<bnu<?>> d(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static ij.c<bnw<?>> d(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, kg.u);
    }
 
-   public static ij.c<bnu<?>> e(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
-      ij.c<bnu<?>> $$2 = a($$0, $$1, kg.u);
+   public static ij.c<bnw<?>> e(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+      ij.c<bnw<?>> $$2 = a($$0, $$1, kg.u);
       if (!$$2.a().c()) {
          throw d.create($$2.h().a().toString());
       } else {
@@ -66,11 +66,11 @@ public class et<T> implements ArgumentType<ij.c<T>> {
       }
    }
 
-   public static ij.c<bmz> f(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static ij.c<bnb> f(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, kg.Q);
    }
 
-   public static ij.c<cti> g(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static ij.c<ctm> g(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, kg.t);
    }
 

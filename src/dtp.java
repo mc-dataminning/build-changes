@@ -1,39 +1,31 @@
 import com.mojang.serialization.Codec;
 
-public class dtp extends dts<dvv> {
-   public dtp(Codec<dvv> $$0) {
+public class dtp extends dto {
+   public dtp(Codec<dwk> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dtu<dvv> $$0) {
-      hz $$1 = $$0.e();
-      cwi $$2 = $$0.b();
-      dvv $$3 = $$0.f();
+   protected boolean a(cvs $$0, awp $$1, hz $$2, dlj $$3) {
+      int $$4 = $$1.a(3) + 3;
+      int $$5 = $$1.a(3) + 3;
+      int $$6 = $$1.a(3) + 3;
+      int $$7 = $$1.a(3) + 1;
+      hz.a $$8 = $$2.j();
 
-      for (hz $$4 : hz.a($$1.b(-1, -2, -1), $$1.b(1, 2, 1))) {
-         boolean $$5 = $$4.u() == $$1.u();
-         boolean $$6 = $$4.v() == $$1.v();
-         boolean $$7 = $$4.w() == $$1.w();
-         boolean $$8 = Math.abs($$4.v() - $$1.v()) == 2;
-         if ($$5 && $$6 && $$7) {
-            hz $$9 = $$4.i();
-            this.a($$2, $$9, cyq.kF.o());
-            $$3.b().ifPresent($$3x -> {
-               dit $$4x = $$2.c_($$9);
-               if ($$4x instanceof dki $$5x) {
-                  $$5x.a($$3x, $$3.c());
-                  $$4x.e();
+      for (int $$9 = 0; $$9 <= $$5; $$9++) {
+         for (int $$10 = 0; $$10 <= $$4; $$10++) {
+            for (int $$11 = 0; $$11 <= $$6; $$11++) {
+               $$8.d($$9 + $$2.u(), $$10 + $$2.v(), $$11 + $$2.w());
+               $$8.c(ie.a, $$7);
+               if (($$9 != 0 && $$9 != $$5 || $$10 != 0 && $$10 != $$4)
+                  && ($$11 != 0 && $$11 != $$6 || $$10 != 0 && $$10 != $$4)
+                  && ($$9 != 0 && $$9 != $$5 || $$11 != 0 && $$11 != $$6)
+                  && ($$9 == 0 || $$9 == $$5 || $$10 == 0 || $$10 == $$4 || $$11 == 0 || $$11 == $$6)
+                  && !($$1.i() < 0.1F)
+                  && !this.b($$0, $$1, $$8, $$3)) {
                }
-            });
-         } else if ($$6) {
-            this.a($$2, $$4, cyq.a.o());
-         } else if ($$8 && $$5 && $$7) {
-            this.a($$2, $$4, cyq.F.o());
-         } else if (($$5 || $$7) && !$$8) {
-            this.a($$2, $$4, cyq.F.o());
-         } else {
-            this.a($$2, $$4, cyq.a.o());
+            }
          }
       }
 

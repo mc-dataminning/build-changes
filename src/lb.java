@@ -16,8 +16,8 @@ public class lb implements km {
    private static final Logger d = LogUtils.getLogger();
    private final Path e;
    private final CompletableFuture<il.b> f;
-   private static final MapCodec<aix<cwm>> g = aix.a(kg.at).fieldOf("biome");
-   private static final Codec<cwv.c<aix<cwm>>> h = cwv.c.a(g).fieldOf("biomes").codec();
+   private static final MapCodec<aix<cwq>> g = aix.a(kg.at).fieldOf("biome");
+   private static final Codec<cwz.c<aix<cwq>>> h = cwz.c.a(g).fieldOf("biomes").codec();
 
    public lb(ko $$0, CompletableFuture<il.b> $$1) {
       this.e = $$0.a(ko.b.c).resolve("biome_parameters");
@@ -29,7 +29,7 @@ public class lb implements km {
       return this.f.thenCompose($$1 -> {
          DynamicOps<JsonElement> $$2 = aiw.a(JsonOps.INSTANCE, $$1);
          List<CompletableFuture<?>> $$3 = new ArrayList<>();
-         cxa.b().forEach(($$3x, $$4) -> $$3.add(a(this.a($$3x.b()), $$0, $$2, h, $$4)));
+         cxe.b().forEach(($$3x, $$4) -> $$3.add(a(this.a($$3x.b()), $$0, $$2, h, $$4)));
          return CompletableFuture.allOf($$3.toArray(CompletableFuture[]::new));
       });
    }

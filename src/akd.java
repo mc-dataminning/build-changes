@@ -17,7 +17,7 @@ public class akd {
       ($$0, $$1) -> vq.a("commands.advancement.criterionNotFound", $$0, $$1)
    );
    private static final SuggestionProvider<du> c = ($$0, $$1) -> {
-      Collection<af> $$2 = ((du)$$0.getSource()).l().aB().b();
+      Collection<af> $$2 = ((du)$$0.getSource()).l().aD().b();
       return dz.a($$2.stream().map(af::a), $$1);
    };
 
@@ -87,7 +87,7 @@ public class akd {
                                     )
                               ))
                            .then(
-                              dv.a("everything").executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), akd.a.a, ((du)$$0x.getSource()).l().aB().b()))
+                              dv.a("everything").executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), akd.a.a, ((du)$$0x.getSource()).l().aD().b()))
                            )
                      )
                ))
@@ -148,16 +148,16 @@ public class akd {
                                        .executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), akd.a.b, a($$0x, ev.a($$0x, "advancement"), akd.b.b)))
                                  )
                            ))
-                        .then(dv.a("everything").executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), akd.a.b, ((du)$$0x.getSource()).l().aB().b())))
+                        .then(dv.a("everything").executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), akd.a.b, ((du)$$0x.getSource()).l().aD().b())))
                   )
             )
       );
    }
 
-   private static int a(du $$0, Collection<aow> $$1, akd.a $$2, Collection<af> $$3) throws CommandSyntaxException {
+   private static int a(du $$0, Collection<aox> $$1, akd.a $$2, Collection<af> $$3) throws CommandSyntaxException {
       int $$4 = 0;
 
-      for (aow $$5 : $$1) {
+      for (aox $$5 : $$1) {
          $$4 += $$2.a($$5, $$3);
       }
 
@@ -190,13 +190,13 @@ public class akd {
       }
    }
 
-   private static int a(du $$0, Collection<aow> $$1, akd.a $$2, af $$3, String $$4) throws CommandSyntaxException {
+   private static int a(du $$0, Collection<aox> $$1, akd.a $$2, af $$3, String $$4) throws CommandSyntaxException {
       int $$5 = 0;
       ae $$6 = $$3.b();
       if (!$$6.e().containsKey($$4)) {
          throw b.create(ae.a($$3), $$4);
       } else {
-         for (aow $$7 : $$1) {
+         for (aox $$7 : $$1) {
             if ($$2.a($$7, $$3, $$4)) {
                $$5++;
             }
@@ -221,7 +221,7 @@ public class akd {
    }
 
    private static List<af> a(CommandContext<du> $$0, af $$1, akd.b $$2) {
-      ak $$3 = ((du)$$0.getSource()).l().aB().a();
+      ak $$3 = ((du)$$0.getSource()).l().aD().a();
       ag $$4 = $$3.a($$1);
       if ($$4 == null) {
          return List.of($$1);
@@ -252,7 +252,7 @@ public class akd {
    static enum a {
       a("grant") {
          @Override
-         protected boolean a(aow $$0, af $$1) {
+         protected boolean a(aox $$0, af $$1) {
             ah $$2 = $$0.Q().b($$1);
             if ($$2.a()) {
                return false;
@@ -266,13 +266,13 @@ public class akd {
          }
 
          @Override
-         protected boolean a(aow $$0, af $$1, String $$2) {
+         protected boolean a(aox $$0, af $$1, String $$2) {
             return $$0.Q().a($$1, $$2);
          }
       },
       b("revoke") {
          @Override
-         protected boolean a(aow $$0, af $$1) {
+         protected boolean a(aox $$0, af $$1) {
             ah $$2 = $$0.Q().b($$1);
             if (!$$2.b()) {
                return false;
@@ -286,7 +286,7 @@ public class akd {
          }
 
          @Override
-         protected boolean a(aow $$0, af $$1, String $$2) {
+         protected boolean a(aox $$0, af $$1, String $$2) {
             return $$0.Q().b($$1, $$2);
          }
       };
@@ -297,7 +297,7 @@ public class akd {
          this.c = "commands.advancement." + $$0;
       }
 
-      public int a(aow $$0, Iterable<af> $$1) {
+      public int a(aox $$0, Iterable<af> $$1) {
          int $$2 = 0;
 
          for (af $$3 : $$1) {
@@ -309,9 +309,9 @@ public class akd {
          return $$2;
       }
 
-      protected abstract boolean a(aow var1, af var2);
+      protected abstract boolean a(aox var1, af var2);
 
-      protected abstract boolean a(aow var1, af var2, String var3);
+      protected abstract boolean a(aox var1, af var2, String var3);
 
       protected String a() {
          return this.c;

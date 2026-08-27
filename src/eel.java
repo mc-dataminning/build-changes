@@ -1,44 +1,65 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import java.util.Map;
 
-public class eel extends efb {
-   public static final Codec<eel> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dqo.a.g.fieldOf("heightmap").orElse(dqo.a.a).forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("offset").orElse(0).forGetter($$0x -> $$0x.c))
-            .apply($$0, eel::new)
-   );
-   private final dqo.a b;
-   private final int c;
+public class eel extends efi {
+   public static final Codec<eel> a = Codec.unit(() -> eel.b);
+   public static final eel b = new eel();
+   private final Map<cys, cys> c = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(cyu.m, cyu.pr);
+      $$0.put(cyu.cn, cyu.pr);
+      $$0.put(cyu.b, cyu.pv);
+      $$0.put(cyu.eH, cyu.pw);
+      $$0.put(cyu.eI, cyu.pw);
+      $$0.put(cyu.cQ, cyu.ps);
+      $$0.put(cyu.ni, cyu.ps);
+      $$0.put(cyu.nk, cyu.pD);
+      $$0.put(cyu.fj, cyu.pA);
+      $$0.put(cyu.ng, cyu.pA);
+      $$0.put(cyu.jI, cyu.pu);
+      $$0.put(cyu.nw, cyu.pu);
+      $$0.put(cyu.jE, cyu.pE);
+      $$0.put(cyu.jD, cyu.pE);
+      $$0.put(cyu.jK, cyu.pz);
+      $$0.put(cyu.nu, cyu.pz);
+      $$0.put(cyu.nK, cyu.pB);
+      $$0.put(cyu.nI, cyu.pB);
+      $$0.put(cyu.fP, cyu.pt);
+      $$0.put(cyu.fQ, cyu.pt);
+      $$0.put(cyu.eK, cyu.py);
+      $$0.put(cyu.eJ, cyu.px);
+      $$0.put(cyu.eW, cyu.eX);
+   });
 
-   public eel(dqo.a $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private eel() {
    }
 
-   @Nullable
    @Override
-   public efe.c a(cvq $$0, hz $$1, hz $$2, efe.c $$3, efe.c $$4, efa $$5) {
-      dqo.a $$6;
-      if ($$0 instanceof aov) {
-         if (this.b == dqo.a.a) {
-            $$6 = dqo.a.b;
-         } else if (this.b == dqo.a.c) {
-            $$6 = dqo.a.d;
-         } else {
-            $$6 = this.b;
-         }
+   public efl.c a(cvu $$0, hz $$1, hz $$2, efl.c $$3, efl.c $$4, efh $$5) {
+      cys $$6 = this.c.get($$4.b().b());
+      if ($$6 == null) {
+         return $$4;
       } else {
-         $$6 = this.b;
-      }
+         dlj $$7 = $$4.b();
+         dlj $$8 = $$6.o();
+         if ($$7.b(dgl.b)) {
+            $$8 = $$8.a(dgl.b, $$7.c(dgl.b));
+         }
 
-      hz $$10 = $$4.a();
-      int $$11 = $$0.a($$6, $$10.u(), $$10.w()) + this.c;
-      int $$12 = $$3.a().v();
-      return new efe.c(new hz($$10.u(), $$11 + $$12, $$10.w()), $$4.b(), $$4.c());
+         if ($$7.b(dgl.c)) {
+            $$8 = $$8.a(dgl.c, $$7.c(dgl.c));
+         }
+
+         if ($$7.b(dfu.b)) {
+            $$8 = $$8.a(dfu.b, $$7.c(dfu.b));
+         }
+
+         return new efl.c($$4.a(), $$8, $$4.c());
+      }
    }
 
    @Override
-   protected efd<?> a() {
-      return efd.g;
+   protected efk<?> a() {
+      return efk.l;
    }
 }

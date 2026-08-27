@@ -1,77 +1,11 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Path;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ggg extends gge implements ggf {
-   private static final Logger e = LogUtils.getLogger();
-   @Nullable
-   private erb f;
-
-   public ggg(erb $$0) {
-      this.f = $$0;
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> {
-            TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
-            this.d();
-         });
-      } else {
-         TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
-         this.d();
-      }
-   }
-
-   public ggg(int $$0, int $$1, boolean $$2) {
-      RenderSystem.assertOnGameThreadOrInit();
-      this.f = new erb($$0, $$1, $$2);
-      TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
-   }
-
+public interface ggg extends ggj {
+   @Deprecated
    @Override
-   public void a(asa $$0) {
+   default float call(cpd $$0, @Nullable fqe $$1, @Nullable boi $$2, int $$3) {
+      return awi.a(this.unclampedCall($$0, $$1, $$2, $$3), 0.0F, 1.0F);
    }
 
-   @Override
-   public void d() {
-      if (this.f != null) {
-         this.c();
-         this.f.a(0, 0, 0, false);
-      } else {
-         e.warn("Trying to upload disposed texture {}", this.a());
-      }
-   }
-
-   @Nullable
-   public erb e() {
-      return this.f;
-   }
-
-   public void a(erb $$0) {
-      if (this.f != null) {
-         this.f.close();
-      }
-
-      this.f = $$0;
-   }
-
-   @Override
-   public void close() {
-      if (this.f != null) {
-         this.f.close();
-         this.b();
-         this.f = null;
-      }
-   }
-
-   @Override
-   public void a(aiy $$0, Path $$1) throws IOException {
-      if (this.f != null) {
-         String $$2 = $$0.c() + ".png";
-         Path $$3 = $$1.resolve($$2);
-         this.f.a($$3);
-      }
-   }
+   float unclampedCall(cpd var1, @Nullable fqe var2, @Nullable boi var3, int var4);
 }

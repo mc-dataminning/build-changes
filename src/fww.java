@@ -1,46 +1,69 @@
 import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import java.io.Reader;
 import java.lang.reflect.Type;
-import java.util.Objects;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
-public class fww implements gjb {
-   private final aiy a;
-   private final j b;
-   private final boolean c;
-   private final int d;
+public class fww {
+   private final Map<String, fxd> a = Maps.newLinkedHashMap();
+   private fxi b;
 
-   public fww(aiy $$0, j $$1, boolean $$2, int $$3) {
-      this.a = $$0;
+   public static fww a(fww.a $$0, Reader $$1) {
+      return avy.a($$0.a, $$1, fww.class);
+   }
+
+   public static fww a(fww.a $$0, JsonElement $$1) {
+      return (fww)$$0.a.fromJson($$1, fww.class);
+   }
+
+   public fww(Map<String, fxd> $$0, fxi $$1) {
       this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+      this.a.putAll($$0);
    }
 
-   public aiy a() {
-      return this.a;
+   public fww(List<fww> $$0) {
+      fww $$1 = null;
+
+      for (fww $$2 : $$0) {
+         if ($$2.c()) {
+            this.a.clear();
+            $$1 = $$2;
+         }
+
+         this.a.putAll($$2.a);
+      }
+
+      if ($$1 != null) {
+         this.b = $$1.b;
+      }
    }
 
-   @Override
-   public j b() {
-      return this.b;
+   @VisibleForTesting
+   public boolean a(String $$0) {
+      return this.a.get($$0) != null;
    }
 
-   @Override
-   public boolean c() {
-      return this.c;
-   }
-
-   public int d() {
-      return this.d;
-   }
-
-   @Override
-   public String toString() {
-      return "Variant{modelLocation=" + this.a + ", rotation=" + this.b + ", uvLock=" + this.c + ", weight=" + this.d + "}";
+   @VisibleForTesting
+   public fxd b(String $$0) {
+      fxd $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         throw new fww.c();
+      } else {
+         return $$1;
+      }
    }
 
    @Override
@@ -48,63 +71,96 @@ public class fww implements gjb {
       if (this == $$0) {
          return true;
       } else {
-         return !($$0 instanceof fww $$1) ? false : this.a.equals($$1.a) && Objects.equals(this.b, $$1.b) && this.c == $$1.c && this.d == $$1.d;
+         if ($$0 instanceof fww $$1 && this.a.equals($$1.a)) {
+            return this.c() ? this.b.equals($$1.b) : !$$1.c();
+         }
+
+         return false;
       }
    }
 
    @Override
    public int hashCode() {
-      int $$0 = this.a.hashCode();
-      $$0 = 31 * $$0 + this.b.hashCode();
-      $$0 = 31 * $$0 + Boolean.valueOf(this.c).hashCode();
-      return 31 * $$0 + this.d;
+      return 31 * this.a.hashCode() + (this.c() ? this.b.hashCode() : 0);
    }
 
-   public static class a implements JsonDeserializer<fww> {
-      @VisibleForTesting
-      static final boolean a = false;
-      @VisibleForTesting
-      static final int b = 1;
-      @VisibleForTesting
-      static final int c = 0;
-      @VisibleForTesting
-      static final int d = 0;
+   public Map<String, fxd> a() {
+      return this.a;
+   }
 
+   @VisibleForTesting
+   public Set<fxd> b() {
+      Set<fxd> $$0 = Sets.newHashSet(this.a.values());
+      if (this.c()) {
+         $$0.addAll(this.b.b());
+      }
+
+      return $$0;
+   }
+
+   public boolean c() {
+      return this.b != null;
+   }
+
+   public fxi d() {
+      return this.b;
+   }
+
+   public static final class a {
+      protected final Gson a = new GsonBuilder()
+         .registerTypeAdapter(fww.class, new fww.b())
+         .registerTypeAdapter(fxe.class, new fxe.a())
+         .registerTypeAdapter(fxd.class, new fxd.a())
+         .registerTypeAdapter(fxi.class, new fxi.a(this))
+         .registerTypeAdapter(fxk.class, new fxk.a())
+         .create();
+      private dlk<cys, dlj> b;
+
+      public dlk<cys, dlj> a() {
+         return this.b;
+      }
+
+      public void a(dlk<cys, dlj> $$0) {
+         this.b = $$0;
+      }
+   }
+
+   public static class b implements JsonDeserializer<fww> {
       public fww a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
          JsonObject $$3 = $$0.getAsJsonObject();
-         aiy $$4 = this.b($$3);
-         giu $$5 = this.a($$3);
-         boolean $$6 = this.d($$3);
-         int $$7 = this.c($$3);
-         return new fww($$4, $$5.b(), $$6, $$7);
-      }
-
-      private boolean d(JsonObject $$0) {
-         return avx.a($$0, "uvlock", false);
-      }
-
-      protected giu a(JsonObject $$0) {
-         int $$1 = avx.a($$0, "x", 0);
-         int $$2 = avx.a($$0, "y", 0);
-         giu $$3 = giu.a($$1, $$2);
-         if ($$3 == null) {
-            throw new JsonParseException("Invalid BlockModelRotation x: " + $$1 + ", y: " + $$2);
+         Map<String, fxd> $$4 = this.a($$2, $$3);
+         fxi $$5 = this.b($$2, $$3);
+         if (!$$4.isEmpty() || $$5 != null && !$$5.b().isEmpty()) {
+            return new fww($$4, $$5);
          } else {
-            return $$3;
+            throw new JsonParseException("Neither 'variants' nor 'multipart' found");
          }
       }
 
-      protected aiy b(JsonObject $$0) {
-         return new aiy(avx.i($$0, "model"));
+      protected Map<String, fxd> a(JsonDeserializationContext $$0, JsonObject $$1) {
+         Map<String, fxd> $$2 = Maps.newHashMap();
+         if ($$1.has("variants")) {
+            JsonObject $$3 = avy.u($$1, "variants");
+
+            for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
+               $$2.put($$4.getKey(), (fxd)$$0.deserialize($$4.getValue(), fxd.class));
+            }
+         }
+
+         return $$2;
       }
 
-      protected int c(JsonObject $$0) {
-         int $$1 = avx.a($$0, "weight", 1);
-         if ($$1 < 1) {
-            throw new JsonParseException("Invalid weight " + $$1 + " found, expected integer >= 1");
+      @Nullable
+      protected fxi b(JsonDeserializationContext $$0, JsonObject $$1) {
+         if (!$$1.has("multipart")) {
+            return null;
          } else {
-            return $$1;
+            JsonArray $$2 = avy.v($$1, "multipart");
+            return (fxi)$$0.deserialize($$2, fxi.class);
          }
       }
+   }
+
+   protected class c extends RuntimeException {
    }
 }

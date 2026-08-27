@@ -1,45 +1,37 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-public class fzr extends gbt<cdi, flc> {
-   public static final aiy a = new aiy("textures/entity/armorstand/wood.png");
+public class fzr implements fze.a {
+   private static final int a = 60;
+   private final Set<jb> b = Sets.newHashSet();
 
-   public fzr(gas.a $$0) {
-      super($$0, new fld($$0.a(fpb.c)), 0.0F);
-      this.a(new get<>(this, new flc($$0.a(fpb.d)), new flc($$0.a(fpb.e)), $$0.g()));
-      this.a(new gew<>(this, $$0.d()));
-      this.a(new gem<>(this, $$0.f()));
-      this.a(new gei<>(this, $$0.f(), $$0.d()));
+   fzr() {
    }
 
-   public aiy a(cdi $$0) {
-      return a;
+   @Override
+   public void a() {
+      this.b.clear();
    }
 
-   protected void a(cdi $$0, esa $$1, float $$2, float $$3, float $$4, float $$5) {
-      $$1.a(a.d.rotationDegrees(180.0F - $$3));
-      float $$6 = (float)($$0.dM().X() - $$0.bJ) + $$4;
-      if ($$6 < 5.0F) {
-         $$1.a(a.d.rotationDegrees(awh.a($$6 / 1.5F * (float) Math.PI) * 3.0F));
-      }
+   public void a(jb $$0) {
+      this.b.add($$0);
    }
 
-   protected boolean b(cdi $$0) {
-      double $$1 = this.c.b($$0);
-      float $$2 = $$0.bX() ? 32.0F : 64.0F;
-      return $$1 >= (double)($$2 * $$2) ? false : $$0.cB();
+   public void b(jb $$0) {
+      this.b.remove($$0);
    }
 
-   @Nullable
-   protected fvt a(cdi $$0, boolean $$1, boolean $$2, boolean $$3) {
-      if (!$$0.B()) {
-         return super.a($$0, $$1, $$2, $$3);
-      } else {
-         aiy $$4 = this.a($$0);
-         if ($$2) {
-            return fvt.c($$4, false);
-         } else {
-            return $$1 ? fvt.a($$4, false) : null;
+   @Override
+   public void a(esh $$0, fvt $$1, double $$2, double $$3, double $$4) {
+      hz $$5 = hz.a($$2, $$3, $$4);
+      this.b.forEach($$3x -> {
+         if ($$5.a($$3x.q(), 60.0)) {
+            a($$0, $$1, $$3x);
          }
-      }
+      });
+   }
+
+   private static void a(esh $$0, fvt $$1, jb $$2) {
+      fze.a($$0, $$1, $$2.q(), 0.2F, 1.0F, 0.2F, 0.15F);
    }
 }

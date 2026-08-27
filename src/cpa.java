@@ -1,30 +1,37 @@
-import it.unimi.dsi.fastutil.Hash.Strategy;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenCustomHashSet;
-import java.util.Set;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.function.IntFunction;
 
-public class cpa {
-   private static final Strategy<? super coz> a = new Strategy<coz>() {
-      public int a(@Nullable coz $$0) {
-         return cpa.a($$0);
-      }
+public enum cpa implements axc {
+   a(0, "none"),
+   b(1, "thirdperson_lefthand"),
+   c(2, "thirdperson_righthand"),
+   d(3, "firstperson_lefthand"),
+   e(4, "firstperson_righthand"),
+   f(5, "head"),
+   g(6, "gui"),
+   h(7, "ground"),
+   i(8, "fixed");
 
-      public boolean a(@Nullable coz $$0, @Nullable coz $$1) {
-         return $$0 == $$1 || $$0 != null && $$1 != null && $$0.b() == $$1.b() && coz.c($$0, $$1);
-      }
-   };
+   public static final Codec<cpa> j = axc.a(cpa::values);
+   public static final IntFunction<cpa> k = ava.a(cpa::a, values(), ava.a.a);
+   private final byte l;
+   private final String m;
 
-   static int a(@Nullable coz $$0) {
-      if ($$0 != null) {
-         sw $$1 = $$0.w();
-         int $$2 = 31 + $$0.d().hashCode();
-         return 31 * $$2 + ($$1 == null ? 0 : $$1.hashCode());
-      } else {
-         return 0;
-      }
+   private cpa(int $$0, String $$1) {
+      this.m = $$1;
+      this.l = (byte)$$0;
    }
 
-   public static Set<coz> a() {
-      return new ObjectLinkedOpenCustomHashSet(a);
+   @Override
+   public String c() {
+      return this.m;
+   }
+
+   public byte a() {
+      return this.l;
+   }
+
+   public boolean b() {
+      return this == d || this == e;
    }
 }

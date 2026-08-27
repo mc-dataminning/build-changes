@@ -1,23 +1,55 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import javax.annotation.Nullable;
 
 public class arz {
-   private static final Codec<arz> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.list(awp.a).fieldOf("block").forGetter($$0x -> $$0x.c)).apply($$0, arz::new)
-   );
-   public static final arb<arz> a = arb.a("filter", b);
-   private final List<awp> c;
+   private final aqp a;
+   private final art<InputStream> b;
+   private final art<asd> c;
+   @Nullable
+   private asd d;
 
-   public arz(List<awp> $$0) {
-      this.c = List.copyOf($$0);
+   public arz(aqp $$0, art<InputStream> $$1, art<asd> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public boolean a(String $$0) {
-      return this.c.stream().anyMatch($$1 -> $$1.a().test($$0));
+   public arz(aqp $$0, art<InputStream> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = asd.b;
+      this.d = asd.a;
    }
 
-   public boolean b(String $$0) {
-      return this.c.stream().anyMatch($$1 -> $$1.b().test($$0));
+   public aqp a() {
+      return this.a;
+   }
+
+   public String b() {
+      return this.a.a();
+   }
+
+   public boolean c() {
+      return this.a.b();
+   }
+
+   public InputStream d() throws IOException {
+      return this.b.get();
+   }
+
+   public BufferedReader e() throws IOException {
+      return new BufferedReader(new InputStreamReader(this.d(), StandardCharsets.UTF_8));
+   }
+
+   public asd f() throws IOException {
+      if (this.d == null) {
+         this.d = this.c.get();
+      }
+
+      return this.d;
    }
 }

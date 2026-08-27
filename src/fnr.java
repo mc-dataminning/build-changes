@@ -1,26 +1,35 @@
-public class fnr<T extends cap> extends fnl<T> {
-   private float j;
+public class fnr<T extends bnq> extends fmr<T> {
+   private final fpj a;
+   private final fpj b;
+   private final fpj f;
 
-   public fnr(fpc $$0) {
-      super($$0, false, 8.0F, 4.0F, 2.0F, 2.0F, 24);
+   public fnr(fpj $$0) {
+      this.a = $$0;
+      this.b = $$0.b("left_fin");
+      this.f = $$0.b("right_fin");
    }
 
-   public static fpi c() {
-      fpk $$0 = fnl.a(12, fpg.a);
-      fpl $$1 = $$0.a();
-      $$1.a("head", fph.c().a(0, 0).a(-3.0F, -4.0F, -6.0F, 6.0F, 6.0F, 8.0F), fpe.a(0.0F, 6.0F, -8.0F));
-      $$1.a("body", fph.c().a(28, 8).a(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F), fpe.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      return fpi.a($$0, 64, 32);
+   public static fpp b() {
+      fpr $$0 = new fpr();
+      fps $$1 = $$0.a();
+      int $$2 = 23;
+      $$1.a("body", fpo.c().a(0, 27).a(-1.5F, -2.0F, -1.5F, 3.0F, 2.0F, 3.0F), fpl.a(0.0F, 23.0F, 0.0F));
+      $$1.a("right_eye", fpo.c().a(24, 6).a(-1.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), fpl.a(0.0F, 20.0F, 0.0F));
+      $$1.a("left_eye", fpo.c().a(28, 6).a(0.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), fpl.a(0.0F, 20.0F, 0.0F));
+      $$1.a("back_fin", fpo.c().a(-3, 0).a(-1.5F, 0.0F, 0.0F, 3.0F, 0.0F, 3.0F), fpl.a(0.0F, 22.0F, 1.5F));
+      $$1.a("right_fin", fpo.c().a(25, 0).a(-1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), fpl.a(-1.5F, 22.0F, -1.5F));
+      $$1.a("left_fin", fpo.c().a(25, 0).a(0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), fpl.a(1.5F, 22.0F, -1.5F));
+      return fpp.a($$0, 32, 32);
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a.c = 6.0F + $$0.E($$3) * 9.0F;
-      this.j = $$0.F($$3);
+   @Override
+   public fpj a() {
+      return this.a;
    }
 
+   @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      this.a.e = this.j;
+      this.f.g = -0.2F + 0.4F * awi.a($$3 * 0.2F);
+      this.b.g = 0.2F - 0.4F * awi.a($$3 * 0.2F);
    }
 }

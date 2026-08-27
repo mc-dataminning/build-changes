@@ -1,146 +1,156 @@
-public class djd extends dit {
-   private boolean a;
-   private boolean b;
-   private boolean c;
-   private final cuo d = new cuo() {
-      @Override
-      public void a(String $$0) {
-         super.a($$0);
-         djd.this.e();
-      }
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-      @Override
-      public aov e() {
-         return (aov)djd.this.o;
-      }
+public class djd extends dix implements bln {
+   private static final int a = 2;
+   private static final int b = 4;
+   private final is<cpd> c = is.a(4, cpd.h);
+   private final int[] d = new int[4];
+   private final int[] e = new int[4];
+   private final csi.a<blp, crt> f = csi.b(csk.e);
 
-      @Override
-      public void f() {
-         dlf $$0 = djd.this.o.a_(djd.this.p);
-         this.e().a(djd.this.p, $$0, $$0, 3);
-      }
-
-      @Override
-      public ens g() {
-         return ens.b(djd.this.p);
-      }
-
-      @Override
-      public du i() {
-         ie $$0 = djd.this.r().c(czx.b);
-         return new du(this, ens.b(djd.this.p), new enr(0.0F, $$0.p()), this.e(), 2, this.n().getString(), this.n(), this.e().o(), null);
-      }
-
-      @Override
-      public boolean j() {
-         return !djd.this.s();
-      }
-   };
-
-   public djd(hz $$0, dlf $$1) {
-      super(div.w, $$0, $$1);
+   public djd(hz $$0, dlj $$1) {
+      super(diz.G, $$0, $$1);
    }
 
-   @Override
-   protected void b(sw $$0) {
-      super.b($$0);
-      this.d.a($$0);
-      $$0.a("powered", this.d());
-      $$0.a("conditionMet", this.k());
-      $$0.a("auto", this.f());
+   public static void a(cvr $$0, hz $$1, dlj $$2, djd $$3) {
+      boolean $$4 = false;
+
+      for (int $$5 = 0; $$5 < $$3.c.size(); $$5++) {
+         cpd $$6 = $$3.c.get($$5);
+         if (!$$6.b()) {
+            $$4 = true;
+            $$3.d[$$5]++;
+            if ($$3.d[$$5] >= $$3.e[$$5]) {
+               blp $$7 = new bmf($$6);
+               cpd $$8 = $$3.f.a($$7, $$0).map($$2x -> ((crt)$$2x.b()).a($$7, $$0.I_())).orElse($$6);
+               if ($$8.a($$0.I())) {
+                  bls.a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$8);
+                  $$3.c.set($$5, cpd.h);
+                  $$0.a($$1, $$2, $$2, 3);
+                  $$0.a(dpw.c, $$1, dpw.a.a($$2));
+               }
+            }
+         }
+      }
+
+      if ($$4) {
+         a($$0, $$1, $$2);
+      }
+   }
+
+   public static void b(cvr $$0, hz $$1, dlj $$2, djd $$3) {
+      boolean $$4 = false;
+
+      for (int $$5 = 0; $$5 < $$3.c.size(); $$5++) {
+         if ($$3.d[$$5] > 0) {
+            $$4 = true;
+            $$3.d[$$5] = awi.a($$3.d[$$5] - 2, 0, $$3.e[$$5]);
+         }
+      }
+
+      if ($$4) {
+         a($$0, $$1, $$2);
+      }
+   }
+
+   public static void c(cvr $$0, hz $$1, dlj $$2, djd $$3) {
+      awp $$4 = $$0.z;
+      if ($$4.i() < 0.11F) {
+         for (int $$5 = 0; $$5 < $$4.a(2) + 2; $$5++) {
+            czg.a($$0, $$1, $$2.c(czg.d), false);
+         }
+      }
+
+      int $$6 = $$2.c(czg.f).e();
+
+      for (int $$7 = 0; $$7 < $$3.c.size(); $$7++) {
+         if (!$$3.c.get($$7).b() && $$4.i() < 0.2F) {
+            ie $$8 = ie.b(Math.floorMod($$7 + $$6, 4));
+            float $$9 = 0.3125F;
+            double $$10 = (double)$$1.u() + 0.5 - (double)((float)$$8.j() * 0.3125F) + (double)((float)$$8.h().j() * 0.3125F);
+            double $$11 = (double)$$1.v() + 0.5;
+            double $$12 = (double)$$1.w() + 0.5 - (double)((float)$$8.l() * 0.3125F) + (double)((float)$$8.h().l() * 0.3125F);
+
+            for (int $$13 = 0; $$13 < 4; $$13++) {
+               $$0.a(jz.ab, $$10, $$11, $$12, 0.0, 5.0E-4, 0.0);
+            }
+         }
+      }
+   }
+
+   public is<cpd> c() {
+      return this.c;
    }
 
    @Override
    public void a(sw $$0) {
       super.a($$0);
-      this.d.b($$0);
-      this.a = $$0.q("powered");
-      this.c = $$0.q("conditionMet");
-      this.b($$0.q("auto"));
+      this.c.clear();
+      blq.b($$0, this.c);
+      if ($$0.b("CookingTimes", 11)) {
+         int[] $$1 = $$0.n("CookingTimes");
+         System.arraycopy($$1, 0, this.d, 0, Math.min(this.e.length, $$1.length));
+      }
+
+      if ($$0.b("CookingTotalTimes", 11)) {
+         int[] $$2 = $$0.n("CookingTotalTimes");
+         System.arraycopy($$2, 0, this.e, 0, Math.min(this.e.length, $$2.length));
+      }
    }
 
    @Override
-   public boolean u() {
-      return true;
+   protected void b(sw $$0) {
+      super.b($$0);
+      blq.a($$0, this.c, true);
+      $$0.a("CookingTimes", this.d);
+      $$0.a("CookingTotalTimes", this.e);
    }
 
-   public cuo c() {
-      return this.d;
+   public aan d() {
+      return aan.a(this);
    }
 
-   public void a(boolean $$0) {
-      this.a = $$0;
+   @Override
+   public sw aA_() {
+      sw $$0 = new sw();
+      blq.a($$0, this.c, true);
+      return $$0;
    }
 
-   public boolean d() {
-      return this.a;
+   public Optional<csh<crt>> a(cpd $$0) {
+      return this.c.stream().noneMatch(cpd::b) ? Optional.empty() : this.f.a(new bmf($$0), this.o);
    }
 
-   public boolean f() {
-      return this.b;
-   }
-
-   public void b(boolean $$0) {
-      boolean $$1 = this.b;
-      this.b = $$0;
-      if (!$$1 && $$0 && !this.a && this.o != null && this.m() != djd.a.a) {
-         this.x();
-      }
-   }
-
-   public void g() {
-      djd.a $$0 = this.m();
-      if ($$0 == djd.a.b && (this.a || this.b) && this.o != null) {
-         this.x();
-      }
-   }
-
-   private void x() {
-      cyo $$0 = this.r().b();
-      if ($$0 instanceof czx) {
-         this.l();
-         this.o.a(this.p, $$0, 1);
-      }
-   }
-
-   public boolean k() {
-      return this.c;
-   }
-
-   public boolean l() {
-      this.c = true;
-      if (this.w()) {
-         hz $$0 = this.p.a(this.o.a_(this.p).c(czx.b).g());
-         if (this.o.a_($$0).b() instanceof czx) {
-            dit $$1 = this.o.c_($$0);
-            this.c = $$1 instanceof djd && ((djd)$$1).c().k() > 0;
-         } else {
-            this.c = false;
+   public boolean a(@Nullable bnq $$0, cpd $$1, int $$2) {
+      for (int $$3 = 0; $$3 < this.c.size(); $$3++) {
+         cpd $$4 = this.c.get($$3);
+         if ($$4.b()) {
+            this.e[$$3] = $$2;
+            this.d[$$3] = 0;
+            this.c.set($$3, $$1.a(1));
+            this.o.a(dpw.c, this.aE_(), dpw.a.a($$0, this.r()));
+            this.g();
+            return true;
          }
       }
 
-      return this.c;
+      return false;
    }
 
-   public djd.a m() {
-      dlf $$0 = this.r();
-      if ($$0.a(cyq.fN)) {
-         return djd.a.c;
-      } else if ($$0.a(cyq.kG)) {
-         return djd.a.b;
-      } else {
-         return $$0.a(cyq.kH) ? djd.a.a : djd.a.c;
+   private void g() {
+      this.e();
+      this.i().a(this.aE_(), this.r(), this.r(), 3);
+   }
+
+   @Override
+   public void a() {
+      this.c.clear();
+   }
+
+   public void f() {
+      if (this.o != null) {
+         this.g();
       }
-   }
-
-   public boolean w() {
-      dlf $$0 = this.o.a_(this.aE_());
-      return $$0.b() instanceof czx ? $$0.c(czx.c) : false;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
    }
 }

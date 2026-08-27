@@ -1,68 +1,25 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import java.util.Arrays;
 
-public class bld extends bkx {
-   public static final Codec<bld> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.FLOAT.fieldOf("min").forGetter($$0x -> $$0x.b),
-                  Codec.FLOAT.fieldOf("max").forGetter($$0x -> $$0x.d),
-                  Codec.FLOAT.fieldOf("plateau").forGetter($$0x -> $$0x.e)
-               )
-               .apply($$0, bld::new)
-      )
-      .comapFlatMap(
-         $$0 -> {
-            if ($$0.d < $$0.b) {
-               return DataResult.error(() -> "Max must be larger than min: [" + $$0.b + ", " + $$0.d + "]");
-            } else {
-               return $$0.e > $$0.d - $$0.b
-                  ? DataResult.error(() -> "Plateau can at most be the full span: [" + $$0.b + ", " + $$0.d + "]")
-                  : DataResult.success($$0);
-            }
-         },
-         Function.identity()
-      );
-   private final float b;
-   private final float d;
-   private final float e;
+public class bld implements ble {
+   private final ble[] a;
 
-   public static bld a(float $$0, float $$1, float $$2) {
-      return new bld($$0, $$1, $$2);
-   }
-
-   private bld(float $$0, float $$1, float $$2) {
-      this.b = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public bld(ble... $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public float a(awo $$0) {
-      float $$1 = this.d - this.b;
-      float $$2 = ($$1 - this.e) / 2.0F;
-      float $$3 = $$1 - $$2;
-      return this.b + $$0.i() * $$3 + $$0.i() * $$2;
-   }
+   public float a(awp $$0) {
+      float $$1 = 1.0F;
 
-   @Override
-   public float a() {
-      return this.b;
-   }
+      for (ble $$2 : this.a) {
+         $$1 *= $$2.a($$0);
+      }
 
-   @Override
-   public float b() {
-      return this.d;
-   }
-
-   @Override
-   public bky<?> c() {
-      return bky.d;
+      return $$1;
    }
 
    @Override
    public String toString() {
-      return "trapezoid(" + this.e + ") in [" + this.b + "-" + this.d + "]";
+      return "MultipliedFloats" + Arrays.toString((Object[])this.a);
    }
 }

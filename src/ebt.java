@@ -1,78 +1,128 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public record ebt(List<ebi> a) {
-   private static final Logger b = LogUtils.getLogger();
-   private static final aiy c = new aiy("jigsaw");
-   private static final Map<aiy, aiy> d = ImmutableMap.builder()
-      .put(new aiy("nvi"), c)
-      .put(new aiy("pcp"), c)
-      .put(new aiy("bastionremnant"), c)
-      .put(new aiy("runtime"), c)
-      .build();
+public final class ebt {
+   public static final String a = "INVALID";
+   public static final ebt b = new ebt(null, new cuy(0, 0), 0, new eca(List.of()));
+   private static final Logger c = LogUtils.getLogger();
+   private final ebl d;
+   private final eca e;
+   private final cuy f;
+   private int g;
+   @Nullable
+   private volatile ebd h;
 
-   public ebt(List<ebi> a) {
-      this.a = List.copyOf(a);
+   public ebt(ebl $$0, cuy $$1, int $$2, eca $$3) {
+      this.d = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.e = $$3;
    }
 
-   public boolean a() {
-      return this.a.isEmpty();
-   }
-
-   public boolean a(hz $$0) {
-      for (ebi $$1 : this.a) {
-         if ($$1.f().b($$0)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public tt a(ebu $$0) {
-      tc $$1 = new tc();
-
-      for (ebi $$2 : this.a) {
-         $$1.add($$2.a($$0));
-      }
-
-      return $$1;
-   }
-
-   public static ebt a(tc $$0, ebu $$1) {
-      List<ebi> $$2 = Lists.newArrayList();
-
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         sw $$4 = $$0.a($$3);
-         String $$5 = $$4.l("id").toLowerCase(Locale.ROOT);
-         aiy $$6 = new aiy($$5);
-         aiy $$7 = d.getOrDefault($$6, $$6);
-         ebv $$8 = kf.S.a($$7);
-         if ($$8 == null) {
-            b.error("Unknown structure piece id: {}", $$7);
+   @Nullable
+   public static ebt a(ecb $$0, sw $$1, long $$2) {
+      String $$3 = $$1.l("id");
+      if ("INVALID".equals($$3)) {
+         return b;
+      } else {
+         iv<ebl> $$4 = $$0.b().d(kg.aD);
+         ebl $$5 = $$4.a(new aiy($$3));
+         if ($$5 == null) {
+            c.error("Unknown stucture id: {}", $$3);
+            return null;
          } else {
+            cuy $$6 = new cuy($$1.h("ChunkX"), $$1.h("ChunkZ"));
+            int $$7 = $$1.h("references");
+            tc $$8 = $$1.c("Children", 10);
+
             try {
-               ebi $$9 = $$8.load($$1, $$4);
-               $$2.add($$9);
-            } catch (Exception var10) {
-               b.error("Exception loading structure piece with id {}", $$7, var10);
+               eca $$9 = eca.a($$8, $$0);
+               if ($$5 instanceof edv) {
+                  $$9 = edv.a($$6, $$2, $$9);
+               }
+
+               return new ebt($$5, $$6, $$7, $$9);
+            } catch (Exception var11) {
+               c.error("Failed Start with id {}", $$3, var11);
+               return null;
             }
          }
       }
-
-      return new ebt($$2);
    }
 
-   public eaw b() {
-      return ebi.a(this.a.stream());
+   public ebd a() {
+      ebd $$0 = this.h;
+      if ($$0 == null) {
+         $$0 = this.d.a(this.e.b());
+         this.h = $$0;
+      }
+
+      return $$0;
    }
 
-   public List<ebi> c() {
-      return this.a;
+   public void a(cwm $$0, cwk $$1, dng $$2, awp $$3, ebd $$4, cuy $$5) {
+      List<ebp> $$6 = this.e.c();
+      if (!$$6.isEmpty()) {
+         ebd $$7 = $$6.get(0).f;
+         hz $$8 = $$7.g();
+         hz $$9 = new hz($$8.u(), $$7.i(), $$8.w());
+
+         for (ebp $$10 : $$6) {
+            if ($$10.f().a($$4)) {
+               $$10.a($$0, $$1, $$2, $$3, $$4, $$5, $$9);
+            }
+         }
+
+         this.d.a($$0, $$1, $$2, $$3, $$4, $$5, this.e);
+      }
+   }
+
+   public sw a(ecb $$0, cuy $$1) {
+      sw $$2 = new sw();
+      if (this.b()) {
+         $$2.a("id", $$0.b().d(kg.aD).b(this.d).toString());
+         $$2.a("ChunkX", $$1.e);
+         $$2.a("ChunkZ", $$1.f);
+         $$2.a("references", this.g);
+         $$2.a("Children", this.e.a($$0));
+         return $$2;
+      } else {
+         $$2.a("id", "INVALID");
+         return $$2;
+      }
+   }
+
+   public boolean b() {
+      return !this.e.a();
+   }
+
+   public cuy c() {
+      return this.f;
+   }
+
+   public boolean d() {
+      return this.g < this.g();
+   }
+
+   public void e() {
+      this.g++;
+   }
+
+   public int f() {
+      return this.g;
+   }
+
+   protected int g() {
+      return 1;
+   }
+
+   public ebl h() {
+      return this.d;
+   }
+
+   public List<ebp> i() {
+      return this.e.c();
    }
 }

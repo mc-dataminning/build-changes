@@ -2,14 +2,14 @@ import java.util.Map;
 
 public class ym implements xx<yd> {
    public static final xo<uq, ym> a = xx.a(ym::a, ym::new);
-   private final Map<aix<? extends iv<?>>, aur.a> b;
+   private final Map<aix<? extends iv<?>>, aus.a> b;
 
-   public ym(Map<aix<? extends iv<?>>, aur.a> $$0) {
+   public ym(Map<aix<? extends iv<?>>, aus.a> $$0) {
       this.b = $$0;
    }
 
    private ym(uq $$0) {
-      this.b = $$0.a(uq::t, aur.a::b);
+      this.b = $$0.a(uq::t, aus.a::b);
    }
 
    private void a(uq $$0) {
@@ -25,7 +25,7 @@ public class ym implements xx<yd> {
       $$0.a(this);
    }
 
-   public Map<aix<? extends iv<?>>, aur.a> b() {
+   public Map<aix<? extends iv<?>>, aus.a> b() {
       return this.b;
    }
 }

@@ -45,7 +45,7 @@ public class amt {
                                                       fu.a($$0x, "center"),
                                                       FloatArgumentType.getFloat($$0x, "spreadDistance"),
                                                       FloatArgumentType.getFloat($$0x, "maxRange"),
-                                                      ((du)$$0x.getSource()).e().al(),
+                                                      ((du)$$0x.getSource()).e().ak(),
                                                       BoolArgumentType.getBool($$0x, "respectTeams"),
                                                       eh.b($$0x, "targets")
                                                    )
@@ -81,13 +81,13 @@ public class amt {
       );
    }
 
-   private static int a(du $$0, enr $$1, float $$2, float $$3, int $$4, boolean $$5, Collection<? extends bno> $$6) throws CommandSyntaxException {
-      aov $$7 = $$0.e();
+   private static int a(du $$0, eny $$1, float $$2, float $$3, int $$4, boolean $$5, Collection<? extends bnq> $$6) throws CommandSyntaxException {
+      aow $$7 = $$0.e();
       int $$8 = $$7.J_();
       if ($$4 < $$8) {
          throw d.create($$4, $$8);
       } else {
-         awo $$9 = awo.a();
+         awp $$9 = awp.a();
          double $$10 = (double)($$1.i - $$3);
          double $$11 = (double)($$1.j - $$3);
          double $$12 = (double)($$1.i + $$3);
@@ -103,11 +103,11 @@ public class amt {
       }
    }
 
-   private static int a(Collection<? extends bno> $$0) {
-      Set<eoy> $$1 = Sets.newHashSet();
+   private static int a(Collection<? extends bnq> $$0) {
+      Set<epf> $$1 = Sets.newHashSet();
 
-      for (bno $$2 : $$0) {
-         if ($$2 instanceof chh) {
+      for (bnq $$2 : $$0) {
+         if ($$2 instanceof chl) {
             $$1.add($$2.cg());
          } else {
             $$1.add(null);
@@ -117,7 +117,7 @@ public class amt {
       return $$1.size();
    }
 
-   private static void a(enr $$0, double $$1, aov $$2, awo $$3, double $$4, double $$5, double $$6, double $$7, int $$8, amt.a[] $$9, boolean $$10) throws CommandSyntaxException {
+   private static void a(eny $$0, double $$1, aow $$2, awp $$3, double $$4, double $$5, double $$6, double $$7, int $$8, amt.a[] $$9, boolean $$10) throws CommandSyntaxException {
       boolean $$11 = true;
       double $$12 = Float.MAX_VALUE;
 
@@ -186,15 +186,15 @@ public class amt {
       }
    }
 
-   private static double a(Collection<? extends bno> $$0, aov $$1, amt.a[] $$2, int $$3, boolean $$4) {
+   private static double a(Collection<? extends bnq> $$0, aow $$1, amt.a[] $$2, int $$3, boolean $$4) {
       double $$5 = 0.0;
       int $$6 = 0;
-      Map<eoy, amt.a> $$7 = Maps.newHashMap();
+      Map<epf, amt.a> $$7 = Maps.newHashMap();
 
-      for (bno $$8 : $$0) {
+      for (bnq $$8 : $$0) {
          amt.a $$10;
          if ($$4) {
-            eoy $$9 = $$8 instanceof chh ? $$8.cg() : null;
+            epf $$9 = $$8 instanceof chl ? $$8.cg() : null;
             if (!$$7.containsKey($$9)) {
                $$7.put($$9, $$2[$$6++]);
             }
@@ -204,7 +204,7 @@ public class amt {
             $$10 = $$2[$$6++];
          }
 
-         $$8.a($$1, (double)awh.a($$10.a) + 0.5, (double)$$10.a($$1, $$3), (double)awh.a($$10.b) + 0.5, Set.of(), $$8.dC(), $$8.dE());
+         $$8.a($$1, (double)awi.a($$10.a) + 0.5, (double)$$10.a($$1, $$3), (double)awi.a($$10.b) + 0.5, Set.of(), $$8.dC(), $$8.dE());
          double $$12 = Double.MAX_VALUE;
 
          for (amt.a $$13 : $$2) {
@@ -220,7 +220,7 @@ public class amt {
       return $$0.size() < 2 ? 0.0 : $$5 / (double)$$0.size();
    }
 
-   private static amt.a[] a(awo $$0, int $$1, double $$2, double $$3, double $$4, double $$5) {
+   private static amt.a[] a(awp $$0, int $$1, double $$2, double $$3, double $$4, double $$5) {
       amt.a[] $$6 = new amt.a[$$1];
 
       for (int $$7 = 0; $$7 < $$6.length; $$7++) {
@@ -278,7 +278,7 @@ public class amt {
          return $$4;
       }
 
-      public int a(cut $$0, int $$1) {
+      public int a(cux $$0, int $$1) {
          hz.a $$2 = new hz.a(this.a, (double)($$1 + 1), this.b);
          boolean $$3 = $$0.a_($$2).i();
          $$2.c(ie.a);
@@ -298,15 +298,15 @@ public class amt {
          return $$1 + 1;
       }
 
-      public boolean b(cut $$0, int $$1) {
+      public boolean b(cux $$0, int $$1) {
          hz $$2 = hz.a(this.a, (double)(this.a($$0, $$1) - 1), this.b);
-         dlf $$3 = $$0.a_($$2);
-         return $$2.v() < $$1 && !$$3.k() && !$$3.a(atz.aJ);
+         dlj $$3 = $$0.a_($$2);
+         return $$2.v() < $$1 && !$$3.k() && !$$3.a(aua.aJ);
       }
 
-      public void a(awo $$0, double $$1, double $$2, double $$3, double $$4) {
-         this.a = awh.a($$0, $$1, $$3);
-         this.b = awh.a($$0, $$2, $$4);
+      public void a(awp $$0, double $$1, double $$2, double $$3, double $$4) {
+         this.a = awi.a($$0, $$1, $$3);
+         this.b = awi.a($$0, $$2, $$4);
       }
    }
 }

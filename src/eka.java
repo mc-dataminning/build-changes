@@ -1,78 +1,60 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
 
-public class eka extends ekh {
-   private static final Logger b = LogUtils.getLogger();
-   private static final Codec<in<cti>> c = kf.f.r().listOf().xmap(in::a, $$0 -> $$0.a().toList());
-   public static final Codec<eka> a = RecordCodecBuilder.create($$0 -> a($$0).and(avp.a(c, "enchantments").forGetter($$0x -> $$0x.d)).apply($$0, eka::new));
-   private final Optional<in<cti>> d;
+public class eka extends ejx {
+   public static final Codec<eka> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aup.a(kg.F).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
+            .and(b($$0))
+            .apply($$0, eka::new)
+   );
+   private final aup<coy> j;
+   private final boolean k;
 
-   eka(List<elu> $$0, Optional<in<cti>> $$1) {
-      super($$0);
-      this.d = $$1;
+   private eka(aup<coy> $$0, boolean $$1, int $$2, int $$3, List<emb> $$4, List<ekp> $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.j = $$0;
+      this.k = $$1;
    }
 
    @Override
-   public ekj b() {
-      return ekk.e;
+   public ejw a() {
+      return ejt.f;
    }
 
    @Override
-   public coz a(coz $$0, eiv $$1) {
-      awo $$2 = $$1.b();
-      Optional<ij<cti>> $$3 = this.d.<ij<cti>>flatMap($$1x -> $$1x.a($$2)).or(() -> {
-         boolean $$2x = $$0.a(cpc.qO);
-         List<ij.c<cti>> $$3x = kf.f.h().filter($$0xx -> ((cti)$$0xx.a()).j()).filter($$2xx -> $$2x || ((cti)$$2xx.a()).a($$0)).toList();
-         return ac.b($$3x, $$2);
-      });
-      if ($$3.isEmpty()) {
-         b.warn("Couldn't find a compatible enchantment for {}", $$0);
-         return $$0;
+   public void a(Consumer<cpd> $$0, ejc $$1) {
+      kf.h.c(this.j).forEach($$1x -> $$0.accept(new cpd($$1x)));
+   }
+
+   private boolean a(ejc $$0, Consumer<eju> $$1) {
+      if (!this.a($$0)) {
+         return false;
       } else {
-         return a($$0, $$3.get().a(), $$2);
+         for (final ij<coy> $$2 : kf.h.c(this.j)) {
+            $$1.accept(new ejx.c() {
+               @Override
+               public void a(Consumer<cpd> $$0, ejc $$1) {
+                  $$0.accept(new cpd($$2));
+               }
+            });
+         }
+
+         return true;
       }
    }
 
-   private static coz a(coz $$0, cti $$1, awo $$2) {
-      int $$3 = awh.a($$2, $$1.f(), $$1.a());
-      if ($$0.a(cpc.qO)) {
-         $$0 = new coz(cpc.us);
-         cnv.a($$0, new ctk($$1, $$3));
-      } else {
-         $$0.a($$1, $$3);
-      }
-
-      return $$0;
+   @Override
+   public boolean expand(ejc $$0, Consumer<eju> $$1) {
+      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
    }
 
-   public static eka.a c() {
-      return new eka.a();
+   public static ejx.a<?> a(aup<coy> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new eka($$0, false, $$1, $$2, $$3, $$4));
    }
 
-   public static ekh.a<?> d() {
-      return a($$0 -> new eka($$0, Optional.empty()));
-   }
-
-   public static class a extends ekh.a<eka.a> {
-      private final List<ij<cti>> a = new ArrayList<>();
-
-      protected eka.a a() {
-         return this;
-      }
-
-      public eka.a a(cti $$0) {
-         this.a.add($$0.k());
-         return this;
-      }
-
-      @Override
-      public eki b() {
-         return new eka(this.g(), this.a.isEmpty() ? Optional.empty() : Optional.of(in.a(this.a)));
-      }
+   public static ejx.a<?> b(aup<coy> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new eka($$0, true, $$1, $$2, $$3, $$4));
    }
 }

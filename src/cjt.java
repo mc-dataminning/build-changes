@@ -1,12 +1,11 @@
-public class cjt {
-   private final String a;
+import java.util.Set;
 
-   public cjt(String $$0) {
-      this.a = $$0;
-   }
+public interface cjt {
+   Set<aix<? extends iv<? extends cjt>>> by = Set.of(kg.F, kg.f, kg.u, kg.P);
 
-   @Override
-   public String toString() {
-      return this.a;
+   cjw m();
+
+   default boolean a(cjw $$0) {
+      return this.m().a($$0);
    }
 }

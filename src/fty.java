@@ -1,67 +1,56 @@
-public class fty extends ftz {
-   private final hz a;
-   private final float b;
-   private final float F;
+public class fty extends ftp {
+   private final fuc b;
+   protected boolean a;
 
-   public fty(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dlf $$7) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, hz.a($$1, $$2, $$3));
-   }
-
-   public fty(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dlf $$7, hz $$8) {
+   fty(fqe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fuc $$7) {
       super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.a = $$8;
-      this.a(exh.O().an().a().a($$7));
-      this.u = 1.0F;
-      this.v = 0.6F;
-      this.w = 0.6F;
-      this.x = 0.6F;
-      if (!$$7.a(cyq.i)) {
-         int $$9 = exh.O().au().a($$7, $$0, $$8, 0);
-         this.v *= (float)($$9 >> 16 & 0xFF) / 255.0F;
-         this.w *= (float)($$9 >> 8 & 0xFF) / 255.0F;
-         this.x *= (float)($$9 & 0xFF) / 255.0F;
-      }
-
-      this.D /= 2.0F;
-      this.b = this.r.i() * 3.0F;
-      this.F = this.r.i() * 3.0F;
-   }
-
-   @Override
-   public ftd b() {
-      return ftd.a;
-   }
-
-   @Override
-   protected float c() {
-      return this.E.a((this.b + 1.0F) / 4.0F);
-   }
-
-   @Override
-   protected float d() {
-      return this.E.a(this.b / 4.0F);
-   }
-
-   @Override
-   protected float e() {
-      return this.E.c(this.F / 4.0F);
-   }
-
-   @Override
-   protected float f() {
-      return this.E.c((this.F + 1.0F) / 4.0F);
+      this.b = $$7;
+      this.d(1.5F);
+      this.b($$7);
    }
 
    @Override
    public int a(float $$0) {
-      int $$1 = super.a($$0);
-      return $$1 == 0 && this.c.B(this.a) ? fvj.a(this.c, this.a) : $$1;
+      return this.a ? 240 : super.a($$0);
    }
 
-   public static class a implements ftc<jr> {
-      public fsz a(jr $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         dlf $$8 = $$0.c();
-         return !$$8.i() && !$$8.a(cyq.bQ) && $$8.z() ? new fty($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8) : null;
+   @Override
+   public ftl b() {
+      return ftl.c;
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.b);
+   }
+
+   public static class a implements ftk<kc> {
+      private final fuc a;
+
+      public a(fuc $$0) {
+         this.a = $$0;
+      }
+
+      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fty $$8 = new fty($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.a = true;
+         return $$8;
+      }
+   }
+
+   public static class b implements ftk<kc> {
+      private final fuc a;
+
+      public b(fuc $$0) {
+         this.a = $$0;
+      }
+
+      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fty $$8 = new fty($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         return $$8;
       }
    }
 }

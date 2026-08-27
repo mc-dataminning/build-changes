@@ -1,30 +1,13 @@
-import java.util.function.IntFunction;
+public class ewr extends ewt {
+   private final ewh b;
 
-public enum ewr implements awj {
-   a(0, "options.off"),
-   b(1, "options.attack.crosshair"),
-   c(2, "options.attack.hotbar");
-
-   private static final IntFunction<ewr> d = auz.a(ewr::a, values(), auz.a.b);
-   private final int e;
-   private final String f;
-
-   private ewr(int $$0, String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public ewr(ewh $$0, long $$1, vq $$2, Runnable $$3) {
+      super($$1, $$2, $$3);
+      this.b = $$0;
    }
 
    @Override
-   public int a() {
-      return this.e;
-   }
-
-   @Override
-   public String b() {
-      return this.f;
-   }
-
-   public static ewr a(int $$0) {
-      return d.apply($$0);
+   protected void a(esx $$0, long $$1) throws euk {
+      $$0.a($$1, this.b);
    }
 }

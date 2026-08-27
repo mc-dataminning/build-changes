@@ -17,13 +17,13 @@ public class alt {
                ((RequiredArgumentBuilder)dv.a("name", er.a($$1))
                      .executes(
                         $$0x -> a(
-                              (du)$$0x.getSource(), er.a($$0x, "name"), ((du)$$0x.getSource()).d(), ens.b, 0.0F, 0, false, ((du)$$0x.getSource()).l().ae().t()
+                              (du)$$0x.getSource(), er.a($$0x, "name"), ((du)$$0x.getSource()).d(), enz.b, 0.0F, 0, false, ((du)$$0x.getSource()).l().ag().t()
                            )
                      ))
                   .then(
                      ((RequiredArgumentBuilder)dv.a("pos", fv.a())
                            .executes(
-                              $$0x -> a((du)$$0x.getSource(), er.a($$0x, "name"), fv.a($$0x, "pos"), ens.b, 0.0F, 0, false, ((du)$$0x.getSource()).l().ae().t())
+                              $$0x -> a((du)$$0x.getSource(), er.a($$0x, "name"), fv.a($$0x, "pos"), enz.b, 0.0F, 0, false, ((du)$$0x.getSource()).l().ag().t())
                            ))
                         .then(
                            dv.a("delta", fv.a(false))
@@ -40,7 +40,7 @@ public class alt {
                                                          FloatArgumentType.getFloat($$0x, "speed"),
                                                          IntegerArgumentType.getInteger($$0x, "count"),
                                                          false,
-                                                         ((du)$$0x.getSource()).l().ae().t()
+                                                         ((du)$$0x.getSource()).l().ag().t()
                                                       )
                                                 ))
                                              .then(
@@ -54,7 +54,7 @@ public class alt {
                                                                FloatArgumentType.getFloat($$0x, "speed"),
                                                                IntegerArgumentType.getInteger($$0x, "count"),
                                                                true,
-                                                               ((du)$$0x.getSource()).l().ae().t()
+                                                               ((du)$$0x.getSource()).l().ag().t()
                                                             )
                                                       ))
                                                    .then(
@@ -84,7 +84,7 @@ public class alt {
                                                             FloatArgumentType.getFloat($$0x, "speed"),
                                                             IntegerArgumentType.getInteger($$0x, "count"),
                                                             false,
-                                                            ((du)$$0x.getSource()).l().ae().t()
+                                                            ((du)$$0x.getSource()).l().ag().t()
                                                          )
                                                    ))
                                                 .then(
@@ -111,10 +111,10 @@ public class alt {
       );
    }
 
-   private static int a(du $$0, jx $$1, ens $$2, ens $$3, float $$4, int $$5, boolean $$6, Collection<aow> $$7) throws CommandSyntaxException {
+   private static int a(du $$0, jx $$1, enz $$2, enz $$3, float $$4, int $$5, boolean $$6, Collection<aox> $$7) throws CommandSyntaxException {
       int $$8 = 0;
 
-      for (aow $$9 : $$7) {
+      for (aox $$9 : $$7) {
          if ($$0.e().a($$9, $$1, $$6, $$2.c, $$2.d, $$2.e, $$5, $$3.c, $$3.d, $$3.e, (double)$$4)) {
             $$8++;
          }

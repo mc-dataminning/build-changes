@@ -2,7 +2,7 @@ public class adc implements xx<aag> {
    public static final xo<uq, adc> a = xx.a(adc::a, adc::new);
    private final int b;
 
-   public adc(dmw $$0) {
+   public adc(dna $$0) {
       this.b = $$0.r();
    }
 

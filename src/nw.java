@@ -10,7 +10,7 @@ public class nw implements nv.a {
    }
 
    public static sw a(String $$0, sw $$1) {
-      efe $$2 = new efe();
+      efl $$2 = new efl();
       int $$3 = tl.b($$1, 500);
       int $$4 = 3798;
       if ($$3 < 3798) {

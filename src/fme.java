@@ -1,74 +1,51 @@
-public class fme<T extends cbl> extends fmk<T> {
-   private static final float a = 1.5F;
-   private static final float b = 1.0F;
-   private static final float f = 2.5F;
-   private final fpc g;
-   private final fpc h;
-   private final fpc i;
-   private final fpc j;
-   private final fpc k;
-   private final fpc l;
-   private final fpc m;
-   private final fpc n;
-   private final fpc o;
-   private final fpc p;
-
-   public fme(fpc $$0) {
-      this.g = $$0.b("root");
-      this.h = this.g.b("body");
-      this.i = this.h.b("head");
-      this.j = this.i.b("eyes");
-      this.k = this.h.b("tongue");
-      this.l = this.h.b("left_arm");
-      this.m = this.h.b("right_arm");
-      this.n = this.g.b("left_leg");
-      this.o = this.g.b("right_leg");
-      this.p = this.h.b("croaking_body");
+public class fme<T extends cfk> extends fpb<T> {
+   public fme(fpj $$0) {
+      super($$0);
    }
 
-   public static fpi b() {
-      fpk $$0 = new fpk();
-      fpl $$1 = $$0.a();
-      fpl $$2 = $$1.a("root", fph.c(), fpe.a(0.0F, 24.0F, 0.0F));
-      fpl $$3 = $$2.a(
-         "body", fph.c().a(3, 1).a(-3.5F, -2.0F, -8.0F, 7.0F, 3.0F, 9.0F).a(23, 22).a(-3.5F, -1.0F, -8.0F, 7.0F, 0.0F, 9.0F), fpe.a(0.0F, -2.0F, 4.0F)
-      );
-      fpl $$4 = $$3.a(
-         "head", fph.c().a(23, 13).a(-3.5F, -1.0F, -7.0F, 7.0F, 0.0F, 9.0F).a(0, 13).a(-3.5F, -2.0F, -7.0F, 7.0F, 3.0F, 9.0F), fpe.a(0.0F, -2.0F, -1.0F)
-      );
-      fpl $$5 = $$4.a("eyes", fph.c(), fpe.a(-0.5F, 0.0F, 2.0F));
-      $$5.a("right_eye", fph.c().a(0, 0).a(-1.5F, -1.0F, -1.5F, 3.0F, 2.0F, 3.0F), fpe.a(-1.5F, -3.0F, -6.5F));
-      $$5.a("left_eye", fph.c().a(0, 5).a(-1.5F, -1.0F, -1.5F, 3.0F, 2.0F, 3.0F), fpe.a(2.5F, -3.0F, -6.5F));
-      $$3.a("croaking_body", fph.c().a(26, 5).a(-3.5F, -0.1F, -2.9F, 7.0F, 2.0F, 3.0F, new fpg(-0.1F)), fpe.a(0.0F, -1.0F, -5.0F));
-      fpl $$6 = $$3.a("tongue", fph.c().a(17, 13).a(-2.0F, 0.0F, -7.1F, 4.0F, 0.0F, 7.0F), fpe.a(0.0F, -1.01F, 1.0F));
-      fpl $$7 = $$3.a("left_arm", fph.c().a(0, 32).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 3.0F), fpe.a(4.0F, -1.0F, -6.5F));
-      $$7.a("left_hand", fph.c().a(18, 40).a(-4.0F, 0.01F, -4.0F, 8.0F, 0.0F, 8.0F), fpe.a(0.0F, 3.0F, -1.0F));
-      fpl $$8 = $$3.a("right_arm", fph.c().a(0, 38).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 3.0F), fpe.a(-4.0F, -1.0F, -6.5F));
-      $$8.a("right_hand", fph.c().a(2, 40).a(-4.0F, 0.01F, -5.0F, 8.0F, 0.0F, 8.0F), fpe.a(0.0F, 3.0F, 0.0F));
-      fpl $$9 = $$2.a("left_leg", fph.c().a(14, 25).a(-1.0F, 0.0F, -2.0F, 3.0F, 3.0F, 4.0F), fpe.a(3.5F, -3.0F, 4.0F));
-      $$9.a("left_foot", fph.c().a(2, 32).a(-4.0F, 0.01F, -4.0F, 8.0F, 0.0F, 8.0F), fpe.a(2.0F, 3.0F, 0.0F));
-      fpl $$10 = $$2.a("right_leg", fph.c().a(0, 25).a(-2.0F, 0.0F, -2.0F, 3.0F, 3.0F, 4.0F), fpe.a(-3.5F, -3.0F, 4.0F));
-      $$10.a("right_foot", fph.c().a(18, 32).a(-4.0F, 0.01F, -4.0F, 8.0F, 0.0F, 8.0F), fpe.a(-2.0F, 3.0F, 0.0F));
-      return fpi.a($$0, 48, 48);
+   public static fpp a(fpn $$0) {
+      fpr $$1 = fmv.a($$0, 0.0F);
+      fps $$2 = $$1.a();
+      $$2.a("left_arm", fpo.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), fpl.a(5.0F, 2.0F, 0.0F));
+      $$2.a("left_leg", fpo.c().a(16, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), fpl.a(1.9F, 12.0F, 0.0F));
+      return fpp.a($$1, 64, 64);
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      this.s = fmv.a.a;
+      this.r = fmv.a.a;
+      cpd $$4 = $$0.b(blv.a);
+      if ($$4.a(cpg.vL) && $$0.fY()) {
+         if ($$0.fm() == boc.b) {
+            this.s = fmv.a.e;
+         } else {
+            this.r = fmv.a.e;
+         }
+      }
+
+      super.a($$0, $$1, $$2, $$3);
    }
 
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a().e().forEach(fpc::c);
-      this.a($$0.bY, eyf.c, $$3);
-      this.a($$0.bZ, eyf.a, $$3);
-      this.a($$0.ca, eyf.d, $$3);
-      if ($$0.bc()) {
-         this.a(eyf.e, $$1, $$2, 1.0F, 2.5F);
-      } else {
-         this.a(eyf.b, $$1, $$2, 1.5F, 2.5F);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if (this.r == fmv.a.e) {
+         this.o.e = this.o.e * 0.5F - (float) Math.PI;
+         this.o.f = 0.0F;
       }
 
-      this.a($$0.cb, eyf.f, $$3);
-      this.p.k = $$0.bZ.c();
-   }
+      if (this.s == fmv.a.e) {
+         this.n.e = this.n.e * 0.5F - (float) Math.PI;
+         this.n.f = 0.0F;
+      }
 
-   @Override
-   public fpc a() {
-      return this.g;
+      if (this.u > 0.0F) {
+         this.n.e = this.a(this.u, this.n.e, (float) (-Math.PI * 4.0 / 5.0)) + this.u * 0.35F * awi.a(0.1F * $$3);
+         this.o.e = this.a(this.u, this.o.e, (float) (-Math.PI * 4.0 / 5.0)) - this.u * 0.35F * awi.a(0.1F * $$3);
+         this.n.g = this.a(this.u, this.n.g, -0.15F);
+         this.o.g = this.a(this.u, this.o.g, 0.15F);
+         this.q.e = this.q.e - this.u * 0.55F * awi.a(0.1F * $$3);
+         this.p.e = this.p.e + this.u * 0.55F * awi.a(0.1F * $$3);
+         this.k.e = 0.0F;
+      }
    }
 }

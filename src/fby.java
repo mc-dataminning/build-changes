@@ -1,115 +1,151 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import java.nio.file.Path;
+import com.google.common.collect.Queues;
+import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.Deque;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class fby extends gge implements ggf {
-   private static final int e = 256;
-   private final fbz f;
-   private final boolean g;
-   private final fby.a h;
+public class fby {
+   private static final int a = 5;
+   private static final int b = -1;
+   final exo c;
+   private final List<fby.a<?>> d = new ArrayList<>();
+   private final BitSet e = new BitSet(5);
+   private final Deque<fbx> f = Queues.newArrayDeque();
 
-   public fby(fbz $$0, boolean $$1) {
-      this.g = $$1;
-      this.h = new fby.a(0, 0, 256, 256);
-      TextureUtil.prepareImage($$1 ? erb.b.a : erb.b.d, this.a(), 256, 256);
-      this.f = $$0;
+   public fby(exo $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public void a(asa $$0) {
+   public void a(ezb $$0) {
+      if (!this.c.m.Z) {
+         int $$1 = $$0.a();
+         this.d.removeIf($$2 -> {
+            if ($$2 != null && $$2.a($$1, $$0)) {
+               this.e.clear($$2.d, $$2.d + $$2.e);
+               return true;
+            } else {
+               return false;
+            }
+         });
+         if (!this.f.isEmpty() && this.d() > 0) {
+            this.f.removeIf($$0x -> {
+               int $$1x = $$0x.f();
+               int $$2 = this.a($$1x);
+               if ($$2 != -1) {
+                  this.d.add(new fby.a<>($$0x, $$2, $$1x));
+                  this.e.set($$2, $$2 + $$1x);
+                  return true;
+               } else {
+                  return false;
+               }
+            });
+         }
+      }
    }
 
-   @Override
-   public void close() {
-      this.b();
+   private int a(int $$0) {
+      if (this.d() >= $$0) {
+         int $$1 = 0;
+
+         for (int $$2 = 0; $$2 < 5; $$2++) {
+            if (this.e.get($$2)) {
+               $$1 = 0;
+            } else if (++$$1 == $$0) {
+               return $$2 + 1 - $$1;
+            }
+         }
+      }
+
+      return -1;
+   }
+
+   private int d() {
+      return 5 - this.e.cardinality();
    }
 
    @Nullable
-   public fcb a(eqe $$0) {
-      if ($$0.c() != this.g) {
-         return null;
-      } else {
-         fby.a $$1 = this.h.a($$0);
-         if ($$1 != null) {
-            this.c();
-            $$0.a($$1.a, $$1.b);
-            float $$2 = 256.0F;
-            float $$3 = 256.0F;
-            float $$4 = 0.01F;
-            return new fcb(
-               this.f,
-               ((float)$$1.a + 0.01F) / 256.0F,
-               ((float)$$1.a - 0.01F + (float)$$0.a()) / 256.0F,
-               ((float)$$1.b + 0.01F) / 256.0F,
-               ((float)$$1.b - 0.01F + (float)$$0.b()) / 256.0F,
-               $$0.e(),
-               $$0.f(),
-               $$0.g(),
-               $$0.h()
-            );
-         } else {
-            return null;
+   public <T extends fbx> T a(Class<? extends T> $$0, Object $$1) {
+      for (fby.a<?> $$2 : this.d) {
+         if ($$2 != null && $$0.isAssignableFrom($$2.a().getClass()) && $$2.a().e().equals($$1)) {
+            return (T)$$2.a();
          }
       }
-   }
 
-   @Override
-   public void a(aiy $$0, Path $$1) {
-      String $$2 = $$0.c();
-      TextureUtil.writeAsPNG($$1, $$2, this.a(), 0, 256, 256, $$0x -> ($$0x & 0xFF000000) == 0 ? -16777216 : $$0x);
-   }
-
-   static class a {
-      final int a;
-      final int b;
-      private final int c;
-      private final int d;
-      @Nullable
-      private fby.a e;
-      @Nullable
-      private fby.a f;
-      private boolean g;
-
-      a(int $$0, int $$1, int $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
+      for (fbx $$3 : this.f) {
+         if ($$0.isAssignableFrom($$3.getClass()) && $$3.e().equals($$1)) {
+            return (T)$$3;
+         }
       }
 
-      @Nullable
-      fby.a a(eqe $$0) {
-         if (this.e != null && this.f != null) {
-            fby.a $$1 = this.e.a($$0);
-            if ($$1 == null) {
-               $$1 = this.f.a($$0);
-            }
+      return null;
+   }
 
-            return $$1;
-         } else if (this.g) {
-            return null;
-         } else {
-            int $$2 = $$0.a();
-            int $$3 = $$0.b();
-            if ($$2 > this.c || $$3 > this.d) {
-               return null;
-            } else if ($$2 == this.c && $$3 == this.d) {
-               this.g = true;
-               return this;
-            } else {
-               int $$4 = this.c - $$2;
-               int $$5 = this.d - $$3;
-               if ($$4 > $$5) {
-                  this.e = new fby.a(this.a, this.b, $$2, this.d);
-                  this.f = new fby.a(this.a + $$2 + 1, this.b, this.c - $$2 - 1, this.d);
-               } else {
-                  this.e = new fby.a(this.a, this.b, this.c, $$3);
-                  this.f = new fby.a(this.a, this.b + $$3 + 1, this.c, this.d - $$3 - 1);
-               }
+   public void a() {
+      this.e.clear();
+      this.d.clear();
+      this.f.clear();
+   }
 
-               return this.e.a($$0);
-            }
+   public void a(fbx $$0) {
+      this.f.add($$0);
+   }
+
+   public exo b() {
+      return this.c;
+   }
+
+   public double c() {
+      return this.c.m.z().c();
+   }
+
+   class a<T extends fbx> {
+      private static final long b = 600L;
+      private final T c;
+      final int d;
+      final int e;
+      private long f = -1L;
+      private long g = -1L;
+      private fbx.a h = fbx.a.a;
+
+      a(T $$0, int $$1, int $$2) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+      }
+
+      public T a() {
+         return this.c;
+      }
+
+      private float a(long $$0) {
+         float $$1 = awi.a((float)($$0 - this.f) / 600.0F, 0.0F, 1.0F);
+         $$1 *= $$1;
+         return this.h == fbx.a.b ? 1.0F - $$1 : $$1;
+      }
+
+      public boolean a(int $$0, ezb $$1) {
+         long $$2 = ac.b();
+         if (this.f == -1L) {
+            this.f = $$2;
+            this.h.a(fby.this.c.aj());
          }
+
+         if (this.h == fbx.a.a && $$2 - this.f <= 600L) {
+            this.g = $$2;
+         }
+
+         $$1.c().a();
+         $$1.c().a((float)$$0 - (float)this.c.a() * this.a($$2), (float)(this.d * 32), 800.0F);
+         fbx.a $$3 = this.c.a($$1, fby.this, $$2 - this.g);
+         $$1.c().b();
+         if ($$3 != this.h) {
+            this.f = $$2 - (long)((int)((1.0F - this.a($$2)) * 600.0F));
+            this.h = $$3;
+            this.h.a(fby.this.c.aj());
+         }
+
+         return this.h == fbx.a.b && $$2 - this.f > 600L;
       }
    }
 }

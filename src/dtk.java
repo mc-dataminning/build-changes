@@ -1,67 +1,48 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntListIterator;
+import java.util.stream.IntStream;
 
-public class dtk extends dts<dvs> {
-   private static final ImmutableList<cyo> a = ImmutableList.of(cyq.F, cyq.fn, cyq.fo, cyq.fp, cyq.fq, cyq.cv, cyq.ct);
-   private static final ie[] b = ie.values();
-   private static final double c = 0.9;
-
-   public dtk(Codec<dvs> $$0) {
+public class dtk extends dtz<dwk> {
+   public dtk(Codec<dwk> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dtu<dvs> $$0) {
-      boolean $$1 = false;
-      awo $$2 = $$0.d();
-      cwi $$3 = $$0.b();
-      dvs $$4 = $$0.f();
-      hz $$5 = $$0.e();
-      boolean $$6 = $$2.j() < 0.9;
-      int $$7 = $$6 ? $$4.d().a($$2) : 0;
-      int $$8 = $$6 ? $$4.d().a($$2) : 0;
-      boolean $$9 = $$6 && $$7 != 0 && $$8 != 0;
-      int $$10 = $$4.c().a($$2);
-      int $$11 = $$4.c().a($$2);
-      int $$12 = Math.max($$10, $$11);
+   public boolean a(dub<dwk> $$0) {
+      awp $$1 = $$0.d();
+      cwm $$2 = $$0.b();
+      cuy $$3 = new cuy($$0.e());
+      IntArrayList $$4 = ac.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
+      IntArrayList $$5 = ac.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
+      hz.a $$6 = new hz.a();
+      IntListIterator var8 = $$4.iterator();
 
-      for (hz $$13 : hz.a($$5, $$10, 0, $$11)) {
-         if ($$13.k($$5) > $$12) {
-            break;
-         }
+      while (var8.hasNext()) {
+         Integer $$7 = (Integer)var8.next();
+         IntListIterator var10 = $$5.iterator();
 
-         if (a($$3, $$13, $$4)) {
-            if ($$9) {
-               $$1 = true;
-               this.a($$3, $$13, $$4.b());
-            }
+         while (var10.hasNext()) {
+            Integer $$8 = (Integer)var10.next();
+            $$6.d($$7, 0, $$8);
+            hz $$9 = $$2.a(dqv.a.f, $$6);
+            if ($$2.u($$9) || $$2.a_($$9).k($$2, $$9).c()) {
+               $$2.a($$9, cyu.cv.o(), 2);
+               bme.a($$2, $$1, $$9, eja.b);
+               dlj $$10 = cyu.cp.o();
 
-            hz $$14 = $$13.b($$7, 0, $$8);
-            if (a($$3, $$14, $$4)) {
-               $$1 = true;
-               this.a($$3, $$14, $$4.a());
+               for (ie $$11 : ie.c.a) {
+                  hz $$12 = $$9.a($$11);
+                  if ($$10.a($$2, $$12)) {
+                     $$2.a($$12, $$10, 2);
+                  }
+               }
+
+               return true;
             }
          }
       }
 
-      return $$1;
-   }
-
-   private static boolean a(cvo $$0, hz $$1, dvs $$2) {
-      dlf $$3 = $$0.a_($$1);
-      if ($$3.a($$2.a().b())) {
-         return false;
-      } else if (a.contains($$3.b())) {
-         return false;
-      } else {
-         for (ie $$4 : b) {
-            boolean $$5 = $$0.a_($$1.a($$4)).i();
-            if ($$5 && $$4 != ie.b || !$$5 && $$4 == ie.b) {
-               return false;
-            }
-         }
-
-         return true;
-      }
+      return false;
    }
 }

@@ -1,17 +1,11 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class gdk extends gcg<cbs, fom<cbs>> {
+   private static final aiy a = new aiy("textures/entity/tadpole/tadpole.png");
 
-public class gdk extends fzn<cbv, fmm<cbv>> {
-   private static final Map<bnu<?>, aiy> a = Maps.newHashMap(
-      ImmutableMap.of(bnu.bt, new aiy("textures/entity/horse/horse_zombie.png"), bnu.aM, new aiy("textures/entity/horse/horse_skeleton.png"))
-   );
-
-   public gdk(gas.a $$0, fpa $$1) {
-      super($$0, new fmm<>($$0.a($$1)), 1.0F);
+   public gdk(gba.a $$0) {
+      super($$0, new fom<>($$0.a(fpi.bB)), 0.14F);
    }
 
-   public aiy a(cbv $$0) {
-      return a.get($$0.ai());
+   public aiy a(cbs $$0) {
+      return a;
    }
 }

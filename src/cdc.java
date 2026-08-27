@@ -1,63 +1,100 @@
-import java.lang.reflect.Constructor;
-import java.util.Arrays;
+import javax.annotation.Nullable;
 
-public class cdc<T extends ccw> {
-   private static cdc<?>[] l = new cdc[0];
-   public static final cdc<ccs> a = a(ccs.class, "HoldingPattern");
-   public static final cdc<cda> b = a(cda.class, "StrafePlayer");
-   public static final cdc<ccu> c = a(ccu.class, "LandingApproach");
-   public static final cdc<ccv> d = a(ccv.class, "Landing");
-   public static final cdc<cdb> e = a(cdb.class, "Takeoff");
-   public static final cdc<ccy> f = a(ccy.class, "SittingFlaming");
-   public static final cdc<ccz> g = a(ccz.class, "SittingScanning");
-   public static final cdc<ccx> h = a(ccx.class, "SittingAttacking");
-   public static final cdc<ccq> i = a(ccq.class, "ChargingPlayer");
-   public static final cdc<ccr> j = a(ccr.class, "Dying");
-   public static final cdc<cct> k = a(cct.class, "Hover");
-   private final Class<? extends ccw> m;
-   private final int n;
-   private final String o;
+public class cdc extends cct {
+   private static final int b = 200;
+   private static final int c = 4;
+   private static final int d = 10;
+   private int e;
+   private int f;
+   @Nullable
+   private bnn g;
 
-   private cdc(int $$0, Class<? extends ccw> $$1, String $$2) {
-      this.n = $$0;
-      this.m = $$1;
-      this.o = $$2;
-   }
-
-   public ccw a(ccm $$0) {
-      try {
-         Constructor<? extends ccw> $$1 = this.a();
-         return $$1.newInstance($$0);
-      } catch (Exception var3) {
-         throw new Error(var3);
-      }
-   }
-
-   protected Constructor<? extends ccw> a() throws NoSuchMethodException {
-      return this.m.getConstructor(ccm.class);
-   }
-
-   public int b() {
-      return this.n;
+   public cdc(ccq $$0) {
+      super($$0);
    }
 
    @Override
-   public String toString() {
-      return this.o + " (#" + this.n + ")";
+   public void b() {
+      this.e++;
+      if (this.e % 2 == 0 && this.e < 10) {
+         enz $$0 = this.a.D(1.0F).d();
+         $$0.b((float) (-Math.PI / 4));
+         double $$1 = this.a.e.dr();
+         double $$2 = this.a.e.e(0.5);
+         double $$3 = this.a.e.dx();
+
+         for (int $$4 = 0; $$4 < 8; $$4++) {
+            double $$5 = $$1 + this.a.eh().k() / 2.0;
+            double $$6 = $$2 + this.a.eh().k() / 2.0;
+            double $$7 = $$3 + this.a.eh().k() / 2.0;
+
+            for (int $$8 = 0; $$8 < 6; $$8++) {
+               this.a.dM().a(jz.i, $$5, $$6, $$7, -$$0.c * 0.08F * (double)$$8, -$$0.d * 0.6F, -$$0.e * 0.08F * (double)$$8);
+            }
+
+            $$0.b((float) (Math.PI / 16));
+         }
+      }
    }
 
-   public static cdc<?> a(int $$0) {
-      return $$0 >= 0 && $$0 < l.length ? l[$$0] : a;
+   @Override
+   public void c() {
+      this.e++;
+      if (this.e >= 200) {
+         if (this.f >= 4) {
+            this.a.gd().a(cdg.e);
+         } else {
+            this.a.gd().a(cdg.g);
+         }
+      } else if (this.e == 10) {
+         enz $$0 = new enz(this.a.e.dr() - this.a.dr(), 0.0, this.a.e.dx() - this.a.dx()).d();
+         float $$1 = 5.0F;
+         double $$2 = this.a.e.dr() + $$0.c * 5.0 / 2.0;
+         double $$3 = this.a.e.dx() + $$0.e * 5.0 / 2.0;
+         double $$4 = this.a.e.e(0.5);
+         double $$5 = $$4;
+         hz.a $$6 = new hz.a($$2, $$4, $$3);
+
+         while (this.a.dM().u($$6)) {
+            if (--$$5 < 0.0) {
+               $$5 = $$4;
+               break;
+            }
+
+            $$6.b($$2, $$5, $$3);
+         }
+
+         $$5 = (double)(awi.a($$5) + 1);
+         this.g = new bnn(this.a.dM(), $$2, $$5, $$3);
+         this.g.a(this.a);
+         this.g.a(5.0F);
+         this.g.b(200);
+         this.g.a(jz.i);
+         this.g.a(new bnd(bnf.g));
+         this.a.dM().b(this.g);
+      }
    }
 
-   public static int c() {
-      return l.length;
+   @Override
+   public void d() {
+      this.e = 0;
+      this.f++;
    }
 
-   private static <T extends ccw> cdc<T> a(Class<T> $$0, String $$1) {
-      cdc<T> $$2 = new cdc<>(l.length, $$0, $$1);
-      l = Arrays.copyOf(l, l.length + 1);
-      l[$$2.b()] = $$2;
-      return $$2;
+   @Override
+   public void e() {
+      if (this.g != null) {
+         this.g.am();
+         this.g = null;
+      }
+   }
+
+   @Override
+   public cdg<cdc> i() {
+      return cdg.f;
+   }
+
+   public void j() {
+      this.f = 0;
    }
 }

@@ -1,52 +1,48 @@
-import java.util.Collection;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dfd {
-   dfd v_ = new dfd() {
-      @Override
-      public boolean a(cvo $$0, hz $$1, dlf $$2, @Nullable Collection<ie> $$3, boolean $$4) {
-         if ($$3 == null) {
-            return ((dfj)cyq.qT).g().a($$0.a_($$1), $$0, $$1, $$4) > 0L;
-         } else if (!$$3.isEmpty()) {
-            return !$$2.i() && !$$2.u().b(egq.c) ? false : dfj.a($$0, $$1, $$2, $$3);
-         } else {
-            return dfd.super.a($$0, $$1, $$2, $$3, $$4);
-         }
+public class dfd extends cys {
+   public static final MapCodec<dfd> h = b(dfd::new);
+   public static final dmh<ie.a> i = dlz.I;
+
+   @Override
+   public MapCodec<? extends dfd> a() {
+      return h;
+   }
+
+   public dfd(dli.d $$0) {
+      super($$0);
+      this.k(this.o().a(i, ie.a.b));
+   }
+
+   @Override
+   protected dlj a(dlj $$0, dfe $$1) {
+      return b($$0, $$1);
+   }
+
+   public static dlj b(dlj $$0, dfe $$1) {
+      switch ($$1) {
+         case d:
+         case b:
+            switch ((ie.a)$$0.c(i)) {
+               case a:
+                  return $$0.a(i, ie.a.c);
+               case c:
+                  return $$0.a(i, ie.a.a);
+               default:
+                  return $$0;
+            }
+         default:
+            return $$0;
       }
-
-      @Override
-      public int a(dfi.a $$0, cvo $$1, hz $$2, awo $$3, dfi $$4, boolean $$5) {
-         return $$0.c() > 0 ? $$0.b() : 0;
-      }
-
-      @Override
-      public int i_(int $$0) {
-         return Math.max($$0 - 1, 0);
-      }
-   };
-
-   default byte b() {
-      return 1;
    }
 
-   default void a(cvo $$0, dlf $$1, hz $$2, awo $$3) {
+   @Override
+   protected void a(dlk.a<cys, dlj> $$0) {
+      $$0.a(i);
    }
 
-   default boolean a(cvo $$0, hz $$1, awo $$2) {
-      return false;
+   @Override
+   public dlj a(crk $$0) {
+      return this.o().a(i, $$0.k().o());
    }
-
-   default boolean a(cvo $$0, hz $$1, dlf $$2, @Nullable Collection<ie> $$3, boolean $$4) {
-      return ((ddn)cyq.qT).c().a($$2, $$0, $$1, $$4) > 0L;
-   }
-
-   default boolean d() {
-      return true;
-   }
-
-   default int i_(int $$0) {
-      return 1;
-   }
-
-   int a(dfi.a var1, cvo var2, hz var3, awo var4, dfi var5, boolean var6);
 }

@@ -13,13 +13,13 @@ public class ic<T> extends ir<T> implements id<T> {
    }
 
    @Override
-   public ij.c<T> a(int $$0, aix<T> $$1, T $$2, Lifecycle $$3) {
-      ij.c<T> $$4 = super.a($$0, $$1, $$2, $$3);
-      if (this.b.equals($$1.a())) {
-         this.c = $$4;
+   public ij.c<T> a(aix<T> $$0, T $$1, Lifecycle $$2) {
+      ij.c<T> $$3 = super.a($$0, $$1, $$2);
+      if (this.b.equals($$0.a())) {
+         this.c = $$3;
       }
 
-      return $$4;
+      return $$3;
    }
 
    @Override
@@ -55,7 +55,7 @@ public class ic<T> extends ir<T> implements id<T> {
    }
 
    @Override
-   public Optional<ij.c<T>> a(awo $$0) {
+   public Optional<ij.c<T>> a(awp $$0) {
       return super.a($$0).or(() -> Optional.of(this.c));
    }
 

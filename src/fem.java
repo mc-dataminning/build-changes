@@ -1,68 +1,79 @@
-public class fem extends fdv {
-   private ezh c;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-   public fem() {
-      super("");
-   }
+public class fem extends ffl {
+   private static final vq a = vq.c("addServer.enterIp");
+   private ezo b;
+   private final fqq c;
+   private ezx k;
+   private final BooleanConsumer l;
+   private final ffl m;
 
-   @Override
-   protected void aQ_() {
-      super.aQ_();
-      this.c = ezh.a(vq.c("multiplayer.stopSleeping"), $$0 -> this.E()).a(this.g / 2 - 100, this.h - 40, 200, 20).a();
-      this.d(this.c);
-   }
-
-   @Override
-   public void a(eyu $$0, int $$1, int $$2, float $$3) {
-      if (!this.f.H().a(this.f.R())) {
-         this.c.a($$0, $$1, $$2, $$3);
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   @Override
-   public void b(eyu $$0, int $$1, int $$2, float $$3) {
-   }
-
-   @Override
-   public void d() {
-      this.E();
-   }
-
-   @Override
-   public boolean a(char $$0, int $$1) {
-      return !this.f.H().a(this.f.R()) ? true : super.a($$0, $$1);
+   public fem(ffl $$0, BooleanConsumer $$1, fqq $$2) {
+      super(vq.c("selectServer.direct"));
+      this.m = $$0;
+      this.c = $$2;
+      this.l = $$1;
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.E();
-      }
-
-      if (!this.f.H().a(this.f.R())) {
-         return true;
-      } else if ($$0 != 257 && $$0 != 335) {
+      if (!this.b.j || this.aK_() != this.k || $$0 != 257 && $$0 != 335) {
          return super.a($$0, $$1, $$2);
       } else {
-         this.b(this.b.a(), true);
-         this.b.a("");
-         this.f.l.d().d();
+         this.o();
          return true;
       }
+   }
+
+   @Override
+   protected void aQ_() {
+      this.k = new ezx(this.i, this.g / 2 - 100, 116, 200, 20, vq.c("addServer.enterIp"));
+      this.k.f(128);
+      this.k.a(this.f.m.aa);
+      this.k.b($$0 -> this.E());
+      this.d(this.k);
+      this.b = this.c(ezo.a(vq.c("selectServer.select"), $$0 -> this.o()).a(this.g / 2 - 100, this.h / 4 + 96 + 12, 200, 20).a());
+      this.c(ezo.a(vp.e, $$0 -> this.l.accept(false)).a(this.g / 2 - 100, this.h / 4 + 120 + 12, 200, 20).a());
+      this.E();
+   }
+
+   @Override
+   protected void aH_() {
+      this.b(this.k);
+   }
+
+   @Override
+   public void a(exo $$0, int $$1, int $$2) {
+      String $$3 = this.k.a();
+      this.b($$0, $$1, $$2);
+      this.k.a($$3);
+   }
+
+   private void o() {
+      this.c.b = this.k.a();
+      this.l.accept(true);
+   }
+
+   @Override
+   public void d() {
+      this.f.a(this.m);
+   }
+
+   @Override
+   public void k() {
+      this.f.m.aa = this.k.a();
+      this.f.m.as();
    }
 
    private void E() {
-      fpy $$0 = this.f.s.cq;
-      $$0.b(new afv(this.f.s, afv.a.c));
+      this.b.j = frs.b(this.k.a());
    }
 
-   public void o() {
-      if (this.b.a().isEmpty()) {
-         this.f.a(null);
-      } else {
-         this.f.a(new fdv(this.b.a()));
-      }
+   @Override
+   public void a(ezb $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
+      $$0.b(this.i, a, this.g / 2 - 100 + 1, 100, 10526880);
+      this.k.a($$0, $$1, $$2, $$3);
    }
 }

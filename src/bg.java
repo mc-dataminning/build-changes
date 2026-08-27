@@ -5,22 +5,22 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Optional;
 
-public record bg(List<dd<bmp>> b, Optional<br> c, Optional<br> d) {
+public record bg(List<dd<bmr>> b, Optional<br> c, Optional<br> d) {
    public static final Codec<bg> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               avp.a(dd.a(kg.r).listOf(), "tags", List.of()).forGetter(bg::a),
-               avp.a(br.a, "direct_entity").forGetter(bg::b),
-               avp.a(br.a, "source_entity").forGetter(bg::c)
+               avq.a(dd.a(kg.r).listOf(), "tags", List.of()).forGetter(bg::a),
+               avq.a(br.a, "direct_entity").forGetter(bg::b),
+               avq.a(br.a, "source_entity").forGetter(bg::c)
             )
             .apply($$0, bg::new)
    );
 
-   public boolean a(aow $$0, bmn $$1) {
+   public boolean a(aox $$0, bmp $$1) {
       return this.a($$0.z(), $$0.dk(), $$1);
    }
 
-   public boolean a(aov $$0, ens $$1, bmn $$2) {
-      for (dd<bmp> $$3 : this.b) {
+   public boolean a(aow $$0, enz $$1, bmp $$2) {
+      for (dd<bmr> $$3 : this.b) {
          if (!$$3.a($$2.k())) {
             return false;
          }
@@ -29,7 +29,7 @@ public record bg(List<dd<bmp>> b, Optional<br> c, Optional<br> d) {
       return this.c.isPresent() && !this.c.get().a($$0, $$1, $$2.c()) ? false : !this.d.isPresent() || this.d.get().a($$0, $$1, $$2.d());
    }
 
-   public List<dd<bmp>> a() {
+   public List<dd<bmr>> a() {
       return this.b;
    }
 
@@ -42,7 +42,7 @@ public record bg(List<dd<bmp>> b, Optional<br> c, Optional<br> d) {
    }
 
    public static class a {
-      private final Builder<dd<bmp>> a = ImmutableList.builder();
+      private final Builder<dd<bmr>> a = ImmutableList.builder();
       private Optional<br> b = Optional.empty();
       private Optional<br> c = Optional.empty();
 
@@ -50,7 +50,7 @@ public record bg(List<dd<bmp>> b, Optional<br> c, Optional<br> d) {
          return new bg.a();
       }
 
-      public bg.a a(dd<bmp> $$0) {
+      public bg.a a(dd<bmr> $$0) {
          this.a.add($$0);
          return this;
       }

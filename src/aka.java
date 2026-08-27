@@ -110,7 +110,7 @@ public class aka {
    }
 
    private Optional<aka.a> b(Scanner $$0) {
-      aix<cvn> $$1 = (aix<cvn>)akj.a.get($$0.next());
+      aix<cvr> $$1 = (aix<cvr>)akj.a.get($$0.next());
       if ($$1 == null) {
          return Optional.empty();
       } else {
@@ -119,23 +119,23 @@ public class aka {
          float $$4 = $$0.nextFloat();
          float $$5 = $$0.nextFloat();
          float $$6 = $$0.nextFloat();
-         return Optional.of(new aka.a($$1, new ens((double)$$2, (double)$$3, (double)$$4), new enr($$6, $$5)));
+         return Optional.of(new aka.a($$1, new enz((double)$$2, (double)$$3, (double)$$4), new eny($$6, $$5)));
       }
    }
 
    private void b(String $$0) {
       this.e.execute(() -> {
-         List<aow> $$1 = this.e.ae().t();
+         List<aox> $$1 = this.e.ag().t();
          if (!$$1.isEmpty()) {
-            aow $$2 = $$1.get(0);
-            aov $$3 = this.e.F();
-            du $$4 = new du($$2, ens.a($$3.T()), enr.a, $$3, 4, "", vp.a, this.e, $$2);
-            dv $$5 = this.e.aE();
+            aox $$2 = $$1.get(0);
+            aow $$3 = this.e.H();
+            du $$4 = new du($$2, enz.a($$3.T()), eny.a, $$3, 4, "", vp.a, this.e, $$2);
+            dv $$5 = this.e.aG();
             $$5.a($$4, $$0);
          }
       });
    }
 
-   static record a(aix<cvn> a, ens b, enr c) {
+   static record a(aix<cvr> a, enz b, eny c) {
    }
 }

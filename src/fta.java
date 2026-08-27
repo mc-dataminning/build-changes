@@ -1,27 +1,27 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Streams;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import java.util.List;
-
-public class fta {
-   private final List<aiy> a;
-
-   private fta(List<aiy> $$0) {
-      this.a = $$0;
+public class fta extends ftf {
+   fta(fqe $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.t = 8;
    }
 
-   public List<aiy> a() {
-      return this.a;
+   @Override
+   public void a() {
+      for (int $$0 = 0; $$0 < 6; $$0++) {
+         double $$1 = this.g + (this.r.j() - this.r.j()) * 4.0;
+         double $$2 = this.h + (this.r.j() - this.r.j()) * 4.0;
+         double $$3 = this.i + (this.r.j() - this.r.j()) * 4.0;
+         this.c.a(jz.x, $$1, $$2, $$3, (double)((float)this.s / (float)this.t), 0.0, 0.0);
+      }
+
+      this.s++;
+      if (this.s == this.t) {
+         this.k();
+      }
    }
 
-   public static fta a(JsonObject $$0) {
-      JsonArray $$1 = avx.a($$0, "textures", null);
-      if ($$1 == null) {
-         return new fta(List.of());
-      } else {
-         List<aiy> $$2 = Streams.stream($$1).map($$0x -> avx.a($$0x, "texture")).map(aiy::new).collect(ImmutableList.toImmutableList());
-         return new fta($$2);
+   public static class a implements ftk<kc> {
+      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fta($$1, $$2, $$3, $$4);
       }
    }
 }

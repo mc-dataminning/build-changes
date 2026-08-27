@@ -1,142 +1,77 @@
-import com.google.common.collect.Sets;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
-import java.util.Set;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
 public class eiv {
-   private final ejb a;
-   private final awo b;
-   private final eiz c;
-   private final Set<eiv.c<?>> d = Sets.newLinkedHashSet();
+   private static final Logger b = LogUtils.getLogger();
+   private final File c;
+   protected final DataFixer a;
+   private static final DateTimeFormatter d = ein.a();
 
-   eiv(ejb $$0, awo $$1, eiz $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public eiv(eis.c $$0, DataFixer $$1) {
+      this.a = $$1;
+      this.c = $$0.a(eiq.c).toFile();
+      this.c.mkdirs();
    }
 
-   public boolean a(eld<?> $$0) {
-      return this.a.a($$0);
-   }
-
-   public <T> T b(eld<T> $$0) {
-      return this.a.b($$0);
-   }
-
-   public void a(aiy $$0, Consumer<coz> $$1) {
-      this.a.a($$0, $$1);
-   }
-
-   @Nullable
-   public <T> T c(eld<T> $$0) {
-      return this.a.d($$0);
-   }
-
-   public boolean a(eiv.c<?> $$0) {
-      return this.d.contains($$0);
-   }
-
-   public boolean b(eiv.c<?> $$0) {
-      return this.d.add($$0);
-   }
-
-   public void c(eiv.c<?> $$0) {
-      this.d.remove($$0);
-   }
-
-   public eiz a() {
-      return this.c;
-   }
-
-   public awo b() {
-      return this.b;
-   }
-
-   public float c() {
-      return this.a.b();
-   }
-
-   public aov d() {
-      return this.a.a();
-   }
-
-   public static eiv.c<ejd> a(ejd $$0) {
-      return new eiv.c<>(eja.c, $$0);
-   }
-
-   public static eiv.c<elu> a(elu $$0) {
-      return new eiv.c<>(eja.a, $$0);
-   }
-
-   public static eiv.c<eki> a(eki $$0) {
-      return new eiv.c<>(eja.b, $$0);
-   }
-
-   public static class a {
-      private final ejb a;
-      @Nullable
-      private awo b;
-
-      public a(ejb $$0) {
-         this.a = $$0;
+   public void a(chl $$0) {
+      try {
+         sw $$1 = $$0.f(new sw());
+         Path $$2 = this.c.toPath();
+         Path $$3 = Files.createTempFile($$2, $$0.cx() + "-", ".dat");
+         tj.a($$1, $$3);
+         Path $$4 = $$2.resolve($$0.cx() + ".dat");
+         Path $$5 = $$2.resolve($$0.cx() + ".dat_old");
+         ac.a($$4, $$3, $$5);
+      } catch (Exception var7) {
+         b.warn("Failed to save player data for {}", $$0.ad().getString());
       }
+   }
 
-      public eiv.a a(long $$0) {
-         if ($$0 != 0L) {
-            this.b = awo.a($$0);
+   private void a(chl $$0, String $$1) {
+      Path $$2 = this.c.toPath();
+      Path $$3 = $$2.resolve($$0.cx() + $$1);
+      Path $$4 = $$2.resolve($$0.cx() + "_corrupted_" + LocalDateTime.now().format(d) + $$1);
+      if (Files.isRegularFile($$3)) {
+         try {
+            Files.copy($$3, $$4, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.COPY_ATTRIBUTES);
+         } catch (Exception var7) {
+            b.warn("Failed to copy the player.dat file for {}", $$0.ad().getString(), var7);
          }
-
-         return this;
-      }
-
-      public aov a() {
-         return this.a.a();
-      }
-
-      public eiv a(Optional<aiy> $$0) {
-         aov $$1 = this.a();
-         MinecraftServer $$2 = $$1.o();
-         awo $$3 = Optional.ofNullable(this.b).or(() -> $$0.map($$1::a)).orElseGet($$1::F_);
-         return new eiv(this.a, $$3, $$2.aJ());
       }
    }
 
-   public static enum b implements axc {
-      a("this", elg.a),
-      b("killer", elg.d),
-      c("direct_killer", elg.e),
-      d("killer_player", elg.b);
-
-      public static final axc.a<eiv.b> e = axc.a(eiv.b::values);
-      private final String f;
-      private final eld<? extends bno> g;
-
-      private b(String $$0, eld<? extends bno> $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
-
-      public eld<? extends bno> a() {
-         return this.g;
-      }
-
-      public static eiv.b a(String $$0) {
-         eiv.b $$1 = e.a($$0);
-         if ($$1 != null) {
-            return $$1;
-         } else {
-            throw new IllegalArgumentException("Invalid entity target " + $$0);
+   private Optional<sw> b(chl $$0, String $$1) {
+      File $$2 = new File(this.c, $$0.cx() + $$1);
+      if ($$2.exists() && $$2.isFile()) {
+         try {
+            return Optional.of(tj.a($$2.toPath(), tf.a()));
+         } catch (Exception var5) {
+            b.warn("Failed to load player data for {}", $$0.ad().getString());
          }
       }
 
-      @Override
-      public String c() {
-         return this.f;
-      }
+      return Optional.empty();
    }
 
-   public static record c<T>(eja<T> a, T b) {
+   public Optional<sw> b(chl $$0) {
+      Optional<sw> $$1 = this.b($$0, ".dat");
+      if ($$1.isEmpty()) {
+         this.a($$0, ".dat");
+      }
+
+      return $$1.or(() -> this.b($$0, ".dat_old")).map($$1x -> {
+         int $$2 = tl.b($$1x, -1);
+         $$1x = axo.b.a(this.a, $$1x, $$2);
+         $$0.g($$1x);
+         return $$1x;
+      });
    }
 }

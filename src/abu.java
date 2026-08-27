@@ -7,7 +7,7 @@ public class abu implements xx<aag> {
    private final int c;
    private final abv d;
 
-   public abu(cuu $$0, ege $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+   public abu(cuy $$0, egl $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
       this.b = $$0.e;
       this.c = $$0.f;
       this.d = new abv($$0, $$1, $$2, $$3);

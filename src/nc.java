@@ -8,38 +8,38 @@ import javax.annotation.Nullable;
 
 public class nc implements my {
    private final mz b;
-   private final cou c;
+   private final coy c;
    private final int d;
    private final List<String> e = Lists.newArrayList();
-   private final Map<Character, cry> f = Maps.newLinkedHashMap();
+   private final Map<Character, csc> f = Maps.newLinkedHashMap();
    private final Map<String, an<?>> g = new LinkedHashMap<>();
    @Nullable
    private String h;
    private boolean i = true;
 
-   public nc(mz $$0, cvm $$1, int $$2) {
+   public nc(mz $$0, cvq $$1, int $$2) {
       this.b = $$0;
       this.c = $$1.j();
       this.d = $$2;
    }
 
-   public static nc a(mz $$0, cvm $$1) {
+   public static nc a(mz $$0, cvq $$1) {
       return a($$0, $$1, 1);
    }
 
-   public static nc a(mz $$0, cvm $$1, int $$2) {
+   public static nc a(mz $$0, cvq $$1, int $$2) {
       return new nc($$0, $$1, $$2);
    }
 
-   public nc a(Character $$0, auo<cou> $$1) {
-      return this.a($$0, cry.a($$1));
+   public nc a(Character $$0, aup<coy> $$1) {
+      return this.a($$0, csc.a($$1));
    }
 
-   public nc a(Character $$0, cvm $$1) {
-      return this.a($$0, cry.a($$1));
+   public nc a(Character $$0, cvq $$1) {
+      return this.a($$0, csc.a($$1));
    }
 
-   public nc a(Character $$0, cry $$1) {
+   public nc a(Character $$0, csc $$1) {
       if (this.f.containsKey($$0)) {
          throw new IllegalArgumentException("Symbol '" + $$0 + "' is already defined!");
       } else if ($$0 == ' ') {
@@ -75,24 +75,24 @@ public class nc implements my {
    }
 
    @Override
-   public cou a() {
+   public coy a() {
       return this.c;
    }
 
    @Override
    public void a(na $$0, aiy $$1) {
-      csj $$2 = this.a($$1);
+      csn $$2 = this.a($$1);
       ae.a $$3 = $$0.a().a("has_the_recipe", cv.a($$1)).a(aj.a.c($$1)).a(ai.a.b);
       this.g.forEach($$3::a);
-      csi $$4 = new csi(Objects.requireNonNullElse(this.h, ""), my.a(this.b), $$2, new coz(this.c, this.d), this.i);
+      csm $$4 = new csm(Objects.requireNonNullElse(this.h, ""), my.a(this.b), $$2, new cpd(this.c, this.d), this.i);
       $$0.a($$1, $$4, $$3.b($$1.d("recipes/" + this.b.a() + "/")));
    }
 
-   private csj a(aiy $$0) {
+   private csn a(aiy $$0) {
       if (this.g.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0);
       } else {
-         return csj.a(this.f, this.e);
+         return csn.a(this.f, this.e);
       }
    }
 }

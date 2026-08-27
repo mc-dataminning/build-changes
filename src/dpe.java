@@ -1,15 +1,15 @@
-public interface dpe<T> {
-   void g(T var1);
+public interface dpe {
+   dpe a = new dpe() {
+      @Override
+      public void a() {
+      }
 
-   void f(T var1);
+      @Override
+      public void a(bnq.c $$0) {
+      }
+   };
 
-   void e(T var1);
+   void a();
 
-   void d(T var1);
-
-   void c(T var1);
-
-   void b(T var1);
-
-   void a(T var1);
+   void a(bnq.c var1);
 }

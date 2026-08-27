@@ -26,10 +26,10 @@ public class li implements km {
 
    @Override
    public CompletableFuture<?> a(kk $$0) {
-      final Map<aiy, ejd> $$1 = Maps.newHashMap();
-      Map<drd.a, aiy> $$2 = new Object2ObjectOpenHashMap();
+      final Map<aiy, ejk> $$1 = Maps.newHashMap();
+      Map<drk.a, aiy> $$2 = new Object2ObjectOpenHashMap();
       this.g.forEach($$2x -> $$2x.a().get().generate(($$3x, $$4x) -> {
-            aiy $$5 = $$2.put(bma.a($$3x), $$3x);
+            aiy $$5 = $$2.put(bmc.a($$3x), $$3x);
             if ($$5 != null) {
                ac.a("Loot table random sequence seed collision on " + $$5 + " and " + $$3x);
             }
@@ -39,12 +39,12 @@ public class li implements km {
                throw new IllegalStateException("Duplicate loot table " + $$3x);
             }
          }));
-      awm.a $$3 = new awm.a();
-      eje $$4 = new eje($$3, elf.o, new eiz() {
+      awn.a $$3 = new awn.a();
+      ejl $$4 = new ejl($$3, elm.o, new ejg() {
          @Nullable
          @Override
-         public <T> T getElement(eix<T> $$0) {
-            return (T)($$0.a() == eja.c ? $$1.get($$0.b()) : null);
+         public <T> T getElement(eje<T> $$0) {
+            return (T)($$0.a() == ejh.c ? $$1.get($$0.b()) : null);
          }
       });
 
@@ -52,7 +52,7 @@ public class li implements km {
          $$3.b("Missing built-in table: " + $$6);
       }
 
-      $$1.forEach(($$1x, $$2x) -> $$2x.a($$4.a($$2x.a()).a("{" + $$1x + "}", new eix<>(eja.c, $$1x))));
+      $$1.forEach(($$1x, $$2x) -> $$2x.a($$4.a($$2x.a()).a("{" + $$1x + "}", new eje<>(ejh.c, $$1x))));
       Multimap<String, String> $$7 = $$3.a();
       if (!$$7.isEmpty()) {
          $$7.forEach(($$0x, $$1x) -> d.warn("Found validation problem in {}: {}", $$0x, $$1x));
@@ -60,9 +60,9 @@ public class li implements km {
       } else {
          return CompletableFuture.allOf($$1.entrySet().stream().map($$1x -> {
             aiy $$2x = (aiy)$$1x.getKey();
-            ejd $$3x = (ejd)$$1x.getValue();
+            ejk $$3x = (ejk)$$1x.getValue();
             Path $$4x = this.e.a($$2x);
-            return km.a($$0, ejd.c, $$3x, $$4x);
+            return km.a($$0, ejk.c, $$3x, $$4x);
          }).toArray(CompletableFuture[]::new));
       }
    }
@@ -72,6 +72,6 @@ public class li implements km {
       return "Loot Tables";
    }
 
-   public static record a(Supplier<lj> a, ele b) {
+   public static record a(Supplier<lj> a, ell b) {
    }
 }

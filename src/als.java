@@ -14,7 +14,7 @@ public class als {
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("pardon-ip").requires($$0x -> $$0x.c(3)))
             .then(
                dv.a("target", StringArgumentType.word())
-                  .suggests(($$0x, $$1) -> dz.a(((du)$$0x.getSource()).l().ae().g().a(), $$1))
+                  .suggests(($$0x, $$1) -> dz.a(((du)$$0x.getSource()).l().ag().g().a(), $$1))
                   .executes($$0x -> a((du)$$0x.getSource(), StringArgumentType.getString($$0x, "target")))
             )
       );
@@ -24,7 +24,7 @@ public class als {
       if (!InetAddresses.isInetAddress($$1)) {
          throw a.create();
       } else {
-         ask $$2 = $$0.l().ae().g();
+         asl $$2 = $$0.l().ag().g();
          if (!$$2.a($$1)) {
             throw b.create();
          } else {

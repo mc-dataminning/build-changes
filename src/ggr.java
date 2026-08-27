@@ -1,15 +1,50 @@
-import java.util.Collection;
-import java.util.Locale;
+import com.google.common.collect.ImmutableList;
+import javax.annotation.Nullable;
 
-public class ggr extends RuntimeException {
-   private final Collection<ggq.a> a;
+public final class ggr {
+   private static final int a = 16;
+   private static final int b = 16;
+   private static final String c = "missingno";
+   private static final aiy d = new aiy("missingno");
+   private static final asd e = new asd.a().a(gil.a, new gil(ImmutableList.of(new gik(0, -1)), 16, 16, 1, false)).a();
+   @Nullable
+   private static ggo f;
 
-   public ggr(ggq.a $$0, Collection<ggq.a> $$1) {
-      super(String.format(Locale.ROOT, "Unable to fit: %s - size: %dx%d - Maybe try a lower resolution resourcepack?", $$0.c(), $$0.a(), $$0.b()));
-      this.a = $$1;
+   private static eri a(int $$0, int $$1) {
+      eri $$2 = new eri($$0, $$1, false);
+      int $$3 = -16777216;
+      int $$4 = -524040;
+
+      for (int $$5 = 0; $$5 < $$1; $$5++) {
+         for (int $$6 = 0; $$6 < $$0; $$6++) {
+            if ($$5 < $$1 / 2 ^ $$6 < $$0 / 2) {
+               $$2.a($$6, $$5, -524040);
+            } else {
+               $$2.a($$6, $$5, -16777216);
+            }
+         }
+      }
+
+      return $$2;
    }
 
-   public Collection<ggq.a> a() {
-      return this.a;
+   public static ggv a() {
+      eri $$0 = a(16, 16);
+      return new ggv(d, new gin(16, 16), $$0, e);
+   }
+
+   public static aiy b() {
+      return d;
+   }
+
+   public static ggo c() {
+      if (f == null) {
+         eri $$0 = a(16, 16);
+         $$0.i();
+         f = new ggo($$0);
+         exo.P().Z().a(d, f);
+      }
+
+      return f;
    }
 }

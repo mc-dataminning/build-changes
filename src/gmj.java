@@ -1,73 +1,60 @@
-public class gmj implements gmo {
-   private static final int a = 6000;
-   private static final vq b = vq.c("tutorial.find_tree.title");
-   private static final vq c = vq.c("tutorial.find_tree.description");
-   private final gmn d;
-   private fbs e;
-   private int f;
+import javax.annotation.Nullable;
 
-   public gmj(gmn $$0) {
+public class gmj {
+   private boolean a;
+   @Nullable
+   private gmd.b b;
+   @Nullable
+   private String c;
+   @Nullable
+   private final String d;
+
+   public gmj(@Nullable String $$0) {
       this.d = $$0;
    }
 
-   @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(gmp.f);
+   public void a(gme.a $$0) {
+      if (this.c != null) {
+         $$0.a(gmd.j, !this.c.equals("vanilla"));
+      }
+
+      $$0.a(gmd.k, this.a());
+   }
+
+   private gmd.c a() {
+      fqq $$0 = exo.P().R();
+      if ($$0 != null && $$0.e()) {
+         return gmd.c.a;
       } else {
-         if (this.f == 1) {
-            fun $$0 = this.d.e().s;
-            if ($$0 != null && (b($$0) || a($$0))) {
-               this.d.a(gmp.e);
-               return;
+         return exo.P().T() ? gmd.c.b : gmd.c.c;
+      }
+   }
+
+   public boolean a(gma $$0) {
+      if (!this.a && this.b != null && this.c != null) {
+         this.a = true;
+         $$0.send(gmb.b, $$0x -> {
+            $$0x.a(gmd.n, this.b);
+            if (this.d != null) {
+               $$0x.a(gmd.o, this.d);
             }
-         }
-
-         if (this.f >= 6000 && this.e == null) {
-            this.e = new fbs(fbs.a.c, b, c, false);
-            this.d.e().ay().a(this.e);
-         }
+         });
+         return true;
+      } else {
+         return false;
       }
    }
 
-   @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.c();
-         this.e = null;
-      }
+   public void a(cvo $$0, boolean $$1) {
+      this.b = switch ($$0) {
+         case a -> $$1 ? gmd.b.e : gmd.b.a;
+         case b -> gmd.b.b;
+         case c -> gmd.b.c;
+         case d -> gmd.b.d;
+      };
    }
 
-   @Override
-   public void a(fpx $$0, enq $$1) {
-      if ($$1.c() == enq.a.b) {
-         dlf $$2 = $$0.a_(((eno)$$1).a());
-         if ($$2.a(atz.ai)) {
-            this.d.a(gmp.c);
-         }
-      }
-   }
-
-   @Override
-   public void a(coz $$0) {
-      if ($$0.a(auh.al)) {
-         this.d.a(gmp.e);
-      }
-   }
-
-   private static boolean b(fun $$0) {
-      return $$0.fT().a_($$0x -> $$0x.a(auh.al));
-   }
-
-   public static boolean a(fun $$0) {
-      for (ij<cyo> $$1 : kf.e.c(atz.ai)) {
-         cyo $$2 = $$1.a();
-         if ($$0.j().a(atu.a.b($$2)) > 0) {
-            return true;
-         }
-      }
-
-      return false;
+   public void a(String $$0) {
+      this.c = $$0;
    }
 }

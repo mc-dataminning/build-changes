@@ -1,39 +1,24 @@
-public class gew<T extends bog, M extends fmb<T> & flb> extends gfd<T, M> {
-   private final fvh a;
-
-   public gew(gcn<T, M> $$0, fvh $$1) {
+public abstract class gew<T extends bnq & bou, M extends fmi<T>> extends gfl<T, M> {
+   public gew(gcv<T, M> $$0) {
       super($$0);
-      this.a = $$1;
    }
 
-   public void a(esa $$0, fvl $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      boolean $$10 = $$3.fm() == boa.b;
-      coz $$11 = $$10 ? $$3.eU() : $$3.eT();
-      coz $$12 = $$10 ? $$3.eT() : $$3.eU();
-      if (!$$11.b() || !$$12.b()) {
-         $$0.a();
-         if (this.c().e) {
-            float $$13 = 0.5F;
-            $$0.a(0.0F, 0.75F, 0.0F);
-            $$0.b(0.5F, 0.5F, 0.5F);
-         }
-
-         this.a($$3, $$12, cow.c, boa.b, $$0, $$1, $$2);
-         this.a($$3, $$11, cow.b, boa.a, $$0, $$1, $$2);
-         $$0.b();
+   @Override
+   public void a(esh $$0, fvt $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.a()) {
+         float $$10 = (float)$$3.ag + $$6;
+         fmi<T> $$11 = this.b();
+         $$11.a($$3, $$4, $$5, $$6);
+         this.c().a($$11);
+         esl $$12 = $$1.getBuffer(fwb.b(this.a(), this.a($$10) % 1.0F, $$10 * 0.01F % 1.0F));
+         $$11.a($$3, $$4, $$5, $$7, $$8, $$9);
+         $$11.a($$0, $$12, $$2, ggs.d, 0.5F, 0.5F, 0.5F, 1.0F);
       }
    }
 
-   protected void a(bog $$0, coz $$1, cow $$2, boa $$3, esa $$4, fvl $$5, int $$6) {
-      if (!$$1.b()) {
-         $$4.a();
-         this.c().a($$3, $$4);
-         $$4.a(a.b.rotationDegrees(-90.0F));
-         $$4.a(a.d.rotationDegrees(180.0F));
-         boolean $$7 = $$3 == boa.a;
-         $$4.a((float)($$7 ? -1 : 1) / 16.0F, 0.125F, -0.625F);
-         this.a.a($$0, $$1, $$2, $$7, $$4, $$5, $$6);
-         $$4.b();
-      }
-   }
+   protected abstract float a(float var1);
+
+   protected abstract aiy a();
+
+   protected abstract fmi<T> b();
 }

@@ -26,20 +26,20 @@ import org.slf4j.Logger;
 public class ajg {
    private static final Logger a = LogUtils.getLogger();
    private static final Gson b = new GsonBuilder().setPrettyPrinting().create();
-   private final asn c;
+   private final aso c;
    private final Path d;
    private ak e;
    private final Map<af, ah> f = new LinkedHashMap<>();
    private final Set<af> g = new HashSet<>();
    private final Set<af> h = new HashSet<>();
    private final Set<ag> i = new HashSet<>();
-   private aow j;
+   private aox j;
    @Nullable
    private af k;
    private boolean l = true;
    private final Codec<ajg.a> m;
 
-   public ajg(DataFixer $$0, asn $$1, ajk $$2, Path $$3, aow $$4) {
+   public ajg(DataFixer $$0, aso $$1, ajk $$2, Path $$3, aox $$4) {
       this.c = $$1;
       this.d = $$3;
       this.j = $$4;
@@ -49,7 +49,7 @@ public class ajg {
       this.d($$2);
    }
 
-   public void a(aow $$0) {
+   public void a(aox $$0) {
       this.j = $$0;
    }
 
@@ -167,7 +167,7 @@ public class ajg {
          if (!$$4 && $$3.a()) {
             $$0.b().d().a(this.j);
             $$0.b().c().ifPresent($$1x -> {
-               if ($$1x.i() && this.j.dM().Z().b(cvj.A)) {
+               if ($$1x.i() && this.j.dM().Z().b(cvn.A)) {
                   this.c.a($$1x.e().a($$0, this.j), false);
                }
             });
@@ -236,7 +236,7 @@ public class ajg {
       $$2.a().b(this, new ap.a<>($$2.b(), $$0, $$1));
    }
 
-   public void b(aow $$0) {
+   public void b(aox $$0) {
       if (this.l || !this.i.isEmpty() || !this.h.isEmpty()) {
          Map<aiy, ah> $$1 = new HashMap<>();
          Set<af> $$2 = new HashSet<>();

@@ -2,7 +2,7 @@ import java.util.Arrays;
 import java.util.function.IntConsumer;
 import org.apache.commons.lang3.Validate;
 
-public class axm implements auw {
+public class axm implements auy {
    public static final long[] a = new long[0];
    private final int b;
 
@@ -57,7 +57,7 @@ public class axm implements auw {
    }
 
    @Override
-   public auw d() {
+   public auy d() {
       return this;
    }
 }

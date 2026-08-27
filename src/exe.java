@@ -1,14 +1,29 @@
-public enum exe {
-   a,
-   b,
-   c,
-   d;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public boolean a() {
-      return this == b;
+public class exe {
+   private final List<vv> a = Lists.newArrayList();
+
+   public void a(vv $$0) {
+      this.a.add($$0);
    }
 
-   public boolean b() {
-      return this == c || this == d;
+   @Nullable
+   public vv a() {
+      if (this.a.isEmpty()) {
+         return null;
+      } else {
+         return this.a.size() == 1 ? this.a.get(0) : vv.a(this.a);
+      }
+   }
+
+   public vv b() {
+      vv $$0 = this.a();
+      return $$0 != null ? $$0 : vv.b;
+   }
+
+   public void c() {
+      this.a.clear();
    }
 }

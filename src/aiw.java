@@ -48,7 +48,7 @@ public class aiw<T> extends aiq<T> {
    }
 
    public static <E, O> RecordCodecBuilder<O, ik<E>> c(aix<? extends iv<? extends E>> $$0) {
-      return avp.a(
+      return avq.a(
             (Function<DynamicOps<?>, DataResult<E>>)($$1 -> $$1 instanceof aiw<?> $$2
                   ? $$2.b.a($$0).map($$0xx -> DataResult.success($$0xx.b(), $$0xx.c())).orElseGet(() -> DataResult.error(() -> "Unknown registry: " + $$0))
                   : DataResult.error(() -> "Not a registry ops"))
@@ -58,7 +58,7 @@ public class aiw<T> extends aiq<T> {
 
    public static <E, O> RecordCodecBuilder<O, ij.c<E>> d(aix<E> $$0) {
       aix<? extends iv<E>> $$1 = aix.a($$0.b());
-      return avp.a(
+      return avq.a(
             (Function<DynamicOps<?>, DataResult<E>>)($$2 -> $$2 instanceof aiw<?> $$3
                   ? $$3.b
                      .a($$1)

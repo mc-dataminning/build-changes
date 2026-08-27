@@ -1,111 +1,52 @@
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class dto {
-   protected static double a(double $$0, double $$1, double $$2, double $$3) {
-      if ($$0 < $$3) {
-         $$0 = $$3;
-      }
-
-      double $$4 = 0.384;
-      double $$5 = $$0 / $$1 * 0.384;
-      double $$6 = 0.75 * Math.pow($$5, 1.3333333333333333);
-      double $$7 = Math.pow($$5, 0.6666666666666666);
-      double $$8 = 0.3333333333333333 * Math.log($$5);
-      double $$9 = $$2 * ($$6 - $$7 - $$8);
-      $$9 = Math.max($$9, 0.0);
-      return $$9 / 0.384 * $$1;
+public abstract class dto extends dtz<dwk> {
+   public dto(Codec<dwk> $$0) {
+      super($$0);
    }
 
-   protected static boolean a(cwi $$0, hz $$1, int $$2) {
-      if (b($$0, $$1)) {
-         return false;
-      } else {
-         float $$3 = 6.0F;
-         float $$4 = 6.0F / (float)$$2;
+   @Override
+   public boolean a(dub<dwk> $$0) {
+      awp $$1 = $$0.d();
+      cwm $$2 = $$0.b();
+      hz $$3 = $$0.e();
+      Optional<cys> $$4 = kf.e.a(aua.ap, $$1).map(ij::a);
+      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().o());
+   }
 
-         for (float $$5 = 0.0F; $$5 < (float) (Math.PI * 2); $$5 += $$4) {
-            int $$6 = (int)(awh.b($$5) * (float)$$2);
-            int $$7 = (int)(awh.a($$5) * (float)$$2);
-            if (b($$0, $$1.b($$6, 0, $$7))) {
-               return false;
+   protected abstract boolean a(cvs var1, awp var2, hz var3, dlj var4);
+
+   protected boolean b(cvs $$0, awp $$1, hz $$2, dlj $$3) {
+      hz $$4 = $$2.c();
+      dlj $$5 = $$0.a_($$2);
+      if (($$5.a(cyu.G) || $$5.a(aua.as)) && $$0.a_($$4).a(cyu.G)) {
+         $$0.a($$2, $$3, 3);
+         if ($$1.i() < 0.25F) {
+            kf.e.a(aua.as, $$1).map(ij::a).ifPresent($$2x -> $$0.a($$4, $$2x.o(), 2));
+         } else if ($$1.i() < 0.05F) {
+            $$0.a($$4, cyu.mV.o().a(dfo.c, Integer.valueOf($$1.a(4) + 1)), 2);
+         }
+
+         for (ie $$6 : ie.c.a) {
+            if ($$1.i() < 0.2F) {
+               hz $$7 = $$2.a($$6);
+               if ($$0.a_($$7).a(cyu.G)) {
+                  kf.e.a(aua.aq, $$1).map(ij::a).ifPresent($$3x -> {
+                     dlj $$4x = $$3x.o();
+                     if ($$4x.b(cyd.c)) {
+                        $$4x = $$4x.a(cyd.c, $$6);
+                     }
+
+                     $$0.a($$7, $$4x, 2);
+                  });
+               }
             }
          }
 
          return true;
-      }
-   }
-
-   protected static boolean a(cvo $$0, hz $$1) {
-      return $$0.a($$1, dto::c);
-   }
-
-   protected static boolean b(cvo $$0, hz $$1) {
-      return $$0.a($$1, dto::e);
-   }
-
-   protected static void a(ie $$0, int $$1, boolean $$2, Consumer<dlf> $$3) {
-      if ($$1 >= 3) {
-         $$3.accept(a($$0, dmc.e));
-
-         for (int $$4 = 0; $$4 < $$1 - 3; $$4++) {
-            $$3.accept(a($$0, dmc.d));
-         }
-      }
-
-      if ($$1 >= 2) {
-         $$3.accept(a($$0, dmc.c));
-      }
-
-      if ($$1 >= 1) {
-         $$3.accept(a($$0, $$2 ? dmc.a : dmc.b));
-      }
-   }
-
-   protected static void a(cvo $$0, hz $$1, ie $$2, int $$3, boolean $$4) {
-      if (b($$0.a_($$1.a($$2.g())))) {
-         hz.a $$5 = $$1.j();
-         a($$2, $$3, $$4, $$3x -> {
-            if ($$3x.a(cyq.st)) {
-               $$3x = $$3x.a(def.d, Boolean.valueOf($$0.z($$5)));
-            }
-
-            $$0.a($$5, $$3x, 2);
-            $$5.c($$2);
-         });
-      }
-   }
-
-   protected static boolean c(cvo $$0, hz $$1) {
-      dlf $$2 = $$0.a_($$1);
-      if ($$2.a(atz.br)) {
-         $$0.a($$1, cyq.su.o(), 2);
-         return true;
       } else {
          return false;
       }
-   }
-
-   private static dlf a(ie $$0, dmc $$1) {
-      return cyq.st.o().a(def.b, $$0).a(def.c, $$1);
-   }
-
-   public static boolean a(dlf $$0) {
-      return b($$0) || $$0.a(cyq.H);
-   }
-
-   public static boolean b(dlf $$0) {
-      return $$0.a(cyq.su) || $$0.a(atz.br);
-   }
-
-   public static boolean c(dlf $$0) {
-      return $$0.i() || $$0.a(cyq.G);
-   }
-
-   public static boolean d(dlf $$0) {
-      return !$$0.i() && !$$0.a(cyq.G);
-   }
-
-   public static boolean e(dlf $$0) {
-      return $$0.i() || $$0.a(cyq.G) || $$0.a(cyq.H);
    }
 }

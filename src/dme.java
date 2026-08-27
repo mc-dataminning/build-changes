@@ -1,20 +1,14 @@
 public enum dme implements axc {
-   a("top"),
-   b("bottom");
-
-   private final String c;
-
-   private dme(String $$0) {
-      this.c = $$0;
-   }
+   a,
+   b;
 
    @Override
    public String toString() {
-      return this.c;
+      return this.c();
    }
 
    @Override
    public String c() {
-      return this.c;
+      return this == a ? "left" : "right";
    }
 }

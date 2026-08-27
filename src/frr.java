@@ -1,49 +1,35 @@
-public class frr extends ftz {
-   private final ftu a;
+import java.net.InetSocketAddress;
 
-   frr(fpx $$0, double $$1, double $$2, double $$3, double $$4, ftu $$5) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$5;
-      this.t = 4;
-      float $$6 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$6;
-      this.w = $$6;
-      this.x = $$6;
-      this.D = 1.0F - (float)$$4 * 0.5F;
-      this.b($$5);
-   }
+public interface frr {
+   String a();
 
-   @Override
-   public int a(float $$0) {
-      return 15728880;
-   }
+   String b();
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.a);
-      }
-   }
+   int c();
 
-   @Override
-   public ftd b() {
-      return ftd.d;
-   }
+   InetSocketAddress d();
 
-   public static class a implements ftc<kc> {
-      private final ftu a;
+   static frr a(final InetSocketAddress $$0) {
+      return new frr() {
+         @Override
+         public String a() {
+            return $$0.getAddress().getHostName();
+         }
 
-      public a(ftu $$0) {
-         this.a = $$0;
-      }
+         @Override
+         public String b() {
+            return $$0.getAddress().getHostAddress();
+         }
 
-      public fsz a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new frr($$1, $$2, $$3, $$4, $$5, this.a);
-      }
+         @Override
+         public int c() {
+            return $$0.getPort();
+         }
+
+         @Override
+         public InetSocketAddress d() {
+            return $$0;
+         }
+      };
    }
 }

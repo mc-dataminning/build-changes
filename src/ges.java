@@ -1,24 +1,25 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class ges extends gfl<caf, fmd<caf>> {
+   private final fvp a;
 
-public class ges extends gfd<cbx, fmm<cbx>> {
-   private static final Map<cbz, aiy> a = ac.a(Maps.newEnumMap(cbz.class), $$0 -> {
-      $$0.put(cbz.a, null);
-      $$0.put(cbz.b, new aiy("textures/entity/horse/horse_markings_white.png"));
-      $$0.put(cbz.c, new aiy("textures/entity/horse/horse_markings_whitefield.png"));
-      $$0.put(cbz.d, new aiy("textures/entity/horse/horse_markings_whitedots.png"));
-      $$0.put(cbz.e, new aiy("textures/entity/horse/horse_markings_blackdots.png"));
-   });
-
-   public ges(gcn<cbx, fmm<cbx>> $$0) {
+   public ges(gcv<caf, fmd<caf>> $$0, fvp $$1) {
       super($$0);
+      this.a = $$1;
    }
 
-   public void a(esa $$0, fvl $$1, int $$2, cbx $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      aiy $$10 = a.get($$3.gg());
-      if ($$10 != null && !$$3.ce()) {
-         ese $$11 = $$1.getBuffer(fvt.i($$10));
-         this.c().a($$0, $$11, $$2, gbt.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
+   public void a(esh $$0, fvt $$1, int $$2, caf $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      boolean $$10 = $$3.fm() == boc.b;
+      $$0.a();
+      float $$11 = 1.0F;
+      float $$12 = -1.0F;
+      float $$13 = awi.e($$3.dE()) / 60.0F;
+      if ($$3.dE() < 0.0F) {
+         $$0.a(0.0F, 1.0F - $$13 * 0.5F, -1.0F + $$13 * 0.5F);
+      } else {
+         $$0.a(0.0F, 1.0F + $$13 * 0.8F, -1.0F + $$13 * 0.2F);
       }
+
+      cpd $$14 = $$10 ? $$3.eT() : $$3.eU();
+      this.a.a($$3, $$14, cpa.h, false, $$0, $$1, $$2);
+      $$0.b();
    }
 }

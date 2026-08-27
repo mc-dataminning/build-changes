@@ -1,9 +1,19 @@
-import javax.annotation.Nullable;
+public final class bmg implements bma {
+   private final vq a;
+   private final cll b;
 
-public interface bmg extends bln {
-   int[] a(ie var1);
+   public bmg(cll $$0, vq $$1) {
+      this.b = $$0;
+      this.a = $$1;
+   }
 
-   boolean a(int var1, coz var2, @Nullable ie var3);
+   @Override
+   public vq Q_() {
+      return this.a;
+   }
 
-   boolean b(int var1, coz var2, ie var3);
+   @Override
+   public ckf createMenu(int $$0, chk $$1, chl $$2) {
+      return this.b.createMenu($$0, $$1, $$2);
+   }
 }

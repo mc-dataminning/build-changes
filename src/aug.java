@@ -1,9 +1,11 @@
-public interface aug {
-   auo<cor> a = a("regular_goat_horns");
-   auo<cor> b = a("screaming_goat_horns");
-   auo<cor> c = a("goat_horns");
+public class aug {
+   public static final aup<dpw> a = a("vibrations");
+   public static final aup<dpw> b = a("warden_can_listen");
+   public static final aup<dpw> c = a("shrieker_can_listen");
+   public static final aup<dpw> d = a("ignore_vibrations_sneaking");
+   public static final aup<dpw> e = a("allay_can_listen");
 
-   private static auo<cor> a(String $$0) {
-      return auo.a(kg.D, new aiy($$0));
+   private static aup<dpw> a(String $$0) {
+      return aup.a(kg.B, new aiy($$0));
    }
 }

@@ -7,11 +7,11 @@ public class adp implements xx<aag> {
    public static final int d = 2;
    private final String e;
    private final vq f;
-   private final eoz.a g;
+   private final epg.a g;
    private final Optional<xg> h;
    private final int i;
 
-   public adp(eoo $$0, int $$1) {
+   public adp(eov $$0, int $$1) {
       this.e = $$0.b();
       this.f = $$0.d();
       this.g = $$0.h();
@@ -24,11 +24,11 @@ public class adp implements xx<aag> {
       this.i = $$0.readByte();
       if (this.i != 0 && this.i != 2) {
          this.f = vp.a;
-         this.g = eoz.a.a;
+         this.g = epg.a.a;
          this.h = Optional.empty();
       } else {
          this.f = $$0.m();
-         this.g = $$0.b(eoz.a.class);
+         this.g = $$0.b(epg.a.class);
          this.h = xi.d.decode($$0);
       }
    }
@@ -64,7 +64,7 @@ public class adp implements xx<aag> {
       return this.i;
    }
 
-   public eoz.a g() {
+   public epg.a g() {
       return this.g;
    }
 

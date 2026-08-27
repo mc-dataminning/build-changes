@@ -1,15 +1,20 @@
-public class gjs extends gjt {
-   public gjs(bzu $$0) {
-      super($$0, atk.bO, atl.g);
+import java.util.UUID;
+
+public interface gjs {
+   void a(UUID var1, gjs.b var2);
+
+   void a(UUID var1, gjs.a var2);
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 
-   @Override
-   protected gjp o() {
-      return new gjr(this.n);
-   }
-
-   @Override
-   protected boolean p() {
-      return this.n.aa_();
+   public static enum b {
+      a,
+      b;
    }
 }

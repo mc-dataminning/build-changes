@@ -1,36 +1,50 @@
-public class fxu implements fxl<djn> {
-   public static final giw a = new giw(ggs.e, new aiy("entity/enchanting_table_book"));
-   private final flj b;
+@FunctionalInterface
+public interface fxu<T extends dix> {
+   fxt<T> create(fxu.a var1);
 
-   public fxu(fxm.a $$0) {
-      this.b = new flj($$0.a(fpb.n));
-   }
+   public static class a {
+      private final fxs a;
+      private final fwn b;
+      private final gby c;
+      private final gay d;
+      private final fpf e;
+      private final eyz f;
 
-   public void a(djn $$0, float $$1, esa $$2, fvl $$3, int $$4, int $$5) {
-      $$2.a();
-      $$2.a(0.5F, 0.75F, 0.5F);
-      float $$6 = (float)$$0.a + $$1;
-      $$2.a(0.0F, 0.1F + awh.a($$6 * 0.1F) * 0.01F, 0.0F);
-      float $$7 = $$0.h - $$0.i;
-
-      while ($$7 >= (float) Math.PI) {
-         $$7 -= (float) (Math.PI * 2);
+      public a(fxs $$0, fwn $$1, gby $$2, gay $$3, fpf $$4, eyz $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
       }
 
-      while ($$7 < (float) -Math.PI) {
-         $$7 += (float) (Math.PI * 2);
+      public fxs a() {
+         return this.a;
       }
 
-      float $$8 = $$0.i + $$7 * $$1;
-      $$2.a(a.d.rotation(-$$8));
-      $$2.a(a.f.rotationDegrees(80.0F));
-      float $$9 = awh.i($$1, $$0.c, $$0.b);
-      float $$10 = awh.h($$9 + 0.25F) * 1.6F - 0.3F;
-      float $$11 = awh.h($$9 + 0.75F) * 1.6F - 0.3F;
-      float $$12 = awh.i($$1, $$0.g, $$0.f);
-      this.b.a($$6, awh.a($$10, 0.0F, 1.0F), awh.a($$11, 0.0F, 1.0F), $$12);
-      ese $$13 = a.a($$3, fvt::c);
-      this.b.b($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$2.b();
+      public fwn b() {
+         return this.b;
+      }
+
+      public gay c() {
+         return this.d;
+      }
+
+      public gby d() {
+         return this.c;
+      }
+
+      public fpf e() {
+         return this.e;
+      }
+
+      public fpj a(fph $$0) {
+         return this.e.a($$0);
+      }
+
+      public eyz f() {
+         return this.f;
+      }
    }
 }

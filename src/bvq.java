@@ -1,55 +1,27 @@
-import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class bvq extends bvb {
-   private final boo a;
-   @Nullable
-   private bog b;
-   private double c;
-   private double d;
-   private double e;
-   private final double f;
-   private final float g;
+public class bvq extends bwc {
+   private static final int i = 10;
+   private static final int j = 7;
 
-   public bvq(boo $$0, double $$1, float $$2) {
-      this.a = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.a(EnumSet.of(bvb.a.a));
+   public bvq(boq $$0, double $$1, boolean $$2) {
+      super($$0, $$1, 10, $$2);
    }
 
    @Override
    public boolean a() {
-      this.b = this.a.q();
-      if (this.b == null) {
-         return false;
-      } else if (this.b.f(this.a) > (double)(this.g * this.g)) {
-         return false;
-      } else {
-         ens $$0 = byy.a(this.a, 16, 7, this.b.dk(), (float) (Math.PI / 2));
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.c = $$0.c;
-            this.d = $$0.d;
-            this.e = $$0.e;
-            return true;
-         }
-      }
+      aow $$0 = (aow)this.b.dM();
+      hz $$1 = this.b.dm();
+      return $$0.c($$1) ? false : super.a();
    }
 
+   @Nullable
    @Override
-   public boolean b() {
-      return !this.a.N().l() && this.b.bx() && this.b.f(this.a) < (double)(this.g * this.g);
-   }
-
-   @Override
-   public void d() {
-      this.b = null;
-   }
-
-   @Override
-   public void c() {
-      this.a.N().a(this.c, this.d, this.e, this.f);
+   protected enz h() {
+      aow $$0 = (aow)this.b.dM();
+      hz $$1 = this.b.dm();
+      jb $$2 = jb.a($$1);
+      jb $$3 = bqc.a($$0, $$2, 2);
+      return $$3 != $$2 ? bzc.a(this.b, 10, 7, enz.c($$3.q()), (float) (Math.PI / 2)) : null;
    }
 }

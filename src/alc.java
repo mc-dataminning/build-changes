@@ -41,10 +41,10 @@ public class alc {
       );
    }
 
-   private static int a(du $$0, aol $$1) throws CommandSyntaxException {
-      cuu $$2 = $$1.a();
-      aov $$3 = $$0.e();
-      aix<cvn> $$4 = $$3.ae();
+   private static int a(du $$0, aom $$1) throws CommandSyntaxException {
+      cuy $$2 = $$1.a();
+      aow $$3 = $$0.e();
+      aix<cvr> $$4 = $$3.ad();
       boolean $$5 = $$3.w().contains($$2.a());
       if ($$5) {
          $$0.a(() -> vq.a("commands.forceload.query.success", vq.a($$2), vq.a($$4.a())), false);
@@ -55,12 +55,12 @@ public class alc {
    }
 
    private static int a(du $$0) {
-      aov $$1 = $$0.e();
-      aix<cvn> $$2 = $$1.ae();
+      aow $$1 = $$0.e();
+      aix<cvr> $$2 = $$1.ad();
       LongSet $$3 = $$1.w();
       int $$4 = $$3.size();
       if ($$4 > 0) {
-         String $$5 = Joiner.on(", ").join($$3.stream().sorted().map(cuu::new).map(cuu::toString).iterator());
+         String $$5 = Joiner.on(", ").join($$3.stream().sorted().map(cuy::new).map(cuy::toString).iterator());
          if ($$4 == 1) {
             $$0.a(() -> vq.a("commands.forceload.list.single", vq.a($$2.a()), $$5), false);
          } else {
@@ -74,15 +74,15 @@ public class alc {
    }
 
    private static int b(du $$0) {
-      aov $$1 = $$0.e();
-      aix<cvn> $$2 = $$1.ae();
+      aow $$1 = $$0.e();
+      aix<cvr> $$2 = $$1.ad();
       LongSet $$3 = $$1.w();
-      $$3.forEach($$1x -> $$1.a(cuu.a($$1x), cuu.b($$1x), false));
+      $$3.forEach($$1x -> $$1.a(cuy.a($$1x), cuy.b($$1x), false));
       $$0.a(() -> vq.a("commands.forceload.removed.all", vq.a($$2.a())), true);
       return 0;
    }
 
-   private static int a(du $$0, aol $$1, aol $$2, boolean $$3) throws CommandSyntaxException {
+   private static int a(du $$0, aom $$1, aom $$2, boolean $$3) throws CommandSyntaxException {
       int $$4 = Math.min($$1.c(), $$2.c());
       int $$5 = Math.min($$1.d(), $$2.d());
       int $$6 = Math.max($$1.c(), $$2.c());
@@ -96,9 +96,9 @@ public class alc {
          if ($$12 > 256L) {
             throw b.create(256, $$12);
          } else {
-            aov $$13 = $$0.e();
-            aix<cvn> $$14 = $$13.ae();
-            cuu $$15 = null;
+            aow $$13 = $$0.e();
+            aix<cvr> $$14 = $$13.ad();
+            cuy $$15 = null;
             int $$16 = 0;
 
             for (int $$17 = $$8; $$17 <= $$10; $$17++) {
@@ -107,21 +107,21 @@ public class alc {
                   if ($$19) {
                      $$16++;
                      if ($$15 == null) {
-                        $$15 = new cuu($$17, $$18);
+                        $$15 = new cuy($$17, $$18);
                      }
                   }
                }
             }
 
-            cuu $$20 = $$15;
+            cuy $$20 = $$15;
             if ($$16 == 0) {
                throw ($$3 ? d : e).create();
             } else {
                if ($$16 == 1) {
                   $$0.a(() -> vq.a("commands.forceload." + ($$3 ? "added" : "removed") + ".single", vq.a($$20), vq.a($$14.a())), true);
                } else {
-                  cuu $$21 = new cuu($$8, $$9);
-                  cuu $$22 = new cuu($$10, $$11);
+                  cuy $$21 = new cuy($$8, $$9);
+                  cuy $$22 = new cuy($$10, $$11);
                   $$0.a(() -> vq.a("commands.forceload." + ($$3 ? "added" : "removed") + ".multiple", vq.a($$20), vq.a($$14.a()), vq.a($$21), vq.a($$22)), true);
                }
 

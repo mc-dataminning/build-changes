@@ -1,105 +1,57 @@
 import com.mojang.serialization.MapCodec;
 
-public class ddy extends dar {
-   public static final MapCodec<ddy> b = b(ddy::new);
-   public static final dlw c = dlv.w;
+public class ddy extends czb {
+   public static final MapCodec<ddy> a = b(ddy::new);
+   public static final int b = 3;
+   public static final dmj c = dlz.as;
+   private static final eos[] d = new eos[]{
+      cys.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
+      cys.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      cys.a(0.0, 0.0, 0.0, 16.0, 11.0, 16.0),
+      cys.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0)
+   };
 
    @Override
    public MapCodec<ddy> a() {
-      return b;
+      return a;
    }
 
-   public ddy(dle.d $$0) {
+   protected ddy(dli.d $$0) {
       super($$0);
-      this.k(this.E.b().a(a, ie.d).a(c, Boolean.valueOf(false)));
+      this.k(this.E.b().a(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected void a(dlg.a<cyo, dlf> $$0) {
-      $$0.a(a, c);
+   protected eos a(dlj $$0, cux $$1, hz $$2, eoe $$3) {
+      return d[$$0.c(c)];
    }
 
    @Override
-   protected dlf a(dlf $$0, dfa $$1) {
-      return $$0.a(a, $$1.a($$0.c(a)));
+   protected boolean b(dlj $$0, cux $$1, hz $$2) {
+      return $$0.a(cyu.dW);
    }
 
    @Override
-   protected dlf a(dlf $$0, ddk $$1) {
-      return $$0.a($$1.a($$0.c(a)));
+   protected boolean e_(dlj $$0) {
+      return $$0.c(c) < 3;
    }
 
    @Override
-   protected void a(dlf $$0, aov $$1, hz $$2, awo $$3) {
-      if ($$0.c(c)) {
-         $$1.a($$2, $$0.a(c, Boolean.valueOf(false)), 2);
-      } else {
-         $$1.a($$2, $$0.a(c, Boolean.valueOf(true)), 2);
-         $$1.a($$2, this, 2);
-      }
-
-      this.a($$1, $$2, $$0);
-   }
-
-   @Override
-   protected dlf a(dlf $$0, ie $$1, dlf $$2, cvo $$3, hz $$4, hz $$5) {
-      if ($$0.c(a) == $$1 && !$$0.c(c)) {
-         this.a($$3, $$4);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   private void a(cvo $$0, hz $$1) {
-      if (!$$0.y_() && !$$0.N().a($$1, this)) {
-         $$0.a($$1, this, 2);
-      }
-   }
-
-   protected void a(cvn $$0, hz $$1, dlf $$2) {
-      ie $$3 = $$2.c(a);
-      hz $$4 = $$1.a($$3.g());
-      $$0.a($$4, this, $$1);
-      $$0.a($$4, this, $$3);
-   }
-
-   @Override
-   protected boolean f_(dlf $$0) {
-      return true;
-   }
-
-   @Override
-   protected int b(dlf $$0, cut $$1, hz $$2, ie $$3) {
-      return $$0.b($$1, $$2, $$3);
-   }
-
-   @Override
-   protected int a(dlf $$0, cut $$1, hz $$2, ie $$3) {
-      return $$0.c(c) && $$0.c(a) == $$3 ? 15 : 0;
-   }
-
-   @Override
-   protected void b(dlf $$0, cvn $$1, hz $$2, dlf $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if (!$$1.y_() && $$0.c(c) && !$$1.N().a($$2, this)) {
-            dlf $$5 = $$0.a(c, Boolean.valueOf(false));
-            $$1.a($$2, $$5, 18);
-            this.a($$1, $$2, $$5);
-         }
+   protected void b(dlj $$0, aow $$1, hz $$2, awp $$3) {
+      int $$4 = $$0.c(c);
+      if ($$4 < 3 && $$3.a(10) == 0) {
+         $$0 = $$0.a(c, Integer.valueOf($$4 + 1));
+         $$1.a($$2, $$0, 2);
       }
    }
 
    @Override
-   protected void a(dlf $$0, cvn $$1, hz $$2, dlf $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if (!$$1.B && $$0.c(c) && $$1.N().a($$2, this)) {
-            this.a($$1, $$2, $$0.a(c, Boolean.valueOf(false)));
-         }
-      }
+   public cpd a(cvu $$0, hz $$1, dlj $$2) {
+      return new cpd(cpg.si);
    }
 
    @Override
-   public dlf a(crg $$0) {
-      return this.o().a(a, $$0.d().g().g());
+   protected void a(dlk.a<cys, dlj> $$0) {
+      $$0.a(c);
    }
 }

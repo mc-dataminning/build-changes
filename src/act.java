@@ -3,7 +3,7 @@ public class act implements xx<aag> {
    private final int b;
    private final byte c;
 
-   public act(bno $$0, byte $$1) {
+   public act(bnq $$0, byte $$1) {
       this.b = $$0.aj();
       this.c = $$1;
    }
@@ -27,7 +27,7 @@ public class act implements xx<aag> {
       $$0.a(this);
    }
 
-   public bno a(cvn $$0) {
+   public bnq a(cvr $$0) {
       return $$0.a(this.b);
    }
 

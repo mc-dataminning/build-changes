@@ -4,7 +4,7 @@ public class add implements xx<aag> {
    public static final xo<uq, add> a = xx.a(add::a, add::new);
    private final int b;
 
-   public add(bno $$0) {
+   public add(bnq $$0) {
       this.b = $$0.aj();
    }
 
@@ -26,7 +26,7 @@ public class add implements xx<aag> {
    }
 
    @Nullable
-   public bno a(cvn $$0) {
+   public bnq a(cvr $$0) {
       return $$0.a(this.b);
    }
 }

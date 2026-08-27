@@ -1,19 +1,35 @@
-public class gbc extends gby<ceh, fmf<ceh>> {
-   private static final aiy a = new aiy("textures/entity/ghast/ghast.png");
-   private static final aiy i = new aiy("textures/entity/ghast/ghast_shooting.png");
+public class gbc extends gaz<chv> {
+   private static final aiy a = new aiy("textures/entity/illager/evoker_fangs.png");
+   private final fmj<chv> f;
 
-   public gbc(gas.a $$0) {
-      super($$0, new fmf<>($$0.a(fpb.ac)), 1.5F);
+   public gbc(gba.a $$0) {
+      super($$0);
+      this.f = new fmj<>($$0.a(fpi.Y));
    }
 
-   public aiy a(ceh $$0) {
-      return $$0.u() ? i : a;
+   public void a(chv $$0, float $$1, float $$2, esh $$3, fvt $$4, int $$5) {
+      float $$6 = $$0.a($$2);
+      if ($$6 != 0.0F) {
+         float $$7 = 2.0F;
+         if ($$6 > 0.9F) {
+            $$7 *= (1.0F - $$6) / 0.1F;
+         }
+
+         $$3.a();
+         $$3.a(a.d.rotationDegrees(90.0F - $$0.dC()));
+         $$3.b(-$$7, -$$7, $$7);
+         float $$8 = 0.03125F;
+         $$3.a(0.0, -0.626, 0.0);
+         $$3.b(0.5F, 0.5F, 0.5F);
+         this.f.a($$0, $$6, 0.0F, 0.0F, $$0.dC(), $$0.dE());
+         esl $$9 = $$4.getBuffer(this.f.a(a));
+         this.f.a($$3, $$9, $$5, ggs.d, 1.0F, 1.0F, 1.0F, 1.0F);
+         $$3.b();
+         super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
    }
 
-   protected void a(ceh $$0, esa $$1, float $$2) {
-      float $$3 = 1.0F;
-      float $$4 = 4.5F;
-      float $$5 = 4.5F;
-      $$1.b(4.5F, 4.5F, 4.5F);
+   public aiy a(chv $$0) {
+      return a;
    }
 }

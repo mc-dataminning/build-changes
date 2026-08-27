@@ -15,27 +15,27 @@ public class fr implements fq {
    }
 
    @Override
-   public ens a(du $$0) {
-      enr $$1 = $$0.k();
-      ens $$2 = $$0.m().a($$0);
-      float $$3 = awh.b(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
-      float $$4 = awh.a(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
-      float $$5 = awh.b(-$$1.i * (float) (Math.PI / 180.0));
-      float $$6 = awh.a(-$$1.i * (float) (Math.PI / 180.0));
-      float $$7 = awh.b((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
-      float $$8 = awh.a((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
-      ens $$9 = new ens((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
-      ens $$10 = new ens((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
-      ens $$11 = $$9.c($$10).a(-1.0);
+   public enz a(du $$0) {
+      eny $$1 = $$0.k();
+      enz $$2 = $$0.m().a($$0);
+      float $$3 = awi.b(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
+      float $$4 = awi.a(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
+      float $$5 = awi.b(-$$1.i * (float) (Math.PI / 180.0));
+      float $$6 = awi.a(-$$1.i * (float) (Math.PI / 180.0));
+      float $$7 = awi.b((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
+      float $$8 = awi.a((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
+      enz $$9 = new enz((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
+      enz $$10 = new enz((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
+      enz $$11 = $$9.c($$10).a(-1.0);
       double $$12 = $$9.c * this.d + $$10.c * this.c + $$11.c * this.b;
       double $$13 = $$9.d * this.d + $$10.d * this.c + $$11.d * this.b;
       double $$14 = $$9.e * this.d + $$10.e * this.c + $$11.e * this.b;
-      return new ens($$2.c + $$12, $$2.d + $$13, $$2.e + $$14);
+      return new enz($$2.c + $$12, $$2.d + $$13, $$2.e + $$14);
    }
 
    @Override
-   public enr b(du $$0) {
-      return enr.a;
+   public eny b(du $$0) {
+      return eny.a;
    }
 
    @Override

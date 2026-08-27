@@ -4,13 +4,13 @@ public class agi implements xx<aes> {
    private static final int c = 2;
    private static final int d = 4;
    private final hz e;
-   private final dkh.a f;
-   private final dmp g;
+   private final dkl.a f;
+   private final dmt g;
    private final String h;
    private final hz i;
    private final jd j;
-   private final ddk k;
-   private final dfa l;
+   private final ddo k;
+   private final dfe l;
    private final String m;
    private final boolean n;
    private final boolean o;
@@ -19,7 +19,7 @@ public class agi implements xx<aes> {
    private final long r;
 
    public agi(
-      hz $$0, dkh.a $$1, dmp $$2, String $$3, hz $$4, jd $$5, ddk $$6, dfa $$7, String $$8, boolean $$9, boolean $$10, boolean $$11, float $$12, long $$13
+      hz $$0, dkl.a $$1, dmt $$2, String $$3, hz $$4, jd $$5, ddo $$6, dfe $$7, String $$8, boolean $$9, boolean $$10, boolean $$11, float $$12, long $$13
    ) {
       this.e = $$0;
       this.f = $$1;
@@ -39,17 +39,17 @@ public class agi implements xx<aes> {
 
    private agi(uq $$0) {
       this.e = $$0.e();
-      this.f = $$0.b(dkh.a.class);
-      this.g = $$0.b(dmp.class);
+      this.f = $$0.b(dkl.a.class);
+      this.g = $$0.b(dmt.class);
       this.h = $$0.r();
       int $$1 = 48;
-      this.i = new hz(awh.a($$0.readByte(), -48, 48), awh.a($$0.readByte(), -48, 48), awh.a($$0.readByte(), -48, 48));
+      this.i = new hz(awi.a($$0.readByte(), -48, 48), awi.a($$0.readByte(), -48, 48), awi.a($$0.readByte(), -48, 48));
       int $$2 = 48;
-      this.j = new jd(awh.a($$0.readByte(), 0, 48), awh.a($$0.readByte(), 0, 48), awh.a($$0.readByte(), 0, 48));
-      this.k = $$0.b(ddk.class);
-      this.l = $$0.b(dfa.class);
+      this.j = new jd(awi.a($$0.readByte(), 0, 48), awi.a($$0.readByte(), 0, 48), awi.a($$0.readByte(), 0, 48));
+      this.k = $$0.b(ddo.class);
+      this.l = $$0.b(dfe.class);
       this.m = $$0.d(128);
-      this.q = awh.a($$0.readFloat(), 0.0F, 1.0F);
+      this.q = awi.a($$0.readFloat(), 0.0F, 1.0F);
       this.r = $$0.o();
       int $$3 = $$0.readByte();
       this.n = ($$3 & 1) != 0;
@@ -102,11 +102,11 @@ public class agi implements xx<aes> {
       return this.e;
    }
 
-   public dkh.a e() {
+   public dkl.a e() {
       return this.f;
    }
 
-   public dmp f() {
+   public dmt f() {
       return this.g;
    }
 
@@ -122,11 +122,11 @@ public class agi implements xx<aes> {
       return this.j;
    }
 
-   public ddk j() {
+   public ddo j() {
       return this.k;
    }
 
-   public dfa k() {
+   public dfe k() {
       return this.l;
    }
 

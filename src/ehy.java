@@ -1,48 +1,44 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
-public class ehy extends ehu {
-   public static final String a = "idcounts";
-   private final Object2IntMap<String> b = new Object2IntOpenHashMap();
+public interface ehy {
+   ie[] a = new ie[]{ie.e, ie.f, ie.a, ie.b, ie.c, ie.d};
 
-   public static ehu.a<ehy> a() {
-      return new ehu.a<>(ehy::new, ehy::b, axo.k);
-   }
+   void a(ie var1, dlj var2, hz var3, hz var4, int var5, int var6);
 
-   public ehy() {
-      this.b.defaultReturnValue(-1);
-   }
+   void a(hz var1, cys var2, hz var3);
 
-   public static ehy b(sw $$0) {
-      ehy $$1 = new ehy();
+   void a(dlj var1, hz var2, cys var3, hz var4, boolean var5);
 
-      for (String $$2 : $$0.e()) {
-         if ($$0.b($$2, 99)) {
-            $$1.b.put($$2, $$0.h($$2));
+   default void a(hz $$0, cys $$1, @Nullable ie $$2) {
+      for (ie $$3 : a) {
+         if ($$3 != $$2) {
+            this.a($$0.a($$3), $$1, $$0);
          }
       }
-
-      return $$1;
    }
 
-   @Override
-   public sw a(sw $$0) {
-      ObjectIterator var2 = this.b.object2IntEntrySet().iterator();
+   static void a(cvs $$0, ie $$1, dlj $$2, hz $$3, hz $$4, int $$5, int $$6) {
+      dlj $$7 = $$0.a_($$3);
+      dlj $$8 = $$7.a($$1, $$2, $$0, $$3, $$4);
+      cys.a($$7, $$8, $$0, $$3, $$5, $$6);
+   }
 
-      while (var2.hasNext()) {
-         Entry<String> $$1 = (Entry<String>)var2.next();
-         $$0.a((String)$$1.getKey(), $$1.getIntValue());
+   static void a(cvr $$0, dlj $$1, hz $$2, cys $$3, hz $$4, boolean $$5) {
+      try {
+         $$1.a($$0, $$2, $$3, $$4, $$5);
+      } catch (Throwable var9) {
+         o $$7 = o.a(var9, "Exception while updating neighbours");
+         p $$8 = $$7.a("Block being updated");
+         $$8.a("Source block type", () -> {
+            try {
+               return String.format(Locale.ROOT, "ID #%s (%s // %s)", kf.e.b($$3), $$3.h(), $$3.getClass().getCanonicalName());
+            } catch (Throwable var2x) {
+               return "ID #" + kf.e.b($$3);
+            }
+         });
+         p.a($$8, $$0, $$2, $$1);
+         throw new y($$7);
       }
-
-      return $$0;
-   }
-
-   public int b() {
-      int $$0 = this.b.getInt("map") + 1;
-      this.b.put("map", $$0);
-      this.c();
-      return $$0;
    }
 }

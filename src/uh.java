@@ -2,9 +2,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class uh {
    private final AtomicInteger a = new AtomicInteger();
-   private final awq b;
+   private final bhx b;
 
-   public uh(awq $$0) {
+   public uh(bhx $$0) {
       this.b = $$0;
    }
 

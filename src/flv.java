@@ -1,46 +1,30 @@
-public class flv<T extends bno> extends fmk<T> {
-   private final fpc a;
-   private final fpc b;
-   private final fpc f;
-   private final fpc g;
-   private final fpc h;
-   private final fpc i;
-   private static final int j = 6;
+import com.google.common.collect.ImmutableList.Builder;
 
-   public flv(fpc $$0) {
-      this.a = $$0;
-      this.b = $$0.b("head");
-      this.g = $$0.b("right_hind_leg");
-      this.f = $$0.b("left_hind_leg");
-      this.i = $$0.b("right_front_leg");
-      this.h = $$0.b("left_front_leg");
-   }
+public class flv extends fnu {
+   private static final String a = "chest_bottom";
+   private static final String b = "chest_lid";
+   private static final String f = "chest_lock";
 
-   public static fpi a(fpg $$0) {
-      fpk $$1 = new fpk();
-      fpl $$2 = $$1.a();
-      $$2.a("head", fph.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fpe.a(0.0F, 6.0F, 0.0F));
-      $$2.a("body", fph.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), fpe.a(0.0F, 6.0F, 0.0F));
-      fph $$3 = fph.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, $$0);
-      $$2.a("right_hind_leg", $$3, fpe.a(-2.0F, 18.0F, 4.0F));
-      $$2.a("left_hind_leg", $$3, fpe.a(2.0F, 18.0F, 4.0F));
-      $$2.a("right_front_leg", $$3, fpe.a(-2.0F, 18.0F, -4.0F));
-      $$2.a("left_front_leg", $$3, fpe.a(2.0F, 18.0F, -4.0F));
-      return fpi.a($$1, 64, 32);
+   public flv(fpj $$0) {
+      super($$0);
    }
 
    @Override
-   public fpc a() {
-      return this.a;
+   protected Builder<fpj> a(fpj $$0) {
+      Builder<fpj> $$1 = super.a($$0);
+      $$1.add($$0.b("chest_bottom"));
+      $$1.add($$0.b("chest_lid"));
+      $$1.add($$0.b("chest_lock"));
+      return $$1;
    }
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.f = $$4 * (float) (Math.PI / 180.0);
-      this.b.e = $$5 * (float) (Math.PI / 180.0);
-      this.f.e = awh.b($$1 * 0.6662F) * 1.4F * $$2;
-      this.g.e = awh.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.h.e = awh.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.i.e = awh.b($$1 * 0.6662F) * 1.4F * $$2;
+   public static fpp a() {
+      fpr $$0 = new fpr();
+      fps $$1 = $$0.a();
+      fnu.a($$1);
+      $$1.a("chest_bottom", fpo.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 12.0F, 8.0F, 12.0F), fpl.a(-2.0F, -10.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lid", fpo.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 12.0F, 4.0F, 12.0F), fpl.a(-2.0F, -14.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lock", fpo.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 2.0F, 4.0F, 1.0F), fpl.a(-1.0F, -11.1F, -1.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      return fpp.a($$0, 128, 128);
    }
 }

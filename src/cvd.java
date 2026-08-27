@@ -1,19 +1,25 @@
+import java.util.List;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class cvd extends cvg {
-   private final bno a;
-
-   public cvd(bno $$0) {
-      this.a = $$0;
+public interface cvd extends cvi, cvu, cvw {
+   @Override
+   default <T extends dix> Optional<T> a(hz $$0, diz<T> $$1) {
+      return cvu.super.a($$0, $$1);
    }
 
    @Override
-   public Optional<Float> a(cvf $$0, cut $$1, hz $$2, dlf $$3, egp $$4) {
-      return super.a($$0, $$1, $$2, $$3, $$4).map($$5 -> this.a.a($$0, $$1, $$2, $$3, $$4, $$5));
+   default List<eos> c(@Nullable bnq $$0, enu $$1) {
+      return cvi.super.c($$0, $$1);
    }
 
    @Override
-   public boolean a(cvf $$0, cut $$1, hz $$2, dlf $$3, float $$4) {
-      return this.a.a($$0, $$1, $$2, $$3, $$4);
+   default boolean a(@Nullable bnq $$0, eos $$1) {
+      return cvi.super.a($$0, $$1);
+   }
+
+   @Override
+   default hz a(dqv.a $$0, hz $$1) {
+      return cvu.super.a($$0, $$1);
    }
 }

@@ -21,35 +21,35 @@ public class du implements dw<du>, dz {
    public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vq.c("permissions.requires.player"));
    public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vq.c("permissions.requires.entity"));
    private final dt c;
-   private final ens d;
-   private final aov e;
+   private final enz d;
+   private final aow e;
    private final int f;
    private final String g;
    private final vq h;
    private final MinecraftServer i;
    private final boolean j;
    @Nullable
-   private final bno k;
+   private final bnq k;
    private final dr l;
    private final eg.a m;
-   private final enr n;
+   private final eny n;
    private final ds o;
    private final axe p;
 
-   public du(dt $$0, ens $$1, enr $$2, aov $$3, int $$4, String $$5, vq $$6, MinecraftServer $$7, @Nullable bno $$8) {
+   public du(dt $$0, enz $$1, eny $$2, aow $$3, int $$4, String $$5, vq $$6, MinecraftServer $$7, @Nullable bnq $$8) {
       this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, dr.a, eg.a.a, ds.a, axe.immediate($$7));
    }
 
    protected du(
       dt $$0,
-      ens $$1,
-      enr $$2,
-      aov $$3,
+      enz $$1,
+      eny $$2,
+      aow $$3,
       int $$4,
       String $$5,
       vq $$6,
       MinecraftServer $$7,
-      @Nullable bno $$8,
+      @Nullable bnq $$8,
       boolean $$9,
       dr $$10,
       eg.a $$11,
@@ -76,17 +76,17 @@ public class du implements dw<du>, dz {
       return this.c == $$0 ? this : new du($$0, this.d, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p);
    }
 
-   public du a(bno $$0) {
+   public du a(bnq $$0) {
       return this.k == $$0
          ? this
          : new du(this.c, this.d, this.n, this.e, this.f, $$0.ad().getString(), $$0.Q_(), this.i, $$0, this.j, this.l, this.m, this.o, this.p);
    }
 
-   public du a(ens $$0) {
+   public du a(enz $$0) {
       return this.d.equals($$0) ? this : new du(this.c, $$0, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p);
    }
 
-   public du a(enr $$0) {
+   public du a(eny $$0) {
       return this.n.c($$0) ? this : new du(this.c, this.d, $$0, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p);
    }
 
@@ -119,29 +119,29 @@ public class du implements dw<du>, dz {
       return $$0 == this.m ? this : new du(this.c, this.d, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, $$0, this.o, this.p);
    }
 
-   public du a(aov $$0) {
+   public du a(aow $$0) {
       if ($$0 == this.e) {
          return this;
       } else {
-         double $$1 = doo.a(this.e.E_(), $$0.E_());
-         ens $$2 = new ens(this.d.c * $$1, this.d.d, this.d.e * $$1);
+         double $$1 = dov.a(this.e.E_(), $$0.E_());
+         enz $$2 = new enz(this.d.c * $$1, this.d.d, this.d.e * $$1);
          return new du(this.c, $$2, this.n, $$0, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p);
       }
    }
 
-   public du a(bno $$0, eg.a $$1) {
+   public du a(bnq $$0, eg.a $$1) {
       return this.b($$1.a($$0));
    }
 
-   public du b(ens $$0) {
-      ens $$1 = this.m.a(this);
+   public du b(enz $$0) {
+      enz $$1 = this.m.a(this);
       double $$2 = $$0.c - $$1.c;
       double $$3 = $$0.d - $$1.d;
       double $$4 = $$0.e - $$1.e;
       double $$5 = Math.sqrt($$2 * $$2 + $$4 * $$4);
-      float $$6 = awh.g((float)(-(awh.d($$3, $$5) * 180.0F / (float)Math.PI)));
-      float $$7 = awh.g((float)(awh.d($$4, $$2) * 180.0F / (float)Math.PI) - 90.0F);
-      return this.a(new enr($$6, $$7));
+      float $$6 = awi.g((float)(-(awi.d($$3, $$5) * 180.0F / (float)Math.PI)));
+      float $$7 = awi.g((float)(awi.d($$4, $$2) * 180.0F / (float)Math.PI) - 90.0F);
+      return this.a(new eny($$6, $$7));
    }
 
    public du a(ds $$0, axe $$1) {
@@ -163,20 +163,20 @@ public class du implements dw<du>, dz {
       return this.f >= $$0;
    }
 
-   public ens d() {
+   public enz d() {
       return this.d;
    }
 
-   public aov e() {
+   public aow e() {
       return this.e;
    }
 
    @Nullable
-   public bno f() {
+   public bnq f() {
       return this.k;
    }
 
-   public bno g() throws CommandSyntaxException {
+   public bnq g() throws CommandSyntaxException {
       if (this.k == null) {
          throw b.create();
       } else {
@@ -184,25 +184,25 @@ public class du implements dw<du>, dz {
       }
    }
 
-   public aow h() throws CommandSyntaxException {
-      bno var2 = this.k;
-      if (var2 instanceof aow) {
-         return (aow)var2;
+   public aox h() throws CommandSyntaxException {
+      bnq var2 = this.k;
+      if (var2 instanceof aox) {
+         return (aox)var2;
       } else {
          throw a.create();
       }
    }
 
    @Nullable
-   public aow i() {
-      return this.k instanceof aow $$0 ? $$0 : null;
+   public aox i() {
+      return this.k instanceof aox $$0 ? $$0 : null;
    }
 
    public boolean j() {
-      return this.k instanceof aow;
+      return this.k instanceof aox;
    }
 
-   public enr k() {
+   public eny k() {
       return this.n;
    }
 
@@ -222,14 +222,14 @@ public class du implements dw<du>, dz {
       return this.p;
    }
 
-   public boolean a(aow $$0) {
-      aow $$1 = this.i();
+   public boolean a(aox $$0) {
+      aox $$1 = this.i();
       return $$0 == $$1 ? false : $$1 != null && $$1.Y() || $$0.Y();
    }
 
    public void a(wf $$0, boolean $$1, vm.a $$2) {
       if (!this.j) {
-         aow $$3 = this.i();
+         aox $$3 = this.i();
          if ($$3 != null) {
             $$3.a($$0, $$1, $$2);
          } else {
@@ -240,7 +240,7 @@ public class du implements dw<du>, dz {
 
    public void a(vq $$0) {
       if (!this.j) {
-         aow $$1 = this.i();
+         aox $$1 = this.i();
          if ($$1 != null) {
             $$1.a($$0);
          } else {
@@ -266,15 +266,15 @@ public class du implements dw<du>, dz {
 
    private void c(vq $$0) {
       vq $$1 = vq.a("chat.type.admin", this.b(), $$0).a(n.h, n.u);
-      if (this.i.aK().b(cvj.p)) {
-         for (aow $$2 : this.i.ae().t()) {
-            if ($$2 != this.c && this.i.ae().f($$2.fS())) {
+      if (this.i.aM().b(cvn.p)) {
+         for (aox $$2 : this.i.ag().t()) {
+            if ($$2 != this.c && this.i.ag().f($$2.fS())) {
                $$2.a($$1);
             }
          }
       }
 
-      if (this.c != this.i && this.i.aK().b(cvj.m)) {
+      if (this.c != this.i && this.i.aM().b(cvn.m)) {
          this.i.a($$1);
       }
    }
@@ -292,22 +292,22 @@ public class du implements dw<du>, dz {
 
    @Override
    public Collection<String> q() {
-      return Lists.newArrayList(this.i.L());
+      return Lists.newArrayList(this.i.N());
    }
 
    @Override
    public Collection<String> r() {
-      return this.i.aH().f();
+      return this.i.aJ().f();
    }
 
    @Override
    public Stream<aiy> s() {
-      return kf.b.s().map(atj::a);
+      return kf.b.s().map(atk::a);
    }
 
    @Override
    public Stream<aiy> t() {
-      return this.i.aG().d();
+      return this.i.aI().d();
    }
 
    @Override
@@ -324,23 +324,23 @@ public class du implements dw<du>, dz {
    }
 
    @Override
-   public Set<aix<cvn>> u() {
-      return this.i.G();
+   public Set<aix<cvr>> u() {
+      return this.i.I();
    }
 
    @Override
    public iw v() {
-      return this.i.aZ();
+      return this.i.bb();
    }
 
    @Override
-   public cjs w() {
+   public cjw w() {
       return this.e.I();
    }
 
    @Override
    public CommandDispatcher<du> x() {
-      return this.l().aC().a();
+      return this.l().aE().a();
    }
 
    @Override

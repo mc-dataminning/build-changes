@@ -1,36 +1,17 @@
-import javax.annotation.Nullable;
-
-public abstract class fbb implements fbc {
-   @Nullable
-   private fbd a;
-   private boolean b;
-
-   @Override
-   public final boolean aJ_() {
-      return this.b;
+public record fbb(aiy a, aiy b, aiy c, aiy d) {
+   public fbb(aiy $$0, aiy $$1) {
+      this($$0, $$0, $$1, $$1);
    }
 
-   @Override
-   public final void b(boolean $$0) {
-      this.b = $$0;
+   public fbb(aiy $$0, aiy $$1, aiy $$2) {
+      this($$0, $$1, $$2, $$1);
    }
 
-   @Nullable
-   @Override
-   public fbd aK_() {
-      return this.a;
-   }
-
-   @Override
-   public void a(@Nullable fbd $$0) {
-      if (this.a != null) {
-         this.a.a(false);
+   public aiy a(boolean $$0, boolean $$1) {
+      if ($$0) {
+         return $$1 ? this.c : this.a;
+      } else {
+         return $$1 ? this.d : this.b;
       }
-
-      if ($$0 != null) {
-         $$0.a(true);
-      }
-
-      this.a = $$0;
    }
 }

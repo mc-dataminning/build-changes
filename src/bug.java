@@ -1,68 +1,17 @@
-public class bug extends bue {
-   private static final float l = 10.0F;
-   private static final float m = 60.0F;
-   private final int n;
-   private final int o;
-   private final float p;
-   private final float q;
-   private final boolean r;
+public class bug implements bue {
+   private final bok b;
+   protected boolean a;
 
-   public bug(boi $$0, int $$1, int $$2, float $$3, float $$4, boolean $$5) {
-      super($$0);
-      this.n = $$1;
-      this.o = $$2;
-      this.p = $$3;
-      this.q = $$4;
-      this.r = $$5;
+   public bug(bok $$0) {
+      this.b = $$0;
    }
 
-   @Override
    public void a() {
-      if (this.r && this.d.aZ()) {
-         this.d.g(this.d.dp().b(0.0, 0.005, 0.0));
-      }
-
-      if (this.k == bue.a.b && !this.d.N().l()) {
-         double $$0 = this.e - this.d.dr();
-         double $$1 = this.f - this.d.dt();
-         double $$2 = this.g - this.d.dx();
-         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
-         if ($$3 < 2.5000003E-7F) {
-            this.d.A(0.0F);
-         } else {
-            float $$4 = (float)(awh.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
-            this.d.r(this.a(this.d.dC(), $$4, (float)this.o));
-            this.d.aU = this.d.dC();
-            this.d.aW = this.d.dC();
-            float $$5 = (float)(this.h * this.d.g(bpl.o));
-            if (this.d.aZ()) {
-               this.d.w($$5 * this.p);
-               double $$6 = Math.sqrt($$0 * $$0 + $$2 * $$2);
-               if (Math.abs($$1) > 1.0E-5F || Math.abs($$6) > 1.0E-5F) {
-                  float $$7 = -((float)(awh.d($$1, $$6) * 180.0F / (float)Math.PI));
-                  $$7 = awh.a(awh.g($$7), (float)(-this.n), (float)this.n);
-                  this.d.s(this.a(this.d.dE(), $$7, 5.0F));
-               }
-
-               float $$8 = awh.b(this.d.dE() * (float) (Math.PI / 180.0));
-               float $$9 = awh.a(this.d.dE() * (float) (Math.PI / 180.0));
-               this.d.bm = $$8 * $$5;
-               this.d.bl = -$$9 * $$5;
-            } else {
-               float $$10 = Math.abs(awh.g(this.d.dC() - $$4));
-               float $$11 = a($$10);
-               this.d.w($$5 * this.q * $$11);
-            }
-         }
-      } else {
-         this.d.w(0.0F);
-         this.d.C(0.0F);
-         this.d.B(0.0F);
-         this.d.A(0.0F);
-      }
+      this.a = true;
    }
 
-   private static float a(float $$0) {
-      return 1.0F - awh.a(($$0 - 10.0F) / 50.0F, 0.0F, 1.0F);
+   public void b() {
+      this.b.r(this.a);
+      this.a = false;
    }
 }

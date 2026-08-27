@@ -1,444 +1,356 @@
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.DynamicLike;
-import java.util.Comparator;
+import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import java.util.Optional;
+import java.util.Set;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
 
 public class cvj {
-   public static final int a = 3;
-   static final Logger aa = LogUtils.getLogger();
-   private static final Map<cvj.e<?>, cvj.f<?>> ab = Maps.newTreeMap(Comparator.comparing($$0 -> $$0.a));
-   public static final cvj.e<cvj.a> b = a("doFireTick", cvj.b.e, cvj.a.a(true));
-   public static final cvj.e<cvj.a> c = a("mobGriefing", cvj.b.b, cvj.a.a(true));
-   public static final cvj.e<cvj.a> d = a("keepInventory", cvj.b.a, cvj.a.a(false));
-   public static final cvj.e<cvj.a> e = a("doMobSpawning", cvj.b.c, cvj.a.a(true));
-   public static final cvj.e<cvj.a> f = a("doMobLoot", cvj.b.d, cvj.a.a(true));
-   public static final cvj.e<cvj.a> g = a("projectilesCanBreakBlocks", cvj.b.d, cvj.a.a(true));
-   public static final cvj.e<cvj.a> h = a("doTileDrops", cvj.b.d, cvj.a.a(true));
-   public static final cvj.e<cvj.a> i = a("doEntityDrops", cvj.b.d, cvj.a.a(true));
-   public static final cvj.e<cvj.a> j = a("commandBlockOutput", cvj.b.f, cvj.a.a(true));
-   public static final cvj.e<cvj.a> k = a("naturalRegeneration", cvj.b.a, cvj.a.a(true));
-   public static final cvj.e<cvj.a> l = a("doDaylightCycle", cvj.b.e, cvj.a.a(true));
-   public static final cvj.e<cvj.a> m = a("logAdminCommands", cvj.b.f, cvj.a.a(true));
-   public static final cvj.e<cvj.a> n = a("showDeathMessages", cvj.b.f, cvj.a.a(true));
-   public static final cvj.e<cvj.d> o = a("randomTickSpeed", cvj.b.e, cvj.d.a(3));
-   public static final cvj.e<cvj.a> p = a("sendCommandFeedback", cvj.b.f, cvj.a.a(true));
-   public static final cvj.e<cvj.a> q = a("reducedDebugInfo", cvj.b.g, cvj.a.a(false, ($$0, $$1) -> {
-      byte $$2 = (byte)($$1.a() ? 22 : 23);
+   private static final cvk a = new cvk();
+   private static final int b = 16;
+   private final boolean c;
+   private final cvj.a d;
+   private final awp e = awp.a();
+   private final cvr f;
+   private final double g;
+   private final double h;
+   private final double i;
+   @Nullable
+   private final bnq j;
+   private final float k;
+   private final bmp l;
+   private final cvk m;
+   private final jx n;
+   private final jx o;
+   private final ij<atk> p;
+   private final ObjectArrayList<hz> q = new ObjectArrayList();
+   private final Map<chl, enz> r = Maps.newHashMap();
 
-      for (aow $$3 : $$0.ae().t()) {
-         $$3.d.b(new abj($$3, $$2));
-      }
-   }));
-   public static final cvj.e<cvj.a> r = a("spectatorsGenerateChunks", cvj.b.a, cvj.a.a(true));
-   public static final cvj.e<cvj.d> s = a("spawnRadius", cvj.b.a, cvj.d.a(10));
-   public static final cvj.e<cvj.a> t = a("disableElytraMovementCheck", cvj.b.a, cvj.a.a(false));
-   public static final cvj.e<cvj.d> u = a("maxEntityCramming", cvj.b.b, cvj.d.a(24));
-   public static final cvj.e<cvj.a> v = a("doWeatherCycle", cvj.b.e, cvj.a.a(true));
-   public static final cvj.e<cvj.a> w = a("doLimitedCrafting", cvj.b.a, cvj.a.a(false, ($$0, $$1) -> {
-      for (aow $$2 : $$0.ae().t()) {
-         $$2.d.b(new abm(abm.n, $$1.a() ? 1.0F : 0.0F));
-      }
-   }));
-   public static final cvj.e<cvj.d> x = a("maxCommandChainLength", cvj.b.g, cvj.d.a(65536));
-   public static final cvj.e<cvj.d> y = a("maxCommandForkCount", cvj.b.g, cvj.d.a(65536));
-   public static final cvj.e<cvj.d> z = a("commandModificationBlockLimit", cvj.b.g, cvj.d.a(32768));
-   public static final cvj.e<cvj.a> A = a("announceAdvancements", cvj.b.f, cvj.a.a(true));
-   public static final cvj.e<cvj.a> B = a("disableRaids", cvj.b.b, cvj.a.a(false));
-   public static final cvj.e<cvj.a> C = a("doInsomnia", cvj.b.c, cvj.a.a(true));
-   public static final cvj.e<cvj.a> D = a("doImmediateRespawn", cvj.b.a, cvj.a.a(false, ($$0, $$1) -> {
-      for (aow $$2 : $$0.ae().t()) {
-         $$2.d.b(new abm(abm.m, $$1.a() ? 1.0F : 0.0F));
-      }
-   }));
-   public static final cvj.e<cvj.d> E = a("playersNetherPortalDefaultDelay", cvj.b.a, cvj.d.a(80));
-   public static final cvj.e<cvj.d> F = a("playersNetherPortalCreativeDelay", cvj.b.a, cvj.d.a(1));
-   public static final cvj.e<cvj.a> G = a("drowningDamage", cvj.b.a, cvj.a.a(true));
-   public static final cvj.e<cvj.a> H = a("fallDamage", cvj.b.a, cvj.a.a(true));
-   public static final cvj.e<cvj.a> I = a("fireDamage", cvj.b.a, cvj.a.a(true));
-   public static final cvj.e<cvj.a> J = a("freezeDamage", cvj.b.a, cvj.a.a(true));
-   public static final cvj.e<cvj.a> K = a("doPatrolSpawning", cvj.b.c, cvj.a.a(true));
-   public static final cvj.e<cvj.a> L = a("doTraderSpawning", cvj.b.c, cvj.a.a(true));
-   public static final cvj.e<cvj.a> M = a("doWardenSpawning", cvj.b.c, cvj.a.a(true));
-   public static final cvj.e<cvj.a> N = a("forgiveDeadPlayers", cvj.b.b, cvj.a.a(true));
-   public static final cvj.e<cvj.a> O = a("universalAnger", cvj.b.b, cvj.a.a(false));
-   public static final cvj.e<cvj.d> P = a("playersSleepingPercentage", cvj.b.a, cvj.d.a(100));
-   public static final cvj.e<cvj.a> Q = a("blockExplosionDropDecay", cvj.b.d, cvj.a.a(true));
-   public static final cvj.e<cvj.a> R = a("mobExplosionDropDecay", cvj.b.d, cvj.a.a(true));
-   public static final cvj.e<cvj.a> S = a("tntExplosionDropDecay", cvj.b.d, cvj.a.a(false));
-   public static final cvj.e<cvj.d> T = a("snowAccumulationHeight", cvj.b.e, cvj.d.a(1));
-   public static final cvj.e<cvj.a> U = a("waterSourceConversion", cvj.b.e, cvj.a.a(true));
-   public static final cvj.e<cvj.a> V = a("lavaSourceConversion", cvj.b.e, cvj.a.a(false));
-   public static final cvj.e<cvj.a> W = a("globalSoundEvents", cvj.b.g, cvj.a.a(true));
-   public static final cvj.e<cvj.a> X = a("doVinesSpread", cvj.b.e, cvj.a.a(true));
-   public static final cvj.e<cvj.a> Y = a("enderPearlsVanishOnDeath", cvj.b.a, cvj.a.a(true));
-   public static final cvj.e<cvj.d> Z = a("spawnChunkRadius", cvj.b.g, cvj.d.a(2, 0, 32, ($$0, $$1) -> {
-      aov $$2 = $$0.F();
-      $$2.a($$2.T(), $$2.U());
-   }));
-   private final Map<cvj.e<?>, cvj.g<?>> ac;
-
-   private static <T extends cvj.g<T>> cvj.e<T> a(String $$0, cvj.b $$1, cvj.f<T> $$2) {
-      cvj.e<T> $$3 = new cvj.e<>($$0, $$1);
-      cvj.f<?> $$4 = ab.put($$3, $$2);
-      if ($$4 != null) {
-         throw new IllegalStateException("Duplicate game rule registration for " + $$0);
-      } else {
-         return $$3;
-      }
+   public static bmp a(cvr $$0, @Nullable bnq $$1) {
+      return $$0.ah().d($$1, b($$1));
    }
 
-   public cvj(DynamicLike<?> $$0) {
-      this();
-      this.a($$0);
+   public cvj(cvr $$0, @Nullable bnq $$1, double $$2, double $$3, double $$4, float $$5, List<hz> $$6, cvj.a $$7, jx $$8, jx $$9, ij<atk> $$10) {
+      this($$0, $$1, a($$0, $$1), null, $$2, $$3, $$4, $$5, false, $$7, $$8, $$9, $$10);
+      this.q.addAll($$6);
    }
 
-   public cvj() {
-      this.ac = ab.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> ((cvj.f)$$0.getValue()).a()));
+   public cvj(cvr $$0, @Nullable bnq $$1, double $$2, double $$3, double $$4, float $$5, boolean $$6, cvj.a $$7, List<hz> $$8) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      this.q.addAll($$8);
    }
 
-   private cvj(Map<cvj.e<?>, cvj.g<?>> $$0) {
-      this.ac = $$0;
+   public cvj(cvr $$0, @Nullable bnq $$1, double $$2, double $$3, double $$4, float $$5, boolean $$6, cvj.a $$7) {
+      this($$0, $$1, a($$0, $$1), null, $$2, $$3, $$4, $$5, $$6, $$7, jz.x, jz.w, atl.jQ);
    }
 
-   public <T extends cvj.g<T>> T a(cvj.e<T> $$0) {
-      return (T)this.ac.get($$0);
+   public cvj(
+      cvr $$0,
+      @Nullable bnq $$1,
+      @Nullable bmp $$2,
+      @Nullable cvk $$3,
+      double $$4,
+      double $$5,
+      double $$6,
+      float $$7,
+      boolean $$8,
+      cvj.a $$9,
+      jx $$10,
+      jx $$11,
+      ij<atk> $$12
+   ) {
+      this.f = $$0;
+      this.j = $$1;
+      this.k = $$7;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+      this.c = $$8;
+      this.d = $$9;
+      this.l = $$2 == null ? $$0.ah().a(this) : $$2;
+      this.m = $$3 == null ? this.a($$1) : $$3;
+      this.n = $$10;
+      this.o = $$11;
+      this.p = $$12;
    }
 
-   public sw a() {
-      sw $$0 = new sw();
-      this.ac.forEach(($$1, $$2) -> $$0.a($$1.a, $$2.b()));
-      return $$0;
+   private cvk a(@Nullable bnq $$0) {
+      return (cvk)($$0 == null ? a : new cvh($$0));
    }
 
-   private void a(DynamicLike<?> $$0) {
-      this.ac.forEach(($$1, $$2) -> $$0.get($$1.a).asString().result().ifPresent($$2::a));
-   }
+   public static float a(enz $$0, bnq $$1) {
+      enu $$2 = $$1.cH();
+      double $$3 = 1.0 / (($$2.d - $$2.a) * 2.0 + 1.0);
+      double $$4 = 1.0 / (($$2.e - $$2.b) * 2.0 + 1.0);
+      double $$5 = 1.0 / (($$2.f - $$2.c) * 2.0 + 1.0);
+      double $$6 = (1.0 - Math.floor(1.0 / $$3) * $$3) / 2.0;
+      double $$7 = (1.0 - Math.floor(1.0 / $$5) * $$5) / 2.0;
+      if (!($$3 < 0.0) && !($$4 < 0.0) && !($$5 < 0.0)) {
+         int $$8 = 0;
+         int $$9 = 0;
 
-   public cvj b() {
-      return new cvj(this.ac.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> ((cvj.g)$$0.getValue()).f())));
-   }
+         for (double $$10 = 0.0; $$10 <= 1.0; $$10 += $$3) {
+            for (double $$11 = 0.0; $$11 <= 1.0; $$11 += $$4) {
+               for (double $$12 = 0.0; $$12 <= 1.0; $$12 += $$5) {
+                  double $$13 = awi.d($$10, $$2.a, $$2.d);
+                  double $$14 = awi.d($$11, $$2.b, $$2.e);
+                  double $$15 = awi.d($$12, $$2.c, $$2.f);
+                  enz $$16 = new enz($$13 + $$6, $$14, $$15 + $$7);
+                  if ($$1.dM().a(new cva($$16, $$0, cva.a.a, cva.b.a, $$1)).c() == enx.a.a) {
+                     $$8++;
+                  }
 
-   public static void a(cvj.c $$0) {
-      ab.forEach(($$1, $$2) -> a($$0, (cvj.e<?>)$$1, (cvj.f<?>)$$2));
-   }
-
-   private static <T extends cvj.g<T>> void a(cvj.c $$0, cvj.e<?> $$1, cvj.f<?> $$2) {
-      $$0.a($$1, $$2);
-      $$2.a($$0, $$1);
-   }
-
-   public void a(cvj $$0, @Nullable MinecraftServer $$1) {
-      $$0.ac.keySet().forEach($$2 -> this.a((cvj.e<?>)$$2, $$0, $$1));
-   }
-
-   private <T extends cvj.g<T>> void a(cvj.e<T> $$0, cvj $$1, @Nullable MinecraftServer $$2) {
-      T $$3 = $$1.a($$0);
-      this.<T>a($$0).a($$3, $$2);
-   }
-
-   public boolean b(cvj.e<cvj.a> $$0) {
-      return this.a($$0).a();
-   }
-
-   public int c(cvj.e<cvj.d> $$0) {
-      return this.a($$0).a();
-   }
-
-   public static class a extends cvj.g<cvj.a> {
-      private boolean b;
-
-      static cvj.f<cvj.a> a(boolean $$0, BiConsumer<MinecraftServer, cvj.a> $$1) {
-         return new cvj.f<>(BoolArgumentType::bool, $$1x -> new cvj.a($$1x, $$0), $$1, cvj.c::b);
-      }
-
-      static cvj.f<cvj.a> a(boolean $$0) {
-         return a($$0, ($$0x, $$1) -> {
-         });
-      }
-
-      public a(cvj.f<cvj.a> $$0, boolean $$1) {
-         super($$0);
-         this.b = $$1;
-      }
-
-      @Override
-      protected void a(CommandContext<du> $$0, String $$1) {
-         this.b = BoolArgumentType.getBool($$0, $$1);
-      }
-
-      public boolean a() {
-         return this.b;
-      }
-
-      public void a(boolean $$0, @Nullable MinecraftServer $$1) {
-         this.b = $$0;
-         this.a($$1);
-      }
-
-      @Override
-      public String b() {
-         return Boolean.toString(this.b);
-      }
-
-      @Override
-      protected void a(String $$0) {
-         this.b = Boolean.parseBoolean($$0);
-      }
-
-      @Override
-      public int c() {
-         return this.b ? 1 : 0;
-      }
-
-      protected cvj.a d() {
-         return this;
-      }
-
-      protected cvj.a e() {
-         return new cvj.a(this.a, this.b);
-      }
-
-      public void a(cvj.a $$0, @Nullable MinecraftServer $$1) {
-         this.b = $$0.b;
-         this.a($$1);
-      }
-   }
-
-   public static enum b {
-      a("gamerule.category.player"),
-      b("gamerule.category.mobs"),
-      c("gamerule.category.spawning"),
-      d("gamerule.category.drops"),
-      e("gamerule.category.updates"),
-      f("gamerule.category.chat"),
-      g("gamerule.category.misc");
-
-      private final String h;
-
-      private b(String $$0) {
-         this.h = $$0;
-      }
-
-      public String a() {
-         return this.h;
-      }
-   }
-
-   public interface c {
-      default <T extends cvj.g<T>> void a(cvj.e<T> $$0, cvj.f<T> $$1) {
-      }
-
-      default void b(cvj.e<cvj.a> $$0, cvj.f<cvj.a> $$1) {
-      }
-
-      default void c(cvj.e<cvj.d> $$0, cvj.f<cvj.d> $$1) {
-      }
-   }
-
-   public static class d extends cvj.g<cvj.d> {
-      private int b;
-
-      private static cvj.f<cvj.d> a(int $$0, BiConsumer<MinecraftServer, cvj.d> $$1) {
-         return new cvj.f<>(IntegerArgumentType::integer, $$1x -> new cvj.d($$1x, $$0), $$1, cvj.c::c);
-      }
-
-      static cvj.f<cvj.d> a(int $$0, int $$1, int $$2, BiConsumer<MinecraftServer, cvj.d> $$3) {
-         return new cvj.f<>(() -> IntegerArgumentType.integer($$1, $$2), $$1x -> new cvj.d($$1x, $$0), $$3, cvj.c::c);
-      }
-
-      static cvj.f<cvj.d> a(int $$0) {
-         return a($$0, ($$0x, $$1) -> {
-         });
-      }
-
-      public d(cvj.f<cvj.d> $$0, int $$1) {
-         super($$0);
-         this.b = $$1;
-      }
-
-      @Override
-      protected void a(CommandContext<du> $$0, String $$1) {
-         this.b = IntegerArgumentType.getInteger($$0, $$1);
-      }
-
-      public int a() {
-         return this.b;
-      }
-
-      public void a(int $$0, @Nullable MinecraftServer $$1) {
-         this.b = $$0;
-         this.a($$1);
-      }
-
-      @Override
-      public String b() {
-         return Integer.toString(this.b);
-      }
-
-      @Override
-      protected void a(String $$0) {
-         this.b = c($$0);
-      }
-
-      public boolean b(String $$0) {
-         try {
-            StringReader $$1 = new StringReader($$0);
-            this.b = (Integer)this.a.a.get().parse($$1);
-            return !$$1.canRead();
-         } catch (CommandSyntaxException var3) {
-            return false;
-         }
-      }
-
-      private static int c(String $$0) {
-         if (!$$0.isEmpty()) {
-            try {
-               return Integer.parseInt($$0);
-            } catch (NumberFormatException var2) {
-               cvj.aa.warn("Failed to parse integer {}", $$0);
+                  $$9++;
+               }
             }
          }
 
-         return 0;
-      }
-
-      @Override
-      public int c() {
-         return this.b;
-      }
-
-      protected cvj.d d() {
-         return this;
-      }
-
-      protected cvj.d e() {
-         return new cvj.d(this.a, this.b);
-      }
-
-      public void a(cvj.d $$0, @Nullable MinecraftServer $$1) {
-         this.b = $$0.b;
-         this.a($$1);
+         return (float)$$8 / (float)$$9;
+      } else {
+         return 0.0F;
       }
    }
 
-   public static final class e<T extends cvj.g<T>> {
-      final String a;
-      private final cvj.b b;
-
-      public e(String $$0, cvj.b $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public String toString() {
-         return this.a;
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         return this == $$0 ? true : $$0 instanceof cvj.e && ((cvj.e)$$0).a.equals(this.a);
-      }
-
-      @Override
-      public int hashCode() {
-         return this.a.hashCode();
-      }
-
-      public String a() {
-         return this.a;
-      }
-
-      public String b() {
-         return "gamerule." + this.a;
-      }
-
-      public cvj.b c() {
-         return this.b;
-      }
+   public float a() {
+      return this.k;
    }
 
-   public static class f<T extends cvj.g<T>> {
-      final Supplier<ArgumentType<?>> a;
-      private final Function<cvj.f<T>, T> b;
-      final BiConsumer<MinecraftServer, T> c;
-      private final cvj.h<T> d;
-
-      f(Supplier<ArgumentType<?>> $$0, Function<cvj.f<T>, T> $$1, BiConsumer<MinecraftServer, T> $$2, cvj.h<T> $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      public RequiredArgumentBuilder<du, ?> a(String $$0) {
-         return dv.a($$0, (ArgumentType<T>)this.a.get());
-      }
-
-      public T a() {
-         return this.b.apply(this);
-      }
-
-      public void a(cvj.c $$0, cvj.e<T> $$1) {
-         this.d.call($$0, $$1, this);
-      }
+   public enz b() {
+      return new enz(this.g, this.h, this.i);
    }
 
-   public abstract static class g<T extends cvj.g<T>> {
-      protected final cvj.f<T> a;
+   public void c() {
+      this.f.a(this.j, dpw.w, new enz(this.g, this.h, this.i));
+      Set<hz> $$0 = Sets.newHashSet();
+      int $$1 = 16;
 
-      public g(cvj.f<T> $$0) {
-         this.a = $$0;
-      }
+      for (int $$2 = 0; $$2 < 16; $$2++) {
+         for (int $$3 = 0; $$3 < 16; $$3++) {
+            for (int $$4 = 0; $$4 < 16; $$4++) {
+               if ($$2 == 0 || $$2 == 15 || $$3 == 0 || $$3 == 15 || $$4 == 0 || $$4 == 15) {
+                  double $$5 = (double)((float)$$2 / 15.0F * 2.0F - 1.0F);
+                  double $$6 = (double)((float)$$3 / 15.0F * 2.0F - 1.0F);
+                  double $$7 = (double)((float)$$4 / 15.0F * 2.0F - 1.0F);
+                  double $$8 = Math.sqrt($$5 * $$5 + $$6 * $$6 + $$7 * $$7);
+                  $$5 /= $$8;
+                  $$6 /= $$8;
+                  $$7 /= $$8;
+                  float $$9 = this.k * (0.7F + this.f.z.i() * 0.6F);
+                  double $$10 = this.g;
+                  double $$11 = this.h;
+                  double $$12 = this.i;
 
-      protected abstract void a(CommandContext<du> var1, String var2);
+                  for (float $$13 = 0.3F; $$9 > 0.0F; $$9 -= 0.22500001F) {
+                     hz $$14 = hz.a($$10, $$11, $$12);
+                     dlj $$15 = this.f.a_($$14);
+                     egw $$16 = this.f.b_($$14);
+                     if (!this.f.k($$14)) {
+                        break;
+                     }
 
-      public void b(CommandContext<du> $$0, String $$1) {
-         this.a($$0, $$1);
-         this.a(((du)$$0.getSource()).l());
-      }
+                     Optional<Float> $$17 = this.m.a(this, this.f, $$14, $$15, $$16);
+                     if ($$17.isPresent()) {
+                        $$9 -= ($$17.get() + 0.3F) * 0.3F;
+                     }
 
-      protected void a(@Nullable MinecraftServer $$0) {
-         if ($$0 != null) {
-            this.a.c.accept($$0, this.g());
+                     if ($$9 > 0.0F && this.m.a(this, this.f, $$14, $$15, $$9)) {
+                        $$0.add($$14);
+                     }
+
+                     $$10 += $$5 * 0.3F;
+                     $$11 += $$6 * 0.3F;
+                     $$12 += $$7 * 0.3F;
+                  }
+               }
+            }
          }
       }
 
-      protected abstract void a(String var1);
+      this.q.addAll($$0);
+      float $$18 = this.k * 2.0F;
+      int $$19 = awi.a(this.g - (double)$$18 - 1.0);
+      int $$20 = awi.a(this.g + (double)$$18 + 1.0);
+      int $$21 = awi.a(this.h - (double)$$18 - 1.0);
+      int $$22 = awi.a(this.h + (double)$$18 + 1.0);
+      int $$23 = awi.a(this.i - (double)$$18 - 1.0);
+      int $$24 = awi.a(this.i + (double)$$18 + 1.0);
+      List<bnq> $$25 = this.f.a_(this.j, new enu((double)$$19, (double)$$21, (double)$$23, (double)$$20, (double)$$22, (double)$$24));
+      enz $$26 = new enz(this.g, this.h, this.i);
 
-      public abstract String b();
+      for (bnq $$27 : $$25) {
+         if (!$$27.a(this)) {
+            double $$28 = Math.sqrt($$27.f($$26)) / (double)$$18;
+            if ($$28 <= 1.0) {
+               double $$29 = $$27.dr() - this.g;
+               double $$30 = ($$27 instanceof cdx ? $$27.dt() : $$27.dv()) - this.h;
+               double $$31 = $$27.dx() - this.i;
+               double $$32 = Math.sqrt($$29 * $$29 + $$30 * $$30 + $$31 * $$31);
+               if ($$32 != 0.0) {
+                  $$29 /= $$32;
+                  $$30 /= $$32;
+                  $$31 /= $$32;
+                  if (this.m.a(this, $$27)) {
+                     $$27.a(this.l, this.m.b(this, $$27));
+                  }
 
-      @Override
-      public String toString() {
-         return this.b();
+                  double $$33 = (1.0 - $$28) * (double)a($$26, $$27);
+                  double $$35;
+                  if ($$27 instanceof boi $$34) {
+                     $$35 = cty.a($$34, $$33);
+                  } else {
+                     $$35 = $$33;
+                  }
+
+                  $$29 *= $$35;
+                  $$30 *= $$35;
+                  $$31 *= $$35;
+                  enz $$37 = new enz($$29, $$30, $$31);
+                  $$27.g($$27.dp().e($$37));
+                  if ($$27 instanceof chl) {
+                     chl $$38 = (chl)$$27;
+                     if (!$$38.P_() && (!$$38.f() || !$$38.fU().b)) {
+                        this.r.put($$38, $$37);
+                     }
+                  }
+               }
+            }
+         }
       }
-
-      public abstract int c();
-
-      protected abstract T g();
-
-      protected abstract T f();
-
-      public abstract void a(T var1, @Nullable MinecraftServer var2);
    }
 
-   interface h<T extends cvj.g<T>> {
-      void call(cvj.c var1, cvj.e<T> var2, cvj.f<T> var3);
+   public void a(boolean $$0) {
+      if (this.f.B) {
+         this.f.a(this.g, this.h, this.i, this.p.a(), atm.e, 4.0F, (1.0F + (this.f.z.i() - this.f.z.i()) * 0.2F) * 0.7F, false);
+      }
+
+      boolean $$1 = this.d();
+      if ($$0) {
+         jx $$3;
+         if (!(this.k < 2.0F) && $$1) {
+            $$3 = this.o;
+         } else {
+            $$3 = this.n;
+         }
+
+         this.f.a($$3, this.g, this.h, this.i, 1.0, 0.0, 0.0);
+      }
+
+      if ($$1) {
+         this.f.ae().a("explosion_blocks");
+         List<Pair<cpd, hz>> $$4 = new ArrayList<>();
+         ac.c(this.q, this.f.z);
+         ObjectListIterator $$7 = this.q.iterator();
+
+         while ($$7.hasNext()) {
+            hz $$5 = (hz)$$7.next();
+            this.f.a_($$5).a(this.f, $$5, this, ($$1x, $$2) -> a($$4, $$1x, $$2));
+         }
+
+         for (Pair<cpd, hz> $$6 : $$4) {
+            cys.a(this.f, (hz)$$6.getSecond(), (cpd)$$6.getFirst());
+         }
+
+         this.f.ae().c();
+      }
+
+      if (this.c) {
+         ObjectListIterator var7 = this.q.iterator();
+
+         while (var7.hasNext()) {
+            hz $$7 = (hz)var7.next();
+            if (this.e.a(3) == 0 && this.f.a_($$7).i() && this.f.a_($$7.d()).i(this.f, $$7.d())) {
+               this.f.b($$7, cyf.a(this.f, $$7));
+            }
+         }
+      }
+   }
+
+   private static void a(List<Pair<cpd, hz>> $$0, cpd $$1, hz $$2) {
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         Pair<cpd, hz> $$4 = $$0.get($$3);
+         cpd $$5 = (cpd)$$4.getFirst();
+         if (cdw.a($$5, $$1)) {
+            $$0.set($$3, Pair.of(cdw.a($$5, $$1, 16), (hz)$$4.getSecond()));
+            if ($$1.b()) {
+               return;
+            }
+         }
+      }
+
+      $$0.add(Pair.of($$1, $$2));
+   }
+
+   public boolean d() {
+      return this.d != cvj.a.a;
+   }
+
+   public Map<chl, enz> e() {
+      return this.r;
+   }
+
+   @Nullable
+   private static boi b(@Nullable bnq $$0) {
+      if ($$0 == null) {
+         return null;
+      } else if ($$0 instanceof cdx $$1) {
+         return $$1.q();
+      } else if ($$0 instanceof boi) {
+         return (boi)$$0;
+      } else {
+         if ($$0 instanceof cid $$3) {
+            bnq $$4 = $$3.w();
+            if ($$4 instanceof boi) {
+               return (boi)$$4;
+            }
+         }
+
+         return null;
+      }
+   }
+
+   @Nullable
+   public boi f() {
+      return b(this.j);
+   }
+
+   @Nullable
+   public bnq g() {
+      return this.j;
+   }
+
+   public void h() {
+      this.q.clear();
+   }
+
+   public List<hz> i() {
+      return this.q;
+   }
+
+   public cvj.a j() {
+      return this.d;
+   }
+
+   public jx k() {
+      return this.n;
+   }
+
+   public jx l() {
+      return this.o;
+   }
+
+   public ij<atk> m() {
+      return this.p;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

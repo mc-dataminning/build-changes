@@ -1,107 +1,52 @@
-import com.google.common.collect.Maps;
-import java.util.HashMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import java.util.List;
-import java.util.Map;
 
-public class fzh implements fyw.a {
-   private final exh a;
-   private final Map<aix<cvn>, Map<String, eaw>> b = Maps.newIdentityHashMap();
-   private final Map<aix<cvn>, Map<String, zm.a>> c = Maps.newIdentityHashMap();
-   private static final int d = 500;
-
-   public fzh(exh $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public void a(esa $$0, fvl $$1, double $$2, double $$3, double $$4) {
-      ews $$5 = this.a.j.m();
-      aix<cvn> $$6 = this.a.r.ae();
-      hz $$7 = hz.a($$5.b().c, 0.0, $$5.b().e);
-      ese $$8 = $$1.getBuffer(fvt.w());
-      if (this.b.containsKey($$6)) {
-         for (eaw $$9 : this.b.get($$6).values()) {
-            if ($$7.a($$9.g(), 500.0)) {
-               fvj.a(
-                  $$0,
-                  $$8,
-                  (double)$$9.h() - $$2,
-                  (double)$$9.i() - $$3,
-                  (double)$$9.j() - $$4,
-                  (double)($$9.k() + 1) - $$2,
-                  (double)($$9.l() + 1) - $$3,
-                  (double)($$9.m() + 1) - $$4,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F
-               );
-            }
-         }
-      }
-
-      Map<String, zm.a> $$10 = this.c.get($$6);
-      if ($$10 != null) {
-         for (zm.a $$11 : $$10.values()) {
-            eaw $$12 = $$11.a();
-            if ($$7.a($$12.g(), 500.0)) {
-               if ($$11.b()) {
-                  fvj.a(
-                     $$0,
-                     $$8,
-                     (double)$$12.h() - $$2,
-                     (double)$$12.i() - $$3,
-                     (double)$$12.j() - $$4,
-                     (double)($$12.k() + 1) - $$2,
-                     (double)($$12.l() + 1) - $$3,
-                     (double)($$12.m() + 1) - $$4,
-                     0.0F,
-                     1.0F,
-                     0.0F,
-                     1.0F,
-                     0.0F,
-                     1.0F,
-                     0.0F
-                  );
-               } else {
-                  fvj.a(
-                     $$0,
-                     $$8,
-                     (double)$$12.h() - $$2,
-                     (double)$$12.i() - $$3,
-                     (double)$$12.j() - $$4,
-                     (double)($$12.k() + 1) - $$2,
-                     (double)($$12.l() + 1) - $$3,
-                     (double)($$12.m() + 1) - $$4,
-                     0.0F,
-                     0.0F,
-                     1.0F,
-                     1.0F,
-                     0.0F,
-                     0.0F,
-                     1.0F
-                  );
-               }
-            }
-         }
-      }
-   }
-
-   public void a(eaw $$0, List<zm.a> $$1, aix<cvn> $$2) {
-      this.b.computeIfAbsent($$2, $$0x -> new HashMap<>()).put($$0.toString(), $$0);
-      Map<String, zm.a> $$3 = this.c.computeIfAbsent($$2, $$0x -> new HashMap<>());
-
-      for (zm.a $$4 : $$1) {
-         $$3.put($$4.a().toString(), $$4);
-      }
-   }
+public class fzh implements fze.a {
+   private static final int a = 160;
+   private final exo b;
+   private final Int2ObjectMap<fzh.a> c = new Int2ObjectOpenHashMap();
 
    @Override
    public void a() {
-      this.b.clear();
       this.c.clear();
+   }
+
+   public void a(int $$0, hz $$1, List<ze.a> $$2) {
+      this.c.put($$0, new fzh.a($$1, $$2));
+   }
+
+   public void a(int $$0) {
+      this.c.remove($$0);
+   }
+
+   public fzh(exo $$0) {
+      this.b = $$0;
+   }
+
+   @Override
+   public void a(esh $$0, fvt $$1, double $$2, double $$3, double $$4) {
+      ewz $$5 = this.b.j.m();
+      hz $$6 = hz.a($$5.b().c, 0.0, $$5.b().e);
+      ObjectIterator var11 = this.c.values().iterator();
+
+      while (var11.hasNext()) {
+         fzh.a $$7 = (fzh.a)var11.next();
+         hz $$8 = $$7.a;
+         if ($$6.a($$8, 160.0)) {
+            for (int $$9 = 0; $$9 < $$7.b.size(); $$9++) {
+               ze.a $$10 = $$7.b.get($$9);
+               double $$11 = (double)$$8.u() + 0.5;
+               double $$12 = (double)$$8.v() + 2.0 + (double)$$9 * 0.25;
+               double $$13 = (double)$$8.w() + 0.5;
+               int $$14 = $$10.b() ? -16711936 : -3355444;
+               fze.a($$0, $$1, $$10.c(), $$11, $$12, $$13, $$14);
+            }
+         }
+      }
+   }
+
+   static record a(hz a, List<ze.a> b) {
    }
 }

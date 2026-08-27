@@ -1,26 +1,37 @@
-import javax.annotation.concurrent.Immutable;
+public class blx<T> {
+   private final blw a;
+   private final T b;
 
-@Immutable
-public class blx {
-   public static final blx a = new blx("");
-   public static final String b = "Lock";
-   private final String c;
-
-   public blx(String $$0) {
-      this.c = $$0;
+   public blx(blw $$0, T $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public boolean a(coz $$0) {
-      return this.c.isEmpty() || !$$0.b() && $$0.B() && this.c.equals($$0.z().getString());
+   public blw a() {
+      return this.a;
    }
 
-   public void a(sw $$0) {
-      if (!this.c.isEmpty()) {
-         $$0.a("Lock", this.c);
-      }
+   public T b() {
+      return this.b;
    }
 
-   public static blx b(sw $$0) {
-      return $$0.b("Lock", 8) ? new blx($$0.l("Lock")) : a;
+   public static <T> blx<T> a(T $$0) {
+      return new blx<>(blw.a, $$0);
+   }
+
+   public static <T> blx<T> b(T $$0) {
+      return new blx<>(blw.b, $$0);
+   }
+
+   public static <T> blx<T> c(T $$0) {
+      return new blx<>(blw.d, $$0);
+   }
+
+   public static <T> blx<T> d(T $$0) {
+      return new blx<>(blw.e, $$0);
+   }
+
+   public static <T> blx<T> a(T $$0, boolean $$1) {
+      return $$1 ? a($$0) : b($$0);
    }
 }

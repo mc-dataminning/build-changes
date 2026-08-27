@@ -1,16 +1,30 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dwa implements dvw {
+public record dwa(dym b, dsc c, blb d, int e) implements dwd {
    public static final Codec<dwa> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.intRange(0, doo.c).fieldOf("height").forGetter($$0x -> $$0x.b), dlf.b.fieldOf("state").forGetter($$0x -> $$0x.c))
+      $$0 -> $$0.group(
+               dym.a.fieldOf("state_provider").forGetter(dwa::a),
+               dsc.b.fieldOf("target").forGetter(dwa::b),
+               blb.b(0, 8).fieldOf("radius").forGetter(dwa::c),
+               Codec.intRange(0, 4).fieldOf("half_height").forGetter(dwa::d)
+            )
             .apply($$0, dwa::new)
    );
-   public final int b;
-   public final dlf c;
 
-   public dwa(int $$0, dlf $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public dym a() {
+      return this.b;
+   }
+
+   public dsc b() {
+      return this.c;
+   }
+
+   public blb c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
    }
 }

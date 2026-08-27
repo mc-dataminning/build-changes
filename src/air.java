@@ -23,11 +23,11 @@ public class air {
       return $$0.c($$1.substring(this.a.length() + 1, $$1.length() - this.b.length()));
    }
 
-   public Map<aiy, ary> a(asa $$0) {
+   public Map<aiy, arz> a(asb $$0) {
       return $$0.b(this.a, $$0x -> $$0x.a().endsWith(this.b));
    }
 
-   public Map<aiy, List<ary>> b(asa $$0) {
+   public Map<aiy, List<arz>> b(asb $$0) {
       return $$0.c(this.a, $$0x -> $$0x.a().endsWith(this.b));
    }
 }

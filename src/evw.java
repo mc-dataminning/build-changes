@@ -1,57 +1,167 @@
-import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Either;
 import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.Base64;
-import java.util.Map;
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import org.lwjgl.system.MemoryUtil;
 import org.slf4j.Logger;
 
 public class evw {
-   private static final Map<String, evw.a> a = Maps.newHashMap();
-   private static final Logger b = LogUtils.getLogger();
-   private static final aiy c = new aiy("textures/gui/presets/isles.png");
+   static final Logger a = LogUtils.getLogger();
+   final Executor b;
+   final TimeUnit c;
+   final axg d;
 
-   public static aiy a(String $$0, @Nullable String $$1) {
-      return $$1 == null ? c : b($$0, $$1);
+   public evw(Executor $$0, TimeUnit $$1, axg $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private static aiy b(String $$0, String $$1) {
-      evw.a $$2 = a.get($$0);
-      if ($$2 != null && $$2.a().equals($$1)) {
-         return $$2.b;
+   public <T> evw.e<T> a(String $$0, Callable<T> $$1, Duration $$2, evx $$3) {
+      long $$4 = this.c.convert($$2);
+      if ($$4 == 0L) {
+         throw new IllegalArgumentException("Period of " + $$2 + " too short for selected resolution of " + this.c);
       } else {
-         erb $$3 = a($$1);
-         if ($$3 == null) {
-            aiy $$4 = ggj.b();
-            a.put($$0, new evw.a($$1, $$4));
-            return $$4;
-         } else {
-            aiy $$5 = new aiy("realms", "dynamic/" + $$0);
-            exh.O().Y().a($$5, new ggg($$3));
-            a.put($$0, new evw.a($$1, $$5));
-            return $$5;
+         return new evw.e<>($$0, $$1, $$4, $$3);
+      }
+   }
+
+   public evw.c a() {
+      return new evw.c();
+   }
+
+   static record a<T>(Either<T, Exception> a, long b) {
+   }
+
+   class b<T> {
+      private final evw.e<T> b;
+      private final Consumer<T> c;
+      private long d = -1L;
+
+      b(evw.e<T> $$0, Consumer<T> $$1) {
+         this.b = $$0;
+         this.c = $$1;
+      }
+
+      void a(long $$0) {
+         this.b.a($$0);
+         this.a();
+      }
+
+      void a() {
+         evw.d<T> $$0 = this.b.g;
+         if ($$0 != null && this.d < $$0.b) {
+            this.c.accept($$0.a);
+            this.d = $$0.b;
+         }
+      }
+
+      void b() {
+         evw.d<T> $$0 = this.b.g;
+         if ($$0 != null) {
+            this.c.accept($$0.a);
+            this.d = $$0.b;
+         }
+      }
+
+      void c() {
+         this.b.a();
+         this.d = -1L;
+      }
+   }
+
+   public class c {
+      private final List<evw.b<?>> b = new ArrayList<>();
+
+      public <T> void a(evw.e<T> $$0, Consumer<T> $$1) {
+         evw.b<T> $$2 = evw.this.new b<>($$0, $$1);
+         this.b.add($$2);
+         $$2.a();
+      }
+
+      public void a() {
+         for (evw.b<?> $$0 : this.b) {
+            $$0.b();
+         }
+      }
+
+      public void b() {
+         for (evw.b<?> $$0 : this.b) {
+            $$0.a(evw.this.d.get(evw.this.c));
+         }
+      }
+
+      public void c() {
+         for (evw.b<?> $$0 : this.b) {
+            $$0.c();
          }
       }
    }
 
-   @Nullable
-   private static erb a(String $$0) {
-      byte[] $$1 = Base64.getDecoder().decode($$0);
-      ByteBuffer $$2 = MemoryUtil.memAlloc($$1.length);
-
-      try {
-         return erb.a($$2.put($$1).flip());
-      } catch (IOException var7) {
-         b.warn("Failed to load world image: {}", $$0, var7);
-      } finally {
-         MemoryUtil.memFree($$2);
-      }
-
-      return null;
+   static record d<T>(T a, long b) {
    }
 
-   public static record a(String a, aiy b) {
+   public class e<T> {
+      private final String b;
+      private final Callable<T> c;
+      private final long d;
+      private final evx e;
+      @Nullable
+      private CompletableFuture<evw.a<T>> f;
+      @Nullable
+      evw.d<T> g;
+      private long h = -1L;
+
+      e(String $$1, Callable<T> $$2, long $$3, evx $$4) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
+
+      void a(long $$0) {
+         if (this.f != null) {
+            evw.a<T> $$1 = this.f.getNow(null);
+            if ($$1 == null) {
+               return;
+            }
+
+            this.f = null;
+            long $$2 = $$1.b;
+            $$1.a().ifLeft($$1x -> {
+               this.g = new evw.d<>((T)$$1x, $$2);
+               this.h = $$2 + this.d * this.e.a();
+            }).ifRight($$1x -> {
+               long $$2x = this.e.b();
+               evw.a.warn("Failed to process task {}, will repeat after {} cycles", new Object[]{this.b, $$2x, $$1x});
+               this.h = $$2 + this.d * $$2x;
+            });
+         }
+
+         if (this.h <= $$0) {
+            this.f = CompletableFuture.supplyAsync(() -> {
+               try {
+                  T $$0x = this.c.call();
+                  long $$1x = evw.this.d.get(evw.this.c);
+                  return new evw.a<>(Either.left($$0x), $$1x);
+               } catch (Exception var4x) {
+                  long $$3 = evw.this.d.get(evw.this.c);
+                  return new evw.a<>(Either.right(var4x), $$3);
+               }
+            }, evw.this.b);
+         }
+      }
+
+      public void a() {
+         this.f = null;
+         this.g = null;
+         this.h = -1L;
+      }
    }
 }

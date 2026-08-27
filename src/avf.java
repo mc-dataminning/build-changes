@@ -1,234 +1,176 @@
-import com.google.common.primitives.Longs;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import it.unimi.dsi.fastutil.bytes.ByteArrays;
-import java.nio.charset.StandardCharsets;
-import java.security.Key;
-import java.security.KeyFactory;
-import java.security.KeyPair;
-import java.security.KeyPairGenerator;
-import java.security.MessageDigest;
-import java.security.PrivateKey;
-import java.security.PublicKey;
-import java.security.SecureRandom;
-import java.security.spec.EncodedKeySpec;
-import java.security.spec.PKCS8EncodedKeySpec;
-import java.security.spec.X509EncodedKeySpec;
-import java.util.Base64;
-import java.util.Base64.Encoder;
-import javax.crypto.Cipher;
-import javax.crypto.KeyGenerator;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
+import com.google.common.base.Predicates;
+import com.google.common.collect.Iterators;
+import java.util.Arrays;
+import java.util.Iterator;
+import javax.annotation.Nullable;
 
-public class avf {
-   private static final String h = "AES";
-   private static final int i = 128;
-   private static final String j = "RSA";
-   private static final int k = 1024;
-   private static final String l = "ISO_8859_1";
-   private static final String m = "SHA-1";
-   public static final String a = "SHA256withRSA";
-   public static final int b = 256;
-   private static final String n = "-----BEGIN RSA PRIVATE KEY-----";
-   private static final String o = "-----END RSA PRIVATE KEY-----";
-   public static final String c = "-----BEGIN RSA PUBLIC KEY-----";
-   private static final String p = "-----END RSA PUBLIC KEY-----";
-   public static final String d = "\n";
-   public static final Encoder e = Base64.getMimeEncoder(76, "\n".getBytes(StandardCharsets.UTF_8));
-   public static final Codec<PublicKey> f = Codec.STRING.comapFlatMap($$0 -> {
-      try {
-         return DataResult.success(b($$0));
-      } catch (avg var2) {
-         return DataResult.error(var2::getMessage);
-      }
-   }, avf::a);
-   public static final Codec<PrivateKey> g = Codec.STRING.comapFlatMap($$0 -> {
-      try {
-         return DataResult.success(a($$0));
-      } catch (avg var2) {
-         return DataResult.error(var2::getMessage);
-      }
-   }, avf::a);
+public class avf<K> implements io<K> {
+   private static final int b = -1;
+   private static final Object c = null;
+   private static final float d = 0.8F;
+   private K[] e;
+   private int[] f;
+   private K[] g;
+   private int h;
+   private int i;
 
-   public static SecretKey a() throws avg {
-      try {
-         KeyGenerator $$0 = KeyGenerator.getInstance("AES");
-         $$0.init(128);
-         return $$0.generateKey();
-      } catch (Exception var1) {
-         throw new avg(var1);
+   private avf(int $$0) {
+      this.e = (K[])(new Object[$$0]);
+      this.f = new int[$$0];
+      this.g = (K[])(new Object[$$0]);
+   }
+
+   private avf(K[] $$0, int[] $$1, K[] $$2, int $$3, int $$4) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.i = $$4;
+   }
+
+   public static <A> avf<A> c(int $$0) {
+      return new avf((int)((float)$$0 / 0.8F));
+   }
+
+   @Override
+   public int a(@Nullable K $$0) {
+      return this.e(this.b($$0, this.e($$0)));
+   }
+
+   @Nullable
+   @Override
+   public K a(int $$0) {
+      return $$0 >= 0 && $$0 < this.g.length ? this.g[$$0] : null;
+   }
+
+   private int e(int $$0) {
+      return $$0 == -1 ? -1 : this.f[$$0];
+   }
+
+   public boolean b(K $$0) {
+      return this.a($$0) != -1;
+   }
+
+   public boolean d(int $$0) {
+      return this.a($$0) != null;
+   }
+
+   public int d(K $$0) {
+      int $$1 = this.d();
+      this.a($$0, $$1);
+      return $$1;
+   }
+
+   private int d() {
+      while (this.h < this.g.length && this.g[this.h] != null) {
+         this.h++;
+      }
+
+      return this.h;
+   }
+
+   private void f(int $$0) {
+      K[] $$1 = this.e;
+      int[] $$2 = this.f;
+      avf<K> $$3 = new avf<>($$0);
+
+      for (int $$4 = 0; $$4 < $$1.length; $$4++) {
+         if ($$1[$$4] != null) {
+            $$3.a($$1[$$4], $$2[$$4]);
+         }
+      }
+
+      this.e = $$3.e;
+      this.f = $$3.f;
+      this.g = $$3.g;
+      this.h = $$3.h;
+      this.i = $$3.i;
+   }
+
+   public void a(K $$0, int $$1) {
+      int $$2 = Math.max($$1, this.i + 1);
+      if ((float)$$2 >= (float)this.e.length * 0.8F) {
+         int $$3 = this.e.length << 1;
+
+         while ($$3 < $$1) {
+            $$3 <<= 1;
+         }
+
+         this.f($$3);
+      }
+
+      int $$4 = this.g(this.e($$0));
+      this.e[$$4] = $$0;
+      this.f[$$4] = $$1;
+      this.g[$$1] = $$0;
+      this.i++;
+      if ($$1 == this.h) {
+         this.h++;
       }
    }
 
-   public static KeyPair b() throws avg {
-      try {
-         KeyPairGenerator $$0 = KeyPairGenerator.getInstance("RSA");
-         $$0.initialize(1024);
-         return $$0.generateKeyPair();
-      } catch (Exception var1) {
-         throw new avg(var1);
-      }
+   private int e(@Nullable K $$0) {
+      return (awi.g(System.identityHashCode($$0)) & 2147483647) % this.e.length;
    }
 
-   public static byte[] a(String $$0, PublicKey $$1, SecretKey $$2) throws avg {
-      try {
-         return a($$0.getBytes("ISO_8859_1"), $$2.getEncoded(), $$1.getEncoded());
-      } catch (Exception var4) {
-         throw new avg(var4);
+   private int b(@Nullable K $$0, int $$1) {
+      for (int $$2 = $$1; $$2 < this.e.length; $$2++) {
+         if (this.e[$$2] == $$0) {
+            return $$2;
+         }
+
+         if (this.e[$$2] == c) {
+            return -1;
+         }
       }
+
+      for (int $$3 = 0; $$3 < $$1; $$3++) {
+         if (this.e[$$3] == $$0) {
+            return $$3;
+         }
+
+         if (this.e[$$3] == c) {
+            return -1;
+         }
+      }
+
+      return -1;
    }
 
-   private static byte[] a(byte[]... $$0) throws Exception {
-      MessageDigest $$1 = MessageDigest.getInstance("SHA-1");
-
-      for (byte[] $$2 : $$0) {
-         $$1.update($$2);
+   private int g(int $$0) {
+      for (int $$1 = $$0; $$1 < this.e.length; $$1++) {
+         if (this.e[$$1] == c) {
+            return $$1;
+         }
       }
 
-      return $$1.digest();
+      for (int $$2 = 0; $$2 < $$0; $$2++) {
+         if (this.e[$$2] == c) {
+            return $$2;
+         }
+      }
+
+      throw new RuntimeException("Overflowed :(");
    }
 
-   private static <T extends Key> T a(String $$0, String $$1, String $$2, avf.a<T> $$3) throws avg {
-      int $$4 = $$0.indexOf($$1);
-      if ($$4 != -1) {
-         $$4 += $$1.length();
-         int $$5 = $$0.indexOf($$2, $$4);
-         $$0 = $$0.substring($$4, $$5 + 1);
-      }
-
-      try {
-         return $$3.apply(Base64.getMimeDecoder().decode($$0));
-      } catch (IllegalArgumentException var6) {
-         throw new avg(var6);
-      }
+   @Override
+   public Iterator<K> iterator() {
+      return Iterators.filter(Iterators.forArray(this.g), Predicates.notNull());
    }
 
-   public static PrivateKey a(String $$0) throws avg {
-      return a($$0, "-----BEGIN RSA PRIVATE KEY-----", "-----END RSA PRIVATE KEY-----", avf::b);
+   public void a() {
+      Arrays.fill(this.e, null);
+      Arrays.fill(this.g, null);
+      this.h = 0;
+      this.i = 0;
    }
 
-   public static PublicKey b(String $$0) throws avg {
-      return a($$0, "-----BEGIN RSA PUBLIC KEY-----", "-----END RSA PUBLIC KEY-----", avf::a);
+   @Override
+   public int b() {
+      return this.i;
    }
 
-   public static String a(PublicKey $$0) {
-      if (!"RSA".equals($$0.getAlgorithm())) {
-         throw new IllegalArgumentException("Public key must be RSA");
-      } else {
-         return "-----BEGIN RSA PUBLIC KEY-----\n" + e.encodeToString($$0.getEncoded()) + "\n-----END RSA PUBLIC KEY-----\n";
-      }
-   }
-
-   public static String a(PrivateKey $$0) {
-      if (!"RSA".equals($$0.getAlgorithm())) {
-         throw new IllegalArgumentException("Private key must be RSA");
-      } else {
-         return "-----BEGIN RSA PRIVATE KEY-----\n" + e.encodeToString($$0.getEncoded()) + "\n-----END RSA PRIVATE KEY-----\n";
-      }
-   }
-
-   private static PrivateKey b(byte[] $$0) throws avg {
-      try {
-         EncodedKeySpec $$1 = new PKCS8EncodedKeySpec($$0);
-         KeyFactory $$2 = KeyFactory.getInstance("RSA");
-         return $$2.generatePrivate($$1);
-      } catch (Exception var3) {
-         throw new avg(var3);
-      }
-   }
-
-   public static PublicKey a(byte[] $$0) throws avg {
-      try {
-         EncodedKeySpec $$1 = new X509EncodedKeySpec($$0);
-         KeyFactory $$2 = KeyFactory.getInstance("RSA");
-         return $$2.generatePublic($$1);
-      } catch (Exception var3) {
-         throw new avg(var3);
-      }
-   }
-
-   public static SecretKey a(PrivateKey $$0, byte[] $$1) throws avg {
-      byte[] $$2 = b($$0, $$1);
-
-      try {
-         return new SecretKeySpec($$2, "AES");
-      } catch (Exception var4) {
-         throw new avg(var4);
-      }
-   }
-
-   public static byte[] a(Key $$0, byte[] $$1) throws avg {
-      return a(1, $$0, $$1);
-   }
-
-   public static byte[] b(Key $$0, byte[] $$1) throws avg {
-      return a(2, $$0, $$1);
-   }
-
-   private static byte[] a(int $$0, Key $$1, byte[] $$2) throws avg {
-      try {
-         return a($$0, $$1.getAlgorithm(), $$1).doFinal($$2);
-      } catch (Exception var4) {
-         throw new avg(var4);
-      }
-   }
-
-   private static Cipher a(int $$0, String $$1, Key $$2) throws Exception {
-      Cipher $$3 = Cipher.getInstance($$1);
-      $$3.init($$0, $$2);
-      return $$3;
-   }
-
-   public static Cipher a(int $$0, Key $$1) throws avg {
-      try {
-         Cipher $$2 = Cipher.getInstance("AES/CFB8/NoPadding");
-         $$2.init($$0, $$1, new IvParameterSpec($$1.getEncoded()));
-         return $$2;
-      } catch (Exception var3) {
-         throw new avg(var3);
-      }
-   }
-
-   interface a<T extends Key> {
-      T apply(byte[] var1) throws avg;
-   }
-
-   public static record b(long b, byte[] c) {
-      public static final avf.b a = new avf.b(0L, ByteArrays.EMPTY_ARRAY);
-
-      public b(uq $$0) {
-         this($$0.readLong(), $$0.b());
-      }
-
-      public boolean a() {
-         return this.c.length > 0;
-      }
-
-      public static void a(uq $$0, avf.b $$1) {
-         $$0.b($$1.b);
-         $$0.a($$1.c);
-      }
-
-      public byte[] b() {
-         return Longs.toByteArray(this.b);
-      }
-
-      public long c() {
-         return this.b;
-      }
-
-      public byte[] d() {
-         return this.c;
-      }
-   }
-
-   public static class c {
-      private static final SecureRandom a = new SecureRandom();
-
-      public static long a() {
-         return a.nextLong();
-      }
+   public avf<K> c() {
+      return new avf<>((K[])((Object[])this.e.clone()), (int[])this.f.clone(), (K[])((Object[])this.g.clone()), this.h, this.i);
    }
 }

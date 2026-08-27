@@ -1,59 +1,70 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.google.common.base.Joiner;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-public abstract class ell implements elu {
-   protected final List<elu> c;
-   private final Predicate<eiv> a;
+public class ell {
+   private final Set<elk<?>> a;
+   private final Set<elk<?>> b;
 
-   protected ell(List<elu> $$0, Predicate<eiv> $$1) {
-      this.c = $$0;
-      this.a = $$1;
+   ell(Set<elk<?>> $$0, Set<elk<?>> $$1) {
+      this.a = ImmutableSet.copyOf($$0);
+      this.b = ImmutableSet.copyOf(Sets.union($$0, $$1));
    }
 
-   protected static <T extends ell> Codec<T> a(Function<List<elu>, T> $$0) {
-      return RecordCodecBuilder.create($$1 -> $$1.group(elw.a.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
+   public boolean a(elk<?> $$0) {
+      return this.b.contains($$0);
    }
 
-   protected static <T extends ell> Codec<T> b(Function<List<elu>, T> $$0) {
-      return elw.a.listOf().xmap($$0, $$0x -> $$0x.c);
+   public Set<elk<?>> a() {
+      return this.a;
    }
 
-   public final boolean a(eiv $$0) {
-      return this.a.test($$0);
+   public Set<elk<?>> b() {
+      return this.b;
    }
 
    @Override
-   public void a(eje $$0) {
-      elu.super.a($$0);
+   public String toString() {
+      return "[" + Joiner.on(", ").join(this.b.stream().map($$0 -> (this.a.contains($$0) ? "!" : "") + $$0.a()).iterator()) + "]";
+   }
 
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".term[" + $$1 + "]"));
+   public void a(ejl $$0, ejd $$1) {
+      Set<elk<?>> $$2 = $$1.a();
+      Set<elk<?>> $$3 = Sets.difference($$2, this.b);
+      if (!$$3.isEmpty()) {
+         $$0.b("Parameters " + $$3 + " are not provided in this context");
       }
    }
 
-   public abstract static class a implements elu.a {
-      private final Builder<elu> a = ImmutableList.builder();
+   public static ell.a c() {
+      return new ell.a();
+   }
 
-      protected a(elu.a... $$0) {
-         for (elu.a $$1 : $$0) {
-            this.a.add($$1.build());
+   public static class a {
+      private final Set<elk<?>> a = Sets.newIdentityHashSet();
+      private final Set<elk<?>> b = Sets.newIdentityHashSet();
+
+      public ell.a a(elk<?> $$0) {
+         if (this.b.contains($$0)) {
+            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already optional");
+         } else {
+            this.a.add($$0);
+            return this;
          }
       }
 
-      public void a(elu.a $$0) {
-         this.a.add($$0.build());
+      public ell.a b(elk<?> $$0) {
+         if (this.a.contains($$0)) {
+            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already required");
+         } else {
+            this.b.add($$0);
+            return this;
+         }
       }
 
-      @Override
-      public elu build() {
-         return this.a(this.a.build());
+      public ell a() {
+         return new ell(this.a, this.b);
       }
-
-      protected abstract elu a(List<elu> var1);
    }
 }

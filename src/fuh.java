@@ -1,26 +1,45 @@
-public class fuh extends frs {
-   private static final int a = 12235202;
+public abstract class fuh extends ftu {
+   protected ghb E;
 
-   protected fuh(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, ftu $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.0F, 20, 0.0125F, false);
-      this.v = (float)avr.b.b(12235202) / 255.0F;
-      this.w = (float)avr.b.c(12235202) / 255.0F;
-      this.x = (float)avr.b.d(12235202) / 255.0F;
+   protected fuh(fqe $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
-   public static class a implements ftc<kc> {
-      private final ftu a;
+   protected fuh(fqe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
 
-      public a(ftu $$0) {
-         this.a = $$0;
-      }
+   protected void a(ghb $$0) {
+      this.E = $$0;
+   }
 
-      public fsz a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         awo $$8 = $$1.z;
-         double $$9 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
-         double $$10 = (double)$$8.i() * -0.5 * (double)$$8.i() * 0.1 * 5.0;
-         double $$11 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
-         return new fuh($$1, $$2, $$3, $$4, $$9, $$10, $$11, 1.0F, this.a);
+   @Override
+   protected float c() {
+      return this.E.c();
+   }
+
+   @Override
+   protected float d() {
+      return this.E.d();
+   }
+
+   @Override
+   protected float e() {
+      return this.E.g();
+   }
+
+   @Override
+   protected float f() {
+      return this.E.h();
+   }
+
+   public void a(fuc $$0) {
+      this.a($$0.a(this.r));
+   }
+
+   public void b(fuc $$0) {
+      if (!this.o) {
+         this.a($$0.a(this.s, this.t));
       }
    }
 }

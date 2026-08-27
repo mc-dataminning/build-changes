@@ -1,5 +1,5 @@
-public record zb(dpt c, int d) implements yy {
-   public static final xo<vb, zb> a = xo.a(dpt.d, zb::b, xm.d, zb::c, zb::new);
+public record zb(dqa c, int d) implements yy {
+   public static final xo<vb, zb> a = xo.a(dqa.d, zb::b, xm.d, zb::c, zb::new);
    public static final yy.b<zb> b = yy.a("debug/game_event_listeners");
 
    @Override
@@ -7,7 +7,7 @@ public record zb(dpt c, int d) implements yy {
       return b;
    }
 
-   public dpt b() {
+   public dqa b() {
       return this.c;
    }
 

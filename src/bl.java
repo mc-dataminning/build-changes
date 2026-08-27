@@ -8,13 +8,13 @@ public class bl extends cx<bl.a> {
       return bl.a.a;
    }
 
-   public void a(aow $$0, coz $$1, int $$2) {
+   public void a(aox $$0, cpd $$1, int $$2) {
       this.a($$0, $$2x -> $$2x.a($$1, $$2));
    }
 
    public static record a(Optional<bc> b, Optional<cc> c, cm.d d) implements cx.a {
       public static final Codec<bl.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(avp.a(br.b, "player").forGetter(bl.a::a), avp.a(cc.a, "item").forGetter(bl.a::c), avp.a(cm.d.d, "levels", cm.d.c).forGetter(bl.a::d))
+         $$0 -> $$0.group(avq.a(br.b, "player").forGetter(bl.a::a), avq.a(cc.a, "item").forGetter(bl.a::c), avq.a(cm.d.d, "levels", cm.d.c).forGetter(bl.a::d))
                .apply($$0, bl.a::new)
       );
 
@@ -22,7 +22,7 @@ public class bl extends cx<bl.a> {
          return am.j.a(new bl.a(Optional.empty(), Optional.empty(), cm.d.c));
       }
 
-      public boolean a(coz $$0, int $$1) {
+      public boolean a(cpd $$0, int $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : this.d.d($$1);
       }
 

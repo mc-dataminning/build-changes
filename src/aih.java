@@ -18,18 +18,18 @@ import org.slf4j.Logger;
 
 public class aih {
    private static final Logger a = LogUtils.getLogger();
-   private static final Object2IntMap<Class<? extends bno>> b = new Object2IntOpenHashMap();
+   private static final Object2IntMap<Class<? extends bnq>> b = new Object2IntOpenHashMap();
    private static final int c = 254;
-   private final bno d;
+   private final bnq d;
    private final Int2ObjectMap<aih.a<?>> e = new Int2ObjectOpenHashMap();
    private final ReadWriteLock f = new ReentrantReadWriteLock();
    private boolean g;
 
-   public aih(bno $$0) {
+   public aih(bnq $$0) {
       this.d = $$0;
    }
 
-   public static <T> aie<T> a(Class<? extends bno> $$0, aif<T> $$1) {
+   public static <T> aie<T> a(Class<? extends bnq> $$0, aif<T> $$1) {
       if (a.isDebugEnabled()) {
          try {
             Class<?> $$2 = Class.forName(Thread.currentThread().getStackTrace()[2].getClassName());
@@ -47,7 +47,7 @@ public class aih {
          int $$4 = 0;
          Class<?> $$5 = $$0;
 
-         while ($$5 != bno.class) {
+         while ($$5 != bnq.class) {
             $$5 = $$5.getSuperclass();
             if (b.containsKey($$5)) {
                $$4 = b.getInt($$5) + 1;

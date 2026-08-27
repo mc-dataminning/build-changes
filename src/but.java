@@ -1,71 +1,44 @@
-import java.util.EnumSet;
-import java.util.function.Predicate;
+public class but extends bvs {
+   private final caa g;
 
-public class but extends bvb {
-   private static final int a = 40;
-   private static final Predicate<dlf> b = dlo.a(cyq.bt);
-   private final boi c;
-   private final cvn d;
-   private int e;
-
-   public but(boi $$0) {
-      this.c = $$0;
-      this.d = $$0.dM();
-      this.a(EnumSet.of(bvb.a.a, bvb.a.b, bvb.a.c));
+   public but(caa $$0, double $$1) {
+      super($$0, $$1, 8);
+      this.g = $$0;
    }
 
    @Override
    public boolean a() {
-      if (this.c.eh().a(this.c.o_() ? 50 : 1000) != 0) {
-         return false;
-      } else {
-         hz $$0 = this.c.dm();
-         return b.test(this.d.a_($$0)) ? true : this.d.a_($$0.d()).a(cyq.i);
-      }
+      return this.g.u() && !this.g.gg() && super.a();
    }
 
    @Override
    public void c() {
-      this.e = this.a(40);
-      this.d.a(this.c, (byte)10);
-      this.c.N().n();
+      super.c();
+      this.g.y(false);
    }
 
    @Override
    public void d() {
-      this.e = 0;
-   }
-
-   @Override
-   public boolean b() {
-      return this.e > 0;
-   }
-
-   public int h() {
-      return this.e;
+      super.d();
+      this.g.y(false);
    }
 
    @Override
    public void e() {
-      this.e = Math.max(0, this.e - 1);
-      if (this.e == this.a(4)) {
-         hz $$0 = this.c.dm();
-         if (b.test(this.d.a_($$0))) {
-            if (this.d.Z().b(cvj.c)) {
-               this.d.b($$0, false);
-            }
+      super.e();
+      this.g.y(this.m());
+   }
 
-            this.c.P();
+   @Override
+   protected boolean a(cvu $$0, hz $$1) {
+      if (!$$0.u($$1.c())) {
+         return false;
+      } else {
+         dlj $$2 = $$0.a_($$1);
+         if ($$2.a(cyu.cv)) {
+            return dje.a($$0, $$1) < 1;
          } else {
-            hz $$1 = $$0.d();
-            if (this.d.a_($$1).a(cyq.i)) {
-               if (this.d.Z().b(cvj.c)) {
-                  this.d.c(2001, $$1, cyo.i(cyq.i.o()));
-                  this.d.a($$1, cyq.j.o(), 2);
-               }
-
-               this.c.P();
-            }
+            return $$2.a(cyu.cD) && $$2.c(dbz.b) ? true : $$2.a(aua.R, $$0x -> $$0x.d(cyl.b).map($$0xx -> $$0xx != dlw.a).orElse(true));
          }
       }
    }

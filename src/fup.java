@@ -1,38 +1,26 @@
-import com.google.common.collect.ForwardingList;
-import java.util.List;
+public class fup extends fsa {
+   private static final int a = 12235202;
 
-public class fup extends ForwardingList<coz> {
-   private final is<coz> a = is.a(chg.g(), coz.h);
-
-   protected List<coz> delegate() {
-      return this.a;
+   protected fup(fqe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fuc $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.0F, 20, 0.0125F, false);
+      this.v = (float)avs.b.b(12235202) / 255.0F;
+      this.w = (float)avs.b.c(12235202) / 255.0F;
+      this.x = (float)avs.b.d(12235202) / 255.0F;
    }
 
-   public tc a() {
-      tc $$0 = new tc();
+   public static class a implements ftk<kc> {
+      private final fuc a;
 
-      for (coz $$1 : this.delegate()) {
-         $$0.add($$1.b(new sw()));
+      public a(fuc $$0) {
+         this.a = $$0;
       }
 
-      return $$0;
-   }
-
-   public void a(tc $$0) {
-      List<coz> $$1 = this.delegate();
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         $$1.set($$2, coz.a($$0.a($$2)));
+      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         awp $$8 = $$1.z;
+         double $$9 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
+         double $$10 = (double)$$8.i() * -0.5 * (double)$$8.i() * 0.1 * 5.0;
+         double $$11 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
+         return new fup($$1, $$2, $$3, $$4, $$9, $$10, $$11, 1.0F, this.a);
       }
-   }
-
-   public boolean isEmpty() {
-      for (coz $$0 : this.delegate()) {
-         if (!$$0.b()) {
-            return false;
-         }
-      }
-
-      return true;
    }
 }

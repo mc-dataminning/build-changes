@@ -14,7 +14,7 @@ public class lz implements km {
       this.d = $$0;
    }
 
-   public <T> lz a(arb<T> $$0, T $$1) {
+   public <T> lz a(arc<T> $$0, T $$1) {
       this.e.put($$0.a(), () -> $$0.a($$1));
       return this;
    }
@@ -32,10 +32,10 @@ public class lz implements km {
    }
 
    public static lz a(ko $$0, vq $$1) {
-      return new lz($$0).a(arc.b, new arc($$1, t.a.a(aqp.b), Optional.empty()));
+      return new lz($$0).a(ard.b, new ard($$1, t.a.a(aqq.b), Optional.empty()));
    }
 
-   public static lz a(ko $$0, vq $$1, cjs $$2) {
-      return a($$0, $$1).a(aql.a, new aql($$2));
+   public static lz a(ko $$0, vq $$1, cjw $$2) {
+      return a($$0, $$1).a(aqm.a, new aqm($$2));
    }
 }

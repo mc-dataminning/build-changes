@@ -1,20 +1,12 @@
-public class gip {
-   public static final giq a = new giq();
-   public static final boolean b = false;
-   public static final boolean c = false;
-   private final boolean d;
-   private final boolean e;
+import com.google.gson.JsonObject;
 
-   public gip(boolean $$0, boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
+public class gip implements arb<gio> {
+   public gio b(JsonObject $$0) {
+      return new gio(gio.a.a(avy.a($$0, "hat", "none")));
    }
 
-   public boolean a() {
-      return this.d;
-   }
-
-   public boolean b() {
-      return this.e;
+   @Override
+   public String a() {
+      return "villager";
    }
 }

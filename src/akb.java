@@ -18,14 +18,14 @@ public class akb {
    private static final Logger a = LogUtils.getLogger();
    private final String b;
    private final int c;
-   private final asn d;
+   private final aso d;
    private final int e;
    private volatile boolean f;
    @Nullable
    private ServerSocket g;
    private final CopyOnWriteArrayList<Socket> h = new CopyOnWriteArrayList<>();
 
-   public akb(String $$0, int $$1, asn $$2, int $$3) {
+   public akb(String $$0, int $$1, aso $$2, int $$3) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -120,12 +120,12 @@ public class akb {
 
    @Nullable
    private akb.a e() {
-      List<aow> $$0 = this.d.t();
+      List<aox> $$0 = this.d.t();
       if ($$0.isEmpty()) {
          return null;
       } else {
-         aow $$1 = $$0.get(0);
-         String $$2 = (String)akj.a.inverse().get($$1.dM().ae());
+         aox $$1 = $$0.get(0);
+         String $$2 = (String)akj.a.inverse().get($$1.dM().ad());
          return $$2 == null ? null : new akb.a($$2, $$1.dr(), $$1.dt(), $$1.dx(), $$1.dC(), $$1.dE());
       }
    }

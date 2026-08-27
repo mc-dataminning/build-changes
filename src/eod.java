@@ -1,32 +1,20 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+public interface eod {
+   eod a = ($$0, $$1) -> false;
+   eod b = ($$0, $$1) -> !$$0 && !$$1;
+   eod c = ($$0, $$1) -> $$1 && !$$0;
+   eod d = ($$0, $$1) -> !$$0;
+   eod e = ($$0, $$1) -> $$0 && !$$1;
+   eod f = ($$0, $$1) -> !$$1;
+   eod g = ($$0, $$1) -> $$0 != $$1;
+   eod h = ($$0, $$1) -> !$$0 || !$$1;
+   eod i = ($$0, $$1) -> $$0 && $$1;
+   eod j = ($$0, $$1) -> $$0 == $$1;
+   eod k = ($$0, $$1) -> $$1;
+   eod l = ($$0, $$1) -> !$$0 || $$1;
+   eod m = ($$0, $$1) -> $$0;
+   eod n = ($$0, $$1) -> $$0 || !$$1;
+   eod o = ($$0, $$1) -> $$0 || $$1;
+   eod p = ($$0, $$1) -> true;
 
-public class eod implements eoe {
-   private final DoubleList a;
-
-   public eod(DoubleList $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public boolean a(eoe.a $$0) {
-      int $$1 = this.a.size() - 1;
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2, $$2, $$2)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public int size() {
-      return this.a.size();
-   }
-
-   @Override
-   public DoubleList a() {
-      return this.a;
-   }
+   boolean apply(boolean var1, boolean var2);
 }

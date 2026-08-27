@@ -1,96 +1,69 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class dcq extends cya {
-   public static final MapCodec<dcq> a = b(dcq::new);
-   public static final dlw b = dlv.n;
+public class dcq extends cys {
+   public static final MapCodec<dcq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(kf.e.q().fieldOf("host").forGetter(dcq::b), u()).apply($$0, dcq::new));
+   private final cys b;
+   private static final Map<cys, cys> c = Maps.newIdentityHashMap();
+   private static final Map<dlj, dlj> d = Maps.newIdentityHashMap();
+   private static final Map<dlj, dlj> e = Maps.newIdentityHashMap();
 
    @Override
-   public MapCodec<dcq> a() {
+   public MapCodec<? extends dcq> a() {
       return a;
    }
 
-   protected dcq(dle.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)));
+   public dcq(cys $$0, dli.d $$1) {
+      super($$1.e($$0.x() / 2.0F).f(0.75F));
+      this.b = $$0;
+      c.put($$0, this);
+   }
+
+   public cys b() {
+      return this.b;
+   }
+
+   public static boolean m(dlj $$0) {
+      return c.containsKey($$0.b());
+   }
+
+   private void a(aow $$0, hz $$1) {
+      cey $$2 = bnw.aK.a((cvr)$$0);
+      if ($$2 != null) {
+         $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
+         $$0.b($$2);
+         $$2.S();
+      }
    }
 
    @Override
-   public void a(cvn $$0, hz $$1, dlf $$2, @Nullable bog $$3, coz $$4) {
+   protected void a(dlj $$0, aow $$1, hz $$2, cpd $$3, boolean $$4) {
       super.a($$0, $$1, $$2, $$3, $$4);
-      sw $$5 = cms.a($$4);
-      if ($$5 != null && $$5.e("RecordItem")) {
-         $$0.a($$1, $$2.a(b, Boolean.valueOf(true)), 2);
+      if ($$1.Z().b(cvn.h) && ctn.a(ctp.v, $$3) == 0) {
+         this.a($$1, $$2);
       }
    }
 
-   @Override
-   protected blu a(dlf $$0, cvn $$1, hz $$2, chh $$3, eno $$4) {
-      if ($$0.c(b) && $$1.c_($$2) instanceof dju $$5) {
-         $$5.k();
-         return blu.a($$1.B);
-      } else {
-         return blu.d;
-      }
+   public static dlj n(dlj $$0) {
+      return a(d, $$0, () -> c.get($$0.b()).o());
    }
 
-   @Override
-   protected void a(dlf $$0, cvn $$1, hz $$2, dlf $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if ($$1.c_($$2) instanceof dju $$5) {
-            $$5.k();
+   public dlj o(dlj $$0) {
+      return a(e, $$0, () -> this.b().o());
+   }
+
+   private static dlj a(Map<dlj, dlj> $$0, dlj $$1, Supplier<dlj> $$2) {
+      return $$0.computeIfAbsent($$1, $$1x -> {
+         dlj $$2x = $$2.get();
+
+         for (dmm $$3 : $$1x.B()) {
+            $$2x = $$2x.b($$3) ? $$2x.a($$3, $$1x.c($$3)) : $$2x;
          }
 
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   public dit a(hz $$0, dlf $$1) {
-      return new dju($$0, $$1);
-   }
-
-   @Override
-   public boolean f_(dlf $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(dlf $$0, cut $$1, hz $$2, ie $$3) {
-      if ($$1.c_($$2) instanceof dju $$4 && $$4.f()) {
-         return 15;
-      }
-
-      return 0;
-   }
-
-   @Override
-   protected boolean d_(dlf $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dlf $$0, cvn $$1, hz $$2) {
-      if ($$1.c_($$2) instanceof dju $$3 && $$3.x().d() instanceof cpr $$4) {
-         return $$4.h();
-      }
-
-      return 0;
-   }
-
-   @Override
-   protected det b_(dlf $$0) {
-      return det.c;
-   }
-
-   @Override
-   protected void a(dlg.a<cyo, dlf> $$0) {
-      $$0.a(b);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dit> diu<T> a(cvn $$0, dlf $$1, div<T> $$2) {
-      return $$1.c(b) ? a($$2, div.e, dju::a) : null;
+         return $$2x;
+      });
    }
 }

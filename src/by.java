@@ -2,17 +2,17 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record by(Optional<auo<ego>> b, Optional<ij<ego>> c, Optional<db> d) {
+public record by(Optional<aup<egv>> b, Optional<ij<egv>> c, Optional<db> d) {
    public static final Codec<by> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(avp.a(auo.a(kg.y), "tag").forGetter(by::a), avp.a(kf.c.r(), "fluid").forGetter(by::b), avp.a(db.a, "state").forGetter(by::c))
+      $$0 -> $$0.group(avq.a(aup.a(kg.y), "tag").forGetter(by::a), avq.a(kf.c.r(), "fluid").forGetter(by::b), avq.a(db.a, "state").forGetter(by::c))
             .apply($$0, by::new)
    );
 
-   public boolean a(aov $$0, hz $$1) {
+   public boolean a(aow $$0, hz $$1) {
       if (!$$0.p($$1)) {
          return false;
       } else {
-         egp $$2 = $$0.b_($$1);
+         egw $$2 = $$0.b_($$1);
          if (this.b.isPresent() && !$$2.a(this.b.get())) {
             return false;
          } else {
@@ -21,11 +21,11 @@ public record by(Optional<auo<ego>> b, Optional<ij<ego>> c, Optional<db> d) {
       }
    }
 
-   public Optional<auo<ego>> a() {
+   public Optional<aup<egv>> a() {
       return this.b;
    }
 
-   public Optional<ij<ego>> b() {
+   public Optional<ij<egv>> b() {
       return this.c;
    }
 
@@ -34,8 +34,8 @@ public record by(Optional<auo<ego>> b, Optional<ij<ego>> c, Optional<db> d) {
    }
 
    public static class a {
-      private Optional<ij<ego>> a = Optional.empty();
-      private Optional<auo<ego>> b = Optional.empty();
+      private Optional<ij<egv>> a = Optional.empty();
+      private Optional<aup<egv>> b = Optional.empty();
       private Optional<db> c = Optional.empty();
 
       private a() {
@@ -45,12 +45,12 @@ public record by(Optional<auo<ego>> b, Optional<ij<ego>> c, Optional<db> d) {
          return new by.a();
       }
 
-      public by.a a(ego $$0) {
+      public by.a a(egv $$0) {
          this.a = Optional.of($$0.k());
          return this;
       }
 
-      public by.a a(auo<ego> $$0) {
+      public by.a a(aup<egv> $$0) {
          this.b = Optional.of($$0);
          return this;
       }

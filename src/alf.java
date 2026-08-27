@@ -5,10 +5,10 @@ import com.mojang.brigadier.context.CommandContext;
 public class alf {
    public static void a(CommandDispatcher<du> $$0) {
       final LiteralArgumentBuilder<du> $$1 = (LiteralArgumentBuilder<du>)dv.a("gamerule").requires($$0x -> $$0x.c(2));
-      cvj.a(
-         new cvj.c() {
+      cvn.a(
+         new cvn.c() {
             @Override
-            public <T extends cvj.g<T>> void a(cvj.e<T> $$0, cvj.f<T> $$1x) {
+            public <T extends cvn.g<T>> void a(cvn.e<T> $$0, cvn.f<T> $$1x) {
                $$1.then(
                   ((LiteralArgumentBuilder)dv.a($$0.a()).executes($$1xxx -> alf.a((du)$$1xxx.getSource(), $$0)))
                      .then($$1.a("value").executes($$1xxx -> alf.a($$1xxx, $$0)))
@@ -19,16 +19,16 @@ public class alf {
       $$0.register($$1);
    }
 
-   static <T extends cvj.g<T>> int a(CommandContext<du> $$0, cvj.e<T> $$1) {
+   static <T extends cvn.g<T>> int a(CommandContext<du> $$0, cvn.e<T> $$1) {
       du $$2 = (du)$$0.getSource();
-      T $$3 = $$2.l().aK().a($$1);
+      T $$3 = $$2.l().aM().a($$1);
       $$3.b($$0, "value");
       $$2.a(() -> vq.a("commands.gamerule.set", $$1.a(), $$3.toString()), true);
       return $$3.c();
    }
 
-   static <T extends cvj.g<T>> int a(du $$0, cvj.e<T> $$1) {
-      T $$2 = $$0.l().aK().a($$1);
+   static <T extends cvn.g<T>> int a(du $$0, cvn.e<T> $$1) {
+      T $$2 = $$0.l().aM().a($$1);
       $$0.a(() -> vq.a("commands.gamerule.query", $$1.a(), $$2.toString()), false);
       return $$2.c();
    }

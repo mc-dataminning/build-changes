@@ -1,57 +1,57 @@
-import com.mojang.serialization.Codec;
+public class boj extends bnq {
+   private static final String b = "data";
+   private sw c = new sw();
 
-public enum boj implements axc {
-   a("monster", 70, false, false, 128),
-   b("creature", 10, true, true, 128),
-   c("ambient", 15, true, false, 128),
-   d("axolotls", 5, true, false, 128),
-   e("underground_water_creature", 5, true, false, 128),
-   f("water_creature", 5, true, false, 128),
-   g("water_ambient", 20, true, false, 64),
-   h("misc", -1, true, true, 128);
-
-   public static final Codec<boj> i = axc.a(boj::values);
-   private final int j;
-   private final boolean k;
-   private final boolean l;
-   private final String m;
-   private final int n = 32;
-   private final int o;
-
-   private boj(String $$0, int $$1, boolean $$2, boolean $$3, int $$4) {
-      this.m = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
-      this.o = $$4;
-   }
-
-   public String a() {
-      return this.m;
+   public boj(bnw<?> $$0, cvr $$1) {
+      super($$0, $$1);
+      this.ae = true;
    }
 
    @Override
-   public String c() {
-      return this.m;
+   public void l() {
    }
 
-   public int b() {
-      return this.j;
+   @Override
+   protected void c_() {
    }
 
-   public boolean d() {
-      return this.k;
+   @Override
+   protected void a(sw $$0) {
+      this.c = $$0.p("data");
    }
 
-   public boolean e() {
-      return this.l;
+   @Override
+   protected void b(sw $$0) {
+      $$0.a("data", this.c.h());
    }
 
-   public int f() {
-      return this.o;
+   @Override
+   public xx<aag> di() {
+      throw new IllegalStateException("Markers should never be sent");
    }
 
-   public int g() {
-      return 32;
+   @Override
+   protected boolean q(bnq $$0) {
+      return false;
+   }
+
+   @Override
+   protected boolean bD() {
+      return false;
+   }
+
+   @Override
+   protected void o(bnq $$0) {
+      throw new IllegalStateException("Should never addPassenger without checking couldAcceptPassenger()");
+   }
+
+   @Override
+   public ehb s_() {
+      return ehb.d;
+   }
+
+   @Override
+   public boolean r_() {
+      return true;
    }
 }

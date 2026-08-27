@@ -1,25 +1,43 @@
-public class bxv extends byh {
-   public static final float a = 8.0F;
+public class bxv extends bxt {
+   private boolean p;
 
-   @Override
-   protected boolean a(bog $$0, bog $$1) {
-      return this.f($$0, $$1) && $$1.bc() && (this.b($$1) || this.e($$0, $$1)) && byn.c($$0, $$1);
-   }
-
-   private boolean e(bog $$0, bog $$1) {
-      return !$$0.dO().a(bxh.U) && $$1.ai().a(auc.j);
-   }
-
-   private boolean b(bog $$0) {
-      return $$0.ai().a(auc.i);
-   }
-
-   private boolean f(bog $$0, bog $$1) {
-      return $$1.f((bno)$$0) <= 64.0;
+   public bxv(bok $$0, cvr $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected bxh<bog> b() {
-      return bxh.B;
+   protected ehn a(int $$0) {
+      this.p = this.a.ai() == bnw.x;
+      this.o = new eho(this.p);
+      return new ehn(this.o, $$0);
+   }
+
+   @Override
+   protected boolean a() {
+      return this.p || this.a.bd();
+   }
+
+   @Override
+   protected enz b() {
+      return new enz(this.a.dr(), this.a.e(0.5), this.a.dx());
+   }
+
+   @Override
+   protected double a(enz $$0) {
+      return $$0.d;
+   }
+
+   @Override
+   protected boolean a(enz $$0, enz $$1) {
+      return a(this.a, $$0, $$1, false);
+   }
+
+   @Override
+   public boolean a(hz $$0) {
+      return !this.b.a_($$0).i(this.b, $$0);
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

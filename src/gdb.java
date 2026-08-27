@@ -1,28 +1,20 @@
-public class gdb extends gby<cfa, foe<cfa>> {
-   private static final aiy a = new aiy("textures/entity/strider/strider.png");
-   private static final aiy i = new aiy("textures/entity/strider/strider_cold.png");
-   private static final float j = 0.5F;
+public class gdb extends gbr<cea, fod<cea>> {
+   private static final aiy a = new aiy("textures/entity/skeleton/skeleton.png");
 
-   public gdb(gas.a $$0) {
-      super($$0, new foe<>($$0.a(fpb.bz)), 0.5F);
-      this.a(new gfe<>(this, new foe<>($$0.a(fpb.bA)), new aiy("textures/entity/strider/strider_saddle.png")));
+   public gdb(gba.a $$0) {
+      this($$0, fpi.bj, fpi.bl, fpi.bm);
    }
 
-   public aiy a(cfa $$0) {
-      return $$0.u() ? i : a;
+   public gdb(gba.a $$0, fph $$1, fph $$2, fph $$3) {
+      super($$0, new fod<>($$0.a($$1)), 0.5F);
+      this.a(new gfb<>(this, new fod($$0.a($$2)), new fod($$0.a($$3)), $$0.g()));
    }
 
-   protected float b(cfa $$0) {
-      float $$1 = super.b($$0);
-      return $$0.o_() ? $$1 * 0.5F : $$1;
+   public aiy a(cea $$0) {
+      return a;
    }
 
-   protected void a(cfa $$0, esa $$1, float $$2) {
-      float $$3 = $$0.dZ();
-      $$1.b($$3, $$3, $$3);
-   }
-
-   protected boolean c(cfa $$0) {
-      return super.a($$0) || $$0.u();
+   protected boolean b(cea $$0) {
+      return $$0.gg();
    }
 }

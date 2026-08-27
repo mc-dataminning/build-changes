@@ -1,15 +1,15 @@
-public enum bna {
-   a(n.j),
-   b(n.m),
-   c(n.j);
-
-   private final n d;
-
-   private bna(n $$0) {
-      this.d = $$0;
+public class bna extends bnb {
+   public bna(bnc $$0, int $$1) {
+      super($$0, $$1);
    }
 
-   public n a() {
-      return this.d;
+   @Override
+   public boolean a() {
+      return true;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= 1;
    }
 }

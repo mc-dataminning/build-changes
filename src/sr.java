@@ -47,7 +47,7 @@ public abstract class sr {
          }
 
          @Override
-         public avt a(vv $$0) {
+         public avu a(vv $$0) {
             return $$1 -> $$0.a(($$1x, $$2xxx) -> axb.c($$2xxx, $$1x, $$1) ? Optional.empty() : vv.a, wn.a).isPresent();
          }
       };
@@ -65,7 +65,7 @@ public abstract class sr {
       JsonObject $$2 = (JsonObject)c.fromJson(new InputStreamReader($$0, StandardCharsets.UTF_8), JsonObject.class);
 
       for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
-         String $$4 = d.matcher(avx.a($$3.getValue(), $$3.getKey())).replaceAll("%$1s");
+         String $$4 = d.matcher(avy.a($$3.getValue(), $$3.getKey())).replaceAll("%$1s");
          $$1.accept($$3.getKey(), $$4);
       }
    }
@@ -88,9 +88,9 @@ public abstract class sr {
 
    public abstract boolean b();
 
-   public abstract avt a(vv var1);
+   public abstract avu a(vv var1);
 
-   public List<avt> a(List<vv> $$0) {
+   public List<avu> a(List<vv> $$0) {
       return $$0.stream().map(this::a).collect(ImmutableList.toImmutableList());
    }
 }

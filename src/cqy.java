@@ -1,58 +1,136 @@
-public class cqy {
-   public static final aix<cqv> a = aix.a(kg.X, new aiy("empty"));
-   public static final ij<cqv> b = a(a, new cqv());
-   public static final ij<cqv> c = a("water", new cqv());
-   public static final ij<cqv> d = a("mundane", new cqv());
-   public static final ij<cqv> e = a("thick", new cqv());
-   public static final ij<cqv> f = a("awkward", new cqv());
-   public static final ij<cqv> g = a("night_vision", new cqv(new bnb(bnd.p, 3600)));
-   public static final ij<cqv> h = a("long_night_vision", new cqv("night_vision", new bnb(bnd.p, 9600)));
-   public static final ij<cqv> i = a("invisibility", new cqv(new bnb(bnd.n, 3600)));
-   public static final ij<cqv> j = a("long_invisibility", new cqv("invisibility", new bnb(bnd.n, 9600)));
-   public static final ij<cqv> k = a("leaping", new cqv(new bnb(bnd.h, 3600)));
-   public static final ij<cqv> l = a("long_leaping", new cqv("leaping", new bnb(bnd.h, 9600)));
-   public static final ij<cqv> m = a("strong_leaping", new cqv("leaping", new bnb(bnd.h, 1800, 1)));
-   public static final ij<cqv> n = a("fire_resistance", new cqv(new bnb(bnd.l, 3600)));
-   public static final ij<cqv> o = a("long_fire_resistance", new cqv("fire_resistance", new bnb(bnd.l, 9600)));
-   public static final ij<cqv> p = a("swiftness", new cqv(new bnb(bnd.a, 3600)));
-   public static final ij<cqv> q = a("long_swiftness", new cqv("swiftness", new bnb(bnd.a, 9600)));
-   public static final ij<cqv> r = a("strong_swiftness", new cqv("swiftness", new bnb(bnd.a, 1800, 1)));
-   public static final ij<cqv> s = a("slowness", new cqv(new bnb(bnd.b, 1800)));
-   public static final ij<cqv> t = a("long_slowness", new cqv("slowness", new bnb(bnd.b, 4800)));
-   public static final ij<cqv> u = a("strong_slowness", new cqv("slowness", new bnb(bnd.b, 400, 3)));
-   public static final ij<cqv> v = a("turtle_master", new cqv("turtle_master", new bnb(bnd.b, 400, 3), new bnb(bnd.k, 400, 2)));
-   public static final ij<cqv> w = a("long_turtle_master", new cqv("turtle_master", new bnb(bnd.b, 800, 3), new bnb(bnd.k, 800, 2)));
-   public static final ij<cqv> x = a("strong_turtle_master", new cqv("turtle_master", new bnb(bnd.b, 400, 5), new bnb(bnd.k, 400, 3)));
-   public static final ij<cqv> y = a("water_breathing", new cqv(new bnb(bnd.m, 3600)));
-   public static final ij<cqv> z = a("long_water_breathing", new cqv("water_breathing", new bnb(bnd.m, 9600)));
-   public static final ij<cqv> A = a("healing", new cqv(new bnb(bnd.f, 1)));
-   public static final ij<cqv> B = a("strong_healing", new cqv("healing", new bnb(bnd.f, 1, 1)));
-   public static final ij<cqv> C = a("harming", new cqv(new bnb(bnd.g, 1)));
-   public static final ij<cqv> D = a("strong_harming", new cqv("harming", new bnb(bnd.g, 1, 1)));
-   public static final ij<cqv> E = a("poison", new cqv(new bnb(bnd.s, 900)));
-   public static final ij<cqv> F = a("long_poison", new cqv("poison", new bnb(bnd.s, 1800)));
-   public static final ij<cqv> G = a("strong_poison", new cqv("poison", new bnb(bnd.s, 432, 1)));
-   public static final ij<cqv> H = a("regeneration", new cqv(new bnb(bnd.j, 900)));
-   public static final ij<cqv> I = a("long_regeneration", new cqv("regeneration", new bnb(bnd.j, 1800)));
-   public static final ij<cqv> J = a("strong_regeneration", new cqv("regeneration", new bnb(bnd.j, 450, 1)));
-   public static final ij<cqv> K = a("strength", new cqv(new bnb(bnd.e, 3600)));
-   public static final ij<cqv> L = a("long_strength", new cqv("strength", new bnb(bnd.e, 9600)));
-   public static final ij<cqv> M = a("strong_strength", new cqv("strength", new bnb(bnd.e, 1800, 1)));
-   public static final ij<cqv> N = a("weakness", new cqv(new bnb(bnd.r, 1800)));
-   public static final ij<cqv> O = a("long_weakness", new cqv("weakness", new bnb(bnd.r, 4800)));
-   public static final ij<cqv> P = a("luck", new cqv("luck", new bnb(bnd.z, 6000)));
-   public static final ij<cqv> Q = a("slow_falling", new cqv(new bnb(bnd.B, 1800)));
-   public static final ij<cqv> R = a("long_slow_falling", new cqv("slow_falling", new bnb(bnd.B, 4800)));
+import java.util.List;
+import javax.annotation.Nullable;
 
-   private static ij<cqv> a(String $$0, cqv $$1) {
-      return iv.b(kf.i, new aiy($$0), $$1);
+public class cqy extends coy {
+   public static final int a = 16;
+   public static final int b = 32;
+   public static final int c = 1024;
+   public static final int d = 32767;
+   public static final int e = 100;
+   public static final int f = 2;
+   public static final String g = "title";
+   public static final String h = "filtered_title";
+   public static final String i = "author";
+   public static final String j = "pages";
+   public static final String k = "filtered_pages";
+   public static final String r = "generation";
+   public static final String s = "resolved";
+
+   public cqy(coy.a $$0) {
+      super($$0);
    }
 
-   private static ij<cqv> a(aix<cqv> $$0, cqv $$1) {
-      return iv.b(kf.i, $$0, $$1);
+   public static boolean a(@Nullable sw $$0) {
+      if (!cqx.a($$0)) {
+         return false;
+      } else if (!$$0.b("title", 8)) {
+         return false;
+      } else {
+         String $$1 = $$0.l("title");
+         return $$1.length() > 32 ? false : $$0.b("author", 8);
+      }
    }
 
-   public static ij<cqv> a(iv<cqv> $$0) {
-      return b;
+   public static int d(cpd $$0) {
+      return $$0.w().h("generation");
+   }
+
+   public static int k(cpd $$0) {
+      sw $$1 = $$0.w();
+      return $$1 != null ? $$1.c("pages", 8).size() : 0;
+   }
+
+   @Override
+   public vq m(cpd $$0) {
+      sw $$1 = $$0.w();
+      if ($$1 != null) {
+         String $$2 = $$1.l("title");
+         if (!axd.b($$2)) {
+            return vq.b($$2);
+         }
+      }
+
+      return super.m($$0);
+   }
+
+   @Override
+   public void a(cpd $$0, @Nullable cvr $$1, List<vq> $$2, cqu $$3) {
+      if ($$0.v()) {
+         sw $$4 = $$0.w();
+         String $$5 = $$4.l("author");
+         if (!axd.b($$5)) {
+            $$2.add(vq.a("book.byAuthor", $$5).a(n.h));
+         }
+
+         $$2.add(vq.c("book.generation." + $$4.h("generation")).a(n.h));
+      }
+   }
+
+   @Override
+   public blx<cpd> a(cvr $$0, chl $$1, blv $$2) {
+      cpd $$3 = $$1.b($$2);
+      $$1.a($$3, $$2);
+      $$1.b(atv.c.b(this));
+      return blx.a($$3, $$0.y_());
+   }
+
+   public static boolean a(cpd $$0, @Nullable du $$1, @Nullable chl $$2) {
+      sw $$3 = $$0.w();
+      if ($$3 != null && !$$3.q("resolved")) {
+         $$3.a("resolved", true);
+         if (!a($$3)) {
+            return false;
+         } else {
+            tc $$4 = $$3.c("pages", 8);
+            tc $$5 = new tc();
+
+            for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
+               String $$7 = a($$1, $$2, $$4.j($$6));
+               if ($$7.length() > 32767) {
+                  return false;
+               }
+
+               $$5.c($$6, tr.a($$7));
+            }
+
+            if ($$3.b("filtered_pages", 10)) {
+               sw $$8 = $$3.p("filtered_pages");
+               sw $$9 = new sw();
+
+               for (String $$10 : $$8.e()) {
+                  String $$11 = a($$1, $$2, $$8.l($$10));
+                  if ($$11.length() > 32767) {
+                     return false;
+                  }
+
+                  $$9.a($$10, $$11);
+               }
+
+               $$3.a("filtered_pages", $$9);
+            }
+
+            $$3.a("pages", $$5);
+            return true;
+         }
+      } else {
+         return false;
+      }
+   }
+
+   private static String a(@Nullable du $$0, @Nullable chl $$1, String $$2) {
+      vq $$5;
+      try {
+         $$5 = vq.a.b($$2);
+         $$5 = vt.a($$0, $$5, $$1, 0);
+      } catch (Exception var5) {
+         $$5 = vq.b($$2);
+      }
+
+      return vq.a.a($$5);
+   }
+
+   @Override
+   public boolean i(cpd $$0) {
+      return true;
    }
 }

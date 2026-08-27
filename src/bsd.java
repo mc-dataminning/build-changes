@@ -1,22 +1,26 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bsd {
-   public static brh<bog> a(float $$0, int $$1) {
-      return a($$0x -> true, $$1x -> $$0, $$1);
-   }
-
-   public static brh<bog> a(Predicate<bog> $$0, Function<bog, Float> $$1, int $$2) {
-      return btj.a(
-         (Function<btj.b<bog>, ? extends App<btj.c<bog>, btm<bog>>>)($$3 -> $$3.group($$3.c(bxh.m), $$3.b(bxh.n)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                  if (!$$0.test($$7)) {
-                     return false;
+   public static bqb<boi> a() {
+      return btn.a((Function<btn.b<boi>, ? extends App<btn.c<boi>, btq<boi>>>)($$0 -> $$0.a((btq<boi>)(($$0x, $$1, $$2) -> {
+            if ($$0x.z.a(20) != 0) {
+               return false;
+            } else {
+               bpj<?> $$3 = $$1.dO();
+               ciu $$4 = $$0x.d($$1.dm());
+               if ($$4 != null) {
+                  if ($$4.c() && !$$4.b()) {
+                     $$3.b(ciy.h);
+                     $$3.a(ciy.h);
                   } else {
-                     $$4.a(new bxk($$3.b($$5), $$1.apply($$7), $$2));
-                     return true;
+                     $$3.b(ciy.i);
+                     $$3.a(ciy.i);
                   }
-               }))
-      );
+               }
+
+               return true;
+            }
+         }))));
    }
 }

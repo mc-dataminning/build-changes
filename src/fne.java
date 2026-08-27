@@ -1,31 +1,15 @@
-public class fne extends fny {
-   private final fpc a;
-   private final fpc b;
-   private final fpc c;
+import java.util.function.Function;
 
-   public fne(fpc $$0) {
-      this.a = $$0.b("head");
-      this.b = this.a.b("left_ear");
-      this.c = this.a.b("right_ear");
+public abstract class fne {
+   protected final Function<aiy, fwb> v;
+
+   public fne(Function<aiy, fwb> $$0) {
+      this.v = $$0;
    }
 
-   public static fpk a() {
-      fpk $$0 = new fpk();
-      fnf.a(fpg.a, $$0);
-      return $$0;
+   public final fwb a(aiy $$0) {
+      return this.v.apply($$0);
    }
 
-   @Override
-   public void a(float $$0, float $$1, float $$2) {
-      this.a.f = $$1 * (float) (Math.PI / 180.0);
-      this.a.e = $$2 * (float) (Math.PI / 180.0);
-      float $$3 = 1.2F;
-      this.b.g = (float)(-(Math.cos((double)($$0 * (float) Math.PI * 0.2F * 1.2F)) + 2.5)) * 0.2F;
-      this.c.g = (float)(Math.cos((double)($$0 * (float) Math.PI * 0.2F)) + 2.5) * 0.2F;
-   }
-
-   @Override
-   public void a(esa $$0, ese $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
+   public abstract void a(esh var1, esl var2, int var3, int var4, float var5, float var6, float var7, float var8);
 }

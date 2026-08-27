@@ -1,69 +1,41 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.authlib.yggdrasil.ProfileResult;
+import java.util.Date;
+import java.util.UUID;
 
-public class ewe extends ewh {
-   private static final Logger b = LogUtils.getLogger();
-   private static final vq c = vq.c("mco.snapshot.creating");
-   private final long d;
-   private final ewa e;
-   private final String f;
-   private final String g;
-   private final esl h;
-   @Nullable
-   private ewj i;
-   @Nullable
-   private ewk j;
+public class ewe {
+   private static final vq a = vq.c("mco.util.time.now");
+   private static final int b = 60;
+   private static final int c = 3600;
+   private static final int d = 86400;
 
-   public ewe(esl $$0, long $$1, ewa $$2, String $$3, String $$4) {
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$0;
-   }
-
-   @Override
-   public void run() {
-      esq $$0 = esq.a();
-
-      try {
-         eth $$1 = $$0.a(Long.valueOf(this.d));
-         this.i = new ewj($$1.a, this.f, this.g);
-         this.j = new ewk(this.e, $$1.a, evf.a, () -> exh.O().execute(() -> esl.a($$1, this.h, true)));
-         if (this.d()) {
-            return;
+   public static vq a(long $$0) {
+      if ($$0 < 0L) {
+         return a;
+      } else {
+         long $$1 = $$0 / 1000L;
+         if ($$1 < 60L) {
+            return vq.a("mco.time.secondsAgo", $$1);
+         } else if ($$1 < 3600L) {
+            long $$2 = $$1 / 60L;
+            return vq.a("mco.time.minutesAgo", $$2);
+         } else if ($$1 < 86400L) {
+            long $$3 = $$1 / 3600L;
+            return vq.a("mco.time.hoursAgo", $$3);
+         } else {
+            long $$4 = $$1 / 86400L;
+            return vq.a("mco.time.daysAgo", $$4);
          }
-
-         this.i.run();
-         if (this.d()) {
-            return;
-         }
-
-         this.j.run();
-      } catch (eud var3) {
-         b.error("Couldn't create snapshot world", var3);
-         this.a(var3);
-      } catch (Exception var4) {
-         b.error("Couldn't create snapshot world", var4);
-         this.a(var4);
       }
    }
 
-   @Override
-   public vq a() {
-      return c;
+   public static vq a(Date $$0) {
+      return a(System.currentTimeMillis() - $$0.getTime());
    }
 
-   @Override
-   public void b() {
-      super.b();
-      if (this.i != null) {
-         this.i.b();
-      }
-
-      if (this.j != null) {
-         this.j.b();
-      }
+   public static void a(ezb $$0, int $$1, int $$2, int $$3, UUID $$4) {
+      exo $$5 = exo.P();
+      ProfileResult $$6 = $$5.al().fetchProfile($$4, false);
+      gia $$7 = $$6 != null ? $$5.am().b($$6.profile()) : ght.a($$4);
+      fan.a($$0, $$7.a(), $$1, $$2, $$3);
    }
 }

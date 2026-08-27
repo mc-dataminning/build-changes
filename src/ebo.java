@@ -1,101 +1,54 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
-import java.util.function.Function;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public abstract class ebo extends ebi {
-   private static final Logger h = LogUtils.getLogger();
-   protected final String a;
-   protected efe b;
-   protected efa c;
-   protected hz d;
+public class ebo extends eib {
+   private static final String a = "Remaining";
+   private static final String b = "All";
+   private final LongSet c;
+   private final LongSet d;
 
-   public ebo(ebv $$0, int $$1, eff $$2, aiy $$3, String $$4, efa $$5, hz $$6) {
-      super($$0, $$1, $$2.a($$3).b($$5, $$6));
-      this.a(ie.c);
-      this.a = $$4;
-      this.d = $$6;
-      this.b = $$2.a($$3);
-      this.c = $$5;
+   public static eib.a<ebo> a() {
+      return new eib.a<>(ebo::new, ebo::b, axo.o);
    }
 
-   public ebo(ebv $$0, sw $$1, eff $$2, Function<aiy, efa> $$3) {
-      super($$0, $$1);
-      this.a(ie.c);
-      this.a = $$1.l("Template");
-      this.d = new hz($$1.h("TPX"), $$1.h("TPY"), $$1.h("TPZ"));
-      aiy $$4 = this.b();
-      this.b = $$2.a($$4);
-      this.c = $$3.apply($$4);
-      this.f = this.b.b(this.c, this.d);
+   private ebo(LongSet $$0, LongSet $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   protected aiy b() {
-      return new aiy(this.a);
+   public ebo() {
+      this(new LongOpenHashSet(), new LongOpenHashSet());
+   }
+
+   public static ebo b(sw $$0) {
+      return new ebo(new LongOpenHashSet($$0.o("All")), new LongOpenHashSet($$0.o("Remaining")));
    }
 
    @Override
-   protected void a(ebu $$0, sw $$1) {
-      $$1.a("TPX", this.d.u());
-      $$1.a("TPY", this.d.v());
-      $$1.a("TPZ", this.d.w());
-      $$1.a("Template", this.a);
+   public sw a(sw $$0) {
+      $$0.a("All", this.c.toLongArray());
+      $$0.a("Remaining", this.d.toLongArray());
+      return $$0;
    }
 
-   @Override
-   public void a(cwi $$0, cwg $$1, dnc $$2, awo $$3, eaw $$4, cuu $$5, hz $$6) {
-      this.c.a($$4);
-      this.f = this.b.b(this.c, this.d);
-      if (this.b.a($$0, this.d, $$6, this.c, $$3, 2)) {
-         for (efe.c $$8 : this.b.a(this.d, this.c, cyq.pa)) {
-            if ($$8.c() != null) {
-               dmp $$9 = dmp.valueOf($$8.c().l("mode"));
-               if ($$9 == dmp.d) {
-                  this.a($$8.c().l("metadata"), $$8.a(), $$0, $$3, $$4);
-               }
-            }
-         }
-
-         for (efe.c $$11 : this.b.a(this.d, this.c, cyq.pb)) {
-            if ($$11.c() != null) {
-               String $$12 = $$11.c().l("final_state");
-               dlf $$13 = cyq.a.o();
-
-               try {
-                  $$13 = fm.a($$0.a(kg.f), $$12, true).a();
-               } catch (CommandSyntaxException var15) {
-                  h.error("Error while parsing blockstate {} in jigsaw block @ {}", $$12, $$11.a());
-               }
-
-               $$0.a($$11.a(), $$13, 3);
-            }
-         }
-      }
+   public void a(long $$0) {
+      this.c.add($$0);
+      this.d.add($$0);
    }
 
-   protected abstract void a(String var1, hz var2, cwc var3, awo var4, eaw var5);
-
-   @Deprecated
-   @Override
-   public void a(int $$0, int $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      this.d = this.d.b($$0, $$1, $$2);
+   public boolean b(long $$0) {
+      return this.c.contains($$0);
    }
 
-   @Override
-   public dfa a() {
-      return this.c.d();
+   public boolean c(long $$0) {
+      return this.d.contains($$0);
    }
 
-   public efe c() {
-      return this.b;
+   public void d(long $$0) {
+      this.d.remove($$0);
    }
 
-   public hz d() {
-      return this.d;
-   }
-
-   public efa e() {
+   public LongSet b() {
       return this.c;
    }
 }

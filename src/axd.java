@@ -10,7 +10,7 @@ public class axd {
    private static final Pattern c = Pattern.compile("(?:\\r\\n|\\v)$");
 
    public static String a(int $$0, float $$1) {
-      int $$2 = awh.d((float)$$0 / $$1);
+      int $$2 = awi.d((float)$$0 / $$1);
       int $$3 = $$2 / 60;
       $$2 %= 60;
       int $$4 = $$3 / 60;

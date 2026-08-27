@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class ef implements ArgumentType<aiy> {
-   private static final Collection<String> a = Stream.of(cvn.h, cvn.i).map($$0 -> $$0.a().toString()).collect(Collectors.toList());
+   private static final Collection<String> a = Stream.of(cvr.h, cvr.i).map($$0 -> $$0.a().toString()).collect(Collectors.toList());
    private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vq.b("argument.dimension.invalid", $$0));
 
    public aiy a(StringReader $$0) throws CommandSyntaxException {
@@ -30,10 +30,10 @@ public class ef implements ArgumentType<aiy> {
       return new ef();
    }
 
-   public static aov a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static aow a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       aiy $$2 = (aiy)$$0.getArgument($$1, aiy.class);
-      aix<cvn> $$3 = aix.a(kg.aM, $$2);
-      aov $$4 = ((du)$$0.getSource()).l().a($$3);
+      aix<cvr> $$3 = aix.a(kg.aM, $$2);
+      aow $$4 = ((du)$$0.getSource()).l().a($$3);
       if ($$4 == null) {
          throw b.create($$2);
       } else {

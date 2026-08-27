@@ -24,7 +24,7 @@ public class and {
       );
    }
 
-   private static int a(aov $$0) {
+   private static int a(aow $$0) {
       return (int)($$0.Y() % 24000L);
    }
 
@@ -34,7 +34,7 @@ public class and {
    }
 
    public static int a(du $$0, int $$1) {
-      for (aov $$2 : $$0.l().H()) {
+      for (aow $$2 : $$0.l().J()) {
          $$2.b((long)$$1);
       }
 
@@ -43,7 +43,7 @@ public class and {
    }
 
    public static int b(du $$0, int $$1) {
-      for (aov $$2 : $$0.l().H()) {
+      for (aow $$2 : $$0.l().J()) {
          $$2.b($$2.Y() + (long)$$1);
       }
 

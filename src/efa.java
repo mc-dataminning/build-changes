@@ -1,157 +1,51 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
 public class efa {
-   private ddk a;
-   private dfa b;
-   private hz c;
-   private boolean d;
-   @Nullable
-   private eaw e;
-   private boolean f;
-   @Nullable
-   private awo g;
-   private int h;
-   private final List<efb> i;
-   private boolean j;
-   private boolean k;
+   public static final efs a = efs.a;
+   public static final Codec<efa> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eff.c.fieldOf("input_predicate").forGetter($$0x -> $$0x.c),
+               eff.c.fieldOf("location_predicate").forGetter($$0x -> $$0x.d),
+               eey.c.optionalFieldOf("position_predicate", eex.b).forGetter($$0x -> $$0x.e),
+               dlj.b.fieldOf("output_state").forGetter($$0x -> $$0x.f),
+               eft.c.optionalFieldOf("block_entity_modifier", a).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, efa::new)
+   );
+   private final eff c;
+   private final eff d;
+   private final eey e;
+   private final dlj f;
+   private final eft g;
 
-   public efa() {
-      this.a = ddk.a;
-      this.b = dfa.a;
-      this.c = hz.c;
-      this.f = true;
-      this.i = Lists.newArrayList();
+   public efa(eff $$0, eff $$1, dlj $$2) {
+      this($$0, $$1, eex.b, $$2);
    }
 
-   public efa a() {
-      efa $$0 = new efa();
-      $$0.a = this.a;
-      $$0.b = this.b;
-      $$0.c = this.c;
-      $$0.d = this.d;
-      $$0.e = this.e;
-      $$0.f = this.f;
-      $$0.g = this.g;
-      $$0.h = this.h;
-      $$0.i.addAll(this.i);
-      $$0.j = this.j;
-      $$0.k = this.k;
-      return $$0;
+   public efa(eff $$0, eff $$1, eey $$2, dlj $$3) {
+      this($$0, $$1, $$2, $$3, a);
    }
 
-   public efa a(ddk $$0) {
-      this.a = $$0;
-      return this;
-   }
-
-   public efa a(dfa $$0) {
-      this.b = $$0;
-      return this;
-   }
-
-   public efa a(hz $$0) {
+   public efa(eff $$0, eff $$1, eey $$2, dlj $$3, eft $$4) {
       this.c = $$0;
-      return this;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
-   public efa a(boolean $$0) {
-      this.d = $$0;
-      return this;
+   public boolean a(dlj $$0, dlj $$1, hz $$2, hz $$3, hz $$4, awp $$5) {
+      return this.c.a($$0, $$5) && this.d.a($$1, $$5) && this.e.a($$2, $$3, $$4, $$5);
    }
 
-   public efa a(eaw $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   public efa a(@Nullable awo $$0) {
-      this.g = $$0;
-      return this;
-   }
-
-   public efa b(boolean $$0) {
-      this.f = $$0;
-      return this;
-   }
-
-   public efa c(boolean $$0) {
-      this.j = $$0;
-      return this;
-   }
-
-   public efa b() {
-      this.i.clear();
-      return this;
-   }
-
-   public efa a(efb $$0) {
-      this.i.add($$0);
-      return this;
-   }
-
-   public efa b(efb $$0) {
-      this.i.remove($$0);
-      return this;
-   }
-
-   public ddk c() {
-      return this.a;
-   }
-
-   public dfa d() {
-      return this.b;
-   }
-
-   public hz e() {
-      return this.c;
-   }
-
-   public awo b(@Nullable hz $$0) {
-      if (this.g != null) {
-         return this.g;
-      } else {
-         return $$0 == null ? awo.a(ac.b()) : awo.a(awh.a($$0));
-      }
-   }
-
-   public boolean f() {
-      return this.d;
-   }
-
-   @Nullable
-   public eaw g() {
-      return this.e;
-   }
-
-   public boolean h() {
-      return this.j;
-   }
-
-   public List<efb> i() {
-      return this.i;
-   }
-
-   public boolean j() {
+   public dlj a() {
       return this.f;
    }
 
-   public efe.a a(List<efe.a> $$0, @Nullable hz $$1) {
-      int $$2 = $$0.size();
-      if ($$2 == 0) {
-         throw new IllegalStateException("No palettes");
-      } else {
-         return $$0.get(this.b($$1).a($$2));
-      }
-   }
-
-   public efa d(boolean $$0) {
-      this.k = $$0;
-      return this;
-   }
-
-   public boolean k() {
-      return this.k;
+   @Nullable
+   public sw a(awp $$0, @Nullable sw $$1) {
+      return this.g.a($$0, $$1);
    }
 }

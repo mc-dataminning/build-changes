@@ -1,40 +1,54 @@
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class etu extends etw {
-   private static final Logger d = LogUtils.getLogger();
-   public long a;
-   public int b;
-   public etu.a c = etu.a.a;
+public class etu {
+   private static final String a = "translationKey";
+   private static final String b = "args";
+   private final String c;
+   @Nullable
+   private final String[] d;
 
-   public static etu a(String $$0) {
-      etu $$1 = new etu();
-
-      try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         $$1.a = evt.a("startDate", $$3, 0L);
-         $$1.b = evt.a("daysLeft", $$3, 0);
-         $$1.c = b(evt.b("subscriptionType", $$3, etu.a.a.name()));
-      } catch (Exception var4) {
-         d.error("Could not parse Subscription: {}", var4.getMessage());
-      }
-
-      return $$1;
+   private etu(String $$0, @Nullable String[] $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   private static etu.a b(String $$0) {
-      try {
-         return etu.a.valueOf($$0);
-      } catch (Exception var2) {
-         return etu.a.a;
+   public vq a(vq $$0) {
+      return Objects.requireNonNullElse(this.a(), $$0);
+   }
+
+   @Nullable
+   public vq a() {
+      if (!gig.a(this.c)) {
+         return null;
+      } else {
+         return this.d == null ? vq.c(this.c) : vq.a(this.c, this.d);
       }
    }
 
-   public static enum a {
-      a,
-      b;
+   public static etu a(JsonObject $$0) {
+      String $$1 = ewa.a("translationKey", $$0);
+      JsonElement $$2 = $$0.get("args");
+      String[] $$5;
+      if ($$2 != null && !$$2.isJsonNull()) {
+         JsonArray $$4 = $$2.getAsJsonArray();
+         $$5 = new String[$$4.size()];
+
+         for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
+            $$5[$$6] = $$4.get($$6).getAsString();
+         }
+      } else {
+         $$5 = null;
+      }
+
+      return new etu($$1, $$5);
+   }
+
+   @Override
+   public String toString() {
+      return this.c;
    }
 }

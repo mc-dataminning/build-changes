@@ -1,78 +1,395 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.minecraft.UserApiService;
-import java.util.Map;
-import java.util.Set;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.List;
 import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class fjm {
-   private final exh a;
-   private final Set<UUID> b = Sets.newHashSet();
-   private final UserApiService c;
-   private final Map<String, UUID> d = Maps.newHashMap();
-   private boolean e;
-   private CompletableFuture<?> f = CompletableFuture.completedFuture(null);
+public class fjm extends ffl {
+   static final aiy a = new aiy("icon/checkmark");
+   private static final vq b = vq.c("gui.chatSelection.title");
+   private static final vq c = vq.c("gui.chatSelection.context").a(n.h);
+   @Nullable
+   private final ffl k;
+   private final frj l;
+   private ezo m;
+   private fah n;
+   @Nullable
+   private fjm.a o;
+   final frc.a p;
+   private final Consumer<frc.a> q;
+   private fjl r;
 
-   public fjm(exh $$0, UserApiService $$1) {
-      this.a = $$0;
-      this.c = $$1;
+   public fjm(@Nullable ffl $$0, frj $$1, frc.a $$2, Consumer<frc.a> $$3) {
+      super(b);
+      this.k = $$0;
+      this.l = $$1;
+      this.p = $$2.d();
+      this.q = $$3;
    }
 
-   public void a(UUID $$0) {
-      this.b.add($$0);
+   @Override
+   protected void aQ_() {
+      this.r = new fjl(this.l, this::a);
+      this.n = fah.a(this.i, c, this.g - 16);
+      this.o = this.c(new fjm.a(this.f, (this.n.a() + 1) * 9));
+      this.c(ezo.a(vp.k, $$0 -> this.d()).a(this.g / 2 - 155, this.h - 32, 150, 20).a());
+      this.m = this.c(ezo.a(vp.d, $$0 -> {
+         this.q.accept(this.p);
+         this.d();
+      }).a(this.g / 2 - 155 + 160, this.h - 32, 150, 20).a());
+      this.H();
+      this.o();
+      this.o.a((double)this.o.p());
    }
 
-   public void b(UUID $$0) {
-      this.b.remove($$0);
+   private boolean a(fqy $$0) {
+      return $$0.a(this.p.f());
    }
 
-   public boolean c(UUID $$0) {
-      return this.d($$0) || this.e($$0);
+   private void o() {
+      int $$0 = this.o.d();
+      this.r.a($$0, this.o);
    }
 
-   public boolean d(UUID $$0) {
-      return this.b.contains($$0);
+   void E() {
+      this.o();
    }
 
-   public void a() {
-      this.e = true;
-      this.f = this.f.thenRunAsync(this.c::refreshBlockList, ac.g());
+   void H() {
+      this.m.j = !this.p.a().isEmpty();
    }
 
-   public void b() {
-      this.e = false;
+   @Override
+   public void a(ezb $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 16, 16777215);
+      AbuseReportLimits $$4 = this.l.a().b();
+      int $$5 = this.p.a().size();
+      int $$6 = $$4.maxReportedMessageCount();
+      vq $$7 = vq.a("gui.chatSelection.selected", $$5, $$6);
+      $$0.a(this.i, $$7, this.g / 2, 16 + 9 * 3 / 2, 10526880);
+      this.n.a($$0, this.g / 2, this.o.e());
    }
 
-   public boolean e(UUID $$0) {
-      if (!this.e) {
-         return false;
-      } else {
-         this.f.join();
-         return this.c.isBlockedPlayer($$0);
+   @Override
+   public void b(ezb $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+   }
+
+   @Override
+   public void d() {
+      this.f.a(this.k);
+   }
+
+   @Override
+   public vq i() {
+      return vp.a(super.i(), c);
+   }
+
+   public class a extends fak<fjm.a.b> implements fjl.a {
+      @Nullable
+      private fjm.a.c m;
+
+      public a(exo $$1, int $$2) {
+         super($$1, fjm.this.g, fjm.this.h - $$2 - 80, 40, 16);
       }
-   }
 
-   public Set<UUID> c() {
-      return this.b;
-   }
-
-   public UUID a(String $$0) {
-      return this.d.getOrDefault($$0, ac.d);
-   }
-
-   public void a(fqg $$0) {
-      GameProfile $$1 = $$0.a();
-      this.d.put($$1.getName(), $$1.getId());
-      if (this.a.y instanceof fjo $$2) {
-         $$2.a($$0);
+      @Override
+      public void a(double $$0) {
+         double $$1 = this.o();
+         super.a($$0);
+         if ((float)this.p() > 1.0E-5F && $$0 <= 1.0E-5F && !awi.b($$0, $$1)) {
+            fjm.this.E();
+         }
       }
-   }
 
-   public void f(UUID $$0) {
-      if (this.a.y instanceof fjo $$1) {
-         $$1.a($$0);
+      @Override
+      public void a(int $$0, fqy.a $$1) {
+         boolean $$2 = $$1.a(fjm.this.p.f());
+         fqw $$3 = $$1.h();
+         exj $$4 = $$3.a($$1.g());
+         fjm.a.b $$5 = new fjm.a.d($$0, $$1.b(), $$1.c(), $$4, $$2, true);
+         this.c($$5);
+         this.a($$1, $$2);
+      }
+
+      private void a(fqy.a $$0, boolean $$1) {
+         fjm.a.b $$2 = new fjm.a.e($$0.f(), $$0.d(), $$1);
+         this.c($$2);
+         fjm.a.c $$3 = new fjm.a.c($$0.e(), $$2);
+         if (this.m != null && this.m.a($$3)) {
+            this.d(this.m.b());
+         }
+
+         this.m = $$3;
+      }
+
+      @Override
+      public void a(vq $$0) {
+         this.c(new fjm.a.f());
+         this.c(new fjm.a.a($$0));
+         this.c(new fjm.a.f());
+         this.m = null;
+      }
+
+      @Override
+      protected int c() {
+         return (this.g + this.b()) / 2;
+      }
+
+      @Override
+      public int b() {
+         return Math.min(350, this.g - 50);
+      }
+
+      public int d() {
+         return awi.e(this.h, this.d);
+      }
+
+      @Override
+      protected void a(ezb $$0, int $$1, int $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
+         fjm.a.b $$9 = this.d($$4);
+         if (this.b($$9)) {
+            boolean $$10 = this.i() == $$9;
+            int $$11 = this.aL_() && $$10 ? -1 : -8355712;
+            this.a($$0, $$6, $$7, $$8, $$11, -16777216);
+         }
+
+         $$9.a($$0, $$4, $$6, $$5, $$7, $$8, $$1, $$2, this.t() == $$9, $$3);
+      }
+
+      private boolean b(fjm.a.b $$0) {
+         if ($$0.c()) {
+            boolean $$1 = this.i() == $$0;
+            boolean $$2 = this.i() == null;
+            boolean $$3 = this.t() == $$0;
+            return $$1 || $$2 && $$3 && $$0.d();
+         } else {
+            return false;
+         }
+      }
+
+      @Nullable
+      protected fjm.a.b b(fdr $$0) {
+         return this.a($$0, fjm.a.b::c);
+      }
+
+      public void a(@Nullable fjm.a.b $$0) {
+         super.a($$0);
+         fjm.a.b $$1 = this.b(fdr.a);
+         if ($$1 == null) {
+            fjm.this.E();
+         }
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1, int $$2) {
+         fjm.a.b $$3 = this.i();
+         return $$3 != null && $$3.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+      }
+
+      public int e() {
+         return this.E() + 9;
+      }
+
+      public class a extends fjm.a.b {
+         private static final int c = -6250336;
+         private final vq d;
+
+         public a(vq $$1) {
+            this.d = $$1;
+         }
+
+         @Override
+         public void a(ezb $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            int $$10 = $$2 + $$5 / 2;
+            int $$11 = $$3 + $$4 - 8;
+            int $$12 = fjm.this.i.a(this.d);
+            int $$13 = ($$3 + $$11 - $$12) / 2;
+            int $$14 = $$10 - 9 / 2;
+            $$0.b(fjm.this.i, this.d, $$13, $$14, -6250336);
+         }
+
+         @Override
+         public vq a() {
+            return this.d;
+         }
+      }
+
+      public abstract class b extends fak.a<fjm.a.b> {
+         @Override
+         public vq a() {
+            return vp.a;
+         }
+
+         public boolean b() {
+            return false;
+         }
+
+         public boolean c() {
+            return false;
+         }
+
+         public boolean d() {
+            return this.c();
+         }
+      }
+
+      static record c(UUID a, fjm.a.b b) {
+         public boolean a(fjm.a.c $$0) {
+            return $$0.a.equals(this.a);
+         }
+      }
+
+      public class d extends fjm.a.b {
+         private static final int c = 9;
+         private static final int d = 8;
+         private static final int e = 11;
+         private static final int f = 4;
+         private final int g;
+         private final vv h;
+         private final vq i;
+         @Nullable
+         private final List<avu> j;
+         @Nullable
+         private final exj.a k;
+         @Nullable
+         private final List<avu> l;
+         private final boolean m;
+         private final boolean n;
+
+         public d(int $$1, vq $$2, vq $$3, @Nullable exj $$4, boolean $$5, boolean $$6) {
+            this.g = $$1;
+            this.k = x.a($$4, exj::f);
+            this.l = $$4 != null && $$4.g() != null ? fjm.this.i.c($$4.g(), a.this.b()) : null;
+            this.m = $$5;
+            this.n = $$6;
+            vv $$7 = fjm.this.i.a($$2, this.e() - fjm.this.i.a(vp.u));
+            if ($$2 != $$7) {
+               this.h = vv.a($$7, vp.u);
+               this.j = fjm.this.i.c($$2, a.this.b());
+            } else {
+               this.h = $$2;
+               this.j = null;
+            }
+
+            this.i = $$3;
+         }
+
+         @Override
+         public void a(ezb $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            if (this.b() && this.m) {
+               this.a($$0, $$2, $$3, $$5);
+            }
+
+            int $$10 = $$3 + this.f();
+            int $$11 = $$2 + 1 + ($$5 - 9) / 2;
+            $$0.b(fjm.this.i, sr.a().a(this.h), $$10, $$11, this.m ? -1 : -1593835521);
+            if (this.j != null && $$8) {
+               fjm.this.b(this.j);
+            }
+
+            int $$12 = fjm.this.i.a(this.h);
+            this.a($$0, $$10 + $$12 + 4, $$2, $$5, $$6, $$7);
+         }
+
+         private void a(ezb $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+            if (this.k != null) {
+               int $$6 = $$2 + ($$3 - this.k.d) / 2;
+               this.k.a($$0, $$1, $$6);
+               if (this.l != null && $$4 >= $$1 && $$4 <= $$1 + this.k.c && $$5 >= $$6 && $$5 <= $$6 + this.k.d) {
+                  fjm.this.b(this.l);
+               }
+            }
+         }
+
+         private void a(ezb $$0, int $$1, int $$2, int $$3) {
+            int $$5 = $$1 + ($$3 - 8) / 2;
+            RenderSystem.enableBlend();
+            $$0.a(fjm.a, $$2, $$5, 9, 8);
+            RenderSystem.disableBlend();
+         }
+
+         private int e() {
+            int $$0 = this.k != null ? this.k.c + 4 : 0;
+            return a.this.b() - this.f() - 4 - $$0;
+         }
+
+         private int f() {
+            return this.n ? 11 : 0;
+         }
+
+         @Override
+         public vq a() {
+            return (vq)(this.b() ? vq.a("narrator.select", this.i) : this.i);
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            a.this.a(null);
+            return this.g();
+         }
+
+         @Override
+         public boolean a(int $$0, int $$1, int $$2) {
+            return fdo.a($$0) ? this.g() : false;
+         }
+
+         @Override
+         public boolean b() {
+            return fjm.this.p.b(this.g);
+         }
+
+         @Override
+         public boolean c() {
+            return true;
+         }
+
+         @Override
+         public boolean d() {
+            return this.m;
+         }
+
+         private boolean g() {
+            if (this.m) {
+               fjm.this.p.a(this.g);
+               fjm.this.H();
+               return true;
+            } else {
+               return false;
+            }
+         }
+      }
+
+      public class e extends fjm.a.b {
+         private static final int c = 12;
+         private final vq d;
+         private final Supplier<gia> e;
+         private final boolean f;
+
+         public e(GameProfile $$1, vq $$2, boolean $$3) {
+            this.d = $$2;
+            this.f = $$3;
+            this.e = a.this.c.am().a($$1);
+         }
+
+         @Override
+         public void a(ezb $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            int $$10 = $$3 - 12 - 4;
+            int $$11 = $$2 + ($$5 - 12) / 2;
+            fan.a($$0, this.e.get(), $$10, $$11, 12);
+            int $$12 = $$2 + 1 + ($$5 - 9) / 2;
+            $$0.b(fjm.this.i, this.d, $$3, $$12, this.f ? -1 : -1593835521);
+         }
+      }
+
+      public class f extends fjm.a.b {
+         @Override
+         public void a(ezb $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         }
       }
    }
 }

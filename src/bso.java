@@ -1,23 +1,28 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
+import java.util.function.Predicate;
 
 public class bso {
-   public static bpx<boo> a(bxh<ii> $$0, float $$1, int $$2, int $$3) {
-      MutableLong $$4 = new MutableLong(0L);
-      return btj.a(
-         (Function<btj.b<boo>, ? extends App<btj.c<boo>, btm<boo>>>)($$5 -> $$5.group($$5.a(bxh.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                  ii $$10 = $$5.b($$6);
-                  if ($$7.ae() != $$10.a() || !$$10.b().a($$8.dk(), (double)$$3)) {
-                     return false;
-                  } else if ($$9 <= $$4.getValue()) {
-                     return true;
-                  } else {
-                     $$5x.a(new bxk($$10.b(), $$1, $$2));
-                     $$4.setValue($$9 + 80L);
-                     return true;
-                  }
-               }))
+   public static bqb<boi> a(Function<boi, Optional<bro>> $$0, Predicate<boi> $$1, int $$2, int $$3, float $$4) {
+      return btn.a(
+         (Function<btn.b<boi>, ? extends App<btn.c<boi>, btq<boi>>>)($$5 -> $$5.group($$5.a(bxl.n), $$5.a(bxl.m))
+               .apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                     Optional<bro> $$10 = $$0.apply($$8);
+                     if (!$$10.isEmpty() && $$1.test($$8)) {
+                        bro $$11 = $$10.get();
+                        if ($$8.dk().a((it)$$11.a(), (double)$$3)) {
+                           return false;
+                        } else {
+                           bro $$12 = $$10.get();
+                           $$5x.a($$12);
+                           $$6.a(new bxo($$12, $$4, $$2));
+                           return true;
+                        }
+                     } else {
+                        return false;
+                     }
+                  }))
       );
    }
 }

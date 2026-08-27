@@ -1,118 +1,171 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import java.util.function.Function;
 
-public class dsx extends dts<dvq> {
-   private static final ImmutableList<cyo> a = ImmutableList.of(cyq.H, cyq.F, cyq.kJ, cyq.dW, cyq.fn, cyq.fo, cyq.fp, cyq.fq, cyq.cv, cyq.ct);
-   private static final int b = 5;
-   private static final int c = 50;
-   private static final int d = 8;
-   private static final int an = 15;
-
-   public dsx(Codec<dvq> $$0) {
+public class dsx extends dta<dsw> {
+   public dsx(Codec<dsw> $$0) {
       super($$0);
    }
 
-   @Override
-   public boolean a(dtu<dvq> $$0) {
-      int $$1 = $$0.c().e();
-      hz $$2 = $$0.e();
-      cwi $$3 = $$0.b();
-      awo $$4 = $$0.d();
-      dvq $$5 = $$0.f();
-      if (!a($$3, $$1, $$2.j())) {
-         return false;
-      } else {
-         int $$6 = $$5.b().a($$4);
-         boolean $$7 = $$4.i() < 0.9F;
-         int $$8 = Math.min($$6, $$7 ? 5 : 8);
-         int $$9 = $$7 ? 50 : 15;
-         boolean $$10 = false;
+   public boolean a(dsw $$0, awp $$1) {
+      return $$1.i() <= $$0.l;
+   }
 
-         for (hz $$11 : hz.a($$4, $$9, $$2.u() - $$8, $$2.v(), $$2.w() - $$8, $$2.u() + $$8, $$2.v(), $$2.w() + $$8)) {
-            int $$12 = $$6 - $$11.k($$2);
-            if ($$12 >= 0) {
-               $$10 |= this.a($$3, $$1, $$11, $$12, $$5.a().a($$4));
+   public boolean a(dsv $$0, dsw $$1, dnf $$2, Function<hz, ij<cwq>> $$3, awp $$4, dqh $$5, cuy $$6, dne $$7) {
+      int $$8 = jb.c(this.d() * 2 - 1);
+      int $$9 = $$4.a($$4.a($$4.a(this.a()) + 1) + 1);
+
+      for (int $$10 = 0; $$10 < $$9; $$10++) {
+         double $$11 = (double)$$6.a($$4.a(16));
+         double $$12 = (double)$$1.e.a($$4, $$0);
+         double $$13 = (double)$$6.b($$4.a(16));
+         double $$14 = (double)$$1.b.a($$4);
+         double $$15 = (double)$$1.c.a($$4);
+         double $$16 = (double)$$1.j.a($$4);
+         dta.a $$17 = ($$1x, $$2x, $$3x, $$4x, $$5x) -> a($$2x, $$3x, $$4x, $$16);
+         int $$18 = 1;
+         if ($$4.a(4) == 0) {
+            double $$19 = (double)$$1.f.a($$4);
+            float $$20 = 1.0F + $$4.i() * 6.0F;
+            this.a($$0, $$1, $$2, $$3, $$5, $$11, $$12, $$13, $$20, $$19, $$7, $$17);
+            $$18 += $$4.a(4);
+         }
+
+         for (int $$21 = 0; $$21 < $$18; $$21++) {
+            float $$22 = $$4.i() * (float) (Math.PI * 2);
+            float $$23 = ($$4.i() - 0.5F) / 4.0F;
+            float $$24 = this.a($$4);
+            int $$25 = $$8 - $$4.a($$8 / 4);
+            int $$26 = 0;
+            this.a($$0, $$1, $$2, $$3, $$4.g(), $$5, $$11, $$12, $$13, $$14, $$15, $$24, $$22, $$23, 0, $$25, this.b(), $$7, $$17);
+         }
+      }
+
+      return true;
+   }
+
+   protected int a() {
+      return 15;
+   }
+
+   protected float a(awp $$0) {
+      float $$1 = $$0.i() * 2.0F + $$0.i();
+      if ($$0.a(10) == 0) {
+         $$1 *= $$0.i() * $$0.i() * 3.0F + 1.0F;
+      }
+
+      return $$1;
+   }
+
+   protected double b() {
+      return 1.0;
+   }
+
+   protected void a(
+      dsv $$0, dsw $$1, dnf $$2, Function<hz, ij<cwq>> $$3, dqh $$4, double $$5, double $$6, double $$7, float $$8, double $$9, dne $$10, dta.a $$11
+   ) {
+      double $$12 = 1.5 + (double)(awi.a((float) (Math.PI / 2)) * $$8);
+      double $$13 = $$12 * $$9;
+      this.a($$0, $$1, $$2, $$3, $$4, $$5 + 1.0, $$6, $$7, $$12, $$13, $$10, $$11);
+   }
+
+   protected void a(
+      dsv $$0,
+      dsw $$1,
+      dnf $$2,
+      Function<hz, ij<cwq>> $$3,
+      long $$4,
+      dqh $$5,
+      double $$6,
+      double $$7,
+      double $$8,
+      double $$9,
+      double $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      int $$14,
+      int $$15,
+      double $$16,
+      dne $$17,
+      dta.a $$18
+   ) {
+      awp $$19 = awp.a($$4);
+      int $$20 = $$19.a($$15 / 2) + $$15 / 4;
+      boolean $$21 = $$19.a(6) == 0;
+      float $$22 = 0.0F;
+      float $$23 = 0.0F;
+
+      for (int $$24 = $$14; $$24 < $$15; $$24++) {
+         double $$25 = 1.5 + (double)(awi.a((float) Math.PI * (float)$$24 / (float)$$15) * $$11);
+         double $$26 = $$25 * $$16;
+         float $$27 = awi.b($$13);
+         $$6 += (double)(awi.b($$12) * $$27);
+         $$7 += (double)awi.a($$13);
+         $$8 += (double)(awi.a($$12) * $$27);
+         $$13 *= $$21 ? 0.92F : 0.7F;
+         $$13 += $$23 * 0.1F;
+         $$12 += $$22 * 0.1F;
+         $$23 *= 0.9F;
+         $$22 *= 0.75F;
+         $$23 += ($$19.i() - $$19.i()) * $$19.i() * 2.0F;
+         $$22 += ($$19.i() - $$19.i()) * $$19.i() * 4.0F;
+         if ($$24 == $$20 && $$11 > 1.0F) {
+            this.a(
+               $$0,
+               $$1,
+               $$2,
+               $$3,
+               $$19.g(),
+               $$5,
+               $$6,
+               $$7,
+               $$8,
+               $$9,
+               $$10,
+               $$19.i() * 0.5F + 0.5F,
+               $$12 - (float) (Math.PI / 2),
+               $$13 / 3.0F,
+               $$24,
+               $$15,
+               1.0,
+               $$17,
+               $$18
+            );
+            this.a(
+               $$0,
+               $$1,
+               $$2,
+               $$3,
+               $$19.g(),
+               $$5,
+               $$6,
+               $$7,
+               $$8,
+               $$9,
+               $$10,
+               $$19.i() * 0.5F + 0.5F,
+               $$12 + (float) (Math.PI / 2),
+               $$13 / 3.0F,
+               $$24,
+               $$15,
+               1.0,
+               $$17,
+               $$18
+            );
+            return;
+         }
+
+         if ($$19.a(4) != 0) {
+            if (!a($$2.f(), $$6, $$8, $$24, $$15, $$11)) {
+               return;
             }
-         }
 
-         return $$10;
+            this.a($$0, $$1, $$2, $$3, $$5, $$6, $$7, $$8, $$25 * $$9, $$26 * $$10, $$17, $$18);
+         }
       }
    }
 
-   private boolean a(cvo $$0, int $$1, hz $$2, int $$3, int $$4) {
-      boolean $$5 = false;
-
-      for (hz $$6 : hz.b($$2.u() - $$4, $$2.v(), $$2.w() - $$4, $$2.u() + $$4, $$2.v(), $$2.w() + $$4)) {
-         int $$7 = $$6.k($$2);
-         hz $$8 = a($$0, $$1, $$6) ? a($$0, $$1, $$6.j(), $$7) : a($$0, $$6.j(), $$7);
-         if ($$8 != null) {
-            int $$9 = $$3 - $$7 / 2;
-
-            for (hz.a $$10 = $$8.j(); $$9 >= 0; $$9--) {
-               if (a($$0, $$1, (hz)$$10)) {
-                  this.a($$0, $$10, cyq.dY.o());
-                  $$10.c(ie.b);
-                  $$5 = true;
-               } else {
-                  if (!$$0.a_($$10).a(cyq.dY)) {
-                     break;
-                  }
-
-                  $$10.c(ie.b);
-               }
-            }
-         }
-      }
-
-      return $$5;
-   }
-
-   @Nullable
-   private static hz a(cvo $$0, int $$1, hz.a $$2, int $$3) {
-      while ($$2.v() > $$0.J_() + 1 && $$3 > 0) {
-         $$3--;
-         if (a($$0, $$1, $$2)) {
-            return $$2;
-         }
-
-         $$2.c(ie.a);
-      }
-
-      return null;
-   }
-
-   private static boolean a(cvo $$0, int $$1, hz.a $$2) {
-      if (!a($$0, $$1, (hz)$$2)) {
-         return false;
-      } else {
-         dlf $$3 = $$0.a_($$2.c(ie.a));
-         $$2.c(ie.b);
-         return !$$3.i() && !a.contains($$3.b());
-      }
-   }
-
-   @Nullable
-   private static hz a(cvo $$0, hz.a $$1, int $$2) {
-      while ($$1.v() < $$0.al() && $$2 > 0) {
-         $$2--;
-         dlf $$3 = $$0.a_($$1);
-         if (a.contains($$3.b())) {
-            return null;
-         }
-
-         if ($$3.i()) {
-            return $$1;
-         }
-
-         $$1.c(ie.b);
-      }
-
-      return null;
-   }
-
-   private static boolean a(cvo $$0, int $$1, hz $$2) {
-      dlf $$3 = $$0.a_($$2);
-      return $$3.i() || $$3.a(cyq.H) && $$2.v() <= $$1;
+   private static boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return $$1 <= $$3 ? true : $$0 * $$0 + $$1 * $$1 + $$2 * $$2 >= 1.0;
    }
 }

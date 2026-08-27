@@ -41,8 +41,8 @@ public class agz implements xx<agw> {
       return this.b;
    }
 
-   public PublicKey e() throws avg {
-      return avf.a(this.c);
+   public PublicKey e() throws avh {
+      return avg.a(this.c);
    }
 
    public byte[] f() {

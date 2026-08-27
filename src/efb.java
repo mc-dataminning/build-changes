@@ -1,15 +1,22 @@
-import java.util.List;
+import com.mojang.serialization.Codec;
 import javax.annotation.Nullable;
 
-public abstract class efb {
-   @Nullable
-   public efe.c a(cvq $$0, hz $$1, hz $$2, efe.c $$3, efe.c $$4, efa $$5) {
-      return $$4;
+public class efb extends efi {
+   public final aup<cys> a;
+   public static final Codec<efb> b = aup.b(kg.f).xmap(efb::new, $$0 -> $$0.a);
+
+   public efb(aup<cys> $$0) {
+      this.a = $$0;
    }
 
-   protected abstract efd<?> a();
+   @Nullable
+   @Override
+   public efl.c a(cvu $$0, hz $$1, hz $$2, efl.c $$3, efl.c $$4, efh $$5) {
+      return dtz.a(this.a).test($$0.a_($$4.a())) ? $$4 : null;
+   }
 
-   public List<efe.c> a(cwc $$0, hz $$1, hz $$2, List<efe.c> $$3, List<efe.c> $$4, efa $$5) {
-      return $$4;
+   @Override
+   protected efk<?> a() {
+      return efk.n;
    }
 }

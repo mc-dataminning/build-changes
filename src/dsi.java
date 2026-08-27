@@ -1,25 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dsi implements drv {
-   public static final Codec<dsi> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(jd.v(16).optionalFieldOf("offset", jd.g).forGetter($$0x -> $$0x.e), dlf.b.fieldOf("state").forGetter($$0x -> $$0x.f))
-            .apply($$0, dsi::new)
-   );
-   private final jd e;
-   private final dlf f;
+class dsi extends dsn {
+   private final in<cys> e;
+   public static final Codec<dsi> a = RecordCodecBuilder.create($$0 -> a($$0).and(ix.a(kg.f).fieldOf("blocks").forGetter($$0x -> $$0x.e)).apply($$0, dsi::new));
 
-   protected dsi(jd $$0, dlf $$1) {
-      this.e = $$0;
-      this.f = $$1;
-   }
-
-   public boolean a(cwi $$0, hz $$1) {
-      return this.f.a($$0, $$1.a(this.e));
+   public dsi(jd $$0, in<cys> $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
    @Override
-   public drw<?> a() {
-      return drw.g;
+   protected boolean a(dlj $$0) {
+      return $$0.a(this.e);
+   }
+
+   @Override
+   public dsd<?> a() {
+      return dsd.a;
    }
 }

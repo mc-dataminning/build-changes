@@ -1,66 +1,71 @@
-public class cpv extends cou {
-   public cpv(cou.a $$0) {
-      super($$0);
+import com.google.common.collect.Maps;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
+
+public class cpv extends coy {
+   private static final Map<atk, cpv> a = Maps.newHashMap();
+   private final int b;
+   private final atk c;
+   private final int d;
+
+   protected cpv(int $$0, atk $$1, coy.a $$2, int $$3) {
+      super($$2);
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$3 * 20;
+      a.put(this.c, this);
    }
 
    @Override
-   public boolean a(coz $$0, cvn $$1, dlf $$2, hz $$3, bog $$4) {
-      if (!$$1.B && !$$2.a(atz.aJ)) {
-         $$0.a(1, $$4, bnv.a);
-      }
-
-      return !$$2.a(atz.O)
-            && !$$2.a(cyq.bs)
-            && !$$2.a(cyq.bt)
-            && !$$2.a(cyq.bu)
-            && !$$2.a(cyq.bv)
-            && !$$2.a(cyq.sG)
-            && !$$2.a(cyq.ff)
-            && !$$2.a(cyq.fI)
-            && !$$2.a(atz.a)
-         ? super.a($$0, $$1, $$2, $$3, $$4)
-         : true;
-   }
-
-   @Override
-   public boolean a_(dlf $$0) {
-      return $$0.a(cyq.bs) || $$0.a(cyq.cw) || $$0.a(cyq.fI);
-   }
-
-   @Override
-   public float a(coz $$0, dlf $$1) {
-      if ($$1.a(cyq.bs) || $$1.a(atz.O)) {
-         return 15.0F;
-      } else if ($$1.a(atz.a)) {
-         return 5.0F;
-      } else {
-         return !$$1.a(cyq.ff) && !$$1.a(cyq.fg) ? super.a($$0, $$1) : 2.0F;
-      }
-   }
-
-   @Override
-   public blu a(cri $$0) {
-      cvn $$1 = $$0.q();
+   public blw a(crm $$0) {
+      cvr $$1 = $$0.q();
       hz $$2 = $$0.a();
-      dlf $$3 = $$1.a_($$2);
-      if ($$3.b() instanceof dcd $$5 && !$$5.o($$3)) {
-         chh $$6 = $$0.o();
-         coz $$7 = $$0.n();
-         if ($$6 instanceof aow) {
-            am.N.a((aow)$$6, $$2, $$7);
+      dlj $$3 = $$1.a_($$2);
+      if ($$3.a(cyu.dT) && !$$3.c(dcu.b)) {
+         cpd $$4 = $$0.n();
+         if (!$$1.B) {
+            chl $$5 = $$0.o();
+            if ($$1.c_($$2) instanceof djy $$6) {
+               $$6.b($$4.q());
+               $$1.a(dpw.c, $$2, dpw.a.a($$5, $$3));
+            }
+
+            $$4.h(1);
+            if ($$5 != null) {
+               $$5.a(atv.al);
+            }
          }
 
-         $$1.a($$6, $$2, atk.la, atl.e, 1.0F, 1.0F);
-         dlf $$8 = $$5.n($$3);
-         $$1.b($$2, $$8);
-         $$1.a(dpp.c, $$2, dpp.a.a($$0.o(), $$8));
-         if ($$6 != null) {
-            $$7.a(1, $$6, bog.d($$0.p()));
-         }
-
-         return blu.a($$1.B);
+         return blw.a($$1.B);
+      } else {
+         return blw.d;
       }
+   }
 
-      return super.a($$0);
+   public int h() {
+      return this.b;
+   }
+
+   @Override
+   public void a(cpd $$0, @Nullable cvr $$1, List<vq> $$2, cqu $$3) {
+      $$2.add(this.w().a(n.h));
+   }
+
+   public we w() {
+      return vq.c(this.a() + ".desc");
+   }
+
+   @Nullable
+   public static cpv a(atk $$0) {
+      return a.get($$0);
+   }
+
+   public atk x() {
+      return this.c;
+   }
+
+   public int y() {
+      return this.d;
    }
 }

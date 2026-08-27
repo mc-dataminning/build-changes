@@ -1,119 +1,169 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.util.UUID;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.util.Base64;
+import java.util.Collections;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface fqq extends fqp {
-   static fqq.a a(GameProfile $$0, wg $$1, fqo $$2) {
-      return new fqq.a($$0, $$1, $$2);
+public class fqq {
+   private static final Logger j = LogUtils.getLogger();
+   private static final int k = 1024;
+   public String a;
+   public String b;
+   public vq c;
+   public vq d;
+   @Nullable
+   public ahy.b e;
+   public long f;
+   public int g = aa.b().e();
+   public vq h = vq.b(aa.b().c());
+   public List<vq> i = Collections.emptyList();
+   private fqq.a l = fqq.a.c;
+   @Nullable
+   private byte[] m;
+   private fqq.c n;
+   private fqq.b o = fqq.b.a;
+
+   public fqq(String $$0, String $$1, fqq.c $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.n = $$2;
    }
 
-   static fqq.b a(vq $$0, Instant $$1) {
-      return new fqq.b($$0, $$1);
+   public sw a() {
+      sw $$0 = new sw();
+      $$0.a("name", this.a);
+      $$0.a("ip", this.b);
+      if (this.m != null) {
+         $$0.a("icon", Base64.getEncoder().encodeToString(this.m));
+      }
+
+      if (this.l == fqq.a.a) {
+         $$0.a("acceptTextures", true);
+      } else if (this.l == fqq.a.b) {
+         $$0.a("acceptTextures", false);
+      }
+
+      return $$0;
    }
 
-   vq b();
-
-   default vq c() {
-      return this.b();
+   public fqq.a b() {
+      return this.l;
    }
 
-   boolean a(UUID var1);
+   public void a(fqq.a $$0) {
+      this.l = $$0;
+   }
 
-   public static record a(GameProfile c, wg d, fqo e) implements fqq {
-      public static final Codec<fqq.a> b = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  avp.u.fieldOf("profile").forGetter(fqq.a::f), wg.a.forGetter(fqq.a::g), fqo.d.optionalFieldOf("trust_level", fqo.a).forGetter(fqq.a::h)
-               )
-               .apply($$0, fqq.a::new)
-      );
-      private static final DateTimeFormatter f = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
-
-      @Override
-      public vq b() {
-         if (!this.d.o().a()) {
-            vq $$0 = this.d.o().b(this.d.c());
-            return (vq)($$0 != null ? $$0 : vq.i());
-         } else {
-            return this.d.d();
+   public static fqq a(sw $$0) {
+      fqq $$1 = new fqq($$0.l("name"), $$0.l("ip"), fqq.c.c);
+      if ($$0.b("icon", 8)) {
+         try {
+            byte[] $$2 = Base64.getDecoder().decode($$0.l("icon"));
+            $$1.a(b($$2));
+         } catch (IllegalArgumentException var3) {
+            j.warn("Malformed base64 server icon", var3);
          }
       }
 
-      @Override
-      public vq c() {
-         vq $$0 = this.b();
-         vq $$1 = this.i();
-         return vq.a("gui.chatSelection.message.narrate", this.c.getName(), $$0, $$1);
+      if ($$0.b("acceptTextures", 1)) {
+         if ($$0.q("acceptTextures")) {
+            $$1.a(fqq.a.a);
+         } else {
+            $$1.a(fqq.a.b);
+         }
+      } else {
+         $$1.a(fqq.a.c);
       }
 
-      public vq d() {
-         vq $$0 = this.i();
-         return vq.a("gui.chatSelection.heading", this.c.getName(), $$0);
+      return $$1;
+   }
+
+   @Nullable
+   public byte[] c() {
+      return this.m;
+   }
+
+   public void a(@Nullable byte[] $$0) {
+      this.m = $$0;
+   }
+
+   public boolean d() {
+      return this.n == fqq.c.a;
+   }
+
+   public boolean e() {
+      return this.n == fqq.c.b;
+   }
+
+   public fqq.c f() {
+      return this.n;
+   }
+
+   public void a(fqq $$0) {
+      this.b = $$0.b;
+      this.a = $$0.a;
+      this.m = $$0.m;
+   }
+
+   public void b(fqq $$0) {
+      this.a($$0);
+      this.a($$0.b());
+      this.n = $$0.n;
+   }
+
+   public fqq.b g() {
+      return this.o;
+   }
+
+   public void a(fqq.b $$0) {
+      this.o = $$0;
+   }
+
+   @Nullable
+   public static byte[] b(@Nullable byte[] $$0) {
+      if ($$0 != null) {
+         try {
+            awm $$1 = awm.a($$0);
+            if ($$1.a() <= 1024 && $$1.b() <= 1024) {
+               return $$0;
+            }
+         } catch (IOException var2) {
+            j.warn("Failed to decode server icon", var2);
+         }
       }
 
-      private vq i() {
-         LocalDateTime $$0 = LocalDateTime.ofInstant(this.d.e(), ZoneOffset.systemDefault());
-         return vq.b($$0.format(f)).a(n.u, n.h);
+      return null;
+   }
+
+   public static enum a {
+      a("enabled"),
+      b("disabled"),
+      c("prompt");
+
+      private final vq d;
+
+      private a(String $$0) {
+         this.d = vq.c("addServer.resourcePack." + $$0);
       }
 
-      @Override
-      public boolean a(UUID $$0) {
-         return this.d.a($$0);
-      }
-
-      public UUID e() {
-         return this.c.getId();
-      }
-
-      @Override
-      public fqp.a a() {
-         return fqp.a.a;
-      }
-
-      public GameProfile f() {
-         return this.c;
-      }
-
-      public wg g() {
+      public vq a() {
          return this.d;
-      }
-
-      public fqo h() {
-         return this.e;
       }
    }
 
-   public static record b(vq c, Instant d) implements fqq {
-      public static final Codec<fqq.b> b = RecordCodecBuilder.create(
-         $$0 -> $$0.group(vs.a.fieldOf("message").forGetter(fqq.b::d), avp.m.fieldOf("time_stamp").forGetter(fqq.b::e)).apply($$0, fqq.b::new)
-      );
+   public static enum b {
+      a,
+      b,
+      c,
+      d,
+      e;
+   }
 
-      @Override
-      public vq b() {
-         return this.c;
-      }
-
-      @Override
-      public boolean a(UUID $$0) {
-         return false;
-      }
-
-      @Override
-      public fqp.a a() {
-         return fqp.a.b;
-      }
-
-      public vq d() {
-         return this.c;
-      }
-
-      public Instant e() {
-         return this.d;
-      }
+   public static enum c {
+      a,
+      b,
+      c;
    }
 }

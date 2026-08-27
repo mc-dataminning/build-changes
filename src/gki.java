@@ -1,31 +1,43 @@
-public class gki implements gjq {
-   public static final float a = 0.01F;
-   public static final float b = 0.001F;
-   public static final float c = 1.0E-4F;
-   private static final int d = 0;
-   private final fun e;
-   private final glk f;
-   private int g = 0;
+public class gki extends gjx {
+   private static final float n = 0.0F;
+   private static final float o = 0.75F;
+   private final chl p;
+   private final cje q;
+   private final boolean r;
 
-   public gki(fun $$0, glk $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public gki(chl $$0, cje $$1, boolean $$2) {
+      super($$2 ? atl.ok : atl.ol, atm.g, gko.t());
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      this.k = gko.a.a;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
    }
 
    @Override
-   public void a() {
-      this.g--;
-      if (this.g <= 0 && this.e.be()) {
-         float $$0 = this.e.dM().z.i();
-         if ($$0 < 1.0E-4F) {
-            this.g = 0;
-            this.f.a((gkg)(new gkj.a(this.e, atk.C)));
-         } else if ($$0 < 0.001F) {
-            this.g = 0;
-            this.f.a((gkg)(new gkj.a(this.e, atk.B)));
-         } else if ($$0 < 0.01F) {
-            this.g = 0;
-            this.f.a((gkg)(new gkj.a(this.e, atk.A)));
+   public boolean s() {
+      return !this.q.aU();
+   }
+
+   @Override
+   public boolean r() {
+      return true;
+   }
+
+   @Override
+   public void q() {
+      if (this.q.dH() || !this.p.bO() || this.p.cZ() != this.q) {
+         this.n();
+      } else if (this.r != this.p.be()) {
+         this.d = 0.0F;
+      } else {
+         float $$0 = (float)this.q.dp().h();
+         if ($$0 >= 0.01F) {
+            this.d = awi.b(0.0F, 0.75F, $$0);
+         } else {
+            this.d = 0.0F;
          }
       }
    }

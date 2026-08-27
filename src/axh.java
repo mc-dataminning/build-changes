@@ -7,7 +7,7 @@ public class axh {
    public static final long d = TimeUnit.HOURS.toSeconds(1L);
    public static final int e = (int)TimeUnit.MINUTES.toSeconds(1L);
 
-   public static blf a(int $$0, int $$1) {
-      return blf.a($$0 * 20, $$1 * 20);
+   public static blh a(int $$0, int $$1) {
+      return blh.a($$0 * 20, $$1 * 20);
    }
 }

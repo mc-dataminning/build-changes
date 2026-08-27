@@ -1,89 +1,108 @@
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
 import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
-import java.util.Optional;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
 import java.util.function.Function;
+import java.util.function.ToIntFunction;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 public class cxa {
-   public static final Codec<cxa> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(cxa.a.c.fieldOf("preset").forGetter($$0x -> $$0x.c), aiw.c(kg.at)).apply($$0, cxa::new)
-   );
-   public static final Codec<ij<cxa>> b = aiu.a(kg.aL, a);
-   private final cxa.a c;
-   private final cwv.c<ij<cwm>> d;
+   public static <T> List<cxa.b> a(List<T> $$0, Function<T, List<in<eap>>> $$1, boolean $$2) {
+      Object2IntMap<eap> $$3 = new Object2IntOpenHashMap();
+      MutableInt $$4 = new MutableInt(0);
 
-   public cxa(cxa.a $$0, ik<cwm> $$1) {
-      this.c = $$0;
-      this.d = $$0.e.apply($$1::b);
-   }
+      record a(int a, int b, eap c) {
+      }
 
-   public cwv.c<ij<cwm>> a() {
-      return this.d;
-   }
+      Comparator<a> $$5 = Comparator.comparingInt(a::b).thenComparingInt(a::a);
+      Map<a, Set<a>> $$6 = new TreeMap<>($$5);
+      int $$7 = 0;
 
-   public static Map<cxa.a, cwv.c<aix<cwm>>> b() {
-      return cxa.a.f.values().stream().collect(Collectors.toMap($$0 -> (cxa.a)$$0, $$0 -> $$0.c().apply($$0x -> $$0x)));
-   }
+      for (T $$8 : $$0) {
+         List<a> $$9 = Lists.newArrayList();
+         List<in<eap>> $$10 = $$1.apply($$8);
+         $$7 = Math.max($$7, $$10.size());
 
-   public static record a(aiy d, cxa.a.a e) {
-      public static final cxa.a a = new cxa.a(
-         new aiy("nether"),
-         new cxa.a.a() {
-            @Override
-            public <T> cwv.c<T> apply(Function<aix<cwm>, T> $$0) {
-               return new cwv.c<>(
-                  List.of(
-                     Pair.of(cwv.a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(cwt.ac)),
-                     Pair.of(cwv.a(0.0F, -0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(cwt.af)),
-                     Pair.of(cwv.a(0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(cwt.ae)),
-                     Pair.of(cwv.a(0.0F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.375F), $$0.apply(cwt.ad)),
-                     Pair.of(cwv.a(-0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.175F), $$0.apply(cwt.ag))
-                  )
-               );
+         for (int $$11 = 0; $$11 < $$10.size(); $$11++) {
+            for (ij<eap> $$12 : $$10.get($$11)) {
+               eap $$13 = $$12.a();
+               $$9.add(new a($$3.computeIfAbsent($$13, $$1x -> $$4.getAndIncrement()), $$11, $$13));
             }
          }
-      );
-      public static final cxa.a b = new cxa.a(new aiy("overworld"), new cxa.a.a() {
-         @Override
-         public <T> cwv.c<T> apply(Function<aix<cwm>, T> $$0) {
-            return cxa.a.a($$0);
+
+         for (int $$14 = 0; $$14 < $$9.size(); $$14++) {
+            Set<a> $$15 = $$6.computeIfAbsent($$9.get($$14), $$1x -> new TreeSet<>($$5));
+            if ($$14 < $$9.size() - 1) {
+               $$15.add($$9.get($$14 + 1));
+            }
          }
-      });
-      static final Map<aiy, cxa.a> f = Stream.of(a, b).collect(Collectors.toMap(cxa.a::b, $$0 -> (cxa.a)$$0));
-      public static final Codec<cxa.a> c = aiy.a
-         .flatXmap(
-            $$0 -> Optional.ofNullable(f.get($$0)).<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown preset: " + $$0)),
-            $$0 -> DataResult.success($$0.d)
-         );
-
-      static <T> cwv.c<T> a(Function<aix<cwm>, T> $$0) {
-         Builder<Pair<cwv.d, T>> $$1 = ImmutableList.builder();
-         new cxc().a($$2 -> $$1.add($$2.mapSecond($$0)));
-         return new cwv.c<>($$1.build());
       }
 
-      public Stream<aix<cwm>> a() {
-         return this.e.apply($$0 -> $$0).a().stream().<aix<cwm>>map(Pair::getSecond).distinct();
+      Set<a> $$16 = new TreeSet<>($$5);
+      Set<a> $$17 = new TreeSet<>($$5);
+      List<a> $$18 = Lists.newArrayList();
+
+      for (a $$19 : $$6.keySet()) {
+         if (!$$17.isEmpty()) {
+            throw new IllegalStateException("You somehow broke the universe; DFS bork (iteration finished with non-empty in-progress vertex set");
+         }
+
+         if (!$$16.contains($$19) && avx.a($$6, $$16, $$17, $$18::add, $$19)) {
+            if (!$$2) {
+               throw new IllegalStateException("Feature order cycle found");
+            }
+
+            List<T> $$20 = new ArrayList<>($$0);
+
+            int $$21;
+            do {
+               $$21 = $$20.size();
+               ListIterator<T> $$22 = $$20.listIterator();
+
+               while ($$22.hasNext()) {
+                  T $$23 = $$22.next();
+                  $$22.remove();
+
+                  try {
+                     a($$20, $$1, false);
+                  } catch (IllegalStateException var18) {
+                     continue;
+                  }
+
+                  $$22.add($$23);
+               }
+            } while ($$21 != $$20.size());
+
+            throw new IllegalStateException("Feature order cycle found, involved sources: " + $$20);
+         }
       }
 
-      public aiy b() {
-         return this.d;
+      Collections.reverse($$18);
+      Builder<cxa.b> $$25 = ImmutableList.builder();
+
+      for (int $$26 = 0; $$26 < $$7; $$26++) {
+         int $$27 = $$26;
+         List<eap> $$28 = $$18.stream().filter($$1x -> $$1x.b() == $$27).map(a::c).collect(Collectors.toList());
+         $$25.add(new cxa.b($$28));
       }
 
-      public cxa.a.a c() {
-         return this.e;
-      }
+      return $$25.build();
+   }
 
-      @FunctionalInterface
-      interface a {
-         <T> cwv.c<T> apply(Function<aix<cwm>, T> var1);
+   public static record b(List<eap> a, ToIntFunction<eap> b) {
+      b(List<eap> $$0) {
+         this($$0, ac.f($$0));
       }
    }
 }

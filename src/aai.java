@@ -6,7 +6,7 @@ public class aai implements xx<aag> {
    private final double e;
    private final int f;
 
-   public aai(bnw $$0) {
+   public aai(bny $$0) {
       this.b = $$0.aj();
       this.c = $$0.dr();
       this.d = $$0.dt();

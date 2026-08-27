@@ -20,14 +20,14 @@ public class akn {
       ($$0, $$1) -> vq.b("commands.datapack.enable.failed.no_flags", $$0, $$1)
    );
    private static final SuggestionProvider<du> e = ($$0, $$1) -> dz.b(
-         ((du)$$0.getSource()).l().aD().d().stream().map(StringArgumentType::escapeIfRequired), $$1
+         ((du)$$0.getSource()).l().aF().d().stream().map(StringArgumentType::escapeIfRequired), $$1
       );
    private static final SuggestionProvider<du> f = ($$0, $$1) -> {
-      arl $$2 = ((du)$$0.getSource()).l().aD();
+      arm $$2 = ((du)$$0.getSource()).l().aF();
       Collection<String> $$3 = $$2.d();
-      cjs $$4 = ((du)$$0.getSource()).w();
+      cjw $$4 = ((du)$$0.getSource()).w();
       return dz.b(
-         $$2.c().stream().filter($$1x -> $$1x.d().a($$4)).map(ari::f).filter($$1x -> !$$3.contains($$1x)).map(StringArgumentType::escapeIfRequired), $$1
+         $$2.c().stream().filter($$1x -> $$1x.d().a($$4)).map(arj::f).filter($$1x -> !$$3.contains($$1x)).map(StringArgumentType::escapeIfRequired), $$1
       );
    };
 
@@ -89,21 +89,21 @@ public class akn {
       );
    }
 
-   private static int a(du $$0, ari $$1, akn.a $$2) throws CommandSyntaxException {
-      arl $$3 = $$0.l().aD();
-      List<ari> $$4 = Lists.newArrayList($$3.f());
+   private static int a(du $$0, arj $$1, akn.a $$2) throws CommandSyntaxException {
+      arm $$3 = $$0.l().aF();
+      List<arj> $$4 = Lists.newArrayList($$3.f());
       $$2.apply($$4, $$1);
       $$0.a(() -> vq.a("commands.datapack.modify.enable", $$1.a(true)), true);
-      amb.a($$4.stream().map(ari::f).collect(Collectors.toList()), $$0);
+      amb.a($$4.stream().map(arj::f).collect(Collectors.toList()), $$0);
       return $$4.size();
    }
 
-   private static int a(du $$0, ari $$1) {
-      arl $$2 = $$0.l().aD();
-      List<ari> $$3 = Lists.newArrayList($$2.f());
+   private static int a(du $$0, arj $$1) {
+      arm $$2 = $$0.l().aF();
+      List<arj> $$3 = Lists.newArrayList($$2.f());
       $$3.remove($$1);
       $$0.a(() -> vq.a("commands.datapack.modify.disable", $$1.a(true)), true);
-      amb.a($$3.stream().map(ari::f).collect(Collectors.toList()), $$0);
+      amb.a($$3.stream().map(arj::f).collect(Collectors.toList()), $$0);
       return $$3.size();
    }
 
@@ -112,12 +112,12 @@ public class akn {
    }
 
    private static int b(du $$0) {
-      arl $$1 = $$0.l().aD();
+      arm $$1 = $$0.l().aF();
       $$1.a();
-      Collection<ari> $$2 = $$1.f();
-      Collection<ari> $$3 = $$1.c();
-      cjs $$4 = $$0.w();
-      List<ari> $$5 = $$3.stream().filter($$2x -> !$$2.contains($$2x) && $$2x.d().a($$4)).toList();
+      Collection<arj> $$2 = $$1.f();
+      Collection<arj> $$3 = $$1.c();
+      cjw $$4 = $$0.w();
+      List<arj> $$5 = $$3.stream().filter($$2x -> !$$2.contains($$2x) && $$2x.d().a($$4)).toList();
       if ($$5.isEmpty()) {
          $$0.a(() -> vq.c("commands.datapack.list.available.none"), false);
       } else {
@@ -128,9 +128,9 @@ public class akn {
    }
 
    private static int c(du $$0) {
-      arl $$1 = $$0.l().aD();
+      arm $$1 = $$0.l().aF();
       $$1.a();
-      Collection<? extends ari> $$2 = $$1.f();
+      Collection<? extends arj> $$2 = $$1.f();
       if ($$2.isEmpty()) {
          $$0.a(() -> vq.c("commands.datapack.list.enabled.none"), false);
       } else {
@@ -140,10 +140,10 @@ public class akn {
       return $$2.size();
    }
 
-   private static ari a(CommandContext<du> $$0, String $$1, boolean $$2) throws CommandSyntaxException {
+   private static arj a(CommandContext<du> $$0, String $$1, boolean $$2) throws CommandSyntaxException {
       String $$3 = StringArgumentType.getString($$0, $$1);
-      arl $$4 = ((du)$$0.getSource()).l().aD();
-      ari $$5 = $$4.c($$3);
+      arm $$4 = ((du)$$0.getSource()).l().aF();
+      arj $$5 = $$4.c($$3);
       if ($$5 == null) {
          throw a.create($$3);
       } else {
@@ -153,10 +153,10 @@ public class akn {
          } else if (!$$2 && !$$6) {
             throw c.create($$3);
          } else {
-            cjs $$7 = ((du)$$0.getSource()).w();
-            cjs $$8 = $$5.d();
+            cjw $$7 = ((du)$$0.getSource()).w();
+            cjw $$8 = $$5.d();
             if (!$$8.a($$7)) {
-               throw d.create($$3, cju.a($$7, $$8));
+               throw d.create($$3, cjy.a($$7, $$8));
             } else {
                return $$5;
             }
@@ -165,6 +165,6 @@ public class akn {
    }
 
    interface a {
-      void apply(List<ari> var1, ari var2) throws CommandSyntaxException;
+      void apply(List<arj> var1, arj var2) throws CommandSyntaxException;
    }
 }

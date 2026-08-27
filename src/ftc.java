@@ -1,11 +1,17 @@
-import javax.annotation.Nullable;
+public class ftc extends ftv {
+   protected ftc(fqe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fuc $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, 2.5F, $$7);
+   }
 
-public interface ftc<T extends jx> {
-   @Nullable
-   fsz createParticle(T var1, fpx var2, double var3, double var5, double var7, double var9, double var11, double var13);
+   public static class a implements ftk<kc> {
+      private final fuc a;
 
-   public interface a<T extends jx> {
-      @Nullable
-      ftz createParticle(T var1, fpx var2, double var3, double var5, double var7, double var9, double var11, double var13);
+      public a(fuc $$0) {
+         this.a = $$0;
+      }
+
+      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new ftc($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
    }
 }

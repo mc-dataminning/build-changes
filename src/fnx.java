@@ -1,39 +1,31 @@
-public class fnx extends fny {
-   private final fpc b;
-   protected final fpc a;
+public class fnx<T extends cat> extends fns<T> {
+   private float j;
 
-   public fnx(fpc $$0) {
-      this.b = $$0;
-      this.a = $$0.b("head");
+   public fnx(fpj $$0) {
+      super($$0, false, 8.0F, 4.0F, 2.0F, 2.0F, 24);
    }
 
-   public static fpk a() {
-      fpk $$0 = new fpk();
-      fpl $$1 = $$0.a();
-      $$1.a("head", fph.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fpe.a);
-      return $$0;
+   public static fpp c() {
+      fpr $$0 = new fpr();
+      fps $$1 = $$0.a();
+      $$1.a("head", fpo.c().a(0, 0).a(-3.0F, -4.0F, -4.0F, 6.0F, 6.0F, 6.0F, new fpn(0.6F)), fpl.a(0.0F, 6.0F, -8.0F));
+      $$1.a("body", fpo.c().a(28, 8).a(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F, new fpn(1.75F)), fpl.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      fpo $$2 = fpo.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, new fpn(0.5F));
+      $$1.a("right_hind_leg", $$2, fpl.a(-3.0F, 12.0F, 7.0F));
+      $$1.a("left_hind_leg", $$2, fpl.a(3.0F, 12.0F, 7.0F));
+      $$1.a("right_front_leg", $$2, fpl.a(-3.0F, 12.0F, -5.0F));
+      $$1.a("left_front_leg", $$2, fpl.a(3.0F, 12.0F, -5.0F));
+      return fpp.a($$0, 64, 32);
    }
 
-   public static fpi b() {
-      fpk $$0 = a();
-      fpl $$1 = $$0.a();
-      $$1.a("head").a("hat", fph.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fpg(0.25F)), fpe.a);
-      return fpi.a($$0, 64, 64);
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a.c = 6.0F + $$0.E($$3) * 9.0F;
+      this.j = $$0.F($$3);
    }
 
-   public static fpi c() {
-      fpk $$0 = a();
-      return fpi.a($$0, 64, 32);
-   }
-
-   @Override
-   public void a(float $$0, float $$1, float $$2) {
-      this.a.f = $$1 * (float) (Math.PI / 180.0);
-      this.a.e = $$2 * (float) (Math.PI / 180.0);
-   }
-
-   @Override
-   public void a(esa $$0, ese $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      this.a.e = this.j;
    }
 }

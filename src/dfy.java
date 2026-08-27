@@ -1,6 +1,7 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dfy extends cyb {
+public class dfy extends cxn {
    public static final MapCodec<dfy> c = b(dfy::new);
 
    @Override
@@ -8,26 +9,41 @@ public class dfy extends cyb {
       return c;
    }
 
-   public dfy(dle.d $$0) {
-      super($$0, 2.0F);
+   protected dfy(dli.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected dlf a(dlf $$0, ie $$1, dlf $$2, cvo $$3, hz $$4, hz $$5) {
-      return this.a($$0, $$3, $$4) ? this.o() : cyq.a.o();
+   public dix a(hz $$0, dlj $$1) {
+      return new dkj($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dix> diy<T> a(cvr $$0, dlj $$1, diz<T> $$2) {
+      return a($$0, $$2, diz.B);
    }
 
    @Override
-   protected boolean a(dlf $$0, cvq $$1, hz $$2) {
-      return m($$1.a_($$2.d()));
-   }
-
-   public static boolean m(dlf $$0) {
-      return $$0.a(atz.aS);
+   protected void a(cvr $$0, hz $$1, chl $$2) {
+      dix $$3 = $$0.c_($$1);
+      if ($$3 instanceof dkj) {
+         $$2.a((bma)$$3);
+         $$2.a(atv.at);
+      }
    }
 
    @Override
-   protected boolean f(dlf $$0) {
-      return true;
+   public void a(dlj $$0, cvr $$1, hz $$2, awp $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, atl.xD, atm.e, 1.0F, 1.0F, false);
+         }
+
+         $$1.a(jz.ab, $$4, $$5 + 1.1, $$6, 0.0, 0.0, 0.0);
+      }
    }
 }

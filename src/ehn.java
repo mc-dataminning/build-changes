@@ -1,210 +1,133 @@
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
-import java.util.function.Predicate;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
 public class ehn {
-   private static final int c = 2;
-   public static final int a = 21;
-   private static final int d = 3;
-   public static final int b = 21;
-   private static final dle.f e = ($$0, $$1, $$2) -> $$0.a(cyq.co);
-   private static final float f = 4.0F;
-   private static final double g = 1.0;
-   private final cvo h;
-   private final ie.a i;
-   private final ie j;
-   private int k;
+   private static final float a = 1.5F;
+   private final ehj[] b = new ehj[32];
+   private final int c;
+   private final ehk d;
+   private static final boolean e = false;
+   private final ehg f = new ehg();
+
+   public ehn(ehk $$0, int $$1) {
+      this.d = $$0;
+      this.c = $$1;
+   }
+
    @Nullable
-   private hz l;
-   private int m;
-   private final int n;
-
-   public static Optional<ehn> a(cvo $$0, hz $$1, ie.a $$2) {
-      return a($$0, $$1, $$0x -> $$0x.a() && $$0x.k == 0, $$2);
-   }
-
-   public static Optional<ehn> a(cvo $$0, hz $$1, Predicate<ehn> $$2, ie.a $$3) {
-      Optional<ehn> $$4 = Optional.of(new ehn($$0, $$1, $$3)).filter($$2);
-      if ($$4.isPresent()) {
-         return $$4;
+   public ehl a(cwe $$0, bok $$1, Set<hz> $$2, float $$3, int $$4, float $$5) {
+      this.f.a();
+      this.d.a($$0, $$1);
+      ehj $$6 = this.d.a();
+      if ($$6 == null) {
+         return null;
       } else {
-         ie.a $$5 = $$3 == ie.a.a ? ie.a.c : ie.a.a;
-         return Optional.of(new ehn($$0, $$1, $$5)).filter($$2);
-      }
-   }
-
-   public ehn(cvo $$0, hz $$1, ie.a $$2) {
-      this.h = $$0;
-      this.i = $$2;
-      this.j = $$2 == ie.a.a ? ie.e : ie.d;
-      this.l = this.a($$1);
-      if (this.l == null) {
-         this.l = $$1;
-         this.n = 1;
-         this.m = 1;
-      } else {
-         this.n = this.d();
-         if (this.n > 0) {
-            this.m = this.e();
-         }
+         Map<ehp, hz> $$7 = $$2.stream().collect(Collectors.toMap($$0x -> this.d.a((double)$$0x.u(), (double)$$0x.v(), (double)$$0x.w()), Function.identity()));
+         ehl $$8 = this.a($$0.a(), $$6, $$7, $$3, $$4, $$5);
+         this.d.b();
+         return $$8;
       }
    }
 
    @Nullable
-   private hz a(hz $$0) {
-      int $$1 = Math.max(this.h.J_(), $$0.v() - 21);
+   private ehl a(bin $$0, ehj $$1, Map<ehp, hz> $$2, float $$3, int $$4, float $$5) {
+      $$0.a("find_path");
+      $$0.a(bjq.a);
+      Set<ehp> $$6 = $$2.keySet();
+      $$1.e = 0.0F;
+      $$1.f = this.a($$1, $$6);
+      $$1.g = $$1.f;
+      this.f.a();
+      this.f.a($$1);
+      Set<ehj> $$7 = ImmutableSet.of();
+      int $$8 = 0;
+      Set<ehp> $$9 = Sets.newHashSetWithExpectedSize($$6.size());
+      int $$10 = (int)((float)this.c * $$5);
 
-      while ($$0.v() > $$1 && a(this.h.a_($$0.d()))) {
-         $$0 = $$0.d();
-      }
-
-      ie $$2 = this.j.g();
-      int $$3 = this.a($$0, $$2) - 1;
-      return $$3 < 0 ? null : $$0.a($$2, $$3);
-   }
-
-   private int d() {
-      int $$0 = this.a(this.l, this.j);
-      return $$0 >= 2 && $$0 <= 21 ? $$0 : 0;
-   }
-
-   private int a(hz $$0, ie $$1) {
-      hz.a $$2 = new hz.a();
-
-      for (int $$3 = 0; $$3 <= 21; $$3++) {
-         $$2.g($$0).c($$1, $$3);
-         dlf $$4 = this.h.a_($$2);
-         if (!a($$4)) {
-            if (e.test($$4, this.h, $$2)) {
-               return $$3;
-            }
+      while (!this.f.e()) {
+         if (++$$8 >= $$10) {
             break;
          }
 
-         dlf $$5 = this.h.a_($$2.c(ie.a));
-         if (!e.test($$5, this.h, $$2)) {
+         ehj $$11 = this.f.c();
+         $$11.i = true;
+
+         for (ehp $$12 : $$6) {
+            if ($$11.d($$12) <= (float)$$4) {
+               $$12.e();
+               $$9.add($$12);
+            }
+         }
+
+         if (!$$9.isEmpty()) {
             break;
          }
-      }
 
-      return 0;
-   }
+         if (!($$11.a($$1) >= $$3)) {
+            int $$13 = this.d.a(this.b, $$11);
 
-   private int e() {
-      hz.a $$0 = new hz.a();
-      int $$1 = this.a($$0);
-      return $$1 >= 3 && $$1 <= 21 && this.a($$0, $$1) ? $$1 : 0;
-   }
-
-   private boolean a(hz.a $$0, int $$1) {
-      for (int $$2 = 0; $$2 < this.n; $$2++) {
-         hz.a $$3 = $$0.g(this.l).c(ie.b, $$1).c(this.j, $$2);
-         if (!e.test(this.h.a_($$3), this.h, $$3)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   private int a(hz.a $$0) {
-      for (int $$1 = 0; $$1 < 21; $$1++) {
-         $$0.g(this.l).c(ie.b, $$1).c(this.j, -1);
-         if (!e.test(this.h.a_($$0), this.h, $$0)) {
-            return $$1;
-         }
-
-         $$0.g(this.l).c(ie.b, $$1).c(this.j, this.n);
-         if (!e.test(this.h.a_($$0), this.h, $$0)) {
-            return $$1;
-         }
-
-         for (int $$2 = 0; $$2 < this.n; $$2++) {
-            $$0.g(this.l).c(ie.b, $$1).c(this.j, $$2);
-            dlf $$3 = this.h.a_($$0);
-            if (!a($$3)) {
-               return $$1;
-            }
-
-            if ($$3.a(cyq.ed)) {
-               this.k++;
+            for (int $$14 = 0; $$14 < $$13; $$14++) {
+               ehj $$15 = this.b[$$14];
+               float $$16 = this.a($$11, $$15);
+               $$15.j = $$11.j + $$16;
+               float $$17 = $$11.e + $$16 + $$15.k;
+               if ($$15.j < $$3 && (!$$15.c() || $$17 < $$15.e)) {
+                  $$15.h = $$11;
+                  $$15.e = $$17;
+                  $$15.f = this.a($$15, $$6) * 1.5F;
+                  if ($$15.c()) {
+                     this.f.a($$15, $$15.e + $$15.f);
+                  } else {
+                     $$15.g = $$15.e + $$15.f;
+                     this.f.a($$15);
+                  }
+               }
             }
          }
       }
 
-      return 21;
+      Optional<ehl> $$18 = !$$9.isEmpty()
+         ? $$9.stream().map($$1x -> this.a($$1x.d(), $$2.get($$1x), true)).min(Comparator.comparingInt(ehl::e))
+         : $$6.stream().map($$1x -> this.a($$1x.d(), $$2.get($$1x), false)).min(Comparator.comparingDouble(ehl::m).thenComparingInt(ehl::e));
+      $$0.c();
+      return $$18.isEmpty() ? null : $$18.get();
    }
 
-   private static boolean a(dlf $$0) {
-      return $$0.i() || $$0.a(atz.aJ) || $$0.a(cyq.ed);
+   protected float a(ehj $$0, ehj $$1) {
+      return $$0.a($$1);
    }
 
-   public boolean a() {
-      return this.l != null && this.n >= 2 && this.n <= 21 && this.m >= 3 && this.m <= 21;
-   }
+   private float a(ehj $$0, Set<ehp> $$1) {
+      float $$2 = Float.MAX_VALUE;
 
-   public void b() {
-      dlf $$0 = cyq.ed.o().a(ddr.b, this.i);
-      hz.a(this.l, this.l.a(ie.b, this.m - 1).a(this.j, this.n - 1)).forEach($$1 -> this.h.a($$1, $$0, 18));
-   }
-
-   public boolean c() {
-      return this.a() && this.k == this.n * this.m;
-   }
-
-   public static ens a(l.a $$0, ie.a $$1, ens $$2, bnr $$3) {
-      double $$4 = (double)$$0.b - (double)$$3.a();
-      double $$5 = (double)$$0.c - (double)$$3.b();
-      hz $$6 = $$0.a;
-      double $$8;
-      if ($$4 > 0.0) {
-         double $$7 = (double)$$6.a($$1) + (double)$$3.a() / 2.0;
-         $$8 = awh.a(awh.c($$2.a($$1) - $$7, 0.0, $$4), 0.0, 1.0);
-      } else {
-         $$8 = 0.5;
+      for (ehp $$3 : $$1) {
+         float $$4 = $$0.a($$3);
+         $$3.a($$4, $$0);
+         $$2 = Math.min($$4, $$2);
       }
 
-      double $$11;
-      if ($$5 > 0.0) {
-         ie.a $$10 = ie.a.b;
-         $$11 = awh.a(awh.c($$2.a($$10) - (double)$$6.a($$10), 0.0, $$5), 0.0, 1.0);
-      } else {
-         $$11 = 0.0;
-      }
-
-      ie.a $$13 = $$1 == ie.a.a ? ie.a.c : ie.a.a;
-      double $$14 = $$2.a($$13) - ((double)$$6.a($$13) + 0.5);
-      return new ens($$8, $$11, $$14);
+      return $$2;
    }
 
-   public static ehm a(aov $$0, l.a $$1, ie.a $$2, ens $$3, bno $$4, ens $$5, float $$6, float $$7) {
-      hz $$8 = $$1.a;
-      dlf $$9 = $$0.a_($$8);
-      ie.a $$10 = $$9.d(dlv.H).orElse(ie.a.a);
-      double $$11 = (double)$$1.b;
-      double $$12 = (double)$$1.c;
-      bnr $$13 = $$4.a($$4.ap());
-      int $$14 = $$2 == $$10 ? 0 : 90;
-      ens $$15 = $$2 == $$10 ? $$5 : new ens($$5.e, $$5.d, -$$5.c);
-      double $$16 = (double)$$13.a() / 2.0 + ($$11 - (double)$$13.a()) * $$3.a();
-      double $$17 = ($$12 - (double)$$13.b()) * $$3.b();
-      double $$18 = 0.5 + $$3.c();
-      boolean $$19 = $$10 == ie.a.a;
-      ens $$20 = new ens((double)$$8.u() + ($$19 ? $$16 : $$18), (double)$$8.v() + $$17, (double)$$8.w() + ($$19 ? $$18 : $$16));
-      ens $$21 = a($$20, $$0, $$4, $$13);
-      return new ehm($$21, $$15, $$6 + (float)$$14, $$7);
-   }
+   private ehl a(ehj $$0, hz $$1, boolean $$2) {
+      List<ehj> $$3 = Lists.newArrayList();
+      ehj $$4 = $$0;
+      $$3.add(0, $$0);
 
-   private static ens a(ens $$0, aov $$1, bno $$2, bnr $$3) {
-      if (!($$3.a() > 4.0F) && !($$3.b() > 4.0F)) {
-         double $$4 = (double)$$3.b() / 2.0;
-         ens $$5 = $$0.b(0.0, $$4, 0.0);
-         eol $$6 = eoi.a(enn.a($$5, (double)$$3.a(), 0.0, (double)$$3.a()).b(0.0, 1.0, 0.0).g(1.0E-6));
-         Optional<ens> $$7 = $$1.a($$2, $$6, $$5, (double)$$3.a(), (double)$$3.b(), (double)$$3.a());
-         Optional<ens> $$8 = $$7.map($$1x -> $$1x.a(0.0, $$4, 0.0));
-         return $$8.orElse($$0);
-      } else {
-         return $$0;
+      while ($$4.h != null) {
+         $$4 = $$4.h;
+         $$3.add(0, $$4);
       }
+
+      return new ehl($$3, $$1, $$2);
    }
 }

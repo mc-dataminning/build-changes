@@ -1,33 +1,37 @@
-public class fnz<T extends bno> extends fmk<T> {
-   private final fpc a;
+public class fnz extends fne {
+   private static final String a = "plate";
+   private static final String b = "handle";
+   private static final int c = 10;
+   private static final int d = 20;
+   private final fpj e;
+   private final fpj f;
+   private final fpj g;
 
-   public fnz(fpc $$0) {
-      this.a = $$0;
+   public fnz(fpj $$0) {
+      super(fwb::c);
+      this.e = $$0;
+      this.f = $$0.b("plate");
+      this.g = $$0.b("handle");
    }
 
-   public static fpi b() {
-      fpk $$0 = new fpk();
-      fpl $$1 = $$0.a();
-      $$1.a("cube", fph.c().a(0, 0).a(-4.0F, 16.0F, -4.0F, 8.0F, 8.0F, 8.0F), fpe.a);
-      return fpi.a($$0, 64, 32);
+   public static fpp a() {
+      fpr $$0 = new fpr();
+      fps $$1 = $$0.a();
+      $$1.a("plate", fpo.c().a(0, 0).a(-6.0F, -11.0F, -2.0F, 12.0F, 22.0F, 1.0F), fpl.a);
+      $$1.a("handle", fpo.c().a(26, 0).a(-1.0F, -3.0F, -1.0F, 2.0F, 6.0F, 6.0F), fpl.a);
+      return fpp.a($$0, 64, 64);
    }
 
-   public static fpi c() {
-      fpk $$0 = new fpk();
-      fpl $$1 = $$0.a();
-      $$1.a("cube", fph.c().a(0, 16).a(-3.0F, 17.0F, -3.0F, 6.0F, 6.0F, 6.0F), fpe.a);
-      $$1.a("right_eye", fph.c().a(32, 0).a(-3.25F, 18.0F, -3.5F, 2.0F, 2.0F, 2.0F), fpe.a);
-      $$1.a("left_eye", fph.c().a(32, 4).a(1.25F, 18.0F, -3.5F, 2.0F, 2.0F, 2.0F), fpe.a);
-      $$1.a("mouth", fph.c().a(32, 8).a(0.0F, 21.0F, -3.5F, 1.0F, 1.0F, 1.0F), fpe.a);
-      return fpi.a($$0, 64, 32);
+   public fpj b() {
+      return this.f;
+   }
+
+   public fpj c() {
+      return this.g;
    }
 
    @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-   }
-
-   @Override
-   public fpc a() {
-      return this.a;
+   public void a(esh $$0, esl $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.e.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 }

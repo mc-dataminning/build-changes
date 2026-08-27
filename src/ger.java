@@ -1,34 +1,28 @@
-public class ger extends gfd<cbx, fmm<cbx>> {
-   private final fmm<cbx> a;
-
-   public ger(gcn<cbx, fmm<cbx>> $$0, foy $$1) {
+public class ger extends gfl<fus, fnn<fus>> {
+   public ger(gcv<fus, fnn<fus>> $$0) {
       super($$0);
-      this.a = new fmm<>($$1.a(fpb.am));
    }
 
-   public void a(esa $$0, fvl $$1, int $$2, cbx $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      coz $$10 = $$3.u();
-      if ($$10.d() instanceof cmi $$11 && $$11.d() == cmi.a.a) {
-         this.c().a(this.a);
-         this.a.a($$3, $$4, $$5, $$6);
-         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
-         float $$15;
-         float $$16;
-         float $$14;
-         if ($$11 instanceof cnp) {
-            int $$13 = ((cnp)$$11).e_($$10);
-            $$14 = (float)($$13 >> 16 & 0xFF) / 255.0F;
-            $$15 = (float)($$13 >> 8 & 0xFF) / 255.0F;
-            $$16 = (float)($$13 & 0xFF) / 255.0F;
-         } else {
-            $$14 = 1.0F;
-            $$15 = 1.0F;
-            $$16 = 1.0F;
-         }
+   public void a(esh $$0, fvt $$1, int $$2, fus $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ("deadmau5".equals($$3.ad().getString()) && !$$3.ce()) {
+         esl $$10 = $$1.getBuffer(fwb.c($$3.b().a()));
+         int $$11 = gcb.c($$3, 0.0F);
 
-         ese $$20 = $$1.getBuffer(fvt.e($$11.b()));
-         this.a.a($$0, $$20, $$2, ggk.d, $$14, $$15, $$16, 1.0F);
-         return;
+         for (int $$12 = 0; $$12 < 2; $$12++) {
+            float $$13 = awi.i($$6, $$3.M, $$3.dC()) - awi.i($$6, $$3.aV, $$3.aU);
+            float $$14 = awi.i($$6, $$3.N, $$3.dE());
+            $$0.a();
+            $$0.a(a.d.rotationDegrees($$13));
+            $$0.a(a.b.rotationDegrees($$14));
+            $$0.a(0.375F * (float)($$12 * 2 - 1), 0.0F, 0.0F);
+            $$0.a(0.0F, -0.375F, 0.0F);
+            $$0.a(a.b.rotationDegrees(-$$14));
+            $$0.a(a.d.rotationDegrees(-$$13));
+            float $$15 = 1.3333334F;
+            $$0.b(1.3333334F, 1.3333334F, 1.3333334F);
+            this.c().a($$0, $$10, $$2, $$11);
+            $$0.b();
+         }
       }
    }
 }

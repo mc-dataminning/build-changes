@@ -26,33 +26,33 @@ public class alg {
       );
    }
 
-   private static int a(du $$0, gb $$1, Collection<aow> $$2, int $$3) throws CommandSyntaxException {
+   private static int a(du $$0, gb $$1, Collection<aox> $$2, int $$3) throws CommandSyntaxException {
       int $$4 = $$1.a().k();
       int $$5 = $$4 * 100;
-      coz $$6 = $$1.a($$3, false);
+      cpd $$6 = $$1.a($$3, false);
       if ($$3 > $$5) {
          $$0.b(vq.a("commands.give.failed.toomanyitems", $$5, $$6.K()));
          return 0;
       } else {
-         for (aow $$7 : $$2) {
+         for (aox $$7 : $$2) {
             int $$8 = $$3;
 
             while ($$8 > 0) {
                int $$9 = Math.min($$4, $$8);
                $$8 -= $$9;
-               coz $$10 = $$1.a($$9, false);
+               cpd $$10 = $$1.a($$9, false);
                boolean $$11 = $$7.fT().e($$10);
                if ($$11 && $$10.b()) {
                   $$10.f(1);
-                  cds $$13 = $$7.a($$10, false);
+                  cdw $$13 = $$7.a($$10, false);
                   if ($$13 != null) {
                      $$13.C();
                   }
 
-                  $$7.dM().a(null, $$7.dr(), $$7.dt(), $$7.dx(), atk.nd, atl.h, 0.2F, (($$7.eh().i() - $$7.eh().i()) * 0.7F + 1.0F) * 2.0F);
+                  $$7.dM().a(null, $$7.dr(), $$7.dt(), $$7.dx(), atl.ne, atm.h, 0.2F, (($$7.eh().i() - $$7.eh().i()) * 0.7F + 1.0F) * 2.0F);
                   $$7.bW.d();
                } else {
-                  cds $$12 = $$7.a($$10, false);
+                  cdw $$12 = $$7.a($$10, false);
                   if ($$12 != null) {
                      $$12.x();
                      $$12.b($$7.cw());

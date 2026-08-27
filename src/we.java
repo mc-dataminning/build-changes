@@ -8,7 +8,7 @@ public class we implements vq {
    private final vr c;
    private final List<vq> d;
    private wn e;
-   private avt f = avt.a;
+   private avu f = avu.a;
    @Nullable
    private sr g;
 
@@ -77,7 +77,7 @@ public class we implements vq {
    }
 
    @Override
-   public avt g() {
+   public avu g() {
       sr $$0 = sr.a();
       if (this.g != $$0) {
          this.f = $$0.a(this);

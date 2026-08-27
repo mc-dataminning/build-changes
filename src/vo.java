@@ -56,7 +56,7 @@ public class vo {
       f("copy_to_clipboard", true);
 
       public static final MapCodec<vo.a> g = axc.a(vo.a::values).fieldOf("action");
-      public static final MapCodec<vo.a> h = avp.a(g, vo.a::a);
+      public static final MapCodec<vo.a> h = avq.a(g, vo.a::a);
       private final boolean i;
       private final String j;
 

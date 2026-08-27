@@ -1,91 +1,72 @@
-public class cro extends crt {
-   public cro(crr $$0) {
-      super($$0);
-   }
+public abstract class cro implements csf<blp> {
+   protected final csk<?> a;
+   protected final cru b;
+   protected final String c;
+   protected final csc d;
+   protected final cpd e;
+   protected final float f;
+   protected final int g;
 
-   public boolean a(ckr $$0, cvn $$1) {
-      int $$2 = 0;
-      coz $$3 = coz.h;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         coz $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.a(cpc.tX)) {
-               if (!$$3.b()) {
-                  return false;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cpc.tW)) {
-                  return false;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      return !$$3.b() && $$3.v() && $$2 > 0;
-   }
-
-   public coz a(ckr $$0, iw $$1) {
-      int $$2 = 0;
-      coz $$3 = coz.h;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         coz $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.a(cpc.tX)) {
-               if (!$$3.b()) {
-                  return coz.h;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cpc.tW)) {
-                  return coz.h;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      if (!$$3.b() && $$3.v() && $$2 >= 1 && cqu.d($$3) < 2) {
-         coz $$6 = new coz(cpc.tX, $$2);
-         sw $$7 = $$3.w().h();
-         $$7.a("generation", cqu.d($$3) + 1);
-         $$6.c($$7);
-         return $$6;
-      } else {
-         return coz.h;
-      }
-   }
-
-   public is<coz> a(ckr $$0) {
-      is<coz> $$1 = is.a($$0.b(), coz.h);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         coz $$3 = $$0.a($$2);
-         if ($$3.d().s()) {
-            $$1.set($$2, new coz($$3.d().r()));
-         } else if ($$3.d() instanceof cqu) {
-            $$1.set($$2, $$3.c(1));
-            break;
-         }
-      }
-
-      return $$1;
+   public cro(csk<?> $$0, String $$1, cru $$2, csc $$3, cpd $$4, float $$5, int $$6) {
+      this.a = $$0;
+      this.b = $$2;
+      this.c = $$1;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
    }
 
    @Override
-   public csf<?> at_() {
-      return csf.d;
+   public boolean a(blp $$0, cvr $$1) {
+      return this.d.a($$0.a(0));
+   }
+
+   @Override
+   public cpd a(blp $$0, iw $$1) {
+      return this.e.q();
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
+      return true;
+   }
+
+   @Override
+   public is<csc> a() {
+      is<csc> $$0 = is.a();
+      $$0.add(this.d);
+      return $$0;
+   }
+
+   public float b() {
+      return this.f;
+   }
+
+   @Override
+   public cpd a(iw $$0) {
+      return this.e;
+   }
+
+   @Override
+   public String c() {
+      return this.c;
+   }
+
+   public int d() {
+      return this.g;
+   }
+
+   @Override
+   public csk<?> e() {
+      return this.a;
+   }
+
+   public cru f() {
+      return this.b;
+   }
+
+   public interface a<T extends cro> {
+      T create(String var1, cru var2, csc var3, cpd var4, float var5, int var6);
    }
 }

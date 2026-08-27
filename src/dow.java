@@ -1,24 +1,19 @@
-import java.util.UUID;
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dow {
-   int aj();
+public record dow(ij<dov> e, dng f) {
+   public static final Codec<dow> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dov.j.fieldOf("type").forGetter(dow::a), dng.a.fieldOf("generator").forGetter(dow::b)).apply($$0, $$0.stable(dow::new))
+   );
+   public static final aix<dow> b = aix.a(kg.aN, new aiy("overworld"));
+   public static final aix<dow> c = aix.a(kg.aN, new aiy("the_nether"));
+   public static final aix<dow> d = aix.a(kg.aN, new aiy("the_end"));
 
-   UUID cw();
+   public ij<dov> a() {
+      return this.e;
+   }
 
-   hz dm();
-
-   enn cH();
-
-   void a(dox var1);
-
-   Stream<? extends dow> cR();
-
-   Stream<? extends dow> cS();
-
-   void b(bno.c var1);
-
-   boolean dK();
-
-   boolean dL();
+   public dng b() {
+      return this.f;
+   }
 }

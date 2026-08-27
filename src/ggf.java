@@ -1,6 +1,8 @@
-import java.io.IOException;
-import java.nio.file.Path;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface ggf {
-   void a(aiy var1, Path var2) throws IOException;
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ggf {
 }

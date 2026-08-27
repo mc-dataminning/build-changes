@@ -1,120 +1,88 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.stream.Stream;
 
-public class cst implements csr {
-   final cry a;
-   final cry b;
-   final cry c;
+public abstract class cst implements csf<blp> {
+   protected final csc a;
+   protected final cpd b;
+   private final csk<?> d;
+   private final csj<?> e;
+   protected final String c;
 
-   public cst(cry $$0, cry $$1, cry $$2) {
-      this.a = $$0;
-      this.b = $$1;
+   public cst(csk<?> $$0, csj<?> $$1, String $$2, csc $$3, cpd $$4) {
+      this.d = $$0;
+      this.e = $$1;
       this.c = $$2;
+      this.a = $$3;
+      this.b = $$4;
    }
 
    @Override
-   public boolean a(bln $$0, cvn $$1) {
-      return this.a.a($$0.a(0)) && this.b.a($$0.a(1)) && this.c.a($$0.a(2));
+   public csk<?> e() {
+      return this.d;
    }
 
    @Override
-   public coz a(bln $$0, iw $$1) {
-      coz $$2 = $$0.a(1);
-      if (this.b.a($$2)) {
-         Optional<ij.c<crb>> $$3 = crc.a($$1, $$0.a(2));
-         Optional<ij.c<crd>> $$4 = cre.a($$1, $$0.a(0));
-         if ($$3.isPresent() && $$4.isPresent()) {
-            Optional<cra> $$5 = cra.a($$1, $$2, false);
-            if ($$5.isPresent() && $$5.get().a($$4.get(), $$3.get())) {
-               return coz.h;
-            }
-
-            coz $$6 = $$2.q();
-            $$6.f(1);
-            cra $$7 = new cra($$3.get(), $$4.get());
-            if (cra.a($$1, $$6, $$7)) {
-               return $$6;
-            }
-         }
-      }
-
-      return coz.h;
+   public csj<?> at_() {
+      return this.e;
    }
 
    @Override
-   public coz a(iw $$0) {
-      coz $$1 = new coz(cpc.pG);
-      Optional<ij.c<crd>> $$2 = $$0.d(kg.aJ).h().findFirst();
-      if ($$2.isPresent()) {
-         Optional<ij.c<crb>> $$3 = $$0.d(kg.aI).b(crc.d);
-         if ($$3.isPresent()) {
-            cra $$4 = new cra($$3.get(), $$2.get());
-            cra.a($$0, $$1, $$4);
-         }
-      }
-
-      return $$1;
+   public String c() {
+      return this.c;
    }
 
    @Override
-   public boolean a(coz $$0) {
-      return this.a.a($$0);
+   public cpd a(iw $$0) {
+      return this.b;
    }
 
    @Override
-   public boolean b(coz $$0) {
-      return this.b.a($$0);
+   public is<csc> a() {
+      is<csc> $$0 = is.a();
+      $$0.add(this.a);
+      return $$0;
    }
 
    @Override
-   public boolean c(coz $$0) {
-      return this.c.a($$0);
+   public boolean a(int $$0, int $$1) {
+      return true;
    }
 
    @Override
-   public csf<?> at_() {
-      return csf.v;
+   public cpd a(blp $$0, iw $$1) {
+      return this.b.q();
    }
 
-   @Override
-   public boolean i() {
-      return Stream.of(this.a, this.b, this.c).anyMatch(cry::c);
+   public interface a<T extends cst> {
+      T create(String var1, csc var2, cpd var3);
    }
 
-   public static class a implements csf<cst> {
-      private static final Codec<cst> y = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  cry.c.fieldOf("template").forGetter($$0x -> $$0x.a),
-                  cry.c.fieldOf("base").forGetter($$0x -> $$0x.b),
-                  cry.c.fieldOf("addition").forGetter($$0x -> $$0x.c)
-               )
-               .apply($$0, cst::new)
-      );
-      public static final xo<vb, cst> x = xo.a(cst.a::a, cst.a::a);
+   public static class b<T extends cst> implements csj<T> {
+      final cst.a<T> x;
+      private final Codec<T> y;
+      private final xo<vb, T> z;
 
-      @Override
-      public Codec<cst> a() {
-         return y;
+      protected b(cst.a<T> $$0) {
+         this.x = $$0;
+         this.y = RecordCodecBuilder.create(
+            $$1 -> $$1.group(
+                     avq.a(Codec.STRING, "group", "").forGetter($$0xx -> $$0xx.c),
+                     csc.d.fieldOf("ingredient").forGetter($$0xx -> $$0xx.a),
+                     cpd.e.forGetter($$0xx -> $$0xx.b)
+                  )
+                  .apply($$1, $$0::create)
+         );
+         this.z = xo.a(xm.h, $$0x -> $$0x.c, csc.b, $$0x -> $$0x.a, cpd.f, $$0x -> $$0x.b, $$0::create);
       }
 
       @Override
-      public xo<vb, cst> b() {
-         return x;
+      public Codec<T> a() {
+         return this.y;
       }
 
-      private static cst a(vb $$0) {
-         cry $$1 = cry.b.decode($$0);
-         cry $$2 = cry.b.decode($$0);
-         cry $$3 = cry.b.decode($$0);
-         return new cst($$1, $$2, $$3);
-      }
-
-      private static void a(vb $$0, cst $$1) {
-         cry.b.encode($$0, $$1.a);
-         cry.b.encode($$0, $$1.b);
-         cry.b.encode($$0, $$1.c);
+      @Override
+      public xo<vb, T> b() {
+         return this.z;
       }
    }
 }

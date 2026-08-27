@@ -4,12 +4,12 @@ import org.slf4j.Logger;
 public class ya {
    private static final Logger a = LogUtils.getLogger();
 
-   public static <T extends uw> void a(xx<T> $$0, T $$1, aov $$2) throws ajj {
+   public static <T extends uw> void a(xx<T> $$0, T $$1, aow $$2) throws ajj {
       a($$0, $$1, $$2.o());
    }
 
-   public static <T extends uw> void a(xx<T> $$0, T $$1, bkk<?> $$2) throws ajj {
-      if (!$$2.br()) {
+   public static <T extends uw> void a(xx<T> $$0, T $$1, bkm<?> $$2) throws ajj {
+      if (!$$2.bt()) {
          $$2.c(() -> {
             if ($$1.a($$0)) {
                try {

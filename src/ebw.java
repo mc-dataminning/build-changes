@@ -1,70 +1,20 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public class ebw implements ebj {
-   private final List<ebi> a = Lists.newArrayList();
+public enum ebw implements axc {
+   a("none"),
+   b("bury"),
+   c("beard_thin"),
+   d("beard_box");
+
+   public static final Codec<ebw> e = axc.a(ebw::values);
+   private final String f;
+
+   private ebw(String $$0) {
+      this.f = $$0;
+   }
 
    @Override
-   public void a(ebi $$0) {
-      this.a.add($$0);
-   }
-
-   @Nullable
-   @Override
-   public ebi a(eaw $$0) {
-      return ebi.a(this.a, $$0);
-   }
-
-   @Deprecated
-   public void a(int $$0) {
-      for (ebi $$1 : this.a) {
-         $$1.a(0, $$0, 0);
-      }
-   }
-
-   @Deprecated
-   public int a(int $$0, int $$1, awo $$2, int $$3) {
-      int $$4 = $$0 - $$3;
-      eaw $$5 = this.d();
-      int $$6 = $$5.e() + $$1 + 1;
-      if ($$6 < $$4) {
-         $$6 += $$2.a($$4 - $$6);
-      }
-
-      int $$7 = $$6 - $$5.l();
-      this.a($$7);
-      return $$7;
-   }
-
-   /** @deprecated */
-   public void a(awo $$0, int $$1, int $$2) {
-      eaw $$3 = this.d();
-      int $$4 = $$2 - $$1 + 1 - $$3.e();
-      int $$5;
-      if ($$4 > 1) {
-         $$5 = $$1 + $$0.a($$4);
-      } else {
-         $$5 = $$1;
-      }
-
-      int $$7 = $$5 - $$3.i();
-      this.a($$7);
-   }
-
-   public ebt a() {
-      return new ebt(this.a);
-   }
-
-   public void b() {
-      this.a.clear();
-   }
-
-   public boolean c() {
-      return this.a.isEmpty();
-   }
-
-   public eaw d() {
-      return ebi.a(this.a.stream());
+   public String c() {
+      return this.f;
    }
 }

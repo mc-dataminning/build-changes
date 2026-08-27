@@ -21,16 +21,16 @@ public class akh {
    }
 
    private static int a(du $$0, Collection<GameProfile> $$1, @Nullable vq $$2) throws CommandSyntaxException {
-      ast $$3 = $$0.l().ae().f();
+      asu $$3 = $$0.l().ag().f();
       int $$4 = 0;
 
       for (GameProfile $$5 : $$1) {
          if (!$$3.a($$5)) {
-            asu $$6 = new asu($$5, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
+            asv $$6 = new asv($$5, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
             $$3.a($$6);
             $$4++;
             $$0.a(() -> vq.a("commands.ban.success", vq.b($$5.getName()), $$6.d()), true);
-            aow $$7 = $$0.l().ae().a($$5.getId());
+            aox $$7 = $$0.l().ag().a($$5.getId());
             if ($$7 != null) {
                $$7.d.b(vq.c("multiplayer.disconnect.banned"));
             }

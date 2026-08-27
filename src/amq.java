@@ -15,8 +15,8 @@ public class amq {
    }
 
    private static int a(du $$0, hz $$1, float $$2) {
-      aov $$3 = $$0.e();
-      if ($$3.ae() != cvn.h) {
+      aow $$3 = $$0.e();
+      if ($$3.ad() != cvr.h) {
          $$0.b(vq.c("commands.setworldspawn.failure.not_overworld"));
          return 0;
       } else {

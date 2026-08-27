@@ -5,7 +5,7 @@ public class adk implements xx<aag> {
    private final int b;
    private final int c;
 
-   public adk(bno $$0, @Nullable bno $$1) {
+   public adk(bnq $$0, @Nullable bnq $$1) {
       this.b = $$0.aj();
       this.c = $$1 != null ? $$1.aj() : 0;
    }

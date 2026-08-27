@@ -1,6 +1,9 @@
-import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public class dwd implements dvw {
-   public static final Codec<dwd> a = Codec.unit(() -> dwd.b);
-   public static final dwd b = new dwd();
+public interface dwd {
+   dwk m = dwk.b;
+
+   default Stream<dtm<?, ?>> e() {
+      return Stream.empty();
+   }
 }

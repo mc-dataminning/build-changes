@@ -1,6 +1,6 @@
-public class ctd extends cti {
-   public ctd(cti.a $$0, bnv... $$1) {
-      super($$0, auh.bo, $$1);
+public class ctd extends ctm {
+   public ctd(ctm.a $$0, bnx... $$1) {
+      super($$0, aui.bm, $$1);
    }
 
    @Override
@@ -10,16 +10,11 @@ public class ctd extends cti {
 
    @Override
    public int b(int $$0) {
-      return 50;
+      return this.a($$0) + 15;
    }
 
    @Override
    public int a() {
-      return 4;
-   }
-
-   @Override
-   public boolean a(cti $$0) {
-      return super.a($$0) && $$0 != ctl.I;
+      return 5;
    }
 }

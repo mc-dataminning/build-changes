@@ -1,133 +1,121 @@
-import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.Long2ObjectFunction;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongAVLTreeSet;
+import it.unimi.dsi.fastutil.longs.LongIterator;
 import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
 import it.unimi.dsi.fastutil.longs.LongSet;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.longs.LongSortedSet;
+import java.util.Objects;
+import java.util.Spliterators;
+import java.util.PrimitiveIterator.OfLong;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
+import javax.annotation.Nullable;
 
-public class dpi<T extends dow> {
-   static final Logger a = LogUtils.getLogger();
-   final dpe<T> b;
-   final doy<T> c;
-   final dpb<T> d;
-   private final LongSet e = new LongOpenHashSet();
-   private final dpf<T> f;
+public class dpi<T extends dpd> {
+   private final Class<T> a;
+   private final Long2ObjectFunction<dpq> b;
+   private final Long2ObjectMap<dph<T>> c = new Long2ObjectOpenHashMap();
+   private final LongSortedSet d = new LongAVLTreeSet();
 
-   public dpi(Class<T> $$0, dpe<T> $$1) {
-      this.c = new doy<>();
-      this.d = new dpb<>($$0, $$0x -> this.e.contains($$0x) ? dpj.c : dpj.b);
+   public dpi(Class<T> $$0, Long2ObjectFunction<dpq> $$1) {
+      this.a = $$0;
       this.b = $$1;
-      this.f = new dpg<>(this.c, this.d);
    }
 
-   public void a(cuu $$0) {
-      long $$1 = $$0.a();
-      this.e.add($$1);
-      this.d.b($$1).forEach($$0x -> {
-         dpj $$1x = $$0x.a(dpj.c);
-         if (!$$1x.a()) {
-            $$0x.b().filter($$0xx -> !$$0xx.dL()).forEach(this.b::e);
-         }
-      });
-   }
+   public void a(enu $$0, auv<dph<T>> $$1) {
+      int $$2 = 2;
+      int $$3 = jb.a($$0.a - 2.0);
+      int $$4 = jb.a($$0.b - 4.0);
+      int $$5 = jb.a($$0.c - 2.0);
+      int $$6 = jb.a($$0.d + 2.0);
+      int $$7 = jb.a($$0.e + 0.0);
+      int $$8 = jb.a($$0.f + 2.0);
 
-   public void b(cuu $$0) {
-      long $$1 = $$0.a();
-      this.e.remove($$1);
-      this.d.b($$1).forEach($$0x -> {
-         dpj $$1x = $$0x.a(dpj.b);
-         if ($$1x.a()) {
-            $$0x.b().filter($$0xx -> !$$0xx.dL()).forEach(this.b::d);
-         }
-      });
-   }
+      for (int $$9 = $$3; $$9 <= $$6; $$9++) {
+         long $$10 = jb.b($$9, 0, 0);
+         long $$11 = jb.b($$9, -1, -1);
+         LongIterator $$12 = this.d.subSet($$10, $$11 + 1L).iterator();
 
-   public dpf<T> a() {
-      return this.f;
-   }
-
-   public void a(T $$0) {
-      this.c.a($$0);
-      long $$1 = jb.c($$0.dm());
-      dpa<T> $$2 = this.d.c($$1);
-      $$2.a($$0);
-      $$0.a(new dpi.a($$0, $$1, $$2));
-      this.b.g($$0);
-      this.b.c($$0);
-      if ($$0.dL() || $$2.c().a()) {
-         this.b.e($$0);
-      }
-   }
-
-   @axl
-   public int b() {
-      return this.c.b();
-   }
-
-   void a(long $$0, dpa<T> $$1) {
-      if ($$1.a()) {
-         this.d.e($$0);
-      }
-   }
-
-   @axl
-   public String c() {
-      return this.c.b() + "," + this.d.b() + "," + this.e.size();
-   }
-
-   class a implements dox {
-      private final T c;
-      private long d;
-      private dpa<T> e;
-
-      a(T $$0, long $$1, dpa<T> $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-      }
-
-      @Override
-      public void a() {
-         hz $$0 = this.c.dm();
-         long $$1 = jb.c($$0);
-         if ($$1 != this.d) {
-            dpj $$2 = this.e.c();
-            if (!this.e.b(this.c)) {
-               dpi.a.warn("Entity {} wasn't found in section {} (moving to {})", new Object[]{this.c, jb.a(this.d), $$1});
-            }
-
-            dpi.this.a(this.d, this.e);
-            dpa<T> $$3 = dpi.this.d.c($$1);
-            $$3.a(this.c);
-            this.e = $$3;
-            this.d = $$1;
-            dpi.this.b.a(this.c);
-            if (!this.c.dL()) {
-               boolean $$4 = $$2.a();
-               boolean $$5 = $$3.c().a();
-               if ($$4 && !$$5) {
-                  dpi.this.b.d(this.c);
-               } else if (!$$4 && $$5) {
-                  dpi.this.b.e(this.c);
+         while ($$12.hasNext()) {
+            long $$13 = $$12.nextLong();
+            int $$14 = jb.c($$13);
+            int $$15 = jb.d($$13);
+            if ($$14 >= $$4 && $$14 <= $$7 && $$15 >= $$5 && $$15 <= $$8) {
+               dph<T> $$16 = (dph<T>)this.c.get($$13);
+               if ($$16 != null && !$$16.a() && $$16.c().b() && $$1.accept($$16).a()) {
+                  return;
                }
             }
          }
       }
+   }
 
-      @Override
-      public void a(bno.c $$0) {
-         if (!this.e.b(this.c)) {
-            dpi.a.warn("Entity {} wasn't found in section {} (destroying due to {})", new Object[]{this.c, jb.a(this.d), $$0});
-         }
-
-         dpj $$1 = this.e.c();
-         if ($$1.a() || this.c.dL()) {
-            dpi.this.b.d(this.c);
-         }
-
-         dpi.this.b.b(this.c);
-         dpi.this.b.f(this.c);
-         dpi.this.c.b(this.c);
-         this.c.a(a);
-         dpi.this.a(this.d, this.e);
+   public LongStream a(long $$0) {
+      int $$1 = cuy.a($$0);
+      int $$2 = cuy.b($$0);
+      LongSortedSet $$3 = this.a($$1, $$2);
+      if ($$3.isEmpty()) {
+         return LongStream.empty();
+      } else {
+         OfLong $$4 = $$3.iterator();
+         return StreamSupport.longStream(Spliterators.spliteratorUnknownSize($$4, 1301), false);
       }
+   }
+
+   private LongSortedSet a(int $$0, int $$1) {
+      long $$2 = jb.b($$0, 0, $$1);
+      long $$3 = jb.b($$0, -1, $$1);
+      return this.d.subSet($$2, $$3 + 1L);
+   }
+
+   public Stream<dph<T>> b(long $$0) {
+      return this.a($$0).<dph<T>>mapToObj(this.c::get).filter(Objects::nonNull);
+   }
+
+   private static long f(long $$0) {
+      return cuy.c(jb.b($$0), jb.d($$0));
+   }
+
+   public dph<T> c(long $$0) {
+      return (dph<T>)this.c.computeIfAbsent($$0, this::g);
+   }
+
+   @Nullable
+   public dph<T> d(long $$0) {
+      return (dph<T>)this.c.get($$0);
+   }
+
+   private dph<T> g(long $$0) {
+      long $$1 = f($$0);
+      dpq $$2 = (dpq)this.b.get($$1);
+      this.d.add($$0);
+      return new dph<>(this.a, $$2);
+   }
+
+   public LongSet a() {
+      LongSet $$0 = new LongOpenHashSet();
+      this.c.keySet().forEach($$1 -> $$0.add(f($$1)));
+      return $$0;
+   }
+
+   public void b(enu $$0, auv<T> $$1) {
+      this.a($$0, $$2 -> $$2.a($$0, $$1));
+   }
+
+   public <U extends T> void a(dpk<T, U> $$0, enu $$1, auv<U> $$2) {
+      this.a($$1, $$3 -> $$3.a($$0, $$1, $$2));
+   }
+
+   public void e(long $$0) {
+      this.c.remove($$0);
+      this.d.remove($$0);
+   }
+
+   @axl
+   public int b() {
+      return this.d.size();
    }
 }

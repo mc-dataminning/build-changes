@@ -1,33 +1,59 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.util.concurrent.Executor;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+import java.util.concurrent.locks.LockSupport;
 
-public class glq implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private final bhy<glp> b;
-   private final bkn<Runnable> c;
+public class glq extends bkm<Runnable> {
+   private Thread a = this.b();
+   private volatile boolean b;
 
-   public glq(FileChannel $$0, Executor $$1) {
-      this.b = new bhy<>(glp.a, $$0);
-      this.c = bkn.a($$1, "telemetry-event-log");
+   public glq() {
+      super("Sound executor");
    }
 
-   public glr a() {
-      return $$0 -> this.c.a(() -> {
-            try {
-               this.b.a($$0);
-            } catch (IOException var3) {
-               a.error("Failed to write telemetry event to log", var3);
-            }
-         });
+   private Thread b() {
+      Thread $$0 = new Thread(this::c);
+      $$0.setDaemon(true);
+      $$0.setName("Sound engine");
+      $$0.start();
+      return $$0;
    }
 
    @Override
-   public void close() {
-      this.c.a(() -> IOUtils.closeQuietly(this.b));
-      this.c.close();
+   protected Runnable f(Runnable $$0) {
+      return $$0;
+   }
+
+   @Override
+   protected boolean e(Runnable $$0) {
+      return !this.b;
+   }
+
+   @Override
+   protected Thread ay() {
+      return this.a;
+   }
+
+   private void c() {
+      while (!this.b) {
+         this.c(() -> this.b);
+      }
+   }
+
+   @Override
+   protected void x() {
+      LockSupport.park("waiting for tasks");
+   }
+
+   public void a() {
+      this.b = true;
+      this.a.interrupt();
+
+      try {
+         this.a.join();
+      } catch (InterruptedException var2) {
+         Thread.currentThread().interrupt();
+      }
+
+      this.bw();
+      this.b = false;
+      this.a = this.b();
    }
 }

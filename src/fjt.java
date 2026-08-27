@@ -1,121 +1,78 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.util.Collection;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
-public class fjt extends ffe {
-   private static final vq a = vq.c("selectWorld.experimental.title");
-   private static final vq b = vq.c("selectWorld.experimental.message");
-   private static final vq c = vq.c("selectWorld.experimental.details");
-   private static final int k = 10;
-   private static final int l = 100;
-   private final BooleanConsumer m;
-   final Collection<ari> n;
-   private final fcs o = new fcs().a(10).b(20);
+public class fjt {
+   private final exo a;
+   private final Set<UUID> b = Sets.newHashSet();
+   private final UserApiService c;
+   private final Map<String, UUID> d = Maps.newHashMap();
+   private boolean e;
+   private CompletableFuture<?> f = CompletableFuture.completedFuture(null);
 
-   public fjt(Collection<ari> $$0, BooleanConsumer $$1) {
-      super(a);
-      this.n = $$0;
-      this.m = $$1;
+   public fjt(exo $$0, UserApiService $$1) {
+      this.a = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   public vq i() {
-      return vp.a(super.i(), b);
+   public void a(UUID $$0) {
+      this.b.add($$0);
    }
 
-   @Override
-   protected void aQ_() {
-      super.aQ_();
-      fcs.b $$0 = this.o.d(2);
-      fcw $$1 = $$0.b().b();
-      $$0.a(new fao(this.e, this.i), 2, $$1);
-      fab $$2 = $$0.a(new fab(b, this.i).b(true), 2, $$1);
-      $$2.c(310);
-      $$0.a(ezh.a(c, $$0x -> this.f.a(new fjt.a())).a(100).a(), 2, $$1);
-      $$0.a(ezh.a(vp.i, $$0x -> this.m.accept(true)).a());
-      $$0.a(ezh.a(vp.k, $$0x -> this.m.accept(false)).a());
-      this.o.a($$1x -> {
-         ezf var10000 = this.d($$1x);
-      });
-      this.o.a();
-      this.c();
+   public void b(UUID $$0) {
+      this.b.remove($$0);
    }
 
-   @Override
-   protected void c() {
-      fcr.a(this.o, 0, 0, this.g, this.h, 0.5F, 0.5F);
+   public boolean c(UUID $$0) {
+      return this.d($$0) || this.e($$0);
    }
 
-   @Override
-   public void d() {
-      this.m.accept(false);
+   public boolean d(UUID $$0) {
+      return this.b.contains($$0);
    }
 
-   class a extends ffe {
-      private fjt.a.a b;
+   public void a() {
+      this.e = true;
+      this.f = this.f.thenRunAsync(this.c::refreshBlockList, ac.g());
+   }
 
-      a() {
-         super(vq.c("selectWorld.experimental.details.title"));
+   public void b() {
+      this.e = false;
+   }
+
+   public boolean e(UUID $$0) {
+      if (!this.e) {
+         return false;
+      } else {
+         this.f.join();
+         return this.c.isBlockedPlayer($$0);
       }
+   }
 
-      @Override
-      public void d() {
-         this.f.a(fjt.this);
+   public Set<UUID> c() {
+      return this.b;
+   }
+
+   public UUID a(String $$0) {
+      return this.d.getOrDefault($$0, ac.d);
+   }
+
+   public void a(fqn $$0) {
+      GameProfile $$1 = $$0.a();
+      this.d.put($$1.getName(), $$1.getId());
+      if (this.a.y instanceof fjv $$2) {
+         $$2.a($$0);
       }
+   }
 
-      @Override
-      protected void aQ_() {
-         super.aQ_();
-         this.d(ezh.a(vp.k, $$0 -> this.d()).a(this.g / 2 - 100, this.h / 4 + 120 + 24, 200, 20).a());
-         this.b = this.d(new fjt.a.a(this.f, fjt.this.n));
-      }
-
-      @Override
-      public void a(eyu $$0, int $$1, int $$2, float $$3) {
-         super.a($$0, $$1, $$2, $$3);
-         $$0.a(this.i, this.e, this.g / 2, 10, 16777215);
-      }
-
-      class a extends fad<fjt.a.b> {
-         public a(exh $$0, Collection<ari> $$1) {
-            super($$0, a.this.g, a.this.h - 96, 32, (9 + 2) * 3);
-
-            for (ari $$2 : $$1) {
-               String $$3 = cju.a(cju.g, $$2.d());
-               if (!$$3.isEmpty()) {
-                  vq $$4 = vt.a($$2.a().f(), wn.a.a(true));
-                  vq $$5 = vq.a("selectWorld.experimental.details.entry", $$3);
-                  this.b(a.this.new b($$4, $$5, faa.a(a.this.i, $$5, this.b())));
-               }
-            }
-         }
-
-         @Override
-         public int b() {
-            return this.g * 3 / 4;
-         }
-      }
-
-      class b extends fad.a<fjt.a.b> {
-         private final vq b;
-         private final vq c;
-         private final faa d;
-
-         b(vq $$0, vq $$1, faa $$2) {
-            this.b = $$0;
-            this.c = $$1;
-            this.d = $$2;
-         }
-
-         @Override
-         public void a(eyu $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.b(a.this.f.h, this.b, $$3, $$2, 16777215);
-            this.d.b($$0, $$3, $$2 + 12, 9, 16777215);
-         }
-
-         @Override
-         public vq a() {
-            return vq.a("narrator.select", vp.a(this.b, this.c));
-         }
+   public void f(UUID $$0) {
+      if (this.a.y instanceof fjv $$1) {
+         $$1.a($$0);
       }
    }
 }

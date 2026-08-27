@@ -1,28 +1,32 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 public class bsb {
-   private static final int a = 1;
+   private static final int a = 300;
 
-   public static bpx<boi> a(float $$0) {
-      return a($$1 -> $$0);
-   }
+   public static bqb<boi> a(int $$0, int $$1) {
+      int $$2 = $$0 * 20;
+      MutableInt $$3 = new MutableInt(0);
+      return btn.a(
+         (Function<btn.b<boi>, ? extends App<btn.c<boi>, btq<boi>>>)($$3x -> $$3x.group($$3x.b(bxl.C), $$3x.b(bxl.D))
+               .apply($$3x, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                     long $$9 = $$3x.<Long>b($$5);
+                     boolean $$10 = $$9 + 300L <= $$8;
+                     if ($$3.getValue() <= $$2 && !$$10) {
+                        hz $$11 = $$3x.<ii>b($$4).b();
+                        if ($$11.a($$7.dm(), (double)$$1)) {
+                           $$3.increment();
+                        }
 
-   public static bpx<boi> a(Function<bog, Float> $$0) {
-      return btj.a(
-         (Function<btj.b<boi>, ? extends App<btj.c<boi>, btm<boi>>>)($$1 -> $$1.group($$1.a(bxh.m), $$1.a(bxh.n), $$1.b(bxh.o), $$1.a(bxh.h))
-               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     bog $$9 = $$1.b($$4);
-                     Optional<bxj> $$10 = $$1.a($$5);
-                     if ($$10.isPresent() && $$10.get().a($$9) && bpy.a($$7, $$9, 1)) {
-                        $$2.b();
+                        return true;
                      } else {
-                        $$3.a(new bqh($$9, true));
-                        $$2.a(new bxk(new bqh($$9, false), $$0.apply($$7), 0));
+                        $$5.b();
+                        $$4.b();
+                        $$7.dO().a($$6.Y(), $$6.X());
+                        $$3.setValue(0);
+                        return true;
                      }
-
-                     return true;
                   }))
       );
    }

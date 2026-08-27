@@ -1,20 +1,15 @@
-public class csz extends cti {
-   public csz(cti.a $$0, bnv... $$1) {
-      super($$0, auh.bm, $$1);
+public class csz extends cst {
+   public csz(String $$0, csc $$1, cpd $$2) {
+      super(csk.f, csj.t, $$0, $$1, $$2);
    }
 
    @Override
-   public int a(int $$0) {
-      return 1 + ($$0 - 1) * 10;
+   public boolean a(blp $$0, cvr $$1) {
+      return this.a.a($$0.a(0));
    }
 
    @Override
-   public int b(int $$0) {
-      return this.a($$0) + 15;
-   }
-
-   @Override
-   public int a() {
-      return 5;
+   public cpd g() {
+      return new cpd(cyu.oc);
    }
 }

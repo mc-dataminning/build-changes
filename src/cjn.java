@@ -1,87 +1,141 @@
-public abstract class cjn extends bno {
-   protected static final aie<Integer> f = aih.a(cjn.class, aig.b);
-   protected static final aie<Integer> g = aih.a(cjn.class, aig.b);
-   protected static final aie<Float> h = aih.a(cjn.class, aig.d);
+public class cjn extends cje {
+   private static final aie<Boolean> e = aih.a(cjn.class, aig.k);
+   private int i;
+   public double c;
+   public double d;
+   private static final csc j = csc.a(cpg.ov, cpg.ow);
 
-   public cjn(bnu<?> $$0, cvn $$1) {
+   public cjn(bnw<? extends cjn> $$0, cvr $$1) {
       super($$0, $$1);
    }
 
+   public cjn(cvr $$0, double $$1, double $$2, double $$3) {
+      super(bnw.R, $$0, $$1, $$2, $$3);
+   }
+
    @Override
-   public boolean a(bmn $$0, float $$1) {
-      if (this.dM().B || this.dH()) {
-         return true;
-      } else if (this.b($$0)) {
-         return false;
-      } else {
-         this.n(-this.P());
-         this.d(10);
-         this.bq();
-         this.b(this.N() + $$1 * 10.0F);
-         this.a(dpp.o, $$0.d());
-         boolean $$2 = $$0.d() instanceof chh && ((chh)$$0.d()).fU().d;
-         if (($$2 || !(this.N() > 40.0F)) && !this.d($$0)) {
-            if ($$2) {
-               this.am();
-            }
-         } else {
-            this.a($$0);
-         }
-
-         return true;
-      }
-   }
-
-   boolean d(bmn $$0) {
-      return false;
-   }
-
-   public void b(cou $$0) {
-      this.al();
-      if (this.dM().Z().b(cvj.i)) {
-         coz $$1 = new coz($$0);
-         if (this.ae()) {
-            $$1.a(this.af());
-         }
-
-         this.b($$1);
-      }
+   public cje.a w() {
+      return cje.a.c;
    }
 
    @Override
    protected void c_() {
-      this.am.a(f, 0);
-      this.am.a(g, 1);
-      this.am.a(h, 0.0F);
+      super.c_();
+      this.am.a(e, false);
    }
 
-   public void d(int $$0) {
-      this.am.b(f, $$0);
+   @Override
+   public void l() {
+      super.l();
+      if (!this.dM().y_()) {
+         if (this.i > 0) {
+            this.i--;
+         }
+
+         if (this.i <= 0) {
+            this.c = 0.0;
+            this.d = 0.0;
+         }
+
+         this.p(this.i > 0);
+      }
+
+      if (this.C() && this.af.a(4) == 0) {
+         this.dM().a(jz.U, this.dr(), this.dt() + 0.8, this.dx(), 0.0, 0.0, 0.0);
+      }
    }
 
-   public void n(int $$0) {
-      this.am.b(g, $$0);
+   @Override
+   protected double q() {
+      return (this.aZ() ? 3.0 : 4.0) / 20.0;
    }
 
-   public void b(float $$0) {
-      this.am.b(h, $$0);
+   @Override
+   protected coy ai_() {
+      return cpg.nN;
    }
 
-   public float N() {
-      return this.am.b(h);
+   @Override
+   protected void c(hz $$0, dlj $$1) {
+      double $$2 = 1.0E-4;
+      double $$3 = 0.001;
+      super.c($$0, $$1);
+      enz $$4 = this.dp();
+      double $$5 = $$4.i();
+      double $$6 = this.c * this.c + this.d * this.d;
+      if ($$6 > 1.0E-4 && $$5 > 0.001) {
+         double $$7 = Math.sqrt($$5);
+         double $$8 = Math.sqrt($$6);
+         this.c = $$4.c / $$7 * $$8;
+         this.d = $$4.e / $$7 * $$8;
+      }
    }
 
-   public int O() {
-      return this.am.b(f);
+   @Override
+   protected void u() {
+      double $$0 = this.c * this.c + this.d * this.d;
+      if ($$0 > 1.0E-7) {
+         $$0 = Math.sqrt($$0);
+         this.c /= $$0;
+         this.d /= $$0;
+         enz $$1 = this.dp().d(0.8, 0.0, 0.8).b(this.c, 0.0, this.d);
+         if (this.aZ()) {
+            $$1 = $$1.a(0.1);
+         }
+
+         this.g($$1);
+      } else {
+         this.g(this.dp().d(0.98, 0.0, 0.98));
+      }
+
+      super.u();
    }
 
-   public int P() {
-      return this.am.b(g);
+   @Override
+   public blw a(chl $$0, blv $$1) {
+      cpd $$2 = $$0.b($$1);
+      if (j.a($$2) && this.i + 3600 <= 32000) {
+         if (!$$0.fU().d) {
+            $$2.h(1);
+         }
+
+         this.i += 3600;
+      }
+
+      if (this.i > 0) {
+         this.c = this.dr() - $$0.dr();
+         this.d = this.dx() - $$0.dx();
+      }
+
+      return blw.a(this.dM().B);
    }
 
-   protected void a(bmn $$0) {
-      this.b(this.ai_());
+   @Override
+   protected void b(sw $$0) {
+      super.b($$0);
+      $$0.a("PushX", this.c);
+      $$0.a("PushZ", this.d);
+      $$0.a("Fuel", (short)this.i);
    }
 
-   abstract cou ai_();
+   @Override
+   protected void a(sw $$0) {
+      super.a($$0);
+      this.c = $$0.k("PushX");
+      this.d = $$0.k("PushZ");
+      this.i = $$0.g("Fuel");
+   }
+
+   protected boolean C() {
+      return this.am.b(e);
+   }
+
+   protected void p(boolean $$0) {
+      this.am.b(e, $$0);
+   }
+
+   @Override
+   public dlj y() {
+      return cyu.cD.o().a(dbz.a, ie.c).a(dbz.b, Boolean.valueOf(this.C()));
+   }
 }

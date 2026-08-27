@@ -1,117 +1,57 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+public class ftd extends fuh {
+   ftd(fqe $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.u = 0.75F;
+      this.B = 0.999F;
+      this.j *= 0.8F;
+      this.k *= 0.8F;
+      this.l *= 0.8F;
+      this.k = (double)(this.r.i() * 0.4F + 0.05F);
+      this.D = this.D * (this.r.i() * 2.0F + 0.2F);
+      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+   }
 
-public interface ftd {
-   ftd a = new ftd() {
-      @Override
-      public void a(erv $$0, ggu $$1) {
-         RenderSystem.enableBlend();
-         RenderSystem.defaultBlendFunc();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShaderTexture(0, ggs.e);
-         $$0.a(esf.b.h, ery.l);
-      }
+   @Override
+   public ftl b() {
+      return ftl.b;
+   }
 
-      @Override
-      public void a(esc $$0) {
-         $$0.c();
-      }
+   @Override
+   public int a(float $$0) {
+      int $$1 = super.a($$0);
+      int $$2 = 240;
+      int $$3 = $$1 >> 16 & 0xFF;
+      return 240 | $$3 << 16;
+   }
 
-      @Override
-      public String toString() {
-         return "TERRAIN_SHEET";
-      }
-   };
-   ftd b = new ftd() {
-      @Override
-      public void a(erv $$0, ggu $$1) {
-         RenderSystem.disableBlend();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShader(fve::u);
-         RenderSystem.setShaderTexture(0, ggs.f);
-         $$0.a(esf.b.h, ery.l);
-      }
+   @Override
+   public float b(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      return this.D * (1.0F - $$1 * $$1);
+   }
 
-      @Override
-      public void a(esc $$0) {
-         $$0.c();
+   @Override
+   public void a() {
+      super.a();
+      if (!this.o) {
+         float $$0 = (float)this.s / (float)this.t;
+         if (this.r.i() > $$0) {
+            this.c.a(jz.ab, this.g, this.h, this.i, this.j, this.k, this.l);
+         }
       }
+   }
 
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_OPAQUE";
-      }
-   };
-   ftd c = new ftd() {
-      @Override
-      public void a(erv $$0, ggu $$1) {
-         RenderSystem.depthMask(true);
-         RenderSystem.setShaderTexture(0, ggs.f);
-         RenderSystem.enableBlend();
-         RenderSystem.defaultBlendFunc();
-         $$0.a(esf.b.h, ery.l);
+   public static class a implements ftk<kc> {
+      private final fuc a;
+
+      public a(fuc $$0) {
+         this.a = $$0;
       }
 
-      @Override
-      public void a(esc $$0) {
-         $$0.c();
+      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ftd $$8 = new ftd($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
       }
-
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_TRANSLUCENT";
-      }
-   };
-   ftd d = new ftd() {
-      @Override
-      public void a(erv $$0, ggu $$1) {
-         RenderSystem.disableBlend();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShaderTexture(0, ggs.f);
-         $$0.a(esf.b.h, ery.l);
-      }
-
-      @Override
-      public void a(esc $$0) {
-         $$0.c();
-      }
-
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_LIT";
-      }
-   };
-   ftd e = new ftd() {
-      @Override
-      public void a(erv $$0, ggu $$1) {
-         RenderSystem.depthMask(true);
-         RenderSystem.disableBlend();
-      }
-
-      @Override
-      public void a(esc $$0) {
-      }
-
-      @Override
-      public String toString() {
-         return "CUSTOM";
-      }
-   };
-   ftd f = new ftd() {
-      @Override
-      public void a(erv $$0, ggu $$1) {
-      }
-
-      @Override
-      public void a(esc $$0) {
-      }
-
-      @Override
-      public String toString() {
-         return "NO_RENDER";
-      }
-   };
-
-   void a(erv var1, ggu var2);
-
-   void a(esc var1);
+   }
 }

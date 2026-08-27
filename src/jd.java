@@ -15,7 +15,7 @@ public class jd implements Comparable<jd> {
    private int c;
 
    public static Codec<jd> v(int $$0) {
-      return avp.a(
+      return avq.a(
          f,
          (Function<jd, DataResult<jd>>)($$1 -> Math.abs($$1.u()) < $$0 && Math.abs($$1.v()) < $$0 && Math.abs($$1.w()) < $$0
                ? DataResult.success($$1)
@@ -174,11 +174,11 @@ public class jd implements Comparable<jd> {
    }
 
    public boolean a(jd $$0, double $$1) {
-      return this.j($$0) < awh.k($$1);
+      return this.j($$0) < awi.k($$1);
    }
 
    public boolean a(it $$0, double $$1) {
-      return this.b($$0) < awh.k($$1);
+      return this.b($$0) < awi.k($$1);
    }
 
    public double j(jd $$0) {

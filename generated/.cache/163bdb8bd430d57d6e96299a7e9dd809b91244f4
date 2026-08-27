@@ -1,7 +1,7 @@
-// 24w03b	2026-08-28T01:26:42.3850436	vanilla/Tags for minecraft:entity_type
+// 24w04a	2026-08-28T01:29:13.7618384	vanilla/Tags for minecraft:entity_type
 4c073b476785113705dfd3c6b286a337ddbd56b0 data\minecraft\tags\entity_types\beehive_inhabitors.json
-5decf1729450d88915af4860ad75ac73b3e07f06 data\minecraft\tags\entity_types\freeze_immune_entity_types.json
 7682a23a9a2c2cf40a063a7d8e005275500409ea data\minecraft\tags\entity_types\powder_snow_walkable_mobs.json
+5decf1729450d88915af4860ad75ac73b3e07f06 data\minecraft\tags\entity_types\freeze_immune_entity_types.json
 c2c355dcc367a1c94022723aee37d206d3a355b7 data\minecraft\tags\entity_types\aquatic.json
 1eed0c14ea5905bcbd45feee0d16154f92f53f32 data\minecraft\tags\entity_types\illager.json
 e977cfe5879b4afb1071dbc6604ba55cb32da943 data\minecraft\tags\entity_types\skeletons.json

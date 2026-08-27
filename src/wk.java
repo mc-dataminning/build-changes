@@ -22,7 +22,7 @@ public class wk {
       };
    }
 
-   public wk.b a(chk $$0) {
+   public wk.b a(cho $$0) {
       awu $$1 = $$0.a();
       return ($$2, $$3) -> {
          wl $$4 = this.a();

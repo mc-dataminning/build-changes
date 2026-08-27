@@ -1,8 +1,6 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Objects;
-import javax.annotation.Nullable;
 
 public record vn(String b, List<vn.a> c, wn d) {
    public static final Codec<vn> a = RecordCodecBuilder.create(
@@ -62,7 +60,7 @@ public record vn(String b, List<vn.a> c, wn d) {
 
    public static enum a implements axc {
       a("sender", ($$0, $$1) -> $$1.b()),
-      b("target", ($$0, $$1) -> $$1.c()),
+      b("target", ($$0, $$1) -> $$1.c().orElse(vp.a)),
       c("content", ($$0, $$1) -> $$0);
 
       public static final Codec<vn.a> d = axc.a(vn.a::values);
@@ -75,8 +73,7 @@ public record vn(String b, List<vn.a> c, wn d) {
       }
 
       public vq a(vq $$0, vm.a $$1) {
-         vq $$2 = this.f.select($$0, $$1);
-         return Objects.requireNonNullElse($$2, vp.a);
+         return this.f.select($$0, $$1);
       }
 
       @Override
@@ -85,7 +82,6 @@ public record vn(String b, List<vn.a> c, wn d) {
       }
 
       public interface a {
-         @Nullable
          vq select(vq var1, vm.a var2);
       }
    }

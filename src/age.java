@@ -8,9 +8,9 @@ public class age implements xx<aes> {
    private final boolean g;
    private final boolean h;
    private final boolean i;
-   private final djd.a j;
+   private final djh.a j;
 
-   public age(hz $$0, String $$1, djd.a $$2, boolean $$3, boolean $$4, boolean $$5) {
+   public age(hz $$0, String $$1, djh.a $$2, boolean $$3, boolean $$4, boolean $$5) {
       this.e = $$0;
       this.f = $$1;
       this.g = $$3;
@@ -22,7 +22,7 @@ public class age implements xx<aes> {
    private age(uq $$0) {
       this.e = $$0.e();
       this.f = $$0.r();
-      this.j = $$0.b(djd.a.class);
+      this.j = $$0.b(djh.a.class);
       int $$1 = $$0.readByte();
       this.g = ($$1 & 1) != 0;
       this.h = ($$1 & 2) != 0;
@@ -78,7 +78,7 @@ public class age implements xx<aes> {
       return this.i;
    }
 
-   public djd.a i() {
+   public djh.a i() {
       return this.j;
    }
 }

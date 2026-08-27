@@ -8,26 +8,26 @@ public class au extends cx<au.a> {
       return au.a.a;
    }
 
-   public void a(aow $$0, dlf $$1, coz $$2, int $$3) {
+   public void a(aox $$0, dlj $$1, cpd $$2, int $$3) {
       this.a($$0, $$3x -> $$3x.a($$1, $$2, $$3));
    }
 
-   public static record a(Optional<bc> b, Optional<ij<cyo>> c, Optional<cc> d, cm.d e) implements cx.a {
+   public static record a(Optional<bc> b, Optional<ij<cys>> c, Optional<cc> d, cm.d e) implements cx.a {
       public static final Codec<au.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  avp.a(br.b, "player").forGetter(au.a::a),
-                  avp.a(kf.e.r(), "block").forGetter(au.a::b),
-                  avp.a(cc.a, "item").forGetter(au.a::c),
-                  avp.a(cm.d.d, "num_bees_inside", cm.d.c).forGetter(au.a::d)
+                  avq.a(br.b, "player").forGetter(au.a::a),
+                  avq.a(kf.e.r(), "block").forGetter(au.a::b),
+                  avq.a(cc.a, "item").forGetter(au.a::c),
+                  avq.a(cm.d.d, "num_bees_inside", cm.d.c).forGetter(au.a::d)
                )
                .apply($$0, au.a::new)
       );
 
-      public static an<au.a> a(cyo $$0, cc.a $$1, cm.d $$2) {
+      public static an<au.a> a(cys $$0, cc.a $$1, cm.d $$2) {
          return am.L.a(new au.a(Optional.empty(), Optional.of($$0.r()), Optional.of($$1.b()), $$2));
       }
 
-      public boolean a(dlf $$0, coz $$1, int $$2) {
+      public boolean a(dlj $$0, cpd $$1, int $$2) {
          if (this.c.isPresent() && !$$0.a(this.c.get())) {
             return false;
          } else {
@@ -40,7 +40,7 @@ public class au extends cx<au.a> {
          return this.b;
       }
 
-      public Optional<ij<cyo>> b() {
+      public Optional<ij<cys>> b() {
          return this.c;
       }
 

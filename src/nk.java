@@ -5,6 +5,6 @@ public class nk extends nb {
 
    @Override
    protected void a(na $$0) {
-      nc.a(mz.e, cpc.qT).a('#', cpc.uA).a('-', cpc.pr).b("-#-").b("# #").b("###").b("has_string", a(cpc.pr)).a($$0);
+      nc.a(mz.e, cpg.qT).a('#', cpg.uA).a('-', cpg.pr).b("-#-").b("# #").b("###").b("has_string", a(cpg.pr)).a($$0);
    }
 }

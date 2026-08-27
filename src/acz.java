@@ -4,7 +4,7 @@ public class acz implements xx<aag> {
    private final double c;
    private final long d;
 
-   public acz(dmw $$0) {
+   public acz(dna $$0) {
       this.b = $$0.i();
       this.c = $$0.k();
       this.d = $$0.j();

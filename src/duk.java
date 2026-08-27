@@ -1,73 +1,53 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
 
-public class duk extends dts<dwb> {
-   public duk(Codec<dwb> $$0) {
+public class duk extends dtc {
+   public duk(Codec<dwf> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dtu<dwb> $$0) {
-      cwi $$1 = $$0.b();
-      hz $$2 = $$0.e();
-      awo $$3 = $$0.d();
-      dwb $$4 = $$0.f();
-      if (!c($$1.a_($$2))) {
-         return false;
-      } else {
-         List<ie> $$5 = $$4.a($$3);
-         if (a($$1, $$2, $$1.a_($$2), $$4, $$3, $$5)) {
-            return true;
-         } else {
-            hz.a $$6 = $$2.j();
+   protected void a(cvs $$0, awp $$1, hz $$2, int $$3, hz.a $$4, dwf $$5) {
+      for (int $$6 = $$3 - 3; $$6 <= $$3; $$6++) {
+         int $$7 = $$6 < $$3 ? $$5.d : $$5.d - 1;
+         int $$8 = $$5.d - 2;
 
-            for (ie $$7 : $$5) {
-               $$6.g($$2);
-               List<ie> $$8 = $$4.a($$3, $$7.g());
+         for (int $$9 = -$$7; $$9 <= $$7; $$9++) {
+            for (int $$10 = -$$7; $$10 <= $$7; $$10++) {
+               boolean $$11 = $$9 == -$$7;
+               boolean $$12 = $$9 == $$7;
+               boolean $$13 = $$10 == -$$7;
+               boolean $$14 = $$10 == $$7;
+               boolean $$15 = $$11 || $$12;
+               boolean $$16 = $$13 || $$14;
+               if ($$6 >= $$3 || $$15 != $$16) {
+                  $$4.a($$2, $$9, $$6, $$10);
+                  if (!$$0.a_($$4).i($$0, $$4)) {
+                     dlj $$17 = $$5.b.a($$1, $$2);
+                     if ($$17.b(dco.e) && $$17.b(dco.c) && $$17.b(dco.b) && $$17.b(dco.d) && $$17.b(dco.f)) {
+                        $$17 = $$17.a(dco.f, Boolean.valueOf($$6 >= $$3 - 1))
+                           .a(dco.e, Boolean.valueOf($$9 < -$$8))
+                           .a(dco.c, Boolean.valueOf($$9 > $$8))
+                           .a(dco.b, Boolean.valueOf($$10 < -$$8))
+                           .a(dco.d, Boolean.valueOf($$10 > $$8));
+                     }
 
-               for (int $$9 = 0; $$9 < $$4.c; $$9++) {
-                  $$6.a($$2, $$7);
-                  dlf $$10 = $$1.a_($$6);
-                  if (!c($$10) && !$$10.a($$4.b)) {
-                     break;
-                  }
-
-                  if (a($$1, $$6, $$10, $$4, $$3, $$8)) {
-                     return true;
+                     this.a($$0, $$4, $$17);
                   }
                }
             }
-
-            return false;
          }
       }
    }
 
-   public static boolean a(cwi $$0, hz $$1, dlf $$2, dwb $$3, awo $$4, List<ie> $$5) {
-      hz.a $$6 = $$1.j();
-
-      for (ie $$7 : $$5) {
-         dlf $$8 = $$0.a_($$6.a($$1, $$7));
-         if ($$8.a($$3.h)) {
-            dlf $$9 = $$3.b.c($$2, $$0, $$1, $$7);
-            if ($$9 == null) {
-               return false;
-            }
-
-            $$0.a($$1, $$9, 3);
-            $$0.y($$1).e($$1);
-            if ($$4.i() < $$3.g) {
-               $$3.b.c().a($$9, $$0, $$1, $$7, $$4, true);
-            }
-
-            return true;
-         }
+   @Override
+   protected int a(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = 0;
+      if ($$3 < $$1 && $$3 >= $$1 - 3) {
+         $$4 = $$2;
+      } else if ($$3 == $$1) {
+         $$4 = $$2;
       }
 
-      return false;
-   }
-
-   private static boolean c(dlf $$0) {
-      return $$0.i() || $$0.a(cyq.G);
+      return $$4;
    }
 }

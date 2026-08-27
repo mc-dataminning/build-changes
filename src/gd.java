@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 
 public class gd implements ArgumentType<gd.a> {
    private static final Collection<String> a = Arrays.asList("stick", "minecraft:stick", "#stick", "#stick{foo=bar}");
-   private final il<cou> b;
+   private final il<coy> b;
 
    public gd(dq $$0) {
       this.b = $$0.a(kg.F);
@@ -28,8 +28,8 @@ public class gd implements ArgumentType<gd.a> {
       return (gd.a)$$1.map($$0x -> a($$1x -> $$1x.equals($$0x.a()), $$0x.b()), $$0x -> a($$0x.a()::a, $$0x.b()));
    }
 
-   public static Predicate<coz> a(CommandContext<du> $$0, String $$1) {
-      return (Predicate<coz>)$$0.getArgument($$1, gd.a.class);
+   public static Predicate<cpd> a(CommandContext<du> $$0, String $$1) {
+      return (Predicate<cpd>)$$0.getArgument($$1, gd.a.class);
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
@@ -40,10 +40,10 @@ public class gd implements ArgumentType<gd.a> {
       return a;
    }
 
-   private static gd.a a(Predicate<ij<cou>> $$0, @Nullable sw $$1) {
+   private static gd.a a(Predicate<ij<coy>> $$0, @Nullable sw $$1) {
       return $$1 != null ? $$2 -> $$2.a($$0) && tl.a($$1, $$2.w(), true) : $$1x -> $$1x.a($$0);
    }
 
-   public interface a extends Predicate<coz> {
+   public interface a extends Predicate<cpd> {
    }
 }

@@ -1,23 +1,40 @@
-public class cql extends cpo {
-   public cql(cou.a $$0) {
+public class cql extends coy {
+   public static final int a = 1200;
+   public static final float b = 0.1F;
+
+   public cql(coy.a $$0) {
       super($$0);
    }
 
    @Override
-   public blv<coz> a(cvn $$0, chh $$1, blt $$2) {
-      coz $$3 = $$1.b($$2);
-      if (!$$0.B) {
-         cil $$4 = new cil($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dE(), $$1.dC(), -20.0F, 0.5F, 1.0F);
-         $$0.b($$4);
-      }
+   public int b(cpd $$0) {
+      return 1200;
+   }
 
-      $$1.b(atu.c.b(this));
-      if (!$$1.fU().d) {
-         $$3.h(1);
-      }
+   @Override
+   public cqw c(cpd $$0) {
+      return cqw.h;
+   }
 
-      return blv.a($$3, $$0.y_());
+   @Override
+   public blx<cpd> a(cvr $$0, chl $$1, blv $$2) {
+      $$1.a(atl.yq, 1.0F, 1.0F);
+      $$1.b(atv.c.b(this));
+      return cpf.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public cpd a(cpd $$0, cvr $$1, boi $$2) {
+      this.a($$2);
+      return $$0;
+   }
+
+   @Override
+   public void a(cpd $$0, cvr $$1, boi $$2, int $$3) {
+      this.a($$2);
+   }
+
+   private void a(boi $$0) {
+      $$0.a(atl.yr, 1.0F, 1.0F);
    }
 }

@@ -26,9 +26,9 @@ public class uv<T extends uw> extends MessageToByteEncoder<xx<T>> {
             throw new IllegalArgumentException("Packet too big (is " + $$5 + ", should be less than 8388608): " + $$1);
          }
 
-         bir.e.b(this.b.a(), $$3, $$0.channel().remoteAddress(), $$5);
+         bit.e.b(this.b.a(), $$3, $$0.channel().remoteAddress(), $$5);
       } catch (Throwable var10) {
-         a.error("Error receiving packet {}", $$3, var10);
+         a.error("Error sending packet {}", $$3, var10);
          if ($$1.c()) {
             throw new vd(var10);
          }

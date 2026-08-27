@@ -1,68 +1,32 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+public class buj extends buh {
+   private final int h;
+   private static final int i = 10;
+   private static final int j = 20;
 
-public class buj extends bvb {
-   private final caw a;
-   @Nullable
-   private chh b;
-   private final cvn c;
-   private final float d;
-   private int e;
-   private final byu f;
-
-   public buj(caw $$0, float $$1) {
-      this.a = $$0;
-      this.c = $$0.dM();
-      this.d = $$1;
-      this.f = byu.b().a((double)$$1);
-      this.a(EnumSet.of(bvb.a.b));
+   public buj(bok $$0, int $$1) {
+      super($$0);
+      this.h = $$1;
    }
 
    @Override
-   public boolean a() {
-      this.b = this.c.a(this.f, this.a);
-      return this.b == null ? false : this.a(this.b);
-   }
-
-   @Override
-   public boolean b() {
-      if (!this.b.bx()) {
-         return false;
+   public void a() {
+      if (this.d > 0) {
+         this.d--;
+         this.i().ifPresent($$0x -> this.a.aW = this.a(this.a.aW, $$0x + 20.0F, this.b));
+         this.h().ifPresent($$0x -> this.a.s(this.a(this.a.dE(), $$0x + 10.0F, this.c)));
       } else {
-         return this.a.f((bno)this.b) > (double)(this.d * this.d) ? false : this.e > 0 && this.a(this.b);
-      }
-   }
-
-   @Override
-   public void c() {
-      this.a.B(true);
-      this.e = this.a(40 + this.a.eh().a(40));
-   }
-
-   @Override
-   public void d() {
-      this.a.B(false);
-      this.b = null;
-   }
-
-   @Override
-   public void e() {
-      this.a.I().a(this.b.dr(), this.b.dv(), this.b.dx(), 10.0F, (float)this.a.ab());
-      this.e--;
-   }
-
-   private boolean a(chh $$0) {
-      for (blt $$1 : blt.values()) {
-         coz $$2 = $$0.b($$1);
-         if (this.a.u() && $$2.a(cpc.ry)) {
-            return true;
+         if (this.a.N().l()) {
+            this.a.s(this.a(this.a.dE(), 0.0F, 5.0F));
          }
 
-         if (this.a.m($$2)) {
-            return true;
-         }
+         this.a.aW = this.a(this.a.aW, this.a.aU, this.b);
       }
 
-      return false;
+      float $$0 = awi.g(this.a.aW - this.a.aU);
+      if ($$0 < (float)(-this.h)) {
+         this.a.aU -= 4.0F;
+      } else if ($$0 > (float)this.h) {
+         this.a.aU += 4.0F;
+      }
    }
 }

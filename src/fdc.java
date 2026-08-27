@@ -1,19 +1,26 @@
-import com.google.common.collect.ImmutableList;
+import java.util.function.Consumer;
 
 public interface fdc {
-   default void a(fdb $$0, vq $$1) {
-      this.a($$0, fde.a($$1.getString()));
+   void m(int var1);
+
+   void n(int var1);
+
+   int B();
+
+   int C();
+
+   int w();
+
+   int u();
+
+   default fdt F() {
+      return new fdt(this.B(), this.C(), this.w(), this.u());
    }
 
-   default void a(fdb $$0, String $$1) {
-      this.a($$0, fde.a($$1));
+   default void c(int $$0, int $$1) {
+      this.m($$0);
+      this.n($$1);
    }
 
-   default void a(fdb $$0, vq... $$1) {
-      this.a($$0, fde.a(ImmutableList.copyOf($$1)));
-   }
-
-   void a(fdb var1, fde<?> var2);
-
-   fdc a();
+   void a(Consumer<ezm> var1);
 }

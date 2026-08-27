@@ -1,65 +1,23 @@
-import com.google.common.collect.Maps;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cov {
-   private final Map<cou, cov.a> a = Maps.newHashMap();
-   private int b;
+public record cov(ij<atk> b, int c, float d) {
+   public static final Codec<cov> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               atk.b.fieldOf("sound_event").forGetter(cov::a), avq.j.fieldOf("use_duration").forGetter(cov::b), avq.k.fieldOf("range").forGetter(cov::c)
+            )
+            .apply($$0, cov::new)
+   );
 
-   public boolean a(cou $$0) {
-      return this.a($$0, 0.0F) > 0.0F;
+   public ij<atk> a() {
+      return this.b;
    }
 
-   public float a(cou $$0, float $$1) {
-      cov.a $$2 = this.a.get($$0);
-      if ($$2 != null) {
-         float $$3 = (float)($$2.b - $$2.a);
-         float $$4 = (float)$$2.b - ((float)this.b + $$1);
-         return awh.a($$4 / $$3, 0.0F, 1.0F);
-      } else {
-         return 0.0F;
-      }
+   public int b() {
+      return this.c;
    }
 
-   public void a() {
-      this.b++;
-      if (!this.a.isEmpty()) {
-         Iterator<Entry<cou, cov.a>> $$0 = this.a.entrySet().iterator();
-
-         while ($$0.hasNext()) {
-            Entry<cou, cov.a> $$1 = $$0.next();
-            if ($$1.getValue().b <= this.b) {
-               $$0.remove();
-               this.c($$1.getKey());
-            }
-         }
-      }
-   }
-
-   public void a(cou $$0, int $$1) {
-      this.a.put($$0, new cov.a(this.b, this.b + $$1));
-      this.b($$0, $$1);
-   }
-
-   public void b(cou $$0) {
-      this.a.remove($$0);
-      this.c($$0);
-   }
-
-   protected void b(cou $$0, int $$1) {
-   }
-
-   protected void c(cou $$0) {
-   }
-
-   static class a {
-      final int a;
-      final int b;
-
-      a(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   public float c() {
+      return this.d;
    }
 }

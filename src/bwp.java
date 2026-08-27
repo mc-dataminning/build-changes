@@ -1,99 +1,30 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+public class bwp extends bvf {
+   private final boq a;
 
-public class bwp extends bvb {
-   private final bvb a;
-   private final int b;
-   private boolean c;
-
-   public bwp(int $$0, bvb $$1) {
-      this.b = $$0;
-      this.a = $$1;
-   }
-
-   public boolean a(bwp $$0) {
-      return this.S_() && $$0.i() < this.i();
+   public bwp(boq $$0) {
+      this.a = $$0;
    }
 
    @Override
    public boolean a() {
-      return this.a.a();
-   }
-
-   @Override
-   public boolean b() {
-      return this.a.b();
-   }
-
-   @Override
-   public boolean S_() {
-      return this.a.S_();
+      return this.a.aC() && !this.a.dM().b_(this.a.dm()).a(auf.a);
    }
 
    @Override
    public void c() {
-      if (!this.c) {
-         this.c = true;
-         this.a.c();
+      hz $$0 = null;
+
+      for (hz $$2 : hz.b(
+         awi.a(this.a.dr() - 2.0), awi.a(this.a.dt() - 2.0), awi.a(this.a.dx() - 2.0), awi.a(this.a.dr() + 2.0), this.a.ds(), awi.a(this.a.dx() + 2.0)
+      )) {
+         if (this.a.dM().b_($$2).a(auf.a)) {
+            $$0 = $$2;
+            break;
+         }
       }
-   }
 
-   @Override
-   public void d() {
-      if (this.c) {
-         this.c = false;
-         this.a.d();
+      if ($$0 != null) {
+         this.a.K().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
       }
-   }
-
-   @Override
-   public boolean T_() {
-      return this.a.T_();
-   }
-
-   @Override
-   protected int a(int $$0) {
-      return this.a.a($$0);
-   }
-
-   @Override
-   public void e() {
-      this.a.e();
-   }
-
-   @Override
-   public void a(EnumSet<bvb.a> $$0) {
-      this.a.a($$0);
-   }
-
-   @Override
-   public EnumSet<bvb.a> j() {
-      return this.a.j();
-   }
-
-   public boolean h() {
-      return this.c;
-   }
-
-   public int i() {
-      return this.b;
-   }
-
-   public bvb k() {
-      return this.a;
-   }
-
-   @Override
-   public boolean equals(@Nullable Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? this.a.equals(((bwp)$$0).a) : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
    }
 }

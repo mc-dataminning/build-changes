@@ -1,160 +1,59 @@
-import com.google.common.base.Strings;
-import com.google.common.collect.Lists;
-import com.mojang.authlib.GameProfile;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
 import java.util.UUID;
-import javax.annotation.Nullable;
 
-public class fjn extends ezn<fjl> {
-   private final fjo a;
-   private final List<fjl> m = Lists.newArrayList();
-   @Nullable
-   private String n;
+public class fjn extends fjj<fre.a> {
+   private static final int r = 120;
+   private static final vq t = vq.c("gui.abuseReport.name.title");
+   private final fde u = fde.d().a(8);
+   private fag v;
+   private ezo w;
 
-   public fjn(fjo $$0, exh $$1, int $$2, int $$3, int $$4, int $$5) {
-      super($$1, $$2, $$3, $$4, $$5);
-      this.a = $$0;
-      this.c(false);
+   private fjn(ffl $$0, frj $$1, fre.a $$2) {
+      super(t, $$0, $$1, $$2);
+   }
+
+   public fjn(ffl $$0, frj $$1, UUID $$2, String $$3) {
+      this($$0, $$1, new fre.a($$2, $$3, $$1.a().b()));
+   }
+
+   public fjn(ffl $$0, frj $$1, fre $$2) {
+      this($$0, $$1, new fre.a($$2, $$1.a().b()));
    }
 
    @Override
-   protected void a(eyu $$0) {
-      $$0.c(this.B(), this.C() + 4, this.D(), this.E());
+   protected void aQ_() {
+      this.u.c().b();
+      this.u.a(new fav(this.e, this.i));
+      vq $$0 = vq.b(this.q.e().a()).a(n.o);
+      this.u.a(new fav(vq.a("gui.abuseReport.name.reporting", $$0), this.i), $$0x -> $$0x.a().a(0, 8));
+      this.v = this.a(280, 9 * 8, $$0x -> {
+         this.q.a($$0x);
+         this.E();
+      });
+      this.u.a(fcw.a(this.i, this.v, k, $$0x -> $$0x.e(12)));
+      fde $$1 = this.u.a(fde.e().a(8));
+      $$1.a(ezo.a(vp.k, $$0x -> this.d()).a(120).a());
+      this.w = $$1.a(ezo.a(a, $$0x -> this.o()).a(120).a());
+      this.E();
+      this.u.a($$1x -> {
+         ezm var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
-   public void a(Collection<UUID> $$0, double $$1, boolean $$2) {
-      Map<UUID, fjl> $$3 = new HashMap<>();
-      this.a($$0, $$3);
-      this.a($$3, $$2);
-      this.a($$3.values(), $$1);
+   @Override
+   protected void c() {
+      this.u.a();
+      fcy.a(this.u, this.F());
    }
 
-   private void a(Collection<UUID> $$0, Map<UUID, fjl> $$1) {
-      fpy $$2 = this.c.s.cq;
-
-      for (UUID $$3 : $$0) {
-         fqg $$4 = $$2.a($$3);
-         if ($$4 != null) {
-            boolean $$5 = $$4.d();
-            $$1.put($$3, new fjl(this.c, this.a, $$3, $$4.a().getName(), $$4::g, $$5));
-         }
-      }
+   private void E() {
+      frf.b $$0 = this.q.c();
+      this.w.j = $$0 == null;
+      this.w.a(x.a($$0, frf.b::a));
    }
 
-   private void a(Map<UUID, fjl> $$0, boolean $$1) {
-      for (GameProfile $$3 : a(this.c.aY().b())) {
-         fjl $$4;
-         if ($$1) {
-            $$4 = $$0.computeIfAbsent($$3.getId(), $$1x -> {
-               fjl $$2 = new fjl(this.c, this.a, $$3.getId(), $$3.getName(), this.c.al().a($$3), true);
-               $$2.c(true);
-               return $$2;
-            });
-         } else {
-            $$4 = $$0.get($$3.getId());
-            if ($$4 == null) {
-               continue;
-            }
-         }
-
-         $$4.d(true);
-      }
-   }
-
-   private static Collection<GameProfile> a(fqn $$0) {
-      Set<GameProfile> $$1 = new ObjectLinkedOpenHashSet();
-
-      for (int $$2 = $$0.b(); $$2 >= $$0.a(); $$2--) {
-         fqp $$3 = $$0.b($$2);
-         if ($$3 instanceof fqq.a) {
-            fqq.a $$4 = (fqq.a)$$3;
-            if ($$4.g().i()) {
-               $$1.add($$4.f());
-            }
-         }
-      }
-
-      return $$1;
-   }
-
-   private void e() {
-      this.m.sort(Comparator.<fjl, Integer>comparing($$0 -> {
-         if (this.c.b($$0.c())) {
-            return 0;
-         } else if (this.c.aY().a($$0.c())) {
-            return 1;
-         } else if ($$0.c().version() == 2) {
-            return 4;
-         } else {
-            return $$0.i() ? 2 : 3;
-         }
-      }).thenComparing($$0 -> {
-         if (!$$0.b().isBlank()) {
-            int $$1 = $$0.b().codePointAt(0);
-            if ($$1 == 95 || $$1 >= 97 && $$1 <= 122 || $$1 >= 65 && $$1 <= 90 || $$1 >= 48 && $$1 <= 57) {
-               return 0;
-            }
-         }
-
-         return 1;
-      }).thenComparing(fjl::b, String::compareToIgnoreCase));
-   }
-
-   private void a(Collection<fjl> $$0, double $$1) {
-      this.m.clear();
-      this.m.addAll($$0);
-      this.e();
-      this.H();
-      this.a(this.m);
-      this.a($$1);
-   }
-
-   private void H() {
-      if (this.n != null) {
-         this.m.removeIf($$0 -> !$$0.b().toLowerCase(Locale.ROOT).contains(this.n));
-         this.a(this.m);
-      }
-   }
-
-   public void a(String $$0) {
-      this.n = $$0;
-   }
-
-   public boolean d() {
-      return this.m.isEmpty();
-   }
-
-   public void a(fqg $$0, fjo.a $$1) {
-      UUID $$2 = $$0.a().getId();
-
-      for (fjl $$3 : this.m) {
-         if ($$3.c().equals($$2)) {
-            $$3.c(false);
-            return;
-         }
-      }
-
-      if (($$1 == fjo.a.a || this.c.aK().c($$2)) && (Strings.isNullOrEmpty(this.n) || $$0.a().getName().toLowerCase(Locale.ROOT).contains(this.n))) {
-         boolean $$4 = $$0.d();
-         fjl $$5 = new fjl(this.c, this.a, $$0.a().getId(), $$0.a().getName(), $$0::g, $$4);
-         this.b($$5);
-         this.m.add($$5);
-      }
-   }
-
-   public void a(UUID $$0) {
-      for (fjl $$1 : this.m) {
-         if ($$1.c().equals($$0)) {
-            $$1.c(true);
-            return;
-         }
-      }
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      return super.b($$0, $$1, $$2) ? true : this.v.b($$0, $$1, $$2);
    }
 }

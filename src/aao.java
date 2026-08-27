@@ -3,9 +3,9 @@ public class aao implements xx<aag> {
    private final hz b;
    private final int c;
    private final int d;
-   private final cyo e;
+   private final cys e;
 
-   public aao(hz $$0, cyo $$1, int $$2, int $$3) {
+   public aao(hz $$0, cys $$1, int $$2, int $$3) {
       this.b = $$0;
       this.e = $$1;
       this.c = $$2;
@@ -47,7 +47,7 @@ public class aao implements xx<aag> {
       return this.d;
    }
 
-   public cyo g() {
+   public cys g() {
       return this.e;
    }
 }

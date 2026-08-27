@@ -1,23 +1,27 @@
-import com.google.gson.annotations.SerializedName;
-import java.util.Set;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class etp extends etw implements etq {
-   @SerializedName("seed")
-   private final String a;
-   @SerializedName("worldTemplateId")
-   private final long b;
-   @SerializedName("levelType")
-   private final int c;
-   @SerializedName("generateStructures")
-   private final boolean d;
-   @SerializedName("experiments")
-   private final Set<String> e;
+public class etp extends eud {
+   private static final Logger d = LogUtils.getLogger();
+   public String a;
+   public String b;
+   public String c;
 
-   public etp(String $$0, long $$1, int $$2, boolean $$3, Set<String> $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   public static etp a(String $$0) {
+      JsonParser $$1 = new JsonParser();
+      etp $$2 = new etp();
+
+      try {
+         JsonObject $$3 = $$1.parse($$0).getAsJsonObject();
+         $$2.a = ewa.b("address", $$3, null);
+         $$2.b = ewa.b("resourcePackUrl", $$3, null);
+         $$2.c = ewa.b("resourcePackHash", $$3, null);
+      } catch (Exception var4) {
+         d.error("Could not parse RealmsServerAddress: {}", var4.getMessage());
+      }
+
+      return $$2;
    }
 }

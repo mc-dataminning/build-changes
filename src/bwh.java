@@ -1,67 +1,125 @@
-import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class bwh extends bvb {
-   private static final int a = 10;
-   private final boo b;
-   private final int c;
-   @Nullable
-   private hz d;
+public class bwh extends bvs {
+   private final cys g;
+   private final bok h;
+   private int i;
+   private static final int j = 20;
 
-   public bwh(boo $$0, int $$1) {
-      this.b = $$0;
-      this.c = b($$1);
-      this.a(EnumSet.of(bvb.a.a));
+   public bwh(cys $$0, boq $$1, double $$2, int $$3) {
+      super($$1, $$2, 24, $$3);
+      this.g = $$0;
+      this.h = $$1;
    }
 
    @Override
    public boolean a() {
-      if (this.b.cO()) {
+      if (!this.h.dM().Z().b(cvn.c)) {
          return false;
-      } else if (this.b.dM().P()) {
+      } else if (this.c > 0) {
+         this.c--;
          return false;
-      } else if (this.b.eh().a(this.c) != 0) {
-         return false;
+      } else if (this.n()) {
+         this.c = b(20);
+         return true;
       } else {
-         aov $$0 = (aov)this.b.dM();
-         hz $$1 = this.b.dm();
-         if (!$$0.a($$1, 6)) {
-            return false;
-         } else {
-            ens $$2 = bzb.a(this.b, 15, 7, $$1x -> (double)(-$$0.b(jb.a($$1x))));
-            this.d = $$2 == null ? null : hz.a($$2);
-            return this.d != null;
-         }
+         this.c = this.a(this.a);
+         return false;
       }
    }
 
    @Override
-   public boolean b() {
-      return this.d != null && !this.b.N().l() && this.b.N().h().equals(this.d);
+   public void d() {
+      super.d();
+      this.h.aa = 1.0F;
+   }
+
+   @Override
+   public void c() {
+      super.c();
+      this.i = 0;
+   }
+
+   public void a(cvs $$0, hz $$1) {
+   }
+
+   public void a(cvr $$0, hz $$1) {
    }
 
    @Override
    public void e() {
-      if (this.d != null) {
-         bxp $$0 = this.b.N();
-         if ($$0.l() && !this.d.a(this.b.dk(), 10.0)) {
-            ens $$1 = ens.c(this.d);
-            ens $$2 = this.b.dk();
-            ens $$3 = $$2.d($$1);
-            $$1 = $$3.a(0.4).e($$1);
-            ens $$4 = $$1.d($$2).d().a(10.0).e($$2);
-            hz $$5 = hz.a($$4);
-            $$5 = this.b.dM().a(dqo.a.f, $$5);
-            if (!$$0.a((double)$$5.u(), (double)$$5.v(), (double)$$5.w(), 1.0)) {
-               this.h();
+      super.e();
+      cvr $$0 = this.h.dM();
+      hz $$1 = this.h.dm();
+      hz $$2 = this.a($$1, $$0);
+      awp $$3 = this.h.eh();
+      if (this.m() && $$2 != null) {
+         if (this.i > 0) {
+            enz $$4 = this.h.dp();
+            this.h.o($$4.c, 0.3, $$4.e);
+            if (!$$0.B) {
+               double $$5 = 0.08;
+               ((aow)$$0)
+                  .a(
+                     new jv(jz.Q, new cpd(cpg.qQ)),
+                     (double)$$2.u() + 0.5,
+                     (double)$$2.v() + 0.7,
+                     (double)$$2.w() + 0.5,
+                     3,
+                     ((double)$$3.i() - 0.5) * 0.08,
+                     ((double)$$3.i() - 0.5) * 0.08,
+                     ((double)$$3.i() - 0.5) * 0.08,
+                     0.15F
+                  );
             }
          }
+
+         if (this.i % 2 == 0) {
+            enz $$6 = this.h.dp();
+            this.h.o($$6.c, -0.3, $$6.e);
+            if (this.i % 6 == 0) {
+               this.a((cvs)$$0, this.e);
+            }
+         }
+
+         if (this.i > 60) {
+            $$0.a($$2, false);
+            if (!$$0.B) {
+               for (int $$7 = 0; $$7 < 20; $$7++) {
+                  double $$8 = $$3.k() * 0.02;
+                  double $$9 = $$3.k() * 0.02;
+                  double $$10 = $$3.k() * 0.02;
+                  ((aow)$$0).a(jz.Y, (double)$$2.u() + 0.5, (double)$$2.v(), (double)$$2.w() + 0.5, 1, $$8, $$9, $$10, 0.15F);
+               }
+
+               this.a($$0, $$2);
+            }
+         }
+
+         this.i++;
       }
    }
 
-   private void h() {
-      awo $$0 = this.b.eh();
-      hz $$1 = this.b.dM().a(dqo.a.f, this.b.dm().b(-8 + $$0.a(16), 0, -8 + $$0.a(16)));
-      this.b.N().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), 1.0);
+   @Nullable
+   private hz a(hz $$0, cux $$1) {
+      if ($$1.a_($$0).a(this.g)) {
+         return $$0;
+      } else {
+         hz[] $$2 = new hz[]{$$0.d(), $$0.g(), $$0.h(), $$0.e(), $$0.f(), $$0.d().d()};
+
+         for (hz $$3 : $$2) {
+            if ($$1.a_($$3).a(this.g)) {
+               return $$3;
+            }
+         }
+
+         return null;
+      }
+   }
+
+   @Override
+   protected boolean a(cvu $$0, hz $$1) {
+      dnf $$2 = $$0.a(jb.a($$1.u()), jb.a($$1.w()), dnk.n, false);
+      return $$2 == null ? false : $$2.a_($$1).a(this.g) && $$2.a_($$1.c()).i() && $$2.a_($$1.b(2)).i();
    }
 }

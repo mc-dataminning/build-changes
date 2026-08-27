@@ -1,81 +1,82 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.mojang.logging.LogUtils;
 import java.util.Collection;
-import java.util.List;
-import java.util.function.Function;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ejf extends ejh {
-   public static final Codec<ejf> a = a(ejf::new);
-
-   ejf(List<ejo> $$0, List<elu> $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   public ejp a() {
-      return ejm.g;
-   }
-
-   @Override
-   protected ejg a(List<? extends ejg> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> b;
-         case 1 -> (ejg)$$0.get(0);
-         case 2 -> $$0.get(0).or($$0.get(1));
-         default -> ($$1, $$2) -> {
-         for (ejg $$3 : $$0) {
-            if ($$3.expand($$1, $$2)) {
-               return true;
-            }
-         }
-
-         return false;
-      };
-      };
-   }
+public class ejf implements arv, ejg {
+   private static final Logger b = LogUtils.getLogger();
+   private static final Gson c = new GsonBuilder().create();
+   public static final eje<ejk> a = new eje<>(ejh.c, eja.a);
+   private Map<eje<?>, ?> d = Map.of();
+   private Multimap<ejh<?>, aiy> e = ImmutableMultimap.of();
 
    @Override
-   public void a(eje $$0) {
-      super.a($$0);
+   public final CompletableFuture<Void> a(arv.a $$0, asb $$1, bin $$2, bin $$3, Executor $$4, Executor $$5) {
+      Map<ejh<?>, Map<aiy, ?>> $$6 = new HashMap<>();
+      CompletableFuture<?>[] $$7 = ejh.b().map($$3x -> a($$3x, $$1, $$4, $$6)).toArray(CompletableFuture[]::new);
+      return CompletableFuture.allOf($$7).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$6), $$5);
+   }
 
-      for (int $$1 = 0; $$1 < this.d.size() - 1; $$1++) {
-         if (this.d.get($$1).e.isEmpty()) {
-            $$0.b("Unreachable entry!");
+   private static <T> CompletableFuture<?> a(ejh<T> $$0, asb $$1, Executor $$2, Map<ejh<?>, Map<aiy, ?>> $$3) {
+      Map<aiy, T> $$4 = new HashMap<>();
+      $$3.put($$0, $$4);
+      return CompletableFuture.runAsync(() -> {
+         Map<aiy, JsonElement> $$3x = new HashMap<>();
+         asf.a($$1, $$0.a(), c, $$3x);
+         $$3x.forEach(($$2xx, $$3xx) -> $$0.a($$2xx, $$3xx).ifPresent($$2xxx -> $$4.put($$2xx, (T)$$2xxx)));
+      }, $$2);
+   }
+
+   private void a(Map<ejh<?>, Map<aiy, ?>> $$0) {
+      Object $$1 = $$0.get(ejh.c).remove(eja.a);
+      if ($$1 != null) {
+         b.warn("Datapack tried to redefine {} loot table, ignoring", eja.a);
+      }
+
+      Builder<eje<?>, Object> $$2 = ImmutableMap.builder();
+      com.google.common.collect.ImmutableMultimap.Builder<ejh<?>, aiy> $$3 = ImmutableMultimap.builder();
+      $$0.forEach(($$2x, $$3x) -> $$3x.forEach(($$3xx, $$4x) -> {
+            $$2.put(new eje($$2x, $$3xx), $$4x);
+            $$3.put($$2x, $$3xx);
+         }));
+      $$2.put(a, ejk.a);
+      awn.a $$4 = new awn.a();
+      final Map<eje<?>, ?> $$5 = $$2.build();
+      ejl $$6 = new ejl($$4, elm.o, new ejg() {
+         @Nullable
+         @Override
+         public <T> T getElement(eje<T> $$0) {
+            return (T)$$5.get($$0);
          }
-      }
+      });
+      $$5.forEach(($$1x, $$2x) -> a($$6, $$1x, $$2x));
+      $$4.a().forEach(($$0x, $$1x) -> b.warn("Found loot table element validation problem in {}: {}", $$0x, $$1x));
+      this.d = $$5;
+      this.e = $$3.build();
    }
 
-   public static ejf.a a(ejo.a<?>... $$0) {
-      return new ejf.a($$0);
+   private static <T> void a(ejl $$0, eje<T> $$1, Object $$2) {
+      $$1.a().a($$0, $$1, (T)$$2);
    }
 
-   public static <E> ejf.a a(Collection<E> $$0, Function<E, ejo.a<?>> $$1) {
-      return new ejf.a($$0.stream().map($$1::apply).toArray(ejo.a[]::new));
+   @Nullable
+   @Override
+   public <T> T getElement(eje<T> $$0) {
+      return (T)this.d.get($$0);
    }
 
-   public static class a extends ejo.a<ejf.a> {
-      private final Builder<ejo> a = ImmutableList.builder();
-
-      public a(ejo.a<?>... $$0) {
-         for (ejo.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
-
-      protected ejf.a a() {
-         return this;
-      }
-
-      @Override
-      public ejf.a a(ejo.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      @Override
-      public ejo b() {
-         return new ejf(this.a.build(), this.f());
-      }
+   public Collection<aiy> a(ejh<?> $$0) {
+      return this.e.get($$0);
    }
 }

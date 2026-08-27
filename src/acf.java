@@ -11,7 +11,7 @@ public class acf implements xx<aag> {
    private final float j;
    private final float k;
 
-   public acf(che $$0) {
+   public acf(chi $$0) {
       this.f = $$0.a;
       this.g = $$0.b;
       this.h = $$0.c;

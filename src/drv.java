@@ -1,119 +1,32 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.BiPredicate;
+import java.util.stream.LongStream;
 
-public interface drv extends BiPredicate<cwi, hz> {
-   Codec<drv> b = kf.O.q().dispatch(drv::a, drw::codec);
-   drv c = a(cyq.a);
-   drv d = a(cyq.a, cyq.G);
+public class drv {
+   private long b;
+   private long c;
+   public static final Codec<drv> a = Codec.LONG_STREAM
+      .comapFlatMap($$0 -> ac.a($$0, 2).map($$0x -> new drv($$0x[0], $$0x[1])), $$0 -> LongStream.of($$0.b, $$0.c));
 
-   drw<?> a();
-
-   static drv a(List<drv> $$0) {
-      return new drt($$0);
+   public drv(drk.a $$0) {
+      this($$0.b(), $$0.c());
    }
 
-   static drv a(drv... $$0) {
-      return a(List.of($$0));
+   public drv(long $$0, long $$1) {
+      this.b = $$0;
+      this.c = $$1;
+      if ((this.b | this.c) == 0L) {
+         this.b = -7046029254386353131L;
+         this.c = 7640891576956012809L;
+      }
    }
 
-   static drv a(drv $$0, drv $$1) {
-      return a(List.of($$0, $$1));
-   }
-
-   static drv b(List<drv> $$0) {
-      return new dru($$0);
-   }
-
-   static drv b(drv... $$0) {
-      return b(List.of($$0));
-   }
-
-   static drv b(drv $$0, drv $$1) {
-      return b(List.of($$0, $$1));
-   }
-
-   static drv a(jd $$0, List<cyo> $$1) {
-      return new dsb($$0, in.a(cyo::r, $$1));
-   }
-
-   static drv c(List<cyo> $$0) {
-      return a(jd.g, $$0);
-   }
-
-   static drv a(jd $$0, cyo... $$1) {
-      return a($$0, List.of($$1));
-   }
-
-   static drv a(cyo... $$0) {
-      return a(jd.g, $$0);
-   }
-
-   static drv a(jd $$0, auo<cyo> $$1) {
-      return new dsa($$0, $$1);
-   }
-
-   static drv a(auo<cyo> $$0) {
-      return a(jd.g, $$0);
-   }
-
-   static drv b(jd $$0, List<ego> $$1) {
-      return new dsc($$0, in.a(ego::k, $$1));
-   }
-
-   static drv a(jd $$0, ego... $$1) {
-      return b($$0, List.of($$1));
-   }
-
-   static drv a(ego... $$0) {
-      return a(jd.g, $$0);
-   }
-
-   static drv a(drv $$0) {
-      return new dsd($$0);
-   }
-
-   static drv a(jd $$0) {
-      return new dse($$0);
-   }
-
-   static drv b() {
-      return a(jd.g);
-   }
-
-   static drv a(dlf $$0, jd $$1) {
-      return new dsi($$1, $$0);
-   }
-
-   static drv a(jd $$0, ie $$1) {
-      return new dry($$0, $$1);
-   }
-
-   static drv a(ie $$0) {
-      return a(jd.g, $$0);
-   }
-
-   static drv b(jd $$0) {
-      return new dsf($$0);
-   }
-
-   static drv c() {
-      return b(jd.g);
-   }
-
-   static drv d() {
-      return c(jd.g);
-   }
-
-   static drv c(jd $$0) {
-      return a($$0, egq.a);
-   }
-
-   static drv d(jd $$0) {
-      return new drz($$0);
-   }
-
-   static drv e() {
-      return dsh.a;
+   public long a() {
+      long $$0 = this.b;
+      long $$1 = this.c;
+      long $$2 = Long.rotateLeft($$0 + $$1, 17) + $$0;
+      $$1 ^= $$0;
+      this.b = Long.rotateLeft($$0, 49) ^ $$1 ^ $$1 << 21;
+      this.c = Long.rotateLeft($$1, 28);
+      return $$2;
    }
 }

@@ -1,59 +1,84 @@
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
 
-public class cxd extends cwq {
-   public static final Codec<cxd> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(aiw.d(cwt.ah), aiw.d(cwt.ai), aiw.d(cwt.aj), aiw.d(cwt.ak), aiw.d(cwt.al)).apply($$0, $$0.stable(cxd::new))
-   );
-   private final ij<cwm> c;
-   private final ij<cwm> d;
-   private final ij<cwm> e;
-   private final ij<cwm> f;
-   private final ij<cwm> g;
+public class cxd extends cwu {
+   private static final MapCodec<ij<cwq>> d = cwq.c.fieldOf("biome");
+   public static final MapCodec<cwz.c<ij<cwq>>> b = cwz.c.a(d).fieldOf("biomes");
+   private static final MapCodec<ij<cxe>> e = cxe.b.fieldOf("preset").withLifecycle(Lifecycle.stable());
+   public static final Codec<cxd> c = Codec.mapEither(b, e).xmap(cxd::new, $$0 -> $$0.f).codec();
+   private final Either<cwz.c<ij<cwq>>, ij<cxe>> f;
 
-   public static cxd a(ik<cwm> $$0) {
-      return new cxd($$0.b(cwt.ah), $$0.b(cwt.ai), $$0.b(cwt.aj), $$0.b(cwt.ak), $$0.b(cwt.al));
+   private cxd(Either<cwz.c<ij<cwq>>, ij<cxe>> $$0) {
+      this.f = $$0;
    }
 
-   private cxd(ij<cwm> $$0, ij<cwm> $$1, ij<cwm> $$2, ij<cwm> $$3, ij<cwm> $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
+   public static cxd a(cwz.c<ij<cwq>> $$0) {
+      return new cxd(Either.left($$0));
    }
 
-   @Override
-   protected Stream<ij<cwm>> b() {
-      return Stream.of(this.c, this.d, this.e, this.f, this.g);
+   public static cxd a(ij<cxe> $$0) {
+      return new cxd(Either.right($$0));
+   }
+
+   private cwz.c<ij<cwq>> d() {
+      return (cwz.c<ij<cwq>>)this.f.map($$0 -> $$0, $$0 -> ((cxe)$$0.a()).a());
    }
 
    @Override
-   protected Codec<? extends cwq> a() {
-      return b;
+   protected Stream<ij<cwq>> b() {
+      return this.d().a().stream().map(Pair::getSecond);
    }
 
    @Override
-   public ij<cwm> getNoiseBiome(int $$0, int $$1, int $$2, cwv.f $$3) {
-      int $$4 = iu.c($$0);
-      int $$5 = iu.c($$1);
-      int $$6 = iu.c($$2);
-      int $$7 = jb.a($$4);
-      int $$8 = jb.a($$6);
-      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
-         return this.c;
-      } else {
-         int $$9 = (jb.a($$4) * 2 + 1) * 8;
-         int $$10 = (jb.a($$6) * 2 + 1) * 8;
-         double $$11 = $$3.e().a(new dqh.e($$9, $$5, $$10));
-         if ($$11 > 0.25) {
-            return this.d;
-         } else if ($$11 >= -0.0625) {
-            return this.e;
-         } else {
-            return $$11 < -0.21875 ? this.f : this.g;
-         }
-      }
+   protected Codec<? extends cwu> a() {
+      return c;
+   }
+
+   public boolean a(aix<cxe> $$0) {
+      Optional<ij<cxe>> $$1 = this.f.right();
+      return $$1.isPresent() && $$1.get().a($$0);
+   }
+
+   @Override
+   public ij<cwq> getNoiseBiome(int $$0, int $$1, int $$2, cwz.f $$3) {
+      return this.a($$3.a($$0, $$1, $$2));
+   }
+
+   @axl
+   public ij<cwq> a(cwz.h $$0) {
+      return this.d().a($$0);
+   }
+
+   @Override
+   public void a(List<String> $$0, hz $$1, cwz.f $$2) {
+      int $$3 = iu.a($$1.u());
+      int $$4 = iu.a($$1.v());
+      int $$5 = iu.a($$1.w());
+      cwz.h $$6 = $$2.a($$3, $$4, $$5);
+      float $$7 = cwz.a($$6.d());
+      float $$8 = cwz.a($$6.e());
+      float $$9 = cwz.a($$6.b());
+      float $$10 = cwz.a($$6.c());
+      float $$11 = cwz.a($$6.g());
+      double $$12 = (double)drc.a($$11);
+      cxg $$13 = new cxg();
+      $$0.add(
+         "Biome builder PV: "
+            + cxg.a($$12)
+            + " C: "
+            + $$13.b((double)$$7)
+            + " E: "
+            + $$13.c((double)$$8)
+            + " T: "
+            + $$13.d((double)$$9)
+            + " H: "
+            + $$13.e((double)$$10)
+      );
    }
 }

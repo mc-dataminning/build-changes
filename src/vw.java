@@ -59,7 +59,7 @@ public class vw {
       public static final vw.a<vw.c> b = new vw.a<>("show_item", true, vw.c.b, vw.c::a);
       public static final vw.a<vw.b> c = new vw.a<>("show_entity", true, vw.b.a, vw.b::a);
       public static final Codec<vw.a<?>> d = axc.b(() -> new vw.a[]{a, b, c});
-      public static final Codec<vw.a<?>> e = avp.a(d, vw.a::a);
+      public static final Codec<vw.a<?>> e = avq.a(d, vw.a::a);
       private final String f;
       private final boolean g;
       final Codec<vw.d<T>> h;
@@ -104,21 +104,21 @@ public class vw {
          $$0 -> $$0.group(
                   kf.g.q().fieldOf("type").forGetter($$0x -> $$0x.b),
                   jc.e.fieldOf("id").forGetter($$0x -> $$0x.c),
-                  avp.a(vs.a, "name").forGetter($$0x -> $$0x.d)
+                  avq.a(vs.a, "name").forGetter($$0x -> $$0x.d)
                )
                .apply($$0, vw.b::new)
       );
-      public final bnu<?> b;
+      public final bnw<?> b;
       public final UUID c;
       public final Optional<vq> d;
       @Nullable
       private List<vq> e;
 
-      public b(bnu<?> $$0, UUID $$1, @Nullable vq $$2) {
+      public b(bnw<?> $$0, UUID $$1, @Nullable vq $$2) {
          this($$0, $$1, Optional.ofNullable($$2));
       }
 
-      public b(bnu<?> $$0, UUID $$1, Optional<vq> $$2) {
+      public b(bnw<?> $$0, UUID $$1, Optional<vq> $$2) {
          this.b = $$0;
          this.c = $$1;
          this.d = $$2;
@@ -128,7 +128,7 @@ public class vw {
          try {
             sw $$1 = tu.a($$0.getString());
             vq $$2 = vq.a.a($$1.l("name"));
-            bnu<?> $$3 = kf.g.a(new aiy($$1.l("type")));
+            bnw<?> $$3 = kf.g.a(new aiy($$1.l("type")));
             UUID $$4 = UUID.fromString($$1.l("id"));
             return DataResult.success(new vw.b($$3, $$4, $$2));
          } catch (Exception var5) {
@@ -171,30 +171,30 @@ public class vw {
       public static final Codec<vw.c> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   kf.h.q().fieldOf("id").forGetter($$0x -> $$0x.c),
-                  avp.a(Codec.INT, "count", Integer.valueOf(1)).forGetter($$0x -> $$0x.d),
-                  avp.a(tu.i, "tag").forGetter($$0x -> $$0x.e)
+                  avq.a(Codec.INT, "count", Integer.valueOf(1)).forGetter($$0x -> $$0x.d),
+                  avq.a(tu.i, "tag").forGetter($$0x -> $$0x.e)
                )
                .apply($$0, vw.c::new)
       );
       public static final Codec<vw.c> b = Codec.either(kf.h.q(), a)
          .xmap($$0 -> (vw.c)$$0.map($$0x -> new vw.c($$0x, 1, Optional.empty()), $$0x -> $$0x), Either::right);
-      private final cou c;
+      private final coy c;
       private final int d;
       private final Optional<sw> e;
       @Nullable
-      private coz f;
+      private cpd f;
 
-      c(cou $$0, int $$1, @Nullable sw $$2) {
+      c(coy $$0, int $$1, @Nullable sw $$2) {
          this($$0, $$1, Optional.ofNullable($$2));
       }
 
-      c(cou $$0, int $$1, Optional<sw> $$2) {
+      c(coy $$0, int $$1, Optional<sw> $$2) {
          this.c = $$0;
          this.d = $$1;
          this.e = $$2;
       }
 
-      public c(coz $$0) {
+      public c(cpd $$0) {
          this($$0.d(), $$0.M(), $$0.w() != null ? Optional.of($$0.w().h()) : Optional.empty());
       }
 
@@ -217,9 +217,9 @@ public class vw {
          return 31 * $$0 + this.e.hashCode();
       }
 
-      public coz a() {
+      public cpd a() {
          if (this.f == null) {
-            this.f = new coz(this.c, this.d);
+            this.f = new cpd(this.c, this.d);
             this.e.ifPresent(this.f::c);
          }
 
@@ -229,7 +229,7 @@ public class vw {
       private static DataResult<vw.c> a(vq $$0) {
          try {
             sw $$1 = tu.a($$0.getString());
-            return DataResult.success(new vw.c(coz.a($$1)));
+            return DataResult.success(new vw.c(cpd.a($$1)));
          } catch (CommandSyntaxException var2) {
             return DataResult.error(() -> "Failed to parse item tag: " + var2.getMessage());
          }

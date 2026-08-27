@@ -60,11 +60,11 @@ public class fz implements ArgumentType<fz.a> {
    }
 
    static hd<du> a(CommandContext<du> $$0, aiy $$1) throws CommandSyntaxException {
-      return ((du)$$0.getSource()).l().aC().a($$1).orElseThrow(() -> c.create($$1.toString()));
+      return ((du)$$0.getSource()).l().aE().a($$1).orElseThrow(() -> c.create($$1.toString()));
    }
 
    static Collection<hd<du>> b(CommandContext<du> $$0, aiy $$1) throws CommandSyntaxException {
-      Collection<hd<du>> $$2 = ((du)$$0.getSource()).l().aC().b($$1);
+      Collection<hd<du>> $$2 = ((du)$$0.getSource()).l().aE().b($$1);
       if ($$2 == null) {
          throw b.create($$1.toString());
       } else {

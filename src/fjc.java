@@ -1,154 +1,136 @@
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
-import org.slf4j.Logger;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public abstract class fjc<B extends fqx.a<?>> extends ffe {
-   private static final vq r = vq.c("gui.abuseReport.report_sent_msg");
-   private static final vq t = vq.c("gui.abuseReport.sending.title").a(n.r);
-   private static final vq u = vq.c("gui.abuseReport.sent.title").a(n.r);
-   private static final vq v = vq.c("gui.abuseReport.error.title").a(n.r);
-   private static final vq w = vq.c("gui.abuseReport.send.generic_error");
-   protected static final vq a = vq.c("gui.abuseReport.send");
-   protected static final vq b = vq.c("gui.abuseReport.observed_what");
-   protected static final vq c = vq.c("gui.abuseReport.select_reason");
-   private static final vq x = vq.c("gui.abuseReport.describe");
-   protected static final vq k = vq.c("gui.abuseReport.more_comments");
-   private static final vq y = vq.c("gui.abuseReport.comments");
-   protected static final int l = 20;
-   protected static final int m = 280;
-   protected static final int n = 8;
-   private static final Logger z = LogUtils.getLogger();
-   protected final ffe o;
-   protected final frb p;
-   protected B q;
+public class fjc extends ezm {
+   private static final aiy b = new aiy("recipe_book/slot_many_craftable");
+   private static final aiy c = new aiy("recipe_book/slot_craftable");
+   private static final aiy d = new aiy("recipe_book/slot_many_uncraftable");
+   private static final aiy e = new aiy("recipe_book/slot_uncraftable");
+   private static final float f = 15.0F;
+   private static final int m = 25;
+   public static final int a = 30;
+   private static final vq n = vq.c("gui.recipebook.moreRecipes");
+   private cls<?> o;
+   private ato p;
+   private fjd q;
+   private float r;
+   private float t;
+   private int u;
 
-   protected fjc(vq $$0, ffe $$1, frb $$2, B $$3) {
-      super($$0);
-      this.o = $$1;
-      this.p = $$2;
-      this.q = $$3;
+   public fjc() {
+      super(0, 0, 25, 25, vp.a);
    }
 
-   protected ezz a(int $$0, int $$1, Consumer<String> $$2) {
-      AbuseReportLimits $$3 = this.p.a().b();
-      ezz $$4 = new ezz(this.i, 0, 0, $$0, $$1, x, y);
-      $$4.a(this.q.g());
-      $$4.a($$3.maxOpinionCommentsLength());
-      $$4.b($$2);
-      return $$4;
-   }
+   public void a(fjd $$0, fja $$1) {
+      this.q = $$0;
+      this.o = (cls<?>)$$1.d().s.bW;
+      this.p = $$1.e();
+      List<csh<?>> $$2 = $$0.a(this.p.a(this.o));
 
-   protected void o() {
-      this.q.a(this.p).ifLeft($$0 -> {
-         CompletableFuture<?> $$1 = this.p.a().a($$0.a(), $$0.b(), $$0.c());
-         this.f.a(fel.a(t, vp.e, () -> {
-            this.f.a(this);
-            $$1.cancel(true);
-         }));
-         $$1.handleAsync(($$0x, $$1x) -> {
-            if ($$1x == null) {
-               this.E();
-            } else {
-               if ($$1x instanceof CancellationException) {
-                  return null;
-               }
-
-               this.a($$1x);
-            }
-
-            return null;
-         }, this.f);
-      }).ifRight($$0 -> this.a($$0.b()));
-   }
-
-   private void E() {
-      this.I();
-      this.f.a(fel.a(u, r, vp.d, () -> this.f.a(null)));
-   }
-
-   private void a(Throwable $$0) {
-      z.error("Encountered error while sending abuse report", $$0);
-      vq $$2;
-      if ($$0.getCause() instanceof wq $$1) {
-         $$2 = $$1.b();
-      } else {
-         $$2 = w;
-      }
-
-      this.a($$2);
-   }
-
-   private void a(vq $$0) {
-      vq $$1 = $$0.f().a(n.m);
-      this.f.a(fel.a(v, $$1, vp.k, () -> this.f.a(this)));
-   }
-
-   void H() {
-      if (this.q.b()) {
-         this.p.a(this.q.e().b());
+      for (csh<?> $$3 : $$2) {
+         if (this.p.d($$3)) {
+            $$1.a($$2);
+            this.t = 15.0F;
+            break;
+         }
       }
    }
 
-   void I() {
-      this.p.a(null);
+   public fjd a() {
+      return this.q;
    }
 
    @Override
-   public void d() {
-      if (this.q.b()) {
-         this.f.a(new fjc.a());
+   public void b(ezb $$0, int $$1, int $$2, float $$3) {
+      if (!ffl.t()) {
+         this.r += $$3;
+      }
+
+      aiy $$4;
+      if (this.q.c()) {
+         if (this.q.a(this.p.a(this.o)).size() > 1) {
+            $$4 = b;
+         } else {
+            $$4 = c;
+         }
+      } else if (this.q.a(this.p.a(this.o)).size() > 1) {
+         $$4 = d;
       } else {
-         this.f.a(this.o);
+         $$4 = e;
+      }
+
+      boolean $$8 = this.t > 0.0F;
+      if ($$8) {
+         float $$9 = 1.0F + 0.1F * (float)Math.sin((double)(this.t / 15.0F * (float) Math.PI));
+         $$0.c().a();
+         $$0.c().a((float)(this.B() + 8), (float)(this.C() + 12), 0.0F);
+         $$0.c().b($$9, $$9, 1.0F);
+         $$0.c().a((float)(-(this.B() + 8)), (float)(-(this.C() + 12)), 0.0F);
+         this.t -= $$3;
+      }
+
+      $$0.a($$4, this.B(), this.C(), this.g, this.h);
+      List<csh<?>> $$10 = this.f();
+      this.u = awi.d(this.r / 30.0F) % $$10.size();
+      cpd $$11 = $$10.get(this.u).b().a(this.q.a());
+      int $$12 = 4;
+      if (this.q.f() && this.f().size() > 1) {
+         $$0.a($$11, this.B() + $$12 + 1, this.C() + $$12 + 1, 0, 10);
+         $$12--;
+      }
+
+      $$0.b($$11, this.B() + $$12, this.C() + $$12);
+      if ($$8) {
+         $$0.c().b();
+      }
+   }
+
+   private List<csh<?>> f() {
+      List<csh<?>> $$0 = this.q.b(true);
+      if (!this.p.a(this.o)) {
+         $$0.addAll(this.q.b(false));
+      }
+
+      return $$0;
+   }
+
+   public boolean b() {
+      return this.f().size() == 1;
+   }
+
+   public csh<?> d() {
+      List<csh<?>> $$0 = this.f();
+      return $$0.get(this.u);
+   }
+
+   public List<vq> e() {
+      cpd $$0 = this.f().get(this.u).b().a(this.q.a());
+      List<vq> $$1 = Lists.newArrayList(ffl.a(exo.P(), $$0));
+      if (this.q.a(this.p.a(this.o)).size() > 1) {
+         $$1.add(n);
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public void a(fdj $$0) {
+      cpd $$1 = this.f().get(this.u).b().a(this.q.a());
+      $$0.a(fdi.a, vq.a("narration.recipe", $$1.z()));
+      if (this.q.a(this.p.a(this.o)).size() > 1) {
+         $$0.a(fdi.d, vq.c("narration.button.usage.hovered"), vq.c("narration.recipe.usage.more"));
+      } else {
+         $$0.a(fdi.d, vq.c("narration.button.usage.hovered"));
       }
    }
 
    @Override
-   public void k() {
-      this.H();
-      super.k();
+   public int w() {
+      return 25;
    }
 
-   class a extends fih {
-      private static final int c = 20;
-      private static final vq k = vq.c("gui.abuseReport.discard.title").a(n.r);
-      private static final vq l = vq.c("gui.abuseReport.discard.content");
-      private static final vq m = vq.c("gui.abuseReport.discard.return");
-      private static final vq n = vq.c("gui.abuseReport.discard.draft");
-      private static final vq o = vq.c("gui.abuseReport.discard.discard");
-
-      protected a() {
-         super(k, l, l);
-      }
-
-      @Override
-      protected void a(int $$0) {
-         this.d(ezh.a(m, $$0x -> this.d()).a(this.g / 2 - 155, 100 + $$0).a());
-         this.d(ezh.a(n, $$0x -> {
-            fjc.this.H();
-            this.f.a(fjc.this.o);
-         }).a(this.g / 2 + 5, 100 + $$0).a());
-         this.d(ezh.a(o, $$0x -> {
-            fjc.this.I();
-            this.f.a(fjc.this.o);
-         }).a(this.g / 2 - 75, 130 + $$0).a());
-      }
-
-      @Override
-      public void d() {
-         this.f.a(fjc.this);
-      }
-
-      @Override
-      public boolean aO_() {
-         return false;
-      }
-
-      @Override
-      protected void c(eyu $$0) {
-         $$0.b(this.i, this.e, this.g / 2 - 155, 30, -1);
-      }
+   @Override
+   protected boolean j(int $$0) {
+      return $$0 == 0 || $$0 == 1;
    }
 }

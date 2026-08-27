@@ -8,15 +8,15 @@ public class bj extends cx<bj.a> {
       return bj.a.a;
    }
 
-   public void a(aow $$0, ens $$1) {
-      ens $$2 = $$0.dk();
+   public void a(aox $$0, enz $$1) {
+      enz $$2 = $$0.dk();
       this.a($$0, $$3 -> $$3.a($$0.z(), $$1, $$2));
    }
 
    public static record a(Optional<bc> b, Optional<ck> c, Optional<bi> d) implements cx.a {
       public static final Codec<bj.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  avp.a(br.b, "player").forGetter(bj.a::a), avp.a(ck.a, "start_position").forGetter(bj.a::b), avp.a(bi.a, "distance").forGetter(bj.a::c)
+                  avq.a(br.b, "player").forGetter(bj.a::a), avq.a(ck.a, "start_position").forGetter(bj.a::b), avq.a(bi.a, "distance").forGetter(bj.a::c)
                )
                .apply($$0, bj.a::new)
       );
@@ -33,7 +33,7 @@ public class bj extends cx<bj.a> {
          return am.D.a(new bj.a(Optional.empty(), Optional.empty(), Optional.of($$0)));
       }
 
-      public boolean a(aov $$0, ens $$1, ens $$2) {
+      public boolean a(aow $$0, enz $$1, enz $$2) {
          return this.c.isPresent() && !this.c.get().a($$0, $$1.c, $$1.d, $$1.e)
             ? false
             : !this.d.isPresent() || this.d.get().a($$1.c, $$1.d, $$1.e, $$2.c, $$2.d, $$2.e);

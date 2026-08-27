@@ -1,14 +1,15 @@
 import java.util.Optional;
 
-public record abg(int b, int c, int d, int e, Optional<ens> f) implements xx<aag> {
-   public static final xo<uq, abg> a = xx.a(abg::b, abg::new);
+public record abg(int b, ij<bmr> c, int d, int e, Optional<enz> f) implements xx<aag> {
+   public static final xo<vb, abg> a = xx.a(abg::a, abg::new);
+   private static final xo<vb, ij<bmr>> g = xm.b(kg.r);
 
-   public abg(bno $$0, bmn $$1) {
-      this($$0.aj(), $$0.dM().I_().d(kg.r).a($$1.j()), $$1.d() != null ? $$1.d().aj() : -1, $$1.c() != null ? $$1.c().aj() : -1, Optional.ofNullable($$1.i()));
+   public abg(bnq $$0, bmp $$1) {
+      this($$0.aj(), $$1.k(), $$1.d() != null ? $$1.d().aj() : -1, $$1.c() != null ? $$1.c().aj() : -1, Optional.ofNullable($$1.i()));
    }
 
-   private abg(uq $$0) {
-      this($$0.n(), $$0.n(), a($$0), a($$0), $$0.b((xp<? super uq, ens>)($$0x -> new ens($$0x.readDouble(), $$0x.readDouble(), $$0x.readDouble()))));
+   private abg(vb $$0) {
+      this($$0.n(), g.decode($$0), a((uq)$$0), a((uq)$$0), $$0.b($$0x -> new enz($$0x.readDouble(), $$0x.readDouble(), $$0x.readDouble())));
    }
 
    private static void a(uq $$0, int $$1) {
@@ -19,9 +20,9 @@ public record abg(int b, int c, int d, int e, Optional<ens> f) implements xx<aag
       return $$0.n() - 1;
    }
 
-   private void b(uq $$0) {
+   private void a(vb $$0) {
       $$0.c(this.b);
-      $$0.c(this.c);
+      g.encode($$0, this.c);
       a($$0, this.d);
       a($$0, this.e);
       $$0.a(this.f, ($$0x, $$1) -> {
@@ -40,18 +41,17 @@ public record abg(int b, int c, int d, int e, Optional<ens> f) implements xx<aag
       $$0.a(this);
    }
 
-   public bmn a(cvn $$0) {
-      ij<bmp> $$1 = $$0.I_().d(kg.r).c(this.c).get();
+   public bmp a(cvr $$0) {
       if (this.f.isPresent()) {
-         return new bmn($$1, this.f.get());
+         return new bmp(this.c, this.f.get());
       } else {
-         bno $$2 = $$0.a(this.d);
-         bno $$3 = $$0.a(this.e);
-         return new bmn($$1, $$3, $$2);
+         bnq $$1 = $$0.a(this.d);
+         bnq $$2 = $$0.a(this.e);
+         return new bmp(this.c, $$2, $$1);
       }
    }
 
-   public int e() {
+   public ij<bmr> e() {
       return this.c;
    }
 
@@ -63,7 +63,7 @@ public record abg(int b, int c, int d, int e, Optional<ens> f) implements xx<aag
       return this.e;
    }
 
-   public Optional<ens> h() {
+   public Optional<enz> h() {
       return this.f;
    }
 }

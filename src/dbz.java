@@ -1,75 +1,57 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dbz extends dge implements cyr {
-   public static final MapCodec<dbz> a = b(dbz::new);
+public class dbz extends cxn {
+   public static final MapCodec<dbz> c = b(dbz::new);
 
    @Override
    public MapCodec<dbz> a() {
-      return a;
+      return c;
    }
 
-   public dbz(dle.d $$0) {
+   protected dbz(dli.d $$0) {
       super($$0);
    }
 
    @Override
-   public boolean b(cvq $$0, hz $$1, dlf $$2) {
-      return $$0.a_($$1.c()).i();
+   public dix a(hz $$0, dlj $$1) {
+      return new djt($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dix> diy<T> a(cvr $$0, dlj $$1, diz<T> $$2) {
+      return a($$0, $$2, diz.a);
    }
 
    @Override
-   public boolean a(cvn $$0, awo $$1, hz $$2, dlf $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(aov $$0, awo $$1, hz $$2, dlf $$3) {
-      hz $$4 = $$2.c();
-      dlf $$5 = cyq.bt.o();
-      Optional<ij.c<eai>> $$6 = $$0.I_().d(kg.aC).b(rd.n);
-
-      label49:
-      for (int $$7 = 0; $$7 < 128; $$7++) {
-         hz $$8 = $$4;
-
-         for (int $$9 = 0; $$9 < $$7 / 16; $$9++) {
-            $$8 = $$8.b($$1.a(3) - 1, ($$1.a(3) - 1) * $$1.a(3) / 2, $$1.a(3) - 1);
-            if (!$$0.a_($$8.d()).a(this) || $$0.a_($$8).r($$0, $$8)) {
-               continue label49;
-            }
-         }
-
-         dlf $$10 = $$0.a_($$8);
-         if ($$10.a($$5.b()) && $$1.a(10) == 0) {
-            ((cyr)$$5.b()).a($$0, $$1, $$8, $$10);
-         }
-
-         if ($$10.i()) {
-            ij<eai> $$12;
-            if ($$1.a(8) == 0) {
-               List<dtf<?, ?>> $$11 = $$0.t($$8).a().d().a();
-               if ($$11.isEmpty()) {
-                  continue;
-               }
-
-               $$12 = ((dwj)$$11.get(0).c()).d();
-            } else {
-               if (!$$6.isPresent()) {
-                  continue;
-               }
-
-               $$12 = $$6.get();
-            }
-
-            $$12.a().a($$0, $$0.l().g(), $$1, $$8);
-         }
+   protected void a(cvr $$0, hz $$1, chl $$2) {
+      dix $$3 = $$0.c_($$1);
+      if ($$3 instanceof djt) {
+         $$2.a((bma)$$3);
+         $$2.a(atv.am);
       }
    }
 
    @Override
-   public cyr.a av_() {
-      return cyr.a.a;
+   public void a(dlj $$0, cvr $$1, hz $$2, awp $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, atl.jK, atm.e, 1.0F, 1.0F, false);
+         }
+
+         ie $$7 = $$0.c(a);
+         ie.a $$8 = $$7.o();
+         double $$9 = 0.52;
+         double $$10 = $$3.j() * 0.6 - 0.3;
+         double $$11 = $$8 == ie.a.a ? (double)$$7.j() * 0.52 : $$10;
+         double $$12 = $$3.j() * 6.0 / 16.0;
+         double $$13 = $$8 == ie.a.c ? (double)$$7.l() * 0.52 : $$10;
+         $$1.a(jz.ab, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+         $$1.a(jz.E, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+      }
    }
 }

@@ -1,24 +1,20 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dei extends cyo {
-   public static final MapCodec<dei> a = b(dei::new);
+public class dei extends dhr {
+   public static final MapCodec<dei> b = b(dei::new);
 
    @Override
    public MapCodec<dei> a() {
-      return a;
+      return b;
    }
 
-   public dei(dle.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected boolean f_(dlf $$0) {
-      return true;
+   protected dei(dli.d $$0) {
+      super(dft.b.e, $$0);
    }
 
    @Override
-   protected int a(dlf $$0, cut $$1, hz $$2, ie $$3) {
-      return 15;
+   public void a(cvr $$0, hz $$1, dlj $$2, @Nullable boi $$3, cpd $$4) {
+      deh.b($$0, $$1, $$4);
    }
 }

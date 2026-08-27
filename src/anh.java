@@ -1,47 +1,51 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import java.util.Collection;
 
 public class anh {
-   private static final int a = -1;
-
    public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("weather").requires($$0x -> $$0x.c(2)))
-                  .then(
-                     ((LiteralArgumentBuilder)dv.a("clear").executes($$0x -> a((du)$$0x.getSource(), -1)))
-                        .then(dv.a("duration", fh.a(1)).executes($$0x -> a((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
-                  ))
-               .then(
-                  ((LiteralArgumentBuilder)dv.a("rain").executes($$0x -> b((du)$$0x.getSource(), -1)))
-                     .then(dv.a("duration", fh.a(1)).executes($$0x -> b((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
-               ))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("warden_spawn_tracker").requires($$0x -> $$0x.c(2)))
+               .then(dv.a("clear").executes($$0x -> a((du)$$0x.getSource(), ImmutableList.of(((du)$$0x.getSource()).h())))))
             .then(
-               ((LiteralArgumentBuilder)dv.a("thunder").executes($$0x -> c((du)$$0x.getSource(), -1)))
-                  .then(dv.a("duration", fh.a(1)).executes($$0x -> c((du)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
+               dv.a("set")
+                  .then(
+                     dv.a("warning_level", IntegerArgumentType.integer(0, 4))
+                        .executes(
+                           $$0x -> a((du)$$0x.getSource(), ImmutableList.of(((du)$$0x.getSource()).h()), IntegerArgumentType.getInteger($$0x, "warning_level"))
+                        )
+                  )
             )
       );
    }
 
-   private static int a(du $$0, int $$1, bkz $$2) {
-      return $$1 == -1 ? $$2.a($$0.e().F_()) : $$1;
+   private static int a(du $$0, Collection<? extends chl> $$1, int $$2) {
+      for (chl $$3 : $$1) {
+         $$3.aa().ifPresent($$1x -> $$1x.a($$2));
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> vq.a("commands.warden_spawn_tracker.set.success.single", $$1.iterator().next().Q_()), true);
+      } else {
+         $$0.a(() -> vq.a("commands.warden_spawn_tracker.set.success.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 
-   private static int a(du $$0, int $$1) {
-      $$0.e().a(a($$0, $$1, aov.b), 0, false, false);
-      $$0.a(() -> vq.c("commands.weather.set.clear"), true);
-      return $$1;
-   }
+   private static int a(du $$0, Collection<? extends chl> $$1) {
+      for (chl $$2 : $$1) {
+         $$2.aa().ifPresent(cgr::b);
+      }
 
-   private static int b(du $$0, int $$1) {
-      $$0.e().a(0, a($$0, $$1, aov.c), true, false);
-      $$0.a(() -> vq.c("commands.weather.set.rain"), true);
-      return $$1;
-   }
+      if ($$1.size() == 1) {
+         $$0.a(() -> vq.a("commands.warden_spawn_tracker.clear.success.single", $$1.iterator().next().Q_()), true);
+      } else {
+         $$0.a(() -> vq.a("commands.warden_spawn_tracker.clear.success.multiple", $$1.size()), true);
+      }
 
-   private static int c(du $$0, int $$1) {
-      $$0.e().a(0, a($$0, $$1, aov.d), true, true);
-      $$0.a(() -> vq.c("commands.weather.set.thunder"), true);
-      return $$1;
+      return $$1.size();
    }
 }

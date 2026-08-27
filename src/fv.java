@@ -28,7 +28,7 @@ public class fv implements ArgumentType<fq> {
       return new fv($$0);
    }
 
-   public static ens a(CommandContext<du> $$0, String $$1) {
+   public static enz a(CommandContext<du> $$0, String $$1) {
       return ((fq)$$0.getArgument($$1, fq.class)).a((du)$$0.getSource());
    }
 

@@ -21,10 +21,10 @@ public class ams {
       );
    }
 
-   private static int a(du $$0, @Nullable bno $$1, aow $$2) throws CommandSyntaxException {
+   private static int a(du $$0, @Nullable bnq $$1, aox $$2) throws CommandSyntaxException {
       if ($$2 == $$1) {
          throw a.create();
-      } else if ($$2.f.b() != cvk.d) {
+      } else if ($$2.f.b() != cvo.d) {
          throw b.create($$2.Q_());
       } else {
          $$2.c($$1);

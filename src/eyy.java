@@ -1,46 +1,54 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-public abstract class eyy extends ezf {
-   protected static final int e = 2;
-   private static final fau a = new fau(new aiy("widget/button"), new aiy("widget/button_disabled"), new aiy("widget/button_highlighted"));
-
-   public eyy(int $$0, int $$1, int $$2, int $$3, vq $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+public interface eyy {
+   static eyy a(fbk $$0) {
+      return new eyy.a($$0);
    }
 
-   public abstract void b();
-
-   @Override
-   protected void b(eyu $$0, int $$1, int $$2, float $$3) {
-      exh $$4 = exh.O();
-      $$0.a(1.0F, 1.0F, 1.0F, this.l);
-      RenderSystem.enableBlend();
-      RenderSystem.enableDepthTest();
-      $$0.a(a.a(this.j, this.z()), this.B(), this.C(), this.w(), this.u());
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      int $$5 = this.j ? 16777215 : 10526880;
-      this.a($$0, $$4.h, $$5 | awh.f(this.l * 255.0F) << 24);
+   @Nullable
+   static eyy a(fbj $$0, @Nullable eyy $$1) {
+      return $$1 == null ? null : new eyy.b($$0, $$1);
    }
 
-   public void a(eyu $$0, eys $$1, int $$2) {
-      this.a($$0, $$1, 2, $$2);
+   static eyy a(fbk $$0, fbj... $$1) {
+      eyy $$2 = a($$0);
+
+      for (fbj $$3 : $$1) {
+         $$2 = a($$3, $$2);
+      }
+
+      return $$2;
    }
 
-   @Override
-   public void a(double $$0, double $$1) {
-      this.b();
+   fbk a();
+
+   void a(boolean var1);
+
+   public static record a(fbk a) implements eyy {
+      @Override
+      public void a(boolean $$0) {
+         this.a.a($$0);
+      }
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (!this.j || !this.k) {
-         return false;
-      } else if (fdh.a($$0)) {
-         this.a(exh.O().ai());
-         this.b();
-         return true;
-      } else {
-         return false;
+   public static record b(fbj a, eyy b) implements eyy {
+      @Override
+      public void a(boolean $$0) {
+         if (!$$0) {
+            this.a.a(null);
+         } else {
+            this.a.a(this.b.a());
+         }
+
+         this.b.a($$0);
+      }
+
+      public fbj b() {
+         return this.a;
+      }
+
+      public eyy c() {
+         return this.b;
       }
    }
 }

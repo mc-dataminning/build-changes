@@ -1,84 +1,61 @@
-import org.joml.Matrix4f;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public class fzg implements fyw.a {
-   private final exh a;
+public class fzg implements fze.a {
+   private static final float a = 0.02F;
+   private final Map<hz, fzg.a> b = Maps.newHashMap();
 
-   public fzg(exh $$0) {
-      this.a = $$0;
+   public void a(hz $$0, int $$1, String $$2, int $$3) {
+      this.b.put($$0, new fzg.a($$1, $$2, ac.b() + (long)$$3));
    }
 
    @Override
-   public void a(esa $$0, fvl $$1, double $$2, double $$3, double $$4) {
-      Matrix4f $$5 = $$0.c().a();
-      cut $$6 = this.a.s.dM();
-      hz $$7 = hz.a($$2, $$3, $$4);
+   public void a() {
+      this.b.clear();
+   }
 
-      for (hz $$8 : hz.a($$7.b(-6, -6, -6), $$7.b(6, 6, 6))) {
-         dlf $$9 = $$6.a_($$8);
-         if (!$$9.a(cyq.a)) {
-            eol $$10 = $$9.j($$6, $$8);
+   @Override
+   public void a(esh $$0, fvt $$1, double $$2, double $$3, double $$4) {
+      long $$5 = ac.b();
+      this.b.entrySet().removeIf($$1x -> $$5 > ((fzg.a)$$1x.getValue()).c);
+      this.b.forEach(($$2x, $$3x) -> this.a($$0, $$1, $$2x, $$3x));
+   }
 
-            for (enn $$11 : $$10.e()) {
-               enn $$12 = $$11.a($$8).g(0.002);
-               float $$13 = (float)($$12.a - $$2);
-               float $$14 = (float)($$12.b - $$3);
-               float $$15 = (float)($$12.c - $$4);
-               float $$16 = (float)($$12.d - $$2);
-               float $$17 = (float)($$12.e - $$3);
-               float $$18 = (float)($$12.f - $$4);
-               float $$19 = 1.0F;
-               float $$20 = 0.0F;
-               float $$21 = 0.0F;
-               float $$22 = 0.5F;
-               if ($$9.d($$6, $$8, ie.e)) {
-                  ese $$23 = $$1.getBuffer(fvt.y());
-                  $$23.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$23.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$23.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$23.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
+   private void a(esh $$0, fvt $$1, hz $$2, fzg.a $$3) {
+      fze.a($$0, $$1, $$2, 0.02F, $$3.a(), $$3.b(), $$3.c(), $$3.d() * 0.75F);
+      if (!$$3.b.isEmpty()) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v() + 1.2;
+         double $$6 = (double)$$2.w() + 0.5;
+         fze.a($$0, $$1, $$3.b, $$4, $$5, $$6, -1, 0.01F, true, 0.0F, true);
+      }
+   }
 
-               if ($$9.d($$6, $$8, ie.d)) {
-                  ese $$24 = $$1.getBuffer(fvt.y());
-                  $$24.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$24.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$24.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$24.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
+   static class a {
+      public int a;
+      public String b;
+      public long c;
 
-               if ($$9.d($$6, $$8, ie.f)) {
-                  ese $$25 = $$1.getBuffer(fvt.y());
-                  $$25.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$25.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$25.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$25.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
+      public a(int $$0, String $$1, long $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
 
-               if ($$9.d($$6, $$8, ie.c)) {
-                  ese $$26 = $$1.getBuffer(fvt.y());
-                  $$26.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$26.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$26.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$26.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
+      public float a() {
+         return (float)(this.a >> 16 & 0xFF) / 255.0F;
+      }
 
-               if ($$9.d($$6, $$8, ie.a)) {
-                  ese $$27 = $$1.getBuffer(fvt.y());
-                  $$27.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$27.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$27.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$27.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
+      public float b() {
+         return (float)(this.a >> 8 & 0xFF) / 255.0F;
+      }
 
-               if ($$9.d($$6, $$8, ie.b)) {
-                  ese $$28 = $$1.getBuffer(fvt.y());
-                  $$28.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$28.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$28.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-                  $$28.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-               }
-            }
-         }
+      public float c() {
+         return (float)(this.a & 0xFF) / 255.0F;
+      }
+
+      public float d() {
+         return (float)(this.a >> 24 & 0xFF) / 255.0F;
       }
    }
 }

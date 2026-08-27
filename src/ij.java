@@ -17,12 +17,12 @@ public interface ij<T> {
 
    boolean a(Predicate<aix<T>> var1);
 
-   boolean a(auo<T> var1);
+   boolean a(aup<T> var1);
 
    @Deprecated
    boolean a(ij<T> var1);
 
-   Stream<auo<T>> c();
+   Stream<aup<T>> c();
 
    Either<aix<T>, T> d();
 
@@ -57,7 +57,7 @@ public interface ij<T> {
       }
 
       @Override
-      public boolean a(auo<T> $$0) {
+      public boolean a(aup<T> $$0) {
          return false;
       }
 
@@ -97,7 +97,7 @@ public interface ij<T> {
       }
 
       @Override
-      public Stream<auo<T>> c() {
+      public Stream<aup<T>> c() {
          return Stream.of();
       }
    }
@@ -109,7 +109,7 @@ public interface ij<T> {
 
    public static class c<T> implements ij<T> {
       private final im<T> a;
-      private Set<auo<T>> b = Set.of();
+      private Set<aup<T>> b = Set.of();
       private final ij.c.a c;
       @Nullable
       private aix<T> d;
@@ -160,7 +160,7 @@ public interface ij<T> {
       }
 
       @Override
-      public boolean a(auo<T> $$0) {
+      public boolean a(aup<T> $$0) {
          return this.b.contains($$0);
       }
 
@@ -215,12 +215,12 @@ public interface ij<T> {
          }
       }
 
-      void a(Collection<auo<T>> $$0) {
+      void a(Collection<aup<T>> $$0) {
          this.b = Set.copyOf($$0);
       }
 
       @Override
-      public Stream<auo<T>> c() {
+      public Stream<aup<T>> c() {
          return this.b.stream();
       }
 

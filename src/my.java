@@ -7,7 +7,7 @@ public interface my {
 
    my a(@Nullable String var1);
 
-   cou a();
+   coy a();
 
    void a(na var1, aiy var2);
 
@@ -25,16 +25,16 @@ public interface my {
       }
    }
 
-   static aiy a(cvm $$0) {
+   static aiy a(cvq $$0) {
       return kf.h.b($$0.j());
    }
 
-   static crr a(mz $$0) {
+   static crv a(mz $$0) {
       return switch ($$0) {
-         case a -> crr.a;
-         case e, f -> crr.c;
-         case c -> crr.b;
-         default -> crr.d;
+         case a -> crv.a;
+         case e, f -> crv.c;
+         case c -> crv.b;
+         default -> crv.d;
       };
    }
 }

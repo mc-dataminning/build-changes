@@ -1,130 +1,86 @@
-import com.google.common.collect.Lists;
 import java.util.EnumSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
 
-public class bvn extends bvb {
-   protected final boo a;
-   private final double b;
+public class bvn extends bvf {
+   public static final float a = 0.02F;
+   protected final bok b;
    @Nullable
-   private ehe c;
-   private hz d;
-   private final boolean e;
-   private final List<hz> f = Lists.newArrayList();
-   private final int g;
-   private final BooleanSupplier h;
+   protected bnq c;
+   protected final float d;
+   private int h;
+   protected final float e;
+   private final boolean i;
+   protected final Class<? extends boi> f;
+   protected final byy g;
 
-   public bvn(boo $$0, double $$1, boolean $$2, int $$3, BooleanSupplier $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.e = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.a(EnumSet.of(bvb.a.a));
-      if (!byz.a($$0)) {
-         throw new IllegalArgumentException("Unsupported mob for MoveThroughVillageGoal");
+   public bvn(bok $$0, Class<? extends boi> $$1, float $$2) {
+      this($$0, $$1, $$2, 0.02F);
+   }
+
+   public bvn(bok $$0, Class<? extends boi> $$1, float $$2, float $$3) {
+      this($$0, $$1, $$2, $$3, false);
+   }
+
+   public bvn(bok $$0, Class<? extends boi> $$1, float $$2, float $$3, boolean $$4) {
+      this.b = $$0;
+      this.f = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.i = $$4;
+      this.a(EnumSet.of(bvf.a.b));
+      if ($$1 == chl.class) {
+         this.g = byy.b().a((double)$$2).a($$1x -> bnv.b($$0).test($$1x));
+      } else {
+         this.g = byy.b().a((double)$$2);
       }
    }
 
    @Override
    public boolean a() {
-      if (!byz.a(this.a)) {
+      if (this.b.eh().i() >= this.e) {
          return false;
       } else {
-         this.h();
-         if (this.e && this.a.dM().P()) {
-            return false;
-         } else {
-            aov $$0 = (aov)this.a.dM();
-            hz $$1 = this.a.dm();
-            if (!$$0.a($$1, 6)) {
-               return false;
-            } else {
-               ens $$2 = bzb.a(this.a, 15, 7, $$2x -> {
-                  if (!$$0.c($$2x)) {
-                     return Double.NEGATIVE_INFINITY;
-                  } else {
-                     Optional<hz> $$3x = $$0.y().d($$0xx -> $$0xx.a(auj.b), this::a, $$2x, 10, bzh.b.b);
-                     return $$3x.<Double>map($$1xx -> -$$1xx.j($$1)).orElse(Double.NEGATIVE_INFINITY);
-                  }
-               });
-               if ($$2 == null) {
-                  return false;
-               } else {
-                  Optional<hz> $$3 = $$0.y().d($$0x -> $$0x.a(auj.b), this::a, hz.a($$2), 10, bzh.b.b);
-                  if ($$3.isEmpty()) {
-                     return false;
-                  } else {
-                     this.d = $$3.get().i();
-                     bxo $$4 = (bxo)this.a.N();
-                     boolean $$5 = $$4.f();
-                     $$4.b(this.h.getAsBoolean());
-                     this.c = $$4.a(this.d, 0);
-                     $$4.b($$5);
-                     if (this.c == null) {
-                        ens $$6 = byy.a(this.a, 10, 7, ens.c(this.d), (float) (Math.PI / 2));
-                        if ($$6 == null) {
-                           return false;
-                        }
-
-                        $$4.b(this.h.getAsBoolean());
-                        this.c = this.a.N().a($$6.c, $$6.d, $$6.e, 0);
-                        $$4.b($$5);
-                        if (this.c == null) {
-                           return false;
-                        }
-                     }
-
-                     for (int $$7 = 0; $$7 < this.c.e(); $$7++) {
-                        ehc $$8 = this.c.a($$7);
-                        hz $$9 = new hz($$8.a, $$8.b + 1, $$8.c);
-                        if (dau.a(this.a.dM(), $$9)) {
-                           this.c = this.a.N().a((double)$$8.a, (double)$$8.b, (double)$$8.c, 0);
-                           break;
-                        }
-                     }
-
-                     return this.c != null;
-                  }
-               }
-            }
+         if (this.b.q() != null) {
+            this.c = this.b.q();
          }
+
+         if (this.f == chl.class) {
+            this.c = this.b.dM().a(this.g, this.b, this.b.dr(), this.b.dv(), this.b.dx());
+         } else {
+            this.c = this.b
+               .dM()
+               .a(this.b.dM().a(this.f, this.b.cH().c((double)this.d, 3.0, (double)this.d), $$0 -> true), this.g, this.b, this.b.dr(), this.b.dv(), this.b.dx());
+         }
+
+         return this.c != null;
       }
    }
 
    @Override
    public boolean b() {
-      return this.a.N().l() ? false : !this.d.a(this.a.dk(), (double)(this.a.dg() + (float)this.g));
+      if (!this.c.bx()) {
+         return false;
+      } else {
+         return this.b.f(this.c) > (double)(this.d * this.d) ? false : this.h > 0;
+      }
    }
 
    @Override
    public void c() {
-      this.a.N().a(this.c, this.b);
+      this.h = this.a(40 + this.b.eh().a(40));
    }
 
    @Override
    public void d() {
-      if (this.a.N().l() || this.d.a(this.a.dk(), (double)this.g)) {
-         this.f.add(this.d);
-      }
+      this.c = null;
    }
 
-   private boolean a(hz $$0) {
-      for (hz $$1 : this.f) {
-         if (Objects.equals($$0, $$1)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   private void h() {
-      if (this.f.size() > 15) {
-         this.f.remove(0);
+   @Override
+   public void e() {
+      if (this.c.bx()) {
+         double $$0 = this.i ? this.b.dv() : this.c.dv();
+         this.b.I().a(this.c.dr(), $$0, this.c.dx());
+         this.h--;
       }
    }
 }

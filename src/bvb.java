@@ -1,57 +1,61 @@
-import java.util.EnumSet;
+import com.mojang.datafixers.DataFixUtils;
+import java.util.List;
+import java.util.function.Predicate;
 
-public abstract class bvb {
-   private final EnumSet<bvb.a> a = EnumSet.noneOf(bvb.a.class);
+public class bvb extends bvf {
+   private static final int a = 200;
+   private final bzw b;
+   private int c;
+   private int d;
 
-   public abstract boolean a();
-
-   public boolean b() {
-      return this.a();
+   public bvb(bzw $$0) {
+      this.b = $$0;
+      this.d = this.a($$0);
    }
 
-   public boolean S_() {
-      return true;
-   }
-
-   public void c() {
-   }
-
-   public void d() {
-   }
-
-   public boolean T_() {
-      return false;
-   }
-
-   public void e() {
-   }
-
-   public void a(EnumSet<bvb.a> $$0) {
-      this.a.clear();
-      this.a.addAll($$0);
+   protected int a(bzw $$0) {
+      return b(200 + $$0.eh().a(200) % 20);
    }
 
    @Override
-   public String toString() {
-      return this.getClass().getSimpleName();
+   public boolean a() {
+      if (this.b.gm()) {
+         return false;
+      } else if (this.b.gj()) {
+         return true;
+      } else if (this.d > 0) {
+         this.d--;
+         return false;
+      } else {
+         this.d = this.a(this.b);
+         Predicate<bzw> $$0 = $$0x -> $$0x.gl() || !$$0x.gj();
+         List<? extends bzw> $$1 = this.b.dM().a((Class<? extends bzw>)this.b.getClass(), this.b.cH().c(8.0, 8.0, 8.0), $$0);
+         bzw $$2 = (bzw)DataFixUtils.orElse($$1.stream().filter(bzw::gl).findAny(), this.b);
+         $$2.a($$1.stream().filter($$0x -> !$$0x.gj()));
+         return this.b.gj();
+      }
    }
 
-   public EnumSet<bvb.a> j() {
-      return this.a;
+   @Override
+   public boolean b() {
+      return this.b.gj() && this.b.gn();
    }
 
-   protected int a(int $$0) {
-      return this.T_() ? $$0 : b($$0);
+   @Override
+   public void c() {
+      this.c = 0;
    }
 
-   protected static int b(int $$0) {
-      return awh.e($$0, 2);
+   @Override
+   public void d() {
+      this.b.gk();
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   @Override
+   public void e() {
+      if (--this.c <= 0) {
+         this.c = this.a(10);
+         this.b.go();
+      }
    }
 }

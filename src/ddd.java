@@ -1,166 +1,76 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
-
-public class ddd extends cyo implements cyv {
-   private static final Codec<egn> f = kf.c
-      .q()
-      .comapFlatMap($$0 -> $$0 instanceof egn $$1 ? DataResult.success($$1) : DataResult.error(() -> "Not a flowing fluid: " + $$0), $$0 -> $$0);
-   public static final MapCodec<ddd> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(f.fieldOf("fluid").forGetter($$0x -> $$0x.c), u()).apply($$0, ddd::new));
-   public static final dmf b = dlv.aP;
-   protected final egn c;
-   private final List<egp> g;
-   public static final eol d = cyo.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-   public static final ImmutableList<ie> e = ImmutableList.of(ie.a, ie.d, ie.c, ie.f, ie.e);
-
-   @Override
-   public MapCodec<ddd> a() {
-      return a;
-   }
-
-   protected ddd(egn $$0, dle.d $$1) {
-      super($$1);
-      this.c = $$0;
-      this.g = Lists.newArrayList();
-      this.g.add($$0.a(false));
-
-      for (int $$2 = 1; $$2 < 8; $$2++) {
-         this.g.add($$0.a(8 - $$2, false));
-      }
-
-      this.g.add($$0.a(8, true));
-      this.k(this.E.b().a(b, Integer.valueOf(0)));
-   }
-
-   @Override
-   protected eol b(dlf $$0, cut $$1, hz $$2, enx $$3) {
-      return $$3.a(d, $$2, true) && $$0.c(b) == 0 && $$3.a($$1.b_($$2.c()), $$0.u()) ? d : eoi.a();
-   }
-
-   @Override
-   protected boolean e_(dlf $$0) {
-      return $$0.u().f();
-   }
-
-   @Override
-   protected void b(dlf $$0, aov $$1, hz $$2, awo $$3) {
-      $$0.u().b($$1, $$2, $$3);
-   }
-
-   @Override
-   protected boolean a_(dlf $$0, cut $$1, hz $$2) {
-      return false;
-   }
-
-   @Override
-   protected boolean a(dlf $$0, cut $$1, hz $$2, ehf $$3) {
-      return !this.c.a(aue.b);
-   }
-
-   @Override
-   protected egp c_(dlf $$0) {
-      int $$1 = $$0.c(b);
-      return this.g.get(Math.min($$1, 8));
-   }
-
-   @Override
-   protected boolean a(dlf $$0, dlf $$1, ie $$2) {
-      return $$1.u().a().a(this.c);
-   }
-
-   @Override
-   protected det b_(dlf $$0) {
-      return det.a;
-   }
-
-   @Override
-   protected List<coz> a(dlf $$0, ejb.a $$1) {
-      return Collections.emptyList();
-   }
-
-   @Override
-   protected eol a(dlf $$0, cut $$1, hz $$2, enx $$3) {
-      return eoi.a();
-   }
-
-   @Override
-   protected void b(dlf $$0, cvn $$1, hz $$2, dlf $$3, boolean $$4) {
-      if (this.a($$1, $$2, $$0)) {
-         $$1.a($$2, $$0.u().a(), this.c.a((cvq)$$1));
-      }
-   }
-
-   @Override
-   protected dlf a(dlf $$0, ie $$1, dlf $$2, cvo $$3, hz $$4, hz $$5) {
-      if ($$0.u().b() || $$2.u().b()) {
-         $$3.a($$4, $$0.u().a(), this.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected void a(dlf $$0, cvn $$1, hz $$2, cyo $$3, hz $$4, boolean $$5) {
-      if (this.a($$1, $$2, $$0)) {
-         $$1.a($$2, $$0.u().a(), this.c.a((cvq)$$1));
-      }
-   }
-
-   private boolean a(cvn $$0, hz $$1, dlf $$2) {
-      if (this.c.a(aue.b)) {
-         boolean $$3 = $$0.a_($$1.d()).a(cyq.dX);
-         UnmodifiableIterator var5 = e.iterator();
-
-         while (var5.hasNext()) {
-            ie $$4 = (ie)var5.next();
-            hz $$5 = $$1.a($$4.g());
-            if ($$0.b_($$5).a(aue.a)) {
-               cyo $$6 = $$0.b_($$1).b() ? cyq.co : cyq.m;
-               $$0.b($$1, $$6.o());
-               this.a($$0, $$1);
-               return false;
-            }
-
-            if ($$3 && $$0.a_($$5).a(cyq.mW)) {
-               $$0.b($$1, cyq.dY.o());
-               this.a($$0, $$1);
-               return false;
-            }
-         }
-      }
-
-      return true;
-   }
-
-   private void a(cvo $$0, hz $$1) {
-      $$0.c(1501, $$1, 0);
-   }
-
-   @Override
-   protected void a(dlg.a<cyo, dlf> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public coz a(@Nullable chh $$0, cvo $$1, hz $$2, dlf $$3) {
-      if ($$3.c(b) == 0) {
-         $$1.a($$2, cyq.a.o(), 11);
-         return new coz(this.c.a());
-      } else {
-         return coz.h;
-      }
-   }
-
-   @Override
-   public Optional<atj> ax_() {
-      return this.c.j();
-   }
+public class ddd {
+   public static final int a = 1000;
+   public static final int b = 1001;
+   public static final int c = 1002;
+   public static final int d = 1003;
+   public static final int e = 1004;
+   public static final int f = 1009;
+   public static final int g = 1010;
+   public static final int h = 1011;
+   public static final int i = 1015;
+   public static final int j = 1016;
+   public static final int k = 1017;
+   public static final int l = 1018;
+   public static final int m = 1019;
+   public static final int n = 1020;
+   public static final int o = 1021;
+   public static final int p = 1022;
+   public static final int q = 1023;
+   public static final int r = 1024;
+   public static final int s = 1025;
+   public static final int t = 1026;
+   public static final int u = 1027;
+   public static final int v = 1028;
+   public static final int w = 1029;
+   public static final int x = 1030;
+   public static final int y = 1031;
+   public static final int z = 1032;
+   public static final int A = 1033;
+   public static final int B = 1034;
+   public static final int C = 1035;
+   public static final int D = 1038;
+   public static final int E = 1039;
+   public static final int F = 1040;
+   public static final int G = 1041;
+   public static final int H = 1042;
+   public static final int I = 1043;
+   public static final int J = 1044;
+   public static final int K = 1045;
+   public static final int L = 1046;
+   public static final int M = 1047;
+   public static final int N = 1048;
+   public static final int O = 1049;
+   public static final int P = 1050;
+   public static final int Q = 1500;
+   public static final int R = 1501;
+   public static final int S = 1502;
+   public static final int T = 1503;
+   public static final int U = 1504;
+   public static final int V = 1505;
+   public static final int W = 2000;
+   public static final int X = 2001;
+   public static final int Y = 2002;
+   public static final int Z = 2003;
+   public static final int aa = 2004;
+   public static final int ab = 2006;
+   public static final int ac = 2007;
+   public static final int ad = 2008;
+   public static final int ae = 2009;
+   public static final int af = 2010;
+   public static final int ag = 2011;
+   public static final int ah = 2012;
+   public static final int ai = 3000;
+   public static final int aj = 3001;
+   public static final int ak = 3002;
+   public static final int al = 3003;
+   public static final int am = 3004;
+   public static final int an = 3005;
+   public static final int ao = 3006;
+   public static final int ap = 3007;
+   public static final int aq = 3008;
+   public static final int ar = 3009;
+   public static final int as = 3011;
+   public static final int at = 3012;
+   public static final int au = 3013;
+   public static final int av = 3014;
 }

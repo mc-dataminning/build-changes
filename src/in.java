@@ -15,9 +15,9 @@ public interface in<T> extends Iterable<ij<T>> {
 
    int b();
 
-   Either<auo<T>, List<ij<T>>> c();
+   Either<aup<T>, List<ij<T>>> c();
 
-   Optional<ij<T>> a(awo var1);
+   Optional<ij<T>> a(awp var1);
 
    ij<T> a(int var1);
 
@@ -25,11 +25,11 @@ public interface in<T> extends Iterable<ij<T>> {
 
    boolean a(im<T> var1);
 
-   Optional<auo<T>> d();
+   Optional<aup<T>> d();
 
    @Deprecated
    @VisibleForTesting
-   static <T> in.c<T> a(im<T> $$0, auo<T> $$1) {
+   static <T> in.c<T> a(im<T> $$0, aup<T> $$1) {
       return new in.c<>($$0, $$1);
    }
 
@@ -66,12 +66,12 @@ public interface in<T> extends Iterable<ij<T>> {
       }
 
       @Override
-      public Either<auo<T>, List<ij<T>>> c() {
+      public Either<aup<T>, List<ij<T>>> c() {
          return Either.right(this.a);
       }
 
       @Override
-      public Optional<auo<T>> d() {
+      public Optional<aup<T>> d() {
          return Optional.empty();
       }
 
@@ -114,7 +114,7 @@ public interface in<T> extends Iterable<ij<T>> {
       }
 
       @Override
-      public Optional<ij<T>> a(awo $$0) {
+      public Optional<ij<T>> a(awp $$0) {
          return ac.b(this.e(), $$0);
       }
 
@@ -131,10 +131,10 @@ public interface in<T> extends Iterable<ij<T>> {
 
    public static class c<T> extends in.b<T> {
       private final im<T> a;
-      private final auo<T> b;
+      private final aup<T> b;
       private List<ij<T>> c = List.of();
 
-      c(im<T> $$0, auo<T> $$1) {
+      c(im<T> $$0, aup<T> $$1) {
          this.a = $$0;
          this.b = $$1;
       }
@@ -143,7 +143,7 @@ public interface in<T> extends Iterable<ij<T>> {
          this.c = List.copyOf($$0);
       }
 
-      public auo<T> f() {
+      public aup<T> f() {
          return this.b;
       }
 
@@ -153,12 +153,12 @@ public interface in<T> extends Iterable<ij<T>> {
       }
 
       @Override
-      public Either<auo<T>, List<ij<T>>> c() {
+      public Either<aup<T>, List<ij<T>>> c() {
          return Either.left(this.b);
       }
 
       @Override
-      public Optional<auo<T>> d() {
+      public Optional<aup<T>> d() {
          return Optional.of(this.b);
       }
 

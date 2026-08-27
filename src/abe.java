@@ -1,4 +1,4 @@
-public record abe(cou b, int c) implements xx<aag> {
+public record abe(coy b, int c) implements xx<aag> {
    public static final xo<vb, abe> a = xo.a(xm.a(kg.F), abe::b, xm.d, abe::e, abe::new);
 
    @Override

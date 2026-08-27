@@ -1,53 +1,100 @@
-public class fxi implements fxl<dip> {
-   private final fpc a;
-   private final fpc b;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.Collection;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-   public fxi(fxm.a $$0) {
-      this.a = $$0.a(fpb.j);
-      this.b = $$0.a(fpb.i);
+public class fxi implements gjm {
+   private final dlk<cys, dlj> a;
+   private final List<fxk> b;
+
+   public fxi(dlk<cys, dlj> $$0, List<fxk> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static fpi b() {
-      fpk $$0 = new fpk();
-      fpl $$1 = $$0.a();
-      $$1.a("main", fph.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fpe.a);
-      $$1.a("left_leg", fph.c().a(50, 6).a(0.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fpe.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI / 2)));
-      $$1.a("right_leg", fph.c().a(50, 18).a(-16.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fpe.b((float) (Math.PI / 2), 0.0F, (float) Math.PI));
-      return fpi.a($$0, 64, 64);
+   public List<fxk> a() {
+      return this.b;
    }
 
-   public static fpi c() {
-      fpk $$0 = new fpk();
-      fpl $$1 = $$0.a();
-      $$1.a("main", fph.c().a(0, 22).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fpe.a);
-      $$1.a("left_leg", fph.c().a(50, 0).a(0.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fpe.b((float) (Math.PI / 2), 0.0F, 0.0F));
-      $$1.a("right_leg", fph.c().a(50, 12).a(-16.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fpe.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 2.0)));
-      return fpi.a($$0, 64, 64);
+   public Set<fxd> b() {
+      Set<fxd> $$0 = Sets.newHashSet();
+
+      for (fxk $$1 : this.b) {
+         $$0.add($$1.a());
+      }
+
+      return $$0;
    }
 
-   public void a(dip $$0, float $$1, esa $$2, fvl $$3, int $$4, int $$5) {
-      giw $$6 = fwa.p[$$0.d().a()];
-      cvn $$7 = $$0.i();
-      if ($$7 != null) {
-         dlf $$8 = $$0.r();
-         dav.c<? extends dip> $$9 = dav.a(div.y, cyh::h, cyh::g, czr.c, $$8, $$7, $$0.aE_(), ($$0x, $$1x) -> false);
-         int $$10 = $$9.apply(new fxo<>()).get($$4);
-         this.a($$2, $$3, $$8.c(cyh.b) == dls.a ? this.a : this.b, $$8.c(cyh.aE), $$6, $$10, $$5, false);
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
       } else {
-         this.a($$2, $$3, this.a, ie.d, $$6, $$4, $$5, false);
-         this.a($$2, $$3, this.b, ie.d, $$6, $$4, $$5, true);
+         return !($$0 instanceof fxi $$1) ? false : Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b);
       }
    }
 
-   private void a(esa $$0, fvl $$1, fpc $$2, ie $$3, giw $$4, int $$5, int $$6, boolean $$7) {
-      $$0.a();
-      $$0.a(0.0F, 0.5625F, $$7 ? -1.0F : 0.0F);
-      $$0.a(a.b.rotationDegrees(90.0F));
-      $$0.a(0.5F, 0.5F, 0.5F);
-      $$0.a(a.f.rotationDegrees(180.0F + $$3.p()));
-      $$0.a(-0.5F, -0.5F, -0.5F);
-      ese $$8 = $$4.a($$1, fvt::c);
-      $$2.a($$0, $$8, $$5, $$6);
-      $$0.b();
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.a, this.b);
+   }
+
+   @Override
+   public Collection<aiy> f() {
+      return this.a().stream().flatMap($$0 -> $$0.a().f().stream()).collect(Collectors.toSet());
+   }
+
+   @Override
+   public void a(Function<aiy, gjm> $$0) {
+      this.a().forEach($$1 -> $$1.a().a($$0));
+   }
+
+   @Nullable
+   @Override
+   public gjb a(gjf $$0, Function<gje, ghb> $$1, gjj $$2, aiy $$3) {
+      gjk.a $$4 = new gjk.a();
+
+      for (fxk $$5 : this.a()) {
+         gjb $$6 = $$5.a().a($$0, $$1, $$2, $$3);
+         if ($$6 != null) {
+            $$4.a($$5.a(this.a), $$6);
+         }
+      }
+
+      return $$4.a();
+   }
+
+   public static class a implements JsonDeserializer<fxi> {
+      private final fww.a a;
+
+      public a(fww.a $$0) {
+         this.a = $$0;
+      }
+
+      public fxi a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         return new fxi(this.a.a(), this.a($$2, $$0.getAsJsonArray()));
+      }
+
+      private List<fxk> a(JsonDeserializationContext $$0, JsonArray $$1) {
+         List<fxk> $$2 = Lists.newArrayList();
+
+         for (JsonElement $$3 : $$1) {
+            $$2.add((fxk)$$0.deserialize($$3, fxk.class));
+         }
+
+         return $$2;
+      }
    }
 }

@@ -1,106 +1,153 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Pair;
+import java.util.Map;
 
-public class atp extends atn {
-   public static final String c = "recipeBook";
-   private static final Logger d = LogUtils.getLogger();
+public final class atp {
+   private static final Map<clt, Pair<String, String>> a = ImmutableMap.of(
+      clt.a,
+      Pair.of("isGuiOpen", "isFilteringCraftable"),
+      clt.b,
+      Pair.of("isFurnaceGuiOpen", "isFurnaceFilteringCraftable"),
+      clt.c,
+      Pair.of("isBlastingFurnaceGuiOpen", "isBlastingFurnaceFilteringCraftable"),
+      clt.d,
+      Pair.of("isSmokerGuiOpen", "isSmokerFilteringCraftable")
+   );
+   private final Map<clt, atp.a> b;
 
-   public int a(Collection<csd<?>> $$0, aow $$1) {
-      List<aiy> $$2 = Lists.newArrayList();
-      int $$3 = 0;
+   private atp(Map<clt, atp.a> $$0) {
+      this.b = $$0;
+   }
 
-      for (csd<?> $$4 : $$0) {
-         aiy $$5 = $$4.a();
-         if (!this.a.contains($$5) && !$$4.b().as_()) {
-            this.a($$5);
-            this.d($$5);
-            $$2.add($$5);
-            am.g.a($$1, $$4);
-            $$3++;
+   public atp() {
+      this(ac.a(Maps.newEnumMap(clt.class), $$0 -> {
+         for (clt $$1 : clt.values()) {
+            $$0.put($$1, new atp.a(false, false));
          }
-      }
-
-      if ($$2.size() > 0) {
-         this.a(aco.a.b, $$1, $$2);
-      }
-
-      return $$3;
+      }));
    }
 
-   public int b(Collection<csd<?>> $$0, aow $$1) {
-      List<aiy> $$2 = Lists.newArrayList();
-      int $$3 = 0;
+   public boolean a(clt $$0) {
+      return this.b.get($$0).a;
+   }
 
-      for (csd<?> $$4 : $$0) {
-         aiy $$5 = $$4.a();
-         if (this.a.contains($$5)) {
-            this.c($$5);
-            $$2.add($$5);
-            $$3++;
-         }
+   public void a(clt $$0, boolean $$1) {
+      this.b.get($$0).a = $$1;
+   }
+
+   public boolean b(clt $$0) {
+      return this.b.get($$0).b;
+   }
+
+   public void b(clt $$0, boolean $$1) {
+      this.b.get($$0).b = $$1;
+   }
+
+   public static atp a(uq $$0) {
+      Map<clt, atp.a> $$1 = Maps.newEnumMap(clt.class);
+
+      for (clt $$2 : clt.values()) {
+         boolean $$3 = $$0.readBoolean();
+         boolean $$4 = $$0.readBoolean();
+         $$1.put($$2, new atp.a($$3, $$4));
       }
 
-      this.a(aco.a.c, $$1, $$2);
-      return $$3;
+      return new atp($$1);
    }
 
-   private void a(aco.a $$0, aow $$1, List<aiy> $$2) {
-      $$1.d.b(new aco($$0, $$2, Collections.emptyList(), this.a()));
-   }
-
-   public sw b() {
-      sw $$0 = new sw();
-      this.a().b($$0);
-      tc $$1 = new tc();
-
-      for (aiy $$2 : this.a) {
-         $$1.add(tr.a($$2.toString()));
-      }
-
-      $$0.a("recipes", $$1);
-      tc $$3 = new tc();
-
-      for (aiy $$4 : this.b) {
-         $$3.add(tr.a($$4.toString()));
-      }
-
-      $$0.a("toBeDisplayed", $$3);
-      return $$0;
-   }
-
-   public void a(sw $$0, cse $$1) {
-      this.a(ato.a($$0));
-      tc $$2 = $$0.c("recipes", 8);
-      this.a($$2, this::a, $$1);
-      tc $$3 = $$0.c("toBeDisplayed", 8);
-      this.a($$3, this::f, $$1);
-   }
-
-   private void a(tc $$0, Consumer<csd<?>> $$1, cse $$2) {
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         String $$4 = $$0.j($$3);
-
-         try {
-            aiy $$5 = new aiy($$4);
-            Optional<csd<?>> $$6 = $$2.a($$5);
-            if ($$6.isEmpty()) {
-               d.error("Tried to load unrecognized recipe: {} removed now.", $$5);
-            } else {
-               $$1.accept($$6.get());
-            }
-         } catch (z var8) {
-            d.error("Tried to load improperly formatted recipe: {} removed now.", $$4);
+   public void b(uq $$0) {
+      for (clt $$1 : clt.values()) {
+         atp.a $$2 = this.b.get($$1);
+         if ($$2 == null) {
+            $$0.a(false);
+            $$0.a(false);
+         } else {
+            $$0.a($$2.a);
+            $$0.a($$2.b);
          }
       }
    }
 
-   public void a(aow $$0) {
-      $$0.d.b(new aco(aco.a.a, this.a, this.b, this.a()));
+   public static atp a(sw $$0) {
+      Map<clt, atp.a> $$1 = Maps.newEnumMap(clt.class);
+      a.forEach(($$2, $$3) -> {
+         boolean $$4 = $$0.q((String)$$3.getFirst());
+         boolean $$5 = $$0.q((String)$$3.getSecond());
+         $$1.put($$2, new atp.a($$4, $$5));
+      });
+      return new atp($$1);
+   }
+
+   public void b(sw $$0) {
+      a.forEach(($$1, $$2) -> {
+         atp.a $$3 = this.b.get($$1);
+         $$0.a((String)$$2.getFirst(), $$3.a);
+         $$0.a((String)$$2.getSecond(), $$3.b);
+      });
+   }
+
+   public atp a() {
+      Map<clt, atp.a> $$0 = Maps.newEnumMap(clt.class);
+
+      for (clt $$1 : clt.values()) {
+         atp.a $$2 = this.b.get($$1);
+         $$0.put($$1, $$2.a());
+      }
+
+      return new atp($$0);
+   }
+
+   public void a(atp $$0) {
+      this.b.clear();
+
+      for (clt $$1 : clt.values()) {
+         atp.a $$2 = $$0.b.get($$1);
+         this.b.put($$1, $$2.a());
+      }
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 || $$0 instanceof atp && this.b.equals(((atp)$$0).b);
+   }
+
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
+   }
+
+   static final class a {
+      boolean a;
+      boolean b;
+
+      public a(boolean $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public atp.a a() {
+         return new atp.a(this.a, this.b);
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else {
+            return !($$0 instanceof atp.a $$1) ? false : this.a == $$1.a && this.b == $$1.b;
+         }
+      }
+
+      @Override
+      public int hashCode() {
+         int $$0 = this.a ? 1 : 0;
+         return 31 * $$0 + (this.b ? 1 : 0);
+      }
+
+      @Override
+      public String toString() {
+         return "[open=" + this.a + ", filtering=" + this.b + "]";
+      }
    }
 }

@@ -1,11 +1,10 @@
-public final class aue {
-   public static final auo<ego> a = a("water");
-   public static final auo<ego> b = a("lava");
+public class aue {
+   public static final aup<dzm> a = a("visible");
 
    private aue() {
    }
 
-   private static auo<ego> a(String $$0) {
-      return auo.a(kg.y, new aiy($$0));
+   private static aup<dzm> a(String $$0) {
+      return aup.a(kg.az, new aiy($$0));
    }
 }

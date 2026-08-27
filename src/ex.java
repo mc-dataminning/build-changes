@@ -38,7 +38,7 @@ public class ex<T> implements ArgumentType<ex.c<T>> {
          try {
             $$0.skip();
             aiy $$2 = aiy.a($$0);
-            return new ex.d<>(auo.a(this.b, $$2));
+            return new ex.d<>(aup.a(this.b, $$2));
          } catch (CommandSyntaxException var4) {
             $$0.setCursor($$1);
             throw var4;
@@ -94,7 +94,7 @@ public class ex<T> implements ArgumentType<ex.c<T>> {
 
    static record b<T>(aix<T> a) implements ex.c<T> {
       @Override
-      public Either<aix<T>, auo<T>> a() {
+      public Either<aix<T>, aup<T>> a() {
          return Either.left(this.a);
       }
 
@@ -118,16 +118,16 @@ public class ex<T> implements ArgumentType<ex.c<T>> {
    }
 
    public interface c<T> extends Predicate<ij<T>> {
-      Either<aix<T>, auo<T>> a();
+      Either<aix<T>, aup<T>> a();
 
       <E> Optional<ex.c<E>> a(aix<? extends iv<E>> var1);
 
       String b();
    }
 
-   static record d<T>(auo<T> a) implements ex.c<T> {
+   static record d<T>(aup<T> a) implements ex.c<T> {
       @Override
-      public Either<aix<T>, auo<T>> a() {
+      public Either<aix<T>, aup<T>> a() {
          return Either.right(this.a);
       }
 
@@ -145,7 +145,7 @@ public class ex<T> implements ArgumentType<ex.c<T>> {
          return "#" + this.a.b();
       }
 
-      public auo<T> c() {
+      public aup<T> c() {
          return this.a;
       }
    }

@@ -1,130 +1,114 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class czi extends dcj {
-   public static final MapCodec<czi> a = b(czi::new);
-   public static final dlz b = dcj.aE;
-   @Nullable
-   private dlk c;
-   @Nullable
-   private dlk d;
-   @Nullable
-   private dlk e;
-   @Nullable
-   private dlk f;
-   private static final Predicate<dlf> g = $$0 -> $$0 != null && ($$0.a(cyq.ee) || $$0.a(cyq.ef));
-
-   @Override
-   public MapCodec<? extends czi> a() {
-      return a;
-   }
-
-   protected czi(dle.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, ie.c));
-   }
+public class czi extends cxk {
+   public static final MapCodec<czi> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(kf.e.q().fieldOf("candle").forGetter($$0x -> $$0x.k), u()).apply($$0, czi::new)
+   );
+   public static final dma d = cxk.b;
+   protected static final float e = 1.0F;
+   protected static final eos f = cys.a(1.0, 0.0, 1.0, 15.0, 8.0, 15.0);
+   protected static final eos g = cys.a(7.0, 8.0, 7.0, 9.0, 14.0, 9.0);
+   protected static final eos h = eop.a(f, g);
+   private static final Map<czh, czi> i = Maps.newHashMap();
+   private static final Iterable<enz> j = ImmutableList.of(new enz(0.5, 1.0, 0.5));
+   private final czh k;
 
    @Override
-   protected void b(dlf $$0, cvn $$1, hz $$2, dlf $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2);
-      }
+   public MapCodec<czi> a() {
+      return c;
    }
 
-   public boolean a(cvq $$0, hz $$1) {
-      return this.b().a($$0, $$1) != null || this.s().a($$0, $$1) != null;
-   }
-
-   private void a(cvn $$0, hz $$1) {
-      dlk.b $$2 = this.g().a($$0, $$1);
-      if ($$2 != null) {
-         car $$3 = bnu.aQ.a($$0);
-         if ($$3 != null) {
-            a($$0, $$2, $$3, $$2.a(0, 2, 0).d());
-         }
+   protected czi(cys $$0, dli.d $$1) {
+      super($$1);
+      this.k(this.E.b().a(d, Boolean.valueOf(false)));
+      if ($$0 instanceof czh $$2) {
+         i.put($$2, this);
+         this.k = $$2;
       } else {
-         dlk.b $$4 = this.y().a($$0, $$1);
-         if ($$4 != null) {
-            caf $$5 = bnu.ae.a($$0);
-            if ($$5 != null) {
-               $$5.x(true);
-               a($$0, $$4, $$5, $$4.a(1, 2, 0).d());
-            }
-         }
-      }
-   }
-
-   private static void a(cvn $$0, dlk.b $$1, bno $$2, hz $$3) {
-      a($$0, $$1);
-      $$2.b((double)$$3.u() + 0.5, (double)$$3.v() + 0.05, (double)$$3.w() + 0.5, 0.0F, 0.0F);
-      $$0.b($$2);
-
-      for (aow $$4 : $$0.a(aow.class, $$2.cH().g(5.0))) {
-         am.o.a($$4, $$2);
-      }
-
-      b($$0, $$1);
-   }
-
-   public static void a(cvn $$0, dlk.b $$1) {
-      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
-         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
-            dlj $$4 = $$1.a($$2, $$3, 0);
-            $$0.a($$4.d(), cyq.a.o(), 2);
-            $$0.c(2001, $$4.d(), cyo.i($$4.a()));
-         }
-      }
-   }
-
-   public static void b(cvn $$0, dlk.b $$1) {
-      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
-         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
-            dlj $$4 = $$1.a($$2, $$3, 0);
-            $$0.b($$4.d(), cyq.a);
-         }
+         throw new IllegalArgumentException("Expected block to be of " + czh.class + " was " + $$0.getClass());
       }
    }
 
    @Override
-   public dlf a(crg $$0) {
-      return this.o().a(b, $$0.g().g());
+   protected Iterable<enz> b(dlj $$0) {
+      return j;
    }
 
    @Override
-   protected void a(dlg.a<cyo, dlf> $$0) {
-      $$0.a(b);
+   protected eos a(dlj $$0, cux $$1, hz $$2, eoe $$3) {
+      return h;
    }
 
-   private dlk b() {
-      if (this.c == null) {
-         this.c = dll.a().a(" ", "#", "#").a('#', dlj.a(dlo.a(cyq.dP))).b();
+   @Override
+   protected bly a(cpd $$0, dlj $$1, cvr $$2, hz $$3, chl $$4, blv $$5, env $$6) {
+      if ($$0.a(cpg.or) || $$0.a(cpg.tV)) {
+         return bly.e;
+      } else if (a($$6) && $$0.b() && $$1.c(d)) {
+         a($$4, $$1, $$2, $$3);
+         return bly.a($$2.B);
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       }
-
-      return this.c;
    }
 
-   private dlk g() {
-      if (this.d == null) {
-         this.d = dll.a().a("^", "#", "#").a('^', dlj.a(g)).a('#', dlj.a(dlo.a(cyq.dP))).b();
+   @Override
+   protected blw a(dlj $$0, cvr $$1, hz $$2, chl $$3, env $$4) {
+      blw $$5 = cze.a($$1, $$2, cyu.eg.o(), $$3);
+      if ($$5.a()) {
+         c($$0, $$1, $$2);
       }
 
-      return this.d;
+      return $$5;
    }
 
-   private dlk s() {
-      if (this.e == null) {
-         this.e = dll.a().a("~ ~", "###", "~#~").a('#', dlj.a(dlo.a(cyq.ci))).a('~', $$0 -> $$0.a().i()).b();
-      }
-
-      return this.e;
+   private static boolean a(env $$0) {
+      return $$0.e().d - (double)$$0.a().v() > 0.5;
    }
 
-   private dlk y() {
-      if (this.f == null) {
-         this.f = dll.a().a("~^~", "###", "~#~").a('^', dlj.a(g)).a('#', dlj.a(dlo.a(cyq.ci))).a('~', $$0 -> $$0.a().i()).b();
-      }
+   @Override
+   protected void a(dlk.a<cys, dlj> $$0) {
+      $$0.a(d);
+   }
 
-      return this.f;
+   @Override
+   public cpd a(cvu $$0, hz $$1, dlj $$2) {
+      return new cpd(cyu.eg);
+   }
+
+   @Override
+   protected dlj a(dlj $$0, ie $$1, dlj $$2, cvs $$3, hz $$4, hz $$5) {
+      return $$1 == ie.a && !$$0.a($$3, $$4) ? cyu.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected boolean a(dlj $$0, cvu $$1, hz $$2) {
+      return $$1.a_($$2.d()).e();
+   }
+
+   @Override
+   protected int a(dlj $$0, cvr $$1, hz $$2) {
+      return cze.d;
+   }
+
+   @Override
+   protected boolean d_(dlj $$0) {
+      return true;
+   }
+
+   @Override
+   protected boolean a(dlj $$0, cux $$1, hz $$2, ehm $$3) {
+      return false;
+   }
+
+   public static dlj a(czh $$0) {
+      return i.get($$0).o();
+   }
+
+   public static boolean g(dlj $$0) {
+      return $$0.a(aua.bj, $$1 -> $$1.b(d) && !$$0.c(d));
    }
 }

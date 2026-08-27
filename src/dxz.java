@@ -1,50 +1,40 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class dxz extends dyb {
-   public static final Codec<dxz> b = RecordCodecBuilder.create(
+public record dxz(in<cys> b, in<cys> c, dye d, int e, int f, float g) {
+   public static final Codec<dxz> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               avz.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
-               efs.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
-               avp.k.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
+               ix.a(kg.f).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
+               ix.a(kg.f).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
+               dye.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
+               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
             )
-            .and(b($$0))
             .apply($$0, dxz::new)
    );
-   private final avz<Integer> i;
-   private final efs.a j;
-   private final float k;
-   private final efs l;
 
-   public dxz(avz<Integer> $$0, efs.a $$1, float $$2, long $$3, efs.a $$4, float $$5, List<dlf> $$6) {
-      super($$3, $$4, $$5, $$6);
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = efs.b(new drn(new dqp($$3)), $$1);
+   public in<cys> a() {
+      return this.b;
    }
 
-   @Override
-   protected dxy<?> a() {
-      return dxy.e;
+   public in<cys> b() {
+      return this.c;
    }
 
-   @Override
-   public dlf a(awo $$0, hz $$1) {
-      double $$2 = this.a($$1);
-      int $$3 = (int)awh.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
-      List<dlf> $$4 = Lists.newArrayListWithCapacity($$3);
-
-      for (int $$5 = 0; $$5 < $$3; $$5++) {
-         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
-      }
-
-      return this.a($$4, $$1, (double)this.e);
+   public dye c() {
+      return this.d;
    }
 
-   protected double a(hz $$0) {
-      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
+   public int d() {
+      return this.e;
+   }
+
+   public int e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
    }
 }

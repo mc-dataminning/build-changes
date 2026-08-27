@@ -1,66 +1,43 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+public class euw extends gnd {
+   private static final vq a = vq.c("mco.client.incompatible.title");
+   private static final vq[] b = new vq[]{
+      vq.c("mco.client.incompatible.msg.line1"), vq.c("mco.client.incompatible.msg.line2"), vq.c("mco.client.incompatible.msg.line3")
+   };
+   private static final vq[] c = new vq[]{vq.c("mco.client.incompatible.msg.line1"), vq.c("mco.client.incompatible.msg.line2")};
+   private final ffl v;
 
-public class euw extends gmv {
-   static final vq b = vq.c("mco.warning");
-   static final vq c = vq.c("mco.info");
-   private final euw.a v;
-   private final vq w;
-   private final vq x;
-   protected final BooleanConsumer a;
-   private final boolean y;
-
-   public euw(BooleanConsumer $$0, euw.a $$1, vq $$2, vq $$3, boolean $$4) {
-      super(ewz.a);
-      this.a = $$0;
-      this.v = $$1;
-      this.w = $$2;
-      this.x = $$3;
-      this.y = $$4;
+   public euw(ffl $$0) {
+      super(a);
+      this.v = $$0;
    }
 
    @Override
    public void aQ_() {
-      if (this.y) {
-         this.d(ezh.a(vp.f, $$0 -> this.a.accept(true)).a(this.g / 2 - 105, g(8), 100, 20).a());
-         this.d(ezh.a(vp.g, $$0 -> this.a.accept(false)).a(this.g / 2 + 5, g(8), 100, 20).a());
-      } else {
-         this.d(ezh.a(vp.h, $$0 -> this.a.accept(true)).a(this.g / 2 - 50, g(8), 100, 20).a());
-      }
+      this.c(ezo.a(vp.k, $$0 -> this.f.a(this.v)).a(this.g / 2 - 100, g(12), 200, 20).a());
    }
 
    @Override
-   public vq i() {
-      return vp.b(this.v.d, this.w, this.x);
+   public void a(ezb $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, g(3), -65536);
+      vq[] $$4 = this.E();
+
+      for (int $$5 = 0; $$5 < $$4.length; $$5++) {
+         $$0.a(this.i, $$4[$$5], this.g / 2, g(5) + $$5 * 12, -1);
+      }
+   }
+
+   private vq[] E() {
+      return aa.b().g() ? c : b;
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.a.accept(false);
-         return true;
-      } else {
+      if ($$0 != 257 && $$0 != 335 && $$0 != 256) {
          return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public void a(eyu $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.v.d, this.g / 2, g(2), this.v.c);
-      $$0.a(this.i, this.w, this.g / 2, g(4), -1);
-      $$0.a(this.i, this.x, this.g / 2, g(6), -1);
-   }
-
-   public static enum a {
-      a(euw.b, -65536),
-      b(euw.c, 8226750);
-
-      public final int c;
-      public final vq d;
-
-      private a(vq $$0, int $$1) {
-         this.d = $$0;
-         this.c = $$1;
+      } else {
+         this.f.a(this.v);
+         return true;
       }
    }
 }

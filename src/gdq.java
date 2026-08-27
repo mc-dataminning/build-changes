@@ -1,25 +1,41 @@
-public class gdq extends gar<cin> {
-   private static final aiy a = new aiy("textures/entity/projectiles/wind_charge.png");
-   private final fop f;
+public class gdq extends gcg<cax, fma<cax>> {
+   private final fma<cax> a = this.a();
+   private final fma<cax> i;
+   private static final aiy j = new aiy("textures/entity/fish/tropical_a.png");
+   private static final aiy k = new aiy("textures/entity/fish/tropical_b.png");
 
-   public gdq(gas.a $$0) {
-      super($$0);
-      this.f = new fop($$0.a(fpb.bP));
+   public gdq(gba.a $$0) {
+      super($$0, new foo<>($$0.a(fpi.bH)), 0.15F);
+      this.i = new fop<>($$0.a(fpi.bF));
+      this.a(new gfv(this, $$0.f()));
    }
 
-   public void a(cin $$0, float $$1, float $$2, esa $$3, fvl $$4, int $$5) {
-      float $$6 = (float)$$0.ag + $$2;
-      ese $$7 = $$4.getBuffer(fvt.a(a, this.a($$6) % 1.0F, 0.0F));
-      this.f.a($$0, 0.0F, 0.0F, $$6, 0.0F, 0.0F);
-      this.f.a($$3, $$7, $$5, ggk.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   public aiy a(cax $$0) {
+      return switch ($$0.gr().a()) {
+         case a -> j;
+         case b -> k;
+      };
+   }
+
+   public void a(cax $$0, float $$1, float $$2, esh $$3, fvt $$4, int $$5) {
+      fma<cax> $$6 = switch ($$0.gr().a()) {
+         case a -> this.a;
+         case b -> this.i;
+      };
+      this.f = $$6;
+      float[] $$7 = $$0.gp().d();
+      $$6.a($$7[0], $$7[1], $$7[2]);
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      $$6.a(1.0F, 1.0F, 1.0F);
    }
 
-   protected float a(float $$0) {
-      return $$0 * 0.03F;
-   }
-
-   public aiy a(cin $$0) {
-      return a;
+   protected void a(cax $$0, esh $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      float $$6 = 4.3F * awi.a(0.6F * $$2);
+      $$1.a(a.d.rotationDegrees($$6));
+      if (!$$0.aZ()) {
+         $$1.a(0.2F, 0.1F, 0.0F);
+         $$1.a(a.f.rotationDegrees(90.0F));
+      }
    }
 }

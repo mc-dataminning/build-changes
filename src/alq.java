@@ -11,14 +11,14 @@ public class alq {
    public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("op").requires($$0x -> $$0x.c(3))).then(dv.a("targets", ej.a()).suggests(($$0x, $$1) -> {
-            asn $$2 = ((du)$$0x.getSource()).l().ae();
+            aso $$2 = ((du)$$0x.getSource()).l().ag();
             return dz.b($$2.t().stream().filter($$1x -> !$$2.f($$1x.fS())).map($$0xx -> $$0xx.fS().getName()), $$1);
          }).executes($$0x -> a((du)$$0x.getSource(), ej.a($$0x, "targets"))))
       );
    }
 
    private static int a(du $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      asn $$2 = $$0.l().ae();
+      aso $$2 = $$0.l().ag();
       int $$3 = 0;
 
       for (GameProfile $$4 : $$1) {

@@ -1,5 +1,17 @@
-public class fdh {
-   public static boolean a(int $$0) {
-      return $$0 == 257 || $$0 == 32 || $$0 == 335;
+public interface fdh extends fay, fdk {
+   fdh.a s();
+
+   default boolean A() {
+      return true;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
+
+      public boolean a() {
+         return this == c;
+      }
    }
 }

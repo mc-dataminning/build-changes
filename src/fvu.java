@@ -1,35 +1,125 @@
-public class fvu {
-   private final long[] a;
-   private int b;
-   private int c;
+import java.util.Optional;
 
-   public fvu(int $$0) {
-      this.a = new long[$$0];
+public class fvu implements fvt {
+   private final fvt.a a;
+   private final fvt.a b = fvt.a(new esc(1536));
+   private int c = 255;
+   private int d = 255;
+   private int e = 255;
+   private int f = 255;
+
+   public fvu(fvt.a $$0) {
+      this.a = $$0;
    }
 
-   public long a(long $$0) {
-      if (this.b < this.a.length) {
-         this.b++;
-      }
-
-      this.a[this.c] = $$0;
-      this.c = (this.c + 1) % this.a.length;
-      long $$1 = Long.MAX_VALUE;
-      long $$2 = Long.MIN_VALUE;
-      long $$3 = 0L;
-
-      for (int $$4 = 0; $$4 < this.b; $$4++) {
-         long $$5 = this.a[$$4];
-         $$3 += $$5;
-         $$1 = Math.min($$1, $$5);
-         $$2 = Math.max($$2, $$5);
-      }
-
-      if (this.b > 2) {
-         $$3 -= $$1 + $$2;
-         return $$3 / (long)(this.b - 2);
+   @Override
+   public esl getBuffer(fwb $$0) {
+      if ($$0.K()) {
+         esl $$1 = this.b.getBuffer($$0);
+         return new fvu.a($$1, this.c, this.d, this.e, this.f);
       } else {
-         return $$3 > 0L ? (long)this.b / $$3 : 0L;
+         esl $$2 = this.a.getBuffer($$0);
+         Optional<fwb> $$3 = $$0.J();
+         if ($$3.isPresent()) {
+            esl $$4 = this.b.getBuffer($$3.get());
+            fvu.a $$5 = new fvu.a($$4, this.c, this.d, this.e, this.f);
+            return eso.a($$5, $$2);
+         } else {
+            return $$2;
+         }
+      }
+   }
+
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+   }
+
+   public void a() {
+      this.b.b();
+   }
+
+   static class a extends esg {
+      private final esl f;
+      private double g;
+      private double h;
+      private double i;
+      private float j;
+      private float k;
+
+      a(esl $$0, int $$1, int $$2, int $$3, int $$4) {
+         this.f = $$0;
+         super.b($$1, $$2, $$3, $$4);
+      }
+
+      @Override
+      public void b(int $$0, int $$1, int $$2, int $$3) {
+      }
+
+      @Override
+      public void l() {
+      }
+
+      @Override
+      public esl a(double $$0, double $$1, double $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
+         return this;
+      }
+
+      @Override
+      public esl a(int $$0, int $$1, int $$2, int $$3) {
+         return this;
+      }
+
+      @Override
+      public esl a(float $$0, float $$1) {
+         this.j = $$0;
+         this.k = $$1;
+         return this;
+      }
+
+      @Override
+      public esl a(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public esl b(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public esl a(float $$0, float $$1, float $$2) {
+         return this;
+      }
+
+      @Override
+      public void a(
+         float $$0,
+         float $$1,
+         float $$2,
+         float $$3,
+         float $$4,
+         float $$5,
+         float $$6,
+         float $$7,
+         float $$8,
+         int $$9,
+         int $$10,
+         float $$11,
+         float $$12,
+         float $$13
+      ) {
+         this.f.a((double)$$0, (double)$$1, (double)$$2).a(this.b, this.c, this.d, this.e).a($$7, $$8).e();
+      }
+
+      @Override
+      public void e() {
+         this.f.a(this.g, this.h, this.i).a(this.b, this.c, this.d, this.e).a(this.j, this.k).e();
       }
    }
 }

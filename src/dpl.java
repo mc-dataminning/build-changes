@@ -1,35 +1,15 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+public interface dpl<T> {
+   void g(T var1);
 
-public class dpl implements dpt {
-   public static final Codec<dpl> a = RecordCodecBuilder.create($$0 -> $$0.group(hz.a.fieldOf("pos").forGetter($$0x -> $$0x.e)).apply($$0, dpl::new));
-   public static final xo<vb, dpl> b = xo.a(hz.b, $$0 -> $$0.e, dpl::new);
-   private final hz e;
+   void f(T var1);
 
-   public dpl(hz $$0) {
-      this.e = $$0;
-   }
+   void e(T var1);
 
-   @Override
-   public Optional<ens> a(cvn $$0) {
-      return Optional.of(ens.b(this.e));
-   }
+   void d(T var1);
 
-   @Override
-   public dpu<dpl> a() {
-      return dpu.a;
-   }
+   void c(T var1);
 
-   public static class a implements dpu<dpl> {
-      @Override
-      public Codec<dpl> a() {
-         return dpl.a;
-      }
+   void b(T var1);
 
-      @Override
-      public xo<vb, dpl> b() {
-         return dpl.b;
-      }
-   }
+   void a(T var1);
 }

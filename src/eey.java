@@ -1,9 +1,9 @@
 import com.mojang.serialization.Codec;
 
 public abstract class eey {
-   public static final Codec<eey> c = kf.o.q().dispatch("predicate_type", eey::a, eez::codec);
+   public static final Codec<eey> c = kf.q.q().dispatch("predicate_type", eey::a, eez::codec);
 
-   public abstract boolean a(dlf var1, awo var2);
+   public abstract boolean a(hz var1, hz var2, hz var3, awp var4);
 
    protected abstract eez<?> a();
 }

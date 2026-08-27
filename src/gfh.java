@@ -1,26 +1,25 @@
-public class gfh<T extends bog> extends gfd<T, fnz<T>> {
-   private final fmb<T> a;
+public class gfh extends gfl<cam, fnh<cam>> {
+   private final fvp a;
 
-   public gfh(gcn<T, fnz<T>> $$0, foy $$1) {
+   public gfh(gcv<cam, fnh<cam>> $$0, fvp $$1) {
       super($$0);
-      this.a = new fnz<>($$1.a(fpb.bp));
+      this.a = $$1;
    }
 
-   public void a(esa $$0, fvl $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      exh $$10 = exh.O();
-      boolean $$11 = $$10.b($$3) && $$3.ce();
-      if (!$$3.ce() || $$11) {
-         ese $$12;
-         if ($$11) {
-            $$12 = $$1.getBuffer(fvt.r(this.a($$3)));
-         } else {
-            $$12 = $$1.getBuffer(fvt.i(this.a($$3)));
+   public void a(esh $$0, fvt $$1, int $$2, cam $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      cpd $$10 = $$3.c(bnx.a);
+      if ($$3.A() && !$$3.gy()) {
+         float $$11 = -0.6F;
+         float $$12 = 1.4F;
+         if ($$3.gm()) {
+            $$11 -= 0.2F * awi.a($$7 * 0.6F) + 0.2F;
+            $$12 -= 0.09F * awi.a($$7 * 0.6F);
          }
 
-         this.c().a(this.a);
-         this.a.a($$3, $$4, $$5, $$6);
-         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
-         this.a.a($$0, $$12, $$2, gbt.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
+         $$0.a();
+         $$0.a(0.1F, $$12, $$11);
+         this.a.a($$3, $$10, cpa.h, false, $$0, $$1, $$2);
+         $$0.b();
       }
    }
 }

@@ -8,35 +8,35 @@ import java.util.Map;
 import java.util.function.ToIntFunction;
 
 public class amr {
-   private static final Map<Pair<cmk, bnv>, cou> a = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(Pair.of(cml.b, bnv.f), cpc.pB);
-      $$0.put(Pair.of(cml.b, bnv.e), cpc.pC);
-      $$0.put(Pair.of(cml.b, bnv.d), cpc.pD);
-      $$0.put(Pair.of(cml.b, bnv.c), cpc.pE);
-      $$0.put(Pair.of(cml.c, bnv.f), cpc.pF);
-      $$0.put(Pair.of(cml.c, bnv.e), cpc.pG);
-      $$0.put(Pair.of(cml.c, bnv.d), cpc.pH);
-      $$0.put(Pair.of(cml.c, bnv.c), cpc.pI);
-      $$0.put(Pair.of(cml.d, bnv.f), cpc.pN);
-      $$0.put(Pair.of(cml.d, bnv.e), cpc.pO);
-      $$0.put(Pair.of(cml.d, bnv.d), cpc.pP);
-      $$0.put(Pair.of(cml.d, bnv.c), cpc.pQ);
-      $$0.put(Pair.of(cml.g, bnv.f), cpc.pR);
-      $$0.put(Pair.of(cml.g, bnv.e), cpc.pS);
-      $$0.put(Pair.of(cml.g, bnv.d), cpc.pT);
-      $$0.put(Pair.of(cml.g, bnv.c), cpc.pU);
-      $$0.put(Pair.of(cml.e, bnv.f), cpc.pJ);
-      $$0.put(Pair.of(cml.e, bnv.e), cpc.pK);
-      $$0.put(Pair.of(cml.e, bnv.d), cpc.pL);
-      $$0.put(Pair.of(cml.e, bnv.c), cpc.pM);
-      $$0.put(Pair.of(cml.f, bnv.f), cpc.on);
+   private static final Map<Pair<cmo, bnx>, coy> a = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(Pair.of(cmp.b, bnx.f), cpg.pB);
+      $$0.put(Pair.of(cmp.b, bnx.e), cpg.pC);
+      $$0.put(Pair.of(cmp.b, bnx.d), cpg.pD);
+      $$0.put(Pair.of(cmp.b, bnx.c), cpg.pE);
+      $$0.put(Pair.of(cmp.c, bnx.f), cpg.pF);
+      $$0.put(Pair.of(cmp.c, bnx.e), cpg.pG);
+      $$0.put(Pair.of(cmp.c, bnx.d), cpg.pH);
+      $$0.put(Pair.of(cmp.c, bnx.c), cpg.pI);
+      $$0.put(Pair.of(cmp.d, bnx.f), cpg.pN);
+      $$0.put(Pair.of(cmp.d, bnx.e), cpg.pO);
+      $$0.put(Pair.of(cmp.d, bnx.d), cpg.pP);
+      $$0.put(Pair.of(cmp.d, bnx.c), cpg.pQ);
+      $$0.put(Pair.of(cmp.g, bnx.f), cpg.pR);
+      $$0.put(Pair.of(cmp.g, bnx.e), cpg.pS);
+      $$0.put(Pair.of(cmp.g, bnx.d), cpg.pT);
+      $$0.put(Pair.of(cmp.g, bnx.c), cpg.pU);
+      $$0.put(Pair.of(cmp.e, bnx.f), cpg.pJ);
+      $$0.put(Pair.of(cmp.e, bnx.e), cpg.pK);
+      $$0.put(Pair.of(cmp.e, bnx.d), cpg.pL);
+      $$0.put(Pair.of(cmp.e, bnx.c), cpg.pM);
+      $$0.put(Pair.of(cmp.f, bnx.f), cpg.on);
    });
-   private static final List<aix<crd>> b = List.of(
-      cre.a, cre.b, cre.c, cre.d, cre.e, cre.f, cre.g, cre.h, cre.i, cre.j, cre.k, cre.l, cre.m, cre.n, cre.o, cre.p
+   private static final List<aix<crh>> b = List.of(
+      cri.a, cri.b, cri.c, cri.d, cri.e, cri.f, cri.g, cri.h, cri.i, cri.j, cri.k, cri.l, cri.m, cri.n, cri.o, cri.p
    );
-   private static final List<aix<crb>> c = List.of(crc.a, crc.b, crc.c, crc.d, crc.e, crc.f, crc.g, crc.h, crc.i, crc.j);
-   private static final ToIntFunction<aix<crd>> d = ac.e(b);
-   private static final ToIntFunction<aix<crb>> e = ac.e(c);
+   private static final List<aix<crf>> c = List.of(crg.a, crg.b, crg.c, crg.d, crg.e, crg.f, crg.g, crg.h, crg.i, crg.j);
+   private static final ToIntFunction<aix<crh>> d = ac.e(b);
+   private static final ToIntFunction<aix<crf>> e = ac.e(c);
 
    public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
@@ -45,43 +45,43 @@ public class amr {
       );
    }
 
-   private static int a(du $$0, chh $$1) {
-      cvn $$2 = $$1.dM();
-      is<cra> $$3 = is.a();
-      iv<crd> $$4 = $$2.I_().d(kg.aJ);
-      iv<crb> $$5 = $$2.I_().d(kg.aI);
+   private static int a(du $$0, chl $$1) {
+      cvr $$2 = $$1.dM();
+      is<cre> $$3 = is.a();
+      iv<crh> $$4 = $$2.I_().d(kg.aJ);
+      iv<crf> $$5 = $$2.I_().d(kg.aI);
       $$4.s()
          .sorted(Comparator.comparing($$1x -> d.applyAsInt($$4.d($$1x).orElse(null))))
          .forEachOrdered(
             $$3x -> $$5.s()
                   .sorted(Comparator.comparing($$1xx -> e.applyAsInt($$5.d($$1xx).orElse(null))))
-                  .forEachOrdered($$4x -> $$3.add(new cra($$5.e($$4x), $$4.e($$3x))))
+                  .forEachOrdered($$4x -> $$3.add(new cre($$5.e($$4x), $$4.e($$3x))))
          );
       hz $$6 = $$1.dm().a($$1.cE(), 5);
-      int $$7 = cml.values().length - 1;
+      int $$7 = cmp.values().length - 1;
       double $$8 = 3.0;
       int $$9 = 0;
       int $$10 = 0;
 
-      for (cra $$11 : $$3) {
-         for (cmk $$12 : cml.values()) {
-            if ($$12 != cml.a) {
+      for (cre $$11 : $$3) {
+         for (cmo $$12 : cmp.values()) {
+            if ($$12 != cmp.a) {
                double $$13 = (double)$$6.u() + 0.5 - (double)($$9 % $$5.b()) * 3.0;
                double $$14 = (double)$$6.v() + 0.5 + (double)($$10 % $$7) * 3.0;
                double $$15 = (double)$$6.w() + 0.5 + (double)($$9 / $$5.b() * 10);
-               cdi $$16 = new cdi($$2, $$13, $$14, $$15);
+               cdm $$16 = new cdm($$2, $$13, $$14, $$15);
                $$16.r(180.0F);
                $$16.e(true);
 
-               for (bnv $$17 : bnv.values()) {
-                  cou $$18 = a.get(Pair.of($$12, $$17));
+               for (bnx $$17 : bnx.values()) {
+                  coy $$18 = a.get(Pair.of($$12, $$17));
                   if ($$18 != null) {
-                     coz $$19 = new coz($$18);
-                     cra.a($$2.I_(), $$19, $$11);
+                     cpd $$19 = new cpd($$18);
+                     cre.a($$2.I_(), $$19, $$11);
                      $$16.a($$17, $$19);
-                     if ($$18 instanceof cmj) {
-                        cmj $$20 = (cmj)$$18;
-                        if ($$20.d() == cml.f) {
+                     if ($$18 instanceof cmn) {
+                        cmn $$20 = (cmn)$$18;
+                        if ($$20.d() == cmp.f) {
                            $$16.b($$11.a().a().a($$11.b()).f().f(" ").b($$11.b().a().e()));
                            $$16.n(true);
                            continue;

@@ -1,76 +1,77 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Consumer;
 
-public class evl extends gmv {
-   private static final Logger a = LogUtils.getLogger();
-   private static final vq b = vq.c("mco.terms.title");
-   private static final vq c = vq.c("mco.terms.sentence.1");
-   private static final vq v = vp.a().b(vq.c("mco.terms.sentence.2").c(wn.a.c(true)));
-   private final ffe w;
-   private final eth x;
-   private boolean y;
+public class evl extends gnd {
+   private static final vq b = vq.c("mco.reset.world.seed");
+   public static final vq a = vq.c("mco.reset.world.generate");
+   private static final int c = 10;
+   private static final int v = 210;
+   private final fda w = new fda(this);
+   private final Consumer<ewh> x;
+   private ezx y;
+   private ewb z = ewb.a;
+   private boolean A = true;
+   private final Set<String> B = new HashSet<>();
+   private final vq C;
 
-   public evl(ffe $$0, eth $$1) {
-      super(b);
-      this.w = $$0;
-      this.x = $$1;
+   public evl(Consumer<ewh> $$0, vq $$1) {
+      super(a);
+      this.x = $$0;
+      this.C = $$1;
    }
 
    @Override
    public void aQ_() {
-      int $$0 = this.g / 4 - 2;
-      this.d(ezh.a(vq.c("mco.terms.buttons.agree"), $$0x -> this.E()).a(this.g / 4, g(12), $$0, 20).a());
-      this.d(ezh.a(vq.c("mco.terms.buttons.disagree"), $$0x -> this.f.a(this.w)).a(this.g / 2 + 4, g(12), $$0, 20).a());
+      this.y = new ezx(this.i, 210, 20, vq.c("mco.reset.world.seed"));
+      this.y.f(32);
+      this.w.a(new fav(this.e, this.i));
+      fde $$0 = this.w.c(fde.d()).a(10);
+      $$0.a(fcw.a(this.i, this.y, b));
+      $$0.a(ezv.a(ewb::a).a(ewb.values()).a(this.z).a(0, 0, 210, 20, vq.c("selectWorld.mapType"), ($$0x, $$1x) -> this.z = $$1x));
+      $$0.a(ezv.b(this.A).a(0, 0, 210, 20, vq.c("selectWorld.mapFeatures"), ($$0x, $$1x) -> this.A = $$1x));
+      this.a($$0);
+      fde $$1 = this.w.b(fde.e().a(10));
+      $$1.a(ezo.a(this.C, $$0x -> this.x.accept(this.E())).a());
+      $$1.a(ezo.a(vp.k, $$0x -> this.d()).a());
+      this.w.a($$1x -> {
+         ezm var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.f.a(this.w);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
+   protected void aH_() {
+      this.b(this.y);
    }
 
-   private void E() {
-      esq $$0 = esq.a();
+   private void a(fde $$0) {
+      arm $$1 = arp.c();
+      $$1.a();
+      $$0.a(ezo.a(vq.c("selectWorld.experiments"), $$1x -> this.f.a(new fke(this, $$1, $$0xx -> {
+            this.B.clear();
 
-      try {
-         $$0.j();
-         this.f.a(new eux(this.w, new ewg(this.w, this.x)));
-      } catch (eud var3) {
-         a.error("Couldn't agree to TOS", var3);
-      }
+            for (arj $$1xx : $$0xx.f()) {
+               if ($$1xx.j() == arn.d) {
+                  this.B.add($$1xx.f());
+               }
+            }
+
+            this.f.a(this);
+         }))).a(210).a());
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.y) {
-         this.f.o.a("https://aka.ms/MinecraftRealmsTerms");
-         ac.j().a("https://aka.ms/MinecraftRealmsTerms");
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
+   private ewh E() {
+      return new ewh(this.y.a(), this.z, this.A, this.B);
    }
 
    @Override
-   public vq i() {
-      return vp.a(super.i(), c).b(vp.v).b(v);
+   protected void c() {
+      this.w.a();
    }
 
    @Override
-   public void a(eyu $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 17, -1);
-      $$0.a(this.i, c, this.g / 2 - 120, g(5), -1, false);
-      int $$4 = this.i.a(c);
-      int $$5 = this.g / 2 - 121 + $$4;
-      int $$6 = g(5);
-      int $$7 = $$5 + this.i.a(v) + 1;
-      int $$8 = $$6 + 1 + 9;
-      this.y = $$5 <= $$1 && $$1 <= $$7 && $$6 <= $$2 && $$2 <= $$8;
-      $$0.a(this.i, v, this.g / 2 - 120 + $$4, g(5), this.y ? 7107012 : 3368635, false);
+   public void d() {
+      this.x.accept(null);
    }
 }

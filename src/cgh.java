@@ -2,14 +2,18 @@ import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
 
 public class cgh {
-   public static bpx<cfx> a() {
-      return btj.a((Function<btj.b<cfx>, ? extends App<btj.c<cfx>, btm<cfx>>>)($$0 -> $$0.group($$0.c(bxh.ad)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
-               if (!$$1.eU().b() && !$$1.eU().a(cpc.vo)) {
-                  cfy.a($$1, true);
-                  return true;
-               } else {
-                  return false;
-               }
-            })));
+   public static bqb<boi> a(int $$0) {
+      return btn.a(
+         (Function<btn.b<boi>, ? extends App<btn.c<boi>, btq<boi>>>)($$1 -> $$1.group($$1.b(bxl.L), $$1.c(bxl.ad), $$1.c(bxl.ag), $$1.c(bxl.af))
+               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$4x, $$5x, $$6) -> {
+                     cdw $$7 = $$1.b($$2);
+                     if (!cgc.a($$7.q())) {
+                        return false;
+                     } else {
+                        $$3.a(true, (long)$$0);
+                        return true;
+                     }
+                  }))
+      );
    }
 }

@@ -1,36 +1,69 @@
-import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
-public record emd(emp b, eiu c) implements elu {
-   public static final Codec<emd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(emq.a.fieldOf("value").forGetter(emd::c), eiu.a.fieldOf("range").forGetter(emd::d)).apply($$0, emd::new)
-   );
+public class emd {
+   private static final Codec<emb> t = kf.H.q().dispatch("condition", emb::b, emc::a);
+   public static final Codec<emb> a = avq.a((Supplier<Codec<emb>>)(() -> avq.e(t, elp.b)));
+   public static final emc b = a("inverted", ely.a);
+   public static final emc c = a("any_of", elq.a);
+   public static final emc d = a("all_of", elp.a);
+   public static final emc e = a("random_chance", emg.a);
+   public static final emc f = a("random_chance_with_looting", emh.a);
+   public static final emc g = a("entity_properties", eme.a);
+   public static final emc h = a("killed_by_player", emf.a);
+   public static final emc i = a("entity_scores", elw.a);
+   public static final emc j = a("block_state_property", ema.a);
+   public static final emc k = a("match_tool", emi.a);
+   public static final emc l = a("table_bonus", elr.a);
+   public static final emc m = a("survives_explosion", elx.a);
+   public static final emc n = a("damage_source_properties", elv.a);
+   public static final emc o = a("location_check", elz.a);
+   public static final emc p = a("weather_check", eml.a);
+   public static final emc q = a("reference", elt.a);
+   public static final emc r = a("time_check", emj.a);
+   public static final emc s = a("value_check", emk.a);
 
-   @Override
-   public elv b() {
-      return elw.s;
+   private static emc a(String $$0, Codec<? extends emb> $$1) {
+      return iv.a(kf.H, new aiy($$0), new emc($$1));
    }
 
-   @Override
-   public Set<eld<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
+   public static <T> Predicate<T> a(List<? extends Predicate<T>> $$0) {
+      List<Predicate<T>> $$1 = List.copyOf($$0);
+
+      return switch ($$1.size()) {
+         case 0 -> $$0x -> true;
+         case 1 -> (Predicate)$$1.get(0);
+         case 2 -> $$1.get(0).and($$1.get(1));
+         default -> $$1x -> {
+         for (Predicate<T> $$2 : $$1) {
+            if (!$$2.test((T)$$1x)) {
+               return false;
+            }
+         }
+
+         return true;
+      };
+      };
    }
 
-   public boolean a(eiv $$0) {
-      return this.c.b($$0, this.b.a($$0));
-   }
+   public static <T> Predicate<T> b(List<? extends Predicate<T>> $$0) {
+      List<Predicate<T>> $$1 = List.copyOf($$0);
 
-   public static elu.a a(emp $$0, eiu $$1) {
-      return () -> new emd($$0, $$1);
-   }
+      return switch ($$1.size()) {
+         case 0 -> $$0x -> false;
+         case 1 -> (Predicate)$$1.get(0);
+         case 2 -> $$1.get(0).or($$1.get(1));
+         default -> $$1x -> {
+         for (Predicate<T> $$2 : $$1) {
+            if ($$2.test((T)$$1x)) {
+               return true;
+            }
+         }
 
-   public emp c() {
-      return this.b;
-   }
-
-   public eiu d() {
-      return this.c;
+         return false;
+      };
+      };
    }
 }

@@ -1,42 +1,17 @@
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.io.IOException;
 
-public abstract class ghv implements aru, AutoCloseable {
-   private final ggs a;
-   private final aiy b;
-   private final Set<ara<?>> c;
+public class ghv extends asg<int[]> {
+   private static final aiy a = new aiy("textures/colormap/grass.png");
 
-   public ghv(ggu $$0, aiy $$1, aiy $$2) {
-      this($$0, $$1, $$2, ggo.a);
+   protected int[] a(asb $$0, bin $$1) {
+      try {
+         return ghx.a($$0, a);
+      } catch (IOException var4) {
+         throw new IllegalStateException("Failed to load grass color texture", var4);
+      }
    }
 
-   public ghv(ggu $$0, aiy $$1, aiy $$2, Set<ara<?>> $$3) {
-      this.b = $$2;
-      this.a = new ggs($$1);
-      $$0.a(this.a.g(), this.a);
-      this.c = $$3;
-   }
-
-   protected ggt a(aiy $$0) {
-      return this.a.a($$0);
-   }
-
-   @Override
-   public final CompletableFuture<Void> a(aru.a $$0, asa $$1, bil $$2, bil $$3, Executor $$4, Executor $$5) {
-      return ggo.a(this.a).a($$1, this.b, 0, $$4, this.c).thenCompose(ggo.a::a).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$1x, $$3), $$5);
-   }
-
-   private void a(ggo.a $$0, bil $$1) {
-      $$1.a();
-      $$1.a("upload");
-      this.a.a($$0);
-      $$1.c();
-      $$1.b();
-   }
-
-   @Override
-   public void close() {
-      this.a.f();
+   protected void a(int[] $$0, asb $$1, bin $$2) {
+      cvp.a($$0);
    }
 }

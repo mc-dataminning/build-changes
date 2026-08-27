@@ -1,39 +1,37 @@
-import java.util.List;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class bxa<T extends boi & bom> extends bvb {
-   private static final int a = 10;
-   private final T b;
-   private final boolean c;
-   private int d;
+public class bxa<T extends boi> extends bwy<T> {
+   private static final int i = 200;
+   private int j = 0;
 
-   public bxa(T $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public bxa(civ $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<boi> $$3) {
+      super($$0, $$1, 500, $$2, false, $$3);
+   }
+
+   public int i() {
+      return this.j;
+   }
+
+   public void k() {
+      this.j--;
    }
 
    @Override
    public boolean a() {
-      return this.b.dM().Z().b(cvj.O) && this.h();
-   }
-
-   private boolean h() {
-      return this.b.ei() != null && this.b.ei().ai() == bnu.bw && this.b.ej() > this.d;
+      if (this.j > 0 || !this.e.eh().h()) {
+         return false;
+      } else if (!((civ)this.e).gv()) {
+         return false;
+      } else {
+         this.h();
+         return this.c != null;
+      }
    }
 
    @Override
    public void c() {
-      this.d = this.b.ej();
-      this.b.ab_();
-      if (this.c) {
-         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (bom)$$0).forEach(bom::ab_);
-      }
-
+      this.j = b(200);
       super.c();
-   }
-
-   private List<? extends boi> i() {
-      double $$0 = this.b.g(bpl.i);
-      enn $$1 = enn.a(this.b.dk()).c($$0, 10.0, $$0);
-      return this.b.dM().a((Class<? extends boi>)this.b.getClass(), $$1, bnt.f);
    }
 }

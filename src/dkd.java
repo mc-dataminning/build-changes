@@ -1,127 +1,117 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dkd {
-   private static final Codec<vq[]> c = vs.c
-      .listOf()
-      .comapFlatMap(
-         $$0 -> ac.a($$0, 4).map($$0x -> new vq[]{(vq)$$0x.get(0), (vq)$$0x.get(1), (vq)$$0x.get(2), (vq)$$0x.get(3)}),
-         $$0 -> List.of($$0[0], $$0[1], $$0[2], $$0[3])
-      );
-   public static final Codec<dkd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               c.fieldOf("messages").forGetter($$0x -> $$0x.d),
-               c.optionalFieldOf("filtered_messages").forGetter(dkd::d),
-               cnn.q.fieldOf("color").orElse(cnn.p).forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("has_glowing_text").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dkd::a)
-   );
-   public static final int b = 4;
-   private final vq[] d;
-   private final vq[] e;
-   private final cnn f;
-   private final boolean g;
-   @Nullable
-   private avt[] h;
-   private boolean i;
+public class dkd extends dix implements dpy.b<dqf.b>, dqf {
+   private static final Logger b = LogUtils.getLogger();
+   private dqf.a c;
+   private final dqf.b d;
+   private final dqf.d e = this.c();
+   private int h;
 
-   public dkd() {
-      this(c(), c(), cnn.p, false);
+   protected dkd(diz<?> $$0, hz $$1, dlj $$2) {
+      super($$0, $$1, $$2);
+      this.c = new dqf.a();
+      this.d = new dqf.b(this);
    }
 
-   public dkd(vq[] $$0, vq[] $$1, cnn $$2, boolean $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   public dkd(hz $$0, dlj $$1) {
+      this(diz.I, $$0, $$1);
    }
 
-   private static vq[] c() {
-      return new vq[]{vp.a, vp.a, vp.a, vp.a};
+   public dqf.d c() {
+      return new dkd.a(this.aE_());
    }
 
-   private static dkd a(vq[] $$0, Optional<vq[]> $$1, cnn $$2, boolean $$3) {
-      return new dkd($$0, $$1.orElse(Arrays.copyOf($$0, $$0.length)), $$2, $$3);
-   }
-
-   public boolean a() {
-      return this.g;
-   }
-
-   public dkd a(boolean $$0) {
-      return $$0 == this.g ? this : new dkd(this.d, this.e, this.f, $$0);
-   }
-
-   public cnn b() {
-      return this.f;
-   }
-
-   public dkd a(cnn $$0) {
-      return $$0 == this.b() ? this : new dkd(this.d, this.e, $$0, this.g);
-   }
-
-   public vq a(int $$0, boolean $$1) {
-      return this.b($$1)[$$0];
-   }
-
-   public dkd a(int $$0, vq $$1) {
-      return this.a($$0, $$1, $$1);
-   }
-
-   public dkd a(int $$0, vq $$1, vq $$2) {
-      vq[] $$3 = Arrays.copyOf(this.d, this.d.length);
-      vq[] $$4 = Arrays.copyOf(this.e, this.e.length);
-      $$3[$$0] = $$1;
-      $$4[$$0] = $$2;
-      return new dkd($$3, $$4, this.f, this.g);
-   }
-
-   public boolean a(chh $$0) {
-      return Arrays.stream(this.b($$0.Y())).anyMatch($$0x -> !$$0x.getString().isEmpty());
-   }
-
-   public vq[] b(boolean $$0) {
-      return $$0 ? this.e : this.d;
-   }
-
-   public avt[] a(boolean $$0, Function<vq, avt> $$1) {
-      if (this.h == null || this.i != $$0) {
-         this.i = $$0;
-         this.h = new avt[4];
-
-         for (int $$2 = 0; $$2 < 4; $$2++) {
-            this.h[$$2] = $$1.apply(this.a($$2, $$0));
-         }
+   @Override
+   public void a(sw $$0) {
+      super.a($$0);
+      this.h = $$0.h("last_vibration_frequency");
+      if ($$0.b("listener", 10)) {
+         dqf.a.a.parse(new Dynamic(tk.a, $$0.p("listener"))).resultOrPartial(b::error).ifPresent($$0x -> this.c = $$0x);
       }
+   }
 
+   @Override
+   protected void b(sw $$0) {
+      super.b($$0);
+      $$0.a("last_vibration_frequency", this.h);
+      dqf.a.a.encodeStart(tk.a, this.c).resultOrPartial(b::error).ifPresent($$1 -> $$0.a("listener", $$1));
+   }
+
+   @Override
+   public dqf.a gi() {
+      return this.c;
+   }
+
+   @Override
+   public dqf.d gj() {
+      return this.e;
+   }
+
+   public int f() {
       return this.h;
    }
 
-   private Optional<vq[]> d() {
-      for (int $$0 = 0; $$0 < 4; $$0++) {
-         if (!this.e[$$0].equals(this.d[$$0])) {
-            return Optional.of(this.e);
-         }
-      }
-
-      return Optional.empty();
+   public void a(int $$0) {
+      this.h = $$0;
    }
 
-   public boolean b(chh $$0) {
-      for (vq $$1 : this.b($$0.Y())) {
-         wn $$2 = $$1.a();
-         vo $$3 = $$2.h();
-         if ($$3 != null && $$3.a() == vo.a.c) {
-            return true;
+   public dqf.b g() {
+      return this.d;
+   }
+
+   protected class a implements dqf.d {
+      public static final int b = 8;
+      protected final hz c;
+      private final dqa a;
+
+      public a(hz $$1) {
+         this.c = $$1;
+         this.a = new dps($$1);
+      }
+
+      @Override
+      public int a() {
+         return 8;
+      }
+
+      @Override
+      public dqa b() {
+         return this.a;
+      }
+
+      @Override
+      public boolean d() {
+         return true;
+      }
+
+      @Override
+      public boolean a(aow $$0, hz $$1, ij<dpw> $$2, @Nullable dpw.a $$3) {
+         return !$$1.equals(this.c) || !$$2.a(dpw.f) && !$$2.a(dpw.i) ? dfk.n(dkd.this.r()) : false;
+      }
+
+      @Override
+      public void a(aow $$0, hz $$1, ij<dpw> $$2, @Nullable bnq $$3, @Nullable bnq $$4, float $$5) {
+         dlj $$6 = dkd.this.r();
+         if (dfk.n($$6)) {
+            dkd.this.a(dqf.a_($$2));
+            int $$7 = dqf.a_($$5, this.a());
+            if ($$6.b() instanceof dfk $$8) {
+               $$8.a($$3, $$0, this.c, $$6, $$7, dkd.this.f());
+            }
          }
       }
 
-      return false;
+      @Override
+      public void e() {
+         dkd.this.e();
+      }
+
+      @Override
+      public boolean f() {
+         return true;
+      }
    }
 }

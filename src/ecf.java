@@ -1,59 +1,67 @@
-import com.google.common.collect.Lists;
+import com.mojang.datafixers.Products.P4;
+import com.mojang.datafixers.Products.P5;
+import com.mojang.datafixers.Products.P9;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
+import java.util.Optional;
 
-public class ecf extends ecl {
-   public static final Codec<ecf> a = RecordCodecBuilder.create($$0 -> $$0.group(eai.b.fieldOf("feature").forGetter($$0x -> $$0x.b), d()).apply($$0, ecf::new));
-   private final ij<eai> b;
-   private final sw c;
+public class ecf extends eci {
+   public static final Codec<ecf> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, ecf::new));
+   private final int c;
+   private final int d;
+   private final int e;
+   private final in<cwq> f;
 
-   protected ecf(ij<eai> $$0, ecn.a $$1) {
-      super($$1);
-      this.b = $$0;
-      this.c = this.b();
+   private static P9<Mu<ecf>, jd, eci.c, Float, Integer, Optional<eci.a>, Integer, Integer, Integer, in<cwq>> b(Instance<ecf> $$0) {
+      P5<Mu<ecf>, jd, eci.c, Float, Integer, Optional<eci.a>> $$1 = a($$0);
+      P4<Mu<ecf>, Integer, Integer, Integer, in<cwq>> $$2 = $$0.group(
+         Codec.intRange(0, 1023).fieldOf("distance").forGetter(ecf::a),
+         Codec.intRange(0, 1023).fieldOf("spread").forGetter(ecf::b),
+         Codec.intRange(1, 4095).fieldOf("count").forGetter(ecf::c),
+         ix.a(kg.at).fieldOf("preferred_biomes").forGetter(ecf::d)
+      );
+      return new P9($$1.t1(), $$1.t2(), $$1.t3(), $$1.t4(), $$1.t5(), $$2.t1(), $$2.t2(), $$2.t3(), $$2.t4());
    }
 
-   private sw b() {
-      sw $$0 = new sw();
-      $$0.a("name", "minecraft:bottom");
-      $$0.a("final_state", "minecraft:air");
-      $$0.a("pool", "minecraft:empty");
-      $$0.a("target", "minecraft:empty");
-      $$0.a("joint", djt.a.a.c());
-      return $$0;
+   public ecf(jd $$0, eci.c $$1, float $$2, int $$3, Optional<eci.a> $$4, int $$5, int $$6, int $$7, in<cwq> $$8) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.c = $$5;
+      this.d = $$6;
+      this.e = $$7;
+      this.f = $$8;
+   }
+
+   public ecf(int $$0, int $$1, int $$2, in<cwq> $$3) {
+      this(jd.g, eci.c.a, 1.0F, 0, Optional.empty(), $$0, $$1, $$2, $$3);
+   }
+
+   public int a() {
+      return this.c;
+   }
+
+   public int b() {
+      return this.d;
+   }
+
+   public int c() {
+      return this.e;
+   }
+
+   public in<cwq> d() {
+      return this.f;
    }
 
    @Override
-   public jd a(eff $$0, dfa $$1) {
-      return jd.g;
+   protected boolean a(dnh $$0, int $$1, int $$2) {
+      List<cuy> $$3 = $$0.a(this);
+      return $$3 == null ? false : $$3.contains(new cuy($$1, $$2));
    }
 
    @Override
-   public List<efe.c> a(eff $$0, hz $$1, dfa $$2, awo $$3) {
-      List<efe.c> $$4 = Lists.newArrayList();
-      $$4.add(new efe.c($$1, cyq.pb.o().a(dcp.b, ih.a(ie.a, ie.d)), this.c));
-      return $$4;
-   }
-
-   @Override
-   public eaw a(eff $$0, hz $$1, dfa $$2) {
-      jd $$3 = this.a($$0, $$2);
-      return new eaw($$1.u(), $$1.v(), $$1.w(), $$1.u() + $$3.u(), $$1.v() + $$3.v(), $$1.w() + $$3.w());
-   }
-
-   @Override
-   public boolean a(eff $$0, cwi $$1, cwg $$2, dnc $$3, hz $$4, hz $$5, dfa $$6, eaw $$7, awo $$8, boolean $$9) {
-      return this.b.a().a($$1, $$3, $$8, $$4);
-   }
-
-   @Override
-   public ecm<?> a() {
-      return ecm.c;
-   }
-
-   @Override
-   public String toString() {
-      return "Feature[" + this.b + "]";
+   public ecj<?> e() {
+      return ecj.b;
    }
 }

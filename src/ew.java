@@ -39,7 +39,7 @@ public class ew<T> implements ArgumentType<ew.c<T>> {
             aix<?> $$2x = $$1xx.h();
             return et.b.create($$2x.a(), $$2x.b(), $$2.a());
          }, $$1xx -> {
-            auo<?> $$2x = $$1xx.f();
+            aup<?> $$2x = $$1xx.f();
             return c.create($$2x.b(), $$2x.a(), $$2.a());
          }));
    }
@@ -51,7 +51,7 @@ public class ew<T> implements ArgumentType<ew.c<T>> {
          try {
             $$0.skip();
             aiy $$2 = aiy.a($$0);
-            auo<T> $$3 = auo.a(this.e, $$2);
+            aup<T> $$3 = aup.a(this.e, $$2);
             in.c<T> $$4 = this.d.a($$3).orElseThrow(() -> b.create($$2, this.e.a()));
             return new ew.d<>($$4);
          } catch (CommandSyntaxException var6) {
@@ -67,7 +67,7 @@ public class ew<T> implements ArgumentType<ew.c<T>> {
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      dz.a(this.d.e().map(auo::b), $$1, "#");
+      dz.a(this.d.e().map(aup::b), $$1, "#");
       return dz.a(this.d.c().map(aix::a), $$1);
    }
 

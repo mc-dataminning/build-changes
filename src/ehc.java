@@ -1,143 +1,117 @@
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class ehc {
-   public final int a;
-   public final int b;
-   public final int c;
-   private final int m;
-   public int d = -1;
-   public float e;
-   public float f;
-   public float g;
+public abstract class ehc extends egu {
+   @Override
+   public egv d() {
+      return egx.b;
+   }
+
+   @Override
+   public egv e() {
+      return egx.c;
+   }
+
+   @Override
+   public coy a() {
+      return cpg.qy;
+   }
+
+   @Override
+   public void a(cvr $$0, hz $$1, egw $$2, awp $$3) {
+      if (!$$2.b() && !$$2.c(a)) {
+         if ($$3.a(64) == 0) {
+            $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, atl.Bh, atm.e, $$3.i() * 0.25F + 0.75F, $$3.i() + 0.5F, false);
+         }
+      } else if ($$3.a(10) == 0) {
+         $$0.a(jz.ai, (double)$$1.u() + $$3.j(), (double)$$1.v() + $$3.j(), (double)$$1.w() + $$3.j(), 0.0, 0.0, 0.0);
+      }
+   }
+
    @Nullable
-   public ehc h;
-   public boolean i;
-   public float j;
-   public float k;
-   public eha l = eha.a;
-
-   public ehc(int $$0, int $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.m = b($$0, $$1, $$2);
-   }
-
-   public ehc a(int $$0, int $$1, int $$2) {
-      ehc $$3 = new ehc($$0, $$1, $$2);
-      $$3.d = this.d;
-      $$3.e = this.e;
-      $$3.f = this.f;
-      $$3.g = this.g;
-      $$3.h = this.h;
-      $$3.i = this.i;
-      $$3.j = this.j;
-      $$3.k = this.k;
-      $$3.l = this.l;
-      return $$3;
-   }
-
-   public static int b(int $$0, int $$1, int $$2) {
-      return $$1 & 0xFF | ($$0 & 32767) << 8 | ($$2 & 32767) << 24 | ($$0 < 0 ? Integer.MIN_VALUE : 0) | ($$2 < 0 ? 32768 : 0);
-   }
-
-   public float a(ehc $$0) {
-      float $$1 = (float)($$0.a - this.a);
-      float $$2 = (float)($$0.b - this.b);
-      float $$3 = (float)($$0.c - this.c);
-      return awh.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
-   }
-
-   public float b(ehc $$0) {
-      float $$1 = (float)($$0.a - this.a);
-      float $$2 = (float)($$0.c - this.c);
-      return awh.c($$1 * $$1 + $$2 * $$2);
-   }
-
-   public float a(hz $$0) {
-      float $$1 = (float)($$0.u() - this.a);
-      float $$2 = (float)($$0.v() - this.b);
-      float $$3 = (float)($$0.w() - this.c);
-      return awh.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
-   }
-
-   public float c(ehc $$0) {
-      float $$1 = (float)($$0.a - this.a);
-      float $$2 = (float)($$0.b - this.b);
-      float $$3 = (float)($$0.c - this.c);
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
-   }
-
-   public float b(hz $$0) {
-      float $$1 = (float)($$0.u() - this.a);
-      float $$2 = (float)($$0.v() - this.b);
-      float $$3 = (float)($$0.w() - this.c);
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
-   }
-
-   public float d(ehc $$0) {
-      float $$1 = (float)Math.abs($$0.a - this.a);
-      float $$2 = (float)Math.abs($$0.b - this.b);
-      float $$3 = (float)Math.abs($$0.c - this.c);
-      return $$1 + $$2 + $$3;
-   }
-
-   public float c(hz $$0) {
-      float $$1 = (float)Math.abs($$0.u() - this.a);
-      float $$2 = (float)Math.abs($$0.v() - this.b);
-      float $$3 = (float)Math.abs($$0.w() - this.c);
-      return $$1 + $$2 + $$3;
-   }
-
-   public hz a() {
-      return new hz(this.a, this.b, this.c);
-   }
-
-   public ens b() {
-      return new ens((double)this.a, (double)this.b, (double)this.c);
+   @Override
+   public jx h() {
+      return jz.m;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      return !($$0 instanceof ehc $$1) ? false : this.m == $$1.m && this.a == $$1.a && this.b == $$1.b && this.c == $$1.c;
+   protected boolean a(cvr $$0) {
+      return $$0.Z().b(cvn.U);
    }
 
    @Override
-   public int hashCode() {
-      return this.m;
-   }
-
-   public boolean c() {
-      return this.d >= 0;
+   protected void a(cvs $$0, hz $$1, dlj $$2) {
+      dix $$3 = $$2.t() ? $$0.c_($$1) : null;
+      cys.a($$2, $$0, $$1, $$3);
    }
 
    @Override
-   public String toString() {
-      return "Node{x=" + this.a + ", y=" + this.b + ", z=" + this.c + "}";
+   public int b(cvu $$0) {
+      return 4;
    }
 
-   public void a(uq $$0) {
-      $$0.p(this.a);
-      $$0.p(this.b);
-      $$0.p(this.c);
-      $$0.a(this.j);
-      $$0.a(this.k);
-      $$0.a(this.i);
-      $$0.a(this.l);
-      $$0.a(this.g);
+   @Override
+   public dlj b(egw $$0) {
+      return cyu.G.o().a(ddh.b, Integer.valueOf(e($$0)));
    }
 
-   public static ehc b(uq $$0) {
-      ehc $$1 = new ehc($$0.readInt(), $$0.readInt(), $$0.readInt());
-      a($$0, $$1);
-      return $$1;
+   @Override
+   public boolean a(egv $$0) {
+      return $$0 == egx.c || $$0 == egx.b;
    }
 
-   protected static void a(uq $$0, ehc $$1) {
-      $$1.j = $$0.readFloat();
-      $$1.k = $$0.readFloat();
-      $$1.i = $$0.readBoolean();
-      $$1.l = $$0.b(eha.class);
-      $$1.g = $$0.readFloat();
+   @Override
+   public int c(cvu $$0) {
+      return 1;
+   }
+
+   @Override
+   public int a(cvu $$0) {
+      return 5;
+   }
+
+   @Override
+   public boolean a(egw $$0, cux $$1, hz $$2, egv $$3, ie $$4) {
+      return $$4 == ie.a && !$$3.a(auf.a);
+   }
+
+   @Override
+   protected float c() {
+      return 100.0F;
+   }
+
+   @Override
+   public Optional<atk> j() {
+      return Optional.of(atl.da);
+   }
+
+   public static class a extends ehc {
+      @Override
+      protected void a(dlk.a<egv, egw> $$0) {
+         super.a($$0);
+         $$0.a(b);
+      }
+
+      @Override
+      public int d(egw $$0) {
+         return $$0.c(b);
+      }
+
+      @Override
+      public boolean c(egw $$0) {
+         return false;
+      }
+   }
+
+   public static class b extends ehc {
+      @Override
+      public int d(egw $$0) {
+         return 8;
+      }
+
+      @Override
+      public boolean c(egw $$0) {
+         return true;
+      }
    }
 }

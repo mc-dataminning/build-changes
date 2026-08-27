@@ -1,69 +1,45 @@
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.HashMap;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 import java.util.stream.Collectors;
 
-public class aur {
-   public static Map<aix<? extends iv<?>>, aur.a> a(iq<ajh> $$0) {
-      return iz.b($$0)
-         .map($$0x -> Pair.of($$0x.a(), a($$0x.b())))
-         .filter($$0x -> !((aur.a)$$0x.getSecond()).a())
-         .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
+public class aur implements arv {
+   private static final Map<aix<? extends iv<?>>, String> a = Map.of(
+      kg.f, "tags/blocks", kg.u, "tags/entity_types", kg.y, "tags/fluids", kg.B, "tags/game_events", kg.F, "tags/items"
+   );
+   private final iw b;
+   private List<aur.a<?>> c = List.of();
+
+   public aur(iw $$0) {
+      this.b = $$0;
    }
 
-   private static <T> aur.a a(iv<T> $$0) {
-      Map<aiy, IntList> $$1 = new HashMap<>();
-      $$0.i().forEach($$2 -> {
-         in<T> $$3 = (in<T>)$$2.getSecond();
-         IntList $$4 = new IntArrayList($$3.b());
-
-         for (ij<T> $$5 : $$3) {
-            if ($$5.f() != ij.b.a) {
-               throw new IllegalStateException("Can't serialize unregistered value " + $$5);
-            }
-
-            $$4.add($$0.a($$5.a()));
-         }
-
-         $$1.put(((auo)$$2.getFirst()).b(), $$4);
-      });
-      return new aur.a($$1);
+   public List<aur.a<?>> a() {
+      return this.c;
    }
 
-   public static <T> void a(aix<? extends iv<T>> $$0, iv<T> $$1, aur.a $$2, aur.b<T> $$3) {
-      $$2.a.forEach(($$3x, $$4) -> {
-         auo<T> $$5 = auo.a($$0, $$3x);
-         List<ij<T>> $$6 = $$4.intStream().mapToObj($$1::c).flatMap(Optional::stream).collect(Collectors.toUnmodifiableList());
-         $$3.accept($$5, $$6);
-      });
+   public static String a(aix<? extends iv<?>> $$0) {
+      String $$1 = a.get($$0);
+      return $$1 != null ? $$1 : "tags/" + $$0.a().a();
    }
 
-   public static final class a {
-      final Map<aiy, IntList> a;
-
-      a(Map<aiy, IntList> $$0) {
-         this.a = $$0;
-      }
-
-      public void a(uq $$0) {
-         $$0.a(this.a, uq::a, uq::a);
-      }
-
-      public static aur.a b(uq $$0) {
-         return new aur.a($$0.a(uq::s, uq::a));
-      }
-
-      public boolean a() {
-         return this.a.isEmpty();
-      }
+   @Override
+   public CompletableFuture<Void> a(arv.a $$0, asb $$1, bin $$2, bin $$3, Executor $$4, Executor $$5) {
+      List<? extends CompletableFuture<? extends aur.a<?>>> $$6 = this.b.c().map($$2x -> this.a($$1, $$4, $$2x)).toList();
+      return CompletableFuture.allOf($$6.toArray(CompletableFuture[]::new))
+         .thenCompose($$0::a)
+         .thenAcceptAsync($$1x -> this.c = $$6.stream().map(CompletableFuture::join).collect(Collectors.toUnmodifiableList()), $$5);
    }
 
-   @FunctionalInterface
-   public interface b<T> {
-      void accept(auo<T> var1, List<ij<T>> var2);
+   private <T> CompletableFuture<aur.a<T>> a(asb $$0, Executor $$1, iw.d<T> $$2) {
+      aix<? extends iv<T>> $$3 = $$2.a();
+      iv<T> $$4 = $$2.b();
+      auq<ij<T>> $$5 = new auq<>($$4::c, a($$3));
+      return CompletableFuture.supplyAsync(() -> new aur.a<>($$3, $$5.b($$0)), $$1);
+   }
+
+   public static record a<T>(aix<? extends iv<T>> a, Map<aiy, Collection<ij<T>>> b) {
    }
 }

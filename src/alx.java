@@ -15,13 +15,13 @@ public class alx {
    public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("publish").requires($$0x -> $$0x.c(4)))
-               .executes($$0x -> a((du)$$0x.getSource(), avy.a(), false, null)))
+               .executes($$0x -> a((du)$$0x.getSource(), avz.a(), false, null)))
             .then(
                ((RequiredArgumentBuilder)dv.a("allowCommands", BoolArgumentType.bool())
-                     .executes($$0x -> a((du)$$0x.getSource(), avy.a(), BoolArgumentType.getBool($$0x, "allowCommands"), null)))
+                     .executes($$0x -> a((du)$$0x.getSource(), avz.a(), BoolArgumentType.getBool($$0x, "allowCommands"), null)))
                   .then(
                      ((RequiredArgumentBuilder)dv.a("gamemode", ei.a())
-                           .executes($$0x -> a((du)$$0x.getSource(), avy.a(), BoolArgumentType.getBool($$0x, "allowCommands"), ei.a($$0x, "gamemode"))))
+                           .executes($$0x -> a((du)$$0x.getSource(), avz.a(), BoolArgumentType.getBool($$0x, "allowCommands"), ei.a($$0x, "gamemode"))))
                         .then(
                            dv.a("port", IntegerArgumentType.integer(0, 65535))
                               .executes(
@@ -38,9 +38,9 @@ public class alx {
       );
    }
 
-   private static int a(du $$0, int $$1, boolean $$2, @Nullable cvk $$3) throws CommandSyntaxException {
+   private static int a(du $$0, int $$1, boolean $$2, @Nullable cvo $$3) throws CommandSyntaxException {
       if ($$0.l().p()) {
-         throw b.create($$0.l().O());
+         throw b.create($$0.l().Q());
       } else if (!$$0.l().a($$3, $$2, $$1)) {
          throw a.create();
       } else {

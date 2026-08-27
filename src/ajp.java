@@ -6,9 +6,9 @@ import java.util.Set;
 import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 
-public class ajp extends eow {
+public class ajp extends epd {
    private final MinecraftServer b;
-   private final Set<eoo> c = Sets.newHashSet();
+   private final Set<eov> c = Sets.newHashSet();
    private final List<Runnable> d = Lists.newArrayList();
 
    public ajp(MinecraftServer $$0) {
@@ -16,45 +16,45 @@ public class ajp extends eow {
    }
 
    @Override
-   protected void a(eov $$0, eoo $$1, eot $$2) {
+   protected void a(epc $$0, eov $$1, epa $$2) {
       super.a($$0, $$1, $$2);
       if (this.c.contains($$1)) {
-         this.b.ae().a(new ads($$0.cy(), $$1.b(), $$2.a(), $$2.d(), Optional.ofNullable($$2.c())));
+         this.b.ag().a(new ads($$0.cy(), $$1.b(), $$2.a(), $$2.d(), Optional.ofNullable($$2.c())));
       }
 
       this.a();
    }
 
    @Override
-   protected void a(eov $$0, eoo $$1) {
+   protected void a(epc $$0, eov $$1) {
       super.a($$0, $$1);
       this.a();
    }
 
    @Override
-   public void a(eov $$0) {
+   public void a(epc $$0) {
       super.a($$0);
-      this.b.ae().a(new acr($$0.cy(), null));
+      this.b.ag().a(new acr($$0.cy(), null));
       this.a();
    }
 
    @Override
-   public void b(eov $$0, eoo $$1) {
+   public void b(epc $$0, eov $$1) {
       super.b($$0, $$1);
       if (this.c.contains($$1)) {
-         this.b.ae().a(new acr($$0.cy(), $$1.b()));
+         this.b.ag().a(new acr($$0.cy(), $$1.b()));
       }
 
       this.a();
    }
 
    @Override
-   public void a(eon $$0, @Nullable eoo $$1) {
-      eoo $$2 = this.a($$0);
+   public void a(eou $$0, @Nullable eov $$1) {
+      eov $$2 = this.a($$0);
       super.a($$0, $$1);
       if ($$2 != $$1 && $$2 != null) {
          if (this.h($$2) > 0) {
-            this.b.ae().a(new adi($$0, $$1));
+            this.b.ag().a(new adi($$0, $$1));
          } else {
             this.g($$2);
          }
@@ -62,7 +62,7 @@ public class ajp extends eow {
 
       if ($$1 != null) {
          if (this.c.contains($$1)) {
-            this.b.ae().a(new adi($$0, $$1));
+            this.b.ag().a(new adi($$0, $$1));
          } else {
             this.e($$1);
          }
@@ -72,9 +72,9 @@ public class ajp extends eow {
    }
 
    @Override
-   public boolean a(String $$0, eor $$1) {
+   public boolean a(String $$0, eoy $$1) {
       if (super.a($$0, $$1)) {
-         this.b.ae().a(adr.a($$1, $$0, adr.a.a));
+         this.b.ag().a(adr.a($$1, $$0, adr.a.a));
          this.a();
          return true;
       } else {
@@ -83,30 +83,30 @@ public class ajp extends eow {
    }
 
    @Override
-   public void b(String $$0, eor $$1) {
+   public void b(String $$0, eoy $$1) {
       super.b($$0, $$1);
-      this.b.ae().a(adr.a($$1, $$0, adr.a.b));
+      this.b.ag().a(adr.a($$1, $$0, adr.a.b));
       this.a();
    }
 
    @Override
-   public void a(eoo $$0) {
+   public void a(eov $$0) {
       super.a($$0);
       this.a();
    }
 
    @Override
-   public void b(eoo $$0) {
+   public void b(eov $$0) {
       super.b($$0);
       if (this.c.contains($$0)) {
-         this.b.ae().a(new adp($$0, 2));
+         this.b.ag().a(new adp($$0, 2));
       }
 
       this.a();
    }
 
    @Override
-   public void c(eoo $$0) {
+   public void c(eov $$0) {
       super.c($$0);
       if (this.c.contains($$0)) {
          this.g($$0);
@@ -116,23 +116,23 @@ public class ajp extends eow {
    }
 
    @Override
-   public void a(eor $$0) {
+   public void a(eoy $$0) {
       super.a($$0);
-      this.b.ae().a(adr.a($$0, true));
+      this.b.ag().a(adr.a($$0, true));
       this.a();
    }
 
    @Override
-   public void b(eor $$0) {
+   public void b(eoy $$0) {
       super.b($$0);
-      this.b.ae().a(adr.a($$0, false));
+      this.b.ag().a(adr.a($$0, false));
       this.a();
    }
 
    @Override
-   public void c(eor $$0) {
+   public void c(eoy $$0) {
       super.c($$0);
-      this.b.ae().a(adr.a($$0));
+      this.b.ag().a(adr.a($$0));
       this.a();
    }
 
@@ -146,27 +146,27 @@ public class ajp extends eow {
       }
    }
 
-   public List<xx<?>> d(eoo $$0) {
+   public List<xx<?>> d(eov $$0) {
       List<xx<?>> $$1 = Lists.newArrayList();
       $$1.add(new adp($$0, 0));
 
-      for (eon $$2 : eon.values()) {
+      for (eou $$2 : eou.values()) {
          if (this.a($$2) == $$0) {
             $$1.add(new adi($$2, $$0));
          }
       }
 
-      for (eop $$3 : this.i($$0)) {
+      for (eow $$3 : this.i($$0)) {
          $$1.add(new ads($$3.c(), $$0.b(), $$3.d(), $$3.e(), Optional.ofNullable($$3.f())));
       }
 
       return $$1;
    }
 
-   public void e(eoo $$0) {
+   public void e(eov $$0) {
       List<xx<?>> $$1 = this.d($$0);
 
-      for (aow $$2 : this.b.ae().t()) {
+      for (aox $$2 : this.b.ag().t()) {
          for (xx<?> $$3 : $$1) {
             $$2.d.b($$3);
          }
@@ -175,11 +175,11 @@ public class ajp extends eow {
       this.c.add($$0);
    }
 
-   public List<xx<?>> f(eoo $$0) {
+   public List<xx<?>> f(eov $$0) {
       List<xx<?>> $$1 = Lists.newArrayList();
       $$1.add(new adp($$0, 1));
 
-      for (eon $$2 : eon.values()) {
+      for (eou $$2 : eou.values()) {
          if (this.a($$2) == $$0) {
             $$1.add(new adi($$2, $$0));
          }
@@ -188,10 +188,10 @@ public class ajp extends eow {
       return $$1;
    }
 
-   public void g(eoo $$0) {
+   public void g(eov $$0) {
       List<xx<?>> $$1 = this.f($$0);
 
-      for (aow $$2 : this.b.ae().t()) {
+      for (aox $$2 : this.b.ag().t()) {
          for (xx<?> $$3 : $$1) {
             $$2.d.b($$3);
          }
@@ -200,10 +200,10 @@ public class ajp extends eow {
       this.c.remove($$0);
    }
 
-   public int h(eoo $$0) {
+   public int h(eov $$0) {
       int $$1 = 0;
 
-      for (eon $$2 : eon.values()) {
+      for (eou $$2 : eou.values()) {
          if (this.a($$2) == $$0) {
             $$1++;
          }
@@ -212,17 +212,17 @@ public class ajp extends eow {
       return $$1;
    }
 
-   public ehu.a<eox> b() {
-      return new ehu.a<>(this::i, this::a, axo.n);
+   public eib.a<epe> b() {
+      return new eib.a<>(this::i, this::a, axo.n);
    }
 
-   private eox i() {
-      eox $$0 = new eox(this);
+   private epe i() {
+      epe $$0 = new epe(this);
       this.a($$0::c);
       return $$0;
    }
 
-   private eox a(sw $$0) {
+   private epe a(sw $$0) {
       return this.i().b($$0);
    }
 

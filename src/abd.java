@@ -5,9 +5,9 @@ public class abd implements xx<aag> {
    private final int d;
    private final int e;
    private final int f;
-   private final coz g;
+   private final cpd g;
 
-   public abd(int $$0, int $$1, int $$2, coz $$3) {
+   public abd(int $$0, int $$1, int $$2, cpd $$3) {
       this.d = $$0;
       this.e = $$1;
       this.f = $$2;
@@ -18,14 +18,14 @@ public class abd implements xx<aag> {
       this.d = $$0.readByte();
       this.e = $$0.n();
       this.f = $$0.readShort();
-      this.g = coz.f.decode($$0);
+      this.g = cpd.f.decode($$0);
    }
 
    private void a(vb $$0) {
       $$0.k(this.d);
       $$0.c(this.e);
       $$0.l(this.f);
-      coz.f.encode($$0, this.g);
+      cpd.f.encode($$0, this.g);
    }
 
    @Override
@@ -45,7 +45,7 @@ public class abd implements xx<aag> {
       return this.f;
    }
 
-   public coz f() {
+   public cpd f() {
       return this.g;
    }
 

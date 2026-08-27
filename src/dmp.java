@@ -1,23 +1,37 @@
-public enum dmp implements axc {
-   a("save"),
-   b("load"),
-   c("corner"),
-   d("data");
+import java.util.Optional;
 
-   private final String e;
-   private final vq f;
+public class dmp {
+   private static final awr a = new awr(4);
+   private static final int b = a.a();
+   private static final int c = 0;
+   private static final int d = 4;
+   private static final int e = 8;
+   private static final int f = 12;
 
-   private dmp(String $$0) {
-      this.e = $$0;
-      this.f = vq.c("structure_block.mode_info." + $$0);
+   public static int a() {
+      return b;
    }
 
-   @Override
-   public String c() {
-      return this.e;
+   public static int a(ie $$0) {
+      return a.a($$0);
    }
 
-   public vq a() {
-      return this.f;
+   public static int a(float $$0) {
+      return a.b($$0);
+   }
+
+   public static Optional<ie> a(int $$0) {
+      ie $$1 = switch ($$0) {
+         case 0 -> ie.c;
+         case 4 -> ie.f;
+         case 8 -> ie.d;
+         case 12 -> ie.e;
+         default -> null;
+      };
+      return Optional.ofNullable($$1);
+   }
+
+   public static float b(int $$0) {
+      return a.b($$0);
    }
 }

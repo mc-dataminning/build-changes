@@ -1,61 +1,44 @@
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class cec extends cej {
-   public static final float b = bnu.C.k() / bnu.X.k();
-   private static final int e = 1200;
-   private static final int bT = 50;
-   private static final int bU = 6000;
-   private static final int bV = 2;
-   private static final int bW = 1200;
-
-   public cec(bnu<? extends cec> $$0, cvn $$1) {
+public class cec extends cfc {
+   public cec(bnw<? extends cec> $$0, cvr $$1) {
       super($$0, $$1);
-      this.fL();
-      if (this.d != null) {
-         this.d.c(400);
+   }
+
+   public static bpo.a u() {
+      return cfc.w().a(bpp.n, 12.0);
+   }
+
+   @Override
+   public boolean B(bnq $$0) {
+      if (super.B($$0)) {
+         if ($$0 instanceof boi) {
+            int $$1 = 0;
+            if (this.dM().aj() == blt.c) {
+               $$1 = 7;
+            } else if (this.dM().aj() == blt.d) {
+               $$1 = 15;
+            }
+
+            if ($$1 > 0) {
+               ((boi)$$0).b(new bnd(bnf.s, $$1 * 20, 0), this);
+            }
+         }
+
+         return true;
+      } else {
+         return false;
       }
    }
 
-   public static bpk.a u() {
-      return cej.gg().a(bpl.o, 0.3F).a(bpl.c, 8.0).a(bpl.n, 80.0);
+   @Nullable
+   @Override
+   public bpa a(cwg $$0, blu $$1, bom $$2, @Nullable bpa $$3, @Nullable sw $$4) {
+      return $$3;
    }
 
    @Override
-   public int w() {
-      return 60;
-   }
-
-   @Override
-   protected atj y() {
-      return this.bc() ? atk.hz : atk.hA;
-   }
-
-   @Override
-   protected atj d(bmn $$0) {
-      return this.bc() ? atk.hF : atk.hG;
-   }
-
-   @Override
-   protected atj n_() {
-      return this.bc() ? atk.hC : atk.hD;
-   }
-
-   @Override
-   protected atj A() {
-      return atk.hE;
-   }
-
-   @Override
-   protected void aa() {
-      super.aa();
-      if ((this.ag + this.aj()) % 1200 == 0) {
-         bnb $$0 = new bnb(bnd.d, 6000, 2);
-         List<aow> $$1 = bnc.a((aov)this.dM(), this, this.dk(), 50.0, $$0, 1200);
-         $$1.forEach($$0x -> $$0x.d.b(new abm(abm.l, this.aU() ? 0.0F : 1.0F)));
-      }
-
-      if (!this.fS()) {
-         this.a(this.dm(), 16);
-      }
+   public enz k(bnq $$0) {
+      return $$0.dg() <= this.dg() ? new enz(0.0, 0.21875 * (double)this.ea(), 0.0) : super.k($$0);
    }
 }

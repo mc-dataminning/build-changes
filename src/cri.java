@@ -1,71 +1,52 @@
-import javax.annotation.Nullable;
+import java.util.Optional;
 
 public class cri {
-   @Nullable
-   private final chh a;
-   private final blt b;
-   private final eno c;
-   private final cvn d;
-   private final coz e;
+   public static final aix<crh> a = a("sentry");
+   public static final aix<crh> b = a("dune");
+   public static final aix<crh> c = a("coast");
+   public static final aix<crh> d = a("wild");
+   public static final aix<crh> e = a("ward");
+   public static final aix<crh> f = a("eye");
+   public static final aix<crh> g = a("vex");
+   public static final aix<crh> h = a("tide");
+   public static final aix<crh> i = a("snout");
+   public static final aix<crh> j = a("rib");
+   public static final aix<crh> k = a("spire");
+   public static final aix<crh> l = a("wayfinder");
+   public static final aix<crh> m = a("shaper");
+   public static final aix<crh> n = a("silence");
+   public static final aix<crh> o = a("raiser");
+   public static final aix<crh> p = a("host");
 
-   public cri(chh $$0, blt $$1, eno $$2) {
-      this($$0.dM(), $$0, $$1, $$0.b($$1), $$2);
+   public static void a(ph<crh> $$0) {
+      a($$0, cpg.xn, a);
+      a($$0, cpg.xo, b);
+      a($$0, cpg.xp, c);
+      a($$0, cpg.xq, d);
+      a($$0, cpg.xr, e);
+      a($$0, cpg.xs, f);
+      a($$0, cpg.xt, g);
+      a($$0, cpg.xu, h);
+      a($$0, cpg.xv, i);
+      a($$0, cpg.xw, j);
+      a($$0, cpg.xx, k);
+      a($$0, cpg.xy, l);
+      a($$0, cpg.xz, m);
+      a($$0, cpg.xA, n);
+      a($$0, cpg.xB, o);
+      a($$0, cpg.xC, p);
    }
 
-   protected cri(cvn $$0, @Nullable chh $$1, blt $$2, coz $$3, eno $$4) {
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$4;
-      this.e = $$3;
-      this.d = $$0;
+   public static Optional<ij.c<crh>> a(iw $$0, cpd $$1) {
+      return $$0.d(kg.aJ).h().filter($$1x -> $$1.a(((crh)$$1x.a()).b())).findFirst();
    }
 
-   protected final eno j() {
-      return this.c;
+   private static void a(ph<crh> $$0, coy $$1, aix<crh> $$2) {
+      crh $$3 = new crh($$2.a(), kf.h.e($$1), vq.c(ac.a("trim_pattern", $$2.a())), false);
+      $$0.a($$2, $$3);
    }
 
-   public hz a() {
-      return this.c.a();
-   }
-
-   public ie k() {
-      return this.c.b();
-   }
-
-   public ens l() {
-      return this.c.e();
-   }
-
-   public boolean m() {
-      return this.c.d();
-   }
-
-   public coz n() {
-      return this.e;
-   }
-
-   @Nullable
-   public chh o() {
-      return this.a;
-   }
-
-   public blt p() {
-      return this.b;
-   }
-
-   public cvn q() {
-      return this.d;
-   }
-
-   public ie g() {
-      return this.a == null ? ie.c : this.a.cE();
-   }
-
-   public boolean h() {
-      return this.a != null && this.a.fI();
-   }
-
-   public float i() {
-      return this.a == null ? 0.0F : this.a.dC();
+   private static aix<crh> a(String $$0) {
+      return aix.a(kg.aJ, new aiy($$0));
    }
 }

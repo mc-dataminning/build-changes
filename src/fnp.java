@@ -1,43 +1,42 @@
-public class fnp<T extends bno> extends fmk<T> {
-   private static final String a = "body_front";
-   private static final String b = "body_back";
-   private final fpc f;
-   private final fpc g;
+public class fnp<T extends bnq> extends fmr<T> {
+   private final fpj a;
+   private final fpj b;
+   private final fpj f;
 
-   public fnp(fpc $$0) {
-      this.f = $$0;
-      this.g = $$0.b("body_back");
+   public fnp(fpj $$0) {
+      this.a = $$0;
+      this.b = $$0.b("left_blue_fin");
+      this.f = $$0.b("right_blue_fin");
    }
 
-   public static fpi b() {
-      fpk $$0 = new fpk();
-      fpl $$1 = $$0.a();
-      int $$2 = 20;
-      fpl $$3 = $$1.a("body_front", fph.c().a(0, 0).a(-1.5F, -2.5F, 0.0F, 3.0F, 5.0F, 8.0F), fpe.a(0.0F, 20.0F, 0.0F));
-      fpl $$4 = $$1.a("body_back", fph.c().a(0, 13).a(-1.5F, -2.5F, 0.0F, 3.0F, 5.0F, 8.0F), fpe.a(0.0F, 20.0F, 8.0F));
-      $$1.a("head", fph.c().a(22, 0).a(-1.0F, -2.0F, -3.0F, 2.0F, 4.0F, 3.0F), fpe.a(0.0F, 20.0F, 0.0F));
-      $$4.a("back_fin", fph.c().a(20, 10).a(0.0F, -2.5F, 0.0F, 0.0F, 5.0F, 6.0F), fpe.a(0.0F, 0.0F, 8.0F));
-      $$3.a("top_front_fin", fph.c().a(2, 1).a(0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 3.0F), fpe.a(0.0F, -4.5F, 5.0F));
-      $$4.a("top_back_fin", fph.c().a(0, 2).a(0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 4.0F), fpe.a(0.0F, -4.5F, -1.0F));
-      $$1.a("right_fin", fph.c().a(-4, 0).a(-2.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), fpe.a(-1.5F, 21.5F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 4)));
-      $$1.a("left_fin", fph.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), fpe.a(1.5F, 21.5F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 4)));
-      return fpi.a($$0, 32, 32);
+   public static fpp b() {
+      fpr $$0 = new fpr();
+      fps $$1 = $$0.a();
+      int $$2 = 22;
+      $$1.a("body", fpo.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fpl.a(0.0F, 22.0F, 0.0F));
+      $$1.a("right_blue_fin", fpo.c().a(24, 0).a(-2.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), fpl.a(-4.0F, 15.0F, -2.0F));
+      $$1.a("left_blue_fin", fpo.c().a(24, 3).a(0.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), fpl.a(4.0F, 15.0F, -2.0F));
+      $$1.a("top_front_fin", fpo.c().a(15, 17).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), fpl.a(0.0F, 14.0F, -4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("top_middle_fin", fpo.c().a(14, 16).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 1.0F), fpl.a(0.0F, 14.0F, 0.0F));
+      $$1.a("top_back_fin", fpo.c().a(23, 18).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), fpl.a(0.0F, 14.0F, 4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_front_fin", fpo.c().a(5, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fpl.a(-4.0F, 22.0F, -4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$1.a("left_front_fin", fpo.c().a(1, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fpl.a(4.0F, 22.0F, -4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("bottom_front_fin", fpo.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), fpl.a(0.0F, 22.0F, -4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("bottom_middle_fin", fpo.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), fpl.a(0.0F, 22.0F, 0.0F));
+      $$1.a("bottom_back_fin", fpo.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), fpl.a(0.0F, 22.0F, 4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_back_fin", fpo.c().a(9, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fpl.a(-4.0F, 22.0F, 4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("left_back_fin", fpo.c().a(9, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fpl.a(4.0F, 22.0F, 4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      return fpp.a($$0, 32, 32);
    }
 
    @Override
-   public fpc a() {
-      return this.f;
+   public fpj a() {
+      return this.a;
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = 1.0F;
-      float $$7 = 1.0F;
-      if (!$$0.aZ()) {
-         $$6 = 1.3F;
-         $$7 = 1.7F;
-      }
-
-      this.g.f = -$$6 * 0.25F * awh.a($$7 * 0.6F * $$3);
+      this.f.g = -0.2F + 0.4F * awi.a($$3 * 0.2F);
+      this.b.g = 0.2F - 0.4F * awi.a($$3 * 0.2F);
    }
 }

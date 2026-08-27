@@ -1,5 +1,8 @@
-public class cnp extends cmi implements cnr {
-   public cnp(int $$0, cmi.a $$1, String $$2, cou.a $$3) {
-      super($$0, $$1, $$2, $$3);
+import javax.annotation.Nullable;
+
+public interface cnp {
+   default void a(@Nullable chl $$0, cvr $$1, cpd $$2, hz $$3) {
    }
+
+   boolean a(@Nullable chl var1, cvr var2, hz var3, @Nullable env var4);
 }

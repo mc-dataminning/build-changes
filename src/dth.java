@@ -1,52 +1,66 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
 
-public abstract class dth extends dts<dwd> {
-   public dth(Codec<dwd> $$0) {
+public class dth extends dtz<dvu> {
+   public dth(Codec<dvu> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dtu<dwd> $$0) {
-      awo $$1 = $$0.d();
-      cwi $$2 = $$0.b();
-      hz $$3 = $$0.e();
-      Optional<cyo> $$4 = kf.e.a(atz.ap, $$1).map(ij::a);
-      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().o());
-   }
+   public boolean a(dub<dvu> $$0) {
+      cwm $$1 = $$0.b();
+      dvu $$2 = $$0.f();
+      awp $$3 = $$0.d();
+      int $$4 = $$2.a().size();
+      int[] $$5 = new int[$$4];
+      int $$6 = 0;
 
-   protected abstract boolean a(cvo var1, awo var2, hz var3, dlf var4);
+      for (int $$7 = 0; $$7 < $$4; $$7++) {
+         $$5[$$7] = $$2.a().get($$7).a().a($$3);
+         $$6 += $$5[$$7];
+      }
 
-   protected boolean b(cvo $$0, awo $$1, hz $$2, dlf $$3) {
-      hz $$4 = $$2.c();
-      dlf $$5 = $$0.a_($$2);
-      if (($$5.a(cyq.G) || $$5.a(atz.as)) && $$0.a_($$4).a(cyq.G)) {
-         $$0.a($$2, $$3, 3);
-         if ($$1.i() < 0.25F) {
-            kf.e.a(atz.as, $$1).map(ij::a).ifPresent($$2x -> $$0.a($$4, $$2x.o(), 2));
-         } else if ($$1.i() < 0.05F) {
-            $$0.a($$4, cyq.mV.o().a(dfk.c, Integer.valueOf($$1.a(4) + 1)), 2);
+      if ($$6 == 0) {
+         return false;
+      } else {
+         hz.a $$8 = $$0.e().j();
+         hz.a $$9 = $$8.j().c($$2.b());
+
+         for (int $$10 = 0; $$10 < $$6; $$10++) {
+            if (!$$2.c().test($$1, $$9)) {
+               a($$5, $$6, $$10, $$2.d());
+               break;
+            }
+
+            $$9.c($$2.b());
          }
 
-         for (ie $$6 : ie.c.a) {
-            if ($$1.i() < 0.2F) {
-               hz $$7 = $$2.a($$6);
-               if ($$0.a_($$7).a(cyq.G)) {
-                  kf.e.a(atz.aq, $$1).map(ij::a).ifPresent($$3x -> {
-                     dlf $$4x = $$3x.o();
-                     if ($$4x.b(cxz.c)) {
-                        $$4x = $$4x.a(cxz.c, $$6);
-                     }
+         for (int $$11 = 0; $$11 < $$4; $$11++) {
+            int $$12 = $$5[$$11];
+            if ($$12 != 0) {
+               dvu.a $$13 = $$2.a().get($$11);
 
-                     $$0.a($$7, $$4x, 2);
-                  });
+               for (int $$14 = 0; $$14 < $$12; $$14++) {
+                  $$1.a($$8, $$13.b().a($$3, $$8), 2);
+                  $$8.c($$2.b());
                }
             }
          }
 
          return true;
-      } else {
-         return false;
+      }
+   }
+
+   private static void a(int[] $$0, int $$1, int $$2, boolean $$3) {
+      int $$4 = $$1 - $$2;
+      int $$5 = $$3 ? 1 : -1;
+      int $$6 = $$3 ? 0 : $$0.length - 1;
+      int $$7 = $$3 ? $$0.length : -1;
+
+      for (int $$8 = $$6; $$8 != $$7 && $$4 > 0; $$8 += $$5) {
+         int $$9 = $$0[$$8];
+         int $$10 = Math.min($$9, $$4);
+         $$4 -= $$10;
+         $$0[$$8] -= $$10;
       }
    }
 }

@@ -23,11 +23,11 @@ public class ajm {
    }
 
    public CommandDispatcher<du> a() {
-      return this.d.aE().a();
+      return this.d.aG().a();
    }
 
    public void b() {
-      if (this.d.aO().i()) {
+      if (this.d.aQ().i()) {
          if (this.f) {
             this.f = false;
             Collection<hd<du>> $$0 = this.g.b(c);
@@ -39,17 +39,17 @@ public class ajm {
    }
 
    private void a(Collection<hd<du>> $$0, aiy $$1) {
-      this.d.aR().a($$1::toString);
+      this.d.aT().a($$1::toString);
 
       for (hd<du> $$2 : $$0) {
          this.a($$2, this.c());
       }
 
-      this.d.aR().c();
+      this.d.aT().c();
    }
 
    public void a(hd<du> $$0, du $$1) {
-      bil $$2 = this.d.aR();
+      bin $$2 = this.d.aT();
       $$2.a(() -> "function " + $$0.a());
 
       try {
@@ -74,7 +74,7 @@ public class ajm {
    }
 
    public du c() {
-      return this.d.aF().a(2).a();
+      return this.d.aH().a(2).a();
    }
 
    public Optional<hd<du>> a(aiy $$0) {

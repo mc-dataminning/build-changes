@@ -3,18 +3,18 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Map;
 import java.util.Optional;
 
-public record bm(Optional<ij<cti>> b, cm.d c) {
+public record bm(Optional<ij<ctm>> b, cm.d c) {
    public static final Codec<bm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(avp.a(kf.f.r(), "enchantment").forGetter(bm::a), avp.a(cm.d.d, "levels", cm.d.c).forGetter(bm::b)).apply($$0, bm::new)
+      $$0 -> $$0.group(avq.a(kf.f.r(), "enchantment").forGetter(bm::a), avq.a(cm.d.d, "levels", cm.d.c).forGetter(bm::b)).apply($$0, bm::new)
    );
 
-   public bm(cti $$0, cm.d $$1) {
+   public bm(ctm $$0, cm.d $$1) {
       this(Optional.of($$0.k()), $$1);
    }
 
-   public boolean a(Map<cti, Integer> $$0) {
+   public boolean a(Map<ctm, Integer> $$0) {
       if (this.b.isPresent()) {
-         cti $$1 = this.b.get().a();
+         ctm $$1 = this.b.get().a();
          if (!$$0.containsKey($$1)) {
             return false;
          }
@@ -36,7 +36,7 @@ public record bm(Optional<ij<cti>> b, cm.d c) {
       return true;
    }
 
-   public Optional<ij<cti>> a() {
+   public Optional<ij<ctm>> a() {
       return this.b;
    }
 

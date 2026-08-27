@@ -1,32 +1,31 @@
-import net.minecraft.server.MinecraftServer;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class enc implements end<MinecraftServer> {
-   final aiy a;
+public record enc(String b) implements ene {
+   public static final Codec<enc> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(enc::c)).apply($$0, enc::new));
 
-   public enc(aiy $$0) {
-      this.a = $$0;
+   public static ene a(String $$0) {
+      return new enc($$0);
    }
 
-   public void a(MinecraftServer $$0, enf<MinecraftServer> $$1, long $$2) {
-      ajm $$3 = $$0.aC();
-
-      for (hd<du> $$5 : $$3.b(this.a)) {
-         $$3.a($$5, $$3.c());
-      }
+   @Override
+   public end a() {
+      return enf.b;
    }
 
-   public static class a extends end.a<MinecraftServer, enc> {
-      public a() {
-         super(new aiy("function_tag"), enc.class);
-      }
+   @Override
+   public epc a(ejc $$0) {
+      return epc.d(this.b);
+   }
 
-      public void a(sw $$0, enc $$1) {
-         $$0.a("Name", $$1.a.toString());
-      }
+   @Override
+   public Set<elk<?>> b() {
+      return ImmutableSet.of();
+   }
 
-      public enc a(sw $$0) {
-         aiy $$1 = new aiy($$0.l("Name"));
-         return new enc($$1);
-      }
+   public String c() {
+      return this.b;
    }
 }

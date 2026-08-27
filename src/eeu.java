@@ -1,22 +1,20 @@
 import com.mojang.serialization.Codec;
 import javax.annotation.Nullable;
 
-public class eeu extends efb {
-   public final auo<cyo> a;
-   public static final Codec<eeu> b = auo.b(kg.f).xmap(eeu::new, $$0 -> $$0.a);
-
-   public eeu(auo<cyo> $$0) {
-      this.a = $$0;
-   }
+public class eeu extends efi {
+   public static final Codec<eeu> a = Codec.unit(() -> eeu.b);
+   public static final eeu b = new eeu();
 
    @Nullable
    @Override
-   public efe.c a(cvq $$0, hz $$1, hz $$2, efe.c $$3, efe.c $$4, efa $$5) {
-      return dts.a(this.a).test($$0.a_($$4.a())) ? $$4 : null;
+   public efl.c a(cvu $$0, hz $$1, hz $$2, efl.c $$3, efl.c $$4, efh $$5) {
+      hz $$6 = $$4.a();
+      boolean $$7 = $$0.a_($$6).a(cyu.H);
+      return $$7 && !cys.a($$4.b().j($$0, $$6)) ? new efl.c($$6, cyu.H.o(), $$4.c()) : $$4;
    }
 
    @Override
-   protected efd<?> a() {
-      return efd.n;
+   protected efk<?> a() {
+      return efk.m;
    }
 }

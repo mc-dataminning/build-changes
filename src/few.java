@@ -1,20 +1,9 @@
-public class few extends ffe {
-   protected final ffe a;
-   protected final exl b;
+public class few {
+   private static final String[] a = new String[]{"O o o", "o O o", "o o O", "o O o"};
+   private static final long b = 300L;
 
-   public few(ffe $$0, exl $$1, vq $$2) {
-      super($$2);
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   @Override
-   public void k() {
-      this.f.m.as();
-   }
-
-   @Override
-   public void d() {
-      this.f.a(this.a);
+   public static String a(long $$0) {
+      int $$1 = (int)($$0 / 300L % (long)a.length);
+      return a[$$1];
    }
 }

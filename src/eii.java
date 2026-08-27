@@ -1,2 +1,8 @@
-public record eii(eir a, drj.b b) {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface eii {
 }

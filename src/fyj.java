@@ -1,76 +1,36 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import javax.annotation.Nullable;
+public class fyj implements fxt<dkk> {
+   private final gay a;
 
-public class fyj {
-   private final Long2ObjectMap<fyj.a> a = new Long2ObjectOpenHashMap();
+   public fyj(fxu.a $$0) {
+      this.a = $$0.c();
+   }
 
-   @Nullable
-   public fyi a(cvn $$0, hz $$1, hz $$2, int $$3) {
-      int $$4 = jb.a($$1.u() - $$3);
-      int $$5 = jb.a($$1.w() - $$3);
-      int $$6 = jb.a($$2.u() + $$3);
-      int $$7 = jb.a($$2.w() + $$3);
-      fyj.a[][] $$8 = new fyj.a[$$6 - $$4 + 1][$$7 - $$5 + 1];
-
-      for (int $$9 = $$4; $$9 <= $$6; $$9++) {
-         for (int $$10 = $$5; $$10 <= $$7; $$10++) {
-            $$8[$$9 - $$4][$$10 - $$5] = (fyj.a)this.a.computeIfAbsent(cuu.c($$9, $$10), $$1x -> new fyj.a($$0.d(cuu.a($$1x), cuu.b($$1x))));
+   public void a(dkk $$0, float $$1, esh $$2, fvt $$3, int $$4, int $$5) {
+      cvr $$6 = $$0.i();
+      if ($$6 != null) {
+         cut $$7 = $$0.d();
+         bnq $$8 = $$7.b($$6, $$0.aE_());
+         if ($$8 != null) {
+            a($$1, $$2, $$3, $$4, $$8, this.a, $$7.b(), $$7.a());
          }
-      }
-
-      if (a($$1, $$2, $$4, $$5, $$8)) {
-         return null;
-      } else {
-         fyh[][] $$11 = new fyh[$$6 - $$4 + 1][$$7 - $$5 + 1];
-
-         for (int $$12 = $$4; $$12 <= $$6; $$12++) {
-            for (int $$13 = $$5; $$13 <= $$7; $$13++) {
-               $$11[$$12 - $$4][$$13 - $$5] = $$8[$$12 - $$4][$$13 - $$5].b();
-            }
-         }
-
-         return new fyi($$0, $$4, $$5, $$11);
       }
    }
 
-   private static boolean a(hz $$0, hz $$1, int $$2, int $$3, fyj.a[][] $$4) {
-      int $$5 = jb.a($$0.u());
-      int $$6 = jb.a($$0.w());
-      int $$7 = jb.a($$1.u());
-      int $$8 = jb.a($$1.w());
-
-      for (int $$9 = $$5; $$9 <= $$7; $$9++) {
-         for (int $$10 = $$6; $$10 <= $$8; $$10++) {
-            dnm $$11 = $$4[$$9 - $$2][$$10 - $$3].a();
-            if (!$$11.a($$0.v(), $$1.v())) {
-               return false;
-            }
-         }
+   public static void a(float $$0, esh $$1, fvt $$2, int $$3, bnq $$4, gay $$5, double $$6, double $$7) {
+      $$1.a();
+      $$1.a(0.5F, 0.0F, 0.5F);
+      float $$8 = 0.53125F;
+      float $$9 = Math.max($$4.dg(), $$4.dh());
+      if ((double)$$9 > 1.0) {
+         $$8 /= $$9;
       }
 
-      return true;
-   }
-
-   static final class a {
-      private final dnm a;
-      @Nullable
-      private fyh b;
-
-      a(dnm $$0) {
-         this.a = $$0;
-      }
-
-      public dnm a() {
-         return this.a;
-      }
-
-      public fyh b() {
-         if (this.b == null) {
-            this.b = new fyh(this.a);
-         }
-
-         return this.b;
-      }
+      $$1.a(0.0F, 0.4F, 0.0F);
+      $$1.a(a.d.rotationDegrees((float)awi.d((double)$$0, $$6, $$7) * 10.0F));
+      $$1.a(0.0F, -0.2F, 0.0F);
+      $$1.a(a.b.rotationDegrees(-30.0F));
+      $$1.b($$8, $$8, $$8);
+      $$5.a($$4, 0.0, 0.0, 0.0, 0.0F, $$0, $$1, $$2, $$3);
+      $$1.b();
    }
 }

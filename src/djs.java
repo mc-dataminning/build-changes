@@ -1,378 +1,69 @@
-import java.util.List;
-import java.util.function.BooleanSupplier;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import javax.annotation.Nullable;
+public class djs extends dix implements dka {
+   private final djf a = new djf();
+   private final djk b = new djk() {
+      @Override
+      protected void a(cvr $$0, hz $$1, dlj $$2) {
+         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, atl.hL, atm.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
+      }
 
-public class djs extends djx implements djr {
-   public static final int f = 8;
-   public static final int g = 5;
-   private is<coz> h = is.a(5, coz.h);
-   private int i = -1;
-   private long j;
+      @Override
+      protected void b(cvr $$0, hz $$1, dlj $$2) {
+         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, atl.hK, atm.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
+      }
 
-   public djs(hz $$0, dlf $$1) {
-      super(div.r, $$0, $$1);
+      @Override
+      protected void a(cvr $$0, hz $$1, dlj $$2, int $$3, int $$4) {
+         $$0.a(djs.this.p, cyu.fG, 1, $$4);
+      }
+
+      @Override
+      protected boolean a(chl $$0) {
+         return $$0.gg().b(djs.this);
+      }
+   };
+
+   public djs(hz $$0, dlj $$1) {
+      super(diz.d, $$0, $$1);
+   }
+
+   public static void a(cvr $$0, hz $$1, dlj $$2, djs $$3) {
+      $$3.a.a();
    }
 
    @Override
-   public void a(sw $$0) {
-      super.a($$0);
-      this.h = is.a(this.b(), coz.h);
-      if (!this.c_($$0)) {
-         blo.b($$0, this.h);
-      }
-
-      this.i = $$0.h("TransferCooldown");
-   }
-
-   @Override
-   protected void b(sw $$0) {
-      super.b($$0);
-      if (!this.d_($$0)) {
-         blo.a($$0, this.h);
-      }
-
-      $$0.a("TransferCooldown", this.i);
-   }
-
-   @Override
-   public int b() {
-      return this.h.size();
-   }
-
-   @Override
-   public coz a(int $$0, int $$1) {
-      this.e_(null);
-      return blo.a(this.k(), $$0, $$1);
-   }
-
-   @Override
-   public void a(int $$0, coz $$1) {
-      this.e_(null);
-      this.k().set($$0, $$1);
-      if ($$1.M() > this.al_()) {
-         $$1.f(this.al_());
-      }
-   }
-
-   @Override
-   protected vq l() {
-      return vq.c("container.hopper");
-   }
-
-   public static void a(cvn $$0, hz $$1, dlf $$2, djs $$3) {
-      $$3.i--;
-      $$3.j = $$0.X();
-      if (!$$3.w()) {
-         $$3.c(0);
-         a($$0, $$1, $$2, $$3, () -> a($$0, (djr)$$3));
-      }
-   }
-
-   private static boolean a(cvn $$0, hz $$1, dlf $$2, djs $$3, BooleanSupplier $$4) {
-      if ($$0.B) {
-         return false;
-      } else {
-         if (!$$3.w() && $$2.c(dci.c)) {
-            boolean $$5 = false;
-            if (!$$3.aj_()) {
-               $$5 = a($$0, $$1, $$2, (bln)$$3);
-            }
-
-            if (!$$3.m()) {
-               $$5 |= $$4.getAsBoolean();
-            }
-
-            if ($$5) {
-               $$3.c(8);
-               a($$0, $$1, $$2);
-               return true;
-            }
-         }
-
-         return false;
-      }
-   }
-
-   private boolean m() {
-      for (coz $$0 : this.h) {
-         if ($$0.b() || $$0.M() != $$0.g()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   private static boolean a(cvn $$0, hz $$1, dlf $$2, bln $$3) {
-      bln $$4 = b($$0, $$1, $$2);
-      if ($$4 == null) {
-         return false;
-      } else {
-         ie $$5 = $$2.c(dci.b).g();
-         if (b($$4, $$5)) {
-            return false;
-         } else {
-            for (int $$6 = 0; $$6 < $$3.b(); $$6++) {
-               if (!$$3.a($$6).b()) {
-                  coz $$7 = $$3.a($$6).q();
-                  coz $$8 = a($$3, $$4, $$3.a($$6, 1), $$5);
-                  if ($$8.b()) {
-                     $$4.e();
-                     return true;
-                  }
-
-                  $$3.a($$6, $$7);
-               }
-            }
-
-            return false;
-         }
-      }
-   }
-
-   private static IntStream a(bln $$0, ie $$1) {
-      return $$0 instanceof bmg ? IntStream.of(((bmg)$$0).a($$1)) : IntStream.range(0, $$0.b());
-   }
-
-   private static boolean b(bln $$0, ie $$1) {
-      return a($$0, $$1).allMatch($$1x -> {
-         coz $$2 = $$0.a($$1x);
-         return $$2.M() >= $$2.g();
-      });
-   }
-
-   private static boolean c(bln $$0, ie $$1) {
-      return a($$0, $$1).allMatch($$1x -> $$0.a($$1x).b());
-   }
-
-   public static boolean a(cvn $$0, djr $$1) {
-      bln $$2 = c($$0, $$1);
-      if ($$2 != null) {
-         ie $$3 = ie.a;
-         return c($$2, $$3) ? false : a($$2, $$3).anyMatch($$3x -> a($$1, $$2, $$3x, $$3));
-      } else {
-         for (cds $$4 : b($$0, $$1)) {
-            if (a($$1, $$4)) {
-               return true;
-            }
-         }
-
-         return false;
-      }
-   }
-
-   private static boolean a(djr $$0, bln $$1, int $$2, ie $$3) {
-      coz $$4 = $$1.a($$2);
-      if (!$$4.b() && a($$0, $$1, $$4, $$2, $$3)) {
-         coz $$5 = $$4.q();
-         coz $$6 = a($$1, $$0, $$1.a($$2, 1), null);
-         if ($$6.b()) {
-            $$1.e();
-            return true;
-         }
-
-         $$1.a($$2, $$5);
-      }
-
-      return false;
-   }
-
-   public static boolean a(bln $$0, cds $$1) {
-      boolean $$2 = false;
-      coz $$3 = $$1.q().q();
-      coz $$4 = a(null, $$0, $$3, null);
-      if ($$4.b()) {
-         $$2 = true;
-         $$1.a(coz.h);
-         $$1.am();
-      } else {
-         $$1.a($$4);
-      }
-
-      return $$2;
-   }
-
-   public static coz a(@Nullable bln $$0, bln $$1, coz $$2, @Nullable ie $$3) {
-      if ($$1 instanceof bmg $$4 && $$3 != null) {
-         int[] $$5 = $$4.a($$3);
-
-         for (int $$6 = 0; $$6 < $$5.length && !$$2.b(); $$6++) {
-            $$2 = b($$0, $$1, $$2, $$5[$$6], $$3);
-         }
-
-         return $$2;
-      }
-
-      int $$7 = $$1.b();
-
-      for (int $$8 = 0; $$8 < $$7 && !$$2.b(); $$8++) {
-         $$2 = b($$0, $$1, $$2, $$8, $$3);
-      }
-
-      return $$2;
-   }
-
-   private static boolean a(bln $$0, coz $$1, int $$2, @Nullable ie $$3) {
-      if (!$$0.b($$2, $$1)) {
-         return false;
-      } else {
-         if ($$0 instanceof bmg $$4 && !$$4.a($$2, $$1, $$3)) {
-            return false;
-         }
-
+   public boolean a_(int $$0, int $$1) {
+      if ($$0 == 1) {
+         this.a.a($$1 > 0);
          return true;
-      }
-   }
-
-   private static boolean a(bln $$0, bln $$1, coz $$2, int $$3, ie $$4) {
-      if (!$$1.a($$0, $$3, $$2)) {
-         return false;
       } else {
-         if ($$1 instanceof bmg $$5 && !$$5.b($$3, $$2, $$4)) {
-            return false;
-         }
-
-         return true;
+         return super.a_($$0, $$1);
       }
    }
 
-   private static coz b(@Nullable bln $$0, bln $$1, coz $$2, int $$3, @Nullable ie $$4) {
-      coz $$5 = $$1.a($$3);
-      if (a($$1, $$2, $$3, $$4)) {
-         boolean $$6 = false;
-         boolean $$7 = $$1.aj_();
-         if ($$5.b()) {
-            $$1.a($$3, $$2);
-            $$2 = coz.h;
-            $$6 = true;
-         } else if (a($$5, $$2)) {
-            int $$8 = $$2.g() - $$5.M();
-            int $$9 = Math.min($$2.M(), $$8);
-            $$2.h($$9);
-            $$5.g($$9);
-            $$6 = $$9 > 0;
-         }
-
-         if ($$6) {
-            if ($$7 && $$1 instanceof djs $$10 && !$$10.x()) {
-               int $$11 = 0;
-               if ($$0 instanceof djs $$12 && $$10.j >= $$12.j) {
-                  $$11 = 1;
-               }
-
-               $$10.c(8 - $$11);
-            }
-
-            $$1.e();
-         }
+   public void a(chl $$0) {
+      if (!this.q && !$$0.P_()) {
+         this.b.a($$0, this.i(), this.aE_(), this.r());
       }
-
-      return $$2;
    }
 
-   @Nullable
-   private static bln b(cvn $$0, hz $$1, dlf $$2) {
-      ie $$3 = $$2.c(dci.b);
-      return a($$0, $$1.a($$3));
-   }
-
-   @Nullable
-   private static bln c(cvn $$0, djr $$1) {
-      return a($$0, $$1.I(), $$1.J() + 1.0, $$1.K());
-   }
-
-   public static List<cds> b(cvn $$0, djr $$1) {
-      return $$1.ak_()
-         .e()
-         .stream()
-         .flatMap($$2 -> $$0.a(cds.class, $$2.d($$1.I() - 0.5, $$1.J() - 0.5, $$1.K() - 0.5), bnt.a).stream())
-         .collect(Collectors.toList());
-   }
-
-   @Nullable
-   public static bln a(cvn $$0, hz $$1) {
-      return a($$0, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5);
-   }
-
-   @Nullable
-   private static bln a(cvn $$0, double $$1, double $$2, double $$3) {
-      bln $$4 = null;
-      hz $$5 = hz.a($$1, $$2, $$3);
-      dlf $$6 = $$0.a_($$5);
-      cyo $$7 = $$6.b();
-      if ($$7 instanceof bmh) {
-         $$4 = ((bmh)$$7).a($$6, $$0, $$5);
-      } else if ($$6.t()) {
-         dit $$8 = $$0.c_($$5);
-         if ($$8 instanceof bln) {
-            $$4 = (bln)$$8;
-            if ($$4 instanceof dja && $$7 instanceof czr) {
-               $$4 = czr.a((czr)$$7, $$6, $$0, $$5, true);
-            }
-         }
+   public void b(chl $$0) {
+      if (!this.q && !$$0.P_()) {
+         this.b.b($$0, this.i(), this.aE_(), this.r());
       }
-
-      if ($$4 == null) {
-         List<bno> $$9 = $$0.a((bno)null, new enn($$1 - 0.5, $$2 - 0.5, $$3 - 0.5, $$1 + 0.5, $$2 + 0.5, $$3 + 0.5), bnt.d);
-         if (!$$9.isEmpty()) {
-            $$4 = (bln)$$9.get($$0.z.a($$9.size()));
-         }
-      }
-
-      return $$4;
    }
 
-   private static boolean a(coz $$0, coz $$1) {
-      return $$0.M() <= $$0.g() && coz.c($$0, $$1);
+   public boolean c(chl $$0) {
+      return blp.a(this, $$0);
    }
 
-   @Override
-   public double I() {
-      return (double)this.p.u() + 0.5;
-   }
-
-   @Override
-   public double J() {
-      return (double)this.p.v() + 0.5;
-   }
-
-   @Override
-   public double K() {
-      return (double)this.p.w() + 0.5;
-   }
-
-   private void c(int $$0) {
-      this.i = $$0;
-   }
-
-   private boolean w() {
-      return this.i > 0;
-   }
-
-   private boolean x() {
-      return this.i > 8;
-   }
-
-   @Override
-   protected is<coz> k() {
-      return this.h;
-   }
-
-   @Override
-   protected void a(is<coz> $$0) {
-      this.h = $$0;
-   }
-
-   public static void a(cvn $$0, hz $$1, dlf $$2, bno $$3, djs $$4) {
-      if ($$3 instanceof cds $$5 && !$$5.q().b() && eoi.c(eoi.a($$3.cH().d((double)(-$$1.u()), (double)(-$$1.v()), (double)(-$$1.w()))), $$4.ak_(), enw.i)) {
-         a($$0, $$1, $$2, $$4, () -> a((bln)$$4, $$5));
+   public void c() {
+      if (!this.q) {
+         this.b.c(this.i(), this.aE_(), this.r());
       }
    }
 
    @Override
-   protected ckb a(int $$0, chg $$1) {
-      return new cla($$0, $$1, this);
+   public float a(float $$0) {
+      return this.a.a($$0);
    }
 }

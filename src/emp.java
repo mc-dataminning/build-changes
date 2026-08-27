@@ -1,9 +1,11 @@
-public interface emp extends eiw {
-   float b(eiv var1);
+import java.util.Set;
+import javax.annotation.Nullable;
 
-   default int a(eiv $$0) {
-      return Math.round(this.b($$0));
-   }
+public interface emp {
+   @Nullable
+   tt a(ejc var1);
 
-   emo b();
+   Set<elk<?>> b();
+
+   emo a();
 }

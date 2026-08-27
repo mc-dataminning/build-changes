@@ -22,17 +22,17 @@ public class aja {
          if (kf.as.e().isEmpty()) {
             throw new IllegalStateException("Unable to load registries");
          } else {
-            dbo.b();
-            czz.b();
-            if (bnu.a(bnu.bw) == null) {
+            dbs.b();
+            dad.b();
+            if (bnw.a(bnw.bw) == null) {
                throw new IllegalStateException("Failed loading EntityTypes");
             } else {
-               cqw.a();
+               cra.a();
                gi.a();
                jl.c();
                jf.a();
                kf.a();
-               cng.a();
+               cnk.a();
                d();
                b.set(Duration.between($$0, Instant.now()).toMillis());
             }
@@ -52,9 +52,9 @@ public class aja {
 
    private static void a(final Set<String> $$0) {
       final sr $$1 = sr.a();
-      cvj.a(new cvj.c() {
+      cvn.a(new cvn.c() {
          @Override
-         public <T extends cvj.g<T>> void a(cvj.e<T> $$0x, cvj.f<T> $$1x) {
+         public <T extends cvn.g<T>> void a(cvn.e<T> $$0x, cvn.f<T> $$1x) {
             if (!$$1.b($$0.b())) {
                $$0.add($$0.a());
             }
@@ -64,12 +64,12 @@ public class aja {
 
    public static Set<String> b() {
       Set<String> $$0 = new TreeSet<>();
-      a(kf.u, bpg::c, $$0);
-      a(kf.g, bnu::g, $$0);
-      a(kf.d, bmz::d, $$0);
-      a(kf.h, cou::a, $$0);
-      a(kf.f, cti::h, $$0);
-      a(kf.e, cyo::h, $$0);
+      a(kf.u, bpk::c, $$0);
+      a(kf.g, bnw::g, $$0);
+      a(kf.d, bnb::d, $$0);
+      a(kf.h, coy::a, $$0);
+      a(kf.f, ctm::h, $$0);
+      a(kf.e, cys::h, $$0);
       a(kf.m, $$0x -> "stat." + $$0x.toString().replace(':', '.'), $$0);
       a($$0);
       return $$0;
@@ -99,7 +99,7 @@ public class aja {
          dv.b();
       }
 
-      bpm.a();
+      bpq.a();
    }
 
    private static void d() {

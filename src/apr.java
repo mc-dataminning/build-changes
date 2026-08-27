@@ -1,137 +1,105 @@
-import com.mojang.authlib.GameProfile;
+import com.google.common.collect.Comparators;
 import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Objects;
 import org.slf4j.Logger;
 
-public abstract class apr implements yo {
-   private static final Logger e = LogUtils.getLogger();
-   public static final int a = 15000;
-   private static final vq f = vq.c("disconnect.timeout");
-   static final vq b = vq.c("multiplayer.disconnect.unexpected_query_response");
-   protected final MinecraftServer c;
-   protected final uo d;
+public class apr {
+   private static final Logger c = LogUtils.getLogger();
+   public static final float a = 0.01F;
+   public static final float b = 64.0F;
+   private static final float d = 9.0F;
+   private static final int e = 10;
+   private final LongSet f = new LongOpenHashSet();
    private final boolean g;
-   private long h;
-   private boolean i;
-   private long j;
-   private int k;
-   private volatile boolean l = false;
+   private float h = 9.0F;
+   private float i;
+   private int j;
+   private int k = 1;
 
-   public apr(MinecraftServer $$0, uo $$1, apk $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.h = ac.b();
-      this.k = $$2.b();
-      this.g = $$2.d();
+   public apr(boolean $$0) {
+      this.g = $$0;
    }
 
-   @Override
-   public void a(vq $$0) {
-      if (this.i()) {
-         e.info("Stopping singleplayer server as player logged out");
-         this.c.a(false);
+   public void a(dnq $$0) {
+      this.f.add($$0.f().a());
+   }
+
+   public void a(aox $$0, cuy $$1) {
+      if (!this.f.remove($$1.a()) && $$0.bx()) {
+         $$0.d.b(new abl($$1));
       }
    }
 
-   @Override
-   public void a(yr $$0) {
-      if (this.i && $$0.b() == this.j) {
-         int $$1 = (int)(ac.b() - this.h);
-         this.k = (this.k * 3 + $$1) / 4;
-         this.i = false;
-      } else if (!this.i()) {
-         this.b(f);
-      }
-   }
+   public void a(aox $$0) {
+      if (this.j < this.k) {
+         float $$1 = Math.max(1.0F, this.h);
+         this.i = Math.min(this.i + this.h, $$1);
+         if (!(this.i < 1.0F)) {
+            if (!this.f.isEmpty()) {
+               aow $$2 = $$0.z();
+               aog $$3 = $$2.l().a;
+               List<dnq> $$4 = this.a($$3, $$0.do());
+               if (!$$4.isEmpty()) {
+                  apv $$5 = $$0.d;
+                  this.j++;
+                  $$5.b(aav.a);
 
-   @Override
-   public void a(ys $$0) {
-   }
+                  for (dnq $$6 : $$4) {
+                     a($$5, $$2, $$6);
+                  }
 
-   @Override
-   public void a(yq $$0) {
-   }
-
-   @Override
-   public void a(yt $$0) {
-      ya.a($$0, this, this.c);
-      if ($$0.e() == yt.a.b && this.c.V()) {
-         e.info("Disconnecting {} due to resource pack {} rejection", this.j().getName(), $$0.b());
-         this.b(vq.c("multiplayer.requiredTexturePrompt.disconnect"));
-      }
-   }
-
-   @Override
-   public void a(aae $$0) {
-      this.b(b);
-   }
-
-   protected void f() {
-      this.c.aR().a("keepAlive");
-      long $$0 = ac.b();
-      if ($$0 - this.h >= 15000L) {
-         if (this.i) {
-            this.b(f);
-         } else {
-            this.i = true;
-            this.h = $$0;
-            this.j = $$0;
-            this.b(new yg(this.j));
+                  $$5.b(new aau($$4.size()));
+                  this.i = this.i - (float)$$4.size();
+               }
+            }
          }
       }
-
-      this.c.aR().c();
    }
 
-   public void g() {
-      this.l = true;
+   private static void a(apv $$0, aow $$1, dnq $$2) {
+      $$0.b(new abr($$2, $$1.z_(), null, null));
+      cuy $$3 = $$2.f();
+      aep.a($$1, $$3);
    }
 
-   public void h() {
-      this.l = false;
-      this.d.a();
-   }
-
-   public void b(xx<?> $$0) {
-      this.a($$0, null);
-   }
-
-   public void a(xx<?> $$0, @Nullable ux $$1) {
-      boolean $$2 = !this.l || !this.c.br();
-
-      try {
-         this.d.a($$0, $$1, $$2);
-      } catch (Throwable var7) {
-         o $$4 = o.a(var7, "Sending packet");
-         p $$5 = $$4.a("Packet being sent");
-         $$5.a("Packet class", () -> $$0.getClass().getCanonicalName());
-         throw new y($$4);
+   private List<dnq> a(aog $$0, cuy $$1) {
+      int $$2 = awi.d(this.i);
+      List<dnq> $$4;
+      if (!this.g && this.f.size() > $$2) {
+         $$4 = this.f
+            .stream()
+            .collect(Comparators.least($$2, Comparator.comparingInt($$1::c)))
+            .stream()
+            .mapToLong(Long::longValue)
+            .mapToObj($$0::d)
+            .filter(Objects::nonNull)
+            .toList();
+      } else {
+         $$4 = this.f.longStream().mapToObj($$0::d).filter(Objects::nonNull).sorted(Comparator.comparingInt($$1x -> $$1.b($$1x.f()))).toList();
       }
+
+      for (dnq $$5 : $$4) {
+         this.f.remove($$5.f().a());
+      }
+
+      return $$4;
    }
 
-   public void b(vq $$0) {
-      this.d.a(new yf($$0), ux.a(() -> this.d.a($$0)));
-      this.d.m();
-      this.c.h(this.d::n);
+   public void a(float $$0) {
+      this.j--;
+      this.h = Double.isNaN((double)$$0) ? 0.01F : awi.a($$0, 0.01F, 64.0F);
+      if (this.j == 0) {
+         this.i = 1.0F;
+      }
+
+      this.k = 10;
    }
 
-   protected boolean i() {
-      return this.c.a(this.j());
-   }
-
-   protected abstract GameProfile j();
-
-   @axl
-   public GameProfile k() {
-      return this.j();
-   }
-
-   public int l() {
-      return this.k;
-   }
-
-   protected apk a(aok $$0) {
-      return new apk(this.j(), this.k, $$0, this.g);
+   public boolean a(long $$0) {
+      return this.f.contains($$0);
    }
 }

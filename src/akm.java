@@ -17,7 +17,7 @@ public class akm {
                      ((RequiredArgumentBuilder)dv.a("amount", FloatArgumentType.floatArg(0.0F))
                            .executes(
                               $$0x -> a(
-                                    (du)$$0x.getSource(), eh.a($$0x, "target"), FloatArgumentType.getFloat($$0x, "amount"), ((du)$$0x.getSource()).e().ai().n()
+                                    (du)$$0x.getSource(), eh.a($$0x, "target"), FloatArgumentType.getFloat($$0x, "amount"), ((du)$$0x.getSource()).e().ah().n()
                                  )
                            ))
                         .then(
@@ -27,7 +27,7 @@ public class akm {
                                              (du)$$0x.getSource(),
                                              eh.a($$0x, "target"),
                                              FloatArgumentType.getFloat($$0x, "amount"),
-                                             new bmn(et.a($$0x, "damageType", kg.r))
+                                             new bmp(et.a($$0x, "damageType", kg.r))
                                           )
                                     ))
                                  .then(
@@ -39,7 +39,7 @@ public class akm {
                                                       (du)$$0x.getSource(),
                                                       eh.a($$0x, "target"),
                                                       FloatArgumentType.getFloat($$0x, "amount"),
-                                                      new bmn(et.a($$0x, "damageType", kg.r), fv.a($$0x, "location"))
+                                                      new bmp(et.a($$0x, "damageType", kg.r), fv.a($$0x, "location"))
                                                    )
                                              )
                                        )
@@ -53,7 +53,7 @@ public class akm {
                                                       (du)$$0x.getSource(),
                                                       eh.a($$0x, "target"),
                                                       FloatArgumentType.getFloat($$0x, "amount"),
-                                                      new bmn(et.a($$0x, "damageType", kg.r), eh.a($$0x, "entity"))
+                                                      new bmp(et.a($$0x, "damageType", kg.r), eh.a($$0x, "entity"))
                                                    )
                                              ))
                                           .then(
@@ -65,7 +65,7 @@ public class akm {
                                                                (du)$$0x.getSource(),
                                                                eh.a($$0x, "target"),
                                                                FloatArgumentType.getFloat($$0x, "amount"),
-                                                               new bmn(et.a($$0x, "damageType", kg.r), eh.a($$0x, "entity"), eh.a($$0x, "cause"))
+                                                               new bmp(et.a($$0x, "damageType", kg.r), eh.a($$0x, "entity"), eh.a($$0x, "cause"))
                                                             )
                                                       )
                                                 )
@@ -78,7 +78,7 @@ public class akm {
       );
    }
 
-   private static int a(du $$0, bno $$1, float $$2, bmn $$3) throws CommandSyntaxException {
+   private static int a(du $$0, bnq $$1, float $$2, bmp $$3) throws CommandSyntaxException {
       if ($$1.a($$3, $$2)) {
          $$0.a(() -> vq.a("commands.damage.success", $$2, $$1.Q_()), true);
          return 1;

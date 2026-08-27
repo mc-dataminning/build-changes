@@ -1,9 +1,5 @@
-import java.util.List;
+public interface ckr {
+   void a(ckf var1, int var2, cpd var3);
 
-public interface ckr extends bln, clz {
-   int f();
-
-   int g();
-
-   List<coz> h();
+   void a(ckf var1, int var2, int var3);
 }

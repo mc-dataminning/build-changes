@@ -1,285 +1,230 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
 import java.util.List;
-import java.util.Set;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import java.util.Optional;
+import java.util.stream.Stream;
 
-public class cnf {
-   private final vq a;
-   String b = "items.png";
-   boolean c = true;
-   boolean d = true;
-   boolean e = false;
-   private final cnf.f f;
-   private final int g;
-   private final cnf.h h;
-   @Nullable
-   private coz i;
-   private Collection<coz> j = cpa.a();
-   private Set<coz> k = cpa.a();
-   @Nullable
-   private Consumer<List<coz>> l;
-   private final Supplier<coz> m;
-   private final cnf.b n;
+public class cnf extends coy {
+   private static final String b = "Items";
+   public static final int a = 64;
+   private static final int c = 4;
+   private static final int d = awi.f(0.4F, 0.4F, 1.0F);
 
-   cnf(cnf.f $$0, int $$1, cnf.h $$2, vq $$3, Supplier<coz> $$4, cnf.b $$5) {
-      this.f = $$0;
-      this.g = $$1;
-      this.a = $$3;
-      this.m = $$4;
-      this.n = $$5;
-      this.h = $$2;
+   public cnf(coy.a $$0) {
+      super($$0);
    }
 
-   public static cnf.a a(cnf.f $$0, int $$1) {
-      return new cnf.a($$0, $$1);
+   public static float d(cpd $$0) {
+      return (float)o($$0) / 64.0F;
    }
 
-   public vq a() {
-      return this.a;
-   }
-
-   public coz b() {
-      if (this.i == null) {
-         this.i = this.m.get();
-      }
-
-      return this.i;
-   }
-
-   public String c() {
-      return this.b;
-   }
-
-   public boolean d() {
-      return this.d;
-   }
-
-   public boolean e() {
-      return this.c;
-   }
-
-   public int f() {
-      return this.g;
-   }
-
-   public cnf.f g() {
-      return this.f;
-   }
-
-   public boolean h() {
-      return !this.j.isEmpty();
-   }
-
-   public boolean i() {
-      return this.h != cnf.h.a || this.h();
-   }
-
-   public boolean j() {
-      return this.e;
-   }
-
-   public cnf.h k() {
-      return this.h;
-   }
-
-   public void a(cnf.d $$0) {
-      cnf.c $$1 = new cnf.c(this, $$0.a);
-      aix<cnf> $$2 = kf.ap.d(this).orElseThrow(() -> new IllegalStateException("Unregistered creative tab: " + this));
-      this.n.accept($$0, $$1);
-      this.j = $$1.a;
-      this.k = $$1.b;
-      this.n();
-   }
-
-   public Collection<coz> l() {
-      return this.j;
-   }
-
-   public Collection<coz> m() {
-      return this.k;
-   }
-
-   public boolean a(coz $$0) {
-      return this.k.contains($$0);
-   }
-
-   public void a(Consumer<List<coz>> $$0) {
-      this.l = $$0;
-   }
-
-   public void n() {
-      if (this.l != null) {
-         this.l.accept(Lists.newArrayList(this.k));
-      }
-   }
-
-   public static class a {
-      private static final cnf.b a = ($$0, $$1) -> {
-      };
-      private final cnf.f b;
-      private final int c;
-      private vq d = vq.i();
-      private Supplier<coz> e = () -> coz.h;
-      private cnf.b f = a;
-      private boolean g = true;
-      private boolean h = true;
-      private boolean i = false;
-      private cnf.h j = cnf.h.a;
-      private String k = "items.png";
-
-      public a(cnf.f $$0, int $$1) {
-         this.b = $$0;
-         this.c = $$1;
-      }
-
-      public cnf.a a(vq $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public cnf.a a(Supplier<coz> $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public cnf.a a(cnf.b $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public cnf.a a() {
-         this.i = true;
-         return this;
-      }
-
-      public cnf.a b() {
-         this.h = false;
-         return this;
-      }
-
-      public cnf.a c() {
-         this.g = false;
-         return this;
-      }
-
-      protected cnf.a a(cnf.h $$0) {
-         this.j = $$0;
-         return this;
-      }
-
-      public cnf.a a(String $$0) {
-         this.k = $$0;
-         return this;
-      }
-
-      public cnf d() {
-         if ((this.j == cnf.h.c || this.j == cnf.h.b) && this.f != a) {
-            throw new IllegalStateException("Special tabs can't have display items");
-         } else {
-            cnf $$0 = new cnf(this.b, this.c, this.j, this.d, this.e, this.f);
-            $$0.e = this.i;
-            $$0.d = this.h;
-            $$0.c = this.g;
-            $$0.b = this.k;
-            return $$0;
-         }
-      }
-   }
-
-   @FunctionalInterface
-   public interface b {
-      void accept(cnf.d var1, cnf.e var2);
-   }
-
-   static class c implements cnf.e {
-      public final Collection<coz> a = cpa.a();
-      public final Set<coz> b = cpa.a();
-      private final cnf c;
-      private final cjs d;
-
-      public c(cnf $$0, cjs $$1) {
-         this.c = $$0;
-         this.d = $$1;
-      }
-
-      @Override
-      public void a(coz $$0, cnf.g $$1) {
-         if ($$0.M() != 1) {
-            throw new IllegalArgumentException("Stack size must be exactly 1");
-         } else {
-            boolean $$2 = this.a.contains($$0) && $$1 != cnf.g.c;
-            if ($$2) {
-               throw new IllegalStateException(
-                  "Accidentally adding the same item stack twice " + $$0.K().getString() + " to a Creative Mode Tab: " + this.c.a().getString()
-               );
-            } else {
-               if ($$0.d().a(this.d)) {
-                  switch ($$1) {
-                     case a:
-                        this.a.add($$0);
-                        this.b.add($$0);
-                        break;
-                     case b:
-                        this.a.add($$0);
-                        break;
-                     case c:
-                        this.b.add($$0);
-                  }
-               }
+   @Override
+   public boolean a(cpd $$0, cma $$1, ckn $$2, chl $$3) {
+      if ($$2 != ckn.b) {
+         return false;
+      } else {
+         cpd $$4 = $$1.g();
+         if ($$4.b()) {
+            this.a($$3);
+            p($$0).ifPresent($$2x -> b($$0, $$1.d($$2x)));
+         } else if ($$4.d().ar_()) {
+            int $$5 = (64 - o($$0)) / k($$4);
+            int $$6 = b($$0, $$1.b($$4.M(), $$5, $$3));
+            if ($$6 > 0) {
+               this.b($$3);
             }
          }
+
+         return true;
       }
    }
 
-   public static record d(cjs a, boolean b, il.b c) {
+   @Override
+   public boolean a(cpd $$0, cpd $$1, cma $$2, ckn $$3, chl $$4, boz $$5) {
+      if ($$3 == ckn.b && $$2.b($$4)) {
+         if ($$1.b()) {
+            p($$0).ifPresent($$2x -> {
+               this.a($$4);
+               $$5.a($$2x);
+            });
+         } else {
+            int $$6 = b($$0, $$1);
+            if ($$6 > 0) {
+               this.b($$4);
+               $$1.h($$6);
+            }
+         }
 
-      public boolean a(cjs $$0, boolean $$1, il.b $$2) {
-         return !this.a.equals($$0) || this.b != $$1 || this.c != $$2;
+         return true;
+      } else {
+         return false;
       }
    }
 
-   public interface e {
-      void a(coz var1, cnf.g var2);
-
-      default void a(coz $$0) {
-         this.a($$0, cnf.g.a);
-      }
-
-      default void a(cvm $$0, cnf.g $$1) {
-         this.a(new coz($$0), $$1);
-      }
-
-      default void a(cvm $$0) {
-         this.a(new coz($$0), cnf.g.a);
-      }
-
-      default void a(Collection<coz> $$0, cnf.g $$1) {
-         $$0.forEach($$1x -> this.a($$1x, $$1));
-      }
-
-      default void a(Collection<coz> $$0) {
-         this.a($$0, cnf.g.a);
+   @Override
+   public blx<cpd> a(cvr $$0, chl $$1, blv $$2) {
+      cpd $$3 = $$1.b($$2);
+      if (a($$3, $$1)) {
+         this.c($$1);
+         $$1.b(atv.c.b(this));
+         return blx.a($$3, $$0.y_());
+      } else {
+         return blx.d($$3);
       }
    }
 
-   public static enum f {
-      a,
-      b;
+   @Override
+   public boolean e(cpd $$0) {
+      return o($$0) > 0;
    }
 
-   protected static enum g {
-      a,
-      b,
-      c;
+   @Override
+   public int f(cpd $$0) {
+      return Math.min(1 + 12 * o($$0) / 64, 13);
    }
 
-   public static enum h {
-      a,
-      b,
-      c,
-      d;
+   @Override
+   public int g(cpd $$0) {
+      return d;
+   }
+
+   private static int b(cpd $$0, cpd $$1) {
+      if (!$$1.b() && $$1.d().ar_()) {
+         sw $$2 = $$0.x();
+         if (!$$2.e("Items")) {
+            $$2.a("Items", new tc());
+         }
+
+         int $$3 = o($$0);
+         int $$4 = k($$1);
+         int $$5 = Math.min($$1.M(), (64 - $$3) / $$4);
+         if ($$5 == 0) {
+            return 0;
+         } else {
+            tc $$6 = $$2.c("Items", 10);
+            Optional<sw> $$7 = a($$1, $$6);
+            if ($$7.isPresent()) {
+               sw $$8 = $$7.get();
+               cpd $$9 = cpd.a($$8);
+               $$9.g($$5);
+               $$9.b($$8);
+               $$6.remove($$8);
+               $$6.c(0, $$8);
+            } else {
+               cpd $$10 = $$1.c($$5);
+               sw $$11 = new sw();
+               $$10.b($$11);
+               $$6.c(0, $$11);
+            }
+
+            return $$5;
+         }
+      } else {
+         return 0;
+      }
+   }
+
+   private static Optional<sw> a(cpd $$0, tc $$1) {
+      return $$0.a(cpg.qT)
+         ? Optional.empty()
+         : $$1.stream().filter(sw.class::isInstance).map(sw.class::cast).filter($$1x -> cpd.c(cpd.a($$1x), $$0)).findFirst();
+   }
+
+   private static int k(cpd $$0) {
+      if ($$0.a(cpg.qT)) {
+         return 4 + o($$0);
+      } else {
+         if (($$0.a(cpg.ws) || $$0.a(cpg.wr)) && $$0.v()) {
+            sw $$1 = cmw.a($$0);
+            if ($$1 != null && !$$1.c("Bees", 10).isEmpty()) {
+               return 64;
+            }
+         }
+
+         return 64 / $$0.g();
+      }
+   }
+
+   private static int o(cpd $$0) {
+      return q($$0).mapToInt($$0x -> k($$0x) * $$0x.M()).sum();
+   }
+
+   private static Optional<cpd> p(cpd $$0) {
+      sw $$1 = $$0.x();
+      if (!$$1.e("Items")) {
+         return Optional.empty();
+      } else {
+         tc $$2 = $$1.c("Items", 10);
+         if ($$2.isEmpty()) {
+            return Optional.empty();
+         } else {
+            int $$3 = 0;
+            sw $$4 = $$2.a(0);
+            cpd $$5 = cpd.a($$4);
+            $$2.c(0);
+            if ($$2.isEmpty()) {
+               $$0.c("Items");
+            }
+
+            return Optional.of($$5);
+         }
+      }
+   }
+
+   private static boolean a(cpd $$0, chl $$1) {
+      sw $$2 = $$0.x();
+      if (!$$2.e("Items")) {
+         return false;
+      } else {
+         if ($$1 instanceof aox) {
+            tc $$3 = $$2.c("Items", 10);
+
+            for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
+               sw $$5 = $$3.a($$4);
+               cpd $$6 = cpd.a($$5);
+               $$1.a($$6, true);
+            }
+         }
+
+         $$0.c("Items");
+         return true;
+      }
+   }
+
+   private static Stream<cpd> q(cpd $$0) {
+      sw $$1 = $$0.w();
+      if ($$1 == null) {
+         return Stream.empty();
+      } else {
+         tc $$2 = $$1.c("Items", 10);
+         return $$2.stream().map(sw.class::cast).map(cpd::a);
+      }
+   }
+
+   @Override
+   public Optional<cmi> h(cpd $$0) {
+      is<cpd> $$1 = is.a();
+      q($$0).forEach($$1::add);
+      return Optional.of(new cmh($$1, o($$0)));
+   }
+
+   @Override
+   public void a(cpd $$0, cvr $$1, List<vq> $$2, cqu $$3) {
+      $$2.add(vq.a("item.minecraft.bundle.fullness", o($$0), 64).a(n.h));
+   }
+
+   @Override
+   public void a(cdw $$0) {
+      cpf.a($$0, q($$0.q()));
+   }
+
+   private void a(bnq $$0) {
+      $$0.a(atl.di, 0.8F, 0.8F + $$0.dM().F_().i() * 0.4F);
+   }
+
+   private void b(bnq $$0) {
+      $$0.a(atl.dh, 0.8F, 0.8F + $$0.dM().F_().i() * 0.4F);
+   }
+
+   private void c(bnq $$0) {
+      $$0.a(atl.dg, 0.8F, 0.8F + $$0.dM().F_().i() * 0.4F);
    }
 }

@@ -62,10 +62,10 @@ public class ane {
       );
    }
 
-   private static int a(du $$0, Collection<aow> $$1) {
+   private static int a(du $$0, Collection<aox> $$1) {
       aax $$2 = new aax(false);
 
-      for (aow $$3 : $$1) {
+      for (aox $$3 : $$1) {
          $$3.d.b($$2);
       }
 
@@ -78,10 +78,10 @@ public class ane {
       return $$1.size();
    }
 
-   private static int b(du $$0, Collection<aow> $$1) {
+   private static int b(du $$0, Collection<aox> $$1) {
       aax $$2 = new aax(true);
 
-      for (aow $$3 : $$1) {
+      for (aox $$3 : $$1) {
          $$3.d.b($$2);
       }
 
@@ -94,8 +94,8 @@ public class ane {
       return $$1.size();
    }
 
-   private static int a(du $$0, Collection<aow> $$1, vq $$2, String $$3, Function<vq, xx<?>> $$4) throws CommandSyntaxException {
-      for (aow $$5 : $$1) {
+   private static int a(du $$0, Collection<aox> $$1, vq $$2, String $$3, Function<vq, xx<?>> $$4) throws CommandSyntaxException {
+      for (aox $$5 : $$1) {
          $$5.d.b($$4.apply(vt.a($$0, $$2, $$5, 0)));
       }
 
@@ -108,10 +108,10 @@ public class ane {
       return $$1.size();
    }
 
-   private static int a(du $$0, Collection<aow> $$1, int $$2, int $$3, int $$4) {
+   private static int a(du $$0, Collection<aox> $$1, int $$2, int $$3, int $$4) {
       adx $$5 = new adx($$2, $$3, $$4);
 
-      for (aow $$6 : $$1) {
+      for (aox $$6 : $$1) {
          $$6.d.b($$5);
       }
 

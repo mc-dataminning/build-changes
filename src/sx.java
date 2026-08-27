@@ -97,17 +97,17 @@ public class sx extends tm {
 
    @Override
    public int g() {
-      return awh.a(this.w);
+      return awi.a(this.w);
    }
 
    @Override
    public short h() {
-      return (short)(awh.a(this.w) & 65535);
+      return (short)(awi.a(this.w) & 65535);
    }
 
    @Override
    public byte i() {
-      return (byte)(awh.a(this.w) & 0xFF);
+      return (byte)(awi.a(this.w) & 0xFF);
    }
 
    @Override

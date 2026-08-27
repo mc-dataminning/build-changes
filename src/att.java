@@ -1,45 +1,37 @@
-import java.util.IdentityHashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
+import java.util.Locale;
 
-public class att<T> implements Iterable<atr<T>> {
-   private final iv<T> a;
-   private final Map<T, atr<T>> b = new IdentityHashMap<>();
-   private final vq c;
-   private final xo<vb, atr<T>> d;
+public interface att {
+   DecimalFormat a = ac.a(new DecimalFormat("########0.00"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
+   att b = NumberFormat.getIntegerInstance(Locale.US)::format;
+   att c = $$0 -> a.format((double)$$0 * 0.1);
+   att d = $$0 -> {
+      double $$1 = (double)$$0 / 100.0;
+      double $$2 = $$1 / 1000.0;
+      if ($$2 > 0.5) {
+         return a.format($$2) + " km";
+      } else {
+         return $$1 > 0.5 ? a.format($$1) + " m" : $$0 + " cm";
+      }
+   };
+   att e = $$0 -> {
+      double $$1 = (double)$$0 / 20.0;
+      double $$2 = $$1 / 60.0;
+      double $$3 = $$2 / 60.0;
+      double $$4 = $$3 / 24.0;
+      double $$5 = $$4 / 365.0;
+      if ($$5 > 0.5) {
+         return a.format($$5) + " y";
+      } else if ($$4 > 0.5) {
+         return a.format($$4) + " d";
+      } else if ($$3 > 0.5) {
+         return a.format($$3) + " h";
+      } else {
+         return $$2 > 0.5 ? a.format($$2) + " m" : $$1 + " s";
+      }
+   };
 
-   public att(iv<T> $$0, vq $$1) {
-      this.a = $$0;
-      this.c = $$1;
-      this.d = xm.a($$0.c()).a(this::b, atr::b);
-   }
-
-   public xo<vb, atr<T>> a() {
-      return this.d;
-   }
-
-   public boolean a(T $$0) {
-      return this.b.containsKey($$0);
-   }
-
-   public atr<T> a(T $$0, ats $$1) {
-      return this.b.computeIfAbsent($$0, $$1x -> new atr<>(this, (T)$$1x, $$1));
-   }
-
-   public iv<T> b() {
-      return this.a;
-   }
-
-   @Override
-   public Iterator<atr<T>> iterator() {
-      return this.b.values().iterator();
-   }
-
-   public atr<T> b(T $$0) {
-      return this.a($$0, ats.b);
-   }
-
-   public vq c() {
-      return this.c;
-   }
+   String format(int var1);
 }

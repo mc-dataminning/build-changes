@@ -1,74 +1,138 @@
 import javax.annotation.Nullable;
 
-public class cln extends bmd {
+public class cln implements blp {
+   private final cuo c;
+   private final is<cpd> d = is.a(3, cpd.h);
    @Nullable
-   private djo c;
+   private cup e;
+   private int f;
+   private int g;
 
-   public cln() {
-      super(27);
-   }
-
-   public void a(djo $$0) {
+   public cln(cuo $$0) {
       this.c = $$0;
    }
 
-   public boolean b(djo $$0) {
-      return this.c == $$0;
+   @Override
+   public int b() {
+      return this.d.size();
    }
 
    @Override
-   public void a(tc $$0) {
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         this.a($$1, coz.h);
-      }
-
-      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         sw $$3 = $$0.a($$2);
-         int $$4 = $$3.f("Slot") & 255;
-         if ($$4 >= 0 && $$4 < this.b()) {
-            this.a($$4, coz.a($$3));
-         }
-      }
-   }
-
-   @Override
-   public tc g() {
-      tc $$0 = new tc();
-
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         coz $$2 = this.a($$1);
-         if (!$$2.b()) {
-            sw $$3 = new sw();
-            $$3.a("Slot", (byte)$$1);
-            $$2.b($$3);
-            $$0.add($$3);
+   public boolean aj_() {
+      for (cpd $$0 : this.d) {
+         if (!$$0.b()) {
+            return false;
          }
       }
 
-      return $$0;
+      return true;
    }
 
    @Override
-   public boolean a(chh $$0) {
-      return this.c != null && !this.c.c($$0) ? false : super.a($$0);
+   public cpd a(int $$0) {
+      return this.d.get($$0);
    }
 
    @Override
-   public void d_(chh $$0) {
-      if (this.c != null) {
-         this.c.a($$0);
+   public cpd a(int $$0, int $$1) {
+      cpd $$2 = this.d.get($$0);
+      if ($$0 == 2 && !$$2.b()) {
+         return blq.a(this.d, $$0, $$2.M());
+      } else {
+         cpd $$3 = blq.a(this.d, $$0, $$1);
+         if (!$$3.b() && this.d($$0)) {
+            this.f();
+         }
+
+         return $$3;
+      }
+   }
+
+   private boolean d(int $$0) {
+      return $$0 == 0 || $$0 == 1;
+   }
+
+   @Override
+   public cpd b(int $$0) {
+      return blq.a(this.d, $$0);
+   }
+
+   @Override
+   public void a(int $$0, cpd $$1) {
+      this.d.set($$0, $$1);
+      if (!$$1.b() && $$1.M() > this.al_()) {
+         $$1.f(this.al_());
       }
 
-      super.d_($$0);
+      if (this.d($$0)) {
+         this.f();
+      }
    }
 
    @Override
-   public void c(chh $$0) {
-      if (this.c != null) {
-         this.c.b($$0);
+   public boolean a(chl $$0) {
+      return this.c.gg() == $$0;
+   }
+
+   @Override
+   public void e() {
+      this.f();
+   }
+
+   public void f() {
+      this.e = null;
+      cpd $$0;
+      cpd $$1;
+      if (this.d.get(0).b()) {
+         $$0 = this.d.get(1);
+         $$1 = cpd.h;
+      } else {
+         $$0 = this.d.get(0);
+         $$1 = this.d.get(1);
       }
 
-      super.c($$0);
-      this.c = null;
+      if ($$0.b()) {
+         this.a(2, cpd.h);
+         this.g = 0;
+      } else {
+         cuq $$4 = this.c.gi();
+         if (!$$4.isEmpty()) {
+            cup $$5 = $$4.a($$0, $$1, this.f);
+            if ($$5 == null || $$5.q()) {
+               this.e = $$5;
+               $$5 = $$4.a($$1, $$0, this.f);
+            }
+
+            if ($$5 != null && !$$5.q()) {
+               this.e = $$5;
+               this.a(2, $$5.f());
+               this.g = $$5.p();
+            } else {
+               this.a(2, cpd.h);
+               this.g = 0;
+            }
+         }
+
+         this.c.l(this.a(2));
+      }
+   }
+
+   @Nullable
+   public cup g() {
+      return this.e;
+   }
+
+   public void c(int $$0) {
+      this.f = $$0;
+      this.f();
+   }
+
+   @Override
+   public void a() {
+      this.d.clear();
+   }
+
+   public int h() {
+      return this.g;
    }
 }

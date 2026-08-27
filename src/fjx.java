@@ -1,83 +1,144 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2BooleanLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.function.DoubleConsumer;
+import javax.annotation.Nullable;
 
-public class fjx extends ffe {
-   private static final int a = 310;
-   private final fct b = new fct(this);
-   private final ffe c;
-   private final arl k;
-   private final Consumer<arl> l;
-   private final Object2BooleanMap<ari> m = new Object2BooleanLinkedOpenHashMap();
+public class fjx extends ezi {
+   private static final int a = 32;
+   private static final String b = "telemetry.event.required";
+   private static final String c = "telemetry.event.optional";
+   private static final String d = "telemetry.event.optional.disabled";
+   private static final vq e = vq.c("telemetry_info.property_title").a(n.t);
+   private final eyz f;
+   private fjx.a m;
+   @Nullable
+   private DoubleConsumer n;
 
-   public fjx(ffe $$0, arl $$1, Consumer<arl> $$2) {
-      super(vq.c("experiments_screen.title"));
-      this.c = $$0;
-      this.k = $$1;
-      this.l = $$2;
+   public fjx(int $$0, int $$1, int $$2, int $$3, eyz $$4) {
+      super($$0, $$1, $$2, $$3, vq.i());
+      this.f = $$4;
+      this.m = this.c(exo.P().B());
+   }
 
-      for (ari $$3 : $$1.c()) {
-         if ($$3.j() == arm.d) {
-            this.m.put($$3, $$1.f().contains($$3));
+   public void b(boolean $$0) {
+      this.m = this.c($$0);
+      this.a(this.c());
+   }
+
+   private fjx.a c(boolean $$0) {
+      fjx.b $$1 = new fjx.b(this.j());
+      List<gmb> $$2 = new ArrayList<>(gmb.g());
+      $$2.sort(Comparator.comparing(gmb::d));
+
+      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
+         gmb $$4 = $$2.get($$3);
+         boolean $$5 = $$4.d() && !$$0;
+         this.a($$1, $$4, $$5);
+         if ($$3 < $$2.size() - 1) {
+            $$1.a(9);
          }
+      }
+
+      return $$1.a();
+   }
+
+   public void a(@Nullable DoubleConsumer $$0) {
+      this.n = $$0;
+   }
+
+   @Override
+   protected void a(double $$0) {
+      super.a($$0);
+      if (this.n != null) {
+         this.n.accept(this.c());
       }
    }
 
    @Override
-   protected void aQ_() {
-      this.b.a(new fao(vq.c("selectWorld.experiments"), this.i));
-      fcx $$0 = this.b.c(fcx.d());
-      $$0.a(new fab(vq.c("selectWorld.experiments.info").a(n.m), this.i).c(310), $$0x -> $$0x.e(15));
-      fkb.a $$1 = fkb.a(310).a(2, true).b(4);
-      this.m.forEach(($$1x, $$2x) -> $$1.a(a($$1x), () -> this.m.getBoolean($$1x), $$1xx -> this.m.put($$1x, $$1xx)).a($$1x.b()));
-      $$1.a($$0::a);
-      fcs.b $$2 = this.b.b(new fcs().a(10)).d(2);
-      $$2.a(ezh.a(vp.d, $$0x -> this.o()).a());
-      $$2.a(ezh.a(vp.e, $$0x -> this.d()).a());
-      this.b.a($$1x -> {
-         ezf var10000 = this.d($$1x);
-      });
-      this.c();
-   }
-
-   private static vq a(ari $$0) {
-      String $$1 = "dataPack." + $$0.f() + ".name";
-      return (vq)(ghy.a($$1) ? vq.c($$1) : $$0.a());
+   protected int g() {
+      return this.m.a().u();
    }
 
    @Override
-   public void d() {
-      this.f.a(this.c);
-   }
-
-   private void o() {
-      List<ari> $$0 = new ArrayList<>(this.k.f());
-      List<ari> $$1 = new ArrayList<>();
-      this.m.forEach(($$2, $$3) -> {
-         $$0.remove($$2);
-         if ($$3) {
-            $$1.add($$2);
-         }
-      });
-      $$0.addAll(Lists.reverse($$1));
-      this.k.a($$0.stream().map(ari::f).toList());
-      this.l.accept(this.k);
+   protected double i() {
+      return 9.0;
    }
 
    @Override
-   protected void c() {
-      this.b.a();
+   protected void c(ezb $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.C() + this.a();
+      int $$5 = this.B() + this.a();
+      $$0.c().a();
+      $$0.c().a((double)$$5, (double)$$4, 0.0);
+      this.m.a().a($$4x -> $$4x.a($$0, $$1, $$2, $$3));
+      $$0.c().b();
    }
 
    @Override
-   public void b(eyu $$0, int $$1, int $$2, float $$3) {
-      super.b($$0, $$1, $$2, $$3);
-      $$0.a(0.125F, 0.125F, 0.125F, 1.0F);
-      int $$4 = 32;
-      $$0.a(d, 0, this.b.c(), 0.0F, 0.0F, this.g, this.h - this.b.c() - this.b.b(), 32, 32);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+   protected void a(fdj $$0) {
+      $$0.a(fdi.a, this.m.b());
+   }
+
+   private vq a(vq $$0, boolean $$1) {
+      return (vq)($$1 ? $$0.f().a(n.h) : $$0);
+   }
+
+   private void a(fjx.b $$0, gmb $$1, boolean $$2) {
+      String $$3 = $$1.d() ? ($$2 ? "telemetry.event.optional.disabled" : "telemetry.event.optional") : "telemetry.event.required";
+      $$0.b(this.f, this.a(vq.a($$3, $$1.e()), $$2));
+      $$0.b(this.f, $$1.f().a(n.h));
+      $$0.a(9 / 2);
+      $$0.a(this.f, this.a(e, $$2), 2);
+      this.a($$1, $$0, $$2);
+   }
+
+   private void a(gmb $$0, fjx.b $$1, boolean $$2) {
+      for (gmd<?> $$3 : $$0.b()) {
+         $$1.a(this.f, this.a($$3.a(), $$2));
+      }
+   }
+
+   private int j() {
+      return this.g - this.b();
+   }
+
+   static record a(fdb a, vq b) {
+   }
+
+   static class b {
+      private final int a;
+      private final fde b;
+      private final we c = vq.i();
+
+      public b(int $$0) {
+         this.a = $$0;
+         this.b = fde.d();
+         this.b.c().a();
+         this.b.a(fdf.a($$0));
+      }
+
+      public void a(eyz $$0, vq $$1) {
+         this.a($$0, $$1, 0);
+      }
+
+      public void a(eyz $$0, vq $$1, int $$2) {
+         this.b.a(new fai($$1, $$0).c(this.a), $$1x -> $$1x.e($$2));
+         this.c.b($$1).f("\n");
+      }
+
+      public void b(eyz $$0, vq $$1) {
+         this.b.a(new fai($$1, $$0).c(this.a - 64).b(true), $$0x -> $$0x.b().f(32));
+         this.c.b($$1).f("\n");
+      }
+
+      public void a(int $$0) {
+         this.b.a(fdf.b($$0));
+      }
+
+      public fjx.a a() {
+         this.b.a();
+         return new fjx.a(this.b, this.c);
+      }
    }
 }

@@ -95,7 +95,7 @@ public class ake {
                                                                                  fi.a($$0x, "uuid"),
                                                                                  StringArgumentType.getString($$0x, "name"),
                                                                                  DoubleArgumentType.getDouble($$0x, "value"),
-                                                                                 bpj.a.a
+                                                                                 bpn.a.a
                                                                               )
                                                                         )
                                                                   ))
@@ -109,7 +109,7 @@ public class ake {
                                                                               fi.a($$0x, "uuid"),
                                                                               StringArgumentType.getString($$0x, "name"),
                                                                               DoubleArgumentType.getDouble($$0x, "value"),
-                                                                              bpj.a.c
+                                                                              bpn.a.c
                                                                            )
                                                                      )
                                                                ))
@@ -123,7 +123,7 @@ public class ake {
                                                                            fi.a($$0x, "uuid"),
                                                                            StringArgumentType.getString($$0x, "name"),
                                                                            DoubleArgumentType.getDouble($$0x, "value"),
-                                                                           bpj.a.b
+                                                                           bpn.a.b
                                                                         )
                                                                   )
                                                             )
@@ -168,8 +168,8 @@ public class ake {
       );
    }
 
-   private static bph a(bno $$0, ij<bpg> $$1) throws CommandSyntaxException {
-      bph $$2 = a($$0).eS().a($$1);
+   private static bpl a(bnq $$0, ij<bpk> $$1) throws CommandSyntaxException {
+      bpl $$2 = a($$0).eS().a($$1);
       if ($$2 == null) {
          throw b.create($$0.ad(), a($$1));
       } else {
@@ -177,16 +177,16 @@ public class ake {
       }
    }
 
-   private static bog a(bno $$0) throws CommandSyntaxException {
-      if (!($$0 instanceof bog)) {
+   private static boi a(bnq $$0) throws CommandSyntaxException {
+      if (!($$0 instanceof boi)) {
          throw a.create($$0.ad());
       } else {
-         return (bog)$$0;
+         return (boi)$$0;
       }
    }
 
-   private static bog b(bno $$0, ij<bpg> $$1) throws CommandSyntaxException {
-      bog $$2 = a($$0);
+   private static boi b(bnq $$0, ij<bpk> $$1) throws CommandSyntaxException {
+      boi $$2 = a($$0);
       if (!$$2.eS().b($$1)) {
          throw b.create($$0.ad(), a($$1));
       } else {
@@ -194,23 +194,23 @@ public class ake {
       }
    }
 
-   private static int a(du $$0, bno $$1, ij<bpg> $$2, double $$3) throws CommandSyntaxException {
-      bog $$4 = b($$1, $$2);
+   private static int a(du $$0, bnq $$1, ij<bpk> $$2, double $$3) throws CommandSyntaxException {
+      boi $$4 = b($$1, $$2);
       double $$5 = $$4.g($$2);
       $$0.a(() -> vq.a("commands.attribute.value.get.success", a($$2), $$1.ad(), $$5), false);
       return (int)($$5 * $$3);
    }
 
-   private static int b(du $$0, bno $$1, ij<bpg> $$2, double $$3) throws CommandSyntaxException {
-      bog $$4 = b($$1, $$2);
+   private static int b(du $$0, bnq $$1, ij<bpk> $$2, double $$3) throws CommandSyntaxException {
+      boi $$4 = b($$1, $$2);
       double $$5 = $$4.h($$2);
       $$0.a(() -> vq.a("commands.attribute.base_value.get.success", a($$2), $$1.ad(), $$5), false);
       return (int)($$5 * $$3);
    }
 
-   private static int a(du $$0, bno $$1, ij<bpg> $$2, UUID $$3, double $$4) throws CommandSyntaxException {
-      bog $$5 = b($$1, $$2);
-      bpi $$6 = $$5.eS();
+   private static int a(du $$0, bnq $$1, ij<bpk> $$2, UUID $$3, double $$4) throws CommandSyntaxException {
+      boi $$5 = b($$1, $$2);
+      bpm $$6 = $$5.eS();
       if (!$$6.a($$2, $$3)) {
          throw c.create($$1.ad(), a($$2), $$3);
       } else {
@@ -220,15 +220,15 @@ public class ake {
       }
    }
 
-   private static int c(du $$0, bno $$1, ij<bpg> $$2, double $$3) throws CommandSyntaxException {
+   private static int c(du $$0, bnq $$1, ij<bpk> $$2, double $$3) throws CommandSyntaxException {
       a($$1, $$2).a($$3);
       $$0.a(() -> vq.a("commands.attribute.base_value.set.success", a($$2), $$1.ad(), $$3), false);
       return 1;
    }
 
-   private static int a(du $$0, bno $$1, ij<bpg> $$2, UUID $$3, String $$4, double $$5, bpj.a $$6) throws CommandSyntaxException {
-      bph $$7 = a($$1, $$2);
-      bpj $$8 = new bpj($$3, $$4, $$5, $$6);
+   private static int a(du $$0, bnq $$1, ij<bpk> $$2, UUID $$3, String $$4, double $$5, bpn.a $$6) throws CommandSyntaxException {
+      bpl $$7 = a($$1, $$2);
+      bpn $$8 = new bpn($$3, $$4, $$5, $$6);
       if ($$7.a($$8)) {
          throw d.create($$1.ad(), a($$2), $$3);
       } else {
@@ -238,8 +238,8 @@ public class ake {
       }
    }
 
-   private static int a(du $$0, bno $$1, ij<bpg> $$2, UUID $$3) throws CommandSyntaxException {
-      bph $$4 = a($$1, $$2);
+   private static int a(du $$0, bnq $$1, ij<bpk> $$2, UUID $$3) throws CommandSyntaxException {
+      bpl $$4 = a($$1, $$2);
       if ($$4.c($$3)) {
          $$0.a(() -> vq.a("commands.attribute.modifier.remove.success", vq.a($$3), a($$2), $$1.ad()), false);
          return 1;
@@ -248,7 +248,7 @@ public class ake {
       }
    }
 
-   private static vq a(ij<bpg> $$0) {
+   private static vq a(ij<bpk> $$0) {
       return vq.c($$0.a().c());
    }
 }

@@ -4,5 +4,5 @@ import javax.annotation.Nullable;
 public interface vl {
    vl a = ($$0, $$1) -> $$1;
 
-   vq decorate(@Nullable aow var1, vq var2);
+   vq decorate(@Nullable aox var1, vq var2);
 }

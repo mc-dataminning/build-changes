@@ -12,7 +12,7 @@ public interface vr {
       return Optional.empty();
    }
 
-   default we a(@Nullable du $$0, @Nullable bno $$1, int $$2) throws CommandSyntaxException {
+   default we a(@Nullable du $$0, @Nullable bnq $$1, int $$2) throws CommandSyntaxException {
       return we.a(this);
    }
 

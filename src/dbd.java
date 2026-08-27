@@ -1,82 +1,62 @@
-import com.google.common.base.Predicates;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
+import org.slf4j.Logger;
 
-public class dbd extends cyo {
-   public static final MapCodec<dbd> a = b(dbd::new);
-   public static final dlz b = dcj.aE;
-   public static final dlw c = dlv.h;
-   protected static final eol d = cyo.a(0.0, 0.0, 0.0, 16.0, 13.0, 16.0);
-   protected static final eol e = cyo.a(4.0, 13.0, 4.0, 12.0, 16.0, 12.0);
-   protected static final eol f = eoi.a(d, e);
-   private static dlk g;
+public class dbd extends dax {
+   private static final Logger e = LogUtils.getLogger();
+   public static final MapCodec<dbd> d = b(dbd::new);
+   private static final jl f = new jk();
 
    @Override
    public MapCodec<dbd> a() {
-      return a;
+      return d;
    }
 
-   public dbd(dle.d $$0) {
+   public dbd(dli.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, ie.c).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean g_(dlf $$0) {
-      return true;
+   protected jl a(cpd $$0) {
+      return f;
    }
 
    @Override
-   protected eol a(dlf $$0, cut $$1, hz $$2, enx $$3) {
-      return $$0.c(c) ? f : d;
+   public dix a(hz $$0, dlj $$1) {
+      return new djq($$0, $$1);
    }
 
    @Override
-   public dlf a(crg $$0) {
-      return this.o().a(b, $$0.g().g()).a(c, Boolean.valueOf(false));
-   }
+   protected void a(aow $$0, dlj $$1, hz $$2) {
+      djp $$3 = $$0.a($$2, diz.g).orElse(null);
+      if ($$3 == null) {
+         e.warn("Ignoring dispensing attempt for Dropper without matching block entity at {}", $$2);
+      } else {
+         ji $$4 = new ji($$0, $$2, $$1, $$3);
+         int $$5 = $$3.a($$0.z);
+         if ($$5 < 0) {
+            $$0.c(1001, $$2, 0);
+         } else {
+            cpd $$6 = $$3.a($$5);
+            if (!$$6.b()) {
+               ie $$7 = $$0.a_($$2).c(b);
+               blp $$8 = djw.a($$0, $$2.a($$7));
+               cpd $$9;
+               if ($$8 == null) {
+                  $$9 = f.dispense($$4, $$6);
+               } else {
+                  $$9 = djw.a($$3, $$8, $$6.q().a(1), $$7.g());
+                  if ($$9.b()) {
+                     $$9 = $$6.q();
+                     $$9.h(1);
+                  } else {
+                     $$9 = $$6.q();
+                  }
+               }
 
-   @Override
-   protected boolean d_(dlf $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dlf $$0, cvn $$1, hz $$2) {
-      return $$0.c(c) ? 15 : 0;
-   }
-
-   @Override
-   protected dlf a(dlf $$0, dfa $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dlf a(dlf $$0, ddk $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dlg.a<cyo, dlf> $$0) {
-      $$0.a(b, c);
-   }
-
-   public static dlk b() {
-      if (g == null) {
-         g = dll.a()
-            .a("?vvv?", ">???<", ">???<", ">???<", "?^^^?")
-            .a('?', dlj.a(dlo.a))
-            .a('^', dlj.a(dlo.a(cyq.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ie.d))))
-            .a('>', dlj.a(dlo.a(cyq.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ie.e))))
-            .a('v', dlj.a(dlo.a(cyq.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ie.c))))
-            .a('<', dlj.a(dlo.a(cyq.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ie.f))))
-            .b();
+               $$3.a($$5, $$9);
+            }
+         }
       }
-
-      return g;
-   }
-
-   @Override
-   protected boolean a(dlf $$0, cut $$1, hz $$2, ehf $$3) {
-      return false;
    }
 }

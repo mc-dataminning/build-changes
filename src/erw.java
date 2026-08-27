@@ -1,66 +1,42 @@
+import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import org.slf4j.Logger;
 
 public class erw {
-   @Nullable
-   private static esd a;
+   private static final Logger a = LogUtils.getLogger();
 
-   public static void a() {
-      if (a != null) {
-         b();
-         esd.b();
-      }
-   }
-
-   public static void b() {
-      a = null;
-   }
-
-   public static void a(erv.b $$0) {
-      if (!RenderSystem.isOnRenderThreadOrInit()) {
-         RenderSystem.recordRenderCall(() -> c($$0));
-      } else {
-         c($$0);
-      }
-   }
-
-   private static void c(erv.b $$0) {
-      esd $$1 = d($$0);
-      if ($$1 != null) {
-         $$1.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
-      }
-   }
-
-   public static void b(erv.b $$0) {
-      esd $$1 = d($$0);
-      if ($$1 != null) {
-         $$1.c();
-      }
-   }
-
-   @Nullable
-   private static esd d(erv.b $$0) {
+   public static void a(int $$0) {
       RenderSystem.assertOnRenderThread();
-      if ($$0.d()) {
-         $$0.e();
-         return null;
+      GlStateManager._glUseProgram($$0);
+   }
+
+   public static void a(erx $$0) {
+      RenderSystem.assertOnRenderThread();
+      $$0.d().a();
+      $$0.c().a();
+      GlStateManager.glDeleteProgram($$0.a());
+   }
+
+   public static int a() throws IOException {
+      RenderSystem.assertOnRenderThread();
+      int $$0 = GlStateManager.glCreateProgram();
+      if ($$0 <= 0) {
+         throw new IOException("Could not create shader program (returned program ID " + $$0 + ")");
       } else {
-         esd $$1 = a($$0.c().g());
-         $$1.a($$0);
-         return $$1;
+         return $$0;
       }
    }
 
-   private static esd a(esf $$0) {
-      esd $$1 = $$0.g();
-      a($$1);
-      return $$1;
-   }
-
-   private static void a(esd $$0) {
-      if ($$0 != a) {
-         $$0.a();
-         a = $$0;
+   public static void b(erx $$0) {
+      RenderSystem.assertOnRenderThread();
+      $$0.e();
+      GlStateManager.glLinkProgram($$0.a());
+      int $$1 = GlStateManager.glGetProgrami($$0.a(), 35714);
+      if ($$1 == 0) {
+         a.warn("Error encountered when linking program containing VS {} and FS {}. Log output:", $$0.c().b(), $$0.d().b());
+         a.warn(GlStateManager.glGetProgramInfoLog($$0.a(), 32768));
       }
    }
 }

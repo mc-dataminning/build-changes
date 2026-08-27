@@ -1,41 +1,71 @@
-import java.util.Arrays;
+import javax.annotation.Nullable;
 
-public class ffi extends few {
-   private fae c;
+public class ffi extends ffl implements awo {
+   @Nullable
+   private vq a;
+   @Nullable
+   private vq b;
+   private int c;
+   private boolean k;
+   private final boolean l;
 
-   private static exk<?>[] a(exl $$0) {
-      return new exk[]{$$0.T(), $$0.U()};
-   }
-
-   public ffi(ffe $$0, exl $$1) {
-      super($$0, $$1, vq.c("options.sounds.title"));
-   }
-
-   @Override
-   protected void aQ_() {
-      this.c = this.d(new fae(this.f, this.g, this.h - 64, 32, 25));
-      this.c.a(this.b.b(atl.a));
-      this.c.a(this.o());
-      this.c.a(this.b.aq());
-      this.c.a(a(this.b));
-      this.d(ezh.a(vp.d, $$0 -> {
-         this.f.m.as();
-         this.f.a(this.a);
-      }).a(this.g / 2 - 100, this.h - 27, 200, 20).a());
-   }
-
-   private exk<?>[] o() {
-      return Arrays.stream(atl.values()).filter($$0 -> $$0 != atl.a).map($$0 -> this.b.b($$0)).toArray(exk[]::new);
+   public ffi(boolean $$0) {
+      super(exg.a);
+      this.l = $$0;
    }
 
    @Override
-   public void a(eyu $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
+   public boolean aO_() {
+      return false;
    }
 
    @Override
-   public void b(eyu $$0, int $$1, int $$2, float $$3) {
+   protected boolean aP_() {
+      return false;
+   }
+
+   @Override
+   public void a(vq $$0) {
       this.b($$0);
+   }
+
+   @Override
+   public void b(vq $$0) {
+      this.a = $$0;
+      this.c(vq.c("menu.working"));
+   }
+
+   @Override
+   public void c(vq $$0) {
+      this.b = $$0;
+      this.a(0);
+   }
+
+   @Override
+   public void a(int $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public void a() {
+      this.k = true;
+   }
+
+   @Override
+   public void a(ezb $$0, int $$1, int $$2, float $$3) {
+      if (this.k) {
+         if (this.l) {
+            this.f.a(null);
+         }
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+         if (this.a != null) {
+            $$0.a(this.i, this.a, this.g / 2, 70, 16777215);
+         }
+
+         if (this.b != null && this.c != 0) {
+            $$0.a(this.i, vq.i().b(this.b).f(" " + this.c + "%"), this.g / 2, 90, 16777215);
+         }
+      }
    }
 }

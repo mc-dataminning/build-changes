@@ -1,20 +1,22 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class btu {
-   public static bpx<bog> a() {
-      return btj.a(
-         (Function<btj.b<bog>, ? extends App<btj.c<bog>, btm<bog>>>)($$0 -> $$0.group($$0.a(bxh.n), $$0.a(bxh.az), $$0.a(bxh.ay), $$0.c(bxh.o))
-               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$4x, $$5, $$6) -> {
-                     Optional<hz> $$7 = $$0.<bog>a($$3).map(bno::dm).or(() -> $$0.a($$2));
-                     if ($$7.isEmpty()) {
-                        return false;
-                     } else {
-                        $$1.a(new bpz($$7.get()));
-                        return true;
-                     }
-                  }))
-      );
+public class btu<E extends cgp> extends bqa<E> {
+   public btu(int $$0) {
+      super(ImmutableMap.of(bxl.aC, bxm.a, bxl.m, bxm.b, bxl.n, bxm.c), $$0);
+   }
+
+   protected boolean a(aow $$0, E $$1, long $$2) {
+      return true;
+   }
+
+   protected void b(aow $$0, E $$1, long $$2) {
+      $$1.b(bot.n);
+      $$1.a(atl.AR, 5.0F, 1.0F);
+   }
+
+   protected void c(aow $$0, E $$1, long $$2) {
+      if ($$1.c(bot.n)) {
+         $$1.b(bot.a);
+      }
    }
 }

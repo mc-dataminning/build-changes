@@ -36,19 +36,19 @@ public class akx {
       );
    }
 
-   private static int a(du $$0, Collection<? extends bno> $$1, ij<cti> $$2, int $$3) throws CommandSyntaxException {
-      cti $$4 = $$2.a();
+   private static int a(du $$0, Collection<? extends bnq> $$1, ij<ctm> $$2, int $$3) throws CommandSyntaxException {
+      ctm $$4 = $$2.a();
       if ($$3 > $$4.a()) {
          throw d.create($$3, $$4.a());
       } else {
          int $$5 = 0;
 
-         for (bno $$6 : $$1) {
-            if ($$6 instanceof bog) {
-               bog $$7 = (bog)$$6;
-               coz $$8 = $$7.eT();
+         for (bnq $$6 : $$1) {
+            if ($$6 instanceof boi) {
+               boi $$7 = (boi)$$6;
+               cpd $$8 = $$7.eT();
                if (!$$8.b()) {
-                  if ($$4.a($$8) && ctj.a(ctj.a($$8).keySet(), $$4)) {
+                  if ($$4.a($$8) && ctn.a(ctn.a($$8).keySet(), $$4)) {
                      $$8.a($$4, $$3);
                      $$5++;
                   } else if ($$1.size() == 1) {

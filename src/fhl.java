@@ -1,33 +1,50 @@
-public class fhl extends ezh {
-   private static final aiy a = new aiy("widget/page_forward_highlighted");
-   private static final aiy b = new aiy("widget/page_forward");
-   private static final aiy c = new aiy("widget/page_backward_highlighted");
-   private static final aiy d = new aiy("widget/page_backward");
-   private final boolean t;
-   private final boolean u;
+public abstract class fhl<T extends clh> extends fgk<T> implements ckr {
+   private final aiy x;
 
-   public fhl(int $$0, int $$1, boolean $$2, ezh.c $$3, boolean $$4) {
-      super($$0, $$1, 23, 13, vp.a, $$3, p);
-      this.t = $$2;
-      this.u = $$4;
+   public fhl(T $$0, chk $$1, vq $$2, aiy $$3) {
+      super($$0, $$1, $$2);
+      this.x = $$3;
+   }
+
+   protected void I() {
    }
 
    @Override
-   public void b(eyu $$0, int $$1, int $$2, float $$3) {
-      aiy $$4;
-      if (this.t) {
-         $$4 = this.z() ? a : b;
-      } else {
-         $$4 = this.z() ? c : d;
-      }
-
-      $$0.a($$4, this.B(), this.C(), 23, 13);
+   protected void aQ_() {
+      super.aQ_();
+      this.I();
+      this.p.a(this);
    }
 
    @Override
-   public void a(glk $$0) {
-      if (this.u) {
-         $$0.a(gkb.a(atk.cq, 1.0F));
-      }
+   public void k() {
+      super.k();
+      this.p.b(this);
+   }
+
+   @Override
+   public void a(ezb $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.d($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
+   }
+
+   protected void d(ezb $$0, int $$1, int $$2, float $$3) {
+   }
+
+   @Override
+   protected void a(ezb $$0, float $$1, int $$2, int $$3) {
+      $$0.a(this.x, this.t, this.u, 0, 0, this.c, this.k);
+      this.c($$0, this.t, this.u);
+   }
+
+   protected abstract void c(ezb var1, int var2, int var3);
+
+   @Override
+   public void a(ckf $$0, int $$1, int $$2) {
+   }
+
+   @Override
+   public void a(ckf $$0, int $$1, cpd $$2) {
    }
 }

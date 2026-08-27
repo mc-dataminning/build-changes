@@ -20,10 +20,10 @@ public class amp {
       );
    }
 
-   private static int a(du $$0, Collection<aow> $$1, hz $$2, float $$3) {
-      aix<cvn> $$4 = $$0.e().ae();
+   private static int a(du $$0, Collection<aox> $$1, hz $$2, float $$3) {
+      aix<cvr> $$4 = $$0.e().ad();
 
-      for (aow $$5 : $$1) {
+      for (aox $$5 : $$1) {
          $$5.a($$4, $$2, $$3, true, false);
       }
 

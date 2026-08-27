@@ -1,106 +1,75 @@
 import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.Optional;
 
-public abstract class dcd extends dcb implements cyr {
-   public static final dmf e = dlv.ax;
-   public static final int f = 25;
-   private final double c;
+public class dcd extends dgi implements cyv {
+   public static final MapCodec<dcd> a = b(dcd::new);
 
-   protected dcd(dle.d $$0, ie $$1, eol $$2, boolean $$3, double $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.c = $$4;
-      this.k(this.E.b().a(e, Integer.valueOf(0)));
+   @Override
+   public MapCodec<dcd> a() {
+      return a;
+   }
+
+   public dcd(dli.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends dcd> a();
-
-   @Override
-   public dlf a(cvo $$0) {
-      return this.o().a(e, Integer.valueOf($$0.F_().a(25)));
+   public boolean b(cvu $$0, hz $$1, dlj $$2) {
+      return $$0.a_($$1.c()).i();
    }
 
    @Override
-   protected boolean e_(dlf $$0) {
-      return $$0.c(e) < 25;
-   }
-
-   @Override
-   protected void b(dlf $$0, aov $$1, hz $$2, awo $$3) {
-      if ($$0.c(e) < 25 && $$3.j() < this.c) {
-         hz $$4 = $$2.a(this.a);
-         if (this.g($$1.a_($$4))) {
-            $$1.b($$4, this.a($$0, $$1.z));
-         }
-      }
-   }
-
-   protected dlf a(dlf $$0, awo $$1) {
-      return $$0.a(e);
-   }
-
-   public dlf n(dlf $$0) {
-      return $$0.a(e, Integer.valueOf(25));
-   }
-
-   public boolean o(dlf $$0) {
-      return $$0.c(e) == 25;
-   }
-
-   protected dlf a(dlf $$0, dlf $$1) {
-      return $$1;
-   }
-
-   @Override
-   protected dlf a(dlf $$0, ie $$1, dlf $$2, cvo $$3, hz $$4, hz $$5) {
-      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
-
-      if ($$1 != this.a || !$$2.a(this) && !$$2.a(this.b())) {
-         if (this.b) {
-            $$3.a($$4, egq.c, egq.c.a($$3));
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      } else {
-         return this.a($$0, this.b().o());
-      }
-   }
-
-   @Override
-   protected void a(dlg.a<cyo, dlf> $$0) {
-      $$0.a(e);
-   }
-
-   @Override
-   public boolean b(cvq $$0, hz $$1, dlf $$2) {
-      return this.g($$0.a_($$1.a(this.a)));
-   }
-
-   @Override
-   public boolean a(cvn $$0, awo $$1, hz $$2, dlf $$3) {
+   public boolean a(cvr $$0, awp $$1, hz $$2, dlj $$3) {
       return true;
    }
 
    @Override
-   public void a(aov $$0, awo $$1, hz $$2, dlf $$3) {
-      hz $$4 = $$2.a(this.a);
-      int $$5 = Math.min($$3.c(e) + 1, 25);
-      int $$6 = this.a($$1);
+   public void a(aow $$0, awp $$1, hz $$2, dlj $$3) {
+      hz $$4 = $$2.c();
+      dlj $$5 = cyu.bt.o();
+      Optional<ij.c<eap>> $$6 = $$0.I_().d(kg.aC).b(rd.n);
 
-      for (int $$7 = 0; $$7 < $$6 && this.g($$0.a_($$4)); $$7++) {
-         $$0.b($$4, $$3.a(e, Integer.valueOf($$5)));
-         $$4 = $$4.a(this.a);
-         $$5 = Math.min($$5 + 1, 25);
+      label49:
+      for (int $$7 = 0; $$7 < 128; $$7++) {
+         hz $$8 = $$4;
+
+         for (int $$9 = 0; $$9 < $$7 / 16; $$9++) {
+            $$8 = $$8.b($$1.a(3) - 1, ($$1.a(3) - 1) * $$1.a(3) / 2, $$1.a(3) - 1);
+            if (!$$0.a_($$8.d()).a(this) || $$0.a_($$8).r($$0, $$8)) {
+               continue label49;
+            }
+         }
+
+         dlj $$10 = $$0.a_($$8);
+         if ($$10.a($$5.b()) && $$1.a(10) == 0) {
+            ((cyv)$$5.b()).a($$0, $$1, $$8, $$10);
+         }
+
+         if ($$10.i()) {
+            ij<eap> $$12;
+            if ($$1.a(8) == 0) {
+               List<dtm<?, ?>> $$11 = $$0.t($$8).a().d().a();
+               if ($$11.isEmpty()) {
+                  continue;
+               }
+
+               $$12 = ((dwq)$$11.get(0).c()).d();
+            } else {
+               if (!$$6.isPresent()) {
+                  continue;
+               }
+
+               $$12 = $$6.get();
+            }
+
+            $$12.a().a($$0, $$0.l().g(), $$1, $$8);
+         }
       }
    }
 
-   protected abstract int a(awo var1);
-
-   protected abstract boolean g(dlf var1);
-
    @Override
-   protected dcd c() {
-      return this;
+   public cyv.a av_() {
+      return cyv.a.a;
    }
 }

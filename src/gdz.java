@@ -1,24 +1,22 @@
-public class gdz<T extends bog, M extends fng<T>> extends gfm<T, M> {
-   private final gaq a;
+public class gdz extends gcg<cfh, foy<cfh>> {
+   private static final aiy a = new aiy("textures/entity/witch.png");
 
-   public gdz(gas.a $$0, gbt<T, M> $$1) {
-      super($$1);
-      this.a = $$0.a();
+   public gdz(gba.a $$0) {
+      super($$0, new foy<>($$0.a(fpi.bQ)), 0.5F);
+      this.a(new gfy<>(this, $$0.d()));
    }
 
-   @Override
-   protected int a(T $$0) {
-      return $$0.eP();
+   public void a(cfh $$0, float $$1, float $$2, esh $$3, fvt $$4, int $$5) {
+      this.f.b(!$$0.eT().b());
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   protected void a(esa $$0, fvl $$1, int $$2, bno $$3, float $$4, float $$5, float $$6, float $$7) {
-      float $$8 = awh.c($$4 * $$4 + $$6 * $$6);
-      chp $$9 = new chp($$3.dM(), $$3.dr(), $$3.dt(), $$3.dx(), coz.h);
-      $$9.r((float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI));
-      $$9.s((float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI));
-      $$9.M = $$9.dC();
-      $$9.N = $$9.dE();
-      this.a.a($$9, 0.0, 0.0, 0.0, 0.0F, $$7, $$0, $$1, $$2);
+   public aiy a(cfh $$0) {
+      return a;
+   }
+
+   protected void a(cfh $$0, esh $$1, float $$2) {
+      float $$3 = 0.9375F;
+      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

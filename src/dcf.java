@@ -1,65 +1,56 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dcf extends cyo implements dfo {
-   public static final MapCodec<dcf> a = b(dcf::new);
-   private static final dlw c = dlv.C;
-   protected static final eol b = cyo.a(2.0, 10.0, 2.0, 14.0, 16.0, 14.0);
+public abstract class dcf extends cys {
+   protected final ie a;
+   protected final boolean b;
+   protected final eos d;
 
-   @Override
-   public MapCodec<dcf> a() {
-      return a;
-   }
-
-   protected dcf(dle.d $$0) {
+   protected dcf(dli.d $$0, ie $$1, eos $$2, boolean $$3) {
       super($$0);
-      this.k(this.E.b().a(c, Boolean.valueOf(false)));
+      this.a = $$1;
+      this.d = $$2;
+      this.b = $$3;
    }
 
    @Override
-   protected void a(dlg.a<cyo, dlf> $$0) {
-      $$0.a(c);
-   }
-
-   @Override
-   protected egp c_(dlf $$0) {
-      return $$0.c(c) ? egq.c.a(false) : super.c_($$0);
-   }
+   protected abstract MapCodec<? extends dcf> a();
 
    @Nullable
    @Override
-   public dlf a(crg $$0) {
-      dlf $$1 = super.a($$0);
-      if ($$1 != null) {
-         egp $$2 = $$0.q().b_($$0.a());
-         return $$1.a(c, Boolean.valueOf($$2.a() == egq.c));
-      } else {
-         return null;
+   public dlj a(crk $$0) {
+      dlj $$1 = $$0.q().a_($$0.a().a(this.a));
+      return !$$1.a(this.c()) && !$$1.a(this.b()) ? this.a($$0.q()) : this.b().o();
+   }
+
+   public dlj a(cvs $$0) {
+      return this.o();
+   }
+
+   @Override
+   protected boolean a(dlj $$0, cvu $$1, hz $$2) {
+      hz $$3 = $$2.a(this.a.g());
+      dlj $$4 = $$1.a_($$3);
+      return !this.m($$4) ? false : $$4.a(this.c()) || $$4.a(this.b()) || $$4.d($$1, $$3, this.a);
+   }
+
+   @Override
+   protected void a(dlj $$0, aow $$1, hz $$2, awp $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
       }
    }
 
-   @Override
-   protected boolean a(dlf $$0, cvq $$1, hz $$2) {
-      hz $$3 = $$2.c();
-      dlf $$4 = $$1.a_($$3);
-      return $$4.d($$1, $$3, ie.a);
+   protected boolean m(dlj $$0) {
+      return true;
    }
 
    @Override
-   protected eol a(dlf $$0, cut $$1, hz $$2, enx $$3) {
-      return b;
+   protected eos a(dlj $$0, cux $$1, hz $$2, eoe $$3) {
+      return this.d;
    }
 
-   @Override
-   protected dlf a(dlf $$0, ie $$1, dlf $$2, cvo $$3, hz $$4, hz $$5) {
-      if ($$1 == ie.b && !this.a($$0, $$3, $$4)) {
-         return cyq.a.o();
-      } else {
-         if ($$0.c(c)) {
-            $$3.a($$4, egq.c, egq.c.a($$3));
-         }
+   protected abstract dch c();
 
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-   }
+   protected abstract cys b();
 }

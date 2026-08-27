@@ -1,43 +1,61 @@
-import java.util.concurrent.Executor;
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class aph implements ape {
-   private final ape a;
-   private final bkn<Runnable> b;
-   private boolean c;
+public class aph implements apf {
+   private static final Logger a = LogUtils.getLogger();
+   private final int b;
+   private int c;
+   private long d;
+   private long e = Long.MAX_VALUE;
 
-   private aph(ape $$0, Executor $$1) {
-      this.a = $$0;
-      this.b = bkn.a($$1, "progressListener");
+   private aph(int $$0) {
+      this.b = $$0;
    }
 
-   public static aph a(ape $$0, Executor $$1) {
-      aph $$2 = new aph($$0, $$1);
-      $$2.a();
-      return $$2;
+   public static aph b(int $$0) {
+      return $$0 > 0 ? c($$0 + 1) : c();
+   }
+
+   public static aph c(int $$0) {
+      int $$1 = apf.a($$0);
+      return new aph($$1 * $$1);
+   }
+
+   public static aph c() {
+      return new aph(0);
    }
 
    @Override
-   public void a(cuu $$0) {
-      this.b.a(() -> this.a.a($$0));
+   public void a(cuy $$0) {
+      this.e = ac.b();
+      this.d = this.e;
    }
 
    @Override
-   public void a(cuu $$0, @Nullable dng $$1) {
-      if (this.c) {
-         this.b.a(() -> this.a.a($$0, $$1));
+   public void a(cuy $$0, @Nullable dnk $$1) {
+      if ($$1 == dnk.n) {
+         this.c++;
+      }
+
+      int $$2 = this.d();
+      if (ac.b() > this.e) {
+         this.e += 500L;
+         a.info(vq.a("menu.preparingSpawn", awi.a($$2, 0, 100)).getString());
       }
    }
 
    @Override
    public void a() {
-      this.c = true;
-      this.b.a(this.a::a);
    }
 
    @Override
    public void b() {
-      this.c = false;
-      this.b.a(this.a::b);
+      a.info("Time elapsed: {} ms", ac.b() - this.d);
+      this.e = Long.MAX_VALUE;
+   }
+
+   public int d() {
+      return this.b == 0 ? 100 : awi.d((float)this.c * 100.0F / (float)this.b);
    }
 }

@@ -1,259 +1,67 @@
-import com.google.common.base.MoreObjects;
-import com.google.common.collect.Lists;
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.io.IOException;
-import java.util.UUID;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.Locale;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class gkx extends MinecraftServer {
-   private static final Logger k = LogUtils.getLogger();
-   private static final int l = 2;
-   private final exh m;
-   private boolean n = true;
-   private int o = -1;
-   @Nullable
-   private cvk p;
-   @Nullable
-   private gla q;
-   @Nullable
-   private UUID r;
-   private int s = 0;
-
-   public gkx(Thread $$0, exh $$1, eil.c $$2, arl $$3, aju $$4, ajr $$5, apf $$6) {
-      super($$0, $$2, $$3, $$4, $$1.X(), $$1.ar(), $$5, $$6);
-      this.b($$1.W());
-      this.c($$1.I());
-      this.a(new gkw(this, this.ba(), this.g));
-      this.m = $$1;
+public interface gkx<T> {
+   static <T> gkx<T> a() {
+      return $$0 -> List.of();
    }
 
-   @Override
-   public boolean e() {
-      k.info("Starting integrated minecraft server version {}", aa.b().c());
-      this.d(true);
-      this.f(true);
-      this.g(true);
-      this.R();
-      this.u_();
-      GameProfile $$0 = this.P();
-      String $$1 = this.aY().e();
-      this.d($$0 != null ? $$0.getName() + " - " + $$1 : $$1);
-      return true;
+   static <T> gkx<T> a(List<T> $$0, Function<T, Stream<String>> $$1) {
+      // $VF: Couldn't be decompiled
+      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+      // java.lang.NullPointerException: Cannot invoke "org.jetbrains.java.decompiler.struct.gen.VarType.equals(Object)" because "curType" is null
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.setLambdaGenericTypes(NewExprent.java:668)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.toJava(NewExprent.java:401)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.getCastedExprent(ExprProcessor.java:1018)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.ExitExprent.toJava(ExitExprent.java:86)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.listToJava(ExprProcessor.java:895)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.BasicBlockStatement.toJava(BasicBlockStatement.java:90)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.SequenceStatement.toJava(SequenceStatement.java:107)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.IfStatement.toJava(IfStatement.java:261)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.RootStatement.toJava(RootStatement.java:36)
+      //   at org.jetbrains.java.decompiler.main.ClassWriter.writeMethod(ClassWriter.java:1283)
+      //
+      // Bytecode:
+      // 00: aload 0
+      // 01: invokeinterface java/util/List.isEmpty ()Z 1
+      // 06: ifeq 0d
+      // 09: invokestatic gkx.a ()Lgkx;
+      // 0c: areturn
+      // 0d: new glc
+      // 10: dup
+      // 11: invokespecial glc.<init> ()V
+      // 14: astore 2
+      // 15: aload 0
+      // 16: invokeinterface java/util/List.iterator ()Ljava/util/Iterator; 1
+      // 1b: astore 3
+      // 1c: aload 3
+      // 1d: invokeinterface java/util/Iterator.hasNext ()Z 1
+      // 22: ifeq 48
+      // 25: aload 3
+      // 26: invokeinterface java/util/Iterator.next ()Ljava/lang/Object; 1
+      // 2b: astore 4
+      // 2d: aload 1
+      // 2e: aload 4
+      // 30: invokeinterface java/util/function/Function.apply (Ljava/lang/Object;)Ljava/lang/Object; 2
+      // 35: checkcast java/util/stream/Stream
+      // 38: aload 2
+      // 39: aload 4
+      // 3b: invokedynamic accept (Lglc;Ljava/lang/Object;)Ljava/util/function/Consumer; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)V, gkx.a (Lglc;Ljava/lang/Object;Ljava/lang/String;)V, (Ljava/lang/String;)V ]
+      // 40: invokeinterface java/util/stream/Stream.forEach (Ljava/util/function/Consumer;)V 2
+      // 45: goto 1c
+      // 48: aload 2
+      // 49: invokevirtual glc.a ()V
+      // 4c: aload 2
+      // 4d: dup
+      // 4e: invokestatic java/util/Objects.requireNonNull (Ljava/lang/Object;)Ljava/lang/Object;
+      // 51: pop
+      // 52: invokedynamic search (Lglc;)Lgkx; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/String;)Ljava/util/List;, glc.a (Ljava/lang/String;)Ljava/util/List;, (Ljava/lang/String;)Ljava/util/List; ]
+      // 57: areturn
    }
 
-   @Override
-   public boolean A() {
-      return this.n;
-   }
-
-   @Override
-   public void a(BooleanSupplier $$0) {
-      boolean $$1 = this.n;
-      this.n = exh.O().ag();
-      bil $$2 = this.aR();
-      if (!$$1 && this.n) {
-         $$2.a("autoSave");
-         k.info("Saving and pausing game...");
-         this.b(false, false, false);
-         $$2.c();
-      }
-
-      boolean $$3 = exh.O().J() != null;
-      if ($$3 && this.n) {
-         this.a();
-      } else {
-         if ($$1 && !this.n) {
-            this.C();
-         }
-
-         super.a($$0);
-         int $$4 = Math.max(2, this.m.m.e().c());
-         if ($$4 != this.ae().p()) {
-            k.info("Changing view distance to {}, from {}", $$4, this.ae().p());
-            this.ae().a($$4);
-         }
-
-         int $$5 = Math.max(2, this.m.m.f().c());
-         if ($$5 != this.s) {
-            k.info("Changing simulation distance to {}, from {}", $$5, this.s);
-            this.ae().b($$5);
-            this.s = $$5;
-         }
-      }
-   }
-
-   @Override
-   public void a(long $$0) {
-      this.m.aN().b($$0);
-   }
-
-   private void a() {
-      for (aow $$0 : this.ae().t()) {
-         $$0.a(atu.l);
-      }
-   }
-
-   @Override
-   public boolean k() {
-      return true;
-   }
-
-   @Override
-   public boolean W_() {
-      return true;
-   }
-
-   @Override
-   public File z() {
-      return this.m.p;
-   }
-
-   @Override
-   public boolean l() {
-      return false;
-   }
-
-   @Override
-   public int m() {
-      return 0;
-   }
-
-   @Override
-   public boolean n() {
-      return false;
-   }
-
-   @Override
-   public void a(o $$0) {
-      this.m.b($$0);
-   }
-
-   @Override
-   public ab a(ab $$0) {
-      $$0.a("Type", "Integrated Server (map_client.txt)");
-      $$0.a("Is Modded", () -> this.M().b());
-      $$0.a("Launched Version", this.m::h);
-      return $$0;
-   }
-
-   @Override
-   public awg M() {
-      return exh.e().a(super.M());
-   }
-
-   @Override
-   public boolean a(@Nullable cvk $$0, boolean $$1, int $$2) {
-      try {
-         this.m.aR();
-         this.m.v().a().thenAcceptAsync($$0x -> $$0x.ifPresent($$0xx -> {
-               fpy $$1x = this.m.J();
-               if ($$1x != null) {
-                  $$1x.a($$0xx);
-               }
-            }), this.m);
-         this.af().a(null, $$2);
-         k.info("Started serving on {}", $$2);
-         this.o = $$2;
-         this.q = new gla(this.ac(), $$2 + "");
-         this.q.start();
-         this.p = $$0;
-         this.ae().b($$1);
-         int $$3 = this.c(this.m.s.fS());
-         this.m.s.a($$3);
-
-         for (aow $$4 : this.ae().t()) {
-            this.aE().a($$4);
-         }
-
-         return true;
-      } catch (IOException var7) {
-         return false;
-      }
-   }
-
-   @Override
-   public void t() {
-      super.t();
-      if (this.q != null) {
-         this.q.interrupt();
-         this.q = null;
-      }
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      this.h(() -> {
-         for (aow $$1 : Lists.newArrayList(this.ae().t())) {
-            if (!$$1.cw().equals(this.r)) {
-               this.ae().c($$1);
-            }
-         }
-      });
-      super.a($$0);
-      if (this.q != null) {
-         this.q.interrupt();
-         this.q = null;
-      }
-   }
-
-   @Override
-   public boolean p() {
-      return this.o > -1;
-   }
-
-   @Override
-   public int O() {
-      return this.o;
-   }
-
-   @Override
-   public void a(cvk $$0) {
-      super.a($$0);
-      this.p = null;
-   }
-
-   @Override
-   public boolean o() {
-      return true;
-   }
-
-   @Override
-   public int i() {
-      return 2;
-   }
-
-   @Override
-   public int j() {
-      return 2;
-   }
-
-   public void a(UUID $$0) {
-      this.r = $$0;
-   }
-
-   @Override
-   public boolean a(GameProfile $$0) {
-      return this.P() != null && $$0.getName().equalsIgnoreCase(this.P().getName());
-   }
-
-   @Override
-   public int b(int $$0) {
-      return (int)(this.m.m.g().c() * (double)$$0);
-   }
-
-   @Override
-   public boolean aW() {
-      return this.m.m.af;
-   }
-
-   @Nullable
-   @Override
-   public cvk bb() {
-      return this.p() ? (cvk)MoreObjects.firstNonNull(this.p, this.j.k()) : null;
-   }
+   List<T> search(String var1);
 }

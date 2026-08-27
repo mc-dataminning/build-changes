@@ -1,56 +1,67 @@
-public class dtr extends dts<dwd> {
-   public static final int a = 4;
-   public static final int b = 4;
-   public static final int c = 1;
-   public static final float d = 0.5F;
-   private static final hz an = hz.c;
-   private final boolean ao;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
 
-   public static hz a(hz $$0) {
-      return an.a((jd)$$0);
-   }
+public class dtr extends dtz<dvz> {
+   private static final ImmutableList<cys> a = ImmutableList.of(cyu.F, cyu.fn, cyu.fo, cyu.fp, cyu.fq, cyu.cv, cyu.ct);
+   private static final ie[] b = ie.values();
+   private static final double c = 0.9;
 
-   public dtr(boolean $$0) {
-      super(dwd.a);
-      this.ao = $$0;
+   public dtr(Codec<dvz> $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(dtu<dwd> $$0) {
-      hz $$1 = $$0.e();
-      cwi $$2 = $$0.b();
+   public boolean a(dub<dvz> $$0) {
+      boolean $$1 = false;
+      awp $$2 = $$0.d();
+      cwm $$3 = $$0.b();
+      dvz $$4 = $$0.f();
+      hz $$5 = $$0.e();
+      boolean $$6 = $$2.j() < 0.9;
+      int $$7 = $$6 ? $$4.d().a($$2) : 0;
+      int $$8 = $$6 ? $$4.d().a($$2) : 0;
+      boolean $$9 = $$6 && $$7 != 0 && $$8 != 0;
+      int $$10 = $$4.c().a($$2);
+      int $$11 = $$4.c().a($$2);
+      int $$12 = Math.max($$10, $$11);
 
-      for (hz $$3 : hz.a(new hz($$1.u() - 4, $$1.v() - 1, $$1.w() - 4), new hz($$1.u() + 4, $$1.v() + 32, $$1.w() + 4))) {
-         boolean $$4 = $$3.a($$1, 2.5);
-         if ($$4 || $$3.a($$1, 3.5)) {
-            if ($$3.v() < $$1.v()) {
-               if ($$4) {
-                  this.a($$2, $$3, cyq.F.o());
-               } else if ($$3.v() < $$1.v()) {
-                  this.a($$2, $$3, cyq.fz.o());
-               }
-            } else if ($$3.v() > $$1.v()) {
-               this.a($$2, $$3, cyq.a.o());
-            } else if (!$$4) {
-               this.a($$2, $$3, cyq.F.o());
-            } else if (this.ao) {
-               this.a($$2, new hz($$3), cyq.fx.o());
-            } else {
-               this.a($$2, new hz($$3), cyq.a.o());
+      for (hz $$13 : hz.a($$5, $$10, 0, $$11)) {
+         if ($$13.k($$5) > $$12) {
+            break;
+         }
+
+         if (a($$3, $$13, $$4)) {
+            if ($$9) {
+               $$1 = true;
+               this.a($$3, $$13, $$4.b());
+            }
+
+            hz $$14 = $$13.b($$7, 0, $$8);
+            if (a($$3, $$14, $$4)) {
+               $$1 = true;
+               this.a($$3, $$14, $$4.a());
             }
          }
       }
 
-      for (int $$5 = 0; $$5 < 4; $$5++) {
-         this.a($$2, $$1.b($$5), cyq.F.o());
+      return $$1;
+   }
+
+   private static boolean a(cvs $$0, hz $$1, dvz $$2) {
+      dlj $$3 = $$0.a_($$1);
+      if ($$3.a($$2.a().b())) {
+         return false;
+      } else if (a.contains($$3.b())) {
+         return false;
+      } else {
+         for (ie $$4 : b) {
+            boolean $$5 = $$0.a_($$1.a($$4)).i();
+            if ($$5 && $$4 != ie.b || !$$5 && $$4 == ie.b) {
+               return false;
+            }
+         }
+
+         return true;
       }
-
-      hz $$6 = $$1.b(2);
-
-      for (ie $$7 : ie.c.a) {
-         this.a($$2, $$6.a($$7), cyq.cq.o().a(dho.g, $$7));
-      }
-
-      return true;
    }
 }

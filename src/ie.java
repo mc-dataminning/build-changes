@@ -25,8 +25,8 @@ public enum ie implements axc {
    f(5, 4, 3, "east", ie.b.a, ie.a.a, new jd(1, 0, 0));
 
    public static final axc.a<ie> g = axc.a(ie::values);
-   public static final Codec<ie> h = avp.a(g, ie::a);
-   public static final IntFunction<ie> i = auz.a(ie::d, values(), auz.a.b);
+   public static final Codec<ie> h = avq.a(g, ie::a);
+   public static final IntFunction<ie> i = ava.a(ie::d, values(), ava.a.b);
    public static final xo<ByteBuf, ie> j = xm.a(i, ie::d);
    private final int k;
    private final int l;
@@ -49,13 +49,13 @@ public enum ie implements axc {
       this.q = $$6;
    }
 
-   public static ie[] a(bno $$0) {
+   public static ie[] a(bnq $$0) {
       float $$1 = $$0.g(1.0F) * (float) (Math.PI / 180.0);
       float $$2 = -$$0.h(1.0F) * (float) (Math.PI / 180.0);
-      float $$3 = awh.a($$1);
-      float $$4 = awh.b($$1);
-      float $$5 = awh.a($$2);
-      float $$6 = awh.b($$2);
+      float $$3 = awi.a($$1);
+      float $$4 = awi.b($$1);
+      float $$5 = awi.a($$2);
+      float $$6 = awi.b($$2);
       boolean $$7 = $$5 > 0.0F;
       boolean $$8 = $$3 < 0.0F;
       boolean $$9 = $$6 > 0.0F;
@@ -90,7 +90,7 @@ public enum ie implements axc {
       return a($$3.x(), $$3.y(), $$3.z());
    }
 
-   public static Collection<ie> a(awo $$0) {
+   public static Collection<ie> a(awp $$0) {
       return ac.b(values(), $$0);
    }
 
@@ -121,7 +121,7 @@ public enum ie implements axc {
       return this.p;
    }
 
-   public static ie a(bno $$0, ie.a $$1) {
+   public static ie a(bnq $$0, ie.a $$1) {
       return switch ($$1) {
          case a -> f.a($$0.h(1.0F)) ? f : e;
          case c -> d.a($$0.h(1.0F)) ? d : c;
@@ -239,11 +239,11 @@ public enum ie implements axc {
    }
 
    public static ie a(int $$0) {
-      return s[awh.a($$0 % s.length)];
+      return s[awi.a($$0 % s.length)];
    }
 
    public static ie b(int $$0) {
-      return t[awh.a($$0 % t.length)];
+      return t[awi.a($$0 % t.length)];
    }
 
    @Nullable
@@ -276,7 +276,7 @@ public enum ie implements axc {
    }
 
    public static ie a(double $$0) {
-      return b(awh.a($$0 / 90.0 + 0.5) & 3);
+      return b(awi.a($$0 / 90.0 + 0.5) & 3);
    }
 
    public static ie a(ie.a $$0, ie.b $$1) {
@@ -291,7 +291,7 @@ public enum ie implements axc {
       return (float)((this.m & 3) * 90);
    }
 
-   public static ie b(awo $$0) {
+   public static ie b(awp $$0) {
       return ac.a(r, $$0);
    }
 
@@ -344,8 +344,8 @@ public enum ie implements axc {
 
    public boolean a(float $$0) {
       float $$1 = $$0 * (float) (Math.PI / 180.0);
-      float $$2 = -awh.a($$1);
-      float $$3 = awh.b($$1);
+      float $$2 = -awi.a($$1);
+      float $$3 = awi.b($$1);
       return (float)this.q.u() * $$2 + (float)this.q.w() * $$3 > 0.0F;
    }
 
@@ -414,7 +414,7 @@ public enum ie implements axc {
          return this.f;
       }
 
-      public static ie.a a(awo $$0) {
+      public static ie.a a(awp $$0) {
          return ac.a(d, $$0);
       }
 
@@ -481,11 +481,11 @@ public enum ie implements axc {
          this.d = $$1;
       }
 
-      public ie a(awo $$0) {
+      public ie a(awp $$0) {
          return ac.a(this.c, $$0);
       }
 
-      public ie.a b(awo $$0) {
+      public ie.a b(awp $$0) {
          return ac.a(this.d, $$0);
       }
 
@@ -502,7 +502,7 @@ public enum ie implements axc {
          return Arrays.stream(this.c);
       }
 
-      public List<ie> c(awo $$0) {
+      public List<ie> c(awp $$0) {
          return ac.b(this.c, $$0);
       }
    }

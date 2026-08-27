@@ -1,39 +1,28 @@
-import com.mojang.serialization.MapCodec;
-
-public class dgs extends cyx implements cyr {
-   public static final MapCodec<dgs> a = b(dgs::new);
-   protected static final float b = 6.0F;
-   protected static final eol c = cyo.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
-
-   @Override
-   public MapCodec<dgs> a() {
-      return a;
-   }
-
-   protected dgs(dle.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected eol a(dlf $$0, cut $$1, hz $$2, enx $$3) {
-      return c;
-   }
-
-   @Override
-   public boolean b(cvq $$0, hz $$1, dlf $$2) {
-      return true;
-   }
-
-   @Override
-   public boolean a(cvn $$0, awo $$1, hz $$2, dlf $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(aov $$0, awo $$1, hz $$2, dlf $$3) {
-      daw $$4 = (daw)($$3.a(cyq.bu) ? cyq.iI : cyq.iH);
-      if ($$4.o().a($$0, $$2) && $$0.u($$2.c())) {
-         daw.a($$0, $$4.o(), $$2, 2);
+public enum dgs {
+   a {
+      @Override
+      public boolean a(dlj $$0, cux $$1, hz $$2, ie $$3) {
+         return cys.a($$0.l($$1, $$2), $$3);
       }
-   }
+   },
+   b {
+      private final int d = 1;
+      private final eos e = cys.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0);
+
+      @Override
+      public boolean a(dlj $$0, cux $$1, hz $$2, ie $$3) {
+         return !eop.c($$0.l($$1, $$2).a($$3), this.e, eod.c);
+      }
+   },
+   c {
+      private final int d = 2;
+      private final eos e = eop.a(eop.b(), cys.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0), eod.e);
+
+      @Override
+      public boolean a(dlj $$0, cux $$1, hz $$2, ie $$3) {
+         return !eop.c($$0.l($$1, $$2).a($$3), this.e, eod.c);
+      }
+   };
+
+   public abstract boolean a(dlj var1, cux var2, hz var3, ie var4);
 }

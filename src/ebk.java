@@ -1,44 +1,29 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Optional;
 
-public record ebk(List<ebk.a> c, ecb d) {
-   public static final Codec<ebk> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ebk.a.a.listOf().fieldOf("structures").forGetter(ebk::a), ecb.b.fieldOf("placement").forGetter(ebk::b)).apply($$0, ebk::new)
-   );
-   public static final Codec<ij<ebk>> b = aiu.a(kg.aF, a);
+public abstract class ebk extends ebl {
+   private final ebk.a d;
+   private final int e;
+   private final int f;
 
-   public ebk(ij<ebe> $$0, ecb $$1) {
-      this(List.of(new ebk.a($$0, 1)), $$1);
+   protected ebk(ebk.a $$0, int $$1, int $$2, ebl.c $$3) {
+      super($$3);
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public static ebk.a a(ij<ebe> $$0, int $$1) {
-      return new ebk.a($$0, $$1);
+   @Override
+   public Optional<ebl.b> a(ebl.a $$0) {
+      return a($$0, this.e, this.f) < $$0.b().e() ? Optional.empty() : a($$0, dqv.a.a, $$1 -> this.a($$1, $$0));
    }
 
-   public static ebk.a a(ij<ebe> $$0) {
-      return new ebk.a($$0, 1);
+   private void a(ecd $$0, ebl.a $$1) {
+      cuy $$2 = $$1.h();
+      $$0.a(this.d.construct($$1.f(), $$2.d(), $$2.e()));
    }
 
-   public List<ebk.a> a() {
-      return this.c;
-   }
-
-   public ecb b() {
-      return this.d;
-   }
-
-   public static record a(ij<ebe> b, int c) {
-      public static final Codec<ebk.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(ebe.b.fieldOf("structure").forGetter(ebk.a::a), avp.j.fieldOf("weight").forGetter(ebk.a::b)).apply($$0, ebk.a::new)
-      );
-
-      public ij<ebe> a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
+   @FunctionalInterface
+   protected interface a {
+      ebp construct(dru var1, int var2, int var3);
    }
 }

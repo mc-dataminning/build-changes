@@ -1,6 +1,5 @@
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
@@ -21,37 +20,53 @@ import java.util.stream.Collectors;
 import org.slf4j.Logger;
 
 public class ait {
-   private static final Logger c = LogUtils.getLogger();
-   public static final List<ait.b<?>> a = List.of(
-      new ait.b<>(kg.ay, doo.h),
-      new ait.b<>(kg.at, cwm.a),
-      new ait.b<>(kg.au, vm.a),
-      new ait.b<>(kg.av, dsr.a),
-      new ait.b<>(kg.aw, dtf.a),
-      new ait.b<>(kg.aC, eai.a),
-      new ait.b<>(kg.aD, ebe.a),
-      new ait.b<>(kg.aF, ebk.a),
-      new ait.b<>(kg.aE, efd.c),
-      new ait.b<>(kg.aG, ecn.a),
-      new ait.b<>(kg.aA, dqt.a),
-      new ait.b<>(kg.aB, efs.a.a),
-      new ait.b<>(kg.ax, dqh.b),
-      new ait.b<>(kg.aK, eat.a),
-      new ait.b<>(kg.az, dzf.a),
-      new ait.b<>(kg.aJ, crd.a),
-      new ait.b<>(kg.aI, crb.a),
-      new ait.b<>(kg.r, bmp.a),
-      new ait.b<>(kg.aL, cxa.a)
+   private static final Logger d = LogUtils.getLogger();
+   public static final List<ait.c<?>> a = List.of(
+      new ait.c<>(kg.ay, dov.h),
+      new ait.c<>(kg.at, cwq.a),
+      new ait.c<>(kg.au, vm.a),
+      new ait.c<>(kg.av, dsy.a),
+      new ait.c<>(kg.aw, dtm.a),
+      new ait.c<>(kg.aC, eap.a),
+      new ait.c<>(kg.aD, ebl.a),
+      new ait.c<>(kg.aF, ebr.a),
+      new ait.c<>(kg.aE, efk.c),
+      new ait.c<>(kg.aG, ecu.a),
+      new ait.c<>(kg.aA, dra.a),
+      new ait.c<>(kg.aB, efz.a.a),
+      new ait.c<>(kg.ax, dqo.b),
+      new ait.c<>(kg.aK, eba.a),
+      new ait.c<>(kg.az, dzm.a),
+      new ait.c<>(kg.aJ, crh.a),
+      new ait.c<>(kg.aI, crf.a),
+      new ait.c<>(kg.r, bmr.a),
+      new ait.c<>(kg.aL, cxe.a)
    );
-   public static final List<ait.b<?>> b = List.of(new ait.b<>(kg.aN, dop.a));
+   public static final List<ait.c<?>> b = List.of(new ait.c<>(kg.aN, dow.a));
+   public static final List<ait.c<?>> c = List.of(
+      new ait.c<>(kg.at, cwq.b),
+      new ait.c<>(kg.au, vm.a),
+      new ait.c<>(kg.aJ, crh.a),
+      new ait.c<>(kg.aI, crf.a),
+      new ait.c<>(kg.ay, dov.h),
+      new ait.c<>(kg.r, bmr.a)
+   );
 
-   public static iw.b a(asa $$0, iw $$1, List<ait.b<?>> $$2) {
+   public static iw.b a(asb $$0, iw $$1, List<ait.c<?>> $$2) {
+      return a(($$1x, $$2x) -> $$1x.a($$0, $$2x), $$1, $$2);
+   }
+
+   public static iw.b a(Map<aix<? extends iv<?>>, List<iz.a>> $$0, iw $$1, List<ait.c<?>> $$2) {
+      return a(($$1x, $$2x) -> $$1x.a($$0, $$2x), $$1, $$2);
+   }
+
+   public static iw.b a(ait.b $$0, iw $$1, List<ait.c<?>> $$2) {
       Map<aix<?>, Exception> $$3 = new HashMap<>();
-      List<Pair<je<?>, ait.a>> $$4 = $$2.stream().map($$1x -> $$1x.a(Lifecycle.stable(), $$3)).toList();
+      List<ait.a<?>> $$4 = $$2.stream().map($$1x -> $$1x.a(Lifecycle.stable(), $$3)).collect(Collectors.toUnmodifiableList());
       aiw.b $$5 = a($$1, $$4);
-      $$4.forEach($$2x -> ((ait.a)$$2x.getSecond()).load($$0, $$5));
+      $$4.forEach($$2x -> $$0.apply($$2x, $$5));
       $$4.forEach($$1x -> {
-         iv<?> $$2x = (iv<?>)$$1x.getFirst();
+         iv<?> $$2x = $$1x.b();
 
          try {
             $$2x.l();
@@ -63,14 +78,14 @@ public class ait {
          a($$3);
          throw new IllegalStateException("Failed to load registries due to above errors");
       } else {
-         return new iw.c($$4.stream().map(Pair::getFirst).toList()).d();
+         return new iw.c($$4.stream().map(ait.a::b).toList()).d();
       }
    }
 
-   private static aiw.b a(iw $$0, List<Pair<je<?>, ait.a>> $$1) {
+   private static aiw.b a(iw $$0, List<ait.a<?>> $$1) {
       final Map<aix<? extends iv<?>>, aiw.a<?>> $$2 = new HashMap<>();
       $$0.c().forEach($$1x -> $$2.put($$1x.a(), a($$1x.b())));
-      $$1.forEach($$1x -> $$2.put(((je)$$1x.getFirst()).c(), a((je)$$1x.getFirst())));
+      $$1.forEach($$1x -> $$2.put($$1x.b.c(), a($$1x.b)));
       return new aiw.b() {
          @Override
          public <T> Optional<aiw.a<T>> a(aix<? extends iv<? extends T>> $$0) {
@@ -101,44 +116,76 @@ public class ait {
          });
       });
       $$2.flush();
-      c.error("Registry loading errors:\n{}", $$1);
+      d.error("Registry loading errors:\n{}", $$1);
    }
 
    private static String a(aiy $$0) {
       return $$0.a();
    }
 
-   static <E> void a(aiw.b $$0, asa $$1, aix<? extends iv<E>> $$2, je<E> $$3, Decoder<E> $$4, Map<aix<?>, Exception> $$5) {
-      String $$6 = a($$2.a());
-      air $$7 = air.a($$6);
-      aiw<JsonElement> $$8 = aiw.a(JsonOps.INSTANCE, $$0);
+   static <E> void a(asb $$0, aiw.b $$1, je<E> $$2, Decoder<E> $$3, Map<aix<?>, Exception> $$4) {
+      String $$5 = a($$2.c().a());
+      air $$6 = air.a($$5);
+      aiw<JsonElement> $$7 = aiw.a(JsonOps.INSTANCE, $$1);
 
-      for (Entry<aiy, ary> $$9 : $$7.a($$1).entrySet()) {
-         aiy $$10 = $$9.getKey();
-         aix<E> $$11 = aix.a($$2, $$7.b($$10));
-         ary $$12 = $$9.getValue();
+      for (Entry<aiy, arz> $$8 : $$6.a($$0).entrySet()) {
+         aiy $$9 = $$8.getKey();
+         aix<E> $$10 = aix.a($$2.c(), $$6.b($$9));
+         arz $$11 = $$8.getValue();
 
-         try (Reader $$13 = $$12.e()) {
-            JsonElement $$14 = JsonParser.parseReader($$13);
-            DataResult<E> $$15 = $$4.parse($$8, $$14);
-            E $$16 = (E)$$15.getOrThrow(false, $$0x -> {
+         try (Reader $$12 = $$11.e()) {
+            JsonElement $$13 = JsonParser.parseReader($$12);
+            DataResult<E> $$14 = $$3.parse($$7, $$13);
+            E $$15 = (E)$$14.getOrThrow(false, $$0x -> {
             });
-            $$3.a($$11, $$16, $$12.c() ? Lifecycle.stable() : $$15.lifecycle());
-         } catch (Exception var20) {
-            $$5.put($$11, new IllegalStateException(String.format(Locale.ROOT, "Failed to parse %s from pack %s", $$10, $$12.b()), var20));
+            $$2.a($$10, $$15, $$11.c() ? Lifecycle.stable() : $$14.lifecycle());
+         } catch (Exception var19) {
+            $$4.put($$10, new IllegalStateException(String.format(Locale.ROOT, "Failed to parse %s from pack %s", $$9, $$11.b()), var19));
          }
       }
    }
 
-   interface a {
-      void load(asa var1, aiw.b var2);
+   static <E> void a(Map<aix<? extends iv<?>>, List<iz.a>> $$0, aiw.b $$1, je<E> $$2, Decoder<E> $$3, Map<aix<?>, Exception> $$4) {
+      List<iz.a> $$5 = $$0.get($$2.c());
+      if ($$5 != null) {
+         aiw<tt> $$6 = aiw.a(tk.a, $$1);
+
+         for (iz.a $$7 : $$5) {
+            aix<E> $$8 = aix.a($$2.c(), $$7.a());
+
+            try {
+               DataResult<E> $$9 = $$3.parse($$6, $$7.b());
+               E $$10 = (E)$$9.getOrThrow(false, $$0x -> {
+               });
+               $$2.a($$8, $$10, Lifecycle.experimental());
+            } catch (Exception var12) {
+               $$4.put($$8, new IllegalStateException(String.format(Locale.ROOT, "Failed to parse value %s from server", $$7.b()), var12));
+            }
+         }
+      }
    }
 
-   public static record b<T>(aix<? extends iv<T>> a, Codec<T> b) {
-      Pair<je<?>, ait.a> a(Lifecycle $$0, Map<aix<?>, Exception> $$1) {
+   static record a<T>(ait.c<T> a, je<T> b, Map<aix<?>, Exception> c) {
+
+      public void a(asb $$0, aiw.b $$1) {
+         ait.a($$0, $$1, this.b, this.a.b, this.c);
+      }
+
+      public void a(Map<aix<? extends iv<?>>, List<iz.a>> $$0, aiw.b $$1) {
+         ait.a($$0, $$1, this.b, this.a.b, this.c);
+      }
+   }
+
+   @FunctionalInterface
+   interface b {
+      void apply(ait.a<?> var1, aiw.b var2);
+   }
+
+   public static record c<T>(aix<? extends iv<T>> a, Codec<T> b) {
+
+      ait.a<T> a(Lifecycle $$0, Map<aix<?>, Exception> $$1) {
          je<T> $$2 = new ir<>(this.a, $$0);
-         ait.a $$3 = ($$2x, $$3x) -> ait.a($$3x, $$2x, this.a, $$2, this.b, $$1);
-         return Pair.of($$2, $$3);
+         return new ait.a<>(this, $$2, $$1);
       }
 
       public void a(BiConsumer<aix<? extends iv<T>>, Codec<T>> $$0) {

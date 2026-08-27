@@ -1,37 +1,51 @@
-import org.joml.Vector3f;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import java.util.List;
+import java.util.Map;
 
-public record exx(exx.c a, exz... b) {
-   public interface a {
-      Vector3f apply(Vector3f var1, float var2, exz[] var3, int var4, int var5, float var6);
+public enum exx {
+   a(new cpd(cpg.qR)),
+   b(new cpd(cyu.cj)),
+   c(new cpd(cpg.lG)),
+   d(new cpd(cpg.pc), new cpd(cpg.oU)),
+   e(new cpd(cpg.qz), new cpd(cpg.os)),
+   f(new cpd(cpg.qR)),
+   g(new cpd(cpg.pW)),
+   h(new cpd(cyu.b)),
+   i(new cpd(cpg.qz), new cpd(cpg.oy)),
+   j(new cpd(cpg.qR)),
+   k(new cpd(cyu.dI)),
+   l(new cpd(cpg.pa), new cpd(cpg.pP)),
+   m(new cpd(cpg.qR)),
+   n(new cpd(cpg.pW)),
+   o(new cpd(cpg.fE)),
+   p(new cpd(cpg.pS)),
+   q(new cpd(cpg.pW)),
+   r(new cpd(cpg.hA));
+
+   public static final List<exx> s = ImmutableList.of(m, n);
+   public static final List<exx> t = ImmutableList.of(j, k, l);
+   public static final List<exx> u = ImmutableList.of(f, g, h, i);
+   public static final List<exx> v = ImmutableList.of(a, d, b, e, c);
+   public static final Map<exx, List<exx>> w = ImmutableMap.of(
+      a, ImmutableList.of(d, b, e, c), f, ImmutableList.of(g, h, i), j, ImmutableList.of(k, l), m, ImmutableList.of(n)
+   );
+   private final List<cpd> x;
+
+   private exx(cpd... $$0) {
+      this.x = ImmutableList.copyOf($$0);
    }
 
-   public static class b {
-      public static final exx.a a = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         Vector3f $$6 = $$2[$$3].b();
-         Vector3f $$7 = $$2[$$4].b();
-         return $$6.lerp($$7, $$1, $$0).mul($$5);
+   public static List<exx> a(clt $$0) {
+      return switch ($$0) {
+         case a -> v;
+         case b -> u;
+         case c -> t;
+         case d -> s;
       };
-      public static final exx.a b = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         Vector3f $$6 = $$2[Math.max(0, $$3 - 1)].b();
-         Vector3f $$7 = $$2[$$3].b();
-         Vector3f $$8 = $$2[$$4].b();
-         Vector3f $$9 = $$2[Math.min($$2.length - 1, $$4 + 1)].b();
-         $$0.set(
-            awh.a($$1, $$6.x(), $$7.x(), $$8.x(), $$9.x()) * $$5,
-            awh.a($$1, $$6.y(), $$7.y(), $$8.y(), $$9.y()) * $$5,
-            awh.a($$1, $$6.z(), $$7.z(), $$8.z(), $$9.z()) * $$5
-         );
-         return $$0;
-      };
    }
 
-   public interface c {
-      void apply(fpc var1, Vector3f var2);
-   }
-
-   public static class d {
-      public static final exx.c a = fpc::a;
-      public static final exx.c b = fpc::b;
-      public static final exx.c c = fpc::c;
+   public List<cpd> a() {
+      return this.x;
    }
 }

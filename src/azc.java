@@ -409,7 +409,7 @@ public class azc extends DataFix {
       return $$0.get("Properties").get($$1).asString("");
    }
 
-   public static int a(ave<Dynamic<?>> $$0, Dynamic<?> $$1) {
+   public static int a(avf<Dynamic<?>> $$0, Dynamic<?> $$1) {
       int $$2 = $$0.a($$1);
       if ($$2 == -1) {
          $$2 = $$0.d($$1);
@@ -596,7 +596,7 @@ public class azc extends DataFix {
    }
 
    static class c {
-      private final ave<Dynamic<?>> b = ave.c(32);
+      private final avf<Dynamic<?>> b = avf.c(32);
       private final List<Dynamic<?>> c;
       private final Dynamic<?> d;
       private final boolean e;

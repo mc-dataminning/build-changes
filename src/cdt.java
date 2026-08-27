@@ -1,119 +1,69 @@
-import javax.annotation.Nullable;
+public class cdt {
+   public static final aix<cds> a = a("kebab");
+   public static final aix<cds> b = a("aztec");
+   public static final aix<cds> c = a("alban");
+   public static final aix<cds> d = a("aztec2");
+   public static final aix<cds> e = a("bomb");
+   public static final aix<cds> f = a("plant");
+   public static final aix<cds> g = a("wasteland");
+   public static final aix<cds> h = a("pool");
+   public static final aix<cds> i = a("courbet");
+   public static final aix<cds> j = a("sea");
+   public static final aix<cds> k = a("sunset");
+   public static final aix<cds> l = a("creebet");
+   public static final aix<cds> m = a("wanderer");
+   public static final aix<cds> n = a("graham");
+   public static final aix<cds> o = a("match");
+   public static final aix<cds> p = a("bust");
+   public static final aix<cds> q = a("stage");
+   public static final aix<cds> r = a("void");
+   public static final aix<cds> s = a("skull_and_roses");
+   public static final aix<cds> t = a("wither");
+   public static final aix<cds> u = a("fighters");
+   public static final aix<cds> v = a("pointer");
+   public static final aix<cds> w = a("pigscene");
+   public static final aix<cds> x = a("burning_skull");
+   public static final aix<cds> y = a("skeleton");
+   public static final aix<cds> z = a("donkey_kong");
+   public static final aix<cds> A = a("earth");
+   public static final aix<cds> B = a("wind");
+   public static final aix<cds> C = a("water");
+   public static final aix<cds> D = a("fire");
 
-public class cdt extends bno implements bpc {
-   private static final aie<Integer> c = aih.a(cdt.class, aig.b);
-   private static final aie<dlf> d = aih.a(cdt.class, aig.i);
-   private static final int e = 80;
-   private static final String f = "block_state";
-   public static final String b = "fuse";
-   @Nullable
-   private bog g;
-
-   public cdt(bnu<? extends cdt> $$0, cvn $$1) {
-      super($$0, $$1);
-      this.H = true;
+   public static cds a(iv<cds> $$0) {
+      iv.a($$0, a, new cds(16, 16));
+      iv.a($$0, b, new cds(16, 16));
+      iv.a($$0, c, new cds(16, 16));
+      iv.a($$0, d, new cds(16, 16));
+      iv.a($$0, e, new cds(16, 16));
+      iv.a($$0, f, new cds(16, 16));
+      iv.a($$0, g, new cds(16, 16));
+      iv.a($$0, h, new cds(32, 16));
+      iv.a($$0, i, new cds(32, 16));
+      iv.a($$0, j, new cds(32, 16));
+      iv.a($$0, k, new cds(32, 16));
+      iv.a($$0, l, new cds(32, 16));
+      iv.a($$0, m, new cds(16, 32));
+      iv.a($$0, n, new cds(16, 32));
+      iv.a($$0, o, new cds(32, 32));
+      iv.a($$0, p, new cds(32, 32));
+      iv.a($$0, q, new cds(32, 32));
+      iv.a($$0, r, new cds(32, 32));
+      iv.a($$0, s, new cds(32, 32));
+      iv.a($$0, t, new cds(32, 32));
+      iv.a($$0, u, new cds(64, 32));
+      iv.a($$0, v, new cds(64, 64));
+      iv.a($$0, w, new cds(64, 64));
+      iv.a($$0, x, new cds(64, 64));
+      iv.a($$0, y, new cds(64, 48));
+      iv.a($$0, A, new cds(32, 32));
+      iv.a($$0, B, new cds(32, 32));
+      iv.a($$0, C, new cds(32, 32));
+      iv.a($$0, D, new cds(32, 32));
+      return iv.a($$0, z, new cds(64, 48));
    }
 
-   public cdt(cvn $$0, double $$1, double $$2, double $$3, @Nullable bog $$4) {
-      this(bnu.ba, $$0);
-      this.a_($$1, $$2, $$3);
-      double $$5 = $$0.z.j() * (float) (Math.PI * 2);
-      this.o(-Math.sin($$5) * 0.02, 0.2F, -Math.cos($$5) * 0.02);
-      this.b(80);
-      this.J = $$1;
-      this.K = $$2;
-      this.L = $$3;
-      this.g = $$4;
-   }
-
-   @Override
-   protected void c_() {
-      this.am.a(c, 80);
-      this.am.a(d, cyq.ck.o());
-   }
-
-   @Override
-   protected bno.b aW() {
-      return bno.b.a;
-   }
-
-   @Override
-   public boolean bt() {
-      return !this.dH();
-   }
-
-   @Override
-   public void l() {
-      if (!this.aV()) {
-         this.g(this.dp().b(0.0, -0.04, 0.0));
-      }
-
-      this.a(bol.a, this.dp());
-      this.g(this.dp().a(0.98));
-      if (this.aC()) {
-         this.g(this.dp().d(0.7, -0.5, 0.7));
-      }
-
-      int $$0 = this.s() - 1;
-      this.b($$0);
-      if ($$0 <= 0) {
-         this.am();
-         if (!this.dM().B) {
-            this.x();
-         }
-      } else {
-         this.bg();
-         if (this.dM().B) {
-            this.dM().a(jz.ab, this.dr(), this.dt() + 0.5, this.dx(), 0.0, 0.0, 0.0);
-         }
-      }
-   }
-
-   private void x() {
-      float $$0 = 4.0F;
-      this.dM().a(this, this.dr(), this.e(0.0625), this.dx(), 4.0F, cvn.a.d);
-   }
-
-   @Override
-   protected void b(sw $$0) {
-      $$0.a("fuse", (short)this.s());
-      $$0.a("block_state", tl.a(this.u()));
-   }
-
-   @Override
-   protected void a(sw $$0) {
-      this.b($$0.g("fuse"));
-      if ($$0.b("block_state", 10)) {
-         this.c(tl.a(this.dM().a(kg.f), $$0.p("block_state")));
-      }
-   }
-
-   @Nullable
-   public bog q() {
-      return this.g;
-   }
-
-   @Override
-   public void v(bno $$0) {
-      super.v($$0);
-      if ($$0 instanceof cdt $$1) {
-         this.g = $$1.g;
-      }
-   }
-
-   public void b(int $$0) {
-      this.am.b(c, $$0);
-   }
-
-   public int s() {
-      return this.am.b(c);
-   }
-
-   public void c(dlf $$0) {
-      this.am.b(d, $$0);
-   }
-
-   public dlf u() {
-      return this.am.b(d);
+   private static aix<cds> a(String $$0) {
+      return aix.a(kg.R, new aiy($$0));
    }
 }

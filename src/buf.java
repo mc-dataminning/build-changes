@@ -1,32 +1,51 @@
-public class buf extends bud {
-   private final int h;
-   private static final int i = 10;
-   private static final int j = 20;
+public class buf extends bui {
+   private final int l;
+   private final boolean m;
 
-   public buf(boi $$0, int $$1) {
+   public buf(bok $$0, int $$1, boolean $$2) {
       super($$0);
-      this.h = $$1;
+      this.l = $$1;
+      this.m = $$2;
    }
 
    @Override
    public void a() {
-      if (this.d > 0) {
-         this.d--;
-         this.i().ifPresent($$0x -> this.a.aW = this.a(this.a.aW, $$0x + 20.0F, this.b));
-         this.h().ifPresent($$0x -> this.a.s(this.a(this.a.dE(), $$0x + 10.0F, this.c)));
-      } else {
-         if (this.a.N().l()) {
-            this.a.s(this.a(this.a.dE(), 0.0F, 5.0F));
+      if (this.k == bui.a.b) {
+         this.k = bui.a.a;
+         this.d.e(true);
+         double $$0 = this.e - this.d.dr();
+         double $$1 = this.f - this.d.dt();
+         double $$2 = this.g - this.d.dx();
+         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
+         if ($$3 < 2.5000003E-7F) {
+            this.d.B(0.0F);
+            this.d.A(0.0F);
+            return;
          }
 
-         this.a.aW = this.a(this.a.aW, this.a.aU, this.b);
-      }
+         float $$4 = (float)(awi.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
+         this.d.r(this.a(this.d.dC(), $$4, 90.0F));
+         float $$5;
+         if (this.d.aC()) {
+            $$5 = (float)(this.h * this.d.g(bpp.o));
+         } else {
+            $$5 = (float)(this.h * this.d.g(bpp.h));
+         }
 
-      float $$0 = awh.g(this.a.aW - this.a.aU);
-      if ($$0 < (float)(-this.h)) {
-         this.a.aU -= 4.0F;
-      } else if ($$0 > (float)this.h) {
-         this.a.aU += 4.0F;
+         this.d.w($$5);
+         double $$7 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+         if (Math.abs($$1) > 1.0E-5F || Math.abs($$7) > 1.0E-5F) {
+            float $$8 = (float)(-(awi.d($$1, $$7) * 180.0F / (float)Math.PI));
+            this.d.s(this.a(this.d.dE(), $$8, (float)this.l));
+            this.d.B($$1 > 0.0 ? $$5 : -$$5);
+         }
+      } else {
+         if (!this.m) {
+            this.d.e(false);
+         }
+
+         this.d.B(0.0F);
+         this.d.A(0.0F);
       }
    }
 }

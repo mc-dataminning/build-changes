@@ -1,29 +1,30 @@
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class dyh extends dxx {
-   public static final Codec<dyh> b = bke.b(dlf.b).comapFlatMap(dyh::a, $$0 -> $$0.c).fieldOf("entries").codec();
-   private final bke<dlf> c;
+public abstract class dyh extends dye {
+   protected final long c;
+   protected final efz.a d;
+   protected final float e;
+   protected final efz f;
 
-   private static DataResult<dyh> a(bke<dlf> $$0) {
-      return $$0.d() ? DataResult.error(() -> "WeightedStateProvider with no states") : DataResult.success(new dyh($$0));
+   protected static <P extends dyh> P3<Mu<P>, Long, efz.a, Float> a(Instance<P> $$0) {
+      return $$0.group(
+         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
+         efz.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
+         avq.k.fieldOf("scale").forGetter($$0x -> $$0x.e)
+      );
    }
 
-   public dyh(bke<dlf> $$0) {
+   protected dyh(long $$0, efz.a $$1, float $$2) {
       this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = efz.b(new dru(new dqw($$0)), $$1);
    }
 
-   public dyh(bke.a<dlf> $$0) {
-      this($$0.a());
-   }
-
-   @Override
-   protected dxy<?> a() {
-      return dxy.b;
-   }
-
-   @Override
-   public dlf a(awo $$0, hz $$1) {
-      return this.c.a($$0).orElseThrow(IllegalStateException::new);
+   protected double a(hz $$0, double $$1) {
+      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
    }
 }

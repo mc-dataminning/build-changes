@@ -8,9 +8,9 @@ public class ahh implements xx<ahe> {
    private final byte[] b;
    private final byte[] c;
 
-   public ahh(SecretKey $$0, PublicKey $$1, byte[] $$2) throws avg {
-      this.b = avf.a($$1, $$0.getEncoded());
-      this.c = avf.a($$1, $$2);
+   public ahh(SecretKey $$0, PublicKey $$1, byte[] $$2) throws avh {
+      this.b = avg.a($$1, $$0.getEncoded());
+      this.c = avg.a($$1, $$2);
    }
 
    private ahh(uq $$0) {
@@ -32,14 +32,14 @@ public class ahh implements xx<ahe> {
       $$0.a(this);
    }
 
-   public SecretKey a(PrivateKey $$0) throws avg {
-      return avf.a($$0, this.b);
+   public SecretKey a(PrivateKey $$0) throws avh {
+      return avg.a($$0, this.b);
    }
 
    public boolean a(byte[] $$0, PrivateKey $$1) {
       try {
-         return Arrays.equals($$0, avf.b($$1, this.c));
-      } catch (avg var4) {
+         return Arrays.equals($$0, avg.b($$1, this.c));
+      } catch (avh var4) {
          return false;
       }
    }

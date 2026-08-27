@@ -12,10 +12,10 @@ public class abq {
    private final byte[] c;
    private final List<abq.a> d;
 
-   public abq(dnm $$0) {
+   public abq(dnq $$0) {
       this.b = new sw();
 
-      for (Entry<dqo.a, dqo> $$1 : $$0.e()) {
+      for (Entry<dqv.a, dqv> $$1 : $$0.e()) {
          if ($$1.getKey().b()) {
             this.b.a($$1.getKey().a(), new td($$1.getValue().a()));
          }
@@ -25,7 +25,7 @@ public class abq {
       a(new uq(this.c()), $$0);
       this.d = Lists.newArrayList();
 
-      for (Entry<hz, dit> $$2 : $$0.G().entrySet()) {
+      for (Entry<hz, dix> $$2 : $$0.G().entrySet()) {
          this.d.add(abq.a.a($$2.getValue()));
       }
    }
@@ -53,10 +53,10 @@ public class abq {
       abq.a.b.encode($$0, this.d);
    }
 
-   private static int a(dnm $$0) {
+   private static int a(dnq $$0) {
       int $$1 = 0;
 
-      for (dnn $$2 : $$0.d()) {
+      for (dnr $$2 : $$0.d()) {
          $$1 += $$2.j();
       }
 
@@ -69,8 +69,8 @@ public class abq {
       return $$0;
    }
 
-   public static void a(uq $$0, dnm $$1) {
-      for (dnn $$2 : $$1.d()) {
+   public static void a(uq $$0, dnq $$1) {
+      for (dnr $$2 : $$1.d()) {
          $$2.c($$0);
       }
    }
@@ -105,11 +105,11 @@ public class abq {
       public static final xo<vb, List<abq.a>> b = a.a(xm.a());
       final int c;
       final int d;
-      final div<?> e;
+      final diz<?> e;
       @Nullable
       final sw f;
 
-      private a(int $$0, int $$1, div<?> $$2, @Nullable sw $$3) {
+      private a(int $$0, int $$1, diz<?> $$2, @Nullable sw $$3) {
          this.c = $$0;
          this.d = $$1;
          this.e = $$2;
@@ -130,7 +130,7 @@ public class abq {
          $$0.a(this.f);
       }
 
-      static abq.a a(dit $$0) {
+      static abq.a a(dix $$0) {
          sw $$1 = $$0.aA_();
          hz $$2 = $$0.aE_();
          int $$3 = jb.b($$2.u()) << 4 | jb.b($$2.w());
@@ -140,6 +140,6 @@ public class abq {
 
    @FunctionalInterface
    public interface b {
-      void accept(hz var1, div<?> var2, @Nullable sw var3);
+      void accept(hz var1, diz<?> var2, @Nullable sw var3);
    }
 }

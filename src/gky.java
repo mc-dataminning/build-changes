@@ -1,23 +1,10 @@
-public class gky {
-   private final String a;
-   private final String b;
-   private long c;
+import java.util.List;
 
-   public gky(String $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = ac.b();
+public interface gky<T> extends glb<T> {
+   static <T> gky<T> b() {
+      return $$0 -> List.of();
    }
 
-   public String a() {
-      return this.a;
-   }
-
-   public String b() {
-      return this.b;
-   }
-
-   public void c() {
-      this.c = ac.b();
+   default void a() {
    }
 }

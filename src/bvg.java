@@ -1,36 +1,132 @@
-public class bvg extends bvb {
-   private final caq a;
-   private aow b;
-   private boolean c;
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.EnumMap;
+import java.util.EnumSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
-   public bvg(caq $$0) {
-      this.a = $$0;
+public class bvg {
+   private static final bwt a = new bwt(Integer.MAX_VALUE, new bvf() {
+      @Override
+      public boolean a() {
+         return false;
+      }
+   }) {
+      @Override
+      public boolean h() {
+         return false;
+      }
+   };
+   private final Map<bvf.a, bwt> b = new EnumMap<>(bvf.a.class);
+   private final Set<bwt> c = new ObjectLinkedOpenHashSet();
+   private final Supplier<bin> d;
+   private final EnumSet<bvf.a> e = EnumSet.noneOf(bvf.a.class);
+
+   public bvg(Supplier<bin> $$0) {
+      this.d = $$0;
    }
 
-   @Override
-   public boolean a() {
-      aow $$0 = (aow)this.a.R_();
-      boolean $$1 = $$0 != null && !$$0.P_() && !$$0.fU().b && !$$0.aZ() && !$$0.az;
-      return !this.a.gg() && $$1 && this.a.gp();
+   public void a(int $$0, bvf $$1) {
+      this.c.add(new bwt($$0, $$1));
    }
 
-   @Override
-   public boolean S_() {
-      return !this.c;
+   @VisibleForTesting
+   public void a(Predicate<bvf> $$0) {
+      this.c.removeIf($$1 -> $$0.test($$1.k()));
    }
 
-   @Override
-   public void c() {
-      this.b = (aow)this.a.R_();
-      this.c = false;
-   }
-
-   @Override
-   public void e() {
-      if (!this.c && !this.a.A() && !this.a.fU()) {
-         if (this.a.cH().c(this.b.cH())) {
-            this.c = this.a.b(this.b);
+   public void a(bvf $$0) {
+      for (bwt $$1 : this.c) {
+         if ($$1.k() == $$0 && $$1.h()) {
+            $$1.d();
          }
+      }
+
+      this.c.removeIf($$1x -> $$1x.k() == $$0);
+   }
+
+   private static boolean a(bwt $$0, EnumSet<bvf.a> $$1) {
+      for (bvf.a $$2 : $$0.j()) {
+         if ($$1.contains($$2)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   private static boolean a(bwt $$0, Map<bvf.a, bwt> $$1) {
+      for (bvf.a $$2 : $$0.j()) {
+         if (!$$1.getOrDefault($$2, a).a($$0)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public void a() {
+      bin $$0 = this.d.get();
+      $$0.a("goalCleanup");
+
+      for (bwt $$1 : this.c) {
+         if ($$1.h() && (a($$1, this.e) || !$$1.b())) {
+            $$1.d();
+         }
+      }
+
+      this.b.entrySet().removeIf($$0x -> !((bwt)$$0x.getValue()).h());
+      $$0.c();
+      $$0.a("goalUpdate");
+
+      for (bwt $$2 : this.c) {
+         if (!$$2.h() && !a($$2, this.e) && a($$2, this.b) && $$2.a()) {
+            for (bvf.a $$3 : $$2.j()) {
+               bwt $$4 = this.b.getOrDefault($$3, a);
+               $$4.d();
+               this.b.put($$3, $$2);
+            }
+
+            $$2.c();
+         }
+      }
+
+      $$0.c();
+      this.a(true);
+   }
+
+   public void a(boolean $$0) {
+      bin $$1 = this.d.get();
+      $$1.a("goalTick");
+
+      for (bwt $$2 : this.c) {
+         if ($$2.h() && ($$0 || $$2.T_())) {
+            $$2.e();
+         }
+      }
+
+      $$1.c();
+   }
+
+   public Set<bwt> b() {
+      return this.c;
+   }
+
+   public void a(bvf.a $$0) {
+      this.e.add($$0);
+   }
+
+   public void b(bvf.a $$0) {
+      this.e.remove($$0);
+   }
+
+   public void a(bvf.a $$0, boolean $$1) {
+      if ($$1) {
+         this.b($$0);
+      } else {
+         this.a($$0);
       }
    }
 }

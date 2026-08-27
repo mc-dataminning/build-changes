@@ -1,28 +1,13 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import org.joml.Matrix4f;
 
-public enum fcj implements axc {
-   a("bitmap", fcg.a.a),
-   b("ttf", fcl.a),
-   c("space", eqf.a.a),
-   d("unihex", fcm.b.a),
-   e("reference", fck.a);
+public class fcj extends fci {
+   public static final fcj a = new fcj();
 
-   public static final Codec<fcj> f = axc.a(fcj::values);
-   private final String g;
-   private final MapCodec<? extends fci> h;
-
-   private fcj(String $$0, MapCodec<? extends fci> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   public fcj() {
+      super(fcg.b(new aiy("")), 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
    }
 
    @Override
-   public String c() {
-      return this.g;
-   }
-
-   public MapCodec<? extends fci> a() {
-      return this.h;
+   public void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, esl $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
    }
 }

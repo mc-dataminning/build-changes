@@ -3,11 +3,11 @@ import com.mojang.serialization.Codec;
 import java.util.Arrays;
 import java.util.Locale;
 
-public class ek extends fc<dqo.a> {
-   private static final Codec<dqo.a> a = axc.a(ek::b, $$0 -> $$0.toLowerCase(Locale.ROOT));
+public class ek extends fc<dqv.a> {
+   private static final Codec<dqv.a> a = axc.a(ek::b, $$0 -> $$0.toLowerCase(Locale.ROOT));
 
-   private static dqo.a[] b() {
-      return Arrays.stream(dqo.a.values()).filter(dqo.a::d).toArray(dqo.a[]::new);
+   private static dqv.a[] b() {
+      return Arrays.stream(dqv.a.values()).filter(dqv.a::d).toArray(dqv.a[]::new);
    }
 
    private ek() {
@@ -18,8 +18,8 @@ public class ek extends fc<dqo.a> {
       return new ek();
    }
 
-   public static dqo.a a(CommandContext<du> $$0, String $$1) {
-      return (dqo.a)$$0.getArgument($$1, dqo.a.class);
+   public static dqv.a a(CommandContext<du> $$0, String $$1) {
+      return (dqv.a)$$0.getArgument($$1, dqv.a.class);
    }
 
    @Override

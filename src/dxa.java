@@ -1,39 +1,23 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
 
-public class dxa extends dwx {
-   public static final Codec<dxa> d = RecordCodecBuilder.create(
+public record dxa(int b, int c, int d) implements dwd {
+   public static final Codec<dxa> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(0, 81).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.f),
-               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.g),
-               a()
+               avq.j.fieldOf("spread_width").forGetter(dxa::a), avq.j.fieldOf("spread_height").forGetter(dxa::b), avq.j.fieldOf("max_height").forGetter(dxa::c)
             )
             .apply($$0, dxa::new)
    );
-   private final int e;
-   private final int f;
-   private final int g;
 
-   public dxa(int $$0, int $$1, int $$2) {
-      this($$0, $$1, $$2, OptionalInt.empty());
+   public int a() {
+      return this.b;
    }
 
-   public dxa(int $$0, int $$1, int $$2, OptionalInt $$3) {
-      super($$3);
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public int b() {
+      return this.c;
    }
 
-   @Override
-   protected dwy<?> b() {
-      return dwy.a;
-   }
-
-   @Override
-   public int a(int $$0, int $$1) {
-      return $$1 < this.e ? this.f : this.g;
+   public int c() {
+      return this.d;
    }
 }

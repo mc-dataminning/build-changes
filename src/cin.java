@@ -1,105 +1,82 @@
 import javax.annotation.Nullable;
 
-public class cin extends cho implements chw {
-   public static final cin.a e = new cin.a();
-
-   public cin(bnu<? extends cin> $$0, cvn $$1) {
+public class cin extends cik {
+   public cin(bnw<? extends cin> $$0, cvr $$1) {
       super($$0, $$1);
    }
 
-   public cin(bnu<? extends cin> $$0, cfj $$1, cvn $$2) {
-      super($$0, $$1.dr(), $$1.gh(), $$1.dx(), $$2);
-      this.b($$1);
+   public cin(cvr $$0, boi $$1) {
+      super(bnw.F, $$1, $$0);
    }
 
    @Override
-   protected enn aq() {
-      float $$0 = this.ai().n().a() / 2.0F;
-      float $$1 = this.ai().n().b();
-      float $$2 = 0.15F;
-      return new enn(
-         this.dk().c - (double)$$0,
-         this.dk().d - 0.15F,
-         this.dk().e - (double)$$0,
-         this.dk().c + (double)$$0,
-         this.dk().d - 0.15F + (double)$$1,
-         this.dk().e + (double)$$0
-      );
+   protected coy s() {
+      return cpg.se;
    }
 
    @Override
-   public boolean h(bno $$0) {
-      return $$0 instanceof cin ? false : super.h($$0);
-   }
-
-   @Override
-   protected boolean a(bno $$0) {
-      return $$0 instanceof cin ? false : super.a($$0);
-   }
-
-   @Override
-   protected void a(enp $$0) {
+   protected void a(enw $$0) {
       super.a($$0);
-      if (!this.dM().B) {
-         $$0.a().a(this.dN().c(this, this.w() instanceof bog $$1 ? $$1 : null), 1.0F);
-         this.z();
+      $$0.a().a(this.dN().b(this, this.w()), 0.0F);
+   }
+
+   @Override
+   protected void a(enx $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < 32; $$1++) {
+         this.dM().a(jz.Z, this.dr(), this.dt() + this.af.j() * 2.0, this.dx(), this.af.k(), 0.0, this.af.k());
       }
-   }
 
-   private void z() {
-      this.dM().a(this, null, e, this.dr(), this.dt(), this.dx(), (float)(3.0 + this.af.j()), false, cvn.a.e, jz.y, jz.z, atk.Bt);
-   }
+      if (!this.dM().B && !this.dH()) {
+         bnq $$2 = this.w();
+         if ($$2 instanceof aox $$3) {
+            if ($$3.d.c() && $$3.dM() == this.dM() && !$$3.fD()) {
+               if (this.af.i() < 0.05F && this.dM().Z().b(cvn.e)) {
+                  cei $$4 = bnw.H.a(this.dM());
+                  if ($$4 != null) {
+                     $$4.b($$2.dr(), $$2.dt(), $$2.dx(), $$2.dC(), $$2.dE());
+                     this.dM().b($$4);
+                  }
+               }
 
-   @Override
-   protected void a(eno $$0) {
-      super.a($$0);
-      this.z();
-      this.am();
-   }
+               if ($$2.bO()) {
+                  $$3.a(this.dr(), this.dt(), this.dx());
+               } else {
+                  $$2.c(this.dr(), this.dt(), this.dx());
+               }
 
-   @Override
-   protected void a(enq $$0) {
-      super.a($$0);
-      if (!this.dM().B) {
+               $$2.n();
+               $$2.a(this.dN().k(), 5.0F);
+               this.dM().a(null, this.dr(), this.dt(), this.dx(), atl.tO, atm.h);
+            }
+         } else if ($$2 != null) {
+            $$2.c(this.dr(), this.dt(), this.dx());
+            $$2.n();
+         }
+
          this.am();
       }
    }
 
    @Override
-   protected boolean s() {
-      return false;
-   }
-
-   @Override
-   public coz q() {
-      return coz.h;
-   }
-
-   @Override
-   protected float x() {
-      return 1.0F;
-   }
-
-   @Override
-   protected float y() {
-      return this.x();
+   public void l() {
+      bnq $$0 = this.w();
+      if ($$0 instanceof aox && !$$0.bx() && this.dM().Z().b(cvn.Y)) {
+         this.am();
+      } else {
+         super.l();
+      }
    }
 
    @Nullable
    @Override
-   protected jx u() {
-      return null;
-   }
-
-   @Override
-   protected cuw.a ah_() {
-      return cuw.a.b;
-   }
-
-   public static final class a extends cvg {
-      @Override
-      public boolean a(cvf $$0, bno $$1) {
-         return false;
+   public bnq b(aow $$0) {
+      bnq $$1 = this.w();
+      if ($$1 != null && $$1.dM().ad() != $$0.ad()) {
+         this.b(null);
       }
+
+      return super.b($$0);
    }
 }

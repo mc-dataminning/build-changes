@@ -56,12 +56,12 @@ public class ala {
       return new hz(a($$0.u()), a($$0.v()), a($$0.w()));
    }
 
-   private static cwp a(MutableInt $$0, dnb $$1, eaw $$2, ij<cwm> $$3, Predicate<ij<cwm>> $$4) {
+   private static cwt a(MutableInt $$0, dnf $$1, ebd $$2, ij<cwq> $$3, Predicate<ij<cwq>> $$4) {
       return ($$5, $$6, $$7, $$8) -> {
          int $$9 = iu.c($$5);
          int $$10 = iu.c($$6);
          int $$11 = iu.c($$7);
-         ij<cwm> $$12 = $$1.getNoiseBiome($$5, $$6, $$7);
+         ij<cwq> $$12 = $$1.getNoiseBiome($$5, $$6, $$7);
          if ($$2.c($$9, $$10, $$11) && $$4.test($$12)) {
             $$0.increment();
             return $$3;
@@ -71,25 +71,25 @@ public class ala {
       };
    }
 
-   public static Either<Integer, CommandSyntaxException> a(aov $$0, hz $$1, hz $$2, ij<cwm> $$3) {
+   public static Either<Integer, CommandSyntaxException> a(aow $$0, hz $$1, hz $$2, ij<cwq> $$3) {
       return a($$0, $$1, $$2, $$3, $$0x -> true, $$0x -> {
       });
    }
 
-   public static Either<Integer, CommandSyntaxException> a(aov $$0, hz $$1, hz $$2, ij<cwm> $$3, Predicate<ij<cwm>> $$4, Consumer<Supplier<vq>> $$5) {
+   public static Either<Integer, CommandSyntaxException> a(aow $$0, hz $$1, hz $$2, ij<cwq> $$3, Predicate<ij<cwq>> $$4, Consumer<Supplier<vq>> $$5) {
       hz $$6 = a($$1);
       hz $$7 = a($$2);
-      eaw $$8 = eaw.a($$6, $$7);
+      ebd $$8 = ebd.a($$6, $$7);
       int $$9 = $$8.d() * $$8.e() * $$8.f();
-      int $$10 = $$0.Z().c(cvj.z);
+      int $$10 = $$0.Z().c(cvn.z);
       if ($$9 > $$10) {
          return Either.right(b.create($$10, $$9));
       } else {
-         List<dnb> $$11 = new ArrayList<>();
+         List<dnf> $$11 = new ArrayList<>();
 
          for (int $$12 = jb.a($$8.j()); $$12 <= jb.a($$8.m()); $$12++) {
             for (int $$13 = jb.a($$8.h()); $$13 <= jb.a($$8.k()); $$13++) {
-               dnb $$14 = $$0.a($$13, $$12, dng.n, false);
+               dnf $$14 = $$0.a($$13, $$12, dnk.n, false);
                if ($$14 == null) {
                   return Either.right(a.create());
                }
@@ -100,7 +100,7 @@ public class ala {
 
          MutableInt $$15 = new MutableInt(0);
 
-         for (dnb $$16 : $$11) {
+         for (dnf $$16 : $$11) {
             $$16.a(a($$15, $$16, $$8, $$3, $$4), $$0.l().i().b());
             $$16.a(true);
          }
@@ -111,7 +111,7 @@ public class ala {
       }
    }
 
-   private static int a(du $$0, hz $$1, hz $$2, ij.c<cwm> $$3, Predicate<ij<cwm>> $$4) throws CommandSyntaxException {
+   private static int a(du $$0, hz $$1, hz $$2, ij.c<cwq> $$3, Predicate<ij<cwq>> $$4) throws CommandSyntaxException {
       Either<Integer, CommandSyntaxException> $$5 = a($$0.e(), $$1, $$2, $$3, $$4, $$1x -> $$0.a($$1x, true));
       Optional<CommandSyntaxException> $$6 = $$5.right();
       if ($$6.isPresent()) {

@@ -1,20 +1,19 @@
 import com.mojang.serialization.Codec;
 
-public class eej extends eey {
-   public static final Codec<eej> a = dlf.b.fieldOf("block_state").xmap(eej::new, $$0 -> $$0.b).codec();
-   private final dlf b;
+public class eej extends eff {
+   public static final Codec<eej> a = Codec.unit(() -> eej.b);
+   public static final eej b = new eej();
 
-   public eej(dlf $$0) {
-      this.b = $$0;
+   private eej() {
    }
 
    @Override
-   public boolean a(dlf $$0, awo $$1) {
-      return $$0 == this.b;
+   public boolean a(dlj $$0, awp $$1) {
+      return true;
    }
 
    @Override
-   protected eez<?> a() {
-      return eez.c;
+   protected efg<?> a() {
+      return efg.a;
    }
 }

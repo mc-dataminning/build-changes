@@ -1,54 +1,37 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
 
-public class dus extends dts<dwl> {
-   public dus(Codec<dwl> $$0) {
+public class dus extends dtz<dwj> {
+   public dus(Codec<dwj> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dtu<dwl> $$0) {
-      dwl $$1 = $$0.f();
-      cwi $$2 = $$0.b();
-      awo $$3 = $$0.d();
-      cyo $$4 = $$1.b.b();
-      hz $$5 = a($$2, $$0.e().j().a(ie.a.b, $$2.J_() + 1, $$2.al() - 1), $$4);
-      if ($$5 == null) {
+   public boolean a(dub<dwj> $$0) {
+      cwm $$1 = $$0.b();
+      hz $$2 = $$0.e();
+      dlj $$3 = $$1.a_($$2.d());
+      dwj $$4 = $$0.f();
+      awp $$5 = $$0.d();
+      if (!$$3.a(aua.aK)) {
          return false;
       } else {
-         int $$6 = $$1.a().a($$3);
-         int $$7 = $$1.a().a($$3);
-         int $$8 = $$1.a().a($$3);
-         int $$9 = Math.max($$6, Math.max($$7, $$8));
-         boolean $$10 = false;
+         int $$6 = $$2.v();
+         if ($$6 >= $$1.J_() + 1 && $$6 + 1 < $$1.ak()) {
+            int $$7 = 0;
 
-         for (hz $$11 : hz.a($$5, $$6, $$7, $$8)) {
-            if ($$11.k($$5) > $$9) {
-               break;
+            for (int $$8 = 0; $$8 < $$4.d * $$4.d; $$8++) {
+               hz $$9 = $$2.b($$5.a($$4.d) - $$5.a($$4.d), $$5.a($$4.e) - $$5.a($$4.e), $$5.a($$4.d) - $$5.a($$4.d));
+               dlj $$10 = $$4.b.a($$5, $$9);
+               if ($$1.u($$9) && $$9.v() > $$1.J_() && $$10.a($$1, $$9)) {
+                  $$1.a($$9, $$10, 2);
+                  $$7++;
+               }
             }
 
-            dlf $$12 = $$2.a_($$11);
-            if ($$12.a($$4)) {
-               this.a($$2, $$11, $$1.c);
-               $$10 = true;
-            }
+            return $$7 > 0;
+         } else {
+            return false;
          }
-
-         return $$10;
       }
-   }
-
-   @Nullable
-   private static hz a(cvo $$0, hz.a $$1, cyo $$2) {
-      while ($$1.v() > $$0.J_() + 1) {
-         dlf $$3 = $$0.a_($$1);
-         if ($$3.a($$2)) {
-            return $$1;
-         }
-
-         $$1.c(ie.a);
-      }
-
-      return null;
    }
 }

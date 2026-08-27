@@ -7,9 +7,9 @@ public class aco implements xx<aag> {
    private final aco.a b;
    private final List<aiy> c;
    private final List<aiy> d;
-   private final ato e;
+   private final atp e;
 
-   public aco(aco.a $$0, Collection<aiy> $$1, Collection<aiy> $$2, ato $$3) {
+   public aco(aco.a $$0, Collection<aiy> $$1, Collection<aiy> $$2, atp $$3) {
       this.b = $$0;
       this.c = ImmutableList.copyOf($$1);
       this.d = ImmutableList.copyOf($$2);
@@ -18,7 +18,7 @@ public class aco implements xx<aag> {
 
    private aco(uq $$0) {
       this.b = $$0.b(aco.a.class);
-      this.e = ato.a($$0);
+      this.e = atp.a($$0);
       this.c = $$0.a(uq::s);
       if (this.b == aco.a.a) {
          this.d = $$0.a(uq::s);
@@ -53,7 +53,7 @@ public class aco implements xx<aag> {
       return this.d;
    }
 
-   public ato f() {
+   public atp f() {
       return this.e;
    }
 

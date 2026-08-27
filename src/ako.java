@@ -13,14 +13,14 @@ public class ako {
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("deop").requires($$0x -> $$0x.c(3)))
             .then(
                dv.a("targets", ej.a())
-                  .suggests(($$0x, $$1) -> dz.a(((du)$$0x.getSource()).l().ae().l(), $$1))
+                  .suggests(($$0x, $$1) -> dz.a(((du)$$0x.getSource()).l().ag().l(), $$1))
                   .executes($$0x -> a((du)$$0x.getSource(), ej.a($$0x, "targets")))
             )
       );
    }
 
    private static int a(du $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      asn $$2 = $$0.l().ae();
+      aso $$2 = $$0.l().ag();
       int $$3 = 0;
 
       for (GameProfile $$4 : $$1) {

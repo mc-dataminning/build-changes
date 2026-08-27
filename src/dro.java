@@ -1,32 +1,47 @@
-import com.mojang.serialization.Codec;
-import java.util.stream.LongStream;
+import java.util.concurrent.atomic.AtomicLong;
 
-public class dro {
-   private long b;
-   private long c;
-   public static final Codec<dro> a = Codec.LONG_STREAM
-      .comapFlatMap($$0 -> ac.a($$0, 2).map($$0x -> new dro($$0x[0], $$0x[1])), $$0 -> LongStream.of($$0.b, $$0.c));
+@Deprecated
+public class dro implements dqk {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private final AtomicLong h = new AtomicLong();
+   private final dqx i = new dqx(this);
 
-   public dro(drd.a $$0) {
-      this($$0.b(), $$0.c());
+   public dro(long $$0) {
+      this.b($$0);
    }
 
-   public dro(long $$0, long $$1) {
-      this.b = $$0;
-      this.c = $$1;
-      if ((this.b | this.c) == 0L) {
-         this.b = -7046029254386353131L;
-         this.c = 7640891576956012809L;
-      }
+   @Override
+   public awp d() {
+      return new dro(this.g());
    }
 
-   public long a() {
-      long $$0 = this.b;
-      long $$1 = this.c;
-      long $$2 = Long.rotateLeft($$0 + $$1, 17) + $$0;
-      $$1 ^= $$0;
-      this.b = Long.rotateLeft($$0, 49) ^ $$1 ^ $$1 << 21;
-      this.c = Long.rotateLeft($$1, 28);
-      return $$2;
+   @Override
+   public dri e() {
+      return new dqw.a(this.g());
+   }
+
+   @Override
+   public void b(long $$0) {
+      this.h.set(($$0 ^ 25214903917L) & 281474976710655L);
+   }
+
+   @Override
+   public int c(int $$0) {
+      long $$1;
+      long $$2;
+      do {
+         $$1 = this.h.get();
+         $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
+      } while (!this.h.compareAndSet($$1, $$2));
+
+      return (int)($$2 >>> 48 - $$0);
+   }
+
+   @Override
+   public double k() {
+      return this.i.b();
    }
 }

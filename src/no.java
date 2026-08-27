@@ -22,11 +22,11 @@ public class no implements km {
    public CompletableFuture<?> a(kk $$0) {
       return this.f.thenCompose($$1 -> {
          DynamicOps<JsonElement> $$2 = aiw.a(JsonOps.INSTANCE, $$1);
-         return CompletableFuture.allOf(ait.a.stream().flatMap($$3 -> this.a($$0, $$1, $$2, (ait.b<?>)$$3).stream()).toArray(CompletableFuture[]::new));
+         return CompletableFuture.allOf(ait.a.stream().flatMap($$3 -> this.a($$0, $$1, $$2, (ait.c<?>)$$3).stream()).toArray(CompletableFuture[]::new));
       });
    }
 
-   private <T> Optional<CompletableFuture<?>> a(kk $$0, il.b $$1, DynamicOps<JsonElement> $$2, ait.b<T> $$3) {
+   private <T> Optional<CompletableFuture<?>> a(kk $$0, il.b $$1, DynamicOps<JsonElement> $$2, ait.c<T> $$3) {
       aix<? extends iv<T>> $$4 = $$3.a();
       return $$1.a($$4).map($$4x -> {
          ko.a $$5 = this.e.a(ko.b.a, $$4.a().a());

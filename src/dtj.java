@@ -1,44 +1,58 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
 
-public class dtj extends dth {
-   public dtj(Codec<dwd> $$0) {
+public class dtj extends dtz<dwk> {
+   public dtj(Codec<dwk> $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean a(cvo $$0, awo $$1, hz $$2, dlf $$3) {
-      hz.a $$4 = $$2.j();
-      int $$5 = $$1.a(3) + 1;
+   public boolean a(dub<dwk> $$0) {
+      hz $$1 = $$0.e();
+      cwm $$2 = $$0.b();
+      awp $$3 = $$0.d();
+      if ($$1.v() > $$2.A_() - 1) {
+         return false;
+      } else if (!$$2.a_($$1).a(cyu.G) && !$$2.a_($$1.d()).a(cyu.G)) {
+         return false;
+      } else {
+         boolean $$4 = false;
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         if (!this.b($$0, $$1, $$4, $$3)) {
-            return true;
-         }
-
-         $$4.c(ie.b);
-      }
-
-      hz $$7 = $$4.i();
-      int $$8 = $$1.a(3) + 2;
-      List<ie> $$9 = ie.c.a.c($$1);
-
-      for (ie $$11 : $$9.subList(0, $$8)) {
-         $$4.g($$7);
-         $$4.c($$11);
-         int $$12 = $$1.a(5) + 2;
-         int $$13 = 0;
-
-         for (int $$14 = 0; $$14 < $$12 && this.b($$0, $$1, $$4, $$3); $$14++) {
-            $$13++;
-            $$4.c(ie.b);
-            if ($$14 == 0 || $$13 >= 2 && $$1.i() < 0.25F) {
-               $$4.c($$11);
-               $$13 = 0;
+         for (ie $$5 : ie.values()) {
+            if ($$5 != ie.a && $$2.a_($$1.a($$5)).a(cyu.iC)) {
+               $$4 = true;
+               break;
             }
          }
-      }
 
-      return true;
+         if (!$$4) {
+            return false;
+         } else {
+            $$2.a($$1, cyu.mW.o(), 2);
+
+            for (int $$6 = 0; $$6 < 200; $$6++) {
+               int $$7 = $$3.a(5) - $$3.a(6);
+               int $$8 = 3;
+               if ($$7 < 2) {
+                  $$8 += $$7 / 2;
+               }
+
+               if ($$8 >= 1) {
+                  hz $$9 = $$1.b($$3.a($$8) - $$3.a($$8), $$7, $$3.a($$8) - $$3.a($$8));
+                  dlj $$10 = $$2.a_($$9);
+                  if ($$10.i() || $$10.a(cyu.G) || $$10.a(cyu.iC) || $$10.a(cyu.dO)) {
+                     for (ie $$11 : ie.values()) {
+                        dlj $$12 = $$2.a_($$9.a($$11));
+                        if ($$12.a(cyu.mW)) {
+                           $$2.a($$9, cyu.mW.o(), 2);
+                           break;
+                        }
+                     }
+                  }
+               }
+            }
+
+            return true;
+         }
+      }
    }
 }

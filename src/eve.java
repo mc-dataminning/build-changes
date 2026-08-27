@@ -1,77 +1,92 @@
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.Consumer;
+import com.mojang.logging.LogUtils;
+import java.time.Duration;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class eve extends gmv {
-   private static final vq b = vq.c("mco.reset.world.seed");
-   public static final vq a = vq.c("mco.reset.world.generate");
-   private static final int c = 10;
-   private static final int v = 210;
-   private final fct w = new fct(this);
-   private final Consumer<ewa> x;
-   private ezq y;
-   private evu z = evu.a;
-   private boolean A = true;
-   private final Set<String> B = new HashSet<>();
-   private final vq C;
+public class eve extends gnd {
+   private static final Logger a = LogUtils.getLogger();
+   private static final gne b = new gne(Duration.ofSeconds(5L));
+   private final List<ewo> c;
+   private final ffl v;
+   private final fde w = fde.d();
+   private volatile vq x;
+   @Nullable
+   private fad y;
 
-   public eve(Consumer<ewa> $$0, vq $$1) {
-      super(a);
-      this.x = $$0;
-      this.C = $$1;
+   public eve(ffl $$0, ewo... $$1) {
+      super(exg.a);
+      this.v = $$0;
+      this.c = List.of($$1);
+      if (this.c.isEmpty()) {
+         throw new IllegalArgumentException("No tasks added");
+      } else {
+         this.x = this.c.get(0).a();
+         Runnable $$2 = () -> {
+            for (ewo $$1x : $$1) {
+               this.a($$1x.a());
+               if ($$1x.d()) {
+                  break;
+               }
+
+               $$1x.run();
+            }
+         };
+         Thread $$3 = new Thread($$2, "Realms-long-running-task");
+         $$3.setUncaughtExceptionHandler(new eui(a));
+         $$3.start();
+      }
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      if (this.y != null) {
+         b.a(this.f.aX(), this.y.x());
+      }
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.f();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
    }
 
    @Override
    public void aQ_() {
-      this.y = new ezq(this.i, 210, 20, vq.c("mco.reset.world.seed"));
-      this.y.f(32);
-      this.w.a(new fao(this.e, this.i));
-      fcx $$0 = this.w.c(fcx.d()).a(10);
-      $$0.a(fcp.a(this.i, this.y, b));
-      $$0.a(ezo.a(evu::a).a(evu.values()).a(this.z).a(0, 0, 210, 20, vq.c("selectWorld.mapType"), ($$0x, $$1x) -> this.z = $$1x));
-      $$0.a(ezo.b(this.A).a(0, 0, 210, 20, vq.c("selectWorld.mapFeatures"), ($$0x, $$1x) -> this.A = $$1x));
-      this.a($$0);
-      fcx $$1 = this.w.b(fcx.e().a(10));
-      $$1.a(ezh.a(this.C, $$0x -> this.x.accept(this.E())).a());
-      $$1.a(ezh.a(vp.k, $$0x -> this.d()).a());
-      this.w.a($$1x -> {
-         ezf var10000 = this.d($$1x);
+      this.w.c().b();
+      this.y = new fad(this.i, this.x);
+      this.w.a(this.y, $$0 -> $$0.e(30));
+      this.w.a(ezo.a(vp.e, $$0 -> this.f()).a());
+      this.w.a($$1 -> {
+         ezm var10000 = this.c($$1);
       });
       this.c();
    }
 
    @Override
-   protected void aH_() {
-      this.c(this.y);
-   }
-
-   private void a(fcx $$0) {
-      arl $$1 = aro.c();
-      $$1.a();
-      $$0.a(ezh.a(vq.c("selectWorld.experiments"), $$1x -> this.f.a(new fjx(this, $$1, $$0xx -> {
-            this.B.clear();
-
-            for (ari $$1xx : $$0xx.f()) {
-               if ($$1xx.j() == arm.d) {
-                  this.B.add($$1xx.f());
-               }
-            }
-
-            this.f.a(this);
-         }))).a(210).a());
-   }
-
-   private ewa E() {
-      return new ewa(this.y.a(), this.z, this.A, this.B);
-   }
-
-   @Override
    protected void c() {
       this.w.a();
+      fcy.a(this.w, this.F());
    }
 
-   @Override
-   public void d() {
-      this.x.accept(null);
+   protected void f() {
+      for (ewo $$0 : this.c) {
+         $$0.b();
+      }
+
+      this.f.a(this.v);
+   }
+
+   public void a(vq $$0) {
+      if (this.y != null) {
+         this.y.b($$0);
+      }
+
+      this.x = $$0;
    }
 }

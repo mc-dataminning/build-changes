@@ -1,98 +1,45 @@
-public class atu {
-   public static final att<cyo> a = a("mined", kf.e);
-   public static final att<cou> b = a("crafted", kf.h);
-   public static final att<cou> c = a("used", kf.h);
-   public static final att<cou> d = a("broken", kf.h);
-   public static final att<cou> e = a("picked_up", kf.h);
-   public static final att<cou> f = a("dropped", kf.h);
-   public static final att<bnu<?>> g = a("killed", kf.g);
-   public static final att<bnu<?>> h = a("killed_by", kf.g);
-   public static final att<aiy> i = a("custom", kf.m);
-   public static final aiy j = a("leave_game", ats.b);
-   public static final aiy k = a("play_time", ats.e);
-   public static final aiy l = a("total_world_time", ats.e);
-   public static final aiy m = a("time_since_death", ats.e);
-   public static final aiy n = a("time_since_rest", ats.e);
-   public static final aiy o = a("sneak_time", ats.e);
-   public static final aiy p = a("walk_one_cm", ats.d);
-   public static final aiy q = a("crouch_one_cm", ats.d);
-   public static final aiy r = a("sprint_one_cm", ats.d);
-   public static final aiy s = a("walk_on_water_one_cm", ats.d);
-   public static final aiy t = a("fall_one_cm", ats.d);
-   public static final aiy u = a("climb_one_cm", ats.d);
-   public static final aiy v = a("fly_one_cm", ats.d);
-   public static final aiy w = a("walk_under_water_one_cm", ats.d);
-   public static final aiy x = a("minecart_one_cm", ats.d);
-   public static final aiy y = a("boat_one_cm", ats.d);
-   public static final aiy z = a("pig_one_cm", ats.d);
-   public static final aiy A = a("horse_one_cm", ats.d);
-   public static final aiy B = a("aviate_one_cm", ats.d);
-   public static final aiy C = a("swim_one_cm", ats.d);
-   public static final aiy D = a("strider_one_cm", ats.d);
-   public static final aiy E = a("jump", ats.b);
-   public static final aiy F = a("drop", ats.b);
-   public static final aiy G = a("damage_dealt", ats.c);
-   public static final aiy H = a("damage_dealt_absorbed", ats.c);
-   public static final aiy I = a("damage_dealt_resisted", ats.c);
-   public static final aiy J = a("damage_taken", ats.c);
-   public static final aiy K = a("damage_blocked_by_shield", ats.c);
-   public static final aiy L = a("damage_absorbed", ats.c);
-   public static final aiy M = a("damage_resisted", ats.c);
-   public static final aiy N = a("deaths", ats.b);
-   public static final aiy O = a("mob_kills", ats.b);
-   public static final aiy P = a("animals_bred", ats.b);
-   public static final aiy Q = a("player_kills", ats.b);
-   public static final aiy R = a("fish_caught", ats.b);
-   public static final aiy S = a("talked_to_villager", ats.b);
-   public static final aiy T = a("traded_with_villager", ats.b);
-   public static final aiy U = a("eat_cake_slice", ats.b);
-   public static final aiy V = a("fill_cauldron", ats.b);
-   public static final aiy W = a("use_cauldron", ats.b);
-   public static final aiy X = a("clean_armor", ats.b);
-   public static final aiy Y = a("clean_banner", ats.b);
-   public static final aiy Z = a("clean_shulker_box", ats.b);
-   public static final aiy aa = a("interact_with_brewingstand", ats.b);
-   public static final aiy ab = a("interact_with_beacon", ats.b);
-   public static final aiy ac = a("inspect_dropper", ats.b);
-   public static final aiy ad = a("inspect_hopper", ats.b);
-   public static final aiy ae = a("inspect_dispenser", ats.b);
-   public static final aiy af = a("play_noteblock", ats.b);
-   public static final aiy ag = a("tune_noteblock", ats.b);
-   public static final aiy ah = a("pot_flower", ats.b);
-   public static final aiy ai = a("trigger_trapped_chest", ats.b);
-   public static final aiy aj = a("open_enderchest", ats.b);
-   public static final aiy ak = a("enchant_item", ats.b);
-   public static final aiy al = a("play_record", ats.b);
-   public static final aiy am = a("interact_with_furnace", ats.b);
-   public static final aiy an = a("interact_with_crafting_table", ats.b);
-   public static final aiy ao = a("open_chest", ats.b);
-   public static final aiy ap = a("sleep_in_bed", ats.b);
-   public static final aiy aq = a("open_shulker_box", ats.b);
-   public static final aiy ar = a("open_barrel", ats.b);
-   public static final aiy as = a("interact_with_blast_furnace", ats.b);
-   public static final aiy at = a("interact_with_smoker", ats.b);
-   public static final aiy au = a("interact_with_lectern", ats.b);
-   public static final aiy av = a("interact_with_campfire", ats.b);
-   public static final aiy aw = a("interact_with_cartography_table", ats.b);
-   public static final aiy ax = a("interact_with_loom", ats.b);
-   public static final aiy ay = a("interact_with_stonecutter", ats.b);
-   public static final aiy az = a("bell_ring", ats.b);
-   public static final aiy aA = a("raid_trigger", ats.b);
-   public static final aiy aB = a("raid_win", ats.b);
-   public static final aiy aC = a("interact_with_anvil", ats.b);
-   public static final aiy aD = a("interact_with_grindstone", ats.b);
-   public static final aiy aE = a("target_hit", ats.b);
-   public static final aiy aF = a("interact_with_smithing_table", ats.b);
+import java.util.IdentityHashMap;
+import java.util.Iterator;
+import java.util.Map;
 
-   private static aiy a(String $$0, ats $$1) {
-      aiy $$2 = new aiy($$0);
-      iv.a(kf.m, $$0, $$2);
-      i.a($$2, $$1);
-      return $$2;
+public class atu<T> implements Iterable<ats<T>> {
+   private final iv<T> a;
+   private final Map<T, ats<T>> b = new IdentityHashMap<>();
+   private final vq c;
+   private final xo<vb, ats<T>> d;
+
+   public atu(iv<T> $$0, vq $$1) {
+      this.a = $$0;
+      this.c = $$1;
+      this.d = xm.a($$0.c()).a(this::b, ats::b);
    }
 
-   private static <T> att<T> a(String $$0, iv<T> $$1) {
-      vq $$2 = vq.c("stat_type.minecraft." + $$0);
-      return iv.a(kf.x, $$0, new att<>($$1, $$2));
+   public xo<vb, ats<T>> a() {
+      return this.d;
+   }
+
+   public boolean a(T $$0) {
+      return this.b.containsKey($$0);
+   }
+
+   public ats<T> a(T $$0, att $$1) {
+      return this.b.computeIfAbsent($$0, $$1x -> new ats<>(this, (T)$$1x, $$1));
+   }
+
+   public iv<T> b() {
+      return this.a;
+   }
+
+   @Override
+   public Iterator<ats<T>> iterator() {
+      return this.b.values().iterator();
+   }
+
+   public ats<T> b(T $$0) {
+      return this.a($$0, att.b);
+   }
+
+   public vq c() {
+      return this.c;
    }
 }

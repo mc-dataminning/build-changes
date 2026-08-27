@@ -1,65 +1,130 @@
+import com.google.common.collect.Lists;
 import java.util.EnumSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.function.BooleanSupplier;
+import javax.annotation.Nullable;
 
-public class bvr extends bvb {
-   private final boi a;
-   private bog b;
-   private int c;
+public class bvr extends bvf {
+   protected final boq a;
+   private final double b;
+   @Nullable
+   private ehl c;
+   private hz d;
+   private final boolean e;
+   private final List<hz> f = Lists.newArrayList();
+   private final int g;
+   private final BooleanSupplier h;
 
-   public bvr(boi $$0) {
+   public bvr(boq $$0, double $$1, boolean $$2, int $$3, BooleanSupplier $$4) {
       this.a = $$0;
-      this.a(EnumSet.of(bvb.a.a, bvb.a.b));
+      this.b = $$1;
+      this.e = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.a(EnumSet.of(bvf.a.a));
+      if (!bzd.a($$0)) {
+         throw new IllegalArgumentException("Unsupported mob for MoveThroughVillageGoal");
+      }
    }
 
    @Override
    public boolean a() {
-      bog $$0 = this.a.q();
-      if ($$0 == null) {
+      if (!bzd.a(this.a)) {
          return false;
       } else {
-         this.b = $$0;
-         return true;
+         this.h();
+         if (this.e && this.a.dM().P()) {
+            return false;
+         } else {
+            aow $$0 = (aow)this.a.dM();
+            hz $$1 = this.a.dm();
+            if (!$$0.a($$1, 6)) {
+               return false;
+            } else {
+               enz $$2 = bzf.a(this.a, 15, 7, $$2x -> {
+                  if (!$$0.c($$2x)) {
+                     return Double.NEGATIVE_INFINITY;
+                  } else {
+                     Optional<hz> $$3x = $$0.y().d($$0xx -> $$0xx.a(auk.b), this::a, $$2x, 10, bzl.b.b);
+                     return $$3x.<Double>map($$1xx -> -$$1xx.j($$1)).orElse(Double.NEGATIVE_INFINITY);
+                  }
+               });
+               if ($$2 == null) {
+                  return false;
+               } else {
+                  Optional<hz> $$3 = $$0.y().d($$0x -> $$0x.a(auk.b), this::a, hz.a($$2), 10, bzl.b.b);
+                  if ($$3.isEmpty()) {
+                     return false;
+                  } else {
+                     this.d = $$3.get().i();
+                     bxs $$4 = (bxs)this.a.N();
+                     boolean $$5 = $$4.f();
+                     $$4.b(this.h.getAsBoolean());
+                     this.c = $$4.a(this.d, 0);
+                     $$4.b($$5);
+                     if (this.c == null) {
+                        enz $$6 = bzc.a(this.a, 10, 7, enz.c(this.d), (float) (Math.PI / 2));
+                        if ($$6 == null) {
+                           return false;
+                        }
+
+                        $$4.b(this.h.getAsBoolean());
+                        this.c = this.a.N().a($$6.c, $$6.d, $$6.e, 0);
+                        $$4.b($$5);
+                        if (this.c == null) {
+                           return false;
+                        }
+                     }
+
+                     for (int $$7 = 0; $$7 < this.c.e(); $$7++) {
+                        ehj $$8 = this.c.a($$7);
+                        hz $$9 = new hz($$8.a, $$8.b + 1, $$8.c);
+                        if (day.a(this.a.dM(), $$9)) {
+                           this.c = this.a.N().a((double)$$8.a, (double)$$8.b, (double)$$8.c, 0);
+                           break;
+                        }
+                     }
+
+                     return this.c != null;
+                  }
+               }
+            }
+         }
       }
    }
 
    @Override
    public boolean b() {
-      if (!this.b.bx()) {
-         return false;
-      } else {
-         return this.a.f(this.b) > 225.0 ? false : !this.a.N().l() || this.a();
-      }
+      return this.a.N().l() ? false : !this.d.a(this.a.dk(), (double)(this.a.dg() + (float)this.g));
+   }
+
+   @Override
+   public void c() {
+      this.a.N().a(this.c, this.b);
    }
 
    @Override
    public void d() {
-      this.b = null;
-      this.a.N().n();
+      if (this.a.N().l() || this.d.a(this.a.dk(), (double)this.g)) {
+         this.f.add(this.d);
+      }
    }
 
-   @Override
-   public boolean T_() {
+   private boolean a(hz $$0) {
+      for (hz $$1 : this.f) {
+         if (Objects.equals($$0, $$1)) {
+            return false;
+         }
+      }
+
       return true;
    }
 
-   @Override
-   public void e() {
-      this.a.I().a(this.b, 30.0F, 30.0F);
-      double $$0 = (double)(this.a.dg() * 2.0F * this.a.dg() * 2.0F);
-      double $$1 = this.a.i(this.b.dr(), this.b.dt(), this.b.dx());
-      double $$2 = 0.8;
-      if ($$1 > $$0 && $$1 < 16.0) {
-         $$2 = 1.33;
-      } else if ($$1 < 225.0) {
-         $$2 = 0.6;
-      }
-
-      this.a.N().a(this.b, $$2);
-      this.c = Math.max(this.c - 1, 0);
-      if (!($$1 > $$0)) {
-         if (this.c <= 0) {
-            this.c = 20;
-            this.a.B(this.b);
-         }
+   private void h() {
+      if (this.f.size() > 15) {
+         this.f.remove(0);
       }
    }
 }

@@ -51,9 +51,9 @@ public class wy implements vr {
       return this.f;
    }
 
-   private eov a(du $$0) throws CommandSyntaxException {
+   private epc a(du $$0) throws CommandSyntaxException {
       if (this.e != null) {
-         List<? extends bno> $$1 = this.e.b($$0);
+         List<? extends bnq> $$1 = this.e.b($$0);
          if (!$$1.isEmpty()) {
             if ($$1.size() != 1) {
                throw eh.a.create();
@@ -63,16 +63,16 @@ public class wy implements vr {
          }
       }
 
-      return eov.d(this.d);
+      return epc.d(this.d);
    }
 
-   private we a(eov $$0, du $$1) {
+   private we a(epc $$0, du $$1) {
       MinecraftServer $$2 = $$1.l();
       if ($$2 != null) {
-         eow $$3 = $$2.aH();
-         eoo $$4 = $$3.a(this.f);
+         epd $$3 = $$2.aJ();
+         eov $$4 = $$3.a(this.f);
          if ($$4 != null) {
-            eos $$5 = $$3.d($$0, $$4);
+            eoz $$5 = $$3.d($$0, $$4);
             if ($$5 != null) {
                return $$5.a($$4.a(xj.b));
             }
@@ -83,12 +83,12 @@ public class wy implements vr {
    }
 
    @Override
-   public we a(@Nullable du $$0, @Nullable bno $$1, int $$2) throws CommandSyntaxException {
+   public we a(@Nullable du $$0, @Nullable bnq $$1, int $$2) throws CommandSyntaxException {
       if ($$0 == null) {
          return vq.i();
       } else {
-         eov $$3 = this.a($$0);
-         eov $$4 = (eov)($$1 != null && $$3.equals(eov.cv) ? $$1 : $$3);
+         epc $$3 = this.a($$0);
+         epc $$4 = (epc)($$1 != null && $$3.equals(epc.cv) ? $$1 : $$3);
          return this.a($$4, $$0);
       }
    }

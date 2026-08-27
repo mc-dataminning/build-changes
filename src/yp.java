@@ -1,8 +1,8 @@
-public record yp(aok b) implements xx<yo> {
+public record yp(aol b) implements xx<yo> {
    public static final xo<uq, yp> a = xx.a(yp::a, yp::new);
 
    private yp(uq $$0) {
-      this(new aok($$0));
+      this(new aol($$0));
    }
 
    private void a(uq $$0) {

@@ -1,17 +1,8 @@
-public enum dlt implements axc {
-   a("floor"),
-   b("ceiling"),
-   c("single_wall"),
-   d("double_wall");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   private final String e;
-
-   private dlt(String $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   public String c() {
-      return this.e;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dlt {
 }

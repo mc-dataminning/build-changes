@@ -1,76 +1,96 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dcu extends cyo implements dfo {
+public class dcu extends cye {
    public static final MapCodec<dcu> a = b(dcu::new);
-   public static final dlw b = dlv.j;
-   public static final dlw c = dlv.C;
-   protected static final eol d = eoi.a(cyo.a(5.0, 0.0, 5.0, 11.0, 7.0, 11.0), cyo.a(6.0, 7.0, 6.0, 10.0, 9.0, 10.0));
-   protected static final eol e = eoi.a(cyo.a(5.0, 1.0, 5.0, 11.0, 8.0, 11.0), cyo.a(6.0, 8.0, 6.0, 10.0, 10.0, 10.0));
+   public static final dma b = dlz.n;
 
    @Override
    public MapCodec<dcu> a() {
       return a;
    }
 
-   public dcu(dle.d $$0) {
+   protected dcu(dli.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)));
+      this.k(this.E.b().a(b, Boolean.valueOf(false)));
+   }
+
+   @Override
+   public void a(cvr $$0, hz $$1, dlj $$2, @Nullable boi $$3, cpd $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      sw $$5 = cmw.a($$4);
+      if ($$5 != null && $$5.e("RecordItem")) {
+         $$0.a($$1, $$2.a(b, Boolean.valueOf(true)), 2);
+      }
+   }
+
+   @Override
+   protected blw a(dlj $$0, cvr $$1, hz $$2, chl $$3, env $$4) {
+      if ($$0.c(b) && $$1.c_($$2) instanceof djy $$5) {
+         $$5.k();
+         return blw.a($$1.B);
+      } else {
+         return blw.d;
+      }
+   }
+
+   @Override
+   protected void a(dlj $$0, cvr $$1, hz $$2, dlj $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if ($$1.c_($$2) instanceof djy $$5) {
+            $$5.k();
+         }
+
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   public dix a(hz $$0, dlj $$1) {
+      return new djy($$0, $$1);
+   }
+
+   @Override
+   public boolean f_(dlj $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(dlj $$0, cux $$1, hz $$2, ie $$3) {
+      if ($$1.c_($$2) instanceof djy $$4 && $$4.f()) {
+         return 15;
+      }
+
+      return 0;
+   }
+
+   @Override
+   protected boolean d_(dlj $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dlj $$0, cvr $$1, hz $$2) {
+      if ($$1.c_($$2) instanceof djy $$3 && $$3.x().d() instanceof cpv $$4) {
+         return $$4.h();
+      }
+
+      return 0;
+   }
+
+   @Override
+   protected dex b_(dlj $$0) {
+      return dex.c;
+   }
+
+   @Override
+   protected void a(dlk.a<cys, dlj> $$0) {
+      $$0.a(b);
    }
 
    @Nullable
    @Override
-   public dlf a(crg $$0) {
-      egp $$1 = $$0.q().b_($$0.a());
-
-      for (ie $$2 : $$0.f()) {
-         if ($$2.o() == ie.a.b) {
-            dlf $$3 = this.o().a(b, Boolean.valueOf($$2 == ie.b));
-            if ($$3.a((cvq)$$0.q(), $$0.a())) {
-               return $$3.a(c, Boolean.valueOf($$1.a() == egq.c));
-            }
-         }
-      }
-
-      return null;
-   }
-
-   @Override
-   protected eol a(dlf $$0, cut $$1, hz $$2, enx $$3) {
-      return $$0.c(b) ? e : d;
-   }
-
-   @Override
-   protected void a(dlg.a<cyo, dlf> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   protected boolean a(dlf $$0, cvq $$1, hz $$2) {
-      ie $$3 = m($$0).g();
-      return cyo.a($$1, $$2.a($$3), $$3.g());
-   }
-
-   protected static ie m(dlf $$0) {
-      return $$0.c(b) ? ie.a : ie.b;
-   }
-
-   @Override
-   protected dlf a(dlf $$0, ie $$1, dlf $$2, cvo $$3, hz $$4, hz $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, egq.c, egq.c.a($$3));
-      }
-
-      return m($$0).g() == $$1 && !$$0.a($$3, $$4) ? cyq.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected egp c_(dlf $$0) {
-      return $$0.c(c) ? egq.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   protected boolean a(dlf $$0, cut $$1, hz $$2, ehf $$3) {
-      return false;
+   public <T extends dix> diy<T> a(cvr $$0, dlj $$1, diz<T> $$2) {
+      return $$1.c(b) ? a($$2, diz.e, djy::a) : null;
    }
 }

@@ -1,87 +1,58 @@
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class cos extends coy {
+   private static final int a = 40;
 
-public class cos extends cou {
-   private static final String a = "instrument";
-   private final auo<cor> b;
-
-   public cos(cou.a $$0, auo<cor> $$1) {
+   public cos(coy.a $$0) {
       super($$0);
-      this.b = $$1;
    }
 
    @Override
-   public void a(coz $$0, @Nullable cvn $$1, List<vq> $$2, cqq $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      Optional<aix<cor>> $$4 = this.d($$0).flatMap(ij::e);
-      if ($$4.isPresent()) {
-         we $$5 = vq.c(ac.a("instrument", $$4.get().a()));
-         $$2.add($$5.a(n.h));
+   public cpd a(cpd $$0, cvr $$1, boi $$2) {
+      super.a($$0, $$1, $$2);
+      if ($$2 instanceof aox $$3) {
+         am.A.a($$3, $$0);
+         $$3.b(atv.c.b(this));
       }
-   }
 
-   public static coz a(cou $$0, ij<cor> $$1) {
-      coz $$2 = new coz($$0);
-      a($$2, $$1);
-      return $$2;
-   }
+      if (!$$1.B) {
+         $$2.e(bnf.s);
+      }
 
-   public static void a(coz $$0, auo<cor> $$1, awo $$2) {
-      Optional<ij<cor>> $$3 = kf.an.a($$1, $$2);
-      $$3.ifPresent($$1x -> a($$0, $$1x));
-   }
-
-   private static void a(coz $$0, ij<cor> $$1) {
-      sw $$2 = $$0.x();
-      $$2.a("instrument", $$1.e().orElseThrow(() -> new IllegalStateException("Invalid instrument")).a().toString());
-   }
-
-   @Override
-   public blv<coz> a(cvn $$0, chh $$1, blt $$2) {
-      coz $$3 = $$1.b($$2);
-      Optional<? extends ij<cor>> $$4 = this.d($$3);
-      if ($$4.isPresent()) {
-         cor $$5 = $$4.get().a();
-         $$1.c($$2);
-         a($$0, $$1, $$5);
-         $$1.go().a(this, $$5.b());
-         $$1.b(atu.c.b(this));
-         return blv.b($$3);
+      if ($$0.b()) {
+         return new cpd(cpg.sk);
       } else {
-         return blv.d($$3);
-      }
-   }
-
-   @Override
-   public int b(coz $$0) {
-      Optional<? extends ij<cor>> $$1 = this.d($$0);
-      return $$1.<Integer>map($$0x -> ((cor)$$0x.a()).b()).orElse(0);
-   }
-
-   private Optional<? extends ij<cor>> d(coz $$0) {
-      sw $$1 = $$0.w();
-      if ($$1 != null && $$1.b("instrument", 8)) {
-         aiy $$2 = aiy.a($$1.l("instrument"));
-         if ($$2 != null) {
-            return kf.an.c($$2);
+         if ($$2 instanceof chl $$4 && !$$4.fU().d) {
+            cpd $$5 = new cpd(cpg.sk);
+            if (!$$4.fT().e($$5)) {
+               $$4.a($$5, false);
+            }
          }
-      }
 
-      Iterator<ij<cor>> $$3 = kf.an.c(this.b).iterator();
-      return $$3.hasNext() ? Optional.of($$3.next()) : Optional.empty();
+         return $$0;
+      }
    }
 
    @Override
-   public cqs c(coz $$0) {
-      return cqs.i;
+   public int b(cpd $$0) {
+      return 40;
    }
 
-   private static void a(cvn $$0, chh $$1, cor $$2) {
-      atj $$3 = $$2.a().a();
-      float $$4 = $$2.c() / 16.0F;
-      $$0.a($$1, $$1, $$3, atl.c, $$4, 1.0F);
-      $$0.a(dpp.B, $$1.dk(), dpp.a.a($$1));
+   @Override
+   public cqw c(cpd $$0) {
+      return cqw.c;
+   }
+
+   @Override
+   public atk ap_() {
+      return atl.mf;
+   }
+
+   @Override
+   public atk aq_() {
+      return atl.mf;
+   }
+
+   @Override
+   public blx<cpd> a(cvr $$0, chl $$1, blv $$2) {
+      return cpf.a($$0, $$1, $$2);
    }
 }

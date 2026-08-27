@@ -1,31 +1,42 @@
-public class fei extends ffe {
-   private final vq a;
+public class fei extends ffl {
+   private static final int a = 8;
+   private static final int b = 210;
+   private static final vq c = vq.c("credits_and_attribution.screen.title");
+   private static final vq k = vq.c("credits_and_attribution.button.credits");
+   private static final vq l = vq.c("credits_and_attribution.button.attribution");
+   private static final vq m = vq.c("credits_and_attribution.button.licenses");
+   private final ffl n;
+   private final fda o = new fda(this);
 
-   public fei(vq $$0, vq $$1) {
-      super($$0);
-      this.a = $$1;
+   public fei(ffl $$0) {
+      super(c);
+      this.n = $$0;
    }
 
    @Override
    protected void aQ_() {
-      super.aQ_();
-      this.d(ezh.a(vp.e, $$0 -> this.f.a(null)).a(this.g / 2 - 100, 140, 200, 20).a());
+      this.o.a(new fav(this.p(), this.i));
+      fde $$0 = this.o.c(fde.d()).a(8);
+      $$0.c().b();
+      $$0.a(ezo.a(k, $$0x -> this.o()).a(210).a());
+      $$0.a(ezo.a(l, fed.b(this, "https://aka.ms/MinecraftJavaAttribution")).a(210).a());
+      $$0.a(ezo.a(m, fed.b(this, "https://aka.ms/MinecraftJavaLicenses")).a(210).a());
+      this.o.b(ezo.a(vp.d, $$0x -> this.d()).a());
+      this.o.a();
+      this.o.a(this::c);
    }
 
    @Override
-   public void a(eyu $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 90, 16777215);
-      $$0.a(this.i, this.a, this.g / 2, 110, 16777215);
+   protected void c() {
+      this.o.a();
+   }
+
+   private void o() {
+      this.f.a(new fft(false, () -> this.f.a(this)));
    }
 
    @Override
-   public void b(eyu $$0, int $$1, int $$2, float $$3) {
-      $$0.b(0, 0, this.g, this.h, -12574688, -11530224);
-   }
-
-   @Override
-   public boolean aO_() {
-      return false;
+   public void d() {
+      this.f.a(this.n);
    }
 }

@@ -6,7 +6,7 @@ public class akw {
       $$0.register((LiteralArgumentBuilder)dv.a("me").then(dv.a("action", el.a()).executes($$0x -> {
          el.a($$0x, "action", $$1 -> {
             du $$2 = (du)$$0x.getSource();
-            asn $$3 = $$2.l().ae();
+            aso $$3 = $$2.l().ag();
             $$3.a($$1, $$2, vm.a(vm.i, $$2));
          });
          return 1;

@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 
 public class xb implements vr {
    public static final Object[] a = new Object[0];
-   private static final Codec<Object> d = avp.a(avp.b, xb::b);
+   private static final Codec<Object> d = avq.a(avq.b, xb::b);
    private static final Codec<Object> e = Codec.either(d, vs.a)
       .xmap(
          $$0 -> $$0.map($$0x -> $$0x, $$0x -> Objects.requireNonNullElse($$0x.d(), $$0x)), $$0 -> $$0 instanceof vq $$1 ? Either.right($$1) : Either.left($$0)
@@ -26,7 +26,7 @@ public class xb implements vr {
       $$0 -> $$0.group(
                Codec.STRING.fieldOf("translate").forGetter($$0x -> $$0x.h),
                Codec.STRING.optionalFieldOf("fallback").forGetter($$0x -> Optional.ofNullable($$0x.i)),
-               avp.a(e.listOf(), "with").forGetter($$0x -> a($$0x.j))
+               avq.a(e.listOf(), "with").forGetter($$0x -> a($$0x.j))
             )
             .apply($$0, xb::a)
    );
@@ -180,7 +180,7 @@ public class xb implements vr {
    }
 
    @Override
-   public we a(@Nullable du $$0, @Nullable bno $$1, int $$2) throws CommandSyntaxException {
+   public we a(@Nullable du $$0, @Nullable bnq $$1, int $$2) throws CommandSyntaxException {
       Object[] $$3 = new Object[this.j.length];
 
       for (int $$4 = 0; $$4 < $$3.length; $$4++) {

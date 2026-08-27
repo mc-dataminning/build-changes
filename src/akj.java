@@ -16,7 +16,7 @@ public class akj {
    private static final String d = "0.0.0.0";
    private static final int e = 10000;
    private static final int f = 100;
-   public static BiMap<String, aix<cvn>> a = ImmutableBiMap.of("o", cvn.h, "n", cvn.i, "e", cvn.j);
+   public static BiMap<String, aix<cvr>> a = ImmutableBiMap.of("o", cvr.h, "n", cvr.i, "e", cvr.j);
    @Nullable
    private static akb g;
    @Nullable
@@ -95,7 +95,7 @@ public class akj {
       if (b($$0)) {
          return 0;
       } else {
-         g = new akb($$1, $$2, $$0.l().ae(), 100);
+         g = new akb($$1, $$2, $$0.l().ag(), 100);
 
          try {
             g.a();

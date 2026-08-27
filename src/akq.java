@@ -25,8 +25,8 @@ public class akq {
    private static Iterable<String> a(MinecraftServer $$0) {
       Set<String> $$1 = new HashSet<>();
 
-      for (uo $$2 : $$0.af().e()) {
-         if ($$2.k() instanceof aps $$3) {
+      for (uo $$2 : $$0.ah().e()) {
+         if ($$2.k() instanceof apt $$3) {
             $$1.add($$3.k().getId().toString());
          }
       }
@@ -34,7 +34,7 @@ public class akq {
       return $$1;
    }
 
-   private static int a(du $$0, aow $$1) {
+   private static int a(du $$0, aox $$1) {
       GameProfile $$2 = $$1.fS();
       $$1.d.o();
       $$0.a(() -> vq.b("Switched player " + $$2.getName() + "(" + $$2.getId() + ") to config mode"), false);
@@ -42,10 +42,10 @@ public class akq {
    }
 
    private static int a(du $$0, UUID $$1) {
-      for (uo $$2 : $$0.l().af().e()) {
+      for (uo $$2 : $$0.l().ah().e()) {
          uw var5 = $$2.k();
-         if (var5 instanceof aps) {
-            aps $$3 = (aps)var5;
+         if (var5 instanceof apt) {
+            apt $$3 = (apt)var5;
             if ($$3.k().getId().equals($$1)) {
                $$3.n();
             }

@@ -1,34 +1,43 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dxc extends dxi {
-   public static final Codec<dxc> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, dxc::new));
+public class dxc implements dwd {
+   public static final Codec<dxc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               aup.b(kg.f).fieldOf("replaceable").forGetter($$0x -> $$0x.b),
+               dye.a.fieldOf("ground_state").forGetter($$0x -> $$0x.c),
+               eap.b.fieldOf("vegetation_feature").forGetter($$0x -> $$0x.d),
+               eag.c.fieldOf("surface").forGetter($$0x -> $$0x.e),
+               blb.b(1, 128).fieldOf("depth").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_bottom_block_chance").forGetter($$0x -> $$0x.g),
+               Codec.intRange(1, 256).fieldOf("vertical_range").forGetter($$0x -> $$0x.h),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("vegetation_chance").forGetter($$0x -> $$0x.i),
+               blb.c.fieldOf("xz_radius").forGetter($$0x -> $$0x.j),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_edge_column_chance").forGetter($$0x -> $$0x.k)
+            )
+            .apply($$0, dxc::new)
+   );
+   public final aup<cys> b;
+   public final dye c;
+   public final ij<eap> d;
+   public final eag e;
+   public final blb f;
+   public final float g;
+   public final int h;
+   public final float i;
+   public final blb j;
+   public final float k;
 
-   public dxc(bkz $$0, bkz $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   protected dxj<?> a() {
-      return dxj.d;
-   }
-
-   @Override
-   protected void a(cvt $$0, dxi.b $$1, awo $$2, dws $$3, int $$4, dxi.a $$5, int $$6, int $$7, int $$8) {
-      boolean $$9 = $$5.c();
-      hz $$10 = $$5.a().b($$8);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b(), -1 - $$6, $$9);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 - 1, -$$6, $$9);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b() - 1, 0, $$9);
-   }
-
-   @Override
-   public int a(awo $$0, int $$1, dws $$2) {
-      return 0;
-   }
-
-   @Override
-   protected boolean a(awo $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$2 == 0 ? ($$1 > 1 || $$3 > 1) && $$1 != 0 && $$3 != 0 : $$1 == $$4 && $$3 == $$4 && $$4 > 0;
+   public dxc(aup<cys> $$0, dye $$1, ij<eap> $$2, eag $$3, blb $$4, float $$5, int $$6, float $$7, blb $$8, float $$9) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
    }
 }

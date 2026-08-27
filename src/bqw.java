@@ -1,31 +1,30 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Collections;
+import java.util.List;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class bqw {
-   public static brh<bog> a(int $$0, float $$1, int $$2) {
-      return btj.a(
-         (Function<btj.b<bog>, ? extends App<btj.c<bog>, btm<bog>>>)($$3 -> $$3.group(
-                  $$3.c(bxh.m), $$3.a(bxh.b), $$3.a(bxh.C), $$3.a(bxh.t), $$3.a(bxh.n), $$3.a(bxh.r), $$3.a(bxh.q)
-               )
+   public static bqb<boq> a(float $$0) {
+      return btn.a(
+         (Function<btn.b<boq>, ? extends App<btn.c<boq>, btq<boq>>>)($$1 -> $$1.group($$1.c(bxl.m))
                .apply(
-                  $$3,
-                  ($$4, $$5, $$6, $$7, $$8, $$9, $$10) -> ($$11, $$12, $$13) -> {
-                        $$11.y()
-                           .d($$0xxxx -> $$0xxxx.a(bzl.n), $$0xxxx -> true, $$12.dm(), $$2 + 1, bzh.b.c)
-                           .filter($$2xxxx -> $$2xxxx.a($$12.dk(), (double)$$2))
-                           .or(() -> $$11.y().a($$0xxxxx -> $$0xxxxx.a(bzl.n), $$0xxxxx -> true, bzh.b.c, $$12.dm(), $$0, $$12.eh()))
-                           .or(() -> $$3.<ii>a($$5).map(ii::b))
-                           .ifPresent($$10xx -> {
-                              $$7.b();
-                              $$8.b();
-                              $$9.b();
-                              $$10.b();
-                              $$6.a(ii.a($$11.ae(), $$10xx));
-                              if (!$$10xx.a($$12.dk(), (double)$$2)) {
-                                 $$4.a(new bxk($$10xx, $$1, $$2));
-                              }
-                           });
-                        return true;
+                  $$1,
+                  $$1x -> ($$2, $$3, $$4) -> {
+                        if ($$2.h($$3.dm())) {
+                           return false;
+                        } else {
+                           hz $$5 = $$3.dm();
+                           List<hz> $$6 = hz.b($$5.b(-1, -1, -1), $$5.b(1, 1, 1)).map(hz::i).collect(Collectors.toList());
+                           Collections.shuffle($$6);
+                           $$6.stream()
+                              .filter($$1xxx -> !$$2.h($$1xxx))
+                              .filter($$2x -> $$2.a($$2x, $$3))
+                              .filter($$2x -> $$2.g($$3))
+                              .findFirst()
+                              .ifPresent($$2x -> $$1x.a(new bxo($$2x, $$0, 0)));
+                           return true;
+                        }
                      }
                ))
       );

@@ -1,47 +1,136 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.Map.Entry;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
 import javax.annotation.Nullable;
 
-public class fvi {
-   public final Int2ObjectMap<gja> a = new Int2ObjectOpenHashMap(256);
-   private final Int2ObjectMap<git> b = new Int2ObjectOpenHashMap(256);
-   private final giz c;
+public abstract class fvi {
+   private static final Object2ObjectMap<aiy, fvi> a = ac.a(new Object2ObjectArrayMap(), $$0 -> {
+      fvi.c $$1 = new fvi.c();
+      $$0.defaultReturnValue($$1);
+      $$0.put(dot.e, $$1);
+      $$0.put(dot.f, new fvi.b());
+      $$0.put(dot.g, new fvi.a());
+   });
+   private final float[] b = new float[4];
+   private final float c;
+   private final boolean d;
+   private final fvi.d e;
+   private final boolean f;
+   private final boolean g;
 
-   public fvi(giz $$0) {
+   public fvi(float $$0, boolean $$1, fvi.d $$2, boolean $$3, boolean $$4) {
       this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
-   public git a(coz $$0) {
-      git $$1 = this.a($$0.d());
-      return $$1 == null ? this.c.a() : $$1;
+   public static fvi a(dov $$0) {
+      return (fvi)a.get($$0.r());
    }
 
    @Nullable
-   public git a(cou $$0) {
-      return (git)this.b.get(b($$0));
+   public float[] a(float $$0, float $$1) {
+      float $$2 = 0.4F;
+      float $$3 = awi.b($$0 * (float) (Math.PI * 2)) - 0.0F;
+      float $$4 = -0.0F;
+      if ($$3 >= -0.4F && $$3 <= 0.4F) {
+         float $$5 = ($$3 - -0.0F) / 0.4F * 0.5F + 0.5F;
+         float $$6 = 1.0F - (1.0F - awi.a($$5 * (float) Math.PI)) * 0.99F;
+         $$6 *= $$6;
+         this.b[0] = $$5 * 0.3F + 0.7F;
+         this.b[1] = $$5 * $$5 * 0.7F + 0.2F;
+         this.b[2] = $$5 * $$5 * 0.0F + 0.2F;
+         this.b[3] = $$6;
+         return this.b;
+      } else {
+         return null;
+      }
    }
 
-   private static int b(cou $$0) {
-      return cou.a($$0);
-   }
-
-   public void a(cou $$0, gja $$1) {
-      this.a.put(b($$0), $$1);
-   }
-
-   public giz a() {
+   public float a() {
       return this.c;
    }
 
-   public void b() {
-      this.b.clear();
-      ObjectIterator var1 = this.a.entrySet().iterator();
+   public boolean b() {
+      return this.d;
+   }
 
-      while (var1.hasNext()) {
-         Entry<Integer, gja> $$0 = (Entry<Integer, gja>)var1.next();
-         this.b.put($$0.getKey(), this.c.a($$0.getValue()));
+   public abstract enz a(enz var1, float var2);
+
+   public abstract boolean a(int var1, int var2);
+
+   public fvi.d c() {
+      return this.e;
+   }
+
+   public boolean d() {
+      return this.f;
+   }
+
+   public boolean e() {
+      return this.g;
+   }
+
+   public static class a extends fvi {
+      public a() {
+         super(Float.NaN, false, fvi.d.c, true, false);
       }
+
+      @Override
+      public enz a(enz $$0, float $$1) {
+         return $$0.a(0.15F);
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return false;
+      }
+
+      @Nullable
+      @Override
+      public float[] a(float $$0, float $$1) {
+         return null;
+      }
+   }
+
+   public static class b extends fvi {
+      public b() {
+         super(Float.NaN, true, fvi.d.a, false, true);
+      }
+
+      @Override
+      public enz a(enz $$0, float $$1) {
+         return $$0;
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return true;
+      }
+   }
+
+   public static class c extends fvi {
+      public static final int a = 192;
+
+      public c() {
+         super(192.0F, true, fvi.d.b, false, false);
+      }
+
+      @Override
+      public enz a(enz $$0, float $$1) {
+         return $$0.d((double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.91F + 0.09F));
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return false;
+      }
+   }
+
+   public static enum d {
+      a,
+      b,
+      c;
    }
 }

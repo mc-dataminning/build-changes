@@ -1,16 +1,17 @@
-public class gdt extends gct {
-   private static final aiy a = new aiy("textures/entity/skeleton/wither_skeleton.png");
+public class gdt extends gcg<cff, fos> {
+   private static final aiy a = new aiy("textures/entity/illager/vex.png");
+   private static final aiy i = new aiy("textures/entity/illager/vex_charging.png");
 
-   public gdt(gas.a $$0) {
-      super($$0, fpb.bT, fpb.bU, fpb.bV);
+   public gdt(gba.a $$0) {
+      super($$0, new fos($$0.a(fpi.bK)), 0.3F);
+      this.a(new gfe<>(this, $$0.d()));
    }
 
-   @Override
-   public aiy a(cdw $$0) {
-      return a;
+   protected int a(cff $$0, hz $$1) {
+      return 15;
    }
 
-   protected void a(cdw $$0, esa $$1, float $$2) {
-      $$1.b(1.2F, 1.2F, 1.2F);
+   public aiy a(cff $$0) {
+      return $$0.gh() ? i : a;
    }
 }

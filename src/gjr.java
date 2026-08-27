@@ -1,16 +1,7 @@
-public class gjr extends gjt {
-   public gjr(bzu $$0) {
-      super($$0, atk.bN, atl.g);
-      this.j = 0;
-   }
+import java.util.Map;
+import java.util.UUID;
+import java.util.function.Consumer;
 
-   @Override
-   protected gjp o() {
-      return new gjs(this.n);
-   }
-
-   @Override
-   protected boolean p() {
-      return !this.n.aa_();
-   }
+public interface gjr {
+   void a(Map<UUID, aql.c> var1, Consumer<aql.b> var2);
 }

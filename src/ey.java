@@ -35,20 +35,20 @@ public class ey implements ArgumentType<ey.b> {
       this.d = $$0;
    }
 
-   public static eov a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static epc a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1).iterator().next();
    }
 
-   public static Collection<eov> b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static Collection<epc> b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, Collections::emptyList);
    }
 
-   public static Collection<eov> c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, ((du)$$0.getSource()).l().aH()::e);
+   public static Collection<epc> c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, ((du)$$0.getSource()).l().aJ()::e);
    }
 
-   public static Collection<eov> a(CommandContext<du> $$0, String $$1, Supplier<Collection<eov>> $$2) throws CommandSyntaxException {
-      Collection<eov> $$3 = ((ey.b)$$0.getArgument($$1, ey.b.class)).getNames((du)$$0.getSource(), $$2);
+   public static Collection<epc> a(CommandContext<du> $$0, String $$1, Supplier<Collection<epc>> $$2) throws CommandSyntaxException {
+      Collection<epc> $$3 = ((ey.b)$$0.getArgument($$1, ey.b.class)).getNames((du)$$0.getSource(), $$2);
       if ($$3.isEmpty()) {
          throw eh.d.create();
       } else {
@@ -83,7 +83,7 @@ public class ey implements ArgumentType<ey.b> {
          String $$4 = $$0.getString().substring($$3, $$0.getCursor());
          if ($$4.equals("*")) {
             return ($$0x, $$1) -> {
-               Collection<eov> $$2 = $$1.get();
+               Collection<epc> $$2 = $$1.get();
                if ($$2.isEmpty()) {
                   throw c.create();
                } else {
@@ -91,7 +91,7 @@ public class ey implements ArgumentType<ey.b> {
                }
             };
          } else {
-            List<eov> $$5 = List.of(eov.d($$4));
+            List<epc> $$5 = List.of(epc.d($$4));
             if ($$4.startsWith("#")) {
                return ($$1, $$2) -> $$5;
             } else {
@@ -99,11 +99,11 @@ public class ey implements ArgumentType<ey.b> {
                   UUID $$6 = UUID.fromString($$4);
                   return ($$2, $$3x) -> {
                      MinecraftServer $$4x = $$2.l();
-                     eov $$5x = null;
-                     List<eov> $$6x = null;
+                     epc $$5x = null;
+                     List<epc> $$6x = null;
 
-                     for (aov $$7 : $$4x.H()) {
-                        bno $$8 = $$7.a($$6);
+                     for (aow $$7 : $$4x.J()) {
+                        bnq $$8 = $$7.a($$6);
                         if ($$8 != null) {
                            if ($$5x == null) {
                               $$5x = $$8;
@@ -127,7 +127,7 @@ public class ey implements ArgumentType<ey.b> {
                } catch (IllegalArgumentException var6) {
                   return ($$2, $$3x) -> {
                      MinecraftServer $$4x = $$2.l();
-                     aow $$5x = $$4x.ae().a($$4);
+                     aox $$5x = $$4x.ag().a($$4);
                      return $$5x != null ? List.of($$5x) : $$5;
                   };
                }
@@ -186,7 +186,7 @@ public class ey implements ArgumentType<ey.b> {
 
    @FunctionalInterface
    public interface b {
-      Collection<eov> getNames(du var1, Supplier<Collection<eov>> var2) throws CommandSyntaxException;
+      Collection<epc> getNames(du var1, Supplier<Collection<epc>> var2) throws CommandSyntaxException;
    }
 
    public static class c implements ey.b {
@@ -197,8 +197,8 @@ public class ey implements ArgumentType<ey.b> {
       }
 
       @Override
-      public Collection<eov> getNames(du $$0, Supplier<Collection<eov>> $$1) throws CommandSyntaxException {
-         List<? extends bno> $$2 = this.a.b($$0);
+      public Collection<epc> getNames(du $$0, Supplier<Collection<epc>> $$1) throws CommandSyntaxException {
+         List<? extends bnq> $$2 = this.a.b($$0);
          if ($$2.isEmpty()) {
             throw eh.d.create();
          } else {

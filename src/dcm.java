@@ -1,69 +1,178 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class dcm extends cyo {
-   public static final MapCodec<dcm> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(kf.e.q().fieldOf("host").forGetter(dcm::b), u()).apply($$0, dcm::new));
-   private final cyo b;
-   private static final Map<cyo, cyo> c = Maps.newIdentityHashMap();
-   private static final Map<dlf, dlf> d = Maps.newIdentityHashMap();
-   private static final Map<dlf, dlf> e = Maps.newIdentityHashMap();
+public class dcm extends cye {
+   public static final MapCodec<dcm> a = b(dcm::new);
+   public static final dmd b = dlz.Q;
+   public static final dma c = dlz.f;
+   private static final eos d = cys.a(0.0, 10.0, 0.0, 16.0, 16.0, 16.0);
+   private static final eos e = cys.a(4.0, 4.0, 4.0, 12.0, 10.0, 12.0);
+   private static final eos f = eop.a(e, d);
+   private static final eos g = eop.a(f, djv.z_, eod.e);
+   private static final eos h = eop.a(g, cys.a(6.0, 0.0, 6.0, 10.0, 4.0, 10.0));
+   private static final eos i = eop.a(g, cys.a(12.0, 4.0, 6.0, 16.0, 8.0, 10.0));
+   private static final eos j = eop.a(g, cys.a(6.0, 4.0, 0.0, 10.0, 8.0, 4.0));
+   private static final eos k = eop.a(g, cys.a(6.0, 4.0, 12.0, 10.0, 8.0, 16.0));
+   private static final eos l = eop.a(g, cys.a(0.0, 4.0, 6.0, 4.0, 8.0, 10.0));
+   private static final eos m = djv.z_;
+   private static final eos n = eop.a(djv.z_, cys.a(12.0, 8.0, 6.0, 16.0, 10.0, 10.0));
+   private static final eos o = eop.a(djv.z_, cys.a(6.0, 8.0, 0.0, 10.0, 10.0, 4.0));
+   private static final eos F = eop.a(djv.z_, cys.a(6.0, 8.0, 12.0, 10.0, 10.0, 16.0));
+   private static final eos G = eop.a(djv.z_, cys.a(0.0, 8.0, 6.0, 4.0, 10.0, 10.0));
 
    @Override
-   public MapCodec<? extends dcm> a() {
+   public MapCodec<dcm> a() {
       return a;
    }
 
-   public dcm(cyo $$0, dle.d $$1) {
-      super($$1.e($$0.x() / 2.0F).f(0.75F));
-      this.b = $$0;
-      c.put($$0, this);
+   public dcm(dli.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, ie.a).a(c, Boolean.valueOf(true)));
    }
 
-   public cyo b() {
-      return this.b;
-   }
-
-   public static boolean m(dlf $$0) {
-      return c.containsKey($$0.b());
-   }
-
-   private void a(aov $$0, hz $$1) {
-      ceu $$2 = bnu.aK.a((cvn)$$0);
-      if ($$2 != null) {
-         $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
-         $$0.b($$2);
-         $$2.S();
+   @Override
+   protected eos a(dlj $$0, cux $$1, hz $$2, eoe $$3) {
+      switch ((ie)$$0.c(b)) {
+         case a:
+            return h;
+         case c:
+            return j;
+         case d:
+            return k;
+         case e:
+            return l;
+         case f:
+            return i;
+         default:
+            return g;
       }
    }
 
    @Override
-   protected void a(dlf $$0, aov $$1, hz $$2, coz $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$1.Z().b(cvj.h) && ctj.a(ctl.v, $$3) == 0) {
-         this.a($$1, $$2);
+   protected eos a(dlj $$0, cux $$1, hz $$2) {
+      switch ((ie)$$0.c(b)) {
+         case a:
+            return m;
+         case c:
+            return o;
+         case d:
+            return F;
+         case e:
+            return G;
+         case f:
+            return n;
+         default:
+            return djv.z_;
       }
    }
 
-   public static dlf n(dlf $$0) {
-      return a(d, $$0, () -> c.get($$0.b()).o());
+   @Override
+   public dlj a(crk $$0) {
+      ie $$1 = $$0.k().g();
+      return this.o().a(b, $$1.o() == ie.a.b ? ie.a : $$1).a(c, Boolean.valueOf(true));
    }
 
-   public dlf o(dlf $$0) {
-      return a(e, $$0, () -> this.b().o());
+   @Override
+   public dix a(hz $$0, dlj $$1) {
+      return new djw($$0, $$1);
    }
 
-   private static dlf a(Map<dlf, dlf> $$0, dlf $$1, Supplier<dlf> $$2) {
-      return $$0.computeIfAbsent($$1, $$1x -> {
-         dlf $$2x = $$2.get();
+   @Nullable
+   @Override
+   public <T extends dix> diy<T> a(cvr $$0, dlj $$1, diz<T> $$2) {
+      return $$0.B ? null : a($$2, diz.r, djw::a);
+   }
 
-         for (dmi $$3 : $$1x.B()) {
-            $$2x = $$2x.b($$3) ? $$2x.a($$3, $$1x.c($$3)) : $$2x;
+   @Override
+   public void a(cvr $$0, hz $$1, dlj $$2, boi $$3, cpd $$4) {
+      if ($$4.B()) {
+         dix $$5 = $$0.c_($$1);
+         if ($$5 instanceof djw) {
+            ((djw)$$5).a($$4.z());
+         }
+      }
+   }
+
+   @Override
+   protected void b(dlj $$0, cvr $$1, hz $$2, dlj $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$1, $$2, $$0);
+      }
+   }
+
+   @Override
+   protected blw a(dlj $$0, cvr $$1, hz $$2, chl $$3, env $$4) {
+      if ($$1.B) {
+         return blw.a;
+      } else {
+         dix $$5 = $$1.c_($$2);
+         if ($$5 instanceof djw) {
+            $$3.a((djw)$$5);
+            $$3.a(atv.ad);
          }
 
-         return $$2x;
-      });
+         return blw.b;
+      }
+   }
+
+   @Override
+   protected void a(dlj $$0, cvr $$1, hz $$2, cys $$3, hz $$4, boolean $$5) {
+      this.a($$1, $$2, $$0);
+   }
+
+   private void a(cvr $$0, hz $$1, dlj $$2) {
+      boolean $$3 = !$$0.C($$1);
+      if ($$3 != $$2.c(c)) {
+         $$0.a($$1, $$2.a(c, Boolean.valueOf($$3)), 2);
+      }
+   }
+
+   @Override
+   protected void a(dlj $$0, cvr $$1, hz $$2, dlj $$3, boolean $$4) {
+      bls.a($$0, $$3, $$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   protected dex b_(dlj $$0) {
+      return dex.c;
+   }
+
+   @Override
+   protected boolean d_(dlj $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dlj $$0, cvr $$1, hz $$2) {
+      return ckf.a($$1.c_($$2));
+   }
+
+   @Override
+   protected dlj a(dlj $$0, dfe $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dlj a(dlj $$0, ddo $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dlk.a<cys, dlj> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   protected void a(dlj $$0, cvr $$1, hz $$2, bnq $$3) {
+      dix $$4 = $$1.c_($$2);
+      if ($$4 instanceof djw) {
+         djw.a($$1, $$2, $$0, $$3, (djw)$$4);
+      }
+   }
+
+   @Override
+   protected boolean a(dlj $$0, cux $$1, hz $$2, ehm $$3) {
+      return false;
    }
 }

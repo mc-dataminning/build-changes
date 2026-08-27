@@ -17,8 +17,8 @@ import java.util.stream.Stream;
 public class ru {
    private static final Collection<sm> a = Lists.newArrayList();
    private static final Set<String> b = Sets.newHashSet();
-   private static final Map<String, Consumer<aov>> c = Maps.newHashMap();
-   private static final Map<String, Consumer<aov>> d = Maps.newHashMap();
+   private static final Map<String, Consumer<aow>> c = Maps.newHashMap();
+   private static final Map<String, Consumer<aow>> d = Maps.newHashMap();
    private static final Set<sm> e = Sets.newHashSet();
 
    public static void a(Class<?> $$0) {
@@ -43,11 +43,11 @@ public class ru {
       a($$0, rg.class, rg::a, d);
    }
 
-   private static <T extends Annotation> void a(Method $$0, Class<T> $$1, Function<T, String> $$2, Map<String, Consumer<aov>> $$3) {
+   private static <T extends Annotation> void a(Method $$0, Class<T> $$1, Function<T, String> $$2, Map<String, Consumer<aow>> $$3) {
       T $$4 = $$0.getAnnotation($$1);
       if ($$4 != null) {
          String $$5 = $$2.apply($$4);
-         Consumer<aov> $$6 = $$3.putIfAbsent($$5, (Consumer<aov>)d($$0));
+         Consumer<aow> $$6 = $$3.putIfAbsent($$5, (Consumer<aow>)d($$0));
          if ($$6 != null) {
             throw new RuntimeException("Hey, there should only be one " + $$1 + " method per batch. Batch '" + $$5 + "' has more than one!");
          }
@@ -70,12 +70,12 @@ public class ru {
       return b.contains($$0);
    }
 
-   public static Consumer<aov> c(String $$0) {
+   public static Consumer<aow> c(String $$0) {
       return c.getOrDefault($$0, $$0x -> {
       });
    }
 
-   public static Consumer<aov> d(String $$0) {
+   public static Consumer<aow> d(String $$0) {
       return d.getOrDefault($$0, $$0x -> {
       });
    }
@@ -109,7 +109,7 @@ public class ru {
       String $$4 = $$3 + "." + $$0.getName().toLowerCase();
       String $$5 = $$1.e().isEmpty() ? $$4 : $$3 + "." + $$1.e();
       String $$6 = $$1.b();
-      dfa $$7 = si.a($$1.c());
+      dfe $$7 = si.a($$1.c());
       return new sm($$6, $$4, $$5, $$7, $$1.a(), $$1.f(), $$1.d(), $$1.h(), $$1.g(), (Consumer<rr>)d($$0));
    }
 

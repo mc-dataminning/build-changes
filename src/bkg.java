@@ -1,52 +1,52 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 
-public interface bkg {
-   bkf a();
-
-   static <T> bkg.b<T> a(T $$0, int $$1) {
-      return new bkg.b<>($$0, bkf.a($$1));
+public class bkg<E> extends bkk<bki.b<E>> {
+   public static <E> Codec<bkg<E>> a(Codec<E> $$0) {
+      return bki.b.a($$0).listOf().xmap(bkg::new, bkk::e);
    }
 
-   public static class a implements bkg {
-      private final bkf a;
-
-      public a(int $$0) {
-         this.a = bkf.a($$0);
-      }
-
-      public a(bkf $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public bkf a() {
-         return this.a;
-      }
+   public static <E> Codec<bkg<E>> b(Codec<E> $$0) {
+      return avq.a(bki.b.a($$0).listOf()).xmap(bkg::new, bkk::e);
    }
 
-   public static class b<T> implements bkg {
-      private final T a;
-      private final bkf b;
+   bkg(List<? extends bki.b<E>> $$0) {
+      super($$0);
+   }
 
-      b(T $$0, bkf $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   public static <E> bkg.a<E> a() {
+      return new bkg.a<>();
+   }
+
+   public static <E> bkg<E> b() {
+      return new bkg<>(List.of());
+   }
+
+   public static <E> bkg<E> a(E $$0) {
+      return new bkg<>(List.of(bki.a($$0, 1)));
+   }
+
+   public Optional<E> a(awp $$0) {
+      return this.b($$0).map(bki.b::b);
+   }
+
+   public static class a<E> {
+      private final Builder<bki.b<E>> a = ImmutableList.builder();
+
+      public bkg.a<E> a(E $$0) {
+         return this.a($$0, 1);
       }
 
-      public T b() {
-         return this.a;
+      public bkg.a<E> a(E $$0, int $$1) {
+         this.a.add(bki.a($$0, $$1));
+         return this;
       }
 
-      @Override
-      public bkf a() {
-         return this.b;
-      }
-
-      public static <E> Codec<bkg.b<E>> a(Codec<E> $$0) {
-         return RecordCodecBuilder.create(
-            $$1 -> $$1.group($$0.fieldOf("data").forGetter(bkg.b::b), bkf.a.fieldOf("weight").forGetter(bkg.b::a)).apply($$1, bkg.b::new)
-         );
+      public bkg<E> a() {
+         return new bkg<>(this.a.build());
       }
    }
 }

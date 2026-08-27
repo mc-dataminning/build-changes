@@ -1,80 +1,184 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.List;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class feh extends ffe {
-   private static final vq a = vq.c("addServer.enterName");
-   private static final vq b = vq.c("addServer.enterIp");
-   private ezh c;
-   private final BooleanConsumer k;
-   private final fqi l;
-   private ezq m;
-   private ezq n;
-   private final ffe o;
+public class feh extends ffl {
+   static final aiy b = new aiy("container/slot");
+   private static final int c = 18;
+   private static final int k = 20;
+   private static final int l = 1;
+   private static final int m = 1;
+   private static final int n = 2;
+   private static final int o = 2;
+   protected final fkb a;
+   private final Consumer<dzo> p;
+   dzo q;
+   private vq r;
+   private vq t;
+   private feh.a u;
+   private ezo v;
 
-   public feh(ffe $$0, BooleanConsumer $$1, fqi $$2) {
-      super(vq.c("addServer.title"));
-      this.o = $$0;
-      this.k = $$1;
-      this.l = $$2;
+   public feh(fkb $$0, Consumer<dzo> $$1, dzo $$2) {
+      super(vq.c("createWorld.customize.flat.title"));
+      this.a = $$0;
+      this.p = $$1;
+      this.q = $$2;
+   }
+
+   public dzo n() {
+      return this.q;
+   }
+
+   public void a(dzo $$0) {
+      this.q = $$0;
    }
 
    @Override
    protected void aQ_() {
-      this.n = new ezq(this.i, this.g / 2 - 100, 66, 200, 20, vq.c("addServer.enterName"));
-      this.n.a(this.l.a);
-      this.n.b($$0 -> this.E());
-      this.e(this.n);
-      this.m = new ezq(this.i, this.g / 2 - 100, 106, 200, 20, vq.c("addServer.enterIp"));
-      this.m.f(128);
-      this.m.a(this.l.b);
-      this.m.b($$0 -> this.E());
-      this.e(this.m);
-      this.d(
-         ezo.a(fqi.a::a)
-            .a(fqi.a.values())
-            .a(this.l.b())
-            .a(this.g / 2 - 100, this.h / 4 + 72, 200, 20, vq.c("addServer.resourcePack"), ($$0, $$1) -> this.l.a($$1))
-      );
-      this.c = this.d(ezh.a(vq.c("addServer.add"), $$0 -> this.o()).a(this.g / 2 - 100, this.h / 4 + 96 + 18, 200, 20).a());
-      this.d(ezh.a(vp.e, $$0 -> this.k.accept(false)).a(this.g / 2 - 100, this.h / 4 + 120 + 18, 200, 20).a());
-      this.E();
+      this.r = vq.c("createWorld.customize.flat.tile");
+      this.t = vq.c("createWorld.customize.flat.height");
+      this.u = this.c(new feh.a());
+      this.v = this.c(ezo.a(vq.c("createWorld.customize.flat.removeLayer"), $$0 -> {
+         if (this.E()) {
+            List<dzl> $$1 = this.q.e();
+            int $$2 = this.u.l().indexOf(this.u.i());
+            int $$3 = $$1.size() - $$2 - 1;
+            $$1.remove($$3);
+            this.u.a($$1.isEmpty() ? null : this.u.l().get(Math.min($$2, $$1.size() - 1)));
+            this.q.g();
+            this.u.d();
+            this.o();
+         }
+      }).a(this.g / 2 - 155, this.h - 52, 150, 20).a());
+      this.c(ezo.a(vq.c("createWorld.customize.presets"), $$0 -> {
+         this.f.a(new ffh(this));
+         this.q.g();
+         this.o();
+      }).a(this.g / 2 + 5, this.h - 52, 150, 20).a());
+      this.c(ezo.a(vp.d, $$0 -> {
+         this.p.accept(this.q);
+         this.f.a(this.a);
+         this.q.g();
+      }).a(this.g / 2 - 155, this.h - 28, 150, 20).a());
+      this.c(ezo.a(vp.e, $$0 -> {
+         this.f.a(this.a);
+         this.q.g();
+      }).a(this.g / 2 + 5, this.h - 28, 150, 20).a());
+      this.q.g();
+      this.o();
    }
 
-   @Override
-   protected void aH_() {
-      this.c(this.n);
+   void o() {
+      this.v.j = this.E();
    }
 
-   @Override
-   public void a(exh $$0, int $$1, int $$2) {
-      String $$3 = this.m.a();
-      String $$4 = this.n.a();
-      this.b($$0, $$1, $$2);
-      this.m.a($$3);
-      this.n.a($$4);
-   }
-
-   private void o() {
-      this.l.a = this.n.a();
-      this.l.b = this.m.a();
-      this.k.accept(true);
+   private boolean E() {
+      return this.u.i() != null;
    }
 
    @Override
    public void d() {
-      this.f.a(this.o);
-   }
-
-   private void E() {
-      this.c.j = frk.b(this.m.a()) && !this.n.a().isEmpty();
+      this.f.a(this.a);
    }
 
    @Override
-   public void a(eyu $$0, int $$1, int $$2, float $$3) {
+   public void a(ezb $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 17, 16777215);
-      $$0.b(this.i, a, this.g / 2 - 100 + 1, 53, 10526880);
-      $$0.b(this.i, b, this.g / 2 - 100 + 1, 94, 10526880);
-      this.n.a($$0, $$1, $$2, $$3);
-      this.m.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 8, 16777215);
+      int $$4 = this.g / 2 - 92 - 16;
+      $$0.b(this.i, this.r, $$4, 32, 16777215);
+      $$0.b(this.i, this.t, $$4 + 2 + 213 - this.i.a(this.t), 32, 16777215);
+   }
+
+   class a extends fak<feh.a.a> {
+      public a() {
+         super(feh.this.f, feh.this.g, feh.this.h - 103, 43, 24);
+
+         for (int $$0 = 0; $$0 < feh.this.q.e().size(); $$0++) {
+            this.b(new feh.a.a());
+         }
+      }
+
+      public void a(@Nullable feh.a.a $$0) {
+         super.a($$0);
+         feh.this.o();
+      }
+
+      @Override
+      protected int c() {
+         return this.g - 70;
+      }
+
+      public void d() {
+         int $$0 = this.l().indexOf(this.i());
+         this.m();
+
+         for (int $$1 = 0; $$1 < feh.this.q.e().size(); $$1++) {
+            this.b(new feh.a.a());
+         }
+
+         List<feh.a.a> $$2 = this.l();
+         if ($$0 >= 0 && $$0 < $$2.size()) {
+            this.a($$2.get($$0));
+         }
+      }
+
+      class a extends fak.a<feh.a.a> {
+         @Override
+         public void a(ezb $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            dzl $$10 = feh.this.q.e().get(feh.this.q.e().size() - $$1 - 1);
+            dlj $$11 = $$10.b();
+            cpd $$12 = this.a($$11);
+            this.a($$0, $$3, $$2, $$12);
+            $$0.a(feh.this.i, $$12.z(), $$3 + 18 + 5, $$2 + 3, 16777215, false);
+            vq $$13;
+            if ($$1 == 0) {
+               $$13 = vq.a("createWorld.customize.flat.layer.top", $$10.a());
+            } else if ($$1 == feh.this.q.e().size() - 1) {
+               $$13 = vq.a("createWorld.customize.flat.layer.bottom", $$10.a());
+            } else {
+               $$13 = vq.a("createWorld.customize.flat.layer", $$10.a());
+            }
+
+            $$0.a(feh.this.i, $$13, $$3 + 2 + 213 - feh.this.i.a($$13), $$2 + 3, 16777215, false);
+         }
+
+         private cpd a(dlj $$0) {
+            coy $$1 = $$0.b().j();
+            if ($$1 == cpg.a) {
+               if ($$0.a(cyu.G)) {
+                  $$1 = cpg.qy;
+               } else if ($$0.a(cyu.H)) {
+                  $$1 = cpg.qz;
+               }
+            }
+
+            return new cpd($$1);
+         }
+
+         @Override
+         public vq a() {
+            dzl $$0 = feh.this.q.e().get(feh.this.q.e().size() - a.this.l().indexOf(this) - 1);
+            cpd $$1 = this.a($$0.b());
+            return (vq)(!$$1.b() ? vq.a("narrator.select", $$1.z()) : vp.a);
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            a.this.a(this);
+            return true;
+         }
+
+         private void a(ezb $$0, int $$1, int $$2, cpd $$3) {
+            this.a($$0, $$1 + 1, $$2 + 1);
+            if (!$$3.b()) {
+               $$0.b($$3, $$1 + 2, $$2 + 2);
+            }
+         }
+
+         private void a(ezb $$0, int $$1, int $$2) {
+            $$0.a(feh.b, $$1, $$2, 0, 18, 18);
+         }
+      }
    }
 }

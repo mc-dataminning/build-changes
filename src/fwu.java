@@ -1,90 +1,90 @@
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
+import javax.annotation.Nullable;
 
 public class fwu {
-   public static final fwu a = new fwu();
-   public final fwt b;
-   public final fwt c;
-   public final fwt d;
-   public final fwt e;
-   public final fwt f;
-   public final fwt g;
-   public final fwt h;
-   public final fwt i;
+   public float[] a;
+   public final int b;
 
-   private fwu() {
-      this(fwt.a, fwt.a, fwt.a, fwt.a, fwt.a, fwt.a, fwt.a, fwt.a);
+   public fwu(@Nullable float[] $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public fwu(fwu $$0) {
-      this.b = $$0.b;
-      this.c = $$0.c;
-      this.d = $$0.d;
-      this.e = $$0.e;
-      this.f = $$0.f;
-      this.g = $$0.g;
-      this.h = $$0.h;
-      this.i = $$0.i;
+   public float a(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
+      } else {
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 1 ? 2 : 0];
+      }
    }
 
-   public fwu(fwt $$0, fwt $$1, fwt $$2, fwt $$3, fwt $$4, fwt $$5, fwt $$6, fwt $$7) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
+   public float b(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
+      } else {
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 3 ? 3 : 1];
+      }
    }
 
-   public fwt a(cow $$0) {
-      return switch ($$0) {
-         case b -> this.b;
-         case c -> this.c;
-         case d -> this.d;
-         case e -> this.e;
-         case f -> this.f;
-         case g -> this.g;
-         case h -> this.h;
-         case i -> this.i;
-         default -> fwt.a;
-      };
+   private int d(int $$0) {
+      return ($$0 + this.b / 90) % 4;
    }
 
-   public boolean b(cow $$0) {
-      return this.a($$0) != fwt.a;
+   public int c(int $$0) {
+      return ($$0 + 4 - this.b / 90) % 4;
+   }
+
+   public void a(float[] $$0) {
+      if (this.a == null) {
+         this.a = $$0;
+      }
    }
 
    protected static class a implements JsonDeserializer<fwu> {
+      private static final int a = 0;
+
       public fwu a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
          JsonObject $$3 = $$0.getAsJsonObject();
-         fwt $$4 = this.a($$2, $$3, cow.c);
-         fwt $$5 = this.a($$2, $$3, cow.b);
-         if ($$5 == fwt.a) {
-            $$5 = $$4;
-         }
-
-         fwt $$6 = this.a($$2, $$3, cow.e);
-         fwt $$7 = this.a($$2, $$3, cow.d);
-         if ($$7 == fwt.a) {
-            $$7 = $$6;
-         }
-
-         fwt $$8 = this.a($$2, $$3, cow.f);
-         fwt $$9 = this.a($$2, $$3, cow.g);
-         fwt $$10 = this.a($$2, $$3, cow.h);
-         fwt $$11 = this.a($$2, $$3, cow.i);
-         return new fwu($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
+         float[] $$4 = this.b($$3);
+         int $$5 = this.a($$3);
+         return new fwu($$4, $$5);
       }
 
-      private fwt a(JsonDeserializationContext $$0, JsonObject $$1, cow $$2) {
-         String $$3 = $$2.c();
-         return $$1.has($$3) ? (fwt)$$0.deserialize($$1.get($$3), fwt.class) : fwt.a;
+      protected int a(JsonObject $$0) {
+         int $$1 = avy.a($$0, "rotation", 0);
+         if ($$1 >= 0 && $$1 % 90 == 0 && $$1 / 90 <= 3) {
+            return $$1;
+         } else {
+            throw new JsonParseException("Invalid rotation " + $$1 + " found, only 0/90/180/270 allowed");
+         }
+      }
+
+      @Nullable
+      private float[] b(JsonObject $$0) {
+         if (!$$0.has("uv")) {
+            return null;
+         } else {
+            JsonArray $$1 = avy.v($$0, "uv");
+            if ($$1.size() != 4) {
+               throw new JsonParseException("Expected 4 uv values, found: " + $$1.size());
+            } else {
+               float[] $$2 = new float[4];
+
+               for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+                  $$2[$$3] = avy.e($$1.get($$3), "uv[" + $$3 + "]");
+               }
+
+               return $$2;
+            }
+         }
       }
    }
 }

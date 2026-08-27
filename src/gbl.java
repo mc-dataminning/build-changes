@@ -1,11 +1,19 @@
-public abstract class gbl<T extends cdv> extends gby<T, fmp<T>> {
-   protected gbl(gas.a $$0, fmp<T> $$1, float $$2) {
-      super($$0, $$1, $$2);
-      this.a(new gei<>(this, $$0.f(), $$0.d()));
+public class gbl extends gcg<cem, fmv<cem>> {
+   private static final aiy a = new aiy("textures/entity/zombie/zombie.png");
+   private final float i;
+
+   public gbl(gba.a $$0, float $$1) {
+      super($$0, new fmn($$0.a(fpi.ad)), 0.5F * $$1);
+      this.i = $$1;
+      this.a(new gfe<>(this, $$0.d()));
+      this.a(new gfb<>(this, new fmn($$0.a(fpi.ae)), new fmn($$0.a(fpi.af)), $$0.g()));
    }
 
-   protected void a(T $$0, esa $$1, float $$2) {
-      float $$3 = 0.9375F;
-      $$1.b(0.9375F, 0.9375F, 0.9375F);
+   protected void a(cem $$0, esh $$1, float $$2) {
+      $$1.b(this.i, this.i, this.i);
+   }
+
+   public aiy a(cem $$0) {
+      return a;
    }
 }

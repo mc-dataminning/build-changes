@@ -1,33 +1,33 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dhy extends dha implements dhr {
-   public static final MapCodec<dhy> m = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dlu.a.fieldOf("block_set_type").forGetter(dha::g), dhr.a.e.fieldOf("weathering_state").forGetter(dhy::s), u()).apply($$0, dhy::new)
+public class dhy extends cys implements dhv {
+   public static final MapCodec<dhy> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dhv.a.e.fieldOf("weathering_state").forGetter(czt::c), u()).apply($$0, dhy::new)
    );
-   private final dhr.a n;
+   private final dhv.a e;
 
    @Override
    public MapCodec<dhy> a() {
-      return m;
+      return d;
    }
 
-   protected dhy(dlu $$0, dhr.a $$1, dle.d $$2) {
-      super($$0, $$2);
-      this.n = $$1;
+   public dhy(dhv.a $$0, dli.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
    @Override
-   protected void b(dlf $$0, aov $$1, hz $$2, awo $$3) {
+   protected void b(dlj $$0, aow $$1, hz $$2, awp $$3) {
       this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected boolean e_(dlf $$0) {
-      return dhr.c($$0.b()).isPresent();
+   protected boolean e_(dlj $$0) {
+      return dhv.c($$0.b()).isPresent();
    }
 
-   public dhr.a s() {
-      return this.n;
+   public dhv.a g() {
+      return this.e;
    }
 }

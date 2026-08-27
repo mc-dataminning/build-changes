@@ -1,39 +1,42 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class eaq extends eak {
-   public static final Codec<eaq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dqo.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c),
-               Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter($$0x -> $$0x.d),
-               Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, eaq::new)
-   );
-   private final dqo.a c;
-   private final int d;
-   private final int e;
+public class eaq extends drs {
+   private final cwm a;
+   private final dng b;
+   private final Optional<eap> c;
 
-   private eaq(dqo.a $$0, int $$1, int $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public eaq(cwm $$0, dng $$1, Optional<eap> $$2) {
+      super($$1, $$0);
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static eaq a(dqo.a $$0, int $$1, int $$2) {
-      return new eaq($$0, $$1, $$2);
+   public int a(dqv.a $$0, int $$1, int $$2) {
+      return this.a.a($$0, $$1, $$2);
    }
 
-   @Override
-   protected boolean a(eaj $$0, awo $$1, hz $$2) {
-      long $$3 = (long)$$0.a(this.c, $$2.u(), $$2.w());
-      long $$4 = $$3 + (long)this.d;
-      long $$5 = $$3 + (long)this.e;
-      return $$4 <= (long)$$2.v() && (long)$$2.v() <= $$5;
+   public dne a(cuy $$0, dqr.a $$1) {
+      return ((doa)this.a.a($$0.e, $$0.f)).b($$1);
    }
 
-   @Override
-   public eam<?> b() {
-      return eam.c;
+   public dlj a(hz $$0) {
+      return this.a.a_($$0);
+   }
+
+   public int c() {
+      return this.a.J_();
+   }
+
+   public cwm d() {
+      return this.a;
+   }
+
+   public Optional<eap> e() {
+      return this.c;
+   }
+
+   public dng f() {
+      return this.b;
    }
 }

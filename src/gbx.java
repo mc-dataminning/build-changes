@@ -1,87 +1,109 @@
-public class gbx<T extends cja> extends gar<T> {
-   private static final aiy f = new aiy("textures/entity/minecart.png");
-   protected final fmb<T> a;
-   private final fwf g;
+import java.util.OptionalInt;
 
-   public gbx(gas.a $$0, fpa $$1) {
+public class gbx<T extends cdp> extends gaz<T> {
+   private static final gji g = gji.c("item_frame", "map=false");
+   private static final gji h = gji.c("item_frame", "map=true");
+   private static final gji i = gji.c("glow_item_frame", "map=false");
+   private static final gji j = gji.c("glow_item_frame", "map=true");
+   public static final int a = 5;
+   public static final int f = 30;
+   private final gby k;
+   private final fwn l;
+
+   public gbx(gba.a $$0) {
       super($$0);
-      this.d = 0.7F;
-      this.a = new fmw<>($$0.a($$1));
-      this.g = $$0.c();
+      this.k = $$0.b();
+      this.l = $$0.c();
    }
 
-   public void a(T $$0, float $$1, float $$2, esa $$3, fvl $$4, int $$5) {
+   protected int a(T $$0, hz $$1) {
+      return $$0.ai() == bnw.U ? Math.max(5, super.a($$0, $$1)) : super.a($$0, $$1);
+   }
+
+   public void a(T $$0, float $$1, float $$2, esh $$3, fvt $$4, int $$5) {
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
       $$3.a();
-      long $$6 = (long)$$0.aj() * 493286711L;
-      $$6 = $$6 * $$6 * 4392167121L + $$6 * 98761L;
-      float $$7 = (((float)($$6 >> 16 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
-      float $$8 = (((float)($$6 >> 20 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
-      float $$9 = (((float)($$6 >> 24 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
-      $$3.a($$7, $$8, $$9);
-      double $$10 = awh.d((double)$$2, $$0.ab, $$0.dr());
-      double $$11 = awh.d((double)$$2, $$0.ac, $$0.dt());
-      double $$12 = awh.d((double)$$2, $$0.ad, $$0.dx());
-      double $$13 = 0.3F;
-      ens $$14 = $$0.q($$10, $$11, $$12);
-      float $$15 = awh.i($$2, $$0.N, $$0.dE());
-      if ($$14 != null) {
-         ens $$16 = $$0.a($$10, $$11, $$12, 0.3F);
-         ens $$17 = $$0.a($$10, $$11, $$12, -0.3F);
-         if ($$16 == null) {
-            $$16 = $$14;
-         }
-
-         if ($$17 == null) {
-            $$17 = $$14;
-         }
-
-         $$3.a($$14.c - $$10, ($$16.d + $$17.d) / 2.0 - $$11, $$14.e - $$12);
-         ens $$18 = $$17.b(-$$16.c, -$$16.d, -$$16.e);
-         if ($$18.f() != 0.0) {
-            $$18 = $$18.d();
-            $$1 = (float)(Math.atan2($$18.e, $$18.c) * 180.0 / Math.PI);
-            $$15 = (float)(Math.atan($$18.d) * 73.0);
-         }
-      }
-
-      $$3.a(0.0F, 0.375F, 0.0F);
-      $$3.a(a.d.rotationDegrees(180.0F - $$1));
-      $$3.a(a.f.rotationDegrees(-$$15));
-      float $$19 = (float)$$0.O() - $$2;
-      float $$20 = $$0.N() - $$2;
-      if ($$20 < 0.0F) {
-         $$20 = 0.0F;
-      }
-
-      if ($$19 > 0.0F) {
-         $$3.a(a.b.rotationDegrees(awh.a($$19) * $$19 * $$20 / 10.0F * (float)$$0.P()));
-      }
-
-      int $$21 = $$0.z();
-      dlf $$22 = $$0.x();
-      if ($$22.l() != det.a) {
+      ie $$6 = $$0.cE();
+      enz $$7 = this.a($$0, $$2);
+      $$3.a(-$$7.a(), -$$7.b(), -$$7.c());
+      double $$8 = 0.46875;
+      $$3.a((double)$$6.j() * 0.46875, (double)$$6.k() * 0.46875, (double)$$6.l() * 0.46875);
+      $$3.a(a.b.rotationDegrees($$0.dE()));
+      $$3.a(a.d.rotationDegrees(180.0F - $$0.dC()));
+      boolean $$9 = $$0.ce();
+      cpd $$10 = $$0.G();
+      if (!$$9) {
+         gjh $$11 = this.l.a().a();
+         gji $$12 = this.a($$0, $$10);
          $$3.a();
-         float $$23 = 0.75F;
-         $$3.b(0.75F, 0.75F, 0.75F);
-         $$3.a(-0.5F, (float)($$21 - 8) / 16.0F, 0.5F);
-         $$3.a(a.d.rotationDegrees(90.0F));
-         this.a($$0, $$2, $$22, $$3, $$4, $$5);
+         $$3.a(-0.5F, -0.5F, -0.5F);
+         this.l.b().a($$3.c(), $$4.getBuffer(fwi.h()), null, $$11.a($$12), 1.0F, 1.0F, 1.0F, $$5, ggs.d);
          $$3.b();
       }
 
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      this.a.a($$0, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
-      ese $$24 = $$4.getBuffer(this.a.a(this.a($$0)));
-      this.a.a($$3, $$24, $$5, ggk.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      if (!$$10.b()) {
+         OptionalInt $$13 = $$0.H();
+         if ($$9) {
+            $$3.a(0.0F, 0.0F, 0.5F);
+         } else {
+            $$3.a(0.0F, 0.0F, 0.4375F);
+         }
+
+         int $$14 = $$13.isPresent() ? $$0.J() % 4 * 2 : $$0.J();
+         $$3.a(a.f.rotationDegrees((float)$$14 * 360.0F / 8.0F));
+         if ($$13.isPresent()) {
+            $$3.a(a.f.rotationDegrees(180.0F));
+            float $$15 = 0.0078125F;
+            $$3.b(0.0078125F, 0.0078125F, 0.0078125F);
+            $$3.a(-64.0F, -64.0F, 0.0F);
+            eig $$16 = cpk.a($$13.getAsInt(), $$0.dM());
+            $$3.a(0.0F, 0.0F, -1.0F);
+            if ($$16 != null) {
+               int $$17 = this.a($$0, 15728850, $$5);
+               exo.P().j.j().a($$3, $$4, $$13.getAsInt(), $$16, true, $$17);
+            }
+         } else {
+            int $$18 = this.a($$0, 15728880, $$5);
+            $$3.b(0.5F, 0.5F, 0.5F);
+            this.k.a($$10, cpa.i, $$18, ggs.d, $$3, $$4, $$0.dM(), $$0.aj());
+         }
+      }
+
       $$3.b();
    }
 
-   public aiy a(T $$0) {
-      return f;
+   private int a(T $$0, int $$1, int $$2) {
+      return $$0.ai() == bnw.U ? $$1 : $$2;
    }
 
-   protected void a(T $$0, float $$1, dlf $$2, esa $$3, fvl $$4, int $$5) {
-      this.g.a($$2, $$3, $$4, $$5, ggk.d);
+   private gji a(T $$0, cpd $$1) {
+      boolean $$2 = $$0.ai() == bnw.U;
+      if ($$1.a(cpg.rT)) {
+         return $$2 ? j : h;
+      } else {
+         return $$2 ? i : g;
+      }
+   }
+
+   public enz a(T $$0, float $$1) {
+      return new enz((double)((float)$$0.cE().j() * 0.3F), -0.25, (double)((float)$$0.cE().l() * 0.3F));
+   }
+
+   public aiy a(T $$0) {
+      return gha.e;
+   }
+
+   protected boolean b(T $$0) {
+      if (exo.L() && !$$0.G().b() && $$0.G().B() && this.c.c == $$0) {
+         double $$1 = this.c.b($$0);
+         float $$2 = $$0.bV() ? 32.0F : 64.0F;
+         return $$1 < (double)($$2 * $$2);
+      } else {
+         return false;
+      }
+   }
+
+   protected void a(T $$0, vq $$1, esh $$2, fvt $$3, int $$4, float $$5) {
+      super.a($$0, $$0.G().z(), $$2, $$3, $$4, $$5);
    }
 }

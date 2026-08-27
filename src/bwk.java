@@ -1,29 +1,32 @@
 import java.util.EnumSet;
 
-public class bwk extends bvb {
-   private final cgp a;
+public class bwk extends bvf {
+   private final bpe a;
 
-   public bwk(cgp $$0) {
+   public bwk(bpe $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(bvb.a.c, bvb.a.a));
+      this.a(EnumSet.of(bvf.a.c, bvf.a.a));
+   }
+
+   @Override
+   public boolean b() {
+      return this.a.gg();
    }
 
    @Override
    public boolean a() {
-      if (!this.a.bx()) {
+      if (!this.a.u()) {
          return false;
-      } else if (this.a.aZ()) {
+      } else if (this.a.bc()) {
          return false;
       } else if (!this.a.aC()) {
          return false;
-      } else if (this.a.S) {
-         return false;
       } else {
-         chh $$0 = this.a.gg();
+         boi $$0 = this.a.R_();
          if ($$0 == null) {
-            return false;
+            return true;
          } else {
-            return this.a.f($$0) > 16.0 ? false : $$0.bW != null;
+            return this.a.f($$0) < 144.0 && $$0.ei() != null ? false : this.a.gg();
          }
       }
    }
@@ -31,10 +34,11 @@ public class bwk extends bvb {
    @Override
    public void c() {
       this.a.N().n();
+      this.a.y(true);
    }
 
    @Override
    public void d() {
-      this.a.f(null);
+      this.a.y(false);
    }
 }

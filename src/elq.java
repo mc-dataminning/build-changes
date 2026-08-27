@@ -1,36 +1,36 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import java.util.Set;
+import java.util.List;
 
-public class elq implements elu {
-   private static final elq b = new elq();
-   public static final Codec<elq> a = Codec.unit(b);
+public class elq extends els {
+   public static final Codec<elq> a = a(elq::new);
 
-   private elq() {
+   elq(List<emb> $$0) {
+      super($$0, emd.b($$0));
    }
 
    @Override
-   public elv b() {
-      return elw.m;
+   public emc b() {
+      return emd.c;
    }
 
-   @Override
-   public Set<eld<?>> a() {
-      return ImmutableSet.of(elg.j);
+   public static elq.a a(emb.a... $$0) {
+      return new elq.a($$0);
    }
 
-   public boolean a(eiv $$0) {
-      Float $$1 = $$0.c(elg.j);
-      if ($$1 != null) {
-         awo $$2 = $$0.b();
-         float $$3 = 1.0F / $$1;
-         return $$2.i() <= $$3;
-      } else {
-         return true;
+   public static class a extends els.a {
+      public a(emb.a... $$0) {
+         super($$0);
       }
-   }
 
-   public static elu.a c() {
-      return () -> b;
+      @Override
+      public elq.a or(emb.a $$0) {
+         this.a($$0);
+         return this;
+      }
+
+      @Override
+      protected emb a(List<emb> $$0) {
+         return new elq($$0);
+      }
    }
 }

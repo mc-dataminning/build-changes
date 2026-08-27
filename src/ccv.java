@@ -1,69 +1,59 @@
 import javax.annotation.Nullable;
 
-public class ccv extends cco {
+public class ccv extends ccs {
    @Nullable
-   private ens b;
+   private enz b;
+   private int c;
 
-   public ccv(ccm $$0) {
+   public ccv(ccq $$0) {
       super($$0);
    }
 
    @Override
    public void b() {
-      ens $$0 = this.a.D(1.0F).d();
-      $$0.b((float) (-Math.PI / 4));
-      double $$1 = this.a.e.dr();
-      double $$2 = this.a.e.e(0.5);
-      double $$3 = this.a.e.dx();
-
-      for (int $$4 = 0; $$4 < 8; $$4++) {
-         awo $$5 = this.a.eh();
-         double $$6 = $$1 + $$5.k() / 2.0;
-         double $$7 = $$2 + $$5.k() / 2.0;
-         double $$8 = $$3 + $$5.k() / 2.0;
-         ens $$9 = this.a.dp();
-         this.a.dM().a(jz.i, $$6, $$7, $$8, -$$0.c * 0.08F + $$9.c, -$$0.d * 0.3F + $$9.d, -$$0.e * 0.08F + $$9.e);
-         $$0.b((float) (Math.PI / 16));
+      if (this.c++ % 10 == 0) {
+         float $$0 = (this.a.eh().i() - 0.5F) * 8.0F;
+         float $$1 = (this.a.eh().i() - 0.5F) * 4.0F;
+         float $$2 = (this.a.eh().i() - 0.5F) * 8.0F;
+         this.a.dM().a(jz.w, this.a.dr() + (double)$$0, this.a.dt() + 2.0 + (double)$$1, this.a.dx() + (double)$$2, 0.0, 0.0, 0.0);
       }
    }
 
    @Override
    public void c() {
+      this.c++;
       if (this.b == null) {
-         this.b = ens.c(this.a.dM().a(dqo.a.f, dtr.a(this.a.u())));
+         hz $$0 = this.a.dM().a(dqv.a.e, dty.a(this.a.u()));
+         this.b = enz.c($$0);
       }
 
-      if (this.b.c(this.a.dr(), this.a.dt(), this.a.dx()) < 1.0) {
-         this.a.gd().b(cdc.f).j();
-         this.a.gd().a(cdc.g);
+      double $$1 = this.b.c(this.a.dr(), this.a.dt(), this.a.dx());
+      if (!($$1 < 100.0) && !($$1 > 22500.0) && !this.a.O && !this.a.P) {
+         this.a.t(1.0F);
+      } else {
+         this.a.t(0.0F);
       }
-   }
-
-   @Override
-   public float f() {
-      return 1.5F;
-   }
-
-   @Override
-   public float h() {
-      float $$0 = (float)this.a.dp().h() + 1.0F;
-      float $$1 = Math.min($$0, 40.0F);
-      return $$1 / $$0;
    }
 
    @Override
    public void d() {
       this.b = null;
+      this.c = 0;
+   }
+
+   @Override
+   public float f() {
+      return 3.0F;
    }
 
    @Nullable
    @Override
-   public ens g() {
+   public enz g() {
       return this.b;
    }
 
    @Override
-   public cdc<ccv> i() {
-      return cdc.d;
+   public cdg<ccv> i() {
+      return cdg.j;
    }
 }

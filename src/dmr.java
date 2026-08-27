@@ -1,7 +1,7 @@
 public enum dmr implements axc {
-   a("none"),
-   b("low"),
-   c("tall");
+   a("top"),
+   b("bottom"),
+   c("double");
 
    private final String d;
 
@@ -11,7 +11,7 @@ public enum dmr implements axc {
 
    @Override
    public String toString() {
-      return this.c();
+      return this.d;
    }
 
    @Override

@@ -1,20 +1,18 @@
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
+import java.net.Proxy;
 import javax.annotation.Nullable;
 
 public class esy {
-   private final Gson a = new Gson();
-
-   public String a(etq $$0) {
-      return this.a.toJson($$0);
-   }
-
-   public String a(JsonElement $$0) {
-      return this.a.toJson($$0);
-   }
+   @Nullable
+   private static Proxy a;
 
    @Nullable
-   public <T extends etq> T a(String $$0, Class<T> $$1) {
-      return (T)this.a.fromJson($$0, $$1);
+   public static Proxy a() {
+      return a;
+   }
+
+   public static void a(Proxy $$0) {
+      if (a == null) {
+         a = $$0;
+      }
    }
 }

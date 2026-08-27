@@ -1,196 +1,91 @@
-import it.unimi.dsi.fastutil.ints.IntArraySet;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
-import java.util.Objects;
-import java.util.function.Function;
-import javax.annotation.Nullable;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.system.MemoryUtil;
-import org.lwjgl.util.freetype.FT_Bitmap;
-import org.lwjgl.util.freetype.FT_Face;
-import org.lwjgl.util.freetype.FT_GlyphSlot;
-import org.lwjgl.util.freetype.FT_Vector;
-import org.lwjgl.util.freetype.FreeType;
+import com.mojang.logging.LogUtils;
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioFormat.Encoding;
+import org.lwjgl.openal.AL10;
+import org.lwjgl.openal.ALC10;
+import org.slf4j.Logger;
 
-public class eqg implements eqd {
-   @Nullable
-   private ByteBuffer b;
-   @Nullable
-   private FT_Face c;
-   final float d;
-   private final IntSet e = new IntArraySet();
+public class eqg {
+   private static final Logger a = LogUtils.getLogger();
 
-   public eqg(ByteBuffer $$0, FT_Face $$1, float $$2, float $$3, float $$4, float $$5, String $$6) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$3;
-      $$6.codePoints().forEach(this.e::add);
-      int $$7 = Math.round($$2 * $$3);
-      FreeType.FT_Set_Pixel_Sizes($$1, $$7, $$7);
-      float $$8 = $$4 * $$3;
-      float $$9 = -$$5 * $$3;
-      MemoryStack $$10 = MemoryStack.stackPush();
-
-      try {
-         FT_Vector $$11 = fch.a(FT_Vector.malloc($$10), $$8, $$9);
-         FreeType.FT_Set_Transform($$1, null, $$11);
-      } catch (Throwable var15) {
-         if ($$10 != null) {
-            try {
-               $$10.close();
-            } catch (Throwable var14) {
-               var15.addSuppressed(var14);
-            }
-         }
-
-         throw var15;
-      }
-
-      if ($$10 != null) {
-         $$10.close();
+   private static String a(int $$0) {
+      switch ($$0) {
+         case 40961:
+            return "Invalid name parameter.";
+         case 40962:
+            return "Invalid enumerated parameter value.";
+         case 40963:
+            return "Invalid parameter parameter value.";
+         case 40964:
+            return "Invalid operation.";
+         case 40965:
+            return "Unable to allocate memory.";
+         default:
+            return "An unrecognized error occurred.";
       }
    }
 
-   @Nullable
-   @Override
-   public eqc a(int $$0) {
-      FT_Face $$1 = this.b();
-      if (this.e.contains($$0)) {
-         return null;
+   static boolean a(String $$0) {
+      int $$1 = AL10.alGetError();
+      if ($$1 != 0) {
+         a.error("{}: {}", $$0, a($$1));
+         return true;
       } else {
-         int $$2 = FreeType.FT_Get_Char_Index($$1, (long)$$0);
-         if ($$2 == 0) {
-            return null;
-         } else {
-            fch.a(FreeType.FT_Load_Glyph($$1, $$2, 4194312), "Loading glyph");
-            FT_GlyphSlot $$3 = Objects.requireNonNull($$1.glyph(), "Glyph not initialized");
-            float $$4 = fch.a($$3.advance());
-            FT_Bitmap $$5 = $$3.bitmap();
-            int $$6 = $$3.bitmap_left();
-            int $$7 = $$3.bitmap_top();
-            int $$8 = $$5.width();
-            int $$9 = $$5.rows();
-            return (eqc)($$8 > 0 && $$9 > 0 ? new eqg.a((float)$$6, (float)$$7, $$8, $$9, $$4, $$2) : () -> $$4 / this.d);
-         }
+         return false;
       }
    }
 
-   FT_Face b() {
-      if (this.b != null && this.c != null) {
-         return this.c;
+   private static String b(int $$0) {
+      switch ($$0) {
+         case 40961:
+            return "Invalid device.";
+         case 40962:
+            return "Invalid context.";
+         case 40963:
+            return "Illegal enum.";
+         case 40964:
+            return "Invalid value.";
+         case 40965:
+            return "Unable to allocate memory.";
+         default:
+            return "An unrecognized error occurred.";
+      }
+   }
+
+   static boolean a(long $$0, String $$1) {
+      int $$2 = ALC10.alcGetError($$0);
+      if ($$2 != 0) {
+         a.error("{} ({}): {}", new Object[]{$$1, $$0, b($$2)});
+         return true;
       } else {
-         throw new IllegalStateException("Provider already closed");
+         return false;
       }
    }
 
-   @Override
-   public void close() {
-      if (this.c != null) {
-         fch.a(FreeType.FT_Done_Face(this.c), "Deleting face");
-         this.c = null;
-      }
+   static int a(AudioFormat $$0) {
+      Encoding $$1 = $$0.getEncoding();
+      int $$2 = $$0.getChannels();
+      int $$3 = $$0.getSampleSizeInBits();
+      if ($$1.equals(Encoding.PCM_UNSIGNED) || $$1.equals(Encoding.PCM_SIGNED)) {
+         if ($$2 == 1) {
+            if ($$3 == 8) {
+               return 4352;
+            }
 
-      MemoryUtil.memFree(this.b);
-      this.b = null;
-   }
+            if ($$3 == 16) {
+               return 4353;
+            }
+         } else if ($$2 == 2) {
+            if ($$3 == 8) {
+               return 4354;
+            }
 
-   @Override
-   public IntSet a() {
-      FT_Face $$0 = this.b();
-      IntSet $$1 = new IntOpenHashSet();
-      MemoryStack $$2 = MemoryStack.stackPush();
-
-      try {
-         IntBuffer $$3 = $$2.mallocInt(1);
-
-         for (long $$4 = FreeType.FT_Get_First_Char($$0, $$3); $$3.get(0) != 0; $$4 = FreeType.FT_Get_Next_Char($$0, $$4, $$3)) {
-            $$1.add((int)$$4);
-         }
-      } catch (Throwable var8) {
-         if ($$2 != null) {
-            try {
-               $$2.close();
-            } catch (Throwable var7) {
-               var8.addSuppressed(var7);
+            if ($$3 == 16) {
+               return 4355;
             }
          }
-
-         throw var8;
       }
 
-      if ($$2 != null) {
-         $$2.close();
-      }
-
-      $$1.removeAll(this.e);
-      return $$1;
-   }
-
-   class a implements eqc {
-      final int b;
-      final int c;
-      final float d;
-      final float e;
-      private final float f;
-      final int g;
-
-      a(float $$0, float $$1, int $$2, int $$3, float $$4, int $$5) {
-         this.b = $$2;
-         this.c = $$3;
-         this.f = $$4 / eqg.this.d;
-         this.d = $$0 / eqg.this.d;
-         this.e = $$1 / eqg.this.d;
-         this.g = $$5;
-      }
-
-      @Override
-      public float getAdvance() {
-         return this.f;
-      }
-
-      @Override
-      public fcb bake(Function<eqe, fcb> $$0) {
-         return $$0.apply(new eqe() {
-            @Override
-            public int a() {
-               return a.this.b;
-            }
-
-            @Override
-            public int b() {
-               return a.this.c;
-            }
-
-            @Override
-            public float d() {
-               return eqg.this.d;
-            }
-
-            @Override
-            public float i() {
-               return a.this.d;
-            }
-
-            @Override
-            public float j() {
-               return a.this.e;
-            }
-
-            @Override
-            public void a(int $$0, int $$1) {
-               FT_Face $$2 = eqg.this.b();
-               erb $$3 = new erb(erb.a.d, a.this.b, a.this.c, false);
-               $$3.a($$2, a.this.g);
-               $$3.a(0, $$0, $$1, 0, 0, a.this.b, a.this.c, false, true);
-            }
-
-            @Override
-            public boolean c() {
-               return false;
-            }
-         });
-      }
+      throw new IllegalArgumentException("Invalid audio format: " + $$0);
    }
 }

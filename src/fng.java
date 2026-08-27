@@ -1,128 +1,146 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Iterables;
-import java.util.List;
 
-public class fng<T extends bog> extends fmo<T> {
-   private static final String a = "ear";
-   private static final String A = "cloak";
-   private static final String B = "left_sleeve";
-   private static final String C = "right_sleeve";
-   private static final String D = "left_pants";
-   private static final String E = "right_pants";
-   private final List<fpc> F;
-   public final fpc b;
-   public final fpc w;
-   public final fpc x;
-   public final fpc y;
-   public final fpc z;
-   private final fpc G;
-   private final fpc H;
-   private final boolean I;
+public class fng<T extends bnq> extends fle<T> {
+   private static final int q = 0;
+   private static final int r = 1;
+   private static final int s = 2;
+   protected static final int a = 3;
+   private static final float t = 0.0F;
+   private static final float u = 16.0F;
+   private static final float w = -9.0F;
+   private static final float x = 15.0F;
+   private static final float y = -9.0F;
+   private static final float z = 12.0F;
+   private static final float A = -10.0F;
+   private static final float B = 15.0F;
+   private static final float C = 8.0F;
+   private static final float D = 20.0F;
+   private static final float E = 14.0F;
+   protected static final float b = 18.0F;
+   protected static final float f = 5.0F;
+   protected static final float g = 14.1F;
+   private static final float F = -5.0F;
+   private static final String G = "tail1";
+   private static final String H = "tail2";
+   protected final fpj h;
+   protected final fpj i;
+   protected final fpj j;
+   protected final fpj k;
+   protected final fpj l;
+   protected final fpj m;
+   protected final fpj n;
+   protected final fpj o;
+   protected int p = 1;
 
-   public fng(fpc $$0, boolean $$1) {
-      super($$0, fvt::i);
-      this.I = $$1;
-      this.H = $$0.b("ear");
-      this.G = $$0.b("cloak");
-      this.b = $$0.b("left_sleeve");
-      this.w = $$0.b("right_sleeve");
-      this.x = $$0.b("left_pants");
-      this.y = $$0.b("right_pants");
-      this.z = $$0.b("jacket");
-      this.F = $$0.e().filter($$0x -> !$$0x.d()).collect(ImmutableList.toImmutableList());
+   public fng(fpj $$0) {
+      super(true, 10.0F, 4.0F);
+      this.n = $$0.b("head");
+      this.o = $$0.b("body");
+      this.l = $$0.b("tail1");
+      this.m = $$0.b("tail2");
+      this.h = $$0.b("left_hind_leg");
+      this.i = $$0.b("right_hind_leg");
+      this.j = $$0.b("left_front_leg");
+      this.k = $$0.b("right_front_leg");
    }
 
-   public static fpk a(fpg $$0, boolean $$1) {
-      fpk $$2 = fmo.a($$0, 0.0F);
-      fpl $$3 = $$2.a();
-      $$3.a("ear", fph.c().a(24, 0).a(-3.0F, -6.0F, -1.0F, 6.0F, 6.0F, 1.0F, $$0), fpe.a);
-      $$3.a("cloak", fph.c().a(0, 0).a(-5.0F, 0.0F, -1.0F, 10.0F, 16.0F, 1.0F, $$0, 1.0F, 0.5F), fpe.a(0.0F, 0.0F, 0.0F));
-      float $$4 = 0.25F;
-      if ($$1) {
-         $$3.a("left_arm", fph.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, $$0), fpe.a(5.0F, 2.5F, 0.0F));
-         $$3.a("right_arm", fph.c().a(40, 16).a(-2.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, $$0), fpe.a(-5.0F, 2.5F, 0.0F));
-         $$3.a("left_sleeve", fph.c().a(48, 48).a(-1.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, $$0.a(0.25F)), fpe.a(5.0F, 2.5F, 0.0F));
-         $$3.a("right_sleeve", fph.c().a(40, 32).a(-2.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, $$0.a(0.25F)), fpe.a(-5.0F, 2.5F, 0.0F));
-      } else {
-         $$3.a("left_arm", fph.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), fpe.a(5.0F, 2.0F, 0.0F));
-         $$3.a("left_sleeve", fph.c().a(48, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.25F)), fpe.a(5.0F, 2.0F, 0.0F));
-         $$3.a("right_sleeve", fph.c().a(40, 32).a(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.25F)), fpe.a(-5.0F, 2.0F, 0.0F));
-      }
-
-      $$3.a("left_leg", fph.c().a(16, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), fpe.a(1.9F, 12.0F, 0.0F));
-      $$3.a("left_pants", fph.c().a(0, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.25F)), fpe.a(1.9F, 12.0F, 0.0F));
-      $$3.a("right_pants", fph.c().a(0, 32).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.25F)), fpe.a(-1.9F, 12.0F, 0.0F));
-      $$3.a("jacket", fph.c().a(16, 32).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0.a(0.25F)), fpe.a);
-      return $$2;
+   public static fpr a(fpn $$0) {
+      fpr $$1 = new fpr();
+      fps $$2 = $$1.a();
+      fpn $$3 = new fpn(-0.02F);
+      $$2.a(
+         "head",
+         fpo.c()
+            .a("main", -2.5F, -2.0F, -3.0F, 5.0F, 4.0F, 5.0F, $$0)
+            .a("nose", -1.5F, -0.001F, -4.0F, 3, 2, 2, $$0, 0, 24)
+            .a("ear1", -2.0F, -3.0F, 0.0F, 1, 1, 2, $$0, 0, 10)
+            .a("ear2", 1.0F, -3.0F, 0.0F, 1, 1, 2, $$0, 6, 10),
+         fpl.a(0.0F, 15.0F, -9.0F)
+      );
+      $$2.a("body", fpo.c().a(20, 0).a(-2.0F, 3.0F, -8.0F, 4.0F, 16.0F, 6.0F, $$0), fpl.a(0.0F, 12.0F, -10.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      $$2.a("tail1", fpo.c().a(0, 15).a(-0.5F, 0.0F, 0.0F, 1.0F, 8.0F, 1.0F, $$0), fpl.a(0.0F, 15.0F, 8.0F, 0.9F, 0.0F, 0.0F));
+      $$2.a("tail2", fpo.c().a(4, 15).a(-0.5F, 0.0F, 0.0F, 1.0F, 8.0F, 1.0F, $$3), fpl.a(0.0F, 20.0F, 14.0F));
+      fpo $$4 = fpo.c().a(8, 13).a(-1.0F, 0.0F, 1.0F, 2.0F, 6.0F, 2.0F, $$0);
+      $$2.a("left_hind_leg", $$4, fpl.a(1.1F, 18.0F, 5.0F));
+      $$2.a("right_hind_leg", $$4, fpl.a(-1.1F, 18.0F, 5.0F));
+      fpo $$5 = fpo.c().a(40, 0).a(-1.0F, 0.0F, 0.0F, 2.0F, 10.0F, 2.0F, $$0);
+      $$2.a("left_front_leg", $$5, fpl.a(1.2F, 14.1F, -5.0F));
+      $$2.a("right_front_leg", $$5, fpl.a(-1.2F, 14.1F, -5.0F));
+      return $$1;
    }
 
    @Override
-   protected Iterable<fpc> b() {
-      return Iterables.concat(super.b(), ImmutableList.of(this.x, this.y, this.b, this.w, this.z));
+   protected Iterable<fpj> a() {
+      return ImmutableList.of(this.n);
    }
 
-   public void a(esa $$0, ese $$1, int $$2, int $$3) {
-      this.H.a(this.k);
-      this.H.b = 0.0F;
-      this.H.c = 0.0F;
-      this.H.a($$0, $$1, $$2, $$3);
-   }
-
-   public void b(esa $$0, ese $$1, int $$2, int $$3) {
-      this.G.a($$0, $$1, $$2, $$3);
+   @Override
+   protected Iterable<fpj> b() {
+      return ImmutableList.of(this.o, this.h, this.i, this.j, this.k, this.l, this.m);
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      this.x.a(this.q);
-      this.y.a(this.p);
-      this.b.a(this.o);
-      this.w.a(this.n);
-      this.z.a(this.m);
-      if ($$0.c(bnv.e).b()) {
-         if ($$0.bX()) {
-            this.G.d = 1.4F;
-            this.G.c = 1.85F;
+      this.n.e = $$5 * (float) (Math.PI / 180.0);
+      this.n.f = $$4 * (float) (Math.PI / 180.0);
+      if (this.p != 3) {
+         this.o.e = (float) (Math.PI / 2);
+         if (this.p == 2) {
+            this.h.e = awi.b($$1 * 0.6662F) * $$2;
+            this.i.e = awi.b($$1 * 0.6662F + 0.3F) * $$2;
+            this.j.e = awi.b($$1 * 0.6662F + (float) Math.PI + 0.3F) * $$2;
+            this.k.e = awi.b($$1 * 0.6662F + (float) Math.PI) * $$2;
+            this.m.e = 1.7278761F + (float) (Math.PI / 10) * awi.b($$1) * $$2;
          } else {
-            this.G.d = 0.0F;
-            this.G.c = 0.0F;
+            this.h.e = awi.b($$1 * 0.6662F) * $$2;
+            this.i.e = awi.b($$1 * 0.6662F + (float) Math.PI) * $$2;
+            this.j.e = awi.b($$1 * 0.6662F + (float) Math.PI) * $$2;
+            this.k.e = awi.b($$1 * 0.6662F) * $$2;
+            if (this.p == 1) {
+               this.m.e = 1.7278761F + (float) (Math.PI / 4) * awi.b($$1) * $$2;
+            } else {
+               this.m.e = 1.7278761F + 0.47123894F * awi.b($$1) * $$2;
+            }
          }
-      } else if ($$0.bX()) {
-         this.G.d = 0.3F;
-         this.G.c = 0.8F;
-      } else {
-         this.G.d = -1.1F;
-         this.G.c = -0.85F;
       }
    }
 
    @Override
-   public void b_(boolean $$0) {
-      super.b_($$0);
-      this.b.k = $$0;
-      this.w.k = $$0;
-      this.x.k = $$0;
-      this.y.k = $$0;
-      this.z.k = $$0;
-      this.G.k = $$0;
-      this.H.k = $$0;
-   }
-
-   @Override
-   public void a(boa $$0, esa $$1) {
-      fpc $$2 = this.a($$0);
-      if (this.I) {
-         float $$3 = 0.5F * (float)($$0 == boa.b ? 1 : -1);
-         $$2.b += $$3;
-         $$2.a($$1);
-         $$2.b -= $$3;
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      this.o.c = 12.0F;
+      this.o.d = -10.0F;
+      this.n.c = 15.0F;
+      this.n.d = -9.0F;
+      this.l.c = 15.0F;
+      this.l.d = 8.0F;
+      this.m.c = 20.0F;
+      this.m.d = 14.0F;
+      this.j.c = 14.1F;
+      this.j.d = -5.0F;
+      this.k.c = 14.1F;
+      this.k.d = -5.0F;
+      this.h.c = 18.0F;
+      this.h.d = 5.0F;
+      this.i.c = 18.0F;
+      this.i.d = 5.0F;
+      this.l.e = 0.9F;
+      if ($$0.bX()) {
+         this.o.c++;
+         this.n.c += 2.0F;
+         this.l.c++;
+         this.m.c += -4.0F;
+         this.m.d += 2.0F;
+         this.l.e = (float) (Math.PI / 2);
+         this.m.e = (float) (Math.PI / 2);
+         this.p = 0;
+      } else if ($$0.bY()) {
+         this.m.c = this.l.c;
+         this.m.d += 2.0F;
+         this.l.e = (float) (Math.PI / 2);
+         this.m.e = (float) (Math.PI / 2);
+         this.p = 2;
       } else {
-         $$2.a($$1);
+         this.p = 1;
       }
-   }
-
-   public fpc a(awo $$0) {
-      return this.F.get($$0.a(this.F.size()));
    }
 }

@@ -1,68 +1,83 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ekw extends ekh {
-   private static final Logger b = LogUtils.getLogger();
+public class ekw extends eko {
    public static final Codec<ekw> a = RecordCodecBuilder.create(
-      $$0 -> a($$0).and($$0.group(avp.a(vs.a, "name").forGetter($$0x -> $$0x.c), avp.a(eiv.b.e, "entity").forGetter($$0x -> $$0x.d))).apply($$0, ekw::new)
+      $$0 -> a($$0)
+            .and($$0.group(kf.k.r().fieldOf("type").forGetter($$0x -> $$0x.b), ejt.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.c)))
+            .apply($$0, ekw::new)
    );
-   private final Optional<vq> c;
-   private final Optional<eiv.b> d;
+   private final ij<diz<?>> b;
+   private final List<ejv> c;
 
-   private ekw(List<elu> $$0, Optional<vq> $$1, Optional<eiv.b> $$2) {
+   ekw(List<emb> $$0, ij<diz<?>> $$1, List<ejv> $$2) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
+      this.b = $$1;
+      this.c = List.copyOf($$2);
    }
 
    @Override
-   public ekj b() {
-      return ekk.l;
+   public ekq b() {
+      return ekr.p;
    }
 
    @Override
-   public Set<eld<?>> a() {
-      return this.d.<Set<eld<?>>>map($$0 -> Set.of($$0.a())).orElse(Set.of());
-   }
-
-   public static UnaryOperator<vq> a(eiv $$0, @Nullable eiv.b $$1) {
-      if ($$1 != null) {
-         bno $$2 = $$0.c($$1.a());
-         if ($$2 != null) {
-            du $$3 = $$2.dd().a(2);
-            return $$2x -> {
-               try {
-                  return vt.a($$3, $$2x, $$2, 0);
-               } catch (CommandSyntaxException var4) {
-                  b.warn("Failed to resolve text component", var4);
-                  return $$2x;
-               }
-            };
+   public cpd a(cpd $$0, ejc $$1) {
+      if ($$0.b()) {
+         return $$0;
+      } else {
+         is<cpd> $$2 = is.a();
+         this.c.forEach($$2x -> $$2x.expand($$1, $$2xx -> $$2xx.a(ejk.a($$1.d(), $$2::add), $$1)));
+         sw $$3 = new sw();
+         blq.a($$3, $$2);
+         sw $$4 = cmw.a($$0);
+         if ($$4 == null) {
+            $$4 = $$3;
+         } else {
+            $$4.a($$3);
          }
+
+         cmw.a($$0, this.b.a(), $$4);
+         return $$0;
+      }
+   }
+
+   @Override
+   public void a(ejl $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".entry[" + $$1 + "]"));
+      }
+   }
+
+   public static ekw.a a(diz<?> $$0) {
+      return new ekw.a($$0);
+   }
+
+   public static class a extends eko.a<ekw.a> {
+      private final Builder<ejv> a = ImmutableList.builder();
+      private final diz<?> b;
+
+      public a(diz<?> $$0) {
+         this.b = $$0;
       }
 
-      return $$0x -> $$0x;
-   }
+      protected ekw.a a() {
+         return this;
+      }
 
-   @Override
-   public coz a(coz $$0, eiv $$1) {
-      this.c.ifPresent($$2 -> $$0.a(a($$1, this.d.orElse(null)).apply($$2)));
-      return $$0;
-   }
+      public ekw.a a(ejv.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
 
-   public static ekh.a<?> a(vq $$0) {
-      return a($$1 -> new ekw($$1, Optional.of($$0), Optional.empty()));
-   }
-
-   public static ekh.a<?> a(vq $$0, eiv.b $$1) {
-      return a($$2 -> new ekw($$2, Optional.of($$0), Optional.of($$1)));
+      @Override
+      public ekp b() {
+         return new ekw(this.g(), this.b.a(), this.a.build());
+      }
    }
 }

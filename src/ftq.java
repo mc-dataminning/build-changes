@@ -1,55 +1,39 @@
-public class ftq extends fth {
-   private final ftu b;
-   protected boolean a;
+public class ftq extends fuh {
+   private final fuc a;
 
-   ftq(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ftu $$7) {
+   ftq(fqe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fuc $$7) {
       super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.b = $$7;
+      this.B = 0.96F;
+      this.a = $$7;
       this.d(1.5F);
+      this.n = false;
       this.b($$7);
    }
 
    @Override
    public int a(float $$0) {
-      return this.a ? 240 : super.a($$0);
+      return 240;
    }
 
    @Override
-   public ftd b() {
-      return ftd.c;
+   public ftl b() {
+      return ftl.c;
    }
 
    @Override
    public void a() {
       super.a();
-      this.b(this.b);
+      this.b(this.a);
    }
 
-   public static class a implements ftc<kc> {
-      private final ftu a;
-
-      public a(ftu $$0) {
-         this.a = $$0;
-      }
-
-      public fsz a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+   public static record a(fuc a) implements ftk<ka> {
+      public fth a(ka $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          ftq $$8 = new ftq($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
          $$8.e(1.0F);
-         $$8.a = true;
-         return $$8;
-      }
-   }
-
-   public static class b implements ftc<kc> {
-      private final ftu a;
-
-      public b(ftu $$0) {
-         this.a = $$0;
-      }
-
-      public fsz a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ftq $$8 = new ftq($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
+         $$8.b($$5, $$6, $$7);
+         $$8.A = $$0.c();
+         $$8.z = $$0.c();
+         $$8.a($$1.z.a(12) + 8);
          return $$8;
       }
    }

@@ -1,48 +1,58 @@
-import java.util.Objects;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class fbk {
-   private final Consumer<ezf> a;
-   private final Consumer<ezf> b;
-   @Nullable
-   private fbj c;
-   @Nullable
-   private fdm d;
+public interface fbk extends fay {
+   long s = 250L;
 
-   public fbk(Consumer<ezf> $$0, Consumer<ezf> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   default void f(double $$0, double $$1) {
    }
 
-   public void a(fdm $$0) {
-      this.d = $$0;
-      fbj $$1 = this.a();
-      if ($$1 != null) {
-         $$1.a($$0);
-      }
+   default boolean a(double $$0, double $$1, int $$2) {
+      return false;
    }
 
-   public void a(fbj $$0, boolean $$1) {
-      if (!Objects.equals(this.c, $$0)) {
-         if (this.c != null) {
-            this.c.a(this.b);
-         }
+   default boolean b(double $$0, double $$1, int $$2) {
+      return false;
+   }
 
-         this.c = $$0;
-         $$0.a(this.a);
-         if (this.d != null) {
-            $$0.a(this.d);
-         }
+   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      return false;
+   }
 
-         if ($$1) {
-            exh.O().ai().a(gkb.a(atk.zJ, 1.0F));
-         }
-      }
+   default boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return false;
+   }
+
+   default boolean a(int $$0, int $$1, int $$2) {
+      return false;
+   }
+
+   default boolean b(int $$0, int $$1, int $$2) {
+      return false;
+   }
+
+   default boolean a(char $$0, int $$1) {
+      return false;
    }
 
    @Nullable
-   public fbj a() {
-      return this.c;
+   default eyy a(fdp $$0) {
+      return null;
+   }
+
+   default boolean c(double $$0, double $$1) {
+      return false;
+   }
+
+   void a(boolean var1);
+
+   boolean aL_();
+
+   @Nullable
+   default eyy aM_() {
+      return this.aL_() ? eyy.a(this) : null;
+   }
+
+   default fdt F() {
+      return fdt.a();
    }
 }

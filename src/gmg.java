@@ -1,50 +1,51 @@
+import java.time.Duration;
+import java.time.Instant;
 import javax.annotation.Nullable;
 
-public class gmg {
-   private final gmn a;
-   private final exl b;
+public abstract class gmg {
+   private static final int a = 60000;
+   private static final int b = 10;
+   private int c;
+   private boolean d = false;
    @Nullable
-   private fbs c;
+   private Instant e;
 
-   public gmg(gmn $$0, exl $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public void a() {
+      this.d = true;
+      this.e = Instant.now();
+      this.c = 0;
    }
 
-   private void a() {
-      if (this.c != null) {
-         this.a.a(this.c);
+   public void a(gma $$0) {
+      if (this.b()) {
+         this.f();
+         this.c++;
+         this.e = Instant.now();
       }
 
-      vq $$0 = vq.c("tutorial.bundleInsert.title");
-      vq $$1 = vq.c("tutorial.bundleInsert.description");
-      this.c = new fbs(fbs.a.g, $$0, $$1, true);
-      this.a.a(this.c, 160);
-   }
-
-   private void b() {
-      if (this.c != null) {
-         this.a.a(this.c);
-         this.c = null;
-      }
-
-      if (!this.b.t) {
-         this.b.t = true;
-         this.b.as();
+      if (this.c()) {
+         this.b($$0);
+         this.c = 0;
       }
    }
 
-   public void a(coz $$0, coz $$1, ckj $$2) {
-      if (!this.b.t) {
-         if (!$$0.b() && $$1.a(cpc.qT)) {
-            if ($$2 == ckj.a) {
-               this.a();
-            } else if ($$2 == ckj.b) {
-               this.b();
-            }
-         } else if ($$0.a(cpc.qT) && !$$1.b() && $$2 == ckj.b) {
-            this.b();
-         }
-      }
+   public boolean b() {
+      return this.d && this.e != null && Duration.between(this.e, Instant.now()).toMillis() > 60000L;
    }
+
+   public boolean c() {
+      return this.c >= 10;
+   }
+
+   public void d() {
+      this.d = false;
+   }
+
+   protected int e() {
+      return this.c;
+   }
+
+   public abstract void f();
+
+   public abstract void b(gma var1);
 }

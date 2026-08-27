@@ -1,44 +1,34 @@
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
 
-public class bqh implements brk {
-   private final bno a;
-   private final boolean b;
+public class bqh extends bqa<cbp> {
+   private static final int c = 60;
+   private static final int d = 100;
+   private int e;
 
-   public bqh(bno $$0, boolean $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public bqh() {
+      super(ImmutableMap.of(bxl.m, bxm.b), 100);
    }
 
-   @Override
-   public ens a() {
-      return this.b ? this.a.dk().b(0.0, (double)this.a.cI(), 0.0) : this.a.dk();
+   protected boolean a(aow $$0, cbp $$1) {
+      return $$1.ap() == bot.a;
    }
 
-   @Override
-   public hz b() {
-      return this.a.dm();
+   protected boolean a(aow $$0, cbp $$1, long $$2) {
+      return this.e < 60;
    }
 
-   @Override
-   public boolean a(bog $$0) {
-      if (this.a instanceof bog $$1) {
-         if (!$$1.bx()) {
-            return false;
-         } else {
-            Optional<bxj> $$3 = $$0.dO().c(bxh.h);
-            return $$3.isPresent() && $$3.get().a($$1);
-         }
-      } else {
-         return true;
+   protected void b(aow $$0, cbp $$1, long $$2) {
+      if (!$$1.bd()) {
+         $$1.b(bot.i);
+         this.e = 0;
       }
    }
 
-   public bno c() {
-      return this.a;
+   protected void c(aow $$0, cbp $$1, long $$2) {
+      $$1.b(bot.a);
    }
 
-   @Override
-   public String toString() {
-      return "EntityTracker for " + this.a;
+   protected void d(aow $$0, cbp $$1, long $$2) {
+      this.e++;
    }
 }

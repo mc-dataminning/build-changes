@@ -19,7 +19,7 @@ public class ev implements ArgumentType<aiy> {
 
    public static af a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       aiy $$2 = e($$0, $$1);
-      af $$3 = ((du)$$0.getSource()).l().aB().a($$2);
+      af $$3 = ((du)$$0.getSource()).l().aD().a($$2);
       if ($$3 == null) {
          throw b.create($$2);
       } else {
@@ -27,16 +27,16 @@ public class ev implements ArgumentType<aiy> {
       }
    }
 
-   public static csd<?> b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
-      cse $$2 = ((du)$$0.getSource()).l().aG();
+   public static csh<?> b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+      csi $$2 = ((du)$$0.getSource()).l().aI();
       aiy $$3 = e($$0, $$1);
       return $$2.a($$3).orElseThrow(() -> c.create($$3));
    }
 
-   public static elu c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static emb c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       aiy $$2 = e($$0, $$1);
-      eiy $$3 = ((du)$$0.getSource()).l().aJ();
-      elu $$4 = $$3.getElement(eja.a, $$2);
+      ejf $$3 = ((du)$$0.getSource()).l().aL();
+      emb $$4 = $$3.getElement(ejh.a, $$2);
       if ($$4 == null) {
          throw d.create($$2);
       } else {
@@ -44,10 +44,10 @@ public class ev implements ArgumentType<aiy> {
       }
    }
 
-   public static eki d(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static ekp d(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       aiy $$2 = e($$0, $$1);
-      eiy $$3 = ((du)$$0.getSource()).l().aJ();
-      eki $$4 = $$3.getElement(eja.b, $$2);
+      ejf $$3 = ((du)$$0.getSource()).l().aL();
+      ekp $$4 = $$3.getElement(ejh.b, $$2);
       if ($$4 == null) {
          throw e.create($$2);
       } else {

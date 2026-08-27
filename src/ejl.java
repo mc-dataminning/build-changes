@@ -1,30 +1,49 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
 
-public class ejl extends ejq {
-   public static final Codec<ejl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(kf.h.r().fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, ejl::new)
-   );
-   private final ij<cou> j;
+public class ejl {
+   private final awn a;
+   private final ell b;
+   private final ejg c;
+   private final Set<eje<?>> d;
 
-   private ejl(ij<cou> $$0, int $$1, int $$2, List<elu> $$3, List<eki> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   public ejl(awn $$0, ell $$1, ejg $$2) {
+      this($$0, $$1, $$2, Set.of());
    }
 
-   @Override
-   public ejp a() {
-      return ejm.c;
+   private ejl(awn $$0, ell $$1, ejg $$2, Set<eje<?>> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   @Override
-   public void a(Consumer<coz> $$0, eiv $$1) {
-      $$0.accept(new coz(this.j));
+   public ejl a(String $$0) {
+      return new ejl(this.a.a($$0), this.b, this.c, this.d);
    }
 
-   public static ejq.a<?> a(cvm $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new ejl($$0.j().i(), $$1, $$2, $$3, $$4));
+   public ejl a(String $$0, eje<?> $$1) {
+      ImmutableSet<eje<?>> $$2 = ImmutableSet.builder().addAll(this.d).add($$1).build();
+      return new ejl(this.a.a($$0), this.b, this.c, $$2);
+   }
+
+   public boolean a(eje<?> $$0) {
+      return this.d.contains($$0);
+   }
+
+   public void b(String $$0) {
+      this.a.b($$0);
+   }
+
+   public void a(ejd $$0) {
+      this.b.a(this, $$0);
+   }
+
+   public ejg a() {
+      return this.c;
+   }
+
+   public ejl a(ell $$0) {
+      return new ejl(this.a, $$0, this.c, this.d);
    }
 }

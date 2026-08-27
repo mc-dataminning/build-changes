@@ -1,25 +1,19 @@
-public class gek extends gfd<cab, flw<cab>> {
-   private final fvh a;
+public class gek extends gfl<cfn, flr<cfn>> {
+   private static final aiy a = new aiy("textures/entity/breeze/breeze_wind.png");
+   private static final flr<cfn> b = new flr<>(flr.a(128, 128).a());
 
-   public gek(gcn<cab, flw<cab>> $$0, fvh $$1) {
+   public gek(gcv<cfn, flr<cfn>> $$0) {
       super($$0);
-      this.a = $$1;
    }
 
-   public void a(esa $$0, fvl $$1, int $$2, cab $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      boolean $$10 = $$3.fm() == boa.b;
-      $$0.a();
-      float $$11 = 1.0F;
-      float $$12 = -1.0F;
-      float $$13 = awh.e($$3.dE()) / 60.0F;
-      if ($$3.dE() < 0.0F) {
-         $$0.a(0.0F, 1.0F - $$13 * 0.5F, -1.0F + $$13 * 0.5F);
-      } else {
-         $$0.a(0.0F, 1.0F + $$13 * 0.8F, -1.0F + $$13 * 0.2F);
-      }
+   public void a(esh $$0, fvt $$1, int $$2, cfn $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      float $$10 = (float)$$3.ag + $$6;
+      esl $$11 = $$1.getBuffer(fwb.a(a, this.a($$10) % 1.0F, 0.0F));
+      b.a($$3, $$4, $$5, $$7, $$8, $$9);
+      gag.a(b, b.e()).a($$0, $$11, $$2, ggs.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   }
 
-      coz $$14 = $$10 ? $$3.eT() : $$3.eU();
-      this.a.a($$3, $$14, cow.h, false, $$0, $$1, $$2);
-      $$0.b();
+   private float a(float $$0) {
+      return $$0 * 0.02F;
    }
 }

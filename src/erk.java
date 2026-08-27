@@ -1,140 +1,130 @@
-import com.mojang.blaze3d.systems.RenderSystem;
 import java.util.Locale;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.annotation.Nullable;
+import org.lwjgl.glfw.GLFWVidMode;
+import org.lwjgl.glfw.GLFWVidMode.Buffer;
 
-public class erk {
-   @Nullable
-   private static erk a;
+public final class erk {
+   private final int a;
    private final int b;
    private final int c;
    private final int d;
    private final int e;
    private final int f;
-   private final boolean g;
-   private final boolean h;
+   private static final Pattern g = Pattern.compile("(\\d+)x(\\d+)(?:@(\\d+)(?::(\\d+))?)?");
 
-   private erk(boolean $$0, boolean $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      this.g = $$0;
-      this.b = $$2;
+   public erk(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
       this.d = $$3;
-      this.c = $$4;
-      this.e = $$5;
-      this.h = $$1;
-      this.f = $$6;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   public erk() {
-      this(false, true, 1, 0, 1, 0, 32774);
+   public erk(Buffer $$0) {
+      this.a = $$0.width();
+      this.b = $$0.height();
+      this.c = $$0.redBits();
+      this.d = $$0.greenBits();
+      this.e = $$0.blueBits();
+      this.f = $$0.refreshRate();
    }
 
-   public erk(int $$0, int $$1, int $$2) {
-      this(false, false, $$0, $$1, $$0, $$1, $$2);
+   public erk(GLFWVidMode $$0) {
+      this.a = $$0.width();
+      this.b = $$0.height();
+      this.c = $$0.redBits();
+      this.d = $$0.greenBits();
+      this.e = $$0.blueBits();
+      this.f = $$0.refreshRate();
    }
 
-   public erk(int $$0, int $$1, int $$2, int $$3, int $$4) {
-      this(true, false, $$0, $$1, $$2, $$3, $$4);
+   public int a() {
+      return this.a;
    }
 
-   public void a() {
-      if (!this.equals(a)) {
-         if (a == null || this.h != a.b()) {
-            a = this;
-            if (this.h) {
-               RenderSystem.disableBlend();
-               return;
-            }
+   public int b() {
+      return this.b;
+   }
 
-            RenderSystem.enableBlend();
-         }
+   public int c() {
+      return this.c;
+   }
 
-         RenderSystem.blendEquation(this.f);
-         if (this.g) {
-            RenderSystem.blendFuncSeparate(this.b, this.d, this.c, this.e);
-         } else {
-            RenderSystem.blendFunc(this.b, this.d);
-         }
-      }
+   public int d() {
+      return this.d;
+   }
+
+   public int e() {
+      return this.e;
+   }
+
+   public int f() {
+      return this.f;
    }
 
    @Override
    public boolean equals(Object $$0) {
       if (this == $$0) {
          return true;
-      } else if (!($$0 instanceof erk $$1)) {
-         return false;
-      } else if (this.f != $$1.f) {
-         return false;
-      } else if (this.e != $$1.e) {
-         return false;
-      } else if (this.d != $$1.d) {
-         return false;
-      } else if (this.h != $$1.h) {
-         return false;
-      } else if (this.g != $$1.g) {
-         return false;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         erk $$1 = (erk)$$0;
+         return this.a == $$1.a && this.b == $$1.b && this.c == $$1.c && this.d == $$1.d && this.e == $$1.e && this.f == $$1.f;
       } else {
-         return this.c != $$1.c ? false : this.b == $$1.b;
+         return false;
       }
    }
 
    @Override
    public int hashCode() {
-      int $$0 = this.b;
-      $$0 = 31 * $$0 + this.c;
-      $$0 = 31 * $$0 + this.d;
-      $$0 = 31 * $$0 + this.e;
-      $$0 = 31 * $$0 + this.f;
-      $$0 = 31 * $$0 + (this.g ? 1 : 0);
-      return 31 * $$0 + (this.h ? 1 : 0);
+      return Objects.hash(this.a, this.b, this.c, this.d, this.e, this.f);
    }
 
-   public boolean b() {
-      return this.h;
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "%sx%s@%s (%sbit)", this.a, this.b, this.f, this.c + this.d + this.e);
    }
 
-   public static int a(String $$0) {
-      String $$1 = $$0.trim().toLowerCase(Locale.ROOT);
-      if ("add".equals($$1)) {
-         return 32774;
-      } else if ("subtract".equals($$1)) {
-         return 32778;
-      } else if ("reversesubtract".equals($$1)) {
-         return 32779;
-      } else if ("reverse_subtract".equals($$1)) {
-         return 32779;
-      } else if ("min".equals($$1)) {
-         return 32775;
+   public static Optional<erk> a(@Nullable String $$0) {
+      if ($$0 == null) {
+         return Optional.empty();
       } else {
-         return "max".equals($$1) ? 32776 : 32774;
+         try {
+            Matcher $$1 = g.matcher($$0);
+            if ($$1.matches()) {
+               int $$2 = Integer.parseInt($$1.group(1));
+               int $$3 = Integer.parseInt($$1.group(2));
+               String $$4 = $$1.group(3);
+               int $$5;
+               if ($$4 == null) {
+                  $$5 = 60;
+               } else {
+                  $$5 = Integer.parseInt($$4);
+               }
+
+               String $$7 = $$1.group(4);
+               int $$8;
+               if ($$7 == null) {
+                  $$8 = 24;
+               } else {
+                  $$8 = Integer.parseInt($$7);
+               }
+
+               int $$10 = $$8 / 3;
+               return Optional.of(new erk($$2, $$3, $$10, $$10, $$10, $$5));
+            }
+         } catch (Exception var9) {
+         }
+
+         return Optional.empty();
       }
    }
 
-   public static int b(String $$0) {
-      String $$1 = $$0.trim().toLowerCase(Locale.ROOT);
-      $$1 = $$1.replaceAll("_", "");
-      $$1 = $$1.replaceAll("one", "1");
-      $$1 = $$1.replaceAll("zero", "0");
-      $$1 = $$1.replaceAll("minus", "-");
-      if ("0".equals($$1)) {
-         return 0;
-      } else if ("1".equals($$1)) {
-         return 1;
-      } else if ("srccolor".equals($$1)) {
-         return 768;
-      } else if ("1-srccolor".equals($$1)) {
-         return 769;
-      } else if ("dstcolor".equals($$1)) {
-         return 774;
-      } else if ("1-dstcolor".equals($$1)) {
-         return 775;
-      } else if ("srcalpha".equals($$1)) {
-         return 770;
-      } else if ("1-srcalpha".equals($$1)) {
-         return 771;
-      } else if ("dstalpha".equals($$1)) {
-         return 772;
-      } else {
-         return "1-dstalpha".equals($$1) ? 773 : -1;
-      }
+   public String g() {
+      return String.format(Locale.ROOT, "%sx%s@%s:%s", this.a, this.b, this.f, this.c + this.d + this.e);
    }
 }

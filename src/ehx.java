@@ -1,46 +1,23 @@
-public class ehx {
-   private final hz a;
-   private final int b;
-   private final int c;
+public class ehx implements ehy {
+   private final cvr b;
 
-   public ehx(hz $$0, int $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public ehx(cvr $$0) {
+      this.b = $$0;
    }
 
-   public static ehx a(sw $$0) {
-      hz $$1 = tl.b($$0.p("Pos"));
-      int $$2 = $$0.h("Rotation");
-      int $$3 = $$0.h("EntityId");
-      return new ehx($$1, $$2, $$3);
+   @Override
+   public void a(ie $$0, dlj $$1, hz $$2, hz $$3, int $$4, int $$5) {
+      ehy.a(this.b, $$0, $$1, $$2, $$3, $$4, $$5 - 1);
    }
 
-   public sw a() {
-      sw $$0 = new sw();
-      $$0.a("Pos", tl.a(this.a));
-      $$0.a("Rotation", this.b);
-      $$0.a("EntityId", this.c);
-      return $$0;
+   @Override
+   public void a(hz $$0, cys $$1, hz $$2) {
+      dlj $$3 = this.b.a_($$0);
+      this.a($$3, $$0, $$1, $$2, false);
    }
 
-   public hz b() {
-      return this.a;
-   }
-
-   public int c() {
-      return this.b;
-   }
-
-   public int d() {
-      return this.c;
-   }
-
-   public String e() {
-      return a(this.a);
-   }
-
-   public static String a(hz $$0) {
-      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
+   @Override
+   public void a(dlj $$0, hz $$1, cys $$2, hz $$3, boolean $$4) {
+      ehy.a(this.b, $$0, $$1, $$2, $$3, $$4);
    }
 }

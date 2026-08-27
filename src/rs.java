@@ -16,7 +16,7 @@ public class rs {
    private hz b;
    @Nullable
    private hz c;
-   private final aov d;
+   private final aow d;
    private final Collection<rt> e = Lists.newArrayList();
    private final int f;
    private final Collection<rw> g = Lists.newCopyOnWriteArrayList();
@@ -30,13 +30,13 @@ public class rs {
    private final sf o;
    private final Stopwatch p = Stopwatch.createUnstarted();
    private boolean q;
-   private final dfa r;
+   private final dfe r;
    @Nullable
    private Throwable s;
    @Nullable
-   private dkh t;
+   private dkl t;
 
-   public rs(sm $$0, dfa $$1, aov $$2, sf $$3) {
+   public rs(sm $$0, dfe $$1, aow $$2, sf $$3) {
       this.a = $$0;
       this.d = $$2;
       this.o = $$3;
@@ -60,9 +60,9 @@ public class rs {
       } else {
          this.j = 0;
          this.k = true;
-         dkh $$0 = this.e();
+         dkl $$0 = this.e();
          $$0.c(this.d);
-         eaw $$1 = si.b($$0);
+         ebd $$1 = si.b($$0);
          this.d.m().a($$1);
          this.d.a($$1);
          return this;
@@ -165,18 +165,18 @@ public class rs {
       return this.b;
    }
 
-   public enn d() {
-      dkh $$0 = this.e();
+   public enu d() {
+      dkl $$0 = this.e();
       return si.a($$0);
    }
 
-   public dkh e() {
+   public dkl e() {
       if (this.t == null) {
          if (this.b == null) {
             throw new IllegalStateException("Could not find a structureBlockEntity for this GameTestInfo");
          }
 
-         this.t = (dkh)this.d.c_(this.b);
+         this.t = (dkl)this.d.c_(this.b);
          if (this.t == null) {
             throw new IllegalStateException("Could not find a structureBlockEntity at the given coordinate " + this.b);
          }
@@ -185,7 +185,7 @@ public class rs {
       return this.t;
    }
 
-   public aov f() {
+   public aow f() {
       return this.d;
    }
 
@@ -221,9 +221,9 @@ public class rs {
    public void l() {
       if (this.s == null) {
          this.F();
-         enn $$0 = this.d();
-         List<bno> $$1 = this.f().a(bno.class, $$0.g(1.0), $$0x -> !($$0x instanceof chh));
-         $$1.forEach($$0x -> $$0x.a(bno.c.b));
+         enu $$0 = this.d();
+         List<bnq> $$1 = this.f().a(bnq.class, $$0.g(1.0), $$0x -> !($$0x instanceof chl));
+         $$1.forEach($$0x -> $$0x.a(bnq.c.b));
       }
    }
 
@@ -277,7 +277,7 @@ public class rs {
       return this.a.d();
    }
 
-   public dfa t() {
+   public dfe t() {
       return this.r;
    }
 
@@ -324,7 +324,7 @@ public class rs {
 
    private hz G() {
       if (this.c == null) {
-         eaw $$0 = si.b(this.e());
+         ebd $$0 = si.b(this.e());
          this.c = new hz($$0.h(), $$0.i(), $$0.j());
       }
 

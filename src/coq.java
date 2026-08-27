@@ -1,15 +1,14 @@
-public class coq extends cou implements cpy {
-   public coq(cou.a $$0) {
-      super($$0);
+public class coq extends cqd {
+   public coq(cys $$0, cys $$1, coy.a $$2) {
+      super($$2, $$0, $$1, ie.b);
    }
 
    @Override
-   public boolean a(cvn $$0, dkc $$1, boolean $$2, chh $$3) {
-      if ($$1.a($$0x -> $$0x.a(false), $$2)) {
-         $$0.a(null, $$1.aE_(), atk.mM, atl.e, 1.0F, 1.0F);
-         return true;
-      } else {
+   protected boolean a(cvu $$0, dlj $$1, hz $$2) {
+      if ($$1.b() instanceof dhp $$3 && !$$3.b($$1, $$0, $$2)) {
          return false;
       }
+
+      return super.a($$0, $$1, $$2);
    }
 }

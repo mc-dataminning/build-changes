@@ -35,10 +35,10 @@ public class akp {
 
    private static int a(du $$0) throws CommandSyntaxException {
       MinecraftServer $$1 = $$0.l();
-      if ($$1.be()) {
+      if ($$1.bg()) {
          throw c.create();
       } else {
-         $$1.bf();
+         $$1.bh();
          $$0.a(() -> vq.c("commands.debug.started"), true);
          return 0;
       }
@@ -46,10 +46,10 @@ public class akp {
 
    private static int b(du $$0) throws CommandSyntaxException {
       MinecraftServer $$1 = $$0.l();
-      if (!$$1.be()) {
+      if (!$$1.bg()) {
          throw b.create();
       } else {
-         bik $$2 = $$1.bg();
+         bim $$2 = $$1.bi();
          double $$3 = (double)$$2.g() / (double)axh.a;
          double $$4 = (double)$$2.f() / $$3;
          $$0.a(() -> vq.a("commands.debug.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2.f(), String.format(Locale.ROOT, "%.2f", $$4)), true);
@@ -68,7 +68,7 @@ public class akp {
             Collection<hd<du>> $$5 = fz.a($$4, "name");
             MinecraftServer $$6 = $$0.l();
             String $$7 = "debug-trace-" + ac.e() + ".txt";
-            CommandDispatcher<du> $$8 = $$0.l().aC().a();
+            CommandDispatcher<du> $$8 = $$0.l().aE().a();
             int $$9 = 0;
 
             try {

@@ -8,9 +8,9 @@ public class aeg implements xx<aag> {
    private final byte g;
    private final boolean h;
 
-   public aeg(bno $$0) {
+   public aeg(bnq $$0) {
       this.b = $$0.aj();
-      ens $$1 = $$0.dl();
+      enz $$1 = $$0.dl();
       this.c = $$1.c;
       this.d = $$1.d;
       this.e = $$1.e;

@@ -1,27 +1,60 @@
-public class gba extends gby<cad, fmd<cad>> {
-   private static final aiy a = new aiy("textures/entity/fox/fox.png");
-   private static final aiy i = new aiy("textures/entity/fox/fox_sleep.png");
-   private static final aiy j = new aiy("textures/entity/fox/snow_fox.png");
-   private static final aiy k = new aiy("textures/entity/fox/snow_fox_sleep.png");
+@FunctionalInterface
+public interface gba<T extends bnq> {
+   gaz<T> create(gba.a var1);
 
-   public gba(gas.a $$0) {
-      super($$0, new fmd<>($$0.a(fpb.Z)), 0.4F);
-      this.a(new geq(this, $$0.d()));
-   }
+   public static class a {
+      private final gay a;
+      private final gby b;
+      private final fwn c;
+      private final fvp d;
+      private final asb e;
+      private final fpf f;
+      private final eyz g;
 
-   protected void a(cad $$0, esa $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if ($$0.gm() || $$0.gg()) {
-         float $$6 = -awh.i($$4, $$0.N, $$0.dE());
-         $$1.a(a.b.rotationDegrees($$6));
+      public a(gay $$0, gby $$1, fwn $$2, fvp $$3, asb $$4, fpf $$5, eyz $$6) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
       }
-   }
 
-   public aiy a(cad $$0) {
-      if ($$0.w() == cad.v.a) {
-         return $$0.fD() ? i : a;
-      } else {
-         return $$0.fD() ? k : j;
+      public gay a() {
+         return this.a;
+      }
+
+      public gby b() {
+         return this.b;
+      }
+
+      public fwn c() {
+         return this.c;
+      }
+
+      public fvp d() {
+         return this.d;
+      }
+
+      public asb e() {
+         return this.e;
+      }
+
+      public fpf f() {
+         return this.f;
+      }
+
+      public gjh g() {
+         return this.c.a().a();
+      }
+
+      public fpj a(fph $$0) {
+         return this.f.a($$0);
+      }
+
+      public eyz h() {
+         return this.g;
       }
    }
 }

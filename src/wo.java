@@ -20,11 +20,11 @@ public class wo {
       return this.a;
    }
 
-   public List<avt> a(int $$0, int $$1, boolean $$2) {
+   public List<avu> a(int $$0, int $$1, boolean $$2) {
       if ($$1 == 0) {
          return ImmutableList.of();
       } else {
-         List<avt> $$3 = Lists.newArrayList();
+         List<avu> $$3 = Lists.newArrayList();
          wn $$4 = this.b.get($$0);
          int $$5 = $$0;
 
@@ -33,7 +33,7 @@ public class wo {
             wn $$8 = this.b.get($$7);
             if (!$$8.equals($$4)) {
                String $$9 = this.a.substring($$5, $$7);
-               $$3.add($$2 ? avt.backward($$9, $$4, this.c) : avt.forward($$9, $$4));
+               $$3.add($$2 ? avu.backward($$9, $$4, this.c) : avu.forward($$9, $$4));
                $$4 = $$8;
                $$5 = $$7;
             }
@@ -41,7 +41,7 @@ public class wo {
 
          if ($$5 < $$0 + $$1) {
             String $$10 = this.a.substring($$5, $$0 + $$1);
-            $$3.add($$2 ? avt.backward($$10, $$4, this.c) : avt.forward($$10, $$4));
+            $$3.add($$2 ? avu.backward($$10, $$4, this.c) : avu.forward($$10, $$4));
          }
 
          return $$2 ? Lists.reverse($$3) : $$3;

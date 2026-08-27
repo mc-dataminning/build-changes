@@ -1,46 +1,84 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public interface dgp {
-   List<dgp.a> b();
+public class dgp extends cye implements dca {
+   public static final MapCodec<dgp> a = b(dgp::new);
+   public static final dmh<dmt> b = dlz.bj;
 
-   static List<dgp> c() {
-      return kf.h.s().map(dgp::a).filter(Objects::nonNull).collect(Collectors.toList());
+   @Override
+   public MapCodec<dgp> a() {
+      return a;
    }
 
-   @Nullable
-   static dgp a(cvm $$0) {
-      if ($$0.j() instanceof cms $$1) {
-         cyo var6 = $$1.e();
-         if (var6 instanceof dgp) {
-            return (dgp)var6;
+   protected dgp(dli.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, dmt.b));
+   }
+
+   @Override
+   public dix a(hz $$0, dlj $$1) {
+      return new dkl($$0, $$1);
+   }
+
+   @Override
+   protected blw a(dlj $$0, cvr $$1, hz $$2, chl $$3, env $$4) {
+      dix $$5 = $$1.c_($$2);
+      if ($$5 instanceof dkl) {
+         return ((dkl)$$5).a($$3) ? blw.a($$1.B) : blw.d;
+      } else {
+         return blw.d;
+      }
+   }
+
+   @Override
+   public void a(cvr $$0, hz $$1, dlj $$2, @Nullable boi $$3, cpd $$4) {
+      if (!$$0.B) {
+         if ($$3 != null) {
+            dix $$5 = $$0.c_($$1);
+            if ($$5 instanceof dkl) {
+               ((dkl)$$5).a($$3);
+            }
          }
       }
-
-      cou $$2 = $$0.j();
-      return $$2 instanceof dgp ? (dgp)$$2 : null;
    }
 
-   public static record a(ij<bmz> c, int d) {
-      public static final Codec<dgp.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(kf.d.r().fieldOf("id").forGetter(dgp.a::b), Codec.INT.optionalFieldOf("duration", 160).forGetter(dgp.a::c)).apply($$0, dgp.a::new)
-      );
-      public static final Codec<List<dgp.a>> b = a.listOf();
+   @Override
+   protected dex b_(dlj $$0) {
+      return dex.c;
+   }
 
-      public bnb a() {
-         return new bnb(this.c, this.d);
+   @Override
+   protected void a(dlk.a<cys, dlj> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected void a(dlj $$0, cvr $$1, hz $$2, cys $$3, hz $$4, boolean $$5) {
+      if ($$1 instanceof aow) {
+         if ($$1.c_($$2) instanceof dkl $$7) {
+            boolean $$8 = $$1.C($$2);
+            boolean $$9 = $$7.F();
+            if ($$8 && !$$9) {
+               $$7.c(true);
+               this.a((aow)$$1, $$7);
+            } else if (!$$8 && $$9) {
+               $$7.c(false);
+            }
+         }
       }
+   }
 
-      public ij<bmz> b() {
-         return this.c;
-      }
-
-      public int c() {
-         return this.d;
+   private void a(aow $$0, dkl $$1) {
+      switch ($$1.x()) {
+         case a:
+            $$1.b(false);
+            break;
+         case b:
+            $$1.c($$0);
+            break;
+         case c:
+            $$1.D();
+         case d:
       }
    }
 }

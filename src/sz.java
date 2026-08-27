@@ -96,17 +96,17 @@ public class sz extends tm {
 
    @Override
    public int g() {
-      return awh.d(this.w);
+      return awi.d(this.w);
    }
 
    @Override
    public short h() {
-      return (short)(awh.d(this.w) & 65535);
+      return (short)(awi.d(this.w) & 65535);
    }
 
    @Override
    public byte i() {
-      return (byte)(awh.d(this.w) & 0xFF);
+      return (byte)(awi.d(this.w) & 0xFF);
    }
 
    @Override

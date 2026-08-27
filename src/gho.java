@@ -1,45 +1,21 @@
-import com.google.common.base.Splitter;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.Map.Entry;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class gho {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Splitter a = Splitter.on('/');
+public class gho implements ghf {
+   public static final Codec<gho> b = RecordCodecBuilder.create($$0 -> $$0.group(awq.a.fieldOf("pattern").forGetter($$0x -> $$0x.c)).apply($$0, gho::new));
+   private final awq c;
 
-   public static Path a(Path $$0, String $$1) {
-      Path $$2 = $$0.resolve("objects");
-      aqx.a $$3 = aqx.c();
-      Path $$4 = $$0.resolve("indexes/" + $$1 + ".json");
+   public gho(awq $$0) {
+      this.c = $$0;
+   }
 
-      try (BufferedReader $$5 = Files.newBufferedReader($$4, StandardCharsets.UTF_8)) {
-         JsonObject $$6 = avx.a($$5);
-         JsonObject $$7 = avx.a($$6, "objects", null);
-         if ($$7 != null) {
-            for (Entry<String, JsonElement> $$8 : $$7.entrySet()) {
-               JsonObject $$9 = (JsonObject)$$8.getValue();
-               String $$10 = $$8.getKey();
-               List<String> $$11 = a.splitToList($$10);
-               String $$12 = avx.i($$9, "hash");
-               Path $$13 = $$2.resolve($$12.substring(0, 2) + "/" + $$12);
-               $$3.a($$11, $$13);
-            }
-         }
-      } catch (JsonParseException var17) {
-         b.error("Unable to parse resource index file: {}", $$4);
-      } catch (IOException var18) {
-         b.error("Can't open the resource index file: {}", $$4);
-      }
+   @Override
+   public void a(asb $$0, ghf.a $$1) {
+      $$1.a(this.c.c());
+   }
 
-      return $$3.a("index-" + $$1).getPath("/");
+   @Override
+   public ghh a() {
+      return ghi.c;
    }
 }

@@ -1,24 +1,37 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eao extends eak {
-   public static final Codec<eao> a = avp.j.fieldOf("chance").xmap(eao::new, $$0 -> $$0.c).codec();
-   private final int c;
+public class eao extends eaw {
+   public static final Codec<eao> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.DOUBLE.fieldOf("noise_level").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("below_noise").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("above_noise").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, eao::new)
+   );
+   private final double c;
+   private final int d;
+   private final int e;
 
-   private eao(int $$0) {
+   private eao(double $$0, int $$1, int $$2) {
       this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public static eao a(int $$0) {
-      return new eao($$0);
-   }
-
-   @Override
-   protected boolean a(eaj $$0, awo $$1, hz $$2) {
-      return $$1.i() < 1.0F / (float)this.c;
+   public static eao a(double $$0, int $$1, int $$2) {
+      return new eao($$0, $$1, $$2);
    }
 
    @Override
-   public eam<?> b() {
-      return eam.b;
+   protected int a(awp $$0, hz $$1) {
+      double $$2 = cwq.e.a((double)$$1.u() / 200.0, (double)$$1.w() / 200.0, false);
+      return $$2 < this.c ? this.d : this.e;
+   }
+
+   @Override
+   public eat<?> b() {
+      return eat.h;
    }
 }

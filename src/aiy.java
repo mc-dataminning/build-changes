@@ -233,7 +233,7 @@ public class aiy implements Comparable<aiy> {
 
    public static class b implements JsonDeserializer<aiy>, JsonSerializer<aiy> {
       public aiy a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return new aiy(avx.a($$0, "location"));
+         return new aiy(avy.a($$0, "location"));
       }
 
       public JsonElement a(aiy $$0, Type $$1, JsonSerializationContext $$2) {

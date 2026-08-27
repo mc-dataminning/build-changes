@@ -1,325 +1,129 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 import java.util.Optional;
-import java.util.function.BiPredicate;
-import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class czr extends cxi<dja> implements dfo {
-   public static final MapCodec<czr> b = b($$0 -> new czr($$0, () -> div.b));
-   public static final dlz c = dcj.aE;
-   public static final dmd<dlx> d = dlv.bc;
-   public static final dlw e = dlv.C;
-   public static final int f = 1;
-   protected static final int g = 1;
-   protected static final int h = 14;
-   protected static final eol i = cyo.a(1.0, 0.0, 0.0, 15.0, 14.0, 15.0);
-   protected static final eol j = cyo.a(1.0, 0.0, 1.0, 15.0, 14.0, 16.0);
-   protected static final eol k = cyo.a(0.0, 0.0, 1.0, 15.0, 14.0, 15.0);
-   protected static final eol l = cyo.a(1.0, 0.0, 1.0, 16.0, 14.0, 15.0);
-   protected static final eol m = cyo.a(1.0, 0.0, 1.0, 15.0, 14.0, 15.0);
-   private static final dav.b<dja, Optional<bln>> n = new dav.b<dja, Optional<bln>>() {
-      public Optional<bln> a(dja $$0, dja $$1) {
-         return Optional.of(new blm($$0, $$1));
+public class czr extends dfr {
+   public static final MapCodec<czr> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dmw.a.fieldOf("wood_type").forGetter(dfr::d), u()).apply($$0, czr::new));
+   public static final dmj b = dlz.ba;
+   public static final dma c = dlz.a;
+   protected static final float d = 5.0F;
+   protected static final eos e = cys.a(3.0, 0.0, 3.0, 13.0, 16.0, 13.0);
+   private static final Map<Integer, eos> i = Maps.newHashMap(
+      ImmutableMap.of(
+         0,
+         cys.a(1.0, 0.0, 7.0, 15.0, 10.0, 9.0),
+         4,
+         cys.a(7.0, 0.0, 1.0, 9.0, 10.0, 15.0),
+         8,
+         cys.a(1.0, 0.0, 7.0, 15.0, 10.0, 9.0),
+         12,
+         cys.a(7.0, 0.0, 1.0, 9.0, 10.0, 15.0)
+      )
+   );
+
+   @Override
+   public MapCodec<czr> a() {
+      return a;
+   }
+
+   public czr(dmw $$0, dli.d $$1) {
+      super($$0, $$1.a($$0.e()));
+      this.k(this.E.b().a(b, Integer.valueOf(0)).a(c, Boolean.valueOf(false)).a(f, Boolean.valueOf(false)));
+   }
+
+   @Override
+   protected bly a(cpd $$0, dlj $$1, cvr $$2, hz $$3, chl $$4, blv $$5, env $$6) {
+      if ($$2.c_($$3) instanceof dkg $$7 && this.a($$4, $$6, $$7, $$0)) {
+         return bly.e;
       }
 
-      public Optional<bln> a(dja $$0) {
-         return Optional.of($$0);
-      }
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
 
-      public Optional<bln> a() {
-         return Optional.empty();
-      }
-   };
-   private static final dav.b<dja, Optional<bly>> o = new dav.b<dja, Optional<bly>>() {
-      public Optional<bly> a(final dja $$0, final dja $$1) {
-         final bln $$2 = new blm($$0, $$1);
-         return Optional.of(new bly() {
-            @Nullable
-            @Override
-            public ckb createMenu(int $$0x, chg $$1x, chh $$2x) {
-               if ($$0.d($$2) && $$1.d($$2)) {
-                  $$0.e_($$1.m);
-                  $$1.e_($$1.m);
-                  return cki.b($$0, $$1, $$2);
-               } else {
-                  return null;
-               }
+   private boolean a(chl $$0, env $$1, dkg $$2, cpd $$3) {
+      return !$$2.a($$2.a($$0), $$0) && $$3.d() instanceof coq && $$1.b().equals(ie.a);
+   }
+
+   @Override
+   protected boolean a(dlj $$0, cvu $$1, hz $$2) {
+      return $$1.a_($$2.c()).a($$1, $$2.c(), ie.a, dgs.b);
+   }
+
+   @Override
+   public dlj a(crk $$0) {
+      cvr $$1 = $$0.q();
+      egw $$2 = $$1.b_($$0.a());
+      hz $$3 = $$0.a().c();
+      dlj $$4 = $$1.a_($$3);
+      boolean $$5 = $$4.a(aua.az);
+      ie $$6 = ie.a((double)$$0.i());
+      boolean $$7 = !cys.a($$4.k($$1, $$3), ie.a) || $$0.h();
+      if ($$5 && !$$0.h()) {
+         if ($$4.b(dhp.b)) {
+            ie $$8 = $$4.c(dhp.b);
+            if ($$8.o().a($$6)) {
+               $$7 = false;
             }
-
-            @Override
-            public vq Q_() {
-               if ($$0.ae()) {
-                  return $$0.Q_();
-               } else {
-                  return (vq)($$1.ae() ? $$1.Q_() : vq.c("container.chestDouble"));
-               }
-            }
-         });
-      }
-
-      public Optional<bly> a(dja $$0) {
-         return Optional.of($$0);
-      }
-
-      public Optional<bly> a() {
-         return Optional.empty();
-      }
-   };
-
-   @Override
-   public MapCodec<? extends czr> a() {
-      return b;
-   }
-
-   protected czr(dle.d $$0, Supplier<div<? extends dja>> $$1) {
-      super($$0, $$1);
-      this.k(this.E.b().a(c, ie.c).a(d, dlx.a).a(e, Boolean.valueOf(false)));
-   }
-
-   public static dav.a g(dlf $$0) {
-      dlx $$1 = $$0.c(d);
-      if ($$1 == dlx.a) {
-         return dav.a.a;
-      } else {
-         return $$1 == dlx.c ? dav.a.b : dav.a.c;
-      }
-   }
-
-   @Override
-   protected det b_(dlf $$0) {
-      return det.b;
-   }
-
-   @Override
-   protected dlf a(dlf $$0, ie $$1, dlf $$2, cvo $$3, hz $$4, hz $$5) {
-      if ($$0.c(e)) {
-         $$3.a($$4, egq.c, egq.c.a($$3));
-      }
-
-      if ($$2.a(this) && $$1.o().d()) {
-         dlx $$6 = $$2.c(d);
-         if ($$0.c(d) == dlx.a && $$6 != dlx.a && $$0.c(c) == $$2.c(c) && h($$2) == $$1.g()) {
-            return $$0.a(d, $$6.a());
-         }
-      } else if (h($$0) == $$1) {
-         return $$0.a(d, dlx.a);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected eol a(dlf $$0, cut $$1, hz $$2, enx $$3) {
-      if ($$0.c(d) == dlx.a) {
-         return m;
-      } else {
-         switch (h($$0)) {
-            case c:
-            default:
-               return i;
-            case d:
-               return j;
-            case e:
-               return k;
-            case f:
-               return l;
-         }
-      }
-   }
-
-   public static ie h(dlf $$0) {
-      ie $$1 = $$0.c(c);
-      return $$0.c(d) == dlx.b ? $$1.h() : $$1.i();
-   }
-
-   @Override
-   public dlf a(crg $$0) {
-      dlx $$1 = dlx.a;
-      ie $$2 = $$0.g().g();
-      egp $$3 = $$0.q().b_($$0.a());
-      boolean $$4 = $$0.h();
-      ie $$5 = $$0.k();
-      if ($$5.o().d() && $$4) {
-         ie $$6 = this.a($$0, $$5.g());
-         if ($$6 != null && $$6.o() != $$5.o()) {
-            $$2 = $$6;
-            $$1 = $$6.i() == $$5.g() ? dlx.c : dlx.b;
-         }
-      }
-
-      if ($$1 == dlx.a && !$$4) {
-         if ($$2 == this.a($$0, $$2.h())) {
-            $$1 = dlx.b;
-         } else if ($$2 == this.a($$0, $$2.i())) {
-            $$1 = dlx.c;
-         }
-      }
-
-      return this.o().a(c, $$2).a(d, $$1).a(e, Boolean.valueOf($$3.a() == egq.c));
-   }
-
-   @Override
-   protected egp c_(dlf $$0) {
-      return $$0.c(e) ? egq.c.a(false) : super.c_($$0);
-   }
-
-   @Nullable
-   private ie a(crg $$0, ie $$1) {
-      dlf $$2 = $$0.q().a_($$0.a().a($$1));
-      return $$2.a(this) && $$2.c(d) == dlx.a ? $$2.c(c) : null;
-   }
-
-   @Override
-   public void a(cvn $$0, hz $$1, dlf $$2, bog $$3, coz $$4) {
-      if ($$4.B()) {
-         dit $$5 = $$0.c_($$1);
-         if ($$5 instanceof dja) {
-            ((dja)$$5).a($$4.z());
-         }
-      }
-   }
-
-   @Override
-   protected void a(dlf $$0, cvn $$1, hz $$2, dlf $$3, boolean $$4) {
-      blq.a($$0, $$3, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   protected blu a(dlf $$0, cvn $$1, hz $$2, chh $$3, eno $$4) {
-      if ($$1.B) {
-         return blu.a;
-      } else {
-         bly $$5 = this.b($$0, $$1, $$2);
-         if ($$5 != null) {
-            $$3.a($$5);
-            $$3.b(this.c());
-            cfy.a($$3, true);
-         }
-
-         return blu.b;
-      }
-   }
-
-   protected atr<aiy> c() {
-      return atu.i.b(atu.ao);
-   }
-
-   public div<? extends dja> d() {
-      return this.a.get();
-   }
-
-   @Nullable
-   public static bln a(czr $$0, dlf $$1, cvn $$2, hz $$3, boolean $$4) {
-      return $$0.a($$1, $$2, $$3, $$4).apply(n).orElse(null);
-   }
-
-   @Override
-   public dav.c<? extends dja> a(dlf $$0, cvn $$1, hz $$2, boolean $$3) {
-      BiPredicate<cvo, hz> $$4;
-      if ($$3) {
-         $$4 = ($$0x, $$1x) -> false;
-      } else {
-         $$4 = czr::a;
-      }
-
-      return dav.a(this.a.get(), czr::g, czr::h, c, $$0, $$1, $$2, $$4);
-   }
-
-   @Nullable
-   @Override
-   protected bly b(dlf $$0, cvn $$1, hz $$2) {
-      return this.a($$0, $$1, $$2, false).apply(o).orElse(null);
-   }
-
-   public static dav.b<dja, Float2FloatFunction> a(final djw $$0) {
-      return new dav.b<dja, Float2FloatFunction>() {
-         public Float2FloatFunction a(dja $$0x, dja $$1) {
-            return $$2 -> Math.max($$0.a($$2), $$1.a($$2));
-         }
-
-         public Float2FloatFunction a(dja $$0x) {
-            return $$0::a;
-         }
-
-         public Float2FloatFunction a() {
-            return $$0::a;
-         }
-      };
-   }
-
-   @Override
-   public dit a(hz $$0, dlf $$1) {
-      return new dja($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dit> diu<T> a(cvn $$0, dlf $$1, div<T> $$2) {
-      return $$0.B ? a($$2, this.d(), dja::a) : null;
-   }
-
-   public static boolean a(cvo $$0, hz $$1) {
-      return a((cut)$$0, $$1) || b($$0, $$1);
-   }
-
-   private static boolean a(cut $$0, hz $$1) {
-      hz $$2 = $$1.c();
-      return $$0.a_($$2).g($$0, $$2);
-   }
-
-   private static boolean b(cvo $$0, hz $$1) {
-      List<bzw> $$2 = $$0.a(
-         bzw.class, new enn((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), (double)($$1.u() + 1), (double)($$1.v() + 2), (double)($$1.w() + 1))
-      );
-      if (!$$2.isEmpty()) {
-         for (bzw $$3 : $$2) {
-            if ($$3.A()) {
-               return true;
+         } else if ($$4.b(b)) {
+            Optional<ie> $$9 = dmp.a($$4.c(b));
+            if ($$9.isPresent() && $$9.get().o().a($$6)) {
+               $$7 = false;
             }
          }
       }
 
-      return false;
+      int $$10 = !$$7 ? dmp.a($$6.g()) : dmp.a($$0.i() + 180.0F);
+      return this.o().a(c, Boolean.valueOf($$7)).a(b, Integer.valueOf($$10)).a(f, Boolean.valueOf($$2.a() == egx.c));
    }
 
    @Override
-   protected boolean d_(dlf $$0) {
-      return true;
+   protected eos a(dlj $$0, cux $$1, hz $$2, eoe $$3) {
+      eos $$4 = i.get($$0.c(b));
+      return $$4 == null ? e : $$4;
    }
 
    @Override
-   protected int a(dlf $$0, cvn $$1, hz $$2) {
-      return ckb.b(a(this, $$0, $$1, $$2, false));
+   protected eos b_(dlj $$0, cux $$1, hz $$2) {
+      return this.a($$0, $$1, $$2, eoe.a());
    }
 
    @Override
-   protected dlf a(dlf $$0, dfa $$1) {
-      return $$0.a(c, $$1.a($$0.c(c)));
+   protected dlj a(dlj $$0, ie $$1, dlj $$2, cvs $$3, hz $$4, hz $$5) {
+      return $$1 == ie.b && !this.a($$0, $$3, $$4) ? cyu.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected dlf a(dlf $$0, ddk $$1) {
-      return $$0.a($$1.a($$0.c(c)));
+   public float g(dlj $$0) {
+      return dmp.b($$0.c(b));
    }
 
    @Override
-   protected void a(dlg.a<cyo, dlf> $$0) {
-      $$0.a(c, d, e);
+   protected dlj a(dlj $$0, dfe $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   protected boolean a(dlf $$0, cut $$1, hz $$2, ehf $$3) {
-      return false;
+   protected dlj a(dlj $$0, ddo $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   protected void a(dlf $$0, aov $$1, hz $$2, awo $$3) {
-      dit $$4 = $$1.c_($$2);
-      if ($$4 instanceof dja) {
-         ((dja)$$4).m();
-      }
+   protected void a(dlk.a<cys, dlj> $$0) {
+      $$0.a(b, c, f);
+   }
+
+   @Override
+   public dix a(hz $$0, dlj $$1) {
+      return new dju($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dix> diy<T> a(cvr $$0, dlj $$1, diz<T> $$2) {
+      return a($$2, diz.i, dkg::a);
    }
 }

@@ -1,150 +1,261 @@
+import com.mojang.logging.LogUtils;
 import java.util.Optional;
-import java.util.function.BiFunction;
 import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface cut extends cvp {
+public abstract class cut {
+   public static final String b = "SpawnData";
+   private static final Logger a = LogUtils.getLogger();
+   private static final int c = 1;
+   private int d = 20;
+   private bkg<cwi> e = bkg.b();
    @Nullable
-   dit c_(hz var1);
-
-   default <T extends dit> Optional<T> a(hz $$0, div<T> $$1) {
-      dit $$2 = this.c_($$0);
-      return $$2 != null && $$2.v() == $$1 ? Optional.of((T)$$2) : Optional.empty();
-   }
-
-   dlf a_(hz var1);
-
-   egp b_(hz var1);
-
-   default int i(hz $$0) {
-      return this.a_($$0).h();
-   }
-
-   default int O() {
-      return 15;
-   }
-
-   default Stream<dlf> a(enn $$0) {
-      return hz.a($$0).map(this::a_);
-   }
-
-   default eno a(cuv $$0) {
-      return a($$0.b(), $$0.a(), $$0, ($$0x, $$1) -> {
-         dlf $$2 = this.a_($$1);
-         ens $$3 = $$0x.b().d($$0x.a());
-         return $$0x.c().test($$2) ? new eno($$0x.a(), ie.a($$3.c, $$3.d, $$3.e), hz.a($$0x.a()), false) : null;
-      }, $$0x -> {
-         ens $$1 = $$0x.b().d($$0x.a());
-         return eno.a($$0x.a(), ie.a($$1.c, $$1.d, $$1.e), hz.a($$0x.a()));
-      });
-   }
-
-   default eno a(cuw $$0) {
-      return a($$0.b(), $$0.a(), $$0, ($$0x, $$1) -> {
-         dlf $$2 = this.a_($$1);
-         egp $$3 = this.b_($$1);
-         ens $$4 = $$0x.b();
-         ens $$5 = $$0x.a();
-         eol $$6 = $$0x.a($$2, this, $$1);
-         eno $$7 = this.a($$4, $$5, $$1, $$6, $$2);
-         eol $$8 = $$0x.a($$3, this, $$1);
-         eno $$9 = $$8.a($$4, $$5, $$1);
-         double $$10 = $$7 == null ? Double.MAX_VALUE : $$0x.b().g($$7.e());
-         double $$11 = $$9 == null ? Double.MAX_VALUE : $$0x.b().g($$9.e());
-         return $$10 <= $$11 ? $$7 : $$9;
-      }, $$0x -> {
-         ens $$1 = $$0x.b().d($$0x.a());
-         return eno.a($$0x.a(), ie.a($$1.c, $$1.d, $$1.e), hz.a($$0x.a()));
-      });
-   }
-
+   private cwi f;
+   private double g;
+   private double h;
+   private int i = 200;
+   private int j = 800;
+   private int k = 4;
    @Nullable
-   default eno a(ens $$0, ens $$1, hz $$2, eol $$3, dlf $$4) {
-      eno $$5 = $$3.a($$0, $$1, $$2);
-      if ($$5 != null) {
-         eno $$6 = $$4.m(this, $$2).a($$0, $$1, $$2);
-         if ($$6 != null && $$6.e().d($$0).g() < $$5.e().d($$0).g()) {
-            return $$5.a($$6.b());
+   private bnq l;
+   private int m = 6;
+   private int n = 16;
+   private int o = 4;
+
+   public void a(bnw<?> $$0, @Nullable cvr $$1, awp $$2, hz $$3) {
+      this.a($$1, $$2, $$3).a().a("id", kf.g.b($$0).toString());
+   }
+
+   private boolean c(cvr $$0, hz $$1) {
+      return $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, (double)this.n);
+   }
+
+   public void a(cvr $$0, hz $$1) {
+      if (!this.c($$0, $$1)) {
+         this.h = this.g;
+      } else if (this.l != null) {
+         awp $$2 = $$0.F_();
+         double $$3 = (double)$$1.u() + $$2.j();
+         double $$4 = (double)$$1.v() + $$2.j();
+         double $$5 = (double)$$1.w() + $$2.j();
+         $$0.a(jz.ab, $$3, $$4, $$5, 0.0, 0.0, 0.0);
+         $$0.a(jz.E, $$3, $$4, $$5, 0.0, 0.0, 0.0);
+         if (this.d > 0) {
+            this.d--;
          }
-      }
 
-      return $$5;
-   }
-
-   default double a(eol $$0, Supplier<eol> $$1) {
-      if (!$$0.c()) {
-         return $$0.c(ie.a.b);
-      } else {
-         double $$2 = $$1.get().c(ie.a.b);
-         return $$2 >= 1.0 ? $$2 - 1.0 : Double.NEGATIVE_INFINITY;
+         this.h = this.g;
+         this.g = (this.g + (double)(1000.0F / ((float)this.d + 200.0F))) % 360.0;
       }
    }
 
-   default double j(hz $$0) {
-      return this.a(this.a_($$0).k(this, $$0), () -> {
-         hz $$1 = $$0.d();
-         return this.a_($$1).k(this, $$1);
-      });
-   }
+   public void a(aow $$0, hz $$1) {
+      if (this.c($$0, $$1)) {
+         if (this.d == -1) {
+            this.d($$0, $$1);
+         }
 
-   static <T, C> T a(ens $$0, ens $$1, C $$2, BiFunction<C, hz, T> $$3, Function<C, T> $$4) {
-      if ($$0.equals($$1)) {
-         return $$4.apply($$2);
-      } else {
-         double $$5 = awh.d(-1.0E-7, $$1.c, $$0.c);
-         double $$6 = awh.d(-1.0E-7, $$1.d, $$0.d);
-         double $$7 = awh.d(-1.0E-7, $$1.e, $$0.e);
-         double $$8 = awh.d(-1.0E-7, $$0.c, $$1.c);
-         double $$9 = awh.d(-1.0E-7, $$0.d, $$1.d);
-         double $$10 = awh.d(-1.0E-7, $$0.e, $$1.e);
-         int $$11 = awh.a($$8);
-         int $$12 = awh.a($$9);
-         int $$13 = awh.a($$10);
-         hz.a $$14 = new hz.a($$11, $$12, $$13);
-         T $$15 = $$3.apply($$2, $$14);
-         if ($$15 != null) {
-            return $$15;
+         if (this.d > 0) {
+            this.d--;
          } else {
-            double $$16 = $$5 - $$8;
-            double $$17 = $$6 - $$9;
-            double $$18 = $$7 - $$10;
-            int $$19 = awh.j($$16);
-            int $$20 = awh.j($$17);
-            int $$21 = awh.j($$18);
-            double $$22 = $$19 == 0 ? Double.MAX_VALUE : (double)$$19 / $$16;
-            double $$23 = $$20 == 0 ? Double.MAX_VALUE : (double)$$20 / $$17;
-            double $$24 = $$21 == 0 ? Double.MAX_VALUE : (double)$$21 / $$18;
-            double $$25 = $$22 * ($$19 > 0 ? 1.0 - awh.e($$8) : awh.e($$8));
-            double $$26 = $$23 * ($$20 > 0 ? 1.0 - awh.e($$9) : awh.e($$9));
-            double $$27 = $$24 * ($$21 > 0 ? 1.0 - awh.e($$10) : awh.e($$10));
+            boolean $$2 = false;
+            awp $$3 = $$0.F_();
+            cwi $$4 = this.a($$0, $$3, $$1);
 
-            while ($$25 <= 1.0 || $$26 <= 1.0 || $$27 <= 1.0) {
-               if ($$25 < $$26) {
-                  if ($$25 < $$27) {
-                     $$11 += $$19;
-                     $$25 += $$22;
-                  } else {
-                     $$13 += $$21;
-                     $$27 += $$24;
-                  }
-               } else if ($$26 < $$27) {
-                  $$12 += $$20;
-                  $$26 += $$23;
-               } else {
-                  $$13 += $$21;
-                  $$27 += $$24;
+            for (int $$5 = 0; $$5 < this.k; $$5++) {
+               sw $$6 = $$4.a();
+               Optional<bnw<?>> $$7 = bnw.a($$6);
+               if ($$7.isEmpty()) {
+                  this.d($$0, $$1);
+                  return;
                }
 
-               T $$28 = $$3.apply($$2, $$14.d($$11, $$12, $$13));
-               if ($$28 != null) {
-                  return $$28;
+               tc $$8 = $$6.c("Pos", 6);
+               int $$9 = $$8.size();
+               double $$10 = $$9 >= 1 ? $$8.h(0) : (double)$$1.u() + ($$3.j() - $$3.j()) * (double)this.o + 0.5;
+               double $$11 = $$9 >= 2 ? $$8.h(1) : (double)($$1.v() + $$3.a(3) - 1);
+               double $$12 = $$9 >= 3 ? $$8.h(2) : (double)$$1.w() + ($$3.j() - $$3.j()) * (double)this.o + 0.5;
+               if ($$0.b($$7.get().a($$10, $$11, $$12))) {
+                  hz $$13 = hz.a($$10, $$11, $$12);
+                  if ($$4.b().isPresent()) {
+                     if (!$$7.get().f().d() && $$0.aj() == blt.a) {
+                        continue;
+                     }
+
+                     cwi.a $$14 = $$4.b().get();
+                     if (!$$14.a($$13, $$0)) {
+                        continue;
+                     }
+                  } else if (!bpd.a($$7.get(), $$0, bom.c, $$13, $$0.F_())) {
+                     continue;
+                  }
+
+                  bnq $$15 = bnw.a($$6, $$0, $$3x -> {
+                     $$3x.b($$10, $$11, $$12, $$3x.dC(), $$3x.dE());
+                     return $$3x;
+                  });
+                  if ($$15 == null) {
+                     this.d($$0, $$1);
+                     return;
+                  }
+
+                  int $$16 = $$0.a(
+                        dpk.b($$15.getClass()),
+                        new enu((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), (double)($$1.u() + 1), (double)($$1.v() + 1), (double)($$1.w() + 1))
+                           .g((double)this.o),
+                        bnv.f
+                     )
+                     .size();
+                  if ($$16 >= this.m) {
+                     this.d($$0, $$1);
+                     return;
+                  }
+
+                  $$15.b($$15.dr(), $$15.dt(), $$15.dx(), $$3.i() * 360.0F, 0.0F);
+                  if ($$15 instanceof bok $$17) {
+                     if ($$4.b().isEmpty() && !$$17.a($$0, bom.c) || !$$17.a($$0)) {
+                        continue;
+                     }
+
+                     boolean $$18 = $$4.a().f() == 1 && $$4.a().b("id", 8);
+                     if ($$18) {
+                        ((bok)$$15).a($$0, $$0.d_($$15.dm()), bom.c, null, null);
+                     }
+                  }
+
+                  if (!$$0.e($$15)) {
+                     this.d($$0, $$1);
+                     return;
+                  }
+
+                  $$0.c(2004, $$1, 0);
+                  $$0.a($$15, dpw.t, $$13);
+                  if ($$15 instanceof bok) {
+                     ((bok)$$15).S();
+                  }
+
+                  $$2 = true;
                }
             }
 
-            return $$4.apply($$2);
+            if ($$2) {
+               this.d($$0, $$1);
+            }
          }
       }
+   }
+
+   private void d(cvr $$0, hz $$1) {
+      awp $$2 = $$0.z;
+      if (this.j <= this.i) {
+         this.d = this.i;
+      } else {
+         this.d = this.i + $$2.a(this.j - this.i);
+      }
+
+      this.e.b($$2).ifPresent($$2x -> this.a($$0, $$1, (cwi)$$2x.b()));
+      this.a($$0, $$1, 1);
+   }
+
+   public void a(@Nullable cvr $$0, hz $$1, sw $$2) {
+      this.d = $$2.g("Delay");
+      boolean $$3 = $$2.b("SpawnData", 10);
+      if ($$3) {
+         cwi $$4 = cwi.b.parse(tk.a, $$2.p("SpawnData")).resultOrPartial($$0x -> a.warn("Invalid SpawnData: {}", $$0x)).orElseGet(cwi::new);
+         this.a($$0, $$1, $$4);
+      }
+
+      boolean $$5 = $$2.b("SpawnPotentials", 9);
+      if ($$5) {
+         tc $$6 = $$2.c("SpawnPotentials", 10);
+         this.e = cwi.c.parse(tk.a, $$6).resultOrPartial($$0x -> a.warn("Invalid SpawnPotentials list: {}", $$0x)).orElseGet(bkg::b);
+      } else {
+         this.e = bkg.a(this.f != null ? this.f : new cwi());
+      }
+
+      if ($$2.b("MinSpawnDelay", 99)) {
+         this.i = $$2.g("MinSpawnDelay");
+         this.j = $$2.g("MaxSpawnDelay");
+         this.k = $$2.g("SpawnCount");
+      }
+
+      if ($$2.b("MaxNearbyEntities", 99)) {
+         this.m = $$2.g("MaxNearbyEntities");
+         this.n = $$2.g("RequiredPlayerRange");
+      }
+
+      if ($$2.b("SpawnRange", 99)) {
+         this.o = $$2.g("SpawnRange");
+      }
+
+      this.l = null;
+   }
+
+   public sw a(sw $$0) {
+      $$0.a("Delay", (short)this.d);
+      $$0.a("MinSpawnDelay", (short)this.i);
+      $$0.a("MaxSpawnDelay", (short)this.j);
+      $$0.a("SpawnCount", (short)this.k);
+      $$0.a("MaxNearbyEntities", (short)this.m);
+      $$0.a("RequiredPlayerRange", (short)this.n);
+      $$0.a("SpawnRange", (short)this.o);
+      if (this.f != null) {
+         $$0.a("SpawnData", (tt)cwi.b.encodeStart(tk.a, this.f).result().orElseThrow(() -> new IllegalStateException("Invalid SpawnData")));
+      }
+
+      $$0.a("SpawnPotentials", (tt)cwi.c.encodeStart(tk.a, this.e).result().orElseThrow());
+      return $$0;
+   }
+
+   @Nullable
+   public bnq b(cvr $$0, hz $$1) {
+      if (this.l == null) {
+         sw $$2 = this.a($$0, $$0.F_(), $$1).a();
+         if (!$$2.b("id", 8)) {
+            return null;
+         }
+
+         this.l = bnw.a($$2, $$0, Function.identity());
+         if ($$2.f() == 1 && this.l instanceof bok) {
+         }
+      }
+
+      return this.l;
+   }
+
+   public boolean a(cvr $$0, int $$1) {
+      if ($$1 == 1) {
+         if ($$0.B) {
+            this.d = this.i;
+         }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected void a(@Nullable cvr $$0, hz $$1, cwi $$2) {
+      this.f = $$2;
+   }
+
+   private cwi a(@Nullable cvr $$0, awp $$1, hz $$2) {
+      if (this.f != null) {
+         return this.f;
+      } else {
+         this.a($$0, $$2, this.e.b($$1).map(bki.b::b).orElseGet(cwi::new));
+         return this.f;
+      }
+   }
+
+   public abstract void a(cvr var1, hz var2, int var3);
+
+   public double a() {
+      return this.g;
+   }
+
+   public double b() {
+      return this.h;
    }
 }

@@ -1,38 +1,89 @@
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
 public class byy {
+   public static final byy a = a();
+   private static final double b = 2.0;
+   private final boolean c;
+   private double d = -1.0;
+   private boolean e = true;
+   private boolean f = true;
    @Nullable
-   public static ens a(boo $$0, int $$1, int $$2) {
-      boolean $$3 = byz.a($$0, $$1);
-      return bzc.a($$0, () -> {
-         hz $$4 = bzc.a($$0.eh(), $$1, $$2);
-         return a($$0, $$1, $$3, $$4);
-      });
+   private Predicate<boi> g;
+
+   private byy(boolean $$0) {
+      this.c = $$0;
    }
 
-   @Nullable
-   public static ens a(boo $$0, int $$1, int $$2, ens $$3, double $$4) {
-      ens $$5 = $$3.a($$0.dr(), $$0.dt(), $$0.dx());
-      boolean $$6 = byz.a($$0, $$1);
-      return bzc.a($$0, () -> {
-         hz $$6x = bzc.a($$0.eh(), $$1, $$2, 0, $$5.c, $$5.e, $$4);
-         return $$6x == null ? null : a($$0, $$1, $$6, $$6x);
-      });
+   public static byy a() {
+      return new byy(true);
    }
 
-   @Nullable
-   public static ens a(boo $$0, int $$1, int $$2, ens $$3) {
-      ens $$4 = $$0.dk().d($$3);
-      boolean $$5 = byz.a($$0, $$1);
-      return bzc.a($$0, () -> {
-         hz $$5x = bzc.a($$0.eh(), $$1, $$2, 0, $$4.c, $$4.e, (float) (Math.PI / 2));
-         return $$5x == null ? null : a($$0, $$1, $$5, $$5x);
-      });
+   public static byy b() {
+      return new byy(false);
    }
 
-   @Nullable
-   private static hz a(boo $$0, int $$1, boolean $$2, hz $$3) {
-      hz $$4 = bzc.a($$0, $$1, $$0.eh(), $$3);
-      return !byz.a($$4, $$0) && !byz.a($$2, $$0, $$4) && !byz.a($$0.N(), $$4) && !byz.b($$0, $$4) ? $$4 : null;
+   public byy c() {
+      byy $$0 = this.c ? a() : b();
+      $$0.d = this.d;
+      $$0.e = this.e;
+      $$0.f = this.f;
+      $$0.g = this.g;
+      return $$0;
+   }
+
+   public byy a(double $$0) {
+      this.d = $$0;
+      return this;
+   }
+
+   public byy d() {
+      this.e = false;
+      return this;
+   }
+
+   public byy e() {
+      this.f = false;
+      return this;
+   }
+
+   public byy a(@Nullable Predicate<boi> $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public boolean a(@Nullable boi $$0, boi $$1) {
+      if ($$0 == $$1) {
+         return false;
+      } else if (!$$1.eq()) {
+         return false;
+      } else if (this.g != null && !this.g.test($$1)) {
+         return false;
+      } else {
+         if ($$0 == null) {
+            if (this.c && (!$$1.ep() || $$1.dM().aj() == blt.a)) {
+               return false;
+            }
+         } else {
+            if (this.c && (!$$0.c($$1) || !$$0.a($$1.ai()) || $$0.r($$1))) {
+               return false;
+            }
+
+            if (this.d > 0.0) {
+               double $$2 = this.f ? $$1.A($$0) : 1.0;
+               double $$3 = Math.max(this.d * $$2, 2.0);
+               double $$4 = $$0.i($$1.dr(), $$1.dt(), $$1.dx());
+               if ($$4 > $$3 * $$3) {
+                  return false;
+               }
+            }
+
+            if (this.e && $$0 instanceof bok $$5 && !$$5.O().a($$1)) {
+               return false;
+            }
+         }
+
+         return true;
+      }
    }
 }

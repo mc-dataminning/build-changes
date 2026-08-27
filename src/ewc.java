@@ -1,53 +1,58 @@
+import com.google.gson.annotations.SerializedName;
 import com.mojang.logging.LogUtils;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
 import org.slf4j.Logger;
 
-public class ewc extends ewh {
-   private static final Logger b = LogUtils.getLogger();
-   private static final vq c = vq.c("mco.configure.world.closing");
-   private final eth d;
-   private final euq e;
+public class ewc {
+   private static final String a = "realms_persistence.json";
+   private static final etf b = new etf();
+   private static final Logger c = LogUtils.getLogger();
 
-   public ewc(eth $$0, euq $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public ewc.a a() {
+      return b();
    }
 
-   @Override
-   public void run() {
-      esq $$0 = esq.a();
+   public void a(ewc.a $$0) {
+      b($$0);
+   }
 
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         if (this.d()) {
-            return;
+   public static ewc.a b() {
+      Path $$0 = c();
+
+      try {
+         String $$1 = Files.readString($$0, StandardCharsets.UTF_8);
+         ewc.a $$2 = b.a($$1, ewc.a.class);
+         if ($$2 != null) {
+            return $$2;
          }
+      } catch (NoSuchFileException var3) {
+      } catch (Exception var4) {
+         c.warn("Failed to read Realms storage {}", $$0, var4);
+      }
 
-         try {
-            boolean $$2 = $$0.g(this.d.a);
-            if ($$2) {
-               this.e.b();
-               this.d.e = eth.c.a;
-               a(this.e);
-               break;
-            }
-         } catch (eue var4) {
-            if (this.d()) {
-               return;
-            }
+      return new ewc.a();
+   }
 
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
+   public static void b(ewc.a $$0) {
+      Path $$1 = c();
 
-            b.error("Failed to close server", var5);
-            this.a(var5);
-         }
+      try {
+         Files.writeString($$1, b.a($$0), StandardCharsets.UTF_8);
+      } catch (Exception var3) {
       }
    }
 
-   @Override
-   public vq a() {
-      return c;
+   private static Path c() {
+      return exo.P().p.toPath().resolve("realms_persistence.json");
+   }
+
+   public static class a implements etx {
+      @SerializedName("newsLink")
+      public String a;
+      @SerializedName("hasUnreadNews")
+      public boolean b;
    }
 }

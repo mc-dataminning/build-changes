@@ -1,59 +1,32 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dsw extends dts<dwg> {
-   private static final dlf a = cyq.mZ.o().a(cxs.h, Integer.valueOf(1)).a(cxs.i, dlr.a).a(cxs.j, Integer.valueOf(0));
-   private static final dlf b = a.a(cxs.i, dlr.c).a(cxs.j, Integer.valueOf(1));
-   private static final dlf c = a.a(cxs.i, dlr.c);
-   private static final dlf d = a.a(cxs.i, dlr.b);
+public class dsw extends dst {
+   public static final Codec<dsw> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dst.d.forGetter($$0x -> $$0x),
+               bkz.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
+               bkz.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
+               bkz.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
+            )
+            .apply($$0, dsw::new)
+   );
+   public final bkz b;
+   public final bkz c;
+   final bkz j;
 
-   public dsw(Codec<dwg> $$0) {
-      super($$0);
+   public dsw(float $$0, dzs $$1, bkz $$2, drp $$3, dsu $$4, in<cys> $$5, bkz $$6, bkz $$7, bkz $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
+      this.j = $$8;
    }
 
-   @Override
-   public boolean a(dtu<dwg> $$0) {
-      int $$1 = 0;
-      hz $$2 = $$0.e();
-      cwi $$3 = $$0.b();
-      awo $$4 = $$0.d();
-      dwg $$5 = $$0.f();
-      hz.a $$6 = $$2.j();
-      hz.a $$7 = $$2.j();
-      if ($$3.u($$6)) {
-         if (cyq.mZ.o().a($$3, $$6)) {
-            int $$8 = $$4.a(12) + 5;
-            if ($$4.i() < $$5.l) {
-               int $$9 = $$4.a(4) + 1;
+   public dsw(float $$0, dzs $$1, bkz $$2, drp $$3, in<cys> $$4, bkz $$5, bkz $$6, bkz $$7) {
+      this($$0, $$1, $$2, $$3, dsu.a, $$4, $$5, $$6, $$7);
+   }
 
-               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
-                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
-                     int $$12 = $$10 - $$2.u();
-                     int $$13 = $$11 - $$2.w();
-                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-                        $$7.d($$10, $$3.a(dqo.a.b, $$10, $$11) - 1, $$11);
-                        if (b($$3.a_($$7))) {
-                           $$3.a($$7, cyq.l.o(), 2);
-                        }
-                     }
-                  }
-               }
-            }
-
-            for (int $$14 = 0; $$14 < $$8 && $$3.u($$6); $$14++) {
-               $$3.a($$6, a, 2);
-               $$6.c(ie.b, 1);
-            }
-
-            if ($$6.v() - $$2.v() >= 3) {
-               $$3.a($$6, b, 2);
-               $$3.a($$6.c(ie.a, 1), c, 2);
-               $$3.a($$6.c(ie.a, 1), d, 2);
-            }
-         }
-
-         $$1++;
-      }
-
-      return $$1 > 0;
+   public dsw(dst $$0, bkz $$1, bkz $$2, bkz $$3) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
    }
 }

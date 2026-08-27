@@ -6,13 +6,13 @@ import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
 import java.io.File;
 import javax.annotation.Nullable;
 
-public record ajr(MinecraftSessionService a, ServicesKeySet b, GameProfileRepository c, asj d) {
+public record ajr(MinecraftSessionService a, ServicesKeySet b, GameProfileRepository c, ask d) {
    private static final String e = "usercache.json";
 
    public static ajr a(YggdrasilAuthenticationService $$0, File $$1) {
       MinecraftSessionService $$2 = $$0.createMinecraftSessionService();
       GameProfileRepository $$3 = $$0.createProfileRepository();
-      asj $$4 = new asj($$3, new File($$1, "usercache.json"));
+      ask $$4 = new ask($$3, new File($$1, "usercache.json"));
       return new ajr($$2, $$0.getServicesKeySet(), $$3, $$4);
    }
 
@@ -37,7 +37,7 @@ public record ajr(MinecraftSessionService a, ServicesKeySet b, GameProfileReposi
       return this.c;
    }
 
-   public asj f() {
+   public ask f() {
       return this.d;
    }
 }

@@ -1,59 +1,44 @@
-import javax.annotation.concurrent.Immutable;
-
-@Immutable
 public class bls {
-   private static final float a = -72000.0F;
-   private static final float b = 1440000.0F;
-   private static final float c = 3600000.0F;
-   private final blr d;
-   private final float e;
-
-   public bls(blr $$0, long $$1, long $$2, float $$3) {
-      this.d = $$0;
-      this.e = this.a($$0, $$1, $$2, $$3);
+   public static void a(cvr $$0, hz $$1, blp $$2) {
+      a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2);
    }
 
-   public blr a() {
-      return this.d;
+   public static void a(cvr $$0, bnq $$1, blp $$2) {
+      a($$0, $$1.dr(), $$1.dt(), $$1.dx(), $$2);
    }
 
-   public float b() {
-      return this.e;
-   }
-
-   public boolean c() {
-      return this.e >= (float)blr.d.ordinal();
-   }
-
-   public boolean a(float $$0) {
-      return this.e > $$0;
-   }
-
-   public float d() {
-      if (this.e < 2.0F) {
-         return 0.0F;
-      } else {
-         return this.e > 4.0F ? 1.0F : (this.e - 2.0F) / 2.0F;
+   private static void a(cvr $$0, double $$1, double $$2, double $$3, blp $$4) {
+      for (int $$5 = 0; $$5 < $$4.b(); $$5++) {
+         a($$0, $$1, $$2, $$3, $$4.a($$5));
       }
    }
 
-   private float a(blr $$0, long $$1, long $$2, float $$3) {
-      if ($$0 == blr.a) {
-         return 0.0F;
-      } else {
-         boolean $$4 = $$0 == blr.d;
-         float $$5 = 0.75F;
-         float $$6 = awh.a(((float)$$1 + -72000.0F) / 1440000.0F, 0.0F, 1.0F) * 0.25F;
-         $$5 += $$6;
-         float $$7 = 0.0F;
-         $$7 += awh.a((float)$$2 / 3600000.0F, 0.0F, 1.0F) * ($$4 ? 1.0F : 0.75F);
-         $$7 += awh.a($$3 * 0.25F, 0.0F, $$6);
-         if ($$0 == blr.b) {
-            $$7 *= 0.5F;
-         }
+   public static void a(cvr $$0, hz $$1, is<cpd> $$2) {
+      $$2.forEach($$2x -> a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2x));
+   }
 
-         $$5 += $$7;
-         return (float)$$0.a() * $$5;
+   public static void a(cvr $$0, double $$1, double $$2, double $$3, cpd $$4) {
+      double $$5 = (double)bnw.af.k();
+      double $$6 = 1.0 - $$5;
+      double $$7 = $$5 / 2.0;
+      double $$8 = Math.floor($$1) + $$0.z.j() * $$6 + $$7;
+      double $$9 = Math.floor($$2) + $$0.z.j() * $$6;
+      double $$10 = Math.floor($$3) + $$0.z.j() * $$6 + $$7;
+
+      while (!$$4.b()) {
+         cdw $$11 = new cdw($$0, $$8, $$9, $$10, $$4.a($$0.z.a(21) + 10));
+         float $$12 = 0.05F;
+         $$11.o($$0.z.a(0.0, 0.11485000171139836), $$0.z.a(0.2, 0.11485000171139836), $$0.z.a(0.0, 0.11485000171139836));
+         $$0.b($$11);
+      }
+   }
+
+   public static void a(dlj $$0, dlj $$1, cvr $$2, hz $$3) {
+      if (!$$0.a($$1.b())) {
+         if ($$2.c_($$3) instanceof blp $$5) {
+            a($$2, $$3, $$5);
+            $$2.c($$3, $$0.b());
+         }
       }
    }
 }

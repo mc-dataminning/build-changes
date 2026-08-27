@@ -6,7 +6,7 @@ public class awy {
    public double a(double $$0, double $$1) {
       this.a += $$0;
       double $$2 = this.a - this.b;
-      double $$3 = awh.d(0.5, this.c, $$2);
+      double $$3 = awi.d(0.5, this.c, $$2);
       double $$4 = Math.signum($$2);
       if ($$4 * $$2 > $$4 * this.c) {
          $$2 = $$3;

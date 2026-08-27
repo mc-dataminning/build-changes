@@ -1,55 +1,40 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.List;
 
-public class dbu extends cyx implements cyr {
-   public static final MapCodec<dbu> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(aix.a(kg.aw).fieldOf("feature").forGetter($$0x -> $$0x.e), kf.e.q().fieldOf("grows_on").forGetter($$0x -> $$0x.d), u())
-            .apply($$0, dbu::new)
-   );
-   protected static final eol b = cyo.a(4.0, 0.0, 4.0, 12.0, 9.0, 12.0);
-   private static final double c = 0.4;
-   private final cyo d;
-   private final aix<dtf<?, ?>> e;
+public class dbu extends czb implements dgt {
+   protected static final MapCodec<List<dgt.a>> a = dgt.a.b.fieldOf("suspicious_stew_effects");
+   public static final MapCodec<dbu> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter(dbu::b), u()).apply($$0, dbu::new));
+   protected static final float c = 3.0F;
+   protected static final eos d = cys.a(5.0, 0.0, 5.0, 11.0, 10.0, 11.0);
+   private final List<dgt.a> e;
 
    @Override
-   public MapCodec<dbu> a() {
-      return a;
-   }
-
-   protected dbu(aix<dtf<?, ?>> $$0, cyo $$1, dle.d $$2) {
-      super($$2);
-      this.e = $$0;
-      this.d = $$1;
-   }
-
-   @Override
-   protected eol a(dlf $$0, cut $$1, hz $$2, enx $$3) {
+   public MapCodec<? extends dbu> a() {
       return b;
    }
 
-   @Override
-   protected boolean b(dlf $$0, cut $$1, hz $$2) {
-      return $$0.a(atz.aK) || $$0.a(cyq.fl) || $$0.a(cyq.dX) || super.b($$0, $$1, $$2);
+   public dbu(ij<bnb> $$0, int $$1, dli.d $$2) {
+      this(a($$0, $$1), $$2);
    }
 
-   private Optional<? extends ij<dtf<?, ?>>> a(cvq $$0) {
-      return $$0.I_().d(kg.aw).b(this.e);
+   public dbu(List<dgt.a> $$0, dli.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
-   @Override
-   public boolean b(cvq $$0, hz $$1, dlf $$2) {
-      dlf $$3 = $$0.a_($$1.d());
-      return $$3.a(this.d);
-   }
-
-   @Override
-   public boolean a(cvn $$0, awo $$1, hz $$2, dlf $$3) {
-      return (double)$$1.i() < 0.4;
+   protected static List<dgt.a> a(ij<bnb> $$0, int $$1) {
+      return List.of(new dgt.a($$0, $$1 * 20));
    }
 
    @Override
-   public void a(aov $$0, awo $$1, hz $$2, dlf $$3) {
-      this.a($$0).ifPresent($$3x -> ((dtf)$$3x.a()).a($$0, $$0.l().g(), $$1, $$2));
+   protected eos a(dlj $$0, cux $$1, hz $$2, eoe $$3) {
+      enz $$4 = $$0.n($$1, $$2);
+      return d.a($$4.c, $$4.d, $$4.e);
+   }
+
+   @Override
+   public List<dgt.a> b() {
+      return this.e;
    }
 }

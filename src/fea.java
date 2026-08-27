@@ -1,184 +1,91 @@
-import java.util.List;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.mojang.authlib.minecraft.BanDetails;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.time.Duration;
+import java.time.Instant;
+import org.apache.commons.lang3.StringUtils;
 
-public class fea extends ffe {
-   static final aiy b = new aiy("container/slot");
-   private static final int c = 18;
-   private static final int k = 20;
-   private static final int l = 1;
-   private static final int m = 1;
-   private static final int n = 2;
-   private static final int o = 2;
-   protected final fju a;
-   private final Consumer<dzh> p;
-   dzh q;
-   private vq r;
-   private vq t;
-   private fea.a u;
-   private ezh v;
+public class fea {
+   private static final vq b = vq.c("gui.banned.title.temporary").a(n.r);
+   private static final vq c = vq.c("gui.banned.title.permanent").a(n.r);
+   public static final vq a = vq.c("gui.banned.name.title").a(n.r);
+   private static final vq d = vq.c("gui.banned.skin.title").a(n.r);
+   private static final vq e = vq.a("gui.banned.skin.description", vq.b("https://aka.ms/mcjavamoderation"));
 
-   public fea(fju $$0, Consumer<dzh> $$1, dzh $$2) {
-      super(vq.c("createWorld.customize.flat.title"));
-      this.a = $$0;
-      this.p = $$1;
-      this.q = $$2;
+   public static fed a(BooleanConsumer $$0, BanDetails $$1) {
+      return new fed($$0, a($$1), b($$1), "https://aka.ms/mcjavamoderation", vp.m, true);
    }
 
-   public dzh n() {
-      return this.q;
-   }
-
-   public void a(dzh $$0) {
-      this.q = $$0;
-   }
-
-   @Override
-   protected void aQ_() {
-      this.r = vq.c("createWorld.customize.flat.tile");
-      this.t = vq.c("createWorld.customize.flat.height");
-      this.u = this.d(new fea.a());
-      this.v = this.d(ezh.a(vq.c("createWorld.customize.flat.removeLayer"), $$0 -> {
-         if (this.E()) {
-            List<dze> $$1 = this.q.e();
-            int $$2 = this.u.l().indexOf(this.u.i());
-            int $$3 = $$1.size() - $$2 - 1;
-            $$1.remove($$3);
-            this.u.a($$1.isEmpty() ? null : this.u.l().get(Math.min($$2, $$1.size() - 1)));
-            this.q.g();
-            this.u.d();
-            this.o();
+   public static fed a(Runnable $$0) {
+      String $$1 = "https://aka.ms/mcjavamoderation";
+      return new fed($$1x -> {
+         if ($$1x) {
+            ac.j().a("https://aka.ms/mcjavamoderation");
          }
-      }).a(this.g / 2 - 155, this.h - 52, 150, 20).a());
-      this.d(ezh.a(vq.c("createWorld.customize.presets"), $$0 -> {
-         this.f.a(new ffa(this));
-         this.q.g();
-         this.o();
-      }).a(this.g / 2 + 5, this.h - 52, 150, 20).a());
-      this.d(ezh.a(vp.d, $$0 -> {
-         this.p.accept(this.q);
-         this.f.a(this.a);
-         this.q.g();
-      }).a(this.g / 2 - 155, this.h - 28, 150, 20).a());
-      this.d(ezh.a(vp.e, $$0 -> {
-         this.f.a(this.a);
-         this.q.g();
-      }).a(this.g / 2 + 5, this.h - 28, 150, 20).a());
-      this.q.g();
-      this.o();
+
+         $$0.run();
+      }, d, e, "https://aka.ms/mcjavamoderation", vp.m, true);
    }
 
-   void o() {
-      this.v.j = this.E();
-   }
-
-   private boolean E() {
-      return this.u.i() != null;
-   }
-
-   @Override
-   public void d() {
-      this.f.a(this.a);
-   }
-
-   @Override
-   public void a(eyu $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 8, 16777215);
-      int $$4 = this.g / 2 - 92 - 16;
-      $$0.b(this.i, this.r, $$4, 32, 16777215);
-      $$0.b(this.i, this.t, $$4 + 2 + 213 - this.i.a(this.t), 32, 16777215);
-   }
-
-   class a extends fad<fea.a.a> {
-      public a() {
-         super(fea.this.f, fea.this.g, fea.this.h - 103, 43, 24);
-
-         for (int $$0 = 0; $$0 < fea.this.q.e().size(); $$0++) {
-            this.b(new fea.a.a());
+   public static fed a(String $$0, Runnable $$1) {
+      String $$2 = "https://aka.ms/mcjavamoderation";
+      return new fed($$1x -> {
+         if ($$1x) {
+            ac.j().a("https://aka.ms/mcjavamoderation");
          }
+
+         $$1.run();
+      }, a, vq.a("gui.banned.name.description", vq.b($$0).a(n.o), "https://aka.ms/mcjavamoderation"), "https://aka.ms/mcjavamoderation", vp.m, true);
+   }
+
+   private static vq a(BanDetails $$0) {
+      return f($$0) ? b : c;
+   }
+
+   private static vq b(BanDetails $$0) {
+      return vq.a("gui.banned.description", c($$0), d($$0), vq.b("https://aka.ms/mcjavamoderation"));
+   }
+
+   private static vq c(BanDetails $$0) {
+      String $$1 = $$0.reason();
+      String $$2 = $$0.reasonMessage();
+      if (StringUtils.isNumeric($$1)) {
+         int $$3 = Integer.parseInt($$1);
+         frb $$4 = frb.a($$3);
+         vq $$5;
+         if ($$4 != null) {
+            $$5 = vt.a($$4.a().f(), wn.a.a(true));
+         } else if ($$2 != null) {
+            $$5 = vq.a("gui.banned.description.reason_id_message", $$3, $$2).a(n.r);
+         } else {
+            $$5 = vq.a("gui.banned.description.reason_id", $$3).a(n.r);
+         }
+
+         return vq.a("gui.banned.description.reason", $$5);
+      } else {
+         return vq.c("gui.banned.description.unknownreason");
       }
+   }
 
-      public void a(@Nullable fea.a.a $$0) {
-         super.a($$0);
-         fea.this.o();
+   private static vq d(BanDetails $$0) {
+      if (f($$0)) {
+         vq $$1 = e($$0);
+         return vq.a("gui.banned.description.temporary", vq.a("gui.banned.description.temporary.duration", $$1).a(n.r));
+      } else {
+         return vq.c("gui.banned.description.permanent").a(n.r);
       }
+   }
 
-      @Override
-      protected int c() {
-         return this.g - 70;
+   private static vq e(BanDetails $$0) {
+      Duration $$1 = Duration.between(Instant.now(), $$0.expires());
+      long $$2 = $$1.toHours();
+      if ($$2 > 72L) {
+         return vp.a($$1.toDays());
+      } else {
+         return $$2 < 1L ? vp.c($$1.toMinutes()) : vp.b($$1.toHours());
       }
+   }
 
-      public void d() {
-         int $$0 = this.l().indexOf(this.i());
-         this.m();
-
-         for (int $$1 = 0; $$1 < fea.this.q.e().size(); $$1++) {
-            this.b(new fea.a.a());
-         }
-
-         List<fea.a.a> $$2 = this.l();
-         if ($$0 >= 0 && $$0 < $$2.size()) {
-            this.a($$2.get($$0));
-         }
-      }
-
-      class a extends fad.a<fea.a.a> {
-         @Override
-         public void a(eyu $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            dze $$10 = fea.this.q.e().get(fea.this.q.e().size() - $$1 - 1);
-            dlf $$11 = $$10.b();
-            coz $$12 = this.a($$11);
-            this.a($$0, $$3, $$2, $$12);
-            $$0.a(fea.this.i, $$12.z(), $$3 + 18 + 5, $$2 + 3, 16777215, false);
-            vq $$13;
-            if ($$1 == 0) {
-               $$13 = vq.a("createWorld.customize.flat.layer.top", $$10.a());
-            } else if ($$1 == fea.this.q.e().size() - 1) {
-               $$13 = vq.a("createWorld.customize.flat.layer.bottom", $$10.a());
-            } else {
-               $$13 = vq.a("createWorld.customize.flat.layer", $$10.a());
-            }
-
-            $$0.a(fea.this.i, $$13, $$3 + 2 + 213 - fea.this.i.a($$13), $$2 + 3, 16777215, false);
-         }
-
-         private coz a(dlf $$0) {
-            cou $$1 = $$0.b().j();
-            if ($$1 == cpc.a) {
-               if ($$0.a(cyq.G)) {
-                  $$1 = cpc.qy;
-               } else if ($$0.a(cyq.H)) {
-                  $$1 = cpc.qz;
-               }
-            }
-
-            return new coz($$1);
-         }
-
-         @Override
-         public vq a() {
-            dze $$0 = fea.this.q.e().get(fea.this.q.e().size() - a.this.l().indexOf(this) - 1);
-            coz $$1 = this.a($$0.b());
-            return (vq)(!$$1.b() ? vq.a("narrator.select", $$1.z()) : vp.a);
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            a.this.a(this);
-            return true;
-         }
-
-         private void a(eyu $$0, int $$1, int $$2, coz $$3) {
-            this.a($$0, $$1 + 1, $$2 + 1);
-            if (!$$3.b()) {
-               $$0.b($$3, $$1 + 2, $$2 + 2);
-            }
-         }
-
-         private void a(eyu $$0, int $$1, int $$2) {
-            $$0.a(fea.b, $$1, $$2, 0, 18, 18);
-         }
-      }
+   private static boolean f(BanDetails $$0) {
+      return $$0.expires() != null;
    }
 }

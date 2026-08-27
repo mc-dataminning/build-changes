@@ -1,61 +1,111 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Consumer;
 
-public class fcy implements fcv {
-   private int a;
-   private int b;
-   private final int c;
-   private final int d;
+public class fcy extends fcv {
+   private final List<fcy.a> c = new ArrayList<>();
+   private int d;
+   private int e;
+   private final fdd f = fdd.i().a(0.5F, 0.5F);
+
+   public fcy() {
+      this(0, 0, 0, 0);
+   }
 
    public fcy(int $$0, int $$1) {
       this(0, 0, $$0, $$1);
    }
 
    public fcy(int $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.a($$2, $$3);
+   }
+
+   public fcy a(int $$0, int $$1) {
+      return this.b($$0).a($$1);
+   }
+
+   public fcy a(int $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   public fcy b(int $$0) {
+      this.d = $$0;
+      return this;
+   }
+
+   public fdd b() {
+      return this.f.g();
+   }
+
+   public fdd c() {
+      return this.f;
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      int $$0 = this.d;
+      int $$1 = this.e;
+
+      for (fcy.a $$2 : this.c) {
+         $$0 = Math.max($$0, $$2.b());
+         $$1 = Math.max($$1, $$2.a());
+      }
+
+      for (fcy.a $$3 : this.c) {
+         $$3.a(this.B(), $$0);
+         $$3.b(this.C(), $$1);
+      }
+
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
    }
 
-   public static fcy a(int $$0) {
-      return new fcy($$0, 0);
+   public <T extends fdc> T a(T $$0) {
+      return this.a($$0, this.b());
    }
 
-   public static fcy b(int $$0) {
-      return new fcy(0, $$0);
+   public <T extends fdc> T a(T $$0, fdd $$1) {
+      this.c.add(new fcy.a($$0, $$1));
+      return $$0;
    }
 
-   @Override
-   public void m(int $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public void n(int $$0) {
-      this.b = $$0;
+   public <T extends fdc> T a(T $$0, Consumer<fdd> $$1) {
+      return this.a($$0, ac.a(this.b(), $$1));
    }
 
    @Override
-   public int B() {
-      return this.a;
+   public void b(Consumer<fdc> $$0) {
+      this.c.forEach($$1 -> $$0.accept($$1.a));
    }
 
-   @Override
-   public int C() {
-      return this.b;
+   public static void a(fdc $$0, int $$1, int $$2, int $$3, int $$4) {
+      a($$0, $$1, $$2, $$3, $$4, 0.5F, 0.5F);
    }
 
-   @Override
-   public int w() {
-      return this.c;
+   public static void a(fdc $$0, fdt $$1) {
+      a($$0, $$1.f().a(), $$1.f().b(), $$1.g(), $$1.h());
    }
 
-   @Override
-   public int u() {
-      return this.d;
+   public static void a(fdc $$0, fdt $$1, float $$2, float $$3) {
+      a($$0, $$1.d(), $$1.b(), $$1.g(), $$1.h(), $$2, $$3);
    }
 
-   @Override
-   public void a(Consumer<ezf> $$0) {
+   public static void a(fdc $$0, int $$1, int $$2, int $$3, int $$4, float $$5, float $$6) {
+      a($$1, $$3, $$0.w(), $$0::m, $$5);
+      a($$2, $$4, $$0.u(), $$0::n, $$6);
+   }
+
+   public static void a(int $$0, int $$1, int $$2, Consumer<Integer> $$3, float $$4) {
+      int $$5 = (int)awi.i($$4, 0.0F, (float)($$1 - $$2));
+      $$3.accept($$0 + $$5);
+   }
+
+   static class a extends fcv.a {
+      protected a(fdc $$0, fdd $$1) {
+         super($$0, $$1);
+      }
    }
 }

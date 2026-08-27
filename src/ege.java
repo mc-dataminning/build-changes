@@ -1,154 +1,113 @@
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
 
-public class ege implements egh {
-   public static final int b = 1;
-   protected final cvp c;
-   @Nullable
-   private final egg<?, ?> a;
-   @Nullable
-   private final egg<?, ?> d;
+public final class ege extends egn<egf.a, egf> {
+   private final hz.a g = new hz.a();
 
-   public ege(dnp $$0, boolean $$1, boolean $$2) {
-      this.c = $$0.q();
-      this.a = $$1 ? new efx($$0) : null;
-      this.d = $$2 ? new egi($$0) : null;
+   public ege(dnt $$0) {
+      this($$0, new egf($$0));
+   }
+
+   @VisibleForTesting
+   public ege(dnt $$0, egf $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public void a(hz $$0) {
-      if (this.a != null) {
-         this.a.a($$0);
-      }
-
-      if (this.d != null) {
-         this.d.a($$0);
-      }
-   }
-
-   @Override
-   public boolean L_() {
-      return this.d != null && this.d.L_() ? true : this.a != null && this.a.L_();
-   }
-
-   @Override
-   public int a() {
-      int $$0 = 0;
-      if (this.a != null) {
-         $$0 += this.a.a();
-      }
-
-      if (this.d != null) {
-         $$0 += this.d.a();
-      }
-
-      return $$0;
-   }
-
-   @Override
-   public void a(jb $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.a($$0, $$1);
-      }
-
-      if (this.d != null) {
-         this.d.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public void a(cuu $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.a($$0, $$1);
-      }
-
-      if (this.d != null) {
-         this.d.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public void b(cuu $$0) {
-      if (this.a != null) {
-         this.a.b($$0);
-      }
-
-      if (this.d != null) {
-         this.d.b($$0);
-      }
-   }
-
-   public egc a(cvw $$0) {
-      if ($$0 == cvw.b) {
-         return (egc)(this.a == null ? egc.a.a : this.a);
-      } else {
-         return (egc)(this.d == null ? egc.a.a : this.d);
-      }
-   }
-
-   public String a(cvw $$0, jb $$1) {
-      if ($$0 == cvw.b) {
-         if (this.a != null) {
-            return this.a.b($$1.s());
+   protected void a(long $$0) {
+      long $$1 = jb.e($$0);
+      if (this.f.b($$1)) {
+         dlj $$2 = this.c(this.g.f($$0));
+         int $$3 = this.a($$0, $$2);
+         int $$4 = this.f.e($$0);
+         if ($$3 < $$4) {
+            this.f.a($$0, 0);
+            this.b($$0, egn.a.a($$4));
+         } else {
+            this.b($$0, c);
          }
-      } else if (this.d != null) {
-         return this.d.b($$1.s());
-      }
 
-      return "n/a";
-   }
-
-   public egd.b b(cvw $$0, jb $$1) {
-      if ($$0 == cvw.b) {
-         if (this.a != null) {
-            return this.a.c($$1.s());
+         if ($$3 > 0) {
+            this.c($$0, egn.a.a($$3, a($$2)));
          }
-      } else if (this.d != null) {
-         return this.d.c($$1.s());
       }
-
-      return egd.b.a;
    }
 
-   public void a(cvw $$0, jb $$1, @Nullable dnh $$2) {
-      if ($$0 == cvw.b) {
-         if (this.a != null) {
-            this.a.a($$1.s(), $$2);
+   @Override
+   protected void a(long $$0, long $$1, int $$2) {
+      dlj $$3 = null;
+
+      for (ie $$4 : d) {
+         if (egn.a.a($$1, $$4)) {
+            long $$5 = hz.a($$0, $$4);
+            if (this.f.b(jb.e($$5))) {
+               int $$6 = this.f.e($$5);
+               int $$7 = $$2 - 1;
+               if ($$7 > $$6) {
+                  this.g.f($$5);
+                  dlj $$8 = this.c(this.g);
+                  int $$9 = $$2 - this.a($$8, this.g);
+                  if ($$9 > $$6) {
+                     if ($$3 == null) {
+                        $$3 = egn.a.b($$1) ? cyu.a.o() : this.c(this.g.f($$0));
+                     }
+
+                     if (!this.a($$0, $$3, $$5, $$8, $$4)) {
+                        this.f.a($$5, $$9);
+                        if ($$9 > 1) {
+                           this.c($$5, egn.a.a($$9, a($$8), $$4.g()));
+                        }
+                     }
+                  }
+               }
+            }
          }
-      } else if (this.d != null) {
-         this.d.a($$1.s(), $$2);
       }
    }
 
-   public void b(cuu $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.b($$0, $$1);
+   @Override
+   protected void a(long $$0, long $$1) {
+      int $$2 = egn.a.a($$1);
+
+      for (ie $$3 : d) {
+         if (egn.a.a($$1, $$3)) {
+            long $$4 = hz.a($$0, $$3);
+            if (this.f.b(jb.e($$4))) {
+               int $$5 = this.f.e($$4);
+               if ($$5 != 0) {
+                  if ($$5 <= $$2 - 1) {
+                     dlj $$6 = this.c(this.g.f($$4));
+                     int $$7 = this.a($$4, $$6);
+                     this.f.a($$4, 0);
+                     if ($$7 < $$5) {
+                        this.b($$4, egn.a.a($$5, $$3.g()));
+                     }
+
+                     if ($$7 > 0) {
+                        this.c($$4, egn.a.a($$7, a($$6)));
+                     }
+                  } else {
+                     this.c($$4, egn.a.b($$5, false, $$3.g()));
+                  }
+               }
+            }
+         }
       }
+   }
 
-      if (this.d != null) {
-         this.d.b($$0, $$1);
+   private int a(long $$0, dlj $$1) {
+      int $$2 = $$1.h();
+      return $$2 > 0 && this.f.j(jb.e($$0)) ? $$2 : 0;
+   }
+
+   @Override
+   public void b(cuy $$0) {
+      this.a($$0, true);
+      dns $$1 = this.e.c($$0.e, $$0.f);
+      if ($$1 != null) {
+         $$1.a(($$0x, $$1x) -> {
+            int $$2 = $$1x.h();
+            this.c($$0x.a(), egn.a.a($$2, a($$1x)));
+         });
       }
-   }
-
-   public int a(hz $$0, int $$1) {
-      int $$2 = this.d == null ? 0 : this.d.b($$0) - $$1;
-      int $$3 = this.a == null ? 0 : this.a.b($$0);
-      return Math.max($$3, $$2);
-   }
-
-   public boolean a(jb $$0) {
-      long $$1 = $$0.s();
-      return this.a == null || this.a.f.j($$1) && (this.d == null || this.d.f.j($$1));
-   }
-
-   public int c() {
-      return this.c.am() + 2;
-   }
-
-   public int d() {
-      return this.c.an() - 1;
-   }
-
-   public int e() {
-      return this.d() + this.c();
    }
 }

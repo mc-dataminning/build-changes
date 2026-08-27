@@ -31,10 +31,10 @@ public class akk {
       );
    }
 
-   private static int a(du $$0, Collection<aow> $$1, Predicate<coz> $$2, int $$3) throws CommandSyntaxException {
+   private static int a(du $$0, Collection<aox> $$1, Predicate<cpd> $$2, int $$3) throws CommandSyntaxException {
       int $$4 = 0;
 
-      for (aow $$5 : $$1) {
+      for (aox $$5 : $$1) {
          $$4 += $$5.fT().a($$2, $$3, $$5.bV.q());
          $$5.bW.d();
          $$5.bV.a($$5.fT());

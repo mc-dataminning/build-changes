@@ -1,37 +1,59 @@
-import com.google.common.base.MoreObjects;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 import java.util.stream.Collectors;
 import jdk.jfr.consumer.RecordedEvent;
-import jdk.jfr.consumer.RecordedThread;
 
-public record bjj(Instant a, String b, long c) {
-   private static final String d = "unknown";
-
+public record bjj(Instant a, long b, bjj.b c) {
    public static bjj a(RecordedEvent $$0) {
-      RecordedThread $$1 = $$0.getThread("thread");
-      String $$2 = $$1 == null ? "unknown" : (String)MoreObjects.firstNonNull($$1.getJavaName(), "unknown");
-      return new bjj($$0.getStartTime(), $$2, $$0.getLong("allocated"));
+      return new bjj($$0.getStartTime(), $$0.getLong("heapUsed"), $$0.getString("when").equalsIgnoreCase("before gc") ? bjj.b.a : bjj.b.b);
    }
 
-   public static bjj.a a(List<bjj> $$0) {
-      Map<String, Double> $$1 = new TreeMap<>();
-      Map<String, List<bjj>> $$2 = $$0.stream().collect(Collectors.groupingBy($$0x -> $$0x.b));
-      $$2.forEach(($$1x, $$2x) -> {
-         if ($$2x.size() >= 2) {
-            bjj $$3 = (bjj)$$2x.get(0);
-            bjj $$4 = (bjj)$$2x.get($$2x.size() - 1);
-            long $$5 = Duration.between($$3.a, $$4.a).getSeconds();
-            long $$6 = $$4.c - $$3.c;
-            $$1.put($$1x, (double)$$6 / (double)$$5);
-         }
-      });
-      return new bjj.a($$1);
+   public static bjj.a a(Duration $$0, List<bjj> $$1, Duration $$2, int $$3) {
+      return new bjj.a($$0, $$2, $$3, a($$1));
    }
 
-   public static record a(Map<String, Double> a) {
+   private static double a(List<bjj> $$0) {
+      long $$1 = 0L;
+      Map<bjj.b, List<bjj>> $$2 = $$0.stream().collect(Collectors.groupingBy($$0x -> $$0x.c));
+      List<bjj> $$3 = $$2.get(bjj.b.a);
+      List<bjj> $$4 = $$2.get(bjj.b.b);
+
+      for (int $$5 = 1; $$5 < $$3.size(); $$5++) {
+         bjj $$6 = $$3.get($$5);
+         bjj $$7 = $$4.get($$5 - 1);
+         $$1 += $$6.b - $$7.b;
+      }
+
+      Duration $$8 = Duration.between($$0.get(1).a, $$0.get($$0.size() - 1).a);
+      return (double)$$1 / (double)$$8.getSeconds();
+   }
+
+   public static record a(Duration a, Duration b, int c, double d) {
+      public float a() {
+         return (float)this.b.toMillis() / (float)this.a.toMillis();
+      }
+
+      public Duration b() {
+         return this.a;
+      }
+
+      public Duration c() {
+         return this.b;
+      }
+
+      public int d() {
+         return this.c;
+      }
+
+      public double e() {
+         return this.d;
+      }
+   }
+
+   static enum b {
+      a,
+      b;
    }
 }

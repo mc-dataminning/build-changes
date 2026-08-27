@@ -1,35 +1,33 @@
-public class gfk<T extends bog> extends gfd<T, fng<T>> {
-   public static final aiy a = new aiy("textures/entity/trident_riptide.png");
-   public static final String b = "box";
-   private final fpc c;
+public class gfk<T extends chl, M extends fmi<T> & fli & fmq> extends gfe<T, M> {
+   private final fvp a;
+   private static final float b = (float) (-Math.PI / 6);
+   private static final float c = (float) (Math.PI / 2);
 
-   public gfk(gcn<T, fng<T>> $$0, foy $$1) {
-      super($$0);
-      fpc $$2 = $$1.a(fpb.aV);
-      this.c = $$2.b("box");
+   public gfk(gcv<T, M> $$0, fvp $$1) {
+      super($$0, $$1);
+      this.a = $$1;
    }
 
-   public static fpi a() {
-      fpk $$0 = new fpk();
-      fpl $$1 = $$0.a();
-      $$1.a("box", fph.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 32.0F, 16.0F), fpe.a);
-      return fpi.a($$0, 64, 64);
-   }
-
-   public void a(esa $$0, fvl $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.fj()) {
-         ese $$10 = $$1.getBuffer(fvt.e(a));
-
-         for (int $$11 = 0; $$11 < 3; $$11++) {
-            $$0.a();
-            float $$12 = $$7 * (float)(-(45 + $$11 * 5));
-            $$0.a(a.d.rotationDegrees($$12));
-            float $$13 = 0.75F * (float)$$11;
-            $$0.b($$13, $$13, $$13);
-            $$0.a(0.0F, -0.2F + 0.6F * (float)$$11, 0.0F);
-            this.c.a($$0, $$10, $$2, ggk.d);
-            $$0.b();
-         }
+   @Override
+   protected void a(boi $$0, cpd $$1, cpa $$2, boc $$3, esh $$4, fvt $$5, int $$6) {
+      if ($$1.a(cpg.qW) && $$0.fp() == $$1 && $$0.aH == 0) {
+         this.a($$0, $$1, $$3, $$4, $$5, $$6);
+      } else {
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       }
+   }
+
+   private void a(boi $$0, cpd $$1, boc $$2, esh $$3, fvt $$4, int $$5) {
+      $$3.a();
+      fpj $$6 = this.c().d();
+      float $$7 = $$6.e;
+      $$6.e = awi.a($$6.e, (float) (-Math.PI / 6), (float) (Math.PI / 2));
+      $$6.a($$3);
+      $$6.e = $$7;
+      geq.a($$3, false);
+      boolean $$8 = $$2 == boc.a;
+      $$3.a(($$8 ? -2.5F : 2.5F) / 16.0F, -0.0625F, 0.0F);
+      this.a.a($$0, $$1, cpa.f, false, $$3, $$4, $$5);
+      $$3.b();
    }
 }

@@ -1,35 +1,35 @@
 public interface auc {
-   auo<bnu<?>> a = a("skeletons");
-   auo<bnu<?>> b = a("zombies");
-   auo<bnu<?>> c = a("raiders");
-   auo<bnu<?>> d = a("undead");
-   auo<bnu<?>> e = a("beehive_inhabitors");
-   auo<bnu<?>> f = a("arrows");
-   auo<bnu<?>> g = a("impact_projectiles");
-   auo<bnu<?>> h = a("powder_snow_walkable_mobs");
-   auo<bnu<?>> i = a("axolotl_always_hostiles");
-   auo<bnu<?>> j = a("axolotl_hunt_targets");
-   auo<bnu<?>> k = a("freeze_immune_entity_types");
-   auo<bnu<?>> l = a("freeze_hurts_extra_types");
-   auo<bnu<?>> m = a("can_breathe_under_water");
-   auo<bnu<?>> n = a("frog_food");
-   auo<bnu<?>> o = a("fall_damage_immune");
-   auo<bnu<?>> p = a("dismounts_underwater");
-   auo<bnu<?>> q = a("non_controlling_rider");
-   auo<bnu<?>> r = a("deflects_projectiles");
-   auo<bnu<?>> s = a("can_turn_in_boats");
-   auo<bnu<?>> t = a("illager");
-   auo<bnu<?>> u = a("aquatic");
-   auo<bnu<?>> v = a("arthropod");
-   auo<bnu<?>> w = a("ignores_poison_and_regen");
-   auo<bnu<?>> x = a("inverted_healing_and_harm");
-   auo<bnu<?>> y = a("wither_friends");
-   auo<bnu<?>> z = a("illager_friends");
-   auo<bnu<?>> A = a("not_scary_for_pufferfish");
-   auo<bnu<?>> B = a("sensitive_to_impaling");
-   auo<bnu<?>> C = a("sensitive_to_bane_of_arthropods");
+   aup<bmr> a = a("damages_helmet");
+   aup<bmr> b = a("breeze_immune_to");
+   aup<bmr> c = a("bypasses_armor");
+   aup<bmr> d = a("bypasses_shield");
+   aup<bmr> e = a("bypasses_invulnerability");
+   aup<bmr> f = a("bypasses_cooldown");
+   aup<bmr> g = a("bypasses_effects");
+   aup<bmr> h = a("bypasses_resistance");
+   aup<bmr> i = a("bypasses_enchantments");
+   aup<bmr> j = a("is_fire");
+   aup<bmr> k = a("is_projectile");
+   aup<bmr> l = a("witch_resistant_to");
+   aup<bmr> m = a("is_explosion");
+   aup<bmr> n = a("is_fall");
+   aup<bmr> o = a("is_drowning");
+   aup<bmr> p = a("is_freezing");
+   aup<bmr> q = a("is_lightning");
+   aup<bmr> r = a("no_anger");
+   aup<bmr> s = a("no_impact");
+   aup<bmr> t = a("always_most_significant_fall");
+   aup<bmr> u = a("wither_immune_to");
+   aup<bmr> v = a("ignites_armor_stands");
+   aup<bmr> w = a("burns_armor_stands");
+   aup<bmr> x = a("avoids_guardian_thorns");
+   aup<bmr> y = a("always_triggers_silverfish");
+   aup<bmr> z = a("always_hurts_ender_dragons");
+   aup<bmr> A = a("no_knockback");
+   aup<bmr> B = a("always_kills_armor_stands");
+   aup<bmr> C = a("can_break_armor_stand");
 
-   private static auo<bnu<?>> a(String $$0) {
-      return auo.a(kg.u, new aiy($$0));
+   private static aup<bmr> a(String $$0) {
+      return aup.a(kg.r, new aiy($$0));
    }
 }

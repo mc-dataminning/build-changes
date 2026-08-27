@@ -1,51 +1,31 @@
 import com.mojang.datafixers.util.Pair;
 import java.time.Duration;
-import java.util.Comparator;
 import java.util.List;
-import jdk.jfr.consumer.RecordedEvent;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public final class bji {
-   private final bji.a a;
-   private final List<Pair<bji.b, bji.a>> b;
-   private final Duration c;
-
-   public bji(Duration $$0, List<Pair<bji.b, bji.a>> $$1) {
-      this.c = $$0;
-      this.a = $$1.stream().<bji.a>map(Pair::getSecond).reduce(bji.a::a).orElseGet(() -> new bji.a(0L, 0L));
-      this.b = $$1.stream().sorted(Comparator.comparing(Pair::getSecond, bji.a.c)).limit(10L).toList();
+public record bji(Duration a, @Nullable String b, long c) {
+   public static bji.a a(Duration $$0, List<bji> $$1) {
+      long $$2 = $$1.stream().mapToLong($$0x -> $$0x.c).sum();
+      return new bji.a(
+         $$2,
+         (double)$$2 / (double)$$0.getSeconds(),
+         (long)$$1.size(),
+         (double)$$1.size() / (double)$$0.getSeconds(),
+         $$1.stream().map(bji::a).reduce(Duration.ZERO, Duration::plus),
+         $$1.stream()
+            .filter($$0x -> $$0x.b != null)
+            .collect(Collectors.groupingBy($$0x -> $$0x.b, Collectors.summingLong($$0x -> $$0x.c)))
+            .entrySet()
+            .stream()
+            .sorted(Entry.<String, Long>comparingByValue().reversed())
+            .map($$0x -> Pair.of((String)$$0x.getKey(), (Long)$$0x.getValue()))
+            .limit(10L)
+            .toList()
+      );
    }
 
-   public double a() {
-      return (double)this.a.a / (double)this.c.getSeconds();
-   }
-
-   public double b() {
-      return (double)this.a.b / (double)this.c.getSeconds();
-   }
-
-   public long c() {
-      return this.a.a;
-   }
-
-   public long d() {
-      return this.a.b;
-   }
-
-   public List<Pair<bji.b, bji.a>> e() {
-      return this.b;
-   }
-
-   public static record a(long a, long b) {
-      static final Comparator<bji.a> c = Comparator.comparing(bji.a::b).thenComparing(bji.a::a).reversed();
-
-      bji.a a(bji.a $$0) {
-         return new bji.a(this.a + $$0.a, this.b + $$0.b);
-      }
-   }
-
-   public static record b(String a, String b, String c) {
-      public static bji.b a(RecordedEvent $$0) {
-         return new bji.b($$0.getString("packetDirection"), $$0.getString("protocolId"), $$0.getString("packetId"));
-      }
+   public static record a(long a, double b, long c, double d, Duration e, List<Pair<String, Long>> f) {
    }
 }

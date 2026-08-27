@@ -1,35 +1,44 @@
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-public enum cce implements axc {
-   a(0, "white"),
-   b(1, "creamy"),
-   c(2, "chestnut"),
-   d(3, "brown"),
-   e(4, "black"),
-   f(5, "gray"),
-   g(6, "dark_brown");
-
-   public static final Codec<cce> h = axc.a(cce::values);
-   private static final IntFunction<cce> i = auz.a(cce::a, values(), auz.a.b);
-   private final int j;
-   private final String k;
-
-   private cce(int $$0, String $$1) {
-      this.j = $$0;
-      this.k = $$1;
-   }
-
-   public int a() {
-      return this.j;
-   }
-
-   public static cce a(int $$0) {
-      return i.apply($$0);
+public class cce extends cby {
+   public cce(bnw<? extends cce> $$0, cvr $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public String c() {
-      return this.k;
+   protected atk y() {
+      return atl.oW;
+   }
+
+   @Override
+   protected atk gF() {
+      return atl.oX;
+   }
+
+   @Override
+   protected atk n_() {
+      return atl.oZ;
+   }
+
+   @Nullable
+   @Override
+   protected atk gn() {
+      return atl.pa;
+   }
+
+   @Override
+   protected atk d(bmp $$0) {
+      return atl.pb;
+   }
+
+   @Override
+   protected void gg() {
+      this.a(atl.oY, 1.0F, (this.af.i() - this.af.i()) * 0.2F + 1.0F);
+   }
+
+   @Nullable
+   @Override
+   public bnl a(aow $$0, bnl $$1) {
+      return bnw.ar.a((cvr)$$0);
    }
 }

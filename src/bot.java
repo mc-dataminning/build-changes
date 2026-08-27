@@ -1,48 +1,35 @@
-import java.util.EnumSet;
-import java.util.Set;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
 public enum bot {
    a(0),
    b(1),
    c(2),
    d(3),
-   e(4);
+   e(4),
+   f(5),
+   g(6),
+   h(7),
+   i(8),
+   j(9),
+   k(10),
+   l(11),
+   m(12),
+   n(13),
+   o(14),
+   p(15),
+   q(16),
+   r(17);
 
-   public static final Set<bot> f = Set.of(values());
-   public static final Set<bot> g = Set.of(e, d);
-   private final int h;
+   public static final IntFunction<bot> s = ava.a(bot::a, values(), ava.a.a);
+   public static final xo<ByteBuf, bot> t = xm.a(s, bot::a);
+   private final int u;
 
    private bot(int $$0) {
-      this.h = $$0;
+      this.u = $$0;
    }
 
-   private int a() {
-      return 1 << this.h;
-   }
-
-   private boolean b(int $$0) {
-      return ($$0 & this.a()) == this.a();
-   }
-
-   public static Set<bot> a(int $$0) {
-      Set<bot> $$1 = EnumSet.noneOf(bot.class);
-
-      for (bot $$2 : values()) {
-         if ($$2.b($$0)) {
-            $$1.add($$2);
-         }
-      }
-
-      return $$1;
-   }
-
-   public static int a(Set<bot> $$0) {
-      int $$1 = 0;
-
-      for (bot $$2 : $$0) {
-         $$1 |= $$2.a();
-      }
-
-      return $$1;
+   public int a() {
+      return this.u;
    }
 }

@@ -1,49 +1,52 @@
-public class chx extends cht {
-   private int e = 1;
+public abstract class chx extends chs implements cia {
+   private static final aie<cpd> e = aih.a(chx.class, aig.h);
 
-   public chx(bnu<? extends chx> $$0, cvn $$1) {
+   public chx(bnw<? extends chx> $$0, cvr $$1) {
       super($$0, $$1);
    }
 
-   public chx(cvn $$0, bog $$1, double $$2, double $$3, double $$4, int $$5) {
-      super(bnu.ai, $$1, $$2, $$3, $$4, $$0);
-      this.e = $$5;
+   public chx(bnw<? extends chx> $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, cvr $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   @Override
-   protected void a(enq $$0) {
-      super.a($$0);
-      if (!this.dM().B) {
-         boolean $$1 = this.dM().Z().b(cvj.c);
-         this.dM().a(this, this.dr(), this.dt(), this.dx(), (float)this.e, $$1, cvn.a.c);
-         this.am();
+   public chx(bnw<? extends chx> $$0, boi $$1, double $$2, double $$3, double $$4, cvr $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public void a(cpd $$0) {
+      if (!$$0.a(cpg.tV) || $$0.v()) {
+         this.an().b(e, $$0.c(1));
       }
    }
 
+   protected cpd z() {
+      return this.an().b(e);
+   }
+
    @Override
-   protected void a(enp $$0) {
-      super.a($$0);
-      if (!this.dM().B) {
-         bno $$1 = $$0.a();
-         bno $$2 = this.w();
-         $$1.a(this.dN().a((cht)this, $$2), 6.0F);
-         if ($$2 instanceof bog) {
-            this.a((bog)$$2, $$1);
-         }
-      }
+   public cpd q() {
+      cpd $$0 = this.z();
+      return $$0.b() ? new cpd(cpg.tV) : $$0;
+   }
+
+   @Override
+   protected void c_() {
+      this.an().a(e, cpd.h);
    }
 
    @Override
    public void b(sw $$0) {
       super.b($$0);
-      $$0.a("ExplosionPower", (byte)this.e);
+      cpd $$1 = this.z();
+      if (!$$1.b()) {
+         $$0.a("Item", $$1.b(new sw()));
+      }
    }
 
    @Override
    public void a(sw $$0) {
       super.a($$0);
-      if ($$0.b("ExplosionPower", 99)) {
-         this.e = $$0.f("ExplosionPower");
-      }
+      cpd $$1 = cpd.a($$0.p("Item"));
+      this.a($$1);
    }
 }

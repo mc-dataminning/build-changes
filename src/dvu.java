@@ -1,46 +1,53 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dvu implements dvw {
+public record dvu(List<dvu.a> b, ie c, dsc d, boolean e) implements dwd {
    public static final Codec<dvu> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").forGetter($$0x -> $$0x.b),
-               bkz.b(1, 128).fieldOf("height").forGetter($$0x -> $$0x.c),
-               bkz.b(1, 128).fieldOf("radius").forGetter($$0x -> $$0x.d),
-               Codec.intRange(0, 64).fieldOf("max_stalagmite_stalactite_height_diff").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 64).fieldOf("height_deviation").forGetter($$0x -> $$0x.f),
-               bkz.b(0, 128).fieldOf("dripstone_block_layer_thickness").forGetter($$0x -> $$0x.g),
-               bkx.a(0.0F, 2.0F).fieldOf("density").forGetter($$0x -> $$0x.h),
-               bkx.a(0.0F, 2.0F).fieldOf("wetness").forGetter($$0x -> $$0x.i),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_dripstone_column_at_max_distance_from_center").forGetter($$0x -> $$0x.j),
-               Codec.intRange(1, 64).fieldOf("max_distance_from_edge_affecting_chance_of_dripstone_column").forGetter($$0x -> $$0x.k),
-               Codec.intRange(1, 64).fieldOf("max_distance_from_center_affecting_height_bias").forGetter($$0x -> $$0x.l)
+               dvu.a.a.listOf().fieldOf("layers").forGetter(dvu::a),
+               ie.g.fieldOf("direction").forGetter(dvu::b),
+               dsc.b.fieldOf("allowed_placement").forGetter(dvu::c),
+               Codec.BOOL.fieldOf("prioritize_tip").forGetter(dvu::d)
             )
             .apply($$0, dvu::new)
    );
-   public final int b;
-   public final bkz c;
-   public final bkz d;
-   public final int e;
-   public final int f;
-   public final bkz g;
-   public final bkx h;
-   public final bkx i;
-   public final float j;
-   public final int k;
-   public final int l;
 
-   public dvu(int $$0, bkz $$1, bkz $$2, int $$3, int $$4, bkz $$5, bkx $$6, bkx $$7, float $$8, int $$9, int $$10) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-      this.l = $$10;
+   public static dvu.a a(blb $$0, dye $$1) {
+      return new dvu.a($$0, $$1);
+   }
+
+   public static dvu b(blb $$0, dye $$1) {
+      return new dvu(List.of(a($$0, $$1)), ie.b, dsc.c, false);
+   }
+
+   public List<dvu.a> a() {
+      return this.b;
+   }
+
+   public ie b() {
+      return this.c;
+   }
+
+   public dsc c() {
+      return this.d;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public static record a(blb b, dye c) {
+      public static final Codec<dvu.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(blb.d.fieldOf("height").forGetter(dvu.a::a), dye.a.fieldOf("provider").forGetter(dvu.a::b)).apply($$0, dvu.a::new)
+      );
+
+      public blb a() {
+         return this.b;
+      }
+
+      public dye b() {
+         return this.c;
+      }
    }
 }

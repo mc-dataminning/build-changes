@@ -1,25 +1,9 @@
-import org.joml.Matrix4f;
+public class fhw extends fgl<cmc> {
+   private static final aiy y = new aiy("container/smoker/lit_progress");
+   private static final aiy z = new aiy("container/smoker/burn_progress");
+   private static final aiy A = new aiy("textures/gui/container/smoker.png");
 
-public interface fhw {
-   static fhw a(avt $$0) {
-      return new fhv($$0);
-   }
-
-   static fhw a(cme $$0) {
-      if ($$0 instanceof cmd) {
-         return new fhu((cmd)$$0);
-      } else {
-         throw new IllegalArgumentException("Unknown TooltipComponent");
-      }
-   }
-
-   int a();
-
-   int a(eys var1);
-
-   default void a(eys $$0, int $$1, int $$2, Matrix4f $$3, fvl.a $$4) {
-   }
-
-   default void a(eys $$0, int $$1, int $$2, eyu $$3) {
+   public fhw(cmc $$0, chk $$1, vq $$2) {
+      super($$0, new fjh(), $$1, $$2, A, y, z);
    }
 }

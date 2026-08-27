@@ -1,39 +1,26 @@
-import java.util.function.IntFunction;
+public enum exa {
+   a(true, false),
+   b(false, false),
+   c(false, true);
 
-public enum exa implements awj {
-   a(0, "options.graphics.fast"),
-   b(1, "options.graphics.fancy"),
-   c(2, "options.graphics.fabulous");
+   private static final exa[] d = values();
+   private final boolean e;
+   private final boolean f;
 
-   private static final IntFunction<exa> d = auz.a(exa::a, values(), auz.a.b);
-   private final int e;
-   private final String f;
-
-   private exa(int $$0, String $$1) {
+   private exa(boolean $$0, boolean $$1) {
       this.e = $$0;
       this.f = $$1;
    }
 
-   @Override
-   public int a() {
+   public boolean a() {
       return this.e;
    }
 
-   @Override
-   public String b() {
+   public boolean b() {
       return this.f;
    }
 
-   @Override
-   public String toString() {
-      return switch (this) {
-         case a -> "fast";
-         case b -> "fancy";
-         case c -> "fabulous";
-      };
-   }
-
-   public static exa a(int $$0) {
-      return d.apply($$0);
+   public exa c() {
+      return d[(this.ordinal() + 1) % d.length];
    }
 }

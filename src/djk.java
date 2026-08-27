@@ -1,110 +1,82 @@
-import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class djk {
-   private static final String b = "decorated_pot_base";
-   public static final aix<String> a = a("decorated_pot_base");
-   private static final String c = "decorated_pot_side";
-   private static final String d = "angler_pottery_pattern";
-   private static final String e = "archer_pottery_pattern";
-   private static final String f = "arms_up_pottery_pattern";
-   private static final String g = "blade_pottery_pattern";
-   private static final String h = "brewer_pottery_pattern";
-   private static final String i = "burn_pottery_pattern";
-   private static final String j = "danger_pottery_pattern";
-   private static final String k = "explorer_pottery_pattern";
-   private static final String l = "friend_pottery_pattern";
-   private static final String m = "heart_pottery_pattern";
-   private static final String n = "heartbreak_pottery_pattern";
-   private static final String o = "howl_pottery_pattern";
-   private static final String p = "miner_pottery_pattern";
-   private static final String q = "mourner_pottery_pattern";
-   private static final String r = "plenty_pottery_pattern";
-   private static final String s = "prize_pottery_pattern";
-   private static final String t = "sheaf_pottery_pattern";
-   private static final String u = "shelter_pottery_pattern";
-   private static final String v = "skull_pottery_pattern";
-   private static final String w = "snort_pottery_pattern";
-   private static final aix<String> x = a("decorated_pot_side");
-   private static final aix<String> y = a("angler_pottery_pattern");
-   private static final aix<String> z = a("archer_pottery_pattern");
-   private static final aix<String> A = a("arms_up_pottery_pattern");
-   private static final aix<String> B = a("blade_pottery_pattern");
-   private static final aix<String> C = a("brewer_pottery_pattern");
-   private static final aix<String> D = a("burn_pottery_pattern");
-   private static final aix<String> E = a("danger_pottery_pattern");
-   private static final aix<String> F = a("explorer_pottery_pattern");
-   private static final aix<String> G = a("friend_pottery_pattern");
-   private static final aix<String> H = a("heart_pottery_pattern");
-   private static final aix<String> I = a("heartbreak_pottery_pattern");
-   private static final aix<String> J = a("howl_pottery_pattern");
-   private static final aix<String> K = a("miner_pottery_pattern");
-   private static final aix<String> L = a("mourner_pottery_pattern");
-   private static final aix<String> M = a("plenty_pottery_pattern");
-   private static final aix<String> N = a("prize_pottery_pattern");
-   private static final aix<String> O = a("sheaf_pottery_pattern");
-   private static final aix<String> P = a("shelter_pottery_pattern");
-   private static final aix<String> Q = a("skull_pottery_pattern");
-   private static final aix<String> R = a("snort_pottery_pattern");
-   private static final Map<cou, aix<String>> S = Map.ofEntries(
-      Map.entry(cpc.qK, x),
-      Map.entry(cpc.xD, y),
-      Map.entry(cpc.xE, z),
-      Map.entry(cpc.xF, A),
-      Map.entry(cpc.xG, B),
-      Map.entry(cpc.xH, C),
-      Map.entry(cpc.xI, D),
-      Map.entry(cpc.xJ, E),
-      Map.entry(cpc.xK, F),
-      Map.entry(cpc.xL, G),
-      Map.entry(cpc.xM, H),
-      Map.entry(cpc.xN, I),
-      Map.entry(cpc.xO, J),
-      Map.entry(cpc.xP, K),
-      Map.entry(cpc.xQ, L),
-      Map.entry(cpc.xR, M),
-      Map.entry(cpc.xS, N),
-      Map.entry(cpc.xT, O),
-      Map.entry(cpc.xU, P),
-      Map.entry(cpc.xV, Q),
-      Map.entry(cpc.xW, R)
-   );
+public abstract class djk {
+   private static final int a = 5;
+   private int b;
+   private double c;
 
-   private static aix<String> a(String $$0) {
-      return aix.a(kg.ar, new aiy($$0));
+   protected abstract void a(cvr var1, hz var2, dlj var3);
+
+   protected abstract void b(cvr var1, hz var2, dlj var3);
+
+   protected abstract void a(cvr var1, hz var2, dlj var3, int var4, int var5);
+
+   protected abstract boolean a(chl var1);
+
+   public void a(chl $$0, cvr $$1, hz $$2, dlj $$3) {
+      int $$4 = this.b++;
+      if ($$4 == 0) {
+         this.a($$1, $$2, $$3);
+         $$1.a($$0, dpw.k, $$2);
+         d($$1, $$2, $$3);
+      }
+
+      this.a($$1, $$2, $$3, $$4, this.b);
+      this.c = Math.max($$0.gt(), this.c);
    }
 
-   public static aiy a(aix<String> $$0) {
-      return $$0.a().d("entity/decorated_pot/");
+   public void b(chl $$0, cvr $$1, hz $$2, dlj $$3) {
+      int $$4 = this.b--;
+      if (this.b == 0) {
+         this.b($$1, $$2, $$3);
+         $$1.a($$0, dpw.j, $$2);
+         this.c = 0.0;
+      }
+
+      this.a($$1, $$2, $$3, $$4, this.b);
    }
 
-   @Nullable
-   public static aix<String> a(cou $$0) {
-      return S.get($$0);
+   private List<chl> a(cvr $$0, hz $$1) {
+      double $$2 = this.c + 4.0;
+      enu $$3 = new enu($$1).g($$2);
+      return $$0.a(dpk.a(chl.class), $$3, this::a);
    }
 
-   public static String a(iv<String> $$0) {
-      iv.a($$0, x, "decorated_pot_side");
-      iv.a($$0, y, "angler_pottery_pattern");
-      iv.a($$0, z, "archer_pottery_pattern");
-      iv.a($$0, A, "arms_up_pottery_pattern");
-      iv.a($$0, B, "blade_pottery_pattern");
-      iv.a($$0, C, "brewer_pottery_pattern");
-      iv.a($$0, D, "burn_pottery_pattern");
-      iv.a($$0, E, "danger_pottery_pattern");
-      iv.a($$0, F, "explorer_pottery_pattern");
-      iv.a($$0, G, "friend_pottery_pattern");
-      iv.a($$0, H, "heart_pottery_pattern");
-      iv.a($$0, I, "heartbreak_pottery_pattern");
-      iv.a($$0, J, "howl_pottery_pattern");
-      iv.a($$0, K, "miner_pottery_pattern");
-      iv.a($$0, L, "mourner_pottery_pattern");
-      iv.a($$0, M, "plenty_pottery_pattern");
-      iv.a($$0, N, "prize_pottery_pattern");
-      iv.a($$0, O, "sheaf_pottery_pattern");
-      iv.a($$0, P, "shelter_pottery_pattern");
-      iv.a($$0, Q, "skull_pottery_pattern");
-      iv.a($$0, R, "snort_pottery_pattern");
-      return iv.a($$0, a, "decorated_pot_base");
+   public void c(cvr $$0, hz $$1, dlj $$2) {
+      List<chl> $$3 = this.a($$0, $$1);
+      this.c = 0.0;
+
+      for (chl $$4 : $$3) {
+         this.c = Math.max($$4.gt(), this.c);
+      }
+
+      int $$5 = $$3.size();
+      int $$6 = this.b;
+      if ($$6 != $$5) {
+         boolean $$7 = $$5 != 0;
+         boolean $$8 = $$6 != 0;
+         if ($$7 && !$$8) {
+            this.a($$0, $$1, $$2);
+            $$0.a(null, dpw.k, $$1);
+         } else if (!$$7) {
+            this.b($$0, $$1, $$2);
+            $$0.a(null, dpw.j, $$1);
+         }
+
+         this.b = $$5;
+      }
+
+      this.a($$0, $$1, $$2, $$6, $$5);
+      if ($$5 > 0) {
+         d($$0, $$1, $$2);
+      }
+   }
+
+   public int a() {
+      return this.b;
+   }
+
+   private static void d(cvr $$0, hz $$1, dlj $$2) {
+      $$0.a($$1, $$2.b(), 5);
    }
 }

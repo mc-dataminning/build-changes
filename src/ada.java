@@ -2,7 +2,7 @@ public class ada implements xx<aag> {
    public static final xo<uq, ada> a = xx.a(ada::a, ada::new);
    private final double b;
 
-   public ada(dmw $$0) {
+   public ada(dna $$0) {
       this.b = $$0.k();
    }
 

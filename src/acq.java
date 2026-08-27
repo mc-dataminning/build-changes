@@ -1,6 +1,6 @@
 import javax.annotation.Nullable;
 
-public record acq(int b, ij<bmz> c) implements xx<aag> {
+public record acq(int b, ij<bnb> c) implements xx<aag> {
    public static final xo<vb, acq> a = xo.a(xm.d, $$0 -> $$0.b, xm.b(kg.Q), acq::e, acq::new);
 
    @Override
@@ -13,11 +13,11 @@ public record acq(int b, ij<bmz> c) implements xx<aag> {
    }
 
    @Nullable
-   public bno a(cvn $$0) {
+   public bnq a(cvr $$0) {
       return $$0.a(this.b);
    }
 
-   public ij<bmz> e() {
+   public ij<bnb> e() {
       return this.c;
    }
 }

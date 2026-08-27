@@ -51,7 +51,7 @@ public class ayb extends DataFix {
                $$1,
                $$1xx -> {
                   int $$2xx = $$1xx.getOptional($$2).map($$0xxx -> Math.max(4, DataFixUtils.ceillog2($$0xxx.size()))).orElse(0);
-                  return $$2xx != 0 && !awh.d($$2xx)
+                  return $$2xx != 0 && !awi.d($$2xx)
                      ? $$1xx.update(DSL.remainderFinder(), $$1xxx -> $$1xxx.update("BlockStates", $$2xxx -> a($$1xxx, $$2xxx, 4096, $$2xx)))
                      : $$1xx;
                }

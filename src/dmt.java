@@ -1,8 +1,23 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public enum dmt implements axc {
+   a("save"),
+   b("load"),
+   c("corner"),
+   d("data");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dmt {
+   private final String e;
+   private final vq f;
+
+   private dmt(String $$0) {
+      this.e = $$0;
+      this.f = vq.c("structure_block.mode_info." + $$0);
+   }
+
+   @Override
+   public String c() {
+      return this.e;
+   }
+
+   public vq a() {
+      return this.f;
+   }
 }

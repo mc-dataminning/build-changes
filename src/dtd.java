@@ -1,48 +1,59 @@
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntListIterator;
-import java.util.stream.IntStream;
 
-public class dtd extends dts<dwd> {
-   public dtd(Codec<dwd> $$0) {
+public class dtd extends dtz<dwn> {
+   private static final dlj a = cyu.mZ.o().a(cxw.h, Integer.valueOf(1)).a(cxw.i, dlv.a).a(cxw.j, Integer.valueOf(0));
+   private static final dlj b = a.a(cxw.i, dlv.c).a(cxw.j, Integer.valueOf(1));
+   private static final dlj c = a.a(cxw.i, dlv.c);
+   private static final dlj d = a.a(cxw.i, dlv.b);
+
+   public dtd(Codec<dwn> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dtu<dwd> $$0) {
-      awo $$1 = $$0.d();
-      cwi $$2 = $$0.b();
-      cuu $$3 = new cuu($$0.e());
-      IntArrayList $$4 = ac.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
-      IntArrayList $$5 = ac.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
-      hz.a $$6 = new hz.a();
-      IntListIterator var8 = $$4.iterator();
+   public boolean a(dub<dwn> $$0) {
+      int $$1 = 0;
+      hz $$2 = $$0.e();
+      cwm $$3 = $$0.b();
+      awp $$4 = $$0.d();
+      dwn $$5 = $$0.f();
+      hz.a $$6 = $$2.j();
+      hz.a $$7 = $$2.j();
+      if ($$3.u($$6)) {
+         if (cyu.mZ.o().a($$3, $$6)) {
+            int $$8 = $$4.a(12) + 5;
+            if ($$4.i() < $$5.l) {
+               int $$9 = $$4.a(4) + 1;
 
-      while (var8.hasNext()) {
-         Integer $$7 = (Integer)var8.next();
-         IntListIterator var10 = $$5.iterator();
-
-         while (var10.hasNext()) {
-            Integer $$8 = (Integer)var10.next();
-            $$6.d($$7, 0, $$8);
-            hz $$9 = $$2.a(dqo.a.f, $$6);
-            if ($$2.u($$9) || $$2.a_($$9).k($$2, $$9).c()) {
-               $$2.a($$9, cyq.cv.o(), 2);
-               bmc.a($$2, $$1, $$9, eit.b);
-               dlf $$10 = cyq.cp.o();
-
-               for (ie $$11 : ie.c.a) {
-                  hz $$12 = $$9.a($$11);
-                  if ($$10.a($$2, $$12)) {
-                     $$2.a($$12, $$10, 2);
+               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
+                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
+                     int $$12 = $$10 - $$2.u();
+                     int $$13 = $$11 - $$2.w();
+                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
+                        $$7.d($$10, $$3.a(dqv.a.b, $$10, $$11) - 1, $$11);
+                        if (b($$3.a_($$7))) {
+                           $$3.a($$7, cyu.l.o(), 2);
+                        }
+                     }
                   }
                }
+            }
 
-               return true;
+            for (int $$14 = 0; $$14 < $$8 && $$3.u($$6); $$14++) {
+               $$3.a($$6, a, 2);
+               $$6.c(ie.b, 1);
+            }
+
+            if ($$6.v() - $$2.v() >= 3) {
+               $$3.a($$6, b, 2);
+               $$3.a($$6.c(ie.a, 1), c, 2);
+               $$3.a($$6.c(ie.a, 1), d, 2);
             }
          }
+
+         $$1++;
       }
 
-      return false;
+      return $$1 > 0;
    }
 }

@@ -1,123 +1,150 @@
-import com.google.common.collect.Iterables;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.StreamSupport;
+import java.util.function.BiFunction;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public interface cux extends cut {
-   dmw D_();
-
+public interface cux extends cvt {
    @Nullable
-   cut c(int var1, int var2);
+   dix c_(hz var1);
 
-   default boolean a(@Nullable bno $$0, eol $$1) {
-      return true;
+   default <T extends dix> Optional<T> a(hz $$0, diz<T> $$1) {
+      dix $$2 = this.c_($$0);
+      return $$2 != null && $$2.v() == $$1 ? Optional.of((T)$$2) : Optional.empty();
    }
 
-   default boolean a(dlf $$0, hz $$1, enx $$2) {
-      eol $$3 = $$0.b(this, $$1, $$2);
-      return $$3.c() || this.a(null, $$3.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w()));
+   dlj a_(hz var1);
+
+   egw b_(hz var1);
+
+   default int i(hz $$0) {
+      return this.a_($$0).h();
    }
 
-   default boolean f(bno $$0) {
-      return this.a($$0, eoi.a($$0.cH()));
+   default int O() {
+      return 15;
    }
 
-   default boolean b(enn $$0) {
-      return this.a(null, $$0);
+   default Stream<dlj> a(enu $$0) {
+      return hz.a($$0).map(this::a_);
    }
 
-   default boolean g(bno $$0) {
-      return this.a($$0, $$0.cH());
+   default env a(cuz $$0) {
+      return a($$0.b(), $$0.a(), $$0, ($$0x, $$1) -> {
+         dlj $$2 = this.a_($$1);
+         enz $$3 = $$0x.b().d($$0x.a());
+         return $$0x.c().test($$2) ? new env($$0x.a(), ie.a($$3.c, $$3.d, $$3.e), hz.a($$0x.a()), false) : null;
+      }, $$0x -> {
+         enz $$1 = $$0x.b().d($$0x.a());
+         return env.a($$0x.a(), ie.a($$1.c, $$1.d, $$1.e), hz.a($$0x.a()));
+      });
    }
 
-   default boolean a(@Nullable bno $$0, enn $$1) {
-      for (eol $$2 : this.e($$0, $$1)) {
-         if (!$$2.c()) {
-            return false;
-         }
-      }
-
-      if (!this.c($$0, $$1).isEmpty()) {
-         return false;
-      } else if ($$0 == null) {
-         return true;
-      } else {
-         eol $$3 = this.h($$0, $$1);
-         return $$3 == null || !eoi.c($$3, eoi.a($$1), enw.i);
-      }
-   }
-
-   default boolean b(@Nullable bno $$0, enn $$1) {
-      for (eol $$2 : this.e($$0, $$1)) {
-         if (!$$2.c()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   List<eol> c(@Nullable bno var1, enn var2);
-
-   default Iterable<eol> d(@Nullable bno $$0, enn $$1) {
-      List<eol> $$2 = this.c($$0, $$1);
-      Iterable<eol> $$3 = this.e($$0, $$1);
-      return $$2.isEmpty() ? $$3 : Iterables.concat($$2, $$3);
-   }
-
-   default Iterable<eol> e(@Nullable bno $$0, enn $$1) {
-      return () -> new cur<eol>(this, $$0, $$1, false, ($$0xx, $$1xx) -> $$1xx);
+   default env a(cva $$0) {
+      return a($$0.b(), $$0.a(), $$0, ($$0x, $$1) -> {
+         dlj $$2 = this.a_($$1);
+         egw $$3 = this.b_($$1);
+         enz $$4 = $$0x.b();
+         enz $$5 = $$0x.a();
+         eos $$6 = $$0x.a($$2, this, $$1);
+         env $$7 = this.a($$4, $$5, $$1, $$6, $$2);
+         eos $$8 = $$0x.a($$3, this, $$1);
+         env $$9 = $$8.a($$4, $$5, $$1);
+         double $$10 = $$7 == null ? Double.MAX_VALUE : $$0x.b().g($$7.e());
+         double $$11 = $$9 == null ? Double.MAX_VALUE : $$0x.b().g($$9.e());
+         return $$10 <= $$11 ? $$7 : $$9;
+      }, $$0x -> {
+         enz $$1 = $$0x.b().d($$0x.a());
+         return env.a($$0x.a(), ie.a($$1.c, $$1.d, $$1.e), hz.a($$0x.a()));
+      });
    }
 
    @Nullable
-   private eol h(bno $$0, enn $$1) {
-      dmw $$2 = this.D_();
-      return $$2.a($$0, $$1) ? $$2.c() : null;
-   }
-
-   default boolean f(@Nullable bno $$0, enn $$1) {
-      cur<eol> $$2 = new cur<>(this, $$0, $$1, true, ($$0x, $$1x) -> $$1x);
-
-      while ($$2.hasNext()) {
-         if (!((eol)$$2.next()).c()) {
-            return true;
+   default env a(enz $$0, enz $$1, hz $$2, eos $$3, dlj $$4) {
+      env $$5 = $$3.a($$0, $$1, $$2);
+      if ($$5 != null) {
+         env $$6 = $$4.m(this, $$2).a($$0, $$1, $$2);
+         if ($$6 != null && $$6.e().d($$0).g() < $$5.e().d($$0).g()) {
+            return $$5.a($$6.b());
          }
       }
 
-      return false;
+      return $$5;
    }
 
-   default Optional<hz> g(bno $$0, enn $$1) {
-      hz $$2 = null;
-      double $$3 = Double.MAX_VALUE;
-      cur<hz> $$4 = new cur<>(this, $$0, $$1, false, ($$0x, $$1x) -> $$0x);
-
-      while ($$4.hasNext()) {
-         hz $$5 = (hz)$$4.next();
-         double $$6 = $$5.b($$0.dk());
-         if ($$6 < $$3 || $$6 == $$3 && ($$2 == null || $$2.i($$5) < 0)) {
-            $$2 = $$5.i();
-            $$3 = $$6;
-         }
-      }
-
-      return Optional.ofNullable($$2);
-   }
-
-   default Optional<ens> a(@Nullable bno $$0, eol $$1, ens $$2, double $$3, double $$4, double $$5) {
-      if ($$1.c()) {
-         return Optional.empty();
+   default double a(eos $$0, Supplier<eos> $$1) {
+      if (!$$0.c()) {
+         return $$0.c(ie.a.b);
       } else {
-         enn $$6 = $$1.a().c($$3, $$4, $$5);
-         eol $$7 = StreamSupport.stream(this.e($$0, $$6).spliterator(), false)
-            .filter($$0x -> this.D_() == null || this.D_().a($$0x.a()))
-            .flatMap($$0x -> $$0x.e().stream())
-            .map($$3x -> $$3x.c($$3 / 2.0, $$4 / 2.0, $$5 / 2.0))
-            .map(eoi::a)
-            .reduce(eoi.a(), eoi::a);
-         eol $$8 = eoi.a($$1, $$7, enw.e);
-         return $$8.a($$2);
+         double $$2 = $$1.get().c(ie.a.b);
+         return $$2 >= 1.0 ? $$2 - 1.0 : Double.NEGATIVE_INFINITY;
+      }
+   }
+
+   default double j(hz $$0) {
+      return this.a(this.a_($$0).k(this, $$0), () -> {
+         hz $$1 = $$0.d();
+         return this.a_($$1).k(this, $$1);
+      });
+   }
+
+   static <T, C> T a(enz $$0, enz $$1, C $$2, BiFunction<C, hz, T> $$3, Function<C, T> $$4) {
+      if ($$0.equals($$1)) {
+         return $$4.apply($$2);
+      } else {
+         double $$5 = awi.d(-1.0E-7, $$1.c, $$0.c);
+         double $$6 = awi.d(-1.0E-7, $$1.d, $$0.d);
+         double $$7 = awi.d(-1.0E-7, $$1.e, $$0.e);
+         double $$8 = awi.d(-1.0E-7, $$0.c, $$1.c);
+         double $$9 = awi.d(-1.0E-7, $$0.d, $$1.d);
+         double $$10 = awi.d(-1.0E-7, $$0.e, $$1.e);
+         int $$11 = awi.a($$8);
+         int $$12 = awi.a($$9);
+         int $$13 = awi.a($$10);
+         hz.a $$14 = new hz.a($$11, $$12, $$13);
+         T $$15 = $$3.apply($$2, $$14);
+         if ($$15 != null) {
+            return $$15;
+         } else {
+            double $$16 = $$5 - $$8;
+            double $$17 = $$6 - $$9;
+            double $$18 = $$7 - $$10;
+            int $$19 = awi.j($$16);
+            int $$20 = awi.j($$17);
+            int $$21 = awi.j($$18);
+            double $$22 = $$19 == 0 ? Double.MAX_VALUE : (double)$$19 / $$16;
+            double $$23 = $$20 == 0 ? Double.MAX_VALUE : (double)$$20 / $$17;
+            double $$24 = $$21 == 0 ? Double.MAX_VALUE : (double)$$21 / $$18;
+            double $$25 = $$22 * ($$19 > 0 ? 1.0 - awi.e($$8) : awi.e($$8));
+            double $$26 = $$23 * ($$20 > 0 ? 1.0 - awi.e($$9) : awi.e($$9));
+            double $$27 = $$24 * ($$21 > 0 ? 1.0 - awi.e($$10) : awi.e($$10));
+
+            while ($$25 <= 1.0 || $$26 <= 1.0 || $$27 <= 1.0) {
+               if ($$25 < $$26) {
+                  if ($$25 < $$27) {
+                     $$11 += $$19;
+                     $$25 += $$22;
+                  } else {
+                     $$13 += $$21;
+                     $$27 += $$24;
+                  }
+               } else if ($$26 < $$27) {
+                  $$12 += $$20;
+                  $$26 += $$23;
+               } else {
+                  $$13 += $$21;
+                  $$27 += $$24;
+               }
+
+               T $$28 = $$3.apply($$2, $$14.d($$11, $$12, $$13));
+               if ($$28 != null) {
+                  return $$28;
+               }
+            }
+
+            return $$4.apply($$2);
+         }
       }
    }
 }

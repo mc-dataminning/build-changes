@@ -1,49 +1,41 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class ddj extends cyo implements dfo {
+public class ddj extends dcn {
    public static final MapCodec<ddj> a = b(ddj::new);
-   public static final dlw b = dlv.C;
+   private static final vq b = vq.c("container.loom");
 
    @Override
    public MapCodec<ddj> a() {
       return a;
    }
 
-   protected ddj(dle.d $$0) {
+   protected ddj(dli.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean a(dlf $$0, dlf $$1, ie $$2) {
-      return $$1.a(cyq.ac) && $$2.o() == ie.a.b;
-   }
-
-   @Nullable
-   @Override
-   public dlf a(crg $$0) {
-      egp $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == egq.c;
-      return super.a($$0).a(b, Boolean.valueOf($$2));
-   }
-
-   @Override
-   protected dlf a(dlf $$0, ie $$1, dlf $$2, cvo $$3, hz $$4, hz $$5) {
-      if ($$0.c(b)) {
-         $$3.a($$4, egq.c, egq.c.a($$3));
+   protected blw a(dlj $$0, cvr $$1, hz $$2, chl $$3, env $$4) {
+      if ($$1.B) {
+         return blw.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(atv.ax);
+         return blw.b;
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected egp c_(dlf $$0) {
-      return $$0.c(b) ? egq.c.a(false) : super.c_($$0);
+   protected bma b(dlj $$0, cvr $$1, hz $$2) {
+      return new bmg(($$2x, $$3, $$4) -> new clk($$2x, $$3, ckq.a($$1, $$2)), b);
    }
 
    @Override
-   protected void a(dlg.a<cyo, dlf> $$0) {
-      $$0.a(b);
+   public dlj a(crk $$0) {
+      return this.o().a(aE, $$0.g().g());
+   }
+
+   @Override
+   protected void a(dlk.a<cys, dlj> $$0) {
+      $$0.a(aE);
    }
 }

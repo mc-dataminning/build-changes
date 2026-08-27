@@ -18,13 +18,13 @@ public class axn {
    private static String a(String $$0) {
       JsonObject $$1 = new JsonObject();
       $$1.addProperty("text", $$0);
-      return avx.e($$1);
+      return avy.e($$1);
    }
 
    public static <T> Dynamic<T> b(DynamicOps<T> $$0, String $$1) {
       JsonObject $$2 = new JsonObject();
       $$2.addProperty("translate", $$1);
-      return new Dynamic($$0, $$0.createString(avx.e($$2)));
+      return new Dynamic($$0, $$0.createString(avy.e($$2)));
    }
 
    public static <T> Dynamic<T> a(Dynamic<T> $$0) {

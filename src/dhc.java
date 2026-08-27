@@ -1,48 +1,61 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import javax.annotation.Nullable;
 
-public class dhc extends cya {
+public class dhc extends dan {
    public static final MapCodec<dhc> a = b(dhc::new);
-   public static final dmd<dks> b = dlv.by;
+   public static final int b = 2;
+   public static final dmj c = dlz.aq;
+   private static final float g = 3.0F;
+   private static final eos[] h = new eos[]{cys.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0), cys.a(5.0, 0.0, 5.0, 11.0, 10.0, 11.0)};
+   private static final int i = 1;
 
    @Override
    public MapCodec<dhc> a() {
       return a;
    }
 
-   public dhc(dle.d $$0) {
+   public dhc(dli.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, dks.a));
    }
 
    @Override
-   protected void a(dlg.a<cyo, dlf> $$0) {
-      $$0.a(b);
+   protected void a(dlk.a<cys, dlj> $$0) {
+      $$0.a(c);
    }
 
    @Override
-   protected det b_(dlf $$0) {
-      return det.c;
-   }
-
-   @Nullable
-   @Override
-   public dit a(hz $$0, dlf $$1) {
-      return new dkm($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dit> diu<T> a(cvn $$0, dlf $$1, div<T> $$2) {
-      return $$0 instanceof aov $$3
-         ? a($$2, div.Q, ($$1x, $$2x, $$3x, $$4) -> $$4.d().b($$3, $$2x))
-         : a($$2, div.Q, ($$0x, $$1x, $$2x, $$3x) -> $$3x.d().a($$0x, $$1x));
+   public eos a(dlj $$0, cux $$1, hz $$2, eoe $$3) {
+      return h[this.g($$0)];
    }
 
    @Override
-   public void a(coz $$0, @Nullable cut $$1, List<vq> $$2, cqq $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      cwf.a($$0, $$2, "spawn_data");
+   protected dmj b() {
+      return c;
+   }
+
+   @Override
+   public int c() {
+      return 2;
+   }
+
+   @Override
+   protected cvq d() {
+      return cpg.ve;
+   }
+
+   @Override
+   public dlj b(int $$0) {
+      return $$0 == 2 ? cyu.bS.o() : super.b($$0);
+   }
+
+   @Override
+   public void b(dlj $$0, aow $$1, hz $$2, awp $$3) {
+      if ($$3.a(3) != 0) {
+         super.b($$0, $$1, $$2, $$3);
+      }
+   }
+
+   @Override
+   protected int a(cvr $$0) {
+      return 1;
    }
 }

@@ -14,7 +14,7 @@ public class bel extends DataFix {
    private static final int[] b = new int[]{0, 10, 50, 100, 150};
 
    public static int a(int $$0) {
-      return b[awh.a($$0 - 1, 0, b.length - 1)];
+      return b[awi.a($$0 - 1, 0, b.length - 1)];
    }
 
    public bel(Schema $$0, boolean $$1) {
@@ -35,7 +35,7 @@ public class bel extends DataFix {
             Typed<?> $$6x = $$3xx;
             if ($$5xx == 0 || $$5xx == 1) {
                int $$7 = $$3xx.getOptionalTyped($$2).flatMap($$1xxx -> $$1xxx.getOptionalTyped($$4)).map($$1xxx -> $$1xxx.getAllTyped($$6).size()).orElse(0);
-               $$5xx = awh.a($$7 / 2, 1, 5);
+               $$5xx = awi.a($$7 / 2, 1, 5);
                if ($$5xx > 1) {
                   $$6x = a($$3xx, $$5xx);
                }

@@ -1,8 +1,21 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class fut {
+   public float a;
+   public float b;
+   public boolean c;
+   public boolean d;
+   public boolean e;
+   public boolean f;
+   public boolean g;
+   public boolean h;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fut {
+   public void a(boolean $$0, float $$1) {
+   }
+
+   public eny a() {
+      return new eny(this.a, this.b);
+   }
+
+   public boolean b() {
+      return this.b > 1.0E-5F;
+   }
 }

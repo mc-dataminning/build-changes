@@ -31,11 +31,11 @@ public abstract class cx<T extends cx.a> implements ap<T> {
       this.a.remove($$0);
    }
 
-   protected void a(aow $$0, Predicate<T> $$1) {
+   protected void a(aox $$0, Predicate<T> $$1) {
       ajg $$2 = $$0.Q();
       Set<ap.a<T>> $$3 = this.a.get($$2);
       if ($$3 != null && !$$3.isEmpty()) {
-         eiv $$4 = br.b($$0, $$0);
+         ejc $$4 = br.b($$0, $$0);
          List<ap.a<T>> $$5 = null;
 
          for (ap.a<T> $$6 : $$3) {

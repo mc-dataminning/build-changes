@@ -34,7 +34,7 @@ public class hz extends jd {
    };
    private static final Logger e = LogUtils.getLogger();
    public static final hz c = new hz(0, 0, 0);
-   private static final int h = 1 + awh.f(awh.c(30000000));
+   private static final int h = 1 + awi.f(awi.c(30000000));
    private static final int i = h;
    public static final int d = 64 - h - i;
    private static final long j = (1L << h) - 1L;
@@ -77,7 +77,7 @@ public class hz extends jd {
    }
 
    public static hz a(double $$0, double $$1, double $$2) {
-      return new hz(awh.a($$0), awh.a($$1), awh.a($$2));
+      return new hz(awi.a($$0), awi.a($$1), awi.a($$2));
    }
 
    public static hz a(it $$0) {
@@ -103,8 +103,8 @@ public class hz extends jd {
       return $$0 == 0 && $$1 == 0 && $$2 == 0 ? this : new hz(this.u() + $$0, this.v() + $$1, this.w() + $$2);
    }
 
-   public ens b() {
-      return ens.b(this);
+   public enz b() {
+      return enz.b(this);
    }
 
    public hz a(jd $$0) {
@@ -190,7 +190,7 @@ public class hz extends jd {
       }
    }
 
-   public hz a(dfa $$0) {
+   public hz a(dfe $$0) {
       switch ($$0) {
          case a:
          default:
@@ -220,7 +220,7 @@ public class hz extends jd {
       return new hz.a(this.u(), this.v(), this.w());
    }
 
-   public static Iterable<hz> a(awo $$0, int $$1, hz $$2, int $$3) {
+   public static Iterable<hz> a(awp $$0, int $$1, hz $$2, int $$3) {
       return a($$0, $$1, $$2.u() - $$3, $$2.v() - $$3, $$2.w() - $$3, $$2.u() + $$3, $$2.v() + $$3, $$2.w() + $$3);
    }
 
@@ -229,7 +229,7 @@ public class hz extends jd {
       return Stream.of($$0, $$0.f(), $$0.h(), $$0.f().h());
    }
 
-   public static Iterable<hz> a(awo $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
+   public static Iterable<hz> a(awp $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
       int $$8 = $$5 - $$2 + 1;
       int $$9 = $$6 - $$3 + 1;
       int $$10 = $$7 - $$4 + 1;
@@ -331,7 +331,7 @@ public class hz extends jd {
       return StreamSupport.stream(a($$0, $$1).spliterator(), false);
    }
 
-   public static Stream<hz> a(eaw $$0) {
+   public static Stream<hz> a(ebd $$0) {
       return a(
          Math.min($$0.h(), $$0.k()),
          Math.min($$0.i(), $$0.l()),
@@ -342,8 +342,8 @@ public class hz extends jd {
       );
    }
 
-   public static Stream<hz> a(enn $$0) {
-      return a(awh.a($$0.a), awh.a($$0.b), awh.a($$0.c), awh.a($$0.d), awh.a($$0.e), awh.a($$0.f));
+   public static Stream<hz> a(enu $$0) {
+      return a(awi.a($$0.a), awi.a($$0.b), awi.a($$0.c), awi.a($$0.d), awi.a($$0.e), awi.a($$0.f));
    }
 
    public static Stream<hz> a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
@@ -443,7 +443,7 @@ public class hz extends jd {
       }
 
       public a(double $$0, double $$1, double $$2) {
-         this(awh.a($$0), awh.a($$1), awh.a($$2));
+         this(awi.a($$0), awi.a($$1), awi.a($$2));
       }
 
       @Override
@@ -467,7 +467,7 @@ public class hz extends jd {
       }
 
       @Override
-      public hz a(dfa $$0) {
+      public hz a(dfe $$0) {
          return super.a($$0).i();
       }
 
@@ -479,7 +479,7 @@ public class hz extends jd {
       }
 
       public hz.a b(double $$0, double $$1, double $$2) {
-         return this.d(awh.a($$0), awh.a($$1), awh.a($$2));
+         return this.d(awi.a($$0), awi.a($$1), awi.a($$2));
       }
 
       public hz.a g(jd $$0) {
@@ -525,11 +525,11 @@ public class hz extends jd {
       public hz.a a(ie.a $$0, int $$1, int $$2) {
          switch ($$0) {
             case a:
-               return this.d(awh.a(this.u(), $$1, $$2), this.v(), this.w());
+               return this.d(awi.a(this.u(), $$1, $$2), this.v(), this.w());
             case b:
-               return this.d(this.u(), awh.a(this.v(), $$1, $$2), this.w());
+               return this.d(this.u(), awi.a(this.v(), $$1, $$2), this.w());
             case c:
-               return this.d(this.u(), this.v(), awh.a(this.w(), $$1, $$2));
+               return this.d(this.u(), this.v(), awi.a(this.w(), $$1, $$2));
             default:
                throw new IllegalStateException("Unable to clamp axis " + $$0);
          }

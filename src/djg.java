@@ -1,82 +1,120 @@
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import java.util.Objects;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public abstract class djg {
-   private static final int a = 5;
-   private int b;
-   private double c;
+public class djg extends dix implements blp {
+   public static final int c = 6;
+   private static final Logger d = LogUtils.getLogger();
+   private final is<cpd> e = is.a(6, cpd.h);
+   private int f = -1;
 
-   protected abstract void a(cvn var1, hz var2, dlf var3);
-
-   protected abstract void b(cvn var1, hz var2, dlf var3);
-
-   protected abstract void a(cvn var1, hz var2, dlf var3, int var4, int var5);
-
-   protected abstract boolean a(chh var1);
-
-   public void a(chh $$0, cvn $$1, hz $$2, dlf $$3) {
-      int $$4 = this.b++;
-      if ($$4 == 0) {
-         this.a($$1, $$2, $$3);
-         $$1.a($$0, dpp.k, $$2);
-         d($$1, $$2, $$3);
-      }
-
-      this.a($$1, $$2, $$3, $$4, this.b);
-      this.c = Math.max($$0.gt(), this.c);
+   public djg(hz $$0, dlj $$1) {
+      super(diz.M, $$0, $$1);
    }
 
-   public void b(chh $$0, cvn $$1, hz $$2, dlf $$3) {
-      int $$4 = this.b--;
-      if (this.b == 0) {
-         this.b($$1, $$2, $$3);
-         $$1.a($$0, dpp.j, $$2);
-         this.c = 0.0;
-      }
+   private void c(int $$0) {
+      if ($$0 >= 0 && $$0 < 6) {
+         this.f = $$0;
+         dlj $$1 = this.r();
 
-      this.a($$1, $$2, $$3, $$4, this.b);
-   }
-
-   private List<chh> a(cvn $$0, hz $$1) {
-      double $$2 = this.c + 4.0;
-      enn $$3 = new enn($$1).g($$2);
-      return $$0.a(dpd.a(chh.class), $$3, this::a);
-   }
-
-   public void c(cvn $$0, hz $$1, dlf $$2) {
-      List<chh> $$3 = this.a($$0, $$1);
-      this.c = 0.0;
-
-      for (chh $$4 : $$3) {
-         this.c = Math.max($$4.gt(), this.c);
-      }
-
-      int $$5 = $$3.size();
-      int $$6 = this.b;
-      if ($$6 != $$5) {
-         boolean $$7 = $$5 != 0;
-         boolean $$8 = $$6 != 0;
-         if ($$7 && !$$8) {
-            this.a($$0, $$1, $$2);
-            $$0.a(null, dpp.k, $$1);
-         } else if (!$$7) {
-            this.b($$0, $$1, $$2);
-            $$0.a(null, dpp.j, $$1);
+         for (int $$2 = 0; $$2 < czw.c.size(); $$2++) {
+            boolean $$3 = !this.a($$2).b();
+            dma $$4 = czw.c.get($$2);
+            $$1 = $$1.a($$4, Boolean.valueOf($$3));
          }
 
-         this.b = $$5;
-      }
-
-      this.a($$0, $$1, $$2, $$6, $$5);
-      if ($$5 > 0) {
-         d($$0, $$1, $$2);
+         Objects.requireNonNull(this.o).a(this.p, $$1, 3);
+         this.o.a(dpw.c, this.p, dpw.a.a($$1));
+      } else {
+         d.error("Expected slot 0-5, got {}", $$0);
       }
    }
 
-   public int a() {
-      return this.b;
+   @Override
+   public void a(sw $$0) {
+      this.e.clear();
+      blq.b($$0, this.e);
+      this.f = $$0.h("last_interacted_slot");
    }
 
-   private static void d(cvn $$0, hz $$1, dlf $$2) {
-      $$0.a($$1, $$2.b(), 5);
+   @Override
+   protected void b(sw $$0) {
+      blq.a($$0, this.e, true);
+      $$0.a("last_interacted_slot", this.f);
+   }
+
+   public int f() {
+      return (int)this.e.stream().filter(Predicate.not(cpd::b)).count();
+   }
+
+   @Override
+   public void a() {
+      this.e.clear();
+   }
+
+   @Override
+   public int b() {
+      return 6;
+   }
+
+   @Override
+   public boolean aj_() {
+      return this.e.stream().allMatch(cpd::b);
+   }
+
+   @Override
+   public cpd a(int $$0) {
+      return this.e.get($$0);
+   }
+
+   @Override
+   public cpd a(int $$0, int $$1) {
+      cpd $$2 = Objects.requireNonNullElse(this.e.get($$0), cpd.h);
+      this.e.set($$0, cpd.h);
+      if (!$$2.b()) {
+         this.c($$0);
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public cpd b(int $$0) {
+      return this.a($$0, 1);
+   }
+
+   @Override
+   public void a(int $$0, cpd $$1) {
+      if ($$1.a(aui.av)) {
+         this.e.set($$0, $$1);
+         this.c($$0);
+      } else if ($$1.b()) {
+         this.a($$0, 1);
+      }
+   }
+
+   @Override
+   public boolean a(blp $$0, int $$1, cpd $$2) {
+      return $$0.a_($$2x -> $$2x.b() ? true : cpd.c($$2, $$2x) && $$2x.M() + $$2.M() <= Math.min($$2x.g(), $$0.al_()));
+   }
+
+   @Override
+   public int al_() {
+      return 1;
+   }
+
+   @Override
+   public boolean a(chl $$0) {
+      return blp.a(this, $$0);
+   }
+
+   @Override
+   public boolean b(int $$0, cpd $$1) {
+      return $$1.a(aui.av) && this.a($$0).b() && $$1.M() == this.al_();
+   }
+
+   public int g() {
+      return this.f;
    }
 }

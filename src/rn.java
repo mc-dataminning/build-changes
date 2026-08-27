@@ -12,7 +12,7 @@ import org.apache.commons.lang3.mutable.MutableInt;
 public class rn {
    private static final int a = 50;
 
-   public static Collection<rm> a(Collection<sm> $$0, aov $$1) {
+   public static Collection<rm> a(Collection<sm> $$0, aow $$1) {
       Map<String, List<sm>> $$2 = $$0.stream().collect(Collectors.groupingBy(sm::b));
       return $$2.entrySet().stream().flatMap($$1x -> {
          String $$2x = (String)$$1x.getKey();
@@ -22,7 +22,7 @@ public class rn {
       }).collect(ImmutableList.toImmutableList());
    }
 
-   public static rs a(sm $$0, int $$1, aov $$2) {
+   public static rs a(sm $$0, int $$1, aow $$2) {
       return new rs($$0, si.a($$1), $$2, sf.a());
    }
 
@@ -39,8 +39,8 @@ public class rn {
    }
 
    private static rm a(List<rs> $$0, String $$1, MutableInt $$2) {
-      Consumer<aov> $$3 = ru.c($$1);
-      Consumer<aov> $$4 = ru.d($$1);
+      Consumer<aow> $$3 = ru.c($$1);
+      Consumer<aow> $$4 = ru.d($$1);
       return new rm($$1 + ":" + $$2.incrementAndGet(), $$0, $$3, $$4);
    }
 }

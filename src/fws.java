@@ -1,111 +1,49 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.List;
-import java.util.Objects;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
 import javax.annotation.Nullable;
 
 public class fws {
-   public static final fws a = new fws();
-   public static final float b = Float.NEGATIVE_INFINITY;
-   private final fws.a[] c;
-   private final aiy[] d;
+   public static final int a = -1;
+   public final ie b;
+   public final int c;
+   public final String d;
+   public final fwu e;
 
-   private fws() {
-      this.c = new fws.a[0];
-      this.d = new aiy[0];
+   public fws(@Nullable ie $$0, int $$1, String $$2, fwu $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   public fws(gix $$0, fwn $$1, List<fwr> $$2) {
-      this.d = $$2.stream().flatMap(fwr::b).map(fwr.b::a).distinct().toArray(aiy[]::new);
-      Object2IntMap<aiy> $$3 = new Object2IntOpenHashMap();
+   protected static class a implements JsonDeserializer<fws> {
+      private static final int a = -1;
 
-      for (int $$4 = 0; $$4 < this.d.length; $$4++) {
-         $$3.put(this.d[$$4], $$4);
+      public fws a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         ie $$4 = this.c($$3);
+         int $$5 = this.a($$3);
+         String $$6 = this.b($$3);
+         fwu $$7 = (fwu)$$2.deserialize($$3, fwu.class);
+         return new fws($$4, $$5, $$6, $$7);
       }
 
-      List<fws.a> $$5 = Lists.newArrayList();
-
-      for (int $$6 = $$2.size() - 1; $$6 >= 0; $$6--) {
-         fwr $$7 = $$2.get($$6);
-         git $$8 = this.a($$0, $$1, $$7);
-         fws.b[] $$9 = $$7.b().map($$1x -> {
-            int $$2x = $$3.getInt($$1x.a());
-            return new fws.b($$2x, $$1x.b());
-         }).toArray(fws.b[]::new);
-         $$5.add(new fws.a($$9, $$8));
+      protected int a(JsonObject $$0) {
+         return avy.a($$0, "tintindex", -1);
       }
 
-      this.c = $$5.toArray(new fws.a[0]);
-   }
-
-   @Nullable
-   private git a(gix $$0, fwn $$1, fwr $$2) {
-      gje $$3 = $$0.a($$2.a());
-      return Objects.equals($$3, $$1) ? null : $$0.a($$2.a(), giu.a);
-   }
-
-   @Nullable
-   public git a(git $$0, coz $$1, @Nullable fpx $$2, @Nullable bog $$3, int $$4) {
-      if (this.c.length != 0) {
-         cou $$5 = $$1.d();
-         int $$6 = this.d.length;
-         float[] $$7 = new float[$$6];
-
-         for (int $$8 = 0; $$8 < $$6; $$8++) {
-            aiy $$9 = this.d[$$8];
-            ggb $$10 = gga.a($$5, $$9);
-            if ($$10 != null) {
-               $$7[$$8] = $$10.call($$1, $$2, $$3, $$4);
-            } else {
-               $$7[$$8] = Float.NEGATIVE_INFINITY;
-            }
-         }
-
-         for (fws.a $$11 : this.c) {
-            if ($$11.a($$7)) {
-               git $$12 = $$11.b;
-               if ($$12 == null) {
-                  return $$0;
-               }
-
-               return $$12;
-            }
-         }
+      private String b(JsonObject $$0) {
+         return avy.i($$0, "texture");
       }
 
-      return $$0;
-   }
-
-   static class a {
-      private final fws.b[] a;
       @Nullable
-      final git b;
-
-      a(fws.b[] $$0, @Nullable git $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      boolean a(float[] $$0) {
-         for (fws.b $$1 : this.a) {
-            float $$2 = $$0[$$1.a];
-            if ($$2 < $$1.b) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-   }
-
-   static class b {
-      public final int a;
-      public final float b;
-
-      b(int $$0, float $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      private ie c(JsonObject $$0) {
+         String $$1 = avy.a($$0, "cullface", "");
+         return ie.a($$1);
       }
    }
 }

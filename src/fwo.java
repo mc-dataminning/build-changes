@@ -1,166 +1,320 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.io.Reader;
-import java.lang.reflect.Type;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
-
 public class fwo {
-   private final Map<String, fwv> a = Maps.newLinkedHashMap();
-   private fxa b;
+   private static final float a = 0.8888889F;
+   private final ghb[] b = new ghb[2];
+   private final ghb[] c = new ghb[2];
+   private ghb d;
 
-   public static fwo a(fwo.a $$0, Reader $$1) {
-      return avx.a($$0.a, $$1, fwo.class);
+   protected void a() {
+      this.b[0] = exo.P().aD().b().b(cyu.H.o()).e();
+      this.b[1] = gjg.c.c();
+      this.c[0] = exo.P().aD().b().b(cyu.G.o()).e();
+      this.c[1] = gjg.d.c();
+      this.d = gjg.e.c();
    }
 
-   public static fwo a(fwo.a $$0, JsonElement $$1) {
-      return (fwo)$$0.a.fromJson($$1, fwo.class);
+   private static boolean a(egw $$0, egw $$1) {
+      return $$1.a().a($$0.a());
    }
 
-   public fwo(Map<String, fwv> $$0, fxa $$1) {
-      this.b = $$1;
-      this.a.putAll($$0);
-   }
-
-   public fwo(List<fwo> $$0) {
-      fwo $$1 = null;
-
-      for (fwo $$2 : $$0) {
-         if ($$2.c()) {
-            this.a.clear();
-            $$1 = $$2;
-         }
-
-         this.a.putAll($$2.a);
-      }
-
-      if ($$1 != null) {
-         this.b = $$1.b;
-      }
-   }
-
-   @VisibleForTesting
-   public boolean a(String $$0) {
-      return this.a.get($$0) != null;
-   }
-
-   @VisibleForTesting
-   public fwv b(String $$0) {
-      fwv $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         throw new fwo.c();
+   private static boolean a(cux $$0, ie $$1, float $$2, hz $$3, dlj $$4) {
+      if ($$4.p()) {
+         eos $$5 = eop.a(0.0, 0.0, 0.0, 1.0, (double)$$2, 1.0);
+         eos $$6 = $$4.c($$0, $$3);
+         return eop.a($$5, $$6, $$1);
       } else {
-         return $$1;
-      }
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof fwo $$1 && this.a.equals($$1.a)) {
-            return this.c() ? this.b.equals($$1.b) : !$$1.c();
-         }
-
          return false;
       }
    }
 
-   @Override
-   public int hashCode() {
-      return 31 * this.a.hashCode() + (this.c() ? this.b.hashCode() : 0);
+   private static boolean a(cux $$0, hz $$1, ie $$2, float $$3, dlj $$4) {
+      return a($$0, $$2, $$3, $$1.a($$2), $$4);
    }
 
-   public Map<String, fwv> a() {
-      return this.a;
+   private static boolean a(cux $$0, hz $$1, dlj $$2, ie $$3) {
+      return a($$0, $$3.g(), 1.0F, $$1, $$2);
    }
 
-   @VisibleForTesting
-   public Set<fwv> b() {
-      Set<fwv> $$0 = Sets.newHashSet(this.a.values());
-      if (this.c()) {
-         $$0.addAll(this.b.b());
-      }
-
-      return $$0;
+   public static boolean a(cuu $$0, hz $$1, egw $$2, dlj $$3, ie $$4, egw $$5) {
+      return !a($$0, $$1, $$3, $$4) && !a($$2, $$5);
    }
 
-   public boolean c() {
-      return this.b != null;
-   }
-
-   public fxa d() {
-      return this.b;
-   }
-
-   public static final class a {
-      protected final Gson a = new GsonBuilder()
-         .registerTypeAdapter(fwo.class, new fwo.b())
-         .registerTypeAdapter(fww.class, new fww.a())
-         .registerTypeAdapter(fwv.class, new fwv.a())
-         .registerTypeAdapter(fxa.class, new fxa.a(this))
-         .registerTypeAdapter(fxc.class, new fxc.a())
-         .create();
-      private dlg<cyo, dlf> b;
-
-      public dlg<cyo, dlf> a() {
-         return this.b;
-      }
-
-      public void a(dlg<cyo, dlf> $$0) {
-         this.b = $$0;
-      }
-   }
-
-   public static class b implements JsonDeserializer<fwo> {
-      public fwo a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         Map<String, fwv> $$4 = this.a($$2, $$3);
-         fxa $$5 = this.b($$2, $$3);
-         if (!$$4.isEmpty() || $$5 != null && !$$5.b().isEmpty()) {
-            return new fwo($$4, $$5);
+   public void a(cuu $$0, hz $$1, esl $$2, dlj $$3, egw $$4) {
+      boolean $$5 = $$4.a(auf.b);
+      ghb[] $$6 = $$5 ? this.b : this.c;
+      int $$7 = $$5 ? 16777215 : fvf.c($$0, $$1);
+      float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
+      float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
+      float $$10 = (float)($$7 & 0xFF) / 255.0F;
+      dlj $$11 = $$0.a_($$1.a(ie.a));
+      egw $$12 = $$11.u();
+      dlj $$13 = $$0.a_($$1.a(ie.b));
+      egw $$14 = $$13.u();
+      dlj $$15 = $$0.a_($$1.a(ie.c));
+      egw $$16 = $$15.u();
+      dlj $$17 = $$0.a_($$1.a(ie.d));
+      egw $$18 = $$17.u();
+      dlj $$19 = $$0.a_($$1.a(ie.e));
+      egw $$20 = $$19.u();
+      dlj $$21 = $$0.a_($$1.a(ie.f));
+      egw $$22 = $$21.u();
+      boolean $$23 = !a($$4, $$14);
+      boolean $$24 = a($$0, $$1, $$4, $$3, ie.a, $$12) && !a($$0, $$1, ie.a, 0.8888889F, $$11);
+      boolean $$25 = a($$0, $$1, $$4, $$3, ie.c, $$16);
+      boolean $$26 = a($$0, $$1, $$4, $$3, ie.d, $$18);
+      boolean $$27 = a($$0, $$1, $$4, $$3, ie.e, $$20);
+      boolean $$28 = a($$0, $$1, $$4, $$3, ie.f, $$22);
+      if ($$23 || $$24 || $$28 || $$27 || $$25 || $$26) {
+         float $$29 = $$0.a(ie.a, true);
+         float $$30 = $$0.a(ie.b, true);
+         float $$31 = $$0.a(ie.c, true);
+         float $$32 = $$0.a(ie.e, true);
+         egv $$33 = $$4.a();
+         float $$34 = this.a($$0, $$33, $$1, $$3, $$4);
+         float $$35;
+         float $$36;
+         float $$37;
+         float $$38;
+         if ($$34 >= 1.0F) {
+            $$35 = 1.0F;
+            $$36 = 1.0F;
+            $$37 = 1.0F;
+            $$38 = 1.0F;
          } else {
-            throw new JsonParseException("Neither 'variants' nor 'multipart' found");
+            float $$39 = this.a($$0, $$33, $$1.e(), $$15, $$16);
+            float $$40 = this.a($$0, $$33, $$1.f(), $$17, $$18);
+            float $$41 = this.a($$0, $$33, $$1.h(), $$21, $$22);
+            float $$42 = this.a($$0, $$33, $$1.g(), $$19, $$20);
+            $$35 = this.a($$0, $$33, $$34, $$39, $$41, $$1.a(ie.c).a(ie.f));
+            $$36 = this.a($$0, $$33, $$34, $$39, $$42, $$1.a(ie.c).a(ie.e));
+            $$37 = this.a($$0, $$33, $$34, $$40, $$41, $$1.a(ie.d).a(ie.f));
+            $$38 = this.a($$0, $$33, $$34, $$40, $$42, $$1.a(ie.d).a(ie.e));
          }
-      }
 
-      protected Map<String, fwv> a(JsonDeserializationContext $$0, JsonObject $$1) {
-         Map<String, fwv> $$2 = Maps.newHashMap();
-         if ($$1.has("variants")) {
-            JsonObject $$3 = avx.u($$1, "variants");
+         double $$47 = (double)($$1.u() & 15);
+         double $$48 = (double)($$1.v() & 15);
+         double $$49 = (double)($$1.w() & 15);
+         float $$50 = 0.001F;
+         float $$51 = $$24 ? 0.001F : 0.0F;
+         if ($$23 && !a($$0, $$1, ie.b, Math.min(Math.min($$36, $$38), Math.min($$37, $$35)), $$13)) {
+            $$36 -= 0.001F;
+            $$38 -= 0.001F;
+            $$37 -= 0.001F;
+            $$35 -= 0.001F;
+            enz $$52 = $$4.c($$0, $$1);
+            float $$54;
+            float $$56;
+            float $$58;
+            float $$60;
+            float $$55;
+            float $$57;
+            float $$59;
+            float $$61;
+            if ($$52.c == 0.0 && $$52.e == 0.0) {
+               ghb $$53 = $$6[0];
+               $$54 = $$53.a(0.0F);
+               $$55 = $$53.c(0.0F);
+               $$56 = $$54;
+               $$57 = $$53.c(1.0F);
+               $$58 = $$53.a(1.0F);
+               $$59 = $$57;
+               $$60 = $$58;
+               $$61 = $$55;
+            } else {
+               ghb $$62 = $$6[1];
+               float $$63 = (float)awi.d($$52.e, $$52.c) - (float) (Math.PI / 2);
+               float $$64 = awi.a($$63) * 0.25F;
+               float $$65 = awi.b($$63) * 0.25F;
+               float $$66 = 0.5F;
+               $$54 = $$62.a(0.5F + (-$$65 - $$64));
+               $$55 = $$62.c(0.5F + -$$65 + $$64);
+               $$56 = $$62.a(0.5F + -$$65 + $$64);
+               $$57 = $$62.c(0.5F + $$65 + $$64);
+               $$58 = $$62.a(0.5F + $$65 + $$64);
+               $$59 = $$62.c(0.5F + ($$65 - $$64));
+               $$60 = $$62.a(0.5F + ($$65 - $$64));
+               $$61 = $$62.c(0.5F + (-$$65 - $$64));
+            }
 
-            for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
-               $$2.put($$4.getKey(), (fwv)$$0.deserialize($$4.getValue(), fwv.class));
+            float $$75 = ($$54 + $$56 + $$58 + $$60) / 4.0F;
+            float $$76 = ($$55 + $$57 + $$59 + $$61) / 4.0F;
+            float $$77 = $$6[0].k();
+            $$54 = awi.i($$77, $$54, $$75);
+            $$56 = awi.i($$77, $$56, $$75);
+            $$58 = awi.i($$77, $$58, $$75);
+            $$60 = awi.i($$77, $$60, $$75);
+            $$55 = awi.i($$77, $$55, $$76);
+            $$57 = awi.i($$77, $$57, $$76);
+            $$59 = awi.i($$77, $$59, $$76);
+            $$61 = awi.i($$77, $$61, $$76);
+            int $$78 = this.a($$0, $$1);
+            float $$79 = $$30 * $$8;
+            float $$80 = $$30 * $$9;
+            float $$81 = $$30 * $$10;
+            this.a($$2, $$47 + 0.0, $$48 + (double)$$36, $$49 + 0.0, $$79, $$80, $$81, $$54, $$55, $$78);
+            this.a($$2, $$47 + 0.0, $$48 + (double)$$38, $$49 + 1.0, $$79, $$80, $$81, $$56, $$57, $$78);
+            this.a($$2, $$47 + 1.0, $$48 + (double)$$37, $$49 + 1.0, $$79, $$80, $$81, $$58, $$59, $$78);
+            this.a($$2, $$47 + 1.0, $$48 + (double)$$35, $$49 + 0.0, $$79, $$80, $$81, $$60, $$61, $$78);
+            if ($$4.b($$0, $$1.c())) {
+               this.a($$2, $$47 + 0.0, $$48 + (double)$$36, $$49 + 0.0, $$79, $$80, $$81, $$54, $$55, $$78);
+               this.a($$2, $$47 + 1.0, $$48 + (double)$$35, $$49 + 0.0, $$79, $$80, $$81, $$60, $$61, $$78);
+               this.a($$2, $$47 + 1.0, $$48 + (double)$$37, $$49 + 1.0, $$79, $$80, $$81, $$58, $$59, $$78);
+               this.a($$2, $$47 + 0.0, $$48 + (double)$$38, $$49 + 1.0, $$79, $$80, $$81, $$56, $$57, $$78);
             }
          }
 
-         return $$2;
-      }
+         if ($$24) {
+            float $$82 = $$6[0].c();
+            float $$83 = $$6[0].d();
+            float $$84 = $$6[0].g();
+            float $$85 = $$6[0].h();
+            int $$86 = this.a($$0, $$1.d());
+            float $$87 = $$29 * $$8;
+            float $$88 = $$29 * $$9;
+            float $$89 = $$29 * $$10;
+            this.a($$2, $$47, $$48 + (double)$$51, $$49 + 1.0, $$87, $$88, $$89, $$82, $$85, $$86);
+            this.a($$2, $$47, $$48 + (double)$$51, $$49, $$87, $$88, $$89, $$82, $$84, $$86);
+            this.a($$2, $$47 + 1.0, $$48 + (double)$$51, $$49, $$87, $$88, $$89, $$83, $$84, $$86);
+            this.a($$2, $$47 + 1.0, $$48 + (double)$$51, $$49 + 1.0, $$87, $$88, $$89, $$83, $$85, $$86);
+         }
 
-      @Nullable
-      protected fxa b(JsonDeserializationContext $$0, JsonObject $$1) {
-         if (!$$1.has("multipart")) {
-            return null;
-         } else {
-            JsonArray $$2 = avx.v($$1, "multipart");
-            return (fxa)$$0.deserialize($$2, fxa.class);
+         int $$90 = this.a($$0, $$1);
+
+         for (ie $$91 : ie.c.a) {
+            float $$92;
+            float $$93;
+            double $$94;
+            double $$96;
+            double $$95;
+            double $$97;
+            boolean $$98;
+            switch ($$91) {
+               case c:
+                  $$92 = $$36;
+                  $$93 = $$35;
+                  $$94 = $$47;
+                  $$95 = $$47 + 1.0;
+                  $$96 = $$49 + 0.001F;
+                  $$97 = $$49 + 0.001F;
+                  $$98 = $$25;
+                  break;
+               case d:
+                  $$92 = $$37;
+                  $$93 = $$38;
+                  $$94 = $$47 + 1.0;
+                  $$95 = $$47;
+                  $$96 = $$49 + 1.0 - 0.001F;
+                  $$97 = $$49 + 1.0 - 0.001F;
+                  $$98 = $$26;
+                  break;
+               case e:
+                  $$92 = $$38;
+                  $$93 = $$36;
+                  $$94 = $$47 + 0.001F;
+                  $$95 = $$47 + 0.001F;
+                  $$96 = $$49 + 1.0;
+                  $$97 = $$49;
+                  $$98 = $$27;
+                  break;
+               default:
+                  $$92 = $$35;
+                  $$93 = $$37;
+                  $$94 = $$47 + 1.0 - 0.001F;
+                  $$95 = $$47 + 1.0 - 0.001F;
+                  $$96 = $$49;
+                  $$97 = $$49 + 1.0;
+                  $$98 = $$28;
+            }
+
+            if ($$98 && !a($$0, $$1, $$91, Math.max($$92, $$93), $$0.a_($$1.a($$91)))) {
+               hz $$120 = $$1.a($$91);
+               ghb $$121 = $$6[1];
+               if (!$$5) {
+                  cys $$122 = $$0.a_($$120).b();
+                  if ($$122 instanceof dci || $$122 instanceof ddb) {
+                     $$121 = this.d;
+                  }
+               }
+
+               float $$123 = $$121.a(0.0F);
+               float $$124 = $$121.a(0.5F);
+               float $$125 = $$121.c((1.0F - $$92) * 0.5F);
+               float $$126 = $$121.c((1.0F - $$93) * 0.5F);
+               float $$127 = $$121.c(0.5F);
+               float $$128 = $$91.o() == ie.a.c ? $$31 : $$32;
+               float $$129 = $$30 * $$128 * $$8;
+               float $$130 = $$30 * $$128 * $$9;
+               float $$131 = $$30 * $$128 * $$10;
+               this.a($$2, $$94, $$48 + (double)$$92, $$96, $$129, $$130, $$131, $$123, $$125, $$90);
+               this.a($$2, $$95, $$48 + (double)$$93, $$97, $$129, $$130, $$131, $$124, $$126, $$90);
+               this.a($$2, $$95, $$48 + (double)$$51, $$97, $$129, $$130, $$131, $$124, $$127, $$90);
+               this.a($$2, $$94, $$48 + (double)$$51, $$96, $$129, $$130, $$131, $$123, $$127, $$90);
+               if ($$121 != this.d) {
+                  this.a($$2, $$94, $$48 + (double)$$51, $$96, $$129, $$130, $$131, $$123, $$127, $$90);
+                  this.a($$2, $$95, $$48 + (double)$$51, $$97, $$129, $$130, $$131, $$124, $$127, $$90);
+                  this.a($$2, $$95, $$48 + (double)$$93, $$97, $$129, $$130, $$131, $$124, $$126, $$90);
+                  this.a($$2, $$94, $$48 + (double)$$92, $$96, $$129, $$130, $$131, $$123, $$125, $$90);
+               }
+            }
          }
       }
    }
 
-   protected class c extends RuntimeException {
+   private float a(cuu $$0, egv $$1, float $$2, float $$3, float $$4, hz $$5) {
+      if (!($$4 >= 1.0F) && !($$3 >= 1.0F)) {
+         float[] $$6 = new float[2];
+         if ($$4 > 0.0F || $$3 > 0.0F) {
+            float $$7 = this.a($$0, $$1, $$5);
+            if ($$7 >= 1.0F) {
+               return 1.0F;
+            }
+
+            this.a($$6, $$7);
+         }
+
+         this.a($$6, $$2);
+         this.a($$6, $$4);
+         this.a($$6, $$3);
+         return $$6[0] / $$6[1];
+      } else {
+         return 1.0F;
+      }
+   }
+
+   private void a(float[] $$0, float $$1) {
+      if ($$1 >= 0.8F) {
+         $$0[0] += $$1 * 10.0F;
+         $$0[1] += 10.0F;
+      } else if ($$1 >= 0.0F) {
+         $$0[0] += $$1;
+         $$0[1]++;
+      }
+   }
+
+   private float a(cuu $$0, egv $$1, hz $$2) {
+      dlj $$3 = $$0.a_($$2);
+      return this.a($$0, $$1, $$2, $$3, $$3.u());
+   }
+
+   private float a(cuu $$0, egv $$1, hz $$2, dlj $$3, egw $$4) {
+      if ($$1.a($$4.a())) {
+         dlj $$5 = $$0.a_($$2.c());
+         return $$1.a($$5.u().a()) ? 1.0F : $$4.d();
+      } else {
+         return !$$3.e() ? 0.0F : -1.0F;
+      }
+   }
+
+   private void a(esl $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
+      $$0.a($$1, $$2, $$3).a($$4, $$5, $$6, 1.0F).a($$7, $$8).b($$9).a(0.0F, 1.0F, 0.0F).e();
+   }
+
+   private int a(cuu $$0, hz $$1) {
+      int $$2 = fvr.a($$0, $$1);
+      int $$3 = fvr.a($$0, $$1.c());
+      int $$4 = $$2 & 0xFF;
+      int $$5 = $$3 & 0xFF;
+      int $$6 = $$2 >> 16 & 0xFF;
+      int $$7 = $$3 >> 16 & 0xFF;
+      return ($$4 > $$5 ? $$4 : $$5) | ($$6 > $$7 ? $$6 : $$7) << 16;
    }
 }

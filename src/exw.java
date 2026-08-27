@@ -1,77 +1,46 @@
-import com.mojang.util.UndashedUuid;
-import java.util.Arrays;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class exw {
-   private final String a;
-   private final UUID b;
-   private final String c;
-   private final Optional<String> d;
-   private final Optional<String> e;
-   private final exw.a f;
+   private static final Logger a = LogUtils.getLogger();
+   private final exo b;
+   @Nullable
+   private CompletableFuture<Boolean> c;
+   private boolean d;
 
-   public exw(String $$0, UUID $$1, String $$2, Optional<String> $$3, Optional<String> $$4, exw.a $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+   public exw(exo $$0) {
+      this.b = $$0;
    }
 
-   public String a() {
-      return "token:" + this.c + ":" + UndashedUuid.toString(this.b);
+   public void a(ffl $$0) {
+      if (!this.b.ag() && !this.b.m.w && !this.d && this.a()) {
+         this.b.a(new fik($$0));
+         this.d = true;
+      }
    }
 
-   public UUID b() {
-      return this.b;
-   }
-
-   public String c() {
-      return this.a;
-   }
-
-   public String d() {
-      return this.c;
-   }
-
-   public Optional<String> e() {
-      return this.e;
-   }
-
-   public Optional<String> f() {
-      return this.d;
-   }
-
-   public exw.a g() {
-      return this.f;
-   }
-
-   public static enum a {
-      a("legacy"),
-      b("mojang"),
-      c("msa");
-
-      private static final Map<String, exw.a> d = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, Function.identity()));
-      private final String e;
-
-      private a(String $$0) {
-         this.e = $$0;
+   private Boolean a() {
+      if (this.c == null) {
+         this.c = CompletableFuture.supplyAsync(this::b, ac.f());
       }
 
-      @Nullable
-      public static exw.a a(String $$0) {
-         return d.get($$0.toLowerCase(Locale.ROOT));
+      try {
+         return this.c.getNow(false);
+      } catch (CompletionException var2) {
+         a.warn("Failed to retrieve realms subscriptions", var2);
+         this.d = true;
+         return false;
       }
+   }
 
-      public String a() {
-         return this.e;
+   private boolean b() {
+      try {
+         return esx.a(this.b).b().a.stream().anyMatch($$0 -> !$$0.j && this.b.b($$0.g));
+      } catch (euk var2) {
+         return false;
       }
    }
 }

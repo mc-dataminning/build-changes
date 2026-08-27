@@ -1,84 +1,116 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.stream.Stream;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
 public class eic {
-   private static final String a = "command_storage_";
-   private final Map<String, eic.a> b = Maps.newHashMap();
-   private final eif c;
+   private final hz a;
+   private final cnr b;
+   @Nullable
+   private final vq c;
 
-   public eic(eif $$0) {
-      this.c = $$0;
+   public eic(hz $$0, cnr $$1, @Nullable vq $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   private eic.a a(String $$0) {
-      eic.a $$1 = new eic.a();
-      this.b.put($$0, $$1);
-      return $$1;
+   public static eic a(sw $$0) {
+      hz $$1 = tl.b($$0.p("Pos"));
+      cnr $$2 = cnr.a($$0.l("Color"), cnr.a);
+      vq $$3 = $$0.e("Name") ? vq.a.a($$0.l("Name")) : null;
+      return new eic($$1, $$2, $$3);
    }
 
-   private ehu.a<eic.a> b(String $$0) {
-      return new ehu.a<>(() -> this.a($$0), $$1 -> this.a($$0).b($$1), axo.h);
+   @Nullable
+   public static eic a(cux $$0, hz $$1) {
+      if ($$0.c_($$1) instanceof din $$3) {
+         cnr $$4 = $$3.g();
+         vq $$5 = $$3.ae() ? $$3.af() : null;
+         return new eic($$1, $$4, $$5);
+      } else {
+         return null;
+      }
    }
 
-   public sw a(aiy $$0) {
-      String $$1 = $$0.b();
-      eic.a $$2 = this.c.b(this.b($$1), c($$1));
-      return $$2 != null ? $$2.a($$0.a()) : new sw();
+   public hz a() {
+      return this.a;
    }
 
-   public void a(aiy $$0, sw $$1) {
-      String $$2 = $$0.b();
-      this.c.a(this.b($$2), c($$2)).a($$0.a(), $$1);
+   public cnr b() {
+      return this.b;
    }
 
-   public Stream<aiy> a() {
-      return this.b.entrySet().stream().flatMap($$0 -> $$0.getValue().b($$0.getKey()));
+   public eid.a c() {
+      switch (this.b) {
+         case a:
+            return eid.a.k;
+         case b:
+            return eid.a.l;
+         case c:
+            return eid.a.m;
+         case d:
+            return eid.a.n;
+         case e:
+            return eid.a.o;
+         case f:
+            return eid.a.p;
+         case g:
+            return eid.a.q;
+         case h:
+            return eid.a.r;
+         case i:
+            return eid.a.s;
+         case j:
+            return eid.a.t;
+         case k:
+            return eid.a.u;
+         case l:
+            return eid.a.v;
+         case m:
+            return eid.a.w;
+         case n:
+            return eid.a.x;
+         case o:
+            return eid.a.y;
+         case p:
+         default:
+            return eid.a.z;
+      }
    }
 
-   private static String c(String $$0) {
-      return "command_storage_" + $$0;
+   @Nullable
+   public vq d() {
+      return this.c;
    }
 
-   static class a extends ehu {
-      private static final String a = "contents";
-      private final Map<String, sw> b = Maps.newHashMap();
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         eic $$1 = (eic)$$0;
+         return Objects.equals(this.a, $$1.a) && this.b == $$1.b && Objects.equals(this.c, $$1.c);
+      } else {
+         return false;
+      }
+   }
 
-      eic.a b(sw $$0) {
-         sw $$1 = $$0.p("contents");
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.a, this.b, this.c);
+   }
 
-         for (String $$2 : $$1.e()) {
-            this.b.put($$2, $$1.p($$2));
-         }
-
-         return this;
+   public sw e() {
+      sw $$0 = new sw();
+      $$0.a("Pos", tl.a(this.a));
+      $$0.a("Color", this.b.b());
+      if (this.c != null) {
+         $$0.a("Name", vq.a.a(this.c));
       }
 
-      @Override
-      public sw a(sw $$0) {
-         sw $$1 = new sw();
-         this.b.forEach(($$1x, $$2) -> $$1.a($$1x, $$2.h()));
-         $$0.a("contents", $$1);
-         return $$0;
-      }
+      return $$0;
+   }
 
-      public sw a(String $$0) {
-         sw $$1 = this.b.get($$0);
-         return $$1 != null ? $$1 : new sw();
-      }
-
-      public void a(String $$0, sw $$1) {
-         if ($$1.g()) {
-            this.b.remove($$0);
-         } else {
-            this.b.put($$0, $$1);
-         }
-
-         this.c();
-      }
-
-      public Stream<aiy> b(String $$0) {
-         return this.b.keySet().stream().map($$1 -> new aiy($$0, $$1));
-      }
+   public String f() {
+      return "banner-" + this.a.u() + "," + this.a.v() + "," + this.a.w();
    }
 }

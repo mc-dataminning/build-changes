@@ -1,118 +1,52 @@
-public class fen extends few {
-   private static final vq c = vq.c("options.languageAccuracyWarning").a(n.h);
-   private fen.a k;
-   final gia l;
+public class fen extends ffl {
+   private static final vq a = vq.c("gui.toMenu");
+   private static final vq b = vq.c("gui.toTitle");
+   private final ffl c;
+   private final vq k;
+   private final vq l;
+   private final fde m = fde.d();
 
-   public fen(ffe $$0, exl $$1, gia $$2) {
-      super($$0, $$1, vq.c("options.language.title"));
-      this.l = $$2;
+   public fen(ffl $$0, vq $$1, vq $$2) {
+      this($$0, $$1, $$2, a);
+   }
+
+   public fen(ffl $$0, vq $$1, vq $$2, vq $$3) {
+      super($$1);
+      this.c = $$0;
+      this.k = $$2;
+      this.l = $$3;
    }
 
    @Override
    protected void aQ_() {
-      this.k = this.d(new fen.a(this.f));
-      this.d(this.b.N().a(this.b, this.g / 2 - 155, this.h - 38, 150));
-      this.d(ezh.a(vp.d, $$0 -> this.o()).a(this.g / 2 - 155 + 160, this.h - 38, 150, 20).a());
-   }
-
-   void o() {
-      fen.a.a $$0 = this.k.i();
-      if ($$0 != null && !$$0.b.equals(this.l.a())) {
-         this.l.a($$0.b);
-         this.b.ad = $$0.b;
-         this.f.k();
-         this.b.as();
+      this.m.c().b().a(10);
+      this.m.a(new fav(this.e, this.i));
+      this.m.a(new fai(this.k, this.i).c(this.g - 50).b(true));
+      ezo $$0;
+      if (this.f.E()) {
+         $$0 = ezo.a(this.l, $$0x -> this.f.a(this.c)).a();
+      } else {
+         $$0 = ezo.a(b, $$0x -> this.f.a(new ffq())).a();
       }
 
-      this.f.a(this.a);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (fdh.a($$0)) {
-         fen.a.a $$3 = this.k.i();
-         if ($$3 != null) {
-            $$3.b();
-            this.o();
-            return true;
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
+      this.m.a($$0);
+      this.m.a();
+      this.m.a(this::c);
+      this.c();
    }
 
    @Override
-   public void a(eyu $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 16, 16777215);
-      $$0.a(this.i, c, this.g / 2, this.h - 56, -8355712);
+   protected void c() {
+      fcy.a(this.m, this.F());
    }
 
    @Override
-   public void b(eyu $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
+   public vq i() {
+      return vp.a(this.e, this.k);
    }
 
-   class a extends fad<fen.a.a> {
-      public a(exh $$0) {
-         super($$0, fen.this.g, fen.this.h - 93, 32, 18);
-         String $$1 = fen.this.l.a();
-         fen.this.l.b().forEach(($$1x, $$2) -> {
-            fen.a.a $$3 = new fen.a.a($$1x, $$2);
-            this.b($$3);
-            if ($$1.equals($$1x)) {
-               this.a($$3);
-            }
-         });
-         if (this.i() != null) {
-            this.e(this.i());
-         }
-      }
-
-      @Override
-      protected int c() {
-         return super.c() + 20;
-      }
-
-      @Override
-      public int b() {
-         return super.b() + 50;
-      }
-
-      public class a extends fad.a<fen.a.a> {
-         final String b;
-         private final vq c;
-         private long d;
-
-         public a(String $$1, ghz $$2) {
-            this.b = $$1;
-            this.c = $$2.a();
-         }
-
-         @Override
-         public void a(eyu $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.a(fen.this.i, this.c, a.this.g / 2, $$2 + 1, 16777215);
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            this.b();
-            if (ac.b() - this.d < 250L) {
-               fen.this.o();
-            }
-
-            this.d = ac.b();
-            return true;
-         }
-
-         void b() {
-            a.this.a(this);
-         }
-
-         @Override
-         public vq a() {
-            return vq.a("narrator.select", this.c);
-         }
-      }
+   @Override
+   public boolean aO_() {
+      return false;
    }
 }

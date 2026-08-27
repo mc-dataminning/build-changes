@@ -1,20 +1,31 @@
-public class gct extends gbj<cdw, fnw<cdw>> {
-   private static final aiy a = new aiy("textures/entity/skeleton/skeleton.png");
+public class gct extends gcg<car, fnt<car>> {
+   private static final aiy a = new aiy("textures/entity/rabbit/brown.png");
+   private static final aiy i = new aiy("textures/entity/rabbit/white.png");
+   private static final aiy j = new aiy("textures/entity/rabbit/black.png");
+   private static final aiy k = new aiy("textures/entity/rabbit/gold.png");
+   private static final aiy l = new aiy("textures/entity/rabbit/salt.png");
+   private static final aiy m = new aiy("textures/entity/rabbit/white_splotched.png");
+   private static final aiy n = new aiy("textures/entity/rabbit/toast.png");
+   private static final aiy o = new aiy("textures/entity/rabbit/caerbannog.png");
 
-   public gct(gas.a $$0) {
-      this($$0, fpb.bj, fpb.bl, fpb.bm);
+   public gct(gba.a $$0) {
+      super($$0, new fnt<>($$0.a(fpi.ba)), 0.3F);
    }
 
-   public gct(gas.a $$0, fpa $$1, fpa $$2, fpa $$3) {
-      super($$0, new fnw<>($$0.a($$1)), 0.5F);
-      this.a(new get<>(this, new fnw($$0.a($$2)), new fnw($$0.a($$3)), $$0.g()));
-   }
-
-   public aiy a(cdw $$0) {
-      return a;
-   }
-
-   protected boolean b(cdw $$0) {
-      return $$0.gg();
+   public aiy a(car $$0) {
+      String $$1 = n.a($$0.ad().getString());
+      if ("Toast".equals($$1)) {
+         return n;
+      } else {
+         return switch ($$0.gg()) {
+            case a -> a;
+            case b -> i;
+            case c -> j;
+            case e -> k;
+            case f -> l;
+            case d -> m;
+            case g -> o;
+         };
+      }
    }
 }

@@ -11,7 +11,7 @@ import org.slf4j.Logger;
 public class wz implements vr {
    private static final Logger d = LogUtils.getLogger();
    public static final MapCodec<wz> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("selector").forGetter(wz::b), avp.a(vs.a, "separator").forGetter(wz::d)).apply($$0, wz::new)
+      $$0 -> $$0.group(Codec.STRING.fieldOf("selector").forGetter(wz::b), avq.a(vs.a, "separator").forGetter(wz::d)).apply($$0, wz::new)
    );
    public static final vr.a<wz> b = new vr.a<>(a, "selector");
    private final String e;
@@ -58,10 +58,10 @@ public class wz implements vr {
    }
 
    @Override
-   public we a(@Nullable du $$0, @Nullable bno $$1, int $$2) throws CommandSyntaxException {
+   public we a(@Nullable du $$0, @Nullable bnq $$1, int $$2) throws CommandSyntaxException {
       if ($$0 != null && this.f != null) {
          Optional<? extends vq> $$3 = vt.a($$0, this.c, $$1, $$2);
-         return vt.a(this.f.b($$0), $$3, bno::Q_);
+         return vt.a(this.f.b($$0), $$3, bnq::Q_);
       } else {
          return vq.i();
       }

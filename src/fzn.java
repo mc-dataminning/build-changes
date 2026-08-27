@@ -1,13 +1,45 @@
-public abstract class fzn<T extends cbv, M extends fmm<T>> extends gby<T, M> {
-   private final float a;
+import com.google.common.collect.Lists;
+import java.util.Collection;
 
-   public fzn(gas.a $$0, M $$1, float $$2) {
-      super($$0, $$1, 0.75F);
-      this.a = $$2;
+public class fzn implements fze.a {
+   private static final int a = 160;
+   private static final float b = 0.04F;
+   private final exo c;
+   private Collection<hz> d = Lists.newArrayList();
+
+   public fzn(exo $$0) {
+      this.c = $$0;
    }
 
-   protected void a(T $$0, esa $$1, float $$2) {
-      $$1.b(this.a, this.a, this.a);
-      super.a($$0, $$1, $$2);
+   public void a(Collection<hz> $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public void a(esh $$0, fvt $$1, double $$2, double $$3, double $$4) {
+      hz $$5 = this.b().c();
+
+      for (hz $$6 : this.d) {
+         if ($$5.a($$6, 160.0)) {
+            a($$0, $$1, $$6);
+         }
+      }
+   }
+
+   private static void a(esh $$0, fvt $$1, hz $$2) {
+      fze.a($$0, $$1, $$2, 1.0F, 0.0F, 0.0F, 0.15F);
+      int $$3 = -65536;
+      a($$0, $$1, "Raid center", $$2, -65536);
+   }
+
+   private static void a(esh $$0, fvt $$1, String $$2, hz $$3, int $$4) {
+      double $$5 = (double)$$3.u() + 0.5;
+      double $$6 = (double)$$3.v() + 1.3;
+      double $$7 = (double)$$3.w() + 0.5;
+      fze.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
+   }
+
+   private ewz b() {
+      return this.c.j.m();
    }
 }

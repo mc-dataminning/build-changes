@@ -16,11 +16,11 @@ import java.util.concurrent.CompletionException;
 import java.util.concurrent.Executor;
 import org.slf4j.Logger;
 
-public class ajl implements aru {
+public class ajl implements arv {
    private static final Logger a = LogUtils.getLogger();
    private static final air b = new air("functions", ".mcfunction");
    private volatile Map<aiy, hd<du>> c = ImmutableMap.of();
-   private final aup<hd<du>> d = new aup<>(this::a, "tags/functions");
+   private final auq<hd<du>> d = new auq<>(this::a, "tags/functions");
    private volatile Map<aiy, Collection<hd<du>>> e = Map.of();
    private final int f;
    private final CommandDispatcher<du> g;
@@ -47,13 +47,13 @@ public class ajl implements aru {
    }
 
    @Override
-   public CompletableFuture<Void> a(aru.a $$0, asa $$1, bil $$2, bil $$3, Executor $$4, Executor $$5) {
-      CompletableFuture<Map<aiy, List<aup.a>>> $$6 = CompletableFuture.supplyAsync(() -> this.d.a($$1), $$4);
-      CompletableFuture<Map<aiy, CompletableFuture<hd<du>>>> $$7 = CompletableFuture.<Map<aiy, ary>>supplyAsync(() -> b.a($$1), $$4).thenCompose($$1x -> {
+   public CompletableFuture<Void> a(arv.a $$0, asb $$1, bin $$2, bin $$3, Executor $$4, Executor $$5) {
+      CompletableFuture<Map<aiy, List<auq.a>>> $$6 = CompletableFuture.supplyAsync(() -> this.d.a($$1), $$4);
+      CompletableFuture<Map<aiy, CompletableFuture<hd<du>>>> $$7 = CompletableFuture.<Map<aiy, arz>>supplyAsync(() -> b.a($$1), $$4).thenCompose($$1x -> {
          Map<aiy, CompletableFuture<hd<du>>> $$2x = Maps.newHashMap();
-         du $$3x = new du(dt.a, ens.b, enr.a, null, this.f, "", vp.a, null, null);
+         du $$3x = new du(dt.a, enz.b, eny.a, null, this.f, "", vp.a, null, null);
 
-         for (Entry<aiy, ary> $$4x : $$1x.entrySet()) {
+         for (Entry<aiy, arz> $$4x : $$1x.entrySet()) {
             aiy $$5x = $$4x.getKey();
             aiy $$6x = b.b($$5x);
             $$2x.put($$6x, CompletableFuture.supplyAsync(() -> {
@@ -78,11 +78,11 @@ public class ajl implements aru {
                return null;
             }).join());
          this.c = $$2x.build();
-         this.e = this.d.a((Map<aiy, List<aup.a>>)$$0x.getFirst());
+         this.e = this.d.a((Map<aiy, List<auq.a>>)$$0x.getFirst());
       }, $$5);
    }
 
-   private static List<String> a(ary $$0) {
+   private static List<String> a(arz $$0) {
       try {
          List var2;
          try (BufferedReader $$1 = $$0.e()) {

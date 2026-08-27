@@ -7,13 +7,13 @@ public class acu implements xx<aag> {
    private static final int b = 12;
    private final jb c;
    private final short[] d;
-   private final dlf[] e;
+   private final dlj[] e;
 
-   public acu(jb $$0, ShortSet $$1, dnn $$2) {
+   public acu(jb $$0, ShortSet $$1, dnr $$2) {
       this.c = $$0;
       int $$3 = $$1.size();
       this.d = new short[$$3];
-      this.e = new dlf[$$3];
+      this.e = new dlj[$$3];
       int $$4 = 0;
 
       for (ShortIterator var6 = $$1.iterator(); var6.hasNext(); $$4++) {
@@ -27,12 +27,12 @@ public class acu implements xx<aag> {
       this.c = jb.a($$0.readLong());
       int $$1 = $$0.n();
       this.d = new short[$$1];
-      this.e = new dlf[$$1];
+      this.e = new dlj[$$1];
 
       for (int $$2 = 0; $$2 < $$1; $$2++) {
          long $$3 = $$0.o();
          this.d[$$2] = (short)((int)($$3 & 4095L));
-         this.e[$$2] = cyo.q.a((int)($$3 >>> 12));
+         this.e[$$2] = cys.q.a((int)($$3 >>> 12));
       }
    }
 
@@ -41,7 +41,7 @@ public class acu implements xx<aag> {
       $$0.c(this.d.length);
 
       for (int $$1 = 0; $$1 < this.d.length; $$1++) {
-         $$0.a((long)cyo.i(this.e[$$1]) << 12 | (long)this.d[$$1]);
+         $$0.a((long)cys.i(this.e[$$1]) << 12 | (long)this.d[$$1]);
       }
    }
 
@@ -54,7 +54,7 @@ public class acu implements xx<aag> {
       $$0.a(this);
    }
 
-   public void a(BiConsumer<hz, dlf> $$0) {
+   public void a(BiConsumer<hz, dlj> $$0) {
       hz.a $$1 = new hz.a();
 
       for (int $$2 = 0; $$2 < this.d.length; $$2++) {

@@ -3,7 +3,7 @@ public class ace implements xx<aag> {
    private final int b;
    private final aiy c;
 
-   public ace(int $$0, csd<?> $$1) {
+   public ace(int $$0, csh<?> $$1) {
       this.b = $$0;
       this.c = $$1.a();
    }

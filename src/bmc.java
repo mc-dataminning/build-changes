@@ -1,76 +1,37 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public interface bmc extends bln {
-   String c = "LootTable";
-   String d = "LootTableSeed";
+public class bmc {
+   public static final Codec<bmc> a = RecordCodecBuilder.create($$0 -> $$0.group(drw.b.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, bmc::new));
+   private final drw b;
 
-   @Nullable
-   aiy aC_();
-
-   void a(@Nullable aiy var1);
-
-   default void a(aiy $$0, long $$1) {
-      this.a($$0);
-      this.a($$1);
+   public bmc(drw $$0) {
+      this.b = $$0;
    }
 
-   long aD_();
-
-   void a(long var1);
-
-   hz aE_();
-
-   @Nullable
-   cvn i();
-
-   static void a(cut $$0, awo $$1, hz $$2, aiy $$3) {
-      if ($$0.c_($$2) instanceof bmc $$5) {
-         $$5.a($$3, $$1.g());
-      }
+   public bmc(long $$0, aiy $$1) {
+      this(a($$0, Optional.of($$1)));
    }
 
-   default boolean c_(sw $$0) {
-      if ($$0.b("LootTable", 8)) {
-         this.a(new aiy($$0.l("LootTable")));
-         this.a($$0.i("LootTableSeed"));
-         return true;
-      } else {
-         return false;
-      }
+   public bmc(long $$0, Optional<aiy> $$1) {
+      this(a($$0, $$1));
    }
 
-   default boolean d_(sw $$0) {
-      aiy $$1 = this.aC_();
-      if ($$1 == null) {
-         return false;
-      } else {
-         $$0.a("LootTable", $$1.toString());
-         long $$2 = this.aD_();
-         if ($$2 != 0L) {
-            $$0.a("LootTableSeed", $$2);
-         }
-
-         return true;
+   private static drw a(long $$0, Optional<aiy> $$1) {
+      drk.a $$2 = drk.b($$0);
+      if ($$1.isPresent()) {
+         $$2 = $$2.a(a($$1.get()));
       }
+
+      return new drw($$2.a());
    }
 
-   default void e_(@Nullable chh $$0) {
-      cvn $$1 = this.i();
-      hz $$2 = this.aE_();
-      aiy $$3 = this.aC_();
-      if ($$3 != null && $$1 != null && $$1.o() != null) {
-         ejd $$4 = $$1.o().aJ().getLootTable($$3);
-         if ($$0 instanceof aow) {
-            am.Q.a((aow)$$0, $$3);
-         }
+   public static drk.a a(aiy $$0) {
+      return drk.a($$0.toString());
+   }
 
-         this.a(null);
-         ejb.a $$5 = new ejb.a((aov)$$1).a(elg.f, ens.b($$2));
-         if ($$0 != null) {
-            $$5.a($$0.gp()).a(elg.a, $$0);
-         }
-
-         $$4.a(this, $$5.a(elf.c), this.aD_());
-      }
+   public awp a() {
+      return this.b;
    }
 }

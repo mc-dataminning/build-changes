@@ -23,7 +23,7 @@ public class bbz extends DataFix {
                   if (!"null".equals($$1x) && !StringUtils.isEmpty($$1x)) {
                      if ($$1x.charAt(0) == '"' && $$1x.charAt($$1x.length() - 1) == '"' || $$1x.charAt(0) == '{' && $$1x.charAt($$1x.length() - 1) == '}') {
                         try {
-                           $$2 = avx.b(ayn.a, $$1x, vq.class, true);
+                           $$2 = avy.b(ayn.a, $$1x, vq.class, true);
                            if ($$2 == null) {
                               $$2 = vp.a;
                            }

@@ -38,163 +38,166 @@ public class Main {
       OptionSpec<Void> $$5 = $$1.accepts("bonusChest");
       OptionSpec<Void> $$6 = $$1.accepts("forceUpgrade");
       OptionSpec<Void> $$7 = $$1.accepts("eraseCache");
-      OptionSpec<Void> $$8 = $$1.accepts("safeMode", "Loads level with vanilla datapack only");
-      OptionSpec<Void> $$9 = $$1.accepts("help").forHelp();
-      OptionSpec<String> $$10 = $$1.accepts("universe").withRequiredArg().defaultsTo(".", new String[0]);
-      OptionSpec<String> $$11 = $$1.accepts("world").withRequiredArg();
-      OptionSpec<Integer> $$12 = $$1.accepts("port").withRequiredArg().ofType(Integer.class).defaultsTo(-1, new Integer[0]);
-      OptionSpec<String> $$13 = $$1.accepts("serverId").withRequiredArg();
-      OptionSpec<Void> $$14 = $$1.accepts("jfrProfile");
-      OptionSpec<Path> $$15 = $$1.accepts("pidFile").withRequiredArg().withValuesConvertedBy(new PathConverter(new PathProperties[0]));
-      OptionSpec<String> $$16 = $$1.nonOptions();
+      OptionSpec<Void> $$8 = $$1.accepts("recreateRegionFiles");
+      OptionSpec<Void> $$9 = $$1.accepts("safeMode", "Loads level with vanilla datapack only");
+      OptionSpec<Void> $$10 = $$1.accepts("help").forHelp();
+      OptionSpec<String> $$11 = $$1.accepts("universe").withRequiredArg().defaultsTo(".", new String[0]);
+      OptionSpec<String> $$12 = $$1.accepts("world").withRequiredArg();
+      OptionSpec<Integer> $$13 = $$1.accepts("port").withRequiredArg().ofType(Integer.class).defaultsTo(-1, new Integer[0]);
+      OptionSpec<String> $$14 = $$1.accepts("serverId").withRequiredArg();
+      OptionSpec<Void> $$15 = $$1.accepts("jfrProfile");
+      OptionSpec<Path> $$16 = $$1.accepts("pidFile").withRequiredArg().withValuesConvertedBy(new PathConverter(new PathProperties[0]));
+      OptionSpec<String> $$17 = $$1.nonOptions();
 
       try {
-         OptionSet $$17 = $$1.parse($$0);
-         if ($$17.has($$9)) {
+         OptionSet $$18 = $$1.parse($$0);
+         if ($$18.has($$10)) {
             $$1.printHelpOn(System.err);
             return;
          }
 
-         Path $$18 = (Path)$$17.valueOf($$15);
-         if ($$18 != null) {
-            a($$18);
+         Path $$19 = (Path)$$18.valueOf($$16);
+         if ($$19 != null) {
+            a($$19);
          }
 
          o.h();
-         if ($$17.has($$14)) {
-            bir.e.a(bip.b);
+         if ($$18.has($$15)) {
+            bit.e.a(bir.b);
          }
 
          aja.a();
          aja.c();
          ac.l();
-         Path $$19 = Paths.get("server.properties");
-         anu $$20 = new anu($$19);
-         $$20.b();
-         Path $$21 = Paths.get("eula.txt");
-         aje $$22 = new aje($$21);
-         if ($$17.has($$3)) {
-            a.info("Initialized '{}' and '{}'", $$19.toAbsolutePath(), $$21.toAbsolutePath());
+         Path $$20 = Paths.get("server.properties");
+         anv $$21 = new anv($$20);
+         $$21.b();
+         dop.a($$21.a().N);
+         Path $$22 = Paths.get("eula.txt");
+         aje $$23 = new aje($$22);
+         if ($$18.has($$3)) {
+            a.info("Initialized '{}' and '{}'", $$20.toAbsolutePath(), $$22.toAbsolutePath());
             return;
          }
 
-         if (!$$22.a()) {
+         if (!$$23.a()) {
             a.info("You need to agree to the EULA in order to run the server. Go to eula.txt for more info.");
             return;
          }
 
-         File $$23 = new File((String)$$17.valueOf($$10));
-         ajr $$24 = ajr.a(new YggdrasilAuthenticationService(Proxy.NO_PROXY), $$23);
-         String $$25 = (String)Optional.ofNullable((String)$$17.valueOf($$11)).orElse($$20.a().m);
-         eil $$26 = eil.b($$23.toPath());
-         eil.c $$27 = $$26.d($$25);
-         Dynamic<?> $$28;
-         if ($$27.k()) {
-            eim $$29;
+         File $$24 = new File((String)$$18.valueOf($$11));
+         ajr $$25 = ajr.a(new YggdrasilAuthenticationService(Proxy.NO_PROXY), $$24);
+         String $$26 = (String)Optional.ofNullable((String)$$18.valueOf($$12)).orElse($$21.a().m);
+         eis $$27 = eis.b($$24.toPath());
+         eis.c $$28 = $$27.d($$26);
+         Dynamic<?> $$29;
+         if ($$28.k()) {
+            eit $$30;
             try {
-               $$28 = $$27.f();
-               $$29 = $$27.a($$28);
-            } catch (th | tn | IOException var39) {
-               eil.b $$31 = $$27.c();
-               a.warn("Failed to load world data from {}", $$31.b(), var39);
+               $$29 = $$28.f();
+               $$30 = $$28.a($$29);
+            } catch (th | tn | IOException var41) {
+               eis.b $$32 = $$28.c();
+               a.warn("Failed to load world data from {}", $$32.b(), var41);
                a.info("Attempting to use fallback");
 
                try {
-                  $$28 = $$27.g();
-                  $$29 = $$27.a($$28);
-               } catch (th | tn | IOException var38) {
-                  a.error("Failed to load world data from {}", $$31.c(), var38);
-                  a.error("Failed to load world data from {} and {}. World files may be corrupted. Shutting down.", $$31.b(), $$31.c());
+                  $$29 = $$28.g();
+                  $$30 = $$28.a($$29);
+               } catch (th | tn | IOException var40) {
+                  a.error("Failed to load world data from {}", $$32.c(), var40);
+                  a.error("Failed to load world data from {} and {}. World files may be corrupted. Shutting down.", $$32.b(), $$32.c());
                   return;
                }
 
-               $$27.l();
+               $$28.l();
             }
 
-            if ($$29.d()) {
+            if ($$30.d()) {
                a.info("This world must be opened in an older version (like 1.6.4) to be safely converted");
                return;
             }
 
-            if (!$$29.r()) {
+            if (!$$30.r()) {
                a.info("This world was created by an incompatible version.");
                return;
             }
          } else {
-            $$28 = null;
+            $$29 = null;
          }
 
-         Dynamic<?> $$38 = $$28;
-         boolean $$39 = $$17.has($$8);
-         if ($$39) {
+         Dynamic<?> $$39 = $$29;
+         boolean $$40 = $$18.has($$9);
+         if ($$40) {
             a.warn("Safe mode active, only vanilla datapack will be loaded");
          }
 
-         arl $$40 = aro.a($$27);
+         arm $$41 = arp.a($$28);
 
-         aju $$42;
+         aju $$43;
          try {
-            ajt.c $$41 = a($$20.a(), $$38, $$39, $$40);
-            $$42 = ac.<aju>c($$6x -> ajt.a($$41, $$5xx -> {
-                  iv<dop> $$6xx = $$5xx.d().d(kg.aN);
-                  if ($$38 != null) {
-                     eii $$7x = eil.a($$38, $$5xx.b(), $$6xx, $$5xx.c());
+            ajt.c $$42 = a($$21.a(), $$39, $$40, $$41);
+            $$43 = ac.<aju>c($$6x -> ajt.a($$42, $$5xx -> {
+                  iv<dow> $$6xx = $$5xx.d().d(kg.aN);
+                  if ($$39 != null) {
+                     eip $$7x = eis.a($$39, $$5xx.b(), $$6xx, $$5xx.c());
                      return new ajt.b<>($$7x.a(), $$7x.b().b());
                   } else {
                      a.info("No existing world data, creating new world");
-                     cvr $$8x;
-                     drm $$9x;
-                     drj $$10x;
-                     if ($$17.has($$4)) {
+                     cvv $$8x;
+                     drt $$9x;
+                     drq $$10x;
+                     if ($$18.has($$4)) {
                         $$8x = MinecraftServer.d;
-                        $$9x = drm.b;
-                        $$10x = eau.a($$5xx.c());
+                        $$9x = drt.b;
+                        $$10x = ebb.a($$5xx.c());
                      } else {
-                        ant $$11x = $$20.a();
-                        $$8x = new cvr($$11x.m, $$11x.l, $$11x.u, $$11x.k, false, new cvj(), $$5xx.b());
-                        $$9x = $$17.has($$5) ? $$11x.Y.a(true) : $$11x.Y;
+                        anu $$11x = $$21.a();
+                        $$8x = new cvv($$11x.m, $$11x.l, $$11x.u, $$11x.k, false, new cvn(), $$5xx.b());
+                        $$9x = $$18.has($$5) ? $$11x.Z.a(true) : $$11x.Z;
                         $$10x = $$11x.a($$5xx.c());
                      }
 
-                     drj.b $$15x = $$10x.a($$6xx);
+                     drq.b $$15x = $$10x.a($$6xx);
                      Lifecycle $$16x = $$15x.a().add($$5xx.c().e());
-                     return new ajt.b<>(new eip($$8x, $$9x, $$15x.d(), $$16x), $$15x.b());
+                     return new ajt.b<>(new eiw($$8x, $$9x, $$15x.d(), $$16x), $$15x.b());
                   }
                }, aju::new, ac.f(), $$6x)).get();
-         } catch (Exception var37) {
-            a.warn("Failed to load datapacks, can't proceed with server load. You can either fix your datapacks or reset to vanilla with --safeMode", var37);
+         } catch (Exception var39) {
+            a.warn("Failed to load datapacks, can't proceed with server load. You can either fix your datapacks or reset to vanilla with --safeMode", var39);
             return;
          }
 
-         iw.b $$45 = $$42.c().a();
-         if ($$17.has($$6)) {
-            a($$27, axp.a(), $$17.has($$7), () -> true, $$45.d(kg.aN));
+         iw.b $$46 = $$43.c().a();
+         boolean $$47 = $$18.has($$8);
+         if ($$18.has($$6) || $$47) {
+            a($$28, axp.a(), $$18.has($$7), () -> true, $$46.d(kg.aN), $$47);
          }
 
-         eir $$46 = $$42.d();
-         $$27.a($$45, $$46);
-         final ans $$47 = MinecraftServer.a((Function<Thread, ans>)($$11x -> {
-            ans $$12x = new ans($$11x, $$27, $$40, $$42, $$20, axp.a(), $$24, apg::b);
-            $$12x.a((Integer)$$17.valueOf($$12));
-            $$12x.c($$17.has($$4));
-            $$12x.b((String)$$17.valueOf($$13));
-            boolean $$13x = !$$17.has($$2) && !$$17.valuesOf($$16).contains("nogui");
+         eiy $$48 = $$43.d();
+         $$28.a($$46, $$48);
+         final ant $$49 = MinecraftServer.a((Function<Thread, ant>)($$11x -> {
+            ant $$12x = new ant($$11x, $$28, $$41, $$43, $$21, axp.a(), $$25, aph::b);
+            $$12x.a((Integer)$$18.valueOf($$13));
+            $$12x.c($$18.has($$4));
+            $$12x.b((String)$$18.valueOf($$14));
+            boolean $$13x = !$$18.has($$2) && !$$18.valuesOf($$17).contains("nogui");
             if ($$13x && !GraphicsEnvironment.isHeadless()) {
-               $$12x.bn();
+               $$12x.bp();
             }
 
             return $$12x;
          }));
-         Thread $$48 = new Thread("Server Shutdown Thread") {
+         Thread $$50 = new Thread("Server Shutdown Thread") {
             @Override
             public void run() {
-               $$47.a(true);
+               $$49.a(true);
             }
          };
-         $$48.setUncaughtExceptionHandler(new r(a));
-         Runtime.getRuntime().addShutdownHook($$48);
-      } catch (Exception var40) {
-         a.error(LogUtils.FATAL_MARKER, "Failed to start the minecraft server", var40);
+         $$50.setUncaughtExceptionHandler(new r(a));
+         Runtime.getRuntime().addShutdownHook($$50);
+      } catch (Exception var42) {
+         a.error(LogUtils.FATAL_MARKER, "Failed to start the minecraft server", var42);
       }
    }
 
@@ -207,46 +210,46 @@ public class Main {
       }
    }
 
-   private static ajt.c a(ant $$0, @Nullable Dynamic<?> $$1, boolean $$2, arl $$3) {
+   private static ajt.c a(anu $$0, @Nullable Dynamic<?> $$1, boolean $$2, arm $$3) {
       boolean $$5;
-      cwh $$6;
+      cwl $$6;
       if ($$1 != null) {
-         cwh $$4 = eil.a($$1);
+         cwl $$4 = eis.a($$1);
          $$5 = false;
          $$6 = $$4;
       } else {
          $$5 = true;
-         $$6 = new cwh($$0.T, cju.h);
+         $$6 = new cwl($$0.U, cjy.h);
       }
 
       ajt.d $$9 = new ajt.d($$3, $$6, $$2, $$5);
       return new ajt.c($$9, dv.a.b, $$0.B);
    }
 
-   private static void a(eil.c $$0, DataFixer $$1, boolean $$2, BooleanSupplier $$3, iv<dop> $$4) {
+   private static void a(eis.c $$0, DataFixer $$1, boolean $$2, BooleanSupplier $$3, iv<dow> $$4, boolean $$5) {
       a.info("Forcing world upgrade!");
-      bli $$5 = new bli($$0, $$1, $$4, $$2);
-      vq $$6 = null;
+      blk $$6 = new blk($$0, $$1, $$4, $$2, $$5);
+      vq $$7 = null;
 
-      while (!$$5.b()) {
-         vq $$7 = $$5.h();
-         if ($$6 != $$7) {
-            $$6 = $$7;
-            a.info($$5.h().getString());
+      while (!$$6.b()) {
+         vq $$8 = $$6.h();
+         if ($$7 != $$8) {
+            $$7 = $$8;
+            a.info($$6.h().getString());
          }
 
-         int $$8 = $$5.e();
-         if ($$8 > 0) {
-            int $$9 = $$5.f() + $$5.g();
-            a.info("{}% completed ({} / {} chunks)...", new Object[]{awh.d((float)$$9 / (float)$$8 * 100.0F), $$9, $$8});
+         int $$9 = $$6.e();
+         if ($$9 > 0) {
+            int $$10 = $$6.f() + $$6.g();
+            a.info("{}% completed ({} / {} chunks)...", new Object[]{awi.d((float)$$10 / (float)$$9 * 100.0F), $$10, $$9});
          }
 
          if (!$$3.getAsBoolean()) {
-            $$5.a();
+            $$6.a();
          } else {
             try {
                Thread.sleep(1000L);
-            } catch (InterruptedException var10) {
+            } catch (InterruptedException var11) {
             }
          }
       }

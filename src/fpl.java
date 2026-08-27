@@ -1,44 +1,30 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-
 public class fpl {
-   private final List<fpf> a;
-   private final fpe b;
-   private final Map<String, fpl> c = Maps.newHashMap();
+   public static final fpl a = a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+   public final float b;
+   public final float c;
+   public final float d;
+   public final float e;
+   public final float f;
+   public final float g;
 
-   fpl(List<fpf> $$0, fpe $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   private fpl(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 
-   public fpl a(String $$0, fph $$1, fpe $$2) {
-      fpl $$3 = new fpl($$1.b(), $$2);
-      fpl $$4 = this.c.put($$0, $$3);
-      if ($$4 != null) {
-         $$3.c.putAll($$4.c);
-      }
-
-      return $$3;
+   public static fpl a(float $$0, float $$1, float $$2) {
+      return a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F);
    }
 
-   public fpc a(int $$0, int $$1) {
-      Object2ObjectArrayMap<String, fpc> $$2 = this.c
-         .entrySet()
-         .stream()
-         .collect(Collectors.toMap(Entry::getKey, $$2x -> ((fpl)$$2x.getValue()).a($$0, $$1), ($$0x, $$1x) -> $$0x, Object2ObjectArrayMap::new));
-      List<fpc.a> $$3 = this.a.stream().map($$2x -> $$2x.a($$0, $$1)).collect(ImmutableList.toImmutableList());
-      fpc $$4 = new fpc($$3, $$2);
-      $$4.a(this.b);
-      $$4.b(this.b);
-      return $$4;
+   public static fpl b(float $$0, float $$1, float $$2) {
+      return a(0.0F, 0.0F, 0.0F, $$0, $$1, $$2);
    }
 
-   public fpl a(String $$0) {
-      return this.c.get($$0);
+   public static fpl a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      return new fpl($$0, $$1, $$2, $$3, $$4, $$5);
    }
 }

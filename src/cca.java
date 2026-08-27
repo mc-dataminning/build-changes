@@ -1,44 +1,54 @@
 import javax.annotation.Nullable;
 
-public class cca extends cbu {
-   public cca(bnu<? extends cca> $$0, cvn $$1) {
+public class cca extends cby {
+   public cca(bnw<? extends cca> $$0, cvr $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected atj y() {
-      return atk.oV;
+   protected atk y() {
+      return atl.gS;
    }
 
    @Override
-   protected atj gF() {
-      return atk.oW;
+   protected atk gF() {
+      return atl.gT;
    }
 
    @Override
-   protected atj n_() {
-      return atk.oY;
-   }
-
-   @Nullable
-   @Override
-   protected atj gn() {
-      return atk.oZ;
-   }
-
-   @Override
-   protected atj d(bmn $$0) {
-      return atk.pa;
-   }
-
-   @Override
-   protected void gg() {
-      this.a(atk.oX, 1.0F, (this.af.i() - this.af.i()) * 0.2F + 1.0F);
+   protected atk n_() {
+      return atl.gV;
    }
 
    @Nullable
    @Override
-   public bnj a(aov $$0, bnj $$1) {
-      return bnu.ar.a((cvn)$$0);
+   protected atk gn() {
+      return atl.gW;
+   }
+
+   @Override
+   protected atk d(bmp $$0) {
+      return atl.gX;
+   }
+
+   @Override
+   public boolean a(bzx $$0) {
+      if ($$0 == this) {
+         return false;
+      } else {
+         return !($$0 instanceof cca) && !($$0 instanceof ccb) ? false : this.gO() && ((cbz)$$0).gO();
+      }
+   }
+
+   @Nullable
+   @Override
+   public bnl a(aow $$0, bnl $$1) {
+      bnw<? extends cbz> $$2 = $$1 instanceof ccb ? bnw.ar : bnw.y;
+      cbz $$3 = $$2.a((cvr)$$0);
+      if ($$3 != null) {
+         this.a($$1, $$3);
+      }
+
+      return $$3;
    }
 }

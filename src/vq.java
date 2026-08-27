@@ -64,7 +64,7 @@ public interface vq extends Message, vv {
       return new we(this.b(), new ArrayList<>(this.c()), this.a());
    }
 
-   avt g();
+   avu g();
 
    @Override
    default <T> Optional<T> a(vv.b<T> $$0, wn $$1) {
@@ -198,7 +198,7 @@ public interface vq extends Message, vv {
       return b($$0.toString());
    }
 
-   static vq a(cuu $$0) {
+   static vq a(cuy $$0) {
       return b($$0.toString());
    }
 

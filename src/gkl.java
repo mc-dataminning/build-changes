@@ -1,37 +1,99 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class gkl<T> extends gkm<T> {
-   private final List<T> c;
-   private final Function<T, Stream<String>> d;
-   private gkp<T> e = gkp.a();
+public class gkl implements glu<gkl> {
+   public static final air a = new air("sounds", ".ogg");
+   private final aiy b;
+   private final ble c;
+   private final ble d;
+   private final int e;
+   private final gkl.a f;
+   private final boolean g;
+   private final boolean h;
+   private final int i;
 
-   public gkl(Function<T, Stream<String>> $$0, Function<T, Stream<aiy>> $$1, List<T> $$2) {
-      super($$1, $$2);
-      this.c = $$2;
-      this.d = $$0;
+   public gkl(String $$0, ble $$1, ble $$2, int $$3, gkl.a $$4, boolean $$5, boolean $$6, int $$7) {
+      this.b = new aiy($$0);
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+   }
+
+   public aiy a() {
+      return this.b;
+   }
+
+   public aiy b() {
+      return a.a(this.b);
+   }
+
+   public ble c() {
+      return this.c;
+   }
+
+   public ble d() {
+      return this.d;
    }
 
    @Override
-   public void a() {
-      super.a();
-      this.e = gkp.a(this.c, this.d);
+   public int e() {
+      return this.e;
+   }
+
+   public gkl a(awp $$0) {
+      return this;
    }
 
    @Override
-   protected List<T> a(String $$0) {
-      return this.e.search($$0);
+   public void a(glp $$0) {
+      if (this.h) {
+         $$0.a(this);
+      }
+   }
+
+   public gkl.a f() {
+      return this.f;
+   }
+
+   public boolean g() {
+      return this.g;
+   }
+
+   public boolean h() {
+      return this.h;
+   }
+
+   public int i() {
+      return this.i;
    }
 
    @Override
-   protected List<T> a(String $$0, String $$1) {
-      List<T> $$2 = this.b.a($$0);
-      List<T> $$3 = this.b.b($$1);
-      List<T> $$4 = this.e.search($$1);
-      Iterator<T> $$5 = new gko<T>($$3.iterator(), $$4.iterator(), this.a);
-      return ImmutableList.copyOf(new gkn<T>($$2.iterator(), $$5, this.a));
+   public String toString() {
+      return "Sound[" + this.b + "]";
+   }
+
+   public static enum a {
+      a("file"),
+      b("event");
+
+      private final String c;
+
+      private a(String $$0) {
+         this.c = $$0;
+      }
+
+      @Nullable
+      public static gkl.a a(String $$0) {
+         for (gkl.a $$1 : values()) {
+            if ($$1.c.equals($$0)) {
+               return $$1;
+            }
+         }
+
+         return null;
+      }
    }
 }

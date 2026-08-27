@@ -1,18 +1,35 @@
-public class faf extends ezh {
-   private final eys a;
-   private final vq b;
-   private final vq c;
+public class faf {
+   public static final aiy a = new aiy("textures/gui/title/minecraft.png");
+   public static final aiy b = new aiy("textures/gui/title/minceraft.png");
+   public static final aiy c = new aiy("textures/gui/title/edition.png");
+   public static final int d = 256;
+   public static final int e = 44;
+   private static final int g = 256;
+   private static final int h = 64;
+   private static final int i = 128;
+   private static final int j = 14;
+   private static final int k = 128;
+   private static final int l = 16;
+   public static final int f = 30;
+   private static final int m = 7;
+   private final boolean n = (double)awp.a().i() < 1.0E-4;
+   private final boolean o;
 
-   public faf(int $$0, int $$1, int $$2, int $$3, vq $$4, ezh.c $$5, eys $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, p);
-      this.a = $$6;
-      this.b = $$4;
-      this.c = vt.a($$4.f(), wn.a.c(true));
+   public faf(boolean $$0) {
+      this.o = $$0;
    }
 
-   @Override
-   public void b(eyu $$0, int $$1, int $$2, float $$3) {
-      vq $$4 = this.z() ? this.c : this.b;
-      $$0.b(this.a, $$4, this.B(), this.C(), 16777215 | awh.f(this.l * 255.0F) << 24);
+   public void a(ezb $$0, int $$1, float $$2) {
+      this.a($$0, $$1, $$2, 30);
+   }
+
+   public void a(ezb $$0, int $$1, float $$2, int $$3) {
+      $$0.a(1.0F, 1.0F, 1.0F, this.o ? 1.0F : $$2);
+      int $$4 = $$1 / 2 - 128;
+      $$0.a(this.n ? b : a, $$4, $$3, 0.0F, 0.0F, 256, 44, 256, 64);
+      int $$5 = $$1 / 2 - 64;
+      int $$6 = $$3 + 44 - 7;
+      $$0.a(c, $$5, $$6, 0.0F, 0.0F, 128, 14, 128, 16);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
    }
 }

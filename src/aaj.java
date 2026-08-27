@@ -8,7 +8,7 @@ public class aaj implements xx<aag> {
    private final int g;
    private final int h;
 
-   public aaj(bno $$0, int $$1) {
+   public aaj(bnq $$0, int $$1) {
       this.g = $$0.aj();
       this.h = $$1;
    }

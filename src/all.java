@@ -12,8 +12,8 @@ public class all {
       );
    }
 
-   private static int a(du $$0, Collection<? extends bno> $$1) {
-      for (bno $$2 : $$1) {
+   private static int a(du $$0, Collection<? extends bnq> $$1) {
+      for (bnq $$2 : $$1) {
          $$2.al();
       }
 

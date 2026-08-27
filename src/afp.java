@@ -6,7 +6,7 @@ public class afp implements xx<aes> {
    private final float e;
    private final float f;
 
-   public afp(bno $$0) {
+   public afp(bnq $$0) {
       this.b = $$0.dr();
       this.c = $$0.dt();
       this.d = $$0.dx();

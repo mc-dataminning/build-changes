@@ -1,225 +1,133 @@
-import com.google.common.collect.ImmutableList;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import javax.annotation.Nullable;
-
-public class ggq<T extends ggq.a> {
-   private static final Comparator<ggq.b<?>> a = Comparator.<ggq.b<?>, Integer>comparing($$0 -> -$$0.c)
-      .thenComparing($$0 -> -$$0.b)
-      .thenComparing($$0 -> $$0.a.c());
-   private final int b;
-   private final List<ggq.b<T>> c = new ArrayList<>();
-   private final List<ggq.c<T>> d = new ArrayList<>();
-   private int e;
-   private int f;
-   private final int g;
-   private final int h;
-
-   public ggq(int $$0, int $$1, int $$2) {
-      this.b = $$2;
-      this.g = $$0;
-      this.h = $$1;
-   }
-
-   public int a() {
-      return this.e;
-   }
-
-   public int b() {
-      return this.f;
-   }
-
-   public void a(T $$0) {
-      ggq.b<T> $$1 = new ggq.b<>($$0, this.b);
-      this.c.add($$1);
-   }
-
-   public void c() {
-      List<ggq.b<T>> $$0 = new ArrayList<>(this.c);
-      $$0.sort(a);
-
-      for (ggq.b<T> $$1 : $$0) {
-         if (!this.a($$1)) {
-            throw new ggr($$1.a, $$0.stream().map($$0x -> $$0x.a).collect(ImmutableList.toImmutableList()));
-         }
+public class ggq {
+   private static final int a = 96;
+   private static final float[] b = ac.a(new float[256], $$0 -> {
+      for (int $$1 = 0; $$1 < $$0.length; $$1++) {
+         $$0[$$1] = (float)Math.pow((double)((float)$$1 / 255.0F), 2.2);
       }
+   });
+
+   private ggq() {
    }
 
-   public void a(ggq.d<T> $$0) {
-      for (ggq.c<T> $$1 : this.d) {
-         $$1.a($$0);
-      }
-   }
-
-   static int a(int $$0, int $$1) {
-      return ($$0 >> $$1) + (($$0 & (1 << $$1) - 1) == 0 ? 0 : 1) << $$1;
-   }
-
-   private boolean a(ggq.b<T> $$0) {
-      for (ggq.c<T> $$1 : this.d) {
-         if ($$1.a($$0)) {
-            return true;
-         }
-      }
-
-      return this.b($$0);
-   }
-
-   private boolean b(ggq.b<T> $$0) {
-      int $$1 = awh.c(this.e);
-      int $$2 = awh.c(this.f);
-      int $$3 = awh.c(this.e + $$0.b);
-      int $$4 = awh.c(this.f + $$0.c);
-      boolean $$5 = $$3 <= this.g;
-      boolean $$6 = $$4 <= this.h;
-      if (!$$5 && !$$6) {
-         return false;
+   public static eri[] a(eri[] $$0, int $$1) {
+      if ($$1 + 1 <= $$0.length) {
+         return $$0;
       } else {
-         boolean $$7 = $$5 && $$1 != $$3;
-         boolean $$8 = $$6 && $$2 != $$4;
-         boolean $$9;
-         if ($$7 ^ $$8) {
-            $$9 = $$7;
-         } else {
-            $$9 = $$5 && $$1 <= $$2;
-         }
+         eri[] $$2 = new eri[$$1 + 1];
+         $$2[0] = $$0[0];
+         boolean $$3 = a($$2[0]);
 
-         ggq.c<T> $$11;
-         if ($$9) {
-            if (this.f == 0) {
-               this.f = $$4;
-            }
-
-            $$11 = new ggq.c<>(this.e, 0, $$3 - this.e, this.f);
-            this.e = $$3;
-         } else {
-            $$11 = new ggq.c<>(0, this.f, this.e, $$4 - this.f);
-            this.f = $$4;
-         }
-
-         $$11.a($$0);
-         this.d.add($$11);
-         return true;
-      }
-   }
-
-   public interface a {
-      int a();
-
-      int b();
-
-      aiy c();
-   }
-
-   static record b<T extends ggq.a>(T a, int b, int c) {
-
-      public b(T $$0, int $$1) {
-         this($$0, ggq.a($$0.a(), $$1), ggq.a($$0.b(), $$1));
-      }
-   }
-
-   public static class c<T extends ggq.a> {
-      private final int a;
-      private final int b;
-      private final int c;
-      private final int d;
-      @Nullable
-      private List<ggq.c<T>> e;
-      @Nullable
-      private ggq.b<T> f;
-
-      public c(int $$0, int $$1, int $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      public int a() {
-         return this.a;
-      }
-
-      public int b() {
-         return this.b;
-      }
-
-      public boolean a(ggq.b<T> $$0) {
-         if (this.f != null) {
-            return false;
-         } else {
-            int $$1 = $$0.b;
-            int $$2 = $$0.c;
-            if ($$1 <= this.c && $$2 <= this.d) {
-               if ($$1 == this.c && $$2 == this.d) {
-                  this.f = $$0;
-                  return true;
-               } else {
-                  if (this.e == null) {
-                     this.e = new ArrayList<>(1);
-                     this.e.add(new ggq.c<>(this.a, this.b, $$1, $$2));
-                     int $$3 = this.c - $$1;
-                     int $$4 = this.d - $$2;
-                     if ($$4 > 0 && $$3 > 0) {
-                        int $$5 = Math.max(this.d, $$3);
-                        int $$6 = Math.max(this.c, $$4);
-                        if ($$5 >= $$6) {
-                           this.e.add(new ggq.c<>(this.a, this.b + $$2, $$1, $$4));
-                           this.e.add(new ggq.c<>(this.a + $$1, this.b, $$3, this.d));
-                        } else {
-                           this.e.add(new ggq.c<>(this.a + $$1, this.b, $$3, $$2));
-                           this.e.add(new ggq.c<>(this.a, this.b + $$2, this.c, $$4));
-                        }
-                     } else if ($$3 == 0) {
-                        this.e.add(new ggq.c<>(this.a, this.b + $$2, $$1, $$4));
-                     } else if ($$4 == 0) {
-                        this.e.add(new ggq.c<>(this.a + $$1, this.b, $$3, $$2));
-                     }
-                  }
-
-                  for (ggq.c<T> $$7 : this.e) {
-                     if ($$7.a($$0)) {
-                        return true;
-                     }
-                  }
-
-                  return false;
-               }
+         for (int $$4 = 1; $$4 <= $$1; $$4++) {
+            if ($$4 < $$0.length) {
+               $$2[$$4] = $$0[$$4];
             } else {
-               return false;
+               eri $$5 = $$2[$$4 - 1];
+               eri $$6 = new eri($$5.a() >> 1, $$5.b() >> 1, false);
+               int $$7 = $$6.a();
+               int $$8 = $$6.b();
+
+               for (int $$9 = 0; $$9 < $$7; $$9++) {
+                  for (int $$10 = 0; $$10 < $$8; $$10++) {
+                     $$6.a(
+                        $$9,
+                        $$10,
+                        a(
+                           $$5.a($$9 * 2 + 0, $$10 * 2 + 0),
+                           $$5.a($$9 * 2 + 1, $$10 * 2 + 0),
+                           $$5.a($$9 * 2 + 0, $$10 * 2 + 1),
+                           $$5.a($$9 * 2 + 1, $$10 * 2 + 1),
+                           $$3
+                        )
+                     );
+                  }
+               }
+
+               $$2[$$4] = $$6;
             }
          }
-      }
 
-      public void a(ggq.d<T> $$0) {
-         if (this.f != null) {
-            $$0.load(this.f.a, this.a(), this.b());
-         } else if (this.e != null) {
-            for (ggq.c<T> $$1 : this.e) {
-               $$1.a($$0);
-            }
-         }
-      }
-
-      @Override
-      public String toString() {
-         return "Slot{originX="
-            + this.a
-            + ", originY="
-            + this.b
-            + ", width="
-            + this.c
-            + ", height="
-            + this.d
-            + ", texture="
-            + this.f
-            + ", subSlots="
-            + this.e
-            + "}";
+         return $$2;
       }
    }
 
-   public interface d<T extends ggq.a> {
-      void load(T var1, int var2, int var3);
+   private static boolean a(eri $$0) {
+      for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
+         for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
+            if ($$0.a($$1, $$2) >> 24 == 0) {
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   private static int a(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      if ($$4) {
+         float $$5 = 0.0F;
+         float $$6 = 0.0F;
+         float $$7 = 0.0F;
+         float $$8 = 0.0F;
+         if ($$0 >> 24 != 0) {
+            $$5 += a($$0 >> 24);
+            $$6 += a($$0 >> 16);
+            $$7 += a($$0 >> 8);
+            $$8 += a($$0 >> 0);
+         }
+
+         if ($$1 >> 24 != 0) {
+            $$5 += a($$1 >> 24);
+            $$6 += a($$1 >> 16);
+            $$7 += a($$1 >> 8);
+            $$8 += a($$1 >> 0);
+         }
+
+         if ($$2 >> 24 != 0) {
+            $$5 += a($$2 >> 24);
+            $$6 += a($$2 >> 16);
+            $$7 += a($$2 >> 8);
+            $$8 += a($$2 >> 0);
+         }
+
+         if ($$3 >> 24 != 0) {
+            $$5 += a($$3 >> 24);
+            $$6 += a($$3 >> 16);
+            $$7 += a($$3 >> 8);
+            $$8 += a($$3 >> 0);
+         }
+
+         $$5 /= 4.0F;
+         $$6 /= 4.0F;
+         $$7 /= 4.0F;
+         $$8 /= 4.0F;
+         int $$9 = (int)(Math.pow((double)$$5, 0.45454545454545453) * 255.0);
+         int $$10 = (int)(Math.pow((double)$$6, 0.45454545454545453) * 255.0);
+         int $$11 = (int)(Math.pow((double)$$7, 0.45454545454545453) * 255.0);
+         int $$12 = (int)(Math.pow((double)$$8, 0.45454545454545453) * 255.0);
+         if ($$9 < 96) {
+            $$9 = 0;
+         }
+
+         return $$9 << 24 | $$10 << 16 | $$11 << 8 | $$12;
+      } else {
+         int $$13 = a($$0, $$1, $$2, $$3, 24);
+         int $$14 = a($$0, $$1, $$2, $$3, 16);
+         int $$15 = a($$0, $$1, $$2, $$3, 8);
+         int $$16 = a($$0, $$1, $$2, $$3, 0);
+         return $$13 << 24 | $$14 << 16 | $$15 << 8 | $$16;
+      }
+   }
+
+   private static int a(int $$0, int $$1, int $$2, int $$3, int $$4) {
+      float $$5 = a($$0 >> $$4);
+      float $$6 = a($$1 >> $$4);
+      float $$7 = a($$2 >> $$4);
+      float $$8 = a($$3 >> $$4);
+      float $$9 = (float)((double)((float)Math.pow((double)($$5 + $$6 + $$7 + $$8) * 0.25, 0.45454545454545453)));
+      return (int)((double)$$9 * 255.0);
+   }
+
+   private static float a(int $$0) {
+      return b[$$0 & 0xFF];
    }
 }

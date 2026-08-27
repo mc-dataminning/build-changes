@@ -1,21 +1,17 @@
 import com.mojang.serialization.Codec;
 
-public class dye extends dxx {
-   public static final Codec<dye> b = dlf.b.fieldOf("state").xmap(dle.a::b, cyo::o).xmap(dye::new, $$0 -> $$0.c).codec();
-   private final cyo c;
+public abstract class dye {
+   public static final Codec<dye> a = kf.V.q().dispatch(dye::a, dyf::a);
 
-   public dye(cyo $$0) {
-      this.c = $$0;
+   public static dyn a(dlj $$0) {
+      return new dyn($$0);
    }
 
-   @Override
-   protected dxy<?> a() {
-      return dxy.f;
+   public static dyn a(cys $$0) {
+      return new dyn($$0.o());
    }
 
-   @Override
-   public dlf a(awo $$0, hz $$1) {
-      ie.a $$2 = ie.a.a($$0);
-      return this.c.o().a(dez.i, $$2);
-   }
+   protected abstract dyf<?> a();
+
+   public abstract dlj a(awp var1, hz var2);
 }

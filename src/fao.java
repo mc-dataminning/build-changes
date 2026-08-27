@@ -1,56 +1,86 @@
-public class fao extends eze {
-   private float a = 0.5F;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
-   public fao(vq $$0, eys $$1) {
-      this(0, 0, $$1.a($$0.g()), 9, $$0, $$1);
-   }
+public class fao extends ezm {
+   private static final float a = 0.0625F;
+   private static final float b = 2.125F;
+   private static final float c = 100.0F;
+   private static final float d = 2.5F;
+   private static final float e = -5.0F;
+   private static final float f = 30.0F;
+   private static final float m = 50.0F;
+   private final fao.a n;
+   private final Supplier<gia> o;
+   private float p = -5.0F;
+   private float q = 30.0F;
 
-   public fao(int $$0, int $$1, vq $$2, eys $$3) {
-      this(0, 0, $$0, $$1, $$2, $$3);
-   }
-
-   public fao(int $$0, int $$1, int $$2, int $$3, vq $$4, eys $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.j = false;
-   }
-
-   public fao b(int $$0) {
-      super.a($$0);
-      return this;
-   }
-
-   private fao b(float $$0) {
-      this.a = $$0;
-      return this;
-   }
-
-   public fao d() {
-      return this.b(0.0F);
-   }
-
-   public fao e() {
-      return this.b(0.5F);
-   }
-
-   public fao f() {
-      return this.b(1.0F);
+   public fao(int $$0, int $$1, fpf $$2, Supplier<gia> $$3) {
+      super(0, 0, $$0, $$1, vp.a);
+      this.n = fao.a.a($$2);
+      this.o = $$3;
    }
 
    @Override
-   public void b(eyu $$0, int $$1, int $$2, float $$3) {
-      vq $$4 = this.x();
-      eys $$5 = this.a();
-      int $$6 = this.w();
-      int $$7 = $$5.a($$4);
-      int $$8 = this.B() + Math.round(this.a * (float)($$6 - $$7));
-      int $$9 = this.C() + (this.u() - 9) / 2;
-      avt $$10 = $$7 > $$6 ? this.a($$4, $$6) : $$4.g();
-      $$0.b($$5, $$10, $$8, $$9, this.b());
+   protected void b(ezb $$0, int $$1, int $$2, float $$3) {
+      $$0.c().a();
+      $$0.c().a((float)this.B() + (float)this.w() / 2.0F, (float)(this.C() + this.u()), 100.0F);
+      float $$4 = (float)this.u() / 2.125F;
+      $$0.c().b($$4, $$4, $$4);
+      $$0.c().a(0.0F, -0.0625F, 0.0F);
+      Matrix4f $$5 = $$0.c().c().a();
+      $$5.rotateAround(a.b.rotationDegrees(this.p), 0.0F, -1.0625F, 0.0F);
+      $$0.c().a(a.d.rotationDegrees(this.q));
+      this.n.a($$0, this.o.get());
+      $$0.c().b();
    }
 
-   private avt a(vq $$0, int $$1) {
-      eys $$2 = this.a();
-      vv $$3 = $$2.a($$0, $$1 - $$2.a(vp.u));
-      return sr.a().a(vv.a($$3, vp.u));
+   @Override
+   protected void b(double $$0, double $$1, double $$2, double $$3) {
+      this.p = awi.a(this.p - (float)$$3 * 2.5F, -50.0F, 50.0F);
+      this.q += (float)$$2 * 2.5F;
+   }
+
+   @Override
+   public void a(gls $$0) {
+   }
+
+   @Override
+   protected void a(fdj $$0) {
+   }
+
+   @Override
+   public boolean A() {
+      return false;
+   }
+
+   @Nullable
+   @Override
+   public eyy a(fdp $$0) {
+      return null;
+   }
+
+   static record a(fnn<?> a, fnn<?> b) {
+      public static fao.a a(fpf $$0) {
+         fnn<?> $$1 = new fnn($$0.a(fpi.aO), false);
+         fnn<?> $$2 = new fnn($$0.a(fpi.aS), true);
+         $$1.e = false;
+         $$2.e = false;
+         return new fao.a($$1, $$2);
+      }
+
+      public void a(ezb $$0, gia $$1) {
+         $$0.e();
+         erd.c();
+         $$0.c().a();
+         $$0.c().a(new Matrix4f().scaling(1.0F, 1.0F, -1.0F));
+         $$0.c().a(0.0F, -1.5F, 0.0F);
+         fnn<?> $$2 = $$1.e() == gia.a.a ? this.b : this.a;
+         fwb $$3 = $$2.a($$1.a());
+         $$2.a($$0.c(), $$0.d().getBuffer($$3), 15728880, ggs.d, 1.0F, 1.0F, 1.0F, 1.0F);
+         $$0.c().b();
+         $$0.e();
+         erd.b();
+      }
    }
 }

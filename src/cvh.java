@@ -1,31 +1,19 @@
-public class cvh {
-   private static int[] a = new int[65536];
+import java.util.Optional;
 
-   public static void a(int[] $$0) {
-      a = $$0;
+public class cvh extends cvk {
+   private final bnq a;
+
+   public cvh(bnq $$0) {
+      this.a = $$0;
    }
 
-   public static int a(double $$0, double $$1) {
-      $$1 *= $$0;
-      int $$2 = (int)((1.0 - $$0) * 255.0);
-      int $$3 = (int)((1.0 - $$1) * 255.0);
-      int $$4 = $$3 << 8 | $$2;
-      return $$4 >= a.length ? c() : a[$$4];
+   @Override
+   public Optional<Float> a(cvj $$0, cux $$1, hz $$2, dlj $$3, egw $$4) {
+      return super.a($$0, $$1, $$2, $$3, $$4).map($$5 -> this.a.a($$0, $$1, $$2, $$3, $$4, $$5));
    }
 
-   public static int a() {
-      return 6396257;
-   }
-
-   public static int b() {
-      return 8431445;
-   }
-
-   public static int c() {
-      return 4764952;
-   }
-
-   public static int d() {
-      return 9619016;
+   @Override
+   public boolean a(cvj $$0, cux $$1, hz $$2, dlj $$3, float $$4) {
+      return this.a.a($$0, $$1, $$2, $$3, $$4);
    }
 }

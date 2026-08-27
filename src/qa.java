@@ -1,26 +1,26 @@
 import java.util.List;
 
 public class qa {
-   public static final aix<efc> a = aix.a(kg.aE, new aiy("trial_chambers_copper_bulb_degradation"));
+   public static final aix<efj> a = aix.a(kg.aE, new aiy("trial_chambers_copper_bulb_degradation"));
 
-   public static void a(ph<efc> $$0) {
+   public static void a(ph<efj> $$0) {
       a(
          $$0,
          a,
          List.of(
-            new eex(
+            new efe(
                List.of(
-                  new eet(new eev(cyq.so, 0.1F), eec.b, cyq.sr.o().a(dac.c, Boolean.valueOf(true))),
-                  new eet(new eev(cyq.so, 0.33333334F), eec.b, cyq.sq.o().a(dac.c, Boolean.valueOf(true))),
-                  new eet(new eev(cyq.so, 0.5F), eec.b, cyq.sp.o().a(dac.c, Boolean.valueOf(true)))
+                  new efa(new efc(cyu.so, 0.1F), eej.b, cyu.sr.o().a(dag.c, Boolean.valueOf(true))),
+                  new efa(new efc(cyu.so, 0.33333334F), eej.b, cyu.sq.o().a(dag.c, Boolean.valueOf(true))),
+                  new efa(new efc(cyu.so, 0.5F), eej.b, cyu.sp.o().a(dag.c, Boolean.valueOf(true)))
                )
             ),
-            new eeu(atz.bH)
+            new efb(aua.bH)
          )
       );
    }
 
-   private static void a(ph<efc> $$0, aix<efc> $$1, List<efb> $$2) {
-      $$0.a($$1, new efc($$2));
+   private static void a(ph<efj> $$0, aix<efj> $$1, List<efi> $$2) {
+      $$0.a($$1, new efj($$2));
    }
 }

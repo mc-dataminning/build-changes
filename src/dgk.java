@@ -1,76 +1,31 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dgk extends cyo {
-   public static final MapCodec<dgk> a = b(dgk::new);
-   private static final vq d = vq.c("container.stonecutter");
-   public static final dlz b = dcj.aE;
-   protected static final eol c = cyo.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
+public class dgk extends dcs implements cyj {
+   public static final MapCodec<dgk> j = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cnr.q.fieldOf("color").forGetter(dgk::b), u()).apply($$0, dgk::new));
+   private final cnr k;
 
    @Override
    public MapCodec<dgk> a() {
-      return a;
+      return j;
    }
 
-   public dgk(dle.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, ie.c));
-   }
-
-   @Override
-   public dlf a(crg $$0) {
-      return this.o().a(b, $$0.g().g());
-   }
-
-   @Override
-   protected blu a(dlf $$0, cvn $$1, hz $$2, chh $$3, eno $$4) {
-      if ($$1.B) {
-         return blu.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(atu.ay);
-         return blu.b;
-      }
-   }
-
-   @Nullable
-   @Override
-   protected bly b(dlf $$0, cvn $$1, hz $$2) {
-      return new bme(($$2x, $$3, $$4) -> new cma($$2x, $$3, ckm.a($$1, $$2)), d);
+   public dgk(cnr $$0, dli.d $$1) {
+      super($$1);
+      this.k = $$0;
+      this.k(
+         this.E
+            .b()
+            .a(a, Boolean.valueOf(false))
+            .a(b, Boolean.valueOf(false))
+            .a(c, Boolean.valueOf(false))
+            .a(d, Boolean.valueOf(false))
+            .a(e, Boolean.valueOf(false))
+      );
    }
 
    @Override
-   protected eol a(dlf $$0, cut $$1, hz $$2, enx $$3) {
-      return c;
-   }
-
-   @Override
-   protected boolean g_(dlf $$0) {
-      return true;
-   }
-
-   @Override
-   protected det b_(dlf $$0) {
-      return det.c;
-   }
-
-   @Override
-   protected dlf a(dlf $$0, dfa $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dlf a(dlf $$0, ddk $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dlg.a<cyo, dlf> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected boolean a(dlf $$0, cut $$1, hz $$2, ehf $$3) {
-      return false;
+   public cnr b() {
+      return this.k;
    }
 }

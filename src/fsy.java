@@ -1,38 +1,51 @@
-public class fsy extends ftz {
-   fsy(fpx $$0, double $$1, double $$2, double $$3, double $$4) {
+public class fsy extends fuh {
+   fsy(fqe $$0, double $$1, double $$2, double $$3) {
       super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.66F;
       this.C = true;
+      this.B = 0.86F;
       this.j *= 0.01F;
       this.k *= 0.01F;
       this.l *= 0.01F;
-      this.k += 0.2;
-      this.v = Math.max(0.0F, awh.a(((float)$$4 + 0.0F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
-      this.w = Math.max(0.0F, awh.a(((float)$$4 + 0.33333334F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
-      this.x = Math.max(0.0F, awh.a(((float)$$4 + 0.6666667F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.k += 0.1;
       this.D *= 1.5F;
-      this.t = 6;
+      this.t = 16;
+      this.n = false;
    }
 
    @Override
-   public ftd b() {
-      return ftd.b;
+   public ftl b() {
+      return ftl.b;
    }
 
    @Override
    public float b(float $$0) {
-      return this.D * awh.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+      return this.D * awi.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
-   public static class a implements ftc<kc> {
-      private final ftu a;
+   public static class a implements ftk<kc> {
+      private final fuc a;
 
-      public a(ftu $$0) {
+      public a(fuc $$0) {
          this.a = $$0;
       }
 
-      public fsz a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fsy $$8 = new fsy($$1, $$2, $$3, $$4, $$5);
+      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fsy $$8 = new fsy($$1, $$2, $$3 + 0.5, $$4);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
+   }
+
+   public static class b implements ftk<kc> {
+      private final fuc a;
+
+      public b(fuc $$0) {
+         this.a = $$0;
+      }
+
+      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fsy $$8 = new fsy($$1, $$2, $$3, $$4);
          $$8.a(this.a);
          return $$8;
       }

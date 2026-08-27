@@ -1,26 +1,59 @@
-public enum ewt {
-   a(true, false),
-   b(false, false),
-   c(false, true);
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   private static final ewt[] d = values();
-   private final boolean e;
-   private final boolean f;
+public abstract class ewt extends ewo {
+   private static final Logger b = LogUtils.getLogger();
+   private final long c;
+   private final vq d;
+   private final Runnable e;
 
-   private ewt(boolean $$0, boolean $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public ewt(long $$0, vq $$1, Runnable $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public boolean a() {
-      return this.e;
+   protected abstract void a(esx var1, long var2) throws euk;
+
+   @Override
+   public void run() {
+      esx $$0 = esx.a();
+      int $$1 = 0;
+
+      while ($$1 < 25) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            this.a($$0, this.c);
+            if (this.d()) {
+               return;
+            }
+
+            this.e.run();
+            return;
+         } catch (eul var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+            $$1++;
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't reset world");
+            this.a(var5);
+            return;
+         }
+      }
    }
 
-   public boolean b() {
-      return this.f;
-   }
-
-   public ewt c() {
-      return d[(this.ordinal() + 1) % d.length];
+   @Override
+   public vq a() {
+      return this.d;
    }
 }

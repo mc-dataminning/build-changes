@@ -1,34 +1,34 @@
-import com.google.common.collect.ImmutableMap;
+public class bqd implements bro {
+   private final hz a;
+   private final enz b;
 
-public class bqd extends bpw<cbl> {
-   private static final int c = 60;
-   private static final int d = 100;
-   private int e;
-
-   public bqd() {
-      super(ImmutableMap.of(bxh.m, bxi.b), 100);
+   public bqd(hz $$0) {
+      this.a = $$0.i();
+      this.b = enz.b($$0);
    }
 
-   protected boolean a(aov $$0, cbl $$1) {
-      return $$1.ap() == bor.a;
+   public bqd(enz $$0) {
+      this.a = hz.a($$0);
+      this.b = $$0;
    }
 
-   protected boolean a(aov $$0, cbl $$1, long $$2) {
-      return this.e < 60;
+   @Override
+   public enz a() {
+      return this.b;
    }
 
-   protected void b(aov $$0, cbl $$1, long $$2) {
-      if (!$$1.bd()) {
-         $$1.b(bor.i);
-         this.e = 0;
-      }
+   @Override
+   public hz b() {
+      return this.a;
    }
 
-   protected void c(aov $$0, cbl $$1, long $$2) {
-      $$1.b(bor.a);
+   @Override
+   public boolean a(boi $$0) {
+      return true;
    }
 
-   protected void d(aov $$0, cbl $$1, long $$2) {
-      this.e++;
+   @Override
+   public String toString() {
+      return "BlockPosTracker{blockPos=" + this.a + ", centerPosition=" + this.b + "}";
    }
 }

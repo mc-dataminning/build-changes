@@ -1,43 +1,40 @@
-public class eup extends gmv {
-   private static final vq a = vq.c("mco.client.incompatible.title");
-   private static final vq[] b = new vq[]{
-      vq.c("mco.client.incompatible.msg.line1"), vq.c("mco.client.incompatible.msg.line2"), vq.c("mco.client.incompatible.msg.line3")
-   };
-   private static final vq[] c = new vq[]{vq.c("mco.client.incompatible.msg.line1"), vq.c("mco.client.incompatible.msg.line2")};
-   private final ffe v;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
-   public eup(ffe $$0) {
-      super(a);
-      this.v = $$0;
+public class eup implements Iterable<eto> {
+   private final exo a;
+   private final Set<eto> b = new HashSet<>();
+   private List<eto> c = List.of();
+
+   public eup(exo $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public void aQ_() {
-      this.d(ezh.a(vp.k, $$0 -> this.f.a(this.v)).a(this.g / 2 - 100, g(12), 200, 20).a());
-   }
-
-   @Override
-   public void a(eyu $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, g(3), -65536);
-      vq[] $$4 = this.E();
-
-      for (int $$5 = 0; $$5 < $$4.length; $$5++) {
-         $$0.a(this.i, $$4[$$5], this.g / 2, g(5) + $$5 * 12, -1);
+   public void a(List<eto> $$0) {
+      List<eto> $$1 = new ArrayList<>($$0);
+      $$1.sort(new eto.b(this.a.W().c()));
+      boolean $$2 = $$1.removeAll(this.b);
+      if (!$$2) {
+         this.b.clear();
       }
+
+      this.c = $$1;
    }
 
-   private vq[] E() {
-      return aa.b().g() ? c : b;
+   public void a(eto $$0) {
+      this.c.remove($$0);
+      this.b.add($$0);
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 != 257 && $$0 != 335 && $$0 != 256) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         this.f.a(this.v);
-         return true;
-      }
+   public Iterator<eto> iterator() {
+      return this.c.iterator();
+   }
+
+   public boolean a() {
+      return this.c.isEmpty();
    }
 }

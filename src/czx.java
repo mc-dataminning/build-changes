@@ -1,194 +1,223 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class czx extends cya implements dbw {
+public class czx extends cys {
    public static final MapCodec<czx> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.BOOL.fieldOf("automatic").forGetter($$0x -> $$0x.e), u()).apply($$0, czx::new)
+      $$0 -> $$0.group(kf.e.q().fieldOf("plant").forGetter($$0x -> $$0x.e), u()).apply($$0, czx::new)
    );
-   private static final Logger d = LogUtils.getLogger();
-   public static final dlz b = dar.a;
-   public static final dlw c = dlv.c;
-   private final boolean e;
+   public static final int b = 5;
+   public static final dmj c = dlz.au;
+   protected static final eos d = cys.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
+   private final cys e;
 
    @Override
    public MapCodec<czx> a() {
       return a;
    }
 
-   public czx(boolean $$0, dle.d $$1) {
+   protected czx(cys $$0, dli.d $$1) {
       super($$1);
-      this.k(this.E.b().a(b, ie.c).a(c, Boolean.valueOf(false)));
       this.e = $$0;
+      this.k(this.E.b().a(c, Integer.valueOf(0)));
    }
 
    @Override
-   public dit a(hz $$0, dlf $$1) {
-      djd $$2 = new djd($$0, $$1);
-      $$2.b(this.e);
-      return $$2;
+   protected void a(dlj $$0, aow $$1, hz $$2, awp $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
+      }
    }
 
    @Override
-   protected void a(dlf $$0, cvn $$1, hz $$2, cyo $$3, hz $$4, boolean $$5) {
-      if (!$$1.B) {
-         if ($$1.c_($$2) instanceof djd $$7) {
-            boolean $$8 = $$1.C($$2);
-            boolean $$9 = $$7.d();
-            $$7.a($$8);
-            if (!$$9 && !$$7.f() && $$7.m() != djd.a.a) {
-               if ($$8) {
-                  $$7.l();
-                  $$1.a($$2, this, 1);
+   protected boolean e_(dlj $$0) {
+      return $$0.c(c) < 5;
+   }
+
+   @Override
+   public eos b_(dlj $$0, cux $$1, hz $$2) {
+      return d;
+   }
+
+   @Override
+   protected void b(dlj $$0, aow $$1, hz $$2, awp $$3) {
+      hz $$4 = $$2.c();
+      if ($$1.u($$4) && $$4.v() < $$1.ak()) {
+         int $$5 = $$0.c(c);
+         if ($$5 < 5) {
+            boolean $$6 = false;
+            boolean $$7 = false;
+            dlj $$8 = $$1.a_($$2.d());
+            if ($$8.a(cyu.fz)) {
+               $$6 = true;
+            } else if ($$8.a(this.e)) {
+               int $$9 = 1;
+
+               for (int $$10 = 0; $$10 < 4; $$10++) {
+                  dlj $$11 = $$1.a_($$2.c($$9 + 1));
+                  if (!$$11.a(this.e)) {
+                     if ($$11.a(cyu.fz)) {
+                        $$7 = true;
+                     }
+                     break;
+                  }
+
+                  $$9++;
                }
+
+               if ($$9 < 2 || $$9 <= $$3.a($$7 ? 5 : 4)) {
+                  $$6 = true;
+               }
+            } else if ($$8.i()) {
+               $$6 = true;
+            }
+
+            if ($$6 && b($$1, $$4, null) && $$1.u($$2.b(2))) {
+               $$1.a($$2, czy.a($$1, $$2, this.e.o()), 2);
+               this.a($$1, $$4, $$5);
+            } else if ($$5 < 4) {
+               int $$12 = $$3.a(4);
+               if ($$7) {
+                  $$12++;
+               }
+
+               boolean $$13 = false;
+
+               for (int $$14 = 0; $$14 < $$12; $$14++) {
+                  ie $$15 = ie.c.a.a($$3);
+                  hz $$16 = $$2.a($$15);
+                  if ($$1.u($$16) && $$1.u($$16.d()) && b($$1, $$16, $$15.g())) {
+                     this.a($$1, $$16, $$5 + 1);
+                     $$13 = true;
+                  }
+               }
+
+               if ($$13) {
+                  $$1.a($$2, czy.a($$1, $$2, this.e.o()), 2);
+               } else {
+                  this.a($$1, $$2);
+               }
+            } else {
+               this.a($$1, $$2);
             }
          }
       }
    }
 
-   @Override
-   protected void a(dlf $$0, aov $$1, hz $$2, awo $$3) {
-      if ($$1.c_($$2) instanceof djd $$5) {
-         cuo $$6 = $$5.c();
-         boolean $$7 = !axd.b($$6.m());
-         djd.a $$8 = $$5.m();
-         boolean $$9 = $$5.k();
-         if ($$8 == djd.a.b) {
-            $$5.l();
-            if ($$9) {
-               this.a($$0, $$1, $$2, $$6, $$7);
-            } else if ($$5.w()) {
-               $$6.a(0);
-            }
+   private void a(cvr $$0, hz $$1, int $$2) {
+      $$0.a($$1, this.o().a(c, Integer.valueOf($$2)), 2);
+      $$0.c(1033, $$1, 0);
+   }
 
-            if ($$5.d() || $$5.f()) {
-               $$1.a($$2, this, 1);
-            }
-         } else if ($$8 == djd.a.c) {
-            if ($$9) {
-               this.a($$0, $$1, $$2, $$6, $$7);
-            } else if ($$5.w()) {
-               $$6.a(0);
-            }
+   private void a(cvr $$0, hz $$1) {
+      $$0.a($$1, this.o().a(c, Integer.valueOf(5)), 2);
+      $$0.c(1034, $$1, 0);
+   }
+
+   private static boolean b(cvu $$0, hz $$1, @Nullable ie $$2) {
+      for (ie $$3 : ie.c.a) {
+         if ($$3 != $$2 && !$$0.u($$1.a($$3))) {
+            return false;
          }
-
-         $$1.c($$2, this);
-      }
-   }
-
-   private void a(dlf $$0, cvn $$1, hz $$2, cuo $$3, boolean $$4) {
-      if ($$4) {
-         $$3.a($$1);
-      } else {
-         $$3.a(0);
       }
 
-      a($$1, $$2, $$0.c(b));
-   }
-
-   @Override
-   protected blu a(dlf $$0, cvn $$1, hz $$2, chh $$3, eno $$4) {
-      dit $$5 = $$1.c_($$2);
-      if ($$5 instanceof djd && $$3.gq()) {
-         $$3.a((djd)$$5);
-         return blu.a($$1.B);
-      } else {
-         return blu.d;
-      }
-   }
-
-   @Override
-   protected boolean d_(dlf $$0) {
       return true;
    }
 
    @Override
-   protected int a(dlf $$0, cvn $$1, hz $$2) {
-      dit $$3 = $$1.c_($$2);
-      return $$3 instanceof djd ? ((djd)$$3).c().k() : 0;
-   }
-
-   @Override
-   public void a(cvn $$0, hz $$1, dlf $$2, bog $$3, coz $$4) {
-      if ($$0.c_($$1) instanceof djd $$6) {
-         cuo $$7 = $$6.c();
-         if ($$4.B()) {
-            $$7.b($$4.z());
-         }
-
-         if (!$$0.B) {
-            if (cms.a($$4) == null) {
-               $$7.a($$0.Z().b(cvj.p));
-               $$6.b(this.e);
-            }
-
-            if ($$6.m() == djd.a.a) {
-               boolean $$8 = $$0.C($$1);
-               $$6.a($$8);
-            }
-         }
+   protected dlj a(dlj $$0, ie $$1, dlj $$2, cvs $$3, hz $$4, hz $$5) {
+      if ($$1 != ie.b && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected det b_(dlf $$0) {
-      return det.c;
-   }
+   protected boolean a(dlj $$0, cvu $$1, hz $$2) {
+      dlj $$3 = $$1.a_($$2.d());
+      if (!$$3.a(this.e) && !$$3.a(cyu.fz)) {
+         if (!$$3.i()) {
+            return false;
+         } else {
+            boolean $$4 = false;
 
-   @Override
-   protected dlf a(dlf $$0, dfa $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
+            for (ie $$5 : ie.c.a) {
+               dlj $$6 = $$1.a_($$2.a($$5));
+               if ($$6.a(this.e)) {
+                  if ($$4) {
+                     return false;
+                  }
 
-   @Override
-   protected dlf a(dlf $$0, ddk $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dlg.a<cyo, dlf> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   public dlf a(crg $$0) {
-      return this.o().a(b, $$0.d().g());
-   }
-
-   private static void a(cvn $$0, hz $$1, ie $$2) {
-      hz.a $$3 = $$1.j();
-      cvj $$4 = $$0.Z();
-      int $$5 = $$4.c(cvj.x);
-
-      while ($$5-- > 0) {
-         $$3.c($$2);
-         dlf $$6 = $$0.a_($$3);
-         cyo $$7 = $$6.b();
-         if (!$$6.a(cyq.kH) || !($$0.c_($$3) instanceof djd $$9) || $$9.m() != djd.a.a) {
-            break;
-         }
-
-         if ($$9.d() || $$9.f()) {
-            cuo $$10 = $$9.c();
-            if ($$9.l()) {
-               if (!$$10.a($$0)) {
-                  break;
+                  $$4 = true;
+               } else if (!$$6.i()) {
+                  return false;
                }
-
-               $$0.c($$3, $$7);
-            } else if ($$9.w()) {
-               $$10.a(0);
             }
-         }
 
-         $$2 = $$6.c(b);
+            return $$4;
+         }
+      } else {
+         return true;
+      }
+   }
+
+   @Override
+   protected void a(dlk.a<cys, dlj> $$0) {
+      $$0.a(c);
+   }
+
+   public static void a(cvs $$0, hz $$1, awp $$2, int $$3) {
+      $$0.a($$1, czy.a($$0, $$1, cyu.ku.o()), 2);
+      a($$0, $$1, $$2, $$1, $$3, 0);
+   }
+
+   private static void a(cvs $$0, hz $$1, awp $$2, hz $$3, int $$4, int $$5) {
+      cys $$6 = cyu.ku;
+      int $$7 = $$2.a(4) + 1;
+      if ($$5 == 0) {
+         $$7++;
       }
 
-      if ($$5 <= 0) {
-         int $$11 = Math.max($$4.c(cvj.x), 0);
-         d.warn("Command Block chain tried to execute more than {} steps!", $$11);
+      for (int $$8 = 0; $$8 < $$7; $$8++) {
+         hz $$9 = $$1.b($$8 + 1);
+         if (!b($$0, $$9, null)) {
+            return;
+         }
+
+         $$0.a($$9, czy.a($$0, $$9, $$6.o()), 2);
+         $$0.a($$9.d(), czy.a($$0, $$9.d(), $$6.o()), 2);
+      }
+
+      boolean $$10 = false;
+      if ($$5 < 4) {
+         int $$11 = $$2.a(4);
+         if ($$5 == 0) {
+            $$11++;
+         }
+
+         for (int $$12 = 0; $$12 < $$11; $$12++) {
+            ie $$13 = ie.c.a.a($$2);
+            hz $$14 = $$1.b($$7).a($$13);
+            if (Math.abs($$14.u() - $$3.u()) < $$4 && Math.abs($$14.w() - $$3.w()) < $$4 && $$0.u($$14) && $$0.u($$14.d()) && b($$0, $$14, $$13.g())) {
+               $$10 = true;
+               $$0.a($$14, czy.a($$0, $$14, $$6.o()), 2);
+               $$0.a($$14.a($$13.g()), czy.a($$0, $$14.a($$13.g()), $$6.o()), 2);
+               a($$0, $$14, $$2, $$3, $$4, $$5 + 1);
+            }
+         }
+      }
+
+      if (!$$10) {
+         $$0.a($$1.b($$7), cyu.kv.o().a(c, Integer.valueOf(5)), 2);
+      }
+   }
+
+   @Override
+   protected void a(cvr $$0, dlj $$1, env $$2, cid $$3) {
+      hz $$4 = $$2.a();
+      if (!$$0.B && $$3.a($$0, $$4) && $$3.b($$0)) {
+         $$0.a($$4, true, $$3);
       }
    }
 }

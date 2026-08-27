@@ -1,162 +1,30 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.blaze3d.systems.RenderSystem;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.List;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
 
 public class esf {
-   private final ImmutableList<esg> a;
-   private final ImmutableMap<String, esg> b;
-   private final IntList c = new IntArrayList();
-   private final int d;
-   @Nullable
-   private esd e;
-
-   public esf(ImmutableMap<String, esg> $$0) {
-      this.b = $$0;
-      this.a = $$0.values().asList();
-      int $$1 = 0;
-      UnmodifiableIterator var3 = $$0.values().iterator();
-
-      while (var3.hasNext()) {
-         esg $$2 = (esg)var3.next();
-         this.c.add($$1);
-         $$1 += $$2.e();
-      }
-
-      this.d = $$1;
-   }
-
-   @Override
-   public String toString() {
-      return "format: " + this.b.size() + " elements: " + this.b.entrySet().stream().map(Object::toString).collect(Collectors.joining(" "));
-   }
-
-   public int a() {
-      return this.b() / 4;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public ImmutableList<esg> c() {
-      return this.a;
-   }
-
-   public ImmutableList<String> d() {
-      return this.b.keySet().asList();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         esf $$1 = (esf)$$0;
-         return this.d != $$1.d ? false : this.b.equals($$1.b);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
-   }
-
-   public void e() {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(this::h);
-      } else {
-         this.h();
-      }
-   }
-
-   private void h() {
-      int $$0 = this.b();
-      List<esg> $$1 = this.c();
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         $$1.get($$2).a($$2, (long)this.c.getInt($$2), $$0);
-      }
-   }
-
-   public void f() {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(this::i);
-      } else {
-         this.i();
-      }
-   }
-
-   private void i() {
-      ImmutableList<esg> $$0 = this.c();
-
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         esg $$2 = (esg)$$0.get($$1);
-         $$2.a($$1);
-      }
-   }
-
-   public esd g() {
-      esd $$0 = this.e;
-      if ($$0 == null) {
-         this.e = $$0 = new esd(esd.a.b);
-      }
-
-      return $$0;
-   }
-
-   public static enum a {
-      a(5123, 2),
-      b(5125, 4);
-
-      public final int c;
-      public final int d;
-
-      private a(int $$0, int $$1) {
-         this.c = $$0;
-         this.d = $$1;
-      }
-
-      public static esf.a a(int $$0) {
-         return ($$0 & -65536) != 0 ? b : a;
-      }
-   }
-
-   public static enum b {
-      a(4, 2, 2, false),
-      b(5, 2, 1, true),
-      c(1, 2, 2, false),
-      d(3, 2, 1, true),
-      e(4, 3, 3, false),
-      f(5, 3, 1, true),
-      g(6, 3, 1, true),
-      h(4, 4, 4, false);
-
-      public final int i;
-      public final int j;
-      public final int k;
-      public final boolean l;
-
-      private b(int $$0, int $$1, int $$2, boolean $$3) {
-         this.i = $$0;
-         this.j = $$1;
-         this.k = $$2;
-         this.l = $$3;
-      }
-
-      public int a(int $$0) {
-         return switch (this) {
-            case b, c, d, e, f, g -> $$0;
-            case a, h -> $$0 / 4 * 6;
-            default -> 0;
-         };
-      }
-   }
+   public static final esn a = new esn(0, esn.a.a, esn.b.a, 3);
+   public static final esn b = new esn(0, esn.a.b, esn.b.c, 4);
+   public static final esn c = new esn(0, esn.a.a, esn.b.d, 2);
+   public static final esn d = new esn(1, esn.a.e, esn.b.d, 2);
+   public static final esn e = new esn(2, esn.a.e, esn.b.d, 2);
+   public static final esn f = new esn(0, esn.a.c, esn.b.b, 3);
+   public static final esn g = new esn(0, esn.a.c, esn.b.e, 1);
+   public static final esn h = c;
+   public static final esm i = new esm(ImmutableMap.builder().put("Position", a).put("UV", h).put("Color", b).build());
+   public static final esm j = new esm(
+      ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV2", e).put("Normal", f).put("Padding", g).build()
+   );
+   public static final esm k = new esm(
+      ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV1", d).put("UV2", e).put("Normal", f).put("Padding", g).build()
+   );
+   public static final esm l = new esm(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).put("UV2", e).build());
+   public static final esm m = new esm(ImmutableMap.builder().put("Position", a).build());
+   public static final esm n = new esm(ImmutableMap.builder().put("Position", a).put("Color", b).build());
+   public static final esm o = new esm(ImmutableMap.builder().put("Position", a).put("Color", b).put("Normal", f).put("Padding", g).build());
+   public static final esm p = new esm(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV2", e).build());
+   public static final esm q = new esm(ImmutableMap.builder().put("Position", a).put("UV0", c).build());
+   public static final esm r = new esm(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).build());
+   public static final esm s = new esm(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).build());
+   public static final esm t = new esm(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV2", e).build());
+   public static final esm u = new esm(ImmutableMap.builder().put("Position", a).put("UV0", c).put("UV2", e).put("Color", b).build());
+   public static final esm v = new esm(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).put("Normal", f).put("Padding", g).build());
 }

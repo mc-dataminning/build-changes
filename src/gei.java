@@ -1,86 +1,49 @@
-import com.mojang.authlib.GameProfile;
-import java.util.Map;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
 
-public class gei<T extends bog, M extends fmb<T> & fmj> extends gfd<T, M> {
-   private final float a;
-   private final float b;
-   private final float c;
-   private final Map<dfp.a, fny> d;
-   private final fvh e;
+public class gei<T extends boi, M extends fnn<T>> extends gfu<T, M> {
+   private static final aiy a = new aiy("textures/entity/bee/bee_stinger.png");
 
-   public gei(gcn<T, M> $$0, foy $$1, fvh $$2) {
-      this($$0, $$1, 1.0F, 1.0F, 1.0F, $$2);
-   }
-
-   public gei(gcn<T, M> $$0, foy $$1, float $$2, float $$3, float $$4, fvh $$5) {
+   public gei(gcb<T, M> $$0) {
       super($$0);
-      this.a = $$2;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = fya.a($$1);
-      this.e = $$5;
    }
 
-   public void a(esa $$0, fvl $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      coz $$10 = $$3.c(bnv.f);
-      if (!$$10.b()) {
-         cou $$11 = $$10.d();
-         $$0.a();
-         $$0.b(this.a, this.b, this.c);
-         boolean $$12 = $$3 instanceof cgu || $$3 instanceof cfh;
-         if ($$3.o_() && !($$3 instanceof cgu)) {
-            float $$13 = 2.0F;
-            float $$14 = 1.4F;
-            $$0.a(0.0F, 0.03125F, 0.0F);
-            $$0.b(0.7F, 0.7F, 0.7F);
-            $$0.a(0.0F, 1.0F, 0.0F);
-         }
+   @Override
+   protected int a(T $$0) {
+      return $$0.eQ();
+   }
 
-         this.c().d().a($$0);
-         if ($$11 instanceof cms && ((cms)$$11).e() instanceof cxk) {
-            float $$15 = 1.1875F;
-            $$0.b(1.1875F, -1.1875F, -1.1875F);
-            if ($$12) {
-               $$0.a(0.0F, 0.0625F, 0.0F);
-            }
+   @Override
+   protected void a(esh $$0, fvt $$1, int $$2, bnq $$3, float $$4, float $$5, float $$6, float $$7) {
+      float $$8 = awi.c($$4 * $$4 + $$6 * $$6);
+      float $$9 = (float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI);
+      float $$10 = (float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI);
+      $$0.a(0.0F, 0.0F, 0.0F);
+      $$0.a(a.d.rotationDegrees($$9 - 90.0F));
+      $$0.a(a.f.rotationDegrees($$10));
+      float $$11 = 0.0F;
+      float $$12 = 0.125F;
+      float $$13 = 0.0F;
+      float $$14 = 0.0625F;
+      float $$15 = 0.03125F;
+      $$0.a(a.b.rotationDegrees(45.0F));
+      $$0.b(0.03125F, 0.03125F, 0.03125F);
+      $$0.a(2.5F, 0.0F, 0.0F);
+      esl $$16 = $$1.getBuffer(fwb.e(a));
 
-            GameProfile $$16 = null;
-            if ($$10.v()) {
-               sw $$17 = $$10.w();
-               if ($$17.b("SkullOwner", 10)) {
-                  $$16 = tl.a($$17.p("SkullOwner"));
-               }
-            }
-
-            $$0.a(-0.5, 0.0, -0.5);
-            dfp.a $$18 = ((cxk)((cms)$$11).e()).b();
-            fny $$19 = this.d.get($$18);
-            fvt $$20 = fya.a($$18, $$16);
-            bpe $$22;
-            if ($$3.cZ() instanceof bog $$21) {
-               $$22 = $$21.aQ;
-            } else {
-               $$22 = $$3.aQ;
-            }
-
-            float $$24 = $$22.c($$6);
-            fya.a(null, 180.0F, $$24, $$0, $$1, $$2, $$19, $$20);
-         } else if (!($$11 instanceof cmj $$25) || $$25.g() != bnv.f) {
-            a($$0, $$12);
-            this.e.a($$3, $$10, cow.f, false, $$0, $$1, $$2);
-         }
-
-         $$0.b();
+      for (int $$17 = 0; $$17 < 4; $$17++) {
+         $$0.a(a.b.rotationDegrees(90.0F));
+         esh.a $$18 = $$0.c();
+         Matrix4f $$19 = $$18.a();
+         Matrix3f $$20 = $$18.b();
+         a($$16, $$19, $$20, -4.5F, -1, 0.0F, 0.0F, $$2);
+         a($$16, $$19, $$20, 4.5F, -1, 0.125F, 0.0F, $$2);
+         a($$16, $$19, $$20, 4.5F, 1, 0.125F, 0.0625F, $$2);
+         a($$16, $$19, $$20, -4.5F, 1, 0.0F, 0.0625F, $$2);
       }
    }
 
-   public static void a(esa $$0, boolean $$1) {
-      float $$2 = 0.625F;
-      $$0.a(0.0F, -0.25F, 0.0F);
-      $$0.a(a.d.rotationDegrees(180.0F));
-      $$0.b(0.625F, -0.625F, -0.625F);
-      if ($$1) {
-         $$0.a(0.0F, 0.1875F, 0.0F);
-      }
+   private static void a(esl $$0, Matrix4f $$1, Matrix3f $$2, float $$3, int $$4, float $$5, float $$6, int $$7) {
+      $$0.a($$1, $$3, (float)$$4, 0.0F).a(255, 255, 255, 255).a($$5, $$6).c(ggs.d).b($$7).a($$2, 0.0F, 1.0F, 0.0F).e();
    }
 }

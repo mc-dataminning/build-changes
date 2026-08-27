@@ -5,17 +5,17 @@ import javax.annotation.Nullable;
 
 public class ne implements my {
    private final mz b;
-   private final crq c;
-   private final cou d;
-   private final cry e;
+   private final cru c;
+   private final coy d;
+   private final csc e;
    private final float f;
    private final int g;
    private final Map<String, an<?>> h = new LinkedHashMap<>();
    @Nullable
    private String i;
-   private final crk.a<?> j;
+   private final cro.a<?> j;
 
-   private ne(mz $$0, crq $$1, cvm $$2, cry $$3, float $$4, int $$5, crk.a<?> $$6) {
+   private ne(mz $$0, cru $$1, cvq $$2, csc $$3, float $$4, int $$5, cro.a<?> $$6) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2.j();
@@ -25,24 +25,24 @@ public class ne implements my {
       this.j = $$6;
    }
 
-   public static <T extends crk> ne a(cry $$0, mz $$1, cvm $$2, float $$3, int $$4, csf<T> $$5, crk.a<T> $$6) {
+   public static <T extends cro> ne a(csc $$0, mz $$1, cvq $$2, float $$3, int $$4, csj<T> $$5, cro.a<T> $$6) {
       return new ne($$1, a($$5, $$2), $$2, $$0, $$3, $$4, $$6);
    }
 
-   public static ne a(cry $$0, mz $$1, cvm $$2, float $$3, int $$4) {
-      return new ne($$1, crq.a, $$2, $$0, $$3, $$4, crp::new);
+   public static ne a(csc $$0, mz $$1, cvq $$2, float $$3, int $$4) {
+      return new ne($$1, cru.a, $$2, $$0, $$3, $$4, crt::new);
    }
 
-   public static ne b(cry $$0, mz $$1, cvm $$2, float $$3, int $$4) {
-      return new ne($$1, c($$2), $$2, $$0, $$3, $$4, crn::new);
+   public static ne b(csc $$0, mz $$1, cvq $$2, float $$3, int $$4) {
+      return new ne($$1, c($$2), $$2, $$0, $$3, $$4, crr::new);
    }
 
-   public static ne c(cry $$0, mz $$1, cvm $$2, float $$3, int $$4) {
-      return new ne($$1, b($$2), $$2, $$0, $$3, $$4, csq::new);
+   public static ne c(csc $$0, mz $$1, cvq $$2, float $$3, int $$4) {
+      return new ne($$1, b($$2), $$2, $$0, $$3, $$4, csu::new);
    }
 
-   public static ne d(cry $$0, mz $$1, cvm $$2, float $$3, int $$4) {
-      return new ne($$1, crq.a, $$2, $$0, $$3, $$4, csu::new);
+   public static ne d(csc $$0, mz $$1, cvq $$2, float $$3, int $$4) {
+      return new ne($$1, cru.a, $$2, $$0, $$3, $$4, csy::new);
    }
 
    public ne b(String $$0, an<?> $$1) {
@@ -56,7 +56,7 @@ public class ne implements my {
    }
 
    @Override
-   public cou a() {
+   public coy a() {
       return this.d;
    }
 
@@ -65,31 +65,31 @@ public class ne implements my {
       this.a($$1);
       ae.a $$2 = $$0.a().a("has_the_recipe", cv.a($$1)).a(aj.a.c($$1)).a(ai.a.b);
       this.h.forEach($$2::a);
-      crk $$3 = this.j.create(Objects.requireNonNullElse(this.i, ""), this.c, this.e, new coz(this.d), this.f, this.g);
+      cro $$3 = this.j.create(Objects.requireNonNullElse(this.i, ""), this.c, this.e, new cpd(this.d), this.f, this.g);
       $$0.a($$1, $$3, $$2.b($$1.d("recipes/" + this.b.a() + "/")));
    }
 
-   private static crq b(cvm $$0) {
+   private static cru b(cvq $$0) {
       if ($$0.j().t()) {
-         return crq.a;
+         return cru.a;
       } else {
-         return $$0.j() instanceof cms ? crq.b : crq.c;
+         return $$0.j() instanceof cmw ? cru.b : cru.c;
       }
    }
 
-   private static crq c(cvm $$0) {
-      return $$0.j() instanceof cms ? crq.b : crq.c;
+   private static cru c(cvq $$0) {
+      return $$0.j() instanceof cmw ? cru.b : cru.c;
    }
 
-   private static crq a(csf<? extends crk> $$0, cvm $$1) {
-      if ($$0 == csf.p) {
+   private static cru a(csj<? extends cro> $$0, cvq $$1) {
+      if ($$0 == csj.p) {
          return b($$1);
-      } else if ($$0 == csf.q) {
+      } else if ($$0 == csj.q) {
          return c($$1);
-      } else if ($$0 != csf.r && $$0 != csf.s) {
+      } else if ($$0 != csj.r && $$0 != csj.s) {
          throw new IllegalStateException("Unknown cooking recipe type");
       } else {
-         return crq.a;
+         return cru.a;
       }
    }
 

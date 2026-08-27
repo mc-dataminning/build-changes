@@ -1,49 +1,28 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dxl extends dxi {
-   public static final Codec<dxl> a = RecordCodecBuilder.create(
-      $$0 -> b($$0).and(bkz.b(0, 24).fieldOf("crown_height").forGetter($$0x -> $$0x.b)).apply($$0, dxl::new)
-   );
-   private final bkz b;
+public class dxl extends dxk {
+   public static final Codec<dxl> c = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dxl::new));
 
-   public dxl(bkz $$0, bkz $$1, bkz $$2) {
-      super($$0, $$1);
-      this.b = $$2;
+   public dxl(blb $$0, blb $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected dxj<?> a() {
-      return dxj.h;
+   protected dxq<?> a() {
+      return dxq.e;
    }
 
    @Override
-   protected void a(cvt $$0, dxi.b $$1, awo $$2, dws $$3, int $$4, dxi.a $$5, int $$6, int $$7, int $$8) {
-      hz $$9 = $$5.a();
-      int $$10 = 0;
-
-      for (int $$11 = $$9.v() - $$6 + $$8; $$11 <= $$9.v() + $$8; $$11++) {
-         int $$12 = $$9.v() - $$11;
-         int $$13 = $$7 + $$5.b() + awh.d((float)$$12 / (float)$$6 * 3.5F);
-         int $$14;
-         if ($$12 > 0 && $$13 == $$10 && ($$11 & 1) == 0) {
-            $$14 = $$13 + 1;
-         } else {
-            $$14 = $$13;
-         }
-
-         this.a($$0, $$1, $$2, $$3, new hz($$9.u(), $$11, $$9.w()), $$14, 0, $$5.c());
-         $$10 = $$13;
+   protected void a(cvx $$0, dxp.b $$1, awp $$2, dwz $$3, int $$4, dxp.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = $$7 + $$5.b() - 1 - $$9;
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
       }
    }
 
    @Override
-   public int a(awo $$0, int $$1, dws $$2) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   protected boolean a(awo $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
+   protected boolean a(awp $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$0.a(2) == 0;
    }
 }

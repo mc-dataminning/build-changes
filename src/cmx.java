@@ -1,110 +1,69 @@
+import java.util.List;
 import java.util.function.Predicate;
 
-public class cmx extends cpp {
-   public static final int a = 20;
-   public static final int b = 15;
+public class cmx extends coy {
+   private static final Predicate<bnq> a = bnv.f.and(bnq::bt);
+   private final cjg.b b;
+   private final boolean c;
 
-   public cmx(cou.a $$0) {
-      super($$0);
+   public cmx(boolean $$0, cjg.b $$1, coy.a $$2) {
+      super($$2);
+      this.c = $$0;
+      this.b = $$1;
    }
 
    @Override
-   public void a(coz $$0, cvn $$1, bog $$2, int $$3) {
-      if ($$2 instanceof chh $$4) {
-         boolean $$5 = $$4.fU().d || ctj.a(ctl.B, $$0) > 0;
-         coz $$6 = $$4.g($$0);
-         if (!$$6.b() || $$5) {
-            if ($$6.b()) {
-               $$6 = new coz(cpc.ou);
-            }
+   public blx<cpd> a(cvr $$0, chl $$1, blv $$2) {
+      cpd $$3 = $$1.b($$2);
+      enx $$4 = a($$0, $$1, cva.b.c);
+      if ($$4.c() == enx.a.a) {
+         return blx.c($$3);
+      } else {
+         enz $$5 = $$1.f(1.0F);
+         double $$6 = 5.0;
+         List<bnq> $$7 = $$0.a($$1, $$1.cH().b($$5.a(5.0)).g(1.0), a);
+         if (!$$7.isEmpty()) {
+            enz $$8 = $$1.br();
 
-            int $$7 = this.b($$0) - $$3;
-            float $$8 = a($$7);
-            if (!((double)$$8 < 0.1)) {
-               boolean $$9 = $$5 && $$6.a(cpc.ou);
-               if (!$$1.B) {
-                  cmn $$10 = (cmn)($$6.d() instanceof cmn ? $$6.d() : cpc.ou);
-                  chn $$11 = $$10.a($$1, $$6, $$4);
-                  $$11.a($$4, $$4.dE(), $$4.dC(), 0.0F, $$8 * 3.0F, 1.0F);
-                  if ($$8 == 1.0F) {
-                     $$11.a(true);
-                  }
-
-                  int $$12 = ctj.a(ctl.y, $$0);
-                  if ($$12 > 0) {
-                     $$11.h($$11.z() + (double)$$12 * 0.5 + 0.5);
-                  }
-
-                  int $$13 = ctj.a(ctl.z, $$0);
-                  if ($$13 > 0) {
-                     $$11.b($$13);
-                  }
-
-                  if (ctj.a(ctl.A, $$0) > 0) {
-                     $$11.g(100);
-                  }
-
-                  $$0.a(1, $$4, bog.d($$4.fo()));
-                  if ($$9 || $$4.fU().d && ($$6.a(cpc.vl) || $$6.a(cpc.vm))) {
-                     $$11.d = chn.a.c;
-                  }
-
-                  $$1.b($$11);
+            for (bnq $$9 : $$7) {
+               enu $$10 = $$9.cH().g((double)$$9.bE());
+               if ($$10.d($$8)) {
+                  return blx.c($$3);
                }
+            }
+         }
 
-               $$1.a(null, $$4.dr(), $$4.dt(), $$4.dx(), atk.aD, atl.h, 1.0F, 1.0F / ($$1.F_().i() * 0.4F + 1.2F) + $$8 * 0.5F);
-               if (!$$9 && !$$4.fU().d) {
-                  $$6.h(1);
-                  if ($$6.b()) {
-                     $$4.fT().g($$6);
+         if ($$4.c() == enx.a.b) {
+            cjg $$11 = this.a($$0, $$4, $$3, $$1);
+            $$11.a(this.b);
+            $$11.r($$1.dC());
+            if (!$$0.a($$11, $$11.cH())) {
+               return blx.d($$3);
+            } else {
+               if (!$$0.B) {
+                  $$0.b($$11);
+                  $$0.a($$1, dpw.t, $$4.e());
+                  if (!$$1.fU().d) {
+                     $$3.h(1);
                   }
                }
 
-               $$4.b(atu.c.b(this));
+               $$1.b(atv.c.b(this));
+               return blx.a($$3, $$0.y_());
             }
+         } else {
+            return blx.c($$3);
          }
       }
    }
 
-   public static float a(int $$0) {
-      float $$1 = (float)$$0 / 20.0F;
-      $$1 = ($$1 * $$1 + $$1 * 2.0F) / 3.0F;
-      if ($$1 > 1.0F) {
-         $$1 = 1.0F;
+   private cjg a(cvr $$0, enx $$1, cpd $$2, chl $$3) {
+      enz $$4 = $$1.e();
+      cjg $$5 = (cjg)(this.c ? new cjh($$0, $$4.c, $$4.d, $$4.e) : new cjg($$0, $$4.c, $$4.d, $$4.e));
+      if ($$0 instanceof aow $$6) {
+         bnw.<cjg>a($$6, $$2, $$3).accept($$5);
       }
 
-      return $$1;
-   }
-
-   @Override
-   public int b(coz $$0) {
-      return 72000;
-   }
-
-   @Override
-   public cqs c(coz $$0) {
-      return cqs.e;
-   }
-
-   @Override
-   public blv<coz> a(cvn $$0, chh $$1, blt $$2) {
-      coz $$3 = $$1.b($$2);
-      boolean $$4 = !$$1.g($$3).b();
-      if (!$$1.fU().d && !$$4) {
-         return blv.d($$3);
-      } else {
-         $$1.c($$2);
-         return blv.b($$3);
-      }
-   }
-
-   @Override
-   public Predicate<coz> b() {
-      return c;
-   }
-
-   @Override
-   public int d() {
-      return 15;
+      return $$5;
    }
 }

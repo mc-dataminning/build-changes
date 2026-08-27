@@ -1,38 +1,30 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.function.IntFunction;
 
-public class ewy {
-   private final fpy a;
-   private int b = -1;
-   @Nullable
-   private Consumer<sw> c;
+public enum ewy implements awk {
+   a(0, "options.off"),
+   b(1, "options.attack.crosshair"),
+   c(2, "options.attack.hotbar");
 
-   public ewy(fpy $$0) {
-      this.a = $$0;
+   private static final IntFunction<ewy> d = ava.a(ewy::a, values(), ava.a.b);
+   private final int e;
+   private final String f;
+
+   private ewy(int $$0, String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public boolean a(int $$0, @Nullable sw $$1) {
-      if (this.b == $$0 && this.c != null) {
-         this.c.accept($$1);
-         this.c = null;
-         return true;
-      } else {
-         return false;
-      }
+   @Override
+   public int a() {
+      return this.e;
    }
 
-   private int a(Consumer<sw> $$0) {
-      this.c = $$0;
-      return ++this.b;
+   @Override
+   public String b() {
+      return this.f;
    }
 
-   public void a(int $$0, Consumer<sw> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new afk($$2, $$0));
-   }
-
-   public void a(hz $$0, Consumer<sw> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new aev($$2, $$0));
+   public static ewy a(int $$0) {
+      return d.apply($$0);
    }
 }

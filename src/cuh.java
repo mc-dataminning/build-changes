@@ -1,15 +1,25 @@
-public class cuh extends cti {
-   public cuh(cti.a $$0, bnv... $$1) {
-      super($$0, auh.bd, $$1);
+public class cuh extends ctm {
+   public cuh(ctm.a $$0, bnx... $$1) {
+      super($$0, aui.bk, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 1;
+      return 10 + $$0 * 7;
    }
 
    @Override
    public int b(int $$0) {
-      return this.a($$0) + 40;
+      return 50;
+   }
+
+   @Override
+   public int a() {
+      return 3;
+   }
+
+   @Override
+   public boolean a(ctm $$0) {
+      return super.a($$0) && $$0 != ctp.E && $$0 != ctp.H;
    }
 }

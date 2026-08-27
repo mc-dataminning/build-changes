@@ -1,53 +1,33 @@
-public class flw<T extends bno> extends fmk<T> {
-   private final fpc a;
-   private final fpc b;
-   private final fpc f;
-   private final fpc g;
+public class flw<T extends cby> extends fmt<T> {
+   private final fpj g = this.b.b("left_chest");
+   private final fpj h = this.b.b("right_chest");
 
-   public flw(fpc $$0) {
-      this.a = $$0;
-      this.b = $$0.b("body");
-      this.f = this.b.b("tail");
-      this.g = this.f.b("tail_fin");
+   public flw(fpj $$0) {
+      super($$0);
    }
 
-   public static fpi b() {
-      fpk $$0 = new fpk();
-      fpl $$1 = $$0.a();
-      float $$2 = 18.0F;
-      float $$3 = -8.0F;
-      fpl $$4 = $$1.a("body", fph.c().a(22, 0).a(-4.0F, -7.0F, 0.0F, 8.0F, 7.0F, 13.0F), fpe.a(0.0F, 22.0F, -5.0F));
-      $$4.a("back_fin", fph.c().a(51, 0).a(-0.5F, 0.0F, 8.0F, 1.0F, 4.0F, 5.0F), fpe.b((float) (Math.PI / 3), 0.0F, 0.0F));
-      $$4.a(
-         "left_fin",
-         fph.c().a(48, 20).a().a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
-         fpe.a(2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (Math.PI * 2.0 / 3.0))
-      );
-      $$4.a(
-         "right_fin",
-         fph.c().a(48, 20).a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
-         fpe.a(-2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (-Math.PI * 2.0 / 3.0))
-      );
-      fpl $$5 = $$4.a("tail", fph.c().a(0, 19).a(-2.0F, -2.5F, 0.0F, 4.0F, 5.0F, 11.0F), fpe.a(0.0F, -2.5F, 11.0F, -0.10471976F, 0.0F, 0.0F));
-      $$5.a("tail_fin", fph.c().a(19, 20).a(-5.0F, -0.5F, 0.0F, 10.0F, 1.0F, 6.0F), fpe.a(0.0F, 0.0F, 9.0F));
-      fpl $$6 = $$4.a("head", fph.c().a(0, 0).a(-4.0F, -3.0F, -3.0F, 8.0F, 7.0F, 6.0F), fpe.a(0.0F, -4.0F, -3.0F));
-      $$6.a("nose", fph.c().a(0, 13).a(-1.0F, 2.0F, -7.0F, 2.0F, 2.0F, 4.0F), fpe.a);
-      return fpi.a($$0, 64, 64);
+   public static fpp c() {
+      fpr $$0 = fmt.a(fpn.a);
+      fps $$1 = $$0.a();
+      fps $$2 = $$1.a("body");
+      fpo $$3 = fpo.c().a(26, 21).a(-4.0F, 0.0F, -2.0F, 8.0F, 8.0F, 3.0F);
+      $$2.a("left_chest", $$3, fpl.a(6.0F, -8.0F, 0.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$2.a("right_chest", $$3, fpl.a(-6.0F, -8.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
+      fps $$4 = $$1.a("head_parts").a("head");
+      fpo $$5 = fpo.c().a(0, 12).a(-1.0F, -7.0F, 0.0F, 2.0F, 7.0F, 1.0F);
+      $$4.a("left_ear", $$5, fpl.a(1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12)));
+      $$4.a("right_ear", $$5, fpl.a(-1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12)));
+      return fpp.a($$0, 64, 64);
    }
 
-   @Override
-   public fpc a() {
-      return this.a;
-   }
-
-   @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.e = $$5 * (float) (Math.PI / 180.0);
-      this.b.f = $$4 * (float) (Math.PI / 180.0);
-      if ($$0.dp().i() > 1.0E-7) {
-         this.b.e = this.b.e + (-0.05F - 0.05F * awh.b($$3 * 0.3F));
-         this.f.e = -0.1F * awh.b($$3 * 0.3F);
-         this.g.e = -0.2F * awh.b($$3 * 0.3F);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if ($$0.w()) {
+         this.g.k = true;
+         this.h.k = true;
+      } else {
+         this.g.k = false;
+         this.h.k = false;
       }
    }
 }

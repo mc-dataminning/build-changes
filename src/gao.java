@@ -1,28 +1,25 @@
-public class gao extends gby<ced, flz<ced>> {
-   private static final aiy a = new aiy("textures/entity/enderman/enderman.png");
-   private final awo i = awo.a();
+public class gao extends gcg<ced, fmc<ced>> {
+   private static final aiy a = new aiy("textures/entity/creeper/creeper.png");
 
-   public gao(gas.a $$0) {
-      super($$0, new flz<>($$0.a(fpb.T)), 0.5F);
-      this.a(new gen<>(this));
-      this.a(new gee(this, $$0.c()));
+   public gao(gba.a $$0) {
+      super($$0, new fmc<>($$0.a(fpi.D)), 0.5F);
+      this.a(new geo(this, $$0.f()));
    }
 
-   public void a(ced $$0, float $$1, float $$2, esa $$3, fvl $$4, int $$5) {
-      dlf $$6 = $$0.gg();
-      flz<ced> $$7 = this.a();
-      $$7.a = $$6 != null;
-      $$7.b = $$0.gh();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected void a(ced $$0, esh $$1, float $$2) {
+      float $$3 = $$0.E($$2);
+      float $$4 = 1.0F + awi.a($$3 * 100.0F) * $$3 * 0.01F;
+      $$3 = awi.a($$3, 0.0F, 1.0F);
+      $$3 *= $$3;
+      $$3 *= $$3;
+      float $$5 = (1.0F + $$3 * 0.4F) * $$4;
+      float $$6 = (1.0F + $$3 * 0.1F) / $$4;
+      $$1.b($$5, $$6, $$5);
    }
 
-   public ens a(ced $$0, float $$1) {
-      if ($$0.gh()) {
-         double $$2 = 0.02 * (double)$$0.ea();
-         return new ens(this.i.k() * $$2, 0.0, this.i.k() * $$2);
-      } else {
-         return super.a($$0, $$1);
-      }
+   protected float a(ced $$0, float $$1) {
+      float $$2 = $$0.E($$1);
+      return (int)($$2 * 10.0F) % 2 == 0 ? 0.0F : awi.a($$2, 0.5F, 1.0F);
    }
 
    public aiy a(ced $$0) {

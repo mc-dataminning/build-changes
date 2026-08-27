@@ -8,7 +8,7 @@ public class anb {
             .then(dv.a("targets", eh.d()).then(dv.a("message", ed.a()).executes($$0x -> {
                int $$1 = 0;
 
-               for (aow $$2 : eh.f($$0x, "targets")) {
+               for (aox $$2 : eh.f($$0x, "targets")) {
                   $$2.b(vt.a((du)$$0x.getSource(), ed.a($$0x, "message"), $$2, 0), false);
                   $$1++;
                }

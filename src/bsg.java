@@ -1,81 +1,42 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.List;
+import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
-import java.util.Set;
+import java.util.function.Function;
 
-public class bsg extends bpw<bog> {
-   public static final int c = 100;
-   private long d;
+public class bsg {
+   public static brl<cgy> a(bxl<ii> $$0, float $$1, int $$2, int $$3, int $$4) {
+      return btn.a(
+         (Function<btn.b<cgy>, ? extends App<btn.c<cgy>, btq<cgy>>>)($$5 -> $$5.group($$5.a(bxl.E), $$5.c(bxl.m), $$5.b($$0))
+               .apply($$5, ($$6, $$7, $$8) -> ($$9, $$10, $$11) -> {
+                     ii $$12 = $$5.b($$8);
+                     Optional<Long> $$13 = $$5.a($$6);
+                     if ($$12.a() == $$9.ad() && (!$$13.isPresent() || $$9.X() - $$13.get() <= (long)$$4)) {
+                        if ($$12.b().k($$10.dm()) > $$3) {
+                           enz $$14 = null;
+                           int $$15 = 0;
+                           int $$16 = 1000;
 
-   public bsg() {
-      super(ImmutableMap.of(bxh.b, bxi.a, bxh.I, bxi.c));
-   }
+                           while ($$14 == null || hz.a($$14).k($$10.dm()) > $$3) {
+                              $$14 = bzc.a($$10, 15, 7, enz.c($$12.b()), (float) (Math.PI / 2));
+                              if (++$$15 == 1000) {
+                                 $$10.a($$0);
+                                 $$8.b();
+                                 $$6.a($$11);
+                                 return true;
+                              }
+                           }
 
-   @Override
-   protected boolean a(aov $$0, bog $$1) {
-      if ($$1.bO()) {
-         return false;
-      } else {
-         bpf<?> $$2 = $$1.dO();
-         ii $$3 = $$2.c(bxh.b).get();
-         if ($$0.ae() != $$3.a()) {
-            return false;
-         } else {
-            Optional<Long> $$4 = $$2.c(bxh.I);
-            if ($$4.isPresent()) {
-               long $$5 = $$0.X() - $$4.get();
-               if ($$5 > 0L && $$5 < 100L) {
-                  return false;
-               }
-            }
+                           $$7.a(new bxo($$14, $$1, $$2));
+                        } else if ($$12.b().k($$10.dm()) > $$2) {
+                           $$7.a(new bxo($$12.b(), $$1, $$2));
+                        }
+                     } else {
+                        $$10.a($$0);
+                        $$8.b();
+                        $$6.a($$11);
+                     }
 
-            dlf $$6 = $$0.a_($$3.b());
-            return $$3.b().a($$1.dk(), 2.0) && $$6.a(atz.R) && !$$6.c(cyh.c);
-         }
-      }
-   }
-
-   @Override
-   protected boolean a(aov $$0, bog $$1, long $$2) {
-      Optional<ii> $$3 = $$1.dO().c(bxh.b);
-      if ($$3.isEmpty()) {
-         return false;
-      } else {
-         hz $$4 = $$3.get().b();
-         return $$1.dO().c(ciu.e) && $$1.dt() > (double)$$4.v() + 0.4 && $$4.a($$1.dk(), 1.14);
-      }
-   }
-
-   @Override
-   protected void d(aov $$0, bog $$1, long $$2) {
-      if ($$2 > this.d) {
-         bpf<?> $$3 = $$1.dO();
-         if ($$3.a(bxh.v)) {
-            Set<ii> $$4 = $$3.c(bxh.v).get();
-            Optional<List<bog>> $$5;
-            if ($$3.a(bxh.g)) {
-               $$5 = $$3.c(bxh.g);
-            } else {
-               $$5 = Optional.empty();
-            }
-
-            bqu.a($$0, $$1, null, null, $$4, $$5);
-         }
-
-         $$1.b($$1.dO().c(bxh.b).get().b());
-      }
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   @Override
-   protected void b(aov $$0, bog $$1, long $$2) {
-      if ($$1.fD()) {
-         $$1.fE();
-         this.d = $$2 + 40L;
-      }
+                     return true;
+                  }))
+      );
    }
 }

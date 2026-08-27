@@ -1,58 +1,46 @@
-import java.util.List;
-import java.util.function.Predicate;
+import java.io.IOException;
+import java.util.function.BooleanSupplier;
+import javax.annotation.Nullable;
 
-public class dnj<T> implements dns<T> {
-   private final io<T> a;
-
-   public dnj(io<T> $$0) {
-      this.a = $$0;
+public abstract class dnj implements dnt, AutoCloseable {
+   @Nullable
+   public dnq a(int $$0, int $$1, boolean $$2) {
+      return (dnq)this.a($$0, $$1, dnk.n, $$2);
    }
 
-   public static <A> dns<A> a(int $$0, io<A> $$1, dnt<A> $$2, List<A> $$3) {
-      return new dnj<>($$1);
+   @Nullable
+   public dnq a(int $$0, int $$1) {
+      return this.a($$0, $$1, false);
    }
+
+   @Nullable
+   @Override
+   public dns c(int $$0, int $$1) {
+      return this.a($$0, $$1, dnk.c, false);
+   }
+
+   public boolean b(int $$0, int $$1) {
+      return this.a($$0, $$1, dnk.n, false) != null;
+   }
+
+   @Nullable
+   public abstract dnf a(int var1, int var2, dnk var3, boolean var4);
+
+   public abstract void a(BooleanSupplier var1, boolean var2);
+
+   public abstract String e();
+
+   public abstract int j();
 
    @Override
-   public int a(T $$0) {
-      int $$1 = this.a.a($$0);
-      return $$1 == -1 ? 0 : $$1;
+   public void close() throws IOException {
    }
 
-   @Override
-   public boolean a(Predicate<T> $$0) {
-      return true;
+   public abstract egl p();
+
+   public void a(boolean $$0, boolean $$1) {
    }
 
-   @Override
-   public T a(int $$0) {
-      T $$1 = this.a.a($$0);
-      if ($$1 == null) {
-         throw new dnr($$0);
-      } else {
-         return $$1;
-      }
-   }
-
-   @Override
-   public void a(uq $$0) {
-   }
-
-   @Override
-   public void b(uq $$0) {
-   }
-
-   @Override
-   public int a() {
-      return 0;
-   }
-
-   @Override
-   public int b() {
-      return this.a.b();
-   }
-
-   @Override
-   public dns<T> c() {
-      return this;
+   public void a(cuy $$0, boolean $$1) {
    }
 }

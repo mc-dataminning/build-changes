@@ -1,110 +1,94 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Stream;
+import com.google.common.base.Suppliers;
+import com.mojang.authlib.minecraft.TelemetrySession;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.nio.file.Path;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class glw {
-   final Map<glv<?>, Object> a;
+public class glw implements AutoCloseable {
+   private static final AtomicInteger a = new AtomicInteger(1);
+   private static final Executor b = Executors.newSingleThreadExecutor($$0 -> {
+      Thread $$1 = new Thread($$0);
+      $$1.setName("Telemetry-Sender-#" + a.getAndIncrement());
+      return $$1;
+   });
+   private final exo c;
+   private final UserApiService d;
+   private final gme e;
+   private final Path f;
+   private final CompletableFuture<Optional<gmc>> g;
+   private final Supplier<gma> h = Suppliers.memoize(this::c);
 
-   glw(Map<glv<?>, Object> $$0) {
-      this.a = $$0;
+   public glw(exo $$0, UserApiService $$1, eyd $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      gme.a $$3 = gme.a();
+      $$2.f().ifPresent($$1x -> $$3.a(gmd.a, $$1x));
+      $$2.e().ifPresent($$1x -> $$3.a(gmd.b, $$1x));
+      $$3.a(gmd.c, UUID.randomUUID());
+      $$3.a(gmd.d, aa.b().b());
+      $$3.a(gmd.e, ac.j().a());
+      $$3.a(gmd.f, System.getProperty("os.name"));
+      $$3.a(gmd.g, exo.e().a());
+      $$3.b(gmd.h, exo.be());
+      this.e = $$3.a();
+      this.f = $$0.p.toPath().resolve("logs/telemetry");
+      this.g = gmc.a(this.f);
    }
 
-   public static glw.a a() {
-      return new glw.a();
+   public gmf a(boolean $$0, @Nullable Duration $$1, @Nullable String $$2) {
+      return new gmf(this.c(), $$0, $$1, $$2);
    }
 
-   public static Codec<glw> a(final List<glv<?>> $$0) {
-      return (new MapCodec<glw>() {
-         public <T> RecordBuilder<T> a(glw $$0x, DynamicOps<T> $$1, RecordBuilder<T> $$2) {
-            RecordBuilder<T> $$3 = $$2;
-
-            for (glv<?> $$4 : $$0) {
-               $$3 = this.a($$0, $$3, $$4);
-            }
-
-            return $$3;
-         }
-
-         private <T, V> RecordBuilder<T> a(glw $$0x, RecordBuilder<T> $$1, glv<V> $$2) {
-            V $$3 = $$0.a($$2);
-            return $$3 != null ? $$1.add($$2.b(), $$3, $$2.d()) : $$1;
-         }
-
-         public <T> DataResult<glw> decode(DynamicOps<T> $$0x, MapLike<T> $$1) {
-            DataResult<glw.a> $$2 = DataResult.success(new glw.a());
-
-            for (glv<?> $$3 : $$0) {
-               $$2 = this.a($$2, $$0, $$1, $$3);
-            }
-
-            return $$2.map(glw.a::a);
-         }
-
-         private <T, V> DataResult<glw.a> a(DataResult<glw.a> $$0x, DynamicOps<T> $$1, MapLike<T> $$2, glv<V> $$3) {
-            T $$4 = (T)$$2.get($$3.b());
-            if ($$4 != null) {
-               DataResult<V> $$5 = $$3.d().parse($$1, $$4);
-               return $$0.apply2stable(($$1x, $$2x) -> $$1x.a($$3, (V)$$2x), $$5);
-            } else {
-               return $$0;
-            }
-         }
-
-         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
-            return $$0.stream().map(glv::b).map($$0::createString);
-         }
-      }).codec();
+   public gma a() {
+      return this.h.get();
    }
 
-   @Nullable
-   public <T> T a(glv<T> $$0) {
-      return (T)this.a.get($$0);
+   private gma c() {
+      if (!this.c.D()) {
+         return gma.a;
+      } else {
+         TelemetrySession $$0 = this.d.newTelemetrySession(b);
+         if (!$$0.isEnabled()) {
+            return gma.a;
+         } else {
+            CompletableFuture<Optional<glz>> $$1 = this.g
+               .thenCompose($$0x -> $$0x.<CompletionStage<Optional<glz>>>map(gmc::a).orElseGet(() -> CompletableFuture.completedFuture(Optional.empty())));
+            return ($$2, $$3) -> {
+               if (!$$2.d() || exo.P().B()) {
+                  gme.a $$4 = gme.a();
+                  $$4.a(this.e);
+                  $$4.a(gmd.m, Instant.now());
+                  $$4.a(gmd.l, $$2.d());
+                  $$3.accept($$4);
+                  glx $$5 = new glx($$2, $$4.a());
+                  $$1.thenAccept($$2x -> {
+                     if (!$$2x.isEmpty()) {
+                        ((glz)$$2x.get()).log($$5);
+                        $$5.a($$0).send();
+                     }
+                  });
+               }
+            };
+         }
+      }
+   }
+
+   public Path b() {
+      return this.f;
    }
 
    @Override
-   public String toString() {
-      return this.a.toString();
-   }
-
-   public Set<glv<?>> b() {
-      return this.a.keySet();
-   }
-
-   public static class a {
-      private final Map<glv<?>, Object> a = new Reference2ObjectOpenHashMap();
-
-      a() {
-      }
-
-      public <T> glw.a a(glv<T> $$0, T $$1) {
-         this.a.put($$0, $$1);
-         return this;
-      }
-
-      public <T> glw.a b(glv<T> $$0, @Nullable T $$1) {
-         if ($$1 != null) {
-            this.a.put($$0, $$1);
-         }
-
-         return this;
-      }
-
-      public glw.a a(glw $$0) {
-         this.a.putAll($$0.a);
-         return this;
-      }
-
-      public glw a() {
-         return new glw(this.a);
-      }
+   public void close() {
+      this.g.thenAccept($$0 -> $$0.ifPresent(gmc::close));
    }
 }

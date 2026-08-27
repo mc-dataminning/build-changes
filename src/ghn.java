@@ -1,17 +1,35 @@
-import java.io.IOException;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class ghn extends asf<int[]> {
-   private static final aiy a = new aiy("textures/colormap/grass.png");
+public class ghn implements ghf {
+   private static final Logger c = LogUtils.getLogger();
+   public static final Codec<ghn> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aiy.a.fieldOf("resource").forGetter($$0x -> $$0x.d), aiy.a.optionalFieldOf("sprite").forGetter($$0x -> $$0x.e)).apply($$0, ghn::new)
+   );
+   private final aiy d;
+   private final Optional<aiy> e;
 
-   protected int[] a(asa $$0, bil $$1) {
-      try {
-         return ghp.a($$0, a);
-      } catch (IOException var4) {
-         throw new IllegalStateException("Failed to load grass color texture", var4);
+   public ghn(aiy $$0, Optional<aiy> $$1) {
+      this.d = $$0;
+      this.e = $$1;
+   }
+
+   @Override
+   public void a(asb $$0, ghf.a $$1) {
+      aiy $$2 = a.a(this.d);
+      Optional<arz> $$3 = $$0.getResource($$2);
+      if ($$3.isPresent()) {
+         $$1.a(this.e.orElse(this.d), $$3.get());
+      } else {
+         c.warn("Missing sprite: {}", $$2);
       }
    }
 
-   protected void a(int[] $$0, asa $$1, bil $$2) {
-      cvl.a($$0);
+   @Override
+   public ghh a() {
+      return ghi.a;
    }
 }

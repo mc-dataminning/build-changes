@@ -1,13 +1,13 @@
 public class agk implements xx<aes> {
    public static final xo<uq, agk> a = xx.a(agk::a, agk::new);
-   private final blt b;
+   private final blv b;
 
-   public agk(blt $$0) {
+   public agk(blv $$0) {
       this.b = $$0;
    }
 
    private agk(uq $$0) {
-      this.b = $$0.b(blt.class);
+      this.b = $$0.b(blv.class);
    }
 
    private void a(uq $$0) {
@@ -23,7 +23,7 @@ public class agk implements xx<aes> {
       $$0.a(this);
    }
 
-   public blt b() {
+   public blv b() {
       return this.b;
    }
 }

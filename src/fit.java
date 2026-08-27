@@ -1,183 +1,236 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public class fit extends fak<fit.a> {
+   static final aiy a = new aiy("transferable_list/select_highlighted");
+   static final aiy m = new aiy("transferable_list/select");
+   static final aiy n = new aiy("transferable_list/unselect_highlighted");
+   static final aiy o = new aiy("transferable_list/unselect");
+   static final aiy p = new aiy("transferable_list/move_up_highlighted");
+   static final aiy q = new aiy("transferable_list/move_up");
+   static final aiy r = new aiy("transferable_list/move_down_highlighted");
+   static final aiy t = new aiy("transferable_list/move_down");
+   static final vq u = vq.c("pack.incompatible");
+   static final vq v = vq.c("pack.incompatible.confirm.title");
+   private final vq w;
+   final fis x;
 
-public class fit {
-   public static final int a = 20;
-   private static final fau b = new fau(new aiy("recipe_book/page_forward"), new aiy("recipe_book/page_forward_highlighted"));
-   private static final fau c = new fau(new aiy("recipe_book/page_backward"), new aiy("recipe_book/page_backward_highlighted"));
-   private final List<fiv> d = Lists.newArrayListWithCapacity(20);
-   @Nullable
-   private fiv e;
-   private final fir f = new fir();
-   private exh g;
-   private final List<fix> h = Lists.newArrayList();
-   private List<fiw> i = ImmutableList.of();
-   private fan j;
-   private fan k;
-   private int l;
-   private int m;
-   private atn n;
-   @Nullable
-   private csd<?> o;
-   @Nullable
-   private fiw p;
+   public fit(exo $$0, fis $$1, int $$2, int $$3, vq $$4) {
+      super($$0, $$2, $$3 - 83, 32, 36);
+      this.x = $$1;
+      this.w = $$4;
+      this.e = false;
+      this.a(true, (int)(9.0F * 1.5F));
+   }
 
-   public fit() {
-      for (int $$0 = 0; $$0 < 20; $$0++) {
-         this.d.add(new fiv());
+   @Override
+   protected void a(ezb $$0, int $$1, int $$2) {
+      vq $$3 = vq.i().b(this.w).a(n.t, n.r);
+      $$0.a(this.c.h, $$3, $$1 + this.g / 2 - this.c.h.a($$3) / 2, Math.min(this.C() + 3, $$2), 16777215, false);
+   }
+
+   @Override
+   public int b() {
+      return this.g;
+   }
+
+   @Override
+   protected int c() {
+      return this.D() - 6;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.i() != null) {
+         switch ($$0) {
+            case 32:
+            case 257:
+               this.i().c();
+               return true;
+            default:
+               if (ffl.v()) {
+                  switch ($$0) {
+                     case 264:
+                        this.i().f();
+                        return true;
+                     case 265:
+                        this.i().e();
+                        return true;
+                  }
+               }
+         }
       }
+
+      return super.a($$0, $$1, $$2);
    }
 
-   public void a(exh $$0, int $$1, int $$2) {
-      this.g = $$0;
-      this.n = $$0.s.m();
+   public static class a extends fak.a<fit.a> {
+      private static final int b = 157;
+      private static final int c = 157;
+      private static final String d = "...";
+      private final fit e;
+      protected final exo a;
+      private final fir.a f;
+      private final avu g;
+      private final fah h;
+      private final avu i;
+      private final fah j;
 
-      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
-         this.d.get($$3).c($$1 + 11 + 25 * ($$3 % 5), $$2 + 31 + 25 * ($$3 / 5));
+      public a(exo $$0, fit $$1, fir.a $$2) {
+         this.a = $$0;
+         this.f = $$2;
+         this.e = $$1;
+         this.g = a($$0, $$2.d());
+         this.h = b($$0, $$2.g());
+         this.i = a($$0, fit.u);
+         this.j = b($$0, $$2.b().b());
       }
 
-      this.j = new fan($$1 + 93, $$2 + 137, 12, 17, false);
-      this.j.a(b);
-      this.k = new fan($$1 + 38, $$2 + 137, 12, 17, true);
-      this.k.a(c);
-   }
-
-   public void a(fis $$0) {
-      this.h.remove($$0);
-      this.h.add($$0);
-   }
-
-   public void a(List<fiw> $$0, boolean $$1) {
-      this.i = $$0;
-      this.l = (int)Math.ceil((double)$$0.size() / 20.0);
-      if (this.l <= this.m || $$1) {
-         this.m = 0;
-      }
-
-      this.f();
-   }
-
-   private void f() {
-      int $$0 = 20 * this.m;
-
-      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
-         fiv $$2 = this.d.get($$1);
-         if ($$0 + $$1 < this.i.size()) {
-            fiw $$3 = this.i.get($$0 + $$1);
-            $$2.a($$3, this);
-            $$2.k = true;
+      private static avu a(exo $$0, vq $$1) {
+         int $$2 = $$0.h.a($$1);
+         if ($$2 > 157) {
+            vv $$3 = vv.a($$0.h.a($$1, 157 - $$0.h.b("...")), vv.e("..."));
+            return sr.a().a($$3);
          } else {
-            $$2.k = false;
+            return $$1.g();
          }
       }
 
-      this.g();
-   }
-
-   private void g() {
-      this.j.k = this.l > 1 && this.m < this.l - 1;
-      this.k.k = this.l > 1 && this.m > 0;
-   }
-
-   public void a(eyu $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
-      if (this.l > 1) {
-         vq $$6 = vq.a("gui.recipebook.page", this.m + 1, this.l);
-         int $$7 = this.g.h.a($$6);
-         $$0.a(this.g.h, $$6, $$1 - $$7 / 2 + 73, $$2 + 141, -1, false);
+      private static fah b(exo $$0, vq $$1) {
+         return fah.a($$0.h, $$1, 157, 2);
       }
 
-      this.e = null;
-
-      for (fiv $$8 : this.d) {
-         $$8.a($$0, $$3, $$4, $$5);
-         if ($$8.k && $$8.z()) {
-            this.e = $$8;
-         }
+      @Override
+      public vq a() {
+         return vq.a("narrator.select", this.f.d());
       }
 
-      this.k.a($$0, $$3, $$4, $$5);
-      this.j.a($$0, $$3, $$4, $$5);
-      this.f.a($$0, $$3, $$4, $$5);
-   }
-
-   public void a(eyu $$0, int $$1, int $$2) {
-      if (this.g.y != null && this.e != null && !this.f.c()) {
-         $$0.a(this.g.h, this.e.e(), $$1, $$2);
-      }
-   }
-
-   @Nullable
-   public csd<?> a() {
-      return this.o;
-   }
-
-   @Nullable
-   public fiw b() {
-      return this.p;
-   }
-
-   public void c() {
-      this.f.b(false);
-   }
-
-   public boolean a(double $$0, double $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      this.o = null;
-      this.p = null;
-      if (this.f.c()) {
-         if (this.f.a($$0, $$1, $$2)) {
-            this.o = this.f.b();
-            this.p = this.f.a();
-         } else {
-            this.f.b(false);
+      @Override
+      public void a(ezb $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         ark $$10 = this.f.b();
+         if (!$$10.a()) {
+            $$0.a($$3 - 1, $$2 - 1, $$3 + $$4 - 3, $$2 + $$5 + 1, -8978432);
          }
 
-         return true;
-      } else if (this.j.a($$0, $$1, $$2)) {
-         this.m++;
-         this.f();
-         return true;
-      } else if (this.k.a($$0, $$1, $$2)) {
-         this.m--;
-         this.f();
-         return true;
-      } else {
-         for (fiv $$7 : this.d) {
-            if ($$7.a($$0, $$1, $$2)) {
-               if ($$2 == 0) {
-                  this.o = $$7.d();
-                  this.p = $$7.a();
-               } else if ($$2 == 1 && !this.f.c() && !$$7.b()) {
-                  this.f.a(this.g, $$7.a(), $$7.B(), $$7.C(), $$3 + $$5 / 2, $$4 + 13 + $$6 / 2, (float)$$7.w());
+         $$0.a(this.f.a(), $$3, $$2, 0.0F, 0.0F, 32, 32, 32, 32);
+         avu $$11 = this.g;
+         fah $$12 = this.h;
+         if (this.d() && (this.a.m.W().c() || $$8 || this.e.i() == this && this.e.aL_())) {
+            $$0.a($$3, $$2, $$3 + 32, $$2 + 32, -1601138544);
+            int $$13 = $$6 - $$3;
+            int $$14 = $$7 - $$2;
+            if (!this.f.b().a()) {
+               $$11 = this.i;
+               $$12 = this.j;
+            }
+
+            if (this.f.o()) {
+               if ($$13 < 32) {
+                  $$0.a(fit.a, $$3, $$2, 32, 32);
+               } else {
+                  $$0.a(fit.m, $$3, $$2, 32, 32);
+               }
+            } else {
+               if (this.f.p()) {
+                  if ($$13 < 16) {
+                     $$0.a(fit.n, $$3, $$2, 32, 32);
+                  } else {
+                     $$0.a(fit.o, $$3, $$2, 32, 32);
+                  }
                }
 
+               if (this.f.q()) {
+                  if ($$13 < 32 && $$13 > 16 && $$14 < 16) {
+                     $$0.a(fit.p, $$3, $$2, 32, 32);
+                  } else {
+                     $$0.a(fit.q, $$3, $$2, 32, 32);
+                  }
+               }
+
+               if (this.f.r()) {
+                  if ($$13 < 32 && $$13 > 16 && $$14 > 16) {
+                     $$0.a(fit.r, $$3, $$2, 32, 32);
+                  } else {
+                     $$0.a(fit.t, $$3, $$2, 32, 32);
+                  }
+               }
+            }
+         }
+
+         $$0.b(this.a.h, $$11, $$3 + 32 + 2, $$2 + 1, 16777215);
+         $$12.b($$0, $$3 + 32 + 2, $$2 + 12, 10, -8355712);
+      }
+
+      public String b() {
+         return this.f.c();
+      }
+
+      private boolean d() {
+         return !this.f.h() || !this.f.i();
+      }
+
+      public void c() {
+         if (this.f.o() && this.g()) {
+            this.e.x.a(this.e);
+         } else if (this.f.p()) {
+            this.f.k();
+            this.e.x.a(this.e);
+         }
+      }
+
+      void e() {
+         if (this.f.q()) {
+            this.f.l();
+         }
+      }
+
+      void f() {
+         if (this.f.r()) {
+            this.f.m();
+         }
+      }
+
+      private boolean g() {
+         if (this.f.b().a()) {
+            this.f.j();
+            return true;
+         } else {
+            vq $$0 = this.f.b().c();
+            this.a.a(new fee($$0x -> {
+               this.a.a(this.e.x);
+               if ($$0x) {
+                  this.f.j();
+               }
+            }, fit.v, $$0));
+            return false;
+         }
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         double $$3 = $$0 - (double)this.e.q();
+         double $$4 = $$1 - (double)this.e.g(this.e.l().indexOf(this));
+         if (this.d() && $$3 <= 32.0) {
+            this.e.x.o();
+            if (this.f.o()) {
+               this.g();
+               return true;
+            }
+
+            if ($$3 < 16.0 && this.f.p()) {
+               this.f.k();
+               return true;
+            }
+
+            if ($$3 > 16.0 && $$4 < 16.0 && this.f.q()) {
+               this.f.l();
+               return true;
+            }
+
+            if ($$3 > 16.0 && $$4 > 16.0 && this.f.r()) {
+               this.f.m();
                return true;
             }
          }
 
          return false;
       }
-   }
-
-   public void a(List<csd<?>> $$0) {
-      for (fix $$1 : this.h) {
-         $$1.a($$0);
-      }
-   }
-
-   public exh d() {
-      return this.g;
-   }
-
-   public atn e() {
-      return this.n;
-   }
-
-   protected void a(Consumer<ezf> $$0) {
-      $$0.accept(this.j);
-      $$0.accept(this.k);
-      this.d.forEach($$0);
    }
 }

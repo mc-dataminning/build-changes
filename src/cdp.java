@@ -1,69 +1,414 @@
-public class cdp {
-   public static final aix<cdo> a = a("kebab");
-   public static final aix<cdo> b = a("aztec");
-   public static final aix<cdo> c = a("alban");
-   public static final aix<cdo> d = a("aztec2");
-   public static final aix<cdo> e = a("bomb");
-   public static final aix<cdo> f = a("plant");
-   public static final aix<cdo> g = a("wasteland");
-   public static final aix<cdo> h = a("pool");
-   public static final aix<cdo> i = a("courbet");
-   public static final aix<cdo> j = a("sea");
-   public static final aix<cdo> k = a("sunset");
-   public static final aix<cdo> l = a("creebet");
-   public static final aix<cdo> m = a("wanderer");
-   public static final aix<cdo> n = a("graham");
-   public static final aix<cdo> o = a("match");
-   public static final aix<cdo> p = a("bust");
-   public static final aix<cdo> q = a("stage");
-   public static final aix<cdo> r = a("void");
-   public static final aix<cdo> s = a("skull_and_roses");
-   public static final aix<cdo> t = a("wither");
-   public static final aix<cdo> u = a("fighters");
-   public static final aix<cdo> v = a("pointer");
-   public static final aix<cdo> w = a("pigscene");
-   public static final aix<cdo> x = a("burning_skull");
-   public static final aix<cdo> y = a("skeleton");
-   public static final aix<cdo> z = a("donkey_kong");
-   public static final aix<cdo> A = a("earth");
-   public static final aix<cdo> B = a("wind");
-   public static final aix<cdo> C = a("water");
-   public static final aix<cdo> D = a("fire");
+import com.mojang.logging.LogUtils;
+import java.util.OptionalInt;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.Validate;
+import org.slf4j.Logger;
 
-   public static cdo a(iv<cdo> $$0) {
-      iv.a($$0, a, new cdo(16, 16));
-      iv.a($$0, b, new cdo(16, 16));
-      iv.a($$0, c, new cdo(16, 16));
-      iv.a($$0, d, new cdo(16, 16));
-      iv.a($$0, e, new cdo(16, 16));
-      iv.a($$0, f, new cdo(16, 16));
-      iv.a($$0, g, new cdo(16, 16));
-      iv.a($$0, h, new cdo(32, 16));
-      iv.a($$0, i, new cdo(32, 16));
-      iv.a($$0, j, new cdo(32, 16));
-      iv.a($$0, k, new cdo(32, 16));
-      iv.a($$0, l, new cdo(32, 16));
-      iv.a($$0, m, new cdo(16, 32));
-      iv.a($$0, n, new cdo(16, 32));
-      iv.a($$0, o, new cdo(32, 32));
-      iv.a($$0, p, new cdo(32, 32));
-      iv.a($$0, q, new cdo(32, 32));
-      iv.a($$0, r, new cdo(32, 32));
-      iv.a($$0, s, new cdo(32, 32));
-      iv.a($$0, t, new cdo(32, 32));
-      iv.a($$0, u, new cdo(64, 32));
-      iv.a($$0, v, new cdo(64, 64));
-      iv.a($$0, w, new cdo(64, 64));
-      iv.a($$0, x, new cdo(64, 64));
-      iv.a($$0, y, new cdo(64, 48));
-      iv.a($$0, A, new cdo(32, 32));
-      iv.a($$0, B, new cdo(32, 32));
-      iv.a($$0, C, new cdo(32, 32));
-      iv.a($$0, D, new cdo(32, 32));
-      return iv.a($$0, z, new cdo(64, 48));
+public class cdp extends cdo {
+   private static final Logger f = LogUtils.getLogger();
+   private static final aie<cpd> g = aih.a(cdp.class, aig.h);
+   private static final aie<Integer> h = aih.a(cdp.class, aig.b);
+   public static final int e = 8;
+   private float i = 1.0F;
+   private boolean j;
+
+   public cdp(bnw<? extends cdp> $$0, cvr $$1) {
+      super($$0, $$1);
    }
 
-   private static aix<cdo> a(String $$0) {
-      return aix.a(kg.R, new aiy($$0));
+   public cdp(cvr $$0, hz $$1, ie $$2) {
+      this(bnw.ah, $$0, $$1, $$2);
+   }
+
+   public cdp(bnw<? extends cdp> $$0, cvr $$1, hz $$2, ie $$3) {
+      super($$0, $$1, $$2);
+      this.a($$3);
+   }
+
+   @Override
+   protected void c_() {
+      this.an().a(g, cpd.h);
+      this.an().a(h, 0);
+   }
+
+   @Override
+   protected void a(ie $$0) {
+      Validate.notNull($$0);
+      this.d = $$0;
+      if ($$0.o().d()) {
+         this.s(0.0F);
+         this.r((float)(this.d.e() * 90));
+      } else {
+         this.s((float)(-90 * $$0.f().a()));
+         this.r(0.0F);
+      }
+
+      this.N = this.dE();
+      this.M = this.dC();
+      this.z();
+   }
+
+   @Override
+   protected void z() {
+      if (this.d != null) {
+         double $$0 = 0.46875;
+         double $$1 = (double)this.c.u() + 0.5 - (double)this.d.j() * 0.46875;
+         double $$2 = (double)this.c.v() + 0.5 - (double)this.d.k() * 0.46875;
+         double $$3 = (double)this.c.w() + 0.5 - (double)this.d.l() * 0.46875;
+         this.p($$1, $$2, $$3);
+         double $$4 = (double)this.B();
+         double $$5 = (double)this.C();
+         double $$6 = (double)this.B();
+         ie.a $$7 = this.d.o();
+         switch ($$7) {
+            case a:
+               $$4 = 1.0;
+               break;
+            case b:
+               $$5 = 1.0;
+               break;
+            case c:
+               $$6 = 1.0;
+         }
+
+         $$4 /= 32.0;
+         $$5 /= 32.0;
+         $$6 /= 32.0;
+         this.a(new enu($$1 - $$4, $$2 - $$5, $$3 - $$6, $$1 + $$4, $$2 + $$5, $$3 + $$6));
+      }
+   }
+
+   @Override
+   public boolean A() {
+      if (this.j) {
+         return true;
+      } else if (!this.dM().g(this)) {
+         return false;
+      } else {
+         dlj $$0 = this.dM().a_(this.c.a(this.d.g()));
+         return $$0.e() || this.d.o().d() && dau.m($$0) ? this.dM().a(this, this.cH(), b).isEmpty() : false;
+      }
+   }
+
+   @Override
+   public void a(bon $$0, enz $$1) {
+      if (!this.j) {
+         super.a($$0, $$1);
+      }
+   }
+
+   @Override
+   public void j(double $$0, double $$1, double $$2) {
+      if (!this.j) {
+         super.j($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public void al() {
+      this.c(this.G());
+      super.al();
+   }
+
+   @Override
+   public boolean a(bmp $$0, float $$1) {
+      if (this.j) {
+         return !$$0.a(auc.e) && !$$0.g() ? false : super.a($$0, $$1);
+      } else if (this.b($$0)) {
+         return false;
+      } else if (!$$0.a(auc.m) && !this.G().b()) {
+         if (!this.dM().B) {
+            this.b($$0.d(), false);
+            this.a(dpw.c, $$0.d());
+            this.a(this.q(), 1.0F, 1.0F);
+         }
+
+         return true;
+      } else {
+         return super.a($$0, $$1);
+      }
+   }
+
+   public atk q() {
+      return atl.nb;
+   }
+
+   @Override
+   public int B() {
+      return 12;
+   }
+
+   @Override
+   public int C() {
+      return 12;
+   }
+
+   @Override
+   public boolean a(double $$0) {
+      double $$1 = 16.0;
+      $$1 *= 64.0 * cA();
+      return $$0 < $$1 * $$1;
+   }
+
+   @Override
+   public void a(@Nullable bnq $$0) {
+      this.a(this.s(), 1.0F, 1.0F);
+      this.b($$0, true);
+      this.a(dpw.c, $$0);
+   }
+
+   public atk s() {
+      return atl.mZ;
+   }
+
+   @Override
+   public void D() {
+      this.a(this.u(), 1.0F, 1.0F);
+   }
+
+   public atk u() {
+      return atl.na;
+   }
+
+   private void b(@Nullable bnq $$0, boolean $$1) {
+      if (!this.j) {
+         cpd $$2 = this.G();
+         this.a(cpd.h);
+         if (!this.dM().Z().b(cvn.i)) {
+            if ($$0 == null) {
+               this.c($$2);
+            }
+         } else {
+            if ($$0 instanceof chl $$3 && $$3.fU().d) {
+               this.c($$2);
+               return;
+            }
+
+            if ($$1) {
+               this.b(this.y());
+            }
+
+            if (!$$2.b()) {
+               $$2 = $$2.q();
+               this.c($$2);
+               if (this.af.i() < this.i) {
+                  this.b($$2);
+               }
+            }
+         }
+      }
+   }
+
+   private void c(cpd $$0) {
+      this.H().ifPresent($$0x -> {
+         eig $$1 = cpk.a($$0x, this.dM());
+         if ($$1 != null) {
+            $$1.a(this.c, this.aj());
+            $$1.a(true);
+         }
+      });
+      $$0.a(null);
+   }
+
+   public cpd G() {
+      return this.an().b(g);
+   }
+
+   public OptionalInt H() {
+      cpd $$0 = this.G();
+      if ($$0.a(cpg.rT)) {
+         Integer $$1 = cpk.d($$0);
+         if ($$1 != null) {
+            return OptionalInt.of($$1);
+         }
+      }
+
+      return OptionalInt.empty();
+   }
+
+   public boolean I() {
+      return this.H().isPresent();
+   }
+
+   public void a(cpd $$0) {
+      this.a($$0, true);
+   }
+
+   public void a(cpd $$0, boolean $$1) {
+      if (!$$0.b()) {
+         $$0 = $$0.c(1);
+      }
+
+      this.d($$0);
+      this.an().b(g, $$0);
+      if (!$$0.b()) {
+         this.a(this.w(), 1.0F, 1.0F);
+      }
+
+      if ($$1 && this.c != null) {
+         this.dM().c(this.c, cyu.a);
+      }
+   }
+
+   public atk w() {
+      return atl.mY;
+   }
+
+   @Override
+   public boz a_(int $$0) {
+      return $$0 == 0 ? new boz() {
+         @Override
+         public cpd a() {
+            return cdp.this.G();
+         }
+
+         @Override
+         public boolean a(cpd $$0) {
+            cdp.this.a($$0);
+            return true;
+         }
+      } : super.a_($$0);
+   }
+
+   @Override
+   public void a(aie<?> $$0) {
+      if ($$0.equals(g)) {
+         this.d(this.G());
+      }
+   }
+
+   private void d(cpd $$0) {
+      if (!$$0.b() && $$0.H() != this) {
+         $$0.a(this);
+      }
+
+      this.z();
+   }
+
+   public int J() {
+      return this.an().b(h);
+   }
+
+   public void b(int $$0) {
+      this.a($$0, true);
+   }
+
+   private void a(int $$0, boolean $$1) {
+      this.an().b(h, $$0 % 8);
+      if ($$1 && this.c != null) {
+         this.dM().c(this.c, cyu.a);
+      }
+   }
+
+   @Override
+   public void b(sw $$0) {
+      super.b($$0);
+      if (!this.G().b()) {
+         $$0.a("Item", this.G().b(new sw()));
+         $$0.a("ItemRotation", (byte)this.J());
+         $$0.a("ItemDropChance", this.i);
+      }
+
+      $$0.a("Facing", (byte)this.d.d());
+      $$0.a("Invisible", this.ce());
+      $$0.a("Fixed", this.j);
+   }
+
+   @Override
+   public void a(sw $$0) {
+      super.a($$0);
+      sw $$1 = $$0.p("Item");
+      if ($$1 != null && !$$1.g()) {
+         cpd $$2 = cpd.a($$1);
+         if ($$2.b()) {
+            f.warn("Unable to load item from: {}", $$1);
+         }
+
+         cpd $$3 = this.G();
+         if (!$$3.b() && !cpd.a($$2, $$3)) {
+            this.c($$3);
+         }
+
+         this.a($$2, false);
+         this.a($$0.f("ItemRotation"), false);
+         if ($$0.b("ItemDropChance", 99)) {
+            this.i = $$0.j("ItemDropChance");
+         }
+      }
+
+      this.a(ie.a($$0.f("Facing")));
+      this.j($$0.q("Invisible"));
+      this.j = $$0.q("Fixed");
+   }
+
+   @Override
+   public blw a(chl $$0, blv $$1) {
+      cpd $$2 = $$0.b($$1);
+      boolean $$3 = !this.G().b();
+      boolean $$4 = !$$2.b();
+      if (this.j) {
+         return blw.d;
+      } else if (!this.dM().B) {
+         if (!$$3) {
+            if ($$4 && !this.dH()) {
+               if ($$2.a(cpg.rT)) {
+                  eig $$5 = cpk.b($$2, this.dM());
+                  if ($$5 != null && $$5.b(256)) {
+                     return blw.e;
+                  }
+               }
+
+               this.a($$2);
+               this.a(dpw.c, $$0);
+               if (!$$0.fU().d) {
+                  $$2.h(1);
+               }
+            }
+         } else {
+            this.a(this.x(), 1.0F, 1.0F);
+            this.b(this.J() + 1);
+            this.a(dpw.c, $$0);
+         }
+
+         return blw.b;
+      } else {
+         return !$$3 && !$$4 ? blw.d : blw.a;
+      }
+   }
+
+   public atk x() {
+      return atl.nc;
+   }
+
+   public int K() {
+      return this.G().b() ? 0 : this.J() % 8 + 1;
+   }
+
+   @Override
+   public xx<aag> di() {
+      return new aah(this, this.d.d(), this.E());
+   }
+
+   @Override
+   public void a(aah $$0) {
+      super.a($$0);
+      this.a(ie.a($$0.p()));
+   }
+
+   @Override
+   public cpd dz() {
+      cpd $$0 = this.G();
+      return $$0.b() ? this.y() : $$0.q();
+   }
+
+   protected cpd y() {
+      return new cpd(cpg.tY);
+   }
+
+   @Override
+   public float dD() {
+      ie $$0 = this.cE();
+      int $$1 = $$0.o().b() ? 90 * $$0.f().a() : 0;
+      return (float)awi.b(180 + $$0.e() * 90 + this.J() * 45 + $$1);
    }
 }

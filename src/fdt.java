@@ -1,91 +1,97 @@
-import com.mojang.authlib.minecraft.BanDetails;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.time.Duration;
-import java.time.Instant;
-import org.apache.commons.lang3.StringUtils;
+import javax.annotation.Nullable;
 
-public class fdt {
-   private static final vq b = vq.c("gui.banned.title.temporary").a(n.r);
-   private static final vq c = vq.c("gui.banned.title.permanent").a(n.r);
-   public static final vq a = vq.c("gui.banned.name.title").a(n.r);
-   private static final vq d = vq.c("gui.banned.skin.title").a(n.r);
-   private static final vq e = vq.a("gui.banned.skin.description", vq.b("https://aka.ms/mcjavamoderation"));
+public record fdt(fds a, int b, int c) {
+   private static final fdt d = new fdt(0, 0, 0, 0);
 
-   public static fdw a(BooleanConsumer $$0, BanDetails $$1) {
-      return new fdw($$0, a($$1), b($$1), "https://aka.ms/mcjavamoderation", vp.m, true);
+   public fdt(int $$0, int $$1, int $$2, int $$3) {
+      this(new fds($$0, $$1), $$2, $$3);
    }
 
-   public static fdw a(Runnable $$0) {
-      String $$1 = "https://aka.ms/mcjavamoderation";
-      return new fdw($$1x -> {
-         if ($$1x) {
-            ac.j().a("https://aka.ms/mcjavamoderation");
-         }
-
-         $$0.run();
-      }, d, e, "https://aka.ms/mcjavamoderation", vp.m, true);
+   public static fdt a() {
+      return d;
    }
 
-   public static fdw a(String $$0, Runnable $$1) {
-      String $$2 = "https://aka.ms/mcjavamoderation";
-      return new fdw($$1x -> {
-         if ($$1x) {
-            ac.j().a("https://aka.ms/mcjavamoderation");
-         }
-
-         $$1.run();
-      }, a, vq.a("gui.banned.name.description", vq.b($$0).a(n.o), "https://aka.ms/mcjavamoderation"), "https://aka.ms/mcjavamoderation", vp.m, true);
+   public static fdt a(fdq $$0, int $$1, int $$2, int $$3, int $$4) {
+      return switch ($$0) {
+         case a -> new fdt($$1, $$2, $$3, $$4);
+         case b -> new fdt($$2, $$1, $$4, $$3);
+      };
    }
 
-   private static vq a(BanDetails $$0) {
-      return f($$0) ? b : c;
+   public fdt a(fdr $$0) {
+      return new fdt(this.a.a($$0), this.b, this.c);
    }
 
-   private static vq b(BanDetails $$0) {
-      return vq.a("gui.banned.description", c($$0), d($$0), vq.b("https://aka.ms/mcjavamoderation"));
+   public int a(fdq $$0) {
+      return switch ($$0) {
+         case a -> this.b;
+         case b -> this.c;
+      };
    }
 
-   private static vq c(BanDetails $$0) {
-      String $$1 = $$0.reason();
-      String $$2 = $$0.reasonMessage();
-      if (StringUtils.isNumeric($$1)) {
-         int $$3 = Integer.parseInt($$1);
-         fqt $$4 = fqt.a($$3);
-         vq $$5;
-         if ($$4 != null) {
-            $$5 = vt.a($$4.a().f(), wn.a.a(true));
-         } else if ($$2 != null) {
-            $$5 = vq.a("gui.banned.description.reason_id_message", $$3, $$2).a(n.r);
-         } else {
-            $$5 = vq.a("gui.banned.description.reason_id", $$3).a(n.r);
-         }
-
-         return vq.a("gui.banned.description.reason", $$5);
-      } else {
-         return vq.c("gui.banned.description.unknownreason");
-      }
+   public int b(fdr $$0) {
+      fdq $$1 = $$0.a();
+      return $$0.c() ? this.a.a($$1) + this.a($$1) - 1 : this.a.a($$1);
    }
 
-   private static vq d(BanDetails $$0) {
-      if (f($$0)) {
-         vq $$1 = e($$0);
-         return vq.a("gui.banned.description.temporary", vq.a("gui.banned.description.temporary.duration", $$1).a(n.r));
-      } else {
-         return vq.c("gui.banned.description.permanent").a(n.r);
-      }
+   public fdt c(fdr $$0) {
+      int $$1 = this.b($$0);
+      fdq $$2 = $$0.a().a();
+      int $$3 = this.b($$2.c());
+      int $$4 = this.a($$2);
+      return a($$0.a(), $$1, $$3, 1, $$4).a($$0);
    }
 
-   private static vq e(BanDetails $$0) {
-      Duration $$1 = Duration.between(Instant.now(), $$0.expires());
-      long $$2 = $$1.toHours();
-      if ($$2 > 72L) {
-         return vp.a($$1.toDays());
-      } else {
-         return $$2 < 1L ? vp.c($$1.toMinutes()) : vp.b($$1.toHours());
-      }
+   public boolean a(fdt $$0) {
+      return this.a($$0, fdq.a) && this.a($$0, fdq.b);
    }
 
-   private static boolean f(BanDetails $$0) {
-      return $$0.expires() != null;
+   public boolean a(fdt $$0, fdq $$1) {
+      int $$2 = this.b($$1.c());
+      int $$3 = $$0.b($$1.c());
+      int $$4 = this.b($$1.b());
+      int $$5 = $$0.b($$1.b());
+      return Math.max($$2, $$3) <= Math.min($$4, $$5);
+   }
+
+   public int b(fdq $$0) {
+      return (this.b($$0.b()) + this.b($$0.c())) / 2;
+   }
+
+   @Nullable
+   public fdt b(fdt $$0) {
+      int $$1 = Math.max(this.d(), $$0.d());
+      int $$2 = Math.max(this.b(), $$0.b());
+      int $$3 = Math.min(this.e(), $$0.e());
+      int $$4 = Math.min(this.c(), $$0.c());
+      return $$1 < $$3 && $$2 < $$4 ? new fdt($$1, $$2, $$3 - $$1, $$4 - $$2) : null;
+   }
+
+   public int b() {
+      return this.a.b();
+   }
+
+   public int c() {
+      return this.a.b() + this.c;
+   }
+
+   public int d() {
+      return this.a.a();
+   }
+
+   public int e() {
+      return this.a.a() + this.b;
+   }
+
+   public fds f() {
+      return this.a;
+   }
+
+   public int g() {
+      return this.b;
+   }
+
+   public int h() {
+      return this.c;
    }
 }

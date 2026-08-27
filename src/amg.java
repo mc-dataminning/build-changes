@@ -10,7 +10,7 @@ public class amg {
          du $$1 = (du)$$0x.getSource();
          boolean $$2 = false;
 
-         for (aov $$3 : $$1.l().H()) {
+         for (aow $$3 : $$1.l().J()) {
             if ($$3 != null && !$$3.e) {
                $$3.e = true;
                $$2 = true;

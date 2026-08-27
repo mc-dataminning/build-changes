@@ -23,21 +23,21 @@ public class rx extends MinecraftServer {
    private final List<sm> p;
    private final hz q;
    private final Stopwatch r = Stopwatch.createUnstarted();
-   private static final cvj s = ac.a(new cvj(), $$0 -> {
-      $$0.a(cvj.e).a(false, null);
-      $$0.a(cvj.v).a(false, null);
+   private static final cvn s = ac.a(new cvn(), $$0 -> {
+      $$0.a(cvn.e).a(false, null);
+      $$0.a(cvn.v).a(false, null);
    });
-   private static final drm t = new drm(0L, false, false);
+   private static final drt t = new drt(0L, false, false);
    @Nullable
    private sd u;
 
-   public static rx a(Thread $$0, eil.c $$1, arl $$2, Collection<sm> $$3, hz $$4) {
+   public static rx a(Thread $$0, eis.c $$1, arm $$2, Collection<sm> $$3, hz $$4) {
       if ($$3.isEmpty()) {
          throw new IllegalArgumentException("No test functions were given!");
       } else {
          $$2.a();
-         cwh $$5 = new cwh(new cvb(new ArrayList<>($$2.b()), List.of()), cju.e.a());
-         cvr $$6 = new cvr("Test Level", cvk.b, false, blr.c, true, s, $$5);
+         cwl $$5 = new cwl(new cvf(new ArrayList<>($$2.b()), List.of()), cjy.e.a());
+         cvv $$6 = new cvv("Test Level", cvo.b, false, blt.c, true, s, $$5);
          ajt.d $$7 = new ajt.d($$2, $$5, false, true);
          ajt.c $$8 = new ajt.c($$7, dv.a.b, 4);
 
@@ -45,9 +45,9 @@ public class rx extends MinecraftServer {
             k.debug("Starting resource loading");
             Stopwatch $$9 = Stopwatch.createStarted();
             aju $$10 = ac.<aju>c($$2x -> ajt.a($$8, $$1xx -> {
-                  iv<dop> $$2xx = new ir<>(kg.aN, Lifecycle.stable()).l();
-                  drj.b $$3x = $$1xx.c().d(kg.aK).f(eau.b).a().a().a($$2xx);
-                  return new ajt.b<>(new eip($$6, t, $$3x.d(), $$3x.a()), $$3x.b());
+                  iv<dow> $$2xx = new ir<>(kg.aN, Lifecycle.stable()).l();
+                  drq.b $$3x = $$1xx.c().d(kg.aK).f(ebb.b).a().a().a($$2xx);
+                  return new ajt.b<>(new eiw($$6, t, $$3x.d(), $$3x.a()), $$3x.b());
                }, aju::new, ac.f(), $$2x)).get();
             $$9.stop();
             k.debug("Finished resource loading after {} ms", $$9.elapsed(TimeUnit.MILLISECONDS));
@@ -60,18 +60,18 @@ public class rx extends MinecraftServer {
       }
    }
 
-   private rx(Thread $$0, eil.c $$1, arl $$2, aju $$3, Collection<sm> $$4, hz $$5) {
-      super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, axp.a(), n, apg::b);
+   private rx(Thread $$0, eis.c $$1, arm $$2, aju $$3, Collection<sm> $$4, hz $$5) {
+      super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, axp.a(), n, aph::b);
       this.p = Lists.newArrayList($$4);
       this.q = $$5;
    }
 
    @Override
    public boolean e() {
-      this.a(new asn(this, this.ba(), this.g, 1) {
+      this.a(new aso(this, this.bc(), this.g, 1) {
       });
       this.u_();
-      aov $$0 = this.F();
+      aow $$0 = this.H();
       this.o = Lists.newArrayList(rn.a(this.p, $$0));
       $$0.a(this.q, 0.0F);
       int $$1 = 20000000;
@@ -83,8 +83,8 @@ public class rx extends MinecraftServer {
    @Override
    public void a(BooleanSupplier $$0) {
       super.a($$0);
-      aov $$1 = this.F();
-      if (!this.bl()) {
+      aow $$1 = this.H();
+      if (!this.bn()) {
          this.b($$1);
       }
 
@@ -115,7 +115,7 @@ public class rx extends MinecraftServer {
 
    @Override
    public void w_() {
-      this.bv();
+      this.bx();
    }
 
    @Override
@@ -138,7 +138,7 @@ public class rx extends MinecraftServer {
       System.exit(1);
    }
 
-   private void b(aov $$0) {
+   private void b(aow $$0) {
       hz $$1 = new hz($$0.z.a(-14999992, 14999992), -59, $$0.z.a(-14999992, 14999992));
       rv $$2 = rv.a.a(this.o, $$0).a(new sh($$1, 8)).a();
       Collection<rs> $$3 = $$2.a();
@@ -149,7 +149,7 @@ public class rx extends MinecraftServer {
       $$2.b();
    }
 
-   private boolean bl() {
+   private boolean bn() {
       return this.u != null;
    }
 

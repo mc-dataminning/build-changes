@@ -1,35 +1,25 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class ghf implements ggx {
-   private static final Logger c = LogUtils.getLogger();
-   public static final Codec<ghf> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(aiy.a.fieldOf("resource").forGetter($$0x -> $$0x.d), aiy.a.optionalFieldOf("sprite").forGetter($$0x -> $$0x.e)).apply($$0, ghf::new)
-   );
-   private final aiy d;
-   private final Optional<aiy> e;
+public interface ghf {
+   air a = new air("textures", ".png");
 
-   public ghf(aiy $$0, Optional<aiy> $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
+   void a(asb var1, ghf.a var2);
 
-   @Override
-   public void a(asa $$0, ggx.a $$1) {
-      aiy $$2 = a.a(this.d);
-      Optional<ary> $$3 = $$0.getResource($$2);
-      if ($$3.isPresent()) {
-         $$1.a(this.e.orElse(this.d), $$3.get());
-      } else {
-         c.warn("Missing sprite: {}", $$2);
+   ghh a();
+
+   public interface a {
+      default void a(aiy $$0, arz $$1) {
+         this.a($$0, $$2 -> $$2.loadSprite($$0, $$1));
       }
+
+      void a(aiy var1, ghf.b var2);
+
+      void a(Predicate<aiy> var1);
    }
 
-   @Override
-   public ggz a() {
-      return gha.a;
+   public interface b extends Function<ghe, ggv> {
+      default void a() {
+      }
    }
 }

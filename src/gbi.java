@@ -1,24 +1,27 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class gbi extends gcg<cah, fmk<cah>> {
+   private static final aiy a = new aiy("textures/entity/fox/fox.png");
+   private static final aiy i = new aiy("textures/entity/fox/fox_sleep.png");
+   private static final aiy j = new aiy("textures/entity/fox/snow_fox.png");
+   private static final aiy k = new aiy("textures/entity/fox/snow_fox_sleep.png");
 
-public final class gbi extends fzn<cbx, fmm<cbx>> {
-   private static final Map<cce, aiy> a = ac.a(Maps.newEnumMap(cce.class), $$0 -> {
-      $$0.put(cce.a, new aiy("textures/entity/horse/horse_white.png"));
-      $$0.put(cce.b, new aiy("textures/entity/horse/horse_creamy.png"));
-      $$0.put(cce.c, new aiy("textures/entity/horse/horse_chestnut.png"));
-      $$0.put(cce.d, new aiy("textures/entity/horse/horse_brown.png"));
-      $$0.put(cce.e, new aiy("textures/entity/horse/horse_black.png"));
-      $$0.put(cce.f, new aiy("textures/entity/horse/horse_gray.png"));
-      $$0.put(cce.g, new aiy("textures/entity/horse/horse_darkbrown.png"));
-   });
-
-   public gbi(gas.a $$0) {
-      super($$0, new fmm<>($$0.a(fpb.al)), 1.1F);
-      this.a(new ges(this));
-      this.a(new ger(this, $$0.f()));
+   public gbi(gba.a $$0) {
+      super($$0, new fmk<>($$0.a(fpi.Z)), 0.4F);
+      this.a(new gey(this, $$0.d()));
    }
 
-   public aiy a(cbx $$0) {
-      return a.get($$0.w());
+   protected void a(cah $$0, esh $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if ($$0.gm() || $$0.gg()) {
+         float $$6 = -awi.i($$4, $$0.N, $$0.dE());
+         $$1.a(a.b.rotationDegrees($$6));
+      }
+   }
+
+   public aiy a(cah $$0) {
+      if ($$0.w() == cah.v.a) {
+         return $$0.fD() ? i : a;
+      } else {
+         return $$0.fD() ? k : j;
+      }
    }
 }

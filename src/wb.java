@@ -1,7 +1,7 @@
 import java.util.UUID;
 
-public record wb(UUID a, chj b) {
-   public static wb a(chj $$0) {
+public record wb(UUID a, chn b) {
+   public static wb a(chn $$0) {
       return new wb(UUID.randomUUID(), $$0);
    }
 
@@ -17,7 +17,7 @@ public record wb(UUID a, chj b) {
       return this.a;
    }
 
-   public chj c() {
+   public chn c() {
       return this.b;
    }
 }

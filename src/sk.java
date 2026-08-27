@@ -122,7 +122,7 @@ public class sk {
                            ((LiteralArgumentBuilder)dv.a("clearall").executes($$0x -> l.a($$0x, 200).b()))
                               .then(
                                  dv.a("radius", IntegerArgumentType.integer())
-                                    .executes($$0x -> l.a($$0x, awh.a(IntegerArgumentType.getInteger($$0x, "radius"), 0, 1024)).b())
+                                    .executes($$0x -> l.a($$0x, awi.a(IntegerArgumentType.getInteger($$0x, "radius"), 0, 1024)).b())
                               )
                         ))
                      .then(
@@ -189,8 +189,8 @@ public class sk {
       return $$2.findTestFunctions().filter($$1x -> a($$0.e(), $$1x.d())).map($$3x -> new rs($$3x, si.a($$3), $$0.e(), $$1));
    }
 
-   private static Optional<rs> a(hz $$0, aov $$1, sf $$2) {
-      dkh $$3 = (dkh)$$1.c_($$0);
+   private static Optional<rs> a(hz $$0, aow $$1, sf $$2) {
+      dkl $$3 = (dkl)$$1.c_($$0);
       if ($$3 == null) {
          a($$1, "Structure block entity could not be found", n.m);
          return Optional.empty();
@@ -211,20 +211,20 @@ public class sk {
 
    private static int a(du $$0, String $$1, int $$2, int $$3, int $$4) {
       if ($$2 <= 48 && $$3 <= 48 && $$4 <= 48) {
-         aov $$5 = $$0.e();
+         aow $$5 = $$0.e();
          hz $$6 = a($$0).d();
-         si.a($$1.toLowerCase(), $$6, new jd($$2, $$3, $$4), dfa.a, $$5);
+         si.a($$1.toLowerCase(), $$6, new jd($$2, $$3, $$4), dfe.a, $$5);
 
          for (int $$7 = 0; $$7 < $$2; $$7++) {
             for (int $$8 = 0; $$8 < $$4; $$8++) {
                hz $$9 = new hz($$6.u() + $$7, $$6.v() + 1, $$6.w() + $$8);
-               cyo $$10 = cyq.h;
+               cys $$10 = cyu.h;
                fj $$11 = new fj($$10.o(), Collections.emptySet(), null);
                $$11.a($$5, $$9, 2);
             }
          }
 
-         si.a($$6, new hz(1, 0, -1), dfa.a, $$5);
+         si.a($$6, new hz(1, 0, -1), dfe.a, $$5);
          return 0;
       } else {
          throw new IllegalArgumentException("The structure must be less than 48 blocks big in each axis");
@@ -232,9 +232,9 @@ public class sk {
    }
 
    private static int a(du $$0, String $$1) throws CommandSyntaxException {
-      eno $$2 = (eno)$$0.h().a(10.0, 1.0F, false);
+      env $$2 = (env)$$0.h().a(10.0, 1.0F, false);
       hz $$3 = $$2.a();
-      aov $$4 = $$0.e();
+      aow $$4 = $$0.e();
       Optional<hz> $$5 = si.a($$3, 15, $$4);
       if ($$5.isEmpty()) {
          $$5 = si.a($$3, 200, $$4);
@@ -244,7 +244,7 @@ public class sk {
          $$0.b(vq.b("Can't find a structure block that contains the targeted pos " + $$3));
          return 0;
       } else {
-         dkh $$6 = (dkh)$$4.c_($$5.get());
+         dkl $$6 = (dkl)$$4.c_($$5.get());
          if ($$6 == null) {
             a($$4, "Structure block entity could not be found", n.m);
             return 0;
@@ -272,7 +272,7 @@ public class sk {
       return 1;
    }
 
-   static int a(du $$0, aov $$1, rv $$2) {
+   static int a(du $$0, aow $$1, rv $$2) {
       $$2.a(new sk.b($$0));
       sd $$3 = new sd($$2.a());
       $$3.a(new sk.c($$1, $$3));
@@ -281,7 +281,7 @@ public class sk {
       return 1;
    }
 
-   static int a(du $$0, dkh $$1) {
+   static int a(du $$0, dkl $$1) {
       String $$2 = $$1.d();
       if (!$$1.b(true)) {
          c($$0, "Failed to save structure " + $$2);
@@ -312,7 +312,7 @@ public class sk {
       }
    }
 
-   private static boolean a(aov $$0, String $$1) {
+   private static boolean a(aow $$0, String $$1) {
       if ($$0.q().b(new aiy($$1)).isEmpty()) {
          a($$0, "Test structure " + $$1 + " could not be found", n.m);
          return false;
@@ -323,7 +323,7 @@ public class sk {
 
    static hz a(du $$0) {
       hz $$1 = hz.a($$0.d());
-      int $$2 = $$0.e().a(dqo.a.b, $$1).v();
+      int $$2 = $$0.e().a(dqv.a.b, $$1).v();
       return new hz($$1.u(), $$2 + 1, $$1.w() + 3);
    }
 
@@ -354,7 +354,7 @@ public class sk {
       }
    }
 
-   static void a(aov $$0, String $$1, n $$2) {
+   static void a(aow $$0, String $$1, n $$2) {
       $$0.a($$0x -> true).forEach($$2x -> $$2x.a(vq.b($$1).a($$2)));
    }
 
@@ -382,14 +382,14 @@ public class sk {
       public int b() {
          sk.a();
          du $$0 = this.a.a();
-         aov $$1 = $$0.e();
+         aow $$1 = $$0.e();
          rv.a($$1);
          this.a(this.a.findStructureBlockPos(), $$1x -> {
-            dkh $$2 = (dkh)$$1.c_($$1x);
+            dkl $$2 = (dkl)$$1.c_($$1x);
             if ($$2 == null) {
                return 0;
             } else {
-               eaw $$3 = si.b($$2);
+               ebd $$3 = si.b($$2);
                si.a($$3, $$1);
                return 1;
             }
@@ -400,9 +400,9 @@ public class sk {
       public int c() {
          MutableBoolean $$0 = new MutableBoolean(true);
          du $$1 = this.a.a();
-         aov $$2 = $$1.e();
+         aow $$2 = $$1.e();
          this.a(this.a.findStructureBlockPos(), $$3 -> {
-            dkh $$4 = (dkh)$$2.c_($$3);
+            dkl $$4 = (dkl)$$2.c_($$3);
             if ($$4 == null) {
                sk.a($$2, "Structure block entity could not be found", n.m);
                $$0.setFalse();
@@ -421,7 +421,7 @@ public class sk {
       public int a(sf $$0, int $$1, int $$2) {
          sk.a();
          du $$3 = this.a.a();
-         aov $$4 = $$3.e();
+         aow $$4 = $$3.e();
          hz $$5 = sk.a($$3);
          Collection<rs> $$6 = Stream.concat(sk.a($$3, $$0, this.a), sk.a($$3, $$0, this.a, $$1)).toList();
          if ($$6.isEmpty()) {
@@ -468,7 +468,7 @@ public class sk {
       }
    }
 
-   public static record c(aov a, sd b) implements rt {
+   public static record c(aow a, sd b) implements rt {
       @Override
       public void a(rs $$0) {
       }
@@ -488,7 +488,7 @@ public class sk {
          this.b.a($$1);
       }
 
-      private static void a(aov $$0, sd $$1) {
+      private static void a(aow $$0, sd $$1) {
          if ($$1.i()) {
             sk.a($$0, "GameTest done! " + $$1.h() + " tests were run", n.p);
             if ($$1.d()) {

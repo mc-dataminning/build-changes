@@ -1,26 +1,39 @@
-public interface eax {
-   aix<ebk> a = a("villages");
-   aix<ebk> b = a("desert_pyramids");
-   aix<ebk> c = a("igloos");
-   aix<ebk> d = a("jungle_temples");
-   aix<ebk> e = a("swamp_huts");
-   aix<ebk> f = a("pillager_outposts");
-   aix<ebk> g = a("ocean_monuments");
-   aix<ebk> h = a("woodland_mansions");
-   aix<ebk> i = a("buried_treasures");
-   aix<ebk> j = a("mineshafts");
-   aix<ebk> k = a("ruined_portals");
-   aix<ebk> l = a("shipwrecks");
-   aix<ebk> m = a("ocean_ruins");
-   aix<ebk> n = a("nether_complexes");
-   aix<ebk> o = a("nether_fossils");
-   aix<ebk> p = a("end_cities");
-   aix<ebk> q = a("ancient_cities");
-   aix<ebk> r = a("strongholds");
-   aix<ebk> s = a("trail_ruins");
-   aix<ebk> t = a("trial_chambers");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   private static aix<ebk> a(String $$0) {
-      return aix.a(kg.aF, new aiy($$0));
+public class eax extends ear {
+   public static final Codec<eax> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dqv.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c),
+               Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter($$0x -> $$0x.d),
+               Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, eax::new)
+   );
+   private final dqv.a c;
+   private final int d;
+   private final int e;
+
+   private eax(dqv.a $$0, int $$1, int $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   public static eax a(dqv.a $$0, int $$1, int $$2) {
+      return new eax($$0, $$1, $$2);
+   }
+
+   @Override
+   protected boolean a(eaq $$0, awp $$1, hz $$2) {
+      long $$3 = (long)$$0.a(this.c, $$2.u(), $$2.w());
+      long $$4 = $$3 + (long)this.d;
+      long $$5 = $$3 + (long)this.e;
+      return $$4 <= (long)$$2.v() && (long)$$2.v() <= $$5;
+   }
+
+   @Override
+   public eat<?> b() {
+      return eat.c;
    }
 }

@@ -1,121 +1,85 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import com.google.common.collect.Lists;
 import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.nio.file.DirectoryNotEmptyException;
-import java.nio.file.FileVisitResult;
-import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.FileTime;
+import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class aqj {
-   private static final Logger a = LogUtils.getLogger();
+public class aqj implements aqp {
+   private final aqp c;
+   private final List<aqp> d;
 
-   public static void a(Path $$0, int $$1) {
-      try {
-         List<aqj.b> $$2 = a($$0);
-         int $$3 = $$2.size() - $$1;
-         if ($$3 <= 0) {
-            return;
-         }
-
-         $$2.sort(aqj.b.a);
-         List<aqj.a> $$4 = a($$2);
-         Collections.reverse($$4);
-         $$4.sort(aqj.a.a);
-         Set<Path> $$5 = new HashSet<>();
-
-         for (int $$6 = 0; $$6 < $$3; $$6++) {
-            aqj.a $$7 = $$4.get($$6);
-            Path $$8 = $$7.b;
-
-            try {
-               Files.delete($$8);
-               if ($$7.c == 0) {
-                  $$5.add($$8.getParent());
-               }
-            } catch (IOException var12) {
-               a.warn("Failed to delete cache file {}", $$8, var12);
-            }
-         }
-
-         $$5.remove($$0);
-
-         for (Path $$10 : $$5) {
-            try {
-               Files.delete($$10);
-            } catch (DirectoryNotEmptyException var10) {
-            } catch (IOException var11) {
-               a.warn("Failed to delete empty(?) cache directory {}", $$10, var11);
-            }
-         }
-      } catch (UncheckedIOException | IOException var13) {
-         a.error("Failed to vacuum cache dir {}", $$0, var13);
-      }
+   public aqj(aqp $$0, List<aqp> $$1) {
+      this.c = $$0;
+      List<aqp> $$2 = new ArrayList<>($$1.size() + 1);
+      $$2.addAll(Lists.reverse($$1));
+      $$2.add($$0);
+      this.d = List.copyOf($$2);
    }
 
-   private static List<aqj.b> a(final Path $$0) throws IOException {
-      try {
-         final List<aqj.b> $$1 = new ArrayList<>();
-         Files.walkFileTree($$0, new SimpleFileVisitor<Path>() {
-            public FileVisitResult a(Path $$0x, BasicFileAttributes $$1) {
-               if ($$1.isRegularFile() && !$$0.getParent().equals($$0)) {
-                  FileTime $$2 = $$1.lastModifiedTime();
-                  $$1.add(new aqj.b($$0, $$2));
-               }
-
-               return FileVisitResult.CONTINUE;
-            }
-         });
-         return $$1;
-      } catch (NoSuchFileException var2) {
-         return List.of();
-      }
+   @Nullable
+   @Override
+   public art<InputStream> a(String... $$0) {
+      return this.c.a($$0);
    }
 
-   private static List<aqj.a> a(List<aqj.b> $$0) {
-      List<aqj.a> $$1 = new ArrayList<>();
-      Object2IntOpenHashMap<Path> $$2 = new Object2IntOpenHashMap();
+   @Nullable
+   @Override
+   public art<InputStream> a(aqq $$0, aiy $$1) {
+      for (aqp $$2 : this.d) {
+         art<InputStream> $$3 = $$2.a($$0, $$1);
+         if ($$3 != null) {
+            return $$3;
+         }
+      }
 
-      for (aqj.b $$3 : $$0) {
-         int $$4 = $$2.addTo($$3.b.getParent(), 1);
-         $$1.add(new aqj.a($$3.b, $$4));
+      return null;
+   }
+
+   @Override
+   public void a(aqq $$0, String $$1, String $$2, aqp.a $$3) {
+      Map<aiy, art<InputStream>> $$4 = new HashMap<>();
+
+      for (aqp $$5 : this.d) {
+         $$5.a($$0, $$1, $$2, $$4::putIfAbsent);
+      }
+
+      $$4.forEach($$3);
+   }
+
+   @Override
+   public Set<String> a(aqq $$0) {
+      Set<String> $$1 = new HashSet<>();
+
+      for (aqp $$2 : this.d) {
+         $$1.addAll($$2.a($$0));
       }
 
       return $$1;
    }
 
-   static record a(Path b, int c) {
-      public static final Comparator<aqj.a> a = Comparator.comparing(aqj.a::b).reversed();
-
-      public Path a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
+   @Nullable
+   @Override
+   public <T> T a(arb<T> $$0) throws IOException {
+      return this.c.a($$0);
    }
 
-   static record b(Path b, FileTime c) {
-      public static final Comparator<aqj.b> a = Comparator.comparing(aqj.b::b).reversed();
+   @Override
+   public String a() {
+      return this.c.a();
+   }
 
-      public Path a() {
-         return this.b;
-      }
+   @Override
+   public boolean b() {
+      return this.c.b();
+   }
 
-      public FileTime b() {
-         return this.c;
-      }
+   @Override
+   public void close() {
+      this.d.forEach(aqp::close);
    }
 }

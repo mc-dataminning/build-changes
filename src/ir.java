@@ -22,7 +22,6 @@ import java.util.Map.Entry;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
 
 public class ir<T> implements je<T> {
@@ -35,14 +34,11 @@ public class ir<T> implements je<T> {
    private final Map<T, ij.c<T>> h = new IdentityHashMap<>();
    private final Map<T, Lifecycle> i = new IdentityHashMap<>();
    private Lifecycle j;
-   private volatile Map<auo<T>, in.c<T>> k = new IdentityHashMap<>();
+   private volatile Map<aup<T>, in.c<T>> k = new IdentityHashMap<>();
    private boolean l;
    @Nullable
    private Map<T, ij.c<T>> m;
-   @Nullable
-   private List<ij.c<T>> n;
-   private int o;
-   private final il.c<T> p = new il.c<T>() {
+   private final il.c<T> n = new il.c<T>() {
       @Override
       public aix<? extends iv<? extends T>> f() {
          return ir.this.c;
@@ -64,7 +60,7 @@ public class ir<T> implements je<T> {
       }
 
       @Override
-      public Optional<in.c<T>> a(auo<T> $$0) {
+      public Optional<in.c<T>> a(aup<T> $$0) {
          return ir.this.b($$0);
       }
 
@@ -96,15 +92,7 @@ public class ir<T> implements je<T> {
       return "Registry[" + this.c + " (" + this.j + ")]";
    }
 
-   private List<ij.c<T>> a() {
-      if (this.n == null) {
-         this.n = this.d.stream().filter(Objects::nonNull).toList();
-      }
-
-      return this.n;
-   }
-
-   private void v() {
+   private void a() {
       if (this.l) {
          throw new IllegalStateException("Registry is already frozen");
       }
@@ -116,49 +104,40 @@ public class ir<T> implements je<T> {
       }
    }
 
-   public ij.c<T> a(int $$0, aix<T> $$1, T $$2, Lifecycle $$3) {
-      this.g($$1);
-      Validate.notNull($$1);
-      Validate.notNull($$2);
-      if (this.f.containsKey($$1.a())) {
-         ac.b(new IllegalStateException("Adding duplicate key '" + $$1 + "' to registry"));
-      }
-
-      if (this.h.containsKey($$2)) {
-         ac.b(new IllegalStateException("Adding duplicate value '" + $$2 + "' to registry"));
-      }
-
-      ij.c<T> $$4;
-      if (this.m != null) {
-         $$4 = this.m.remove($$2);
-         if ($$4 == null) {
-            throw new AssertionError("Missing intrusive holder for " + $$1 + ":" + $$2);
-         }
-
-         $$4.b($$1);
-      } else {
-         $$4 = this.g.computeIfAbsent($$1, $$0x -> ij.c.a(this.o(), $$0x));
-      }
-
-      this.g.put($$1, $$4);
-      this.f.put($$1.a(), $$4);
-      this.h.put($$2, $$4);
-      this.d.size(Math.max(this.d.size(), $$0 + 1));
-      this.d.set($$0, $$4);
-      this.e.put($$2, $$0);
-      if (this.o <= $$0) {
-         this.o = $$0 + 1;
-      }
-
-      this.i.put($$2, $$3);
-      this.j = this.j.add($$3);
-      this.n = null;
-      return $$4;
-   }
-
    @Override
    public ij.c<T> a(aix<T> $$0, T $$1, Lifecycle $$2) {
-      return this.a(this.o, $$0, $$1, $$2);
+      this.g($$0);
+      Objects.requireNonNull($$0);
+      Objects.requireNonNull($$1);
+      if (this.f.containsKey($$0.a())) {
+         ac.b(new IllegalStateException("Adding duplicate key '" + $$0 + "' to registry"));
+      }
+
+      if (this.h.containsKey($$1)) {
+         ac.b(new IllegalStateException("Adding duplicate value '" + $$1 + "' to registry"));
+      }
+
+      ij.c<T> $$3;
+      if (this.m != null) {
+         $$3 = this.m.remove($$1);
+         if ($$3 == null) {
+            throw new AssertionError("Missing intrusive holder for " + $$0 + ":" + $$1);
+         }
+
+         $$3.b($$0);
+      } else {
+         $$3 = this.g.computeIfAbsent($$0, $$0x -> ij.c.a(this.o(), $$0x));
+      }
+
+      this.g.put($$0, $$3);
+      this.f.put($$0.a(), $$3);
+      this.h.put($$1, $$3);
+      int $$5 = this.d.size();
+      this.d.add($$3);
+      this.e.put($$1, $$5);
+      this.i.put($$1, $$2);
+      this.j = this.j.add($$2);
+      return $$3;
    }
 
    @Nullable
@@ -187,7 +166,7 @@ public class ir<T> implements je<T> {
    @Nullable
    @Override
    public T a(int $$0) {
-      return $$0 >= 0 && $$0 < this.d.size() ? a((ij.c<T>)this.d.get($$0)) : null;
+      return (T)($$0 >= 0 && $$0 < this.d.size() ? ((ij.c)this.d.get($$0)).a() : null);
    }
 
    @Override
@@ -239,7 +218,7 @@ public class ir<T> implements je<T> {
 
    @Override
    public Iterator<T> iterator() {
-      return Iterators.transform(this.a().iterator(), ij::a);
+      return Iterators.transform(this.d.iterator(), ij::a);
    }
 
    @Nullable
@@ -271,20 +250,20 @@ public class ir<T> implements je<T> {
 
    @Override
    public Stream<ij.c<T>> h() {
-      return this.a().stream();
+      return this.d.stream();
    }
 
    @Override
-   public Stream<Pair<auo<T>, in.c<T>>> i() {
+   public Stream<Pair<aup<T>, in.c<T>>> i() {
       return this.k.entrySet().stream().map($$0 -> Pair.of($$0.getKey(), $$0.getValue()));
    }
 
    @Override
-   public in.c<T> a(auo<T> $$0) {
+   public in.c<T> a(aup<T> $$0) {
       in.c<T> $$1 = this.k.get($$0);
       if ($$1 == null) {
          $$1 = this.d($$0);
-         Map<auo<T>, in.c<T>> $$2 = new IdentityHashMap<>(this.k);
+         Map<aup<T>, in.c<T>> $$2 = new IdentityHashMap<>(this.k);
          $$2.put($$0, $$1);
          this.k = $$2;
       }
@@ -292,12 +271,12 @@ public class ir<T> implements je<T> {
       return $$1;
    }
 
-   private in.c<T> d(auo<T> $$0) {
+   private in.c<T> d(aup<T> $$0) {
       return new in.c<>(this.o(), $$0);
    }
 
    @Override
-   public Stream<auo<T>> j() {
+   public Stream<aup<T>> j() {
       return this.k.keySet().stream();
    }
 
@@ -307,8 +286,8 @@ public class ir<T> implements je<T> {
    }
 
    @Override
-   public Optional<ij.c<T>> a(awo $$0) {
-      return ac.b(this.a(), $$0);
+   public Optional<ij.c<T>> a(awp $$0) {
+      return ac.b(this.d, $$0);
    }
 
    @Override
@@ -350,19 +329,19 @@ public class ir<T> implements je<T> {
       if (this.m == null) {
          throw new IllegalStateException("This registry can't create intrusive holders");
       } else {
-         this.v();
+         this.a();
          return this.m.computeIfAbsent($$0, $$0x -> ij.c.a(this.p(), (T)$$0x));
       }
    }
 
    @Override
-   public Optional<in.c<T>> b(auo<T> $$0) {
+   public Optional<in.c<T>> b(aup<T> $$0) {
       return Optional.ofNullable(this.k.get($$0));
    }
 
    @Override
-   public void a(Map<auo<T>, List<ij<T>>> $$0) {
-      Map<ij.c<T>, List<auo<T>>> $$1 = new IdentityHashMap<>();
+   public void a(Map<aup<T>, List<ij<T>>> $$0) {
+      Map<ij.c<T>, List<aup<T>>> $$1 = new IdentityHashMap<>();
       this.g.values().forEach($$1x -> $$1.put($$1x, new ArrayList<>()));
       $$0.forEach(($$1x, $$2x) -> {
          for (ij<T> $$3x : $$2x) {
@@ -377,7 +356,7 @@ public class ir<T> implements je<T> {
             $$1.get($$4).add($$1x);
          }
       });
-      Set<auo<T>> $$2 = Sets.difference(this.k.keySet(), $$0.keySet());
+      Set<aup<T>> $$2 = Sets.difference(this.k.keySet(), $$0.keySet());
       if (!$$2.isEmpty()) {
          b.warn(
             "Not all defined tags for registry {} are present in data pack: {}",
@@ -386,7 +365,7 @@ public class ir<T> implements je<T> {
          );
       }
 
-      Map<auo<T>, in.c<T>> $$3 = new IdentityHashMap<>(this.k);
+      Map<aup<T>, in.c<T>> $$3 = new IdentityHashMap<>(this.k);
       $$0.forEach(($$1x, $$2x) -> $$3.computeIfAbsent($$1x, this::d).b($$2x));
       $$1.forEach(ij.c::a);
       this.k = $$3;
@@ -400,7 +379,7 @@ public class ir<T> implements je<T> {
 
    @Override
    public ik<T> n() {
-      this.v();
+      this.a();
       return new ik<T>() {
          @Override
          public Optional<ij.c<T>> a(aix<T> $$0) {
@@ -413,12 +392,12 @@ public class ir<T> implements je<T> {
          }
 
          @Override
-         public Optional<in.c<T>> a(auo<T> $$0) {
+         public Optional<in.c<T>> a(aup<T> $$0) {
             return Optional.of(this.b($$0));
          }
 
          @Override
-         public in.c<T> b(auo<T> $$0) {
+         public in.c<T> b(aup<T> $$0) {
             return ir.this.a($$0);
          }
       };
@@ -426,11 +405,11 @@ public class ir<T> implements je<T> {
 
    @Override
    public im<T> o() {
-      return this.p;
+      return this.n;
    }
 
    @Override
    public il.c<T> p() {
-      return this.p;
+      return this.n;
    }
 }

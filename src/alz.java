@@ -104,7 +104,7 @@ public class alz {
    }
 
    private static int a(du $$0, cm.d $$1, @Nullable aiy $$2, boolean $$3) throws CommandSyntaxException {
-      awo $$4;
+      awp $$4;
       if ($$2 != null) {
          $$4 = $$0.e().a($$2);
       } else {
@@ -119,9 +119,9 @@ public class alz {
       } else if ($$8 >= 2147483647L) {
          throw a.create();
       } else {
-         int $$9 = awh.b($$4, $$6, $$7);
+         int $$9 = awi.b($$4, $$6, $$7);
          if ($$3) {
-            $$0.l().ae().a(vq.a("commands.random.roll", $$0.b(), $$9, $$6, $$7), false);
+            $$0.l().ag().a(vq.a("commands.random.roll", $$0.b(), $$9, $$6, $$7), false);
          } else {
             $$0.a(() -> vq.a("commands.random.sample.success", $$9), false);
          }
@@ -149,7 +149,7 @@ public class alz {
    }
 
    private static int a(du $$0, int $$1, boolean $$2, boolean $$3) {
-      bmb $$4 = $$0.e().J();
+      bmd $$4 = $$0.e().J();
       $$4.a($$1, $$2, $$3);
       int $$5 = $$4.a();
       $$0.a(() -> vq.a("commands.random.reset.all.success", $$5), false);

@@ -1,140 +1,249 @@
+import com.mojang.datafixers.util.Pair;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
 
-public class fho extends fhe<clx> {
-   private static final aiy x = new aiy("container/smithing/error");
-   private static final aiy y = new aiy("item/empty_slot_smithing_template_armor_trim");
-   private static final aiy z = new aiy("item/empty_slot_smithing_template_netherite_upgrade");
-   private static final vq A = vq.c("container.upgrade.missing_template_tooltip");
-   private static final vq B = vq.c("container.upgrade.error_tooltip");
-   private static final List<aiy> C = List.of(y, z);
-   private static final int D = 44;
-   private static final int E = 15;
-   private static final int F = 28;
-   private static final int G = 21;
-   private static final int H = 65;
-   private static final int I = 46;
-   private static final int J = 115;
-   private static final int K = 210;
-   private static final int L = 25;
-   private static final Vector3f M = new Vector3f();
-   private static final Quaternionf N = new Quaternionf().rotationXYZ(0.43633232F, 0.0F, (float) Math.PI);
-   private static final int O = 25;
-   private static final int P = 75;
-   private static final int Q = 141;
-   private final fgt R = new fgt(0);
-   private final fgt S = new fgt(1);
-   private final fgt T = new fgt(2);
+public class fho extends fgk<clk> {
+   private static final aiy x = new aiy("container/loom/banner_slot");
+   private static final aiy y = new aiy("container/loom/dye_slot");
+   private static final aiy z = new aiy("container/loom/pattern_slot");
+   private static final aiy A = new aiy("container/loom/scroller");
+   private static final aiy B = new aiy("container/loom/scroller_disabled");
+   private static final aiy C = new aiy("container/loom/pattern_selected");
+   private static final aiy D = new aiy("container/loom/pattern_highlighted");
+   private static final aiy E = new aiy("container/loom/pattern");
+   private static final aiy F = new aiy("container/loom/error");
+   private static final aiy G = new aiy("textures/gui/container/loom.png");
+   private static final int H = 4;
+   private static final int I = 4;
+   private static final int J = 12;
+   private static final int K = 15;
+   private static final int L = 14;
+   private static final int M = 56;
+   private static final int N = 60;
+   private static final int O = 13;
+   private fpj P;
    @Nullable
-   private cdi U;
+   private List<Pair<ij<dio>, cnr>> Q;
+   private cpd R = cpd.h;
+   private cpd S = cpd.h;
+   private cpd T = cpd.h;
+   private boolean U;
+   private boolean V;
+   private float W;
+   private boolean X;
+   private int Y;
 
-   public fho(clx $$0, chg $$1, vq $$2) {
-      super($$0, $$1, $$2, new aiy("textures/gui/container/smithing.png"));
-      this.l = 44;
-      this.m = 15;
+   public fho(clk $$0, chk $$1, vq $$2) {
+      super($$0, $$1, $$2);
+      $$0.a(this::J);
+      this.m -= 2;
    }
 
    @Override
-   protected void I() {
-      this.U = new cdi(this.f.r, 0.0, 0.0, 0.0);
-      this.U.s(true);
-      this.U.a(true);
-      this.U.aU = 210.0F;
-      this.U.s(25.0F);
-      this.U.aW = this.U.dC();
-      this.U.aX = this.U.dC();
-      this.b(this.p.b(3).g());
+   protected void aQ_() {
+      super.aQ_();
+      this.P = this.f.aQ().a(fpi.g).b("flag");
    }
 
    @Override
-   public void E() {
-      super.E();
-      Optional<cqb> $$0 = this.J();
-      this.R.a(C);
-      this.S.a($$0.map(cqb::y).orElse(List.of()));
-      this.T.a($$0.map(cqb::z).orElse(List.of()));
-   }
-
-   private Optional<cqb> J() {
-      coz $$0 = this.p.b(0).g();
-      return !$$0.b() && $$0.d() instanceof cqb $$1 ? Optional.of($$1) : Optional.empty();
-   }
-
-   @Override
-   public void a(eyu $$0, int $$1, int $$2, float $$3) {
+   public void a(ezb $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.d($$0, $$1, $$2);
+      this.a($$0, $$1, $$2);
+   }
+
+   private int I() {
+      return awi.e(this.p.l().size(), 4);
    }
 
    @Override
-   protected void a(eyu $$0, float $$1, int $$2, int $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.R.a(this.p, $$0, $$1, this.t, this.u);
-      this.S.a(this.p, $$0, $$1, this.t, this.u);
-      this.T.a(this.p, $$0, $$1, this.t, this.u);
-      fhd.a($$0, (float)(this.t + 141), (float)(this.u + 75), 25.0F, M, N, null, this.U);
+   protected void a(ezb $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.t;
+      int $$5 = this.u;
+      $$0.a(G, $$4, $$5, 0, 0, this.c, this.k);
+      cma $$6 = this.p.n();
+      cma $$7 = this.p.o();
+      cma $$8 = this.p.p();
+      cma $$9 = this.p.q();
+      if (!$$6.h()) {
+         $$0.a(x, $$4 + $$6.f, $$5 + $$6.g, 16, 16);
+      }
+
+      if (!$$7.h()) {
+         $$0.a(y, $$4 + $$7.f, $$5 + $$7.g, 16, 16);
+      }
+
+      if (!$$8.h()) {
+         $$0.a(z, $$4 + $$8.f, $$5 + $$8.g, 16, 16);
+      }
+
+      int $$10 = (int)(41.0F * this.W);
+      aiy $$11 = this.U ? A : B;
+      $$0.a($$11, $$4 + 119, $$5 + 13 + $$10, 12, 15);
+      erd.a();
+      if (this.Q != null && !this.V) {
+         $$0.c().a();
+         $$0.c().a((float)($$4 + 139), (float)($$5 + 52), 0.0F);
+         $$0.c().b(24.0F, -24.0F, 1.0F);
+         $$0.c().a(0.5F, 0.5F, 0.5F);
+         float $$12 = 0.6666667F;
+         $$0.c().b(0.6666667F, -0.6666667F, -0.6666667F);
+         this.P.e = 0.0F;
+         this.P.c = -32.0F;
+         fxo.a($$0.c(), $$0.d(), 15728880, ggs.d, this.P, gjg.f, true, this.Q);
+         $$0.c().b();
+         $$0.e();
+      } else if (this.V) {
+         $$0.a(F, $$4 + $$9.f - 5, $$5 + $$9.g - 5, 26, 26);
+      }
+
+      if (this.U) {
+         int $$13 = $$4 + 60;
+         int $$14 = $$5 + 13;
+         List<ij<dio>> $$15 = this.p.l();
+
+         label64:
+         for (int $$16 = 0; $$16 < 4; $$16++) {
+            for (int $$17 = 0; $$17 < 4; $$17++) {
+               int $$18 = $$16 + this.Y;
+               int $$19 = $$18 * 4 + $$17;
+               if ($$19 >= $$15.size()) {
+                  break label64;
+               }
+
+               int $$20 = $$13 + $$17 * 14;
+               int $$21 = $$14 + $$16 * 14;
+               boolean $$22 = $$2 >= $$20 && $$3 >= $$21 && $$2 < $$20 + 14 && $$3 < $$21 + 14;
+               aiy $$23;
+               if ($$19 == this.p.m()) {
+                  $$23 = C;
+               } else if ($$22) {
+                  $$23 = D;
+               } else {
+                  $$23 = E;
+               }
+
+               $$0.a($$23, $$20, $$21, 14, 14);
+               this.a($$0, $$15.get($$19), $$20, $$21);
+            }
+         }
+      }
+
+      erd.b();
+   }
+
+   private void a(ezb $$0, ij<dio> $$1, int $$2, int $$3) {
+      sw $$4 = new sw();
+      tc $$5 = new dio.a().a(dip.a, cnr.h).a($$1, cnr.a).a();
+      $$4.a("Patterns", $$5);
+      cpd $$6 = new cpd(cpg.uS);
+      cmw.a($$6, diz.t, $$4);
+      esh $$7 = new esh();
+      $$7.a();
+      $$7.a((float)$$2 + 0.5F, (float)($$3 + 16), 0.0F);
+      $$7.b(6.0F, -6.0F, 1.0F);
+      $$7.a(0.5F, 0.5F, 0.0F);
+      $$7.a(0.5F, 0.5F, 0.5F);
+      float $$8 = 0.6666667F;
+      $$7.b(0.6666667F, -0.6666667F, -0.6666667F);
+      this.P.e = 0.0F;
+      this.P.c = -32.0F;
+      List<Pair<ij<dio>, cnr>> $$9 = din.a(cnr.h, din.a($$6));
+      fxo.a($$7, $$0.d(), 15728880, ggs.d, this.P, gjg.f, true, $$9);
+      $$7.b();
+      $$0.e();
    }
 
    @Override
-   public void a(ckb $$0, int $$1, coz $$2) {
-      if ($$1 == 3) {
-         this.b($$2);
-      }
-   }
+   public boolean a(double $$0, double $$1, int $$2) {
+      this.X = false;
+      if (this.U) {
+         int $$3 = this.t + 60;
+         int $$4 = this.u + 13;
 
-   private void b(coz $$0) {
-      if (this.U != null) {
-         for (bnv $$1 : bnv.values()) {
-            this.U.a($$1, coz.h);
-         }
-
-         if (!$$0.b()) {
-            coz $$2 = $$0.q();
-            if ($$0.d() instanceof cmj $$3) {
-               this.U.a($$3.g(), $$2);
-            } else {
-               this.U.a(bnv.b, $$2);
+         for (int $$5 = 0; $$5 < 4; $$5++) {
+            for (int $$6 = 0; $$6 < 4; $$6++) {
+               double $$7 = $$0 - (double)($$3 + $$6 * 14);
+               double $$8 = $$1 - (double)($$4 + $$5 * 14);
+               int $$9 = $$5 + this.Y;
+               int $$10 = $$9 * 4 + $$6;
+               if ($$7 >= 0.0 && $$8 >= 0.0 && $$7 < 14.0 && $$8 < 14.0 && this.p.b(this.f.s, $$10)) {
+                  exo.P().aj().a(gkj.a(atl.zL, 1.0F));
+                  this.f.q.a(this.p.j, $$10);
+                  return true;
+               }
             }
          }
+
+         $$3 = this.t + 119;
+         $$4 = this.u + 9;
+         if ($$0 >= (double)$$3 && $$0 < (double)($$3 + 12) && $$1 >= (double)$$4 && $$1 < (double)($$4 + 56)) {
+            this.X = true;
+         }
+      }
+
+      return super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      int $$5 = this.I() - 4;
+      if (this.X && this.U && $$5 > 0) {
+         int $$6 = this.u + 13;
+         int $$7 = $$6 + 56;
+         this.W = ((float)$$1 - (float)$$6 - 7.5F) / ((float)($$7 - $$6) - 15.0F);
+         this.W = awi.a(this.W, 0.0F, 1.0F);
+         this.Y = Math.max((int)((double)(this.W * (float)$$5) + 0.5), 0);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4);
       }
    }
 
    @Override
-   protected void c(eyu $$0, int $$1, int $$2) {
-      if (this.K()) {
-         $$0.a(x, $$1 + 65, $$2 + 46, 28, 21);
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      int $$4 = this.I() - 4;
+      if (this.U && $$4 > 0) {
+         float $$5 = (float)$$3 / (float)$$4;
+         this.W = awi.a(this.W - $$5, 0.0F, 1.0F);
+         this.Y = Math.max((int)(this.W * (float)$$4 + 0.5F), 0);
       }
+
+      return true;
    }
 
-   private void d(eyu $$0, int $$1, int $$2) {
-      Optional<vq> $$3 = Optional.empty();
-      if (this.K() && this.a(65, 46, 28, 21, (double)$$1, (double)$$2)) {
-         $$3 = Optional.of(B);
-      }
-
-      if (this.r != null) {
-         coz $$4 = this.p.b(0).g();
-         coz $$5 = this.r.g();
-         if ($$4.b()) {
-            if (this.r.e == 0) {
-               $$3 = Optional.of(A);
-            }
-         } else if ($$4.d() instanceof cqb $$6 && $$5.b()) {
-            if (this.r.e == 1) {
-               $$3 = Optional.of($$6.w());
-            } else if (this.r.e == 2) {
-               $$3 = Optional.of($$6.x());
-            }
-         }
-      }
-
-      $$3.ifPresent($$3x -> $$0.b(this.i, this.i.c($$3x, 115), $$1, $$2));
+   @Override
+   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
+      return $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.c) || $$1 >= (double)($$3 + this.k);
    }
 
-   private boolean K() {
-      return this.p.b(0).h() && this.p.b(1).h() && this.p.b(2).h() && !this.p.b(this.p.o()).h();
+   private void J() {
+      cpd $$0 = this.p.q().g();
+      if ($$0.b()) {
+         this.Q = null;
+      } else {
+         this.Q = din.a(((cmt)$$0.d()).b(), din.a($$0));
+      }
+
+      cpd $$1 = this.p.n().g();
+      cpd $$2 = this.p.o().g();
+      cpd $$3 = this.p.p().g();
+      sw $$4 = cmw.a($$1);
+      this.V = $$4 != null && $$4.b("Patterns", 9) && !$$1.b() && $$4.c("Patterns", 10).size() >= 6;
+      if (this.V) {
+         this.Q = null;
+      }
+
+      if (!cpd.a($$1, this.R) || !cpd.a($$2, this.S) || !cpd.a($$3, this.T)) {
+         this.U = !$$1.b() && !$$2.b() && !this.V && !this.p.l().isEmpty();
+      }
+
+      if (this.Y >= this.I()) {
+         this.Y = 0;
+         this.W = 0.0F;
+      }
+
+      this.R = $$1.q();
+      this.S = $$2.q();
+      this.T = $$3.q();
    }
 }

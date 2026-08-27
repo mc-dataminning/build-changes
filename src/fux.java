@@ -1,21 +1,38 @@
-public class fux {
-   public static final cuy a = cwm::a;
-   public static final cuy b = ($$0, $$1, $$2) -> $$0.f();
-   public static final cuy c = ($$0, $$1, $$2) -> $$0.i();
+import com.google.common.collect.ForwardingList;
+import java.util.List;
 
-   private static int a(cuq $$0, hz $$1, cuy $$2) {
-      return $$0.a($$1, $$2);
+public class fux extends ForwardingList<cpd> {
+   private final is<cpd> a = is.a(chk.g(), cpd.h);
+
+   protected List<cpd> delegate() {
+      return this.a;
    }
 
-   public static int a(cuq $$0, hz $$1) {
-      return a($$0, $$1, a);
+   public tc a() {
+      tc $$0 = new tc();
+
+      for (cpd $$1 : this.delegate()) {
+         $$0.add($$1.b(new sw()));
+      }
+
+      return $$0;
    }
 
-   public static int b(cuq $$0, hz $$1) {
-      return a($$0, $$1, b);
+   public void a(tc $$0) {
+      List<cpd> $$1 = this.delegate();
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         $$1.set($$2, cpd.a($$0.a($$2)));
+      }
    }
 
-   public static int c(cuq $$0, hz $$1) {
-      return a($$0, $$1, c);
+   public boolean isEmpty() {
+      for (cpd $$0 : this.delegate()) {
+         if (!$$0.b()) {
+            return false;
+         }
+      }
+
+      return true;
    }
 }

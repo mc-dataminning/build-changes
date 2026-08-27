@@ -1,73 +1,72 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import java.util.function.ToIntFunction;
 
-public abstract class dcc extends dcb implements cyr {
-   protected dcc(dle.d $$0, ie $$1, eol $$2, boolean $$3) {
-      super($$0, $$1, $$2, $$3);
+public class dcc extends ddr implements cyv, dfs {
+   public static final MapCodec<dcc> a = b(dcc::new);
+   private static final dma c = dlz.C;
+   private final dds d = new dds(this);
+
+   @Override
+   public MapCodec<dcc> a() {
+      return a;
+   }
+
+   public dcc(dli.d $$0) {
+      super($$0);
+      this.k(this.o().a(c, Boolean.valueOf(false)));
+   }
+
+   public static ToIntFunction<dlj> b(int $$0) {
+      return $$1 -> ddr.n($$1) ? $$0 : 0;
    }
 
    @Override
-   protected abstract MapCodec<? extends dcc> a();
-
-   protected dlf a(dlf $$0, dlf $$1) {
-      return $$1;
+   protected void a(dlk.a<cys, dlj> $$0) {
+      super.a($$0);
+      $$0.a(c);
    }
 
    @Override
-   protected dlf a(dlf $$0, ie $$1, dlf $$2, cvo $$3, hz $$4, hz $$5) {
-      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
+   protected dlj a(dlj $$0, ie $$1, dlj $$2, cvs $$3, hz $$4, hz $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, egx.c, egx.c.a($$3));
       }
 
-      dcd $$6 = this.c();
-      if ($$1 == this.a && !$$2.a(this) && !$$2.a($$6)) {
-         return this.a($$0, $$6.a($$3));
-      } else {
-         if (this.b) {
-            $$3.a($$4, egq.c, egq.c.a($$3));
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public coz a(cvq $$0, hz $$1, dlf $$2) {
-      return new coz(this.c());
+   protected boolean a(dlj $$0, crk $$1) {
+      return !$$1.n().a(cpg.fV) || super.a($$0, $$1);
    }
 
    @Override
-   public boolean b(cvq $$0, hz $$1, dlf $$2) {
-      Optional<hz> $$3 = this.a($$0, $$1, $$2.b());
-      return $$3.isPresent() && this.c().g($$0.a_($$3.get().a(this.a)));
+   public boolean b(cvu $$0, hz $$1, dlj $$2) {
+      return ie.a().anyMatch($$3 -> this.d.a($$2, $$0, $$1, $$3.g()));
    }
 
    @Override
-   public boolean a(cvn $$0, awo $$1, hz $$2, dlf $$3) {
+   public boolean a(cvr $$0, awp $$1, hz $$2, dlj $$3) {
       return true;
    }
 
    @Override
-   public void a(aov $$0, awo $$1, hz $$2, dlf $$3) {
-      Optional<hz> $$4 = this.a($$0, $$2, $$3.b());
-      if ($$4.isPresent()) {
-         dlf $$5 = $$0.a_($$4.get());
-         ((dcd)$$5.b()).a($$0, $$1, $$4.get(), $$5);
-      }
-   }
-
-   private Optional<hz> a(cut $$0, hz $$1, cyo $$2) {
-      return l.a($$0, $$1, $$2, this.a, this.c());
+   public void a(aow $$0, awp $$1, hz $$2, dlj $$3) {
+      this.d.a($$3, $$0, $$2, $$1);
    }
 
    @Override
-   protected boolean a(dlf $$0, crg $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      return $$2 && $$1.n().a(this.c().j()) ? false : $$2;
+   protected egw c_(dlj $$0) {
+      return $$0.c(c) ? egx.c.a(false) : super.c_($$0);
    }
 
    @Override
-   protected cyo b() {
-      return this;
+   protected boolean a_(dlj $$0, cux $$1, hz $$2) {
+      return $$0.u().c();
+   }
+
+   @Override
+   public dds c() {
+      return this.d;
    }
 }

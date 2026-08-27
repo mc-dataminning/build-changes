@@ -1,119 +1,48 @@
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.PushbackInputStream;
-import java.util.Map;
-import java.util.function.Function;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 
-public class eif {
-   private static final Logger a = LogUtils.getLogger();
-   private final Map<String, ehu> b = Maps.newHashMap();
-   private final DataFixer c;
-   private final File d;
+public class eif extends eib {
+   public static final String a = "idcounts";
+   private final Object2IntMap<String> b = new Object2IntOpenHashMap();
 
-   public eif(File $$0, DataFixer $$1) {
-      this.c = $$1;
-      this.d = $$0;
+   public static eib.a<eif> a() {
+      return new eib.a<>(eif::new, eif::b, axo.k);
    }
 
-   private File a(String $$0) {
-      return new File(this.d, $$0 + ".dat");
+   public eif() {
+      this.b.defaultReturnValue(-1);
    }
 
-   public <T extends ehu> T a(ehu.a<T> $$0, String $$1) {
-      T $$2 = this.b($$0, $$1);
-      if ($$2 != null) {
-         return $$2;
-      } else {
-         T $$3 = (T)$$0.a().get();
-         this.a($$1, $$3);
-         return $$3;
-      }
-   }
+   public static eif b(sw $$0) {
+      eif $$1 = new eif();
 
-   @Nullable
-   public <T extends ehu> T b(ehu.a<T> $$0, String $$1) {
-      ehu $$2 = this.b.get($$1);
-      if ($$2 == null && !this.b.containsKey($$1)) {
-         $$2 = this.a($$0.b(), $$0.c(), $$1);
-         this.b.put($$1, $$2);
-      }
-
-      return (T)$$2;
-   }
-
-   @Nullable
-   private <T extends ehu> T a(Function<sw, T> $$0, axo $$1, String $$2) {
-      try {
-         File $$3 = this.a($$2);
-         if ($$3.exists()) {
-            sw $$4 = this.a($$2, $$1, aa.b().d().c());
-            return $$0.apply($$4.p("data"));
-         }
-      } catch (Exception var6) {
-         a.error("Error loading saved data: {}", $$2, var6);
-      }
-
-      return null;
-   }
-
-   public void a(String $$0, ehu $$1) {
-      this.b.put($$0, $$1);
-   }
-
-   public sw a(String $$0, axo $$1, int $$2) throws IOException {
-      File $$3 = this.a($$0);
-
-      sw var9;
-      try (
-         FileInputStream $$4 = new FileInputStream($$3);
-         PushbackInputStream $$5 = new PushbackInputStream($$4, 2);
-      ) {
-         sw $$6;
-         if (this.a($$5)) {
-            $$6 = tj.a($$5, tf.a());
-         } else {
-            try (DataInputStream $$7 = new DataInputStream($$5)) {
-               $$6 = tj.a($$7);
-            }
-         }
-
-         int $$10 = tl.b($$6, 1343);
-         var9 = $$1.a(this.c, $$6, $$10, $$2);
-      }
-
-      return var9;
-   }
-
-   private boolean a(PushbackInputStream $$0) throws IOException {
-      byte[] $$1 = new byte[2];
-      boolean $$2 = false;
-      int $$3 = $$0.read($$1, 0, 2);
-      if ($$3 == 2) {
-         int $$4 = ($$1[1] & 255) << 8 | $$1[0] & 255;
-         if ($$4 == 35615) {
-            $$2 = true;
+      for (String $$2 : $$0.e()) {
+         if ($$0.b($$2, 99)) {
+            $$1.b.put($$2, $$0.h($$2));
          }
       }
 
-      if ($$3 != 0) {
-         $$0.unread($$1, 0, $$3);
-      }
-
-      return $$2;
+      return $$1;
    }
 
-   public void a() {
-      this.b.forEach(($$0, $$1) -> {
-         if ($$1 != null) {
-            $$1.a(this.a($$0));
-         }
-      });
+   @Override
+   public sw a(sw $$0) {
+      ObjectIterator var2 = this.b.object2IntEntrySet().iterator();
+
+      while (var2.hasNext()) {
+         Entry<String> $$1 = (Entry<String>)var2.next();
+         $$0.a((String)$$1.getKey(), $$1.getIntValue());
+      }
+
+      return $$0;
+   }
+
+   public int b() {
+      int $$0 = this.b.getInt("map") + 1;
+      this.b.put("map", $$0);
+      this.c();
+      return $$0;
    }
 }

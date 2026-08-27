@@ -11,7 +11,7 @@ public abstract class ju implements jx {
 
    public ju(Vector3f $$0, float $$1) {
       this.h = $$0;
-      this.i = awh.a($$1, 0.01F, 4.0F);
+      this.i = awi.a($$1, 0.01F, 4.0F);
    }
 
    public static Vector3f a(StringReader $$0) throws CommandSyntaxException {

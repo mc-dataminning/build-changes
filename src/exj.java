@@ -1,37 +1,74 @@
-import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-public enum exj {
-   a(0, "options.narrator.off"),
-   b(1, "options.narrator.all"),
-   c(2, "options.narrator.chat"),
-   d(3, "options.narrator.system");
+public record exj(int a, @Nullable exj.a b, @Nullable vq c, @Nullable String d) {
+   private static final vq e = vq.c("chat.tag.system");
+   private static final vq f = vq.c("chat.tag.system_single_player");
+   private static final vq g = vq.c("chat.tag.not_secure");
+   private static final vq h = vq.c("chat.tag.modified");
+   private static final vq i = vq.c("chat.tag.error");
+   private static final int j = 13684944;
+   private static final int k = 6316128;
+   private static final exj l = new exj(13684944, null, e, "System");
+   private static final exj m = new exj(13684944, null, f, "System");
+   private static final exj n = new exj(13684944, null, g, "Not Secure");
+   private static final exj o = new exj(16733525, null, i, "Chat Error");
 
-   private static final IntFunction<exj> e = auz.a(exj::a, values(), auz.a.b);
-   private final int f;
-   private final vq g;
-
-   private exj(int $$0, String $$1) {
-      this.f = $$0;
-      this.g = vq.c($$1);
+   public static exj a() {
+      return l;
    }
 
-   public int a() {
-      return this.f;
+   public static exj b() {
+      return m;
    }
 
-   public vq b() {
-      return this.g;
+   public static exj c() {
+      return n;
    }
 
-   public static exj a(int $$0) {
-      return e.apply($$0);
+   public static exj a(String $$0) {
+      vq $$1 = vq.b($$0).a(n.h);
+      vq $$2 = vq.i().b(h).b(vp.s).b($$1);
+      return new exj(6316128, exj.a.a, $$2, "Modified");
    }
 
-   public boolean c() {
-      return this == b || this == c;
+   public static exj d() {
+      return o;
    }
 
-   public boolean d() {
-      return this == b || this == d;
+   public int e() {
+      return this.a;
+   }
+
+   @Nullable
+   public exj.a f() {
+      return this.b;
+   }
+
+   @Nullable
+   public vq g() {
+      return this.c;
+   }
+
+   @Nullable
+   public String h() {
+      return this.d;
+   }
+
+   public static enum a {
+      a(new aiy("icon/chat_modified"), 9, 9);
+
+      public final aiy b;
+      public final int c;
+      public final int d;
+
+      private a(aiy $$0, int $$1, int $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+      }
+
+      public void a(ezb $$0, int $$1, int $$2) {
+         $$0.a(this.b, $$1, $$2, this.c, this.d);
+      }
    }
 }

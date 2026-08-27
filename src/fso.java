@@ -1,43 +1,30 @@
-public class fso extends ftz {
-   private final ftu a;
+public class fso extends fsa {
+   private static final int a = 12235202;
 
-   protected fso(fpx $$0, double $$1, double $$2, double $$3, ftu $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.a = $$4;
-      this.b($$4);
-      this.t = 12 + this.r.a(4);
-      this.D = 1.0F;
-      this.b(1.0F, 1.0F);
-   }
-
-   @Override
-   public ftd b() {
-      return ftd.d;
-   }
-
-   @Override
-   public int a(float $$0) {
-      return 15728880;
+   protected fso(fqe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fuc $$8) {
+      super($$0, $$1, $$2, $$3, 0.7F, 0.6F, 0.7F, $$4, $$5 + 0.15F, $$6, $$7, $$8, 0.5F, 7, 0.5F, false);
+      float $$9 = (float)Math.random() * 0.2F;
+      this.v = (float)avs.b.b(12235202) / 255.0F - $$9;
+      this.w = (float)avs.b.c(12235202) / 255.0F - $$9;
+      this.x = (float)avs.b.d(12235202) / 255.0F - $$9;
    }
 
    @Override
    public void a() {
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.a);
-      }
+      this.u = 0.88F * this.u;
+      this.B = 0.92F * this.B;
+      super.a();
    }
 
-   public static class a implements ftc<kc> {
-      private final ftu a;
+   public static class a implements ftk<kc> {
+      private final fuc a;
 
-      public a(ftu $$0) {
+      public a(fuc $$0) {
          this.a = $$0;
       }
 
-      public fsz a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fso($$1, $$2, $$3, $$4, this.a);
+      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fso($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
       }
    }
 }

@@ -1,72 +1,55 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.ToIntFunction;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dby extends ddn implements cyr, dfo {
-   public static final MapCodec<dby> a = b(dby::new);
-   private static final dlw c = dlv.C;
-   private final ddo d = new ddo(this);
+public class dby extends czb implements cyv {
+   public static final MapCodec<dby> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(aix.a(kg.aw).fieldOf("feature").forGetter($$0x -> $$0x.e), kf.e.q().fieldOf("grows_on").forGetter($$0x -> $$0x.d), u())
+            .apply($$0, dby::new)
+   );
+   protected static final eos b = cys.a(4.0, 0.0, 4.0, 12.0, 9.0, 12.0);
+   private static final double c = 0.4;
+   private final cys d;
+   private final aix<dtm<?, ?>> e;
 
    @Override
    public MapCodec<dby> a() {
       return a;
    }
 
-   public dby(dle.d $$0) {
-      super($$0);
-      this.k(this.o().a(c, Boolean.valueOf(false)));
-   }
-
-   public static ToIntFunction<dlf> b(int $$0) {
-      return $$1 -> ddn.n($$1) ? $$0 : 0;
+   protected dby(aix<dtm<?, ?>> $$0, cys $$1, dli.d $$2) {
+      super($$2);
+      this.e = $$0;
+      this.d = $$1;
    }
 
    @Override
-   protected void a(dlg.a<cyo, dlf> $$0) {
-      super.a($$0);
-      $$0.a(c);
+   protected eos a(dlj $$0, cux $$1, hz $$2, eoe $$3) {
+      return b;
    }
 
    @Override
-   protected dlf a(dlf $$0, ie $$1, dlf $$2, cvo $$3, hz $$4, hz $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, egq.c, egq.c.a($$3));
-      }
+   protected boolean b(dlj $$0, cux $$1, hz $$2) {
+      return $$0.a(aua.aK) || $$0.a(cyu.fl) || $$0.a(cyu.dX) || super.b($$0, $$1, $$2);
+   }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   private Optional<? extends ij<dtm<?, ?>>> a(cvu $$0) {
+      return $$0.I_().d(kg.aw).b(this.e);
    }
 
    @Override
-   protected boolean a(dlf $$0, crg $$1) {
-      return !$$1.n().a(cpc.fV) || super.a($$0, $$1);
+   public boolean b(cvu $$0, hz $$1, dlj $$2) {
+      dlj $$3 = $$0.a_($$1.d());
+      return $$3.a(this.d);
    }
 
    @Override
-   public boolean b(cvq $$0, hz $$1, dlf $$2) {
-      return ie.a().anyMatch($$3 -> this.d.a($$2, $$0, $$1, $$3.g()));
+   public boolean a(cvr $$0, awp $$1, hz $$2, dlj $$3) {
+      return (double)$$1.i() < 0.4;
    }
 
    @Override
-   public boolean a(cvn $$0, awo $$1, hz $$2, dlf $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(aov $$0, awo $$1, hz $$2, dlf $$3) {
-      this.d.a($$3, $$0, $$2, $$1);
-   }
-
-   @Override
-   protected egp c_(dlf $$0) {
-      return $$0.c(c) ? egq.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   protected boolean a_(dlf $$0, cut $$1, hz $$2) {
-      return $$0.u().c();
-   }
-
-   @Override
-   public ddo c() {
-      return this.d;
+   public void a(aow $$0, awp $$1, hz $$2, dlj $$3) {
+      this.a($$0).ifPresent($$3x -> ((dtm)$$3x.a()).a($$0, $$0.l().g(), $$1, $$2));
    }
 }

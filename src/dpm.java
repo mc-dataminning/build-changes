@@ -1,43 +1,19 @@
+import java.util.UUID;
 import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class dpm<T extends dpr> {
-   private final T a;
+public interface dpm<T extends dpd> {
    @Nullable
-   private jb b;
+   T a(int var1);
 
-   public dpm(T $$0) {
-      this.a = $$0;
-   }
+   @Nullable
+   T a(UUID var1);
 
-   public void a(aov $$0) {
-      this.c($$0);
-   }
+   Iterable<T> a();
 
-   public T a() {
-      return this.a;
-   }
+   <U extends T> void a(dpk<T, U> var1, auv<U> var2);
 
-   public void b(aov $$0) {
-      a($$0, this.b, $$0x -> $$0x.b(this.a));
-   }
+   void a(enu var1, Consumer<T> var2);
 
-   public void c(aov $$0) {
-      this.a.a().a($$0).map(jb::a).ifPresent($$1 -> {
-         if (this.b == null || !this.b.equals($$1)) {
-            a($$0, this.b, $$0xx -> $$0xx.b(this.a));
-            this.b = $$1;
-            a($$0, this.b, $$0xx -> $$0xx.a(this.a));
-         }
-      });
-   }
-
-   private static void a(cvq $$0, @Nullable jb $$1, Consumer<dps> $$2) {
-      if ($$1 != null) {
-         dnb $$3 = $$0.a($$1.a(), $$1.c(), dng.n, false);
-         if ($$3 != null) {
-            $$2.accept($$3.a($$1.b()));
-         }
-      }
-   }
+   <U extends T> void a(dpk<T, U> var1, enu var2, auv<U> var3);
 }

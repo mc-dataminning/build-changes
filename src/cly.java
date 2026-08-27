@@ -1,9 +1,10 @@
-public class cly extends ckc {
-   public cly(int $$0, chg $$1) {
-      super(cli.w, csg.d, clp.d, $$0, $$1);
+public class cly extends cma {
+   public cly(blp $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
-   public cly(int $$0, chg $$1, bln $$2, ckl $$3) {
-      super(cli.w, csg.d, clp.d, $$0, $$1, $$2, $$3);
+   @Override
+   public boolean a(cpd $$0) {
+      return $$0.d().ar_();
    }
 }

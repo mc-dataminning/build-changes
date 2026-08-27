@@ -1,184 +1,46 @@
-import java.util.UUID;
-import net.minecraft.server.MinecraftServer;
+public class eie {
+   private final hz a;
+   private final int b;
+   private final int c;
 
-public class eie implements eiq {
-   private final eir a;
-   private final eiq b;
-
-   public eie(eir $$0, eiq $$1) {
+   public eie(hz $$0, int $$1, int $$2) {
       this.a = $$0;
       this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   public hz a() {
-      return this.b.a();
+   public static eie a(sw $$0) {
+      hz $$1 = tl.b($$0.p("Pos"));
+      int $$2 = $$0.h("Rotation");
+      int $$3 = $$0.h("EntityId");
+      return new eie($$1, $$2, $$3);
    }
 
-   @Override
-   public float b() {
-      return this.b.b();
+   public sw a() {
+      sw $$0 = new sw();
+      $$0.a("Pos", tl.a(this.a));
+      $$0.a("Rotation", this.b);
+      $$0.a("EntityId", this.c);
+      return $$0;
    }
 
-   @Override
-   public long c() {
-      return this.b.c();
+   public hz b() {
+      return this.a;
    }
 
-   @Override
-   public long d() {
-      return this.b.d();
+   public int c() {
+      return this.b;
    }
 
-   @Override
+   public int d() {
+      return this.c;
+   }
+
    public String e() {
-      return this.a.e();
+      return a(this.a);
    }
 
-   @Override
-   public int f() {
-      return this.b.f();
-   }
-
-   @Override
-   public void a(int $$0) {
-   }
-
-   @Override
-   public boolean g() {
-      return this.b.g();
-   }
-
-   @Override
-   public int h() {
-      return this.b.h();
-   }
-
-   @Override
-   public boolean i() {
-      return this.b.i();
-   }
-
-   @Override
-   public int j() {
-      return this.b.j();
-   }
-
-   @Override
-   public cvk k() {
-      return this.a.k();
-   }
-
-   @Override
-   public void a(long $$0) {
-   }
-
-   @Override
-   public void b(long $$0) {
-   }
-
-   @Override
-   public void a(hz $$0, float $$1) {
-   }
-
-   @Override
-   public void a(boolean $$0) {
-   }
-
-   @Override
-   public void b(int $$0) {
-   }
-
-   @Override
-   public void b(boolean $$0) {
-   }
-
-   @Override
-   public void c(int $$0) {
-   }
-
-   @Override
-   public void a(cvk $$0) {
-   }
-
-   @Override
-   public boolean l() {
-      return this.a.l();
-   }
-
-   @Override
-   public boolean m() {
-      return this.a.m();
-   }
-
-   @Override
-   public boolean n() {
-      return this.b.n();
-   }
-
-   @Override
-   public void c(boolean $$0) {
-   }
-
-   @Override
-   public cvj o() {
-      return this.a.o();
-   }
-
-   @Override
-   public dmw.c p() {
-      return this.b.p();
-   }
-
-   @Override
-   public void a(dmw.c $$0) {
-   }
-
-   @Override
-   public blr q() {
-      return this.a.q();
-   }
-
-   @Override
-   public boolean r() {
-      return this.a.r();
-   }
-
-   @Override
-   public enf<MinecraftServer> s() {
-      return this.b.s();
-   }
-
-   @Override
-   public int t() {
-      return 0;
-   }
-
-   @Override
-   public void d(int $$0) {
-   }
-
-   @Override
-   public int u() {
-      return 0;
-   }
-
-   @Override
-   public void e(int $$0) {
-   }
-
-   @Override
-   public UUID v() {
-      return null;
-   }
-
-   @Override
-   public void a(UUID $$0) {
-   }
-
-   @Override
-   public void a(p $$0, cvp $$1) {
-      $$0.a("Derived", true);
-      this.b.a($$0, $$1);
+   public static String a(hz $$0) {
+      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
    }
 }

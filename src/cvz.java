@@ -1,25 +1,25 @@
-public final class cvz implements dmy {
-   private final int a;
-   private final dlf[] b;
+import javax.annotation.Nullable;
 
-   public cvz(int $$0, dlf[] $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public interface cvz {
+   boolean a(hz var1, dlj var2, int var3, int var4);
+
+   default boolean a(hz $$0, dlj $$1, int $$2) {
+      return this.a($$0, $$1, $$2, 512);
    }
 
-   @Override
-   public dlf a(int $$0) {
-      int $$1 = $$0 - this.a;
-      return $$1 >= 0 && $$1 < this.b.length ? this.b[$$1] : cyq.a.o();
+   boolean a(hz var1, boolean var2);
+
+   default boolean b(hz $$0, boolean $$1) {
+      return this.a($$0, $$1, null);
    }
 
-   @Override
-   public void a(int $$0, dlf $$1) {
-      int $$2 = $$0 - this.a;
-      if ($$2 >= 0 && $$2 < this.b.length) {
-         this.b[$$2] = $$1;
-      } else {
-         throw new IllegalArgumentException("Outside of column height: " + $$0);
-      }
+   default boolean a(hz $$0, boolean $$1, @Nullable bnq $$2) {
+      return this.a($$0, $$1, $$2, 512);
+   }
+
+   boolean a(hz var1, boolean var2, @Nullable bnq var3, int var4);
+
+   default boolean b(bnq $$0) {
+      return false;
    }
 }

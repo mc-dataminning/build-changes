@@ -1,103 +1,44 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Map.Entry;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.stream.Collectors;
 
 public class fps {
-   private static final Logger a = LogUtils.getLogger();
-   private final exh b;
-   private final glx c;
-   private final ak d = new ak();
-   private final Map<af, ah> e = new Object2ObjectOpenHashMap();
-   @Nullable
-   private fps.a f;
-   @Nullable
-   private af g;
+   private final List<fpm> a;
+   private final fpl b;
+   private final Map<String, fps> c = Maps.newHashMap();
 
-   public fps(exh $$0, glx $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   fps(List<fpm> $$0, fpl $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public void a(aej $$0) {
-      if ($$0.g()) {
-         this.d.a();
-         this.e.clear();
+   public fps a(String $$0, fpo $$1, fpl $$2) {
+      fps $$3 = new fps($$1.b(), $$2);
+      fps $$4 = this.c.put($$0, $$3);
+      if ($$4 != null) {
+         $$3.c.putAll($$4.c);
       }
 
-      this.d.a($$0.e());
-      this.d.a($$0.b());
-
-      for (Entry<aiy, ah> $$1 : $$0.f().entrySet()) {
-         ag $$2 = this.d.a($$1.getKey());
-         if ($$2 != null) {
-            ah $$3 = $$1.getValue();
-            $$3.a($$2.a().f());
-            this.e.put($$2.b(), $$3);
-            if (this.f != null) {
-               this.f.a($$2, $$3);
-            }
-
-            if (!$$0.g() && $$3.a()) {
-               if (this.b.r != null) {
-                  this.c.a(this.b.r, $$2.b());
-               }
-
-               Optional<ar> $$4 = $$2.a().c();
-               if ($$4.isPresent() && $$4.get().h()) {
-                  this.b.ay().a(new fbn($$2.b()));
-               }
-            }
-         } else {
-            a.warn("Server informed client about progress for unknown advancement {}", $$1.getKey());
-         }
-      }
+      return $$3;
    }
 
-   public ak a() {
-      return this.d;
+   public fpj a(int $$0, int $$1) {
+      Object2ObjectArrayMap<String, fpj> $$2 = this.c
+         .entrySet()
+         .stream()
+         .collect(Collectors.toMap(Entry::getKey, $$2x -> ((fps)$$2x.getValue()).a($$0, $$1), ($$0x, $$1x) -> $$0x, Object2ObjectArrayMap::new));
+      List<fpj.a> $$3 = this.a.stream().map($$2x -> $$2x.a($$0, $$1)).collect(ImmutableList.toImmutableList());
+      fpj $$4 = new fpj($$3, $$2);
+      $$4.a(this.b);
+      $$4.b(this.b);
+      return $$4;
    }
 
-   public void a(@Nullable af $$0, boolean $$1) {
-      fpy $$2 = this.b.J();
-      if ($$2 != null && $$0 != null && $$1) {
-         $$2.b(aga.a($$0));
-      }
-
-      if (this.g != $$0) {
-         this.g = $$0;
-         if (this.f != null) {
-            this.f.a($$0);
-         }
-      }
-   }
-
-   public void a(@Nullable fps.a $$0) {
-      this.f = $$0;
-      this.d.a($$0);
-      if ($$0 != null) {
-         this.e.forEach(($$1, $$2) -> {
-            ag $$3 = this.d.a($$1);
-            if ($$3 != null) {
-               $$0.a($$3, $$2);
-            }
-         });
-         $$0.a(this.g);
-      }
-   }
-
-   @Nullable
-   public af a(aiy $$0) {
-      ag $$1 = this.d.a($$0);
-      return $$1 != null ? $$1.b() : null;
-   }
-
-   public interface a extends ak.a {
-      void a(ag var1, ah var2);
-
-      void a(@Nullable af var1);
+   public fps a(String $$0) {
+      return this.c.get($$0);
    }
 }

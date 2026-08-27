@@ -1,13 +1,13 @@
 import java.util.function.Function;
 
 public class ni {
-   private final Function<crr, csb<?>> a;
+   private final Function<crv, csf<?>> a;
 
-   public ni(Function<crr, csb<?>> $$0) {
+   public ni(Function<crv, csf<?>> $$0) {
       this.a = $$0;
    }
 
-   public static ni a(Function<crr, csb<?>> $$0) {
+   public static ni a(Function<crv, csf<?>> $$0) {
       return new ni($$0);
    }
 
@@ -16,6 +16,6 @@ public class ni {
    }
 
    public void a(na $$0, aiy $$1) {
-      $$0.a($$1, this.a.apply(crr.d), null);
+      $$0.a($$1, this.a.apply(crv.d), null);
    }
 }

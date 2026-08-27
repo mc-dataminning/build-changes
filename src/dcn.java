@@ -1,31 +1,22 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dcn extends dcm {
-   public static final MapCodec<dcn> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(kf.e.q().fieldOf("host").forGetter(dcm::b), u()).apply($$0, dcn::new));
+public abstract class dcn extends cys {
+   public static final dmd aE = dlz.R;
 
-   @Override
-   public MapCodec<dcn> a() {
-      return b;
-   }
-
-   public dcn(cyo $$0, dle.d $$1) {
-      super($$0, $$1);
-      this.k(this.o().a(dez.i, ie.a.b));
+   protected dcn(dli.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected dlf a(dlf $$0, dfa $$1) {
-      return dez.b($$0, $$1);
+   protected abstract MapCodec<? extends dcn> a();
+
+   @Override
+   protected dlj a(dlj $$0, dfe $$1) {
+      return $$0.a(aE, $$1.a($$0.c(aE)));
    }
 
    @Override
-   protected void a(dlg.a<cyo, dlf> $$0) {
-      $$0.a(dez.i);
-   }
-
-   @Override
-   public dlf a(crg $$0) {
-      return this.o().a(dez.i, $$0.k().o());
+   protected dlj a(dlj $$0, ddo $$1) {
+      return $$0.a($$1.a($$0.c(aE)));
    }
 }

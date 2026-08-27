@@ -1,41 +1,48 @@
-import java.util.function.Predicate;
+import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class bwm<T extends boi> extends bvb {
-   private final T a;
-   private final coz b;
-   private final Predicate<? super T> c;
+public class bwm extends bvf {
+   private final ced a;
    @Nullable
-   private final atj d;
+   private boi b;
 
-   public bwm(T $$0, coz $$1, @Nullable atj $$2, Predicate<? super T> $$3) {
+   public bwm(ced $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.d = $$2;
-      this.c = $$3;
+      this.a(EnumSet.of(bvf.a.a));
    }
 
    @Override
    public boolean a() {
-      return this.c.test(this.a);
-   }
-
-   @Override
-   public boolean b() {
-      return this.a.fn();
+      boi $$0 = this.a.q();
+      return this.a.w() > 0 || $$0 != null && this.a.f((bnq)$$0) < 9.0;
    }
 
    @Override
    public void c() {
-      this.a.a(bnv.a, this.b.q());
-      this.a.c(blt.a);
+      this.a.N().n();
+      this.b = this.a.q();
    }
 
    @Override
    public void d() {
-      this.a.a(bnv.a, coz.h);
-      if (this.d != null) {
-         this.a.a(this.d, 1.0F, this.a.eh().i() * 0.2F + 0.9F);
+      this.b = null;
+   }
+
+   @Override
+   public boolean T_() {
+      return true;
+   }
+
+   @Override
+   public void e() {
+      if (this.b == null) {
+         this.a.b(-1);
+      } else if (this.a.f((bnq)this.b) > 49.0) {
+         this.a.b(-1);
+      } else if (!this.a.O().a(this.b)) {
+         this.a.b(-1);
+      } else {
+         this.a.b(1);
       }
    }
 }

@@ -17,10 +17,10 @@ public class fe implements ArgumentType<String> {
       return new fe();
    }
 
-   public static eor a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static eoy a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       String $$2 = (String)$$0.getArgument($$1, String.class);
-      eow $$3 = ((du)$$0.getSource()).l().aH();
-      eor $$4 = $$3.b($$2);
+      epd $$3 = ((du)$$0.getSource()).l().aJ();
+      eoy $$4 = $$3.b($$2);
       if ($$4 == null) {
          throw b.create($$2);
       } else {

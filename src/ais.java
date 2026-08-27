@@ -11,10 +11,10 @@ public class ais<E> implements Codec<in<E>> {
    private final aix<? extends iv<E>> a;
    private final Codec<ij<E>> b;
    private final Codec<List<ij<E>>> c;
-   private final Codec<Either<auo<E>, List<ij<E>>>> d;
+   private final Codec<Either<aup<E>, List<ij<E>>>> d;
 
    private static <E> Codec<List<ij<E>>> a(Codec<ij<E>> $$0, boolean $$1) {
-      Codec<List<ij<E>>> $$2 = avp.a($$0.listOf(), avp.b(ij::f));
+      Codec<List<ij<E>>> $$2 = avq.a($$0.listOf(), avq.b(ij::f));
       return $$1
          ? $$2
          : Codec.either($$2, $$0)
@@ -29,7 +29,7 @@ public class ais<E> implements Codec<in<E>> {
       this.a = $$0;
       this.b = $$1;
       this.c = a($$1, $$2);
-      this.d = Codec.either(auo.b($$0), this.c);
+      this.d = Codec.either(aup.b($$0), this.c);
    }
 
    public <T> DataResult<Pair<in<E>, T>> decode(DynamicOps<T> $$0, T $$1) {

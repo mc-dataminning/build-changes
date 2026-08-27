@@ -1,8 +1,16 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface bwr {
+public class bwr extends bws {
+   public bwr(boq $$0, double $$1) {
+      super($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   protected enz h() {
+      enz $$0 = this.b.f(0.0F);
+      int $$1 = 8;
+      enz $$2 = bze.a(this.b, 8, 7, $$0.c, $$0.e, (float) (Math.PI / 2), 3, 1);
+      return $$2 != null ? $$2 : bza.a(this.b, 8, 4, -2, $$0.c, $$0.e, (float) (Math.PI / 2));
+   }
 }

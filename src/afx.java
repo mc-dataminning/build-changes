@@ -1,17 +1,17 @@
 public class afx implements xx<aes> {
    public static final xo<uq, afx> a = xx.a(afx::a, afx::new);
-   private final clp b;
+   private final clt b;
    private final boolean c;
    private final boolean d;
 
-   public afx(clp $$0, boolean $$1, boolean $$2) {
+   public afx(clt $$0, boolean $$1, boolean $$2) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
    }
 
    private afx(uq $$0) {
-      this.b = $$0.b(clp.class);
+      this.b = $$0.b(clt.class);
       this.c = $$0.readBoolean();
       this.d = $$0.readBoolean();
    }
@@ -31,7 +31,7 @@ public class afx implements xx<aes> {
       $$0.a(this);
    }
 
-   public clp b() {
+   public clt b() {
       return this.b;
    }
 

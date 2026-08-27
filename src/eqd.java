@@ -1,17 +1,32 @@
-import it.unimi.dsi.fastutil.ints.IntSet;
-import javax.annotation.Nullable;
+import org.lwjgl.openal.AL10;
 
-public interface eqd extends AutoCloseable {
-   float a = 7.0F;
+public class eqd {
+   private float a = 1.0F;
+   private eqe b = eqe.a;
 
-   @Override
-   default void close() {
+   public void a(eqe $$0) {
+      this.b = $$0;
+      enz $$1 = $$0.b();
+      enz $$2 = $$0.c();
+      enz $$3 = $$0.d();
+      AL10.alListener3f(4100, (float)$$1.c, (float)$$1.d, (float)$$1.e);
+      AL10.alListenerfv(4111, new float[]{(float)$$2.c, (float)$$2.d, (float)$$2.e, (float)$$3.a(), (float)$$3.b(), (float)$$3.c()});
    }
 
-   @Nullable
-   default eqc a(int $$0) {
-      return null;
+   public void a(float $$0) {
+      AL10.alListenerf(4106, $$0);
+      this.a = $$0;
    }
 
-   IntSet a();
+   public float a() {
+      return this.a;
+   }
+
+   public void b() {
+      this.a(eqe.a);
+   }
+
+   public eqe c() {
+      return this.b;
+   }
 }

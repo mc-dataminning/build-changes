@@ -1,47 +1,46 @@
-public class fmc<T extends bno> extends fmk<T> {
-   private static final String a = "base";
-   private static final String b = "upper_jaw";
-   private static final String f = "lower_jaw";
-   private final fpc g;
-   private final fpc h;
-   private final fpc i;
-   private final fpc j;
+public class fmc<T extends bnq> extends fmr<T> {
+   private final fpj a;
+   private final fpj b;
+   private final fpj f;
+   private final fpj g;
+   private final fpj h;
+   private final fpj i;
+   private static final int j = 6;
 
-   public fmc(fpc $$0) {
-      this.g = $$0;
-      this.h = $$0.b("base");
-      this.i = $$0.b("upper_jaw");
-      this.j = $$0.b("lower_jaw");
+   public fmc(fpj $$0) {
+      this.a = $$0;
+      this.b = $$0.b("head");
+      this.g = $$0.b("right_hind_leg");
+      this.f = $$0.b("left_hind_leg");
+      this.i = $$0.b("right_front_leg");
+      this.h = $$0.b("left_front_leg");
    }
 
-   public static fpi b() {
-      fpk $$0 = new fpk();
-      fpl $$1 = $$0.a();
-      $$1.a("base", fph.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 10.0F, 12.0F, 10.0F), fpe.a(-5.0F, 24.0F, -5.0F));
-      fph $$2 = fph.c().a(40, 0).a(0.0F, 0.0F, 0.0F, 4.0F, 14.0F, 8.0F);
-      $$1.a("upper_jaw", $$2, fpe.a(1.5F, 24.0F, -4.0F));
-      $$1.a("lower_jaw", $$2, fpe.a(-1.5F, 24.0F, 4.0F, 0.0F, (float) Math.PI, 0.0F));
-      return fpi.a($$0, 64, 32);
+   public static fpp a(fpn $$0) {
+      fpr $$1 = new fpr();
+      fps $$2 = $$1.a();
+      $$2.a("head", fpo.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fpl.a(0.0F, 6.0F, 0.0F));
+      $$2.a("body", fpo.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), fpl.a(0.0F, 6.0F, 0.0F));
+      fpo $$3 = fpo.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, $$0);
+      $$2.a("right_hind_leg", $$3, fpl.a(-2.0F, 18.0F, 4.0F));
+      $$2.a("left_hind_leg", $$3, fpl.a(2.0F, 18.0F, 4.0F));
+      $$2.a("right_front_leg", $$3, fpl.a(-2.0F, 18.0F, -4.0F));
+      $$2.a("left_front_leg", $$3, fpl.a(2.0F, 18.0F, -4.0F));
+      return fpp.a($$1, 64, 32);
+   }
+
+   @Override
+   public fpj a() {
+      return this.a;
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = $$1 * 2.0F;
-      if ($$6 > 1.0F) {
-         $$6 = 1.0F;
-      }
-
-      $$6 = 1.0F - $$6 * $$6 * $$6;
-      this.i.g = (float) Math.PI - $$6 * 0.35F * (float) Math.PI;
-      this.j.g = (float) Math.PI + $$6 * 0.35F * (float) Math.PI;
-      float $$7 = ($$1 + awh.a($$1 * 2.7F)) * 0.6F * 12.0F;
-      this.i.c = 24.0F - $$7;
-      this.j.c = this.i.c;
-      this.h.c = this.i.c;
-   }
-
-   @Override
-   public fpc a() {
-      return this.g;
+      this.b.f = $$4 * (float) (Math.PI / 180.0);
+      this.b.e = $$5 * (float) (Math.PI / 180.0);
+      this.f.e = awi.b($$1 * 0.6662F) * 1.4F * $$2;
+      this.g.e = awi.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.h.e = awi.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.i.e = awi.b($$1 * 0.6662F) * 1.4F * $$2;
    }
 }

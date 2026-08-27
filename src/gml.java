@@ -1,38 +1,37 @@
-public class gml implements gmo {
-   private static final int a = 600;
-   private static final vq b = vq.c("tutorial.open_inventory.title");
-   private static final vq c = vq.a("tutorial.open_inventory.description", gmn.a("inventory"));
-   private final gmn d;
-   private fbs e;
-   private int f;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Optional;
 
-   public gml(gmn $$0) {
+public class gml {
+   private static final int a = -1;
+   private Optional<Instant> b = Optional.empty();
+   private long c;
+   private long d;
+
+   public void a() {
+      this.d = -1L;
+      if (this.b.isEmpty()) {
+         this.b = Optional.of(Instant.now());
+      }
+   }
+
+   public void a(long $$0) {
+      if (this.d != -1L) {
+         this.c = this.c + Math.max(0L, $$0 - this.d);
+      }
+
       this.d = $$0;
    }
 
-   @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(gmp.f);
-      } else {
-         if (this.f >= 600 && this.e == null) {
-            this.e = new fbs(fbs.a.d, b, c, false);
-            this.d.e().ay().a(this.e);
-         }
-      }
+   private int a(Instant $$0) {
+      Duration $$1 = Duration.between($$0, Instant.now());
+      return (int)$$1.toSeconds();
    }
 
-   @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.c();
-         this.e = null;
-      }
-   }
-
-   @Override
-   public void c() {
-      this.d.a(gmp.e);
+   public void a(gma $$0) {
+      this.b.ifPresent($$1 -> $$0.send(gmb.e, $$1x -> {
+            $$1x.a(gmd.p, this.a($$1));
+            $$1x.a(gmd.q, (int)this.c);
+         }));
    }
 }

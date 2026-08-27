@@ -1,39 +1,112 @@
-public class gck extends gby<cam, fmb<cam>> {
-   private static final aiy a = new aiy("textures/entity/fish/pufferfish.png");
-   private int i = 3;
-   private final fmb<cam> j;
-   private final fmb<cam> k;
-   private final fmb<cam> l = this.a();
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
 
-   public gck(gas.a $$0) {
-      super($$0, new fni<>($$0.a(fpb.aX)), 0.2F);
-      this.k = new fnj<>($$0.a(fpb.aY));
-      this.j = new fnk<>($$0.a(fpb.aZ));
+public class gck extends gaz<cdr> {
+   public gck(gba.a $$0) {
+      super($$0);
    }
 
-   public aiy a(cam $$0) {
-      return a;
+   public void a(cdr $$0, float $$1, float $$2, esh $$3, fvt $$4, int $$5) {
+      $$3.a();
+      $$3.a(a.d.rotationDegrees(180.0F - $$1));
+      cds $$6 = $$0.q().a();
+      float $$7 = 0.0625F;
+      $$3.b(0.0625F, 0.0625F, 0.0625F);
+      esl $$8 = $$4.getBuffer(fwb.c(this.a($$0)));
+      ghz $$9 = exo.P().aE();
+      this.a($$3, $$8, $$0, $$6.a(), $$6.b(), $$9.a($$6), $$9.a());
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public void a(cam $$0, float $$1, float $$2, esa $$3, fvl $$4, int $$5) {
-      int $$6 = $$0.gi();
-      if ($$6 != this.i) {
-         if ($$6 == 0) {
-            this.f = this.j;
-         } else if ($$6 == 1) {
-            this.f = this.k;
-         } else {
-            this.f = this.l;
+   public aiy a(cdr $$0) {
+      return exo.P().aE().a().i();
+   }
+
+   private void a(esh $$0, esl $$1, cdr $$2, int $$3, int $$4, ghb $$5, ghb $$6) {
+      esh.a $$7 = $$0.c();
+      Matrix4f $$8 = $$7.a();
+      Matrix3f $$9 = $$7.b();
+      float $$10 = (float)(-$$3) / 2.0F;
+      float $$11 = (float)(-$$4) / 2.0F;
+      float $$12 = 0.5F;
+      float $$13 = $$6.c();
+      float $$14 = $$6.d();
+      float $$15 = $$6.g();
+      float $$16 = $$6.h();
+      float $$17 = $$6.c();
+      float $$18 = $$6.d();
+      float $$19 = $$6.g();
+      float $$20 = $$6.c(0.0625F);
+      float $$21 = $$6.c();
+      float $$22 = $$6.a(0.0625F);
+      float $$23 = $$6.g();
+      float $$24 = $$6.h();
+      int $$25 = $$3 / 16;
+      int $$26 = $$4 / 16;
+      double $$27 = 1.0 / (double)$$25;
+      double $$28 = 1.0 / (double)$$26;
+
+      for (int $$29 = 0; $$29 < $$25; $$29++) {
+         for (int $$30 = 0; $$30 < $$26; $$30++) {
+            float $$31 = $$10 + (float)(($$29 + 1) * 16);
+            float $$32 = $$10 + (float)($$29 * 16);
+            float $$33 = $$11 + (float)(($$30 + 1) * 16);
+            float $$34 = $$11 + (float)($$30 * 16);
+            int $$35 = $$2.dq();
+            int $$36 = awi.a($$2.dt() + (double)(($$33 + $$34) / 2.0F / 16.0F));
+            int $$37 = $$2.dw();
+            ie $$38 = $$2.cE();
+            if ($$38 == ie.c) {
+               $$35 = awi.a($$2.dr() + (double)(($$31 + $$32) / 2.0F / 16.0F));
+            }
+
+            if ($$38 == ie.e) {
+               $$37 = awi.a($$2.dx() - (double)(($$31 + $$32) / 2.0F / 16.0F));
+            }
+
+            if ($$38 == ie.d) {
+               $$35 = awi.a($$2.dr() - (double)(($$31 + $$32) / 2.0F / 16.0F));
+            }
+
+            if ($$38 == ie.f) {
+               $$37 = awi.a($$2.dx() + (double)(($$31 + $$32) / 2.0F / 16.0F));
+            }
+
+            int $$39 = fvr.a($$2.dM(), new hz($$35, $$36, $$37));
+            float $$40 = $$5.a((float)($$27 * (double)($$25 - $$29)));
+            float $$41 = $$5.a((float)($$27 * (double)($$25 - ($$29 + 1))));
+            float $$42 = $$5.c((float)($$28 * (double)($$26 - $$30)));
+            float $$43 = $$5.c((float)($$28 * (double)($$26 - ($$30 + 1))));
+            this.a($$8, $$9, $$1, $$31, $$34, $$41, $$42, -0.5F, 0, 0, -1, $$39);
+            this.a($$8, $$9, $$1, $$32, $$34, $$40, $$42, -0.5F, 0, 0, -1, $$39);
+            this.a($$8, $$9, $$1, $$32, $$33, $$40, $$43, -0.5F, 0, 0, -1, $$39);
+            this.a($$8, $$9, $$1, $$31, $$33, $$41, $$43, -0.5F, 0, 0, -1, $$39);
+            this.a($$8, $$9, $$1, $$31, $$33, $$14, $$15, 0.5F, 0, 0, 1, $$39);
+            this.a($$8, $$9, $$1, $$32, $$33, $$13, $$15, 0.5F, 0, 0, 1, $$39);
+            this.a($$8, $$9, $$1, $$32, $$34, $$13, $$16, 0.5F, 0, 0, 1, $$39);
+            this.a($$8, $$9, $$1, $$31, $$34, $$14, $$16, 0.5F, 0, 0, 1, $$39);
+            this.a($$8, $$9, $$1, $$31, $$33, $$17, $$19, -0.5F, 0, 1, 0, $$39);
+            this.a($$8, $$9, $$1, $$32, $$33, $$18, $$19, -0.5F, 0, 1, 0, $$39);
+            this.a($$8, $$9, $$1, $$32, $$33, $$18, $$20, 0.5F, 0, 1, 0, $$39);
+            this.a($$8, $$9, $$1, $$31, $$33, $$17, $$20, 0.5F, 0, 1, 0, $$39);
+            this.a($$8, $$9, $$1, $$31, $$34, $$17, $$19, 0.5F, 0, -1, 0, $$39);
+            this.a($$8, $$9, $$1, $$32, $$34, $$18, $$19, 0.5F, 0, -1, 0, $$39);
+            this.a($$8, $$9, $$1, $$32, $$34, $$18, $$20, -0.5F, 0, -1, 0, $$39);
+            this.a($$8, $$9, $$1, $$31, $$34, $$17, $$20, -0.5F, 0, -1, 0, $$39);
+            this.a($$8, $$9, $$1, $$31, $$33, $$22, $$23, 0.5F, -1, 0, 0, $$39);
+            this.a($$8, $$9, $$1, $$31, $$34, $$22, $$24, 0.5F, -1, 0, 0, $$39);
+            this.a($$8, $$9, $$1, $$31, $$34, $$21, $$24, -0.5F, -1, 0, 0, $$39);
+            this.a($$8, $$9, $$1, $$31, $$33, $$21, $$23, -0.5F, -1, 0, 0, $$39);
+            this.a($$8, $$9, $$1, $$32, $$33, $$22, $$23, -0.5F, 1, 0, 0, $$39);
+            this.a($$8, $$9, $$1, $$32, $$34, $$22, $$24, -0.5F, 1, 0, 0, $$39);
+            this.a($$8, $$9, $$1, $$32, $$34, $$21, $$24, 0.5F, 1, 0, 0, $$39);
+            this.a($$8, $$9, $$1, $$32, $$33, $$21, $$23, 0.5F, 1, 0, 0, $$39);
          }
       }
-
-      this.i = $$6;
-      this.d = 0.1F + 0.1F * (float)$$6;
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   protected void a(cam $$0, esa $$1, float $$2, float $$3, float $$4, float $$5) {
-      $$1.a(0.0F, awh.b($$2 * 0.05F) * 0.08F, 0.0F);
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   private void a(Matrix4f $$0, Matrix3f $$1, esl $$2, float $$3, float $$4, float $$5, float $$6, float $$7, int $$8, int $$9, int $$10, int $$11) {
+      $$2.a($$0, $$3, $$4, $$7).a(255, 255, 255, 255).a($$5, $$6).c(ggs.d).b($$11).a($$1, (float)$$8, (float)$$9, (float)$$10).e();
    }
 }

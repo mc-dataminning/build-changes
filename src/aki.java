@@ -22,7 +22,7 @@ public class aki {
    private static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(vq.c("commands.bossbar.set.max.unchanged"));
    private static final SimpleCommandExceptionType j = new SimpleCommandExceptionType(vq.c("commands.bossbar.set.visibility.unchanged.hidden"));
    private static final SimpleCommandExceptionType k = new SimpleCommandExceptionType(vq.c("commands.bossbar.set.visibility.unchanged.visible"));
-   public static final SuggestionProvider<du> a = ($$0, $$1) -> dz.a(((du)$$0.getSource()).l().aL().a(), $$1);
+   public static final SuggestionProvider<du> a = ($$0, $$1) -> dz.a(((du)$$0.getSource()).l().aN().a(), $$1);
 
    public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
@@ -52,21 +52,21 @@ public class aki {
                                              ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a(
                                                                      "color"
                                                                   )
-                                                                  .then(dv.a("pink").executes($$0x -> a((du)$$0x.getSource(), a($$0x), blk.a.a))))
-                                                               .then(dv.a("blue").executes($$0x -> a((du)$$0x.getSource(), a($$0x), blk.a.b))))
-                                                            .then(dv.a("red").executes($$0x -> a((du)$$0x.getSource(), a($$0x), blk.a.c))))
-                                                         .then(dv.a("green").executes($$0x -> a((du)$$0x.getSource(), a($$0x), blk.a.d))))
-                                                      .then(dv.a("yellow").executes($$0x -> a((du)$$0x.getSource(), a($$0x), blk.a.e))))
-                                                   .then(dv.a("purple").executes($$0x -> a((du)$$0x.getSource(), a($$0x), blk.a.f))))
-                                                .then(dv.a("white").executes($$0x -> a((du)$$0x.getSource(), a($$0x), blk.a.g)))
+                                                                  .then(dv.a("pink").executes($$0x -> a((du)$$0x.getSource(), a($$0x), blm.a.a))))
+                                                               .then(dv.a("blue").executes($$0x -> a((du)$$0x.getSource(), a($$0x), blm.a.b))))
+                                                            .then(dv.a("red").executes($$0x -> a((du)$$0x.getSource(), a($$0x), blm.a.c))))
+                                                         .then(dv.a("green").executes($$0x -> a((du)$$0x.getSource(), a($$0x), blm.a.d))))
+                                                      .then(dv.a("yellow").executes($$0x -> a((du)$$0x.getSource(), a($$0x), blm.a.e))))
+                                                   .then(dv.a("purple").executes($$0x -> a((du)$$0x.getSource(), a($$0x), blm.a.f))))
+                                                .then(dv.a("white").executes($$0x -> a((du)$$0x.getSource(), a($$0x), blm.a.g)))
                                           ))
                                        .then(
                                           ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("style")
-                                                         .then(dv.a("progress").executes($$0x -> a((du)$$0x.getSource(), a($$0x), blk.b.a))))
-                                                      .then(dv.a("notched_6").executes($$0x -> a((du)$$0x.getSource(), a($$0x), blk.b.b))))
-                                                   .then(dv.a("notched_10").executes($$0x -> a((du)$$0x.getSource(), a($$0x), blk.b.c))))
-                                                .then(dv.a("notched_12").executes($$0x -> a((du)$$0x.getSource(), a($$0x), blk.b.d))))
-                                             .then(dv.a("notched_20").executes($$0x -> a((du)$$0x.getSource(), a($$0x), blk.b.e)))
+                                                         .then(dv.a("progress").executes($$0x -> a((du)$$0x.getSource(), a($$0x), blm.b.a))))
+                                                      .then(dv.a("notched_6").executes($$0x -> a((du)$$0x.getSource(), a($$0x), blm.b.b))))
+                                                   .then(dv.a("notched_10").executes($$0x -> a((du)$$0x.getSource(), a($$0x), blm.b.c))))
+                                                .then(dv.a("notched_12").executes($$0x -> a((du)$$0x.getSource(), a($$0x), blm.b.d))))
+                                             .then(dv.a("notched_20").executes($$0x -> a((du)$$0x.getSource(), a($$0x), blm.b.e)))
                                        ))
                                     .then(
                                        dv.a("value")
@@ -133,7 +133,7 @@ public class aki {
       if ($$1.h().isEmpty()) {
          $$0.a(() -> vq.a("commands.bossbar.get.players.none", $$1.e()), true);
       } else {
-         $$0.a(() -> vq.a("commands.bossbar.get.players.some", $$1.e(), $$1.h().size(), vt.b($$1.h(), chh::Q_)), true);
+         $$0.a(() -> vq.a("commands.bossbar.get.players.some", $$1.e(), $$1.h().size(), vt.b($$1.h(), chl::Q_)), true);
       }
 
       return $$1.h().size();
@@ -178,7 +178,7 @@ public class aki {
       }
    }
 
-   private static int a(du $$0, ajx $$1, blk.a $$2) throws CommandSyntaxException {
+   private static int a(du $$0, ajx $$1, blm.a $$2) throws CommandSyntaxException {
       if ($$1.l().equals($$2)) {
          throw f.create();
       } else {
@@ -188,7 +188,7 @@ public class aki {
       }
    }
 
-   private static int a(du $$0, ajx $$1, blk.b $$2) throws CommandSyntaxException {
+   private static int a(du $$0, ajx $$1, blm.b $$2) throws CommandSyntaxException {
       if ($$1.m().equals($$2)) {
          throw g.create();
       } else {
@@ -209,7 +209,7 @@ public class aki {
       }
    }
 
-   private static int a(du $$0, ajx $$1, Collection<aow> $$2) throws CommandSyntaxException {
+   private static int a(du $$0, ajx $$1, Collection<aox> $$2) throws CommandSyntaxException {
       boolean $$3 = $$1.a($$2);
       if (!$$3) {
          throw d.create();
@@ -217,7 +217,7 @@ public class aki {
          if ($$1.h().isEmpty()) {
             $$0.a(() -> vq.a("commands.bossbar.set.players.success.none", $$1.e()), true);
          } else {
-            $$0.a(() -> vq.a("commands.bossbar.set.players.success.some", $$1.e(), $$2.size(), vt.b($$2, chh::Q_)), true);
+            $$0.a(() -> vq.a("commands.bossbar.set.players.success.some", $$1.e(), $$2.size(), vt.b($$2, chl::Q_)), true);
          }
 
          return $$1.h().size();
@@ -225,7 +225,7 @@ public class aki {
    }
 
    private static int a(du $$0) {
-      Collection<ajx> $$1 = $$0.l().aL().b();
+      Collection<ajx> $$1 = $$0.l().aN().b();
       if ($$1.isEmpty()) {
          $$0.a(() -> vq.c("commands.bossbar.list.bars.none"), false);
       } else {
@@ -236,7 +236,7 @@ public class aki {
    }
 
    private static int a(du $$0, aiy $$1, vq $$2) throws CommandSyntaxException {
-      ajy $$3 = $$0.l().aL();
+      ajy $$3 = $$0.l().aN();
       if ($$3.a($$1) != null) {
          throw b.create($$1.toString());
       } else {
@@ -247,7 +247,7 @@ public class aki {
    }
 
    private static int e(du $$0, ajx $$1) {
-      ajy $$2 = $$0.l().aL();
+      ajy $$2 = $$0.l().aN();
       $$1.b();
       $$2.a($$1);
       $$0.a(() -> vq.a("commands.bossbar.remove.success", $$1.e()), true);
@@ -256,7 +256,7 @@ public class aki {
 
    public static ajx a(CommandContext<du> $$0) throws CommandSyntaxException {
       aiy $$1 = ev.e($$0, "id");
-      ajx $$2 = ((du)$$0.getSource()).l().aL().a($$1);
+      ajx $$2 = ((du)$$0.getSource()).l().aN().a($$1);
       if ($$2 == null) {
          throw c.create($$1.toString());
       } else {

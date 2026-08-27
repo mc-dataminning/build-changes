@@ -1,9 +1,16 @@
-public class fgy extends fge<ckx> {
-   private static final aiy y = new aiy("container/furnace/lit_progress");
-   private static final aiy z = new aiy("container/furnace/burn_progress");
-   private static final aiy A = new aiy("textures/gui/container/furnace.png");
+public class fgy implements ckr {
+   private final exo a;
 
-   public fgy(ckx $$0, chg $$1, vq $$2) {
-      super($$0, new fiz(), $$1, $$2, A, y, z);
+   public fgy(exo $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public void a(ckf $$0, int $$1, cpd $$2) {
+      this.a.q.a($$2, $$1);
+   }
+
+   @Override
+   public void a(ckf $$0, int $$1, int $$2) {
    }
 }

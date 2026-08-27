@@ -16,9 +16,9 @@ import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 public class vs {
-   public static final Codec<vq> a = avp.a("Component", vs::a);
+   public static final Codec<vq> a = avq.a("Component", vs::a);
    public static final xo<ByteBuf, vq> b = xm.a(a);
-   public static final Codec<vq> c = avp.c.flatXmap($$0 -> a.parse(JsonOps.INSTANCE, $$0), $$0 -> a.encodeStart(JsonOps.INSTANCE, $$0));
+   public static final Codec<vq> c = avq.c.flatXmap($$0 -> a.parse(JsonOps.INSTANCE, $$0), $$0 -> a.encodeStart(JsonOps.INSTANCE, $$0));
 
    private static we a(List<vq> $$0) {
       we $$1 = $$0.get(0).f();
@@ -35,17 +35,17 @@ public class vs {
       Codec<T> $$5 = axc.b((Supplier<T[]>)(() -> $$0));
       MapCodec<E> $$6 = $$5.dispatchMap($$3, $$2, $$1x -> $$1.apply((T)$$1x).codec());
       MapCodec<E> $$7 = new vs.b($$3, $$6, $$4);
-      return avp.a($$7, $$6);
+      return avq.a($$7, $$6);
    }
 
    private static Codec<vq> a(Codec<vq> $$0) {
       vr.a<?>[] $$1 = new vr.a[]{wx.b, xb.c, wu.b, wy.c, wz.b, ww.b};
       MapCodec<vr> $$2 = a($$1, vr.a::a, vr::a, "type");
       Codec<vq> $$3 = RecordCodecBuilder.create(
-         $$2x -> $$2x.group($$2.forGetter(vq::b), avp.a(avp.a($$0.listOf()), "extra", List.of()).forGetter(vq::c), wn.b.a.forGetter(vq::a))
+         $$2x -> $$2x.group($$2.forGetter(vq::b), avq.a(avq.a($$0.listOf()), "extra", List.of()).forGetter(vq::c), wn.b.a.forGetter(vq::a))
                .apply($$2x, we::new)
       );
-      return Codec.either(Codec.either(Codec.STRING, avp.a($$0.listOf())), $$3)
+      return Codec.either(Codec.either(Codec.STRING, avq.a($$0.listOf())), $$3)
          .xmap($$0x -> (vq)$$0x.map($$0xx -> (vq)$$0xx.map(vq::b, vs::a), $$0xx -> $$0xx), $$0x -> {
             String $$1x = $$0x.d();
             return $$1x != null ? Either.left(Either.left($$1x)) : Either.right($$0x);

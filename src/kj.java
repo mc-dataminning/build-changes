@@ -4,8 +4,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 public class kj {
-   private final cyo a;
-   final Map<kj.b, cyo> b = Maps.newHashMap();
+   private final cys a;
+   final Map<kj.b, cys> b = Maps.newHashMap();
    boolean c = true;
    boolean d = true;
    @Nullable
@@ -13,19 +13,19 @@ public class kj {
    @Nullable
    String f;
 
-   kj(cyo $$0) {
+   kj(cys $$0) {
       this.a = $$0;
    }
 
-   public cyo a() {
+   public cys a() {
       return this.a;
    }
 
-   public Map<kj.b, cyo> b() {
+   public Map<kj.b, cys> b() {
       return this.b;
    }
 
-   public cyo a(kj.b $$0) {
+   public cys a(kj.b $$0) {
       return this.b.get($$0);
    }
 
@@ -48,7 +48,7 @@ public class kj {
    public static class a {
       private final kj a;
 
-      public a(cyo $$0) {
+      public a(cys $$0) {
          this.a = new kj($$0);
       }
 
@@ -56,88 +56,88 @@ public class kj {
          return this.a;
       }
 
-      public kj.a a(cyo $$0) {
+      public kj.a a(cys $$0) {
          this.a.b.put(kj.b.a, $$0);
          return this;
       }
 
-      public kj.a b(cyo $$0) {
+      public kj.a b(cys $$0) {
          this.a.b.put(kj.b.b, $$0);
          return this;
       }
 
-      public kj.a c(cyo $$0) {
+      public kj.a c(cys $$0) {
          this.a.b.put(kj.b.j, $$0);
          return this;
       }
 
-      public kj.a d(cyo $$0) {
+      public kj.a d(cys $$0) {
          this.a.b.put(kj.b.c, $$0);
          return this;
       }
 
-      public kj.a e(cyo $$0) {
+      public kj.a e(cys $$0) {
          this.a.b.put(kj.b.d, $$0);
          return this;
       }
 
-      public kj.a f(cyo $$0) {
+      public kj.a f(cys $$0) {
          this.a.b.put(kj.b.e, $$0);
          return this;
       }
 
-      public kj.a g(cyo $$0) {
+      public kj.a g(cys $$0) {
          this.a.b.put(kj.b.f, $$0);
          return this;
       }
 
-      public kj.a h(cyo $$0) {
+      public kj.a h(cys $$0) {
          this.a.b.put(kj.b.g, $$0);
          return this;
       }
 
-      public kj.a i(cyo $$0) {
+      public kj.a i(cys $$0) {
          this.a.b.put(kj.b.h, $$0);
          return this;
       }
 
-      public kj.a j(cyo $$0) {
+      public kj.a j(cys $$0) {
          this.a.b.put(kj.b.i, $$0);
          return this;
       }
 
-      public kj.a a(cyo $$0, cyo $$1) {
+      public kj.a a(cys $$0, cys $$1) {
          this.a.b.put(kj.b.k, $$0);
          this.a.b.put(kj.b.r, $$1);
          return this;
       }
 
-      public kj.a k(cyo $$0) {
+      public kj.a k(cys $$0) {
          this.a.b.put(kj.b.l, $$0);
          return this;
       }
 
-      public kj.a l(cyo $$0) {
+      public kj.a l(cys $$0) {
          this.a.b.put(kj.b.m, $$0);
          return this;
       }
 
-      public kj.a m(cyo $$0) {
+      public kj.a m(cys $$0) {
          this.a.b.put(kj.b.n, $$0);
          return this;
       }
 
-      public kj.a n(cyo $$0) {
+      public kj.a n(cys $$0) {
          this.a.b.put(kj.b.o, $$0);
          return this;
       }
 
-      public kj.a o(cyo $$0) {
+      public kj.a o(cys $$0) {
          this.a.b.put(kj.b.p, $$0);
          return this;
       }
 
-      public kj.a p(cyo $$0) {
+      public kj.a p(cys $$0) {
          this.a.b.put(kj.b.q, $$0);
          return this;
       }

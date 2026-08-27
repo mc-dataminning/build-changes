@@ -1,47 +1,42 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
+import com.google.common.collect.Lists;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
-public class byp extends byn<boo> {
-   public static final int a = 10;
-   private static final byu c = byu.b().a(10.0).d();
-   private final cry d;
+public class byp extends byr<cgy> {
+   private static final int a = 40;
 
-   public byp(cry $$0) {
-      this.d = $$0;
+   public byp() {
+      super(40);
    }
 
-   protected void a(aov $$0, boo $$1) {
-      bpf<?> $$2 = $$1.dO();
-      List<chh> $$3 = $$0.x()
-         .stream()
-         .filter(bnt.f)
-         .filter($$1x -> c.a($$1, $$1x))
-         .filter($$1x -> $$1.a($$1x, 10.0))
-         .filter(this::a)
-         .filter($$1x -> !$$1.w($$1x))
-         .sorted(Comparator.comparingDouble($$1::f))
-         .collect(Collectors.toList());
-      if (!$$3.isEmpty()) {
-         chh $$4 = $$3.get(0);
-         $$2.a(bxh.O, $$4);
+   protected void a(aow $$0, cgy $$1) {
+      aix<cvr> $$2 = $$0.ad();
+      hz $$3 = $$1.dm();
+      List<ii> $$4 = Lists.newArrayList();
+      int $$5 = 4;
+
+      for (int $$6 = -4; $$6 <= 4; $$6++) {
+         for (int $$7 = -2; $$7 <= 2; $$7++) {
+            for (int $$8 = -4; $$8 <= 4; $$8++) {
+               hz $$9 = $$3.b($$6, $$7, $$8);
+               if ($$1.gr().b().e().contains($$0.a_($$9).b())) {
+                  $$4.add(ii.a($$2, $$9));
+               }
+            }
+         }
+      }
+
+      bpj<?> $$10 = $$1.dO();
+      if (!$$4.isEmpty()) {
+         $$10.a(bxl.f, $$4);
       } else {
-         $$2.b(bxh.O);
+         $$10.b(bxl.f);
       }
    }
 
-   private boolean a(chh $$0) {
-      return this.a($$0.eT()) || this.a($$0.eU());
-   }
-
-   private boolean a(coz $$0) {
-      return this.d.a($$0);
-   }
-
    @Override
-   public Set<bxh<?>> a() {
-      return ImmutableSet.of(bxh.O);
+   public Set<bxl<?>> a() {
+      return ImmutableSet.of(bxl.f);
    }
 }

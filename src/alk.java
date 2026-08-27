@@ -20,13 +20,13 @@ public class alk {
       );
    }
 
-   private static int a(du $$0, Collection<aow> $$1, vq $$2) throws CommandSyntaxException {
+   private static int a(du $$0, Collection<aox> $$1, vq $$2) throws CommandSyntaxException {
       if (!$$0.l().p()) {
          throw b.create();
       } else {
          int $$3 = 0;
 
-         for (aow $$4 : $$1) {
+         for (aox $$4 : $$1) {
             if (!$$0.l().a($$4.fS())) {
                $$4.d.b($$2);
                $$0.a(() -> vq.a("commands.kick.success", $$4.Q_(), $$2), true);

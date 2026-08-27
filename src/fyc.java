@@ -1,118 +1,36 @@
-public class fyc implements fxl<dkh> {
-   public fyc(fxm.a $$0) {
+public class fyc implements fxt<djr> {
+   public static final gje a = new gje(gha.e, new aiy("entity/enchanting_table_book"));
+   private final flq b;
+
+   public fyc(fxu.a $$0) {
+      this.b = new flq($$0.a(fpi.n));
    }
 
-   public void a(dkh $$0, float $$1, esa $$2, fvl $$3, int $$4, int $$5) {
-      if (exh.O().s.gq() || exh.O().s.P_()) {
-         hz $$6 = $$0.g();
-         jd $$7 = $$0.k();
-         if ($$7.u() >= 1 && $$7.v() >= 1 && $$7.w() >= 1) {
-            if ($$0.x() == dmp.a || $$0.x() == dmp.b) {
-               double $$8 = (double)$$6.u();
-               double $$9 = (double)$$6.w();
-               double $$10 = (double)$$6.v();
-               double $$11 = $$10 + (double)$$7.v();
-               double $$12;
-               double $$13;
-               switch ($$0.l()) {
-                  case b:
-                     $$12 = (double)$$7.u();
-                     $$13 = (double)(-$$7.w());
-                     break;
-                  case c:
-                     $$12 = (double)(-$$7.u());
-                     $$13 = (double)$$7.w();
-                     break;
-                  default:
-                     $$12 = (double)$$7.u();
-                     $$13 = (double)$$7.w();
-               }
+   public void a(djr $$0, float $$1, esh $$2, fvt $$3, int $$4, int $$5) {
+      $$2.a();
+      $$2.a(0.5F, 0.75F, 0.5F);
+      float $$6 = (float)$$0.a + $$1;
+      $$2.a(0.0F, 0.1F + awi.a($$6 * 0.1F) * 0.01F, 0.0F);
+      float $$7 = $$0.h - $$0.i;
 
-               double $$30;
-               double $$31;
-               double $$32;
-               double $$33;
-               switch ($$0.m()) {
-                  case b:
-                     $$30 = $$13 < 0.0 ? $$8 : $$8 + 1.0;
-                     $$31 = $$12 < 0.0 ? $$9 + 1.0 : $$9;
-                     $$32 = $$30 - $$13;
-                     $$33 = $$31 + $$12;
-                     break;
-                  case c:
-                     $$30 = $$12 < 0.0 ? $$8 : $$8 + 1.0;
-                     $$31 = $$13 < 0.0 ? $$9 : $$9 + 1.0;
-                     $$32 = $$30 - $$12;
-                     $$33 = $$31 - $$13;
-                     break;
-                  case d:
-                     $$30 = $$13 < 0.0 ? $$8 + 1.0 : $$8;
-                     $$31 = $$12 < 0.0 ? $$9 : $$9 + 1.0;
-                     $$32 = $$30 + $$13;
-                     $$33 = $$31 - $$12;
-                     break;
-                  default:
-                     $$30 = $$12 < 0.0 ? $$8 + 1.0 : $$8;
-                     $$31 = $$13 < 0.0 ? $$9 + 1.0 : $$9;
-                     $$32 = $$30 + $$12;
-                     $$33 = $$31 + $$13;
-               }
-
-               float $$34 = 1.0F;
-               float $$35 = 0.9F;
-               float $$36 = 0.5F;
-               ese $$37 = $$3.getBuffer(fvt.w());
-               if ($$0.x() == dmp.a || $$0.H()) {
-                  fvj.a($$2, $$37, $$30, $$10, $$31, $$32, $$11, $$33, 0.9F, 0.9F, 0.9F, 1.0F, 0.5F, 0.5F, 0.5F);
-               }
-
-               if ($$0.x() == dmp.a && $$0.G()) {
-                  this.a($$0, $$37, $$6, $$2);
-               }
-            }
-         }
+      while ($$7 >= (float) Math.PI) {
+         $$7 -= (float) (Math.PI * 2);
       }
-   }
 
-   private void a(dkh $$0, ese $$1, hz $$2, esa $$3) {
-      cut $$4 = $$0.i();
-      hz $$5 = $$0.aE_();
-      hz $$6 = $$5.a((jd)$$2);
-
-      for (hz $$7 : hz.a($$6, $$6.a($$0.k()).b(-1, -1, -1))) {
-         dlf $$8 = $$4.a_($$7);
-         boolean $$9 = $$8.i();
-         boolean $$10 = $$8.a(cyq.kN);
-         boolean $$11 = $$8.a(cyq.hW);
-         boolean $$12 = $$8.a(cyq.hX);
-         boolean $$13 = $$10 || $$11 || $$12;
-         if ($$9 || $$13) {
-            float $$14 = $$9 ? 0.05F : 0.0F;
-            double $$15 = (double)((float)($$7.u() - $$5.u()) + 0.45F - $$14);
-            double $$16 = (double)((float)($$7.v() - $$5.v()) + 0.45F - $$14);
-            double $$17 = (double)((float)($$7.w() - $$5.w()) + 0.45F - $$14);
-            double $$18 = (double)((float)($$7.u() - $$5.u()) + 0.55F + $$14);
-            double $$19 = (double)((float)($$7.v() - $$5.v()) + 0.55F + $$14);
-            double $$20 = (double)((float)($$7.w() - $$5.w()) + 0.55F + $$14);
-            if ($$9) {
-               fvj.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 0.5F, 0.5F, 1.0F, 1.0F, 0.5F, 0.5F, 1.0F);
-            } else if ($$10) {
-               fvj.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 1.0F, 0.75F, 0.75F, 1.0F, 1.0F, 0.75F, 0.75F);
-            } else if ($$11) {
-               fvj.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F);
-            } else if ($$12) {
-               fvj.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 1.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F);
-            }
-         }
+      while ($$7 < (float) -Math.PI) {
+         $$7 += (float) (Math.PI * 2);
       }
-   }
 
-   public boolean a(dkh $$0) {
-      return true;
-   }
-
-   @Override
-   public int aT_() {
-      return 96;
+      float $$8 = $$0.i + $$7 * $$1;
+      $$2.a(a.d.rotation(-$$8));
+      $$2.a(a.f.rotationDegrees(80.0F));
+      float $$9 = awi.i($$1, $$0.c, $$0.b);
+      float $$10 = awi.h($$9 + 0.25F) * 1.6F - 0.3F;
+      float $$11 = awi.h($$9 + 0.75F) * 1.6F - 0.3F;
+      float $$12 = awi.i($$1, $$0.g, $$0.f);
+      this.b.a($$6, awi.a($$10, 0.0F, 1.0F), awi.a($$11, 0.0F, 1.0F), $$12);
+      esl $$13 = a.a($$3, fwb::c);
+      this.b.b($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$2.b();
    }
 }

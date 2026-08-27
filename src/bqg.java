@@ -1,41 +1,37 @@
-public class bqg implements bpx<bog> {
-   private final int a;
-   private final int b;
-   private bpw.a c = bpw.a.a;
-   private long d;
+import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-   public bqg(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class bqg extends bqa<boi> {
+   private final bxl<Integer> c;
+
+   public bqg(bxl<Integer> $$0) {
+      super(ImmutableMap.of($$0, bxm.a));
+      this.c = $$0;
+   }
+
+   private Optional<Integer> b(boi $$0) {
+      return $$0.dO().c(this.c);
    }
 
    @Override
-   public bpw.a a() {
-      return this.c;
+   protected boolean a(long $$0) {
+      return false;
    }
 
    @Override
-   public final boolean e(aov $$0, bog $$1, long $$2) {
-      this.c = bpw.a.b;
-      int $$3 = this.a + $$0.F_().a(this.b + 1 - this.a);
-      this.d = $$2 + (long)$$3;
-      return true;
+   protected boolean a(aow $$0, boi $$1, long $$2) {
+      Optional<Integer> $$3 = this.b($$1);
+      return $$3.isPresent() && $$3.get() > 0;
    }
 
    @Override
-   public final void f(aov $$0, bog $$1, long $$2) {
-      if ($$2 > this.d) {
-         this.g($$0, $$1, $$2);
-      }
+   protected void c(aow $$0, boi $$1, long $$2) {
+      Optional<Integer> $$3 = this.b($$1);
+      $$1.dO().a(this.c, $$3.get() - 1);
    }
 
    @Override
-   public final void g(aov $$0, bog $$1, long $$2) {
-      this.c = bpw.a.a;
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+   protected void b(aow $$0, boi $$1, long $$2) {
+      $$1.dO().b(this.c);
    }
 }

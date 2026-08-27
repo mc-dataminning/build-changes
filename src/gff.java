@@ -1,49 +1,46 @@
-public class gff extends gfd<cap, fnr<cap>> {
-   private static final aiy a = new aiy("textures/entity/sheep/sheep_fur.png");
-   private final fnq<cap> b;
+public class gff extends gfl<ccc, fnb<ccc>> {
+   private static final aiy[] a = new aiy[]{
+      new aiy("textures/entity/llama/decor/white.png"),
+      new aiy("textures/entity/llama/decor/orange.png"),
+      new aiy("textures/entity/llama/decor/magenta.png"),
+      new aiy("textures/entity/llama/decor/light_blue.png"),
+      new aiy("textures/entity/llama/decor/yellow.png"),
+      new aiy("textures/entity/llama/decor/lime.png"),
+      new aiy("textures/entity/llama/decor/pink.png"),
+      new aiy("textures/entity/llama/decor/gray.png"),
+      new aiy("textures/entity/llama/decor/light_gray.png"),
+      new aiy("textures/entity/llama/decor/cyan.png"),
+      new aiy("textures/entity/llama/decor/purple.png"),
+      new aiy("textures/entity/llama/decor/blue.png"),
+      new aiy("textures/entity/llama/decor/brown.png"),
+      new aiy("textures/entity/llama/decor/green.png"),
+      new aiy("textures/entity/llama/decor/red.png"),
+      new aiy("textures/entity/llama/decor/black.png")
+   };
+   private static final aiy b = new aiy("textures/entity/llama/decor/trader_llama.png");
+   private final fnb<ccc> c;
 
-   public gff(gcn<cap, fnr<cap>> $$0, foy $$1) {
+   public gff(gcv<ccc, fnb<ccc>> $$0, fpf $$1) {
       super($$0);
-      this.b = new fnq<>($$1.a(fpb.be));
+      this.c = new fnb<>($$1.a(fpi.au));
    }
 
-   public void a(esa $$0, fvl $$1, int $$2, cap $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.A()) {
-         if ($$3.ce()) {
-            exh $$10 = exh.O();
-            boolean $$11 = $$10.b($$3);
-            if ($$11) {
-               this.c().a(this.b);
-               this.b.a($$3, $$4, $$5, $$6);
-               this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
-               ese $$12 = $$1.getBuffer(fvt.r(a));
-               this.b.a($$0, $$12, $$2, gbt.c($$3, 0.0F), 0.0F, 0.0F, 0.0F, 1.0F);
-            }
-         } else {
-            float $$21;
-            float $$22;
-            float $$23;
-            if ($$3.ae() && "jeb_".equals($$3.ad().getString())) {
-               int $$13 = 25;
-               int $$14 = $$3.ag / 25 + $$3.aj();
-               int $$15 = cnn.values().length;
-               int $$16 = $$14 % $$15;
-               int $$17 = ($$14 + 1) % $$15;
-               float $$18 = ((float)($$3.ag % 25) + $$6) / 25.0F;
-               float[] $$19 = cap.a(cnn.a($$16));
-               float[] $$20 = cap.a(cnn.a($$17));
-               $$21 = $$19[0] * (1.0F - $$18) + $$20[0] * $$18;
-               $$22 = $$19[1] * (1.0F - $$18) + $$20[1] * $$18;
-               $$23 = $$19[2] * (1.0F - $$18) + $$20[2] * $$18;
-            } else {
-               float[] $$24 = cap.a($$3.w());
-               $$21 = $$24[0];
-               $$22 = $$24[1];
-               $$23 = $$24[2];
-            }
-
-            a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$21, $$22, $$23);
+   public void a(esh $$0, fvt $$1, int $$2, ccc $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      cnr $$10 = $$3.gt();
+      aiy $$11;
+      if ($$10 != null) {
+         $$11 = a[$$10.a()];
+      } else {
+         if (!$$3.gp()) {
+            return;
          }
+
+         $$11 = b;
       }
+
+      this.c().a(this.c);
+      this.c.a($$3, $$4, $$5, $$7, $$8, $$9);
+      esl $$14 = $$1.getBuffer(fwb.e($$11));
+      this.c.a($$0, $$14, $$2, ggs.d, 1.0F, 1.0F, 1.0F, 1.0F);
    }
 }

@@ -2,46 +2,46 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ps {
-   static void a(ph<ebk> $$0) {
-      ik<ebe> $$1 = $$0.a(kg.aD);
-      ik<cwm> $$2 = $$0.a(kg.at);
-      ij.c<ebk> $$3 = $$0.a(
-         eax.a,
-         new ebk(
-            List.of(ebk.a($$1.b(eay.t)), ebk.a($$1.b(eay.u)), ebk.a($$1.b(eay.v)), ebk.a($$1.b(eay.w)), ebk.a($$1.b(eay.x))), new ebz(34, 8, eca.a, 10387312)
+   static void a(ph<ebr> $$0) {
+      ik<ebl> $$1 = $$0.a(kg.aD);
+      ik<cwq> $$2 = $$0.a(kg.at);
+      ij.c<ebr> $$3 = $$0.a(
+         ebe.a,
+         new ebr(
+            List.of(ebr.a($$1.b(ebf.t)), ebr.a($$1.b(ebf.u)), ebr.a($$1.b(ebf.v)), ebr.a($$1.b(ebf.w)), ebr.a($$1.b(ebf.x))), new ecg(34, 8, ech.a, 10387312)
          )
       );
-      $$0.a(eax.b, new ebk($$1.b(eay.f), new ebz(32, 8, eca.a, 14357617)));
-      $$0.a(eax.c, new ebk($$1.b(eay.g), new ebz(32, 8, eca.a, 14357618)));
-      $$0.a(eax.d, new ebk($$1.b(eay.e), new ebz(32, 8, eca.a, 14357619)));
-      $$0.a(eax.e, new ebk($$1.b(eay.j), new ebz(32, 8, eca.a, 14357620)));
-      $$0.a(eax.f, new ebk($$1.b(eay.a), new ebz(jd.g, ecb.c.b, 0.2F, 165745296, Optional.of(new ecb.a($$3, 10)), 32, 8, eca.a)));
-      $$0.a(eax.q, new ebk($$1.b(eay.F), new ebz(24, 8, eca.a, 20083232)));
-      $$0.a(eax.g, new ebk($$1.b(eay.l), new ebz(32, 5, eca.b, 10387313)));
-      $$0.a(eax.h, new ebk($$1.b(eay.d), new ebz(80, 20, eca.b, 10387319)));
-      $$0.a(eax.i, new ebk($$1.b(eay.r), new ebz(new jd(9, 0, 9), ecb.c.c, 0.01F, 0, Optional.empty(), 1, 0, eca.a)));
-      $$0.a(eax.j, new ebk(List.of(ebk.a($$1.b(eay.b)), ebk.a($$1.b(eay.c))), new ebz(jd.g, ecb.c.d, 0.004F, 0, Optional.empty(), 1, 0, eca.a)));
+      $$0.a(ebe.b, new ebr($$1.b(ebf.f), new ecg(32, 8, ech.a, 14357617)));
+      $$0.a(ebe.c, new ebr($$1.b(ebf.g), new ecg(32, 8, ech.a, 14357618)));
+      $$0.a(ebe.d, new ebr($$1.b(ebf.e), new ecg(32, 8, ech.a, 14357619)));
+      $$0.a(ebe.e, new ebr($$1.b(ebf.j), new ecg(32, 8, ech.a, 14357620)));
+      $$0.a(ebe.f, new ebr($$1.b(ebf.a), new ecg(jd.g, eci.c.b, 0.2F, 165745296, Optional.of(new eci.a($$3, 10)), 32, 8, ech.a)));
+      $$0.a(ebe.q, new ebr($$1.b(ebf.F), new ecg(24, 8, ech.a, 20083232)));
+      $$0.a(ebe.g, new ebr($$1.b(ebf.l), new ecg(32, 5, ech.b, 10387313)));
+      $$0.a(ebe.h, new ebr($$1.b(ebf.d), new ecg(80, 20, ech.b, 10387319)));
+      $$0.a(ebe.i, new ebr($$1.b(ebf.r), new ecg(new jd(9, 0, 9), eci.c.c, 0.01F, 0, Optional.empty(), 1, 0, ech.a)));
+      $$0.a(ebe.j, new ebr(List.of(ebr.a($$1.b(ebf.b)), ebr.a($$1.b(ebf.c))), new ecg(jd.g, eci.c.d, 0.004F, 0, Optional.empty(), 1, 0, ech.a)));
       $$0.a(
-         eax.k,
-         new ebk(
+         ebe.k,
+         new ebr(
             List.of(
-               ebk.a($$1.b(eay.y)),
-               ebk.a($$1.b(eay.z)),
-               ebk.a($$1.b(eay.A)),
-               ebk.a($$1.b(eay.B)),
-               ebk.a($$1.b(eay.C)),
-               ebk.a($$1.b(eay.D)),
-               ebk.a($$1.b(eay.E))
+               ebr.a($$1.b(ebf.y)),
+               ebr.a($$1.b(ebf.z)),
+               ebr.a($$1.b(ebf.A)),
+               ebr.a($$1.b(ebf.B)),
+               ebr.a($$1.b(ebf.C)),
+               ebr.a($$1.b(ebf.D)),
+               ebr.a($$1.b(ebf.E))
             ),
-            new ebz(40, 15, eca.a, 34222645)
+            new ecg(40, 15, ech.a, 34222645)
          )
       );
-      $$0.a(eax.l, new ebk(List.of(ebk.a($$1.b(eay.h)), ebk.a($$1.b(eay.i))), new ebz(24, 4, eca.a, 165745295)));
-      $$0.a(eax.m, new ebk(List.of(ebk.a($$1.b(eay.m)), ebk.a($$1.b(eay.n))), new ebz(20, 8, eca.a, 14357621)));
-      $$0.a(eax.n, new ebk(List.of(ebk.a($$1.b(eay.o), 2), ebk.a($$1.b(eay.s), 3)), new ebz(27, 4, eca.a, 30084232)));
-      $$0.a(eax.o, new ebk($$1.b(eay.p), new ebz(2, 1, eca.a, 14357921)));
-      $$0.a(eax.p, new ebk($$1.b(eay.q), new ebz(20, 11, eca.b, 10387313)));
-      $$0.a(eax.r, new ebk($$1.b(eay.k), new eby(32, 3, 128, $$2.b(aty.o))));
-      $$0.a(eax.s, new ebk($$1.b(eay.G), new ebz(34, 8, eca.a, 83469867)));
+      $$0.a(ebe.l, new ebr(List.of(ebr.a($$1.b(ebf.h)), ebr.a($$1.b(ebf.i))), new ecg(24, 4, ech.a, 165745295)));
+      $$0.a(ebe.m, new ebr(List.of(ebr.a($$1.b(ebf.m)), ebr.a($$1.b(ebf.n))), new ecg(20, 8, ech.a, 14357621)));
+      $$0.a(ebe.n, new ebr(List.of(ebr.a($$1.b(ebf.o), 2), ebr.a($$1.b(ebf.s), 3)), new ecg(27, 4, ech.a, 30084232)));
+      $$0.a(ebe.o, new ebr($$1.b(ebf.p), new ecg(2, 1, ech.a, 14357921)));
+      $$0.a(ebe.p, new ebr($$1.b(ebf.q), new ecg(20, 11, ech.b, 10387313)));
+      $$0.a(ebe.r, new ebr($$1.b(ebf.k), new ecf(32, 3, 128, $$2.b(atz.o))));
+      $$0.a(ebe.s, new ebr($$1.b(ebf.G), new ecg(34, 8, ech.a, 83469867)));
    }
 }

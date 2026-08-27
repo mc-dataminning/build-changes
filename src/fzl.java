@@ -1,45 +1,59 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Ordering;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
-public class fzl implements fyw.a {
-   private final List<hz> a = Lists.newArrayList();
-   private final List<Float> b = Lists.newArrayList();
-   private final List<Float> c = Lists.newArrayList();
-   private final List<Float> d = Lists.newArrayList();
-   private final List<Float> e = Lists.newArrayList();
-   private final List<Float> f = Lists.newArrayList();
+public class fzl implements fze.a {
+   private final exo a;
+   private final Map<Long, Map<hz, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
 
-   public void a(hz $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a.add($$0);
-      this.b.add($$1);
-      this.c.add($$5);
-      this.d.add($$2);
-      this.e.add($$3);
-      this.f.add($$4);
+   fzl(exo $$0) {
+      this.a = $$0;
+   }
+
+   public void a(long $$0, hz $$1) {
+      Map<hz, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
+      int $$3 = $$2.getOrDefault($$1, 0);
+      $$2.put($$1, $$3 + 1);
    }
 
    @Override
-   public void a(esa $$0, fvl $$1, double $$2, double $$3, double $$4) {
-      ese $$5 = $$1.getBuffer(fvt.y());
+   public void a(esh $$0, fvt $$1, double $$2, double $$3, double $$4) {
+      long $$5 = this.a.r.X();
+      int $$6 = 200;
+      double $$7 = 0.0025;
+      Set<hz> $$8 = Sets.newHashSet();
+      Map<hz, Integer> $$9 = Maps.newHashMap();
+      esl $$10 = $$1.getBuffer(fwb.w());
+      Iterator<Entry<Long, Map<hz, Integer>>> $$11 = this.b.entrySet().iterator();
 
-      for (int $$6 = 0; $$6 < this.a.size(); $$6++) {
-         hz $$7 = this.a.get($$6);
-         Float $$8 = this.b.get($$6);
-         float $$9 = $$8 / 2.0F;
-         fvj.b(
-            $$0,
-            $$5,
-            (double)((float)$$7.u() + 0.5F - $$9) - $$2,
-            (double)((float)$$7.v() + 0.5F - $$9) - $$3,
-            (double)((float)$$7.w() + 0.5F - $$9) - $$4,
-            (double)((float)$$7.u() + 0.5F + $$9) - $$2,
-            (double)((float)$$7.v() + 0.5F + $$9) - $$3,
-            (double)((float)$$7.w() + 0.5F + $$9) - $$4,
-            this.d.get($$6),
-            this.e.get($$6),
-            this.f.get($$6),
-            this.c.get($$6)
-         );
+      while ($$11.hasNext()) {
+         Entry<Long, Map<hz, Integer>> $$12 = $$11.next();
+         Long $$13 = $$12.getKey();
+         Map<hz, Integer> $$14 = $$12.getValue();
+         long $$15 = $$5 - $$13;
+         if ($$15 > 200L) {
+            $$11.remove();
+         } else {
+            for (Entry<hz, Integer> $$16 : $$14.entrySet()) {
+               hz $$17 = $$16.getKey();
+               Integer $$18 = $$16.getValue();
+               if ($$8.add($$17)) {
+                  enu $$19 = new enu(hz.c).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
+                  fvr.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
+                  $$9.put($$17, $$18);
+               }
+            }
+         }
+      }
+
+      for (Entry<hz, Integer> $$20 : $$9.entrySet()) {
+         hz $$21 = $$20.getKey();
+         Integer $$22 = $$20.getValue();
+         fze.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
       }
    }
 }

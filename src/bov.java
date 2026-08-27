@@ -1,13 +1,48 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
+import java.util.Set;
 
-public interface bov {
-   boolean g();
+public enum bov {
+   a(0),
+   b(1),
+   c(2),
+   d(3),
+   e(4);
 
-   void a(@Nullable atl var1);
+   public static final Set<bov> f = Set.of(values());
+   public static final Set<bov> g = Set.of(e, d);
+   private final int h;
 
-   default atj Z_() {
-      return atk.mr;
+   private bov(int $$0) {
+      this.h = $$0;
    }
 
-   boolean i();
+   private int a() {
+      return 1 << this.h;
+   }
+
+   private boolean b(int $$0) {
+      return ($$0 & this.a()) == this.a();
+   }
+
+   public static Set<bov> a(int $$0) {
+      Set<bov> $$1 = EnumSet.noneOf(bov.class);
+
+      for (bov $$2 : values()) {
+         if ($$2.b($$0)) {
+            $$1.add($$2);
+         }
+      }
+
+      return $$1;
+   }
+
+   public static int a(Set<bov> $$0) {
+      int $$1 = 0;
+
+      for (bov $$2 : $$0) {
+         $$1 |= $$2.a();
+      }
+
+      return $$1;
+   }
 }

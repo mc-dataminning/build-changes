@@ -1,230 +1,110 @@
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
+import java.util.function.Predicate;
 
-public class cnb extends cou {
-   private static final String b = "Items";
-   public static final int a = 64;
-   private static final int c = 4;
-   private static final int d = awh.f(0.4F, 0.4F, 1.0F);
+public class cnb extends cpt {
+   public static final int a = 20;
+   public static final int b = 15;
 
-   public cnb(cou.a $$0) {
+   public cnb(coy.a $$0) {
       super($$0);
    }
 
-   public static float d(coz $$0) {
-      return (float)o($$0) / 64.0F;
-   }
-
    @Override
-   public boolean a(coz $$0, clw $$1, ckj $$2, chh $$3) {
-      if ($$2 != ckj.b) {
-         return false;
-      } else {
-         coz $$4 = $$1.g();
-         if ($$4.b()) {
-            this.a($$3);
-            p($$0).ifPresent($$2x -> b($$0, $$1.d($$2x)));
-         } else if ($$4.d().ar_()) {
-            int $$5 = (64 - o($$0)) / k($$4);
-            int $$6 = b($$0, $$1.b($$4.M(), $$5, $$3));
-            if ($$6 > 0) {
-               this.b($$3);
-            }
-         }
-
-         return true;
-      }
-   }
-
-   @Override
-   public boolean a(coz $$0, coz $$1, clw $$2, ckj $$3, chh $$4, box $$5) {
-      if ($$3 == ckj.b && $$2.b($$4)) {
-         if ($$1.b()) {
-            p($$0).ifPresent($$2x -> {
-               this.a($$4);
-               $$5.a($$2x);
-            });
-         } else {
-            int $$6 = b($$0, $$1);
-            if ($$6 > 0) {
-               this.b($$4);
-               $$1.h($$6);
-            }
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public blv<coz> a(cvn $$0, chh $$1, blt $$2) {
-      coz $$3 = $$1.b($$2);
-      if (a($$3, $$1)) {
-         this.c($$1);
-         $$1.b(atu.c.b(this));
-         return blv.a($$3, $$0.y_());
-      } else {
-         return blv.d($$3);
-      }
-   }
-
-   @Override
-   public boolean e(coz $$0) {
-      return o($$0) > 0;
-   }
-
-   @Override
-   public int f(coz $$0) {
-      return Math.min(1 + 12 * o($$0) / 64, 13);
-   }
-
-   @Override
-   public int g(coz $$0) {
-      return d;
-   }
-
-   private static int b(coz $$0, coz $$1) {
-      if (!$$1.b() && $$1.d().ar_()) {
-         sw $$2 = $$0.x();
-         if (!$$2.e("Items")) {
-            $$2.a("Items", new tc());
-         }
-
-         int $$3 = o($$0);
-         int $$4 = k($$1);
-         int $$5 = Math.min($$1.M(), (64 - $$3) / $$4);
-         if ($$5 == 0) {
-            return 0;
-         } else {
-            tc $$6 = $$2.c("Items", 10);
-            Optional<sw> $$7 = a($$1, $$6);
-            if ($$7.isPresent()) {
-               sw $$8 = $$7.get();
-               coz $$9 = coz.a($$8);
-               $$9.g($$5);
-               $$9.b($$8);
-               $$6.remove($$8);
-               $$6.c(0, $$8);
-            } else {
-               coz $$10 = $$1.c($$5);
-               sw $$11 = new sw();
-               $$10.b($$11);
-               $$6.c(0, $$11);
+   public void a(cpd $$0, cvr $$1, boi $$2, int $$3) {
+      if ($$2 instanceof chl $$4) {
+         boolean $$5 = $$4.fU().d || ctn.a(ctp.B, $$0) > 0;
+         cpd $$6 = $$4.g($$0);
+         if (!$$6.b() || $$5) {
+            if ($$6.b()) {
+               $$6 = new cpd(cpg.ou);
             }
 
-            return $$5;
-         }
-      } else {
-         return 0;
-      }
-   }
+            int $$7 = this.b($$0) - $$3;
+            float $$8 = a($$7);
+            if (!((double)$$8 < 0.1)) {
+               boolean $$9 = $$5 && $$6.a(cpg.ou);
+               if (!$$1.B) {
+                  cmr $$10 = (cmr)($$6.d() instanceof cmr ? $$6.d() : cpg.ou);
+                  chr $$11 = $$10.a($$1, $$6, $$4);
+                  $$11.a($$4, $$4.dE(), $$4.dC(), 0.0F, $$8 * 3.0F, 1.0F);
+                  if ($$8 == 1.0F) {
+                     $$11.a(true);
+                  }
 
-   private static Optional<sw> a(coz $$0, tc $$1) {
-      return $$0.a(cpc.qT)
-         ? Optional.empty()
-         : $$1.stream().filter(sw.class::isInstance).map(sw.class::cast).filter($$1x -> coz.c(coz.a($$1x), $$0)).findFirst();
-   }
+                  int $$12 = ctn.a(ctp.y, $$0);
+                  if ($$12 > 0) {
+                     $$11.h($$11.z() + (double)$$12 * 0.5 + 0.5);
+                  }
 
-   private static int k(coz $$0) {
-      if ($$0.a(cpc.qT)) {
-         return 4 + o($$0);
-      } else {
-         if (($$0.a(cpc.ws) || $$0.a(cpc.wr)) && $$0.v()) {
-            sw $$1 = cms.a($$0);
-            if ($$1 != null && !$$1.c("Bees", 10).isEmpty()) {
-               return 64;
+                  int $$13 = ctn.a(ctp.z, $$0);
+                  if ($$13 > 0) {
+                     $$11.b($$13);
+                  }
+
+                  if (ctn.a(ctp.A, $$0) > 0) {
+                     $$11.g(100);
+                  }
+
+                  $$0.a(1, $$4, boi.d($$4.fo()));
+                  if ($$9 || $$4.fU().d && ($$6.a(cpg.vl) || $$6.a(cpg.vm))) {
+                     $$11.d = chr.a.c;
+                  }
+
+                  $$1.b($$11);
+               }
+
+               $$1.a(null, $$4.dr(), $$4.dt(), $$4.dx(), atl.aE, atm.h, 1.0F, 1.0F / ($$1.F_().i() * 0.4F + 1.2F) + $$8 * 0.5F);
+               if (!$$9 && !$$4.fU().d) {
+                  $$6.h(1);
+                  if ($$6.b()) {
+                     $$4.fT().g($$6);
+                  }
+               }
+
+               $$4.b(atv.c.b(this));
             }
          }
-
-         return 64 / $$0.g();
       }
    }
 
-   private static int o(coz $$0) {
-      return q($$0).mapToInt($$0x -> k($$0x) * $$0x.M()).sum();
-   }
-
-   private static Optional<coz> p(coz $$0) {
-      sw $$1 = $$0.x();
-      if (!$$1.e("Items")) {
-         return Optional.empty();
-      } else {
-         tc $$2 = $$1.c("Items", 10);
-         if ($$2.isEmpty()) {
-            return Optional.empty();
-         } else {
-            int $$3 = 0;
-            sw $$4 = $$2.a(0);
-            coz $$5 = coz.a($$4);
-            $$2.c(0);
-            if ($$2.isEmpty()) {
-               $$0.c("Items");
-            }
-
-            return Optional.of($$5);
-         }
+   public static float a(int $$0) {
+      float $$1 = (float)$$0 / 20.0F;
+      $$1 = ($$1 * $$1 + $$1 * 2.0F) / 3.0F;
+      if ($$1 > 1.0F) {
+         $$1 = 1.0F;
       }
+
+      return $$1;
    }
 
-   private static boolean a(coz $$0, chh $$1) {
-      sw $$2 = $$0.x();
-      if (!$$2.e("Items")) {
-         return false;
-      } else {
-         if ($$1 instanceof aow) {
-            tc $$3 = $$2.c("Items", 10);
-
-            for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-               sw $$5 = $$3.a($$4);
-               coz $$6 = coz.a($$5);
-               $$1.a($$6, true);
-            }
-         }
-
-         $$0.c("Items");
-         return true;
-      }
+   @Override
+   public int b(cpd $$0) {
+      return 72000;
    }
 
-   private static Stream<coz> q(coz $$0) {
-      sw $$1 = $$0.w();
-      if ($$1 == null) {
-         return Stream.empty();
+   @Override
+   public cqw c(cpd $$0) {
+      return cqw.e;
+   }
+
+   @Override
+   public blx<cpd> a(cvr $$0, chl $$1, blv $$2) {
+      cpd $$3 = $$1.b($$2);
+      boolean $$4 = !$$1.g($$3).b();
+      if (!$$1.fU().d && !$$4) {
+         return blx.d($$3);
       } else {
-         tc $$2 = $$1.c("Items", 10);
-         return $$2.stream().map(sw.class::cast).map(coz::a);
+         $$1.c($$2);
+         return blx.b($$3);
       }
    }
 
    @Override
-   public Optional<cme> h(coz $$0) {
-      is<coz> $$1 = is.a();
-      q($$0).forEach($$1::add);
-      return Optional.of(new cmd($$1, o($$0)));
+   public Predicate<cpd> b() {
+      return c;
    }
 
    @Override
-   public void a(coz $$0, cvn $$1, List<vq> $$2, cqq $$3) {
-      $$2.add(vq.a("item.minecraft.bundle.fullness", o($$0), 64).a(n.h));
-   }
-
-   @Override
-   public void a(cds $$0) {
-      cpb.a($$0, q($$0.q()));
-   }
-
-   private void a(bno $$0) {
-      $$0.a(atk.dh, 0.8F, 0.8F + $$0.dM().F_().i() * 0.4F);
-   }
-
-   private void b(bno $$0) {
-      $$0.a(atk.dg, 0.8F, 0.8F + $$0.dM().F_().i() * 0.4F);
-   }
-
-   private void c(bno $$0) {
-      $$0.a(atk.df, 0.8F, 0.8F + $$0.dM().F_().i() * 0.4F);
+   public int d() {
+      return 15;
    }
 }

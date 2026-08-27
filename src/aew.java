@@ -1,13 +1,13 @@
 public class aew implements xx<aes> {
    public static final xo<uq, aew> a = xx.a(aew::a, aew::new);
-   private final blr b;
+   private final blt b;
 
-   public aew(blr $$0) {
+   public aew(blt $$0) {
       this.b = $$0;
    }
 
    private aew(uq $$0) {
-      this.b = blr.a($$0.readUnsignedByte());
+      this.b = blt.a($$0.readUnsignedByte());
    }
 
    private void a(uq $$0) {
@@ -23,7 +23,7 @@ public class aew implements xx<aes> {
       $$0.a(this);
    }
 
-   public blr b() {
+   public blt b() {
       return this.b;
    }
 }

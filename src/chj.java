@@ -1,19 +1,30 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.security.PrivateKey;
-import java.time.Instant;
+import java.util.function.IntFunction;
 
-public record chj(PrivateKey b, chk c, Instant d) {
-   public static final Codec<chj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               avf.g.fieldOf("private_key").forGetter(chj::b),
-               chk.c.fieldOf("public_key").forGetter(chj::c),
-               avp.m.fieldOf("refreshed_after").forGetter(chj::d)
-            )
-            .apply($$0, chj::new)
-   );
+public enum chj implements awk {
+   a(0, "options.chat.visibility.full"),
+   b(1, "options.chat.visibility.system"),
+   c(2, "options.chat.visibility.hidden");
 
-   public boolean a() {
-      return this.d.isBefore(Instant.now());
+   private static final IntFunction<chj> d = ava.a(chj::a, values(), ava.a.b);
+   private final int e;
+   private final String f;
+
+   private chj(int $$0, String $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
+
+   @Override
+   public int a() {
+      return this.e;
+   }
+
+   @Override
+   public String b() {
+      return this.f;
+   }
+
+   public static chj a(int $$0) {
+      return d.apply($$0);
    }
 }

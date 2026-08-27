@@ -92,8 +92,8 @@ public class gi {
             $$0.h();
             $$0.f($$0.g().readDouble());
          }, $$0 -> $$0.r() == null, vq.c("argument.entity.options.dz.description"));
-         a("x_rotation", $$0 -> $$0.a(dk.a($$0.g(), true, awh::g)), $$0 -> $$0.k() == dk.a, vq.c("argument.entity.options.x_rotation.description"));
-         a("y_rotation", $$0 -> $$0.b(dk.a($$0.g(), true, awh::g)), $$0 -> $$0.l() == dk.a, vq.c("argument.entity.options.y_rotation.description"));
+         a("x_rotation", $$0 -> $$0.a(dk.a($$0.g(), true, awi::g)), $$0 -> $$0.k() == dk.a, vq.c("argument.entity.options.x_rotation.description"));
+         a("y_rotation", $$0 -> $$0.b(dk.a($$0.g(), true, awi::g)), $$0 -> $$0.l() == dk.a, vq.c("argument.entity.options.y_rotation.description"));
          a("limit", $$0 -> {
             int $$1 = $$0.g().getCursor();
             int $$2 = $$0.g().readInt();
@@ -136,7 +136,7 @@ public class gi {
                   }
                }
 
-               for (cvk $$6 : cvk.values()) {
+               for (cvo $$6 : cvo.values()) {
                   if ($$6.b().toLowerCase(Locale.ROOT).startsWith($$3x)) {
                      if ($$5) {
                         $$1x.suggest("!" + $$6.b());
@@ -157,17 +157,17 @@ public class gi {
                throw b.createWithContext($$0.g(), "gamemode");
             } else {
                String $$3 = $$0.g().readUnquotedString();
-               cvk $$4 = cvk.a($$3, null);
+               cvo $$4 = cvo.a($$3, null);
                if ($$4 == null) {
                   $$0.g().setCursor($$1);
                   throw g.createWithContext($$0.g(), $$3);
                } else {
                   $$0.a(false);
                   $$0.a($$2x -> {
-                     if (!($$2x instanceof aow)) {
+                     if (!($$2x instanceof aox)) {
                         return false;
                      } else {
-                        cvk $$3x = ((aow)$$2x).f.b();
+                        cvo $$3x = ((aox)$$2x).f.b();
                         return $$2 ? $$3x != $$4 : $$3x == $$4;
                      }
                   });
@@ -183,10 +183,10 @@ public class gi {
             boolean $$1 = $$0.e();
             String $$2 = $$0.g().readUnquotedString();
             $$0.a($$2x -> {
-               if (!($$2x instanceof bog)) {
+               if (!($$2x instanceof boi)) {
                   return false;
                } else {
-                  eoy $$3 = $$2x.cg();
+                  epf $$3 = $$2x.cg();
                   String $$4 = $$3 == null ? "" : $$3.b();
                   return $$4.equals($$2) != $$1;
                }
@@ -200,10 +200,10 @@ public class gi {
          a("type", $$0 -> {
             $$0.a(($$1x, $$2x) -> {
                dz.a(kf.g.e(), $$1x, String.valueOf('!'));
-               dz.a(kf.g.j().map(auo::b), $$1x, "!#");
+               dz.a(kf.g.j().map(aup::b), $$1x, "!#");
                if (!$$0.F()) {
                   dz.a(kf.g.e(), $$1x);
-                  dz.a(kf.g.j().map(auo::b), $$1x, String.valueOf('#'));
+                  dz.a(kf.g.j().map(aup::b), $$1x, String.valueOf('#'));
                }
 
                return $$1x.buildFuture();
@@ -219,15 +219,15 @@ public class gi {
                }
 
                if ($$0.f()) {
-                  auo<bnu<?>> $$3 = auo.a(kg.u, aiy.a($$0.g()));
+                  aup<bnw<?>> $$3 = aup.a(kg.u, aiy.a($$0.g()));
                   $$0.a($$2x -> $$2x.ai().a($$3) != $$2);
                } else {
                   aiy $$4 = aiy.a($$0.g());
-                  bnu<?> $$5 = kf.g.b($$4).orElseThrow(() -> {
+                  bnw<?> $$5 = kf.g.b($$4).orElseThrow(() -> {
                      $$0.g().setCursor($$1);
                      return h.createWithContext($$0.g(), $$4.toString());
                   });
-                  if (Objects.equals(bnu.bw, $$5) && !$$2) {
+                  if (Objects.equals(bnw.bw, $$5) && !$$2) {
                      $$0.a(false);
                   }
 
@@ -248,8 +248,8 @@ public class gi {
             sw $$2 = new tu($$0.g()).f();
             $$0.a($$2x -> {
                sw $$3 = $$2x.f(new sw());
-               if ($$2x instanceof aow) {
-                  coz $$4 = ((aow)$$2x).fT().f();
+               if ($$2x instanceof aox) {
+                  cpd $$4 = ((aox)$$2x).fT().f();
                   if (!$$4.b()) {
                      $$3.a("SelectedItem", $$4.b(new sw()));
                   }
@@ -281,15 +281,15 @@ public class gi {
             $$1.expect('}');
             if (!$$2.isEmpty()) {
                $$0.a($$1x -> {
-                  eow $$2x = $$1x.cL().aH();
+                  epd $$2x = $$1x.cL().aJ();
 
                   for (Entry<String, cm.d> $$3x : $$2.entrySet()) {
-                     eoo $$4x = $$2x.a($$3x.getKey());
+                     eov $$4x = $$2x.a($$3x.getKey());
                      if ($$4x == null) {
                         return false;
                      }
 
-                     eos $$5 = $$2x.d($$1x, $$4x);
+                     eoz $$5 = $$2x.d($$1x, $$4x);
                      if ($$5 == null) {
                         return false;
                      }
@@ -364,11 +364,11 @@ public class gi {
             $$1.expect('}');
             if (!$$2.isEmpty()) {
                $$0.a($$1x -> {
-                  if (!($$1x instanceof aow $$2x)) {
+                  if (!($$1x instanceof aox $$2x)) {
                      return false;
                   } else {
                      ajg $$4 = $$2x.Q();
-                     ajk $$5x = $$2x.cL().aB();
+                     ajk $$5x = $$2x.cL().aD();
 
                      for (Entry<aiy, Predicate<ah>> $$6x : $$2.entrySet()) {
                         af $$7x = $$5x.a($$6x.getKey());
@@ -389,17 +389,17 @@ public class gi {
             boolean $$1 = $$0.e();
             aiy $$2 = aiy.a($$0.g());
             $$0.a($$2x -> {
-               if (!($$2x.dM() instanceof aov)) {
+               if (!($$2x.dM() instanceof aow)) {
                   return false;
                } else {
-                  aov $$3 = (aov)$$2x.dM();
-                  elu $$4 = $$3.o().aJ().getElement(eja.a, $$2);
+                  aow $$3 = (aow)$$2x.dM();
+                  emb $$4 = $$3.o().aL().getElement(ejh.a, $$2);
                   if ($$4 == null) {
                      return false;
                   } else {
-                     ejb $$5 = new ejb.a($$3).a(elg.a, $$2x).a(elg.f, $$2x.dk()).a(elf.e);
-                     eiv $$6 = new eiv.a($$5).a(Optional.empty());
-                     $$6.b(eiv.a($$4));
+                     eji $$5 = new eji.a($$3).a(eln.a, $$2x).a(eln.f, $$2x.dk()).a(elm.e);
+                     ejc $$6 = new ejc.a($$5).a(Optional.empty());
+                     $$6.b(ejc.a($$4));
                      return $$1 ^ $$4.test($$6);
                   }
                }

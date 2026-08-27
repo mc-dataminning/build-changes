@@ -1,30 +1,28 @@
 import com.mojang.serialization.Codec;
 
-public class dux extends dts<dvr> {
-   public dux(Codec<dvr> $$0) {
+public class dux extends dtz<dwq> {
+   public dux(Codec<dwq> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dtu<dvr> $$0) {
-      int $$1 = 0;
-      awo $$2 = $$0.d();
-      cwi $$3 = $$0.b();
-      hz $$4 = $$0.e();
-      int $$5 = $$0.f().a().a($$2);
+   public boolean a(dub<dwq> $$0) {
+      dwq $$1 = $$0.f();
+      awp $$2 = $$0.d();
+      hz $$3 = $$0.e();
+      cwm $$4 = $$0.b();
+      int $$5 = 0;
+      hz.a $$6 = new hz.a();
+      int $$7 = $$1.b() + 1;
+      int $$8 = $$1.c() + 1;
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         int $$7 = $$2.a(8) - $$2.a(8);
-         int $$8 = $$2.a(8) - $$2.a(8);
-         int $$9 = $$3.a(dqo.a.d, $$4.u() + $$7, $$4.w() + $$8);
-         hz $$10 = new hz($$4.u() + $$7, $$9, $$4.w() + $$8);
-         dlf $$11 = cyq.mV.o().a(dfk.c, Integer.valueOf($$2.a(4) + 1));
-         if ($$3.a_($$10).a(cyq.G) && $$11.a($$3, $$10)) {
-            $$3.a($$10, $$11, 2);
-            $$1++;
+      for (int $$9 = 0; $$9 < $$1.a(); $$9++) {
+         $$6.a($$3, $$2.a($$7) - $$2.a($$7), $$2.a($$8) - $$2.a($$8), $$2.a($$7) - $$2.a($$7));
+         if ($$1.d().a().a($$4, $$0.c(), $$2, $$6)) {
+            $$5++;
          }
       }
 
-      return $$1 > 0;
+      return $$5 > 0;
    }
 }

@@ -1,49 +1,29 @@
-public class fdq extends ffg {
-   private static exk<?>[] a(exl $$0) {
-      return new exk[]{
-         $$0.ap(),
-         $$0.T(),
-         $$0.r(),
-         $$0.F(),
-         $$0.p(),
-         $$0.V(),
-         $$0.n(),
-         $$0.o(),
-         $$0.y(),
-         $$0.z(),
-         $$0.Z(),
-         $$0.aa(),
-         $$0.ag(),
-         $$0.ah(),
-         $$0.ai(),
-         $$0.al(),
-         $$0.aj(),
-         $$0.ak(),
-         $$0.b(),
-         $$0.a(),
-         $$0.q(),
-         $$0.c(),
-         $$0.s()
+public enum fdq {
+   a,
+   b;
+
+   public fdq a() {
+      return switch (this) {
+         case a -> b;
+         case b -> a;
       };
    }
 
-   public fdq(ffe $$0, exl $$1) {
-      super($$0, $$1, vq.c("options.accessibility.title"), a($$1));
+   public fdr b() {
+      return switch (this) {
+         case a -> fdr.d;
+         case b -> fdr.b;
+      };
    }
 
-   @Override
-   protected void aQ_() {
-      super.aQ_();
-      ezf $$0 = this.k.b(this.b.r());
-      if ($$0 != null && !this.f.aa().b().contains("high_contrast")) {
-         $$0.j = false;
-         $$0.a(fas.a(vq.c("options.accessibility.high_contrast.error.tooltip")));
-      }
+   public fdr c() {
+      return switch (this) {
+         case a -> fdr.c;
+         case b -> fdr.a;
+      };
    }
 
-   @Override
-   protected void j() {
-      this.d(ezh.a(vq.c("options.accessibility.link"), fdw.b(this, "https://aka.ms/MinecraftJavaAccessibility")).a(this.g / 2 - 155, this.h - 27, 150, 20).a());
-      this.d(ezh.a(vp.d, $$0 -> this.f.a(this.a)).a(this.g / 2 + 5, this.h - 27, 150, 20).a());
+   public fdr a(boolean $$0) {
+      return $$0 ? this.b() : this.c();
    }
 }

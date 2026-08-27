@@ -34,9 +34,9 @@ public class agf implements xx<aes> {
    }
 
    @Nullable
-   public cuo a(cvn $$0) {
-      bno $$1 = $$0.a(this.b);
-      return $$1 instanceof cji ? ((cji)$$1).C() : null;
+   public cus a(cvr $$0) {
+      bnq $$1 = $$0.a(this.b);
+      return $$1 instanceof cjm ? ((cjm)$$1).C() : null;
    }
 
    public String b() {

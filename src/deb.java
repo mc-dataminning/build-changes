@@ -1,88 +1,64 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
 
-public abstract class deb extends cyo {
-   private static final ie[] a = ie.values();
-   public static final dlw b = dlv.L;
-   public static final dlw c = dlv.M;
-   public static final dlw d = dlv.N;
-   public static final dlw e = dlv.O;
-   public static final dlw f = dlv.J;
-   public static final dlw g = dlv.K;
-   public static final Map<ie, dlw> h = ImmutableMap.copyOf(ac.a(Maps.newEnumMap(ie.class), $$0 -> {
-      $$0.put(ie.c, b);
-      $$0.put(ie.f, c);
-      $$0.put(ie.d, d);
-      $$0.put(ie.e, e);
-      $$0.put(ie.b, f);
-      $$0.put(ie.a, g);
-   }));
-   protected final eol[] i;
+public class deb extends cys implements cyv {
+   public static final MapCodec<deb> a = b(deb::new);
 
-   protected deb(float $$0, dle.d $$1) {
-      super($$1);
-      this.i = this.a($$0);
+   @Override
+   public MapCodec<deb> a() {
+      return a;
+   }
+
+   protected deb(dli.d $$0) {
+      super($$0);
+   }
+
+   private static boolean b(dlj $$0, cvu $$1, hz $$2) {
+      hz $$3 = $$2.c();
+      dlj $$4 = $$1.a_($$3);
+      int $$5 = egn.a($$1, $$0, $$2, $$4, $$3, ie.b, $$4.b($$1, $$3));
+      return $$5 < $$1.O();
    }
 
    @Override
-   protected abstract MapCodec<? extends deb> a();
-
-   private eol[] a(float $$0) {
-      float $$1 = 0.5F - $$0;
-      float $$2 = 0.5F + $$0;
-      eol $$3 = cyo.a((double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F));
-      eol[] $$4 = new eol[a.length];
-
-      for (int $$5 = 0; $$5 < a.length; $$5++) {
-         ie $$6 = a[$$5];
-         $$4[$$5] = eoi.a(
-            0.5 + Math.min((double)(-$$0), (double)$$6.j() * 0.5),
-            0.5 + Math.min((double)(-$$0), (double)$$6.k() * 0.5),
-            0.5 + Math.min((double)(-$$0), (double)$$6.l() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.j() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.k() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.l() * 0.5)
-         );
+   protected void b(dlj $$0, aow $$1, hz $$2, awp $$3) {
+      if (!b($$0, $$1, $$2)) {
+         $$1.b($$2, cyu.dV.o());
       }
-
-      eol[] $$7 = new eol[64];
-
-      for (int $$8 = 0; $$8 < 64; $$8++) {
-         eol $$9 = $$3;
-
-         for (int $$10 = 0; $$10 < a.length; $$10++) {
-            if (($$8 & 1 << $$10) != 0) {
-               $$9 = eoi.a($$9, $$4[$$10]);
-            }
-         }
-
-         $$7[$$8] = $$9;
-      }
-
-      return $$7;
    }
 
    @Override
-   protected boolean a_(dlf $$0, cut $$1, hz $$2) {
-      return false;
+   public boolean b(cvu $$0, hz $$1, dlj $$2) {
+      return $$0.a_($$1.c()).i();
    }
 
    @Override
-   protected eol a(dlf $$0, cut $$1, hz $$2, enx $$3) {
-      return this.i[this.m($$0)];
+   public boolean a(cvr $$0, awp $$1, hz $$2, dlj $$3) {
+      return true;
    }
 
-   protected int m(dlf $$0) {
-      int $$1 = 0;
-
-      for (int $$2 = 0; $$2 < a.length; $$2++) {
-         if ($$0.c(h.get(a[$$2]))) {
-            $$1 |= 1 << $$2;
+   @Override
+   public void a(aow $$0, awp $$1, hz $$2, dlj $$3) {
+      dlj $$4 = $$0.a_($$2);
+      hz $$5 = $$2.c();
+      dng $$6 = $$0.l().g();
+      iv<dtm<?, ?>> $$7 = $$0.I_().d(kg.aw);
+      if ($$4.a(cyu.ow)) {
+         this.a($$7, qo.h, $$0, $$6, $$1, $$5);
+      } else if ($$4.a(cyu.on)) {
+         this.a($$7, qo.j, $$0, $$6, $$1, $$5);
+         this.a($$7, qo.l, $$0, $$6, $$1, $$5);
+         if ($$1.a(8) == 0) {
+            this.a($$7, qo.n, $$0, $$6, $$1, $$5);
          }
       }
+   }
 
-      return $$1;
+   private void a(iv<dtm<?, ?>> $$0, aix<dtm<?, ?>> $$1, aow $$2, dng $$3, awp $$4, hz $$5) {
+      $$0.b($$1).ifPresent($$4x -> ((dtm)$$4x.a()).a($$2, $$3, $$4, $$5));
+   }
+
+   @Override
+   public cyv.a av_() {
+      return cyv.a.a;
    }
 }

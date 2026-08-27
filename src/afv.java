@@ -4,11 +4,11 @@ public class afv implements xx<aes> {
    private final afv.a c;
    private final int d;
 
-   public afv(bno $$0, afv.a $$1) {
+   public afv(bnq $$0, afv.a $$1) {
       this($$0, $$1, 0);
    }
 
-   public afv(bno $$0, afv.a $$1, int $$2) {
+   public afv(bnq $$0, afv.a $$1, int $$2) {
       this.b = $$0.aj();
       this.c = $$1;
       this.d = $$2;

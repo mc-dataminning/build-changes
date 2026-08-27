@@ -1,57 +1,43 @@
-public class fnw<T extends boi & cer> extends fmo<T> {
-   public fnw(fpc $$0) {
-      super($$0);
+public class fnw<T extends bnq> extends fmr<T> {
+   private static final String a = "body_front";
+   private static final String b = "body_back";
+   private final fpj f;
+   private final fpj g;
+
+   public fnw(fpj $$0) {
+      this.f = $$0;
+      this.g = $$0.b("body_back");
    }
 
-   public static fpi c() {
-      fpk $$0 = fmo.a(fpg.a, 0.0F);
-      fpl $$1 = $$0.a();
-      $$1.a("right_arm", fph.c().a(40, 16).a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fpe.a(-5.0F, 2.0F, 0.0F));
-      $$1.a("left_arm", fph.c().a(40, 16).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fpe.a(5.0F, 2.0F, 0.0F));
-      $$1.a("right_leg", fph.c().a(0, 16).a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), fpe.a(-2.0F, 12.0F, 0.0F));
-      $$1.a("left_leg", fph.c().a(0, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), fpe.a(2.0F, 12.0F, 0.0F));
-      return fpi.a($$0, 64, 32);
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      this.s = fmo.a.a;
-      this.r = fmo.a.a;
-      coz $$4 = $$0.b(blt.a);
-      if ($$4.a(cpc.ot) && $$0.fY()) {
-         if ($$0.fm() == boa.b) {
-            this.s = fmo.a.d;
-         } else {
-            this.r = fmo.a.d;
-         }
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      coz $$6 = $$0.eT();
-      if ($$0.fY() && ($$6.b() || !$$6.a(cpc.ot))) {
-         float $$7 = awh.a(this.c * (float) Math.PI);
-         float $$8 = awh.a((1.0F - (1.0F - this.c) * (1.0F - this.c)) * (float) Math.PI);
-         this.n.g = 0.0F;
-         this.o.g = 0.0F;
-         this.n.f = -(0.1F - $$7 * 0.6F);
-         this.o.f = 0.1F - $$7 * 0.6F;
-         this.n.e = (float) (-Math.PI / 2);
-         this.o.e = (float) (-Math.PI / 2);
-         this.n.e -= $$7 * 1.2F - $$8 * 0.4F;
-         this.o.e -= $$7 * 1.2F - $$8 * 0.4F;
-         fkz.a(this.n, this.o, $$3);
-      }
+   public static fpp b() {
+      fpr $$0 = new fpr();
+      fps $$1 = $$0.a();
+      int $$2 = 20;
+      fps $$3 = $$1.a("body_front", fpo.c().a(0, 0).a(-1.5F, -2.5F, 0.0F, 3.0F, 5.0F, 8.0F), fpl.a(0.0F, 20.0F, 0.0F));
+      fps $$4 = $$1.a("body_back", fpo.c().a(0, 13).a(-1.5F, -2.5F, 0.0F, 3.0F, 5.0F, 8.0F), fpl.a(0.0F, 20.0F, 8.0F));
+      $$1.a("head", fpo.c().a(22, 0).a(-1.0F, -2.0F, -3.0F, 2.0F, 4.0F, 3.0F), fpl.a(0.0F, 20.0F, 0.0F));
+      $$4.a("back_fin", fpo.c().a(20, 10).a(0.0F, -2.5F, 0.0F, 0.0F, 5.0F, 6.0F), fpl.a(0.0F, 0.0F, 8.0F));
+      $$3.a("top_front_fin", fpo.c().a(2, 1).a(0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 3.0F), fpl.a(0.0F, -4.5F, 5.0F));
+      $$4.a("top_back_fin", fpo.c().a(0, 2).a(0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 4.0F), fpl.a(0.0F, -4.5F, -1.0F));
+      $$1.a("right_fin", fpo.c().a(-4, 0).a(-2.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), fpl.a(-1.5F, 21.5F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 4)));
+      $$1.a("left_fin", fpo.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), fpl.a(1.5F, 21.5F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 4)));
+      return fpp.a($$0, 32, 32);
    }
 
    @Override
-   public void a(boa $$0, esa $$1) {
-      float $$2 = $$0 == boa.b ? 1.0F : -1.0F;
-      fpc $$3 = this.a($$0);
-      $$3.b += $$2;
-      $$3.a($$1);
-      $$3.b -= $$2;
+   public fpj a() {
+      return this.f;
+   }
+
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = 1.0F;
+      float $$7 = 1.0F;
+      if (!$$0.aZ()) {
+         $$6 = 1.3F;
+         $$7 = 1.7F;
+      }
+
+      this.g.f = -$$6 * 0.25F * awi.a($$7 * 0.6F * $$3);
    }
 }

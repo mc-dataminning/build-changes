@@ -1,77 +1,154 @@
-import java.util.UUID;
-import java.util.function.Supplier;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-public class fjj extends fjc<frc.a> {
-   private static final int r = 120;
-   private static final int t = 85;
-   private static final int u = 178;
-   private static final vq v = vq.c("gui.abuseReport.skin.title");
-   private final fcx w = fcx.d().a(8);
-   private ezz x;
-   private ezh y;
-   private ezh z;
+public abstract class fjj<B extends frf.a<?>> extends ffl {
+   private static final vq r = vq.c("gui.abuseReport.report_sent_msg");
+   private static final vq t = vq.c("gui.abuseReport.sending.title").a(n.r);
+   private static final vq u = vq.c("gui.abuseReport.sent.title").a(n.r);
+   private static final vq v = vq.c("gui.abuseReport.error.title").a(n.r);
+   private static final vq w = vq.c("gui.abuseReport.send.generic_error");
+   protected static final vq a = vq.c("gui.abuseReport.send");
+   protected static final vq b = vq.c("gui.abuseReport.observed_what");
+   protected static final vq c = vq.c("gui.abuseReport.select_reason");
+   private static final vq x = vq.c("gui.abuseReport.describe");
+   protected static final vq k = vq.c("gui.abuseReport.more_comments");
+   private static final vq y = vq.c("gui.abuseReport.comments");
+   protected static final int l = 20;
+   protected static final int m = 280;
+   protected static final int n = 8;
+   private static final Logger z = LogUtils.getLogger();
+   protected final ffl o;
+   protected final frj p;
+   protected B q;
 
-   private fjj(ffe $$0, frb $$1, frc.a $$2) {
-      super(v, $$0, $$1, $$2);
+   protected fjj(vq $$0, ffl $$1, frj $$2, B $$3) {
+      super($$0);
+      this.o = $$1;
+      this.p = $$2;
+      this.q = $$3;
    }
 
-   public fjj(ffe $$0, frb $$1, UUID $$2, Supplier<ghs> $$3) {
-      this($$0, $$1, new frc.a($$2, $$3, $$1.a().b()));
+   protected fag a(int $$0, int $$1, Consumer<String> $$2) {
+      AbuseReportLimits $$3 = this.p.a().b();
+      fag $$4 = new fag(this.i, 0, 0, $$0, $$1, x, y);
+      $$4.a(this.q.g());
+      $$4.a($$3.maxOpinionCommentsLength());
+      $$4.b($$2);
+      return $$4;
    }
 
-   public fjj(ffe $$0, frb $$1, frc $$2) {
-      this($$0, $$1, new frc.a($$2, $$1.a().b()));
-   }
+   protected void o() {
+      this.q.a(this.p).ifLeft($$0 -> {
+         CompletableFuture<?> $$1 = this.p.a().a($$0.a(), $$0.b(), $$0.c());
+         this.f.a(fes.a(t, vp.e, () -> {
+            this.f.a(this);
+            $$1.cancel(true);
+         }));
+         $$1.handleAsync(($$0x, $$1x) -> {
+            if ($$1x == null) {
+               this.E();
+            } else {
+               if ($$1x instanceof CancellationException) {
+                  return null;
+               }
 
-   @Override
-   protected void aQ_() {
-      this.w.c().b();
-      this.w.a(new fao(this.e, this.i));
-      fcx $$0 = this.w.a(fcx.e().a(8));
-      $$0.c().e();
-      $$0.a(new fah(85, 120, this.f.aP(), this.q.e().a()));
-      fcx $$1 = $$0.a(fcx.d().a(8));
-      this.z = ezh.a(c, $$0x -> this.f.a(new fji(this, this.q.h(), $$0xx -> {
-            this.q.a($$0xx);
-            this.E();
-         }))).a(178).a();
-      $$1.a(fcp.a(this.i, this.z, b));
-      this.x = this.a(178, 9 * 8, $$0x -> {
-         this.q.a($$0x);
-         this.E();
-      });
-      $$1.a(fcp.a(this.i, this.x, k, $$0x -> $$0x.e(12)));
-      fcx $$2 = this.w.a(fcx.e().a(8));
-      $$2.a(ezh.a(vp.k, $$0x -> this.d()).a(120).a());
-      this.y = $$2.a(ezh.a(a, $$0x -> this.o()).a(120).a());
-      this.w.a($$1x -> {
-         ezf var10000 = this.d($$1x);
-      });
-      this.c();
-      this.E();
-   }
+               this.a($$1x);
+            }
 
-   @Override
-   protected void c() {
-      this.w.a();
-      fcr.a(this.w, this.F());
+            return null;
+         }, this.f);
+      }).ifRight($$0 -> this.a($$0.b()));
    }
 
    private void E() {
-      fqz $$0 = this.q.h();
-      if ($$0 != null) {
-         this.z.b($$0.b());
+      this.I();
+      this.f.a(fes.a(u, r, vp.d, () -> this.f.a(null)));
+   }
+
+   private void a(Throwable $$0) {
+      z.error("Encountered error while sending abuse report", $$0);
+      vq $$2;
+      if ($$0.getCause() instanceof wq $$1) {
+         $$2 = $$1.b();
       } else {
-         this.z.b(c);
+         $$2 = w;
       }
 
-      fqx.b $$1 = this.q.c();
-      this.y.j = $$1 == null;
-      this.y.a(x.a($$1, fqx.b::a));
+      this.a($$2);
+   }
+
+   private void a(vq $$0) {
+      vq $$1 = $$0.f().a(n.m);
+      this.f.a(fes.a(v, $$1, vp.k, () -> this.f.a(this)));
+   }
+
+   void H() {
+      if (this.q.b()) {
+         this.p.a(this.q.e().b());
+      }
+   }
+
+   void I() {
+      this.p.a(null);
    }
 
    @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      return super.b($$0, $$1, $$2) ? true : this.x.b($$0, $$1, $$2);
+   public void d() {
+      if (this.q.b()) {
+         this.f.a(new fjj.a());
+      } else {
+         this.f.a(this.o);
+      }
+   }
+
+   @Override
+   public void k() {
+      this.H();
+      super.k();
+   }
+
+   class a extends fio {
+      private static final int c = 20;
+      private static final vq k = vq.c("gui.abuseReport.discard.title").a(n.r);
+      private static final vq l = vq.c("gui.abuseReport.discard.content");
+      private static final vq m = vq.c("gui.abuseReport.discard.return");
+      private static final vq n = vq.c("gui.abuseReport.discard.draft");
+      private static final vq o = vq.c("gui.abuseReport.discard.discard");
+
+      protected a() {
+         super(k, l, l);
+      }
+
+      @Override
+      protected void a(int $$0) {
+         this.c((fbk)ezo.a(m, $$0x -> this.d()).a(this.g / 2 - 155, 100 + $$0).a());
+         this.c((fbk)ezo.a(n, $$0x -> {
+            fjj.this.H();
+            this.f.a(fjj.this.o);
+         }).a(this.g / 2 + 5, 100 + $$0).a());
+         this.c((fbk)ezo.a(o, $$0x -> {
+            fjj.this.I();
+            this.f.a(fjj.this.o);
+         }).a(this.g / 2 - 75, 130 + $$0).a());
+      }
+
+      @Override
+      public void d() {
+         this.f.a(fjj.this);
+      }
+
+      @Override
+      public boolean aO_() {
+         return false;
+      }
+
+      @Override
+      protected void c(ezb $$0) {
+         $$0.b(this.i, this.e, this.g / 2 - 155, 30, -1);
+      }
    }
 }

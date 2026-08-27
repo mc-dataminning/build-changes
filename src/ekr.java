@@ -1,97 +1,62 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.function.BiFunction;
+import java.util.function.Supplier;
 
-public class ekr extends ekh {
-   public static final Codec<ekr> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  avp.a(Codec.unboundedMap(kf.f.r(), emq.a), "enchantments", Map.of()).forGetter($$0x -> $$0x.b),
-                  Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)
-               )
-            )
-            .apply($$0, ekr::new)
-   );
-   private final Map<ij<cti>, emp> b;
-   private final boolean c;
+public class ekr {
+   public static final BiFunction<cpd, ejc, cpd> a = ($$0, $$1) -> $$0;
+   private static final Codec<ekp> D = kf.G.q().dispatch("function", ekp::b, ekq::a);
+   public static final Codec<ekp> b = avq.a((Supplier<Codec<ekp>>)(() -> avq.e(D, ekt.b)));
+   public static final ekq c = a("set_count", ela.a);
+   public static final ekq d = a("enchant_with_levels", eki.a);
+   public static final ekq e = a("enchant_randomly", ekh.a);
+   public static final ekq f = a("set_enchantments", eky.a);
+   public static final ekq g = a("set_nbt", ele.a);
+   public static final ekq h = a("furnace_smelt", elh.a);
+   public static final ekq i = a("looting_enchant", eks.b);
+   public static final ekq j = a("set_damage", elb.a);
+   public static final ekq k = a("set_attributes", eku.a);
+   public static final ekq l = a("set_name", eld.a);
+   public static final ekq m = a("exploration_map", ekj.f);
+   public static final ekq n = a("set_stew_effect", elg.a);
+   public static final ekq o = a("copy_name", ekf.a);
+   public static final ekq p = a("set_contents", ekw.a);
+   public static final ekq q = a("limit_count", ekn.a);
+   public static final ekq r = a("apply_bonus", ekc.a);
+   public static final ekq s = a("set_loot_table", ekx.a);
+   public static final ekq t = a("explosion_decay", ekd.a);
+   public static final ekq u = a("set_lore", elc.a);
+   public static final ekq v = a("fill_player_head", ekk.a);
+   public static final ekq w = a("copy_nbt", ekg.a);
+   public static final ekq x = a("copy_state", eke.a);
+   public static final ekq y = a("set_banner_pattern", ekv.a);
+   public static final ekq z = a("set_potion", elf.a);
+   public static final ekq A = a("set_instrument", ekz.a);
+   public static final ekq B = a("reference", ekl.a);
+   public static final ekq C = a("sequence", ekt.a);
 
-   ekr(List<elu> $$0, Map<ij<cti>, emp> $$1, boolean $$2) {
-      super($$0);
-      this.b = Map.copyOf($$1);
-      this.c = $$2;
+   private static ekq a(String $$0, Codec<? extends ekp> $$1) {
+      return iv.a(kf.G, new aiy($$0), new ekq($$1));
    }
 
-   @Override
-   public ekj b() {
-      return ekk.f;
-   }
+   public static BiFunction<cpd, ejc, cpd> a(List<? extends BiFunction<cpd, ejc, cpd>> $$0) {
+      List<BiFunction<cpd, ejc, cpd>> $$1 = List.copyOf($$0);
 
-   @Override
-   public Set<eld<?>> a() {
-      return this.b.values().stream().flatMap($$0 -> $$0.a().stream()).collect(ImmutableSet.toImmutableSet());
-   }
-
-   @Override
-   public coz a(coz $$0, eiv $$1) {
-      Object2IntMap<cti> $$2 = new Object2IntOpenHashMap();
-      this.b.forEach(($$2x, $$3) -> $$2.put((cti)$$2x.a(), $$3.a($$1)));
-      if ($$0.d() == cpc.qO) {
-         coz $$3 = new coz(cpc.us);
-         $$2.forEach(($$1x, $$2x) -> cnv.a($$3, new ctk($$1x, $$2x)));
-         return $$3;
-      } else {
-         Map<cti, Integer> $$4 = ctj.a($$0);
-         if (this.c) {
-            $$2.forEach(($$1x, $$2x) -> a($$4, $$1x, Math.max($$4.getOrDefault($$1x, 0) + $$2x, 0)));
-         } else {
-            $$2.forEach(($$1x, $$2x) -> a($$4, $$1x, Math.max($$2x, 0)));
+      return switch ($$1.size()) {
+         case 0 -> a;
+         case 1 -> (BiFunction)$$1.get(0);
+         case 2 -> {
+            BiFunction<cpd, ejc, cpd> $$2 = $$1.get(0);
+            BiFunction<cpd, ejc, cpd> $$3 = $$1.get(1);
+            yield ($$2x, $$3x) -> $$3.apply($$2.apply($$2x, $$3x), $$3x);
+         }
+         default -> ($$1x, $$2x) -> {
+         for (BiFunction<cpd, ejc, cpd> $$3x : $$1) {
+            $$1x = $$3x.apply($$1x, $$2x);
          }
 
-         ctj.a($$4, $$0);
-         return $$0;
-      }
-   }
-
-   private static void a(Map<cti, Integer> $$0, cti $$1, int $$2) {
-      if ($$2 == 0) {
-         $$0.remove($$1);
-      } else {
-         $$0.put($$1, $$2);
-      }
-   }
-
-   public static class a extends ekh.a<ekr.a> {
-      private final Builder<ij<cti>, emp> a = ImmutableMap.builder();
-      private final boolean b;
-
-      public a() {
-         this(false);
-      }
-
-      public a(boolean $$0) {
-         this.b = $$0;
-      }
-
-      protected ekr.a a() {
-         return this;
-      }
-
-      public ekr.a a(cti $$0, emp $$1) {
-         this.a.put($$0.k(), $$1);
-         return this;
-      }
-
-      @Override
-      public eki b() {
-         return new ekr(this.g(), this.a.build(), this.b);
-      }
+         return $$1x;
+      };
+      };
    }
 }

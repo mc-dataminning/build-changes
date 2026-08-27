@@ -1,48 +1,45 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public class eed extends eer {
-   public static final Codec<eed> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
-               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
-               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f),
-               ie.a.e.fieldOf("axis").orElse(ie.a.b).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, eed::new)
-   );
-   private final float b;
-   private final float d;
-   private final int e;
-   private final int f;
-   private final ie.a g;
+public class eed extends ebl {
+   public static final Codec<eed> d = a(eed::new);
 
-   public eed(float $$0, float $$1, int $$2, int $$3, ie.a $$4) {
-      if ($$2 >= $$3) {
-         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
-      } else {
-         this.b = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
-         this.g = $$4;
-      }
+   public eed(ebl.c $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(hz $$0, hz $$1, hz $$2, awo $$3) {
-      ie $$4 = ie.a(ie.b.a, this.g);
-      float $$5 = (float)Math.abs(($$1.u() - $$2.u()) * $$4.j());
-      float $$6 = (float)Math.abs(($$1.v() - $$2.v()) * $$4.k());
-      float $$7 = (float)Math.abs(($$1.w() - $$2.w()) * $$4.l());
-      int $$8 = (int)($$5 + $$6 + $$7);
-      float $$9 = $$3.i();
-      return $$9 <= awh.b(this.b, this.d, awh.g((float)$$8, (float)this.e, (float)this.f));
+   public Optional<ebl.b> a(ebl.a $$0) {
+      return Optional.of(new ebl.b($$0.h().l(), (Consumer<ecd>)($$1 -> a($$1, $$0))));
+   }
+
+   private static void a(ecd $$0, ebl.a $$1) {
+      int $$2 = 0;
+
+      eec.m $$3;
+      do {
+         $$0.b();
+         $$1.f().c($$1.g() + (long)($$2++), $$1.h().e, $$1.h().f);
+         eec.a();
+         $$3 = new eec.m($$1.f(), $$1.h().a(2), $$1.h().b(2));
+         $$0.a($$3);
+         $$3.a($$3, $$0, $$1.f());
+         List<ebp> $$4 = $$3.c;
+
+         while (!$$4.isEmpty()) {
+            int $$5 = $$1.f().a($$4.size());
+            ebp $$6 = $$4.remove($$5);
+            $$6.a($$3, $$0, $$1.f());
+         }
+
+         $$0.a($$1.b().e(), $$1.b().f(), $$1.f(), 10);
+      } while ($$0.c() || $$3.b == null);
    }
 
    @Override
-   protected ees<?> a() {
-      return ees.c;
+   public ebu<?> e() {
+      return ebu.n;
    }
 }

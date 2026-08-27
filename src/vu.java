@@ -11,7 +11,7 @@ public class vu {
    public static final wn d = wn.a.a(n.i).a(new vw(vw.a.a, vq.c("chat.filtered")));
    static final Codec<vu> e = Codec.unit(c);
    static final Codec<vu> f = Codec.unit(b);
-   static final Codec<vu> g = avp.s.xmap(vu::new, vu::d);
+   static final Codec<vu> g = avq.s.xmap(vu::new, vu::d);
    private static final char h = '#';
    private final BitSet i;
    private final vu.a j;

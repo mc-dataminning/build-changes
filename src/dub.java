@@ -1,31 +1,43 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dub implements dvw {
-   public static final Codec<dub> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dlf.b.fieldOf("valid_base_block").forGetter($$0x -> $$0x.b),
-               dlf.b.fieldOf("stem_state").forGetter($$0x -> $$0x.c),
-               dlf.b.fieldOf("hat_state").forGetter($$0x -> $$0x.d),
-               dlf.b.fieldOf("decor_state").forGetter($$0x -> $$0x.e),
-               drv.b.fieldOf("replaceable_blocks").forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("planted").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dub::new)
-   );
-   public final dlf b;
-   public final dlf c;
-   public final dlf d;
-   public final dlf e;
-   public final drv f;
-   public final boolean g;
+public class dub<FC extends dwd> {
+   private final Optional<dtm<?, ?>> a;
+   private final cwm b;
+   private final dng c;
+   private final awp d;
+   private final hz e;
+   private final FC f;
 
-   public dub(dlf $$0, dlf $$1, dlf $$2, dlf $$3, drv $$4, boolean $$5) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+   public dub(Optional<dtm<?, ?>> $$0, cwm $$1, dng $$2, awp $$3, hz $$4, FC $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+   }
+
+   public Optional<dtm<?, ?>> a() {
+      return this.a;
+   }
+
+   public cwm b() {
+      return this.b;
+   }
+
+   public dng c() {
+      return this.c;
+   }
+
+   public awp d() {
+      return this.d;
+   }
+
+   public hz e() {
+      return this.e;
+   }
+
+   public FC f() {
+      return this.f;
    }
 }

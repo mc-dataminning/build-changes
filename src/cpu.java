@@ -1,19 +1,12 @@
-public class cpu extends cov {
-   private final aow a;
+public enum cpu {
+   a(n.p),
+   b(n.o),
+   c(n.l),
+   d(n.n);
 
-   public cpu(aow $$0) {
-      this.a = $$0;
-   }
+   public final n e;
 
-   @Override
-   protected void b(cou $$0, int $$1) {
-      super.b($$0, $$1);
-      this.a.d.b(new abe($$0, $$1));
-   }
-
-   @Override
-   protected void c(cou $$0) {
-      super.c($$0);
-      this.a.d.b(new abe($$0, 0));
+   private cpu(n $$0) {
+      this.e = $$0;
    }
 }

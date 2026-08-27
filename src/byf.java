@@ -1,24 +1,30 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
-public class byf extends byn<boi> {
-   private static final long c = 32L;
-   private static final long d = 16L;
-   public static final int a = 32;
-
+public class byf extends byr<boi> {
    @Override
-   public Set<bxh<?>> a() {
-      return ImmutableSet.of(bxh.L);
+   public Set<bxl<?>> a() {
+      return ImmutableSet.of(bxl.x, bxl.y);
    }
 
-   protected void a(aov $$0, boi $$1) {
-      bpf<?> $$2 = $$1.dO();
-      List<cds> $$3 = $$0.a(cds.class, $$1.cH().c(32.0, 16.0, 32.0), $$0x -> true);
-      $$3.sort(Comparator.comparingDouble($$1::f));
-      Optional<cds> $$4 = $$3.stream().filter($$1x -> $$1.k($$1x.q())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::D).findFirst();
-      $$2.a(bxh.L, $$4);
+   @Override
+   protected void a(aow $$0, boi $$1) {
+      bpj<?> $$2 = $$1.dO();
+      bmp $$3 = $$1.ey();
+      if ($$3 != null) {
+         $$2.a(bxl.x, $$1.ey());
+         bnq $$4 = $$3.d();
+         if ($$4 instanceof boi) {
+            $$2.a(bxl.y, (boi)$$4);
+         }
+      } else {
+         $$2.b(bxl.x);
+      }
+
+      $$2.c(bxl.y).ifPresent($$2x -> {
+         if (!$$2x.bx() || $$2x.dM() != $$0) {
+            $$2.b(bxl.y);
+         }
+      });
    }
 }

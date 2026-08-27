@@ -1,34 +1,32 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class bqx extends bpw<boi> {
-   public static final int c = 100;
-   private final blf d;
-   private final atj e;
-
-   public bqx(blf $$0, atj $$1) {
-      super(ImmutableMap.of(bxh.n, bxi.c, bxh.T, bxi.a), 100);
-      this.d = $$0;
-      this.e = $$1;
+public class bqx {
+   public static <T extends boi> bqb<boi> a(bnw<? extends T> $$0, int $$1, bxl<T> $$2, float $$3, int $$4) {
+      return a($$0, $$1, $$0x -> true, $$0x -> true, $$2, $$3, $$4);
    }
 
-   protected boolean a(aov $$0, boi $$1, long $$2) {
-      return !$$1.aC();
-   }
-
-   protected void b(aov $$0, boi $$1, long $$2) {
-      $$1.p(true);
-      $$1.b(bor.g);
-   }
-
-   protected void c(aov $$0, boi $$1, long $$2) {
-      if ($$1.aC()) {
-         $$1.g($$1.dp().d(0.1F, 1.0, 0.1F));
-         $$0.a(null, $$1, this.e, atl.g, 2.0F, 1.0F);
-      }
-
-      $$1.p(false);
-      $$1.b(bor.a);
-      $$1.dO().b(bxh.T);
-      $$1.dO().a(bxh.S, this.d.a($$0.z));
+   public static <E extends boi, T extends boi> bqb<E> a(bnw<? extends T> $$0, int $$1, Predicate<E> $$2, Predicate<T> $$3, bxl<T> $$4, float $$5, int $$6) {
+      int $$7 = $$1 * $$1;
+      Predicate<boi> $$8 = $$2x -> $$0.equals($$2x.ai()) && $$3.test((T)$$2x);
+      return btn.a(
+         (Function<btn.b<E>, ? extends App<btn.c<E>, btq<E>>>)($$6x -> $$6x.group($$6x.a($$4), $$6x.a(bxl.n), $$6x.c(bxl.m), $$6x.b(bxl.h))
+               .apply($$6x, ($$6xx, $$7x, $$8x, $$9) -> ($$10, $$11, $$12) -> {
+                     bxn $$13 = $$6x.b($$9);
+                     if ($$2.test((E)$$11) && $$13.d($$8)) {
+                        Optional<boi> $$14 = $$13.a($$3xxxx -> $$3xxxx.f((bnq)$$11) <= (double)$$7 && $$8.test($$3xxxx));
+                        $$14.ifPresent($$5xxxx -> {
+                           $$6xx.a($$5xxxx);
+                           $$7x.a(new bql($$5xxxx, true));
+                           $$8x.a(new bxo(new bql($$5xxxx, false), $$5, $$6));
+                        });
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 }

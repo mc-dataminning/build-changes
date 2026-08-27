@@ -46,13 +46,13 @@ public class ajy {
       }
    }
 
-   public void a(aow $$0) {
+   public void a(aox $$0) {
       for (ajx $$1 : this.a.values()) {
          $$1.c($$0);
       }
    }
 
-   public void b(aow $$0) {
+   public void b(aox $$0) {
       for (ajx $$1 : this.a.values()) {
          $$1.d($$0);
       }

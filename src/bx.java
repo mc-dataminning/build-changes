@@ -9,18 +9,18 @@ public class bx extends cx<bx.a> {
       return bx.a.a;
    }
 
-   public void a(aow $$0, coz $$1, chv $$2, Collection<coz> $$3) {
-      eiv $$4 = br.b($$0, (bno)($$2.u() != null ? $$2.u() : $$2));
+   public void a(aox $$0, cpd $$1, chz $$2, Collection<cpd> $$3) {
+      ejc $$4 = br.b($$0, (bnq)($$2.u() != null ? $$2.u() : $$2));
       this.a($$0, $$3x -> $$3x.a($$1, $$4, $$3));
    }
 
    public static record a(Optional<bc> b, Optional<cc> c, Optional<bc> d, Optional<cc> e) implements cx.a {
       public static final Codec<bx.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  avp.a(br.b, "player").forGetter(bx.a::a),
-                  avp.a(cc.a, "rod").forGetter(bx.a::b),
-                  avp.a(br.b, "entity").forGetter(bx.a::c),
-                  avp.a(cc.a, "item").forGetter(bx.a::d)
+                  avq.a(br.b, "player").forGetter(bx.a::a),
+                  avq.a(cc.a, "rod").forGetter(bx.a::b),
+                  avq.a(br.b, "entity").forGetter(bx.a::c),
+                  avq.a(cc.a, "item").forGetter(bx.a::d)
                )
                .apply($$0, bx.a::new)
       );
@@ -29,7 +29,7 @@ public class bx extends cx<bx.a> {
          return am.E.a(new bx.a(Optional.empty(), $$0, br.a($$1), $$2));
       }
 
-      public boolean a(coz $$0, eiv $$1, Collection<coz> $$2) {
+      public boolean a(cpd $$0, ejc $$1, Collection<cpd> $$2) {
          if (this.c.isPresent() && !this.c.get().a($$0)) {
             return false;
          } else if (this.d.isPresent() && !this.d.get().a($$1)) {
@@ -37,12 +37,12 @@ public class bx extends cx<bx.a> {
          } else {
             if (this.e.isPresent()) {
                boolean $$3 = false;
-               bno $$4 = $$1.c(elg.a);
-               if ($$4 instanceof cds $$5 && this.e.get().a($$5.q())) {
+               bnq $$4 = $$1.c(eln.a);
+               if ($$4 instanceof cdw $$5 && this.e.get().a($$5.q())) {
                   $$3 = true;
                }
 
-               for (coz $$6 : $$2) {
+               for (cpd $$6 : $$2) {
                   if (this.e.get().a($$6)) {
                      $$3 = true;
                      break;

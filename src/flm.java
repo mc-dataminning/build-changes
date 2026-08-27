@@ -1,80 +1,56 @@
-public class flm<T extends bzw> extends fmz<T> {
-   private float q;
-   private float r;
-   private float s;
+public class flm extends fmr<bzs> {
+   private final fpj a;
+   private final fpj b;
+   private final fpj f;
+   private final fpj g;
+   private final fpj h;
+   private final fpj i;
+   private final fpj j;
+   private final fpj k;
 
-   public flm(fpc $$0) {
-      super($$0);
+   public flm(fpj $$0) {
+      super(fwb::d);
+      this.a = $$0;
+      this.f = $$0.b("body");
+      this.b = $$0.b("head");
+      this.g = this.f.b("right_wing");
+      this.i = this.g.b("right_wing_tip");
+      this.h = this.f.b("left_wing");
+      this.j = this.h.b("left_wing_tip");
+      this.k = this.f.b("feet");
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      this.q = $$0.E($$3);
-      this.r = $$0.F($$3);
-      this.s = $$0.G($$3);
-      if (this.q <= 0.0F) {
-         this.n.e = 0.0F;
-         this.n.g = 0.0F;
-         this.j.e = 0.0F;
-         this.j.g = 0.0F;
-         this.k.e = 0.0F;
-         this.k.g = 0.0F;
-         this.k.b = -1.2F;
-         this.h.e = 0.0F;
-         this.i.e = 0.0F;
-         this.i.g = 0.0F;
-         this.i.b = -1.1F;
-         this.i.c = 18.0F;
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-      if ($$0.A()) {
-         this.o.e = (float) (Math.PI / 4);
-         this.o.c += -4.0F;
-         this.o.d += 5.0F;
-         this.n.c += -3.3F;
-         this.n.d++;
-         this.l.c += 8.0F;
-         this.l.d += -2.0F;
-         this.m.c += 2.0F;
-         this.m.d += -0.8F;
-         this.l.e = 1.7278761F;
-         this.m.e = 2.670354F;
-         this.j.e = (float) (-Math.PI / 20);
-         this.j.c = 16.1F;
-         this.j.d = -7.0F;
-         this.k.e = (float) (-Math.PI / 20);
-         this.k.c = 16.1F;
-         this.k.d = -7.0F;
-         this.h.e = (float) (-Math.PI / 2);
-         this.h.c = 21.0F;
-         this.h.d = 1.0F;
-         this.i.e = (float) (-Math.PI / 2);
-         this.i.c = 21.0F;
-         this.i.d = 1.0F;
-         this.p = 3;
-      }
+   public static fpp b() {
+      fpr $$0 = new fpr();
+      fps $$1 = $$0.a();
+      fps $$2 = $$1.a("body", fpo.c().a(0, 0).a(-1.5F, 0.0F, -1.0F, 3.0F, 5.0F, 2.0F), fpl.a(0.0F, 17.0F, 0.0F));
+      fps $$3 = $$1.a("head", fpo.c().a(0, 7).a(-2.0F, -3.0F, -1.0F, 4.0F, 3.0F, 2.0F), fpl.a(0.0F, 17.0F, 0.0F));
+      $$3.a("right_ear", fpo.c().a(1, 15).a(-2.5F, -4.0F, 0.0F, 3.0F, 5.0F, 0.0F), fpl.a(-1.5F, -2.0F, 0.0F));
+      $$3.a("left_ear", fpo.c().a(8, 15).a(-0.1F, -3.0F, 0.0F, 3.0F, 5.0F, 0.0F), fpl.a(1.1F, -3.0F, 0.0F));
+      fps $$4 = $$2.a("right_wing", fpo.c().a(12, 0).a(-2.0F, -2.0F, 0.0F, 2.0F, 7.0F, 0.0F), fpl.a(-1.5F, 0.0F, 0.0F));
+      $$4.a("right_wing_tip", fpo.c().a(16, 0).a(-6.0F, -2.0F, 0.0F, 6.0F, 8.0F, 0.0F), fpl.a(-2.0F, 0.0F, 0.0F));
+      fps $$5 = $$2.a("left_wing", fpo.c().a(12, 7).a(0.0F, -2.0F, 0.0F, 2.0F, 7.0F, 0.0F), fpl.a(1.5F, 0.0F, 0.0F));
+      $$5.a("left_wing_tip", fpo.c().a(16, 8).a(0.0F, -2.0F, 0.0F, 6.0F, 8.0F, 0.0F), fpl.a(2.0F, 0.0F, 0.0F));
+      $$2.a("feet", fpo.c().a(16, 16).a(-1.5F, 0.0F, 0.0F, 3.0F, 2.0F, 0.0F), fpl.a(0.0F, 5.0F, 0.0F));
+      return fpp.a($$0, 32, 32);
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if (this.q > 0.0F) {
-         this.n.g = fmy.a(this.n.g, -1.2707963F, this.q);
-         this.n.f = fmy.a(this.n.f, 1.2707963F, this.q);
-         this.j.e = -1.2707963F;
-         this.k.e = -0.47079635F;
-         this.k.g = -0.2F;
-         this.k.b = -0.2F;
-         this.h.e = -0.4F;
-         this.i.e = 0.5F;
-         this.i.g = -0.5F;
-         this.i.b = -0.3F;
-         this.i.c = 20.0F;
-         this.l.e = fmy.a(this.l.e, 0.8F, this.r);
-         this.m.e = fmy.a(this.m.e, -0.4F, this.r);
+   @Override
+   public fpj a() {
+      return this.a;
+   }
+
+   public void a(bzs $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a().e().forEach(fpj::c);
+      if ($$0.w()) {
+         this.a($$4);
       }
 
-      if (this.s > 0.0F) {
-         this.n.e = fmy.a(this.n.e, -0.58177644F, this.s);
-      }
+      this.a($$0.d, eyj.b, $$3, 1.0F);
+      this.a($$0.e, eyj.a, $$3, 1.0F);
+   }
+
+   private void a(float $$0) {
+      this.b.f = $$0 * (float) (Math.PI / 180.0);
    }
 }

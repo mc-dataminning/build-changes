@@ -10,7 +10,7 @@ public class amv {
             .executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), null, null)))
          .then(dv.a("*").then(dv.a("sound", ev.a()).suggests(hp.c).executes($$0x -> a((du)$$0x.getSource(), eh.f($$0x, "targets"), null, ev.e($$0x, "sound")))));
 
-      for (atl $$2 : atl.values()) {
+      for (atm $$2 : atm.values()) {
          $$1.then(
             ((LiteralArgumentBuilder)dv.a($$2.a()).executes($$1x -> a((du)$$1x.getSource(), eh.f($$1x, "targets"), $$2, null)))
                .then(dv.a("sound", ev.a()).suggests(hp.c).executes($$1x -> a((du)$$1x.getSource(), eh.f($$1x, "targets"), $$2, ev.e($$1x, "sound"))))
@@ -20,10 +20,10 @@ public class amv {
       $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("stopsound").requires($$0x -> $$0x.c(2))).then($$1));
    }
 
-   private static int a(du $$0, Collection<aow> $$1, @Nullable atl $$2, @Nullable aiy $$3) {
+   private static int a(du $$0, Collection<aox> $$1, @Nullable atm $$2, @Nullable aiy $$3) {
       aeb $$4 = new aeb($$3, $$2);
 
-      for (aow $$5 : $$1) {
+      for (aox $$5 : $$1) {
          $$5.d.b($$4);
       }
 

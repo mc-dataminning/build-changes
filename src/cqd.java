@@ -1,47 +1,21 @@
 import javax.annotation.Nullable;
 
-public class cqd extends cms implements cnl {
-   private final atj c;
+public class cqd extends cqm {
+   public cqd(coy.a $$0, cys $$1, cys $$2) {
+      super($$1, $$2, $$0, ie.a);
+   }
 
-   public cqd(cyo $$0, atj $$1, cou.a $$2) {
-      super($$0, $$2);
-      this.c = $$1;
+   public cqd(coy.a $$0, cys $$1, cys $$2, ie $$3) {
+      super($$1, $$2, $$0, $$3);
    }
 
    @Override
-   public blu a(cri $$0) {
-      blu $$1 = super.a($$0);
-      chh $$2 = $$0.o();
-      if ($$1.a() && $$2 != null && !$$2.f()) {
-         blt $$3 = $$0.p();
-         $$2.a($$3, cpc.qx.ao_());
+   protected boolean a(hz $$0, cvr $$1, @Nullable chl $$2, cpd $$3, dlj $$4) {
+      boolean $$5 = super.a($$0, $$1, $$2, $$3, $$4);
+      if (!$$1.B && !$$5 && $$2 != null && $$1.c_($$0) instanceof dkg $$6 && $$1.a_($$0).b() instanceof dfr $$7) {
+         $$7.a($$2, $$6, true);
       }
 
-      return $$1;
-   }
-
-   @Override
-   public String a() {
-      return this.p();
-   }
-
-   @Override
-   protected atj a(dlf $$0) {
-      return this.c;
-   }
-
-   @Override
-   public boolean a(@Nullable chh $$0, cvn $$1, hz $$2, @Nullable eno $$3) {
-      if ($$1.k($$2) && $$1.u($$2)) {
-         if (!$$1.B) {
-            $$1.a($$2, this.e().o(), 3);
-         }
-
-         $$1.a($$0, dpp.z, $$2);
-         $$1.a($$0, $$2, this.c, atl.e, 1.0F, 1.0F);
-         return true;
-      } else {
-         return false;
-      }
+      return $$5;
    }
 }

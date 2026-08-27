@@ -50,7 +50,7 @@ public class anc {
    }
 
    private static int a(du $$0, float $$1) {
-      ajq $$2 = $$0.l().aO();
+      ajq $$2 = $$0.l().aQ();
       $$2.a($$1);
       String $$3 = String.format("%.1f", $$1);
       $$0.a(() -> vq.a("commands.tick.rate.success", $$3), true);
@@ -58,8 +58,8 @@ public class anc {
    }
 
    private static int a(du $$0) {
-      ajq $$1 = $$0.l().aO();
-      String $$2 = a($$0.l().aP());
+      ajq $$1 = $$0.l().aQ();
+      String $$2 = a($$0.l().aR());
       float $$3 = $$1.f();
       String $$4 = String.format("%.1f", $$3);
       if ($$1.a()) {
@@ -68,7 +68,7 @@ public class anc {
       } else {
          if ($$1.l()) {
             $$0.a(() -> vq.c("commands.tick.status.frozen"), false);
-         } else if ($$1.h() < $$0.l().aP()) {
+         } else if ($$1.h() < $$0.l().aR()) {
             $$0.a(() -> vq.c("commands.tick.status.lagging"), false);
          } else {
             $$0.a(() -> vq.c("commands.tick.status.running"), false);
@@ -78,7 +78,7 @@ public class anc {
          $$0.a(() -> vq.a("commands.tick.query.rate.running", $$4, $$2, $$5), false);
       }
 
-      long[] $$6 = Arrays.copyOf($$0.l().aQ(), $$0.l().aQ().length);
+      long[] $$6 = Arrays.copyOf($$0.l().aS(), $$0.l().aS().length);
       Arrays.sort($$6);
       String $$7 = a($$6[$$6.length / 2]);
       String $$8 = a($$6[(int)((double)$$6.length * 0.95)]);
@@ -88,7 +88,7 @@ public class anc {
    }
 
    private static int a(du $$0, int $$1) {
-      boolean $$2 = $$0.l().aO().b($$1);
+      boolean $$2 = $$0.l().aQ().b($$1);
       if ($$2) {
          $$0.a(() -> vq.c("commands.tick.sprint.stop.success"), true);
       }
@@ -98,7 +98,7 @@ public class anc {
    }
 
    private static int a(du $$0, boolean $$1) {
-      ajq $$2 = $$0.l().aO();
+      ajq $$2 = $$0.l().aQ();
       if ($$1) {
          if ($$2.a()) {
             $$2.c();
@@ -120,7 +120,7 @@ public class anc {
    }
 
    private static int b(du $$0, int $$1) {
-      ajq $$2 = $$0.l().aO();
+      ajq $$2 = $$0.l().aQ();
       boolean $$3 = $$2.a($$1);
       if ($$3) {
          $$0.a(() -> vq.a("commands.tick.step.success", $$1), true);
@@ -132,7 +132,7 @@ public class anc {
    }
 
    private static int b(du $$0) {
-      ajq $$1 = $$0.l().aO();
+      ajq $$1 = $$0.l().aQ();
       boolean $$2 = $$1.b();
       if ($$2) {
          $$0.a(() -> vq.c("commands.tick.step.stop.success"), true);
@@ -144,7 +144,7 @@ public class anc {
    }
 
    private static int c(du $$0) {
-      ajq $$1 = $$0.l().aO();
+      ajq $$1 = $$0.l().aQ();
       boolean $$2 = $$1.c();
       if ($$2) {
          $$0.a(() -> vq.c("commands.tick.sprint.stop.success"), true);

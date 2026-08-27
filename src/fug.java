@@ -1,62 +1,67 @@
-public class fug extends ftz {
-   protected fug(fpx $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.j *= 0.3F;
-      this.k = Math.random() * 0.2F + 0.1F;
-      this.l *= 0.3F;
-      this.b(0.01F, 0.01F);
-      this.u = 0.06F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+public class fug extends fuh {
+   private final hz a;
+   private final float b;
+   private final float F;
+
+   public fug(fqe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dlj $$7) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, hz.a($$1, $$2, $$3));
+   }
+
+   public fug(fqe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dlj $$7, hz $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.a = $$8;
+      this.a(exo.P().ao().a().a($$7));
+      this.u = 1.0F;
+      this.v = 0.6F;
+      this.w = 0.6F;
+      this.x = 0.6F;
+      if (!$$7.a(cyu.i)) {
+         int $$9 = exo.P().av().a($$7, $$0, $$8, 0);
+         this.v *= (float)($$9 >> 16 & 0xFF) / 255.0F;
+         this.w *= (float)($$9 >> 8 & 0xFF) / 255.0F;
+         this.x *= (float)($$9 & 0xFF) / 255.0F;
+      }
+
+      this.D /= 2.0F;
+      this.b = this.r.i() * 3.0F;
+      this.F = this.r.i() * 3.0F;
    }
 
    @Override
-   public ftd b() {
-      return ftd.b;
+   public ftl b() {
+      return ftl.a;
    }
 
    @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.t-- <= 0) {
-         this.k();
-      } else {
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
-         this.j *= 0.98F;
-         this.k *= 0.98F;
-         this.l *= 0.98F;
-         if (this.m) {
-            if (Math.random() < 0.5) {
-               this.k();
-            }
-
-            this.j *= 0.7F;
-            this.l *= 0.7F;
-         }
-
-         hz $$0 = hz.a(this.g, this.h, this.i);
-         double $$1 = Math.max(
-            this.c.a_($$0).k(this.c, $$0).b(ie.a.b, this.g - (double)$$0.u(), this.i - (double)$$0.w()), (double)this.c.b_($$0).a((cut)this.c, $$0)
-         );
-         if ($$1 > 0.0 && this.h < (double)$$0.v() + $$1) {
-            this.k();
-         }
-      }
+   protected float c() {
+      return this.E.a((this.b + 1.0F) / 4.0F);
    }
 
-   public static class a implements ftc<kc> {
-      private final ftu a;
+   @Override
+   protected float d() {
+      return this.E.a(this.b / 4.0F);
+   }
 
-      public a(ftu $$0) {
-         this.a = $$0;
-      }
+   @Override
+   protected float e() {
+      return this.E.c(this.F / 4.0F);
+   }
 
-      public fsz a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fug $$8 = new fug($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
+   @Override
+   protected float f() {
+      return this.E.c((this.F + 1.0F) / 4.0F);
+   }
+
+   @Override
+   public int a(float $$0) {
+      int $$1 = super.a($$0);
+      return $$1 == 0 && this.c.B(this.a) ? fvr.a(this.c, this.a) : $$1;
+   }
+
+   public static class a implements ftk<jr> {
+      public fth a(jr $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         dlj $$8 = $$0.c();
+         return !$$8.i() && !$$8.a(cyu.bQ) && $$8.z() ? new fug($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8) : null;
       }
    }
 }

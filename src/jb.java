@@ -35,11 +35,11 @@ public class jb extends jd {
       return new jb(a($$0.u()), a($$0.v()), a($$0.w()));
    }
 
-   public static jb a(cuu $$0, int $$1) {
+   public static jb a(cuy $$0, int $$1) {
       return new jb($$0.e, $$1, $$0.f);
    }
 
-   public static jb a(dow $$0) {
+   public static jb a(dpd $$0) {
       return a($$0.dm());
    }
 
@@ -51,8 +51,8 @@ public class jb extends jd {
       return new jb(b($$0), c($$0), d($$0));
    }
 
-   public static jb a(dnb $$0) {
-      return a($$0.f(), $$0.an());
+   public static jb a(dnf $$0) {
+      return a($$0.f(), $$0.am());
    }
 
    public static long a(long $$0, ie $$1) {
@@ -64,7 +64,7 @@ public class jb extends jd {
    }
 
    public static int a(double $$0) {
-      return a(awh.a($$0));
+      return a(awi.a($$0));
    }
 
    public static int a(int $$0) {
@@ -72,7 +72,7 @@ public class jb extends jd {
    }
 
    public static int b(double $$0) {
-      return awh.a($$0) >> 4;
+      return awi.a($$0) >> 4;
    }
 
    public static int b(int $$0) {
@@ -191,8 +191,8 @@ public class jb extends jd {
       return this.j().b(8, 8, 8);
    }
 
-   public cuu r() {
-      return new cuu(this.a(), this.c());
+   public cuy r() {
+      return new cuy(this.a(), this.c());
    }
 
    public static long c(hz $$0) {
@@ -225,7 +225,7 @@ public class jb extends jd {
       return a($$2 - $$1, $$3 - $$1, $$4 - $$1, $$2 + $$1, $$3 + $$1, $$4 + $$1);
    }
 
-   public static Stream<jb> a(cuu $$0, int $$1, int $$2, int $$3) {
+   public static Stream<jb> a(cuy $$0, int $$1, int $$2, int $$3) {
       int $$4 = $$0.e;
       int $$5 = $$0.f;
       return a($$4 - $$1, $$2, $$5 - $$1, $$4 + $$1, $$3 - 1, $$5 + $$1);

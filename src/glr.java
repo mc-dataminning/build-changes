@@ -1,3 +1,3 @@
 public interface glr {
-   void log(glp var1);
+   void a(gko var1, glt var2, float var3);
 }

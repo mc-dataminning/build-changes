@@ -13,14 +13,14 @@ public class alr {
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)dv.a("pardon").requires($$0x -> $$0x.c(3)))
             .then(
                dv.a("targets", ej.a())
-                  .suggests(($$0x, $$1) -> dz.a(((du)$$0x.getSource()).l().ae().f().a(), $$1))
+                  .suggests(($$0x, $$1) -> dz.a(((du)$$0x.getSource()).l().ag().f().a(), $$1))
                   .executes($$0x -> a((du)$$0x.getSource(), ej.a($$0x, "targets")))
             )
       );
    }
 
    private static int a(du $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      ast $$2 = $$0.l().ae().f();
+      asu $$2 = $$0.l().ag().f();
       int $$3 = 0;
 
       for (GameProfile $$4 : $$1) {

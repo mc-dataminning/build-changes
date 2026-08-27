@@ -3,27 +3,27 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
 public record ck(
-   Optional<ck.b> b, Optional<aix<cwm>> c, Optional<aix<ebe>> d, Optional<aix<cvn>> e, Optional<Boolean> f, Optional<ch> g, Optional<av> h, Optional<by> i
+   Optional<ck.b> b, Optional<aix<cwq>> c, Optional<aix<ebl>> d, Optional<aix<cvr>> e, Optional<Boolean> f, Optional<ch> g, Optional<av> h, Optional<by> i
 ) {
    public static final Codec<ck> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               avp.a(ck.b.a, "position").forGetter(ck::a),
-               avp.a(aix.a(kg.at), "biome").forGetter(ck::b),
-               avp.a(aix.a(kg.aD), "structure").forGetter(ck::c),
-               avp.a(aix.a(kg.aM), "dimension").forGetter(ck::d),
-               avp.a(Codec.BOOL, "smokey").forGetter(ck::e),
-               avp.a(ch.a, "light").forGetter(ck::f),
-               avp.a(av.a, "block").forGetter(ck::g),
-               avp.a(by.a, "fluid").forGetter(ck::h)
+               avq.a(ck.b.a, "position").forGetter(ck::a),
+               avq.a(aix.a(kg.at), "biome").forGetter(ck::b),
+               avq.a(aix.a(kg.aD), "structure").forGetter(ck::c),
+               avq.a(aix.a(kg.aM), "dimension").forGetter(ck::d),
+               avq.a(Codec.BOOL, "smokey").forGetter(ck::e),
+               avq.a(ch.a, "light").forGetter(ck::f),
+               avq.a(av.a, "block").forGetter(ck::g),
+               avq.a(by.a, "fluid").forGetter(ck::h)
             )
             .apply($$0, ck::new)
    );
 
    private static Optional<ck> a(
       Optional<ck.b> $$0,
-      Optional<aix<cwm>> $$1,
-      Optional<aix<ebe>> $$2,
-      Optional<aix<cvn>> $$3,
+      Optional<aix<cwq>> $$1,
+      Optional<aix<ebl>> $$2,
+      Optional<aix<cvr>> $$3,
       Optional<Boolean> $$4,
       Optional<ch> $$5,
       Optional<av> $$6,
@@ -34,17 +34,17 @@ public record ck(
          : Optional.of(new ck($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
    }
 
-   public boolean a(aov $$0, double $$1, double $$2, double $$3) {
+   public boolean a(aow $$0, double $$1, double $$2, double $$3) {
       if (this.b.isPresent() && !this.b.get().a($$1, $$2, $$3)) {
          return false;
-      } else if (this.e.isPresent() && this.e.get() != $$0.ae()) {
+      } else if (this.e.isPresent() && this.e.get() != $$0.ad()) {
          return false;
       } else {
          hz $$4 = hz.a($$1, $$2, $$3);
          boolean $$5 = $$0.p($$4);
          if (!this.c.isPresent() || $$5 && $$0.t($$4).a(this.c.get())) {
             if (!this.d.isPresent() || $$5 && $$0.a().a($$4, this.d.get()).b()) {
-               if (!this.f.isPresent() || $$5 && this.f.get() == czc.a($$0, $$4)) {
+               if (!this.f.isPresent() || $$5 && this.f.get() == czg.a($$0, $$4)) {
                   if (this.g.isPresent() && !this.g.get().a($$0, $$4)) {
                      return false;
                   } else {
@@ -66,15 +66,15 @@ public record ck(
       return this.b;
    }
 
-   public Optional<aix<cwm>> b() {
+   public Optional<aix<cwq>> b() {
       return this.c;
    }
 
-   public Optional<aix<ebe>> c() {
+   public Optional<aix<ebl>> c() {
       return this.d;
    }
 
-   public Optional<aix<cvn>> d() {
+   public Optional<aix<cvr>> d() {
       return this.e;
    }
 
@@ -98,9 +98,9 @@ public record ck(
       private cm.c a;
       private cm.c b;
       private cm.c c;
-      private Optional<aix<cwm>> d;
-      private Optional<aix<ebe>> e;
-      private Optional<aix<cvn>> f;
+      private Optional<aix<cwq>> d;
+      private Optional<aix<ebl>> e;
+      private Optional<aix<cvr>> f;
       private Optional<Boolean> g;
       private Optional<ch> h;
       private Optional<av> i;
@@ -123,15 +123,15 @@ public record ck(
          return new ck.a();
       }
 
-      public static ck.a a(aix<cwm> $$0) {
+      public static ck.a a(aix<cwq> $$0) {
          return a().d($$0);
       }
 
-      public static ck.a b(aix<cvn> $$0) {
+      public static ck.a b(aix<cvr> $$0) {
          return a().f($$0);
       }
 
-      public static ck.a c(aix<ebe> $$0) {
+      public static ck.a c(aix<ebl> $$0) {
          return a().e($$0);
       }
 
@@ -154,17 +154,17 @@ public record ck(
          return this;
       }
 
-      public ck.a d(aix<cwm> $$0) {
+      public ck.a d(aix<cwq> $$0) {
          this.d = Optional.of($$0);
          return this;
       }
 
-      public ck.a e(aix<ebe> $$0) {
+      public ck.a e(aix<ebl> $$0) {
          this.e = Optional.of($$0);
          return this;
       }
 
-      public ck.a f(aix<cvn> $$0) {
+      public ck.a f(aix<cvr> $$0) {
          this.f = Optional.of($$0);
          return this;
       }
@@ -198,7 +198,7 @@ public record ck(
    static record b(cm.c b, cm.c c, cm.c d) {
       public static final Codec<ck.b> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  avp.a(cm.c.d, "x", cm.c.c).forGetter(ck.b::a), avp.a(cm.c.d, "y", cm.c.c).forGetter(ck.b::b), avp.a(cm.c.d, "z", cm.c.c).forGetter(ck.b::c)
+                  avq.a(cm.c.d, "x", cm.c.c).forGetter(ck.b::a), avq.a(cm.c.d, "y", cm.c.c).forGetter(ck.b::b), avq.a(cm.c.d, "z", cm.c.c).forGetter(ck.b::c)
                )
                .apply($$0, ck.b::new)
       );

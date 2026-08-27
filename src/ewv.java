@@ -1,33 +1,52 @@
-import com.mojang.serialization.Codec;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public enum ewv implements awj, axc {
-   a(0, "false", "options.off"),
-   b(1, "fast", "options.clouds.fast"),
-   c(2, "true", "options.clouds.fancy");
+public class ewv extends ewo {
+   private static final Logger b = LogUtils.getLogger();
+   private static final vq c = vq.c("mco.minigame.world.starting.screen.title");
+   private final long d;
+   private final euf e;
+   private final eux f;
 
-   public static final Codec<ewv> d = axc.a(ewv::values);
-   private final int e;
-   private final String f;
-   private final String g;
-
-   private ewv(int $$0, String $$1, String $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public ewv(long $$0, euf $$1, eux $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
    @Override
-   public String c() {
-      return this.f;
+   public void run() {
+      esx $$0 = esx.a();
+
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            if ($$0.c(this.d, this.e.a)) {
+               a(this.f);
+               break;
+            }
+         } catch (eul var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't start mini game!");
+            this.a(var5);
+         }
+      }
    }
 
    @Override
-   public int a() {
-      return this.e;
-   }
-
-   @Override
-   public String b() {
-      return this.g;
+   public vq a() {
+      return c;
    }
 }

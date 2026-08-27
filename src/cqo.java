@@ -1,56 +1,60 @@
-import java.util.function.Supplier;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMultimap.Builder;
 
-public enum cqo implements cqm {
-   a(0, 59, 2.0F, 0.0F, 15, () -> cry.a(auh.b)),
-   b(1, 131, 4.0F, 1.0F, 5, () -> cry.a(auh.ax)),
-   c(2, 250, 6.0F, 2.0F, 14, () -> cry.a(cpc.oD)),
-   d(3, 1561, 8.0F, 3.0F, 10, () -> cry.a(cpc.ox)),
-   e(0, 32, 12.0F, 0.0F, 22, () -> cry.a(cpc.oH)),
-   f(4, 2031, 9.0F, 4.0F, 15, () -> cry.a(cpc.oI));
+public class cqo extends cqr {
+   private final float a;
+   private final Multimap<ij<bpk>, bpn> b;
 
-   private final int g;
-   private final int h;
-   private final float i;
-   private final float j;
-   private final int k;
-   private final awc<cry> l;
+   public cqo(cqq $$0, int $$1, float $$2, coy.a $$3) {
+      super($$0, $$3);
+      this.a = (float)$$1 + $$0.c();
+      Builder<ij<bpk>, bpn> $$4 = ImmutableMultimap.builder();
+      $$4.put(bpp.c, new bpn(m, "Weapon modifier", (double)this.a, bpn.a.a));
+      $$4.put(bpp.e, new bpn(n, "Weapon modifier", (double)$$2, bpn.a.a));
+      this.b = $$4.build();
+   }
 
-   private cqo(int $$0, int $$1, float $$2, float $$3, int $$4, Supplier<cry> $$5) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      this.j = $$3;
-      this.k = $$4;
-      this.l = new awc<>($$5);
+   public float h() {
+      return this.a;
    }
 
    @Override
-   public int a() {
-      return this.h;
+   public boolean a(dlj $$0, cvr $$1, hz $$2, chl $$3) {
+      return !$$3.f();
    }
 
    @Override
-   public float b() {
-      return this.i;
+   public float a(cpd $$0, dlj $$1) {
+      if ($$1.a(cyu.bs)) {
+         return 15.0F;
+      } else {
+         return $$1.a(aua.bD) ? 1.5F : 1.0F;
+      }
    }
 
    @Override
-   public float c() {
-      return this.j;
+   public boolean a(cpd $$0, boi $$1, boi $$2) {
+      $$0.a(1, $$2, bnx.a);
+      return true;
    }
 
    @Override
-   public int d() {
-      return this.g;
+   public boolean a(cpd $$0, cvr $$1, dlj $$2, hz $$3, boi $$4) {
+      if ($$2.h($$1, $$3) != 0.0F) {
+         $$0.a(2, $$4, bnx.a);
+      }
+
+      return true;
    }
 
    @Override
-   public int e() {
-      return this.k;
+   public boolean a_(dlj $$0) {
+      return $$0.a(cyu.bs);
    }
 
    @Override
-   public cry f() {
-      return this.l.a();
+   public Multimap<ij<bpk>, bpn> a(bnx $$0) {
+      return $$0 == bnx.a ? this.b : super.a($$0);
    }
 }

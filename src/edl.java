@@ -1,53 +1,81 @@
-public class edl {
-   private static final aiy[] a = new aiy[]{
-      new aiy("nether_fossils/fossil_1"),
-      new aiy("nether_fossils/fossil_2"),
-      new aiy("nether_fossils/fossil_3"),
-      new aiy("nether_fossils/fossil_4"),
-      new aiy("nether_fossils/fossil_5"),
-      new aiy("nether_fossils/fossil_6"),
-      new aiy("nether_fossils/fossil_7"),
-      new aiy("nether_fossils/fossil_8"),
-      new aiy("nether_fossils/fossil_9"),
-      new aiy("nether_fossils/fossil_10"),
-      new aiy("nether_fossils/fossil_11"),
-      new aiy("nether_fossils/fossil_12"),
-      new aiy("nether_fossils/fossil_13"),
-      new aiy("nether_fossils/fossil_14")
-   };
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 
-   public static void a(eff $$0, ebj $$1, awo $$2, hz $$3) {
-      dfa $$4 = dfa.a($$2);
-      $$1.a(new edl.a($$0, ac.a(a, $$2), $$3, $$4));
+public final class edl extends ebl {
+   public static final int d = 128;
+   public static final int e = 20;
+   public static final Codec<edl> f = avq.<edl>a(
+         RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     a($$0),
+                     ecu.b.fieldOf("start_pool").forGetter($$0x -> $$0x.g),
+                     aiy.a.optionalFieldOf("start_jigsaw_name").forGetter($$0x -> $$0x.h),
+                     Codec.intRange(0, 20).fieldOf("size").forGetter($$0x -> $$0x.i),
+                     dzs.c.fieldOf("start_height").forGetter($$0x -> $$0x.j),
+                     Codec.BOOL.fieldOf("use_expansion_hack").forGetter($$0x -> $$0x.k),
+                     dqv.a.g.optionalFieldOf("project_start_to_heightmap").forGetter($$0x -> $$0x.l),
+                     Codec.intRange(1, 128).fieldOf("max_distance_from_center").forGetter($$0x -> $$0x.m),
+                     Codec.list(ecw.b).optionalFieldOf("pool_aliases", List.of()).forGetter($$0x -> $$0x.n)
+                  )
+                  .apply($$0, edl::new)
+         ),
+         edl::a
+      )
+      .codec();
+   private final ij<ecu> g;
+   private final Optional<aiy> h;
+   private final int i;
+   private final dzs j;
+   private final boolean k;
+   private final Optional<dqv.a> l;
+   private final int m;
+   private final List<ecw> n;
+
+   private static DataResult<edl> a(edl $$0) {
+      int $$1 = switch ($$0.d()) {
+         case a -> 0;
+         case b, c, d -> 12;
+      };
+      return $$0.m + $$1 > 128 ? DataResult.error(() -> "Structure size including terrain adaptation must not exceed 128") : DataResult.success($$0);
    }
 
-   public static class a extends ebo {
-      public a(eff $$0, aiy $$1, hz $$2, dfa $$3) {
-         super(ebv.ac, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
-      }
+   public edl(ebl.c $$0, ij<ecu> $$1, Optional<aiy> $$2, int $$3, dzs $$4, boolean $$5, Optional<dqv.a> $$6, int $$7, List<ecw> $$8) {
+      super($$0);
+      this.g = $$1;
+      this.h = $$2;
+      this.i = $$3;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.m = $$7;
+      this.n = $$8;
+   }
 
-      public a(eff $$0, sw $$1) {
-         super(ebv.ac, $$1, $$0, $$1x -> a(dfa.valueOf($$1.l("Rot"))));
-      }
+   public edl(ebl.c $$0, ij<ecu> $$1, int $$2, dzs $$3, boolean $$4, dqv.a $$5) {
+      this($$0, $$1, Optional.empty(), $$2, $$3, $$4, Optional.of($$5), 80, List.of());
+   }
 
-      private static efa a(dfa $$0) {
-         return new efa().a($$0).a(ddk.a).a(eeg.d);
-      }
+   public edl(ebl.c $$0, ij<ecu> $$1, int $$2, dzs $$3, boolean $$4) {
+      this($$0, $$1, Optional.empty(), $$2, $$3, $$4, Optional.empty(), 80, List.of());
+   }
 
-      @Override
-      protected void a(ebu $$0, sw $$1) {
-         super.a($$0, $$1);
-         $$1.a("Rot", this.c.d().name());
-      }
+   @Override
+   public Optional<ebl.b> a(ebl.a $$0) {
+      cuy $$1 = $$0.h();
+      int $$2 = this.j.a($$0.f(), new drs($$0.b(), $$0.i()));
+      hz $$3 = new hz($$1.d(), $$2, $$1.e());
+      return eco.a($$0, this.g, this.h, this.i, $$3, this.k, this.l, this.m, ecy.create(this.n, $$3, $$0.g()));
+   }
 
-      @Override
-      protected void a(String $$0, hz $$1, cwc $$2, awo $$3, eaw $$4) {
-      }
+   @Override
+   public ebu<?> e() {
+      return ebu.f;
+   }
 
-      @Override
-      public void a(cwi $$0, cwg $$1, dnc $$2, awo $$3, eaw $$4, cuu $$5, hz $$6) {
-         $$4.b(this.b.b(this.c, this.d));
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      }
+   public List<ecw> f() {
+      return this.n;
    }
 }

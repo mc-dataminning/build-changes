@@ -4,7 +4,7 @@ public class afs implements xx<aes> {
    private final aiy c;
    private final boolean d;
 
-   public afs(int $$0, csd<?> $$1, boolean $$2) {
+   public afs(int $$0, csh<?> $$1, boolean $$2) {
       this.b = $$0;
       this.c = $$1.a();
       this.d = $$2;

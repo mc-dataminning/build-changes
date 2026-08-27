@@ -8,7 +8,7 @@ public class cv extends cx<cv.a> {
       return cv.a.a;
    }
 
-   public void a(aow $$0, csd<?> $$1) {
+   public void a(aox $$0, csh<?> $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -18,10 +18,10 @@ public class cv extends cx<cv.a> {
 
    public static record a(Optional<bc> b, aiy c) implements cx.a {
       public static final Codec<cv.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(avp.a(br.b, "player").forGetter(cv.a::a), aiy.a.fieldOf("recipe").forGetter(cv.a::b)).apply($$0, cv.a::new)
+         $$0 -> $$0.group(avq.a(br.b, "player").forGetter(cv.a::a), aiy.a.fieldOf("recipe").forGetter(cv.a::b)).apply($$0, cv.a::new)
       );
 
-      public boolean a(csd<?> $$0) {
+      public boolean a(csh<?> $$0) {
          return this.c.equals($$0.a());
       }
 

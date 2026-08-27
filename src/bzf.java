@@ -1,122 +1,58 @@
-import com.mojang.logging.LogUtils;
+import java.util.function.ToDoubleFunction;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class bzf implements cva {
-   private static final Logger a = LogUtils.getLogger();
-   private boolean b;
-   private bzf.a c;
-   private int d;
-   private int e;
-   private int f;
-   private int g;
-   private int h;
-
-   public bzf() {
-      this.c = bzf.a.c;
-   }
-
-   @Override
-   public int a(aov $$0, boolean $$1, boolean $$2) {
-      if (!$$0.P() && $$1) {
-         float $$3 = $$0.f(0.0F);
-         if ((double)$$3 == 0.5) {
-            this.c = $$0.z.a(10) == 0 ? bzf.a.b : bzf.a.c;
-         }
-
-         if (this.c == bzf.a.c) {
-            return 0;
-         } else {
-            if (!this.b) {
-               if (!this.a($$0)) {
-                  return 0;
-               }
-
-               this.b = true;
-            }
-
-            if (this.e > 0) {
-               this.e--;
-               return 0;
-            } else {
-               this.e = 2;
-               if (this.d > 0) {
-                  this.b($$0);
-                  this.d--;
-               } else {
-                  this.c = bzf.a.c;
-               }
-
-               return 1;
-            }
-         }
-      } else {
-         this.c = bzf.a.c;
-         this.b = false;
-         return 0;
-      }
-   }
-
-   private boolean a(aov $$0) {
-      for (chh $$1 : $$0.x()) {
-         if (!$$1.P_()) {
-            hz $$2 = $$1.dm();
-            if ($$0.c($$2) && !$$0.t($$2).a(aty.af)) {
-               for (int $$3 = 0; $$3 < 10; $$3++) {
-                  float $$4 = $$0.z.i() * (float) (Math.PI * 2);
-                  this.f = $$2.u() + awh.d(awh.b($$4) * 32.0F);
-                  this.g = $$2.v();
-                  this.h = $$2.w() + awh.d(awh.a($$4) * 32.0F);
-                  if (this.a($$0, new hz(this.f, this.g, this.h)) != null) {
-                     this.e = 0;
-                     this.d = 20;
-                     break;
-                  }
-               }
-
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   private void b(aov $$0) {
-      ens $$1 = this.a($$0, new hz(this.f, this.g, this.h));
-      if ($$1 != null) {
-         cfg $$2;
-         try {
-            $$2 = new cfg($$0);
-            $$2.a($$0, $$0.d_($$2.dm()), bok.h, null, null);
-         } catch (Exception var5) {
-            a.warn("Failed to create zombie for village siege at {}", $$1, var5);
-            return;
-         }
-
-         $$2.b($$1.c, $$1.d, $$1.e, $$0.z.i() * 360.0F, 0.0F);
-         $$0.a_($$2);
-      }
+public class bzf {
+   @Nullable
+   public static enz a(boq $$0, int $$1, int $$2) {
+      return a($$0, $$1, $$2, $$0::h);
    }
 
    @Nullable
-   private ens a(aov $$0, hz $$1) {
-      for (int $$2 = 0; $$2 < 10; $$2++) {
-         int $$3 = $$1.u() + $$0.z.a(16) - 8;
-         int $$4 = $$1.w() + $$0.z.a(16) - 8;
-         int $$5 = $$0.a(dqo.a.b, $$3, $$4);
-         hz $$6 = new hz($$3, $$5, $$4);
-         if ($$0.c($$6) && cen.b(bnu.bs, $$0, bok.h, $$6, $$0.z)) {
-            return ens.c($$6);
-         }
-      }
-
-      return null;
+   public static enz a(boq $$0, int $$1, int $$2, ToDoubleFunction<hz> $$3) {
+      boolean $$4 = bzd.a($$0, $$1);
+      return bzg.a(() -> {
+         hz $$4x = bzg.a($$0.eh(), $$1, $$2);
+         hz $$5 = a($$0, $$1, $$4, $$4x);
+         return $$5 == null ? null : a($$0, $$5);
+      }, $$3);
    }
 
-   static enum a {
-      a,
-      b,
-      c;
+   @Nullable
+   public static enz a(boq $$0, int $$1, int $$2, enz $$3) {
+      enz $$4 = $$3.a($$0.dr(), $$0.dt(), $$0.dx());
+      boolean $$5 = bzd.a($$0, $$1);
+      return a($$0, $$1, $$2, $$4, $$5);
+   }
+
+   @Nullable
+   public static enz b(boq $$0, int $$1, int $$2, enz $$3) {
+      enz $$4 = $$0.dk().d($$3);
+      boolean $$5 = bzd.a($$0, $$1);
+      return a($$0, $$1, $$2, $$4, $$5);
+   }
+
+   @Nullable
+   private static enz a(boq $$0, int $$1, int $$2, enz $$3, boolean $$4) {
+      return bzg.a($$0, () -> {
+         hz $$5 = bzg.a($$0.eh(), $$1, $$2, 0, $$3.c, $$3.e, (float) (Math.PI / 2));
+         if ($$5 == null) {
+            return null;
+         } else {
+            hz $$6 = a($$0, $$1, $$4, $$5);
+            return $$6 == null ? null : a($$0, $$6);
+         }
+      });
+   }
+
+   @Nullable
+   public static hz a(boq $$0, hz $$1) {
+      $$1 = bzg.a($$1, $$0.dM().ak(), $$1x -> bzd.c($$0, $$1x));
+      return !bzd.a($$0, $$1) && !bzd.b($$0, $$1) ? $$1 : null;
+   }
+
+   @Nullable
+   public static hz a(boq $$0, int $$1, boolean $$2, hz $$3) {
+      hz $$4 = bzg.a($$0, $$1, $$0.eh(), $$3);
+      return !bzd.a($$4, $$0) && !bzd.a($$2, $$0, $$4) && !bzd.a($$0.N(), $$4) ? $$4 : null;
    }
 }

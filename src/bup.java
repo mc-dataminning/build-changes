@@ -1,45 +1,77 @@
-public class bup extends bvo {
-   private final bzw g;
+import java.util.function.Predicate;
 
-   public bup(bzw $$0, double $$1) {
-      super($$0, $$1, 8);
-      this.g = $$0;
+public class bup extends buw {
+   private static final int g = 240;
+   private final Predicate<blt> h;
+   protected int a;
+   protected int b = -1;
+   protected int c = -1;
+
+   public bup(bok $$0, Predicate<blt> $$1) {
+      super($$0);
+      this.h = $$1;
+   }
+
+   public bup(bok $$0, int $$1, Predicate<blt> $$2) {
+      this($$0, $$2);
+      this.c = $$1;
+   }
+
+   protected int f() {
+      return Math.max(240, this.c);
    }
 
    @Override
    public boolean a() {
-      return this.g.u() && !this.g.gg() && super.a();
+      if (!super.a()) {
+         return false;
+      } else {
+         return !this.d.dM().Z().b(cvn.c) ? false : this.a(this.d.dM().aj()) && !this.h();
+      }
    }
 
    @Override
    public void c() {
       super.c();
-      this.g.y(false);
+      this.a = 0;
+   }
+
+   @Override
+   public boolean b() {
+      return this.a <= this.f() && !this.h() && this.e.a(this.d.dk(), 2.0) && this.a(this.d.dM().aj());
    }
 
    @Override
    public void d() {
       super.d();
-      this.g.y(false);
+      this.d.dM().a(this.d.aj(), this.e, -1);
    }
 
    @Override
    public void e() {
       super.e();
-      this.g.y(this.m());
-   }
-
-   @Override
-   protected boolean a(cvq $$0, hz $$1) {
-      if (!$$0.u($$1.c())) {
-         return false;
-      } else {
-         dlf $$2 = $$0.a_($$1);
-         if ($$2.a(cyq.cv)) {
-            return dja.a($$0, $$1) < 1;
-         } else {
-            return $$2.a(cyq.cD) && $$2.c(dbv.b) ? true : $$2.a(atz.R, $$0x -> $$0x.d(cyh.b).map($$0xx -> $$0xx != dls.a).orElse(true));
+      if (this.d.eh().a(20) == 0) {
+         this.d.dM().c(1019, this.e, 0);
+         if (!this.d.aF) {
+            this.d.a(this.d.fo());
          }
       }
+
+      this.a++;
+      int $$0 = (int)((float)this.a / (float)this.f() * 10.0F);
+      if ($$0 != this.b) {
+         this.d.dM().a(this.d.aj(), this.e, $$0);
+         this.b = $$0;
+      }
+
+      if (this.a == this.f() && this.a(this.d.dM().aj())) {
+         this.d.dM().a(this.e, false);
+         this.d.dM().c(1021, this.e, 0);
+         this.d.dM().c(2001, this.e, cys.i(this.d.dM().a_(this.e)));
+      }
+   }
+
+   private boolean a(blt $$0) {
+      return this.h.test($$0);
    }
 }

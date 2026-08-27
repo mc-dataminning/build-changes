@@ -1,13 +1,13 @@
 public class ady implements xx<aag> {
    public static final xo<vb, ady> a = xx.a(ady::a, ady::new);
-   private final ij<atj> b;
-   private final atl c;
+   private final ij<atk> b;
+   private final atm c;
    private final int d;
    private final float e;
    private final float f;
    private final long g;
 
-   public ady(ij<atj> $$0, atl $$1, bno $$2, float $$3, float $$4, long $$5) {
+   public ady(ij<atk> $$0, atm $$1, bnq $$2, float $$3, float $$4, long $$5) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2.aj();
@@ -17,8 +17,8 @@ public class ady implements xx<aag> {
    }
 
    private ady(vb $$0) {
-      this.b = atj.d.decode($$0);
-      this.c = $$0.b(atl.class);
+      this.b = atk.d.decode($$0);
+      this.c = $$0.b(atm.class);
       this.d = $$0.n();
       this.e = $$0.readFloat();
       this.f = $$0.readFloat();
@@ -26,7 +26,7 @@ public class ady implements xx<aag> {
    }
 
    private void a(vb $$0) {
-      atj.d.encode($$0, this.b);
+      atk.d.encode($$0, this.b);
       $$0.a(this.c);
       $$0.c(this.d);
       $$0.a(this.e);
@@ -43,11 +43,11 @@ public class ady implements xx<aag> {
       $$0.a(this);
    }
 
-   public ij<atj> b() {
+   public ij<atk> b() {
       return this.b;
    }
 
-   public atl e() {
+   public atm e() {
       return this.c;
    }
 

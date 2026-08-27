@@ -1,31 +1,27 @@
-public class gce extends gby<caj, fnb> {
-   private static final aiy a = new aiy("textures/entity/parrot/parrot_red_blue.png");
-   private static final aiy i = new aiy("textures/entity/parrot/parrot_blue.png");
-   private static final aiy j = new aiy("textures/entity/parrot/parrot_green.png");
-   private static final aiy k = new aiy("textures/entity/parrot/parrot_yellow_blue.png");
-   private static final aiy l = new aiy("textures/entity/parrot/parrot_grey.png");
+public class gce extends gcg<ceq, fmy<ceq>> {
+   private static final aiy a = new aiy("textures/entity/slime/magmacube.png");
 
-   public gce(gas.a $$0) {
-      super($$0, new fnb($$0.a(fpb.aC)), 0.3F);
+   public gce(gba.a $$0) {
+      super($$0, new fmy<>($$0.a(fpi.aw)), 0.25F);
    }
 
-   public aiy a(caj $$0) {
-      return a($$0.go());
+   protected int a(ceq $$0, hz $$1) {
+      return 15;
    }
 
-   public static aiy a(caj.b $$0) {
-      return switch ($$0) {
-         case a -> a;
-         case b -> i;
-         case c -> j;
-         case d -> k;
-         case e -> l;
-      };
+   public aiy a(ceq $$0) {
+      return a;
    }
 
-   public float a(caj $$0, float $$1) {
-      float $$2 = awh.i($$1, $$0.bZ, $$0.bW);
-      float $$3 = awh.i($$1, $$0.bY, $$0.bX);
-      return (awh.a($$2) + 1.0F) * $$3;
+   public void a(ceq $$0, float $$1, float $$2, esh $$3, fvt $$4, int $$5) {
+      this.d = 0.25F * (float)$$0.gh();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   protected void a(ceq $$0, esh $$1, float $$2) {
+      int $$3 = $$0.gh();
+      float $$4 = awi.i($$2, $$0.bS, $$0.e) / ((float)$$3 * 0.5F + 1.0F);
+      float $$5 = 1.0F / ($$4 + 1.0F);
+      $$1.b($$5 * (float)$$3, 1.0F / $$5 * (float)$$3, $$5 * (float)$$3);
    }
 }

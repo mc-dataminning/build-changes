@@ -44,7 +44,7 @@ public class ej implements ArgumentType<ej.a> {
 
          String $$4 = $$0.getString().substring($$3, $$0.getCursor());
          return $$1 -> {
-            Optional<GameProfile> $$2 = $$1.l().ar().a($$4);
+            Optional<GameProfile> $$2 = $$1.l().at().a($$4);
             return Collections.singleton($$2.orElseThrow(a::create));
          };
       }
@@ -85,13 +85,13 @@ public class ej implements ArgumentType<ej.a> {
 
       @Override
       public Collection<GameProfile> getNames(du $$0) throws CommandSyntaxException {
-         List<aow> $$1 = this.a.d($$0);
+         List<aox> $$1 = this.a.d($$0);
          if ($$1.isEmpty()) {
             throw eh.e.create();
          } else {
             List<GameProfile> $$2 = Lists.newArrayList();
 
-            for (aow $$3 : $$1) {
+            for (aox $$3 : $$1) {
                $$2.add($$3.fS());
             }
 

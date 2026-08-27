@@ -1,18 +1,60 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.Set;
 
-public class emj {
-   private static final Codec<emi> d = kf.J.q().dispatch(emi::a, emh::a);
-   public static final Codec<emi> a = avp.a(
-      (Supplier<Codec<emi>>)(() -> Codec.either(emg.c, d)
-            .xmap($$0 -> (emi)$$0.map(Function.identity(), Function.identity()), $$0 -> $$0 instanceof emg $$1 ? Either.left($$1) : Either.right($$0)))
+public record emj(Optional<Long> b, ejb c) implements emb {
+   public static final Codec<emj> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(avq.a(Codec.LONG, "period").forGetter(emj::c), ejb.a.fieldOf("value").forGetter(emj::d)).apply($$0, emj::new)
    );
-   public static final emh b = a("storage", emk.a);
-   public static final emh c = a("context", emg.b);
 
-   private static emh a(String $$0, Codec<? extends emi> $$1) {
-      return iv.a(kf.J, new aiy($$0), new emh($$1));
+   @Override
+   public emc b() {
+      return emd.r;
+   }
+
+   @Override
+   public Set<elk<?>> a() {
+      return this.c.a();
+   }
+
+   public boolean a(ejc $$0) {
+      aow $$1 = $$0.d();
+      long $$2 = $$1.Y();
+      if (this.b.isPresent()) {
+         $$2 %= this.b.get();
+      }
+
+      return this.c.b($$0, (int)$$2);
+   }
+
+   public static emj.a a(ejb $$0) {
+      return new emj.a($$0);
+   }
+
+   public Optional<Long> c() {
+      return this.b;
+   }
+
+   public ejb d() {
+      return this.c;
+   }
+
+   public static class a implements emb.a {
+      private Optional<Long> a = Optional.empty();
+      private final ejb b;
+
+      public a(ejb $$0) {
+         this.b = $$0;
+      }
+
+      public emj.a a(long $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public emj a() {
+         return new emj(this.a, this.b);
+      }
    }
 }

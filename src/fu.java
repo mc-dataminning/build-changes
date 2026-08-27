@@ -27,9 +27,9 @@ public class fu implements ArgumentType<fq> {
       return new fu($$0);
    }
 
-   public static enr a(CommandContext<du> $$0, String $$1) {
-      ens $$2 = ((fq)$$0.getArgument($$1, fq.class)).a((du)$$0.getSource());
-      return new enr((float)$$2.c, (float)$$2.e);
+   public static eny a(CommandContext<du> $$0, String $$1) {
+      enz $$2 = ((fq)$$0.getArgument($$1, fq.class)).a((du)$$0.getSource());
+      return new eny((float)$$2.c, (float)$$2.e);
    }
 
    public fq a(StringReader $$0) throws CommandSyntaxException {

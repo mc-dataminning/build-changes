@@ -1,87 +1,79 @@
 import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class bvy extends bvb {
-   public static final int a = 120;
-   protected final boo b;
-   protected double c;
+public class bvy extends bvf {
+   public static final int a = 1;
+   protected final boq b;
+   protected final double c;
    protected double d;
    protected double e;
-   protected final double f;
-   protected int g;
-   protected boolean h;
-   private final boolean i;
+   protected double f;
+   protected boolean g;
 
-   public bvy(boo $$0, double $$1) {
-      this($$0, $$1, 120);
-   }
-
-   public bvy(boo $$0, double $$1, int $$2) {
-      this($$0, $$1, $$2, true);
-   }
-
-   public bvy(boo $$0, double $$1, int $$2, boolean $$3) {
+   public bvy(boq $$0, double $$1) {
       this.b = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.i = $$3;
-      this.a(EnumSet.of(bvb.a.a));
+      this.c = $$1;
+      this.a(EnumSet.of(bvf.a.a));
    }
 
    @Override
    public boolean a() {
-      if (this.b.cO()) {
+      if (!this.h()) {
          return false;
       } else {
-         if (!this.h) {
-            if (this.i && this.b.em() >= 100) {
-               return false;
-            }
-
-            if (this.b.eh().a(b(this.g)) != 0) {
-               return false;
+         if (this.b.bN()) {
+            hz $$0 = this.a(this.b.dM(), this.b, 5);
+            if ($$0 != null) {
+               this.d = (double)$$0.u();
+               this.e = (double)$$0.v();
+               this.f = (double)$$0.w();
+               return true;
             }
          }
 
-         ens $$0 = this.h();
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.c = $$0.c;
-            this.d = $$0.d;
-            this.e = $$0.e;
-            this.h = false;
-            return true;
-         }
+         return this.i();
       }
    }
 
-   @Nullable
-   protected ens h() {
-      return byy.a(this.b, 10, 7);
+   protected boolean h() {
+      return this.b.ei() != null || this.b.dB() || this.b.bN();
    }
 
-   @Override
-   public boolean b() {
-      return !this.b.N().l() && !this.b.cO();
+   protected boolean i() {
+      enz $$0 = bzc.a(this.b, 5, 4);
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.d = $$0.c;
+         this.e = $$0.d;
+         this.f = $$0.e;
+         return true;
+      }
+   }
+
+   public boolean k() {
+      return this.g;
    }
 
    @Override
    public void c() {
-      this.b.N().a(this.c, this.d, this.e, this.f);
+      this.b.N().a(this.d, this.e, this.f, this.c);
+      this.g = true;
    }
 
    @Override
    public void d() {
-      this.b.N().n();
-      super.d();
+      this.g = false;
    }
 
-   public void i() {
-      this.h = true;
+   @Override
+   public boolean b() {
+      return !this.b.N().l();
    }
 
-   public void c(int $$0) {
-      this.g = $$0;
+   @Nullable
+   protected hz a(cux $$0, bnq $$1, int $$2) {
+      hz $$3 = $$1.dm();
+      return !$$0.a_($$3).k($$0, $$3).c() ? null : hz.a($$1.dm(), $$2, 1, $$1x -> $$0.b_($$1x).a(auf.a)).orElse(null);
    }
 }

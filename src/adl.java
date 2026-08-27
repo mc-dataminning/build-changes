@@ -5,16 +5,16 @@ public class adl implements xx<aag> {
    private final int d;
    private final int e;
 
-   public adl(bno $$0) {
+   public adl(bnq $$0) {
       this($$0.aj(), $$0.dp());
    }
 
-   public adl(int $$0, ens $$1) {
+   public adl(int $$0, enz $$1) {
       this.b = $$0;
       double $$2 = 3.9;
-      double $$3 = awh.a($$1.c, -3.9, 3.9);
-      double $$4 = awh.a($$1.d, -3.9, 3.9);
-      double $$5 = awh.a($$1.e, -3.9, 3.9);
+      double $$3 = awi.a($$1.c, -3.9, 3.9);
+      double $$4 = awi.a($$1.d, -3.9, 3.9);
+      double $$5 = awi.a($$1.e, -3.9, 3.9);
       this.c = (int)($$3 * 8000.0);
       this.d = (int)($$4 * 8000.0);
       this.e = (int)($$5 * 8000.0);

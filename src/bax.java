@@ -5,7 +5,7 @@ import com.mojang.serialization.Dynamic;
 
 public class bax extends bcn {
    private static final int a = 6;
-   private static final awo b = awo.a();
+   private static final awp b = awp.a();
 
    public bax(Schema $$0, boolean $$1) {
       super($$0, $$1, "EntityZombieVillagerTypeFix", bdn.y, "Zombie");

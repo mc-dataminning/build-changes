@@ -1,22 +1,16 @@
-public class gdr extends gby<cfd, foq<cfd>> {
-   private static final aiy a = new aiy("textures/entity/witch.png");
+public class gdr extends gcg<cay, foq<cay>> {
+   private static final aiy a = new aiy("textures/entity/turtle/big_sea_turtle.png");
 
-   public gdr(gas.a $$0) {
-      super($$0, new foq<>($$0.a(fpb.bQ)), 0.5F);
-      this.a(new gfq<>(this, $$0.d()));
+   public gdr(gba.a $$0) {
+      super($$0, new foq<>($$0.a(fpi.bJ)), 0.7F);
    }
 
-   public void a(cfd $$0, float $$1, float $$2, esa $$3, fvl $$4, int $$5) {
-      this.f.b(!$$0.eT().b());
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected float a(cay $$0) {
+      float $$1 = super.b($$0);
+      return $$0.o_() ? $$1 * 0.83F : $$1;
    }
 
-   public aiy a(cfd $$0) {
+   public aiy b(cay $$0) {
       return a;
-   }
-
-   protected void a(cfd $$0, esa $$1, float $$2) {
-      float $$3 = 0.9375F;
-      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

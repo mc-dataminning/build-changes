@@ -1,70 +1,71 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public record dkq(int c, int d, float e, float f, float g, float h, int i, int j, bke<cwe> k, bke<aiy> l) {
-   public static dkq a = new dkq(14, 4, 6.0F, 2.0F, 2.0F, 1.0F, 40, 36000, bke.b(), bke.<aiy>a().a(eit.aN).a(eit.aM).a());
-   public static MapCodec<dkq> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 128).optionalFieldOf("required_player_range", a.c).forGetter(dkq::a),
-               Codec.intRange(1, 128).optionalFieldOf("spawn_range", a.d).forGetter(dkq::b),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("total_mobs", a.e).forGetter(dkq::c),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("simultaneous_mobs", a.f).forGetter(dkq::d),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("total_mobs_added_per_player", a.g).forGetter(dkq::e),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("simultaneous_mobs_added_per_player", a.h).forGetter(dkq::f),
-               Codec.intRange(0, Integer.MAX_VALUE).optionalFieldOf("ticks_between_spawn", a.i).forGetter(dkq::g),
-               Codec.intRange(0, Integer.MAX_VALUE).optionalFieldOf("target_cooldown_length", a.j).forGetter(dkq::h),
-               cwe.c.optionalFieldOf("spawn_potentials", bke.b()).forGetter(dkq::i),
-               bke.a(aiy.a).optionalFieldOf("loot_tables_to_eject", a.l).forGetter(dkq::j)
-            )
-            .apply($$0, dkq::new)
-   );
+public class dkq extends dix implements cwj, dkt.a {
+   private static final Logger a = LogUtils.getLogger();
+   private dkt b;
 
-   public int a(int $$0) {
-      return (int)Math.floor((double)(this.e + this.g * (float)$$0));
+   public dkq(hz $$0, dlj $$1) {
+      super(diz.Q, $$0, $$1);
+      dks $$2 = dks.a;
+      this.b = new dkt(this, $$2);
    }
 
-   public int b(int $$0) {
-      return (int)Math.floor((double)(this.f + this.h * (float)$$0));
+   @Override
+   public void a(sw $$0) {
+      super.a($$0);
+      this.b.a().parse(tk.a, $$0).resultOrPartial(a::error).ifPresent($$0x -> this.b = $$0x);
+      if (this.o != null) {
+         this.g();
+      }
    }
 
-   public int a() {
-      return this.c;
+   @Override
+   protected void b(sw $$0) {
+      super.b($$0);
+      this.b.a().encodeStart(tk.a, this.b).get().ifLeft($$1 -> $$0.a((sw)$$1)).ifRight($$0x -> a.warn("Failed to encode TrialSpawner {}", $$0x.message()));
    }
 
-   public int b() {
-      return this.d;
+   public aan c() {
+      return aan.a(this);
    }
 
-   public float c() {
-      return this.e;
+   @Override
+   public sw aA_() {
+      return this.b.c().a(this.r().c(dhg.b));
    }
 
-   public float d() {
-      return this.f;
+   @Override
+   public boolean u() {
+      return true;
    }
 
-   public float e() {
-      return this.g;
+   @Override
+   public void a(bnw<?> $$0, awp $$1) {
+      this.b.c().a(this.b, $$1, $$0);
+      this.e();
    }
 
-   public float f() {
-      return this.h;
+   public dkt d() {
+      return this.b;
    }
 
-   public int g() {
-      return this.i;
+   @Override
+   public dkw f() {
+      return !this.r().b(dlz.by) ? dkw.a : this.r().c(dlz.by);
    }
 
-   public int h() {
-      return this.j;
+   @Override
+   public void a(cvr $$0, dkw $$1) {
+      this.e();
+      $$0.b(this.p, this.r().a(dlz.by, $$1));
    }
 
-   public bke<cwe> i() {
-      return this.k;
-   }
-
-   public bke<aiy> j() {
-      return this.l;
+   @Override
+   public void g() {
+      this.e();
+      if (this.o != null) {
+         this.o.a(this.p, this.r(), this.r(), 3);
+      }
    }
 }

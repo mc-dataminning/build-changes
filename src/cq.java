@@ -8,14 +8,14 @@ public class cq extends cx<cq.a> {
       return cq.a.a;
    }
 
-   public void a(aow $$0, bno $$1, bmn $$2, float $$3, float $$4, boolean $$5) {
-      eiv $$6 = br.b($$0, $$1);
+   public void a(aox $$0, bnq $$1, bmp $$2, float $$3, float $$4, boolean $$5) {
+      ejc $$6 = br.b($$0, $$1);
       this.a($$0, $$6x -> $$6x.a($$0, $$6, $$2, $$3, $$4, $$5));
    }
 
    public static record a(Optional<bc> b, Optional<bf> c, Optional<bc> d) implements cx.a {
       public static final Codec<cq.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(avp.a(br.b, "player").forGetter(cq.a::a), avp.a(bf.a, "damage").forGetter(cq.a::c), avp.a(br.b, "entity").forGetter(cq.a::d))
+         $$0 -> $$0.group(avq.a(br.b, "player").forGetter(cq.a::a), avq.a(bf.a, "damage").forGetter(cq.a::c), avq.a(br.b, "entity").forGetter(cq.a::d))
                .apply($$0, cq.a::new)
       );
 
@@ -43,7 +43,7 @@ public class cq extends cx<cq.a> {
          return am.h.a(new cq.a(Optional.empty(), Optional.of($$0.b()), br.a($$1)));
       }
 
-      public boolean a(aow $$0, eiv $$1, bmn $$2, float $$3, float $$4, boolean $$5) {
+      public boolean a(aox $$0, ejc $$1, bmp $$2, float $$3, float $$4, boolean $$5) {
          return this.c.isPresent() && !this.c.get().a($$0, $$2, $$3, $$4, $$5) ? false : !this.d.isPresent() || this.d.get().a($$1);
       }
 

@@ -1,72 +1,59 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
 
-public class dyu extends dza {
-   public static final Codec<dyu> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dyu::new));
+public class dyu extends dyv {
+   public static final Codec<dyu> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(dyu::new, $$0 -> $$0.b).codec();
+   private final float b;
 
-   public dyu(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   @Override
+   protected dyw<?> a() {
+      return dyw.b;
+   }
+
+   public dyu(float $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected dzb<?> a() {
-      return dzb.e;
-   }
-
-   @Override
-   public List<dxi.a> a(cvt $$0, BiConsumer<hz, dlf> $$1, awo $$2, int $$3, hz $$4, dws $$5) {
-      List<dxi.a> $$6 = Lists.newArrayList();
-      hz $$7 = $$4.d();
-      a($$0, $$1, $$2, $$7, $$5);
-      a($$0, $$1, $$2, $$7.h(), $$5);
-      a($$0, $$1, $$2, $$7.f(), $$5);
-      a($$0, $$1, $$2, $$7.f().h(), $$5);
-      ie $$8 = ie.c.a.a($$2);
-      int $$9 = $$3 - $$2.a(4);
-      int $$10 = 2 - $$2.a(3);
-      int $$11 = $$4.u();
-      int $$12 = $$4.v();
-      int $$13 = $$4.w();
-      int $$14 = $$11;
-      int $$15 = $$13;
-      int $$16 = $$12 + $$3 - 1;
-
-      for (int $$17 = 0; $$17 < $$3; $$17++) {
-         if ($$17 >= $$9 && $$10 > 0) {
-            $$14 += $$8.j();
-            $$15 += $$8.l();
-            $$10--;
-         }
-
-         int $$18 = $$12 + $$17;
-         hz $$19 = new hz($$14, $$18, $$15);
-         if (dve.b($$0, $$19)) {
-            this.b($$0, $$1, $$2, $$19, $$5);
-            this.b($$0, $$1, $$2, $$19.h(), $$5);
-            this.b($$0, $$1, $$2, $$19.f(), $$5);
-            this.b($$0, $$1, $$2, $$19.h().f(), $$5);
-         }
-      }
-
-      $$6.add(new dxi.a(new hz($$14, $$16, $$15), 0, true));
-
-      for (int $$20 = -1; $$20 <= 2; $$20++) {
-         for (int $$21 = -1; $$21 <= 2; $$21++) {
-            if (($$20 < 0 || $$20 > 1 || $$21 < 0 || $$21 > 1) && $$2.a(3) <= 0) {
-               int $$22 = $$2.a(3) + 2;
-
-               for (int $$23 = 0; $$23 < $$22; $$23++) {
-                  this.b($$0, $$1, $$2, new hz($$11 + $$20, $$16 - $$23 - 1, $$13 + $$21), $$5);
-               }
-
-               $$6.add(new dxi.a(new hz($$14 + $$20, $$16, $$15 + $$21), 0, false));
+   public void a(dyv.a $$0) {
+      awp $$1 = $$0.b();
+      $$0.d().forEach($$2 -> {
+         if ($$1.i() < this.b) {
+            hz $$3 = $$2.g();
+            if ($$0.a($$3)) {
+               a($$3, dhm.d, $$0);
             }
          }
-      }
 
-      return $$6;
+         if ($$1.i() < this.b) {
+            hz $$4 = $$2.h();
+            if ($$0.a($$4)) {
+               a($$4, dhm.f, $$0);
+            }
+         }
+
+         if ($$1.i() < this.b) {
+            hz $$5 = $$2.e();
+            if ($$0.a($$5)) {
+               a($$5, dhm.e, $$0);
+            }
+         }
+
+         if ($$1.i() < this.b) {
+            hz $$6 = $$2.f();
+            if ($$0.a($$6)) {
+               a($$6, dhm.c, $$0);
+            }
+         }
+      });
+   }
+
+   private static void a(hz $$0, dma $$1, dyv.a $$2) {
+      $$2.a($$0, $$1);
+      int $$3 = 4;
+
+      for (hz var4 = $$0.d(); $$2.a(var4) && $$3 > 0; $$3--) {
+         $$2.a(var4, $$1);
+         var4 = var4.d();
+      }
    }
 }

@@ -1,15 +1,15 @@
 public class aat implements xx<aag> {
    public static final xo<uq, aat> a = xx.a(aat::a, aat::new);
-   private final blr b;
+   private final blt b;
    private final boolean c;
 
-   public aat(blr $$0, boolean $$1) {
+   public aat(blt $$0, boolean $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
    private aat(uq $$0) {
-      this.b = blr.a($$0.readUnsignedByte());
+      this.b = blt.a($$0.readUnsignedByte());
       this.c = $$0.readBoolean();
    }
 
@@ -31,7 +31,7 @@ public class aat implements xx<aag> {
       return this.c;
    }
 
-   public blr e() {
+   public blt e() {
       return this.b;
    }
 }

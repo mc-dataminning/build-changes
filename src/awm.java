@@ -1,49 +1,45 @@
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import java.io.ByteArrayInputStream;
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 
-public interface awm {
-   awm a(String var1);
+public record awm(int a, int b) {
+   private static final long c = -8552249625308161526L;
+   private static final int d = 1229472850;
+   private static final int e = 13;
 
-   void b(String var1);
-
-   public static class a implements awm {
-      private final Multimap<String, String> a;
-      private final Supplier<String> b;
-      @Nullable
-      private String c;
-
-      public a() {
-         this(HashMultimap.create(), () -> "");
+   public static awm a(InputStream $$0) throws IOException {
+      DataInputStream $$1 = new DataInputStream($$0);
+      if ($$1.readLong() != -8552249625308161526L) {
+         throw new IOException("Bad PNG Signature");
+      } else if ($$1.readInt() != 13) {
+         throw new IOException("Bad length for IHDR chunk!");
+      } else if ($$1.readInt() != 1229472850) {
+         throw new IOException("Bad type for IHDR chunk!");
+      } else {
+         int $$2 = $$1.readInt();
+         int $$3 = $$1.readInt();
+         return new awm($$2, $$3);
       }
+   }
 
-      private a(Multimap<String, String> $$0, Supplier<String> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   public static awm a(byte[] $$0) throws IOException {
+      return a(new ByteArrayInputStream($$0));
+   }
 
-      private String b() {
-         if (this.c == null) {
-            this.c = this.b.get();
-         }
-
-         return this.c;
-      }
-
-      @Override
-      public awm a(String $$0) {
-         return new awm.a(this.a, () -> this.b() + $$0);
-      }
-
-      @Override
-      public void b(String $$0) {
-         this.a.put(this.b(), $$0);
-      }
-
-      public Multimap<String, String> a() {
-         return ImmutableMultimap.copyOf(this.a);
+   public static void a(ByteBuffer $$0) throws IOException {
+      ByteOrder $$1 = $$0.order();
+      $$0.order(ByteOrder.BIG_ENDIAN);
+      if ($$0.getLong(0) != -8552249625308161526L) {
+         throw new IOException("Bad PNG Signature");
+      } else if ($$0.getInt(8) != 13) {
+         throw new IOException("Bad length for IHDR chunk!");
+      } else if ($$0.getInt(12) != 1229472850) {
+         throw new IOException("Bad type for IHDR chunk!");
+      } else {
+         $$0.order($$1);
       }
    }
 }

@@ -1,20 +1,20 @@
-public class ctt extends cti {
-   public ctt(cti.a $$0, bnv... $$1) {
-      super($$0, auh.bd, $$1);
+public class ctt extends ctm {
+   protected ctt(ctm.a $$0, bnx... $$1) {
+      super($$0, aui.bf, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 10 * $$0;
+      return 5 + 20 * ($$0 - 1);
    }
 
    @Override
    public int b(int $$0) {
-      return this.a($$0) + 30;
+      return super.a($$0) + 50;
    }
 
    @Override
    public int a() {
-      return 3;
+      return 2;
    }
 }

@@ -1,30 +1,33 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dia extends dcd {
-   public static final MapCodec<dia> c = b(dia::new);
-   protected static final eol g = cyo.a(4.0, 9.0, 4.0, 12.0, 16.0, 12.0);
+public class dia extends dfu implements dhv {
+   public static final MapCodec<dia> f = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dhv.a.e.fieldOf("weathering_state").forGetter(czt::c), u()).apply($$0, dia::new)
+   );
+   private final dhv.a g;
 
    @Override
    public MapCodec<dia> a() {
-      return c;
+      return f;
    }
 
-   public dia(dle.d $$0) {
-      super($$0, ie.a, g, false, 0.1);
-   }
-
-   @Override
-   protected int a(awo $$0) {
-      return ddt.a($$0);
+   public dia(dhv.a $$0, dli.d $$1) {
+      super($$1);
+      this.g = $$0;
    }
 
    @Override
-   protected cyo b() {
-      return cyq.oA;
+   protected void b(dlj $$0, aow $$1, hz $$2, awp $$3) {
+      this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected boolean g(dlf $$0) {
-      return ddt.a($$0);
+   protected boolean e_(dlj $$0) {
+      return dhv.c($$0.b()).isPresent();
+   }
+
+   public dhv.a g() {
+      return this.g;
    }
 }

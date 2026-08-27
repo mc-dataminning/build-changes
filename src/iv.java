@@ -30,8 +30,8 @@ public interface iv<T> extends Keyable, io<T> {
                   .<DataResult>map(DataResult::success)
                   .orElseGet(() -> DataResult.error(() -> "Unknown registry element in " + this.c() + ":" + $$0x))
          );
-      Codec<T> $$1 = avp.a($$0x -> this.d((T)$$0x).isPresent() ? this.a((T)$$0x) : -1, this::a, -1);
-      return avp.a(avp.b($$0, $$1), this::f, this::f);
+      Codec<T> $$1 = avq.a($$0x -> this.d((T)$$0x).isPresent() ? this.a((T)$$0x) : -1, this::a, -1);
+      return avq.a(avq.b($$0, $$1), this::f, this::f);
    }
 
    default Codec<ij<T>> r() {
@@ -45,7 +45,7 @@ public interface iv<T> extends Keyable, io<T> {
                   .<DataResult>map(DataResult::success)
                   .orElseGet(() -> DataResult.error(() -> "Unknown registry element in " + this.c() + ":" + $$0x))
          );
-      return avp.a($$0, (Function<ij<T>, Lifecycle>)($$0x -> this.f((T)$$0x.a())), $$0x -> this.f((T)$$0x.a()));
+      return avq.a($$0, (Function<ij<T>, Lifecycle>)($$0x -> this.f((T)$$0x.a())), $$0x -> this.f((T)$$0x.a()));
    }
 
    default <U> Stream<U> keys(DynamicOps<U> $$0) {
@@ -93,7 +93,7 @@ public interface iv<T> extends Keyable, io<T> {
 
    Set<aix<T>> f();
 
-   Optional<ij.c<T>> a(awo var1);
+   Optional<ij.c<T>> a(awp var1);
 
    default Stream<T> s() {
       return StreamSupport.stream(this.spliterator(), false);
@@ -142,25 +142,25 @@ public interface iv<T> extends Keyable, io<T> {
 
    Stream<ij.c<T>> h();
 
-   Optional<in.c<T>> b(auo<T> var1);
+   Optional<in.c<T>> b(aup<T> var1);
 
-   default Iterable<ij<T>> c(auo<T> $$0) {
+   default Iterable<ij<T>> c(aup<T> $$0) {
       return (Iterable<ij<T>>)DataFixUtils.orElse(this.b($$0), List.of());
    }
 
-   default Optional<ij<T>> a(auo<T> $$0, awo $$1) {
+   default Optional<ij<T>> a(aup<T> $$0, awp $$1) {
       return this.b($$0).flatMap($$1x -> $$1x.a($$1));
    }
 
-   in.c<T> a(auo<T> var1);
+   in.c<T> a(aup<T> var1);
 
-   Stream<Pair<auo<T>, in.c<T>>> i();
+   Stream<Pair<aup<T>, in.c<T>>> i();
 
-   Stream<auo<T>> j();
+   Stream<aup<T>> j();
 
    void m();
 
-   void a(Map<auo<T>, List<ij<T>>> var1);
+   void a(Map<aup<T>, List<ij<T>>> var1);
 
    default io<ij<T>> t() {
       return new io<ij<T>>() {
@@ -197,12 +197,12 @@ public interface iv<T> extends Keyable, io<T> {
          }
 
          @Override
-         public Optional<in.c<T>> a(auo<T> $$0) {
+         public Optional<in.c<T>> a(aup<T> $$0) {
             return Optional.of(this.b($$0));
          }
 
          @Override
-         public in.c<T> b(auo<T> $$0) {
+         public in.c<T> b(aup<T> $$0) {
             return iv.this.a($$0);
          }
       };

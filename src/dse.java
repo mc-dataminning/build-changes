@@ -1,20 +1,16 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Function;
 
-class dse extends dsg {
-   public static final Codec<dse> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dse::new));
+abstract class dse implements dsc {
+   protected final List<dsc> e;
 
-   public dse(jd $$0) {
-      super($$0);
+   protected dse(List<dsc> $$0) {
+      this.e = $$0;
    }
 
-   @Override
-   protected boolean a(dlf $$0) {
-      return $$0.r();
-   }
-
-   @Override
-   public drw<?> a() {
-      return drw.f;
+   public static <T extends dse> Codec<T> a(Function<List<dsc>, T> $$0) {
+      return RecordCodecBuilder.create($$1 -> $$1.group(dsc.b.listOf().fieldOf("predicates").forGetter($$0xx -> $$0xx.e)).apply($$1, $$0));
    }
 }

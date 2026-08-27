@@ -1,174 +1,154 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.MoreObjects;
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSortedMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.Decoder;
+import com.mojang.serialization.Encoder;
+import com.mojang.serialization.MapCodec;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class dlk {
-   private final Predicate<dlj>[][][] a;
-   private final int b;
-   private final int c;
-   private final int d;
+public class dlk<O, S extends dll<O, S>> {
+   static final Pattern a = Pattern.compile("^[a-z0-9_]+$");
+   private final O b;
+   private final ImmutableSortedMap<String, dmm<?>> c;
+   private final ImmutableList<S> d;
 
-   public dlk(Predicate<dlj>[][][] $$0) {
-      this.a = $$0;
-      this.b = $$0.length;
-      if (this.b > 0) {
-         this.c = $$0[0].length;
-         if (this.c > 0) {
-            this.d = $$0[0][0].length;
-         } else {
-            this.d = 0;
-         }
-      } else {
-         this.c = 0;
-         this.d = 0;
+   protected dlk(Function<O, S> $$0, O $$1, dlk.b<O, S> $$2, Map<String, dmm<?>> $$3) {
+      this.b = $$1;
+      this.c = ImmutableSortedMap.copyOf($$3);
+      Supplier<S> $$4 = () -> $$0.apply($$1);
+      MapCodec<S> $$5 = MapCodec.of(Encoder.empty(), Decoder.unit($$4));
+      UnmodifiableIterator $$7 = this.c.entrySet().iterator();
+
+      while ($$7.hasNext()) {
+         Entry<String, dmm<?>> $$6 = (Entry<String, dmm<?>>)$$7.next();
+         $$5 = a($$5, $$4, $$6.getKey(), $$6.getValue());
       }
+
+      MapCodec<S> $$7x = $$5;
+      Map<Map<dmm<?>, Comparable<?>>, S> $$8 = Maps.newLinkedHashMap();
+      List<S> $$9 = Lists.newArrayList();
+      Stream<List<Pair<dmm<?>, Comparable<?>>>> $$10 = Stream.of(Collections.emptyList());
+      UnmodifiableIterator var11 = this.c.values().iterator();
+
+      while (var11.hasNext()) {
+         dmm<?> $$11 = (dmm<?>)var11.next();
+         $$10 = $$10.flatMap($$1x -> $$11.a().stream().map($$2x -> {
+               List<Pair<dmm<?>, Comparable<?>>> $$3x = Lists.newArrayList($$1x);
+               $$3x.add(Pair.of($$11, $$2x));
+               return $$3x;
+            }));
+      }
+
+      $$10.forEach($$5x -> {
+         ImmutableMap<dmm<?>, Comparable<?>> $$6 = $$5x.stream().collect(ImmutableMap.toImmutableMap(Pair::getFirst, Pair::getSecond));
+         S $$7xx = $$2.create($$1, $$6, $$7);
+         $$8.put($$6, $$7xx);
+         $$9.add($$7xx);
+      });
+
+      for (S $$12 : $$9) {
+         $$12.a($$8);
+      }
+
+      this.d = ImmutableList.copyOf($$9);
    }
 
-   public int a() {
-      return this.b;
+   private static <S extends dll<?, S>, T extends Comparable<T>> MapCodec<S> a(MapCodec<S> $$0, Supplier<S> $$1, String $$2, dmm<T> $$3) {
+      return Codec.mapPair($$0, $$3.e().fieldOf($$2).orElseGet($$0x -> {
+      }, () -> $$3.a($$1.get()))).xmap($$1x -> (dll)((dll)$$1x.getFirst()).a($$3, ((dmm.a)$$1x.getSecond()).b()), $$1x -> Pair.of($$1x, $$3.a($$1x)));
    }
 
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
+   public ImmutableList<S> a() {
       return this.d;
    }
 
-   @VisibleForTesting
-   public Predicate<dlj>[][][] d() {
-      return this.a;
+   public S b() {
+      return (S)this.d.get(0);
+   }
+
+   public O c() {
+      return this.b;
+   }
+
+   public Collection<dmm<?>> d() {
+      return this.c.values();
+   }
+
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this)
+         .add("block", this.b)
+         .add("properties", this.c.values().stream().map(dmm::f).collect(Collectors.toList()))
+         .toString();
    }
 
    @Nullable
-   @VisibleForTesting
-   public dlk.b a(cvq $$0, hz $$1, ie $$2, ie $$3) {
-      LoadingCache<hz, dlj> $$4 = a($$0, false);
-      return this.a($$1, $$2, $$3, $$4);
+   public dmm<?> a(String $$0) {
+      return (dmm<?>)this.c.get($$0);
    }
 
-   @Nullable
-   private dlk.b a(hz $$0, ie $$1, ie $$2, LoadingCache<hz, dlj> $$3) {
-      for (int $$4 = 0; $$4 < this.d; $$4++) {
-         for (int $$5 = 0; $$5 < this.c; $$5++) {
-            for (int $$6 = 0; $$6 < this.b; $$6++) {
-               if (!this.a[$$6][$$5][$$4].test((dlj)$$3.getUnchecked(a($$0, $$1, $$2, $$4, $$5, $$6)))) {
-                  return null;
-               }
-            }
-         }
+   public static class a<O, S extends dll<O, S>> {
+      private final O a;
+      private final Map<String, dmm<?>> b = Maps.newHashMap();
+
+      public a(O $$0) {
+         this.a = $$0;
       }
 
-      return new dlk.b($$0, $$1, $$2, $$3, this.d, this.c, this.b);
-   }
+      public dlk.a<O, S> a(dmm<?>... $$0) {
+         for (dmm<?> $$1 : $$0) {
+            this.a($$1);
+            this.b.put($$1.f(), $$1);
+         }
 
-   @Nullable
-   public dlk.b a(cvq $$0, hz $$1) {
-      LoadingCache<hz, dlj> $$2 = a($$0, false);
-      int $$3 = Math.max(Math.max(this.d, this.c), this.b);
+         return this;
+      }
 
-      for (hz $$4 : hz.a($$1, $$1.b($$3 - 1, $$3 - 1, $$3 - 1))) {
-         for (ie $$5 : ie.values()) {
-            for (ie $$6 : ie.values()) {
-               if ($$6 != $$5 && $$6 != $$5.g()) {
-                  dlk.b $$7 = this.a($$4, $$5, $$6, $$2);
-                  if ($$7 != null) {
-                     return $$7;
+      private <T extends Comparable<T>> void a(dmm<T> $$0) {
+         String $$1 = $$0.f();
+         if (!dlk.a.matcher($$1).matches()) {
+            throw new IllegalArgumentException(this.a + " has invalidly named property: " + $$1);
+         } else {
+            Collection<T> $$2 = $$0.a();
+            if ($$2.size() <= 1) {
+               throw new IllegalArgumentException(this.a + " attempted use property " + $$1 + " with <= 1 possible values");
+            } else {
+               for (T $$3 : $$2) {
+                  String $$4 = $$0.a($$3);
+                  if (!dlk.a.matcher($$4).matches()) {
+                     throw new IllegalArgumentException(this.a + " has property: " + $$1 + " with invalidly named value: " + $$4);
                   }
                }
+
+               if (this.b.containsKey($$1)) {
+                  throw new IllegalArgumentException(this.a + " has duplicate property: " + $$1);
+               }
             }
          }
       }
 
-      return null;
-   }
-
-   public static LoadingCache<hz, dlj> a(cvq $$0, boolean $$1) {
-      return CacheBuilder.newBuilder().build(new dlk.a($$0, $$1));
-   }
-
-   protected static hz a(hz $$0, ie $$1, ie $$2, int $$3, int $$4, int $$5) {
-      if ($$1 != $$2 && $$1 != $$2.g()) {
-         jd $$6 = new jd($$1.j(), $$1.k(), $$1.l());
-         jd $$7 = new jd($$2.j(), $$2.k(), $$2.l());
-         jd $$8 = $$6.d($$7);
-         return $$0.b(
-            $$7.u() * -$$4 + $$8.u() * $$3 + $$6.u() * $$5, $$7.v() * -$$4 + $$8.v() * $$3 + $$6.v() * $$5, $$7.w() * -$$4 + $$8.w() * $$3 + $$6.w() * $$5
-         );
-      } else {
-         throw new IllegalArgumentException("Invalid forwards & up combination");
+      public dlk<O, S> a(Function<O, S> $$0, dlk.b<O, S> $$1) {
+         return new dlk<>($$0, this.a, $$1, this.b);
       }
    }
 
-   static class a extends CacheLoader<hz, dlj> {
-      private final cvq a;
-      private final boolean b;
-
-      public a(cvq $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public dlj a(hz $$0) {
-         return new dlj(this.a, $$0, this.b);
-      }
-   }
-
-   public static class b {
-      private final hz a;
-      private final ie b;
-      private final ie c;
-      private final LoadingCache<hz, dlj> d;
-      private final int e;
-      private final int f;
-      private final int g;
-
-      public b(hz $$0, ie $$1, ie $$2, LoadingCache<hz, dlj> $$3, int $$4, int $$5, int $$6) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-      }
-
-      public hz a() {
-         return this.a;
-      }
-
-      public ie b() {
-         return this.b;
-      }
-
-      public ie c() {
-         return this.c;
-      }
-
-      public int d() {
-         return this.e;
-      }
-
-      public int e() {
-         return this.f;
-      }
-
-      public int f() {
-         return this.g;
-      }
-
-      public dlj a(int $$0, int $$1, int $$2) {
-         return (dlj)this.d.getUnchecked(dlk.a(this.a, this.b(), this.c(), $$0, $$1, $$2));
-      }
-
-      @Override
-      public String toString() {
-         return MoreObjects.toStringHelper(this).add("up", this.c).add("forwards", this.b).add("frontTopLeft", this.a).toString();
-      }
+   public interface b<O, S> {
+      S create(O var1, ImmutableMap<dmm<?>, Comparable<?>> var2, MapCodec<S> var3);
    }
 }

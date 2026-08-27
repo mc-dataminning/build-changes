@@ -8,13 +8,13 @@ public class pw {
    private static final axi<Float> g = axi.a($$0 -> 1.25F - 6.25F / ($$0 + 5.0F));
    private static final axi<Float> h = axi.a($$0 -> $$0 * 2.0F);
 
-   public static <C, I extends axi<C>> avj<C, I> a(I $$0, I $$1, I $$2, boolean $$3) {
+   public static <C, I extends axi<C>> avk<C, I> a(I $$0, I $$1, I $$2, boolean $$3) {
       axi<Float> $$4 = $$3 ? f : e;
-      avj<C, I> $$5 = a($$1, $$2, -0.15F, 0.0F, 0.0F, 0.1F, 0.0F, -0.03F, false, false, $$4);
-      avj<C, I> $$6 = a($$1, $$2, -0.1F, 0.03F, 0.1F, 0.1F, 0.01F, -0.03F, false, false, $$4);
-      avj<C, I> $$7 = a($$1, $$2, -0.1F, 0.03F, 0.1F, 0.7F, 0.01F, -0.03F, true, true, $$4);
-      avj<C, I> $$8 = a($$1, $$2, -0.05F, 0.03F, 0.1F, 1.0F, 0.01F, 0.01F, true, true, $$4);
-      return avj.<C, I>a($$0, $$4)
+      avk<C, I> $$5 = a($$1, $$2, -0.15F, 0.0F, 0.0F, 0.1F, 0.0F, -0.03F, false, false, $$4);
+      avk<C, I> $$6 = a($$1, $$2, -0.1F, 0.03F, 0.1F, 0.1F, 0.01F, -0.03F, false, false, $$4);
+      avk<C, I> $$7 = a($$1, $$2, -0.1F, 0.03F, 0.1F, 0.7F, 0.01F, -0.03F, true, true, $$4);
+      avk<C, I> $$8 = a($$1, $$2, -0.05F, 0.03F, 0.1F, 1.0F, 0.01F, 0.01F, true, true, $$4);
+      return avk.<C, I>a($$0, $$4)
          .a(-1.1F, 0.044F)
          .a(-1.02F, -0.2222F)
          .a(-0.51F, -0.2222F)
@@ -28,9 +28,9 @@ public class pw {
          .a();
    }
 
-   public static <C, I extends axi<C>> avj<C, I> a(I $$0, I $$1, I $$2, I $$3, boolean $$4) {
+   public static <C, I extends axi<C>> avk<C, I> a(I $$0, I $$1, I $$2, I $$3, boolean $$4) {
       axi<Float> $$5 = $$4 ? g : e;
-      return avj.<C, I>a($$0, e)
+      return avk.<C, I>a($$0, e)
          .a(-0.19F, 3.95F)
          .a(-0.15F, a($$1, $$2, $$3, 6.25F, true, e))
          .a(-0.1F, a($$1, $$2, $$3, 5.47F, true, $$5))
@@ -39,28 +39,28 @@ public class pw {
          .a();
    }
 
-   public static <C, I extends axi<C>> avj<C, I> b(I $$0, I $$1, I $$2, I $$3, boolean $$4) {
+   public static <C, I extends axi<C>> avk<C, I> b(I $$0, I $$1, I $$2, I $$3, boolean $$4) {
       axi<Float> $$5 = $$4 ? h : e;
       float $$6 = 0.65F;
-      return avj.<C, I>a($$0, $$5)
+      return avk.<C, I>a($$0, $$5)
          .a(-0.11F, 0.0F)
          .a(0.03F, a($$1, $$2, $$3, 1.0F, 0.5F, 0.0F, 0.0F, $$5))
          .a(0.65F, a($$1, $$2, $$3, 1.0F, 1.0F, 1.0F, 0.0F, $$5))
          .a();
    }
 
-   private static <C, I extends axi<C>> avj<C, I> a(I $$0, I $$1, I $$2, float $$3, float $$4, float $$5, float $$6, axi<Float> $$7) {
+   private static <C, I extends axi<C>> avk<C, I> a(I $$0, I $$1, I $$2, float $$3, float $$4, float $$5, float $$6, axi<Float> $$7) {
       float $$8 = -0.5775F;
-      avj<C, I> $$9 = a($$1, $$2, $$3, $$5, $$7);
-      avj<C, I> $$10 = a($$1, $$2, $$4, $$6, $$7);
-      return avj.<C, I>a($$0, $$7).a(-1.0F, $$9).a(-0.78F, $$10).a(-0.5775F, $$10).a(-0.375F, 0.0F).a();
+      avk<C, I> $$9 = a($$1, $$2, $$3, $$5, $$7);
+      avk<C, I> $$10 = a($$1, $$2, $$4, $$6, $$7);
+      return avk.<C, I>a($$0, $$7).a(-1.0F, $$9).a(-0.78F, $$10).a(-0.5775F, $$10).a(-0.375F, 0.0F).a();
    }
 
-   private static <C, I extends axi<C>> avj<C, I> a(I $$0, I $$1, float $$2, float $$3, axi<Float> $$4) {
-      float $$5 = dqv.a(0.4F);
-      float $$6 = dqv.a(0.56666666F);
+   private static <C, I extends axi<C>> avk<C, I> a(I $$0, I $$1, float $$2, float $$3, axi<Float> $$4) {
+      float $$5 = drc.a(0.4F);
+      float $$6 = drc.a(0.56666666F);
       float $$7 = ($$5 + $$6) / 2.0F;
-      avj.b<C, I> $$8 = avj.a($$1, $$4);
+      avk.b<C, I> $$8 = avk.a($$1, $$4);
       $$8.a($$5, 0.0F);
       if ($$3 > 0.0F) {
          $$8.a($$7, a($$0, $$3, $$4));
@@ -77,28 +77,28 @@ public class pw {
       return $$8.a();
    }
 
-   private static <C, I extends axi<C>> avj<C, I> a(I $$0, float $$1, axi<Float> $$2) {
+   private static <C, I extends axi<C>> avk<C, I> a(I $$0, float $$1, axi<Float> $$2) {
       float $$3 = 0.63F * $$1;
       float $$4 = 0.3F * $$1;
-      return avj.<C, I>a($$0, $$2).a(-0.01F, $$3).a(0.01F, $$4).a();
+      return avk.<C, I>a($$0, $$2).a(-0.01F, $$3).a(0.01F, $$4).a();
    }
 
-   private static <C, I extends axi<C>> avj<C, I> a(I $$0, I $$1, I $$2, float $$3, boolean $$4, axi<Float> $$5) {
-      avj<C, I> $$6 = avj.<C, I>a($$1, $$5).a(-0.2F, 6.3F).a(0.2F, $$3).a();
-      avj.b<C, I> $$7 = avj.<C, I>a($$0, $$5)
+   private static <C, I extends axi<C>> avk<C, I> a(I $$0, I $$1, I $$2, float $$3, boolean $$4, axi<Float> $$5) {
+      avk<C, I> $$6 = avk.<C, I>a($$1, $$5).a(-0.2F, 6.3F).a(0.2F, $$3).a();
+      avk.b<C, I> $$7 = avk.<C, I>a($$0, $$5)
          .a(-0.6F, $$6)
-         .a(-0.5F, avj.<C, I>a($$1, $$5).a(-0.05F, 6.3F).a(0.05F, 2.67F).a())
+         .a(-0.5F, avk.<C, I>a($$1, $$5).a(-0.05F, 6.3F).a(0.05F, 2.67F).a())
          .a(-0.35F, $$6)
          .a(-0.25F, $$6)
-         .a(-0.1F, avj.<C, I>a($$1, $$5).a(-0.05F, 2.67F).a(0.05F, 6.3F).a())
+         .a(-0.1F, avk.<C, I>a($$1, $$5).a(-0.05F, 2.67F).a(0.05F, 6.3F).a())
          .a(0.03F, $$6);
       if ($$4) {
-         avj<C, I> $$8 = avj.<C, I>a($$1, $$5).a(0.0F, $$3).a(0.1F, 0.625F).a();
-         avj<C, I> $$9 = avj.<C, I>a($$2, $$5).a(-0.9F, $$3).a(-0.69F, $$8).a();
+         avk<C, I> $$8 = avk.<C, I>a($$1, $$5).a(0.0F, $$3).a(0.1F, 0.625F).a();
+         avk<C, I> $$9 = avk.<C, I>a($$2, $$5).a(-0.9F, $$3).a(-0.69F, $$8).a();
          $$7.a(0.35F, $$3).a(0.45F, $$9).a(0.55F, $$9).a(0.62F, $$3);
       } else {
-         avj<C, I> $$10 = avj.<C, I>a($$2, $$5).a(-0.7F, $$6).a(-0.15F, 1.37F).a();
-         avj<C, I> $$11 = avj.<C, I>a($$2, $$5).a(0.45F, $$6).a(0.7F, 1.56F).a();
+         avk<C, I> $$10 = avk.<C, I>a($$2, $$5).a(-0.7F, $$6).a(-0.15F, 1.37F).a();
+         avk<C, I> $$11 = avk.<C, I>a($$2, $$5).a(0.45F, $$6).a(0.7F, 1.56F).a();
          $$7.a(0.05F, $$11).a(0.4F, $$11).a(0.45F, $$10).a(0.55F, $$10).a(0.58F, $$3);
       }
 
@@ -109,8 +109,8 @@ public class pw {
       return ($$1 - $$0) / ($$3 - $$2);
    }
 
-   private static <C, I extends axi<C>> avj<C, I> a(I $$0, float $$1, boolean $$2, axi<Float> $$3) {
-      avj.b<C, I> $$4 = avj.a($$0, $$3);
+   private static <C, I extends axi<C>> avk<C, I> a(I $$0, float $$1, boolean $$2, axi<Float> $$3) {
+      avk.b<C, I> $$4 = avk.a($$0, $$3);
       float $$5 = -0.7F;
       float $$6 = -1.0F;
       float $$7 = a(-1.0F, $$1, -0.7F);
@@ -136,7 +136,7 @@ public class pw {
          float $$19 = a($$7, $$9, -1.0F, 1.0F);
          if ($$2) {
             $$4.a(-1.0F, Math.max(0.2F, $$7));
-            $$4.a(0.0F, awh.i(0.5F, $$7, $$9), $$19);
+            $$4.a(0.0F, awi.i(0.5F, $$7, $$9), $$19);
          } else {
             $$4.a(-1.0F, $$7, $$19);
          }
@@ -165,22 +165,22 @@ public class pw {
       return $$4 / (0.46082947F * $$3) - 1.17F;
    }
 
-   public static <C, I extends axi<C>> avj<C, I> a(
+   public static <C, I extends axi<C>> avk<C, I> a(
       I $$0, I $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8, boolean $$9, axi<Float> $$10
    ) {
       float $$11 = 0.6F;
       float $$12 = 0.5F;
       float $$13 = 0.5F;
-      avj<C, I> $$14 = a($$1, awh.i($$5, 0.6F, 1.5F), $$9, $$10);
-      avj<C, I> $$15 = a($$1, awh.i($$5, 0.6F, 1.0F), $$9, $$10);
-      avj<C, I> $$16 = a($$1, $$5, $$9, $$10);
-      avj<C, I> $$17 = a($$1, $$2 - 0.15F, 0.5F * $$5, awh.i(0.5F, 0.5F, 0.5F) * $$5, 0.5F * $$5, 0.6F * $$5, 0.5F, $$10);
-      avj<C, I> $$18 = a($$1, $$2, $$6 * $$5, $$3 * $$5, 0.5F * $$5, 0.6F * $$5, 0.5F, $$10);
-      avj<C, I> $$19 = a($$1, $$2, $$6, $$6, $$3, $$4, 0.5F, $$10);
-      avj<C, I> $$20 = a($$1, $$2, $$6, $$6, $$3, $$4, 0.5F, $$10);
-      avj<C, I> $$21 = avj.<C, I>a($$1, $$10).a(-1.0F, $$2).a(-0.4F, $$19).a(0.0F, $$4 + 0.07F).a();
-      avj<C, I> $$22 = a($$1, -0.02F, $$7, $$7, $$3, $$4, 0.0F, $$10);
-      avj.b<C, I> $$23 = avj.<C, I>a($$0, $$10).a(-0.85F, $$14).a(-0.7F, $$15).a(-0.4F, $$16).a(-0.35F, $$17).a(-0.1F, $$18).a(0.2F, $$19);
+      avk<C, I> $$14 = a($$1, awi.i($$5, 0.6F, 1.5F), $$9, $$10);
+      avk<C, I> $$15 = a($$1, awi.i($$5, 0.6F, 1.0F), $$9, $$10);
+      avk<C, I> $$16 = a($$1, $$5, $$9, $$10);
+      avk<C, I> $$17 = a($$1, $$2 - 0.15F, 0.5F * $$5, awi.i(0.5F, 0.5F, 0.5F) * $$5, 0.5F * $$5, 0.6F * $$5, 0.5F, $$10);
+      avk<C, I> $$18 = a($$1, $$2, $$6 * $$5, $$3 * $$5, 0.5F * $$5, 0.6F * $$5, 0.5F, $$10);
+      avk<C, I> $$19 = a($$1, $$2, $$6, $$6, $$3, $$4, 0.5F, $$10);
+      avk<C, I> $$20 = a($$1, $$2, $$6, $$6, $$3, $$4, 0.5F, $$10);
+      avk<C, I> $$21 = avk.<C, I>a($$1, $$10).a(-1.0F, $$2).a(-0.4F, $$19).a(0.0F, $$4 + 0.07F).a();
+      avk<C, I> $$22 = a($$1, -0.02F, $$7, $$7, $$3, $$4, 0.0F, $$10);
+      avk.b<C, I> $$23 = avk.<C, I>a($$0, $$10).a(-0.85F, $$14).a(-0.7F, $$15).a(-0.4F, $$16).a(-0.35F, $$17).a(-0.1F, $$18).a(0.2F, $$19);
       if ($$8) {
          $$23.a(0.4F, $$20).a(0.45F, $$21).a(0.55F, $$21).a(0.58F, $$20);
       }
@@ -189,10 +189,10 @@ public class pw {
       return $$23.a();
    }
 
-   private static <C, I extends axi<C>> avj<C, I> a(I $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, axi<Float> $$7) {
+   private static <C, I extends axi<C>> avk<C, I> a(I $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, axi<Float> $$7) {
       float $$8 = Math.max(0.5F * ($$2 - $$1), $$6);
       float $$9 = 5.0F * ($$3 - $$2);
-      return avj.<C, I>a($$0, $$7)
+      return avk.<C, I>a($$0, $$7)
          .a(-1.0F, $$1, $$8)
          .a(-0.4F, $$2, Math.min($$8, $$9))
          .a(0.0F, $$3, $$9)

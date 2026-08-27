@@ -1,66 +1,193 @@
+import java.util.List;
 import javax.annotation.Nullable;
 
-public abstract class ezu extends ezf {
-   ezu(int $$0, int $$1, int $$2, int $$3) {
-      super($$0, $$1, $$2, $$3, vp.a);
-   }
-
-   public static ezu a(int $$0, int $$1, aiy $$2, int $$3, int $$4) {
-      return new ezu.b(0, 0, $$0, $$1, $$2, $$3, $$4);
-   }
-
-   public static ezu a(int $$0, int $$1, aiy $$2) {
-      return new ezu.a(0, 0, $$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(fdc $$0) {
-   }
-
-   @Override
-   public void a(glk $$0) {
-   }
-
-   @Override
-   public boolean A() {
-      return false;
+public abstract class ezu<E extends ezu.a<E>> extends ezj<E> {
+   public ezu(exo $$0, int $$1, int $$2, int $$3, int $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
    @Nullable
    @Override
-   public eyr a(fdi $$0) {
-      return null;
+   public eyy a(fdp $$0) {
+      if (this.n() == 0) {
+         return null;
+      } else if (!($$0 instanceof fdp.a $$1)) {
+         return super.a($$0);
+      } else {
+         E $$2 = this.k();
+         if ($$1.b().a() == fdq.a && $$2 != null) {
+            return eyy.a(this, $$2.a($$0));
+         } else {
+            int $$3 = -1;
+            fdr $$4 = $$1.b();
+            if ($$2 != null) {
+               $$3 = $$2.l().indexOf($$2.aK_());
+            }
+
+            if ($$3 == -1) {
+               switch ($$4) {
+                  case c:
+                     $$3 = Integer.MAX_VALUE;
+                     $$4 = fdr.b;
+                     break;
+                  case d:
+                     $$3 = 0;
+                     $$4 = fdr.b;
+                     break;
+                  default:
+                     $$3 = 0;
+               }
+            }
+
+            E $$5 = $$2;
+
+            eyy $$6;
+            do {
+               $$5 = this.a($$4, $$0x -> !$$0x.l().isEmpty(), $$5);
+               if ($$5 == null) {
+                  return null;
+               }
+
+               $$6 = $$5.a($$1, $$3);
+            } while ($$6 == null);
+
+            return eyy.a(this, $$6);
+         }
+      }
    }
 
-   static class a extends ezu {
-      private final aiy a;
+   @Override
+   public void a(@Nullable fbk $$0) {
+      super.a($$0);
+      if ($$0 == null) {
+         this.a(null);
+      }
+   }
 
-      public a(int $$0, int $$1, int $$2, int $$3, aiy $$4) {
-         super($$0, $$1, $$2, $$3);
-         this.a = $$4;
+   @Override
+   public fdh.a s() {
+      return this.aL_() ? fdh.a.c : super.s();
+   }
+
+   @Override
+   protected boolean e(int $$0) {
+      return false;
+   }
+
+   @Override
+   public void a(fdj $$0) {
+      E $$1 = this.t();
+      if ($$1 != null) {
+         $$1.a($$0.a());
+         this.a($$0, $$1);
+      } else {
+         E $$2 = this.k();
+         if ($$2 != null) {
+            $$2.a($$0.a());
+            this.a($$0, $$2);
+         }
+      }
+
+      $$0.a(fdi.d, vq.c("narration.component_list.usage"));
+   }
+
+   public abstract static class a<E extends ezu.a<E>> extends ezj.a<E> implements fbj {
+      @Nullable
+      private fbk a;
+      @Nullable
+      private fdh b;
+      private boolean c;
+
+      @Override
+      public boolean aJ_() {
+         return this.c;
       }
 
       @Override
-      public void b(eyu $$0, int $$1, int $$2, float $$3) {
-         $$0.a(this.a, this.B(), this.C(), this.w(), this.u());
-      }
-   }
-
-   static class b extends ezu {
-      private final aiy a;
-      private final int b;
-      private final int c;
-
-      public b(int $$0, int $$1, int $$2, int $$3, aiy $$4, int $$5, int $$6) {
-         super($$0, $$1, $$2, $$3);
-         this.a = $$4;
-         this.b = $$5;
-         this.c = $$6;
+      public void b(boolean $$0) {
+         this.c = $$0;
       }
 
       @Override
-      protected void b(eyu $$0, int $$1, int $$2, float $$3) {
-         $$0.a(this.a, this.B(), this.C(), this.w(), this.u(), 0.0F, 0.0F, this.w(), this.u(), this.b, this.c);
+      public boolean a(double $$0, double $$1, int $$2) {
+         return fbj.super.a($$0, $$1, $$2);
+      }
+
+      @Override
+      public void a(@Nullable fbk $$0) {
+         if (this.a != null) {
+            this.a.a(false);
+         }
+
+         if ($$0 != null) {
+            $$0.a(true);
+         }
+
+         this.a = $$0;
+      }
+
+      @Nullable
+      @Override
+      public fbk aK_() {
+         return this.a;
+      }
+
+      @Nullable
+      public eyy a(fdp $$0, int $$1) {
+         if (this.l().isEmpty()) {
+            return null;
+         } else {
+            eyy $$2 = this.l().get(Math.min($$1, this.l().size() - 1)).a($$0);
+            return eyy.a(this, $$2);
+         }
+      }
+
+      @Nullable
+      @Override
+      public eyy a(fdp $$0) {
+         if ($$0 instanceof fdp.a $$1) {
+            int $$2 = switch ($$1.b()) {
+               case c -> -1;
+               case d -> 1;
+               case a, b -> 0;
+            };
+            if ($$2 == 0) {
+               return null;
+            }
+
+            int $$3 = awi.a($$2 + this.l().indexOf(this.aK_()), 0, this.l().size() - 1);
+
+            for (int $$4 = $$3; $$4 >= 0 && $$4 < this.l().size(); $$4 += $$2) {
+               fbk $$5 = this.l().get($$4);
+               eyy $$6 = $$5.a($$0);
+               if ($$6 != null) {
+                  return eyy.a(this, $$6);
+               }
+            }
+         }
+
+         return fbj.super.a($$0);
+      }
+
+      public abstract List<? extends fdh> a();
+
+      void a(fdj $$0) {
+         List<? extends fdh> $$1 = this.a();
+         ffl.b $$2 = ffl.a($$1, this.b);
+         if ($$2 != null) {
+            if ($$2.c.a()) {
+               this.b = $$2.a;
+            }
+
+            if ($$1.size() > 1) {
+               $$0.a(fdi.b, vq.a("narrator.position.object_list", $$2.b + 1, $$1.size()));
+               if ($$2.c == fdh.a.c) {
+                  $$0.a(fdi.d, vq.c("narration.component_list.usage"));
+               }
+            }
+
+            $$2.a.b($$0.a());
+         }
       }
    }
 }

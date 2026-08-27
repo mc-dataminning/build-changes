@@ -22,8 +22,8 @@ public class alj {
    }
 
    private static int a(du $$0) throws CommandSyntaxException {
-      bip $$1 = bip.a($$0.l());
-      if (!bir.e.a($$1)) {
+      bir $$1 = bir.a($$0.l());
+      if (!bit.e.a($$1)) {
          throw a.create();
       } else {
          $$0.a(() -> vq.c("commands.jfr.started"), false);
@@ -33,7 +33,7 @@ public class alj {
 
    private static int b(du $$0) throws CommandSyntaxException {
       try {
-         Path $$1 = Paths.get(".").relativize(bir.e.b().normalize());
+         Path $$1 = Paths.get(".").relativize(bit.e.b().normalize());
          Path $$2 = $$0.l().p() && !aa.aU ? $$1 : $$1.toAbsolutePath();
          vq $$3 = vq.b($$1.toString()).a(n.t).a($$1x -> $$1x.a(new vo(vo.a.f, $$2.toString())).a(new vw(vw.a.a, vq.c("chat.copy.click"))));
          $$0.a(() -> vq.a("commands.jfr.stopped", $$3), false);

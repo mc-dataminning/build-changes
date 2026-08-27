@@ -8,14 +8,14 @@ public class de extends cx<de.a> {
       return de.a.a;
    }
 
-   public void a(aow $$0, bzt $$1) {
-      eiv $$2 = br.b($$0, $$1);
+   public void a(aox $$0, bzx $$1) {
+      ejc $$2 = br.b($$0, $$1);
       this.a($$0, $$1x -> $$1x.a($$2));
    }
 
    public static record a(Optional<bc> b, Optional<bc> c) implements cx.a {
       public static final Codec<de.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(avp.a(br.b, "player").forGetter(de.a::a), avp.a(br.b, "entity").forGetter(de.a::c)).apply($$0, de.a::new)
+         $$0 -> $$0.group(avq.a(br.b, "player").forGetter(de.a::a), avq.a(br.b, "entity").forGetter(de.a::c)).apply($$0, de.a::new)
       );
 
       public static an<de.a> b() {
@@ -26,7 +26,7 @@ public class de extends cx<de.a> {
          return am.y.a(new de.a(Optional.empty(), Optional.of(br.a($$0))));
       }
 
-      public boolean a(eiv $$0) {
+      public boolean a(ejc $$0) {
          return this.c.isEmpty() || this.c.get().a($$0);
       }
 

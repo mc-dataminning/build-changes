@@ -1,74 +1,103 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.authlib.GameProfile;
-import java.util.Map;
-import javax.annotation.Nullable;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class fya implements fxl<dke> {
-   private final Map<dfp.a, fny> a;
-   private static final Map<dfp.a, aiy> b = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(dfp.b.c, new aiy("textures/entity/skeleton/skeleton.png"));
-      $$0.put(dfp.b.d, new aiy("textures/entity/skeleton/wither_skeleton.png"));
-      $$0.put(dfp.b.f, new aiy("textures/entity/zombie/zombie.png"));
-      $$0.put(dfp.b.g, new aiy("textures/entity/creeper/creeper.png"));
-      $$0.put(dfp.b.i, new aiy("textures/entity/enderdragon/dragon.png"));
-      $$0.put(dfp.b.h, new aiy("textures/entity/piglin/piglin.png"));
-      $$0.put(dfp.b.e, ghl.a());
-   });
+public class fya implements fxt<djj> {
+   public static final gje a = new gje(gha.e, new aiy("entity/conduit/base"));
+   public static final gje b = new gje(gha.e, new aiy("entity/conduit/cage"));
+   public static final gje c = new gje(gha.e, new aiy("entity/conduit/wind"));
+   public static final gje d = new gje(gha.e, new aiy("entity/conduit/wind_vertical"));
+   public static final gje e = new gje(gha.e, new aiy("entity/conduit/open_eye"));
+   public static final gje f = new gje(gha.e, new aiy("entity/conduit/closed_eye"));
+   private final fpj g;
+   private final fpj h;
+   private final fpj i;
+   private final fpj j;
+   private final fxs k;
 
-   public static Map<dfp.a, fny> a(foy $$0) {
-      Builder<dfp.a, fny> $$1 = ImmutableMap.builder();
-      $$1.put(dfp.b.c, new fnx($$0.a(fpb.bn)));
-      $$1.put(dfp.b.d, new fnx($$0.a(fpb.bW)));
-      $$1.put(dfp.b.e, new fnx($$0.a(fpb.aP)));
-      $$1.put(dfp.b.f, new fnx($$0.a(fpb.cc)));
-      $$1.put(dfp.b.g, new fnx($$0.a(fpb.F)));
-      $$1.put(dfp.b.i, new fow($$0.a(fpb.M)));
-      $$1.put(dfp.b.h, new fne($$0.a(fpb.aJ)));
-      return $$1.build();
+   public fya(fxu.a $$0) {
+      this.k = $$0.a();
+      this.g = $$0.a(fpi.z);
+      this.h = $$0.a(fpi.B);
+      this.i = $$0.a(fpi.A);
+      this.j = $$0.a(fpi.y);
    }
 
-   public fya(fxm.a $$0) {
-      this.a = a($$0.e());
+   public static fpp b() {
+      fpr $$0 = new fpr();
+      fps $$1 = $$0.a();
+      $$1.a("eye", fpo.c().a(0, 0).a(-4.0F, -4.0F, 0.0F, 8.0F, 8.0F, 0.0F, new fpn(0.01F)), fpl.a);
+      return fpp.a($$0, 16, 16);
    }
 
-   public void a(dke $$0, float $$1, esa $$2, fvl $$3, int $$4, int $$5) {
-      float $$6 = $$0.a($$1);
-      dlf $$7 = $$0.r();
-      boolean $$8 = $$7.b() instanceof dhn;
-      ie $$9 = $$8 ? $$7.c(dhn.d) : null;
-      int $$10 = $$8 ? dml.a($$9.g()) : $$7.c(dfp.e);
-      float $$11 = dml.b($$10);
-      dfp.a $$12 = ((cxk)$$7.b()).b();
-      fny $$13 = this.a.get($$12);
-      fvt $$14 = a($$12, $$0.d());
-      a($$9, $$11, $$6, $$2, $$3, $$4, $$13, $$14);
+   public static fpp c() {
+      fpr $$0 = new fpr();
+      fps $$1 = $$0.a();
+      $$1.a("wind", fpo.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), fpl.a);
+      return fpp.a($$0, 64, 32);
    }
 
-   public static void a(@Nullable ie $$0, float $$1, float $$2, esa $$3, fvl $$4, int $$5, fny $$6, fvt $$7) {
-      $$3.a();
-      if ($$0 == null) {
-         $$3.a(0.5F, 0.0F, 0.5F);
+   public static fpp d() {
+      fpr $$0 = new fpr();
+      fps $$1 = $$0.a();
+      $$1.a("shell", fpo.c().a(0, 0).a(-3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F), fpl.a);
+      return fpp.a($$0, 32, 16);
+   }
+
+   public static fpp e() {
+      fpr $$0 = new fpr();
+      fps $$1 = $$0.a();
+      $$1.a("shell", fpo.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fpl.a);
+      return fpp.a($$0, 32, 16);
+   }
+
+   public void a(djj $$0, float $$1, esh $$2, fvt $$3, int $$4, int $$5) {
+      float $$6 = (float)$$0.a + $$1;
+      if (!$$0.d()) {
+         float $$7 = $$0.a(0.0F);
+         esl $$8 = a.a($$3, fwb::c);
+         $$2.a();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         $$2.a(new Quaternionf().rotationY($$7 * (float) (Math.PI / 180.0)));
+         this.i.a($$2, $$8, $$4, $$5);
+         $$2.b();
       } else {
-         float $$8 = 0.25F;
-         $$3.a(0.5F - (float)$$0.j() * 0.25F, 0.25F, 0.5F - (float)$$0.l() * 0.25F);
-      }
+         float $$9 = $$0.a($$1) * (180.0F / (float)Math.PI);
+         float $$10 = awi.a($$6 * 0.1F) / 2.0F + 0.5F;
+         $$10 = $$10 * $$10 + $$10;
+         $$2.a();
+         $$2.a(0.5F, 0.3F + $$10 * 0.2F, 0.5F);
+         Vector3f $$11 = new Vector3f(0.5F, 1.0F, 0.5F).normalize();
+         $$2.a(new Quaternionf().rotationAxis($$9 * (float) (Math.PI / 180.0), $$11));
+         this.j.a($$2, b.a($$3, fwb::e), $$4, $$5);
+         $$2.b();
+         int $$12 = $$0.a / 66 % 3;
+         $$2.a();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         if ($$12 == 1) {
+            $$2.a(new Quaternionf().rotationX((float) (Math.PI / 2)));
+         } else if ($$12 == 2) {
+            $$2.a(new Quaternionf().rotationZ((float) (Math.PI / 2)));
+         }
 
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      ese $$9 = $$4.getBuffer($$7);
-      $$6.a($$2, $$1, 0.0F);
-      $$6.a($$3, $$9, $$5, ggk.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b();
-   }
-
-   public static fvt a(dfp.a $$0, @Nullable GameProfile $$1) {
-      aiy $$2 = b.get($$0);
-      if ($$0 == dfp.b.e && $$1 != null) {
-         ght $$3 = exh.O().al();
-         return fvt.i($$3.b($$1).a());
-      } else {
-         return fvt.f($$2);
+         esl $$13 = ($$12 == 1 ? d : c).a($$3, fwb::e);
+         this.h.a($$2, $$13, $$4, $$5);
+         $$2.b();
+         $$2.a();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         $$2.b(0.875F, 0.875F, 0.875F);
+         $$2.a(new Quaternionf().rotationXYZ((float) Math.PI, 0.0F, (float) Math.PI));
+         this.h.a($$2, $$13, $$4, $$5);
+         $$2.b();
+         ewz $$14 = this.k.b;
+         $$2.a();
+         $$2.a(0.5F, 0.3F + $$10 * 0.2F, 0.5F);
+         $$2.b(0.5F, 0.5F, 0.5F);
+         float $$15 = -$$14.e();
+         $$2.a(new Quaternionf().rotationYXZ($$15 * (float) (Math.PI / 180.0), $$14.d() * (float) (Math.PI / 180.0), (float) Math.PI));
+         float $$16 = 1.3333334F;
+         $$2.b(1.3333334F, 1.3333334F, 1.3333334F);
+         this.g.a($$2, ($$0.f() ? e : f).a($$3, fwb::e), $$4, $$5);
+         $$2.b();
       }
    }
 }

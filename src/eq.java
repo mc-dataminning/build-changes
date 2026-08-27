@@ -62,14 +62,14 @@ public class eq implements ArgumentType<eq.a> {
          if ($$1 == 0) {
             throw c.create();
          } else {
-            return awh.a($$0x, $$1);
+            return awi.a($$0x, $$1);
          }
       };
          case "%=" -> ($$0x, $$1) -> {
          if ($$1 == 0) {
             throw c.create();
          } else {
-            return awh.b($$0x, $$1);
+            return awi.b($$0x, $$1);
          }
       };
          case "<" -> Math::min;
@@ -80,7 +80,7 @@ public class eq implements ArgumentType<eq.a> {
 
    @FunctionalInterface
    public interface a {
-      void apply(eou var1, eou var2) throws CommandSyntaxException;
+      void apply(epb var1, epb var2) throws CommandSyntaxException;
    }
 
    @FunctionalInterface
@@ -88,7 +88,7 @@ public class eq implements ArgumentType<eq.a> {
       int apply(int var1, int var2) throws CommandSyntaxException;
 
       @Override
-      default void apply(eou $$0, eou $$1) throws CommandSyntaxException {
+      default void apply(epb $$0, epb $$1) throws CommandSyntaxException {
          $$0.a(this.apply($$0.a(), $$1.a()));
       }
    }

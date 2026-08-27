@@ -1,7 +1,8 @@
-import jdk.jfr.consumer.RecordedEvent;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public record bjf(double a, double b, double c) {
-   public static bjf a(RecordedEvent $$0) {
-      return new bjf((double)$$0.getFloat("jvmSystem"), (double)$$0.getFloat("jvmUser"), (double)$$0.getFloat("machineTotal"));
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bjf {
 }

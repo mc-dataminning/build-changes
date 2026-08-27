@@ -1,81 +1,99 @@
-import java.util.List;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.Arrays;
+import java.util.function.IntFunction;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.jetbrains.annotations.Contract;
 
-public interface cnr {
-   String q_ = "color";
-   String r_ = "display";
-   int s_ = 10511680;
+public enum cnr implements axc {
+   a(0, "white", 16383998, eha.i, 15790320, 16777215),
+   b(1, "orange", 16351261, eha.p, 15435844, 16738335),
+   c(2, "magenta", 13061821, eha.q, 12801229, 16711935),
+   d(3, "light_blue", 3847130, eha.r, 6719955, 10141901),
+   e(4, "yellow", 16701501, eha.s, 14602026, 16776960),
+   f(5, "lime", 8439583, eha.t, 4312372, 12582656),
+   g(6, "pink", 15961002, eha.u, 14188952, 16738740),
+   h(7, "gray", 4673362, eha.v, 4408131, 8421504),
+   i(8, "light_gray", 10329495, eha.w, 11250603, 13882323),
+   j(9, "cyan", 1481884, eha.x, 2651799, 65535),
+   k(10, "purple", 8991416, eha.y, 8073150, 10494192),
+   l(11, "blue", 3949738, eha.z, 2437522, 255),
+   m(12, "brown", 8606770, eha.A, 5320730, 9127187),
+   n(13, "green", 6192150, eha.B, 3887386, 65280),
+   o(14, "red", 11546150, eha.C, 11743532, 16711680),
+   p(15, "black", 1908001, eha.D, 1973019, 0);
 
-   default boolean a(coz $$0) {
-      sw $$1 = $$0.b("display");
-      return $$1 != null && $$1.b("color", 99);
+   private static final IntFunction<cnr> r = ava.a(cnr::a, values(), ava.a.a);
+   private static final Int2ObjectOpenHashMap<cnr> s = new Int2ObjectOpenHashMap(
+      Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.x, $$0 -> (cnr)$$0))
+   );
+   public static final axc.a<cnr> q = axc.a(cnr::values);
+   private final int t;
+   private final String u;
+   private final eha v;
+   private final float[] w;
+   private final int x;
+   private final int y;
+
+   private cnr(int $$0, String $$1, int $$2, eha $$3, int $$4, int $$5) {
+      this.t = $$0;
+      this.u = $$1;
+      this.v = $$3;
+      this.y = $$5;
+      int $$6 = ($$2 & 0xFF0000) >> 16;
+      int $$7 = ($$2 & 0xFF00) >> 8;
+      int $$8 = ($$2 & 0xFF) >> 0;
+      this.w = new float[]{(float)$$6 / 255.0F, (float)$$7 / 255.0F, (float)$$8 / 255.0F};
+      this.x = $$4;
    }
 
-   default int e_(coz $$0) {
-      sw $$1 = $$0.b("display");
-      return $$1 != null && $$1.b("color", 99) ? $$1.h("color") : 10511680;
+   public int a() {
+      return this.t;
    }
 
-   default void f_(coz $$0) {
-      sw $$1 = $$0.b("display");
-      if ($$1 != null && $$1.e("color")) {
-         $$1.r("color");
-      }
+   public String b() {
+      return this.u;
    }
 
-   default void a(coz $$0, int $$1) {
-      $$0.a("display").a("color", $$1);
+   public float[] d() {
+      return this.w;
    }
 
-   static coz a(coz $$0, List<cno> $$1) {
-      coz $$2 = coz.h;
-      int[] $$3 = new int[3];
-      int $$4 = 0;
-      int $$5 = 0;
-      cnr $$6 = null;
-      cou $$7 = $$0.d();
-      if ($$7 instanceof cnr) {
-         $$6 = (cnr)$$7;
-         $$2 = $$0.c(1);
-         if ($$6.a($$0)) {
-            int $$8 = $$6.e_($$2);
-            float $$9 = (float)($$8 >> 16 & 0xFF) / 255.0F;
-            float $$10 = (float)($$8 >> 8 & 0xFF) / 255.0F;
-            float $$11 = (float)($$8 & 0xFF) / 255.0F;
-            $$4 += (int)(Math.max($$9, Math.max($$10, $$11)) * 255.0F);
-            $$3[0] += (int)($$9 * 255.0F);
-            $$3[1] += (int)($$10 * 255.0F);
-            $$3[2] += (int)($$11 * 255.0F);
-            $$5++;
-         }
+   public eha e() {
+      return this.v;
+   }
 
-         for (cno $$12 : $$1) {
-            float[] $$13 = $$12.d().d();
-            int $$14 = (int)($$13[0] * 255.0F);
-            int $$15 = (int)($$13[1] * 255.0F);
-            int $$16 = (int)($$13[2] * 255.0F);
-            $$4 += Math.max($$14, Math.max($$15, $$16));
-            $$3[0] += $$14;
-            $$3[1] += $$15;
-            $$3[2] += $$16;
-            $$5++;
-         }
-      }
+   public int f() {
+      return this.x;
+   }
 
-      if ($$6 == null) {
-         return coz.h;
-      } else {
-         int $$17 = $$3[0] / $$5;
-         int $$18 = $$3[1] / $$5;
-         int $$19 = $$3[2] / $$5;
-         float $$20 = (float)$$4 / (float)$$5;
-         float $$21 = (float)Math.max($$17, Math.max($$18, $$19));
-         $$17 = (int)((float)$$17 * $$20 / $$21);
-         $$18 = (int)((float)$$18 * $$20 / $$21);
-         $$19 = (int)((float)$$19 * $$20 / $$21);
-         int var26 = ($$17 << 8) + $$18;
-         var26 = (var26 << 8) + $$19;
-         $$6.a($$2, var26);
-         return $$2;
-      }
+   public int g() {
+      return this.y;
+   }
+
+   public static cnr a(int $$0) {
+      return r.apply($$0);
+   }
+
+   @Nullable
+   @Contract("_,!null->!null;_,null->_")
+   public static cnr a(String $$0, @Nullable cnr $$1) {
+      cnr $$2 = q.a($$0);
+      return $$2 != null ? $$2 : $$1;
+   }
+
+   @Nullable
+   public static cnr b(int $$0) {
+      return (cnr)s.get($$0);
+   }
+
+   @Override
+   public String toString() {
+      return this.u;
+   }
+
+   @Override
+   public String c() {
+      return this.u;
    }
 }

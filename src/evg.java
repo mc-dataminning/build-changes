@@ -1,178 +1,167 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class evg extends gmv {
-   private static final Logger b = LogUtils.getLogger();
-   public static final vq a = vq.c("mco.upload.select.world.title");
-   private static final vq c = vq.c("selectWorld.unable_to_load");
-   static final vq v = vq.c("selectWorld.world");
-   static final vq w = vq.c("mco.upload.hardcore").b(-65536);
-   static final vq x = vq.c("selectWorld.cheats");
-   private static final DateFormat y = new SimpleDateFormat();
+public class evg extends gnd {
+   private static final aiy a = new aiy("icon/unseen_notification");
+   private static final aiy b = new aiy("icon/news");
+   private static final aiy c = new aiy("icon/invite");
+   private static final aiy v = new aiy("icon/trial_available");
+   private final CompletableFuture<Boolean> w = esr.a().thenApply($$0 -> $$0.a() == esr.b.a);
    @Nullable
-   private final ewj z;
-   private final evf A;
-   private final long B;
-   private final int C;
-   ezh D;
-   List<eim> E = Lists.newArrayList();
-   int F = -1;
-   evg.b G;
-
-   public evg(@Nullable ewj $$0, long $$1, int $$2, evf $$3) {
-      super(a);
-      this.z = $$0;
-      this.A = $$3;
-      this.B = $$1;
-      this.C = $$2;
-   }
-
-   private void E() {
-      eil.a $$0 = this.f.l().b();
-      this.E = this.f.l().a($$0).join().stream().filter(eim::v).collect(Collectors.toList());
-
-      for (eim $$1 : this.E) {
-         this.G.a($$1);
+   private evw.c x;
+   @Nullable
+   private evg.a y;
+   private volatile int z;
+   private static boolean A;
+   private static boolean B;
+   private static boolean C;
+   private final evg.a D = new evg.a() {
+      @Override
+      public evw.c a(eun $$0) {
+         evw.c $$1 = $$0.a.a();
+         evg.this.a($$0, $$1);
+         evg.this.b($$0, $$1);
+         return $$1;
       }
+
+      @Override
+      public boolean a() {
+         return true;
+      }
+   };
+   private final evg.a E = new evg.a() {
+      @Override
+      public evw.c a(eun $$0) {
+         evw.c $$1 = $$0.a.a();
+         evg.this.b($$0, $$1);
+         return $$1;
+      }
+
+      @Override
+      public boolean a() {
+         return false;
+      }
+   };
+
+   public evg() {
+      super(exg.a);
    }
 
    @Override
    public void aQ_() {
-      this.G = this.d(new evg.b());
-
-      try {
-         this.E();
-      } catch (Exception var2) {
-         b.error("Couldn't load level list", var2);
-         this.f.a(new euu(c, vq.a(var2.getMessage()), this.A));
-         return;
-      }
-
-      this.D = this.d(ezh.a(vq.c("mco.upload.button.name"), $$0 -> this.H()).a(this.g / 2 - 154, this.h - 32, 153, 20).a());
-      this.D.j = this.F >= 0 && this.F < this.E.size();
-      this.d(ezh.a(vp.k, $$0 -> this.f.a(this.A)).a(this.g / 2 + 6, this.h - 32, 153, 20).a());
-      this.a(new gmt(vq.c("mco.upload.select.world.subtitle"), this.g / 2, g(-1), -6250336));
-      if (this.E.isEmpty()) {
-         this.a(new gmt(vq.c("mco.upload.select.world.none"), this.g / 2, this.h / 2 - 20, -1));
+      if (this.x != null) {
+         this.x.a();
       }
    }
 
    @Override
-   public vq i() {
-      return vp.a(this.p(), this.o());
+   public void aI_() {
+      super.aI_();
+      this.f.ba().b.a();
    }
 
-   private void H() {
-      if (this.F != -1 && !this.E.get(this.F).i()) {
-         eim $$0 = this.E.get(this.F);
-         this.f.a(new evm(this.z, this.B, this.C, this.A, $$0));
-      }
-   }
-
-   @Override
-   public void a(eyu $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 13, -1);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.f.a(this.A);
-         return true;
+   @Nullable
+   private evg.a E() {
+      boolean $$0 = this.I() && this.w.getNow(false);
+      if (!$$0) {
+         return null;
       } else {
-         return super.a($$0, $$1, $$2);
+         return this.H() ? this.D : this.E;
       }
    }
 
-   static vq a(eim $$0) {
-      return $$0.h().d();
-   }
-
-   static String b(eim $$0) {
-      return y.format(new Date($$0.f()));
-   }
-
-   class a extends fad.a<evg.a> {
-      private final eim b;
-      private final String c;
-      private final vq d;
-      private final vq e;
-
-      public a(eim $$0) {
-         this.b = $$0;
-         this.c = $$0.b();
-         this.d = vq.a("mco.upload.entry.id", $$0.a(), evg.b($$0));
-         vq $$1;
-         if ($$0.i()) {
-            $$1 = evg.w;
+   @Override
+   public void e() {
+      evg.a $$0 = this.E();
+      if (!Objects.equals(this.y, $$0)) {
+         this.y = $$0;
+         if (this.y != null) {
+            this.x = this.y.a(this.f.ba());
          } else {
-            $$1 = evg.a($$0);
+            this.x = null;
          }
-
-         if ($$0.j()) {
-            $$1 = vq.a("mco.upload.entry.cheats", $$1.getString(), evg.x);
-         }
-
-         this.e = $$1;
       }
 
-      @Override
-      public void a(eyu $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         this.a($$0, $$1, $$3, $$2);
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         evg.this.G.a(evg.this.E.indexOf(this.b));
-         return true;
-      }
-
-      protected void a(eyu $$0, int $$1, int $$2, int $$3) {
-         String $$4;
-         if (this.c.isEmpty()) {
-            $$4 = evg.v + " " + ($$1 + 1);
-         } else {
-            $$4 = this.c;
-         }
-
-         $$0.a(evg.this.i, $$4, $$2 + 2, $$3 + 1, 16777215, false);
-         $$0.a(evg.this.i, this.d, $$2 + 2, $$3 + 12, -8355712, false);
-         $$0.a(evg.this.i, this.e, $$2 + 2, $$3 + 12 + 10, -8355712, false);
-      }
-
-      @Override
-      public vq a() {
-         vq $$0 = vp.b(vq.b(this.b.b()), vq.b(evg.b(this.b)), evg.a(this.b));
-         return vq.a("narrator.select", $$0);
+      if (this.x != null) {
+         this.x.b();
       }
    }
 
-   class b extends gmu<evg.a> {
-      public b() {
-         super(evg.this.g, evg.this.h - 40 - evg.g(0), evg.g(0), 36);
+   private boolean H() {
+      return this.f.m.Q().c();
+   }
+
+   private boolean I() {
+      return this.f.y instanceof ffq;
+   }
+
+   @Override
+   public void a(ezb $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.w.getNow(false)) {
+         this.c($$0);
+      }
+   }
+
+   @Override
+   public void b(ezb $$0, int $$1, int $$2, float $$3) {
+   }
+
+   private void c(ezb $$0) {
+      int $$1 = this.z;
+      int $$2 = 24;
+      int $$3 = this.h / 4 + 48;
+      int $$4 = this.g / 2 + 100;
+      int $$5 = $$3 + 48 + 2;
+      int $$6 = $$4 - 3;
+      if (C) {
+         $$0.a(a, $$6 - 12, $$5 + 3, 10, 10);
+         $$6 -= 16;
       }
 
-      public void a(eim $$0) {
-         this.a((evg.a)(evg.this.new a($$0)));
-      }
+      if (this.y != null && this.y.a()) {
+         if (B) {
+            $$0.a(b, $$6 - 14, $$5 + 1, 14, 14);
+            $$6 -= 16;
+         }
 
-      @Override
-      public int a() {
-         return evg.this.E.size() * 36;
-      }
+         if ($$1 != 0) {
+            $$0.a(c, $$6 - 14, $$5 + 1, 14, 14);
+            $$6 -= 16;
+         }
 
-      public void a(@Nullable evg.a $$0) {
-         super.a($$0);
-         evg.this.F = this.l().indexOf($$0);
-         evg.this.D.j = evg.this.F >= 0 && evg.this.F < this.n() && !evg.this.E.get(evg.this.F).i();
+         if (A) {
+            $$0.a(v, $$6 - 10, $$5 + 4, 8, 8);
+         }
       }
+   }
+
+   void a(eun $$0, evw.c $$1) {
+      $$1.a($$0.d, $$0x -> this.z = $$0x);
+      $$1.a($$0.e, $$0x -> A = $$0x);
+      $$1.a($$0.f, $$1x -> {
+         $$0.g.a($$1x);
+         B = $$0.g.a();
+      });
+   }
+
+   void b(eun $$0, evw.c $$1) {
+      $$1.a($$0.b, $$0x -> {
+         C = false;
+
+         for (etn $$1x : $$0x) {
+            if (!$$1x.a()) {
+               C = true;
+               break;
+            }
+         }
+      });
+   }
+
+   interface a {
+      evw.c a(eun var1);
+
+      boolean a();
    }
 }

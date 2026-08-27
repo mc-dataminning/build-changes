@@ -1,50 +1,27 @@
-public class fif extends ffe {
-   private static final int a = 600;
-   private final uo b;
-   private ezh c;
-   private int k;
-   private final fcx l = fcx.d();
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
 
-   public fif(vq $$0, uo $$1) {
-      super($$0);
-      this.b = $$1;
+public class fif implements fie {
+   public static final fie a = new fif();
+
+   private fif() {
    }
 
    @Override
-   public boolean aO_() {
-      return false;
+   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      Vector2i $$6 = new Vector2i($$2, $$3).add(12, -12);
+      this.a($$0, $$1, $$6, $$4, $$5);
+      return $$6;
    }
 
-   @Override
-   protected void aQ_() {
-      this.l.c().b().a(10);
-      this.l.a(new fao(this.e, this.i));
-      this.c = this.l.a(ezh.a(vp.p, $$0 -> this.b.a(fdy.a)).a());
-      this.c.j = false;
-      this.l.a();
-      this.l.a($$1 -> {
-         ezf var10000 = this.d($$1);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      fcr.a(this.l, this.F());
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.k++;
-      if (this.k == 600) {
-         this.c.j = true;
+   private void a(int $$0, int $$1, Vector2i $$2, int $$3, int $$4) {
+      if ($$2.x + $$3 > $$0) {
+         $$2.x = Math.max($$2.x - 24 - $$3, 4);
       }
 
-      if (this.b.i()) {
-         this.b.b();
-      } else {
-         this.b.n();
+      int $$5 = $$4 + 3;
+      if ($$2.y + $$5 > $$1) {
+         $$2.y = $$1 - $$5;
       }
    }
 }

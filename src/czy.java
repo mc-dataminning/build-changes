@@ -1,161 +1,96 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import javax.annotation.Nullable;
 
-public class czy extends daq implements dbg {
+public class czy extends def {
    public static final MapCodec<czy> a = b(czy::new);
-   public static final dmd<dly> b = dlv.bd;
 
    @Override
    public MapCodec<czy> a() {
       return a;
    }
 
-   public czy(dle.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(aE, ie.c).a(d, Boolean.valueOf(false)).a(b, dly.a));
-   }
-
-   @Override
-   protected int g(dlf $$0) {
-      return 2;
-   }
-
-   @Override
-   public dlf a(dlf $$0, ie $$1, dlf $$2, cvo $$3, hz $$4, hz $$5) {
-      return $$1 == ie.a && !this.b($$3, $$5, $$2) ? cyq.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected int a(cut $$0, hz $$1, dlf $$2) {
-      dit $$3 = $$0.c_($$1);
-      return $$3 instanceof dje ? ((dje)$$3).c() : 0;
-   }
-
-   private int e(cvn $$0, hz $$1, dlf $$2) {
-      int $$3 = this.b($$0, $$1, $$2);
-      if ($$3 == 0) {
-         return 0;
-      } else {
-         int $$4 = this.a((cwd)$$0, $$1, $$2);
-         if ($$4 > $$3) {
-            return 0;
-         } else {
-            return $$2.c(b) == dly.b ? $$3 - $$4 : $$3;
-         }
-      }
-   }
-
-   @Override
-   protected boolean a(cvn $$0, hz $$1, dlf $$2) {
-      int $$3 = this.b($$0, $$1, $$2);
-      if ($$3 == 0) {
-         return false;
-      } else {
-         int $$4 = this.a((cwd)$$0, $$1, $$2);
-         return $$3 > $$4 ? true : $$3 == $$4 && $$2.c(b) == dly.a;
-      }
-   }
-
-   @Override
-   protected int b(cvn $$0, hz $$1, dlf $$2) {
-      int $$3 = super.b($$0, $$1, $$2);
-      ie $$4 = $$2.c(aE);
-      hz $$5 = $$1.a($$4);
-      dlf $$6 = $$0.a_($$5);
-      if ($$6.n()) {
-         $$3 = $$6.a($$0, $$5);
-      } else if ($$3 < 15 && $$6.g($$0, $$5)) {
-         $$5 = $$5.a($$4);
-         $$6 = $$0.a_($$5);
-         cdl $$7 = this.a($$0, $$4, $$5);
-         int $$8 = Math.max($$7 == null ? Integer.MIN_VALUE : $$7.K(), $$6.n() ? $$6.a($$0, $$5) : Integer.MIN_VALUE);
-         if ($$8 != Integer.MIN_VALUE) {
-            $$3 = $$8;
-         }
-      }
-
-      return $$3;
-   }
-
-   @Nullable
-   private cdl a(cvn $$0, ie $$1, hz $$2) {
-      List<cdl> $$3 = $$0.a(
-         cdl.class,
-         new enn((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), (double)($$2.u() + 1), (double)($$2.v() + 1), (double)($$2.w() + 1)),
-         $$1x -> $$1x != null && $$1x.cE() == $$1
+   protected czy(dli.d $$0) {
+      super(0.3125F, $$0);
+      this.k(
+         this.E
+            .b()
+            .a(b, Boolean.valueOf(false))
+            .a(c, Boolean.valueOf(false))
+            .a(d, Boolean.valueOf(false))
+            .a(e, Boolean.valueOf(false))
+            .a(f, Boolean.valueOf(false))
+            .a(g, Boolean.valueOf(false))
       );
-      return $$3.size() == 1 ? $$3.get(0) : null;
    }
 
    @Override
-   protected blu a(dlf $$0, cvn $$1, hz $$2, chh $$3, eno $$4) {
-      if (!$$3.fU().e) {
-         return blu.d;
+   public dlj a(crk $$0) {
+      return a($$0.q(), $$0.a(), this.o());
+   }
+
+   public static dlj a(cux $$0, hz $$1, dlj $$2) {
+      dlj $$3 = $$0.a_($$1.d());
+      dlj $$4 = $$0.a_($$1.c());
+      dlj $$5 = $$0.a_($$1.e());
+      dlj $$6 = $$0.a_($$1.h());
+      dlj $$7 = $$0.a_($$1.f());
+      dlj $$8 = $$0.a_($$1.g());
+      cys $$9 = $$2.b();
+      return $$2.b(g, Boolean.valueOf($$3.a($$9) || $$3.a(cyu.kv) || $$3.a(cyu.fz)))
+         .b(f, Boolean.valueOf($$4.a($$9) || $$4.a(cyu.kv)))
+         .b(b, Boolean.valueOf($$5.a($$9) || $$5.a(cyu.kv)))
+         .b(c, Boolean.valueOf($$6.a($$9) || $$6.a(cyu.kv)))
+         .b(d, Boolean.valueOf($$7.a($$9) || $$7.a(cyu.kv)))
+         .b(e, Boolean.valueOf($$8.a($$9) || $$8.a(cyu.kv)));
+   }
+
+   @Override
+   protected dlj a(dlj $$0, ie $$1, dlj $$2, cvs $$3, hz $$4, hz $$5) {
+      if (!$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       } else {
-         $$0 = $$0.a(b);
-         float $$5 = $$0.c(b) == dly.b ? 0.55F : 0.5F;
-         $$1.a($$3, $$2, atk.fd, atl.e, 0.3F, $$5);
-         $$1.a($$2, $$0, 2);
-         this.f($$1, $$2, $$0);
-         return blu.a($$1.B);
+         boolean $$6 = $$2.a(this) || $$2.a(cyu.kv) || $$1 == ie.a && $$2.a(cyu.fz);
+         return $$0.a(h.get($$1), Boolean.valueOf($$6));
       }
    }
 
    @Override
-   protected void c(cvn $$0, hz $$1, dlf $$2) {
-      if (!$$0.N().b($$1, this)) {
-         int $$3 = this.e($$0, $$1, $$2);
-         dit $$4 = $$0.c_($$1);
-         int $$5 = $$4 instanceof dje ? ((dje)$$4).c() : 0;
-         if ($$3 != $$5 || $$2.c(d) != this.a($$0, $$1, $$2)) {
-            epn $$6 = this.b($$0, $$1, $$2) ? epn.c : epn.d;
-            $$0.a($$1, this, 2, $$6);
+   protected void a(dlj $$0, aow $$1, hz $$2, awp $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
+      }
+   }
+
+   @Override
+   protected boolean a(dlj $$0, cvu $$1, hz $$2) {
+      dlj $$3 = $$1.a_($$2.d());
+      boolean $$4 = !$$1.a_($$2.c()).i() && !$$3.i();
+
+      for (ie $$5 : ie.c.a) {
+         hz $$6 = $$2.a($$5);
+         dlj $$7 = $$1.a_($$6);
+         if ($$7.a(this)) {
+            if ($$4) {
+               return false;
+            }
+
+            dlj $$8 = $$1.a_($$6.d());
+            if ($$8.a(this) || $$8.a(cyu.fz)) {
+               return true;
+            }
          }
       }
-   }
 
-   private void f(cvn $$0, hz $$1, dlf $$2) {
-      int $$3 = this.e($$0, $$1, $$2);
-      dit $$4 = $$0.c_($$1);
-      int $$5 = 0;
-      if ($$4 instanceof dje $$6) {
-         $$5 = $$6.c();
-         $$6.a($$3);
-      }
-
-      if ($$5 != $$3 || $$2.c(b) == dly.a) {
-         boolean $$7 = this.a($$0, $$1, $$2);
-         boolean $$8 = $$2.c(d);
-         if ($$8 && !$$7) {
-            $$0.a($$1, $$2.a(d, Boolean.valueOf(false)), 2);
-         } else if (!$$8 && $$7) {
-            $$0.a($$1, $$2.a(d, Boolean.valueOf(true)), 2);
-         }
-
-         this.d($$0, $$1, $$2);
-      }
+      return $$3.a(this) || $$3.a(cyu.fz);
    }
 
    @Override
-   protected void a(dlf $$0, aov $$1, hz $$2, awo $$3) {
-      this.f($$1, $$2, $$0);
+   protected void a(dlk.a<cys, dlj> $$0) {
+      $$0.a(b, c, d, e, f, g);
    }
 
    @Override
-   protected boolean a(dlf $$0, cvn $$1, hz $$2, int $$3, int $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      dit $$5 = $$1.c_($$2);
-      return $$5 != null && $$5.a_($$3, $$4);
-   }
-
-   @Override
-   public dit a(hz $$0, dlf $$1) {
-      return new dje($$0, $$1);
-   }
-
-   @Override
-   protected void a(dlg.a<cyo, dlf> $$0) {
-      $$0.a(aE, b, d);
+   protected boolean a(dlj $$0, cux $$1, hz $$2, ehm $$3) {
+      return false;
    }
 }

@@ -1,138 +1,88 @@
-import javax.annotation.Nullable;
+public class clj extends ckf {
+   private static final int o = 1;
+   private static final int p = 1;
+   public static final int k = 1;
+   public static final int l = 2;
+   public static final int m = 3;
+   public static final int n = 100;
+   private final blp q;
+   private final ckp r;
 
-public class clj implements bln {
-   private final cuk c;
-   private final is<coz> d = is.a(3, coz.h);
-   @Nullable
-   private cul e;
-   private int f;
-   private int g;
+   public clj(int $$0) {
+      this($$0, new bmf(1), new clz(1));
+   }
 
-   public clj(cuk $$0) {
-      this.c = $$0;
+   public clj(int $$0, blp $$1, ckp $$2) {
+      super(clm.r, $$0);
+      a($$1, 1);
+      a($$2, 1);
+      this.q = $$1;
+      this.r = $$2;
+      this.a(new cma($$1, 0, 0, 0) {
+         @Override
+         public void b() {
+            super.b();
+            clj.this.a(this.d);
+         }
+      });
+      this.a($$2);
    }
 
    @Override
-   public int b() {
-      return this.d.size();
-   }
+   public boolean b(chl $$0, int $$1) {
+      if ($$1 >= 100) {
+         int $$2 = $$1 - 100;
+         this.a(0, $$2);
+         return true;
+      } else {
+         switch ($$1) {
+            case 1:
+               int $$4 = this.r.a(0);
+               this.a(0, $$4 - 1);
+               return true;
+            case 2:
+               int $$3 = this.r.a(0);
+               this.a(0, $$3 + 1);
+               return true;
+            case 3:
+               if (!$$0.gf()) {
+                  return false;
+               }
 
-   @Override
-   public boolean aj_() {
-      for (coz $$0 : this.d) {
-         if (!$$0.b()) {
-            return false;
+               cpd $$5 = this.q.b(0);
+               this.q.e();
+               if (!$$0.fT().e($$5)) {
+                  $$0.a($$5, false);
+               }
+
+               return true;
+            default:
+               return false;
          }
       }
-
-      return true;
    }
 
    @Override
-   public coz a(int $$0) {
-      return this.d.get($$0);
+   public cpd a(chl $$0, int $$1) {
+      return cpd.h;
    }
 
    @Override
-   public coz a(int $$0, int $$1) {
-      coz $$2 = this.d.get($$0);
-      if ($$0 == 2 && !$$2.b()) {
-         return blo.a(this.d, $$0, $$2.M());
-      } else {
-         coz $$3 = blo.a(this.d, $$0, $$1);
-         if (!$$3.b() && this.d($$0)) {
-            this.f();
-         }
-
-         return $$3;
-      }
-   }
-
-   private boolean d(int $$0) {
-      return $$0 == 0 || $$0 == 1;
+   public void a(int $$0, int $$1) {
+      super.a($$0, $$1);
+      this.d();
    }
 
    @Override
-   public coz b(int $$0) {
-      return blo.a(this.d, $$0);
+   public boolean a(chl $$0) {
+      return this.q.a($$0);
    }
 
-   @Override
-   public void a(int $$0, coz $$1) {
-      this.d.set($$0, $$1);
-      if (!$$1.b() && $$1.M() > this.al_()) {
-         $$1.f(this.al_());
-      }
-
-      if (this.d($$0)) {
-         this.f();
-      }
+   public cpd l() {
+      return this.q.a(0);
    }
 
-   @Override
-   public boolean a(chh $$0) {
-      return this.c.gg() == $$0;
-   }
-
-   @Override
-   public void e() {
-      this.f();
-   }
-
-   public void f() {
-      this.e = null;
-      coz $$0;
-      coz $$1;
-      if (this.d.get(0).b()) {
-         $$0 = this.d.get(1);
-         $$1 = coz.h;
-      } else {
-         $$0 = this.d.get(0);
-         $$1 = this.d.get(1);
-      }
-
-      if ($$0.b()) {
-         this.a(2, coz.h);
-         this.g = 0;
-      } else {
-         cum $$4 = this.c.gi();
-         if (!$$4.isEmpty()) {
-            cul $$5 = $$4.a($$0, $$1, this.f);
-            if ($$5 == null || $$5.q()) {
-               this.e = $$5;
-               $$5 = $$4.a($$1, $$0, this.f);
-            }
-
-            if ($$5 != null && !$$5.q()) {
-               this.e = $$5;
-               this.a(2, $$5.f());
-               this.g = $$5.p();
-            } else {
-               this.a(2, coz.h);
-               this.g = 0;
-            }
-         }
-
-         this.c.l(this.a(2));
-      }
-   }
-
-   @Nullable
-   public cul g() {
-      return this.e;
-   }
-
-   public void c(int $$0) {
-      this.f = $$0;
-      this.f();
-   }
-
-   @Override
-   public void a() {
-      this.d.clear();
-   }
-
-   public int h() {
-      return this.g;
+   public int m() {
+      return this.r.a(0);
    }
 }

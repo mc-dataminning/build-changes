@@ -1,34 +1,45 @@
 import com.mojang.serialization.Codec;
 
-public class dti extends dth {
-   public dti(Codec<dwd> $$0) {
+public class dti extends dtz<dvv> {
+   public dti(Codec<dvv> $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean a(cvo $$0, awo $$1, hz $$2, dlf $$3) {
-      int $$4 = $$1.a(3) + 3;
-      int $$5 = $$1.a(3) + 3;
-      int $$6 = $$1.a(3) + 3;
-      int $$7 = $$1.a(3) + 1;
-      hz.a $$8 = $$2.j();
+   public boolean a(dub<dvv> $$0) {
+      hz $$1 = $$0.e();
+      cwm $$2 = $$0.b();
+      awp $$3 = $$0.d();
+      dvv $$4 = $$0.f();
+      if ($$1.v() < $$2.J_() + 5) {
+         return false;
+      } else {
+         int $$5 = 2 + $$3.a(2);
+         int $$6 = 2 + $$3.a(2);
 
-      for (int $$9 = 0; $$9 <= $$5; $$9++) {
-         for (int $$10 = 0; $$10 <= $$4; $$10++) {
-            for (int $$11 = 0; $$11 <= $$6; $$11++) {
-               $$8.d($$9 + $$2.u(), $$10 + $$2.v(), $$11 + $$2.w());
-               $$8.c(ie.a, $$7);
-               if (($$9 != 0 && $$9 != $$5 || $$10 != 0 && $$10 != $$4)
-                  && ($$11 != 0 && $$11 != $$6 || $$10 != 0 && $$10 != $$4)
-                  && ($$9 != 0 && $$9 != $$5 || $$11 != 0 && $$11 != $$6)
-                  && ($$9 == 0 || $$9 == $$5 || $$10 == 0 || $$10 == $$4 || $$11 == 0 || $$11 == $$6)
-                  && !($$1.i() < 0.1F)
-                  && !this.b($$0, $$1, $$8, $$3)) {
-               }
+         for (hz $$7 : hz.a($$1.b(-$$5, 0, -$$6), $$1.b($$5, 1, $$6))) {
+            int $$8 = $$1.u() - $$7.u();
+            int $$9 = $$1.w() - $$7.w();
+            if ((float)($$8 * $$8 + $$9 * $$9) <= $$3.i() * 10.0F - $$3.i() * 6.0F) {
+               this.a($$2, $$7, $$3, $$4);
+            } else if ((double)$$3.i() < 0.031) {
+               this.a($$2, $$7, $$3, $$4);
             }
          }
-      }
 
-      return true;
+         return true;
+      }
+   }
+
+   private boolean a(cvs $$0, hz $$1, awp $$2) {
+      hz $$3 = $$1.d();
+      dlj $$4 = $$0.a_($$3);
+      return $$4.a(cyu.kE) ? $$2.h() : $$4.d($$0, $$3, ie.b);
+   }
+
+   private void a(cvs $$0, hz $$1, awp $$2, dvv $$3) {
+      if ($$0.u($$1) && this.a($$0, $$1, $$2)) {
+         $$0.a($$1, $$3.b.a($$2, $$1), 4);
+      }
    }
 }

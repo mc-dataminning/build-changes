@@ -1,68 +1,74 @@
 import javax.annotation.Nullable;
 
-public class clr implements bln, clq {
-   private final is<coz> c = is.a(1, coz.h);
+public class clr extends bmf {
    @Nullable
-   private csd<?> d;
+   private djs c;
 
-   @Override
-   public int b() {
-      return 1;
+   public clr() {
+      super(27);
+   }
+
+   public void a(djs $$0) {
+      this.c = $$0;
+   }
+
+   public boolean b(djs $$0) {
+      return this.c == $$0;
    }
 
    @Override
-   public boolean aj_() {
-      for (coz $$0 : this.c) {
-         if (!$$0.b()) {
-            return false;
+   public void a(tc $$0) {
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         this.a($$1, cpd.h);
+      }
+
+      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
+         sw $$3 = $$0.a($$2);
+         int $$4 = $$3.f("Slot") & 255;
+         if ($$4 >= 0 && $$4 < this.b()) {
+            this.a($$4, cpd.a($$3));
+         }
+      }
+   }
+
+   @Override
+   public tc g() {
+      tc $$0 = new tc();
+
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         cpd $$2 = this.a($$1);
+         if (!$$2.b()) {
+            sw $$3 = new sw();
+            $$3.a("Slot", (byte)$$1);
+            $$2.b($$3);
+            $$0.add($$3);
          }
       }
 
-      return true;
+      return $$0;
    }
 
    @Override
-   public coz a(int $$0) {
-      return this.c.get(0);
+   public boolean a(chl $$0) {
+      return this.c != null && !this.c.c($$0) ? false : super.a($$0);
    }
 
    @Override
-   public coz a(int $$0, int $$1) {
-      return blo.a(this.c, 0);
+   public void d_(chl $$0) {
+      if (this.c != null) {
+         this.c.a($$0);
+      }
+
+      super.d_($$0);
    }
 
    @Override
-   public coz b(int $$0) {
-      return blo.a(this.c, 0);
-   }
+   public void c(chl $$0) {
+      if (this.c != null) {
+         this.c.b($$0);
+      }
 
-   @Override
-   public void a(int $$0, coz $$1) {
-      this.c.set(0, $$1);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(chh $$0) {
-      return true;
-   }
-
-   @Override
-   public void a() {
-      this.c.clear();
-   }
-
-   @Override
-   public void a(@Nullable csd<?> $$0) {
-      this.d = $$0;
-   }
-
-   @Nullable
-   @Override
-   public csd<?> d() {
-      return this.d;
+      super.c($$0);
+      this.c = null;
    }
 }

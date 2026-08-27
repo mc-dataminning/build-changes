@@ -19,7 +19,7 @@ public class uu<T extends uw> extends ByteToMessageDecoder implements uz {
       if ($$3 != 0) {
          xx<? super T> $$4 = this.b.c().decode($$1);
          xz<? extends xx<? super T>> $$5 = $$4.a();
-         bir.e.a(this.b.a(), $$5, $$0.channel().remoteAddress(), $$3);
+         bit.e.a(this.b.a(), $$5, $$0.channel().remoteAddress(), $$3);
          if ($$1.readableBytes() > 0) {
             throw new IOException(
                "Packet "

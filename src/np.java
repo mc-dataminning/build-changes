@@ -9,8 +9,8 @@ public class np {
          ait.a.forEach($$1xx -> $$1xx.a($$3::a));
          iy.e $$4 = $$1.a($$2, $$1x, $$3);
          il.b $$5 = $$4.a();
-         Optional<il.c<cwm>> $$6 = $$5.a(kg.at);
-         Optional<il.c<eai>> $$7 = $$5.a(kg.aC);
+         Optional<il.c<cwq>> $$6 = $$5.a(kg.at);
+         Optional<il.c<eap>> $$7 = $$5.a(kg.aC);
          if ($$6.isPresent() || $$7.isPresent()) {
             nr.a($$7.orElseGet(() -> $$1x.b(kg.aC)), $$6.orElseGet(() -> $$1x.b(kg.at)));
          }

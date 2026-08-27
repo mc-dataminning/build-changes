@@ -1,57 +1,70 @@
-import com.google.common.collect.Sets;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+public abstract class cwx {
+   public static final aix<cwq> a = a("the_void");
+   public static final aix<cwq> b = a("plains");
+   public static final aix<cwq> c = a("sunflower_plains");
+   public static final aix<cwq> d = a("snowy_plains");
+   public static final aix<cwq> e = a("ice_spikes");
+   public static final aix<cwq> f = a("desert");
+   public static final aix<cwq> g = a("swamp");
+   public static final aix<cwq> h = a("mangrove_swamp");
+   public static final aix<cwq> i = a("forest");
+   public static final aix<cwq> j = a("flower_forest");
+   public static final aix<cwq> k = a("birch_forest");
+   public static final aix<cwq> l = a("dark_forest");
+   public static final aix<cwq> m = a("old_growth_birch_forest");
+   public static final aix<cwq> n = a("old_growth_pine_taiga");
+   public static final aix<cwq> o = a("old_growth_spruce_taiga");
+   public static final aix<cwq> p = a("taiga");
+   public static final aix<cwq> q = a("snowy_taiga");
+   public static final aix<cwq> r = a("savanna");
+   public static final aix<cwq> s = a("savanna_plateau");
+   public static final aix<cwq> t = a("windswept_hills");
+   public static final aix<cwq> u = a("windswept_gravelly_hills");
+   public static final aix<cwq> v = a("windswept_forest");
+   public static final aix<cwq> w = a("windswept_savanna");
+   public static final aix<cwq> x = a("jungle");
+   public static final aix<cwq> y = a("sparse_jungle");
+   public static final aix<cwq> z = a("bamboo_jungle");
+   public static final aix<cwq> A = a("badlands");
+   public static final aix<cwq> B = a("eroded_badlands");
+   public static final aix<cwq> C = a("wooded_badlands");
+   public static final aix<cwq> D = a("meadow");
+   public static final aix<cwq> E = a("cherry_grove");
+   public static final aix<cwq> F = a("grove");
+   public static final aix<cwq> G = a("snowy_slopes");
+   public static final aix<cwq> H = a("frozen_peaks");
+   public static final aix<cwq> I = a("jagged_peaks");
+   public static final aix<cwq> J = a("stony_peaks");
+   public static final aix<cwq> K = a("river");
+   public static final aix<cwq> L = a("frozen_river");
+   public static final aix<cwq> M = a("beach");
+   public static final aix<cwq> N = a("snowy_beach");
+   public static final aix<cwq> O = a("stony_shore");
+   public static final aix<cwq> P = a("warm_ocean");
+   public static final aix<cwq> Q = a("lukewarm_ocean");
+   public static final aix<cwq> R = a("deep_lukewarm_ocean");
+   public static final aix<cwq> S = a("ocean");
+   public static final aix<cwq> T = a("deep_ocean");
+   public static final aix<cwq> U = a("cold_ocean");
+   public static final aix<cwq> V = a("deep_cold_ocean");
+   public static final aix<cwq> W = a("frozen_ocean");
+   public static final aix<cwq> X = a("deep_frozen_ocean");
+   public static final aix<cwq> Y = a("mushroom_fields");
+   public static final aix<cwq> Z = a("dripstone_caves");
+   public static final aix<cwq> aa = a("lush_caves");
+   public static final aix<cwq> ab = a("deep_dark");
+   public static final aix<cwq> ac = a("nether_wastes");
+   public static final aix<cwq> ad = a("warped_forest");
+   public static final aix<cwq> ae = a("crimson_forest");
+   public static final aix<cwq> af = a("soul_sand_valley");
+   public static final aix<cwq> ag = a("basalt_deltas");
+   public static final aix<cwq> ah = a("the_end");
+   public static final aix<cwq> ai = a("end_highlands");
+   public static final aix<cwq> aj = a("end_midlands");
+   public static final aix<cwq> ak = a("small_end_islands");
+   public static final aix<cwq> al = a("end_barrens");
 
-public class cwx extends cwq implements cwo.a {
-   public static final Codec<cwx> b = cwm.c.fieldOf("biome").xmap(cwx::new, $$0 -> $$0.c).stable().codec();
-   private final ij<cwm> c;
-
-   public cwx(ij<cwm> $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   protected Stream<ij<cwm>> b() {
-      return Stream.of(this.c);
-   }
-
-   @Override
-   protected Codec<? extends cwq> a() {
-      return b;
-   }
-
-   @Override
-   public ij<cwm> getNoiseBiome(int $$0, int $$1, int $$2, cwv.f $$3) {
-      return this.c;
-   }
-
-   @Override
-   public ij<cwm> getNoiseBiome(int $$0, int $$1, int $$2) {
-      return this.c;
-   }
-
-   @Nullable
-   @Override
-   public Pair<hz, ij<cwm>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<ij<cwm>> $$5, awo $$6, boolean $$7, cwv.f $$8) {
-      if ($$5.test(this.c)) {
-         return $$7 ? Pair.of(new hz($$0, $$1, $$2), this.c) : Pair.of(new hz($$0 - $$3 + $$6.a($$3 * 2 + 1), $$1, $$2 - $$3 + $$6.a($$3 * 2 + 1)), this.c);
-      } else {
-         return null;
-      }
-   }
-
-   @Nullable
-   @Override
-   public Pair<hz, ij<cwm>> a(hz $$0, int $$1, int $$2, int $$3, Predicate<ij<cwm>> $$4, cwv.f $$5, cvq $$6) {
-      return $$4.test(this.c) ? Pair.of($$0, this.c) : null;
-   }
-
-   @Override
-   public Set<ij<cwm>> a(int $$0, int $$1, int $$2, int $$3, cwv.f $$4) {
-      return Sets.newHashSet(Set.of(this.c));
+   private static aix<cwq> a(String $$0) {
+      return aix.a(kg.at, new aiy($$0));
    }
 }

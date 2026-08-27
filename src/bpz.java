@@ -1,34 +1,15 @@
-public class bpz implements brk {
-   private final hz a;
-   private final ens b;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-   public bpz(hz $$0) {
-      this.a = $$0.i();
-      this.b = ens.b($$0);
-   }
-
-   public bpz(ens $$0) {
-      this.a = hz.a($$0);
-      this.b = $$0;
-   }
-
-   @Override
-   public ens a() {
-      return this.b;
-   }
-
-   @Override
-   public hz b() {
-      return this.a;
-   }
-
-   @Override
-   public boolean a(bog $$0) {
-      return true;
-   }
-
-   @Override
-   public String toString() {
-      return "BlockPosTracker{blockPos=" + this.a + ", centerPosition=" + this.b + "}";
+public class bpz {
+   public static bqb<boi> a(bxl<?> $$0, int $$1) {
+      return btn.a(
+         (Function<btn.b<boi>, ? extends App<btn.c<boi>, btq<boi>>>)($$2 -> $$2.group($$2.a(bxl.o), $$2.c(bxl.ax), $$2.b($$0))
+               .apply($$2, $$2.a(() -> "[BecomePassive if " + $$0 + " present]", ($$1xx, $$2x, $$3) -> ($$3x, $$4, $$5) -> {
+                     $$2x.a(true, (long)$$1);
+                     $$1xx.b();
+                     return true;
+                  })))
+      );
    }
 }

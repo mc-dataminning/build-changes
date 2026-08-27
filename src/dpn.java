@@ -1,68 +1,45 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 import java.util.UUID;
-import java.util.function.Function;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class dpn implements dpt {
-   public static final Codec<dpn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(jc.a.fieldOf("source_entity").forGetter(dpn::b), Codec.FLOAT.fieldOf("y_offset").orElse(0.0F).forGetter($$0x -> $$0x.f))
-            .apply($$0, ($$0x, $$1) -> new dpn(Either.right(Either.left($$0x)), $$1))
-   );
-   public static final xo<vb, dpn> b = xo.a(xm.d, dpn::c, xm.f, $$0 -> $$0.f, ($$0, $$1) -> new dpn(Either.right(Either.right($$0)), $$1));
-   private Either<bno, Either<UUID, Integer>> e;
-   private final float f;
+public class dpn<T extends dpd> implements dpm<T> {
+   private final dpf<T> a;
+   private final dpi<T> b;
 
-   public dpn(bno $$0, float $$1) {
-      this(Either.left($$0), $$1);
+   public dpn(dpf<T> $$0, dpi<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   private dpn(Either<bno, Either<UUID, Integer>> $$0, float $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   @Nullable
+   @Override
+   public T a(int $$0) {
+      return this.a.a($$0);
+   }
+
+   @Nullable
+   @Override
+   public T a(UUID $$0) {
+      return this.a.a($$0);
    }
 
    @Override
-   public Optional<ens> a(cvn $$0) {
-      if (this.e.left().isEmpty()) {
-         this.b($$0);
-      }
-
-      return this.e.left().map($$0x -> $$0x.dk().b(0.0, (double)this.f, 0.0));
-   }
-
-   private void b(cvn $$0) {
-      ((Optional)this.e.map(Optional::of, $$1 -> Optional.ofNullable((bno)$$1.map($$1x -> $$0 instanceof aov $$2 ? $$2.a($$1x) : null, $$0::a))))
-         .ifPresent($$0x -> this.e = Either.left($$0x));
-   }
-
-   private UUID b() {
-      return (UUID)this.e.map(bno::cw, $$0 -> (UUID)$$0.map(Function.identity(), $$0x -> {
-            throw new RuntimeException("Unable to get entityId from uuid");
-         }));
-   }
-
-   private int c() {
-      return (Integer)this.e.map(bno::aj, $$0 -> (Integer)$$0.map($$0x -> {
-            throw new IllegalStateException("Unable to get entityId from uuid");
-         }, Function.identity()));
+   public Iterable<T> a() {
+      return this.a.a();
    }
 
    @Override
-   public dpu<dpn> a() {
-      return dpu.b;
+   public <U extends T> void a(dpk<T, U> $$0, auv<U> $$1) {
+      this.a.a($$0, $$1);
    }
 
-   public static class a implements dpu<dpn> {
-      @Override
-      public Codec<dpn> a() {
-         return dpn.a;
-      }
+   @Override
+   public void a(enu $$0, Consumer<T> $$1) {
+      this.b.b($$0, auv.forConsumer($$1));
+   }
 
-      @Override
-      public xo<vb, dpn> b() {
-         return dpn.b;
-      }
+   @Override
+   public <U extends T> void a(dpk<T, U> $$0, enu $$1, auv<U> $$2) {
+      this.b.a($$0, $$1, $$2);
    }
 }

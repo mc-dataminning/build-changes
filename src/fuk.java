@@ -1,85 +1,61 @@
-import com.mojang.authlib.GameProfile;
-import javax.annotation.Nullable;
+public class fuk extends fuh {
+   private final fuc a;
+   private static final int b = 8;
 
-public abstract class fuk extends chh {
-   @Nullable
-   private fqg g;
-   protected ens b;
-   public float c;
-   public float d;
-   public float e;
-   public final fpx f;
-
-   public fuk(fpx $$0, GameProfile $$1) {
-      super($$0, $$0.T(), $$0.U(), $$1);
-      this.b = ens.b;
-      this.f = $$0;
+   protected fuk(fqe $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fuc $$8) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a = $$8;
+      this.B = 0.96F;
+      this.u = -0.1F;
+      this.C = true;
+      this.j *= 0.0;
+      this.k *= 0.9;
+      this.l *= 0.0;
+      this.j += $$4;
+      this.k += $$5;
+      this.l += $$6;
+      this.D *= 0.75F * $$7;
+      this.t = (int)(8.0F / awi.b(this.r, 0.5F, 1.0F) * $$7);
+      this.t = Math.max(this.t, 1);
+      this.b($$8);
+      this.n = true;
    }
 
    @Override
-   public boolean P_() {
-      fqg $$0 = this.a();
-      return $$0 != null && $$0.e() == cvk.d;
+   public ftl b() {
+      return ftl.b;
    }
 
    @Override
-   public boolean f() {
-      fqg $$0 = this.a();
-      return $$0 != null && $$0.e() == cvk.b;
-   }
-
-   @Nullable
-   protected fqg a() {
-      if (this.g == null) {
-         this.g = exh.O().J().a(this.cw());
-      }
-
-      return this.g;
+   public int a(float $$0) {
+      return 240;
    }
 
    @Override
-   public void l() {
-      this.b = this.dp();
-      super.l();
+   public ftu.a p() {
+      return ftu.a.b;
    }
 
-   public ens C(float $$0) {
-      return this.b.a(this.dp(), (double)$$0);
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
    }
 
-   public ghs b() {
-      fqg $$0 = this.a();
-      return $$0 == null ? ghl.a(this.cw()) : $$0.g();
+   @Override
+   public float b(float $$0) {
+      return this.D * awi.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
-   public float c() {
-      float $$0 = 1.0F;
-      if (this.fU().b) {
-         $$0 *= 1.1F;
+   public static class a implements ftk<kc> {
+      private final fuc a;
+
+      public a(fuc $$0) {
+         this.a = $$0;
       }
 
-      $$0 *= ((float)this.g(bpl.o) / this.fU().b() + 1.0F) / 2.0F;
-      if (this.fU().b() == 0.0F || Float.isNaN($$0) || Float.isInfinite($$0)) {
-         $$0 = 1.0F;
+      public fth a(kc $$0, fqe $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fuk($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.5F, this.a);
       }
-
-      coz $$1 = this.fp();
-      if (this.fn()) {
-         if ($$1.a(cpc.ot)) {
-            int $$2 = this.fr();
-            float $$3 = (float)$$2 / 20.0F;
-            if ($$3 > 1.0F) {
-               $$3 = 1.0F;
-            } else {
-               $$3 *= $$3;
-            }
-
-            $$0 *= 1.0F - $$3 * 0.15F;
-         } else if (exh.O().m.ax().a() && this.gr()) {
-            return 0.1F;
-         }
-      }
-
-      return awh.i(exh.O().m.ah().c().floatValue(), 1.0F, $$0);
    }
 }

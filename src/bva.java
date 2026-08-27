@@ -1,78 +1,86 @@
 import java.util.List;
 import javax.annotation.Nullable;
 
-public class bva extends bvb {
-   public static final int a = 8;
-   public static final int b = 4;
-   public static final int c = 3;
-   private final bzt d;
+public class bva extends bvf {
+   private int a;
+   private final boq b;
    @Nullable
-   private bzt e;
-   private final double f;
-   private int g;
+   private chl c;
+   private buo d;
 
-   public bva(bzt $$0, double $$1) {
-      this.d = $$0;
-      this.f = $$1;
+   public bva(boq $$0) {
+      this.b = $$0;
    }
 
    @Override
    public boolean a() {
-      if (this.d.h() >= 0) {
-         return false;
-      } else {
-         List<? extends bzt> $$0 = this.d.dM().a((Class<? extends bzt>)this.d.getClass(), this.d.cH().c(8.0, 4.0, 8.0));
-         bzt $$1 = null;
-         double $$2 = Double.MAX_VALUE;
+      List<cjg> $$0 = this.b.dM().a(cjg.class, this.b.cH().g(5.0));
+      boolean $$1 = false;
 
-         for (bzt $$3 : $$0) {
-            if ($$3.h() >= 0) {
-               double $$4 = this.d.f($$3);
-               if (!($$4 > $$2)) {
-                  $$2 = $$4;
-                  $$1 = $$3;
-               }
-            }
-         }
-
-         if ($$1 == null) {
-            return false;
-         } else if ($$2 < 9.0) {
-            return false;
-         } else {
-            this.e = $$1;
-            return true;
+      for (cjg $$2 : $$0) {
+         bnq $$3 = $$2.cN();
+         if ($$3 instanceof chl && (awi.e(((chl)$$3).bk) > 0.0F || awi.e(((chl)$$3).bm) > 0.0F)) {
+            $$1 = true;
+            break;
          }
       }
+
+      return this.c != null && (awi.e(this.c.bk) > 0.0F || awi.e(this.c.bm) > 0.0F) || $$1;
+   }
+
+   @Override
+   public boolean S_() {
+      return true;
    }
 
    @Override
    public boolean b() {
-      if (this.d.h() >= 0) {
-         return false;
-      } else if (!this.e.bx()) {
-         return false;
-      } else {
-         double $$0 = this.d.f(this.e);
-         return !($$0 < 9.0) && !($$0 > 256.0);
-      }
+      return this.c != null && this.c.bO() && (awi.e(this.c.bk) > 0.0F || awi.e(this.c.bm) > 0.0F);
    }
 
    @Override
    public void c() {
-      this.g = 0;
+      for (cjg $$1 : this.b.dM().a(cjg.class, this.b.cH().g(5.0))) {
+         if ($$1.cN() instanceof chl $$2) {
+            this.c = $$2;
+            break;
+         }
+      }
+
+      this.a = 0;
+      this.d = buo.a;
    }
 
    @Override
    public void d() {
-      this.e = null;
+      this.c = null;
    }
 
    @Override
    public void e() {
-      if (--this.g <= 0) {
-         this.g = this.a(10);
-         this.d.N().a(this.e, this.f);
+      boolean $$0 = awi.e(this.c.bk) > 0.0F || awi.e(this.c.bm) > 0.0F;
+      float $$1 = this.d == buo.b ? ($$0 ? 0.01F : 0.0F) : 0.015F;
+      this.b.a($$1, new enz((double)this.b.bk, (double)this.b.bl, (double)this.b.bm));
+      this.b.a(bon.a, this.b.dp());
+      if (--this.a <= 0) {
+         this.a = this.a(10);
+         if (this.d == buo.a) {
+            hz $$2 = this.c.dm().a(this.c.cE().g());
+            $$2 = $$2.b(0, -1, 0);
+            this.b.N().a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 1.0);
+            if (this.b.e((bnq)this.c) < 4.0F) {
+               this.a = 0;
+               this.d = buo.b;
+            }
+         } else if (this.d == buo.b) {
+            ie $$3 = this.c.cF();
+            hz $$4 = this.c.dm().a($$3, 10);
+            this.b.N().a((double)$$4.u(), (double)($$4.v() - 1), (double)$$4.w(), 1.0);
+            if (this.b.e((bnq)this.c) > 12.0F) {
+               this.a = 0;
+               this.d = buo.a;
+            }
+         }
       }
    }
 }

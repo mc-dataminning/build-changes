@@ -7,10 +7,10 @@ public class acn implements xx<aag> {
    private final double d;
    private final float e;
    private final float f;
-   private final Set<bot> g;
+   private final Set<bov> g;
    private final int h;
 
-   public acn(double $$0, double $$1, double $$2, float $$3, float $$4, Set<bot> $$5, int $$6) {
+   public acn(double $$0, double $$1, double $$2, float $$3, float $$4, Set<bov> $$5, int $$6) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -26,7 +26,7 @@ public class acn implements xx<aag> {
       this.d = $$0.readDouble();
       this.e = $$0.readFloat();
       this.f = $$0.readFloat();
-      this.g = bot.a($$0.readUnsignedByte());
+      this.g = bov.a($$0.readUnsignedByte());
       this.h = $$0.n();
    }
 
@@ -36,7 +36,7 @@ public class acn implements xx<aag> {
       $$0.a(this.d);
       $$0.a(this.e);
       $$0.a(this.f);
-      $$0.k(bot.a(this.g));
+      $$0.k(bov.a(this.g));
       $$0.c(this.h);
    }
 
@@ -73,7 +73,7 @@ public class acn implements xx<aag> {
       return this.h;
    }
 
-   public Set<bot> j() {
+   public Set<bov> j() {
       return this.g;
    }
 }

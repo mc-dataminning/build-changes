@@ -7,22 +7,22 @@ public class jv implements jx {
       public jv a(jy<jv> $$0, StringReader $$1) throws CommandSyntaxException {
          $$1.expect(' ');
          gc.a $$2 = gc.a(kf.h.p(), $$1);
-         coz $$3 = new gb($$2.a(), $$2.b()).a(1, false);
+         cpd $$3 = new gb($$2.a(), $$2.b()).a(1, false);
          return new jv($$0, $$3);
       }
    };
    private final jy<jv> b;
-   private final coz c;
+   private final cpd c;
 
    public static Codec<jv> a(jy<jv> $$0) {
-      return coz.a.xmap($$1 -> new jv($$0, $$1), $$0x -> $$0x.c);
+      return cpd.a.xmap($$1 -> new jv($$0, $$1), $$0x -> $$0x.c);
    }
 
    public static xo<? super vb, jv> b(jy<jv> $$0) {
-      return coz.f.a($$1 -> new jv($$0, $$1), $$0x -> $$0x.c);
+      return cpd.f.a($$1 -> new jv($$0, $$1), $$0x -> $$0x.c);
    }
 
-   public jv(jy<jv> $$0, coz $$1) {
+   public jv(jy<jv> $$0, cpd $$1) {
       this.b = $$0;
       this.c = $$1;
    }
@@ -37,7 +37,7 @@ public class jv implements jx {
       return this.b;
    }
 
-   public coz c() {
+   public cpd c() {
       return this.c;
    }
 }

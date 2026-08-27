@@ -1,133 +1,77 @@
-enum ffr {
-   a(
-      new ffr.a(
-         new aiy("advancements/tab_above_left_selected"), new aiy("advancements/tab_above_middle_selected"), new aiy("advancements/tab_above_right_selected")
-      ),
-      new ffr.a(new aiy("advancements/tab_above_left"), new aiy("advancements/tab_above_middle"), new aiy("advancements/tab_above_right")),
-      28,
-      32,
-      8
-   ),
-   b(
-      new ffr.a(
-         new aiy("advancements/tab_below_left_selected"), new aiy("advancements/tab_below_middle_selected"), new aiy("advancements/tab_below_right_selected")
-      ),
-      new ffr.a(new aiy("advancements/tab_below_left"), new aiy("advancements/tab_below_middle"), new aiy("advancements/tab_below_right")),
-      28,
-      32,
-      8
-   ),
-   c(
-      new ffr.a(
-         new aiy("advancements/tab_left_top_selected"), new aiy("advancements/tab_left_middle_selected"), new aiy("advancements/tab_left_bottom_selected")
-      ),
-      new ffr.a(new aiy("advancements/tab_left_top"), new aiy("advancements/tab_left_middle"), new aiy("advancements/tab_left_bottom")),
-      32,
-      28,
-      5
-   ),
-   d(
-      new ffr.a(
-         new aiy("advancements/tab_right_top_selected"), new aiy("advancements/tab_right_middle_selected"), new aiy("advancements/tab_right_bottom_selected")
-      ),
-      new ffr.a(new aiy("advancements/tab_right_top"), new aiy("advancements/tab_right_middle"), new aiy("advancements/tab_right_bottom")),
-      32,
-      28,
-      5
-   );
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
+import java.util.List;
 
-   private final ffr.a e;
-   private final ffr.a f;
-   private final int g;
-   private final int h;
-   private final int i;
+public class ffr extends ffl {
+   private static final int a = 20;
+   private static final int b = 5;
+   private static final int c = 20;
+   private final vq k;
+   private final vv l;
+   private final ImmutableList<ffr.a> m;
+   private fah n = fah.a;
+   private int o;
+   private int p;
 
-   private ffr(ffr.a $$0, ffr.a $$1, int $$2, int $$3, int $$4) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
+   protected ffr(vq $$0, List<vq> $$1, ImmutableList<ffr.a> $$2) {
+      super($$0);
+      this.l = vv.a($$1);
+      this.k = vp.a($$0, vt.a($$1, vp.a));
+      this.m = $$2;
    }
 
-   public int a() {
-      return this.i;
+   @Override
+   public vq i() {
+      return this.k;
    }
 
-   public void a(eyu $$0, int $$1, int $$2, boolean $$3, int $$4) {
-      ffr.a $$5 = $$3 ? this.e : this.f;
-      aiy $$6;
-      if ($$4 == 0) {
-         $$6 = $$5.a();
-      } else if ($$4 == this.i - 1) {
-         $$6 = $$5.c();
-      } else {
-         $$6 = $$5.b();
+   @Override
+   public void aQ_() {
+      UnmodifiableIterator $$1 = this.m.iterator();
+
+      while ($$1.hasNext()) {
+         ffr.a $$0 = (ffr.a)$$1.next();
+         this.p = Math.max(this.p, 20 + this.i.a($$0.a) + 20);
       }
 
-      $$0.a($$6, $$1 + this.a($$4), $$2 + this.b($$4), this.g, this.h);
-   }
+      int $$1x = 5 + this.p + 5;
+      int $$2 = $$1x * this.m.size();
+      this.n = fah.a(this.i, this.l, $$2);
+      int $$3 = this.n.a() * 9;
+      this.o = (int)((double)this.h / 2.0 - (double)$$3 / 2.0);
+      int $$4 = this.o + $$3 + 9 * 2;
+      int $$5 = (int)((double)this.g / 2.0 - (double)$$2 / 2.0);
 
-   public void a(eyu $$0, int $$1, int $$2, int $$3, coz $$4) {
-      int $$5 = $$1 + this.a($$3);
-      int $$6 = $$2 + this.b($$3);
-      switch (this) {
-         case a:
-            $$5 += 6;
-            $$6 += 9;
-            break;
-         case b:
-            $$5 += 6;
-            $$6 += 6;
-            break;
-         case c:
-            $$5 += 10;
-            $$6 += 5;
-            break;
-         case d:
-            $$5 += 6;
-            $$6 += 5;
-      }
-
-      $$0.b($$4, $$5, $$6);
-   }
-
-   public int a(int $$0) {
-      switch (this) {
-         case a:
-            return (this.g + 4) * $$0;
-         case b:
-            return (this.g + 4) * $$0;
-         case c:
-            return -this.g + 4;
-         case d:
-            return 248;
-         default:
-            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+      for (UnmodifiableIterator var6 = this.m.iterator(); var6.hasNext(); $$5 += $$1x) {
+         ffr.a $$6 = (ffr.a)var6.next();
+         this.c(ezo.a($$6.a, $$6.b).a($$5, $$4, this.p, 20).a());
       }
    }
 
-   public int b(int $$0) {
-      switch (this) {
-         case a:
-            return -this.h + 4;
-         case b:
-            return 136;
-         case c:
-            return this.h * $$0;
-         case d:
-            return this.h * $$0;
-         default:
-            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+   @Override
+   public void a(ezb $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, this.o - 9 * 2, -1);
+      this.n.a($$0, this.g / 2, this.o);
+   }
+
+   @Override
+   public void b(ezb $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+   }
+
+   @Override
+   public boolean aO_() {
+      return false;
+   }
+
+   public static final class a {
+      final vq a;
+      final ezo.c b;
+
+      public a(vq $$0, ezo.c $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
-   }
-
-   public boolean a(int $$0, int $$1, int $$2, double $$3, double $$4) {
-      int $$5 = $$0 + this.a($$2);
-      int $$6 = $$1 + this.b($$2);
-      return $$3 > (double)$$5 && $$3 < (double)($$5 + this.g) && $$4 > (double)$$6 && $$4 < (double)($$6 + this.h);
-   }
-
-   static record a(aiy a, aiy b, aiy c) {
    }
 }

@@ -1,100 +1,111 @@
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.Collection;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class fxa implements gje {
-   private final dlg<cyo, dlf> a;
-   private final List<fxc> b;
+public class fxa {
+   public static final fxa a = new fxa();
+   public static final float b = Float.NEGATIVE_INFINITY;
+   private final fxa.a[] c;
+   private final aiy[] d;
 
-   public fxa(dlg<cyo, dlf> $$0, List<fxc> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   private fxa() {
+      this.c = new fxa.a[0];
+      this.d = new aiy[0];
    }
 
-   public List<fxc> a() {
-      return this.b;
+   public fxa(gjf $$0, fwv $$1, List<fwz> $$2) {
+      this.d = $$2.stream().flatMap(fwz::b).map(fwz.b::a).distinct().toArray(aiy[]::new);
+      Object2IntMap<aiy> $$3 = new Object2IntOpenHashMap();
+
+      for (int $$4 = 0; $$4 < this.d.length; $$4++) {
+         $$3.put(this.d[$$4], $$4);
+      }
+
+      List<fxa.a> $$5 = Lists.newArrayList();
+
+      for (int $$6 = $$2.size() - 1; $$6 >= 0; $$6--) {
+         fwz $$7 = $$2.get($$6);
+         gjb $$8 = this.a($$0, $$1, $$7);
+         fxa.b[] $$9 = $$7.b().map($$1x -> {
+            int $$2x = $$3.getInt($$1x.a());
+            return new fxa.b($$2x, $$1x.b());
+         }).toArray(fxa.b[]::new);
+         $$5.add(new fxa.a($$9, $$8));
+      }
+
+      this.c = $$5.toArray(new fxa.a[0]);
    }
 
-   public Set<fwv> b() {
-      Set<fwv> $$0 = Sets.newHashSet();
+   @Nullable
+   private gjb a(gjf $$0, fwv $$1, fwz $$2) {
+      gjm $$3 = $$0.a($$2.a());
+      return Objects.equals($$3, $$1) ? null : $$0.a($$2.a(), gjc.a);
+   }
 
-      for (fxc $$1 : this.b) {
-         $$0.add($$1.a());
+   @Nullable
+   public gjb a(gjb $$0, cpd $$1, @Nullable fqe $$2, @Nullable boi $$3, int $$4) {
+      if (this.c.length != 0) {
+         coy $$5 = $$1.d();
+         int $$6 = this.d.length;
+         float[] $$7 = new float[$$6];
+
+         for (int $$8 = 0; $$8 < $$6; $$8++) {
+            aiy $$9 = this.d[$$8];
+            ggj $$10 = ggi.a($$5, $$9);
+            if ($$10 != null) {
+               $$7[$$8] = $$10.call($$1, $$2, $$3, $$4);
+            } else {
+               $$7[$$8] = Float.NEGATIVE_INFINITY;
+            }
+         }
+
+         for (fxa.a $$11 : this.c) {
+            if ($$11.a($$7)) {
+               gjb $$12 = $$11.b;
+               if ($$12 == null) {
+                  return $$0;
+               }
+
+               return $$12;
+            }
+         }
       }
 
       return $$0;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof fxa $$1) ? false : Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b);
-      }
-   }
+   static class a {
+      private final fxa.b[] a;
+      @Nullable
+      final gjb b;
 
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.a, this.b);
-   }
-
-   @Override
-   public Collection<aiy> f() {
-      return this.a().stream().flatMap($$0 -> $$0.a().f().stream()).collect(Collectors.toSet());
-   }
-
-   @Override
-   public void a(Function<aiy, gje> $$0) {
-      this.a().forEach($$1 -> $$1.a().a($$0));
-   }
-
-   @Nullable
-   @Override
-   public git a(gix $$0, Function<giw, ggt> $$1, gjb $$2, aiy $$3) {
-      gjc.a $$4 = new gjc.a();
-
-      for (fxc $$5 : this.a()) {
-         git $$6 = $$5.a().a($$0, $$1, $$2, $$3);
-         if ($$6 != null) {
-            $$4.a($$5.a(this.a), $$6);
-         }
-      }
-
-      return $$4.a();
-   }
-
-   public static class a implements JsonDeserializer<fxa> {
-      private final fwo.a a;
-
-      public a(fwo.a $$0) {
+      a(fxa.b[] $$0, @Nullable gjb $$1) {
          this.a = $$0;
+         this.b = $$1;
       }
 
-      public fxa a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return new fxa(this.a.a(), this.a($$2, $$0.getAsJsonArray()));
-      }
-
-      private List<fxc> a(JsonDeserializationContext $$0, JsonArray $$1) {
-         List<fxc> $$2 = Lists.newArrayList();
-
-         for (JsonElement $$3 : $$1) {
-            $$2.add((fxc)$$0.deserialize($$3, fxc.class));
+      boolean a(float[] $$0) {
+         for (fxa.b $$1 : this.a) {
+            float $$2 = $$0[$$1.a];
+            if ($$2 < $$1.b) {
+               return false;
+            }
          }
 
-         return $$2;
+         return true;
+      }
+   }
+
+   static class b {
+      public final int a;
+      public final float b;
+
+      b(int $$0, float $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
    }
 }

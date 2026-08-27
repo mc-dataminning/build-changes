@@ -1,22 +1,19 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
+import java.util.Set;
 
-public class bxy extends byh {
-   public static final float a = 10.0F;
-
+public class bxy extends byr<bnl> {
    @Override
-   protected boolean a(bog $$0, bog $$1) {
-      return !$$0.dO().a(bxh.U) && byn.c($$0, $$1) && cbl.j($$1) && !this.e($$0, $$1) ? $$1.a($$0, 10.0) : false;
+   public Set<bxl<?>> a() {
+      return ImmutableSet.of(bxl.K, bxl.h);
    }
 
-   private boolean e(bog $$0, bog $$1) {
-      List<UUID> $$2 = $$0.dO().c(bxh.aa).orElseGet(ArrayList::new);
-      return $$2.contains($$1.cw());
+   protected void a(aow $$0, bnl $$1) {
+      $$1.dO().c(bxl.h).ifPresent($$1x -> this.a($$1, $$1x));
    }
 
-   @Override
-   protected bxh<bog> b() {
-      return bxh.B;
+   private void a(bnl $$0, bxn $$1) {
+      Optional<bnl> $$2 = $$1.a($$1x -> $$1x.ai() == $$0.ai() && !$$1x.o_()).map(bnl.class::cast);
+      $$0.dO().a(bxl.K, $$2);
    }
 }

@@ -1,68 +1,69 @@
-import com.google.common.base.Splitter;
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelFutureListener;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.SimpleChannelInboundHandler;
-import java.util.List;
+import com.mojang.authlib.GameProfile;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class fqc extends SimpleChannelInboundHandler<ByteBuf> {
-   private static final Splitter a = Splitter.on('\u0000').limit(6);
-   private final frk b;
-   private final fqc.a c;
+public class fqc extends fqb implements ve, zr {
+   private static final Logger i = LogUtils.getLogger();
+   private final GameProfile j;
+   private cjw k;
+   private final iw.b l;
+   private final fqp m = new fqp();
 
-   public fqc(frk $$0, fqc.a $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public fqc(exo $$0, uo $$1, fqi $$2) {
+      super($$0, $$1, $$2);
+      this.j = $$2.a();
+      this.l = $$2.c();
+      this.k = $$2.d();
    }
 
-   public void channelActive(ChannelHandlerContext $$0) throws Exception {
-      super.channelActive($$0);
-      ByteBuf $$1 = $$0.alloc().buffer();
-
-      try {
-         $$1.writeByte(254);
-         $$1.writeByte(1);
-         $$1.writeByte(250);
-         apn.a($$1, "MC|PingHost");
-         int $$2 = $$1.writerIndex();
-         $$1.writeShort(0);
-         int $$3 = $$1.writerIndex();
-         $$1.writeByte(127);
-         apn.a($$1, this.b.a());
-         $$1.writeInt(this.b.b());
-         int $$4 = $$1.writerIndex() - $$3;
-         $$1.setShort($$2, $$4);
-         $$0.channel().writeAndFlush($$1).addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
-      } catch (Exception var6) {
-         $$1.release();
-         throw var6;
-      }
+   @Override
+   public boolean c() {
+      return this.b.i();
    }
 
-   protected void a(ChannelHandlerContext $$0, ByteBuf $$1) {
-      short $$2 = $$1.readUnsignedByte();
-      if ($$2 == 255) {
-         String $$3 = apn.a($$1);
-         List<String> $$4 = a.splitToList($$3);
-         if ("§1".equals($$4.get(0))) {
-            int $$5 = awh.a($$4.get(1), 0);
-            String $$6 = $$4.get(2);
-            String $$7 = $$4.get(3);
-            int $$8 = awh.a($$4.get(4), -1);
-            int $$9 = awh.a($$4.get(5), -1);
-            this.c.handleResponse($$5, $$6, $$7, $$8, $$9);
-         }
-      }
-
-      $$0.close();
+   @Override
+   protected void a(yy $$0) {
+      this.b($$0);
    }
 
-   public void exceptionCaught(ChannelHandlerContext $$0, Throwable $$1) {
-      $$0.close();
+   private void b(yy $$0) {
+      i.warn("Unknown custom packet payload: {}", $$0.a().a());
    }
 
-   @FunctionalInterface
-   public interface a {
-      void handleResponse(int var1, String var2, String var3, int var4, int var5);
+   @Override
+   public void a(zt $$0) {
+      ya.a($$0, this, this.a);
+      this.m.a($$0.b(), $$0.e());
+   }
+
+   @Override
+   public void a(ym $$0) {
+      ya.a($$0, this, this.a);
+      this.m.a($$0.b());
+   }
+
+   @Override
+   public void a(zu $$0) {
+      this.k = cjy.e.a($$0.b());
+   }
+
+   @Override
+   public void a(zs $$0) {
+      ya.a($$0, this, this.a);
+      iw.b $$1 = this.m.a(this.l, this.b.e());
+      this.b.a(aer.b.bind(vb.a($$1)), new fqf(this.a, this.b, new fqi(this.j, this.e, $$1, this.k, this.d, this.c, this.f, this.h)));
+      this.b.a(zy.a);
+      this.b.a(aer.a.bind(vb.a($$1)));
+   }
+
+   @Override
+   public void e() {
+      this.f();
+   }
+
+   @Override
+   public void a(vq $$0) {
+      super.a($$0);
+      this.a.A();
    }
 }

@@ -32,7 +32,7 @@ public class eh implements ArgumentType<gg> {
       return new eh(true, false);
    }
 
-   public static bno a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static bnq a(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return ((gg)$$0.getArgument($$1, gg.class)).a((du)$$0.getSource());
    }
 
@@ -40,8 +40,8 @@ public class eh implements ArgumentType<gg> {
       return new eh(false, false);
    }
 
-   public static Collection<? extends bno> b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
-      Collection<? extends bno> $$2 = c($$0, $$1);
+   public static Collection<? extends bnq> b(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+      Collection<? extends bnq> $$2 = c($$0, $$1);
       if ($$2.isEmpty()) {
          throw d.create();
       } else {
@@ -49,11 +49,11 @@ public class eh implements ArgumentType<gg> {
       }
    }
 
-   public static Collection<? extends bno> c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static Collection<? extends bnq> c(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return ((gg)$$0.getArgument($$1, gg.class)).b((du)$$0.getSource());
    }
 
-   public static Collection<aow> d(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static Collection<aox> d(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return ((gg)$$0.getArgument($$1, gg.class)).d((du)$$0.getSource());
    }
 
@@ -61,7 +61,7 @@ public class eh implements ArgumentType<gg> {
       return new eh(true, true);
    }
 
-   public static aow e(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+   public static aox e(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
       return ((gg)$$0.getArgument($$1, gg.class)).c((du)$$0.getSource());
    }
 
@@ -69,8 +69,8 @@ public class eh implements ArgumentType<gg> {
       return new eh(false, true);
    }
 
-   public static Collection<aow> f(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
-      List<aow> $$2 = ((gg)$$0.getArgument($$1, gg.class)).d((du)$$0.getSource());
+   public static Collection<aox> f(CommandContext<du> $$0, String $$1) throws CommandSyntaxException {
+      List<aox> $$2 = ((gg)$$0.getArgument($$1, gg.class)).d((du)$$0.getSource());
       if ($$2.isEmpty()) {
          throw e.create();
       } else {

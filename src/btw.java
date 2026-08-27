@@ -1,62 +1,40 @@
 import com.google.common.collect.ImmutableMap;
 
-public class btw extends bpw<cgl> {
-   private static final int d = 15;
-   private static final int e = 20;
-   private static final double f = 0.5;
-   private static final double g = 2.5;
-   public static final int c = 40;
-   private static final int h = awh.c(34.0);
-   private static final int i = awh.f(60.0F);
+public class btw extends bqa<cgp> {
+   private static final int c = 25;
+   private static final int d = 20;
 
    public btw() {
-      super(ImmutableMap.of(bxh.o, bxi.a, bxh.aJ, bxi.b, bxh.aK, bxi.c, bxh.aL, bxi.c), i);
+      super(ImmutableMap.of(bxl.ay, bxm.a, bxl.o, bxm.b, bxl.aF, bxm.c, bxl.aD, bxm.c), cgq.b);
    }
 
-   protected boolean a(aov $$0, cgl $$1) {
-      return $$1.a($$1.dO().c(bxh.o).get(), 15.0, 20.0);
+   protected void a(aow $$0, cgp $$1, long $$2) {
+      bpj<cgp> $$3 = $$1.dO();
+      $$3.a(bxl.aD, axk.a, 25L);
+      $$3.b(bxl.m);
+      boi $$4 = $$1.dO().c(bxl.ay).get();
+      bqc.a($$1, $$4);
+      $$1.b(bot.l);
+      $$1.a($$4, 20, false);
    }
 
-   protected boolean a(aov $$0, cgl $$1, long $$2) {
+   protected boolean b(aow $$0, cgp $$1, long $$2) {
       return true;
    }
 
-   protected void b(aov $$0, cgl $$1, long $$2) {
-      $$1.dO().a(bxh.p, true, (long)i);
-      $$1.dO().a(bxh.aL, axk.a, (long)h);
-      $$0.a($$1, (byte)62);
-      $$1.a(atk.Bb, 3.0F, 1.0F);
-   }
-
-   protected void c(aov $$0, cgl $$1, long $$2) {
-      $$1.dO().c(bxh.o).ifPresent($$1x -> $$1.I().a($$1x.dk()));
-      if (!$$1.dO().a(bxh.aL) && !$$1.dO().a(bxh.aK)) {
-         $$1.dO().a(bxh.aK, axk.a, (long)(i - h));
-         $$1.dO().c(bxh.o).filter($$1::a).filter($$1x -> $$1.a($$1x, 15.0, 20.0)).ifPresent($$2x -> {
-            ens $$3 = $$1.dk().e($$1.dj().b(bnp.d, 0, $$1.dC()));
-            ens $$4 = $$2x.br().d($$3);
-            ens $$5 = $$4.d();
-            int $$6 = awh.a($$4.f()) + 7;
-
-            for (int $$7 = 1; $$7 < $$6; $$7++) {
-               ens $$8 = $$3.e($$5.a((double)$$7));
-               $$0.a(jz.A, $$8.c, $$8.d, $$8.e, 1, 0.0, 0.0, 0.0, 0.0);
-            }
-
-            $$1.a(atk.Ba, 3.0F, 1.0F);
-            $$2x.a($$0.ai().e($$1), 10.0F);
-            double $$9 = 0.5 * (1.0 - $$2x.g(bpl.k));
-            double $$10 = 2.5 * (1.0 - $$2x.g(bpl.k));
-            $$2x.j($$5.a() * $$10, $$5.b() * $$9, $$5.c() * $$10);
-         });
+   protected void c(aow $$0, cgp $$1, long $$2) {
+      if (!$$1.dO().a(bxl.aD) && !$$1.dO().a(bxl.aF)) {
+         $$1.dO().a(bxl.aF, axk.a, (long)(cgq.b - 25));
+         $$1.a(atl.AZ, 3.0F, 1.0F);
       }
    }
 
-   protected void d(aov $$0, cgl $$1, long $$2) {
-      a($$1, 40);
-   }
+   protected void d(aow $$0, cgp $$1, long $$2) {
+      if ($$1.c(bot.l)) {
+         $$1.b(bot.a);
+      }
 
-   public static void a(bog $$0, int $$1) {
-      $$0.dO().a(bxh.aJ, axk.a, (long)$$1);
+      $$1.dO().c(bxl.ay).ifPresent($$1::j);
+      $$1.dO().b(bxl.ay);
    }
 }

@@ -15,7 +15,7 @@ import net.minecraft.server.MinecraftServer;
 public class amj {
    private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vq.c("commands.schedule.same_tick"));
    private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vq.b("commands.schedule.cleared.failure", $$0));
-   private static final SuggestionProvider<du> c = ($$0, $$1) -> dz.b(((du)$$0.getSource()).l().aY().I().s().a(), $$1);
+   private static final SuggestionProvider<du> c = ($$0, $$1) -> dz.b(((du)$$0.getSource()).l().ba().I().s().a(), $$1);
 
    public static void a(CommandDispatcher<du> $$0) {
       $$0.register(
@@ -58,14 +58,14 @@ public class amj {
       } else {
          long $$4 = $$0.e().X() + (long)$$2;
          aiy $$5 = (aiy)$$1.getFirst();
-         enf<MinecraftServer> $$6 = $$0.l().aY().I().s();
+         enm<MinecraftServer> $$6 = $$0.l().ba().I().s();
          ((Either)$$1.getSecond()).ifLeft($$6x -> {
             String $$7 = $$5.toString();
             if ($$3) {
                $$6.a($$7);
             }
 
-            $$6.a($$7, $$4, new enb($$5));
+            $$6.a($$7, $$4, new eni($$5));
             $$0.a(() -> vq.a("commands.schedule.created.function", vq.a($$5), $$2, $$4), true);
          }).ifRight($$6x -> {
             String $$7 = "#" + $$5;
@@ -73,7 +73,7 @@ public class amj {
                $$6.a($$7);
             }
 
-            $$6.a($$7, $$4, new enc($$5));
+            $$6.a($$7, $$4, new enj($$5));
             $$0.a(() -> vq.a("commands.schedule.created.tag", vq.a($$5), $$2, $$4), true);
          });
          return Math.floorMod($$4, Integer.MAX_VALUE);
@@ -81,7 +81,7 @@ public class amj {
    }
 
    private static int a(du $$0, String $$1) throws CommandSyntaxException {
-      int $$2 = $$0.l().aY().I().s().a($$1);
+      int $$2 = $$0.l().ba().I().s().a($$1);
       if ($$2 == 0) {
          throw b.create($$1);
       } else {

@@ -29,7 +29,7 @@ public enum al implements axc {
       return this.e;
    }
 
-   public we a(af $$0, aow $$1) {
+   public we a(af $$0, aox $$1) {
       return vq.a("chat.type.advancement." + this.e, $$1.Q_(), ae.a($$0));
    }
 }

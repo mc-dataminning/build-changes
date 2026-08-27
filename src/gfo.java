@@ -1,64 +1,11 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.io.IOException;
-import java.util.Optional;
-import java.util.function.UnaryOperator;
-
-public class gfo<T extends bog & cgw, M extends fmb<T> & fol> extends gfd<T, M> {
-   private static final Int2ObjectMap<aiy> a = ac.a(new Int2ObjectOpenHashMap(), $$0 -> {
-      $$0.put(1, new aiy("stone"));
-      $$0.put(2, new aiy("iron"));
-      $$0.put(3, new aiy("gold"));
-      $$0.put(4, new aiy("emerald"));
-      $$0.put(5, new aiy("diamond"));
-   });
-   private final Object2ObjectMap<cgz, gig.a> b = new Object2ObjectOpenHashMap();
-   private final Object2ObjectMap<cgx, gig.a> c = new Object2ObjectOpenHashMap();
-   private final asa d;
-   private final String e;
-
-   public gfo(gcn<T, M> $$0, asa $$1, String $$2) {
+public class gfo extends gfl<cex, fob<cex>> {
+   public gfo(gcv<cex, fob<cex>> $$0) {
       super($$0);
-      this.d = $$1;
-      this.e = $$2;
    }
 
-   public void a(esa $$0, fvl $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.ce()) {
-         cgv $$10 = $$3.gr();
-         cgz $$11 = $$10.a();
-         cgx $$12 = $$10.b();
-         gig.a $$13 = this.a(this.b, "type", kf.y, $$11);
-         gig.a $$14 = this.a(this.c, "profession", kf.z, $$12);
-         M $$15 = this.c();
-         $$15.a($$14 == gig.a.a || $$14 == gig.a.b && $$13 != gig.a.c);
-         aiy $$16 = this.a("type", kf.y.b($$11));
-         a($$15, $$16, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
-         $$15.a(true);
-         if ($$12 != cgx.b && !$$3.o_()) {
-            aiy $$17 = this.a("profession", kf.z.b($$12));
-            a($$15, $$17, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
-            if ($$12 != cgx.m) {
-               aiy $$18 = this.a("profession_level", (aiy)a.get(awh.a($$10.c(), 1, a.size())));
-               a($$15, $$18, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
-            }
-         }
-      }
-   }
-
-   private aiy a(String $$0, aiy $$1) {
-      return $$1.a((UnaryOperator<String>)($$1x -> "textures/entity/" + this.e + "/" + $$0 + "/" + $$1x + ".png"));
-   }
-
-   public <K> gig.a a(Object2ObjectMap<K, gig.a> $$0, String $$1, id<K> $$2, K $$3) {
-      return (gig.a)$$0.computeIfAbsent($$3, $$3x -> this.d.getResource(this.a($$1, $$2.b($$3))).flatMap($$0xx -> {
-            try {
-               return $$0xx.f().a(gig.a).map(gig::a);
-            } catch (IOException var2x) {
-               return Optional.empty();
-            }
-         }).orElse(gig.a.a));
+   public void a(esh $$0, fvt $$1, int $$2, cex $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      aiy $$10 = gcz.a($$3.gh());
+      esl $$11 = $$1.getBuffer(fwb.c($$10));
+      this.c().c().a($$0, $$11, $$2, gcb.c($$3, 0.0F));
    }
 }

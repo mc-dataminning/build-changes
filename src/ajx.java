@@ -3,14 +3,14 @@ import java.util.Collection;
 import java.util.Set;
 import java.util.UUID;
 
-public class ajx extends aos {
+public class ajx extends aot {
    private final aiy h;
    private final Set<UUID> i = Sets.newHashSet();
    private int j;
    private int k = 100;
 
    public ajx(aiy $$0, vq $$1) {
-      super($$1, blk.a.g, blk.b.a);
+      super($$1, blm.a.g, blm.b.a);
       this.h = $$0;
       this.a(0.0F);
    }
@@ -20,7 +20,7 @@ public class ajx extends aos {
    }
 
    @Override
-   public void a(aow $$0) {
+   public void a(aox $$0) {
       super.a($$0);
       this.i.add($$0.cw());
    }
@@ -30,7 +30,7 @@ public class ajx extends aos {
    }
 
    @Override
-   public void b(aow $$0) {
+   public void b(aox $$0) {
       super.b($$0);
       this.i.remove($$0.cw());
    }
@@ -51,26 +51,26 @@ public class ajx extends aos {
 
    public void a(int $$0) {
       this.j = $$0;
-      this.a(awh.a((float)$$0 / (float)this.k, 0.0F, 1.0F));
+      this.a(awi.a((float)$$0 / (float)this.k, 0.0F, 1.0F));
    }
 
    public void b(int $$0) {
       this.k = $$0;
-      this.a(awh.a((float)this.j / (float)$$0, 0.0F, 1.0F));
+      this.a(awi.a((float)this.j / (float)$$0, 0.0F, 1.0F));
    }
 
    public final vq e() {
       return vt.a(this.j()).a($$0 -> $$0.a(this.l().a()).a(new vw(vw.a.a, vq.b(this.a().toString()))).a(this.a().toString()));
    }
 
-   public boolean a(Collection<aow> $$0) {
+   public boolean a(Collection<aox> $$0) {
       Set<UUID> $$1 = Sets.newHashSet();
-      Set<aow> $$2 = Sets.newHashSet();
+      Set<aox> $$2 = Sets.newHashSet();
 
       for (UUID $$3 : this.i) {
          boolean $$4 = false;
 
-         for (aow $$5 : $$0) {
+         for (aox $$5 : $$0) {
             if ($$5.cw().equals($$3)) {
                $$4 = true;
                break;
@@ -82,7 +82,7 @@ public class ajx extends aos {
          }
       }
 
-      for (aow $$6 : $$0) {
+      for (aox $$6 : $$0) {
          boolean $$7 = false;
 
          for (UUID $$8 : this.i) {
@@ -98,7 +98,7 @@ public class ajx extends aos {
       }
 
       for (UUID $$9 : $$1) {
-         for (aow $$10 : this.h()) {
+         for (aox $$10 : this.h()) {
             if ($$10.cw().equals($$9)) {
                this.b($$10);
                break;
@@ -108,7 +108,7 @@ public class ajx extends aos {
          this.i.remove($$9);
       }
 
-      for (aow $$11 : $$2) {
+      for (aox $$11 : $$2) {
          this.a($$11);
       }
 
@@ -141,8 +141,8 @@ public class ajx extends aos {
       $$2.d($$0.q("Visible"));
       $$2.a($$0.h("Value"));
       $$2.b($$0.h("Max"));
-      $$2.a(blk.a.a($$0.l("Color")));
-      $$2.a(blk.b.a($$0.l("Overlay")));
+      $$2.a(blm.a.a($$0.l("Color")));
+      $$2.a(blm.b.a($$0.l("Overlay")));
       $$2.a($$0.q("DarkenScreen"));
       $$2.b($$0.q("PlayBossMusic"));
       $$2.c($$0.q("CreateWorldFog"));
@@ -154,13 +154,13 @@ public class ajx extends aos {
       return $$2;
    }
 
-   public void c(aow $$0) {
+   public void c(aox $$0) {
       if (this.i.contains($$0.cw())) {
          this.a($$0);
       }
    }
 
-   public void d(aow $$0) {
+   public void d(aox $$0) {
       super.b($$0);
    }
 }

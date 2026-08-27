@@ -1,21 +1,18 @@
-public enum dlr implements axc {
-   a("none"),
-   b("small"),
-   c("large");
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   private final String d;
+public class dlr implements Predicate<dlj> {
+   private final cys a;
 
-   private dlr(String $$0) {
-      this.d = $$0;
+   public dlr(cys $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public String toString() {
-      return this.d;
+   public static dlr a(cys $$0) {
+      return new dlr($$0);
    }
 
-   @Override
-   public String c() {
-      return this.d;
+   public boolean a(@Nullable dlj $$0) {
+      return $$0 != null && $$0.a(this.a);
    }
 }

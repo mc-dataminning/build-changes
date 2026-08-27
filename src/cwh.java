@@ -1,23 +1,92 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public interface cwh extends cux {
+   ie[] C = ie.values();
 
-public record cwh(cvb d, cjs e) {
-   public static final String a = "enabled_features";
-   public static final Codec<cwh> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(cvb.b.optionalFieldOf("DataPacks", cvb.a).forGetter(cwh::a), cju.f.optionalFieldOf("enabled_features", cju.h).forGetter(cwh::b))
-            .apply($$0, cwh::new)
-   );
-   public static final cwh c = new cwh(cvb.a, cju.h);
-
-   public cwh a(cjs $$0) {
-      return new cwh(this.d, this.e.b($$0));
+   default int a(hz $$0, ie $$1) {
+      return this.a_($$0).c(this, $$0, $$1);
    }
 
-   public cvb a() {
-      return this.d;
+   default int e_(hz $$0) {
+      int $$1 = 0;
+      $$1 = Math.max($$1, this.a($$0.d(), ie.a));
+      if ($$1 >= 15) {
+         return $$1;
+      } else {
+         $$1 = Math.max($$1, this.a($$0.c(), ie.b));
+         if ($$1 >= 15) {
+            return $$1;
+         } else {
+            $$1 = Math.max($$1, this.a($$0.e(), ie.c));
+            if ($$1 >= 15) {
+               return $$1;
+            } else {
+               $$1 = Math.max($$1, this.a($$0.f(), ie.d));
+               if ($$1 >= 15) {
+                  return $$1;
+               } else {
+                  $$1 = Math.max($$1, this.a($$0.g(), ie.e));
+                  if ($$1 >= 15) {
+                     return $$1;
+                  } else {
+                     $$1 = Math.max($$1, this.a($$0.h(), ie.f));
+                     return $$1 >= 15 ? $$1 : $$1;
+                  }
+               }
+            }
+         }
+      }
    }
 
-   public cjs b() {
-      return this.e;
+   default int a(hz $$0, ie $$1, boolean $$2) {
+      dlj $$3 = this.a_($$0);
+      if ($$2) {
+         return dau.m($$3) ? this.a($$0, $$1) : 0;
+      } else if ($$3.a(cyu.ha)) {
+         return 15;
+      } else if ($$3.a(cyu.cw)) {
+         return $$3.c(det.f);
+      } else {
+         return $$3.m() ? this.a($$0, $$1) : 0;
+      }
+   }
+
+   default boolean b(hz $$0, ie $$1) {
+      return this.c($$0, $$1) > 0;
+   }
+
+   default int c(hz $$0, ie $$1) {
+      dlj $$2 = this.a_($$0);
+      int $$3 = $$2.b(this, $$0, $$1);
+      return $$2.g(this, $$0) ? Math.max($$3, this.e_($$0)) : $$3;
+   }
+
+   default boolean C(hz $$0) {
+      if (this.c($$0.d(), ie.a) > 0) {
+         return true;
+      } else if (this.c($$0.c(), ie.b) > 0) {
+         return true;
+      } else if (this.c($$0.e(), ie.c) > 0) {
+         return true;
+      } else if (this.c($$0.f(), ie.d) > 0) {
+         return true;
+      } else {
+         return this.c($$0.g(), ie.e) > 0 ? true : this.c($$0.h(), ie.f) > 0;
+      }
+   }
+
+   default int D(hz $$0) {
+      int $$1 = 0;
+
+      for (ie $$2 : C) {
+         int $$3 = this.c($$0.a($$2), $$2);
+         if ($$3 >= 15) {
+            return 15;
+         }
+
+         if ($$3 > $$1) {
+            $$1 = $$3;
+         }
+      }
+
+      return $$1;
    }
 }

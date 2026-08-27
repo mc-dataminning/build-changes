@@ -1,40 +1,33 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class bte extends bpw<cgu> {
-   public bte() {
-      super(ImmutableMap.of());
+public class bte {
+   private static final int a = 10;
+   private static final int b = 7;
+
+   public static brl<boq> a(float $$0) {
+      return a($$0, 10, 7);
    }
 
-   protected boolean a(aov $$0, cgu $$1, long $$2) {
-      return c($$1) || b($$1);
-   }
+   public static brl<boq> a(float $$0, int $$1, int $$2) {
+      return btn.a((Function<btn.b<boq>, ? extends App<btn.c<boq>, btq<boq>>>)($$3 -> $$3.group($$3.c(bxl.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
+               hz $$7 = $$5.dm();
+               enz $$8;
+               if ($$4.c($$7)) {
+                  $$8 = bzf.a($$5, $$1, $$2);
+               } else {
+                  jb $$9 = jb.a($$7);
+                  jb $$10 = bqc.a($$4, $$9, 2);
+                  if ($$10 != $$9) {
+                     $$8 = bzc.a($$5, $$1, $$2, enz.c($$10.q()), (float) (Math.PI / 2));
+                  } else {
+                     $$8 = bzf.a($$5, $$1, $$2);
+                  }
+               }
 
-   protected void b(aov $$0, cgu $$1, long $$2) {
-      if (c($$1) || b($$1)) {
-         bpf<?> $$3 = $$1.dO();
-         if (!$$3.c(ciu.g)) {
-            $$3.b(bxh.t);
-            $$3.b(bxh.m);
-            $$3.b(bxh.n);
-            $$3.b(bxh.r);
-            $$3.b(bxh.q);
-         }
-
-         $$3.a(ciu.g);
-      }
-   }
-
-   protected void c(aov $$0, cgu $$1, long $$2) {
-      if ($$2 % 100L == 0L) {
-         $$1.a($$0, $$2, 3);
-      }
-   }
-
-   public static boolean b(bog $$0) {
-      return $$0.dO().a(bxh.A);
-   }
-
-   public static boolean c(bog $$0) {
-      return $$0.dO().a(bxh.x);
+               $$3x.a(Optional.ofNullable($$8).map($$1xxxx -> new bxo($$1xxxx, $$0, 0)));
+               return true;
+            })));
    }
 }

@@ -1,42 +1,28 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
 import java.util.Optional;
-import java.util.function.Consumer;
 
-public class edk extends ebe {
-   public static final bki<cwy.c> d = bki.a(
-      new cwy.c(bnu.j, 10, 2, 3), new cwy.c(bnu.bv, 5, 4, 4), new cwy.c(bnu.bo, 8, 5, 5), new cwy.c(bnu.aL, 2, 5, 5), new cwy.c(bnu.an, 3, 4, 4)
-   );
-   public static final Codec<edk> e = a(edk::new);
+public class edk extends ebl {
+   public static final Codec<edk> d = a(edk::new);
 
-   public edk(ebe.c $$0) {
+   public edk(ebl.c $$0) {
       super($$0);
    }
 
    @Override
-   public Optional<ebe.b> a(ebe.a $$0) {
-      cuu $$1 = $$0.h();
-      hz $$2 = new hz($$1.d(), 64, $$1.e());
-      return Optional.of(new ebe.b($$2, (Consumer<ebw>)($$1x -> a($$1x, $$0))));
+   public Optional<ebl.b> a(ebl.a $$0) {
+      return a($$0, dqv.a.a, $$1 -> this.a($$1, $$0));
    }
 
-   private static void a(ebw $$0, ebe.a $$1) {
-      edj.q $$2 = new edj.q($$1.f(), $$1.h().a(2), $$1.h().b(2));
-      $$0.a($$2);
-      $$2.a($$2, $$0, $$1.f());
-      List<ebi> $$3 = $$2.d;
-
-      while (!$$3.isEmpty()) {
-         int $$4 = $$1.f().a($$3.size());
-         ebi $$5 = $$3.remove($$4);
-         $$5.a($$2, $$0, $$1.f());
-      }
-
-      $$0.a($$1.f(), 48, 70);
+   private void a(ecd $$0, ebl.a $$1) {
+      cuy $$2 = $$1.h();
+      dru $$3 = $$1.f();
+      hz $$4 = new hz($$2.d(), 90, $$2.e());
+      dfe $$5 = dfe.a($$3);
+      edj.a($$1.e(), $$4, $$5, $$0, $$3);
    }
 
    @Override
-   public ebn<?> e() {
-      return ebn.d;
+   public ebu<?> e() {
+      return ebu.e;
    }
 }

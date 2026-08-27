@@ -1,5 +1,3 @@
 public interface far {
-   default int G() {
-      return 0;
-   }
+   void a(ezb var1, int var2, int var3, float var4);
 }

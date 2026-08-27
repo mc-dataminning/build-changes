@@ -15,20 +15,20 @@ public abstract class oh<T> extends om<T> {
       this.d = $$4;
    }
 
-   protected oh.a<T> a(auo<T> $$0) {
-      aul $$1 = this.c($$0);
+   protected oh.a<T> a(aup<T> $$0) {
+      aum $$1 = this.c($$0);
       return new oh.a<>($$1, this.d);
    }
 
    protected static class a<T> extends om.b<T> {
       private final Function<T, aix<T>> a;
 
-      a(aul $$0, Function<T, aix<T>> $$1) {
+      a(aum $$0, Function<T, aix<T>> $$1) {
          super($$0);
          this.a = $$1;
       }
 
-      public oh.a<T> a(auo<T> $$0) {
+      public oh.a<T> a(aup<T> $$0) {
          super.b($$0);
          return this;
       }

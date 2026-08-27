@@ -1,146 +1,142 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiFunction;
+import com.google.common.collect.Sets;
+import java.util.Optional;
+import java.util.Set;
 import java.util.function.Consumer;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.mutable.MutableInt;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
 public class ejc {
-   public static final Codec<ejc> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ejm.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.b),
-               avp.a(elw.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.c),
-               avp.a(ekk.b.listOf(), "functions", List.of()).forGetter($$0x -> $$0x.e),
-               emq.a.fieldOf("rolls").forGetter($$0x -> $$0x.g),
-               emq.a.fieldOf("bonus_rolls").orElse(emn.a(0.0F)).forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, ejc::new)
-   );
-   private final List<ejo> b;
-   private final List<elu> c;
-   private final Predicate<eiv> d;
-   private final List<eki> e;
-   private final BiFunction<coz, eiv, coz> f;
-   private final emp g;
-   private final emp h;
+   private final eji a;
+   private final awp b;
+   private final ejg c;
+   private final Set<ejc.c<?>> d = Sets.newLinkedHashSet();
 
-   ejc(List<ejo> $$0, List<elu> $$1, List<eki> $$2, emp $$3, emp $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = elw.a($$1);
-      this.e = $$2;
-      this.f = ekk.a($$2);
-      this.g = $$3;
-      this.h = $$4;
+   ejc(eji $$0, awp $$1, ejg $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   private void b(Consumer<coz> $$0, eiv $$1) {
-      awo $$2 = $$1.b();
-      List<ejn> $$3 = Lists.newArrayList();
-      MutableInt $$4 = new MutableInt();
+   public boolean a(elk<?> $$0) {
+      return this.a.a($$0);
+   }
 
-      for (ejo $$5 : this.b) {
-         $$5.expand($$1, $$3x -> {
-            int $$4x = $$3x.a($$1.c());
-            if ($$4x > 0) {
-               $$3.add($$3x);
-               $$4.add($$4x);
-            }
-         });
+   public <T> T b(elk<T> $$0) {
+      return this.a.b($$0);
+   }
+
+   public void a(aiy $$0, Consumer<cpd> $$1) {
+      this.a.a($$0, $$1);
+   }
+
+   @Nullable
+   public <T> T c(elk<T> $$0) {
+      return this.a.d($$0);
+   }
+
+   public boolean a(ejc.c<?> $$0) {
+      return this.d.contains($$0);
+   }
+
+   public boolean b(ejc.c<?> $$0) {
+      return this.d.add($$0);
+   }
+
+   public void c(ejc.c<?> $$0) {
+      this.d.remove($$0);
+   }
+
+   public ejg a() {
+      return this.c;
+   }
+
+   public awp b() {
+      return this.b;
+   }
+
+   public float c() {
+      return this.a.b();
+   }
+
+   public aow d() {
+      return this.a.a();
+   }
+
+   public static ejc.c<ejk> a(ejk $$0) {
+      return new ejc.c<>(ejh.c, $$0);
+   }
+
+   public static ejc.c<emb> a(emb $$0) {
+      return new ejc.c<>(ejh.a, $$0);
+   }
+
+   public static ejc.c<ekp> a(ekp $$0) {
+      return new ejc.c<>(ejh.b, $$0);
+   }
+
+   public static class a {
+      private final eji a;
+      @Nullable
+      private awp b;
+
+      public a(eji $$0) {
+         this.a = $$0;
       }
 
-      int $$6 = $$3.size();
-      if ($$4.intValue() != 0 && $$6 != 0) {
-         if ($$6 == 1) {
-            $$3.get(0).a($$0, $$1);
+      public ejc.a a(long $$0) {
+         if ($$0 != 0L) {
+            this.b = awp.a($$0);
+         }
+
+         return this;
+      }
+
+      public aow a() {
+         return this.a.a();
+      }
+
+      public ejc a(Optional<aiy> $$0) {
+         aow $$1 = this.a();
+         MinecraftServer $$2 = $$1.o();
+         awp $$3 = Optional.ofNullable(this.b).or(() -> $$0.map($$1::a)).orElseGet($$1::F_);
+         return new ejc(this.a, $$3, $$2.aL());
+      }
+   }
+
+   public static enum b implements axc {
+      a("this", eln.a),
+      b("killer", eln.d),
+      c("direct_killer", eln.e),
+      d("killer_player", eln.b);
+
+      public static final axc.a<ejc.b> e = axc.a(ejc.b::values);
+      private final String f;
+      private final elk<? extends bnq> g;
+
+      private b(String $$0, elk<? extends bnq> $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      public elk<? extends bnq> a() {
+         return this.g;
+      }
+
+      public static ejc.b a(String $$0) {
+         ejc.b $$1 = e.a($$0);
+         if ($$1 != null) {
+            return $$1;
          } else {
-            int $$7 = $$2.a($$4.intValue());
-
-            for (ejn $$8 : $$3) {
-               $$7 -= $$8.a($$1.c());
-               if ($$7 < 0) {
-                  $$8.a($$0, $$1);
-                  return;
-               }
-            }
+            throw new IllegalArgumentException("Invalid entity target " + $$0);
          }
       }
-   }
 
-   public void a(Consumer<coz> $$0, eiv $$1) {
-      if (this.d.test($$1)) {
-         Consumer<coz> $$2 = eki.a(this.f, $$0, $$1);
-         int $$3 = this.g.a($$1) + awh.d(this.h.b($$1) * $$1.c());
-
-         for (int $$4 = 0; $$4 < $$3; $$4++) {
-            this.b($$2, $$1);
-         }
+      @Override
+      public String c() {
+         return this.f;
       }
    }
 
-   public void a(eje $$0) {
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".condition[" + $$1 + "]"));
-      }
-
-      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
-         this.e.get($$2).a($$0.a(".functions[" + $$2 + "]"));
-      }
-
-      for (int $$3 = 0; $$3 < this.b.size(); $$3++) {
-         this.b.get($$3).a($$0.a(".entries[" + $$3 + "]"));
-      }
-
-      this.g.a($$0.a(".rolls"));
-      this.h.a($$0.a(".bonusRolls"));
-   }
-
-   public static ejc.a a() {
-      return new ejc.a();
-   }
-
-   public static class a implements ekf<ejc.a>, eln<ejc.a> {
-      private final Builder<ejo> a = ImmutableList.builder();
-      private final Builder<elu> b = ImmutableList.builder();
-      private final Builder<eki> c = ImmutableList.builder();
-      private emp d = emn.a(1.0F);
-      private emp e = emn.a(0.0F);
-
-      public ejc.a a(emp $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public ejc.a a() {
-         return this;
-      }
-
-      public ejc.a b(emp $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public ejc.a a(ejo.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      public ejc.a a(elu.a $$0) {
-         this.b.add($$0.build());
-         return this;
-      }
-
-      public ejc.a a(eki.a $$0) {
-         this.c.add($$0.b());
-         return this;
-      }
-
-      public ejc b() {
-         return new ejc(this.a.build(), this.b.build(), this.c.build(), this.d, this.e);
-      }
+   public static record c<T>(ejh<T> a, T b) {
    }
 }

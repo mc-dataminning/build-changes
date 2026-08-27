@@ -1,9 +1,9 @@
 public interface ajn {
-   String ac();
+   String ae();
 
-   String I();
+   String K();
 
-   int J();
+   int L();
 
-   int K();
+   int M();
 }

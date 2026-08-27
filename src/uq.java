@@ -79,7 +79,7 @@ public class uq extends ByteBuf {
    }
 
    public <T> T a(Codec<T> $$0) {
-      JsonElement $$1 = avx.a(h, this.r(), JsonElement.class);
+      JsonElement $$1 = avy.a(h, this.r(), JsonElement.class);
       DataResult<T> $$2 = $$0.parse(JsonOps.INSTANCE, $$1);
       return ac.a($$2, $$0x -> new DecoderException("Failed to decode json: " + $$0x));
    }
@@ -339,11 +339,11 @@ public class uq extends ByteBuf {
       $$0.writeLong($$1.a());
    }
 
-   public cuu f() {
-      return new cuu(this.readLong());
+   public cuy f() {
+      return new cuy(this.readLong());
    }
 
-   public uq a(cuu $$0) {
+   public uq a(cuy $$0) {
       this.b($$0.a());
       return this;
    }
@@ -358,7 +358,7 @@ public class uq extends ByteBuf {
    }
 
    public ii h() {
-      aix<cvn> $$0 = this.a(kg.aM);
+      aix<cvr> $$0 = this.a(kg.aM);
       hz $$1 = this.e();
       return ii.a($$0, $$1);
    }
@@ -405,11 +405,11 @@ public class uq extends ByteBuf {
       $$0.writeFloat($$1.w);
    }
 
-   public ens k() {
-      return new ens(this.readDouble(), this.readDouble(), this.readDouble());
+   public enz k() {
+      return new enz(this.readDouble(), this.readDouble(), this.readDouble());
    }
 
-   public void a(ens $$0) {
+   public void a(enz $$0) {
       this.a($$0.a());
       this.a($$0.b());
       this.a($$0.c());
@@ -587,8 +587,8 @@ public class uq extends ByteBuf {
 
    public PublicKey w() {
       try {
-         return avf.a(this.a(512));
-      } catch (avg var2) {
+         return avg.a(this.a(512));
+      } catch (avh var2) {
          throw new DecoderException("Malformed public key bytes", var2);
       }
    }
@@ -598,21 +598,21 @@ public class uq extends ByteBuf {
       return this;
    }
 
-   public eno x() {
+   public env x() {
       hz $$0 = this.e();
       ie $$1 = this.b(ie.class);
       float $$2 = this.readFloat();
       float $$3 = this.readFloat();
       float $$4 = this.readFloat();
       boolean $$5 = this.readBoolean();
-      return new eno(new ens((double)$$0.u() + (double)$$2, (double)$$0.v() + (double)$$3, (double)$$0.w() + (double)$$4), $$1, $$0, $$5);
+      return new env(new enz((double)$$0.u() + (double)$$2, (double)$$0.v() + (double)$$3, (double)$$0.w() + (double)$$4), $$1, $$0, $$5);
    }
 
-   public void a(eno $$0) {
+   public void a(env $$0) {
       hz $$1 = $$0.a();
       this.a($$1);
       this.a($$0.b());
-      ens $$2 = $$0.e();
+      enz $$2 = $$0.e();
       this.a((float)($$2.c - (double)$$1.u()));
       this.a((float)($$2.d - (double)$$1.v()));
       this.a((float)($$2.e - (double)$$1.w()));
@@ -628,7 +628,7 @@ public class uq extends ByteBuf {
    }
 
    public BitSet e(int $$0) {
-      byte[] $$1 = new byte[awh.e($$0, 8)];
+      byte[] $$1 = new byte[awi.e($$0, 8)];
       this.b($$1);
       return BitSet.valueOf($$1);
    }
@@ -638,7 +638,7 @@ public class uq extends ByteBuf {
          throw new EncoderException("BitSet is larger than expected size (" + $$0.length() + ">" + $$1 + ")");
       } else {
          byte[] $$2 = $$0.toByteArray();
-         this.c(Arrays.copyOf($$2, awh.e($$1, 8)));
+         this.c(Arrays.copyOf($$2, awi.e($$1, 8)));
       }
    }
 

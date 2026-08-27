@@ -1,47 +1,50 @@
-import java.util.stream.Stream;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class djj extends dit implements bmc, epd {
-   public static final String e = "sherds";
-   public static final String f = "item";
-   public static final int g = 1;
-   public long h;
+public class djj extends dix {
+   private static final int b = 2;
+   private static final int c = 13;
+   private static final float d = -0.0375F;
+   private static final int e = 16;
+   private static final int f = 42;
+   private static final int g = 8;
+   private static final cys[] h = new cys[]{cyu.hZ, cyu.ia, cyu.ii, cyu.ib};
+   public int a;
+   private float i;
+   private boolean j;
+   private boolean k;
+   private final List<hz> l = Lists.newArrayList();
    @Nullable
-   public djj.b i;
-   private djj.a l;
-   private coz m = coz.h;
+   private boi m;
    @Nullable
-   protected aiy j;
-   protected long k;
+   private UUID n;
+   private long r;
 
-   public djj(hz $$0, dlf $$1) {
-      super(div.O, $$0, $$1);
-      this.l = djj.a.a;
-   }
-
-   @Override
-   protected void b(sw $$0) {
-      super.b($$0);
-      this.l.a($$0);
-      if (!this.d_($$0) && !this.m.b()) {
-         $$0.a("item", this.m.b(new sw()));
-      }
+   public djj(hz $$0, dlj $$1) {
+      super(diz.z, $$0, $$1);
    }
 
    @Override
    public void a(sw $$0) {
       super.a($$0);
-      this.l = djj.a.b($$0);
-      if (!this.c_($$0)) {
-         if ($$0.b("item", 10)) {
-            this.m = coz.a($$0.p("item"));
-         } else {
-            this.m = coz.h;
-         }
+      if ($$0.b("Target")) {
+         this.n = $$0.a("Target");
+      } else {
+         this.n = null;
       }
    }
 
-   public aan k() {
+   @Override
+   protected void b(sw $$0) {
+      super.b($$0);
+      if (this.m != null) {
+         $$0.a("Target", this.m.cw());
+      }
+   }
+
+   public aan c() {
       return aan.a(this);
    }
 
@@ -50,140 +53,204 @@ public class djj extends dit implements bmc, epd {
       return this.q();
    }
 
-   public ie l() {
-      return this.r().c(dlv.R);
+   public static void a(cvr $$0, hz $$1, dlj $$2, djj $$3) {
+      $$3.a++;
+      long $$4 = $$0.X();
+      List<hz> $$5 = $$3.l;
+      if ($$4 % 40L == 0L) {
+         $$3.j = a($$0, $$1, $$5);
+         a($$3, $$5);
+      }
+
+      a($$0, $$1, $$3);
+      a($$0, $$1, $$5, $$3.m, $$3.a);
+      if ($$3.d()) {
+         $$3.i++;
+      }
    }
 
-   public djj.a m() {
-      return this.l;
+   public static void b(cvr $$0, hz $$1, dlj $$2, djj $$3) {
+      $$3.a++;
+      long $$4 = $$0.X();
+      List<hz> $$5 = $$3.l;
+      if ($$4 % 40L == 0L) {
+         boolean $$6 = a($$0, $$1, $$5);
+         if ($$6 != $$3.j) {
+            atk $$7 = $$6 ? atl.fj : atl.fn;
+            $$0.a(null, $$1, $$7, atm.e, 1.0F, 1.0F);
+         }
+
+         $$3.j = $$6;
+         a($$3, $$5);
+         if ($$6) {
+            b($$0, $$1, $$5);
+            a($$0, $$1, $$2, $$5, $$3);
+         }
+      }
+
+      if ($$3.d()) {
+         if ($$4 % 80L == 0L) {
+            $$0.a(null, $$1, atl.fk, atm.e, 1.0F, 1.0F);
+         }
+
+         if ($$4 > $$3.r) {
+            $$3.r = $$4 + 60L + (long)$$0.F_().a(40);
+            $$0.a(null, $$1, atl.fl, atm.e, 1.0F, 1.0F);
+         }
+      }
    }
 
-   public void a(coz $$0) {
-      this.l = djj.a.b(cms.a($$0));
+   private static void a(djj $$0, List<hz> $$1) {
+      $$0.a($$1.size() >= 42);
    }
 
-   public coz w() {
-      return a(this.l);
+   private static boolean a(cvr $$0, hz $$1, List<hz> $$2) {
+      $$2.clear();
+
+      for (int $$3 = -1; $$3 <= 1; $$3++) {
+         for (int $$4 = -1; $$4 <= 1; $$4++) {
+            for (int $$5 = -1; $$5 <= 1; $$5++) {
+               hz $$6 = $$1.b($$3, $$4, $$5);
+               if (!$$0.z($$6)) {
+                  return false;
+               }
+            }
+         }
+      }
+
+      for (int $$7 = -2; $$7 <= 2; $$7++) {
+         for (int $$8 = -2; $$8 <= 2; $$8++) {
+            for (int $$9 = -2; $$9 <= 2; $$9++) {
+               int $$10 = Math.abs($$7);
+               int $$11 = Math.abs($$8);
+               int $$12 = Math.abs($$9);
+               if (($$10 > 1 || $$11 > 1 || $$12 > 1)
+                  && ($$7 == 0 && ($$11 == 2 || $$12 == 2) || $$8 == 0 && ($$10 == 2 || $$12 == 2) || $$9 == 0 && ($$10 == 2 || $$11 == 2))) {
+                  hz $$13 = $$1.b($$7, $$8, $$9);
+                  dlj $$14 = $$0.a_($$13);
+
+                  for (cys $$15 : h) {
+                     if ($$14.a($$15)) {
+                        $$2.add($$13);
+                     }
+                  }
+               }
+            }
+         }
+      }
+
+      return $$2.size() >= 16;
    }
 
-   public static coz a(djj.a $$0) {
-      coz $$1 = cpc.eB.ao_();
-      sw $$2 = $$0.a(new sw());
-      cms.a($$1, div.O, $$2);
-      return $$1;
+   private static void b(cvr $$0, hz $$1, List<hz> $$2) {
+      int $$3 = $$2.size();
+      int $$4 = $$3 / 7 * 16;
+      int $$5 = $$1.u();
+      int $$6 = $$1.v();
+      int $$7 = $$1.w();
+      enu $$8 = new enu((double)$$5, (double)$$6, (double)$$7, (double)($$5 + 1), (double)($$6 + 1), (double)($$7 + 1))
+         .g((double)$$4)
+         .b(0.0, (double)$$0.K_(), 0.0);
+      List<chl> $$9 = $$0.a(chl.class, $$8);
+      if (!$$9.isEmpty()) {
+         for (chl $$10 : $$9) {
+            if ($$1.a($$10.dm(), (double)$$4) && $$10.ba()) {
+               $$10.b(new bnd(bnf.C, 260, 0, true, true));
+            }
+         }
+      }
+   }
+
+   private static void a(cvr $$0, hz $$1, dlj $$2, List<hz> $$3, djj $$4) {
+      boi $$5 = $$4.m;
+      int $$6 = $$3.size();
+      if ($$6 < 42) {
+         $$4.m = null;
+      } else if ($$4.m == null && $$4.n != null) {
+         $$4.m = a($$0, $$1, $$4.n);
+         $$4.n = null;
+      } else if ($$4.m == null) {
+         List<boi> $$7 = $$0.a(boi.class, a($$1), $$0x -> $$0x instanceof cej && $$0x.ba());
+         if (!$$7.isEmpty()) {
+            $$4.m = $$7.get($$0.z.a($$7.size()));
+         }
+      } else if (!$$4.m.bx() || !$$1.a($$4.m.dm(), 8.0)) {
+         $$4.m = null;
+      }
+
+      if ($$4.m != null) {
+         $$0.a(null, $$4.m.dr(), $$4.m.dt(), $$4.m.dx(), atl.fm, atm.e, 1.0F, 1.0F);
+         $$4.m.a($$0.ah().o(), 4.0F);
+      }
+
+      if ($$5 != $$4.m) {
+         $$0.a($$1, $$2, $$2, 2);
+      }
+   }
+
+   private static void a(cvr $$0, hz $$1, djj $$2) {
+      if ($$2.n == null) {
+         $$2.m = null;
+      } else if ($$2.m == null || !$$2.m.cw().equals($$2.n)) {
+         $$2.m = a($$0, $$1, $$2.n);
+         if ($$2.m == null) {
+            $$2.n = null;
+         }
+      }
+   }
+
+   private static enu a(hz $$0) {
+      int $$1 = $$0.u();
+      int $$2 = $$0.v();
+      int $$3 = $$0.w();
+      return new enu((double)$$1, (double)$$2, (double)$$3, (double)($$1 + 1), (double)($$2 + 1), (double)($$3 + 1)).g(8.0);
    }
 
    @Nullable
-   @Override
-   public aiy aC_() {
+   private static boi a(cvr $$0, hz $$1, UUID $$2) {
+      List<boi> $$3 = $$0.a(boi.class, a($$1), $$1x -> $$1x.cw().equals($$2));
+      return $$3.size() == 1 ? $$3.get(0) : null;
+   }
+
+   private static void a(cvr $$0, hz $$1, List<hz> $$2, @Nullable bnq $$3, int $$4) {
+      awp $$5 = $$0.z;
+      double $$6 = (double)(awi.a((float)($$4 + 35) * 0.1F) / 2.0F + 0.5F);
+      $$6 = ($$6 * $$6 + $$6) * 0.3F;
+      enz $$7 = new enz((double)$$1.u() + 0.5, (double)$$1.v() + 1.5 + $$6, (double)$$1.w() + 0.5);
+
+      for (hz $$8 : $$2) {
+         if ($$5.a(50) == 0) {
+            hz $$9 = $$8.b($$1);
+            float $$10 = -0.5F + $$5.i() + (float)$$9.u();
+            float $$11 = -2.0F + $$5.i() + (float)$$9.v();
+            float $$12 = -0.5F + $$5.i() + (float)$$9.w();
+            $$0.a(jz.ao, $$7.c, $$7.d, $$7.e, (double)$$10, (double)$$11, (double)$$12);
+         }
+      }
+
+      if ($$3 != null) {
+         enz $$13 = new enz($$3.dr(), $$3.dv(), $$3.dx());
+         float $$14 = (-0.5F + $$5.i()) * (3.0F + $$3.dg());
+         float $$15 = -1.0F + $$5.i() * $$3.dh();
+         float $$16 = (-0.5F + $$5.i()) * (3.0F + $$3.dg());
+         enz $$17 = new enz((double)$$14, (double)$$15, (double)$$16);
+         $$0.a(jz.ao, $$13.c, $$13.d, $$13.e, $$17.c, $$17.d, $$17.e);
+      }
+   }
+
+   public boolean d() {
       return this.j;
    }
 
-   @Override
-   public void a(@Nullable aiy $$0) {
-      this.j = $$0;
-   }
-
-   @Override
-   public long aD_() {
+   public boolean f() {
       return this.k;
    }
 
-   @Override
-   public void a(long $$0) {
+   private void a(boolean $$0) {
       this.k = $$0;
    }
 
-   @Override
-   public coz x() {
-      this.e_(null);
-      return this.m;
-   }
-
-   @Override
-   public coz c(int $$0) {
-      this.e_(null);
-      coz $$1 = this.m.a($$0);
-      if (this.m.b()) {
-         this.m = coz.h;
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public void b(coz $$0) {
-      this.e_(null);
-      this.m = $$0;
-   }
-
-   @Override
-   public dit y() {
-      return this;
-   }
-
-   public void a(djj.b $$0) {
-      if (this.o != null && !this.o.y_()) {
-         this.o.a(this.aE_(), this.r().b(), 1, $$0.ordinal());
-      }
-   }
-
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if (this.o != null && $$0 == 1 && $$1 >= 0 && $$1 < djj.b.values().length) {
-         this.h = this.o.X();
-         this.i = djj.b.values()[$$1];
-         return true;
-      } else {
-         return super.a_($$0, $$1);
-      }
-   }
-
-   public static record a(cou b, cou c, cou d, cou e) {
-      public static final djj.a a = new djj.a(cpc.qK, cpc.qK, cpc.qK, cpc.qK);
-
-      public sw a(sw $$0) {
-         if (this.equals(a)) {
-            return $$0;
-         } else {
-            tc $$1 = new tc();
-            this.a().forEach($$1x -> $$1.add(tr.a(kf.h.b($$1x).toString())));
-            $$0.a("sherds", $$1);
-            return $$0;
-         }
-      }
-
-      public Stream<cou> a() {
-         return Stream.of(this.b, this.c, this.d, this.e);
-      }
-
-      public static djj.a b(@Nullable sw $$0) {
-         if ($$0 != null && $$0.b("sherds", 9)) {
-            tc $$1 = $$0.c("sherds", 8);
-            return new djj.a(a($$1, 0), a($$1, 1), a($$1, 2), a($$1, 3));
-         } else {
-            return a;
-         }
-      }
-
-      private static cou a(tc $$0, int $$1) {
-         if ($$1 >= $$0.size()) {
-            return cpc.qK;
-         } else {
-            tt $$2 = $$0.k($$1);
-            return kf.h.a(aiy.a($$2.t_()));
-         }
-      }
-   }
-
-   public static enum b {
-      a(7),
-      b(10);
-
-      public final int c;
-
-      private b(int $$0) {
-         this.c = $$0;
-      }
+   public float a(float $$0) {
+      return (this.i + $$0) * -0.0375F;
    }
 }

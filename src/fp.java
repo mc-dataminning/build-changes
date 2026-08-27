@@ -18,9 +18,9 @@ public class fp implements ArgumentType<fq> {
       return new fp();
    }
 
-   public static aol a(CommandContext<du> $$0, String $$1) {
+   public static aom a(CommandContext<du> $$0, String $$1) {
       hz $$2 = ((fq)$$0.getArgument($$1, fq.class)).c((du)$$0.getSource());
-      return new aol($$2.u(), $$2.w());
+      return new aom($$2.u(), $$2.w());
    }
 
    public fq a(StringReader $$0) throws CommandSyntaxException {

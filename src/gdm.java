@@ -1,24 +1,23 @@
-public class gdm extends gby<cgu, fom<cgu>> {
-   private static final aiy a = new aiy("textures/entity/villager/villager.png");
+public class gdm extends gaz<ciq> {
+   public static final aiy a = new aiy("textures/entity/trident.png");
+   private final fon f;
 
-   public gdm(gas.a $$0) {
-      super($$0, new fom<>($$0.a(fpb.bL)), 0.5F);
-      this.a(new gei<>(this, $$0.f(), $$0.d()));
-      this.a(new gfo<>(this, $$0.e(), "villager"));
-      this.a(new geh<>(this, $$0.d()));
+   public gdm(gba.a $$0) {
+      super($$0);
+      this.f = new fon($$0.a(fpi.bE));
    }
 
-   public aiy a(cgu $$0) {
+   public void a(ciq $$0, float $$1, float $$2, esh $$3, fvt $$4, int $$5) {
+      $$3.a();
+      $$3.a(a.d.rotationDegrees(awi.i($$2, $$0.M, $$0.dC()) - 90.0F));
+      $$3.a(a.f.rotationDegrees(awi.i($$2, $$0.N, $$0.dE()) + 90.0F));
+      esl $$6 = gby.c($$4, this.f.a(this.a($$0)), false, $$0.H());
+      this.f.a($$3, $$6, $$5, ggs.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public aiy a(ciq $$0) {
       return a;
-   }
-
-   protected void a(cgu $$0, esa $$1, float $$2) {
-      float $$3 = 0.9375F * $$0.dZ();
-      $$1.b($$3, $$3, $$3);
-   }
-
-   protected float b(cgu $$0) {
-      float $$1 = super.b($$0);
-      return $$0.o_() ? $$1 * 0.5F : $$1;
    }
 }

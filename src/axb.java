@@ -4,11 +4,11 @@ public class axb {
    private static final char a = '�';
    private static final Optional<Object> b = Optional.of(axk.a);
 
-   private static boolean a(wn $$0, avu $$1, int $$2, char $$3) {
+   private static boolean a(wn $$0, avv $$1, int $$2, char $$3) {
       return Character.isSurrogate($$3) ? $$1.accept($$2, $$0, 65533) : $$1.accept($$2, $$0, $$3);
    }
 
-   public static boolean a(String $$0, wn $$1, avu $$2) {
+   public static boolean a(String $$0, wn $$1, avv $$2) {
       int $$3 = $$0.length();
 
       for (int $$4 = 0; $$4 < $$3; $$4++) {
@@ -39,7 +39,7 @@ public class axb {
       return true;
    }
 
-   public static boolean b(String $$0, wn $$1, avu $$2) {
+   public static boolean b(String $$0, wn $$1, avv $$2) {
       int $$3 = $$0.length();
 
       for (int $$4 = $$3 - 1; $$4 >= 0; $$4--) {
@@ -68,15 +68,15 @@ public class axb {
       return true;
    }
 
-   public static boolean c(String $$0, wn $$1, avu $$2) {
+   public static boolean c(String $$0, wn $$1, avv $$2) {
       return a($$0, 0, $$1, $$2);
    }
 
-   public static boolean a(String $$0, int $$1, wn $$2, avu $$3) {
+   public static boolean a(String $$0, int $$1, wn $$2, avv $$3) {
       return a($$0, $$1, $$2, $$2, $$3);
    }
 
-   public static boolean a(String $$0, int $$1, wn $$2, wn $$3, avu $$4) {
+   public static boolean a(String $$0, int $$1, wn $$2, wn $$3, avv $$4) {
       int $$5 = $$0.length();
       wn $$6 = $$2;
 
@@ -120,7 +120,7 @@ public class axb {
       return true;
    }
 
-   public static boolean a(vv $$0, wn $$1, avu $$2) {
+   public static boolean a(vv $$0, wn $$1, avv $$2) {
       return $$0.a(($$1x, $$2x) -> a($$2x, 0, $$1x, $$2) ? Optional.empty() : b, $$1).isEmpty();
    }
 

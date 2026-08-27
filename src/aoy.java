@@ -1,177 +1,326 @@
-import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.function.IntSupplier;
-import java.util.function.Supplier;
+import java.util.Objects;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class aoy extends ege implements AutoCloseable {
-   public static final int a = 1000;
-   private static final Logger d = LogUtils.getLogger();
-   private final bkn<Runnable> e;
-   private final ObjectList<Pair<aoy.a, Runnable>> f = new ObjectArrayList();
-   private final aof g;
-   private final bkm<aoh.a<Runnable>> h;
-   private final int i = 1000;
-   private final AtomicBoolean j = new AtomicBoolean();
+public class aoy {
+   private static final Logger a = LogUtils.getLogger();
+   protected aow c;
+   protected final aox d;
+   private cvo b;
+   @Nullable
+   private cvo e;
+   private boolean f;
+   private int g;
+   private hz h;
+   private int i;
+   private boolean j;
+   private hz k;
+   private int l;
+   private int m;
 
-   public aoy(dnp $$0, aof $$1, boolean $$2, bkn<Runnable> $$3, bkm<aoh.a<Runnable>> $$4) {
-      super($$0, true, $$2);
-      this.g = $$1;
-      this.h = $$4;
-      this.e = $$3;
+   public aoy(aox $$0) {
+      this.b = cvo.e;
+      this.h = hz.c;
+      this.k = hz.c;
+      this.m = -1;
+      this.d = $$0;
+      this.c = $$0.z();
    }
 
-   @Override
-   public void close() {
+   public boolean a(cvo $$0) {
+      if ($$0 == this.b) {
+         return false;
+      } else {
+         this.a($$0, this.e);
+         this.d.y();
+         this.d.e.ag().a(new acl(acl.a.c, this.d));
+         this.c.e();
+         return true;
+      }
    }
 
-   @Override
-   public int a() {
-      throw (UnsupportedOperationException)ac.b(new UnsupportedOperationException("Ran automatically on a different thread!"));
+   protected void a(cvo $$0, @Nullable cvo $$1) {
+      this.e = $$1;
+      this.b = $$0;
+      $$0.a(this.d.fU());
    }
 
-   @Override
-   public void a(hz $$0) {
-      hz $$1 = $$0.i();
-      this.a(jb.a($$0.u()), jb.a($$0.w()), aoy.a.a, ac.a((Runnable)(() -> super.a($$1)), (Supplier<String>)(() -> "checkBlock " + $$1)));
+   public cvo b() {
+      return this.b;
    }
 
-   protected void a(cuu $$0) {
-      this.a($$0.e, $$0.f, () -> 0, aoy.a.a, ac.a((Runnable)(() -> {
-         super.b($$0, false);
-         super.a($$0, false);
-
-         for (int $$1 = this.d(); $$1 < this.e(); $$1++) {
-            super.a(cvw.b, jb.a($$0, $$1), null);
-            super.a(cvw.a, jb.a($$0, $$1), null);
-         }
-
-         for (int $$2 = this.c.an(); $$2 < this.c.ao(); $$2++) {
-            super.a(jb.a($$0, $$2), true);
-         }
-      }), (Supplier<String>)(() -> "updateChunkStatus " + $$0 + " true")));
+   @Nullable
+   public cvo c() {
+      return this.e;
    }
 
-   @Override
-   public void a(jb $$0, boolean $$1) {
-      this.a($$0.a(), $$0.c(), () -> 0, aoy.a.a, ac.a((Runnable)(() -> super.a($$0, $$1)), (Supplier<String>)(() -> "updateSectionStatus " + $$0 + " " + $$1)));
+   public boolean d() {
+      return this.b.h();
    }
 
-   @Override
-   public void b(cuu $$0) {
-      this.a($$0.e, $$0.f, aoy.a.a, ac.a((Runnable)(() -> super.b($$0)), (Supplier<String>)(() -> "propagateLight " + $$0)));
+   public boolean e() {
+      return this.b.g();
    }
 
-   @Override
-   public void a(cuu $$0, boolean $$1) {
-      this.a($$0.e, $$0.f, aoy.a.a, ac.a((Runnable)(() -> super.a($$0, $$1)), (Supplier<String>)(() -> "enableLight " + $$0 + " " + $$1)));
-   }
-
-   @Override
-   public void a(cvw $$0, jb $$1, @Nullable dnh $$2) {
-      this.a($$1.a(), $$1.c(), () -> 0, aoy.a.a, ac.a((Runnable)(() -> super.a($$0, $$1, $$2)), (Supplier<String>)(() -> "queueData " + $$1)));
-   }
-
-   private void a(int $$0, int $$1, aoy.a $$2, Runnable $$3) {
-      this.a($$0, $$1, this.g.c(cuu.c($$0, $$1)), $$2, $$3);
-   }
-
-   private void a(int $$0, int $$1, IntSupplier $$2, aoy.a $$3, Runnable $$4) {
-      this.h.a(aoh.a(() -> {
-         this.f.add(Pair.of($$3, $$4));
-         if (this.f.size() >= 1000) {
-            this.f();
-         }
-      }, cuu.c($$0, $$1), $$2));
-   }
-
-   @Override
-   public void b(cuu $$0, boolean $$1) {
-      this.a($$0.e, $$0.f, () -> 0, aoy.a.a, ac.a((Runnable)(() -> super.b($$0, $$1)), (Supplier<String>)(() -> "retainData " + $$0)));
-   }
-
-   public CompletableFuture<dnb> a(dnb $$0, boolean $$1) {
-      cuu $$2 = $$0.f();
-      this.a($$2.e, $$2.f, aoy.a.a, ac.a((Runnable)(() -> {
-         dnn[] $$2x = $$0.d();
-
-         for (int $$3 = 0; $$3 < $$0.am(); $$3++) {
-            dnn $$4 = $$2x[$$3];
-            if (!$$4.c()) {
-               int $$5 = this.c.g($$3);
-               super.a(jb.a($$2, $$5), false);
+   public void a() {
+      this.i++;
+      if (this.j) {
+         dlj $$0 = this.c.a_(this.k);
+         if ($$0.i()) {
+            this.j = false;
+         } else {
+            float $$1 = this.a($$0, this.k, this.l);
+            if ($$1 >= 1.0F) {
+               this.j = false;
+               this.a(this.k);
             }
          }
-      }), (Supplier<String>)(() -> "initializeLight: " + $$2)));
-      return CompletableFuture.supplyAsync(() -> {
-         super.a($$2, $$1);
-         super.b($$2, false);
-         return $$0;
-      }, $$1x -> this.a($$2.e, $$2.f, aoy.a.b, $$1x));
-   }
-
-   public CompletableFuture<dnb> b(dnb $$0, boolean $$1) {
-      cuu $$2 = $$0.f();
-      $$0.b(false);
-      this.a($$2.e, $$2.f, aoy.a.a, ac.a((Runnable)(() -> {
-         if (!$$1) {
-            super.b($$2);
+      } else if (this.f) {
+         dlj $$2 = this.c.a_(this.h);
+         if ($$2.i()) {
+            this.c.a(this.d.aj(), this.h, -1);
+            this.m = -1;
+            this.f = false;
+         } else {
+            this.a($$2, this.h, this.g);
          }
-      }), (Supplier<String>)(() -> "lightChunk " + $$2 + " " + $$1)));
-      return CompletableFuture.supplyAsync(() -> {
-         $$0.b(true);
-         this.g.b($$2);
-         return $$0;
-      }, $$1x -> this.a($$2.e, $$2.f, aoy.a.b, $$1x));
+      }
    }
 
-   public void b() {
-      if ((!this.f.isEmpty() || super.L_()) && this.j.compareAndSet(false, true)) {
-         this.e.a(() -> {
-            this.f();
-            this.j.set(false);
-         });
+   private float a(dlj $$0, hz $$1, int $$2) {
+      int $$3 = this.i - $$2;
+      float $$4 = $$0.a(this.d, this.d.dM(), $$1) * (float)($$3 + 1);
+      int $$5 = (int)($$4 * 10.0F);
+      if ($$5 != this.m) {
+         this.c.a(this.d.aj(), $$1, $$5);
+         this.m = $$5;
+      }
+
+      return $$4;
+   }
+
+   private void a(hz $$0, boolean $$1, int $$2, String $$3) {
+   }
+
+   public void a(hz $$0, afu.a $$1, ie $$2, int $$3, int $$4) {
+      if (!this.d.a($$0, 1.0)) {
+         this.a($$0, false, $$4, "too far");
+      } else if ($$0.v() >= $$3) {
+         this.d.d.b(new aap($$0, this.c.a_($$0)));
+         this.a($$0, false, $$4, "too high");
+      } else {
+         if ($$1 == afu.a.a) {
+            if (!this.c.a(this.d, $$0)) {
+               this.d.d.b(new aap($$0, this.c.a_($$0)));
+               this.a($$0, false, $$4, "may not interact");
+               return;
+            }
+
+            if (this.e()) {
+               this.a($$0, $$4, "creative destroy");
+               return;
+            }
+
+            if (this.d.a(this.c, $$0, this.b)) {
+               this.d.d.b(new aap($$0, this.c.a_($$0)));
+               this.a($$0, false, $$4, "block action restricted");
+               return;
+            }
+
+            this.g = this.i;
+            float $$5 = 1.0F;
+            dlj $$6 = this.c.a_($$0);
+            if (!$$6.i()) {
+               $$6.a(this.c, $$0, this.d);
+               $$5 = $$6.a(this.d, this.d.dM(), $$0);
+            }
+
+            if (!$$6.i() && $$5 >= 1.0F) {
+               this.a($$0, $$4, "insta mine");
+            } else {
+               if (this.f) {
+                  this.d.d.b(new aap(this.h, this.c.a_(this.h)));
+                  this.a($$0, false, $$4, "abort destroying since another started (client insta mine, server disagreed)");
+               }
+
+               this.f = true;
+               this.h = $$0.i();
+               int $$7 = (int)($$5 * 10.0F);
+               this.c.a(this.d.aj(), $$0, $$7);
+               this.a($$0, true, $$4, "actual start of destroying");
+               this.m = $$7;
+            }
+         } else if ($$1 == afu.a.c) {
+            if ($$0.equals(this.h)) {
+               int $$8 = this.i - this.g;
+               dlj $$9 = this.c.a_($$0);
+               if (!$$9.i()) {
+                  float $$10 = $$9.a(this.d, this.d.dM(), $$0) * (float)($$8 + 1);
+                  if ($$10 >= 0.7F) {
+                     this.f = false;
+                     this.c.a(this.d.aj(), $$0, -1);
+                     this.a($$0, $$4, "destroyed");
+                     return;
+                  }
+
+                  if (!this.j) {
+                     this.f = false;
+                     this.j = true;
+                     this.k = $$0;
+                     this.l = this.g;
+                  }
+               }
+            }
+
+            this.a($$0, true, $$4, "stopped destroying");
+         } else if ($$1 == afu.a.b) {
+            this.f = false;
+            if (!Objects.equals(this.h, $$0)) {
+               a.warn("Mismatch in destroy block pos: {} {}", this.h, $$0);
+               this.c.a(this.d.aj(), this.h, -1);
+               this.a($$0, true, $$4, "aborted mismatched destroying");
+            }
+
+            this.c.a(this.d.aj(), $$0, -1);
+            this.a($$0, true, $$4, "aborted destroying");
+         }
       }
    }
 
-   private void f() {
-      int $$0 = Math.min(this.f.size(), 1000);
-      ObjectListIterator<Pair<aoy.a, Runnable>> $$1 = this.f.iterator();
-
-      int $$2;
-      for ($$2 = 0; $$1.hasNext() && $$2 < $$0; $$2++) {
-         Pair<aoy.a, Runnable> $$3 = (Pair<aoy.a, Runnable>)$$1.next();
-         if ($$3.getFirst() == aoy.a.a) {
-            ((Runnable)$$3.getSecond()).run();
-         }
-      }
-
-      $$1.back($$2);
-      super.a();
-
-      for (int var5 = 0; $$1.hasNext() && var5 < $$0; var5++) {
-         Pair<aoy.a, Runnable> $$4 = (Pair<aoy.a, Runnable>)$$1.next();
-         if ($$4.getFirst() == aoy.a.b) {
-            ((Runnable)$$4.getSecond()).run();
-         }
-
-         $$1.remove();
+   public void a(hz $$0, int $$1, String $$2) {
+      if (this.a($$0)) {
+         this.a($$0, true, $$1, $$2);
+      } else {
+         this.d.d.b(new aap($$0, this.c.a_($$0)));
+         this.a($$0, false, $$1, $$2);
       }
    }
 
-   public CompletableFuture<?> a(int $$0, int $$1) {
-      return CompletableFuture.runAsync(() -> {
-      }, $$2 -> this.a($$0, $$1, aoy.a.b, $$2));
+   public boolean a(hz $$0) {
+      dlj $$1 = this.c.a_($$0);
+      if (!this.d.eT().d().a($$1, this.c, $$0, this.d)) {
+         return false;
+      } else {
+         dix $$2 = this.c.c_($$0);
+         cys $$3 = $$1.b();
+         if ($$3 instanceof dca && !this.d.gq()) {
+            this.c.a($$0, $$1, $$1, 3);
+            return false;
+         } else if (this.d.a(this.c, $$0, this.b)) {
+            return false;
+         } else {
+            dlj $$4 = $$3.a(this.c, $$0, $$1, (chl)this.d);
+            boolean $$5 = this.c.a($$0, false);
+            if ($$5) {
+               $$3.a((cvs)this.c, $$0, $$4);
+            }
+
+            if (this.e()) {
+               return true;
+            } else {
+               cpd $$6 = this.d.eT();
+               cpd $$7 = $$6.q();
+               boolean $$8 = this.d.e($$4);
+               $$6.a(this.c, $$4, $$0, this.d);
+               if ($$5 && $$8) {
+                  $$3.a(this.c, this.d, $$0, $$4, $$2, $$7);
+               }
+
+               return true;
+            }
+         }
+      }
    }
 
-   static enum a {
-      a,
-      b;
+   public blw a(aox $$0, cvr $$1, cpd $$2, blv $$3) {
+      if (this.b == cvo.d) {
+         return blw.d;
+      } else if ($$0.go().a($$2.d())) {
+         return blw.d;
+      } else {
+         int $$4 = $$2.M();
+         int $$5 = $$2.l();
+         blx<cpd> $$6 = $$2.a($$1, $$0, $$3);
+         cpd $$7 = $$6.b();
+         if ($$7 == $$2 && $$7.M() == $$4 && $$7.s() <= 0 && $$7.l() == $$5) {
+            return $$6.a();
+         } else if ($$6.a() == blw.e && $$7.s() > 0 && !$$0.fn()) {
+            return $$6.a();
+         } else {
+            if ($$2 != $$7) {
+               $$0.a($$3, $$7);
+            }
+
+            if ($$7.b()) {
+               $$0.a($$3, cpd.h);
+            }
+
+            if (!$$0.fn()) {
+               $$0.bV.b();
+            }
+
+            return $$6.a();
+         }
+      }
+   }
+
+   public blw a(aox $$0, cvr $$1, cpd $$2, blv $$3, env $$4) {
+      hz $$5 = $$4.a();
+      dlj $$6 = $$1.a_($$5);
+      if (!$$6.b().a($$1.I())) {
+         return blw.e;
+      } else if (this.b == cvo.d) {
+         bma $$7 = $$6.b($$1, $$5);
+         if ($$7 != null) {
+            $$0.a($$7);
+            return blw.a;
+         } else {
+            return blw.d;
+         }
+      } else {
+         boolean $$8 = !$$0.eT().b() || !$$0.eU().b();
+         boolean $$9 = $$0.fI() && $$8;
+         cpd $$10 = $$2.q();
+         if (!$$9) {
+            bly $$11 = $$6.a($$0.b($$3), $$1, $$0, $$3, $$4);
+            if ($$11.a()) {
+               am.N.a($$0, $$5, $$10);
+               return $$11.b();
+            }
+
+            if ($$11 == bly.d && $$3 == blv.a) {
+               blw $$12 = $$6.a($$1, $$0, $$4);
+               if ($$12.a()) {
+                  am.O.a($$0, $$5);
+                  return $$12;
+               }
+            }
+         }
+
+         if (!$$2.b() && !$$0.go().a($$2.d())) {
+            crm $$13 = new crm($$0, $$3, $$4);
+            blw $$15;
+            if (this.e()) {
+               int $$14 = $$2.M();
+               $$15 = $$2.a($$13);
+               $$2.f($$14);
+            } else {
+               $$15 = $$2.a($$13);
+            }
+
+            if ($$15.a()) {
+               am.N.a($$0, $$5, $$10);
+            }
+
+            return $$15;
+         } else {
+            return blw.d;
+         }
+      }
+   }
+
+   public void a(aow $$0) {
+      this.c = $$0;
    }
 }

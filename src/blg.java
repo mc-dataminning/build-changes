@@ -1,49 +1,57 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.function.Function;
 
 public class blg extends bkz {
    public static final Codec<blg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(bke.b(bkz.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, blg::new)
-   );
-   private final bke<bkz> b;
-   private final int f;
-   private final int g;
+         $$0 -> $$0.group(Codec.FLOAT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("max_exclusive").forGetter($$0x -> $$0x.d))
+               .apply($$0, blg::new)
+      )
+      .comapFlatMap(
+         $$0 -> $$0.d <= $$0.b
+               ? DataResult.error(() -> "Max must be larger than min, min_inclusive: " + $$0.b + ", max_exclusive: " + $$0.d)
+               : DataResult.success($$0),
+         Function.identity()
+      );
+   private final float b;
+   private final float d;
 
-   public blg(bke<bkz> $$0) {
+   private blg(float $$0, float $$1) {
       this.b = $$0;
-      List<bkg.b<bkz>> $$1 = $$0.e();
-      int $$2 = Integer.MAX_VALUE;
-      int $$3 = Integer.MIN_VALUE;
+      this.d = $$1;
+   }
 
-      for (bkg.b<bkz> $$4 : $$1) {
-         int $$5 = $$4.b().a();
-         int $$6 = $$4.b().b();
-         $$2 = Math.min($$2, $$5);
-         $$3 = Math.max($$3, $$6);
+   public static blg b(float $$0, float $$1) {
+      if ($$1 <= $$0) {
+         throw new IllegalArgumentException("Max must exceed min");
+      } else {
+         return new blg($$0, $$1);
       }
-
-      this.f = $$2;
-      this.g = $$3;
    }
 
    @Override
-   public int a(awo $$0) {
-      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0);
+   public float a(awp $$0) {
+      return awi.b($$0, this.b, this.d);
    }
 
    @Override
-   public int a() {
-      return this.f;
+   public float a() {
+      return this.b;
    }
 
    @Override
-   public int b() {
-      return this.g;
+   public float b() {
+      return this.d;
    }
 
    @Override
    public bla<?> c() {
-      return bla.e;
+      return bla.b;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.b + "-" + this.d + "]";
    }
 }

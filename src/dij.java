@@ -1,162 +1,77 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dij extends dit implements blz {
-   public static final int a = 6;
-   public static final String b = "Patterns";
-   public static final String c = "Pattern";
-   public static final String d = "Color";
+public class dij extends dft {
+   public static final MapCodec<dij> b = b(dij::new);
    @Nullable
-   private vq e;
-   private cnn f;
+   private static dlo h;
    @Nullable
-   private tc g;
-   @Nullable
-   private List<Pair<ij<dik>, cnn>> h;
+   private static dlo i;
 
-   public dij(hz $$0, dlf $$1) {
-      super(div.t, $$0, $$1);
-      this.f = ((cxf)$$1.b()).b();
+   @Override
+   public MapCodec<dij> a() {
+      return b;
    }
 
-   public dij(hz $$0, dlf $$1, cnn $$2) {
-      this($$0, $$1);
-      this.f = $$2;
-   }
-
-   @Nullable
-   public static tc a(coz $$0) {
-      tc $$1 = null;
-      sw $$2 = cms.a($$0);
-      if ($$2 != null && $$2.b("Patterns", 9)) {
-         $$1 = $$2.c("Patterns", 10).e();
-      }
-
-      return $$1;
-   }
-
-   public void a(coz $$0, cnn $$1) {
-      this.f = $$1;
-      this.b($$0);
-   }
-
-   public void b(coz $$0) {
-      this.g = a($$0);
-      this.h = null;
-      this.e = $$0.B() ? $$0.z() : null;
+   protected dij(dli.d $$0) {
+      super(dft.b.d, $$0);
    }
 
    @Override
-   public vq ad() {
-      return (vq)(this.e != null ? this.e : vq.c("block.minecraft.banner"));
+   public void a(cvr $$0, hz $$1, dlj $$2, @Nullable boi $$3, cpd $$4) {
+      a($$0, $$1);
    }
 
-   @Nullable
-   @Override
-   public vq af() {
-      return this.e;
-   }
-
-   public void a(vq $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   protected void b(sw $$0) {
-      super.b($$0);
-      if (this.g != null) {
-         $$0.a("Patterns", this.g);
-      }
-
-      if (this.e != null) {
-         $$0.a("CustomName", vq.a.a(this.e));
+   public static void a(cvr $$0, hz $$1) {
+      if ($$0.c_($$1) instanceof dki $$2) {
+         a($$0, $$1, $$2);
       }
    }
 
-   @Override
-   public void a(sw $$0) {
-      super.a($$0);
-      if ($$0.b("CustomName", 8)) {
-         this.e = vq.a.a($$0.l("CustomName"));
-      }
-
-      this.g = $$0.c("Patterns", 10);
-      this.h = null;
-   }
-
-   public aan a() {
-      return aan.a(this);
-   }
-
-   @Override
-   public sw aA_() {
-      return this.q();
-   }
-
-   public static int c(coz $$0) {
-      sw $$1 = cms.a($$0);
-      return $$1 != null && $$1.e("Patterns") ? $$1.c("Patterns", 10).size() : 0;
-   }
-
-   public List<Pair<ij<dik>, cnn>> c() {
-      if (this.h == null) {
-         this.h = a(this.f, this.g);
-      }
-
-      return this.h;
-   }
-
-   public static List<Pair<ij<dik>, cnn>> a(cnn $$0, @Nullable tc $$1) {
-      List<Pair<ij<dik>, cnn>> $$2 = Lists.newArrayList();
-      $$2.add(Pair.of(kf.am.f(dil.a), $$0));
-      if ($$1 != null) {
-         for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
-            sw $$4 = $$1.a($$3);
-            ij<dik> $$5 = dik.a($$4.l("Pattern"));
+   public static void a(cvr $$0, hz $$1, dki $$2) {
+      if (!$$0.B) {
+         dlj $$3 = $$2.r();
+         boolean $$4 = $$3.a(cyu.gG) || $$3.a(cyu.gH);
+         if ($$4 && $$1.v() >= $$0.J_() && $$0.aj() != blt.a) {
+            dlo.b $$5 = s().a($$0, $$1);
             if ($$5 != null) {
-               int $$6 = $$4.h("Color");
-               $$2.add(Pair.of($$5, cnn.a($$6)));
+               cdk $$6 = bnw.bn.a($$0);
+               if ($$6 != null) {
+                  czm.a($$0, $$5);
+                  hz $$7 = $$5.a(1, 2, 0).d();
+                  $$6.b((double)$$7.u() + 0.5, (double)$$7.v() + 0.55, (double)$$7.w() + 0.5, $$5.b().o() == ie.a.a ? 0.0F : 90.0F, 0.0F);
+                  $$6.aU = $$5.b().o() == ie.a.a ? 0.0F : 90.0F;
+                  $$6.u();
+
+                  for (aox $$8 : $$0.a(aox.class, $$6.cH().g(50.0))) {
+                     am.o.a($$8, $$6);
+                  }
+
+                  $$0.b($$6);
+                  czm.b($$0, $$5);
+               }
             }
          }
       }
-
-      return $$2;
    }
 
-   public static void d(coz $$0) {
-      sw $$1 = cms.a($$0);
-      if ($$1 != null && $$1.b("Patterns", 9)) {
-         tc $$2 = $$1.c("Patterns", 10);
-         if (!$$2.isEmpty()) {
-            $$2.c($$2.size() - 1);
-            if ($$2.isEmpty()) {
-               $$1.r("Patterns");
-            }
-         }
-
-         $$1.r("id");
-         cms.a($$0, div.t, $$1);
-      }
+   public static boolean b(cvr $$0, hz $$1, cpd $$2) {
+      return $$2.a(cpg.ui) && $$1.v() >= $$0.J_() + 2 && $$0.aj() != blt.a && !$$0.B ? y().a($$0, $$1) != null : false;
    }
 
-   public coz f() {
-      coz $$0 = new coz(cxt.a(this.f));
-      if (this.g != null && !this.g.isEmpty()) {
-         sw $$1 = new sw();
-         $$1.a("Patterns", this.g.e());
-         cms.a($$0, this.v(), $$1);
+   private static dlo s() {
+      if (h == null) {
+         h = dlp.a().a("^^^", "###", "~#~").a('#', $$0 -> $$0.a().a(aua.aE)).a('^', dln.a(dls.a(cyu.gG).or(dls.a(cyu.gH)))).a('~', $$0 -> $$0.a().i()).b();
       }
 
-      if (this.e != null) {
-         $$0.a(this.e);
-      }
-
-      return $$0;
+      return h;
    }
 
-   public cnn g() {
-      return this.f;
+   private static dlo y() {
+      if (i == null) {
+         i = dlp.a().a("   ", "###", "~#~").a('#', $$0 -> $$0.a().a(aua.aE)).a('~', $$0 -> $$0.a().i()).b();
+      }
+
+      return i;
    }
 }

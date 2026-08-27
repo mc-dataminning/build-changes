@@ -8,13 +8,13 @@ public class cl extends cx<cl.a> {
       return cl.a.a;
    }
 
-   public void a(aow $$0, aiy $$1) {
+   public void a(aox $$0, aiy $$1) {
       this.a($$0, $$1x -> $$1x.b($$1));
    }
 
    public static record a(Optional<bc> b, aiy c) implements cx.a {
       public static final Codec<cl.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(avp.a(br.b, "player").forGetter(cl.a::a), aiy.a.fieldOf("loot_table").forGetter(cl.a::b)).apply($$0, cl.a::new)
+         $$0 -> $$0.group(avq.a(br.b, "player").forGetter(cl.a::a), aiy.a.fieldOf("loot_table").forGetter(cl.a::b)).apply($$0, cl.a::new)
       );
 
       public static an<cl.a> a(aiy $$0) {

@@ -1,29 +1,34 @@
 import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.Iterator;
 import java.util.List;
+import org.slf4j.Logger;
 
-public class ett extends etw {
-   public long a;
-   public List<ets> b = Lists.newArrayList();
+public class ett extends eud {
+   private static final Logger b = LogUtils.getLogger();
+   public List<ets> a;
 
    public static ett a(String $$0) {
       ett $$1 = new ett();
-      JsonParser $$2 = new JsonParser();
+      $$1.a = Lists.newArrayList();
 
       try {
-         JsonElement $$3 = $$2.parse($$0);
-         JsonObject $$4 = $$3.getAsJsonObject();
-         $$1.a = evt.a("periodInMillis", $$4, -1L);
-         JsonElement $$5 = $$4.get("playerActivityDto");
-         if ($$5 != null && $$5.isJsonArray()) {
-            for (JsonElement $$7 : $$5.getAsJsonArray()) {
-               ets $$8 = ets.a($$7.getAsJsonObject());
-               $$1.b.add($$8);
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         if ($$3.get("lists").isJsonArray()) {
+            JsonArray $$4 = $$3.get("lists").getAsJsonArray();
+            Iterator<JsonElement> $$5 = $$4.iterator();
+
+            while ($$5.hasNext()) {
+               $$1.a.add(ets.a($$5.next().getAsJsonObject()));
             }
          }
-      } catch (Exception var10) {
+      } catch (Exception var6) {
+         b.error("Could not parse RealmsServerPlayerLists: {}", var6.getMessage());
       }
 
       return $$1;

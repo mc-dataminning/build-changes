@@ -18,7 +18,7 @@ public class ald {
    @VisibleForTesting
    public static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> vq.b("commands.function.instantiationFailure", $$0, $$1));
    public static final SuggestionProvider<du> b = ($$0, $$1) -> {
-      ajm $$2 = ((du)$$0.getSource()).l().aC();
+      ajm $$2 = ((du)$$0.getSource()).l().aE();
       dz.a($$2.e(), $$1, "#");
       return dz.a($$2.d(), $$1);
    };
@@ -31,7 +31,7 @@ public class ald {
    public static void a(CommandDispatcher<du> $$0) {
       LiteralArgumentBuilder<du> $$1 = dv.a("with");
 
-      for (anm.c $$2 : anm.c) {
+      for (ann.c $$2 : ann.c) {
          $$2.a($$1, $$1x -> $$1x.executes(new ald.c() {
                @Override
                protected sw a(CommandContext<du> $$0) throws CommandSyntaxException {
@@ -62,8 +62,8 @@ public class ald {
       );
    }
 
-   static sw a(em.g $$0, anl $$1) throws CommandSyntaxException {
-      tt $$2 = anm.a($$0, $$1);
+   static sw a(em.g $$0, anm $$1) throws CommandSyntaxException {
+      tt $$2 = ann.a($$0, $$1);
       if ($$2 instanceof sw) {
          return (sw)$$2;
       } else {

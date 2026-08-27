@@ -1,27 +1,50 @@
-public abstract class bko<R extends Runnable> extends bkk<R> {
-   private int b;
+import com.mojang.datafixers.util.Either;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
+import java.util.function.Function;
 
-   public bko(String $$0) {
-      super($$0);
-   }
+public interface bko<Msg> extends AutoCloseable {
+   String bv();
 
-   @Override
-   public boolean av() {
-      return this.bx() || super.av();
-   }
-
-   protected boolean bx() {
-      return this.b != 0;
-   }
+   void a(Msg var1);
 
    @Override
-   public void d(R $$0) {
-      this.b++;
+   default void close() {
+   }
 
-      try {
-         super.d($$0);
-      } finally {
-         this.b--;
-      }
+   default <Source> CompletableFuture<Source> b(Function<? super bko<Source>, ? extends Msg> $$0) {
+      CompletableFuture<Source> $$1 = new CompletableFuture<>();
+      Msg $$2 = (Msg)$$0.apply(a("ask future procesor handle", $$1::complete));
+      this.a($$2);
+      return $$1;
+   }
+
+   default <Source> CompletableFuture<Source> c(Function<? super bko<Either<Source, Exception>>, ? extends Msg> $$0) {
+      CompletableFuture<Source> $$1 = new CompletableFuture<>();
+      Msg $$2 = (Msg)$$0.apply(a("ask future procesor handle", $$1x -> {
+         $$1x.ifLeft($$1::complete);
+         $$1x.ifRight($$1::completeExceptionally);
+      }));
+      this.a($$2);
+      return $$1;
+   }
+
+   static <Msg> bko<Msg> a(final String $$0, final Consumer<Msg> $$1) {
+      return new bko<Msg>() {
+         @Override
+         public String bv() {
+            return $$0;
+         }
+
+         @Override
+         public void a(Msg $$0x) {
+            $$1.accept($$0);
+         }
+
+         @Override
+         public String toString() {
+            return $$0;
+         }
+      };
    }
 }

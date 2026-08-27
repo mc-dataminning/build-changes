@@ -1,38 +1,26 @@
-import java.util.Arrays;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.IllegalFormatException;
 
 public class gig {
-   public static final gih a = new gih();
-   public static final String b = "villager";
-   private final gig.a c;
+   private static volatile sr a = sr.a();
 
-   public gig(gig.a $$0) {
-      this.c = $$0;
+   private gig() {
    }
 
-   public gig.a a() {
-      return this.c;
+   static void a(sr $$0) {
+      a = $$0;
    }
 
-   public static enum a {
-      a("none"),
-      b("partial"),
-      c("full");
+   public static String a(String $$0, Object... $$1) {
+      String $$2 = a.a($$0);
 
-      private static final Map<String, gig.a> d = Arrays.stream(values()).collect(Collectors.toMap(gig.a::a, $$0 -> (gig.a)$$0));
-      private final String e;
-
-      private a(String $$0) {
-         this.e = $$0;
+      try {
+         return String.format($$2, $$1);
+      } catch (IllegalFormatException var4) {
+         return "Format error: " + $$2;
       }
+   }
 
-      public String a() {
-         return this.e;
-      }
-
-      public static gig.a a(String $$0) {
-         return d.getOrDefault($$0, a);
-      }
+   public static boolean a(String $$0) {
+      return a.b($$0);
    }
 }

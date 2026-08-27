@@ -1,51 +1,64 @@
-public class flx<T extends cfg> extends fou<T> {
-   public flx(fpc $$0) {
-      super($$0);
+import com.google.common.collect.ImmutableList;
+
+public class flx<T extends bnq> extends fle<T> {
+   public static final String a = "red_thing";
+   private final fpj b;
+   private final fpj f;
+   private final fpj g;
+   private final fpj h;
+   private final fpj i;
+   private final fpj j;
+   private final fpj k;
+   private final fpj l;
+
+   public flx(fpj $$0) {
+      this.b = $$0.b("head");
+      this.k = $$0.b("beak");
+      this.l = $$0.b("red_thing");
+      this.f = $$0.b("body");
+      this.g = $$0.b("right_leg");
+      this.h = $$0.b("left_leg");
+      this.i = $$0.b("right_wing");
+      this.j = $$0.b("left_wing");
    }
 
-   public static fpi a(fpg $$0) {
-      fpk $$1 = fmo.a($$0, 0.0F);
-      fpl $$2 = $$1.a();
-      $$2.a("left_arm", fph.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), fpe.a(5.0F, 2.0F, 0.0F));
-      $$2.a("left_leg", fph.c().a(16, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), fpe.a(1.9F, 12.0F, 0.0F));
-      return fpi.a($$1, 64, 64);
+   public static fpp c() {
+      fpr $$0 = new fpr();
+      fps $$1 = $$0.a();
+      int $$2 = 16;
+      $$1.a("head", fpo.c().a(0, 0).a(-2.0F, -6.0F, -2.0F, 4.0F, 6.0F, 3.0F), fpl.a(0.0F, 15.0F, -4.0F));
+      $$1.a("beak", fpo.c().a(14, 0).a(-2.0F, -4.0F, -4.0F, 4.0F, 2.0F, 2.0F), fpl.a(0.0F, 15.0F, -4.0F));
+      $$1.a("red_thing", fpo.c().a(14, 4).a(-1.0F, -2.0F, -3.0F, 2.0F, 2.0F, 2.0F), fpl.a(0.0F, 15.0F, -4.0F));
+      $$1.a("body", fpo.c().a(0, 9).a(-3.0F, -4.0F, -3.0F, 6.0F, 8.0F, 6.0F), fpl.a(0.0F, 16.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      fpo $$3 = fpo.c().a(26, 0).a(-1.0F, 0.0F, -3.0F, 3.0F, 5.0F, 3.0F);
+      $$1.a("right_leg", $$3, fpl.a(-2.0F, 19.0F, 1.0F));
+      $$1.a("left_leg", $$3, fpl.a(1.0F, 19.0F, 1.0F));
+      $$1.a("right_wing", fpo.c().a(24, 13).a(0.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), fpl.a(-4.0F, 13.0F, 0.0F));
+      $$1.a("left_wing", fpo.c().a(24, 13).a(-1.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), fpl.a(4.0F, 13.0F, 0.0F));
+      return fpp.a($$0, 64, 32);
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      this.s = fmo.a.a;
-      this.r = fmo.a.a;
-      coz $$4 = $$0.b(blt.a);
-      if ($$4.a(cpc.vL) && $$0.fY()) {
-         if ($$0.fm() == boa.b) {
-            this.s = fmo.a.e;
-         } else {
-            this.r = fmo.a.e;
-         }
-      }
-
-      super.a($$0, $$1, $$2, $$3);
+   @Override
+   protected Iterable<fpj> a() {
+      return ImmutableList.of(this.b, this.k, this.l);
    }
 
+   @Override
+   protected Iterable<fpj> b() {
+      return ImmutableList.of(this.f, this.g, this.h, this.i, this.j);
+   }
+
+   @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if (this.r == fmo.a.e) {
-         this.o.e = this.o.e * 0.5F - (float) Math.PI;
-         this.o.f = 0.0F;
-      }
-
-      if (this.s == fmo.a.e) {
-         this.n.e = this.n.e * 0.5F - (float) Math.PI;
-         this.n.f = 0.0F;
-      }
-
-      if (this.u > 0.0F) {
-         this.n.e = this.a(this.u, this.n.e, (float) (-Math.PI * 4.0 / 5.0)) + this.u * 0.35F * awh.a(0.1F * $$3);
-         this.o.e = this.a(this.u, this.o.e, (float) (-Math.PI * 4.0 / 5.0)) - this.u * 0.35F * awh.a(0.1F * $$3);
-         this.n.g = this.a(this.u, this.n.g, -0.15F);
-         this.o.g = this.a(this.u, this.o.g, 0.15F);
-         this.q.e = this.q.e - this.u * 0.55F * awh.a(0.1F * $$3);
-         this.p.e = this.p.e + this.u * 0.55F * awh.a(0.1F * $$3);
-         this.k.e = 0.0F;
-      }
+      this.b.e = $$5 * (float) (Math.PI / 180.0);
+      this.b.f = $$4 * (float) (Math.PI / 180.0);
+      this.k.e = this.b.e;
+      this.k.f = this.b.f;
+      this.l.e = this.b.e;
+      this.l.f = this.b.f;
+      this.g.e = awi.b($$1 * 0.6662F) * 1.4F * $$2;
+      this.h.e = awi.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.i.g = $$3;
+      this.j.g = -$$3;
    }
 }

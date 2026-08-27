@@ -1,4 +1,4 @@
-public record abl(cuu b) implements xx<aag> {
+public record abl(cuy b) implements xx<aag> {
    public static final xo<uq, abl> a = xx.a(abl::a, abl::new);
 
    private abl(uq $$0) {

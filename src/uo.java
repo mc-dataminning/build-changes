@@ -345,8 +345,8 @@ public class uo extends SimpleChannelInboundHandler<xx<?>> {
    }
 
    protected void c() {
-      this.x = awh.i(0.75F, (float)this.v, this.x);
-      this.w = awh.i(0.75F, (float)this.u, this.w);
+      this.x = awi.i(0.75F, (float)this.v, this.x);
+      this.w = awi.i(0.75F, (float)this.u, this.w);
       this.v = 0;
       this.u = 0;
    }
@@ -386,7 +386,7 @@ public class uo extends SimpleChannelInboundHandler<xx<?>> {
       return this.k.a();
    }
 
-   public static uo a(InetSocketAddress $$0, boolean $$1, @Nullable awq $$2) {
+   public static uo a(InetSocketAddress $$0, boolean $$1, @Nullable bhx $$2) {
       uo $$3 = new uo(xy.b);
       if ($$2 != null) {
          $$3.a($$2);
@@ -547,7 +547,7 @@ public class uo extends SimpleChannelInboundHandler<xx<?>> {
       return this.x;
    }
 
-   public void a(awq $$0) {
+   public void a(bhx $$0) {
       this.B = new uh($$0);
    }
 }

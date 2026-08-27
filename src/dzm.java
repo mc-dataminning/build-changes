@@ -1,16 +1,17 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dzm<P extends dzl> {
-   dzm<dzk> a = a("constant", dzk.b);
-   dzm<dzo> b = a("uniform", dzo.a);
-   dzm<dzj> c = a("biased_to_bottom", dzj.a);
-   dzm<dzp> d = a("very_biased_to_bottom", dzp.a);
-   dzm<dzn> e = a("trapezoid", dzn.a);
-   dzm<dzq> f = a("weighted_list", dzq.a);
+public record dzm(ij<coy> c, dzo d) {
+   public static final Codec<dzm> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aiv.a(kg.F).fieldOf("display").forGetter($$0x -> $$0x.c), dzo.a.fieldOf("settings").forGetter($$0x -> $$0x.d)).apply($$0, dzm::new)
+   );
+   public static final Codec<ij<dzm>> b = aiu.a(kg.az, a);
 
-   Codec<P> codec();
+   public ij<coy> a() {
+      return this.c;
+   }
 
-   private static <P extends dzl> dzm<P> a(String $$0, Codec<P> $$1) {
-      return iv.a(kf.N, $$0, () -> $$1);
+   public dzo b() {
+      return this.d;
    }
 }

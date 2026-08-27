@@ -1,49 +1,24 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record dyf(dxx b, List<dyf.a> c) {
-   public static final Codec<dyf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dxx.a.fieldOf("fallback").forGetter(dyf::a), dyf.a.a.listOf().fieldOf("rules").forGetter(dyf::b)).apply($$0, dyf::new)
-   );
+public class dyf<P extends dye> {
+   public static final dyf<dyn> a = a("simple_state_provider", dyn.b);
+   public static final dyf<dyo> b = a("weighted_state_provider", dyo.b);
+   public static final dyf<dyj> c = a("noise_threshold_provider", dyj.b);
+   public static final dyf<dyi> d = a("noise_provider", dyi.g);
+   public static final dyf<dyg> e = a("dual_noise_provider", dyg.b);
+   public static final dyf<dyl> f = a("rotated_block_provider", dyl.b);
+   public static final dyf<dyk> g = a("randomized_int_state_provider", dyk.b);
+   private final Codec<P> h;
 
-   public static dyf a(dxx $$0) {
-      return new dyf($$0, List.of());
+   private static <P extends dye> dyf<P> a(String $$0, Codec<P> $$1) {
+      return iv.a(kf.V, $$0, new dyf<>($$1));
    }
 
-   public static dyf a(cyo $$0) {
-      return a(dxx.a($$0));
+   private dyf(Codec<P> $$0) {
+      this.h = $$0;
    }
 
-   public dlf a(cwi $$0, awo $$1, hz $$2) {
-      for (dyf.a $$3 : this.c) {
-         if ($$3.a().test($$0, $$2)) {
-            return $$3.b().a($$1, $$2);
-         }
-      }
-
-      return this.b.a($$1, $$2);
-   }
-
-   public dxx a() {
-      return this.b;
-   }
-
-   public List<dyf.a> b() {
-      return this.c;
-   }
-
-   public static record a(drv b, dxx c) {
-      public static final Codec<dyf.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(drv.b.fieldOf("if_true").forGetter(dyf.a::a), dxx.a.fieldOf("then").forGetter(dyf.a::b)).apply($$0, dyf.a::new)
-      );
-
-      public drv a() {
-         return this.b;
-      }
-
-      public dxx b() {
-         return this.c;
-      }
+   public Codec<P> a() {
+      return this.h;
    }
 }

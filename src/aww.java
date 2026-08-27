@@ -2,7 +2,7 @@ import java.util.function.IntConsumer;
 import javax.annotation.Nullable;
 import org.apache.commons.lang3.Validate;
 
-public class aww implements auw {
+public class aww implements auy {
    private static final int[] a = new int[]{
       -1,
       -1,
@@ -356,7 +356,7 @@ public class aww implements auw {
    }
 
    @Override
-   public auw d() {
+   public auy d() {
       return new aww(this.c, this.e, (long[])this.b.clone());
    }
 

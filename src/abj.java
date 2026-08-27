@@ -5,7 +5,7 @@ public class abj implements xx<aag> {
    private final int b;
    private final byte c;
 
-   public abj(bno $$0, byte $$1) {
+   public abj(bnq $$0, byte $$1) {
       this.b = $$0.aj();
       this.c = $$1;
    }
@@ -30,7 +30,7 @@ public class abj implements xx<aag> {
    }
 
    @Nullable
-   public bno a(cvn $$0) {
+   public bnq a(cvr $$0) {
       return $$0.a(this.b);
    }
 

@@ -26,9 +26,9 @@ public record yu(yu.a c) implements yy {
       return this.c;
    }
 
-   public static record a(UUID a, int b, ens c, @Nullable ehe d, @Nullable hz e, @Nullable hz f, int g, Set<String> h, List<hz> i) {
+   public static record a(UUID a, int b, enz c, @Nullable ehl d, @Nullable hz e, @Nullable hz f, int g, Set<String> h, List<hz> i) {
       public a(uq $$0) {
-         this($$0.p(), $$0.readInt(), $$0.k(), $$0.c(ehe::b), $$0.c(hz.b), $$0.c(hz.b), $$0.readInt(), $$0.a(HashSet::new, uq::r), $$0.a(hz.b));
+         this($$0.p(), $$0.readInt(), $$0.k(), $$0.c(ehl::b), $$0.c(hz.b), $$0.c(hz.b), $$0.readInt(), $$0.a(HashSet::new, uq::r), $$0.a(hz.b));
       }
 
       public void a(uq $$0) {
@@ -64,12 +64,12 @@ public record yu(yu.a c) implements yy {
          return this.b;
       }
 
-      public ens d() {
+      public enz d() {
          return this.c;
       }
 
       @Nullable
-      public ehe e() {
+      public ehl e() {
          return this.d;
       }
 

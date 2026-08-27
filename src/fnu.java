@@ -1,58 +1,70 @@
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 
-public class fnu<T extends cet> extends fmt<T> {
-   private static final String a = "lid";
-   private static final String b = "base";
-   private final fpc f;
-   private final fpc g;
-   private final fpc h;
+public class fnu extends fna<cjg> {
+   private static final String a = "left_paddle";
+   private static final String b = "right_paddle";
+   private static final String f = "bottom";
+   private final fpj g;
+   private final fpj h;
+   private final ImmutableList<fpj> i;
 
-   public fnu(fpc $$0) {
-      super(fvt::f);
-      this.g = $$0.b("lid");
-      this.f = $$0.b("base");
-      this.h = $$0.b("head");
+   public fnu(fpj $$0) {
+      this.g = $$0.b("left_paddle");
+      this.h = $$0.b("right_paddle");
+      this.i = this.a($$0).build();
    }
 
-   public static fpi a() {
-      fpk $$0 = new fpk();
-      fpl $$1 = $$0.a();
-      $$1.a("lid", fph.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 12.0F, 16.0F), fpe.a(0.0F, 24.0F, 0.0F));
-      $$1.a("base", fph.c().a(0, 28).a(-8.0F, -8.0F, -8.0F, 16.0F, 8.0F, 16.0F), fpe.a(0.0F, 24.0F, 0.0F));
-      $$1.a("head", fph.c().a(0, 52).a(-3.0F, 0.0F, -3.0F, 6.0F, 6.0F, 6.0F), fpe.a(0.0F, 12.0F, 0.0F));
-      return fpi.a($$0, 64, 64);
+   protected Builder<fpj> a(fpj $$0) {
+      Builder<fpj> $$1 = new Builder();
+      $$1.add(new fpj[]{$$0.b("bottom"), this.g, this.h});
+      return $$1;
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = $$3 - (float)$$0.ag;
-      float $$7 = (0.5F + $$0.E($$6)) * (float) Math.PI;
-      float $$8 = -1.0F + awh.a($$7);
-      float $$9 = 0.0F;
-      if ($$7 > (float) Math.PI) {
-         $$9 = awh.a($$3 * 0.1F) * 0.7F;
+   public static void a(fps $$0) {
+      $$0.a(
+         "bottom",
+         fpo.c().a(0, 0).a(-14.0F, -11.0F, -4.0F, 28.0F, 20.0F, 4.0F).a(0, 0).a(-14.0F, -9.0F, -8.0F, 28.0F, 16.0F, 4.0F),
+         fpl.a(0.0F, -2.1F, 1.0F, 1.5708F, 0.0F, 0.0F)
+      );
+      int $$1 = 20;
+      int $$2 = 7;
+      int $$3 = 6;
+      float $$4 = -5.0F;
+      $$0.a(
+         "left_paddle",
+         fpo.c().a(0, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         fpl.a(3.0F, -4.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
+      );
+      $$0.a(
+         "right_paddle",
+         fpo.c().a(40, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         fpl.a(3.0F, -4.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
+      );
+   }
+
+   public static fpp b() {
+      fpr $$0 = new fpr();
+      fps $$1 = $$0.a();
+      a($$1);
+      return fpp.a($$0, 128, 64);
+   }
+
+   public void a(cjg $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      a($$0, 0, this.g, $$1);
+      a($$0, 1, this.h, $$1);
+   }
+
+   public ImmutableList<fpj> c() {
+      return this.i;
+   }
+
+   private static void a(cjg $$0, int $$1, fpj $$2, float $$3) {
+      float $$4 = $$0.a($$1, $$3);
+      $$2.e = awi.b((float) (-Math.PI / 3), (float) (-Math.PI / 12), (awi.a(-$$4) + 1.0F) / 2.0F);
+      $$2.f = awi.b((float) (-Math.PI / 4), (float) (Math.PI / 4), (awi.a(-$$4 + 1.0F) + 1.0F) / 2.0F);
+      if ($$1 == 1) {
+         $$2.f = (float) Math.PI - $$2.f;
       }
-
-      this.g.a(0.0F, 16.0F + awh.a($$7) * 8.0F + $$9, 0.0F);
-      if ($$0.E($$6) > 0.3F) {
-         this.g.f = $$8 * $$8 * $$8 * $$8 * (float) Math.PI * 0.125F;
-      } else {
-         this.g.f = 0.0F;
-      }
-
-      this.h.e = $$5 * (float) (Math.PI / 180.0);
-      this.h.f = ($$0.aW - 180.0F - $$0.aU) * (float) (Math.PI / 180.0);
-   }
-
-   @Override
-   public Iterable<fpc> d() {
-      return ImmutableList.of(this.f, this.g);
-   }
-
-   public fpc b() {
-      return this.g;
-   }
-
-   public fpc c() {
-      return this.h;
    }
 }

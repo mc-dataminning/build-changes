@@ -1,17 +1,18 @@
-public class gad extends gby<bzy, flq<bzy>> {
-   private static final aiy a = new aiy("textures/entity/chicken.png");
+public class gad extends gcg<bzy, fln<bzy>> {
+   private static final aiy a = new aiy("textures/entity/bee/bee_angry.png");
+   private static final aiy i = new aiy("textures/entity/bee/bee_angry_nectar.png");
+   private static final aiy j = new aiy("textures/entity/bee/bee.png");
+   private static final aiy k = new aiy("textures/entity/bee/bee_nectar.png");
 
-   public gad(gas.a $$0) {
-      super($$0, new flq<>($$0.a(fpb.v)), 0.3F);
+   public gad(gba.a $$0) {
+      super($$0, new fln<>($$0.a(fpi.k)), 0.4F);
    }
 
    public aiy a(bzy $$0) {
-      return a;
-   }
-
-   protected float a(bzy $$0, float $$1) {
-      float $$2 = awh.i($$1, $$0.bX, $$0.bT);
-      float $$3 = awh.i($$1, $$0.bW, $$0.bU);
-      return (awh.a($$2) + 1.0F) * $$3;
+      if ($$0.aa_()) {
+         return $$0.gq() ? i : a;
+      } else {
+         return $$0.gq() ? k : j;
+      }
    }
 }

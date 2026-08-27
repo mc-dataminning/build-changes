@@ -1,32 +1,11 @@
-public class fzy extends gby<cfj, flk<cfj>> {
-   private static final aiy a = new aiy("textures/entity/breeze/breeze.png");
+public class fzy extends gcg<cbe, flh> {
+   private static final aiy a = new aiy("textures/entity/armadillo.png");
 
-   public fzy(gas.a $$0) {
-      super($$0, new flk<>($$0.a(fpb.o)), 0.5F);
-      this.a(new gec(this));
-      this.a(new geb(this));
+   public fzy(gba.a $$0) {
+      super($$0, new flh($$0.a(fpi.b)), 0.4F);
    }
 
-   public void a(cfj $$0, float $$1, float $$2, esa $$3, fvl $$4, int $$5) {
-      flk<cfj> $$6 = this.a();
-      a($$6, $$6.b(), $$6.d());
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public aiy a(cfj $$0) {
+   public aiy a(cbe $$0) {
       return a;
-   }
-
-   public static flk<cfj> a(flk<cfj> $$0, fpc... $$1) {
-      $$0.b().k = false;
-      $$0.c().k = false;
-      $$0.d().k = false;
-      $$0.e().k = false;
-
-      for (fpc $$2 : $$1) {
-         $$2.k = true;
-      }
-
-      return $$0;
    }
 }

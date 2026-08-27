@@ -37,8 +37,8 @@ public class el implements fa<el.a> {
 
    private static void a(Consumer<wg> $$0, du $$1, wg $$2) {
       MinecraftServer $$3 = $$1.l();
-      CompletableFuture<apm> $$4 = a($$1, $$2);
-      vq $$5 = $$3.bi().decorate($$1.i(), $$2.d());
+      CompletableFuture<apn> $$4 = a($$1, $$2);
+      vq $$5 = $$3.bk().decorate($$1.i(), $$2.d());
       $$1.o().append($$4, $$3x -> {
          wg $$4x = $$2.a($$5).a($$3x.e());
          $$0.accept($$4x);
@@ -46,14 +46,14 @@ public class el implements fa<el.a> {
    }
 
    private static void b(Consumer<wg> $$0, du $$1, wg $$2) {
-      vl $$3 = $$1.l().bi();
+      vl $$3 = $$1.l().bk();
       vq $$4 = $$3.decorate($$1.i(), $$2.d());
       $$0.accept($$2.a($$4));
    }
 
-   private static CompletableFuture<apm> a(du $$0, wg $$1) {
-      aow $$2 = $$0.i();
-      return $$2 != null && $$1.a($$2.cw()) ? $$2.X().a($$1.c()) : CompletableFuture.completedFuture(apm.a($$1.c()));
+   private static CompletableFuture<apn> a(du $$0, wg $$1) {
+      aox $$2 = $$0.i();
+      return $$2 != null && $$1.a($$2.cw()) ? $$2.X().a($$1.c()) : CompletableFuture.completedFuture(apn.a($$1.c()));
    }
 
    public el.a a(StringReader $$0) throws CommandSyntaxException {

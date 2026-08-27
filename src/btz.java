@@ -1,59 +1,35 @@
-public class btz implements bua {
-   private final boi a;
-   private static final int b = 15;
-   private static final int c = 10;
-   private static final int d = 10;
-   private int e;
-   private float f;
+import com.google.common.collect.ImmutableMap;
 
-   public btz(boi $$0) {
-      this.a = $$0;
+public class btz<E extends cgp> extends bqa<E> {
+   private static final double c = 6.0;
+   private static final double d = 20.0;
+
+   public btz(int $$0) {
+      super(ImmutableMap.of(bxl.aB, bxm.a, bxl.o, bxm.b, bxl.m, bxm.b, bxl.n, bxm.c, bxl.B, bxm.c, bxl.az, bxm.c, bxl.aG, bxm.c), $$0);
    }
 
-   public void a() {
-      if (this.f()) {
-         this.a.aU = this.a.dC();
-         this.c();
-         this.f = this.a.aW;
-         this.e = 0;
-      } else {
-         if (this.e()) {
-            if (Math.abs(this.a.aW - this.f) > 15.0F) {
-               this.e = 0;
-               this.f = this.a.aW;
-               this.b();
-            } else {
-               this.e++;
-               if (this.e > 10) {
-                  this.d();
-               }
-            }
-         }
+   protected boolean a(aow $$0, E $$1, long $$2) {
+      return true;
+   }
+
+   protected void b(aow $$0, E $$1, long $$2) {
+      $$1.a(atl.Ba, 5.0F, 1.0F);
+   }
+
+   protected void c(aow $$0, E $$1, long $$2) {
+      if ($$1.c(bot.m)) {
+         $$1.b(bot.a);
       }
-   }
 
-   private void b() {
-      this.a.aU = awh.c(this.a.aU, this.a.aW, (float)this.a.fH());
-   }
+      $$1.dO().b(bxl.aB);
+      $$1.dO().c(bxl.B).filter($$1::a).ifPresent($$1x -> {
+         if ($$1.a($$1x, 6.0, 20.0)) {
+            $$1.c($$1x);
+         }
 
-   private void c() {
-      this.a.aW = awh.c(this.a.aW, this.a.aU, (float)this.a.fH());
-   }
-
-   private void d() {
-      int $$0 = this.e - 10;
-      float $$1 = awh.a((float)$$0 / 10.0F, 0.0F, 1.0F);
-      float $$2 = (float)this.a.fH() * (1.0F - $$1);
-      this.a.aU = awh.c(this.a.aU, this.a.aW, $$2);
-   }
-
-   private boolean e() {
-      return !(this.a.cQ() instanceof boi);
-   }
-
-   private boolean f() {
-      double $$0 = this.a.dr() - this.a.J;
-      double $$1 = this.a.dx() - this.a.L;
-      return $$0 * $$0 + $$1 * $$1 > 2.5000003E-7F;
+         if (!$$1.dO().a(bxl.az)) {
+            cgq.a($$1, $$1x.dm());
+         }
+      });
    }
 }

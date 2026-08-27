@@ -8,7 +8,7 @@ public record xa(aiy d) implements ws {
 
    @Override
    public Stream<sw> a(du $$0) {
-      sw $$1 = $$0.l().aI().a(this.d);
+      sw $$1 = $$0.l().aK().a(this.d);
       return Stream.of($$1);
    }
 

@@ -1,32 +1,43 @@
-import java.util.Locale;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class faz extends faw {
-   private static final int f = -65536;
-   private static final int g = -256;
-   private static final int h = -16711936;
-   private static final int i = 500;
+public class faz implements fdk {
+   private static final int a = 170;
+   private final vq b;
+   @Nullable
+   private List<avu> c;
+   @Nullable
+   private final vq d;
 
-   public faz(eys $$0, awq $$1) {
-      super($$0, $$1);
+   private faz(vq $$0, @Nullable vq $$1) {
+      this.b = $$0;
+      this.d = $$1;
+   }
+
+   public static faz a(vq $$0, @Nullable vq $$1) {
+      return new faz($$0, $$1);
+   }
+
+   public static faz a(vq $$0) {
+      return new faz($$0, $$0);
    }
 
    @Override
-   protected void a(eyu $$0, int $$1, int $$2, int $$3) {
-      this.a($$0, "500 ms", $$1 + 1, $$3 - 60 + 1);
+   public void b(fdj $$0) {
+      if (this.d != null) {
+         $$0.a(fdi.c, this.d);
+      }
    }
 
-   @Override
-   protected String a(double $$0) {
-      return String.format(Locale.ROOT, "%d ms", (int)Math.round($$0));
+   public List<avu> a(exo $$0) {
+      if (this.c == null) {
+         this.c = a($$0, this.b);
+      }
+
+      return this.c;
    }
 
-   @Override
-   protected int b(double $$0) {
-      return (int)Math.round($$0 * 60.0 / 500.0);
-   }
-
-   @Override
-   protected int a(long $$0) {
-      return this.a((double)$$0, 0.0, -16711936, 250.0, -256, 500.0, -65536);
+   public static List<avu> a(exo $$0, vq $$1) {
+      return $$0.h.c($$1, 170);
    }
 }

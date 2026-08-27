@@ -1,45 +1,53 @@
-public class epc {
-   private static final epm<Object> a = new epm<Object>() {
-      @Override
-      public void a(epj<Object> $$0) {
-      }
+import com.mojang.authlib.GameProfile;
+import javax.annotation.Nullable;
 
+public interface epc {
+   String a_ = "*";
+   epc cv = new epc() {
       @Override
-      public boolean a(hz $$0, Object $$1) {
-         return false;
-      }
-
-      @Override
-      public int a() {
-         return 0;
-      }
-   };
-   private static final epf<Object> b = new epf<Object>() {
-      @Override
-      public void a(epj<Object> $$0) {
-      }
-
-      @Override
-      public boolean a(hz $$0, Object $$1) {
-         return false;
-      }
-
-      @Override
-      public boolean b(hz $$0, Object $$1) {
-         return false;
-      }
-
-      @Override
-      public int a() {
-         return 0;
+      public String cy() {
+         return "*";
       }
    };
 
-   public static <T> epm<T> a() {
-      return (epm<T>)a;
+   String cy();
+
+   @Nullable
+   default vq Q_() {
+      return null;
    }
 
-   public static <T> epf<T> b() {
-      return (epf<T>)b;
+   default vq gW() {
+      vq $$0 = this.Q_();
+      return $$0 != null ? $$0.f().a($$0x -> $$0x.a(new vw(vw.a.a, vq.b(this.cy())))) : vq.b(this.cy());
+   }
+
+   static epc d(final String $$0) {
+      if ($$0.equals("*")) {
+         return cv;
+      } else {
+         final vq $$1 = vq.b($$0);
+         return new epc() {
+            @Override
+            public String cy() {
+               return $$0;
+            }
+
+            @Override
+            public vq gW() {
+               return $$1;
+            }
+         };
+      }
+   }
+
+   static epc a(GameProfile $$0) {
+      final String $$1 = $$0.getName();
+      return new epc() {
+         @Override
+         public String cy() {
+            return $$1;
+         }
+      };
    }
 }

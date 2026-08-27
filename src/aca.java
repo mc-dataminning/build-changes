@@ -6,7 +6,7 @@ public class aca implements xx<aag> {
    private final float e;
    private final float f;
 
-   public aca(bno $$0) {
+   public aca(bnq $$0) {
       this.b = $$0.dr();
       this.c = $$0.dt();
       this.d = $$0.dx();

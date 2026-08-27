@@ -1,7 +1,7 @@
 public record abo(int b, float c) implements xx<aag> {
    public static final xo<uq, abo> a = xx.a(abo::a, abo::new);
 
-   public abo(bog $$0) {
+   public abo(boi $$0) {
       this($$0.aj(), $$0.eF());
    }
 

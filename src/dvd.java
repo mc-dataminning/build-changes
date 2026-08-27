@@ -1,75 +1,60 @@
 import com.mojang.serialization.Codec;
 
-public class dvd extends dts<dwr> {
-   public dvd(Codec<dwr> $$0) {
+public class dvd extends dtz<dwu> {
+   public dvd(Codec<dwu> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dtu<dwr> $$0) {
-      dwr $$1 = $$0.f();
-      cwi $$2 = $$0.b();
-      hz $$3 = $$0.e();
-      if (!$$2.a_($$3.c()).a($$1.f)) {
-         return false;
-      } else if ($$1.c && !$$2.a_($$3.d()).a($$1.f)) {
+   public boolean a(dub<dwu> $$0) {
+      cwm $$1 = $$0.b();
+      hz $$2 = $$0.e();
+      if (!this.a($$1, $$2)) {
          return false;
       } else {
-         dlf $$4 = $$2.a_($$3);
-         if (!$$4.i() && !$$4.a($$1.f)) {
-            return false;
-         } else {
-            int $$5 = 0;
-            int $$6 = 0;
-            if ($$2.a_($$3.g()).a($$1.f)) {
-               $$6++;
+         dwu $$3 = $$0.f();
+         awp $$4 = $$0.d();
+         dfm $$5 = dfm.b();
+         int $$6 = $$3.f() + $$3.d();
+
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
+               $$5.a($$2, $$3.b());
             }
 
-            if ($$2.a_($$3.h()).a($$1.f)) {
-               $$6++;
+            boolean $$9 = $$7 < $$3.f();
+
+            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
+               $$5.a($$1, $$2, $$4, $$9);
             }
 
-            if ($$2.a_($$3.e()).a($$1.f)) {
-               $$6++;
-            }
-
-            if ($$2.a_($$3.f()).a($$1.f)) {
-               $$6++;
-            }
-
-            if ($$2.a_($$3.d()).a($$1.f)) {
-               $$6++;
-            }
-
-            int $$7 = 0;
-            if ($$2.u($$3.g())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.h())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.e())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.f())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.d())) {
-               $$7++;
-            }
-
-            if ($$6 == $$1.d && $$7 == $$1.e) {
-               $$2.a($$3, $$1.b.g(), 2);
-               $$2.a($$3, $$1.b.a(), 0);
-               $$5++;
-            }
-
-            return $$5 > 0;
+            $$5.j();
          }
+
+         hz $$11 = $$2.d();
+         if ($$4.i() <= $$3.h() && $$1.a_($$11).r($$1, $$11)) {
+            $$1.a($$2, cyu.qU.o(), 3);
+         }
+
+         int $$12 = $$3.g().a($$4);
+
+         for (int $$13 = 0; $$13 < $$12; $$13++) {
+            hz $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
+            if ($$1.a_($$14).i() && $$1.a_($$14.d()).d($$1, $$14.d(), ie.b)) {
+               $$1.a($$14, cyu.qV.o().a(dfl.d, Boolean.valueOf(true)), 3);
+            }
+         }
+
+         return true;
+      }
+   }
+
+   private boolean a(cvs $$0, hz $$1) {
+      dlj $$2 = $$0.a_($$1);
+      if ($$2.b() instanceof dfh) {
+         return true;
+      } else {
+         return !$$2.i() && (!$$2.a(cyu.G) || !$$2.u().b()) ? false : ie.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).r($$0, $$1x));
       }
    }
 }

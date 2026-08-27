@@ -27,10 +27,10 @@ public class alu {
 
    private static int a(du $$0) throws CommandSyntaxException {
       MinecraftServer $$1 = $$0.l();
-      if ($$1.aS()) {
+      if ($$1.aU()) {
          throw c.create();
       } else {
-         Consumer<bik> $$2 = $$1x -> a($$0, $$1x);
+         Consumer<bim> $$2 = $$1x -> a($$0, $$1x);
          Consumer<Path> $$3 = $$2x -> a($$0, $$2x, $$1);
          $$1.a($$2, $$3);
          $$0.a(() -> vq.c("commands.perf.started"), false);
@@ -40,27 +40,27 @@ public class alu {
 
    private static int b(du $$0) throws CommandSyntaxException {
       MinecraftServer $$1 = $$0.l();
-      if (!$$1.aS()) {
+      if (!$$1.aU()) {
          throw b.create();
       } else {
-         $$1.aU();
+         $$1.aW();
          return 0;
       }
    }
 
    private static void a(du $$0, Path $$1, MinecraftServer $$2) {
-      String $$3 = String.format(Locale.ROOT, "%s-%s-%s", ac.e(), $$2.aY().e(), aa.b().b());
+      String $$3 = String.format(Locale.ROOT, "%s-%s-%s", ac.e(), $$2.ba().e(), aa.b().b());
 
       String $$4;
       try {
-         $$4 = v.a(bka.a, $$3, ".zip");
+         $$4 = v.a(bkc.a, $$3, ".zip");
       } catch (IOException var11) {
          $$0.b(vq.c("commands.perf.reportFailed"));
          a.error("Failed to create report name", var11);
          return;
       }
 
-      try (avs $$7 = new avs(bka.a.resolve($$4))) {
+      try (avt $$7 = new avt(bkc.a.resolve($$4))) {
          $$7.a(Paths.get("system.txt"), $$2.b(new ab()).a());
          $$7.a($$1);
       }
@@ -74,8 +74,8 @@ public class alu {
       $$0.a(() -> vq.a("commands.perf.reportSaved", $$4), false);
    }
 
-   private static void a(du $$0, bik $$1) {
-      if ($$1 != big.a) {
+   private static void a(du $$0, bim $$1) {
+      if ($$1 != bii.a) {
          int $$2 = $$1.f();
          double $$3 = (double)$$1.g() / (double)axh.a;
          $$0.a(() -> vq.a("commands.perf.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2, String.format(Locale.ROOT, "%.2f", (double)$$2 / $$3)), false);

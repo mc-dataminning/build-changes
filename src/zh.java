@@ -1,9 +1,9 @@
-public record zh(int c, ehe d, float e) implements yy {
+public record zh(int c, ehl d, float e) implements yy {
    public static final xo<uq, zh> a = yy.a(zh::a, zh::new);
    public static final yy.b<zh> b = yy.a("debug/path");
 
    private zh(uq $$0) {
-      this($$0.readInt(), ehe.b($$0), $$0.readFloat());
+      this($$0.readInt(), ehl.b($$0), $$0.readFloat());
    }
 
    private void a(uq $$0) {
@@ -21,7 +21,7 @@ public record zh(int c, ehe d, float e) implements yy {
       return this.c;
    }
 
-   public ehe c() {
+   public ehl c() {
       return this.d;
    }
 

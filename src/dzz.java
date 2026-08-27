@@ -1,30 +1,17 @@
-import com.mojang.serialization.Codec;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public enum dzz implements axc {
-   a(ie.b, 1, "ceiling"),
-   b(ie.a, -1, "floor");
-
-   public static final Codec<dzz> c = axc.a(dzz::values);
-   private final ie d;
-   private final int e;
-   private final String f;
-
-   private dzz(ie $$0, int $$1, String $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   public ie a() {
-      return this.d;
-   }
-
-   public int b() {
-      return this.e;
-   }
-
+public record dzz(List<dqz.c> a) implements dqz.c {
+   @Nullable
    @Override
-   public String c() {
-      return this.f;
+   public dlj calculate(dqo.b $$0) {
+      for (dqz.c $$1 : this.a) {
+         dlj $$2 = $$1.calculate($$0);
+         if ($$2 != null) {
+            return $$2;
+         }
+      }
+
+      return null;
    }
 }

@@ -1,84 +1,105 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class dfe extends day implements dfd {
-   public static final MapCodec<dfe> b = b(dfe::new);
+public enum dfe implements axc {
+   a("none", h.a),
+   b("clockwise_90", h.u),
+   c("180", h.c),
+   d("counterclockwise_90", h.v);
 
-   @Override
-   public MapCodec<dfe> a() {
-      return b;
+   public static final Codec<dfe> e = axc.a(dfe::values);
+   private final String f;
+   private final h g;
+
+   private dfe(String $$0, h $$1) {
+      this.f = $$0;
+      this.g = $$1;
    }
 
-   public dfe(dle.d $$0) {
-      super(bkw.a(1), $$0);
-   }
-
-   @Override
-   public int a(dfi.a $$0, cvo $$1, hz $$2, awo $$3, dfi $$4, boolean $$5) {
-      int $$6 = $$0.b();
-      if ($$6 != 0 && $$3.a($$4.f()) == 0) {
-         hz $$7 = $$0.a();
-         boolean $$8 = $$7.a($$2, (double)$$4.e());
-         if (!$$8 && a($$1, $$7)) {
-            int $$9 = $$4.d();
-            if ($$3.a($$9) < $$6) {
-               hz $$10 = $$7.c();
-               dlf $$11 = this.a($$1, $$10, $$3, $$4.h());
-               $$1.a($$10, $$11, 3);
-               $$1.a(null, $$7, $$11.w().e(), atl.e, 1.0F, 1.0F);
+   public dfe a(dfe $$0) {
+      switch ($$0) {
+         case c:
+            switch (this) {
+               case a:
+                  return c;
+               case b:
+                  return d;
+               case c:
+                  return a;
+               case d:
+                  return b;
             }
+         case d:
+            switch (this) {
+               case a:
+                  return d;
+               case b:
+                  return a;
+               case c:
+                  return b;
+               case d:
+                  return c;
+            }
+         case b:
+            switch (this) {
+               case a:
+                  return b;
+               case b:
+                  return c;
+               case c:
+                  return d;
+               case d:
+                  return a;
+            }
+         default:
+            return this;
+      }
+   }
 
-            return Math.max(0, $$6 - $$9);
-         } else {
-            return $$3.a($$4.g()) != 0 ? $$6 : $$6 - ($$8 ? 1 : a($$4, $$7, $$2, $$6));
+   public h a() {
+      return this.g;
+   }
+
+   public ie a(ie $$0) {
+      if ($$0.o() == ie.a.b) {
+         return $$0;
+      } else {
+         switch (this) {
+            case b:
+               return $$0.h();
+            case c:
+               return $$0.g();
+            case d:
+               return $$0.i();
+            default:
+               return $$0;
          }
-      } else {
-         return $$6;
       }
    }
 
-   private static int a(dfi $$0, hz $$1, hz $$2, int $$3) {
-      int $$4 = $$0.e();
-      float $$5 = awh.k((float)Math.sqrt($$1.j($$2)) - (float)$$4);
-      int $$6 = awh.h(24 - $$4);
-      float $$7 = Math.min(1.0F, $$5 / (float)$$6);
-      return Math.max(1, (int)((float)$$3 * $$7 * 0.5F));
+   public int a(int $$0, int $$1) {
+      switch (this) {
+         case b:
+            return ($$0 + $$1 / 4) % $$1;
+         case c:
+            return ($$0 + $$1 / 2) % $$1;
+         case d:
+            return ($$0 + $$1 * 3 / 4) % $$1;
+         default:
+            return $$0;
+      }
    }
 
-   private dlf a(cvo $$0, hz $$1, awo $$2, boolean $$3) {
-      dlf $$4;
-      if ($$2.a(11) == 0) {
-         $$4 = cyq.qV.o().a(dfh.d, Boolean.valueOf($$3));
-      } else {
-         $$4 = cyq.qQ.o();
-      }
-
-      return $$4.b(dlv.C) && !$$0.b_($$1).c() ? $$4.a(dlv.C, Boolean.valueOf(true)) : $$4;
+   public static dfe a(awp $$0) {
+      return ac.a(values(), $$0);
    }
 
-   private static boolean a(cvo $$0, hz $$1) {
-      dlf $$2 = $$0.a_($$1.c());
-      if ($$2.i() || $$2.a(cyq.G) && $$2.u().b(egq.c)) {
-         int $$3 = 0;
-
-         for (hz $$4 : hz.a($$1.b(-4, 0, -4), $$1.b(4, 2, 4))) {
-            dlf $$5 = $$0.a_($$4);
-            if ($$5.a(cyq.qQ) || $$5.a(cyq.qV)) {
-               $$3++;
-            }
-
-            if ($$3 > 2) {
-               return false;
-            }
-         }
-
-         return true;
-      } else {
-         return false;
-      }
+   public static List<dfe> b(awp $$0) {
+      return ac.b(values(), $$0);
    }
 
    @Override
-   public boolean d() {
-      return false;
+   public String c() {
+      return this.f;
    }
 }

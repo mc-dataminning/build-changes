@@ -1,96 +1,172 @@
 import com.google.common.annotations.VisibleForTesting;
+import javax.annotation.Nullable;
 
-public class djy extends dit implements dpr.b<djy.a> {
-   private final djy.a a;
+public class djy extends dix implements bln, epk {
+   private static final int c = 20;
+   private cpd d = cpd.h;
+   private int e;
+   private long f;
+   private long g;
+   private boolean h;
 
-   public djy(hz $$0, dlf $$1) {
-      super(div.K, $$0, $$1);
-      this.a = new djy.a($$1, new dpl($$0));
-   }
-
-   public static void a(cvn $$0, hz $$1, dlf $$2, djy $$3) {
-      $$3.a.d().a($$0, $$1, $$0.F_(), true);
+   public djy(hz $$0, dlj $$1) {
+      super(diz.e, $$0, $$1);
    }
 
    @Override
    public void a(sw $$0) {
-      this.a.b.a($$0);
+      super.a($$0);
+      if ($$0.b("RecordItem", 10)) {
+         this.d = cpd.a($$0.p("RecordItem"));
+      }
+
+      this.h = $$0.q("IsPlaying");
+      this.g = $$0.i("RecordStartTick");
+      this.f = $$0.i("TickCount");
    }
 
    @Override
    protected void b(sw $$0) {
-      this.a.b.b($$0);
       super.b($$0);
+      if (!this.x().b()) {
+         $$0.a("RecordItem", this.x().b(new sw()));
+      }
+
+      $$0.a("IsPlaying", this.h);
+      $$0.a("RecordStartTick", this.g);
+      $$0.a("TickCount", this.f);
    }
 
-   public djy.a c() {
-      return this.a;
+   public boolean f() {
+      return !this.x().b() && this.h;
    }
 
-   public static class a implements dpr {
-      public static final int a = 8;
-      final dfi b;
-      private final dlf c;
-      private final dpt d;
-
-      public a(dlf $$0, dpt $$1) {
-         this.c = $$0;
-         this.d = $$1;
-         this.b = dfi.a();
+   private void a(@Nullable bnq $$0, boolean $$1) {
+      if (this.o.a_(this.aE_()) == this.r()) {
+         this.o.a(this.aE_(), this.r().a(dcu.b, Boolean.valueOf($$1)), 2);
+         this.o.a(dpw.c, this.aE_(), dpw.a.a($$0, this.r()));
       }
+   }
 
-      @Override
-      public dpt a() {
-         return this.d;
-      }
+   @VisibleForTesting
+   public void g() {
+      this.g = this.f;
+      this.h = true;
+      this.o.a(this.aE_(), this.r().b());
+      this.o.a(null, 1010, this.aE_(), coy.a(this.x().d()));
+      this.e();
+   }
 
-      @Override
-      public int b() {
-         return 8;
-      }
+   private void l() {
+      this.h = false;
+      this.o.a(dpw.F, this.aE_(), dpw.a.a(this.r()));
+      this.o.a(this.aE_(), this.r().b());
+      this.o.c(1011, this.aE_(), 0);
+      this.e();
+   }
 
-      @Override
-      public dpr.a c() {
-         return dpr.a.b;
-      }
-
-      @Override
-      public boolean a(aov $$0, ij<dpp> $$1, dpp.a $$2, ens $$3) {
-         if ($$1.a(dpp.p) && $$2.a() instanceof bog $$4) {
-            if (!$$4.eE()) {
-               int $$5 = $$4.ef();
-               if ($$4.ed() && $$5 > 0) {
-                  this.b.a(hz.a($$3.a(ie.b, 0.5)), $$5);
-                  this.a($$0, $$4);
-               }
-
-               $$4.eD();
-               this.d.a($$0).ifPresent($$1x -> this.a($$0, hz.a($$1x), this.c, $$0.F_()));
-            }
-
-            return true;
-         } else {
-            return false;
+   private void b(cvr $$0, hz $$1, dlj $$2) {
+      this.e++;
+      if (this.f() && this.x().d() instanceof cpv $$3) {
+         if (this.a($$3)) {
+            this.l();
+         } else if (this.m()) {
+            this.e = 0;
+            $$0.a(dpw.E, $$1, dpw.a.a($$2));
+            this.a($$0, $$1);
          }
       }
 
-      @VisibleForTesting
-      public dfi d() {
-         return this.b;
+      this.f++;
+   }
+
+   private boolean a(cpv $$0) {
+      return this.f >= this.g + (long)$$0.y() + 20L;
+   }
+
+   private boolean m() {
+      return this.e >= 20;
+   }
+
+   @Override
+   public cpd x() {
+      return this.d;
+   }
+
+   @Override
+   public cpd c(int $$0) {
+      cpd $$1 = this.d;
+      this.d = cpd.h;
+      if (!$$1.b()) {
+         this.a(null, false);
+         this.l();
       }
 
-      private void a(aov $$0, hz $$1, dlf $$2, awo $$3) {
-         $$0.a($$1, $$2.a(dff.b, Boolean.valueOf(true)), 3);
-         $$0.a($$1, $$2.b(), 8);
-         $$0.a(jz.G, (double)$$1.u() + 0.5, (double)$$1.v() + 1.15, (double)$$1.w() + 0.5, 2, 0.2, 0.0, 0.2, 0.0);
-         $$0.a(null, $$1, atk.vs, atl.e, 2.0F, 0.6F + $$3.i() * 0.4F);
-      }
+      return $$1;
+   }
 
-      private void a(cvn $$0, bog $$1) {
-         if ($$1.ei() instanceof aow $$3) {
-            bmn $$4 = $$1.ey() == null ? $$0.ai().a((chh)$$3) : $$1.ey();
-            am.Z.a($$3, $$1, $$4);
+   @Override
+   public void b(cpd $$0) {
+      if ($$0.a(aui.aq) && this.o != null) {
+         this.d = $$0;
+         this.a(null, true);
+         this.g();
+      } else if ($$0.b()) {
+         this.c(1);
+      }
+   }
+
+   @Override
+   public int al_() {
+      return 1;
+   }
+
+   @Override
+   public dix y() {
+      return this;
+   }
+
+   @Override
+   public boolean b(int $$0, cpd $$1) {
+      return $$1.a(aui.aq) && this.a($$0).b();
+   }
+
+   @Override
+   public boolean a(blp $$0, int $$1, cpd $$2) {
+      return $$0.a_(cpd::b);
+   }
+
+   private void a(cvr $$0, hz $$1) {
+      if ($$0 instanceof aow $$2) {
+         enz $$3 = enz.c($$1).b(0.0, 1.2F, 0.0);
+         float $$4 = (float)$$0.F_().a(4) / 24.0F;
+         $$2.a(jz.X, $$3.a(), $$3.b(), $$3.c(), 0, (double)$$4, 0.0, 0.0, 1.0);
+      }
+   }
+
+   public void k() {
+      if (this.o != null && !this.o.B) {
+         hz $$0 = this.aE_();
+         cpd $$1 = this.x();
+         if (!$$1.b()) {
+            this.h();
+            enz $$2 = enz.a($$0, 0.5, 1.01, 0.5).a(this.o.z, 0.7F);
+            cpd $$3 = $$1.q();
+            cdw $$4 = new cdw(this.o, $$2.a(), $$2.b(), $$2.c(), $$3);
+            $$4.u();
+            this.o.b($$4);
          }
       }
+   }
+
+   public static void a(cvr $$0, hz $$1, dlj $$2, djy $$3) {
+      $$3.b($$0, $$1, $$2);
+   }
+
+   @VisibleForTesting
+   public void a(cpd $$0) {
+      this.d = $$0;
+      this.o.a(this.aE_(), this.r().b());
+      this.e();
    }
 }

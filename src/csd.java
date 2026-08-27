@@ -1,34 +1,67 @@
-public record csd<T extends csb<?>>(aiy b, T c) {
-   public static final xo<vb, csd<?>> a = xo.a(aiy.b, csd::a, csb.i, csd::b, csd::new);
+public class csd extends crx {
+   public csd(crv $$0) {
+      super($$0);
+   }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof csd<?> $$1 && this.b.equals($$1.b)) {
-            return true;
+   public boolean a(ckv $$0, cvr $$1) {
+      int $$2 = 0;
+      cpd $$3 = cpd.h;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cpd $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if ($$5.a(cpg.rT)) {
+               if (!$$3.b()) {
+                  return false;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cpg.uf)) {
+                  return false;
+               }
+
+               $$2++;
+            }
          }
-
-         return false;
       }
+
+      return !$$3.b() && $$2 > 0;
+   }
+
+   public cpd a(ckv $$0, iw $$1) {
+      int $$2 = 0;
+      cpd $$3 = cpd.h;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cpd $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if ($$5.a(cpg.rT)) {
+               if (!$$3.b()) {
+                  return cpd.h;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cpg.uf)) {
+                  return cpd.h;
+               }
+
+               $$2++;
+            }
+         }
+      }
+
+      return !$$3.b() && $$2 >= 1 ? $$3.c($$2 + 1) : cpd.h;
    }
 
    @Override
-   public int hashCode() {
-      return this.b.hashCode();
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= 3 && $$1 >= 3;
    }
 
    @Override
-   public String toString() {
-      return this.b.toString();
-   }
-
-   public aiy a() {
-      return this.b;
-   }
-
-   public T b() {
-      return this.c;
+   public csj<?> at_() {
+      return csj.e;
    }
 }

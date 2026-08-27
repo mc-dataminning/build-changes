@@ -1,66 +1,30 @@
-public class fru extends ftz {
-   private final float a;
-   private final float b;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Optional;
 
-   fru(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, coz $$7) {
-      this($$0, $$1, $$2, $$3, $$7);
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4;
-      this.k += $$5;
-      this.l += $$6;
+public class fru {
+   public static final fru a = new fru(frt.b, frv.createDnsSrvRedirectHandler(), frq.a());
+   private final frt b;
+   private final frv c;
+   private final frq d;
+
+   @VisibleForTesting
+   fru(frt $$0, frv $$1, frq $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   @Override
-   public ftd b() {
-      return ftd.a;
-   }
+   public Optional<frr> a(frs $$0) {
+      Optional<frr> $$1 = this.b.resolve($$0);
+      if ((!$$1.isPresent() || this.d.a($$1.get())) && this.d.a($$0)) {
+         Optional<frs> $$2 = this.c.lookupRedirect($$0);
+         if ($$2.isPresent()) {
+            $$1 = this.b.resolve($$2.get()).filter(this.d::a);
+         }
 
-   protected fru(fpx $$0, double $$1, double $$2, double $$3, coz $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a(exh.O().aq().a($$4, $$0, null, 0).e());
-      this.u = 1.0F;
-      this.D /= 2.0F;
-      this.a = this.r.i() * 3.0F;
-      this.b = this.r.i() * 3.0F;
-   }
-
-   @Override
-   protected float c() {
-      return this.E.a((this.a + 1.0F) / 4.0F);
-   }
-
-   @Override
-   protected float d() {
-      return this.E.a(this.a / 4.0F);
-   }
-
-   @Override
-   protected float e() {
-      return this.E.c(this.b / 4.0F);
-   }
-
-   @Override
-   protected float f() {
-      return this.E.c((this.b + 1.0F) / 4.0F);
-   }
-
-   public static class a implements ftc<jv> {
-      public fsz a(jv $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fru($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.c());
-      }
-   }
-
-   public static class b implements ftc<kc> {
-      public fsz a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fru($$1, $$2, $$3, $$4, new coz(cpc.qP));
-      }
-   }
-
-   public static class c implements ftc<kc> {
-      public fsz a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fru($$1, $$2, $$3, $$4, new coz(cpc.qB));
+         return $$1;
+      } else {
+         return Optional.empty();
       }
    }
 }

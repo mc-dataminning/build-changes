@@ -1,271 +1,64 @@
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.Reader;
-import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
-import java.nio.channels.FileLock;
-import java.nio.channels.ReadableByteChannel;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import java.util.zip.GZIPInputStream;
-import java.util.zip.GZIPOutputStream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
-
 public class bhx {
-   static final Logger a = LogUtils.getLogger();
-   private static final int b = 4096;
-   private static final String c = ".gz";
-   private final Path d;
-   private final String e;
+   public static final int a = 240;
+   private final long[][] b;
+   private int c;
+   private int d;
 
-   private bhx(Path $$0, String $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public bhx(int $$0) {
+      this.b = new long[240][$$0];
    }
 
-   public static bhx a(Path $$0, String $$1) throws IOException {
-      Files.createDirectories($$0);
-      return new bhx($$0, $$1);
-   }
-
-   public bhx.d a() throws IOException {
-      bhx.d var2;
-      try (Stream<Path> $$0 = Files.list(this.d)) {
-         var2 = new bhx.d($$0.filter($$0x -> Files.isRegularFile($$0x)).map(this::a).filter(Objects::nonNull).toList());
-      }
-
-      return var2;
-   }
-
-   @Nullable
-   private bhx.b a(Path $$0) {
-      String $$1 = $$0.getFileName().toString();
-      int $$2 = $$1.indexOf(46);
-      if ($$2 == -1) {
-         return null;
+   public void a(long $$0) {
+      int $$1 = this.b(this.c + this.d);
+      this.b[$$1][0] = $$0;
+      if (this.d < 240) {
+         this.d++;
       } else {
-         bhx.c $$3 = bhx.c.a($$1.substring(0, $$2));
-         if ($$3 != null) {
-            String $$4 = $$1.substring($$2);
-            if ($$4.equals(this.e)) {
-               return new bhx.e($$0, $$3);
-            }
-
-            if ($$4.equals(this.e + ".gz")) {
-               return new bhx.a($$0, $$3);
-            }
-         }
-
-         return null;
+         this.c = this.b(this.c + 1);
       }
    }
 
-   static void a(Path $$0, Path $$1) throws IOException {
-      if (Files.exists($$1)) {
-         throw new IOException("Compressed target file already exists: " + $$1);
+   public void a(long $$0, int $$1) {
+      int $$2 = this.b(this.c + this.d);
+      long[] $$3 = this.b[$$2];
+      if ($$1 >= 1 && $$1 < $$3.length) {
+         $$3[$$1] = $$0;
       } else {
-         try (FileChannel $$2 = FileChannel.open($$0, StandardOpenOption.WRITE, StandardOpenOption.READ)) {
-            FileLock $$3 = $$2.tryLock();
-            if ($$3 == null) {
-               throw new IOException("Raw log file is already locked, cannot compress: " + $$0);
-            }
-
-            a($$2, $$1);
-            $$2.truncate(0L);
-         }
-
-         Files.delete($$0);
+         throw new IndexOutOfBoundsException($$1 + " out of bounds for dimensions " + $$3.length);
       }
    }
 
-   private static void a(ReadableByteChannel $$0, Path $$1) throws IOException {
-      try (OutputStream $$2 = new GZIPOutputStream(Files.newOutputStream($$1))) {
-         byte[] $$3 = new byte[4096];
-         ByteBuffer $$4 = ByteBuffer.wrap($$3);
-
-         while ($$0.read($$4) >= 0) {
-            $$4.flip();
-            $$2.write($$3, 0, $$4.limit());
-            $$4.clear();
-         }
-      }
+   public int a() {
+      return this.b.length;
    }
 
-   public bhx.e a(LocalDate $$0) throws IOException {
-      int $$1 = 1;
-      Set<bhx.c> $$2 = this.a().c();
-
-      bhx.c $$3;
-      do {
-         $$3 = new bhx.c($$0, $$1++);
-      } while ($$2.contains($$3));
-
-      bhx.e $$4 = new bhx.e(this.d.resolve($$3.b(this.e)), $$3);
-      Files.createFile($$4.c());
-      return $$4;
+   public int b() {
+      return this.d;
    }
 
-   public static record a(Path a, bhx.c b) implements bhx.b {
-      @Nullable
-      @Override
-      public Reader a() throws IOException {
-         return !Files.exists(this.a) ? null : new BufferedReader(new InputStreamReader(new GZIPInputStream(Files.newInputStream(this.a))));
-      }
-
-      @Override
-      public bhx.a b() {
-         return this;
-      }
-
-      @Override
-      public Path c() {
-         return this.a;
-      }
-
-      @Override
-      public bhx.c d() {
-         return this.b;
-      }
+   public long a(int $$0) {
+      return this.a($$0, 0);
    }
 
-   public interface b {
-      Path c();
-
-      bhx.c d();
-
-      @Nullable
-      Reader a() throws IOException;
-
-      bhx.a b() throws IOException;
-   }
-
-   public static record c(LocalDate a, int b) {
-      private static final DateTimeFormatter c = DateTimeFormatter.BASIC_ISO_DATE;
-
-      @Nullable
-      public static bhx.c a(String $$0) {
-         int $$1 = $$0.indexOf("-");
-         if ($$1 == -1) {
-            return null;
+   public long a(int $$0, int $$1) {
+      if ($$0 >= 0 && $$0 < this.d) {
+         long[] $$2 = this.b[this.b(this.c + $$0)];
+         if ($$1 >= 0 && $$1 < $$2.length) {
+            return $$2[$$1];
          } else {
-            String $$2 = $$0.substring(0, $$1);
-            String $$3 = $$0.substring($$1 + 1);
-
-            try {
-               return new bhx.c(LocalDate.parse($$2, c), Integer.parseInt($$3));
-            } catch (DateTimeParseException | NumberFormatException var5) {
-               return null;
-            }
+            throw new IndexOutOfBoundsException($$1 + " out of bounds for dimensions " + $$2.length);
          }
-      }
-
-      @Override
-      public String toString() {
-         return c.format(this.a) + "-" + this.b;
-      }
-
-      public String b(String $$0) {
-         return this + $$0;
+      } else {
+         throw new IndexOutOfBoundsException($$0 + " out of bounds for length " + this.d);
       }
    }
 
-   public static class d implements Iterable<bhx.b> {
-      private final List<bhx.b> a;
-
-      d(List<bhx.b> $$0) {
-         this.a = new ArrayList<>($$0);
-      }
-
-      public bhx.d a(LocalDate $$0, int $$1) {
-         this.a.removeIf($$2 -> {
-            bhx.c $$3 = $$2.d();
-            LocalDate $$4 = $$3.a().plusDays((long)$$1);
-            if (!$$0.isBefore($$4)) {
-               try {
-                  Files.delete($$2.c());
-                  return true;
-               } catch (IOException var6) {
-                  bhx.a.warn("Failed to delete expired event log file: {}", $$2.c(), var6);
-               }
-            }
-
-            return false;
-         });
-         return this;
-      }
-
-      public bhx.d a() {
-         ListIterator<bhx.b> $$0 = this.a.listIterator();
-
-         while ($$0.hasNext()) {
-            bhx.b $$1 = $$0.next();
-
-            try {
-               $$0.set($$1.b());
-            } catch (IOException var4) {
-               bhx.a.warn("Failed to compress event log file: {}", $$1.c(), var4);
-            }
-         }
-
-         return this;
-      }
-
-      @Override
-      public Iterator<bhx.b> iterator() {
-         return this.a.iterator();
-      }
-
-      public Stream<bhx.b> b() {
-         return this.a.stream();
-      }
-
-      public Set<bhx.c> c() {
-         return this.a.stream().map(bhx.b::d).collect(Collectors.toSet());
-      }
+   private int b(int $$0) {
+      return $$0 % 240;
    }
 
-   public static record e(Path a, bhx.c b) implements bhx.b {
-      public FileChannel e() throws IOException {
-         return FileChannel.open(this.a, StandardOpenOption.WRITE, StandardOpenOption.READ);
-      }
-
-      @Nullable
-      @Override
-      public Reader a() throws IOException {
-         return Files.exists(this.a) ? Files.newBufferedReader(this.a) : null;
-      }
-
-      @Override
-      public bhx.a b() throws IOException {
-         Path $$0 = this.a.resolveSibling(this.a.getFileName().toString() + ".gz");
-         bhx.a(this.a, $$0);
-         return new bhx.a($$0, this.b);
-      }
-
-      @Override
-      public Path c() {
-         return this.a;
-      }
-
-      @Override
-      public bhx.c d() {
-         return this.b;
-      }
+   public void c() {
+      this.c = 0;
+      this.d = 0;
    }
 }

@@ -52,14 +52,14 @@ public class ja {
    }
 
    public float e() {
-      return awh.g(this.b);
+      return awi.g(this.b);
    }
 
    public float f() {
-      return awh.g(this.c);
+      return awi.g(this.c);
    }
 
    public float g() {
-      return awh.g(this.d);
+      return awi.g(this.d);
    }
 }

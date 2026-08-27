@@ -1,4 +1,4 @@
-public record za(aix<dpp> c, ens d) implements yy {
+public record za(aix<dpw> c, enz d) implements yy {
    public static final xo<uq, za> a = yy.a(za::a, za::new);
    public static final yy.b<za> b = yy.a("debug/game_event");
 
@@ -16,11 +16,11 @@ public record za(aix<dpp> c, ens d) implements yy {
       return b;
    }
 
-   public aix<dpp> b() {
+   public aix<dpw> b() {
       return this.c;
    }
 
-   public ens c() {
+   public enz c() {
       return this.d;
    }
 }

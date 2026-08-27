@@ -1,18 +1,35 @@
-public class gfs extends gfd<caw, fot<caw>> {
-   private final fot<caw> a;
+public class gfs<T extends boi> extends gfl<T, fnn<T>> {
+   public static final aiy a = new aiy("textures/entity/trident_riptide.png");
+   public static final String b = "box";
+   private final fpj c;
 
-   public gfs(gcn<caw, fot<caw>> $$0, foy $$1) {
+   public gfs(gcv<T, fnn<T>> $$0, fpf $$1) {
       super($$0);
-      this.a = new fot<>($$1.a(fpb.bZ));
+      fpj $$2 = $$1.a(fpi.aV);
+      this.c = $$2.b("box");
    }
 
-   public void a(esa $$0, fvl $$1, int $$2, caw $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.gq()) {
-         this.c().a(this.a);
-         this.a.a($$3, $$4, $$5, $$6);
-         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
-         ese $$10 = $$1.getBuffer(fvt.e(((cmi)cpc.oq).b()));
-         this.a.a($$0, $$10, $$2, ggk.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   public static fpp a() {
+      fpr $$0 = new fpr();
+      fps $$1 = $$0.a();
+      $$1.a("box", fpo.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 32.0F, 16.0F), fpl.a);
+      return fpp.a($$0, 64, 64);
+   }
+
+   public void a(esh $$0, fvt $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.fj()) {
+         esl $$10 = $$1.getBuffer(fwb.e(a));
+
+         for (int $$11 = 0; $$11 < 3; $$11++) {
+            $$0.a();
+            float $$12 = $$7 * (float)(-(45 + $$11 * 5));
+            $$0.a(a.d.rotationDegrees($$12));
+            float $$13 = 0.75F * (float)$$11;
+            $$0.b($$13, $$13, $$13);
+            $$0.a(0.0F, -0.2F + 0.6F * (float)$$11, 0.0F);
+            this.c.a($$0, $$10, $$2, ggs.d);
+            $$0.b();
+         }
       }
    }
 }

@@ -1,13 +1,34 @@
-public class ewk extends ewm {
-   private final ewa b;
+public class ewk extends ewo {
+   private static final vq b = vq.c("mco.connect.connecting");
+   private final gna c;
+   private final eto d;
+   private final etp e;
 
-   public ewk(ewa $$0, long $$1, vq $$2, Runnable $$3) {
-      super($$1, $$2, $$3);
-      this.b = $$0;
+   public ewk(ffl $$0, eto $$1, etp $$2) {
+      this.d = $$1;
+      this.e = $$2;
+      this.c = new gna($$0);
    }
 
    @Override
-   protected void a(esq $$0, long $$1) throws eud {
-      $$0.a($$1, this.b);
+   public void run() {
+      this.c.a(this.d, frs.a(this.e.a));
+   }
+
+   @Override
+   public void b() {
+      super.b();
+      this.c.a();
+      exo.P().ad().i();
+   }
+
+   @Override
+   public void c() {
+      this.c.b();
+   }
+
+   @Override
+   public vq a() {
+      return b;
    }
 }

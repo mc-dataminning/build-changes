@@ -1,66 +1,28 @@
-import java.util.Locale;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+public class eiq {
+   public static final eiq a = new eiq("advancements");
+   public static final eiq b = new eiq("stats");
+   public static final eiq c = new eiq("playerdata");
+   public static final eiq d = new eiq("players");
+   public static final eiq e = new eiq("level.dat");
+   public static final eiq f = new eiq("level.dat_old");
+   public static final eiq g = new eiq("icon.png");
+   public static final eiq h = new eiq("session.lock");
+   public static final eiq i = new eiq("generated");
+   public static final eiq j = new eiq("datapacks");
+   public static final eiq k = new eiq("resources.zip");
+   public static final eiq l = new eiq(".");
+   private final String m;
 
-public interface eiq extends eis {
-   @Override
-   String e();
-
-   void a(boolean var1);
-
-   int j();
-
-   void c(int var1);
-
-   void b(int var1);
-
-   int h();
-
-   @Override
-   default void a(p $$0, cvp $$1) {
-      eis.super.a($$0, $$1);
-      $$0.a("Level name", this::e);
-      $$0.a(
-         "Level game mode", () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Cheats: %b", this.k().b(), this.k().a(), this.l(), this.m())
-      );
-      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.j(), this.i(), this.h(), this.g()));
+   private eiq(String $$0) {
+      this.m = $$0;
    }
 
-   int f();
+   public String a() {
+      return this.m;
+   }
 
-   void a(int var1);
-
-   int t();
-
-   void d(int var1);
-
-   int u();
-
-   void e(int var1);
-
-   @Nullable
-   UUID v();
-
-   void a(UUID var1);
-
-   cvk k();
-
-   void a(dmw.c var1);
-
-   dmw.c p();
-
-   boolean n();
-
-   void c(boolean var1);
-
-   boolean m();
-
-   void a(cvk var1);
-
-   enf<MinecraftServer> s();
-
-   void a(long var1);
-
-   void b(long var1);
+   @Override
+   public String toString() {
+      return "/" + this.m;
+   }
 }

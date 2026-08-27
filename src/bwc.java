@@ -1,129 +1,87 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class bwc<T extends cen & cer & cea> extends bvb {
-   public static final blf a = axh.a(1, 2);
-   private final T b;
-   private bwc.a c = bwc.a.a;
-   private final double d;
-   private final float e;
-   private int f;
-   private int g;
-   private int h;
+public class bwc extends bvf {
+   public static final int a = 120;
+   protected final boq b;
+   protected double c;
+   protected double d;
+   protected double e;
+   protected final double f;
+   protected int g;
+   protected boolean h;
+   private final boolean i;
 
-   public bwc(T $$0, double $$1, float $$2) {
+   public bwc(boq $$0, double $$1) {
+      this($$0, $$1, 120);
+   }
+
+   public bwc(boq $$0, double $$1, int $$2) {
+      this($$0, $$1, $$2, true);
+   }
+
+   public bwc(boq $$0, double $$1, int $$2, boolean $$3) {
       this.b = $$0;
-      this.d = $$1;
-      this.e = $$2 * $$2;
-      this.a(EnumSet.of(bvb.a.a, bvb.a.b));
+      this.f = $$1;
+      this.g = $$2;
+      this.i = $$3;
+      this.a(EnumSet.of(bvf.a.a));
    }
 
    @Override
    public boolean a() {
-      return this.i() && this.h();
+      if (this.b.cO()) {
+         return false;
+      } else {
+         if (!this.h) {
+            if (this.i && this.b.em() >= 100) {
+               return false;
+            }
+
+            if (this.b.eh().a(b(this.g)) != 0) {
+               return false;
+            }
+         }
+
+         enz $$0 = this.h();
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.c = $$0.c;
+            this.d = $$0.d;
+            this.e = $$0.e;
+            this.h = false;
+            return true;
+         }
+      }
    }
 
-   private boolean h() {
-      return this.b.b(cpc.vP);
+   @Nullable
+   protected enz h() {
+      return bzc.a(this.b, 10, 7);
    }
 
    @Override
    public boolean b() {
-      return this.i() && (this.a() || !this.b.N().l()) && this.h();
+      return !this.b.N().l() && !this.b.cO();
    }
 
-   private boolean i() {
-      return this.b.q() != null && this.b.q().bx();
+   @Override
+   public void c() {
+      this.b.N().a(this.c, this.d, this.e, this.f);
    }
 
    @Override
    public void d() {
+      this.b.N().n();
       super.d();
-      this.b.v(false);
-      this.b.h(null);
-      this.f = 0;
-      if (this.b.fn()) {
-         this.b.ft();
-         this.b.b(false);
-         cnh.a(this.b.fp(), false);
-      }
    }
 
-   @Override
-   public boolean T_() {
-      return true;
+   public void i() {
+      this.h = true;
    }
 
-   @Override
-   public void e() {
-      bog $$0 = this.b.q();
-      if ($$0 != null) {
-         boolean $$1 = this.b.O().a($$0);
-         boolean $$2 = this.f > 0;
-         if ($$1 != $$2) {
-            this.f = 0;
-         }
-
-         if ($$1) {
-            this.f++;
-         } else {
-            this.f--;
-         }
-
-         double $$3 = this.b.f($$0);
-         boolean $$4 = ($$3 > (double)this.e || this.f < 5) && this.g == 0;
-         if ($$4) {
-            this.h--;
-            if (this.h <= 0) {
-               this.b.N().a($$0, this.k() ? this.d : this.d * 0.5);
-               this.h = a.a(this.b.eh());
-            }
-         } else {
-            this.h = 0;
-            this.b.N().n();
-         }
-
-         this.b.I().a($$0, 30.0F, 30.0F);
-         if (this.c == bwc.a.a) {
-            if (!$$4) {
-               this.b.c(cib.a(this.b, cpc.vP));
-               this.c = bwc.a.b;
-               this.b.b(true);
-            }
-         } else if (this.c == bwc.a.b) {
-            if (!this.b.fn()) {
-               this.c = bwc.a.a;
-            }
-
-            int $$5 = this.b.fr();
-            coz $$6 = this.b.fp();
-            if ($$5 >= cnh.k($$6)) {
-               this.b.fs();
-               this.c = bwc.a.c;
-               this.g = 20 + this.b.eh().a(20);
-               this.b.b(false);
-            }
-         } else if (this.c == bwc.a.c) {
-            this.g--;
-            if (this.g == 0) {
-               this.c = bwc.a.d;
-            }
-         } else if (this.c == bwc.a.d && $$1) {
-            this.b.a($$0, 1.0F);
-            coz $$7 = this.b.b(cib.a(this.b, cpc.vP));
-            cnh.a($$7, false);
-            this.c = bwc.a.a;
-         }
-      }
-   }
-
-   private boolean k() {
-      return this.c == bwc.a.a;
-   }
-
-   static enum a {
-      a,
-      b,
-      c,
-      d;
+   public void c(int $$0) {
+      this.g = $$0;
    }
 }

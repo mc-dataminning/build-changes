@@ -103,7 +103,7 @@ public class ac {
       return Collectors.toMap(Entry::getKey, Entry::getValue);
    }
 
-   public static <T extends Comparable<T>> String a(dmi<T> $$0, Object $$1) {
+   public static <T extends Comparable<T>> String a(dmm<T> $$0, Object $$1) {
       return $$0.a((T)$$1);
    }
 
@@ -128,7 +128,7 @@ public class ac {
    }
 
    private static ExecutorService c(String $$0) {
-      int $$1 = awh.a(Runtime.getRuntime().availableProcessors() - 1, 1, m());
+      int $$1 = awi.a(Runtime.getRuntime().availableProcessors() - 1, 1, m());
       ExecutorService $$2;
       if ($$1 <= 0) {
          $$2 = MoreExecutors.newDirectExecutorService();
@@ -466,19 +466,19 @@ public class ac {
       }
    }
 
-   public static <T> T a(T[] $$0, awo $$1) {
+   public static <T> T a(T[] $$0, awp $$1) {
       return $$0[$$1.a($$0.length)];
    }
 
-   public static int a(int[] $$0, awo $$1) {
+   public static int a(int[] $$0, awp $$1) {
       return $$0[$$1.a($$0.length)];
    }
 
-   public static <T> T a(List<T> $$0, awo $$1) {
+   public static <T> T a(List<T> $$0, awp $$1) {
       return $$0.get($$1.a($$0.size()));
    }
 
-   public static <T> Optional<T> b(List<T> $$0, awo $$1) {
+   public static <T> Optional<T> b(List<T> $$0, awp $$1) {
       return $$0.isEmpty() ? Optional.empty() : Optional.of(a($$0, $$1));
    }
 
@@ -709,13 +709,13 @@ public class ac {
       };
    }
 
-   public static <T> List<T> a(Stream<T> $$0, awo $$1) {
+   public static <T> List<T> a(Stream<T> $$0, awp $$1) {
       ObjectArrayList<T> $$2 = $$0.collect(ObjectArrayList.toList());
       c($$2, $$1);
       return $$2;
    }
 
-   public static IntArrayList a(IntStream $$0, awo $$1) {
+   public static IntArrayList a(IntStream $$0, awp $$1) {
       IntArrayList $$2 = IntArrayList.wrap($$0.toArray());
       int $$3 = $$2.size();
 
@@ -727,19 +727,19 @@ public class ac {
       return $$2;
    }
 
-   public static <T> List<T> b(T[] $$0, awo $$1) {
+   public static <T> List<T> b(T[] $$0, awp $$1) {
       ObjectArrayList<T> $$2 = new ObjectArrayList($$0);
       c($$2, $$1);
       return $$2;
    }
 
-   public static <T> List<T> a(ObjectArrayList<T> $$0, awo $$1) {
+   public static <T> List<T> a(ObjectArrayList<T> $$0, awp $$1) {
       ObjectArrayList<T> $$2 = new ObjectArrayList($$0);
       c($$2, $$1);
       return $$2;
    }
 
-   public static <T> void c(List<T> $$0, awo $$1) {
+   public static <T> void c(List<T> $$0, awp $$1) {
       int $$2 = $$0.size();
 
       for (int $$3 = $$2; $$3 > 1; $$3--) {

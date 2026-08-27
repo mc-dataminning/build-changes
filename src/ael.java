@@ -5,12 +5,12 @@ public class ael implements xx<aag> {
    private static final int d = 4;
    private static final int e = 8;
    private final int f;
-   private final ij<bmz> g;
+   private final ij<bnb> g;
    private final byte h;
    private final int i;
    private final byte j;
 
-   public ael(int $$0, bnb $$1, boolean $$2) {
+   public ael(int $$0, bnd $$1, boolean $$2) {
       this.f = $$0;
       this.g = $$1.b();
       this.h = (byte)($$1.d() & 0xFF);
@@ -64,7 +64,7 @@ public class ael implements xx<aag> {
       return this.f;
    }
 
-   public ij<bmz> e() {
+   public ij<bnb> e() {
       return this.g;
    }
 

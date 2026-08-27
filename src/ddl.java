@@ -1,6 +1,6 @@
 import com.mojang.serialization.MapCodec;
 
-public class ddl extends cyo implements cyr {
+public class ddl extends ddb implements cyv {
    public static final MapCodec<ddl> a = b(ddl::new);
 
    @Override
@@ -8,27 +8,27 @@ public class ddl extends cyo implements cyr {
       return a;
    }
 
-   public ddl(dle.d $$0) {
+   public ddl(dli.d $$0) {
       super($$0);
    }
 
    @Override
-   public boolean b(cvq $$0, hz $$1, dlf $$2) {
-      return $$0.a_($$1.c()).i();
+   public boolean b(cvu $$0, hz $$1, dlj $$2) {
+      return $$0.a_($$1.d()).i();
    }
 
    @Override
-   public boolean a(cvn $$0, awo $$1, hz $$2, dlf $$3) {
+   public boolean a(cvr $$0, awp $$1, hz $$2, dlj $$3) {
       return true;
    }
 
    @Override
-   public void a(aov $$0, awo $$1, hz $$2, dlf $$3) {
-      $$0.I_().c(kg.aw).flatMap($$0x -> $$0x.b(qk.n)).ifPresent($$3x -> ((dtf)$$3x.a()).a($$0, $$0.l().g(), $$1, $$2.c()));
+   public void a(aow $$0, awp $$1, hz $$2, dlj $$3) {
+      $$0.a($$2.d(), ddm.c(), 2);
    }
 
    @Override
-   public cyr.a av_() {
-      return cyr.a.a;
+   public hz a(hz $$0) {
+      return $$0.d();
    }
 }

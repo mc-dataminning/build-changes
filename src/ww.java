@@ -94,7 +94,7 @@ public class ww implements vr {
    }
 
    @Override
-   public we a(@Nullable du $$0, @Nullable bno $$1, int $$2) throws CommandSyntaxException {
+   public we a(@Nullable du $$0, @Nullable bnq $$1, int $$2) throws CommandSyntaxException {
       if ($$0 != null && this.c != null) {
          Stream<String> $$3 = this.h.a($$0).flatMap($$0x -> {
             try {

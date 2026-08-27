@@ -1,124 +1,141 @@
-import com.mojang.serialization.Codec;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record ehw(ehw.a a, byte b, byte c, byte d, @Nullable vq e) {
-   public byte a() {
-      return this.a.a();
+public class ehw implements ehy {
+   private static final Logger b = LogUtils.getLogger();
+   private final cvr c;
+   private final int d;
+   private final ArrayDeque<ehw.c> e = new ArrayDeque<>();
+   private final List<ehw.c> f = new ArrayList<>();
+   private int g = 0;
+
+   public ehw(cvr $$0, int $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public boolean b() {
-      return this.a.d();
+   @Override
+   public void a(ie $$0, dlj $$1, hz $$2, hz $$3, int $$4, int $$5) {
+      this.a($$2, new ehw.d($$0, $$1, $$2.i(), $$3.i(), $$4, $$5));
    }
 
-   public ehw.a c() {
-      return this.a;
+   @Override
+   public void a(hz $$0, cys $$1, hz $$2) {
+      this.a($$0, new ehw.e($$0, $$1, $$2.i()));
    }
 
-   public byte d() {
-      return this.b;
+   @Override
+   public void a(dlj $$0, hz $$1, cys $$2, hz $$3, boolean $$4) {
+      this.a($$1, new ehw.a($$0, $$1.i(), $$2, $$3.i(), $$4));
    }
 
-   public byte e() {
-      return this.c;
+   @Override
+   public void a(hz $$0, cys $$1, @Nullable ie $$2) {
+      this.a($$0, new ehw.b($$0.i(), $$1, $$2));
    }
 
-   public byte f() {
-      return this.d;
+   private void a(hz $$0, ehw.c $$1) {
+      boolean $$2 = this.g > 0;
+      boolean $$3 = this.d >= 0 && this.g >= this.d;
+      this.g++;
+      if (!$$3) {
+         if ($$2) {
+            this.f.add($$1);
+         } else {
+            this.e.push($$1);
+         }
+      } else if (this.g - 1 == this.d) {
+         b.error("Too many chained neighbor updates. Skipping the rest. First skipped position: " + $$0.x());
+      }
+
+      if (!$$2) {
+         this.a();
+      }
    }
 
-   @Nullable
-   public vq g() {
-      return this.e;
+   private void a() {
+      try {
+         while (!this.e.isEmpty() || !this.f.isEmpty()) {
+            for (int $$0 = this.f.size() - 1; $$0 >= 0; $$0--) {
+               this.e.push(this.f.get($$0));
+            }
+
+            this.f.clear();
+            ehw.c $$1 = this.e.peek();
+
+            while (this.f.isEmpty()) {
+               if (!$$1.a(this.c)) {
+                  this.e.pop();
+                  break;
+               }
+            }
+         }
+      } finally {
+         this.e.clear();
+         this.f.clear();
+         this.g = 0;
+      }
    }
 
-   public static enum a implements axc {
-      a("player", false, true),
-      b("frame", true, true),
-      c("red_marker", false, true),
-      d("blue_marker", false, true),
-      e("target_x", true, false),
-      f("target_point", true, false),
-      g("player_off_map", false, true),
-      h("player_off_limits", false, true),
-      i("mansion", true, 5393476, false, true),
-      j("monument", true, 3830373, false, true),
-      k("banner_white", true, true),
-      l("banner_orange", true, true),
-      m("banner_magenta", true, true),
-      n("banner_light_blue", true, true),
-      o("banner_yellow", true, true),
-      p("banner_lime", true, true),
-      q("banner_pink", true, true),
-      r("banner_gray", true, true),
-      s("banner_light_gray", true, true),
-      t("banner_cyan", true, true),
-      u("banner_purple", true, true),
-      v("banner_blue", true, true),
-      w("banner_brown", true, true),
-      x("banner_green", true, true),
-      y("banner_red", true, true),
-      z("banner_black", true, true),
-      A("red_x", true, false),
-      B("village_desert", true, egt.w.ak, false, true),
-      C("village_plains", true, egt.w.ak, false, true),
-      D("village_savanna", true, egt.w.ak, false, true),
-      E("village_snowy", true, egt.w.ak, false, true),
-      F("village_taiga", true, egt.w.ak, false, true),
-      G("jungle_temple", true, egt.w.ak, false, true),
-      H("swamp_hut", true, egt.w.ak, false, true);
-
-      public static final Codec<ehw.a> I = axc.a(ehw.a::values);
-      private final String J;
-      private final byte K;
-      private final boolean L;
-      private final int M;
-      private final boolean N;
-      private final boolean O;
-
-      private a(String $$0, boolean $$1, boolean $$2) {
-         this($$0, $$1, -1, $$2, false);
+   static record a(dlj a, hz b, cys c, hz d, boolean e) implements ehw.c {
+      @Override
+      public boolean a(cvr $$0) {
+         ehy.a($$0, this.a, this.b, this.c, this.d, this.e);
+         return false;
       }
+   }
 
-      private a(String $$0, boolean $$1, int $$2, boolean $$3, boolean $$4) {
-         this.J = $$0;
-         this.O = $$3;
-         this.K = (byte)this.ordinal();
-         this.L = $$1;
-         this.M = $$2;
-         this.N = $$4;
-      }
+   static final class b implements ehw.c {
+      private final hz a;
+      private final cys b;
+      @Nullable
+      private final ie c;
+      private int d = 0;
 
-      public byte a() {
-         return this.K;
-      }
-
-      public boolean b() {
-         return this.N;
-      }
-
-      public boolean d() {
-         return this.L;
-      }
-
-      public boolean e() {
-         return this.M >= 0;
-      }
-
-      public int f() {
-         return this.M;
-      }
-
-      public static ehw.a a(byte $$0) {
-         return values()[awh.a($$0, 0, values().length - 1)];
-      }
-
-      public boolean g() {
-         return this.O;
+      b(hz $$0, cys $$1, @Nullable ie $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         if (ehy.a[this.d] == $$2) {
+            this.d++;
+         }
       }
 
       @Override
-      public String c() {
-         return this.J;
+      public boolean a(cvr $$0) {
+         hz $$1 = this.a.a(ehy.a[this.d++]);
+         dlj $$2 = $$0.a_($$1);
+         ehy.a($$0, $$2, $$1, this.b, this.a, false);
+         if (this.d < ehy.a.length && ehy.a[this.d] == this.c) {
+            this.d++;
+         }
+
+         return this.d < ehy.a.length;
+      }
+   }
+
+   interface c {
+      boolean a(cvr var1);
+   }
+
+   static record d(ie a, dlj b, hz c, hz d, int e, int f) implements ehw.c {
+      @Override
+      public boolean a(cvr $$0) {
+         ehy.a($$0, this.a, this.b, this.c, this.d, this.e, this.f);
+         return false;
+      }
+   }
+
+   static record e(hz a, cys b, hz c) implements ehw.c {
+      @Override
+      public boolean a(cvr $$0) {
+         dlj $$1 = $$0.a_(this.a);
+         ehy.a($$0, $$1, this.a, this.b, this.c, false);
+         return false;
       }
    }
 }

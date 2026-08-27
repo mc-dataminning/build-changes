@@ -1,95 +1,82 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Streams;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.List;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class fxk implements asb {
-   private Map<div<?>, fxl<?>> d = ImmutableMap.of();
-   private final eys e;
-   private final foy f;
-   public cvn a;
-   public ews b;
-   public enq c;
-   private final Supplier<fwf> g;
-   private final Supplier<gbq> h;
-   private final Supplier<gaq> i;
+public class fxk {
+   private final fxg a;
+   private final fxd b;
 
-   public fxk(eys $$0, foy $$1, Supplier<fwf> $$2, Supplier<gbq> $$3, Supplier<gaq> $$4) {
-      this.h = $$3;
-      this.i = $$4;
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
-
-   @Nullable
-   public <E extends dit> fxl<E> a(E $$0) {
-      return (fxl<E>)this.d.get($$0.v());
-   }
-
-   public void a(cvn $$0, ews $$1, enq $$2) {
-      if (this.a != $$0) {
-         this.a($$0);
-      }
-
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public <E extends dit> void a(E $$0, float $$1, esa $$2, fvl $$3) {
-      fxl<E> $$4 = this.a($$0);
-      if ($$4 != null) {
-         if ($$0.n() && $$0.v().a($$0.r())) {
-            if ($$4.a($$0, this.b.b())) {
-               a($$0, () -> a($$4, $$0, $$1, $$2, $$3));
-            }
-         }
-      }
-   }
-
-   private static <T extends dit> void a(fxl<T> $$0, T $$1, float $$2, esa $$3, fvl $$4) {
-      cvn $$5 = $$1.i();
-      int $$6;
-      if ($$5 != null) {
-         $$6 = fvj.a($$5, $$1.aE_());
-      } else {
-         $$6 = 15728880;
-      }
-
-      $$0.a($$1, $$2, $$3, $$4, $$6, ggk.d);
-   }
-
-   public <E extends dit> boolean a(E $$0, esa $$1, fvl $$2, int $$3, int $$4) {
-      fxl<E> $$5 = this.a($$0);
-      if ($$5 == null) {
-         return true;
-      } else {
-         a($$0, () -> $$5.a($$0, 0.0F, $$1, $$2, $$3, $$4));
-         return false;
-      }
-   }
-
-   private static void a(dit $$0, Runnable $$1) {
-      try {
-         $$1.run();
-      } catch (Throwable var5) {
-         o $$3 = o.a(var5, "Rendering Block Entity");
-         p $$4 = $$3.a("Block Entity Details");
-         $$0.a($$4);
-         throw new y($$3);
-      }
-   }
-
-   public void a(@Nullable cvn $$0) {
-      this.a = $$0;
+   public fxk(fxg $$0, fxd $$1) {
       if ($$0 == null) {
-         this.b = null;
+         throw new IllegalArgumentException("Missing condition for selector");
+      } else if ($$1 == null) {
+         throw new IllegalArgumentException("Missing variant for selector");
+      } else {
+         this.a = $$0;
+         this.b = $$1;
       }
+   }
+
+   public fxd a() {
+      return this.b;
+   }
+
+   public Predicate<dlj> a(dlk<cys, dlj> $$0) {
+      return this.a.getPredicate($$0);
    }
 
    @Override
-   public void a(asa $$0) {
-      fxm.a $$1 = new fxm.a(this, this.g.get(), this.h.get(), this.i.get(), this.f, this.e);
-      this.d = fxn.a($$1);
+   public boolean equals(Object $$0) {
+      return this == $$0;
+   }
+
+   @Override
+   public int hashCode() {
+      return System.identityHashCode(this);
+   }
+
+   public static class a implements JsonDeserializer<fxk> {
+      public fxk a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         return new fxk(this.b($$3), (fxd)$$2.deserialize($$3.get("apply"), fxd.class));
+      }
+
+      private fxg b(JsonObject $$0) {
+         return $$0.has("when") ? a(avy.u($$0, "when")) : fxg.b;
+      }
+
+      @VisibleForTesting
+      static fxg a(JsonObject $$0) {
+         Set<Entry<String, JsonElement>> $$1 = $$0.entrySet();
+         if ($$1.isEmpty()) {
+            throw new JsonParseException("No elements found in selector");
+         } else if ($$1.size() == 1) {
+            if ($$0.has("OR")) {
+               List<fxg> $$2 = Streams.stream(avy.v($$0, "OR")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
+               return new fxj($$2);
+            } else if ($$0.has("AND")) {
+               List<fxg> $$3 = Streams.stream(avy.v($$0, "AND")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
+               return new fxf($$3);
+            } else {
+               return a($$1.iterator().next());
+            }
+         } else {
+            return new fxf($$1.stream().map(fxk.a::a).collect(Collectors.toList()));
+         }
+      }
+
+      private static fxg a(Entry<String, JsonElement> $$0) {
+         return new fxh($$0.getKey(), $$0.getValue().getAsString());
+      }
    }
 }

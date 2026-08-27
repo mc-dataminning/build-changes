@@ -69,8 +69,8 @@ public class aeo {
       "Fist"
    };
 
-   public static String a(bno $$0) {
-      if ($$0 instanceof chh) {
+   public static String a(bnq $$0) {
+      if ($$0 instanceof chl) {
          return $$0.ad().getString();
       } else {
          vq $$1 = $$0.af();
@@ -79,15 +79,15 @@ public class aeo {
    }
 
    public static String a(UUID $$0) {
-      awo $$1 = b($$0);
+      awp $$1 = b($$0);
       return a($$1, a) + a($$1, b);
    }
 
-   private static String a(awo $$0, String[] $$1) {
+   private static String a(awp $$0, String[] $$1) {
       return ac.a($$1, $$0);
    }
 
-   private static awo b(UUID $$0) {
-      return awo.a((long)($$0.hashCode() >> 2));
+   private static awp b(UUID $$0) {
+      return awp.a((long)($$0.hashCode() >> 2));
    }
 }

@@ -1,82 +1,90 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Streams;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
-import java.util.List;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 public class fxc {
-   private final fwy a;
-   private final fwv b;
+   public static final fxc a = new fxc();
+   public final fxb b;
+   public final fxb c;
+   public final fxb d;
+   public final fxb e;
+   public final fxb f;
+   public final fxb g;
+   public final fxb h;
+   public final fxb i;
 
-   public fxc(fwy $$0, fwv $$1) {
-      if ($$0 == null) {
-         throw new IllegalArgumentException("Missing condition for selector");
-      } else if ($$1 == null) {
-         throw new IllegalArgumentException("Missing variant for selector");
-      } else {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   private fxc() {
+      this(fxb.a, fxb.a, fxb.a, fxb.a, fxb.a, fxb.a, fxb.a, fxb.a);
    }
 
-   public fwv a() {
-      return this.b;
+   public fxc(fxc $$0) {
+      this.b = $$0.b;
+      this.c = $$0.c;
+      this.d = $$0.d;
+      this.e = $$0.e;
+      this.f = $$0.f;
+      this.g = $$0.g;
+      this.h = $$0.h;
+      this.i = $$0.i;
    }
 
-   public Predicate<dlf> a(dlg<cyo, dlf> $$0) {
-      return this.a.getPredicate($$0);
+   public fxc(fxb $$0, fxb $$1, fxb $$2, fxb $$3, fxb $$4, fxb $$5, fxb $$6, fxb $$7) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0;
+   public fxb a(cpa $$0) {
+      return switch ($$0) {
+         case b -> this.b;
+         case c -> this.c;
+         case d -> this.d;
+         case e -> this.e;
+         case f -> this.f;
+         case g -> this.g;
+         case h -> this.h;
+         case i -> this.i;
+         default -> fxb.a;
+      };
    }
 
-   @Override
-   public int hashCode() {
-      return System.identityHashCode(this);
+   public boolean b(cpa $$0) {
+      return this.a($$0) != fxb.a;
    }
 
-   public static class a implements JsonDeserializer<fxc> {
+   protected static class a implements JsonDeserializer<fxc> {
       public fxc a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
          JsonObject $$3 = $$0.getAsJsonObject();
-         return new fxc(this.b($$3), (fwv)$$2.deserialize($$3.get("apply"), fwv.class));
-      }
-
-      private fwy b(JsonObject $$0) {
-         return $$0.has("when") ? a(avx.u($$0, "when")) : fwy.b;
-      }
-
-      @VisibleForTesting
-      static fwy a(JsonObject $$0) {
-         Set<Entry<String, JsonElement>> $$1 = $$0.entrySet();
-         if ($$1.isEmpty()) {
-            throw new JsonParseException("No elements found in selector");
-         } else if ($$1.size() == 1) {
-            if ($$0.has("OR")) {
-               List<fwy> $$2 = Streams.stream(avx.v($$0, "OR")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
-               return new fxb($$2);
-            } else if ($$0.has("AND")) {
-               List<fwy> $$3 = Streams.stream(avx.v($$0, "AND")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
-               return new fwx($$3);
-            } else {
-               return a($$1.iterator().next());
-            }
-         } else {
-            return new fwx($$1.stream().map(fxc.a::a).collect(Collectors.toList()));
+         fxb $$4 = this.a($$2, $$3, cpa.c);
+         fxb $$5 = this.a($$2, $$3, cpa.b);
+         if ($$5 == fxb.a) {
+            $$5 = $$4;
          }
+
+         fxb $$6 = this.a($$2, $$3, cpa.e);
+         fxb $$7 = this.a($$2, $$3, cpa.d);
+         if ($$7 == fxb.a) {
+            $$7 = $$6;
+         }
+
+         fxb $$8 = this.a($$2, $$3, cpa.f);
+         fxb $$9 = this.a($$2, $$3, cpa.g);
+         fxb $$10 = this.a($$2, $$3, cpa.h);
+         fxb $$11 = this.a($$2, $$3, cpa.i);
+         return new fxc($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
       }
 
-      private static fwy a(Entry<String, JsonElement> $$0) {
-         return new fwz($$0.getKey(), $$0.getValue().getAsString());
+      private fxb a(JsonDeserializationContext $$0, JsonObject $$1, cpa $$2) {
+         String $$3 = $$2.c();
+         return $$1.has($$3) ? (fxb)$$0.deserialize($$1.get($$3), fxb.class) : fxb.a;
       }
    }
 }

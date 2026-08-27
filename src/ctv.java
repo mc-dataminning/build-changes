@@ -1,20 +1,20 @@
-public class ctv extends cti {
-   public ctv(cti.a $$0, bnv... $$1) {
-      super($$0, auh.bo, $$1);
+public class ctv extends ctm {
+   public ctv(ctm.a $$0, bnx... $$1) {
+      super($$0, aui.bl, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 12 + ($$0 - 1) * 20;
+      return $$0 * 25;
    }
 
    @Override
    public int b(int $$0) {
-      return 50;
+      return this.a($$0) + 50;
    }
 
    @Override
-   public int a() {
-      return 3;
+   public boolean b() {
+      return true;
    }
 }

@@ -1,63 +1,68 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dbb extends cya {
+public class dbb extends dbo {
    public static final MapCodec<dbb> a = b(dbb::new);
+   protected static final eos b = cys.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
    @Override
    public MapCodec<dbb> a() {
       return a;
    }
 
-   protected dbb(dle.d $$0) {
+   public dbb(dli.d $$0) {
       super($$0);
    }
 
    @Override
-   public dit a(hz $$0, dlf $$1) {
-      return new dki($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dit> diu<T> a(cvn $$0, dlf $$1, div<T> $$2) {
-      return a($$2, div.v, $$0.B ? dki::a : dki::b);
+   protected eos a(dlj $$0, cux $$1, hz $$2, eoe $$3) {
+      return b;
    }
 
    @Override
-   public void a(dlf $$0, cvn $$1, hz $$2, awo $$3) {
-      dit $$4 = $$1.c_($$2);
-      if ($$4 instanceof dki) {
-         int $$5 = ((dki)$$4).g();
+   protected blw a(dlj $$0, cvr $$1, hz $$2, chl $$3, env $$4) {
+      this.d($$0, $$1, $$2);
+      return blw.a($$1.B);
+   }
 
-         for (int $$6 = 0; $$6 < $$5; $$6++) {
-            double $$7 = (double)$$2.u() + $$3.j();
-            double $$8 = (double)$$2.v() + $$3.j();
-            double $$9 = (double)$$2.w() + $$3.j();
-            double $$10 = ($$3.j() - 0.5) * 0.5;
-            double $$11 = ($$3.j() - 0.5) * 0.5;
-            double $$12 = ($$3.j() - 0.5) * 0.5;
-            int $$13 = $$3.a(2) * 2 - 1;
-            if ($$3.h()) {
-               $$9 = (double)$$2.w() + 0.5 + 0.25 * (double)$$13;
-               $$12 = (double)($$3.i() * 2.0F * (float)$$13);
+   @Override
+   protected void a(dlj $$0, cvr $$1, hz $$2, chl $$3) {
+      this.d($$0, $$1, $$2);
+   }
+
+   private void d(dlj $$0, cvr $$1, hz $$2) {
+      dna $$3 = $$1.D_();
+
+      for (int $$4 = 0; $$4 < 1000; $$4++) {
+         hz $$5 = $$2.b($$1.z.a(16) - $$1.z.a(16), $$1.z.a(8) - $$1.z.a(8), $$1.z.a(16) - $$1.z.a(16));
+         if ($$1.a_($$5).i() && $$3.a($$5)) {
+            if ($$1.B) {
+               for (int $$6 = 0; $$6 < 128; $$6++) {
+                  double $$7 = $$1.z.j();
+                  float $$8 = ($$1.z.i() - 0.5F) * 0.2F;
+                  float $$9 = ($$1.z.i() - 0.5F) * 0.2F;
+                  float $$10 = ($$1.z.i() - 0.5F) * 0.2F;
+                  double $$11 = awi.d($$7, (double)$$5.u(), (double)$$2.u()) + ($$1.z.j() - 0.5) + 0.5;
+                  double $$12 = awi.d($$7, (double)$$5.v(), (double)$$2.v()) + $$1.z.j() - 0.5;
+                  double $$13 = awi.d($$7, (double)$$5.w(), (double)$$2.w()) + ($$1.z.j() - 0.5) + 0.5;
+                  $$1.a(jz.Z, $$11, $$12, $$13, (double)$$8, (double)$$9, (double)$$10);
+               }
             } else {
-               $$7 = (double)$$2.u() + 0.5 + 0.25 * (double)$$13;
-               $$10 = (double)($$3.i() * 2.0F * (float)$$13);
+               $$1.a($$5, $$0, 2);
+               $$1.a($$2, false);
             }
 
-            $$1.a(jz.Z, $$7, $$8, $$9, $$10, $$11, $$12);
+            return;
          }
       }
    }
 
    @Override
-   public coz a(cvq $$0, hz $$1, dlf $$2) {
-      return coz.h;
+   protected int b() {
+      return 5;
    }
 
    @Override
-   protected boolean a(dlf $$0, ego $$1) {
+   protected boolean a(dlj $$0, cux $$1, hz $$2, ehm $$3) {
       return false;
    }
 }

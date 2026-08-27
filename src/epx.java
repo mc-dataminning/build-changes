@@ -1,7 +1,21 @@
-public record epx(ens b, ens c, ens d) {
-   public static final epx a = new epx(ens.b, new ens(0.0, 0.0, -1.0), new ens(0.0, 1.0, 0.0));
+import java.util.concurrent.ConcurrentLinkedQueue;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.system.MemoryUtil;
 
-   public ens a() {
-      return this.c.c(this.d);
+public class epx {
+   public static void a(eqs $$0, float $$1) {
+      ConcurrentLinkedQueue<eqr> $$2 = $$0.i();
+   }
+
+   public static void b(eqs $$0, float $$1) {
+      ConcurrentLinkedQueue<eqr> $$2 = $$0.j();
+   }
+
+   public static void a() {
+      MemoryUtil.memSet(0L, 0, 1L);
+   }
+
+   public static double b() {
+      return GLFW.glfwGetTime();
    }
 }

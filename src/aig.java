@@ -7,7 +7,7 @@ import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
 public class aig {
-   private static final ave<aif<?>> D = ave.c(16);
+   private static final avf<aif<?>> D = avf.c(16);
    public static final aif<Byte> a = aif.a(xm.b);
    public static final aif<Integer> b = aif.a(xm.d);
    public static final aif<Long> c = aif.a(xm.e);
@@ -15,32 +15,32 @@ public class aig {
    public static final aif<String> e = aif.a(xm.h);
    public static final aif<vq> f = aif.a(vs.b);
    public static final aif<Optional<vq>> g = aif.a(vs.b.a(xm::a));
-   public static final aif<coz> h = new aif<coz>() {
+   public static final aif<cpd> h = new aif<cpd>() {
       @Override
-      public xo<? super vb, coz> codec() {
-         return coz.f;
+      public xo<? super vb, cpd> codec() {
+         return cpd.f;
       }
 
-      public coz a(coz $$0) {
+      public cpd a(cpd $$0) {
          return $$0.q();
       }
    };
-   public static final aif<dlf> i = aif.a(xm.a(cyo.q));
-   private static final xo<ByteBuf, Optional<dlf>> E = new xo<ByteBuf, Optional<dlf>>() {
-      public void a(ByteBuf $$0, Optional<dlf> $$1) {
+   public static final aif<dlj> i = aif.a(xm.a(cys.q));
+   private static final xo<ByteBuf, Optional<dlj>> E = new xo<ByteBuf, Optional<dlj>>() {
+      public void a(ByteBuf $$0, Optional<dlj> $$1) {
          if ($$1.isPresent()) {
-            vh.a($$0, cyo.i($$1.get()));
+            vh.a($$0, cys.i($$1.get()));
          } else {
             vh.a($$0, 0);
          }
       }
 
-      public Optional<dlf> a(ByteBuf $$0) {
+      public Optional<dlj> a(ByteBuf $$0) {
          int $$1 = vh.a($$0);
-         return $$1 == 0 ? Optional.empty() : Optional.of(cyo.a($$1));
+         return $$1 == 0 ? Optional.empty() : Optional.of(cys.a($$1));
       }
    };
-   public static final aif<Optional<dlf>> j = aif.a(E);
+   public static final aif<Optional<dlj>> j = aif.a(E);
    public static final aif<Boolean> k = aif.a(xm.a);
    public static final aif<jx> l = aif.a(jz.aX);
    public static final aif<ja> m = aif.a(ja.a);
@@ -59,7 +59,7 @@ public class aig {
          return $$0.h();
       }
    };
-   public static final aif<cgv> t = aif.a(cgv.d);
+   public static final aif<cgz> t = aif.a(cgz.d);
    private static final xo<ByteBuf, OptionalInt> F = new xo<ByteBuf, OptionalInt>() {
       public OptionalInt a(ByteBuf $$0) {
          int $$1 = vh.a($$0);
@@ -71,12 +71,12 @@ public class aig {
       }
    };
    public static final aif<OptionalInt> u = aif.a(F);
-   public static final aif<bor> v = aif.a(bor.t);
-   public static final aif<bzx> w = aif.a(xm.a(kg.l));
-   public static final aif<cae> x = aif.a(xm.a(kg.A));
-   public static final aif<ij<cdo>> y = aif.a(xm.b(kg.R));
-   public static final aif<cba.a> z = aif.a(cba.a.d);
-   public static final aif<cci.a> A = aif.a(cci.a.i);
+   public static final aif<bot> v = aif.a(bot.t);
+   public static final aif<cab> w = aif.a(xm.a(kg.l));
+   public static final aif<cai> x = aif.a(xm.a(kg.A));
+   public static final aif<ij<cds>> y = aif.a(xm.b(kg.R));
+   public static final aif<cbe.a> z = aif.a(cbe.a.d);
+   public static final aif<ccm.a> A = aif.a(ccm.a.i);
    public static final aif<Vector3f> B = aif.a(xm.l);
    public static final aif<Quaternionf> C = aif.a(xm.m);
 

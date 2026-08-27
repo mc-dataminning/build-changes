@@ -1,66 +1,45 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Predicate;
+import java.util.function.Consumer;
 
-public abstract class ejo implements ejg {
-   protected final List<elu> e;
-   private final Predicate<eiv> a;
+public abstract class ejo extends ejv {
+   protected final List<ejv> d;
+   private final ejn a;
 
-   protected ejo(List<elu> $$0) {
-      this.e = $$0;
-      this.a = elw.a($$0);
+   protected ejo(List<ejv> $$0, List<emb> $$1) {
+      super($$1);
+      this.d = $$0;
+      this.a = this.a($$0);
    }
 
-   protected static <T extends ejo> P1<Mu<T>, List<elu>> a(Instance<T> $$0) {
-      return $$0.group(avp.a(elw.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.e));
-   }
+   @Override
+   public void a(ejl $$0) {
+      super.a($$0);
+      if (this.d.isEmpty()) {
+         $$0.b("Empty children list");
+      }
 
-   public void a(eje $$0) {
-      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
-         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
+      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
+         this.d.get($$1).a($$0.a(".entry[" + $$1 + "]"));
       }
    }
 
-   protected final boolean a(eiv $$0) {
-      return this.a.test($$0);
+   protected abstract ejn a(List<? extends ejn> var1);
+
+   @Override
+   public final boolean expand(ejc $$0, Consumer<eju> $$1) {
+      return !this.a($$0) ? false : this.a.expand($$0, $$1);
    }
 
-   public abstract ejp a();
+   public static <T extends ejo> Codec<T> a(ejo.a<T> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(avq.a(ejt.a.listOf(), "children", List.of()).forGetter($$0xx -> $$0xx.d)).and(a($$1).t1()).apply($$1, $$0::create)
+      );
+   }
 
-   public abstract static class a<T extends ejo.a<T>> implements eln<T> {
-      private final Builder<elu> a = ImmutableList.builder();
-
-      protected abstract T aG_();
-
-      public T a(elu.a $$0) {
-         this.a.add($$0.build());
-         return this.aG_();
-      }
-
-      public final T e() {
-         return this.aG_();
-      }
-
-      protected List<elu> f() {
-         return this.a.build();
-      }
-
-      public ejf.a a(ejo.a<?> $$0) {
-         return new ejf.a(this, $$0);
-      }
-
-      public ejk.a b(ejo.a<?> $$0) {
-         return new ejk.a(this, $$0);
-      }
-
-      public ejs.a c(ejo.a<?> $$0) {
-         return new ejs.a(this, $$0);
-      }
-
-      public abstract ejo b();
+   @FunctionalInterface
+   public interface a<T extends ejo> {
+      T create(List<ejv> var1, List<emb> var2);
    }
 }

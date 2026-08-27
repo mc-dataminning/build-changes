@@ -1,75 +1,225 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.JsonOps;
-import java.io.BufferedReader;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class ggy {
-   private static final Logger a = LogUtils.getLogger();
-   private static final air b = new air("atlases", ".json");
-   private final List<ggx> c;
+public class ggy<T extends ggy.a> {
+   private static final Comparator<ggy.b<?>> a = Comparator.<ggy.b<?>, Integer>comparing($$0 -> -$$0.c)
+      .thenComparing($$0 -> -$$0.b)
+      .thenComparing($$0 -> $$0.a.c());
+   private final int b;
+   private final List<ggy.b<T>> c = new ArrayList<>();
+   private final List<ggy.c<T>> d = new ArrayList<>();
+   private int e;
+   private int f;
+   private final int g;
+   private final int h;
 
-   private ggy(List<ggx> $$0) {
-      this.c = $$0;
+   public ggy(int $$0, int $$1, int $$2) {
+      this.b = $$2;
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   public List<Function<ggw, ggn>> a(asa $$0) {
-      final Map<aiy, ggx.b> $$1 = new HashMap<>();
-      ggx.a $$2 = new ggx.a() {
-         @Override
-         public void a(aiy $$0, ggx.b $$1x) {
-            ggx.b $$2 = $$1.put($$0, $$1);
-            if ($$2 != null) {
-               $$2.a();
-            }
-         }
-
-         @Override
-         public void a(Predicate<aiy> $$0) {
-            Iterator<Entry<aiy, ggx.b>> $$1 = $$1.entrySet().iterator();
-
-            while ($$1.hasNext()) {
-               Entry<aiy, ggx.b> $$2 = $$1.next();
-               if ($$0.test($$2.getKey())) {
-                  $$2.getValue().a();
-                  $$1.remove();
-               }
-            }
-         }
-      };
-      this.c.forEach($$2x -> $$2x.a($$0, $$2));
-      Builder<Function<ggw, ggn>> $$3 = ImmutableList.builder();
-      $$3.add((Function<ggw, ggn>)$$0x -> ggj.a());
-      $$3.addAll($$1.values());
-      return $$3.build();
+   public int a() {
+      return this.e;
    }
 
-   public static ggy a(asa $$0, aiy $$1) {
-      aiy $$2 = b.a($$1);
-      List<ggx> $$3 = new ArrayList<>();
+   public int b() {
+      return this.f;
+   }
 
-      for (ary $$4 : $$0.a($$2)) {
-         try (BufferedReader $$5 = $$4.e()) {
-            Dynamic<JsonElement> $$6 = new Dynamic(JsonOps.INSTANCE, JsonParser.parseReader($$5));
-            $$3.addAll((Collection<? extends ggx>)gha.h.parse($$6).getOrThrow(false, a::error));
-         } catch (Exception var11) {
-            a.warn("Failed to parse atlas definition {} in pack {}", new Object[]{$$2, $$4.b(), var11});
+   public void a(T $$0) {
+      ggy.b<T> $$1 = new ggy.b<>($$0, this.b);
+      this.c.add($$1);
+   }
+
+   public void c() {
+      List<ggy.b<T>> $$0 = new ArrayList<>(this.c);
+      $$0.sort(a);
+
+      for (ggy.b<T> $$1 : $$0) {
+         if (!this.a($$1)) {
+            throw new ggz($$1.a, $$0.stream().map($$0x -> $$0x.a).collect(ImmutableList.toImmutableList()));
+         }
+      }
+   }
+
+   public void a(ggy.d<T> $$0) {
+      for (ggy.c<T> $$1 : this.d) {
+         $$1.a($$0);
+      }
+   }
+
+   static int a(int $$0, int $$1) {
+      return ($$0 >> $$1) + (($$0 & (1 << $$1) - 1) == 0 ? 0 : 1) << $$1;
+   }
+
+   private boolean a(ggy.b<T> $$0) {
+      for (ggy.c<T> $$1 : this.d) {
+         if ($$1.a($$0)) {
+            return true;
          }
       }
 
-      return new ggy($$3);
+      return this.b($$0);
+   }
+
+   private boolean b(ggy.b<T> $$0) {
+      int $$1 = awi.c(this.e);
+      int $$2 = awi.c(this.f);
+      int $$3 = awi.c(this.e + $$0.b);
+      int $$4 = awi.c(this.f + $$0.c);
+      boolean $$5 = $$3 <= this.g;
+      boolean $$6 = $$4 <= this.h;
+      if (!$$5 && !$$6) {
+         return false;
+      } else {
+         boolean $$7 = $$5 && $$1 != $$3;
+         boolean $$8 = $$6 && $$2 != $$4;
+         boolean $$9;
+         if ($$7 ^ $$8) {
+            $$9 = $$7;
+         } else {
+            $$9 = $$5 && $$1 <= $$2;
+         }
+
+         ggy.c<T> $$11;
+         if ($$9) {
+            if (this.f == 0) {
+               this.f = $$4;
+            }
+
+            $$11 = new ggy.c<>(this.e, 0, $$3 - this.e, this.f);
+            this.e = $$3;
+         } else {
+            $$11 = new ggy.c<>(0, this.f, this.e, $$4 - this.f);
+            this.f = $$4;
+         }
+
+         $$11.a($$0);
+         this.d.add($$11);
+         return true;
+      }
+   }
+
+   public interface a {
+      int a();
+
+      int b();
+
+      aiy c();
+   }
+
+   static record b<T extends ggy.a>(T a, int b, int c) {
+
+      public b(T $$0, int $$1) {
+         this($$0, ggy.a($$0.a(), $$1), ggy.a($$0.b(), $$1));
+      }
+   }
+
+   public static class c<T extends ggy.a> {
+      private final int a;
+      private final int b;
+      private final int c;
+      private final int d;
+      @Nullable
+      private List<ggy.c<T>> e;
+      @Nullable
+      private ggy.b<T> f;
+
+      public c(int $$0, int $$1, int $$2, int $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      public int a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
+      }
+
+      public boolean a(ggy.b<T> $$0) {
+         if (this.f != null) {
+            return false;
+         } else {
+            int $$1 = $$0.b;
+            int $$2 = $$0.c;
+            if ($$1 <= this.c && $$2 <= this.d) {
+               if ($$1 == this.c && $$2 == this.d) {
+                  this.f = $$0;
+                  return true;
+               } else {
+                  if (this.e == null) {
+                     this.e = new ArrayList<>(1);
+                     this.e.add(new ggy.c<>(this.a, this.b, $$1, $$2));
+                     int $$3 = this.c - $$1;
+                     int $$4 = this.d - $$2;
+                     if ($$4 > 0 && $$3 > 0) {
+                        int $$5 = Math.max(this.d, $$3);
+                        int $$6 = Math.max(this.c, $$4);
+                        if ($$5 >= $$6) {
+                           this.e.add(new ggy.c<>(this.a, this.b + $$2, $$1, $$4));
+                           this.e.add(new ggy.c<>(this.a + $$1, this.b, $$3, this.d));
+                        } else {
+                           this.e.add(new ggy.c<>(this.a + $$1, this.b, $$3, $$2));
+                           this.e.add(new ggy.c<>(this.a, this.b + $$2, this.c, $$4));
+                        }
+                     } else if ($$3 == 0) {
+                        this.e.add(new ggy.c<>(this.a, this.b + $$2, $$1, $$4));
+                     } else if ($$4 == 0) {
+                        this.e.add(new ggy.c<>(this.a + $$1, this.b, $$3, $$2));
+                     }
+                  }
+
+                  for (ggy.c<T> $$7 : this.e) {
+                     if ($$7.a($$0)) {
+                        return true;
+                     }
+                  }
+
+                  return false;
+               }
+            } else {
+               return false;
+            }
+         }
+      }
+
+      public void a(ggy.d<T> $$0) {
+         if (this.f != null) {
+            $$0.load(this.f.a, this.a(), this.b());
+         } else if (this.e != null) {
+            for (ggy.c<T> $$1 : this.e) {
+               $$1.a($$0);
+            }
+         }
+      }
+
+      @Override
+      public String toString() {
+         return "Slot{originX="
+            + this.a
+            + ", originY="
+            + this.b
+            + ", width="
+            + this.c
+            + ", height="
+            + this.d
+            + ", texture="
+            + this.f
+            + ", subSlots="
+            + this.e
+            + "}";
+      }
+   }
+
+   public interface d<T extends ggy.a> {
+      void load(T var1, int var2, int var3);
    }
 }

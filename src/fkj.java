@@ -1,161 +1,59 @@
-import com.google.common.base.MoreObjects;
-import com.google.common.collect.Lists;
-import java.util.List;
+import java.util.function.BiFunction;
+import java.util.function.UnaryOperator;
 
-public class fkj {
-   static final aiy b = new aiy("spectator/close");
-   static final aiy c = new aiy("spectator/scroll_left");
-   static final aiy d = new aiy("spectator/scroll_right");
-   private static final fkl e = new fkj.a();
-   private static final fkl f = new fkj.b(-1, true);
-   private static final fkl g = new fkj.b(1, true);
-   private static final fkl h = new fkj.b(1, false);
-   private static final int i = 8;
-   static final vq j = vq.c("spectatorMenu.close");
-   static final vq k = vq.c("spectatorMenu.previous_page");
-   static final vq l = vq.c("spectatorMenu.next_page");
-   public static final fkl a = new fkl() {
-      @Override
-      public void a(fkj $$0) {
-      }
-
-      @Override
-      public vq aR_() {
-         return vp.a;
-      }
-
-      @Override
-      public void a(eyu $$0, float $$1, int $$2) {
-      }
-
-      @Override
-      public boolean aS_() {
-         return false;
-      }
-   };
-   private final fkm m;
-   private fkk n;
-   private int o = -1;
-   int p;
-
-   public fkj(fkm $$0) {
-      this.n = new fki();
-      this.m = $$0;
+public record fkj(drt a, iv<dow> b, drq c, iq<ajh> d, aji e, cwl f) {
+   public fkj(drr $$0, iq<ajh> $$1, aji $$2, cwl $$3) {
+      this($$0.a(), $$0.b(), $$1, $$2, $$3);
    }
 
-   public fkl a(int $$0) {
-      int $$1 = $$0 + this.p * 6;
-      if (this.p > 0 && $$0 == 0) {
-         return f;
-      } else if ($$0 == 7) {
-         return $$1 < this.n.a().size() ? g : h;
-      } else if ($$0 == 8) {
-         return e;
-      } else {
-         return $$1 >= 0 && $$1 < this.n.a().size() ? (fkl)MoreObjects.firstNonNull(this.n.a().get($$1), a) : a;
-      }
+   public fkj(drt $$0, drq $$1, iq<ajh> $$2, aji $$3, cwl $$4) {
+      this($$0, $$2.a(ajh.c).d(kg.aN), $$1, $$2.a(ajh.c), $$3, $$4);
    }
 
-   public List<fkl> a() {
-      List<fkl> $$0 = Lists.newArrayList();
-
-      for (int $$1 = 0; $$1 <= 8; $$1++) {
-         $$0.add(this.a($$1));
-      }
-
-      return $$0;
+   public fkj a(drt $$0, drq $$1) {
+      return new fkj($$0, this.b, $$1, this.d, this.e, this.f);
    }
 
-   public fkl b() {
-      return this.a(this.o);
+   public fkj a(fkj.b $$0) {
+      return new fkj($$0.apply(this.a), this.b, this.c, this.d, this.e, this.f);
    }
 
-   public fkk c() {
-      return this.n;
+   public fkj a(fkj.a $$0) {
+      return new fkj(this.a, this.b, $$0.apply(this.a(), this.c), this.d, this.e, this.f);
    }
 
-   public void b(int $$0) {
-      fkl $$1 = this.a($$0);
-      if ($$1 != a) {
-         if (this.o == $$0 && $$1.aS_()) {
-            $$1.a(this);
-         } else {
-            this.o = $$0;
-         }
-      }
+   public iw.b a() {
+      return this.d.a();
    }
 
-   public void d() {
-      this.m.a(this);
+   public drt b() {
+      return this.a;
    }
 
-   public int e() {
-      return this.o;
+   public iv<dow> c() {
+      return this.b;
    }
 
-   public void a(fkk $$0) {
-      this.n = $$0;
-      this.o = -1;
-      this.p = 0;
+   public drq d() {
+      return this.c;
    }
 
-   public fkn f() {
-      return new fkn(this.a(), this.o);
+   public iq<ajh> e() {
+      return this.d;
    }
 
-   static class a implements fkl {
-      @Override
-      public void a(fkj $$0) {
-         $$0.d();
-      }
-
-      @Override
-      public vq aR_() {
-         return fkj.j;
-      }
-
-      @Override
-      public void a(eyu $$0, float $$1, int $$2) {
-         $$0.a(fkj.b, 0, 0, 16, 16);
-      }
-
-      @Override
-      public boolean aS_() {
-         return true;
-      }
+   public aji f() {
+      return this.e;
    }
 
-   static class b implements fkl {
-      private final int a;
-      private final boolean b;
+   public cwl g() {
+      return this.f;
+   }
 
-      public b(int $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   @FunctionalInterface
+   public interface a extends BiFunction<iw.b, drq, drq> {
+   }
 
-      @Override
-      public void a(fkj $$0) {
-         $$0.p = $$0.p + this.a;
-      }
-
-      @Override
-      public vq aR_() {
-         return this.a < 0 ? fkj.k : fkj.l;
-      }
-
-      @Override
-      public void a(eyu $$0, float $$1, int $$2) {
-         if (this.a < 0) {
-            $$0.a(fkj.c, 0, 0, 16, 16);
-         } else {
-            $$0.a(fkj.d, 0, 0, 16, 16);
-         }
-      }
-
-      @Override
-      public boolean aS_() {
-         return this.b;
-      }
+   public interface b extends UnaryOperator<drt> {
    }
 }

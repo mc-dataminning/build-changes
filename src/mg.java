@@ -7,19 +7,19 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class mg implements me {
-   private final cyo a;
+   private final cys a;
    private final List<mg.b> b = Lists.newArrayList();
 
-   private mg(cyo $$0) {
+   private mg(cys $$0) {
       this.a = $$0;
    }
 
    @Override
-   public cyo a() {
+   public cys a() {
       return this.a;
    }
 
-   public static mg a(cyo $$0) {
+   public static mg a(cys $$0) {
       return new mg($$0);
    }
 
@@ -46,7 +46,7 @@ public class mg implements me {
    }
 
    public JsonElement b() {
-      dlg<cyo, dlf> $$0 = this.a.n();
+      dlk<cys, dlj> $$0 = this.a.n();
       this.b.forEach($$1x -> $$1x.a($$0));
       JsonArray $$1 = new JsonArray();
       this.b.stream().map(mg.b::a).forEach($$1::add);
@@ -64,7 +64,7 @@ public class mg implements me {
       }
 
       @Override
-      public void a(dlg<?, ?> $$0) {
+      public void a(dlk<?, ?> $$0) {
          this.a.a($$0);
       }
 
@@ -81,7 +81,7 @@ public class mg implements me {
          this.a = $$0;
       }
 
-      public void a(dlg<?, ?> $$0) {
+      public void a(dlk<?, ?> $$0) {
       }
 
       public void a(JsonObject $$0) {

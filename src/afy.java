@@ -2,7 +2,7 @@ public class afy implements xx<aes> {
    public static final xo<uq, afy> a = xx.a(afy::a, afy::new);
    private final aiy b;
 
-   public afy(csd<?> $$0) {
+   public afy(csh<?> $$0) {
       this.b = $$0.a();
    }
 

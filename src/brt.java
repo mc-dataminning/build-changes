@@ -1,15 +1,15 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Map;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class brt<E extends bog> extends bqk<E> {
-   public brt(List<Pair<? extends bpx<? super E>, Integer>> $$0) {
-      this(ImmutableMap.of(), $$0);
-   }
+public class brt {
+   public static bqb<boi> a() {
+      return btn.a((Function<btn.b<boi>, ? extends App<btn.c<boi>, btq<boi>>>)($$0 -> $$0.group($$0.b(bxl.D)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
+               ciu $$3 = $$0xx.d($$1.dm());
+               if ($$3 == null) {
+                  $$1.dO().a(ciy.j);
+               }
 
-   public brt(Map<bxh<?>, bxi> $$0, List<Pair<? extends bpx<? super E>, Integer>> $$1) {
-      super($$0, ImmutableSet.of(), bqk.a.b, bqk.b.a, $$1);
+               return true;
+            })));
    }
 }

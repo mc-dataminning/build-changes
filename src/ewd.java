@@ -1,34 +1,57 @@
-public class ewd extends ewh {
-   private static final vq b = vq.c("mco.connect.connecting");
-   private final gms c;
-   private final eth d;
-   private final eti e;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.util.Base64;
+import java.util.Map;
+import javax.annotation.Nullable;
+import org.lwjgl.system.MemoryUtil;
+import org.slf4j.Logger;
 
-   public ewd(ffe $$0, eth $$1, eti $$2) {
-      this.d = $$1;
-      this.e = $$2;
-      this.c = new gms($$0);
+public class ewd {
+   private static final Map<String, ewd.a> a = Maps.newHashMap();
+   private static final Logger b = LogUtils.getLogger();
+   private static final aiy c = new aiy("textures/gui/presets/isles.png");
+
+   public static aiy a(String $$0, @Nullable String $$1) {
+      return $$1 == null ? c : b($$0, $$1);
    }
 
-   @Override
-   public void run() {
-      this.c.a(this.d, frk.a(this.e.a));
+   private static aiy b(String $$0, String $$1) {
+      ewd.a $$2 = a.get($$0);
+      if ($$2 != null && $$2.a().equals($$1)) {
+         return $$2.b;
+      } else {
+         eri $$3 = a($$1);
+         if ($$3 == null) {
+            aiy $$4 = ggr.b();
+            a.put($$0, new ewd.a($$1, $$4));
+            return $$4;
+         } else {
+            aiy $$5 = new aiy("realms", "dynamic/" + $$0);
+            exo.P().Z().a($$5, new ggo($$3));
+            a.put($$0, new ewd.a($$1, $$5));
+            return $$5;
+         }
+      }
    }
 
-   @Override
-   public void b() {
-      super.b();
-      this.c.a();
-      exh.O().ac().i();
+   @Nullable
+   private static eri a(String $$0) {
+      byte[] $$1 = Base64.getDecoder().decode($$0);
+      ByteBuffer $$2 = MemoryUtil.memAlloc($$1.length);
+
+      try {
+         return eri.a($$2.put($$1).flip());
+      } catch (IOException var7) {
+         b.warn("Failed to load world image: {}", $$0, var7);
+      } finally {
+         MemoryUtil.memFree($$2);
+      }
+
+      return null;
    }
 
-   @Override
-   public void c() {
-      this.c.b();
-   }
-
-   @Override
-   public vq a() {
-      return b;
+   public static record a(String a, aiy b) {
    }
 }

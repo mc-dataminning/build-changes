@@ -1,119 +1,19 @@
-import com.mojang.logging.LogUtils;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
-public class art implements arq {
-   private static final Logger a = LogUtils.getLogger();
-   private final Map<String, arr> b;
-   private final List<aqo> c;
-
-   public art(aqp $$0, List<aqo> $$1) {
-      this.c = List.copyOf($$1);
-      Map<String, arr> $$2 = new HashMap<>();
-      List<String> $$3 = $$1.stream().flatMap($$1x -> $$1x.a($$0).stream()).distinct().toList();
-
-      for (aqo $$4 : $$1) {
-         arz $$5 = this.a($$4);
-         Set<String> $$6 = $$4.a($$0);
-         Predicate<aiy> $$7 = $$5 != null ? $$1x -> $$5.b($$1x.a()) : null;
-
-         for (String $$8 : $$3) {
-            boolean $$9 = $$6.contains($$8);
-            boolean $$10 = $$5 != null && $$5.a($$8);
-            if ($$9 || $$10) {
-               arr $$11 = $$2.get($$8);
-               if ($$11 == null) {
-                  $$11 = new arr($$0, $$8);
-                  $$2.put($$8, $$11);
-               }
-
-               if ($$9 && $$10) {
-                  $$11.a($$4, $$7);
-               } else if ($$9) {
-                  $$11.a($$4);
-               } else {
-                  $$11.a($$4.a(), $$7);
-               }
-            }
-         }
-      }
-
-      this.b = $$2;
+@FunctionalInterface
+public interface art<T> {
+   static art<InputStream> create(Path $$0) {
+      return () -> Files.newInputStream($$0);
    }
 
-   @Nullable
-   private arz a(aqo $$0) {
-      try {
-         return $$0.a(arz.a);
-      } catch (IOException var3) {
-         a.error("Failed to get filter section from pack {}", $$0.a());
-         return null;
-      }
+   static art<InputStream> create(ZipFile $$0, ZipEntry $$1) {
+      return () -> $$0.getInputStream($$1);
    }
 
-   @Override
-   public Set<String> a() {
-      return this.b.keySet();
-   }
-
-   @Override
-   public Optional<ary> getResource(aiy $$0) {
-      asa $$1 = this.b.get($$0.b());
-      return $$1 != null ? $$1.getResource($$0) : Optional.empty();
-   }
-
-   @Override
-   public List<ary> a(aiy $$0) {
-      asa $$1 = this.b.get($$0.b());
-      return $$1 != null ? $$1.a($$0) : List.of();
-   }
-
-   @Override
-   public Map<aiy, ary> b(String $$0, Predicate<aiy> $$1) {
-      a($$0);
-      Map<aiy, ary> $$2 = new TreeMap<>();
-
-      for (arr $$3 : this.b.values()) {
-         $$2.putAll($$3.b($$0, $$1));
-      }
-
-      return $$2;
-   }
-
-   @Override
-   public Map<aiy, List<ary>> c(String $$0, Predicate<aiy> $$1) {
-      a($$0);
-      Map<aiy, List<ary>> $$2 = new TreeMap<>();
-
-      for (arr $$3 : this.b.values()) {
-         $$2.putAll($$3.c($$0, $$1));
-      }
-
-      return $$2;
-   }
-
-   private static void a(String $$0) {
-      if ($$0.endsWith("/")) {
-         throw new IllegalArgumentException("Trailing slash in path " + $$0);
-      }
-   }
-
-   @Override
-   public Stream<aqo> b() {
-      return this.c.stream();
-   }
-
-   @Override
-   public void close() {
-      this.c.forEach(aqo::close);
-   }
+   T get() throws IOException;
 }

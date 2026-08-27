@@ -1,67 +1,78 @@
-public class crz extends crt {
-   public crz(crr $$0) {
+public class crz extends crx {
+   private static final csc a = csc.a(cpg.qN);
+   private static final csc b = csc.a(cpg.pt);
+   private static final csc c = csc.a(cpg.ur);
+
+   public crz(crv $$0) {
       super($$0);
    }
 
-   public boolean a(ckr $$0, cvn $$1) {
-      int $$2 = 0;
-      coz $$3 = coz.h;
+   public boolean a(ckv $$0, cvr $$1) {
+      boolean $$2 = false;
+      int $$3 = 0;
 
       for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         coz $$5 = $$0.a($$4);
+         cpd $$5 = $$0.a($$4);
          if (!$$5.b()) {
-            if ($$5.a(cpc.rT)) {
-               if (!$$3.b()) {
+            if (a.a($$5)) {
+               if ($$2) {
                   return false;
                }
 
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cpc.uf)) {
+               $$2 = true;
+            } else if (b.a($$5)) {
+               if (++$$3 > 3) {
                   return false;
                }
-
-               $$2++;
+            } else if (!c.a($$5)) {
+               return false;
             }
          }
       }
 
-      return !$$3.b() && $$2 > 0;
+      return $$2 && $$3 >= 1;
    }
 
-   public coz a(ckr $$0, iw $$1) {
-      int $$2 = 0;
-      coz $$3 = coz.h;
+   public cpd a(ckv $$0, iw $$1) {
+      cpd $$2 = new cpd(cpg.uq, 3);
+      sw $$3 = $$2.a("Fireworks");
+      tc $$4 = new tc();
+      int $$5 = 0;
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         coz $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.a(cpc.rT)) {
-               if (!$$3.b()) {
-                  return coz.h;
+      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
+         cpd $$7 = $$0.a($$6);
+         if (!$$7.b()) {
+            if (b.a($$7)) {
+               $$5++;
+            } else if (c.a($$7)) {
+               sw $$8 = $$7.b("Explosion");
+               if ($$8 != null) {
+                  $$4.add($$8);
                }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cpc.uf)) {
-                  return coz.h;
-               }
-
-               $$2++;
             }
          }
       }
 
-      return !$$3.b() && $$2 >= 1 ? $$3.c($$2 + 1) : coz.h;
+      $$3.a("Flight", (byte)$$5);
+      if (!$$4.isEmpty()) {
+         $$3.a("Explosions", $$4);
+      }
+
+      return $$2;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
+      return $$0 * $$1 >= 2;
    }
 
    @Override
-   public csf<?> at_() {
-      return csf.e;
+   public cpd a(iw $$0) {
+      return new cpd(cpg.uq);
+   }
+
+   @Override
+   public csj<?> at_() {
+      return csj.g;
    }
 }

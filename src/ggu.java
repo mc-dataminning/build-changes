@@ -1,208 +1,119 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
+import com.mojang.blaze3d.platform.TextureUtil;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
+import java.io.Closeable;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Iterator;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.io.InputStream;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class ggu implements aru, ggv, AutoCloseable {
-   private static final Logger b = LogUtils.getLogger();
-   public static final aiy a = new aiy("");
-   private final Map<aiy, gge> c = Maps.newHashMap();
-   private final Set<ggv> d = Sets.newHashSet();
-   private final Map<String, Integer> e = Maps.newHashMap();
-   private final asa f;
+public class ggu extends ggm {
+   static final Logger f = LogUtils.getLogger();
+   protected final aiy e;
 
-   public ggu(asa $$0) {
-      this.f = $$0;
+   public ggu(aiy $$0) {
+      this.e = $$0;
    }
 
-   public void a(aiy $$0) {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> this.d($$0));
-      } else {
-         this.d($$0);
-      }
-   }
-
-   private void d(aiy $$0) {
-      gge $$1 = this.c.get($$0);
-      if ($$1 == null) {
-         $$1 = new ggm($$0);
-         this.a($$0, $$1);
-      }
-
+   @Override
+   public void a(asb $$0) throws IOException {
+      ggu.a $$1 = this.b($$0);
       $$1.c();
-   }
+      gix $$2 = $$1.a();
+      boolean $$3;
+      boolean $$4;
+      if ($$2 != null) {
+         $$3 = $$2.a();
+         $$4 = $$2.b();
+      } else {
+         $$3 = false;
+         $$4 = false;
+      }
 
-   public void a(aiy $$0, gge $$1) {
-      $$1 = this.d($$0, $$1);
-      gge $$2 = this.c.put($$0, $$1);
-      if ($$2 != $$1) {
-         if ($$2 != null && $$2 != ggj.c()) {
-            this.c($$0, $$2);
-         }
-
-         if ($$1 instanceof ggv) {
-            this.d.add((ggv)$$1);
-         }
+      eri $$7 = $$1.b();
+      if (!RenderSystem.isOnRenderThreadOrInit()) {
+         RenderSystem.recordRenderCall(() -> this.a($$7, $$3, $$4));
+      } else {
+         this.a($$7, $$3, $$4);
       }
    }
 
-   private void c(aiy $$0, gge $$1) {
-      if ($$1 != ggj.c()) {
-         this.d.remove($$1);
+   private void a(eri $$0, boolean $$1, boolean $$2) {
+      TextureUtil.prepareImage(this.a(), 0, $$0.a(), $$0.b());
+      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), $$1, $$2, false, true);
+   }
 
+   protected ggu.a b(asb $$0) {
+      return ggu.a.a($$0, this.e);
+   }
+
+   protected static class a implements Closeable {
+      @Nullable
+      private final gix a;
+      @Nullable
+      private final eri b;
+      @Nullable
+      private final IOException c;
+
+      public a(IOException $$0) {
+         this.c = $$0;
+         this.a = null;
+         this.b = null;
+      }
+
+      public a(@Nullable gix $$0, eri $$1) {
+         this.c = null;
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public static ggu.a a(asb $$0, aiy $$1) {
          try {
-            $$1.close();
-         } catch (Exception var4) {
-            b.warn("Failed to close texture {}", $$0, var4);
-         }
-      }
+            arz $$2 = $$0.getResourceOrThrow($$1);
 
-      $$1.b();
-   }
-
-   private gge d(aiy $$0, gge $$1) {
-      try {
-         $$1.a(this.f);
-         return $$1;
-      } catch (IOException var6) {
-         if ($$0 != a) {
-            b.warn("Failed to load texture: {}", $$0, var6);
-         }
-
-         return ggj.c();
-      } catch (Throwable var7) {
-         o $$4 = o.a(var7, "Registering texture");
-         p $$5 = $$4.a("Resource location being registered");
-         $$5.a("Resource location", $$0);
-         $$5.a("Texture object class", () -> $$1.getClass().getName());
-         throw new y($$4);
-      }
-   }
-
-   public gge b(aiy $$0) {
-      gge $$1 = this.c.get($$0);
-      if ($$1 == null) {
-         $$1 = new ggm($$0);
-         this.a($$0, $$1);
-      }
-
-      return $$1;
-   }
-
-   public gge b(aiy $$0, gge $$1) {
-      return this.c.getOrDefault($$0, $$1);
-   }
-
-   public aiy a(String $$0, ggg $$1) {
-      Integer $$2 = this.e.get($$0);
-      if ($$2 == null) {
-         $$2 = 1;
-      } else {
-         $$2 = $$2 + 1;
-      }
-
-      this.e.put($$0, $$2);
-      aiy $$3 = new aiy(String.format(Locale.ROOT, "dynamic/%s_%d", $$0, $$2));
-      this.a($$3, $$1);
-      return $$3;
-   }
-
-   public CompletableFuture<Void> a(aiy $$0, Executor $$1) {
-      if (!this.c.containsKey($$0)) {
-         ggl $$2 = new ggl(this.f, $$0, $$1);
-         this.c.put($$0, $$2);
-         return $$2.d().thenRunAsync(() -> this.a($$0, (gge)$$2), ggu::a);
-      } else {
-         return CompletableFuture.completedFuture(null);
-      }
-   }
-
-   private static void a(Runnable $$0) {
-      exh.O().execute(() -> RenderSystem.recordRenderCall($$0::run));
-   }
-
-   @Override
-   public void e() {
-      for (ggv $$0 : this.d) {
-         $$0.e();
-      }
-   }
-
-   public void c(aiy $$0) {
-      gge $$1 = this.c.remove($$0);
-      if ($$1 != null) {
-         this.c($$0, $$1);
-      }
-   }
-
-   @Override
-   public void close() {
-      this.c.forEach(this::c);
-      this.c.clear();
-      this.d.clear();
-      this.e.clear();
-   }
-
-   @Override
-   public CompletableFuture<Void> a(aru.a $$0, asa $$1, bil $$2, bil $$3, Executor $$4, Executor $$5) {
-      CompletableFuture<Void> $$6 = new CompletableFuture<>();
-      ffj.a(this, $$4).thenCompose($$0::a).thenAcceptAsync($$3x -> {
-         ggj.c();
-         evd.a(this.f);
-         Iterator<Entry<aiy, gge>> $$4x = this.c.entrySet().iterator();
-
-         while ($$4x.hasNext()) {
-            Entry<aiy, gge> $$5x = $$4x.next();
-            aiy $$6x = $$5x.getKey();
-            gge $$7 = $$5x.getValue();
-            if ($$7 == ggj.c() && !$$6x.equals(ggj.b())) {
-               $$4x.remove();
-            } else {
-               $$7.a(this, $$1, $$6x, $$5);
+            eri $$4;
+            try (InputStream $$3 = $$2.d()) {
+               $$4 = eri.a($$3);
             }
-         }
 
-         exh.O().i(() -> $$6.complete(null));
-      }, $$0x -> RenderSystem.recordRenderCall($$0x::run));
-      return $$6;
-   }
+            gix $$6 = null;
 
-   public void a(Path $$0) {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> this.b($$0));
-      } else {
-         this.b($$0);
-      }
-   }
-
-   private void b(Path $$0) {
-      try {
-         Files.createDirectories($$0);
-      } catch (IOException var3) {
-         b.error("Failed to create directory {}", $$0, var3);
-         return;
-      }
-
-      this.c.forEach(($$1, $$2) -> {
-         if ($$2 instanceof ggf $$3) {
             try {
-               $$3.a($$1, $$0);
-            } catch (IOException var5) {
-               b.error("Failed to dump texture {}", $$1, var5);
+               $$6 = $$2.f().a(gix.a).orElse(null);
+            } catch (RuntimeException var8) {
+               ggu.f.warn("Failed reading metadata of: {}", $$1, var8);
             }
+
+            return new ggu.a($$6, $$4);
+         } catch (IOException var10) {
+            return new ggu.a(var10);
          }
-      });
+      }
+
+      @Nullable
+      public gix a() {
+         return this.a;
+      }
+
+      public eri b() throws IOException {
+         if (this.c != null) {
+            throw this.c;
+         } else {
+            return this.b;
+         }
+      }
+
+      @Override
+      public void close() {
+         if (this.b != null) {
+            this.b.close();
+         }
+      }
+
+      public void c() throws IOException {
+         if (this.c != null) {
+            throw this.c;
+         }
+      }
    }
 }

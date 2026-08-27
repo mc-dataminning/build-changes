@@ -1,22 +1,40 @@
 import com.mojang.serialization.MapCodec;
 
-public class ddq extends dge {
+public class ddq extends cys {
    public static final MapCodec<ddq> a = b(ddq::new);
+   protected static final eos b = cys.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
 
    @Override
    public MapCodec<ddq> a() {
       return a;
    }
 
-   public ddq(dle.d $$0) {
+   public ddq(dli.d $$0) {
       super($$0);
    }
 
    @Override
-   public void a(dlf $$0, cvn $$1, hz $$2, awo $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$3.a(10) == 0) {
-         $$1.a(jz.W, (double)$$2.u() + $$3.j(), (double)$$2.v() + 1.1, (double)$$2.w() + $$3.j(), 0.0, 0.0, 0.0);
-      }
+   protected eos b(dlj $$0, cux $$1, hz $$2, eoe $$3) {
+      return b;
+   }
+
+   @Override
+   protected eos b_(dlj $$0, cux $$1, hz $$2) {
+      return eop.b();
+   }
+
+   @Override
+   protected eos c(dlj $$0, cux $$1, hz $$2, eoe $$3) {
+      return eop.b();
+   }
+
+   @Override
+   protected boolean a(dlj $$0, cux $$1, hz $$2, ehm $$3) {
+      return false;
+   }
+
+   @Override
+   protected float d(dlj $$0, cux $$1, hz $$2) {
+      return 0.2F;
    }
 }

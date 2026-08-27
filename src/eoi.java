@@ -1,277 +1,219 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.math.DoubleMath;
-import com.google.common.math.IntMath;
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import java.util.Arrays;
-import java.util.Objects;
+public abstract class eoi {
+   private static final ie.a[] d = ie.a.values();
+   protected final int a;
+   protected final int b;
+   protected final int c;
 
-public final class eoi {
-   public static final double a = 1.0E-7;
-   public static final double b = 1.0E-6;
-   private static final eol d = ac.a(() -> {
-      eob $$0 = new env(1, 1, 1);
-      $$0.c(0, 0, 0);
-      return new enz($$0);
-   });
-   public static final eol c = a(
-      Double.NEGATIVE_INFINITY,
-      Double.NEGATIVE_INFINITY,
-      Double.NEGATIVE_INFINITY,
-      Double.POSITIVE_INFINITY,
-      Double.POSITIVE_INFINITY,
-      Double.POSITIVE_INFINITY
-   );
-   private static final eol e = new enu(
-      new env(0, 0, 0), new DoubleArrayList(new double[]{0.0}), new DoubleArrayList(new double[]{0.0}), new DoubleArrayList(new double[]{0.0})
-   );
-
-   public static eol a() {
-      return e;
-   }
-
-   public static eol b() {
-      return d;
-   }
-
-   public static eol a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      if (!($$0 > $$3) && !($$1 > $$4) && !($$2 > $$5)) {
-         return b($$0, $$1, $$2, $$3, $$4, $$5);
+   protected eoi(int $$0, int $$1, int $$2) {
+      if ($$0 >= 0 && $$1 >= 0 && $$2 >= 0) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       } else {
-         throw new IllegalArgumentException("The min values need to be smaller or equals to the max values");
+         throw new IllegalArgumentException("Need all positive sizes: x: " + $$0 + ", y: " + $$1 + ", z: " + $$2);
       }
    }
 
-   public static eol b(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      if (!($$3 - $$0 < 1.0E-7) && !($$4 - $$1 < 1.0E-7) && !($$5 - $$2 < 1.0E-7)) {
-         int $$6 = a($$0, $$3);
-         int $$7 = a($$1, $$4);
-         int $$8 = a($$2, $$5);
-         if ($$6 < 0 || $$7 < 0 || $$8 < 0) {
-            return new enu(
-               d.a, DoubleArrayList.wrap(new double[]{$$0, $$3}), DoubleArrayList.wrap(new double[]{$$1, $$4}), DoubleArrayList.wrap(new double[]{$$2, $$5})
-            );
-         } else if ($$6 == 0 && $$7 == 0 && $$8 == 0) {
-            return b();
-         } else {
-            int $$9 = 1 << $$6;
-            int $$10 = 1 << $$7;
-            int $$11 = 1 << $$8;
-            env $$12 = env.a(
-               $$9,
-               $$10,
-               $$11,
-               (int)Math.round($$0 * (double)$$9),
-               (int)Math.round($$1 * (double)$$10),
-               (int)Math.round($$2 * (double)$$11),
-               (int)Math.round($$3 * (double)$$9),
-               (int)Math.round($$4 * (double)$$10),
-               (int)Math.round($$5 * (double)$$11)
-            );
-            return new enz($$12);
+   public boolean a(hx $$0, int $$1, int $$2, int $$3) {
+      return this.d($$0.a($$1, $$2, $$3, ie.a.a), $$0.a($$1, $$2, $$3, ie.a.b), $$0.a($$1, $$2, $$3, ie.a.c));
+   }
+
+   public boolean d(int $$0, int $$1, int $$2) {
+      if ($$0 < 0 || $$1 < 0 || $$2 < 0) {
+         return false;
+      } else {
+         return $$0 < this.a && $$1 < this.b && $$2 < this.c ? this.b($$0, $$1, $$2) : false;
+      }
+   }
+
+   public boolean b(hx $$0, int $$1, int $$2, int $$3) {
+      return this.b($$0.a($$1, $$2, $$3, ie.a.a), $$0.a($$1, $$2, $$3, ie.a.b), $$0.a($$1, $$2, $$3, ie.a.c));
+   }
+
+   public abstract boolean b(int var1, int var2, int var3);
+
+   public abstract void c(int var1, int var2, int var3);
+
+   public boolean a() {
+      for (ie.a $$0 : d) {
+         if (this.a($$0) >= this.b($$0)) {
+            return true;
          }
-      } else {
-         return a();
       }
+
+      return false;
    }
 
-   public static eol a(enn $$0) {
-      return b($$0.a, $$0.b, $$0.c, $$0.d, $$0.e, $$0.f);
-   }
+   public abstract int a(ie.a var1);
 
-   @VisibleForTesting
-   protected static int a(double $$0, double $$1) {
-      if (!($$0 < -1.0E-7) && !($$1 > 1.0000001)) {
-         for (int $$2 = 0; $$2 <= 3; $$2++) {
-            int $$3 = 1 << $$2;
-            double $$4 = $$0 * (double)$$3;
-            double $$5 = $$1 * (double)$$3;
-            boolean $$6 = Math.abs($$4 - (double)Math.round($$4)) < 1.0E-7 * (double)$$3;
-            boolean $$7 = Math.abs($$5 - (double)Math.round($$5)) < 1.0E-7 * (double)$$3;
-            if ($$6 && $$7) {
-               return $$2;
+   public abstract int b(ie.a var1);
+
+   public int a(ie.a $$0, int $$1, int $$2) {
+      int $$3 = this.c($$0);
+      if ($$1 >= 0 && $$2 >= 0) {
+         ie.a $$4 = hx.b.a($$0);
+         ie.a $$5 = hx.c.a($$0);
+         if ($$1 < this.c($$4) && $$2 < this.c($$5)) {
+            hx $$6 = hx.a(ie.a.a, $$0);
+
+            for (int $$7 = 0; $$7 < $$3; $$7++) {
+               if (this.b($$6, $$7, $$1, $$2)) {
+                  return $$7;
+               }
             }
-         }
 
-         return -1;
-      } else {
-         return -1;
-      }
-   }
-
-   protected static long a(int $$0, int $$1) {
-      return (long)$$0 * (long)($$1 / IntMath.gcd($$0, $$1));
-   }
-
-   public static eol a(eol $$0, eol $$1) {
-      return a($$0, $$1, enw.o);
-   }
-
-   public static eol a(eol $$0, eol... $$1) {
-      return Arrays.stream($$1).reduce($$0, eoi::a);
-   }
-
-   public static eol a(eol $$0, eol $$1, enw $$2) {
-      return b($$0, $$1, $$2).d();
-   }
-
-   public static eol b(eol $$0, eol $$1, enw $$2) {
-      if ($$2.apply(false, false)) {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException());
-      } else if ($$0 == $$1) {
-         return $$2.apply(true, true) ? $$0 : a();
-      } else {
-         boolean $$3 = $$2.apply(true, false);
-         boolean $$4 = $$2.apply(false, true);
-         if ($$0.c()) {
-            return $$4 ? $$1 : a();
-         } else if ($$1.c()) {
-            return $$3 ? $$0 : a();
+            return $$3;
          } else {
-            eoe $$5 = a(1, $$0.a(ie.a.a), $$1.a(ie.a.a), $$3, $$4);
-            eoe $$6 = a($$5.size() - 1, $$0.a(ie.a.b), $$1.a(ie.a.b), $$3, $$4);
-            eoe $$7 = a(($$5.size() - 1) * ($$6.size() - 1), $$0.a(ie.a.c), $$1.a(ie.a.c), $$3, $$4);
-            env $$8 = env.a($$0.a, $$1.a, $$5, $$6, $$7, $$2);
-            return (eol)($$5 instanceof eoa && $$6 instanceof eoa && $$7 instanceof eoa ? new enz($$8) : new enu($$8, $$5.a(), $$6.a(), $$7.a()));
+            return $$3;
          }
+      } else {
+         return $$3;
       }
    }
 
-   public static boolean c(eol $$0, eol $$1, enw $$2) {
-      if ($$2.apply(false, false)) {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException());
+   public int b(ie.a $$0, int $$1, int $$2) {
+      if ($$1 >= 0 && $$2 >= 0) {
+         ie.a $$3 = hx.b.a($$0);
+         ie.a $$4 = hx.c.a($$0);
+         if ($$1 < this.c($$3) && $$2 < this.c($$4)) {
+            int $$5 = this.c($$0);
+            hx $$6 = hx.a(ie.a.a, $$0);
+
+            for (int $$7 = $$5 - 1; $$7 >= 0; $$7--) {
+               if (this.b($$6, $$7, $$1, $$2)) {
+                  return $$7 + 1;
+               }
+            }
+
+            return 0;
+         } else {
+            return 0;
+         }
       } else {
-         boolean $$3 = $$0.c();
-         boolean $$4 = $$1.c();
-         if (!$$3 && !$$4) {
-            if ($$0 == $$1) {
-               return $$2.apply(true, true);
-            } else {
-               boolean $$5 = $$2.apply(true, false);
-               boolean $$6 = $$2.apply(false, true);
+         return 0;
+      }
+   }
 
-               for (ie.a $$7 : hx.d) {
-                  if ($$0.c($$7) < $$1.b($$7) - 1.0E-7) {
-                     return $$5 || $$6;
-                  }
+   public int c(ie.a $$0) {
+      return $$0.a(this.a, this.b, this.c);
+   }
 
-                  if ($$1.c($$7) < $$0.b($$7) - 1.0E-7) {
-                     return $$5 || $$6;
+   public int b() {
+      return this.c(ie.a.a);
+   }
+
+   public int c() {
+      return this.c(ie.a.b);
+   }
+
+   public int d() {
+      return this.c(ie.a.c);
+   }
+
+   public void a(eoi.b $$0, boolean $$1) {
+      this.a($$0, hx.a, $$1);
+      this.a($$0, hx.b, $$1);
+      this.a($$0, hx.c, $$1);
+   }
+
+   private void a(eoi.b $$0, hx $$1, boolean $$2) {
+      hx $$3 = $$1.a();
+      int $$4 = this.c($$3.a(ie.a.a));
+      int $$5 = this.c($$3.a(ie.a.b));
+      int $$6 = this.c($$3.a(ie.a.c));
+
+      for (int $$7 = 0; $$7 <= $$4; $$7++) {
+         for (int $$8 = 0; $$8 <= $$5; $$8++) {
+            int $$9 = -1;
+
+            for (int $$10 = 0; $$10 <= $$6; $$10++) {
+               int $$11 = 0;
+               int $$12 = 0;
+
+               for (int $$13 = 0; $$13 <= 1; $$13++) {
+                  for (int $$14 = 0; $$14 <= 1; $$14++) {
+                     if (this.a($$3, $$7 + $$13 - 1, $$8 + $$14 - 1, $$10)) {
+                        $$11++;
+                        $$12 ^= $$13 ^ $$14;
+                     }
                   }
                }
 
-               eoe $$8 = a(1, $$0.a(ie.a.a), $$1.a(ie.a.a), $$5, $$6);
-               eoe $$9 = a($$8.size() - 1, $$0.a(ie.a.b), $$1.a(ie.a.b), $$5, $$6);
-               eoe $$10 = a(($$8.size() - 1) * ($$9.size() - 1), $$0.a(ie.a.c), $$1.a(ie.a.c), $$5, $$6);
-               return a($$8, $$9, $$10, $$0.a, $$1.a, $$2);
+               if ($$11 == 1 || $$11 == 3 || $$11 == 2 && ($$12 & 1) == 0) {
+                  if ($$2) {
+                     if ($$9 == -1) {
+                        $$9 = $$10;
+                     }
+                  } else {
+                     $$0.consume(
+                        $$3.a($$7, $$8, $$10, ie.a.a),
+                        $$3.a($$7, $$8, $$10, ie.a.b),
+                        $$3.a($$7, $$8, $$10, ie.a.c),
+                        $$3.a($$7, $$8, $$10 + 1, ie.a.a),
+                        $$3.a($$7, $$8, $$10 + 1, ie.a.b),
+                        $$3.a($$7, $$8, $$10 + 1, ie.a.c)
+                     );
+                  }
+               } else if ($$9 != -1) {
+                  $$0.consume(
+                     $$3.a($$7, $$8, $$9, ie.a.a),
+                     $$3.a($$7, $$8, $$9, ie.a.b),
+                     $$3.a($$7, $$8, $$9, ie.a.c),
+                     $$3.a($$7, $$8, $$10, ie.a.a),
+                     $$3.a($$7, $$8, $$10, ie.a.b),
+                     $$3.a($$7, $$8, $$10, ie.a.c)
+                  );
+                  $$9 = -1;
+               }
             }
-         } else {
-            return $$2.apply(!$$3, !$$4);
          }
       }
    }
 
-   private static boolean a(eoe $$0, eoe $$1, eoe $$2, eob $$3, eob $$4, enw $$5) {
-      return !$$0.a(($$5x, $$6, $$7) -> $$1.a(($$6x, $$7x, $$8) -> $$2.a(($$7xx, $$8x, $$9) -> !$$5.apply($$3.d($$5x, $$6x, $$7xx), $$4.d($$6, $$7x, $$8x)))));
+   public void b(eoi.b $$0, boolean $$1) {
+      eoc.a(this, $$0, $$1);
    }
 
-   public static double a(ie.a $$0, enn $$1, Iterable<eol> $$2, double $$3) {
-      for (eol $$4 : $$2) {
-         if (Math.abs($$3) < 1.0E-7) {
-            return 0.0;
+   public void a(eoi.a $$0) {
+      this.a($$0, hx.a);
+      this.a($$0, hx.b);
+      this.a($$0, hx.c);
+   }
+
+   private void a(eoi.a $$0, hx $$1) {
+      hx $$2 = $$1.a();
+      ie.a $$3 = $$2.a(ie.a.c);
+      int $$4 = this.c($$2.a(ie.a.a));
+      int $$5 = this.c($$2.a(ie.a.b));
+      int $$6 = this.c($$3);
+      ie $$7 = ie.a($$3, ie.b.b);
+      ie $$8 = ie.a($$3, ie.b.a);
+
+      for (int $$9 = 0; $$9 < $$4; $$9++) {
+         for (int $$10 = 0; $$10 < $$5; $$10++) {
+            boolean $$11 = false;
+
+            for (int $$12 = 0; $$12 <= $$6; $$12++) {
+               boolean $$13 = $$12 != $$6 && this.b($$2, $$9, $$10, $$12);
+               if (!$$11 && $$13) {
+                  $$0.consume($$7, $$2.a($$9, $$10, $$12, ie.a.a), $$2.a($$9, $$10, $$12, ie.a.b), $$2.a($$9, $$10, $$12, ie.a.c));
+               }
+
+               if ($$11 && !$$13) {
+                  $$0.consume($$8, $$2.a($$9, $$10, $$12 - 1, ie.a.a), $$2.a($$9, $$10, $$12 - 1, ie.a.b), $$2.a($$9, $$10, $$12 - 1, ie.a.c));
+               }
+
+               $$11 = $$13;
+            }
          }
-
-         $$3 = $$4.a($$0, $$1, $$3);
-      }
-
-      return $$3;
-   }
-
-   public static boolean a(eol $$0, eol $$1, ie $$2) {
-      if ($$0 == b() && $$1 == b()) {
-         return true;
-      } else if ($$1.c()) {
-         return false;
-      } else {
-         ie.a $$3 = $$2.o();
-         ie.b $$4 = $$2.f();
-         eol $$5 = $$4 == ie.b.a ? $$0 : $$1;
-         eol $$6 = $$4 == ie.b.a ? $$1 : $$0;
-         enw $$7 = $$4 == ie.b.a ? enw.e : enw.c;
-         return DoubleMath.fuzzyEquals($$5.c($$3), 1.0, 1.0E-7)
-            && DoubleMath.fuzzyEquals($$6.b($$3), 0.0, 1.0E-7)
-            && !c(new eoj($$5, $$3, $$5.a.c($$3) - 1), new eoj($$6, $$3, 0), $$7);
-      }
-   }
-
-   public static eol a(eol $$0, ie $$1) {
-      if ($$0 == b()) {
-         return b();
-      } else {
-         ie.a $$2 = $$1.o();
-         boolean $$3;
-         int $$4;
-         if ($$1.f() == ie.b.a) {
-            $$3 = DoubleMath.fuzzyEquals($$0.c($$2), 1.0, 1.0E-7);
-            $$4 = $$0.a.c($$2) - 1;
-         } else {
-            $$3 = DoubleMath.fuzzyEquals($$0.b($$2), 0.0, 1.0E-7);
-            $$4 = 0;
-         }
-
-         return (eol)(!$$3 ? a() : new eoj($$0, $$2, $$4));
-      }
-   }
-
-   public static boolean b(eol $$0, eol $$1, ie $$2) {
-      if ($$0 != b() && $$1 != b()) {
-         ie.a $$3 = $$2.o();
-         ie.b $$4 = $$2.f();
-         eol $$5 = $$4 == ie.b.a ? $$0 : $$1;
-         eol $$6 = $$4 == ie.b.a ? $$1 : $$0;
-         if (!DoubleMath.fuzzyEquals($$5.c($$3), 1.0, 1.0E-7)) {
-            $$5 = a();
-         }
-
-         if (!DoubleMath.fuzzyEquals($$6.b($$3), 0.0, 1.0E-7)) {
-            $$6 = a();
-         }
-
-         return !c(b(), b(new eoj($$5, $$3, $$5.a.c($$3) - 1), new eoj($$6, $$3, 0), enw.o), enw.e);
-      } else {
-         return true;
-      }
-   }
-
-   public static boolean b(eol $$0, eol $$1) {
-      if ($$0 == b() || $$1 == b()) {
-         return true;
-      } else {
-         return $$0.c() && $$1.c() ? false : !c(b(), b($$0, $$1, enw.o), enw.e);
-      }
-   }
-
-   @VisibleForTesting
-   protected static eoe a(int $$0, DoubleList $$1, DoubleList $$2, boolean $$3, boolean $$4) {
-      int $$5 = $$1.size() - 1;
-      int $$6 = $$2.size() - 1;
-      if ($$1 instanceof eny && $$2 instanceof eny) {
-         long $$7 = a($$5, $$6);
-         if ((long)$$0 * $$7 <= 256L) {
-            return new eoa($$5, $$6);
-         }
-      }
-
-      if ($$1.getDouble($$5) < $$2.getDouble(0) - 1.0E-7) {
-         return new eog($$1, $$2, false);
-      } else if ($$2.getDouble($$6) < $$1.getDouble(0) - 1.0E-7) {
-         return new eog($$2, $$1, true);
-      } else {
-         return (eoe)($$5 == $$6 && Objects.equals($$1, $$2) ? new eod($$1) : new eof($$1, $$2, $$3, $$4));
       }
    }
 
    public interface a {
-      void consume(double var1, double var3, double var5, double var7, double var9, double var11);
+      void consume(ie var1, int var2, int var3, int var4);
+   }
+
+   public interface b {
+      void consume(int var1, int var2, int var3, int var4, int var5, int var6);
    }
 }

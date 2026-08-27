@@ -1,51 +1,18 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-
 public class atj {
-   public static final Codec<atj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(aiy.a.fieldOf("sound_id").forGetter(atj::a), Codec.FLOAT.optionalFieldOf("range").forGetter(atj::b)).apply($$0, atj::a)
-   );
-   public static final Codec<ij<atj>> b = aiu.a(kg.af, a);
-   public static final xo<ByteBuf, atj> c = xo.a(aiy.b, atj::a, xm.f.a(xm::a), atj::b, atj::a);
-   public static final xo<vb, ij<atj>> d = xm.a(kg.af, c);
-   private static final float e = 16.0F;
-   private final aiy f;
-   private final float g;
-   private final boolean h;
+   private static final int h = 20;
+   private static final int i = 600;
+   private static final int j = 12000;
+   private static final int k = 24000;
+   private static final int l = 6000;
+   public static final ati a = new ati(atl.px, 20, 600, true);
+   public static final ati b = new ati(atl.pc, 12000, 24000, false);
+   public static final ati c = new ati(atl.pd, 0, 0, true);
+   public static final ati d = new ati(atl.pu, 0, 0, true);
+   public static final ati e = new ati(atl.pv, 6000, 24000, true);
+   public static final ati f = a(atl.pW);
+   public static final ati g = a(atl.pw);
 
-   private static atj a(aiy $$0, Optional<Float> $$1) {
-      return $$1.<atj>map($$1x -> a($$0, $$1x.floatValue())).orElseGet(() -> a($$0));
-   }
-
-   public static atj a(aiy $$0) {
-      return new atj($$0, 16.0F, false);
-   }
-
-   public static atj a(aiy $$0, float $$1) {
-      return new atj($$0, $$1, true);
-   }
-
-   private atj(aiy $$0, float $$1, boolean $$2) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-   }
-
-   public aiy a() {
-      return this.f;
-   }
-
-   public float a(float $$0) {
-      if (this.h) {
-         return this.g;
-      } else {
-         return $$0 > 1.0F ? 16.0F * $$0 : 16.0F;
-      }
-   }
-
-   private Optional<Float> b() {
-      return this.h ? Optional.of(this.g) : Optional.empty();
+   public static ati a(ij<atk> $$0) {
+      return new ati($$0, 12000, 24000, false);
    }
 }

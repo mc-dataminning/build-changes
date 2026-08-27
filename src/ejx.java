@@ -1,102 +1,119 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
 
-public class ejx extends ekh {
-   public static final Codec<ejx> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  kf.e.r().fieldOf("block").forGetter($$0x -> $$0x.b),
-                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(dmi::f).toList())
-               )
-            )
-            .apply($$0, ejx::new)
-   );
-   private final ij<cyo> b;
-   private final Set<dmi<?>> c;
+public abstract class ejx extends ejv {
+   public static final int d = 1;
+   public static final int f = 0;
+   protected final int g;
+   protected final int h;
+   protected final List<ekp> i;
+   final BiFunction<cpd, ejc, cpd> a;
+   private final eju j = new ejx.c() {
+      @Override
+      public void a(Consumer<cpd> $$0, ejc $$1) {
+         ejx.this.a(ekp.a(ejx.this.a, $$0, $$1), $$1);
+      }
+   };
 
-   ejx(List<elu> $$0, ij<cyo> $$1, Set<dmi<?>> $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
+   protected ejx(int $$0, int $$1, List<emb> $$2, List<ekp> $$3) {
+      super($$2);
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$3;
+      this.a = ekr.a($$3);
    }
 
-   private ejx(List<elu> $$0, ij<cyo> $$1, List<String> $$2) {
-      this($$0, $$1, $$2.stream().map($$1.a().n()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
+   protected static <T extends ejx> P4<Mu<T>, Integer, Integer, List<emb>, List<ekp>> b(Instance<T> $$0) {
+      return $$0.group(
+            avq.a(Codec.INT, "weight", Integer.valueOf(1)).forGetter($$0x -> $$0x.g), avq.a(Codec.INT, "quality", Integer.valueOf(0)).forGetter($$0x -> $$0x.h)
+         )
+         .and(a($$0).t1())
+         .and(avq.a(ekr.b.listOf(), "functions", List.of()).forGetter($$0x -> $$0x.i));
    }
 
    @Override
-   public ekj b() {
-      return ekk.x;
+   public void a(ejl $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.i.size(); $$1++) {
+         this.i.get($$1).a($$0.a(".functions[" + $$1 + "]"));
+      }
    }
+
+   protected abstract void a(Consumer<cpd> var1, ejc var2);
 
    @Override
-   public Set<eld<?>> a() {
-      return ImmutableSet.of(elg.g);
+   public boolean expand(ejc $$0, Consumer<eju> $$1) {
+      if (this.a($$0)) {
+         $$1.accept(this.j);
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   @Override
-   protected coz a(coz $$0, eiv $$1) {
-      dlf $$2 = $$1.c(elg.g);
-      if ($$2 != null) {
-         sw $$3 = $$0.x();
-         sw $$4;
-         if ($$3.b("BlockStateTag", 10)) {
-            $$4 = $$3.p("BlockStateTag");
-         } else {
-            $$4 = new sw();
-            $$3.a("BlockStateTag", $$4);
-         }
+   public static ejx.a<?> a(ejx.d $$0) {
+      return new ejx.b($$0);
+   }
 
-         for (dmi<?> $$6 : this.c) {
-            if ($$2.b($$6)) {
-               $$4.a($$6.f(), a($$2, $$6));
-            }
-         }
+   public abstract static class a<T extends ejx.a<T>> extends ejv.a<T> implements ekm<T> {
+      protected int a = 1;
+      protected int b = 0;
+      private final Builder<ekp> c = ImmutableList.builder();
+
+      public T a(ekp.a $$0) {
+         this.c.add($$0.b());
+         return this.aG_();
       }
 
-      return $$0;
-   }
-
-   public static ejx.a a(cyo $$0) {
-      return new ejx.a($$0);
-   }
-
-   private static <T extends Comparable<T>> String a(dlf $$0, dmi<T> $$1) {
-      T $$2 = $$0.c($$1);
-      return $$1.a($$2);
-   }
-
-   public static class a extends ekh.a<ejx.a> {
-      private final ij<cyo> a;
-      private final Builder<dmi<?>> b = ImmutableSet.builder();
-
-      a(cyo $$0) {
-         this.a = $$0.r();
+      protected List<ekp> a() {
+         return this.c.build();
       }
 
-      public ejx.a a(dmi<?> $$0) {
-         if (!this.a.a().n().d().contains($$0)) {
-            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
-         } else {
-            this.b.add($$0);
-            return this;
-         }
+      public T a(int $$0) {
+         this.a = $$0;
+         return this.aG_();
       }
 
-      protected ejx.a a() {
+      public T b(int $$0) {
+         this.b = $$0;
+         return this.aG_();
+      }
+   }
+
+   static class b extends ejx.a<ejx.b> {
+      private final ejx.d c;
+
+      public b(ejx.d $$0) {
+         this.c = $$0;
+      }
+
+      protected ejx.b g() {
          return this;
       }
 
       @Override
-      public eki b() {
-         return new ejx(this.g(), this.a, this.b.build());
+      public ejv b() {
+         return this.c.build(this.a, this.b, this.f(), this.a());
       }
+   }
+
+   protected abstract class c implements eju {
+      @Override
+      public int a(float $$0) {
+         return Math.max(awi.d((float)ejx.this.g + (float)ejx.this.h * $$0), 0);
+      }
+   }
+
+   @FunctionalInterface
+   protected interface d {
+      ejx build(int var1, int var2, List<emb> var3, List<ekp> var4);
    }
 }

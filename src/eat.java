@@ -1,42 +1,25 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
 
-public class eat {
-   public static final Codec<eat> a = avp.a(
-      RecordCodecBuilder.create($$0 -> $$0.group(Codec.unboundedMap(aix.a(kg.aN), dop.a).fieldOf("dimensions").forGetter($$0x -> $$0x.c)).apply($$0, eat::new)),
-      eat::a
-   );
-   public static final Codec<ij<eat>> b = aiu.a(kg.aK, a);
-   private final Map<aix<dop>, dop> c;
+public interface eat<P extends eas> {
+   eat<eae> a = a("block_predicate_filter", eae.a);
+   eat<eav> b = a("rarity_filter", eav.a);
+   eat<eax> c = a("surface_relative_threshold_filter", eax.a);
+   eat<eay> d = a("surface_water_depth_filter", eay.a);
+   eat<ead> e = a("biome", ead.a);
+   eat<eai> f = a("count", eai.a);
+   eat<ean> g = a("noise_based_count", ean.a);
+   eat<eao> h = a("noise_threshold_count", eao.a);
+   eat<eah> i = a("count_on_every_layer", eah.a);
+   eat<eaj> j = a("environment_scan", eaj.a);
+   eat<eal> k = a("heightmap", eal.a);
+   eat<eak> l = a("height_range", eak.a);
+   eat<eam> m = a("in_square", eam.a);
+   eat<eau> n = a("random_offset", eau.a);
+   eat<eaf> o = a("carving_mask", eaf.a);
 
-   public eat(Map<aix<dop>, dop> $$0) {
-      this.c = $$0;
-   }
+   Codec<P> codec();
 
-   private iv<dop> c() {
-      je<dop> $$0 = new ir<>(kg.aN, Lifecycle.experimental());
-      drj.a(this.c.keySet().stream()).forEach($$1 -> {
-         dop $$2 = this.c.get($$1);
-         if ($$2 != null) {
-            $$0.a((aix<dop>)$$1, $$2, Lifecycle.stable());
-         }
-      });
-      return $$0.l();
-   }
-
-   public drj a() {
-      return new drj(this.c());
-   }
-
-   public Optional<dop> b() {
-      return Optional.ofNullable(this.c.get(dop.b));
-   }
-
-   private static DataResult<eat> a(eat $$0) {
-      return $$0.b().isEmpty() ? DataResult.error(() -> "Missing overworld dimension") : DataResult.success($$0, Lifecycle.stable());
+   private static <P extends eas> eat<P> a(String $$0, Codec<P> $$1) {
+      return iv.a(kf.U, $$0, () -> $$1);
    }
 }

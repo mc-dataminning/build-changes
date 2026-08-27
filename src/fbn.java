@@ -1,53 +1,130 @@
-import java.util.List;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-public class fbn implements fbq {
-   private static final aiy d = new aiy("toast/advancement");
-   public static final int a = 5000;
-   private final af e;
-   private boolean f;
+public class fbn implements fkt {
+   private static final aiy a = new aiy("hud/hotbar");
+   private static final aiy b = new aiy("hud/hotbar_selection");
+   private static final long c = 5000L;
+   private static final long d = 2000L;
+   private final exo e;
+   private long f;
+   @Nullable
+   private fkq g;
 
-   public fbn(af $$0) {
+   public fbn(exo $$0) {
       this.e = $$0;
    }
 
-   @Override
-   public fbq.a a(eyu $$0, fbr $$1, long $$2) {
-      ar $$3 = this.e.b().c().orElse(null);
-      $$0.a(d, 0, 0, this.a(), this.b());
-      if ($$3 != null) {
-         List<avt> $$4 = $$1.b().h.c($$3.a(), 125);
-         int $$5 = $$3.e() == al.b ? 16746751 : 16776960;
-         if ($$4.size() == 1) {
-            $$0.a($$1.b().h, $$3.e().b(), 30, 7, $$5 | 0xFF000000, false);
-            $$0.a($$1.b().h, $$4.get(0), 30, 18, -1, false);
-         } else {
-            int $$6 = 1500;
-            float $$7 = 300.0F;
-            if ($$2 < 1500L) {
-               int $$8 = awh.d(awh.a((float)(1500L - $$2) / 300.0F, 0.0F, 1.0F) * 255.0F) << 24 | 67108864;
-               $$0.a($$1.b().h, $$3.e().b(), 30, 11, $$5 | $$8, false);
-            } else {
-               int $$9 = awh.d(awh.a((float)($$2 - 1500L) / 300.0F, 0.0F, 1.0F) * 252.0F) << 24 | 67108864;
-               int $$10 = this.b() / 2 - $$4.size() * 9 / 2;
-
-               for (avt $$11 : $$4) {
-                  $$0.a($$1.b().h, $$11, 30, $$10, 16777215 | $$9, false);
-                  $$10 += 9;
-               }
-            }
-         }
-
-         if (!this.f && $$2 > 0L) {
-            this.f = true;
-            if ($$3.e() == al.b) {
-               $$1.b().ai().a(gkb.a(atk.zP, 1.0F, 1.0F));
-            }
-         }
-
-         $$0.b($$3.c(), 8, 8);
-         return (double)$$2 >= 5000.0 * $$1.c() ? fbq.a.b : fbq.a.a;
+   public void a(int $$0) {
+      this.f = ac.b();
+      if (this.g != null) {
+         this.g.b($$0);
       } else {
-         return fbq.a.b;
+         this.g = new fkq(this);
+      }
+   }
+
+   private float c() {
+      long $$0 = this.f - ac.b() + 5000L;
+      return awi.a((float)$$0 / 2000.0F, 0.0F, 1.0F);
+   }
+
+   public void a(ezb $$0) {
+      if (this.g != null) {
+         float $$1 = this.c();
+         if ($$1 <= 0.0F) {
+            this.g.d();
+         } else {
+            int $$2 = $$0.a() / 2;
+            $$0.c().a();
+            $$0.c().a(0.0F, 0.0F, -90.0F);
+            int $$3 = awi.d((float)$$0.b() - 22.0F * $$1);
+            fku $$4 = this.g.f();
+            this.a($$0, $$1, $$2, $$3, $$4);
+            $$0.c().b();
+         }
+      }
+   }
+
+   protected void a(ezb $$0, float $$1, int $$2, int $$3, fku $$4) {
+      RenderSystem.enableBlend();
+      $$0.a(1.0F, 1.0F, 1.0F, $$1);
+      $$0.a(a, $$2 - 91, $$3, 182, 22);
+      if ($$4.a() >= 0) {
+         $$0.a(b, $$2 - 91 - 1 + $$4.a() * 20, $$3 - 1, 24, 23);
+      }
+
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+
+      for (int $$5 = 0; $$5 < 9; $$5++) {
+         this.a($$0, $$5, $$0.a() / 2 - 90 + $$5 * 20 + 2, (float)($$3 + 3), $$1, $$4.a($$5));
+      }
+
+      RenderSystem.disableBlend();
+   }
+
+   private void a(ezb $$0, int $$1, int $$2, float $$3, float $$4, fks $$5) {
+      if ($$5 != fkq.a) {
+         int $$6 = (int)($$4 * 255.0F);
+         $$0.c().a();
+         $$0.c().a((float)$$2, $$3, 0.0F);
+         float $$7 = $$5.aS_() ? 1.0F : 0.25F;
+         $$0.a($$7, $$7, $$7, $$4);
+         $$5.a($$0, $$7, $$6);
+         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+         $$0.c().b();
+         if ($$6 > 3 && $$5.aS_()) {
+            vq $$8 = this.e.m.U[$$1].k();
+            $$0.b(this.e.h, $$8, $$2 + 19 - 2 - this.e.h.a($$8), (int)$$3 + 6 + 3, 16777215 + ($$6 << 24));
+         }
+      }
+   }
+
+   public void b(ezb $$0) {
+      int $$1 = (int)(this.c() * 255.0F);
+      if ($$1 > 3 && this.g != null) {
+         fks $$2 = this.g.b();
+         vq $$3 = $$2 == fkq.a ? this.g.c().b() : $$2.aR_();
+         if ($$3 != null) {
+            int $$4 = ($$0.a() - this.e.h.a($$3)) / 2;
+            int $$5 = $$0.b() - 35;
+            $$0.b(this.e.h, $$3, $$4, $$5, 16777215 + ($$1 << 24));
+         }
+      }
+   }
+
+   @Override
+   public void a(fkq $$0) {
+      this.g = null;
+      this.f = 0L;
+   }
+
+   public boolean a() {
+      return this.g != null;
+   }
+
+   public void b(int $$0) {
+      int $$1 = this.g.e() + $$0;
+
+      while ($$1 >= 0 && $$1 <= 8 && (this.g.a($$1) == fkq.a || !this.g.a($$1).aS_())) {
+         $$1 += $$0;
+      }
+
+      if ($$1 >= 0 && $$1 <= 8) {
+         this.g.b($$1);
+         this.f = ac.b();
+      }
+   }
+
+   public void b() {
+      this.f = ac.b();
+      if (this.a()) {
+         int $$0 = this.g.e();
+         if ($$0 != -1) {
+            this.g.b($$0);
+         }
+      } else {
+         this.g = new fkq(this);
       }
    }
 }

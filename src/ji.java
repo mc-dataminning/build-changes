@@ -1,9 +1,9 @@
-public record ji(aov a, hz b, dlf c, djl d) {
-   public ens a() {
+public record ji(aow a, hz b, dlj c, djp d) {
+   public enz a() {
       return this.b.b();
    }
 
-   public aov b() {
+   public aow b() {
       return this.a;
    }
 
@@ -11,11 +11,11 @@ public record ji(aov a, hz b, dlf c, djl d) {
       return this.b;
    }
 
-   public dlf d() {
+   public dlj d() {
       return this.c;
    }
 
-   public djl e() {
+   public djp e() {
       return this.d;
    }
 }

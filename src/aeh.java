@@ -5,7 +5,7 @@ public record aeh(float b, boolean c) implements xx<aag> {
       this($$0.readFloat(), $$0.readBoolean());
    }
 
-   public static aeh a(bmf $$0) {
+   public static aeh a(bmh $$0) {
       return new aeh($$0.f(), $$0.l());
    }
 

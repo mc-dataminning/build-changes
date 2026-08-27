@@ -1,69 +1,49 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collections;
 import java.util.List;
-import java.util.function.BiConsumer;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class dys extends dza {
-   public static final Codec<dys> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  avp.j.optionalFieldOf("min_height_for_leaves", 1).forGetter($$0x -> $$0x.b), bkz.b(1, 64).fieldOf("bend_length").forGetter($$0x -> $$0x.h)
-               )
-            )
-            .apply($$0, dys::new)
-   );
-   private final int b;
-   private final bkz h;
+public class dys extends dyv {
+   public static final Codec<dys> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(dys::new, $$0 -> $$0.d).codec();
+   private static final ie b = ie.d;
+   private static final ie[] c = ie.c.a.a().filter($$0 -> $$0 != b.g()).toArray(ie[]::new);
+   private final float d;
 
-   public dys(int $$0, int $$1, int $$2, int $$3, bkz $$4) {
-      super($$0, $$1, $$2);
-      this.b = $$3;
-      this.h = $$4;
+   public dys(float $$0) {
+      this.d = $$0;
    }
 
    @Override
-   protected dzb<?> a() {
-      return dzb.g;
+   protected dyw<?> a() {
+      return dyw.d;
    }
 
    @Override
-   public List<dxi.a> a(cvt $$0, BiConsumer<hz, dlf> $$1, awo $$2, int $$3, hz $$4, dws $$5) {
-      ie $$6 = ie.c.a.a($$2);
-      int $$7 = $$3 - 1;
-      hz.a $$8 = $$4.j();
-      hz $$9 = $$8.d();
-      a($$0, $$1, $$2, $$9, $$5);
-      List<dxi.a> $$10 = Lists.newArrayList();
+   public void a(dyv.a $$0) {
+      awp $$1 = $$0.b();
+      if (!($$1.i() >= this.d)) {
+         List<hz> $$2 = $$0.d();
+         List<hz> $$3 = $$0.c();
+         int $$4 = !$$2.isEmpty() ? Math.max($$2.get(0).v() - 1, $$3.get(0).v() + 1) : Math.min($$3.get(0).v() + 1 + $$1.a(3), $$3.get($$3.size() - 1).v());
+         List<hz> $$5 = $$3.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
+         if (!$$5.isEmpty()) {
+            Collections.shuffle($$5);
+            Optional<hz> $$6 = $$5.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
+            if (!$$6.isEmpty()) {
+               $$0.a($$6.get(), cyu.pe.o().a(cym.b, b));
+               $$0.a().a($$6.get(), diz.H).ifPresent($$1x -> {
+                  int $$2x = 2 + $$1.a(2);
 
-      for (int $$11 = 0; $$11 <= $$7; $$11++) {
-         if ($$11 + 1 >= $$7 + $$2.a(2)) {
-            $$8.c($$6);
+                  for (int $$3x = 0; $$3x < $$2x; $$3x++) {
+                     sw $$4x = new sw();
+                     $$4x.a("id", kf.g.b(bnw.i).toString());
+                     $$1x.a($$4x, $$1.a(599), false);
+                  }
+               });
+            }
          }
-
-         if (dve.c($$0, $$8)) {
-            this.b($$0, $$1, $$2, $$8, $$5);
-         }
-
-         if ($$11 >= this.b) {
-            $$10.add(new dxi.a($$8.i(), 0, false));
-         }
-
-         $$8.c(ie.b);
       }
-
-      int $$12 = this.h.a($$2);
-
-      for (int $$13 = 0; $$13 <= $$12; $$13++) {
-         if (dve.c($$0, $$8)) {
-            this.b($$0, $$1, $$2, $$8, $$5);
-         }
-
-         $$10.add(new dxi.a($$8.i(), 0, false));
-         $$8.c($$6);
-      }
-
-      return $$10;
    }
 }

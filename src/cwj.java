@@ -1,23 +1,40 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class cwj {
-   public static final Codec<cwj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(atj.b.fieldOf("sound").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("tick_chance").forGetter($$0x -> $$0x.c)).apply($$0, cwj::new)
-   );
-   private final ij<atj> b;
-   private final double c;
+public interface cwj {
+   void a(bnw<?> var1, awp var2);
 
-   public cwj(ij<atj> $$0, double $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   static void a(cpd $$0, List<vq> $$1, String $$2) {
+      vq $$3 = a($$0, $$2);
+      if ($$3 != null) {
+         $$1.add($$3);
+      } else {
+         $$1.add(vp.a);
+         $$1.add(vq.c("block.minecraft.spawner.desc1").a(n.h));
+         $$1.add(vp.a().b(vq.c("block.minecraft.spawner.desc2").a(n.j)));
+      }
    }
 
-   public ij<atj> a() {
-      return this.b;
+   @Nullable
+   static vq a(cpd $$0, String $$1) {
+      sw $$2 = cmw.a($$0);
+      if ($$2 != null) {
+         aiy $$3 = a($$2, $$1);
+         if ($$3 != null) {
+            return kf.g.b($$3).map($$0x -> vq.c($$0x.g()).a(n.h)).orElse(null);
+         }
+      }
+
+      return null;
    }
 
-   public double b() {
-      return this.c;
+   @Nullable
+   private static aiy a(sw $$0, String $$1) {
+      if ($$0.b($$1, 10)) {
+         String $$2 = $$0.p($$1).p("entity").l("id");
+         return aiy.a($$2);
+      } else {
+         return null;
+      }
    }
 }

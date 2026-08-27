@@ -1,90 +1,47 @@
-public class fhu implements fhw {
-   private static final aiy a = new aiy("container/bundle/background");
-   private static final int b = 4;
-   private static final int c = 1;
-   private static final int d = 18;
-   private static final int e = 20;
-   private final is<coz> f;
-   private final int g;
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-   public fhu(cmd $$0) {
-      this.f = $$0.a();
-      this.g = $$0.b();
+public class fhu extends fgm {
+   public static final float b = 62.500004F;
+   public static final float c = 0.9765628F;
+   private static final Vector3f k = new Vector3f(0.9765628F, 0.9765628F, 0.9765628F);
+   @Nullable
+   private fyh.a l;
+
+   public fhu(dkg $$0, boolean $$1, boolean $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public int a() {
-      return this.c() + 4;
+   protected void aQ_() {
+      super.aQ_();
+      this.l = fyh.a(this.f.aQ(), this.a);
    }
 
    @Override
-   public int a(eys $$0) {
-      return this.b();
-   }
-
-   private int b() {
-      return this.d() * 18 + 2;
-   }
-
-   private int c() {
-      return this.e() * 20 + 2;
+   protected void b(ezb $$0, dlj $$1) {
+      super.b($$0, $$1);
+      boolean $$2 = $$1.b() instanceof dgm;
+      if (!$$2) {
+         $$0.c().a(0.0F, 35.0F, 0.0F);
+      }
    }
 
    @Override
-   public void a(eys $$0, int $$1, int $$2, eyu $$3) {
-      int $$4 = this.d();
-      int $$5 = this.e();
-      $$3.a(a, $$1, $$2, this.b(), this.c());
-      boolean $$6 = this.g >= 64;
-      int $$7 = 0;
-
-      for (int $$8 = 0; $$8 < $$5; $$8++) {
-         for (int $$9 = 0; $$9 < $$4; $$9++) {
-            int $$10 = $$1 + $$9 * 18 + 1;
-            int $$11 = $$2 + $$8 * 20 + 1;
-            this.a($$10, $$11, $$7++, $$6, $$3, $$0);
-         }
+   protected void a(ezb $$0, dlj $$1) {
+      if (this.l != null) {
+         boolean $$2 = $$1.b() instanceof dgm;
+         $$0.c().a(0.0F, 31.0F, 0.0F);
+         $$0.c().b(62.500004F, 62.500004F, -62.500004F);
+         gje $$3 = fwi.a(this.a);
+         esl $$4 = $$3.a($$0.d(), this.l::a);
+         this.l.b.k = $$2;
+         this.l.a.a($$0.c(), $$4, 15728880, ggs.d);
       }
    }
 
-   private void a(int $$0, int $$1, int $$2, boolean $$3, eyu $$4, eys $$5) {
-      if ($$2 >= this.f.size()) {
-         this.a($$4, $$0, $$1, $$3 ? fhu.a.a : fhu.a.b);
-      } else {
-         coz $$6 = this.f.get($$2);
-         this.a($$4, $$0, $$1, fhu.a.b);
-         $$4.a($$6, $$0 + 1, $$1 + 1, $$2);
-         $$4.a($$5, $$6, $$0 + 1, $$1 + 1);
-         if ($$2 == 0) {
-            fgd.a($$4, $$0 + 1, $$1 + 1, 0);
-         }
-      }
-   }
-
-   private void a(eyu $$0, int $$1, int $$2, fhu.a $$3) {
-      $$0.a($$3.c, $$1, $$2, 0, $$3.d, $$3.e);
-   }
-
-   private int d() {
-      return Math.max(2, (int)Math.ceil(Math.sqrt((double)this.f.size() + 1.0)));
-   }
-
-   private int e() {
-      return (int)Math.ceil(((double)this.f.size() + 1.0) / (double)this.d());
-   }
-
-   static enum a {
-      a(new aiy("container/bundle/blocked_slot"), 18, 20),
-      b(new aiy("container/bundle/slot"), 18, 20);
-
-      public final aiy c;
-      public final int d;
-      public final int e;
-
-      private a(aiy $$0, int $$1, int $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-      }
+   @Override
+   protected Vector3f o() {
+      return k;
    }
 }

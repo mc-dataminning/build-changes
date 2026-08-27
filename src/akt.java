@@ -10,13 +10,13 @@ public class akt {
       );
    }
 
-   private static int a(du $$0, cvk $$1) {
+   private static int a(du $$0, cvo $$1) {
       int $$2 = 0;
       MinecraftServer $$3 = $$0.l();
       $$3.a($$1);
-      cvk $$4 = $$3.bb();
+      cvo $$4 = $$3.bd();
       if ($$4 != null) {
-         for (aow $$5 : $$3.ae().t()) {
+         for (aox $$5 : $$3.ag().t()) {
             if ($$5.a($$4)) {
                $$2++;
             }

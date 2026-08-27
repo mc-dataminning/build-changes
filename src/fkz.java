@@ -1,70 +1,96 @@
+import com.mojang.authlib.properties.PropertyMap;
+import java.io.File;
+import java.net.Proxy;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
+
 public class fkz {
-   public static void a(fpc $$0, fpc $$1, fpc $$2, boolean $$3) {
-      fpc $$4 = $$3 ? $$0 : $$1;
-      fpc $$5 = $$3 ? $$1 : $$0;
-      $$4.f = ($$3 ? -0.3F : 0.3F) + $$2.f;
-      $$5.f = ($$3 ? 0.6F : -0.6F) + $$2.f;
-      $$4.e = (float) (-Math.PI / 2) + $$2.e + 0.1F;
-      $$5.e = -1.5F + $$2.e;
+   public final fkz.d a;
+   public final eqy b;
+   public final fkz.a c;
+   public final fkz.b d;
+   public final fkz.c e;
+
+   public fkz(fkz.d $$0, eqy $$1, fkz.a $$2, fkz.b $$3, fkz.c $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   public static void a(fpc $$0, fpc $$1, bog $$2, boolean $$3) {
-      fpc $$4 = $$3 ? $$0 : $$1;
-      fpc $$5 = $$3 ? $$1 : $$0;
-      $$4.f = $$3 ? -0.8F : 0.8F;
-      $$4.e = -0.97079635F;
-      $$5.e = $$4.e;
-      float $$6 = (float)cnh.k($$2.fp());
-      float $$7 = awh.a((float)$$2.fr(), 0.0F, $$6);
-      float $$8 = $$7 / $$6;
-      $$5.f = awh.i($$8, 0.4F, 0.85F) * (float)($$3 ? 1 : -1);
-      $$5.e = awh.i($$8, $$5.e, (float) (-Math.PI / 2));
-   }
+   public static class a {
+      public final File a;
+      public final File b;
+      public final File c;
+      @Nullable
+      public final String d;
 
-   public static <T extends boi> void a(fpc $$0, fpc $$1, T $$2, float $$3, float $$4) {
-      float $$5 = awh.a($$3 * (float) Math.PI);
-      float $$6 = awh.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
-      $$0.g = 0.0F;
-      $$1.g = 0.0F;
-      $$0.f = (float) (Math.PI / 20);
-      $$1.f = (float) (-Math.PI / 20);
-      if ($$2.fm() == boa.b) {
-         $$0.e = -1.8849558F + awh.b($$4 * 0.09F) * 0.15F;
-         $$1.e = -0.0F + awh.b($$4 * 0.19F) * 0.5F;
-         $$0.e += $$5 * 2.2F - $$6 * 0.4F;
-         $$1.e += $$5 * 1.2F - $$6 * 0.4F;
-      } else {
-         $$0.e = -0.0F + awh.b($$4 * 0.19F) * 0.5F;
-         $$1.e = -1.8849558F + awh.b($$4 * 0.09F) * 0.15F;
-         $$0.e += $$5 * 1.2F - $$6 * 0.4F;
-         $$1.e += $$5 * 2.2F - $$6 * 0.4F;
+      public a(File $$0, File $$1, File $$2, @Nullable String $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
       }
 
-      a($$0, $$1, $$4);
+      public Path a() {
+         return this.d == null ? this.c.toPath() : ghw.a(this.c.toPath(), this.d);
+      }
    }
 
-   public static void a(fpc $$0, float $$1, float $$2) {
-      $$0.g = $$0.g + $$2 * (awh.b($$1 * 0.09F) * 0.05F + 0.05F);
-      $$0.e = $$0.e + $$2 * awh.a($$1 * 0.067F) * 0.05F;
+   public static class b {
+      public final boolean a;
+      public final String b;
+      public final String c;
+      public final boolean d;
+      public final boolean e;
+
+      public b(boolean $$0, String $$1, String $$2, boolean $$3, boolean $$4) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
    }
 
-   public static void a(fpc $$0, fpc $$1, float $$2) {
-      a($$0, $$2, 1.0F);
-      a($$1, $$2, -1.0F);
+   public static record c(@Nullable String a, @Nullable String b, @Nullable String c, @Nullable String d) {
+      public boolean a() {
+         return !ac.b(this.b) || !ac.b(this.c) || !ac.b(this.d);
+      }
+
+      @Nullable
+      public String b() {
+         return this.a;
+      }
+
+      @Nullable
+      public String c() {
+         return this.b;
+      }
+
+      @Nullable
+      public String d() {
+         return this.c;
+      }
+
+      @Nullable
+      public String e() {
+         return this.d;
+      }
    }
 
-   public static void a(fpc $$0, fpc $$1, boolean $$2, float $$3, float $$4) {
-      float $$5 = awh.a($$3 * (float) Math.PI);
-      float $$6 = awh.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
-      $$1.g = 0.0F;
-      $$0.g = 0.0F;
-      $$1.f = -(0.1F - $$5 * 0.6F);
-      $$0.f = 0.1F - $$5 * 0.6F;
-      float $$7 = (float) -Math.PI / ($$2 ? 1.5F : 2.25F);
-      $$1.e = $$7;
-      $$0.e = $$7;
-      $$1.e += $$5 * 1.2F - $$6 * 0.4F;
-      $$0.e += $$5 * 1.2F - $$6 * 0.4F;
-      a($$1, $$0, $$4);
+   public static class d {
+      public final eyd a;
+      public final PropertyMap b;
+      public final PropertyMap c;
+      public final Proxy d;
+
+      public d(eyd $$0, PropertyMap $$1, PropertyMap $$2, Proxy $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
    }
 }

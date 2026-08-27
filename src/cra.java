@@ -1,100 +1,189 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Lists;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.UnaryOperator;
-import org.slf4j.Logger;
+import java.util.function.Predicate;
 
 public class cra {
-   public static final Codec<cra> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(crb.b.fieldOf("material").forGetter(cra::b), crd.b.fieldOf("pattern").forGetter(cra::a)).apply($$0, cra::new)
-   );
-   private static final Logger c = LogUtils.getLogger();
-   public static final String b = "Trim";
-   private static final vq d = vq.c(ac.a("item", new aiy("smithing_template.upgrade"))).a(n.h);
-   private final ij<crb> e;
-   private final ij<crd> f;
-   private final Function<cmk, aiy> g;
-   private final Function<cmk, aiy> h;
-
-   public cra(ij<crb> $$0, ij<crd> $$1) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = ac.b($$1x -> {
-         aiy $$2 = $$1.a().a();
-         String $$3 = this.c($$1x);
-         return $$2.a((UnaryOperator<String>)($$1xx -> "trims/models/armor/" + $$1xx + "_leggings_" + $$3));
-      });
-      this.h = ac.b($$1x -> {
-         aiy $$2 = $$1.a().a();
-         String $$3 = this.c($$1x);
-         return $$2.a((UnaryOperator<String>)($$1xx -> "trims/models/armor/" + $$1xx + "_" + $$3));
-      });
-   }
-
-   private String c(cmk $$0) {
-      Map<cml, String> $$1 = this.e.a().d();
-      return $$0 instanceof cml && $$1.containsKey($$0) ? $$1.get($$0) : this.e.a().a();
-   }
-
-   public boolean a(ij<crd> $$0, ij<crb> $$1) {
-      return $$0.equals(this.f) && $$1.equals(this.e);
-   }
-
-   public ij<crd> a() {
-      return this.f;
-   }
-
-   public ij<crb> b() {
-      return this.e;
-   }
-
-   public aiy a(cmk $$0) {
-      return this.g.apply($$0);
-   }
-
-   public aiy b(cmk $$0) {
-      return this.h.apply($$0);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return !($$0 instanceof cra $$1) ? false : this.f.equals($$1.f) && this.e.equals($$1.e);
-   }
-
-   public static boolean a(iw $$0, coz $$1, cra $$2) {
-      if ($$1.a(auh.aM)) {
-         $$1.x().a("Trim", (tt)a.encodeStart(aiw.a(tk.a, $$0), $$2).result().orElseThrow());
-         return true;
-      } else {
-         return false;
+   public static final int a = 20;
+   private static final List<cra.a<cqz>> b = Lists.newArrayList();
+   private static final List<cra.a<coy>> c = Lists.newArrayList();
+   private static final List<csc> d = Lists.newArrayList();
+   private static final Predicate<cpd> e = $$0 -> {
+      for (csc $$1 : d) {
+         if ($$1.a($$0)) {
+            return true;
+         }
       }
+
+      return false;
+   };
+
+   public static boolean a(cpd $$0) {
+      return b($$0) || c($$0);
    }
 
-   public static Optional<cra> a(iw $$0, coz $$1, boolean $$2) {
-      if ($$1.a(auh.aM) && $$1.w() != null && $$1.w().e("Trim")) {
-         sw $$3 = $$1.b("Trim");
-         cra $$4 = (cra)a.parse(aiw.a(tk.a, $$0), $$3).resultOrPartial($$1x -> {
-            if (!$$2) {
-               c.warn($$1x);
+   protected static boolean b(cpd $$0) {
+      for (cra.a<coy> $$1 : c) {
+         if ($$1.b.a($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   protected static boolean c(cpd $$0) {
+      for (cra.a<cqz> $$1 : b) {
+         if ($$1.b.a($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public static boolean a(ij<cqz> $$0) {
+      for (cra.a<cqz> $$1 : b) {
+         if ($$1.c.a($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public static boolean a(cpd $$0, cpd $$1) {
+      return !e.test($$0) ? false : b($$0, $$1) || c($$0, $$1);
+   }
+
+   protected static boolean b(cpd $$0, cpd $$1) {
+      for (cra.a<coy> $$2 : c) {
+         if ($$0.a($$2.a) && $$2.b.a($$1)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   protected static boolean c(cpd $$0, cpd $$1) {
+      ij<cqz> $$2 = crb.d($$0);
+
+      for (cra.a<cqz> $$3 : b) {
+         if ($$3.a.a($$2) && $$3.b.a($$1)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public static cpd d(cpd $$0, cpd $$1) {
+      if ($$1.b()) {
+         return $$1;
+      } else {
+         ij<cqz> $$2 = crb.d($$1);
+
+         for (cra.a<coy> $$3 : c) {
+            if ($$1.a($$3.a) && $$3.b.a($$0)) {
+               return crb.a(new cpd($$3.c), $$2);
             }
-         }).orElse(null);
-         return Optional.ofNullable($$4);
-      } else {
-         return Optional.empty();
+         }
+
+         for (cra.a<cqz> $$4 : b) {
+            if ($$4.a.a($$2) && $$4.b.a($$0)) {
+               return crb.a(new cpd($$1.d()), $$4.c);
+            }
+         }
+
+         return $$1;
       }
    }
 
-   public static void a(coz $$0, iw $$1, List<vq> $$2) {
-      Optional<cra> $$3 = a($$1, $$0, true);
-      if ($$3.isPresent()) {
-         cra $$4 = $$3.get();
-         $$2.add(d);
-         $$2.add(vp.a().b($$4.a().a().a($$4.b())));
-         $$2.add(vp.a().b($$4.b().a().e()));
+   public static void a() {
+      a(cpg.sj);
+      a(cpg.vk);
+      a(cpg.vn);
+      a(cpg.sj, cpg.pt, cpg.vk);
+      a(cpg.vk, cpg.vj, cpg.vn);
+      a(crc.c, cpg.ss, crc.d);
+      a(crc.c, cpg.sg, crc.d);
+      a(crc.c, cpg.uz, crc.d);
+      a(crc.c, cpg.sn, crc.d);
+      a(crc.c, cpg.sl, crc.d);
+      a(crc.c, cpg.rz, crc.d);
+      a(crc.c, cpg.so, crc.d);
+      a(crc.c, cpg.qX, crc.e);
+      a(crc.c, cpg.lG, crc.d);
+      a(crc.c, cpg.si, crc.f);
+      a(crc.f, cpg.ug, crc.g);
+      a(crc.g, cpg.lG, crc.h);
+      a(crc.g, cpg.sm, crc.i);
+      a(crc.h, cpg.sm, crc.j);
+      a(crc.i, cpg.lG, crc.j);
+      a(crc.f, cpg.so, crc.n);
+      a(crc.n, cpg.lG, crc.o);
+      a(crc.f, cpg.uz, crc.k);
+      a(crc.k, cpg.lG, crc.l);
+      a(crc.k, cpg.qX, crc.m);
+      a(crc.k, cpg.sm, crc.s);
+      a(crc.l, cpg.sm, crc.t);
+      a(crc.s, cpg.lG, crc.t);
+      a(crc.s, cpg.qX, crc.u);
+      a(crc.f, cpg.on, crc.v);
+      a(crc.v, cpg.lG, crc.w);
+      a(crc.v, cpg.qX, crc.x);
+      a(crc.p, cpg.sm, crc.s);
+      a(crc.q, cpg.sm, crc.t);
+      a(crc.f, cpg.rz, crc.p);
+      a(crc.p, cpg.lG, crc.q);
+      a(crc.p, cpg.qX, crc.r);
+      a(crc.f, cpg.rb, crc.y);
+      a(crc.y, cpg.lG, crc.z);
+      a(crc.f, cpg.ss, crc.A);
+      a(crc.A, cpg.qX, crc.B);
+      a(crc.A, cpg.sm, crc.C);
+      a(crc.B, cpg.sm, crc.D);
+      a(crc.C, cpg.qX, crc.D);
+      a(crc.E, cpg.sm, crc.C);
+      a(crc.F, cpg.sm, crc.C);
+      a(crc.G, cpg.sm, crc.D);
+      a(crc.f, cpg.sl, crc.E);
+      a(crc.E, cpg.lG, crc.F);
+      a(crc.E, cpg.qX, crc.G);
+      a(crc.f, cpg.sg, crc.H);
+      a(crc.H, cpg.lG, crc.I);
+      a(crc.H, cpg.qX, crc.J);
+      a(crc.f, cpg.sn, crc.K);
+      a(crc.K, cpg.lG, crc.L);
+      a(crc.K, cpg.qX, crc.M);
+      a(crc.c, cpg.sm, crc.N);
+      a(crc.N, cpg.lG, crc.O);
+      a(crc.f, cpg.vM, crc.Q);
+      a(crc.Q, cpg.lG, crc.R);
+   }
+
+   private static void a(coy $$0, coy $$1, coy $$2) {
+      if (!($$0 instanceof cps)) {
+         throw new IllegalArgumentException("Expected a potion, got: " + kf.h.b($$0));
+      } else if (!($$2 instanceof cps)) {
+         throw new IllegalArgumentException("Expected a potion, got: " + kf.h.b($$2));
+      } else {
+         c.add(new cra.a<>($$0.i(), csc.a($$1), $$2.i()));
       }
+   }
+
+   private static void a(coy $$0) {
+      if (!($$0 instanceof cps)) {
+         throw new IllegalArgumentException("Expected a potion, got: " + kf.h.b($$0));
+      } else {
+         d.add(csc.a($$0));
+      }
+   }
+
+   private static void a(ij<cqz> $$0, coy $$1, ij<cqz> $$2) {
+      b.add(new cra.a<>($$0, csc.a($$1), $$2));
+   }
+
+   static record a<T>(ij<T> a, csc b, ij<T> c) {
    }
 }

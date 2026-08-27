@@ -1,8 +1,14 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public enum eru {
+   a(0),
+   b(1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@ept
-@eps
-interface eru {
+   private final int c;
+
+   private eru(int $$0) {
+      this.c = $$0;
+   }
+
+   public int a() {
+      return this.c;
+   }
 }

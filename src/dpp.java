@@ -1,131 +1,133 @@
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import org.slf4j.Logger;
 
-public record dpp(int aj) {
-   public static final ij.c<dpp> a = a("block_activate");
-   public static final ij.c<dpp> b = a("block_attach");
-   public static final ij.c<dpp> c = a("block_change");
-   public static final ij.c<dpp> d = a("block_close");
-   public static final ij.c<dpp> e = a("block_deactivate");
-   public static final ij.c<dpp> f = a("block_destroy");
-   public static final ij.c<dpp> g = a("block_detach");
-   public static final ij.c<dpp> h = a("block_open");
-   public static final ij.c<dpp> i = a("block_place");
-   public static final ij.c<dpp> j = a("container_close");
-   public static final ij.c<dpp> k = a("container_open");
-   public static final ij.c<dpp> l = a("drink");
-   public static final ij.c<dpp> m = a("eat");
-   public static final ij.c<dpp> n = a("elytra_glide");
-   public static final ij.c<dpp> o = a("entity_damage");
-   public static final ij.c<dpp> p = a("entity_die");
-   public static final ij.c<dpp> q = a("entity_dismount");
-   public static final ij.c<dpp> r = a("entity_interact");
-   public static final ij.c<dpp> s = a("entity_mount");
-   public static final ij.c<dpp> t = a("entity_place");
-   public static final ij.c<dpp> u = a("entity_action");
-   public static final ij.c<dpp> v = a("equip");
-   public static final ij.c<dpp> w = a("explode");
-   public static final ij.c<dpp> x = a("flap");
-   public static final ij.c<dpp> y = a("fluid_pickup");
-   public static final ij.c<dpp> z = a("fluid_place");
-   public static final ij.c<dpp> A = a("hit_ground");
-   public static final ij.c<dpp> B = a("instrument_play");
-   public static final ij.c<dpp> C = a("item_interact_finish");
-   public static final ij.c<dpp> D = a("item_interact_start");
-   public static final ij.c<dpp> E = a("jukebox_play", 10);
-   public static final ij.c<dpp> F = a("jukebox_stop_play", 10);
-   public static final ij.c<dpp> G = a("lightning_strike");
-   public static final ij.c<dpp> H = a("note_block_play");
-   public static final ij.c<dpp> I = a("prime_fuse");
-   public static final ij.c<dpp> J = a("projectile_land");
-   public static final ij.c<dpp> K = a("projectile_shoot");
-   public static final ij.c<dpp> L = a("sculk_sensor_tendrils_clicking");
-   public static final ij.c<dpp> M = a("shear");
-   public static final ij.c<dpp> N = a("shriek", 32);
-   public static final ij.c<dpp> O = a("splash");
-   public static final ij.c<dpp> P = a("step");
-   public static final ij.c<dpp> Q = a("swim");
-   public static final ij.c<dpp> R = a("teleport");
-   public static final ij.c<dpp> S = a("unequip");
-   public static final ij.c<dpp> T = a("resonate_1");
-   public static final ij.c<dpp> U = a("resonate_2");
-   public static final ij.c<dpp> V = a("resonate_3");
-   public static final ij.c<dpp> W = a("resonate_4");
-   public static final ij.c<dpp> X = a("resonate_5");
-   public static final ij.c<dpp> Y = a("resonate_6");
-   public static final ij.c<dpp> Z = a("resonate_7");
-   public static final ij.c<dpp> aa = a("resonate_8");
-   public static final ij.c<dpp> ab = a("resonate_9");
-   public static final ij.c<dpp> ac = a("resonate_10");
-   public static final ij.c<dpp> ad = a("resonate_11");
-   public static final ij.c<dpp> ae = a("resonate_12");
-   public static final ij.c<dpp> af = a("resonate_13");
-   public static final ij.c<dpp> ag = a("resonate_14");
-   public static final ij.c<dpp> ah = a("resonate_15");
-   public static final int ai = 16;
+public class dpp<T extends dpd> {
+   static final Logger a = LogUtils.getLogger();
+   final dpl<T> b;
+   final dpf<T> c;
+   final dpi<T> d;
+   private final LongSet e = new LongOpenHashSet();
+   private final dpm<T> f;
 
-   public static ij<dpp> a(iv<dpp> $$0) {
-      return a;
+   public dpp(Class<T> $$0, dpl<T> $$1) {
+      this.c = new dpf<>();
+      this.d = new dpi<>($$0, $$0x -> this.e.contains($$0x) ? dpq.c : dpq.b);
+      this.b = $$1;
+      this.f = new dpn<>(this.c, this.d);
    }
 
-   public int a() {
-      return this.aj;
+   public void a(cuy $$0) {
+      long $$1 = $$0.a();
+      this.e.add($$1);
+      this.d.b($$1).forEach($$0x -> {
+         dpq $$1x = $$0x.a(dpq.c);
+         if (!$$1x.a()) {
+            $$0x.b().filter($$0xx -> !$$0xx.dL()).forEach(this.b::e);
+         }
+      });
    }
 
-   private static ij.c<dpp> a(String $$0) {
-      return a($$0, 16);
+   public void b(cuy $$0) {
+      long $$1 = $$0.a();
+      this.e.remove($$1);
+      this.d.b($$1).forEach($$0x -> {
+         dpq $$1x = $$0x.a(dpq.b);
+         if ($$1x.a()) {
+            $$0x.b().filter($$0xx -> !$$0xx.dL()).forEach(this.b::d);
+         }
+      });
    }
 
-   private static ij.c<dpp> a(String $$0, int $$1) {
-      return iv.b(kf.a, new aiy($$0), new dpp($$1));
+   public dpm<T> a() {
+      return this.f;
    }
 
-   public static record a(@Nullable bno a, @Nullable dlf b) {
-      public static dpp.a a(@Nullable bno $$0) {
-         return new dpp.a($$0, null);
-      }
-
-      public static dpp.a a(@Nullable dlf $$0) {
-         return new dpp.a(null, $$0);
-      }
-
-      public static dpp.a a(@Nullable bno $$0, @Nullable dlf $$1) {
-         return new dpp.a($$0, $$1);
+   public void a(T $$0) {
+      this.c.a($$0);
+      long $$1 = jb.c($$0.dm());
+      dph<T> $$2 = this.d.c($$1);
+      $$2.a($$0);
+      $$0.a(new dpp.a($$0, $$1, $$2));
+      this.b.g($$0);
+      this.b.c($$0);
+      if ($$0.dL() || $$2.c().a()) {
+         this.b.e($$0);
       }
    }
 
-   public static final class b implements Comparable<dpp.b> {
-      private final ij<dpp> a;
-      private final ens b;
-      private final dpp.a c;
-      private final dpr d;
-      private final double e;
+   @axl
+   public int b() {
+      return this.c.b();
+   }
 
-      public b(ij<dpp> $$0, ens $$1, dpp.a $$2, dpr $$3, ens $$4) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$1.g($$4);
+   void a(long $$0, dph<T> $$1) {
+      if ($$1.a()) {
+         this.d.e($$0);
+      }
+   }
+
+   @axl
+   public String c() {
+      return this.c.b() + "," + this.d.b() + "," + this.e.size();
+   }
+
+   class a implements dpe {
+      private final T c;
+      private long d;
+      private dph<T> e;
+
+      a(T $$0, long $$1, dph<T> $$2) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
       }
 
-      public int a(dpp.b $$0) {
-         return Double.compare(this.e, $$0.e);
+      @Override
+      public void a() {
+         hz $$0 = this.c.dm();
+         long $$1 = jb.c($$0);
+         if ($$1 != this.d) {
+            dpq $$2 = this.e.c();
+            if (!this.e.b(this.c)) {
+               dpp.a.warn("Entity {} wasn't found in section {} (moving to {})", new Object[]{this.c, jb.a(this.d), $$1});
+            }
+
+            dpp.this.a(this.d, this.e);
+            dph<T> $$3 = dpp.this.d.c($$1);
+            $$3.a(this.c);
+            this.e = $$3;
+            this.d = $$1;
+            dpp.this.b.a(this.c);
+            if (!this.c.dL()) {
+               boolean $$4 = $$2.a();
+               boolean $$5 = $$3.c().a();
+               if ($$4 && !$$5) {
+                  dpp.this.b.d(this.c);
+               } else if (!$$4 && $$5) {
+                  dpp.this.b.e(this.c);
+               }
+            }
+         }
       }
 
-      public ij<dpp> a() {
-         return this.a;
-      }
+      @Override
+      public void a(bnq.c $$0) {
+         if (!this.e.b(this.c)) {
+            dpp.a.warn("Entity {} wasn't found in section {} (destroying due to {})", new Object[]{this.c, jb.a(this.d), $$0});
+         }
 
-      public ens b() {
-         return this.b;
-      }
+         dpq $$1 = this.e.c();
+         if ($$1.a() || this.c.dL()) {
+            dpp.this.b.d(this.c);
+         }
 
-      public dpp.a c() {
-         return this.c;
-      }
-
-      public dpr d() {
-         return this.d;
+         dpp.this.b.b(this.c);
+         dpp.this.b.f(this.c);
+         dpp.this.c.b(this.c);
+         this.c.a(a);
+         dpp.this.a(this.d, this.e);
       }
    }
 }

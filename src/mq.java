@@ -22,19 +22,19 @@ public class mq {
       this.b = ImmutableSet.copyOf($$2);
    }
 
-   public aiy a(cyo $$0) {
+   public aiy a(cys $$0) {
       return mp.a($$0, this.c.orElse(""));
    }
 
-   public aiy a(cyo $$0, ms $$1, BiConsumer<aiy, Supplier<JsonElement>> $$2) {
+   public aiy a(cys $$0, ms $$1, BiConsumer<aiy, Supplier<JsonElement>> $$2) {
       return this.a(mp.a($$0, this.c.orElse("")), $$1, $$2);
    }
 
-   public aiy a(cyo $$0, String $$1, ms $$2, BiConsumer<aiy, Supplier<JsonElement>> $$3) {
+   public aiy a(cys $$0, String $$1, ms $$2, BiConsumer<aiy, Supplier<JsonElement>> $$3) {
       return this.a(mp.a($$0, $$1 + this.c.orElse("")), $$2, $$3);
    }
 
-   public aiy b(cyo $$0, String $$1, ms $$2, BiConsumer<aiy, Supplier<JsonElement>> $$3) {
+   public aiy b(cys $$0, String $$1, ms $$2, BiConsumer<aiy, Supplier<JsonElement>> $$3) {
       return this.a(mp.a($$0, $$1), $$2, $$3);
    }
 

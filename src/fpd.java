@@ -1,81 +1,46 @@
-public class fpd {
-   public static final String a = "left_fin";
-   public static final String b = "right_fin";
-   public static final String c = "top_fin";
-   public static final String d = "bottom_fin";
-   public static final String e = "tail_fin";
-   public static final String f = "left_blue_fin";
-   public static final String g = "right_blue_fin";
-   public static final String h = "left_arm";
-   public static final String i = "right_arm";
-   public static final String j = "left_wing";
-   public static final String k = "right_wing";
-   public static final String l = "left_wing_base";
-   public static final String m = "right_wing_base";
-   public static final String n = "left_wing_tip";
-   public static final String o = "right_wing_tip";
-   public static final String p = "left_ear";
-   public static final String q = "right_ear";
-   public static final String r = "left_leg";
-   public static final String s = "right_leg";
-   public static final String t = "left_hind_leg";
-   public static final String u = "right_hind_leg";
-   public static final String v = "left_mid_leg";
-   public static final String w = "right_mid_leg";
-   public static final String x = "left_front_leg";
-   public static final String y = "right_front_leg";
-   public static final String z = "left_hind_foot";
-   public static final String A = "right_hind_foot";
-   public static final String B = "left_front_foot";
-   public static final String C = "right_front_foot";
-   public static final String D = "feet";
-   public static final String E = "left_hind_leg_tip";
-   public static final String F = "right_hind_leg_tip";
-   public static final String G = "left_front_leg_tip";
-   public static final String H = "right_front_leg_tip";
-   public static final String I = "left_lid";
-   public static final String J = "right_lid";
-   public static final String K = "left_chest";
-   public static final String L = "right_chest";
-   public static final String M = "left_horn";
-   public static final String N = "right_horn";
-   public static final String O = "left_eye";
-   public static final String P = "right_eye";
-   public static final String Q = "jaw";
-   public static final String R = "nose";
-   public static final String S = "arms";
-   public static final String T = "tail";
-   public static final String U = "cube";
-   public static final String V = "beak";
-   public static final String W = "back_fin";
-   public static final String X = "mane";
-   public static final String Y = "neck";
-   public static final String Z = "mouth";
-   public static final String aa = "head";
-   public static final String ab = "hat";
-   public static final String ac = "body";
-   public static final String ad = "hat_rim";
-   public static final String ae = "jacket";
-   public static final String af = "top_gills";
-   public static final String ag = "left_gills";
-   public static final String ah = "right_gills";
-   public static final String ai = "root";
-   public static final String aj = "croaking_body";
-   public static final String ak = "tongue";
-   public static final String al = "tongue_r1";
-   public static final String am = "left_hand";
-   public static final String an = "right_hand";
-   public static final String ao = "left_foot";
-   public static final String ap = "right_foot";
-   public static final String aq = "eyes";
-   public static final String ar = "right_tendril";
-   public static final String as = "left_tendril";
-   public static final String at = "right_ribcage";
-   public static final String au = "left_ribcage";
-   public static final String av = "wind_body";
-   public static final String aw = "wind_top";
-   public static final String ax = "wind_mid";
-   public static final String ay = "wind_bottom";
-   public static final String az = "rods";
-   public static final String aA = "bone";
+public class fpd extends fof {
+   private final fpj a;
+   private final fpj b;
+
+   public fpd(fpj $$0) {
+      this.a = $$0.b("head");
+      this.b = this.a.b("jaw");
+   }
+
+   public static fpp a() {
+      fpr $$0 = new fpr();
+      fps $$1 = $$0.a();
+      float $$2 = -16.0F;
+      fps $$3 = $$1.a(
+         "head",
+         fpo.c()
+            .a("upper_lip", -6.0F, -1.0F, -24.0F, 12, 5, 16, 176, 44)
+            .a("upper_head", -8.0F, -8.0F, -10.0F, 16, 16, 16, 112, 30)
+            .a(true)
+            .a("scale", -5.0F, -12.0F, -4.0F, 2, 4, 6, 0, 0)
+            .a("nostril", -5.0F, -3.0F, -22.0F, 2, 2, 4, 112, 0)
+            .a(false)
+            .a("scale", 3.0F, -12.0F, -4.0F, 2, 4, 6, 0, 0)
+            .a("nostril", 3.0F, -3.0F, -22.0F, 2, 2, 4, 112, 0),
+         fpl.a
+      );
+      $$3.a("jaw", fpo.c().a(176, 65).a("jaw", -6.0F, 0.0F, -16.0F, 12.0F, 4.0F, 16.0F), fpl.a(0.0F, 4.0F, -8.0F));
+      return fpp.a($$0, 256, 256);
+   }
+
+   @Override
+   public void a(float $$0, float $$1, float $$2) {
+      this.b.e = (float)(Math.sin((double)($$0 * (float) Math.PI * 0.2F)) + 1.0) * 0.2F;
+      this.a.f = $$1 * (float) (Math.PI / 180.0);
+      this.a.e = $$2 * (float) (Math.PI / 180.0);
+   }
+
+   @Override
+   public void a(esh $$0, esl $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      $$0.a();
+      $$0.a(0.0F, -0.374375F, 0.0F);
+      $$0.b(0.75F, 0.75F, 0.75F);
+      this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      $$0.b();
+   }
 }

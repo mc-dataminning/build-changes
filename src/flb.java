@@ -1,3 +1,8 @@
-public interface flb {
-   void a(boa var1, esa var2);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface flb {
 }

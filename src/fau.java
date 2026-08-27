@@ -1,17 +1,39 @@
-public record fau(aiy a, aiy b, aiy c, aiy d) {
-   public fau(aiy $$0, aiy $$1) {
-      this($$0, $$0, $$1, $$1);
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
+
+public class fau extends ezm {
+   @Nullable
+   protected fbb a;
+   protected boolean b;
+
+   public fau(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      super($$0, $$1, $$2, $$3, vp.a);
+      this.b = $$4;
    }
 
-   public fau(aiy $$0, aiy $$1, aiy $$2) {
-      this($$0, $$1, $$2, $$1);
+   public void a(fbb $$0) {
+      this.a = $$0;
    }
 
-   public aiy a(boolean $$0, boolean $$1) {
-      if ($$0) {
-         return $$1 ? this.c : this.a;
-      } else {
-         return $$1 ? this.d : this.b;
+   public void b(boolean $$0) {
+      this.b = $$0;
+   }
+
+   public boolean a() {
+      return this.b;
+   }
+
+   @Override
+   public void a(fdj $$0) {
+      this.c($$0);
+   }
+
+   @Override
+   public void b(ezb $$0, int $$1, int $$2, float $$3) {
+      if (this.a != null) {
+         RenderSystem.disableDepthTest();
+         $$0.a(this.a.a(this.b, this.z()), this.B(), this.C(), this.g, this.h);
+         RenderSystem.enableDepthTest();
       }
    }
 }

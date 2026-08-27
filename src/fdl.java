@@ -1,24 +1,46 @@
-public record fdl(int a, int b) {
-   public static fdl a(fdj $$0, int $$1, int $$2) {
-      return switch ($$0) {
-         case a -> new fdl($$1, $$2);
-         case b -> new fdl($$2, $$1);
-      };
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+
+public class fdl<T> {
+   private final T b;
+   private final BiConsumer<Consumer<String>, T> c;
+   public static final fdl<?> a = new fdl<>(axk.a, ($$0, $$1) -> {
+   });
+
+   private fdl(T $$0, BiConsumer<Consumer<String>, T> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public fdl a(fdk $$0) {
-      return switch ($$0) {
-         case b -> new fdl(this.a, this.b + 1);
-         case a -> new fdl(this.a, this.b - 1);
-         case c -> new fdl(this.a - 1, this.b);
-         case d -> new fdl(this.a + 1, this.b);
-      };
+   public static fdl<?> a(String $$0) {
+      return new fdl<>($$0, Consumer::accept);
    }
 
-   public int a(fdj $$0) {
-      return switch ($$0) {
-         case a -> this.a;
-         case b -> this.b;
-      };
+   public static fdl<?> a(vq $$0) {
+      return new fdl<>($$0, ($$0x, $$1) -> $$0x.accept($$1.getString()));
+   }
+
+   public static fdl<?> a(List<vq> $$0) {
+      return new fdl<>($$0, ($$1, $$2) -> $$0.stream().map(vq::getString).forEach($$1));
+   }
+
+   public void a(Consumer<String> $$0) {
+      this.c.accept($$0, this.b);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof fdl<?> $$1) ? false : $$1.c == this.c && $$1.b.equals(this.b);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.b.hashCode();
+      return 31 * $$0 + this.c.hashCode();
    }
 }

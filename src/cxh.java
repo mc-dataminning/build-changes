@@ -1,76 +1,59 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public abstract class cxh extends cyo {
-   private static final int d = 2;
-   private static final int e = 4;
-   private static final int f = 3;
-   private static final int g = 2;
-   protected static final int a = 4;
-   private static final eol h = a(2.0, 4.0, 2.0, 14.0, 16.0, 14.0);
-   protected static final eol b = eoi.a(
-      eoi.b(), eoi.a(a(0.0, 0.0, 4.0, 16.0, 3.0, 12.0), a(4.0, 0.0, 0.0, 12.0, 3.0, 16.0), a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0), h), enw.e
+public class cxh extends cwu {
+   public static final Codec<cxh> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aiw.d(cwx.ah), aiw.d(cwx.ai), aiw.d(cwx.aj), aiw.d(cwx.ak), aiw.d(cwx.al)).apply($$0, $$0.stable(cxh::new))
    );
-   protected final jf.a c;
+   private final ij<cwq> c;
+   private final ij<cwq> d;
+   private final ij<cwq> e;
+   private final ij<cwq> f;
+   private final ij<cwq> g;
 
-   @Override
-   protected abstract MapCodec<? extends cxh> a();
-
-   public cxh(dle.d $$0, jf.a $$1) {
-      super($$0);
-      this.c = $$1;
+   public static cxh a(ik<cwq> $$0) {
+      return new cxh($$0.b(cwx.ah), $$0.b(cwx.ai), $$0.b(cwx.aj), $$0.b(cwx.ak), $$0.b(cwx.al));
    }
 
-   protected double b(dlf $$0) {
-      return 0.0;
-   }
-
-   protected boolean a(dlf $$0, hz $$1, bno $$2) {
-      return $$2.dt() < (double)$$1.v() + this.b($$0) && $$2.cH().e > (double)$$1.v() + 0.25;
-   }
-
-   @Override
-   protected blw a(coz $$0, dlf $$1, cvn $$2, hz $$3, chh $$4, blt $$5, eno $$6) {
-      jf $$7 = this.c.b().get($$0.d());
-      return $$7.interact($$1, $$2, $$3, $$4, $$5, $$0);
+   private cxh(ij<cwq> $$0, ij<cwq> $$1, ij<cwq> $$2, ij<cwq> $$3, ij<cwq> $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
    @Override
-   protected eol a(dlf $$0, cut $$1, hz $$2, enx $$3) {
+   protected Stream<ij<cwq>> b() {
+      return Stream.of(this.c, this.d, this.e, this.f, this.g);
+   }
+
+   @Override
+   protected Codec<? extends cwu> a() {
       return b;
    }
 
    @Override
-   protected eol a(dlf $$0, cut $$1, hz $$2) {
-      return h;
-   }
-
-   @Override
-   protected boolean d_(dlf $$0) {
-      return true;
-   }
-
-   @Override
-   protected boolean a(dlf $$0, cut $$1, hz $$2, ehf $$3) {
-      return false;
-   }
-
-   public abstract boolean d(dlf var1);
-
-   @Override
-   protected void a(dlf $$0, aov $$1, hz $$2, awo $$3) {
-      hz $$4 = def.a((cvn)$$1, $$2);
-      if ($$4 != null) {
-         ego $$5 = def.a($$1, $$4);
-         if ($$5 != egq.a && this.a($$5)) {
-            this.a($$0, $$1, $$2, $$5);
+   public ij<cwq> getNoiseBiome(int $$0, int $$1, int $$2, cwz.f $$3) {
+      int $$4 = iu.c($$0);
+      int $$5 = iu.c($$1);
+      int $$6 = iu.c($$2);
+      int $$7 = jb.a($$4);
+      int $$8 = jb.a($$6);
+      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
+         return this.c;
+      } else {
+         int $$9 = (jb.a($$4) * 2 + 1) * 8;
+         int $$10 = (jb.a($$6) * 2 + 1) * 8;
+         double $$11 = $$3.e().a(new dqo.e($$9, $$5, $$10));
+         if ($$11 > 0.25) {
+            return this.d;
+         } else if ($$11 >= -0.0625) {
+            return this.e;
+         } else {
+            return $$11 < -0.21875 ? this.f : this.g;
          }
       }
-   }
-
-   protected boolean a(ego $$0) {
-      return false;
-   }
-
-   protected void a(dlf $$0, cvn $$1, hz $$2, ego $$3) {
    }
 }

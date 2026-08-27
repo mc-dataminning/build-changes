@@ -1,23 +1,23 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cwl {
-   public static final Codec<cwl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(jz.aW.fieldOf("options").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.c)).apply($$0, cwl::new)
+public record cwl(cvf d, cjw e) {
+   public static final String a = "enabled_features";
+   public static final Codec<cwl> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(cvf.b.optionalFieldOf("DataPacks", cvf.a).forGetter(cwl::a), cjy.f.optionalFieldOf("enabled_features", cjy.h).forGetter(cwl::b))
+            .apply($$0, cwl::new)
    );
-   private final jx b;
-   private final float c;
+   public static final cwl c = new cwl(cvf.a, cjy.h);
 
-   public cwl(jx $$0, float $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public cwl a(cjw $$0) {
+      return new cwl(this.d, this.e.b($$0));
    }
 
-   public jx a() {
-      return this.b;
+   public cvf a() {
+      return this.d;
    }
 
-   public boolean a(awo $$0) {
-      return $$0.i() <= this.c;
+   public cjw b() {
+      return this.e;
    }
 }

@@ -1,29 +1,10 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class ear extends eak {
-   public static final Codec<ear> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.INT.fieldOf("max_water_depth").forGetter($$0x -> $$0x.c)).apply($$0, ear::new)
-   );
-   private final int c;
-
-   private ear(int $$0) {
-      this.c = $$0;
-   }
-
-   public static ear a(int $$0) {
-      return new ear($$0);
-   }
-
+public abstract class ear extends eas {
    @Override
-   protected boolean a(eaj $$0, awo $$1, hz $$2) {
-      int $$3 = $$0.a(dqo.a.d, $$2.u(), $$2.w());
-      int $$4 = $$0.a(dqo.a.b, $$2.u(), $$2.w());
-      return $$4 - $$3 <= this.c;
+   public final Stream<hz> a_(eaq $$0, awp $$1, hz $$2) {
+      return this.a($$0, $$1, $$2) ? Stream.of($$2) : Stream.of();
    }
 
-   @Override
-   public eam<?> b() {
-      return eam.d;
-   }
+   protected abstract boolean a(eaq var1, awp var2, hz var3);
 }

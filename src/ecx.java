@@ -1,25 +1,15 @@
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import java.util.Optional;
+import java.util.List;
 
-public class ecx extends ebe {
-   public static final Codec<ecx> d = a(ecx::new);
-
-   public ecx(ebe.c $$0) {
-      super($$0);
+public class ecx {
+   public static Codec<? extends ecw> a(iv<Codec<? extends ecw>> $$0) {
+      iv.a($$0, "random", ecz.a);
+      iv.a($$0, "random_group", eda.a);
+      return iv.a($$0, "direct", ecv.a);
    }
 
-   @Override
-   public Optional<ebe.b> a(ebe.a $$0) {
-      return a($$0, dqo.a.c, $$1 -> a($$1, $$0));
-   }
-
-   private static void a(ebw $$0, ebe.a $$1) {
-      hz $$2 = new hz($$1.h().a(9), 90, $$1.h().b(9));
-      $$0.a(new ecw.a($$2));
-   }
-
-   @Override
-   public ebn<?> e() {
-      return ebn.a;
+   public static void a(ph<ecu> $$0, ij<ecu> $$1, List<ecw> $$2) {
+      $$2.stream().flatMap(ecw::a).map($$0x -> $$0x.a().a()).forEach($$2x -> po.a($$0, $$2x, new ecu($$1, List.of(Pair.of(ecs.b($$2x), 1)), ecu.a.b)));
    }
 }

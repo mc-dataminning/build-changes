@@ -1,7 +1,7 @@
 import java.util.Date;
 
 public interface ad {
-   eid d();
+   eik d();
 
    String b();
 
@@ -9,7 +9,7 @@ public interface ad {
 
    int e();
 
-   int a(aqp var1);
+   int a(aqq var1);
 
    Date f();
 

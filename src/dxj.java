@@ -1,28 +1,34 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dxj<P extends dxi> {
-   public static final dxj<dxd> a = a("blob_foliage_placer", dxd.a);
-   public static final dxj<dxo> b = a("spruce_foliage_placer", dxo.a);
-   public static final dxj<dxm> c = a("pine_foliage_placer", dxm.a);
-   public static final dxj<dxc> d = a("acacia_foliage_placer", dxc.a);
-   public static final dxj<dxe> e = a("bush_foliage_placer", dxe.c);
-   public static final dxj<dxh> f = a("fancy_foliage_placer", dxh.c);
-   public static final dxj<dxk> g = a("jungle_foliage_placer", dxk.a);
-   public static final dxj<dxl> h = a("mega_pine_foliage_placer", dxl.a);
-   public static final dxj<dxg> i = a("dark_oak_foliage_placer", dxg.a);
-   public static final dxj<dxn> j = a("random_spread_foliage_placer", dxn.a);
-   public static final dxj<dxf> k = a("cherry_foliage_placer", dxf.a);
-   private final Codec<P> l;
+public class dxj extends dxp {
+   public static final Codec<dxj> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, dxj::new));
 
-   private static <P extends dxi> dxj<P> a(String $$0, Codec<P> $$1) {
-      return iv.a(kf.W, $$0, new dxj<>($$1));
+   public dxj(blb $$0, blb $$1) {
+      super($$0, $$1);
    }
 
-   private dxj(Codec<P> $$0) {
-      this.l = $$0;
+   @Override
+   protected dxq<?> a() {
+      return dxq.d;
    }
 
-   public Codec<P> a() {
-      return this.l;
+   @Override
+   protected void a(cvx $$0, dxp.b $$1, awp $$2, dwz $$3, int $$4, dxp.a $$5, int $$6, int $$7, int $$8) {
+      boolean $$9 = $$5.c();
+      hz $$10 = $$5.a().b($$8);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b(), -1 - $$6, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 - 1, -$$6, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b() - 1, 0, $$9);
+   }
+
+   @Override
+   public int a(awp $$0, int $$1, dwz $$2) {
+      return 0;
+   }
+
+   @Override
+   protected boolean a(awp $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$2 == 0 ? ($$1 > 1 || $$3 > 1) && $$1 != 0 && $$3 != 0 : $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

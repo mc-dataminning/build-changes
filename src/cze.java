@@ -1,114 +1,120 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
 
-public class cze extends cxg {
-   public static final MapCodec<cze> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(kf.e.q().fieldOf("candle").forGetter($$0x -> $$0x.k), u()).apply($$0, cze::new)
-   );
-   public static final dlw d = cxg.b;
+public class cze extends cys {
+   public static final MapCodec<cze> a = b(cze::new);
+   public static final int b = 6;
+   public static final dmj c = dlz.ay;
+   public static final int d = b(0);
    protected static final float e = 1.0F;
-   protected static final eol f = cyo.a(1.0, 0.0, 1.0, 15.0, 8.0, 15.0);
-   protected static final eol g = cyo.a(7.0, 8.0, 7.0, 9.0, 14.0, 9.0);
-   protected static final eol h = eoi.a(f, g);
-   private static final Map<czd, cze> i = Maps.newHashMap();
-   private static final Iterable<ens> j = ImmutableList.of(new ens(0.5, 1.0, 0.5));
-   private final czd k;
+   protected static final float f = 2.0F;
+   protected static final eos[] g = new eos[]{
+      cys.a(1.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      cys.a(3.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      cys.a(5.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      cys.a(7.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      cys.a(9.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      cys.a(11.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      cys.a(13.0, 0.0, 1.0, 15.0, 8.0, 15.0)
+   };
 
    @Override
    public MapCodec<cze> a() {
-      return c;
+      return a;
    }
 
-   protected cze(cyo $$0, dle.d $$1) {
-      super($$1);
-      this.k(this.E.b().a(d, Boolean.valueOf(false)));
-      if ($$0 instanceof czd $$2) {
-         i.put($$2, this);
-         this.k = $$2;
+   protected cze(dli.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(c, Integer.valueOf(0)));
+   }
+
+   @Override
+   protected eos a(dlj $$0, cux $$1, hz $$2, eoe $$3) {
+      return g[$$0.c(c)];
+   }
+
+   @Override
+   protected bly a(cpd $$0, dlj $$1, cvr $$2, hz $$3, chl $$4, blv $$5, env $$6) {
+      coy $$7 = $$0.d();
+      if ($$0.a(aui.ai) && $$1.c(c) == 0 && cys.a($$7) instanceof czh $$8) {
+         if (!$$4.f()) {
+            $$0.h(1);
+         }
+
+         $$2.a(null, $$3, atl.dj, atm.e, 1.0F, 1.0F);
+         $$2.b($$3, czi.a($$8));
+         $$2.a($$4, dpw.c, $$3);
+         $$4.b(atv.c.b($$7));
+         return bly.a;
       } else {
-         throw new IllegalArgumentException("Expected block to be of " + czd.class + " was " + $$0.getClass());
+         return bly.d;
       }
    }
 
    @Override
-   protected Iterable<ens> b(dlf $$0) {
-      return j;
+   protected blw a(dlj $$0, cvr $$1, hz $$2, chl $$3, env $$4) {
+      if ($$1.B) {
+         if (a($$1, $$2, $$0, $$3).a()) {
+            return blw.a;
+         }
+
+         if ($$3.b(blv.a).b()) {
+            return blw.b;
+         }
+      }
+
+      return a($$1, $$2, $$0, $$3);
    }
 
-   @Override
-   protected eol a(dlf $$0, cut $$1, hz $$2, enx $$3) {
-      return h;
-   }
-
-   @Override
-   protected blw a(coz $$0, dlf $$1, cvn $$2, hz $$3, chh $$4, blt $$5, eno $$6) {
-      if ($$0.a(cpc.or) || $$0.a(cpc.tV)) {
-         return blw.e;
-      } else if (a($$6) && $$0.b() && $$1.c(d)) {
-         a($$4, $$1, $$2, $$3);
-         return blw.a($$2.B);
+   protected static blw a(cvs $$0, hz $$1, dlj $$2, chl $$3) {
+      if (!$$3.s(false)) {
+         return blw.d;
       } else {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+         $$3.a(atv.U);
+         $$3.gd().a(2, 0.1F);
+         int $$4 = $$2.c(c);
+         $$0.a($$3, dpw.m, $$1);
+         if ($$4 < 6) {
+            $$0.a($$1, $$2.a(c, Integer.valueOf($$4 + 1)), 3);
+         } else {
+            $$0.a($$1, false);
+            $$0.a($$3, dpw.f, $$1);
+         }
+
+         return blw.a;
       }
    }
 
    @Override
-   protected blu a(dlf $$0, cvn $$1, hz $$2, chh $$3, eno $$4) {
-      blu $$5 = cza.a($$1, $$2, cyq.eg.o(), $$3);
-      if ($$5.a()) {
-         c($$0, $$1, $$2);
-      }
-
-      return $$5;
-   }
-
-   private static boolean a(eno $$0) {
-      return $$0.e().d - (double)$$0.a().v() > 0.5;
+   protected dlj a(dlj $$0, ie $$1, dlj $$2, cvs $$3, hz $$4, hz $$5) {
+      return $$1 == ie.a && !$$0.a($$3, $$4) ? cyu.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected void a(dlg.a<cyo, dlf> $$0) {
-      $$0.a(d);
-   }
-
-   @Override
-   public coz a(cvq $$0, hz $$1, dlf $$2) {
-      return new coz(cyq.eg);
-   }
-
-   @Override
-   protected dlf a(dlf $$0, ie $$1, dlf $$2, cvo $$3, hz $$4, hz $$5) {
-      return $$1 == ie.a && !$$0.a($$3, $$4) ? cyq.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected boolean a(dlf $$0, cvq $$1, hz $$2) {
+   protected boolean a(dlj $$0, cvu $$1, hz $$2) {
       return $$1.a_($$2.d()).e();
    }
 
    @Override
-   protected int a(dlf $$0, cvn $$1, hz $$2) {
-      return cza.d;
+   protected void a(dlk.a<cys, dlj> $$0) {
+      $$0.a(c);
    }
 
    @Override
-   protected boolean d_(dlf $$0) {
+   protected int a(dlj $$0, cvr $$1, hz $$2) {
+      return b($$0.c(c));
+   }
+
+   public static int b(int $$0) {
+      return (7 - $$0) * 2;
+   }
+
+   @Override
+   protected boolean d_(dlj $$0) {
       return true;
    }
 
    @Override
-   protected boolean a(dlf $$0, cut $$1, hz $$2, ehf $$3) {
+   protected boolean a(dlj $$0, cux $$1, hz $$2, ehm $$3) {
       return false;
-   }
-
-   public static dlf a(czd $$0) {
-      return i.get($$0).o();
-   }
-
-   public static boolean g(dlf $$0) {
-      return $$0.a(atz.bj, $$1 -> $$1.b(d) && !$$0.c(d));
    }
 }
