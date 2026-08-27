@@ -91,7 +91,7 @@ public abstract class epf implements eqh, eqt, esi, esn {
       return sw.a("gui.narrate.button", $$0);
    }
 
-   public abstract void b(eox var1, int var2, int var3, float var4);
+   protected abstract void b(eox var1, int var2, int var3, float var4);
 
    protected static void a(eox $$0, eov $$1, sw $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
       int $$8 = $$1.a($$2);

@@ -66,6 +66,8 @@ public class sd extends SimpleChannelInboundHandler<uo<?>> {
    private float v;
    private int w;
    private boolean x;
+   @Nullable
+   private volatile sw y;
 
    public sd(up $$0) {
       this.k = $$0;
@@ -80,6 +82,10 @@ public class sd extends SimpleChannelInboundHandler<uo<?>> {
          this.a(se.a);
       } catch (Throwable var3) {
          j.error(LogUtils.FATAL_MARKER, "Failed to change protocol to handshake", var3);
+      }
+
+      if (this.y != null) {
+         this.a(this.y);
       }
    }
 
@@ -248,7 +254,11 @@ public class sd extends SimpleChannelInboundHandler<uo<?>> {
    }
 
    public void a(sw $$0) {
-      if (this.m.isOpen()) {
+      if (this.m == null) {
+         this.y = $$0;
+      }
+
+      if (this.h()) {
          this.m.close().awaitUninterruptibly();
          this.p = $$0;
       }
@@ -267,7 +277,13 @@ public class sd extends SimpleChannelInboundHandler<uo<?>> {
    }
 
    public static sd a(InetSocketAddress $$0, boolean $$1) {
-      final sd $$2 = new sd(up.b);
+      sd $$2 = new sd(up.b);
+      ChannelFuture $$3 = a($$0, $$1, $$2);
+      $$3.syncUninterruptibly();
+      return $$2;
+   }
+
+   public static ChannelFuture a(InetSocketAddress $$0, boolean $$1, final sd $$2) {
       Class<? extends SocketChannel> $$3;
       aov<? extends EventLoopGroup> $$4;
       if (Epoll.isAvailable() && $$1) {
@@ -278,7 +294,7 @@ public class sd extends SimpleChannelInboundHandler<uo<?>> {
          $$4 = f;
       }
 
-      ((Bootstrap)((Bootstrap)((Bootstrap)new Bootstrap().group($$4.a())).handler(new ChannelInitializer<Channel>() {
+      return ((Bootstrap)((Bootstrap)((Bootstrap)new Bootstrap().group($$4.a())).handler(new ChannelInitializer<Channel>() {
          protected void initChannel(Channel $$0) {
             try {
                $$0.config().setOption(ChannelOption.TCP_NODELAY, true);
@@ -289,8 +305,7 @@ public class sd extends SimpleChannelInboundHandler<uo<?>> {
             sd.a($$1, up.b);
             $$1.addLast("packet_handler", $$2);
          }
-      })).channel($$3)).connect($$0.getAddress(), $$0.getPort()).syncUninterruptibly();
-      return $$2;
+      })).channel($$3)).connect($$0.getAddress(), $$0.getPort());
    }
 
    public static void a(ChannelPipeline $$0, up $$1) {

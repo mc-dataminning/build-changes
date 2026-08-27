@@ -15,7 +15,7 @@ public abstract class eoz extends epf {
    public abstract void c();
 
    @Override
-   public void b(eox $$0, int $$1, int $$2, float $$3) {
+   protected void b(eox $$0, int $$1, int $$2, float $$3) {
       enn $$4 = enn.N();
       $$0.a(1.0F, 1.0F, 1.0F, this.t);
       RenderSystem.enableBlend();

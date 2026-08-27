@@ -1,4 +1,4 @@
-// 1.20	2026-08-28T00:12:33.4862131	vanilla/Tags for minecraft:game_event
+// 1.20.1 Release Candidate 1	2026-08-28T00:15:19.753495	vanilla/Tags for minecraft:game_event
 641d5946c42493fe7a161d4a3971814600234ffd data\minecraft\tags\game_events\shrieker_can_listen.json
 2dd113837f785e075cf7d850d7430a24740b3365 data\minecraft\tags\game_events\ignore_vibrations_sneaking.json
 442198863e9a486ba7623fc744cde3fe9f3c70df data\minecraft\tags\game_events\vibrations.json

@@ -210,16 +210,16 @@ public class eiu extends gan {
    }
 
    public void d() {
-      this.bl = this.d((epi)epi.a(sw.c("mco.selectServer.trial"), $$0 -> {
+      this.bl = this.e((epi)epi.a(sw.c("mco.selectServer.trial"), $$0 -> {
          if (this.aV && !this.aW) {
             ac.i().a("https://aka.ms/startjavarealmstrial");
             this.f.a(this.aH);
          }
       }).a(this.g / 2 + 52, this.R() + 137 - 20, 98, 20).a());
-      this.bm = this.d(
+      this.bm = this.e(
          (epi)epi.a(sw.c("mco.selectServer.buy"), $$0 -> ac.i().a("https://aka.ms/BuyJavaRealms")).a(this.g / 2 + 52, this.R() + 160 - 20, 98, 20).a()
       );
-      this.bn = this.d(new eiu.b());
+      this.bn = this.e(new eiu.b());
    }
 
    public void e() {
@@ -708,17 +708,17 @@ public class eiu extends gan {
       this.aI.a($$0, $$1, $$2, $$3);
       $$0.a(L, this.g / 2 - 64, 5, 0.0F, 0.0F, 128, 34, 128, 64);
       if (eiz.a == eiz.b.b) {
-         this.e($$0);
+         this.d($$0);
       }
 
       if (eiz.a == eiz.b.c) {
-         this.d($$0);
+         this.c($$0);
       }
 
       if (this.a()) {
          $$0.c().a();
          $$0.c().a(0.0F, 0.0F, 100.0F);
-         this.c($$0);
+         this.c($$0, $$1, $$2, $$3);
          $$0.c().b();
       } else {
          if (this.aX) {
@@ -743,7 +743,10 @@ public class eiu extends gan {
             $$6 = 8;
          }
 
+         $$0.c().a();
+         $$0.c().a(0.0F, 0.0F, 110.0F);
          $$0.a(Q, this.bl.p() + this.bl.k() - 8 - 4, this.bl.r() + this.bl.h() / 2 - 4, 0.0F, (float)$$6, 8, 8, 8, 16);
+         $$0.c().b();
       }
    }
 
@@ -764,9 +767,9 @@ public class eiu extends gan {
       return $$0 < (double)($$2 - 5) || $$0 > (double)($$2 + 315) || $$1 < (double)($$3 - 5) || $$1 > (double)($$3 + 171);
    }
 
-   private void c(eox $$0) {
-      int $$1 = this.Q();
-      int $$2 = this.R();
+   private void c(eox $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.Q();
+      int $$5 = this.R();
       if (!this.aX) {
          this.ba = 0;
          this.bb = 0;
@@ -786,14 +789,12 @@ public class eiu extends gan {
 
       $$0.a(1.0F, 1.0F, 1.0F, 0.7F);
       RenderSystem.enableBlend();
-      int $$3 = 0;
-      int $$4 = 32;
-      $$0.a(O, 0, 32, 0.0F, 0.0F, this.g, this.h - 40 - 32, 310, 166);
+      $$0.a(O, 0, 44, 0.0F, 0.0F, this.g, this.h - 44, 310, 166);
       RenderSystem.disableBlend();
       $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      $$0.a(N, $$1, $$2, 0.0F, 0.0F, 310, 166, 310, 166);
+      $$0.a(N, $$4, $$5, 0.0F, 0.0F, 310, 166, 310, 166);
       if (!au.isEmpty()) {
-         $$0.a(au.get(this.ba), $$1 + 7, $$2 + 7, 0.0F, 0.0F, 195, 152, 195, 152);
+         $$0.a(au.get(this.ba), $$4 + 7, $$5 + 7, 0.0F, 0.0F, 195, 152, 195, 152);
          if (this.bb % 95 < 5) {
             if (!this.bc) {
                this.ba = (this.ba + 1) % au.size();
@@ -804,7 +805,10 @@ public class eiu extends gan {
          }
       }
 
-      this.bg.c($$0, this.g / 2 + 52, $$2 + 7, 10, 16777215);
+      this.bg.c($$0, this.g / 2 + 52, $$5 + 7, 10, 16777215);
+      this.bl.a($$0, $$1, $$2, $$3);
+      this.bm.a($$0, $$1, $$2, $$3);
+      this.bn.a($$0, $$1, $$2, $$3);
    }
 
    int Q() {
@@ -905,7 +909,7 @@ public class eiu extends gan {
       }
    }
 
-   private void d(eox $$0) {
+   private void c(eox $$0) {
       String $$1 = "LOCAL!";
       $$0.c().a();
       $$0.c().a((float)(this.g / 2 - 25), 20.0F, 0.0F);
@@ -915,7 +919,7 @@ public class eiu extends gan {
       $$0.c().b();
    }
 
-   private void e(eox $$0) {
+   private void d(eox $$0) {
       String $$1 = "STAGE!";
       $$0.c().a();
       $$0.c().a((float)(this.g / 2 - 25), 20.0F, 0.0F);

@@ -187,16 +187,17 @@ public class dec {
    ) {
       ddx $$7 = $$6.get($$6.size() / 2);
       baw $$8 = bat.e.a($$7.f(), $$1.ac(), this.toString());
-      return this.u.doWork(this, $$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7).thenApply($$2x -> {
-         if ($$7 instanceof des $$3x && !$$3x.j().b(this)) {
-            $$3x.a(this);
-         }
-
+      return this.u.doWork(this, $$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7).thenApply($$1x -> {
+         $$1x.ifLeft($$0xx -> {
+            if ($$0xx instanceof des $$1xx && !$$1xx.j().b(this)) {
+               $$1xx.a(this);
+            }
+         });
          if ($$8 != null) {
             $$8.finish();
          }
 
-         return $$2x;
+         return $$1x;
       });
    }
 
