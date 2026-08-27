@@ -1,4 +1,4 @@
-// 1.20.3 Release Candidate 1	2026-08-28T01:12:03.2812437	vanilla/Tags for minecraft:block
+// 1.20.3	2026-08-28T01:14:16.091359	vanilla/Tags for minecraft:block
 882f7161808179f92ed953b9200fdaf74eec6c36 data\minecraft\tags\blocks\infiniburn_overworld.json
 84150f9be2fa26f9202962b031c722718dd23ca0 data\minecraft\tags\blocks\stone_ore_replaceables.json
 60f661a9b26b7f6b1910e5390a40644354fe0919 data\minecraft\tags\blocks\frogs_spawnable_on.json
@@ -24,8 +24,8 @@ af12451a6897e7ada9cfb050679665ae3017838e data\minecraft\tags\blocks\corals.json
 aeaa445db335760020004d563a198676fdad5ddf data\minecraft\tags\blocks\guarded_by_piglins.json
 4bee09ae134c8c7e450e996a5b9a9bcc4d7e7420 data\minecraft\tags\blocks\moss_replaceable.json
 9d786349359c04ae72a7f261654b6b4fa33d425e data\minecraft\tags\blocks\snow_layer_cannot_survive_on.json
-daec9f32b34c685d972f66ea58ffc7ef3fc977a5 data\minecraft\tags\blocks\wooden_fences.json
 d795677dfa226e3d5f7f602fd7e9d9e7a55ee61b data\minecraft\tags\blocks\small_flowers.json
+daec9f32b34c685d972f66ea58ffc7ef3fc977a5 data\minecraft\tags\blocks\wooden_fences.json
 5b64c6e3c9cd3170bab9758491e742e0307d6617 data\minecraft\tags\blocks\deepslate_ore_replaceables.json
 71180030d3ebe73ed7aa07473fb200e0aa359909 data\minecraft\tags\blocks\candles.json
 62b3c476ebacc9707c4f2ddcc513e14294fd1988 data\minecraft\tags\blocks\needs_iron_tool.json
@@ -62,8 +62,8 @@ afd862ebc333a8df53174530faee5f54c15a71a7 data\minecraft\tags\blocks\nether_carve
 c3344f6e568a707914a420dacbf9b082a8ff1787 data\minecraft\tags\blocks\stone_bricks.json
 53c57757f5ee96d1a6d3e90d92e8914db0ad1d8c data\minecraft\tags\blocks\cauldrons.json
 a91a14b0d844c2e8beb882a51072178e0667620c data\minecraft\tags\blocks\jungle_logs.json
-3c4ac3776003f4217a20f6ed7a55765569f41a87 data\minecraft\tags\blocks\beacon_base_blocks.json
 4b024c07991b0127a93c4927165b70cbc739df3f data\minecraft\tags\blocks\stairs.json
+3c4ac3776003f4217a20f6ed7a55765569f41a87 data\minecraft\tags\blocks\beacon_base_blocks.json
 d325dafefb521ba257286a3f3c66d9d6cd3bd320 data\minecraft\tags\blocks\cave_vines.json
 21826e6d8baefa69712a8a9b5ccdd0ca304ab3d7 data\minecraft\tags\blocks\sculk_replaceable.json
 1b50a67efc31f461ce0bca94ec806cbf528412db data\minecraft\tags\blocks\coal_ores.json
@@ -150,10 +150,10 @@ f28dc9f2c7d071fef84fb760a59427d564938731 data\minecraft\tags\blocks\diamond_ores
 504b82b5cf5555c70a8dea493720a2a5139f1e55 data\minecraft\tags\blocks\fence_gates.json
 7ff1531dc7f287a36682c786f864934ac10ba0dc data\minecraft\tags\blocks\portals.json
 51ce2bcc8e2afb893169c1f8562e87206632ea5a data\minecraft\tags\blocks\sword_efficient.json
-3e070569b31d1100ac334efd44a58e52df25df1a data\minecraft\tags\blocks\flowers.json
-88e03262431177ee3001a61830532ea6b37dfcce data\minecraft\tags\blocks\wall_signs.json
-76ac0bd2e48021aef9ecffd104321ebc03c694eb data\minecraft\tags\blocks\standing_signs.json
 5b7a16c4ba8e702114347cf2a688167b9789cd58 data\minecraft\tags\blocks\wall_post_override.json
+3e070569b31d1100ac334efd44a58e52df25df1a data\minecraft\tags\blocks\flowers.json
+76ac0bd2e48021aef9ecffd104321ebc03c694eb data\minecraft\tags\blocks\standing_signs.json
+88e03262431177ee3001a61830532ea6b37dfcce data\minecraft\tags\blocks\wall_signs.json
 74f68e22bf93a751191e1ec35390adcf191a2880 data\minecraft\tags\blocks\fences.json
 19f48b0aa7f4f0432b1625d6afe2e73994b2e6ca data\minecraft\tags\blocks\mangrove_logs.json
 1414de47b2bc0b959544ff1a82317739d339fe79 data\minecraft\tags\blocks\slabs.json
