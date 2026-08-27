@@ -50,7 +50,7 @@ public class ffz extends fdb {
          this.l.a(this.p);
       }
 
-      this.d(this.l);
+      this.e(this.l);
       this.r = this.d(exg.a(vf.c("selectServer.select"), $$0 -> this.n()).a(100).a());
       exg $$1 = this.d(exg.a(vf.c("selectServer.direct"), $$0 -> {
          this.v = new fod(gfs.a("selectServer.defaultName"), "", fod.b.c);
@@ -208,6 +208,7 @@ public class ffz extends fdb {
    public void a(ewu $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
       this.u = null;
+      this.l.a($$0, $$1, $$2, $$3);
       $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
       if (this.u != null) {
          $$0.a(this.i, this.u, $$1, $$2);

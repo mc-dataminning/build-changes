@@ -19,6 +19,7 @@ public class go<T> implements AutoCloseable {
    private boolean h;
    private final Deque<gk<T>> i = Queues.newArrayDeque();
    private final List<gk<T>> j = new ObjectArrayList();
+   private int k;
 
    public go(int $$0, int $$1, bgs $$2) {
       this.c = $$0;
@@ -28,7 +29,12 @@ public class go<T> implements AutoCloseable {
    }
 
    private static <T extends du<T>> gq a(go<T> $$0, dp $$1) {
-      return new gq(0, $$1, $$0.i::clear);
+      if ($$0.k == 0) {
+         return new gq(0, $$1, $$0.i::clear);
+      } else {
+         int $$2 = $$0.k + 1;
+         return new gq($$2, $$1, $$0.b($$2));
+      }
    }
 
    public static <T extends du<T>> void a(go<T> $$0, hd<T> $$1, T $$2, dp $$3) {
@@ -79,6 +85,7 @@ public class go<T> implements AutoCloseable {
             return;
          }
 
+         this.k = $$0.a().c();
          $$0.a(this);
          if (this.h) {
             b.error("Command execution stopped due to command queue overflow (max {})", 10000000);
@@ -87,6 +94,8 @@ public class go<T> implements AutoCloseable {
 
          this.g();
       }
+
+      this.k = 0;
    }
 
    private void g() {
