@@ -2,7 +2,7 @@ import com.mojang.serialization.Codec;
 
 public enum bhe implements ash {
    a("hurt", aow.sz),
-   b("thorns", aow.xF),
+   b("thorns", aow.xK),
    c("drowning", aow.sA),
    d("burning", aow.sC),
    e("poking", aow.sD),

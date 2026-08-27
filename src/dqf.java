@@ -1,19 +1,26 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class dqf implements dpr {
+public class dqf implements dpq {
    public static final Codec<dqf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.list(dpz.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b)).apply($$0, dqf::new)
+      $$0 -> $$0.group(
+               dez.b.fieldOf("target").forGetter($$0x -> $$0x.b),
+               dez.b.fieldOf("state").forGetter($$0x -> $$0x.c),
+               bfv.b(0, 12).fieldOf("radius").forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, dqf::new)
    );
-   public final List<dpz.a> b;
+   public final dez b;
+   public final dez c;
+   private final bfv d;
 
-   public dqf(dfa $$0, dfa $$1) {
-      this(ImmutableList.of(dpz.a(new dxx($$0), $$1)));
+   public dqf(dez $$0, dez $$1, bfv $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public dqf(List<dpz.a> $$0) {
-      this.b = $$0;
+   public bfv a() {
+      return this.d;
    }
 }

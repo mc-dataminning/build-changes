@@ -25,7 +25,7 @@ public interface bdn {
    bdq e();
 
    @Nullable
-   bdq a(cot var1, aeq<cpm> var2, String var3);
+   bdq a(cos var1, aeq<cpl> var2, String var3);
 
    public static class a implements bdn {
       private static final Logger b = LogUtils.getLogger();
@@ -72,7 +72,7 @@ public interface bdn {
 
       @Nullable
       @Override
-      public bdq a(cot $$0, aeq<cpm> $$1, String $$2) {
+      public bdq a(cos $$0, aeq<cpl> $$1, String $$2) {
          return null;
       }
    }

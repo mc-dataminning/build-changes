@@ -17,7 +17,7 @@ public class aht {
       });
    }
 
-   private static Collection<String> a(amx $$0, ecd $$1, Collection<String> $$2) {
+   private static Collection<String> a(amx $$0, ecc $$1, Collection<String> $$2) {
       $$0.a();
       Collection<String> $$3 = Lists.newArrayList($$2);
       Collection<String> $$4 = $$1.F().a().b();
@@ -36,7 +36,7 @@ public class aht {
          dr $$1 = (dr)$$0x.getSource();
          MinecraftServer $$2 = $$1.l();
          amx $$3 = $$2.aB();
-         ecd $$4 = $$2.aU();
+         ecc $$4 = $$2.aT();
          Collection<String> $$5 = $$3.d();
          Collection<String> $$6 = a($$3, $$4, $$5);
          $$1.a(() -> tf.c("commands.reload.success"), true);

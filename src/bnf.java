@@ -1,22 +1,29 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bnf {
-   public static bkr<biy> a() {
-      return boc.a(
-         (Function<boc.b<biy>, ? extends App<boc.c<biy>, bof<biy>>>)($$0 -> $$0.group($$0.b(bsa.aa))
-               .apply(
-                  $$0,
-                  $$1 -> ($$2, $$3, $$4) -> {
-                        Optional.ofNullable($$2.a($$0.b($$1)))
-                           .map($$0xxx -> $$0xxx instanceof biy $$1xx ? $$1xx : null)
-                           .filter(biy::eu)
-                           .filter($$1xx -> $$1xx.ag() != bim.bt || $$2.X().b(cpi.J))
-                           .ifPresent($$1xx -> $$1.b());
-                        return true;
-                     }
-               ))
+   private static final int a = 180;
+   private static final int b = 8;
+   private static final int c = 6;
+
+   public static blz<bjh> a(brz<hd> $$0, float $$1, int $$2) {
+      MutableLong $$3 = new MutableLong(0L);
+      return bob.a(
+         (Function<bob.b<bjh>, ? extends App<bob.c<bjh>, boe<bjh>>>)($$4 -> $$4.group($$4.a(brz.m), $$4.b($$0)).apply($$4, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
+                  hd $$9 = $$4.b($$5);
+                  if ($$6.ac() != $$9.a() || !$$9.b().a($$7.di(), (double)$$2)) {
+                     return false;
+                  } else if ($$8 <= $$3.getValue()) {
+                     return true;
+                  } else {
+                     Optional<ehd> $$10 = Optional.ofNullable(btr.a($$7, 8, 6));
+                     $$4x.a($$10.map($$1xxxx -> new bsc($$1xxxx, $$1, 1)));
+                     $$3.setValue($$8 + 180L);
+                     return true;
+                  }
+               }))
       );
    }
 }

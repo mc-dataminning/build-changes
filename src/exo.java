@@ -1,62 +1,42 @@
-import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.stream.Stream;
 
-public class exo extends exz {
-   private static final tf a = tf.c("symlink_warning.title.world").a(n.r);
-   private static final tf b = tf.a("symlink_warning.message.world", "https://aka.ms/MinecraftSymLinks");
-   private static final tf c = tf.c("symlink_warning.title.pack").a(n.r);
-   private static final tf k = tf.a("symlink_warning.message.pack", "https://aka.ms/MinecraftSymLinks");
-   private final tf l;
-   private final String m;
-   @Nullable
-   private final exz n;
-   private final evn o = new evn().b(10);
+public class exo extends exs {
+   private etd c;
 
-   public exo(tf $$0, tf $$1, String $$2, @Nullable exz $$3) {
-      super($$0);
-      this.l = $$1;
-      this.m = $$2;
-      this.n = $$3;
+   private static eqo<?>[] a(eqp $$0) {
+      return new eqo[]{$$0.c(), $$0.N(), $$0.C(), $$0.O(), $$0.V()};
    }
 
-   public static exz a(@Nullable exz $$0) {
-      return new exo(a, b, "https://aka.ms/MinecraftSymLinks", $$0);
-   }
-
-   public static exz b(@Nullable exz $$0) {
-      return new exo(c, k, "https://aka.ms/MinecraftSymLinks", $$0);
+   public exo(eya $$0, eqp $$1) {
+      super($$0, $$1, tf.c("options.mouse_settings.title"));
    }
 
    @Override
-   protected void aE_() {
-      super.aE_();
-      this.o.c().b();
-      evn.b $$0 = this.o.d(1);
-      $$0.a(new etm(this.e, this.i));
-      $$0.a(new etb(this.l, this.i).i(this.g - 50).b(true));
-      int $$1 = 120;
-      evn $$2 = new evn().a(5);
-      evn.b $$3 = $$2.d(3);
-      $$3.a(esh.a(te.n, $$0x -> ac.i().a(this.m)).b(120, 20).a());
-      $$3.a(esh.a(te.o, $$0x -> this.f.o.a(this.m)).b(120, 20).a());
-      $$3.a(esh.a(te.k, $$0x -> this.au_()).b(120, 20).a());
-      $$0.a($$2);
-      this.b();
-      this.o.a(this::d);
+   protected void aC_() {
+      this.c = new etd(this.f, this.g, this.h, 32, this.h - 32, 25);
+      if (eka.a()) {
+         this.c.a(Stream.concat(Arrays.stream(a(this.b)), Stream.of(this.b.D())).toArray(eqo[]::new));
+      } else {
+         this.c.a(a(this.b));
+      }
+
+      this.e(this.c);
+      this.d(esg.a(te.d, $$0 -> {
+         this.b.ar();
+         this.f.a(this.a);
+      }).a(this.g / 2 - 100, this.h - 27, 200, 20).a());
    }
 
    @Override
-   protected void b() {
-      this.o.a();
-      evm.a(this.o, this.s());
+   public void a(erv $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.c.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 5, 16777215);
    }
 
    @Override
-   public tf e() {
-      return te.a(super.e(), this.l);
-   }
-
-   @Override
-   public void au_() {
-      this.f.a(this.n);
+   public void b(erv $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 }

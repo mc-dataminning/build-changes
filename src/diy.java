@@ -1,23 +1,15 @@
-import javax.annotation.Nullable;
+public interface diy<T> {
+   void g(T var1);
 
-public interface diy<B, T extends B> {
-   static <B, T extends B> diy<B, T> a(final Class<T> $$0) {
-      return new diy<B, T>() {
-         @Nullable
-         @Override
-         public T a(B $$0x) {
-            return (T)($$0.isInstance($$0) ? $$0 : null);
-         }
+   void f(T var1);
 
-         @Override
-         public Class<? extends B> a() {
-            return $$0;
-         }
-      };
-   }
+   void e(T var1);
 
-   @Nullable
-   T a(B var1);
+   void d(T var1);
 
-   Class<? extends B> a();
+   void c(T var1);
+
+   void b(T var1);
+
+   void a(T var1);
 }

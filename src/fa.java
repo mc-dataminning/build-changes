@@ -1,15 +1,15 @@
 import com.mojang.brigadier.context.CommandContext;
 
-public class fa extends ex<cyy> {
+public class fa extends ex<cyx> {
    private fa() {
-      super(cyy.e, cyy::values);
+      super(cyx.e, cyx::values);
    }
 
    public static fa a() {
       return new fa();
    }
 
-   public static cyy a(CommandContext<dr> $$0, String $$1) {
-      return (cyy)$$0.getArgument($$1, cyy.class);
+   public static cyx a(CommandContext<dr> $$0, String $$1) {
+      return (cyx)$$0.getArgument($$1, cyx.class);
    }
 }

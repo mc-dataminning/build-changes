@@ -8,7 +8,7 @@ public interface lp {
 
    lp a(@Nullable String var1);
 
-   cit a();
+   cis a();
 
    void a(Consumer<lo> var1, aer var2);
 
@@ -26,7 +26,7 @@ public interface lp {
       }
    }
 
-   static aer a(cpl $$0) {
+   static aer a(cpk $$0) {
       return jb.i.b($$0.k());
    }
 }

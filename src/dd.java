@@ -15,8 +15,8 @@ public class dd extends cu<dd.a> {
       return new dd.a($$1, $$3, $$4);
    }
 
-   public void a(akl $$0, cav $$1, ciy $$2) {
-      ech $$3 = bo.b($$0, $$1);
+   public void a(akl $$0, cau $$1, cix $$2) {
+      ecg $$3 = bo.b($$0, $$1);
       this.a($$0, $$2x -> $$2x.a($$3, $$2));
    }
 
@@ -38,7 +38,7 @@ public class dd extends cu<dd.a> {
          return new dd.a(bo.a($$0), Optional.empty(), Optional.empty());
       }
 
-      public boolean a(ech $$0, ciy $$1) {
+      public boolean a(ecg $$0, cix $$1) {
          return this.a.isPresent() && !this.a.get().a($$0) ? false : !this.b.isPresent() || this.b.get().a($$1);
       }
 

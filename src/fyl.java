@@ -1,121 +1,59 @@
-import javax.annotation.Nullable;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public class fyl {
-   private final aer a;
-   private final fyf b;
-   final int c;
-   final int d;
-   private final float e;
-   private final float f;
-   private final float g;
-   private final float h;
+public class fyl implements AutoCloseable {
+   private static final int e = 16;
+   public static final int a = 0;
+   public static final int b = 3;
+   public static final int c = 10;
+   public static final int d = a(0, 10);
+   private final fyh f = new fyh(16, 16, false);
 
-   protected fyl(aer $$0, fyf $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$4;
-      this.d = $$5;
-      this.e = (float)$$4 / (float)$$2;
-      this.f = (float)($$4 + $$1.a()) / (float)$$2;
-      this.g = (float)$$5 / (float)$$3;
-      this.h = (float)($$5 + $$1.b()) / (float)$$3;
-   }
+   public fyl() {
+      ekg $$0 = this.f.e();
 
-   public int a() {
-      return this.c;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public float c() {
-      return this.e;
-   }
-
-   public float d() {
-      return this.f;
-   }
-
-   public fyf e() {
-      return this.b;
-   }
-
-   @Nullable
-   public fyl.a f() {
-      final fyh $$0 = this.b.e();
-      return $$0 != null ? new fyl.a() {
-         @Override
-         public void a() {
-            $$0.a(fyl.this.c, fyl.this.d);
+      for (int $$1 = 0; $$1 < 16; $$1++) {
+         for (int $$2 = 0; $$2 < 16; $$2++) {
+            if ($$1 < 8) {
+               $$0.a($$2, $$1, -1308622593);
+            } else {
+               int $$3 = (int)((1.0F - (float)$$2 / 15.0F * 0.75F) * 255.0F);
+               $$0.a($$2, $$1, $$3 << 24 | 16777215);
+            }
          }
+      }
 
-         @Override
-         public void close() {
-            $$0.close();
-         }
-      } : null;
-   }
-
-   public float a(float $$0) {
-      float $$1 = this.f - this.e;
-      return this.e + $$1 * $$0;
-   }
-
-   public float b(float $$0) {
-      float $$1 = this.f - this.e;
-      return ($$0 - this.e) / $$1;
-   }
-
-   public float g() {
-      return this.g;
-   }
-
-   public float h() {
-      return this.h;
-   }
-
-   public float c(float $$0) {
-      float $$1 = this.h - this.g;
-      return this.g + $$1 * $$0;
-   }
-
-   public float d(float $$0) {
-      float $$1 = this.h - this.g;
-      return ($$0 - this.g) / $$1;
-   }
-
-   public aer i() {
-      return this.a;
+      RenderSystem.activeTexture(33985);
+      this.f.c();
+      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), false, true, false, false);
+      RenderSystem.activeTexture(33984);
    }
 
    @Override
-   public String toString() {
-      return "TextureAtlasSprite{contents='" + this.b + "', u0=" + this.e + ", u1=" + this.f + ", v0=" + this.g + ", v1=" + this.h + "}";
+   public void close() {
+      this.f.close();
    }
 
-   public void j() {
-      this.b.a(this.c, this.d);
+   public void a() {
+      RenderSystem.setupOverlayColor(this.f::a, 16);
    }
 
-   private float l() {
-      float $$0 = (float)this.b.a() / (this.f - this.e);
-      float $$1 = (float)this.b.b() / (this.h - this.g);
-      return Math.max($$1, $$0);
+   public static int a(float $$0) {
+      return (int)($$0 * 15.0F);
    }
 
-   public float k() {
-      return 4.0F / this.l();
+   public static int a(boolean $$0) {
+      return $$0 ? 3 : 10;
    }
 
-   public elk a(elk $$0) {
-      return new foa($$0, this);
+   public static int a(int $$0, int $$1) {
+      return $$0 | $$1 << 16;
    }
 
-   public interface a extends AutoCloseable {
-      void a();
+   public static int a(float $$0, boolean $$1) {
+      return a(a($$0), a($$1));
+   }
 
-      @Override
-      void close();
+   public void b() {
+      RenderSystem.teardownOverlayColor();
    }
 }

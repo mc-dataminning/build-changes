@@ -1,9 +1,9 @@
 public class ij extends ii {
    @Override
-   protected ciy a(gv $$0, ciy $$1) {
+   protected cix a(gv $$0, cix $$1) {
       akk $$2 = $$0.g();
       if (!$$2.r_()) {
-         gu $$3 = $$0.d().a($$0.e().c(cun.a));
+         gu $$3 = $$0.d().a($$0.e().c(cum.a));
          this.a(a($$2, $$3) || b($$2, $$3));
          if (this.a() && $$1.a(1, $$2.y_(), null)) {
             $$1.f(0);
@@ -14,14 +14,14 @@ public class ij extends ii {
    }
 
    private static boolean a(akk $$0, gu $$1) {
-      dfa $$2 = $$0.a_($$1);
-      if ($$2.a(apl.aF, $$0x -> $$0x.b(csg.b) && $$0x.b() instanceof csg)) {
-         int $$3 = $$2.c(csg.b);
+      dez $$2 = $$0.a_($$1);
+      if ($$2.a(apl.aF, $$0x -> $$0x.b(csf.b) && $$0x.b() instanceof csf)) {
+         int $$3 = $$2.c(csf.b);
          if ($$3 >= 5) {
             $$0.a(null, $$1, aow.bI, aox.e, 1.0F, 1.0F);
-            csg.a($$0, $$1);
-            ((csg)$$2.b()).a($$0, $$2, $$1, null, dcj.b.b);
-            $$0.a(null, djk.M, $$1);
+            csf.a($$0, $$1);
+            ((csf)$$2.b()).a($$0, $$2, $$1, null, dci.b.b);
+            $$0.a(null, djj.M, $$1);
             return true;
          }
       }
@@ -30,10 +30,10 @@ public class ij extends ii {
    }
 
    private static boolean b(akk $$0, gu $$1) {
-      for (biy $$3 : $$0.a(biy.class, new egz($$1), bil.f)) {
-         if ($$3 instanceof bjq $$4 && $$4.a()) {
+      for (biy $$3 : $$0.a(biy.class, new egy($$1), bil.f)) {
+         if ($$3 instanceof bjp $$4 && $$4.a()) {
             $$4.a(aox.e);
-            $$0.a(null, djk.M, $$1);
+            $$0.a(null, djj.M, $$1);
             return true;
          }
       }

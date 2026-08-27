@@ -18,7 +18,7 @@ public class cr extends cu<cr.a> {
       return new cr.a($$1, $$3, $$4);
    }
 
-   public void a(akl $$0, aer $$1, List<ciy> $$2) {
+   public void a(akl $$0, aer $$1, List<cix> $$2) {
       this.a($$0, $$2x -> $$2x.b($$1, $$2));
    }
 
@@ -40,15 +40,15 @@ public class cr extends cu<cr.a> {
          return new cr.a(Optional.empty(), $$0, List.of());
       }
 
-      boolean b(aer $$0, List<ciy> $$1) {
+      boolean b(aer $$0, List<cix> $$1) {
          if (!$$0.equals(this.a)) {
             return false;
          } else {
-            List<ciy> $$2 = new ArrayList<>($$1);
+            List<cix> $$2 = new ArrayList<>($$1);
 
             for (bz $$3 : this.b) {
                boolean $$4 = false;
-               Iterator<ciy> $$5 = $$2.iterator();
+               Iterator<cix> $$5 = $$2.iterator();
 
                while ($$5.hasNext()) {
                   if ($$3.a($$5.next())) {

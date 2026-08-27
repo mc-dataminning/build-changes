@@ -93,8 +93,8 @@ public class gu extends hz {
       return $$0 == 0 && $$1 == 0 && $$2 == 0 ? this : new gu(this.u() + $$0, this.v() + $$1, this.w() + $$2);
    }
 
-   public ehe b() {
-      return ehe.b(this);
+   public ehd b() {
+      return ehd.b(this);
    }
 
    public gu a(hz $$0) {
@@ -180,7 +180,7 @@ public class gu extends hz {
       }
    }
 
-   public gu a(cyy $$0) {
+   public gu a(cyx $$0) {
       switch ($$0) {
          case a:
          default:
@@ -321,7 +321,7 @@ public class gu extends hz {
       return StreamSupport.stream(a($$0, $$1).spliterator(), false);
    }
 
-   public static Stream<gu> a(dur $$0) {
+   public static Stream<gu> a(duq $$0) {
       return a(
          Math.min($$0.g(), $$0.j()),
          Math.min($$0.h(), $$0.k()),
@@ -332,7 +332,7 @@ public class gu extends hz {
       );
    }
 
-   public static Stream<gu> a(egz $$0) {
+   public static Stream<gu> a(egy $$0) {
       return a(arp.a($$0.a), arp.a($$0.b), arp.a($$0.c), arp.a($$0.d), arp.a($$0.e), arp.a($$0.f));
    }
 
@@ -457,7 +457,7 @@ public class gu extends hz {
       }
 
       @Override
-      public gu a(cyy $$0) {
+      public gu a(cyx $$0) {
          return super.a($$0).i();
       }
 

@@ -1,14 +1,14 @@
 public abstract class bip extends bja {
-   protected bip(bim<? extends bip> $$0, cpm $$1) {
+   protected bip(bim<? extends bip> $$0, cpl $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected void a(double $$0, boolean $$1, dfa $$2, gu $$3) {
+   protected void a(double $$0, boolean $$1, dez $$2, gu $$3) {
    }
 
    @Override
-   public void h(ehe $$0) {
+   public void h(ehd $$0) {
       if (this.cW()) {
          if (this.aX()) {
             this.a(0.02F, $$0);

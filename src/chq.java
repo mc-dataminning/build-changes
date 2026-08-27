@@ -1,81 +1,24 @@
-import java.util.List;
-
-public interface chq {
-   String o_ = "color";
-   String p_ = "display";
-   int q_ = 10511680;
-
-   default boolean a(ciy $$0) {
-      qr $$1 = $$0.b("display");
-      return $$1 != null && $$1.b("color", 99);
+public class chq extends cis {
+   public chq(cis.a $$0) {
+      super($$0);
    }
 
-   default int e_(ciy $$0) {
-      qr $$1 = $$0.b("display");
-      return $$1 != null && $$1.b("color", 99) ? $$1.h("color") : 10511680;
-   }
-
-   default void f_(ciy $$0) {
-      qr $$1 = $$0.b("display");
-      if ($$1 != null && $$1.e("color")) {
-         $$1.r("color");
-      }
-   }
-
-   default void a(ciy $$0, int $$1) {
-      $$0.a("display").a("color", $$1);
-   }
-
-   static ciy a(ciy $$0, List<chn> $$1) {
-      ciy $$2 = ciy.b;
-      int[] $$3 = new int[3];
-      int $$4 = 0;
-      int $$5 = 0;
-      chq $$6 = null;
-      cit $$7 = $$0.d();
-      if ($$7 instanceof chq) {
-         $$6 = (chq)$$7;
-         $$2 = $$0.c(1);
-         if ($$6.a($$0)) {
-            int $$8 = $$6.e_($$2);
-            float $$9 = (float)($$8 >> 16 & 0xFF) / 255.0F;
-            float $$10 = (float)($$8 >> 8 & 0xFF) / 255.0F;
-            float $$11 = (float)($$8 & 0xFF) / 255.0F;
-            $$4 += (int)(Math.max($$9, Math.max($$10, $$11)) * 255.0F);
-            $$3[0] += (int)($$9 * 255.0F);
-            $$3[1] += (int)($$10 * 255.0F);
-            $$3[2] += (int)($$11 * 255.0F);
-            $$5++;
-         }
-
-         for (chn $$12 : $$1) {
-            float[] $$13 = $$12.d().d();
-            int $$14 = (int)($$13[0] * 255.0F);
-            int $$15 = (int)($$13[1] * 255.0F);
-            int $$16 = (int)($$13[2] * 255.0F);
-            $$4 += Math.max($$14, Math.max($$15, $$16));
-            $$3[0] += $$14;
-            $$3[1] += $$15;
-            $$3[2] += $$16;
-            $$5++;
-         }
+   @Override
+   public bgr<cix> a(cpl $$0, cbm $$1, bgp $$2) {
+      cix $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dp(), $$1.dr(), $$1.dv(), aow.gG, aox.h, 0.5F, 0.4F / ($$0.y_().i() * 0.4F + 0.8F));
+      if (!$$0.B) {
+         ccm $$4 = new ccm($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dC(), $$1.dA(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
       }
 
-      if ($$6 == null) {
-         return ciy.b;
-      } else {
-         int $$17 = $$3[0] / $$5;
-         int $$18 = $$3[1] / $$5;
-         int $$19 = $$3[2] / $$5;
-         float $$20 = (float)$$4 / (float)$$5;
-         float $$21 = (float)Math.max($$17, Math.max($$18, $$19));
-         $$17 = (int)((float)$$17 * $$20 / $$21);
-         $$18 = (int)((float)$$18 * $$20 / $$21);
-         $$19 = (int)((float)$$19 * $$20 / $$21);
-         int var26 = ($$17 << 8) + $$18;
-         var26 = (var26 << 8) + $$19;
-         $$6.a($$2, var26);
-         return $$2;
+      $$1.b(apg.c.b(this));
+      if (!$$1.fR().d) {
+         $$3.h(1);
       }
+
+      return bgr.a($$3, $$0.r_());
    }
 }

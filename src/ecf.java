@@ -1,110 +1,106 @@
-import com.google.common.collect.Sets;
-import java.util.Collections;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.Set;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
 public class ecf {
-   private static final Set<aer> aI = Sets.newHashSet();
-   private static final Set<aer> aJ = Collections.unmodifiableSet(aI);
-   public static final aer a = new aer("empty");
-   public static final aer b = a("chests/spawn_bonus_chest");
-   public static final aer c = a("chests/end_city_treasure");
-   public static final aer d = a("chests/simple_dungeon");
-   public static final aer e = a("chests/village/village_weaponsmith");
-   public static final aer f = a("chests/village/village_toolsmith");
-   public static final aer g = a("chests/village/village_armorer");
-   public static final aer h = a("chests/village/village_cartographer");
-   public static final aer i = a("chests/village/village_mason");
-   public static final aer j = a("chests/village/village_shepherd");
-   public static final aer k = a("chests/village/village_butcher");
-   public static final aer l = a("chests/village/village_fletcher");
-   public static final aer m = a("chests/village/village_fisher");
-   public static final aer n = a("chests/village/village_tannery");
-   public static final aer o = a("chests/village/village_temple");
-   public static final aer p = a("chests/village/village_desert_house");
-   public static final aer q = a("chests/village/village_plains_house");
-   public static final aer r = a("chests/village/village_taiga_house");
-   public static final aer s = a("chests/village/village_snowy_house");
-   public static final aer t = a("chests/village/village_savanna_house");
-   public static final aer u = a("chests/abandoned_mineshaft");
-   public static final aer v = a("chests/nether_bridge");
-   public static final aer w = a("chests/stronghold_library");
-   public static final aer x = a("chests/stronghold_crossing");
-   public static final aer y = a("chests/stronghold_corridor");
-   public static final aer z = a("chests/desert_pyramid");
-   public static final aer A = a("chests/jungle_temple");
-   public static final aer B = a("chests/jungle_temple_dispenser");
-   public static final aer C = a("chests/igloo_chest");
-   public static final aer D = a("chests/woodland_mansion");
-   public static final aer E = a("chests/underwater_ruin_small");
-   public static final aer F = a("chests/underwater_ruin_big");
-   public static final aer G = a("chests/buried_treasure");
-   public static final aer H = a("chests/shipwreck_map");
-   public static final aer I = a("chests/shipwreck_supply");
-   public static final aer J = a("chests/shipwreck_treasure");
-   public static final aer K = a("chests/pillager_outpost");
-   public static final aer L = a("chests/bastion_treasure");
-   public static final aer M = a("chests/bastion_other");
-   public static final aer N = a("chests/bastion_bridge");
-   public static final aer O = a("chests/bastion_hoglin_stable");
-   public static final aer P = a("chests/ancient_city");
-   public static final aer Q = a("chests/ancient_city_ice_box");
-   public static final aer R = a("chests/ruined_portal");
-   public static final aer S = a("entities/sheep/white");
-   public static final aer T = a("entities/sheep/orange");
-   public static final aer U = a("entities/sheep/magenta");
-   public static final aer V = a("entities/sheep/light_blue");
-   public static final aer W = a("entities/sheep/yellow");
-   public static final aer X = a("entities/sheep/lime");
-   public static final aer Y = a("entities/sheep/pink");
-   public static final aer Z = a("entities/sheep/gray");
-   public static final aer aa = a("entities/sheep/light_gray");
-   public static final aer ab = a("entities/sheep/cyan");
-   public static final aer ac = a("entities/sheep/purple");
-   public static final aer ad = a("entities/sheep/blue");
-   public static final aer ae = a("entities/sheep/brown");
-   public static final aer af = a("entities/sheep/green");
-   public static final aer ag = a("entities/sheep/red");
-   public static final aer ah = a("entities/sheep/black");
-   public static final aer ai = a("gameplay/fishing");
-   public static final aer aj = a("gameplay/fishing/junk");
-   public static final aer ak = a("gameplay/fishing/treasure");
-   public static final aer al = a("gameplay/fishing/fish");
-   public static final aer am = a("gameplay/cat_morning_gift");
-   public static final aer an = a("gameplay/hero_of_the_village/armorer_gift");
-   public static final aer ao = a("gameplay/hero_of_the_village/butcher_gift");
-   public static final aer ap = a("gameplay/hero_of_the_village/cartographer_gift");
-   public static final aer aq = a("gameplay/hero_of_the_village/cleric_gift");
-   public static final aer ar = a("gameplay/hero_of_the_village/farmer_gift");
-   public static final aer as = a("gameplay/hero_of_the_village/fisherman_gift");
-   public static final aer at = a("gameplay/hero_of_the_village/fletcher_gift");
-   public static final aer au = a("gameplay/hero_of_the_village/leatherworker_gift");
-   public static final aer av = a("gameplay/hero_of_the_village/librarian_gift");
-   public static final aer aw = a("gameplay/hero_of_the_village/mason_gift");
-   public static final aer ax = a("gameplay/hero_of_the_village/shepherd_gift");
-   public static final aer ay = a("gameplay/hero_of_the_village/toolsmith_gift");
-   public static final aer az = a("gameplay/hero_of_the_village/weaponsmith_gift");
-   public static final aer aA = a("gameplay/sniffer_digging");
-   public static final aer aB = a("gameplay/piglin_bartering");
-   public static final aer aC = a("archaeology/desert_well");
-   public static final aer aD = a("archaeology/desert_pyramid");
-   public static final aer aE = a("archaeology/trail_ruins_common");
-   public static final aer aF = a("archaeology/trail_ruins_rare");
-   public static final aer aG = a("archaeology/ocean_ruin_warm");
-   public static final aer aH = a("archaeology/ocean_ruin_cold");
+   private static final Codec<ecf> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aqy.a(egb.a, "min").forGetter($$0x -> Optional.ofNullable($$0x.c)), aqy.a(egb.a, "max").forGetter($$0x -> Optional.ofNullable($$0x.d)))
+            .apply($$0, ecf::new)
+   );
+   public static final Codec<ecf> a = Codec.either(Codec.INT, b).xmap($$0 -> (ecf)$$0.map(ecf::a, Function.identity()), $$0 -> {
+      OptionalInt $$1 = $$0.b();
+      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
+   });
+   @Nullable
+   private final ega c;
+   @Nullable
+   private final ega d;
+   private final ecf.b e;
+   private final ecf.a f;
 
-   private static aer a(String $$0) {
-      return a(new aer($$0));
+   public Set<eeo<?>> a() {
+      Builder<eeo<?>> $$0 = ImmutableSet.builder();
+      if (this.c != null) {
+         $$0.addAll(this.c.a());
+      }
+
+      if (this.d != null) {
+         $$0.addAll(this.d.a());
+      }
+
+      return $$0.build();
    }
 
-   private static aer a(aer $$0) {
-      if (aI.add($$0)) {
-         return $$0;
+   private ecf(Optional<ega> $$0, Optional<ega> $$1) {
+      this($$0.orElse(null), $$1.orElse(null));
+   }
+
+   private ecf(@Nullable ega $$0, @Nullable ega $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      if ($$0 == null) {
+         if ($$1 == null) {
+            this.e = ($$0x, $$1x) -> $$1x;
+            this.f = ($$0x, $$1x) -> true;
+         } else {
+            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
+            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
+         }
+      } else if ($$1 == null) {
+         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
+         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
       } else {
-         throw new IllegalArgumentException($$0 + " is already a registered built-in loot table");
+         this.e = ($$2, $$3) -> arp.a($$3, $$0.a($$2), $$1.a($$2));
+         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
       }
    }
 
-   public static Set<aer> a() {
-      return aJ;
+   public static ecf a(int $$0) {
+      efy $$1 = efy.a((float)$$0);
+      return new ecf(Optional.of($$1), Optional.of($$1));
+   }
+
+   public static ecf a(int $$0, int $$1) {
+      return new ecf(Optional.of(efy.a((float)$$0)), Optional.of(efy.a((float)$$1)));
+   }
+
+   public static ecf b(int $$0) {
+      return new ecf(Optional.of(efy.a((float)$$0)), Optional.empty());
+   }
+
+   public static ecf c(int $$0) {
+      return new ecf(Optional.empty(), Optional.of(efy.a((float)$$0)));
+   }
+
+   public int a(ecg $$0, int $$1) {
+      return this.e.apply($$0, $$1);
+   }
+
+   public boolean b(ecg $$0, int $$1) {
+      return this.f.test($$0, $$1);
+   }
+
+   private OptionalInt b() {
+      return Objects.equals(this.c, this.d) && this.c instanceof efy $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
+         ? OptionalInt.of((int)$$0.c())
+         : OptionalInt.empty();
+   }
+
+   @FunctionalInterface
+   interface a {
+      boolean test(ecg var1, int var2);
+   }
+
+   @FunctionalInterface
+   interface b {
+      int apply(ecg var1, int var2);
    }
 }

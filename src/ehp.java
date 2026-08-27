@@ -1,32 +1,13 @@
 import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public class ehp implements ehq {
-   private final DoubleList a;
+interface ehp {
+   DoubleList a();
 
-   public ehp(DoubleList $$0) {
-      this.a = $$0;
-   }
+   boolean a(ehp.a var1);
 
-   @Override
-   public boolean a(ehq.a $$0) {
-      int $$1 = this.a.size() - 1;
+   int size();
 
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2, $$2, $$2)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public int size() {
-      return this.a.size();
-   }
-
-   @Override
-   public DoubleList a() {
-      return this.a;
+   public interface a {
+      boolean merge(int var1, int var2, int var3);
    }
 }

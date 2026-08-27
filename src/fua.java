@@ -1,31 +1,25 @@
-public class fua extends ftu<bva, ffo> {
-   private static final aer a = new aer("textures/entity/parrot/parrot_red_blue.png");
-   private static final aer i = new aer("textures/entity/parrot/parrot_blue.png");
-   private static final aer j = new aer("textures/entity/parrot/parrot_green.png");
-   private static final aer k = new aer("textures/entity/parrot/parrot_yellow_blue.png");
-   private static final aer l = new aer("textures/entity/parrot/parrot_grey.png");
+public class fua extends fsw<ccd> {
+   private static final aer a = new aer("textures/entity/llama/spit.png");
+   private final ffn<ccd> f;
 
-   public fua(fso.a $$0) {
-      super($$0, new ffo($$0.a(fhm.aA)), 0.3F);
+   public fua(fsx.a $$0) {
+      super($$0);
+      this.f = new ffn<>($$0.a(fhr.at));
    }
 
-   public aer a(bva $$0) {
-      return a($$0.gh());
+   public void a(ccd $$0, float $$1, float $$2, elf $$3, fnu $$4, int $$5) {
+      $$3.a();
+      $$3.a(0.0F, 0.15F, 0.0F);
+      $$3.a(a.d.rotationDegrees(arp.i($$2, $$0.N, $$0.dA()) - 90.0F));
+      $$3.a(a.f.rotationDegrees(arp.i($$2, $$0.O, $$0.dC())));
+      this.f.a($$0, $$2, 0.0F, -0.1F, 0.0F, 0.0F);
+      elj $$6 = $$4.getBuffer(this.f.a(a));
+      this.f.a($$3, $$6, $$5, fyl.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public static aer a(bva.b $$0) {
-      return switch ($$0) {
-         case a -> a;
-         case b -> i;
-         case c -> j;
-         case d -> k;
-         case e -> l;
-      };
-   }
-
-   public float a(bva $$0, float $$1) {
-      float $$2 = arp.i($$1, $$0.bZ, $$0.bW);
-      float $$3 = arp.i($$1, $$0.bY, $$0.bX);
-      return (arp.a($$2) + 1.0F) * $$3;
+   public aer a(ccd $$0) {
+      return a;
    }
 }

@@ -1,40 +1,47 @@
-import java.util.function.Supplier;
+import com.google.common.collect.ImmutableSet;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-public class btf<U extends bte<?>> {
-   public static final btf<bsp> a = a("dummy", bsp::new);
-   public static final btf<bsw> b = a("nearest_items", bsw::new);
-   public static final btf<bsx<biy>> c = a("nearest_living_entities", bsx::new);
-   public static final btf<btb> d = a("nearest_players", btb::new);
-   public static final btf<bsv> e = a("nearest_bed", bsv::new);
-   public static final btf<bst> f = a("hurt_by", bst::new);
-   public static final btf<bti> g = a("villager_hostiles", bti::new);
-   public static final btf<bth> h = a("villager_babies", bth::new);
-   public static final btf<btc> i = a("secondary_pois", btc::new);
-   public static final btf<bsr> j = a("golem_detected", bsr::new);
-   public static final btf<bta> k = a("piglin_specific_sensor", bta::new);
-   public static final btf<bsz> l = a("piglin_brute_specific_sensor", bsz::new);
-   public static final btf<bss> m = a("hoglin_specific_sensor", bss::new);
-   public static final btf<bsn> n = a("nearest_adult", bsn::new);
-   public static final btf<bso> o = a("axolotl_attackables", bso::new);
-   public static final btf<btg> p = a("axolotl_temptations", () -> new btg(bvs.a()));
-   public static final btf<btg> q = a("goat_temptations", () -> new btg(bwg.a()));
-   public static final btf<btg> r = a("frog_temptations", () -> new btg(bwa.a()));
-   public static final btf<btg> s = a("camel_temptations", () -> new btg(bvx.b()));
-   public static final btf<bsq> t = a("frog_attackables", bsq::new);
-   public static final btf<bsu> u = a("is_in_water", bsu::new);
-   public static final btf<btj> v = a("warden_entity_sensor", btj::new);
-   public static final btf<btg> w = a("sniffer_temptations", () -> new btg(bwx.a()));
-   private final Supplier<U> x;
+public class btf extends btd<bjh> {
+   public static final int a = 10;
+   private static final btk c = btk.b().a(10.0).d();
+   private final clx d;
 
-   private btf(Supplier<U> $$0) {
-      this.x = $$0;
+   public btf(clx $$0) {
+      this.d = $$0;
    }
 
-   public U a() {
-      return this.x.get();
+   protected void a(akk $$0, bjh $$1) {
+      bjy<?> $$2 = $$1.dM();
+      List<cbm> $$3 = $$0.v()
+         .stream()
+         .filter(bil.f)
+         .filter($$1x -> c.a($$1, $$1x))
+         .filter($$1x -> $$1.a($$1x, 10.0))
+         .filter(this::a)
+         .filter($$1x -> !$$1.x($$1x))
+         .sorted(Comparator.comparingDouble($$1::f))
+         .collect(Collectors.toList());
+      if (!$$3.isEmpty()) {
+         cbm $$4 = $$3.get(0);
+         $$2.a(brz.N, $$4);
+      } else {
+         $$2.b(brz.N);
+      }
    }
 
-   private static <U extends bte<?>> btf<U> a(String $$0, Supplier<U> $$1) {
-      return hr.a(jb.D, new aer($$0), new btf<>($$1));
+   private boolean a(cbm $$0) {
+      return this.a($$0.eR()) || this.a($$0.eS());
+   }
+
+   private boolean a(cix $$0) {
+      return this.d.a($$0);
+   }
+
+   @Override
+   public Set<brz<?>> a() {
+      return ImmutableSet.of(brz.N);
    }
 }

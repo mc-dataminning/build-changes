@@ -36,8 +36,8 @@ public class agp {
       );
    }
 
-   private static int a(dr $$0, Collection<? extends bii> $$1, he<cnf> $$2, int $$3) throws CommandSyntaxException {
-      cnf $$4 = $$2.a();
+   private static int a(dr $$0, Collection<? extends bii> $$1, he<cne> $$2, int $$3) throws CommandSyntaxException {
+      cne $$4 = $$2.a();
       if ($$3 > $$4.a()) {
          throw d.create($$3, $$4.a());
       } else {
@@ -46,9 +46,9 @@ public class agp {
          for (bii $$6 : $$1) {
             if ($$6 instanceof biy) {
                biy $$7 = (biy)$$6;
-               ciy $$8 = $$7.eR();
+               cix $$8 = $$7.eR();
                if (!$$8.b()) {
-                  if ($$4.a($$8) && cnh.a(cnh.a($$8).keySet(), $$4)) {
+                  if ($$4.a($$8) && cng.a(cng.a($$8).keySet(), $$4)) {
                      $$8.a($$4, $$3);
                      $$5++;
                   } else if ($$1.size() == 1) {

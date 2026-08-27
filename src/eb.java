@@ -47,7 +47,7 @@ public class eb implements ArgumentType<eb.a> {
 
    public static enum a {
       a("feet", ($$0, $$1) -> $$0),
-      b("eyes", ($$0, $$1) -> new ehe($$0.c, $$0.d + (double)$$1.cH(), $$0.e));
+      b("eyes", ($$0, $$1) -> new ehd($$0.c, $$0.d + (double)$$1.cH(), $$0.e));
 
       static final Map<String, eb.a> c = ac.a(Maps.newHashMap(), $$0 -> {
          for (eb.a $$1 : values()) {
@@ -55,9 +55,9 @@ public class eb implements ArgumentType<eb.a> {
          }
       });
       private final String d;
-      private final BiFunction<ehe, bii, ehe> e;
+      private final BiFunction<ehd, bii, ehd> e;
 
-      private a(String $$0, BiFunction<ehe, bii, ehe> $$1) {
+      private a(String $$0, BiFunction<ehd, bii, ehd> $$1) {
          this.d = $$0;
          this.e = $$1;
       }
@@ -67,11 +67,11 @@ public class eb implements ArgumentType<eb.a> {
          return c.get($$0);
       }
 
-      public ehe a(bii $$0) {
+      public ehd a(bii $$0) {
          return this.e.apply($$0.di(), $$0);
       }
 
-      public ehe a(dr $$0) {
+      public ehd a(dr $$0) {
          bii $$1 = $$0.f();
          return $$1 == null ? $$0.d() : this.e.apply($$0.d(), $$1);
       }

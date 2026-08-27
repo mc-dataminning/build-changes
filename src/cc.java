@@ -18,7 +18,7 @@ public class cc extends cu<cc.a> {
    }
 
    public void a(akl $$0, bii $$1, bhg $$2) {
-      ech $$3 = bo.b($$0, $$1);
+      ecg $$3 = bo.b($$0, $$1);
       this.a($$0, $$3x -> $$3x.a($$0, $$3, $$2));
    }
 
@@ -92,7 +92,7 @@ public class cc extends cu<cc.a> {
          return new cc.a(ai.c.a, Optional.empty(), bo.a($$0), $$1.b());
       }
 
-      public boolean a(akl $$0, ech $$1, bhg $$2) {
+      public boolean a(akl $$0, ecg $$1, bhg $$2) {
          return this.b.isPresent() && !this.b.get().a($$0, $$2) ? false : this.a.isEmpty() || this.a.get().a($$1);
       }
 

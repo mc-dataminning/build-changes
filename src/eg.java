@@ -38,7 +38,7 @@ public class eg implements ev<eg.a> {
    private static void a(Consumer<tu> $$0, dr $$1, tu $$2) {
       MinecraftServer $$3 = $$1.l();
       CompletableFuture<ala> $$4 = a($$1, $$2);
-      CompletableFuture<tf> $$5 = $$3.be().decorate($$1.i(), $$2.c());
+      CompletableFuture<tf> $$5 = $$3.bd().decorate($$1.i(), $$2.c());
       $$1.o().append($$4x -> CompletableFuture.allOf($$4, $$5).thenAcceptAsync($$4xx -> {
             tu $$5x = $$2.a($$5.join()).a($$4.join().e());
             $$0.accept($$5x);
@@ -47,7 +47,7 @@ public class eg implements ev<eg.a> {
 
    private static void b(Consumer<tu> $$0, dr $$1, tu $$2) {
       MinecraftServer $$3 = $$1.l();
-      $$3.be().decorate($$1.i(), $$2.c()).thenAcceptAsync($$2x -> $$0.accept($$2.a($$2x)), $$3);
+      $$3.bd().decorate($$1.i(), $$2.c()).thenAcceptAsync($$2x -> $$0.accept($$2.a($$2x)), $$3);
    }
 
    private static CompletableFuture<ala> a(dr $$0, tu $$1) {

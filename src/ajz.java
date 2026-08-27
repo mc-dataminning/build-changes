@@ -9,15 +9,15 @@ public interface ajz {
       }
 
       @Override
-      public void a(Consumer<cot> $$0) {
+      public void a(Consumer<cos> $$0) {
       }
    };
 
-   static ajz a(cot $$0, int $$1) {
+   static ajz a(cos $$0, int $$1) {
       return new ajz.a($$0, $$1);
    }
 
-   static void a(ajz $$0, ajz $$1, Consumer<cot> $$2, Consumer<cot> $$3) {
+   static void a(ajz $$0, ajz $$1, Consumer<cos> $$2, Consumer<cos> $$3) {
       if (!$$0.equals($$1)) {
          if ($$0 instanceof ajz.a $$4 && $$1 instanceof ajz.a $$5 && $$4.a($$5)) {
             int $$6 = Math.min($$4.c(), $$5.c());
@@ -31,9 +31,9 @@ public interface ajz {
                   boolean $$13 = $$5.a($$10, $$11);
                   if ($$12 != $$13) {
                      if ($$13) {
-                        $$2.accept(new cot($$10, $$11));
+                        $$2.accept(new cos($$10, $$11));
                      } else {
-                        $$3.accept(new cot($$10, $$11));
+                        $$3.accept(new cos($$10, $$11));
                      }
                   }
                }
@@ -47,7 +47,7 @@ public interface ajz {
       }
    }
 
-   default boolean a(cot $$0) {
+   default boolean a(cos $$0) {
       return this.a($$0.e, $$0.f);
    }
 
@@ -57,7 +57,7 @@ public interface ajz {
 
    boolean a(int var1, int var2, boolean var3);
 
-   void a(Consumer<cot> var1);
+   void a(Consumer<cos> var1);
 
    default boolean b(int $$0, int $$1) {
       return this.a($$0, $$1, false);
@@ -77,7 +77,7 @@ public interface ajz {
       return $$10 < (long)$$11;
    }
 
-   public static record a(cot b, int c) implements ajz {
+   public static record a(cos b, int c) implements ajz {
       int c() {
          return this.b.e - this.c - 1;
       }
@@ -105,17 +105,17 @@ public interface ajz {
       }
 
       @Override
-      public void a(Consumer<cot> $$0) {
+      public void a(Consumer<cos> $$0) {
          for (int $$1 = this.c(); $$1 <= this.e(); $$1++) {
             for (int $$2 = this.d(); $$2 <= this.f(); $$2++) {
                if (this.a($$1, $$2)) {
-                  $$0.accept(new cot($$1, $$2));
+                  $$0.accept(new cos($$1, $$2));
                }
             }
          }
       }
 
-      public cot a() {
+      public cos a() {
          return this.b;
       }
 

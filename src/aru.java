@@ -5,25 +5,25 @@ public interface aru {
    double a = 2.297;
 
    static aru a() {
-      return a(dky.a());
+      return a(dkx.a());
    }
 
    @Deprecated
    static aru b() {
-      return new dlc(dky.a());
+      return new dlb(dkx.a());
    }
 
    static aru a(long $$0) {
-      return new dkk($$0);
+      return new dkj($$0);
    }
 
    static aru c() {
-      return new dkz(ThreadLocalRandom.current().nextLong());
+      return new dky(ThreadLocalRandom.current().nextLong());
    }
 
    aru d();
 
-   dkw e();
+   dkv e();
 
    void b(long var1);
 

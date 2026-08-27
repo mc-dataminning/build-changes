@@ -1,27 +1,13 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+public class fwn<T extends byo> extends fxf<T, fep<T>> {
+   private static final aer a = new aer("textures/entity/zombie/drowned_outer_layer.png");
+   private final fep<T> b;
 
-public class fwn extends fww<buw, ffd<buw>> {
-   private static final Map<buw.a, aer> a = ImmutableMap.of(
-      buw.a.b,
-      new aer("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
-      buw.a.c,
-      new aer("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
-      buw.a.d,
-      new aer("textures/entity/iron_golem/iron_golem_crackiness_high.png")
-   );
-
-   public fwn(fuj<buw, ffd<buw>> $$0) {
+   public fwn(fus<T, fep<T>> $$0, fho $$1) {
       super($$0);
+      this.b = new fep<>($$1.a(fhr.O));
    }
 
-   public void a(elg $$0, fnl $$1, int $$2, buw $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.cd()) {
-         buw.a $$10 = $$3.q();
-         if ($$10 != buw.a.a) {
-            aer $$11 = a.get($$10);
-            a(this.c(), $$11, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
-         }
-      }
+   public void a(elf $$0, fnu $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, 1.0F, 1.0F, 1.0F);
    }
 }

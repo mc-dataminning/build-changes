@@ -1,59 +1,58 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public abstract class eex implements efg {
-   protected final List<efg> c;
-   private final Predicate<ech> a;
+public record eex(aer b) implements eff {
+   private static final Logger c = LogUtils.getLogger();
+   public static final Codec<eex> a = RecordCodecBuilder.create($$0 -> $$0.group(aer.a.fieldOf("name").forGetter(eex::c)).apply($$0, eex::new));
 
-   protected eex(List<efg> $$0, Predicate<ech> $$1) {
-      this.c = $$0;
-      this.a = $$1;
-   }
-
-   protected static <T extends eex> Codec<T> a(Function<List<efg>, T> $$0) {
-      return RecordCodecBuilder.create($$1 -> $$1.group(efi.a.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
-   }
-
-   protected static <T extends eex> Codec<T> b(Function<List<efg>, T> $$0) {
-      return efi.a.listOf().xmap($$0, $$0x -> $$0x.c);
-   }
-
-   public final boolean a(ech $$0) {
-      return this.a.test($$0);
+   @Override
+   public efg b() {
+      return efh.q;
    }
 
    @Override
-   public void a(ecq $$0) {
-      efg.super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.b(".term[" + $$1 + "]"));
+   public void a(ecp $$0) {
+      eci<eff> $$1 = new eci<>(ecl.a, this.b);
+      if ($$0.a($$1)) {
+         $$0.a("Condition " + this.b + " is recursively called");
+      } else {
+         eff.super.a($$0);
+         $$0.b()
+            .getElementOptional($$1)
+            .ifPresentOrElse($$2 -> $$2.a($$0.a(".{" + this.b + "}", $$1)), () -> $$0.a("Unknown condition table called " + this.b));
       }
    }
 
-   public abstract static class a implements efg.a {
-      private final Builder<efg> a = ImmutableList.builder();
+   public boolean a(ecg $$0) {
+      eff $$1 = $$0.a().getElement(ecl.a, this.b);
+      if ($$1 == null) {
+         c.warn("Tried using unknown condition table called {}", this.b);
+         return false;
+      } else {
+         ecg.c<?> $$2 = ecg.a($$1);
+         if ($$0.b($$2)) {
+            boolean var4;
+            try {
+               var4 = $$1.test($$0);
+            } finally {
+               $$0.c($$2);
+            }
 
-      protected a(efg.a... $$0) {
-         for (efg.a $$1 : $$0) {
-            this.a.add($$1.build());
+            return var4;
+         } else {
+            c.warn("Detected infinite loop in loot tables");
+            return false;
          }
       }
+   }
 
-      public void a(efg.a $$0) {
-         this.a.add($$0.build());
-      }
+   public static eff.a a(aer $$0) {
+      return () -> new eex($$0);
+   }
 
-      @Override
-      public efg build() {
-         return this.a(this.a.build());
-      }
-
-      protected abstract efg a(List<efg> var1);
+   public aer c() {
+      return this.b;
    }
 }

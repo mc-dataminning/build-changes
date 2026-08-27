@@ -1,24 +1,15 @@
-import java.util.UUID;
-import java.util.stream.Stream;
-
 public interface dir {
-   int ah();
+   dir a = new dir() {
+      @Override
+      public void a() {
+      }
 
-   UUID cv();
+      @Override
+      public void a(bii.c $$0) {
+      }
+   };
 
-   gu dk();
+   void a();
 
-   egz cG();
-
-   void a(dis var1);
-
-   Stream<? extends dir> cR();
-
-   Stream<? extends dir> cS();
-
-   void b(bii.c var1);
-
-   boolean dI();
-
-   boolean dJ();
+   void a(bii.c var1);
 }

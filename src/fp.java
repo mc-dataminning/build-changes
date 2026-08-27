@@ -28,7 +28,7 @@ public class fp implements ArgumentType<fk> {
       return new fp($$0);
    }
 
-   public static ehe a(CommandContext<dr> $$0, String $$1) {
+   public static ehd a(CommandContext<dr> $$0, String $$1) {
       return ((fk)$$0.getArgument($$1, fk.class)).a((dr)$$0.getSource());
    }
 

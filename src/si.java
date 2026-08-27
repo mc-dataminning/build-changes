@@ -378,11 +378,11 @@ public class si extends ByteBuf {
       return this;
    }
 
-   public cot f() {
-      return new cot(this.readLong());
+   public cos f() {
+      return new cos(this.readLong());
    }
 
-   public si a(cot $$0) {
+   public si a(cos $$0) {
       this.b($$0.a());
       return this;
    }
@@ -397,7 +397,7 @@ public class si extends ByteBuf {
    }
 
    public hd h() {
-      aeq<cpm> $$0 = this.a(jc.aH);
+      aeq<cpl> $$0 = this.a(jc.aH);
       gu $$1 = this.e();
       return hd.a($$0, $$1);
    }
@@ -428,11 +428,11 @@ public class si extends ByteBuf {
       this.a($$0.w);
    }
 
-   public ehe k() {
-      return new ehe(this.readDouble(), this.readDouble(), this.readDouble());
+   public ehd k() {
+      return new ehd(this.readDouble(), this.readDouble(), this.readDouble());
    }
 
-   public void a(ehe $$0) {
+   public void a(ehd $$0) {
       this.a($$0.a());
       this.a($$0.b());
       this.a($$0.c());
@@ -530,12 +530,12 @@ public class si extends ByteBuf {
       }
    }
 
-   public si a(ciy $$0) {
+   public si a(cix $$0) {
       if ($$0.b()) {
          this.a(false);
       } else {
          this.a(true);
-         cit $$1 = $$0.d();
+         cis $$1 = $$0.d();
          this.a(jb.i, $$1);
          this.k($$0.L());
          qr $$2 = null;
@@ -549,13 +549,13 @@ public class si extends ByteBuf {
       return this;
    }
 
-   public ciy q() {
+   public cix q() {
       if (!this.readBoolean()) {
-         return ciy.b;
+         return cix.b;
       } else {
-         cit $$0 = this.a(jb.i);
+         cis $$0 = this.a(jb.i);
          int $$1 = this.readByte();
-         ciy $$2 = new ciy($$0, $$1);
+         cix $$2 = new cix($$0, $$1);
          $$2.c(this.p());
          return $$2;
       }
@@ -631,21 +631,21 @@ public class si extends ByteBuf {
       return this;
    }
 
-   public eha x() {
+   public egz x() {
       gu $$0 = this.e();
       ha $$1 = this.b(ha.class);
       float $$2 = this.readFloat();
       float $$3 = this.readFloat();
       float $$4 = this.readFloat();
       boolean $$5 = this.readBoolean();
-      return new eha(new ehe((double)$$0.u() + (double)$$2, (double)$$0.v() + (double)$$3, (double)$$0.w() + (double)$$4), $$1, $$0, $$5);
+      return new egz(new ehd((double)$$0.u() + (double)$$2, (double)$$0.v() + (double)$$3, (double)$$0.w() + (double)$$4), $$1, $$0, $$5);
    }
 
-   public void a(eha $$0) {
+   public void a(egz $$0) {
       gu $$1 = $$0.a();
       this.a($$1);
       this.a($$0.b());
-      ehe $$2 = $$0.e();
+      ehd $$2 = $$0.e();
       this.a((float)($$2.c - (double)$$1.u()));
       this.a((float)($$2.d - (double)$$1.v()));
       this.a((float)($$2.e - (double)$$1.w()));

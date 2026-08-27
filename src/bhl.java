@@ -11,17 +11,17 @@ public record bhl(String i) {
    public static final bhl g = new bhl("other_climbable");
    public static final bhl h = new bhl("water");
 
-   public static bhl a(dfa $$0) {
-      if ($$0.a(csn.cO) || $$0.a(apl.P)) {
+   public static bhl a(dez $$0) {
+      if ($$0.a(csm.cO) || $$0.a(apl.P)) {
          return b;
-      } else if ($$0.a(csn.ff)) {
+      } else if ($$0.a(csm.ff)) {
          return c;
-      } else if ($$0.a(csn.oz) || $$0.a(csn.oA)) {
+      } else if ($$0.a(csm.oz) || $$0.a(csm.oA)) {
          return d;
-      } else if ($$0.a(csn.oB) || $$0.a(csn.oC)) {
+      } else if ($$0.a(csm.oB) || $$0.a(csm.oC)) {
          return e;
       } else {
-         return $$0.a(csn.nS) ? f : g;
+         return $$0.a(csm.nS) ? f : g;
       }
    }
 
@@ -29,7 +29,7 @@ public record bhl(String i) {
    public static bhl a(biy $$0) {
       Optional<gu> $$1 = $$0.eF();
       if ($$1.isPresent()) {
-         dfa $$2 = $$0.dK().a_($$1.get());
+         dez $$2 = $$0.dK().a_($$1.get());
          return a($$2);
       } else {
          return $$0.aX() ? h : null;

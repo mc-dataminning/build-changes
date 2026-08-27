@@ -1,47 +1,24 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Collection;
-import java.util.Optional;
+public enum dfr implements ash {
+   a("single"),
+   b("left"),
+   c("right");
 
-public class dfr extends dgd<Boolean> {
-   private final ImmutableSet<Boolean> a = ImmutableSet.of(true, false);
+   private final String d;
 
-   protected dfr(String $$0) {
-      super($$0, Boolean.class);
+   private dfr(String $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public Collection<Boolean> a() {
-      return this.a;
+   public String c() {
+      return this.d;
    }
 
-   public static dfr a(String $$0) {
-      return new dfr($$0);
-   }
-
-   @Override
-   public Optional<Boolean> b(String $$0) {
-      return !"true".equals($$0) && !"false".equals($$0) ? Optional.empty() : Optional.of(Boolean.valueOf($$0));
-   }
-
-   public String a(Boolean $$0) {
-      return $$0.toString();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof dfr $$1 && super.equals($$0)) {
-            return this.a.equals($$1.a);
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int b() {
-      return 31 * super.b() + this.a.hashCode();
+   public dfr a() {
+      return switch (this) {
+         case a -> a;
+         case b -> c;
+         case c -> b;
+      };
    }
 }

@@ -1,74 +1,63 @@
-import javax.annotation.Nullable;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import org.slf4j.Logger;
 
-public record eqh(int a, @Nullable eqh.a b, @Nullable tf c, @Nullable String d) {
-   private static final tf e = tf.c("chat.tag.system");
-   private static final tf f = tf.c("chat.tag.system_single_player");
-   private static final tf g = tf.c("chat.tag.not_secure");
-   private static final tf h = tf.c("chat.tag.modified");
-   private static final tf i = tf.c("chat.tag.error");
-   private static final int j = 13684944;
-   private static final int k = 6316128;
-   private static final eqh l = new eqh(13684944, null, e, "System");
-   private static final eqh m = new eqh(13684944, null, f, "System");
-   private static final eqh n = new eqh(13684944, null, g, "Not Secure");
-   private static final eqh o = new eqh(16733525, null, i, "Chat Error");
+public class eqh {
+   private static final Logger b = LogUtils.getLogger();
+   public static final int a = 9;
+   private final File c;
+   private final DataFixer d;
+   private final fmy[] e = new fmy[9];
+   private boolean f;
 
-   public static eqh a() {
-      return l;
+   public eqh(File $$0, DataFixer $$1) {
+      this.c = new File($$0, "hotbar.nbt");
+      this.d = $$1;
+
+      for (int $$2 = 0; $$2 < 9; $$2++) {
+         this.e[$$2] = new fmy();
+      }
    }
 
-   public static eqh b() {
-      return m;
+   private void b() {
+      try {
+         qr $$0 = rb.b(this.c);
+         if ($$0 == null) {
+            return;
+         }
+
+         int $$1 = rd.b($$0, 1343);
+         $$0 = ass.d.a(this.d, $$0, $$1);
+
+         for (int $$2 = 0; $$2 < 9; $$2++) {
+            this.e[$$2].a($$0.c(String.valueOf($$2), 10));
+         }
+      } catch (Exception var4) {
+         b.error("Failed to load creative mode options", var4);
+      }
    }
 
-   public static eqh c() {
-      return n;
+   public void a() {
+      try {
+         qr $$0 = rd.g(new qr());
+
+         for (int $$1 = 0; $$1 < 9; $$1++) {
+            $$0.a(String.valueOf($$1), this.a($$1).a());
+         }
+
+         rb.b($$0, this.c);
+      } catch (Exception var3) {
+         b.error("Failed to save creative mode options", var3);
+      }
    }
 
-   public static eqh a(String $$0) {
-      tf $$1 = tf.b($$0).a(n.h);
-      tf $$2 = tf.h().b(h).b(te.r).b($$1);
-      return new eqh(6316128, eqh.a.a, $$2, "Modified");
-   }
-
-   public static eqh d() {
-      return o;
-   }
-
-   public int e() {
-      return this.a;
-   }
-
-   @Nullable
-   public eqh.a f() {
-      return this.b;
-   }
-
-   @Nullable
-   public tf g() {
-      return this.c;
-   }
-
-   @Nullable
-   public String h() {
-      return this.d;
-   }
-
-   public static enum a {
-      a(new aer("icon/chat_modified"), 9, 9);
-
-      public final aer b;
-      public final int c;
-      public final int d;
-
-      private a(aer $$0, int $$1, int $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
+   public fmy a(int $$0) {
+      if (!this.f) {
+         this.b();
+         this.f = true;
       }
 
-      public void a(erw $$0, int $$1, int $$2) {
-         $$0.a(this.b, $$1, $$2, this.c, this.d);
-      }
+      return this.e[$$0];
    }
 }

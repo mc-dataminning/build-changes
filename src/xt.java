@@ -12,7 +12,7 @@ public class xt implements ux<wp> {
    private final float g;
    private final float h;
 
-   public xt(double $$0, double $$1, double $$2, float $$3, List<gu> $$4, @Nullable ehe $$5) {
+   public xt(double $$0, double $$1, double $$2, float $$3, List<gu> $$4, @Nullable ehd $$5) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;

@@ -12,7 +12,7 @@ public class ahe {
    }
 
    private static int a(dr $$0) {
-      return a($$0, cbn::H_);
+      return a($$0, cbm::H_);
    }
 
    private static int b(dr $$0) {

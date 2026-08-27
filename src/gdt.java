@@ -1,50 +1,65 @@
+import java.time.Duration;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
 public class gdt {
-   private final gea a;
-   private final eqq b;
-   @Nullable
-   private eup c;
+   private final UUID a = UUID.randomUUID();
+   private final gdo b;
+   private final gdx c;
+   private final gdz d = new gdz();
+   private final gdw e;
+   private final gdy f;
 
-   public gdt(gea $$0, eqq $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public gdt(gdo $$0, boolean $$1, @Nullable Duration $$2, @Nullable String $$3) {
+      this.c = new gdx($$3);
+      this.e = new gdw();
+      this.f = new gdy($$1, $$2);
+      this.b = $$0.decorate($$0x -> {
+         this.c.a($$0x);
+         $$0x.a(gdr.i, this.a);
+      });
    }
 
-   private void a() {
-      if (this.c != null) {
-         this.a.a(this.c);
-      }
-
-      tf $$0 = tf.c("tutorial.bundleInsert.title");
-      tf $$1 = tf.c("tutorial.bundleInsert.description");
-      this.c = new eup(eup.a.g, $$0, $$1, true);
-      this.a.a(this.c, 160);
+   public void a() {
+      this.e.a(this.b);
    }
 
-   private void b() {
-      if (this.c != null) {
-         this.a.a(this.c);
-         this.c = null;
-      }
+   public void a(cpi $$0, boolean $$1) {
+      this.c.a($$0, $$1);
+      this.d.a();
+      this.b();
+   }
 
-      if (!this.b.t) {
-         this.b.t = true;
-         this.b.aq();
+   public void a(String $$0) {
+      this.c.a($$0);
+      this.b();
+   }
+
+   public void a(long $$0) {
+      this.d.a($$0);
+   }
+
+   public void b() {
+      if (this.c.a(this.b)) {
+         this.f.a(this.b);
+         this.e.a();
       }
    }
 
-   public void a(ciy $$0, ciy $$1, cem $$2) {
-      if (!this.b.t) {
-         if (!$$0.b() && $$1.a(cjb.qg)) {
-            if ($$2 == cem.a) {
-               this.a();
-            } else if ($$2 == cem.b) {
-               this.b();
-            }
-         } else if ($$0.a(cjb.qg) && !$$1.b() && $$2 == cem.b) {
-            this.b();
-         }
+   public void c() {
+      this.c.a(this.b);
+      this.e.d();
+      this.d.a(this.b);
+   }
+
+   public void a(cpl $$0, ae $$1) {
+      aer $$2 = $$1.j();
+      if ($$1.e() && "minecraft".equals($$2.b())) {
+         long $$3 = $$0.V();
+         this.b.send(gdp.f, $$2x -> {
+            $$2x.a(gdr.D, $$2.toString());
+            $$2x.a(gdr.E, $$3);
+         });
       }
    }
 }

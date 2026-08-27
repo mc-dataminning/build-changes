@@ -1,8 +1,8 @@
 public class xn implements ux<wp> {
-   private final cit a;
+   private final cis a;
    private final int b;
 
-   public xn(cit $$0, int $$1) {
+   public xn(cis $$0, int $$1) {
       this.a = $$0;
       this.b = $$1;
    }
@@ -22,7 +22,7 @@ public class xn implements ux<wp> {
       $$0.a(this);
    }
 
-   public cit a() {
+   public cis a() {
       return this.a;
    }
 

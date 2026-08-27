@@ -7,9 +7,9 @@ public class akm {
    private static final Logger a = LogUtils.getLogger();
    protected akk c;
    protected final akl d;
-   private cpj b;
+   private cpi b;
    @Nullable
-   private cpj e;
+   private cpi e;
    private boolean f;
    private int g;
    private gu h;
@@ -20,7 +20,7 @@ public class akm {
    private int m;
 
    public akm(akl $$0) {
-      this.b = cpj.e;
+      this.b = cpi.e;
       this.h = gu.b;
       this.k = gu.b;
       this.m = -1;
@@ -28,7 +28,7 @@ public class akm {
       this.c = $$0.x();
    }
 
-   public boolean a(cpj $$0) {
+   public boolean a(cpi $$0) {
       if ($$0 == this.b) {
          return false;
       } else {
@@ -40,18 +40,18 @@ public class akm {
       }
    }
 
-   protected void a(cpj $$0, @Nullable cpj $$1) {
+   protected void a(cpi $$0, @Nullable cpi $$1) {
       this.e = $$1;
       this.b = $$0;
       $$0.a(this.d.fR());
    }
 
-   public cpj b() {
+   public cpi b() {
       return this.b;
    }
 
    @Nullable
-   public cpj c() {
+   public cpi c() {
       return this.e;
    }
 
@@ -66,7 +66,7 @@ public class akm {
    public void a() {
       this.i++;
       if (this.j) {
-         dfa $$0 = this.c.a_(this.k);
+         dez $$0 = this.c.a_(this.k);
          if ($$0.i()) {
             this.j = false;
          } else {
@@ -77,7 +77,7 @@ public class akm {
             }
          }
       } else if (this.f) {
-         dfa $$2 = this.c.a_(this.h);
+         dez $$2 = this.c.a_(this.h);
          if ($$2.i()) {
             this.c.a(this.d.ah(), this.h, -1);
             this.m = -1;
@@ -88,7 +88,7 @@ public class akm {
       }
    }
 
-   private float a(dfa $$0, gu $$1, int $$2) {
+   private float a(dez $$0, gu $$1, int $$2) {
       int $$3 = this.i - $$2;
       float $$4 = $$0.a(this.d, this.d.dK(), $$1) * (float)($$3 + 1);
       int $$5 = (int)($$4 * 10.0F);
@@ -104,7 +104,7 @@ public class akm {
    }
 
    public void a(gu $$0, abz.a $$1, ha $$2, int $$3, int $$4) {
-      if (this.d.bp().g(ehe.b($$0)) > ali.d) {
+      if (this.d.bp().g(ehd.b($$0)) > ali.d) {
          this.a($$0, false, $$4, "too far");
       } else if ($$0.v() >= $$3) {
          this.d.c.b(new wz($$0, this.c.a_($$0)));
@@ -130,7 +130,7 @@ public class akm {
 
             this.g = this.i;
             float $$5 = 1.0F;
-            dfa $$6 = this.c.a_($$0);
+            dez $$6 = this.c.a_($$0);
             if (!$$6.i()) {
                $$6.a(this.c, $$0, this.d);
                $$5 = $$6.a(this.d, this.d.dK(), $$0);
@@ -154,7 +154,7 @@ public class akm {
          } else if ($$1 == abz.a.c) {
             if ($$0.equals(this.h)) {
                int $$8 = this.i - this.g;
-               dfa $$9 = this.c.a_($$0);
+               dez $$9 = this.c.a_($$0);
                if (!$$9.i()) {
                   float $$10 = $$9.a(this.d, this.d.dK(), $$0) * (float)($$8 + 1);
                   if ($$10 >= 0.7F) {
@@ -198,29 +198,29 @@ public class akm {
    }
 
    public boolean a(gu $$0) {
-      dfa $$1 = this.c.a_($$0);
+      dez $$1 = this.c.a_($$0);
       if (!this.d.eR().d().a($$1, this.c, $$0, this.d)) {
          return false;
       } else {
-         dcm $$2 = this.c.c_($$0);
-         csm $$3 = $$1.b();
-         if ($$3 instanceof cvq && !this.d.gn()) {
+         dcl $$2 = this.c.c_($$0);
+         csl $$3 = $$1.b();
+         if ($$3 instanceof cvp && !this.d.gn()) {
             this.c.a($$0, $$1, $$1, 3);
             return false;
          } else if (this.d.a(this.c, $$0, this.b)) {
             return false;
          } else {
-            $$3.a(this.c, $$0, $$1, (cbn)this.d);
+            $$3.a(this.c, $$0, $$1, (cbm)this.d);
             boolean $$4 = this.c.a($$0, false);
             if ($$4) {
-               $$3.a((cpn)this.c, $$0, $$1);
+               $$3.a((cpm)this.c, $$0, $$1);
             }
 
             if (this.e()) {
                return true;
             } else {
-               ciy $$5 = this.d.eR();
-               ciy $$6 = $$5.p();
+               cix $$5 = this.d.eR();
+               cix $$6 = $$5.p();
                boolean $$7 = this.d.e($$1);
                $$5.a(this.c, $$1, $$0, this.d);
                if ($$4 && $$7) {
@@ -233,16 +233,16 @@ public class akm {
       }
    }
 
-   public bgq a(akl $$0, cpm $$1, ciy $$2, bgp $$3) {
-      if (this.b == cpj.d) {
+   public bgq a(akl $$0, cpl $$1, cix $$2, bgp $$3) {
+      if (this.b == cpi.d) {
          return bgq.d;
       } else if ($$0.gl().a($$2.d())) {
          return bgq.d;
       } else {
          int $$4 = $$2.L();
          int $$5 = $$2.k();
-         bgr<ciy> $$6 = $$2.a($$1, $$0, $$3);
-         ciy $$7 = $$6.b();
+         bgr<cix> $$6 = $$2.a($$1, $$0, $$3);
+         cix $$7 = $$6.b();
          if ($$7 == $$2 && $$7.L() == $$4 && $$7.r() <= 0 && $$7.k() == $$5) {
             return $$6.a();
          } else if ($$6.a() == bgq.e && $$7.r() > 0 && !$$0.fl()) {
@@ -252,7 +252,7 @@ public class akm {
                $$0.a($$3, $$7);
             }
 
-            if (this.e() && $$7 != ciy.b) {
+            if (this.e() && $$7 != cix.b) {
                $$7.f($$4);
                if ($$7.i() && $$7.k() != $$5) {
                   $$7.b($$5);
@@ -260,7 +260,7 @@ public class akm {
             }
 
             if ($$7.b()) {
-               $$0.a($$3, ciy.b);
+               $$0.a($$3, cix.b);
             }
 
             if (!$$0.fl()) {
@@ -272,12 +272,12 @@ public class akm {
       }
    }
 
-   public bgq a(akl $$0, cpm $$1, ciy $$2, bgp $$3, eha $$4) {
+   public bgq a(akl $$0, cpl $$1, cix $$2, bgp $$3, egz $$4) {
       gu $$5 = $$4.a();
-      dfa $$6 = $$1.a_($$5);
+      dez $$6 = $$1.a_($$5);
       if (!$$6.b().a($$1.G())) {
          return bgq.e;
-      } else if (this.b == cpj.d) {
+      } else if (this.b == cpi.d) {
          bgt $$7 = $$6.b($$1, $$5);
          if ($$7 != null) {
             $$0.a($$7);
@@ -288,7 +288,7 @@ public class akm {
       } else {
          boolean $$8 = !$$0.eR().b() || !$$0.eS().b();
          boolean $$9 = $$0.fG() && $$8;
-         ciy $$10 = $$2.p();
+         cix $$10 = $$2.p();
          if (!$$9) {
             bgq $$11 = $$6.a($$1, $$0, $$3, $$4);
             if ($$11.a()) {
@@ -298,7 +298,7 @@ public class akm {
          }
 
          if (!$$2.b() && !$$0.gl().a($$2.d())) {
-            cli $$12 = new cli($$0, $$3, $$4);
+            clh $$12 = new clh($$0, $$3, $$4);
             bgq $$14;
             if (this.e()) {
                int $$13 = $$2.L();

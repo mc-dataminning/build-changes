@@ -1,28 +1,65 @@
-public class epj extends epm {
-   private final gef c;
-   private final emn d;
-   private final emo e;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   public epj(exz $$0, emn $$1, emo $$2) {
-      this.d = $$1;
-      this.e = $$2;
-      this.c = new gef($$0);
+public class epj extends epl {
+   private static final Logger c = LogUtils.getLogger();
+   private final long d;
+   private final int e;
+   private final eya f;
+   private final String g;
+
+   public epj(long $$0, int $$1, String $$2, eya $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$3;
+      this.g = $$2;
    }
 
    @Override
    public void run() {
-      this.b(tf.c("mco.connect.connecting"));
-      this.c.a(this.d, fjp.a(this.e.a));
-   }
+      this.b(tf.c("mco.download.preparing"));
+      elv $$0 = elv.a();
+      int $$1 = 0;
 
-   @Override
-   public void a() {
-      this.c.a();
-      eqm.O().ac().a();
-   }
+      while ($$1 < 25) {
+         try {
+            if (this.c()) {
+               return;
+            }
 
-   @Override
-   public void b() {
-      this.c.b();
+            enc $$2 = $$0.b(this.d, this.e);
+            a(1L);
+            if (this.c()) {
+               return;
+            }
+
+            a(new enz(this.f, $$2, this.g, $$0x -> {
+            }));
+            return;
+         } catch (enj var4) {
+            if (this.c()) {
+               return;
+            }
+
+            a((long)var4.c);
+            $$1++;
+         } catch (eni var5) {
+            if (this.c()) {
+               return;
+            }
+
+            c.error("Couldn't download world data", var5);
+            a(new eoa(var5, this.f));
+            return;
+         } catch (Exception var6) {
+            if (this.c()) {
+               return;
+            }
+
+            c.error("Couldn't download world data", var6);
+            this.a(var6);
+            return;
+         }
+      }
    }
 }

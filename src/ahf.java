@@ -30,17 +30,17 @@ public class ahf {
       );
    }
 
-   private static Optional<? extends hi.b<duz>> a(es.c<duz> $$0, hr<duz> $$1) {
-      return (Optional<? extends hi.b<duz>>)$$0.a().map($$1x -> $$1.b($$1x).map($$0xx -> hi.a($$0xx)), $$1::b);
+   private static Optional<? extends hi.b<duy>> a(es.c<duy> $$0, hr<duy> $$1) {
+      return (Optional<? extends hi.b<duy>>)$$0.a().map($$1x -> $$1.b($$1x).map($$0xx -> hi.a($$0xx)), $$1::b);
    }
 
-   private static int a(dr $$0, es.c<duz> $$1) throws CommandSyntaxException {
-      hr<duz> $$2 = $$0.e().B_().d(jc.az);
-      hi<duz> $$3 = (hi<duz>)a($$1, $$2).orElseThrow(() -> c.create($$1.b()));
+   private static int a(dr $$0, es.c<duy> $$1) throws CommandSyntaxException {
+      hr<duy> $$2 = $$0.e().B_().d(jc.az);
+      hi<duy> $$3 = (hi<duy>)a($$1, $$2).orElseThrow(() -> c.create($$1.b()));
       gu $$4 = gu.a($$0.d());
       akk $$5 = $$0.e();
       Stopwatch $$6 = Stopwatch.createStarted(ac.c);
-      Pair<gu, he<duz>> $$7 = $$5.k().g().a($$5, $$3, $$4, 100, false);
+      Pair<gu, he<duy>> $$7 = $$5.k().g().a($$5, $$3, $$4, 100, false);
       $$6.stop();
       if ($$7 == null) {
          throw b.create($$1.b());
@@ -49,10 +49,10 @@ public class ahf {
       }
    }
 
-   private static int a(dr $$0, er.c<cqk> $$1) throws CommandSyntaxException {
+   private static int a(dr $$0, er.c<cqj> $$1) throws CommandSyntaxException {
       gu $$2 = gu.a($$0.d());
       Stopwatch $$3 = Stopwatch.createStarted(ac.c);
-      Pair<gu, he<cqk>> $$4 = $$0.e().a($$1, $$2, 6400, 32, 64);
+      Pair<gu, he<cqj>> $$4 = $$0.e().a($$1, $$2, 6400, 32, 64);
       $$3.stop();
       if ($$4 == null) {
          throw d.create($$1.b());
@@ -61,11 +61,11 @@ public class ahf {
       }
    }
 
-   private static int b(dr $$0, er.c<bub> $$1) throws CommandSyntaxException {
+   private static int b(dr $$0, er.c<bua> $$1) throws CommandSyntaxException {
       gu $$2 = gu.a($$0.d());
       akk $$3 = $$0.e();
       Stopwatch $$4 = Stopwatch.createStarted(ac.c);
-      Optional<Pair<he<bub>, gu>> $$5 = $$3.w().e($$1, $$2, 256, bty.b.c);
+      Optional<Pair<he<bua>, gu>> $$5 = $$3.w().e($$1, $$2, 256, btx.b.c);
       $$4.stop();
       if ($$5.isEmpty()) {
          throw e.create($$1.b());

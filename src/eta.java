@@ -1,146 +1,69 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.OptionalInt;
 
-public interface eta {
-   eta a = new eta() {
-      @Override
-      public int a(erw $$0, int $$1, int $$2) {
-         return $$2;
-      }
+public class eta extends esd {
+   private OptionalInt a = OptionalInt.empty();
+   private OptionalInt b = OptionalInt.empty();
+   private final asc<eta.a, esz> c;
+   private boolean d = false;
 
-      @Override
-      public int a(erw $$0, int $$1, int $$2, int $$3, int $$4) {
-         return $$2;
-      }
-
-      @Override
-      public int b(erw $$0, int $$1, int $$2, int $$3, int $$4) {
-         return $$2;
-      }
-
-      @Override
-      public int c(erw $$0, int $$1, int $$2, int $$3, int $$4) {
-         return $$2;
-      }
-
-      @Override
-      public void a(erw $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      }
-
-      @Override
-      public int a() {
-         return 0;
-      }
-
-      @Override
-      public int b() {
-         return 0;
-      }
-   };
-
-   static eta a(eru $$0, tj $$1, int $$2) {
-      return b($$0, $$0.c($$1, $$2).stream().map($$1x -> new eta.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   public eta(tf $$0, ert $$1) {
+      this(0, 0, $$0, $$1);
    }
 
-   static eta a(eru $$0, tj $$1, int $$2, int $$3) {
-      return b($$0, $$0.c($$1, $$2).stream().limit((long)$$3).map($$1x -> new eta.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   public eta(int $$0, int $$1, tf $$2, ert $$3) {
+      super($$0, $$1, 0, 0, $$2, $$3);
+      this.c = ac.a($$1x -> $$1x.c.isPresent() ? esz.a($$3, $$1x.a, $$1x.b, $$1x.c.getAsInt()) : esz.a($$3, $$1x.a, $$1x.b));
+      this.i = false;
    }
 
-   static eta a(eru $$0, tf... $$1) {
-      return b($$0, Arrays.stream($$1).map(tf::f).map($$1x -> new eta.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   public eta i(int $$0) {
+      super.a($$0);
+      return this;
    }
 
-   static eta a(eru $$0, List<tf> $$1) {
-      return b($$0, $$1.stream().map(tf::f).map($$1x -> new eta.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   public eta j(int $$0) {
+      this.a = OptionalInt.of($$0);
+      return this;
    }
 
-   static eta b(final eru $$0, final List<eta.a> $$1) {
-      return $$1.isEmpty() ? a : new eta() {
-         private final int d = $$1.stream().mapToInt($$0x -> $$0x.b).max().orElse(0);
-
-         @Override
-         public int a(erw $$0x, int $$1x, int $$2) {
-            return this.a($$0, $$1, $$2, 9, 16777215);
-         }
-
-         @Override
-         public int a(erw $$0x, int $$1x, int $$2, int $$3, int $$4) {
-            int $$5 = $$2;
-
-            for (eta.a $$6 : $$1) {
-               $$0.b($$0, $$6.a, $$1 - $$6.b / 2, $$5, $$4);
-               $$5 += $$3;
-            }
-
-            return $$5;
-         }
-
-         @Override
-         public int b(erw $$0x, int $$1x, int $$2, int $$3, int $$4) {
-            int $$5 = $$2;
-
-            for (eta.a $$6 : $$1) {
-               $$0.b($$0, $$6.a, $$1, $$5, $$4);
-               $$5 += $$3;
-            }
-
-            return $$5;
-         }
-
-         @Override
-         public int c(erw $$0x, int $$1x, int $$2, int $$3, int $$4) {
-            int $$5 = $$2;
-
-            for (eta.a $$6 : $$1) {
-               $$0.a($$0, $$6.a, $$1, $$5, $$4, false);
-               $$5 += $$3;
-            }
-
-            return $$5;
-         }
-
-         @Override
-         public void a(erw $$0x, int $$1x, int $$2, int $$3, int $$4, int $$5) {
-            int $$6 = $$1.stream().mapToInt($$0xx -> $$0xx.b).max().orElse(0);
-            if ($$6 > 0) {
-               $$0.a($$1 - $$6 / 2 - $$4, $$2 - $$4, $$1 + $$6 / 2 + $$4, $$2 + $$1.size() * $$3 + $$4, $$5);
-            }
-         }
-
-         @Override
-         public int a() {
-            return $$1.size();
-         }
-
-         @Override
-         public int b() {
-            return this.d;
-         }
-      };
+   public eta k(int $$0) {
+      this.b = OptionalInt.of($$0);
+      return this;
    }
 
-   int a(erw var1, int var2, int var3);
+   public eta b(boolean $$0) {
+      this.d = $$0;
+      return this;
+   }
 
-   int a(erw var1, int var2, int var3, int var4, int var5);
+   @Override
+   public int l() {
+      return this.c.a(this.e()).b();
+   }
 
-   int b(erw var1, int var2, int var3, int var4, int var5);
+   @Override
+   public int i() {
+      return this.c.a(this.e()).a() * 9;
+   }
 
-   int c(erw var1, int var2, int var3, int var4, int var5);
-
-   void a(erw var1, int var2, int var3, int var4, int var5, int var6);
-
-   int a();
-
-   int b();
-
-   public static class a {
-      final arc a;
-      final int b;
-
-      a(arc $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   @Override
+   public void b(erv $$0, int $$1, int $$2, float $$3) {
+      esz $$4 = this.c.a(this.e());
+      int $$5 = this.r();
+      int $$6 = this.t();
+      int $$7 = 9;
+      int $$8 = this.b();
+      if (this.d) {
+         $$4.a($$0, $$5 + this.l() / 2, $$6, $$7, $$8);
+      } else {
+         $$4.b($$0, $$5, $$6, $$7, $$8);
       }
+   }
+
+   private eta.a e() {
+      return new eta.a(this.m(), this.a.orElse(Integer.MAX_VALUE), this.b);
+   }
+
+   static record a(tf a, int b, OptionalInt c) {
    }
 }

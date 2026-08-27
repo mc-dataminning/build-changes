@@ -27,9 +27,9 @@ public class fo implements ArgumentType<fk> {
       return new fo($$0);
    }
 
-   public static ehd a(CommandContext<dr> $$0, String $$1) {
-      ehe $$2 = ((fk)$$0.getArgument($$1, fk.class)).a((dr)$$0.getSource());
-      return new ehd((float)$$2.c, (float)$$2.e);
+   public static ehc a(CommandContext<dr> $$0, String $$1) {
+      ehd $$2 = ((fk)$$0.getArgument($$1, fk.class)).a((dr)$$0.getSource());
+      return new ehc((float)$$2.c, (float)$$2.e);
    }
 
    public fk a(StringReader $$0) throws CommandSyntaxException {

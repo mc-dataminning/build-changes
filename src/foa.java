@@ -1,61 +1,51 @@
-public class foa implements elk {
-   private final elk a;
-   private final fyl b;
+import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
+import java.util.SortedMap;
 
-   public foa(elk $$0, fyl $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class foa {
+   private final fof a = new fof();
+   private final SortedMap<foc, ela> b = ac.a(new Object2ObjectLinkedOpenHashMap(), $$0 -> {
+      $$0.put(foi.h(), this.a.a(foc.c()));
+      $$0.put(foi.i(), this.a.a(foc.e()));
+      $$0.put(foi.a(), this.a.a(foc.d()));
+      $$0.put(foi.k(), this.a.a(foc.f()));
+      a($$0, foi.b());
+      a($$0, foi.c());
+      a($$0, foi.d());
+      a($$0, foi.e());
+      a($$0, foi.f());
+      a($$0, foi.g());
+      a($$0, foc.h());
+      a($$0, foc.k());
+      a($$0, foc.l());
+      a($$0, foc.n());
+      a($$0, foc.o());
+      a($$0, foc.m());
+      a($$0, foc.p());
+      a($$0, foc.q());
+      a($$0, foc.j());
+      gba.l.forEach($$1 -> a($$0, $$1));
+   });
+   private final fnu.a c = fnu.a(this.b, new ela(256));
+   private final fnu.a d = fnu.a(new ela(256));
+   private final fnv e = new fnv(this.c);
+
+   private static void a(Object2ObjectLinkedOpenHashMap<foc, ela> $$0, foc $$1) {
+      $$0.put($$1, new ela($$1.H()));
    }
 
-   @Override
-   public elk a(double $$0, double $$1, double $$2) {
-      return this.a.a($$0, $$1, $$2);
+   public fof a() {
+      return this.a;
    }
 
-   @Override
-   public elk a(int $$0, int $$1, int $$2, int $$3) {
-      return this.a.a($$0, $$1, $$2, $$3);
+   public fnu.a b() {
+      return this.c;
    }
 
-   @Override
-   public elk a(float $$0, float $$1) {
-      return this.a.a(this.b.a($$0), this.b.c($$1));
+   public fnu.a c() {
+      return this.d;
    }
 
-   @Override
-   public elk a(int $$0, int $$1) {
-      return this.a.a($$0, $$1);
-   }
-
-   @Override
-   public elk b(int $$0, int $$1) {
-      return this.a.b($$0, $$1);
-   }
-
-   @Override
-   public elk a(float $$0, float $$1, float $$2) {
-      return this.a.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public void e() {
-      this.a.e();
-   }
-
-   @Override
-   public void b(int $$0, int $$1, int $$2, int $$3) {
-      this.a.b($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void k() {
-      this.a.k();
-   }
-
-   @Override
-   public void a(
-      float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9, int $$10, float $$11, float $$12, float $$13
-   ) {
-      this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, this.b.a($$7), this.b.c($$8), $$9, $$10, $$11, $$12, $$13);
+   public fnv d() {
+      return this.e;
    }
 }

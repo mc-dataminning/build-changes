@@ -17,10 +17,10 @@ public class au extends cu<au.a> {
       return new au.a($$1, $$3, $$4, $$5);
    }
 
-   public void a(akl $$0, buk $$1, buk $$2, @Nullable bid $$3) {
-      ech $$4 = bo.b($$0, $$1);
-      ech $$5 = bo.b($$0, $$2);
-      ech $$6 = $$3 != null ? bo.b($$0, $$3) : null;
+   public void a(akl $$0, buj $$1, buj $$2, @Nullable bid $$3) {
+      ecg $$4 = bo.b($$0, $$1);
+      ecg $$5 = bo.b($$0, $$2);
+      ecg $$6 = $$3 != null ? bo.b($$0, $$3) : null;
       this.a($$0, $$3x -> $$3x.a($$4, $$5, $$6));
    }
 
@@ -48,11 +48,11 @@ public class au extends cu<au.a> {
          return new au.a(Optional.empty(), bo.a($$0), bo.a($$1), bo.a($$2));
       }
 
-      public boolean a(ech $$0, ech $$1, @Nullable ech $$2) {
+      public boolean a(ecg $$0, ecg $$1, @Nullable ecg $$2) {
          return !this.c.isPresent() || $$2 != null && this.c.get().a($$2) ? a(this.a, $$0) && a(this.b, $$1) || a(this.a, $$1) && a(this.b, $$0) : false;
       }
 
-      private static boolean a(Optional<ba> $$0, ech $$1) {
+      private static boolean a(Optional<ba> $$0, ecg $$1) {
          return $$0.isEmpty() || $$0.get().a($$1);
       }
 

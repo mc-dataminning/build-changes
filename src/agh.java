@@ -34,10 +34,10 @@ public class agh {
 
    private static int a(dr $$0) throws CommandSyntaxException {
       MinecraftServer $$1 = $$0.l();
-      if ($$1.ba()) {
+      if ($$1.aZ()) {
          throw c.create();
       } else {
-         $$1.bb();
+         $$1.ba();
          $$0.a(() -> tf.c("commands.debug.started"), true);
          return 0;
       }
@@ -45,10 +45,10 @@ public class agh {
 
    private static int b(dr $$0) throws CommandSyntaxException {
       MinecraftServer $$1 = $$0.l();
-      if (!$$1.ba()) {
+      if (!$$1.aZ()) {
          throw b.create();
       } else {
-         bdg $$2 = $$1.bc();
+         bdg $$2 = $$1.bb();
          double $$3 = (double)$$2.g() / (double)asm.a;
          double $$4 = (double)$$2.f() / $$3;
          $$0.a(() -> tf.a("commands.debug.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2.f(), String.format(Locale.ROOT, "%.2f", $$4)), true);

@@ -1,154 +1,195 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-@Deprecated
-public class doc extends dnn<doc.a> {
-   private static final dfa a = csn.nc.n();
-
-   public doc(Codec<doc.a> $$0) {
+public class doc extends dnm<dpt> {
+   public doc(Codec<dpt> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dnp<doc.a> $$0) {
-      gu $$1 = $$0.e();
-      cqg $$2 = $$0.b();
-      aru $$3 = $$0.d();
-      doc.a $$4 = $$0.f();
-      if ($$1.v() <= $$2.C_() + 4) {
+   public boolean a(dno<dpt> $$0) {
+      cqf $$1 = $$0.b();
+      gu $$2 = $$0.e();
+      dpt $$3 = $$0.f();
+      aru $$4 = $$0.d();
+      if (!dni.a($$1, $$2)) {
          return false;
       } else {
-         $$1 = $$1.c(4);
-         boolean[] $$5 = new boolean[2048];
-         int $$6 = $$3.a(4) + 4;
-
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            double $$8 = $$3.j() * 6.0 + 3.0;
-            double $$9 = $$3.j() * 4.0 + 2.0;
-            double $$10 = $$3.j() * 6.0 + 3.0;
-            double $$11 = $$3.j() * (16.0 - $$8 - 2.0) + 1.0 + $$8 / 2.0;
-            double $$12 = $$3.j() * (8.0 - $$9 - 4.0) + 2.0 + $$9 / 2.0;
-            double $$13 = $$3.j() * (16.0 - $$10 - 2.0) + 1.0 + $$10 / 2.0;
-
-            for (int $$14 = 1; $$14 < 15; $$14++) {
-               for (int $$15 = 1; $$15 < 15; $$15++) {
-                  for (int $$16 = 1; $$16 < 7; $$16++) {
-                     double $$17 = ((double)$$14 - $$11) / ($$8 / 2.0);
-                     double $$18 = ((double)$$16 - $$12) / ($$9 / 2.0);
-                     double $$19 = ((double)$$15 - $$13) / ($$10 / 2.0);
-                     double $$20 = $$17 * $$17 + $$18 * $$18 + $$19 * $$19;
-                     if ($$20 < 1.0) {
-                        $$5[($$14 * 16 + $$15) * 8 + $$16] = true;
-                     }
-                  }
+         Optional<djy> $$5 = djy.a($$1, $$2, $$3.b, dni::c, dni::a);
+         if (!$$5.isEmpty() && $$5.get() instanceof djy.b) {
+            djy.b $$6 = (djy.b)$$5.get();
+            if ($$6.g() < 4) {
+               return false;
+            } else {
+               int $$7 = (int)((float)$$6.g() * $$3.e);
+               int $$8 = arp.a($$7, $$3.c.a(), $$3.c.b());
+               int $$9 = arp.b($$4, $$3.c.a(), $$8);
+               doc.a $$10 = a($$2.h($$6.e() - 1), false, $$4, $$9, $$3.f, $$3.d);
+               doc.a $$11 = a($$2.h($$6.f() + 1), true, $$4, $$9, $$3.g, $$3.d);
+               doc.b $$12;
+               if ($$10.a($$3) && $$11.a($$3)) {
+                  $$12 = new doc.b($$2.v(), $$4, $$3.h);
+               } else {
+                  $$12 = doc.b.a();
                }
-            }
-         }
 
-         dfa $$21 = $$4.a().a($$3, $$1);
-
-         for (int $$22 = 0; $$22 < 16; $$22++) {
-            for (int $$23 = 0; $$23 < 16; $$23++) {
-               for (int $$24 = 0; $$24 < 8; $$24++) {
-                  boolean $$25 = !$$5[($$22 * 16 + $$23) * 8 + $$24]
-                     && (
-                        $$22 < 15 && $$5[(($$22 + 1) * 16 + $$23) * 8 + $$24]
-                           || $$22 > 0 && $$5[(($$22 - 1) * 16 + $$23) * 8 + $$24]
-                           || $$23 < 15 && $$5[($$22 * 16 + $$23 + 1) * 8 + $$24]
-                           || $$23 > 0 && $$5[($$22 * 16 + ($$23 - 1)) * 8 + $$24]
-                           || $$24 < 7 && $$5[($$22 * 16 + $$23) * 8 + $$24 + 1]
-                           || $$24 > 0 && $$5[($$22 * 16 + $$23) * 8 + ($$24 - 1)]
-                     );
-                  if ($$25) {
-                     dfa $$26 = $$2.a_($$1.b($$22, $$24, $$23));
-                     if ($$24 >= 4 && $$26.k()) {
-                        return false;
-                     }
-
-                     if ($$24 < 4 && !$$26.e() && $$2.a_($$1.b($$22, $$24, $$23)) != $$21) {
-                        return false;
-                     }
-                  }
+               boolean $$14 = $$10.a($$1, $$12);
+               boolean $$15 = $$11.a($$1, $$12);
+               if ($$14) {
+                  $$10.a($$1, $$4, $$12);
                }
-            }
-         }
 
-         for (int $$27 = 0; $$27 < 16; $$27++) {
-            for (int $$28 = 0; $$28 < 16; $$28++) {
-               for (int $$29 = 0; $$29 < 8; $$29++) {
-                  if ($$5[($$27 * 16 + $$28) * 8 + $$29]) {
-                     gu $$30 = $$1.b($$27, $$29, $$28);
-                     if (this.c($$2.a_($$30))) {
-                        boolean $$31 = $$29 >= 4;
-                        $$2.a($$30, $$31 ? a : $$21, 2);
-                        if ($$31) {
-                           $$2.a($$30, a.b(), 0);
-                           this.a($$2, $$30);
-                        }
-                     }
-                  }
+               if ($$15) {
+                  $$11.a($$1, $$4, $$12);
                }
-            }
-         }
 
-         dfa $$32 = $$4.b().a($$3, $$1);
-         if (!$$32.i()) {
-            for (int $$33 = 0; $$33 < 16; $$33++) {
-               for (int $$34 = 0; $$34 < 16; $$34++) {
-                  for (int $$35 = 0; $$35 < 8; $$35++) {
-                     boolean $$36 = !$$5[($$33 * 16 + $$34) * 8 + $$35]
-                        && (
-                           $$33 < 15 && $$5[(($$33 + 1) * 16 + $$34) * 8 + $$35]
-                              || $$33 > 0 && $$5[(($$33 - 1) * 16 + $$34) * 8 + $$35]
-                              || $$34 < 15 && $$5[($$33 * 16 + $$34 + 1) * 8 + $$35]
-                              || $$34 > 0 && $$5[($$33 * 16 + ($$34 - 1)) * 8 + $$35]
-                              || $$35 < 7 && $$5[($$33 * 16 + $$34) * 8 + $$35 + 1]
-                              || $$35 > 0 && $$5[($$33 * 16 + $$34) * 8 + ($$35 - 1)]
-                        );
-                     if ($$36 && ($$35 < 4 || $$3.a(2) != 0)) {
-                        dfa $$37 = $$2.a_($$1.b($$33, $$35, $$34));
-                        if ($$37.e() && !$$37.a(apl.bI)) {
-                           gu $$38 = $$1.b($$33, $$35, $$34);
-                           $$2.a($$38, $$32, 2);
-                           this.a($$2, $$38);
-                        }
-                     }
-                  }
-               }
+               return true;
             }
+         } else {
+            return false;
          }
-
-         if ($$21.u().a(apq.a)) {
-            for (int $$39 = 0; $$39 < 16; $$39++) {
-               for (int $$40 = 0; $$40 < 16; $$40++) {
-                  int $$41 = 4;
-                  gu $$42 = $$1.b($$39, 4, $$40);
-                  if ($$2.s($$42).a().a($$2, $$42, false) && this.c($$2.a_($$42))) {
-                     $$2.a($$42, csn.dO.n(), 2);
-                  }
-               }
-            }
-         }
-
-         return true;
       }
    }
 
-   private boolean c(dfa $$0) {
-      return !$$0.a(apl.bH);
+   private static doc.a a(gu $$0, boolean $$1, aru $$2, int $$3, bft $$4, bft $$5) {
+      return new doc.a($$0, $$1, $$3, (double)$$4.a($$2), (double)$$5.a($$2));
    }
 
-   public static record a(drs b, drs c) implements dpr {
-      public static final Codec<doc.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(drs.a.fieldOf("fluid").forGetter(doc.a::a), drs.a.fieldOf("barrier").forGetter(doc.a::b)).apply($$0, doc.a::new)
-      );
+   private void a(cqf $$0, gu $$1, djy.b $$2, doc.b $$3) {
+      $$0.a($$3.a($$1.h($$2.e() - 1)), csm.cz.n(), 2);
+      $$0.a($$3.a($$1.h($$2.f() + 1)), csm.ch.n(), 2);
 
-      public drs a() {
-         return this.b;
+      for (gu.a $$4 = $$1.h($$2.f() + 2).j(); $$4.v() < $$2.e() - 1; $$4.c(ha.b)) {
+         gu $$5 = $$3.a($$4);
+         if (dni.a($$0, $$5) || $$0.a_($$5).a(csm.rt)) {
+            $$0.a($$5, csm.gM.n(), 2);
+         }
+      }
+   }
+
+   static final class a {
+      private gu a;
+      private final boolean b;
+      private int c;
+      private final double d;
+      private final double e;
+
+      a(gu $$0, boolean $$1, int $$2, double $$3, double $$4) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
       }
 
-      public drs b() {
-         return this.c;
+      private int a() {
+         return this.a(0.0F);
+      }
+
+      private int b() {
+         return this.b ? this.a.v() : this.a.v() - this.a();
+      }
+
+      private int c() {
+         return !this.b ? this.a.v() : this.a.v() + this.a();
+      }
+
+      boolean a(cqf $$0, doc.b $$1) {
+         while (this.c > 1) {
+            gu.a $$2 = this.a.j();
+            int $$3 = Math.min(10, this.a());
+
+            for (int $$4 = 0; $$4 < $$3; $$4++) {
+               if ($$0.a_($$2).a(csm.H)) {
+                  return false;
+               }
+
+               if (dni.a($$0, $$1.a($$2), this.c)) {
+                  this.a = $$2;
+                  return true;
+               }
+
+               $$2.c(this.b ? ha.a : ha.b);
+            }
+
+            this.c /= 2;
+         }
+
+         return false;
+      }
+
+      private int a(float $$0) {
+         return (int)dni.a((double)$$0, (double)this.c, this.e, this.d);
+      }
+
+      void a(cqf $$0, aru $$1, doc.b $$2) {
+         for (int $$3 = -this.c; $$3 <= this.c; $$3++) {
+            for (int $$4 = -this.c; $$4 <= this.c; $$4++) {
+               float $$5 = arp.c((float)($$3 * $$3 + $$4 * $$4));
+               if (!($$5 > (float)this.c)) {
+                  int $$6 = this.a($$5);
+                  if ($$6 > 0) {
+                     if ((double)$$1.i() < 0.2) {
+                        $$6 = (int)((float)$$6 * arp.b($$1, 0.8F, 1.0F));
+                     }
+
+                     gu.a $$7 = this.a.b($$3, 0, $$4).j();
+                     boolean $$8 = false;
+                     int $$9 = this.b ? $$0.a(dki.a.a, $$7.u(), $$7.w()) : Integer.MAX_VALUE;
+
+                     for (int $$10 = 0; $$10 < $$6 && $$7.v() < $$9; $$10++) {
+                        gu $$11 = $$2.a($$7);
+                        if (dni.b($$0, $$11)) {
+                           $$8 = true;
+                           csl $$12 = csm.rt;
+                           $$0.a($$11, $$12.n(), 2);
+                        } else if ($$8 && $$0.a_($$11).a(apl.bd)) {
+                           break;
+                        }
+
+                        $$7.c(this.b ? ha.b : ha.a);
+                     }
+                  }
+               }
+            }
+         }
+      }
+
+      boolean a(dpt $$0) {
+         return this.c >= $$0.i && this.d >= (double)$$0.j;
+      }
+   }
+
+   static final class b {
+      private final int a;
+      @Nullable
+      private final ehd b;
+
+      b(int $$0, aru $$1, bft $$2) {
+         this.a = $$0;
+         float $$3 = $$2.a($$1);
+         float $$4 = arp.b($$1, 0.0F, (float) Math.PI);
+         this.b = new ehd((double)(arp.b($$4) * $$3), 0.0, (double)(arp.a($$4) * $$3));
+      }
+
+      private b() {
+         this.a = 0;
+         this.b = null;
+      }
+
+      static doc.b a() {
+         return new doc.b();
+      }
+
+      gu a(gu $$0) {
+         if (this.b == null) {
+            return $$0;
+         } else {
+            int $$1 = this.a - $$0.v();
+            ehd $$2 = this.b.a((double)$$1);
+            return $$0.b(arp.a($$2.c), 0, arp.a($$2.e));
+         }
       }
    }
 }

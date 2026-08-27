@@ -1,34 +1,20 @@
-public class fvd extends fsn<byh> {
-   private final foe a;
+public class fvd<T extends bzl> extends fud<T, fgu<T>> {
+   private static final aer a = new aer("textures/entity/spider/spider.png");
 
-   public fvd(fso.a $$0) {
-      super($$0);
-      this.d = 0.5F;
-      this.a = $$0.c();
+   public fvd(fsx.a $$0) {
+      this($$0, fhr.br);
    }
 
-   public void a(byh $$0, float $$1, float $$2, elg $$3, fnl $$4, int $$5) {
-      $$3.a();
-      $$3.a(0.0F, 0.5F, 0.0F);
-      int $$6 = $$0.m();
-      if ((float)$$6 - $$2 + 1.0F < 10.0F) {
-         float $$7 = 1.0F - ((float)$$6 - $$2 + 1.0F) / 10.0F;
-         $$7 = arp.a($$7, 0.0F, 1.0F);
-         $$7 *= $$7;
-         $$7 *= $$7;
-         float $$8 = 1.0F + $$7 * 0.3F;
-         $$3.b($$8, $$8, $$8);
-      }
-
-      $$3.a(a.d.rotationDegrees(-90.0F));
-      $$3.a(-0.5F, -0.5F, 0.5F);
-      $$3.a(a.d.rotationDegrees(90.0F));
-      fvc.a(this.a, csn.ck.n(), $$3, $$4, $$5, $$6 / 5 % 2 == 0);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public fvd(fsx.a $$0, fhq $$1) {
+      super($$0, new fgu<>($$0.a($$1)), 0.8F);
+      this.a(new fxl<>(this));
    }
 
-   public aer a(byh $$0) {
-      return fyk.e;
+   protected float b(T $$0) {
+      return 180.0F;
+   }
+
+   public aer a(T $$0) {
+      return a;
    }
 }

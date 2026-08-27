@@ -1,229 +1,70 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
-import org.slf4j.Logger;
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Multimap;
+import java.util.Set;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
 public class ecp {
-   private static final Logger d = LogUtils.getLogger();
-   public static final ecp a = new ecp(eer.b, Optional.empty(), List.of(), List.of());
-   public static final eeq b = eer.n;
-   public static final Codec<ecp> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eer.a.optionalFieldOf("type", b).forGetter($$0x -> $$0x.e),
-               aqy.a(aer.a, "random_sequence").forGetter($$0x -> $$0x.f),
-               aqy.a(eco.a.listOf(), "pools", List.of()).forGetter($$0x -> $$0x.g),
-               aqy.a(edw.b.listOf(), "functions", List.of()).forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, ecp::new)
-   );
-   private final eeq e;
-   private final Optional<aer> f;
-   private final List<eco> g;
-   private final List<edu> h;
-   private final BiFunction<ciy, ech, ciy> i;
+   private final Multimap<String, String> a;
+   private final Supplier<String> b;
+   private final eep c;
+   private final eck d;
+   private final Set<eci<?>> e;
+   @Nullable
+   private String f;
 
-   ecp(eeq $$0, Optional<aer> $$1, List<eco> $$2, List<edu> $$3) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = edw.a($$3);
+   public ecp(eep $$0, eck $$1) {
+      this(HashMultimap.create(), () -> "", $$0, $$1, ImmutableSet.of());
    }
 
-   public static Consumer<ciy> a(akk $$0, Consumer<ciy> $$1) {
-      return $$2 -> {
-         if ($$2.a($$0.G())) {
-            if ($$2.L() < $$2.g()) {
-               $$1.accept($$2);
-            } else {
-               int $$3 = $$2.L();
-
-               while ($$3 > 0) {
-                  ciy $$4 = $$2.c(Math.min($$2.g(), $$3));
-                  $$3 -= $$4.L();
-                  $$1.accept($$4);
-               }
-            }
-         }
-      };
+   public ecp(Multimap<String, String> $$0, Supplier<String> $$1, eep $$2, eck $$3, Set<eci<?>> $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   public void a(ecn $$0, Consumer<ciy> $$1) {
-      this.a(new ech.a($$0).a(this.f), $$1);
-   }
-
-   public void a(ech $$0, Consumer<ciy> $$1) {
-      ech.c<?> $$2 = ech.a(this);
-      if ($$0.b($$2)) {
-         Consumer<ciy> $$3 = edu.a(this.i, $$1, $$0);
-
-         for (eco $$4 : this.g) {
-            $$4.a($$3, $$0);
-         }
-
-         $$0.c($$2);
-      } else {
-         d.warn("Detected infinite loop in loot tables");
-      }
-   }
-
-   public void a(ecn $$0, long $$1, Consumer<ciy> $$2) {
-      this.a(new ech.a($$0).a($$1).a(this.f), a($$0.a(), $$2));
-   }
-
-   public void b(ecn $$0, Consumer<ciy> $$1) {
-      this.a($$0, a($$0.a(), $$1));
-   }
-
-   public void b(ech $$0, Consumer<ciy> $$1) {
-      this.a($$0, a($$0.d(), $$1));
-   }
-
-   public ObjectArrayList<ciy> a(ecn $$0, long $$1) {
-      return this.a(new ech.a($$0).a($$1).a(this.f));
-   }
-
-   public ObjectArrayList<ciy> a(ecn $$0) {
-      return this.a(new ech.a($$0).a(this.f));
-   }
-
-   private ObjectArrayList<ciy> a(ech $$0) {
-      ObjectArrayList<ciy> $$1 = new ObjectArrayList();
-      this.b($$0, $$1::add);
-      return $$1;
-   }
-
-   public eeq a() {
-      return this.e;
-   }
-
-   public void a(ecq $$0) {
-      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
-         this.g.get($$1).a($$0.b(".pools[" + $$1 + "]"));
+   private String c() {
+      if (this.f == null) {
+         this.f = this.b.get();
       }
 
-      for (int $$2 = 0; $$2 < this.h.size(); $$2++) {
-         this.h.get($$2).a($$0.b(".functions[" + $$2 + "]"));
-      }
+      return this.f;
    }
 
-   public void a(bgj $$0, ecn $$1, long $$2) {
-      ech $$3 = new ech.a($$1).a($$2).a(this.f);
-      ObjectArrayList<ciy> $$4 = this.a($$3);
-      aru $$5 = $$3.b();
-      List<Integer> $$6 = this.a($$0, $$5);
-      this.a($$4, $$6.size(), $$5);
-      ObjectListIterator var9 = $$4.iterator();
-
-      while (var9.hasNext()) {
-         ciy $$7 = (ciy)var9.next();
-         if ($$6.isEmpty()) {
-            d.warn("Tried to over-fill a container");
-            return;
-         }
-
-         if ($$7.b()) {
-            $$0.a($$6.remove($$6.size() - 1), ciy.b);
-         } else {
-            $$0.a($$6.remove($$6.size() - 1), $$7);
-         }
-      }
+   public void a(String $$0) {
+      this.a.put(this.c(), $$0);
    }
 
-   private void a(ObjectArrayList<ciy> $$0, int $$1, aru $$2) {
-      List<ciy> $$3 = Lists.newArrayList();
-      Iterator<ciy> $$4 = $$0.iterator();
-
-      while ($$4.hasNext()) {
-         ciy $$5 = $$4.next();
-         if ($$5.b()) {
-            $$4.remove();
-         } else if ($$5.L() > 1) {
-            $$3.add($$5);
-            $$4.remove();
-         }
-      }
-
-      while ($$1 - $$0.size() - $$3.size() > 0 && !$$3.isEmpty()) {
-         ciy $$6 = $$3.remove(arp.a($$2, 0, $$3.size() - 1));
-         int $$7 = arp.a($$2, 1, $$6.L() / 2);
-         ciy $$8 = $$6.a($$7);
-         if ($$6.L() > 1 && $$2.h()) {
-            $$3.add($$6);
-         } else {
-            $$0.add($$6);
-         }
-
-         if ($$8.L() > 1 && $$2.h()) {
-            $$3.add($$8);
-         } else {
-            $$0.add($$8);
-         }
-      }
-
-      $$0.addAll($$3);
-      ac.b($$0, $$2);
+   public ecp b(String $$0) {
+      return new ecp(this.a, () -> this.c() + $$0, this.c, this.d, this.e);
    }
 
-   private List<Integer> a(bgj $$0, aru $$1) {
-      ObjectArrayList<Integer> $$2 = new ObjectArrayList();
-
-      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
-         if ($$0.a($$3).b()) {
-            $$2.add($$3);
-         }
-      }
-
-      ac.b($$2, $$1);
-      return $$2;
+   public ecp a(String $$0, eci<?> $$1) {
+      ImmutableSet<eci<?>> $$2 = ImmutableSet.builder().addAll(this.e).add($$1).build();
+      return new ecp(this.a, () -> this.c() + $$0, this.c, this.d, $$2);
    }
 
-   public static ecp.a b() {
-      return new ecp.a();
+   public boolean a(eci<?> $$0) {
+      return this.e.contains($$0);
    }
 
-   public static class a implements edr<ecp.a> {
-      private final Builder<eco> a = ImmutableList.builder();
-      private final Builder<edu> b = ImmutableList.builder();
-      private eeq c = ecp.b;
-      private Optional<aer> d = Optional.empty();
+   public Multimap<String, String> a() {
+      return ImmutableMultimap.copyOf(this.a);
+   }
 
-      public ecp.a a(eco.a $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
+   public void a(ech $$0) {
+      this.c.a(this, $$0);
+   }
 
-      public ecp.a a(eeq $$0) {
-         this.c = $$0;
-         return this;
-      }
+   public eck b() {
+      return this.d;
+   }
 
-      public ecp.a a(aer $$0) {
-         this.d = Optional.of($$0);
-         return this;
-      }
-
-      public ecp.a a(edu.a $$0) {
-         this.b.add($$0.b());
-         return this;
-      }
-
-      public ecp.a a() {
-         return this;
-      }
-
-      public ecp b() {
-         return new ecp(this.c, this.d, this.a.build(), this.b.build());
-      }
+   public ecp a(eep $$0) {
+      return new ecp(this.a, this.b, $$0, this.d, this.e);
    }
 }

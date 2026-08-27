@@ -1,87 +1,62 @@
-import java.util.Collection;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMultimap.Builder;
 
-public class chh extends cit {
-   public chh(cit.a $$0) {
-      super($$0);
+public class chh extends ckl implements ckr {
+   private final aqa<csl> a;
+   protected final float b;
+   private final float c;
+   private final Multimap<bjz, bkc> d;
+
+   protected chh(float $$0, float $$1, ckk $$2, aqa<csl> $$3, cis.a $$4) {
+      super($$2, $$4);
+      this.a = $$3;
+      this.b = $$2.b();
+      this.c = $$0 + $$2.c();
+      Builder<bjz, bkc> $$5 = ImmutableMultimap.builder();
+      $$5.put(bke.f, new bkc(m, "Tool modifier", (double)this.c, bkc.a.a));
+      $$5.put(bke.h, new bkc(n, "Tool modifier", (double)$$1, bkc.a.a));
+      this.d = $$5.build();
    }
 
    @Override
-   public boolean i(ciy $$0) {
+   public float a(cix $$0, dez $$1) {
+      return $$1.a(this.a) ? this.b : 1.0F;
+   }
+
+   @Override
+   public boolean a(cix $$0, biy $$1, biy $$2) {
+      $$0.a(2, $$2, $$0x -> $$0x.d(bin.a));
       return true;
    }
 
    @Override
-   public boolean a(dfa $$0, cpm $$1, gu $$2, cbn $$3) {
-      if (!$$1.B) {
-         this.a($$3, $$0, $$1, $$2, false, $$3.b(bgp.a));
+   public boolean a(cix $$0, cpl $$1, dez $$2, gu $$3, biy $$4) {
+      if (!$$1.B && $$2.h($$1, $$3) != 0.0F) {
+         $$0.a(1, $$4, $$0x -> $$0x.d(bin.a));
       }
 
-      return false;
+      return true;
    }
 
    @Override
-   public bgq a(cli $$0) {
-      cbn $$1 = $$0.o();
-      cpm $$2 = $$0.q();
-      if (!$$2.B && $$1 != null) {
-         gu $$3 = $$0.a();
-         if (!this.a($$1, $$2.a_($$3), $$2, $$3, true, $$0.n())) {
-            return bgq.e;
-         }
-      }
-
-      return bgq.a($$2.B);
+   public Multimap<bjz, bkc> a(bin $$0) {
+      return $$0 == bin.a ? this.d : super.a($$0);
    }
 
-   private boolean a(cbn $$0, dfa $$1, cpn $$2, gu $$3, boolean $$4, ciy $$5) {
-      if (!$$0.gn()) {
+   public float d() {
+      return this.c;
+   }
+
+   @Override
+   public boolean a_(dez $$0) {
+      int $$1 = this.i().d();
+      if ($$1 < 3 && $$0.a(apl.bE)) {
+         return false;
+      } else if ($$1 < 2 && $$0.a(apl.bF)) {
          return false;
       } else {
-         csm $$6 = $$1.b();
-         dfb<csm, dfa> $$7 = $$6.l();
-         Collection<dgd<?>> $$8 = $$7.d();
-         String $$9 = jb.f.b($$6).toString();
-         if ($$8.isEmpty()) {
-            a($$0, tf.a(this.a() + ".empty", $$9));
-            return false;
-         } else {
-            qr $$10 = $$5.a("DebugProperty");
-            String $$11 = $$10.l($$9);
-            dgd<?> $$12 = $$7.a($$11);
-            if ($$4) {
-               if ($$12 == null) {
-                  $$12 = $$8.iterator().next();
-               }
-
-               dfa $$13 = a($$1, $$12, $$0.fG());
-               $$2.a($$3, $$13, 18);
-               a($$0, tf.a(this.a() + ".update", $$12.f(), a($$13, $$12)));
-            } else {
-               $$12 = a($$8, $$12, $$0.fG());
-               String $$14 = $$12.f();
-               $$10.a($$9, $$14);
-               a($$0, tf.a(this.a() + ".select", $$14, a($$1, $$12)));
-            }
-
-            return true;
-         }
+         return $$1 < 1 && $$0.a(apl.bG) ? false : $$0.a(this.a);
       }
-   }
-
-   private static <T extends Comparable<T>> dfa a(dfa $$0, dgd<T> $$1, boolean $$2) {
-      return $$0.a($$1, a($$1.a(), $$0.c($$1), $$2));
-   }
-
-   private static <T> T a(Iterable<T> $$0, @Nullable T $$1, boolean $$2) {
-      return $$2 ? ac.b($$0, $$1) : ac.a($$0, $$1);
-   }
-
-   private static void a(cbn $$0, tf $$1) {
-      ((akl)$$0).b($$1, true);
-   }
-
-   private static <T extends Comparable<T>> String a(dfa $$0, dgd<T> $$1) {
-      return $$1.a($$0.c($$1));
    }
 }

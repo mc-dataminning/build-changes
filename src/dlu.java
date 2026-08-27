@@ -1,22 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dlu implements dlq {
-   public static final Codec<dlu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(hz.v(16).optionalFieldOf("offset", gu.b).forGetter($$0x -> $$0x.e)).apply($$0, dlu::new)
-   );
-   private final hz e;
+public class dlu extends dma {
+   final aqa<csl> a;
+   public static final Codec<dlu> e = RecordCodecBuilder.create($$0 -> a($$0).and(aqa.a(jc.e).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, dlu::new));
 
-   public dlu(hz $$0) {
-      this.e = $$0;
-   }
-
-   public boolean a(cqg $$0, gu $$1) {
-      return !$$0.r($$1.a(this.e));
+   protected dlu(hz $$0, aqa<csl> $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
    @Override
-   public dlr<?> a() {
-      return dlr.h;
+   protected boolean a(dez $$0) {
+      return $$0.a(this.a);
+   }
+
+   @Override
+   public dlq<?> a() {
+      return dlq.b;
    }
 }

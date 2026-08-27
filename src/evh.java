@@ -34,12 +34,12 @@ public record evh(aer c, float d, float e, evh.a f, String g) implements eve {
       return Either.left(this::a);
    }
 
-   private ejj a(anm $$0) throws IOException {
+   private eji a(anm $$0) throws IOException {
       STBTTFontinfo $$1 = null;
       ByteBuffer $$2 = null;
 
       try {
-         ejm var5;
+         ejl var5;
          try (InputStream $$3 = $$0.open(this.c.d("font/"))) {
             $$1 = STBTTFontinfo.malloc();
             $$2 = TextureUtil.readResource($$3);
@@ -48,7 +48,7 @@ public record evh(aer c, float d, float e, evh.a f, String g) implements eve {
                throw new IOException("Invalid ttf");
             }
 
-            var5 = new ejm($$2, $$1, this.d, this.e, this.f.c, this.f.d, this.g);
+            var5 = new ejl($$2, $$1, this.d, this.e, this.f.c, this.f.d, this.g);
          }
 
          return var5;

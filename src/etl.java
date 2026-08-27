@@ -1,7 +1,7 @@
 import com.mojang.blaze3d.systems.RenderSystem;
 import javax.annotation.Nullable;
 
-public class etl extends esf {
+public class etl extends ese {
    @Nullable
    protected ets a;
    protected boolean b;
@@ -24,15 +24,15 @@ public class etl extends esf {
    }
 
    @Override
-   public void a(evx $$0) {
+   public void a(evy $$0) {
       this.c($$0);
    }
 
    @Override
-   public void b(erw $$0, int $$1, int $$2, float $$3) {
+   public void b(erv $$0, int $$1, int $$2, float $$3) {
       if (this.a != null) {
          RenderSystem.disableDepthTest();
-         $$0.a(this.a.a(this.b, this.n()), this.p(), this.r(), this.f, this.g);
+         $$0.a(this.a.a(this.b, this.o()), this.r(), this.t(), this.f, this.g);
          RenderSystem.enableDepthTest();
       }
    }

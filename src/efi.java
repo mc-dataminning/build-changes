@@ -1,69 +1,47 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.Set;
 
-public class efi {
-   private static final Codec<efg> t = jb.I.q().dispatch("condition", efg::b, efh::a);
-   public static final Codec<efg> a = aqy.a((Supplier<Codec<efg>>)(() -> aqy.c(t, eeu.b)));
-   public static final efh b = a("inverted", efd.a);
-   public static final efh c = a("any_of", eev.a);
-   public static final efh d = a("all_of", eeu.a);
-   public static final efh e = a("random_chance", efl.a);
-   public static final efh f = a("random_chance_with_looting", efm.a);
-   public static final efh g = a("entity_properties", efj.a);
-   public static final efh h = a("killed_by_player", efk.a);
-   public static final efh i = a("entity_scores", efb.a);
-   public static final efh j = a("block_state_property", eff.a);
-   public static final efh k = a("match_tool", efn.a);
-   public static final efh l = a("table_bonus", eew.a);
-   public static final efh m = a("survives_explosion", efc.a);
-   public static final efh n = a("damage_source_properties", efa.a);
-   public static final efh o = a("location_check", efe.a);
-   public static final efh p = a("weather_check", efq.a);
-   public static final efh q = a("reference", eey.a);
-   public static final efh r = a("time_check", efo.a);
-   public static final efh s = a("value_check", efp.a);
+public record efi(Optional<bo> b, ecg.b c) implements eff {
+   public static final Codec<efi> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aqy.a(bo.a, "predicate").forGetter(efi::c), ecg.b.e.fieldOf("entity").forGetter(efi::d)).apply($$0, efi::new)
+   );
 
-   private static efh a(String $$0, Codec<? extends efg> $$1) {
-      return hr.a(jb.I, new aer($$0), new efh($$1));
+   @Override
+   public efg b() {
+      return efh.g;
    }
 
-   public static <T> Predicate<T> a(List<? extends Predicate<T>> $$0) {
-      List<Predicate<T>> $$1 = List.copyOf($$0);
-
-      return switch ($$1.size()) {
-         case 0 -> $$0x -> true;
-         case 1 -> (Predicate)$$1.get(0);
-         case 2 -> $$1.get(0).and($$1.get(1));
-         default -> $$1x -> {
-         for (Predicate<T> $$2 : $$1) {
-            if (!$$2.test((T)$$1x)) {
-               return false;
-            }
-         }
-
-         return true;
-      };
-      };
+   @Override
+   public Set<eeo<?>> a() {
+      return ImmutableSet.of(eer.f, this.c.a());
    }
 
-   public static <T> Predicate<T> b(List<? extends Predicate<T>> $$0) {
-      List<Predicate<T>> $$1 = List.copyOf($$0);
+   public boolean a(ecg $$0) {
+      bii $$1 = $$0.c(this.c.a());
+      ehd $$2 = $$0.c(eer.f);
+      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
+   }
 
-      return switch ($$1.size()) {
-         case 0 -> $$0x -> false;
-         case 1 -> (Predicate)$$1.get(0);
-         case 2 -> $$1.get(0).or($$1.get(1));
-         default -> $$1x -> {
-         for (Predicate<T> $$2 : $$1) {
-            if ($$2.test((T)$$1x)) {
-               return true;
-            }
-         }
+   public static eff.a a(ecg.b $$0) {
+      return a($$0, bo.a.a());
+   }
 
-         return false;
-      };
-      };
+   public static eff.a a(ecg.b $$0, bo.a $$1) {
+      return () -> new efi($$1.b(), $$0);
+   }
+
+   public static eff.a a(ecg.b $$0, bo $$1) {
+      return () -> new efi(Optional.of($$1), $$0);
+   }
+
+   public Optional<bo> c() {
+      return this.b;
+   }
+
+   public ecg.b d() {
+      return this.c;
    }
 }

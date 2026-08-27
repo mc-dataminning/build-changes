@@ -1,19 +1,41 @@
-import com.google.common.collect.Maps;
-import java.util.Locale;
-import java.util.Map;
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-public class frq extends ftu<bvr, fds<bvr>> {
-   private static final Map<bvr.d, aer> a = ac.a(Maps.newHashMap(), $$0 -> {
-      for (bvr.d $$1 : bvr.d.values()) {
-         $$0.put($$1, new aer(String.format(Locale.ROOT, "textures/entity/axolotl/axolotl_%s.png", $$1.b())));
-      }
-   });
+public class frq implements frd.a {
+   private static final int a = 60;
+   private final Set<hx> b = Sets.newHashSet();
 
-   public frq(fso.a $$0) {
-      super($$0, new fds<>($$0.a(fhm.e)), 0.5F);
+   frq() {
    }
 
-   public aer a(bvr $$0) {
-      return a.get($$0.fZ());
+   @Override
+   public void a() {
+      this.b.clear();
+   }
+
+   public void a(hx $$0) {
+      this.b.add($$0);
+   }
+
+   public void b(hx $$0) {
+      this.b.remove($$0);
+   }
+
+   @Override
+   public void a(elf $$0, fnu $$1, double $$2, double $$3, double $$4) {
+      gu $$5 = gu.a($$2, $$3, $$4);
+      this.b.forEach($$3x -> {
+         if ($$5.a($$3x.q(), 60.0)) {
+            a($$0, $$1, $$3x);
+         }
+      });
+   }
+
+   private static void a(elf $$0, fnu $$1, hx $$2) {
+      int $$3 = 1;
+      gu $$4 = $$2.q();
+      gu $$5 = $$4.b(-1, -1, -1);
+      gu $$6 = $$4.b(1, 1, 1);
+      frd.a($$0, $$1, $$5, $$6, 0.2F, 1.0F, 0.2F, 0.15F);
    }
 }

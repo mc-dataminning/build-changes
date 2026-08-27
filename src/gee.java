@@ -1,37 +1,65 @@
-public class gee extends gei {
-   private final tf a;
-   private eta b = eta.a;
-   private final exz c;
-   private int y;
+public class gee implements gek {
+   private static final int a = 1200;
+   private static final tf b = tf.c("tutorial.craft_planks.title");
+   private static final tf c = tf.c("tutorial.craft_planks.description");
+   private final gej d;
+   private eup e;
+   private int f;
 
-   public gee(exz $$0, tf $$1, tf $$2) {
-      super($$1);
-      this.c = $$0;
-      this.a = $$2;
+   public gee(gej $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public void aE_() {
-      this.f.ac().a();
-      this.b = eta.a(this.i, this.a, this.g - 50);
-      this.y = this.b.a() * 9;
-      this.d(esh.a(te.k, $$0 -> this.f.a(this.c)).a(this.g / 2 - 100, this.h / 2 + this.y / 2 + 9, 200, 20).a());
+   public void a() {
+      this.f++;
+      if (!this.d.f()) {
+         this.d.a(gel.f);
+      } else {
+         if (this.f == 1) {
+            fmw $$0 = this.d.e().s;
+            if ($$0 != null) {
+               if ($$0.fQ().a(apt.b)) {
+                  this.d.a(gel.f);
+                  return;
+               }
+
+               if (a($$0, apt.b)) {
+                  this.d.a(gel.f);
+                  return;
+               }
+            }
+         }
+
+         if (this.f >= 1200 && this.e == null) {
+            this.e = new eup(eup.a.e, b, c, false);
+            this.d.e().ay().a(this.e);
+         }
+      }
    }
 
    @Override
-   public tf e() {
-      return tf.h().b(this.e).f(": ").b(this.a);
+   public void b() {
+      if (this.e != null) {
+         this.e.c();
+         this.e = null;
+      }
    }
 
    @Override
-   public void au_() {
-      eqm.O().a(this.c);
+   public void a(cix $$0) {
+      if ($$0.a(apt.b)) {
+         this.d.a(gel.f);
+      }
    }
 
-   @Override
-   public void a(erw $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, this.h / 2 - this.y / 2 - 9 * 2, 11184810);
-      this.b.a($$0, this.g / 2, this.h / 2 - this.y / 2);
+   public static boolean a(fmw $$0, aqa<cis> $$1) {
+      for (he<cis> $$2 : jb.i.c($$1)) {
+         if ($$0.j().a(apg.b.b($$2.a())) > 0) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

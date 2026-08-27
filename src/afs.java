@@ -110,7 +110,7 @@ public class afs {
    }
 
    private Optional<afs.a> b(Scanner $$0) {
-      aeq<cpm> $$1 = (aeq<cpm>)agb.a.get($$0.next());
+      aeq<cpl> $$1 = (aeq<cpl>)agb.a.get($$0.next());
       if ($$1 == null) {
          return Optional.empty();
       } else {
@@ -119,7 +119,7 @@ public class afs {
          float $$4 = $$0.nextFloat();
          float $$5 = $$0.nextFloat();
          float $$6 = $$0.nextFloat();
-         return Optional.of(new afs.a($$1, new ehe((double)$$2, (double)$$3, (double)$$4), new ehd($$6, $$5)));
+         return Optional.of(new afs.a($$1, new ehd((double)$$2, (double)$$3, (double)$$4), new ehc($$6, $$5)));
       }
    }
 
@@ -129,13 +129,13 @@ public class afs {
          if (!$$1.isEmpty()) {
             akl $$2 = $$1.get(0);
             akk $$3 = this.e.D();
-            dr $$4 = new dr($$2, ehe.a($$3.R()), ehd.a, $$3, 4, "", te.a, this.e, $$2);
+            dr $$4 = new dr($$2, ehd.a($$3.R()), ehc.a, $$3, 4, "", te.a, this.e, $$2);
             ds $$5 = this.e.aC();
             $$5.a($$4, $$0);
          }
       });
    }
 
-   static record a(aeq<cpm> a, ehe b, ehd c) {
+   static record a(aeq<cpl> a, ehd b, ehc c) {
    }
 }

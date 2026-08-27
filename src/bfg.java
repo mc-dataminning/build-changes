@@ -25,22 +25,22 @@ public abstract class bfg<R extends Runnable> implements beo, bfi<R>, Executor {
 
    protected abstract boolean e(R var1);
 
-   public boolean bm() {
+   public boolean bl() {
       return Thread.currentThread() == this.au();
    }
 
    protected abstract Thread au();
 
    protected boolean at() {
-      return !this.bm();
+      return !this.bl();
    }
 
-   public int bn() {
+   public int bm() {
       return this.d.size();
    }
 
    @Override
-   public String bo() {
+   public String bn() {
       return this.b;
    }
 
@@ -65,7 +65,7 @@ public abstract class bfg<R extends Runnable> implements beo, bfi<R>, Executor {
    }
 
    public void h(Runnable $$0) {
-      if (!this.bm()) {
+      if (!this.bl()) {
          this.a($$0).join();
       } else {
          $$0.run();
@@ -90,11 +90,11 @@ public abstract class bfg<R extends Runnable> implements beo, bfi<R>, Executor {
       this.execute($$0);
    }
 
-   protected void bp() {
+   protected void bo() {
       this.d.clear();
    }
 
-   protected void bq() {
+   protected void bp() {
       while (this.x()) {
       }
    }
@@ -117,7 +117,7 @@ public abstract class bfg<R extends Runnable> implements beo, bfi<R>, Executor {
       try {
          while (!$$0.getAsBoolean()) {
             if (!this.x()) {
-               this.br();
+               this.bq();
             }
          }
       } finally {
@@ -125,7 +125,7 @@ public abstract class bfg<R extends Runnable> implements beo, bfi<R>, Executor {
       }
    }
 
-   protected void br() {
+   protected void bq() {
       Thread.yield();
       LockSupport.parkNanos("waiting for tasks", 100000L);
    }
@@ -134,13 +134,13 @@ public abstract class bfg<R extends Runnable> implements beo, bfi<R>, Executor {
       try {
          $$0.run();
       } catch (Exception var3) {
-         c.error(LogUtils.FATAL_MARKER, "Error executing task on {}", this.bo(), var3);
+         c.error(LogUtils.FATAL_MARKER, "Error executing task on {}", this.bn(), var3);
          throw var3;
       }
    }
 
    @Override
-   public List<bel> bl() {
-      return ImmutableList.of(bel.a(this.b + "-pending-tasks", bek.b, this::bn));
+   public List<bel> bk() {
+      return ImmutableList.of(bel.a(this.b + "-pending-tasks", bek.b, this::bm));
    }
 }

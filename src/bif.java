@@ -9,7 +9,7 @@ import java.util.UUID;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class bif extends bii implements bjw {
+public class bif extends bii implements bjv {
    private static final Logger d = LogUtils.getLogger();
    private static final int e = 5;
    private static final adz<Float> f = aec.a(bif.class, aeb.d);
@@ -22,7 +22,7 @@ public class bif extends bii implements bjw {
    public static final float b = 6.0F;
    public static final float c = 0.5F;
    private static final String m = "effects";
-   private ckv n = cky.b;
+   private cku n = ckx.b;
    private final List<bhv> o = Lists.newArrayList();
    private final Map<bii, Integer> p = Maps.newHashMap();
    private int q = 600;
@@ -37,12 +37,12 @@ public class bif extends bii implements bjw {
    @Nullable
    private UUID aG;
 
-   public bif(bim<? extends bif> $$0, cpm $$1) {
+   public bif(bim<? extends bif> $$0, cpl $$1) {
       super($$0, $$1);
       this.af = true;
    }
 
-   public bif(cpm $$0, double $$1, double $$2, double $$3) {
+   public bif(cpl $$0, double $$1, double $$2, double $$3) {
       this(bim.c, $$0);
       this.e($$1, $$2, $$3);
    }
@@ -74,7 +74,7 @@ public class bif extends bii implements bjw {
       return this.al().b(f);
    }
 
-   public void a(ckv $$0) {
+   public void a(cku $$0) {
       this.n = $$0;
       if (!this.t) {
          this.w();
@@ -82,10 +82,10 @@ public class bif extends bii implements bjw {
    }
 
    private void w() {
-      if (this.n == cky.b && this.o.isEmpty()) {
+      if (this.n == ckx.b && this.o.isEmpty()) {
          this.al().b(g, 0);
       } else {
-         this.al().b(g, ckx.a(ckx.a(this.n, this.o)));
+         this.al().b(g, ckw.a(ckw.a(this.n, this.o)));
       }
    }
 
@@ -333,7 +333,7 @@ public class bif extends bii implements bjw {
       }
 
       if ($$0.b("Potion", 8)) {
-         this.a(ckx.c($$0));
+         this.a(ckw.c($$0));
       }
 
       if ($$0.b("effects", 9)) {
@@ -368,7 +368,7 @@ public class bif extends bii implements bjw {
          $$0.a("Color", this.i());
       }
 
-      if (this.n != cky.b) {
+      if (this.n != ckx.b) {
          $$0.a("Potion", jb.j.b(this.n).toString());
       }
 
@@ -392,13 +392,13 @@ public class bif extends bii implements bjw {
       super.a($$0);
    }
 
-   public ckv t() {
+   public cku t() {
       return this.n;
    }
 
    @Override
-   public eai l_() {
-      return eai.d;
+   public eah l_() {
+      return eah.d;
    }
 
    @Override

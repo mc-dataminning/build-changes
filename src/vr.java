@@ -1,4 +1,4 @@
-public record vr(aeq<djk> b, ehe c) implements vp {
+public record vr(aeq<djj> b, ehd c) implements vp {
    public static final aer a = new aer("debug/game_event");
 
    public vr(si $$0) {

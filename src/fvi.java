@@ -1,26 +1,40 @@
-public class fvi extends ftu<cba, fgz<cba>> {
-   private static final aer a = new aer("textures/entity/villager/villager.png");
+public class fvi<T extends bii & ccb> extends fsw<T> {
+   private static final float a = 12.25F;
+   private final ftv f;
+   private final float g;
+   private final boolean h;
 
-   public fvi(fso.a $$0) {
-      super($$0, new fgz<>($$0.a(fhm.bJ)), 0.5F);
-      this.a(new fwb<>(this, $$0.f(), $$0.d()));
-      this.a(new fxh<>(this, $$0.e(), "villager"));
-      this.a(new fwa<>(this, $$0.d()));
+   public fvi(fsx.a $$0, float $$1, boolean $$2) {
+      super($$0);
+      this.f = $$0.b();
+      this.g = $$1;
+      this.h = $$2;
    }
 
-   public aer a(cba $$0) {
-      return a;
+   public fvi(fsx.a $$0) {
+      this($$0, 1.0F, false);
    }
 
-   protected void a(cba $$0, elg $$1, float $$2) {
-      float $$3 = 0.9375F;
-      if ($$0.i_()) {
-         $$3 *= 0.5F;
-         this.d = 0.25F;
-      } else {
-         this.d = 0.5F;
+   @Override
+   protected int a(T $$0, gu $$1) {
+      return this.h ? 15 : super.a($$0, $$1);
+   }
+
+   @Override
+   public void a(T $$0, float $$1, float $$2, elf $$3, fnu $$4, int $$5) {
+      if ($$0.ah >= 2 || !(this.c.b.g().f($$0) < 12.25)) {
+         $$3.a();
+         $$3.b(this.g, this.g, this.g);
+         $$3.a(this.c.b());
+         $$3.a(a.d.rotationDegrees(180.0F));
+         this.f.a($$0.j(), ciu.h, $$5, fyl.d, $$3, $$4, $$0.dK(), $$0.ah());
+         $$3.b();
+         super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
+   }
 
-      $$1.b($$3, $$3, $$3);
+   @Override
+   public aer a(bii $$0) {
+      return fyt.e;
    }
 }

@@ -1,49 +1,61 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import javax.annotation.Nullable;
+public class foj implements elj {
+   private final elj a;
+   private final fyu b;
 
-public class foj {
-   public static final int a = -1;
-   public final ha b;
-   public final int c;
-   public final String d;
-   public final fol e;
-
-   public foj(@Nullable ha $$0, int $$1, String $$2, fol $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   public foj(elj $$0, fyu $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   protected static class a implements JsonDeserializer<foj> {
-      private static final int a = -1;
+   @Override
+   public elj a(double $$0, double $$1, double $$2) {
+      return this.a.a($$0, $$1, $$2);
+   }
 
-      public foj a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         ha $$4 = this.c($$3);
-         int $$5 = this.a($$3);
-         String $$6 = this.b($$3);
-         fol $$7 = (fol)$$2.deserialize($$3, fol.class);
-         return new foj($$4, $$5, $$6, $$7);
-      }
+   @Override
+   public elj a(int $$0, int $$1, int $$2, int $$3) {
+      return this.a.a($$0, $$1, $$2, $$3);
+   }
 
-      protected int a(JsonObject $$0) {
-         return arg.a($$0, "tintindex", -1);
-      }
+   @Override
+   public elj a(float $$0, float $$1) {
+      return this.a.a(this.b.a($$0), this.b.c($$1));
+   }
 
-      private String b(JsonObject $$0) {
-         return arg.i($$0, "texture");
-      }
+   @Override
+   public elj a(int $$0, int $$1) {
+      return this.a.a($$0, $$1);
+   }
 
-      @Nullable
-      private ha c(JsonObject $$0) {
-         String $$1 = arg.a($$0, "cullface", "");
-         return ha.a($$1);
-      }
+   @Override
+   public elj b(int $$0, int $$1) {
+      return this.a.b($$0, $$1);
+   }
+
+   @Override
+   public elj a(float $$0, float $$1, float $$2) {
+      return this.a.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void e() {
+      this.a.e();
+   }
+
+   @Override
+   public void b(int $$0, int $$1, int $$2, int $$3) {
+      this.a.b($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void k() {
+      this.a.k();
+   }
+
+   @Override
+   public void a(
+      float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9, int $$10, float $$11, float $$12, float $$13
+   ) {
+      this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, this.b.a($$7), this.b.c($$8), $$9, $$10, $$11, $$12, $$13);
    }
 }

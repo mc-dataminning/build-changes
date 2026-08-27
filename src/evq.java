@@ -1,26 +1,18 @@
 import java.util.function.Consumer;
 
-public interface evq {
-   void e(int var1);
+public interface evq extends evr {
+   void b(Consumer<evr> var1);
 
-   void f(int var1);
-
-   int p();
-
-   int r();
-
-   int k();
-
-   int h();
-
-   default ewh s() {
-      return new ewh(this.p(), this.r(), this.k(), this.h());
+   @Override
+   default void a(Consumer<ese> $$0) {
+      this.b($$1 -> $$1.a($$0));
    }
 
-   default void b(int $$0, int $$1) {
-      this.e($$0);
-      this.f($$1);
+   default void a() {
+      this.b($$0 -> {
+         if ($$0 instanceof evq $$1) {
+            $$1.a();
+         }
+      });
    }
-
-   void a(Consumer<esf> var1);
 }

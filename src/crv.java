@@ -1,12 +1,13 @@
-public class crv extends crx {
-   private static final ehx a = csm.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
+public class crv extends crw {
+   protected static final float a = 6.0F;
+   protected static final ehw b = csl.a(2.0, 0.0, 2.0, 14.0, 15.0, 14.0);
 
-   protected crv(dez.d $$0) {
+   protected crv(dey.d $$0) {
       super($$0);
    }
 
    @Override
-   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
-      return a;
+   public ehw a(dez $$0, cor $$1, gu $$2, ehi $$3) {
+      return b;
    }
 }

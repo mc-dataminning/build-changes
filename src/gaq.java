@@ -1,8 +1,8 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface gaq {
-   gax a(aer var1);
-
-   @Nullable
-   gam a(aer var1, gau var2);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gaq {
 }

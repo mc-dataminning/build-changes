@@ -3,7 +3,7 @@ public class zh implements ux<wp> {
    private final double b;
    private final long c;
 
-   public zh(dgr $$0) {
+   public zh(dgq $$0) {
       this.a = $$0.i();
       this.b = $$0.k();
       this.c = $$0.j();

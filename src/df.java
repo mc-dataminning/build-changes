@@ -14,7 +14,7 @@ public class df extends cu<df.a> {
       return new df.a($$1, $$3);
    }
 
-   public void a(akl $$0, ciy $$1) {
+   public void a(akl $$0, cix $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -30,11 +30,11 @@ public class df extends cu<df.a> {
          return new df.a(Optional.empty(), Optional.of($$0));
       }
 
-      public static df.a a(cpl $$0) {
+      public static df.a a(cpk $$0) {
          return new df.a(Optional.empty(), bz.a.a().a($$0).b());
       }
 
-      public boolean a(ciy $$0) {
+      public boolean a(cix $$0) {
          return this.a.isEmpty() || this.a.get().a($$0);
       }
 

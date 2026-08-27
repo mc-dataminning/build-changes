@@ -1,29 +1,27 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
-public class bsx<T extends biy> extends bte<T> {
+public abstract class bsx extends btd<biy> {
+   protected abstract boolean a(biy var1, biy var2);
+
+   protected abstract brz<biy> b();
+
    @Override
-   protected void a(akk $$0, T $$1) {
-      egz $$2 = $$1.cG().c((double)this.b(), (double)this.c(), (double)this.b());
-      List<biy> $$3 = $$0.a(biy.class, $$2, $$1x -> $$1x != $$1 && $$1x.bv());
-      $$3.sort(Comparator.comparingDouble($$1::f));
-      bjz<?> $$4 = $$1.dM();
-      $$4.a(bsa.g, $$3);
-      $$4.a(bsa.h, new bsc($$1, $$3));
-   }
-
-   protected int b() {
-      return 16;
-   }
-
-   protected int c() {
-      return 16;
+   public Set<brz<?>> a() {
+      return ImmutableSet.of(this.b());
    }
 
    @Override
-   public Set<bsa<?>> a() {
-      return ImmutableSet.of(bsa.g, bsa.h);
+   protected void a(akk $$0, biy $$1) {
+      $$1.dM().a(this.b(), this.b($$1));
+   }
+
+   private Optional<biy> b(biy $$0) {
+      return this.a($$0).flatMap($$1 -> $$1.a($$1x -> this.a($$0, $$1x)));
+   }
+
+   protected Optional<bsb> a(biy $$0) {
+      return $$0.dM().c(brz.h);
    }
 }

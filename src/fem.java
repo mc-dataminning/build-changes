@@ -1,99 +1,37 @@
-public class fem<T extends biy> extends ffb<T> {
-   public boolean a;
-   public boolean b;
-
-   public fem(fhn $$0) {
-      super($$0);
+public class fem<T extends bii> extends fgd<T> {
+   public fem(fhs $$0) {
+      super($$0, false, 10.0F, 4.0F, 2.0F, 2.0F, 24);
    }
 
-   public static fht c() {
-      float $$0 = -14.0F;
-      fhv $$1 = ffb.a(fhr.a, -14.0F);
-      fhw $$2 = $$1.a();
-      fhp $$3 = fhp.a(0.0F, -13.0F, 0.0F);
-      $$2.a("hat", fhs.c().a(0, 16).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fhr(-0.5F)), $$3);
-      $$2.a("head", fhs.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), $$3);
-      $$2.a("body", fhs.c().a(32, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F), fhp.a(0.0F, -14.0F, 0.0F));
-      $$2.a("right_arm", fhs.c().a(56, 0).a(-1.0F, -2.0F, -1.0F, 2.0F, 30.0F, 2.0F), fhp.a(-5.0F, -12.0F, 0.0F));
-      $$2.a("left_arm", fhs.c().a(56, 0).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 30.0F, 2.0F), fhp.a(5.0F, -12.0F, 0.0F));
-      $$2.a("right_leg", fhs.c().a(56, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 30.0F, 2.0F), fhp.a(-2.0F, -5.0F, 0.0F));
-      $$2.a("left_leg", fhs.c().a(56, 0).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 30.0F, 2.0F), fhp.a(2.0F, -5.0F, 0.0F));
-      return fht.a($$1, 64, 32);
+   public static fhy c() {
+      fia $$0 = new fia();
+      fib $$1 = $$0.a();
+      int $$2 = 12;
+      $$1.a(
+         "head",
+         fhx.c()
+            .a(0, 0)
+            .a(-4.0F, -4.0F, -6.0F, 8.0F, 8.0F, 6.0F)
+            .a(22, 0)
+            .a("right_horn", -5.0F, -5.0F, -4.0F, 1.0F, 3.0F, 1.0F)
+            .a(22, 0)
+            .a("left_horn", 4.0F, -5.0F, -4.0F, 1.0F, 3.0F, 1.0F),
+         fhu.a(0.0F, 4.0F, -8.0F)
+      );
+      $$1.a(
+         "body",
+         fhx.c().a(18, 4).a(-6.0F, -10.0F, -7.0F, 12.0F, 18.0F, 10.0F).a(52, 0).a(-2.0F, 2.0F, -8.0F, 4.0F, 6.0F, 1.0F),
+         fhu.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
+      );
+      fhx $$3 = fhx.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F);
+      $$1.a("right_hind_leg", $$3, fhu.a(-4.0F, 12.0F, 7.0F));
+      $$1.a("left_hind_leg", $$3, fhu.a(4.0F, 12.0F, 7.0F));
+      $$1.a("right_front_leg", $$3, fhu.a(-4.0F, 12.0F, -6.0F));
+      $$1.a("left_front_leg", $$3, fhu.a(4.0F, 12.0F, -6.0F));
+      return fhy.a($$0, 64, 32);
    }
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      this.k.k = true;
-      int $$6 = -14;
-      this.m.e = 0.0F;
-      this.m.c = -14.0F;
-      this.m.d = -0.0F;
-      this.p.e -= 0.0F;
-      this.q.e -= 0.0F;
-      this.n.e *= 0.5F;
-      this.o.e *= 0.5F;
-      this.p.e *= 0.5F;
-      this.q.e *= 0.5F;
-      float $$7 = 0.4F;
-      if (this.n.e > 0.4F) {
-         this.n.e = 0.4F;
-      }
-
-      if (this.o.e > 0.4F) {
-         this.o.e = 0.4F;
-      }
-
-      if (this.n.e < -0.4F) {
-         this.n.e = -0.4F;
-      }
-
-      if (this.o.e < -0.4F) {
-         this.o.e = -0.4F;
-      }
-
-      if (this.p.e > 0.4F) {
-         this.p.e = 0.4F;
-      }
-
-      if (this.q.e > 0.4F) {
-         this.q.e = 0.4F;
-      }
-
-      if (this.p.e < -0.4F) {
-         this.p.e = -0.4F;
-      }
-
-      if (this.q.e < -0.4F) {
-         this.q.e = -0.4F;
-      }
-
-      if (this.a) {
-         this.n.e = -0.5F;
-         this.o.e = -0.5F;
-         this.n.g = 0.05F;
-         this.o.g = -0.05F;
-      }
-
-      this.p.d = 0.0F;
-      this.q.d = 0.0F;
-      this.p.c = -5.0F;
-      this.q.c = -5.0F;
-      this.k.d = -0.0F;
-      this.k.c = -13.0F;
-      this.l.b = this.k.b;
-      this.l.c = this.k.c;
-      this.l.d = this.k.d;
-      this.l.e = this.k.e;
-      this.l.f = this.k.f;
-      this.l.g = this.k.g;
-      if (this.b) {
-         float $$8 = 1.0F;
-         this.k.c -= 5.0F;
-      }
-
-      int $$9 = -14;
-      this.n.a(-5.0F, -12.0F, 0.0F);
-      this.o.a(5.0F, -12.0F, 0.0F);
+   public fhs d() {
+      return this.a;
    }
 }

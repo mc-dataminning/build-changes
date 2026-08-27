@@ -3,37 +3,27 @@ import com.google.common.collect.Maps;
 import java.util.Map;
 import javax.annotation.Nullable;
 
-public class dbj extends czm {
-   public static final dfu a = cwf.aC;
-   public static final ehx b = csm.a(0.0, 14.0, 6.0, 16.0, 16.0, 10.0);
-   public static final ehx c = csm.a(6.0, 14.0, 0.0, 10.0, 16.0, 16.0);
-   public static final ehx d = ehu.a(b, csm.a(1.0, 0.0, 7.0, 15.0, 10.0, 9.0));
-   public static final ehx h = ehu.a(c, csm.a(7.0, 0.0, 1.0, 9.0, 10.0, 15.0));
-   private static final Map<ha, ehx> i = Maps.newEnumMap(ImmutableMap.of(ha.c, d, ha.d, d, ha.f, h, ha.e, h));
+public class dbj extends czl {
+   public static final dft a = cwe.aC;
+   protected static final float b = 2.0F;
+   protected static final float c = 4.5F;
+   protected static final float d = 12.5F;
+   private static final Map<ha, ehw> h = Maps.newEnumMap(
+      ImmutableMap.of(
+         ha.c,
+         csl.a(0.0, 4.5, 14.0, 16.0, 12.5, 16.0),
+         ha.d,
+         csl.a(0.0, 4.5, 0.0, 16.0, 12.5, 2.0),
+         ha.f,
+         csl.a(0.0, 4.5, 0.0, 2.0, 12.5, 16.0),
+         ha.e,
+         csl.a(14.0, 4.5, 0.0, 16.0, 12.5, 16.0)
+      )
+   );
 
-   public dbj(dez.d $$0, dgn $$1) {
-      super($$0.a($$1.e()), $$1);
+   public dbj(dey.d $$0, dgm $$1) {
+      super($$0.a($$1.d()), $$1);
       this.k(this.C.b().a(a, ha.c).a(e, Boolean.valueOf(false)));
-   }
-
-   @Override
-   public bgq a(dfa $$0, cpm $$1, gu $$2, cbn $$3, bgp $$4, eha $$5) {
-      if ($$1.c_($$2) instanceof ddu $$6) {
-         ciy $$7 = $$3.b($$4);
-         if (this.a($$0, $$3, $$5, $$6, $$7)) {
-            return bgq.d;
-         }
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   private boolean a(dfa $$0, cbn $$1, eha $$2, ddu $$3, ciy $$4) {
-      return !$$3.a($$3.a($$1), $$1) && $$4.d() instanceof cik && !this.a($$2, $$0);
-   }
-
-   private boolean a(eha $$0, dfa $$1) {
-      return $$0.b().o() == $$1.c(a).o();
    }
 
    @Override
@@ -42,51 +32,30 @@ public class dbj extends czm {
    }
 
    @Override
-   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
-      return i.get($$0.c(a));
+   public ehw a(dez $$0, cor $$1, gu $$2, ehi $$3) {
+      return h.get($$0.c(a));
    }
 
    @Override
-   public ehx b_(dfa $$0, cos $$1, gu $$2) {
-      return this.a($$0, $$1, $$2, ehj.a());
-   }
-
-   @Override
-   public ehx c(dfa $$0, cos $$1, gu $$2, ehj $$3) {
-      switch ((ha)$$0.c(a)) {
-         case f:
-         case e:
-            return c;
-         default:
-            return b;
-      }
-   }
-
-   public boolean b(dfa $$0, cpp $$1, gu $$2) {
-      ha $$3 = $$0.c(a).h();
-      ha $$4 = $$0.c(a).i();
-      return this.a($$1, $$0, $$2.a($$3), $$4) || this.a($$1, $$0, $$2.a($$4), $$3);
-   }
-
-   public boolean a(cpp $$0, dfa $$1, gu $$2, ha $$3) {
-      dfa $$4 = $$0.a_($$2);
-      return $$4.a(apl.ay) ? $$4.c(a).o().a($$1.c(a)) : $$4.a($$0, $$2, $$3, dao.a);
+   public boolean a(dez $$0, cpo $$1, gu $$2) {
+      return $$1.a_($$2.a($$0.c(a).g())).e();
    }
 
    @Nullable
    @Override
-   public dfa a(clg $$0) {
-      dfa $$1 = this.n();
-      ead $$2 = $$0.q().b_($$0.a());
-      cpp $$3 = $$0.q();
+   public dez a(clf $$0) {
+      dez $$1 = this.n();
+      eac $$2 = $$0.q().b_($$0.a());
+      cpo $$3 = $$0.q();
       gu $$4 = $$0.a();
+      ha[] $$5 = $$0.f();
 
-      for (ha $$5 : $$0.f()) {
-         if ($$5.o().d() && !$$5.o().a($$0.k())) {
-            ha $$6 = $$5.g();
-            $$1 = $$1.a(a, $$6);
-            if ($$1.a($$3, $$4) && this.b($$1, $$3, $$4)) {
-               return $$1.a(e, Boolean.valueOf($$2.a() == eae.c));
+      for (ha $$6 : $$5) {
+         if ($$6.o().d()) {
+            ha $$7 = $$6.g();
+            $$1 = $$1.a(a, $$7);
+            if ($$1.a($$3, $$4)) {
+               return $$1.a(e, Boolean.valueOf($$2.a() == ead.c));
             }
          }
       }
@@ -95,43 +64,33 @@ public class dbj extends czm {
    }
 
    @Override
-   public dfa a(dfa $$0, ha $$1, dfa $$2, cpn $$3, gu $$4, gu $$5) {
-      return $$1.o() == $$0.c(a).h().o() && !$$0.a($$3, $$4) ? csn.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public dez a(dez $$0, ha $$1, dez $$2, cpm $$3, gu $$4, gu $$5) {
+      return $$1.g() == $$0.c(a) && !$$0.a($$3, $$4) ? csm.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public float g(dfa $$0) {
+   public float g(dez $$0) {
       return $$0.c(a).p();
    }
 
    @Override
-   public dfa a(dfa $$0, cyy $$1) {
+   public ehd h(dez $$0) {
+      ehw $$1 = h.get($$0.c(a));
+      return $$1.a().f();
+   }
+
+   @Override
+   public dez a(dez $$0, cyx $$1) {
       return $$0.a(a, $$1.a($$0.c(a)));
    }
 
    @Override
-   public dfa a(dfa $$0, cxh $$1) {
+   public dez a(dez $$0, cxg $$1) {
       return $$0.a($$1.a($$0.c(a)));
    }
 
    @Override
-   protected void a(dfb.a<csm, dfa> $$0) {
+   protected void a(dfa.a<csl, dez> $$0) {
       $$0.a(a, e);
-   }
-
-   @Override
-   public dcm a(gu $$0, dfa $$1) {
-      return new ddi($$0, $$1);
-   }
-
-   @Override
-   public boolean a(dfa $$0, cos $$1, gu $$2, eat $$3) {
-      return false;
-   }
-
-   @Nullable
-   @Override
-   public <T extends dcm> dcn<T> a(cpm $$0, dfa $$1, dco<T> $$2) {
-      return a($$2, dco.i, ddu::a);
    }
 }

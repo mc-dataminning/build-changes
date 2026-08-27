@@ -14,7 +14,7 @@ public class bs extends cu<bs.a> {
       return new bs.a($$1, $$3);
    }
 
-   public void a(akl $$0, ciy $$1) {
+   public void a(akl $$0, cix $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -30,7 +30,7 @@ public class bs extends cu<bs.a> {
          return new bs.a(Optional.empty(), $$0);
       }
 
-      public boolean a(ciy $$0) {
+      public boolean a(cix $$0) {
          return !this.a.isPresent() || this.a.get().a($$0);
       }
 

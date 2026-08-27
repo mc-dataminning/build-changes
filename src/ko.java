@@ -35,7 +35,7 @@ public class ko implements ji {
       return new ko($$0).a(amo.b, new amo($$1, t.a.a(amb.b), Optional.empty()));
    }
 
-   public static ko a(jk $$0, tf $$1, cdv $$2) {
+   public static ko a(jk $$0, tf $$1, cdu $$2) {
       return a($$0, $$1).a(alx.a, new alx($$2));
    }
 }

@@ -1,21 +1,33 @@
-public class faf extends eyx<cft> {
-   private static final aer x = new aer("textures/gui/container/shulker_box.png");
+public class faf extends esg {
+   private static final aer a = new aer("widget/page_forward_highlighted");
+   private static final aer b = new aer("widget/page_forward");
+   private static final aer c = new aer("widget/page_backward_highlighted");
+   private static final aer d = new aer("widget/page_backward");
+   private final boolean s;
+   private final boolean t;
 
-   public faf(cft $$0, cbm $$1, tf $$2) {
-      super($$0, $$1, $$2);
-      this.k++;
+   public faf(int $$0, int $$1, boolean $$2, esg.c $$3, boolean $$4) {
+      super($$0, $$1, 23, 13, te.a, $$3, o);
+      this.s = $$2;
+      this.t = $$4;
    }
 
    @Override
-   public void a(erw $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   public void b(erv $$0, int $$1, int $$2, float $$3) {
+      aer $$4;
+      if (this.s) {
+         $$4 = this.o() ? a : b;
+      } else {
+         $$4 = this.o() ? c : d;
+      }
+
+      $$0.a($$4, this.r(), this.t(), 23, 13);
    }
 
    @Override
-   protected void a(erw $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.g - this.c) / 2;
-      int $$5 = (this.h - this.k) / 2;
-      $$0.a(x, $$4, $$5, 0, 0, this.c, this.k);
+   public void a(gdg $$0) {
+      if (this.t) {
+         $$0.a(gbx.a(aow.ce, 1.0F));
+      }
    }
 }

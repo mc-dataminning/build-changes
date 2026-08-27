@@ -1,58 +1,119 @@
+import com.google.common.annotations.VisibleForTesting;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 import java.util.function.ToDoubleFunction;
 import javax.annotation.Nullable;
 
 public class bts {
-   @Nullable
-   public static ehe a(bjh $$0, int $$1, int $$2) {
-      return a($$0, $$1, $$2, $$0::h);
+   private static final int a = 10;
+
+   public static gu a(aru $$0, int $$1, int $$2) {
+      int $$3 = $$0.a(2 * $$1 + 1) - $$1;
+      int $$4 = $$0.a(2 * $$2 + 1) - $$2;
+      int $$5 = $$0.a(2 * $$1 + 1) - $$1;
+      return new gu($$3, $$4, $$5);
    }
 
    @Nullable
-   public static ehe a(bjh $$0, int $$1, int $$2, ToDoubleFunction<gu> $$3) {
-      boolean $$4 = btq.a($$0, $$1);
-      return btt.a(() -> {
-         gu $$4x = btt.a($$0.ee(), $$1, $$2);
-         gu $$5 = a($$0, $$1, $$4, $$4x);
-         return $$5 == null ? null : a($$0, $$5);
-      }, $$3);
+   public static gu a(aru $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      double $$7 = arp.d($$5, $$4) - (float) (Math.PI / 2);
+      double $$8 = $$7 + (double)(2.0F * $$0.i() - 1.0F) * $$6;
+      double $$9 = Math.sqrt($$0.j()) * (double)arp.g * (double)$$1;
+      double $$10 = -$$9 * Math.sin($$8);
+      double $$11 = $$9 * Math.cos($$8);
+      if (!(Math.abs($$10) > (double)$$1) && !(Math.abs($$11) > (double)$$1)) {
+         int $$12 = $$0.a(2 * $$2 + 1) - $$2 + $$3;
+         return gu.a($$10, (double)$$12, $$11);
+      } else {
+         return null;
+      }
    }
 
-   @Nullable
-   public static ehe a(bjh $$0, int $$1, int $$2, ehe $$3) {
-      ehe $$4 = $$3.a($$0.dp(), $$0.dr(), $$0.dv());
-      boolean $$5 = btq.a($$0, $$1);
-      return a($$0, $$1, $$2, $$4, $$5);
-   }
+   @VisibleForTesting
+   public static gu a(gu $$0, int $$1, Predicate<gu> $$2) {
+      if (!$$2.test($$0)) {
+         return $$0;
+      } else {
+         gu $$3 = $$0.c();
 
-   @Nullable
-   public static ehe b(bjh $$0, int $$1, int $$2, ehe $$3) {
-      ehe $$4 = $$0.di().d($$3);
-      boolean $$5 = btq.a($$0, $$1);
-      return a($$0, $$1, $$2, $$4, $$5);
-   }
-
-   @Nullable
-   private static ehe a(bjh $$0, int $$1, int $$2, ehe $$3, boolean $$4) {
-      return btt.a($$0, () -> {
-         gu $$5 = btt.a($$0.ee(), $$1, $$2, 0, $$3.c, $$3.e, (float) (Math.PI / 2));
-         if ($$5 == null) {
-            return null;
-         } else {
-            gu $$6 = a($$0, $$1, $$4, $$5);
-            return $$6 == null ? null : a($$0, $$6);
+         while ($$3.v() < $$1 && $$2.test($$3)) {
+            $$3 = $$3.c();
          }
-      });
+
+         return $$3;
+      }
+   }
+
+   @VisibleForTesting
+   public static gu a(gu $$0, int $$1, int $$2, Predicate<gu> $$3) {
+      if ($$1 < 0) {
+         throw new IllegalArgumentException("aboveSolidAmount was " + $$1 + ", expected >= 0");
+      } else if (!$$3.test($$0)) {
+         return $$0;
+      } else {
+         gu $$4 = $$0.c();
+
+         while ($$4.v() < $$2 && $$3.test($$4)) {
+            $$4 = $$4.c();
+         }
+
+         gu $$5 = $$4;
+
+         while ($$5.v() < $$2 && $$5.v() - $$4.v() < $$1) {
+            gu $$6 = $$5.c();
+            if ($$3.test($$6)) {
+               break;
+            }
+
+            $$5 = $$6;
+         }
+
+         return $$5;
+      }
    }
 
    @Nullable
-   public static gu a(bjh $$0, gu $$1) {
-      $$1 = btt.a($$1, $$0.dK().aj(), $$1x -> btq.c($$0, $$1x));
-      return !btq.a($$0, $$1) && !btq.b($$0, $$1) ? $$1 : null;
+   public static ehd a(bjh $$0, Supplier<gu> $$1) {
+      return a($$1, $$0::h);
    }
 
    @Nullable
-   public static gu a(bjh $$0, int $$1, boolean $$2, gu $$3) {
-      gu $$4 = btt.a($$0, $$1, $$0.ee(), $$3);
-      return !btq.a($$4, $$0) && !btq.a($$2, $$0, $$4) && !btq.a($$0.H(), $$4) ? $$4 : null;
+   public static ehd a(Supplier<gu> $$0, ToDoubleFunction<gu> $$1) {
+      double $$2 = Double.NEGATIVE_INFINITY;
+      gu $$3 = null;
+
+      for (int $$4 = 0; $$4 < 10; $$4++) {
+         gu $$5 = $$0.get();
+         if ($$5 != null) {
+            double $$6 = $$1.applyAsDouble($$5);
+            if ($$6 > $$2) {
+               $$2 = $$6;
+               $$3 = $$5;
+            }
+         }
+      }
+
+      return $$3 != null ? ehd.c($$3) : null;
+   }
+
+   public static gu a(bjh $$0, int $$1, aru $$2, gu $$3) {
+      int $$4 = $$3.u();
+      int $$5 = $$3.w();
+      if ($$0.fM() && $$1 > 1) {
+         gu $$6 = $$0.fJ();
+         if ($$0.dp() > (double)$$6.u()) {
+            $$4 -= $$2.a($$1 / 2);
+         } else {
+            $$4 += $$2.a($$1 / 2);
+         }
+
+         if ($$0.dv() > (double)$$6.w()) {
+            $$5 -= $$2.a($$1 / 2);
+         } else {
+            $$5 += $$2.a($$1 / 2);
+         }
+      }
+
+      return gu.a((double)$$4 + $$0.dp(), (double)$$3.v() + $$0.dr(), (double)$$5 + $$0.dv());
    }
 }

@@ -1,77 +1,79 @@
 import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class bkk extends bkq<buk> {
-   private static final int c = 3;
-   private static final int d = 60;
-   private static final int e = 110;
-   private final bim<? extends buk> f;
-   private final float g;
-   private long h;
+public class bkk extends bkp<bjh> {
+   private static final int c = 100;
+   private static final int d = 120;
+   private static final int e = 5;
+   private static final int f = 4;
+   private static final Predicate<bjh> g = $$0 -> $$0.ef() != null || $$0.dz() || $$0.bM();
+   private final float h;
+   private final Predicate<bjh> i;
 
-   public bkk(bim<? extends buk> $$0, float $$1) {
-      super(ImmutableMap.of(bsa.h, bsb.a, bsa.r, bsb.b, bsa.m, bsb.c, bsa.n, bsb.c), 110);
-      this.f = $$0;
-      this.g = $$1;
+   public bkk(float $$0) {
+      this($$0, g);
    }
 
-   protected boolean a(akk $$0, buk $$1) {
-      return $$1.gd() && this.c($$1).isPresent();
+   public bkk(float $$0, Predicate<bjh> $$1) {
+      super(ImmutableMap.of(brz.Y, bsa.c, brz.x, bsa.a), 100, 120);
+      this.h = $$0;
+      this.i = $$1;
    }
 
-   protected void a(akk $$0, buk $$1, long $$2) {
-      buk $$3 = this.c($$1).get();
-      $$1.dM().a(bsa.r, $$3);
-      $$3.dM().a(bsa.r, $$1);
-      bks.a($$1, $$3, this.g);
-      int $$4 = 60 + $$1.ee().a(50);
-      this.h = $$2 + (long)$$4;
+   protected boolean a(akk $$0, bjh $$1) {
+      return this.i.test($$1);
    }
 
-   protected boolean b(akk $$0, buk $$1, long $$2) {
-      if (!this.b($$1)) {
-         return false;
+   protected boolean a(akk $$0, bjh $$1, long $$2) {
+      return true;
+   }
+
+   protected void b(akk $$0, bjh $$1, long $$2) {
+      $$1.dM().a(brz.Y, true);
+      $$1.dM().b(brz.m);
+   }
+
+   protected void c(akk $$0, bjh $$1, long $$2) {
+      bjy<?> $$3 = $$1.dM();
+      $$3.b(brz.Y);
+   }
+
+   protected void d(akk $$0, bjh $$1, long $$2) {
+      if ($$1.H().l()) {
+         ehd $$3 = this.a($$1, $$0);
+         if ($$3 != null) {
+            $$1.dM().a(brz.m, new bsc($$3, this.h, 0));
+         }
+      }
+   }
+
+   @Nullable
+   private ehd a(bjh $$0, akk $$1) {
+      if ($$0.bM()) {
+         Optional<ehd> $$2 = this.a((cor)$$1, (bii)$$0).map(ehd::c);
+         if ($$2.isPresent()) {
+            return $$2.get();
+         }
+      }
+
+      return btr.a($$0, 5, 4);
+   }
+
+   private Optional<gu> a(cor $$0, bii $$1) {
+      gu $$2 = $$1.dk();
+      if (!$$0.a_($$2).k($$0, $$2).c()) {
+         return Optional.empty();
       } else {
-         buk $$3 = this.a($$1);
-         return $$3.bv() && $$1.a($$3) && bks.a($$1.dM(), $$3) && $$2 <= this.h;
-      }
-   }
-
-   protected void c(akk $$0, buk $$1, long $$2) {
-      buk $$3 = this.a($$1);
-      bks.a($$1, $$3, this.g);
-      if ($$1.a($$3, 3.0)) {
-         if ($$2 >= this.h) {
-            $$1.a($$0, $$3);
-            $$1.dM().b(bsa.r);
-            $$3.dM().b(bsa.r);
-         }
-      }
-   }
-
-   protected void d(akk $$0, buk $$1, long $$2) {
-      $$1.dM().b(bsa.r);
-      $$1.dM().b(bsa.m);
-      $$1.dM().b(bsa.n);
-      this.h = 0L;
-   }
-
-   private buk a(buk $$0) {
-      return (buk)$$0.dM().c(bsa.r).get();
-   }
-
-   private boolean b(buk $$0) {
-      bjz<?> $$1 = $$0.dM();
-      return $$1.a(bsa.r) && $$1.c(bsa.r).get().ag() == this.f;
-   }
-
-   private Optional<? extends buk> c(buk $$0) {
-      return $$0.dM().c(bsa.h).get().a($$1 -> {
-         if ($$1.ag() == this.f && $$1 instanceof buk $$2 && $$0.a($$2)) {
-            return true;
+         Predicate<gu> $$3;
+         if (arp.f($$1.df()) == 2) {
+            $$3 = $$1x -> gu.a($$1x).allMatch($$1xx -> $$0.b_($$1xx).a(apq.a));
+         } else {
+            $$3 = $$1x -> $$0.b_($$1x).a(apq.a);
          }
 
-         return false;
-      }).map(buk.class::cast);
+         return gu.a($$2, 5, 1, $$3);
+      }
    }
 }

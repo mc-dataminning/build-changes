@@ -1,47 +1,220 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.ints.IntArraySet;
+import it.unimi.dsi.fastutil.ints.IntCollection;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.ints.IntSets;
-import java.util.Map;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
+import java.util.function.Function;
+import java.util.stream.IntStream;
 import javax.annotation.Nullable;
+import org.lwjgl.stb.STBTTFontinfo;
+import org.lwjgl.stb.STBTruetype;
+import org.lwjgl.system.MemoryStack;
+import org.lwjgl.system.MemoryUtil;
 
-public class ejl implements ejj {
-   private final Int2ObjectMap<eji.a> a;
+public class ejl implements eji {
+   @Nullable
+   private ByteBuffer a;
+   @Nullable
+   private STBTTFontinfo b;
+   final float c;
+   private final IntSet d = new IntArraySet();
+   final float e;
+   final float f;
+   final float g;
+   final float h;
 
-   public ejl(Map<Integer, Float> $$0) {
-      this.a = new Int2ObjectOpenHashMap($$0.size());
-      $$0.forEach(($$0x, $$1) -> this.a.put($$0x, (eji.a)() -> $$1));
+   public ejl(ByteBuffer $$0, STBTTFontinfo $$1, float $$2, float $$3, float $$4, float $$5, String $$6) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$3;
+      $$6.codePoints().forEach(this.d::add);
+      this.e = $$4 * $$3;
+      this.f = $$5 * $$3;
+      this.g = STBTruetype.stbtt_ScaleForPixelHeight($$1, $$2 * $$3);
+      MemoryStack $$7 = MemoryStack.stackPush();
+
+      try {
+         IntBuffer $$8 = $$7.mallocInt(1);
+         IntBuffer $$9 = $$7.mallocInt(1);
+         IntBuffer $$10 = $$7.mallocInt(1);
+         STBTruetype.stbtt_GetFontVMetrics($$1, $$8, $$9, $$10);
+         this.h = (float)$$8.get(0) * this.g;
+      } catch (Throwable var13) {
+         if ($$7 != null) {
+            try {
+               $$7.close();
+            } catch (Throwable var12) {
+               var13.addSuppressed(var12);
+            }
+         }
+
+         throw var13;
+      }
+
+      if ($$7 != null) {
+         $$7.close();
+      }
    }
 
    @Nullable
    @Override
-   public eji a(int $$0) {
-      return (eji)this.a.get($$0);
+   public ejh a(int $$0) {
+      STBTTFontinfo $$1 = this.b();
+      if (this.d.contains($$0)) {
+         return null;
+      } else {
+         MemoryStack $$2 = MemoryStack.stackPush();
+
+         Object var17;
+         label61: {
+            ejh var18;
+            label62: {
+               try {
+                  int $$3 = STBTruetype.stbtt_FindGlyphIndex($$1, $$0);
+                  if ($$3 == 0) {
+                     var17 = null;
+                     break label61;
+                  }
+
+                  IntBuffer $$4 = $$2.mallocInt(1);
+                  IntBuffer $$5 = $$2.mallocInt(1);
+                  IntBuffer $$6 = $$2.mallocInt(1);
+                  IntBuffer $$7 = $$2.mallocInt(1);
+                  IntBuffer $$8 = $$2.mallocInt(1);
+                  IntBuffer $$9 = $$2.mallocInt(1);
+                  STBTruetype.stbtt_GetGlyphHMetrics($$1, $$3, $$8, $$9);
+                  STBTruetype.stbtt_GetGlyphBitmapBoxSubpixel($$1, $$3, this.g, this.g, this.e, this.f, $$4, $$5, $$6, $$7);
+                  float $$10 = (float)$$8.get(0) * this.g;
+                  int $$11 = $$6.get(0) - $$4.get(0);
+                  int $$12 = $$7.get(0) - $$5.get(0);
+                  if ($$11 > 0 && $$12 > 0) {
+                     var18 = new ejl.a($$4.get(0), $$6.get(0), -$$5.get(0), -$$7.get(0), $$10, (float)$$9.get(0) * this.g, $$3);
+                     break label62;
+                  }
+
+                  var18 = () -> $$10 / this.c;
+               } catch (Throwable var16) {
+                  if ($$2 != null) {
+                     try {
+                        $$2.close();
+                     } catch (Throwable var15) {
+                        var16.addSuppressed(var15);
+                     }
+                  }
+
+                  throw var16;
+               }
+
+               if ($$2 != null) {
+                  $$2.close();
+               }
+
+               return var18;
+            }
+
+            if ($$2 != null) {
+               $$2.close();
+            }
+
+            return var18;
+         }
+
+         if ($$2 != null) {
+            $$2.close();
+         }
+
+         return (ejh)var17;
+      }
+   }
+
+   STBTTFontinfo b() {
+      if (this.a != null && this.b != null) {
+         return this.b;
+      } else {
+         throw new IllegalArgumentException("Provider already closed");
+      }
+   }
+
+   @Override
+   public void close() {
+      if (this.b != null) {
+         this.b.free();
+         this.b = null;
+      }
+
+      MemoryUtil.memFree(this.a);
+      this.a = null;
    }
 
    @Override
    public IntSet a() {
-      return IntSets.unmodifiable(this.a.keySet());
+      return IntStream.range(0, 65535).filter($$0 -> !this.d.contains($$0)).collect(IntOpenHashSet::new, IntCollection::add, IntCollection::addAll);
    }
 
-   public static record a(Map<Integer, Float> c) implements eve {
-      public static final MapCodec<ejl.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.unboundedMap(aqy.v, Codec.FLOAT).fieldOf("advances").forGetter(ejl.a::c)).apply($$0, ejl.a::new)
-      );
+   class a implements ejh {
+      final int b;
+      final int c;
+      final float d;
+      final float e;
+      private final float f;
+      final int g;
 
-      @Override
-      public evf a() {
-         return evf.c;
+      a(int $$0, int $$1, int $$2, int $$3, float $$4, float $$5, int $$6) {
+         this.b = $$1 - $$0;
+         this.c = $$2 - $$3;
+         this.f = $$4 / ejl.this.c;
+         this.d = ($$5 + (float)$$0 + ejl.this.e) / ejl.this.c;
+         this.e = (ejl.this.h - (float)$$2 + ejl.this.f) / ejl.this.c;
+         this.g = $$6;
       }
 
       @Override
-      public Either<eve.a, eve.b> b() {
-         eve.a $$0 = $$0x -> new ejl(this.c);
-         return Either.left($$0);
+      public float getAdvance() {
+         return this.f;
+      }
+
+      @Override
+      public euy bake(Function<ejj, euy> $$0) {
+         return $$0.apply(new ejj() {
+            @Override
+            public int a() {
+               return a.this.b;
+            }
+
+            @Override
+            public int b() {
+               return a.this.c;
+            }
+
+            @Override
+            public float d() {
+               return ejl.this.c;
+            }
+
+            @Override
+            public float i() {
+               return a.this.d;
+            }
+
+            @Override
+            public float j() {
+               return a.this.e;
+            }
+
+            @Override
+            public void a(int $$0, int $$1) {
+               STBTTFontinfo $$2 = ejl.this.b();
+               ekg $$3 = new ekg(ekg.a.d, a.this.b, a.this.c, false);
+               $$3.a($$2, a.this.g, a.this.b, a.this.c, ejl.this.g, ejl.this.g, ejl.this.e, ejl.this.f, 0, 0);
+               $$3.a(0, $$0, $$1, 0, 0, a.this.b, a.this.c, false, true);
+            }
+
+            @Override
+            public boolean c() {
+               return false;
+            }
+         });
       }
    }
 }

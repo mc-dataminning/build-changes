@@ -1,138 +1,226 @@
-import javax.annotation.Nullable;
+public class cfk extends ced {
+   protected static final int k = 0;
+   protected static final int l = 1;
+   protected static final int m = 2;
+   private static final int n = 3;
+   private static final int o = 30;
+   private static final int p = 30;
+   private static final int q = 39;
+   private static final int r = 136;
+   private static final int s = 162;
+   private static final int t = 220;
+   private static final int u = 37;
+   private final coh v;
+   private final cfj w;
+   private int x;
+   private boolean y;
+   private boolean z;
 
-public class cfk implements bgj {
-   private final coi c;
-   private final hn<ciy> d = hn.a(3, ciy.b);
-   @Nullable
-   private coj e;
-   private int f;
-   private int g;
-
-   public cfk(coi $$0) {
-      this.c = $$0;
+   public cfk(int $$0, cbl $$1) {
+      this($$0, $$1, new caw($$1.m));
    }
 
-   @Override
-   public int b() {
-      return this.d.size();
-   }
+   public cfk(int $$0, cbl $$1, coh $$2) {
+      super(cfi.s, $$0);
+      this.v = $$2;
+      this.w = new cfj($$2);
+      this.a(new cfv(this.w, 0, 136, 37));
+      this.a(new cfv(this.w, 1, 162, 37));
+      this.a(new cfl($$1.m, $$2, this.w, 2, 220, 37));
 
-   @Override
-   public boolean ab_() {
-      for (ciy $$0 : this.d) {
-         if (!$$0.b()) {
-            return false;
+      for (int $$3 = 0; $$3 < 3; $$3++) {
+         for (int $$4 = 0; $$4 < 9; $$4++) {
+            this.a(new cfv($$1, $$4 + $$3 * 9 + 9, 108 + $$4 * 18, 84 + $$3 * 18));
          }
       }
 
-      return true;
-   }
-
-   @Override
-   public ciy a(int $$0) {
-      return this.d.get($$0);
-   }
-
-   @Override
-   public ciy a(int $$0, int $$1) {
-      ciy $$2 = this.d.get($$0);
-      if ($$0 == 2 && !$$2.b()) {
-         return bgk.a(this.d, $$0, $$2.L());
-      } else {
-         ciy $$3 = bgk.a(this.d, $$0, $$1);
-         if (!$$3.b() && this.d($$0)) {
-            this.f();
-         }
-
-         return $$3;
+      for (int $$5 = 0; $$5 < 9; $$5++) {
+         this.a(new cfv($$1, $$5, 108 + $$5 * 18, 142));
       }
    }
 
-   private boolean d(int $$0) {
-      return $$0 == 0 || $$0 == 1;
+   public void a(boolean $$0) {
+      this.y = $$0;
    }
 
    @Override
-   public ciy b(int $$0) {
-      return bgk.a(this.d, $$0);
+   public void a(bgj $$0) {
+      this.w.f();
+      super.a($$0);
+   }
+
+   public void e(int $$0) {
+      this.w.c($$0);
    }
 
    @Override
-   public void a(int $$0, ciy $$1) {
-      this.d.set($$0, $$1);
-      if (!$$1.b() && $$1.L() > this.ac_()) {
-         $$1.f(this.ac_());
-      }
+   public boolean a(cbm $$0) {
+      return this.v.ga() == $$0;
+   }
 
-      if (this.d($$0)) {
-         this.f();
-      }
+   public int l() {
+      return this.v.q();
+   }
+
+   public int m() {
+      return this.w.h();
+   }
+
+   public void f(int $$0) {
+      this.v.t($$0);
+   }
+
+   public int n() {
+      return this.x;
+   }
+
+   public void g(int $$0) {
+      this.x = $$0;
+   }
+
+   public void b(boolean $$0) {
+      this.z = $$0;
+   }
+
+   public boolean o() {
+      return this.z;
    }
 
    @Override
-   public boolean a(cbn $$0) {
-      return this.c.fZ() == $$0;
+   public boolean a(cix $$0, cfv $$1) {
+      return false;
    }
 
    @Override
-   public void e() {
-      this.f();
-   }
-
-   public void f() {
-      this.e = null;
-      ciy $$0;
-      ciy $$1;
-      if (this.d.get(0).b()) {
-         $$0 = this.d.get(1);
-         $$1 = ciy.b;
-      } else {
-         $$0 = this.d.get(0);
-         $$1 = this.d.get(1);
-      }
-
-      if ($$0.b()) {
-         this.a(2, ciy.b);
-         this.g = 0;
-      } else {
-         cok $$4 = this.c.gb();
-         if (!$$4.isEmpty()) {
-            coj $$5 = $$4.a($$0, $$1, this.f);
-            if ($$5 == null || $$5.p()) {
-               this.e = $$5;
-               $$5 = $$4.a($$1, $$0, this.f);
+   public cix a(cbm $$0, int $$1) {
+      cix $$2 = cix.b;
+      cfv $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.f()) {
+         cix $$4 = $$3.e();
+         $$2 = $$4.p();
+         if ($$1 == 2) {
+            if (!this.a($$4, 3, 39, true)) {
+               return cix.b;
             }
 
-            if ($$5 != null && !$$5.p()) {
-               this.e = $$5;
-               this.a(2, $$5.f());
-               this.g = $$5.o();
-            } else {
-               this.a(2, ciy.b);
-               this.g = 0;
+            $$3.b($$4, $$2);
+            this.r();
+         } else if ($$1 != 0 && $$1 != 1) {
+            if ($$1 >= 3 && $$1 < 30) {
+               if (!this.a($$4, 30, 39, false)) {
+                  return cix.b;
+               }
+            } else if ($$1 >= 30 && $$1 < 39 && !this.a($$4, 3, 30, false)) {
+               return cix.b;
             }
+         } else if (!this.a($$4, 3, 39, false)) {
+            return cix.b;
          }
 
-         this.c.l(this.a(2));
+         if ($$4.b()) {
+            $$3.d(cix.b);
+         } else {
+            $$3.d();
+         }
+
+         if ($$4.L() == $$2.L()) {
+            return cix.b;
+         }
+
+         $$3.a($$0, $$4);
+      }
+
+      return $$2;
+   }
+
+   private void r() {
+      if (!this.v.gi()) {
+         bii $$0 = (bii)this.v;
+         $$0.dK().a($$0.dp(), $$0.dr(), $$0.dv(), this.v.ge(), aox.g, 1.0F, 1.0F, false);
       }
    }
 
-   @Nullable
-   public coj g() {
-      return this.e;
-   }
-
-   public void c(int $$0) {
-      this.f = $$0;
-      this.f();
-   }
-
    @Override
-   public void a() {
-      this.d.clear();
+   public void b(cbm $$0) {
+      super.b($$0);
+      this.v.f(null);
+      if (!this.v.gi()) {
+         if (!$$0.bv() || $$0 instanceof akl && ((akl)$$0).t()) {
+            cix $$1 = this.w.b(0);
+            if (!$$1.b()) {
+               $$0.a($$1, false);
+            }
+
+            $$1 = this.w.b(1);
+            if (!$$1.b()) {
+               $$0.a($$1, false);
+            }
+         } else if ($$0 instanceof akl) {
+            $$0.fQ().f(this.w.b(0));
+            $$0.fQ().f(this.w.b(1));
+         }
+      }
    }
 
-   public int h() {
-      return this.g;
+   public void h(int $$0) {
+      if ($$0 >= 0 && this.p().size() > $$0) {
+         cix $$1 = this.w.a(0);
+         if (!$$1.b()) {
+            if (!this.a($$1, 3, 39, true)) {
+               return;
+            }
+
+            this.w.a(0, $$1);
+         }
+
+         cix $$2 = this.w.a(1);
+         if (!$$2.b()) {
+            if (!this.a($$2, 3, 39, true)) {
+               return;
+            }
+
+            this.w.a(1, $$2);
+         }
+
+         if (this.w.a(0).b() && this.w.a(1).b()) {
+            cix $$3 = this.p().get($$0).b();
+            this.c(0, $$3);
+            cix $$4 = this.p().get($$0).c();
+            this.c(1, $$4);
+         }
+      }
+   }
+
+   private void c(int $$0, cix $$1) {
+      if (!$$1.b()) {
+         for (int $$2 = 3; $$2 < 39; $$2++) {
+            cix $$3 = this.i.get($$2).e();
+            if (!$$3.b() && cix.c($$1, $$3)) {
+               cix $$4 = this.w.a($$0);
+               int $$5 = $$4.b() ? 0 : $$4.L();
+               int $$6 = Math.min($$1.g() - $$5, $$3.L());
+               cix $$7 = $$3.p();
+               int $$8 = $$5 + $$6;
+               $$3.h($$6);
+               $$7.f($$8);
+               this.w.a($$0, $$7);
+               if ($$8 >= $$1.g()) {
+                  break;
+               }
+            }
+         }
+      }
+   }
+
+   public void a(coj $$0) {
+      this.v.a($$0);
+   }
+
+   public coj p() {
+      return this.v.gc();
+   }
+
+   public boolean q() {
+      return this.y;
    }
 }

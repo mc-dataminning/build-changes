@@ -1,53 +1,96 @@
-public class ewl extends eyb {
-   private static eqp<?>[] a(eqq $$0) {
-      return new eqp[]{
-         $$0.an(),
-         $$0.R(),
-         $$0.q(),
-         $$0.D(),
-         $$0.o(),
-         $$0.T(),
-         $$0.m(),
-         $$0.n(),
-         $$0.w(),
-         $$0.x(),
-         $$0.X(),
-         $$0.Y(),
-         $$0.ae(),
-         $$0.af(),
-         $$0.ag(),
-         $$0.aj(),
-         $$0.ah(),
-         $$0.ai(),
-         $$0.b(),
-         $$0.a(),
-         $$0.p()
-      };
-   }
+import com.mojang.text2speech.Narrator;
+import javax.annotation.Nullable;
 
-   public ewl(exz $$0, eqq $$1) {
-      super($$0, $$1, tf.c("options.accessibility.title"), a($$1));
+public class ewl extends eya {
+   private static final tf a = tf.c("accessibility.onboarding.screen.narrator");
+   private static final int b = 4;
+   private static final int c = 16;
+   private final fnw k = new fnw(eyf.b);
+   private final esx l;
+   private final eqp m;
+   private final boolean n;
+   private boolean o;
+   private float p;
+   private final Runnable q;
+   @Nullable
+   private esr s;
+
+   public ewl(eqp $$0, Runnable $$1) {
+      super(tf.c("accessibility.onboarding.screen.title"));
+      this.m = $$0;
+      this.q = $$1;
+      this.l = new esx(true);
+      this.n = eql.O().aV().a();
    }
 
    @Override
-   protected void aE_() {
-      super.aE_();
-      esf $$0 = this.k.b(this.b.q());
-      if ($$0 != null && !this.f.aa().b().contains("high_contrast")) {
-         $$0.i = false;
-         $$0.a(etq.a(tf.c("options.accessibility.high_contrast.error.tooltip")));
+   public void aC_() {
+      int $$0 = this.l();
+      evn $$1 = new evn(this.g, this.h - $$0);
+      $$1.c().d().a(4);
+      evt $$2 = $$1.a(evt.d());
+      $$2.c().b().a(2);
+      this.s = new esr(this.g - 16, this.e, this.i);
+      $$2.a(this.s, $$0x -> $$0x.e(16));
+      ese $$3 = this.m.ao().a(this.m, 0, 0, 150);
+      $$3.i = this.n;
+      $$2.a($$3);
+      if (this.n) {
+         this.c($$3);
+      }
+
+      $$2.a(esk.b(150, $$0x -> this.a(new ewm(this, this.f.m)), false));
+      $$2.a(esk.a(150, $$0x -> this.a(new exj(this, this.f.m, this.f.ae())), false));
+      $$1.a(esg.a(te.j, $$0x -> this.at_()).a(), $$1.b().f().a(8));
+      $$1.a();
+      evn.a($$1, 0, $$0, this.g, this.h, 0.5F, 0.0F);
+      $$1.a(this::d);
+   }
+
+   private int l() {
+      return 90;
+   }
+
+   @Override
+   public void at_() {
+      this.a(this.q);
+   }
+
+   private void a(eya $$0) {
+      this.a(() -> this.f.a($$0));
+   }
+
+   private void a(Runnable $$0) {
+      this.m.ae = false;
+      this.m.ar();
+      Narrator.getNarrator().clear();
+      $$0.run();
+   }
+
+   @Override
+   public void a(erv $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.C();
+      this.l.a($$0, this.g, 1.0F);
+      if (this.s != null) {
+         this.s.a($$0, $$1, $$2, $$3);
       }
    }
 
    @Override
-   protected void g() {
-      this.d(esh.a(tf.c("options.accessibility.link"), $$0 -> this.f.a(new ewr($$0x -> {
-            if ($$0x) {
-               ac.i().a("https://aka.ms/MinecraftJavaAccessibility");
-            }
+   public void b(erv $$0, int $$1, int $$2, float $$3) {
+      this.k.a(0.0F, 1.0F);
+      $$0.a(0, 0, this.g, this.h, -1877995504);
+   }
 
-            this.f.a(this);
-         }, "https://aka.ms/MinecraftJavaAccessibility", true))).a(this.g / 2 - 155, this.h - 27, 150, 20).a());
-      this.d(esh.a(te.d, $$0 -> this.f.a(this.a)).a(this.g / 2 + 5, this.h - 27, 150, 20).a());
+   private void C() {
+      if (!this.o && this.n) {
+         if (this.p < 40.0F) {
+            this.p++;
+         } else if (this.f.aA()) {
+            Narrator.getNarrator().say(a.getString(), true);
+            this.o = true;
+         }
+      }
    }
 }

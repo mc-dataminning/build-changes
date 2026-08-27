@@ -1,77 +1,50 @@
 import java.util.EnumSet;
-import java.util.List;
-import javax.annotation.Nullable;
 
-public class bpg extends bpu {
-   private static final btl d = btl.b().a(8.0).d();
-   protected final buk a;
-   private final Class<? extends buk> e;
-   protected final cpm b;
-   @Nullable
-   protected buk c;
-   private int f;
-   private final double g;
+public class bpg extends bqg {
+   private final bum g;
 
-   public bpg(buk $$0, double $$1) {
-      this($$0, $$1, (Class<? extends buk>)$$0.getClass());
-   }
-
-   public bpg(buk $$0, double $$1, Class<? extends buk> $$2) {
-      this.a = $$0;
-      this.b = $$0.dK();
-      this.e = $$2;
-      this.g = $$1;
-      this.a(EnumSet.of(bpu.a.a, bpu.a.b));
+   public bpg(bum $$0, double $$1, int $$2) {
+      super($$0, $$1, $$2, 6);
+      this.g = $$0;
+      this.f = -2;
+      this.a(EnumSet.of(bpt.a.c, bpt.a.a));
    }
 
    @Override
    public boolean a() {
-      if (!this.a.gd()) {
-         return false;
-      } else {
-         this.c = this.h();
-         return this.c != null;
-      }
+      return this.g.p() && !this.g.ga() && !this.g.gi() && super.a();
    }
 
    @Override
-   public boolean b() {
-      return this.c.bv() && this.c.gd() && this.f < 60;
+   public void c() {
+      super.c();
+      this.g.y(false);
+   }
+
+   @Override
+   protected int a(bjh $$0) {
+      return 40;
    }
 
    @Override
    public void d() {
-      this.c = null;
-      this.f = 0;
+      super.d();
+      this.g.A(false);
    }
 
    @Override
    public void e() {
-      this.a.D().a(this.c, 10.0F, (float)this.a.W());
-      this.a.H().a(this.c, this.g);
-      this.f++;
-      if (this.f >= this.a(60) && this.a.f(this.c) < 9.0) {
-         this.g();
+      super.e();
+      this.g.y(false);
+      if (!this.m()) {
+         this.g.A(false);
+      } else if (!this.g.gi()) {
+         this.g.A(true);
       }
    }
 
-   @Nullable
-   private buk h() {
-      List<? extends buk> $$0 = this.b.a(this.e, d, this.a, this.a.cG().g(8.0));
-      double $$1 = Double.MAX_VALUE;
-      buk $$2 = null;
-
-      for (buk $$3 : $$0) {
-         if (this.a.a($$3) && this.a.f($$3) < $$1) {
-            $$2 = $$3;
-            $$1 = this.a.f($$3);
-         }
-      }
-
-      return $$2;
-   }
-
-   protected void g() {
-      this.a.a((akk)this.b, this.c);
+   @Override
+   protected boolean a(cpo $$0, gu $$1) {
+      return $$0.t($$1.c()) && $$0.a_($$1).a(apl.R);
    }
 }

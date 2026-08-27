@@ -3,23 +3,36 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class bmu {
-   private static final int a = 1;
+   public static blz<caz> a(brz<hd> $$0, float $$1, int $$2, int $$3, int $$4) {
+      return bob.a(
+         (Function<bob.b<caz>, ? extends App<bob.c<caz>, boe<caz>>>)($$5 -> $$5.group($$5.a(brz.E), $$5.c(brz.m), $$5.b($$0))
+               .apply($$5, ($$6, $$7, $$8) -> ($$9, $$10, $$11) -> {
+                     hd $$12 = $$5.b($$8);
+                     Optional<Long> $$13 = $$5.a($$6);
+                     if ($$12.a() == $$9.ac() && (!$$13.isPresent() || $$9.V() - $$13.get() <= (long)$$4)) {
+                        if ($$12.b().k($$10.dk()) > $$3) {
+                           ehd $$14 = null;
+                           int $$15 = 0;
+                           int $$16 = 1000;
 
-   public static bkr<bja> a(float $$0) {
-      return a($$1 -> $$0);
-   }
+                           while ($$14 == null || gu.a($$14).k($$10.dk()) > $$3) {
+                              $$14 = bto.a($$10, 15, 7, ehd.c($$12.b()), (float) (Math.PI / 2));
+                              if (++$$15 == 1000) {
+                                 $$10.a($$0);
+                                 $$8.b();
+                                 $$6.a($$11);
+                                 return true;
+                              }
+                           }
 
-   public static bkr<bja> a(Function<biy, Float> $$0) {
-      return boc.a(
-         (Function<boc.b<bja>, ? extends App<boc.c<bja>, bof<bja>>>)($$1 -> $$1.group($$1.a(bsa.m), $$1.a(bsa.n), $$1.b(bsa.o), $$1.a(bsa.h))
-               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     biy $$9 = $$1.b($$4);
-                     Optional<bsc> $$10 = $$1.a($$5);
-                     if ($$10.isPresent() && $$10.get().a($$9) && bks.a($$7, $$9, 1)) {
-                        $$2.b();
+                           $$7.a(new bsc($$14, $$1, $$2));
+                        } else if ($$12.b().k($$10.dk()) > $$2) {
+                           $$7.a(new bsc($$12.b(), $$1, $$2));
+                        }
                      } else {
-                        $$3.a(new blb($$9, true));
-                        $$2.a(new bsd(new blb($$9, false), $$0.apply($$7), 0));
+                        $$10.a($$0);
+                        $$8.b();
+                        $$6.a($$11);
                      }
 
                      return true;

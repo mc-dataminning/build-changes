@@ -1,98 +1,95 @@
-import java.util.EnumSet;
-import java.util.Objects;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class fpt implements fpl<ddb> {
-   private static final String a = "neck";
-   private static final String b = "front";
-   private static final String c = "back";
-   private static final String d = "left";
-   private static final String e = "right";
-   private static final String f = "top";
-   private static final String g = "bottom";
-   private final fhn h;
-   private final fhn i;
-   private final fhn j;
-   private final fhn k;
-   private final fhn l;
-   private final fhn m;
-   private final fhn n;
-   private final gap o = Objects.requireNonNull(fnz.c(ddc.a));
+public class fpt implements ann {
+   private Map<dcn<?>, fpu<?>> d = ImmutableMap.of();
+   private final ert e;
+   private final fho f;
+   public cpl a;
+   public epw b;
+   public ehb c;
+   private final Supplier<fon> g;
+   private final Supplier<ftv> h;
+   private final Supplier<fsv> i;
 
-   public fpt(fpm.a $$0) {
-      fhn $$1 = $$0.a(fhm.E);
-      this.h = $$1.b("neck");
-      this.m = $$1.b("top");
-      this.n = $$1.b("bottom");
-      fhn $$2 = $$0.a(fhm.F);
-      this.i = $$2.b("front");
-      this.j = $$2.b("back");
-      this.k = $$2.b("left");
-      this.l = $$2.b("right");
-   }
-
-   public static fht b() {
-      fhv $$0 = new fhv();
-      fhw $$1 = $$0.a();
-      fhr $$2 = new fhr(0.2F);
-      fhr $$3 = new fhr(-0.1F);
-      $$1.a(
-         "neck",
-         fhs.c().a(0, 0).a(4.0F, 17.0F, 4.0F, 8.0F, 3.0F, 8.0F, $$3).a(0, 5).a(5.0F, 20.0F, 5.0F, 6.0F, 1.0F, 6.0F, $$2),
-         fhp.a(0.0F, 37.0F, 16.0F, (float) Math.PI, 0.0F, 0.0F)
-      );
-      fhs $$4 = fhs.c().a(-14, 13).a(0.0F, 0.0F, 0.0F, 14.0F, 0.0F, 14.0F);
-      $$1.a("top", $$4, fhp.a(1.0F, 16.0F, 1.0F, 0.0F, 0.0F, 0.0F));
-      $$1.a("bottom", $$4, fhp.a(1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F));
-      return fht.a($$0, 32, 32);
-   }
-
-   public static fht c() {
-      fhv $$0 = new fhv();
-      fhw $$1 = $$0.a();
-      fhs $$2 = fhs.c().a(1, 0).a(0.0F, 0.0F, 0.0F, 14.0F, 16.0F, 0.0F, EnumSet.of(ha.c));
-      $$1.a("back", $$2, fhp.a(15.0F, 16.0F, 1.0F, 0.0F, 0.0F, (float) Math.PI));
-      $$1.a("left", $$2, fhp.a(1.0F, 16.0F, 1.0F, 0.0F, (float) (-Math.PI / 2), (float) Math.PI));
-      $$1.a("right", $$2, fhp.a(15.0F, 16.0F, 15.0F, 0.0F, (float) (Math.PI / 2), (float) Math.PI));
-      $$1.a("front", $$2, fhp.a(1.0F, 16.0F, 15.0F, (float) Math.PI, 0.0F, 0.0F));
-      return fht.a($$0, 16, 16);
+   public fpt(ert $$0, fho $$1, Supplier<fon> $$2, Supplier<ftv> $$3, Supplier<fsv> $$4) {
+      this.h = $$3;
+      this.i = $$4;
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
    @Nullable
-   private static gap a(cit $$0) {
-      gap $$1 = fnz.c(ddc.a($$0));
-      if ($$1 == null) {
-         $$1 = fnz.c(ddc.a(cjb.pX));
-      }
-
-      return $$1;
+   public <E extends dcl> fpu<E> a(E $$0) {
+      return (fpu<E>)this.d.get($$0.u());
    }
 
-   public void a(ddb $$0, float $$1, elg $$2, fnl $$3, int $$4, int $$5) {
-      $$2.a();
-      ha $$6 = $$0.d();
-      $$2.a(0.5, 0.0, 0.5);
-      $$2.a(a.d.rotationDegrees(180.0F - $$6.p()));
-      $$2.a(-0.5, 0.0, -0.5);
-      elk $$7 = this.o.a($$3, fnt::c);
-      this.h.a($$2, $$7, $$4, $$5);
-      this.m.a($$2, $$7, $$4, $$5);
-      this.n.a($$2, $$7, $$4, $$5);
-      ddb.a $$8 = $$0.f();
-      this.a(this.i, $$2, $$3, $$4, $$5, a($$8.e()));
-      this.a(this.j, $$2, $$3, $$4, $$5, a($$8.b()));
-      this.a(this.k, $$2, $$3, $$4, $$5, a($$8.c()));
-      this.a(this.l, $$2, $$3, $$4, $$5, a($$8.d()));
-      $$2.b();
-   }
-
-   private void a(fhn $$0, elg $$1, fnl $$2, int $$3, int $$4, @Nullable gap $$5) {
-      if ($$5 == null) {
-         $$5 = a(cjb.pX);
+   public void a(cpl $$0, epw $$1, ehb $$2) {
+      if (this.a != $$0) {
+         this.a($$0);
       }
 
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   public <E extends dcl> void a(E $$0, float $$1, elf $$2, fnu $$3) {
+      fpu<E> $$4 = this.a($$0);
+      if ($$4 != null) {
+         if ($$0.l() && $$0.u().a($$0.q())) {
+            if ($$4.a($$0, this.b.b())) {
+               a($$0, () -> a($$4, $$0, $$1, $$2, $$3));
+            }
+         }
+      }
+   }
+
+   private static <T extends dcl> void a(fpu<T> $$0, T $$1, float $$2, elf $$3, fnu $$4) {
+      cpl $$5 = $$1.k();
+      int $$6;
       if ($$5 != null) {
-         $$0.a($$1, $$5.a($$2, fnt::c), $$3, $$4);
+         $$6 = fns.a($$5, $$1.p());
+      } else {
+         $$6 = 15728880;
       }
+
+      $$0.a($$1, $$2, $$3, $$4, $$6, fyl.d);
+   }
+
+   public <E extends dcl> boolean a(E $$0, elf $$1, fnu $$2, int $$3, int $$4) {
+      fpu<E> $$5 = this.a($$0);
+      if ($$5 == null) {
+         return true;
+      } else {
+         a($$0, () -> $$5.a($$0, 0.0F, $$1, $$2, $$3, $$4));
+         return false;
+      }
+   }
+
+   private static void a(dcl $$0, Runnable $$1) {
+      try {
+         $$1.run();
+      } catch (Throwable var5) {
+         o $$3 = o.a(var5, "Rendering Block Entity");
+         p $$4 = $$3.a("Block Entity Details");
+         $$0.a($$4);
+         throw new y($$3);
+      }
+   }
+
+   public void a(@Nullable cpl $$0) {
+      this.a = $$0;
+      if ($$0 == null) {
+         this.b = null;
+      }
+   }
+
+   @Override
+   public void a(anm $$0) {
+      fpv.a $$1 = new fpv.a(this, this.g.get(), this.h.get(), this.i.get(), this.f, this.e);
+      this.d = fpw.a($$1);
    }
 }

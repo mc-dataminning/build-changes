@@ -23,7 +23,7 @@ public abstract class biy extends bii implements big {
    private static final String c = "active_effects";
    private static final UUID d = UUID.fromString("87f46a96-686f-4796-b035-22e16ee9e038");
    private static final UUID e = UUID.fromString("1eaf83ff-7207-4596-b37a-d7a07b3ec4ce");
-   private static final bkd bA = new bkd(UUID.fromString("662A6B8D-DA3E-4C1C-8813-96EA6097278D"), "Sprinting speed boost", 0.3F, bkd.a.c);
+   private static final bkc bA = new bkc(UUID.fromString("662A6B8D-DA3E-4C1C-8813-96EA6097278D"), "Sprinting speed boost", 0.3F, bkc.a.c);
    public static final int g = 2;
    public static final int h = 4;
    public static final int i = 98;
@@ -54,11 +54,11 @@ public abstract class biy extends bii implements big {
    protected static final bij v = bij.c(0.2F, 0.2F);
    public static final float aE = 0.5F;
    private static final int bN = 50;
-   private final bkc bO;
+   private final bkb bO;
    private final bhd bP = new bhd(this);
    private final Map<bht, bhv> bQ = Maps.newHashMap();
-   private final hn<ciy> bR = hn.a(2, ciy.b);
-   private final hn<ciy> bS = hn.a(4, ciy.b);
+   private final hn<cix> bR = hn.a(2, cix.b);
+   private final hn<cix> bS = hn.a(4, cix.b);
    public boolean aF;
    private boolean bT = false;
    public bgp aG;
@@ -71,7 +71,7 @@ public abstract class biy extends bii implements big {
    public float aN;
    public float aO;
    protected int aP;
-   public final bjy aQ = new bjy();
+   public final bjx aQ = new bjx();
    public final int aR = 20;
    public final float aS;
    public final float aT;
@@ -80,7 +80,7 @@ public abstract class biy extends bii implements big {
    public float aW;
    public float aX;
    @Nullable
-   protected cbn aY;
+   protected cbm aY;
    protected int aZ;
    protected boolean ba;
    protected int bb;
@@ -112,7 +112,7 @@ public abstract class biy extends bii implements big {
    private float bZ;
    private int ca;
    private float cb;
-   protected ciy bv = ciy.b;
+   protected cix bv = cix.b;
    protected int bw;
    protected int bx;
    private gu cc;
@@ -123,12 +123,12 @@ public abstract class biy extends bii implements big {
    protected int by;
    private float cg;
    private float ch;
-   protected bjz<?> bz;
+   protected bjy<?> bz;
    private boolean ci;
 
-   protected biy(bim<? extends biy> $$0, cpm $$1) {
+   protected biy(bim<? extends biy> $$0, cpl $$1) {
       super($$0, $$1);
-      this.bO = new bkc(bkg.a($$0));
+      this.bO = new bkb(bkf.a($$0));
       this.c(this.eK());
       this.I = true;
       this.aT = (float)((Math.random() + 1.0) * 0.01F);
@@ -141,15 +141,15 @@ public abstract class biy extends bii implements big {
       this.bz = this.a(new Dynamic($$2, (rk)$$2.createMap(ImmutableMap.of($$2.a("memories"), (rk)$$2.emptyMap()))));
    }
 
-   public bjz<?> dM() {
+   public bjy<?> dM() {
       return this.bz;
    }
 
-   protected bjz.b<?> dN() {
-      return bjz.a(ImmutableList.of(), ImmutableList.of());
+   protected bjy.b<?> dN() {
+      return bjy.a(ImmutableList.of(), ImmutableList.of());
    }
 
-   protected bjz<?> a(Dynamic<?> $$0) {
+   protected bjy<?> a(Dynamic<?> $$0) {
       return this.dN().a($$0);
    }
 
@@ -173,12 +173,12 @@ public abstract class biy extends bii implements big {
       this.an.a(bM, Optional.empty());
    }
 
-   public static bke.a dO() {
-      return bke.a().a(bkf.a).a(bkf.c).a(bkf.d).a(bkf.i).a(bkf.j).a(bkf.l);
+   public static bkd.a dO() {
+      return bkd.a().a(bke.a).a(bke.c).a(bke.d).a(bke.i).a(bke.j).a(bke.l);
    }
 
    @Override
-   protected void a(double $$0, boolean $$1, dfa $$2, gu $$3) {
+   protected void a(double $$0, boolean $$1, dez $$2, gu $$3) {
       if (!this.aX()) {
          this.bf();
       }
@@ -239,7 +239,7 @@ public abstract class biy extends bii implements big {
       }
 
       if (this.bv()) {
-         boolean $$0 = this instanceof cbn;
+         boolean $$0 = this instanceof cbm;
          if (!this.dK().B) {
             if (this.bw()) {
                this.a(this.dL().f(), 1.0F);
@@ -254,13 +254,13 @@ public abstract class biy extends bii implements big {
             }
          }
 
-         if (this.a(apq.a) && !this.dK().a_(gu.a(this.dp(), this.dt(), this.dv())).a(csn.nd)) {
-            boolean $$3 = !this.dP() && !bhw.c(this) && (!$$0 || !((cbn)this).fR().a);
+         if (this.a(apq.a) && !this.dK().a_(gu.a(this.dp(), this.dt(), this.dv())).a(csm.nd)) {
+            boolean $$3 = !this.dP() && !bhw.c(this) && (!$$0 || !((cbm)this).fR().a);
             if ($$3) {
                this.j(this.m(this.ch()));
                if (this.ch() == -20) {
                   this.j(0);
-                  ehe $$4 = this.dn();
+                  ehd $$4 = this.dn();
 
                   for (int $$5 = 0; $$5 < 8; $$5++) {
                      double $$6 = this.ag.j() - this.ag.j();
@@ -333,11 +333,11 @@ public abstract class biy extends bii implements big {
    }
 
    public boolean dQ() {
-      return this.ah % 5 == 0 && this.dn().c != 0.0 && this.dn().e != 0.0 && !this.G_() && cnh.k(this) && this.dS();
+      return this.ah % 5 == 0 && this.dn().c != 0.0 && this.dn().e != 0.0 && !this.G_() && cng.k(this) && this.dS();
    }
 
    protected void dR() {
-      ehe $$0 = this.dn();
+      ehd $$0 = this.dn();
       this.dK()
          .a(
             iv.I,
@@ -358,16 +358,16 @@ public abstract class biy extends bii implements big {
 
    @Override
    protected float aJ() {
-      return this.dS() && cnh.a(cnj.l, this) > 0 ? 1.0F : super.aJ();
+      return this.dS() && cng.a(cni.l, this) > 0 ? 1.0F : super.aJ();
    }
 
    @Override
-   protected boolean c(dfa $$0) {
+   protected boolean c(dez $$0) {
       return !$$0.i() || this.fu();
    }
 
    protected void dT() {
-      bkb $$0 = this.a(bkf.d);
+      bka $$0 = this.a(bke.d);
       if ($$0 != null) {
          if ($$0.a(d) != null) {
             $$0.b(d);
@@ -377,16 +377,16 @@ public abstract class biy extends bii implements big {
 
    protected void dU() {
       if (!this.bh().i()) {
-         int $$0 = cnh.a(cnj.l, this);
+         int $$0 = cng.a(cni.l, this);
          if ($$0 > 0 && this.dS()) {
-            bkb $$1 = this.a(bkf.d);
+            bka $$1 = this.a(bke.d);
             if ($$1 == null) {
                return;
             }
 
-            $$1.b(new bkd(d, "Soul speed boost", (double)(0.03F * (1.0F + (float)$$0 * 0.35F)), bkd.a.a));
+            $$1.b(new bkc(d, "Soul speed boost", (double)(0.03F * (1.0F + (float)$$0 * 0.35F)), bkc.a.a));
             if (this.ee().i() < 0.04F) {
-               ciy $$2 = this.c(bin.c);
+               cix $$2 = this.c(bin.c);
                $$2.a(1, this, $$0x -> $$0x.d(bin.c));
             }
          }
@@ -394,7 +394,7 @@ public abstract class biy extends bii implements big {
    }
 
    protected void dV() {
-      bkb $$0 = this.a(bkf.d);
+      bka $$0 = this.a(bke.d);
       if ($$0 != null) {
          if ($$0.a(e) != null) {
             $$0.b(e);
@@ -406,21 +406,21 @@ public abstract class biy extends bii implements big {
       if (!this.bh().i()) {
          int $$0 = this.ci();
          if ($$0 > 0) {
-            bkb $$1 = this.a(bkf.d);
+            bka $$1 = this.a(bke.d);
             if ($$1 == null) {
                return;
             }
 
             float $$2 = -0.05F * this.cj();
-            $$1.b(new bkd(e, "Powder snow slow", (double)$$2, bkd.a.a));
+            $$1.b(new bkc(e, "Powder snow slow", (double)$$2, bkc.a.a));
          }
       }
    }
 
    protected void c(gu $$0) {
-      int $$1 = cnh.a(cnj.j, this);
+      int $$1 = cng.a(cni.j, this);
       if ($$1 > 0) {
-         cnm.a(this, this.dK(), $$0, $$1);
+         cnl.a(this, this.dK(), $$0, $$1);
       }
 
       if (this.c(this.bh())) {
@@ -459,7 +459,7 @@ public abstract class biy extends bii implements big {
    }
 
    protected int m(int $$0) {
-      int $$1 = cnh.e(this);
+      int $$1 = cng.e(this);
       return $$1 > 0 && this.ag.a($$1 + 1) > 0 ? $$0 : $$0 - 1;
    }
 
@@ -493,7 +493,7 @@ public abstract class biy extends bii implements big {
       return this.bW;
    }
 
-   public void c(@Nullable cbn $$0) {
+   public void c(@Nullable cbm $$0) {
       this.aY = $$0;
       this.aZ = this.ah;
    }
@@ -542,17 +542,17 @@ public abstract class biy extends bii implements big {
       return true;
    }
 
-   public void a(bin $$0, ciy $$1, ciy $$2) {
+   public void a(bin $$0, cix $$1, cix $$2) {
       boolean $$3 = $$2.b() && $$1.b();
-      if (!$$3 && !ciy.c($$1, $$2) && !this.am) {
-         chz $$4 = chz.c_($$2);
+      if (!$$3 && !cix.c($$1, $$2) && !this.am) {
+         chy $$4 = chy.c_($$2);
          if (!this.dK().r_() && !this.G_()) {
             if (!this.aS() && $$4 != null && $$4.g() == $$0) {
-               this.dK().a(null, this.dp(), this.dr(), this.dv(), $$4.ak_(), this.da(), 1.0F, 1.0F);
+               this.dK().a(null, this.dp(), this.dr(), this.dv(), $$4.aj_(), this.da(), 1.0F, 1.0F);
             }
 
             if (this.a($$0)) {
-               this.a($$4 != null ? djk.v : djk.S);
+               this.a($$4 != null ? djj.v : djj.S);
             }
          }
       }
@@ -620,7 +620,7 @@ public abstract class biy extends bii implements big {
       this.bW = $$0.h("HurtByTimestamp");
       if ($$0.b("Team", 8)) {
          String $$5 = $$0.l("Team");
-         eib $$6 = this.dK().I().d($$5);
+         eia $$6 = this.dK().I().d($$5);
          boolean $$7 = $$6 != null && this.dK().I().a(this.cw(), $$6);
          if (!$$7) {
             b.warn("Unable to add mob to team \"{}\" (that team probably doesn't exist)", $$5);
@@ -703,7 +703,7 @@ public abstract class biy extends bii implements big {
       } else {
          Collection<bhv> $$0 = this.bQ.values();
          this.an.b(bJ, c($$0));
-         this.an.b(bI, ckx.a($$0));
+         this.an.b(bI, ckw.a($$0));
          this.j(this.a(bhx.n));
       }
    }
@@ -731,13 +731,13 @@ public abstract class biy extends bii implements big {
       }
 
       if ($$0 != null) {
-         ciy $$3 = this.c(bin.f);
+         cix $$3 = this.c(bin.f);
          bim<?> $$4 = $$0.ag();
-         if ($$4 == bim.aJ && $$3.a(cjb.tr)
-            || $$4 == bim.bp && $$3.a(cjb.tu)
-            || $$4 == bim.aw && $$3.a(cjb.tx)
-            || $$4 == bim.ax && $$3.a(cjb.tx)
-            || $$4 == bim.u && $$3.a(cjb.tv)) {
+         if ($$4 == bim.aJ && $$3.a(cja.tr)
+            || $$4 == bim.bp && $$3.a(cja.tu)
+            || $$4 == bim.aw && $$3.a(cja.tx)
+            || $$4 == bim.ax && $$3.a(cja.tx)
+            || $$4 == bim.u && $$3.a(cja.tv)) {
             $$1 *= 0.5;
          }
       }
@@ -746,10 +746,10 @@ public abstract class biy extends bii implements big {
    }
 
    public boolean c(biy $$0) {
-      return $$0 instanceof cbn && this.dK().ai() == bgn.a ? false : $$0.em();
+      return $$0 instanceof cbm && this.dK().ai() == bgn.a ? false : $$0.em();
    }
 
-   public boolean a(biy $$0, btl $$1) {
+   public boolean a(biy $$0, btk $$1) {
       return $$1.a(this, $$0);
    }
 
@@ -919,18 +919,18 @@ public abstract class biy extends bii implements big {
    }
 
    private void r() {
-      for (bkb $$0 : this.eP().a()) {
+      for (bka $$0 : this.eP().a()) {
          this.d($$0.a());
       }
    }
 
-   private void d(bka $$0) {
-      if ($$0 == bkf.a) {
+   private void d(bjz $$0) {
+      if ($$0 == bke.a) {
          float $$1 = this.eK();
          if (this.et() > $$1) {
             this.c($$1);
          }
-      } else if ($$0 == bkf.l) {
+      } else if ($$0 == bke.l) {
          float $$2 = this.eL();
          if (this.fi() > $$2) {
             this.y($$2);
@@ -1020,12 +1020,12 @@ public abstract class biy extends bii implements big {
                this.a($$9);
             }
 
-            if ($$8 instanceof cbn $$10) {
+            if ($$8 instanceof cbm $$10) {
                this.aZ = 100;
                this.aY = $$10;
-            } else if ($$8 instanceof bvn $$11 && $$11.p()) {
+            } else if ($$8 instanceof bvm $$11 && $$11.p()) {
                this.aZ = 100;
-               if ($$11.I_() instanceof cbn $$12) {
+               if ($$11.I_() instanceof cbm $$12) {
                   this.aY = $$12;
                } else {
                   this.aY = null;
@@ -1105,11 +1105,11 @@ public abstract class biy extends bii implements big {
       if ($$0.a(apn.d)) {
          return false;
       } else {
-         ciy $$1 = null;
+         cix $$1 = null;
 
          for (bgp $$2 : bgp.values()) {
-            ciy $$3 = this.b($$2);
-            if ($$3.a(cjb.uz)) {
+            cix $$3 = this.b($$2);
+            if ($$3.a(cja.uz)) {
                $$1 = $$3.p();
                $$3.h(1);
                break;
@@ -1118,9 +1118,9 @@ public abstract class biy extends bii implements big {
 
          if ($$1 != null) {
             if (this instanceof akl $$4) {
-               $$4.b(apg.c.b(cjb.uz));
+               $$4.b(apg.c.b(cja.uz));
                ai.B.a($$4, $$1);
-               this.a(djk.C);
+               this.a(djj.C);
             }
 
             this.c(1.0F);
@@ -1154,16 +1154,16 @@ public abstract class biy extends bii implements big {
    public boolean f(bhg $$0) {
       bii $$1 = $$0.c();
       boolean $$2 = false;
-      if ($$1 instanceof cbt $$3 && $$3.w() > 0) {
+      if ($$1 instanceof cbs $$3 && $$3.w() > 0) {
          $$2 = true;
       }
 
       if (!$$0.a(apn.c) && this.fs() && !$$2) {
-         ehe $$4 = $$0.h();
+         ehd $$4 = $$0.h();
          if ($$4 != null) {
-            ehe $$5 = this.f(1.0F);
-            ehe $$6 = $$4.a(this.di()).d();
-            $$6 = new ehe($$6.c, 0.0, $$6.e);
+            ehd $$5 = this.f(1.0F);
+            ehd $$6 = $$4.a(this.di()).d();
+            $$6 = new ehd($$6.c, 0.0, $$6.e);
             if ($$6.b($$5) < 0.0) {
                return true;
             }
@@ -1173,7 +1173,7 @@ public abstract class biy extends bii implements big {
       return false;
    }
 
-   private void i(ciy $$0) {
+   private void i(cix $$0) {
       if (!$$0.b()) {
          if (!this.aS()) {
             this.dK().a(this.dp(), this.dr(), this.dv(), aow.lZ, this.da(), 0.8F, 0.8F + this.dK().z.i() * 0.4F, false);
@@ -1203,7 +1203,7 @@ public abstract class biy extends bii implements big {
          this.eI().c();
          if (this.dK() instanceof akk $$3) {
             if ($$1 == null || $$1.a($$3, this)) {
-               this.a(djk.p);
+               this.a(djj.p);
                this.g($$0);
                this.f($$2);
             }
@@ -1218,18 +1218,18 @@ public abstract class biy extends bii implements big {
    protected void f(@Nullable biy $$0) {
       if (!this.dK().B) {
          boolean $$1 = false;
-         if ($$0 instanceof bxu) {
-            if (this.dK().X().b(cpi.c)) {
+         if ($$0 instanceof bxt) {
+            if (this.dK().X().b(cph.c)) {
                gu $$2 = this.dk();
-               dfa $$3 = csn.cd.n();
-               if (this.dK().a_($$2).i() && $$3.a((cpp)this.dK(), $$2)) {
+               dez $$3 = csm.cd.n();
+               if (this.dK().a_($$2).i() && $$3.a((cpo)this.dK(), $$2)) {
                   this.dK().a($$2, $$3, 3);
                   $$1 = true;
                }
             }
 
             if (!$$1) {
-               byg $$4 = new byg(this.dK(), this.dp(), this.dr(), this.dv(), new ciy(cjb.da));
+               byf $$4 = new byf(this.dK(), this.dp(), this.dr(), this.dv(), new cix(cja.da));
                this.dK().b($$4);
             }
          }
@@ -1239,14 +1239,14 @@ public abstract class biy extends bii implements big {
    protected void g(bhg $$0) {
       bii $$1 = $$0.d();
       int $$2;
-      if ($$1 instanceof cbn) {
-         $$2 = cnh.h((biy)$$1);
+      if ($$1 instanceof cbm) {
+         $$2 = cng.h((biy)$$1);
       } else {
          $$2 = 0;
       }
 
       boolean $$4 = this.aZ > 0;
-      if (this.eb() && this.dK().X().b(cpi.f)) {
+      if (this.eb() && this.dK().X().b(cph.f)) {
          this.a($$0, $$4);
          this.a($$0, $$2, $$4);
       }
@@ -1259,7 +1259,7 @@ public abstract class biy extends bii implements big {
    }
 
    protected void ex() {
-      if (this.dK() instanceof akk && !this.eB() && (this.ed() || this.aZ > 0 && this.ea() && this.dK().X().b(cpi.f))) {
+      if (this.dK() instanceof akk && !this.eB() && (this.ed() || this.aZ > 0 && this.ea() && this.dK().X().b(cph.f))) {
          bio.a((akk)this.dK(), this.di(), this.ec());
       }
    }
@@ -1277,22 +1277,22 @@ public abstract class biy extends bii implements big {
 
    protected void a(bhg $$0, boolean $$1) {
       aer $$2 = this.ey();
-      ecp $$3 = this.dK().n().aH().getLootTable($$2);
-      ecn.a $$4 = new ecn.a((akk)this.dK()).a(ees.a, this).a(ees.f, this.di()).a(ees.c, $$0).b(ees.d, $$0.d()).b(ees.e, $$0.c());
+      eco $$3 = this.dK().n().aH().getLootTable($$2);
+      ecm.a $$4 = new ecm.a((akk)this.dK()).a(eer.a, this).a(eer.f, this.di()).a(eer.c, $$0).b(eer.d, $$0.d()).b(eer.e, $$0.c());
       if ($$1 && this.aY != null) {
-         $$4 = $$4.a(ees.b, this.aY).a(this.aY.gm());
+         $$4 = $$4.a(eer.b, this.aY).a(this.aY.gm());
       }
 
-      ecn $$5 = $$4.a(eer.g);
+      ecm $$5 = $$4.a(eeq.g);
       $$3.a($$5, this.ez(), this::b);
    }
 
    public void q(double $$0, double $$1, double $$2) {
-      $$0 *= 1.0 - this.b(bkf.c);
+      $$0 *= 1.0 - this.b(bke.c);
       if (!($$0 <= 0.0)) {
          this.au = true;
-         ehe $$3 = this.dn();
-         ehe $$4 = new ehe($$1, 0.0, $$2).d().a($$0);
+         ehd $$3 = this.dn();
+         ehd $$4 = new ehd($$1, 0.0, $$2).d().a($$0);
          this.o($$3.c / 2.0 - $$4.c, this.aA() ? Math.min(0.4, $$3.d / 2.0 + $$0) : $$3.d, $$3.e / 2.0 - $$4.e);
       }
    }
@@ -1322,23 +1322,30 @@ public abstract class biy extends bii implements big {
       return this.ci;
    }
 
-   protected ehe eC() {
-      return this.cY() instanceof bjo $$0 ? this.di().b(0.0, $$0.d(), 0.0) : this.di();
+   public float eC() {
+      return 0.0F;
    }
 
-   public float eD() {
-      return 0.0F;
+   protected egy eD() {
+      egy $$0 = this.cG();
+      bii $$1 = this.cY();
+      if ($$1 != null) {
+         ehd $$2 = $$1.m(this);
+         return $$0.b(Math.max($$2.d, $$0.b));
+      } else {
+         return $$0;
+      }
    }
 
    public biy.a eE() {
       return new biy.a(aow.ja, aow.iS);
    }
 
-   protected aov c(ciy $$0) {
+   protected aov c(cix $$0) {
       return $$0.N();
    }
 
-   public aov d(ciy $$0) {
+   public aov d(cix $$0) {
       return $$0.O();
    }
 
@@ -1351,11 +1358,11 @@ public abstract class biy extends bii implements big {
          return false;
       } else {
          gu $$0 = this.dk();
-         dfa $$1 = this.dl();
+         dez $$1 = this.dl();
          if ($$1.a(apl.aO)) {
             this.cd = Optional.of($$0);
             return true;
-         } else if ($$1.b() instanceof daz && this.c($$0, $$1)) {
+         } else if ($$1.b() instanceof day && this.c($$0, $$1)) {
             this.cd = Optional.of($$0);
             return true;
          } else {
@@ -1364,10 +1371,10 @@ public abstract class biy extends bii implements big {
       }
    }
 
-   private boolean c(gu $$0, dfa $$1) {
-      if ($$1.c(daz.a)) {
-         dfa $$2 = this.dK().a_($$0.d());
-         if ($$2.a(csn.cO) && $$2.c(cwp.a) == $$1.c(daz.aC)) {
+   private boolean c(gu $$0, dez $$1) {
+      if ($$1.c(day.a)) {
+         dez $$2 = this.dK().a_($$0.d());
+         if ($$2.a(csm.cO) && $$2.c(cwo.a) == $$1.c(day.aC)) {
             return true;
          }
       }
@@ -1409,9 +1416,9 @@ public abstract class biy extends bii implements big {
          int $$0 = arp.a(this.dp());
          int $$1 = arp.a(this.dr() - 0.2F);
          int $$2 = arp.a(this.dv());
-         dfa $$3 = this.dK().a_(new gu($$0, $$1, $$2));
+         dez $$3 = this.dK().a_(new gu($$0, $$1, $$2));
          if (!$$3.i()) {
-            czz $$4 = $$3.w();
+            czy $$4 = $$3.w();
             this.a($$4.g(), $$4.a() * 0.5F, $$4.b() * 0.75F);
          }
       }
@@ -1424,7 +1431,7 @@ public abstract class biy extends bii implements big {
    }
 
    public int eH() {
-      return arp.a(this.b(bkf.i));
+      return arp.a(this.b(bke.i));
    }
 
    protected void b(bhg $$0, float $$1) {
@@ -1439,7 +1446,7 @@ public abstract class biy extends bii implements big {
    protected float d(bhg $$0, float $$1) {
       if (!$$0.a(apn.b)) {
          this.b($$0, $$1);
-         $$1 = bhc.a($$1, (float)this.eH(), (float)this.b(bkf.j));
+         $$1 = bhc.a($$1, (float)this.eH(), (float)this.b(bke.j));
       }
 
       return $$1;
@@ -1470,7 +1477,7 @@ public abstract class biy extends bii implements big {
          } else if ($$0.a(apn.h)) {
             return $$1;
          } else {
-            int $$7 = cnh.a(this.bK(), $$0);
+            int $$7 = cng.a(this.bK(), $$0);
             if ($$7 > 0) {
                $$1 = bhc.a($$1, (float)$$7);
             }
@@ -1495,7 +1502,7 @@ public abstract class biy extends bii implements big {
             this.eI().a($$0, var9);
             this.c(this.et() - var9);
             this.y(this.fi() - var9);
-            this.a(djk.o);
+            this.a(djj.o);
          }
       }
    }
@@ -1514,11 +1521,11 @@ public abstract class biy extends bii implements big {
    }
 
    public final float eK() {
-      return (float)this.b(bkf.a);
+      return (float)this.b(bke.a);
    }
 
    public final float eL() {
-      return (float)this.b(bkf.l);
+      return (float)this.b(bke.l);
    }
 
    public final int eM() {
@@ -1591,7 +1598,7 @@ public abstract class biy extends bii implements big {
                this.a($$1, this.eU(), (this.ag.i() - this.ag.i()) * 0.2F + 1.0F);
             }
 
-            if (!(this instanceof cbn)) {
+            if (!(this instanceof cbm)) {
                this.c(0.0F);
                this.a(this.dL().n());
             }
@@ -1635,7 +1642,7 @@ public abstract class biy extends bii implements big {
             this.i(this.c(bin.c));
             break;
          case 54:
-            cwd.b(this);
+            cwc.b(this);
             break;
          case 55:
             this.y();
@@ -1658,7 +1665,7 @@ public abstract class biy extends bii implements big {
    }
 
    private void y() {
-      ciy $$0 = this.c(bin.b);
+      cix $$0 = this.c(bin.b);
       this.a(bin.b, this.c(bin.a));
       this.a(bin.a, $$0);
    }
@@ -1684,27 +1691,27 @@ public abstract class biy extends bii implements big {
    }
 
    @Nullable
-   public bkb a(bka $$0) {
+   public bka a(bjz $$0) {
       return this.eP().a($$0);
    }
 
-   public double a(he<bka> $$0) {
+   public double a(he<bjz> $$0) {
       return this.b($$0.a());
    }
 
-   public double b(bka $$0) {
+   public double b(bjz $$0) {
       return this.eP().c($$0);
    }
 
-   public double b(he<bka> $$0) {
+   public double b(he<bjz> $$0) {
       return this.c($$0.a());
    }
 
-   public double c(bka $$0) {
+   public double c(bjz $$0) {
       return this.eP().d($$0);
    }
 
-   public bkc eP() {
+   public bkb eP() {
       return this.bO;
    }
 
@@ -1712,23 +1719,23 @@ public abstract class biy extends bii implements big {
       return bjd.a;
    }
 
-   public ciy eR() {
+   public cix eR() {
       return this.c(bin.a);
    }
 
-   public ciy eS() {
+   public cix eS() {
       return this.c(bin.b);
    }
 
-   public boolean b(cit $$0) {
+   public boolean b(cis $$0) {
       return this.b($$1 -> $$1.a($$0));
    }
 
-   public boolean b(Predicate<ciy> $$0) {
+   public boolean b(Predicate<cix> $$0) {
       return $$0.test(this.eR()) || $$0.test(this.eS());
    }
 
-   public ciy b(bgp $$0) {
+   public cix b(bgp $$0) {
       if ($$0 == bgp.a) {
          return this.c(bin.a);
       } else if ($$0 == bgp.b) {
@@ -1738,7 +1745,7 @@ public abstract class biy extends bii implements big {
       }
    }
 
-   public void a(bgp $$0, ciy $$1) {
+   public void a(bgp $$0, cix $$1) {
       if ($$0 == bgp.a) {
          this.a(bin.a, $$1);
       } else {
@@ -1755,14 +1762,14 @@ public abstract class biy extends bii implements big {
    }
 
    @Override
-   public abstract Iterable<ciy> bK();
+   public abstract Iterable<cix> bK();
 
-   public abstract ciy c(bin var1);
+   public abstract cix c(bin var1);
 
    @Override
-   public abstract void a(bin var1, ciy var2);
+   public abstract void a(bin var1, cix var2);
 
-   protected void e(ciy $$0) {
+   protected void e(cix $$0) {
       qr $$1 = $$0.v();
       if ($$1 != null) {
          $$0.d().b($$1);
@@ -1770,11 +1777,11 @@ public abstract class biy extends bii implements big {
    }
 
    public float eT() {
-      Iterable<ciy> $$0 = this.bK();
+      Iterable<cix> $$0 = this.bK();
       int $$1 = 0;
       int $$2 = 0;
 
-      for (ciy $$3 : $$0) {
+      for (cix $$3 : $$0) {
          if (!$$3.b()) {
             $$2++;
          }
@@ -1788,7 +1795,7 @@ public abstract class biy extends bii implements big {
    @Override
    public void g(boolean $$0) {
       super.g($$0);
-      bkb $$1 = this.a(bkf.d);
+      bka $$1 = this.a(bke.d);
       $$1.b(bA.a());
       if ($$0) {
          $$1.b(bA);
@@ -1815,14 +1822,14 @@ public abstract class biy extends bii implements big {
    }
 
    private void a(bii $$0) {
-      ehe $$1;
+      ehd $$1;
       if (this.dF()) {
          $$1 = this.di();
       } else if (!$$0.dF() && !this.dK().a_($$0.dk()).a(apl.aI)) {
          $$1 = $$0.b(this);
       } else {
          double $$2 = Math.max(this.dr(), $$0.dr());
-         $$1 = new ehe(this.dp(), $$2, this.dv());
+         $$1 = new ehd(this.dp(), $$2, this.dv());
       }
 
       this.a($$1.c, $$1.d, $$1.e);
@@ -1842,7 +1849,7 @@ public abstract class biy extends bii implements big {
    }
 
    protected void eZ() {
-      ehe $$0 = this.dn();
+      ehd $$0 = this.dn();
       this.o($$0.c, (double)this.eX(), $$0.e);
       if (this.bX()) {
          float $$1 = this.dA() * (float) (Math.PI / 180.0);
@@ -1856,7 +1863,7 @@ public abstract class biy extends bii implements big {
       this.f(this.dn().b(0.0, -0.04F, 0.0));
    }
 
-   protected void c(aqa<eac> $$0) {
+   protected void c(aqa<eab> $$0) {
       this.f(this.dn().b(0.0, 0.04F, 0.0));
    }
 
@@ -1864,11 +1871,11 @@ public abstract class biy extends bii implements big {
       return 0.8F;
    }
 
-   public boolean a(ead $$0) {
+   public boolean a(eac $$0) {
       return false;
    }
 
-   public void h(ehe $$0) {
+   public void h(ehd $$0) {
       if (this.cW()) {
          double $$1 = 0.08;
          boolean $$2 = this.dn().d <= 0.0;
@@ -1876,12 +1883,12 @@ public abstract class biy extends bii implements big {
             $$1 = 0.01;
          }
 
-         ead $$3 = this.dK().b_(this.dk());
+         eac $$3 = this.dK().b_(this.dk());
          if (this.aX() && this.dY() && !this.a($$3)) {
             double $$4 = this.dr();
             float $$5 = this.bX() ? 0.9F : this.fb();
             float $$6 = 0.02F;
-            float $$7 = (float)cnh.f(this);
+            float $$7 = (float)cng.f(this);
             if ($$7 > 3.0F) {
                $$7 = 3.0F;
             }
@@ -1901,13 +1908,13 @@ public abstract class biy extends bii implements big {
 
             this.a($$6, $$0);
             this.a(bje.a, this.dn());
-            ehe $$8 = this.dn();
+            ehd $$8 = this.dn();
             if (this.P && this.j_()) {
-               $$8 = new ehe($$8.c, 0.2, $$8.e);
+               $$8 = new ehd($$8.c, 0.2, $$8.e);
             }
 
             this.f($$8.d((double)$$5, 0.8F, (double)$$5));
-            ehe $$9 = this.a($$1, $$2, this.dn());
+            ehd $$9 = this.a($$1, $$2, this.dn());
             this.f($$9);
             if (this.P && this.g($$9.c, $$9.d + 0.6F - this.dr() + $$4, $$9.e)) {
                this.o($$9.c, 0.3F, $$9.e);
@@ -1918,7 +1925,7 @@ public abstract class biy extends bii implements big {
             this.a(bje.a, this.dn());
             if (this.b(apq.b) <= this.de()) {
                this.f(this.dn().d(0.5, 0.8F, 0.5));
-               ehe $$11 = this.a($$1, $$2, this.dn());
+               ehd $$11 = this.a($$1, $$2, this.dn());
                this.f($$11);
             } else {
                this.f(this.dn().a(0.5));
@@ -1928,14 +1935,14 @@ public abstract class biy extends bii implements big {
                this.f(this.dn().b(0.0, -$$1 / 4.0, 0.0));
             }
 
-            ehe $$12 = this.dn();
+            ehd $$12 = this.dn();
             if (this.P && this.g($$12.c, $$12.d + 0.6F - this.dr() + $$10, $$12.e)) {
                this.o($$12.c, 0.3F, $$12.e);
             }
          } else if (this.fu()) {
             this.cm();
-            ehe $$13 = this.dn();
-            ehe $$14 = this.bE();
+            ehd $$13 = this.dn();
+            ehd $$14 = this.bE();
             float $$15 = this.dC() * (float) (Math.PI / 180.0);
             double $$16 = Math.sqrt($$14.c * $$14.c + $$14.e * $$14.e);
             double $$17 = $$13.h();
@@ -1976,7 +1983,7 @@ public abstract class biy extends bii implements big {
             gu $$25 = this.aG();
             float $$26 = this.dK().a_($$25).b().h();
             float $$27 = this.aA() ? $$26 * 0.91F : 0.91F;
-            ehe $$28 = this.a($$0, $$26);
+            ehd $$28 = this.a($$0, $$26);
             double $$29 = $$28.d;
             if (this.a(bhx.y)) {
                $$29 += (0.05 * (double)(this.b(bhx.y).e() + 1) - $$28.d) * 0.2;
@@ -1998,30 +2005,30 @@ public abstract class biy extends bii implements big {
          }
       }
 
-      this.q(this instanceof but);
+      this.q(this instanceof bus);
    }
 
-   private void c(cbn $$0, ehe $$1) {
-      ehe $$2 = this.b($$0, $$1);
+   private void c(cbm $$0, ehd $$1) {
+      ehd $$2 = this.b($$0, $$1);
       this.a($$0, $$2);
       if (this.cW()) {
          this.w(this.e($$0));
          this.h($$2);
       } else {
          this.q(false);
-         this.f(ehe.b);
+         this.f(ehd.b);
          this.aB();
       }
    }
 
-   protected void a(cbn $$0, ehe $$1) {
+   protected void a(cbm $$0, ehd $$1) {
    }
 
-   protected ehe b(cbn $$0, ehe $$1) {
+   protected ehd b(cbm $$0, ehd $$1) {
       return $$1;
    }
 
-   protected float e(cbn $$0) {
+   protected float e(cbm $$0) {
       return this.fd();
    }
 
@@ -2035,19 +2042,19 @@ public abstract class biy extends bii implements big {
       this.aQ.a($$1, 0.4F);
    }
 
-   public ehe a(ehe $$0, float $$1) {
+   public ehd a(ehd $$0, float $$1) {
       this.a(this.A($$1), $$0);
       this.f(this.j(this.dn()));
       this.a(bje.a, this.dn());
-      ehe $$2 = this.dn();
-      if ((this.P || this.bj) && (this.j_() || this.dl().a(csn.qC) && cye.a(this))) {
-         $$2 = new ehe($$2.c, 0.2, $$2.e);
+      ehd $$2 = this.dn();
+      if ((this.P || this.bj) && (this.j_() || this.dl().a(csm.qC) && cyd.a(this))) {
+         $$2 = new ehd($$2.c, 0.2, $$2.e);
       }
 
       return $$2;
    }
 
-   public ehe a(double $$0, boolean $$1, ehe $$2) {
+   public ehd a(double $$0, boolean $$1, ehd $$2) {
       if (!this.aT() && !this.bX()) {
          double $$3;
          if ($$1 && Math.abs($$2.d - 0.005) >= 0.003 && Math.abs($$2.d - $$0 / 16.0) < 0.003) {
@@ -2056,24 +2063,24 @@ public abstract class biy extends bii implements big {
             $$3 = $$2.d - $$0 / 16.0;
          }
 
-         return new ehe($$2.c, $$3, $$2.e);
+         return new ehd($$2.c, $$3, $$2.e);
       } else {
          return $$2;
       }
    }
 
-   private ehe j(ehe $$0) {
+   private ehd j(ehd $$0) {
       if (this.j_()) {
          this.n();
          float $$1 = 0.15F;
          double $$2 = arp.a($$0.c, -0.15F, 0.15F);
          double $$3 = arp.a($$0.e, -0.15F, 0.15F);
          double $$4 = Math.max($$0.d, -0.15F);
-         if ($$4 < 0.0 && !this.dl().a(csn.nS) && this.ft() && this instanceof cbn) {
+         if ($$4 < 0.0 && !this.dl().a(csm.nS) && this.ft() && this instanceof cbm) {
             $$4 = 0.0;
          }
 
-         $$0 = new ehe($$2, $$4, $$3);
+         $$0 = new ehd($$2, $$4, $$3);
       }
 
       return $$0;
@@ -2084,7 +2091,7 @@ public abstract class biy extends bii implements big {
    }
 
    protected float fc() {
-      return this.cN() instanceof cbn ? this.fd() * 0.1F : 0.02F;
+      return this.cN() instanceof cbm ? this.fd() * 0.1F : 0.02F;
    }
 
    public float fd() {
@@ -2225,7 +2232,7 @@ public abstract class biy extends bii implements big {
    }
 
    private void z() {
-      Map<bin, ciy> $$0 = this.A();
+      Map<bin, cix> $$0 = this.A();
       if ($$0 != null) {
          this.a($$0);
          if (!$$0.isEmpty()) {
@@ -2235,11 +2242,11 @@ public abstract class biy extends bii implements big {
    }
 
    @Nullable
-   private Map<bin, ciy> A() {
-      Map<bin, ciy> $$0 = null;
+   private Map<bin, cix> A() {
+      Map<bin, cix> $$0 = null;
 
       for (bin $$1 : bin.values()) {
-         ciy $$2;
+         cix $$2;
          switch ($$1.a()) {
             case a:
                $$2 = this.f($$1);
@@ -2251,7 +2258,7 @@ public abstract class biy extends bii implements big {
                continue;
          }
 
-         ciy $$5 = this.c($$1);
+         cix $$5 = this.c($$1);
          if (this.a($$2, $$5)) {
             if ($$0 == null) {
                $$0 = Maps.newEnumMap(bin.class);
@@ -2271,14 +2278,14 @@ public abstract class biy extends bii implements big {
       return $$0;
    }
 
-   public boolean a(ciy $$0, ciy $$1) {
-      return !ciy.a($$1, $$0);
+   public boolean a(cix $$0, cix $$1) {
+      return !cix.a($$1, $$0);
    }
 
-   private void a(Map<bin, ciy> $$0) {
-      ciy $$1 = $$0.get(bin.a);
-      ciy $$2 = $$0.get(bin.b);
-      if ($$1 != null && $$2 != null && ciy.a($$1, this.f(bin.b)) && ciy.a($$2, this.f(bin.a))) {
+   private void a(Map<bin, cix> $$0) {
+      cix $$1 = $$0.get(bin.a);
+      cix $$2 = $$0.get(bin.b);
+      if ($$1 != null && $$2 != null && cix.a($$1, this.f(bin.b)) && cix.a($$2, this.f(bin.a))) {
          ((akk)this.dK()).k().b(this, new xs(this, (byte)55));
          $$0.remove(bin.a);
          $$0.remove(bin.b);
@@ -2287,10 +2294,10 @@ public abstract class biy extends bii implements big {
       }
    }
 
-   private void b(Map<bin, ciy> $$0) {
-      List<Pair<bin, ciy>> $$1 = Lists.newArrayListWithCapacity($$0.size());
+   private void b(Map<bin, cix> $$0) {
+      List<Pair<bin, cix>> $$1 = Lists.newArrayListWithCapacity($$0.size());
       $$0.forEach(($$1x, $$2) -> {
-         ciy $$3 = $$2.p();
+         cix $$3 = $$2.p();
          $$1.add(Pair.of($$1x, $$3));
          switch ($$1x.a()) {
             case a:
@@ -2303,19 +2310,19 @@ public abstract class biy extends bii implements big {
       ((akk)this.dK()).k().b(this, new zu(this.ah(), $$1));
    }
 
-   private ciy e(bin $$0) {
+   private cix e(bin $$0) {
       return this.bS.get($$0.b());
    }
 
-   private void b(bin $$0, ciy $$1) {
+   private void b(bin $$0, cix $$1) {
       this.bS.set($$0.b(), $$1);
    }
 
-   private ciy f(bin $$0) {
+   private cix f(bin $$0) {
       return this.bR.get($$0.b());
    }
 
-   private void c(bin $$0, ciy $$1) {
+   private void c(bin $$0, cix $$1) {
       this.bR.set($$0.b(), $$1);
    }
 
@@ -2357,7 +2364,7 @@ public abstract class biy extends bii implements big {
          this.bu--;
       }
 
-      ehe $$0 = this.dn();
+      ehd $$0 = this.dn();
       double $$1 = $$0.c;
       double $$2 = $$0.d;
       double $$3 = $$0.e;
@@ -2418,14 +2425,14 @@ public abstract class biy extends bii implements big {
       this.bk *= 0.98F;
       this.bm *= 0.98F;
       this.B();
-      egz $$8 = this.cG();
-      ehe $$9 = new ehe((double)this.bk, (double)this.bl, (double)this.bm);
+      egy $$8 = this.cG();
+      ehd $$9 = new ehd((double)this.bk, (double)this.bl, (double)this.bm);
       if (this.a(bhx.B) || this.a(bhx.y)) {
          this.n();
       }
 
       label104: {
-         if (this.cN() instanceof cbn $$10 && this.bv()) {
+         if (this.cN() instanceof cbm $$10 && this.bv()) {
             this.c($$10, $$9);
             break label104;
          }
@@ -2471,8 +2478,8 @@ public abstract class biy extends bii implements big {
    private void B() {
       boolean $$0 = this.i(7);
       if ($$0 && !this.aA() && !this.bN() && !this.a(bhx.y)) {
-         ciy $$1 = this.c(bin.e);
-         if ($$1.a(cjb.nh) && chs.d($$1)) {
+         cix $$1 = this.c(bin.e);
+         if ($$1.a(cja.nh) && chr.d($$1)) {
             $$0 = true;
             int $$2 = this.bx + 1;
             if (!this.dK().B && $$2 % 10 == 0) {
@@ -2481,7 +2488,7 @@ public abstract class biy extends bii implements big {
                   $$1.a(1, this, $$0x -> $$0x.d(bin.e));
                }
 
-               this.a(djk.n);
+               this.a(djj.n);
             }
          } else {
             $$0 = false;
@@ -2500,11 +2507,11 @@ public abstract class biy extends bii implements big {
 
    protected void fg() {
       if (this.dK().r_()) {
-         this.dK().a(diy.a(cbn.class), this.cG(), bil.a(this)).forEach(this::D);
+         this.dK().a(dix.a(cbm.class), this.cG(), bil.a(this)).forEach(this::D);
       } else {
          List<bii> $$0 = this.dK().a(this, this.cG(), bil.a(this));
          if (!$$0.isEmpty()) {
-            int $$1 = this.dK().X().c(cpi.t);
+            int $$1 = this.dK().X().c(cph.t);
             if ($$1 > 0 && $$0.size() > $$1 - 1 && this.ag.a(4) == 0) {
                int $$2 = 0;
 
@@ -2526,8 +2533,8 @@ public abstract class biy extends bii implements big {
       }
    }
 
-   protected void a(egz $$0, egz $$1) {
-      egz $$2 = $$0.b($$1);
+   protected void a(egy $$0, egy $$1) {
+      egy $$2 = $$0.b($$1);
       List<bii> $$3 = this.dK().a_(this, $$2);
       if (!$$3.isEmpty()) {
          for (bii $$4 : $$3) {
@@ -2595,7 +2602,7 @@ public abstract class biy extends bii implements big {
       this.bj = $$0;
    }
 
-   public void a(byg $$0) {
+   public void a(byf $$0) {
       bii $$1 = $$0.v();
       if ($$1 instanceof akl) {
          ai.O.a((akl)$$1, $$0.j(), this);
@@ -2603,7 +2610,7 @@ public abstract class biy extends bii implements big {
    }
 
    public void a(bii $$0, int $$1) {
-      if (!$$0.dF() && !this.dK().B && ($$0 instanceof byg || $$0 instanceof cbt || $$0 instanceof bio)) {
+      if (!$$0.dF() && !this.dK().B && ($$0 instanceof byf || $$0 instanceof cbs || $$0 instanceof bio)) {
          ((akk)this.dK()).k().b($$0, new aan($$0.ah(), this.ah(), $$1));
       }
    }
@@ -2612,9 +2619,9 @@ public abstract class biy extends bii implements big {
       if ($$0.dK() != this.dK()) {
          return false;
       } else {
-         ehe $$1 = new ehe(this.dp(), this.dt(), this.dv());
-         ehe $$2 = new ehe($$0.dp(), $$0.dt(), $$0.dv());
-         return $$2.f($$1) > 128.0 ? false : this.dK().a(new cov($$1, $$2, cov.a.a, cov.b.a, this)).c() == ehc.a.a;
+         ehd $$1 = new ehd(this.dp(), this.dt(), this.dv());
+         ehd $$2 = new ehd($$0.dp(), $$0.dt(), $$0.dv());
+         return $$2.f($$1) > 128.0 ? false : this.dK().a(new cou($$1, $$2, cou.a.a, cou.b.a, this)).c() == ehb.a.a;
       }
    }
 
@@ -2658,12 +2665,12 @@ public abstract class biy extends bii implements big {
    }
 
    @Override
-   protected ehe a(ha.a $$0, l.a $$1) {
+   protected ehd a(ha.a $$0, l.a $$1) {
       return i(super.a($$0, $$1));
    }
 
-   public static ehe i(ehe $$0) {
-      return new ehe($$0.c, $$0.d, 0.0);
+   public static ehd i(ehd $$0) {
+      return new ehd($$0.c, $$0.d, 0.0);
    }
 
    public float fi() {
@@ -2700,7 +2707,7 @@ public abstract class biy extends bii implements big {
 
    private void D() {
       if (this.fl()) {
-         if (ciy.b(this.b(this.fm()), this.bv)) {
+         if (cix.b(this.b(this.fm()), this.bv)) {
             this.bv = this.b(this.fm());
             this.a(this.bv);
          } else {
@@ -2709,20 +2716,20 @@ public abstract class biy extends bii implements big {
       }
    }
 
-   protected void a(ciy $$0) {
+   protected void a(cix $$0) {
       $$0.b(this.dK(), this, this.fo());
       if (this.E()) {
          this.b($$0, 5);
       }
 
       if (--this.bw == 0 && !this.dK().B && !$$0.t()) {
-         this.Z_();
+         this.Y_();
       }
    }
 
    private boolean E() {
       int $$0 = this.fo();
-      ceb $$1 = this.bv.d().v();
+      cea $$1 = this.bv.d().v();
       boolean $$2 = $$1 != null && $$1.e();
       $$2 |= $$0 <= this.bv.r() - 7;
       return $$2 && $$0 % 4 == 0;
@@ -2749,14 +2756,14 @@ public abstract class biy extends bii implements big {
    }
 
    public void c(bgp $$0) {
-      ciy $$1 = this.b($$0);
+      cix $$1 = this.b($$0);
       if (!$$1.b() && !this.fl()) {
          this.bv = $$1;
          this.bw = $$1.r();
          if (!this.dK().B) {
             this.c(1, true);
             this.c(2, $$0 == bgp.b);
-            this.a(djk.D);
+            this.a(djj.D);
          }
       }
    }
@@ -2775,40 +2782,40 @@ public abstract class biy extends bii implements big {
                this.bw = this.bv.r();
             }
          } else if (!this.fl() && !this.bv.b()) {
-            this.bv = ciy.b;
+            this.bv = cix.b;
             this.bw = 0;
          }
       }
    }
 
    @Override
-   public void a(eb.a $$0, ehe $$1) {
+   public void a(eb.a $$0, ehd $$1) {
       super.a($$0, $$1);
       this.aX = this.aW;
       this.aU = this.aW;
       this.aV = this.aU;
    }
 
-   protected void b(ciy $$0, int $$1) {
+   protected void b(cix $$0, int $$1) {
       if (!$$0.b() && this.fl()) {
-         if ($$0.s() == ckr.c) {
+         if ($$0.s() == ckq.c) {
             this.a(this.c($$0), 0.5F, this.dK().z.i() * 0.1F + 0.9F);
          }
 
-         if ($$0.s() == ckr.b) {
+         if ($$0.s() == ckq.b) {
             this.a($$0, $$1);
             this.a(this.d($$0), 0.5F + 0.5F * (float)this.ag.a(2), (this.ag.i() - this.ag.i()) * 0.2F + 1.0F);
          }
       }
    }
 
-   private void a(ciy $$0, int $$1) {
+   private void a(cix $$0, int $$1) {
       for (int $$2 = 0; $$2 < $$1; $$2++) {
-         ehe $$3 = new ehe(((double)this.ag.i() - 0.5) * 0.1, Math.random() * 0.1 + 0.1, 0.0);
+         ehd $$3 = new ehd(((double)this.ag.i() - 0.5) * 0.1, Math.random() * 0.1 + 0.1, 0.0);
          $$3 = $$3.a(-this.dC() * (float) (Math.PI / 180.0));
          $$3 = $$3.b(-this.dA() * (float) (Math.PI / 180.0));
          double $$4 = (double)(-this.ag.i()) * 0.6 - 0.3;
-         ehe $$5 = new ehe(((double)this.ag.i() - 0.5) * 0.3, $$4, 0.6);
+         ehd $$5 = new ehd(((double)this.ag.i() - 0.5) * 0.3, $$4, 0.6);
          $$5 = $$5.a(-this.dC() * (float) (Math.PI / 180.0));
          $$5 = $$5.b(-this.dA() * (float) (Math.PI / 180.0));
          $$5 = $$5.b(this.dp(), this.dt(), this.dv());
@@ -2816,7 +2823,7 @@ public abstract class biy extends bii implements big {
       }
    }
 
-   protected void Z_() {
+   protected void Y_() {
       if (!this.dK().B || this.fl()) {
          bgp $$0 = this.fm();
          if (!this.bv.equals(this.b($$0))) {
@@ -2824,7 +2831,7 @@ public abstract class biy extends bii implements big {
          } else {
             if (!this.bv.b() && this.fl()) {
                this.b(this.bv, 16);
-               ciy $$1 = this.bv.a(this.dK(), this);
+               cix $$1 = this.bv.a(this.dK(), this);
                if ($$1 != this.bv) {
                   this.a($$0, $$1);
                }
@@ -2835,7 +2842,7 @@ public abstract class biy extends bii implements big {
       }
    }
 
-   public ciy fn() {
+   public cix fn() {
       return this.bv;
    }
 
@@ -2863,18 +2870,18 @@ public abstract class biy extends bii implements big {
          boolean $$0 = this.fl();
          this.c(1, false);
          if ($$0) {
-            this.a(djk.C);
+            this.a(djj.C);
          }
       }
 
-      this.bv = ciy.b;
+      this.bv = cix.b;
       this.bw = 0;
    }
 
    public boolean fs() {
       if (this.fl() && !this.bv.b()) {
-         cit $$0 = this.bv.d();
-         return $$0.c(this.bv) != ckr.d ? false : $$0.b(this.bv) - this.bw >= 5;
+         cis $$0 = this.bv.d();
+         return $$0.c(this.bv) != ckq.d ? false : $$0.b(this.bv) - this.bw >= 5;
       } else {
          return false;
       }
@@ -2904,13 +2911,13 @@ public abstract class biy extends bii implements big {
       double $$7 = $$1;
       boolean $$8 = false;
       gu $$9 = gu.a($$0, $$1, $$2);
-      cpm $$10 = this.dK();
+      cpl $$10 = this.dK();
       if ($$10.A($$9)) {
          boolean $$11 = false;
 
          while (!$$11 && $$9.v() > $$10.C_()) {
             gu $$12 = $$9.d();
-            dfa $$13 = $$10.a_($$12);
+            dez $$13 = $$10.a_($$12);
             if ($$13.d()) {
                $$11 = true;
             } else {
@@ -2954,7 +2961,7 @@ public abstract class biy extends bii implements big {
    public void a(gu $$0, boolean $$1) {
    }
 
-   public boolean f(ciy $$0) {
+   public boolean f(cix $$0) {
       return false;
    }
 
@@ -2967,13 +2974,13 @@ public abstract class biy extends bii implements big {
       return ImmutableList.of(bjk.a);
    }
 
-   public egz e(bjk $$0) {
+   public egy e(bjk $$0) {
       bij $$1 = this.a($$0);
-      return new egz((double)(-$$1.a / 2.0F), 0.0, (double)(-$$1.a / 2.0F), (double)($$1.a / 2.0F), (double)$$1.b, (double)($$1.a / 2.0F));
+      return new egy((double)(-$$1.a / 2.0F), 0.0, (double)(-$$1.a / 2.0F), (double)($$1.a / 2.0F), (double)$$1.b, (double)($$1.a / 2.0F));
    }
 
    protected boolean f(bjk $$0) {
-      egz $$1 = this.a($$0).a(this.di());
+      egy $$1 = this.a($$0).a(this.di());
       return this.dK().b(this, $$1);
    }
 
@@ -3003,15 +3010,15 @@ public abstract class biy extends bii implements big {
          this.aa();
       }
 
-      dfa $$1 = this.dK().a_($$0);
-      if ($$1.b() instanceof csf) {
-         this.dK().a($$0, $$1.a(csf.b, Boolean.valueOf(true)), 3);
+      dez $$1 = this.dK().a_($$0);
+      if ($$1.b() instanceof cse) {
+         this.dK().a($$0, $$1.a(cse.b, Boolean.valueOf(true)), 3);
       }
 
       this.b(bjk.c);
       this.a($$0);
       this.g($$0);
-      this.f(ehe.b);
+      this.f(ehd.b);
       this.au = true;
    }
 
@@ -3020,27 +3027,27 @@ public abstract class biy extends bii implements big {
    }
 
    private boolean H() {
-      return this.fz().map($$0 -> this.dK().a_($$0).b() instanceof csf).orElse(false);
+      return this.fz().map($$0 -> this.dK().a_($$0).b() instanceof cse).orElse(false);
    }
 
    public void fC() {
       this.fz().filter(this.dK()::A).ifPresent($$0x -> {
-         dfa $$1 = this.dK().a_($$0x);
-         if ($$1.b() instanceof csf) {
-            ha $$2 = $$1.c(csf.aC);
-            this.dK().a($$0x, $$1.a(csf.b, Boolean.valueOf(false)), 3);
-            ehe $$3 = csf.a(this.ag(), this.dK(), $$0x, $$2, this.dA()).orElseGet(() -> {
+         dez $$1 = this.dK().a_($$0x);
+         if ($$1.b() instanceof cse) {
+            ha $$2 = $$1.c(cse.aC);
+            this.dK().a($$0x, $$1.a(cse.b, Boolean.valueOf(false)), 3);
+            ehd $$3 = cse.a(this.ag(), this.dK(), $$0x, $$2, this.dA()).orElseGet(() -> {
                gu $$1x = $$0x.c();
-               return new ehe((double)$$1x.u() + 0.5, (double)$$1x.v() + 0.1, (double)$$1x.w() + 0.5);
+               return new ehd((double)$$1x.u() + 0.5, (double)$$1x.v() + 0.1, (double)$$1x.w() + 0.5);
             });
-            ehe $$4 = ehe.c($$0x).d($$3).d();
+            ehd $$4 = ehd.c($$0x).d($$3).d();
             float $$5 = (float)arp.d(arp.d($$4.e, $$4.c) * 180.0F / (float)Math.PI - 90.0);
             this.e($$3.c, $$3.d, $$3.e);
             this.r($$5);
             this.s(0.0F);
          }
       });
-      ehe $$0 = this.di();
+      ehd $$0 = this.di();
       this.b(bjk.a);
       this.e($$0.c, $$0.d, $$0.e);
       this.fA();
@@ -3049,7 +3056,7 @@ public abstract class biy extends bii implements big {
    @Nullable
    public ha fD() {
       gu $$0 = this.fz().orElse(null);
-      return $$0 != null ? csf.a(this.dK(), $$0) : null;
+      return $$0 != null ? cse.a(this.dK(), $$0) : null;
    }
 
    @Override
@@ -3066,26 +3073,26 @@ public abstract class biy extends bii implements big {
       return super.a($$0, $$1);
    }
 
-   public ciy g(ciy $$0) {
-      return ciy.b;
+   public cix g(cix $$0) {
+      return cix.b;
    }
 
-   public ciy a(cpm $$0, ciy $$1) {
+   public cix a(cpl $$0, cix $$1) {
       if ($$1.M()) {
          $$0.a(null, this.dp(), this.dr(), this.dv(), this.d($$1), aox.g, 1.0F, 1.0F + ($$0.z.i() - $$0.z.i()) * 0.4F);
          this.a($$1, $$0, this);
-         if (!(this instanceof cbn) || !((cbn)this).fR().d) {
+         if (!(this instanceof cbm) || !((cbm)this).fR().d) {
             $$1.h(1);
          }
 
-         this.a(djk.m);
+         this.a(djj.m);
       }
 
       return $$1;
    }
 
-   private void a(ciy $$0, cpm $$1, biy $$2) {
-      cit $$3 = $$0.d();
+   private void a(cix $$0, cpl $$1, biy $$2) {
+      cis $$3 = $$0.d();
       if ($$3.u()) {
          for (Pair<bhv, Float> $$5 : $$3.v().f()) {
             if (!$$1.B && $$5.getFirst() != null && $$1.z.i() < (Float)$$5.getSecond()) {
@@ -3123,8 +3130,8 @@ public abstract class biy extends bii implements big {
    }
 
    @Override
-   public egz k_() {
-      if (this.c(bin.f).a(cjb.tw)) {
+   public egy k_() {
+      if (this.c(bin.f).a(cja.tw)) {
          float $$0 = 0.5F;
          return this.cG().c(0.5, 0.5, 0.5);
       } else {
@@ -3132,13 +3139,13 @@ public abstract class biy extends bii implements big {
       }
    }
 
-   public static bin h(ciy $$0) {
-      chz $$1 = chz.c_($$0);
+   public static bin h(cix $$0) {
+      chy $$1 = chy.c_($$0);
       return $$1 != null ? $$1.g() : bin.a;
    }
 
-   private static bjr a(biy $$0, bin $$1) {
-      return $$1 != bin.f && $$1 != bin.a && $$1 != bin.b ? bjr.a($$0, $$1, $$1x -> $$1x.b() || bja.h($$1x) == $$1) : bjr.a($$0, $$1);
+   private static bjq a(biy $$0, bin $$1) {
+      return $$1 != bin.f && $$1 != bin.a && $$1 != bin.b ? bjq.a($$0, $$1, $$1x -> $$1x.b() || bja.h($$1x) == $$1) : bjq.a($$0, $$1);
    }
 
    @Nullable
@@ -3159,7 +3166,7 @@ public abstract class biy extends bii implements big {
    }
 
    @Override
-   public bjr a_(int $$0) {
+   public bjq a_(int $$0) {
       bin $$1 = r($$0);
       return $$1 != null ? a(this, $$1) : super.a_($$0);
    }
@@ -3203,18 +3210,18 @@ public abstract class biy extends bii implements big {
    }
 
    public boolean fE() {
-      return this.eR().d() instanceof cgn;
+      return this.eR().d() instanceof cgm;
    }
 
    @Override
    public float dE() {
       float $$0 = super.dE();
-      return this.cN() instanceof cbn ? Math.max($$0, 1.0F) : $$0;
+      return this.cN() instanceof cbm ? Math.max($$0, 1.0F) : $$0;
    }
 
    @Override
-   public ehe m(bii $$0) {
-      return new ehe(this.a($$0, this.a(this.an()), this.dX()).rotateY(-this.aU * (float) (Math.PI / 180.0))).e(this.di());
+   public ehd m(bii $$0) {
+      return new ehd(this.a($$0, this.a(this.an()), this.dX()).rotateY(-this.aU * (float) (Math.PI / 180.0))).e(this.di());
    }
 
    @Override

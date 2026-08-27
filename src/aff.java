@@ -29,7 +29,7 @@ public class aff {
    }
 
    public int a() {
-      return this.d.aI().c(cpi.w);
+      return this.d.aI().c(cph.w);
    }
 
    public CommandDispatcher<dr> b() {
@@ -47,13 +47,13 @@ public class aff {
    }
 
    private void a(Collection<dm> $$0, aer $$1) {
-      this.d.aN().a($$1::toString);
+      this.d.aM().a($$1::toString);
 
       for (dm $$2 : $$0) {
          this.a($$2, this.d());
       }
 
-      this.d.aN().c();
+      this.d.aM().c();
    }
 
    public int a(dm $$0, dr $$1) {
@@ -155,7 +155,7 @@ public class aff {
          while (!this.d.isEmpty()) {
             try {
                aff.b $$7 = this.d.removeFirst();
-               aff.this.d.aN().a($$7::toString);
+               aff.this.d.aM().a($$7::toString);
                this.b = $$7.b;
                $$7.a(aff.this, this.d, $$2, this.c);
                if (!this.f) {
@@ -172,7 +172,7 @@ public class aff {
 
                this.e.clear();
             } finally {
-               aff.this.d.aN().c();
+               aff.this.d.aM().c();
             }
 
             if (++$$4 >= $$2) {

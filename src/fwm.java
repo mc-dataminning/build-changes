@@ -1,101 +1,25 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import javax.annotation.Nullable;
+public class fwm extends fxf<bur, feo<bur>> {
+   private final fnq a;
 
-public class fwm<T extends biy, M extends ffb<T>, A extends ffb<T>> extends fww<T, M> {
-   private static final Map<String, aer> a = Maps.newHashMap();
-   private final A b;
-   private final A c;
-   private final fyk d;
-
-   public fwm(fuj<T, M> $$0, A $$1, A $$2, gas $$3) {
+   public fwm(fus<bur, feo<bur>> $$0, fnq $$1) {
       super($$0);
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3.a(fnz.g);
+      this.a = $$1;
    }
 
-   public void a(elg $$0, fnl $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      this.a($$0, $$1, $$3, bin.e, $$2, this.a(bin.e));
-      this.a($$0, $$1, $$3, bin.d, $$2, this.a(bin.d));
-      this.a($$0, $$1, $$3, bin.c, $$2, this.a(bin.c));
-      this.a($$0, $$1, $$3, bin.f, $$2, this.a(bin.f));
-   }
-
-   private void a(elg $$0, fnl $$1, T $$2, bin $$3, int $$4, A $$5) {
-      ciy $$6 = $$2.c($$3);
-      if ($$6.d() instanceof cgi $$7) {
-         if ($$7.g() == $$3) {
-            this.c().a($$5);
-            this.a($$5, $$3);
-            boolean $$9 = this.b($$3);
-            if ($$7 instanceof cho $$10) {
-               int $$11 = $$10.e_($$6);
-               float $$12 = (float)($$11 >> 16 & 0xFF) / 255.0F;
-               float $$13 = (float)($$11 >> 8 & 0xFF) / 255.0F;
-               float $$14 = (float)($$11 & 0xFF) / 255.0F;
-               this.a($$0, $$1, $$4, $$7, $$5, $$9, $$12, $$13, $$14, null);
-               this.a($$0, $$1, $$4, $$7, $$5, $$9, 1.0F, 1.0F, 1.0F, "overlay");
-            } else {
-               this.a($$0, $$1, $$4, $$7, $$5, $$9, 1.0F, 1.0F, 1.0F, null);
-            }
-
-            cla.a($$2.dK().B_(), $$6, true).ifPresent($$6x -> this.a($$7.d(), $$0, $$1, $$4, $$6x, $$5, $$9));
-            if ($$6.B()) {
-               this.a($$0, $$1, $$4, $$5);
-            }
-         }
+   public void a(elf $$0, fnu $$1, int $$2, bur $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      boolean $$10 = $$3.fk() == bis.b;
+      $$0.a();
+      float $$11 = 1.0F;
+      float $$12 = -1.0F;
+      float $$13 = arp.e($$3.dC()) / 60.0F;
+      if ($$3.dC() < 0.0F) {
+         $$0.a(0.0F, 1.0F - $$13 * 0.5F, -1.0F + $$13 * 0.5F);
+      } else {
+         $$0.a(0.0F, 1.0F + $$13 * 0.8F, -1.0F + $$13 * 0.2F);
       }
-   }
 
-   protected void a(A $$0, bin $$1) {
-      $$0.d_(false);
-      switch ($$1) {
-         case f:
-            $$0.k.k = true;
-            $$0.l.k = true;
-            break;
-         case e:
-            $$0.m.k = true;
-            $$0.n.k = true;
-            $$0.o.k = true;
-            break;
-         case d:
-            $$0.m.k = true;
-            $$0.p.k = true;
-            $$0.q.k = true;
-            break;
-         case c:
-            $$0.p.k = true;
-            $$0.q.k = true;
-      }
-   }
-
-   private void a(elg $$0, fnl $$1, int $$2, cgi $$3, A $$4, boolean $$5, float $$6, float $$7, float $$8, @Nullable String $$9) {
-      elk $$10 = $$1.getBuffer(fnt.a(this.a($$3, $$5, $$9)));
-      $$4.a($$0, $$10, $$2, fyc.d, $$6, $$7, $$8, 1.0F);
-   }
-
-   private void a(cgj $$0, elg $$1, fnl $$2, int $$3, cla $$4, A $$5, boolean $$6) {
-      fyl $$7 = this.d.a($$6 ? $$4.a($$0) : $$4.b($$0));
-      elk $$8 = $$7.a($$2.getBuffer(fnz.h()));
-      $$5.a($$1, $$8, $$3, fyc.d, 1.0F, 1.0F, 1.0F, 1.0F);
-   }
-
-   private void a(elg $$0, fnl $$1, int $$2, A $$3) {
-      $$3.a($$0, $$1.getBuffer(fnt.l()), $$2, fyc.d, 1.0F, 1.0F, 1.0F, 1.0F);
-   }
-
-   private A a(bin $$0) {
-      return this.b($$0) ? this.b : this.c;
-   }
-
-   private boolean b(bin $$0) {
-      return $$0 == bin.d;
-   }
-
-   private aer a(cgi $$0, boolean $$1, @Nullable String $$2) {
-      String $$3 = "textures/models/armor/" + $$0.d().e() + "_layer_" + ($$1 ? 2 : 1) + ($$2 == null ? "" : "_" + $$2) + ".png";
-      return a.computeIfAbsent($$3, aer::new);
+      cix $$14 = $$10 ? $$3.eR() : $$3.eS();
+      this.a.a($$3, $$14, ciu.h, false, $$0, $$1, $$2);
+      $$0.b();
    }
 }

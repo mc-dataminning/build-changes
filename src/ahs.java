@@ -40,7 +40,7 @@ public class ahs {
       );
    }
 
-   private static int a(dr $$0, Collection<akl> $$1, Collection<cmb<?>> $$2) throws CommandSyntaxException {
+   private static int a(dr $$0, Collection<akl> $$1, Collection<cma<?>> $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
       for (akl $$4 : $$1) {
@@ -60,7 +60,7 @@ public class ahs {
       }
    }
 
-   private static int b(dr $$0, Collection<akl> $$1, Collection<cmb<?>> $$2) throws CommandSyntaxException {
+   private static int b(dr $$0, Collection<akl> $$1, Collection<cma<?>> $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
       for (akl $$4 : $$1) {

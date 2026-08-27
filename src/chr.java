@@ -1,24 +1,30 @@
-public class chr extends cit {
-   public chr(cit.a $$0) {
+public class chr extends cis implements chy {
+   public chr(cis.a $$0) {
       super($$0);
+      cum.a(this, cgh.a);
+   }
+
+   public static boolean d(cix $$0) {
+      return $$0.k() < $$0.l() - 1;
    }
 
    @Override
-   public bgr<ciy> a(cpm $$0, cbn $$1, bgp $$2) {
-      ciy $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dp(), $$1.dr(), $$1.dv(), aow.gG, aox.h, 0.5F, 0.4F / ($$0.y_().i() * 0.4F + 0.8F));
-      if (!$$0.B) {
-         ccn $$4 = new ccn($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dC(), $$1.dA(), 0.0F, 1.5F, 1.0F);
-         $$0.b($$4);
-      }
+   public boolean a(cix $$0, cix $$1) {
+      return $$1.a(cja.uW);
+   }
 
-      $$1.b(apg.c.b(this));
-      if (!$$1.fR().d) {
-         $$3.h(1);
-      }
+   @Override
+   public bgr<cix> a(cpl $$0, cbm $$1, bgp $$2) {
+      return this.a(this, $$0, $$1, $$2);
+   }
 
-      return bgr.a($$3, $$0.r_());
+   @Override
+   public aov aj_() {
+      return aow.ae;
+   }
+
+   @Override
+   public bin g() {
+      return bin.e;
    }
 }

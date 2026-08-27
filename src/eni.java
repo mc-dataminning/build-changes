@@ -1,5 +1,12 @@
-public class eni extends RuntimeException {
-   public eni(String $$0, Exception $$1) {
-      super($$0, $$1);
+public class eni extends Exception {
+   public final elx a;
+
+   public eni(elx $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public String getMessage() {
+      return this.a.c();
    }
 }

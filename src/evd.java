@@ -14,12 +14,12 @@ import java.util.function.Function;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class evd implements ejj {
+public class evd implements eji {
    static final Logger a = LogUtils.getLogger();
-   private final ekh b;
+   private final ekg b;
    private final eus<evd.b> c;
 
-   evd(ekh $$0, eus<evd.b> $$1) {
+   evd(ekg $$0, eus<evd.b> $$1) {
       this.b = $$0;
       this.c = $$1;
    }
@@ -31,7 +31,7 @@ public class evd implements ejj {
 
    @Nullable
    @Override
-   public eji a(int $$0) {
+   public ejh a(int $$0) {
       return this.c.a($$0);
    }
 
@@ -114,12 +114,12 @@ public class evd implements ejj {
          return Either.left(this::a);
       }
 
-      private ejj a(anm $$0) throws IOException {
+      private eji a(anm $$0) throws IOException {
          aer $$1 = this.c.d("textures/");
 
          evd var22;
          try (InputStream $$2 = $$0.open($$1)) {
-            ekh $$3 = ekh.a(ekh.a.a, $$2);
+            ekg $$3 = ekg.a(ekg.a.a, $$2);
             int $$4 = $$3.a();
             int $$5 = $$3.b();
             int $$6 = $$4 / this.f[0].length;
@@ -148,7 +148,7 @@ public class evd implements ejj {
          return var22;
       }
 
-      private int a(ekh $$0, int $$1, int $$2, int $$3, int $$4) {
+      private int a(ekg $$0, int $$1, int $$2, int $$3, int $$4) {
          int $$5;
          for ($$5 = $$1 - 1; $$5 >= 0; $$5--) {
             int $$6 = $$3 * $$1 + $$5;
@@ -165,7 +165,7 @@ public class evd implements ejj {
       }
    }
 
-   static record b(float a, ekh b, int c, int d, int e, int f, int g, int h) implements eji {
+   static record b(float a, ekg b, int c, int d, int e, int f, int g, int h) implements ejh {
 
       @Override
       public float getAdvance() {
@@ -173,8 +173,8 @@ public class evd implements ejj {
       }
 
       @Override
-      public euy bake(Function<ejk, euy> $$0) {
-         return $$0.apply(new ejk() {
+      public euy bake(Function<ejj, euy> $$0) {
+         return $$0.apply(new ejj() {
             @Override
             public float d() {
                return 1.0F / b.this.a;
@@ -192,7 +192,7 @@ public class evd implements ejj {
 
             @Override
             public float j() {
-               return ejk.super.j() + 7.0F - (float)b.this.h;
+               return ejj.super.j() + 7.0F - (float)b.this.h;
             }
 
             @Override
@@ -211,7 +211,7 @@ public class evd implements ejj {
          return this.a;
       }
 
-      public ekh d() {
+      public ekg d() {
          return this.b;
       }
 

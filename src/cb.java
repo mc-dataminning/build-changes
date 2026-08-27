@@ -22,7 +22,7 @@ public class cb extends cu<cb.a> {
    }
 
    public void a(akl $$0, Collection<bii> $$1) {
-      List<ech> $$2 = Lists.newArrayList();
+      List<ecg> $$2 = Lists.newArrayList();
       Set<bim<?>> $$3 = Sets.newHashSet();
 
       for (bii $$4 : $$1) {
@@ -51,16 +51,16 @@ public class cb extends cu<cb.a> {
          return new cb.a(Optional.empty(), List.of(), $$0);
       }
 
-      public boolean a(Collection<ech> $$0, int $$1) {
+      public boolean a(Collection<ecg> $$0, int $$1) {
          if (!this.a.isEmpty()) {
-            List<ech> $$2 = Lists.newArrayList($$0);
+            List<ecg> $$2 = Lists.newArrayList($$0);
 
             for (ba $$3 : this.a) {
                boolean $$4 = false;
-               Iterator<ech> $$5 = $$2.iterator();
+               Iterator<ecg> $$5 = $$2.iterator();
 
                while ($$5.hasNext()) {
-                  ech $$6 = $$5.next();
+                  ecg $$6 = $$5.next();
                   if ($$3.a($$6)) {
                      $$5.remove();
                      $$4 = true;

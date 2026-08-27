@@ -1,41 +1,29 @@
-import com.mojang.authlib.GameProfile;
-import java.util.UUID;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class fzd {
-   private static final fzl[] a = new fzl[]{
-      a("textures/entity/player/slim/alex.png", fzl.a.a),
-      a("textures/entity/player/slim/ari.png", fzl.a.a),
-      a("textures/entity/player/slim/efe.png", fzl.a.a),
-      a("textures/entity/player/slim/kai.png", fzl.a.a),
-      a("textures/entity/player/slim/makena.png", fzl.a.a),
-      a("textures/entity/player/slim/noor.png", fzl.a.a),
-      a("textures/entity/player/slim/steve.png", fzl.a.a),
-      a("textures/entity/player/slim/sunny.png", fzl.a.a),
-      a("textures/entity/player/slim/zuri.png", fzl.a.a),
-      a("textures/entity/player/wide/alex.png", fzl.a.b),
-      a("textures/entity/player/wide/ari.png", fzl.a.b),
-      a("textures/entity/player/wide/efe.png", fzl.a.b),
-      a("textures/entity/player/wide/kai.png", fzl.a.b),
-      a("textures/entity/player/wide/makena.png", fzl.a.b),
-      a("textures/entity/player/wide/noor.png", fzl.a.b),
-      a("textures/entity/player/wide/steve.png", fzl.a.b),
-      a("textures/entity/player/wide/sunny.png", fzl.a.b),
-      a("textures/entity/player/wide/zuri.png", fzl.a.b)
-   };
+public class fzd implements fyy {
+   public static final Codec<fzd> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.STRING.fieldOf("source").forGetter($$0x -> $$0x.c), Codec.STRING.fieldOf("prefix").forGetter($$0x -> $$0x.d)).apply($$0, fzd::new)
+   );
+   private final String c;
+   private final String d;
 
-   public static aer a() {
-      return a[6].a();
+   public fzd(String $$0, String $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public static fzl a(UUID $$0) {
-      return a[Math.floorMod($$0.hashCode(), a.length)];
+   @Override
+   public void a(anm $$0, fyy.a $$1) {
+      aek $$2 = new aek("textures/" + this.c, ".png");
+      $$2.a($$0).forEach(($$2x, $$3) -> {
+         aer $$4 = $$2.b($$2x).d(this.d);
+         $$1.a($$4, $$3);
+      });
    }
 
-   public static fzl a(GameProfile $$0) {
-      return a($$0.getId());
-   }
-
-   private static fzl a(String $$0, fzl.a $$1) {
-      return new fzl(new aer($$0), null, null, $$1, true);
+   @Override
+   public fza a() {
+      return fzb.b;
    }
 }

@@ -2,7 +2,7 @@ public class biz extends bii {
    private static final String b = "data";
    private qr c = new qr();
 
-   public biz(bim<?> $$0, cpm $$1) {
+   public biz(bim<?> $$0, cpl $$1) {
       super($$0, $$1);
       this.af = true;
    }
@@ -46,8 +46,8 @@ public class biz extends bii {
    }
 
    @Override
-   public eai l_() {
-      return eai.d;
+   public eah l_() {
+      return eah.d;
    }
 
    @Override

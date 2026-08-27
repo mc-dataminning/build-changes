@@ -1,110 +1,60 @@
-public class gdx implements geb {
-   private static final int a = 40;
-   private static final int b = 40;
-   private static final int c = 100;
-   private static final int d = 20;
-   private static final int e = -1;
-   private static final tf f = tf.a("tutorial.move.title", gea.a("forward"), gea.a("left"), gea.a("back"), gea.a("right"));
-   private static final tf g = tf.a("tutorial.move.description", gea.a("jump"));
-   private static final tf h = tf.c("tutorial.look.title");
-   private static final tf i = tf.c("tutorial.look.description");
-   private final gea j;
-   private eup k;
-   private eup l;
-   private int m;
-   private int n;
-   private int o;
-   private boolean p;
-   private boolean q;
-   private int r = -1;
-   private int s = -1;
+import javax.annotation.Nullable;
 
-   public gdx(gea $$0) {
-      this.j = $$0;
+public class gdx {
+   private boolean a;
+   @Nullable
+   private gdr.b b;
+   @Nullable
+   private String c;
+   @Nullable
+   private final String d;
+
+   public gdx(@Nullable String $$0) {
+      this.d = $$0;
    }
 
-   @Override
-   public void a() {
-      this.m++;
-      if (this.p) {
-         this.n++;
-         this.p = false;
+   public void a(gds.a $$0) {
+      if (this.c != null) {
+         $$0.a(gdr.j, !this.c.equals("vanilla"));
       }
 
-      if (this.q) {
-         this.o++;
-         this.q = false;
-      }
+      $$0.a(gdr.k, this.a());
+   }
 
-      if (this.r == -1 && this.n > 40) {
-         if (this.k != null) {
-            this.k.c();
-            this.k = null;
-         }
-
-         this.r = this.m;
-      }
-
-      if (this.s == -1 && this.o > 40) {
-         if (this.l != null) {
-            this.l.c();
-            this.l = null;
-         }
-
-         this.s = this.m;
-      }
-
-      if (this.r != -1 && this.s != -1) {
-         if (this.j.f()) {
-            this.j.a(gec.b);
-         } else {
-            this.j.a(gec.f);
-         }
-      }
-
-      if (this.k != null) {
-         this.k.a((float)this.n / 40.0F);
-      }
-
-      if (this.l != null) {
-         this.l.a((float)this.o / 40.0F);
-      }
-
-      if (this.m >= 100) {
-         if (this.r == -1 && this.k == null) {
-            this.k = new eup(eup.a.a, f, g, true);
-            this.j.e().az().a(this.k);
-         } else if (this.r != -1 && this.m - this.r >= 20 && this.s == -1 && this.l == null) {
-            this.l = new eup(eup.a.b, h, i, true);
-            this.j.e().az().a(this.l);
-         }
+   private gdr.c a() {
+      fix $$0 = eql.O().Q();
+      if ($$0 != null && $$0.e()) {
+         return gdr.c.a;
+      } else {
+         return eql.O().S() ? gdr.c.b : gdr.c.c;
       }
    }
 
-   @Override
-   public void b() {
-      if (this.k != null) {
-         this.k.c();
-         this.k = null;
-      }
-
-      if (this.l != null) {
-         this.l.c();
-         this.l = null;
-      }
-   }
-
-   @Override
-   public void a(fml $$0) {
-      if ($$0.c || $$0.d || $$0.e || $$0.f || $$0.g) {
-         this.p = true;
+   public boolean a(gdo $$0) {
+      if (!this.a && this.b != null && this.c != null) {
+         this.a = true;
+         $$0.send(gdp.b, $$0x -> {
+            $$0x.a(gdr.n, this.b);
+            if (this.d != null) {
+               $$0x.a(gdr.o, this.d);
+            }
+         });
+         return true;
+      } else {
+         return false;
       }
    }
 
-   @Override
-   public void a(double $$0, double $$1) {
-      if (Math.abs($$0) > 0.01 || Math.abs($$1) > 0.01) {
-         this.q = true;
-      }
+   public void a(cpi $$0, boolean $$1) {
+      this.b = switch ($$0) {
+         case a -> $$1 ? gdr.b.e : gdr.b.a;
+         case b -> gdr.b.b;
+         case c -> gdr.b.c;
+         case d -> gdr.b.d;
+      };
+   }
+
+   public void a(String $$0) {
+      this.c = $$0;
    }
 }

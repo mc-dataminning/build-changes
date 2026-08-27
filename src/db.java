@@ -14,8 +14,8 @@ public class db extends cu<db.a> {
       return new db.a($$1, $$3);
    }
 
-   public void a(akl $$0, buk $$1) {
-      ech $$2 = bo.b($$0, $$1);
+   public void a(akl $$0, buj $$1) {
+      ecg $$2 = bo.b($$0, $$1);
       this.a($$0, $$1x -> $$1x.a($$2));
    }
 
@@ -35,7 +35,7 @@ public class db extends cu<db.a> {
          return new db.a(Optional.empty(), bo.a($$0));
       }
 
-      public boolean a(ech $$0) {
+      public boolean a(ecg $$0) {
          return this.a.isEmpty() || this.a.get().a($$0);
       }
 

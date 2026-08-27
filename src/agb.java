@@ -16,7 +16,7 @@ public class agb {
    private static final String d = "0.0.0.0";
    private static final int e = 10000;
    private static final int f = 100;
-   public static BiMap<String, aeq<cpm>> a = ImmutableBiMap.of("o", cpm.h, "n", cpm.i, "e", cpm.j);
+   public static BiMap<String, aeq<cpl>> a = ImmutableBiMap.of("o", cpl.h, "n", cpl.i, "e", cpl.j);
    @Nullable
    private static aft g;
    @Nullable

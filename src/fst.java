@@ -1,28 +1,31 @@
-public class fst extends fsn<byf> {
-   private final foe a;
+public class fst extends fud<byq, fer<byq>> {
+   private static final aer a = new aer("textures/entity/enderman/enderman.png");
+   private final aru i = aru.a();
 
-   public fst(fso.a $$0) {
-      super($$0);
-      this.d = 0.5F;
-      this.a = $$0.c();
+   public fst(fsx.a $$0) {
+      super($$0, new fer<>($$0.a(fhr.R)), 0.5F);
+      this.a(new fwp<>(this));
+      this.a(new fwg(this, $$0.c()));
    }
 
-   public void a(byf $$0, float $$1, float $$2, elg $$3, fnl $$4, int $$5) {
-      dfa $$6 = $$0.o();
-      if ($$6.l() == cyr.c) {
-         cpm $$7 = $$0.dK();
-         if ($$6 != $$7.a_($$0.dk()) && $$6.l() != cyr.a) {
-            $$3.a();
-            gu $$8 = gu.a($$0.dp(), $$0.cG().e, $$0.dv());
-            $$3.a(-0.5, 0.0, -0.5);
-            this.a.b().a($$7, this.a.a($$6), $$6, $$8, $$3, $$4.getBuffer(fng.b($$6)), false, aru.a(), $$6.a($$0.j()), fyc.d);
-            $$3.b();
-            super.a($$0, $$1, $$2, $$3, $$4, $$5);
-         }
+   public void a(byq $$0, float $$1, float $$2, elf $$3, fnu $$4, int $$5) {
+      dez $$6 = $$0.ga();
+      fer<byq> $$7 = this.a();
+      $$7.a = $$6 != null;
+      $$7.b = $$0.gb();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public ehd a(byq $$0, float $$1) {
+      if ($$0.gb()) {
+         double $$2 = 0.02;
+         return new ehd(this.i.k() * 0.02, 0.0, this.i.k() * 0.02);
+      } else {
+         return super.a($$0, $$1);
       }
    }
 
-   public aer a(byf $$0) {
-      return fyk.e;
+   public aer a(byq $$0) {
+      return a;
    }
 }

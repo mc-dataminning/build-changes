@@ -1,76 +1,52 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+public class exc extends eya {
+   private static final tf a = tf.c("gui.toMenu");
+   private static final tf b = tf.c("gui.toTitle");
+   private final eya c;
+   private final tf k;
+   private final tf l;
+   private final evt m = evt.d();
 
-public class exc extends exz {
-   private static final tf a = tf.c("addServer.enterName");
-   private static final tf b = tf.c("addServer.enterIp");
-   private esh c;
-   private final BooleanConsumer k;
-   private final fis l;
-   private esq m;
-   private esq n;
-   private final exz o;
+   public exc(eya $$0, tf $$1, tf $$2) {
+      this($$0, $$1, $$2, a);
+   }
 
-   public exc(exz $$0, BooleanConsumer $$1, fis $$2) {
-      super(tf.c("addServer.title"));
-      this.o = $$0;
-      this.k = $$1;
-      this.l = $$2;
+   public exc(eya $$0, tf $$1, tf $$2, tf $$3) {
+      super($$1);
+      this.c = $$0;
+      this.k = $$2;
+      this.l = $$3;
    }
 
    @Override
-   protected void aE_() {
-      this.n = new esq(this.i, this.g / 2 - 100, 66, 200, 20, tf.c("addServer.enterName"));
-      this.n.a(this.l.a);
-      this.n.b($$0 -> this.B());
-      this.e(this.n);
-      this.m = new esq(this.i, this.g / 2 - 100, 106, 200, 20, tf.c("addServer.enterIp"));
-      this.m.k(128);
-      this.m.a(this.l.b);
-      this.m.b($$0 -> this.B());
-      this.e(this.m);
-      this.d(
-         eso.a(fis.a::a)
-            .a(fis.a.values())
-            .a(this.l.b())
-            .a(this.g / 2 - 100, this.h / 4 + 72, 200, 20, tf.c("addServer.resourcePack"), ($$0, $$1) -> this.l.a($$1))
-      );
-      this.c = this.d(esh.a(tf.c("addServer.add"), $$0 -> this.l()).a(this.g / 2 - 100, this.h / 4 + 96 + 18, 200, 20).a());
-      this.d(esh.a(te.e, $$0 -> this.k.accept(false)).a(this.g / 2 - 100, this.h / 4 + 120 + 18, 200, 20).a());
-      this.c(this.n);
-      this.B();
+   protected void aC_() {
+      this.m.c().b().a(10);
+      this.m.a(new etm(this.e, this.i));
+      this.m.a(new eta(this.k, this.i).j(this.g - 50).b(true));
+      esg $$0;
+      if (this.f.D()) {
+         $$0 = esg.a(this.l, $$0x -> this.f.a(this.c)).a();
+      } else {
+         $$0 = esg.a(b, $$0x -> this.f.a(new eyf())).a();
+      }
+
+      this.m.a($$0);
+      this.m.a();
+      this.m.a(this::d);
+      this.b();
    }
 
    @Override
-   public void a(eqm $$0, int $$1, int $$2) {
-      String $$3 = this.m.a();
-      String $$4 = this.n.a();
-      this.b($$0, $$1, $$2);
-      this.m.a($$3);
-      this.n.a($$4);
-   }
-
-   private void l() {
-      this.l.a = this.n.a();
-      this.l.b = this.m.a();
-      this.k.accept(true);
+   protected void b() {
+      evn.a(this.m, this.s());
    }
 
    @Override
-   public void au_() {
-      this.f.a(this.o);
-   }
-
-   private void B() {
-      this.c.i = fjp.b(this.m.a()) && !this.n.a().isEmpty();
+   public tf e() {
+      return te.a(this.e, this.k);
    }
 
    @Override
-   public void a(erw $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 17, 16777215);
-      $$0.b(this.i, a, this.g / 2 - 100 + 1, 53, 10526880);
-      $$0.b(this.i, b, this.g / 2 - 100 + 1, 94, 10526880);
-      this.n.a($$0, $$1, $$2, $$3);
-      this.m.a($$0, $$1, $$2, $$3);
+   public boolean ay_() {
+      return false;
    }
 }

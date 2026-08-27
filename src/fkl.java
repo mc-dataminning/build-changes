@@ -1,56 +1,15 @@
-public class fkl extends fmb {
-   private final double a;
-   private final double b;
-   private final double F;
+public class fkl extends fmk {
+   private final fmf a;
 
-   fkl(fii $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+   fkl(fin $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fmf $$7) {
       super($$0, $$1, $$2, $$3);
+      this.a = $$7;
+      this.t = 4;
+      this.u = 0.008F;
       this.j = $$4;
       this.k = $$5;
       this.l = $$6;
-      this.a = $$1;
-      this.b = $$2;
-      this.F = $$3;
-      this.d = $$1 + $$4;
-      this.e = $$2 + $$5;
-      this.f = $$3 + $$6;
-      this.g = this.d;
-      this.h = this.e;
-      this.i = this.f;
-      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
-      float $$7 = this.r.i() * 0.6F + 0.4F;
-      this.v = 0.9F * $$7;
-      this.w = 0.9F * $$7;
-      this.x = $$7;
-      this.n = false;
-      this.t = (int)(Math.random() * 10.0) + 30;
-   }
-
-   @Override
-   public flf b() {
-      return flf.b;
-   }
-
-   @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
-   }
-
-   @Override
-   public int a(float $$0) {
-      int $$1 = super.a($$0);
-      float $$2 = (float)this.s / (float)this.t;
-      $$2 *= $$2;
-      $$2 *= $$2;
-      int $$3 = $$1 & 0xFF;
-      int $$4 = $$1 >> 16 & 0xFF;
-      $$4 += (int)($$2 * 15.0F * 16.0F);
-      if ($$4 > 240) {
-         $$4 = 240;
-      }
-
-      return $$3 | $$4 << 16;
+      this.b($$7);
    }
 
    @Override
@@ -61,42 +20,26 @@ public class fkl extends fmb {
       if (this.s++ >= this.t) {
          this.k();
       } else {
-         float $$0 = (float)this.s / (float)this.t;
-         $$0 = 1.0F - $$0;
-         float $$1 = 1.0F - $$0;
-         $$1 *= $$1;
-         $$1 *= $$1;
-         this.g = this.a + this.j * (double)$$0;
-         this.h = this.b + this.k * (double)$$0 - (double)($$1 * 1.2F);
-         this.i = this.F + this.l * (double)$$0;
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         this.b(this.a);
       }
    }
 
-   public static class a implements fle<iy> {
-      private final flw a;
-
-      public a(flw $$0) {
-         this.a = $$0;
-      }
-
-      public flb a(iy $$0, fii $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fkl $$8 = new fkl($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
-      }
+   @Override
+   public flo b() {
+      return flo.b;
    }
 
-   public static class b implements fle<iy> {
-      private final flw a;
+   public static class a implements fln<iy> {
+      private final fmf a;
 
-      public b(flw $$0) {
+      public a(fmf $$0) {
          this.a = $$0;
       }
 
-      public flb a(iy $$0, fii $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fkl $$8 = new fkl($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+      public flk a(iy $$0, fin $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fkl($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

@@ -1,60 +1,74 @@
-import javax.annotation.Nullable;
+import java.util.Map;
 
-public abstract class cre extends csm {
-   public static final int a = 3;
-   public static final dfr b = dfq.r;
+public abstract class cre extends csl {
+   private static final int c = 2;
+   private static final int d = 4;
+   private static final int e = 3;
+   private static final int f = 2;
+   protected static final int a = 4;
+   private static final ehw g = a(2.0, 4.0, 2.0, 14.0, 16.0, 14.0);
+   protected static final ehw b = eht.a(
+      eht.b(), eht.a(a(0.0, 0.0, 4.0, 16.0, 3.0, 12.0), a(4.0, 0.0, 0.0, 12.0, 3.0, 16.0), a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0), g), ehh.e
+   );
+   private final Map<cis, ib> h;
 
-   protected cre(dez.d $$0) {
+   public cre(dey.d $$0, Map<cis, ib> $$1) {
       super($$0);
+      this.h = $$1;
    }
 
-   protected abstract Iterable<ehe> b(dfa var1);
-
-   public static boolean c(dfa $$0) {
-      return $$0.b(b) && ($$0.a(apl.ae) || $$0.a(apl.bj)) && $$0.c(b);
+   protected double b(dez $$0) {
+      return 0.0;
    }
 
-   @Override
-   public void a(cpm $$0, dfa $$1, eha $$2, ccf $$3) {
-      if (!$$0.B && $$3.bM() && this.d($$1)) {
-         a($$0, $$1, $$2.a(), true);
-      }
-   }
-
-   protected boolean d(dfa $$0) {
-      return !$$0.c(b);
+   protected boolean a(dez $$0, gu $$1, bii $$2) {
+      return $$2.dr() < (double)$$1.v() + this.b($$0) && $$2.cG().e > (double)$$1.v() + 0.25;
    }
 
    @Override
-   public void a(dfa $$0, cpm $$1, gu $$2, aru $$3) {
-      if ($$0.c(b)) {
-         this.b($$0).forEach($$3x -> a($$1, $$3x.b((double)$$2.u(), (double)$$2.v(), (double)$$2.w()), $$3));
-      }
+   public bgq a(dez $$0, cpl $$1, gu $$2, cbm $$3, bgp $$4, egz $$5) {
+      cix $$6 = $$3.b($$4);
+      ib $$7 = this.h.get($$6.d());
+      return $$7.interact($$0, $$1, $$2, $$3, $$4, $$6);
    }
 
-   private static void a(cpm $$0, ehe $$1, aru $$2) {
-      float $$3 = $$2.i();
-      if ($$3 < 0.3F) {
-         $$0.a(iv.Z, $$1.c, $$1.d, $$1.e, 0.0, 0.0, 0.0);
-         if ($$3 < 0.17F) {
-            $$0.a($$1.c + 0.5, $$1.d + 0.5, $$1.e + 0.5, aow.dc, aox.e, 1.0F + $$2.i(), $$2.i() * 0.7F + 0.3F, false);
+   @Override
+   public ehw a(dez $$0, cor $$1, gu $$2, ehi $$3) {
+      return b;
+   }
+
+   @Override
+   public ehw a(dez $$0, cor $$1, gu $$2) {
+      return g;
+   }
+
+   @Override
+   public boolean d_(dez $$0) {
+      return true;
+   }
+
+   @Override
+   public boolean a(dez $$0, cor $$1, gu $$2, eas $$3) {
+      return false;
+   }
+
+   public abstract boolean d(dez var1);
+
+   @Override
+   public void a(dez $$0, akk $$1, gu $$2, aru $$3) {
+      gu $$4 = cyb.a((cpl)$$1, $$2);
+      if ($$4 != null) {
+         eab $$5 = cyb.a($$1, $$4);
+         if ($$5 != ead.a && this.a($$5)) {
+            this.a($$0, $$1, $$2, $$5);
          }
       }
-
-      $$0.a(iv.aD, $$1.c, $$1.d, $$1.e, 0.0, 0.0, 0.0);
    }
 
-   public static void a(@Nullable cbn $$0, dfa $$1, cpn $$2, gu $$3) {
-      a($$2, $$1, $$3, false);
-      if ($$1.b() instanceof cre) {
-         ((cre)$$1.b()).b($$1).forEach($$2x -> $$2.a(iv.Z, (double)$$3.u() + $$2x.a(), (double)$$3.v() + $$2x.b(), (double)$$3.w() + $$2x.c(), 0.0, 0.1F, 0.0));
-      }
-
-      $$2.a(null, $$3, aow.de, aox.e, 1.0F, 1.0F);
-      $$2.a($$0, djk.c, $$3);
+   protected boolean a(eab $$0) {
+      return false;
    }
 
-   private static void a(cpn $$0, dfa $$1, gu $$2, boolean $$3) {
-      $$0.a($$2, $$1.a(b, Boolean.valueOf($$3)), 11);
+   protected void a(dez $$0, cpl $$1, gu $$2, eab $$3) {
    }
 }

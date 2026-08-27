@@ -1,27 +1,30 @@
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-public abstract class bsy extends bte<biy> {
-   protected abstract boolean a(biy var1, biy var2);
-
-   protected abstract bsa<biy> b();
-
+public class bsy extends btd<biy> {
    @Override
-   public Set<bsa<?>> a() {
-      return ImmutableSet.of(this.b());
+   public Set<brz<?>> a() {
+      return ImmutableSet.of(brz.h, brz.L, brz.am);
    }
 
    @Override
    protected void a(akk $$0, biy $$1) {
-      $$1.dM().a(this.b(), this.b($$1));
-   }
+      bjy<?> $$2 = $$1.dM();
+      List<cab> $$3 = Lists.newArrayList();
+      bsb $$4 = $$2.c(brz.h).orElse(bsb.a());
+      Optional<bja> $$5 = $$4.a($$0x -> $$0x instanceof bzr || $$0x instanceof bxt).map(bja.class::cast);
 
-   private Optional<biy> b(biy $$0) {
-      return this.a($$0).flatMap($$1 -> $$1.a($$1x -> this.a($$0, $$1x)));
-   }
+      for (biy $$7 : $$2.c(brz.g).orElse(ImmutableList.of())) {
+         if ($$7 instanceof cab && ((cab)$$7).gb()) {
+            $$3.add((cab)$$7);
+         }
+      }
 
-   protected Optional<bsc> a(biy $$0) {
-      return $$0.dM().c(bsa.h);
+      $$2.a(brz.L, $$5);
+      $$2.a(brz.am, $$3);
    }
 }

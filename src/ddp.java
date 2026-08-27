@@ -1,135 +1,96 @@
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
 
-public abstract class ddp extends dcg {
-   public static final String d = "LootTable";
-   public static final String e = "LootTableSeed";
-   @Nullable
-   protected aer h;
-   protected long i;
+public class ddp extends dcl implements djl.b<ddp.a> {
+   private final ddp.a a;
 
-   protected ddp(dco<?> $$0, gu $$1, dfa $$2) {
-      super($$0, $$1, $$2);
+   public ddp(gu $$0, dez $$1) {
+      super(dcn.K, $$0, $$1);
+      this.a = new ddp.a($$1, new djf($$0));
    }
 
-   public static void a(cos $$0, aru $$1, gu $$2, aer $$3) {
-      dcm $$4 = $$0.c_($$2);
-      if ($$4 instanceof ddp) {
-         ((ddp)$$4).a($$3, $$1.g());
+   public static void a(cpl $$0, gu $$1, dez $$2, ddp $$3) {
+      $$3.a.d().a($$0, $$1, $$0.y_(), true);
+   }
+
+   @Override
+   public void a(qr $$0) {
+      this.a.b.a($$0);
+   }
+
+   @Override
+   protected void b(qr $$0) {
+      this.a.b.b($$0);
+      super.b($$0);
+   }
+
+   public ddp.a c() {
+      return this.a;
+   }
+
+   public static class a implements djl {
+      public static final int a = 8;
+      final czg b;
+      private final dez c;
+      private final djn d;
+
+      public a(dez $$0, djn $$1) {
+         this.c = $$0;
+         this.d = $$1;
+         this.b = czg.a();
       }
-   }
 
-   protected boolean d(qr $$0) {
-      if ($$0.b("LootTable", 8)) {
-         this.h = new aer($$0.l("LootTable"));
-         this.i = $$0.i("LootTableSeed");
-         return true;
-      } else {
-         return false;
+      @Override
+      public djn a() {
+         return this.d;
       }
-   }
 
-   protected boolean e(qr $$0) {
-      if (this.h == null) {
-         return false;
-      } else {
-         $$0.a("LootTable", this.h.toString());
-         if (this.i != 0L) {
-            $$0.a("LootTableSeed", this.i);
+      @Override
+      public int b() {
+         return 8;
+      }
+
+      @Override
+      public djl.a c() {
+         return djl.a.b;
+      }
+
+      @Override
+      public boolean a(akk $$0, djj $$1, djj.a $$2, ehd $$3) {
+         if ($$1 == djj.p && $$2.a() instanceof biy $$4) {
+            if (!$$4.eB()) {
+               int $$5 = $$4.ec();
+               if ($$4.ea() && $$5 > 0) {
+                  this.b.a(gu.a($$3.a(ha.b, 0.5)), $$5);
+                  this.a($$0, $$4);
+               }
+
+               $$4.eA();
+               this.d.a($$0).ifPresent($$1x -> this.a($$0, gu.a($$1x), this.c, $$0.y_()));
+            }
+
+            return true;
+         } else {
+            return false;
          }
-
-         return true;
       }
-   }
 
-   public void e(@Nullable cbn $$0) {
-      if (this.h != null && this.o.n() != null) {
-         ecp $$1 = this.o.n().aH().getLootTable(this.h);
-         if ($$0 instanceof akl) {
-            ai.N.a((akl)$$0, this.h);
+      @VisibleForTesting
+      public czg d() {
+         return this.b;
+      }
+
+      private void a(akk $$0, gu $$1, dez $$2, aru $$3) {
+         $$0.a($$1, $$2.a(czd.a, Boolean.valueOf(true)), 3);
+         $$0.a($$1, $$2.b(), 8);
+         $$0.a(iv.E, (double)$$1.u() + 0.5, (double)$$1.v() + 1.15, (double)$$1.w() + 0.5, 2, 0.2, 0.0, 0.2, 0.0);
+         $$0.a(null, $$1, aow.un, aox.e, 2.0F, 0.6F + $$3.i() * 0.4F);
+      }
+
+      private void a(cpl $$0, biy $$1) {
+         if ($$1.ef() instanceof akl $$3) {
+            bhg $$4 = $$1.ev() == null ? $$0.ag().a((cbm)$$3) : $$1.ev();
+            ai.W.a($$3, $$1, $$4);
          }
-
-         this.h = null;
-         ecn.a $$2 = new ecn.a((akk)this.o).a(ees.f, ehe.b(this.p));
-         if ($$0 != null) {
-            $$2.a($$0.gm()).a(ees.a, $$0);
-         }
-
-         $$1.a(this, $$2.a(eer.c), this.i);
-      }
-   }
-
-   public void a(aer $$0, long $$1) {
-      this.h = $$0;
-      this.i = $$1;
-   }
-
-   @Override
-   public boolean ab_() {
-      this.e(null);
-      return this.f().stream().allMatch(ciy::b);
-   }
-
-   @Override
-   public ciy a(int $$0) {
-      this.e(null);
-      return this.f().get($$0);
-   }
-
-   @Override
-   public ciy a(int $$0, int $$1) {
-      this.e(null);
-      ciy $$2 = bgk.a(this.f(), $$0, $$1);
-      if (!$$2.b()) {
-         this.e();
-      }
-
-      return $$2;
-   }
-
-   @Override
-   public ciy b(int $$0) {
-      this.e(null);
-      return bgk.a(this.f(), $$0);
-   }
-
-   @Override
-   public void a(int $$0, ciy $$1) {
-      this.e(null);
-      this.f().set($$0, $$1);
-      if ($$1.L() > this.ac_()) {
-         $$1.f(this.ac_());
-      }
-
-      this.e();
-   }
-
-   @Override
-   public boolean a(cbn $$0) {
-      return bgj.a(this, $$0);
-   }
-
-   @Override
-   public void a() {
-      this.f().clear();
-   }
-
-   protected abstract hn<ciy> f();
-
-   protected abstract void a(hn<ciy> var1);
-
-   @Override
-   public boolean d(cbn $$0) {
-      return super.d($$0) && (this.h == null || !$$0.G_());
-   }
-
-   @Nullable
-   @Override
-   public cee createMenu(int $$0, cbm $$1, cbn $$2) {
-      if (this.d($$2)) {
-         this.e($$1.m);
-         return this.a($$0, $$1);
-      } else {
-         return null;
       }
    }
 }

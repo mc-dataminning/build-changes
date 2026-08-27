@@ -1,41 +1,44 @@
-public class bla implements bkr<biy> {
-   private final int a;
-   private final int b;
-   private bkq.a c = bkq.a.a;
-   private long d;
+import java.util.Optional;
 
-   public bla(int $$0, int $$1) {
+public class bla implements bmc {
+   private final bii a;
+   private final boolean b;
+
+   public bla(bii $$0, boolean $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
    @Override
-   public bkq.a a() {
-      return this.c;
+   public ehd a() {
+      return this.b ? this.a.di().b(0.0, (double)this.a.cH(), 0.0) : this.a.di();
    }
 
    @Override
-   public final boolean e(akk $$0, biy $$1, long $$2) {
-      this.c = bkq.a.b;
-      int $$3 = this.a + $$0.y_().a(this.b + 1 - this.a);
-      this.d = $$2 + (long)$$3;
-      return true;
+   public gu b() {
+      return this.a.dk();
    }
 
    @Override
-   public final void f(akk $$0, biy $$1, long $$2) {
-      if ($$2 > this.d) {
-         this.g($$0, $$1, $$2);
+   public boolean a(biy $$0) {
+      if (this.a instanceof biy $$1) {
+         if (!$$1.bv()) {
+            return false;
+         } else {
+            Optional<bsb> $$3 = $$0.dM().c(brz.h);
+            return $$3.isPresent() && $$3.get().a($$1);
+         }
+      } else {
+         return true;
       }
    }
 
-   @Override
-   public final void g(akk $$0, biy $$1, long $$2) {
-      this.c = bkq.a.a;
+   public bii c() {
+      return this.a;
    }
 
    @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+   public String toString() {
+      return "EntityTracker for " + this.a;
    }
 }

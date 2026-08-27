@@ -1,67 +1,358 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.List;
+import com.mojang.datafixers.kinds.Applicative;
+import com.mojang.datafixers.kinds.IdF;
+import com.mojang.datafixers.kinds.K1;
+import com.mojang.datafixers.kinds.OptionalBox;
+import com.mojang.datafixers.kinds.OptionalBox.Mu;
+import com.mojang.datafixers.util.Function3;
+import com.mojang.datafixers.util.Function4;
+import com.mojang.datafixers.util.Unit;
 import java.util.Optional;
+import java.util.function.BiFunction;
+import java.util.function.BiPredicate;
 import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class bob {
-   public static bkr<cba> a(float $$0) {
-      return boc.a(
-         (Function<boc.b<cba>, ? extends App<boc.c<cba>, bof<cba>>>)($$1 -> $$1.group($$1.b(bsa.d), $$1.c(bsa.c), $$1.b(bsa.g), $$1.a(bsa.m), $$1.a(bsa.n))
-               .apply(
-                  $$1,
-                  ($$2, $$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
-                        if ($$7.i_()) {
-                           return false;
-                        } else if ($$7.gk().b() != cbd.b) {
-                           return false;
-                        } else {
-                           gu $$9 = $$1.<hd>b($$2).b();
-                           Optional<he<bub>> $$10 = $$6x.w().c($$9);
-                           if ($$10.isEmpty()) {
-                              return true;
-                           } else {
-                              $$1.<List<biy>>b($$4)
-                                 .stream()
-                                 .filter($$1xxx -> $$1xxx instanceof cba && $$1xxx != $$7)
-                                 .map($$0xxxx -> (cba)$$0xxxx)
-                                 .filter(biy::bv)
-                                 .filter($$2xx -> a($$10.get(), $$2xx, $$9))
-                                 .findFirst()
-                                 .ifPresent($$6xx -> {
-                                    $$5.b();
-                                    $$6.b();
-                                    $$2.b();
-                                    if ($$6xx.dM().c(bsa.c).isEmpty()) {
-                                       bks.a($$6xx, $$9, $$0, 1);
-                                       $$6xx.dM().a(bsa.d, hd.a($$6x.ac(), $$9));
-                                       aav.c($$6x, $$9);
-                                    }
-                                 });
-                              return true;
-                           }
-                        }
-                     }
-               ))
-      );
+public class bob<E extends biy, M> implements App<bob.c<E>, M> {
+   private final bob.e<E, M> a;
+
+   public static <E extends biy, M> bob<E, M> a(App<bob.c<E>, M> $$0) {
+      return (bob<E, M>)$$0;
    }
 
-   private static boolean a(he<bub> $$0, cba $$1, gu $$2) {
-      boolean $$3 = $$1.dM().c(bsa.d).isPresent();
-      if ($$3) {
-         return false;
-      } else {
-         Optional<hd> $$4 = $$1.dM().c(bsa.c);
-         cbd $$5 = $$1.gk().b();
-         if ($$5.b().test($$0)) {
-            return $$4.isEmpty() ? a($$1, $$2, $$0.a()) : $$4.get().b().equals($$2);
-         } else {
-            return false;
+   public static <E extends biy> bob.b<E> a() {
+      return new bob.b<>();
+   }
+
+   public static <E extends biy> blz<E> a(Function<bob.b<E>, ? extends App<bob.c<E>, boe<E>>> $$0) {
+      final bob.e<E, boe<E>> $$1 = b((App<bob.c<E>, boe<E>>)$$0.apply(a()));
+      return new blz<E>() {
+         @Override
+         public boolean trigger(akk $$0, E $$1x, long $$2) {
+            boe<E> $$3 = $$1.a($$0, $$1, $$2);
+            return $$3 == null ? false : $$3.trigger($$0, $$1, $$2);
+         }
+
+         @Override
+         public String b() {
+            return "OneShot[" + $$1.a() + "]";
+         }
+
+         @Override
+         public String toString() {
+            return this.b();
+         }
+      };
+   }
+
+   public static <E extends biy> blz<E> a(boe<? super E> $$0, boe<? super E> $$1) {
+      return a((Function<bob.b<E>, ? extends App<bob.c<E>, boe<E>>>)($$2 -> $$2.group($$2.a($$0)).apply($$2, $$1xx -> $$1::trigger)));
+   }
+
+   public static <E extends biy> blz<E> a(Predicate<E> $$0, blz<? super E> $$1) {
+      return a(a($$0), $$1);
+   }
+
+   public static <E extends biy> blz<E> a(Predicate<E> $$0) {
+      return a((Function<bob.b<E>, ? extends App<bob.c<E>, boe<E>>>)($$1 -> $$1.a((boe<E>)(($$1x, $$2, $$3) -> $$0.test($$2)))));
+   }
+
+   public static <E extends biy> blz<E> a(BiPredicate<akk, E> $$0) {
+      return a((Function<bob.b<E>, ? extends App<bob.c<E>, boe<E>>>)($$1 -> $$1.a((boe<E>)(($$1x, $$2, $$3) -> $$0.test($$1x, $$2)))));
+   }
+
+   static <E extends biy, M> bob.e<E, M> b(App<bob.c<E>, M> $$0) {
+      return a($$0).a;
+   }
+
+   bob(bob.e<E, M> $$0) {
+      this.a = $$0;
+   }
+
+   static <E extends biy, M> bob<E, M> a(bob.e<E, M> $$0) {
+      return new bob<>($$0);
+   }
+
+   static final class a<E extends biy, A> extends bob<E, A> {
+      a(A $$0) {
+         this($$0, () -> "C[" + $$0 + "]");
+      }
+
+      a(final A $$0, final Supplier<String> $$1) {
+         super(new bob.e<E, A>() {
+            @Override
+            public A a(akk $$0x, E $$1x, long $$2) {
+               return $$0;
+            }
+
+            @Override
+            public String a() {
+               return $$1.get();
+            }
+
+            @Override
+            public String toString() {
+               return this.a();
+            }
+         });
+      }
+   }
+
+   public static final class b<E extends biy> implements Applicative<bob.c<E>, bob.b.a<E>> {
+      public <Value> Optional<Value> a(boc<Mu, Value> $$0) {
+         return OptionalBox.unbox($$0.a());
+      }
+
+      public <Value> Value b(boc<com.mojang.datafixers.kinds.IdF.Mu, Value> $$0) {
+         return (Value)IdF.get($$0.a());
+      }
+
+      public <Value> bob<E, boc<Mu, Value>> a(brz<Value> $$0) {
+         return new bob.d<>(new bod.c<>($$0));
+      }
+
+      public <Value> bob<E, boc<com.mojang.datafixers.kinds.IdF.Mu, Value>> b(brz<Value> $$0) {
+         return new bob.d<>(new bod.b<>($$0));
+      }
+
+      public <Value> bob<E, boc<com.mojang.datafixers.kinds.Const.Mu<Unit>, Value>> c(brz<Value> $$0) {
+         return new bob.d<>(new bod.a<>($$0));
+      }
+
+      public bob<E, Unit> a(boe<? super E> $$0) {
+         return new bob.f<>($$0);
+      }
+
+      public <A> bob<E, A> a(A $$0) {
+         return new bob.a<>($$0);
+      }
+
+      public <A> bob<E, A> a(Supplier<String> $$0, A $$1) {
+         return new bob.a<>($$1, $$0);
+      }
+
+      public <A, R> Function<App<bob.c<E>, A>, App<bob.c<E>, R>> lift1(App<bob.c<E>, Function<A, R>> $$0) {
+         return $$1 -> {
+            final bob.e<E, A> $$2 = (bob.e<E, A>)bob.b((App<bob.c<E>, M>)$$1);
+            final bob.e<E, Function<A, R>> $$3 = bob.b($$0);
+            return bob.a(new bob.e<E, R>() {
+               @Override
+               public R a(akk $$0, E $$1, long $$2x) {
+                  A $$3 = (A)$$2.a($$0, $$1, $$2);
+                  if ($$3 == null) {
+                     return null;
+                  } else {
+                     Function<A, R> $$4 = (Function<A, R>)$$3.a($$0, $$1, $$2);
+                     return (R)($$4 == null ? null : $$4.apply($$3));
+                  }
+               }
+
+               @Override
+               public String a() {
+                  return $$3.a() + " * " + $$2.a();
+               }
+
+               @Override
+               public String toString() {
+                  return this.a();
+               }
+            });
+         };
+      }
+
+      public <T, R> bob<E, R> a(final Function<? super T, ? extends R> $$0, App<bob.c<E>, T> $$1) {
+         final bob.e<E, T> $$2 = (bob.e<E, T>)bob.b((App<bob.c<E>, M>)$$1);
+         return bob.a(new bob.e<E, R>() {
+            @Override
+            public R a(akk $$0x, E $$1, long $$2x) {
+               T $$3 = $$2.a($$0, $$1, $$2);
+               return (R)($$3 == null ? null : $$0.apply($$3));
+            }
+
+            @Override
+            public String a() {
+               return $$2.a() + ".map[" + $$0 + "]";
+            }
+
+            @Override
+            public String toString() {
+               return this.a();
+            }
+         });
+      }
+
+      public <A, B, R> bob<E, R> a(App<bob.c<E>, BiFunction<A, B, R>> $$0, App<bob.c<E>, A> $$1, App<bob.c<E>, B> $$2) {
+         final bob.e<E, A> $$3 = (bob.e<E, A>)bob.b((App<bob.c<E>, M>)$$1);
+         final bob.e<E, B> $$4 = (bob.e<E, B>)bob.b((App<bob.c<E>, M>)$$2);
+         final bob.e<E, BiFunction<A, B, R>> $$5 = bob.b($$0);
+         return bob.a(new bob.e<E, R>() {
+            @Override
+            public R a(akk $$0, E $$1, long $$2) {
+               A $$3 = $$3.a($$0, $$1, $$2);
+               if ($$3 == null) {
+                  return null;
+               } else {
+                  B $$4 = $$4.a($$0, $$1, $$2);
+                  if ($$4 == null) {
+                     return null;
+                  } else {
+                     BiFunction<A, B, R> $$5 = $$5.a($$0, $$1, $$2);
+                     return $$5 == null ? null : $$5.apply($$3, $$4);
+                  }
+               }
+            }
+
+            @Override
+            public String a() {
+               return $$5.a() + " * " + $$3.a() + " * " + $$4.a();
+            }
+
+            @Override
+            public String toString() {
+               return this.a();
+            }
+         });
+      }
+
+      public <T1, T2, T3, R> bob<E, R> a(App<bob.c<E>, Function3<T1, T2, T3, R>> $$0, App<bob.c<E>, T1> $$1, App<bob.c<E>, T2> $$2, App<bob.c<E>, T3> $$3) {
+         final bob.e<E, T1> $$4 = (bob.e<E, T1>)bob.b((App<bob.c<E>, M>)$$1);
+         final bob.e<E, T2> $$5 = (bob.e<E, T2>)bob.b((App<bob.c<E>, M>)$$2);
+         final bob.e<E, T3> $$6 = (bob.e<E, T3>)bob.b((App<bob.c<E>, M>)$$3);
+         final bob.e<E, Function3<T1, T2, T3, R>> $$7 = bob.b($$0);
+         return bob.a(new bob.e<E, R>() {
+            @Override
+            public R a(akk $$0, E $$1, long $$2) {
+               T1 $$3 = $$4.a($$0, $$1, $$2);
+               if ($$3 == null) {
+                  return null;
+               } else {
+                  T2 $$4 = $$5.a($$0, $$1, $$2);
+                  if ($$4 == null) {
+                     return null;
+                  } else {
+                     T3 $$5 = $$6.a($$0, $$1, $$2);
+                     if ($$5 == null) {
+                        return null;
+                     } else {
+                        Function3<T1, T2, T3, R> $$6 = $$7.a($$0, $$1, $$2);
+                        return (R)($$6 == null ? null : $$6.apply($$3, $$4, $$5));
+                     }
+                  }
+               }
+            }
+
+            @Override
+            public String a() {
+               return $$7.a() + " * " + $$4.a() + " * " + $$5.a() + " * " + $$6.a();
+            }
+
+            @Override
+            public String toString() {
+               return this.a();
+            }
+         });
+      }
+
+      public <T1, T2, T3, T4, R> bob<E, R> a(
+         App<bob.c<E>, Function4<T1, T2, T3, T4, R>> $$0, App<bob.c<E>, T1> $$1, App<bob.c<E>, T2> $$2, App<bob.c<E>, T3> $$3, App<bob.c<E>, T4> $$4
+      ) {
+         final bob.e<E, T1> $$5 = (bob.e<E, T1>)bob.b((App<bob.c<E>, M>)$$1);
+         final bob.e<E, T2> $$6 = (bob.e<E, T2>)bob.b((App<bob.c<E>, M>)$$2);
+         final bob.e<E, T3> $$7 = (bob.e<E, T3>)bob.b((App<bob.c<E>, M>)$$3);
+         final bob.e<E, T4> $$8 = (bob.e<E, T4>)bob.b((App<bob.c<E>, M>)$$4);
+         final bob.e<E, Function4<T1, T2, T3, T4, R>> $$9 = bob.b($$0);
+         return bob.a(new bob.e<E, R>() {
+            @Override
+            public R a(akk $$0, E $$1, long $$2) {
+               T1 $$3 = $$5.a($$0, $$1, $$2);
+               if ($$3 == null) {
+                  return null;
+               } else {
+                  T2 $$4 = $$6.a($$0, $$1, $$2);
+                  if ($$4 == null) {
+                     return null;
+                  } else {
+                     T3 $$5 = $$7.a($$0, $$1, $$2);
+                     if ($$5 == null) {
+                        return null;
+                     } else {
+                        T4 $$6 = $$8.a($$0, $$1, $$2);
+                        if ($$6 == null) {
+                           return null;
+                        } else {
+                           Function4<T1, T2, T3, T4, R> $$7 = $$9.a($$0, $$1, $$2);
+                           return (R)($$7 == null ? null : $$7.apply($$3, $$4, $$5, $$6));
+                        }
+                     }
+                  }
+               }
+            }
+
+            @Override
+            public String a() {
+               return $$9.a() + " * " + $$5.a() + " * " + $$6.a() + " * " + $$7.a() + " * " + $$8.a();
+            }
+
+            @Override
+            public String toString() {
+               return this.a();
+            }
+         });
+      }
+
+      static final class a<E extends biy> implements com.mojang.datafixers.kinds.Applicative.Mu {
+         private a() {
          }
       }
    }
 
-   private static boolean a(bjh $$0, gu $$1, bub $$2) {
-      eas $$3 = $$0.H().a($$1, $$2.c());
-      return $$3 != null && $$3.j();
+   public static final class c<E extends biy> implements K1 {
+   }
+
+   static final class d<E extends biy, F extends K1, Value> extends bob<E, boc<F, Value>> {
+      d(final bod<F, Value> $$0) {
+         super(new bob.e<E, boc<F, Value>>() {
+            public boc<F, Value> b(akk $$0x, E $$1, long $$2) {
+               bjy<?> $$3 = $$1.dM();
+               Optional<Value> $$4 = $$3.d($$0.a());
+               return $$4 == null ? null : $$0.a($$3, $$4);
+            }
+
+            @Override
+            public String a() {
+               return "M[" + $$0 + "]";
+            }
+
+            @Override
+            public String toString() {
+               return this.a();
+            }
+         });
+      }
+   }
+
+   interface e<E extends biy, R> {
+      @Nullable
+      R a(akk var1, E var2, long var3);
+
+      String a();
+   }
+
+   static final class f<E extends biy> extends bob<E, Unit> {
+      f(final boe<? super E> $$0) {
+         super(new bob.e<E, Unit>() {
+            @Nullable
+            public Unit b(akk $$0x, E $$1, long $$2) {
+               return $$0.trigger($$0, $$1, $$2) ? Unit.INSTANCE : null;
+            }
+
+            @Override
+            public String a() {
+               return "T[" + $$0 + "]";
+            }
+         });
+      }
    }
 }

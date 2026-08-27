@@ -1,27 +1,82 @@
-public class ezi extends eyx<cel> implements fab<cel> {
-   private static final aer x = new aer("textures/gui/container/generic_54.png");
-   private final int y;
+public class ezi extends eyx {
+   private final dcv m;
+   private esn<dcv.a> n;
+   private esn<Boolean> o;
+   private esn<Boolean> p;
+   private dcv.a q = dcv.a.c;
+   private boolean s;
+   private boolean t;
 
-   public ezi(cel $$0, cbm $$1, tf $$2) {
-      super($$0, $$1, $$2);
-      int $$3 = 222;
-      int $$4 = 114;
-      this.y = $$0.m();
-      this.k = 114 + this.y * 18;
-      this.o = this.k - 94;
+   public ezi(dcv $$0) {
+      this.m = $$0;
    }
 
    @Override
-   public void a(erw $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   col l() {
+      return this.m.c();
    }
 
    @Override
-   protected void a(erw $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.g - this.c) / 2;
-      int $$5 = (this.h - this.k) / 2;
-      $$0.a(x, $$4, $$5, 0, 0, this.c, this.y * 18 + 17);
-      $$0.a(x, $$4, $$5 + this.y * 18 + 17, 0, 126, this.c, 96);
+   int C() {
+      return 135;
+   }
+
+   @Override
+   protected void aC_() {
+      super.aC_();
+      this.n = this.d(esn.<dcv.a>a($$0 -> {
+         return switch ($$0) {
+            case a -> tf.c("advMode.mode.sequence");
+            case b -> tf.c("advMode.mode.auto");
+            case c -> tf.c("advMode.mode.redstone");
+         };
+      }).a(dcv.a.values()).a().a(this.q).a(this.g / 2 - 50 - 100 - 4, 165, 100, 20, tf.c("advMode.mode"), ($$0, $$1) -> this.q = $$1));
+      this.o = this.d(
+         esn.a(tf.c("advMode.mode.conditional"), tf.c("advMode.mode.unconditional"))
+            .a()
+            .a(this.s)
+            .a(this.g / 2 - 50, 165, 100, 20, tf.c("advMode.type"), ($$0, $$1) -> this.s = $$1)
+      );
+      this.p = this.d(
+         esn.a(tf.c("advMode.mode.autoexec.bat"), tf.c("advMode.mode.redstoneTriggered"))
+            .a()
+            .a(this.t)
+            .a(this.g / 2 + 50 + 4, 165, 100, 20, tf.c("advMode.triggering"), ($$0, $$1) -> this.t = $$1)
+      );
+      this.e(false);
+   }
+
+   private void e(boolean $$0) {
+      this.c.i = $$0;
+      this.l.i = $$0;
+      this.n.i = $$0;
+      this.o.i = $$0;
+      this.p.i = $$0;
+   }
+
+   public void E() {
+      col $$0 = this.m.c();
+      this.a.a($$0.m());
+      boolean $$1 = $$0.o();
+      this.q = this.m.v();
+      this.s = this.m.w();
+      this.t = this.m.f();
+      this.l.a($$1);
+      this.n.a(this.q);
+      this.o.a(this.s);
+      this.p.a(this.t);
+      this.c($$1);
+      this.e(true);
+   }
+
+   @Override
+   public void a(eql $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.e(true);
+   }
+
+   @Override
+   protected void a(col $$0) {
+      this.f.J().b(new acj(gu.a($$0.g()), this.a.a(), this.q, $$0.o(), this.s, this.t));
    }
 }

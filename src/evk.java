@@ -1,4 +1,4 @@
-public abstract class evk implements evp {
+public abstract class evk implements evq {
    private int c;
    private int d;
    protected int a;
@@ -12,72 +12,72 @@ public abstract class evk implements evp {
    }
 
    @Override
-   public void e(int $$0) {
-      this.b($$1 -> {
-         int $$2 = $$1.p() + ($$0 - this.p());
-         $$1.e($$2);
-      });
-      this.c = $$0;
-   }
-
-   @Override
    public void f(int $$0) {
       this.b($$1 -> {
          int $$2 = $$1.r() + ($$0 - this.r());
          $$1.f($$2);
       });
+      this.c = $$0;
+   }
+
+   @Override
+   public void g(int $$0) {
+      this.b($$1 -> {
+         int $$2 = $$1.t() + ($$0 - this.t());
+         $$1.g($$2);
+      });
       this.d = $$0;
    }
 
    @Override
-   public int p() {
+   public int r() {
       return this.c;
    }
 
    @Override
-   public int r() {
+   public int t() {
       return this.d;
    }
 
    @Override
-   public int k() {
+   public int l() {
       return this.a;
    }
 
    @Override
-   public int h() {
+   public int i() {
       return this.b;
    }
 
    protected abstract static class a {
-      public final evq a;
-      public final evr.a b;
+      public final evr a;
+      public final evs.a b;
 
-      protected a(evq $$0, evr $$1) {
+      protected a(evr $$0, evs $$1) {
          this.a = $$0;
          this.b = $$1.h();
       }
 
       public int a() {
-         return this.a.h() + this.b.b + this.b.d;
+         return this.a.i() + this.b.b + this.b.d;
       }
 
       public int b() {
-         return this.a.k() + this.b.a + this.b.c;
+         return this.a.l() + this.b.a + this.b.c;
       }
 
       public void a(int $$0, int $$1) {
          float $$2 = (float)this.b.a;
-         float $$3 = (float)($$1 - this.a.k() - this.b.c);
+         float $$3 = (float)($$1 - this.a.l() - this.b.c);
          int $$4 = (int)arp.i(this.b.e, $$2, $$3);
-         this.a.e($$4 + $$0);
+         this.a.f($$4 + $$0);
       }
 
       public void b(int $$0, int $$1) {
          float $$2 = (float)this.b.b;
-         float $$3 = (float)($$1 - this.a.h() - this.b.d);
+         float $$3 = (float)($$1 - this.a.i() - this.b.d);
          int $$4 = Math.round(arp.i(this.b.f, $$2, $$3));
-         this.a.f($$4 + $$0);
+         this.a.g($$4 + $$0);
       }
    }
 }

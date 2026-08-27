@@ -1,34 +1,13 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 
-public class dtf extends dtg {
-   public static final dtf a = new dtf(dld.a(0));
-   public static final Codec<dtf> b = aqy.c(dld.a, dld.a.fieldOf("value").codec()).xmap(dtf::new, dtf::b);
-   private final dld d;
+public abstract class dtf {
+   private static final Codec<Either<dlc, dtf>> a = Codec.either(dlc.a, jb.O.q().dispatch(dtf::a, dtg::codec));
+   public static final Codec<dtf> c = a.xmap(
+      $$0 -> (dtf)$$0.map(dte::a, $$0x -> $$0x), $$0 -> $$0.a() == dtg.a ? Either.left(((dte)$$0).b()) : Either.right($$0)
+   );
 
-   public static dtf a(dld $$0) {
-      return new dtf($$0);
-   }
+   public abstract int a(aru var1, dlf var2);
 
-   private dtf(dld $$0) {
-      this.d = $$0;
-   }
-
-   public dld b() {
-      return this.d;
-   }
-
-   @Override
-   public int a(aru $$0, dlg $$1) {
-      return this.d.a($$1);
-   }
-
-   @Override
-   public dth<?> a() {
-      return dth.a;
-   }
-
-   @Override
-   public String toString() {
-      return this.d.toString();
-   }
+   public abstract dtg<?> a();
 }

@@ -1,7 +1,7 @@
 import java.util.UUID;
 
-public record tp(UUID a, cbp b) {
-   public static tp a(cbp $$0) {
+public record tp(UUID a, cbo b) {
+   public static tp a(cbo $$0) {
       return new tp(UUID.randomUUID(), $$0);
    }
 
@@ -17,7 +17,7 @@ public record tp(UUID a, cbp b) {
       return this.a;
    }
 
-   public cbp c() {
+   public cbo c() {
       return this.b;
    }
 }

@@ -1,12 +1,11 @@
-public class fse extends ftu<bus, fej<bus>> {
-   private static final aer a = new aer("textures/entity/dolphin.png");
+public class fse extends fud<bvv, fed<bvv>> {
+   private static final aer a = new aer("textures/entity/camel/camel.png");
 
-   public fse(fso.a $$0) {
-      super($$0, new fej<>($$0.a(fhm.G)), 0.7F);
-      this.a(new fwd(this, $$0.d()));
+   public fse(fsx.a $$0, fhq $$1) {
+      super($$0, new fed<>($$0.a($$1)), 0.7F);
    }
 
-   public aer a(bus $$0) {
+   public aer a(bvv $$0) {
       return a;
    }
 }

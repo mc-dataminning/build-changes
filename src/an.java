@@ -8,7 +8,7 @@ import javax.annotation.Nullable;
 public class an {
    private final tf a;
    private final tf b;
-   private final ciy c;
+   private final cix c;
    @Nullable
    private final aer d;
    private final ao e;
@@ -18,7 +18,7 @@ public class an {
    private float i;
    private float j;
 
-   public an(ciy $$0, tf $$1, tf $$2, @Nullable aer $$3, ao $$4, boolean $$5, boolean $$6, boolean $$7) {
+   public an(cix $$0, tf $$1, tf $$2, @Nullable aer $$3, ao $$4, boolean $$5, boolean $$6, boolean $$7) {
       this.a = $$1;
       this.b = $$2;
       this.c = $$0;
@@ -42,7 +42,7 @@ public class an {
       return this.b;
    }
 
-   public ciy c() {
+   public cix c() {
       return this.c;
    }
 
@@ -79,7 +79,7 @@ public class an {
       tf $$1 = tf.a.a($$0.get("title"));
       tf $$2 = tf.a.a($$0.get("description"));
       if ($$1 != null && $$2 != null) {
-         ciy $$3 = b(arg.u($$0, "icon"));
+         cix $$3 = b(arg.u($$0, "icon"));
          aer $$4 = $$0.has("background") ? new aer(arg.i($$0, "background")) : null;
          ao $$5 = $$0.has("frame") ? ao.a(arg.i($$0, "frame")) : ao.a;
          boolean $$6 = arg.a($$0, "show_toast", true);
@@ -91,15 +91,15 @@ public class an {
       }
    }
 
-   private static ciy b(JsonObject $$0) {
+   private static cix b(JsonObject $$0) {
       if (!$$0.has("item")) {
          throw new JsonSyntaxException("Unsupported icon type, currently only items are supported (add 'item' key)");
       } else {
-         he<cit> $$1 = arg.j($$0, "item");
+         he<cis> $$1 = arg.j($$0, "item");
          if ($$0.has("data")) {
             throw new JsonParseException("Disallowed data tag found");
          } else {
-            ciy $$2 = new ciy($$1);
+            cix $$2 = new cix($$1);
             if ($$0.has("nbt")) {
                try {
                   qr $$3 = rl.a(arg.a($$0.get("nbt"), "nbt"));
@@ -144,7 +144,7 @@ public class an {
    public static an b(si $$0) {
       tf $$1 = $$0.l();
       tf $$2 = $$0.l();
-      ciy $$3 = $$0.q();
+      cix $$3 = $$0.q();
       ao $$4 = $$0.b(ao.class);
       int $$5 = $$0.readInt();
       aer $$6 = ($$5 & 1) != 0 ? $$0.s() : null;

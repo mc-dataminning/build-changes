@@ -1,96 +1,20 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.UUID;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
-
 public class bke {
-   private final Map<bka, bkb> a;
+   public static final bjz a = a("generic.max_health", new bkg("attribute.name.generic.max_health", 20.0, 1.0, 1024.0).a(true));
+   public static final bjz b = a("generic.follow_range", new bkg("attribute.name.generic.follow_range", 32.0, 0.0, 2048.0));
+   public static final bjz c = a("generic.knockback_resistance", new bkg("attribute.name.generic.knockback_resistance", 0.0, 0.0, 1.0));
+   public static final bjz d = a("generic.movement_speed", new bkg("attribute.name.generic.movement_speed", 0.7F, 0.0, 1024.0).a(true));
+   public static final bjz e = a("generic.flying_speed", new bkg("attribute.name.generic.flying_speed", 0.4F, 0.0, 1024.0).a(true));
+   public static final bjz f = a("generic.attack_damage", new bkg("attribute.name.generic.attack_damage", 2.0, 0.0, 2048.0));
+   public static final bjz g = a("generic.attack_knockback", new bkg("attribute.name.generic.attack_knockback", 0.0, 0.0, 5.0));
+   public static final bjz h = a("generic.attack_speed", new bkg("attribute.name.generic.attack_speed", 4.0, 0.0, 1024.0).a(true));
+   public static final bjz i = a("generic.armor", new bkg("attribute.name.generic.armor", 0.0, 0.0, 30.0).a(true));
+   public static final bjz j = a("generic.armor_toughness", new bkg("attribute.name.generic.armor_toughness", 0.0, 0.0, 20.0).a(true));
+   public static final bjz k = a("generic.luck", new bkg("attribute.name.generic.luck", 0.0, -1024.0, 1024.0).a(true));
+   public static final bjz l = a("generic.max_absorption", new bkg("attribute.name.generic.max_absorption", 0.0, 0.0, 2048.0)).a(true);
+   public static final bjz m = a("zombie.spawn_reinforcements", new bkg("attribute.name.zombie.spawn_reinforcements", 0.0, 0.0, 1.0));
+   public static final bjz n = a("horse.jump_strength", new bkg("attribute.name.horse.jump_strength", 0.7, 0.0, 2.0).a(true));
 
-   public bke(Map<bka, bkb> $$0) {
-      this.a = ImmutableMap.copyOf($$0);
-   }
-
-   private bkb d(bka $$0) {
-      bkb $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("Can't find attribute " + jb.v.b($$0));
-      } else {
-         return $$1;
-      }
-   }
-
-   public double a(bka $$0) {
-      return this.d($$0).f();
-   }
-
-   public double b(bka $$0) {
-      return this.d($$0).b();
-   }
-
-   public double a(bka $$0, UUID $$1) {
-      bkd $$2 = this.d($$0).a($$1);
-      if ($$2 == null) {
-         throw new IllegalArgumentException("Can't find modifier " + $$1 + " on attribute " + jb.v.b($$0));
-      } else {
-         return $$2.d();
-      }
-   }
-
-   @Nullable
-   public bkb a(Consumer<bkb> $$0, bka $$1) {
-      bkb $$2 = this.a.get($$1);
-      if ($$2 == null) {
-         return null;
-      } else {
-         bkb $$3 = new bkb($$1, $$0);
-         $$3.a($$2);
-         return $$3;
-      }
-   }
-
-   public static bke.a a() {
-      return new bke.a();
-   }
-
-   public boolean c(bka $$0) {
-      return this.a.containsKey($$0);
-   }
-
-   public boolean b(bka $$0, UUID $$1) {
-      bkb $$2 = this.a.get($$0);
-      return $$2 != null && $$2.a($$1) != null;
-   }
-
-   public static class a {
-      private final Map<bka, bkb> a = Maps.newHashMap();
-      private boolean b;
-
-      private bkb b(bka $$0) {
-         bkb $$1 = new bkb($$0, $$1x -> {
-            if (this.b) {
-               throw new UnsupportedOperationException("Tried to change value for default attribute instance: " + jb.v.b($$0));
-            }
-         });
-         this.a.put($$0, $$1);
-         return $$1;
-      }
-
-      public bke.a a(bka $$0) {
-         this.b($$0);
-         return this;
-      }
-
-      public bke.a a(bka $$0, double $$1) {
-         bkb $$2 = this.b($$0);
-         $$2.a($$1);
-         return this;
-      }
-
-      public bke a() {
-         this.b = true;
-         return new bke(this.a);
-      }
+   private static bjz a(String $$0, bjz $$1) {
+      return hr.a(jb.v, $$0, $$1);
    }
 }

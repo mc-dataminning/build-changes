@@ -170,7 +170,7 @@ public class aez {
          $$2 = true;
          if (!$$4 && $$3.a()) {
             $$0.f().a(this.k);
-            if ($$0.d() != null && $$0.d().i() && this.k.dK().X().b(cpi.y)) {
+            if ($$0.d() != null && $$0.d().i() && this.k.dK().X().b(cph.y)) {
                this.e.a(tf.a("chat.type.advancement." + $$0.d().e().a(), this.k.H_(), $$0.l()), false);
             }
          }

@@ -36,9 +36,9 @@ public class gb {
    public static final SimpleCommandExceptionType h = new SimpleCommandExceptionType(tf.c("argument.entity.selector.missing"));
    public static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(tf.c("argument.entity.options.unterminated"));
    public static final DynamicCommandExceptionType j = new DynamicCommandExceptionType($$0 -> tf.a("argument.entity.options.valueless", $$0));
-   public static final BiConsumer<ehe, List<? extends bii>> k = ($$0, $$1) -> $$1.sort(($$1x, $$2) -> Doubles.compare($$1x.e($$0), $$2.e($$0)));
-   public static final BiConsumer<ehe, List<? extends bii>> l = ($$0, $$1) -> $$1.sort(($$1x, $$2) -> Doubles.compare($$2.e($$0), $$1x.e($$0)));
-   public static final BiConsumer<ehe, List<? extends bii>> m = ($$0, $$1) -> Collections.shuffle($$1);
+   public static final BiConsumer<ehd, List<? extends bii>> k = ($$0, $$1) -> $$1.sort(($$1x, $$2) -> Doubles.compare($$1x.e($$0), $$2.e($$0)));
+   public static final BiConsumer<ehd, List<? extends bii>> l = ($$0, $$1) -> $$1.sort(($$1x, $$2) -> Doubles.compare($$2.e($$0), $$1x.e($$0)));
+   public static final BiConsumer<ehd, List<? extends bii>> m = ($$0, $$1) -> Collections.shuffle($$1);
    public static final BiFunction<SuggestionsBuilder, Consumer<SuggestionsBuilder>, CompletableFuture<Suggestions>> n = ($$0, $$1) -> $$0.buildFuture();
    private final StringReader w;
    private final boolean x;
@@ -62,7 +62,7 @@ public class gb {
    private dh J = dh.a;
    private dh K = dh.a;
    private Predicate<bii> L = $$0x -> true;
-   private BiConsumer<ehe, List<? extends bii>> M = ga.b;
+   private BiConsumer<ehd, List<? extends bii>> M = ga.b;
    private boolean N;
    @Nullable
    private String O;
@@ -95,11 +95,11 @@ public class gb {
    }
 
    public ga a() {
-      egz $$2;
+      egy $$2;
       if (this.G == null && this.H == null && this.I == null) {
          if (this.B.b().isPresent()) {
             double $$1 = this.B.b().get();
-            $$2 = new egz(-$$1, -$$1, -$$1, $$1 + 1.0, $$1 + 1.0, $$1 + 1.0);
+            $$2 = new egy(-$$1, -$$1, -$$1, $$1 + 1.0, $$1 + 1.0, $$1 + 1.0);
          } else {
             $$2 = null;
          }
@@ -107,17 +107,17 @@ public class gb {
          $$2 = this.a(this.G == null ? 0.0 : this.G, this.H == null ? 0.0 : this.H, this.I == null ? 0.0 : this.I);
       }
 
-      Function<ehe, ehe> $$4;
+      Function<ehd, ehd> $$4;
       if (this.D == null && this.E == null && this.F == null) {
          $$4 = $$0 -> $$0;
       } else {
-         $$4 = $$0 -> new ehe(this.D == null ? $$0.c : this.D, this.E == null ? $$0.d : this.E, this.F == null ? $$0.e : this.F);
+         $$4 = $$0 -> new ehd(this.D == null ? $$0.c : this.D, this.E == null ? $$0.d : this.E, this.F == null ? $$0.e : this.F);
       }
 
       return new ga(this.y, this.z, this.A, this.L, this.B, $$4, $$2, this.M, this.N, this.O, this.Q, this.aa, this.ae);
    }
 
-   private egz a(double $$0, double $$1, double $$2) {
+   private egy a(double $$0, double $$1, double $$2) {
       boolean $$3 = $$0 < 0.0;
       boolean $$4 = $$1 < 0.0;
       boolean $$5 = $$2 < 0.0;
@@ -127,7 +127,7 @@ public class gb {
       double $$9 = ($$3 ? 0.0 : $$0) + 1.0;
       double $$10 = ($$4 ? 0.0 : $$1) + 1.0;
       double $$11 = ($$5 ? 0.0 : $$2) + 1.0;
-      return new egz($$6, $$7, $$8, $$9, $$10, $$11);
+      return new egy($$6, $$7, $$8, $$9, $$10, $$11);
    }
 
    private void I() {
@@ -395,11 +395,11 @@ public class gb {
       this.z = $$0;
    }
 
-   public BiConsumer<ehe, List<? extends bii>> s() {
+   public BiConsumer<ehd, List<? extends bii>> s() {
       return this.M;
    }
 
-   public void a(BiConsumer<ehe, List<? extends bii>> $$0) {
+   public void a(BiConsumer<ehd, List<? extends bii>> $$0) {
       this.M = $$0;
    }
 

@@ -17,14 +17,14 @@ public class aje implements ajb {
             return $$0.then(ds.a("storage").then($$1.apply(ds.a($$0, eq.a()).suggests(aje.b))));
          }
       };
-   private final ebq c;
+   private final ebp c;
    private final aer d;
 
-   static ebq a(CommandContext<dr> $$0) {
+   static ebp a(CommandContext<dr> $$0) {
       return ((dr)$$0.getSource()).l().aG();
    }
 
-   aje(ebq $$0, aer $$1) {
+   aje(ebp $$0, aer $$1) {
       this.c = $$0;
       this.d = $$1;
    }

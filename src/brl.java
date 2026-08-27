@@ -1,42 +1,102 @@
 import java.util.EnumSet;
+import java.util.Iterator;
 import java.util.List;
 import javax.annotation.Nullable;
 
-public class brl extends bru {
-   private final buw a;
+public class brl extends brt {
+   private static final btk a = btk.a().d().e();
+   private static final int b = 10;
+   private boolean c;
+   private int d;
+   private final Class<?>[] i;
    @Nullable
-   private biy b;
-   private final btl c = btl.a().a(64.0);
+   private Class<?>[] j;
 
-   public brl(buw $$0) {
-      super($$0, false, true);
-      this.a = $$0;
-      this.a(EnumSet.of(bpu.a.d));
+   public brl(bjh $$0, Class<?>... $$1) {
+      super($$0, true);
+      this.i = $$1;
+      this.a(EnumSet.of(bpt.a.d));
    }
 
    @Override
    public boolean a() {
-      egz $$0 = this.a.cG().c(10.0, 8.0, 10.0);
-      List<? extends biy> $$1 = this.a.dK().a(cba.class, this.c, this.a, $$0);
-      List<cbn> $$2 = this.a.dK().a(this.c, this.a, $$0);
-
-      for (biy $$3 : $$1) {
-         cba $$4 = (cba)$$3;
-
-         for (cbn $$5 : $$2) {
-            int $$6 = $$4.g($$5);
-            if ($$6 <= -100) {
-               this.b = $$5;
+      int $$0 = this.e.eg();
+      biy $$1 = this.e.ef();
+      if ($$0 != this.d && $$1 != null) {
+         if ($$1.ag() == bim.bt && this.e.dK().X().b(cph.K)) {
+            return false;
+         } else {
+            for (Class<?> $$2 : this.i) {
+               if ($$2.isAssignableFrom($$1.getClass())) {
+                  return false;
+               }
             }
-         }
-      }
 
-      return this.b == null ? false : !(this.b instanceof cbn) || !this.b.G_() && !((cbn)this.b).f();
+            return this.a($$1, a);
+         }
+      } else {
+         return false;
+      }
+   }
+
+   public brl a(Class<?>... $$0) {
+      this.c = true;
+      this.j = $$0;
+      return this;
    }
 
    @Override
    public void c() {
-      this.a.h(this.b);
+      this.e.h(this.e.ef());
+      this.g = this.e.j();
+      this.d = this.e.eg();
+      this.h = 300;
+      if (this.c) {
+         this.h();
+      }
+
       super.c();
+   }
+
+   protected void h() {
+      double $$0 = this.l();
+      egy $$1 = egy.a(this.e.di()).c($$0, 10.0, $$0);
+      List<? extends bja> $$2 = this.e.dK().a((Class<? extends bja>)this.e.getClass(), $$1, bil.f);
+      Iterator var5 = $$2.iterator();
+
+      while (true) {
+         bja $$3;
+         while (true) {
+            if (!var5.hasNext()) {
+               return;
+            }
+
+            $$3 = (bja)var5.next();
+            if (this.e != $$3 && $$3.j() == null && (!(this.e instanceof bjt) || ((bjt)this.e).I_() == ((bjt)$$3).I_()) && !$$3.s(this.e.ef())) {
+               if (this.j == null) {
+                  break;
+               }
+
+               boolean $$4 = false;
+
+               for (Class<?> $$5 : this.j) {
+                  if ($$3.getClass() == $$5) {
+                     $$4 = true;
+                     break;
+                  }
+               }
+
+               if (!$$4) {
+                  break;
+               }
+            }
+         }
+
+         this.a($$3, this.e.ef());
+      }
+   }
+
+   protected void a(bja $$0, biy $$1) {
+      $$0.h($$1);
    }
 }

@@ -12,7 +12,7 @@ public class cv extends cu<cv.a> {
    }
 
    public cv.a a(JsonObject $$0, Optional<ba> $$1, be $$2) {
-      csm $$3 = a($$0);
+      csl $$3 = a($$0);
       Optional<cy> $$4 = cy.a($$0.get("state"));
       if ($$3 != null) {
          $$4.ifPresent($$1x -> $$1x.a($$3.l(), $$1xx -> {
@@ -24,7 +24,7 @@ public class cv extends cu<cv.a> {
    }
 
    @Nullable
-   private static csm a(JsonObject $$0) {
+   private static csl a(JsonObject $$0) {
       if ($$0.has("block")) {
          aer $$1 = new aer(arg.i($$0, "block"));
          return jb.f.b($$1).orElseThrow(() -> new JsonSyntaxException("Unknown block type '" + $$1 + "'"));
@@ -33,22 +33,22 @@ public class cv extends cu<cv.a> {
       }
    }
 
-   public void a(akl $$0, dfa $$1) {
+   public void a(akl $$0, dez $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
    public static class a extends ar {
       @Nullable
-      private final csm a;
+      private final csl a;
       private final Optional<cy> b;
 
-      public a(Optional<ba> $$0, @Nullable csm $$1, Optional<cy> $$2) {
+      public a(Optional<ba> $$0, @Nullable csl $$1, Optional<cy> $$2) {
          super(cv.a, $$0);
          this.a = $$1;
          this.b = $$2;
       }
 
-      public static cv.a a(csm $$0) {
+      public static cv.a a(csl $$0) {
          return new cv.a(Optional.empty(), $$0, Optional.empty());
       }
 
@@ -63,7 +63,7 @@ public class cv extends cu<cv.a> {
          return $$0;
       }
 
-      public boolean a(dfa $$0) {
+      public boolean a(dez $$0) {
          return this.a != null && !$$0.a(this.a) ? false : !this.b.isPresent() || this.b.get().a($$0);
       }
    }

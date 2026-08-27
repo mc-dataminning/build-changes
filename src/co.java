@@ -15,8 +15,8 @@ public class co extends cu<co.a> {
       return new co.a($$1, $$3, $$4);
    }
 
-   public void a(akl $$0, ciy $$1, bii $$2) {
-      ech $$3 = bo.b($$0, $$2);
+   public void a(akl $$0, cix $$1, bii $$2) {
+      ecg $$3 = bo.b($$0, $$2);
       this.a($$0, $$2x -> $$2x.a($$1, $$3));
    }
 
@@ -38,7 +38,7 @@ public class co extends cu<co.a> {
          return a(Optional.empty(), $$0, $$1);
       }
 
-      public boolean a(ciy $$0, ech $$1) {
+      public boolean a(cix $$0, ecg $$1) {
          return this.a.isPresent() && !this.a.get().a($$0) ? false : this.b.isEmpty() || this.b.get().a($$1);
       }
 

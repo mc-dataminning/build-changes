@@ -9,7 +9,7 @@ public record xf(List<xf.a> a) implements ux<wp> {
       this($$0.a(xf.a::new));
    }
 
-   public static xf a(List<dhh> $$0) {
+   public static xf a(List<dhg> $$0) {
       return new xf($$0.stream().map(xf.a::new).toList());
    }
 
@@ -22,8 +22,8 @@ public record xf(List<xf.a> a) implements ux<wp> {
       $$0.a(this);
    }
 
-   public static record a(cot a, byte[] b) {
-      public a(dhh $$0) {
+   public static record a(cos a, byte[] b) {
+      public a(dhg $$0) {
          this($$0.f(), new byte[a($$0)]);
          a(new si(this.d()), $$0);
       }
@@ -32,10 +32,10 @@ public record xf(List<xf.a> a) implements ux<wp> {
          this($$0.f(), $$0.a(2097152));
       }
 
-      private static int a(dhh $$0) {
+      private static int a(dhg $$0) {
          int $$1 = 0;
 
-         for (dhi $$2 : $$0.d()) {
+         for (dhh $$2 : $$0.d()) {
             $$1 += $$2.i().c();
          }
 
@@ -52,8 +52,8 @@ public record xf(List<xf.a> a) implements ux<wp> {
          return $$0;
       }
 
-      public static void a(si $$0, dhh $$1) {
-         for (dhi $$2 : $$1.d()) {
+      public static void a(si $$0, dhg $$1) {
+         for (dhh $$2 : $$1.d()) {
             $$2.i().b($$0);
          }
       }
@@ -63,7 +63,7 @@ public record xf(List<xf.a> a) implements ux<wp> {
          $$0.a(this.b);
       }
 
-      public cot b() {
+      public cos b() {
          return this.a;
       }
 

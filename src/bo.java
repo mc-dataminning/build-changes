@@ -102,7 +102,7 @@ public record bo(
    }
 
    private static Optional<ba> a(String $$0, be $$1, @Nullable JsonElement $$2) {
-      Optional<Optional<ba>> $$3 = ba.a($$0, $$1, $$2, eer.l);
+      Optional<Optional<ba>> $$3 = ba.a($$0, $$1, $$2, eeq.l);
       if ($$3.isPresent()) {
          return $$3.get();
       } else {
@@ -124,7 +124,7 @@ public record bo(
    }
 
    public static ba a(bo $$0) {
-      efg $$1 = efj.a(ech.b.a, $$0).build();
+      eff $$1 = efi.a(ecg.b.a, $$0).build();
       return new ba(List.of($$1));
    }
 
@@ -132,7 +132,7 @@ public record bo(
       return this.a($$0.x(), $$0.di(), $$1);
    }
 
-   public boolean a(akk $$0, @Nullable ehe $$1, @Nullable bii $$2) {
+   public boolean a(akk $$0, @Nullable ehd $$1, @Nullable bii $$2) {
       if ($$2 == null) {
          return false;
       } else if (this.b.isPresent() && !this.b.get().b($$2.ag())) {
@@ -150,7 +150,7 @@ public record bo(
             return false;
          } else {
             if (this.e.isPresent()) {
-               ehe $$3 = ehe.b($$2.aH());
+               ehd $$3 = ehd.b($$2.aH());
                if (!this.e.get().a($$0, $$3.a(), $$3.b(), $$3.c())) {
                   return false;
                }
@@ -174,7 +174,7 @@ public record bo(
                return false;
             } else {
                if (this.n.isPresent()) {
-                  eif $$4 = $$2.cf();
+                  eie $$4 = $$2.cf();
                   if ($$4 == null || !this.n.get().equals($$4.b())) {
                      return false;
                   }
@@ -194,9 +194,9 @@ public record bo(
       return ac.a(a.encodeStart(JsonOps.INSTANCE, this), IllegalStateException::new);
    }
 
-   public static ech b(akl $$0, bii $$1) {
-      ecn $$2 = new ecn.a($$0.x()).a(ees.a, $$1).a(ees.f, $$0.di()).a(eer.l);
-      return new ech.a($$2).a(Optional.empty());
+   public static ecg b(akl $$0, bii $$1) {
+      ecm $$2 = new ecm.a($$0.x()).a(eer.a, $$1).a(eer.f, $$0.di()).a(eeq.l);
+      return new ecg.a($$2).a(Optional.empty());
    }
 
    public static class a {

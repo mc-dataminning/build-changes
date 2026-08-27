@@ -8,7 +8,7 @@ public class zt implements ux<wp> {
       this($$0.ah(), $$0.dn());
    }
 
-   public zt(int $$0, ehe $$1) {
+   public zt(int $$0, ehd $$1) {
       this.a = $$0;
       double $$2 = 3.9;
       double $$3 = arp.a($$1.c, -3.9, 3.9);

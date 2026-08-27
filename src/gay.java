@@ -1,77 +1,67 @@
-import com.google.common.collect.Lists;
-import java.util.Collections;
-import java.util.List;
+import java.util.Comparator;
+import java.util.Objects;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class gay implements gam {
-   private final int a;
-   private final List<bfc.b<gam>> b;
-   private final gam c;
+public class gay {
+   public static final Comparator<gay> a = Comparator.<gay, aer>comparing(gay::a).thenComparing(gay::b);
+   private final aer b;
+   private final aer c;
+   @Nullable
+   private foc d;
 
-   public gay(List<bfc.b<gam>> $$0) {
+   public gay(aer $$0, aer $$1) {
       this.b = $$0;
-      this.a = bfd.a($$0);
-      this.c = $$0.get(0).b();
+      this.c = $$1;
    }
 
-   @Override
-   public List<foh> a(@Nullable dfa $$0, @Nullable ha $$1, aru $$2) {
-      return bfd.a(this.b, Math.abs((int)$$2.g()) % this.a).map($$3 -> $$3.b().a($$0, $$1, $$2)).orElse(Collections.emptyList());
+   public aer a() {
+      return this.b;
    }
 
-   @Override
-   public boolean a() {
-      return this.c.a();
+   public aer b() {
+      return this.c;
    }
 
-   @Override
-   public boolean b() {
-      return this.c.b();
+   public fyu c() {
+      return eql.O().a(this.a()).apply(this.b());
    }
 
-   @Override
-   public boolean c() {
-      return this.c.c();
-   }
-
-   @Override
-   public boolean d() {
-      return this.c.d();
-   }
-
-   @Override
-   public fyl e() {
-      return this.c.e();
-   }
-
-   @Override
-   public fou f() {
-      return this.c.f();
-   }
-
-   @Override
-   public fos g() {
-      return this.c.g();
-   }
-
-   public static class a {
-      private final List<bfc.b<gam>> a = Lists.newArrayList();
-
-      public gay.a a(@Nullable gam $$0, int $$1) {
-         if ($$0 != null) {
-            this.a.add(bfc.a($$0, $$1));
-         }
-
-         return this;
+   public foc a(Function<aer, foc> $$0) {
+      if (this.d == null) {
+         this.d = $$0.apply(this.b);
       }
 
-      @Nullable
-      public gam a() {
-         if (this.a.isEmpty()) {
-            return null;
-         } else {
-            return (gam)(this.a.size() == 1 ? this.a.get(0).b() : new gay(this.a));
-         }
+      return this.d;
+   }
+
+   public elj a(fnu $$0, Function<aer, foc> $$1) {
+      return this.c().a($$0.getBuffer(this.a($$1)));
+   }
+
+   public elj a(fnu $$0, Function<aer, foc> $$1, boolean $$2) {
+      return this.c().a(ftv.c($$0, this.a($$1), true, $$2));
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         gay $$1 = (gay)$$0;
+         return this.b.equals($$1.b) && this.c.equals($$1.c);
+      } else {
+         return false;
       }
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.b, this.c);
+   }
+
+   @Override
+   public String toString() {
+      return "Material{atlasLocation=" + this.b + ", texture=" + this.c + "}";
    }
 }

@@ -1,50 +1,30 @@
-import com.google.common.collect.Lists;
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class dru extends drw {
-   public static final Codec<dru> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ari.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
-               dzg.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
-               aqy.k.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
-            )
-            .and(b($$0))
-            .apply($$0, dru::new)
-   );
-   private final ari<Integer> i;
-   private final dzg.a j;
-   private final float k;
-   private final dzg l;
+public abstract class dru extends drr {
+   protected final long c;
+   protected final dzf.a d;
+   protected final float e;
+   protected final dzf f;
 
-   public dru(ari<Integer> $$0, dzg.a $$1, float $$2, long $$3, dzg.a $$4, float $$5, List<dfa> $$6) {
-      super($$3, $$4, $$5, $$6);
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = dzg.b(new dli(new dkk($$3)), $$1);
+   protected static <P extends dru> P3<Mu<P>, Long, dzf.a, Float> a(Instance<P> $$0) {
+      return $$0.group(
+         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
+         dzf.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
+         aqy.k.fieldOf("scale").forGetter($$0x -> $$0x.e)
+      );
    }
 
-   @Override
-   protected drt<?> a() {
-      return drt.e;
+   protected dru(long $$0, dzf.a $$1, float $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = dzf.b(new dlh(new dkj($$0)), $$1);
    }
 
-   @Override
-   public dfa a(aru $$0, gu $$1) {
-      double $$2 = this.a($$1);
-      int $$3 = (int)arp.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
-      List<dfa> $$4 = Lists.newArrayListWithCapacity($$3);
-
-      for (int $$5 = 0; $$5 < $$3; $$5++) {
-         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
-      }
-
-      return this.a($$4, $$1, (double)this.e);
-   }
-
-   protected double a(gu $$0) {
-      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
+   protected double a(gu $$0, double $$1) {
+      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
    }
 }

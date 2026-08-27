@@ -1,26 +1,34 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class bna {
-   private static final float a = 0.3F;
+   public static <E extends bja> bkq<E> a(Function<E, Optional<? extends biy>> $$0) {
+      return a($$0x -> true, $$0);
+   }
 
-   public static bma<biy> a() {
-      return boc.a(
-         (Function<boc.b<biy>, ? extends App<boc.c<biy>, bof<biy>>>)($$0 -> $$0.group($$0.a(bsa.m), $$0.a(bsa.n), $$0.b(bsa.e), $$0.b(bsa.h), $$0.c(bsa.q))
-               .apply($$0, ($$1, $$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     hd $$9 = $$0.b($$3);
-                     bsc $$10 = $$0.b($$4);
-                     if ($$6.y_().a(100) == 0 && $$6.ac() == $$9.a() && $$9.b().a($$7.di(), 4.0) && $$10.d($$0xxx -> bim.bf.equals($$0xxx.ag()))) {
-                        $$10.a($$1xx -> bim.bf.equals($$1xx.ag()) && $$1xx.f((bii)$$7) <= 32.0).ifPresent($$3xx -> {
-                           $$5.a($$3xx);
-                           $$2.a(new blb($$3xx, true));
-                           $$1.a(new bsd(new blb($$3xx, false), 0.3F, 1));
-                        });
-                        return true;
-                     } else {
+   public static <E extends bja> bkq<E> a(Predicate<E> $$0, Function<E, Optional<? extends biy>> $$1) {
+      return bob.a(
+         (Function<bob.b<E>, ? extends App<bob.c<E>, boe<E>>>)($$2 -> $$2.group($$2.c(brz.o), $$2.a(brz.E)).apply($$2, ($$2x, $$3) -> ($$4, $$5, $$6) -> {
+                  if (!$$0.test((E)$$5)) {
+                     return false;
+                  } else {
+                     Optional<? extends biy> $$7 = $$1.apply((E)$$5);
+                     if ($$7.isEmpty()) {
                         return false;
+                     } else {
+                        biy $$8 = $$7.get();
+                        if (!$$5.c($$8)) {
+                           return false;
+                        } else {
+                           $$2x.a($$8);
+                           $$3.b();
+                           return true;
+                        }
                      }
-                  }))
+                  }
+               }))
       );
    }
 }

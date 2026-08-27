@@ -1,85 +1,135 @@
+import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class bwq extends bpu {
-   private final bwp a;
+public class bwq extends bwl {
+   private int bU = 47999;
 
-   public bwq(bwp $$0) {
-      this.a = $$0;
+   public bwq(bim<? extends bwq> $$0, cpl $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public boolean a() {
-      return this.a.dK().a(this.a.dp(), this.a.dr(), this.a.dv(), 10.0);
+   public boolean gj() {
+      return true;
+   }
+
+   @Nullable
+   @Override
+   protected bwl go() {
+      return bim.ba.a(this.dK());
    }
 
    @Override
-   public void e() {
-      akk $$0 = (akk)this.a.dK();
-      bgo $$1 = $$0.d_(this.a.dk());
-      this.a.w(false);
-      this.a.x(true);
-      this.a.c_(0);
-      bix $$2 = bim.ai.a((cpm)$$0);
-      if ($$2 != null) {
-         $$2.d(this.a.dp(), this.a.dr(), this.a.dv());
-         $$2.a(true);
-         $$0.b($$2);
-         bzj $$3 = this.a($$1, this.a);
-         if ($$3 != null) {
-            $$3.n(this.a);
-            $$0.a_($$3);
+   public void b(qr $$0) {
+      super.b($$0);
+      $$0.a("DespawnDelay", this.bU);
+   }
 
-            for (int $$4 = 0; $$4 < 3; $$4++) {
-               bwj $$5 = this.a($$1);
-               if ($$5 != null) {
-                  bzj $$6 = this.a($$1, $$5);
-                  if ($$6 != null) {
-                     $$6.n($$5);
-                     $$5.j(this.a.ee().a(0.0, 1.1485), 0.0, this.a.ee().a(0.0, 1.1485));
-                     $$0.a_($$5);
-                  }
-               }
-            }
+   @Override
+   public void a(qr $$0) {
+      super.a($$0);
+      if ($$0.b("DespawnDelay", 99)) {
+         this.bU = $$0.h("DespawnDelay");
+      }
+   }
+
+   @Override
+   protected void w() {
+      super.w();
+      this.bO.a(1, new bqm(this, 2.0));
+      this.bP.a(1, new bwq.a(this));
+   }
+
+   @Override
+   public void w(int $$0) {
+      this.bU = $$0;
+   }
+
+   @Override
+   protected void f(cbm $$0) {
+      bii $$1 = this.fP();
+      if (!($$1 instanceof cbf)) {
+         super.f($$0);
+      }
+   }
+
+   @Override
+   public void b_() {
+      super.b_();
+      if (!this.dK().B) {
+         this.gQ();
+      }
+   }
+
+   private void gQ() {
+      if (this.gR()) {
+         this.bU = this.gS() ? ((cbf)this.fP()).gj() - 1 : this.bU - 1;
+         if (this.bU <= 0) {
+            this.a(true, false);
+            this.ak();
          }
       }
    }
 
-   @Nullable
-   private bwj a(bgo $$0) {
-      bwp $$1 = bim.aK.a(this.a.dK());
-      if ($$1 != null) {
-         $$1.a((akk)this.a.dK(), $$0, bjc.k, null, null);
-         $$1.e(this.a.dp(), this.a.dr(), this.a.dv());
-         $$1.al = 60;
-         $$1.fF();
-         $$1.x(true);
-         $$1.c_(0);
-      }
+   private boolean gR() {
+      return !this.gp() && !this.gT() && !this.cU();
+   }
 
-      return $$1;
+   private boolean gS() {
+      return this.fP() instanceof cbf;
+   }
+
+   private boolean gT() {
+      return this.fO() && !this.gS();
    }
 
    @Nullable
-   private bzj a(bgo $$0, bwj $$1) {
-      bzj $$2 = bim.aJ.a($$1.dK());
-      if ($$2 != null) {
-         $$2.a((akk)$$1.dK(), $$0, bjc.k, null, null);
-         $$2.e($$1.dp(), $$1.dr(), $$1.dv());
-         $$2.al = 60;
-         $$2.fF();
-         if ($$2.c(bin.f).b()) {
-            $$2.a(bin.f, new ciy(cjb.oS));
+   @Override
+   public bjr a(cqa $$0, bgo $$1, bjc $$2, @Nullable bjr $$3, @Nullable qr $$4) {
+      if ($$2 == bjc.h) {
+         this.c_(0);
+      }
+
+      if ($$3 == null) {
+         $$3 = new bid.a(false);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   protected static class a extends brt {
+      private final bwl a;
+      private biy b;
+      private int c;
+
+      public a(bwl $$0) {
+         super($$0, false);
+         this.a = $$0;
+         this.a(EnumSet.of(bpt.a.d));
+      }
+
+      @Override
+      public boolean a() {
+         if (!this.a.fO()) {
+            return false;
+         } else if (!(this.a.fP() instanceof cbf $$1)) {
+            return false;
+         } else {
+            this.b = $$1.ef();
+            int $$2 = $$1.eg();
+            return $$2 != this.c && this.a(this.b, btk.a);
+         }
+      }
+
+      @Override
+      public void c() {
+         this.e.h(this.b);
+         bii $$0 = this.a.fP();
+         if ($$0 instanceof cbf) {
+            this.c = ((cbf)$$0).eg();
          }
 
-         $$2.a(bin.a, cnh.a($$2.ee(), this.a($$2.eR()), (int)(5.0F + $$0.d() * (float)$$2.ee().a(18)), false));
-         $$2.a(bin.f, cnh.a($$2.ee(), this.a($$2.c(bin.f)), (int)(5.0F + $$0.d() * (float)$$2.ee().a(18)), false));
+         super.c();
       }
-
-      return $$2;
-   }
-
-   private ciy a(ciy $$0) {
-      $$0.c("Enchantments");
-      return $$0;
    }
 }

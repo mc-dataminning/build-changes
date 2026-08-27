@@ -37,8 +37,8 @@ public class ahu {
       akk $$3 = $$0.e();
       aki $$4 = $$3.k();
       $$4.a.d();
-      ehe $$5 = $$0.d();
-      cot $$6 = new cot(gu.a($$5));
+      ehd $$5 = $$0.d();
+      cos $$6 = new cos(gu.a($$5));
       int $$7 = $$6.f - $$1;
       int $$8 = $$6.f + $$1;
       int $$9 = $$6.e - $$1;
@@ -46,11 +46,11 @@ public class ahu {
 
       for (int $$11 = $$7; $$11 <= $$8; $$11++) {
          for (int $$12 = $$9; $$12 <= $$10; $$12++) {
-            cot $$13 = new cot($$12, $$11);
-            dhh $$14 = $$4.a($$12, $$11, false);
+            cos $$13 = new cos($$12, $$11);
+            dhg $$14 = $$4.a($$12, $$11, false);
             if ($$14 != null && (!$$2 || !$$14.s())) {
                for (gu $$15 : gu.b($$13.d(), $$3.C_(), $$13.e(), $$13.f(), $$3.aj() - 1, $$13.g())) {
-                  $$3.a($$15, csn.a.n(), 16);
+                  $$3.a($$15, csm.a.n(), 16);
                }
             }
          }
@@ -59,29 +59,29 @@ public class ahu {
       bfj<Runnable> $$16 = bfj.a(ac.f(), "worldgen-resetchunks");
       long $$17 = System.currentTimeMillis();
       int $$18 = ($$1 * 2 + 1) * ($$1 * 2 + 1);
-      UnmodifiableIterator var33 = ImmutableList.of(dhb.f, dhb.g, dhb.h, dhb.i, dhb.j, dhb.k).iterator();
+      UnmodifiableIterator var33 = ImmutableList.of(dha.f, dha.g, dha.h, dha.i, dha.j, dha.k).iterator();
 
       while (var33.hasNext()) {
-         dhb $$19 = (dhb)var33.next();
+         dha $$19 = (dha)var33.next();
          long $$20 = System.currentTimeMillis();
          CompletableFuture<Unit> $$21 = CompletableFuture.supplyAsync(() -> Unit.INSTANCE, $$16::a);
 
          for (int $$22 = $$6.f - $$1; $$22 <= $$6.f + $$1; $$22++) {
             for (int $$23 = $$6.e - $$1; $$23 <= $$6.e + $$1; $$23++) {
-               cot $$24 = new cot($$23, $$22);
-               dhh $$25 = $$4.a($$23, $$22, false);
+               cos $$24 = new cos($$23, $$22);
+               dhg $$25 = $$4.a($$23, $$22, false);
                if ($$25 != null && (!$$2 || !$$25.s())) {
-                  List<dgw> $$26 = Lists.newArrayList();
+                  List<dgv> $$26 = Lists.newArrayList();
                   int $$27 = Math.max(1, $$19.e());
 
                   for (int $$28 = $$24.f - $$27; $$28 <= $$24.f + $$27; $$28++) {
                      for (int $$29 = $$24.e - $$27; $$29 <= $$24.e + $$27; $$29++) {
-                        dgw $$30 = $$4.a($$29, $$28, $$19.d(), true);
-                        dgw $$31;
-                        if ($$30 instanceof dhg) {
-                           $$31 = new dhg(((dhg)$$30).C(), true);
-                        } else if ($$30 instanceof dhh) {
-                           $$31 = new dhg((dhh)$$30, true);
+                        dgv $$30 = $$4.a($$29, $$28, $$19.d(), true);
+                        dgv $$31;
+                        if ($$30 instanceof dhf) {
+                           $$31 = new dhf(((dhf)$$30).C(), true);
+                        } else if ($$30 instanceof dhg) {
+                           $$31 = new dhf((dhg)$$30, true);
                         } else {
                            $$31 = $$30;
                         }
@@ -93,8 +93,8 @@ public class ahu {
                   $$21 = $$21.thenComposeAsync($$5x -> $$19.a($$16::a, $$3, $$4.g(), $$3.p(), $$4.a(), $$0xx -> {
                         throw new UnsupportedOperationException("Not creating full chunks here");
                      }, $$26).thenApply($$1xx -> {
-                        if ($$19 == dhb.g) {
-                           $$1xx.left().ifPresent($$0xxx -> dkj.a($$0xxx, dhb.b));
+                        if ($$19 == dha.g) {
+                           $$1xx.left().ifPresent($$0xxx -> dki.a($$0xxx, dha.b));
                         }
 
                         return Unit.INSTANCE;
@@ -111,8 +111,8 @@ public class ahu {
 
       for (int $$35 = $$6.f - $$1; $$35 <= $$6.f + $$1; $$35++) {
          for (int $$36 = $$6.e - $$1; $$36 <= $$6.e + $$1; $$36++) {
-            cot $$37 = new cot($$36, $$35);
-            dhh $$38 = $$4.a($$36, $$35, false);
+            cos $$37 = new cos($$36, $$35);
+            dhg $$38 = $$4.a($$36, $$35, false);
             if ($$38 != null && (!$$2 || !$$38.s())) {
                for (gu $$39 : gu.b($$37.d(), $$3.C_(), $$37.e(), $$37.f(), $$3.aj() - 1, $$37.g())) {
                   $$4.a($$39);

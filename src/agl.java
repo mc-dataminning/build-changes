@@ -10,11 +10,11 @@ public class agl {
       );
    }
 
-   private static int a(dr $$0, cpj $$1) {
+   private static int a(dr $$0, cpi $$1) {
       int $$2 = 0;
       MinecraftServer $$3 = $$0.l();
       $$3.a($$1);
-      cpj $$4 = $$3.aX();
+      cpi $$4 = $$3.aW();
       if ($$4 != null) {
          for (akl $$5 : $$3.ac().t()) {
             if ($$5.a($$4)) {

@@ -1,22 +1,9 @@
-public class cex extends cfw {
-   private final cef a;
-
-   public cex(cef $$0, bgj $$1, int $$2, int $$3, int $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.a = $$0;
+public class cex extends cee {
+   public cex(int $$0, cbl $$1) {
+      super(cfi.n, cmd.b, cfo.b, $$0, $$1);
    }
 
-   @Override
-   public boolean a(ciy $$0) {
-      return this.a.d($$0) || c($$0);
-   }
-
-   @Override
-   public int a_(ciy $$0) {
-      return c($$0) ? 1 : super.a_($$0);
-   }
-
-   public static boolean c(ciy $$0) {
-      return $$0.a(cjb.pK);
+   public cex(int $$0, cbl $$1, bgj $$2, cen $$3) {
+      super(cfi.n, cmd.b, cfo.b, $$0, $$1, $$2, $$3);
    }
 }

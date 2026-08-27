@@ -1,123 +1,54 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class ctf extends cre {
+   private static final float c = 0.05F;
+   private static final float d = 0.1F;
 
-public class ctf extends cwf {
-   public static final dfu a = cwf.aC;
-   @Nullable
-   private dff b;
-   @Nullable
-   private dff c;
-   @Nullable
-   private dff d;
-   @Nullable
-   private dff e;
-   private static final Predicate<dfa> f = $$0 -> $$0 != null && ($$0.a(csn.ef) || $$0.a(csn.eg));
-
-   protected ctf(dez.d $$0) {
-      super($$0);
-      this.k(this.C.b().a(a, ha.c));
+   public ctf(dey.d $$0) {
+      super($$0, ib.a);
    }
 
    @Override
-   public void b(dfa $$0, cpm $$1, gu $$2, dfa $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2);
-      }
+   public boolean d(dez $$0) {
+      return false;
    }
 
-   public boolean a(cpp $$0, gu $$1) {
-      return this.a().a($$0, $$1) != null || this.u().a($$0, $$1) != null;
-   }
-
-   private void a(cpm $$0, gu $$1) {
-      dff.b $$2 = this.g().a($$0, $$1);
-      if ($$2 != null) {
-         bvi $$3 = bim.aO.a($$0);
-         if ($$3 != null) {
-            a($$0, $$2, $$3, $$2.a(0, 2, 0).d());
-         }
+   protected static boolean a(cpl $$0, cqj.c $$1) {
+      if ($$1 == cqj.c.b) {
+         return $$0.y_().i() < 0.05F;
       } else {
-         dff.b $$4 = this.v().a($$0, $$1);
-         if ($$4 != null) {
-            buw $$5 = bim.ac.a($$0);
-            if ($$5 != null) {
-               $$5.x(true);
-               a($$0, $$4, $$5, $$4.a(1, 2, 0).d());
-            }
-         }
+         return $$1 == cqj.c.c ? $$0.y_().i() < 0.1F : false;
       }
    }
 
-   private static void a(cpm $$0, dff.b $$1, bii $$2, gu $$3) {
-      a($$0, $$1);
-      $$2.b((double)$$3.u() + 0.5, (double)$$3.v() + 0.05, (double)$$3.w() + 0.5, 0.0F, 0.0F);
-      $$0.b($$2);
-
-      for (akl $$4 : $$0.a(akl.class, $$2.cG().g(5.0))) {
-         ai.n.a($$4, $$2);
-      }
-
-      b($$0, $$1);
-   }
-
-   public static void a(cpm $$0, dff.b $$1) {
-      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
-         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
-            dfe $$4 = $$1.a($$2, $$3, 0);
-            $$0.a($$4.d(), csn.a.n(), 2);
-            $$0.c(2001, $$4.d(), csm.i($$4.a()));
-         }
-      }
-   }
-
-   public static void b(cpm $$0, dff.b $$1) {
-      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
-         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
-            dfe $$4 = $$1.a($$2, $$3, 0);
-            $$0.b($$4.d(), csn.a);
+   @Override
+   public void a(dez $$0, cpl $$1, gu $$2, cqj.c $$3) {
+      if (a($$1, $$3)) {
+         if ($$3 == cqj.c.b) {
+            $$1.b($$2, csm.fu.n());
+            $$1.a(null, djj.c, $$2);
+         } else if ($$3 == cqj.c.c) {
+            $$1.b($$2, csm.fw.n());
+            $$1.a(null, djj.c, $$2);
          }
       }
    }
 
    @Override
-   public dfa a(clg $$0) {
-      return this.n().a(a, $$0.g().g());
+   protected boolean a(eab $$0) {
+      return true;
    }
 
    @Override
-   protected void a(dfb.a<csm, dfa> $$0) {
-      $$0.a(a);
-   }
-
-   private dff a() {
-      if (this.b == null) {
-         this.b = dfg.a().a(" ", "#", "#").a('#', dfe.a(dfj.a(csn.dP))).b();
+   protected void a(dez $$0, cpl $$1, gu $$2, eab $$3) {
+      if ($$3 == ead.c) {
+         dez $$4 = csm.fu.n();
+         $$1.b($$2, $$4);
+         $$1.a(djj.c, $$2, djj.a.a($$4));
+         $$1.c(1047, $$2, 0);
+      } else if ($$3 == ead.e) {
+         dez $$5 = csm.fv.n();
+         $$1.b($$2, $$5);
+         $$1.a(djj.c, $$2, djj.a.a($$5));
+         $$1.c(1046, $$2, 0);
       }
-
-      return this.b;
-   }
-
-   private dff g() {
-      if (this.c == null) {
-         this.c = dfg.a().a("^", "#", "#").a('^', dfe.a(f)).a('#', dfe.a(dfj.a(csn.dP))).b();
-      }
-
-      return this.c;
-   }
-
-   private dff u() {
-      if (this.d == null) {
-         this.d = dfg.a().a("~ ~", "###", "~#~").a('#', dfe.a(dfj.a(csn.ci))).a('~', $$0 -> $$0.a().i()).b();
-      }
-
-      return this.d;
-   }
-
-   private dff v() {
-      if (this.e == null) {
-         this.e = dfg.a().a("~^~", "###", "~#~").a('^', dfe.a(f)).a('#', dfe.a(dfj.a(csn.ci))).a('~', $$0 -> $$0.a().i()).b();
-      }
-
-      return this.e;
    }
 }

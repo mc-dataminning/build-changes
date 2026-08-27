@@ -1,47 +1,59 @@
-import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public record eew(he<cnf> b, List<Float> c) implements efg {
-   public static final Codec<eew> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(jb.g.r().fieldOf("enchantment").forGetter(eew::c), Codec.FLOAT.listOf().fieldOf("chances").forGetter(eew::d)).apply($$0, eew::new)
-   );
+public abstract class eew implements eff {
+   protected final List<eff> c;
+   private final Predicate<ecg> a;
 
-   @Override
-   public efh b() {
-      return efi.l;
+   protected eew(List<eff> $$0, Predicate<ecg> $$1) {
+      this.c = $$0;
+      this.a = $$1;
+   }
+
+   protected static <T extends eew> Codec<T> a(Function<List<eff>, T> $$0) {
+      return RecordCodecBuilder.create($$1 -> $$1.group(efh.a.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
+   }
+
+   protected static <T extends eew> Codec<T> b(Function<List<eff>, T> $$0) {
+      return efh.a.listOf().xmap($$0, $$0x -> $$0x.c);
+   }
+
+   public final boolean a(ecg $$0) {
+      return this.a.test($$0);
    }
 
    @Override
-   public Set<eep<?>> a() {
-      return ImmutableSet.of(ees.i);
+   public void a(ecp $$0) {
+      eff.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.b(".term[" + $$1 + "]"));
+      }
    }
 
-   public boolean a(ech $$0) {
-      ciy $$1 = $$0.c(ees.i);
-      int $$2 = $$1 != null ? cnh.a(this.b.a(), $$1) : 0;
-      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
-      return $$0.b().i() < $$3;
-   }
+   public abstract static class a implements eff.a {
+      private final Builder<eff> a = ImmutableList.builder();
 
-   public static efg.a a(cnf $$0, float... $$1) {
-      List<Float> $$2 = new ArrayList<>($$1.length);
-
-      for (float $$3 : $$1) {
-         $$2.add($$3);
+      protected a(eff.a... $$0) {
+         for (eff.a $$1 : $$0) {
+            this.a.add($$1.build());
+         }
       }
 
-      return () -> new eew($$0.j(), $$2);
-   }
+      public void a(eff.a $$0) {
+         this.a.add($$0.build());
+      }
 
-   public he<cnf> c() {
-      return this.b;
-   }
+      @Override
+      public eff build() {
+         return this.a(this.a.build());
+      }
 
-   public List<Float> d() {
-      return this.c;
+      protected abstract eff a(List<eff> var1);
    }
 }

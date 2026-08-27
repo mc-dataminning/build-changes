@@ -1,61 +1,31 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class dmi {
-   public static final dmi a = new dmi(false, csn.gz.n(), csn.pL.n(), csn.ek.n(), csn.aQ.n());
-   public static final Codec<dmi> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(dmi::a),
-               dfa.b.optionalFieldOf("air_state", a.b()).forGetter(dmi::b),
-               dfa.b.optionalFieldOf("water_state", a.b()).forGetter(dmi::c),
-               dfa.b.optionalFieldOf("lava_state", a.b()).forGetter(dmi::d),
-               dfa.b.optionalFieldOf("barrier_state", a.b()).forGetter(dmi::e)
-            )
-            .apply($$0, dmi::new)
-   );
-   private final boolean c;
-   private final dfa d;
-   private final dfa e;
-   private final dfa f;
-   private final dfa g;
+public class dmi extends dlf {
+   private final hs a;
+   private final dkm b;
+   private final dkw c;
+   private final dkz.o d;
 
-   public static dmi a(boolean $$0, dfa $$1, dfa $$2, dfa $$3, dfa $$4) {
-      return new dmi($$0, $$1, $$2, $$3, $$4);
+   public dmi(dkl $$0, hs $$1, cpn $$2, dkm $$3, dkw $$4, dkz.o $$5) {
+      super($$0, $$2);
+      this.a = $$1;
+      this.b = $$3;
+      this.c = $$4;
+      this.d = $$5;
    }
 
-   public static dmi a(dfa $$0, dfa $$1, dfa $$2, dfa $$3) {
-      return new dmi(false, $$0, $$1, $$2, $$3);
+   @Deprecated
+   public Optional<dez> a(Function<gu, he<cqj>> $$0, dgv $$1, gu $$2, boolean $$3) {
+      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
    }
 
-   public static dmi a(boolean $$0, dfa $$1) {
-      return new dmi($$0, $$1, a.c(), a.d(), a.e());
+   @Deprecated
+   public hs c() {
+      return this.a;
    }
 
-   private dmi(boolean $$0, dfa $$1, dfa $$2, dfa $$3, dfa $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-   }
-
-   public boolean a() {
+   public dkw d() {
       return this.c;
-   }
-
-   public dfa b() {
-      return this.d;
-   }
-
-   public dfa c() {
-      return this.e;
-   }
-
-   public dfa d() {
-      return this.f;
-   }
-
-   public dfa e() {
-      return this.g;
    }
 }

@@ -1,11 +1,78 @@
-public class cgm extends cit {
-   public cgm(cit.a $$0) {
-      super($$0);
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
+import java.util.Optional;
+
+public class cgm extends chh {
+   protected static final Map<csl, csl> a = new Builder()
+      .put(csm.ao, csm.aw)
+      .put(csm.U, csm.al)
+      .put(csm.au, csm.aC)
+      .put(csm.aa, csm.ak)
+      .put(csm.as, csm.aA)
+      .put(csm.Y, csm.ai)
+      .put(csm.at, csm.aB)
+      .put(csm.Z, csm.aj)
+      .put(csm.aq, csm.ay)
+      .put(csm.W, csm.ag)
+      .put(csm.ar, csm.az)
+      .put(csm.X, csm.ah)
+      .put(csm.ap, csm.ax)
+      .put(csm.V, csm.af)
+      .put(csm.oj, csm.ok)
+      .put(csm.ol, csm.om)
+      .put(csm.os, csm.ot)
+      .put(csm.ou, csm.ov)
+      .put(csm.av, csm.aD)
+      .put(csm.ab, csm.am)
+      .put(csm.ae, csm.an)
+      .build();
+
+   protected cgm(ckk $$0, float $$1, float $$2, cis.a $$3) {
+      super($$1, $$2, $$0, apl.bz, $$3);
    }
 
-   public cbt a(cpm $$0, ciy $$1, biy $$2) {
-      cbv $$3 = new cbv($$0, $$2);
-      $$3.a($$1);
-      return $$3;
+   @Override
+   public bgq a(clh $$0) {
+      cpl $$1 = $$0.q();
+      gu $$2 = $$0.a();
+      cbm $$3 = $$0.o();
+      dez $$4 = $$1.a_($$2);
+      Optional<dez> $$5 = this.b($$4);
+      Optional<dez> $$6 = dbn.b($$4);
+      Optional<dez> $$7 = Optional.ofNullable((csl)cim.b.get().get($$4.b())).map($$1x -> $$1x.l($$4));
+      cix $$8 = $$0.n();
+      Optional<dez> $$9 = Optional.empty();
+      if ($$5.isPresent()) {
+         $$1.a($$3, $$2, aow.as, aox.e, 1.0F, 1.0F);
+         $$9 = $$5;
+      } else if ($$6.isPresent()) {
+         $$1.a($$3, $$2, aow.at, aox.e, 1.0F, 1.0F);
+         $$1.a($$3, 3005, $$2, 0);
+         $$9 = $$6;
+      } else if ($$7.isPresent()) {
+         $$1.a($$3, $$2, aow.au, aox.e, 1.0F, 1.0F);
+         $$1.a($$3, 3004, $$2, 0);
+         $$9 = $$7;
+      }
+
+      if ($$9.isPresent()) {
+         if ($$3 instanceof akl) {
+            ai.M.a((akl)$$3, $$2, $$8);
+         }
+
+         $$1.a($$2, $$9.get(), 11);
+         $$1.a(djj.c, $$2, djj.a.a($$3, $$9.get()));
+         if ($$3 != null) {
+            $$8.a(1, $$3, $$1x -> $$1x.d($$0.p()));
+         }
+
+         return bgq.a($$1.B);
+      } else {
+         return bgq.d;
+      }
+   }
+
+   private Optional<dez> b(dez $$0) {
+      return Optional.ofNullable(a.get($$0.b())).map($$1 -> $$1.n().a(cyw.g, $$0.c(cyw.g)));
    }
 }

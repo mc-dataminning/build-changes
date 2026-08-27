@@ -1,150 +1,205 @@
-import java.util.Optional;
-import java.util.function.BiFunction;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import java.util.Spliterators.AbstractSpliterator;
+import java.util.function.Consumer;
 import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 import javax.annotation.Nullable;
 
-public interface cos extends cpo {
-   @Nullable
-   dcm c_(gu var1);
+public class cos {
+   private static final int g = 1056;
+   public static final long a = c(1875066, 1875066);
+   public static final cos b = new cos(0, 0);
+   private static final long h = 32L;
+   private static final long i = 4294967295L;
+   private static final int j = 5;
+   public static final int c = 32;
+   private static final int k = 31;
+   public static final int d = 31;
+   public final int e;
+   public final int f;
+   private static final int l = 1664525;
+   private static final int m = 1013904223;
+   private static final int n = -559038737;
 
-   default <T extends dcm> Optional<T> a(gu $$0, dco<T> $$1) {
-      dcm $$2 = this.c_($$0);
-      return $$2 != null && $$2.u() == $$1 ? Optional.of((T)$$2) : Optional.empty();
+   public cos(int $$0, int $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   dfa a_(gu var1);
-
-   ead b_(gu var1);
-
-   default int h(gu $$0) {
-      return this.a_($$0).h();
+   public cos(gu $$0) {
+      this.e = hx.a($$0.u());
+      this.f = hx.a($$0.w());
    }
 
-   default int M() {
-      return 15;
+   public cos(long $$0) {
+      this.e = (int)$$0;
+      this.f = (int)($$0 >> 32);
    }
 
-   default Stream<dfa> a(egz $$0) {
-      return gu.a($$0).map(this::a_);
+   public static cos a(int $$0, int $$1) {
+      return new cos($$0 << 5, $$1 << 5);
    }
 
-   default eha a(cou $$0) {
-      return a($$0.b(), $$0.a(), $$0, ($$0x, $$1) -> {
-         dfa $$2 = this.a_($$1);
-         ehe $$3 = $$0x.b().d($$0x.a());
-         return $$0x.c().test($$2) ? new eha($$0x.a(), ha.a($$3.c, $$3.d, $$3.e), gu.a($$0x.a()), false) : null;
-      }, $$0x -> {
-         ehe $$1 = $$0x.b().d($$0x.a());
-         return eha.a($$0x.a(), ha.a($$1.c, $$1.d, $$1.e), gu.a($$0x.a()));
-      });
+   public static cos b(int $$0, int $$1) {
+      return new cos(($$0 << 5) + 31, ($$1 << 5) + 31);
    }
 
-   default eha a(cov $$0) {
-      return a($$0.b(), $$0.a(), $$0, ($$0x, $$1) -> {
-         dfa $$2 = this.a_($$1);
-         ead $$3 = this.b_($$1);
-         ehe $$4 = $$0x.b();
-         ehe $$5 = $$0x.a();
-         ehx $$6 = $$0x.a($$2, this, $$1);
-         eha $$7 = this.a($$4, $$5, $$1, $$6, $$2);
-         ehx $$8 = $$0x.a($$3, this, $$1);
-         eha $$9 = $$8.a($$4, $$5, $$1);
-         double $$10 = $$7 == null ? Double.MAX_VALUE : $$0x.b().g($$7.e());
-         double $$11 = $$9 == null ? Double.MAX_VALUE : $$0x.b().g($$9.e());
-         return $$10 <= $$11 ? $$7 : $$9;
-      }, $$0x -> {
-         ehe $$1 = $$0x.b().d($$0x.a());
-         return eha.a($$0x.a(), ha.a($$1.c, $$1.d, $$1.e), gu.a($$0x.a()));
-      });
+   public long a() {
+      return c(this.e, this.f);
    }
 
-   @Nullable
-   default eha a(ehe $$0, ehe $$1, gu $$2, ehx $$3, dfa $$4) {
-      eha $$5 = $$3.a($$0, $$1, $$2);
-      if ($$5 != null) {
-         eha $$6 = $$4.m(this, $$2).a($$0, $$1, $$2);
-         if ($$6 != null && $$6.e().d($$0).g() < $$5.e().d($$0).g()) {
-            return $$5.a($$6.b());
-         }
-      }
-
-      return $$5;
+   public static long c(int $$0, int $$1) {
+      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
    }
 
-   default double a(ehx $$0, Supplier<ehx> $$1) {
-      if (!$$0.c()) {
-         return $$0.c(ha.a.b);
+   public static long a(gu $$0) {
+      return c(hx.a($$0.u()), hx.a($$0.w()));
+   }
+
+   public static int a(long $$0) {
+      return (int)($$0 & 4294967295L);
+   }
+
+   public static int b(long $$0) {
+      return (int)($$0 >>> 32 & 4294967295L);
+   }
+
+   @Override
+   public int hashCode() {
+      return d(this.e, this.f);
+   }
+
+   public static int d(int $$0, int $$1) {
+      int $$2 = 1664525 * $$0 + 1013904223;
+      int $$3 = 1664525 * ($$1 ^ -559038737) + 1013904223;
+      return $$2 ^ $$3;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
       } else {
-         double $$2 = $$1.get().c(ha.a.b);
-         return $$2 >= 1.0 ? $$2 - 1.0 : Double.NEGATIVE_INFINITY;
+         return !($$0 instanceof cos $$1) ? false : this.e == $$1.e && this.f == $$1.f;
       }
    }
 
-   default double i(gu $$0) {
-      return this.a(this.a_($$0).k(this, $$0), () -> {
-         gu $$1 = $$0.d();
-         return this.a_($$1).k(this, $$1);
-      });
+   public int b() {
+      return this.a(8);
    }
 
-   static <T, C> T a(ehe $$0, ehe $$1, C $$2, BiFunction<C, gu, T> $$3, Function<C, T> $$4) {
-      if ($$0.equals($$1)) {
-         return $$4.apply($$2);
-      } else {
-         double $$5 = arp.d(-1.0E-7, $$1.c, $$0.c);
-         double $$6 = arp.d(-1.0E-7, $$1.d, $$0.d);
-         double $$7 = arp.d(-1.0E-7, $$1.e, $$0.e);
-         double $$8 = arp.d(-1.0E-7, $$0.c, $$1.c);
-         double $$9 = arp.d(-1.0E-7, $$0.d, $$1.d);
-         double $$10 = arp.d(-1.0E-7, $$0.e, $$1.e);
-         int $$11 = arp.a($$8);
-         int $$12 = arp.a($$9);
-         int $$13 = arp.a($$10);
-         gu.a $$14 = new gu.a($$11, $$12, $$13);
-         T $$15 = $$3.apply($$2, $$14);
-         if ($$15 != null) {
-            return $$15;
-         } else {
-            double $$16 = $$5 - $$8;
-            double $$17 = $$6 - $$9;
-            double $$18 = $$7 - $$10;
-            int $$19 = arp.j($$16);
-            int $$20 = arp.j($$17);
-            int $$21 = arp.j($$18);
-            double $$22 = $$19 == 0 ? Double.MAX_VALUE : (double)$$19 / $$16;
-            double $$23 = $$20 == 0 ? Double.MAX_VALUE : (double)$$20 / $$17;
-            double $$24 = $$21 == 0 ? Double.MAX_VALUE : (double)$$21 / $$18;
-            double $$25 = $$22 * ($$19 > 0 ? 1.0 - arp.e($$8) : arp.e($$8));
-            double $$26 = $$23 * ($$20 > 0 ? 1.0 - arp.e($$9) : arp.e($$9));
-            double $$27 = $$24 * ($$21 > 0 ? 1.0 - arp.e($$10) : arp.e($$10));
+   public int c() {
+      return this.b(8);
+   }
 
-            while ($$25 <= 1.0 || $$26 <= 1.0 || $$27 <= 1.0) {
-               if ($$25 < $$26) {
-                  if ($$25 < $$27) {
-                     $$11 += $$19;
-                     $$25 += $$22;
-                  } else {
-                     $$13 += $$21;
-                     $$27 += $$24;
+   public int d() {
+      return hx.c(this.e);
+   }
+
+   public int e() {
+      return hx.c(this.f);
+   }
+
+   public int f() {
+      return this.a(15);
+   }
+
+   public int g() {
+      return this.b(15);
+   }
+
+   public int h() {
+      return this.e >> 5;
+   }
+
+   public int i() {
+      return this.f >> 5;
+   }
+
+   public int j() {
+      return this.e & 31;
+   }
+
+   public int k() {
+      return this.f & 31;
+   }
+
+   public gu a(int $$0, int $$1, int $$2) {
+      return new gu(this.a($$0), $$1, this.b($$2));
+   }
+
+   public int a(int $$0) {
+      return hx.a(this.e, $$0);
+   }
+
+   public int b(int $$0) {
+      return hx.a(this.f, $$0);
+   }
+
+   public gu c(int $$0) {
+      return new gu(this.b(), $$0, this.c());
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.e + ", " + this.f + "]";
+   }
+
+   public gu l() {
+      return new gu(this.d(), 0, this.e());
+   }
+
+   public int a(cos $$0) {
+      return Math.max(Math.abs(this.e - $$0.e), Math.abs(this.f - $$0.f));
+   }
+
+   public int b(cos $$0) {
+      return this.e($$0.e, $$0.f);
+   }
+
+   public int c(long $$0) {
+      return this.e(a($$0), b($$0));
+   }
+
+   private int e(int $$0, int $$1) {
+      int $$2 = $$0 - this.e;
+      int $$3 = $$1 - this.f;
+      return $$2 * $$2 + $$3 * $$3;
+   }
+
+   public static Stream<cos> a(cos $$0, int $$1) {
+      return a(new cos($$0.e - $$1, $$0.f - $$1), new cos($$0.e + $$1, $$0.f + $$1));
+   }
+
+   public static Stream<cos> a(final cos $$0, final cos $$1) {
+      int $$2 = Math.abs($$0.e - $$1.e) + 1;
+      int $$3 = Math.abs($$0.f - $$1.f) + 1;
+      final int $$4 = $$0.e < $$1.e ? 1 : -1;
+      final int $$5 = $$0.f < $$1.f ? 1 : -1;
+      return StreamSupport.stream(new AbstractSpliterator<cos>((long)($$2 * $$3), 64) {
+         @Nullable
+         private cos e;
+
+         @Override
+         public boolean tryAdvance(Consumer<? super cos> $$0x) {
+            if (this.e == null) {
+               this.e = $$0;
+            } else {
+               int $$1 = this.e.e;
+               int $$2 = this.e.f;
+               if ($$1 == $$1.e) {
+                  if ($$2 == $$1.f) {
+                     return false;
                   }
-               } else if ($$26 < $$27) {
-                  $$12 += $$20;
-                  $$26 += $$23;
-               } else {
-                  $$13 += $$21;
-                  $$27 += $$24;
-               }
 
-               T $$28 = $$3.apply($$2, $$14.d($$11, $$12, $$13));
-               if ($$28 != null) {
-                  return $$28;
+                  this.e = new cos($$0.e, $$2 + $$5);
+               } else {
+                  this.e = new cos($$1 + $$4, $$2);
                }
             }
 
-            return $$4.apply($$2);
+            $$0.accept(this.e);
+            return true;
          }
-      }
+      }, false);
    }
 }

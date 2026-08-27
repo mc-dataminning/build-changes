@@ -1,65 +1,62 @@
-import java.util.function.ToIntFunction;
+import java.util.List;
+import java.util.Optional;
 
-public class cvt extends cxk implements cso, czn {
-   private static final dfr b = dfq.C;
-   private final cxl c = new cxl(this);
-
-   public cvt(dez.d $$0) {
+public class cvt extends dac implements csn {
+   public cvt(dey.d $$0) {
       super($$0);
-      this.k(this.n().a(b, Boolean.valueOf(false)));
-   }
-
-   public static ToIntFunction<dfa> b(int $$0) {
-      return $$1 -> cxk.n($$1) ? $$0 : 0;
    }
 
    @Override
-   protected void a(dfb.a<csm, dfa> $$0) {
-      super.a($$0);
-      $$0.a(b);
+   public boolean a(cpo $$0, gu $$1, dez $$2) {
+      return $$0.a_($$1.c()).i();
    }
 
    @Override
-   public dfa a(dfa $$0, ha $$1, dfa $$2, cpn $$3, gu $$4, gu $$5) {
-      if ($$0.c(b)) {
-         $$3.a($$4, eae.c, eae.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public boolean a(dfa $$0, clg $$1) {
-      return !$$1.n().a(cjb.fA) || super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean a(cpp $$0, gu $$1, dfa $$2) {
-      return ha.a().anyMatch($$3 -> this.c.a($$2, $$0, $$1, $$3.g()));
-   }
-
-   @Override
-   public boolean a(cpm $$0, aru $$1, gu $$2, dfa $$3) {
+   public boolean a(cpl $$0, aru $$1, gu $$2, dez $$3) {
       return true;
    }
 
    @Override
-   public void a(akk $$0, aru $$1, gu $$2, dfa $$3) {
-      this.c.a($$3, $$0, $$2, $$1);
-   }
+   public void a(akk $$0, aru $$1, gu $$2, dez $$3) {
+      gu $$4 = $$2.c();
+      dez $$5 = csm.bt.n();
+      Optional<he.c<duc>> $$6 = $$0.B_().d(jc.ay).b(pd.n);
 
-   @Override
-   public ead c_(dfa $$0) {
-      return $$0.c(b) ? eae.c.a(false) : super.c_($$0);
-   }
+      label49:
+      for (int $$7 = 0; $$7 < 128; $$7++) {
+         gu $$8 = $$4;
 
-   @Override
-   public boolean c(dfa $$0, cos $$1, gu $$2) {
-      return $$0.u().c();
-   }
+         for (int $$9 = 0; $$9 < $$7 / 16; $$9++) {
+            $$8 = $$8.b($$1.a(3) - 1, ($$1.a(3) - 1) * $$1.a(3) / 2, $$1.a(3) - 1);
+            if (!$$0.a_($$8.d()).a(this) || $$0.a_($$8).r($$0, $$8)) {
+               continue label49;
+            }
+         }
 
-   @Override
-   public cxl b() {
-      return this.c;
+         dez $$10 = $$0.a_($$8);
+         if ($$10.a($$5.b()) && $$1.a(10) == 0) {
+            ((csn)$$5.b()).a($$0, $$1, $$8, $$10);
+         }
+
+         if ($$10.i()) {
+            he<duc> $$12;
+            if ($$1.a(8) == 0) {
+               List<dmz<?, ?>> $$11 = $$0.s($$8).a().d().a();
+               if ($$11.isEmpty()) {
+                  continue;
+               }
+
+               $$12 = ((dqd)$$11.get(0).c()).d();
+            } else {
+               if (!$$6.isPresent()) {
+                  continue;
+               }
+
+               $$12 = $$6.get();
+            }
+
+            $$12.a().a($$0, $$0.k().g(), $$1, $$8);
+         }
+      }
    }
 }

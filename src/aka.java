@@ -2,8 +2,8 @@ public record aka(int a, int b) {
    private static final long c = 32L;
    private static final long d = 4294967295L;
 
-   public cot a() {
-      return new cot(hx.a(this.a), hx.a(this.b));
+   public cos a() {
+      return new cos(hx.a(this.a), hx.a(this.b));
    }
 
    public long b() {
@@ -29,7 +29,7 @@ public record aka(int a, int b) {
 
    @Override
    public int hashCode() {
-      return cot.d(this.a, this.b);
+      return cos.d(this.a, this.b);
    }
 
    public int c() {

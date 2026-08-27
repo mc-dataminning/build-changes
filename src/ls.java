@@ -12,38 +12,38 @@ import javax.annotation.Nullable;
 
 public class ls extends ln implements lp {
    private final lq b;
-   private final cit c;
+   private final cis c;
    private final int d;
    private final List<String> e = Lists.newArrayList();
-   private final Map<Character, cly> f = Maps.newLinkedHashMap();
+   private final Map<Character, clx> f = Maps.newLinkedHashMap();
    private final ae.a g = ae.a.b();
    @Nullable
    private String h;
    private boolean i = true;
 
-   public ls(lq $$0, cpl $$1, int $$2) {
+   public ls(lq $$0, cpk $$1, int $$2) {
       this.b = $$0;
       this.c = $$1.k();
       this.d = $$2;
    }
 
-   public static ls a(lq $$0, cpl $$1) {
+   public static ls a(lq $$0, cpk $$1) {
       return a($$0, $$1, 1);
    }
 
-   public static ls a(lq $$0, cpl $$1, int $$2) {
+   public static ls a(lq $$0, cpk $$1, int $$2) {
       return new ls($$0, $$1, $$2);
    }
 
-   public ls a(Character $$0, aqa<cit> $$1) {
-      return this.a($$0, cly.a($$1));
+   public ls a(Character $$0, aqa<cis> $$1) {
+      return this.a($$0, clx.a($$1));
    }
 
-   public ls a(Character $$0, cpl $$1) {
-      return this.a($$0, cly.a($$1));
+   public ls a(Character $$0, cpk $$1) {
+      return this.a($$0, clx.a($$1));
    }
 
-   public ls a(Character $$0, cly $$1) {
+   public ls a(Character $$0, clx $$1) {
       if (this.f.containsKey($$0)) {
          throw new IllegalArgumentException("Symbol '" + $$0 + "' is already defined!");
       } else if ($$0 == ' ') {
@@ -79,7 +79,7 @@ public class ls extends ln implements lp {
    }
 
    @Override
-   public cit a() {
+   public cis a() {
       return this.c;
    }
 
@@ -120,16 +120,16 @@ public class ls extends ln implements lp {
 
    static class a extends ln.a {
       private final aer a;
-      private final cit b;
+      private final cis b;
       private final int c;
       private final String d;
       private final List<String> e;
-      private final Map<Character, cly> f;
+      private final Map<Character, clx> f;
       private final ae.a g;
       private final aer h;
       private final boolean i;
 
-      public a(aer $$0, cit $$1, int $$2, String $$3, clr $$4, List<String> $$5, Map<Character, cly> $$6, ae.a $$7, aer $$8, boolean $$9) {
+      public a(aer $$0, cis $$1, int $$2, String $$3, clq $$4, List<String> $$5, Map<Character, clx> $$6, ae.a $$7, aer $$8, boolean $$9) {
          super($$4);
          this.a = $$0;
          this.b = $$1;
@@ -158,7 +158,7 @@ public class ls extends ln implements lp {
          $$0.add("pattern", $$1);
          JsonObject $$3 = new JsonObject();
 
-         for (Entry<Character, cly> $$4 : this.f.entrySet()) {
+         for (Entry<Character, clx> $$4 : this.f.entrySet()) {
             $$3.add(String.valueOf($$4.getKey()), $$4.getValue().c());
          }
 
@@ -174,8 +174,8 @@ public class ls extends ln implements lp {
       }
 
       @Override
-      public cmd<?> c() {
-         return cmd.a;
+      public cmc<?> c() {
+         return cmc.a;
       }
 
       @Override

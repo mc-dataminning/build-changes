@@ -5,7 +5,7 @@ import java.util.UUID;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class bit extends bii implements big, bjv {
+public class bit extends bii implements big, bju {
    private static final Logger b = LogUtils.getLogger();
    private static final adz<Float> c = aec.a(bit.class, aeb.d);
    private static final adz<Float> d = aec.a(bit.class, aeb.d);
@@ -20,7 +20,7 @@ public class bit extends bii implements big, bjv {
    @Nullable
    private bit.a l;
 
-   public bit(bim<?> $$0, cpm $$1) {
+   public bit(bim<?> $$0, cpl $$1) {
       super($$0, $$1);
       this.af = true;
    }
@@ -92,8 +92,8 @@ public class bit extends bii implements big, bjv {
    }
 
    @Override
-   public eai l_() {
-      return eai.d;
+   public eah l_() {
+      return eah.d;
    }
 
    @Override
@@ -103,7 +103,7 @@ public class bit extends bii implements big, bjv {
 
    @Override
    public boolean u(bii $$0) {
-      if ($$0 instanceof cbn $$1) {
+      if ($$0 instanceof cbm $$1) {
          this.k = new bit.a($$1.cv(), this.dK().V());
          if ($$1 instanceof akl $$2) {
             ai.g.a($$2, this, $$1.dL().n(), 1.0F, 1.0F, false);
@@ -116,7 +116,7 @@ public class bit extends bii implements big, bjv {
    }
 
    @Override
-   public bgq a(cbn $$0, bgp $$1) {
+   public bgq a(cbm $$0, bgp $$1) {
       if (this.dK().B) {
          return this.p() ? bgq.a : bgq.b;
       } else {
@@ -175,7 +175,7 @@ public class bit extends bii implements big, bjv {
    }
 
    @Override
-   protected egz ao() {
+   protected egy ao() {
       return this.q().a(this.di());
    }
 

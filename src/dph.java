@@ -1,20 +1,53 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dph {
+public record dph(List<dph.a> b, ha c, dlp d, boolean e) implements dpq {
    public static final Codec<dph> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dud.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
+      $$0 -> $$0.group(
+               dph.a.a.listOf().fieldOf("layers").forGetter(dph::a),
+               ha.g.fieldOf("direction").forGetter(dph::b),
+               dlp.b.fieldOf("allowed_placement").forGetter(dph::c),
+               Codec.BOOL.fieldOf("prioritize_tip").forGetter(dph::d)
+            )
             .apply($$0, dph::new)
    );
-   public final he<dud> b;
-   public final float c;
 
-   public dph(he<dud> $$0, float $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public static dph.a a(bfv $$0, drr $$1) {
+      return new dph.a($$0, $$1);
    }
 
-   public boolean a(cqg $$0, dgx $$1, aru $$2, gu $$3) {
-      return this.b.a().a($$0, $$1, $$2, $$3);
+   public static dph b(bfv $$0, drr $$1) {
+      return new dph(List.of(a($$0, $$1)), ha.b, dlp.c, false);
+   }
+
+   public List<dph.a> a() {
+      return this.b;
+   }
+
+   public ha b() {
+      return this.c;
+   }
+
+   public dlp c() {
+      return this.d;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public static record a(bfv b, drr c) {
+      public static final Codec<dph.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(bfv.d.fieldOf("height").forGetter(dph.a::a), drr.a.fieldOf("provider").forGetter(dph.a::b)).apply($$0, dph.a::new)
+      );
+
+      public bfv a() {
+         return this.b;
+      }
+
+      public drr b() {
+         return this.c;
+      }
    }
 }

@@ -1,60 +1,35 @@
-import com.google.common.collect.Iterables;
-import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-
 public class bsc {
-   private static final bsc a = new bsc();
-   private final List<biy> b;
-   private final Predicate<biy> c;
+   private final bmc a;
+   private final float b;
+   private final int c;
 
-   private bsc() {
-      this.b = List.of();
-      this.c = $$0 -> false;
+   public bsc(gu $$0, float $$1, int $$2) {
+      this(new bks($$0), $$1, $$2);
    }
 
-   public bsc(biy $$0, List<biy> $$1) {
+   public bsc(ehd $$0, float $$1, int $$2) {
+      this(new bks(gu.a($$0)), $$1, $$2);
+   }
+
+   public bsc(bii $$0, float $$1, int $$2) {
+      this(new bla($$0, false), $$1, $$2);
+   }
+
+   public bsc(bmc $$0, float $$1, int $$2) {
+      this.a = $$0;
       this.b = $$1;
-      Object2BooleanOpenHashMap<biy> $$2 = new Object2BooleanOpenHashMap($$1.size());
-      Predicate<biy> $$3 = $$1x -> bte.b($$0, $$1x);
-      this.c = $$2x -> $$2.computeIfAbsent($$2x, $$3);
+      this.c = $$2;
    }
 
-   public static bsc a() {
-      return a;
+   public bmc a() {
+      return this.a;
    }
 
-   public Optional<biy> a(Predicate<biy> $$0) {
-      for (biy $$1 : this.b) {
-         if ($$0.test($$1) && this.c.test($$1)) {
-            return Optional.of($$1);
-         }
-      }
-
-      return Optional.empty();
+   public float b() {
+      return this.b;
    }
 
-   public Iterable<biy> b(Predicate<biy> $$0) {
-      return Iterables.filter(this.b, $$1 -> $$0.test($$1) && this.c.test($$1));
-   }
-
-   public Stream<biy> c(Predicate<biy> $$0) {
-      return this.b.stream().filter($$1 -> $$0.test($$1) && this.c.test($$1));
-   }
-
-   public boolean a(biy $$0) {
-      return this.b.contains($$0) && this.c.test($$0);
-   }
-
-   public boolean d(Predicate<biy> $$0) {
-      for (biy $$1 : this.b) {
-         if ($$0.test($$1) && this.c.test($$1)) {
-            return true;
-         }
-      }
-
-      return false;
+   public int c() {
+      return this.c;
    }
 }

@@ -22,15 +22,15 @@ public class lf {
       this.b = ImmutableSet.copyOf($$2);
    }
 
-   public aer a(csm $$0, lh $$1, BiConsumer<aer, Supplier<JsonElement>> $$2) {
+   public aer a(csl $$0, lh $$1, BiConsumer<aer, Supplier<JsonElement>> $$2) {
       return this.a(le.a($$0, this.c.orElse("")), $$1, $$2);
    }
 
-   public aer a(csm $$0, String $$1, lh $$2, BiConsumer<aer, Supplier<JsonElement>> $$3) {
+   public aer a(csl $$0, String $$1, lh $$2, BiConsumer<aer, Supplier<JsonElement>> $$3) {
       return this.a(le.a($$0, $$1 + this.c.orElse("")), $$2, $$3);
    }
 
-   public aer b(csm $$0, String $$1, lh $$2, BiConsumer<aer, Supplier<JsonElement>> $$3) {
+   public aer b(csl $$0, String $$1, lh $$2, BiConsumer<aer, Supplier<JsonElement>> $$3) {
       return this.a(le.a($$0, $$1), $$2, $$3);
    }
 

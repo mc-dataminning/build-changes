@@ -1,195 +1,259 @@
-import com.mojang.brigadier.ResultConsumer;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import com.mojang.logging.LogUtils;
+import java.util.Optional;
+import java.util.function.Function;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public abstract class com implements dq {
-   private static final SimpleDateFormat b = new SimpleDateFormat("HH:mm:ss");
-   private static final tf c = tf.b("@");
-   private long d = -1L;
-   private boolean e = true;
-   private int f;
-   private boolean g = true;
+public abstract class com {
+   public static final String b = "SpawnData";
+   private static final Logger a = LogUtils.getLogger();
+   private static final int c = 1;
+   private int d = 20;
+   private bfa<cqc> e = bfa.b();
    @Nullable
-   private tf h;
-   private String i = "";
-   private tf j = c;
+   private cqc f;
+   private double g;
+   private double h;
+   private int i = 200;
+   private int j = 800;
+   private int k = 4;
+   @Nullable
+   private bii l;
+   private int m = 6;
+   private int n = 16;
+   private int o = 4;
 
-   public int k() {
-      return this.f;
+   public void a(bim<?> $$0, @Nullable cpl $$1, aru $$2, gu $$3) {
+      this.b($$1, $$2, $$3).a().a("id", jb.h.b($$0).toString());
    }
 
-   public void a(int $$0) {
-      this.f = $$0;
+   private boolean b(cpl $$0, gu $$1) {
+      return $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, (double)this.n);
    }
 
-   public tf l() {
-      return this.h == null ? te.a : this.h;
+   public void a(cpl $$0, gu $$1) {
+      if (!this.b($$0, $$1)) {
+         this.h = this.g;
+      } else if (this.l != null) {
+         aru $$2 = $$0.y_();
+         double $$3 = (double)$$1.u() + $$2.j();
+         double $$4 = (double)$$1.v() + $$2.j();
+         double $$5 = (double)$$1.w() + $$2.j();
+         $$0.a(iv.Z, $$3, $$4, $$5, 0.0, 0.0, 0.0);
+         $$0.a(iv.C, $$3, $$4, $$5, 0.0, 0.0, 0.0);
+         if (this.d > 0) {
+            this.d--;
+         }
+
+         this.h = this.g;
+         this.g = (this.g + (double)(1000.0F / ((float)this.d + 200.0F))) % 360.0;
+      }
+   }
+
+   public void a(akk $$0, gu $$1) {
+      if (this.b($$0, $$1)) {
+         if (this.d == -1) {
+            this.c($$0, $$1);
+         }
+
+         if (this.d > 0) {
+            this.d--;
+         } else {
+            boolean $$2 = false;
+            aru $$3 = $$0.y_();
+            cqc $$4 = this.b($$0, $$3, $$1);
+
+            for (int $$5 = 0; $$5 < this.k; $$5++) {
+               qr $$6 = $$4.a();
+               Optional<bim<?>> $$7 = bim.a($$6);
+               if ($$7.isEmpty()) {
+                  this.c($$0, $$1);
+                  return;
+               }
+
+               qx $$8 = $$6.c("Pos", 6);
+               int $$9 = $$8.size();
+               double $$10 = $$9 >= 1 ? $$8.h(0) : (double)$$1.u() + ($$3.j() - $$3.j()) * (double)this.o + 0.5;
+               double $$11 = $$9 >= 2 ? $$8.h(1) : (double)($$1.v() + $$3.a(3) - 1);
+               double $$12 = $$9 >= 3 ? $$8.h(2) : (double)$$1.w() + ($$3.j() - $$3.j()) * (double)this.o + 0.5;
+               if ($$0.b($$7.get().a($$10, $$11, $$12))) {
+                  gu $$13 = gu.a($$10, $$11, $$12);
+                  if ($$4.b().isPresent()) {
+                     if (!$$7.get().f().d() && $$0.ai() == bgn.a) {
+                        continue;
+                     }
+
+                     cqc.a $$14 = $$4.b().get();
+                     if (!$$14.a().a($$0.a(cpu.b, $$13)) || !$$14.b().a($$0.a(cpu.a, $$13))) {
+                        continue;
+                     }
+                  } else if (!bjs.a($$7.get(), $$0, bjc.c, $$13, $$0.y_())) {
+                     continue;
+                  }
+
+                  bii $$15 = bim.a($$6, $$0, $$3x -> {
+                     $$3x.b($$10, $$11, $$12, $$3x.dA(), $$3x.dC());
+                     return $$3x;
+                  });
+                  if ($$15 == null) {
+                     this.c($$0, $$1);
+                     return;
+                  }
+
+                  int $$16 = $$0.a(
+                        $$15.getClass(),
+                        new egy((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), (double)($$1.u() + 1), (double)($$1.v() + 1), (double)($$1.w() + 1))
+                           .g((double)this.o)
+                     )
+                     .size();
+                  if ($$16 >= this.m) {
+                     this.c($$0, $$1);
+                     return;
+                  }
+
+                  $$15.b($$15.dp(), $$15.dr(), $$15.dv(), $$3.i() * 360.0F, 0.0F);
+                  if ($$15 instanceof bja $$17) {
+                     if ($$4.b().isEmpty() && !$$17.a($$0, bjc.c) || !$$17.a($$0)) {
+                        continue;
+                     }
+
+                     if ($$4.a().f() == 1 && $$4.a().b("id", 8)) {
+                        ((bja)$$15).a($$0, $$0.d_($$15.dk()), bjc.c, null, null);
+                     }
+                  }
+
+                  if (!$$0.e($$15)) {
+                     this.c($$0, $$1);
+                     return;
+                  }
+
+                  $$0.c(2004, $$1, 0);
+                  $$0.a($$15, djj.t, $$13);
+                  if ($$15 instanceof bja) {
+                     ((bja)$$15).N();
+                  }
+
+                  $$2 = true;
+               }
+            }
+
+            if ($$2) {
+               this.c($$0, $$1);
+            }
+         }
+      }
+   }
+
+   private void c(cpl $$0, gu $$1) {
+      aru $$2 = $$0.z;
+      if (this.j <= this.i) {
+         this.d = this.i;
+      } else {
+         this.d = this.i + $$2.a(this.j - this.i);
+      }
+
+      this.e.b($$2).ifPresent($$2x -> this.a($$0, $$1, (cqc)$$2x.b()));
+      this.a($$0, $$1, 1);
+   }
+
+   public void a(@Nullable cpl $$0, gu $$1, qr $$2) {
+      this.d = $$2.g("Delay");
+      boolean $$3 = $$2.b("SpawnData", 10);
+      if ($$3) {
+         cqc $$4 = cqc.b.parse(rc.a, $$2.p("SpawnData")).resultOrPartial($$0x -> a.warn("Invalid SpawnData: {}", $$0x)).orElseGet(cqc::new);
+         this.a($$0, $$1, $$4);
+      }
+
+      boolean $$5 = $$2.b("SpawnPotentials", 9);
+      if ($$5) {
+         qx $$6 = $$2.c("SpawnPotentials", 10);
+         this.e = cqc.c.parse(rc.a, $$6).resultOrPartial($$0x -> a.warn("Invalid SpawnPotentials list: {}", $$0x)).orElseGet(bfa::b);
+      } else {
+         this.e = bfa.a(this.f != null ? this.f : new cqc());
+      }
+
+      if ($$2.b("MinSpawnDelay", 99)) {
+         this.i = $$2.g("MinSpawnDelay");
+         this.j = $$2.g("MaxSpawnDelay");
+         this.k = $$2.g("SpawnCount");
+      }
+
+      if ($$2.b("MaxNearbyEntities", 99)) {
+         this.m = $$2.g("MaxNearbyEntities");
+         this.n = $$2.g("RequiredPlayerRange");
+      }
+
+      if ($$2.b("SpawnRange", 99)) {
+         this.o = $$2.g("SpawnRange");
+      }
+
+      this.l = null;
    }
 
    public qr a(qr $$0) {
-      $$0.a("Command", this.i);
-      $$0.a("SuccessCount", this.f);
-      $$0.a("CustomName", tf.a.a(this.j));
-      $$0.a("TrackOutput", this.g);
-      if (this.h != null && this.g) {
-         $$0.a("LastOutput", tf.a.a(this.h));
+      $$0.a("Delay", (short)this.d);
+      $$0.a("MinSpawnDelay", (short)this.i);
+      $$0.a("MaxSpawnDelay", (short)this.j);
+      $$0.a("SpawnCount", (short)this.k);
+      $$0.a("MaxNearbyEntities", (short)this.m);
+      $$0.a("RequiredPlayerRange", (short)this.n);
+      $$0.a("SpawnRange", (short)this.o);
+      if (this.f != null) {
+         $$0.a("SpawnData", (rk)cqc.b.encodeStart(rc.a, this.f).result().orElseThrow(() -> new IllegalStateException("Invalid SpawnData")));
       }
 
-      $$0.a("UpdateLastExecution", this.e);
-      if (this.e && this.d > 0L) {
-         $$0.a("LastExecution", this.d);
-      }
-
+      $$0.a("SpawnPotentials", (rk)cqc.c.encodeStart(rc.a, this.e).result().orElseThrow());
       return $$0;
    }
 
-   public void b(qr $$0) {
-      this.i = $$0.l("Command");
-      this.f = $$0.h("SuccessCount");
-      if ($$0.b("CustomName", 8)) {
-         this.b(tf.a.a($$0.l("CustomName")));
-      }
-
-      if ($$0.b("TrackOutput", 1)) {
-         this.g = $$0.q("TrackOutput");
-      }
-
-      if ($$0.b("LastOutput", 8) && this.g) {
-         try {
-            this.h = tf.a.a($$0.l("LastOutput"));
-         } catch (Throwable var3) {
-            this.h = tf.b(var3.getMessage());
+   @Nullable
+   public bii a(cpl $$0, aru $$1, gu $$2) {
+      if (this.l == null) {
+         qr $$3 = this.b($$0, $$1, $$2).a();
+         if (!$$3.b("id", 8)) {
+            return null;
          }
+
+         this.l = bim.a($$3, $$0, Function.identity());
+         if ($$3.f() == 1 && this.l instanceof bja) {
+         }
+      }
+
+      return this.l;
+   }
+
+   public boolean a(cpl $$0, int $$1) {
+      if ($$1 == 1) {
+         if ($$0.B) {
+            this.d = this.i;
+         }
+
+         return true;
       } else {
-         this.h = null;
-      }
-
-      if ($$0.e("UpdateLastExecution")) {
-         this.e = $$0.q("UpdateLastExecution");
-      }
-
-      if (this.e && $$0.e("LastExecution")) {
-         this.d = $$0.i("LastExecution");
-      } else {
-         this.d = -1L;
-      }
-   }
-
-   public void a(String $$0) {
-      this.i = $$0;
-      this.f = 0;
-   }
-
-   public String m() {
-      return this.i;
-   }
-
-   public boolean a(cpm $$0) {
-      if ($$0.B || $$0.V() == this.d) {
          return false;
-      } else if ("Searge".equalsIgnoreCase(this.i)) {
-         this.h = tf.b("#itzlipofutzli");
-         this.f = 1;
-         return true;
+      }
+   }
+
+   protected void a(@Nullable cpl $$0, gu $$1, cqc $$2) {
+      this.f = $$2;
+   }
+
+   private cqc b(@Nullable cpl $$0, aru $$1, gu $$2) {
+      if (this.f != null) {
+         return this.f;
       } else {
-         this.f = 0;
-         MinecraftServer $$1 = this.e().n();
-         if ($$1.o() && !asi.b(this.i)) {
-            try {
-               this.h = null;
-               dr $$2 = this.i().a((ResultConsumer<dr>)(($$0x, $$1x, $$2x) -> {
-                  if ($$1x) {
-                     this.f++;
-                  }
-               }));
-               $$1.aC().a($$2, this.i);
-            } catch (Throwable var6) {
-               o $$4 = o.a(var6, "Executing command block");
-               p $$5 = $$4.a("Command to be executed");
-               $$5.a("Command", this::m);
-               $$5.a("Name", () -> this.n().getString());
-               throw new y($$4);
-            }
-         }
-
-         if (this.e) {
-            this.d = $$0.V();
-         } else {
-            this.d = -1L;
-         }
-
-         return true;
+         this.a($$0, $$2, this.e.b($$1).map(bfc.b::b).orElseGet(cqc::new));
+         return this.f;
       }
    }
 
-   public tf n() {
-      return this.j;
-   }
+   public abstract void a(cpl var1, gu var2, int var3);
 
-   public void b(@Nullable tf $$0) {
-      if ($$0 != null) {
-         this.j = $$0;
-      } else {
-         this.j = c;
-      }
-   }
-
-   @Override
-   public void a(tf $$0) {
-      if (this.g) {
-         this.h = tf.b("[" + b.format(new Date()) + "] ").b($$0);
-         this.f();
-      }
-   }
-
-   public abstract akk e();
-
-   public abstract void f();
-
-   public void c(@Nullable tf $$0) {
-      this.h = $$0;
-   }
-
-   public void a(boolean $$0) {
-      this.g = $$0;
-   }
-
-   public boolean o() {
+   public double a() {
       return this.g;
    }
 
-   public bgq a(cbn $$0) {
-      if (!$$0.gn()) {
-         return bgq.d;
-      } else {
-         if ($$0.cJ().B) {
-            $$0.a(this);
-         }
-
-         return bgq.a($$0.dK().B);
-      }
+   public double b() {
+      return this.h;
    }
-
-   public abstract ehe g();
-
-   public abstract dr i();
-
-   @Override
-   public boolean f_() {
-      return this.e().X().b(cpi.o) && this.g;
-   }
-
-   @Override
-   public boolean q_() {
-      return this.g;
-   }
-
-   @Override
-   public boolean N_() {
-      return this.e().X().b(cpi.i);
-   }
-
-   public abstract boolean j();
 }

@@ -16,7 +16,7 @@ public class cn extends cu<cn.a> {
    }
 
    public void a(akl $$0, bii $$1, bhg $$2, float $$3, float $$4, boolean $$5) {
-      ech $$6 = bo.b($$0, $$1);
+      ecg $$6 = bo.b($$0, $$1);
       this.a($$0, $$6x -> $$6x.a($$0, $$6, $$2, $$3, $$4, $$5));
    }
 
@@ -54,7 +54,7 @@ public class cn extends cu<cn.a> {
          return new cn.a(Optional.empty(), $$0.b(), bo.a($$1));
       }
 
-      public boolean a(akl $$0, ech $$1, bhg $$2, float $$3, float $$4, boolean $$5) {
+      public boolean a(akl $$0, ecg $$1, bhg $$2, float $$3, float $$4, boolean $$5) {
          return this.a.isPresent() && !this.a.get().a($$0, $$2, $$3, $$4, $$5) ? false : !this.b.isPresent() || this.b.get().a($$1);
       }
 

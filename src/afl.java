@@ -11,13 +11,13 @@ public class afl {
 
    public static <D, R> CompletableFuture<R> a(afl.c $$0, afl.f<D> $$1, afl.e<D, R> $$2, Executor $$3, Executor $$4) {
       try {
-         Pair<cqf, anc> $$5 = $$0.a.a();
+         Pair<cqe, anc> $$5 = $$0.a.a();
          anc $$6 = (anc)$$5.getSecond();
          hl<afa> $$7 = afa.a();
          hl<afa> $$8 = b($$6, $$7, afa.b, aem.a);
          hs.b $$9 = $$8.b(afa.c);
          hs.b $$10 = aem.a($$6, $$9, aem.b);
-         cqf $$11 = (cqf)$$5.getFirst();
+         cqe $$11 = (cqe)$$5.getFirst();
          afl.b<D> $$12 = $$1.get(new afl.a($$6, $$11, $$9, $$10));
          hl<afa> $$13 = $$8.a(afa.c, $$12.b);
          hs.b $$14 = $$13.b(afa.d);
@@ -44,7 +44,7 @@ public class afl {
       return $$1.a($$2, $$4);
    }
 
-   public static record a(anm a, cqf b, hs.b c, hs.b d) {
+   public static record a(anm a, cqe b, hs.b c, hs.b d) {
    }
 
    public static record b<D>(D a, hs.b b) {
@@ -53,10 +53,10 @@ public class afl {
    public static record c(afl.d a, ds.a b, int c) {
    }
 
-   public static record d(amx a, cqf b, boolean c, boolean d) {
-      public Pair<cqf, anc> a() {
-         cdv $$0 = this.d ? cdx.d.a() : this.b.b();
-         cqf $$1 = MinecraftServer.a(this.a, this.b.a(), this.c, $$0);
+   public static record d(amx a, cqe b, boolean c, boolean d) {
+      public Pair<cqe, anc> a() {
+         cdu $$0 = this.d ? cdw.d.a() : this.b.b();
+         cqe $$1 = MinecraftServer.a(this.a, this.b.a(), this.c, $$0);
          if (!this.d) {
             $$1 = $$1.a(this.b.b());
          }
@@ -70,7 +70,7 @@ public class afl {
          return this.a;
       }
 
-      public cqf c() {
+      public cqe c() {
          return this.b;
       }
 

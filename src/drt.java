@@ -1,24 +1,50 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class drt<P extends drs> {
-   public static final drt<dsb> a = a("simple_state_provider", dsb.b);
-   public static final drt<dsc> b = a("weighted_state_provider", dsc.b);
-   public static final drt<drx> c = a("noise_threshold_provider", drx.b);
-   public static final drt<drw> d = a("noise_provider", drw.g);
-   public static final drt<dru> e = a("dual_noise_provider", dru.b);
-   public static final drt<drz> f = a("rotated_block_provider", drz.b);
-   public static final drt<dry> g = a("randomized_int_state_provider", dry.b);
-   private final Codec<P> h;
+public class drt extends drv {
+   public static final Codec<drt> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ari.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
+               dzf.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
+               aqy.k.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
+            )
+            .and(b($$0))
+            .apply($$0, drt::new)
+   );
+   private final ari<Integer> i;
+   private final dzf.a j;
+   private final float k;
+   private final dzf l;
 
-   private static <P extends drs> drt<P> a(String $$0, Codec<P> $$1) {
-      return hr.a(jb.W, $$0, new drt<>($$1));
+   public drt(ari<Integer> $$0, dzf.a $$1, float $$2, long $$3, dzf.a $$4, float $$5, List<dez> $$6) {
+      super($$3, $$4, $$5, $$6);
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = dzf.b(new dlh(new dkj($$3)), $$1);
    }
 
-   private drt(Codec<P> $$0) {
-      this.h = $$0;
+   @Override
+   protected drs<?> a() {
+      return drs.e;
    }
 
-   public Codec<P> a() {
-      return this.h;
+   @Override
+   public dez a(aru $$0, gu $$1) {
+      double $$2 = this.a($$1);
+      int $$3 = (int)arp.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
+      List<dez> $$4 = Lists.newArrayListWithCapacity($$3);
+
+      for (int $$5 = 0; $$5 < $$3; $$5++) {
+         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
+      }
+
+      return this.a($$4, $$1, (double)this.e);
+   }
+
+   protected double a(gu $$0) {
+      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
    }
 }

@@ -1,117 +1,220 @@
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.mutable.MutableInt;
+import org.slf4j.Logger;
 
 public class eco {
-   public static final Codec<eco> a = RecordCodecBuilder.create(
+   private static final Logger d = LogUtils.getLogger();
+   public static final eco a = new eco(eeq.b, Optional.empty(), List.of(), List.of());
+   public static final eep b = eeq.n;
+   public static final Codec<eco> c = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               ecy.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.b),
-               aqy.a(efi.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.c),
-               aqy.a(edw.b.listOf(), "functions", List.of()).forGetter($$0x -> $$0x.e),
-               egc.a.fieldOf("rolls").forGetter($$0x -> $$0x.g),
-               egc.a.fieldOf("bonus_rolls").orElse(efz.a(0.0F)).forGetter($$0x -> $$0x.h)
+               eeq.a.optionalFieldOf("type", b).forGetter($$0x -> $$0x.e),
+               aqy.a(aer.a, "random_sequence").forGetter($$0x -> $$0x.f),
+               aqy.a(ecn.a.listOf(), "pools", List.of()).forGetter($$0x -> $$0x.g),
+               aqy.a(edv.b.listOf(), "functions", List.of()).forGetter($$0x -> $$0x.h)
             )
             .apply($$0, eco::new)
    );
-   private final List<eda> b;
-   private final List<efg> c;
-   private final Predicate<ech> d;
-   private final List<edu> e;
-   private final BiFunction<ciy, ech, ciy> f;
-   private final egb g;
-   private final egb h;
+   private final eep e;
+   private final Optional<aer> f;
+   private final List<ecn> g;
+   private final List<edt> h;
+   private final BiFunction<cix, ecg, cix> i;
 
-   eco(List<eda> $$0, List<efg> $$1, List<edu> $$2, egb $$3, egb $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = efi.a($$1);
-      this.e = $$2;
-      this.f = edw.a($$2);
-      this.g = $$3;
-      this.h = $$4;
+   eco(eep $$0, Optional<aer> $$1, List<ecn> $$2, List<edt> $$3) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.i = edv.a($$3);
    }
 
-   private void b(Consumer<ciy> $$0, ech $$1) {
-      aru $$2 = $$1.b();
-      List<ecz> $$3 = Lists.newArrayList();
-      MutableInt $$4 = new MutableInt();
+   public static Consumer<cix> a(akk $$0, Consumer<cix> $$1) {
+      return $$2 -> {
+         if ($$2.a($$0.G())) {
+            if ($$2.L() < $$2.g()) {
+               $$1.accept($$2);
+            } else {
+               int $$3 = $$2.L();
 
-      for (eda $$5 : this.b) {
-         $$5.expand($$1, $$3x -> {
-            int $$4x = $$3x.a($$1.c());
-            if ($$4x > 0) {
-               $$3.add($$3x);
-               $$4.add($$4x);
-            }
-         });
-      }
-
-      int $$6 = $$3.size();
-      if ($$4.intValue() != 0 && $$6 != 0) {
-         if ($$6 == 1) {
-            $$3.get(0).a($$0, $$1);
-         } else {
-            int $$7 = $$2.a($$4.intValue());
-
-            for (ecz $$8 : $$3) {
-               $$7 -= $$8.a($$1.c());
-               if ($$7 < 0) {
-                  $$8.a($$0, $$1);
-                  return;
+               while ($$3 > 0) {
+                  cix $$4 = $$2.c(Math.min($$2.g(), $$3));
+                  $$3 -= $$4.L();
+                  $$1.accept($$4);
                }
             }
          }
+      };
+   }
+
+   public void a(ecm $$0, Consumer<cix> $$1) {
+      this.a(new ecg.a($$0).a(this.f), $$1);
+   }
+
+   public void a(ecg $$0, Consumer<cix> $$1) {
+      ecg.c<?> $$2 = ecg.a(this);
+      if ($$0.b($$2)) {
+         Consumer<cix> $$3 = edt.a(this.i, $$1, $$0);
+
+         for (ecn $$4 : this.g) {
+            $$4.a($$3, $$0);
+         }
+
+         $$0.c($$2);
+      } else {
+         d.warn("Detected infinite loop in loot tables");
       }
    }
 
-   public void a(Consumer<ciy> $$0, ech $$1) {
-      if (this.d.test($$1)) {
-         Consumer<ciy> $$2 = edu.a(this.f, $$0, $$1);
-         int $$3 = this.g.a($$1) + arp.d(this.h.b($$1) * $$1.c());
+   public void a(ecm $$0, long $$1, Consumer<cix> $$2) {
+      this.a(new ecg.a($$0).a($$1).a(this.f), a($$0.a(), $$2));
+   }
 
-         for (int $$4 = 0; $$4 < $$3; $$4++) {
-            this.b($$2, $$1);
+   public void b(ecm $$0, Consumer<cix> $$1) {
+      this.a($$0, a($$0.a(), $$1));
+   }
+
+   public void b(ecg $$0, Consumer<cix> $$1) {
+      this.a($$0, a($$0.d(), $$1));
+   }
+
+   public ObjectArrayList<cix> a(ecm $$0, long $$1) {
+      return this.a(new ecg.a($$0).a($$1).a(this.f));
+   }
+
+   public ObjectArrayList<cix> a(ecm $$0) {
+      return this.a(new ecg.a($$0).a(this.f));
+   }
+
+   private ObjectArrayList<cix> a(ecg $$0) {
+      ObjectArrayList<cix> $$1 = new ObjectArrayList();
+      this.b($$0, $$1::add);
+      return $$1;
+   }
+
+   public eep a() {
+      return this.e;
+   }
+
+   public void a(ecp $$0) {
+      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
+         this.g.get($$1).a($$0.b(".pools[" + $$1 + "]"));
+      }
+
+      for (int $$2 = 0; $$2 < this.h.size(); $$2++) {
+         this.h.get($$2).a($$0.b(".functions[" + $$2 + "]"));
+      }
+   }
+
+   public void a(bgj $$0, ecm $$1, long $$2) {
+      ecg $$3 = new ecg.a($$1).a($$2).a(this.f);
+      ObjectArrayList<cix> $$4 = this.a($$3);
+      aru $$5 = $$3.b();
+      List<Integer> $$6 = this.a($$0, $$5);
+      this.a($$4, $$6.size(), $$5);
+      ObjectListIterator var9 = $$4.iterator();
+
+      while (var9.hasNext()) {
+         cix $$7 = (cix)var9.next();
+         if ($$6.isEmpty()) {
+            d.warn("Tried to over-fill a container");
+            return;
+         }
+
+         if ($$7.b()) {
+            $$0.a($$6.remove($$6.size() - 1), cix.b);
+         } else {
+            $$0.a($$6.remove($$6.size() - 1), $$7);
          }
       }
    }
 
-   public void a(ecq $$0) {
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.b(".condition[" + $$1 + "]"));
+   private void a(ObjectArrayList<cix> $$0, int $$1, aru $$2) {
+      List<cix> $$3 = Lists.newArrayList();
+      Iterator<cix> $$4 = $$0.iterator();
+
+      while ($$4.hasNext()) {
+         cix $$5 = $$4.next();
+         if ($$5.b()) {
+            $$4.remove();
+         } else if ($$5.L() > 1) {
+            $$3.add($$5);
+            $$4.remove();
+         }
       }
 
-      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
-         this.e.get($$2).a($$0.b(".functions[" + $$2 + "]"));
+      while ($$1 - $$0.size() - $$3.size() > 0 && !$$3.isEmpty()) {
+         cix $$6 = $$3.remove(arp.a($$2, 0, $$3.size() - 1));
+         int $$7 = arp.a($$2, 1, $$6.L() / 2);
+         cix $$8 = $$6.a($$7);
+         if ($$6.L() > 1 && $$2.h()) {
+            $$3.add($$6);
+         } else {
+            $$0.add($$6);
+         }
+
+         if ($$8.L() > 1 && $$2.h()) {
+            $$3.add($$8);
+         } else {
+            $$0.add($$8);
+         }
       }
 
-      for (int $$3 = 0; $$3 < this.b.size(); $$3++) {
-         this.b.get($$3).a($$0.b(".entries[" + $$3 + "]"));
-      }
-
-      this.g.a($$0.b(".rolls"));
-      this.h.a($$0.b(".bonusRolls"));
+      $$0.addAll($$3);
+      ac.b($$0, $$2);
    }
 
-   public static eco.a a() {
+   private List<Integer> a(bgj $$0, aru $$1) {
+      ObjectArrayList<Integer> $$2 = new ObjectArrayList();
+
+      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
+         if ($$0.a($$3).b()) {
+            $$2.add($$3);
+         }
+      }
+
+      ac.b($$2, $$1);
+      return $$2;
+   }
+
+   public static eco.a b() {
       return new eco.a();
    }
 
-   public static class a implements edr<eco.a>, eez<eco.a> {
-      private final Builder<eda> a = ImmutableList.builder();
-      private final Builder<efg> b = ImmutableList.builder();
-      private final Builder<edu> c = ImmutableList.builder();
-      private egb d = efz.a(1.0F);
-      private egb e = efz.a(0.0F);
+   public static class a implements edq<eco.a> {
+      private final Builder<ecn> a = ImmutableList.builder();
+      private final Builder<edt> b = ImmutableList.builder();
+      private eep c = eco.b;
+      private Optional<aer> d = Optional.empty();
 
-      public eco.a a(egb $$0) {
-         this.d = $$0;
+      public eco.a a(ecn.a $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      public eco.a a(eep $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public eco.a a(aer $$0) {
+         this.d = Optional.of($$0);
+         return this;
+      }
+
+      public eco.a a(edt.a $$0) {
+         this.b.add($$0.b());
          return this;
       }
 
@@ -119,28 +222,8 @@ public class eco {
          return this;
       }
 
-      public eco.a b(egb $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public eco.a a(eda.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      public eco.a a(efg.a $$0) {
-         this.b.add($$0.build());
-         return this;
-      }
-
-      public eco.a a(edu.a $$0) {
-         this.c.add($$0.b());
-         return this;
-      }
-
       public eco b() {
-         return new eco(this.a.build(), this.b.build(), this.c.build(), this.d, this.e);
+         return new eco(this.c, this.d, this.a.build(), this.b.build());
       }
    }
 }

@@ -1,26 +1,26 @@
-public class ctd extends cud {
-   private static final ehx[] a = new ehx[]{
-      csm.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      csm.a(0.0, 0.0, 0.0, 16.0, 3.0, 16.0),
-      csm.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      csm.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
-      csm.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      csm.a(0.0, 0.0, 0.0, 16.0, 7.0, 16.0),
-      csm.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-      csm.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0)
-   };
+import javax.annotation.Nullable;
 
-   public ctd(dez.d $$0) {
+public class ctd extends csl {
+   private static final tf a = tf.c("container.cartography_table");
+
+   protected ctd(dey.d $$0) {
       super($$0);
    }
 
    @Override
-   protected cpl c() {
-      return cjb.tl;
+   public bgq a(dez $$0, cpl $$1, gu $$2, cbm $$3, bgp $$4, egz $$5) {
+      if ($$1.B) {
+         return bgq.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(apg.aw);
+         return bgq.b;
+      }
    }
 
+   @Nullable
    @Override
-   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
-      return a[this.g($$0)];
+   public bgt b(dez $$0, cpl $$1, gu $$2) {
+      return new bgy(($$2x, $$3, $$4) -> new cej($$2x, $$3, ceo.a($$1, $$2)), a);
    }
 }

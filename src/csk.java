@@ -1,107 +1,48 @@
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class csk extends cwf implements cso, czn {
-   private static final dfr e = dfq.C;
-   private static final int f = 6;
-   protected static final ehx a = csm.a(5.0, 0.0, 9.0, 11.0, 16.0, 15.0);
-   protected static final ehx b = csm.a(5.0, 0.0, 1.0, 11.0, 16.0, 7.0);
-   protected static final ehx c = csm.a(1.0, 0.0, 5.0, 7.0, 16.0, 11.0);
-   protected static final ehx d = csm.a(9.0, 0.0, 5.0, 15.0, 16.0, 11.0);
-
-   protected csk(dez.d $$0) {
+public class csk extends crg {
+   protected csk(dey.d $$0) {
       super($$0);
-      this.k(this.C.b().a(e, Boolean.valueOf(false)).a(aC, ha.c));
    }
 
    @Override
-   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
-      switch ((ha)$$0.c(aC)) {
-         case d:
-            return b;
-         case c:
-         default:
-            return a;
-         case e:
-            return d;
-         case f:
-            return c;
+   public dcl a(gu $$0, dez $$1) {
+      return new dck($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dcl> dcm<T> a(cpl $$0, dez $$1, dcn<T> $$2) {
+      return a($$0, $$2, dcn.C);
+   }
+
+   @Override
+   protected void a(cpl $$0, gu $$1, cbm $$2) {
+      dcl $$3 = $$0.c_($$1);
+      if ($$3 instanceof dck) {
+         $$2.a((bgt)$$3);
+         $$2.a(apg.as);
       }
    }
 
    @Override
-   protected void a(dfb.a<csm, dfa> $$0) {
-      $$0.a(e, aC);
-   }
+   public void a(dez $$0, cpl $$1, gu $$2, aru $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, aow.cg, aox.e, 1.0F, 1.0F, false);
+         }
 
-   @Override
-   public ead c_(dfa $$0) {
-      return $$0.c(e) ? eae.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public boolean a(dfa $$0, cpp $$1, gu $$2) {
-      gu $$3 = $$2.d();
-      dfa $$4 = $$1.a_($$3);
-      dfa $$5 = $$1.a_($$2.c());
-      return ($$4.a(this) || $$4.a(apl.bx)) && ($$5.a(this) || $$5.a(csn.rC));
-   }
-
-   protected static boolean a(cpn $$0, gu $$1, ead $$2, ha $$3) {
-      dfa $$4 = csn.rD.n().a(e, Boolean.valueOf($$2.a(eae.c))).a(aC, $$3);
-      return $$0.a($$1, $$4, 3);
-   }
-
-   @Override
-   public dfa a(dfa $$0, ha $$1, dfa $$2, cpn $$3, gu $$4, gu $$5) {
-      if (($$1 == ha.a || $$1 == ha.b) && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
+         ha $$7 = $$0.c(a);
+         ha.a $$8 = $$7.o();
+         double $$9 = 0.52;
+         double $$10 = $$3.j() * 0.6 - 0.3;
+         double $$11 = $$8 == ha.a.a ? (double)$$7.j() * 0.52 : $$10;
+         double $$12 = $$3.j() * 9.0 / 16.0;
+         double $$13 = $$8 == ha.a.c ? (double)$$7.l() * 0.52 : $$10;
+         $$1.a(iv.Z, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
       }
-
-      if ($$0.c(e)) {
-         $$3.a($$4, eae.c, eae.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public void a(dfa $$0, akk $$1, gu $$2, aru $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
-   }
-
-   @Override
-   public boolean a(cpp $$0, gu $$1, dfa $$2) {
-      Optional<gu> $$3 = l.a($$0, $$1, $$2.b(), ha.b, csn.rC);
-      if ($$3.isEmpty()) {
-         return false;
-      } else {
-         gu $$4 = $$3.get().c();
-         dfa $$5 = $$0.a_($$4);
-         return csj.a((cpo)$$0, $$4, $$5);
-      }
-   }
-
-   @Override
-   public boolean a(cpm $$0, aru $$1, gu $$2, dfa $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(akk $$0, aru $$1, gu $$2, dfa $$3) {
-      Optional<gu> $$4 = l.a($$0, $$2, $$3.b(), ha.b, csn.rC);
-      if (!$$4.isEmpty()) {
-         gu $$5 = $$4.get();
-         gu $$6 = $$5.c();
-         ha $$7 = $$3.c(aC);
-         a($$0, $$5, $$0.b_($$5), $$7);
-         csj.a($$0, $$6, $$0.b_($$6), $$7);
-      }
-   }
-
-   @Override
-   public ciy a(cos $$0, gu $$1, dfa $$2) {
-      return new ciy(csn.rC);
    }
 }

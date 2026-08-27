@@ -1,19 +1,25 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
-import java.util.Set;
+public class bsn extends bsx {
+   public static final float a = 8.0F;
 
-public class bsn extends bte<bid> {
    @Override
-   public Set<bsa<?>> a() {
-      return ImmutableSet.of(bsa.J, bsa.h);
+   protected boolean a(biy $$0, biy $$1) {
+      return this.f($$0, $$1) && $$1.ba() && (this.b($$1) || this.e($$0, $$1)) && btd.c($$0, $$1);
    }
 
-   protected void a(akk $$0, bid $$1) {
-      $$1.dM().c(bsa.h).ifPresent($$1x -> this.a($$1, $$1x));
+   private boolean e(biy $$0, biy $$1) {
+      return !$$0.dM().a(brz.T) && $$1.ag().a(apo.h);
    }
 
-   private void a(bid $$0, bsc $$1) {
-      Optional<bid> $$2 = $$1.a($$1x -> $$1x.ag() == $$0.ag() && !$$1x.i_()).map(bid.class::cast);
-      $$0.dM().a(bsa.J, $$2);
+   private boolean b(biy $$0) {
+      return $$0.ag().a(apo.g);
+   }
+
+   private boolean f(biy $$0, biy $$1) {
+      return $$1.f((bii)$$0) <= 64.0;
+   }
+
+   @Override
+   protected brz<biy> b() {
+      return brz.B;
    }
 }

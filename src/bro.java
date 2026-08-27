@@ -1,19 +1,37 @@
 import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class bro<T extends biy> extends brn<T> {
-   private boolean i = true;
+public class bro<T extends biy> extends brm<T> {
+   private static final int i = 200;
+   private int j = 0;
 
-   public bro(ccv $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable Predicate<biy> $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
+   public bro(ccu $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<biy> $$3) {
+      super($$0, $$1, 500, $$2, false, $$3);
    }
 
-   public void a(boolean $$0) {
-      this.i = $$0;
+   public int i() {
+      return this.j;
+   }
+
+   public void k() {
+      this.j--;
    }
 
    @Override
    public boolean a() {
-      return this.i && super.a();
+      if (this.j > 0 || !this.e.ee().h()) {
+         return false;
+      } else if (!((ccu)this.e).gp()) {
+         return false;
+      } else {
+         this.h();
+         return this.c != null;
+      }
+   }
+
+   @Override
+   public void c() {
+      this.j = b(200);
+      super.c();
    }
 }

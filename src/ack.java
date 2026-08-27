@@ -29,9 +29,9 @@ public class ack implements ux<aaw> {
    }
 
    @Nullable
-   public com a(cpm $$0) {
+   public col a(cpl $$0) {
       bii $$1 = $$0.a(this.a);
-      return $$1 instanceof cdm ? ((cdm)$$1).A() : null;
+      return $$1 instanceof cdl ? ((cdl)$$1).A() : null;
    }
 
    public String a() {

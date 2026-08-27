@@ -7,7 +7,7 @@ public class ir implements it {
       public ir a(iu<ir> $$0, StringReader $$1) throws CommandSyntaxException {
          $$1.expect(' ');
          fw.a $$2 = fw.a(jb.i.p(), $$1);
-         ciy $$3 = new fv($$2.a(), $$2.b()).a(1, false);
+         cix $$3 = new fv($$2.a(), $$2.b()).a(1, false);
          return new ir($$0, $$3);
       }
 
@@ -16,13 +16,13 @@ public class ir implements it {
       }
    };
    private final iu<ir> b;
-   private final ciy c;
+   private final cix c;
 
    public static Codec<ir> a(iu<ir> $$0) {
-      return ciy.a.xmap($$1 -> new ir($$0, $$1), $$0x -> $$0x.c);
+      return cix.a.xmap($$1 -> new ir($$0, $$1), $$0x -> $$0x.c);
    }
 
-   public ir(iu<ir> $$0, ciy $$1) {
+   public ir(iu<ir> $$0, cix $$1) {
       this.b = $$0;
       this.c = $$1;
    }
@@ -42,7 +42,7 @@ public class ir implements it {
       return this.b;
    }
 
-   public ciy c() {
+   public cix c() {
       return this.c;
    }
 }

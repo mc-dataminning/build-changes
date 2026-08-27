@@ -1,47 +1,93 @@
-import java.util.concurrent.atomic.AtomicLong;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import java.util.function.Function;
 
-@Deprecated
-public class dlc implements djy {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private final AtomicLong h = new AtomicLong();
-   private final dkl i = new dkl(this);
+public interface dlc {
+   Codec<dlc> a = aqy.a(dlc.b.d, aqy.a(dlc.a.d, dlc.c.d)).xmap(dlc::a, dlc::a);
+   dlc b = b(0);
+   dlc c = c(0);
 
-   public dlc(long $$0) {
-      this.b($$0);
+   static dlc a(int $$0) {
+      return new dlc.b($$0);
    }
 
-   @Override
-   public aru d() {
-      return new dlc(this.g());
+   static dlc b(int $$0) {
+      return new dlc.a($$0);
    }
 
-   @Override
-   public dkw e() {
-      return new dkk.a(this.g());
+   static dlc c(int $$0) {
+      return new dlc.c($$0);
    }
 
-   @Override
-   public void b(long $$0) {
-      this.h.set(($$0 ^ 25214903917L) & 281474976710655L);
+   static dlc a() {
+      return b;
    }
 
-   @Override
-   public int c(int $$0) {
-      long $$1;
-      long $$2;
-      do {
-         $$1 = this.h.get();
-         $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
-      } while (!this.h.compareAndSet($$1, $$2));
-
-      return (int)($$2 >>> 48 - $$0);
+   static dlc b() {
+      return c;
    }
 
-   @Override
-   public double k() {
-      return this.i.b();
+   private static dlc a(Either<dlc.b, Either<dlc.a, dlc.c>> $$0) {
+      return (dlc)$$0.map(Function.identity(), $$0x -> (Record)$$0x.map(Function.identity(), Function.identity()));
+   }
+
+   private static Either<dlc.b, Either<dlc.a, dlc.c>> a(dlc $$0) {
+      return $$0 instanceof dlc.b ? Either.left((dlc.b)$$0) : Either.right($$0 instanceof dlc.a ? Either.left((dlc.a)$$0) : Either.right((dlc.c)$$0));
+   }
+
+   int a(dlf var1);
+
+   public static record a(int e) implements dlc {
+      public static final Codec<dlc.a> d = Codec.intRange(dii.e, dii.d).fieldOf("above_bottom").xmap(dlc.a::new, dlc.a::c).codec();
+
+      @Override
+      public int a(dlf $$0) {
+         return $$0.a() + this.e;
+      }
+
+      @Override
+      public String toString() {
+         return this.e + " above bottom";
+      }
+
+      public int c() {
+         return this.e;
+      }
+   }
+
+   public static record b(int e) implements dlc {
+      public static final Codec<dlc.b> d = Codec.intRange(dii.e, dii.d).fieldOf("absolute").xmap(dlc.b::new, dlc.b::c).codec();
+
+      @Override
+      public int a(dlf $$0) {
+         return this.e;
+      }
+
+      @Override
+      public String toString() {
+         return this.e + " absolute";
+      }
+
+      public int c() {
+         return this.e;
+      }
+   }
+
+   public static record c(int e) implements dlc {
+      public static final Codec<dlc.c> d = Codec.intRange(dii.e, dii.d).fieldOf("below_top").xmap(dlc.c::new, dlc.c::c).codec();
+
+      @Override
+      public int a(dlf $$0) {
+         return $$0.b() - 1 + $$0.a() - this.e;
+      }
+
+      @Override
+      public String toString() {
+         return this.e + " below top";
+      }
+
+      public int c() {
+         return this.e;
+      }
    }
 }

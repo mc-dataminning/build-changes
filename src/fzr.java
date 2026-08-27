@@ -1,26 +1,17 @@
-import java.util.IllegalFormatException;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class fzr {
-   private static volatile qm a = qm.a();
-
-   private fzr() {
-   }
-
-   static void a(qm $$0) {
-      a = $$0;
-   }
-
-   public static String a(String $$0, Object... $$1) {
-      String $$2 = a.a($$0);
-
-      try {
-         return String.format($$2, $$1);
-      } catch (IllegalFormatException var4) {
-         return "Format error: " + $$2;
+   @Deprecated
+   public static int[] a(anm $$0, aer $$1) throws IOException {
+      int[] var4;
+      try (
+         InputStream $$2 = $$0.open($$1);
+         ekg $$3 = ekg.a($$2);
+      ) {
+         var4 = $$3.e();
       }
-   }
 
-   public static boolean a(String $$0) {
-      return a.b($$0);
+      return var4;
    }
 }

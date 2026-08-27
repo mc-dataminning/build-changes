@@ -1,15 +1,15 @@
 public enum dgk implements ash {
-   a("save"),
-   b("load"),
-   c("corner"),
-   d("data");
+   a("none", true),
+   b("unstable", false),
+   c("partial", true),
+   d("full", true);
 
    private final String e;
-   private final tf f;
+   private final boolean f;
 
-   private dgk(String $$0) {
+   private dgk(String $$0, boolean $$1) {
       this.e = $$0;
-      this.f = tf.c("structure_block.mode_info." + $$0);
+      this.f = $$1;
    }
 
    @Override
@@ -17,7 +17,7 @@ public enum dgk implements ash {
       return this.e;
    }
 
-   public tf a() {
+   public boolean a() {
       return this.f;
    }
 }

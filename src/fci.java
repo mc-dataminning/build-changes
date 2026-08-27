@@ -1,123 +1,235 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 import java.util.Collection;
+import java.util.Locale;
+import java.util.Set;
+import java.util.UUID;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class fci extends exz {
-   private static final tf a = tf.c("selectWorld.experimental.title");
-   private static final tf b = tf.c("selectWorld.experimental.message");
-   private static final tf c = tf.c("selectWorld.experimental.details");
-   private static final int k = 10;
-   private static final int l = 100;
-   private final BooleanConsumer m;
-   final Collection<amu> n;
-   private final evn o = new evn().a(10).b(20);
+public class fci extends eya {
+   private static final aer c = new aer("social_interactions/background");
+   private static final aer k = new aer("icon/search");
+   private static final tf l = tf.c("gui.socialInteractions.tab_all");
+   private static final tf m = tf.c("gui.socialInteractions.tab_hidden");
+   private static final tf n = tf.c("gui.socialInteractions.tab_blocked");
+   private static final tf o = l.d().a(n.t);
+   private static final tf p = m.d().a(n.t);
+   private static final tf q = n.d().a(n.t);
+   private static final tf s = tf.c("gui.socialInteractions.search_hint").a(n.u).a(n.h);
+   static final tf t = tf.c("gui.socialInteractions.search_empty").a(n.h);
+   private static final tf u = tf.c("gui.socialInteractions.empty_hidden").a(n.h);
+   private static final tf v = tf.c("gui.socialInteractions.empty_blocked").a(n.h);
+   private static final tf w = tf.c("gui.socialInteractions.blocking_hint");
+   private static final int x = 8;
+   private static final int y = 236;
+   private static final int z = 16;
+   private static final int A = 64;
+   public static final int a = 72;
+   public static final int b = 88;
+   private static final int B = 238;
+   private static final int C = 20;
+   private static final int D = 36;
+   fch E;
+   esp F;
+   private String G = "";
+   private fci.a H = fci.a.a;
+   private esg I;
+   private esg J;
+   private esg K;
+   private esg L;
+   @Nullable
+   private tf M;
+   private int N;
+   private boolean O;
 
-   public fci(Collection<amu> $$0, BooleanConsumer $$1) {
-      super(a);
-      this.n = $$0;
-      this.m = $$1;
+   public fci() {
+      super(tf.c("gui.socialInteractions.title"));
+      this.a(eql.O());
+   }
+
+   private int l() {
+      return Math.max(52, this.h - 128 - 16);
+   }
+
+   private int C() {
+      return 80 + this.l() - 8;
+   }
+
+   private int D() {
+      return (this.g - 238) / 2;
    }
 
    @Override
    public tf e() {
-      return te.a(super.e(), b);
+      return (tf)(this.M != null ? te.a(super.e(), this.M) : super.e());
    }
 
    @Override
-   protected void aE_() {
-      super.aE_();
-      evn.b $$0 = this.o.d(2);
-      evr $$1 = $$0.b().b();
-      $$0.a(new etm(this.e, this.i), 2, $$1);
-      etb $$2 = $$0.a(new etb(b, this.i).b(true), 2, $$1);
-      $$2.i(310);
-      $$0.a(esh.a(c, $$0x -> this.f.a(new fci.a())).a(100).a(), 2, $$1);
-      $$0.a(esh.a(te.i, $$0x -> this.m.accept(true)).a());
-      $$0.a(esh.a(te.k, $$0x -> this.m.accept(false)).a());
-      this.o.a($$1x -> {
-         esf var10000 = this.d($$1x);
-      });
-      this.o.a();
-      this.b();
-   }
-
-   @Override
-   protected void b() {
-      evm.a(this.o, 0, 0, this.g, this.h, 0.5F, 0.5F);
-   }
-
-   @Override
-   public void au_() {
-      this.m.accept(false);
-   }
-
-   class a extends exz {
-      private fci.a.a b;
-
-      a() {
-         super(tf.c("selectWorld.experimental.details.title"));
+   protected void aC_() {
+      if (this.O) {
+         this.E.a(this.g, this.h, 88, this.C());
+      } else {
+         this.E = new fch(this, this.f, this.g, this.h, 88, this.C(), 36);
       }
 
-      @Override
-      public void au_() {
-         this.f.a(fci.this);
-      }
-
-      @Override
-      protected void aE_() {
-         super.aE_();
-         this.d(esh.a(te.k, $$0 -> this.au_()).a(this.g / 2 - 100, this.h / 4 + 120 + 24, 200, 20).a());
-         this.b = new fci.a.a(this.f, fci.this.n);
-         this.e(this.b);
-      }
-
-      @Override
-      public void a(erw $$0, int $$1, int $$2, float $$3) {
-         super.a($$0, $$1, $$2, $$3);
-         this.b.a($$0, $$1, $$2, $$3);
-         $$0.a(this.i, this.e, this.g / 2, 10, 16777215);
-      }
-
-      class a extends etd<fci.a.b> {
-         public a(eqm $$0, Collection<amu> $$1) {
-            super($$0, a.this.g, a.this.h, 32, a.this.h - 64, (9 + 2) * 3);
-
-            for (amu $$2 : $$1) {
-               String $$3 = cdx.a(cdx.f, $$2.d());
-               if (!$$3.isEmpty()) {
-                  tf $$4 = th.a($$2.a().e(), ub.a.a(true));
-                  tf $$5 = tf.a("selectWorld.experimental.details.entry", $$3);
-                  this.b(a.this.new b($$4, $$5, eta.a(a.this.i, $$5, this.b())));
-               }
+      int $$0 = this.E.b() / 3;
+      int $$1 = this.E.o();
+      int $$2 = this.E.p();
+      int $$3 = this.i.a(w) + 40;
+      int $$4 = 64 + this.l();
+      int $$5 = (this.g - $$3) / 2 + 3;
+      this.I = this.d(esg.a(l, $$0x -> this.a(fci.a.a)).a($$1, 45, $$0, 20).a());
+      this.J = this.d(esg.a(m, $$0x -> this.a(fci.a.b)).a(($$1 + $$2 - $$0) / 2 + 1, 45, $$0, 20).a());
+      this.K = this.d(esg.a(n, $$0x -> this.a(fci.a.c)).a($$2 - $$0 + 1, 45, $$0, 20).a());
+      String $$6 = this.F != null ? this.F.a() : "";
+      this.F = new esp(this.i, this.D() + 28, 74, 200, 15, s) {
+         @Override
+         protected ts az_() {
+            return !fci.this.F.a().isEmpty() && fci.this.E.d() ? super.az_().f(", ").b(fci.t) : super.az_();
+         }
+      };
+      this.F.l(16);
+      this.F.g(true);
+      this.F.m(16777215);
+      this.F.a($$6);
+      this.F.c(s);
+      this.F.b(this::a);
+      this.e(this.F);
+      this.e(this.E);
+      this.L = this.d(esg.a(w, $$0x -> this.f.a(new ews($$0xx -> {
+            if ($$0xx) {
+               ac.i().a("https://aka.ms/javablocking");
             }
-         }
 
-         @Override
-         public int b() {
-            return this.e * 3 / 4;
-         }
+            this.f.a(this);
+         }, "https://aka.ms/javablocking", true))).a($$5, $$4, $$3, 20).a());
+      this.O = true;
+      this.a(this.H);
+   }
+
+   private void a(fci.a $$0) {
+      this.H = $$0;
+      this.I.b(l);
+      this.J.b(m);
+      this.K.b(n);
+      boolean $$1 = false;
+      switch ($$0) {
+         case a:
+            this.I.b(o);
+            Collection<UUID> $$2 = this.f.s.cl.o();
+            this.E.a($$2, this.E.l(), true);
+            break;
+         case b:
+            this.J.b(p);
+            Set<UUID> $$3 = this.f.aK().c();
+            $$1 = $$3.isEmpty();
+            this.E.a($$3, this.E.l(), false);
+            break;
+         case c:
+            this.K.b(q);
+            fcg $$4 = this.f.aK();
+            Set<UUID> $$5 = this.f.s.cl.o().stream().filter($$4::e).collect(Collectors.toSet());
+            $$1 = $$5.isEmpty();
+            this.E.a($$5, this.E.l(), false);
       }
 
-      class b extends etd.a<fci.a.b> {
-         private final tf b;
-         private final tf c;
-         private final eta d;
-
-         b(tf $$0, tf $$1, eta $$2) {
-            this.b = $$0;
-            this.c = $$1;
-            this.d = $$2;
-         }
-
-         @Override
-         public void a(erw $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.b(a.this.f.h, this.b, $$3, $$2, 16777215);
-            this.d.b($$0, $$3, $$2 + 12, 9, 16777215);
-         }
-
-         @Override
-         public tf a() {
-            return tf.a("narrator.select", te.a(this.b, this.c));
+      eqd $$6 = this.f.aV();
+      if (!this.F.a().isEmpty() && this.E.d() && !this.F.aw_()) {
+         $$6.c(t);
+      } else if ($$1) {
+         if ($$0 == fci.a.b) {
+            $$6.c(u);
+         } else if ($$0 == fci.a.c) {
+            $$6.c(v);
          }
       }
+   }
+
+   @Override
+   public void b(erv $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.D() + 3;
+      super.b($$0, $$1, $$2, $$3);
+      $$0.a(c, $$4, 64, 236, this.l() + 16);
+      $$0.a(k, $$4 + 10, 76, 12, 12);
+   }
+
+   @Override
+   public void a(erv $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a(this.f);
+      if (this.M != null) {
+         $$0.b(this.f.h, this.M, this.D() + 8, 35, -1);
+      }
+
+      if (!this.E.d()) {
+         this.E.a($$0, $$1, $$2, $$3);
+      } else if (!this.F.a().isEmpty()) {
+         $$0.a(this.f.h, t, this.g / 2, (72 + this.C()) / 2, -1);
+      } else if (this.H == fci.a.b) {
+         $$0.a(this.f.h, u, this.g / 2, (72 + this.C()) / 2, -1);
+      } else if (this.H == fci.a.c) {
+         $$0.a(this.f.h, v, this.g / 2, (72 + this.C()) / 2, -1);
+      }
+
+      this.F.a($$0, $$1, $$2, $$3);
+      this.L.j = this.H == fci.a.c;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (!this.F.aw_() && this.f.m.N.a($$0, $$1)) {
+         this.f.a(null);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public boolean j() {
+      return false;
+   }
+
+   private void a(String $$0) {
+      $$0 = $$0.toLowerCase(Locale.ROOT);
+      if (!$$0.equals(this.G)) {
+         this.E.a($$0);
+         this.G = $$0;
+         this.a(this.H);
+      }
+   }
+
+   private void a(eql $$0) {
+      int $$1 = $$0.J().n().size();
+      if (this.N != $$1) {
+         String $$2 = "";
+         fix $$3 = $$0.Q();
+         if ($$0.R()) {
+            $$2 = $$0.T().aa();
+         } else if ($$3 != null) {
+            $$2 = $$3.a;
+         }
+
+         if ($$1 > 1) {
+            this.M = tf.a("gui.socialInteractions.server_label.multiple", $$2, $$1);
+         } else {
+            this.M = tf.a("gui.socialInteractions.server_label.single", $$2, $$1);
+         }
+
+         this.N = $$1;
+      }
+   }
+
+   public void a(fiv $$0) {
+      this.E.a($$0, this.H);
+   }
+
+   public void a(UUID $$0) {
+      this.E.a($$0);
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

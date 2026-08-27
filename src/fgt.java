@@ -1,25 +1,54 @@
-public class fgt extends ffk {
-   public static final aer a = new aer("textures/entity/trident.png");
-   private final fhn b;
+public class fgt<T extends bii> extends ffc<T> {
+   private static final String a = "upper_body";
+   private final fhs b;
+   private final fhs f;
+   private final fhs g;
+   private final fhs h;
+   private final fhs i;
 
-   public fgt(fhn $$0) {
-      super(fnt::c);
+   public fgt(fhs $$0) {
       this.b = $$0;
+      this.g = $$0.b("head");
+      this.h = $$0.b("left_arm");
+      this.i = $$0.b("right_arm");
+      this.f = $$0.b("upper_body");
    }
 
-   public static fht a() {
-      fhv $$0 = new fhv();
-      fhw $$1 = $$0.a();
-      fhw $$2 = $$1.a("pole", fhs.c().a(0, 6).a(-0.5F, 2.0F, -0.5F, 1.0F, 25.0F, 1.0F), fhp.a);
-      $$2.a("base", fhs.c().a(4, 0).a(-1.5F, 0.0F, -0.5F, 3.0F, 2.0F, 1.0F), fhp.a);
-      $$2.a("left_spike", fhs.c().a(4, 3).a(-2.5F, -3.0F, -0.5F, 1.0F, 4.0F, 1.0F), fhp.a);
-      $$2.a("middle_spike", fhs.c().a(0, 0).a(-0.5F, -4.0F, -0.5F, 1.0F, 4.0F, 1.0F), fhp.a);
-      $$2.a("right_spike", fhs.c().a(4, 3).a().a(1.5F, -3.0F, -0.5F, 1.0F, 4.0F, 1.0F), fhp.a);
-      return fht.a($$0, 32, 32);
+   public static fhy b() {
+      fia $$0 = new fia();
+      fib $$1 = $$0.a();
+      float $$2 = 4.0F;
+      fhw $$3 = new fhw(-0.5F);
+      $$1.a("head", fhx.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$3), fhu.a(0.0F, 4.0F, 0.0F));
+      fhx $$4 = fhx.c().a(32, 0).a(-1.0F, 0.0F, -1.0F, 12.0F, 2.0F, 2.0F, $$3);
+      $$1.a("left_arm", $$4, fhu.a(5.0F, 6.0F, 1.0F, 0.0F, 0.0F, 1.0F));
+      $$1.a("right_arm", $$4, fhu.a(-5.0F, 6.0F, -1.0F, 0.0F, (float) Math.PI, -1.0F));
+      $$1.a("upper_body", fhx.c().a(0, 16).a(-5.0F, -10.0F, -5.0F, 10.0F, 10.0F, 10.0F, $$3), fhu.a(0.0F, 13.0F, 0.0F));
+      $$1.a("lower_body", fhx.c().a(0, 36).a(-6.0F, -12.0F, -6.0F, 12.0F, 12.0F, 12.0F, $$3), fhu.a(0.0F, 24.0F, 0.0F));
+      return fhy.a($$0, 64, 64);
    }
 
    @Override
-   public void a(elg $$0, elk $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.g.f = $$4 * (float) (Math.PI / 180.0);
+      this.g.e = $$5 * (float) (Math.PI / 180.0);
+      this.f.f = $$4 * (float) (Math.PI / 180.0) * 0.25F;
+      float $$6 = arp.a(this.f.f);
+      float $$7 = arp.b(this.f.f);
+      this.h.f = this.f.f;
+      this.i.f = this.f.f + (float) Math.PI;
+      this.h.b = $$7 * 5.0F;
+      this.h.d = -$$6 * 5.0F;
+      this.i.b = -$$7 * 5.0F;
+      this.i.d = $$6 * 5.0F;
+   }
+
+   @Override
+   public fhs a() {
+      return this.b;
+   }
+
+   public fhs c() {
+      return this.g;
    }
 }

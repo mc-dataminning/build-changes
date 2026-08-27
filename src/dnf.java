@@ -1,67 +1,99 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class dnf extends dnn<dpn> {
-   private static final ImmutableList<csm> a = ImmutableList.of(csn.F, csn.fn, csn.fo, csn.fp, csn.fq, csn.cv, csn.ct);
-   private static final ha[] b = ha.values();
-   private static final double c = 0.9;
+public class dnf extends dnm<dpx> {
+   private static final dfi a = dfi.a(csm.I);
+   private final dez b = csm.I.n();
+   private final dez c = csm.jF.n();
+   private final dez d = csm.aV.n();
+   private final dez an = csm.G.n();
 
-   public dnf(Codec<dpn> $$0) {
+   public dnf(Codec<dpx> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dnp<dpn> $$0) {
-      boolean $$1 = false;
-      aru $$2 = $$0.d();
-      cqg $$3 = $$0.b();
-      dpn $$4 = $$0.f();
-      gu $$5 = $$0.e();
-      boolean $$6 = $$2.j() < 0.9;
-      int $$7 = $$6 ? $$4.d().a($$2) : 0;
-      int $$8 = $$6 ? $$4.d().a($$2) : 0;
-      boolean $$9 = $$6 && $$7 != 0 && $$8 != 0;
-      int $$10 = $$4.c().a($$2);
-      int $$11 = $$4.c().a($$2);
-      int $$12 = Math.max($$10, $$11);
+   public boolean a(dno<dpx> $$0) {
+      cqf $$1 = $$0.b();
+      gu $$2 = $$0.e();
+      $$2 = $$2.c();
 
-      for (gu $$13 : gu.a($$5, $$10, 0, $$11)) {
-         if ($$13.k($$5) > $$12) {
-            break;
-         }
-
-         if (a($$3, $$13, $$4)) {
-            if ($$9) {
-               $$1 = true;
-               this.a($$3, $$13, $$4.b());
-            }
-
-            gu $$14 = $$13.b($$7, 0, $$8);
-            if (a($$3, $$14, $$4)) {
-               $$1 = true;
-               this.a($$3, $$14, $$4.a());
-            }
-         }
+      while ($$1.t($$2) && $$2.v() > $$1.C_() + 2) {
+         $$2 = $$2.d();
       }
 
-      return $$1;
-   }
-
-   private static boolean a(cpn $$0, gu $$1, dpn $$2) {
-      dfa $$3 = $$0.a_($$1);
-      if ($$3.a($$2.a().b())) {
-         return false;
-      } else if (a.contains($$3.b())) {
+      if (!a.a($$1.a_($$2))) {
          return false;
       } else {
-         for (ha $$4 : b) {
-            boolean $$5 = $$0.a_($$1.a($$4)).i();
-            if ($$5 && $$4 != ha.b || !$$5 && $$4 == ha.b) {
-               return false;
+         for (int $$3 = -2; $$3 <= 2; $$3++) {
+            for (int $$4 = -2; $$4 <= 2; $$4++) {
+               if ($$1.t($$2.b($$3, -1, $$4)) && $$1.t($$2.b($$3, -2, $$4))) {
+                  return false;
+               }
             }
          }
 
+         for (int $$5 = -2; $$5 <= 0; $$5++) {
+            for (int $$6 = -2; $$6 <= 2; $$6++) {
+               for (int $$7 = -2; $$7 <= 2; $$7++) {
+                  $$1.a($$2.b($$6, $$5, $$7), this.d, 2);
+               }
+            }
+         }
+
+         $$1.a($$2, this.an, 2);
+
+         for (ha $$8 : ha.c.a) {
+            $$1.a($$2.a($$8), this.an, 2);
+         }
+
+         gu $$9 = $$2.d();
+         $$1.a($$9, this.b, 2);
+
+         for (ha $$10 : ha.c.a) {
+            $$1.a($$9.a($$10), this.b, 2);
+         }
+
+         for (int $$11 = -2; $$11 <= 2; $$11++) {
+            for (int $$12 = -2; $$12 <= 2; $$12++) {
+               if ($$11 == -2 || $$11 == 2 || $$12 == -2 || $$12 == 2) {
+                  $$1.a($$2.b($$11, 1, $$12), this.d, 2);
+               }
+            }
+         }
+
+         $$1.a($$2.b(2, 1, 0), this.c, 2);
+         $$1.a($$2.b(-2, 1, 0), this.c, 2);
+         $$1.a($$2.b(0, 1, 2), this.c, 2);
+         $$1.a($$2.b(0, 1, -2), this.c, 2);
+
+         for (int $$13 = -1; $$13 <= 1; $$13++) {
+            for (int $$14 = -1; $$14 <= 1; $$14++) {
+               if ($$13 == 0 && $$14 == 0) {
+                  $$1.a($$2.b($$13, 4, $$14), this.d, 2);
+               } else {
+                  $$1.a($$2.b($$13, 4, $$14), this.c, 2);
+               }
+            }
+         }
+
+         for (int $$15 = 1; $$15 <= 3; $$15++) {
+            $$1.a($$2.b(-1, $$15, -1), this.d, 2);
+            $$1.a($$2.b(-1, $$15, 1), this.d, 2);
+            $$1.a($$2.b(1, $$15, -1), this.d, 2);
+            $$1.a($$2.b(1, $$15, 1), this.d, 2);
+         }
+
+         List<gu> $$17 = List.of($$2, $$2.h(), $$2.f(), $$2.g(), $$2.e());
+         aru $$18 = $$0.d();
+         b($$1, ac.a($$17, $$18).c(1));
+         b($$1, ac.a($$17, $$18).c(2));
          return true;
       }
+   }
+
+   private static void b(cqf $$0, gu $$1) {
+      $$0.a($$1, csm.J.n(), 3);
+      $$0.a($$1, dcn.N).ifPresent($$1x -> $$1x.a(ece.aC, $$1.a()));
    }
 }

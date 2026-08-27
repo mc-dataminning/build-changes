@@ -1,15 +1,16 @@
-public class fuo extends ftu<bzi, fgi<bzi>> {
-   private static final aer a = new aer("textures/entity/silverfish.png");
+public class fuo extends fud<bvb, ffz<bvb>> {
+   private static final aer a = new aer("textures/entity/bear/polarbear.png");
 
-   public fuo(fso.a $$0) {
-      super($$0, new fgi<>($$0.a(fhm.bg)), 0.3F);
+   public fuo(fsx.a $$0) {
+      super($$0, new ffz<>($$0.a(fhr.aU)), 0.9F);
    }
 
-   protected float a(bzi $$0) {
-      return 180.0F;
-   }
-
-   public aer b(bzi $$0) {
+   public aer a(bvb $$0) {
       return a;
+   }
+
+   protected void a(bvb $$0, elf $$1, float $$2) {
+      $$1.b(1.2F, 1.2F, 1.2F);
+      super.a($$0, $$1, $$2);
    }
 }

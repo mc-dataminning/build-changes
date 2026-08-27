@@ -1,69 +1,58 @@
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class dhd extends dhh {
-   private final he<cqk> n;
+public class dhd<T> implements dhm<T> {
+   private final hj<T> a;
 
-   public dhd(cpm $$0, cot $$1, he<cqk> $$2) {
-      super($$0, $$1);
-      this.n = $$2;
+   public dhd(hj<T> $$0) {
+      this.a = $$0;
+   }
+
+   public static <A> dhm<A> a(int $$0, hj<A> $$1, dhn<A> $$2, List<A> $$3) {
+      return new dhd<>($$1);
    }
 
    @Override
-   public dfa a_(gu $$0) {
-      return csn.nb.n();
-   }
-
-   @Nullable
-   @Override
-   public dfa a(gu $$0, dfa $$1, boolean $$2) {
-      return null;
+   public int a(T $$0) {
+      int $$1 = this.a.a($$0);
+      return $$1 == -1 ? 0 : $$1;
    }
 
    @Override
-   public ead b_(gu $$0) {
-      return eae.a.g();
+   public boolean a(Predicate<T> $$0) {
+      return true;
    }
 
    @Override
-   public int h(gu $$0) {
+   public T a(int $$0) {
+      T $$1 = this.a.a($$0);
+      if ($$1 == null) {
+         throw new dhl($$0);
+      } else {
+         return $$1;
+      }
+   }
+
+   @Override
+   public void a(si $$0) {
+   }
+
+   @Override
+   public void b(si $$0) {
+   }
+
+   @Override
+   public int a() {
       return 0;
    }
 
-   @Nullable
    @Override
-   public dcm a(gu $$0, dhh.b $$1) {
-      return null;
+   public int b() {
+      return this.a.b();
    }
 
    @Override
-   public void b(dcm $$0) {
-   }
-
-   @Override
-   public void a(dcm $$0) {
-   }
-
-   @Override
-   public void d(gu $$0) {
-   }
-
-   @Override
-   public boolean C() {
-      return true;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public akd D() {
-      return akd.b;
-   }
-
-   @Override
-   public he<cqk> getNoiseBiome(int $$0, int $$1, int $$2) {
-      return this.n;
+   public dhm<T> c() {
+      return this;
    }
 }

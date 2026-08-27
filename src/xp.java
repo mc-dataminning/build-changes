@@ -1,12 +1,12 @@
 import java.util.Optional;
 
-public record xp(int a, int b, int c, int d, Optional<ehe> e) implements ux<wp> {
+public record xp(int a, int b, int c, int d, Optional<ehd> e) implements ux<wp> {
    public xp(bii $$0, bhg $$1) {
       this($$0.ah(), $$0.dK().B_().d(jc.p).a($$1.j()), $$1.d() != null ? $$1.d().ah() : -1, $$1.c() != null ? $$1.c().ah() : -1, Optional.ofNullable($$1.i()));
    }
 
    public xp(si $$0) {
-      this($$0.m(), $$0.m(), b($$0), b($$0), $$0.b((si.a<ehe>)($$0x -> new ehe($$0x.readDouble(), $$0x.readDouble(), $$0x.readDouble()))));
+      this($$0.m(), $$0.m(), b($$0), b($$0), $$0.b((si.a<ehd>)($$0x -> new ehd($$0x.readDouble(), $$0x.readDouble(), $$0x.readDouble()))));
    }
 
    private static void a(si $$0, int $$1) {
@@ -34,7 +34,7 @@ public record xp(int a, int b, int c, int d, Optional<ehe> e) implements ux<wp> 
       $$0.a(this);
    }
 
-   public bhg a(cpm $$0) {
+   public bhg a(cpl $$0) {
       he<bhi> $$1 = $$0.B_().d(jc.p).c(this.b).get();
       if (this.e.isPresent()) {
          return new bhg($$1, this.e.get());
@@ -57,7 +57,7 @@ public record xp(int a, int b, int c, int d, Optional<ehe> e) implements ux<wp> 
       return this.d;
    }
 
-   public Optional<ehe> g() {
+   public Optional<ehd> g() {
       return this.e;
    }
 }

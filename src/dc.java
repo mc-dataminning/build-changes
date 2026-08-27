@@ -15,8 +15,8 @@ public class dc extends cu<dc.a> {
       return new dc.a($$1, $$3, $$4);
    }
 
-   public void a(akl $$0, bii $$1, ehe $$2, int $$3) {
-      ech $$4 = bo.b($$0, $$1);
+   public void a(akl $$0, bii $$1, ehd $$2, int $$3) {
+      ecg $$4 = bo.b($$0, $$1);
       this.a($$0, $$3x -> $$3x.a($$4, $$2, $$3));
    }
 
@@ -42,7 +42,7 @@ public class dc extends cu<dc.a> {
          return $$0;
       }
 
-      public boolean a(ech $$0, ehe $$1, int $$2) {
+      public boolean a(ecg $$0, ehd $$1, int $$2) {
          return !this.a.d($$2) ? false : !this.b.isPresent() || this.b.get().a($$0);
       }
    }

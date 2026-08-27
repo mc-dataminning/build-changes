@@ -83,7 +83,7 @@ public class yu implements ux<wp> {
          $$0.a($$2.getProperties());
       }),
       b(($$0, $$1) -> $$0.g = $$1.c(tv.a::a), ($$0, $$1) -> $$0.a($$1.g, tv.a::a)),
-      c(($$0, $$1) -> $$0.e = cpj.a($$1.m()), ($$0, $$1) -> $$0.c($$1.e().a())),
+      c(($$0, $$1) -> $$0.e = cpi.a($$1.m()), ($$0, $$1) -> $$0.c($$1.e().a())),
       d(($$0, $$1) -> $$0.c = $$1.readBoolean(), ($$0, $$1) -> $$0.a($$1.c())),
       e(($$0, $$1) -> $$0.d = $$1.m(), ($$0, $$1) -> $$0.c($$1.d())),
       f(($$0, $$1) -> $$0.f = $$1.c(si::l), ($$0, $$1) -> $$0.a($$1.f(), si::a));
@@ -105,7 +105,7 @@ public class yu implements ux<wp> {
       }
    }
 
-   public static record b(UUID a, @Nullable GameProfile b, boolean c, int d, cpj e, @Nullable tf f, @Nullable tv.a g) {
+   public static record b(UUID a, @Nullable GameProfile b, boolean c, int d, cpi e, @Nullable tf f, @Nullable tv.a g) {
 
       b(akl $$0) {
          this($$0.cv(), $$0.fP(), true, $$0.c.l(), $$0.e.b(), $$0.K(), x.a($$0.Z(), tv::a));
@@ -118,14 +118,14 @@ public class yu implements ux<wp> {
       GameProfile b;
       boolean c;
       int d;
-      cpj e;
+      cpi e;
       @Nullable
       tf f;
       @Nullable
       tv.a g;
 
       c(UUID $$0) {
-         this.e = cpj.e;
+         this.e = cpi.e;
          this.a = $$0;
       }
 

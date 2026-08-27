@@ -1,64 +1,60 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.Consumer;
 
-public class ede extends ect {
-   public static final Codec<ede> a = a(ede::new);
+public class ede extends edb {
+   public static final Codec<ede> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aqa.a(jc.D).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
+            .and(b($$0))
+            .apply($$0, ede::new)
+   );
+   private final aqa<cis> j;
+   private final boolean k;
 
-   ede(List<eda> $$0, List<efg> $$1) {
-      super($$0, $$1);
+   private ede(aqa<cis> $$0, boolean $$1, int $$2, int $$3, List<eff> $$4, List<edt> $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.j = $$0;
+      this.k = $$1;
    }
 
    @Override
-   public edb a() {
-      return ecy.h;
+   public eda a() {
+      return ecx.f;
    }
 
    @Override
-   protected ecs a(List<? extends ecs> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (ecs)$$0.get(0);
-         case 2 -> $$0.get(0).and($$0.get(1));
-         default -> ($$1, $$2) -> {
-         for (ecs $$3 : $$0) {
-            if (!$$3.expand($$1, $$2)) {
-               return false;
-            }
+   public void a(Consumer<cix> $$0, ecg $$1) {
+      jb.i.c(this.j).forEach($$1x -> $$0.accept(new cix($$1x)));
+   }
+
+   private boolean a(ecg $$0, Consumer<ecy> $$1) {
+      if (!this.a($$0)) {
+         return false;
+      } else {
+         for (final he<cis> $$2 : jb.i.c(this.j)) {
+            $$1.accept(new edb.c() {
+               @Override
+               public void a(Consumer<cix> $$0, ecg $$1) {
+                  $$0.accept(new cix($$2));
+               }
+            });
          }
 
          return true;
-      };
-      };
+      }
    }
 
-   public static ede.a a(eda.a<?>... $$0) {
-      return new ede.a($$0);
+   @Override
+   public boolean expand(ecg $$0, Consumer<ecy> $$1) {
+      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
    }
 
-   public static class a extends eda.a<ede.a> {
-      private final Builder<eda> a = ImmutableList.builder();
+   public static edb.a<?> a(aqa<cis> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new ede($$0, false, $$1, $$2, $$3, $$4));
+   }
 
-      public a(eda.a<?>... $$0) {
-         for (eda.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
-
-      protected ede.a a() {
-         return this;
-      }
-
-      @Override
-      public ede.a c(eda.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      @Override
-      public eda b() {
-         return new ede(this.a.build(), this.f());
-      }
+   public static edb.a<?> b(aqa<cis> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new ede($$0, true, $$1, $$2, $$3, $$4));
    }
 }

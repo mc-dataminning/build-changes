@@ -1,127 +1,189 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
-import java.util.List;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.minecraft.MinecraftSessionService;
+import com.mojang.authlib.yggdrasil.ProfileResult;
 import java.util.Optional;
-import java.util.function.Function;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 import javax.annotation.Nullable;
 
-public class ddv {
-   private static final Codec<tf[]> c = aqy.c
-      .listOf()
-      .comapFlatMap(
-         $$0 -> ac.a($$0, 4).map($$0x -> new tf[]{(tf)$$0x.get(0), (tf)$$0x.get(1), (tf)$$0x.get(2), (tf)$$0x.get(3)}),
-         $$0 -> List.of($$0[0], $$0[1], $$0[2], $$0[3])
-      );
-   public static final Codec<ddv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               c.fieldOf("messages").forGetter($$0x -> $$0x.d),
-               c.optionalFieldOf("filtered_messages").forGetter(ddv::d),
-               chm.q.fieldOf("color").orElse(chm.p).forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("has_glowing_text").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, ddv::a)
-   );
-   public static final int b = 4;
-   private final tf[] d;
-   private final tf[] e;
-   private final chm f;
-   private final boolean g;
+public class ddv extends dcl {
+   public static final String a = "SkullOwner";
+   public static final String b = "note_block_sound";
    @Nullable
-   private arc[] h;
-   private boolean i;
+   private static anv c;
+   @Nullable
+   private static MinecraftSessionService d;
+   @Nullable
+   private static Executor e;
+   private static final Executor f = $$0 -> {
+      Executor $$1 = e;
+      if ($$1 != null) {
+         $$1.execute($$0);
+      }
+   };
+   @Nullable
+   private GameProfile g;
+   @Nullable
+   private aer h;
+   private int i;
+   private boolean j;
 
-   public ddv() {
-      this(c(), c(), chm.p, false);
+   public ddv(gu $$0, dez $$1) {
+      super(dcn.p, $$0, $$1);
    }
 
-   public ddv(tf[] $$0, tf[] $$1, chm $$2, boolean $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   public static void a(afj $$0, Executor $$1) {
+      c = $$0.e();
+      d = $$0.b();
+      e = $$1;
    }
 
-   private static tf[] c() {
-      return new tf[]{te.a, te.a, te.a, te.a};
+   public static void c() {
+      c = null;
+      d = null;
+      e = null;
    }
 
-   private static ddv a(tf[] $$0, Optional<tf[]> $$1, chm $$2, boolean $$3) {
-      return new ddv($$0, $$1.orElse(Arrays.copyOf($$0, $$0.length)), $$2, $$3);
+   @Override
+   protected void b(qr $$0) {
+      super.b($$0);
+      if (this.g != null) {
+         qr $$1 = new qr();
+         rd.a($$1, this.g);
+         $$0.a("SkullOwner", $$1);
+      }
+
+      if (this.h != null) {
+         $$0.a("note_block_sound", this.h.toString());
+      }
    }
 
-   public boolean a() {
+   @Override
+   public void a(qr $$0) {
+      super.a($$0);
+      if ($$0.b("SkullOwner", 10)) {
+         this.a(rd.a($$0.p("SkullOwner")));
+      } else if ($$0.b("ExtraType", 8)) {
+         String $$1 = $$0.l("ExtraType");
+         if (!asi.b($$1)) {
+            this.a(new GameProfile(ac.d, $$1));
+         }
+      }
+
+      if ($$0.b("note_block_sound", 8)) {
+         this.h = aer.a($$0.l("note_block_sound"));
+      }
+   }
+
+   public static void a(cpl $$0, gu $$1, dez $$2, ddv $$3) {
+      if ($$0.B($$1)) {
+         $$3.j = true;
+         $$3.i++;
+      } else {
+         $$3.j = false;
+      }
+   }
+
+   public float a(float $$0) {
+      return this.j ? (float)this.i + $$0 : (float)this.i;
+   }
+
+   @Nullable
+   public GameProfile d() {
       return this.g;
    }
 
-   public ddv a(boolean $$0) {
-      return $$0 == this.g ? this : new ddv(this.d, this.e, this.f, $$0);
-   }
-
-   public chm b() {
-      return this.f;
-   }
-
-   public ddv a(chm $$0) {
-      return $$0 == this.b() ? this : new ddv(this.d, this.e, $$0, this.g);
-   }
-
-   public tf a(int $$0, boolean $$1) {
-      return this.b($$1)[$$0];
-   }
-
-   public ddv a(int $$0, tf $$1) {
-      return this.a($$0, $$1, $$1);
-   }
-
-   public ddv a(int $$0, tf $$1, tf $$2) {
-      tf[] $$3 = Arrays.copyOf(this.d, this.d.length);
-      tf[] $$4 = Arrays.copyOf(this.e, this.e.length);
-      $$3[$$0] = $$1;
-      $$4[$$0] = $$2;
-      return new ddv($$3, $$4, this.f, this.g);
-   }
-
-   public boolean a(cbn $$0) {
-      return Arrays.stream(this.b($$0.W())).anyMatch($$0x -> !$$0x.getString().isEmpty());
-   }
-
-   public tf[] b(boolean $$0) {
-      return $$0 ? this.e : this.d;
-   }
-
-   public arc[] a(boolean $$0, Function<tf, arc> $$1) {
-      if (this.h == null || this.i != $$0) {
-         this.i = $$0;
-         this.h = new arc[4];
-
-         for (int $$2 = 0; $$2 < 4; $$2++) {
-            this.h[$$2] = $$1.apply(this.a($$2, $$0));
-         }
-      }
-
+   @Nullable
+   public aer f() {
       return this.h;
    }
 
-   private Optional<tf[]> d() {
-      for (int $$0 = 0; $$0 < 4; $$0++) {
-         if (!this.e[$$0].equals(this.d[$$0])) {
-            return Optional.of(this.e);
-         }
-      }
-
-      return Optional.empty();
+   public wx g() {
+      return wx.a(this);
    }
 
-   public boolean b(cbn $$0) {
-      for (tf $$1 : this.b($$0.W())) {
-         ub $$2 = $$1.a();
-         td $$3 = $$2.h();
-         if ($$3 != null && $$3.a() == td.a.c) {
-            return true;
-         }
+   @Override
+   public qr an_() {
+      return this.o();
+   }
+
+   public void a(@Nullable GameProfile $$0) {
+      synchronized (this) {
+         this.g = $$0;
       }
 
-      return false;
+      this.i();
+   }
+
+   private void i() {
+      if (this.g != null && !ac.b(this.g.getName()) && !c(this.g)) {
+         a(this.g.getName()).thenAcceptAsync($$0 -> {
+            this.g = $$0.orElse(this.g);
+            this.e();
+         }, f);
+      } else {
+         this.e();
+      }
+   }
+
+   @Nullable
+   public static GameProfile d(qr $$0) {
+      if ($$0.b("SkullOwner", 10)) {
+         return rd.a($$0.p("SkullOwner"));
+      } else {
+         if ($$0.b("SkullOwner", 8)) {
+            String $$1 = $$0.l("SkullOwner");
+            if (!ac.b($$1)) {
+               $$0.r("SkullOwner");
+               a($$0, $$1);
+            }
+         }
+
+         return null;
+      }
+   }
+
+   public static void e(qr $$0) {
+      String $$1 = $$0.l("SkullOwner");
+      if (!ac.b($$1)) {
+         a($$0, $$1);
+      }
+   }
+
+   private static void a(qr $$0, String $$1) {
+      a($$1).thenAccept($$2 -> $$0.a("SkullOwner", rd.a(new qr(), $$2.orElse(new GameProfile(ac.d, $$1)))));
+   }
+
+   private static CompletableFuture<Optional<GameProfile>> a(String $$0) {
+      anv $$1 = c;
+      return $$1 == null
+         ? CompletableFuture.completedFuture(Optional.empty())
+         : $$1.b($$0)
+            .thenCompose($$0x -> $$0x.isPresent() ? b((GameProfile)$$0x.get()) : CompletableFuture.completedFuture(Optional.empty()))
+            .thenApplyAsync($$0x -> {
+               anv $$1x = c;
+               if ($$1x != null) {
+                  $$0x.ifPresent($$1x::a);
+                  return $$0x;
+               } else {
+                  return Optional.empty();
+               }
+            }, f);
+   }
+
+   private static CompletableFuture<Optional<GameProfile>> b(GameProfile $$0) {
+      return c($$0) ? CompletableFuture.completedFuture(Optional.of($$0)) : CompletableFuture.supplyAsync(() -> {
+         MinecraftSessionService $$1 = d;
+         if ($$1 != null) {
+            ProfileResult $$2 = $$1.fetchProfile($$0.getId(), true);
+            return $$2 == null ? Optional.of($$0) : Optional.of($$2.profile());
+         } else {
+            return Optional.empty();
+         }
+      }, ac.f());
+   }
+
+   private static boolean c(GameProfile $$0) {
+      return $$0.getProperties().containsKey("textures");
    }
 }

@@ -1,85 +1,90 @@
-import com.google.common.collect.Lists;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
-import java.util.Collection;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class fov implements gax {
-   private final List<fow> a;
+public class fov {
+   public float[] a;
+   public final int b;
 
-   public fov(List<fow> $$0) {
+   public fov(@Nullable float[] $$0, int $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
-   public List<fow> a() {
-      return this.a;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
+   public float a(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
       } else {
-         return $$0 instanceof fov $$1 ? this.a.equals($$1.a) : false;
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 1 ? 2 : 0];
       }
    }
 
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
-   }
-
-   @Override
-   public Collection<aer> f() {
-      return this.a().stream().map(fow::a).collect(Collectors.toSet());
-   }
-
-   @Override
-   public void a(Function<aer, gax> $$0) {
-      this.a().stream().map(fow::a).distinct().forEach($$1 -> $$0.apply($$1).a($$0));
-   }
-
-   @Nullable
-   @Override
-   public gam a(gaq $$0, Function<gap, fyl> $$1, gau $$2, aer $$3) {
-      if (this.a().isEmpty()) {
-         return null;
+   public float b(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
       } else {
-         gay.a $$4 = new gay.a();
-
-         for (fow $$5 : this.a()) {
-            gam $$6 = $$0.a($$5.a(), $$5);
-            $$4.a($$6, $$5.d());
-         }
-
-         return $$4.a();
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 3 ? 3 : 1];
       }
    }
 
-   public static class a implements JsonDeserializer<fov> {
+   private int d(int $$0) {
+      return ($$0 + this.b / 90) % 4;
+   }
+
+   public int c(int $$0) {
+      return ($$0 + 4 - this.b / 90) % 4;
+   }
+
+   public void a(float[] $$0) {
+      if (this.a == null) {
+         this.a = $$0;
+      }
+   }
+
+   protected static class a implements JsonDeserializer<fov> {
+      private static final int a = 0;
+
       public fov a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         List<fow> $$3 = Lists.newArrayList();
-         if ($$0.isJsonArray()) {
-            JsonArray $$4 = $$0.getAsJsonArray();
-            if ($$4.size() == 0) {
-               throw new JsonParseException("Empty variant array");
-            }
+         JsonObject $$3 = $$0.getAsJsonObject();
+         float[] $$4 = this.b($$3);
+         int $$5 = this.a($$3);
+         return new fov($$4, $$5);
+      }
 
-            for (JsonElement $$5 : $$4) {
-               $$3.add((fow)$$2.deserialize($$5, fow.class));
-            }
+      protected int a(JsonObject $$0) {
+         int $$1 = arg.a($$0, "rotation", 0);
+         if ($$1 >= 0 && $$1 % 90 == 0 && $$1 / 90 <= 3) {
+            return $$1;
          } else {
-            $$3.add((fow)$$2.deserialize($$0, fow.class));
+            throw new JsonParseException("Invalid rotation " + $$1 + " found, only 0/90/180/270 allowed");
          }
+      }
 
-         return new fov($$3);
+      @Nullable
+      private float[] b(JsonObject $$0) {
+         if (!$$0.has("uv")) {
+            return null;
+         } else {
+            JsonArray $$1 = arg.v($$0, "uv");
+            if ($$1.size() != 4) {
+               throw new JsonParseException("Expected 4 uv values, found: " + $$1.size());
+            } else {
+               float[] $$2 = new float[4];
+
+               for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+                  $$2[$$3] = arg.e($$1.get($$3), "uv[" + $$3 + "]");
+               }
+
+               return $$2;
+            }
+         }
       }
    }
 }

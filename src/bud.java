@@ -1,8 +1,10 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public abstract class bud extends bja {
+   protected bud(bim<? extends bud> $$0, cpl $$1) {
+      super($$0, $$1);
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface bud {
+   @Override
+   public boolean a(cbm $$0) {
+      return false;
+   }
 }

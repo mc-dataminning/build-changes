@@ -1,33 +1,30 @@
-public class fae extends esh {
-   private static final aer a = new aer("widget/page_forward_highlighted");
-   private static final aer b = new aer("widget/page_forward");
-   private static final aer c = new aer("widget/page_backward_highlighted");
-   private static final aer d = new aer("widget/page_backward");
-   private final boolean s;
-   private final boolean t;
+public class fae extends eyx {
+   private final col m;
 
-   public fae(int $$0, int $$1, boolean $$2, esh.c $$3, boolean $$4) {
-      super($$0, $$1, 23, 13, te.a, $$3, o);
-      this.s = $$2;
-      this.t = $$4;
+   public fae(col $$0) {
+      this.m = $$0;
    }
 
    @Override
-   public void b(erw $$0, int $$1, int $$2, float $$3) {
-      aer $$4;
-      if (this.s) {
-         $$4 = this.n() ? a : b;
-      } else {
-         $$4 = this.n() ? c : d;
-      }
-
-      $$0.a($$4, this.p(), this.r(), 23, 13);
+   public col l() {
+      return this.m;
    }
 
    @Override
-   public void a(gcx $$0) {
-      if (this.t) {
-         $$0.a(gbo.a(aow.ce, 1.0F));
+   int C() {
+      return 150;
+   }
+
+   @Override
+   protected void aC_() {
+      super.aC_();
+      this.a.a(this.l().m());
+   }
+
+   @Override
+   protected void a(col $$0) {
+      if ($$0 instanceof cdl.a $$1) {
+         this.f.J().b(new ack($$1.h().ah(), this.a.a(), $$0.o()));
       }
    }
 }

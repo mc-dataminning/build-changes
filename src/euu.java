@@ -12,22 +12,22 @@ import java.util.Set;
 public class euu implements AutoCloseable {
    private static final aru a = aru.a();
    private static final float b = 32.0F;
-   private final fym c;
+   private final fyv c;
    private final aer d;
    private euy e;
    private euy f;
-   private final List<ejj> g = Lists.newArrayList();
+   private final List<eji> g = Lists.newArrayList();
    private final eus<euy> h = new eus<>(euy[]::new, euy[][]::new);
    private final eus<euu.a> i = new eus<>(euu.a[]::new, euu.a[][]::new);
    private final Int2ObjectMap<IntList> j = new Int2ObjectOpenHashMap();
    private final List<euv> k = Lists.newArrayList();
 
-   public euu(fym $$0, aer $$1) {
+   public euu(fyv $$0, aer $$1) {
       this.c = $$0;
       this.d = $$1;
    }
 
-   public void a(List<ejj> $$0) {
+   public void a(List<eji> $$0) {
       this.b();
       this.c();
       this.h.a();
@@ -37,14 +37,14 @@ public class euu implements AutoCloseable {
       this.f = eva.a.bake(this::a);
       IntSet $$1 = new IntOpenHashSet();
 
-      for (ejj $$2 : $$0) {
+      for (eji $$2 : $$0) {
          $$1.addAll($$2.a());
       }
 
-      Set<ejj> $$3 = Sets.newHashSet();
+      Set<eji> $$3 = Sets.newHashSet();
       $$1.forEach($$2x -> {
-         for (ejj $$3x : $$0) {
-            eji $$4 = $$3x.a($$2x);
+         for (eji $$3x : $$0) {
+            ejh $$4 = $$3x.a($$2x);
             if ($$4 != null) {
                $$3.add($$3x);
                if ($$4 != eva.b) {
@@ -64,7 +64,7 @@ public class euu implements AutoCloseable {
    }
 
    private void b() {
-      for (ejj $$0 : this.g) {
+      for (eji $$0 : this.g) {
          $$0.close();
       }
 
@@ -79,7 +79,7 @@ public class euu implements AutoCloseable {
       this.k.clear();
    }
 
-   private static boolean b(eji $$0) {
+   private static boolean b(ejh $$0) {
       float $$1 = $$0.a(false);
       if (!($$1 < 0.0F) && !($$1 > 32.0F)) {
          float $$2 = $$0.a(true);
@@ -90,10 +90,10 @@ public class euu implements AutoCloseable {
    }
 
    private euu.a b(int $$0) {
-      eji $$1 = null;
+      ejh $$1 = null;
 
-      for (ejj $$2 : this.g) {
-         eji $$3 = $$2.a($$0);
+      for (eji $$2 : this.g) {
+         ejh $$3 = $$2.a($$0);
          if ($$3 != null) {
             if ($$1 == null) {
                $$1 = $$3;
@@ -108,13 +108,13 @@ public class euu implements AutoCloseable {
       return $$1 != null ? new euu.a($$1, eva.b) : euu.a.c;
    }
 
-   public eji a(int $$0, boolean $$1) {
+   public ejh a(int $$0, boolean $$1) {
       return this.i.a($$0, this::b).a($$1);
    }
 
    private euy c(int $$0) {
-      for (ejj $$1 : this.g) {
-         eji $$2 = $$1.a($$0);
+      for (eji $$1 : this.g) {
+         ejh $$2 = $$1.a($$0);
          if ($$2 != null) {
             return $$2.bake(this::a);
          }
@@ -127,7 +127,7 @@ public class euu implements AutoCloseable {
       return this.h.a($$0, this::c);
    }
 
-   private euy a(ejk $$0) {
+   private euy a(ejj $$0) {
       for (euv $$1 : this.k) {
          euy $$2 = $$1.a($$0);
          if ($$2 != null) {
@@ -145,7 +145,7 @@ public class euu implements AutoCloseable {
       return $$7 == null ? this.e : $$7;
    }
 
-   public euy a(eji $$0) {
+   public euy a(ejh $$0) {
       IntList $$1 = (IntList)this.j.get(arp.f($$0.a(false)));
       return $$1 != null && !$$1.isEmpty() ? this.a($$1.getInt(a.a($$1.size()))) : this.e;
    }
@@ -154,10 +154,10 @@ public class euu implements AutoCloseable {
       return this.f;
    }
 
-   static record a(eji a, eji b) {
+   static record a(ejh a, ejh b) {
       static final euu.a c = new euu.a(eva.b, eva.b);
 
-      eji a(boolean $$0) {
+      ejh a(boolean $$0) {
          return $$0 ? this.b : this.a;
       }
    }

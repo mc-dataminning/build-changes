@@ -1,92 +1,71 @@
-public interface cqc extends cos {
-   ha[] C = ha.values();
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-   default int a(gu $$0, ha $$1) {
-      return this.a_($$0).c(this, $$0, $$1);
+public record cqc(qr d, Optional<cqc.a> e) {
+   public static final String a = "entity";
+   public static final Codec<cqc> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(qr.a.fieldOf("entity").forGetter($$0x -> $$0x.d), cqc.a.a.optionalFieldOf("custom_spawn_rules").forGetter($$0x -> $$0x.e))
+            .apply($$0, cqc::new)
+   );
+   public static final Codec<bfa<cqc>> c = bfa.a(b);
+
+   public cqc() {
+      this(new qr(), Optional.empty());
    }
 
-   default int e_(gu $$0) {
-      int $$1 = 0;
-      $$1 = Math.max($$1, this.a($$0.d(), ha.a));
-      if ($$1 >= 15) {
-         return $$1;
-      } else {
-         $$1 = Math.max($$1, this.a($$0.c(), ha.b));
-         if ($$1 >= 15) {
-            return $$1;
+   public cqc(qr d, Optional<cqc.a> e) {
+      if (d.e("id")) {
+         aer $$2 = aer.a(d.l("id"));
+         if ($$2 != null) {
+            d.a("id", $$2.toString());
          } else {
-            $$1 = Math.max($$1, this.a($$0.e(), ha.c));
-            if ($$1 >= 15) {
-               return $$1;
-            } else {
-               $$1 = Math.max($$1, this.a($$0.f(), ha.d));
-               if ($$1 >= 15) {
-                  return $$1;
-               } else {
-                  $$1 = Math.max($$1, this.a($$0.g(), ha.e));
-                  if ($$1 >= 15) {
-                     return $$1;
-                  } else {
-                     $$1 = Math.max($$1, this.a($$0.h(), ha.f));
-                     return $$1 >= 15 ? $$1 : $$1;
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   default int a(gu $$0, ha $$1, boolean $$2) {
-      dfa $$3 = this.a_($$0);
-      if ($$2) {
-         return cuk.h($$3) ? this.a($$0, $$1) : 0;
-      } else if ($$3.a(csn.ha)) {
-         return 15;
-      } else if ($$3.a(csn.cw)) {
-         return $$3.c(cyn.e);
-      } else {
-         return $$3.m() ? this.a($$0, $$1) : 0;
-      }
-   }
-
-   default boolean b(gu $$0, ha $$1) {
-      return this.c($$0, $$1) > 0;
-   }
-
-   default int c(gu $$0, ha $$1) {
-      dfa $$2 = this.a_($$0);
-      int $$3 = $$2.b(this, $$0, $$1);
-      return $$2.g(this, $$0) ? Math.max($$3, this.e_($$0)) : $$3;
-   }
-
-   default boolean B(gu $$0) {
-      if (this.c($$0.d(), ha.a) > 0) {
-         return true;
-      } else if (this.c($$0.c(), ha.b) > 0) {
-         return true;
-      } else if (this.c($$0.e(), ha.c) > 0) {
-         return true;
-      } else if (this.c($$0.f(), ha.d) > 0) {
-         return true;
-      } else {
-         return this.c($$0.g(), ha.e) > 0 ? true : this.c($$0.h(), ha.f) > 0;
-      }
-   }
-
-   default int C(gu $$0) {
-      int $$1 = 0;
-
-      for (ha $$2 : C) {
-         int $$3 = this.c($$0.a($$2), $$2);
-         if ($$3 >= 15) {
-            return 15;
-         }
-
-         if ($$3 > $$1) {
-            $$1 = $$3;
+            d.r("id");
          }
       }
 
-      return $$1;
+      this.d = d;
+      this.e = e;
+   }
+
+   public qr a() {
+      return this.d;
+   }
+
+   public Optional<cqc.a> b() {
+      return this.e;
+   }
+
+   public qr c() {
+      return this.d;
+   }
+
+   public Optional<cqc.a> d() {
+      return this.e;
+   }
+
+   public static record a(ari<Integer> b, ari<Integer> c) {
+      private static final ari<Integer> d = new ari<>(0, 15);
+      public static final Codec<cqc.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(a("block_light_limit").forGetter($$0x -> $$0x.b), a("sky_light_limit").forGetter($$0x -> $$0x.c)).apply($$0, cqc.a::new)
+      );
+
+      private static DataResult<ari<Integer>> a(ari<Integer> $$0) {
+         return !d.a($$0) ? DataResult.error(() -> "Light values must be withing range " + d) : DataResult.success($$0);
+      }
+
+      private static MapCodec<ari<Integer>> a(String $$0) {
+         return aqy.a(ari.a.optionalFieldOf($$0, d), cqc.a::a);
+      }
+
+      public ari<Integer> a() {
+         return this.b;
+      }
+
+      public ari<Integer> b() {
+         return this.c;
+      }
    }
 }

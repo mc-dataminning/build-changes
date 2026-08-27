@@ -1,87 +1,118 @@
-public class ctr extends cxy {
-   protected ctr(dez.d $$0) {
-      super(0.3125F, $$0);
-      this.k(
-         this.C
-            .b()
-            .a(a, Boolean.valueOf(false))
-            .a(b, Boolean.valueOf(false))
-            .a(c, Boolean.valueOf(false))
-            .a(d, Boolean.valueOf(false))
-            .a(e, Boolean.valueOf(false))
-            .a(f, Boolean.valueOf(false))
-      );
+import javax.annotation.Nullable;
+
+public class ctr extends cwe implements csn {
+   public static final int a = 2;
+   public static final dfz b = dfp.ar;
+   protected static final int c = 4;
+   protected static final int d = 5;
+   protected static final int e = 2;
+   protected static final int f = 6;
+   protected static final int g = 7;
+   protected static final int h = 3;
+   protected static final int i = 8;
+   protected static final int j = 9;
+   protected static final int k = 4;
+   protected static final ehw[] l = new ehw[]{
+      csl.a(11.0, 7.0, 6.0, 15.0, 12.0, 10.0), csl.a(9.0, 5.0, 5.0, 15.0, 12.0, 11.0), csl.a(7.0, 3.0, 4.0, 15.0, 12.0, 12.0)
+   };
+   protected static final ehw[] m = new ehw[]{
+      csl.a(1.0, 7.0, 6.0, 5.0, 12.0, 10.0), csl.a(1.0, 5.0, 5.0, 7.0, 12.0, 11.0), csl.a(1.0, 3.0, 4.0, 9.0, 12.0, 12.0)
+   };
+   protected static final ehw[] n = new ehw[]{
+      csl.a(6.0, 7.0, 1.0, 10.0, 12.0, 5.0), csl.a(5.0, 5.0, 1.0, 11.0, 12.0, 7.0), csl.a(4.0, 3.0, 1.0, 12.0, 12.0, 9.0)
+   };
+   protected static final ehw[] D = new ehw[]{
+      csl.a(6.0, 7.0, 11.0, 10.0, 12.0, 15.0), csl.a(5.0, 5.0, 9.0, 11.0, 12.0, 15.0), csl.a(4.0, 3.0, 7.0, 12.0, 12.0, 15.0)
+   };
+
+   public ctr(dey.d $$0) {
+      super($$0);
+      this.k(this.C.b().a(aC, ha.c).a(b, Integer.valueOf(0)));
    }
 
    @Override
-   public dfa a(clg $$0) {
-      return this.a($$0.q(), $$0.a());
-   }
-
-   public dfa a(cos $$0, gu $$1) {
-      dfa $$2 = $$0.a_($$1.d());
-      dfa $$3 = $$0.a_($$1.c());
-      dfa $$4 = $$0.a_($$1.e());
-      dfa $$5 = $$0.a_($$1.h());
-      dfa $$6 = $$0.a_($$1.f());
-      dfa $$7 = $$0.a_($$1.g());
-      return this.n()
-         .a(f, Boolean.valueOf($$2.a(this) || $$2.a(csn.kv) || $$2.a(csn.fz)))
-         .a(e, Boolean.valueOf($$3.a(this) || $$3.a(csn.kv)))
-         .a(a, Boolean.valueOf($$4.a(this) || $$4.a(csn.kv)))
-         .a(b, Boolean.valueOf($$5.a(this) || $$5.a(csn.kv)))
-         .a(c, Boolean.valueOf($$6.a(this) || $$6.a(csn.kv)))
-         .a(d, Boolean.valueOf($$7.a(this) || $$7.a(csn.kv)));
+   public boolean e_(dez $$0) {
+      return $$0.c(b) < 2;
    }
 
    @Override
-   public dfa a(dfa $$0, ha $$1, dfa $$2, cpn $$3, gu $$4, gu $$5) {
-      if (!$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      } else {
-         boolean $$6 = $$2.a(this) || $$2.a(csn.kv) || $$1 == ha.a && $$2.a(csn.fz);
-         return $$0.a(g.get($$1), Boolean.valueOf($$6));
+   public void b(dez $$0, akk $$1, gu $$2, aru $$3) {
+      if ($$1.z.a(5) == 0) {
+         int $$4 = $$0.c(b);
+         if ($$4 < 2) {
+            $$1.a($$2, $$0.a(b, Integer.valueOf($$4 + 1)), 2);
+         }
       }
    }
 
    @Override
-   public void a(dfa $$0, akk $$1, gu $$2, aru $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
+   public boolean a(dez $$0, cpo $$1, gu $$2) {
+      dez $$3 = $$1.a_($$2.a($$0.c(aC)));
+      return $$3.a(apl.z);
    }
 
    @Override
-   public boolean a(dfa $$0, cpp $$1, gu $$2) {
-      dfa $$3 = $$1.a_($$2.d());
-      boolean $$4 = !$$1.a_($$2.c()).i() && !$$3.i();
+   public ehw a(dez $$0, cor $$1, gu $$2, ehi $$3) {
+      int $$4 = $$0.c(b);
+      switch ((ha)$$0.c(aC)) {
+         case d:
+            return D[$$4];
+         case c:
+         default:
+            return n[$$4];
+         case e:
+            return m[$$4];
+         case f:
+            return l[$$4];
+      }
+   }
 
-      for (ha $$5 : ha.c.a) {
-         gu $$6 = $$2.a($$5);
-         dfa $$7 = $$1.a_($$6);
-         if ($$7.a(this)) {
-            if ($$4) {
-               return false;
-            }
+   @Nullable
+   @Override
+   public dez a(clf $$0) {
+      dez $$1 = this.n();
+      cpo $$2 = $$0.q();
+      gu $$3 = $$0.a();
 
-            dfa $$8 = $$1.a_($$6.d());
-            if ($$8.a(this) || $$8.a(csn.fz)) {
-               return true;
+      for (ha $$4 : $$0.f()) {
+         if ($$4.o().d()) {
+            $$1 = $$1.a(aC, $$4);
+            if ($$1.a($$2, $$3)) {
+               return $$1;
             }
          }
       }
 
-      return $$3.a(this) || $$3.a(csn.fz);
+      return null;
    }
 
    @Override
-   protected void a(dfb.a<csm, dfa> $$0) {
-      $$0.a(a, b, c, d, e, f);
+   public dez a(dez $$0, ha $$1, dez $$2, cpm $$3, gu $$4, gu $$5) {
+      return $$1 == $$0.c(aC) && !$$0.a($$3, $$4) ? csm.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean a(dfa $$0, cos $$1, gu $$2, eat $$3) {
+   public boolean a(cpo $$0, gu $$1, dez $$2) {
+      return $$2.c(b) < 2;
+   }
+
+   @Override
+   public boolean a(cpl $$0, aru $$1, gu $$2, dez $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(akk $$0, aru $$1, gu $$2, dez $$3) {
+      $$0.a($$2, $$3.a(b, Integer.valueOf($$3.c(b) + 1)), 2);
+   }
+
+   @Override
+   protected void a(dfa.a<csl, dez> $$0) {
+      $$0.a(aC, b);
+   }
+
+   @Override
+   public boolean a(dez $$0, cor $$1, gu $$2, eas $$3) {
       return false;
    }
 }

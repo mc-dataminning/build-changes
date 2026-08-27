@@ -1,7 +1,7 @@
 public enum dgh implements ash {
-   a("inactive"),
-   b("active"),
-   c("cooldown");
+   a("top"),
+   b("bottom"),
+   c("double");
 
    private final String d;
 

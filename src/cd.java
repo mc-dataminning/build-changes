@@ -15,7 +15,7 @@ public class cd extends cu<cd.a> {
       return new cd.a($$1, $$3, $$4);
    }
 
-   public void a(akl $$0, ehe $$1, int $$2) {
+   public void a(akl $$0, ehd $$1, int $$2) {
       this.a($$0, $$3 -> $$3.a($$0, $$1, $$2));
    }
 
@@ -33,7 +33,7 @@ public class cd extends cu<cd.a> {
          return new cd.a(Optional.empty(), Optional.of($$0), cj.d.c);
       }
 
-      public boolean a(akl $$0, ehe $$1, int $$2) {
+      public boolean a(akl $$0, ehd $$1, int $$2) {
          return this.a.isPresent() && !this.a.get().a($$1.c, $$1.d, $$1.e, $$0.dp(), $$0.dr(), $$0.dv()) ? false : this.b.d($$2);
       }
 

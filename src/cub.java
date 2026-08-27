@@ -1,34 +1,23 @@
-public class cub extends cry {
-   private final csm b;
+public class cub extends csl {
+   private static final tf a = tf.c("container.crafting");
 
-   protected cub(csm $$0, dez.d $$1) {
-      super($$1);
-      this.b = $$0;
+   protected cub(dey.d $$0) {
+      super($$0);
    }
 
    @Override
-   public void b(dfa $$0, cpm $$1, gu $$2, dfa $$3, boolean $$4) {
-      this.a($$0, (cpn)$$1, $$2);
-   }
-
-   @Override
-   public void a(dfa $$0, akk $$1, gu $$2, aru $$3) {
-      if (!e($$0, $$1, $$2)) {
-         $$1.a($$2, this.b.n().a(c, Boolean.valueOf(false)).a(a, $$0.c(a)), 2);
-      }
-   }
-
-   @Override
-   public dfa a(dfa $$0, ha $$1, dfa $$2, cpn $$3, gu $$4, gu $$5) {
-      if ($$1.g() == $$0.c(a) && !$$0.a($$3, $$4)) {
-         return csn.a.n();
+   public bgq a(dez $$0, cpl $$1, gu $$2, cbm $$3, bgp $$4, egz $$5) {
+      if ($$1.B) {
+         return bgq.a;
       } else {
-         if ($$0.c(c)) {
-            $$3.a($$4, eae.c, eae.c.a($$3));
-         }
-
-         this.a($$0, $$3, $$4);
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(apg.an);
+         return bgq.b;
       }
+   }
+
+   @Override
+   public bgt b(dez $$0, cpl $$1, gu $$2) {
+      return new bgy(($$2x, $$3, $$4) -> new ces($$2x, $$3, ceo.a($$1, $$2)), a);
    }
 }

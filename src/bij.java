@@ -9,14 +9,14 @@ public class bij {
       this.c = $$2;
    }
 
-   public egz a(ehe $$0) {
+   public egy a(ehd $$0) {
       return this.a($$0.c, $$0.d, $$0.e);
    }
 
-   public egz a(double $$0, double $$1, double $$2) {
+   public egy a(double $$0, double $$1, double $$2) {
       float $$3 = this.a / 2.0F;
       float $$4 = this.b;
-      return new egz($$0 - (double)$$3, $$1, $$2 - (double)$$3, $$0 + (double)$$3, $$1 + (double)$$4, $$2 + (double)$$3);
+      return new egy($$0 - (double)$$3, $$1, $$2 - (double)$$3, $$0 + (double)$$3, $$1 + (double)$$4, $$2 + (double)$$3);
    }
 
    public bij a(float $$0) {

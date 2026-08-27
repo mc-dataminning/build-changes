@@ -1,40 +1,33 @@
-public class cif extends cit {
-   public cif(cit.a $$0) {
+public class cif<T extends bii & biv> extends cis {
+   private final bim<T> a;
+   private final int b;
+
+   public cif(cis.a $$0, bim<T> $$1, int $$2) {
       super($$0);
+      this.a = $$1;
+      this.b = $$2;
    }
 
    @Override
-   public bgq a(cli $$0) {
-      cbn $$1 = $$0.o();
-      cpm $$2 = $$0.q();
-      gu $$3 = $$0.a();
-      dfa $$4 = $$2.a_($$3);
-      if (!csz.h($$4) && !cta.g($$4) && !ctb.g($$4)) {
-         gu $$5 = $$3.a($$0.k());
-         if (csa.a($$2, $$5, $$0.g())) {
-            $$2.a($$1, $$5, aow.hS, aox.e, 1.0F, $$2.y_().i() * 0.4F + 0.8F);
-            dfa $$6 = csa.a($$2, $$5);
-            $$2.a($$5, $$6, 11);
-            $$2.a($$1, djk.i, $$3);
-            ciy $$7 = $$0.n();
-            if ($$1 instanceof akl) {
-               ai.y.a((akl)$$1, $$5, $$7);
-               $$7.a(1, $$1, $$1x -> $$1x.d($$0.p()));
+   public bgr<cix> a(cpl $$0, cbm $$1, bgp $$2) {
+      cix $$3 = $$1.b($$2);
+      if ($$0.B) {
+         return bgr.c($$3);
+      } else {
+         bii $$4 = $$1.cZ();
+         if ($$1.bN() && $$4 instanceof biv $$5 && $$4.ag() == this.a && $$5.a()) {
+            $$3.a(this.b, $$1, $$1x -> $$1x.d($$2));
+            if ($$3.b()) {
+               cix $$6 = new cix(cja.qh);
+               $$6.c($$3.v());
+               return bgr.a($$6);
             }
 
-            return bgq.a($$2.r_());
-         } else {
-            return bgq.e;
-         }
-      } else {
-         $$2.a($$1, $$3, aow.hS, aox.e, 1.0F, $$2.y_().i() * 0.4F + 0.8F);
-         $$2.a($$3, $$4.a(dfq.r, Boolean.valueOf(true)), 11);
-         $$2.a($$1, djk.c, $$3);
-         if ($$1 != null) {
-            $$0.n().a(1, $$1, $$1x -> $$1x.d($$0.p()));
+            return bgr.a($$3);
          }
 
-         return bgq.a($$2.r_());
+         $$1.b(apg.c.b(this));
+         return bgr.c($$3);
       }
    }
 }

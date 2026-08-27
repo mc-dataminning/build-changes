@@ -1,40 +1,60 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.authlib.GameProfile;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
+import org.slf4j.Logger;
 
-public class edp extends edt {
-   public static final Codec<edp> a = RecordCodecBuilder.create($$0 -> a($$0).and(ech.b.e.fieldOf("entity").forGetter($$0x -> $$0x.b)).apply($$0, edp::new));
-   private final ech.b b;
+public class edp extends eds {
+   private static final Logger b = LogUtils.getLogger();
+   public static final Codec<edp> a = RecordCodecBuilder.create($$0 -> a($$0).and(aer.a.fieldOf("name").forGetter($$0x -> $$0x.c)).apply($$0, edp::new));
+   private final aer c;
 
-   public edp(List<efg> $$0, ech.b $$1) {
+   private edp(List<eff> $$0, aer $$1) {
       super($$0);
-      this.b = $$1;
+      this.c = $$1;
    }
 
    @Override
-   public edv b() {
-      return edw.v;
+   public edu b() {
+      return edv.B;
    }
 
    @Override
-   public Set<eep<?>> a() {
-      return ImmutableSet.of(this.b.a());
-   }
-
-   @Override
-   public ciy a(ciy $$0, ech $$1) {
-      if ($$0.a(cjb.tt) && $$1.c(this.b.a()) instanceof cbn $$2) {
-         GameProfile $$3 = $$2.fP();
-         $$0.w().a("SkullOwner", rd.a(new qr(), $$3));
+   public void a(ecp $$0) {
+      eci<edt> $$1 = new eci<>(ecl.b, this.c);
+      if ($$0.a($$1)) {
+         $$0.a("Function " + this.c + " is recursively called");
+      } else {
+         super.a($$0);
+         $$0.b().getElementOptional($$1).ifPresentOrElse($$2 -> $$2.a($$0.a(".{" + this.c + "}", $$1)), () -> $$0.a("Unknown function table called " + this.c));
       }
-
-      return $$0;
    }
 
-   public static edt.a<?> a(ech.b $$0) {
+   @Override
+   protected cix a(cix $$0, ecg $$1) {
+      edt $$2 = $$1.a().getElement(ecl.b, this.c);
+      if ($$2 == null) {
+         b.warn("Unknown function: {}", this.c);
+         return $$0;
+      } else {
+         ecg.c<?> $$3 = ecg.a($$2);
+         if ($$1.b($$3)) {
+            cix var5;
+            try {
+               var5 = $$2.apply($$0, $$1);
+            } finally {
+               $$1.c($$3);
+            }
+
+            return var5;
+         } else {
+            b.warn("Detected infinite loop in loot tables");
+            return $$0;
+         }
+      }
+   }
+
+   public static eds.a<?> a(aer $$0) {
       return a($$1 -> new edp($$1, $$0));
    }
 }

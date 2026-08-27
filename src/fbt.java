@@ -1,7 +1,7 @@
 import java.util.Set;
 
-public class fbt extends fbh {
-   private static final tf i = tf.c("gui.recipebook.toggleRecipes.smokable");
+public class fbt extends fbi {
+   private static final tf i = tf.c("gui.recipebook.toggleRecipes.smeltable");
 
    @Override
    protected tf d() {
@@ -9,7 +9,7 @@ public class fbt extends fbh {
    }
 
    @Override
-   protected Set<cit> b() {
-      return dcb.f().keySet();
+   protected Set<cis> b() {
+      return dca.f().keySet();
    }
 }

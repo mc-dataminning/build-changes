@@ -1,64 +1,44 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntIterator;
-import java.util.List;
-import java.util.stream.IntStream;
+import javax.annotation.Nullable;
 
-public class dxy extends dyp {
+public class dxy extends dyo {
    public static final Codec<dxy> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dyr.a.fieldOf("delegate").forGetter($$0x -> $$0x.b), bfv.e.fieldOf("limit").forGetter($$0x -> $$0x.c)).apply($$0, dxy::new)
+      $$0 -> $$0.group(dki.a.g.fieldOf("heightmap").orElse(dki.a.a).forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("offset").orElse(0).forGetter($$0x -> $$0x.c))
+            .apply($$0, dxy::new)
    );
-   private final dyp b;
-   private final bfv c;
+   private final dki.a b;
+   private final int c;
 
-   public dxy(dyp $$0, bfv $$1) {
+   public dxy(dki.a $$0, int $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
+   @Nullable
    @Override
-   protected dyr<?> a() {
-      return dyr.o;
+   public dyr.c a(cpo $$0, gu $$1, gu $$2, dyr.c $$3, dyr.c $$4, dyn $$5) {
+      dki.a $$6;
+      if ($$0 instanceof akk) {
+         if (this.b == dki.a.a) {
+            $$6 = dki.a.b;
+         } else if (this.b == dki.a.c) {
+            $$6 = dki.a.d;
+         } else {
+            $$6 = this.b;
+         }
+      } else {
+         $$6 = this.b;
+      }
+
+      gu $$10 = $$4.a();
+      int $$11 = $$0.a($$6, $$10.u(), $$10.w()) + this.c;
+      int $$12 = $$3.a().v();
+      return new dyr.c(new gu($$10.u(), $$11 + $$12, $$10.w()), $$4.b(), $$4.c());
    }
 
    @Override
-   public final List<dys.c> a(cqb $$0, gu $$1, gu $$2, List<dys.c> $$3, List<dys.c> $$4, dyo $$5) {
-      if (this.c.b() != 0 && !$$4.isEmpty()) {
-         if ($$3.size() != $$4.size()) {
-            ac.a(
-               "Original block info list not in sync with processed list, skipping processing. Original size: "
-                  + $$3.size()
-                  + ", Processed size: "
-                  + $$4.size()
-            );
-            return $$4;
-         } else {
-            aru $$6 = aru.a($$0.C().A()).e().a($$1);
-            int $$7 = Math.min(this.c.a($$6), $$4.size());
-            if ($$7 < 1) {
-               return $$4;
-            } else {
-               IntArrayList $$8 = ac.a(IntStream.range(0, $$4.size()), $$6);
-               IntIterator $$9 = $$8.intIterator();
-               int $$10 = 0;
-
-               while ($$9.hasNext() && $$10 < $$7) {
-                  int $$11 = $$9.nextInt();
-                  dys.c $$12 = $$3.get($$11);
-                  dys.c $$13 = $$4.get($$11);
-                  dys.c $$14 = this.b.a($$0, $$1, $$2, $$12, $$13, $$5);
-                  if ($$14 != null && !$$13.equals($$14)) {
-                     $$10++;
-                     $$4.set($$11, $$14);
-                  }
-               }
-
-               return $$4;
-            }
-         }
-      } else {
-         return $$4;
-      }
+   protected dyq<?> a() {
+      return dyq.g;
    }
 }

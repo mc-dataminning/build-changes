@@ -1,7 +1,8 @@
-public interface ekl {
-   void a(boolean var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a();
-
-   void b();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@eiz
+@eiy
+interface ekl {
 }

@@ -36,8 +36,8 @@ public class agq {
          $$1.onCommandComplete($$2, $$3, $$4);
       };
    private static final SuggestionProvider<dr> f = ($$0, $$1) -> {
-      eck $$2 = ((dr)$$0.getSource()).l().aH();
-      return du.a($$2.a(ecm.a), $$1);
+      ecj $$2 = ((dr)$$0.getSource()).l().aH();
+      return du.a($$2.a(ecl.a), $$1);
    };
 
    public static void a(CommandDispatcher<dr> $$0, dl $$1) {
@@ -82,7 +82,7 @@ public class agq {
                                              return $$1x;
                                           }))))
                                        .then(ds.a("over").then(ds.a("heightmap", ef.a()).redirect($$2, $$0x -> {
-                                          ehe $$1x = ((dr)$$0x.getSource()).d();
+                                          ehd $$1x = ((dr)$$0x.getSource()).d();
                                           akk $$2x = ((dr)$$0x.getSource()).e();
                                           double $$3 = $$1x.a();
                                           double $$4 = $$1x.c();
@@ -90,7 +90,7 @@ public class agq {
                                              throw fi.a.create();
                                           } else {
                                              int $$5 = $$2x.a(ef.a($$0x, "heightmap"), arp.a($$3), arp.a($$4));
-                                             return ((dr)$$0x.getSource()).a(new ehe($$3, (double)$$5, $$4));
+                                             return ((dr)$$0x.getSource()).a(new ehd($$3, (double)$$5, $$4));
                                           }
                                        })))
                                  ))
@@ -261,11 +261,11 @@ public class agq {
       return $$1;
    }
 
-   private static dr a(dr $$0, Collection<String> $$1, eia $$2, boolean $$3) {
-      eid $$4 = $$0.l().aF();
+   private static dr a(dr $$0, Collection<String> $$1, ehz $$2, boolean $$3) {
+      eic $$4 = $$0.l().aF();
       return $$0.a(($$4x, $$5, $$6) -> {
          for (String $$7 : $$1) {
-            eic $$8 = $$4.c($$7, $$2);
+            eib $$8 = $$4.c($$7, $$2);
             int $$9 = $$3 ? $$6 : ($$5 ? 1 : 0);
             $$8.b($$9);
          }
@@ -296,8 +296,8 @@ public class agq {
    }
 
    private static boolean a(akk $$0, gu $$1) {
-      cot $$2 = new cot($$1);
-      dhh $$3 = $$0.k().a($$2.e, $$2.f);
+      cos $$2 = new cos($$1);
+      dhg $$3 = $$0.k().a($$2.e, $$2.f);
       return $$3 == null ? false : $$3.D() == akd.d && $$0.c($$2.a());
    }
 
@@ -311,7 +311,7 @@ public class agq {
                                                 $$0,
                                                 ds.a("block", fe.a($$3)),
                                                 $$2,
-                                                $$0x -> fe.a($$0x, "block").test(new dfe(((dr)$$0x.getSource()).e(), fi.a($$0x, "pos"), true))
+                                                $$0x -> fe.a($$0x, "block").test(new dfd(((dr)$$0x.getSource()).e(), fi.a($$0x, "pos"), true))
                                              )
                                           )
                                     )
@@ -477,13 +477,13 @@ public class agq {
 
    private static boolean a(CommandContext<dr> $$0, BiPredicate<Integer, Integer> $$1) throws CommandSyntaxException {
       String $$2 = et.a($$0, "target");
-      eia $$3 = ej.a($$0, "targetObjective");
+      ehz $$3 = ej.a($$0, "targetObjective");
       String $$4 = et.a($$0, "source");
-      eia $$5 = ej.a($$0, "sourceObjective");
-      eid $$6 = ((dr)$$0.getSource()).l().aF();
+      ehz $$5 = ej.a($$0, "sourceObjective");
+      eic $$6 = ((dr)$$0.getSource()).l().aF();
       if ($$6.b($$2, $$3) && $$6.b($$4, $$5)) {
-         eic $$7 = $$6.c($$2, $$3);
-         eic $$8 = $$6.c($$4, $$5);
+         eib $$7 = $$6.c($$2, $$3);
+         eib $$8 = $$6.c($$4, $$5);
          return $$1.test($$7.b(), $$8.b());
       } else {
          return false;
@@ -492,8 +492,8 @@ public class agq {
 
    private static boolean a(CommandContext<dr> $$0, cj.d $$1) throws CommandSyntaxException {
       String $$2 = et.a($$0, "target");
-      eia $$3 = ej.a($$0, "targetObjective");
-      eid $$4 = ((dr)$$0.getSource()).l().aF();
+      ehz $$3 = ej.a($$0, "targetObjective");
+      eic $$4 = ((dr)$$0.getSource()).l().aF();
       return !$$4.b($$2, $$3) ? false : $$1.d($$4.c($$2, $$3).b());
    }
 
@@ -513,11 +513,11 @@ public class agq {
       return $$2;
    }
 
-   private static boolean a(dr $$0, efg $$1) {
+   private static boolean a(dr $$0, eff $$1) {
       akk $$2 = $$0.e();
-      ecn $$3 = new ecn.a($$2).a(ees.f, $$0.d()).b(ees.a, $$0.f()).a(eer.d);
-      ech $$4 = new ech.a($$3).a(Optional.empty());
-      $$4.b(ech.a($$1));
+      ecm $$3 = new ecm.a($$2).a(eer.f, $$0.d()).b(eer.a, $$0.f()).a(eeq.d);
+      ecg $$4 = new ecg.a($$3).a(Optional.empty());
+      $$4.b(ecg.a($$1));
       return $$1.test($$4);
    }
 
@@ -565,8 +565,8 @@ public class agq {
    }
 
    private static OptionalInt a(akk $$0, gu $$1, gu $$2, gu $$3, boolean $$4) throws CommandSyntaxException {
-      dur $$5 = dur.a($$1, $$2);
-      dur $$6 = dur.a($$3, $$3.a($$5.b()));
+      duq $$5 = duq.a($$1, $$2);
+      duq $$6 = duq.a($$3, $$3.a($$5.b()));
       gu $$7 = new gu($$6.g() - $$5.g(), $$6.h() - $$5.h(), $$6.i() - $$5.i());
       int $$8 = $$5.c() * $$5.d() * $$5.e();
       if ($$8 > 32768) {
@@ -579,14 +579,14 @@ public class agq {
                for (int $$12 = $$5.g(); $$12 <= $$5.j(); $$12++) {
                   gu $$13 = new gu($$12, $$11, $$10);
                   gu $$14 = $$13.a((hz)$$7);
-                  dfa $$15 = $$0.a_($$13);
-                  if (!$$4 || !$$15.a(csn.a)) {
+                  dez $$15 = $$0.a_($$13);
+                  if (!$$4 || !$$15.a(csm.a)) {
                      if ($$15 != $$0.a_($$14)) {
                         return OptionalInt.empty();
                      }
 
-                     dcm $$16 = $$0.c_($$13);
-                     dcm $$17 = $$0.c_($$14);
+                     dcl $$16 = $$0.c_($$13);
+                     dcl $$17 = $$0.c_($$14);
                      if ($$16 != null) {
                         if ($$17 == null) {
                            return OptionalInt.empty();
@@ -646,7 +646,7 @@ public class agq {
                            ))
                         .then(
                            ds.a("target")
-                              .fork($$0, a((Function<bii, Optional<bii>>)($$0x -> $$0x instanceof bjv $$1x ? Optional.ofNullable($$1x.j()) : Optional.empty())))
+                              .fork($$0, a((Function<bii, Optional<bii>>)($$0x -> $$0x instanceof bju $$1x ? Optional.ofNullable($$1x.j()) : Optional.empty())))
                         ))
                      .then(
                         ds.a("attacker")
@@ -655,7 +655,7 @@ public class agq {
                   .then(ds.a("vehicle").fork($$0, a((Function<bii, Optional<bii>>)($$0x -> Optional.ofNullable($$0x.cY()))))))
                .then(ds.a("controller").fork($$0, a((Function<bii, Optional<bii>>)($$0x -> Optional.ofNullable($$0x.cN()))))))
             .then(
-               ds.a("origin").fork($$0, a((Function<bii, Optional<bii>>)($$0x -> $$0x instanceof bjw $$1x ? Optional.ofNullable($$1x.v()) : Optional.empty())))
+               ds.a("origin").fork($$0, a((Function<bii, Optional<bii>>)($$0x -> $$0x instanceof bjv $$1x ? Optional.ofNullable($$1x.v()) : Optional.empty())))
             ))
          .then(ds.a("passengers").fork($$0, b((Function<bii, Stream<bii>>)($$0x -> $$0x.cP().stream()))));
    }

@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
 import org.apache.commons.lang3.mutable.MutableBoolean;
 import org.slf4j.Logger;
 
-public class ajv extends dhy implements ajt.d {
+public class ajv extends dhx implements ajt.d {
    private static final byte e = -1;
    private static final byte f = 0;
    private static final byte g = 1;
@@ -68,21 +68,21 @@ public class ajv extends dhy implements ajt.d {
    final akk q;
    private final akn r;
    private final bfg<Runnable> s;
-   private dgx t;
-   private final dkx u;
-   private final dgy v;
-   private final Supplier<ebt> w;
-   private final bty x;
+   private dgw t;
+   private final dkw u;
+   private final dgx v;
+   private final Supplier<ebs> w;
+   private final btx x;
    final LongSet y = new LongOpenHashSet();
    private boolean z;
    private final ajx A;
    private final bfi<ajx.a<Runnable>> B;
    private final bfi<ajx.a<Runnable>> C;
    private final akt D;
-   private final diq E;
+   private final dip E;
    private final ajv.a F;
    private final AtomicInteger G = new AtomicInteger();
-   private final dyt H;
+   private final dys H;
    private final String I;
    private final ake J = new ake();
    private final Int2ObjectMap<ajv.b> K = new Int2ObjectOpenHashMap();
@@ -93,16 +93,16 @@ public class ajv extends dhy implements ajt.d {
 
    public ajv(
       akk $$0,
-      ebx.c $$1,
+      ebw.c $$1,
       DataFixer $$2,
-      dyt $$3,
+      dys $$3,
       Executor $$4,
       bfg<Runnable> $$5,
-      dhk $$6,
-      dgx $$7,
+      dhj $$6,
+      dgw $$7,
       akt $$8,
-      diq $$9,
-      Supplier<ebt> $$10,
+      dip $$9,
+      Supplier<ebs> $$10,
       int $$11,
       boolean $$12
    ) {
@@ -114,10 +114,10 @@ public class ajv extends dhy implements ajt.d {
       this.t = $$7;
       hs $$14 = $$0.B_();
       long $$15 = $$0.A();
-      if ($$7 instanceof dkm $$16) {
-         this.u = dkx.a($$16.g().a(), $$14.b(jc.ax), $$15);
+      if ($$7 instanceof dkl $$16) {
+         this.u = dkw.a($$16.g().a(), $$14.b(jc.ax), $$15);
       } else {
-         this.u = dkx.a(dko.e(), $$14.b(jc.ax), $$15);
+         this.u = dkw.a(dkn.e(), $$14.b(jc.ax), $$15);
       }
 
       this.v = $$7.a($$14.b(jc.aB), this.u, $$15);
@@ -133,29 +133,29 @@ public class ajv extends dhy implements ajt.d {
       this.r = new akn($$6, this, this.q.x_().g(), $$19, this.A.a($$19, false));
       this.F = new ajv.a($$4, $$5);
       this.w = $$10;
-      this.x = new bty($$13.resolve("poi"), $$2, $$12, $$14, $$0);
+      this.x = new btx($$13.resolve("poi"), $$2, $$12, $$14, $$0);
       this.a($$11);
    }
 
-   protected dgx a() {
+   protected dgw a() {
       return this.t;
    }
 
-   protected dgy b() {
+   protected dgx b() {
       return this.v;
    }
 
-   protected dkx c() {
+   protected dkw c() {
       return this.u;
    }
 
    public void d() {
-      DataResult<JsonElement> $$0 = dgx.a.encodeStart(JsonOps.INSTANCE, this.t);
-      DataResult<dgx> $$1 = $$0.flatMap($$0x -> dgx.a.parse(JsonOps.INSTANCE, $$0x));
+      DataResult<JsonElement> $$0 = dgw.a.encodeStart(JsonOps.INSTANCE, this.t);
+      DataResult<dgw> $$1 = $$0.flatMap($$0x -> dgw.a.parse(JsonOps.INSTANCE, $$0x));
       $$1.result().ifPresent($$0x -> this.t = $$0x);
    }
 
-   private static double a(cot $$0, bii $$1) {
+   private static double a(cos $$0, bii $$1) {
       double $$2 = (double)hx.a($$0.e, 8);
       double $$3 = (double)hx.a($$0.f, 8);
       double $$4 = $$2 - $$1.dp();
@@ -164,7 +164,7 @@ public class ajv extends dhy implements ajt.d {
    }
 
    boolean a(akl $$0, int $$1, int $$2) {
-      return $$0.T().a($$1, $$2) && !$$0.c.f.a(cot.c($$1, $$2));
+      return $$0.T().a($$1, $$2) && !$$0.c.f.a(cos.c($$1, $$2));
    }
 
    private boolean b(akl $$0, int $$1, int $$2) {
@@ -204,14 +204,14 @@ public class ajv extends dhy implements ajt.d {
       };
    }
 
-   public String a(cot $$0) {
+   public String a(cos $$0) {
       ajt $$1 = this.b($$0.a());
       if ($$1 == null) {
          return "null";
       } else {
          String $$2 = $$1.k() + "\n";
-         dhb $$3 = $$1.f();
-         dgw $$4 = $$1.g();
+         dha $$3 = $$1.f();
+         dgv $$4 = $$1.g();
          if ($$3 != null) {
             $$2 = $$2 + "St: §" + $$3.c() + $$3 + "§r\n";
          }
@@ -226,21 +226,21 @@ public class ajv extends dhy implements ajt.d {
       }
    }
 
-   private CompletableFuture<Either<List<dgw>, ajt.a>> a(ajt $$0, int $$1, IntFunction<dhb> $$2) {
+   private CompletableFuture<Either<List<dgv>, ajt.a>> a(ajt $$0, int $$1, IntFunction<dha> $$2) {
       if ($$1 == 0) {
-         dhb $$3 = $$2.apply(0);
+         dha $$3 = $$2.apply(0);
          return $$0.a($$3, this).thenApply($$0x -> $$0x.mapLeft(List::of));
       } else {
-         List<CompletableFuture<Either<dgw, ajt.a>>> $$4 = new ArrayList<>();
+         List<CompletableFuture<Either<dgv, ajt.a>>> $$4 = new ArrayList<>();
          List<ajt> $$5 = new ArrayList<>();
-         cot $$6 = $$0.j();
+         cos $$6 = $$0.j();
          int $$7 = $$6.e;
          int $$8 = $$6.f;
 
          for (int $$9 = -$$1; $$9 <= $$1; $$9++) {
             for (int $$10 = -$$1; $$10 <= $$1; $$10++) {
                int $$11 = Math.max(Math.abs($$10), Math.abs($$9));
-               final cot $$12 = new cot($$7 + $$10, $$8 + $$9);
+               final cos $$12 = new cos($$7 + $$10, $$8 + $$9);
                long $$13 = $$12.a();
                ajt $$14 = this.a($$13);
                if ($$14 == null) {
@@ -252,30 +252,30 @@ public class ajv extends dhy implements ajt.d {
                   }));
                }
 
-               dhb $$15 = $$2.apply($$11);
-               CompletableFuture<Either<dgw, ajt.a>> $$16 = $$14.a($$15, this);
+               dha $$15 = $$2.apply($$11);
+               CompletableFuture<Either<dgv, ajt.a>> $$16 = $$14.a($$15, this);
                $$5.add($$14);
                $$4.add($$16);
             }
          }
 
-         CompletableFuture<List<Either<dgw, ajt.a>>> $$17 = ac.b($$4);
-         CompletableFuture<Either<List<dgw>, ajt.a>> $$18 = $$17.thenApply($$3 -> {
-            List<dgw> $$4x = Lists.newArrayList();
+         CompletableFuture<List<Either<dgv, ajt.a>>> $$17 = ac.b($$4);
+         CompletableFuture<Either<List<dgv>, ajt.a>> $$18 = $$17.thenApply($$3 -> {
+            List<dgv> $$4x = Lists.newArrayList();
             int $$5x = 0;
 
-            for (final Either<dgw, ajt.a> $$6x : $$3) {
+            for (final Either<dgv, ajt.a> $$6x : $$3) {
                if ($$6x == null) {
                   throw this.a(new IllegalStateException("At least one of the chunk futures were null"), "n/a");
                }
 
-               Optional<dgw> $$7x = $$6x.left();
+               Optional<dgv> $$7x = $$6x.left();
                if ($$7x.isEmpty()) {
                   final int $$8x = $$5x;
                   return Either.right(new ajt.a() {
                      @Override
                      public String toString() {
-                        return "Unloaded " + new cot($$7 + $$8x % ($$1 * 2 + 1), $$8 + $$8x / ($$1 * 2 + 1)) + " " + $$6x.right().get();
+                        return "Unloaded " + new cos($$7 + $$8x % ($$1 * 2 + 1), $$8 + $$8x / ($$1 * 2 + 1)) + " " + $$6x.right().get();
                      }
                   });
                }
@@ -298,8 +298,8 @@ public class ajv extends dhy implements ajt.d {
    public y a(IllegalStateException $$0, String $$1) {
       StringBuilder $$2 = new StringBuilder();
       Consumer<ajt> $$3 = $$1x -> $$1x.o().forEach($$2x -> {
-            dhb $$3x = (dhb)$$2x.getFirst();
-            CompletableFuture<Either<dgw, ajt.a>> $$4x = (CompletableFuture<Either<dgw, ajt.a>>)$$2x.getSecond();
+            dha $$3x = (dha)$$2x.getFirst();
+            CompletableFuture<Either<dgv, ajt.a>> $$4x = (CompletableFuture<Either<dgv, ajt.a>>)$$2x.getSecond();
             if ($$4x != null && $$4x.isDone() && $$4x.join() == null) {
                $$2.append($$1x.j()).append(" - status: ").append($$3x).append(" future: ").append($$4x).append(System.lineSeparator());
             }
@@ -315,8 +315,8 @@ public class ajv extends dhy implements ajt.d {
       return new y($$4);
    }
 
-   public CompletableFuture<Either<dhh, ajt.a>> a(ajt $$0) {
-      return this.a($$0, 2, $$0x -> dhb.n).thenApplyAsync($$0x -> $$0x.mapLeft($$0xx -> (dhh)$$0xx.get($$0xx.size() / 2)), this.s);
+   public CompletableFuture<Either<dhg, ajt.a>> a(ajt $$0) {
+      return this.a($$0, 2, $$0x -> dha.n).thenApplyAsync($$0x -> $$0x.mapLeft($$0xx -> (dhg)$$0xx.get($$0xx.size() / 2)), this.s);
    }
 
    @Nullable
@@ -341,7 +341,7 @@ public class ajv extends dhy implements ajt.d {
             if ($$2 != null) {
                $$2.a($$1);
             } else {
-               $$2 = new ajt(new cot($$0), $$1, this.q, this.r, this.A, this);
+               $$2 = new ajt(new cos($$0), $$1, this.q, this.r, this.A, this);
             }
 
             this.m.put($$0, $$2);
@@ -370,14 +370,14 @@ public class ajv extends dhy implements ajt.d {
          do {
             $$2.setFalse();
             $$1.stream().map($$0x -> {
-               CompletableFuture<dgw> $$1x;
+               CompletableFuture<dgv> $$1x;
                do {
                   $$1x = $$0x.h();
                   this.s.c($$1x::isDone);
                } while ($$1x != $$0x.h());
 
                return $$1x.join();
-            }).filter($$0x -> $$0x instanceof dhg || $$0x instanceof dhh).filter(this::a).forEach($$1x -> $$2.setTrue());
+            }).filter($$0x -> $$0x instanceof dhf || $$0x instanceof dhg).filter(this::a).forEach($$1x -> $$2.setTrue());
          } while ($$2.isTrue());
 
          this.b((BooleanSupplier)(() -> true));
@@ -436,19 +436,19 @@ public class ajv extends dhy implements ajt.d {
    }
 
    private void a(long $$0, ajt $$1) {
-      CompletableFuture<dgw> $$2 = $$1.h();
+      CompletableFuture<dgv> $$2 = $$1.h();
       $$2.thenAcceptAsync($$3 -> {
-         CompletableFuture<dgw> $$4 = $$1.h();
+         CompletableFuture<dgv> $$4 = $$1.h();
          if ($$4 != $$2) {
             this.a($$0, $$1);
          } else {
             if (this.o.remove($$0, $$1) && $$3 != null) {
-               if ($$3 instanceof dhh) {
-                  ((dhh)$$3).c(false);
+               if ($$3 instanceof dhg) {
+                  ((dhg)$$3).c(false);
                }
 
                this.a($$3);
-               if (this.p.remove($$0) && $$3 instanceof dhh $$5) {
+               if (this.p.remove($$0) && $$3 instanceof dhg $$5) {
                   this.q.a($$5);
                }
 
@@ -475,19 +475,19 @@ public class ajv extends dhy implements ajt.d {
       }
    }
 
-   public CompletableFuture<Either<dgw, ajt.a>> a(ajt $$0, dhb $$1) {
-      cot $$2 = $$0.j();
-      if ($$1 == dhb.c) {
+   public CompletableFuture<Either<dgv, ajt.a>> a(ajt $$0, dha $$1) {
+      cos $$2 = $$0.j();
+      if ($$1 == dha.c) {
          return this.f($$2);
       } else {
-         if ($$1 == dhb.l) {
-            this.F.a(akp.e, $$2, aju.a(dhb.l), $$2);
+         if ($$1 == dha.l) {
+            this.F.a(akp.e, $$2, aju.a(dha.l), $$2);
          }
 
          if (!$$1.f()) {
-            Optional<dgw> $$3 = $$0.a($$1.d(), this).getNow(ajt.a).left();
+            Optional<dgv> $$3 = $$0.a($$1.d(), this).getNow(ajt.a).left();
             if ($$3.isPresent() && $$3.get().j().b($$1)) {
-               CompletableFuture<Either<dgw, ajt.a>> $$4 = $$1.a(this.q, this.H, this.r, $$1x -> this.d($$0), $$3.get());
+               CompletableFuture<Either<dgv, ajt.a>> $$4 = $$1.a(this.q, this.H, this.r, $$1x -> this.d($$0), $$3.get());
                this.D.a($$2, $$1);
                return $$4;
             }
@@ -497,7 +497,7 @@ public class ajv extends dhy implements ajt.d {
       }
    }
 
-   private CompletableFuture<Either<dgw, ajt.a>> f(cot $$0) {
+   private CompletableFuture<Either<dgv, ajt.a>> f(cos $$0) {
       return this.j($$0).thenApply($$1 -> $$1.filter($$1x -> {
             boolean $$2 = b($$1x);
             if (!$$2) {
@@ -508,7 +508,7 @@ public class ajv extends dhy implements ajt.d {
          })).thenApplyAsync($$1 -> {
          this.q.ad().d("chunkLoad");
          if ($$1.isPresent()) {
-            dgw $$2 = dhx.a(this.q, this.x, $$0, $$1.get());
+            dgv $$2 = dhw.a(this.q, this.x, $$0, $$1.get());
             this.a($$0, $$2.j().g());
             return Either.left($$2);
          } else {
@@ -521,7 +521,7 @@ public class ajv extends dhy implements ajt.d {
       return $$0.b("Status", 8);
    }
 
-   private Either<dgw, ajt.a> a(Throwable $$0, cot $$1) {
+   private Either<dgv, ajt.a> a(Throwable $$0, cos $$1) {
       if ($$0 instanceof y $$2) {
          Throwable $$3 = $$2.getCause();
          if (!($$3 instanceof IOException)) {
@@ -537,28 +537,28 @@ public class ajv extends dhy implements ajt.d {
       return Either.left(this.g($$1));
    }
 
-   private dgw g(cot $$0) {
+   private dgv g(cos $$0) {
       this.h($$0);
-      return new dhr($$0, dhu.a, this.q, this.q.B_().d(jc.ap), null);
+      return new dhq($$0, dht.a, this.q, this.q.B_().d(jc.ap), null);
    }
 
-   private void h(cot $$0) {
+   private void h(cos $$0) {
       this.L.put($$0.a(), (byte)-1);
    }
 
-   private byte a(cot $$0, dhb.a $$1) {
-      return this.L.put($$0.a(), (byte)($$1 == dhb.a.a ? -1 : 1));
+   private byte a(cos $$0, dha.a $$1) {
+      return this.L.put($$0.a(), (byte)($$1 == dha.a.a ? -1 : 1));
    }
 
-   private CompletableFuture<Either<dgw, ajt.a>> b(ajt $$0, dhb $$1) {
-      cot $$2 = $$0.j();
-      CompletableFuture<Either<List<dgw>, ajt.a>> $$3 = this.a($$0, $$1.e(), $$1x -> this.a($$1, $$1x));
+   private CompletableFuture<Either<dgv, ajt.a>> b(ajt $$0, dha $$1) {
+      cos $$2 = $$0.j();
+      CompletableFuture<Either<List<dgv>, ajt.a>> $$3 = this.a($$0, $$1.e(), $$1x -> this.a($$1, $$1x));
       this.q.ad().c(() -> "chunkGenerate " + $$1);
       Executor $$4 = $$1x -> this.B.a(ajx.a($$0, $$1x));
-      return $$3.thenComposeAsync($$4x -> (CompletionStage<Either<dgw, ajt.a>>)$$4x.map($$4xx -> {
+      return $$3.thenComposeAsync($$4x -> (CompletionStage<Either<dgv, ajt.a>>)$$4x.map($$4xx -> {
             try {
-               dgw $$5 = (dgw)$$4xx.get($$4xx.size() / 2);
-               CompletableFuture<Either<dgw, ajt.a>> $$6;
+               dgv $$5 = (dgv)$$4xx.get($$4xx.size() / 2);
+               CompletableFuture<Either<dgv, ajt.a>> $$6;
                if ($$5.j().b($$1)) {
                   $$6 = $$1.a(this.q, this.H, this.r, $$1xxx -> this.d($$0), $$5);
                } else {
@@ -572,7 +572,7 @@ public class ajv extends dhy implements ajt.d {
                o $$9 = o.a(var9, "Exception generating new chunk");
                p $$10 = $$9.a("Chunk to be generated");
                $$10.a("Location", String.format(Locale.ROOT, "%d,%d", $$2.e, $$2.f));
-               $$10.a("Position hash", cot.c($$2.e, $$2.f));
+               $$10.a("Position hash", cos.c($$2.e, $$2.f));
                $$10.a("Generator", this.t);
                this.s.execute(() -> {
                   throw new y($$9);
@@ -585,16 +585,16 @@ public class ajv extends dhy implements ajt.d {
          }), $$4);
    }
 
-   protected void b(cot $$0) {
-      this.s.i(ac.a(() -> this.F.b(akp.e, $$0, aju.a(dhb.l), $$0), () -> "release light ticket " + $$0));
+   protected void b(cos $$0) {
+      this.s.i(ac.a(() -> this.F.b(akp.e, $$0, aju.a(dha.l), $$0), () -> "release light ticket " + $$0));
    }
 
-   private dhb a(dhb $$0, int $$1) {
-      dhb $$2;
+   private dha a(dha $$0, int $$1) {
+      dha $$2;
       if ($$1 == 0) {
          $$2 = $$0.d();
       } else {
-         $$2 = dhb.a(dhb.a($$0) + $$1);
+         $$2 = dha.a(dha.a($$0) + $$1);
       }
 
       return $$2;
@@ -606,19 +606,19 @@ public class ajv extends dhy implements ajt.d {
       }
    }
 
-   private CompletableFuture<Either<dgw, ajt.a>> d(ajt $$0) {
-      CompletableFuture<Either<dgw, ajt.a>> $$1 = $$0.a(dhb.n.d());
+   private CompletableFuture<Either<dgv, ajt.a>> d(ajt $$0) {
+      CompletableFuture<Either<dgv, ajt.a>> $$1 = $$0.a(dha.n.d());
       return $$1.thenApplyAsync($$1x -> {
-         dhb $$2 = aju.a($$0.k());
-         return !$$2.b(dhb.n) ? ajt.a : $$1x.mapLeft($$1xx -> {
-            cot $$2x = $$0.j();
-            dhr $$3 = (dhr)$$1xx;
-            dhh $$4;
-            if ($$3 instanceof dhg) {
-               $$4 = ((dhg)$$3).C();
+         dha $$2 = aju.a($$0.k());
+         return !$$2.b(dha.n) ? ajt.a : $$1x.mapLeft($$1xx -> {
+            cos $$2x = $$0.j();
+            dhq $$3 = (dhq)$$1xx;
+            dhg $$4;
+            if ($$3 instanceof dhf) {
+               $$4 = ((dhf)$$3).C();
             } else {
-               $$4 = new dhh(this.q, $$3, $$1xxx -> a(this.q, $$3.E()));
-               $$0.a(new dhg($$4, false));
+               $$4 = new dhg(this.q, $$3, $$1xxx -> a(this.q, $$3.E()));
+               $$0.a(new dhf($$4, false));
             }
 
             $$4.b(() -> aju.b($$0.k()));
@@ -634,10 +634,10 @@ public class ajv extends dhy implements ajt.d {
       }, $$1x -> this.C.a(ajx.a($$1x, $$0.j().a(), $$0::k)));
    }
 
-   public CompletableFuture<Either<dhh, ajt.a>> b(ajt $$0) {
-      CompletableFuture<Either<List<dgw>, ajt.a>> $$1 = this.a($$0, 1, $$0x -> dhb.n);
-      CompletableFuture<Either<dhh, ajt.a>> $$2 = $$1.<Either>thenApplyAsync(
-            $$0x -> $$0x.mapLeft($$0xx -> (dhh)$$0xx.get($$0xx.size() / 2)), $$1x -> this.C.a(ajx.a($$0, $$1x))
+   public CompletableFuture<Either<dhg, ajt.a>> b(ajt $$0) {
+      CompletableFuture<Either<List<dgv>, ajt.a>> $$1 = this.a($$0, 1, $$0x -> dha.n);
+      CompletableFuture<Either<dhg, ajt.a>> $$2 = $$1.<Either>thenApplyAsync(
+            $$0x -> $$0x.mapLeft($$0xx -> (dhg)$$0xx.get($$0xx.size() / 2)), $$1x -> this.C.a(ajx.a($$0, $$1x))
          )
          .thenApplyAsync($$0x -> $$0x.ifLeft($$0xx -> {
                $$0xx.H();
@@ -651,8 +651,8 @@ public class ajv extends dhy implements ajt.d {
       return $$2;
    }
 
-   private void a(dhh $$0) {
-      cot $$1 = $$0.f();
+   private void a(dhg $$0) {
+      cos $$1 = $$0.f();
 
       for (akl $$2 : this.J.a()) {
          if ($$2.T().a($$1)) {
@@ -661,8 +661,8 @@ public class ajv extends dhy implements ajt.d {
       }
    }
 
-   public CompletableFuture<Either<dhh, ajt.a>> c(ajt $$0) {
-      return this.a($$0, 1, dhb::a).thenApplyAsync($$0x -> $$0x.mapLeft($$0xx -> (dhh)$$0xx.get($$0xx.size() / 2)), $$1 -> this.C.a(ajx.a($$0, $$1)));
+   public CompletableFuture<Either<dhg, ajt.a>> c(ajt $$0) {
+      return this.a($$0, 1, dha::a).thenApplyAsync($$0x -> $$0x.mapLeft($$0xx -> (dhg)$$0xx.get($$0xx.size() / 2)), $$1 -> this.C.a(ajx.a($$0, $$1)));
    }
 
    public int h() {
@@ -673,8 +673,8 @@ public class ajv extends dhy implements ajt.d {
       if (!$$0.m()) {
          return false;
       } else {
-         dgw $$1 = $$0.h().getNow(null);
-         if (!($$1 instanceof dhg) && !($$1 instanceof dhh)) {
+         dgv $$1 = $$0.h().getNow(null);
+         if (!($$1 instanceof dhf) && !($$1 instanceof dhg)) {
             return false;
          } else {
             long $$2 = $$1.f().a();
@@ -695,28 +695,28 @@ public class ajv extends dhy implements ajt.d {
       }
    }
 
-   private boolean a(dgw $$0) {
+   private boolean a(dgv $$0) {
       this.x.a($$0.f());
       if (!$$0.i()) {
          return false;
       } else {
          $$0.a(false);
-         cot $$1 = $$0.f();
+         cos $$1 = $$0.f();
 
          try {
-            dhb $$2 = $$0.j();
-            if ($$2.g() != dhb.a.b) {
+            dha $$2 = $$0.j();
+            if ($$2.g() != dha.a.b) {
                if (this.i($$1)) {
                   return false;
                }
 
-               if ($$2 == dhb.c && $$0.g().values().stream().noneMatch(dvh::b)) {
+               if ($$2 == dha.c && $$0.g().values().stream().noneMatch(dvg::b)) {
                   return false;
                }
             }
 
             this.q.ad().d("chunkSave");
-            qr $$3 = dhx.a(this.q, $$0);
+            qr $$3 = dhw.a(this.q, $$0);
             this.a($$1, $$3);
             this.a($$1, $$2.g());
             return true;
@@ -727,7 +727,7 @@ public class ajv extends dhy implements ajt.d {
       }
    }
 
-   private boolean i(cot $$0) {
+   private boolean i(cos $$0) {
       byte $$1 = this.L.get($$0.a());
       if ($$1 != 0) {
          return $$1 == 1;
@@ -745,7 +745,7 @@ public class ajv extends dhy implements ajt.d {
             return false;
          }
 
-         dhb.a $$5 = dhx.a($$2);
+         dha.a $$5 = dhw.a($$2);
          return this.a($$0, $$5) == 1;
       }
    }
@@ -766,23 +766,23 @@ public class ajv extends dhy implements ajt.d {
       return arp.a($$0.B().orElse(2), 2, this.O);
    }
 
-   private void a(akl $$0, cot $$1) {
-      dhh $$2 = this.d($$1.a());
+   private void a(akl $$0, cos $$1) {
+      dhg $$2 = this.d($$1.a());
       if ($$2 != null) {
          a($$0, $$2);
       }
    }
 
-   private static void a(akl $$0, dhh $$1) {
+   private static void a(akl $$0, dhg $$1) {
       $$0.c.f.a($$1);
    }
 
-   private static void b(akl $$0, cot $$1) {
+   private static void b(akl $$0, cos $$1) {
       $$0.c.f.a($$0, $$1);
    }
 
    @Nullable
-   public dhh d(long $$0) {
+   public dhg d(long $$0) {
       ajt $$1 = this.b($$0);
       return $$1 == null ? null : $$1.d();
    }
@@ -824,17 +824,17 @@ public class ajv extends dhy implements ajt.d {
       while (var4.hasNext()) {
          Entry<ajt> $$3 = (Entry<ajt>)var4.next();
          long $$4 = $$3.getLongKey();
-         cot $$5 = new cot($$4);
+         cos $$5 = new cos($$4);
          ajt $$6 = (ajt)$$3.getValue();
-         Optional<dgw> $$7 = Optional.ofNullable($$6.g());
-         Optional<dhh> $$8 = $$7.flatMap($$0x -> $$0x instanceof dhh ? Optional.of((dhh)$$0x) : Optional.empty());
+         Optional<dgv> $$7 = Optional.ofNullable($$6.g());
+         Optional<dhg> $$8 = $$7.flatMap($$0x -> $$0x instanceof dhg ? Optional.of((dhg)$$0x) : Optional.empty());
          $$1.a(
             $$5.e,
             $$5.f,
             $$6.k(),
             $$7.isPresent(),
-            $$7.map(dgw::j).orElse(null),
-            $$8.map(dhh::D).orElse(null),
+            $$7.map(dgv::j).orElse(null),
+            $$8.map(dhg::D).orElse(null),
             a($$6.c()),
             a($$6.a()),
             a($$6.b()),
@@ -849,9 +849,9 @@ public class ajv extends dhy implements ajt.d {
       }
    }
 
-   private static String a(CompletableFuture<Either<dhh, ajt.a>> $$0) {
+   private static String a(CompletableFuture<Either<dhg, ajt.a>> $$0) {
       try {
-         Either<dhh, ajt.a> $$1 = $$0.getNow(null);
+         Either<dhg, ajt.a> $$1 = $$0.getNow(null);
          return $$1 != null ? (String)$$1.map($$0x -> "done", $$0x -> "unloaded") : "not completed";
       } catch (CompletionException var2) {
          return "failed " + var2.getCause().getMessage();
@@ -860,7 +860,7 @@ public class ajv extends dhy implements ajt.d {
       }
    }
 
-   private CompletableFuture<Optional<qr>> j(cot $$0) {
+   private CompletableFuture<Optional<qr>> j(cos $$0) {
       return this.e($$0).thenApplyAsync($$0x -> $$0x.map(this::c), ac.f());
    }
 
@@ -868,7 +868,7 @@ public class ajv extends dhy implements ajt.d {
       return this.a(this.q.ac(), this.w, $$0, this.t.b());
    }
 
-   boolean c(cot $$0) {
+   boolean c(cos $$0) {
       if (!this.F.f($$0.a())) {
          return false;
       } else {
@@ -882,7 +882,7 @@ public class ajv extends dhy implements ajt.d {
       }
    }
 
-   public List<akl> d(cot $$0) {
+   public List<akl> d(cos $$0) {
       long $$1 = $$0.a();
       if (!this.F.f($$1)) {
          return List.of();
@@ -899,7 +899,7 @@ public class ajv extends dhy implements ajt.d {
       }
    }
 
-   private boolean c(akl $$0, cot $$1) {
+   private boolean c(akl $$0, cos $$1) {
       if ($$0.G_()) {
          return false;
       } else {
@@ -909,7 +909,7 @@ public class ajv extends dhy implements ajt.d {
    }
 
    private boolean c(akl $$0) {
-      return $$0.G_() && !this.q.X().b(cpi.q);
+      return $$0.G_() && !this.q.X().b(cph.q);
    }
 
    void a(akl $$0, boolean $$1) {
@@ -980,7 +980,7 @@ public class ajv extends dhy implements ajt.d {
    }
 
    private void e(akl $$0) {
-      cot $$1 = $$0.dm();
+      cos $$1 = $$0.dm();
       int $$2 = this.b($$0);
       if ($$0.T() instanceof ajz.a $$3 && $$3.a().equals($$1) && $$3.b() == $$2) {
          return;
@@ -1002,7 +1002,7 @@ public class ajv extends dhy implements ajt.d {
    }
 
    @Override
-   public List<akl> a(cot $$0, boolean $$1) {
+   public List<akl> a(cos $$0, boolean $$1) {
       Set<akl> $$2 = this.J.a();
       Builder<akl> $$3 = ImmutableList.builder();
 
@@ -1016,7 +1016,7 @@ public class ajv extends dhy implements ajt.d {
    }
 
    protected void a(bii $$0) {
-      if (!($$0 instanceof bwy)) {
+      if (!($$0 instanceof bwx)) {
          bim<?> $$1 = $$0.ag();
          int $$2 = $$1.o() * 16;
          if ($$2 != 0) {
@@ -1113,13 +1113,13 @@ public class ajv extends dhy implements ajt.d {
       }
    }
 
-   public void a(List<dgw> $$0) {
-      Map<akl, List<dhh>> $$1 = new HashMap<>();
+   public void a(List<dgv> $$0) {
+      Map<akl, List<dhg>> $$1 = new HashMap<>();
 
-      for (dgw $$2 : $$0) {
-         cot $$3 = $$2.f();
-         dhh $$5;
-         if ($$2 instanceof dhh $$4) {
+      for (dgv $$2 : $$0) {
+         cos $$3 = $$2.f();
+         dhg $$5;
+         if ($$2 instanceof dhg $$4) {
             $$5 = $$4;
          } else {
             $$5 = this.q.d($$3.e, $$3.f);
@@ -1133,7 +1133,7 @@ public class ajv extends dhy implements ajt.d {
       $$1.forEach(($$0x, $$1x) -> $$0x.c.b(xf.a($$1x)));
    }
 
-   protected bty m() {
+   protected btx m() {
       return this.x;
    }
 
@@ -1141,7 +1141,7 @@ public class ajv extends dhy implements ajt.d {
       return this.I;
    }
 
-   void a(cot $$0, akd $$1) {
+   void a(cos $$0, akd $$1) {
       this.E.onChunkStatusChange($$0, $$1);
    }
 
@@ -1219,7 +1219,7 @@ public class ajv extends dhy implements ajt.d {
 
       public void b(akl $$0) {
          if ($$0 != this.c) {
-            ehe $$1 = $$0.di().d(this.c.di());
+            ehd $$1 = $$0.di().d(this.c.di());
             int $$2 = ajv.this.b($$0);
             double $$3 = (double)Math.min(this.b(), $$2 * 16);
             double $$4 = $$1.c * $$1.c + $$1.e * $$1.e;

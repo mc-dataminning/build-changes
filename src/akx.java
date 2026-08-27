@@ -3,8 +3,8 @@ import javax.annotation.Nullable;
 
 public class akx implements akt {
    private final akv a;
-   private final Long2ObjectOpenHashMap<dhb> b;
-   private cot c = new cot(0, 0);
+   private final Long2ObjectOpenHashMap<dha> b;
+   private cos c = new cos(0, 0);
    private final int d;
    private final int e;
    private final int f;
@@ -13,13 +13,13 @@ public class akx implements akt {
    public akx(int $$0) {
       this.a = new akv($$0);
       this.d = $$0 * 2 + 1;
-      this.e = $$0 + dhb.b();
+      this.e = $$0 + dha.b();
       this.f = this.e * 2 + 1;
       this.b = new Long2ObjectOpenHashMap();
    }
 
    @Override
-   public void a(cot $$0) {
+   public void a(cos $$0) {
       if (this.g) {
          this.a.a($$0);
          this.c = $$0;
@@ -27,7 +27,7 @@ public class akx implements akt {
    }
 
    @Override
-   public void a(cot $$0, @Nullable dhb $$1) {
+   public void a(cos $$0, @Nullable dha $$1) {
       if (this.g) {
          this.a.a($$0, $$1);
          if ($$1 == null) {
@@ -64,7 +64,7 @@ public class akx implements akt {
    }
 
    @Nullable
-   public dhb a(int $$0, int $$1) {
-      return (dhb)this.b.get(cot.c($$0 + this.c.e - this.e, $$1 + this.c.f - this.e));
+   public dha a(int $$0, int $$1) {
+      return (dha)this.b.get(cos.c($$0 + this.c.e - this.e, $$1 + this.c.f - this.e));
    }
 }

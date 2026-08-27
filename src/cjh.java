@@ -1,88 +1,62 @@
-public class cjh extends cit {
-   private static final ih a = new ig() {
-      private final ig c = new ig();
+import java.util.List;
+import javax.annotation.Nullable;
 
-      @Override
-      public ciy a(gv $$0, ciy $$1) {
-         ha $$2 = $$0.e().c(cun.a);
-         cpm $$3 = $$0.g();
-         double $$4 = $$0.a() + (double)$$2.j() * 1.125;
-         double $$5 = Math.floor($$0.b()) + (double)$$2.k();
-         double $$6 = $$0.c() + (double)$$2.l() * 1.125;
-         gu $$7 = $$0.d().a($$2);
-         dfa $$8 = $$3.a_($$7);
-         dge $$9 = $$8.b() instanceof csc ? $$8.c(((csc)$$8.b()).b()) : dge.a;
-         double $$10;
-         if ($$8.a(apl.N)) {
-            if ($$9.b()) {
-               $$10 = 0.6;
-            } else {
-               $$10 = 0.1;
-            }
-         } else {
-            if (!$$8.i() || !$$3.a_($$7.d()).a(apl.N)) {
-               return this.c.dispense($$0, $$1);
-            }
+public class cjh extends cgy {
+   private final bim<?> a;
+   private final aov b;
 
-            dfa $$12 = $$3.a_($$7.d());
-            dge $$13 = $$12.b() instanceof csc ? $$12.c(((csc)$$12.b()).b()) : dge.a;
-            if ($$2 != ha.a && $$13.b()) {
-               $$10 = -0.4;
-            } else {
-               $$10 = -0.9;
-            }
-         }
-
-         cde $$17 = cde.a($$3, $$4, $$5 + $$10, $$6, ((cjh)$$1.d()).b);
-         if ($$1.A()) {
-            $$17.b($$1.y());
-         }
-
-         $$3.b($$17);
-         $$1.h(1);
-         return $$1;
-      }
-
-      @Override
-      protected void a(gv $$0) {
-         $$0.g().c(1000, $$0.d(), 0);
-      }
-   };
-   final cde.a b;
-
-   public cjh(cde.a $$0, cit.a $$1) {
-      super($$1);
-      this.b = $$0;
-      cun.a(this, a);
+   public cjh(bim<?> $$0, eab $$1, aov $$2, cis.a $$3) {
+      super($$1, $$3);
+      this.a = $$0;
+      this.b = $$2;
    }
 
    @Override
-   public bgq a(cli $$0) {
-      cpm $$1 = $$0.q();
-      gu $$2 = $$0.a();
-      dfa $$3 = $$1.a_($$2);
-      if (!$$3.a(apl.N)) {
-         return bgq.e;
-      } else {
-         ciy $$4 = $$0.n();
-         if (!$$1.B) {
-            dge $$5 = $$3.b() instanceof csc ? $$3.c(((csc)$$3.b()).b()) : dge.a;
-            double $$6 = 0.0;
-            if ($$5.b()) {
-               $$6 = 0.5;
+   public void a(@Nullable cbm $$0, cpl $$1, cix $$2, gu $$3) {
+      if ($$1 instanceof akk) {
+         this.a((akk)$$1, $$2, $$3);
+         $$1.a($$0, djj.t, $$3);
+      }
+   }
+
+   @Override
+   protected void a(@Nullable cbm $$0, cpm $$1, gu $$2) {
+      $$1.a($$0, $$2, this.b, aox.g, 1.0F, 1.0F);
+   }
+
+   private void a(akk $$0, cix $$1, gu $$2) {
+      if (this.a.a($$0, $$1, null, $$2, bjc.l, true, false) instanceof bul $$4) {
+         $$4.c($$1.w());
+         $$4.w(true);
+      }
+   }
+
+   @Override
+   public void a(cix $$0, @Nullable cpl $$1, List<tf> $$2, cko $$3) {
+      if (this.a == bim.bc) {
+         qr $$4 = $$0.v();
+         if ($$4 != null && $$4.b("BucketVariantTag", 3)) {
+            int $$5 = $$4.h("BucketVariantTag");
+            n[] $$6 = new n[]{n.u, n.h};
+            String $$7 = "color.minecraft." + bvj.s($$5);
+            String $$8 = "color.minecraft." + bvj.t($$5);
+
+            for (int $$9 = 0; $$9 < bvj.c.size(); $$9++) {
+               if ($$5 == bvj.c.get($$9).a()) {
+                  $$2.add(tf.c(bvj.c($$9)).a($$6));
+                  return;
+               }
             }
 
-            cde $$7 = cde.a($$1, (double)$$2.u() + 0.5, (double)$$2.v() + 0.0625 + $$6, (double)$$2.w() + 0.5, this.b);
-            if ($$4.A()) {
-               $$7.b($$4.y());
+            $$2.add(bvj.u($$5).d().d().a($$6));
+            ts $$10 = tf.c($$7);
+            if (!$$7.equals($$8)) {
+               $$10.f(", ").b(tf.c($$8));
             }
 
-            $$1.b($$7);
-            $$1.a(djk.t, $$2, djk.a.a($$0.o(), $$1.a_($$2.d())));
+            $$10.a($$6);
+            $$2.add($$10);
          }
-
-         $$4.h(1);
-         return bgq.a($$1.B);
       }
    }
 }

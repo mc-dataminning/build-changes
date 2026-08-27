@@ -1,8 +1,14 @@
-import javax.annotation.Nullable;
-
-public interface chk {
-   default void a(@Nullable cbn $$0, cpm $$1, ciy $$2, gu $$3) {
+public class chk extends cgq {
+   public chk(csl $$0, cis.a $$1) {
+      super($$0, $$1);
    }
 
-   boolean a(@Nullable cbn var1, cpm var2, gu var3, @Nullable eha var4);
+   @Override
+   protected boolean a(clf $$0, dez $$1) {
+      cpl $$2 = $$0.q();
+      gu $$3 = $$0.a().c();
+      dez $$4 = $$2.y($$3) ? csm.G.n() : csm.a.n();
+      $$2.a($$3, $$4, 27);
+      return super.a($$0, $$1);
+   }
 }

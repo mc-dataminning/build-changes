@@ -1,22 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dlv extends dmb {
-   final aqa<csm> a;
-   public static final Codec<dlv> e = RecordCodecBuilder.create($$0 -> a($$0).and(aqa.a(jc.e).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, dlv::new));
+class dlv extends dma {
+   private final hi<csl> e;
+   public static final Codec<dlv> a = RecordCodecBuilder.create($$0 -> a($$0).and(ht.a(jc.e).fieldOf("blocks").forGetter($$0x -> $$0x.e)).apply($$0, dlv::new));
 
-   protected dlv(hz $$0, aqa<csm> $$1) {
+   public dlv(hz $$0, hi<csl> $$1) {
       super($$0);
-      this.a = $$1;
+      this.e = $$1;
    }
 
    @Override
-   protected boolean a(dfa $$0) {
-      return $$0.a(this.a);
+   protected boolean a(dez $$0) {
+      return $$0.a(this.e);
    }
 
    @Override
-   public dlr<?> a() {
-      return dlr.b;
+   public dlq<?> a() {
+      return dlq.a;
    }
 }

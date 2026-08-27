@@ -1,142 +1,85 @@
 import javax.annotation.Nullable;
-import org.joml.Vector3f;
 
-public class bwp extends bwj {
-   private final bwq bT = new bwq(this);
-   private static final int bU = 18000;
-   private boolean bW;
-   private int bX;
+public class bwp extends bpt {
+   private final bwo a;
 
-   public bwp(bim<? extends bwp> $$0, cpm $$1) {
-      super($$0, $$1);
-   }
-
-   public static bke.a p() {
-      return gz().a(bkf.a, 15.0).a(bkf.d, 0.2F);
+   public bwp(bwo $$0) {
+      this.a = $$0;
    }
 
    @Override
-   protected void a(aru $$0) {
-      this.a(bkf.n).a(a($$0::j));
+   public boolean a() {
+      return this.a.dK().a(this.a.dp(), this.a.dr(), this.a.dv(), 10.0);
    }
 
    @Override
-   protected void gp() {
-   }
+   public void e() {
+      akk $$0 = (akk)this.a.dK();
+      bgo $$1 = $$0.d_(this.a.dk());
+      this.a.w(false);
+      this.a.x(true);
+      this.a.c_(0);
+      bix $$2 = bim.ai.a((cpl)$$0);
+      if ($$2 != null) {
+         $$2.d(this.a.dp(), this.a.dr(), this.a.dv());
+         $$2.a(true);
+         $$0.b($$2);
+         bzi $$3 = this.a($$1, this.a);
+         if ($$3 != null) {
+            $$3.n(this.a);
+            $$0.a_($$3);
 
-   @Override
-   protected aov r() {
-      return this.a(apq.a) ? aow.vv : aow.vr;
-   }
-
-   @Override
-   protected aov h_() {
-      return aow.vs;
-   }
-
-   @Override
-   protected aov d(bhg $$0) {
-      return aow.vt;
-   }
-
-   @Override
-   protected aov aL() {
-      if (this.aA()) {
-         if (!this.bO()) {
-            return aow.vy;
-         }
-
-         this.cu++;
-         if (this.cu > 5 && this.cu % 3 == 0) {
-            return aow.vw;
-         }
-
-         if (this.cu <= 5) {
-            return aow.vy;
-         }
-      }
-
-      return aow.vu;
-   }
-
-   @Override
-   protected void e(float $$0) {
-      if (this.aA()) {
-         super.e(0.3F);
-      } else {
-         super.e(Math.min(0.1F, $$0 * 25.0F));
-      }
-   }
-
-   @Override
-   protected void gG() {
-      if (this.aX()) {
-         this.a(aow.vx, 0.4F, 1.0F);
-      } else {
-         super.gG();
-      }
-   }
-
-   @Override
-   public bjd eQ() {
-      return bjd.b;
-   }
-
-   @Override
-   protected Vector3f a(bii $$0, bij $$1, float $$2) {
-      return new Vector3f(0.0F, $$1.b - (this.i_() ? 0.03125F : 0.28125F) * $$2, 0.0F);
-   }
-
-   @Override
-   public void b_() {
-      super.b_();
-      if (this.q() && this.bX++ >= 18000) {
-         this.ak();
-      }
-   }
-
-   @Override
-   public void b(qr $$0) {
-      super.b($$0);
-      $$0.a("SkeletonTrap", this.q());
-      $$0.a("SkeletonTrapTime", this.bX);
-   }
-
-   @Override
-   public void a(qr $$0) {
-      super.a($$0);
-      this.w($$0.q("SkeletonTrap"));
-      this.bX = $$0.h("SkeletonTrapTime");
-   }
-
-   @Override
-   protected float fb() {
-      return 0.96F;
-   }
-
-   public boolean q() {
-      return this.bW;
-   }
-
-   public void w(boolean $$0) {
-      if ($$0 != this.bW) {
-         this.bW = $$0;
-         if ($$0) {
-            this.bO.a(1, this.bT);
-         } else {
-            this.bO.a(this.bT);
+            for (int $$4 = 0; $$4 < 3; $$4++) {
+               bwi $$5 = this.a($$1);
+               if ($$5 != null) {
+                  bzi $$6 = this.a($$1, $$5);
+                  if ($$6 != null) {
+                     $$6.n($$5);
+                     $$5.j(this.a.ee().a(0.0, 1.1485), 0.0, this.a.ee().a(0.0, 1.1485));
+                     $$0.a_($$5);
+                  }
+               }
+            }
          }
       }
    }
 
    @Nullable
-   @Override
-   public bid a(akk $$0, bid $$1) {
-      return bim.aK.a((cpm)$$0);
+   private bwi a(bgo $$0) {
+      bwo $$1 = bim.aK.a(this.a.dK());
+      if ($$1 != null) {
+         $$1.a((akk)this.a.dK(), $$0, bjc.k, null, null);
+         $$1.e(this.a.dp(), this.a.dr(), this.a.dv());
+         $$1.al = 60;
+         $$1.fF();
+         $$1.x(true);
+         $$1.c_(0);
+      }
+
+      return $$1;
    }
 
-   @Override
-   public bgq b(cbn $$0, bgp $$1) {
-      return !this.go() ? bgq.d : super.b($$0, $$1);
+   @Nullable
+   private bzi a(bgo $$0, bwi $$1) {
+      bzi $$2 = bim.aJ.a($$1.dK());
+      if ($$2 != null) {
+         $$2.a((akk)$$1.dK(), $$0, bjc.k, null, null);
+         $$2.e($$1.dp(), $$1.dr(), $$1.dv());
+         $$2.al = 60;
+         $$2.fF();
+         if ($$2.c(bin.f).b()) {
+            $$2.a(bin.f, new cix(cja.oS));
+         }
+
+         $$2.a(bin.a, cng.a($$2.ee(), this.a($$2.eR()), (int)(5.0F + $$0.d() * (float)$$2.ee().a(18)), false));
+         $$2.a(bin.f, cng.a($$2.ee(), this.a($$2.c(bin.f)), (int)(5.0F + $$0.d() * (float)$$2.ee().a(18)), false));
+      }
+
+      return $$2;
+   }
+
+   private cix a(cix $$0) {
+      $$0.c("Enchantments");
+      return $$0;
    }
 }

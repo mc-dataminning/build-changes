@@ -1,15 +1,11 @@
-import javax.annotation.Nullable;
-
-public class del extends def {
-   @Nullable
+public class del extends dee {
    @Override
-   protected aeq<dna<?, ?>> a(aru $$0, boolean $$1) {
-      return null;
+   protected aeq<dmz<?, ?>> a(aru $$0, boolean $$1) {
+      return or.o;
    }
 
-   @Nullable
    @Override
-   protected aeq<dna<?, ?>> a(aru $$0) {
-      return or.h;
+   protected aeq<dmz<?, ?>> a(aru $$0) {
+      return or.p;
    }
 }

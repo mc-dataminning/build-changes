@@ -1,7 +1,7 @@
 import java.util.List;
 import javax.annotation.Nullable;
 
-public class etq implements evy {
+public class etq implements evz {
    private static final int a = 170;
    private final tf b;
    @Nullable
@@ -23,13 +23,13 @@ public class etq implements evy {
    }
 
    @Override
-   public void b(evx $$0) {
+   public void b(evy $$0) {
       if (this.d != null) {
-         $$0.a(evw.c, this.d);
+         $$0.a(evx.c, this.d);
       }
    }
 
-   public List<arc> a(eqm $$0) {
+   public List<arc> a(eql $$0) {
       if (this.c == null) {
          this.c = a($$0, this.b);
       }
@@ -37,7 +37,7 @@ public class etq implements evy {
       return this.c;
    }
 
-   public static List<arc> a(eqm $$0, tf $$1) {
+   public static List<arc> a(eql $$0, tf $$1) {
       return $$0.h.c($$1, 170);
    }
 }

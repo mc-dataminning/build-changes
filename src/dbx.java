@@ -1,33 +1,68 @@
-public class dbx extends cvk {
-   public dbx(bht $$0, dez.d $$1) {
-      super($$0, 8, $$1);
+import javax.annotation.Nullable;
+
+public class dbx extends czn {
+   @Nullable
+   private static dfe e;
+   @Nullable
+   private static dfe f;
+
+   protected dbx(dey.d $$0) {
+      super(czn.b.b, $$0);
    }
 
    @Override
-   protected boolean d(dfa $$0, cos $$1, gu $$2) {
-      return super.d($$0, $$1, $$2) || $$0.a(csn.dW) || $$0.a(csn.dX) || $$0.a(csn.dY);
+   public void a(cpl $$0, gu $$1, dez $$2, @Nullable biy $$3, cix $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      dcl $$5 = $$0.c_($$1);
+      if ($$5 instanceof ddv) {
+         a($$0, $$1, (ddv)$$5);
+      }
    }
 
-   @Override
-   public void a(dfa $$0, cpm $$1, gu $$2, aru $$3) {
-      ehx $$4 = this.a($$0, $$1, $$2, ehj.a());
-      ehe $$5 = $$4.a().f();
-      double $$6 = (double)$$2.u() + $$5.c;
-      double $$7 = (double)$$2.w() + $$5.e;
+   public static void a(cpl $$0, gu $$1, ddv $$2) {
+      if (!$$0.B) {
+         dez $$3 = $$2.q();
+         boolean $$4 = $$3.a(csm.gG) || $$3.a(csm.gH);
+         if ($$4 && $$1.v() >= $$0.C_() && $$0.ai() != bgn.a) {
+            dfe.b $$5 = u().a($$0, $$1);
+            if ($$5 != null) {
+               bxt $$6 = bim.bk.a($$0);
+               if ($$6 != null) {
+                  cte.a($$0, $$5);
+                  gu $$7 = $$5.a(1, 2, 0).d();
+                  $$6.b((double)$$7.u() + 0.5, (double)$$7.v() + 0.55, (double)$$7.w() + 0.5, $$5.b().o() == ha.a.a ? 0.0F : 90.0F, 0.0F);
+                  $$6.aU = $$5.b().o() == ha.a.a ? 0.0F : 90.0F;
+                  $$6.p();
 
-      for (int $$8 = 0; $$8 < 3; $$8++) {
-         if ($$3.h()) {
-            $$1.a(iv.Z, $$6 + $$3.j() / 5.0, (double)$$2.v() + (0.5 - $$3.j()), $$7 + $$3.j() / 5.0, 0.0, 0.0, 0.0);
+                  for (akl $$8 : $$0.a(akl.class, $$6.cG().g(50.0))) {
+                     ai.n.a($$8, $$6);
+                  }
+
+                  $$0.b($$6);
+                  cte.b($$0, $$5);
+               }
+            }
          }
       }
    }
 
-   @Override
-   public void a(dfa $$0, cpm $$1, gu $$2, bii $$3) {
-      if (!$$1.B && $$1.ai() != bgn.a) {
-         if ($$3 instanceof biy $$4 && !$$4.b($$1.ag().p())) {
-            $$4.b(new bhv(bhx.t, 40));
-         }
+   public static boolean b(cpl $$0, gu $$1, cix $$2) {
+      return $$2.a(cja.ts) && $$1.v() >= $$0.C_() + 2 && $$0.ai() != bgn.a && !$$0.B ? v().a($$0, $$1) != null : false;
+   }
+
+   private static dfe u() {
+      if (e == null) {
+         e = dff.a().a("^^^", "###", "~#~").a('#', $$0 -> $$0.a().a(apl.aE)).a('^', dfd.a(dfi.a(csm.gG).or(dfi.a(csm.gH)))).a('~', $$0 -> $$0.a().i()).b();
       }
+
+      return e;
+   }
+
+   private static dfe v() {
+      if (f == null) {
+         f = dff.a().a("   ", "###", "~#~").a('#', $$0 -> $$0.a().a(apl.aE)).a('~', $$0 -> $$0.a().i()).b();
+      }
+
+      return f;
    }
 }

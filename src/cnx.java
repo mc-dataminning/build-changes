@@ -1,52 +1,15 @@
-import java.util.Map.Entry;
-
-public class cnx extends cnf {
-   private static final float a = 0.15F;
-
-   public cnx(cnf.a $$0, bin... $$1) {
-      super($$0, cng.d, $$1);
+public class cnx extends cne {
+   public cnx(cne.a $$0, bin... $$1) {
+      super($$0, cnf.i, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 10 + 20 * ($$0 - 1);
+      return 25;
    }
 
    @Override
    public int b(int $$0) {
-      return super.a($$0) + 50;
-   }
-
-   @Override
-   public int a() {
-      return 3;
-   }
-
-   @Override
-   public boolean a(ciy $$0) {
-      return $$0.d() instanceof cgi ? true : super.a($$0);
-   }
-
-   @Override
-   public void b(biy $$0, bii $$1, int $$2) {
-      aru $$3 = $$0.ee();
-      Entry<bin, ciy> $$4 = cnh.b(cnj.h, $$0);
-      if (a($$2, $$3)) {
-         if ($$1 != null) {
-            $$1.a($$0.dL().d($$0), (float)b($$2, $$3));
-         }
-
-         if ($$4 != null) {
-            $$4.getValue().a(2, $$0, $$1x -> $$1x.d($$4.getKey()));
-         }
-      }
-   }
-
-   public static boolean a(int $$0, aru $$1) {
-      return $$0 <= 0 ? false : $$1.i() < 0.15F * (float)$$0;
-   }
-
-   public static int b(int $$0, aru $$1) {
-      return $$0 > 10 ? $$0 - 10 : 1 + $$1.a(4);
+      return 50;
    }
 }

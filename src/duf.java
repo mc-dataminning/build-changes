@@ -1,10 +1,10 @@
+import com.mojang.serialization.Codec;
 import java.util.stream.Stream;
 
-public abstract class duf extends dug {
-   @Override
-   public final Stream<gu> a_(due $$0, aru $$1, gu $$2) {
-      return this.a($$0, $$1, $$2) ? Stream.of($$2) : Stream.of();
-   }
+public abstract class duf {
+   public static final Codec<duf> b = jb.V.q().dispatch(duf::b, dug::codec);
 
-   protected abstract boolean a(due var1, aru var2, gu var3);
+   public abstract Stream<gu> a_(dud var1, aru var2, gu var3);
+
+   public abstract dug<?> b();
 }

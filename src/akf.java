@@ -4,25 +4,25 @@ public class akf {
    @Nullable
    protected static gu a(akk $$0, int $$1, int $$2) {
       boolean $$3 = $$0.x_().h();
-      dhh $$4 = $$0.d(hx.a($$1), hx.a($$2));
-      int $$5 = $$3 ? $$0.k().g().a($$0) : $$4.a(dkj.a.e, $$1 & 15, $$2 & 15);
+      dhg $$4 = $$0.d(hx.a($$1), hx.a($$2));
+      int $$5 = $$3 ? $$0.k().g().a($$0) : $$4.a(dki.a.e, $$1 & 15, $$2 & 15);
       if ($$5 < $$0.C_()) {
          return null;
       } else {
-         int $$6 = $$4.a(dkj.a.b, $$1 & 15, $$2 & 15);
-         if ($$6 <= $$5 && $$6 > $$4.a(dkj.a.d, $$1 & 15, $$2 & 15)) {
+         int $$6 = $$4.a(dki.a.b, $$1 & 15, $$2 & 15);
+         if ($$6 <= $$5 && $$6 > $$4.a(dki.a.d, $$1 & 15, $$2 & 15)) {
             return null;
          } else {
             gu.a $$7 = new gu.a();
 
             for (int $$8 = $$5 + 1; $$8 >= $$0.C_(); $$8--) {
                $$7.d($$1, $$8, $$2);
-               dfa $$9 = $$0.a_($$7);
+               dez $$9 = $$0.a_($$7);
                if (!$$9.u().c()) {
                   break;
                }
 
-               if (csm.a($$9.k($$0, $$7), ha.b)) {
+               if (csl.a($$9.k($$0, $$7), ha.b)) {
                   return $$7.c().i();
                }
             }
@@ -33,7 +33,7 @@ public class akf {
    }
 
    @Nullable
-   public static gu a(akk $$0, cot $$1) {
+   public static gu a(akk $$0, cos $$1) {
       if (aa.a($$1)) {
          return null;
       } else {

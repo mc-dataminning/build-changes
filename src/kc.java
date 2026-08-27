@@ -26,8 +26,8 @@ public class kc implements ji {
 
    @Override
    public CompletableFuture<?> a(jg $$0) {
-      final Map<aer, ecp> $$1 = Maps.newHashMap();
-      Map<dky.a, aer> $$2 = new Object2ObjectOpenHashMap();
+      final Map<aer, eco> $$1 = Maps.newHashMap();
+      Map<dkx.a, aer> $$2 = new Object2ObjectOpenHashMap();
       this.g.forEach($$2x -> $$2x.a().get().generate(($$3x, $$4) -> {
             aer $$5x = $$2.put(bgv.a($$3x), $$3x);
             if ($$5x != null) {
@@ -39,11 +39,11 @@ public class kc implements ji {
                throw new IllegalStateException("Duplicate loot table " + $$3x);
             }
          }));
-      ecq $$3 = new ecq(eer.n, new ecl() {
+      ecp $$3 = new ecp(eeq.n, new eck() {
          @Nullable
          @Override
-         public <T> T getElement(ecj<T> $$0) {
-            return (T)($$0.a() == ecm.c ? $$1.get($$0.b()) : null);
+         public <T> T getElement(eci<T> $$0) {
+            return (T)($$0.a() == ecl.c ? $$1.get($$0.b()) : null);
          }
       });
 
@@ -51,7 +51,7 @@ public class kc implements ji {
          $$3.a("Missing built-in table: " + $$5);
       }
 
-      $$1.forEach(($$1x, $$2x) -> $$2x.a($$3.a($$2x.a()).a("{" + $$1x + "}", new ecj<>(ecm.c, $$1x))));
+      $$1.forEach(($$1x, $$2x) -> $$2x.a($$3.a($$2x.a()).a("{" + $$1x + "}", new eci<>(ecl.c, $$1x))));
       Multimap<String, String> $$6 = $$3.a();
       if (!$$6.isEmpty()) {
          $$6.forEach(($$0x, $$1x) -> d.warn("Found validation problem in {}: {}", $$0x, $$1x));
@@ -59,9 +59,9 @@ public class kc implements ji {
       } else {
          return CompletableFuture.allOf($$1.entrySet().stream().map($$1x -> {
             aer $$2x = (aer)$$1x.getKey();
-            ecp $$3x = (ecp)$$1x.getValue();
+            eco $$3x = (eco)$$1x.getValue();
             Path $$4 = this.e.a($$2x);
-            return ji.a($$0, ecp.c, $$3x, $$4);
+            return ji.a($$0, eco.c, $$3x, $$4);
          }).toArray(CompletableFuture[]::new));
       }
    }
@@ -71,6 +71,6 @@ public class kc implements ji {
       return "Loot Tables";
    }
 
-   public static record a(Supplier<kd> a, eeq b) {
+   public static record a(Supplier<kd> a, eep b) {
    }
 }

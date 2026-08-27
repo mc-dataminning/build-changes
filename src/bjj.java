@@ -7,7 +7,7 @@ public interface bjj extends bji {
 
    void b();
 
-   default int W_() {
+   default int V_() {
       return 0;
    }
 }

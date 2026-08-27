@@ -1,84 +1,117 @@
-import java.util.Map;
-import java.util.function.Predicate;
+import java.util.OptionalInt;
 
-public class cws extends crf {
-   public static final int c = 1;
-   public static final int d = 3;
-   public static final dga e = dfq.aK;
-   private static final int h = 6;
-   private static final double i = 3.0;
-   public static final Predicate<cqk.c> f = $$0 -> $$0 == cqk.c.b;
-   public static final Predicate<cqk.c> g = $$0 -> $$0 == cqk.c.c;
-   private final Predicate<cqk.c> j;
+public class cws extends csl implements czm {
+   public static final int a = 7;
+   public static final dfz b = dfp.aC;
+   public static final dfq c = dfp.v;
+   public static final dfq d = dfp.C;
+   private static final int e = 1;
 
-   public cws(dez.d $$0, Predicate<cqk.c> $$1, Map<cit, ib> $$2) {
-      super($$0, $$2);
-      this.j = $$1;
-      this.k(this.C.b().a(e, Integer.valueOf(1)));
+   public cws(dey.d $$0) {
+      super($$0);
+      this.k(this.C.b().a(b, Integer.valueOf(7)).a(c, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public boolean d(dfa $$0) {
-      return $$0.c(e) == 3;
+   public ehw b_(dez $$0, cor $$1, gu $$2) {
+      return eht.a();
    }
 
    @Override
-   protected boolean a(eac $$0) {
-      return $$0 == eae.c && this.j == f;
+   public boolean e_(dez $$0) {
+      return $$0.c(b) == 7 && !$$0.c(c);
    }
 
    @Override
-   protected double b(dfa $$0) {
-      return (6.0 + (double)$$0.c(e).intValue() * 3.0) / 16.0;
+   public void b(dez $$0, akk $$1, gu $$2, aru $$3) {
+      if (this.h($$0)) {
+         c($$0, $$1, $$2);
+         $$1.a($$2, false);
+      }
+   }
+
+   protected boolean h(dez $$0) {
+      return !$$0.c(c) && $$0.c(b) == 7;
    }
 
    @Override
-   public void a(dfa $$0, cpm $$1, gu $$2, bii $$3) {
-      if (!$$1.B && $$3.bM() && this.a($$0, $$2, $$3)) {
-         $$3.ay();
-         if ($$3.a($$1, $$2)) {
-            this.d($$0, $$1, $$2);
+   public void a(dez $$0, akk $$1, gu $$2, aru $$3) {
+      $$1.a($$2, a($$0, $$1, $$2), 3);
+   }
+
+   @Override
+   public int g(dez $$0, cor $$1, gu $$2) {
+      return 1;
+   }
+
+   @Override
+   public dez a(dez $$0, ha $$1, dez $$2, cpm $$3, gu $$4, gu $$5) {
+      if ($$0.c(d)) {
+         $$3.a($$4, ead.c, ead.c.a($$3));
+      }
+
+      int $$6 = o($$2) + 1;
+      if ($$6 != 1 || $$0.c(b) != $$6) {
+         $$3.a($$4, this, 1);
+      }
+
+      return $$0;
+   }
+
+   private static dez a(dez $$0, cpm $$1, gu $$2) {
+      int $$3 = 7;
+      gu.a $$4 = new gu.a();
+
+      for (ha $$5 : ha.values()) {
+         $$4.a($$2, $$5);
+         $$3 = Math.min($$3, o($$1.a_($$4)) + 1);
+         if ($$3 == 1) {
+            break;
+         }
+      }
+
+      return $$0.a(b, Integer.valueOf($$3));
+   }
+
+   private static int o(dez $$0) {
+      return n($$0).orElse(7);
+   }
+
+   public static OptionalInt n(dez $$0) {
+      if ($$0.a(apl.t)) {
+         return OptionalInt.of(0);
+      } else {
+         return $$0.b(b) ? OptionalInt.of($$0.c(b)) : OptionalInt.empty();
+      }
+   }
+
+   @Override
+   public eac c_(dez $$0) {
+      return $$0.c(d) ? ead.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   public void a(dez $$0, cpl $$1, gu $$2, aru $$3) {
+      if ($$1.q($$2.c())) {
+         if ($$3.a(15) == 1) {
+            gu $$4 = $$2.d();
+            dez $$5 = $$1.a_($$4);
+            if (!$$5.p() || !$$5.d($$1, $$4, ha.b)) {
+               ars.a($$1, $$2, $$3, iv.m);
+            }
          }
       }
    }
 
-   protected void d(dfa $$0, cpm $$1, gu $$2) {
-      e($$0, $$1, $$2);
-   }
-
-   public static void e(dfa $$0, cpm $$1, gu $$2) {
-      int $$3 = $$0.c(e) - 1;
-      dfa $$4 = $$3 == 0 ? csn.ft.n() : $$0.a(e, Integer.valueOf($$3));
-      $$1.b($$2, $$4);
-      $$1.a(djk.c, $$2, djk.a.a($$4));
+   @Override
+   protected void a(dfa.a<csl, dez> $$0) {
+      $$0.a(b, c, d);
    }
 
    @Override
-   public void a(dfa $$0, cpm $$1, gu $$2, cqk.c $$3) {
-      if (ctg.a($$1, $$3) && $$0.c(e) != 3 && this.j.test($$3)) {
-         dfa $$4 = $$0.a(e);
-         $$1.b($$2, $$4);
-         $$1.a(djk.c, $$2, djk.a.a($$4));
-      }
-   }
-
-   @Override
-   public int a(dfa $$0, cpm $$1, gu $$2) {
-      return $$0.c(e);
-   }
-
-   @Override
-   protected void a(dfb.a<csm, dfa> $$0) {
-      $$0.a(e);
-   }
-
-   @Override
-   protected void a(dfa $$0, cpm $$1, gu $$2, eac $$3) {
-      if (!this.d($$0)) {
-         dfa $$4 = $$0.a(e, Integer.valueOf($$0.c(e) + 1));
-         $$1.b($$2, $$4);
-         $$1.a(djk.c, $$2, djk.a.a($$4));
-         $$1.c(1047, $$2, 0);
-      }
+   public dez a(clf $$0) {
+      eac $$1 = $$0.q().b_($$0.a());
+      dez $$2 = this.n().a(c, Boolean.valueOf(true)).a(d, Boolean.valueOf($$1.a() == ead.c));
+      return a($$2, $$0.q(), $$0.a());
    }
 }

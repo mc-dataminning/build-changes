@@ -1,57 +1,42 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Stream;
-import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public record dud(he<dna<?, ?>> e, List<dug> f) {
-   public static final Codec<dud> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dna.b.fieldOf("feature").forGetter($$0x -> $$0x.e), dug.b.listOf().fieldOf("placement").forGetter($$0x -> $$0x.f)).apply($$0, dud::new)
-   );
-   public static final Codec<he<dud>> b = aen.a(jc.ay, a);
-   public static final Codec<hi<dud>> c = ht.a(jc.ay, a);
-   public static final Codec<List<hi<dud>>> d = ht.a(jc.ay, a, true).listOf();
+public class dud extends dlf {
+   private final cqf a;
+   private final dgw b;
+   private final Optional<duc> c;
 
-   public boolean a(cqg $$0, dgx $$1, aru $$2, gu $$3) {
-      return this.a(new due($$0, $$1, Optional.empty()), $$2, $$3);
+   public dud(cqf $$0, dgw $$1, Optional<duc> $$2) {
+      super($$1, $$0);
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public boolean b(cqg $$0, dgx $$1, aru $$2, gu $$3) {
-      return this.a(new due($$0, $$1, Optional.of(this)), $$2, $$3);
+   public int a(dki.a $$0, int $$1, int $$2) {
+      return this.a.a($$0, $$1, $$2);
    }
 
-   private boolean a(due $$0, aru $$1, gu $$2) {
-      Stream<gu> $$3 = Stream.of($$2);
-
-      for (dug $$4 : this.f) {
-         $$3 = $$3.flatMap($$3x -> $$4.a_($$0, $$1, $$3x));
-      }
-
-      dna<?, ?> $$5 = this.e.a();
-      MutableBoolean $$6 = new MutableBoolean();
-      $$3.forEach($$4 -> {
-         if ($$5.a($$0.d(), $$0.f(), $$1, $$4)) {
-            $$6.setTrue();
-         }
-      });
-      return $$6.isTrue();
+   public dgu a(cos $$0, dke.a $$1) {
+      return ((dhq)this.a.a($$0.e, $$0.f)).b($$1);
    }
 
-   public Stream<dna<?, ?>> a() {
-      return this.e.a().a();
+   public dez a(gu $$0) {
+      return this.a.a_($$0);
    }
 
-   @Override
-   public String toString() {
-      return "Placed " + this.e;
+   public int c() {
+      return this.a.C_();
    }
 
-   public he<dna<?, ?>> b() {
-      return this.e;
+   public cqf d() {
+      return this.a;
    }
 
-   public List<dug> c() {
-      return this.f;
+   public Optional<duc> e() {
+      return this.c;
+   }
+
+   public dgw f() {
+      return this.b;
    }
 }

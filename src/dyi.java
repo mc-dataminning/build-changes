@@ -1,22 +1,25 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dyi extends dyp {
-   public final aqa<csm> a;
-   public static final Codec<dyi> b = aqa.b(jc.e).xmap(dyi::new, $$0 -> $$0.a);
+public class dyi extends dyl {
+   public static final Codec<dyi> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(jb.f.q().fieldOf("block").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d)).apply($$0, dyi::new)
+   );
+   private final csl b;
+   private final float d;
 
-   public dyi(aqa<csm> $$0) {
-      this.a = $$0;
-   }
-
-   @Nullable
-   @Override
-   public dys.c a(cpp $$0, gu $$1, gu $$2, dys.c $$3, dys.c $$4, dyo $$5) {
-      return dnn.a(this.a).test($$0.a_($$4.a())) ? $$4 : null;
+   public dyi(csl $$0, float $$1) {
+      this.b = $$0;
+      this.d = $$1;
    }
 
    @Override
-   protected dyr<?> a() {
-      return dyr.n;
+   public boolean a(dez $$0, aru $$1) {
+      return $$0.a(this.b) && $$1.i() < this.d;
+   }
+
+   @Override
+   protected dym<?> a() {
+      return dym.e;
    }
 }

@@ -1,29 +1,56 @@
-import com.mojang.authlib.minecraft.TelemetryEvent;
-import com.mojang.authlib.minecraft.TelemetrySession;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Maps;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.util.Collection;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
-public record gdc(gdg b, gdj c) {
-   public static final Codec<gdc> a = gdg.a.dispatchStable(gdc::a, gdg::c);
+public class gdc {
+   private final anp a;
+   private final Map<aer, CompletableFuture<ejf>> b = Maps.newHashMap();
 
-   public gdc(gdg b, gdj c) {
-      c.b().forEach($$1x -> {
-         if (!$$0.a($$1x)) {
-            throw new IllegalArgumentException("Property '" + $$1x.b() + "' not expected for event: '" + $$0.a() + "'");
+   public gdc(anp $$0) {
+      this.a = $$0;
+   }
+
+   public CompletableFuture<ejf> a(aer $$0) {
+      return this.b.computeIfAbsent($$0, $$0x -> CompletableFuture.supplyAsync(() -> {
+            try {
+               ejf var5;
+               try (
+                  InputStream $$1 = this.a.open($$0x);
+                  ejd $$2 = new ejd($$1);
+               ) {
+                  ByteBuffer $$3 = $$2.b();
+                  var5 = new ejf($$3, $$2.a());
+               }
+
+               return var5;
+            } catch (IOException var10) {
+               throw new CompletionException(var10);
+            }
+         }, ac.f()));
+   }
+
+   public CompletableFuture<gcy> a(aer $$0, boolean $$1) {
+      return CompletableFuture.supplyAsync(() -> {
+         try {
+            InputStream $$2 = this.a.open($$0);
+            return (gcy)($$1 ? new gda(ejd::new, $$2) : new ejd($$2));
+         } catch (IOException var4) {
+            throw new CompletionException(var4);
          }
-      });
-      this.b = b;
-      this.c = c;
+      }, ac.f());
    }
 
-   public TelemetryEvent a(TelemetrySession $$0) {
-      return this.b.a($$0, this.c);
+   public void a() {
+      this.b.values().forEach($$0 -> $$0.thenAccept(ejf::b));
+      this.b.clear();
    }
 
-   public gdg a() {
-      return this.b;
-   }
-
-   public gdj b() {
-      return this.c;
+   public CompletableFuture<?> a(Collection<gbz> $$0) {
+      return CompletableFuture.allOf($$0.stream().map($$0x -> this.a($$0x.b())).toArray(CompletableFuture[]::new));
    }
 }

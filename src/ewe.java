@@ -1,29 +1,32 @@
-public enum ewe {
-   a,
-   b;
+public interface ewe {
+   ewg a();
 
-   public ewe a() {
-      return switch (this) {
-         case a -> b;
-         case b -> a;
-      };
+   public static record a(ewg a) implements ewe {
+      @Override
+      public ewg a() {
+         return this.a.a() == ewf.b ? this.a : ewg.b;
+      }
+
+      public ewg b() {
+         return this.a;
+      }
    }
 
-   public ewf b() {
-      return switch (this) {
-         case a -> ewf.d;
-         case b -> ewf.b;
-      };
+   public static class b implements ewe {
+      @Override
+      public ewg a() {
+         return ewg.b;
+      }
    }
 
-   public ewf c() {
-      return switch (this) {
-         case a -> ewf.c;
-         case b -> ewf.a;
-      };
-   }
+   public static record c(boolean a) implements ewe {
+      @Override
+      public ewg a() {
+         return this.a ? ewg.b : ewg.a;
+      }
 
-   public ewf a(boolean $$0) {
-      return $$0 ? this.b() : this.c();
+      public boolean b() {
+         return this.a;
+      }
    }
 }

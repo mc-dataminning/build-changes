@@ -55,12 +55,12 @@ public class aiv {
       bii $$2 = $$0.f();
       List<String> $$3 = Lists.newArrayList();
       if ($$2 != null) {
-         eid $$4 = $$0.l().aF();
+         eic $$4 = $$0.l().aF();
          String $$5 = $$2.cx();
 
-         for (eia $$6 : $$4.c()) {
-            if ($$6.c() == eig.b && $$4.b($$5, $$6)) {
-               eic $$7 = $$4.c($$5, $$6);
+         for (ehz $$6 : $$4.c()) {
+            if ($$6.c() == eif.b && $$4.b($$5, $$6)) {
+               eib $$7 = $$4.c($$5, $$6);
                if (!$$7.g()) {
                   $$3.add($$6.b());
                }
@@ -71,34 +71,34 @@ public class aiv {
       return du.b($$3, $$1);
    }
 
-   private static int a(dr $$0, eic $$1, int $$2) {
+   private static int a(dr $$0, eib $$1, int $$2) {
       $$1.a($$2);
       $$0.a(() -> tf.a("commands.trigger.add.success", $$1.d().e(), $$2), true);
       return $$1.b();
    }
 
-   private static int b(dr $$0, eic $$1, int $$2) {
+   private static int b(dr $$0, eib $$1, int $$2) {
       $$1.b($$2);
       $$0.a(() -> tf.a("commands.trigger.set.success", $$1.d().e(), $$2), true);
       return $$2;
    }
 
-   private static int a(dr $$0, eic $$1) {
+   private static int a(dr $$0, eib $$1) {
       $$1.a(1);
       $$0.a(() -> tf.a("commands.trigger.simple.success", $$1.d().e()), true);
       return $$1.b();
    }
 
-   private static eic a(akl $$0, eia $$1) throws CommandSyntaxException {
-      if ($$1.c() != eig.b) {
+   private static eib a(akl $$0, ehz $$1) throws CommandSyntaxException {
+      if ($$1.c() != eif.b) {
          throw b.create();
       } else {
-         eid $$2 = $$0.gf();
+         eic $$2 = $$0.gf();
          String $$3 = $$0.cx();
          if (!$$2.b($$3, $$1)) {
             throw a.create();
          } else {
-            eic $$4 = $$2.c($$3, $$1);
+            eib $$4 = $$2.c($$3, $$1);
             if ($$4.g()) {
                throw a.create();
             } else {

@@ -1,17 +1,21 @@
-public interface ehj {
-   static ehj a() {
-      return eho.a;
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+
+public class ehj extends AbstractDoubleList {
+   private final int a;
+
+   ehj(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Need at least 1 part");
+      } else {
+         this.a = $$0;
+      }
    }
 
-   static ehj a(bii $$0) {
-      return new eho($$0);
+   public double getDouble(int $$0) {
+      return (double)$$0 / (double)this.a;
    }
 
-   boolean b();
-
-   boolean a(ehx var1, gu var2, boolean var3);
-
-   boolean a(cit var1);
-
-   boolean a(ead var1, ead var2);
+   public int size() {
+      return this.a + 1;
+   }
 }

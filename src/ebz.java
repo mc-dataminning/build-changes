@@ -1,54 +1,66 @@
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class ebz {
-   private final int a;
-   private final long b;
-   private final String c;
-   private final ebr d;
-   private final boolean e;
+   private static final Logger b = LogUtils.getLogger();
+   private final File c;
+   protected final DataFixer a;
 
-   private ebz(int $$0, long $$1, String $$2, int $$3, String $$4, boolean $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = new ebr($$3, $$4);
-      this.e = $$5;
+   public ebz(ebw.c $$0, DataFixer $$1) {
+      this.a = $$1;
+      this.c = $$0.a(ebu.c).toFile();
+      this.c.mkdirs();
    }
 
-   public static ebz a(Dynamic<?> $$0) {
-      int $$1 = $$0.get("version").asInt(0);
-      long $$2 = $$0.get("LastPlayed").asLong(0L);
-      OptionalDynamic<?> $$3 = $$0.get("Version");
-      return $$3.result().isPresent()
-         ? new ebz(
-            $$1,
-            $$2,
-            $$3.get("Name").asString(aa.b().c()),
-            $$3.get("Id").asInt(aa.b().d().c()),
-            $$3.get("Series").asString(ebr.a),
-            $$3.get("Snapshot").asBoolean(!aa.b().g())
-         )
-         : new ebz($$1, $$2, "", 0, ebr.a, false);
+   public void a(cbm $$0) {
+      try {
+         qr $$1 = $$0.f(new qr());
+         File $$2 = File.createTempFile($$0.cw() + "-", ".dat", this.c);
+         rb.a($$1, $$2);
+         File $$3 = new File(this.c, $$0.cw() + ".dat");
+         File $$4 = new File(this.c, $$0.cw() + ".dat_old");
+         ac.a($$3, $$2, $$4);
+      } catch (Exception var6) {
+         b.warn("Failed to save player data for {}", $$0.ab().getString());
+      }
    }
 
-   public int a() {
-      return this.a;
+   @Nullable
+   public qr b(cbm $$0) {
+      qr $$1 = null;
+
+      try {
+         File $$2 = new File(this.c, $$0.cw() + ".dat");
+         if ($$2.exists() && $$2.isFile()) {
+            $$1 = rb.a($$2);
+         }
+      } catch (Exception var4) {
+         b.warn("Failed to load player data for {}", $$0.ab().getString());
+      }
+
+      if ($$1 != null) {
+         int $$4 = rd.b($$1, -1);
+         $$0.g(ass.b.a(this.a, $$1, $$4));
+      }
+
+      return $$1;
    }
 
-   public long b() {
-      return this.b;
-   }
+   public String[] a() {
+      String[] $$0 = this.c.list();
+      if ($$0 == null) {
+         $$0 = new String[0];
+      }
 
-   public String c() {
-      return this.c;
-   }
+      for (int $$1 = 0; $$1 < $$0.length; $$1++) {
+         if ($$0[$$1].endsWith(".dat")) {
+            $$0[$$1] = $$0[$$1].substring(0, $$0[$$1].length() - 4);
+         }
+      }
 
-   public ebr d() {
-      return this.d;
-   }
-
-   public boolean e() {
-      return this.e;
+      return $$0;
    }
 }

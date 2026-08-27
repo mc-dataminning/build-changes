@@ -1,15 +1,18 @@
-public class ddh extends dcb {
-   public ddh(gu $$0, dfa $$1) {
-      super(dco.a, $$0, $$1, cme.b);
+public class ddh extends ddt {
+   private static final int a = 60;
+   private static final int b = 9;
+
+   public ddh(gu $$0, dez $$1) {
+      super(dcn.i, $$0, $$1);
    }
 
    @Override
-   protected tf g() {
-      return tf.c("container.furnace");
+   public int c() {
+      return 9;
    }
 
    @Override
-   protected cee a(int $$0, cbm $$1) {
-      return new cey($$0, $$1, this, this.n);
+   public int d() {
+      return 60;
    }
 }

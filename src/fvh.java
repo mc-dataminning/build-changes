@@ -1,17 +1,11 @@
-public class fvh extends ftu<bzp, fgx> {
-   private static final aer a = new aer("textures/entity/illager/vex.png");
-   private static final aer i = new aer("textures/entity/illager/vex_charging.png");
+public class fvh extends fud<bwb, fgx<bwb>> {
+   private static final aer a = new aer("textures/entity/tadpole/tadpole.png");
 
-   public fvh(fso.a $$0) {
-      super($$0, new fgx($$0.a(fhm.bI)), 0.3F);
-      this.a(new fwp<>(this, $$0.d()));
+   public fvh(fsx.a $$0) {
+      super($$0, new fgx<>($$0.a(fhr.bz)), 0.14F);
    }
 
-   protected int a(bzp $$0, gu $$1) {
-      return 15;
-   }
-
-   public aer a(bzp $$0) {
-      return $$0.fZ() ? i : a;
+   public aer a(bwb $$0) {
+      return a;
    }
 }

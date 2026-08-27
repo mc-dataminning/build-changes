@@ -52,12 +52,12 @@ public class ags {
       return new gu(a($$0.u()), a($$0.v()), a($$0.w()));
    }
 
-   private static cqn a(MutableInt $$0, dgw $$1, dur $$2, he<cqk> $$3, Predicate<he<cqk>> $$4) {
+   private static cqm a(MutableInt $$0, dgv $$1, duq $$2, he<cqj> $$3, Predicate<he<cqj>> $$4) {
       return ($$5, $$6, $$7, $$8) -> {
          int $$9 = hq.c($$5);
          int $$10 = hq.c($$6);
          int $$11 = hq.c($$7);
-         he<cqk> $$12 = $$1.getNoiseBiome($$5, $$6, $$7);
+         he<cqj> $$12 = $$1.getNoiseBiome($$5, $$6, $$7);
          if ($$2.c($$9, $$10, $$11) && $$4.test($$12)) {
             $$0.increment();
             return $$3;
@@ -67,21 +67,21 @@ public class ags {
       };
    }
 
-   private static int a(dr $$0, gu $$1, gu $$2, he.c<cqk> $$3, Predicate<he<cqk>> $$4) throws CommandSyntaxException {
+   private static int a(dr $$0, gu $$1, gu $$2, he.c<cqj> $$3, Predicate<he<cqj>> $$4) throws CommandSyntaxException {
       gu $$5 = a($$1);
       gu $$6 = a($$2);
-      dur $$7 = dur.a($$5, $$6);
+      duq $$7 = duq.a($$5, $$6);
       int $$8 = $$7.c() * $$7.d() * $$7.e();
-      int $$9 = $$0.e().X().c(cpi.x);
+      int $$9 = $$0.e().X().c(cph.x);
       if ($$8 > $$9) {
          throw b.create($$9, $$8);
       } else {
          akk $$10 = $$0.e();
-         List<dgw> $$11 = new ArrayList<>();
+         List<dgv> $$11 = new ArrayList<>();
 
          for (int $$12 = hx.a($$7.i()); $$12 <= hx.a($$7.l()); $$12++) {
             for (int $$13 = hx.a($$7.g()); $$13 <= hx.a($$7.j()); $$13++) {
-               dgw $$14 = $$10.a($$13, $$12, dhb.n, false);
+               dgv $$14 = $$10.a($$13, $$12, dha.n, false);
                if ($$14 == null) {
                   throw a.create();
                }
@@ -92,7 +92,7 @@ public class ags {
 
          MutableInt $$15 = new MutableInt(0);
 
-         for (dgw $$16 : $$11) {
+         for (dgv $$16 : $$11) {
             $$16.a(a($$15, $$16, $$7, $$3, $$4), $$10.k().i().b());
             $$16.a(true);
          }

@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 
 public class fe implements ArgumentType<fe.b> {
    private static final Collection<String> a = Arrays.asList("stone", "minecraft:stone", "stone[foo=bar]", "#stone", "#stone[foo=bar]{baz=nbt}");
-   private final hg<csm> b;
+   private final hg<csl> b;
 
    public fe(dl $$0) {
       this.b = $$0.a(jc.e);
@@ -29,12 +29,12 @@ public class fe implements ArgumentType<fe.b> {
       return a(this.b, $$0);
    }
 
-   public static fe.b a(hg<csm> $$0, StringReader $$1) throws CommandSyntaxException {
+   public static fe.b a(hg<csl> $$0, StringReader $$1) throws CommandSyntaxException {
       return (fe.b)fg.b($$0, $$1, true).map($$0x -> new fe.a($$0x.a(), $$0x.b().keySet(), $$0x.c()), $$0x -> new fe.c($$0x.a(), $$0x.b(), $$0x.c()));
    }
 
-   public static Predicate<dfe> a(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
-      return (Predicate<dfe>)$$0.getArgument($$1, fe.b.class);
+   public static Predicate<dfd> a(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
+      return (Predicate<dfd>)$$0.getArgument($$1, fe.b.class);
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
@@ -46,23 +46,23 @@ public class fe implements ArgumentType<fe.b> {
    }
 
    static class a implements fe.b {
-      private final dfa a;
-      private final Set<dgd<?>> b;
+      private final dez a;
+      private final Set<dgc<?>> b;
       @Nullable
       private final qr c;
 
-      public a(dfa $$0, Set<dgd<?>> $$1, @Nullable qr $$2) {
+      public a(dez $$0, Set<dgc<?>> $$1, @Nullable qr $$2) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
       }
 
-      public boolean a(dfe $$0) {
-         dfa $$1 = $$0.a();
+      public boolean a(dfd $$0) {
+         dez $$1 = $$0.a();
          if (!$$1.a(this.a.b())) {
             return false;
          } else {
-            for (dgd<?> $$2 : this.b) {
+            for (dgc<?> $$2 : this.b) {
                if ($$1.c($$2) != this.a.c($$2)) {
                   return false;
                }
@@ -71,7 +71,7 @@ public class fe implements ArgumentType<fe.b> {
             if (this.c == null) {
                return true;
             } else {
-               dcm $$3 = $$0.b();
+               dcl $$3 = $$0.b();
                return $$3 != null && rd.a(this.c, $$3.m(), true);
             }
          }
@@ -83,29 +83,29 @@ public class fe implements ArgumentType<fe.b> {
       }
    }
 
-   public interface b extends Predicate<dfe> {
+   public interface b extends Predicate<dfd> {
       boolean a();
    }
 
    static class c implements fe.b {
-      private final hi<csm> a;
+      private final hi<csl> a;
       @Nullable
       private final qr b;
       private final Map<String, String> c;
 
-      c(hi<csm> $$0, Map<String, String> $$1, @Nullable qr $$2) {
+      c(hi<csl> $$0, Map<String, String> $$1, @Nullable qr $$2) {
          this.a = $$0;
          this.c = $$1;
          this.b = $$2;
       }
 
-      public boolean a(dfe $$0) {
-         dfa $$1 = $$0.a();
+      public boolean a(dfd $$0) {
+         dez $$1 = $$0.a();
          if (!$$1.a(this.a)) {
             return false;
          } else {
             for (Entry<String, String> $$2 : this.c.entrySet()) {
-               dgd<?> $$3 = $$1.b().l().a($$2.getKey());
+               dgc<?> $$3 = $$1.b().l().a($$2.getKey());
                if ($$3 == null) {
                   return false;
                }
@@ -123,7 +123,7 @@ public class fe implements ArgumentType<fe.b> {
             if (this.b == null) {
                return true;
             } else {
-               dcm $$5 = $$0.b();
+               dcl $$5 = $$0.b();
                return $$5 != null && rd.a(this.b, $$5.m(), true);
             }
          }

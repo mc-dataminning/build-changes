@@ -15,27 +15,27 @@ public class fl implements fk {
    }
 
    @Override
-   public ehe a(dr $$0) {
-      ehd $$1 = $$0.k();
-      ehe $$2 = $$0.m().a($$0);
+   public ehd a(dr $$0) {
+      ehc $$1 = $$0.k();
+      ehd $$2 = $$0.m().a($$0);
       float $$3 = arp.b(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
       float $$4 = arp.a(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
       float $$5 = arp.b(-$$1.i * (float) (Math.PI / 180.0));
       float $$6 = arp.a(-$$1.i * (float) (Math.PI / 180.0));
       float $$7 = arp.b((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
       float $$8 = arp.a((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
-      ehe $$9 = new ehe((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
-      ehe $$10 = new ehe((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
-      ehe $$11 = $$9.c($$10).a(-1.0);
+      ehd $$9 = new ehd((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
+      ehd $$10 = new ehd((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
+      ehd $$11 = $$9.c($$10).a(-1.0);
       double $$12 = $$9.c * this.d + $$10.c * this.c + $$11.c * this.b;
       double $$13 = $$9.d * this.d + $$10.d * this.c + $$11.d * this.b;
       double $$14 = $$9.e * this.d + $$10.e * this.c + $$11.e * this.b;
-      return new ehe($$2.c + $$12, $$2.d + $$13, $$2.e + $$14);
+      return new ehd($$2.c + $$12, $$2.d + $$13, $$2.e + $$14);
    }
 
    @Override
-   public ehd b(dr $$0) {
-      return ehd.a;
+   public ehc b(dr $$0) {
+      return ehc.a;
    }
 
    @Override

@@ -1,51 +1,28 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class drb extends drd {
-   public static final Codec<drb> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, drb::new));
+public class drb extends dqx {
+   public static final Codec<drb> c = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, drb::new));
 
-   public drb(bfv $$0, bfv $$1) {
-      super($$0, $$1);
+   public drb(bfv $$0, bfv $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected dre<?> a() {
-      return dre.i;
+   protected drd<?> a() {
+      return drd.f;
    }
 
    @Override
-   protected void a(cps $$0, drd.b $$1, aru $$2, dqn $$3, int $$4, drd.a $$5, int $$6, int $$7, int $$8) {
-      gu $$9 = $$5.a().b($$8);
-      boolean $$10 = $$5.c();
-      if ($$10) {
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 3, 0, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, 1, $$10);
-         if ($$2.h()) {
-            this.a($$0, $$1, $$2, $$3, $$9, $$7, 2, $$10);
-         }
-      } else {
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 1, 0, $$10);
+   protected void a(cpr $$0, drc.b $$1, aru $$2, dqm $$3, int $$4, drc.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = $$7 + ($$9 != $$8 && $$9 != $$8 - $$6 ? 1 : 0);
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
       }
-   }
-
-   @Override
-   public int a(aru $$0, int $$1, dqn $$2) {
-      return 4;
-   }
-
-   @Override
-   protected boolean b(aru $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$2 != 0 || !$$5 || $$1 != -$$4 && $$1 < $$4 || $$3 != -$$4 && $$3 < $$4 ? super.b($$0, $$1, $$2, $$3, $$4, $$5) : true;
    }
 
    @Override
    protected boolean a(aru $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      if ($$2 == -1 && !$$5) {
-         return $$1 == $$4 && $$3 == $$4;
-      } else {
-         return $$2 == 1 ? $$1 + $$3 > $$4 * 2 - 2 : false;
-      }
+      return arp.k((float)$$1 + 0.5F) + arp.k((float)$$3 + 0.5F) > (float)($$4 * $$4);
    }
 }

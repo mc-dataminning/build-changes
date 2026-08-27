@@ -17,7 +17,7 @@ public class bh extends cu<bh.a> {
    }
 
    public void a(akl $$0, @Nullable bii $$1) {
-      ech $$2 = $$1 != null ? bo.b($$0, $$1) : null;
+      ecg $$2 = $$1 != null ? bo.b($$0, $$1) : null;
       this.a($$0, $$2x -> $$2x.a($$0, $$2));
    }
 
@@ -39,7 +39,7 @@ public class bh extends cu<bh.a> {
          return new bh.a(Optional.empty(), Optional.empty(), bo.a($$0));
       }
 
-      public boolean a(akl $$0, @Nullable ech $$1) {
+      public boolean a(akl $$0, @Nullable ecg $$1) {
          return this.a.isPresent() && !this.a.get().a((biy)$$0) ? false : !this.b.isPresent() || $$1 != null && this.b.get().a($$1);
       }
 

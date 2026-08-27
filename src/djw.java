@@ -1,148 +1,97 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.BitSet;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.LongStream;
+import javax.annotation.Nullable;
 
-public class djw implements dkd.c {
-   public static final int a = 12;
-   private static final int f = 24;
-   private static final float[] g = ac.a(new float[13824], $$0 -> {
-      for (int $$1 = 0; $$1 < 24; $$1++) {
-         for (int $$2 = 0; $$2 < 24; $$2++) {
-            for (int $$3 = 0; $$3 < 24; $$3++) {
-               $$0[$$1 * 24 * 24 + $$2 * 24 + $$3] = (float)b($$2 - 12, $$3 - 12, $$1 - 12);
-            }
-         }
+public final class djw {
+   private static final BitSet c = new BitSet(0);
+   private static final Codec<BitSet> d = Codec.LONG_STREAM.xmap($$0 -> BitSet.valueOf($$0.toArray()), $$0 -> LongStream.of($$0.toLongArray()));
+   private static final Codec<dha> e = jb.o
+      .q()
+      .comapFlatMap($$0 -> $$0 == dha.c ? DataResult.error(() -> "target_status cannot be empty") : DataResult.success($$0), Function.identity());
+   public static final Codec<djw> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               e.fieldOf("target_status").forGetter(djw::a),
+               d.optionalFieldOf("missing_bedrock").forGetter($$0x -> $$0x.h.isEmpty() ? Optional.empty() : Optional.of($$0x.h))
+            )
+            .apply($$0, djw::new)
+   );
+   private static final Set<aeq<cqj>> f = Set.of(cqq.aa, cqq.Z, cqq.ab);
+   public static final cpn b = new cpn() {
+      @Override
+      public int D_() {
+         return 64;
       }
-   });
-   private final ObjectListIterator<djw.a> h;
-   private final ObjectListIterator<dwb> i;
 
-   public static djw a(cqe $$0, cot $$1) {
-      int $$2 = $$1.d();
-      int $$3 = $$1.e();
-      ObjectList<djw.a> $$4 = new ObjectArrayList(10);
-      ObjectList<dwb> $$5 = new ObjectArrayList(32);
-      $$0.a($$1, $$0x -> $$0x.d() != dvk.a).forEach($$5x -> {
-         dvk $$6 = $$5x.h().d();
+      @Override
+      public int C_() {
+         return -64;
+      }
+   };
+   private final dha g;
+   private final BitSet h;
 
-         for (dvd $$7 : $$5x.i()) {
-            if ($$7.a($$1, 12)) {
-               if ($$7 instanceof duv) {
-                  duv $$8 = (duv)$$7;
-                  dwi.a $$9 = $$8.b().e();
-                  if ($$9 == dwi.a.b) {
-                     $$4.add(new djw.a($$8.f(), $$6, $$8.d()));
-                  }
+   private djw(dha $$0, Optional<BitSet> $$1) {
+      this.g = $$0;
+      this.h = $$1.orElse(c);
+   }
 
-                  for (dwb $$10 : $$8.e()) {
-                     int $$11 = $$10.a();
-                     int $$12 = $$10.c();
-                     if ($$11 > $$2 - 12 && $$12 > $$3 - 12 && $$11 < $$2 + 15 + 12 && $$12 < $$3 + 15 + 12) {
-                        $$5.add($$10);
-                     }
-                  }
-               } else {
-                  $$4.add(new djw.a($$7.f(), $$6, 0));
-               }
-            }
+   @Nullable
+   public static djw a(qr $$0) {
+      dha $$1 = dha.a($$0.l("target_status"));
+      return $$1 == dha.c ? null : new djw($$1, Optional.of(BitSet.valueOf($$0.o("missing_bedrock"))));
+   }
+
+   public static void a(dhq $$0) {
+      int $$1 = 4;
+      gu.b(0, 0, 0, 15, 4, 15).forEach($$1x -> {
+         if ($$0.a_($$1x).a(csm.F)) {
+            $$0.a($$1x, csm.rI.n(), false);
          }
       });
-      return new djw($$4.iterator(), $$5.iterator());
    }
 
-   @VisibleForTesting
-   public djw(ObjectListIterator<djw.a> $$0, ObjectListIterator<dwb> $$1) {
-      this.h = $$0;
-      this.i = $$1;
-   }
+   public void b(dhq $$0) {
+      cpn $$1 = $$0.z();
+      int $$2 = $$1.C_();
+      int $$3 = $$1.aj() - 1;
 
-   @Override
-   public double a(dkc.b $$0) {
-      int $$1 = $$0.a();
-      int $$2 = $$0.b();
-      int $$3 = $$0.c();
-      double $$4 = 0.0;
-
-      while (this.h.hasNext()) {
-         djw.a $$5 = (djw.a)this.h.next();
-         dur $$6 = $$5.a();
-         int $$7 = $$5.c();
-         int $$8 = Math.max(0, Math.max($$6.g() - $$1, $$1 - $$6.j()));
-         int $$9 = Math.max(0, Math.max($$6.i() - $$3, $$3 - $$6.l()));
-         int $$10 = $$6.h() + $$7;
-         int $$11 = $$2 - $$10;
-
-         int $$12 = switch ($$5.b()) {
-            case a -> 0;
-            case b, c -> $$11;
-            case d -> Math.max(0, Math.max($$10 - $$2, $$2 - $$6.k()));
-         };
-
-         $$4 += switch ($$5.b()) {
-            case a -> 0.0;
-            case b -> a($$8, $$12, $$9);
-            case c, d -> a($$8, $$12, $$9, $$11) * 0.8;
-         };
+      for (int $$4 = 0; $$4 < 16; $$4++) {
+         for (int $$5 = 0; $$5 < 16; $$5++) {
+            if (this.a($$4, $$5)) {
+               gu.b($$4, $$2, $$5, $$4, $$3, $$5).forEach($$1x -> $$0.a($$1x, csm.a.n(), false));
+            }
+         }
       }
-
-      this.h.back(Integer.MAX_VALUE);
-
-      while (this.i.hasNext()) {
-         dwb $$13 = (dwb)this.i.next();
-         int $$14 = $$1 - $$13.a();
-         int $$15 = $$2 - $$13.b();
-         int $$16 = $$3 - $$13.c();
-         $$4 += a($$14, $$15, $$16, $$15) * 0.4;
-      }
-
-      this.i.back(Integer.MAX_VALUE);
-      return $$4;
    }
 
-   @Override
-   public double a() {
-      return Double.NEGATIVE_INFINITY;
+   public dha a() {
+      return this.g;
    }
 
-   @Override
-   public double b() {
-      return Double.POSITIVE_INFINITY;
+   public boolean b() {
+      return !this.h.isEmpty();
    }
 
-   private static double a(int $$0, int $$1, int $$2) {
-      double $$3 = arp.g((double)$$0, (double)$$1 / 2.0, (double)$$2);
-      return arp.a($$3, 0.0, 6.0, 1.0, 0.0);
+   public boolean a(int $$0, int $$1) {
+      return this.h.get(($$1 & 15) * 16 + ($$0 & 15));
    }
 
-   private static double a(int $$0, int $$1, int $$2, int $$3) {
-      int $$4 = $$0 + 12;
-      int $$5 = $$1 + 12;
-      int $$6 = $$2 + 12;
-      if (a($$4) && a($$5) && a($$6)) {
-         double $$7 = (double)$$3 + 0.5;
-         double $$8 = arp.f((double)$$0, $$7, (double)$$2);
-         double $$9 = -$$7 * arp.g($$8 / 2.0) / 2.0;
-         return $$9 * (double)g[$$6 * 24 * 24 + $$4 * 24 + $$5];
+   public static cqm a(cqm $$0, dgv $$1) {
+      if (!$$1.y()) {
+         return $$0;
       } else {
-         return 0.0;
+         Predicate<aeq<cqj>> $$2 = f::contains;
+         return ($$3, $$4, $$5, $$6) -> {
+            he<cqj> $$7 = $$0.getNoiseBiome($$3, $$4, $$5, $$6);
+            return $$7.a($$2) ? $$7 : $$1.getNoiseBiome($$3, 0, $$5);
+         };
       }
-   }
-
-   private static boolean a(int $$0) {
-      return $$0 >= 0 && $$0 < 24;
-   }
-
-   private static double b(int $$0, int $$1, int $$2) {
-      return a($$0, (double)$$1 + 0.5, $$2);
-   }
-
-   private static double a(int $$0, double $$1, int $$2) {
-      double $$3 = arp.f((double)$$0, $$1, (double)$$2);
-      return Math.pow(Math.E, -$$3 / 16.0);
-   }
-
-   @VisibleForTesting
-   public static record a(dur a, dvk b, int c) {
    }
 }

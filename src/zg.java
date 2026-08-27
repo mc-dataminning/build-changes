@@ -2,7 +2,7 @@ public class zg implements ux<wp> {
    private final double a;
    private final double b;
 
-   public zg(dgr $$0) {
+   public zg(dgq $$0) {
       this.a = $$0.a();
       this.b = $$0.b();
    }

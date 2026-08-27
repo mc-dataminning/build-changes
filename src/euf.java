@@ -2,7 +2,7 @@ import java.util.function.Consumer;
 
 public class euf implements eug {
    private final tf b;
-   protected final evn a = new evn();
+   protected final evo a = new evo();
 
    public euf(tf $$0) {
       this.b = $$0;
@@ -14,13 +14,13 @@ public class euf implements eug {
    }
 
    @Override
-   public void a(Consumer<esf> $$0) {
+   public void a(Consumer<ese> $$0) {
       this.a.a($$0);
    }
 
    @Override
-   public void a(ewh $$0) {
+   public void a(ewi $$0) {
       this.a.a();
-      evm.a(this.a, $$0, 0.5F, 0.16666667F);
+      evn.a(this.a, $$0, 0.5F, 0.16666667F);
    }
 }

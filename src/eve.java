@@ -10,7 +10,7 @@ public interface eve {
    Either<eve.a, eve.b> b();
 
    public interface a {
-      ejj load(anm var1) throws IOException;
+      eji load(anm var1) throws IOException;
    }
 
    public static record b(aer a) {

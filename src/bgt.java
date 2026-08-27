@@ -1,3 +1,3 @@
-public interface bgt extends cfi {
+public interface bgt extends cfh {
    tf H_();
 }

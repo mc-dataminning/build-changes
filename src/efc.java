@@ -1,36 +1,36 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
 
-public class efc implements efg {
-   private static final efc b = new efc();
-   public static final Codec<efc> a = Codec.unit(b);
+public record efc(eff b) implements eff {
+   public static final Codec<efc> a = RecordCodecBuilder.create($$0 -> $$0.group(efh.a.fieldOf("term").forGetter(efc::c)).apply($$0, efc::new));
 
-   private efc() {
+   @Override
+   public efg b() {
+      return efh.b;
+   }
+
+   public boolean a(ecg $$0) {
+      return !this.b.test($$0);
    }
 
    @Override
-   public efh b() {
-      return efi.m;
+   public Set<eeo<?>> a() {
+      return this.b.a();
    }
 
    @Override
-   public Set<eep<?>> a() {
-      return ImmutableSet.of(ees.j);
+   public void a(ecp $$0) {
+      eff.super.a($$0);
+      this.b.a($$0);
    }
 
-   public boolean a(ech $$0) {
-      Float $$1 = $$0.c(ees.j);
-      if ($$1 != null) {
-         aru $$2 = $$0.b();
-         float $$3 = 1.0F / $$1;
-         return $$2.i() <= $$3;
-      } else {
-         return true;
-      }
+   public static eff.a a(eff.a $$0) {
+      efc $$1 = new efc($$0.build());
+      return () -> $$1;
    }
 
-   public static efg.a c() {
-      return () -> b;
+   public eff c() {
+      return this.b;
    }
 }

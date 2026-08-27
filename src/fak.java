@@ -1,384 +1,172 @@
-import com.google.common.collect.ImmutableList;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.util.Locale;
+import java.util.List;
 
-public class fak extends exz {
-   private static final tf a = tf.c("structure_block.structure_name");
-   private static final tf b = tf.c("structure_block.position");
-   private static final tf c = tf.c("structure_block.size");
-   private static final tf k = tf.c("structure_block.integrity");
-   private static final tf l = tf.c("structure_block.custom_data");
-   private static final tf m = tf.c("structure_block.include_entities");
-   private static final tf n = tf.c("structure_block.detect_size");
-   private static final tf o = tf.c("structure_block.show_air");
-   private static final tf p = tf.c("structure_block.show_boundingbox");
-   private static final ImmutableList<dgk> q = ImmutableList.copyOf(dgk.values());
-   private static final ImmutableList<dgk> s = q.stream().filter($$0 -> $$0 != dgk.d).collect(ImmutableList.toImmutableList());
-   private final ddz t;
-   private cxh u = cxh.a;
-   private cyy v = cyy.a;
-   private dgk w = dgk.d;
-   private boolean x;
-   private boolean y;
-   private boolean z;
-   private esq A;
-   private esq B;
-   private esq C;
-   private esq D;
-   private esq E;
-   private esq F;
-   private esq G;
-   private esq H;
-   private esq I;
-   private esq J;
-   private esh K;
-   private esh L;
-   private esh M;
-   private esh N;
-   private esh O;
-   private esh P;
-   private esh Q;
-   private eso<Boolean> R;
-   private eso<cxh> S;
-   private eso<Boolean> T;
-   private eso<Boolean> U;
-   private final DecimalFormat V = new DecimalFormat("0.0###");
+public class fak extends eyy<cfz> {
+   private static final aer x = new aer("container/stonecutter/scroller");
+   private static final aer y = new aer("container/stonecutter/scroller_disabled");
+   private static final aer z = new aer("container/stonecutter/recipe_selected");
+   private static final aer A = new aer("container/stonecutter/recipe_highlighted");
+   private static final aer B = new aer("container/stonecutter/recipe");
+   private static final aer C = new aer("textures/gui/container/stonecutter.png");
+   private static final int D = 12;
+   private static final int E = 15;
+   private static final int F = 4;
+   private static final int G = 3;
+   private static final int H = 16;
+   private static final int I = 18;
+   private static final int J = 54;
+   private static final int K = 52;
+   private static final int L = 14;
+   private float M;
+   private boolean N;
+   private int O;
+   private boolean P;
 
-   public fak(ddz $$0) {
-      super(tf.c(csn.pa.f()));
-      this.t = $$0;
-      this.V.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT));
-   }
-
-   private void l() {
-      if (this.a(ddz.a.a)) {
-         this.f.a(null);
-      }
-   }
-
-   private void B() {
-      this.t.a(this.u);
-      this.t.a(this.v);
-      this.t.a(this.w);
-      this.t.a(this.x);
-      this.t.d(this.y);
-      this.t.e(this.z);
-      this.f.a(null);
+   public fak(cfz $$0, cbl $$1, tf $$2) {
+      super($$0, $$1, $$2);
+      $$0.a(this::G);
+      this.m--;
    }
 
    @Override
-   protected void aE_() {
-      this.d(esh.a(te.d, $$0x -> this.l()).a(this.g / 2 - 4 - 150, 210, 150, 20).a());
-      this.d(esh.a(te.e, $$0x -> this.B()).a(this.g / 2 + 4, 210, 150, 20).a());
-      this.u = this.t.v();
-      this.v = this.t.w();
-      this.w = this.t.y();
-      this.x = this.t.z();
-      this.y = this.t.H();
-      this.z = this.t.I();
-      this.K = this.d(esh.a(tf.c("structure_block.button.save"), $$0x -> {
-         if (this.t.y() == dgk.a) {
-            this.a(ddz.a.b);
-            this.f.a(null);
-         }
-      }).a(this.g / 2 + 4 + 100, 185, 50, 20).a());
-      this.L = this.d(esh.a(tf.c("structure_block.button.load"), $$0x -> {
-         if (this.t.y() == dgk.b) {
-            this.a(ddz.a.c);
-            this.f.a(null);
-         }
-      }).a(this.g / 2 + 4 + 100, 185, 50, 20).a());
-      this.d(
-         eso.<dgk>a($$0x -> tf.c("structure_block.mode." + $$0x.c()))
-            .a(s, q)
-            .a()
-            .a(this.w)
-            .a(this.g / 2 - 4 - 150, 185, 50, 20, tf.b("MODE"), ($$0x, $$1x) -> {
-               this.t.a($$1x);
-               this.a($$1x);
-            })
-      );
-      this.Q = this.d(esh.a(tf.c("structure_block.button.detect_size"), $$0x -> {
-         if (this.t.y() == dgk.a) {
-            this.a(ddz.a.d);
-            this.f.a(null);
-         }
-      }).a(this.g / 2 + 4 + 100, 120, 50, 20).a());
-      this.R = this.d(eso.b(!this.t.z()).a().a(this.g / 2 + 4 + 100, 160, 50, 20, m, ($$0x, $$1x) -> this.t.a(!$$1x)));
-      this.S = this.d(eso.<cxh>a(cxh::b).a(cxh.values()).a().a(this.u).a(this.g / 2 - 20, 185, 40, 20, tf.b("MIRROR"), ($$0x, $$1x) -> this.t.a($$1x)));
-      this.T = this.d(eso.b(this.t.H()).a().a(this.g / 2 + 4 + 100, 80, 50, 20, o, ($$0x, $$1x) -> this.t.d($$1x)));
-      this.U = this.d(eso.b(this.t.I()).a().a(this.g / 2 + 4 + 100, 80, 50, 20, p, ($$0x, $$1x) -> this.t.e($$1x)));
-      this.M = this.d(esh.a(tf.b("0"), $$0x -> {
-         this.t.a(cyy.a);
-         this.C();
-      }).a(this.g / 2 - 1 - 40 - 1 - 40 - 20, 185, 40, 20).a());
-      this.N = this.d(esh.a(tf.b("90"), $$0x -> {
-         this.t.a(cyy.b);
-         this.C();
-      }).a(this.g / 2 - 1 - 40 - 20, 185, 40, 20).a());
-      this.O = this.d(esh.a(tf.b("180"), $$0x -> {
-         this.t.a(cyy.c);
-         this.C();
-      }).a(this.g / 2 + 1 + 20, 185, 40, 20).a());
-      this.P = this.d(esh.a(tf.b("270"), $$0x -> {
-         this.t.a(cyy.d);
-         this.C();
-      }).a(this.g / 2 + 1 + 40 + 1 + 20, 185, 40, 20).a());
-      this.A = new esq(this.i, this.g / 2 - 152, 40, 300, 20, tf.c("structure_block.structure_name")) {
-         @Override
-         public boolean a(char $$0, int $$1) {
-            return !fak.this.a(this.a(), $$0, this.f()) ? false : super.a($$0, $$1);
-         }
-      };
-      this.A.k(128);
-      this.A.a(this.t.d());
-      this.e(this.A);
-      gu $$0 = this.t.i();
-      this.B = new esq(this.i, this.g / 2 - 152, 80, 80, 20, tf.c("structure_block.position.x"));
-      this.B.k(15);
-      this.B.a(Integer.toString($$0.u()));
-      this.e(this.B);
-      this.C = new esq(this.i, this.g / 2 - 72, 80, 80, 20, tf.c("structure_block.position.y"));
-      this.C.k(15);
-      this.C.a(Integer.toString($$0.v()));
-      this.e(this.C);
-      this.D = new esq(this.i, this.g / 2 + 8, 80, 80, 20, tf.c("structure_block.position.z"));
-      this.D.k(15);
-      this.D.a(Integer.toString($$0.w()));
-      this.e(this.D);
-      hz $$1 = this.t.j();
-      this.E = new esq(this.i, this.g / 2 - 152, 120, 80, 20, tf.c("structure_block.size.x"));
-      this.E.k(15);
-      this.E.a(Integer.toString($$1.u()));
-      this.e(this.E);
-      this.F = new esq(this.i, this.g / 2 - 72, 120, 80, 20, tf.c("structure_block.size.y"));
-      this.F.k(15);
-      this.F.a(Integer.toString($$1.v()));
-      this.e(this.F);
-      this.G = new esq(this.i, this.g / 2 + 8, 120, 80, 20, tf.c("structure_block.size.z"));
-      this.G.k(15);
-      this.G.a(Integer.toString($$1.w()));
-      this.e(this.G);
-      this.H = new esq(this.i, this.g / 2 - 152, 120, 80, 20, tf.c("structure_block.integrity.integrity"));
-      this.H.k(15);
-      this.H.a(this.V.format((double)this.t.A()));
-      this.e(this.H);
-      this.I = new esq(this.i, this.g / 2 - 72, 120, 80, 20, tf.c("structure_block.integrity.seed"));
-      this.I.k(31);
-      this.I.a(Long.toString(this.t.B()));
-      this.e(this.I);
-      this.J = new esq(this.i, this.g / 2 - 152, 120, 240, 20, tf.c("structure_block.custom_data"));
-      this.J.k(128);
-      this.J.a(this.t.x());
-      this.e(this.J);
-      this.C();
-      this.a(this.w);
-      this.c(this.A);
+   public void a(erv $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
    @Override
-   public void a(eqm $$0, int $$1, int $$2) {
-      String $$3 = this.A.a();
-      String $$4 = this.B.a();
-      String $$5 = this.C.a();
-      String $$6 = this.D.a();
-      String $$7 = this.E.a();
-      String $$8 = this.F.a();
-      String $$9 = this.G.a();
-      String $$10 = this.H.a();
-      String $$11 = this.I.a();
-      String $$12 = this.J.a();
-      this.b($$0, $$1, $$2);
-      this.A.a($$3);
-      this.B.a($$4);
-      this.C.a($$5);
-      this.D.a($$6);
-      this.E.a($$7);
-      this.F.a($$8);
-      this.G.a($$9);
-      this.H.a($$10);
-      this.I.a($$11);
-      this.J.a($$12);
+   protected void a(erv $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.t;
+      int $$5 = this.u;
+      $$0.a(C, $$4, $$5, 0, 0, this.c, this.k);
+      int $$6 = (int)(41.0F * this.M);
+      aer $$7 = this.F() ? x : y;
+      $$0.a($$7, $$4 + 119, $$5 + 15 + $$6, 12, 15);
+      int $$8 = this.t + 52;
+      int $$9 = this.u + 14;
+      int $$10 = this.O + 12;
+      this.a($$0, $$2, $$3, $$8, $$9, $$10);
+      this.b($$0, $$8, $$9, $$10);
    }
 
-   private void C() {
-      this.M.i = true;
-      this.N.i = true;
-      this.O.i = true;
-      this.P.i = true;
-      switch (this.t.w()) {
-         case a:
-            this.M.i = false;
-            break;
-         case c:
-            this.O.i = false;
-            break;
-         case d:
-            this.P.i = false;
-            break;
-         case b:
-            this.N.i = false;
+   @Override
+   protected void a(erv $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      if (this.P) {
+         int $$3 = this.t + 52;
+         int $$4 = this.u + 14;
+         int $$5 = this.O + 12;
+         List<cmr> $$6 = this.p.m();
+
+         for (int $$7 = this.O; $$7 < $$5 && $$7 < this.p.n(); $$7++) {
+            int $$8 = $$7 - this.O;
+            int $$9 = $$3 + $$8 % 4 * 16;
+            int $$10 = $$4 + $$8 / 4 * 18 + 2;
+            if ($$1 >= $$9 && $$1 < $$9 + 16 && $$2 >= $$10 && $$2 < $$10 + 18) {
+               $$0.b(this.i, $$6.get($$7).a(this.f.r.B_()), $$1, $$2);
+            }
+         }
       }
    }
 
-   private void a(dgk $$0) {
-      this.A.g(false);
-      this.B.g(false);
-      this.C.g(false);
-      this.D.g(false);
-      this.E.g(false);
-      this.F.g(false);
-      this.G.g(false);
-      this.H.g(false);
-      this.I.g(false);
-      this.J.g(false);
-      this.K.j = false;
-      this.L.j = false;
-      this.Q.j = false;
-      this.R.j = false;
-      this.S.j = false;
-      this.M.j = false;
-      this.N.j = false;
-      this.O.j = false;
-      this.P.j = false;
-      this.T.j = false;
-      this.U.j = false;
-      switch ($$0) {
-         case a:
-            this.A.g(true);
-            this.B.g(true);
-            this.C.g(true);
-            this.D.g(true);
-            this.E.g(true);
-            this.F.g(true);
-            this.G.g(true);
-            this.K.j = true;
-            this.Q.j = true;
-            this.R.j = true;
-            this.T.j = true;
-            break;
-         case b:
-            this.A.g(true);
-            this.B.g(true);
-            this.C.g(true);
-            this.D.g(true);
-            this.H.g(true);
-            this.I.g(true);
-            this.L.j = true;
-            this.R.j = true;
-            this.S.j = true;
-            this.M.j = true;
-            this.N.j = true;
-            this.O.j = true;
-            this.P.j = true;
-            this.U.j = true;
-            this.C();
-            break;
-         case c:
-            this.A.g(true);
-            break;
-         case d:
-            this.J.g(true);
+   private void a(erv $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      for (int $$6 = this.O; $$6 < $$5 && $$6 < this.p.n(); $$6++) {
+         int $$7 = $$6 - this.O;
+         int $$8 = $$3 + $$7 % 4 * 16;
+         int $$9 = $$7 / 4;
+         int $$10 = $$4 + $$9 * 18 + 2;
+         aer $$11;
+         if ($$6 == this.p.l()) {
+            $$11 = z;
+         } else if ($$1 >= $$8 && $$2 >= $$10 && $$1 < $$8 + 16 && $$2 < $$10 + 18) {
+            $$11 = A;
+         } else {
+            $$11 = B;
+         }
+
+         $$0.a($$11, $$8, $$10 - 1, 16, 18);
       }
    }
 
-   private boolean a(ddz.a $$0) {
-      gu $$1 = new gu(this.c(this.B.a()), this.c(this.C.a()), this.c(this.D.a()));
-      hz $$2 = new hz(this.c(this.E.a()), this.c(this.F.a()), this.c(this.G.a()));
-      float $$3 = this.b(this.H.a());
-      long $$4 = this.a(this.I.a());
-      this.f
-         .J()
-         .b(new acn(this.t.p(), $$0, this.t.y(), this.A.a(), $$1, $$2, this.t.v(), this.t.w(), this.J.a(), this.t.z(), this.t.H(), this.t.I(), $$3, $$4));
+   private void b(erv $$0, int $$1, int $$2, int $$3) {
+      List<cmr> $$4 = this.p.m();
+
+      for (int $$5 = this.O; $$5 < $$3 && $$5 < this.p.n(); $$5++) {
+         int $$6 = $$5 - this.O;
+         int $$7 = $$1 + $$6 % 4 * 16;
+         int $$8 = $$6 / 4;
+         int $$9 = $$2 + $$8 * 18 + 2;
+         $$0.a($$4.get($$5).a(this.f.r.B_()), $$7, $$9);
+      }
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      this.N = false;
+      if (this.P) {
+         int $$3 = this.t + 52;
+         int $$4 = this.u + 14;
+         int $$5 = this.O + 12;
+
+         for (int $$6 = this.O; $$6 < $$5; $$6++) {
+            int $$7 = $$6 - this.O;
+            double $$8 = $$0 - (double)($$3 + $$7 % 4 * 16);
+            double $$9 = $$1 - (double)($$4 + $$7 / 4 * 18);
+            if ($$8 >= 0.0 && $$9 >= 0.0 && $$8 < 16.0 && $$9 < 18.0 && this.p.b(this.f.s, $$6)) {
+               eql.O().ai().a(gbx.a(aow.yz, 1.0F));
+               this.f.q.a(this.p.j, $$6);
+               return true;
+            }
+         }
+
+         $$3 = this.t + 119;
+         $$4 = this.u + 9;
+         if ($$0 >= (double)$$3 && $$0 < (double)($$3 + 12) && $$1 >= (double)$$4 && $$1 < (double)($$4 + 54)) {
+            this.N = true;
+         }
+      }
+
+      return super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      if (this.N && this.F()) {
+         int $$5 = this.u + 14;
+         int $$6 = $$5 + 54;
+         this.M = ((float)$$1 - (float)$$5 - 7.5F) / ((float)($$6 - $$5) - 15.0F);
+         this.M = arp.a(this.M, 0.0F, 1.0F);
+         this.O = (int)((double)(this.M * (float)this.E()) + 0.5) * 4;
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      if (this.F()) {
+         int $$4 = this.E();
+         float $$5 = (float)$$3 / (float)$$4;
+         this.M = arp.a(this.M - $$5, 0.0F, 1.0F);
+         this.O = (int)((double)(this.M * (float)$$4) + 0.5) * 4;
+      }
+
       return true;
    }
 
-   private long a(String $$0) {
-      try {
-         return Long.valueOf($$0);
-      } catch (NumberFormatException var3) {
-         return 0L;
-      }
+   private boolean F() {
+      return this.P && this.p.n() > 12;
    }
 
-   private float b(String $$0) {
-      try {
-         return Float.valueOf($$0);
-      } catch (NumberFormatException var3) {
-         return 1.0F;
-      }
+   protected int E() {
+      return (this.p.n() + 4 - 1) / 4 - 3;
    }
 
-   private int c(String $$0) {
-      try {
-         return Integer.parseInt($$0);
-      } catch (NumberFormatException var3) {
-         return 0;
+   private void G() {
+      this.P = this.p.o();
+      if (!this.P) {
+         this.M = 0.0F;
+         this.O = 0;
       }
-   }
-
-   @Override
-   public void au_() {
-      this.B();
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (super.a($$0, $$1, $$2)) {
-         return true;
-      } else if ($$0 != 257 && $$0 != 335) {
-         return false;
-      } else {
-         this.l();
-         return true;
-      }
-   }
-
-   @Override
-   public void a(erw $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      dgk $$4 = this.t.y();
-      $$0.a(this.i, this.e, this.g / 2, 10, 16777215);
-      if ($$4 != dgk.d) {
-         $$0.b(this.i, a, this.g / 2 - 153, 30, 10526880);
-         this.A.a($$0, $$1, $$2, $$3);
-      }
-
-      if ($$4 == dgk.b || $$4 == dgk.a) {
-         $$0.b(this.i, b, this.g / 2 - 153, 70, 10526880);
-         this.B.a($$0, $$1, $$2, $$3);
-         this.C.a($$0, $$1, $$2, $$3);
-         this.D.a($$0, $$1, $$2, $$3);
-         $$0.b(this.i, m, this.g / 2 + 154 - this.i.a(m), 150, 10526880);
-      }
-
-      if ($$4 == dgk.a) {
-         $$0.b(this.i, c, this.g / 2 - 153, 110, 10526880);
-         this.E.a($$0, $$1, $$2, $$3);
-         this.F.a($$0, $$1, $$2, $$3);
-         this.G.a($$0, $$1, $$2, $$3);
-         $$0.b(this.i, n, this.g / 2 + 154 - this.i.a(n), 110, 10526880);
-         $$0.b(this.i, o, this.g / 2 + 154 - this.i.a(o), 70, 10526880);
-      }
-
-      if ($$4 == dgk.b) {
-         $$0.b(this.i, k, this.g / 2 - 153, 110, 10526880);
-         this.H.a($$0, $$1, $$2, $$3);
-         this.I.a($$0, $$1, $$2, $$3);
-         $$0.b(this.i, p, this.g / 2 + 154 - this.i.a(p), 70, 10526880);
-      }
-
-      if ($$4 == dgk.d) {
-         $$0.b(this.i, l, this.g / 2 - 153, 110, 10526880);
-         this.J.a($$0, $$1, $$2, $$3);
-      }
-
-      $$0.b(this.i, $$4.a(), this.g / 2 - 153, 174, 10526880);
-   }
-
-   @Override
-   public boolean j() {
-      return false;
    }
 }

@@ -11,7 +11,7 @@ public class euk implements eun {
    }
 
    @Override
-   public eun.a a(erw $$0, euo $$1, long $$2) {
+   public eun.a a(erv $$0, euo $$1, long $$2) {
       an $$3 = this.e.d();
       $$0.a(d, 0, 0, this.a(), this.b());
       if ($$3 != null) {
@@ -40,7 +40,7 @@ public class euk implements eun {
          if (!this.f && $$2 > 0L) {
             this.f = true;
             if ($$3.e() == ao.b) {
-               $$1.b().ai().a(gbo.a(aow.yv, 1.0F, 1.0F));
+               $$1.b().ai().a(gbx.a(aow.yA, 1.0F, 1.0F));
             }
          }
 

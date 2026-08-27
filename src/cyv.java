@@ -1,20 +1,18 @@
-public class cyv extends csm implements cso {
-   public cyv(dez.d $$0) {
+public class cyv extends cst {
+   protected static final float a = 6.0F;
+   protected static final ehw b = csl.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
+
+   protected cyv(dey.d $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(cpp $$0, gu $$1, dfa $$2) {
-      return $$0.a_($$1.d()).i();
+   public ehw a(dez $$0, cor $$1, gu $$2, ehi $$3) {
+      return b;
    }
 
    @Override
-   public boolean a(cpm $$0, aru $$1, gu $$2, dfa $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(akk $$0, aru $$1, gu $$2, dfa $$3) {
-      $$0.b($$2.d(), csn.rF.n());
+   protected boolean d(dez $$0, cor $$1, gu $$2) {
+      return $$0.a(apl.aK) || $$0.a(csm.dY) || super.d($$0, $$1, $$2);
    }
 }

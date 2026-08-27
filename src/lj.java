@@ -51,15 +51,15 @@ public class lj {
       return this;
    }
 
-   public aer a(csm $$0, BiConsumer<aer, Supplier<JsonElement>> $$1) {
+   public aer a(csl $$0, BiConsumer<aer, Supplier<JsonElement>> $$1) {
       return this.A.a($$0, this.z, $$1);
    }
 
-   public aer a(csm $$0, String $$1, BiConsumer<aer, Supplier<JsonElement>> $$2) {
+   public aer a(csl $$0, String $$1, BiConsumer<aer, Supplier<JsonElement>> $$2) {
       return this.A.a($$0, $$1, this.z, $$2);
    }
 
-   private static lj.a a(Function<csm, lh> $$0, lf $$1) {
+   private static lj.a a(Function<csl, lh> $$0, lf $$1) {
       return $$2 -> new lj($$0.apply($$2), $$1);
    }
 
@@ -69,13 +69,13 @@ public class lj {
 
    @FunctionalInterface
    public interface a {
-      lj get(csm var1);
+      lj get(csl var1);
 
-      default aer create(csm $$0, BiConsumer<aer, Supplier<JsonElement>> $$1) {
+      default aer create(csl $$0, BiConsumer<aer, Supplier<JsonElement>> $$1) {
          return this.get($$0).a($$0, $$1);
       }
 
-      default aer createWithSuffix(csm $$0, String $$1, BiConsumer<aer, Supplier<JsonElement>> $$2) {
+      default aer createWithSuffix(csl $$0, String $$1, BiConsumer<aer, Supplier<JsonElement>> $$2) {
          return this.get($$0).a($$0, $$1, $$2);
       }
 

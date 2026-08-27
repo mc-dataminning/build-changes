@@ -27,7 +27,7 @@ public class ajd implements ajb {
 
    @Override
    public void a(qr $$0) throws CommandSyntaxException {
-      if (this.c instanceof cbn) {
+      if (this.c instanceof cbm) {
          throw b.create();
       } else {
          UUID $$1 = this.c.cv();

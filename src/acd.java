@@ -1,7 +1,7 @@
 public class acd implements ux<aaw> {
    private final aer a;
 
-   public acd(cmb<?> $$0) {
+   public acd(cma<?> $$0) {
       this.a = $$0.e();
    }
 

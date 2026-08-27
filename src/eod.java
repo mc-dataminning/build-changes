@@ -1,42 +1,65 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import com.mojang.logging.LogUtils;
+import java.time.Duration;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class eod extends gei {
-   static final tf b = tf.c("mco.warning");
-   static final tf c = tf.c("mco.info");
-   private final eod.a y;
-   private final tf z;
-   private final tf A;
-   protected final BooleanConsumer a;
-   private final boolean B;
+public class eod extends ger implements enl {
+   private static final ges b = new ges(Duration.ofSeconds(5L));
+   private static final Logger c = LogUtils.getLogger();
+   private final eya y;
+   private volatile tf z = te.a;
+   @Nullable
+   private volatile tf A;
+   private volatile boolean B;
+   private int C;
+   private final epl D;
+   private final int E = 212;
+   private esg F;
+   public static final String[] a = new String[]{
+      "▃ ▄ ▅ ▆ ▇ █ ▇ ▆ ▅ ▄ ▃",
+      "_ ▃ ▄ ▅ ▆ ▇ █ ▇ ▆ ▅ ▄",
+      "_ _ ▃ ▄ ▅ ▆ ▇ █ ▇ ▆ ▅",
+      "_ _ _ ▃ ▄ ▅ ▆ ▇ █ ▇ ▆",
+      "_ _ _ _ ▃ ▄ ▅ ▆ ▇ █ ▇",
+      "_ _ _ _ _ ▃ ▄ ▅ ▆ ▇ █",
+      "_ _ _ _ ▃ ▄ ▅ ▆ ▇ █ ▇",
+      "_ _ _ ▃ ▄ ▅ ▆ ▇ █ ▇ ▆",
+      "_ _ ▃ ▄ ▅ ▆ ▇ █ ▇ ▆ ▅",
+      "_ ▃ ▄ ▅ ▆ ▇ █ ▇ ▆ ▅ ▄",
+      "▃ ▄ ▅ ▆ ▇ █ ▇ ▆ ▅ ▄ ▃",
+      "▄ ▅ ▆ ▇ █ ▇ ▆ ▅ ▄ ▃ _",
+      "▅ ▆ ▇ █ ▇ ▆ ▅ ▄ ▃ _ _",
+      "▆ ▇ █ ▇ ▆ ▅ ▄ ▃ _ _ _",
+      "▇ █ ▇ ▆ ▅ ▄ ▃ _ _ _ _",
+      "█ ▇ ▆ ▅ ▄ ▃ _ _ _ _ _",
+      "▇ █ ▇ ▆ ▅ ▄ ▃ _ _ _ _",
+      "▆ ▇ █ ▇ ▆ ▅ ▄ ▃ _ _ _",
+      "▅ ▆ ▇ █ ▇ ▆ ▅ ▄ ▃ _ _",
+      "▄ ▅ ▆ ▇ █ ▇ ▆ ▅ ▄ ▃ _"
+   };
 
-   public eod(BooleanConsumer $$0, eod.a $$1, tf $$2, tf $$3, boolean $$4) {
-      super(eqe.a);
-      this.a = $$0;
-      this.y = $$1;
-      this.z = $$2;
-      this.A = $$3;
-      this.B = $$4;
+   public eod(eya $$0, epl $$1) {
+      super(eqd.a);
+      this.y = $$0;
+      this.D = $$1;
+      $$1.a(this);
+      Thread $$2 = new Thread($$1, "Realms-long-running-task");
+      $$2.setUncaughtExceptionHandler(new eng(c));
+      $$2.start();
    }
 
    @Override
-   public void aE_() {
-      if (this.B) {
-         this.d(esh.a(te.f, $$0 -> this.a.accept(true)).a(this.g / 2 - 105, h(8), 100, 20).a());
-         this.d(esh.a(te.g, $$0 -> this.a.accept(false)).a(this.g / 2 + 5, h(8), 100, 20).a());
-      } else {
-         this.d(esh.a(te.h, $$0 -> this.a.accept(true)).a(this.g / 2 - 50, h(8), 100, 20).a());
-      }
-   }
-
-   @Override
-   public tf e() {
-      return te.b(this.y.d, this.z, this.A);
+   public void c() {
+      super.c();
+      b.a(this.f.aV(), this.z);
+      this.C++;
+      this.D.b();
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
       if ($$0 == 256) {
-         this.a.accept(false);
+         this.C();
          return true;
       } else {
          return super.a($$0, $$1, $$2);
@@ -44,23 +67,44 @@ public class eod extends gei {
    }
 
    @Override
-   public void a(erw $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.y.d, this.g / 2, h(2), this.y.c);
-      $$0.a(this.i, this.z, this.g / 2, h(4), -1);
-      $$0.a(this.i, this.A, this.g / 2, h(6), -1);
+   public void aC_() {
+      this.D.d();
+      this.F = this.d(esg.a(te.e, $$0 -> this.C()).a(this.g / 2 - 106, h(12), 212, 20).a());
    }
 
-   public static enum a {
-      a(eod.b, -65536),
-      b(eod.c, 8226750);
+   private void C() {
+      this.B = true;
+      this.D.a();
+      this.f.a(this.y);
+   }
 
-      public final int c;
-      public final tf d;
-
-      private a(tf $$0, int $$1) {
-         this.d = $$0;
-         this.c = $$1;
+   @Override
+   public void a(erv $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.z, this.g / 2, h(3), 16777215);
+      tf $$4 = this.A;
+      if ($$4 == null) {
+         $$0.a(this.i, a[this.C % a.length], this.g / 2, h(8), -8355712);
+      } else {
+         $$0.a(this.i, $$4, this.g / 2, h(8), 16711680);
       }
+   }
+
+   @Override
+   public void a(tf $$0) {
+      this.A = $$0;
+      this.f.aV().c($$0);
+      this.f.execute(() -> {
+         this.f(this.F);
+         this.F = this.d(esg.a(te.k, $$0x -> this.C()).a(this.g / 2 - 106, this.h / 4 + 120 + 12, 200, 20).a());
+      });
+   }
+
+   public void b(tf $$0) {
+      this.z = $$0;
+   }
+
+   public boolean f() {
+      return this.B;
    }
 }

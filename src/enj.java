@@ -1,12 +1,13 @@
-public class enj extends Exception {
-   public final ely a;
+public class enj extends eni {
+   public static final int b = 5;
+   public final int c;
 
-   public enj(ely $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public String getMessage() {
-      return this.a.c();
+   public enj(int $$0, int $$1) {
+      super(elx.b.a($$1));
+      if ($$0 >= 0 && $$0 <= 120) {
+         this.c = $$0;
+      } else {
+         this.c = 5;
+      }
    }
 }

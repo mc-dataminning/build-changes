@@ -1,122 +1,79 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Function;
 
-public class blf extends bkq<cba> {
-   private static final int c = 5;
-   private static final int d = 600;
-   private static final int e = 6600;
-   private static final int f = 20;
-   private static final Map<cbd, aer> g = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(cbd.c, ecf.an);
-      $$0.put(cbd.d, ecf.ao);
-      $$0.put(cbd.e, ecf.ap);
-      $$0.put(cbd.f, ecf.aq);
-      $$0.put(cbd.g, ecf.ar);
-      $$0.put(cbd.h, ecf.as);
-      $$0.put(cbd.i, ecf.at);
-      $$0.put(cbd.j, ecf.au);
-      $$0.put(cbd.k, ecf.av);
-      $$0.put(cbd.l, ecf.aw);
-      $$0.put(cbd.n, ecf.ax);
-      $$0.put(cbd.o, ecf.ay);
-      $$0.put(cbd.p, ecf.az);
-   });
-   private static final float h = 0.5F;
-   private int i = 600;
-   private boolean j;
-   private long k;
+public class blf<E extends biy & cax> extends bkp<E> {
+   private static final int c = 3;
+   private static final int d = 60;
+   private final Function<biy, Optional<bmc>> e;
+   private final float f;
 
-   public blf(int $$0) {
-      super(ImmutableMap.of(bsa.m, bsb.c, bsa.n, bsb.c, bsa.q, bsb.c, bsa.k, bsb.a), $$0);
+   public blf(Function<biy, Optional<bmc>> $$0, float $$1, int $$2) {
+      super(Map.of(brz.n, bsa.c, brz.m, bsa.c, brz.aO, bsa.c), $$2);
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   protected boolean a(akk $$0, cba $$1) {
-      if (!this.b($$1)) {
-         return false;
-      } else if (this.i > 0) {
-         this.i--;
-         return false;
-      } else {
-         return true;
-      }
+   @Override
+   protected boolean a(akk $$0, E $$1) {
+      return this.b($$1);
    }
 
-   protected void a(akk $$0, cba $$1, long $$2) {
-      this.j = false;
-      this.k = $$2;
-      cbn $$3 = this.c($$1).get();
-      $$1.dM().a(bsa.q, $$3);
-      bks.a($$1, $$3);
+   @Override
+   protected boolean a(akk $$0, E $$1, long $$2) {
+      return this.b($$1);
    }
 
-   protected boolean b(akk $$0, cba $$1, long $$2) {
-      return this.b($$1) && !this.j;
+   @Override
+   protected void d(akk $$0, E $$1, long $$2) {
+      this.e.apply($$1).ifPresent($$1x -> bkr.a($$1, $$1x, this.f, 3));
    }
 
-   protected void c(akk $$0, cba $$1, long $$2) {
-      cbn $$3 = this.c($$1).get();
-      bks.a($$1, $$3);
-      if (this.a($$1, $$3)) {
-         if ($$2 - this.k > 20L) {
-            this.a($$1, (biy)$$3);
-            this.j = true;
-         }
-      } else {
-         bks.a($$1, $$3, 0.5F, 5);
-      }
-   }
+   @Override
+   protected void c(akk $$0, E $$1, long $$2) {
+      Optional<bmc> $$3 = this.e.apply($$1);
+      if (!$$3.isEmpty()) {
+         bmc $$4 = $$3.get();
+         double $$5 = $$4.a().f($$1.bp());
+         if ($$5 < 3.0) {
+            cix $$6 = $$1.t().a(0, 1);
+            if (!$$6.b()) {
+               a($$1, $$6, a($$4));
+               if ($$1 instanceof bvn $$7) {
+                  bvo.a((biy)$$7).ifPresent($$2x -> this.a($$4, $$6, $$2x));
+               }
 
-   protected void d(akk $$0, cba $$1, long $$2) {
-      this.i = a($$0);
-      $$1.dM().b(bsa.q);
-      $$1.dM().b(bsa.m);
-      $$1.dM().b(bsa.n);
-   }
-
-   private void a(cba $$0, biy $$1) {
-      for (ciy $$3 : this.a($$0)) {
-         bks.a($$0, $$3, $$1.di());
-      }
-   }
-
-   private List<ciy> a(cba $$0) {
-      if ($$0.i_()) {
-         return ImmutableList.of(new ciy(cjb.cP));
-      } else {
-         cbd $$1 = $$0.gk().b();
-         if (g.containsKey($$1)) {
-            ecp $$2 = $$0.dK().n().aH().getLootTable(g.get($$1));
-            ecn $$3 = new ecn.a((akk)$$0.dK()).a(ees.f, $$0.di()).a(ees.a, $$0).a(eer.i);
-            return $$2.a($$3);
-         } else {
-            return ImmutableList.of(new ciy(cjb.oH));
+               $$1.dM().a(brz.aO, 60);
+            }
          }
       }
    }
 
-   private boolean b(cba $$0) {
-      return this.c($$0).isPresent();
+   private void a(bmc $$0, cix $$1, akl $$2) {
+      gu $$3 = $$0.b().d();
+      ai.X.a($$2, $$3, $$1);
    }
 
-   private Optional<cbn> c(cba $$0) {
-      return $$0.dM().c(bsa.k).filter(this::a);
+   private boolean b(E $$0) {
+      if ($$0.t().aa_()) {
+         return false;
+      } else {
+         Optional<bmc> $$1 = this.e.apply($$0);
+         return $$1.isPresent();
+      }
    }
 
-   private boolean a(cbn $$0) {
-      return $$0.a(bhx.F);
+   private static ehd a(bmc $$0) {
+      return $$0.a().b(0.0, 1.0, 0.0);
    }
 
-   private boolean a(cba $$0, cbn $$1) {
-      gu $$2 = $$1.dk();
-      gu $$3 = $$0.dk();
-      return $$3.a($$2, 5.0);
-   }
-
-   private static int a(akk $$0) {
-      return 600 + $$0.z.a(6001);
+   public static void a(biy $$0, cix $$1, ehd $$2) {
+      ehd $$3 = new ehd(0.2F, 0.3F, 0.2F);
+      bkr.a($$0, $$1, $$2, $$3, 0.2F);
+      cpl $$4 = $$0.dK();
+      if ($$4.V() % 7L == 0L && $$4.z.j() < 0.9) {
+         float $$5 = ac.<Float>a(bvn.d, $$4.y_());
+         $$4.a(null, $$0, aow.g, aox.g, 1.0F, $$5);
+      }
    }
 }

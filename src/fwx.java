@@ -1,21 +1,24 @@
-public class fwx<T extends bii & bjp, M extends feo<T>> extends fww<T, M> {
-   private final aer a;
-   private final M b;
+public class fwx extends fxf<buv, ffi<buv>> {
+   private final fon a;
 
-   public fwx(fuj<T, M> $$0, M $$1, aer $$2) {
+   public fwx(fus<buv, ffi<buv>> $$0, fon $$1) {
       super($$0);
-      this.b = $$1;
-      this.a = $$2;
+      this.a = $$1;
    }
 
-   @Override
-   public void a(elg $$0, fnl $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.i()) {
-         this.c().a(this.b);
-         this.b.a($$3, $$4, $$5, $$6);
-         this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
-         elk $$10 = $$1.getBuffer(fnt.e(this.a));
-         this.b.a($$0, $$10, $$2, fyc.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   public void a(elf $$0, fnu $$1, int $$2, buv $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.ga() != 0) {
+         $$0.a();
+         fhs $$10 = this.c().c();
+         $$10.a($$0);
+         $$0.a(-1.1875F, 1.0625F, -0.9375F);
+         $$0.a(0.5F, 0.5F, 0.5F);
+         float $$11 = 0.5F;
+         $$0.b(0.5F, 0.5F, 0.5F);
+         $$0.a(a.b.rotationDegrees(-90.0F));
+         $$0.a(-0.5F, -0.5F, -0.5F);
+         this.a.a(csm.bT.n(), $$0, $$1, $$2, fyl.d);
+         $$0.b();
       }
    }
 }

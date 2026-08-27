@@ -3,21 +3,40 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 public class cqh {
    public static final Codec<cqh> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(aov.b.fieldOf("sound").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("tick_chance").forGetter($$0x -> $$0x.c)).apply($$0, cqh::new)
+      $$0 -> $$0.group(
+               aov.b.fieldOf("sound").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("tick_delay").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("block_search_extent").forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.fieldOf("offset").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, cqh::new)
    );
-   private final he<aov> b;
-   private final double c;
+   public static final cqh b = new cqh(aow.h, 6000, 8, 2.0);
+   private final he<aov> c;
+   private final int d;
+   private final int e;
+   private final double f;
 
-   public cqh(he<aov> $$0, double $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public cqh(he<aov> $$0, int $$1, int $$2, double $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
    public he<aov> a() {
-      return this.b;
+      return this.c;
    }
 
-   public double b() {
-      return this.c;
+   public int b() {
+      return this.d;
+   }
+
+   public int c() {
+      return this.e;
+   }
+
+   public double d() {
+      return this.f;
    }
 }

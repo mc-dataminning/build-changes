@@ -11,9 +11,9 @@ public class bio extends bii {
    private int h = 5;
    private int i;
    private int j = 1;
-   private cbn k;
+   private cbm k;
 
-   public bio(cpm $$0, double $$1, double $$2, double $$3, int $$4) {
+   public bio(cpl $$0, double $$1, double $$2, double $$3, int $$4) {
       this(bim.J, $$0);
       this.e($$1, $$2, $$3);
       this.r((float)(this.ag.j() * 360.0));
@@ -21,7 +21,7 @@ public class bio extends bii {
       this.i = $$4;
    }
 
-   public bio(bim<? extends bio> $$0, cpm $$1) {
+   public bio(bim<? extends bio> $$0, cpl $$1) {
       super($$0, $$1);
    }
 
@@ -63,7 +63,7 @@ public class bio extends bii {
       }
 
       if (this.k != null) {
-         ehe $$0 = new ehe(this.k.dp() - this.dp(), this.k.dr() + (double)this.k.cH() / 2.0 - this.dr(), this.k.dv() - this.dv());
+         ehd $$0 = new ehd(this.k.dp() - this.dp(), this.k.dr() + (double)this.k.cH() / 2.0 - this.dr(), this.k.dv() - this.dv());
          double $$1 = $$0.g();
          if ($$1 < 64.0) {
             double $$2 = 1.0 - Math.sqrt($$1) / 8.0;
@@ -99,13 +99,13 @@ public class bio extends bii {
       }
 
       if (this.dK() instanceof akk) {
-         for (bio $$1 : this.dK().a(diy.a(bio.class), this.cG().g(0.5), this::a)) {
+         for (bio $$1 : this.dK().a(dix.a(bio.class), this.cG().g(0.5), this::a)) {
             this.b($$1);
          }
       }
    }
 
-   public static void a(akk $$0, ehe $$1, int $$2) {
+   public static void a(akk $$0, ehd $$1, int $$2) {
       while ($$2 > 0) {
          int $$3 = b($$2);
          $$2 -= $$3;
@@ -115,10 +115,10 @@ public class bio extends bii {
       }
    }
 
-   private static boolean b(akk $$0, ehe $$1, int $$2) {
-      egz $$3 = egz.a($$1, 1.0, 1.0, 1.0);
+   private static boolean b(akk $$0, ehd $$1, int $$2) {
+      egy $$3 = egy.a($$1, 1.0, 1.0, 1.0);
       int $$4 = $$0.y_().a(40);
-      List<bio> $$5 = $$0.a(diy.a(bio.class), $$3, $$2x -> a($$2x, $$4, $$2));
+      List<bio> $$5 = $$0.a(dix.a(bio.class), $$3, $$2x -> a($$2x, $$4, $$2));
       if (!$$5.isEmpty()) {
          bio $$6 = $$5.get(0);
          $$6.j++;
@@ -144,7 +144,7 @@ public class bio extends bii {
    }
 
    private void p() {
-      ehe $$0 = this.dn();
+      ehd $$0 = this.dn();
       this.o($$0.c * 0.99F, Math.min($$0.d + 5.0E-4F, 0.06F), $$0.e * 0.99F);
    }
 
@@ -186,7 +186,7 @@ public class bio extends bii {
    }
 
    @Override
-   public void b_(cbn $$0) {
+   public void b_(cbm $$0) {
       if (!this.dK().B) {
          if ($$0.bV == 0) {
             $$0.bV = 2;
@@ -204,10 +204,10 @@ public class bio extends bii {
       }
    }
 
-   private int a(cbn $$0, int $$1) {
-      Entry<bin, ciy> $$2 = cnh.a(cnj.L, $$0, ciy::j);
+   private int a(cbm $$0, int $$1) {
+      Entry<bin, cix> $$2 = cng.a(cni.L, $$0, cix::j);
       if ($$2 != null) {
-         ciy $$3 = $$2.getValue();
+         cix $$3 = $$2.getValue();
          int $$4 = Math.min(this.d(this.i), $$3.k());
          $$3.b($$3.k() - $$4);
          int $$5 = $$1 - this.c($$4);

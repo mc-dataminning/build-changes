@@ -25,9 +25,9 @@ public class ain {
       );
    }
 
-   public static bii a(dr $$0, he.c<bim<?>> $$1, ehe $$2, qr $$3, boolean $$4) throws CommandSyntaxException {
+   public static bii a(dr $$0, he.c<bim<?>> $$1, ehd $$2, qr $$3, boolean $$4) throws CommandSyntaxException {
       gu $$5 = gu.a($$2);
-      if (!cpm.k($$5)) {
+      if (!cpl.k($$5)) {
          throw c.create();
       } else {
          qr $$6 = $$3.h();
@@ -53,7 +53,7 @@ public class ain {
       }
    }
 
-   private static int b(dr $$0, he.c<bim<?>> $$1, ehe $$2, qr $$3, boolean $$4) throws CommandSyntaxException {
+   private static int b(dr $$0, he.c<bim<?>> $$1, ehd $$2, qr $$3, boolean $$4) throws CommandSyntaxException {
       bii $$5 = a($$0, $$1, $$2, $$3, $$4);
       $$0.a(() -> tf.a("commands.summon.success", $$5.H_()), true);
       return 1;

@@ -1,23 +1,45 @@
 import com.mojang.serialization.Codec;
 
-public class dsk<P extends dsj> {
-   public static final dsk<dsl> a = a("trunk_vine", dsl.a);
-   public static final dsk<dsi> b = a("leave_vine", dsi.a);
-   public static final dsk<dsh> c = a("cocoa", dsh.a);
-   public static final dsk<dsg> d = a("beehive", dsg.a);
-   public static final dsk<dse> e = a("alter_ground", dse.a);
-   public static final dsk<dsf> f = a("attached_to_leaves", dsf.a);
-   private final Codec<P> g;
+public class dsk extends dsi {
+   public static final Codec<dsk> a = Codec.unit(() -> dsk.b);
+   public static final dsk b = new dsk();
 
-   private static <P extends dsj> dsk<P> a(String $$0, Codec<P> $$1) {
-      return hr.a(jb.aa, $$0, new dsk<>($$1));
+   @Override
+   protected dsj<?> a() {
+      return dsj.a;
    }
 
-   private dsk(Codec<P> $$0) {
-      this.g = $$0;
-   }
+   @Override
+   public void a(dsi.a $$0) {
+      aru $$1 = $$0.b();
+      $$0.c().forEach($$2 -> {
+         if ($$1.a(3) > 0) {
+            gu $$3 = $$2.g();
+            if ($$0.a($$3)) {
+               $$0.a($$3, dbf.c);
+            }
+         }
 
-   public Codec<P> a() {
-      return this.g;
+         if ($$1.a(3) > 0) {
+            gu $$4 = $$2.h();
+            if ($$0.a($$4)) {
+               $$0.a($$4, dbf.e);
+            }
+         }
+
+         if ($$1.a(3) > 0) {
+            gu $$5 = $$2.e();
+            if ($$0.a($$5)) {
+               $$0.a($$5, dbf.d);
+            }
+         }
+
+         if ($$1.a(3) > 0) {
+            gu $$6 = $$2.f();
+            if ($$0.a($$6)) {
+               $$0.a($$6, dbf.b);
+            }
+         }
+      });
    }
 }

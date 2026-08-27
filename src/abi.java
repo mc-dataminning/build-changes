@@ -1,8 +1,8 @@
-public record abi(String b, int c, cbl d, boolean e, int f, bis g, boolean h, boolean i) implements ux<aaw> {
+public record abi(String b, int c, cbk d, boolean e, int f, bis g, boolean h, boolean i) implements ux<aaw> {
    public static final int a = 16;
 
    public abi(si $$0) {
-      this($$0.d(16), $$0.readByte(), $$0.b(cbl.class), $$0.readBoolean(), $$0.readUnsignedByte(), $$0.b(bis.class), $$0.readBoolean(), $$0.readBoolean());
+      this($$0.d(16), $$0.readByte(), $$0.b(cbk.class), $$0.readBoolean(), $$0.readUnsignedByte(), $$0.b(bis.class), $$0.readBoolean(), $$0.readBoolean());
    }
 
    @Override
@@ -29,7 +29,7 @@ public record abi(String b, int c, cbl d, boolean e, int f, bis g, boolean h, bo
       return this.c;
    }
 
-   public cbl e() {
+   public cbk e() {
       return this.d;
    }
 

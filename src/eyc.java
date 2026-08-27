@@ -1,28 +1,45 @@
-public class eyc extends exr {
-   public eyc(exz $$0, eqq $$1) {
-      super($$0, $$1, tf.c("options.skinCustomisation.title"));
+import javax.annotation.Nullable;
+
+public abstract class eyc extends exs {
+   protected final eqo<?>[] c;
+   @Nullable
+   private ese l;
+   protected etd k;
+
+   public eyc(eya $$0, eqp $$1, tf $$2, eqo<?>[] $$3) {
+      super($$0, $$1, $$2);
+      this.c = $$3;
    }
 
    @Override
-   protected void aE_() {
-      int $$0 = 0;
-
-      for (cbo $$1 : cbo.values()) {
-         this.d(eso.b(this.b.a($$1)).a(this.g / 2 - 155 + $$0 % 2 * 160, this.h / 6 + 24 * ($$0 >> 1), 150, 20, $$1.d(), ($$1x, $$2) -> this.b.a($$1, $$2)));
-         $$0++;
+   protected void aC_() {
+      this.k = new etd(this.f, this.g, this.h, 32, this.h - 32, 25);
+      this.k.a(this.c);
+      this.e(this.k);
+      this.g();
+      this.l = this.k.b(this.b.ao());
+      if (this.l != null) {
+         this.l.i = this.f.aV().a();
       }
+   }
 
-      this.d(this.b.r().a(this.b, this.g / 2 - 155 + $$0 % 2 * 160, this.h / 6 + 24 * ($$0 >> 1), 150));
-      if (++$$0 % 2 == 1) {
-         $$0++;
-      }
-
-      this.d(esh.a(te.d, $$0x -> this.f.a(this.a)).a(this.g / 2 - 100, this.h / 6 + 24 * ($$0 >> 1), 200, 20).a());
+   protected void g() {
+      this.d(esg.a(te.d, $$0 -> this.f.a(this.a)).a(this.g / 2 - 100, this.h - 27, 200, 20).a());
    }
 
    @Override
-   public void a(erw $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
+   public void a(erv $$0, int $$1, int $$2, float $$3) {
+      this.a($$0, this.k, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void b(erv $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+   }
+
+   public void l() {
+      if (this.l instanceof esn) {
+         ((esn)this.l).a(this.b.ao().c());
+      }
    }
 }

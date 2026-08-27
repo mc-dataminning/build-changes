@@ -1,87 +1,103 @@
 import javax.annotation.Nullable;
 
-public class crm extends crl implements czn {
-   public static final dfr a = dfq.C;
-   public static final dfu b = dfq.P;
-   protected final ehx c;
-   protected final ehx d;
-   protected final ehx e;
-   protected final ehx f;
-   protected final ehx g;
-   protected final ehx h;
+public class crm extends cvd {
+   public static final dft a = cwe.aC;
+   private static final ehw b = csl.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
+   private static final ehw c = csl.a(3.0, 4.0, 4.0, 13.0, 5.0, 12.0);
+   private static final ehw d = csl.a(4.0, 5.0, 6.0, 12.0, 10.0, 10.0);
+   private static final ehw e = csl.a(0.0, 10.0, 3.0, 16.0, 16.0, 13.0);
+   private static final ehw f = csl.a(4.0, 4.0, 3.0, 12.0, 5.0, 13.0);
+   private static final ehw g = csl.a(6.0, 5.0, 4.0, 10.0, 10.0, 12.0);
+   private static final ehw h = csl.a(3.0, 10.0, 0.0, 13.0, 16.0, 16.0);
+   private static final ehw i = eht.a(b, c, d, e);
+   private static final ehw j = eht.a(b, f, g, h);
+   private static final tf k = tf.c("container.repair");
+   private static final float l = 2.0F;
+   private static final int m = 40;
 
-   public crm(int $$0, int $$1, dez.d $$2) {
-      super($$2);
-      this.k(this.n().a(a, Boolean.valueOf(false)).a(b, ha.b));
-      this.g = csm.a((double)$$1, 0.0, (double)$$1, (double)(16 - $$1), (double)$$0, (double)(16 - $$1));
-      this.h = csm.a((double)$$1, (double)(16 - $$0), (double)$$1, (double)(16 - $$1), 16.0, (double)(16 - $$1));
-      this.c = csm.a((double)$$1, (double)$$1, (double)(16 - $$0), (double)(16 - $$1), (double)(16 - $$1), 16.0);
-      this.d = csm.a((double)$$1, (double)$$1, 0.0, (double)(16 - $$1), (double)(16 - $$1), (double)$$0);
-      this.e = csm.a(0.0, (double)$$1, (double)$$1, (double)$$0, (double)(16 - $$1), (double)(16 - $$1));
-      this.f = csm.a((double)(16 - $$0), (double)$$1, (double)$$1, 16.0, (double)(16 - $$1), (double)(16 - $$1));
+   public crm(dey.d $$0) {
+      super($$0);
+      this.k(this.C.b().a(a, ha.c));
    }
 
    @Override
-   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
-      ha $$4 = $$0.c(b);
-      switch ($$4) {
-         case c:
-            return this.c;
-         case d:
-            return this.d;
-         case f:
-            return this.e;
-         case e:
-            return this.f;
-         case a:
-            return this.h;
-         case b:
-         default:
-            return this.g;
+   public dez a(clf $$0) {
+      return this.n().a(a, $$0.g().h());
+   }
+
+   @Override
+   public bgq a(dez $$0, cpl $$1, gu $$2, cbm $$3, bgp $$4, egz $$5) {
+      if ($$1.B) {
+         return bgq.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(apg.aC);
+         return bgq.b;
       }
-   }
-
-   @Override
-   public boolean a(dfa $$0, cpp $$1, gu $$2) {
-      ha $$3 = $$0.c(b);
-      gu $$4 = $$2.a($$3.g());
-      return $$1.a_($$4).d($$1, $$4, $$3);
-   }
-
-   @Override
-   public dfa a(dfa $$0, ha $$1, dfa $$2, cpn $$3, gu $$4, gu $$5) {
-      if ($$0.c(a)) {
-         $$3.a($$4, eae.c, eae.c.a($$3));
-      }
-
-      return $$1 == $$0.c(b).g() && !$$0.a($$3, $$4) ? csn.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Nullable
    @Override
-   public dfa a(clg $$0) {
-      cpn $$1 = $$0.q();
-      gu $$2 = $$0.a();
-      return this.n().a(a, Boolean.valueOf($$1.b_($$2).a() == eae.c)).a(b, $$0.k());
+   public bgt b(dez $$0, cpl $$1, gu $$2) {
+      return new bgy(($$2x, $$3, $$4) -> new cef($$2x, $$3, ceo.a($$1, $$2)), k);
    }
 
    @Override
-   public dfa a(dfa $$0, cyy $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
+   public ehw a(dez $$0, cor $$1, gu $$2, ehi $$3) {
+      ha $$4 = $$0.c(a);
+      return $$4.o() == ha.a.a ? i : j;
    }
 
    @Override
-   public dfa a(dfa $$0, cxh $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   protected void a(bye $$0) {
+      $$0.b(2.0F, 40);
    }
 
    @Override
-   public ead c_(dfa $$0) {
-      return $$0.c(a) ? eae.c.a(false) : super.c_($$0);
+   public void a(cpl $$0, gu $$1, dez $$2, dez $$3, bye $$4) {
+      if (!$$4.aS()) {
+         $$0.c(1031, $$1, 0);
+      }
    }
 
    @Override
-   protected void a(dfb.a<csm, dfa> $$0) {
-      $$0.a(a, b);
+   public void a(cpl $$0, gu $$1, bye $$2) {
+      if (!$$2.aS()) {
+         $$0.c(1029, $$1, 0);
+      }
+   }
+
+   @Override
+   public bhg a(bii $$0) {
+      return $$0.dL().b($$0);
+   }
+
+   @Nullable
+   public static dez e(dez $$0) {
+      if ($$0.a(csm.gS)) {
+         return csm.gT.n().a(a, $$0.c(a));
+      } else {
+         return $$0.a(csm.gT) ? csm.gU.n().a(a, $$0.c(a)) : null;
+      }
+   }
+
+   @Override
+   public dez a(dez $$0, cyx $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(dfa.a<csl, dez> $$0) {
+      $$0.a(a);
+   }
+
+   @Override
+   public boolean a(dez $$0, cor $$1, gu $$2, eas $$3) {
+      return false;
+   }
+
+   @Override
+   public int d(dez $$0, cor $$1, gu $$2) {
+      return $$0.d($$1, $$2).ak;
    }
 }

@@ -1,24 +1,52 @@
-public class czx extends csa {
-   public czx(dez.d $$0) {
-      super($$0, 2.0F);
+public class czx extends csl {
+   protected static final ehw a = csl.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
+   private static final int b = 20;
+
+   public czx(dey.d $$0) {
+      super($$0);
    }
 
    @Override
-   public dfa a(dfa $$0, ha $$1, dfa $$2, cpn $$3, gu $$4, gu $$5) {
-      return this.a($$0, $$3, $$4) ? this.n() : csn.a.n();
+   public ehw c(dez $$0, cor $$1, gu $$2, ehi $$3) {
+      return a;
    }
 
    @Override
-   public boolean a(dfa $$0, cpp $$1, gu $$2) {
-      return h($$1.a_($$2.d()));
-   }
-
-   public static boolean h(dfa $$0) {
-      return $$0.a(apl.aS);
+   public ehw b_(dez $$0, cor $$1, gu $$2) {
+      return eht.b();
    }
 
    @Override
-   protected boolean f(dfa $$0) {
-      return true;
+   public ehw b(dez $$0, cor $$1, gu $$2, ehi $$3) {
+      return eht.b();
+   }
+
+   @Override
+   public void a(dez $$0, akk $$1, gu $$2, aru $$3) {
+      csq.b($$1, $$2.c(), $$0);
+   }
+
+   @Override
+   public dez a(dez $$0, ha $$1, dez $$2, cpm $$3, gu $$4, gu $$5) {
+      if ($$1 == ha.b && $$2.a(csm.G)) {
+         $$3.a($$4, this, 20);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public void b(dez $$0, cpl $$1, gu $$2, dez $$3, boolean $$4) {
+      $$1.a($$2, this, 20);
+   }
+
+   @Override
+   public boolean a(dez $$0, cor $$1, gu $$2, eas $$3) {
+      return false;
+   }
+
+   @Override
+   public float b(dez $$0, cor $$1, gu $$2) {
+      return 0.2F;
    }
 }

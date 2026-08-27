@@ -1,11 +1,11 @@
-public class cnu extends cnf {
-   public cnu(cnf.a $$0, bin... $$1) {
-      super($$0, cng.b, $$1);
+public class cnu extends cne {
+   public cnu(cne.a $$0, bin... $$1) {
+      super($$0, cnf.f, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return $$0 * 10;
+      return 5 + ($$0 - 1) * 9;
    }
 
    @Override
@@ -14,22 +14,11 @@ public class cnu extends cnf {
    }
 
    @Override
-   public boolean b() {
-      return true;
-   }
-
-   @Override
-   public boolean h() {
-      return false;
-   }
-
-   @Override
-   public boolean i() {
-      return false;
-   }
-
-   @Override
    public int a() {
       return 3;
+   }
+
+   public static float e(int $$0) {
+      return 1.0F - 1.0F / (float)($$0 + 1);
    }
 }

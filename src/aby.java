@@ -2,7 +2,7 @@ public class aby implements ux<aaw> {
    private static final int a = 2;
    private final boolean b;
 
-   public aby(cbk $$0) {
+   public aby(cbj $$0) {
       this.b = $$0.b;
    }
 

@@ -1,122 +1,96 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import java.util.Objects;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
 import java.util.UUID;
-import java.util.function.Supplier;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
 public class bkd {
-   private static final Logger a = LogUtils.getLogger();
-   private final double b;
-   private final bkd.a c;
-   private final Supplier<String> d;
-   private final UUID e;
+   private final Map<bjz, bka> a;
 
-   public bkd(String $$0, double $$1, bkd.a $$2) {
-      this(arp.a(aru.c()), () -> $$0, $$1, $$2);
+   public bkd(Map<bjz, bka> $$0) {
+      this.a = ImmutableMap.copyOf($$0);
    }
 
-   public bkd(UUID $$0, String $$1, double $$2, bkd.a $$3) {
-      this($$0, () -> $$1, $$2, $$3);
-   }
-
-   public bkd(UUID $$0, Supplier<String> $$1, double $$2, bkd.a $$3) {
-      this.e = $$0;
-      this.d = $$1;
-      this.b = $$2;
-      this.c = $$3;
-   }
-
-   public UUID a() {
-      return this.e;
-   }
-
-   public String b() {
-      return this.d.get();
-   }
-
-   public bkd.a c() {
-      return this.c;
-   }
-
-   public double d() {
-      return this.b;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         bkd $$1 = (bkd)$$0;
-         return Objects.equals(this.e, $$1.e);
+   private bka d(bjz $$0) {
+      bka $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         throw new IllegalArgumentException("Can't find attribute " + jb.v.b($$0));
       } else {
-         return false;
+         return $$1;
       }
    }
 
-   @Override
-   public int hashCode() {
-      return this.e.hashCode();
+   public double a(bjz $$0) {
+      return this.d($$0).f();
    }
 
-   @Override
-   public String toString() {
-      return "AttributeModifier{amount=" + this.b + ", operation=" + this.c + ", name='" + this.d.get() + "', id=" + this.e + "}";
+   public double b(bjz $$0) {
+      return this.d($$0).b();
    }
 
-   public qr e() {
-      qr $$0 = new qr();
-      $$0.a("Name", this.b());
-      $$0.a("Amount", this.b);
-      $$0.a("Operation", this.c.a());
-      $$0.a("UUID", this.e);
-      return $$0;
+   public double a(bjz $$0, UUID $$1) {
+      bkc $$2 = this.d($$0).a($$1);
+      if ($$2 == null) {
+         throw new IllegalArgumentException("Can't find modifier " + $$1 + " on attribute " + jb.v.b($$0));
+      } else {
+         return $$2.d();
+      }
    }
 
    @Nullable
-   public static bkd a(qr $$0) {
-      try {
-         UUID $$1 = $$0.a("UUID");
-         bkd.a $$2 = bkd.a.a($$0.h("Operation"));
-         return new bkd($$1, $$0.l("Name"), $$0.k("Amount"), $$2);
-      } catch (Exception var3) {
-         a.warn("Unable to create attribute: {}", var3.getMessage());
+   public bka a(Consumer<bka> $$0, bjz $$1) {
+      bka $$2 = this.a.get($$1);
+      if ($$2 == null) {
          return null;
+      } else {
+         bka $$3 = new bka($$1, $$0);
+         $$3.a($$2);
+         return $$3;
       }
    }
 
-   public static enum a implements ash {
-      a("addition", 0),
-      b("multiply_base", 1),
-      c("multiply_total", 2);
+   public static bkd.a a() {
+      return new bkd.a();
+   }
 
-      private static final bkd.a[] e = new bkd.a[]{a, b, c};
-      public static final Codec<bkd.a> d = ash.a(bkd.a::values);
-      private final String f;
-      private final int g;
+   public boolean c(bjz $$0) {
+      return this.a.containsKey($$0);
+   }
 
-      private a(String $$0, int $$1) {
-         this.f = $$0;
-         this.g = $$1;
+   public boolean b(bjz $$0, UUID $$1) {
+      bka $$2 = this.a.get($$0);
+      return $$2 != null && $$2.a($$1) != null;
+   }
+
+   public static class a {
+      private final Map<bjz, bka> a = Maps.newHashMap();
+      private boolean b;
+
+      private bka b(bjz $$0) {
+         bka $$1 = new bka($$0, $$1x -> {
+            if (this.b) {
+               throw new UnsupportedOperationException("Tried to change value for default attribute instance: " + jb.v.b($$0));
+            }
+         });
+         this.a.put($$0, $$1);
+         return $$1;
       }
 
-      public int a() {
-         return this.g;
+      public bkd.a a(bjz $$0) {
+         this.b($$0);
+         return this;
       }
 
-      public static bkd.a a(int $$0) {
-         if ($$0 >= 0 && $$0 < e.length) {
-            return e[$$0];
-         } else {
-            throw new IllegalArgumentException("No operation with value " + $$0);
-         }
+      public bkd.a a(bjz $$0, double $$1) {
+         bka $$2 = this.b($$0);
+         $$2.a($$1);
+         return this;
       }
 
-      @Override
-      public String c() {
-         return this.f;
+      public bkd a() {
+         this.b = true;
+         return new bkd(this.a);
       }
    }
 }

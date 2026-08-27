@@ -1,4 +1,8 @@
-public class ema {
-   public volatile long a;
-   public volatile long b;
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ema {
 }

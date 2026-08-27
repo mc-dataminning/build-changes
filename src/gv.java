@@ -10,9 +10,9 @@ public interface gv extends ho {
 
    gu d();
 
-   dfa e();
+   dez e();
 
-   <T extends dcm> T f();
+   <T extends dcl> T f();
 
    akk g();
 }

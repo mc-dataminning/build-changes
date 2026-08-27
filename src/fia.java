@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.google.common.collect.ImmutableList;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fia {
+public class fia {
+   private final fib a = new fib(ImmutableList.of(), fhu.a);
+
+   public fib a() {
+      return this.a;
+   }
 }

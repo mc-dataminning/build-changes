@@ -29,7 +29,7 @@ public class wq implements ux<wp> {
       this($$0.ah(), $$0.cv(), (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), $$0.dC(), $$0.dA(), $$0.ag(), $$1, $$0.dn(), (double)$$0.co());
    }
 
-   public wq(int $$0, UUID $$1, double $$2, double $$3, double $$4, float $$5, float $$6, bim<?> $$7, int $$8, ehe $$9, double $$10) {
+   public wq(int $$0, UUID $$1, double $$2, double $$3, double $$4, float $$5, float $$6, bim<?> $$7, int $$8, ehd $$9, double $$10) {
       this.c = $$0;
       this.d = $$1;
       this.f = $$2;

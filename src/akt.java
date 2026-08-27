@@ -1,9 +1,9 @@
 import javax.annotation.Nullable;
 
 public interface akt {
-   void a(cot var1);
+   void a(cos var1);
 
-   void a(cot var1, @Nullable dhb var2);
+   void a(cos var1, @Nullable dha var2);
 
    void a();
 

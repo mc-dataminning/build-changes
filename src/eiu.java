@@ -1,29 +1,29 @@
-public enum eiu {
-   a(-3),
-   b(-2),
-   c(-1),
-   d(0),
-   e(1),
-   f(2),
-   g(3);
+import java.util.function.Function;
 
-   private final int h;
+public class eiu<T> implements eil<T> {
+   private final Function<gu, eis<T>> a;
 
-   private eiu(int $$0) {
-      this.h = $$0;
+   public eiu(Function<gu, eis<T>> $$0) {
+      this.a = $$0;
    }
 
-   public static eiu a(int $$0) {
-      for (eiu $$1 : values()) {
-         if ($$1.h == $$0) {
-            return $$1;
-         }
-      }
-
-      return $$0 < a.h ? a : g;
+   @Override
+   public boolean a(gu $$0, T $$1) {
+      return this.a.apply($$0).a($$0, $$1);
    }
 
+   @Override
+   public void a(eip<T> $$0) {
+      this.a.apply($$0.b()).a($$0);
+   }
+
+   @Override
+   public boolean b(gu $$0, T $$1) {
+      return false;
+   }
+
+   @Override
    public int a() {
-      return this.h;
+      return 0;
    }
 }

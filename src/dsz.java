@@ -1,29 +1,17 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dsz {
+public record dsz(he<cis> c, dtb d) {
    public static final Codec<dsz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.intRange(0, dij.c).fieldOf("height").forGetter(dsz::a), jb.f.q().fieldOf("block").orElse(csn.a).forGetter($$0x -> $$0x.b().b()))
-            .apply($$0, dsz::new)
+      $$0 -> $$0.group(aeo.a(jc.D).fieldOf("display").forGetter($$0x -> $$0x.c), dtb.a.fieldOf("settings").forGetter($$0x -> $$0x.d)).apply($$0, dsz::new)
    );
-   private final csm b;
-   private final int c;
+   public static final Codec<he<dsz>> b = aen.a(jc.av, a);
 
-   public dsz(int $$0, csm $$1) {
-      this.c = $$0;
-      this.b = $$1;
-   }
-
-   public int a() {
+   public he<cis> a() {
       return this.c;
    }
 
-   public dfa b() {
-      return this.b.n();
-   }
-
-   @Override
-   public String toString() {
-      return (this.c != 1 ? this.c + "*" : "") + jb.f.b(this.b);
+   public dtb b() {
+      return this.d;
    }
 }

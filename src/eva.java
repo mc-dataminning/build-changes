@@ -1,7 +1,7 @@
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-public enum eva implements eji {
+public enum eva implements ejh {
    a(() -> a(5, 8, ($$0, $$1) -> -1)),
    b(() -> {
       int $$0 = 5;
@@ -12,10 +12,10 @@ public enum eva implements eji {
       });
    });
 
-   final ekh c;
+   final ekg c;
 
-   private static ekh a(int $$0, int $$1, eva.a $$2) {
-      ekh $$3 = new ekh(ekh.a.a, $$0, $$1, false);
+   private static ekg a(int $$0, int $$1, eva.a $$2) {
+      ekg $$3 = new ekg(ekg.a.a, $$0, $$1, false);
 
       for (int $$4 = 0; $$4 < $$1; $$4++) {
          for (int $$5 = 0; $$5 < $$0; $$5++) {
@@ -27,7 +27,7 @@ public enum eva implements eji {
       return $$3;
    }
 
-   private eva(Supplier<ekh> $$0) {
+   private eva(Supplier<ekg> $$0) {
       this.c = $$0.get();
    }
 
@@ -37,8 +37,8 @@ public enum eva implements eji {
    }
 
    @Override
-   public euy bake(Function<ejk, euy> $$0) {
-      return $$0.apply(new ejk() {
+   public euy bake(Function<ejj, euy> $$0) {
+      return $$0.apply(new ejj() {
          @Override
          public int a() {
             return eva.this.c.a();

@@ -13,15 +13,15 @@ public class fr implements fk {
    }
 
    @Override
-   public ehe a(dr $$0) {
-      ehe $$1 = $$0.d();
-      return new ehe(this.a.a($$1.c), this.b.a($$1.d), this.c.a($$1.e));
+   public ehd a(dr $$0) {
+      ehd $$1 = $$0.d();
+      return new ehd(this.a.a($$1.c), this.b.a($$1.d), this.c.a($$1.e));
    }
 
    @Override
-   public ehd b(dr $$0) {
-      ehd $$1 = $$0.k();
-      return new ehd((float)this.a.a((double)$$1.i), (float)this.b.a((double)$$1.j));
+   public ehc b(dr $$0) {
+      ehc $$1 = $$0.k();
+      return new ehc((float)this.a.a((double)$$1.i), (float)this.b.a((double)$$1.j));
    }
 
    @Override
@@ -96,7 +96,7 @@ public class fr implements fk {
       return new fr(new fq(false, $$0), new fq(false, $$1), new fq(false, $$2));
    }
 
-   public static fr a(ehd $$0) {
+   public static fr a(ehc $$0) {
       return new fr(new fq(false, (double)$$0.i), new fq(false, (double)$$0.j), new fq(true, 0.0));
    }
 

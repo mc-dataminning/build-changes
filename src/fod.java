@@ -1,61 +1,35 @@
-import java.util.Map;
-import java.util.Map.Entry;
-
 public class fod {
-   private Map<dfa, gam> a = Map.of();
-   private final gas b;
+   private final long[] a;
+   private int b;
+   private int c;
 
-   public fod(gas $$0) {
-      this.b = $$0;
+   public fod(int $$0) {
+      this.a = new long[$$0];
    }
 
-   public fyl a(dfa $$0) {
-      return this.b($$0).e();
-   }
-
-   public gam b(dfa $$0) {
-      gam $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         $$1 = this.b.a();
+   public long a(long $$0) {
+      if (this.b < this.a.length) {
+         this.b++;
       }
 
-      return $$1;
-   }
+      this.a[this.c] = $$0;
+      this.c = (this.c + 1) % this.a.length;
+      long $$1 = Long.MAX_VALUE;
+      long $$2 = Long.MIN_VALUE;
+      long $$3 = 0L;
 
-   public gas a() {
-      return this.b;
-   }
-
-   public void a(Map<dfa, gam> $$0) {
-      this.a = $$0;
-   }
-
-   public static gat c(dfa $$0) {
-      return a(jb.f.b($$0.b()), $$0);
-   }
-
-   public static gat a(aer $$0, dfa $$1) {
-      return new gat($$0, b($$1.C()));
-   }
-
-   public static String b(Map<dgd<?>, Comparable<?>> $$0) {
-      StringBuilder $$1 = new StringBuilder();
-
-      for (Entry<dgd<?>, Comparable<?>> $$2 : $$0.entrySet()) {
-         if ($$1.length() != 0) {
-            $$1.append(',');
-         }
-
-         dgd<?> $$3 = $$2.getKey();
-         $$1.append($$3.f());
-         $$1.append('=');
-         $$1.append(a($$3, $$2.getValue()));
+      for (int $$4 = 0; $$4 < this.b; $$4++) {
+         long $$5 = this.a[$$4];
+         $$3 += $$5;
+         $$1 = Math.min($$1, $$5);
+         $$2 = Math.max($$2, $$5);
       }
 
-      return $$1.toString();
-   }
-
-   private static <T extends Comparable<T>> String a(dgd<T> $$0, Comparable<?> $$1) {
-      return $$0.a((T)$$1);
+      if (this.b > 2) {
+         $$3 -= $$1 + $$2;
+         return $$3 / (long)(this.b - 2);
+      } else {
+         return $$3 > 0L ? (long)this.b / $$3 : 0L;
+      }
    }
 }

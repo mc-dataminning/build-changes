@@ -21,13 +21,13 @@ public class bx extends cu<bx.a> {
       return new bx.a($$1, $$4, $$5, $$6, $$7);
    }
 
-   public void a(akl $$0, cbm $$1, ciy $$2) {
+   public void a(akl $$0, cbl $$1, cix $$2) {
       int $$3 = 0;
       int $$4 = 0;
       int $$5 = 0;
 
       for (int $$6 = 0; $$6 < $$1.b(); $$6++) {
-         ciy $$7 = $$1.a($$6);
+         cix $$7 = $$1.a($$6);
          if ($$7.b()) {
             $$4++;
          } else {
@@ -41,7 +41,7 @@ public class bx extends cu<bx.a> {
       this.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   private void a(akl $$0, cbm $$1, ciy $$2, int $$3, int $$4, int $$5) {
+   private void a(akl $$0, cbl $$1, cix $$2, int $$3, int $$4, int $$5) {
       this.a($$0, $$5x -> $$5x.a($$1, $$2, $$3, $$4, $$5));
    }
 
@@ -67,7 +67,7 @@ public class bx extends cu<bx.a> {
          return new bx.a(Optional.empty(), cj.d.c, cj.d.c, cj.d.c, List.of($$0));
       }
 
-      public static bx.a a(cpl... $$0) {
+      public static bx.a a(cpk... $$0) {
          bz[] $$1 = new bz[$$0.length];
 
          for (int $$2 = 0; $$2 < $$0.length; $$2++) {
@@ -95,7 +95,7 @@ public class bx extends cu<bx.a> {
          return $$0;
       }
 
-      public boolean a(cbm $$0, ciy $$1, int $$2, int $$3, int $$4) {
+      public boolean a(cbl $$0, cix $$1, int $$2, int $$3, int $$4) {
          if (!this.b.d($$2)) {
             return false;
          } else if (!this.c.d($$3)) {
@@ -113,7 +113,7 @@ public class bx extends cu<bx.a> {
                   return true;
                }
 
-               ciy $$8 = $$0.a($$7);
+               cix $$8 = $$0.a($$7);
                if (!$$8.b()) {
                   $$5.removeIf($$1x -> $$1x.a($$8));
                }

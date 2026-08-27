@@ -10,8 +10,8 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record bz(Optional<aqa<cit>> b, Optional<hi<cit>> c, cj.d d, cj.d e, List<bj> f, List<bj> g, Optional<he<ckv>> h, Optional<cl> i) {
-   private static final Codec<hi<cit>> j = jb.i.r().listOf().xmap(hi::a, $$0 -> $$0.a().toList());
+public record bz(Optional<aqa<cis>> b, Optional<hi<cis>> c, cj.d d, cj.d e, List<bj> f, List<bj> g, Optional<he<cku>> h, Optional<cl> i) {
+   private static final Codec<hi<cis>> j = jb.i.r().listOf().xmap(hi::a, $$0 -> $$0.a().toList());
    public static final Codec<bz> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                aqy.a(aqa.a(jc.D), "tag").forGetter(bz::b),
@@ -26,13 +26,13 @@ public record bz(Optional<aqa<cit>> b, Optional<hi<cit>> c, cj.d d, cj.d e, List
             .apply($$0, bz::new)
    );
 
-   static Optional<bz> a(Optional<aqa<cit>> $$0, Optional<hi<cit>> $$1, cj.d $$2, cj.d $$3, List<bj> $$4, List<bj> $$5, Optional<he<ckv>> $$6, Optional<cl> $$7) {
+   static Optional<bz> a(Optional<aqa<cis>> $$0, Optional<hi<cis>> $$1, cj.d $$2, cj.d $$3, List<bj> $$4, List<bj> $$5, Optional<he<cku>> $$6, Optional<cl> $$7) {
       return $$0.isEmpty() && $$1.isEmpty() && $$2.c() && $$3.c() && $$4.isEmpty() && $$5.isEmpty() && $$6.isEmpty() && $$7.isEmpty()
          ? Optional.empty()
          : Optional.of(new bz($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
    }
 
-   public boolean a(ciy $$0) {
+   public boolean a(cix $$0) {
       if (this.b.isPresent() && !$$0.a(this.b.get())) {
          return false;
       } else if (this.c.isPresent() && !$$0.a(this.c.get())) {
@@ -47,7 +47,7 @@ public record bz(Optional<aqa<cit>> b, Optional<hi<cit>> c, cj.d d, cj.d e, List
          return false;
       } else {
          if (!this.f.isEmpty()) {
-            Map<cnf, Integer> $$1 = cnh.a($$0.x());
+            Map<cne, Integer> $$1 = cng.a($$0.x());
 
             for (bj $$2 : this.f) {
                if (!$$2.a($$1)) {
@@ -57,7 +57,7 @@ public record bz(Optional<aqa<cit>> b, Optional<hi<cit>> c, cj.d d, cj.d e, List
          }
 
          if (!this.g.isEmpty()) {
-            Map<cnf, Integer> $$3 = cnh.a(chu.d($$0));
+            Map<cne, Integer> $$3 = cng.a(cht.d($$0));
 
             for (bj $$4 : this.g) {
                if (!$$4.a($$3)) {
@@ -66,7 +66,7 @@ public record bz(Optional<aqa<cit>> b, Optional<hi<cit>> c, cj.d d, cj.d e, List
             }
          }
 
-         return !this.h.isPresent() || this.h.get().a() == ckx.d($$0);
+         return !this.h.isPresent() || this.h.get().a() == ckw.d($$0);
       }
    }
 
@@ -89,11 +89,11 @@ public record bz(Optional<aqa<cit>> b, Optional<hi<cit>> c, cj.d d, cj.d e, List
    public static class a {
       private final Builder<bj> a = ImmutableList.builder();
       private final Builder<bj> b = ImmutableList.builder();
-      private Optional<hi<cit>> c = Optional.empty();
-      private Optional<aqa<cit>> d = Optional.empty();
+      private Optional<hi<cis>> c = Optional.empty();
+      private Optional<aqa<cis>> d = Optional.empty();
       private cj.d e = cj.d.c;
       private cj.d f = cj.d.c;
-      private Optional<he<ckv>> g = Optional.empty();
+      private Optional<he<cku>> g = Optional.empty();
       private Optional<cl> h = Optional.empty();
 
       private a() {
@@ -103,12 +103,12 @@ public record bz(Optional<aqa<cit>> b, Optional<hi<cit>> c, cj.d d, cj.d e, List
          return new bz.a();
       }
 
-      public bz.a a(cpl... $$0) {
+      public bz.a a(cpk... $$0) {
          this.c = Optional.of(hi.a($$0x -> $$0x.k().j(), $$0));
          return this;
       }
 
-      public bz.a a(aqa<cit> $$0) {
+      public bz.a a(aqa<cis> $$0) {
          this.d = Optional.of($$0);
          return this;
       }
@@ -123,7 +123,7 @@ public record bz(Optional<aqa<cit>> b, Optional<hi<cit>> c, cj.d d, cj.d e, List
          return this;
       }
 
-      public bz.a a(ckv $$0) {
+      public bz.a a(cku $$0) {
          this.g = Optional.of($$0.c());
          return this;
       }

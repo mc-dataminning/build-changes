@@ -42,11 +42,11 @@ public interface du {
       return Collections.singleton(du.b.b);
    }
 
-   Set<aeq<cpm>> u();
+   Set<aeq<cpl>> u();
 
    hs v();
 
-   cdv w();
+   cdu w();
 
    default void a(hr<?> $$0, du.a $$1, SuggestionsBuilder $$2) {
       if ($$1.a()) {

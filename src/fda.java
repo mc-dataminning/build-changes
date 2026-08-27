@@ -1,9 +1,8 @@
-public interface fda {
-   void a(fcy var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   tf aF_();
-
-   void a(erw var1, float var2, int var3);
-
-   boolean aG_();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fda {
 }

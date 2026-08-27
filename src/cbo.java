@@ -1,37 +1,19 @@
-public enum cbo {
-   a(0, "cape"),
-   b(1, "jacket"),
-   c(2, "left_sleeve"),
-   d(3, "right_sleeve"),
-   e(4, "left_pants_leg"),
-   f(5, "right_pants_leg"),
-   g(6, "hat");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.security.PrivateKey;
+import java.time.Instant;
 
-   private final int h;
-   private final int i;
-   private final String j;
-   private final tf k;
+public record cbo(PrivateKey b, cbp c, Instant d) {
+   public static final Codec<cbo> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               aqp.g.fieldOf("private_key").forGetter(cbo::b),
+               cbp.c.fieldOf("public_key").forGetter(cbo::c),
+               aqy.m.fieldOf("refreshed_after").forGetter(cbo::d)
+            )
+            .apply($$0, cbo::new)
+   );
 
-   private cbo(int $$0, String $$1) {
-      this.h = $$0;
-      this.i = 1 << $$0;
-      this.j = $$1;
-      this.k = tf.c("options.modelPart." + $$1);
-   }
-
-   public int a() {
-      return this.i;
-   }
-
-   public int b() {
-      return this.h;
-   }
-
-   public String c() {
-      return this.j;
-   }
-
-   public tf d() {
-      return this.k;
+   public boolean a() {
+      return this.d.isBefore(Instant.now());
    }
 }

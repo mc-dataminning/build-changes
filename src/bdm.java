@@ -207,7 +207,7 @@ public class bdm implements bdn {
 
    @Nullable
    @Override
-   public bdq a(cot $$0, aeq<cpm> $$1, String $$2) {
+   public bdq a(cos $$0, aeq<cpl> $$1, String $$2) {
       if (!ChunkGenerationEvent.TYPE.isEnabled()) {
          return null;
       } else {

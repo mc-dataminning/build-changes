@@ -1,30 +1,164 @@
-import com.mojang.serialization.Codec;
-import java.util.function.Supplier;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface fiy {
-   Codec<fiy> a = ash.a(fiy.a::values).dispatch(fiy::a, fiy.a::a);
+public class fiy {
+   private static final Logger a = LogUtils.getLogger();
+   private static final bfj<Runnable> b = bfj.a(ac.f(), "server-list-io");
+   private static final int c = 16;
+   private final eql d;
+   private final List<fix> e = Lists.newArrayList();
+   private final List<fix> f = Lists.newArrayList();
 
-   fiy.a a();
+   public fiy(eql $$0) {
+      this.d = $$0;
+   }
 
-   public static enum a implements ash {
-      a("player", () -> fiz.a.b),
-      b("system", () -> fiz.b.b);
+   public void a() {
+      try {
+         this.e.clear();
+         this.f.clear();
+         qr $$0 = rb.b(new File(this.d.p, "servers.dat"));
+         if ($$0 == null) {
+            return;
+         }
 
-      private final String c;
-      private final Supplier<Codec<? extends fiy>> d;
+         qx $$1 = $$0.c("servers", 10);
 
-      private a(String $$0, Supplier<Codec<? extends fiy>> $$1) {
-         this.c = $$0;
-         this.d = $$1;
+         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+            qr $$3 = $$1.a($$2);
+            fix $$4 = fix.a($$3);
+            if ($$3.q("hidden")) {
+               this.f.add($$4);
+            } else {
+               this.e.add($$4);
+            }
+         }
+      } catch (Exception var6) {
+         a.error("Couldn't load server list", var6);
+      }
+   }
+
+   public void b() {
+      try {
+         qx $$0 = new qx();
+
+         for (fix $$1 : this.e) {
+            qr $$2 = $$1.a();
+            $$2.a("hidden", false);
+            $$0.add($$2);
+         }
+
+         for (fix $$3 : this.f) {
+            qr $$4 = $$3.a();
+            $$4.a("hidden", true);
+            $$0.add($$4);
+         }
+
+         qr $$5 = new qr();
+         $$5.a("servers", $$0);
+         File $$6 = File.createTempFile("servers", ".dat", this.d.p);
+         rb.b($$5, $$6);
+         File $$7 = new File(this.d.p, "servers.dat_old");
+         File $$8 = new File(this.d.p, "servers.dat");
+         ac.a($$8, $$6, $$7);
+      } catch (Exception var6) {
+         a.error("Couldn't save server list", var6);
+      }
+   }
+
+   public fix a(int $$0) {
+      return this.e.get($$0);
+   }
+
+   @Nullable
+   public fix a(String $$0) {
+      for (fix $$1 : this.e) {
+         if ($$1.b.equals($$0)) {
+            return $$1;
+         }
       }
 
-      private Codec<? extends fiy> a() {
-         return this.d.get();
+      for (fix $$2 : this.f) {
+         if ($$2.b.equals($$0)) {
+            return $$2;
+         }
       }
 
-      @Override
-      public String c() {
-         return this.c;
+      return null;
+   }
+
+   @Nullable
+   public fix b(String $$0) {
+      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
+         fix $$2 = this.f.get($$1);
+         if ($$2.b.equals($$0)) {
+            this.f.remove($$1);
+            this.e.add($$2);
+            return $$2;
+         }
       }
+
+      return null;
+   }
+
+   public void a(fix $$0) {
+      if (!this.e.remove($$0)) {
+         this.f.remove($$0);
+      }
+   }
+
+   public void a(fix $$0, boolean $$1) {
+      if ($$1) {
+         this.f.add(0, $$0);
+
+         while (this.f.size() > 16) {
+            this.f.remove(this.f.size() - 1);
+         }
+      } else {
+         this.e.add($$0);
+      }
+   }
+
+   public int c() {
+      return this.e.size();
+   }
+
+   public void a(int $$0, int $$1) {
+      fix $$2 = this.a($$0);
+      this.e.set($$0, this.a($$1));
+      this.e.set($$1, $$2);
+      this.b();
+   }
+
+   public void a(int $$0, fix $$1) {
+      this.e.set($$0, $$1);
+   }
+
+   private static boolean a(fix $$0, List<fix> $$1) {
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         fix $$3 = $$1.get($$2);
+         if ($$3.a.equals($$0.a) && $$3.b.equals($$0.b)) {
+            $$1.set($$2, $$0);
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public static void b(fix $$0) {
+      b.a(() -> {
+         fiy $$1 = new fiy(eql.O());
+         $$1.a();
+         if (!a($$0, $$1.e)) {
+            a($$0, $$1.f);
+         }
+
+         $$1.b();
+      });
    }
 }

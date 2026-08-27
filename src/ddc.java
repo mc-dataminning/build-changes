@@ -1,110 +1,79 @@
-import java.util.Map;
-import javax.annotation.Nullable;
+public class ddc extends ddo {
+   public static final int c = 9;
+   private hn<cix> f = hn.a(9, cix.b);
 
-public class ddc {
-   private static final String b = "decorated_pot_base";
-   public static final aeq<String> a = a("decorated_pot_base");
-   private static final String c = "decorated_pot_side";
-   private static final String d = "angler_pottery_pattern";
-   private static final String e = "archer_pottery_pattern";
-   private static final String f = "arms_up_pottery_pattern";
-   private static final String g = "blade_pottery_pattern";
-   private static final String h = "brewer_pottery_pattern";
-   private static final String i = "burn_pottery_pattern";
-   private static final String j = "danger_pottery_pattern";
-   private static final String k = "explorer_pottery_pattern";
-   private static final String l = "friend_pottery_pattern";
-   private static final String m = "heart_pottery_pattern";
-   private static final String n = "heartbreak_pottery_pattern";
-   private static final String o = "howl_pottery_pattern";
-   private static final String p = "miner_pottery_pattern";
-   private static final String q = "mourner_pottery_pattern";
-   private static final String r = "plenty_pottery_pattern";
-   private static final String s = "prize_pottery_pattern";
-   private static final String t = "sheaf_pottery_pattern";
-   private static final String u = "shelter_pottery_pattern";
-   private static final String v = "skull_pottery_pattern";
-   private static final String w = "snort_pottery_pattern";
-   private static final aeq<String> x = a("decorated_pot_side");
-   private static final aeq<String> y = a("angler_pottery_pattern");
-   private static final aeq<String> z = a("archer_pottery_pattern");
-   private static final aeq<String> A = a("arms_up_pottery_pattern");
-   private static final aeq<String> B = a("blade_pottery_pattern");
-   private static final aeq<String> C = a("brewer_pottery_pattern");
-   private static final aeq<String> D = a("burn_pottery_pattern");
-   private static final aeq<String> E = a("danger_pottery_pattern");
-   private static final aeq<String> F = a("explorer_pottery_pattern");
-   private static final aeq<String> G = a("friend_pottery_pattern");
-   private static final aeq<String> H = a("heart_pottery_pattern");
-   private static final aeq<String> I = a("heartbreak_pottery_pattern");
-   private static final aeq<String> J = a("howl_pottery_pattern");
-   private static final aeq<String> K = a("miner_pottery_pattern");
-   private static final aeq<String> L = a("mourner_pottery_pattern");
-   private static final aeq<String> M = a("plenty_pottery_pattern");
-   private static final aeq<String> N = a("prize_pottery_pattern");
-   private static final aeq<String> O = a("sheaf_pottery_pattern");
-   private static final aeq<String> P = a("shelter_pottery_pattern");
-   private static final aeq<String> Q = a("skull_pottery_pattern");
-   private static final aeq<String> R = a("snort_pottery_pattern");
-   private static final Map<cit, aeq<String>> S = Map.ofEntries(
-      Map.entry(cjb.pX, x),
-      Map.entry(cjb.wN, y),
-      Map.entry(cjb.wO, z),
-      Map.entry(cjb.wP, A),
-      Map.entry(cjb.wQ, B),
-      Map.entry(cjb.wR, C),
-      Map.entry(cjb.wS, D),
-      Map.entry(cjb.wT, E),
-      Map.entry(cjb.wU, F),
-      Map.entry(cjb.wV, G),
-      Map.entry(cjb.wW, H),
-      Map.entry(cjb.wX, I),
-      Map.entry(cjb.wY, J),
-      Map.entry(cjb.wZ, K),
-      Map.entry(cjb.xa, L),
-      Map.entry(cjb.xb, M),
-      Map.entry(cjb.xc, N),
-      Map.entry(cjb.xd, O),
-      Map.entry(cjb.xe, P),
-      Map.entry(cjb.xf, Q),
-      Map.entry(cjb.xg, R)
-   );
-
-   private static aeq<String> a(String $$0) {
-      return aeq.a(jc.ao, new aer($$0));
+   protected ddc(dcn<?> $$0, gu $$1, dez $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public static aer a(aeq<String> $$0) {
-      return $$0.a().d("entity/decorated_pot/");
+   public ddc(gu $$0, dez $$1) {
+      this(dcn.f, $$0, $$1);
    }
 
-   @Nullable
-   public static aeq<String> a(cit $$0) {
-      return S.get($$0);
+   @Override
+   public int b() {
+      return 9;
    }
 
-   public static String a(hr<String> $$0) {
-      hr.a($$0, x, "decorated_pot_side");
-      hr.a($$0, y, "angler_pottery_pattern");
-      hr.a($$0, z, "archer_pottery_pattern");
-      hr.a($$0, A, "arms_up_pottery_pattern");
-      hr.a($$0, B, "blade_pottery_pattern");
-      hr.a($$0, C, "brewer_pottery_pattern");
-      hr.a($$0, D, "burn_pottery_pattern");
-      hr.a($$0, E, "danger_pottery_pattern");
-      hr.a($$0, F, "explorer_pottery_pattern");
-      hr.a($$0, G, "friend_pottery_pattern");
-      hr.a($$0, H, "heart_pottery_pattern");
-      hr.a($$0, I, "heartbreak_pottery_pattern");
-      hr.a($$0, J, "howl_pottery_pattern");
-      hr.a($$0, K, "miner_pottery_pattern");
-      hr.a($$0, L, "mourner_pottery_pattern");
-      hr.a($$0, M, "plenty_pottery_pattern");
-      hr.a($$0, N, "prize_pottery_pattern");
-      hr.a($$0, O, "sheaf_pottery_pattern");
-      hr.a($$0, P, "shelter_pottery_pattern");
-      hr.a($$0, Q, "skull_pottery_pattern");
-      hr.a($$0, R, "snort_pottery_pattern");
-      return hr.a($$0, a, "decorated_pot_base");
+   public int a(aru $$0) {
+      this.e(null);
+      int $$1 = -1;
+      int $$2 = 1;
+
+      for (int $$3 = 0; $$3 < this.f.size(); $$3++) {
+         if (!this.f.get($$3).b() && $$0.a($$2++) == 0) {
+            $$1 = $$3;
+         }
+      }
+
+      return $$1;
+   }
+
+   public int a(cix $$0) {
+      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
+         if (this.f.get($$1).b()) {
+            this.a($$1, $$0);
+            return $$1;
+         }
+      }
+
+      return -1;
+   }
+
+   @Override
+   protected tf g() {
+      return tf.c("container.dispenser");
+   }
+
+   @Override
+   public void a(qr $$0) {
+      super.a($$0);
+      this.f = hn.a(this.b(), cix.b);
+      if (!this.d($$0)) {
+         bgk.b($$0, this.f);
+      }
+   }
+
+   @Override
+   protected void b(qr $$0) {
+      super.b($$0);
+      if (!this.e($$0)) {
+         bgk.a($$0, this.f);
+      }
+   }
+
+   @Override
+   protected hn<cix> f() {
+      return this.f;
+   }
+
+   @Override
+   protected void a(hn<cix> $$0) {
+      this.f = $$0;
+   }
+
+   @Override
+   protected ced a(int $$0, cbl $$1) {
+      return new ceu($$0, $$1, this);
    }
 }

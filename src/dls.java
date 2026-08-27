@@ -1,16 +1,26 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Function;
 
-abstract class dls implements dlq {
-   protected final List<dlq> e;
+public class dls implements dlp {
+   private final hz e;
+   private final ha f;
+   public static final Codec<dls> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(hz.v(16).optionalFieldOf("offset", hz.g).forGetter($$0x -> $$0x.e), ha.g.fieldOf("direction").forGetter($$0x -> $$0x.f))
+            .apply($$0, dls::new)
+   );
 
-   protected dls(List<dlq> $$0) {
+   public dls(hz $$0, ha $$1) {
       this.e = $$0;
+      this.f = $$1;
    }
 
-   public static <T extends dls> Codec<T> a(Function<List<dlq>, T> $$0) {
-      return RecordCodecBuilder.create($$1 -> $$1.group(dlq.b.listOf().fieldOf("predicates").forGetter($$0xx -> $$0xx.e)).apply($$1, $$0));
+   public boolean a(cqf $$0, gu $$1) {
+      gu $$2 = $$1.a(this.e);
+      return $$0.a_($$2).d($$0, $$2, this.f);
+   }
+
+   @Override
+   public dlq<?> a() {
+      return dlq.d;
    }
 }

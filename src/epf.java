@@ -1,18 +1,23 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-
 public class epf {
-   private static final Long2ObjectMap<String> a = new Long2ObjectOpenHashMap();
+   private final String a;
+   private final eoz b;
+   private final boolean c;
 
-   public static String a(long $$0) {
-      return (String)a.get($$0);
+   public epf(String $$0, eoz $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static void b(long $$0) {
-      a.remove($$0);
+   public String a() {
+      return this.a;
    }
 
-   public static void a(long $$0, String $$1) {
-      a.put($$0, $$1);
+   public eoz b() {
+      return this.b;
+   }
+
+   public boolean c() {
+      return this.c;
    }
 }

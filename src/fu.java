@@ -10,7 +10,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class fu implements ArgumentType<fv> {
    private static final Collection<String> a = Arrays.asList("stick", "minecraft:stick", "stick{foo=bar}");
-   private final hg<cit> b;
+   private final hg<cis> b;
 
    public fu(dl $$0) {
       this.b = $$0.a(jc.D);

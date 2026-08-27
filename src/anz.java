@@ -40,7 +40,7 @@ public abstract class anz {
    private final aoh q = new aoh(e);
    private final Map<UUID, apc> r = Maps.newHashMap();
    private final Map<UUID, aez> s = Maps.newHashMap();
-   private final eca t;
+   private final ebz t;
    private boolean u;
    private final hl<afa> v;
    protected final int h;
@@ -50,7 +50,7 @@ public abstract class anz {
    private static final boolean z = false;
    private int A;
 
-   public anz(MinecraftServer $$0, hl<afa> $$1, eca $$2, int $$3) {
+   public anz(MinecraftServer $$0, hl<afa> $$1, ebz $$2, int $$3) {
       this.k = $$0;
       this.v = $$1;
       this.h = $$3;
@@ -70,7 +70,7 @@ public abstract class anz {
       }
 
       qr $$8 = this.a($$1);
-      aeq<cpm> $$9 = $$8 != null ? dij.a(new Dynamic(rc.a, $$8.c("Dimension"))).resultOrPartial(a::error).orElse(cpm.h) : cpm.h;
+      aeq<cpl> $$9 = $$8 != null ? dii.a(new Dynamic(rc.a, $$8.c("Dimension"))).resultOrPartial(a::error).orElse(cpl.h) : cpl.h;
       akk $$10 = this.k.a($$9);
       akk $$11;
       if ($$10 == null) {
@@ -81,14 +81,14 @@ public abstract class anz {
       }
 
       $$1.c($$11);
-      String $$13 = $$0.a(this.k.bf());
+      String $$13 = $$0.a(this.k.be());
       a.info("{}[{}] logged in with entity id {} at ({}, {}, {})", new Object[]{$$1.ab().getString(), $$13, $$1.ah(), $$1.dp(), $$1.dr(), $$1.dv()});
-      ebu $$14 = $$11.u_();
+      ebt $$14 = $$11.u_();
       $$1.c($$8);
       ali $$15 = new ali(this.k, $$0, $$1, $$2);
-      cpi $$16 = $$11.X();
-      boolean $$17 = $$16.b(cpi.B);
-      boolean $$18 = $$16.b(cpi.p);
+      cph $$16 = $$11.X();
+      boolean $$17 = $$16.b(cph.B);
+      boolean $$18 = $$16.b(cph.p);
       $$15.b(new yf($$1.ah(), $$14.n(), this.k.E(), this.n(), this.w, this.x, $$18, !$$17, $$1.d($$11)));
       $$15.b(new xc($$14.s(), $$14.t()));
       $$15.b(new yo($$1.fR()));
@@ -162,14 +162,14 @@ public abstract class anz {
    }
 
    protected void a(afi $$0, akl $$1) {
-      Set<eia> $$2 = Sets.newHashSet();
+      Set<ehz> $$2 = Sets.newHashSet();
 
-      for (eib $$3 : $$0.g()) {
+      for (eia $$3 : $$0.g()) {
          $$1.c.b(zz.a($$3, true));
       }
 
-      for (ehz $$4 : ehz.values()) {
-         eia $$5 = $$0.a($$4);
+      for (ehy $$4 : ehy.values()) {
+         ehz $$5 = $$0.a($$4);
          if ($$5 != null && !$$2.contains($$5)) {
             for (ux<?> $$7 : $$0.d($$5)) {
                $$1.c.b($$7);
@@ -181,45 +181,45 @@ public abstract class anz {
    }
 
    public void a(akk $$0) {
-      $$0.w_().a(new dgp() {
+      $$0.w_().a(new dgo() {
          @Override
-         public void a(dgr $$0, double $$1) {
+         public void a(dgq $$0, double $$1) {
             anz.this.a(new zi($$0));
          }
 
          @Override
-         public void a(dgr $$0, double $$1, double $$2, long $$3) {
+         public void a(dgq $$0, double $$1, double $$2, long $$3) {
             anz.this.a(new zh($$0));
          }
 
          @Override
-         public void a(dgr $$0, double $$1, double $$2) {
+         public void a(dgq $$0, double $$1, double $$2) {
             anz.this.a(new zg($$0));
          }
 
          @Override
-         public void a(dgr $$0, int $$1) {
+         public void a(dgq $$0, int $$1) {
             anz.this.a(new zj($$0));
          }
 
          @Override
-         public void b(dgr $$0, int $$1) {
+         public void b(dgq $$0, int $$1) {
             anz.this.a(new zk($$0));
          }
 
          @Override
-         public void b(dgr $$0, double $$1) {
+         public void b(dgq $$0, double $$1) {
          }
 
          @Override
-         public void c(dgr $$0, double $$1) {
+         public void c(dgq $$0, double $$1) {
          }
       });
    }
 
    @Nullable
    public qr a(akl $$0) {
-      qr $$1 = this.k.aU().y();
+      qr $$1 = this.k.aT().y();
       qr $$2;
       if (this.k.a($$0.fP()) && $$1 != null) {
          $$2 = $$1;
@@ -332,9 +332,9 @@ public abstract class anz {
       float $$3 = $$0.P();
       boolean $$4 = $$0.R();
       akk $$5 = this.k.a($$0.Q());
-      Optional<ehe> $$6;
+      Optional<ehd> $$6;
       if ($$5 != null && $$2 != null) {
-         $$6 = cbn.a($$5, $$2, $$3, $$4, $$1);
+         $$6 = cbm.a($$5, $$2, $$3, $$4, $$1);
       } else {
          $$6 = Optional.empty();
       }
@@ -352,14 +352,14 @@ public abstract class anz {
 
       boolean $$11 = false;
       if ($$6.isPresent()) {
-         dfa $$12 = $$8.a_($$2);
-         boolean $$13 = $$12.a(csn.pl);
-         ehe $$14 = $$6.get();
+         dez $$12 = $$8.a_($$2);
+         boolean $$13 = $$12.a(csm.pl);
+         ehd $$14 = $$6.get();
          float $$17;
          if (!$$12.a(apl.R) && !$$13) {
             $$17 = $$3;
          } else {
-            ehe $$15 = ehe.c($$2).d($$14).d();
+            ehd $$15 = ehd.c($$2).d($$14).d();
             $$17 = (float)arp.d(arp.d($$15.e, $$15.c) * 180.0F / (float)Math.PI - 90.0);
          }
 
@@ -376,7 +376,7 @@ public abstract class anz {
 
       byte $$18 = (byte)($$1 ? 1 : 0);
       akk $$19 = $$9.x();
-      ebu $$20 = $$19.u_();
+      ebt $$20 = $$19.u_();
       $$9.c.b(new za($$9.d($$19), $$18));
       $$9.c.a($$9.dp(), $$9.dr(), $$9.dv(), $$9.dA(), $$9.dC());
       $$9.c.b(new zp($$8.R(), $$8.S()));
@@ -415,7 +415,7 @@ public abstract class anz {
       }
    }
 
-   public void a(ux<?> $$0, aeq<cpm> $$1) {
+   public void a(ux<?> $$0, aeq<cpl> $$1) {
       for (akl $$2 : this.l) {
          if ($$2.dK().ac() == $$1) {
             $$2.c.b($$0);
@@ -423,8 +423,8 @@ public abstract class anz {
       }
    }
 
-   public void a(cbn $$0, tf $$1) {
-      eif $$2 = $$0.cf();
+   public void a(cbm $$0, tf $$1) {
+      eie $$2 = $$0.cf();
       if ($$2 != null) {
          for (String $$4 : $$2.g()) {
             akl $$5 = this.a($$4);
@@ -435,8 +435,8 @@ public abstract class anz {
       }
    }
 
-   public void b(cbn $$0, tf $$1) {
-      eif $$2 = $$0.cf();
+   public void b(cbm $$0, tf $$1) {
+      eie $$2 = $$0.cf();
       if ($$2 == null) {
          this.a($$1, false);
       } else {
@@ -505,7 +505,7 @@ public abstract class anz {
    }
 
    public boolean g(GameProfile $$0) {
-      return this.p.d($$0) || this.k.a($$0) && this.k.aU().o() || this.y;
+      return this.p.d($$0) || this.k.a($$0) && this.k.aT().o() || this.y;
    }
 
    @Nullable
@@ -519,7 +519,7 @@ public abstract class anz {
       return null;
    }
 
-   public void a(@Nullable cbn $$0, double $$1, double $$2, double $$3, double $$4, aeq<cpm> $$5, ux<?> $$6) {
+   public void a(@Nullable cbm $$0, double $$1, double $$2, double $$3, double $$4, aeq<cpl> $$5, ux<?> $$6) {
       for (int $$7 = 0; $$7 < this.l.size(); $$7++) {
          akl $$8 = this.l.get($$7);
          if ($$8 != $$0 && $$8.dK().ac() == $$5) {
@@ -559,9 +559,9 @@ public abstract class anz {
    }
 
    public void a(akl $$0, akk $$1) {
-      dgr $$2 = this.k.D().w_();
+      dgq $$2 = this.k.D().w_();
       $$0.c.b(new xy($$2));
-      $$0.c.b(new aad($$1.V(), $$1.W(), $$1.X().b(cpi.k)));
+      $$0.c.b(new aad($$1.V(), $$1.W(), $$1.X().b(cph.k)));
       $$0.c.b(new zp($$1.R(), $$1.S()));
       if ($$1.Z()) {
          $$0.c.b(new xv(xv.b, 0.0F));
@@ -675,11 +675,11 @@ public abstract class anz {
       return $$0.h() && !$$0.a(Instant.now());
    }
 
-   public apc a(cbn $$0) {
+   public apc a(cbm $$0) {
       UUID $$1 = $$0.cv();
       apc $$2 = this.r.get($$1);
       if ($$2 == null) {
-         File $$3 = this.k.a(ebv.b).toFile();
+         File $$3 = this.k.a(ebu.b).toFile();
          File $$4 = new File($$3, $$1 + ".json");
          if (!$$4.exists()) {
             File $$5 = new File($$3, $$0.ab().getString() + ".json");
@@ -700,7 +700,7 @@ public abstract class anz {
       UUID $$1 = $$0.cv();
       aez $$2 = this.s.get($$1);
       if ($$2 == null) {
-         Path $$3 = this.k.a(ebv.a).resolve($$1 + ".json");
+         Path $$3 = this.k.a(ebu.a).resolve($$1 + ".json");
          $$2 = new aez(this.k.ay(), this, this.k.az(), $$3, $$0);
          this.s.put($$1, $$2);
       }

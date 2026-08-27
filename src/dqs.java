@@ -1,29 +1,19 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalInt;
 
-public abstract class dqs {
-   public static final Codec<dqs> a = jb.ab.q().dispatch(dqs::b, dqt::a);
-   protected static final int b = 16;
-   protected final OptionalInt c;
+public class dqs<P extends dqr> {
+   public static final dqs<dqu> a = a("two_layers_feature_size", dqu.d);
+   public static final dqs<dqt> b = a("three_layers_feature_size", dqt.d);
+   private final Codec<P> c;
 
-   protected static <S extends dqs> RecordCodecBuilder<S, OptionalInt> a() {
-      return Codec.intRange(0, 80)
-         .optionalFieldOf("min_clipped_height")
-         .xmap($$0 -> $$0.map(OptionalInt::of).orElse(OptionalInt.empty()), $$0 -> $$0.isPresent() ? Optional.of($$0.getAsInt()) : Optional.empty())
-         .forGetter($$0 -> $$0.c);
+   private static <P extends dqr> dqs<P> a(String $$0, Codec<P> $$1) {
+      return hr.a(jb.ab, $$0, new dqs<>($$1));
    }
 
-   public dqs(OptionalInt $$0) {
+   private dqs(Codec<P> $$0) {
       this.c = $$0;
    }
 
-   protected abstract dqt<?> b();
-
-   public abstract int a(int var1, int var2);
-
-   public OptionalInt c() {
+   public Codec<P> a() {
       return this.c;
    }
 }

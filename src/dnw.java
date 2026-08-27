@@ -1,31 +1,167 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dnw implements dpr {
-   public static final Codec<dnw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dfa.b.fieldOf("valid_base_block").forGetter($$0x -> $$0x.b),
-               dfa.b.fieldOf("stem_state").forGetter($$0x -> $$0x.c),
-               dfa.b.fieldOf("hat_state").forGetter($$0x -> $$0x.d),
-               dfa.b.fieldOf("decor_state").forGetter($$0x -> $$0x.e),
-               dlq.b.fieldOf("replaceable_blocks").forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("planted").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dnw::new)
-   );
-   public final dfa b;
-   public final dfa c;
-   public final dfa d;
-   public final dfa e;
-   public final dlq f;
-   public final boolean g;
+public class dnw extends dnm<dnv> {
+   private static final float a = 0.06F;
 
-   public dnw(dfa $$0, dfa $$1, dfa $$2, dfa $$3, dlq $$4, boolean $$5) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+   public dnw(Codec<dnv> $$0) {
+      super($$0);
+   }
+
+   @Override
+   public boolean a(dno<dnv> $$0) {
+      cqf $$1 = $$0.b();
+      gu $$2 = $$0.e();
+      aru $$3 = $$0.d();
+      dgw $$4 = $$0.c();
+      dnv $$5 = $$0.f();
+      csl $$6 = $$5.b.b();
+      gu $$7 = null;
+      dez $$8 = $$1.a_($$2.d());
+      if ($$8.a($$6)) {
+         $$7 = $$2;
+      }
+
+      if ($$7 == null) {
+         return false;
+      } else {
+         int $$9 = arp.a($$3, 4, 13);
+         if ($$3.a(12) == 0) {
+            $$9 *= 2;
+         }
+
+         if (!$$5.g) {
+            int $$10 = $$4.d();
+            if ($$7.v() + $$9 + 1 >= $$10) {
+               return false;
+            }
+         }
+
+         boolean $$11 = !$$5.g && $$3.i() < 0.06F;
+         $$1.a($$2, csm.a.n(), 4);
+         this.a($$1, $$3, $$5, $$7, $$9, $$11);
+         this.b($$1, $$3, $$5, $$7, $$9, $$11);
+         return true;
+      }
+   }
+
+   private static boolean a(cqf $$0, gu $$1, dnv $$2, boolean $$3) {
+      if ($$0.a($$1, dey.a::r)) {
+         return true;
+      } else {
+         return $$3 ? $$2.f.test($$0, $$1) : false;
+      }
+   }
+
+   private void a(cqf $$0, aru $$1, dnv $$2, gu $$3, int $$4, boolean $$5) {
+      gu.a $$6 = new gu.a();
+      dez $$7 = $$2.c;
+      int $$8 = $$5 ? 1 : 0;
+
+      for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
+         for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
+            boolean $$11 = $$5 && arp.a($$9) == $$8 && arp.a($$10) == $$8;
+
+            for (int $$12 = 0; $$12 < $$4; $$12++) {
+               $$6.a($$3, $$9, $$12, $$10);
+               if (a($$0, $$6, $$2, true)) {
+                  if ($$2.g) {
+                     if (!$$0.a_($$6.d()).i()) {
+                        $$0.b($$6, true);
+                     }
+
+                     $$0.a($$6, $$7, 3);
+                  } else if ($$11) {
+                     if ($$1.i() < 0.1F) {
+                        this.a($$0, $$6, $$7);
+                     }
+                  } else {
+                     this.a($$0, $$6, $$7);
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   private void b(cqf $$0, aru $$1, dnv $$2, gu $$3, int $$4, boolean $$5) {
+      gu.a $$6 = new gu.a();
+      boolean $$7 = $$2.d.a(csm.kK);
+      int $$8 = Math.min($$1.a(1 + $$4 / 3) + 5, $$4);
+      int $$9 = $$4 - $$8;
+
+      for (int $$10 = $$9; $$10 <= $$4; $$10++) {
+         int $$11 = $$10 < $$4 - $$1.a(3) ? 2 : 1;
+         if ($$8 > 8 && $$10 < $$9 + 4) {
+            $$11 = 3;
+         }
+
+         if ($$5) {
+            $$11++;
+         }
+
+         for (int $$12 = -$$11; $$12 <= $$11; $$12++) {
+            for (int $$13 = -$$11; $$13 <= $$11; $$13++) {
+               boolean $$14 = $$12 == -$$11 || $$12 == $$11;
+               boolean $$15 = $$13 == -$$11 || $$13 == $$11;
+               boolean $$16 = !$$14 && !$$15 && $$10 != $$4;
+               boolean $$17 = $$14 && $$15;
+               boolean $$18 = $$10 < $$9 + 3;
+               $$6.a($$3, $$12, $$10, $$13);
+               if (a($$0, $$6, $$2, false)) {
+                  if ($$2.g && !$$0.a_($$6.d()).i()) {
+                     $$0.b($$6, true);
+                  }
+
+                  if ($$18) {
+                     if (!$$16) {
+                        this.a($$0, $$1, $$6, $$2.d, $$7);
+                     }
+                  } else if ($$16) {
+                     this.a($$0, $$1, $$2, $$6, 0.1F, 0.2F, $$7 ? 0.1F : 0.0F);
+                  } else if ($$17) {
+                     this.a($$0, $$1, $$2, $$6, 0.01F, 0.7F, $$7 ? 0.083F : 0.0F);
+                  } else {
+                     this.a($$0, $$1, $$2, $$6, 5.0E-4F, 0.98F, $$7 ? 0.07F : 0.0F);
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   private void a(cpm $$0, aru $$1, dnv $$2, gu.a $$3, float $$4, float $$5, float $$6) {
+      if ($$1.i() < $$4) {
+         this.a($$0, $$3, $$2.e);
+      } else if ($$1.i() < $$5) {
+         this.a($$0, $$3, $$2.d);
+         if ($$1.i() < $$6) {
+            a($$3, $$0, $$1);
+         }
+      }
+   }
+
+   private void a(cpm $$0, aru $$1, gu $$2, dez $$3, boolean $$4) {
+      if ($$0.a_($$2.d()).a($$3.b())) {
+         this.a($$0, $$2, $$3);
+      } else if ((double)$$1.i() < 0.15) {
+         this.a($$0, $$2, $$3);
+         if ($$4 && $$1.a(11) == 0) {
+            a($$2, $$0, $$1);
+         }
+      }
+   }
+
+   private static void a(gu $$0, cpm $$1, aru $$2) {
+      gu.a $$3 = $$0.j().c(ha.a);
+      if ($$1.t($$3)) {
+         int $$4 = arp.a($$2, 1, 5);
+         if ($$2.a(7) == 0) {
+            $$4 *= 2;
+         }
+
+         int $$5 = 23;
+         int $$6 = 25;
+         dpf.a($$1, $$2, $$3, $$4, 23, 25);
+      }
    }
 }

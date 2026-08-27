@@ -1,25 +1,34 @@
-public class fwt<T extends cbn> extends fww<T, fft<T>> {
-   private final ffo a;
+public class fwt extends fxf<bwk, ffe<bwk>> {
+   private final ffe<bwk> a;
 
-   public fwt(fuj<T, fft<T>> $$0, fhj $$1) {
+   public fwt(fus<bwk, ffe<bwk>> $$0, fho $$1) {
       super($$0);
-      this.a = new ffo($$1.a(fhm.aA));
+      this.a = new ffe<>($$1.a(fhr.ak));
    }
 
-   public void a(elg $$0, fnl $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, true);
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, false);
-   }
+   public void a(elf $$0, fnu $$1, int $$2, bwk $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      cix $$10 = $$3.p();
+      if ($$10.d() instanceof cin) {
+         cin $$11 = (cin)$$10.d();
+         this.c().a(this.a);
+         this.a.a($$3, $$4, $$5, $$6);
+         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
+         float $$13;
+         float $$14;
+         float $$15;
+         if ($$11 instanceof cho) {
+            int $$12 = ((cho)$$11).e_($$10);
+            $$13 = (float)($$12 >> 16 & 0xFF) / 255.0F;
+            $$14 = (float)($$12 >> 8 & 0xFF) / 255.0F;
+            $$15 = (float)($$12 & 0xFF) / 255.0F;
+         } else {
+            $$13 = 1.0F;
+            $$14 = 1.0F;
+            $$15 = 1.0F;
+         }
 
-   private void a(elg $$0, fnl $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8) {
-      qr $$9 = $$8 ? $$3.gh() : $$3.gi();
-      bim.a($$9.l("id")).filter($$0x -> $$0x == bim.at).ifPresent($$10 -> {
-         $$0.a();
-         $$0.a($$8 ? 0.4F : -0.4F, $$3.bW() ? -1.3F : -1.5F, 0.0F);
-         bva.b $$11 = bva.b.a($$9.h("Variant"));
-         elk $$12 = $$1.getBuffer(this.a.a(fua.a($$11)));
-         this.a.a($$0, $$12, $$2, fyc.d, $$4, $$5, $$6, $$7, $$3.ah);
-         $$0.b();
-      });
+         elj $$19 = $$1.getBuffer(foc.e($$11.h()));
+         this.a.a($$0, $$19, $$2, fyl.d, $$13, $$14, $$15, 1.0F);
+      }
    }
 }

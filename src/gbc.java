@@ -1,17 +1,57 @@
-public abstract class gbc extends gbb implements gbu {
-   private boolean n;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
-   protected gbc(aov $$0, aox $$1, aru $$2) {
-      super($$0, $$1, $$2);
+public class gbc extends aer {
+   @VisibleForTesting
+   static final char e = '#';
+   private final String f;
+
+   private gbc(String $$0, String $$1, String $$2, @Nullable aer.a $$3) {
+      super($$0, $$1, $$3);
+      this.f = $$2;
+   }
+
+   public gbc(String $$0, String $$1, String $$2) {
+      super($$0, $$1);
+      this.f = j($$2);
+   }
+
+   public gbc(aer $$0, String $$1) {
+      this($$0.b(), $$0.a(), j($$1), null);
+   }
+
+   public static gbc c(String $$0, String $$1) {
+      return new gbc("minecraft", $$0, $$1);
+   }
+
+   private static String j(String $$0) {
+      return $$0.toLowerCase(Locale.ROOT);
+   }
+
+   public String f() {
+      return this.f;
    }
 
    @Override
-   public boolean m() {
-      return this.n;
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 instanceof gbc && super.equals($$0)) {
+         gbc $$1 = (gbc)$$0;
+         return this.f.equals($$1.f);
+      } else {
+         return false;
+      }
    }
 
-   protected final void n() {
-      this.n = true;
-      this.i = false;
+   @Override
+   public int hashCode() {
+      return 31 * super.hashCode() + this.f.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return super.toString() + "#" + this.f;
    }
 }

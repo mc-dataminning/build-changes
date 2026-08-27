@@ -1,249 +1,160 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.EnumSet;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.function.Function;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public abstract class cxk extends csm {
-   private static final float b = 1.0F;
-   private static final ehx c = csm.a(0.0, 15.0, 0.0, 16.0, 16.0, 16.0);
-   private static final ehx d = csm.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
-   private static final ehx e = csm.a(0.0, 0.0, 0.0, 1.0, 16.0, 16.0);
-   private static final ehx f = csm.a(15.0, 0.0, 0.0, 16.0, 16.0, 16.0);
-   private static final ehx g = csm.a(0.0, 0.0, 0.0, 16.0, 16.0, 1.0);
-   private static final ehx h = csm.a(0.0, 0.0, 15.0, 16.0, 16.0, 16.0);
-   private static final Map<ha, dfr> i = cxy.g;
-   private static final Map<ha, ehx> j = ac.a(Maps.newEnumMap(ha.class), $$0 -> {
-      $$0.put(ha.c, g);
-      $$0.put(ha.f, f);
-      $$0.put(ha.d, h);
-      $$0.put(ha.e, e);
-      $$0.put(ha.b, c);
-      $$0.put(ha.a, d);
-   });
-   protected static final ha[] a = ha.values();
-   private final ImmutableMap<dfa, ehx> k;
-   private final boolean l;
-   private final boolean m;
-   private final boolean n;
+public class cxk {
+   public static final cxk.e[] a = new cxk.e[]{cxk.e.a, cxk.e.b, cxk.e.c};
+   private final cxk.b b;
 
-   public cxk(dez.d $$0) {
-      super($$0);
-      this.k(a(this.C));
-      this.k = this.a(cxk::o);
-      this.l = ha.c.a.a().allMatch(this::a);
-      this.m = ha.c.a.a().filter(ha.a.a).filter(this::a).count() % 2L == 0L;
-      this.n = ha.c.a.a().filter(ha.a.c).filter(this::a).count() % 2L == 0L;
+   public cxk(cxj $$0) {
+      this(new cxk.a($$0));
    }
 
-   public static Set<ha> h(dfa $$0) {
-      if (!($$0.b() instanceof cxk)) {
-         return Set.of();
-      } else {
-         Set<ha> $$1 = EnumSet.noneOf(ha.class);
+   public cxk(cxk.b $$0) {
+      this.b = $$0;
+   }
 
-         for (ha $$2 : ha.values()) {
-            if (a($$0, $$2)) {
-               $$1.add($$2);
+   public boolean a(dez $$0, cor $$1, gu $$2, ha $$3) {
+      return ha.a().anyMatch($$4 -> this.a($$0, $$1, $$2, $$3, $$4, this.b::a).isPresent());
+   }
+
+   public Optional<cxk.c> a(dez $$0, cpm $$1, gu $$2, aru $$3) {
+      return ha.a($$3)
+         .stream()
+         .filter($$1x -> this.b.b($$0, $$1x))
+         .map($$4 -> this.a($$0, $$1, $$2, $$4, $$3, false))
+         .filter(Optional::isPresent)
+         .findFirst()
+         .orElse(Optional.empty());
+   }
+
+   public long a(dez $$0, cpm $$1, gu $$2, boolean $$3) {
+      return ha.a().filter($$1x -> this.b.b($$0, $$1x)).map($$4 -> this.a($$0, $$1, $$2, $$4, $$3)).reduce(0L, Long::sum);
+   }
+
+   public Optional<cxk.c> a(dez $$0, cpm $$1, gu $$2, ha $$3, aru $$4, boolean $$5) {
+      return ha.a($$4).stream().map($$5x -> this.a($$0, $$1, $$2, $$3, $$5x, $$5)).filter(Optional::isPresent).findFirst().orElse(Optional.empty());
+   }
+
+   private long a(dez $$0, cpm $$1, gu $$2, ha $$3, boolean $$4) {
+      return ha.a().map($$5 -> this.a($$0, $$1, $$2, $$3, $$5, $$4)).filter(Optional::isPresent).count();
+   }
+
+   @VisibleForTesting
+   public Optional<cxk.c> a(dez $$0, cpm $$1, gu $$2, ha $$3, ha $$4, boolean $$5) {
+      return this.a($$0, $$1, $$2, $$3, $$4, this.b::a).flatMap($$2x -> this.a($$1, $$2x, $$5));
+   }
+
+   public Optional<cxk.c> a(dez $$0, cor $$1, gu $$2, ha $$3, ha $$4, cxk.d $$5) {
+      if ($$4.o() == $$3.o()) {
+         return Optional.empty();
+      } else if (this.b.a($$0) || this.b.a($$0, $$3) && !this.b.a($$0, $$4)) {
+         for (cxk.e $$6 : this.b.a()) {
+            cxk.c $$7 = $$6.a($$2, $$4, $$3);
+            if ($$5.test($$1, $$2, $$7)) {
+               return Optional.of($$7);
             }
          }
 
-         return $$1;
-      }
-   }
-
-   public static Set<ha> a(byte $$0) {
-      Set<ha> $$1 = EnumSet.noneOf(ha.class);
-
-      for (ha $$2 : ha.values()) {
-         if (($$0 & (byte)(1 << $$2.ordinal())) > 0) {
-            $$1.add($$2);
-         }
-      }
-
-      return $$1;
-   }
-
-   public static byte a(Collection<ha> $$0) {
-      byte $$1 = 0;
-
-      for (ha $$2 : $$0) {
-         $$1 = (byte)($$1 | 1 << $$2.ordinal());
-      }
-
-      return $$1;
-   }
-
-   protected boolean a(ha $$0) {
-      return true;
-   }
-
-   @Override
-   protected void a(dfb.a<csm, dfa> $$0) {
-      for (ha $$1 : a) {
-         if (this.a($$1)) {
-            $$0.a(b($$1));
-         }
-      }
-   }
-
-   @Override
-   public dfa a(dfa $$0, ha $$1, dfa $$2, cpn $$3, gu $$4, gu $$5) {
-      if (!n($$0)) {
-         return csn.a.n();
+         return Optional.empty();
       } else {
-         return a($$0, $$1) && !a($$3, $$1, $$5, $$2) ? a($$0, b($$1)) : $$0;
+         return Optional.empty();
       }
    }
 
-   @Override
-   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
-      return (ehx)this.k.get($$0);
+   public Optional<cxk.c> a(cpm $$0, cxk.c $$1, boolean $$2) {
+      dez $$3 = $$0.a_($$1.a());
+      return this.b.a($$0, $$1, $$3, $$2) ? Optional.of($$1) : Optional.empty();
    }
 
-   @Override
-   public boolean a(dfa $$0, cpp $$1, gu $$2) {
-      boolean $$3 = false;
+   public static class a implements cxk.b {
+      protected cxj a;
 
-      for (ha $$4 : a) {
-         if (a($$0, $$4)) {
-            gu $$5 = $$2.a($$4);
-            if (!a($$1, $$4, $$5, $$1.a_($$5))) {
-               return false;
-            }
-
-            $$3 = true;
-         }
+      public a(cxj $$0) {
+         this.a = $$0;
       }
 
-      return $$3;
+      @Nullable
+      @Override
+      public dez a(dez $$0, cor $$1, gu $$2, ha $$3) {
+         return this.a.c($$0, $$1, $$2, $$3);
+      }
+
+      protected boolean a(cor $$0, gu $$1, gu $$2, ha $$3, dez $$4) {
+         return $$4.i() || $$4.a(this.a) || $$4.a(csm.G) && $$4.u().b();
+      }
+
+      @Override
+      public boolean a(cor $$0, gu $$1, cxk.c $$2) {
+         dez $$3 = $$0.a_($$2.a());
+         return this.a($$0, $$1, $$2.a(), $$2.b(), $$3) && this.a.a($$0, $$3, $$2.a(), $$2.b());
+      }
    }
 
-   @Override
-   public boolean a(dfa $$0, clg $$1) {
-      return p($$0);
-   }
+   public interface b {
+      @Nullable
+      dez a(dez var1, cor var2, gu var3, ha var4);
 
-   @Nullable
-   @Override
-   public dfa a(clg $$0) {
-      cpm $$1 = $$0.q();
-      gu $$2 = $$0.a();
-      dfa $$3 = $$1.a_($$2);
-      return Arrays.stream($$0.f()).map($$3x -> this.c($$3, $$1, $$2, $$3x)).filter(Objects::nonNull).findFirst().orElse(null);
-   }
+      boolean a(cor var1, gu var2, cxk.c var3);
 
-   public boolean a(cos $$0, dfa $$1, gu $$2, ha $$3) {
-      if (this.a($$3) && (!$$1.a(this) || !a($$1, $$3))) {
-         gu $$4 = $$2.a($$3);
-         return a($$0, $$3, $$4, $$0.a_($$4));
-      } else {
+      default cxk.e[] a() {
+         return cxk.a;
+      }
+
+      default boolean a(dez $$0, ha $$1) {
+         return cxj.a($$0, $$1);
+      }
+
+      default boolean a(dez $$0) {
          return false;
       }
-   }
 
-   @Nullable
-   public dfa c(dfa $$0, cos $$1, gu $$2, ha $$3) {
-      if (!this.a($$1, $$0, $$2, $$3)) {
-         return null;
-      } else {
-         dfa $$4;
-         if ($$0.a(this)) {
-            $$4 = $$0;
-         } else if (this.g() && $$0.u().a(eae.c)) {
-            $$4 = this.n().a(dfq.C, Boolean.valueOf(true));
+      default boolean b(dez $$0, ha $$1) {
+         return this.a($$0) || this.a($$0, $$1);
+      }
+
+      default boolean a(cpm $$0, cxk.c $$1, dez $$2, boolean $$3) {
+         dez $$4 = this.a($$2, $$0, $$1.a(), $$1.b());
+         if ($$4 != null) {
+            if ($$3) {
+               $$0.x($$1.a()).e($$1.a());
+            }
+
+            return $$0.a($$1.a(), $$4, 2);
          } else {
-            $$4 = this.n();
-         }
-
-         return $$4.a(b($$3), Boolean.valueOf(true));
-      }
-   }
-
-   @Override
-   public dfa a(dfa $$0, cyy $$1) {
-      return !this.l ? $$0 : this.a($$0, $$1::a);
-   }
-
-   @Override
-   public dfa a(dfa $$0, cxh $$1) {
-      if ($$1 == cxh.c && !this.m) {
-         return $$0;
-      } else {
-         return $$1 == cxh.b && !this.n ? $$0 : this.a($$0, $$1::b);
-      }
-   }
-
-   private dfa a(dfa $$0, Function<ha, ha> $$1) {
-      dfa $$2 = $$0;
-
-      for (ha $$3 : a) {
-         if (this.a($$3)) {
-            $$2 = $$2.a(b($$1.apply($$3)), $$0.c(b($$3)));
+            return false;
          }
       }
-
-      return $$2;
    }
 
-   public static boolean a(dfa $$0, ha $$1) {
-      dfr $$2 = b($$1);
-      return $$0.b($$2) && $$0.c($$2);
+   public static record c(gu a, ha b) {
    }
 
-   public static boolean a(cos $$0, ha $$1, gu $$2, dfa $$3) {
-      return csm.a($$3.l($$0, $$2), $$1.g()) || csm.a($$3.k($$0, $$2), $$1.g());
+   @FunctionalInterface
+   public interface d {
+      boolean test(cor var1, gu var2, cxk.c var3);
    }
 
-   private boolean g() {
-      return this.C.d().contains(dfq.C);
-   }
-
-   private static dfa a(dfa $$0, dfr $$1) {
-      dfa $$2 = $$0.a($$1, Boolean.valueOf(false));
-      return n($$2) ? $$2 : csn.a.n();
-   }
-
-   public static dfr b(ha $$0) {
-      return i.get($$0);
-   }
-
-   private static dfa a(dfb<csm, dfa> $$0) {
-      dfa $$1 = $$0.b();
-
-      for (dfr $$2 : i.values()) {
-         if ($$1.b($$2)) {
-            $$1 = $$1.a($$2, Boolean.valueOf(false));
+   public static enum e {
+      a {
+         @Override
+         public cxk.c a(gu $$0, ha $$1, ha $$2) {
+            return new cxk.c($$0, $$1);
          }
-      }
-
-      return $$1;
-   }
-
-   private static ehx o(dfa $$0) {
-      ehx $$1 = ehu.a();
-
-      for (ha $$2 : a) {
-         if (a($$0, $$2)) {
-            $$1 = ehu.a($$1, j.get($$2));
+      },
+      b {
+         @Override
+         public cxk.c a(gu $$0, ha $$1, ha $$2) {
+            return new cxk.c($$0.a($$1), $$2);
          }
-      }
+      },
+      c {
+         @Override
+         public cxk.c a(gu $$0, ha $$1, ha $$2) {
+            return new cxk.c($$0.a($$1).a($$2), $$1.g());
+         }
+      };
 
-      return $$1.c() ? ehu.b() : $$1;
+      public abstract cxk.c a(gu var1, ha var2, ha var3);
    }
-
-   protected static boolean n(dfa $$0) {
-      return Arrays.stream(a).anyMatch($$1 -> a($$0, $$1));
-   }
-
-   private static boolean p(dfa $$0) {
-      return Arrays.stream(a).anyMatch($$1 -> !a($$0, $$1));
-   }
-
-   public abstract cxl b();
 }

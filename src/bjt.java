@@ -1,128 +1,193 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class bjt {
-   private static final Map<bim<?>, bjt.a> a = Maps.newHashMap();
+public abstract class bjt extends buj implements bjg {
+   protected static final adz<Byte> bT = aec.a(bjt.class, aeb.a);
+   protected static final adz<Optional<UUID>> bU = aec.a(bjt.class, aeb.q);
+   private boolean bW;
 
-   private static <T extends bja> void a(bim<T> $$0, bjt.c $$1, dkj.a $$2, bjt.b<T> $$3) {
-      bjt.a $$4 = a.put($$0, new bjt.a($$2, $$1, $$3));
-      if ($$4 != null) {
-         throw new IllegalStateException("Duplicate registration for type " + jb.h.b($$0));
+   protected bjt(bim<? extends bjt> $$0, cpl $$1) {
+      super($$0, $$1);
+      this.q();
+   }
+
+   @Override
+   protected void a_() {
+      super.a_();
+      this.an.a(bT, (byte)0);
+      this.an.a(bU, Optional.empty());
+   }
+
+   @Override
+   public void b(qr $$0) {
+      super.b($$0);
+      if (this.d() != null) {
+         $$0.a("Owner", this.d());
+      }
+
+      $$0.a("Sitting", this.bW);
+   }
+
+   @Override
+   public void a(qr $$0) {
+      super.a($$0);
+      UUID $$1;
+      if ($$0.b("Owner")) {
+         $$1 = $$0.a("Owner");
+      } else {
+         String $$2 = $$0.l("Owner");
+         $$1 = any.a(this.cK(), $$2);
+      }
+
+      if ($$1 != null) {
+         try {
+            this.b($$1);
+            this.x(true);
+         } catch (Throwable var4) {
+            this.x(false);
+         }
+      }
+
+      this.bW = $$0.q("Sitting");
+      this.y(this.bW);
+   }
+
+   @Override
+   public boolean a(cbm $$0) {
+      return !this.fO();
+   }
+
+   protected void w(boolean $$0) {
+      it $$1 = iv.M;
+      if (!$$0) {
+         $$1 = iv.Z;
+      }
+
+      for (int $$2 = 0; $$2 < 7; $$2++) {
+         double $$3 = this.ag.k() * 0.02;
+         double $$4 = this.ag.k() * 0.02;
+         double $$5 = this.ag.k() * 0.02;
+         this.dK().a($$1, this.d(1.0), this.ds() + 0.5, this.g(1.0), $$3, $$4, $$5);
       }
    }
 
-   public static bjt.c a(bim<?> $$0) {
-      bjt.a $$1 = a.get($$0);
-      return $$1 == null ? bjt.c.c : $$1.b;
-   }
-
-   public static dkj.a b(@Nullable bim<?> $$0) {
-      bjt.a $$1 = a.get($$0);
-      return $$1 == null ? dkj.a.f : $$1.a;
-   }
-
-   public static <T extends bii> boolean a(bim<T> $$0, cqb $$1, bjc $$2, gu $$3, aru $$4) {
-      bjt.a $$5 = a.get($$0);
-      return $$5 == null || $$5.c.test($$0, $$1, $$2, $$3, $$4);
-   }
-
-   static {
-      a(bim.f, bjt.c.b, dkj.a.f, bvr::a);
-      a(bim.r, bjt.c.b, dkj.a.f, bvm::c);
-      a(bim.v, bjt.c.b, dkj.a.f, bvm::c);
-      a(bim.y, bjt.c.b, dkj.a.f, byp::a);
-      a(bim.V, bjt.c.b, dkj.a.f, byx::b);
-      a(bim.aB, bjt.c.b, dkj.a.f, bvm::c);
-      a(bim.aE, bjt.c.b, dkj.a.f, bvm::c);
-      a(bim.aT, bjt.c.b, dkj.a.f, bvm::c);
-      a(bim.bc, bjt.c.b, dkj.a.f, bvk::b);
-      a(bim.g, bjt.c.a, dkj.a.f, buf::b);
-      a(bim.i, bjt.c.a, dkj.a.f, bzb::c);
-      a(bim.n, bjt.c.a, dkj.a.f, bzb::b);
-      a(bim.q, bjt.c.a, dkj.a.f, buk::b);
-      a(bim.t, bjt.c.a, dkj.a.f, buk::b);
-      a(bim.u, bjt.c.a, dkj.a.f, bzb::b);
-      a(bim.w, bjt.c.a, dkj.a.f, buk::b);
-      a(bim.E, bjt.c.a, dkj.a.f, bzb::b);
-      a(bim.F, bjt.c.a, dkj.a.f, bys::b);
-      a(bim.C, bjt.c.a, dkj.a.f, bja::a);
-      a(bim.O, bjt.c.a, dkj.a.f, bvz::c);
-      a(bim.Q, bjt.c.a, dkj.a.f, byv::b);
-      a(bim.R, bjt.c.a, dkj.a.f, bzb::b);
-      a(bim.T, bjt.c.b, dkj.a.f, biq::a);
-      a(bim.U, bjt.c.a, dkj.a.f, bwf::c);
-      a(bim.Y, bjt.c.a, dkj.a.f, buk::b);
-      a(bim.Z, bjt.c.a, dkj.a.f, byy::a);
-      a(bim.ac, bjt.c.a, dkj.a.f, bja::a);
-      a(bim.aj, bjt.c.a, dkj.a.f, buk::b);
-      a(bim.al, bjt.c.a, dkj.a.f, bza::b);
-      a(bim.ao, bjt.c.a, dkj.a.f, bux::c);
-      a(bim.ap, bjt.c.a, dkj.a.f, buk::b);
-      a(bim.aq, bjt.c.a, dkj.a.e, buy::c);
-      a(bim.at, bjt.c.a, dkj.a.e, bva::c);
-      a(bim.av, bjt.c.a, dkj.a.f, buk::b);
-      a(bim.W, bjt.c.a, dkj.a.f, bzx::c);
-      a(bim.aw, bjt.c.a, dkj.a.f, cad::b);
-      a(bim.ay, bjt.c.a, dkj.a.f, bzc::b);
-      a(bim.az, bjt.c.a, dkj.a.f, bvc::c);
-      a(bim.aC, bjt.c.a, dkj.a.f, bve::c);
-      a(bim.aF, bjt.c.a, dkj.a.f, buk::b);
-      a(bim.aI, bjt.c.a, dkj.a.f, bzi::b);
-      a(bim.aJ, bjt.c.a, dkj.a.f, bzb::b);
-      a(bim.aK, bjt.c.a, dkj.a.f, buk::b);
-      a(bim.aL, bjt.c.a, dkj.a.f, bzk::c);
-      a(bim.aO, bjt.c.a, dkj.a.f, bja::a);
-      a(bim.aS, bjt.c.a, dkj.a.f, bzb::b);
-      a(bim.aU, bjt.c.a, dkj.a.f, bzn::a);
-      a(bim.aV, bjt.c.d, dkj.a.f, bzo::c);
-      a(bim.bd, bjt.c.a, dkj.a.f, bvl::c);
-      a(bim.bf, bjt.c.a, dkj.a.f, bja::a);
-      a(bim.bj, bjt.c.a, dkj.a.f, bzb::b);
-      a(bim.bk, bjt.c.a, dkj.a.f, bzb::b);
-      a(bim.bl, bjt.c.a, dkj.a.f, bzb::b);
-      a(bim.bn, bjt.c.a, dkj.a.f, bvn::c);
-      a(bim.bp, bjt.c.a, dkj.a.f, bzb::b);
-      a(bim.bq, bjt.c.a, dkj.a.f, buk::b);
-      a(bim.bs, bjt.c.a, dkj.a.f, bzw::b);
-      a(bim.br, bjt.c.a, dkj.a.f, bzb::b);
-      a(bim.m, bjt.c.a, dkj.a.f, buk::b);
-      a(bim.A, bjt.c.b, dkj.a.f, byx::b);
-      a(bim.G, bjt.c.c, dkj.a.f, bzb::b);
-      a(bim.N, bjt.c.c, dkj.a.f, buu::c);
-      a(bim.aa, bjt.c.c, dkj.a.f, bzb::b);
-      a(bim.as, bjt.c.c, dkj.a.f, buk::b);
-      a(bim.au, bjt.c.c, dkj.a.f, bja::a);
-      a(bim.aD, bjt.c.c, dkj.a.f, bzb::b);
-      a(bim.aG, bjt.c.c, dkj.a.f, bja::a);
-      a(bim.ba, bjt.c.c, dkj.a.f, buk::b);
-      a(bim.be, bjt.c.c, dkj.a.f, bzb::b);
-      a(bim.bg, bjt.c.c, dkj.a.f, bzb::b);
-      a(bim.bh, bjt.c.c, dkj.a.f, bja::a);
-      a(bim.bi, bjt.c.c, dkj.a.f, bja::a);
-   }
-
-   static class a {
-      final dkj.a a;
-      final bjt.c b;
-      final bjt.b<?> c;
-
-      public a(dkj.a $$0, bjt.c $$1, bjt.b<?> $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 7) {
+         this.w(true);
+      } else if ($$0 == 6) {
+         this.w(false);
+      } else {
+         super.b($$0);
       }
    }
 
-   @FunctionalInterface
-   public interface b<T extends bii> {
-      boolean test(bim<T> var1, cqb var2, bjc var3, gu var4, aru var5);
+   @Override
+   public boolean p() {
+      return (this.an.b(bT) & 4) != 0;
    }
 
-   public static enum c {
-      a,
-      b,
-      c,
-      d;
+   public void x(boolean $$0) {
+      byte $$1 = this.an.b(bT);
+      if ($$0) {
+         this.an.b(bT, (byte)($$1 | 4));
+      } else {
+         this.an.b(bT, (byte)($$1 & -5));
+      }
+
+      this.q();
+   }
+
+   protected void q() {
+   }
+
+   public boolean t() {
+      return (this.an.b(bT) & 1) != 0;
+   }
+
+   public void y(boolean $$0) {
+      byte $$1 = this.an.b(bT);
+      if ($$0) {
+         this.an.b(bT, (byte)($$1 | 1));
+      } else {
+         this.an.b(bT, (byte)($$1 & -2));
+      }
+   }
+
+   @Nullable
+   @Override
+   public UUID d() {
+      return this.an.b(bU).orElse(null);
+   }
+
+   public void b(@Nullable UUID $$0) {
+      this.an.b(bU, Optional.ofNullable($$0));
+   }
+
+   public void f(cbm $$0) {
+      this.x(true);
+      this.b($$0.cv());
+      if ($$0 instanceof akl) {
+         ai.x.a((akl)$$0, this);
+      }
+   }
+
+   @Override
+   public boolean c(biy $$0) {
+      return this.j($$0) ? false : super.c($$0);
+   }
+
+   public boolean j(biy $$0) {
+      return $$0 == this.I_();
+   }
+
+   public boolean a(biy $$0, biy $$1) {
+      return true;
+   }
+
+   @Override
+   public eie cf() {
+      if (this.p()) {
+         biy $$0 = this.I_();
+         if ($$0 != null) {
+            return $$0.cf();
+         }
+      }
+
+      return super.cf();
+   }
+
+   @Override
+   public boolean s(bii $$0) {
+      if (this.p()) {
+         biy $$1 = this.I_();
+         if ($$0 == $$1) {
+            return true;
+         }
+
+         if ($$1 != null) {
+            return $$1.s($$0);
+         }
+      }
+
+      return super.s($$0);
+   }
+
+   @Override
+   public void a(bhg $$0) {
+      if (!this.dK().B && this.dK().X().b(cph.m) && this.I_() instanceof akl) {
+         this.I_().a(this.eI().a());
+      }
+
+      super.a($$0);
+   }
+
+   public boolean ga() {
+      return this.bW;
+   }
+
+   public void z(boolean $$0) {
+      this.bW = $$0;
    }
 }

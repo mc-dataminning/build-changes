@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 import org.lwjgl.system.MemoryUtil;
 import org.slf4j.Logger;
 
-public class evi implements ejj {
+public class evi implements eji {
    static final Logger a = LogUtils.getLogger();
    private static final int b = 16;
    private static final int c = 2;
@@ -36,7 +36,7 @@ public class evi implements ejj {
 
    @Nullable
    @Override
-   public eji a(int $$0) {
+   public ejh a(int $$0) {
       return this.h.a($$0);
    }
 
@@ -202,7 +202,7 @@ public class evi implements ejj {
          return Either.left(this::a);
       }
 
-      private ejj a(anm $$0) throws IOException {
+      private eji a(anm $$0) throws IOException {
          evi var3;
          try (InputStream $$1 = $$0.open(this.c)) {
             var3 = this.a($$1);
@@ -285,7 +285,7 @@ public class evi implements ejj {
       }
    }
 
-   static record d(evi.f a, int b, int c) implements eji {
+   static record d(evi.f a, int b, int c) implements ejh {
 
       public int c() {
          return this.c - this.b + 1;
@@ -307,8 +307,8 @@ public class evi implements ejj {
       }
 
       @Override
-      public euy bake(Function<ejk, euy> $$0) {
-         return $$0.apply(new ejk() {
+      public euy bake(Function<ejj, euy> $$0) {
+         return $$0.apply(new ejj() {
             @Override
             public float d() {
                return 2.0F;
@@ -329,7 +329,7 @@ public class evi implements ejj {
                IntBuffer $$2 = MemoryUtil.memAllocInt(d.this.c() * 16);
                evi.a($$2, d.this.a, d.this.b, d.this.c);
                $$2.rewind();
-               GlStateManager.upload(0, $$0, $$1, d.this.c(), 16, ekh.a.a, $$2, MemoryUtil::memFree);
+               GlStateManager.upload(0, $$0, $$1, d.this.c(), 16, ekg.a.a, $$2, MemoryUtil::memFree);
             }
 
             @Override

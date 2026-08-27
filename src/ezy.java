@@ -1,151 +1,50 @@
-public class ezy extends exz {
-   private static final int a = 7;
-   private static final tf b = tf.c("jigsaw_block.joint_label");
-   private static final tf c = tf.c("jigsaw_block.pool");
-   private static final tf k = tf.c("jigsaw_block.name");
-   private static final tf l = tf.c("jigsaw_block.target");
-   private static final tf m = tf.c("jigsaw_block.final_state");
-   private final ddl n;
-   private esq o;
-   private esq p;
-   private esq q;
-   private esq s;
-   int t;
-   private boolean u = true;
-   private eso<ddl.a> v;
-   private esh w;
-   private esh x;
-   private ddl.a y;
+public abstract class ezy<T extends cfd> extends eyy<T> implements cep {
+   private final aer x;
 
-   public ezy(ddl $$0) {
-      super(eqe.a);
-      this.n = $$0;
+   public ezy(T $$0, cbl $$1, tf $$2, aer $$3) {
+      super($$0, $$1, $$2);
+      this.x = $$3;
    }
 
-   private void l() {
-      this.C();
-      this.f.a(null);
-   }
-
-   private void B() {
-      this.f.a(null);
-   }
-
-   private void C() {
-      this.f.J().b(new acm(this.n.p(), new aer(this.o.a()), new aer(this.p.a()), new aer(this.q.a()), this.s.a(), this.y));
-   }
-
-   private void D() {
-      this.f.J().b(new abr(this.n.p(), this.t, this.u));
+   protected void E() {
    }
 
    @Override
-   public void au_() {
-      this.B();
-   }
-
-   @Override
-   protected void aE_() {
-      this.q = new esq(this.i, this.g / 2 - 153, 20, 300, 20, tf.c("jigsaw_block.pool"));
-      this.q.k(128);
-      this.q.a(this.n.f().a().toString());
-      this.q.b($$0x -> this.E());
-      this.e(this.q);
-      this.o = new esq(this.i, this.g / 2 - 153, 55, 300, 20, tf.c("jigsaw_block.name"));
-      this.o.k(128);
-      this.o.a(this.n.c().toString());
-      this.o.b($$0x -> this.E());
-      this.e(this.o);
-      this.p = new esq(this.i, this.g / 2 - 153, 90, 300, 20, tf.c("jigsaw_block.target"));
-      this.p.k(128);
-      this.p.a(this.n.d().toString());
-      this.p.b($$0x -> this.E());
-      this.e(this.p);
-      this.s = new esq(this.i, this.g / 2 - 153, 125, 300, 20, tf.c("jigsaw_block.final_state"));
-      this.s.k(256);
-      this.s.a(this.n.g());
-      this.e(this.s);
-      this.y = this.n.i();
-      int $$0 = this.i.a(b) + 10;
-      this.v = this.d(eso.<ddl.a>a(ddl.a::a).a(ddl.a.values()).a(this.y).a().a(this.g / 2 - 152 + $$0, 150, 300 - $$0, 20, b, ($$0x, $$1x) -> this.y = $$1x));
-      boolean $$1 = cwl.h(this.n.q()).o().b();
-      this.v.i = $$1;
-      this.v.j = $$1;
-      this.d(new esd(this.g / 2 - 154, 180, 100, 20, te.a, 0.0) {
-         {
-            this.b();
-         }
-
-         @Override
-         protected void b() {
-            this.b(tf.a("jigsaw_block.levels", ezy.this.t));
-         }
-
-         @Override
-         protected void a() {
-            ezy.this.t = arp.a(arp.b(0.0, 7.0, this.c));
-         }
-      });
-      this.d(eso.b(this.u).a(this.g / 2 - 50, 180, 100, 20, tf.c("jigsaw_block.keep_jigsaws"), ($$0x, $$1x) -> this.u = $$1x));
-      this.x = this.d(esh.a(tf.c("jigsaw_block.generate"), $$0x -> {
-         this.l();
-         this.D();
-      }).a(this.g / 2 + 54, 180, 100, 20).a());
-      this.w = this.d(esh.a(te.d, $$0x -> this.l()).a(this.g / 2 - 4 - 150, 210, 150, 20).a());
-      this.d(esh.a(te.e, $$0x -> this.B()).a(this.g / 2 + 4, 210, 150, 20).a());
-      this.c(this.q);
+   protected void aC_() {
+      super.aC_();
       this.E();
-   }
-
-   private void E() {
-      boolean $$0 = aer.i(this.o.a()) && aer.i(this.p.a()) && aer.i(this.q.a());
-      this.w.i = $$0;
-      this.x.i = $$0;
+      this.p.a(this);
    }
 
    @Override
-   public void a(eqm $$0, int $$1, int $$2) {
-      String $$3 = this.o.a();
-      String $$4 = this.p.a();
-      String $$5 = this.q.a();
-      String $$6 = this.s.a();
-      int $$7 = this.t;
-      ddl.a $$8 = this.y;
-      this.b($$0, $$1, $$2);
-      this.o.a($$3);
-      this.p.a($$4);
-      this.q.a($$5);
-      this.s.a($$6);
-      this.t = $$7;
-      this.y = $$8;
-      this.v.a($$8);
+   public void h() {
+      super.h();
+      this.p.b(this);
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (super.a($$0, $$1, $$2)) {
-         return true;
-      } else if (!this.w.i || $$0 != 257 && $$0 != 335) {
-         return false;
-      } else {
-         this.l();
-         return true;
-      }
-   }
-
-   @Override
-   public void a(erw $$0, int $$1, int $$2, float $$3) {
+   public void a(erv $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.b(this.i, c, this.g / 2 - 153, 10, 10526880);
-      this.q.a($$0, $$1, $$2, $$3);
-      $$0.b(this.i, k, this.g / 2 - 153, 45, 10526880);
-      this.o.a($$0, $$1, $$2, $$3);
-      $$0.b(this.i, l, this.g / 2 - 153, 80, 10526880);
-      this.p.a($$0, $$1, $$2, $$3);
-      $$0.b(this.i, m, this.g / 2 - 153, 115, 10526880);
-      this.s.a($$0, $$1, $$2, $$3);
-      if (cwl.h(this.n.q()).o().b()) {
-         $$0.b(this.i, b, this.g / 2 - 153, 156, 16777215);
-      }
+      this.d($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
+   }
+
+   protected void d(erv $$0, int $$1, int $$2, float $$3) {
+   }
+
+   @Override
+   protected void a(erv $$0, float $$1, int $$2, int $$3) {
+      $$0.a(this.x, this.t, this.u, 0, 0, this.c, this.k);
+      this.c($$0, this.t, this.u);
+   }
+
+   protected abstract void c(erv var1, int var2, int var3);
+
+   @Override
+   public void a(ced $$0, int $$1, int $$2) {
+   }
+
+   @Override
+   public void a(ced $$0, int $$1, cix $$2) {
    }
 }

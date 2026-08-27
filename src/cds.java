@@ -1,11 +1,9 @@
-import java.util.Set;
+public class cds {
+   final cdv a;
+   final long b;
 
-public interface cds {
-   Set<aeq<? extends hr<? extends cds>>> bv = Set.of(jc.D, jc.e, jc.s, jc.N);
-
-   cdv m();
-
-   default boolean a(cdv $$0) {
-      return this.m().a($$0);
+   cds(cdv $$0, int $$1) {
+      this.a = $$0;
+      this.b = 1L << $$1;
    }
 }

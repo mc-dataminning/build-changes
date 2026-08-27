@@ -1,64 +1,36 @@
-import javax.annotation.Nullable;
+public interface cax {
+   String c_ = "Inventory";
 
-public class cax implements coi {
-   private final cbn a;
-   private cok b = new cok();
-   private int c;
+   bgx t();
 
-   public cax(cbn $$0) {
-      this.a = $$0;
+   static void a(bja $$0, cax $$1, byf $$2) {
+      cix $$3 = $$2.j();
+      if ($$0.k($$3)) {
+         bgx $$4 = $$1.t();
+         boolean $$5 = $$4.b($$3);
+         if (!$$5) {
+            return;
+         }
+
+         $$0.a($$2);
+         int $$6 = $$3.L();
+         cix $$7 = $$4.a($$3);
+         $$0.a($$2, $$6 - $$7.L());
+         if ($$7.b()) {
+            $$2.ak();
+         } else {
+            $$3.f($$7.L());
+         }
+      }
    }
 
-   @Override
-   public cbn fZ() {
-      return this.a;
+   default void c(qr $$0) {
+      if ($$0.b("Inventory", 9)) {
+         this.t().a($$0.c("Inventory", 10));
+      }
    }
 
-   @Override
-   public void f(@Nullable cbn $$0) {
-   }
-
-   @Override
-   public cok gb() {
-      return this.b;
-   }
-
-   @Override
-   public void a(cok $$0) {
-      this.b = $$0;
-   }
-
-   @Override
-   public void a(coj $$0) {
-      $$0.j();
-   }
-
-   @Override
-   public void l(ciy $$0) {
-   }
-
-   @Override
-   public boolean gh() {
-      return this.a.dK().B;
-   }
-
-   @Override
-   public int q() {
-      return this.c;
-   }
-
-   @Override
-   public void t(int $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public boolean gc() {
-      return true;
-   }
-
-   @Override
-   public aov gd() {
-      return aow.yI;
+   default void a_(qr $$0) {
+      $$0.a("Inventory", this.t().g());
    }
 }

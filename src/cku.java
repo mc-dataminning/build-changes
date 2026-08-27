@@ -1,148 +1,52 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
 import java.util.List;
 import javax.annotation.Nullable;
 
-public class cku extends cit {
-   public static final int a = 16;
-   public static final int b = 32;
-   public static final int c = 1024;
-   public static final int d = 32767;
-   public static final int e = 100;
-   public static final int f = 2;
-   public static final String g = "title";
-   public static final String h = "filtered_title";
-   public static final String i = "author";
-   public static final String j = "pages";
-   public static final String k = "filtered_pages";
-   public static final String r = "generation";
-   public static final String s = "resolved";
+public class cku {
+   @Nullable
+   private final String a;
+   private final ImmutableList<bhv> b;
+   private final he.c<cku> c = jb.j.f(this);
 
-   public cku(cit.a $$0) {
-      super($$0);
+   public static cku a(String $$0) {
+      return jb.j.a(aer.a($$0));
    }
 
-   public static boolean a(@Nullable qr $$0) {
-      if (!ckt.a($$0)) {
-         return false;
-      } else if (!$$0.b("title", 8)) {
-         return false;
-      } else {
-         String $$1 = $$0.l("title");
-         return $$1.length() > 32 ? false : $$0.b("author", 8);
-      }
+   public cku(bhv... $$0) {
+      this(null, $$0);
    }
 
-   public static int d(ciy $$0) {
-      return $$0.v().h("generation");
+   public cku(@Nullable String $$0, bhv... $$1) {
+      this.a = $$0;
+      this.b = ImmutableList.copyOf($$1);
    }
 
-   public static int k(ciy $$0) {
-      qr $$1 = $$0.v();
-      return $$1 != null ? $$1.c("pages", 8).size() : 0;
+   public String b(String $$0) {
+      return $$0 + (this.a == null ? jb.j.b(this).a() : this.a);
    }
 
-   @Override
-   public tf m(ciy $$0) {
-      qr $$1 = $$0.v();
-      if ($$1 != null) {
-         String $$2 = $$1.l("title");
-         if (!asi.b($$2)) {
-            return tf.b($$2);
-         }
-      }
-
-      return super.m($$0);
+   public List<bhv> a() {
+      return this.b;
    }
 
-   @Override
-   public void a(ciy $$0, @Nullable cpm $$1, List<tf> $$2, ckp $$3) {
-      if ($$0.u()) {
-         qr $$4 = $$0.v();
-         String $$5 = $$4.l("author");
-         if (!asi.b($$5)) {
-            $$2.add(tf.a("book.byAuthor", $$5).a(n.h));
-         }
+   public boolean b() {
+      if (!this.b.isEmpty()) {
+         UnmodifiableIterator var1 = this.b.iterator();
 
-         $$2.add(tf.c("book.generation." + $$4.h("generation")).a(n.h));
-      }
-   }
-
-   @Override
-   public bgq a(cli $$0) {
-      cpm $$1 = $$0.q();
-      gu $$2 = $$0.a();
-      dfa $$3 = $$1.a_($$2);
-      if ($$3.a(csn.oa)) {
-         return cwu.a($$0.o(), $$1, $$2, $$3, $$0.n()) ? bgq.a($$1.B) : bgq.d;
-      } else {
-         return bgq.d;
-      }
-   }
-
-   @Override
-   public bgr<ciy> a(cpm $$0, cbn $$1, bgp $$2) {
-      ciy $$3 = $$1.b($$2);
-      $$1.a($$3, $$2);
-      $$1.b(apg.c.b(this));
-      return bgr.a($$3, $$0.r_());
-   }
-
-   public static boolean a(ciy $$0, @Nullable dr $$1, @Nullable cbn $$2) {
-      qr $$3 = $$0.v();
-      if ($$3 != null && !$$3.q("resolved")) {
-         $$3.a("resolved", true);
-         if (!a($$3)) {
-            return false;
-         } else {
-            qx $$4 = $$3.c("pages", 8);
-            qx $$5 = new qx();
-
-            for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
-               String $$7 = a($$1, $$2, $$4.j($$6));
-               if ($$7.length() > 32767) {
-                  return false;
-               }
-
-               $$5.c($$6, ri.a($$7));
+         while (var1.hasNext()) {
+            bhv $$0 = (bhv)var1.next();
+            if ($$0.c().a()) {
+               return true;
             }
-
-            if ($$3.b("filtered_pages", 10)) {
-               qr $$8 = $$3.p("filtered_pages");
-               qr $$9 = new qr();
-
-               for (String $$10 : $$8.e()) {
-                  String $$11 = a($$1, $$2, $$8.l($$10));
-                  if ($$11.length() > 32767) {
-                     return false;
-                  }
-
-                  $$9.a($$10, $$11);
-               }
-
-               $$3.a("filtered_pages", $$9);
-            }
-
-            $$3.a("pages", $$5);
-            return true;
          }
-      } else {
-         return false;
-      }
-   }
-
-   private static String a(@Nullable dr $$0, @Nullable cbn $$1, String $$2) {
-      tf $$5;
-      try {
-         $$5 = tf.a.b($$2);
-         $$5 = th.a($$0, $$5, $$1, 0);
-      } catch (Exception var5) {
-         $$5 = tf.b($$2);
       }
 
-      return tf.a.a($$5);
+      return false;
    }
 
-   @Override
-   public boolean i(ciy $$0) {
-      return true;
+   @Deprecated
+   public he.c<cku> c() {
+      return this.c;
    }
 }

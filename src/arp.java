@@ -294,7 +294,7 @@ public class arp {
       return ($$0 - $$1) / ($$2 - $$1);
    }
 
-   public static boolean a(ehe $$0, ehe $$1, egz $$2) {
+   public static boolean a(ehd $$0, ehd $$1, egy $$2) {
       double $$3 = ($$2.a + $$2.d) * 0.5;
       double $$4 = ($$2.d - $$2.a) * 0.5;
       double $$5 = $$0.c - $$3;

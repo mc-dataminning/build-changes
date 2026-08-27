@@ -1,29 +1,38 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
 public class eqc {
-   private final List<tj> a = Lists.newArrayList();
+   private final fio a;
+   private int b = -1;
+   @Nullable
+   private Consumer<qr> c;
 
-   public void a(tj $$0) {
-      this.a.add($$0);
+   public eqc(fio $$0) {
+      this.a = $$0;
    }
 
-   @Nullable
-   public tj a() {
-      if (this.a.isEmpty()) {
-         return null;
+   public boolean a(int $$0, @Nullable qr $$1) {
+      if (this.b == $$0 && this.c != null) {
+         this.c.accept($$1);
+         this.c = null;
+         return true;
       } else {
-         return this.a.size() == 1 ? this.a.get(0) : tj.a(this.a);
+         return false;
       }
    }
 
-   public tj b() {
-      tj $$0 = this.a();
-      return $$0 != null ? $$0 : tj.b;
+   private int a(Consumer<qr> $$0) {
+      this.c = $$0;
+      return ++this.b;
    }
 
-   public void c() {
-      this.a.clear();
+   public void a(int $$0, Consumer<qr> $$1) {
+      int $$2 = this.a($$1);
+      this.a.b(new abp($$2, $$0));
+   }
+
+   public void a(gu $$0, Consumer<qr> $$1) {
+      int $$2 = this.a($$1);
+      this.a.b(new aba($$2, $$0));
    }
 }

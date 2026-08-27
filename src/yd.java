@@ -6,7 +6,7 @@ public class yd implements ux<wp> {
    private final int b;
    private final ye c;
 
-   public yd(cot $$0, dzs $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+   public yd(cos $$0, dzr $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
       this.a = $$0.e;
       this.b = $$0.f;
       this.c = new ye($$0, $$1, $$2, $$3);

@@ -1,48 +1,75 @@
-public class cuw extends crz {
-   protected static final ehx a = csm.a(0.0, 6.0, 0.0, 16.0, 12.0, 16.0);
+import com.google.common.base.Predicates;
 
-   protected cuw(dez.d $$0) {
+public class cuw extends csl {
+   public static final dft a = cwe.aC;
+   public static final dfq b = dfp.h;
+   protected static final ehw c = csl.a(0.0, 0.0, 0.0, 16.0, 13.0, 16.0);
+   protected static final ehw d = csl.a(4.0, 13.0, 4.0, 12.0, 16.0, 12.0);
+   protected static final ehw e = eht.a(c, d);
+   private static dfe f;
+
+   public cuw(dey.d $$0) {
       super($$0);
+      this.k(this.C.b().a(a, ha.c).a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public dcm a(gu $$0, dfa $$1) {
-      return new deb($$0, $$1);
+   public boolean g_(dez $$0) {
+      return true;
    }
 
    @Override
-   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
-      return a;
+   public ehw a(dez $$0, cor $$1, gu $$2, ehi $$3) {
+      return $$0.c(b) ? e : c;
    }
 
    @Override
-   public void a(dfa $$0, cpm $$1, gu $$2, bii $$3) {
-      if ($$1 instanceof akk && $$3.cs() && ehu.c(ehu.a($$3.cG().d((double)(-$$2.u()), (double)(-$$2.v()), (double)(-$$2.w()))), $$0.j($$1, $$2), ehi.i)) {
-         aeq<cpm> $$4 = $$1.ac() == cpm.j ? cpm.h : cpm.j;
-         akk $$5 = ((akk)$$1).n().a($$4);
-         if ($$5 == null) {
-            return;
-         }
+   public dez a(clf $$0) {
+      return this.n().a(a, $$0.g().g()).a(b, Boolean.valueOf(false));
+   }
 
-         $$3.b($$5);
+   @Override
+   public boolean d_(dez $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(dez $$0, cpl $$1, gu $$2) {
+      return $$0.c(b) ? 15 : 0;
+   }
+
+   @Override
+   public dez a(dez $$0, cyx $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   public dez a(dez $$0, cxg $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(dfa.a<csl, dez> $$0) {
+      $$0.a(a, b);
+   }
+
+   public static dfe a() {
+      if (f == null) {
+         f = dff.a()
+            .a("?vvv?", ">???<", ">???<", ">???<", "?^^^?")
+            .a('?', dfd.a(dfi.a))
+            .a('^', dfd.a(dfi.a(csm.fy).a(b, Predicates.equalTo(true)).a(a, Predicates.equalTo(ha.d))))
+            .a('>', dfd.a(dfi.a(csm.fy).a(b, Predicates.equalTo(true)).a(a, Predicates.equalTo(ha.e))))
+            .a('v', dfd.a(dfi.a(csm.fy).a(b, Predicates.equalTo(true)).a(a, Predicates.equalTo(ha.c))))
+            .a('<', dfd.a(dfi.a(csm.fy).a(b, Predicates.equalTo(true)).a(a, Predicates.equalTo(ha.f))))
+            .b();
       }
+
+      return f;
    }
 
    @Override
-   public void a(dfa $$0, cpm $$1, gu $$2, aru $$3) {
-      double $$4 = (double)$$2.u() + $$3.j();
-      double $$5 = (double)$$2.v() + 0.8;
-      double $$6 = (double)$$2.w() + $$3.j();
-      $$1.a(iv.Z, $$4, $$5, $$6, 0.0, 0.0, 0.0);
-   }
-
-   @Override
-   public ciy a(cos $$0, gu $$1, dfa $$2) {
-      return ciy.b;
-   }
-
-   @Override
-   public boolean a(dfa $$0, eac $$1) {
+   public boolean a(dez $$0, cor $$1, gu $$2, eas $$3) {
       return false;
    }
 }

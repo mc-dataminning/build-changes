@@ -1,71 +1,50 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
+public class fqg implements fpu<dev> {
+   private final fon a;
 
-class fqg {
-   private final Map<gu, dcm> a;
-   @Nullable
-   private final List<dhp<dfa>> b;
-   private final boolean c;
-   private final dhh d;
-
-   fqg(dhh $$0) {
-      this.d = $$0;
-      this.c = $$0.F().af();
-      this.a = ImmutableMap.copyOf($$0.G());
-      if ($$0 instanceof dhd) {
-         this.b = null;
-      } else {
-         dhi[] $$1 = $$0.d();
-         this.b = new ArrayList<>($$1.length);
-
-         for (dhi $$2 : $$1) {
-            this.b.add($$2.c() ? null : $$2.h().d());
-         }
-      }
+   public fqg(fpv.a $$0) {
+      this.a = $$0.b();
    }
 
-   @Nullable
-   public dcm a(gu $$0) {
-      return this.a.get($$0);
-   }
-
-   public dfa b(gu $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      if (this.c) {
-         dfa $$4 = null;
-         if ($$2 == 60) {
-            $$4 = csn.hW.n();
-         }
-
-         if ($$2 == 70) {
-            $$4 = dka.a($$1, $$3);
-         }
-
-         return $$4 == null ? csn.a.n() : $$4;
-      } else if (this.b == null) {
-         return csn.a.n();
-      } else {
-         try {
-            int $$5 = this.d.e($$2);
-            if ($$5 >= 0 && $$5 < this.b.size()) {
-               dhp<dfa> $$6 = this.b.get($$5);
-               if ($$6 != null) {
-                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
-               }
+   public void a(dev $$0, float $$1, elf $$2, fnu $$3, int $$4, int $$5) {
+      cpl $$6 = $$0.k();
+      if ($$6 != null) {
+         gu $$7 = $$0.p().a($$0.g().g());
+         dez $$8 = $$0.i();
+         if (!$$8.i()) {
+            fop.a();
+            $$2.a();
+            $$2.a($$0.b($$1), $$0.c($$1), $$0.d($$1));
+            if ($$8.a(csm.bz) && $$0.a($$1) <= 4.0F) {
+               $$8 = $$8.a(det.c, Boolean.valueOf($$0.a($$1) <= 0.5F));
+               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
+            } else if ($$0.f() && !$$0.c()) {
+               dgb $$9 = $$8.a(csm.br) ? dgb.b : dgb.a;
+               dez $$10 = csm.bz.n().a(det.b, $$9).a(det.a, $$8.c(des.a));
+               $$10 = $$10.a(det.c, Boolean.valueOf($$0.a($$1) >= 0.5F));
+               this.a($$7, $$10, $$2, $$3, $$6, false, $$5);
+               gu $$11 = $$7.a($$0.g());
+               $$2.b();
+               $$2.a();
+               $$8 = $$8.a(des.b, Boolean.valueOf(true));
+               this.a($$11, $$8, $$2, $$3, $$6, true, $$5);
+            } else {
+               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
             }
 
-            return csn.a.n();
-         } catch (Throwable var8) {
-            o $$8 = o.a(var8, "Getting block state");
-            p $$9 = $$8.a("Block being got");
-            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
-            throw new y($$8);
+            $$2.b();
+            fop.b();
          }
       }
+   }
+
+   private void a(gu $$0, dez $$1, elf $$2, fnu $$3, cpl $$4, boolean $$5, int $$6) {
+      foc $$7 = fnp.b($$1);
+      elj $$8 = $$3.getBuffer($$7);
+      this.a.b().a($$4, this.a.a($$1), $$1, $$0, $$2, $$8, $$5, aru.a(), $$1.a($$0), $$6);
+   }
+
+   @Override
+   public int aF_() {
+      return 68;
    }
 }

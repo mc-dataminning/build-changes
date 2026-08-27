@@ -29,7 +29,7 @@ public interface etz extends eua {
          if ($$3.a($$0, $$1, $$2)) {
             this.a($$3);
             if ($$2 == 0) {
-               this.b_(true);
+               this.b(true);
             }
 
             return true;
@@ -41,18 +41,18 @@ public interface etz extends eua {
 
    @Override
    default boolean b(double $$0, double $$1, int $$2) {
-      this.b_(false);
+      this.b(false);
       return this.d($$0, $$1).filter($$3 -> $$3.b($$0, $$1, $$2)).isPresent();
    }
 
    @Override
    default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      return this.t() != null && this.aw_() && $$2 == 0 ? this.t().a($$0, $$1, $$2, $$3, $$4) : false;
+      return this.t() != null && this.av_() && $$2 == 0 ? this.t().a($$0, $$1, $$2, $$3, $$4) : false;
    }
 
-   boolean aw_();
+   boolean av_();
 
-   void b_(boolean var1);
+   void b(boolean var1);
 
    @Override
    default boolean a(double $$0, double $$1, double $$2, double $$3) {
@@ -80,19 +80,19 @@ public interface etz extends eua {
    void a(@Nullable eua var1);
 
    @Override
-   default void c_(boolean $$0) {
+   default void b_(boolean $$0) {
    }
 
    @Override
-   default boolean ax_() {
+   default boolean aw_() {
       return this.t() != null;
    }
 
    @Nullable
    @Override
-   default ert aC_() {
+   default ers aA_() {
       eua $$0 = this.t();
-      return $$0 != null ? ert.a(this, $$0.aC_()) : null;
+      return $$0 != null ? ers.a(this, $$0.aA_()) : null;
    }
 
    default void b(@Nullable eua $$0) {
@@ -101,28 +101,28 @@ public interface etz extends eua {
 
    @Nullable
    @Override
-   default ert a(ewd $$0) {
+   default ers a(ewe $$0) {
       eua $$1 = this.t();
       if ($$1 != null) {
-         ert $$2 = $$1.a($$0);
+         ers $$2 = $$1.a($$0);
          if ($$2 != null) {
-            return ert.a(this, $$2);
+            return ers.a(this, $$2);
          }
       }
 
-      if ($$0 instanceof ewd.c $$3) {
+      if ($$0 instanceof ewe.c $$3) {
          return this.a($$3);
       } else {
-         return $$0 instanceof ewd.a $$4 ? this.a($$4) : null;
+         return $$0 instanceof ewe.a $$4 ? this.a($$4) : null;
       }
    }
 
    @Nullable
-   private ert a(ewd.c $$0) {
+   private ers a(ewe.c $$0) {
       boolean $$1 = $$0.b();
       eua $$2 = this.t();
       List<? extends eua> $$3 = new ArrayList<>(this.i());
-      Collections.sort($$3, Comparator.comparingInt($$0x -> $$0x.ay_()));
+      Collections.sort($$3, Comparator.comparingInt($$0x -> $$0x.u()));
       int $$4 = $$3.indexOf($$2);
       int $$5;
       if ($$2 != null && $$4 >= 0) {
@@ -139,9 +139,9 @@ public interface etz extends eua {
 
       while ($$9.getAsBoolean()) {
          eua $$11 = $$10.get();
-         ert $$12 = $$11.a($$0);
+         ers $$12 = $$11.a($$0);
          if ($$12 != null) {
-            return ert.a(this, $$12);
+            return ers.a(this, $$12);
          }
       }
 
@@ -149,29 +149,29 @@ public interface etz extends eua {
    }
 
    @Nullable
-   private ert a(ewd.a $$0) {
+   private ers a(ewe.a $$0) {
       eua $$1 = this.t();
       if ($$1 == null) {
-         ewf $$2 = $$0.b();
-         ewh $$3 = this.s().c($$2.b());
-         return ert.a(this, this.a($$3, $$2, null, $$0));
+         ewg $$2 = $$0.b();
+         ewi $$3 = this.s().c($$2.b());
+         return ers.a(this, this.a($$3, $$2, null, $$0));
       } else {
-         ewh $$4 = $$1.s();
-         return ert.a(this, this.a($$4, $$0.b(), $$1, $$0));
+         ewi $$4 = $$1.s();
+         return ers.a(this, this.a($$4, $$0.b(), $$1, $$0));
       }
    }
 
    @Nullable
-   private ert a(ewh $$0, ewf $$1, @Nullable eua $$2, ewd $$3) {
-      ewe $$4 = $$1.a();
-      ewe $$5 = $$4.a();
-      ewf $$6 = $$5.b();
+   private ers a(ewi $$0, ewg $$1, @Nullable eua $$2, ewe $$3) {
+      ewf $$4 = $$1.a();
+      ewf $$5 = $$4.a();
+      ewg $$6 = $$5.b();
       int $$7 = $$0.b($$1.b());
       List<eua> $$8 = new ArrayList<>();
 
       for (eua $$9 : this.i()) {
          if ($$9 != $$2) {
-            ewh $$10 = $$9.s();
+            ewi $$10 = $$9.s();
             if ($$10.a($$0, $$5)) {
                int $$11 = $$10.b($$1.b());
                if ($$1.a($$11, $$7)) {
@@ -188,7 +188,7 @@ public interface etz extends eua {
       $$8.sort($$12.thenComparing($$13));
 
       for (eua $$14 : $$8) {
-         ert $$15 = $$14.a($$3);
+         ers $$15 = $$14.a($$3);
          if ($$15 != null) {
             return $$15;
          }
@@ -198,16 +198,16 @@ public interface etz extends eua {
    }
 
    @Nullable
-   private ert b(ewh $$0, ewf $$1, @Nullable eua $$2, ewd $$3) {
-      ewe $$4 = $$1.a();
-      ewe $$5 = $$4.a();
+   private ers b(ewi $$0, ewg $$1, @Nullable eua $$2, ewe $$3) {
+      ewf $$4 = $$1.a();
+      ewf $$5 = $$4.a();
       List<Pair<eua, Long>> $$6 = new ArrayList<>();
-      ewg $$7 = ewg.a($$4, $$0.b($$1), $$0.b($$5));
+      ewh $$7 = ewh.a($$4, $$0.b($$1), $$0.b($$5));
 
       for (eua $$8 : this.i()) {
          if ($$8 != $$2) {
-            ewh $$9 = $$8.s();
-            ewg $$10 = ewg.a($$4, $$9.b($$1.b()), $$9.b($$5));
+            ewi $$9 = $$8.s();
+            ewh $$10 = ewh.a($$4, $$9.b($$1.b()), $$9.b($$5));
             if ($$1.a($$10.a($$4), $$7.a($$4))) {
                long $$11 = Vector2i.distanceSquared($$7.a(), $$7.b(), $$10.a(), $$10.b());
                $$6.add(Pair.of($$8, $$11));
@@ -218,7 +218,7 @@ public interface etz extends eua {
       $$6.sort(Comparator.comparingDouble(Pair::getSecond));
 
       for (Pair<eua, Long> $$12 : $$6) {
-         ert $$13 = ((eua)$$12.getFirst()).a($$3);
+         ers $$13 = ((eua)$$12.getFirst()).a($$3);
          if ($$13 != null) {
             return $$13;
          }

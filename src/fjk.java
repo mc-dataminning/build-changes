@@ -1,77 +1,65 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.minecraft.report.ReportedEntity;
+import com.mojang.datafixers.util.Either;
+import java.time.Instant;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public class fjk implements AutoCloseable {
-   private final Long2ObjectOpenHashMap<fjk.a> a = new Long2ObjectOpenHashMap();
-   private int b;
-   private boolean c;
+public class fjk extends fjl {
+   private final String f;
 
-   public void a(gu $$0, dfa $$1, fmn $$2) {
-      this.a.compute($$0.a(), ($$2x, $$3) -> $$3 != null ? $$3.a(this.b) : new fjk.a(this.b, $$1, $$2.di()));
+   fjk(UUID $$0, Instant $$1, UUID $$2, String $$3) {
+      super($$0, $$1, $$2);
+      this.f = $$3;
    }
 
-   public boolean a(gu $$0, dfa $$1) {
-      fjk.a $$2 = (fjk.a)this.a.get($$0.a());
-      if ($$2 == null) {
-         return false;
-      } else {
-         $$2.a($$1);
-         return true;
-      }
+   public String a() {
+      return this.f;
    }
 
-   public void a(int $$0, fii $$1) {
-      ObjectIterator<Entry<fjk.a>> $$2 = this.a.long2ObjectEntrySet().iterator();
-
-      while ($$2.hasNext()) {
-         Entry<fjk.a> $$3 = (Entry<fjk.a>)$$2.next();
-         fjk.a $$4 = (fjk.a)$$3.getValue();
-         if ($$4.b <= $$0) {
-            gu $$5 = gu.d($$3.getLongKey());
-            $$2.remove();
-            $$1.a($$5, $$4.c, $$4.a);
-         }
-      }
-   }
-
-   public fjk a() {
-      this.b++;
-      this.c = true;
-      return this;
+   public fjk c() {
+      fjk $$0 = new fjk(this.a, this.b, this.c, this.f);
+      $$0.d = this.d;
+      return $$0;
    }
 
    @Override
-   public void close() {
-      this.c = false;
+   public eya a(eya $$0, fjp $$1) {
+      return new fca($$0, $$1, this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public boolean c() {
-      return this.c;
-   }
-
-   static class a {
-      final ehe a;
-      int b;
-      dfa c;
-
-      a(int $$0, dfa $$1, ehe $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.a = $$2;
+   public static class a extends fjl.a<fjk> {
+      public a(fjk $$0, AbuseReportLimits $$1) {
+         super($$0, $$1);
       }
 
-      fjk.a a(int $$0) {
-         this.b = $$0;
-         return this;
+      public a(UUID $$0, String $$1, AbuseReportLimits $$2) {
+         super(new fjk(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
       }
 
-      void a(dfa $$0) {
-         this.c = $$0;
+      @Override
+      public boolean b() {
+         return StringUtils.isNotEmpty(this.g());
+      }
+
+      @Nullable
+      @Override
+      public fjl.b c() {
+         return this.a.d.length() > this.b.maxOpinionCommentsLength() ? fjl.b.d : null;
+      }
+
+      @Override
+      public Either<fjl.c, fjl.b> a(fjp $$0) {
+         fjl.b $$1 = this.c();
+         if ($$1 != null) {
+            return Either.right($$1);
+         } else {
+            ReportedEntity $$2 = new ReportedEntity(this.a.c);
+            AbuseReport $$3 = AbuseReport.name(this.a.d, $$2, this.a.b);
+            return Either.left(new fjl.c(this.a.a, fjo.c, $$3));
+         }
       }
    }
 }

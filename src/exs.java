@@ -1,27 +1,26 @@
-public class exs extends exz {
-   private eta a;
+public class exs extends eya {
+   protected final eya a;
+   protected final eqp b;
 
-   public exs() {
-      super(tf.c("outOfMemory.title"));
-      this.a = eta.a;
+   public exs(eya $$0, eqp $$1, tf $$2) {
+      super($$2);
+      this.a = $$0;
+      this.b = $$1;
    }
 
    @Override
-   protected void aE_() {
-      this.d(esh.a(te.l, $$0 -> this.f.a(new eye())).a(this.g / 2 - 155, this.h / 4 + 120 + 12, 150, 20).a());
-      this.d(esh.a(tf.c("menu.quit"), $$0 -> this.f.q()).a(this.g / 2 - 155 + 160, this.h / 4 + 120 + 12, 150, 20).a());
-      this.a = eta.a(this.i, tf.c("outOfMemory.message"), 295);
+   public void h() {
+      this.f.m.ar();
    }
 
    @Override
-   public boolean aA_() {
-      return false;
+   public void at_() {
+      this.f.a(this.a);
    }
 
-   @Override
-   public void a(erw $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, this.h / 4 - 60 + 20, 16777215);
-      this.a.b($$0, this.g / 2 - 145, this.h / 4, 9, 10526880);
+   protected void a(erv $$0, etd $$1, int $$2, int $$3, float $$4) {
+      super.a($$0, $$2, $$3, $$4);
+      $$1.a($$0, $$2, $$3, $$4);
+      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
    }
 }

@@ -1,24 +1,42 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
+import com.google.common.collect.Lists;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
-public class btb extends bte<biy> {
-   @Override
-   public Set<bsa<?>> a() {
-      return ImmutableSet.of(bsa.j, bsa.k, bsa.l);
+public class btb extends btd<caz> {
+   private static final int a = 40;
+
+   public btb() {
+      super(40);
+   }
+
+   protected void a(akk $$0, caz $$1) {
+      aeq<cpl> $$2 = $$0.ac();
+      gu $$3 = $$1.dk();
+      List<hd> $$4 = Lists.newArrayList();
+      int $$5 = 4;
+
+      for (int $$6 = -4; $$6 <= 4; $$6++) {
+         for (int $$7 = -2; $$7 <= 2; $$7++) {
+            for (int $$8 = -4; $$8 <= 4; $$8++) {
+               gu $$9 = $$3.b($$6, $$7, $$8);
+               if ($$1.gl().b().e().contains($$0.a_($$9).b())) {
+                  $$4.add(hd.a($$2, $$9));
+               }
+            }
+         }
+      }
+
+      bjy<?> $$10 = $$1.dM();
+      if (!$$4.isEmpty()) {
+         $$10.a(brz.f, $$4);
+      } else {
+         $$10.b(brz.f);
+      }
    }
 
    @Override
-   protected void a(akk $$0, biy $$1) {
-      List<cbn> $$2 = $$0.v().stream().filter(bil.f).filter($$1x -> $$1.a($$1x, 16.0)).sorted(Comparator.comparingDouble($$1::f)).collect(Collectors.toList());
-      bjz<?> $$3 = $$1.dM();
-      $$3.a(bsa.j, $$2);
-      List<cbn> $$4 = $$2.stream().filter($$1x -> b($$1, $$1x)).collect(Collectors.toList());
-      $$3.a(bsa.k, $$4.isEmpty() ? null : $$4.get(0));
-      Optional<cbn> $$5 = $$4.stream().filter($$1x -> c($$1, $$1x)).findFirst();
-      $$3.a(bsa.l, $$5);
+   public Set<brz<?>> a() {
+      return ImmutableSet.of(brz.f);
    }
 }

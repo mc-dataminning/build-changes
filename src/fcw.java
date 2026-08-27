@@ -1,36 +1,59 @@
-import com.mojang.authlib.GameProfile;
-import java.util.function.Supplier;
+import java.util.function.BiFunction;
+import java.util.function.UnaryOperator;
 
-public class fcw implements fda {
-   private final GameProfile a;
-   private final Supplier<fzl> b;
-   private final tf c;
-
-   public fcw(GameProfile $$0) {
-      this.a = $$0;
-      this.b = eqm.O().al().a($$0);
-      this.c = tf.b($$0.getName());
+public record fcw(dlg a, hr<dij> b, dld c, hl<afa> d, afb e, cqe f) {
+   public fcw(dle $$0, hl<afa> $$1, afb $$2, cqe $$3) {
+      this($$0.a(), $$0.b(), $$1, $$2, $$3);
    }
 
-   @Override
-   public void a(fcy $$0) {
-      eqm.O().J().b(new acq(this.a.getId()));
+   public fcw(dlg $$0, dld $$1, hl<afa> $$2, afb $$3, cqe $$4) {
+      this($$0, $$2.a(afa.c).d(jc.aI), $$1, $$2.a(afa.c), $$3, $$4);
    }
 
-   @Override
-   public tf aF_() {
+   public fcw a(dlg $$0, dld $$1) {
+      return new fcw($$0, this.b, $$1, this.d, this.e, this.f);
+   }
+
+   public fcw a(fcw.b $$0) {
+      return new fcw($$0.apply(this.a), this.b, this.c, this.d, this.e, this.f);
+   }
+
+   public fcw a(fcw.a $$0) {
+      return new fcw(this.a, this.b, $$0.apply(this.a(), this.c), this.d, this.e, this.f);
+   }
+
+   public hs.b a() {
+      return this.d.a();
+   }
+
+   public dlg b() {
+      return this.a;
+   }
+
+   public hr<dij> c() {
+      return this.b;
+   }
+
+   public dld d() {
       return this.c;
    }
 
-   @Override
-   public void a(erw $$0, float $$1, int $$2) {
-      $$0.a(1.0F, 1.0F, 1.0F, (float)$$2 / 255.0F);
-      etg.a($$0, this.b.get(), 2, 2, 12);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+   public hl<afa> e() {
+      return this.d;
    }
 
-   @Override
-   public boolean aG_() {
-      return true;
+   public afb f() {
+      return this.e;
+   }
+
+   public cqe g() {
+      return this.f;
+   }
+
+   @FunctionalInterface
+   public interface a extends BiFunction<hs.b, dld, dld> {
+   }
+
+   public interface b extends UnaryOperator<dlg> {
    }
 }

@@ -1,54 +1,29 @@
-public class ctg extends crf {
-   private static final float c = 0.05F;
-   private static final float d = 0.1F;
+import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
 
-   public ctg(dez.d $$0) {
-      super($$0, ib.a);
-   }
+public interface ctg {
+   ehw r_ = csl.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+   dfq s_ = dfp.D;
 
-   @Override
-   public boolean d(dfa $$0) {
-      return false;
-   }
-
-   protected static boolean a(cpm $$0, cqk.c $$1) {
-      if ($$1 == cqk.c.b) {
-         return $$0.y_().i() < 0.05F;
+   static bgq a(@Nullable bii $$0, dez $$1, cpl $$2, gu $$3) {
+      if ($$1.c(s_)) {
+         csl.a($$2, $$3, new cix(cja.vw, 1));
+         float $$4 = arp.b($$2.z, 0.8F, 1.2F);
+         $$2.a(null, $$3, aow.dx, aox.e, 1.0F, $$4);
+         dez $$5 = $$1.a(s_, Boolean.valueOf(false));
+         $$2.a($$3, $$5, 2);
+         $$2.a(djj.c, $$3, djj.a.a($$0, $$5));
+         return bgq.a($$2.B);
       } else {
-         return $$1 == cqk.c.c ? $$0.y_().i() < 0.1F : false;
+         return bgq.d;
       }
    }
 
-   @Override
-   public void a(dfa $$0, cpm $$1, gu $$2, cqk.c $$3) {
-      if (a($$1, $$3)) {
-         if ($$3 == cqk.c.b) {
-            $$1.b($$2, csn.fu.n());
-            $$1.a(null, djk.c, $$2);
-         } else if ($$3 == cqk.c.c) {
-            $$1.b($$2, csn.fw.n());
-            $$1.a(null, djk.c, $$2);
-         }
-      }
+   static boolean h_(dez $$0) {
+      return $$0.b(s_) && $$0.c(s_);
    }
 
-   @Override
-   protected boolean a(eac $$0) {
-      return true;
-   }
-
-   @Override
-   protected void a(dfa $$0, cpm $$1, gu $$2, eac $$3) {
-      if ($$3 == eae.c) {
-         dfa $$4 = csn.fu.n();
-         $$1.b($$2, $$4);
-         $$1.a(djk.c, $$2, djk.a.a($$4));
-         $$1.c(1047, $$2, 0);
-      } else if ($$3 == eae.e) {
-         dfa $$5 = csn.fv.n();
-         $$1.b($$2, $$5);
-         $$1.a(djk.c, $$2, djk.a.a($$5));
-         $$1.c(1046, $$2, 0);
-      }
+   static ToIntFunction<dez> h_(int $$0) {
+      return $$1 -> $$1.c(dfp.D) ? $$0 : 0;
    }
 }

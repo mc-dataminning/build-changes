@@ -1,24 +1,22 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public abstract class epq extends epm {
+public class epq extends epl {
    private static final Logger c = LogUtils.getLogger();
-   private final long d;
-   private final tf e;
-   private final Runnable f;
+   private final emb d;
+   private final long e;
+   private final enw f;
 
-   public epq(long $$0, tf $$1, Runnable $$2) {
+   public epq(emb $$0, long $$1, enw $$2) {
       this.d = $$0;
       this.e = $$1;
       this.f = $$2;
    }
 
-   protected abstract void a(elw var1, long var2) throws enj;
-
    @Override
    public void run() {
-      elw $$0 = elw.a();
-      this.b(this.e);
+      this.b(tf.c("mco.backup.restoring"));
+      elv $$0 = elv.a();
       int $$1 = 0;
 
       while ($$1 < 25) {
@@ -27,27 +25,36 @@ public abstract class epq extends epm {
                return;
             }
 
-            this.a($$0, this.d);
+            $$0.b(this.e, this.d.a);
+            a(1L);
             if (this.c()) {
                return;
             }
 
-            this.f.run();
+            a(this.f.g());
             return;
-         } catch (enk var4) {
+         } catch (enj var4) {
             if (this.c()) {
                return;
             }
 
             a((long)var4.c);
             $$1++;
-         } catch (Exception var5) {
+         } catch (eni var5) {
             if (this.c()) {
                return;
             }
 
-            c.error("Couldn't reset world");
-            this.a(var5);
+            c.error("Couldn't restore backup", var5);
+            a(new eoa(var5, this.f));
+            return;
+         } catch (Exception var6) {
+            if (this.c()) {
+               return;
+            }
+
+            c.error("Couldn't restore backup", var6);
+            this.a(var6);
             return;
          }
       }

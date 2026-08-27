@@ -1,30 +1,41 @@
-public class bre extends bpu {
-   private final bjh a;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   public bre(bjh $$0) {
+public class bre<T extends bja> extends bpt {
+   private final T a;
+   private final cix b;
+   private final Predicate<? super T> c;
+   @Nullable
+   private final aov d;
+
+   public bre(T $$0, cix $$1, @Nullable aov $$2, Predicate<? super T> $$3) {
       this.a = $$0;
+      this.b = $$1;
+      this.d = $$2;
+      this.c = $$3;
    }
 
    @Override
    public boolean a() {
-      return this.a.aA() && !this.a.dK().b_(this.a.dk()).a(apq.a);
+      return this.c.test(this.a);
+   }
+
+   @Override
+   public boolean b() {
+      return this.a.fl();
    }
 
    @Override
    public void c() {
-      gu $$0 = null;
+      this.a.a(bin.a, this.b.p());
+      this.a.c(bgp.a);
+   }
 
-      for (gu $$2 : gu.b(
-         arp.a(this.a.dp() - 2.0), arp.a(this.a.dr() - 2.0), arp.a(this.a.dv() - 2.0), arp.a(this.a.dp() + 2.0), this.a.dq(), arp.a(this.a.dv() + 2.0)
-      )) {
-         if (this.a.dK().b_($$2).a(apq.a)) {
-            $$0 = $$2;
-            break;
-         }
-      }
-
-      if ($$0 != null) {
-         this.a.E().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
+   @Override
+   public void d() {
+      this.a.a(bin.a, cix.b);
+      if (this.d != null) {
+         this.a.a(this.d, 1.0F, this.a.ee().i() * 0.2F + 0.9F);
       }
    }
 }

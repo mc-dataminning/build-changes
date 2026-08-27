@@ -1,23 +1,18 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dpl implements dpr {
-   public static final Codec<dpl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(bfv.b(0, 3).fieldOf("reach").forGetter($$0x -> $$0x.b), bfv.b(1, 10).fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, dpl::new)
-   );
+public class dpl implements dpq {
+   public static final Codec<dpl> a = bfv.b(0, 256).fieldOf("count").xmap(dpl::new, dpl::a).codec();
    private final bfv b;
-   private final bfv c;
 
-   public dpl(bfv $$0, bfv $$1) {
+   public dpl(int $$0) {
+      this.b = bfs.a($$0);
+   }
+
+   public dpl(bfv $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
    public bfv a() {
       return this.b;
-   }
-
-   public bfv b() {
-      return this.c;
    }
 }

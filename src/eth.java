@@ -24,12 +24,12 @@ public class eth {
    private static final aer m = new aer("hud/heart/full");
    private static final aer n = new aer("hud/heart/absorbing_half_blinking");
    private static final aer o = new aer("hud/heart/half");
-   private static final Comparator<fiq> p = Comparator.<fiq>comparingInt($$0 -> $$0.e() == cpj.d ? 1 : 0)
-      .thenComparing($$0 -> x.a($$0.h(), eib::b, ""))
+   private static final Comparator<fiv> p = Comparator.<fiv>comparingInt($$0 -> $$0.e() == cpi.d ? 1 : 0)
+      .thenComparing($$0 -> x.a($$0.h(), eia::b, ""))
       .thenComparing($$0 -> $$0.a().getName(), String::compareToIgnoreCase);
    public static final int a = 20;
-   private final eqm q;
-   private final erv r;
+   private final eql q;
+   private final eru r;
    @Nullable
    private tf s;
    @Nullable
@@ -37,17 +37,17 @@ public class eth {
    private boolean u;
    private final Map<UUID, eth.a> v = new Object2ObjectOpenHashMap();
 
-   public eth(eqm $$0, erv $$1) {
+   public eth(eql $$0, eru $$1) {
       this.q = $$0;
       this.r = $$1;
    }
 
-   public tf a(fiq $$0) {
-      return $$0.i() != null ? this.a($$0, $$0.i().e()) : this.a($$0, eib.a($$0.h(), tf.b($$0.a().getName())));
+   public tf a(fiv $$0) {
+      return $$0.i() != null ? this.a($$0, $$0.i().e()) : this.a($$0, eia.a($$0.h(), tf.b($$0.a().getName())));
    }
 
-   private tf a(fiq $$0, ts $$1) {
-      return $$0.e() == cpj.d ? $$1.a(n.u) : $$1;
+   private tf a(fiv $$0, ts $$1) {
+      return $$0.e() == cpi.d ? $$1.a(n.u) : $$1;
    }
 
    public void a(boolean $$0) {
@@ -61,19 +61,19 @@ public class eth {
       }
    }
 
-   private List<fiq> b() {
-      return this.q.v.cl.m().stream().sorted(p).limit(80L).toList();
+   private List<fiv> b() {
+      return this.q.s.cl.m().stream().sorted(p).limit(80L).toList();
    }
 
-   public void a(erw $$0, int $$1, eid $$2, @Nullable eia $$3) {
-      List<fiq> $$4 = this.b();
+   public void a(erv $$0, int $$1, eic $$2, @Nullable ehz $$3) {
+      List<fiv> $$4 = this.b();
       int $$5 = 0;
       int $$6 = 0;
 
-      for (fiq $$7 : $$4) {
+      for (fiv $$7 : $$4) {
          int $$8 = this.q.h.a(this.a($$7));
          $$5 = Math.max($$5, $$8);
-         if ($$3 != null && $$3.f() != eig.a.b) {
+         if ($$3 != null && $$3.f() != eif.a.b) {
             $$8 = this.q.h.b(" " + $$2.c($$7.a().getName(), $$3).b());
             $$6 = Math.max($$6, $$8);
          }
@@ -95,7 +95,7 @@ public class eth {
       boolean $$13 = this.q.R() || this.q.J().l().j();
       int $$14;
       if ($$3 != null) {
-         if ($$3.f() == eig.a.b) {
+         if ($$3.f() == eif.a.b) {
             $$14 = 90;
          } else {
             $$14 = $$6;
@@ -149,18 +149,18 @@ public class eth {
          $$0.a($$31, $$32, $$31 + $$17, $$32 + 8, $$27);
          RenderSystem.enableBlend();
          if ($$28 < $$4.size()) {
-            fiq $$33 = $$4.get($$28);
+            fiv $$33 = $$4.get($$28);
             GameProfile $$34 = $$33.a();
             if ($$13) {
-               cbn $$35 = this.q.u.b($$34.getId());
-               boolean $$36 = $$35 != null && ftp.e($$35);
-               boolean $$37 = $$35 != null && $$35.a(cbo.g);
-               etg.a($$0, $$33.g().a(), $$31, $$32, 8, $$37, $$36);
+               cbm $$35 = this.q.r.b($$34.getId());
+               boolean $$36 = $$35 != null && fty.e($$35);
+               boolean $$37 = $$35 != null && $$35.a(cbn.g);
+               etf.a($$0, $$33.g().a(), $$31, $$32, 8, $$37, $$36);
                $$31 += 9;
             }
 
-            $$0.b(this.q.h, this.a($$33), $$31, $$32, $$33.e() == cpj.d ? -1862270977 : -1);
-            if ($$3 != null && $$33.e() != cpj.d) {
+            $$0.b(this.q.h, this.a($$33), $$31, $$32, $$33.e() == cpi.d ? -1862270977 : -1);
+            if ($$3 != null && $$33.e() != cpi.d) {
                int $$38 = $$31 + $$5 + 1;
                int $$39 = $$38 + $$14;
                if ($$39 - $$38 > 5) {
@@ -184,7 +184,7 @@ public class eth {
       }
    }
 
-   protected void a(erw $$0, int $$1, int $$2, int $$3, fiq $$4) {
+   protected void a(erv $$0, int $$1, int $$2, int $$3, fiv $$4) {
       aer $$5;
       if ($$4.f() < 0) {
          $$5 = b;
@@ -206,9 +206,9 @@ public class eth {
       $$0.c().b();
    }
 
-   private void a(eia $$0, int $$1, String $$2, int $$3, int $$4, UUID $$5, erw $$6) {
+   private void a(ehz $$0, int $$1, String $$2, int $$3, int $$4, UUID $$5, erv $$6) {
       int $$7 = $$0.a().c($$2, $$0).b();
-      if ($$0.f() == eig.a.b) {
+      if ($$0.f() == eif.a.b) {
          this.a($$1, $$3, $$4, $$5, $$6, $$7);
       } else {
          String $$8 = "" + n.o + $$7;
@@ -216,7 +216,7 @@ public class eth {
       }
    }
 
-   private void a(int $$0, int $$1, int $$2, UUID $$3, erw $$4, int $$5) {
+   private void a(int $$0, int $$1, int $$2, UUID $$3, erv $$4, int $$5) {
       eth.a $$6 = this.v.computeIfAbsent($$3, $$1x -> new eth.a($$5));
       $$6.a($$5, (long)this.r.e());
       int $$7 = arp.e(Math.max($$5, $$6.a()), 2);

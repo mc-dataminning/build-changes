@@ -2,28 +2,27 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class eej extends edt {
-   public static final Codec<eej> a = RecordCodecBuilder.create($$0 -> a($$0).and(rl.i.fieldOf("tag").forGetter($$0x -> $$0x.b)).apply($$0, eej::new));
-   private final qr b;
+public class eej extends eds {
+   public static final Codec<eej> a = RecordCodecBuilder.create($$0 -> a($$0).and(jb.j.r().fieldOf("id").forGetter($$0x -> $$0x.b)).apply($$0, eej::new));
+   private final he<cku> b;
 
-   private eej(List<efg> $$0, qr $$1) {
+   private eej(List<eff> $$0, he<cku> $$1) {
       super($$0);
       this.b = $$1;
    }
 
    @Override
-   public edv b() {
-      return edw.g;
+   public edu b() {
+      return edv.z;
    }
 
    @Override
-   public ciy a(ciy $$0, ech $$1) {
-      $$0.w().a(this.b);
+   public cix a(cix $$0, ecg $$1) {
+      ckw.a($$0, this.b.a());
       return $$0;
    }
 
-   @Deprecated
-   public static edt.a<?> a(qr $$0) {
-      return a($$1 -> new eej($$1, $$0));
+   public static eds.a<?> a(cku $$0) {
+      return a($$1 -> new eej($$1, $$0.c()));
    }
 }

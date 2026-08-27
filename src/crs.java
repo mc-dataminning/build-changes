@@ -1,53 +1,99 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class crs extends crd {
-   public static final dga a = dfq.ba;
-   private static final Map<chm, csm> b = Maps.newHashMap();
-   private static final ehx c = csm.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
+public class crs extends cry {
+   public static final dft a = dfp.P;
+   public static final dfq b = dfp.u;
 
-   public crs(chm $$0, dez.d $$1) {
-      super($$0, $$1);
-      this.k(this.C.b().a(a, Integer.valueOf(0)));
-      b.put($$0, this);
+   public crs(dey.d $$0) {
+      super($$0);
+      this.k(this.C.b().a(a, ha.c).a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public boolean a(dfa $$0, cpp $$1, gu $$2) {
-      return $$1.a_($$2.d()).e();
+   public bgq a(dez $$0, cpl $$1, gu $$2, cbm $$3, bgp $$4, egz $$5) {
+      if ($$1.B) {
+         return bgq.a;
+      } else {
+         dcl $$6 = $$1.c_($$2);
+         if ($$6 instanceof dce) {
+            $$3.a((dce)$$6);
+            $$3.a(apg.ar);
+            cad.a($$3, true);
+         }
+
+         return bgq.b;
+      }
    }
 
    @Override
-   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
-      return c;
+   public void a(dez $$0, cpl $$1, gu $$2, dez $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         dcl $$5 = $$1.c_($$2);
+         if ($$5 instanceof bgj) {
+            bgm.a($$1, $$2, (bgj)$$5);
+            $$1.c($$2, this);
+         }
+
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
    }
 
    @Override
-   public dfa a(clg $$0) {
-      return this.n().a(a, Integer.valueOf(dgg.a($$0.i() + 180.0F)));
+   public void a(dez $$0, akk $$1, gu $$2, aru $$3) {
+      dcl $$4 = $$1.c_($$2);
+      if ($$4 instanceof dce) {
+         ((dce)$$4).i();
+      }
+   }
+
+   @Nullable
+   @Override
+   public dcl a(gu $$0, dez $$1) {
+      return new dce($$0, $$1);
    }
 
    @Override
-   public dfa a(dfa $$0, ha $$1, dfa $$2, cpn $$3, gu $$4, gu $$5) {
-      return $$1 == ha.a && !$$0.a($$3, $$4) ? csn.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public cyq b_(dez $$0) {
+      return cyq.c;
    }
 
    @Override
-   public dfa a(dfa $$0, cyy $$1) {
-      return $$0.a(a, Integer.valueOf($$1.a($$0.c(a), 16)));
+   public void a(cpl $$0, gu $$1, dez $$2, @Nullable biy $$3, cix $$4) {
+      if ($$4.A()) {
+         dcl $$5 = $$0.c_($$1);
+         if ($$5 instanceof dce) {
+            ((dce)$$5).a($$4.y());
+         }
+      }
    }
 
    @Override
-   public dfa a(dfa $$0, cxh $$1) {
-      return $$0.a(a, Integer.valueOf($$1.a($$0.c(a), 16)));
+   public boolean d_(dez $$0) {
+      return true;
    }
 
    @Override
-   protected void a(dfb.a<csm, dfa> $$0) {
-      $$0.a(a);
+   public int a(dez $$0, cpl $$1, gu $$2) {
+      return ced.a($$1.c_($$2));
    }
 
-   public static csm a(chm $$0) {
-      return b.getOrDefault($$0, csn.iJ);
+   @Override
+   public dez a(dez $$0, cyx $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   public dez a(dez $$0, cxg $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(dfa.a<csl, dez> $$0) {
+      $$0.a(a, b);
+   }
+
+   @Override
+   public dez a(clf $$0) {
+      return this.n().a(a, $$0.d().g());
    }
 }

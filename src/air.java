@@ -121,8 +121,8 @@ public class air {
    }
 
    private static int a(dr $$0, Collection<? extends bii> $$1, akk $$2, fk $$3, @Nullable fk $$4, @Nullable air.a $$5) throws CommandSyntaxException {
-      ehe $$6 = $$3.a($$0);
-      ehd $$7 = $$4 == null ? null : $$4.b($$0);
+      ehd $$6 = $$3.a($$0);
+      ehc $$7 = $$4 == null ? null : $$4.b($$0);
       Set<bjm> $$8 = EnumSet.noneOf(bjm.class);
       if ($$3.a()) {
          $$8.add(bjm.a);
@@ -172,7 +172,7 @@ public class air {
 
    private static void a(dr $$0, bii $$1, akk $$2, double $$3, double $$4, double $$5, Set<bjm> $$6, float $$7, float $$8, @Nullable air.a $$9) throws CommandSyntaxException {
       gu $$10 = gu.a($$3, $$4, $$5);
-      if (!cpm.k($$10)) {
+      if (!cpl.k($$10)) {
          throw a.create();
       } else {
          float $$11 = arp.g($$7);
@@ -195,7 +195,7 @@ public class air {
    }
 
    static class a {
-      private final ehe a;
+      private final ehd a;
       private final bii b;
       private final eb.a c;
 
@@ -205,7 +205,7 @@ public class air {
          this.a = $$1.a($$0);
       }
 
-      public a(ehe $$0) {
+      public a(ehd $$0) {
          this.b = null;
          this.a = $$0;
          this.c = null;

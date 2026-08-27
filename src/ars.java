@@ -1,13 +1,13 @@
 import java.util.function.Supplier;
 
 public class ars {
-   public static void a(cpm $$0, gu $$1, it $$2, bfv $$3) {
+   public static void a(cpl $$0, gu $$1, it $$2, bfv $$3) {
       for (ha $$4 : ha.values()) {
          a($$0, $$1, $$2, $$3, $$4, () -> a($$0.z), 0.55);
       }
    }
 
-   public static void a(cpm $$0, gu $$1, it $$2, bfv $$3, ha $$4, Supplier<ehe> $$5, double $$6) {
+   public static void a(cpl $$0, gu $$1, it $$2, bfv $$3, ha $$4, Supplier<ehd> $$5, double $$6) {
       int $$7 = $$3.a($$0.z);
 
       for (int $$8 = 0; $$8 < $$7; $$8++) {
@@ -15,12 +15,12 @@ public class ars {
       }
    }
 
-   private static ehe a(aru $$0) {
-      return new ehe(arp.a($$0, -0.5, 0.5), arp.a($$0, -0.5, 0.5), arp.a($$0, -0.5, 0.5));
+   private static ehd a(aru $$0) {
+      return new ehd(arp.a($$0, -0.5, 0.5), arp.a($$0, -0.5, 0.5), arp.a($$0, -0.5, 0.5));
    }
 
-   public static void a(ha.a $$0, cpm $$1, gu $$2, double $$3, it $$4, bgb $$5) {
-      ehe $$6 = ehe.b($$2);
+   public static void a(ha.a $$0, cpl $$1, gu $$2, double $$3, it $$4, bgb $$5) {
+      ehd $$6 = ehd.b($$2);
       boolean $$7 = $$0 == ha.a.a;
       boolean $$8 = $$0 == ha.a.b;
       boolean $$9 = $$0 == ha.a.c;
@@ -37,8 +37,8 @@ public class ars {
       }
    }
 
-   public static void a(cpm $$0, gu $$1, ha $$2, it $$3, ehe $$4, double $$5) {
-      ehe $$6 = ehe.b($$1);
+   public static void a(cpl $$0, gu $$1, ha $$2, it $$3, ehd $$4, double $$5) {
+      ehd $$6 = ehd.b($$1);
       int $$7 = $$2.j();
       int $$8 = $$2.k();
       int $$9 = $$2.l();
@@ -51,7 +51,7 @@ public class ars {
       $$0.a($$3, $$10, $$11, $$12, $$13, $$14, $$15);
    }
 
-   public static void a(cpm $$0, gu $$1, aru $$2, it $$3) {
+   public static void a(cpl $$0, gu $$1, aru $$2, it $$3) {
       double $$4 = (double)$$1.u() + $$2.j();
       double $$5 = (double)$$1.v() - 0.05;
       double $$6 = (double)$$1.w() + $$2.j();

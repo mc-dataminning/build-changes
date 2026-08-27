@@ -1,138 +1,163 @@
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class bya extends bxy {
-   public static final double e = 0.375;
+public class bya extends bxx implements bjw<he<byb>> {
+   private static final adz<he<byb>> f = aec.a(bya.class, aeb.y);
+   private static final aeq<byb> g = byc.a;
+   public static final String e = "variant";
 
-   public bya(bim<? extends bya> $$0, cpm $$1) {
+   private static he<byb> m() {
+      return jb.m.f(g);
+   }
+
+   public bya(bim<? extends bya> $$0, cpl $$1) {
       super($$0, $$1);
    }
 
-   public bya(cpm $$0, gu $$1) {
-      super(bim.ah, $$0, $$1);
-      this.e((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+   @Override
+   protected void a_() {
+      this.an.a(f, m());
    }
 
    @Override
-   protected void s() {
-      this.p((double)this.c.u() + 0.5, (double)this.c.v() + 0.375, (double)this.c.w() + 0.5);
-      double $$0 = (double)this.ag().k() / 2.0;
-      double $$1 = (double)this.ag().l();
-      this.a(new egz(this.dp() - $$0, this.dr(), this.dv() - $$0, this.dp() + $$0, this.dr() + $$1, this.dv() + $$0));
+   public void a(adz<?> $$0) {
+      if (f.equals($$0)) {
+         this.s();
+      }
    }
 
-   @Override
-   public void a(ha $$0) {
+   public void a(he<byb> $$0) {
+      this.an.b(f, $$0);
    }
 
-   @Override
-   public int v() {
-      return 9;
+   public he<byb> j() {
+      return this.an.b(f);
    }
 
-   @Override
-   public int w() {
-      return 9;
+   public static Optional<bya> a(cpl $$0, gu $$1, ha $$2) {
+      bya $$3 = new bya($$0, $$1);
+      List<he<byb>> $$4 = new ArrayList<>();
+      jb.m.c(apu.a).forEach($$4::add);
+      if ($$4.isEmpty()) {
+         return Optional.empty();
+      } else {
+         $$3.a($$2);
+         $$4.removeIf($$1x -> {
+            $$3.a($$1x);
+            return !$$3.t();
+         });
+         if ($$4.isEmpty()) {
+            return Optional.empty();
+         } else {
+            int $$5 = $$4.stream().mapToInt(bya::b).max().orElse(0);
+            $$4.removeIf($$1x -> b($$1x) < $$5);
+            Optional<he<byb>> $$6 = ac.b($$4, $$3.ag);
+            if ($$6.isEmpty()) {
+               return Optional.empty();
+            } else {
+               $$3.a($$6.get());
+               $$3.a($$2);
+               return Optional.of($$3);
+            }
+         }
+      }
    }
 
-   @Override
-   protected float a(bjk $$0, bij $$1) {
-      return 0.0625F;
+   private static int b(he<byb> $$0) {
+      return $$0.a().a() * $$0.a().b();
    }
 
-   @Override
-   public boolean a(double $$0) {
-      return $$0 < 1024.0;
+   private bya(cpl $$0, gu $$1) {
+      super(bim.ar, $$0, $$1);
    }
 
-   @Override
-   public void a(@Nullable bii $$0) {
-      this.a(aow.mq, 1.0F, 1.0F);
+   public bya(cpl $$0, gu $$1, ha $$2, he<byb> $$3) {
+      this($$0, $$1);
+      this.a($$3);
+      this.a($$2);
    }
 
    @Override
    public void b(qr $$0) {
+      a($$0, this.j());
+      $$0.a("facing", (byte)this.d.e());
+      super.b($$0);
    }
 
    @Override
    public void a(qr $$0) {
+      he<byb> $$1 = c($$0).orElseGet(bya::m);
+      this.a($$1);
+      this.d = ha.b($$0.f("facing"));
+      super.a($$0);
+      this.a(this.d);
+   }
+
+   public static void a(qr $$0, he<byb> $$1) {
+      $$0.a("variant", $$1.e().orElse(g).a().toString());
+   }
+
+   public static Optional<he<byb>> c(qr $$0) {
+      return Optional.ofNullable(aer.a($$0.l("variant"))).map($$0x -> aeq.a(jc.P, $$0x)).flatMap(jb.m::b);
    }
 
    @Override
-   public bgq a(cbn $$0, bgp $$1) {
-      if (this.dK().B) {
-         return bgq.a;
-      } else {
-         boolean $$2 = false;
-         double $$3 = 7.0;
-         List<bja> $$4 = this.dK().a(bja.class, new egz(this.dp() - 7.0, this.dr() - 7.0, this.dv() - 7.0, this.dp() + 7.0, this.dr() + 7.0, this.dv() + 7.0));
-
-         for (bja $$5 : $$4) {
-            if ($$5.fP() == $$0) {
-               $$5.b(this, true);
-               $$2 = true;
-            }
-         }
-
-         boolean $$6 = false;
-         if (!$$2) {
-            this.ak();
-            if ($$0.fR().d) {
-               for (bja $$7 : $$4) {
-                  if ($$7.fO() && $$7.fP() == this) {
-                     $$7.a(true, false);
-                     $$6 = true;
-                  }
-               }
-            }
-         }
-
-         if ($$2 || $$6) {
-            this.a(djk.b, $$0);
-         }
-
-         return bgq.b;
-      }
+   public int v() {
+      return this.j().a().a();
    }
 
    @Override
-   public boolean t() {
-      return this.dK().a_(this.c).a(apl.S);
+   public int w() {
+      return this.j().a().b();
    }
 
-   public static bya b(cpm $$0, gu $$1) {
-      int $$2 = $$1.u();
-      int $$3 = $$1.v();
-      int $$4 = $$1.w();
-
-      for (bya $$6 : $$0.a(bya.class, new egz((double)$$2 - 1.0, (double)$$3 - 1.0, (double)$$4 - 1.0, (double)$$2 + 1.0, (double)$$3 + 1.0, (double)$$4 + 1.0))) {
-         if ($$6.y().equals($$1)) {
-            return $$6;
+   @Override
+   public void a(@Nullable bii $$0) {
+      if (this.dK().X().b(cph.h)) {
+         this.a(aow.qI, 1.0F, 1.0F);
+         if ($$0 instanceof cbm $$1 && $$1.fR().d) {
+            return;
          }
-      }
 
-      bya $$7 = new bya($$0, $$1);
-      $$0.b($$7);
-      return $$7;
+         this.a(cja.pl);
+      }
    }
 
    @Override
    public void x() {
-      this.a(aow.mr, 1.0F, 1.0F);
+      this.a(aow.qJ, 1.0F, 1.0F);
+   }
+
+   @Override
+   public void b(double $$0, double $$1, double $$2, float $$3, float $$4) {
+      this.e($$0, $$1, $$2);
+   }
+
+   @Override
+   public void a(double $$0, double $$1, double $$2, float $$3, float $$4, int $$5) {
+      this.e($$0, $$1, $$2);
+   }
+
+   @Override
+   public ehd dj() {
+      return ehd.a(this.c);
    }
 
    @Override
    public ux<wp> U() {
-      return new wq(this, 0, this.y());
+      return new wq(this, this.d.d(), this.y());
    }
 
    @Override
-   public ehe q(float $$0) {
-      return this.l($$0).b(0.0, 0.2, 0.0);
+   public void a(wq $$0) {
+      super.a($$0);
+      this.a(ha.a($$0.o()));
    }
 
    @Override
-   public ciy dx() {
-      return new ciy(cjb.tQ);
+   public cix dx() {
+      return new cix(cja.pl);
    }
 }

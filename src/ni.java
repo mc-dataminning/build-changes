@@ -2,24 +2,24 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
 public class ni {
-   public static final aeq<dwi> a = nt.a("bastion/starts");
+   public static final aeq<dwh> a = nt.a("bastion/starts");
 
-   public static void a(nm<dwi> $$0) {
-      hf<dyq> $$1 = $$0.a(jc.aA);
-      he<dyq> $$2 = $$1.b(nu.w);
-      hf<dwi> $$3 = $$0.a(jc.aC);
-      he<dwi> $$4 = $$3.b(nt.a);
+   public static void a(nm<dwh> $$0) {
+      hf<dyp> $$1 = $$0.a(jc.aA);
+      he<dyp> $$2 = $$1.b(nu.w);
+      hf<dwh> $$3 = $$0.a(jc.aC);
+      he<dwh> $$4 = $$3.b(nt.a);
       $$0.a(
          a,
-         new dwi(
+         new dwh(
             $$4,
             ImmutableList.of(
-               Pair.of(dwg.b("bastion/units/air_base", $$2), 1),
-               Pair.of(dwg.b("bastion/hoglin_stable/air_base", $$2), 1),
-               Pair.of(dwg.b("bastion/treasure/big_air_full", $$2), 1),
-               Pair.of(dwg.b("bastion/bridge/starting_pieces/entrance_base", $$2), 1)
+               Pair.of(dwf.b("bastion/units/air_base", $$2), 1),
+               Pair.of(dwf.b("bastion/hoglin_stable/air_base", $$2), 1),
+               Pair.of(dwf.b("bastion/treasure/big_air_full", $$2), 1),
+               Pair.of(dwf.b("bastion/bridge/starting_pieces/entrance_base", $$2), 1)
             ),
-            dwi.a.b
+            dwh.a.b
          )
       );
       nh.a($$0);

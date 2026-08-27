@@ -1,6 +1,6 @@
 import java.util.List;
 
-public record wd(aeq<cpm> b, dur c, List<wd.a> d) implements vp {
+public record wd(aeq<cpl> b, duq c, List<wd.a> d) implements vp {
    public static final aer a = new aer("debug/structures");
 
    public wd(si $$0) {
@@ -19,11 +19,11 @@ public record wd(aeq<cpm> b, dur c, List<wd.a> d) implements vp {
       return a;
    }
 
-   static dur b(si $$0) {
-      return new dur($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
+   static duq b(si $$0) {
+      return new duq($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
    }
 
-   static void a(si $$0, dur $$1) {
+   static void a(si $$0, duq $$1) {
       $$0.p($$1.g());
       $$0.p($$1.h());
       $$0.p($$1.i());
@@ -32,7 +32,7 @@ public record wd(aeq<cpm> b, dur c, List<wd.a> d) implements vp {
       $$0.p($$1.l());
    }
 
-   public static record a(dur a, boolean b) {
+   public static record a(duq a, boolean b) {
       public a(si $$0) {
          this(wd.b($$0), $$0.readBoolean());
       }

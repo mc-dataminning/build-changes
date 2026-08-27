@@ -1,107 +1,93 @@
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import it.unimi.dsi.fastutil.HashCommon;
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Consumer;
-import org.slf4j.Logger;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
-public class cdu {
-   private static final Logger a = LogUtils.getLogger();
-   private final cdw b;
-   private final Map<aer, cdt> c;
-   private final cdv d;
+public final class cdu {
+   private static final cdu b = new cdu(null, 0L);
+   public static final int a = 64;
+   @Nullable
+   private final cdv c;
+   private final long d;
 
-   cdu(cdw $$0, cdv $$1, Map<aer, cdt> $$2) {
-      this.b = $$0;
-      this.c = $$2;
+   private cdu(@Nullable cdv $$0, long $$1) {
+      this.c = $$0;
       this.d = $$1;
    }
 
-   public boolean a(cdv $$0) {
-      return $$0.a(this.d);
+   static cdu a(cdv $$0, Collection<cds> $$1) {
+      if ($$1.isEmpty()) {
+         return b;
+      } else {
+         long $$2 = a($$0, 0L, $$1);
+         return new cdu($$0, $$2);
+      }
    }
 
-   public cdv a() {
-      return this.d;
+   public static cdu a() {
+      return b;
    }
 
-   public cdv a(Iterable<aer> $$0) {
-      return this.a($$0, $$0x -> a.warn("Unknown feature flag: {}", $$0x));
+   public static cdu a(cds $$0) {
+      return new cdu($$0.a, $$0.b);
    }
 
-   public cdv a(cdt... $$0) {
-      return cdv.a(this.b, Arrays.asList($$0));
+   public static cdu a(cds $$0, cds... $$1) {
+      long $$2 = $$1.length == 0 ? $$0.b : a($$0.a, $$0.b, Arrays.asList($$1));
+      return new cdu($$0.a, $$2);
    }
 
-   public cdv a(Iterable<aer> $$0, Consumer<aer> $$1) {
-      Set<cdt> $$2 = Sets.newIdentityHashSet();
-
-      for (aer $$3 : $$0) {
-         cdt $$4 = this.c.get($$3);
-         if ($$4 == null) {
-            $$1.accept($$3);
-         } else {
-            $$2.add($$4);
+   private static long a(cdv $$0, long $$1, Iterable<cds> $$2) {
+      for (cds $$3 : $$2) {
+         if ($$0 != $$3.a) {
+            throw new IllegalStateException("Mismatched feature universe, expected '" + $$0 + "', but got '" + $$3.a + "'");
          }
+
+         $$1 |= $$3.b;
       }
 
-      return cdv.a(this.b, $$2);
-   }
-
-   public Set<aer> b(cdv $$0) {
-      Set<aer> $$1 = new HashSet<>();
-      this.c.forEach(($$2, $$3) -> {
-         if ($$0.b($$3)) {
-            $$1.add($$2);
-         }
-      });
       return $$1;
    }
 
-   public Codec<cdv> b() {
-      return aer.a.listOf().comapFlatMap($$0 -> {
-         Set<aer> $$1 = new HashSet<>();
-         cdv $$2 = this.a($$0, $$1::add);
-         return !$$1.isEmpty() ? DataResult.error(() -> "Unknown feature ids: " + $$1, $$2) : DataResult.success($$2);
-      }, $$0 -> List.copyOf(this.b($$0)));
+   public boolean b(cds $$0) {
+      return this.c != $$0.a ? false : (this.d & $$0.b) != 0L;
    }
 
-   public static class a {
-      private final cdw a;
-      private int b;
-      private final Map<aer, cdt> c = new LinkedHashMap<>();
-
-      public a(String $$0) {
-         this.a = new cdw($$0);
+   public boolean a(cdu $$0) {
+      if (this.c == null) {
+         return true;
+      } else {
+         return this.c != $$0.c ? false : (this.d & ~$$0.d) == 0L;
       }
+   }
 
-      public cdt a(String $$0) {
-         return this.a(new aer("minecraft", $$0));
+   public cdu b(cdu $$0) {
+      if (this.c == null) {
+         return $$0;
+      } else if ($$0.c == null) {
+         return this;
+      } else if (this.c != $$0.c) {
+         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
+      } else {
+         return new cdu(this.c, this.d | $$0.d);
       }
+   }
 
-      public cdt a(aer $$0) {
-         if (this.b >= 64) {
-            throw new IllegalStateException("Too many feature flags");
-         } else {
-            cdt $$1 = new cdt(this.a, this.b++);
-            cdt $$2 = this.c.put($$0, $$1);
-            if ($$2 != null) {
-               throw new IllegalStateException("Duplicate feature flag " + $$0);
-            } else {
-               return $$1;
-            }
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof cdu $$1 && this.c == $$1.c && this.d == $$1.d) {
+            return true;
          }
-      }
 
-      public cdu a() {
-         cdv $$0 = cdv.a(this.a, this.c.values());
-         return new cdu(this.a, $$0, Map.copyOf(this.c));
+         return false;
       }
+   }
+
+   @Override
+   public int hashCode() {
+      return (int)HashCommon.mix(this.d);
    }
 }

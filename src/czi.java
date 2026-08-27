@@ -1,188 +1,142 @@
-import java.util.Collection;
+import javax.annotation.Nullable;
 
-public class czi extends cxk implements czc, czn {
-   private static final dfr b = dfq.C;
-   private final cxl c = new cxl(new czi.a(cxl.a));
-   private final cxl d = new cxl(new czi.a(cxl.e.a));
+public class czi extends cst implements csn, czm {
+   public static final int a = 4;
+   public static final dfz b = dfp.aS;
+   public static final dfq c = dfp.C;
+   protected static final ehw d = csl.a(6.0, 0.0, 6.0, 10.0, 6.0, 10.0);
+   protected static final ehw e = csl.a(3.0, 0.0, 3.0, 13.0, 6.0, 13.0);
+   protected static final ehw f = csl.a(2.0, 0.0, 2.0, 14.0, 6.0, 14.0);
+   protected static final ehw g = csl.a(2.0, 0.0, 2.0, 14.0, 7.0, 14.0);
 
-   public czi(dez.d $$0) {
+   protected czi(dey.d $$0) {
       super($$0);
-      this.k(this.n().a(b, Boolean.valueOf(false)));
+      this.k(this.C.b().a(b, Integer.valueOf(1)).a(c, Boolean.valueOf(true)));
    }
 
+   @Nullable
    @Override
-   public cxl b() {
-      return this.c;
-   }
-
-   public cxl g() {
-      return this.d;
-   }
-
-   public static boolean a(cpn $$0, gu $$1, dfa $$2, Collection<ha> $$3) {
-      boolean $$4 = false;
-      dfa $$5 = csn.qG.n();
-
-      for (ha $$6 : $$3) {
-         gu $$7 = $$1.a($$6);
-         if (a($$0, $$6, $$7, $$0.a_($$7))) {
-            $$5 = $$5.a(b($$6), Boolean.valueOf(true));
-            $$4 = true;
-         }
-      }
-
-      if (!$$4) {
-         return false;
-      } else {
-         if (!$$2.u().c()) {
-            $$5 = $$5.a(b, Boolean.valueOf(true));
-         }
-
-         $$0.a($$1, $$5, 3);
-         return true;
-      }
-   }
-
-   @Override
-   public void a(cpn $$0, dfa $$1, gu $$2, aru $$3) {
+   public dez a(clf $$0) {
+      dez $$1 = $$0.q().a_($$0.a());
       if ($$1.a(this)) {
-         for (ha $$4 : a) {
-            dfr $$5 = b($$4);
-            if ($$1.c($$5) && $$0.a_($$2.a($$4)).a(csn.qF)) {
-               $$1 = $$1.a($$5, Boolean.valueOf(false));
-            }
+         return $$1.a(b, Integer.valueOf(Math.min(4, $$1.c(b) + 1)));
+      } else {
+         eac $$2 = $$0.q().b_($$0.a());
+         boolean $$3 = $$2.a() == ead.c;
+         return super.a($$0).a(c, Boolean.valueOf($$3));
+      }
+   }
+
+   public static boolean h(dez $$0) {
+      return !$$0.c(c);
+   }
+
+   @Override
+   protected boolean d(dez $$0, cor $$1, gu $$2) {
+      return !$$0.k($$1, $$2).a(ha.b).c() || $$0.d($$1, $$2, ha.b);
+   }
+
+   @Override
+   public boolean a(dez $$0, cpo $$1, gu $$2) {
+      gu $$3 = $$2.d();
+      return this.d($$1.a_($$3), $$1, $$3);
+   }
+
+   @Override
+   public dez a(dez $$0, ha $$1, dez $$2, cpm $$3, gu $$4, gu $$5) {
+      if (!$$0.a($$3, $$4)) {
+         return csm.a.n();
+      } else {
+         if ($$0.c(c)) {
+            $$3.a($$4, ead.c, ead.c.a($$3));
          }
 
-         if (!n($$1)) {
-            ead $$6 = $$0.b_($$2);
-            $$1 = ($$6.c() ? csn.a : csn.G).n();
-         }
-
-         $$0.a($$2, $$1, 3);
-         czc.super.a($$0, $$1, $$2, $$3);
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 
    @Override
-   public int a(czh.a $$0, cpn $$1, gu $$2, aru $$3, czh $$4, boolean $$5) {
-      if ($$5 && this.a($$4, $$1, $$0.a(), $$3)) {
-         return $$0.b() - 1;
-      } else {
-         return $$3.a($$4.f()) == 0 ? arp.d((float)$$0.b() * 0.5F) : $$0.b();
+   public boolean a(dez $$0, clf $$1) {
+      return !$$1.h() && $$1.n().a(this.k()) && $$0.c(b) < 4 ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   public ehw a(dez $$0, cor $$1, gu $$2, ehi $$3) {
+      switch ($$0.c(b)) {
+         case 1:
+         default:
+            return d;
+         case 2:
+            return e;
+         case 3:
+            return f;
+         case 4:
+            return g;
       }
    }
 
-   private boolean a(czh $$0, cpn $$1, gu $$2, aru $$3) {
-      dfa $$4 = $$1.a_($$2);
-      aqa<csm> $$5 = $$0.c();
+   @Override
+   public eac c_(dez $$0) {
+      return $$0.c(c) ? ead.c.a(false) : super.c_($$0);
+   }
 
-      for (ha $$6 : ha.a($$3)) {
-         if (a($$4, $$6)) {
-            gu $$7 = $$2.a($$6);
-            dfa $$8 = $$1.a_($$7);
-            if ($$8.a($$5)) {
-               dfa $$9 = csn.qF.n();
-               $$1.a($$7, $$9, 3);
-               csm.a($$8, $$9, $$1, $$7);
-               $$1.a(null, $$7, aow.ug, aox.e, 1.0F, 1.0F);
-               this.c.a($$9, $$1, $$7, $$0.h());
-               ha $$10 = $$6.g();
+   @Override
+   protected void a(dfa.a<csl, dez> $$0) {
+      $$0.a(b, c);
+   }
 
-               for (ha $$11 : a) {
-                  if ($$11 != $$10) {
-                     gu $$12 = $$7.a($$11);
-                     dfa $$13 = $$1.a_($$12);
-                     if ($$13.a(this)) {
-                        this.a($$1, $$13, $$12, $$3);
+   @Override
+   public boolean a(cpo $$0, gu $$1, dez $$2) {
+      return true;
+   }
+
+   @Override
+   public boolean a(cpl $$0, aru $$1, gu $$2, dez $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(akk $$0, aru $$1, gu $$2, dez $$3) {
+      if (!h($$3) && $$0.a_($$2.d()).a(apl.ap)) {
+         int $$4 = 5;
+         int $$5 = 1;
+         int $$6 = 2;
+         int $$7 = 0;
+         int $$8 = $$2.u() - 2;
+         int $$9 = 0;
+
+         for (int $$10 = 0; $$10 < 5; $$10++) {
+            for (int $$11 = 0; $$11 < $$5; $$11++) {
+               int $$12 = 2 + $$2.v() - 1;
+
+               for (int $$13 = $$12 - 2; $$13 < $$12; $$13++) {
+                  gu $$14 = new gu($$8 + $$10, $$13, $$2.w() - $$9 + $$11);
+                  if ($$14 != $$2 && $$1.a(6) == 0 && $$0.a_($$14).a(csm.G)) {
+                     dez $$15 = $$0.a_($$14.d());
+                     if ($$15.a(apl.ap)) {
+                        $$0.a($$14, csm.mV.n().a(b, Integer.valueOf($$1.a(4) + 1)), 3);
                      }
                   }
                }
-
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   public static boolean a(cpn $$0, dfa $$1, gu $$2) {
-      if (!$$1.a(csn.qG)) {
-         return false;
-      } else {
-         for (ha $$3 : a) {
-            if (a($$1, $$3) && $$0.a_($$2.a($$3)).a(apl.bL)) {
-               return true;
-            }
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public dfa a(dfa $$0, ha $$1, dfa $$2, cpn $$3, gu $$4, gu $$5) {
-      if ($$0.c(b)) {
-         $$3.a($$4, eae.c, eae.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected void a(dfb.a<csm, dfa> $$0) {
-      super.a($$0);
-      $$0.a(b);
-   }
-
-   @Override
-   public boolean a(dfa $$0, clg $$1) {
-      return !$$1.n().a(cjb.fM) || super.a($$0, $$1);
-   }
-
-   @Override
-   public ead c_(dfa $$0) {
-      return $$0.c(b) ? eae.c.a(false) : super.c_($$0);
-   }
-
-   class a extends cxl.a {
-      private final cxl.e[] c;
-
-      public a(cxl.e... $$0) {
-         super(czi.this);
-         this.c = $$0;
-      }
-
-      @Override
-      public boolean a(cos $$0, gu $$1, gu $$2, ha $$3, dfa $$4) {
-         dfa $$5 = $$0.a_($$2.a($$3));
-         if (!$$5.a(csn.qF) && !$$5.a(csn.qH) && !$$5.a(csn.bQ)) {
-            if ($$1.k($$2) == 2) {
-               gu $$6 = $$1.a($$3.g());
-               if ($$0.a_($$6).d($$0, $$6, $$3)) {
-                  return false;
-               }
             }
 
-            ead $$7 = $$4.u();
-            if (!$$7.c() && !$$7.b(eae.c)) {
-               return false;
+            if ($$7 < 2) {
+               $$5 += 2;
+               $$9++;
             } else {
-               return $$4.a(apl.aJ) ? false : $$4.r() || super.a($$0, $$1, $$2, $$3, $$4);
+               $$5 -= 2;
+               $$9--;
             }
-         } else {
-            return false;
+
+            $$7++;
          }
-      }
 
-      @Override
-      public cxl.e[] a() {
-         return this.c;
+         $$0.a($$2, $$3.a(b, Integer.valueOf(4)), 2);
       }
+   }
 
-      @Override
-      public boolean a(dfa $$0) {
-         return !$$0.a(csn.qG);
-      }
+   @Override
+   public boolean a(dez $$0, cor $$1, gu $$2, eas $$3) {
+      return false;
    }
 }

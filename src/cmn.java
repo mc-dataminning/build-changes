@@ -1,15 +1,22 @@
-public class cmn extends clk {
-   public cmn(aer $$0, String $$1, clq $$2, cly $$3, ciy $$4, float $$5, int $$6) {
-      super(cme.b, $$0, $$1, $$2, $$3, $$4, $$5, $$6);
+public interface cmn extends cma<bgj> {
+   @Override
+   default cmd<?> f() {
+      return cmd.g;
    }
 
    @Override
-   public ciy h() {
-      return new ciy(csn.cD);
+   default boolean a(int $$0, int $$1) {
+      return $$0 >= 3 && $$1 >= 1;
    }
 
    @Override
-   public cmd<?> aj_() {
-      return cmd.p;
+   default cix h() {
+      return new cix(csm.ob);
    }
+
+   boolean a(cix var1);
+
+   boolean b(cix var1);
+
+   boolean c(cix var1);
 }

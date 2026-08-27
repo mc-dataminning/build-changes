@@ -1,66 +1,31 @@
-import javax.annotation.Nullable;
+import java.util.UUID;
 
-public abstract class esu extends esf {
-   esu(int $$0, int $$1, int $$2, int $$3) {
-      super($$0, $$1, $$2, $$3, te.a);
-   }
+public class esu extends bgg {
+   private static final long j = 100L;
+   protected float h;
+   protected long i;
 
-   public static esu a(int $$0, int $$1, aer $$2, int $$3, int $$4) {
-      return new esu.b(0, 0, $$0, $$1, $$2, $$3, $$4);
-   }
-
-   public static esu a(int $$0, int $$1, aer $$2) {
-      return new esu.a(0, 0, $$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(evx $$0) {
-   }
-
-   @Override
-   public void a(gcx $$0) {
+   public esu(UUID $$0, tf $$1, float $$2, bgg.a $$3, bgg.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+      super($$0, $$1, $$3, $$4);
+      this.h = $$2;
+      this.b = $$2;
+      this.i = ac.b();
+      this.a($$5);
+      this.b($$6);
+      this.c($$7);
    }
 
    @Override
-   public boolean az_() {
-      return false;
+   public void a(float $$0) {
+      this.b = this.k();
+      this.h = $$0;
+      this.i = ac.b();
    }
 
-   @Nullable
    @Override
-   public ert a(ewd $$0) {
-      return null;
-   }
-
-   static class a extends esu {
-      private final aer a;
-
-      public a(int $$0, int $$1, int $$2, int $$3, aer $$4) {
-         super($$0, $$1, $$2, $$3);
-         this.a = $$4;
-      }
-
-      @Override
-      public void b(erw $$0, int $$1, int $$2, float $$3) {
-         $$0.a(this.a, this.p(), this.r(), this.k(), this.h());
-      }
-   }
-
-   static class b extends esu {
-      private final aer a;
-      private final int b;
-      private final int c;
-
-      public b(int $$0, int $$1, int $$2, int $$3, aer $$4, int $$5, int $$6) {
-         super($$0, $$1, $$2, $$3);
-         this.a = $$4;
-         this.b = $$5;
-         this.c = $$6;
-      }
-
-      @Override
-      protected void b(erw $$0, int $$1, int $$2, float $$3) {
-         $$0.a(this.a, this.p(), this.r(), this.k(), this.h(), 0.0F, 0.0F, this.k(), this.h(), this.b, this.c);
-      }
+   public float k() {
+      long $$0 = ac.b() - this.i;
+      float $$1 = arp.a((float)$$0 / 100.0F, 0.0F, 1.0F);
+      return arp.i($$1, this.b, this.h);
    }
 }

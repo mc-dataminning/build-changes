@@ -31,7 +31,7 @@ public class agc {
       );
    }
 
-   private static int a(dr $$0, Collection<akl> $$1, Predicate<ciy> $$2, int $$3) throws CommandSyntaxException {
+   private static int a(dr $$0, Collection<akl> $$1, Predicate<cix> $$2, int $$3) throws CommandSyntaxException {
       int $$4 = 0;
 
       for (akl $$5 : $$1) {

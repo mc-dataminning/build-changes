@@ -1,20 +1,12 @@
-public class fuu<T extends bzm> extends ftu<T, fgp<T>> {
-   private static final aer a = new aer("textures/entity/spider/spider.png");
+public class fuu extends fud<bvf, fgj<bvf>> {
+   private static final aer a = new aer("textures/entity/sheep/sheep.png");
 
-   public fuu(fso.a $$0) {
-      this($$0, fhm.br);
+   public fuu(fsx.a $$0) {
+      super($$0, new fgj<>($$0.a(fhr.bb)), 0.7F);
+      this.a(new fxh(this, $$0.f()));
    }
 
-   public fuu(fso.a $$0, fhl $$1) {
-      super($$0, new fgp<>($$0.a($$1)), 0.8F);
-      this.a(new fxc<>(this));
-   }
-
-   protected float b(T $$0) {
-      return 180.0F;
-   }
-
-   public aer a(T $$0) {
+   public aer a(bvf $$0) {
       return a;
    }
 }

@@ -20,8 +20,8 @@ public class cm extends cu<cm.a> {
       return new cm.a(this.a, $$1, $$3, $$4);
    }
 
-   public void a(akl $$0, ciy $$1, @Nullable bii $$2) {
-      ech $$3 = bo.b($$0, $$2);
+   public void a(akl $$0, cix $$1, @Nullable bii $$2) {
+      ecg $$3 = bo.b($$0, $$2);
       this.a($$0, $$3x -> $$3x.a($$0, $$1, $$3));
    }
 
@@ -43,7 +43,7 @@ public class cm extends cu<cm.a> {
          return new cm.a(ai.P.a(), $$0, $$1, $$2);
       }
 
-      public boolean a(akl $$0, ciy $$1, ech $$2) {
+      public boolean a(akl $$0, cix $$1, ecg $$2) {
          return this.a.isPresent() && !this.a.get().a($$1) ? false : !this.b.isPresent() || this.b.get().a($$2);
       }
 

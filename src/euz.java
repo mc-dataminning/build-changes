@@ -8,6 +8,6 @@ public class euz extends euy {
    }
 
    @Override
-   public void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, elk $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
+   public void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, elj $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
    }
 }

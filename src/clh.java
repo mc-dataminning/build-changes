@@ -1,62 +1,71 @@
-public class clh extends clg {
-   private final ha b;
+import javax.annotation.Nullable;
 
-   public clh(cpm $$0, gu $$1, ha $$2, ciy $$3, ha $$4) {
-      super($$0, null, bgp.a, $$3, new eha(ehe.c($$1), $$4, $$1, false));
+public class clh {
+   @Nullable
+   private final cbm a;
+   private final bgp b;
+   private final egz c;
+   private final cpl d;
+   private final cix e;
+
+   public clh(cbm $$0, bgp $$1, egz $$2) {
+      this($$0.dK(), $$0, $$1, $$0.b($$1), $$2);
+   }
+
+   protected clh(cpl $$0, @Nullable cbm $$1, bgp $$2, cix $$3, egz $$4) {
+      this.a = $$1;
       this.b = $$2;
+      this.c = $$4;
+      this.e = $$3;
+      this.d = $$0;
    }
 
-   @Override
+   protected final egz j() {
+      return this.c;
+   }
+
    public gu a() {
-      return this.j().a();
+      return this.c.a();
    }
 
-   @Override
-   public boolean b() {
-      return this.q().a_(this.j().a()).a(this);
+   public ha k() {
+      return this.c.b();
    }
 
-   @Override
-   public boolean c() {
-      return this.b();
+   public ehd l() {
+      return this.c.e();
    }
 
-   @Override
-   public ha d() {
-      return ha.a;
+   public boolean m() {
+      return this.c.d();
    }
 
-   @Override
-   public ha[] f() {
-      switch (this.b) {
-         case a:
-         default:
-            return new ha[]{ha.a, ha.c, ha.f, ha.d, ha.e, ha.b};
-         case b:
-            return new ha[]{ha.a, ha.b, ha.c, ha.f, ha.d, ha.e};
-         case c:
-            return new ha[]{ha.a, ha.c, ha.f, ha.e, ha.b, ha.d};
-         case d:
-            return new ha[]{ha.a, ha.d, ha.f, ha.e, ha.b, ha.c};
-         case e:
-            return new ha[]{ha.a, ha.e, ha.d, ha.b, ha.c, ha.f};
-         case f:
-            return new ha[]{ha.a, ha.f, ha.d, ha.b, ha.c, ha.e};
-      }
+   public cix n() {
+      return this.e;
    }
 
-   @Override
+   @Nullable
+   public cbm o() {
+      return this.a;
+   }
+
+   public bgp p() {
+      return this.b;
+   }
+
+   public cpl q() {
+      return this.d;
+   }
+
    public ha g() {
-      return this.b.o() == ha.a.b ? ha.c : this.b;
+      return this.a == null ? ha.c : this.a.cD();
    }
 
-   @Override
    public boolean h() {
-      return false;
+      return this.a != null && this.a.fG();
    }
 
-   @Override
    public float i() {
-      return (float)(this.b.e() * 90);
+      return this.a == null ? 0.0F : this.a.dA();
    }
 }

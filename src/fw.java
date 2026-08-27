@@ -17,27 +17,27 @@ public class fw {
    private static final char d = '{';
    private static final char e = '#';
    private static final Function<SuggestionsBuilder, CompletableFuture<Suggestions>> f = SuggestionsBuilder::buildFuture;
-   private final hg<cit> g;
+   private final hg<cis> g;
    private final StringReader h;
    private final boolean i;
-   private Either<he<cit>, hi<cit>> j;
+   private Either<he<cis>, hi<cis>> j;
    @Nullable
    private qr k;
    private Function<SuggestionsBuilder, CompletableFuture<Suggestions>> l = f;
 
-   private fw(hg<cit> $$0, StringReader $$1, boolean $$2) {
+   private fw(hg<cis> $$0, StringReader $$1, boolean $$2) {
       this.g = $$0;
       this.h = $$1;
       this.i = $$2;
    }
 
-   public static fw.a a(hg<cit> $$0, StringReader $$1) throws CommandSyntaxException {
+   public static fw.a a(hg<cis> $$0, StringReader $$1) throws CommandSyntaxException {
       int $$2 = $$1.getCursor();
 
       try {
          fw $$3 = new fw($$0, $$1, false);
          $$3.d();
-         he<cit> $$4 = (he<cit>)$$3.j.left().orElseThrow(() -> new IllegalStateException("Parser returned unexpected tag name"));
+         he<cis> $$4 = (he<cis>)$$3.j.left().orElseThrow(() -> new IllegalStateException("Parser returned unexpected tag name"));
          return new fw.a($$4, $$3.k);
       } catch (CommandSyntaxException var5) {
          $$1.setCursor($$2);
@@ -45,7 +45,7 @@ public class fw {
       }
    }
 
-   public static Either<fw.a, fw.b> b(hg<cit> $$0, StringReader $$1) throws CommandSyntaxException {
+   public static Either<fw.a, fw.b> b(hg<cis> $$0, StringReader $$1) throws CommandSyntaxException {
       int $$2 = $$1.getCursor();
 
       try {
@@ -58,7 +58,7 @@ public class fw {
       }
    }
 
-   public static CompletableFuture<Suggestions> a(hg<cit> $$0, SuggestionsBuilder $$1, boolean $$2) {
+   public static CompletableFuture<Suggestions> a(hg<cis> $$0, SuggestionsBuilder $$1, boolean $$2) {
       StringReader $$3 = new StringReader($$1.getInput());
       $$3.setCursor($$1.getStart());
       fw $$4 = new fw($$0, $$3, $$2);
@@ -74,7 +74,7 @@ public class fw {
    private void a() throws CommandSyntaxException {
       int $$0 = this.h.getCursor();
       aer $$1 = aer.a(this.h);
-      Optional<? extends he<cit>> $$2 = this.g.a(aeq.a(jc.D, $$1));
+      Optional<? extends he<cis>> $$2 = this.g.a(aeq.a(jc.D, $$1));
       this.j = Either.left($$2.orElseThrow(() -> {
          this.h.setCursor($$0);
          return b.createWithContext(this.h, $$1);
@@ -89,7 +89,7 @@ public class fw {
          this.h.expect('#');
          this.l = this::b;
          aer $$1 = aer.a(this.h);
-         Optional<? extends hi<cit>> $$2 = this.g.a(aqa.a(jc.D, $$1));
+         Optional<? extends hi<cis>> $$2 = this.g.a(aqa.a(jc.D, $$1));
          this.j = Either.right($$2.orElseThrow(() -> {
             this.h.setCursor($$0);
             return c.createWithContext(this.h, $$1);
@@ -142,9 +142,9 @@ public class fw {
       return this.c($$0);
    }
 
-   public static record a(he<cit> a, @Nullable qr b) {
+   public static record a(he<cis> a, @Nullable qr b) {
    }
 
-   public static record b(hi<cit> a, @Nullable qr b) {
+   public static record b(hi<cis> a, @Nullable qr b) {
    }
 }

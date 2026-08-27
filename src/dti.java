@@ -1,62 +1,50 @@
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 import org.slf4j.Logger;
 
-public class dti extends dtg {
+public class dti extends dtf {
    public static final Codec<dti> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dld.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
-               dld.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
-               Codec.INT.optionalFieldOf("plateau", 0).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dti::new)
+      $$0 -> $$0.group(dlc.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d), dlc.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e)).apply($$0, dti::new)
    );
    private static final Logger b = LogUtils.getLogger();
-   private final dld d;
-   private final dld e;
-   private final int f;
+   private final dlc d;
+   private final dlc e;
+   private final LongSet f = new LongOpenHashSet();
 
-   private dti(dld $$0, dld $$1, int $$2) {
+   private dti(dlc $$0, dlc $$1) {
       this.d = $$0;
       this.e = $$1;
-      this.f = $$2;
    }
 
-   public static dti a(dld $$0, dld $$1, int $$2) {
-      return new dti($$0, $$1, $$2);
-   }
-
-   public static dti a(dld $$0, dld $$1) {
-      return a($$0, $$1, 0);
+   public static dti a(dlc $$0, dlc $$1) {
+      return new dti($$0, $$1);
    }
 
    @Override
-   public int a(aru $$0, dlg $$1) {
+   public int a(aru $$0, dlf $$1) {
       int $$2 = this.d.a($$1);
       int $$3 = this.e.a($$1);
       if ($$2 > $$3) {
-         b.warn("Empty height range: {}", this);
+         if (this.f.add((long)$$2 << 32 | (long)$$3)) {
+            b.warn("Empty height range: {}", this);
+         }
+
          return $$2;
       } else {
-         int $$4 = $$3 - $$2;
-         if (this.f >= $$4) {
-            return arp.b($$0, $$2, $$3);
-         } else {
-            int $$5 = ($$4 - this.f) / 2;
-            int $$6 = $$4 - $$5;
-            return $$2 + arp.b($$0, 0, $$6) + arp.b($$0, 0, $$5);
-         }
+         return arp.b($$0, $$2, $$3);
       }
    }
 
    @Override
-   public dth<?> a() {
-      return dth.e;
+   public dtg<?> a() {
+      return dtg.b;
    }
 
    @Override
    public String toString() {
-      return this.f == 0 ? "triangle (" + this.d + "-" + this.e + ")" : "trapezoid(" + this.f + ") in [" + this.d + "-" + this.e + "]";
+      return "[" + this.d + "-" + this.e + "]";
    }
 }

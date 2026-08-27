@@ -24,7 +24,7 @@ public interface bjf {
       }
    }
 
-   default void a(cpm $$0, qr $$1) {
+   default void a(cpl $$0, qr $$1) {
       this.a($$1.h("AngerTime"));
       if ($$0 instanceof akk) {
          if (!$$1.b("AngryAt")) {
@@ -39,7 +39,7 @@ public interface bjf {
                }
 
                if ($$3.ag() == bim.bt) {
-                  this.c((cbn)$$3);
+                  this.c((cbm)$$3);
                }
             }
          }
@@ -74,16 +74,16 @@ public interface bjf {
       }
    }
 
-   default boolean a_(cpm $$0) {
-      return $$0.X().b(cpi.K) && this.S_() && this.b() == null;
+   default boolean a_(cpl $$0) {
+      return $$0.X().b(cph.K) && this.S_() && this.b() == null;
    }
 
    default boolean S_() {
       return this.a() > 0;
    }
 
-   default void a_(cbn $$0) {
-      if ($$0.dK().X().b(cpi.J)) {
+   default void a_(cbm $$0) {
+      if ($$0.dK().X().b(cph.J)) {
          if ($$0.cv().equals(this.b())) {
             this.O_();
          }
@@ -107,7 +107,7 @@ public interface bjf {
 
    void a(@Nullable biy var1);
 
-   void c(@Nullable cbn var1);
+   void c(@Nullable cbm var1);
 
    void h(@Nullable biy var1);
 

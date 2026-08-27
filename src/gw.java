@@ -33,12 +33,12 @@ public class gw implements gv {
    }
 
    @Override
-   public dfa e() {
+   public dez e() {
       return this.a.a_(this.b);
    }
 
    @Override
-   public <T extends dcm> T f() {
+   public <T extends dcl> T f() {
       return (T)this.a.c_(this.b);
    }
 }

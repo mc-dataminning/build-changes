@@ -1,9 +1,13 @@
 import com.mojang.serialization.Codec;
 
-public abstract class dyf {
-   public static final Codec<dyf> c = jb.r.q().dispatch("predicate_type", dyf::a, dyg::codec);
+public interface dyf<P extends dye> {
+   dyf<dyd> a = a("always_true", dyd.a);
+   dyf<dyb> b = a("linear_pos", dyb.a);
+   dyf<dxq> c = a("axis_aligned_linear_pos", dxq.a);
 
-   public abstract boolean a(gu var1, gu var2, gu var3, aru var4);
+   Codec<P> codec();
 
-   protected abstract dyg<?> a();
+   static <P extends dye> dyf<P> a(String $$0, Codec<P> $$1) {
+      return hr.a(jb.r, $$0, () -> $$1);
+   }
 }

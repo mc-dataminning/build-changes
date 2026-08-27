@@ -1,61 +1,173 @@
-public class bxn extends bxd {
-   private static final int b = 100;
-   private static final int c = 10;
-   private static final int d = 20;
-   private static final int e = 150;
-   private static final btl f = btl.a().a(150.0);
-   private final btl g;
-   private int h;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public bxn(bxa $$0) {
+public class bxn extends bxb {
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 5;
+   private int d;
+   @Nullable
+   private ear e;
+   @Nullable
+   private ehd f;
+   @Nullable
+   private biy g;
+   private boolean h;
+
+   public bxn(bwz $$0) {
       super($$0);
-      this.g = btl.a().a(20.0).a($$1 -> Math.abs($$1.dr() - $$0.dr()) <= 10.0);
    }
 
    @Override
    public void c() {
-      this.h++;
-      biy $$0 = this.a.dK().a(this.g, this.a, this.a.dp(), this.a.dr(), this.a.dv());
-      if ($$0 != null) {
-         if (this.h > 25) {
-            this.a.fW().a(bxq.h);
-         } else {
-            ehe $$1 = new ehe($$0.dp() - this.a.dp(), 0.0, $$0.dv() - this.a.dv()).d();
-            ehe $$2 = new ehe((double)arp.a(this.a.dA() * (float) (Math.PI / 180.0)), 0.0, (double)(-arp.b(this.a.dA() * (float) (Math.PI / 180.0)))).d();
-            float $$3 = (float)$$2.b($$1);
-            float $$4 = (float)(Math.acos((double)$$3) * 180.0F / (float)Math.PI) + 0.5F;
-            if ($$4 < 0.0F || $$4 > 10.0F) {
-               double $$5 = $$0.dp() - this.a.e.dp();
-               double $$6 = $$0.dv() - this.a.e.dv();
-               double $$7 = arp.a(arp.d(180.0 - arp.d($$5, $$6) * 180.0F / (float)Math.PI - (double)this.a.dA()), -100.0, 100.0);
-               this.a.bW *= 0.8F;
-               float $$8 = (float)Math.sqrt($$5 * $$5 + $$6 * $$6) + 1.0F;
-               float $$9 = $$8;
-               if ($$8 > 40.0F) {
-                  $$8 = 40.0F;
-               }
+      if (this.g == null) {
+         b.warn("Skipping player strafe phase because no player was found");
+         this.a.fX().a(bxp.a);
+      } else {
+         if (this.e != null && this.e.c()) {
+            double $$0 = this.g.dp();
+            double $$1 = this.g.dv();
+            double $$2 = $$0 - this.a.dp();
+            double $$3 = $$1 - this.a.dv();
+            double $$4 = Math.sqrt($$2 * $$2 + $$3 * $$3);
+            double $$5 = Math.min(0.4F + $$4 / 80.0 - 1.0, 10.0);
+            this.f = new ehd($$0, this.g.dr() + $$5, $$1);
+         }
 
-               this.a.bW += (float)$$7 * (0.7F / $$8 / $$9);
-               this.a.r(this.a.dA() + this.a.bW);
+         double $$6 = this.f == null ? 0.0 : this.f.c(this.a.dp(), this.a.dr(), this.a.dv());
+         if ($$6 < 100.0 || $$6 > 22500.0) {
+            this.j();
+         }
+
+         double $$7 = 64.0;
+         if (this.g.f(this.a) < 4096.0) {
+            if (this.a.E(this.g)) {
+               this.d++;
+               ehd $$8 = new ehd(this.g.dp() - this.a.dp(), 0.0, this.g.dv() - this.a.dv()).d();
+               ehd $$9 = new ehd((double)arp.a(this.a.dA() * (float) (Math.PI / 180.0)), 0.0, (double)(-arp.b(this.a.dA() * (float) (Math.PI / 180.0)))).d();
+               float $$10 = (float)$$9.b($$8);
+               float $$11 = (float)(Math.acos((double)$$10) * 180.0F / (float)Math.PI);
+               $$11 += 0.5F;
+               if (this.d >= 5 && $$11 >= 0.0F && $$11 < 10.0F) {
+                  double $$12 = 1.0;
+                  ehd $$13 = this.a.f(1.0F);
+                  double $$14 = this.a.e.dp() - $$13.c * 1.0;
+                  double $$15 = this.a.e.e(0.5) + 0.5;
+                  double $$16 = this.a.e.dv() - $$13.e * 1.0;
+                  double $$17 = this.g.dp() - $$14;
+                  double $$18 = this.g.e(0.5) - $$15;
+                  double $$19 = this.g.dv() - $$16;
+                  if (!this.a.aS()) {
+                     this.a.dK().a(null, 1017, this.a.dk(), 0);
+                  }
+
+                  cbv $$20 = new cbv(this.a.dK(), this.a, $$17, $$18, $$19);
+                  $$20.b($$14, $$15, $$16, 0.0F, 0.0F);
+                  this.a.dK().b($$20);
+                  this.d = 0;
+                  if (this.e != null) {
+                     while (!this.e.c()) {
+                        this.e.a();
+                     }
+                  }
+
+                  this.a.fX().a(bxp.a);
+               }
+            } else if (this.d > 0) {
+               this.d--;
             }
+         } else if (this.d > 0) {
+            this.d--;
          }
-      } else if (this.h >= 100) {
-         $$0 = this.a.dK().a(f, this.a, this.a.dp(), this.a.dr(), this.a.dv());
-         this.a.fW().a(bxq.e);
-         if ($$0 != null) {
-            this.a.fW().a(bxq.i);
-            this.a.fW().b(bxq.i).a(new ehe($$0.dp(), $$0.dr(), $$0.dv()));
+      }
+   }
+
+   private void j() {
+      if (this.e == null || this.e.c()) {
+         int $$0 = this.a.t();
+         int $$1 = $$0;
+         if (this.a.ee().a(8) == 0) {
+            this.h = !this.h;
+            $$1 = $$0 + 6;
          }
+
+         if (this.h) {
+            $$1++;
+         } else {
+            $$1--;
+         }
+
+         if (this.a.fY() != null && this.a.fY().e() > 0) {
+            $$1 %= 12;
+            if ($$1 < 0) {
+               $$1 += 12;
+            }
+         } else {
+            $$1 -= 12;
+            $$1 &= 7;
+            $$1 += 12;
+         }
+
+         this.e = this.a.a($$0, $$1, null);
+         if (this.e != null) {
+            this.e.a();
+         }
+      }
+
+      this.k();
+   }
+
+   private void k() {
+      if (this.e != null && !this.e.c()) {
+         hz $$0 = this.e.g();
+         this.e.a();
+         double $$1 = (double)$$0.u();
+         double $$2 = (double)$$0.w();
+
+         double $$3;
+         do {
+            $$3 = (double)((float)$$0.v() + this.a.ee().i() * 20.0F);
+         } while ($$3 < (double)$$0.v());
+
+         this.f = new ehd($$1, $$3, $$2);
       }
    }
 
    @Override
    public void d() {
-      this.h = 0;
+      this.d = 0;
+      this.f = null;
+      this.e = null;
+      this.g = null;
+   }
+
+   public void a(biy $$0) {
+      this.g = $$0;
+      int $$1 = this.a.t();
+      int $$2 = this.a.r(this.g.dp(), this.g.dr(), this.g.dv());
+      int $$3 = this.g.do();
+      int $$4 = this.g.du();
+      double $$5 = (double)$$3 - this.a.dp();
+      double $$6 = (double)$$4 - this.a.dv();
+      double $$7 = Math.sqrt($$5 * $$5 + $$6 * $$6);
+      double $$8 = Math.min(0.4F + $$7 / 80.0 - 1.0, 10.0);
+      int $$9 = arp.a(this.g.dr() + $$8);
+      eap $$10 = new eap($$3, $$9, $$4);
+      this.e = this.a.a($$1, $$2, $$10);
+      if (this.e != null) {
+         this.e.a();
+         this.k();
+      }
+   }
+
+   @Nullable
+   @Override
+   public ehd g() {
+      return this.f;
    }
 
    @Override
-   public bxq<bxn> i() {
-      return bxq.g;
+   public bxp<bxn> i() {
+      return bxp.b;
    }
 }

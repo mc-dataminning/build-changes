@@ -1,19 +1,9 @@
 import com.mojang.serialization.Codec;
 
-public class dye extends dyf {
-   public static final Codec<dye> a = Codec.unit(() -> dye.b);
-   public static final dye b = new dye();
+public abstract class dye {
+   public static final Codec<dye> c = jb.r.q().dispatch("predicate_type", dye::a, dyf::codec);
 
-   private dye() {
-   }
+   public abstract boolean a(gu var1, gu var2, gu var3, aru var4);
 
-   @Override
-   public boolean a(gu $$0, gu $$1, gu $$2, aru $$3) {
-      return true;
-   }
-
-   @Override
-   protected dyg<?> a() {
-      return dyg.a;
-   }
+   protected abstract dyf<?> a();
 }

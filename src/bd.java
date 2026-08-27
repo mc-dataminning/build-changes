@@ -27,7 +27,7 @@ public record bd(List<da<bhi>> b, Optional<bo> c, Optional<bo> d) {
       return this.a($$0.x(), $$0.di(), $$1);
    }
 
-   public boolean a(akk $$0, ehe $$1, bhg $$2) {
+   public boolean a(akk $$0, ehd $$1, bhg $$2) {
       for (da<bhi> $$3 : this.b) {
          if (!$$3.a($$2.k())) {
             return false;

@@ -1,85 +1,169 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.IntSupplier;
 
-public class exm {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Map<cfj<?>, exm.a<?, ?>> b = Maps.newHashMap();
+public class exm extends exu {
+   static final aer c = new aer("textures/gui/title/mojangstudios.png");
+   private static final int d = ara.b.a(255, 239, 50, 61);
+   private static final int e = ara.b.a(255, 0, 0, 0);
+   private static final IntSupplier f = () -> eql.O().m.a().c() ? e : d;
+   private static final int g = 240;
+   private static final float h = 60.0F;
+   private static final int i = 60;
+   private static final int j = 120;
+   private static final float k = 0.0625F;
+   private static final float l = 0.95F;
+   public static final long a = 1000L;
+   public static final long b = 500L;
+   private final eql m;
+   private final ani n;
+   private final Consumer<Optional<Throwable>> o;
+   private final boolean p;
+   private float q;
+   private long r = -1L;
+   private long s = -1L;
 
-   public static <T extends cee> void a(@Nullable cfj<T> $$0, eqm $$1, int $$2, tf $$3) {
-      if ($$0 == null) {
-         a.warn("Trying to open invalid screen with name: {}", $$3.getString());
+   public exm(eql $$0, ani $$1, Consumer<Optional<Throwable>> $$2, boolean $$3) {
+      this.m = $$0;
+      this.n = $$1;
+      this.o = $$2;
+      this.p = $$3;
+   }
+
+   public static void a(eql $$0) {
+      $$0.Y().a(c, new exm.a());
+   }
+
+   private static int a(int $$0, int $$1) {
+      return $$0 & 16777215 | $$1 << 24;
+   }
+
+   @Override
+   public void a(erv $$0, int $$1, int $$2, float $$3) {
+      int $$4 = $$0.a();
+      int $$5 = $$0.b();
+      long $$6 = ac.b();
+      if (this.p && this.s == -1L) {
+         this.s = $$6;
+      }
+
+      float $$7 = this.r > -1L ? (float)($$6 - this.r) / 1000.0F : -1.0F;
+      float $$8 = this.s > -1L ? (float)($$6 - this.s) / 500.0F : -1.0F;
+      float $$10;
+      if ($$7 >= 1.0F) {
+         if (this.m.y != null) {
+            this.m.y.a($$0, 0, 0, $$3);
+         }
+
+         int $$9 = arp.f((1.0F - arp.a($$7 - 1.0F, 0.0F, 1.0F)) * 255.0F);
+         $$0.a(foc.D(), 0, 0, $$4, $$5, a(f.getAsInt(), $$9));
+         $$10 = 1.0F - arp.a($$7 - 1.0F, 0.0F, 1.0F);
+      } else if (this.p) {
+         if (this.m.y != null && $$8 < 1.0F) {
+            this.m.y.a($$0, $$1, $$2, $$3);
+         }
+
+         int $$11 = arp.c(arp.a((double)$$8, 0.15, 1.0) * 255.0);
+         $$0.a(foc.D(), 0, 0, $$4, $$5, a(f.getAsInt(), $$11));
+         $$10 = arp.a($$8, 0.0F, 1.0F);
       } else {
-         exm.a<T, ?> $$4 = a($$0);
-         if ($$4 == null) {
-            a.warn("Failed to create screen for menu type: {}", jb.s.b($$0));
+         int $$13 = f.getAsInt();
+         float $$14 = (float)($$13 >> 16 & 0xFF) / 255.0F;
+         float $$15 = (float)($$13 >> 8 & 0xFF) / 255.0F;
+         float $$16 = (float)($$13 & 0xFF) / 255.0F;
+         GlStateManager._clearColor($$14, $$15, $$16, 1.0F);
+         GlStateManager._clear(16384, eql.a);
+         $$10 = 1.0F;
+      }
+
+      int $$18 = (int)((double)$$0.a() * 0.5);
+      int $$19 = (int)((double)$$0.b() * 0.5);
+      double $$20 = Math.min((double)$$0.a() * 0.75, (double)$$0.b()) * 0.25;
+      int $$21 = (int)($$20 * 0.5);
+      double $$22 = $$20 * 4.0;
+      int $$23 = (int)($$22 * 0.5);
+      RenderSystem.disableDepthTest();
+      RenderSystem.depthMask(false);
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(770, 1);
+      $$0.a(1.0F, 1.0F, 1.0F, $$10);
+      $$0.a(c, $$18 - $$23, $$19 - $$21, $$23, (int)$$20, -0.0625F, 0.0F, 120, 60, 120, 120);
+      $$0.a(c, $$18, $$19 - $$21, $$23, (int)$$20, 0.0625F, 60.0F, 120, 60, 120, 120);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.defaultBlendFunc();
+      RenderSystem.disableBlend();
+      RenderSystem.depthMask(true);
+      RenderSystem.enableDepthTest();
+      int $$24 = (int)((double)$$0.b() * 0.8325);
+      float $$25 = this.n.b();
+      this.q = arp.a(this.q * 0.95F + $$25 * 0.050000012F, 0.0F, 1.0F);
+      if ($$7 < 1.0F) {
+         this.a($$0, $$4 / 2 - $$23, $$24 - 5, $$4 / 2 + $$23, $$24 + 5, 1.0F - arp.a($$7, 0.0F, 1.0F));
+      }
+
+      if ($$7 >= 2.0F) {
+         this.m.a(null);
+      }
+
+      if (this.r == -1L && this.n.c() && (!this.p || $$8 >= 2.0F)) {
+         try {
+            this.n.d();
+            this.o.accept(Optional.empty());
+         } catch (Throwable var23) {
+            this.o.accept(Optional.of(var23));
+         }
+
+         this.r = ac.b();
+         if (this.m.y != null) {
+            this.m.y.b(this.m, $$0.a(), $$0.b());
+         }
+      }
+   }
+
+   private void a(erv $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
+      int $$6 = arp.f((float)($$3 - $$1 - 2) * this.q);
+      int $$7 = Math.round($$5 * 255.0F);
+      int $$8 = ara.b.a($$7, 255, 255, 255);
+      $$0.a($$1 + 2, $$2 + 2, $$1 + $$6, $$4 - 2, $$8);
+      $$0.a($$1 + 1, $$2, $$3 - 1, $$2 + 1, $$8);
+      $$0.a($$1 + 1, $$4, $$3 - 1, $$4 - 1, $$8);
+      $$0.a($$1, $$2, $$1 + 1, $$4, $$8);
+      $$0.a($$3, $$2, $$3 - 1, $$4, $$8);
+   }
+
+   @Override
+   public boolean a() {
+      return true;
+   }
+
+   static class a extends fyn {
+      public a() {
+         super(exm.c);
+      }
+
+      @Override
+      protected fyn.a b(anm $$0) {
+         amd $$1 = eql.O().ab();
+         ane<InputStream> $$2 = $$1.a(amb.a, exm.c);
+         if ($$2 == null) {
+            return new fyn.a(new FileNotFoundException(exm.c.toString()));
          } else {
-            $$4.a($$3, $$0, $$1, $$2);
+            try {
+               fyn.a var5;
+               try (InputStream $$3 = $$2.get()) {
+                  var5 = new fyn.a(new gar(true, true), ekg.a($$3));
+               }
+
+               return var5;
+            } catch (IOException var9) {
+               return new fyn.a(var9);
+            }
          }
       }
-   }
-
-   @Nullable
-   private static <T extends cee> exm.a<T, ?> a(cfj<T> $$0) {
-      return (exm.a<T, ?>)b.get($$0);
-   }
-
-   private static <M extends cee, U extends exz & fab<M>> void a(cfj<? extends M> $$0, exm.a<M, U> $$1) {
-      exm.a<?, ?> $$2 = b.put($$0, $$1);
-      if ($$2 != null) {
-         throw new IllegalStateException("Duplicate registration for " + jb.s.b($$0));
-      }
-   }
-
-   public static boolean a() {
-      boolean $$0 = false;
-
-      for (cfj<?> $$1 : jb.s) {
-         if (!b.containsKey($$1)) {
-            a.debug("Menu {} has no matching screen", jb.s.b($$1));
-            $$0 = true;
-         }
-      }
-
-      return $$0;
-   }
-
-   static {
-      a(cfj.a, ezi::new);
-      a(cfj.b, ezi::new);
-      a(cfj.c, ezi::new);
-      a(cfj.d, ezi::new);
-      a(cfj.e, ezi::new);
-      a(cfj.f, ezi::new);
-      a(cfj.g, ezn::new);
-      a(cfj.h, eza::new);
-      a(cfj.i, ezb::new);
-      a(cfj.j, ezc::new);
-      a(cfj.k, ezf::new);
-      a(cfj.l, ezj::new);
-      a(cfj.m, ezq::new);
-      a(cfj.n, ezr::new);
-      a(cfj.o, ezs::new);
-      a(cfj.p, ezu::new);
-      a(cfj.q, ezz::new);
-      a(cfj.r, faa::new);
-      a(cfj.s, fac::new);
-      a(cfj.t, faf::new);
-      a(cfj.u, fah::new);
-      a(cfj.v, fai::new);
-      a(cfj.w, ezg::new);
-      a(cfj.x, faj::new);
-   }
-
-   interface a<T extends cee, U extends exz & fab<T>> {
-      default void a(tf $$0, cfj<T> $$1, eqm $$2, int $$3) {
-         U $$4 = this.create($$1.a($$3, $$2.v.fQ()), $$2.v.fQ(), $$0);
-         $$2.v.bQ = $$4.C();
-         $$2.a($$4);
-      }
-
-      U create(T var1, cbm var2, tf var3);
    }
 }

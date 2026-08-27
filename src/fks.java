@@ -1,53 +1,17 @@
-public class fks extends fmb {
-   fks(fii $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.C = true;
-      this.B = 0.86F;
-      this.j *= 0.01F;
-      this.k *= 0.01F;
-      this.l *= 0.01F;
-      this.k += 0.1;
-      this.D *= 1.5F;
-      this.t = 16;
-      this.n = false;
+public class fks extends fkt<ip> {
+   protected fks(fin $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ip $$7, fmf $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
    }
 
-   @Override
-   public flf b() {
-      return flf.b;
-   }
+   public static class a implements fln<ip> {
+      private final fmf a;
 
-   @Override
-   public float b(float $$0) {
-      return this.D * arp.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
-
-   public static class a implements fle<iy> {
-      private final flw a;
-
-      public a(flw $$0) {
+      public a(fmf $$0) {
          this.a = $$0;
       }
 
-      public flb a(iy $$0, fii $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fks $$8 = new fks($$1, $$2, $$3 + 0.5, $$4);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         return $$8;
-      }
-   }
-
-   public static class b implements fle<iy> {
-      private final flw a;
-
-      public b(flw $$0) {
-         this.a = $$0;
-      }
-
-      public flb a(iy $$0, fii $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fks $$8 = new fks($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
+      public flk a(ip $$0, fin $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fks($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
       }
    }
 }

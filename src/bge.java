@@ -25,10 +25,10 @@ import org.slf4j.Logger;
 public class bge {
    private static final Logger a = LogUtils.getLogger();
    private static final ThreadFactory b = new ThreadFactoryBuilder().setDaemon(true).build();
-   private final hr<dik> c;
-   private final Set<aeq<cpm>> d;
+   private final hr<dij> c;
+   private final Set<aeq<cpl>> d;
    private final boolean e;
-   private final ebx.c f;
+   private final ebw.c f;
    private final Thread g;
    private final DataFixer h;
    private volatile boolean i = true;
@@ -37,18 +37,18 @@ public class bge {
    private volatile int l;
    private volatile int m;
    private volatile int n;
-   private final Object2FloatMap<aeq<cpm>> o = Object2FloatMaps.synchronize(new Object2FloatOpenCustomHashMap(ac.k()));
+   private final Object2FloatMap<aeq<cpl>> o = Object2FloatMaps.synchronize(new Object2FloatOpenCustomHashMap(ac.k()));
    private volatile tf p = tf.c("optimizeWorld.stage.counting");
    private static final Pattern q = Pattern.compile("^r\\.(-?[0-9]+)\\.(-?[0-9]+)\\.mca$");
-   private final ebt r;
+   private final ebs r;
 
-   public bge(ebx.c $$0, DataFixer $$1, hr<dik> $$2, boolean $$3) {
+   public bge(ebw.c $$0, DataFixer $$1, hr<dij> $$2, boolean $$3) {
       this.c = $$2;
       this.d = $$2.f().stream().map(jc::a).collect(Collectors.toUnmodifiableSet());
       this.e = $$3;
       this.h = $$1;
       this.f = $$0;
-      this.r = new ebt(this.f.a(cpm.h).resolve("data").toFile(), $$1);
+      this.r = new ebs(this.f.a(cpl.h).resolve("data").toFile(), $$1);
       this.g = b.newThread(this::i);
       this.g.setUncaughtExceptionHandler(($$0x, $$1x) -> {
          a.error("Error upgrading world", $$1x);
@@ -69,10 +69,10 @@ public class bge {
 
    private void i() {
       this.l = 0;
-      Builder<aeq<cpm>, ListIterator<cot>> $$0 = ImmutableMap.builder();
+      Builder<aeq<cpl>, ListIterator<cos>> $$0 = ImmutableMap.builder();
 
-      for (aeq<cpm> $$1 : this.d) {
-         List<cot> $$2 = this.b($$1);
+      for (aeq<cpl> $$1 : this.d) {
+         List<cos> $$2 = this.b($$1);
          $$0.put($$1, $$2.listIterator());
          this.l = this.l + $$2.size();
       }
@@ -81,15 +81,15 @@ public class bge {
          this.j = true;
       } else {
          float $$3 = (float)this.l;
-         ImmutableMap<aeq<cpm>, ListIterator<cot>> $$4 = $$0.build();
-         Builder<aeq<cpm>, dhy> $$5 = ImmutableMap.builder();
+         ImmutableMap<aeq<cpl>, ListIterator<cos>> $$4 = $$0.build();
+         Builder<aeq<cpl>, dhx> $$5 = ImmutableMap.builder();
 
-         for (aeq<cpm> $$6 : this.d) {
+         for (aeq<cpl> $$6 : this.d) {
             Path $$7 = this.f.a($$6);
-            $$5.put($$6, new dhy($$7.resolve("region"), this.h, true));
+            $$5.put($$6, new dhx($$7.resolve("region"), this.h, true));
          }
 
-         ImmutableMap<aeq<cpm>, dhy> $$8 = $$5.build();
+         ImmutableMap<aeq<cpl>, dhx> $$8 = $$5.build();
          long $$9 = ac.b();
          this.p = tf.c("optimizeWorld.stage.upgrading");
 
@@ -97,20 +97,20 @@ public class bge {
             boolean $$10 = false;
             float $$11 = 0.0F;
 
-            for (aeq<cpm> $$12 : this.d) {
-               ListIterator<cot> $$13 = (ListIterator<cot>)$$4.get($$12);
-               dhy $$14 = (dhy)$$8.get($$12);
+            for (aeq<cpl> $$12 : this.d) {
+               ListIterator<cos> $$13 = (ListIterator<cos>)$$4.get($$12);
+               dhx $$14 = (dhx)$$8.get($$12);
                if ($$13.hasNext()) {
-                  cot $$15 = $$13.next();
+                  cos $$15 = $$13.next();
                   boolean $$16 = false;
 
                   try {
                      qr $$17 = $$14.e($$15).join().orElse(null);
                      if ($$17 != null) {
-                        int $$18 = dhy.a($$17);
-                        dgx $$19 = this.c.e(jc.b($$12)).b();
+                        int $$18 = dhx.a($$17);
+                        dgw $$19 = this.c.e(jc.b($$12)).b();
                         qr $$20 = $$14.a($$12, () -> this.r, $$17, $$19.b());
-                        cot $$21 = new cot($$20.h("xPos"), $$20.h("zPos"));
+                        cos $$21 = new cos($$20.h("xPos"), $$20.h("zPos"));
                         if (!$$21.equals($$15)) {
                            a.warn("Chunk {} has invalid position {}", $$15, $$21);
                         }
@@ -170,7 +170,7 @@ public class bge {
          UnmodifiableIterator var33 = $$8.values().iterator();
 
          while (var33.hasNext()) {
-            dhy $$29 = (dhy)var33.next();
+            dhx $$29 = (dhx)var33.next();
 
             try {
                $$29.close();
@@ -186,14 +186,14 @@ public class bge {
       }
    }
 
-   private List<cot> b(aeq<cpm> $$0) {
+   private List<cos> b(aeq<cpl> $$0) {
       File $$1 = this.f.a($$0).toFile();
       File $$2 = new File($$1, "region");
       File[] $$3 = $$2.listFiles(($$0x, $$1x) -> $$1x.endsWith(".mca"));
       if ($$3 == null) {
          return ImmutableList.of();
       } else {
-         List<cot> $$4 = Lists.newArrayList();
+         List<cos> $$4 = Lists.newArrayList();
 
          for (File $$5 : $$3) {
             Matcher $$6 = q.matcher($$5.getName());
@@ -201,10 +201,10 @@ public class bge {
                int $$7 = Integer.parseInt($$6.group(1)) << 5;
                int $$8 = Integer.parseInt($$6.group(2)) << 5;
 
-               try (dic $$9 = new dic($$5.toPath(), $$2.toPath(), true)) {
+               try (dib $$9 = new dib($$5.toPath(), $$2.toPath(), true)) {
                   for (int $$10 = 0; $$10 < 32; $$10++) {
                      for (int $$11 = 0; $$11 < 32; $$11++) {
-                        cot $$12 = new cot($$10 + $$7, $$11 + $$8);
+                        cos $$12 = new cos($$10 + $$7, $$11 + $$8);
                         if ($$9.b($$12)) {
                            $$4.add($$12);
                         }
@@ -223,11 +223,11 @@ public class bge {
       return this.j;
    }
 
-   public Set<aeq<cpm>> c() {
+   public Set<aeq<cpl>> c() {
       return this.d;
    }
 
-   public float a(aeq<cpm> $$0) {
+   public float a(aeq<cpl> $$0) {
       return this.o.getFloat($$0);
    }
 

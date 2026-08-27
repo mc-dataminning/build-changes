@@ -1,30 +1,44 @@
-import it.unimi.dsi.fastutil.Hash.Strategy;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenCustomHashSet;
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.stream.Stream;
 
 public class ciz {
-   private static final Strategy<? super ciy> a = new Strategy<ciy>() {
-      public int a(@Nullable ciy $$0) {
-         return ciz.a($$0);
-      }
+   public static bgr<cix> a(cpl $$0, cbm $$1, bgp $$2) {
+      $$1.c($$2);
+      return bgr.b($$1.b($$2));
+   }
 
-      public boolean a(@Nullable ciy $$0, @Nullable ciy $$1) {
-         return $$0 == $$1 || $$0 != null && $$1 != null && $$0.b() == $$1.b() && ciy.c($$0, $$1);
-      }
-   };
+   public static cix a(cix $$0, cbm $$1, cix $$2, boolean $$3) {
+      boolean $$4 = $$1.fR().d;
+      if ($$3 && $$4) {
+         if (!$$1.fQ().h($$2)) {
+            $$1.fQ().e($$2);
+         }
 
-   static int a(@Nullable ciy $$0) {
-      if ($$0 != null) {
-         qr $$1 = $$0.v();
-         int $$2 = 31 + $$0.d().hashCode();
-         return 31 * $$2 + ($$1 == null ? 0 : $$1.hashCode());
+         return $$0;
       } else {
-         return 0;
+         if (!$$4) {
+            $$0.h(1);
+         }
+
+         if ($$0.b()) {
+            return $$2;
+         } else {
+            if (!$$1.fQ().e($$2)) {
+               $$1.a($$2, false);
+            }
+
+            return $$0;
+         }
       }
    }
 
-   public static Set<ciy> a() {
-      return new ObjectLinkedOpenCustomHashSet(a);
+   public static cix a(cix $$0, cbm $$1, cix $$2) {
+      return a($$0, $$1, $$2, true);
+   }
+
+   public static void a(byf $$0, Stream<cix> $$1) {
+      cpl $$2 = $$0.dK();
+      if (!$$2.B) {
+         $$1.forEach($$2x -> $$2.b(new byf($$2, $$0.dp(), $$0.dr(), $$0.dv(), $$2x)));
+      }
    }
 }

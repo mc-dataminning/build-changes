@@ -25,12 +25,12 @@ import net.minecraft.server.MinecraftServer;
 import org.joml.Vector3f;
 import org.slf4j.Logger;
 
-public abstract class bii implements bgu, dir, dq {
+public abstract class bii implements bgu, diq, dq {
    private static final Logger c = LogUtils.getLogger();
    public static final String w = "id";
    public static final String x = "Passengers";
    private static final AtomicInteger d = new AtomicInteger();
-   private static final List<ciy> e = Collections.emptyList();
+   private static final List<cix> e = Collections.emptyList();
    public static final int y = 60;
    public static final int z = 300;
    public static final int A = 1024;
@@ -40,7 +40,7 @@ public abstract class bii implements bgu, dir, dq {
    public static final float E = 0.11111111F;
    public static final int F = 140;
    public static final int G = 40;
-   private static final egz k = new egz(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+   private static final egy k = new egy(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
    private static final double l = 0.014;
    private static final double m = 0.007;
    private static final double n = 0.0023333333333333335;
@@ -53,26 +53,26 @@ public abstract class bii implements bgu, dir, dq {
    protected int J;
    @Nullable
    private bii s;
-   private cpm t;
+   private cpl t;
    public double K;
    public double L;
    public double M;
-   private ehe u;
+   private ehd u;
    private gu v;
-   private cot aE;
-   private ehe aF = ehe.b;
+   private cos aE;
+   private ehd aF = ehd.b;
    private float aG;
    private float aH;
    public float N;
    public float O;
-   private egz aI = k;
+   private egy aI = k;
    private boolean aJ;
    public boolean P;
    public boolean Q;
    public boolean R;
    public boolean S;
    public boolean T;
-   protected ehe U = ehe.b;
+   protected ehd U = ehd.b;
    @Nullable
    private bii.c aK;
    public static final float V = 0.6F;
@@ -92,9 +92,9 @@ public abstract class bii implements bgu, dir, dq {
    public int ah;
    private int aN = -this.db();
    protected boolean ai;
-   protected Object2DoubleMap<aqa<eac>> aj = new Object2DoubleArrayMap(2);
+   protected Object2DoubleMap<aqa<eab>> aj = new Object2DoubleArrayMap(2);
    protected boolean ak;
-   private final Set<aqa<eac>> aO = new HashSet<>();
+   private final Set<aqa<eab>> aO = new HashSet<>();
    public int al;
    protected boolean am = true;
    protected final aec an;
@@ -113,7 +113,7 @@ public abstract class bii implements bgu, dir, dq {
    private static final adz<Boolean> aX = aec.a(bii.class, aeb.k);
    protected static final adz<bjk> as = aec.a(bii.class, aeb.v);
    private static final adz<Integer> aY = aec.a(bii.class, aeb.b);
-   private dis aZ = dis.a;
+   private dir aZ = dir.a;
    private final act ba = new act();
    public boolean at;
    public boolean au;
@@ -139,15 +139,15 @@ public abstract class bii implements bgu, dir, dq {
    private int bl;
    private boolean bm;
    @Nullable
-   private dfa bn = null;
+   private dez bn = null;
 
-   public bii(bim<?> $$0, cpm $$1) {
+   public bii(bim<?> $$0, cpl $$1) {
       this.p = $$0;
       this.t = $$1;
       this.bh = $$0.n();
-      this.u = ehe.b;
+      this.u = ehd.b;
       this.v = gu.b;
-      this.aE = cot.b;
+      this.aE = cos.b;
       this.an = new aec(this);
       this.an.a(ao, (byte)0);
       this.an.a(aT, this.cg());
@@ -162,14 +162,14 @@ public abstract class bii implements bgu, dir, dq {
       this.bi = this.a(bjk.a, this.bh);
    }
 
-   public boolean a(gu $$0, dfa $$1) {
-      ehx $$2 = $$1.b(this.dK(), $$0, ehj.a(this));
-      ehx $$3 = $$2.a((double)$$0.u(), (double)$$0.v(), (double)$$0.w());
-      return ehu.c($$3, ehu.a(this.cG()), ehi.i);
+   public boolean a(gu $$0, dez $$1) {
+      ehw $$2 = $$1.b(this.dK(), $$0, ehi.a(this));
+      ehw $$3 = $$2.a((double)$$0.u(), (double)$$0.v(), (double)$$0.w());
+      return eht.c($$3, eht.a(this.cG()), ehh.i);
    }
 
    public int c_() {
-      eif $$0 = this.cf();
+      eie $$0 = this.cf();
       return $$0 != null && $$0.n().f() != null ? $$0.n().f() : 16777215;
    }
 
@@ -188,7 +188,7 @@ public abstract class bii implements bgu, dir, dq {
    }
 
    public void f(double $$0, double $$1, double $$2) {
-      this.ba.e(new ehe($$0, $$1, $$2));
+      this.ba.e(new ehd($$0, $$1, $$2));
    }
 
    public act af() {
@@ -222,7 +222,7 @@ public abstract class bii implements bgu, dir, dq {
 
    public void aj() {
       this.a(bii.c.a);
-      this.a(djk.p);
+      this.a(djj.p);
    }
 
    public final void ak() {
@@ -280,7 +280,7 @@ public abstract class bii implements bgu, dir, dq {
       this.s($$1 % 360.0F);
    }
 
-   public final void a(ehe $$0) {
+   public final void a(ehd $$0) {
       this.e($$0.a(), $$0.b(), $$0.c());
    }
 
@@ -289,7 +289,7 @@ public abstract class bii implements bgu, dir, dq {
       this.a(this.ao());
    }
 
-   protected egz ao() {
+   protected egy ao() {
       return this.bh.a(this.u);
    }
 
@@ -423,7 +423,7 @@ public abstract class bii implements bgu, dir, dq {
    public void g(int $$0) {
       int $$1 = $$0 * 20;
       if (this instanceof biy) {
-         $$1 = cns.a((biy)this, $$1);
+         $$1 = cnr.a((biy)this, $$1);
       }
 
       if (this.aN < $$1) {
@@ -451,7 +451,7 @@ public abstract class bii implements bgu, dir, dq {
       return this.b(this.cG().d($$0, $$1, $$2));
    }
 
-   private boolean b(egz $$0) {
+   private boolean b(egy $$0) {
       return this.dK().a(this, $$0) && !this.dK().d($$0);
    }
 
@@ -460,7 +460,7 @@ public abstract class bii implements bgu, dir, dq {
       this.b($$0, null);
    }
 
-   public void a(boolean $$0, ehe $$1) {
+   public void a(boolean $$0, ehd $$1) {
       this.aJ = $$0;
       this.b($$0, $$1);
    }
@@ -469,15 +469,15 @@ public abstract class bii implements bgu, dir, dq {
       return this.aD.isPresent() && this.aD.get().equals($$0);
    }
 
-   protected void b(boolean $$0, @Nullable ehe $$1) {
+   protected void b(boolean $$0, @Nullable ehd $$1) {
       if ($$0) {
-         egz $$2 = this.cG();
-         egz $$3 = new egz($$2.a, $$2.b - 1.0E-6, $$2.c, $$2.d, $$2.b, $$2.f);
+         egy $$2 = this.cG();
+         egy $$3 = new egy($$2.a, $$2.b - 1.0E-6, $$2.c, $$2.d, $$2.b, $$2.f);
          Optional<gu> $$4 = this.t.g(this, $$3);
          if ($$4.isPresent() || this.bj) {
             this.aD = $$4;
          } else if ($$1 != null) {
-            egz $$5 = $$3.d(-$$1.c, 0.0, -$$1.e);
+            egy $$5 = $$3.d(-$$1.c, 0.0, -$$1.e);
             $$4 = this.t.g(this, $$5);
             this.aD = $$4;
          }
@@ -495,14 +495,14 @@ public abstract class bii implements bgu, dir, dq {
       return this.aJ;
    }
 
-   public void a(bje $$0, ehe $$1) {
+   public void a(bje $$0, ehd $$1) {
       if (this.af) {
          this.e(this.dp() + $$1.c, this.dr() + $$1.d, this.dv() + $$1.e);
       } else {
          this.aC = this.bM();
          if ($$0 == bje.c) {
             $$1 = this.c($$1);
-            if ($$1.equals(ehe.b)) {
+            if ($$1.equals(ehd.b)) {
                return;
             }
          }
@@ -510,17 +510,17 @@ public abstract class bii implements bgu, dir, dq {
          this.dK().ad().a("move");
          if (this.U.g() > 1.0E-7) {
             $$1 = $$1.h(this.U);
-            this.U = ehe.b;
-            this.f(ehe.b);
+            this.U = ehd.b;
+            this.f(ehd.b);
          }
 
          $$1 = this.a($$1, $$0);
-         ehe $$2 = this.h($$1);
+         ehd $$2 = this.h($$1);
          double $$3 = $$2.g();
          if ($$3 > 1.0E-7) {
             if (this.ab != 0.0F && $$3 >= 1.0) {
-               eha $$4 = this.dK().a(new cov(this.di(), this.di().e($$2), cov.a.d, cov.b.d, this));
-               if ($$4.c() != ehc.a.a) {
+               egz $$4 = this.dK().a(new cou(this.di(), this.di().e($$2), cou.a.d, cou.b.d, this));
+               if ($$4.c() != ehb.a.a) {
                   this.n();
                }
             }
@@ -543,17 +543,17 @@ public abstract class bii implements bgu, dir, dq {
 
          this.a(this.R, $$2);
          gu $$7 = this.aF();
-         dfa $$8 = this.dK().a_($$7);
+         dez $$8 = this.dK().a_($$7);
          this.a($$2.d, this.aA(), $$8, $$7);
          if (this.dF()) {
             this.dK().ad().c();
          } else {
             if (this.P) {
-               ehe $$9 = this.dn();
+               ehd $$9 = this.dn();
                this.o($$5 ? 0.0 : $$9.c, $$9.d, $$6 ? 0.0 : $$9.e);
             }
 
-            csm $$10 = $$8.b();
+            csl $$10 = $$8.b();
             if ($$1.d != $$2.d) {
                $$10.a(this.dK(), this);
             }
@@ -569,7 +569,7 @@ public abstract class bii implements bgu, dir, dq {
                double $$14 = $$2.e;
                this.aa = this.aa + (float)($$2.f() * 0.6);
                gu $$15 = this.aH();
-               dfa $$16 = this.dK().a_($$15);
+               dez $$16 = this.dK().a_($$15);
                boolean $$17 = this.c($$16);
                if (!$$17) {
                   $$13 = 0.0;
@@ -593,7 +593,7 @@ public abstract class bii implements bgu, dir, dq {
                      }
 
                      if ($$11.b()) {
-                        this.a(djk.Q);
+                        this.a(djj.Q);
                      }
                   }
                } else if ($$16.i()) {
@@ -604,7 +604,7 @@ public abstract class bii implements bgu, dir, dq {
             this.aB();
             float $$20 = this.aJ();
             this.f(this.dn().d((double)$$20, 1.0, (double)$$20));
-            if (this.dK().c(this.cG().h(1.0E-6)).noneMatch($$0x -> $$0x.a(apl.aJ) || $$0x.a(csn.H))) {
+            if (this.dK().c(this.cG().h(1.0E-6)).noneMatch($$0x -> $$0x.a(apl.aJ) || $$0x.a(csm.H))) {
                if (this.aN <= 0) {
                   this.h(-this.db());
                }
@@ -623,11 +623,11 @@ public abstract class bii implements bgu, dir, dq {
       }
    }
 
-   private boolean c(dfa $$0) {
-      return $$0.a(apl.aO) || $$0.a(csn.qC);
+   private boolean c(dez $$0) {
+      return $$0.a(apl.aO) || $$0.a(csm.qC);
    }
 
-   private boolean a(gu $$0, dfa $$1, boolean $$2, boolean $$3, ehe $$4) {
+   private boolean a(gu $$0, dez $$1, boolean $$2, boolean $$3, ehd $$4) {
       if ($$1.i()) {
          return false;
       } else {
@@ -638,7 +638,7 @@ public abstract class bii implements bgu, dir, dq {
             }
 
             if ($$3) {
-               this.dK().a(djk.P, this.di(), djk.a.a(this, $$1));
+               this.dK().a(djj.P, this.di(), djj.a.a(this, $$1));
             }
 
             return true;
@@ -648,7 +648,7 @@ public abstract class bii implements bgu, dir, dq {
       }
    }
 
-   protected boolean b(ehe $$0) {
+   protected boolean b(ehd $$0) {
       return false;
    }
 
@@ -679,7 +679,7 @@ public abstract class bii implements bgu, dir, dq {
       if (this.aR()) {
          this.aQ();
          if (this.aU().b()) {
-            this.a(djk.x);
+            this.a(djj.x);
          }
       }
    }
@@ -703,8 +703,8 @@ public abstract class bii implements bgu, dir, dq {
          if (!($$0 > 1.0E-5F)) {
             return $$1;
          } else {
-            dfa $$2 = this.dK().a_($$1);
-            return (!((double)$$0 <= 0.5) || !$$2.a(apl.S)) && !$$2.a(apl.L) && !($$2.b() instanceof cvh) ? $$1.h(arp.a(this.u.d - (double)$$0)) : $$1;
+            dez $$2 = this.dK().a_($$1);
+            return (!((double)$$0 <= 0.5) || !$$2.a(apl.S)) && !$$2.a(apl.L) && !($$2.b() instanceof cvg) ? $$1.h(arp.a(this.u.d - (double)$$0)) : $$1;
          }
       } else {
          int $$3 = arp.a(this.u.c);
@@ -721,20 +721,20 @@ public abstract class bii implements bgu, dir, dq {
    }
 
    protected float aJ() {
-      dfa $$0 = this.dK().a_(this.dk());
+      dez $$0 = this.dK().a_(this.dk());
       float $$1 = $$0.b().i();
-      if (!$$0.a(csn.G) && !$$0.a(csn.nd)) {
+      if (!$$0.a(csm.G) && !$$0.a(csm.nd)) {
          return (double)$$1 == 1.0 ? this.dK().a_(this.aG()).b().i() : $$1;
       } else {
          return $$1;
       }
    }
 
-   protected ehe a(ehe $$0, bje $$1) {
+   protected ehd a(ehd $$0, bje $$1) {
       return $$0;
    }
 
-   protected ehe c(ehe $$0) {
+   protected ehd c(ehd $$0) {
       if ($$0.g() <= 1.0E-7) {
          return $$0;
       } else {
@@ -746,15 +746,15 @@ public abstract class bii implements bgu, dir, dq {
 
          if ($$0.c != 0.0) {
             double $$2 = this.a(ha.a.a, $$0.c);
-            return Math.abs($$2) <= 1.0E-5F ? ehe.b : new ehe($$2, 0.0, 0.0);
+            return Math.abs($$2) <= 1.0E-5F ? ehd.b : new ehd($$2, 0.0, 0.0);
          } else if ($$0.d != 0.0) {
             double $$3 = this.a(ha.a.b, $$0.d);
-            return Math.abs($$3) <= 1.0E-5F ? ehe.b : new ehe(0.0, $$3, 0.0);
+            return Math.abs($$3) <= 1.0E-5F ? ehd.b : new ehd(0.0, $$3, 0.0);
          } else if ($$0.e != 0.0) {
             double $$4 = this.a(ha.a.c, $$0.e);
-            return Math.abs($$4) <= 1.0E-5F ? ehe.b : new ehe(0.0, 0.0, $$4);
+            return Math.abs($$4) <= 1.0E-5F ? ehd.b : new ehd(0.0, 0.0, $$4);
          } else {
-            return ehe.b;
+            return ehd.b;
          }
       }
    }
@@ -767,39 +767,39 @@ public abstract class bii implements bgu, dir, dq {
       return $$1;
    }
 
-   private ehe h(ehe $$0) {
-      egz $$1 = this.cG();
-      List<ehx> $$2 = this.dK().c(this, $$1.b($$0));
-      ehe $$3 = $$0.g() == 0.0 ? $$0 : a(this, $$0, $$1, this.dK(), $$2);
+   private ehd h(ehd $$0) {
+      egy $$1 = this.cG();
+      List<ehw> $$2 = this.dK().c(this, $$1.b($$0));
+      ehd $$3 = $$0.g() == 0.0 ? $$0 : a(this, $$0, $$1, this.dK(), $$2);
       boolean $$4 = $$0.c != $$3.c;
       boolean $$5 = $$0.d != $$3.d;
       boolean $$6 = $$0.e != $$3.e;
       boolean $$7 = this.aA() || $$5 && $$0.d < 0.0;
       if (this.dE() > 0.0F && $$7 && ($$4 || $$6)) {
-         ehe $$8 = a(this, new ehe($$0.c, (double)this.dE(), $$0.e), $$1, this.dK(), $$2);
-         ehe $$9 = a(this, new ehe(0.0, (double)this.dE(), 0.0), $$1.b($$0.c, 0.0, $$0.e), this.dK(), $$2);
+         ehd $$8 = a(this, new ehd($$0.c, (double)this.dE(), $$0.e), $$1, this.dK(), $$2);
+         ehd $$9 = a(this, new ehd(0.0, (double)this.dE(), 0.0), $$1.b($$0.c, 0.0, $$0.e), this.dK(), $$2);
          if ($$9.d < (double)this.dE()) {
-            ehe $$10 = a(this, new ehe($$0.c, 0.0, $$0.e), $$1.c($$9), this.dK(), $$2).e($$9);
+            ehd $$10 = a(this, new ehd($$0.c, 0.0, $$0.e), $$1.c($$9), this.dK(), $$2).e($$9);
             if ($$10.i() > $$8.i()) {
                $$8 = $$10;
             }
          }
 
          if ($$8.i() > $$3.i()) {
-            return $$8.e(a(this, new ehe(0.0, -$$8.d + $$0.d, 0.0), $$1.c($$8), this.dK(), $$2));
+            return $$8.e(a(this, new ehd(0.0, -$$8.d + $$0.d, 0.0), $$1.c($$8), this.dK(), $$2));
          }
       }
 
       return $$3;
    }
 
-   public static ehe a(@Nullable bii $$0, ehe $$1, egz $$2, cpm $$3, List<ehx> $$4) {
-      Builder<ehx> $$5 = ImmutableList.builderWithExpectedSize($$4.size() + 1);
+   public static ehd a(@Nullable bii $$0, ehd $$1, egy $$2, cpl $$3, List<ehw> $$4) {
+      Builder<ehw> $$5 = ImmutableList.builderWithExpectedSize($$4.size() + 1);
       if (!$$4.isEmpty()) {
          $$5.addAll($$4);
       }
 
-      dgr $$6 = $$3.w_();
+      dgq $$6 = $$3.w_();
       boolean $$7 = $$0 != null && $$6.a($$0, $$2.b($$1));
       if ($$7) {
          $$5.add($$6.c());
@@ -809,7 +809,7 @@ public abstract class bii implements bgu, dir, dq {
       return a($$1, $$2, $$5.build());
    }
 
-   private static ehe a(ehe $$0, egz $$1, List<ehx> $$2) {
+   private static ehd a(ehd $$0, egy $$1, List<ehw> $$2) {
       if ($$2.isEmpty()) {
          return $$0;
       } else {
@@ -817,7 +817,7 @@ public abstract class bii implements bgu, dir, dq {
          double $$4 = $$0.d;
          double $$5 = $$0.e;
          if ($$4 != 0.0) {
-            $$4 = ehu.a(ha.a.b, $$1, $$2, $$4);
+            $$4 = eht.a(ha.a.b, $$1, $$2, $$4);
             if ($$4 != 0.0) {
                $$1 = $$1.d(0.0, $$4, 0.0);
             }
@@ -825,24 +825,24 @@ public abstract class bii implements bgu, dir, dq {
 
          boolean $$6 = Math.abs($$3) < Math.abs($$5);
          if ($$6 && $$5 != 0.0) {
-            $$5 = ehu.a(ha.a.c, $$1, $$2, $$5);
+            $$5 = eht.a(ha.a.c, $$1, $$2, $$5);
             if ($$5 != 0.0) {
                $$1 = $$1.d(0.0, 0.0, $$5);
             }
          }
 
          if ($$3 != 0.0) {
-            $$3 = ehu.a(ha.a.a, $$1, $$2, $$3);
+            $$3 = eht.a(ha.a.a, $$1, $$2, $$3);
             if (!$$6 && $$3 != 0.0) {
                $$1 = $$1.d($$3, 0.0, 0.0);
             }
          }
 
          if (!$$6 && $$5 != 0.0) {
-            $$5 = ehu.a(ha.a.c, $$1, $$2, $$5);
+            $$5 = eht.a(ha.a.c, $$1, $$2, $$5);
          }
 
-         return new ehe($$3, $$4, $$5);
+         return new ehd($$3, $$4, $$5);
       }
    }
 
@@ -863,7 +863,7 @@ public abstract class bii implements bgu, dir, dq {
    }
 
    protected void aO() {
-      egz $$0 = this.cG();
+      egy $$0 = this.cG();
       gu $$1 = gu.a($$0.a + 1.0E-7, $$0.b + 1.0E-7, $$0.c + 1.0E-7);
       gu $$2 = gu.a($$0.d - 1.0E-7, $$0.e - 1.0E-7, $$0.f - 1.0E-7);
       if (this.dK().a($$1, $$2)) {
@@ -873,7 +873,7 @@ public abstract class bii implements bgu, dir, dq {
             for (int $$5 = $$1.v(); $$5 <= $$2.v(); $$5++) {
                for (int $$6 = $$1.w(); $$6 <= $$2.w(); $$6++) {
                   $$3.d($$4, $$5, $$6);
-                  dfa $$7 = this.dK().a_($$3);
+                  dez $$7 = this.dK().a_($$3);
 
                   try {
                      $$7.a(this.dK(), $$3, this);
@@ -890,18 +890,18 @@ public abstract class bii implements bgu, dir, dq {
       }
    }
 
-   protected void a(dfa $$0) {
+   protected void a(dez $$0) {
    }
 
-   public void a(djk $$0, @Nullable bii $$1) {
+   public void a(djj $$0, @Nullable bii $$1) {
       this.dK().a($$1, $$0, this.u);
    }
 
-   public void a(djk $$0) {
+   public void a(djj $$0) {
       this.a($$0, this);
    }
 
-   private void c(gu $$0, dfa $$1) {
+   private void c(gu $$0, dez $$1) {
       this.b($$0, $$1);
       if (this.d($$1)) {
          this.m();
@@ -911,34 +911,34 @@ public abstract class bii implements bgu, dir, dq {
    protected void aP() {
       bii $$0 = Objects.requireNonNullElse(this.cN(), this);
       float $$1 = $$0 == this ? 0.35F : 0.4F;
-      ehe $$2 = $$0.dn();
+      ehd $$2 = $$0.dn();
       float $$3 = Math.min(1.0F, (float)Math.sqrt($$2.c * $$2.c * 0.2F + $$2.d * $$2.d + $$2.e * $$2.e * 0.2F) * $$1);
       this.e($$3);
    }
 
    protected gu e(gu $$0) {
       gu $$1 = $$0.c();
-      dfa $$2 = this.dK().a_($$1);
+      dez $$2 = this.dK().a_($$1);
       return !$$2.a(apl.bm) && !$$2.a(apl.bn) ? $$0 : $$1;
    }
 
-   protected void a(dfa $$0, dfa $$1) {
-      czz $$2 = $$0.w();
+   protected void a(dez $$0, dez $$1) {
+      czy $$2 = $$0.w();
       this.a($$2.d(), $$2.a() * 0.15F, $$2.b());
       this.b($$1);
    }
 
-   protected void b(dfa $$0) {
-      czz $$1 = $$0.w();
+   protected void b(dez $$0) {
+      czy $$1 = $$0.w();
       this.a($$1.d(), $$1.a() * 0.05F, $$1.b() * 0.8F);
    }
 
-   protected void b(gu $$0, dfa $$1) {
-      czz $$2 = $$1.w();
+   protected void b(gu $$0, dez $$1) {
+      czy $$2 = $$1.w();
       this.a($$2.d(), $$2.a() * 0.15F, $$2.b());
    }
 
-   private boolean d(dfa $$0) {
+   private boolean d(dez $$0) {
       return $$0.a(apl.bl) && this.ah >= this.bl + 20;
    }
 
@@ -998,11 +998,11 @@ public abstract class bii implements bgu, dir, dq {
       return false;
    }
 
-   protected void a(double $$0, boolean $$1, dfa $$2, gu $$3) {
+   protected void a(double $$0, boolean $$1, dez $$2, gu $$3) {
       if ($$1) {
          if (this.ab > 0.0F) {
             $$2.b().a(this.dK(), $$2, $$3, this, this.ab);
-            this.dK().a(djk.A, this.u, djk.a.a(this, this.aD.<dfa>map($$0x -> this.dK().a_($$0x)).orElse($$2)));
+            this.dK().a(djj.A, this.u, djj.a.a(this, this.aD.<dez>map($$0x -> this.dK().a_($$0x)).orElse($$2)));
          }
 
          this.n();
@@ -1039,7 +1039,7 @@ public abstract class bii implements bgu, dir, dq {
    }
 
    private boolean p() {
-      return this.dK().a_(this.dk()).a(csn.nd);
+      return this.dK().a_(this.dk()).a(csm.nd);
    }
 
    public boolean aY() {
@@ -1079,7 +1079,7 @@ public abstract class bii implements bgu, dir, dq {
    }
 
    void bf() {
-      if (this.cY() instanceof cdg $$0 && !$$0.bc()) {
+      if (this.cY() instanceof cdf $$0 && !$$0.bc()) {
          this.ai = false;
          return;
       }
@@ -1101,13 +1101,13 @@ public abstract class bii implements bgu, dir, dq {
       this.ak = this.a(apq.a);
       this.aO.clear();
       double $$0 = this.dt() - 0.11111111F;
-      if (this.cY() instanceof cdg $$2 && !$$2.bc() && $$2.cG().e >= $$0 && $$2.cG().b <= $$0) {
+      if (this.cY() instanceof cdf $$2 && !$$2.bc() && $$2.cG().e >= $$0 && $$2.cG().b <= $$0) {
          return;
       }
 
       gu $$3 = gu.a(this.dp(), $$0, this.dv());
-      ead $$4 = this.dK().b_($$3);
-      double $$5 = (double)((float)$$3.v() + $$4.a((cos)this.dK(), $$3));
+      eac $$4 = this.dK().b_($$3);
+      double $$5 = (double)((float)$$3.v() + $$4.a((cor)this.dK(), $$3));
       if ($$5 > $$0) {
          $$4.k().forEach(this.aO::add);
       }
@@ -1116,7 +1116,7 @@ public abstract class bii implements bgu, dir, dq {
    protected void bg() {
       bii $$0 = Objects.requireNonNullElse(this.cN(), this);
       float $$1 = $$0 == this ? 0.2F : 0.9F;
-      ehe $$2 = $$0.dn();
+      ehd $$2 = $$0.dn();
       float $$3 = Math.min(1.0F, (float)Math.sqrt($$2.c * $$2.c * 0.2F + $$2.d * $$2.d + $$2.e * $$2.e * 0.2F) * $$1);
       if ($$3 < 0.25F) {
          this.a(this.aM(), $$3, 1.0F + (this.ag.i() - this.ag.i()) * 0.4F);
@@ -1138,15 +1138,15 @@ public abstract class bii implements bgu, dir, dq {
          this.dK().a(iv.ag, this.dp() + $$9, (double)($$4 + 1.0F), this.dv() + $$10, $$2.c, $$2.d, $$2.e);
       }
 
-      this.a(djk.O);
+      this.a(djj.O);
    }
 
    @Deprecated
-   protected dfa bh() {
+   protected dez bh() {
       return this.dK().a_(this.aF());
    }
 
-   public dfa bi() {
+   public dez bi() {
       return this.dK().a_(this.aH());
    }
 
@@ -1156,9 +1156,9 @@ public abstract class bii implements bgu, dir, dq {
 
    protected void bk() {
       gu $$0 = this.aF();
-      dfa $$1 = this.dK().a_($$0);
-      if ($$1.l() != cyr.a) {
-         ehe $$2 = this.dn();
+      dez $$1 = this.dK().a_($$0);
+      if ($$1.l() != cyq.a) {
+         ehd $$2 = this.dn();
          gu $$3 = this.dk();
          double $$4 = this.dp() + (this.ag.j() - 0.5) * (double)this.bh.a;
          double $$5 = this.dv() + (this.ag.j() - 0.5) * (double)this.bh.a;
@@ -1174,7 +1174,7 @@ public abstract class bii implements bgu, dir, dq {
       }
    }
 
-   public boolean a(aqa<eac> $$0) {
+   public boolean a(aqa<eab> $$0) {
       return this.aO.contains($$0);
    }
 
@@ -1182,20 +1182,20 @@ public abstract class bii implements bgu, dir, dq {
       return !this.am && this.aj.getDouble(apq.b) > 0.0;
    }
 
-   public void a(float $$0, ehe $$1) {
-      ehe $$2 = a($$1, $$0, this.dA());
+   public void a(float $$0, ehd $$1) {
+      ehd $$2 = a($$1, $$0, this.dA());
       this.f(this.dn().e($$2));
    }
 
-   private static ehe a(ehe $$0, float $$1, float $$2) {
+   private static ehd a(ehd $$0, float $$1, float $$2) {
       double $$3 = $$0.g();
       if ($$3 < 1.0E-7) {
-         return ehe.b;
+         return ehd.b;
       } else {
-         ehe $$4 = ($$3 > 1.0 ? $$0.d() : $$0).a((double)$$1);
+         ehd $$4 = ($$3 > 1.0 ? $$0.d() : $$0).a((double)$$1);
          float $$5 = arp.a($$2 * (float) (Math.PI / 180.0));
          float $$6 = arp.b($$2 * (float) (Math.PI / 180.0));
-         return new ehe($$4.c * (double)$$6 - $$4.e * (double)$$5, $$4.d, $$4.e * (double)$$6 + $$4.c * (double)$$5);
+         return new ehd($$4.c * (double)$$6 - $$4.e * (double)$$5, $$4.d, $$4.e * (double)$$6 + $$4.c * (double)$$5);
       }
    }
 
@@ -1221,7 +1221,7 @@ public abstract class bii implements bgu, dir, dq {
       this.e($$3, $$1, $$4);
    }
 
-   public void d(ehe $$0) {
+   public void d(ehd $$0) {
       this.d($$0.c, $$0.d, $$0.e);
    }
 
@@ -1273,14 +1273,14 @@ public abstract class bii implements bgu, dir, dq {
       return this.e($$0.di());
    }
 
-   public double e(ehe $$0) {
+   public double e(ehd $$0) {
       double $$1 = this.dp() - $$0.c;
       double $$2 = this.dr() - $$0.d;
       double $$3 = this.dv() - $$0.e;
       return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
    }
 
-   public void b_(cbn $$0) {
+   public void b_(cbm $$0) {
    }
 
    public void g(bii $$0) {
@@ -1332,7 +1332,7 @@ public abstract class bii implements bgu, dir, dq {
       }
    }
 
-   public final ehe f(float $$0) {
+   public final ehd f(float $$0) {
       return this.b(this.g($$0), this.h($$0));
    }
 
@@ -1344,51 +1344,51 @@ public abstract class bii implements bgu, dir, dq {
       return $$0 == 1.0F ? this.dA() : arp.i($$0, this.N, this.dA());
    }
 
-   protected final ehe b(float $$0, float $$1) {
+   protected final ehd b(float $$0, float $$1) {
       float $$2 = $$0 * (float) (Math.PI / 180.0);
       float $$3 = -$$1 * (float) (Math.PI / 180.0);
       float $$4 = arp.b($$3);
       float $$5 = arp.a($$3);
       float $$6 = arp.b($$2);
       float $$7 = arp.a($$2);
-      return new ehe((double)($$5 * $$6), (double)(-$$7), (double)($$4 * $$6));
+      return new ehd((double)($$5 * $$6), (double)(-$$7), (double)($$4 * $$6));
    }
 
-   public final ehe i(float $$0) {
+   public final ehd i(float $$0) {
       return this.c(this.g($$0), this.h($$0));
    }
 
-   protected final ehe c(float $$0, float $$1) {
+   protected final ehd c(float $$0, float $$1) {
       return this.b($$0 - 90.0F, $$1);
    }
 
-   public final ehe bp() {
-      return new ehe(this.dp(), this.dt(), this.dv());
+   public final ehd bp() {
+      return new ehd(this.dp(), this.dt(), this.dv());
    }
 
-   public final ehe j(float $$0) {
+   public final ehd j(float $$0) {
       double $$1 = arp.d((double)$$0, this.K, this.dp());
       double $$2 = arp.d((double)$$0, this.L, this.dr()) + (double)this.cH();
       double $$3 = arp.d((double)$$0, this.M, this.dv());
-      return new ehe($$1, $$2, $$3);
+      return new ehd($$1, $$2, $$3);
    }
 
-   public ehe k(float $$0) {
+   public ehd k(float $$0) {
       return this.j($$0);
    }
 
-   public final ehe l(float $$0) {
+   public final ehd l(float $$0) {
       double $$1 = arp.d((double)$$0, this.K, this.dp());
       double $$2 = arp.d((double)$$0, this.L, this.dr());
       double $$3 = arp.d((double)$$0, this.M, this.dv());
-      return new ehe($$1, $$2, $$3);
+      return new ehd($$1, $$2, $$3);
    }
 
-   public ehc a(double $$0, float $$1, boolean $$2) {
-      ehe $$3 = this.j($$1);
-      ehe $$4 = this.f($$1);
-      ehe $$5 = $$3.b($$4.c * $$0, $$4.d * $$0, $$4.e * $$0);
-      return this.dK().a(new cov($$3, $$5, cov.a.b, $$2 ? cov.b.c : cov.b.a, this));
+   public ehb a(double $$0, float $$1, boolean $$2) {
+      ehd $$3 = this.j($$1);
+      ehd $$4 = this.f($$1);
+      ehd $$5 = $$3.b($$4.c * $$0, $$4.d * $$0, $$4.e * $$0);
+      return this.dK().a(new cou($$3, $$5, cou.a.b, $$2 ? cou.b.c : cou.b.a, this));
    }
 
    public boolean bq() {
@@ -1454,7 +1454,7 @@ public abstract class bii implements bgu, dir, dq {
             $$0.a("Pos", this.a(this.dp(), this.dr(), this.dv()));
          }
 
-         ehe $$1 = this.dn();
+         ehd $$1 = this.dn();
          $$0.a("Motion", this.a($$1.c, $$1.d, $$1.e));
          $$0.a("Rotation", this.a(this.dA(), this.dC()));
          $$0.a("FallDistance", this.ab);
@@ -1641,28 +1641,28 @@ public abstract class bii implements bgu, dir, dq {
    }
 
    @Nullable
-   public byg a(cpl $$0) {
+   public byf a(cpk $$0) {
       return this.a($$0, 0);
    }
 
    @Nullable
-   public byg a(cpl $$0, int $$1) {
-      return this.a(new ciy($$0), (float)$$1);
+   public byf a(cpk $$0, int $$1) {
+      return this.a(new cix($$0), (float)$$1);
    }
 
    @Nullable
-   public byg b(ciy $$0) {
+   public byf b(cix $$0) {
       return this.a($$0, 0.0F);
    }
 
    @Nullable
-   public byg a(ciy $$0, float $$1) {
+   public byf a(cix $$0, float $$1) {
       if ($$0.b()) {
          return null;
       } else if (this.dK().B) {
          return null;
       } else {
-         byg $$2 = new byg(this.dK(), this.dp(), this.dr() + (double)$$1, this.dv(), $$0);
+         byf $$2 = new byf(this.dK(), this.dp(), this.dr() + (double)$$1, this.dv(), $$0);
          $$2.o();
          this.dK().b($$2);
          return $$2;
@@ -1678,20 +1678,20 @@ public abstract class bii implements bgu, dir, dq {
          return false;
       } else {
          float $$0 = this.bh.a * 0.8F;
-         egz $$1 = egz.a(this.bp(), (double)$$0, 1.0E-6, (double)$$0);
+         egy $$1 = egy.a(this.bp(), (double)$$0, 1.0E-6, (double)$$0);
          return gu.a($$1)
             .anyMatch(
                $$1x -> {
-                  dfa $$2 = this.dK().a_($$1x);
+                  dez $$2 = this.dK().a_($$1x);
                   return !$$2.i()
                      && $$2.o(this.dK(), $$1x)
-                     && ehu.c($$2.k(this.dK(), $$1x).a((double)$$1x.u(), (double)$$1x.v(), (double)$$1x.w()), ehu.a($$1), ehi.i);
+                     && eht.c($$2.k(this.dK(), $$1x).a((double)$$1x.u(), (double)$$1x.v(), (double)$$1x.w()), eht.a($$1), ehh.i);
                }
             );
       }
    }
 
-   public bgq a(cbn $$0, bgp $$1) {
+   public bgq a(cbm $$0, bgp $$1) {
       return bgq.d;
    }
 
@@ -1704,7 +1704,7 @@ public abstract class bii implements bgu, dir, dq {
    }
 
    public void by() {
-      this.f(ehe.b);
+      this.f(ehd.b);
       this.l();
       if (this.bN()) {
          this.cY().i(this);
@@ -1718,7 +1718,7 @@ public abstract class bii implements bgu, dir, dq {
    }
 
    protected void a(bii $$0, bii.a $$1) {
-      ehe $$2 = this.m($$0);
+      ehd $$2 = this.m($$0);
       $$1.accept($$0, $$2.c, $$2.d + (double)$$0.k(this), $$2.e);
    }
 
@@ -1733,8 +1733,8 @@ public abstract class bii implements bgu, dir, dq {
       return 0.0F;
    }
 
-   public ehe m(bii $$0) {
-      return new ehe(this.a($$0, this.bh, 1.0F).rotateY(-this.aG * (float) (Math.PI / 180.0))).e(this.di());
+   public ehd m(bii $$0) {
+      return new ehd(this.a($$0, this.bh, 1.0F).rotateY(-this.aG * (float) (Math.PI / 180.0))).e(this.di());
    }
 
    protected Vector3f a(bii $$0, bij $$1, float $$2) {
@@ -1807,7 +1807,7 @@ public abstract class bii implements bgu, dir, dq {
             this.r = ImmutableList.of($$0);
          } else {
             List<bii> $$1 = Lists.newArrayList(this.r);
-            if (!this.dK().B && $$0 instanceof cbn && !(this.cQ() instanceof cbn)) {
+            if (!this.dK().B && $$0 instanceof cbm && !(this.cQ() instanceof cbm)) {
                $$1.add(0, $$0);
             } else {
                $$1.add($$0);
@@ -1816,7 +1816,7 @@ public abstract class bii implements bgu, dir, dq {
             this.r = ImmutableList.copyOf($$1);
          }
 
-         this.a(djk.s, $$0);
+         this.a(djj.s, $$0);
       }
    }
 
@@ -1831,7 +1831,7 @@ public abstract class bii implements bgu, dir, dq {
          }
 
          $$0.J = 60;
-         this.a(djk.q, $$0);
+         this.a(djj.q, $$0);
       }
    }
 
@@ -1856,13 +1856,13 @@ public abstract class bii implements bgu, dir, dq {
       return 0.0F;
    }
 
-   public ehe bE() {
+   public ehd bE() {
       return this.b(this.dC(), this.dA());
    }
 
-   public ehe a(cit $$0) {
-      if (!(this instanceof cbn $$1)) {
-         return ehe.b;
+   public ehd a(cis $$0) {
+      if (!(this instanceof cbm $$1)) {
+         return ehd.b;
       } else {
          boolean $$2 = $$1.eS().a($$0) && !$$1.eR().a($$0);
          bis $$3 = $$2 ? $$1.fk().e() : $$1.fk();
@@ -1870,12 +1870,12 @@ public abstract class bii implements bgu, dir, dq {
       }
    }
 
-   public ehd bF() {
-      return new ehd(this.dC(), this.dA());
+   public ehc bF() {
+      return new ehc(this.dC(), this.dA());
    }
 
-   public ehe bG() {
-      return ehe.a(this.bF());
+   public ehd bG() {
+      return ehd.a(this.bF());
    }
 
    public void f(gu $$0) {
@@ -1896,7 +1896,7 @@ public abstract class bii implements bgu, dir, dq {
          akk $$1 = (akk)this.dK();
          if (this.av) {
             MinecraftServer $$2 = $$1.n();
-            aeq<cpm> $$3 = this.dK().ac() == cpm.i ? cpm.h : cpm.i;
+            aeq<cpl> $$3 = this.dK().ac() == cpl.i ? cpl.h : cpl.i;
             akk $$4 = $$2.a($$3);
             if ($$4 != null && $$2.B() && !this.bN() && this.aw++ >= $$0) {
                this.dK().ad().a("portal");
@@ -1935,26 +1935,26 @@ public abstract class bii implements bgu, dir, dq {
    public void b(byte $$0) {
       switch ($$0) {
          case 53:
-            cwd.a(this);
+            cwc.a(this);
       }
    }
 
    public void m(float $$0) {
    }
 
-   public Iterable<ciy> bJ() {
+   public Iterable<cix> bJ() {
       return e;
    }
 
-   public Iterable<ciy> bK() {
+   public Iterable<cix> bK() {
       return e;
    }
 
-   public Iterable<ciy> bL() {
+   public Iterable<cix> bL() {
       return Iterables.concat(this.bJ(), this.bK());
    }
 
-   public void a(bin $$0, ciy $$1) {
+   public void a(bin $$0, cix $$1) {
    }
 
    public boolean bM() {
@@ -2047,11 +2047,11 @@ public abstract class bii implements bgu, dir, dq {
       return this.i(5);
    }
 
-   public boolean d(cbn $$0) {
+   public boolean d(cbm $$0) {
       if ($$0.G_()) {
          return false;
       } else {
-         eif $$1 = this.cf();
+         eie $$1 = this.cf();
          return $$1 != null && $$0 != null && $$0.cf() == $$1 && $$1.i() ? false : this.cd();
       }
    }
@@ -2060,11 +2060,11 @@ public abstract class bii implements bgu, dir, dq {
       return false;
    }
 
-   public void a(BiConsumer<djh<?>, akk> $$0) {
+   public void a(BiConsumer<djg<?>, akk> $$0) {
    }
 
    @Nullable
-   public eif cf() {
+   public eie cf() {
       return this.dK().I().g(this.cx());
    }
 
@@ -2072,7 +2072,7 @@ public abstract class bii implements bgu, dir, dq {
       return this.a($$0.cf());
    }
 
-   public boolean a(eif $$0) {
+   public boolean a(eie $$0) {
       return this.cf() != null ? this.cf().a($$0) : false;
    }
 
@@ -2136,7 +2136,7 @@ public abstract class bii implements bgu, dir, dq {
    }
 
    public void k(boolean $$0) {
-      ehe $$1 = this.dn();
+      ehd $$1 = this.dn();
       double $$2;
       if ($$0) {
          $$2 = Math.max(-0.9, $$1.d - 0.03);
@@ -2148,7 +2148,7 @@ public abstract class bii implements bgu, dir, dq {
    }
 
    public void l(boolean $$0) {
-      ehe $$1 = this.dn();
+      ehd $$1 = this.dn();
       double $$2;
       if ($$0) {
          $$2 = Math.max(-0.3, $$1.d - 0.03);
@@ -2176,7 +2176,7 @@ public abstract class bii implements bgu, dir, dq {
 
    protected void m(double $$0, double $$1, double $$2) {
       gu $$3 = gu.a($$0, $$1, $$2);
-      ehe $$4 = new ehe($$0 - (double)$$3.u(), $$1 - (double)$$3.v(), $$2 - (double)$$3.w());
+      ehd $$4 = new ehd($$0 - (double)$$3.u(), $$1 - (double)$$3.v(), $$2 - (double)$$3.w());
       gu.a $$5 = new gu.a();
       ha $$6 = ha.b;
       double $$7 = Double.MAX_VALUE;
@@ -2195,7 +2195,7 @@ public abstract class bii implements bgu, dir, dq {
 
       float $$11 = this.ag.i() * 0.2F + 0.1F;
       float $$12 = (float)$$6.f().a();
-      ehe $$13 = this.dn().a(0.75);
+      ehd $$13 = this.dn().a(0.75);
       if ($$6.o() == ha.a.a) {
          this.o((double)($$12 * $$11), $$13.d, $$13.e);
       } else if ($$6.o() == ha.a.b) {
@@ -2205,7 +2205,7 @@ public abstract class bii implements bgu, dir, dq {
       }
    }
 
-   public void a(dfa $$0, ehe $$1) {
+   public void a(dez $$0, ehd $$1) {
       this.n();
       this.U = $$1;
    }
@@ -2311,18 +2311,18 @@ public abstract class bii implements bgu, dir, dq {
          this.dK().ad().a("changeDimension");
          this.ae();
          this.dK().ad().a("reposition");
-         eba $$1 = this.a($$0);
+         eaz $$1 = this.a($$0);
          if ($$1 == null) {
             return null;
          } else {
             this.dK().ad().b("reloading");
-            bii $$2 = this.ag().a((cpm)$$0);
+            bii $$2 = this.ag().a((cpl)$$0);
             if ($$2 != null) {
                $$2.w(this);
                $$2.b($$1.a.c, $$1.a.d, $$1.a.e, $$1.c, $$2.dC());
                $$2.f($$1.b);
                $$0.d($$2);
-               if ($$0.ac() == cpm.j) {
+               if ($$0.ac() == cpl.j) {
                   akk.a($$0);
                }
             }
@@ -2344,31 +2344,31 @@ public abstract class bii implements bgu, dir, dq {
    }
 
    @Nullable
-   protected eba a(akk $$0) {
-      boolean $$1 = this.dK().ac() == cpm.j && $$0.ac() == cpm.h;
-      boolean $$2 = $$0.ac() == cpm.j;
+   protected eaz a(akk $$0) {
+      boolean $$1 = this.dK().ac() == cpl.j && $$0.ac() == cpl.h;
+      boolean $$2 = $$0.ac() == cpl.j;
       if (!$$1 && !$$2) {
-         boolean $$5 = $$0.ac() == cpm.i;
-         if (this.dK().ac() != cpm.i && !$$5) {
+         boolean $$5 = $$0.ac() == cpl.i;
+         if (this.dK().ac() != cpl.i && !$$5) {
             return null;
          } else {
-            dgr $$6 = $$0.w_();
-            double $$7 = dij.a(this.dK().x_(), $$0.x_());
+            dgq $$6 = $$0.w_();
+            double $$7 = dii.a(this.dK().x_(), $$0.x_());
             gu $$8 = $$6.b(this.dp() * $$7, this.dr(), this.dv() * $$7);
             return this.a($$0, $$8, $$5, $$6).map($$1x -> {
-               dfa $$2x = this.dK().a_(this.ax);
+               dez $$2x = this.dK().a_(this.ax);
                ha.a $$3;
-               ehe $$5x;
-               if ($$2x.b(dfq.H)) {
-                  $$3 = $$2x.c(dfq.H);
+               ehd $$5x;
+               if ($$2x.b(dfp.H)) {
+                  $$3 = $$2x.c(dfp.H);
                   l.a $$4 = l.a(this.ax, $$3, 21, ha.a.b, 21, $$1xx -> this.dK().a_($$1xx) == $$2x);
                   $$5x = this.a($$3, $$4);
                } else {
                   $$3 = ha.a.a;
-                  $$5x = new ehe(0.5, 0.0, 0.0);
+                  $$5x = new ehd(0.5, 0.0, 0.0);
                }
 
-               return ebb.a($$0, $$1x, $$3, $$5x, this, this.dn(), this.dA(), this.dC());
+               return eba.a($$0, $$1x, $$3, $$5x, this, this.dn(), this.dA(), this.dC());
             }).orElse(null);
          }
       } else {
@@ -2376,18 +2376,18 @@ public abstract class bii implements bgu, dir, dq {
          if ($$2) {
             $$3 = akk.a;
          } else {
-            $$3 = $$0.a(dkj.a.f, $$0.R());
+            $$3 = $$0.a(dki.a.f, $$0.R());
          }
 
-         return new eba(new ehe((double)$$3.u() + 0.5, (double)$$3.v(), (double)$$3.w() + 0.5), this.dn(), this.dA(), this.dC());
+         return new eaz(new ehd((double)$$3.u() + 0.5, (double)$$3.v(), (double)$$3.w() + 0.5), this.dn(), this.dA(), this.dC());
       }
    }
 
-   protected ehe a(ha.a $$0, l.a $$1) {
-      return ebb.a($$1, $$0, this.di(), this.a(this.an()));
+   protected ehd a(ha.a $$0, l.a $$1) {
+      return eba.a($$1, $$0, this.di(), this.a(this.an()));
    }
 
-   protected Optional<l.a> a(akk $$0, gu $$1, boolean $$2, dgr $$3) {
+   protected Optional<l.a> a(akk $$0, gu $$1, boolean $$2, dgq $$3) {
       return $$0.o().a($$1, $$2, $$3);
    }
 
@@ -2395,11 +2395,11 @@ public abstract class bii implements bgu, dir, dq {
       return !this.bN() && !this.bO();
    }
 
-   public float a(cpe $$0, cos $$1, gu $$2, dfa $$3, ead $$4, float $$5) {
+   public float a(cpd $$0, cor $$1, gu $$2, dez $$3, eac $$4, float $$5) {
       return $$5;
    }
 
-   public boolean a(cpe $$0, cos $$1, gu $$2, dfa $$3, float $$4) {
+   public boolean a(cpd $$0, cor $$1, gu $$2, dez $$3, float $$4) {
       return true;
    }
 
@@ -2417,7 +2417,7 @@ public abstract class bii implements bgu, dir, dq {
       $$0.a("Entity Name", () -> this.ab().getString());
       $$0.a("Entity's Exact location", String.format(Locale.ROOT, "%.2f, %.2f, %.2f", this.dp(), this.dr(), this.dv()));
       $$0.a("Entity's Block location", p.a(this.dK(), arp.a(this.dp()), arp.a(this.dr()), arp.a(this.dv())));
-      ehe $$1 = this.dn();
+      ehd $$1 = this.dn();
       $$0.a("Entity's Momentum", String.format(Locale.ROOT, "%.2f, %.2f, %.2f", $$1.c, $$1.d, $$1.e));
       $$0.a("Entity's Passengers", () -> this.cP().toString());
       $$0.a("Entity's Vehicle", () -> String.valueOf(this.cY()));
@@ -2459,7 +2459,7 @@ public abstract class bii implements bgu, dir, dq {
 
    @Override
    public tf H_() {
-      return eib.a(this.cf(), this.ab()).a($$0 -> $$0.a(this.cF()).a(this.cw()));
+      return eia.a(this.cf(), this.ab()).a($$0 -> $$0.a(this.cF()).a(this.cw()));
    }
 
    public void b(@Nullable tf $$0) {
@@ -2487,7 +2487,7 @@ public abstract class bii implements bgu, dir, dq {
 
    public final void n(double $$0, double $$1, double $$2) {
       if (this.dK() instanceof akk) {
-         cot $$3 = new cot(gu.a($$0, $$1, $$2));
+         cos $$3 = new cos(gu.a($$0, $$1, $$2));
          ((akk)this.dK()).k().a(akp.g, $$3, 0, this.ah());
          this.dK().d($$3.e, $$3.f);
          this.b($$0, $$1, $$2);
@@ -2502,7 +2502,7 @@ public abstract class bii implements bgu, dir, dq {
          this.n($$5);
       } else {
          this.ae();
-         bii $$8 = this.ag().a((cpm)$$0);
+         bii $$8 = this.ag().a((cpl)$$0);
          if ($$8 == null) {
             return false;
          }
@@ -2572,11 +2572,11 @@ public abstract class bii implements bgu, dir, dq {
       this.bi = this.a($$1, $$2);
       this.ap();
       boolean $$3 = (double)$$2.a <= 4.0 && (double)$$2.b <= 4.0;
-      if (!this.dK().B && !this.am && !this.af && $$3 && ($$2.a > $$0.a || $$2.b > $$0.b) && !(this instanceof cbn)) {
-         ehe $$4 = this.di().b(0.0, (double)$$0.b / 2.0, 0.0);
+      if (!this.dK().B && !this.am && !this.af && $$3 && ($$2.a > $$0.a || $$2.b > $$0.b) && !(this instanceof cbm)) {
+         ehd $$4 = this.di().b(0.0, (double)$$0.b / 2.0, 0.0);
          double $$5 = (double)Math.max(0.0F, $$2.a - $$0.a) + 1.0E-6;
          double $$6 = (double)Math.max(0.0F, $$2.b - $$0.b) + 1.0E-6;
-         ehx $$7 = ehu.a(egz.a($$4, $$5, $$6, $$5));
+         ehw $$7 = eht.a(egy.a($$4, $$5, $$6, $$5));
          this.dK().a(this, $$7, $$4, (double)$$2.a, (double)$$2.b, (double)$$2.a).ifPresent($$1x -> this.a($$1x.b(0.0, (double)(-$$2.b) / 2.0, 0.0)));
       }
    }
@@ -2598,15 +2598,15 @@ public abstract class bii implements bgu, dir, dq {
    }
 
    @Override
-   public final egz cG() {
+   public final egy cG() {
       return this.aI;
    }
 
-   public egz k_() {
+   public egy k_() {
       return this.cG();
    }
 
-   public final void a(egz $$0) {
+   public final void a(egy $$0) {
       this.aI = $$0;
    }
 
@@ -2622,23 +2622,23 @@ public abstract class bii implements bgu, dir, dq {
       return this.bi;
    }
 
-   public ehe p(float $$0) {
+   public ehd p(float $$0) {
       return this.cI();
    }
 
-   protected ehe cI() {
-      return new ehe(0.0, (double)this.cH(), (double)(this.df() * 0.4F));
+   protected ehd cI() {
+      return new ehd(0.0, (double)this.cH(), (double)(this.df() * 0.4F));
    }
 
-   public bjr a_(int $$0) {
-      return bjr.b;
+   public bjq a_(int $$0) {
+      return bjq.b;
    }
 
    @Override
    public void a(tf $$0) {
    }
 
-   public cpm cJ() {
+   public cpl cJ() {
       return this.dK();
    }
 
@@ -2647,7 +2647,7 @@ public abstract class bii implements bgu, dir, dq {
       return this.dK().n();
    }
 
-   public bgq a(cbn $$0, ehe $$1, bgp $$2) {
+   public bgq a(cbm $$0, ehd $$1, bgp $$2) {
       return bgq.d;
    }
 
@@ -2657,10 +2657,10 @@ public abstract class bii implements bgu, dir, dq {
 
    public void a(biy $$0, bii $$1) {
       if ($$1 instanceof biy) {
-         cnh.a((biy)$$1, $$0);
+         cng.a((biy)$$1, $$0);
       }
 
-      cnh.b($$0, $$1);
+      cng.b($$0, $$1);
    }
 
    public void c(akl $$0) {
@@ -2669,7 +2669,7 @@ public abstract class bii implements bgu, dir, dq {
    public void d(akl $$0) {
    }
 
-   public float a(cyy $$0) {
+   public float a(cyx $$0) {
       float $$1 = arp.g(this.dA());
       switch ($$0) {
          case c:
@@ -2683,7 +2683,7 @@ public abstract class bii implements bgu, dir, dq {
       }
    }
 
-   public float a(cxh $$0) {
+   public float a(cxg $$0) {
       float $$1 = arp.g(this.dA());
       switch ($$0) {
          case c:
@@ -2753,7 +2753,7 @@ public abstract class bii implements bgu, dir, dq {
    }
 
    public boolean cU() {
-      return this.w().filter($$0 -> $$0 instanceof cbn).count() == 1L;
+      return this.w().filter($$0 -> $$0 instanceof cbm).count() == 1L;
    }
 
    public bii cV() {
@@ -2780,23 +2780,23 @@ public abstract class bii implements bgu, dir, dq {
    }
 
    public boolean cW() {
-      return this.cN() instanceof cbn $$0 ? $$0.g() : this.cX();
+      return this.cN() instanceof cbm $$0 ? $$0.g() : this.cX();
    }
 
    public boolean cX() {
       return !this.dK().B;
    }
 
-   protected static ehe a(double $$0, double $$1, float $$2) {
+   protected static ehd a(double $$0, double $$1, float $$2) {
       double $$3 = ($$0 + $$1 + 1.0E-5F) / 2.0;
       float $$4 = -arp.a($$2 * (float) (Math.PI / 180.0));
       float $$5 = arp.b($$2 * (float) (Math.PI / 180.0));
       float $$6 = Math.max(Math.abs($$4), Math.abs($$5));
-      return new ehe((double)$$4 * $$3 / (double)$$6, 0.0, (double)$$5 * $$3 / (double)$$6);
+      return new ehd((double)$$4 * $$3 / (double)$$6, 0.0, (double)$$5 * $$3 / (double)$$6);
    }
 
-   public ehe b(biy $$0) {
-      return new ehe(this.dp(), this.cG().e, this.dv());
+   public ehd b(biy $$0) {
+      return new ehd(this.dp(), this.cG().e, this.dv());
    }
 
    @Nullable
@@ -2809,8 +2809,8 @@ public abstract class bii implements bgu, dir, dq {
       return this.s != null && this.s.cN() == this ? this.s : null;
    }
 
-   public eai l_() {
-      return eai.a;
+   public eah l_() {
+      return eah.a;
    }
 
    public aox da() {
@@ -2837,7 +2837,7 @@ public abstract class bii implements bgu, dir, dq {
 
    @Override
    public boolean f_() {
-      return this.dK().X().b(cpi.o);
+      return this.dK().X().b(cph.o);
    }
 
    @Override
@@ -2850,8 +2850,8 @@ public abstract class bii implements bgu, dir, dq {
       return true;
    }
 
-   public void a(eb.a $$0, ehe $$1) {
-      ehe $$2 = $$0.a(this);
+   public void a(eb.a $$0, ehd $$1) {
+      ehd $$2 = $$0.a(this);
       double $$3 = $$1.c - $$2.c;
       double $$4 = $$1.d - $$2.d;
       double $$5 = $$1.e - $$2.e;
@@ -2863,11 +2863,11 @@ public abstract class bii implements bgu, dir, dq {
       this.N = this.dA();
    }
 
-   public boolean a(aqa<eac> $$0, double $$1) {
+   public boolean a(aqa<eab> $$0, double $$1) {
       if (this.dd()) {
          return false;
       } else {
-         egz $$2 = this.cG().h(0.001);
+         egy $$2 = this.cG().h(0.001);
          int $$3 = arp.a($$2.a);
          int $$4 = arp.c($$2.d);
          int $$5 = arp.a($$2.b);
@@ -2877,7 +2877,7 @@ public abstract class bii implements bgu, dir, dq {
          double $$9 = 0.0;
          boolean $$10 = this.cy();
          boolean $$11 = false;
-         ehe $$12 = ehe.b;
+         ehd $$12 = ehd.b;
          int $$13 = 0;
          gu.a $$14 = new gu.a();
 
@@ -2885,14 +2885,14 @@ public abstract class bii implements bgu, dir, dq {
             for (int $$16 = $$5; $$16 < $$6; $$16++) {
                for (int $$17 = $$7; $$17 < $$8; $$17++) {
                   $$14.d($$15, $$16, $$17);
-                  ead $$18 = this.dK().b_($$14);
+                  eac $$18 = this.dK().b_($$14);
                   if ($$18.a($$0)) {
-                     double $$19 = (double)((float)$$16 + $$18.a((cos)this.dK(), $$14));
+                     double $$19 = (double)((float)$$16 + $$18.a((cor)this.dK(), $$14));
                      if ($$19 >= $$2.b) {
                         $$11 = true;
                         $$9 = Math.max($$19 - $$2.b, $$9);
                         if ($$10) {
-                           ehe $$20 = $$18.c(this.dK(), $$14);
+                           ehd $$20 = $$18.c(this.dK(), $$14);
                            if ($$9 < 0.4) {
                               $$20 = $$20.a($$9);
                            }
@@ -2911,11 +2911,11 @@ public abstract class bii implements bgu, dir, dq {
                $$12 = $$12.a(1.0 / (double)$$13);
             }
 
-            if (!(this instanceof cbn)) {
+            if (!(this instanceof cbm)) {
                $$12 = $$12.d();
             }
 
-            ehe $$21 = this.dn();
+            ehd $$21 = this.dn();
             $$12 = $$12.a($$1 * 1.0);
             double $$22 = 0.003;
             if (Math.abs($$21.c) < 0.003 && Math.abs($$21.e) < 0.003 && $$12.f() < 0.0045000000000000005) {
@@ -2931,7 +2931,7 @@ public abstract class bii implements bgu, dir, dq {
    }
 
    public boolean dd() {
-      egz $$0 = this.cG().g(1.0);
+      egy $$0 = this.cG().g(1.0);
       int $$1 = arp.a($$0.a);
       int $$2 = arp.c($$0.d);
       int $$3 = arp.a($$0.c);
@@ -2939,7 +2939,7 @@ public abstract class bii implements bgu, dir, dq {
       return !this.dK().b($$1, $$3, $$2, $$4);
    }
 
-   public double b(aqa<eac> $$0) {
+   public double b(aqa<eab> $$0) {
       return this.aj.getDouble($$0);
    }
 
@@ -2967,11 +2967,11 @@ public abstract class bii implements bgu, dir, dq {
       return this.p.n();
    }
 
-   public ehe di() {
+   public ehd di() {
       return this.u;
    }
 
-   public ehe dj() {
+   public ehd dj() {
       return this.di();
    }
 
@@ -2980,7 +2980,7 @@ public abstract class bii implements bgu, dir, dq {
       return this.v;
    }
 
-   public dfa dl() {
+   public dez dl() {
       if (this.bn == null) {
          this.bn = this.dK().a_(this.dk());
       }
@@ -2988,24 +2988,24 @@ public abstract class bii implements bgu, dir, dq {
       return this.bn;
    }
 
-   public cot dm() {
+   public cos dm() {
       return this.aE;
    }
 
-   public ehe dn() {
+   public ehd dn() {
       return this.aF;
    }
 
-   public void f(ehe $$0) {
+   public void f(ehd $$0) {
       this.aF = $$0;
    }
 
-   public void g(ehe $$0) {
+   public void g(ehd $$0) {
       this.f(this.dn().e($$0));
    }
 
    public void o(double $$0, double $$1, double $$2) {
-      this.f(new ehe($$0, $$1, $$2));
+      this.f(new ehd($$0, $$1, $$2));
    }
 
    public final int do() {
@@ -3062,7 +3062,7 @@ public abstract class bii implements bgu, dir, dq {
 
    public final void p(double $$0, double $$1, double $$2) {
       if (this.u.c != $$0 || this.u.d != $$1 || this.u.e != $$2) {
-         this.u = new ehe($$0, $$1, $$2);
+         this.u = new ehd($$0, $$1, $$2);
          int $$3 = arp.a($$0);
          int $$4 = arp.a($$1);
          int $$5 = arp.a($$2);
@@ -3070,7 +3070,7 @@ public abstract class bii implements bgu, dir, dq {
             this.v = new gu($$3, $$4, $$5);
             this.bn = null;
             if (hx.a($$3) != this.aE.e || hx.a($$5) != this.aE.f) {
-               this.aE = new cot(this.v);
+               this.aE = new cos(this.v);
             }
          }
 
@@ -3081,7 +3081,7 @@ public abstract class bii implements bgu, dir, dq {
    public void dw() {
    }
 
-   public ehe q(float $$0) {
+   public ehd q(float $$0) {
       return this.l($$0).b(0.0, (double)this.bi * 0.7, 0.0);
    }
 
@@ -3099,7 +3099,7 @@ public abstract class bii implements bgu, dir, dq {
    }
 
    @Nullable
-   public ciy dx() {
+   public cix dx() {
       return null;
    }
 
@@ -3183,7 +3183,7 @@ public abstract class bii implements bgu, dir, dq {
    }
 
    @Override
-   public void a(dis $$0) {
+   public void a(dir $$0) {
       this.aZ = $$0;
    }
 
@@ -3201,15 +3201,15 @@ public abstract class bii implements bgu, dir, dq {
       return false;
    }
 
-   public boolean a(cpm $$0, gu $$1) {
+   public boolean a(cpl $$0, gu $$1) {
       return true;
    }
 
-   public cpm dK() {
+   public cpl dK() {
       return this.t;
    }
 
-   protected void a(cpm $$0) {
+   protected void a(cpl $$0) {
       this.t = $$0;
    }
 

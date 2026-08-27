@@ -17,12 +17,12 @@ public class akw implements akt {
    }
 
    @Override
-   public void a(cot $$0) {
+   public void a(cos $$0) {
       this.b.a(() -> this.a.a($$0));
    }
 
    @Override
-   public void a(cot $$0, @Nullable dhb $$1) {
+   public void a(cos $$0, @Nullable dha $$1) {
       this.b.a(() -> this.a.a($$0, $$1));
    }
 

@@ -1,60 +1,30 @@
 import com.mojang.serialization.Codec;
 
-public class dor extends dnn<dqi> {
-   public dor(Codec<dqi> $$0) {
+public class dor extends dnm<dpl> {
+   public dor(Codec<dpl> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dnp<dqi> $$0) {
-      cqg $$1 = $$0.b();
-      gu $$2 = $$0.e();
-      if (!this.a($$1, $$2)) {
-         return false;
-      } else {
-         dqi $$3 = $$0.f();
-         aru $$4 = $$0.d();
-         czh $$5 = czh.b();
-         int $$6 = $$3.f() + $$3.d();
+   public boolean a(dno<dpl> $$0) {
+      int $$1 = 0;
+      aru $$2 = $$0.d();
+      cqf $$3 = $$0.b();
+      gu $$4 = $$0.e();
+      int $$5 = $$0.f().a().a($$2);
 
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
-               $$5.a($$2, $$3.b());
-            }
-
-            boolean $$9 = $$7 < $$3.f();
-
-            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
-               $$5.a($$1, $$2, $$4, $$9);
-            }
-
-            $$5.j();
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         int $$7 = $$2.a(8) - $$2.a(8);
+         int $$8 = $$2.a(8) - $$2.a(8);
+         int $$9 = $$3.a(dki.a.d, $$4.u() + $$7, $$4.w() + $$8);
+         gu $$10 = new gu($$4.u() + $$7, $$9, $$4.w() + $$8);
+         dez $$11 = csm.mV.n().a(czi.b, Integer.valueOf($$2.a(4) + 1));
+         if ($$3.a_($$10).a(csm.G) && $$11.a($$3, $$10)) {
+            $$3.a($$10, $$11, 2);
+            $$1++;
          }
-
-         gu $$11 = $$2.d();
-         if ($$4.i() <= $$3.h() && $$1.a_($$11).r($$1, $$11)) {
-            $$1.a($$2, csn.qH.n(), 3);
-         }
-
-         int $$12 = $$3.g().a($$4);
-
-         for (int $$13 = 0; $$13 < $$12; $$13++) {
-            gu $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
-            if ($$1.a_($$14).i() && $$1.a_($$14.d()).d($$1, $$14.d(), ha.b)) {
-               $$1.a($$14, csn.qI.n().a(czg.c, Boolean.valueOf(true)), 3);
-            }
-         }
-
-         return true;
       }
-   }
 
-   private boolean a(cpn $$0, gu $$1) {
-      dfa $$2 = $$0.a_($$1);
-      if ($$2.b() instanceof czc) {
-         return true;
-      } else {
-         return !$$2.i() && (!$$2.a(csn.G) || !$$2.u().b()) ? false : ha.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).r($$0, $$1x));
-      }
+      return $$1 > 0;
    }
 }

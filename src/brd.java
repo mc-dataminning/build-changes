@@ -1,40 +1,30 @@
-import java.util.EnumSet;
+public class brd extends bpt {
+   private final bjh a;
 
-public class brd extends bpu {
-   private final cav a;
-
-   public brd(cav $$0) {
+   public brd(bjh $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(bpu.a.c, bpu.a.a));
    }
 
    @Override
    public boolean a() {
-      if (!this.a.bv()) {
-         return false;
-      } else if (this.a.aX()) {
-         return false;
-      } else if (!this.a.aA()) {
-         return false;
-      } else if (this.a.T) {
-         return false;
-      } else {
-         cbn $$0 = this.a.fZ();
-         if ($$0 == null) {
-            return false;
-         } else {
-            return this.a.f($$0) > 16.0 ? false : $$0.bQ != null;
-         }
-      }
+      return this.a.aA() && !this.a.dK().b_(this.a.dk()).a(apq.a);
    }
 
    @Override
    public void c() {
-      this.a.H().n();
-   }
+      gu $$0 = null;
 
-   @Override
-   public void d() {
-      this.a.f(null);
+      for (gu $$2 : gu.b(
+         arp.a(this.a.dp() - 2.0), arp.a(this.a.dr() - 2.0), arp.a(this.a.dv() - 2.0), arp.a(this.a.dp() + 2.0), this.a.dq(), arp.a(this.a.dv() + 2.0)
+      )) {
+         if (this.a.dK().b_($$2).a(apq.a)) {
+            $$0 = $$2;
+            break;
+         }
+      }
+
+      if ($$0 != null) {
+         this.a.E().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
+      }
    }
 }

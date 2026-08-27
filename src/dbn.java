@@ -1,27 +1,68 @@
-public class dbn extends csu {
-   protected static final ehx a = csm.a(1.0, 0.0, 1.0, 15.0, 1.5, 15.0);
+import com.google.common.base.Suppliers;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.ImmutableBiMap;
+import java.util.Optional;
+import java.util.function.Supplier;
 
-   protected dbn(dez.d $$0) {
-      super($$0);
+public interface dbn extends ctl<dbn.a> {
+   Supplier<BiMap<csl, csl>> u_ = Suppliers.memoize(
+      () -> ImmutableBiMap.builder()
+            .put(csm.qM, csm.qL)
+            .put(csm.qL, csm.qK)
+            .put(csm.qK, csm.qJ)
+            .put(csm.qS, csm.qR)
+            .put(csm.qR, csm.qQ)
+            .put(csm.qQ, csm.qP)
+            .put(csm.ra, csm.qZ)
+            .put(csm.qZ, csm.qY)
+            .put(csm.qY, csm.qX)
+            .put(csm.qW, csm.qV)
+            .put(csm.qV, csm.qU)
+            .put(csm.qU, csm.qT)
+            .build()
+   );
+   Supplier<BiMap<csl, csl>> v_ = Suppliers.memoize(() -> u_.get().inverse());
+
+   static Optional<csl> a(csl $$0) {
+      return Optional.ofNullable((csl)v_.get().get($$0));
    }
 
-   @Override
-   public void a(dfa $$0, cpm $$1, gu $$2, bii $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$1 instanceof akk && $$3 instanceof cdg) {
-         $$1.a(new gu($$2), true, $$3);
+   static csl b(csl $$0) {
+      csl $$1 = $$0;
+
+      for (csl $$2 = (csl)v_.get().get($$0); $$2 != null; $$2 = (csl)v_.get().get($$2)) {
+         $$1 = $$2;
       }
+
+      return $$1;
+   }
+
+   static Optional<dez> b(dez $$0) {
+      return a($$0.b()).map($$1 -> $$1.l($$0));
+   }
+
+   static Optional<csl> c(csl $$0) {
+      return Optional.ofNullable((csl)u_.get().get($$0));
+   }
+
+   static dez c(dez $$0) {
+      return b($$0.b()).l($$0);
    }
 
    @Override
-   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
-      return a;
+   default Optional<dez> i_(dez $$0) {
+      return c($$0.b()).map($$1 -> $$1.l($$0));
    }
 
    @Override
-   protected boolean d(dfa $$0, cos $$1, gu $$2) {
-      ead $$3 = $$1.b_($$2);
-      ead $$4 = $$1.b_($$2.c());
-      return ($$3.a() == eae.c || $$0.b() instanceof cwh) && $$4.a() == eae.a;
+   default float a() {
+      return this.b() == dbn.a.a ? 0.75F : 1.0F;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

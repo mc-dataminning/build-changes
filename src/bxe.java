@@ -1,41 +1,44 @@
-import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class bxe extends bxc {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = 10;
+public class bxe extends bxb {
    @Nullable
-   private ehe d;
-   private int e;
+   private ehd b;
+   private int c;
 
-   public bxe(bxa $$0) {
+   public bxe(bwz $$0) {
       super($$0);
    }
 
    @Override
+   public void b() {
+      if (this.c++ % 10 == 0) {
+         float $$0 = (this.a.ee().i() - 0.5F) * 8.0F;
+         float $$1 = (this.a.ee().i() - 0.5F) * 4.0F;
+         float $$2 = (this.a.ee().i() - 0.5F) * 8.0F;
+         this.a.dK().a(iv.w, this.a.dp() + (double)$$0, this.a.dr() + 2.0 + (double)$$1, this.a.dv() + (double)$$2, 0.0, 0.0, 0.0);
+      }
+   }
+
+   @Override
    public void c() {
-      if (this.d == null) {
-         b.warn("Aborting charge player as no target was set.");
-         this.a.fW().a(bxq.a);
-      } else if (this.e > 0 && this.e++ >= 10) {
-         this.a.fW().a(bxq.a);
+      this.c++;
+      if (this.b == null) {
+         gu $$0 = this.a.dK().a(dki.a.e, dnl.a(this.a.p()));
+         this.b = ehd.c($$0);
+      }
+
+      double $$1 = this.b.c(this.a.dp(), this.a.dr(), this.a.dv());
+      if (!($$1 < 100.0) && !($$1 > 22500.0) && !this.a.P && !this.a.Q) {
+         this.a.c(1.0F);
       } else {
-         double $$0 = this.d.c(this.a.dp(), this.a.dr(), this.a.dv());
-         if ($$0 < 100.0 || $$0 > 22500.0 || this.a.P || this.a.Q) {
-            this.e++;
-         }
+         this.a.c(0.0F);
       }
    }
 
    @Override
    public void d() {
-      this.d = null;
-      this.e = 0;
-   }
-
-   public void a(ehe $$0) {
-      this.d = $$0;
+      this.b = null;
+      this.c = 0;
    }
 
    @Override
@@ -45,12 +48,12 @@ public class bxe extends bxc {
 
    @Nullable
    @Override
-   public ehe g() {
-      return this.d;
+   public ehd g() {
+      return this.b;
    }
 
    @Override
-   public bxq<bxe> i() {
-      return bxq.i;
+   public bxp<bxe> i() {
+      return bxp.j;
    }
 }

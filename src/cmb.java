@@ -1,53 +1,170 @@
-public interface cmb<C extends bgj> {
-   boolean a(C var1, cpm var2);
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonSyntaxException;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   ciy a(C var1, hs var2);
+public class cmb extends anq {
+   private static final Gson a = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
+   private static final Logger b = LogUtils.getLogger();
+   private Map<cmd<?>, Map<aer, cma<?>>> c = ImmutableMap.of();
+   private Map<aer, cma<?>> d = ImmutableMap.of();
+   private boolean e;
 
-   boolean a(int var1, int var2);
+   public cmb() {
+      super(a, "recipes");
+   }
 
-   ciy a(hs var1);
+   protected void a(Map<aer, JsonElement> $$0, anm $$1, bdh $$2) {
+      this.e = false;
+      Map<cmd<?>, Builder<aer, cma<?>>> $$3 = Maps.newHashMap();
+      Builder<aer, cma<?>> $$4 = ImmutableMap.builder();
 
-   default hn<ciy> a(C $$0) {
-      hn<ciy> $$1 = hn.a($$0.b(), ciy.b);
+      for (Entry<aer, JsonElement> $$5 : $$0.entrySet()) {
+         aer $$6 = $$5.getKey();
 
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cit $$3 = $$0.a($$2).d();
-         if ($$3.t()) {
-            $$1.set($$2, new ciy($$3.s()));
+         try {
+            cma<?> $$7 = a($$6, arg.m($$5.getValue(), "top element"));
+            $$3.computeIfAbsent($$7.f(), $$0x -> ImmutableMap.builder()).put($$6, $$7);
+            $$4.put($$6, $$7);
+         } catch (IllegalArgumentException | JsonParseException var10) {
+            b.error("Parsing error loading recipe {}", $$6, var10);
          }
       }
 
-      return $$1;
+      this.c = $$3.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0x -> ((Builder)$$0x.getValue()).build()));
+      this.d = $$4.build();
+      b.info("Loaded {} recipes", $$3.size());
    }
 
-   default hn<cly> a() {
-      return hn.a();
+   public boolean a() {
+      return this.e;
    }
 
-   default boolean ai_() {
-      return false;
+   public <C extends bgj, T extends cma<C>> Optional<T> a(cmd<T> $$0, C $$1, cpl $$2) {
+      return this.c($$0).values().stream().filter($$2x -> $$2x.a($$1, $$2)).findFirst();
    }
 
-   default boolean i() {
-      return true;
+   public <C extends bgj, T extends cma<C>> Optional<Pair<aer, T>> a(cmd<T> $$0, C $$1, cpl $$2, @Nullable aer $$3) {
+      Map<aer, T> $$4 = this.c($$0);
+      if ($$3 != null) {
+         T $$5 = (T)$$4.get($$3);
+         if ($$5 != null && $$5.a($$1, $$2)) {
+            return Optional.of(Pair.of($$3, $$5));
+         }
+      }
+
+      return $$4.entrySet()
+         .stream()
+         .filter($$2x -> ((cma)$$2x.getValue()).a($$1, $$2))
+         .findFirst()
+         .map($$0x -> Pair.of((aer)$$0x.getKey(), (cma)$$0x.getValue()));
    }
 
-   default String c() {
-      return "";
+   public <C extends bgj, T extends cma<C>> List<T> a(cmd<T> $$0) {
+      return List.copyOf(this.c($$0).values());
    }
 
-   default ciy h() {
-      return new ciy(csn.cA);
+   public <C extends bgj, T extends cma<C>> List<T> b(cmd<T> $$0, C $$1, cpl $$2) {
+      return this.c($$0)
+         .values()
+         .stream()
+         .filter($$2x -> $$2x.a($$1, $$2))
+         .sorted(Comparator.comparing($$1x -> $$1x.a($$2.B_()).q()))
+         .collect(Collectors.toList());
    }
 
-   aer e();
+   private <C extends bgj, T extends cma<C>> Map<aer, T> c(cmd<T> $$0) {
+      return this.c.getOrDefault($$0, Collections.emptyMap());
+   }
 
-   cmd<?> aj_();
+   public <C extends bgj, T extends cma<C>> hn<cix> c(cmd<T> $$0, C $$1, cpl $$2) {
+      Optional<T> $$3 = this.a($$0, $$1, $$2);
+      if ($$3.isPresent()) {
+         return $$3.get().a($$1);
+      } else {
+         hn<cix> $$4 = hn.a($$1.b(), cix.b);
 
-   cme<?> f();
+         for (int $$5 = 0; $$5 < $$4.size(); $$5++) {
+            $$4.set($$5, $$1.a($$5));
+         }
 
-   default boolean j() {
-      hn<cly> $$0 = this.a();
-      return $$0.isEmpty() || $$0.stream().anyMatch($$0x -> $$0x.a().length == 0);
+         return $$4;
+      }
+   }
+
+   public Optional<? extends cma<?>> a(aer $$0) {
+      return Optional.ofNullable(this.d.get($$0));
+   }
+
+   public Collection<cma<?>> b() {
+      return this.c.values().stream().flatMap($$0 -> $$0.values().stream()).collect(Collectors.toSet());
+   }
+
+   public Stream<aer> d() {
+      return this.c.values().stream().flatMap($$0 -> $$0.keySet().stream());
+   }
+
+   public static cma<?> a(aer $$0, JsonObject $$1) {
+      String $$2 = arg.i($$1, "type");
+      return jb.u.b(new aer($$2)).orElseThrow(() -> new JsonSyntaxException("Invalid or unsupported recipe type '" + $$2 + "'")).a($$0, $$1);
+   }
+
+   public void a(Iterable<cma<?>> $$0) {
+      this.e = false;
+      Map<cmd<?>, Map<aer, cma<?>>> $$1 = Maps.newHashMap();
+      Builder<aer, cma<?>> $$2 = ImmutableMap.builder();
+      $$0.forEach($$2x -> {
+         Map<aer, cma<?>> $$3 = $$1.computeIfAbsent($$2x.f(), $$0xx -> Maps.newHashMap());
+         aer $$4 = $$2x.e();
+         cma<?> $$5 = $$3.put($$4, $$2x);
+         $$2.put($$4, $$2x);
+         if ($$5 != null) {
+            throw new IllegalStateException("Duplicate recipe ignored with ID " + $$4);
+         }
+      });
+      this.c = ImmutableMap.copyOf($$1);
+      this.d = $$2.build();
+   }
+
+   public static <C extends bgj, T extends cma<C>> cmb.a<C, T> b(final cmd<T> $$0) {
+      return new cmb.a<C, T>() {
+         @Nullable
+         private aer b;
+
+         @Override
+         public Optional<T> a(C $$0x, cpl $$1) {
+            cmb $$2 = $$1.q();
+            Optional<Pair<aer, T>> $$3 = $$2.a($$0, $$0, $$1, this.b);
+            if ($$3.isPresent()) {
+               Pair<aer, T> $$4 = $$3.get();
+               this.b = (aer)$$4.getFirst();
+               return Optional.of((T)$$4.getSecond());
+            } else {
+               return Optional.empty();
+            }
+         }
+      };
+   }
+
+   public interface a<C extends bgj, T extends cma<C>> {
+      Optional<T> a(C var1, cpl var2);
    }
 }

@@ -1,15 +1,10 @@
-import javax.annotation.Nullable;
-
-public class den extends deg {
-   private final float a;
-
-   public den(float $$0) {
-      this.a = $$0;
-   }
-
-   @Nullable
+public class den extends def {
    @Override
-   protected aeq<dna<?, ?>> a(aru $$0, boolean $$1) {
-      return $$0.i() < this.a ? or.y : or.x;
+   protected aeq<dmz<?, ?>> a(aru $$0, boolean $$1) {
+      if ($$0.a(10) == 0) {
+         return $$1 ? or.I : or.n;
+      } else {
+         return $$1 ? or.C : or.g;
+      }
    }
 }

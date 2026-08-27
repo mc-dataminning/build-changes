@@ -1,20 +1,34 @@
 public interface djm {
-   djo a();
+   djm a = new djm() {
+      @Override
+      public boolean a() {
+         return true;
+      }
 
-   int b();
+      @Override
+      public void a(djl $$0) {
+      }
 
-   boolean a(akk var1, djk var2, djk.a var3, ehe var4);
+      @Override
+      public void b(djl $$0) {
+      }
 
-   default djm.a c() {
-      return djm.a.a;
-   }
+      @Override
+      public boolean a(djj $$0, ehd $$1, djj.a $$2, djm.a $$3) {
+         return false;
+      }
+   };
 
-   public static enum a {
-      a,
-      b;
-   }
+   boolean a();
 
-   public interface b<T extends djm> {
-      T d();
+   void a(djl var1);
+
+   void b(djl var1);
+
+   boolean a(djj var1, ehd var2, djj.a var3, djm.a var4);
+
+   @FunctionalInterface
+   public interface a {
+      void visit(djl var1, ehd var2);
    }
 }

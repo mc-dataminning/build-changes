@@ -41,15 +41,15 @@ public class eo<T> implements ArgumentType<he.c<T>> {
       }
    }
 
-   public static he.c<bka> a(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
+   public static he.c<bjz> a(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, jc.b);
    }
 
-   public static he.c<dna<?, ?>> b(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
+   public static he.c<dmz<?, ?>> b(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, jc.as);
    }
 
-   public static he.c<duz> c(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
+   public static he.c<duy> c(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, jc.az);
    }
 
@@ -70,7 +70,7 @@ public class eo<T> implements ArgumentType<he.c<T>> {
       return a($$0, $$1, jc.O);
    }
 
-   public static he.c<cnf> g(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
+   public static he.c<cne> g(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, jc.r);
    }
 

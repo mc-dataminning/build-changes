@@ -11,7 +11,7 @@ public class aja implements ajb {
          @Override
          public ajb a(CommandContext<dr> $$0x) throws CommandSyntaxException {
             gu $$1 = fi.a($$0, $$0 + "Pos");
-            dcm $$2 = ((dr)$$0.getSource()).e().c_($$1);
+            dcl $$2 = ((dr)$$0.getSource()).e().c_($$1);
             if ($$2 == null) {
                throw aja.b.create();
             } else {
@@ -24,17 +24,17 @@ public class aja implements ajb {
             return $$0.then(ds.a("block").then($$1.apply(ds.a($$0 + "Pos", fi.a()))));
          }
       };
-   private final dcm c;
+   private final dcl c;
    private final gu d;
 
-   public aja(dcm $$0, gu $$1) {
+   public aja(dcl $$0, gu $$1) {
       this.c = $$0;
       this.d = $$1;
    }
 
    @Override
    public void a(qr $$0) {
-      dfa $$1 = this.c.k().a_(this.d);
+      dez $$1 = this.c.k().a_(this.d);
       this.c.a($$0);
       this.c.e();
       this.c.k().a(this.d, $$1, $$1, 3);

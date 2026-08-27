@@ -1,50 +1,43 @@
-import javax.annotation.Nullable;
-
 public class bsj extends bsh {
-   @Nullable
-   private gu p;
+   private boolean p;
 
-   public bsj(bja $$0, cpm $$1) {
+   public bsj(bja $$0, cpl $$1) {
       super($$0, $$1);
    }
 
    @Override
-   public eas a(gu $$0, int $$1) {
-      this.p = $$0;
-      return super.a($$0, $$1);
+   protected eat a(int $$0) {
+      this.p = this.a.ag() == bim.v;
+      this.o = new eau(this.p);
+      return new eat(this.o, $$0);
    }
 
    @Override
-   public eas a(bii $$0, int $$1) {
-      this.p = $$0.dk();
-      return super.a($$0, $$1);
+   protected boolean a() {
+      return this.p || this.a.bb();
    }
 
    @Override
-   public boolean a(bii $$0, double $$1) {
-      eas $$2 = this.a($$0, 0);
-      if ($$2 != null) {
-         return this.a($$2, $$1);
-      } else {
-         this.p = $$0.dk();
-         this.d = $$1;
-         return true;
-      }
+   protected ehd b() {
+      return new ehd(this.a.dp(), this.a.e(0.5), this.a.dv());
    }
 
    @Override
-   public void c() {
-      if (!this.l()) {
-         super.c();
-      } else {
-         if (this.p != null) {
-            if (!this.p.a(this.a.di(), (double)this.a.df())
-               && (!(this.a.dr() > (double)this.p.v()) || !gu.a((double)this.p.u(), this.a.dr(), (double)this.p.w()).a(this.a.di(), (double)this.a.df()))) {
-               this.a.E().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
-            } else {
-               this.p = null;
-            }
-         }
-      }
+   protected double a(ehd $$0) {
+      return $$0.d;
+   }
+
+   @Override
+   protected boolean a(ehd $$0, ehd $$1) {
+      return a(this.a, $$0, $$1, false);
+   }
+
+   @Override
+   public boolean a(gu $$0) {
+      return !this.b.a_($$0).i(this.b, $$0);
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

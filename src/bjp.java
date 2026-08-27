@@ -1,13 +1,5 @@
-import javax.annotation.Nullable;
-
 public interface bjp {
-   boolean g();
+   void a(aox var1);
 
-   void a(@Nullable aox var1);
-
-   default aov R_() {
-      return aow.lo;
-   }
-
-   boolean i();
+   boolean a();
 }

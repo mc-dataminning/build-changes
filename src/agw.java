@@ -19,12 +19,12 @@ public class agw {
       );
    }
 
-   private static void a(dr $$0, akl $$1, cpj $$2) {
+   private static void a(dr $$0, akl $$1, cpi $$2) {
       tf $$3 = tf.c("gameMode." + $$2.b());
       if ($$0.f() == $$1) {
          $$0.a(() -> tf.a("commands.gamemode.success.self", $$3), true);
       } else {
-         if ($$0.e().X().b(cpi.o)) {
+         if ($$0.e().X().b(cph.o)) {
             $$1.a(tf.a("gameMode.changed", $$3));
          }
 
@@ -32,7 +32,7 @@ public class agw {
       }
    }
 
-   private static int a(CommandContext<dr> $$0, Collection<akl> $$1, cpj $$2) {
+   private static int a(CommandContext<dr> $$0, Collection<akl> $$1, cpi $$2) {
       int $$3 = 0;
 
       for (akl $$4 : $$1) {

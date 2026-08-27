@@ -1,19 +1,15 @@
-public class cio extends cit {
-   private static final String a = "textures/entity/horse/";
-   private final int b;
-   private final String c;
-
-   public cio(int $$0, String $$1, cit.a $$2) {
-      super($$2);
-      this.b = $$0;
-      this.c = "textures/entity/horse/armor/horse_armor_" + $$1 + ".png";
+public class cio extends cis implements cjw {
+   public cio(cis.a $$0) {
+      super($$0);
    }
 
-   public aer h() {
-      return new aer(this.c);
-   }
-
-   public int i() {
-      return this.b;
+   @Override
+   public boolean a(cpl $$0, ddt $$1, boolean $$2, cbm $$3) {
+      if ($$1.a($$0x -> $$0x.a(false), $$2)) {
+         $$0.a(null, $$1.p(), aow.lJ, aox.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

@@ -1,37 +1,31 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Stream;
+public class gby extends gbl {
+   private static final float n = 1.0F;
+   private static final float o = 1.0F;
+   private final bwv p;
 
-public class gby<T> extends gbz<T> {
-   private final List<T> c;
-   private final Function<T, Stream<String>> d;
-   private gcc<T> e = gcc.a();
-
-   public gby(Function<T, Stream<String>> $$0, Function<T, Stream<aer>> $$1, List<T> $$2) {
-      super($$1, $$2);
-      this.c = $$2;
-      this.d = $$0;
+   public gby(bwv $$0) {
+      super(aow.wH, aox.g, gcc.t());
+      this.p = $$0;
+      this.k = gcc.a.b;
+      this.i = false;
+      this.j = 0;
    }
 
    @Override
-   public void a() {
-      super.a();
-      this.e = gcc.a(this.c, this.d);
+   public boolean s() {
+      return !this.p.aS();
    }
 
    @Override
-   protected List<T> a(String $$0) {
-      return this.e.search($$0);
-   }
-
-   @Override
-   protected List<T> a(String $$0, String $$1) {
-      List<T> $$2 = this.b.a($$0);
-      List<T> $$3 = this.b.b($$1);
-      List<T> $$4 = this.e.search($$1);
-      Iterator<T> $$5 = new gcb<T>($$3.iterator(), $$4.iterator(), this.a);
-      return ImmutableList.copyOf(new gca<T>($$2.iterator(), $$5, this.a));
+   public void q() {
+      if (!this.p.dF() && this.p.j() == null && this.p.gg()) {
+         this.f = (double)((float)this.p.dp());
+         this.g = (double)((float)this.p.dr());
+         this.h = (double)((float)this.p.dv());
+         this.d = 1.0F;
+         this.e = 1.0F;
+      } else {
+         this.n();
+      }
    }
 }

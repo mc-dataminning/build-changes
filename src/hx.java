@@ -35,11 +35,11 @@ public class hx extends hz {
       return new hx(a($$0.u()), a($$0.v()), a($$0.w()));
    }
 
-   public static hx a(cot $$0, int $$1) {
+   public static hx a(cos $$0, int $$1) {
       return new hx($$0.e, $$1, $$0.f);
    }
 
-   public static hx a(dir $$0) {
+   public static hx a(diq $$0) {
       return a($$0.dk());
    }
 
@@ -51,7 +51,7 @@ public class hx extends hz {
       return new hx(b($$0), c($$0), d($$0));
    }
 
-   public static hx a(dgw $$0) {
+   public static hx a(dgv $$0) {
       return a($$0.f(), $$0.al());
    }
 
@@ -191,8 +191,8 @@ public class hx extends hz {
       return this.j().b(8, 8, 8);
    }
 
-   public cot r() {
-      return new cot(this.a(), this.c());
+   public cos r() {
+      return new cos(this.a(), this.c());
    }
 
    public static long c(gu $$0) {
@@ -225,7 +225,7 @@ public class hx extends hz {
       return a($$2 - $$1, $$3 - $$1, $$4 - $$1, $$2 + $$1, $$3 + $$1, $$4 + $$1);
    }
 
-   public static Stream<hx> a(cot $$0, int $$1, int $$2, int $$3) {
+   public static Stream<hx> a(cos $$0, int $$1, int $$2, int $$3) {
       int $$4 = $$0.e;
       int $$5 = $$0.f;
       return a($$4 - $$1, $$2, $$5 - $$1, $$4 + $$1, $$3 - 1, $$5 + $$1);

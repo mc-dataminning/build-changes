@@ -13,9 +13,9 @@ public class afd extends anq {
    private static final Logger a = LogUtils.getLogger();
    private static final Gson b = new GsonBuilder().create();
    private af c = new af();
-   private final eck d;
+   private final ecj d;
 
-   public afd(eck $$0) {
+   public afd(ecj $$0) {
       super(b, "advancements");
       this.d = $$0;
    }

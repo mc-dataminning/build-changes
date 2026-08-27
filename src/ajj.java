@@ -33,7 +33,7 @@ public class ajj extends ajm<ajj> {
    public final boolean i = this.a("force-gamemode", false);
    public final boolean j = this.a("enforce-whitelist", false);
    public final bgn k = this.a("difficulty", a(bgn::a, bgn::a), bgn::e, bgn.b);
-   public final cpj l = this.a("gamemode", a(cpj::a, cpj::a), cpj::b, cpj.a);
+   public final cpi l = this.a("gamemode", a(cpi::a, cpi::a), cpi::b, cpi.a);
    public final String m = this.a("level-name", "world");
    public final int n = this.a("server-port", 25565);
    @Nullable
@@ -68,23 +68,23 @@ public class ajj extends ajm<ajj> {
    public final int Q = this.a("entity-broadcast-range-percentage", $$0x -> arp.a($$0x, 10, 1000), 100);
    public final String R = this.a("text-filtering-config", "");
    public final Optional<MinecraftServer.b> S;
-   public final cpa T;
+   public final coz T;
    public final ajm<ajj>.a<Integer> U = this.b("player-idle-timeout", 0);
    public final ajm<ajj>.a<Boolean> V = this.b("white-list", false);
    public final boolean W = this.a("enforce-secure-profile", true);
    public final boolean X = this.a("log-ips", true);
    private final ajj.a ad;
-   public final dlh Y;
+   public final dlg Y;
 
    public ajj(Properties $$0) {
       super($$0);
       String $$1 = this.a("level-seed", "");
       boolean $$2 = this.a("generate-structures", true);
-      long $$3 = dlh.a($$1).orElse(dlh.f());
-      this.Y = new dlh($$3, $$2, false);
+      long $$3 = dlg.a($$1).orElse(dlg.f());
+      this.Y = new dlg($$3, $$2, false);
       this.ad = new ajj.a(
          this.a("generator-settings", $$0x -> arg.a(!$$0x.isEmpty() ? $$0x : "{}"), new JsonObject()),
-         this.a("level-type", $$0x -> $$0x.toLowerCase(Locale.ROOT), dup.a.a().toString())
+         this.a("level-type", $$0x -> $$0x.toLowerCase(Locale.ROOT), duo.a.a().toString())
       );
       this.S = a(
          this.a("resource-pack", ""),
@@ -93,7 +93,7 @@ public class ajj extends ajm<ajj> {
          this.a("require-resource-pack", false),
          this.a("resource-pack-prompt", "")
       );
-      this.T = b(this.a("initial-enabled-packs", String.join(",", cqf.c.a().a())), this.a("initial-disabled-packs", String.join(",", cqf.c.a().b())));
+      this.T = b(this.a("initial-enabled-packs", String.join(",", cqe.c.a().a())), this.a("initial-disabled-packs", String.join(",", cqe.c.a().b())));
    }
 
    public static ajj a(Path $$0) {
@@ -145,14 +145,14 @@ public class ajj extends ajm<ajj> {
       }
    }
 
-   private static cpa b(String $$0, String $$1) {
+   private static coz b(String $$0, String $$1) {
       List<String> $$2 = ac.splitToList($$0);
       List<String> $$3 = ac.splitToList($$1);
-      return new cpa($$2, $$3);
+      return new coz($$2, $$3);
    }
 
-   private static cdv d(String $$0) {
-      return cdx.d.a(ac.splitToStream($$0).<aer>mapMulti(($$0x, $$1) -> {
+   private static cdu d(String $$0) {
+      return cdw.d.a(ac.splitToStream($$0).<aer>mapMulti(($$0x, $$1) -> {
          aer $$2 = aer.a($$0x);
          if ($$2 == null) {
             aa.warn("Invalid resource location {}, ignoring", $$0x);
@@ -162,19 +162,19 @@ public class ajj extends ajm<ajj> {
       }).collect(Collectors.toList()));
    }
 
-   public dle a(hs $$0) {
+   public dld a(hs $$0) {
       return this.ad.a($$0);
    }
 
    static record a(JsonObject a, String b) {
-      private static final Map<String, aeq<duo>> c = Map.of("default", dup.a, "largebiomes", dup.c);
+      private static final Map<String, aeq<dun>> c = Map.of("default", duo.a, "largebiomes", duo.c);
 
-      public dle a(hs $$0) {
-         hr<duo> $$1 = $$0.d(jc.aF);
-         he.c<duo> $$2 = $$1.b(dup.a)
+      public dld a(hs $$0) {
+         hr<dun> $$1 = $$0.d(jc.aF);
+         he.c<dun> $$2 = $$1.b(duo.a)
             .or(() -> $$1.h().findAny())
             .orElseThrow(() -> new IllegalStateException("Invalid datapack contents: can't find default preset"));
-         he<duo> $$3 = Optional.ofNullable(aer.a(this.b))
+         he<dun> $$3 = Optional.ofNullable(aer.a(this.b))
             .map($$0x -> aeq.a(jc.aF, $$0x))
             .or(() -> Optional.ofNullable(c.get(this.b)))
             .flatMap($$1::b)
@@ -182,12 +182,12 @@ public class ajj extends ajm<ajj> {
                ajj.aa.warn("Failed to parse level-type {}, defaulting to {}", this.b, $$2.g().a());
                return $$2;
             });
-         dle $$4 = $$3.a().a();
-         if ($$3.a(dup.b)) {
+         dld $$4 = $$3.a().a();
+         if ($$3.a(duo.b)) {
             aep<JsonElement> $$5 = aep.a(JsonOps.INSTANCE, $$0);
-            Optional<dtc> $$6 = dtc.a.parse(new Dynamic($$5, this.a())).resultOrPartial(ajj.aa::error);
+            Optional<dtb> $$6 = dtb.a.parse(new Dynamic($$5, this.a())).resultOrPartial(ajj.aa::error);
             if ($$6.isPresent()) {
-               return $$4.a($$0, new dke($$6.get()));
+               return $$4.a($$0, new dkd($$6.get()));
             }
          }
 

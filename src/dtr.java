@@ -1,26 +1,25 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dtr extends duf {
-   private static final dtr c = new dtr();
-   public static Codec<dtr> a = Codec.unit(() -> c);
+public class dtr extends due {
+   public static final Codec<dtr> a = RecordCodecBuilder.create($$0 -> $$0.group(dlp.b.fieldOf("predicate").forGetter($$0x -> $$0x.c)).apply($$0, dtr::new));
+   private final dlp c;
 
-   private dtr() {
+   private dtr(dlp $$0) {
+      this.c = $$0;
    }
 
-   public static dtr a() {
-      return c;
-   }
-
-   @Override
-   protected boolean a(due $$0, aru $$1, gu $$2) {
-      dud $$3 = $$0.e()
-         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
-      he<cqk> $$4 = $$0.d().s($$2);
-      return $$0.f().a($$4).a($$3);
+   public static dtr a(dlp $$0) {
+      return new dtr($$0);
    }
 
    @Override
-   public duh<?> b() {
-      return duh.e;
+   protected boolean a(dud $$0, aru $$1, gu $$2) {
+      return this.c.test($$0.d(), $$2);
+   }
+
+   @Override
+   public dug<?> b() {
+      return dug.a;
    }
 }

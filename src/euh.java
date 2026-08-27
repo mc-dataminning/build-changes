@@ -3,19 +3,19 @@ import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
 public class euh {
-   private final Consumer<esf> a;
-   private final Consumer<esf> b;
+   private final Consumer<ese> a;
+   private final Consumer<ese> b;
    @Nullable
    private eug c;
    @Nullable
-   private ewh d;
+   private ewi d;
 
-   public euh(Consumer<esf> $$0, Consumer<esf> $$1) {
+   public euh(Consumer<ese> $$0, Consumer<ese> $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
-   public void a(ewh $$0) {
+   public void a(ewi $$0) {
       this.d = $$0;
       eug $$1 = this.a();
       if ($$1 != null) {
@@ -36,7 +36,7 @@ public class euh {
          }
 
          if ($$1) {
-            eqm.O().ai().a(gbo.a(aow.yp, 1.0F));
+            eql.O().ai().a(gbx.a(aow.yu, 1.0F));
          }
       }
    }

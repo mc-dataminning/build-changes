@@ -1,10 +1,10 @@
 import java.util.Iterator;
 
 public interface aeg<T> {
-   default void a(int $$0, int $$1, int $$2, cmb<?> $$3, Iterator<T> $$4, int $$5) {
+   default void a(int $$0, int $$1, int $$2, cma<?> $$3, Iterator<T> $$4, int $$5) {
       int $$6 = $$0;
       int $$7 = $$1;
-      if ($$3 instanceof cmg $$8) {
+      if ($$3 instanceof cmf $$8) {
          $$6 = $$8.k();
          $$7 = $$8.l();
       }

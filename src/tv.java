@@ -2,7 +2,7 @@ import com.mojang.authlib.GameProfile;
 import java.time.Duration;
 import java.util.UUID;
 
-public record tv(UUID a, cbq b) {
+public record tv(UUID a, cbp b) {
    public ua a(Duration $$0) {
       return new ua.a(this.b.a(), () -> this.b.b().a($$0));
    }
@@ -23,13 +23,13 @@ public record tv(UUID a, cbq b) {
       return this.a;
    }
 
-   public cbq d() {
+   public cbp d() {
       return this.b;
    }
 
-   public static record a(UUID a, cbq.a b) {
+   public static record a(UUID a, cbp.a b) {
       public static tv.a a(si $$0) {
-         return new tv.a($$0.o(), new cbq.a($$0));
+         return new tv.a($$0.o(), new cbp.a($$0));
       }
 
       public static void a(si $$0, tv.a $$1) {
@@ -37,8 +37,8 @@ public record tv(UUID a, cbq b) {
          $$1.b.a($$0);
       }
 
-      public tv a(GameProfile $$0, arz $$1) throws cbq.b {
-         return new tv(this.a, cbq.a($$1, $$0.getId(), this.b));
+      public tv a(GameProfile $$0, arz $$1) throws cbp.b {
+         return new tv(this.a, cbp.a($$1, $$0.getId(), this.b));
       }
    }
 }

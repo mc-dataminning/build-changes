@@ -1,40 +1,32 @@
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-
-public class fsf extends fsn<cbw> {
-   private static final aer a = new aer("textures/entity/enderdragon/dragon_fireball.png");
-   private static final fnt f = fnt.e(a);
-
-   public fsf(fso.a $$0) {
-      super($$0);
+public class fsf extends fud<bum, fee<bum>> {
+   public fsf(fsx.a $$0) {
+      super($$0, new fee<>($$0.a(fhr.n)), 0.4F);
+      this.a(new fwh(this, $$0.f()));
    }
 
-   protected int a(cbw $$0, gu $$1) {
-      return 15;
+   public aer a(bum $$0) {
+      return $$0.gg();
    }
 
-   public void a(cbw $$0, float $$1, float $$2, elg $$3, fnl $$4, int $$5) {
-      $$3.a();
-      $$3.b(2.0F, 2.0F, 2.0F);
-      $$3.a(this.c.b());
-      $$3.a(a.d.rotationDegrees(180.0F));
-      elg.a $$6 = $$3.c();
-      Matrix4f $$7 = $$6.a();
-      Matrix3f $$8 = $$6.b();
-      elk $$9 = $$4.getBuffer(f);
-      a($$9, $$7, $$8, $$5, 0.0F, 0, 0, 1);
-      a($$9, $$7, $$8, $$5, 1.0F, 0, 1, 1);
-      a($$9, $$7, $$8, $$5, 1.0F, 1, 1, 0);
-      a($$9, $$7, $$8, $$5, 0.0F, 1, 0, 0);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected void a(bum $$0, elf $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.b(0.8F, 0.8F, 0.8F);
    }
 
-   private static void a(elk $$0, Matrix4f $$1, Matrix3f $$2, int $$3, float $$4, int $$5, int $$6, int $$7) {
-      $$0.a($$1, $$4 - 0.5F, (float)$$5 - 0.25F, 0.0F).a(255, 255, 255, 255).a((float)$$6, (float)$$7).c(fyc.d).b($$3).a($$2, 0.0F, 1.0F, 0.0F).e();
-   }
+   protected void a(bum $$0, elf $$1, float $$2, float $$3, float $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      float $$5 = $$0.E($$4);
+      if ($$5 > 0.0F) {
+         $$1.a(0.4F * $$5, 0.15F * $$5, 0.1F * $$5);
+         $$1.a(a.f.rotationDegrees(arp.j($$5, 0.0F, 90.0F)));
+         gu $$6 = $$0.dk();
 
-   public aer a(cbw $$0) {
-      return a;
+         for (cbm $$8 : $$0.dK().a(cbm.class, new egy($$6).c(2.0, 2.0, 2.0))) {
+            if ($$8.fB()) {
+               $$1.a(0.15F * $$5, 0.0F, 0.0F);
+               break;
+            }
+         }
+      }
    }
 }

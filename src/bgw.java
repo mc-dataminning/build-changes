@@ -6,7 +6,7 @@ import java.util.Optional;
 import java.util.function.BiConsumer;
 import org.slf4j.Logger;
 
-public class bgw extends ebi {
+public class bgw extends ebh {
    private static final Logger a = LogUtils.getLogger();
    private final long b;
    private int c;
@@ -14,8 +14,8 @@ public class bgw extends ebi {
    private boolean e = true;
    private final Map<aer, bgv> f = new Object2ObjectOpenHashMap();
 
-   public static ebi.a<bgw> a(long $$0) {
-      return new ebi.a<>(() -> new bgw($$0), $$1 -> a($$0, $$1), ass.m);
+   public static ebh.a<bgw> a(long $$0) {
+      return new ebh.a<>(() -> new bgw($$0), $$1 -> a($$0, $$1), ass.m);
    }
 
    public bgw(long $$0) {
@@ -106,7 +106,7 @@ public class bgw extends ebi {
       }
 
       @Override
-      public dkw e() {
+      public dkv e() {
          bgw.this.c();
          return this.c.e();
       }

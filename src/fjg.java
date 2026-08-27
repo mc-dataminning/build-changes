@@ -1,36 +1,85 @@
-import java.util.Locale;
+import com.mojang.authlib.exceptions.MinecraftClientException;
+import com.mojang.authlib.exceptions.MinecraftClientHttpException;
+import com.mojang.authlib.minecraft.UserApiService;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
+import com.mojang.datafixers.util.Unit;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
-public enum fjg {
-   a("hate_speech"),
-   b("terrorism_or_violent_extremism"),
-   c("child_sexual_exploitation_or_abuse"),
-   d("imminent_harm"),
-   e("non_consensual_intimate_imagery"),
-   f("harassment_or_bullying"),
-   g("defamation_impersonation_false_information"),
-   h("self_harm_or_suicide"),
-   i("alcohol_tobacco_drugs");
-
-   private final String j;
-   private final tf k;
-   private final tf l;
-
-   private fjg(String $$0) {
-      this.j = $$0.toUpperCase(Locale.ROOT);
-      String $$1 = "gui.abuseReport.reason." + $$0;
-      this.k = tf.c($$1);
-      this.l = tf.c($$1 + ".description");
+public interface fjg {
+   static fjg a(fjm $$0, UserApiService $$1) {
+      return new fjg.b($$0, $$1);
    }
 
-   public String a() {
-      return this.j;
+   CompletableFuture<Unit> a(UUID var1, fjo var2, AbuseReport var3);
+
+   boolean a();
+
+   default AbuseReportLimits b() {
+      return AbuseReportLimits.DEFAULTS;
    }
 
-   public tf b() {
-      return this.k;
+   public static class a extends ue {
+      public a(tf $$0, Throwable $$1) {
+         super($$0, $$1);
+      }
    }
 
-   public tf c() {
-      return this.l;
+   public static record b(fjm a, UserApiService b) implements fjg {
+      private static final tf c = tf.c("gui.abuseReport.send.service_unavailable");
+      private static final tf d = tf.c("gui.abuseReport.send.http_error");
+      private static final tf e = tf.c("gui.abuseReport.send.json_error");
+
+      @Override
+      public CompletableFuture<Unit> a(UUID $$0, fjo $$1, AbuseReport $$2) {
+         return CompletableFuture.supplyAsync(() -> {
+            AbuseReportRequest $$3 = new AbuseReportRequest(1, $$0, $$2, this.a.b(), this.a.c(), this.a.d(), $$1.a());
+
+            try {
+               this.b.reportAbuse($$3);
+               return Unit.INSTANCE;
+            } catch (MinecraftClientHttpException var7) {
+               tf $$5 = this.a(var7);
+               throw new CompletionException(new fjg.a($$5, var7));
+            } catch (MinecraftClientException var8) {
+               tf $$7 = this.a(var8);
+               throw new CompletionException(new fjg.a($$7, var8));
+            }
+         }, ac.g());
+      }
+
+      @Override
+      public boolean a() {
+         return this.b.canSendReports();
+      }
+
+      private tf a(MinecraftClientHttpException $$0) {
+         return tf.a("gui.abuseReport.send.error_message", $$0.getMessage());
+      }
+
+      private tf a(MinecraftClientException $$0) {
+         return switch ($$0.getType()) {
+            case SERVICE_UNAVAILABLE -> c;
+            case HTTP_ERROR -> d;
+            case JSON_ERROR -> e;
+            default -> throw new IncompatibleClassChangeError();
+         };
+      }
+
+      @Override
+      public AbuseReportLimits b() {
+         return this.b.getAbuseReportLimits();
+      }
+
+      public fjm c() {
+         return this.a;
+      }
+
+      public UserApiService d() {
+         return this.b;
+      }
    }
 }

@@ -1,26 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dlt implements dlq {
-   private final hz e;
-   private final ha f;
+public class dlt implements dlp {
    public static final Codec<dlt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(hz.v(16).optionalFieldOf("offset", hz.g).forGetter($$0x -> $$0x.e), ha.g.fieldOf("direction").forGetter($$0x -> $$0x.f))
-            .apply($$0, dlt::new)
+      $$0 -> $$0.group(hz.v(16).optionalFieldOf("offset", gu.b).forGetter($$0x -> $$0x.e)).apply($$0, dlt::new)
    );
+   private final hz e;
 
-   public dlt(hz $$0, ha $$1) {
+   public dlt(hz $$0) {
       this.e = $$0;
-      this.f = $$1;
    }
 
-   public boolean a(cqg $$0, gu $$1) {
-      gu $$2 = $$1.a(this.e);
-      return $$0.a_($$2).d($$0, $$2, this.f);
+   public boolean a(cqf $$0, gu $$1) {
+      return !$$0.r($$1.a(this.e));
    }
 
    @Override
-   public dlr<?> a() {
-      return dlr.d;
+   public dlq<?> a() {
+      return dlq.h;
    }
 }

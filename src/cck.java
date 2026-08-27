@@ -1,49 +1,54 @@
-public class cck extends cbt {
-   private int f = 200;
+public abstract class cck extends ccl implements ccb {
+   private static final adz<cix> b = aec.a(cck.class, aeb.h);
 
-   public cck(bim<? extends cck> $$0, cpm $$1) {
+   public cck(bim<? extends cck> $$0, cpl $$1) {
       super($$0, $$1);
    }
 
-   public cck(cpm $$0, biy $$1) {
-      super(bim.aR, $$1, $$0);
+   public cck(bim<? extends cck> $$0, double $$1, double $$2, double $$3, cpl $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
-   public cck(cpm $$0, double $$1, double $$2, double $$3) {
-      super(bim.aR, $$1, $$2, $$3, $$0);
+   public cck(bim<? extends cck> $$0, biy $$1, cpl $$2) {
+      super($$0, $$1, $$2);
    }
 
-   @Override
-   public void l() {
-      super.l();
-      if (this.dK().B && !this.b) {
-         this.dK().a(iv.N, this.dp(), this.dr(), this.dv(), 0.0, 0.0, 0.0);
+   public void a(cix $$0) {
+      if (!$$0.a(this.m()) || $$0.u()) {
+         this.al().b(b, $$0.c(1));
       }
    }
 
-   @Override
-   protected ciy p() {
-      return new ciy(cjb.uv);
+   protected abstract cis m();
+
+   protected cix o() {
+      return this.al().b(b);
    }
 
    @Override
-   protected void a(biy $$0) {
-      super.a($$0);
-      bhv $$1 = new bhv(bhx.x, this.f, 0);
-      $$0.b($$1, this.A());
+   public cix j() {
+      cix $$0 = this.o();
+      return $$0.b() ? new cix(this.m()) : $$0;
    }
 
    @Override
-   public void a(qr $$0) {
-      super.a($$0);
-      if ($$0.e("Duration")) {
-         this.f = $$0.h("Duration");
-      }
+   protected void a_() {
+      this.al().a(b, cix.b);
    }
 
    @Override
    public void b(qr $$0) {
       super.b($$0);
-      $$0.a("Duration", this.f);
+      cix $$1 = this.o();
+      if (!$$1.b()) {
+         $$0.a("Item", $$1.b(new qr()));
+      }
+   }
+
+   @Override
+   public void a(qr $$0) {
+      super.a($$0);
+      cix $$1 = cix.a($$0.p("Item"));
+      this.a($$1);
    }
 }

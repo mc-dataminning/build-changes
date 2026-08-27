@@ -15,14 +15,14 @@ public class akv implements akt {
    }
 
    @Override
-   public void a(cot $$0) {
+   public void a(cos $$0) {
       this.e = ac.b();
       this.d = this.e;
    }
 
    @Override
-   public void a(cot $$0, @Nullable dhb $$1) {
-      if ($$1 == dhb.n) {
+   public void a(cos $$0, @Nullable dha $$1) {
+      if ($$1 == dha.n) {
          this.c++;
       }
 

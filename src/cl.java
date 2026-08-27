@@ -4,7 +4,7 @@ import javax.annotation.Nullable;
 public record cl(qr b) {
    public static final Codec<cl> a = rl.i.xmap(cl::new, cl::a);
 
-   public boolean a(ciy $$0) {
+   public boolean a(cix $$0) {
       return this.a($$0.v());
    }
 
@@ -18,8 +18,8 @@ public record cl(qr b) {
 
    public static qr b(bii $$0) {
       qr $$1 = $$0.f(new qr());
-      if ($$0 instanceof cbn) {
-         ciy $$2 = ((cbn)$$0).fQ().f();
+      if ($$0 instanceof cbm) {
+         cix $$2 = ((cbm)$$0).fQ().f();
          if (!$$2.b()) {
             $$1.a("SelectedItem", $$2.b(new qr()));
          }

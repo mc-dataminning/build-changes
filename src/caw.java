@@ -1,75 +1,64 @@
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class caw implements coz {
-   private static final int a = 1200;
-   private int b;
+public class caw implements coh {
+   private final cbm a;
+   private coj b = new coj();
+   private int c;
+
+   public caw(cbm $$0) {
+      this.a = $$0;
+   }
 
    @Override
-   public int a(akk $$0, boolean $$1, boolean $$2) {
-      if ($$2 && $$0.X().b(cpi.e)) {
-         this.b--;
-         if (this.b > 0) {
-            return 0;
-         } else {
-            this.b = 1200;
-            cbn $$3 = $$0.i();
-            if ($$3 == null) {
-               return 0;
-            } else {
-               aru $$4 = $$0.z;
-               int $$5 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
-               int $$6 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
-               gu $$7 = $$3.dk().b($$5, 0, $$6);
-               int $$8 = 10;
-               if (!$$0.b($$7.u() - 10, $$7.w() - 10, $$7.u() + 10, $$7.w() + 10)) {
-                  return 0;
-               } else {
-                  if (cpx.a(bjt.c.a, $$0, $$7, bim.m)) {
-                     if ($$0.a($$7, 2)) {
-                        return this.a($$0, $$7);
-                     }
-
-                     if ($$0.a().a($$7, apw.f).b()) {
-                        return this.b($$0, $$7);
-                     }
-                  }
-
-                  return 0;
-               }
-            }
-         }
-      } else {
-         return 0;
-      }
+   public cbm ga() {
+      return this.a;
    }
 
-   private int a(akk $$0, gu $$1) {
-      int $$2 = 48;
-      if ($$0.w().a($$0x -> $$0x.a(buc.n), $$1, 48, bty.b.b) > 4L) {
-         List<bun> $$3 = $$0.a(bun.class, new egz($$1).c(48.0, 8.0, 48.0));
-         if ($$3.size() < 5) {
-            return this.a($$1, $$0);
-         }
-      }
-
-      return 0;
+   @Override
+   public void f(@Nullable cbm $$0) {
    }
 
-   private int b(akk $$0, gu $$1) {
-      int $$2 = 16;
-      List<bun> $$3 = $$0.a(bun.class, new egz($$1).c(16.0, 8.0, 16.0));
-      return $$3.size() < 1 ? this.a($$1, $$0) : 0;
+   @Override
+   public coj gc() {
+      return this.b;
    }
 
-   private int a(gu $$0, akk $$1) {
-      bun $$2 = bim.m.a((cpm)$$1);
-      if ($$2 == null) {
-         return 0;
-      } else {
-         $$2.a($$1, $$1.d_($$0), bjc.a, null, null);
-         $$2.a($$0, 0.0F, 0.0F);
-         $$1.a_($$2);
-         return 1;
-      }
+   @Override
+   public void a(coj $$0) {
+      this.b = $$0;
+   }
+
+   @Override
+   public void a(coi $$0) {
+      $$0.j();
+   }
+
+   @Override
+   public void l(cix $$0) {
+   }
+
+   @Override
+   public boolean gi() {
+      return this.a.dK().B;
+   }
+
+   @Override
+   public int q() {
+      return this.c;
+   }
+
+   @Override
+   public void t(int $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public boolean gd() {
+      return true;
+   }
+
+   @Override
+   public aov ge() {
+      return aow.yN;
    }
 }

@@ -7,19 +7,19 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class kv implements kt {
-   private final csm a;
+   private final csl a;
    private final List<kv.b> b = Lists.newArrayList();
 
-   private kv(csm $$0) {
+   private kv(csl $$0) {
       this.a = $$0;
    }
 
    @Override
-   public csm a() {
+   public csl a() {
       return this.a;
    }
 
-   public static kv a(csm $$0) {
+   public static kv a(csl $$0) {
       return new kv($$0);
    }
 
@@ -46,7 +46,7 @@ public class kv implements kt {
    }
 
    public JsonElement b() {
-      dfb<csm, dfa> $$0 = this.a.l();
+      dfa<csl, dez> $$0 = this.a.l();
       this.b.forEach($$1x -> $$1x.a($$0));
       JsonArray $$1 = new JsonArray();
       this.b.stream().map(kv.b::a).forEach($$1::add);
@@ -64,7 +64,7 @@ public class kv implements kt {
       }
 
       @Override
-      public void a(dfb<?, ?> $$0) {
+      public void a(dfa<?, ?> $$0) {
          this.a.a($$0);
       }
 
@@ -81,7 +81,7 @@ public class kv implements kt {
          this.a = $$0;
       }
 
-      public void a(dfb<?, ?> $$0) {
+      public void a(dfa<?, ?> $$0) {
       }
 
       public void a(JsonObject $$0) {

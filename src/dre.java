@@ -1,28 +1,39 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dre<P extends drd> {
-   public static final dre<dqy> a = a("blob_foliage_placer", dqy.a);
-   public static final dre<drj> b = a("spruce_foliage_placer", drj.a);
-   public static final dre<drh> c = a("pine_foliage_placer", drh.a);
-   public static final dre<dqx> d = a("acacia_foliage_placer", dqx.a);
-   public static final dre<dqz> e = a("bush_foliage_placer", dqz.c);
-   public static final dre<drc> f = a("fancy_foliage_placer", drc.c);
-   public static final dre<drf> g = a("jungle_foliage_placer", drf.a);
-   public static final dre<drg> h = a("mega_pine_foliage_placer", drg.a);
-   public static final dre<drb> i = a("dark_oak_foliage_placer", drb.a);
-   public static final dre<dri> j = a("random_spread_foliage_placer", dri.a);
-   public static final dre<dra> k = a("cherry_foliage_placer", dra.a);
-   private final Codec<P> l;
+public class dre extends drc {
+   public static final Codec<dre> a = RecordCodecBuilder.create(
+      $$0 -> b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, dre::new)
+   );
+   protected final int b;
 
-   private static <P extends drd> dre<P> a(String $$0, Codec<P> $$1) {
-      return hr.a(jb.X, $$0, new dre<>($$1));
+   public dre(bfv $$0, bfv $$1, int $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
-   private dre(Codec<P> $$0) {
-      this.l = $$0;
+   @Override
+   protected drd<?> a() {
+      return drd.g;
    }
 
-   public Codec<P> a() {
-      return this.l;
+   @Override
+   protected void a(cpr $$0, drc.b $$1, aru $$2, dqm $$3, int $$4, drc.a $$5, int $$6, int $$7, int $$8) {
+      int $$9 = $$5.c() ? $$6 : 1 + $$2.a(2);
+
+      for (int $$10 = $$8; $$10 >= $$8 - $$9; $$10--) {
+         int $$11 = $$7 + $$5.b() + 1 - $$10;
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$11, $$10, $$5.c());
+      }
+   }
+
+   @Override
+   public int a(aru $$0, int $$1, dqm $$2) {
+      return this.b;
+   }
+
+   @Override
+   protected boolean a(aru $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
    }
 }

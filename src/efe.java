@@ -1,45 +1,65 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import java.util.Set;
 
-public record efe(Optional<ch> b, gu c) implements efg {
-   private static final MapCodec<gu> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               aqy.a(Codec.INT, "offsetX", Integer.valueOf(0)).forGetter(hz::u),
-               aqy.a(Codec.INT, "offsetY", Integer.valueOf(0)).forGetter(hz::v),
-               aqy.a(Codec.INT, "offsetZ", Integer.valueOf(0)).forGetter(hz::w)
-            )
-            .apply($$0, gu::new)
+public record efe(he<csl> b, Optional<cy> c) implements eff {
+   public static final Codec<efe> a = aqy.a(
+      RecordCodecBuilder.create($$0 -> $$0.group(jb.f.r().fieldOf("block").forGetter(efe::c), aqy.a(cy.a, "properties").forGetter(efe::d)).apply($$0, efe::new)),
+      efe::a
    );
-   public static final Codec<efe> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(aqy.a(ch.a, "predicate").forGetter(efe::c), d.forGetter(efe::d)).apply($$0, efe::new)
-   );
+
+   private static DataResult<efe> a(efe $$0) {
+      return $$0.d()
+         .flatMap($$1 -> $$1.a($$0.c().a().l()))
+         .map($$1 -> DataResult.error(() -> "Block " + $$0.c() + " has no property" + $$1))
+         .orElse(DataResult.success($$0));
+   }
 
    @Override
-   public efh b() {
-      return efi.o;
+   public efg b() {
+      return efh.j;
    }
 
-   public boolean a(ech $$0) {
-      ehe $$1 = $$0.c(ees.f);
-      return $$1 != null
-         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
+   @Override
+   public Set<eeo<?>> a() {
+      return Set.of(eer.g);
    }
 
-   public static efg.a a(ch.a $$0) {
-      return () -> new efe($$0.b(), gu.b);
+   public boolean a(ecg $$0) {
+      dez $$1 = $$0.c(eer.g);
+      return $$1 != null && $$1.a(this.b) && (this.c.isEmpty() || this.c.get().a($$1));
    }
 
-   public static efg.a a(ch.a $$0, gu $$1) {
-      return () -> new efe($$0.b(), $$1);
+   public static efe.a a(csl $$0) {
+      return new efe.a($$0);
    }
 
-   public Optional<ch> c() {
+   public he<csl> c() {
       return this.b;
    }
 
-   public gu d() {
+   public Optional<cy> d() {
       return this.c;
+   }
+
+   public static class a implements eff.a {
+      private final he<csl> a;
+      private Optional<cy> b = Optional.empty();
+
+      public a(csl $$0) {
+         this.a = $$0.q();
+      }
+
+      public efe.a a(cy.a $$0) {
+         this.b = $$0.b();
+         return this;
+      }
+
+      @Override
+      public eff build() {
+         return new efe(this.a, this.b);
+      }
    }
 }

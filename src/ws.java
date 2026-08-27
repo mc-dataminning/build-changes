@@ -9,7 +9,7 @@ public class ws implements ux<wp> {
    private final byte f;
    private final byte g;
 
-   public ws(cbn $$0) {
+   public ws(cbm $$0) {
       this.a = $$0.ah();
       this.b = $$0.fP().getId();
       this.c = $$0.dp();

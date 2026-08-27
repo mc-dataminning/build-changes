@@ -1,4 +1,11 @@
-import com.mojang.serialization.Codec;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public record egi(Codec<? extends egj> a) {
+public interface egi {
+   @Nullable
+   String a(ecg var1);
+
+   egh a();
+
+   Set<eeo<?>> b();
 }

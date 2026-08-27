@@ -52,15 +52,15 @@ public class bdy {
       return $$1;
    }
 
-   private JsonElement a(List<Pair<dhb, bei<bea>>> $$0) {
+   private JsonElement a(List<Pair<dha, bei<bea>>> $$0) {
       JsonObject $$1 = new JsonObject();
       $$1.addProperty("durationNanosTotal", $$0.stream().mapToDouble($$0x -> (double)((bei)$$0x.getSecond()).f().toNanos()).sum());
       JsonArray $$2 = ac.a(new JsonArray(), $$1x -> $$1.add("status", $$1x));
 
-      for (Pair<dhb, bei<bea>> $$3 : $$0) {
+      for (Pair<dha, bei<bea>> $$3 : $$0) {
          bei<bea> $$4 = (bei<bea>)$$3.getSecond();
          JsonObject $$5 = ac.a(new JsonObject(), $$2::add);
-         $$5.addProperty("state", ((dhb)$$3.getFirst()).toString());
+         $$5.addProperty("state", ((dha)$$3.getFirst()).toString());
          $$5.addProperty("count", $$4.d());
          $$5.addProperty("durationNanosTotal", $$4.f().toNanos());
          $$5.addProperty("durationNanosAvg", $$4.f().toNanos() / (long)$$4.d());

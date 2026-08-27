@@ -1,17 +1,8 @@
-public interface evv extends etp, evy {
-   evv.a q();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   default boolean az_() {
-      return true;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
-
-      public boolean a() {
-         return this == c;
-      }
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface evv {
 }

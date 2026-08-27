@@ -1,25 +1,20 @@
-public class cob extends cnf {
-   public cob(cnf.a $$0, bin... $$1) {
-      super($$0, cng.i, $$1);
+public class cob extends cne {
+   protected cob(cne.a $$0, bin... $$1) {
+      super($$0, cnf.g, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 10 + $$0 * 7;
+      return 15;
    }
 
    @Override
    public int b(int $$0) {
-      return 50;
+      return super.a($$0) + 50;
    }
 
    @Override
-   public int a() {
-      return 3;
-   }
-
-   @Override
-   public boolean a(cnf $$0) {
-      return super.a($$0) && $$0 != cnj.E && $$0 != cnj.H;
+   public boolean a(cne $$0) {
+      return super.a($$0) && $$0 != cni.x;
    }
 }

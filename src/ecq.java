@@ -1,70 +1,81 @@
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Multimap;
-import java.util.Set;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
+import java.util.Collection;
+import java.util.List;
+import java.util.function.Function;
 
-public class ecq {
-   private final Multimap<String, String> a;
-   private final Supplier<String> b;
-   private final eeq c;
-   private final ecl d;
-   private final Set<ecj<?>> e;
-   @Nullable
-   private String f;
+public class ecq extends ecs {
+   public static final Codec<ecq> a = a(ecq::new);
 
-   public ecq(eeq $$0, ecl $$1) {
-      this(HashMultimap.create(), () -> "", $$0, $$1, ImmutableSet.of());
+   ecq(List<ecz> $$0, List<eff> $$1) {
+      super($$0, $$1);
    }
 
-   public ecq(Multimap<String, String> $$0, Supplier<String> $$1, eeq $$2, ecl $$3, Set<ecj<?>> $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   @Override
+   public eda a() {
+      return ecx.g;
    }
 
-   private String c() {
-      if (this.f == null) {
-         this.f = this.b.get();
+   @Override
+   protected ecr a(List<? extends ecr> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> b;
+         case 1 -> (ecr)$$0.get(0);
+         case 2 -> $$0.get(0).or($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (ecr $$3 : $$0) {
+            if ($$3.expand($$1, $$2)) {
+               return true;
+            }
+         }
+
+         return false;
+      };
+      };
+   }
+
+   @Override
+   public void a(ecp $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.d.size() - 1; $$1++) {
+         if (this.d.get($$1).e.isEmpty()) {
+            $$0.a("Unreachable entry!");
+         }
+      }
+   }
+
+   public static ecq.a a(ecz.a<?>... $$0) {
+      return new ecq.a($$0);
+   }
+
+   public static <E> ecq.a a(Collection<E> $$0, Function<E, ecz.a<?>> $$1) {
+      return new ecq.a($$0.stream().map($$1::apply).toArray(ecz.a[]::new));
+   }
+
+   public static class a extends ecz.a<ecq.a> {
+      private final Builder<ecz> a = ImmutableList.builder();
+
+      public a(ecz.a<?>... $$0) {
+         for (ecz.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
       }
 
-      return this.f;
-   }
+      protected ecq.a a() {
+         return this;
+      }
 
-   public void a(String $$0) {
-      this.a.put(this.c(), $$0);
-   }
+      @Override
+      public ecq.a a(ecz.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
 
-   public ecq b(String $$0) {
-      return new ecq(this.a, () -> this.c() + $$0, this.c, this.d, this.e);
-   }
-
-   public ecq a(String $$0, ecj<?> $$1) {
-      ImmutableSet<ecj<?>> $$2 = ImmutableSet.builder().addAll(this.e).add($$1).build();
-      return new ecq(this.a, () -> this.c() + $$0, this.c, this.d, $$2);
-   }
-
-   public boolean a(ecj<?> $$0) {
-      return this.e.contains($$0);
-   }
-
-   public Multimap<String, String> a() {
-      return ImmutableMultimap.copyOf(this.a);
-   }
-
-   public void a(eci $$0) {
-      this.c.a(this, $$0);
-   }
-
-   public ecl b() {
-      return this.d;
-   }
-
-   public ecq a(eeq $$0) {
-      return new ecq(this.a, this.b, $$0, this.d, this.e);
+      @Override
+      public ecz b() {
+         return new ecq(this.a.build(), this.f());
+      }
    }
 }

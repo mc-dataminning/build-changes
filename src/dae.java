@@ -1,13 +1,22 @@
-public class dae extends cri implements csd {
-   private final chm a;
+public class dae extends cwj implements csc {
+   private final chl i;
 
-   public dae(chm $$0, dez.d $$1) {
+   public dae(chl $$0, dey.d $$1) {
       super($$1);
-      this.a = $$0;
+      this.i = $$0;
+      this.k(
+         this.C
+            .b()
+            .a(a, Boolean.valueOf(false))
+            .a(b, Boolean.valueOf(false))
+            .a(c, Boolean.valueOf(false))
+            .a(d, Boolean.valueOf(false))
+            .a(e, Boolean.valueOf(false))
+      );
    }
 
    @Override
-   public chm a() {
-      return this.a;
+   public chl a() {
+      return this.i;
    }
 }

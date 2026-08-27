@@ -1,6 +1,6 @@
-public class cmx extends cnf {
-   public cmx(cnf.a $$0, bin... $$1) {
-      super($$0, cng.k, $$1);
+public class cmx extends cne {
+   public cmx(cne.a $$0, bin... $$1) {
+      super($$0, cnf.k, $$1);
    }
 
    @Override
@@ -11,5 +11,10 @@ public class cmx extends cnf {
    @Override
    public int b(int $$0) {
       return 50;
+   }
+
+   @Override
+   public boolean a(cne $$0) {
+      return $$0 instanceof cno ? false : super.a($$0);
    }
 }

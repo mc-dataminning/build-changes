@@ -26,7 +26,7 @@ public class akj {
    private int l;
    private int m;
    private int n;
-   private ehe o = ehe.b;
+   private ehd o = ehd.b;
    private int p;
    private int q;
    private List<bii> r = Collections.emptyList();
@@ -61,11 +61,11 @@ public class akj {
          this.r = $$0;
       }
 
-      if (this.g instanceof bxz $$1 && this.p % 10 == 0) {
-         ciy $$2 = $$1.z();
-         if ($$2.d() instanceof cjf) {
-            Integer $$3 = cjf.d($$2);
-            ebn $$4 = cjf.a($$3, this.f);
+      if (this.g instanceof bxy $$1 && this.p % 10 == 0) {
+         cix $$2 = $$1.z();
+         if ($$2.d() instanceof cje) {
+            Integer $$3 = cje.d($$2);
+            ebm $$4 = cje.a($$3, this.f);
             if ($$4 != null) {
                for (akl $$5 : this.f.v()) {
                   $$4.a($$5, $$2);
@@ -98,14 +98,14 @@ public class akj {
             this.q++;
             int $$10 = arp.d(this.g.dA() * 256.0F / 360.0F);
             int $$11 = arp.d(this.g.dC() * 256.0F / 360.0F);
-            ehe $$12 = this.g.dj();
+            ehd $$12 = this.g.dj();
             boolean $$13 = this.k.d($$12).g() >= 7.6293945E-6F;
             ux<?> $$14 = null;
             boolean $$15 = $$13 || this.p % 60 == 0;
             boolean $$16 = Math.abs($$10 - this.l) >= 1 || Math.abs($$11 - this.m) >= 1;
             boolean $$17 = false;
             boolean $$18 = false;
-            if (this.p > 0 || this.g instanceof cbt) {
+            if (this.p > 0 || this.g instanceof cbs) {
                long $$19 = this.k.a($$12);
                long $$20 = this.k.b($$12);
                long $$21 = this.k.c($$12);
@@ -116,7 +116,7 @@ public class akj {
                   $$14 = new aao(this.g);
                   $$17 = true;
                   $$18 = true;
-               } else if ((!$$15 || !$$16) && !(this.g instanceof cbt)) {
+               } else if ((!$$15 || !$$16) && !(this.g instanceof cbs)) {
                   if ($$15) {
                      $$14 = new yi.a(this.g.ah(), (short)((int)$$19), (short)((int)$$20), (short)((int)$$21), this.g.aA());
                      $$17 = true;
@@ -132,7 +132,7 @@ public class akj {
             }
 
             if ((this.i || this.g.au || this.g instanceof biy && ((biy)this.g).fu()) && this.p > 0) {
-               ehe $$23 = this.g.dn();
+               ehd $$23 = this.g.dn();
                double $$24 = $$23.g(this.o);
                if ($$24 > 1.0E-7 || $$24 > 0.0 && $$23.g() == 0.0) {
                   this.o = $$23;
@@ -203,7 +203,7 @@ public class akj {
 
       boolean $$3 = this.i;
       if (this.g instanceof biy) {
-         Collection<bkb> $$4 = ((biy)this.g).eP().b();
+         Collection<bka> $$4 = ((biy)this.g).eP().b();
          if (!$$4.isEmpty()) {
             $$1.accept(new aaq(this.g.ah(), $$4));
          }
@@ -219,10 +219,10 @@ public class akj {
       }
 
       if (this.g instanceof biy) {
-         List<Pair<bin, ciy>> $$5 = Lists.newArrayList();
+         List<Pair<bin, cix>> $$5 = Lists.newArrayList();
 
          for (bin $$6 : bin.values()) {
-            ciy $$7 = ((biy)this.g).c($$6);
+            cix $$7 = ((biy)this.g).c($$6);
             if (!$$7.b()) {
                $$5.add(Pair.of($$6, $$7.p()));
             }
@@ -255,7 +255,7 @@ public class akj {
       }
 
       if (this.g instanceof biy) {
-         Set<bkb> $$2 = ((biy)this.g).eP().a();
+         Set<bka> $$2 = ((biy)this.g).eP().a();
          if (!$$2.isEmpty()) {
             this.a(new aaq(this.g.ah(), $$2));
          }

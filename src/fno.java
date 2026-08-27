@@ -1,315 +1,168 @@
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.List;
-import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.annotation.Nullable;
-import org.joml.Matrix4f;
+import org.slf4j.Logger;
 
-public class fno implements AutoCloseable {
-   private static final String a = "minecraft:main";
-   private final ejs b;
-   private final anm c;
-   private final String d;
-   private final List<fnp> e = Lists.newArrayList();
-   private final Map<String, ejs> f = Maps.newHashMap();
-   private final List<ejs> g = Lists.newArrayList();
-   private Matrix4f h;
-   private int i;
-   private int j;
-   private float k;
-   private float l;
+public class fno extends anr<fno.a> {
+   private static final Logger a = LogUtils.getLogger();
+   private static final aer b = new aer("gpu_warnlist.json");
+   private ImmutableMap<String, String> c = ImmutableMap.of();
+   private boolean d;
+   private boolean e;
+   private boolean f;
 
-   public fno(fym $$0, anm $$1, ejs $$2, aer $$3) throws IOException, JsonSyntaxException {
-      this.c = $$1;
-      this.b = $$2;
-      this.k = 0.0F;
-      this.l = 0.0F;
-      this.i = $$2.e;
-      this.j = $$2.f;
-      this.d = $$3.toString();
-      this.b();
-      this.a($$0, $$3);
+   public boolean a() {
+      return !this.c.isEmpty();
    }
 
-   private void a(fym $$0, aer $$1) throws IOException, JsonSyntaxException {
-      ank $$2 = this.c.getResourceOrThrow($$1);
-
-      try {
-         try (Reader $$3 = $$2.e()) {
-            JsonObject $$4 = arg.a($$3);
-            if (arg.d($$4, "targets")) {
-               JsonArray $$5 = $$4.getAsJsonArray("targets");
-               int $$6 = 0;
-
-               for (JsonElement $$7 : $$5) {
-                  try {
-                     this.a($$7);
-                  } catch (Exception var14) {
-                     aeu $$9 = aeu.a(var14);
-                     $$9.a("targets[" + $$6 + "]");
-                     throw $$9;
-                  }
-
-                  $$6++;
-               }
-            }
-
-            if (arg.d($$4, "passes")) {
-               JsonArray $$10 = $$4.getAsJsonArray("passes");
-               int $$11 = 0;
-
-               for (JsonElement $$12 : $$10) {
-                  try {
-                     this.a($$0, $$12);
-                  } catch (Exception var13) {
-                     aeu $$14 = aeu.a(var13);
-                     $$14.a("passes[" + $$11 + "]");
-                     throw $$14;
-                  }
-
-                  $$11++;
-               }
-            }
-         }
-      } catch (Exception var16) {
-         aeu $$16 = aeu.a(var16);
-         $$16.b($$1.a() + " (" + $$2.b() + ")");
-         throw $$16;
-      }
+   public boolean b() {
+      return this.a() && !this.e;
    }
 
-   private void a(JsonElement $$0) throws aeu {
-      if (arg.a($$0)) {
-         this.a($$0.getAsString(), this.i, this.j);
-      } else {
-         JsonObject $$1 = arg.m($$0, "target");
-         String $$2 = arg.i($$1, "name");
-         int $$3 = arg.a($$1, "width", this.i);
-         int $$4 = arg.a($$1, "height", this.j);
-         if (this.f.containsKey($$2)) {
-            throw new aeu($$2 + " is already defined");
-         }
-
-         this.a($$2, $$3, $$4);
-      }
+   public void d() {
+      this.d = true;
    }
 
-   private void a(fym $$0, JsonElement $$1) throws IOException {
-      JsonObject $$2 = arg.m($$1, "pass");
-      String $$3 = arg.i($$2, "name");
-      String $$4 = arg.i($$2, "intarget");
-      String $$5 = arg.i($$2, "outtarget");
-      ejs $$6 = this.b($$4);
-      ejs $$7 = this.b($$5);
-      if ($$6 == null) {
-         throw new aeu("Input target '" + $$4 + "' does not exist");
-      } else if ($$7 == null) {
-         throw new aeu("Output target '" + $$5 + "' does not exist");
-      } else {
-         fnp $$8 = this.a($$3, $$6, $$7);
-         JsonArray $$9 = arg.a($$2, "auxtargets", null);
-         if ($$9 != null) {
-            int $$10 = 0;
-
-            for (JsonElement $$11 : $$9) {
-               try {
-                  JsonObject $$12 = arg.m($$11, "auxtarget");
-                  String $$13 = arg.i($$12, "name");
-                  String $$14 = arg.i($$12, "id");
-                  boolean $$15;
-                  String $$16;
-                  if ($$14.endsWith(":depth")) {
-                     $$15 = true;
-                     $$16 = $$14.substring(0, $$14.lastIndexOf(58));
-                  } else {
-                     $$15 = false;
-                     $$16 = $$14;
-                  }
-
-                  ejs $$19 = this.b($$16);
-                  if ($$19 == null) {
-                     if ($$15) {
-                        throw new aeu("Render target '" + $$16 + "' can't be used as depth buffer");
-                     }
-
-                     aer $$20 = new aer("textures/effect/" + $$16 + ".png");
-                     this.c.getResource($$20).orElseThrow(() -> new aeu("Render target or texture '" + $$16 + "' does not exist"));
-                     RenderSystem.setShaderTexture(0, $$20);
-                     $$0.a($$20);
-                     fxw $$21 = $$0.b($$20);
-                     int $$22 = arg.o($$12, "width");
-                     int $$23 = arg.o($$12, "height");
-                     boolean $$24 = arg.k($$12, "bilinear");
-                     if ($$24) {
-                        RenderSystem.texParameter(3553, 10241, 9729);
-                        RenderSystem.texParameter(3553, 10240, 9729);
-                     } else {
-                        RenderSystem.texParameter(3553, 10241, 9728);
-                        RenderSystem.texParameter(3553, 10240, 9728);
-                     }
-
-                     $$8.a($$13, $$21::a, $$22, $$23);
-                  } else if ($$15) {
-                     $$8.a($$13, $$19::g, $$19.c, $$19.d);
-                  } else {
-                     $$8.a($$13, $$19::f, $$19.c, $$19.d);
-                  }
-               } catch (Exception var26) {
-                  aeu $$26 = aeu.a(var26);
-                  $$26.a("auxtargets[" + $$10 + "]");
-                  throw $$26;
-               }
-
-               $$10++;
-            }
-         }
-
-         JsonArray $$27 = arg.a($$2, "uniforms", null);
-         if ($$27 != null) {
-            int $$28 = 0;
-
-            for (JsonElement $$29 : $$27) {
-               try {
-                  this.b($$29);
-               } catch (Exception var25) {
-                  aeu $$31 = aeu.a(var25);
-                  $$31.a("uniforms[" + $$28 + "]");
-                  throw $$31;
-               }
-
-               $$28++;
-            }
-         }
-      }
+   public void e() {
+      this.e = true;
    }
 
-   private void b(JsonElement $$0) throws aeu {
-      JsonObject $$1 = arg.m($$0, "uniform");
-      String $$2 = arg.i($$1, "name");
-      ekx $$3 = this.e.get(this.e.size() - 1).b().a($$2);
-      if ($$3 == null) {
-         throw new aeu("Uniform '" + $$2 + "' does not exist");
-      } else {
-         float[] $$4 = new float[4];
-         int $$5 = 0;
-
-         for (JsonElement $$7 : arg.v($$1, "values")) {
-            try {
-               $$4[$$5] = arg.e($$7, "value");
-            } catch (Exception var12) {
-               aeu $$9 = aeu.a(var12);
-               $$9.a("values[" + $$5 + "]");
-               throw $$9;
-            }
-
-            $$5++;
-         }
-
-         switch ($$5) {
-            case 0:
-            default:
-               break;
-            case 1:
-               $$3.a($$4[0]);
-               break;
-            case 2:
-               $$3.a($$4[0], $$4[1]);
-               break;
-            case 3:
-               $$3.a($$4[0], $$4[1], $$4[2]);
-               break;
-            case 4:
-               $$3.a($$4[0], $$4[1], $$4[2], $$4[3]);
-         }
-      }
+   public void f() {
+      this.e = true;
+      this.f = true;
    }
 
-   public ejs a(String $$0) {
-      return this.f.get($$0);
+   public boolean g() {
+      return this.d && !this.e;
    }
 
-   public void a(String $$0, int $$1, int $$2) {
-      ejs $$3 = new ejt($$1, $$2, true, eqm.a);
-      $$3.a(0.0F, 0.0F, 0.0F, 0.0F);
-      this.f.put($$0, $$3);
-      if ($$1 == this.i && $$2 == this.j) {
-         this.g.add($$3);
-      }
+   public boolean h() {
+      return this.f;
    }
 
-   @Override
-   public void close() {
-      for (ejs $$0 : this.f.values()) {
-         $$0.a();
-      }
-
-      for (fnp $$1 : this.e) {
-         $$1.close();
-      }
-
-      this.e.clear();
-   }
-
-   public fnp a(String $$0, ejs $$1, ejs $$2) throws IOException {
-      fnp $$3 = new fnp(this.c, $$0, $$1, $$2);
-      this.e.add(this.e.size(), $$3);
-      return $$3;
-   }
-
-   private void b() {
-      this.h = new Matrix4f().setOrtho(0.0F, (float)this.b.c, 0.0F, (float)this.b.d, 0.1F, 1000.0F);
-   }
-
-   public void a(int $$0, int $$1) {
-      this.i = this.b.c;
-      this.j = this.b.d;
-      this.b();
-
-      for (fnp $$2 : this.e) {
-         $$2.a(this.h);
-      }
-
-      for (ejs $$3 : this.g) {
-         $$3.a($$0, $$1, eqm.a);
-      }
-   }
-
-   public void a(float $$0) {
-      if ($$0 < this.l) {
-         this.k = this.k + (1.0F - this.l);
-         this.k += $$0;
-      } else {
-         this.k = this.k + ($$0 - this.l);
-      }
-
-      this.l = $$0;
-
-      while (this.k > 20.0F) {
-         this.k -= 20.0F;
-      }
-
-      for (fnp $$1 : this.e) {
-         $$1.a(this.k / 20.0F);
-      }
-   }
-
-   public final String a() {
-      return this.d;
+   public void i() {
+      this.d = false;
+      this.e = false;
+      this.f = false;
    }
 
    @Nullable
-   private ejs b(@Nullable String $$0) {
-      if ($$0 == null) {
-         return null;
-      } else {
-         return $$0.equals("minecraft:main") ? this.b : this.f.get($$0);
+   public String j() {
+      return (String)this.c.get("renderer");
+   }
+
+   @Nullable
+   public String k() {
+      return (String)this.c.get("version");
+   }
+
+   @Nullable
+   public String l() {
+      return (String)this.c.get("vendor");
+   }
+
+   @Nullable
+   public String m() {
+      StringBuilder $$0 = new StringBuilder();
+      this.c.forEach(($$1, $$2) -> $$0.append($$1).append(": ").append($$2));
+      return $$0.length() == 0 ? null : $$0.toString();
+   }
+
+   protected fno.a a(anm $$0, bdh $$1) {
+      List<Pattern> $$2 = Lists.newArrayList();
+      List<Pattern> $$3 = Lists.newArrayList();
+      List<Pattern> $$4 = Lists.newArrayList();
+      $$1.a();
+      JsonObject $$5 = c($$0, $$1);
+      if ($$5 != null) {
+         $$1.a("compile_regex");
+         a($$5.getAsJsonArray("renderer"), $$2);
+         a($$5.getAsJsonArray("version"), $$3);
+         a($$5.getAsJsonArray("vendor"), $$4);
+         $$1.c();
+      }
+
+      $$1.b();
+      return new fno.a($$2, $$3, $$4);
+   }
+
+   protected void a(fno.a $$0, anm $$1, bdh $$2) {
+      this.c = $$0.a();
+   }
+
+   private static void a(JsonArray $$0, List<Pattern> $$1) {
+      $$0.forEach($$1x -> $$1.add(Pattern.compile($$1x.getAsString(), 2)));
+   }
+
+   @Nullable
+   private static JsonObject c(anm $$0, bdh $$1) {
+      $$1.a("parse_json");
+      JsonObject $$2 = null;
+
+      try (Reader $$3 = $$0.openAsReader(b)) {
+         $$2 = JsonParser.parseReader($$3).getAsJsonObject();
+      } catch (JsonSyntaxException | IOException var8) {
+         a.warn("Failed to load GPU warnlist");
+      }
+
+      $$1.c();
+      return $$2;
+   }
+
+   protected static final class a {
+      private final List<Pattern> a;
+      private final List<Pattern> b;
+      private final List<Pattern> c;
+
+      a(List<Pattern> $$0, List<Pattern> $$1, List<Pattern> $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      private static String a(List<Pattern> $$0, String $$1) {
+         List<String> $$2 = Lists.newArrayList();
+
+         for (Pattern $$3 : $$0) {
+            Matcher $$4 = $$3.matcher($$1);
+
+            while ($$4.find()) {
+               $$2.add($$4.group());
+            }
+         }
+
+         return String.join(", ", $$2);
+      }
+
+      ImmutableMap<String, String> a() {
+         Builder<String, String> $$0 = new Builder();
+         String $$1 = a(this.a, ejy.c());
+         if (!$$1.isEmpty()) {
+            $$0.put("renderer", $$1);
+         }
+
+         String $$2 = a(this.b, ejy.d());
+         if (!$$2.isEmpty()) {
+            $$0.put("version", $$2);
+         }
+
+         String $$3 = a(this.c, ejy.a());
+         if (!$$3.isEmpty()) {
+            $$0.put("vendor", $$3);
+         }
+
+         return $$0.build();
       }
    }
 }

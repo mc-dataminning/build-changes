@@ -89,7 +89,7 @@ public class el implements ArgumentType<el.a> {
 
    @FunctionalInterface
    public interface a {
-      void apply(eic var1, eic var2) throws CommandSyntaxException;
+      void apply(eib var1, eib var2) throws CommandSyntaxException;
    }
 
    @FunctionalInterface
@@ -97,7 +97,7 @@ public class el implements ArgumentType<el.a> {
       int apply(int var1, int var2) throws CommandSyntaxException;
 
       @Override
-      default void apply(eic $$0, eic $$1) throws CommandSyntaxException {
+      default void apply(eib $$0, eib $$1) throws CommandSyntaxException {
          $$0.b(this.apply($$0.b(), $$1.b()));
       }
    }

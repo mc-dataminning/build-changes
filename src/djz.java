@@ -1,181 +1,108 @@
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
-public abstract class djz {
-   public static djz.b a(int $$0, int $$1) {
-      return new djz.b($$0 - 1, $$1 + 1);
+public class djz extends dgw {
+   public static final Codec<djz> c = RecordCodecBuilder.create($$0 -> $$0.group(aep.d(cqq.b)).apply($$0, $$0.stable(djz::new)));
+   private static final int h = 2;
+   private static final List<dez> i = StreamSupport.stream(jb.f.spliterator(), false).flatMap($$0 -> $$0.l().a().stream()).collect(Collectors.toList());
+   private static final int j = arp.f(arp.c((float)i.size()));
+   private static final int k = arp.f((float)i.size() / (float)j);
+   protected static final dez d = csm.a.n();
+   protected static final dez e = csm.hW.n();
+   public static final int f = 70;
+   public static final int g = 60;
+
+   public djz(he.c<cqj> $$0) {
+      super(new cqu($$0));
    }
 
-   public static djz.b b(int $$0, int $$1) {
-      return new djz.b($$0, $$1);
+   @Override
+   protected Codec<? extends dgw> a() {
+      return c;
    }
 
-   public static djz a(int $$0) {
-      return new djz.c($$0, false);
+   @Override
+   public void a(akr $$0, cqd $$1, dkw $$2, dgv $$3) {
    }
 
-   public static djz b(int $$0) {
-      return new djz.c($$0 + 1, false);
-   }
+   @Override
+   public void a(cqf $$0, dgv $$1, cqd $$2) {
+      gu.a $$3 = new gu.a();
+      cos $$4 = $$1.f();
+      int $$5 = $$4.e;
+      int $$6 = $$4.f;
 
-   public static djz c(int $$0) {
-      return new djz.c($$0, true);
-   }
-
-   public static djz d(int $$0) {
-      return new djz.c($$0 - 1, true);
-   }
-
-   public static djz a() {
-      return djz.a.a;
-   }
-
-   public static djz a(OptionalInt $$0, OptionalInt $$1) {
-      if ($$0.isPresent() && $$1.isPresent()) {
-         return b($$0.getAsInt(), $$1.getAsInt());
-      } else if ($$0.isPresent()) {
-         return c($$0.getAsInt());
-      } else {
-         return $$1.isPresent() ? a($$1.getAsInt()) : a();
+      for (int $$7 = 0; $$7 < 16; $$7++) {
+         for (int $$8 = 0; $$8 < 16; $$8++) {
+            int $$9 = hx.a($$5, $$7);
+            int $$10 = hx.a($$6, $$8);
+            $$0.a($$3.d($$9, 60, $$10), e, 2);
+            dez $$11 = a($$9, $$10);
+            $$0.a($$3.d($$9, 70, $$10), $$11, 2);
+         }
       }
    }
 
-   public abstract OptionalInt b();
-
-   public abstract OptionalInt c();
-
-   public abstract OptionalInt d();
-
-   public djz a(OptionalInt $$0) {
-      return a($$0, this.b());
+   @Override
+   public CompletableFuture<dgv> a(Executor $$0, dlk $$1, dkw $$2, cqd $$3, dgv $$4) {
+      return CompletableFuture.completedFuture($$4);
    }
 
-   public djz b(OptionalInt $$0) {
-      return a(this.c(), $$0);
+   @Override
+   public int a(int $$0, int $$1, dki.a $$2, cpn $$3, dkw $$4) {
+      return 0;
    }
 
-   public static Optional<djz> a(cps $$0, gu $$1, int $$2, Predicate<dfa> $$3, Predicate<dfa> $$4) {
-      gu.a $$5 = $$1.j();
-      if (!$$0.a($$1, $$3)) {
-         return Optional.empty();
-      } else {
-         int $$6 = $$1.v();
-         OptionalInt $$7 = a($$0, $$2, $$3, $$4, $$5, $$6, ha.b);
-         OptionalInt $$8 = a($$0, $$2, $$3, $$4, $$5, $$6, ha.a);
-         return Optional.of(a($$8, $$7));
-      }
+   @Override
+   public cpx a(int $$0, int $$1, cpn $$2, dkw $$3) {
+      return new cpx(0, new dez[0]);
    }
 
-   private static OptionalInt a(cps $$0, int $$1, Predicate<dfa> $$2, Predicate<dfa> $$3, gu.a $$4, int $$5, ha $$6) {
-      $$4.q($$5);
-
-      for (int $$7 = 1; $$7 < $$1 && $$0.a($$4, $$2); $$7++) {
-         $$4.c($$6);
-      }
-
-      return $$0.a($$4, $$3) ? OptionalInt.of($$4.v()) : OptionalInt.empty();
+   @Override
+   public void a(List<String> $$0, dkw $$1, gu $$2) {
    }
 
-   public static final class a extends djz {
-      static final djz.a a = new djz.a();
-
-      private a() {
-      }
-
-      @Override
-      public OptionalInt b() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public OptionalInt c() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public OptionalInt d() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public String toString() {
-         return "C(-)";
-      }
-   }
-
-   public static final class b extends djz {
-      private final int a;
-      private final int b;
-
-      protected b(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-         if (this.g() < 0) {
-            throw new IllegalArgumentException("Column of negative height: " + this);
+   public static dez a(int $$0, int $$1) {
+      dez $$2 = d;
+      if ($$0 > 0 && $$1 > 0 && $$0 % 2 != 0 && $$1 % 2 != 0) {
+         $$0 /= 2;
+         $$1 /= 2;
+         if ($$0 <= j && $$1 <= k) {
+            int $$3 = arp.a($$0 * j + $$1);
+            if ($$3 < i.size()) {
+               $$2 = i.get($$3);
+            }
          }
       }
 
-      @Override
-      public OptionalInt b() {
-         return OptionalInt.of(this.b);
-      }
-
-      @Override
-      public OptionalInt c() {
-         return OptionalInt.of(this.a);
-      }
-
-      @Override
-      public OptionalInt d() {
-         return OptionalInt.of(this.g());
-      }
-
-      public int e() {
-         return this.b;
-      }
-
-      public int f() {
-         return this.a;
-      }
-
-      public int g() {
-         return this.b - this.a - 1;
-      }
-
-      @Override
-      public String toString() {
-         return "C(" + this.b + "-" + this.a + ")";
-      }
+      return $$2;
    }
 
-   public static final class c extends djz {
-      private final int a;
-      private final boolean b;
+   @Override
+   public void a(akr $$0, long $$1, dkw $$2, cql $$3, cqd $$4, dgv $$5, dke.a $$6) {
+   }
 
-      public c(int $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   @Override
+   public void a(akr $$0) {
+   }
 
-      @Override
-      public OptionalInt b() {
-         return this.b ? OptionalInt.empty() : OptionalInt.of(this.a);
-      }
+   @Override
+   public int f() {
+      return 0;
+   }
 
-      @Override
-      public OptionalInt c() {
-         return this.b ? OptionalInt.of(this.a) : OptionalInt.empty();
-      }
+   @Override
+   public int d() {
+      return 384;
+   }
 
-      @Override
-      public OptionalInt d() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public String toString() {
-         return this.b ? "C(" + this.a + "-)" : "C(-" + this.a + ")";
-      }
+   @Override
+   public int e() {
+      return 63;
    }
 }

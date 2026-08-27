@@ -1,79 +1,129 @@
-import it.unimi.dsi.fastutil.objects.ObjectArraySet;
-import java.util.Set;
-import java.util.stream.Stream;
-
-public record dfp(String p, boolean q, czz r, aov s, aov t, aov u, aov v, aov w, aov x, aov y, aov z) {
-   private static final Set<dfp> A = new ObjectArraySet();
-   public static final dfp a = a(new dfp("iron", false, czz.g, aow.lK, aow.lL, aow.lS, aow.lT, aow.nd, aow.ne, aow.xm, aow.xn));
-   public static final dfp b = a(new dfp("gold", false, czz.g, aow.lK, aow.lL, aow.lS, aow.lT, aow.nd, aow.ne, aow.xm, aow.xn));
-   public static final dfp c = a(new dfp("stone", true, czz.f, aow.lK, aow.lL, aow.lS, aow.lT, aow.xr, aow.xs, aow.xm, aow.xn));
-   public static final dfp d = a(new dfp("polished_blackstone", true, czz.f, aow.lK, aow.lL, aow.lS, aow.lT, aow.xr, aow.xs, aow.xm, aow.xn));
-   public static final dfp e = a(new dfp("oak"));
-   public static final dfp f = a(new dfp("spruce"));
-   public static final dfp g = a(new dfp("birch"));
-   public static final dfp h = a(new dfp("acacia"));
-   public static final dfp i = a(new dfp("cherry", true, czz.aQ, aow.dX, aow.dY, aow.dZ, aow.ea, aow.ed, aow.ee, aow.eb, aow.ec));
-   public static final dfp j = a(new dfp("jungle"));
-   public static final dfp k = a(new dfp("dark_oak"));
-   public static final dfp l = a(new dfp("crimson", true, czz.aP, aow.pf, aow.pg, aow.ph, aow.pi, aow.pl, aow.pm, aow.pj, aow.pk));
-   public static final dfp m = a(new dfp("warped", true, czz.aP, aow.pf, aow.pg, aow.ph, aow.pi, aow.pl, aow.pm, aow.pj, aow.pk));
-   public static final dfp n = a(new dfp("mangrove"));
-   public static final dfp o = a(new dfp("bamboo", true, czz.aO, aow.aZ, aow.ba, aow.bb, aow.bc, aow.bf, aow.bg, aow.bd, aow.be));
-
-   public dfp(String $$0) {
-      this($$0, true, czz.b, aow.As, aow.At, aow.Au, aow.Av, aow.Ay, aow.Az, aow.Aw, aow.Ax);
-   }
-
-   private static dfp a(dfp $$0) {
-      A.add($$0);
-      return $$0;
-   }
-
-   public static Stream<dfp> a() {
-      return A.stream();
-   }
-
-   public String b() {
-      return this.p;
-   }
-
-   public boolean c() {
-      return this.q;
-   }
-
-   public czz d() {
-      return this.r;
-   }
-
-   public aov e() {
-      return this.s;
-   }
-
-   public aov f() {
-      return this.t;
-   }
-
-   public aov g() {
-      return this.u;
-   }
-
-   public aov h() {
-      return this.v;
-   }
-
-   public aov i() {
-      return this.w;
-   }
-
-   public aov j() {
-      return this.x;
-   }
-
-   public aov k() {
-      return this.y;
-   }
-
-   public aov l() {
-      return this.z;
-   }
+public class dfp {
+   public static final dfq a = dfq.a("attached");
+   public static final dfq b = dfq.a("bottom");
+   public static final dfq c = dfq.a("conditional");
+   public static final dfq d = dfq.a("disarmed");
+   public static final dfq e = dfq.a("drag");
+   public static final dfq f = dfq.a("enabled");
+   public static final dfq g = dfq.a("extended");
+   public static final dfq h = dfq.a("eye");
+   public static final dfq i = dfq.a("falling");
+   public static final dfq j = dfq.a("hanging");
+   public static final dfq k = dfq.a("has_bottle_0");
+   public static final dfq l = dfq.a("has_bottle_1");
+   public static final dfq m = dfq.a("has_bottle_2");
+   public static final dfq n = dfq.a("has_record");
+   public static final dfq o = dfq.a("has_book");
+   public static final dfq p = dfq.a("inverted");
+   public static final dfq q = dfq.a("in_wall");
+   public static final dfq r = dfq.a("lit");
+   public static final dfq s = dfq.a("locked");
+   public static final dfq t = dfq.a("occupied");
+   public static final dfq u = dfq.a("open");
+   public static final dfq v = dfq.a("persistent");
+   public static final dfq w = dfq.a("powered");
+   public static final dfq x = dfq.a("short");
+   public static final dfq y = dfq.a("signal_fire");
+   public static final dfq z = dfq.a("snowy");
+   public static final dfq A = dfq.a("triggered");
+   public static final dfq B = dfq.a("unstable");
+   public static final dfq C = dfq.a("waterlogged");
+   public static final dfq D = dfq.a("berries");
+   public static final dfq E = dfq.a("bloom");
+   public static final dfq F = dfq.a("shrieking");
+   public static final dfq G = dfq.a("can_summon");
+   public static final dfx<ha.a> H = dfx.a("axis", ha.a.class, ha.a.a, ha.a.c);
+   public static final dfx<ha.a> I = dfx.a("axis", ha.a.class);
+   public static final dfq J = dfq.a("up");
+   public static final dfq K = dfq.a("down");
+   public static final dfq L = dfq.a("north");
+   public static final dfq M = dfq.a("east");
+   public static final dfq N = dfq.a("south");
+   public static final dfq O = dfq.a("west");
+   public static final dft P = dft.a("facing", ha.c, ha.f, ha.d, ha.e, ha.b, ha.a);
+   public static final dft Q = dft.a("facing", $$0 -> $$0 != ha.b);
+   public static final dft R = dft.a("facing", ha.c.a);
+   public static final dfz S = dfz.a("flower_amount", 1, 4);
+   public static final dfx<hc> T = dfx.a("orientation", hc.class);
+   public static final dfx<dfk> U = dfx.a("face", dfk.class);
+   public static final dfx<dfn> V = dfx.a("attachment", dfn.class);
+   public static final dfx<dgl> W = dfx.a("east", dgl.class);
+   public static final dfx<dgl> X = dfx.a("north", dgl.class);
+   public static final dfx<dgl> Y = dfx.a("south", dgl.class);
+   public static final dfx<dgl> Z = dfx.a("west", dgl.class);
+   public static final dfx<dge> aa = dfx.a("east", dge.class);
+   public static final dfx<dge> ab = dfx.a("north", dge.class);
+   public static final dfx<dge> ac = dfx.a("south", dge.class);
+   public static final dfx<dge> ad = dfx.a("west", dge.class);
+   public static final dfx<dfv> ae = dfx.a("half", dfv.class);
+   public static final dfx<dfy> af = dfx.a("half", dfy.class);
+   public static final dfx<dgd> ag = dfx.a("shape", dgd.class);
+   public static final dfx<dgd> ah = dfx.a("shape", dgd.class, $$0 -> $$0 != dgd.j && $$0 != dgd.i && $$0 != dgd.g && $$0 != dgd.h);
+   public static final int ai = 1;
+   public static final int aj = 2;
+   public static final int ak = 3;
+   public static final int al = 4;
+   public static final int am = 5;
+   public static final int an = 7;
+   public static final int ao = 15;
+   public static final int ap = 25;
+   public static final dfz aq = dfz.a("age", 0, 1);
+   public static final dfz ar = dfz.a("age", 0, 2);
+   public static final dfz as = dfz.a("age", 0, 3);
+   public static final dfz at = dfz.a("age", 0, 4);
+   public static final dfz au = dfz.a("age", 0, 5);
+   public static final dfz av = dfz.a("age", 0, 7);
+   public static final dfz aw = dfz.a("age", 0, 15);
+   public static final dfz ax = dfz.a("age", 0, 25);
+   public static final dfz ay = dfz.a("bites", 0, 6);
+   public static final dfz az = dfz.a("candles", 1, 4);
+   public static final dfz aA = dfz.a("delay", 1, 4);
+   public static final int aB = 7;
+   public static final dfz aC = dfz.a("distance", 1, 7);
+   public static final dfz aD = dfz.a("eggs", 1, 4);
+   public static final dfz aE = dfz.a("hatch", 0, 2);
+   public static final dfz aF = dfz.a("layers", 1, 8);
+   public static final int aG = 0;
+   public static final int aH = 1;
+   public static final int aI = 3;
+   public static final int aJ = 8;
+   public static final dfz aK = dfz.a("level", 1, 3);
+   public static final dfz aL = dfz.a("level", 0, 8);
+   public static final dfz aM = dfz.a("level", 1, 8);
+   public static final dfz aN = dfz.a("honey_level", 0, 5);
+   public static final int aO = 15;
+   public static final dfz aP = dfz.a("level", 0, 15);
+   public static final dfz aQ = dfz.a("moisture", 0, 7);
+   public static final dfz aR = dfz.a("note", 0, 24);
+   public static final dfz aS = dfz.a("pickles", 1, 4);
+   public static final dfz aT = dfz.a("power", 0, 15);
+   public static final dfz aU = dfz.a("stage", 0, 1);
+   public static final int aV = 7;
+   public static final dfz aW = dfz.a("distance", 0, 7);
+   public static final int aX = 0;
+   public static final int aY = 4;
+   public static final dfz aZ = dfz.a("charges", 0, 4);
+   public static final dfz ba = dfz.a("rotation", 0, dgf.a());
+   public static final dfx<dfm> bb = dfx.a("part", dfm.class);
+   public static final dfx<dfr> bc = dfx.a("type", dfr.class);
+   public static final dfx<dfs> bd = dfx.a("mode", dfs.class);
+   public static final dfx<dfu> be = dfx.a("hinge", dfu.class);
+   public static final dfx<dga> bf = dfx.a("instrument", dga.class);
+   public static final dfx<dgb> bg = dfx.a("type", dgb.class);
+   public static final dfx<dgh> bh = dfx.a("type", dgh.class);
+   public static final dfx<dgi> bi = dfx.a("shape", dgi.class);
+   public static final dfx<dgj> bj = dfx.a("mode", dgj.class);
+   public static final dfx<dfl> bk = dfx.a("leaves", dfl.class);
+   public static final dfx<dgk> bl = dfx.a("tilt", dgk.class);
+   public static final dft bm = dft.a("vertical_direction", ha.b, ha.a);
+   public static final dfx<dfw> bn = dfx.a("thickness", dfw.class);
+   public static final dfx<dgg> bo = dfx.a("sculk_sensor_phase", dgg.class);
+   public static final dfq bp = dfq.a("slot_0_occupied");
+   public static final dfq bq = dfq.a("slot_1_occupied");
+   public static final dfq br = dfq.a("slot_2_occupied");
+   public static final dfq bs = dfq.a("slot_3_occupied");
+   public static final dfq bt = dfq.a("slot_4_occupied");
+   public static final dfq bu = dfq.a("slot_5_occupied");
+   public static final dfz bv = dfz.a("dusted", 0, 3);
+   public static final dfq bw = dfq.a("cracked");
 }

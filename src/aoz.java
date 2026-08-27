@@ -15,8 +15,8 @@ public class aoz {
       this.b.addAll($$0.b);
    }
 
-   public void a(cmb<?> $$0) {
-      if (!$$0.ai_()) {
+   public void a(cma<?> $$0) {
+      if (!$$0.ah_()) {
          this.a($$0.e());
       }
    }
@@ -25,7 +25,7 @@ public class aoz {
       this.a.add($$0);
    }
 
-   public boolean b(@Nullable cmb<?> $$0) {
+   public boolean b(@Nullable cma<?> $$0) {
       return $$0 == null ? false : this.a.contains($$0.e());
    }
 
@@ -33,7 +33,7 @@ public class aoz {
       return this.a.contains($$0);
    }
 
-   public void c(cmb<?> $$0) {
+   public void c(cma<?> $$0) {
       this.c($$0.e());
    }
 
@@ -42,15 +42,15 @@ public class aoz {
       this.b.remove($$0);
    }
 
-   public boolean d(cmb<?> $$0) {
+   public boolean d(cma<?> $$0) {
       return this.b.contains($$0.e());
    }
 
-   public void e(cmb<?> $$0) {
+   public void e(cma<?> $$0) {
       this.b.remove($$0.e());
    }
 
-   public void f(cmb<?> $$0) {
+   public void f(cma<?> $$0) {
       this.d($$0.e());
    }
 
@@ -58,23 +58,23 @@ public class aoz {
       this.b.add($$0);
    }
 
-   public boolean a(cfp $$0) {
+   public boolean a(cfo $$0) {
       return this.c.a($$0);
    }
 
-   public void a(cfp $$0, boolean $$1) {
+   public void a(cfo $$0, boolean $$1) {
       this.c.a($$0, $$1);
    }
 
-   public boolean a(cfo<?> $$0) {
+   public boolean a(cfn<?> $$0) {
       return this.b($$0.t());
    }
 
-   public boolean b(cfp $$0) {
+   public boolean b(cfo $$0) {
       return this.c.b($$0);
    }
 
-   public void b(cfp $$0, boolean $$1) {
+   public void b(cfo $$0, boolean $$1) {
       this.c.b($$0, $$1);
    }
 
@@ -86,7 +86,7 @@ public class aoz {
       return this.c.a();
    }
 
-   public void a(cfp $$0, boolean $$1, boolean $$2) {
+   public void a(cfo $$0, boolean $$1, boolean $$2) {
       this.c.a($$0, $$1);
       this.c.b($$0, $$2);
    }

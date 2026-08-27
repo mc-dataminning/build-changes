@@ -42,7 +42,7 @@ public class fi implements ArgumentType<fk> {
 
    public static gu c(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
       gu $$2 = b($$0, $$1);
-      if (!cpm.k($$2)) {
+      if (!cpl.k($$2)) {
          throw c.create();
       } else {
          return $$2;

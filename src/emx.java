@@ -1,23 +1,20 @@
-import com.google.gson.annotations.SerializedName;
-import java.util.Locale;
+import com.google.gson.JsonObject;
 
-public class emx extends enc implements emw {
-   @SerializedName("regionName")
-   private final String a;
-   @SerializedName("ping")
-   private final int b;
+public class emx extends enb {
+   public String a;
+   public long b;
+   public long c;
 
-   public emx(String $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   public static emx a(JsonObject $$0) {
+      emx $$1 = new emx();
 
-   public int a() {
-      return this.b;
-   }
+      try {
+         $$1.a = eoy.a("profileUuid", $$0, null);
+         $$1.b = eoy.a("joinTime", $$0, Long.MIN_VALUE);
+         $$1.c = eoy.a("leaveTime", $$0, Long.MIN_VALUE);
+      } catch (Exception var3) {
+      }
 
-   @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "%s --> %.2f ms", this.a, (float)this.b);
+      return $$1;
    }
 }

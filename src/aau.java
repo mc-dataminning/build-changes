@@ -70,7 +70,7 @@ public class aau {
    };
 
    public static String a(bii $$0) {
-      if ($$0 instanceof cbn) {
+      if ($$0 instanceof cbm) {
          return $$0.ab().getString();
       } else {
          tf $$1 = $$0.ad();

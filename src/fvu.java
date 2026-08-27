@@ -1,24 +1,20 @@
-public class fvu<T extends biy, M extends fft<T>> extends fxf<T, M> {
-   private final fsm a;
+public class fvu extends fud<caq, fhf<caq>> {
+   private static final aer a = new aer("textures/entity/warden/warden.png");
+   private static final aer i = new aer("textures/entity/warden/warden_bioluminescent_layer.png");
+   private static final aer j = new aer("textures/entity/warden/warden_heart.png");
+   private static final aer k = new aer("textures/entity/warden/warden_pulsating_spots_1.png");
+   private static final aer l = new aer("textures/entity/warden/warden_pulsating_spots_2.png");
 
-   public fvu(fso.a $$0, ftp<T, M> $$1) {
-      super($$1);
-      this.a = $$0.a();
+   public fvu(fsx.a $$0) {
+      super($$0, new fhf<>($$0.a(fhr.bL)), 0.9F);
+      this.a(new fxr<>(this, i, ($$0x, $$1, $$2) -> 1.0F, fhf::e));
+      this.a(new fxr<>(this, k, ($$0x, $$1, $$2) -> Math.max(0.0F, arp.b($$2 * 0.045F) * 0.25F), fhf::f));
+      this.a(new fxr<>(this, l, ($$0x, $$1, $$2) -> Math.max(0.0F, arp.b($$2 * 0.045F + (float) Math.PI) * 0.25F), fhf::f));
+      this.a(new fxr<>(this, a, ($$0x, $$1, $$2) -> $$0x.E($$1), fhf::c));
+      this.a(new fxr<>(this, j, ($$0x, $$1, $$2) -> $$0x.F($$1), fhf::d));
    }
 
-   @Override
-   protected int a(T $$0) {
-      return $$0.eM();
-   }
-
-   @Override
-   protected void a(elg $$0, fnl $$1, int $$2, bii $$3, float $$4, float $$5, float $$6, float $$7) {
-      float $$8 = arp.c($$4 * $$4 + $$6 * $$6);
-      cbv $$9 = new cbv($$3.dK(), $$3.dp(), $$3.dr(), $$3.dv());
-      $$9.r((float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI));
-      $$9.s((float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI));
-      $$9.N = $$9.dA();
-      $$9.O = $$9.dC();
-      this.a.a($$9, 0.0, 0.0, 0.0, 0.0F, $$7, $$0, $$1, $$2);
+   public aer a(caq $$0) {
+      return a;
    }
 }

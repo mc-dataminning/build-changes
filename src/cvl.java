@@ -1,80 +1,104 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import com.google.common.annotations.VisibleForTesting;
 
-public class cvl extends csm {
-   private static final Map<csm, csm> c = Maps.newHashMap();
-   public static final float a = 3.0F;
-   protected static final ehx b = csm.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
-   private final csm d;
+public class cvl extends csl {
+   private static final int b = 2;
+   private static final int c = 5;
+   private static final int d = 3600;
+   private static final int e = 12000;
+   protected static final ehw a = csl.a(0.0, 0.0, 0.0, 16.0, 1.5, 16.0);
+   private static int f = 3600;
+   private static int g = 12000;
 
-   public cvl(csm $$0, dez.d $$1) {
-      super($$1);
-      this.d = $$0;
-      c.put($$0, this);
+   public cvl(dey.d $$0) {
+      super($$0);
    }
 
    @Override
-   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
-      return b;
+   public ehw a(dez $$0, cor $$1, gu $$2, ehi $$3) {
+      return a;
    }
 
    @Override
-   public cyr b_(dfa $$0) {
-      return cyr.c;
+   public boolean a(dez $$0, cpo $$1, gu $$2) {
+      return a($$1, $$2.d());
    }
 
    @Override
-   public bgq a(dfa $$0, cpm $$1, gu $$2, cbn $$3, bgp $$4, eha $$5) {
-      ciy $$6 = $$3.b($$4);
-      cit $$7 = $$6.d();
-      dfa $$8 = ($$7 instanceof cgr ? c.getOrDefault(((cgr)$$7).e(), csn.a) : csn.a).n();
-      boolean $$9 = $$8.a(csn.a);
-      boolean $$10 = this.g();
-      if ($$9 != $$10) {
-         if ($$10) {
-            $$1.a($$2, $$8, 3);
-            $$3.a(apg.ah);
-            if (!$$3.fR().d) {
-               $$6.h(1);
-            }
-         } else {
-            ciy $$11 = new ciy(this.d);
-            if ($$6.b()) {
-               $$3.a($$4, $$11);
-            } else if (!$$3.i($$11)) {
-               $$3.a($$11, false);
-            }
+   public void b(dez $$0, cpl $$1, gu $$2, dez $$3, boolean $$4) {
+      $$1.a($$2, this, a($$1.y_()));
+   }
 
-            $$1.a($$2, csn.fR.n(), 3);
-         }
+   private static int a(aru $$0) {
+      return $$0.b(f, g);
+   }
 
-         $$1.a($$3, djk.c, $$2);
-         return bgq.a($$1.B);
+   @Override
+   public dez a(dez $$0, ha $$1, dez $$2, cpm $$3, gu $$4, gu $$5) {
+      return !this.a($$0, $$3, $$4) ? csm.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public void a(dez $$0, akk $$1, gu $$2, aru $$3) {
+      if (!this.a($$0, $$1, $$2)) {
+         this.a((cpl)$$1, $$2);
       } else {
-         return bgq.b;
+         this.a($$1, $$2, $$3);
       }
    }
 
    @Override
-   public ciy a(cos $$0, gu $$1, dfa $$2) {
-      return this.g() ? super.a($$0, $$1, $$2) : new ciy(this.d);
+   public void a(dez $$0, cpl $$1, gu $$2, bii $$3) {
+      if ($$3.ag().equals(bim.L)) {
+         this.a($$1, $$2);
+      }
    }
 
-   private boolean g() {
-      return this.d == csn.a;
+   private static boolean a(cor $$0, gu $$1) {
+      eac $$2 = $$0.b_($$1);
+      eac $$3 = $$0.b_($$1.c());
+      return $$2.a() == ead.c && $$3.a() == ead.a;
    }
 
-   @Override
-   public dfa a(dfa $$0, ha $$1, dfa $$2, cpn $$3, gu $$4, gu $$5) {
-      return $$1 == ha.a && !$$0.a($$3, $$4) ? csn.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   private void a(akk $$0, gu $$1, aru $$2) {
+      this.a((cpl)$$0, $$1);
+      $$0.a(null, $$1, aow.iB, aox.e, 1.0F, 1.0F);
+      this.b($$0, $$1, $$2);
    }
 
-   public csm a() {
-      return this.d;
+   private void a(cpl $$0, gu $$1) {
+      $$0.b($$1, false);
    }
 
-   @Override
-   public boolean a(dfa $$0, cos $$1, gu $$2, eat $$3) {
-      return false;
+   private void b(akk $$0, gu $$1, aru $$2) {
+      int $$3 = $$2.b(2, 6);
+
+      for (int $$4 = 1; $$4 <= $$3; $$4++) {
+         bwb $$5 = bim.aW.a((cpl)$$0);
+         if ($$5 != null) {
+            double $$6 = (double)$$1.u() + this.b($$2);
+            double $$7 = (double)$$1.w() + this.b($$2);
+            int $$8 = $$2.b(1, 361);
+            $$5.b($$6, (double)$$1.v() - 0.5, $$7, (float)$$8, 0.0F);
+            $$5.fF();
+            $$0.b($$5);
+         }
+      }
+   }
+
+   private double b(aru $$0) {
+      double $$1 = (double)(bwb.c / 2.0F);
+      return arp.a($$0.j(), $$1, 1.0 - $$1);
+   }
+
+   @VisibleForTesting
+   public static void a(int $$0, int $$1) {
+      f = $$0;
+      g = $$1;
+   }
+
+   @VisibleForTesting
+   public static void a() {
+      f = 3600;
+      g = 12000;
    }
 }

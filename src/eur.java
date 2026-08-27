@@ -2,10 +2,10 @@ import it.unimi.dsi.fastutil.ints.IntSet;
 import it.unimi.dsi.fastutil.ints.IntSets;
 import javax.annotation.Nullable;
 
-public class eur implements ejj {
+public class eur implements eji {
    @Nullable
    @Override
-   public eji a(int $$0) {
+   public ejh a(int $$0) {
       return eva.b;
    }
 

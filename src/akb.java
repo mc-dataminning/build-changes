@@ -64,7 +64,7 @@ public class akb extends akm {
    }
 
    @Override
-   public bgq a(akl $$0, cpm $$1, ciy $$2, bgp $$3) {
+   public bgq a(akl $$0, cpl $$1, cix $$2, bgp $$3) {
       if (this.f) {
          this.f();
          return bgq.d;
@@ -74,7 +74,7 @@ public class akb extends akm {
    }
 
    @Override
-   public bgq a(akl $$0, cpm $$1, ciy $$2, bgp $$3, eha $$4) {
+   public bgq a(akl $$0, cpl $$1, cix $$2, bgp $$3, egz $$4) {
       if (this.f) {
          this.f();
          return bgq.d;

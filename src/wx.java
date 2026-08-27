@@ -3,19 +3,19 @@ import javax.annotation.Nullable;
 
 public class wx implements ux<wp> {
    private final gu a;
-   private final dco<?> b;
+   private final dcn<?> b;
    @Nullable
    private final qr c;
 
-   public static wx a(dcm $$0, Function<dcm, qr> $$1) {
+   public static wx a(dcl $$0, Function<dcl, qr> $$1) {
       return new wx($$0.p(), $$0.u(), $$1.apply($$0));
    }
 
-   public static wx a(dcm $$0) {
-      return a($$0, dcm::ao_);
+   public static wx a(dcl $$0) {
+      return a($$0, dcl::an_);
    }
 
-   private wx(gu $$0, dco<?> $$1, qr $$2) {
+   private wx(gu $$0, dcn<?> $$1, qr $$2) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2.g() ? null : $$2;
@@ -42,7 +42,7 @@ public class wx implements ux<wp> {
       return this.a;
    }
 
-   public dco<?> d() {
+   public dcn<?> d() {
       return this.b;
    }
 

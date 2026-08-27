@@ -2,14 +2,16 @@ import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
 
 public class bmi {
-   public static bkr<biy> a() {
-      return boc.a((Function<boc.b<biy>, ? extends App<boc.c<biy>, bof<biy>>>)($$0 -> $$0.group($$0.b(bsa.D)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
-               ccu $$3 = $$0xx.c($$1.dk());
-               if ($$3 == null) {
-                  $$1.dM().a(ccy.j);
+   public static bkq<caz> a() {
+      return bob.a((Function<bob.b<caz>, ? extends App<bob.c<caz>, boe<caz>>>)($$0 -> $$0.group($$0.c(brz.c)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
+               cba $$3 = $$1.gl();
+               if ($$3.b() != cbc.b && $$3.b() != cbc.m && $$1.q() == 0 && $$3.c() <= 1) {
+                  $$1.a($$1.gl().a(cbc.b));
+                  $$1.c($$0xx);
+                  return true;
+               } else {
+                  return false;
                }
-
-               return true;
             })));
    }
 }

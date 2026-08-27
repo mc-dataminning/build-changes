@@ -14,32 +14,32 @@ public class aeb {
    public static final aea<String> e = aea.a(si::a, si::r);
    public static final aea<tf> f = aea.a(si::a, si::l);
    public static final aea<Optional<tf>> g = aea.b(si::a, si::l);
-   public static final aea<ciy> h = new aea<ciy>() {
-      public void a(si $$0, ciy $$1) {
+   public static final aea<cix> h = new aea<cix>() {
+      public void a(si $$0, cix $$1) {
          $$0.a($$1);
       }
 
-      public ciy b(si $$0) {
+      public cix b(si $$0) {
          return $$0.q();
       }
 
-      public ciy a(ciy $$0) {
+      public cix a(cix $$0) {
          return $$0.p();
       }
    };
-   public static final aea<dfa> i = aea.a(csm.o);
-   public static final aea<Optional<dfa>> j = new aea.a<Optional<dfa>>() {
-      public void a(si $$0, Optional<dfa> $$1) {
+   public static final aea<dez> i = aea.a(csl.o);
+   public static final aea<Optional<dez>> j = new aea.a<Optional<dez>>() {
+      public void a(si $$0, Optional<dez> $$1) {
          if ($$1.isPresent()) {
-            $$0.c(csm.i($$1.get()));
+            $$0.c(csl.i($$1.get()));
          } else {
             $$0.c(0);
          }
       }
 
-      public Optional<dfa> b(si $$0) {
+      public Optional<dez> b(si $$0) {
          int $$1 = $$0.m();
-         return $$1 == 0 ? Optional.empty() : Optional.of(csm.a($$1));
+         return $$1 == 0 ? Optional.empty() : Optional.of(csl.a($$1));
       }
    };
    public static final aea<Boolean> k = aea.a(si::a, si::readBoolean);
@@ -86,15 +86,15 @@ public class aeb {
          return $$0.h();
       }
    };
-   public static final aea<cbb> t = new aea.a<cbb>() {
-      public void a(si $$0, cbb $$1) {
+   public static final aea<cba> t = new aea.a<cba>() {
+      public void a(si $$0, cba $$1) {
          $$0.a(jb.z, $$1.a());
          $$0.a(jb.A, $$1.b());
          $$0.c($$1.c());
       }
 
-      public cbb b(si $$0) {
-         return new cbb($$0.a(jb.z), $$0.a(jb.A), $$0.m());
+      public cba b(si $$0) {
+         return new cba($$0.a(jb.z), $$0.a(jb.A), $$0.m());
       }
    };
    public static final aea<OptionalInt> u = new aea.a<OptionalInt>() {
@@ -108,10 +108,10 @@ public class aeb {
       }
    };
    public static final aea<bjk> v = aea.a(bjk.class);
-   public static final aea<buo> w = aea.a(jb.aj);
-   public static final aea<buv> x = aea.a(jb.ak);
-   public static final aea<he<byc>> y = aea.a(jb.m.t());
-   public static final aea<bww.a> z = aea.a(bww.a.class);
+   public static final aea<bun> w = aea.a(jb.aj);
+   public static final aea<buu> x = aea.a(jb.ak);
+   public static final aea<he<byb>> y = aea.a(jb.m.t());
+   public static final aea<bwv.a> z = aea.a(bwv.a.class);
    public static final aea<Vector3f> A = aea.a(si::a, si::i);
    public static final aea<Quaternionf> B = aea.a(si::a, si::j);
 

@@ -14,7 +14,7 @@ public class ct extends cu<ct.a> {
       return new ct.a($$1, $$3);
    }
 
-   public void a(akl $$0, ciy $$1) {
+   public void a(akl $$0, cix $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -30,11 +30,11 @@ public class ct extends cu<ct.a> {
          return new ct.a(Optional.empty(), $$0);
       }
 
-      public static ct.a a(cpl $$0) {
+      public static ct.a a(cpk $$0) {
          return new ct.a(Optional.empty(), bz.a.a().a($$0).b());
       }
 
-      public boolean a(ciy $$0) {
+      public boolean a(cix $$0) {
          return this.a.isEmpty() || this.a.get().a($$0);
       }
 

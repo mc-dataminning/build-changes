@@ -1,9 +1,9 @@
-public interface cer {
-   void a(cee var1, hn<ciy> var2, ciy var3, int[] var4);
+import java.util.List;
 
-   void a(cee var1, int var2, ciy var3);
+public interface cer extends bgj, cfy {
+   int f();
 
-   void a(cee var1, ciy var2);
+   int g();
 
-   void a(cee var1, int var2, int var3);
+   List<cix> h();
 }

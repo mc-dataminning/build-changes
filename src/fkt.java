@@ -1,49 +1,41 @@
-public class fkt extends fmb {
-   private final flw a;
+public class fkt<T extends iq> extends fmk {
+   private final fmf a;
 
-   protected fkt(fii $$0, double $$1, double $$2, double $$3, double $$4, flw $$5) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.t = 6 + this.r.a(4);
-      float $$6 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$6;
-      this.w = $$6;
-      this.x = $$6;
-      this.D = 2.0F * (1.0F - (float)$$4 * 0.5F);
-      this.a = $$5;
-      this.b($$5);
+   protected fkt(fin $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, T $$7, fmf $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.C = true;
+      this.a = $$8;
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      float $$9 = this.r.i() * 0.4F + 0.6F;
+      this.v = this.a($$7.e().x(), $$9);
+      this.w = this.a($$7.e().y(), $$9);
+      this.x = this.a($$7.e().z(), $$9);
+      this.D = this.D * 0.75F * $$7.f();
+      int $$10 = (int)(8.0 / (this.r.j() * 0.8 + 0.2));
+      this.t = (int)Math.max((float)$$10 * $$7.f(), 1.0F);
+      this.b($$8);
+   }
+
+   protected float a(float $$0, float $$1) {
+      return (this.r.i() * 0.2F + 0.8F) * $$0 * $$1;
    }
 
    @Override
-   public int a(float $$0) {
-      return 15728880;
+   public flo b() {
+      return flo.b;
+   }
+
+   @Override
+   public float b(float $$0) {
+      return this.D * arp.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.a);
-      }
-   }
-
-   @Override
-   public flf b() {
-      return flf.d;
-   }
-
-   public static class a implements fle<iy> {
-      private final flw a;
-
-      public a(flw $$0) {
-         this.a = $$0;
-      }
-
-      public flb a(iy $$0, fii $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fkt($$1, $$2, $$3, $$4, $$5, this.a);
-      }
+      super.a();
+      this.b(this.a);
    }
 }

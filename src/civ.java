@@ -1,37 +1,10 @@
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
-
-public enum civ implements ash {
-   a(0, "none"),
-   b(1, "thirdperson_lefthand"),
-   c(2, "thirdperson_righthand"),
-   d(3, "firstperson_lefthand"),
-   e(4, "firstperson_righthand"),
-   f(5, "head"),
-   g(6, "gui"),
-   h(7, "ground"),
-   i(8, "fixed");
-
-   public static final Codec<civ> j = ash.a(civ::values);
-   public static final IntFunction<civ> k = aqk.a(civ::a, values(), aqk.a.a);
-   private final byte l;
-   private final String m;
-
-   private civ(int $$0, String $$1) {
-      this.m = $$1;
-      this.l = (byte)$$0;
+public class civ extends cii {
+   public civ(bim<? extends bxx> $$0, cis.a $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public String c() {
-      return this.m;
-   }
-
-   public byte a() {
-      return this.l;
-   }
-
-   public boolean b() {
-      return this == d || this == e;
+   protected boolean a(cbm $$0, ha $$1, cix $$2, gu $$3) {
+      return !$$0.dK().r($$3) && $$0.a($$3, $$1, $$2);
    }
 }

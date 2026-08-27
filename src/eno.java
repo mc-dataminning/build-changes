@@ -1,40 +1,40 @@
-public class eno {
-   private final epb a;
-   private boolean b;
-   private String c;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
-   public eno(epb $$0) {
+public class eno implements Iterable<emm> {
+   private final eql a;
+   private final Set<emm> b = new HashSet<>();
+   private List<emm> c = List.of();
+
+   public eno(eql $$0) {
       this.a = $$0;
-      epb.a $$1 = $$0.a();
-      this.b = $$1.b;
-      this.c = $$1.a;
+   }
+
+   public void a(List<emm> $$0) {
+      List<emm> $$1 = new ArrayList<>($$0);
+      $$1.sort(new emm.a(this.a.V().c()));
+      boolean $$2 = $$1.removeAll(this.b);
+      if (!$$2) {
+         this.b.clear();
+      }
+
+      this.c = $$1;
+   }
+
+   public void a(emm $$0) {
+      this.c.remove($$0);
+      this.b.add($$0);
+   }
+
+   @Override
+   public Iterator<emm> iterator() {
+      return this.c.iterator();
    }
 
    public boolean a() {
-      return this.b;
-   }
-
-   public String b() {
-      return this.c;
-   }
-
-   public void a(eml $$0) {
-      epb.a $$1 = this.b($$0);
-      this.b = $$1.b;
-      this.c = $$1.a;
-   }
-
-   private epb.a b(eml $$0) {
-      epb.a $$1 = new epb.a();
-      $$1.a = $$0.a;
-      epb.a $$2 = this.a.a();
-      boolean $$3 = $$1.a == null || $$1.a.equals($$2.a);
-      if ($$3) {
-         return $$2;
-      } else {
-         $$1.b = true;
-         this.a.a($$1);
-         return $$1;
-      }
+      return this.c.isEmpty();
    }
 }

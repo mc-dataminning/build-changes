@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 public class ajh extends anz {
    private static final Logger a = LogUtils.getLogger();
 
-   public ajh(aji $$0, hl<afa> $$1, eca $$2) {
+   public ajh(aji $$0, hl<afa> $$1, ebz $$2) {
       super($$0, $$1, $$2, $$0.a().H);
       ajj $$3 = $$0.a();
       this.a($$3.F);

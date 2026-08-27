@@ -6,7 +6,7 @@ import java.util.Locale;
 
 public class iz implements it {
    public static final Codec<iz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(djo.b.fieldOf("destination").forGetter($$0x -> $$0x.c), Codec.INT.fieldOf("arrival_in_ticks").forGetter($$0x -> $$0x.d))
+      $$0 -> $$0.group(djn.b.fieldOf("destination").forGetter($$0x -> $$0x.c), Codec.INT.fieldOf("arrival_in_ticks").forGetter($$0x -> $$0x.d))
             .apply($$0, iz::new)
    );
    public static final it.a<iz> b = new it.a<iz>() {
@@ -20,32 +20,32 @@ public class iz implements it {
          $$1.expect(' ');
          int $$5 = $$1.readInt();
          gu $$6 = gu.a((double)$$2, (double)$$3, (double)$$4);
-         return new iz(new djg($$6), $$5);
+         return new iz(new djf($$6), $$5);
       }
 
       public iz a(iu<iz> $$0, si $$1) {
-         djo $$2 = djp.c($$1);
+         djn $$2 = djo.c($$1);
          int $$3 = $$1.m();
          return new iz($$2, $$3);
       }
    };
-   private final djo c;
+   private final djn c;
    private final int d;
 
-   public iz(djo $$0, int $$1) {
+   public iz(djn $$0, int $$1) {
       this.c = $$0;
       this.d = $$1;
    }
 
    @Override
    public void a(si $$0) {
-      djp.a(this.c, $$0);
+      djo.a(this.c, $$0);
       $$0.c(this.d);
    }
 
    @Override
    public String a() {
-      ehe $$0 = this.c.a(null).get();
+      ehd $$0 = this.c.a(null).get();
       double $$1 = $$0.a();
       double $$2 = $$0.b();
       double $$3 = $$0.c();
@@ -57,7 +57,7 @@ public class iz implements it {
       return iv.P;
    }
 
-   public djo c() {
+   public djn c() {
       return this.c;
    }
 

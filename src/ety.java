@@ -6,12 +6,12 @@ public abstract class ety implements etz {
    private boolean b;
 
    @Override
-   public final boolean aw_() {
+   public final boolean av_() {
       return this.b;
    }
 
    @Override
-   public final void b_(boolean $$0) {
+   public final void b(boolean $$0) {
       this.b = $$0;
    }
 
@@ -24,11 +24,11 @@ public abstract class ety implements etz {
    @Override
    public void a(@Nullable eua $$0) {
       if (this.a != null) {
-         this.a.c_(false);
+         this.a.b_(false);
       }
 
       if ($$0 != null) {
-         $$0.c_(true);
+         $$0.b_(true);
       }
 
       this.a = $$0;

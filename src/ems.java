@@ -1,36 +1,43 @@
-import com.google.common.collect.Lists;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.Iterator;
-import java.util.List;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class ems extends enc {
-   private static final Logger b = LogUtils.getLogger();
-   public List<emr> a;
+public class ems {
+   private static final String a = "translationKey";
+   private static final String b = "args";
+   private final String c;
+   @Nullable
+   private final Object[] d;
 
-   public static ems a(String $$0) {
-      ems $$1 = new ems();
-      $$1.a = Lists.newArrayList();
+   private ems(String $$0, @Nullable Object[] $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
 
-      try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         if ($$3.get("lists").isJsonArray()) {
-            JsonArray $$4 = $$3.get("lists").getAsJsonArray();
-            Iterator<JsonElement> $$5 = $$4.iterator();
+   public tf a(tf $$0) {
+      if (!gaa.a(this.c)) {
+         return $$0;
+      } else {
+         return this.d == null ? tf.c(this.c) : tf.a(this.c, this.d);
+      }
+   }
 
-            while ($$5.hasNext()) {
-               $$1.a.add(emr.a($$5.next().getAsJsonObject()));
-            }
+   public static ems a(JsonObject $$0) {
+      String $$1 = eoy.a("translationKey", $$0);
+      JsonElement $$2 = $$0.get("args");
+      String[] $$5;
+      if ($$2 != null && !$$2.isJsonNull()) {
+         JsonArray $$4 = $$2.getAsJsonArray();
+         $$5 = new String[$$4.size()];
+
+         for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
+            $$5[$$6] = $$4.get($$6).getAsString();
          }
-      } catch (Exception var6) {
-         b.error("Could not parse RealmsServerPlayerLists: {}", var6.getMessage());
+      } else {
+         $$5 = null;
       }
 
-      return $$1;
+      return new ems($$1, $$5);
    }
 }

@@ -8,13 +8,13 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class eui extends ety implements eti, eua, evv {
+public class eui extends ety implements eti, eua, evw {
    private static final int a = -1;
    private static final int b = 400;
    private static final int c = 24;
    private static final int d = 14;
    private static final tf e = tf.c("narration.tab_navigation.usage");
-   private final evn f;
+   private final evo f;
    private int g;
    private final euh h;
    private final ImmutableList<eug> i;
@@ -24,7 +24,7 @@ public class eui extends ety implements eti, eua, evv {
       this.g = $$0;
       this.h = $$1;
       this.i = ImmutableList.copyOf($$2);
-      this.f = new evn(0, 0);
+      this.f = new evo(0, 0);
       this.f.c().b();
       Builder<eto> $$3 = ImmutableList.builder();
       int $$4 = 0;
@@ -45,10 +45,10 @@ public class eui extends ety implements eti, eua, evv {
    }
 
    @Override
-   public void c_(boolean $$0) {
-      super.c_($$0);
+   public void b_(boolean $$0) {
+      super.b_($$0);
       if (this.t() != null) {
-         this.t().c_($$0);
+         this.t().b_($$0);
       }
    }
 
@@ -62,15 +62,15 @@ public class eui extends ety implements eti, eua, evv {
 
    @Nullable
    @Override
-   public ert a(ewd $$0) {
-      if (!this.ax_()) {
+   public ers a(ewe $$0) {
+      if (!this.aw_()) {
          eto $$1 = this.e();
          if ($$1 != null) {
-            return ert.a(this, ert.a($$1));
+            return ers.a(this, ers.a($$1));
          }
       }
 
-      return $$0 instanceof ewd.c ? null : super.a($$0);
+      return $$0 instanceof ewe.c ? null : super.a($$0);
    }
 
    @Override
@@ -79,35 +79,35 @@ public class eui extends ety implements eti, eua, evv {
    }
 
    @Override
-   public evv.a q() {
-      return this.j.stream().map(esf::q).max(Comparator.naturalOrder()).orElse(evv.a.a);
+   public evw.a q() {
+      return this.j.stream().map(ese::q).max(Comparator.naturalOrder()).orElse(evw.a.a);
    }
 
    @Override
-   public void b(evx $$0) {
-      Optional<eto> $$1 = this.j.stream().filter(esf::m).findFirst().or(() -> Optional.ofNullable(this.e()));
+   public void b(evy $$0) {
+      Optional<eto> $$1 = this.j.stream().filter(ese::n).findFirst().or(() -> Optional.ofNullable(this.e()));
       $$1.ifPresent($$1x -> {
          this.a($$0.a(), $$1x);
          $$1x.b($$0);
       });
-      if (this.ax_()) {
-         $$0.a(evw.d, e);
+      if (this.aw_()) {
+         $$0.a(evx.d, e);
       }
    }
 
-   protected void a(evx $$0, eto $$1) {
+   protected void a(evy $$0, eto $$1) {
       if (this.i.size() > 1) {
          int $$2 = this.j.indexOf($$1);
          if ($$2 != -1) {
-            $$0.a(evw.b, tf.a("narrator.position.tab", $$2 + 1, this.i.size()));
+            $$0.a(evx.b, tf.a("narrator.position.tab", $$2 + 1, this.i.size()));
          }
       }
    }
 
    @Override
-   public void a(erw $$0, int $$1, int $$2, float $$3) {
+   public void a(erv $$0, int $$1, int $$2, float $$3) {
       $$0.a(0, 0, this.g, 24, -16777216);
-      $$0.a(fcj.a, 0, this.f.r() + this.f.h() - 2, 0.0F, 0.0F, this.g, 2, 32, 2);
+      $$0.a(fco.a, 0, this.f.t() + this.f.i() - 2, 0.0F, 0.0F, this.g, 2, 32, 2);
       UnmodifiableIterator var5 = this.j.iterator();
 
       while (var5.hasNext()) {
@@ -117,7 +117,7 @@ public class eui extends ety implements eti, eua, evv {
    }
 
    @Override
-   public ewh s() {
+   public ewi s() {
       return this.f.s();
    }
 
@@ -132,12 +132,12 @@ public class eui extends ety implements eti, eua, evv {
       }
 
       this.f.a();
-      this.f.e(arp.d((this.g - $$0) / 2, 2));
-      this.f.f(0);
+      this.f.f(arp.d((this.g - $$0) / 2, 2));
+      this.f.g(0);
    }
 
    public void a(int $$0, boolean $$1) {
-      if (this.ax_()) {
+      if (this.aw_()) {
          this.a((eua)this.j.get($$0));
       } else {
          this.h.a((eug)this.i.get($$0), $$1);
@@ -145,7 +145,7 @@ public class eui extends ety implements eti, eua, evv {
    }
 
    public boolean b(int $$0) {
-      if (exz.p()) {
+      if (eya.p()) {
          int $$1 = this.c($$0);
          if ($$1 != -1) {
             this.a(arp.a($$1, 0, this.i.size() - 1), true);
@@ -163,7 +163,7 @@ public class eui extends ety implements eti, eua, evv {
          if ($$0 == 258) {
             int $$1 = this.d();
             if ($$1 != -1) {
-               int $$2 = exz.q() ? $$1 - 1 : $$1 + 1;
+               int $$2 = eya.q() ? $$1 - 1 : $$1 + 1;
                return Math.floorMod($$2, this.i.size());
             }
          }

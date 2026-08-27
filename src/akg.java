@@ -1,4 +1,4 @@
-public abstract class akg extends dzp {
+public abstract class akg extends dzo {
    protected akg(int $$0, int $$1, int $$2) {
       super($$0, $$1, $$2);
    }

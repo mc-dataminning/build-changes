@@ -3,13 +3,13 @@ import java.util.List;
 public class xk implements ux<wp> {
    private final int a;
    private final int b;
-   private final List<ciy> c;
-   private final ciy d;
+   private final List<cix> c;
+   private final cix d;
 
-   public xk(int $$0, int $$1, hn<ciy> $$2, ciy $$3) {
+   public xk(int $$0, int $$1, hn<cix> $$2, cix $$3) {
       this.a = $$0;
       this.b = $$1;
-      this.c = hn.a($$2.size(), ciy.b);
+      this.c = hn.a($$2.size(), cix.b);
 
       for (int $$4 = 0; $$4 < $$2.size(); $$4++) {
          this.c.set($$4, $$2.get($$4).p());
@@ -41,11 +41,11 @@ public class xk implements ux<wp> {
       return this.a;
    }
 
-   public List<ciy> d() {
+   public List<cix> d() {
       return this.c;
    }
 
-   public ciy e() {
+   public cix e() {
       return this.d;
    }
 

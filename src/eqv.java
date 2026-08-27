@@ -1,51 +1,99 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
+import com.mojang.logging.LogUtils;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.List;
-import java.util.Map;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public enum eqv {
-   a(new ciy(cjb.qe)),
-   b(new ciy(csn.cj)),
-   c(new ciy(cjb.ll)),
-   d(new ciy(cjb.op), new ciy(cjb.oh)),
-   e(new ciy(cjb.pM), new ciy(cjb.nF)),
-   f(new ciy(cjb.qe)),
-   g(new ciy(cjb.pj)),
-   h(new ciy(csn.b)),
-   i(new ciy(cjb.pM), new ciy(cjb.nL)),
-   j(new ciy(cjb.qe)),
-   k(new ciy(csn.dI)),
-   l(new ciy(cjb.on), new ciy(cjb.pc)),
-   m(new ciy(cjb.qe)),
-   n(new ciy(cjb.pj)),
-   o(new ciy(cjb.fj)),
-   p(new ciy(cjb.pf)),
-   q(new ciy(cjb.pj)),
-   r(new ciy(cjb.hf));
+public class eqv {
+   private static final Logger a = LogUtils.getLogger();
+   @Nullable
+   private eqv.c b;
+   private int c;
 
-   public static final List<eqv> s = ImmutableList.of(m, n);
-   public static final List<eqv> t = ImmutableList.of(j, k, l);
-   public static final List<eqv> u = ImmutableList.of(f, g, h, i);
-   public static final List<eqv> v = ImmutableList.of(a, d, b, e, c);
-   public static final Map<eqv, List<eqv>> w = ImmutableMap.of(
-      a, ImmutableList.of(d, b, e, c), f, ImmutableList.of(g, h, i), j, ImmutableList.of(k, l), m, ImmutableList.of(n)
-   );
-   private final List<ciy> x;
+   public void a(eqv.b $$0, List<ama> $$1) {
+      this.c++;
+      if (this.b != null && !this.b.d) {
+         a.warn("Reload already ongoing, replacing");
+      }
 
-   private eqv(ciy... $$0) {
-      this.x = ImmutableList.copyOf($$0);
+      this.b = new eqv.c($$0, $$1.stream().map(ama::a).collect(ImmutableList.toImmutableList()));
    }
 
-   public static List<eqv> a(cfp $$0) {
-      return switch ($$0) {
-         case a -> v;
-         case b -> u;
-         case c -> t;
-         case d -> s;
-      };
+   public void a(Throwable $$0) {
+      if (this.b == null) {
+         a.warn("Trying to signal reload recovery, but nothing was started");
+         this.b = new eqv.c(eqv.b.c, ImmutableList.of());
+      }
+
+      this.b.c = new eqv.a($$0);
    }
 
-   public List<ciy> a() {
-      return this.x;
+   public void a() {
+      if (this.b == null) {
+         a.warn("Trying to finish reload, but nothing was started");
+      } else {
+         this.b.d = true;
+      }
+   }
+
+   public void a(o $$0) {
+      p $$1 = $$0.a("Last reload");
+      $$1.a("Reload number", this.c);
+      if (this.b != null) {
+         this.b.a($$1);
+      }
+   }
+
+   static class a {
+      private final Throwable a;
+
+      a(Throwable $$0) {
+         this.a = $$0;
+      }
+
+      public void a(p $$0) {
+         $$0.a("Recovery", "Yes");
+         $$0.a("Recovery reason", () -> {
+            StringWriter $$0x = new StringWriter();
+            this.a.printStackTrace(new PrintWriter($$0x));
+            return $$0x.toString();
+         });
+      }
+   }
+
+   public static enum b {
+      a("initial"),
+      b("manual"),
+      c("unknown");
+
+      final String d;
+
+      private b(String $$0) {
+         this.d = $$0;
+      }
+   }
+
+   static class c {
+      private final eqv.b a;
+      private final List<String> b;
+      @Nullable
+      eqv.a c;
+      boolean d;
+
+      c(eqv.b $$0, List<String> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public void a(p $$0) {
+         $$0.a("Reload reason", this.a.d);
+         $$0.a("Finished", this.d ? "Yes" : "No");
+         $$0.a("Packs", () -> String.join(", ", this.b));
+         if (this.c != null) {
+            this.c.a($$0);
+         }
+      }
    }
 }

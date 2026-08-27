@@ -1,52 +1,34 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
 
-public abstract class dnc extends dnn<dpy> {
-   public dnc(Codec<dpy> $$0) {
+public class dnc extends dnb {
+   public dnc(Codec<dpx> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dnp<dpy> $$0) {
-      aru $$1 = $$0.d();
-      cqg $$2 = $$0.b();
-      gu $$3 = $$0.e();
-      Optional<csm> $$4 = jb.f.b(apl.ap).flatMap($$1x -> $$1x.a($$1)).map(he::a);
-      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().n());
-   }
+   protected boolean a(cpm $$0, aru $$1, gu $$2, dez $$3) {
+      int $$4 = $$1.a(3) + 3;
+      int $$5 = $$1.a(3) + 3;
+      int $$6 = $$1.a(3) + 3;
+      int $$7 = $$1.a(3) + 1;
+      gu.a $$8 = $$2.j();
 
-   protected abstract boolean a(cpn var1, aru var2, gu var3, dfa var4);
-
-   protected boolean b(cpn $$0, aru $$1, gu $$2, dfa $$3) {
-      gu $$4 = $$2.c();
-      dfa $$5 = $$0.a_($$2);
-      if (($$5.a(csn.G) || $$5.a(apl.as)) && $$0.a_($$4).a(csn.G)) {
-         $$0.a($$2, $$3, 3);
-         if ($$1.i() < 0.25F) {
-            jb.f.b(apl.as).flatMap($$1x -> $$1x.a($$1)).map(he::a).ifPresent($$2x -> $$0.a($$4, $$2x.n(), 2));
-         } else if ($$1.i() < 0.05F) {
-            $$0.a($$4, csn.mV.n().a(czj.b, Integer.valueOf($$1.a(4) + 1)), 2);
-         }
-
-         for (ha $$6 : ha.c.a) {
-            if ($$1.i() < 0.2F) {
-               gu $$7 = $$2.a($$6);
-               if ($$0.a_($$7).a(csn.G)) {
-                  jb.f.b(apl.aq).flatMap($$1x -> $$1x.a($$1)).map(he::a).ifPresent($$3x -> {
-                     dfa $$4x = $$3x.n();
-                     if ($$4x.b(cry.a)) {
-                        $$4x = $$4x.a(cry.a, $$6);
-                     }
-
-                     $$0.a($$7, $$4x, 2);
-                  });
+      for (int $$9 = 0; $$9 <= $$5; $$9++) {
+         for (int $$10 = 0; $$10 <= $$4; $$10++) {
+            for (int $$11 = 0; $$11 <= $$6; $$11++) {
+               $$8.d($$9 + $$2.u(), $$10 + $$2.v(), $$11 + $$2.w());
+               $$8.c(ha.a, $$7);
+               if (($$9 != 0 && $$9 != $$5 || $$10 != 0 && $$10 != $$4)
+                  && ($$11 != 0 && $$11 != $$6 || $$10 != 0 && $$10 != $$4)
+                  && ($$9 != 0 && $$9 != $$5 || $$11 != 0 && $$11 != $$6)
+                  && ($$9 == 0 || $$9 == $$5 || $$10 == 0 || $$10 == $$4 || $$11 == 0 || $$11 == $$6)
+                  && !($$1.i() < 0.1F)
+                  && !this.b($$0, $$1, $$8, $$3)) {
                }
             }
          }
-
-         return true;
-      } else {
-         return false;
       }
+
+      return true;
    }
 }

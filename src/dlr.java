@@ -1,22 +1,16 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Function;
 
-public interface dlr<P extends dlq> {
-   dlr<dlw> a = a("matching_blocks", dlw.a);
-   dlr<dlv> b = a("matching_block_tag", dlv.e);
-   dlr<dlx> c = a("matching_fluids", dlx.a);
-   dlr<dlt> d = a("has_sturdy_face", dlt.a);
-   dlr<dma> e = a("solid", dma.a);
-   dlr<dlz> f = a("replaceable", dlz.a);
-   dlr<dmd> g = a("would_survive", dmd.a);
-   dlr<dlu> h = a("inside_world_bounds", dlu.a);
-   dlr<dlp> i = a("any_of", dlp.a);
-   dlr<dlo> j = a("all_of", dlo.a);
-   dlr<dly> k = a("not", dly.a);
-   dlr<dmc> l = a("true", dmc.e);
+abstract class dlr implements dlp {
+   protected final List<dlp> e;
 
-   Codec<P> codec();
+   protected dlr(List<dlp> $$0) {
+      this.e = $$0;
+   }
 
-   private static <P extends dlq> dlr<P> a(String $$0, Codec<P> $$1) {
-      return hr.a(jb.P, $$0, () -> $$1);
+   public static <T extends dlr> Codec<T> a(Function<List<dlp>, T> $$0) {
+      return RecordCodecBuilder.create($$1 -> $$1.group(dlp.b.listOf().fieldOf("predicates").forGetter($$0xx -> $$0xx.e)).apply($$1, $$0));
    }
 }

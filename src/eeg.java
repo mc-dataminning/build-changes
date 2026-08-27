@@ -1,55 +1,129 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
-import org.slf4j.Logger;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public class eeg extends edt {
-   private static final Logger b = LogUtils.getLogger();
+public class eeg extends eds {
    public static final Codec<eeg> a = RecordCodecBuilder.create(
       $$0 -> a($$0)
-            .and($$0.group(egc.a.fieldOf("damage").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.d)))
+            .and(
+               $$0.group(
+                  Codec.BOOL.fieldOf("replace").orElse(false).forGetter($$0x -> $$0x.b),
+                  aqy.b.listOf().fieldOf("lore").forGetter($$0x -> $$0x.c),
+                  aqy.a(ecg.b.e, "entity").forGetter($$0x -> $$0x.d)
+               )
+            )
             .apply($$0, eeg::new)
    );
-   private final egb c;
-   private final boolean d;
+   private final boolean b;
+   private final List<tf> c;
+   private final Optional<ecg.b> d;
 
-   private eeg(List<efg> $$0, egb $$1, boolean $$2) {
+   public eeg(List<eff> $$0, boolean $$1, List<tf> $$2, Optional<ecg.b> $$3) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
+      this.b = $$1;
+      this.c = List.copyOf($$2);
+      this.d = $$3;
    }
 
    @Override
-   public edv b() {
-      return edw.j;
+   public edu b() {
+      return edv.u;
    }
 
    @Override
-   public Set<eep<?>> a() {
-      return this.c.a();
+   public Set<eeo<?>> a() {
+      return this.d.<Set<eeo<?>>>map($$0 -> Set.of($$0.a())).orElseGet(Set::of);
    }
 
    @Override
-   public ciy a(ciy $$0, ech $$1) {
-      if ($$0.i()) {
-         int $$2 = $$0.l();
-         float $$3 = this.d ? 1.0F - (float)$$0.k() / (float)$$2 : 0.0F;
-         float $$4 = 1.0F - arp.a(this.c.b($$1) + $$3, 0.0F, 1.0F);
-         $$0.b(arp.d($$4 * (float)$$2));
-      } else {
-         b.warn("Couldn't set damage of loot item {}", $$0);
+   public cix a(cix $$0, ecg $$1) {
+      qx $$2 = this.a($$0, !this.c.isEmpty());
+      if ($$2 != null) {
+         if (this.b) {
+            $$2.clear();
+         }
+
+         UnaryOperator<tf> $$3 = eeh.a($$1, this.d.orElse(null));
+         this.c.stream().map($$3).map(tf.a::a).map(ri::a).forEach($$2::add);
       }
 
       return $$0;
    }
 
-   public static edt.a<?> a(egb $$0) {
-      return a($$1 -> new eeg($$1, $$0, false));
+   @Nullable
+   private qx a(cix $$0, boolean $$1) {
+      qr $$2;
+      if ($$0.u()) {
+         $$2 = $$0.v();
+      } else {
+         if (!$$1) {
+            return null;
+         }
+
+         $$2 = new qr();
+         $$0.c($$2);
+      }
+
+      qr $$5;
+      if ($$2.b("display", 10)) {
+         $$5 = $$2.p("display");
+      } else {
+         if (!$$1) {
+            return null;
+         }
+
+         $$5 = new qr();
+         $$2.a("display", $$5);
+      }
+
+      if ($$5.b("Lore", 9)) {
+         return $$5.c("Lore", 8);
+      } else if ($$1) {
+         qx $$8 = new qx();
+         $$5.a("Lore", $$8);
+         return $$8;
+      } else {
+         return null;
+      }
    }
 
-   public static edt.a<?> a(egb $$0, boolean $$1) {
-      return a($$2 -> new eeg($$2, $$0, $$1));
+   public static eeg.a c() {
+      return new eeg.a();
+   }
+
+   public static class a extends eds.a<eeg.a> {
+      private boolean a;
+      private Optional<ecg.b> b = Optional.empty();
+      private final Builder<tf> c = ImmutableList.builder();
+
+      public eeg.a a(boolean $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public eeg.a a(ecg.b $$0) {
+         this.b = Optional.of($$0);
+         return this;
+      }
+
+      public eeg.a a(tf $$0) {
+         this.c.add($$0);
+         return this;
+      }
+
+      protected eeg.a a() {
+         return this;
+      }
+
+      @Override
+      public edt b() {
+         return new eeg(this.g(), this.a, this.c.build(), this.b);
+      }
    }
 }

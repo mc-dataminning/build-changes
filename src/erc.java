@@ -1,37 +1,34 @@
-import org.joml.Vector3f;
+import com.google.common.collect.Maps;
+import java.util.List;
+import java.util.Map;
+import org.apache.commons.compress.utils.Lists;
 
-public record erc(erc.c a, ere... b) {
-   public interface a {
-      Vector3f apply(Vector3f var1, float var2, ere[] var3, int var4, int var5, float var6);
-   }
+public record erc(float a, boolean b, Map<String, List<erb>> c) {
+   public static class a {
+      private final float a;
+      private final Map<String, List<erb>> b = Maps.newHashMap();
+      private boolean c;
 
-   public static class b {
-      public static final erc.a a = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         Vector3f $$6 = $$2[$$3].b();
-         Vector3f $$7 = $$2[$$4].b();
-         return $$6.lerp($$7, $$1, $$0).mul($$5);
-      };
-      public static final erc.a b = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         Vector3f $$6 = $$2[Math.max(0, $$3 - 1)].b();
-         Vector3f $$7 = $$2[$$3].b();
-         Vector3f $$8 = $$2[$$4].b();
-         Vector3f $$9 = $$2[Math.min($$2.length - 1, $$4 + 1)].b();
-         $$0.set(
-            arp.a($$1, $$6.x(), $$7.x(), $$8.x(), $$9.x()) * $$5,
-            arp.a($$1, $$6.y(), $$7.y(), $$8.y(), $$9.y()) * $$5,
-            arp.a($$1, $$6.z(), $$7.z(), $$8.z(), $$9.z()) * $$5
-         );
-         return $$0;
-      };
-   }
+      public static erc.a a(float $$0) {
+         return new erc.a($$0);
+      }
 
-   public interface c {
-      void apply(fhn var1, Vector3f var2);
-   }
+      private a(float $$0) {
+         this.a = $$0;
+      }
 
-   public static class d {
-      public static final erc.c a = fhn::a;
-      public static final erc.c b = fhn::b;
-      public static final erc.c c = fhn::c;
+      public erc.a a() {
+         this.c = true;
+         return this;
+      }
+
+      public erc.a a(String $$0, erb $$1) {
+         this.b.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
+         return this;
+      }
+
+      public erc b() {
+         return new erc(this.a, this.c, this.b);
+      }
    }
 }

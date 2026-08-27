@@ -1,19 +1,35 @@
-public class fsz extends ftu<byw, ffb<byw>> {
-   private static final aer a = new aer("textures/entity/zombie/zombie.png");
-   private final float i;
+public class fsz extends fsw<cbw> {
+   private static final aer a = new aer("textures/entity/illager/evoker_fangs.png");
+   private final feu<cbw> f;
 
-   public fsz(fso.a $$0, float $$1) {
-      super($$0, new fet($$0.a(fhm.ab)), 0.5F * $$1);
-      this.i = $$1;
-      this.a(new fwp<>(this, $$0.d()));
-      this.a(new fwm<>(this, new fet($$0.a(fhm.ac)), new fet($$0.a(fhm.ad)), $$0.g()));
+   public fsz(fsx.a $$0) {
+      super($$0);
+      this.f = new feu<>($$0.a(fhr.W));
    }
 
-   protected void a(byw $$0, elg $$1, float $$2) {
-      $$1.b(this.i, this.i, this.i);
+   public void a(cbw $$0, float $$1, float $$2, elf $$3, fnu $$4, int $$5) {
+      float $$6 = $$0.a($$2);
+      if ($$6 != 0.0F) {
+         float $$7 = 2.0F;
+         if ($$6 > 0.9F) {
+            $$7 *= (1.0F - $$6) / 0.1F;
+         }
+
+         $$3.a();
+         $$3.a(a.d.rotationDegrees(90.0F - $$0.dA()));
+         $$3.b(-$$7, -$$7, $$7);
+         float $$8 = 0.03125F;
+         $$3.a(0.0, -0.626, 0.0);
+         $$3.b(0.5F, 0.5F, 0.5F);
+         this.f.a($$0, $$6, 0.0F, 0.0F, $$0.dA(), $$0.dC());
+         elj $$9 = $$4.getBuffer(this.f.a(a));
+         this.f.a($$3, $$9, $$5, fyl.d, 1.0F, 1.0F, 1.0F, 1.0F);
+         $$3.b();
+         super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
    }
 
-   public aer a(byw $$0) {
+   public aer a(cbw $$0) {
       return a;
    }
 }

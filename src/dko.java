@@ -1,117 +1,110 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.function.Function;
 
-public record dko(dkr j, dfa k, dfa l, dkp m, dla.o n, List<cqt.d> o, int p, boolean q, boolean r, boolean s, boolean t) {
+public record dko(dkb b, dkb c, dkb d, dkb e, dkb f, dkb g, dkb h, dkb i, dkb j, dkb k, dkb l, dkb m, dkb n, dkb o, dkb p) {
    public static final Codec<dko> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               dkr.a.fieldOf("noise").forGetter(dko::f),
-               dfa.b.fieldOf("default_block").forGetter(dko::g),
-               dfa.b.fieldOf("default_fluid").forGetter(dko::h),
-               dkp.a.fieldOf("noise_router").forGetter(dko::i),
-               dla.o.b.fieldOf("surface_rule").forGetter(dko::j),
-               cqt.d.a.listOf().fieldOf("spawn_target").forGetter(dko::k),
-               Codec.INT.fieldOf("sea_level").forGetter(dko::l),
-               Codec.BOOL.fieldOf("disable_mob_generation").forGetter(dko::a),
-               Codec.BOOL.fieldOf("aquifers_enabled").forGetter(dko::b),
-               Codec.BOOL.fieldOf("ore_veins_enabled").forGetter(dko::c),
-               Codec.BOOL.fieldOf("legacy_random_source").forGetter(dko::n)
+               a("barrier", dko::a),
+               a("fluid_level_floodedness", dko::b),
+               a("fluid_level_spread", dko::c),
+               a("lava", dko::d),
+               a("temperature", dko::e),
+               a("vegetation", dko::f),
+               a("continents", dko::g),
+               a("erosion", dko::h),
+               a("depth", dko::i),
+               a("ridges", dko::j),
+               a("initial_density_without_jaggedness", dko::k),
+               a("final_density", dko::l),
+               a("vein_toggle", dko::m),
+               a("vein_ridged", dko::n),
+               a("vein_gap", dko::o)
             )
             .apply($$0, dko::new)
    );
-   public static final Codec<he<dko>> b = aen.a(jc.aw, a);
-   public static final aeq<dko> c = aeq.a(jc.aw, new aer("overworld"));
-   public static final aeq<dko> d = aeq.a(jc.aw, new aer("large_biomes"));
-   public static final aeq<dko> e = aeq.a(jc.aw, new aer("amplified"));
-   public static final aeq<dko> f = aeq.a(jc.aw, new aer("nether"));
-   public static final aeq<dko> g = aeq.a(jc.aw, new aer("end"));
-   public static final aeq<dko> h = aeq.a(jc.aw, new aer("caves"));
-   public static final aeq<dko> i = aeq.a(jc.aw, new aer("floating_islands"));
 
-   @Deprecated
-   public boolean a() {
-      return this.q;
+   private static RecordCodecBuilder<dko, dkb> a(String $$0, Function<dko, dkb> $$1) {
+      return dkb.d.fieldOf($$0).forGetter($$1);
    }
 
-   public boolean b() {
-      return this.r;
+   public dko a(dkb.f $$0) {
+      return new dko(
+         this.b.a($$0),
+         this.c.a($$0),
+         this.d.a($$0),
+         this.e.a($$0),
+         this.f.a($$0),
+         this.g.a($$0),
+         this.h.a($$0),
+         this.i.a($$0),
+         this.j.a($$0),
+         this.k.a($$0),
+         this.l.a($$0),
+         this.m.a($$0),
+         this.n.a($$0),
+         this.o.a($$0),
+         this.p.a($$0)
+      );
    }
 
-   public boolean c() {
-      return this.s;
+   public dkb a() {
+      return this.b;
    }
 
-   public dli.a d() {
-      return this.t ? dli.a.a : dli.a.b;
+   public dkb b() {
+      return this.c;
    }
 
-   public static void a(nm<dko> $$0) {
-      $$0.a(c, a($$0, false, false));
-      $$0.a(d, a($$0, false, true));
-      $$0.a(e, a($$0, true, false));
-      $$0.a(f, c($$0));
-      $$0.a(g, b($$0));
-      $$0.a(h, d($$0));
-      $$0.a(i, e($$0));
+   public dkb c() {
+      return this.d;
    }
 
-   private static dko b(nm<?> $$0) {
-      return new dko(dkr.d, csn.fz.n(), csn.a.n(), dkq.a($$0.a(jc.at)), nz.c(), List.of(), 0, true, false, false, true);
+   public dkb d() {
+      return this.e;
    }
 
-   private static dko c(nm<?> $$0) {
-      return new dko(dkr.c, csn.dW.n(), csn.H.n(), dkq.a($$0.a(jc.at), $$0.a(jc.ax)), nz.b(), List.of(), 32, false, false, false, true);
+   public dkb e() {
+      return this.f;
    }
 
-   private static dko a(nm<?> $$0, boolean $$1, boolean $$2) {
-      return new dko(dkr.b, csn.b.n(), csn.G.n(), dkq.a($$0.a(jc.at), $$0.a(jc.ax), $$2, $$1), nz.a(), new cra().a(), 63, false, true, true, false);
+   public dkb f() {
+      return this.g;
    }
 
-   private static dko d(nm<?> $$0) {
-      return new dko(dkr.e, csn.b.n(), csn.G.n(), dkq.b($$0.a(jc.at), $$0.a(jc.ax)), nz.a(false, true, true), List.of(), 32, false, false, false, true);
+   public dkb g() {
+      return this.h;
    }
 
-   private static dko e(nm<?> $$0) {
-      return new dko(dkr.f, csn.b.n(), csn.G.n(), dkq.c($$0.a(jc.at), $$0.a(jc.ax)), nz.a(false, false, false), List.of(), -64, false, false, false, true);
+   public dkb h() {
+      return this.i;
    }
 
-   public static dko e() {
-      return new dko(dkr.b, csn.b.n(), csn.a.n(), dkq.a(), nz.d(), List.of(), 63, true, false, false, false);
-   }
-
-   public dkr f() {
+   public dkb i() {
       return this.j;
    }
 
-   public dfa g() {
+   public dkb j() {
       return this.k;
    }
 
-   public dfa h() {
+   public dkb k() {
       return this.l;
    }
 
-   public dkp i() {
+   public dkb l() {
       return this.m;
    }
 
-   public dla.o j() {
+   public dkb m() {
       return this.n;
    }
 
-   public List<cqt.d> k() {
+   public dkb n() {
       return this.o;
    }
 
-   public int l() {
+   public dkb o() {
       return this.p;
-   }
-
-   public boolean m() {
-      return this.r;
-   }
-
-   public boolean n() {
-      return this.t;
    }
 }

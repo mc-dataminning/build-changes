@@ -18,8 +18,8 @@ public class cg extends cu<cg.a> {
    }
 
    public void a(akl $$0, bix $$1, List<bii> $$2) {
-      List<ech> $$3 = $$2.stream().map($$1x -> bo.b($$0, $$1x)).collect(Collectors.toList());
-      ech $$4 = bo.b($$0, $$1);
+      List<ecg> $$3 = $$2.stream().map($$1x -> bo.b($$0, $$1x)).collect(Collectors.toList());
+      ecg $$4 = bo.b($$0, $$1);
       this.a($$0, $$2x -> $$2x.a($$4, $$3));
    }
 
@@ -37,7 +37,7 @@ public class cg extends cu<cg.a> {
          return new cg.a(Optional.empty(), bo.a($$0), bo.a($$1));
       }
 
-      public boolean a(ech $$0, List<ech> $$1) {
+      public boolean a(ecg $$0, List<ecg> $$1) {
          return this.a.isPresent() && !this.a.get().a($$0) ? false : !this.b.isPresent() || !$$1.stream().noneMatch(this.b.get()::a);
       }
 

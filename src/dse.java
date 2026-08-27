@@ -1,75 +1,71 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-public class dse extends dsj {
-   public static final Codec<dse> a = drs.a.fieldOf("provider").xmap(dse::new, $$0 -> $$0.b).codec();
-   private final drs b;
+public class dse extends dsi {
+   public static final Codec<dse> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.b),
+               Codec.intRange(0, 16).fieldOf("exclusion_radius_xz").forGetter($$0x -> $$0x.c),
+               Codec.intRange(0, 16).fieldOf("exclusion_radius_y").forGetter($$0x -> $$0x.d),
+               drr.a.fieldOf("block_provider").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 16).fieldOf("required_empty_blocks").forGetter($$0x -> $$0x.f),
+               aqy.a(ha.g.listOf()).fieldOf("directions").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, dse::new)
+   );
+   protected final float b;
+   protected final int c;
+   protected final int d;
+   protected final drr e;
+   protected final int f;
+   protected final List<ha> g;
 
-   public dse(drs $$0) {
+   public dse(float $$0, int $$1, int $$2, drr $$3, int $$4, List<ha> $$5) {
       this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 
    @Override
-   protected dsk<?> a() {
-      return dsk.e;
+   public void a(dsi.a $$0) {
+      Set<gu> $$1 = new HashSet<>();
+      aru $$2 = $$0.b();
+
+      for (gu $$3 : ac.a($$0.d(), $$2)) {
+         ha $$4 = ac.a(this.g, $$2);
+         gu $$5 = $$3.a($$4);
+         if (!$$1.contains($$5) && $$2.i() < this.b && this.a($$0, $$3, $$4)) {
+            gu $$6 = $$5.b(-this.c, -this.d, -this.c);
+            gu $$7 = $$5.b(this.c, this.d, this.c);
+
+            for (gu $$8 : gu.a($$6, $$7)) {
+               $$1.add($$8.i());
+            }
+
+            $$0.a($$5, this.e.a($$2, $$5));
+         }
+      }
+   }
+
+   private boolean a(dsi.a $$0, gu $$1, ha $$2) {
+      for (int $$3 = 1; $$3 <= this.f; $$3++) {
+         gu $$4 = $$1.a($$2, $$3);
+         if (!$$0.a($$4)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
    @Override
-   public void a(dsj.a $$0) {
-      List<gu> $$1 = Lists.newArrayList();
-      List<gu> $$2 = $$0.e();
-      List<gu> $$3 = $$0.c();
-      if ($$2.isEmpty()) {
-         $$1.addAll($$3);
-      } else if (!$$3.isEmpty() && $$2.get(0).v() == $$3.get(0).v()) {
-         $$1.addAll($$3);
-         $$1.addAll($$2);
-      } else {
-         $$1.addAll($$2);
-      }
-
-      if (!$$1.isEmpty()) {
-         int $$4 = $$1.get(0).v();
-         $$1.stream().filter($$1x -> $$1x.v() == $$4).forEach($$1x -> {
-            this.a($$0, $$1x.g().e());
-            this.a($$0, $$1x.g(2).e());
-            this.a($$0, $$1x.g().e(2));
-            this.a($$0, $$1x.g(2).e(2));
-
-            for (int $$2x = 0; $$2x < 5; $$2x++) {
-               int $$3x = $$0.b().a(64);
-               int $$4x = $$3x % 8;
-               int $$5 = $$3x / 8;
-               if ($$4x == 0 || $$4x == 7 || $$5 == 0 || $$5 == 7) {
-                  this.a($$0, $$1x.b(-3 + $$4x, 0, -3 + $$5));
-               }
-            }
-         });
-      }
-   }
-
-   private void a(dsj.a $$0, gu $$1) {
-      for (int $$2 = -2; $$2 <= 2; $$2++) {
-         for (int $$3 = -2; $$3 <= 2; $$3++) {
-            if (Math.abs($$2) != 2 || Math.abs($$3) != 2) {
-               this.b($$0, $$1.b($$2, 0, $$3));
-            }
-         }
-      }
-   }
-
-   private void b(dsj.a $$0, gu $$1) {
-      for (int $$2 = 2; $$2 >= -3; $$2--) {
-         gu $$3 = $$1.b($$2);
-         if (dnn.a($$0.a(), $$3)) {
-            $$0.a($$3, this.b.a($$0.b(), $$1));
-            break;
-         }
-
-         if (!$$0.a($$3) && $$2 < 0) {
-            break;
-         }
-      }
+   protected dsj<?> a() {
+      return dsj.f;
    }
 }

@@ -1,22 +1,22 @@
-public class dbp extends csm implements dbo {
-   private final dbo.a d;
+public class dbp extends czo implements dbn {
+   private final dbn.a e;
 
-   public dbp(dbo.a $$0, dez.d $$1) {
+   public dbp(dbn.a $$0, dey.d $$1) {
       super($$1);
-      this.d = $$0;
+      this.e = $$0;
    }
 
    @Override
-   public void b(dfa $$0, akk $$1, gu $$2, aru $$3) {
+   public void b(dez $$0, akk $$1, gu $$2, aru $$3) {
       this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public boolean e_(dfa $$0) {
-      return dbo.c($$0.b()).isPresent();
+   public boolean e_(dez $$0) {
+      return dbn.c($$0.b()).isPresent();
    }
 
-   public dbo.a g() {
-      return this.d;
+   public dbn.a g() {
+      return this.e;
    }
 }

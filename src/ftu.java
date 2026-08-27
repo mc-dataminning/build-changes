@@ -1,100 +1,109 @@
-import org.joml.Matrix4f;
+import java.util.OptionalInt;
 
-public abstract class ftu<T extends bja, M extends feo<T>> extends ftp<T, M> {
-   public static final int h = 24;
+public class ftu<T extends bxy> extends fsw<T> {
+   private static final gbc g = gbc.c("item_frame", "map=false");
+   private static final gbc h = gbc.c("item_frame", "map=true");
+   private static final gbc i = gbc.c("glow_item_frame", "map=false");
+   private static final gbc j = gbc.c("glow_item_frame", "map=true");
+   public static final int a = 5;
+   public static final int f = 30;
+   private final ftv k;
+   private final fon l;
 
-   public ftu(fso.a $$0, M $$1, float $$2) {
-      super($$0, $$1, $$2);
+   public ftu(fsx.a $$0) {
+      super($$0);
+      this.k = $$0.b();
+      this.l = $$0.c();
    }
 
-   protected boolean a(T $$0) {
-      return super.b($$0) && ($$0.cB() || $$0.ac() && $$0 == this.c.c);
+   protected int a(T $$0, gu $$1) {
+      return $$0.ag() == bim.S ? Math.max(5, super.a($$0, $$1)) : super.a($$0, $$1);
    }
 
-   public boolean a(T $$0, fqn $$1, double $$2, double $$3, double $$4) {
-      if (super.a($$0, $$1, $$2, $$3, $$4)) {
-         return true;
-      } else {
-         bii $$5 = $$0.fP();
-         return $$5 != null ? $$1.a($$5.k_()) : false;
-      }
-   }
-
-   public void a(T $$0, float $$1, float $$2, elg $$3, fnl $$4, int $$5) {
+   public void a(T $$0, float $$1, float $$2, elf $$3, fnu $$4, int $$5) {
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      bii $$6 = $$0.fP();
-      if ($$6 != null) {
-         this.a($$0, $$2, $$3, $$4, $$6);
+      $$3.a();
+      ha $$6 = $$0.cD();
+      ehd $$7 = this.a($$0, $$2);
+      $$3.a(-$$7.a(), -$$7.b(), -$$7.c());
+      double $$8 = 0.46875;
+      $$3.a((double)$$6.j() * 0.46875, (double)$$6.k() * 0.46875, (double)$$6.l() * 0.46875);
+      $$3.a(a.b.rotationDegrees($$0.dC()));
+      $$3.a(a.d.rotationDegrees(180.0F - $$0.dA()));
+      boolean $$9 = $$0.cd();
+      cix $$10 = $$0.z();
+      if (!$$9) {
+         gbb $$11 = this.l.a().a();
+         gbc $$12 = this.a($$0, $$10);
+         $$3.a();
+         $$3.a(-0.5F, -0.5F, -0.5F);
+         this.l.b().a($$3.c(), $$4.getBuffer(foi.h()), null, $$11.a($$12), 1.0F, 1.0F, 1.0F, $$5, fyl.d);
+         $$3.b();
+      }
+
+      if (!$$10.b()) {
+         OptionalInt $$13 = $$0.A();
+         if ($$9) {
+            $$3.a(0.0F, 0.0F, 0.5F);
+         } else {
+            $$3.a(0.0F, 0.0F, 0.4375F);
+         }
+
+         int $$14 = $$13.isPresent() ? $$0.D() % 4 * 2 : $$0.D();
+         $$3.a(a.f.rotationDegrees((float)$$14 * 360.0F / 8.0F));
+         if ($$13.isPresent()) {
+            $$3.a(a.f.rotationDegrees(180.0F));
+            float $$15 = 0.0078125F;
+            $$3.b(0.0078125F, 0.0078125F, 0.0078125F);
+            $$3.a(-64.0F, -64.0F, 0.0F);
+            ebm $$16 = cje.a($$13.getAsInt(), $$0.dK());
+            $$3.a(0.0F, 0.0F, -1.0F);
+            if ($$16 != null) {
+               int $$17 = this.a($$0, 15728850, $$5);
+               eql.O().j.j().a($$3, $$4, $$13.getAsInt(), $$16, true, $$17);
+            }
+         } else {
+            int $$18 = this.a($$0, 15728880, $$5);
+            $$3.b(0.5F, 0.5F, 0.5F);
+            this.k.a($$10, ciu.i, $$18, fyl.d, $$3, $$4, $$0.dK(), $$0.ah());
+         }
+      }
+
+      $$3.b();
+   }
+
+   private int a(T $$0, int $$1, int $$2) {
+      return $$0.ag() == bim.S ? $$1 : $$2;
+   }
+
+   private gbc a(T $$0, cix $$1) {
+      boolean $$2 = $$0.ag() == bim.S;
+      if ($$1.a(cja.rf)) {
+         return $$2 ? j : h;
+      } else {
+         return $$2 ? i : g;
       }
    }
 
-   private <E extends bii> void a(T $$0, float $$1, elg $$2, fnl $$3, E $$4) {
-      $$2.a();
-      ehe $$5 = $$4.q($$1);
-      double $$6 = (double)(arp.i($$1, $$0.aV, $$0.aU) * (float) (Math.PI / 180.0)) + (Math.PI / 2);
-      ehe $$7 = $$0.p($$1);
-      double $$8 = Math.cos($$6) * $$7.e + Math.sin($$6) * $$7.c;
-      double $$9 = Math.sin($$6) * $$7.e - Math.cos($$6) * $$7.c;
-      double $$10 = arp.d((double)$$1, $$0.K, $$0.dp()) + $$8;
-      double $$11 = arp.d((double)$$1, $$0.L, $$0.dr()) + $$7.d;
-      double $$12 = arp.d((double)$$1, $$0.M, $$0.dv()) + $$9;
-      $$2.a($$8, $$7.d, $$9);
-      float $$13 = (float)($$5.c - $$10);
-      float $$14 = (float)($$5.d - $$11);
-      float $$15 = (float)($$5.e - $$12);
-      float $$16 = 0.025F;
-      elk $$17 = $$3.getBuffer(fnt.i());
-      Matrix4f $$18 = $$2.c().a();
-      float $$19 = arp.i($$13 * $$13 + $$15 * $$15) * 0.025F / 2.0F;
-      float $$20 = $$15 * $$19;
-      float $$21 = $$13 * $$19;
-      gu $$22 = gu.a($$0.j($$1));
-      gu $$23 = gu.a($$4.j($$1));
-      int $$24 = this.a($$0, $$22);
-      int $$25 = this.c.a($$4).a($$4, $$23);
-      int $$26 = $$0.dK().a(cpv.a, $$22);
-      int $$27 = $$0.dK().a(cpv.a, $$23);
-
-      for (int $$28 = 0; $$28 <= 24; $$28++) {
-         a($$17, $$18, $$13, $$14, $$15, $$24, $$25, $$26, $$27, 0.025F, 0.025F, $$20, $$21, $$28, false);
-      }
-
-      for (int $$29 = 24; $$29 >= 0; $$29--) {
-         a($$17, $$18, $$13, $$14, $$15, $$24, $$25, $$26, $$27, 0.025F, 0.0F, $$20, $$21, $$29, true);
-      }
-
-      $$2.b();
+   public ehd a(T $$0, float $$1) {
+      return new ehd((double)((float)$$0.cD().j() * 0.3F), -0.25, (double)((float)$$0.cD().l() * 0.3F));
    }
 
-   private static void a(
-      elk $$0,
-      Matrix4f $$1,
-      float $$2,
-      float $$3,
-      float $$4,
-      int $$5,
-      int $$6,
-      int $$7,
-      int $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      int $$13,
-      boolean $$14
-   ) {
-      float $$15 = (float)$$13 / 24.0F;
-      int $$16 = (int)arp.i($$15, (float)$$5, (float)$$6);
-      int $$17 = (int)arp.i($$15, (float)$$7, (float)$$8);
-      int $$18 = fnk.a($$16, $$17);
-      float $$19 = $$13 % 2 == ($$14 ? 1 : 0) ? 0.7F : 1.0F;
-      float $$20 = 0.5F * $$19;
-      float $$21 = 0.4F * $$19;
-      float $$22 = 0.3F * $$19;
-      float $$23 = $$2 * $$15;
-      float $$24 = $$3 > 0.0F ? $$3 * $$15 * $$15 : $$3 - $$3 * (1.0F - $$15) * (1.0F - $$15);
-      float $$25 = $$4 * $$15;
-      $$0.a($$1, $$23 - $$11, $$24 + $$10, $$25 + $$12).a($$20, $$21, $$22, 1.0F).b($$18).e();
-      $$0.a($$1, $$23 + $$11, $$24 + $$9 - $$10, $$25 - $$12).a($$20, $$21, $$22, 1.0F).b($$18).e();
+   public aer a(T $$0) {
+      return fyt.e;
+   }
+
+   protected boolean b(T $$0) {
+      if (eql.K() && !$$0.z().b() && $$0.z().A() && this.c.c == $$0) {
+         double $$1 = this.c.b($$0);
+         float $$2 = $$0.bU() ? 32.0F : 64.0F;
+         return $$1 < (double)($$2 * $$2);
+      } else {
+         return false;
+      }
+   }
+
+   protected void a(T $$0, tf $$1, elf $$2, fnu $$3, int $$4) {
+      super.a($$0, $$0.z().y(), $$2, $$3, $$4);
    }
 }

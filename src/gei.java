@@ -1,37 +1,74 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
+public class gei implements gek {
+   private static final int a = 600;
+   private static final tf b = tf.c("tutorial.punch_tree.title");
+   private static final tf c = tf.a("tutorial.punch_tree.description", gej.a("attack"));
+   private final gej d;
+   private eup e;
+   private int f;
+   private int g;
 
-public abstract class gei extends exz {
-   protected static final int k = 17;
-   protected static final int l = 7;
-   protected static final long m = 5368709120L;
-   protected static final int n = 5000268;
-   protected static final int o = 7105644;
-   protected static final int p = 8388479;
-   protected static final int q = 15553363;
-   protected static final int s = 13413468;
-   protected static final int t = -256;
-   protected static final int u = 3368635;
-   protected static final int v = 7107012;
-   protected static final int w = 8226750;
-   protected static final int x = 8;
-   private final List<geg> a = Lists.newArrayList();
-
-   public gei(tf $$0) {
-      super($$0);
+   public gei(gej $$0) {
+      this.d = $$0;
    }
 
-   protected static int h(int $$0) {
-      return 40 + $$0 * 13;
+   @Override
+   public void a() {
+      this.f++;
+      if (!this.d.f()) {
+         this.d.a(gel.f);
+      } else {
+         if (this.f == 1) {
+            fmw $$0 = this.d.e().s;
+            if ($$0 != null) {
+               if ($$0.fQ().a(apt.r)) {
+                  this.d.a(gel.e);
+                  return;
+               }
+
+               if (gef.a($$0)) {
+                  this.d.a(gel.e);
+                  return;
+               }
+            }
+         }
+
+         if ((this.f >= 600 || this.g > 3) && this.e == null) {
+            this.e = new eup(eup.a.c, b, c, true);
+            this.d.e().ay().a(this.e);
+         }
+      }
    }
 
-   protected geg a(geg $$0) {
-      this.a.add($$0);
-      return this.a($$0);
+   @Override
+   public void b() {
+      if (this.e != null) {
+         this.e.c();
+         this.e = null;
+      }
    }
 
-   public tf l() {
-      return te.a(this.a.stream().map(geg::a).collect(Collectors.toList()));
+   @Override
+   public void a(fin $$0, gu $$1, dez $$2, float $$3) {
+      boolean $$4 = $$2.a(apl.t);
+      if ($$4 && $$3 > 0.0F) {
+         if (this.e != null) {
+            this.e.a($$3);
+         }
+
+         if ($$3 >= 1.0F) {
+            this.d.a(gel.d);
+         }
+      } else if (this.e != null) {
+         this.e.a(0.0F);
+      } else if ($$4) {
+         this.g++;
+      }
+   }
+
+   @Override
+   public void a(cix $$0) {
+      if ($$0.a(apt.r)) {
+         this.d.a(gel.e);
+      }
    }
 }

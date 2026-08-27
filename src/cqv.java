@@ -1,57 +1,134 @@
-import com.google.common.collect.Sets;
-import com.mojang.datafixers.util.Pair;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import java.util.Set;
-import java.util.function.Predicate;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Function;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class cqv extends cqo implements cqm.a {
-   public static final Codec<cqv> b = cqk.c.fieldOf("biome").xmap(cqv::new, $$0 -> $$0.c).stable().codec();
-   private final he<cqk> c;
+public class cqv {
+   private static final Logger d = LogUtils.getLogger();
+   private static final float e = 0.1F;
+   public static final bfe<cqv.c> a = bfe.c();
+   public static final cqv b = new cqv.a().a();
+   public static final MapCodec<cqv> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 0.9999999F).optionalFieldOf("creature_spawn_probability", 0.1F).forGetter($$0x -> $$0x.f),
+               Codec.simpleMap(bjb.i, bfe.c(cqv.c.a).promotePartial(ac.a("Spawn data: ", d::error)), ash.a(bjb.values()))
+                  .fieldOf("spawners")
+                  .forGetter($$0x -> $$0x.g),
+               Codec.simpleMap(jb.h.q(), cqv.b.a, jb.h).fieldOf("spawn_costs").forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, cqv::new)
+   );
+   private final float f;
+   private final Map<bjb, bfe<cqv.c>> g;
+   private final Map<bim<?>, cqv.b> h;
 
-   public cqv(he<cqk> $$0) {
-      this.c = $$0;
+   cqv(float $$0, Map<bjb, bfe<cqv.c>> $$1, Map<bim<?>, cqv.b> $$2) {
+      this.f = $$0;
+      this.g = ImmutableMap.copyOf($$1);
+      this.h = ImmutableMap.copyOf($$2);
    }
 
-   @Override
-   protected Stream<he<cqk>> b() {
-      return Stream.of(this.c);
-   }
-
-   @Override
-   protected Codec<? extends cqo> a() {
-      return b;
-   }
-
-   @Override
-   public he<cqk> getNoiseBiome(int $$0, int $$1, int $$2, cqt.f $$3) {
-      return this.c;
-   }
-
-   @Override
-   public he<cqk> getNoiseBiome(int $$0, int $$1, int $$2) {
-      return this.c;
+   public bfe<cqv.c> a(bjb $$0) {
+      return this.g.getOrDefault($$0, a);
    }
 
    @Nullable
-   @Override
-   public Pair<gu, he<cqk>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<he<cqk>> $$5, aru $$6, boolean $$7, cqt.f $$8) {
-      if ($$5.test(this.c)) {
-         return $$7 ? Pair.of(new gu($$0, $$1, $$2), this.c) : Pair.of(new gu($$0 - $$3 + $$6.a($$3 * 2 + 1), $$1, $$2 - $$3 + $$6.a($$3 * 2 + 1)), this.c);
-      } else {
-         return null;
+   public cqv.b a(bim<?> $$0) {
+      return this.h.get($$0);
+   }
+
+   public float a() {
+      return this.f;
+   }
+
+   public static class a {
+      private final Map<bjb, List<cqv.c>> a = Stream.of(bjb.values()).collect(ImmutableMap.toImmutableMap($$0 -> $$0, $$0 -> Lists.newArrayList()));
+      private final Map<bim<?>, cqv.b> b = Maps.newLinkedHashMap();
+      private float c = 0.1F;
+
+      public cqv.a a(bjb $$0, cqv.c $$1) {
+         this.a.get($$0).add($$1);
+         return this;
+      }
+
+      public cqv.a a(bim<?> $$0, double $$1, double $$2) {
+         this.b.put($$0, new cqv.b($$2, $$1));
+         return this;
+      }
+
+      public cqv.a a(float $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public cqv a() {
+         return new cqv(
+            this.c,
+            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> bfe.a((List)$$0.getValue()))),
+            ImmutableMap.copyOf(this.b)
+         );
       }
    }
 
-   @Nullable
-   @Override
-   public Pair<gu, he<cqk>> a(gu $$0, int $$1, int $$2, int $$3, Predicate<he<cqk>> $$4, cqt.f $$5, cpp $$6) {
-      return $$4.test(this.c) ? Pair.of($$0, this.c) : null;
+   public static record b(double b, double c) {
+      public static final Codec<cqv.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.DOUBLE.fieldOf("energy_budget").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("charge").forGetter($$0x -> $$0x.c))
+               .apply($$0, cqv.b::new)
+      );
+
+      public double a() {
+         return this.b;
+      }
+
+      public double b() {
+         return this.c;
+      }
    }
 
-   @Override
-   public Set<he<cqk>> a(int $$0, int $$1, int $$2, int $$3, cqt.f $$4) {
-      return Sets.newHashSet(Set.of(this.c));
+   public static class c extends bfc.a {
+      public static final Codec<cqv.c> a = aqy.a(
+         RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     jb.h.q().fieldOf("type").forGetter($$0x -> $$0x.b),
+                     bfb.a.fieldOf("weight").forGetter(bfc.a::a),
+                     aqy.j.fieldOf("minCount").forGetter($$0x -> $$0x.c),
+                     aqy.j.fieldOf("maxCount").forGetter($$0x -> $$0x.d)
+                  )
+                  .apply($$0, cqv.c::new)
+         ),
+         (Function<cqv.c, DataResult<cqv.c>>)($$0 -> $$0.c > $$0.d
+               ? DataResult.error(() -> "minCount needs to be smaller or equal to maxCount")
+               : DataResult.success($$0))
+      );
+      public final bim<?> b;
+      public final int c;
+      public final int d;
+
+      public c(bim<?> $$0, int $$1, int $$2, int $$3) {
+         this($$0, bfb.a($$1), $$2, $$3);
+      }
+
+      public c(bim<?> $$0, bfb $$1, int $$2, int $$3) {
+         super($$1);
+         this.b = $$0.f() == bjb.h ? bim.av : $$0;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      @Override
+      public String toString() {
+         return bim.a(this.b) + "*(" + this.c + "-" + this.d + "):" + this.a();
+      }
    }
 }

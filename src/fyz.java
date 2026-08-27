@@ -1,123 +1,75 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.JsonOps;
+import java.io.BufferedReader;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import org.slf4j.Logger;
 
-public class fyz implements fyp {
-   static final Logger c = LogUtils.getLogger();
-   public static final Codec<fyz> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               aer.a.fieldOf("resource").forGetter($$0x -> $$0x.d),
-               aqy.a(fyz.a.a.listOf()).fieldOf("regions").forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.optionalFieldOf("divisor_x", 1.0).forGetter($$0x -> $$0x.f),
-               Codec.DOUBLE.optionalFieldOf("divisor_y", 1.0).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, fyz::new)
-   );
-   private final aer d;
-   private final List<fyz.a> e;
-   private final double f;
-   private final double g;
+public class fyz {
+   private static final Logger a = LogUtils.getLogger();
+   private static final aek b = new aek("atlases", ".json");
+   private final List<fyy> c;
 
-   public fyz(aer $$0, List<fyz.a> $$1, double $$2, double $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   private fyz(List<fyy> $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public void a(anm $$0, fyp.a $$1) {
-      aer $$2 = a.a(this.d);
-      Optional<ank> $$3 = $$0.getResource($$2);
-      if ($$3.isPresent()) {
-         fyv $$4 = new fyv($$2, $$3.get(), this.e.size());
-
-         for (fyz.a $$5 : this.e) {
-            $$1.a($$5.b, new fyz.b($$4, $$5, this.f, this.g));
-         }
-      } else {
-         c.warn("Missing sprite: {}", $$2);
-      }
-   }
-
-   @Override
-   public fyr a() {
-      return fys.d;
-   }
-
-   static record a(aer b, double c, double d, double e, double f) {
-      public static final Codec<fyz.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  aer.a.fieldOf("sprite").forGetter(fyz.a::a),
-                  Codec.DOUBLE.fieldOf("x").forGetter(fyz.a::b),
-                  Codec.DOUBLE.fieldOf("y").forGetter(fyz.a::c),
-                  Codec.DOUBLE.fieldOf("width").forGetter(fyz.a::d),
-                  Codec.DOUBLE.fieldOf("height").forGetter(fyz.a::e)
-               )
-               .apply($$0, fyz.a::new)
-      );
-
-      public aer a() {
-         return this.b;
-      }
-
-      public double b() {
-         return this.c;
-      }
-
-      public double c() {
-         return this.d;
-      }
-
-      public double d() {
-         return this.e;
-      }
-
-      public double e() {
-         return this.f;
-      }
-   }
-
-   static class b implements fyp.b {
-      private final fyv a;
-      private final fyz.a b;
-      private final double c;
-      private final double d;
-
-      b(fyv $$0, fyz.a $$1, double $$2, double $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      public fyf a(fyo $$0) {
-         try {
-            ekh $$1 = this.a.a();
-            double $$2 = (double)$$1.a() / this.c;
-            double $$3 = (double)$$1.b() / this.d;
-            int $$4 = arp.a(this.b.c * $$2);
-            int $$5 = arp.a(this.b.d * $$3);
-            int $$6 = arp.a(this.b.e * $$2);
-            int $$7 = arp.a(this.b.f * $$3);
-            ekh $$8 = new ekh(ekh.a.a, $$6, $$7, false);
-            $$1.a($$8, $$4, $$5, 0, 0, $$6, $$7, false, false);
-            return new fyf(this.b.b, new fzy($$6, $$7), $$8, ano.a);
-         } catch (Exception var16) {
-            fyz.c.error("Failed to unstitch region {}", this.b.b, var16);
-         } finally {
-            this.a.b();
+   public List<Function<fyx, fyo>> a(anm $$0) {
+      final Map<aer, fyy.b> $$1 = new HashMap<>();
+      fyy.a $$2 = new fyy.a() {
+         @Override
+         public void a(aer $$0, fyy.b $$1x) {
+            fyy.b $$2 = $$1.put($$0, $$1);
+            if ($$2 != null) {
+               $$2.a();
+            }
          }
 
-         return fyb.a();
+         @Override
+         public void a(Predicate<aer> $$0) {
+            Iterator<Entry<aer, fyy.b>> $$1 = $$1.entrySet().iterator();
+
+            while ($$1.hasNext()) {
+               Entry<aer, fyy.b> $$2 = $$1.next();
+               if ($$0.test($$2.getKey())) {
+                  $$2.getValue().a();
+                  $$1.remove();
+               }
+            }
+         }
+      };
+      this.c.forEach($$2x -> $$2x.a($$0, $$2));
+      Builder<Function<fyx, fyo>> $$3 = ImmutableList.builder();
+      $$3.add((Function<fyx, fyo>)$$0x -> fyk.a());
+      $$3.addAll($$1.values());
+      return $$3.build();
+   }
+
+   public static fyz a(anm $$0, aer $$1) {
+      aer $$2 = b.a($$1);
+      List<fyy> $$3 = new ArrayList<>();
+
+      for (ank $$4 : $$0.a($$2)) {
+         try (BufferedReader $$5 = $$4.e()) {
+            Dynamic<JsonElement> $$6 = new Dynamic(JsonOps.INSTANCE, JsonParser.parseReader($$5));
+            $$3.addAll((Collection<? extends fyy>)fzb.h.parse($$6).getOrThrow(false, a::error));
+         } catch (Exception var11) {
+            a.warn("Failed to parse atlas definition {} in pack {}", new Object[]{$$2, $$4.b(), var11});
+         }
       }
 
-      @Override
-      public void a() {
-         this.a.b();
-      }
+      return new fyz($$3);
    }
 }

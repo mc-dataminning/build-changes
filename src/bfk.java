@@ -7,10 +7,10 @@ public abstract class bfk<R extends Runnable> extends bfg<R> {
 
    @Override
    public boolean at() {
-      return this.bs() || super.at();
+      return this.br() || super.at();
    }
 
-   protected boolean bs() {
+   protected boolean br() {
       return this.b != 0;
    }
 

@@ -1,68 +1,29 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class eei extends edt {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Codec<eei> a = RecordCodecBuilder.create(
-      $$0 -> a($$0).and($$0.group(aqy.a(aqy.b, "name").forGetter($$0x -> $$0x.c), aqy.a(ech.b.e, "entity").forGetter($$0x -> $$0x.d))).apply($$0, eei::new)
-   );
-   private final Optional<tf> c;
-   private final Optional<ech.b> d;
+public class eei extends eds {
+   public static final Codec<eei> a = RecordCodecBuilder.create($$0 -> a($$0).and(rl.i.fieldOf("tag").forGetter($$0x -> $$0x.b)).apply($$0, eei::new));
+   private final qr b;
 
-   private eei(List<efg> $$0, Optional<tf> $$1, Optional<ech.b> $$2) {
+   private eei(List<eff> $$0, qr $$1) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
+      this.b = $$1;
    }
 
    @Override
-   public edv b() {
-      return edw.l;
+   public edu b() {
+      return edv.g;
    }
 
    @Override
-   public Set<eep<?>> a() {
-      return this.d.<Set<eep<?>>>map($$0 -> Set.of($$0.a())).orElse(Set.of());
-   }
-
-   public static UnaryOperator<tf> a(ech $$0, @Nullable ech.b $$1) {
-      if ($$1 != null) {
-         bii $$2 = $$0.c($$1.a());
-         if ($$2 != null) {
-            dr $$3 = $$2.dc().a(2);
-            return $$2x -> {
-               try {
-                  return th.a($$3, $$2x, $$2, 0);
-               } catch (CommandSyntaxException var4) {
-                  b.warn("Failed to resolve text component", var4);
-                  return $$2x;
-               }
-            };
-         }
-      }
-
-      return $$0x -> $$0x;
-   }
-
-   @Override
-   public ciy a(ciy $$0, ech $$1) {
-      this.c.ifPresent($$2 -> $$0.a(a($$1, this.d.orElse(null)).apply($$2)));
+   public cix a(cix $$0, ecg $$1) {
+      $$0.w().a(this.b);
       return $$0;
    }
 
-   public static edt.a<?> a(tf $$0) {
-      return a($$1 -> new eei($$1, Optional.of($$0), Optional.empty()));
-   }
-
-   public static edt.a<?> a(tf $$0, ech.b $$1) {
-      return a($$2 -> new eei($$2, Optional.of($$0), Optional.of($$1)));
+   @Deprecated
+   public static eds.a<?> a(qr $$0) {
+      return a($$1 -> new eei($$1, $$0));
    }
 }

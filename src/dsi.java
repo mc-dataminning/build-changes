@@ -1,59 +1,66 @@
 import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Comparator;
+import java.util.Set;
+import java.util.function.BiConsumer;
 
-public class dsi extends dsj {
-   public static final Codec<dsi> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(dsi::new, $$0 -> $$0.b).codec();
-   private final float b;
+public abstract class dsi {
+   public static final Codec<dsi> h = jb.aa.q().dispatch(dsi::a, dsj::a);
 
-   @Override
-   protected dsk<?> a() {
-      return dsk.b;
-   }
+   protected abstract dsj<?> a();
 
-   public dsi(float $$0) {
-      this.b = $$0;
-   }
+   public abstract void a(dsi.a var1);
 
-   @Override
-   public void a(dsj.a $$0) {
-      aru $$1 = $$0.b();
-      $$0.d().forEach($$2 -> {
-         if ($$1.i() < this.b) {
-            gu $$3 = $$2.g();
-            if ($$0.a($$3)) {
-               a($$3, dbg.c, $$0);
-            }
-         }
+   public static final class a {
+      private final cpr a;
+      private final BiConsumer<gu, dez> b;
+      private final aru c;
+      private final ObjectArrayList<gu> d;
+      private final ObjectArrayList<gu> e;
+      private final ObjectArrayList<gu> f;
 
-         if ($$1.i() < this.b) {
-            gu $$4 = $$2.h();
-            if ($$0.a($$4)) {
-               a($$4, dbg.e, $$0);
-            }
-         }
+      public a(cpr $$0, BiConsumer<gu, dez> $$1, aru $$2, Set<gu> $$3, Set<gu> $$4, Set<gu> $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.f = new ObjectArrayList($$5);
+         this.d = new ObjectArrayList($$3);
+         this.e = new ObjectArrayList($$4);
+         this.d.sort(Comparator.comparingInt(hz::v));
+         this.e.sort(Comparator.comparingInt(hz::v));
+         this.f.sort(Comparator.comparingInt(hz::v));
+      }
 
-         if ($$1.i() < this.b) {
-            gu $$5 = $$2.e();
-            if ($$0.a($$5)) {
-               a($$5, dbg.d, $$0);
-            }
-         }
+      public void a(gu $$0, dfq $$1) {
+         this.a($$0, csm.ff.n().a($$1, Boolean.valueOf(true)));
+      }
 
-         if ($$1.i() < this.b) {
-            gu $$6 = $$2.f();
-            if ($$0.a($$6)) {
-               a($$6, dbg.b, $$0);
-            }
-         }
-      });
-   }
+      public void a(gu $$0, dez $$1) {
+         this.b.accept($$0, $$1);
+      }
 
-   private static void a(gu $$0, dfr $$1, dsj.a $$2) {
-      $$2.a($$0, $$1);
-      int $$3 = 4;
+      public boolean a(gu $$0) {
+         return this.a.a($$0, dey.a::i);
+      }
 
-      for (gu var4 = $$0.d(); $$2.a(var4) && $$3 > 0; $$3--) {
-         $$2.a(var4, $$1);
-         var4 = var4.d();
+      public cpr a() {
+         return this.a;
+      }
+
+      public aru b() {
+         return this.c;
+      }
+
+      public ObjectArrayList<gu> c() {
+         return this.d;
+      }
+
+      public ObjectArrayList<gu> d() {
+         return this.e;
+      }
+
+      public ObjectArrayList<gu> e() {
+         return this.f;
       }
    }
 }

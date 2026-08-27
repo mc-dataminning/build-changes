@@ -1,75 +1,49 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+public class exa extends eya {
+   private static final aer a = new aer("textures/gui/demo_background.png");
+   private esz b = esz.a;
+   private esz c = esz.a;
 
-public class exa extends exz {
-   private static final tf a = tf.c("addServer.enterIp");
-   private esh b;
-   private final fis c;
-   private esq k;
-   private final BooleanConsumer l;
-   private final exz m;
-
-   public exa(exz $$0, BooleanConsumer $$1, fis $$2) {
-      super(tf.c("selectServer.direct"));
-      this.m = $$0;
-      this.c = $$2;
-      this.l = $$1;
+   public exa() {
+      super(tf.c("demo.help.title"));
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (!this.b.i || this.t() != this.k || $$0 != 257 && $$0 != 335) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         this.l();
-         return true;
-      }
+   protected void aC_() {
+      int $$0 = -16;
+      this.d(esg.a(tf.c("demo.help.buy"), $$0x -> {
+         $$0x.i = false;
+         ac.i().a("https://aka.ms/BuyMinecraftJava");
+      }).a(this.g / 2 - 116, this.h / 2 + 62 + -16, 114, 20).a());
+      this.d(esg.a(tf.c("demo.help.later"), $$0x -> {
+         this.f.a(null);
+         this.f.n.i();
+      }).a(this.g / 2 + 2, this.h / 2 + 62 + -16, 114, 20).a());
+      eqp $$1 = this.f.m;
+      this.b = esz.a(
+         this.i,
+         tf.a("demo.help.movementShort", $$1.x.k(), $$1.y.k(), $$1.z.k(), $$1.A.k()),
+         tf.c("demo.help.movementMouse"),
+         tf.a("demo.help.jump", $$1.B.k()),
+         tf.a("demo.help.inventory", $$1.E.k())
+      );
+      this.c = esz.a(this.i, tf.c("demo.help.fullWrapped"), 218);
    }
 
    @Override
-   protected void aE_() {
-      this.k = new esq(this.i, this.g / 2 - 100, 116, 200, 20, tf.c("addServer.enterIp"));
-      this.k.k(128);
-      this.k.a(this.f.m.ae);
-      this.k.b($$0 -> this.B());
-      this.e(this.k);
-      this.b = this.d(esh.a(tf.c("selectServer.select"), $$0 -> this.l()).a(this.g / 2 - 100, this.h / 4 + 96 + 12, 200, 20).a());
-      this.d(esh.a(te.e, $$0 -> this.l.accept(false)).a(this.g / 2 - 100, this.h / 4 + 120 + 12, 200, 20).a());
-      this.c(this.k);
-      this.B();
+   public void b(erv $$0, int $$1, int $$2, float $$3) {
+      super.b($$0, $$1, $$2, $$3);
+      int $$4 = (this.g - 248) / 2;
+      int $$5 = (this.h - 166) / 2;
+      $$0.a(a, $$4, $$5, 0, 0, 248, 166);
    }
 
    @Override
-   public void a(eqm $$0, int $$1, int $$2) {
-      String $$3 = this.k.a();
-      this.b($$0, $$1, $$2);
-      this.k.a($$3);
-   }
-
-   private void l() {
-      this.c.b = this.k.a();
-      this.l.accept(true);
-   }
-
-   @Override
-   public void au_() {
-      this.f.a(this.m);
-   }
-
-   @Override
-   public void h() {
-      this.f.m.ae = this.k.a();
-      this.f.m.aq();
-   }
-
-   private void B() {
-      this.b.i = fjp.b(this.k.a());
-   }
-
-   @Override
-   public void a(erw $$0, int $$1, int $$2, float $$3) {
+   public void a(erv $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
-      $$0.b(this.i, a, this.g / 2 - 100 + 1, 100, 10526880);
-      this.k.a($$0, $$1, $$2, $$3);
+      int $$4 = (this.g - 248) / 2 + 10;
+      int $$5 = (this.h - 166) / 2 + 8;
+      $$0.a(this.i, this.e, $$4, $$5, 2039583, false);
+      $$5 = this.b.c($$0, $$4, $$5 + 12, 12, 5197647);
+      this.c.c($$0, $$4, $$5 + 20, 9, 2039583);
    }
 }

@@ -1,115 +1,208 @@
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonSyntaxException;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntComparators;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
+import javax.annotation.Nullable;
 
-public class clx extends clt {
-   private static final cly a = cly.a(cjb.tf, cjb.oF, cjb.rt, cjb.tr, cjb.ts, cjb.tv, cjb.tt, cjb.tw, cjb.tu, cjb.tx);
-   private static final cly b = cly.a(cjb.nK);
-   private static final cly c = cly.a(cjb.qk);
-   private static final Map<cit, cic.a> d = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(cjb.tf, cic.a.b);
-      $$0.put(cjb.oF, cic.a.e);
-      $$0.put(cjb.rt, cic.a.c);
-      $$0.put(cjb.tr, cic.a.d);
-      $$0.put(cjb.ts, cic.a.d);
-      $$0.put(cjb.tv, cic.a.d);
-      $$0.put(cjb.tt, cic.a.d);
-      $$0.put(cjb.tw, cic.a.d);
-      $$0.put(cjb.tu, cic.a.d);
-      $$0.put(cjb.tx, cic.a.d);
-   });
-   private static final cly e = cly.a(cjb.oG);
+public final class clx implements Predicate<cix> {
+   public static final clx a = new clx(Stream.empty());
+   private final clx.c[] b;
+   @Nullable
+   private cix[] c;
+   @Nullable
+   private IntList d;
 
-   public clx(aer $$0, clr $$1) {
-      super($$0, $$1);
+   private clx(Stream<? extends clx.c> $$0) {
+      this.b = $$0.toArray(clx.c[]::new);
    }
 
-   public boolean a(ces $$0, cpm $$1) {
-      boolean $$2 = false;
-      boolean $$3 = false;
-      boolean $$4 = false;
-      boolean $$5 = false;
-      boolean $$6 = false;
-
-      for (int $$7 = 0; $$7 < $$0.b(); $$7++) {
-         ciy $$8 = $$0.a($$7);
-         if (!$$8.b()) {
-            if (a.a($$8)) {
-               if ($$4) {
-                  return false;
-               }
-
-               $$4 = true;
-            } else if (c.a($$8)) {
-               if ($$6) {
-                  return false;
-               }
-
-               $$6 = true;
-            } else if (b.a($$8)) {
-               if ($$5) {
-                  return false;
-               }
-
-               $$5 = true;
-            } else if (e.a($$8)) {
-               if ($$2) {
-                  return false;
-               }
-
-               $$2 = true;
-            } else {
-               if (!($$8.d() instanceof chn)) {
-                  return false;
-               }
-
-               $$3 = true;
-            }
-         }
+   public cix[] a() {
+      if (this.c == null) {
+         this.c = Arrays.stream(this.b).flatMap($$0 -> $$0.a().stream()).distinct().toArray(cix[]::new);
       }
 
-      return $$2 && $$3;
+      return this.c;
    }
 
-   public ciy a(ces $$0, hs $$1) {
-      ciy $$2 = new ciy(cjb.tB);
-      qr $$3 = $$2.a("Explosion");
-      cic.a $$4 = cic.a.a;
-      List<Integer> $$5 = Lists.newArrayList();
-
-      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
-         ciy $$7 = $$0.a($$6);
-         if (!$$7.b()) {
-            if (a.a($$7)) {
-               $$4 = d.get($$7.d());
-            } else if (c.a($$7)) {
-               $$3.a("Flicker", true);
-            } else if (b.a($$7)) {
-               $$3.a("Trail", true);
-            } else if ($$7.d() instanceof chn) {
-               $$5.add(((chn)$$7.d()).d().f());
+   public boolean a(@Nullable cix $$0) {
+      if ($$0 == null) {
+         return false;
+      } else if (this.d()) {
+         return $$0.b();
+      } else {
+         for (cix $$1 : this.a()) {
+            if ($$1.a($$0.d())) {
+               return true;
             }
          }
+
+         return false;
+      }
+   }
+
+   public IntList b() {
+      if (this.d == null) {
+         cix[] $$0 = this.a();
+         this.d = new IntArrayList($$0.length);
+
+         for (cix $$1 : $$0) {
+            this.d.add(cbq.c($$1));
+         }
+
+         this.d.sort(IntComparators.NATURAL_COMPARATOR);
       }
 
-      $$3.b("Colors", $$5);
-      $$3.a("Type", (byte)$$4.a());
-      return $$2;
+      return this.d;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public void a(si $$0) {
+      $$0.a(Arrays.asList(this.a()), si::a);
    }
 
-   @Override
-   public ciy a(hs $$0) {
-      return new ciy(cjb.tB);
+   public JsonElement c() {
+      if (this.b.length == 1) {
+         return this.b[0].b();
+      } else {
+         JsonArray $$0 = new JsonArray();
+
+         for (clx.c $$1 : this.b) {
+            $$0.add($$1.b());
+         }
+
+         return $$0;
+      }
    }
 
-   @Override
-   public cmd<?> aj_() {
-      return cmd.h;
+   public boolean d() {
+      return this.b.length == 0;
+   }
+
+   private static clx b(Stream<? extends clx.c> $$0) {
+      clx $$1 = new clx($$0);
+      return $$1.d() ? a : $$1;
+   }
+
+   public static clx e() {
+      return a;
+   }
+
+   public static clx a(cpk... $$0) {
+      return a(Arrays.stream($$0).map(cix::new));
+   }
+
+   public static clx a(cix... $$0) {
+      return a(Arrays.stream($$0));
+   }
+
+   public static clx a(Stream<cix> $$0) {
+      return b($$0.filter($$0x -> !$$0x.b()).map(clx.a::new));
+   }
+
+   public static clx a(aqa<cis> $$0) {
+      return b(Stream.of(new clx.b($$0)));
+   }
+
+   public static clx b(si $$0) {
+      return b($$0.<cix>a(si::q).stream().map(clx.a::new));
+   }
+
+   public static clx a(@Nullable JsonElement $$0) {
+      return a($$0, true);
+   }
+
+   public static clx a(@Nullable JsonElement $$0, boolean $$1) {
+      if ($$0 == null || $$0.isJsonNull()) {
+         throw new JsonSyntaxException("Item cannot be null");
+      } else if ($$0.isJsonObject()) {
+         return b(Stream.of(a($$0.getAsJsonObject())));
+      } else if ($$0.isJsonArray()) {
+         JsonArray $$2 = $$0.getAsJsonArray();
+         if ($$2.size() == 0 && !$$1) {
+            throw new JsonSyntaxException("Item array cannot be empty, at least one item must be defined");
+         } else {
+            return b(StreamSupport.<JsonElement>stream($$2.spliterator(), false).map($$0x -> a(arg.m($$0x, "item"))));
+         }
+      } else {
+         throw new JsonSyntaxException("Expected item to be object or array of objects");
+      }
+   }
+
+   private static clx.c a(JsonObject $$0) {
+      if ($$0.has("item") && $$0.has("tag")) {
+         throw new JsonParseException("An ingredient entry is either a tag or an item, not both");
+      } else if ($$0.has("item")) {
+         cis $$1 = cmf.b($$0);
+         return new clx.a(new cix($$1));
+      } else if ($$0.has("tag")) {
+         aer $$2 = new aer(arg.i($$0, "tag"));
+         aqa<cis> $$3 = aqa.a(jc.D, $$2);
+         return new clx.b($$3);
+      } else {
+         throw new JsonParseException("An ingredient entry needs either a tag or an item");
+      }
+   }
+
+   static class a implements clx.c {
+      private final cix a;
+
+      a(cix $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public Collection<cix> a() {
+         return Collections.singleton(this.a);
+      }
+
+      @Override
+      public JsonObject b() {
+         JsonObject $$0 = new JsonObject();
+         $$0.addProperty("item", jb.i.b(this.a.d()).toString());
+         return $$0;
+      }
+   }
+
+   static class b implements clx.c {
+      private final aqa<cis> a;
+
+      b(aqa<cis> $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public Collection<cix> a() {
+         List<cix> $$0 = Lists.newArrayList();
+
+         for (he<cis> $$1 : jb.i.c(this.a)) {
+            $$0.add(new cix($$1));
+         }
+
+         return $$0;
+      }
+
+      @Override
+      public JsonObject b() {
+         JsonObject $$0 = new JsonObject();
+         $$0.addProperty("tag", this.a.b().toString());
+         return $$0;
+      }
+   }
+
+   interface c {
+      Collection<cix> a();
+
+      JsonObject b();
    }
 }

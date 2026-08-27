@@ -1,11 +1,11 @@
-public class cnd extends cnf {
-   protected cnd(cnf.a $$0, bin... $$1) {
-      super($$0, cng.j, $$1);
+public class cnd extends cne {
+   protected cnd(cne.a $$0, bin... $$1) {
+      super($$0, cnf.g, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 5 + ($$0 - 1) * 8;
+      return 1 + 10 * ($$0 - 1);
    }
 
    @Override
@@ -15,15 +15,11 @@ public class cnd extends cnf {
 
    @Override
    public int a() {
-      return 3;
+      return 5;
    }
 
    @Override
-   public boolean a(ciy $$0) {
-      return $$0.i() ? true : super.a($$0);
-   }
-
-   public static boolean a(ciy $$0, int $$1, aru $$2) {
-      return $$0.d() instanceof cgi && $$2.i() < 0.6F ? false : $$2.a($$1 + 1) > 0;
+   public boolean a(cix $$0) {
+      return $$0.a(cja.rg) ? true : super.a($$0);
    }
 }

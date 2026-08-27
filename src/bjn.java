@@ -1,3 +1,3 @@
 public interface bjn {
-   void a(btv var1, bii var2);
+   void a(btu var1, bii var2);
 }

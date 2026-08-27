@@ -1,68 +1,131 @@
-public class cwv {
-   public static final int a = 1000;
-   public static final int b = 1001;
-   public static final int c = 1002;
-   public static final int d = 1003;
-   public static final int e = 1004;
-   public static final int f = 1009;
-   public static final int g = 1010;
-   public static final int h = 1011;
-   public static final int i = 1015;
-   public static final int j = 1016;
-   public static final int k = 1017;
-   public static final int l = 1018;
-   public static final int m = 1019;
-   public static final int n = 1020;
-   public static final int o = 1021;
-   public static final int p = 1022;
-   public static final int q = 1023;
-   public static final int r = 1024;
-   public static final int s = 1025;
-   public static final int t = 1026;
-   public static final int u = 1027;
-   public static final int v = 1028;
-   public static final int w = 1029;
-   public static final int x = 1030;
-   public static final int y = 1031;
-   public static final int z = 1032;
-   public static final int A = 1033;
-   public static final int B = 1034;
-   public static final int C = 1035;
-   public static final int D = 1038;
-   public static final int E = 1039;
-   public static final int F = 1040;
-   public static final int G = 1041;
-   public static final int H = 1042;
-   public static final int I = 1043;
-   public static final int J = 1044;
-   public static final int K = 1045;
-   public static final int L = 1046;
-   public static final int M = 1047;
-   public static final int N = 1048;
-   public static final int O = 1500;
-   public static final int P = 1501;
-   public static final int Q = 1502;
-   public static final int R = 1503;
-   public static final int S = 1504;
-   public static final int T = 1505;
-   public static final int U = 2000;
-   public static final int V = 2001;
-   public static final int W = 2002;
-   public static final int X = 2003;
-   public static final int Y = 2004;
-   public static final int Z = 2005;
-   public static final int aa = 2006;
-   public static final int ab = 2007;
-   public static final int ac = 2008;
-   public static final int ad = 2009;
-   public static final int ae = 3000;
-   public static final int af = 3001;
-   public static final int ag = 3002;
-   public static final int ah = 3003;
-   public static final int ai = 3004;
-   public static final int aj = 3005;
-   public static final int ak = 3006;
-   public static final int al = 3007;
-   public static final int am = 3008;
-   public static final int an = 3009;
+public class cwv extends cvb {
+   public static final dfq a = dfp.w;
+   protected static final int b = 6;
+   protected static final int c = 6;
+   protected static final int d = 8;
+   protected static final ehw e = csl.a(5.0, 4.0, 10.0, 11.0, 12.0, 16.0);
+   protected static final ehw f = csl.a(5.0, 4.0, 0.0, 11.0, 12.0, 6.0);
+   protected static final ehw g = csl.a(10.0, 4.0, 5.0, 16.0, 12.0, 11.0);
+   protected static final ehw h = csl.a(0.0, 4.0, 5.0, 6.0, 12.0, 11.0);
+   protected static final ehw i = csl.a(5.0, 0.0, 4.0, 11.0, 6.0, 12.0);
+   protected static final ehw j = csl.a(4.0, 0.0, 5.0, 12.0, 6.0, 11.0);
+   protected static final ehw k = csl.a(5.0, 10.0, 4.0, 11.0, 16.0, 12.0);
+   protected static final ehw l = csl.a(4.0, 10.0, 5.0, 12.0, 16.0, 11.0);
+
+   protected cwv(dey.d $$0) {
+      super($$0);
+      this.k(this.C.b().a(aC, ha.c).a(a, Boolean.valueOf(false)).a(I, dfk.b));
+   }
+
+   @Override
+   public ehw a(dez $$0, cor $$1, gu $$2, ehi $$3) {
+      switch ((dfk)$$0.c(I)) {
+         case a:
+            switch ($$0.c(aC).o()) {
+               case a:
+                  return j;
+               case c:
+               default:
+                  return i;
+            }
+         case b:
+            switch ((ha)$$0.c(aC)) {
+               case f:
+                  return h;
+               case e:
+                  return g;
+               case d:
+                  return f;
+               case c:
+               default:
+                  return e;
+            }
+         case c:
+         default:
+            switch ($$0.c(aC).o()) {
+               case a:
+                  return l;
+               case c:
+               default:
+                  return k;
+            }
+      }
+   }
+
+   @Override
+   public bgq a(dez $$0, cpl $$1, gu $$2, cbm $$3, bgp $$4, egz $$5) {
+      if ($$1.B) {
+         dez $$6 = $$0.a(a);
+         if ($$6.c(a)) {
+            a($$6, $$1, $$2, 1.0F);
+         }
+
+         return bgq.a;
+      } else {
+         dez $$7 = this.d($$0, $$1, $$2);
+         float $$8 = $$7.c(a) ? 0.6F : 0.5F;
+         $$1.a(null, $$2, aow.ms, aox.e, 0.3F, $$8);
+         $$1.a($$3, $$7.c(a) ? djj.a : djj.e, $$2);
+         return bgq.b;
+      }
+   }
+
+   public dez d(dez $$0, cpl $$1, gu $$2) {
+      $$0 = $$0.a(a);
+      $$1.a($$2, $$0, 3);
+      this.e($$0, $$1, $$2);
+      return $$0;
+   }
+
+   private static void a(dez $$0, cpm $$1, gu $$2, float $$3) {
+      ha $$4 = $$0.c(aC).g();
+      ha $$5 = h($$0).g();
+      double $$6 = (double)$$2.u() + 0.5 + 0.1 * (double)$$4.j() + 0.2 * (double)$$5.j();
+      double $$7 = (double)$$2.v() + 0.5 + 0.1 * (double)$$4.k() + 0.2 * (double)$$5.k();
+      double $$8 = (double)$$2.w() + 0.5 + 0.1 * (double)$$4.l() + 0.2 * (double)$$5.l();
+      $$1.a(new ip(ip.a, $$3), $$6, $$7, $$8, 0.0, 0.0, 0.0);
+   }
+
+   @Override
+   public void a(dez $$0, cpl $$1, gu $$2, aru $$3) {
+      if ($$0.c(a) && $$3.i() < 0.25F) {
+         a($$0, $$1, $$2, 0.5F);
+      }
+   }
+
+   @Override
+   public void a(dez $$0, cpl $$1, gu $$2, dez $$3, boolean $$4) {
+      if (!$$4 && !$$0.a($$3.b())) {
+         if ($$0.c(a)) {
+            this.e($$0, $$1, $$2);
+         }
+
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   public int a(dez $$0, cor $$1, gu $$2, ha $$3) {
+      return $$0.c(a) ? 15 : 0;
+   }
+
+   @Override
+   public int b(dez $$0, cor $$1, gu $$2, ha $$3) {
+      return $$0.c(a) && h($$0) == $$3 ? 15 : 0;
+   }
+
+   @Override
+   public boolean f_(dez $$0) {
+      return true;
+   }
+
+   private void e(dez $$0, cpl $$1, gu $$2) {
+      $$1.a($$2, this);
+      $$1.a($$2.a(h($$0).g()), this);
+   }
+
+   @Override
+   protected void a(dfa.a<csl, dez> $$0) {
+      $$0.a(I, aC, a);
+   }
 }

@@ -99,7 +99,7 @@ public class arg {
       return $$0.has($$1) ? a($$0.get($$1), $$1) : $$2;
    }
 
-   public static he<cit> b(JsonElement $$0, String $$1) {
+   public static he<cis> b(JsonElement $$0, String $$1) {
       if ($$0.isJsonPrimitive()) {
          String $$2 = $$0.getAsString();
          return jb.i
@@ -110,7 +110,7 @@ public class arg {
       }
    }
 
-   public static he<cit> j(JsonObject $$0, String $$1) {
+   public static he<cis> j(JsonObject $$0, String $$1) {
       if ($$0.has($$1)) {
          return b($$0.get($$1), $$1);
       } else {
@@ -120,7 +120,7 @@ public class arg {
 
    @Nullable
    @Contract("_,_,!null->!null;_,_,null->_")
-   public static he<cit> a(JsonObject $$0, String $$1, @Nullable he<cit> $$2) {
+   public static he<cis> a(JsonObject $$0, String $$1, @Nullable he<cis> $$2) {
       return $$0.has($$1) ? b($$0.get($$1), $$1) : $$2;
    }
 

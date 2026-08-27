@@ -1,51 +1,49 @@
-public class ccj extends ccl {
-   public ccj(bim<? extends ccj> $$0, cpm $$1) {
+public class ccj extends cbs {
+   private int f = 200;
+
+   public ccj(bim<? extends ccj> $$0, cpl $$1) {
       super($$0, $$1);
    }
 
-   public ccj(cpm $$0, biy $$1) {
-      super(bim.aP, $$1, $$0);
+   public ccj(cpl $$0, biy $$1) {
+      super(bim.aR, $$1, $$0);
    }
 
-   public ccj(cpm $$0, double $$1, double $$2, double $$3) {
-      super(bim.aP, $$1, $$2, $$3, $$0);
-   }
-
-   @Override
-   protected cit m() {
-      return cjb.pO;
-   }
-
-   private it q() {
-      ciy $$0 = this.o();
-      return (it)($$0.b() ? iv.R : new ir(iv.O, $$0));
+   public ccj(cpl $$0, double $$1, double $$2, double $$3) {
+      super(bim.aR, $$1, $$2, $$3, $$0);
    }
 
    @Override
-   public void b(byte $$0) {
-      if ($$0 == 3) {
-         it $$1 = this.q();
-
-         for (int $$2 = 0; $$2 < 8; $$2++) {
-            this.dK().a($$1, this.dp(), this.dr(), this.dv(), 0.0, 0.0, 0.0);
-         }
+   public void l() {
+      super.l();
+      if (this.dK().B && !this.b) {
+         this.dK().a(iv.N, this.dp(), this.dr(), this.dv(), 0.0, 0.0, 0.0);
       }
    }
 
    @Override
-   protected void a(ehb $$0) {
-      super.a($$0);
-      bii $$1 = $$0.a();
-      int $$2 = $$1 instanceof byl ? 3 : 0;
-      $$1.a(this.dL().b(this, this.v()), (float)$$2);
+   protected cix p() {
+      return new cix(cja.uv);
    }
 
    @Override
-   protected void a(ehc $$0) {
+   protected void a(biy $$0) {
       super.a($$0);
-      if (!this.dK().B) {
-         this.dK().a(this, (byte)3);
-         this.ak();
+      bhv $$1 = new bhv(bhx.x, this.f, 0);
+      $$0.b($$1, this.A());
+   }
+
+   @Override
+   public void a(qr $$0) {
+      super.a($$0);
+      if ($$0.e("Duration")) {
+         this.f = $$0.h("Duration");
       }
+   }
+
+   @Override
+   public void b(qr $$0) {
+      super.b($$0);
+      $$0.a("Duration", this.f);
    }
 }

@@ -1,113 +1,24 @@
-import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
-public final class dzl extends dzu<dzm.a, dzm> {
-   private final gu.a g = new gu.a();
-
-   public dzl(dhk $$0) {
-      this($$0, new dzm($$0));
-   }
-
-   @VisibleForTesting
-   public dzl(dhk $$0, dzm $$1) {
-      super($$0, $$1);
+public class dzl extends dzq<dzl.a> {
+   protected dzl(dhj $$0) {
+      super(cpu.b, $$0, new dzl.a(new Long2ObjectOpenHashMap()));
    }
 
    @Override
-   protected void a(long $$0) {
+   protected int a(long $$0) {
       long $$1 = hx.e($$0);
-      if (this.f.b($$1)) {
-         dfa $$2 = this.c(this.g.f($$0));
-         int $$3 = this.a($$0, $$2);
-         int $$4 = this.f.e($$0);
-         if ($$3 < $$4) {
-            this.f.a($$0, 0);
-            this.b($$0, dzu.a.a($$4));
-         } else {
-            this.b($$0, c);
-         }
+      dhb $$2 = this.a($$1, false);
+      return $$2 == null ? 0 : $$2.a(hx.b(gu.a($$0)), hx.b(gu.b($$0)), hx.b(gu.c($$0)));
+   }
 
-         if ($$3 > 0) {
-            this.c($$0, dzu.a.a($$3, a($$2)));
-         }
+   protected static final class a extends dzn<dzl.a> {
+      public a(Long2ObjectOpenHashMap<dhb> $$0) {
+         super($$0);
       }
-   }
 
-   @Override
-   protected void a(long $$0, long $$1, int $$2) {
-      dfa $$3 = null;
-
-      for (ha $$4 : d) {
-         if (dzu.a.a($$1, $$4)) {
-            long $$5 = gu.a($$0, $$4);
-            if (this.f.b(hx.e($$5))) {
-               int $$6 = this.f.e($$5);
-               int $$7 = $$2 - 1;
-               if ($$7 > $$6) {
-                  this.g.f($$5);
-                  dfa $$8 = this.c(this.g);
-                  int $$9 = $$2 - this.a($$8, this.g);
-                  if ($$9 > $$6) {
-                     if ($$3 == null) {
-                        $$3 = dzu.a.b($$1) ? csn.a.n() : this.c(this.g.f($$0));
-                     }
-
-                     if (!this.a($$0, $$3, $$5, $$8, $$4)) {
-                        this.f.a($$5, $$9);
-                        if ($$9 > 1) {
-                           this.c($$5, dzu.a.a($$9, a($$8), $$4.g()));
-                        }
-                     }
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   @Override
-   protected void a(long $$0, long $$1) {
-      int $$2 = dzu.a.a($$1);
-
-      for (ha $$3 : d) {
-         if (dzu.a.a($$1, $$3)) {
-            long $$4 = gu.a($$0, $$3);
-            if (this.f.b(hx.e($$4))) {
-               int $$5 = this.f.e($$4);
-               if ($$5 != 0) {
-                  if ($$5 <= $$2 - 1) {
-                     dfa $$6 = this.c(this.g.f($$4));
-                     int $$7 = this.a($$4, $$6);
-                     this.f.a($$4, 0);
-                     if ($$7 < $$5) {
-                        this.b($$4, dzu.a.a($$5, $$3.g()));
-                     }
-
-                     if ($$7 > 0) {
-                        this.c($$4, dzu.a.a($$7, a($$6)));
-                     }
-                  } else {
-                     this.c($$4, dzu.a.b($$5, false, $$3.g()));
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private int a(long $$0, dfa $$1) {
-      int $$2 = $$1.h();
-      return $$2 > 0 && this.f.j(hx.e($$0)) ? $$2 : 0;
-   }
-
-   @Override
-   public void b(cot $$0) {
-      this.a($$0, true);
-      dhj $$1 = this.e.c($$0.e, $$0.f);
-      if ($$1 != null) {
-         $$1.a(($$0x, $$1x) -> {
-            int $$2 = $$1x.h();
-            this.c($$0x.a(), dzu.a.a($$2, a($$1x)));
-         });
+      public dzl.a a() {
+         return new dzl.a(this.a.clone());
       }
    }
 }

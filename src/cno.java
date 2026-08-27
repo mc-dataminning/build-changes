@@ -1,25 +1,20 @@
-public class cno extends cnf {
-   protected cno(cnf.a $$0, cng $$1, bin... $$2) {
-      super($$0, $$1, $$2);
+public class cno extends cne {
+   public cno(cne.a $$0, bin... $$1) {
+      super($$0, cnf.j, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 15 + ($$0 - 1) * 9;
+      return $$0 * 25;
    }
 
    @Override
    public int b(int $$0) {
-      return super.a($$0) + 50;
+      return this.a($$0) + 50;
    }
 
    @Override
-   public int a() {
-      return 3;
-   }
-
-   @Override
-   public boolean a(cnf $$0) {
-      return super.a($$0) && $$0 != cnj.v;
+   public boolean b() {
+      return true;
    }
 }

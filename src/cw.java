@@ -10,8 +10,8 @@ public record cw(cj.d c) implements bp {
    }
 
    @Override
-   public boolean a(bii $$0, akk $$1, @Nullable ehe $$2) {
-      return $$0 instanceof bzk $$3 ? this.c.d($$3.ga()) : false;
+   public boolean a(bii $$0, akk $$1, @Nullable ehd $$2) {
+      return $$0 instanceof bzj $$3 ? this.c.d($$3.gb()) : false;
    }
 
    @Override

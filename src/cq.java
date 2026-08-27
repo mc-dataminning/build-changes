@@ -50,7 +50,7 @@ public class cq extends cu<cq.a> {
          return new cq.a(ai.w.a, Optional.empty());
       }
 
-      public static cq.a a(csm $$0, cit $$1) {
+      public static cq.a a(csl $$0, cis $$1) {
          return a(bo.a.a().a(bl.a.a().d(bz.a.a().a($$1))).b(ch.a.a().a(at.a.a().a($$0))).b());
       }
    }

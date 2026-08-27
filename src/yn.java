@@ -2,7 +2,7 @@ public class yn implements ux<wp> {
    private final int a;
    private final aer b;
 
-   public yn(int $$0, cmb<?> $$1) {
+   public yn(int $$0, cma<?> $$1) {
       this.a = $$0;
       this.b = $$1.e();
    }

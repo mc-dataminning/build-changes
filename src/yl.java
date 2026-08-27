@@ -2,10 +2,10 @@ import javax.annotation.Nullable;
 
 public class yl implements ux<wp> {
    private final int a;
-   private final cfj<?> b;
+   private final cfi<?> b;
    private final tf c;
 
-   public yl(int $$0, cfj<?> $$1, tf $$2) {
+   public yl(int $$0, cfi<?> $$1, tf $$2) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
@@ -33,7 +33,7 @@ public class yl implements ux<wp> {
    }
 
    @Nullable
-   public cfj<?> d() {
+   public cfi<?> d() {
       return this.b;
    }
 

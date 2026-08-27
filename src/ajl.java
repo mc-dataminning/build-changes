@@ -19,7 +19,7 @@ public class ajl implements Runnable {
 
    public ajl(aji $$0) {
       this.d = $$0;
-      this.e = $$0.bk();
+      this.e = $$0.bj();
    }
 
    @Override
@@ -55,7 +55,7 @@ public class ajl implements Runnable {
             p $$9 = $$8.a("Thread Dump");
             $$9.a("Threads", $$5);
             p $$10 = $$8.a("Performance stats");
-            $$10.a("Random tick rate", () -> this.d.aU().q().a(cpi.n).toString());
+            $$10.a("Random tick rate", () -> this.d.aT().q().a(cph.n).toString());
             $$10.a("Level stats", () -> Streams.stream(this.d.F()).map($$0x -> $$0x.ac() + ": " + $$0x.D()).collect(Collectors.joining(",\n")));
             aet.a("Crash report:\n" + $$8.e());
             File $$11 = new File(new File(this.d.z(), "crash-reports"), "crash-" + ac.e() + "-server.txt");

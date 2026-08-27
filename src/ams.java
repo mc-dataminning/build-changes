@@ -17,9 +17,9 @@ public abstract class ams implements amz {
    private final amb c;
    private final amd d;
    private final aer e;
-   private final egu f;
+   private final egt f;
 
-   public ams(amb $$0, amd $$1, aer $$2, egu $$3) {
+   public ams(amb $$0, amd $$1, aer $$2, egt $$3) {
       this.c = $$0;
       this.d = $$1;
       this.e = $$2;

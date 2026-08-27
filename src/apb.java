@@ -11,13 +11,13 @@ public class apb extends aoz {
    public static final String c = "recipeBook";
    private static final Logger d = LogUtils.getLogger();
 
-   public int a(Collection<cmb<?>> $$0, akl $$1) {
+   public int a(Collection<cma<?>> $$0, akl $$1) {
       List<aer> $$2 = Lists.newArrayList();
       int $$3 = 0;
 
-      for (cmb<?> $$4 : $$0) {
+      for (cma<?> $$4 : $$0) {
          aer $$5 = $$4.e();
-         if (!this.a.contains($$5) && !$$4.ai_()) {
+         if (!this.a.contains($$5) && !$$4.ah_()) {
             this.a($$5);
             this.d($$5);
             $$2.add($$5);
@@ -33,11 +33,11 @@ public class apb extends aoz {
       return $$3;
    }
 
-   public int b(Collection<cmb<?>> $$0, akl $$1) {
+   public int b(Collection<cma<?>> $$0, akl $$1) {
       List<aer> $$2 = Lists.newArrayList();
       int $$3 = 0;
 
-      for (cmb<?> $$4 : $$0) {
+      for (cma<?> $$4 : $$0) {
          aer $$5 = $$4.e();
          if (this.a.contains($$5)) {
             this.c($$5);
@@ -74,7 +74,7 @@ public class apb extends aoz {
       return $$0;
    }
 
-   public void a(qr $$0, cmc $$1) {
+   public void a(qr $$0, cmb $$1) {
       this.a(apa.a($$0));
       qx $$2 = $$0.c("recipes", 8);
       this.a($$2, this::a, $$1);
@@ -82,17 +82,17 @@ public class apb extends aoz {
       this.a($$3, this::f, $$1);
    }
 
-   private void a(qx $$0, Consumer<cmb<?>> $$1, cmc $$2) {
+   private void a(qx $$0, Consumer<cma<?>> $$1, cmb $$2) {
       for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
          String $$4 = $$0.j($$3);
 
          try {
             aer $$5 = new aer($$4);
-            Optional<? extends cmb<?>> $$6 = $$2.a($$5);
+            Optional<? extends cma<?>> $$6 = $$2.a($$5);
             if ($$6.isEmpty()) {
                d.error("Tried to load unrecognized recipe: {} removed now.", $$5);
             } else {
-               $$1.accept((cmb<?>)$$6.get());
+               $$1.accept((cma<?>)$$6.get());
             }
          } catch (z var8) {
             d.error("Tried to load improperly formatted recipe: {} removed now.", $$4);

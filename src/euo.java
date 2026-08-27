@@ -8,16 +8,16 @@ import javax.annotation.Nullable;
 public class euo {
    private static final int a = 5;
    private static final int b = -1;
-   final eqm c;
+   final eql c;
    private final List<euo.a<?>> d = new ArrayList<>();
    private final BitSet e = new BitSet(5);
    private final Deque<eun> f = Queues.newArrayDeque();
 
-   public euo(eqm $$0) {
+   public euo(eql $$0) {
       this.c = $$0;
    }
 
-   public void a(erw $$0) {
+   public void a(erv $$0) {
       if (!this.c.m.Z) {
          int $$1 = $$0.a();
          this.d.removeIf($$2 -> {
@@ -91,12 +91,12 @@ public class euo {
       this.f.add($$0);
    }
 
-   public eqm b() {
+   public eql b() {
       return this.c;
    }
 
    public double c() {
-      return this.c.m.x().c();
+      return this.c.m.y().c();
    }
 
    class a<T extends eun> {
@@ -124,7 +124,7 @@ public class euo {
          return this.h == eun.a.b ? 1.0F - $$1 : $$1;
       }
 
-      public boolean a(int $$0, erw $$1) {
+      public boolean a(int $$0, erv $$1) {
          long $$2 = ac.b();
          if (this.f == -1L) {
             this.f = $$2;

@@ -20,7 +20,7 @@ public class aom implements dq {
 
    public dr g() {
       akk $$0 = this.e.D();
-      return new dr(this, ehe.a($$0.R()), ehd.a, $$0, 4, "Rcon", c, this.e, null);
+      return new dr(this, ehd.a($$0.R()), ehc.a, $$0, 4, "Rcon", c, this.e, null);
    }
 
    @Override

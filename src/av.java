@@ -12,7 +12,7 @@ public class av extends cu<av.a> {
    }
 
    public av.a a(JsonObject $$0, Optional<ba> $$1, be $$2) {
-      ckv $$3 = null;
+      cku $$3 = null;
       if ($$0.has("potion")) {
          aer $$4 = new aer(arg.i($$0, "potion"));
          $$3 = jb.j.b($$4).orElseThrow(() -> new JsonSyntaxException("Unknown potion '" + $$4 + "'"));
@@ -21,15 +21,15 @@ public class av extends cu<av.a> {
       return new av.a($$1, $$3);
    }
 
-   public void a(akl $$0, ckv $$1) {
+   public void a(akl $$0, cku $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
    public static class a extends ar {
       @Nullable
-      private final ckv a;
+      private final cku a;
 
-      public a(Optional<ba> $$0, @Nullable ckv $$1) {
+      public a(Optional<ba> $$0, @Nullable cku $$1) {
          super(av.a, $$0);
          this.a = $$1;
       }
@@ -38,7 +38,7 @@ public class av extends cu<av.a> {
          return new av.a(Optional.empty(), null);
       }
 
-      public boolean a(ckv $$0) {
+      public boolean a(cku $$0) {
          return this.a == null || this.a == $$0;
       }
 

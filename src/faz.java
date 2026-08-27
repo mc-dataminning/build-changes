@@ -1,472 +1,50 @@
-import com.google.common.collect.Lists;
-import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.net.UnknownHostException;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
-import java.util.concurrent.ThreadPoolExecutor;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class faz extends eya {
+   private static final int a = 600;
+   private final sg b;
+   private esg c;
+   private int k;
+   private final evt l = evt.d();
 
-public class faz extends etd<faz.a> {
-   static final aer a = new aer("server_list/incompatible");
-   static final aer m = new aer("server_list/unreachable");
-   static final aer n = new aer("server_list/ping_1");
-   static final aer o = new aer("server_list/ping_2");
-   static final aer p = new aer("server_list/ping_3");
-   static final aer q = new aer("server_list/ping_4");
-   static final aer s = new aer("server_list/ping_5");
-   static final aer t = new aer("server_list/pinging_1");
-   static final aer u = new aer("server_list/pinging_2");
-   static final aer v = new aer("server_list/pinging_3");
-   static final aer w = new aer("server_list/pinging_4");
-   static final aer x = new aer("server_list/pinging_5");
-   static final aer y = new aer("server_list/join_highlighted");
-   static final aer z = new aer("server_list/join");
-   static final aer A = new aer("server_list/move_up_highlighted");
-   static final aer B = new aer("server_list/move_up");
-   static final aer C = new aer("server_list/move_down_highlighted");
-   static final aer D = new aer("server_list/move_down");
-   static final Logger E = LogUtils.getLogger();
-   static final ThreadPoolExecutor F = new ScheduledThreadPoolExecutor(
-      5, new ThreadFactoryBuilder().setNameFormat("Server Pinger #%d").setDaemon(true).setUncaughtExceptionHandler(new r(E)).build()
-   );
-   private static final aer G = new aer("textures/misc/unknown_server.png");
-   static final tf H = tf.c("lanServer.scanning");
-   static final tf I = tf.c("multiplayer.status.cannot_resolve").a($$0 -> $$0.a(-65536));
-   static final tf J = tf.c("multiplayer.status.cannot_connect").a($$0 -> $$0.a(-65536));
-   static final tf K = tf.c("multiplayer.status.incompatible");
-   static final tf L = tf.c("multiplayer.status.no_connection");
-   static final tf M = tf.c("multiplayer.status.pinging");
-   static final tf N = tf.c("multiplayer.status.online");
-   private final fav O;
-   private final List<faz.d> P = Lists.newArrayList();
-   private final faz.a Q = new faz.b();
-   private final List<faz.c> R = Lists.newArrayList();
-
-   public faz(fav $$0, eqm $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      super($$1, $$2, $$3, $$4, $$5, $$6);
-      this.O = $$0;
-   }
-
-   private void e() {
-      this.j();
-      this.P.forEach($$1 -> this.b($$1));
-      this.b(this.Q);
-      this.R.forEach($$1 -> this.b($$1));
-   }
-
-   public void a(@Nullable faz.a $$0) {
-      super.a($$0);
-      this.O.B();
+   public faz(tf $$0, sg $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      faz.a $$3 = this.f();
-      return $$3 != null && $$3.a($$0, $$1, $$2) || super.a($$0, $$1, $$2);
-   }
-
-   public void a(fit $$0) {
-      this.P.clear();
-
-      for (int $$1 = 0; $$1 < $$0.c(); $$1++) {
-         this.P.add(new faz.d(this.O, $$0.a($$1)));
-      }
-
-      this.e();
-   }
-
-   public void a(List<gcl> $$0) {
-      int $$1 = $$0.size() - this.R.size();
-      this.R.clear();
-
-      for (gcl $$2 : $$0) {
-         this.R.add(new faz.c(this.O, $$2));
-      }
-
-      this.e();
-
-      for (int $$3 = this.R.size() - $$1; $$3 < this.R.size(); $$3++) {
-         faz.c $$4 = this.R.get($$3);
-         int $$5 = $$3 - this.R.size() + this.i().size();
-         int $$6 = this.g($$5);
-         int $$7 = this.h($$5);
-         if ($$7 >= this.g && $$6 <= this.h) {
-            this.c.aV().b(tf.a("multiplayer.lan.server_found", $$4.d()));
-         }
-      }
+   public boolean ay_() {
+      return false;
    }
 
    @Override
-   protected int c() {
-      return super.c() + 30;
+   protected void aC_() {
+      this.l.c().b().a(10);
+      this.l.a(new etm(this.e, this.i));
+      this.c = this.l.a(esg.a(te.p, $$0 -> this.b.a(ewu.a)).a());
+      this.c.i = false;
+      this.l.a();
+      this.l.a($$1 -> {
+         ese var10000 = this.d($$1);
+      });
+      this.b();
    }
 
    @Override
-   public int b() {
-      return super.b() + 85;
+   protected void b() {
+      evn.a(this.l, this.s());
    }
 
-   public void d() {
-   }
-
-   public abstract static class a extends etd.a<faz.a> implements AutoCloseable {
-      @Override
-      public void close() {
-      }
-   }
-
-   public static class b extends faz.a {
-      private final eqm a = eqm.O();
-
-      @Override
-      public void a(erw $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10 = $$2 + $$5 / 2 - 9 / 2;
-         $$0.a(this.a.h, faz.H, this.a.B.g / 2 - this.a.h.a(faz.H) / 2, $$10, 16777215, false);
-         String $$11 = exk.a(ac.b());
-         $$0.a(this.a.h, $$11, this.a.B.g / 2 - this.a.h.b($$11) / 2, $$10 + 9, -8355712, false);
+   @Override
+   public void c() {
+      super.c();
+      this.k++;
+      if (this.k == 600) {
+         this.c.i = true;
       }
 
-      @Override
-      public tf a() {
-         return faz.H;
-      }
-   }
-
-   public static class c extends faz.a {
-      private static final int c = 32;
-      private static final tf d = tf.c("lanServer.title");
-      private static final tf e = tf.c("selectServer.hiddenAddress");
-      private final fav f;
-      protected final eqm a;
-      protected final gcl b;
-      private long g;
-
-      protected c(fav $$0, gcl $$1) {
-         this.f = $$0;
-         this.b = $$1;
-         this.a = eqm.O();
-      }
-
-      @Override
-      public void a(erw $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         $$0.a(this.a.h, d, $$3 + 32 + 3, $$2 + 1, 16777215, false);
-         $$0.a(this.a.h, this.b.a(), $$3 + 32 + 3, $$2 + 12, -8355712, false);
-         if (this.a.m.l) {
-            $$0.a(this.a.h, e, $$3 + 32 + 3, $$2 + 12 + 11, 3158064, false);
-         } else {
-            $$0.a(this.a.h, this.b.b(), $$3 + 32 + 3, $$2 + 12 + 11, 3158064, false);
-         }
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         this.f.a(this);
-         if (ac.b() - this.g < 250L) {
-            this.f.l();
-         }
-
-         this.g = ac.b();
-         return false;
-      }
-
-      public gcl b() {
-         return this.b;
-      }
-
-      @Override
-      public tf a() {
-         return tf.a("narrator.select", this.d());
-      }
-
-      public tf d() {
-         return tf.h().b(d).b(te.u).f(this.b.a());
-      }
-   }
-
-   public class d extends faz.a {
-      private static final int b = 32;
-      private static final int c = 32;
-      private static final int d = 32;
-      private final fav e;
-      private final eqm f;
-      private final fis g;
-      private final exe h;
-      @Nullable
-      private byte[] i;
-      private long j;
-
-      protected d(fav $$1, fis $$2) {
-         this.e = $$1;
-         this.g = $$2;
-         this.f = eqm.O();
-         this.h = exe.b(this.f.Y(), $$2.b);
-      }
-
-      @Override
-      public void a(erw $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         if (!this.g.i) {
-            this.g.i = true;
-            this.g.f = -2L;
-            this.g.d = te.a;
-            this.g.c = te.a;
-            faz.F.submit(() -> {
-               try {
-                  this.e.C().a(this.g, () -> this.f.execute(this::b));
-               } catch (UnknownHostException var2x) {
-                  this.g.f = -1L;
-                  this.g.d = faz.I;
-               } catch (Exception var3x) {
-                  this.g.f = -1L;
-                  this.g.d = faz.J;
-               }
-            });
-         }
-
-         boolean $$10 = !this.f();
-         $$0.a(this.f.h, this.g.a, $$3 + 32 + 3, $$2 + 1, 16777215, false);
-         List<arc> $$11 = this.f.h.c(this.g.d, $$4 - 32 - 2);
-
-         for (int $$12 = 0; $$12 < Math.min($$11.size(), 2); $$12++) {
-            $$0.a(this.f.h, $$11.get($$12), $$3 + 32 + 3, $$2 + 12 + 9 * $$12, -8355712, false);
-         }
-
-         tf $$13 = (tf)($$10 ? this.g.h.e().a(n.m) : this.g.c);
-         int $$14 = this.f.h.a($$13);
-         $$0.a(this.f.h, $$13, $$3 + $$4 - $$14 - 15 - 2, $$2 + 1, -8355712, false);
-         aer $$15;
-         List<tf> $$17;
-         tf $$16;
-         if ($$10) {
-            $$15 = faz.a;
-            $$16 = faz.K;
-            $$17 = this.g.j;
-         } else if (this.e()) {
-            if (this.g.f < 0L) {
-               $$15 = faz.m;
-            } else if (this.g.f < 150L) {
-               $$15 = faz.s;
-            } else if (this.g.f < 300L) {
-               $$15 = faz.q;
-            } else if (this.g.f < 600L) {
-               $$15 = faz.p;
-            } else if (this.g.f < 1000L) {
-               $$15 = faz.o;
-            } else {
-               $$15 = faz.n;
-            }
-
-            if (this.g.f < 0L) {
-               $$16 = faz.L;
-               $$17 = Collections.emptyList();
-            } else {
-               $$16 = tf.a("multiplayer.status.ping", this.g.f);
-               $$17 = this.g.j;
-            }
-         } else {
-            int $$28 = (int)(ac.b() / 100L + (long)($$1 * 2) & 7L);
-            if ($$28 > 4) {
-               $$28 = 8 - $$28;
-            }
-            $$15 = switch ($$28) {
-               case 1 -> faz.u;
-               case 2 -> faz.v;
-               case 3 -> faz.w;
-               case 4 -> faz.x;
-               default -> faz.t;
-            };
-            $$16 = faz.M;
-            $$17 = Collections.emptyList();
-         }
-
-         $$0.a($$15, $$3 + $$4 - 15, $$2, 10, 8);
-         byte[] $$32 = this.g.c();
-         if (!Arrays.equals($$32, this.i)) {
-            if (this.a($$32)) {
-               this.i = $$32;
-            } else {
-               this.g.a(null);
-               this.b();
-            }
-         }
-
-         this.a($$0, $$3, $$2, this.h.b());
-         int $$33 = $$6 - $$3;
-         int $$34 = $$7 - $$2;
-         if ($$33 >= $$4 - 15 && $$33 <= $$4 - 5 && $$34 >= 0 && $$34 <= 8) {
-            this.e.c(Collections.singletonList($$16));
-         } else if ($$33 >= $$4 - $$14 - 15 - 2 && $$33 <= $$4 - 15 - 2 && $$34 >= 0 && $$34 <= 8) {
-            this.e.c($$17);
-         }
-
-         if (this.f.m.U().c() || $$8) {
-            $$0.a($$3, $$2, $$3 + 32, $$2 + 32, -1601138544);
-            int $$35 = $$6 - $$3;
-            int $$36 = $$7 - $$2;
-            if (this.g()) {
-               if ($$35 < 32 && $$35 > 16) {
-                  $$0.a(faz.y, $$3, $$2, 32, 32);
-               } else {
-                  $$0.a(faz.z, $$3, $$2, 32, 32);
-               }
-            }
-
-            if ($$1 > 0) {
-               if ($$35 < 16 && $$36 < 16) {
-                  $$0.a(faz.A, $$3, $$2, 32, 32);
-               } else {
-                  $$0.a(faz.B, $$3, $$2, 32, 32);
-               }
-            }
-
-            if ($$1 < this.e.D().c() - 1) {
-               if ($$35 < 16 && $$36 > 16) {
-                  $$0.a(faz.C, $$3, $$2, 32, 32);
-               } else {
-                  $$0.a(faz.D, $$3, $$2, 32, 32);
-               }
-            }
-         }
-      }
-
-      private boolean e() {
-         return this.g.i && this.g.f != -2L;
-      }
-
-      private boolean f() {
-         return this.g.g == aa.b().e();
-      }
-
-      public void b() {
-         this.e.D().b();
-      }
-
-      protected void a(erw $$0, int $$1, int $$2, aer $$3) {
-         RenderSystem.enableBlend();
-         $$0.a($$3, $$1, $$2, 0.0F, 0.0F, 32, 32, 32, 32);
-         RenderSystem.disableBlend();
-      }
-
-      private boolean g() {
-         return true;
-      }
-
-      private boolean a(@Nullable byte[] $$0) {
-         if ($$0 == null) {
-            this.h.a();
-         } else {
-            try {
-               this.h.a(ekh.a($$0));
-            } catch (Throwable var3) {
-               faz.E.error("Invalid icon for server {} ({})", new Object[]{this.g.a, this.g.b, var3});
-               return false;
-            }
-         }
-
-         return true;
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1, int $$2) {
-         if (exz.q()) {
-            faz $$3 = this.e.l;
-            int $$4 = $$3.i().indexOf(this);
-            if ($$4 == -1) {
-               return true;
-            }
-
-            if ($$0 == 264 && $$4 < this.e.D().c() - 1 || $$0 == 265 && $$4 > 0) {
-               this.a($$4, $$0 == 264 ? $$4 + 1 : $$4 - 1);
-               return true;
-            }
-         }
-
-         return super.a($$0, $$1, $$2);
-      }
-
-      private void a(int $$0, int $$1) {
-         this.e.D().a($$0, $$1);
-         this.e.l.a(this.e.D());
-         faz.a $$2 = this.e.l.i().get($$1);
-         this.e.l.a($$2);
-         faz.this.f($$2);
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         double $$3 = $$0 - (double)faz.this.o();
-         double $$4 = $$1 - (double)faz.this.g(faz.this.i().indexOf(this));
-         if ($$3 <= 32.0) {
-            if ($$3 < 32.0 && $$3 > 16.0 && this.g()) {
-               this.e.a(this);
-               this.e.l();
-               return true;
-            }
-
-            int $$5 = this.e.l.i().indexOf(this);
-            if ($$3 < 16.0 && $$4 < 16.0 && $$5 > 0) {
-               this.a($$5, $$5 - 1);
-               return true;
-            }
-
-            if ($$3 < 16.0 && $$4 > 16.0 && $$5 < this.e.D().c() - 1) {
-               this.a($$5, $$5 + 1);
-               return true;
-            }
-         }
-
-         this.e.a(this);
-         if (ac.b() - this.j < 250L) {
-            this.e.l();
-         }
-
-         this.j = ac.b();
-         return true;
-      }
-
-      public fis d() {
-         return this.g;
-      }
-
-      @Override
-      public tf a() {
-         ts $$0 = tf.h();
-         $$0.b(tf.a("narrator.select", this.g.a));
-         $$0.b(te.s);
-         if (!this.f()) {
-            $$0.b(faz.K);
-            $$0.b(te.s);
-            $$0.b(tf.a("multiplayer.status.version.narration", this.g.h));
-            $$0.b(te.s);
-            $$0.b(tf.a("multiplayer.status.motd.narration", this.g.d));
-         } else if (this.g.f < 0L) {
-            $$0.b(faz.L);
-         } else if (!this.e()) {
-            $$0.b(faz.M);
-         } else {
-            $$0.b(faz.N);
-            $$0.b(te.s);
-            $$0.b(tf.a("multiplayer.status.ping.narration", this.g.f));
-            $$0.b(te.s);
-            $$0.b(tf.a("multiplayer.status.motd.narration", this.g.d));
-            if (this.g.e != null) {
-               $$0.b(te.s);
-               $$0.b(tf.a("multiplayer.status.player_count.narration", this.g.e.b(), this.g.e.a()));
-               $$0.b(te.s);
-               $$0.b(th.a(this.g.j, tf.b(", ")));
-            }
-         }
-
-         return $$0;
-      }
-
-      @Override
-      public void close() {
-         this.h.close();
+      if (this.b.k()) {
+         this.b.d();
+      } else {
+         this.b.p();
       }
    }
 }

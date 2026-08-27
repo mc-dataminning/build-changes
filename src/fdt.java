@@ -1,69 +1,70 @@
-public class fdt extends fex<buf> {
-   private final fhn a;
-   private final fhn b;
-   private final fhn f;
-   private final fhn g;
-   private final fhn h;
-   private final fhn i;
-   private final fhn j;
-
-   public fdt(fhn $$0) {
-      this.a = $$0;
-      this.b = $$0.b("head");
-      this.f = $$0.b("body");
-      this.g = this.f.b("right_wing");
-      this.i = this.g.b("right_wing_tip");
-      this.h = this.f.b("left_wing");
-      this.j = this.h.b("left_wing_tip");
+public class fdt {
+   public static void a(fhs $$0, fhs $$1, fhs $$2, boolean $$3) {
+      fhs $$4 = $$3 ? $$0 : $$1;
+      fhs $$5 = $$3 ? $$1 : $$0;
+      $$4.f = ($$3 ? -0.3F : 0.3F) + $$2.f;
+      $$5.f = ($$3 ? 0.6F : -0.6F) + $$2.f;
+      $$4.e = (float) (-Math.PI / 2) + $$2.e + 0.1F;
+      $$5.e = -1.5F + $$2.e;
    }
 
-   public static fht b() {
-      fhv $$0 = new fhv();
-      fhw $$1 = $$0.a();
-      fhw $$2 = $$1.a("head", fhs.c().a(0, 0).a(-3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F), fhp.a);
-      $$2.a("right_ear", fhs.c().a(24, 0).a(-4.0F, -6.0F, -2.0F, 3.0F, 4.0F, 1.0F), fhp.a);
-      $$2.a("left_ear", fhs.c().a(24, 0).a().a(1.0F, -6.0F, -2.0F, 3.0F, 4.0F, 1.0F), fhp.a);
-      fhw $$3 = $$1.a("body", fhs.c().a(0, 16).a(-3.0F, 4.0F, -3.0F, 6.0F, 12.0F, 6.0F).a(0, 34).a(-5.0F, 16.0F, 0.0F, 10.0F, 6.0F, 1.0F), fhp.a);
-      fhw $$4 = $$3.a("right_wing", fhs.c().a(42, 0).a(-12.0F, 1.0F, 1.5F, 10.0F, 16.0F, 1.0F), fhp.a);
-      $$4.a("right_wing_tip", fhs.c().a(24, 16).a(-8.0F, 1.0F, 0.0F, 8.0F, 12.0F, 1.0F), fhp.a(-12.0F, 1.0F, 1.5F));
-      fhw $$5 = $$3.a("left_wing", fhs.c().a(42, 0).a().a(2.0F, 1.0F, 1.5F, 10.0F, 16.0F, 1.0F), fhp.a);
-      $$5.a("left_wing_tip", fhs.c().a(24, 16).a().a(0.0F, 1.0F, 0.0F, 8.0F, 12.0F, 1.0F), fhp.a(12.0F, 1.0F, 1.5F));
-      return fht.a($$0, 64, 64);
+   public static void a(fhs $$0, fhs $$1, biy $$2, boolean $$3) {
+      fhs $$4 = $$3 ? $$0 : $$1;
+      fhs $$5 = $$3 ? $$1 : $$0;
+      $$4.f = $$3 ? -0.8F : 0.8F;
+      $$4.e = -0.97079635F;
+      $$5.e = $$4.e;
+      float $$6 = (float)chf.k($$2.fn());
+      float $$7 = arp.a((float)$$2.fp(), 0.0F, $$6);
+      float $$8 = $$7 / $$6;
+      $$5.f = arp.i($$8, 0.4F, 0.85F) * (float)($$3 ? 1 : -1);
+      $$5.e = arp.i($$8, $$5.e, (float) (-Math.PI / 2));
    }
 
-   @Override
-   public fhn a() {
-      return this.a;
-   }
-
-   public void a(buf $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      if ($$0.q()) {
-         this.b.e = $$5 * (float) (Math.PI / 180.0);
-         this.b.f = (float) Math.PI - $$4 * (float) (Math.PI / 180.0);
-         this.b.g = (float) Math.PI;
-         this.b.a(0.0F, -2.0F, 0.0F);
-         this.g.a(-3.0F, 0.0F, 3.0F);
-         this.h.a(3.0F, 0.0F, 3.0F);
-         this.f.e = (float) Math.PI;
-         this.g.e = (float) (-Math.PI / 20);
-         this.g.f = (float) (-Math.PI * 2.0 / 5.0);
-         this.i.f = -1.7278761F;
-         this.h.e = this.g.e;
-         this.h.f = -this.g.f;
-         this.j.f = -this.i.f;
+   public static <T extends bja> void a(fhs $$0, fhs $$1, T $$2, float $$3, float $$4) {
+      float $$5 = arp.a($$3 * (float) Math.PI);
+      float $$6 = arp.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
+      $$0.g = 0.0F;
+      $$1.g = 0.0F;
+      $$0.f = (float) (Math.PI / 20);
+      $$1.f = (float) (-Math.PI / 20);
+      if ($$2.fk() == bis.b) {
+         $$0.e = -1.8849558F + arp.b($$4 * 0.09F) * 0.15F;
+         $$1.e = -0.0F + arp.b($$4 * 0.19F) * 0.5F;
+         $$0.e += $$5 * 2.2F - $$6 * 0.4F;
+         $$1.e += $$5 * 1.2F - $$6 * 0.4F;
       } else {
-         this.b.e = $$5 * (float) (Math.PI / 180.0);
-         this.b.f = $$4 * (float) (Math.PI / 180.0);
-         this.b.g = 0.0F;
-         this.b.a(0.0F, 0.0F, 0.0F);
-         this.g.a(0.0F, 0.0F, 0.0F);
-         this.h.a(0.0F, 0.0F, 0.0F);
-         this.f.e = (float) (Math.PI / 4) + arp.b($$3 * 0.1F) * 0.15F;
-         this.f.f = 0.0F;
-         this.g.f = arp.b($$3 * 74.48451F * (float) (Math.PI / 180.0)) * (float) Math.PI * 0.25F;
-         this.h.f = -this.g.f;
-         this.i.f = this.g.f * 0.5F;
-         this.j.f = -this.g.f * 0.5F;
+         $$0.e = -0.0F + arp.b($$4 * 0.19F) * 0.5F;
+         $$1.e = -1.8849558F + arp.b($$4 * 0.09F) * 0.15F;
+         $$0.e += $$5 * 1.2F - $$6 * 0.4F;
+         $$1.e += $$5 * 2.2F - $$6 * 0.4F;
       }
+
+      a($$0, $$1, $$4);
+   }
+
+   public static void a(fhs $$0, float $$1, float $$2) {
+      $$0.g = $$0.g + $$2 * (arp.b($$1 * 0.09F) * 0.05F + 0.05F);
+      $$0.e = $$0.e + $$2 * arp.a($$1 * 0.067F) * 0.05F;
+   }
+
+   public static void a(fhs $$0, fhs $$1, float $$2) {
+      a($$0, $$2, 1.0F);
+      a($$1, $$2, -1.0F);
+   }
+
+   public static void a(fhs $$0, fhs $$1, boolean $$2, float $$3, float $$4) {
+      float $$5 = arp.a($$3 * (float) Math.PI);
+      float $$6 = arp.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
+      $$1.g = 0.0F;
+      $$0.g = 0.0F;
+      $$1.f = -(0.1F - $$5 * 0.6F);
+      $$0.f = 0.1F - $$5 * 0.6F;
+      float $$7 = (float) -Math.PI / ($$2 ? 1.5F : 2.25F);
+      $$1.e = $$7;
+      $$0.e = $$7;
+      $$1.e += $$5 * 1.2F - $$6 * 0.4F;
+      $$0.e += $$5 * 1.2F - $$6 * 0.4F;
+      a($$1, $$0, $$4);
    }
 }

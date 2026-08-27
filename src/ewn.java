@@ -1,57 +1,47 @@
-public class ewn extends exz {
-   private final exz c;
-   protected final ewn.a a;
-   private final tf k;
-   private final boolean l;
-   private eta m = eta.a;
-   protected int b;
-   private esj n;
+public class ewn extends eya {
+   private static final int a = 90;
+   private final tf b;
+   private esz c = esz.a;
+   private final Runnable k;
+   private final tf l;
+   private final boolean m;
 
-   public ewn(exz $$0, ewn.a $$1, tf $$2, tf $$3, boolean $$4) {
-      super($$2);
-      this.c = $$0;
-      this.a = $$1;
-      this.k = $$3;
-      this.l = $$4;
+   public ewn(Runnable $$0, tf $$1, tf $$2) {
+      this($$0, $$1, $$2, te.k, true);
+   }
+
+   public ewn(Runnable $$0, tf $$1, tf $$2, tf $$3, boolean $$4) {
+      super($$1);
+      this.k = $$0;
+      this.b = $$2;
+      this.l = $$3;
+      this.m = $$4;
    }
 
    @Override
-   protected void aE_() {
-      super.aE_();
-      this.m = eta.a(this.i, this.k, this.g - 50);
-      int $$0 = (this.m.a() + 1) * 9;
-      this.d(esh.a(tf.c("selectWorld.backupJoinConfirmButton"), $$0x -> this.a.proceed(true, this.n.a())).a(this.g / 2 - 155, 100 + $$0, 150, 20).a());
-      this.d(esh.a(tf.c("selectWorld.backupJoinSkipButton"), $$0x -> this.a.proceed(false, this.n.a())).a(this.g / 2 - 155 + 160, 100 + $$0, 150, 20).a());
-      this.d(esh.a(te.e, $$0x -> this.f.a(this.c)).a(this.g / 2 - 155 + 80, 124 + $$0, 150, 20).a());
-      this.n = new esj(this.g / 2 - 155 + 80, 76 + $$0, 150, 20, tf.c("selectWorld.backupEraseCache"), false);
-      if (this.l) {
-         this.d(this.n);
-      }
+   public tf e() {
+      return te.a(super.e(), this.b);
    }
 
    @Override
-   public void a(erw $$0, int $$1, int $$2, float $$3) {
+   protected void aC_() {
+      super.aC_();
+      this.c = esz.a(this.i, this.b, this.g - 50);
+      int $$0 = this.c.a() * 9;
+      int $$1 = arp.a(90 + $$0 + 12, this.h / 6 + 96, this.h - 24);
+      int $$2 = 150;
+      this.d(esg.a(this.l, $$0x -> this.k.run()).a((this.g - 150) / 2, $$1, 150, 20).a());
+   }
+
+   @Override
+   public void a(erv $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 50, 16777215);
-      this.m.a($$0, this.g / 2, 70);
+      $$0.a(this.i, this.e, this.g / 2, 70, 16777215);
+      this.c.a($$0, this.g / 2, 90);
    }
 
    @Override
-   public boolean aA_() {
-      return false;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.f.a(this.c);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   public interface a {
-      void proceed(boolean var1, boolean var2);
+   public boolean ay_() {
+      return this.m;
    }
 }

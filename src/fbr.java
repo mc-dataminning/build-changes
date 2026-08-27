@@ -1,5 +1,5 @@
-public interface fbr {
-   void D();
+import java.util.List;
 
-   fbl E();
+public interface fbr {
+   void a(List<cma<?>> var1);
 }

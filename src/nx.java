@@ -2,46 +2,46 @@ import java.util.List;
 import java.util.Optional;
 
 public interface nx {
-   static void a(nm<dvf> $$0) {
-      hf<duz> $$1 = $$0.a(jc.az);
-      hf<cqk> $$2 = $$0.a(jc.ap);
-      he.c<dvf> $$3 = $$0.a(
-         dus.a,
-         new dvf(
-            List.of(dvf.a($$1.b(dut.t)), dvf.a($$1.b(dut.u)), dvf.a($$1.b(dut.v)), dvf.a($$1.b(dut.w)), dvf.a($$1.b(dut.x))), new dvu(34, 8, dvv.a, 10387312)
+   static void a(nm<dve> $$0) {
+      hf<duy> $$1 = $$0.a(jc.az);
+      hf<cqj> $$2 = $$0.a(jc.ap);
+      he.c<dve> $$3 = $$0.a(
+         dur.a,
+         new dve(
+            List.of(dve.a($$1.b(dus.t)), dve.a($$1.b(dus.u)), dve.a($$1.b(dus.v)), dve.a($$1.b(dus.w)), dve.a($$1.b(dus.x))), new dvt(34, 8, dvu.a, 10387312)
          )
       );
-      $$0.a(dus.b, new dvf($$1.b(dut.f), new dvu(32, 8, dvv.a, 14357617)));
-      $$0.a(dus.c, new dvf($$1.b(dut.g), new dvu(32, 8, dvv.a, 14357618)));
-      $$0.a(dus.d, new dvf($$1.b(dut.e), new dvu(32, 8, dvv.a, 14357619)));
-      $$0.a(dus.e, new dvf($$1.b(dut.j), new dvu(32, 8, dvv.a, 14357620)));
-      $$0.a(dus.f, new dvf($$1.b(dut.a), new dvu(hz.g, dvw.c.b, 0.2F, 165745296, Optional.of(new dvw.a($$3, 10)), 32, 8, dvv.a)));
-      $$0.a(dus.q, new dvf($$1.b(dut.F), new dvu(24, 8, dvv.a, 20083232)));
-      $$0.a(dus.g, new dvf($$1.b(dut.l), new dvu(32, 5, dvv.b, 10387313)));
-      $$0.a(dus.h, new dvf($$1.b(dut.d), new dvu(80, 20, dvv.b, 10387319)));
-      $$0.a(dus.i, new dvf($$1.b(dut.r), new dvu(new hz(9, 0, 9), dvw.c.c, 0.01F, 0, Optional.empty(), 1, 0, dvv.a)));
-      $$0.a(dus.j, new dvf(List.of(dvf.a($$1.b(dut.b)), dvf.a($$1.b(dut.c))), new dvu(hz.g, dvw.c.d, 0.004F, 0, Optional.empty(), 1, 0, dvv.a)));
+      $$0.a(dur.b, new dve($$1.b(dus.f), new dvt(32, 8, dvu.a, 14357617)));
+      $$0.a(dur.c, new dve($$1.b(dus.g), new dvt(32, 8, dvu.a, 14357618)));
+      $$0.a(dur.d, new dve($$1.b(dus.e), new dvt(32, 8, dvu.a, 14357619)));
+      $$0.a(dur.e, new dve($$1.b(dus.j), new dvt(32, 8, dvu.a, 14357620)));
+      $$0.a(dur.f, new dve($$1.b(dus.a), new dvt(hz.g, dvv.c.b, 0.2F, 165745296, Optional.of(new dvv.a($$3, 10)), 32, 8, dvu.a)));
+      $$0.a(dur.q, new dve($$1.b(dus.F), new dvt(24, 8, dvu.a, 20083232)));
+      $$0.a(dur.g, new dve($$1.b(dus.l), new dvt(32, 5, dvu.b, 10387313)));
+      $$0.a(dur.h, new dve($$1.b(dus.d), new dvt(80, 20, dvu.b, 10387319)));
+      $$0.a(dur.i, new dve($$1.b(dus.r), new dvt(new hz(9, 0, 9), dvv.c.c, 0.01F, 0, Optional.empty(), 1, 0, dvu.a)));
+      $$0.a(dur.j, new dve(List.of(dve.a($$1.b(dus.b)), dve.a($$1.b(dus.c))), new dvt(hz.g, dvv.c.d, 0.004F, 0, Optional.empty(), 1, 0, dvu.a)));
       $$0.a(
-         dus.k,
-         new dvf(
+         dur.k,
+         new dve(
             List.of(
-               dvf.a($$1.b(dut.y)),
-               dvf.a($$1.b(dut.z)),
-               dvf.a($$1.b(dut.A)),
-               dvf.a($$1.b(dut.B)),
-               dvf.a($$1.b(dut.C)),
-               dvf.a($$1.b(dut.D)),
-               dvf.a($$1.b(dut.E))
+               dve.a($$1.b(dus.y)),
+               dve.a($$1.b(dus.z)),
+               dve.a($$1.b(dus.A)),
+               dve.a($$1.b(dus.B)),
+               dve.a($$1.b(dus.C)),
+               dve.a($$1.b(dus.D)),
+               dve.a($$1.b(dus.E))
             ),
-            new dvu(40, 15, dvv.a, 34222645)
+            new dvt(40, 15, dvu.a, 34222645)
          )
       );
-      $$0.a(dus.l, new dvf(List.of(dvf.a($$1.b(dut.h)), dvf.a($$1.b(dut.i))), new dvu(24, 4, dvv.a, 165745295)));
-      $$0.a(dus.m, new dvf(List.of(dvf.a($$1.b(dut.m)), dvf.a($$1.b(dut.n))), new dvu(20, 8, dvv.a, 14357621)));
-      $$0.a(dus.n, new dvf(List.of(dvf.a($$1.b(dut.o), 2), dvf.a($$1.b(dut.s), 3)), new dvu(27, 4, dvv.a, 30084232)));
-      $$0.a(dus.o, new dvf($$1.b(dut.p), new dvu(2, 1, dvv.a, 14357921)));
-      $$0.a(dus.p, new dvf($$1.b(dut.q), new dvu(20, 11, dvv.b, 10387313)));
-      $$0.a(dus.r, new dvf($$1.b(dut.k), new dvt(32, 3, 128, $$2.b(apk.o))));
-      $$0.a(dus.s, new dvf($$1.b(dut.G), new dvu(34, 8, dvv.a, 83469867)));
+      $$0.a(dur.l, new dve(List.of(dve.a($$1.b(dus.h)), dve.a($$1.b(dus.i))), new dvt(24, 4, dvu.a, 165745295)));
+      $$0.a(dur.m, new dve(List.of(dve.a($$1.b(dus.m)), dve.a($$1.b(dus.n))), new dvt(20, 8, dvu.a, 14357621)));
+      $$0.a(dur.n, new dve(List.of(dve.a($$1.b(dus.o), 2), dve.a($$1.b(dus.s), 3)), new dvt(27, 4, dvu.a, 30084232)));
+      $$0.a(dur.o, new dve($$1.b(dus.p), new dvt(2, 1, dvu.a, 14357921)));
+      $$0.a(dur.p, new dve($$1.b(dus.q), new dvt(20, 11, dvu.b, 10387313)));
+      $$0.a(dur.r, new dve($$1.b(dus.k), new dvs(32, 3, 128, $$2.b(apk.o))));
+      $$0.a(dur.s, new dve($$1.b(dus.G), new dvt(34, 8, dvu.a, 83469867)));
    }
 }

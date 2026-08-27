@@ -1,129 +1,47 @@
-public class dfq {
-   public static final dfr a = dfr.a("attached");
-   public static final dfr b = dfr.a("bottom");
-   public static final dfr c = dfr.a("conditional");
-   public static final dfr d = dfr.a("disarmed");
-   public static final dfr e = dfr.a("drag");
-   public static final dfr f = dfr.a("enabled");
-   public static final dfr g = dfr.a("extended");
-   public static final dfr h = dfr.a("eye");
-   public static final dfr i = dfr.a("falling");
-   public static final dfr j = dfr.a("hanging");
-   public static final dfr k = dfr.a("has_bottle_0");
-   public static final dfr l = dfr.a("has_bottle_1");
-   public static final dfr m = dfr.a("has_bottle_2");
-   public static final dfr n = dfr.a("has_record");
-   public static final dfr o = dfr.a("has_book");
-   public static final dfr p = dfr.a("inverted");
-   public static final dfr q = dfr.a("in_wall");
-   public static final dfr r = dfr.a("lit");
-   public static final dfr s = dfr.a("locked");
-   public static final dfr t = dfr.a("occupied");
-   public static final dfr u = dfr.a("open");
-   public static final dfr v = dfr.a("persistent");
-   public static final dfr w = dfr.a("powered");
-   public static final dfr x = dfr.a("short");
-   public static final dfr y = dfr.a("signal_fire");
-   public static final dfr z = dfr.a("snowy");
-   public static final dfr A = dfr.a("triggered");
-   public static final dfr B = dfr.a("unstable");
-   public static final dfr C = dfr.a("waterlogged");
-   public static final dfr D = dfr.a("berries");
-   public static final dfr E = dfr.a("bloom");
-   public static final dfr F = dfr.a("shrieking");
-   public static final dfr G = dfr.a("can_summon");
-   public static final dfy<ha.a> H = dfy.a("axis", ha.a.class, ha.a.a, ha.a.c);
-   public static final dfy<ha.a> I = dfy.a("axis", ha.a.class);
-   public static final dfr J = dfr.a("up");
-   public static final dfr K = dfr.a("down");
-   public static final dfr L = dfr.a("north");
-   public static final dfr M = dfr.a("east");
-   public static final dfr N = dfr.a("south");
-   public static final dfr O = dfr.a("west");
-   public static final dfu P = dfu.a("facing", ha.c, ha.f, ha.d, ha.e, ha.b, ha.a);
-   public static final dfu Q = dfu.a("facing", $$0 -> $$0 != ha.b);
-   public static final dfu R = dfu.a("facing", ha.c.a);
-   public static final dga S = dga.a("flower_amount", 1, 4);
-   public static final dfy<hc> T = dfy.a("orientation", hc.class);
-   public static final dfy<dfl> U = dfy.a("face", dfl.class);
-   public static final dfy<dfo> V = dfy.a("attachment", dfo.class);
-   public static final dfy<dgm> W = dfy.a("east", dgm.class);
-   public static final dfy<dgm> X = dfy.a("north", dgm.class);
-   public static final dfy<dgm> Y = dfy.a("south", dgm.class);
-   public static final dfy<dgm> Z = dfy.a("west", dgm.class);
-   public static final dfy<dgf> aa = dfy.a("east", dgf.class);
-   public static final dfy<dgf> ab = dfy.a("north", dgf.class);
-   public static final dfy<dgf> ac = dfy.a("south", dgf.class);
-   public static final dfy<dgf> ad = dfy.a("west", dgf.class);
-   public static final dfy<dfw> ae = dfy.a("half", dfw.class);
-   public static final dfy<dfz> af = dfy.a("half", dfz.class);
-   public static final dfy<dge> ag = dfy.a("shape", dge.class);
-   public static final dfy<dge> ah = dfy.a("shape", dge.class, $$0 -> $$0 != dge.j && $$0 != dge.i && $$0 != dge.g && $$0 != dge.h);
-   public static final int ai = 1;
-   public static final int aj = 2;
-   public static final int ak = 3;
-   public static final int al = 4;
-   public static final int am = 5;
-   public static final int an = 7;
-   public static final int ao = 15;
-   public static final int ap = 25;
-   public static final dga aq = dga.a("age", 0, 1);
-   public static final dga ar = dga.a("age", 0, 2);
-   public static final dga as = dga.a("age", 0, 3);
-   public static final dga at = dga.a("age", 0, 4);
-   public static final dga au = dga.a("age", 0, 5);
-   public static final dga av = dga.a("age", 0, 7);
-   public static final dga aw = dga.a("age", 0, 15);
-   public static final dga ax = dga.a("age", 0, 25);
-   public static final dga ay = dga.a("bites", 0, 6);
-   public static final dga az = dga.a("candles", 1, 4);
-   public static final dga aA = dga.a("delay", 1, 4);
-   public static final int aB = 7;
-   public static final dga aC = dga.a("distance", 1, 7);
-   public static final dga aD = dga.a("eggs", 1, 4);
-   public static final dga aE = dga.a("hatch", 0, 2);
-   public static final dga aF = dga.a("layers", 1, 8);
-   public static final int aG = 0;
-   public static final int aH = 1;
-   public static final int aI = 3;
-   public static final int aJ = 8;
-   public static final dga aK = dga.a("level", 1, 3);
-   public static final dga aL = dga.a("level", 0, 8);
-   public static final dga aM = dga.a("level", 1, 8);
-   public static final dga aN = dga.a("honey_level", 0, 5);
-   public static final int aO = 15;
-   public static final dga aP = dga.a("level", 0, 15);
-   public static final dga aQ = dga.a("moisture", 0, 7);
-   public static final dga aR = dga.a("note", 0, 24);
-   public static final dga aS = dga.a("pickles", 1, 4);
-   public static final dga aT = dga.a("power", 0, 15);
-   public static final dga aU = dga.a("stage", 0, 1);
-   public static final int aV = 7;
-   public static final dga aW = dga.a("distance", 0, 7);
-   public static final int aX = 0;
-   public static final int aY = 4;
-   public static final dga aZ = dga.a("charges", 0, 4);
-   public static final dga ba = dga.a("rotation", 0, dgg.a());
-   public static final dfy<dfn> bb = dfy.a("part", dfn.class);
-   public static final dfy<dfs> bc = dfy.a("type", dfs.class);
-   public static final dfy<dft> bd = dfy.a("mode", dft.class);
-   public static final dfy<dfv> be = dfy.a("hinge", dfv.class);
-   public static final dfy<dgb> bf = dfy.a("instrument", dgb.class);
-   public static final dfy<dgc> bg = dfy.a("type", dgc.class);
-   public static final dfy<dgi> bh = dfy.a("type", dgi.class);
-   public static final dfy<dgj> bi = dfy.a("shape", dgj.class);
-   public static final dfy<dgk> bj = dfy.a("mode", dgk.class);
-   public static final dfy<dfm> bk = dfy.a("leaves", dfm.class);
-   public static final dfy<dgl> bl = dfy.a("tilt", dgl.class);
-   public static final dfu bm = dfu.a("vertical_direction", ha.b, ha.a);
-   public static final dfy<dfx> bn = dfy.a("thickness", dfx.class);
-   public static final dfy<dgh> bo = dfy.a("sculk_sensor_phase", dgh.class);
-   public static final dfr bp = dfr.a("slot_0_occupied");
-   public static final dfr bq = dfr.a("slot_1_occupied");
-   public static final dfr br = dfr.a("slot_2_occupied");
-   public static final dfr bs = dfr.a("slot_3_occupied");
-   public static final dfr bt = dfr.a("slot_4_occupied");
-   public static final dfr bu = dfr.a("slot_5_occupied");
-   public static final dga bv = dga.a("dusted", 0, 3);
-   public static final dfr bw = dfr.a("cracked");
+import com.google.common.collect.ImmutableSet;
+import java.util.Collection;
+import java.util.Optional;
+
+public class dfq extends dgc<Boolean> {
+   private final ImmutableSet<Boolean> a = ImmutableSet.of(true, false);
+
+   protected dfq(String $$0) {
+      super($$0, Boolean.class);
+   }
+
+   @Override
+   public Collection<Boolean> a() {
+      return this.a;
+   }
+
+   public static dfq a(String $$0) {
+      return new dfq($$0);
+   }
+
+   @Override
+   public Optional<Boolean> b(String $$0) {
+      return !"true".equals($$0) && !"false".equals($$0) ? Optional.empty() : Optional.of(Boolean.valueOf($$0));
+   }
+
+   public String a(Boolean $$0) {
+      return $$0.toString();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof dfq $$1 && super.equals($$0)) {
+            return this.a.equals($$1.a);
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int b() {
+      return 31 * super.b() + this.a.hashCode();
+   }
 }

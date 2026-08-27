@@ -1,21 +1,21 @@
 public class ig implements ih {
    @Override
-   public final ciy dispense(gv $$0, ciy $$1) {
-      ciy $$2 = this.a($$0, $$1);
+   public final cix dispense(gv $$0, cix $$1) {
+      cix $$2 = this.a($$0, $$1);
       this.a($$0);
-      this.a($$0, $$0.e().c(cun.a));
+      this.a($$0, $$0.e().c(cum.a));
       return $$2;
    }
 
-   protected ciy a(gv $$0, ciy $$1) {
-      ha $$2 = $$0.e().c(cun.a);
-      ho $$3 = cun.a($$0);
-      ciy $$4 = $$1.a(1);
+   protected cix a(gv $$0, cix $$1) {
+      ha $$2 = $$0.e().c(cum.a);
+      ho $$3 = cum.a($$0);
+      cix $$4 = $$1.a(1);
       a($$0.g(), $$4, 6, $$2, $$3);
       return $$1;
    }
 
-   public static void a(cpm $$0, ciy $$1, int $$2, ha $$3, ho $$4) {
+   public static void a(cpl $$0, cix $$1, int $$2, ha $$3, ho $$4) {
       double $$5 = $$4.a();
       double $$6 = $$4.b();
       double $$7 = $$4.c();
@@ -25,7 +25,7 @@ public class ig implements ih {
          $$6 -= 0.15625;
       }
 
-      byg $$8 = new byg($$0, $$5, $$6, $$7, $$1);
+      byf $$8 = new byf($$0, $$5, $$6, $$7, $$1);
       double $$9 = $$0.z.j() * 0.1 + 0.2;
       $$8.o(
          $$0.z.a((double)$$3.j() * $$9, 0.0172275 * (double)$$2),

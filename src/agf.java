@@ -25,7 +25,7 @@ public class agf {
    private static final SuggestionProvider<dr> f = ($$0, $$1) -> {
       amx $$2 = ((dr)$$0.getSource()).l().aB();
       Collection<String> $$3 = $$2.d();
-      cdv $$4 = ((dr)$$0.getSource()).w();
+      cdu $$4 = ((dr)$$0.getSource()).w();
       return du.b(
          $$2.c().stream().filter($$1x -> $$1x.d().a($$4)).map(amu::f).filter($$1x -> !$$3.contains($$1x)).map(StringArgumentType::escapeIfRequired), $$1
       );
@@ -116,7 +116,7 @@ public class agf {
       $$1.a();
       Collection<amu> $$2 = $$1.f();
       Collection<amu> $$3 = $$1.c();
-      cdv $$4 = $$0.w();
+      cdu $$4 = $$0.w();
       List<amu> $$5 = $$3.stream().filter($$2x -> !$$2.contains($$2x) && $$2x.d().a($$4)).toList();
       if ($$5.isEmpty()) {
          $$0.a(() -> tf.c("commands.datapack.list.available.none"), false);
@@ -153,10 +153,10 @@ public class agf {
          } else if (!$$2 && !$$6) {
             throw c.create($$3);
          } else {
-            cdv $$7 = ((dr)$$0.getSource()).w();
-            cdv $$8 = $$5.d();
+            cdu $$7 = ((dr)$$0.getSource()).w();
+            cdu $$8 = $$5.d();
             if (!$$8.a($$7)) {
-               throw d.create($$3, cdx.a($$7, $$8));
+               throw d.create($$3, cdw.a($$7, $$8));
             } else {
                return $$5;
             }

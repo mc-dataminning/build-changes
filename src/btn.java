@@ -2,24 +2,12 @@ import javax.annotation.Nullable;
 
 public class btn {
    @Nullable
-   public static ehe a(bjh $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      boolean $$7 = btq.a($$0, $$1);
-      return btt.a($$0, () -> a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-   }
-
-   @Nullable
-   public static gu a(bjh $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6, boolean $$7) {
-      gu $$8 = btt.a($$0.ee(), $$1, $$2, $$3, $$4, $$5, $$6);
-      if ($$8 == null) {
-         return null;
-      } else {
-         gu $$9 = btt.a($$0, $$1, $$0.ee(), $$8);
-         if (!btq.a($$9, $$0) && !btq.a($$7, $$0, $$9)) {
-            $$9 = btt.a($$9, $$0.dK().aj(), $$1x -> btq.c($$0, $$1x));
-            return btq.b($$0, $$9) ? null : $$9;
-         } else {
-            return null;
-         }
-      }
+   public static ehd a(bjh $$0, int $$1, int $$2, int $$3, ehd $$4, double $$5) {
+      ehd $$6 = $$4.a($$0.dp(), $$0.dr(), $$0.dv());
+      boolean $$7 = btp.a($$0, $$1);
+      return bts.a($$0, () -> {
+         gu $$7x = btm.a($$0, $$1, $$2, $$3, $$6.c, $$6.e, $$5, $$7);
+         return $$7x != null && !btp.a($$0, $$7x) ? $$7x : null;
+      });
    }
 }

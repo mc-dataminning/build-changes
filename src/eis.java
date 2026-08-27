@@ -1,7 +1,2 @@
-public interface eis<T> {
-   void a(eiq<T> var1);
-
-   boolean a(gu var1, T var2);
-
-   int a();
+public interface eis<T> extends eir<T> {
 }

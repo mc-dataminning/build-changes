@@ -1,104 +1,126 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+public class exj extends exs {
+   private static final tf c = tf.b("(").b(tf.c("options.languageWarning")).f(")").a(n.h);
+   private exj.a k;
+   final gac l;
 
-public class exj extends exz {
-   private static final long a = 2000L;
-   private final akx b;
-   private long c = -1L;
-   private boolean k;
-   private static final Object2IntMap<dhb> l = ac.a(new Object2IntOpenHashMap(), $$0 -> {
-      $$0.defaultReturnValue(0);
-      $$0.put(dhb.c, 5526612);
-      $$0.put(dhb.d, 10066329);
-      $$0.put(dhb.e, 6250897);
-      $$0.put(dhb.f, 8434258);
-      $$0.put(dhb.g, 13750737);
-      $$0.put(dhb.h, 7497737);
-      $$0.put(dhb.i, 3159410);
-      $$0.put(dhb.j, 2213376);
-      $$0.put(dhb.k, 13421772);
-      $$0.put(dhb.l, 16769184);
-      $$0.put(dhb.m, 15884384);
-      $$0.put(dhb.n, 16777215);
-   });
-
-   public exj(akx $$0) {
-      super(eqe.a);
-      this.b = $$0;
+   public exj(eya $$0, eqp $$1, gac $$2) {
+      super($$0, $$1, tf.c("options.language"));
+      this.l = $$2;
    }
 
    @Override
-   public boolean aA_() {
-      return false;
+   protected void aC_() {
+      this.k = new exj.a(this.f);
+      this.e(this.k);
+      this.d(this.b.M().a(this.b, this.g / 2 - 155, this.h - 38, 150));
+      this.d(esg.a(te.d, $$0 -> this.l()).a(this.g / 2 - 155 + 160, this.h - 38, 150, 20).a());
+      super.aC_();
    }
 
-   @Override
-   protected boolean aD_() {
-      return false;
-   }
-
-   @Override
-   public void h() {
-      this.k = true;
-      this.d(true);
-   }
-
-   @Override
-   protected void b(evx $$0) {
-      if (this.k) {
-         $$0.a(evw.a, tf.c("narrator.loading.done"));
-      } else {
-         String $$1 = this.l();
-         $$0.a(evw.a, $$1);
+   void l() {
+      exj.a.a $$0 = this.k.f();
+      if ($$0 != null && !$$0.b.equals(this.l.a())) {
+         this.l.a($$0.b);
+         this.b.ad = $$0.b;
+         this.f.k();
+         this.b.ar();
       }
-   }
 
-   private String l() {
-      return arp.a(this.b.e(), 0, 100) + "%";
+      this.f.a(this.a);
    }
 
    @Override
-   public void a(erw $$0, int $$1, int $$2, float $$3) {
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (ewd.a($$0)) {
+         exj.a.a $$3 = this.k.f();
+         if ($$3 != null) {
+            $$3.b();
+            this.l();
+            return true;
+         }
+      }
+
+      return super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void a(erv $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      long $$4 = ac.b();
-      if ($$4 - this.c > 2000L) {
-         this.c = $$4;
-         this.d(true);
-      }
-
-      int $$5 = this.g / 2;
-      int $$6 = this.h / 2;
-      int $$7 = 30;
-      a($$0, this.b, $$5, $$6 + 30, 2, 0);
-      $$0.a(this.i, this.l(), $$5, $$6 - 9 / 2 - 30, 16777215);
+      this.k.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 16, 16777215);
+      $$0.a(this.i, c, this.g / 2, this.h - 56, -8355712);
    }
 
-   public static void a(erw $$0, akx $$1, int $$2, int $$3, int $$4, int $$5) {
-      int $$6 = $$4 + $$5;
-      int $$7 = $$1.c();
-      int $$8 = $$7 * $$6 - $$5;
-      int $$9 = $$1.d();
-      int $$10 = $$9 * $$6 - $$5;
-      int $$11 = $$2 - $$10 / 2;
-      int $$12 = $$3 - $$10 / 2;
-      int $$13 = $$8 / 2 + 1;
-      int $$14 = -16772609;
-      $$0.a(() -> {
-         if ($$5 != 0) {
-            $$0.a($$2 - $$13, $$3 - $$13, $$2 - $$13 + 1, $$3 + $$13, -16772609);
-            $$0.a($$2 + $$13 - 1, $$3 - $$13, $$2 + $$13, $$3 + $$13, -16772609);
-            $$0.a($$2 - $$13, $$3 - $$13, $$2 + $$13, $$3 - $$13 + 1, -16772609);
-            $$0.a($$2 - $$13, $$3 + $$13 - 1, $$2 + $$13, $$3 + $$13, -16772609);
+   @Override
+   public void b(erv $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+   }
+
+   class a extends etc<exj.a.a> {
+      public a(eql $$0) {
+         super($$0, exj.this.g, exj.this.h, 32, exj.this.h - 65 + 4, 18);
+         String $$1 = exj.this.l.a();
+         exj.this.l.b().forEach(($$1x, $$2) -> {
+            exj.a.a $$3 = new exj.a.a($$1x, $$2);
+            this.b($$3);
+            if ($$1.equals($$1x)) {
+               this.a($$3);
+            }
+         });
+         if (this.f() != null) {
+            this.e(this.f());
+         }
+      }
+
+      @Override
+      protected int c() {
+         return super.c() + 20;
+      }
+
+      @Override
+      public int b() {
+         return super.b() + 50;
+      }
+
+      public class a extends etc.a<exj.a.a> {
+         final String b;
+         private final tf c;
+         private long d;
+
+         public a(String $$1, gab $$2) {
+            this.b = $$1;
+            this.c = $$2.a();
          }
 
-         for (int $$11x = 0; $$11x < $$9; $$11x++) {
-            for (int $$12x = 0; $$12x < $$9; $$12x++) {
-               dhb $$13x = $$1.a($$11x, $$12x);
-               int $$14x = $$11 + $$11x * $$6;
-               int $$15 = $$12 + $$12x * $$6;
-               $$0.a($$14x, $$15, $$14x + $$4, $$15 + $$4, l.getInt($$13x) | 0xFF000000);
+         @Override
+         public void a(erv $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.a(exj.this.i, this.c, a.this.e / 2, $$2 + 1, 16777215);
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            if ($$2 == 0) {
+               this.b();
+               if (ac.b() - this.d < 250L) {
+                  exj.this.l();
+               }
+
+               this.d = ac.b();
+               return true;
+            } else {
+               this.d = ac.b();
+               return false;
             }
          }
-      });
+
+         void b() {
+            a.this.a(this);
+         }
+
+         @Override
+         public tf a() {
+            return tf.a("narrator.select", this.c);
+         }
+      }
    }
 }

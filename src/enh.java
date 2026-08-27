@@ -1,15 +1,5 @@
-import java.lang.Thread.UncaughtExceptionHandler;
-import org.slf4j.Logger;
-
-public class enh implements UncaughtExceptionHandler {
-   private final Logger a;
-
-   public enh(Logger $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public void uncaughtException(Thread $$0, Throwable $$1) {
-      this.a.error("Caught previously unhandled exception", $$1);
+public class enh extends RuntimeException {
+   public enh(String $$0, Exception $$1) {
+      super($$0, $$1);
    }
 }

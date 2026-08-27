@@ -1,55 +1,36 @@
-import java.util.List;
-import javax.annotation.Nullable;
-
-public class cid extends cit {
-   public cid(cit.a $$0) {
+public class cid extends cis implements ckr {
+   public cid(cis.a $$0) {
       super($$0);
    }
 
    @Override
-   public void a(ciy $$0, @Nullable cpm $$1, List<tf> $$2, ckp $$3) {
-      qr $$4 = $$0.b("Explosion");
-      if ($$4 != null) {
-         a($$4, $$2);
-      }
-   }
-
-   public static void a(qr $$0, List<tf> $$1) {
-      cic.a $$2 = cic.a.a($$0.f("Type"));
-      $$1.add(tf.c("item.minecraft.firework_star.shape." + $$2.b()).a(n.h));
-      int[] $$3 = $$0.n("Colors");
-      if ($$3.length > 0) {
-         $$1.add(a(tf.h().a(n.h), $$3));
-      }
-
-      int[] $$4 = $$0.n("FadeColors");
-      if ($$4.length > 0) {
-         $$1.add(a(tf.c("item.minecraft.firework_star.fade_to").b(te.u).a(n.h), $$4));
-      }
-
-      if ($$0.q("Trail")) {
-         $$1.add(tf.c("item.minecraft.firework_star.trail").a(n.h));
-      }
-
-      if ($$0.q("Flicker")) {
-         $$1.add(tf.c("item.minecraft.firework_star.flicker").a(n.h));
-      }
-   }
-
-   private static tf a(ts $$0, int[] $$1) {
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         if ($$2 > 0) {
-            $$0.f(", ");
+   public bgr<cix> a(cpl $$0, cbm $$1, bgp $$2) {
+      cix $$3 = $$1.b($$2);
+      if ($$1.ci != null) {
+         if (!$$0.B) {
+            int $$4 = $$1.ci.a($$3);
+            $$3.a($$4, $$1, $$1x -> $$1x.d($$2));
          }
 
-         $$0.b(a($$1[$$2]));
+         $$0.a(null, $$1.dp(), $$1.dr(), $$1.dv(), aow.hP, aox.g, 1.0F, 0.4F / ($$0.y_().i() * 0.4F + 0.8F));
+         $$1.a(djj.C);
+      } else {
+         $$0.a(null, $$1.dp(), $$1.dr(), $$1.dv(), aow.hR, aox.g, 0.5F, 0.4F / ($$0.y_().i() * 0.4F + 0.8F));
+         if (!$$0.B) {
+            int $$5 = cng.c($$3);
+            int $$6 = cng.b($$3);
+            $$0.b(new cca($$1, $$0, $$6, $$5));
+         }
+
+         $$1.b(apg.c.b(this));
+         $$1.a(djj.D);
       }
 
-      return $$0;
+      return bgr.a($$3, $$0.r_());
    }
 
-   private static tf a(int $$0) {
-      chm $$1 = chm.b($$0);
-      return $$1 == null ? tf.c("item.minecraft.firework_star.custom_color") : tf.c("item.minecraft.firework_star." + $$1.b());
+   @Override
+   public int c() {
+      return 1;
    }
 }

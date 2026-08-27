@@ -1,141 +1,229 @@
+import com.google.common.collect.ImmutableList;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.function.DoubleConsumer;
+import java.util.UUID;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class fcf extends esb {
-   private static final int a = 32;
-   private static final String b = "telemetry.event.required";
-   private static final String c = "telemetry.event.optional";
-   private static final tf d = tf.c("telemetry_info.property_title").a(n.t);
-   private final eru e;
-   private fcf.a l;
+public class fcf extends esm.a<fcf> {
+   private static final aer f = new aer("icon/draft_report");
+   private static final int g = 10;
+   private static final ets h = new ets(
+      new aer("social_interactions/report_button"),
+      new aer("social_interactions/report_button_disabled"),
+      new aer("social_interactions/report_button_highlighted")
+   );
+   private static final ets i = new ets(new aer("social_interactions/mute_button"), new aer("social_interactions/mute_button_highlighted"));
+   private static final ets j = new ets(new aer("social_interactions/unmute_button"), new aer("social_interactions/unmute_button_highlighted"));
+   private final eql k;
+   private final List<ese> l;
+   private final UUID m;
+   private final String n;
+   private final Supplier<fzu> o;
+   private boolean p;
+   private boolean q;
+   private final boolean s;
+   private final boolean t;
+   private final boolean u;
    @Nullable
-   private DoubleConsumer m;
+   private esg v;
+   @Nullable
+   private esg w;
+   @Nullable
+   private esg x;
+   private float y;
+   private static final tf z = tf.c("gui.socialInteractions.status_hidden").a(n.u);
+   private static final tf A = tf.c("gui.socialInteractions.status_blocked").a(n.u);
+   private static final tf B = tf.c("gui.socialInteractions.status_offline").a(n.u);
+   private static final tf C = tf.c("gui.socialInteractions.status_hidden_offline").a(n.u);
+   private static final tf D = tf.c("gui.socialInteractions.status_blocked_offline").a(n.u);
+   private static final tf E = tf.c("gui.socialInteractions.tooltip.report.disabled");
+   private static final tf F = tf.c("gui.socialInteractions.tooltip.hide");
+   private static final tf G = tf.c("gui.socialInteractions.tooltip.show");
+   private static final tf H = tf.c("gui.socialInteractions.tooltip.report");
+   private static final int I = 24;
+   private static final int J = 4;
+   public static final int a = ara.b.a(190, 0, 0, 0);
+   private static final int K = 20;
+   public static final int b = ara.b.a(255, 74, 74, 74);
+   public static final int c = ara.b.a(255, 48, 48, 48);
+   public static final int d = ara.b.a(255, 255, 255, 255);
+   public static final int e = ara.b.a(140, 255, 255, 255);
 
-   public fcf(int $$0, int $$1, int $$2, int $$3, eru $$4) {
-      super($$0, $$1, $$2, $$3, tf.h());
-      this.e = $$4;
-      this.l = this.c(eqm.O().A());
+   public fcf(eql $$0, fci $$1, UUID $$2, String $$3, Supplier<fzu> $$4, boolean $$5) {
+      this.k = $$0;
+      this.m = $$2;
+      this.n = $$3;
+      this.o = $$4;
+      fjp $$6 = $$0.aX();
+      this.s = $$6.a().a();
+      this.u = $$5;
+      this.t = $$6.a($$2);
+      tf $$7 = tf.a("gui.socialInteractions.narration.hide", $$3);
+      tf $$8 = tf.a("gui.socialInteractions.narration.show", $$3);
+      fcg $$9 = $$0.aK();
+      boolean $$10 = $$0.H().a($$0.R());
+      boolean $$11 = !$$0.s.cv().equals($$2);
+      if ($$11 && $$10 && !$$9.e($$2)) {
+         this.x = new ess(0, 0, 20, 20, h, $$3x -> $$6.a($$0, $$1, () -> $$0.a(new fcb($$1, $$6, this)), false), tf.c("gui.socialInteractions.report")) {
+            @Override
+            protected ts az_() {
+               return fcf.this.a(super.az_());
+            }
+         };
+         this.x.i = this.s;
+         this.x.a(this.k());
+         this.x.b(10);
+         this.v = new ess(0, 0, 20, 20, i, $$3x -> {
+            $$9.a($$2);
+            this.a(true, tf.a("gui.socialInteractions.hidden_in_chat", $$3));
+         }, tf.c("gui.socialInteractions.hide")) {
+            @Override
+            protected ts az_() {
+               return fcf.this.a(super.az_());
+            }
+         };
+         this.v.a(etq.a(F, $$7));
+         this.v.b(10);
+         this.w = new ess(0, 0, 20, 20, j, $$3x -> {
+            $$9.b($$2);
+            this.a(false, tf.a("gui.socialInteractions.shown_in_chat", $$3));
+         }, tf.c("gui.socialInteractions.show")) {
+            @Override
+            protected ts az_() {
+               return fcf.this.a(super.az_());
+            }
+         };
+         this.w.a(etq.a(G, $$8));
+         this.w.b(10);
+         this.l = new ArrayList<>();
+         this.l.add(this.v);
+         this.l.add(this.x);
+         this.e($$9.d(this.m));
+      } else {
+         this.l = ImmutableList.of();
+      }
    }
 
-   public void b(boolean $$0) {
-      this.l = this.c($$0);
-      this.a(this.c());
+   private etq k() {
+      return !this.s ? etq.a(E) : etq.a(H, tf.a("gui.socialInteractions.narration.report", this.n));
    }
 
-   private fcf.a c(boolean $$0) {
-      fcf.b $$1 = new fcf.b(this.v());
-      List<gdg> $$2 = new ArrayList<>(gdg.g());
-      $$2.sort(Comparator.comparing(gdg::d));
-      if (!$$0) {
-         $$2.removeIf(gdg::d);
+   @Override
+   public void a(erv $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+      int $$10 = $$3 + 4;
+      int $$11 = $$2 + ($$5 - 24) / 2;
+      int $$12 = $$10 + 24 + 4;
+      tf $$13 = this.l();
+      int $$14;
+      if ($$13 == te.a) {
+         $$0.a($$3, $$2, $$3 + $$4, $$2 + $$5, b);
+         $$14 = $$2 + ($$5 - 9) / 2;
+      } else {
+         $$0.a($$3, $$2, $$3 + $$4, $$2 + $$5, c);
+         $$14 = $$2 + ($$5 - (9 + 9)) / 2;
+         $$0.a(this.k.h, $$13, $$12, $$14 + 12, e, false);
       }
 
-      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-         gdg $$4 = $$2.get($$3);
-         this.a($$1, $$4);
-         if ($$3 < $$2.size() - 1) {
-            $$1.a(9);
+      etf.a($$0, this.o.get(), $$10, $$11, 24);
+      $$0.a(this.k.h, this.n, $$12, $$14, d, false);
+      if (this.p) {
+         $$0.a($$10, $$11, $$10 + 24, $$11 + 24, a);
+      }
+
+      if (this.v != null && this.w != null && this.x != null) {
+         float $$16 = this.y;
+         this.v.f($$3 + ($$4 - this.v.l() - 4) - 20 - 4);
+         this.v.g($$2 + ($$5 - this.v.i()) / 2);
+         this.v.a($$0, $$6, $$7, $$9);
+         this.w.f($$3 + ($$4 - this.w.l() - 4) - 20 - 4);
+         this.w.g($$2 + ($$5 - this.w.i()) / 2);
+         this.w.a($$0, $$6, $$7, $$9);
+         this.x.f($$3 + ($$4 - this.w.l() - 4));
+         this.x.g($$2 + ($$5 - this.w.i()) / 2);
+         this.x.a($$0, $$6, $$7, $$9);
+         if ($$16 == this.y) {
+            this.y = 0.0F;
          }
       }
 
-      return $$1.a();
-   }
-
-   public void a(@Nullable DoubleConsumer $$0) {
-      this.m = $$0;
-   }
-
-   @Override
-   protected void a(double $$0) {
-      super.a($$0);
-      if (this.m != null) {
-         this.m.accept(this.c());
+      if (this.t && this.x != null) {
+         $$0.a(f, this.x.r() + 5, this.x.t() + 1, 15, 15);
       }
    }
 
    @Override
-   protected int f() {
-      return this.l.a().h();
+   public List<? extends eua> i() {
+      return this.l;
    }
 
    @Override
-   protected double g() {
-      return 9.0;
+   public List<? extends evw> b() {
+      return this.l;
    }
 
-   @Override
-   protected void c(erw $$0, int $$1, int $$2, float $$3) {
-      int $$4 = this.r() + this.a();
-      int $$5 = this.p() + this.a();
-      $$0.c().a();
-      $$0.c().a((double)$$5, (double)$$4, 0.0);
-      this.l.a().a($$4x -> $$4x.a($$0, $$1, $$2, $$3));
-      $$0.c().b();
+   public String d() {
+      return this.n;
    }
 
-   @Override
-   protected void a(evx $$0) {
-      $$0.a(evw.a, this.l.b());
+   public UUID e() {
+      return this.m;
    }
 
-   private void a(fcf.b $$0, gdg $$1) {
-      String $$2 = $$1.d() ? "telemetry.event.optional" : "telemetry.event.required";
-      $$0.b(this.e, tf.a($$2, $$1.e()));
-      $$0.b(this.e, $$1.f().a(n.h));
-      $$0.a(9 / 2);
-      $$0.a(this.e, d, 2);
-      this.a($$1, $$0);
+   public Supplier<fzu> f() {
+      return this.o;
    }
 
-   private void a(gdg $$0, fcf.b $$1) {
-      for (gdi<?> $$2 : $$0.b()) {
-         $$1.a(this.e, $$2.a());
-      }
+   public void c(boolean $$0) {
+      this.p = $$0;
    }
 
-   private int v() {
-      return this.f - this.b();
+   public boolean g() {
+      return this.p;
    }
 
-   static record a(evp a, tf b) {
+   public void d(boolean $$0) {
+      this.q = $$0;
    }
 
-   static class b {
-      private final int a;
-      private final evs b;
-      private final ts c = tf.h();
+   public boolean h() {
+      return this.q;
+   }
 
-      public b(int $$0) {
-         this.a = $$0;
-         this.b = evs.d();
-         this.b.c().a();
-         this.b.a(evt.a($$0));
-      }
+   public boolean j() {
+      return this.u;
+   }
 
-      public void a(eru $$0, tf $$1) {
-         this.a($$0, $$1, 0);
-      }
+   private void a(boolean $$0, tf $$1) {
+      this.e($$0);
+      this.k.l.d().a($$1);
+      this.k.aV().c($$1);
+   }
 
-      public void a(eru $$0, tf $$1, int $$2) {
-         this.b.a(new etb($$1, $$0).i(this.a), $$1x -> $$1x.e($$2));
-         this.c.b($$1).f("\n");
-      }
+   private void e(boolean $$0) {
+      this.w.j = $$0;
+      this.v.j = !$$0;
+      this.l.set(0, $$0 ? this.w : this.v);
+   }
 
-      public void b(eru $$0, tf $$1) {
-         this.b.a(new etb($$1, $$0).i(this.a - 64).b(true), $$0x -> $$0x.b().f(32));
-         this.c.b($$1).f("\n");
-      }
+   ts a(ts $$0) {
+      tf $$1 = this.l();
+      return $$1 == te.a ? tf.b(this.n).f(", ").b($$0) : tf.b(this.n).f(", ").b($$1).f(", ").b($$0);
+   }
 
-      public void a(int $$0) {
-         this.b.a(evt.b($$0));
-      }
-
-      public fcf.a a() {
-         this.b.a();
-         return new fcf.a(this.b, this.c);
+   private tf l() {
+      boolean $$0 = this.k.aK().d(this.m);
+      boolean $$1 = this.k.aK().e(this.m);
+      if ($$1 && this.p) {
+         return D;
+      } else if ($$0 && this.p) {
+         return C;
+      } else if ($$1) {
+         return A;
+      } else if ($$0) {
+         return z;
+      } else {
+         return this.p ? B : te.a;
       }
    }
 }

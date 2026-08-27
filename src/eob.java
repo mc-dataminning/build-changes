@@ -1,57 +1,90 @@
-public class eob extends gei {
-   private final exz a;
-   private final eob.a b;
-   private eta c = eta.a;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public eob(enj $$0, exz $$1) {
-      super(eqe.a);
-      this.a = $$1;
-      this.b = a($$0);
-   }
+public class eob extends ger {
+   private static final Logger a = LogUtils.getLogger();
+   private static final tf b = tf.c("mco.configure.world.invite.profile.name").a($$0 -> $$0.a(-6250336));
+   private static final tf c = tf.c("mco.configure.world.players.inviting").a($$0 -> $$0.a(-6250336));
+   private static final tf y = tf.c("mco.configure.world.players.error").a($$0 -> $$0.a(-65536));
+   private esp z;
+   private esg A;
+   private final emm B;
+   private final enw C;
+   private final eya D;
+   @Nullable
+   private tf E;
 
-   public eob(tf $$0, exz $$1) {
-      super(eqe.a);
-      this.a = $$1;
-      this.b = a($$0);
-   }
-
-   public eob(tf $$0, tf $$1, exz $$2) {
-      super(eqe.a);
-      this.a = $$2;
-      this.b = a($$0, $$1);
-   }
-
-   private static eob.a a(enj $$0) {
-      ely $$1 = $$0.a;
-      return a(tf.a("mco.errorMessage.realmsService.realmsError", $$1.a()), $$1.b());
-   }
-
-   private static eob.a a(tf $$0) {
-      return a(tf.c("mco.errorMessage.generic"), $$0);
-   }
-
-   private static eob.a a(tf $$0, tf $$1) {
-      return new eob.a($$0, $$1);
+   public eob(enw $$0, eya $$1, emm $$2) {
+      super(eqd.a);
+      this.C = $$0;
+      this.D = $$1;
+      this.B = $$2;
    }
 
    @Override
-   public void aE_() {
-      this.d(esh.a(te.h, $$0 -> this.f.a(this.a)).a(this.g / 2 - 100, this.h - 52, 200, 20).a());
-      this.c = eta.a(this.i, this.b.b, this.g * 3 / 4);
+   public void aC_() {
+      this.z = new esp(this.f.h, this.g / 2 - 100, h(2), 200, 20, null, tf.c("mco.configure.world.invite.profile.name"));
+      this.e(this.z);
+      this.c(this.z);
+      this.A = this.d(esg.a(tf.c("mco.configure.world.buttons.invite"), $$0 -> this.C()).a(this.g / 2 - 100, h(10), 200, 20).a());
+      this.d(esg.a(te.e, $$0 -> this.f.a(this.D)).a(this.g / 2 - 100, h(12), 200, 20).a());
+   }
+
+   private void C() {
+      if (ac.b(this.z.a())) {
+         this.a(y);
+      } else {
+         long $$0 = this.B.a;
+         String $$1 = this.z.a().trim();
+         this.A.i = false;
+         this.z.e(false);
+         this.a(c);
+         CompletableFuture.<emm>supplyAsync(() -> {
+            try {
+               return elv.a().a($$0, $$1);
+            } catch (Exception var4) {
+               a.error("Couldn't invite user");
+               return null;
+            }
+         }, ac.g()).thenAcceptAsync($$0x -> {
+            if ($$0x != null) {
+               this.B.h = $$0x.h;
+               this.f.a(new eoh(this.C, this.B));
+            } else {
+               this.a(y);
+            }
+
+            this.z.e(true);
+            this.A.i = true;
+         }, this.j);
+      }
+   }
+
+   private void a(tf $$0) {
+      this.E = $$0;
+      this.f.aV().c($$0);
    }
 
    @Override
-   public tf e() {
-      return tf.h().b(this.b.a).f(": ").b(this.b.b);
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.f.a(this.D);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
    }
 
    @Override
-   public void a(erw $$0, int $$1, int $$2, float $$3) {
+   public void a(erv $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.b.a, this.g / 2, 80, -1);
-      this.c.a($$0, this.g / 2, 100, 9, -65536);
-   }
+      $$0.a(this.i, b, this.g / 2 - 100, h(1), -1, false);
+      if (this.E != null) {
+         $$0.a(this.i, this.E, this.g / 2, h(5), -1);
+      }
 
-   static record a(tf a, tf b) {
+      this.z.a($$0, $$1, $$2, $$3);
    }
 }

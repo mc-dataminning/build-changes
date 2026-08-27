@@ -1,23 +1,60 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class egc {
-   private static final Codec<egb> f = jb.J.q().dispatch(egb::b, ega::a);
-   public static final Codec<egb> a = aqy.a(
-      (Supplier<Codec<egb>>)(() -> {
-         Codec<egb> $$0 = aqy.c(f, ege.a);
-         return Codec.either(efz.b, $$0)
-            .xmap($$0x -> (egb)$$0x.map(Function.identity(), Function.identity()), $$0x -> $$0x instanceof efz $$1 ? Either.left($$1) : Either.right($$0x));
-      })
+public record egc(egi b, String c, float d) implements ega {
+   public static final Codec<egc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               egj.a.fieldOf("target").forGetter(egc::c),
+               Codec.STRING.fieldOf("score").forGetter(egc::d),
+               Codec.FLOAT.fieldOf("scale").orElse(1.0F).forGetter(egc::e)
+            )
+            .apply($$0, egc::new)
    );
-   public static final ega b = a("constant", efz.a);
-   public static final ega c = a("uniform", ege.a);
-   public static final ega d = a("binomial", efy.a);
-   public static final ega e = a("score", egd.a);
 
-   private static ega a(String $$0, Codec<? extends egb> $$1) {
-      return hr.a(jb.J, new aer($$0), new ega($$1));
+   @Override
+   public efz b() {
+      return egb.e;
+   }
+
+   @Override
+   public Set<eeo<?>> a() {
+      return this.b.b();
+   }
+
+   public static egc a(ecg.b $$0, String $$1) {
+      return a($$0, $$1, 1.0F);
+   }
+
+   public static egc a(ecg.b $$0, String $$1, float $$2) {
+      return new egc(egf.a($$0), $$1, $$2);
+   }
+
+   @Override
+   public float b(ecg $$0) {
+      String $$1 = this.b.a($$0);
+      if ($$1 == null) {
+         return 0.0F;
+      } else {
+         eic $$2 = $$0.d().f();
+         ehz $$3 = $$2.b(this.c);
+         if ($$3 == null) {
+            return 0.0F;
+         } else {
+            return !$$2.b($$1, $$3) ? 0.0F : (float)$$2.c($$1, $$3).b() * this.d;
+         }
+      }
+   }
+
+   public egi c() {
+      return this.b;
+   }
+
+   public String d() {
+      return this.c;
+   }
+
+   public float e() {
+      return this.d;
    }
 }

@@ -4,50 +4,50 @@ import com.mojang.datafixers.util.Pair;
 import java.util.Map;
 
 public final class apa {
-   private static final Map<cfp, Pair<String, String>> a = ImmutableMap.of(
-      cfp.a,
+   private static final Map<cfo, Pair<String, String>> a = ImmutableMap.of(
+      cfo.a,
       Pair.of("isGuiOpen", "isFilteringCraftable"),
-      cfp.b,
+      cfo.b,
       Pair.of("isFurnaceGuiOpen", "isFurnaceFilteringCraftable"),
-      cfp.c,
+      cfo.c,
       Pair.of("isBlastingFurnaceGuiOpen", "isBlastingFurnaceFilteringCraftable"),
-      cfp.d,
+      cfo.d,
       Pair.of("isSmokerGuiOpen", "isSmokerFilteringCraftable")
    );
-   private final Map<cfp, apa.a> b;
+   private final Map<cfo, apa.a> b;
 
-   private apa(Map<cfp, apa.a> $$0) {
+   private apa(Map<cfo, apa.a> $$0) {
       this.b = $$0;
    }
 
    public apa() {
-      this(ac.a(Maps.newEnumMap(cfp.class), $$0 -> {
-         for (cfp $$1 : cfp.values()) {
+      this(ac.a(Maps.newEnumMap(cfo.class), $$0 -> {
+         for (cfo $$1 : cfo.values()) {
             $$0.put($$1, new apa.a(false, false));
          }
       }));
    }
 
-   public boolean a(cfp $$0) {
+   public boolean a(cfo $$0) {
       return this.b.get($$0).a;
    }
 
-   public void a(cfp $$0, boolean $$1) {
+   public void a(cfo $$0, boolean $$1) {
       this.b.get($$0).a = $$1;
    }
 
-   public boolean b(cfp $$0) {
+   public boolean b(cfo $$0) {
       return this.b.get($$0).b;
    }
 
-   public void b(cfp $$0, boolean $$1) {
+   public void b(cfo $$0, boolean $$1) {
       this.b.get($$0).b = $$1;
    }
 
    public static apa a(si $$0) {
-      Map<cfp, apa.a> $$1 = Maps.newEnumMap(cfp.class);
+      Map<cfo, apa.a> $$1 = Maps.newEnumMap(cfo.class);
 
-      for (cfp $$2 : cfp.values()) {
+      for (cfo $$2 : cfo.values()) {
          boolean $$3 = $$0.readBoolean();
          boolean $$4 = $$0.readBoolean();
          $$1.put($$2, new apa.a($$3, $$4));
@@ -57,7 +57,7 @@ public final class apa {
    }
 
    public void b(si $$0) {
-      for (cfp $$1 : cfp.values()) {
+      for (cfo $$1 : cfo.values()) {
          apa.a $$2 = this.b.get($$1);
          if ($$2 == null) {
             $$0.a(false);
@@ -70,7 +70,7 @@ public final class apa {
    }
 
    public static apa a(qr $$0) {
-      Map<cfp, apa.a> $$1 = Maps.newEnumMap(cfp.class);
+      Map<cfo, apa.a> $$1 = Maps.newEnumMap(cfo.class);
       a.forEach(($$2, $$3) -> {
          boolean $$4 = $$0.q((String)$$3.getFirst());
          boolean $$5 = $$0.q((String)$$3.getSecond());
@@ -88,9 +88,9 @@ public final class apa {
    }
 
    public apa a() {
-      Map<cfp, apa.a> $$0 = Maps.newEnumMap(cfp.class);
+      Map<cfo, apa.a> $$0 = Maps.newEnumMap(cfo.class);
 
-      for (cfp $$1 : cfp.values()) {
+      for (cfo $$1 : cfo.values()) {
          apa.a $$2 = this.b.get($$1);
          $$0.put($$1, $$2.a());
       }
@@ -101,7 +101,7 @@ public final class apa {
    public void a(apa $$0) {
       this.b.clear();
 
-      for (cfp $$1 : cfp.values()) {
+      for (cfo $$1 : cfo.values()) {
          apa.a $$2 = $$0.b.get($$1);
          this.b.put($$1, $$2.a());
       }

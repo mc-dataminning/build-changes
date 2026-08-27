@@ -1,44 +1,33 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record dvf(List<dvf.a> c, dvw d) {
+public record dvf(dvf.a b, bfe<cqv.c> c) {
    public static final Codec<dvf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dvf.a.a.listOf().fieldOf("structures").forGetter(dvf::a), dvw.b.fieldOf("placement").forGetter(dvf::b)).apply($$0, dvf::new)
+      $$0 -> $$0.group(dvf.a.c.fieldOf("bounding_box").forGetter(dvf::a), bfe.c(cqv.c.a).fieldOf("spawns").forGetter(dvf::b)).apply($$0, dvf::new)
    );
-   public static final Codec<he<dvf>> b = aen.a(jc.aB, a);
 
-   public dvf(he<duz> $$0, dvw $$1) {
-      this(List.of(new dvf.a($$0, 1)), $$1);
+   public dvf.a a() {
+      return this.b;
    }
 
-   public static dvf.a a(he<duz> $$0, int $$1) {
-      return new dvf.a($$0, $$1);
-   }
-
-   public static dvf.a a(he<duz> $$0) {
-      return new dvf.a($$0, 1);
-   }
-
-   public List<dvf.a> a() {
+   public bfe<cqv.c> b() {
       return this.c;
    }
 
-   public dvw b() {
-      return this.d;
-   }
+   public static enum a implements ash {
+      a("piece"),
+      b("full");
 
-   public static record a(he<duz> b, int c) {
-      public static final Codec<dvf.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(duz.b.fieldOf("structure").forGetter(dvf.a::a), aqy.j.fieldOf("weight").forGetter(dvf.a::b)).apply($$0, dvf.a::new)
-      );
+      public static final Codec<dvf.a> c = ash.a(dvf.a::values);
+      private final String d;
 
-      public he<duz> a() {
-         return this.b;
+      private a(String $$0) {
+         this.d = $$0;
       }
 
-      public int b() {
-         return this.c;
+      @Override
+      public String c() {
+         return this.d;
       }
    }
 }

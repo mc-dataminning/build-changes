@@ -1,56 +1,54 @@
-public class fmg extends fmb {
-   private float a;
-
-   fmg(fii $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.t = (int)(Math.random() * 60.0) + 30;
+public class fmg extends flw {
+   fmg(fin $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, fmf $$8) {
+      super($$0, $$1, $$2, $$3, $$8, 0.0F);
+      this.B = 0.92F;
+      this.D = 0.5F;
+      this.e(1.0F);
+      this.a((float)ara.b.b($$7), (float)ara.b.c($$7), (float)ara.b.d($$7));
+      this.t = (int)((double)(this.D * 12.0F) / (Math.random() * 0.8F + 0.2F));
+      this.b($$8);
       this.n = false;
-      this.j = 0.0;
-      this.k = -0.05;
-      this.l = 0.0;
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.u = 0.002F;
-   }
-
-   @Override
-   public flf b() {
-      return flf.b;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
    }
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         float $$0 = 0.6F;
-         this.j = this.j + (double)(0.6F * arp.b(this.a));
-         this.l = this.l + (double)(0.6F * arp.a(this.a));
-         this.j *= 0.07;
-         this.l *= 0.07;
-         this.a(this.j, this.k, this.l);
-         if (!this.c.b_(gu.a(this.g, this.h, this.i)).a(apq.a) || this.m) {
-            this.k();
+      super.a();
+      if (!this.o) {
+         this.b(this.a);
+         if (this.s > this.t / 2) {
+            this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
          }
 
-         this.a += 0.08F;
+         if (this.c.a_(gu.a(this.g, this.h, this.i)).i()) {
+            this.k -= 0.0074F;
+         }
       }
    }
 
-   public static class a implements fle<iy> {
-      private final flw a;
+   public static class a implements fln<iy> {
+      private final fmf a;
 
-      public a(flw $$0) {
+      public a(fmf $$0) {
          this.a = $$0;
       }
 
-      public flb a(iy $$0, fii $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fmg $$8 = new fmg($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
+      public flk a(iy $$0, fin $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fmg($$1, $$2, $$3, $$4, $$5, $$6, $$7, ara.b.a(255, 204, 31, 102), this.a);
+      }
+   }
+
+   public static class b implements fln<iy> {
+      private final fmf a;
+
+      public b(fmf $$0) {
+         this.a = $$0;
+      }
+
+      public flk a(iy $$0, fin $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fmg($$1, $$2, $$3, $$4, $$5, $$6, $$7, ara.b.a(255, 255, 255, 255), this.a);
       }
    }
 }

@@ -1,106 +1,178 @@
-public class cwd extends cwa {
-   private static final double b = 0.13;
-   private static final double c = 0.08;
-   private static final double d = 0.05;
-   private static final int e = 20;
-   protected static final ehx a = csm.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
+import javax.annotation.Nullable;
 
-   public cwd(dez.d $$0) {
+public class cwd extends cry {
+   public static final dft a = dfp.Q;
+   public static final dfq b = dfp.f;
+   private static final ehw c = csl.a(0.0, 10.0, 0.0, 16.0, 16.0, 16.0);
+   private static final ehw d = csl.a(4.0, 4.0, 4.0, 12.0, 10.0, 12.0);
+   private static final ehw e = eht.a(d, c);
+   private static final ehw f = eht.a(e, ddi.c, ehh.e);
+   private static final ehw g = eht.a(f, csl.a(6.0, 0.0, 6.0, 10.0, 4.0, 10.0));
+   private static final ehw h = eht.a(f, csl.a(12.0, 4.0, 6.0, 16.0, 8.0, 10.0));
+   private static final ehw i = eht.a(f, csl.a(6.0, 4.0, 0.0, 10.0, 8.0, 4.0));
+   private static final ehw j = eht.a(f, csl.a(6.0, 4.0, 12.0, 10.0, 8.0, 16.0));
+   private static final ehw k = eht.a(f, csl.a(0.0, 4.0, 6.0, 4.0, 8.0, 10.0));
+   private static final ehw l = ddi.c;
+   private static final ehw m = eht.a(ddi.c, csl.a(12.0, 8.0, 6.0, 16.0, 10.0, 10.0));
+   private static final ehw n = eht.a(ddi.c, csl.a(6.0, 8.0, 0.0, 10.0, 10.0, 4.0));
+   private static final ehw D = eht.a(ddi.c, csl.a(6.0, 8.0, 12.0, 10.0, 10.0, 16.0));
+   private static final ehw E = eht.a(ddi.c, csl.a(0.0, 8.0, 6.0, 4.0, 10.0, 10.0));
+
+   public cwd(dey.d $$0) {
       super($$0);
-   }
-
-   private static boolean c(bii $$0) {
-      return $$0 instanceof biy || $$0 instanceof cde || $$0 instanceof byh || $$0 instanceof cdg;
+      this.k(this.C.b().a(a, ha.a).a(b, Boolean.valueOf(true)));
    }
 
    @Override
-   public ehx c(dfa $$0, cos $$1, gu $$2, ehj $$3) {
-      return a;
-   }
-
-   @Override
-   public void a(cpm $$0, dfa $$1, gu $$2, bii $$3, float $$4) {
-      $$3.a(aow.kY, 1.0F, 1.0F);
-      if (!$$0.B) {
-         $$0.a($$3, (byte)54);
-      }
-
-      if ($$3.a($$4, 0.2F, $$0.ag().k())) {
-         $$3.a(this.aH.g(), this.aH.a() * 0.5F, this.aH.b() * 0.75F);
+   public ehw a(dez $$0, cor $$1, gu $$2, ehi $$3) {
+      switch ((ha)$$0.c(a)) {
+         case a:
+            return g;
+         case c:
+            return i;
+         case d:
+            return j;
+         case e:
+            return k;
+         case f:
+            return h;
+         default:
+            return f;
       }
    }
 
    @Override
-   public void a(dfa $$0, cpm $$1, gu $$2, bii $$3) {
-      if (this.a($$2, $$3)) {
-         this.a($$3, $$2);
-         this.d($$3);
-         this.a($$1, $$3);
+   public ehw a(dez $$0, cor $$1, gu $$2) {
+      switch ((ha)$$0.c(a)) {
+         case a:
+            return l;
+         case c:
+            return n;
+         case d:
+            return D;
+         case e:
+            return E;
+         case f:
+            return m;
+         default:
+            return ddi.c;
       }
-
-      super.a($$0, $$1, $$2, $$3);
    }
 
-   private boolean a(gu $$0, bii $$1) {
-      if ($$1.aA()) {
-         return false;
-      } else if ($$1.dr() > (double)$$0.v() + 0.9375 - 1.0E-7) {
-         return false;
-      } else if ($$1.dn().d >= -0.08) {
-         return false;
+   @Override
+   public dez a(clf $$0) {
+      ha $$1 = $$0.k().g();
+      return this.n().a(a, $$1.o() == ha.a.b ? ha.a : $$1).a(b, Boolean.valueOf(true));
+   }
+
+   @Override
+   public dcl a(gu $$0, dez $$1) {
+      return new ddj($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dcl> dcm<T> a(cpl $$0, dez $$1, dcn<T> $$2) {
+      return $$0.B ? null : a($$2, dcn.r, ddj::a);
+   }
+
+   @Override
+   public void a(cpl $$0, gu $$1, dez $$2, biy $$3, cix $$4) {
+      if ($$4.A()) {
+         dcl $$5 = $$0.c_($$1);
+         if ($$5 instanceof ddj) {
+            ((ddj)$$5).a($$4.y());
+         }
+      }
+   }
+
+   @Override
+   public void b(dez $$0, cpl $$1, gu $$2, dez $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$1, $$2, $$0, 2);
+      }
+   }
+
+   @Override
+   public bgq a(dez $$0, cpl $$1, gu $$2, cbm $$3, bgp $$4, egz $$5) {
+      if ($$1.B) {
+         return bgq.a;
       } else {
-         double $$2 = Math.abs((double)$$0.u() + 0.5 - $$1.dp());
-         double $$3 = Math.abs((double)$$0.w() + 0.5 - $$1.dv());
-         double $$4 = 0.4375 + (double)($$1.df() / 2.0F);
-         return $$2 + 1.0E-7 > $$4 || $$3 + 1.0E-7 > $$4;
-      }
-   }
-
-   private void a(bii $$0, gu $$1) {
-      if ($$0 instanceof akl && $$0.dK().V() % 20L == 0L) {
-         ai.J.a((akl)$$0, $$0.dK().a_($$1));
-      }
-   }
-
-   private void d(bii $$0) {
-      ehe $$1 = $$0.dn();
-      if ($$1.d < -0.13) {
-         double $$2 = -0.05 / $$1.d;
-         $$0.f(new ehe($$1.c * $$2, -0.05, $$1.e * $$2));
-      } else {
-         $$0.f(new ehe($$1.c, -0.05, $$1.e));
-      }
-
-      $$0.n();
-   }
-
-   private void a(cpm $$0, bii $$1) {
-      if (c($$1)) {
-         if ($$0.z.a(5) == 0) {
-            $$1.a(aow.kY, 1.0F, 1.0F);
+         dcl $$6 = $$1.c_($$2);
+         if ($$6 instanceof ddj) {
+            $$3.a((ddj)$$6);
+            $$3.a(apg.ad);
          }
 
-         if (!$$0.B && $$0.z.a(5) == 0) {
-            $$0.a($$1, (byte)53);
-         }
+         return bgq.b;
       }
    }
 
-   public static void a(bii $$0) {
-      a($$0, 5);
+   @Override
+   public void a(dez $$0, cpl $$1, gu $$2, csl $$3, gu $$4, boolean $$5) {
+      this.a($$1, $$2, $$0, 4);
    }
 
-   public static void b(bii $$0) {
-      a($$0, 10);
-   }
-
-   private static void a(bii $$0, int $$1) {
-      if ($$0.dK().B) {
-         dfa $$2 = csn.pg.n();
-
-         for (int $$3 = 0; $$3 < $$1; $$3++) {
-            $$0.dK().a(new in(iv.c, $$2), $$0.dp(), $$0.dr(), $$0.dv(), 0.0, 0.0, 0.0);
-         }
+   private void a(cpl $$0, gu $$1, dez $$2, int $$3) {
+      boolean $$4 = !$$0.B($$1);
+      if ($$4 != $$2.c(b)) {
+         $$0.a($$1, $$2.a(b, Boolean.valueOf($$4)), $$3);
       }
+   }
+
+   @Override
+   public void a(dez $$0, cpl $$1, gu $$2, dez $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         dcl $$5 = $$1.c_($$2);
+         if ($$5 instanceof ddj) {
+            bgm.a($$1, $$2, (ddj)$$5);
+            $$1.c($$2, this);
+         }
+
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   public cyq b_(dez $$0) {
+      return cyq.c;
+   }
+
+   @Override
+   public boolean d_(dez $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(dez $$0, cpl $$1, gu $$2) {
+      return ced.a($$1.c_($$2));
+   }
+
+   @Override
+   public dez a(dez $$0, cyx $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   public dez a(dez $$0, cxg $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(dfa.a<csl, dez> $$0) {
+      $$0.a(a, b);
+   }
+
+   @Override
+   public void a(dez $$0, cpl $$1, gu $$2, bii $$3) {
+      dcl $$4 = $$1.c_($$2);
+      if ($$4 instanceof ddj) {
+         ddj.a($$1, $$2, $$0, $$3, (ddj)$$4);
+      }
+   }
+
+   @Override
+   public boolean a(dez $$0, cor $$1, gu $$2, eas $$3) {
+      return false;
    }
 }

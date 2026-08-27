@@ -1,29 +1,42 @@
-public class ewx extends exz {
-   private eta a;
-   private final Runnable b;
+public class ewx extends eya {
+   private static final int a = 8;
+   private static final int b = 210;
+   private static final tf c = tf.c("credits_and_attribution.screen.title");
+   private static final tf k = tf.c("credits_and_attribution.button.credits");
+   private static final tf l = tf.c("credits_and_attribution.button.attribution");
+   private static final tf m = tf.c("credits_and_attribution.button.licenses");
+   private final eya n;
+   private final evp o = new evp(this);
 
-   public ewx(Runnable $$0) {
-      super(tf.c("datapackFailure.title"));
-      this.a = eta.a;
-      this.b = $$0;
+   public ewx(eya $$0) {
+      super(c);
+      this.n = $$0;
    }
 
    @Override
-   protected void aE_() {
-      super.aE_();
-      this.a = eta.a(this.i, this.m(), this.g - 50);
-      this.d(esh.a(tf.c("datapackFailure.safeMode"), $$0 -> this.b.run()).a(this.g / 2 - 155, this.h / 6 + 96, 150, 20).a());
-      this.d(esh.a(te.l, $$0 -> this.f.a(null)).a(this.g / 2 - 155 + 160, this.h / 6 + 96, 150, 20).a());
+   protected void aC_() {
+      this.o.a(new etm(this.m(), this.i));
+      evt $$0 = this.o.c(evt.d()).a(8);
+      $$0.c().b();
+      $$0.a(esg.a(k, $$0x -> this.l()).a(210).a());
+      $$0.a(esg.a(l, ews.b("https://aka.ms/MinecraftJavaAttribution", this, true)).a(210).a());
+      $$0.a(esg.a(m, ews.b("https://aka.ms/MinecraftJavaLicenses", this, true)).a(210).a());
+      this.o.b(esg.a(te.d, $$0x -> this.at_()).a());
+      this.o.a();
+      this.o.a(this::d);
    }
 
    @Override
-   public void a(erw $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a.a($$0, this.g / 2, 70);
+   protected void b() {
+      this.o.a();
+   }
+
+   private void l() {
+      this.f.a(new eyh(false, () -> this.f.a(this)));
    }
 
    @Override
-   public boolean aA_() {
-      return false;
+   public void at_() {
+      this.f.a(this.n);
    }
 }

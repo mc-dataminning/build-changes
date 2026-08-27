@@ -1,9 +1,7 @@
-public enum cen {
-   a,
-   b,
-   c,
-   d,
-   e,
-   f,
-   g;
+public interface cen {
+   int a(int var1);
+
+   void a(int var1, int var2);
+
+   int a();
 }

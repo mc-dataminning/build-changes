@@ -1,23 +1,26 @@
-public class fxj<T extends biy> extends fwa<T, fhc<T>> {
-   public fxj(fuj<T, fhc<T>> $$0, fnh $$1) {
-      super($$0, $$1);
+public class fxj<T extends biy> extends fxf<T, fgr<T>> {
+   private final fet<T> a;
+
+   public fxj(fus<T, fgr<T>> $$0, fho $$1) {
+      super($$0);
+      this.a = new fgr<>($$1.a(fhr.bn));
    }
 
-   @Override
-   public void a(elg $$0, fnl $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      ciy $$10 = $$3.eR();
-      $$0.a();
-      if ($$10.a(cjb.rv)) {
-         this.c().d().a($$0);
-         this.c().e().a($$0);
-         $$0.a(0.0625F, 0.25F, 0.0F);
-         $$0.a(a.f.rotationDegrees(180.0F));
-         $$0.a(a.b.rotationDegrees(140.0F));
-         $$0.a(a.f.rotationDegrees(10.0F));
-         $$0.a(0.0F, -0.4F, 0.4F);
-      }
+   public void a(elf $$0, fnu $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      eql $$10 = eql.O();
+      boolean $$11 = $$10.b($$3) && $$3.cd();
+      if (!$$3.cd() || $$11) {
+         elj $$12;
+         if ($$11) {
+            $$12 = $$1.getBuffer(foc.q(this.a($$3)));
+         } else {
+            $$12 = $$1.getBuffer(foc.i(this.a($$3)));
+         }
 
-      super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-      $$0.b();
+         this.c().a(this.a);
+         this.a.a($$3, $$4, $$5, $$6);
+         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
+         this.a.a($$0, $$12, $$2, fty.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
+      }
    }
 }

@@ -1,31 +1,32 @@
-import java.util.Optional;
-import java.util.function.Function;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dmj extends dlg {
-   private final hs a;
-   private final dkn b;
-   private final dkx c;
-   private final dla.o d;
+public class dmj extends dmg {
+   public static final Codec<dmj> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dmg.d.forGetter($$0x -> $$0x),
+               bft.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
+               bft.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
+               bft.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
+            )
+            .apply($$0, dmj::new)
+   );
+   public final bft b;
+   public final bft c;
+   final bft j;
 
-   public dmj(dkm $$0, hs $$1, cpo $$2, dkn $$3, dkx $$4, dla.o $$5) {
-      super($$0, $$2);
-      this.a = $$1;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = $$5;
+   public dmj(float $$0, dtf $$1, bft $$2, dlc $$3, dmh $$4, hi<csl> $$5, bft $$6, bft $$7, bft $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
+      this.j = $$8;
    }
 
-   @Deprecated
-   public Optional<dfa> a(Function<gu, he<cqk>> $$0, dgw $$1, gu $$2, boolean $$3) {
-      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
+   public dmj(float $$0, dtf $$1, bft $$2, dlc $$3, hi<csl> $$4, bft $$5, bft $$6, bft $$7) {
+      this($$0, $$1, $$2, $$3, dmh.a, $$4, $$5, $$6, $$7);
    }
 
-   @Deprecated
-   public hs c() {
-      return this.a;
-   }
-
-   public dkx d() {
-      return this.c;
+   public dmj(dmg $$0, bft $$1, bft $$2, bft $$3) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
    }
 }

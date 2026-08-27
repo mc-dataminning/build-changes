@@ -1,188 +1,78 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.function.Supplier;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class edl extends edt {
-   public static final Codec<edl> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and($$0.group(efv.a.fieldOf("source").forGetter($$0x -> $$0x.b), edl.b.a.listOf().fieldOf("ops").forGetter($$0x -> $$0x.c)))
-            .apply($$0, edl::new)
-   );
-   private final efu b;
-   private final List<edl.b> c;
+public class edl extends eds {
+   private static final Logger b = LogUtils.getLogger();
+   private static final Codec<hi<cne>> c = jb.g.r().listOf().xmap(hi::a, $$0 -> $$0.a().toList());
+   public static final Codec<edl> a = RecordCodecBuilder.create($$0 -> a($$0).and(aqy.a(c, "enchantments").forGetter($$0x -> $$0x.d)).apply($$0, edl::new));
+   private final Optional<hi<cne>> d;
 
-   edl(List<efg> $$0, efu $$1, List<edl.b> $$2) {
+   edl(List<eff> $$0, Optional<hi<cne>> $$1) {
       super($$0);
-      this.b = $$1;
-      this.c = List.copyOf($$2);
+      this.d = $$1;
    }
 
    @Override
-   public edv b() {
-      return edw.w;
+   public edu b() {
+      return edv.e;
    }
 
    @Override
-   public Set<eep<?>> a() {
-      return this.b.b();
+   public cix a(cix $$0, ecg $$1) {
+      aru $$2 = $$1.b();
+      Optional<he<cne>> $$3 = this.d.<he<cne>>flatMap($$1x -> $$1x.a($$2)).or(() -> {
+         boolean $$2x = $$0.a(cja.qb);
+         List<he.c<cne>> $$3x = jb.g.h().filter($$0xx -> ((cne)$$0xx.a()).i()).filter($$2xx -> $$2x || ((cne)$$2xx.a()).a($$0)).toList();
+         return ac.b($$3x, $$2);
+      });
+      if ($$3.isEmpty()) {
+         b.warn("Couldn't find a compatible enchantment for {}", $$0);
+         return $$0;
+      } else {
+         return a($$0, $$3.get().a(), $$2);
+      }
    }
 
-   @Override
-   public ciy a(ciy $$0, ech $$1) {
-      rk $$2 = this.b.a($$1);
-      if ($$2 != null) {
-         this.c.forEach($$2x -> $$2x.a($$0::w, $$2));
+   private static cix a(cix $$0, cne $$1, aru $$2) {
+      int $$3 = arp.a($$2, $$1.e(), $$1.a());
+      if ($$0.a(cja.qb)) {
+         $$0 = new cix(cja.tC);
+         cht.a($$0, new cnh($$1, $$3));
+      } else {
+         $$0.a($$1, $$3);
       }
 
       return $$0;
    }
 
-   public static edl.a a(efu $$0) {
-      return new edl.a($$0);
+   public static edl.a c() {
+      return new edl.a();
    }
 
-   public static edl.a a(ech.b $$0) {
-      return new edl.a(efs.a($$0));
+   public static eds.a<?> d() {
+      return a($$0 -> new edl($$0, Optional.empty()));
    }
 
-   public static class a extends edt.a<edl.a> {
-      private final efu a;
-      private final List<edl.b> b = Lists.newArrayList();
-
-      a(efu $$0) {
-         this.a = $$0;
-      }
-
-      public edl.a a(String $$0, String $$1, edl.c $$2) {
-         try {
-            this.b.add(new edl.b(edl.d.a($$0), edl.d.a($$1), $$2));
-            return this;
-         } catch (CommandSyntaxException var5) {
-            throw new IllegalArgumentException(var5);
-         }
-      }
-
-      public edl.a a(String $$0, String $$1) {
-         return this.a($$0, $$1, edl.c.a);
-      }
+   public static class a extends eds.a<edl.a> {
+      private final List<he<cne>> a = new ArrayList<>();
 
       protected edl.a a() {
          return this;
       }
 
-      @Override
-      public edu b() {
-         return new edl(this.g(), this.a, this.b);
-      }
-   }
-
-   static record b(edl.d b, edl.d c, edl.c d) {
-      public static final Codec<edl.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  edl.d.a.fieldOf("source").forGetter(edl.b::a), edl.d.a.fieldOf("target").forGetter(edl.b::b), edl.c.d.fieldOf("op").forGetter(edl.b::c)
-               )
-               .apply($$0, edl.b::new)
-      );
-
-      public void a(Supplier<rk> $$0, rk $$1) {
-         try {
-            List<rk> $$2 = this.b.b().a($$1);
-            if (!$$2.isEmpty()) {
-               this.d.a($$0.get(), this.c.b(), $$2);
-            }
-         } catch (CommandSyntaxException var4) {
-         }
-      }
-
-      public edl.d a() {
-         return this.b;
-      }
-
-      public edl.d b() {
-         return this.c;
-      }
-
-      public edl.c c() {
-         return this.d;
-      }
-   }
-
-   public static enum c implements ash {
-      a("replace") {
-         @Override
-         public void a(rk $$0, eh.g $$1, List<rk> $$2) throws CommandSyntaxException {
-            $$1.a($$0, (rk)Iterables.getLast($$2));
-         }
-      },
-      b("append") {
-         @Override
-         public void a(rk $$0, eh.g $$1, List<rk> $$2) throws CommandSyntaxException {
-            List<rk> $$3 = $$1.a($$0, qx::new);
-            $$3.forEach($$1x -> {
-               if ($$1x instanceof qx) {
-                  $$2.forEach($$1xx -> ((qx)$$1x).add($$1xx.d()));
-               }
-            });
-         }
-      },
-      c("merge") {
-         @Override
-         public void a(rk $$0, eh.g $$1, List<rk> $$2) throws CommandSyntaxException {
-            List<rk> $$3 = $$1.a($$0, qr::new);
-            $$3.forEach($$1x -> {
-               if ($$1x instanceof qr) {
-                  $$2.forEach($$1xx -> {
-                     if ($$1xx instanceof qr) {
-                        ((qr)$$1x).a((qr)$$1xx);
-                     }
-                  });
-               }
-            });
-         }
-      };
-
-      public static final Codec<edl.c> d = ash.a(edl.c::values);
-      private final String e;
-
-      public abstract void a(rk var1, eh.g var2, List<rk> var3) throws CommandSyntaxException;
-
-      c(String $$0) {
-         this.e = $$0;
+      public edl.a a(cne $$0) {
+         this.a.add($$0.j());
+         return this;
       }
 
       @Override
-      public String c() {
-         return this.e;
-      }
-   }
-
-   static record d(String b, eh.g c) {
-      public static final Codec<edl.d> a = Codec.STRING.comapFlatMap($$0 -> {
-         try {
-            return DataResult.success(a($$0));
-         } catch (CommandSyntaxException var2) {
-            return DataResult.error(() -> "Failed to parse path " + $$0 + ": " + var2.getMessage());
-         }
-      }, edl.d::a);
-
-      public static edl.d a(String $$0) throws CommandSyntaxException {
-         eh.g $$1 = new eh().a(new StringReader($$0));
-         return new edl.d($$0, $$1);
-      }
-
-      public String a() {
-         return this.b;
-      }
-
-      public eh.g b() {
-         return this.c;
+      public edt b() {
+         return new edl(this.g(), this.a.isEmpty() ? Optional.empty() : Optional.of(hi.a(this.a)));
       }
    }
 }

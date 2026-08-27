@@ -5,7 +5,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import org.joml.Vector3f;
 
 public class ip extends iq {
-   public static final Vector3f a = ehe.a(16711680).j();
+   public static final Vector3f a = ehd.a(16711680).j();
    public static final ip b = new ip(a, 1.0F);
    public static final Codec<ip> c = RecordCodecBuilder.create(
       $$0 -> $$0.group(aqy.d.fieldOf("color").forGetter($$0x -> $$0x.g), Codec.FLOAT.fieldOf("scale").forGetter($$0x -> $$0x.h)).apply($$0, ip::new)

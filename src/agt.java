@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 
 public class agt {
    private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> tf.a("commands.fill.toobig", $$0, $$1));
-   static final fd b = new fd(csn.a.n(), Collections.emptySet(), null);
+   static final fd b = new fd(csm.a.n(), Collections.emptySet(), null);
    private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tf.c("commands.fill.failed"));
 
    public static void a(CommandDispatcher<dr> $$0, dl $$1) {
@@ -27,14 +27,14 @@ public class agt {
                                                 "block", ff.a($$1)
                                              )
                                              .executes(
-                                                $$0x -> a((dr)$$0x.getSource(), dur.a(fi.a($$0x, "from"), fi.a($$0x, "to")), ff.a($$0x, "block"), agt.a.a, null)
+                                                $$0x -> a((dr)$$0x.getSource(), duq.a(fi.a($$0x, "from"), fi.a($$0x, "to")), ff.a($$0x, "block"), agt.a.a, null)
                                              ))
                                           .then(
                                              ((LiteralArgumentBuilder)ds.a("replace")
                                                    .executes(
                                                       $$0x -> a(
                                                             (dr)$$0x.getSource(),
-                                                            dur.a(fi.a($$0x, "from"), fi.a($$0x, "to")),
+                                                            duq.a(fi.a($$0x, "from"), fi.a($$0x, "to")),
                                                             ff.a($$0x, "block"),
                                                             agt.a.a,
                                                             null
@@ -45,7 +45,7 @@ public class agt {
                                                       .executes(
                                                          $$0x -> a(
                                                                (dr)$$0x.getSource(),
-                                                               dur.a(fi.a($$0x, "from"), fi.a($$0x, "to")),
+                                                               duq.a(fi.a($$0x, "from"), fi.a($$0x, "to")),
                                                                ff.a($$0x, "block"),
                                                                agt.a.a,
                                                                fe.a($$0x, "filter")
@@ -58,7 +58,7 @@ public class agt {
                                              .executes(
                                                 $$0x -> a(
                                                       (dr)$$0x.getSource(),
-                                                      dur.a(fi.a($$0x, "from"), fi.a($$0x, "to")),
+                                                      duq.a(fi.a($$0x, "from"), fi.a($$0x, "to")),
                                                       ff.a($$0x, "block"),
                                                       agt.a.a,
                                                       $$0xx -> $$0xx.c().t($$0xx.d())
@@ -68,18 +68,18 @@ public class agt {
                                     .then(
                                        ds.a("outline")
                                           .executes(
-                                             $$0x -> a((dr)$$0x.getSource(), dur.a(fi.a($$0x, "from"), fi.a($$0x, "to")), ff.a($$0x, "block"), agt.a.b, null)
+                                             $$0x -> a((dr)$$0x.getSource(), duq.a(fi.a($$0x, "from"), fi.a($$0x, "to")), ff.a($$0x, "block"), agt.a.b, null)
                                           )
                                     ))
                                  .then(
                                     ds.a("hollow")
                                        .executes(
-                                          $$0x -> a((dr)$$0x.getSource(), dur.a(fi.a($$0x, "from"), fi.a($$0x, "to")), ff.a($$0x, "block"), agt.a.c, null)
+                                          $$0x -> a((dr)$$0x.getSource(), duq.a(fi.a($$0x, "from"), fi.a($$0x, "to")), ff.a($$0x, "block"), agt.a.c, null)
                                        )
                                  ))
                               .then(
                                  ds.a("destroy")
-                                    .executes($$0x -> a((dr)$$0x.getSource(), dur.a(fi.a($$0x, "from"), fi.a($$0x, "to")), ff.a($$0x, "block"), agt.a.d, null))
+                                    .executes($$0x -> a((dr)$$0x.getSource(), duq.a(fi.a($$0x, "from"), fi.a($$0x, "to")), ff.a($$0x, "block"), agt.a.d, null))
                               )
                         )
                   )
@@ -87,9 +87,9 @@ public class agt {
       );
    }
 
-   private static int a(dr $$0, dur $$1, fd $$2, agt.a $$3, @Nullable Predicate<dfe> $$4) throws CommandSyntaxException {
+   private static int a(dr $$0, duq $$1, fd $$2, agt.a $$3, @Nullable Predicate<dfd> $$4) throws CommandSyntaxException {
       int $$5 = $$1.c() * $$1.d() * $$1.e();
-      int $$6 = $$0.e().X().c(cpi.x);
+      int $$6 = $$0.e().X().c(cph.x);
       if ($$5 > $$6) {
          throw a.create($$6, $$5);
       } else {
@@ -98,10 +98,10 @@ public class agt {
          int $$9 = 0;
 
          for (gu $$10 : gu.b($$1.g(), $$1.h(), $$1.i(), $$1.j(), $$1.k(), $$1.l())) {
-            if ($$4 == null || $$4.test(new dfe($$8, $$10, true))) {
+            if ($$4 == null || $$4.test(new dfd($$8, $$10, true))) {
                fd $$11 = $$3.e.filter($$1, $$10, $$2, $$8);
                if ($$11 != null) {
-                  dcm $$12 = $$8.c_($$10);
+                  dcl $$12 = $$8.c_($$10);
                   bgh.a_($$12);
                   if ($$11.a($$8, $$10, 2)) {
                      $$7.add($$10.i());
@@ -112,7 +112,7 @@ public class agt {
          }
 
          for (gu $$13 : $$7) {
-            csm $$14 = $$8.a_($$13).b();
+            csl $$14 = $$8.a_($$13).b();
             $$8.b($$13, $$14);
          }
 

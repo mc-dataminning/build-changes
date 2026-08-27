@@ -1,100 +1,61 @@
-import javax.annotation.Nullable;
+public class bxm extends bxc {
+   private static final int b = 100;
+   private static final int c = 10;
+   private static final int d = 20;
+   private static final int e = 150;
+   private static final btk f = btk.a().a(150.0);
+   private final btk g;
+   private int h;
 
-public class bxm extends bxd {
-   private static final int b = 200;
-   private static final int c = 4;
-   private static final int d = 10;
-   private int e;
-   private int f;
-   @Nullable
-   private bif g;
-
-   public bxm(bxa $$0) {
+   public bxm(bwz $$0) {
       super($$0);
-   }
-
-   @Override
-   public void b() {
-      this.e++;
-      if (this.e % 2 == 0 && this.e < 10) {
-         ehe $$0 = this.a.D(1.0F).d();
-         $$0.b((float) (-Math.PI / 4));
-         double $$1 = this.a.e.dp();
-         double $$2 = this.a.e.e(0.5);
-         double $$3 = this.a.e.dv();
-
-         for (int $$4 = 0; $$4 < 8; $$4++) {
-            double $$5 = $$1 + this.a.ee().k() / 2.0;
-            double $$6 = $$2 + this.a.ee().k() / 2.0;
-            double $$7 = $$3 + this.a.ee().k() / 2.0;
-
-            for (int $$8 = 0; $$8 < 6; $$8++) {
-               this.a.dK().a(iv.i, $$5, $$6, $$7, -$$0.c * 0.08F * (double)$$8, -$$0.d * 0.6F, -$$0.e * 0.08F * (double)$$8);
-            }
-
-            $$0.b((float) (Math.PI / 16));
-         }
-      }
+      this.g = btk.a().a(20.0).a($$1 -> Math.abs($$1.dr() - $$0.dr()) <= 10.0);
    }
 
    @Override
    public void c() {
-      this.e++;
-      if (this.e >= 200) {
-         if (this.f >= 4) {
-            this.a.fW().a(bxq.e);
+      this.h++;
+      biy $$0 = this.a.dK().a(this.g, this.a, this.a.dp(), this.a.dr(), this.a.dv());
+      if ($$0 != null) {
+         if (this.h > 25) {
+            this.a.fX().a(bxp.h);
          } else {
-            this.a.fW().a(bxq.g);
-         }
-      } else if (this.e == 10) {
-         ehe $$0 = new ehe(this.a.e.dp() - this.a.dp(), 0.0, this.a.e.dv() - this.a.dv()).d();
-         float $$1 = 5.0F;
-         double $$2 = this.a.e.dp() + $$0.c * 5.0 / 2.0;
-         double $$3 = this.a.e.dv() + $$0.e * 5.0 / 2.0;
-         double $$4 = this.a.e.e(0.5);
-         double $$5 = $$4;
-         gu.a $$6 = new gu.a($$2, $$4, $$3);
+            ehd $$1 = new ehd($$0.dp() - this.a.dp(), 0.0, $$0.dv() - this.a.dv()).d();
+            ehd $$2 = new ehd((double)arp.a(this.a.dA() * (float) (Math.PI / 180.0)), 0.0, (double)(-arp.b(this.a.dA() * (float) (Math.PI / 180.0)))).d();
+            float $$3 = (float)$$2.b($$1);
+            float $$4 = (float)(Math.acos((double)$$3) * 180.0F / (float)Math.PI) + 0.5F;
+            if ($$4 < 0.0F || $$4 > 10.0F) {
+               double $$5 = $$0.dp() - this.a.e.dp();
+               double $$6 = $$0.dv() - this.a.e.dv();
+               double $$7 = arp.a(arp.d(180.0 - arp.d($$5, $$6) * 180.0F / (float)Math.PI - (double)this.a.dA()), -100.0, 100.0);
+               this.a.bW *= 0.8F;
+               float $$8 = (float)Math.sqrt($$5 * $$5 + $$6 * $$6) + 1.0F;
+               float $$9 = $$8;
+               if ($$8 > 40.0F) {
+                  $$8 = 40.0F;
+               }
 
-         while (this.a.dK().t($$6)) {
-            if (--$$5 < 0.0) {
-               $$5 = $$4;
-               break;
+               this.a.bW += (float)$$7 * (0.7F / $$8 / $$9);
+               this.a.r(this.a.dA() + this.a.bW);
             }
-
-            $$6.b($$2, $$5, $$3);
          }
-
-         $$5 = (double)(arp.a($$5) + 1);
-         this.g = new bif(this.a.dK(), $$2, $$5, $$3);
-         this.g.a(this.a);
-         this.g.a(5.0F);
-         this.g.b(200);
-         this.g.a(iv.i);
-         this.g.a(new bhv(bhx.g));
-         this.a.dK().b(this.g);
+      } else if (this.h >= 100) {
+         $$0 = this.a.dK().a(f, this.a, this.a.dp(), this.a.dr(), this.a.dv());
+         this.a.fX().a(bxp.e);
+         if ($$0 != null) {
+            this.a.fX().a(bxp.i);
+            this.a.fX().b(bxp.i).a(new ehd($$0.dp(), $$0.dr(), $$0.dv()));
+         }
       }
    }
 
    @Override
    public void d() {
-      this.e = 0;
-      this.f++;
+      this.h = 0;
    }
 
    @Override
-   public void e() {
-      if (this.g != null) {
-         this.g.ak();
-         this.g = null;
-      }
-   }
-
-   @Override
-   public bxq<bxm> i() {
-      return bxq.f;
-   }
-
-   public void j() {
-      this.f = 0;
+   public bxp<bxm> i() {
+      return bxp.g;
    }
 }

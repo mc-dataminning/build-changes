@@ -1,7 +1,7 @@
 public interface fk {
-   ehe a(dr var1);
+   ehd a(dr var1);
 
-   ehd b(dr var1);
+   ehc b(dr var1);
 
    default gu c(dr $$0) {
       return gu.a(this.a($$0));

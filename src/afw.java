@@ -95,7 +95,7 @@ public class afw {
                                                                                  fc.a($$0x, "uuid"),
                                                                                  StringArgumentType.getString($$0x, "name"),
                                                                                  DoubleArgumentType.getDouble($$0x, "value"),
-                                                                                 bkd.a.a
+                                                                                 bkc.a.a
                                                                               )
                                                                         )
                                                                   ))
@@ -109,7 +109,7 @@ public class afw {
                                                                               fc.a($$0x, "uuid"),
                                                                               StringArgumentType.getString($$0x, "name"),
                                                                               DoubleArgumentType.getDouble($$0x, "value"),
-                                                                              bkd.a.c
+                                                                              bkc.a.c
                                                                            )
                                                                      )
                                                                ))
@@ -123,7 +123,7 @@ public class afw {
                                                                            fc.a($$0x, "uuid"),
                                                                            StringArgumentType.getString($$0x, "name"),
                                                                            DoubleArgumentType.getDouble($$0x, "value"),
-                                                                           bkd.a.b
+                                                                           bkc.a.b
                                                                         )
                                                                   )
                                                             )
@@ -168,8 +168,8 @@ public class afw {
       );
    }
 
-   private static bkb a(bii $$0, he<bka> $$1) throws CommandSyntaxException {
-      bkb $$2 = a($$0).eP().a($$1);
+   private static bka a(bii $$0, he<bjz> $$1) throws CommandSyntaxException {
+      bka $$2 = a($$0).eP().a($$1);
       if ($$2 == null) {
          throw b.create($$0.ab(), a($$1));
       } else {
@@ -185,7 +185,7 @@ public class afw {
       }
    }
 
-   private static biy b(bii $$0, he<bka> $$1) throws CommandSyntaxException {
+   private static biy b(bii $$0, he<bjz> $$1) throws CommandSyntaxException {
       biy $$2 = a($$0);
       if (!$$2.eP().b($$1)) {
          throw b.create($$0.ab(), a($$1));
@@ -194,23 +194,23 @@ public class afw {
       }
    }
 
-   private static int a(dr $$0, bii $$1, he<bka> $$2, double $$3) throws CommandSyntaxException {
+   private static int a(dr $$0, bii $$1, he<bjz> $$2, double $$3) throws CommandSyntaxException {
       biy $$4 = b($$1, $$2);
       double $$5 = $$4.a($$2);
       $$0.a(() -> tf.a("commands.attribute.value.get.success", a($$2), $$1.ab(), $$5), false);
       return (int)($$5 * $$3);
    }
 
-   private static int b(dr $$0, bii $$1, he<bka> $$2, double $$3) throws CommandSyntaxException {
+   private static int b(dr $$0, bii $$1, he<bjz> $$2, double $$3) throws CommandSyntaxException {
       biy $$4 = b($$1, $$2);
       double $$5 = $$4.b($$2);
       $$0.a(() -> tf.a("commands.attribute.base_value.get.success", a($$2), $$1.ab(), $$5), false);
       return (int)($$5 * $$3);
    }
 
-   private static int a(dr $$0, bii $$1, he<bka> $$2, UUID $$3, double $$4) throws CommandSyntaxException {
+   private static int a(dr $$0, bii $$1, he<bjz> $$2, UUID $$3, double $$4) throws CommandSyntaxException {
       biy $$5 = b($$1, $$2);
-      bkc $$6 = $$5.eP();
+      bkb $$6 = $$5.eP();
       if (!$$6.a($$2, $$3)) {
          throw c.create($$1.ab(), a($$2), $$3);
       } else {
@@ -220,15 +220,15 @@ public class afw {
       }
    }
 
-   private static int c(dr $$0, bii $$1, he<bka> $$2, double $$3) throws CommandSyntaxException {
+   private static int c(dr $$0, bii $$1, he<bjz> $$2, double $$3) throws CommandSyntaxException {
       a($$1, $$2).a($$3);
       $$0.a(() -> tf.a("commands.attribute.base_value.set.success", a($$2), $$1.ab(), $$3), false);
       return 1;
    }
 
-   private static int a(dr $$0, bii $$1, he<bka> $$2, UUID $$3, String $$4, double $$5, bkd.a $$6) throws CommandSyntaxException {
-      bkb $$7 = a($$1, $$2);
-      bkd $$8 = new bkd($$3, $$4, $$5, $$6);
+   private static int a(dr $$0, bii $$1, he<bjz> $$2, UUID $$3, String $$4, double $$5, bkc.a $$6) throws CommandSyntaxException {
+      bka $$7 = a($$1, $$2);
+      bkc $$8 = new bkc($$3, $$4, $$5, $$6);
       if ($$7.a($$8)) {
          throw d.create($$1.ab(), a($$2), $$3);
       } else {
@@ -238,8 +238,8 @@ public class afw {
       }
    }
 
-   private static int a(dr $$0, bii $$1, he<bka> $$2, UUID $$3) throws CommandSyntaxException {
-      bkb $$4 = a($$1, $$2);
+   private static int a(dr $$0, bii $$1, he<bjz> $$2, UUID $$3) throws CommandSyntaxException {
+      bka $$4 = a($$1, $$2);
       if ($$4.c($$3)) {
          $$0.a(() -> tf.a("commands.attribute.modifier.remove.success", $$3, a($$2), $$1.ab()), false);
          return 1;
@@ -248,7 +248,7 @@ public class afw {
       }
    }
 
-   private static tf a(he<bka> $$0) {
+   private static tf a(he<bjz> $$0) {
       return tf.c($$0.a().c());
    }
 }

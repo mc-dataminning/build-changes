@@ -1,32 +1,32 @@
 public class of {
-   private static cqk a(cql.a $$0) {
-      cqw.a $$1 = new cqw.a();
+   private static cqj a(cqk.a $$0) {
+      cqv.a $$1 = new cqv.a();
       nl.j($$1);
-      return new cqk.a().a(false).a(0.5F).b(0.5F).a(new cqq.a().b(4159204).c(329011).a(10518688).d(0).a(cqi.b).a()).a($$1.a()).a($$0.a()).a();
+      return new cqj.a().a(false).a(0.5F).b(0.5F).a(new cqp.a().b(4159204).c(329011).a(10518688).d(0).a(cqh.b).a()).a($$1.a()).a($$0.a()).a();
    }
 
-   public static cqk a(hf<dud> $$0, hf<dmm<?>> $$1) {
-      cql.a $$2 = new cql.a($$0, $$1);
+   public static cqj a(hf<duc> $$0, hf<dml<?>> $$1) {
+      cqk.a $$2 = new cqk.a($$0, $$1);
       return a($$2);
    }
 
-   public static cqk b(hf<dud> $$0, hf<dmm<?>> $$1) {
-      cql.a $$2 = new cql.a($$0, $$1).a(dkf.b.e, ox.a);
+   public static cqj b(hf<duc> $$0, hf<dml<?>> $$1) {
+      cqk.a $$2 = new cqk.a($$0, $$1).a(dke.b.e, ox.a);
       return a($$2);
    }
 
-   public static cqk c(hf<dud> $$0, hf<dmm<?>> $$1) {
-      cql.a $$2 = new cql.a($$0, $$1);
+   public static cqj c(hf<duc> $$0, hf<dml<?>> $$1) {
+      cqk.a $$2 = new cqk.a($$0, $$1);
       return a($$2);
    }
 
-   public static cqk d(hf<dud> $$0, hf<dmm<?>> $$1) {
-      cql.a $$2 = new cql.a($$0, $$1).a(dkf.b.e, ox.b).a(dkf.b.j, ox.c);
+   public static cqj d(hf<duc> $$0, hf<dml<?>> $$1) {
+      cqk.a $$2 = new cqk.a($$0, $$1).a(dke.b.e, ox.b).a(dke.b.j, ox.c);
       return a($$2);
    }
 
-   public static cqk e(hf<dud> $$0, hf<dmm<?>> $$1) {
-      cql.a $$2 = new cql.a($$0, $$1).a(dkf.b.a, ox.d);
+   public static cqj e(hf<duc> $$0, hf<dml<?>> $$1) {
+      cqk.a $$2 = new cqk.a($$0, $$1).a(dke.b.a, ox.d);
       return a($$2);
    }
 }

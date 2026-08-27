@@ -1,20 +1,28 @@
-import com.google.gson.Gson;
+import com.google.common.collect.Sets;
 import com.google.gson.JsonElement;
-import javax.annotation.Nullable;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import java.util.Set;
 
-public class eme {
-   private final Gson a = new Gson();
+public class eme extends enb {
+   public Set<String> a = Sets.newHashSet();
 
-   public String a(emw $$0) {
-      return this.a.toJson($$0);
-   }
+   public static eme a(String $$0) {
+      eme $$1 = new eme();
+      JsonParser $$2 = new JsonParser();
 
-   public String a(JsonElement $$0) {
-      return this.a.toJson($$0);
-   }
+      try {
+         JsonElement $$3 = $$2.parse($$0);
+         JsonObject $$4 = $$3.getAsJsonObject();
+         JsonElement $$5 = $$4.get("ops");
+         if ($$5.isJsonArray()) {
+            for (JsonElement $$6 : $$5.getAsJsonArray()) {
+               $$1.a.add($$6.getAsString());
+            }
+         }
+      } catch (Exception var8) {
+      }
 
-   @Nullable
-   public <T extends emw> T a(String $$0, Class<T> $$1) {
-      return (T)this.a.fromJson($$0, $$1);
+      return $$1;
    }
 }

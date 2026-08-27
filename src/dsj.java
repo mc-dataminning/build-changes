@@ -1,66 +1,23 @@
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Comparator;
-import java.util.Set;
-import java.util.function.BiConsumer;
 
-public abstract class dsj {
-   public static final Codec<dsj> h = jb.aa.q().dispatch(dsj::a, dsk::a);
+public class dsj<P extends dsi> {
+   public static final dsj<dsk> a = a("trunk_vine", dsk.a);
+   public static final dsj<dsh> b = a("leave_vine", dsh.a);
+   public static final dsj<dsg> c = a("cocoa", dsg.a);
+   public static final dsj<dsf> d = a("beehive", dsf.a);
+   public static final dsj<dsd> e = a("alter_ground", dsd.a);
+   public static final dsj<dse> f = a("attached_to_leaves", dse.a);
+   private final Codec<P> g;
 
-   protected abstract dsk<?> a();
+   private static <P extends dsi> dsj<P> a(String $$0, Codec<P> $$1) {
+      return hr.a(jb.aa, $$0, new dsj<>($$1));
+   }
 
-   public abstract void a(dsj.a var1);
+   private dsj(Codec<P> $$0) {
+      this.g = $$0;
+   }
 
-   public static final class a {
-      private final cps a;
-      private final BiConsumer<gu, dfa> b;
-      private final aru c;
-      private final ObjectArrayList<gu> d;
-      private final ObjectArrayList<gu> e;
-      private final ObjectArrayList<gu> f;
-
-      public a(cps $$0, BiConsumer<gu, dfa> $$1, aru $$2, Set<gu> $$3, Set<gu> $$4, Set<gu> $$5) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.f = new ObjectArrayList($$5);
-         this.d = new ObjectArrayList($$3);
-         this.e = new ObjectArrayList($$4);
-         this.d.sort(Comparator.comparingInt(hz::v));
-         this.e.sort(Comparator.comparingInt(hz::v));
-         this.f.sort(Comparator.comparingInt(hz::v));
-      }
-
-      public void a(gu $$0, dfr $$1) {
-         this.a($$0, csn.ff.n().a($$1, Boolean.valueOf(true)));
-      }
-
-      public void a(gu $$0, dfa $$1) {
-         this.b.accept($$0, $$1);
-      }
-
-      public boolean a(gu $$0) {
-         return this.a.a($$0, dez.a::i);
-      }
-
-      public cps a() {
-         return this.a;
-      }
-
-      public aru b() {
-         return this.c;
-      }
-
-      public ObjectArrayList<gu> c() {
-         return this.d;
-      }
-
-      public ObjectArrayList<gu> d() {
-         return this.e;
-      }
-
-      public ObjectArrayList<gu> e() {
-         return this.f;
-      }
+   public Codec<P> a() {
+      return this.g;
    }
 }

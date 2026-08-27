@@ -1,36 +1,40 @@
-public class cie extends cit implements cks {
-   public cie(cit.a $$0) {
+public class cie extends cis {
+   public cie(cis.a $$0) {
       super($$0);
    }
 
    @Override
-   public bgr<ciy> a(cpm $$0, cbn $$1, bgp $$2) {
-      ciy $$3 = $$1.b($$2);
-      if ($$1.ci != null) {
-         if (!$$0.B) {
-            int $$4 = $$1.ci.a($$3);
-            $$3.a($$4, $$1, $$1x -> $$1x.d($$2));
-         }
+   public bgq a(clh $$0) {
+      cbm $$1 = $$0.o();
+      cpl $$2 = $$0.q();
+      gu $$3 = $$0.a();
+      dez $$4 = $$2.a_($$3);
+      if (!csy.h($$4) && !csz.g($$4) && !cta.g($$4)) {
+         gu $$5 = $$3.a($$0.k());
+         if (crz.a($$2, $$5, $$0.g())) {
+            $$2.a($$1, $$5, aow.hS, aox.e, 1.0F, $$2.y_().i() * 0.4F + 0.8F);
+            dez $$6 = crz.a($$2, $$5);
+            $$2.a($$5, $$6, 11);
+            $$2.a($$1, djj.i, $$3);
+            cix $$7 = $$0.n();
+            if ($$1 instanceof akl) {
+               ai.y.a((akl)$$1, $$5, $$7);
+               $$7.a(1, $$1, $$1x -> $$1x.d($$0.p()));
+            }
 
-         $$0.a(null, $$1.dp(), $$1.dr(), $$1.dv(), aow.hP, aox.g, 1.0F, 0.4F / ($$0.y_().i() * 0.4F + 0.8F));
-         $$1.a(djk.C);
+            return bgq.a($$2.r_());
+         } else {
+            return bgq.e;
+         }
       } else {
-         $$0.a(null, $$1.dp(), $$1.dr(), $$1.dv(), aow.hR, aox.g, 0.5F, 0.4F / ($$0.y_().i() * 0.4F + 0.8F));
-         if (!$$0.B) {
-            int $$5 = cnh.c($$3);
-            int $$6 = cnh.b($$3);
-            $$0.b(new ccb($$1, $$0, $$6, $$5));
+         $$2.a($$1, $$3, aow.hS, aox.e, 1.0F, $$2.y_().i() * 0.4F + 0.8F);
+         $$2.a($$3, $$4.a(dfp.r, Boolean.valueOf(true)), 11);
+         $$2.a($$1, djj.c, $$3);
+         if ($$1 != null) {
+            $$0.n().a(1, $$1, $$1x -> $$1x.d($$0.p()));
          }
 
-         $$1.b(apg.c.b(this));
-         $$1.a(djk.D);
+         return bgq.a($$2.r_());
       }
-
-      return bgr.a($$3, $$0.r_());
-   }
-
-   @Override
-   public int c() {
-      return 1;
    }
 }

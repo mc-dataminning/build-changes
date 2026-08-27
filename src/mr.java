@@ -1,48 +1,48 @@
 import com.google.common.annotations.VisibleForTesting;
 import java.util.concurrent.CompletableFuture;
 
-public class mr extends mt<djk> {
+public class mr extends mt<djj> {
    @VisibleForTesting
-   static final djk[] d = new djk[]{
-      djk.b,
-      djk.c,
-      djk.d,
-      djk.f,
-      djk.g,
-      djk.h,
-      djk.i,
-      djk.a,
-      djk.e,
-      djk.j,
-      djk.k,
-      djk.l,
-      djk.m,
-      djk.n,
-      djk.o,
-      djk.p,
-      djk.q,
-      djk.r,
-      djk.s,
-      djk.t,
-      djk.u,
-      djk.v,
-      djk.w,
-      djk.y,
-      djk.z,
-      djk.A,
-      djk.B,
-      djk.C,
-      djk.G,
-      djk.H,
-      djk.I,
-      djk.J,
-      djk.K,
-      djk.M,
-      djk.O,
-      djk.P,
-      djk.Q,
-      djk.R,
-      djk.S
+   static final djj[] d = new djj[]{
+      djj.b,
+      djj.c,
+      djj.d,
+      djj.f,
+      djj.g,
+      djj.h,
+      djj.i,
+      djj.a,
+      djj.e,
+      djj.j,
+      djj.k,
+      djj.l,
+      djj.m,
+      djj.n,
+      djj.o,
+      djj.p,
+      djj.q,
+      djj.r,
+      djj.s,
+      djj.t,
+      djj.u,
+      djj.v,
+      djj.w,
+      djj.y,
+      djj.z,
+      djj.A,
+      djj.B,
+      djj.C,
+      djj.G,
+      djj.H,
+      djj.I,
+      djj.J,
+      djj.K,
+      djj.M,
+      djj.O,
+      djj.P,
+      djj.Q,
+      djj.R,
+      djj.S
    };
 
    public mr(jk $$0, CompletableFuture<hg.b> $$1) {
@@ -51,10 +51,10 @@ public class mr extends mt<djk> {
 
    @Override
    protected void a(hg.b $$0) {
-      this.a(apr.a).a(d).a(djt.d_).a(djk.x);
-      this.a(apr.c).a(djk.L);
-      this.a(apr.b).a(d).a(djt.d_).a(djk.N).a(apr.c);
-      this.a(apr.d).a(djk.A, djk.K, djk.P, djk.Q, djk.D, djk.C);
-      this.a(apr.e).a(djk.H);
+      this.a(apr.a).a(d).a(djs.d_).a(djj.x);
+      this.a(apr.c).a(djj.L);
+      this.a(apr.b).a(d).a(djs.d_).a(djj.N).a(apr.c);
+      this.a(apr.d).a(djj.A, djj.K, djj.P, djj.Q, djj.D, djj.C);
+      this.a(apr.e).a(djj.H);
    }
 }

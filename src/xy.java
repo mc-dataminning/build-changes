@@ -19,7 +19,7 @@ public class xy implements ux<wp> {
       this.h = $$0.m();
    }
 
-   public xy(dgr $$0) {
+   public xy(dgq $$0) {
       this.a = $$0.a();
       this.b = $$0.b();
       this.c = $$0.i();

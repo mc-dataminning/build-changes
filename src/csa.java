@@ -1,169 +1,121 @@
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public abstract class csa extends csm {
-   private static final int c = 8;
-   private final float d;
-   protected static final float a = 1.0F;
-   protected static final ehx b = csm.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
+public abstract class csa extends csl {
+   protected static final ehw a = csl.a(1.0, 0.0, 1.0, 15.0, 0.5, 15.0);
+   protected static final ehw b = csl.a(1.0, 0.0, 1.0, 15.0, 1.0, 15.0);
+   protected static final egy c = new egy(0.0625, 0.0, 0.0625, 0.9375, 0.25, 0.9375);
+   private final dfo d;
 
-   public csa(dez.d $$0, float $$1) {
-      super($$0);
+   protected csa(dey.d $$0, dfo $$1) {
+      super($$0.a($$1.d()));
       this.d = $$1;
    }
 
    @Override
-   public dfa a(clg $$0) {
-      return a($$0.q(), $$0.a());
+   public ehw a(dez $$0, cor $$1, gu $$2, ehi $$3) {
+      return this.g($$0) > 0 ? a : b;
    }
 
-   public static dfa a(cos $$0, gu $$1) {
-      gu $$2 = $$1.d();
-      dfa $$3 = $$0.a_($$2);
-      return czx.h($$3) ? csn.cs.n() : ((cvi)csn.cr).b($$0, $$1);
-   }
-
-   @Override
-   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
-      return b;
+   protected int a() {
+      return 20;
    }
 
    @Override
-   public void a(dfa $$0, cpm $$1, gu $$2, aru $$3) {
-      if ($$3.a(24) == 0) {
-         $$1.a((double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, aow.hM, aox.e, 1.0F + $$3.i(), $$3.i() * 0.7F + 0.3F, false);
+   public boolean a(dez $$0) {
+      return true;
+   }
+
+   @Override
+   public dez a(dez $$0, ha $$1, dez $$2, cpm $$3, gu $$4, gu $$5) {
+      return $$1 == ha.a && !$$0.a($$3, $$4) ? csm.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public boolean a(dez $$0, cpo $$1, gu $$2) {
+      gu $$3 = $$2.d();
+      return c($$1, $$3) || a($$1, $$3, ha.b);
+   }
+
+   @Override
+   public void a(dez $$0, akk $$1, gu $$2, aru $$3) {
+      int $$4 = this.g($$0);
+      if ($$4 > 0) {
+         this.a(null, $$1, $$2, $$0, $$4);
       }
+   }
 
-      gu $$4 = $$2.d();
-      dfa $$5 = $$1.a_($$4);
-      if (!this.f($$5) && !$$5.d($$1, $$4, ha.b)) {
-         if (this.f($$1.a_($$2.g()))) {
-            for (int $$10 = 0; $$10 < 2; $$10++) {
-               double $$11 = (double)$$2.u() + $$3.j() * 0.1F;
-               double $$12 = (double)$$2.v() + $$3.j();
-               double $$13 = (double)$$2.w() + $$3.j();
-               $$1.a(iv.S, $$11, $$12, $$13, 0.0, 0.0, 0.0);
-            }
-         }
-
-         if (this.f($$1.a_($$2.h()))) {
-            for (int $$14 = 0; $$14 < 2; $$14++) {
-               double $$15 = (double)($$2.u() + 1) - $$3.j() * 0.1F;
-               double $$16 = (double)$$2.v() + $$3.j();
-               double $$17 = (double)$$2.w() + $$3.j();
-               $$1.a(iv.S, $$15, $$16, $$17, 0.0, 0.0, 0.0);
-            }
-         }
-
-         if (this.f($$1.a_($$2.e()))) {
-            for (int $$18 = 0; $$18 < 2; $$18++) {
-               double $$19 = (double)$$2.u() + $$3.j();
-               double $$20 = (double)$$2.v() + $$3.j();
-               double $$21 = (double)$$2.w() + $$3.j() * 0.1F;
-               $$1.a(iv.S, $$19, $$20, $$21, 0.0, 0.0, 0.0);
-            }
-         }
-
-         if (this.f($$1.a_($$2.f()))) {
-            for (int $$22 = 0; $$22 < 2; $$22++) {
-               double $$23 = (double)$$2.u() + $$3.j();
-               double $$24 = (double)$$2.v() + $$3.j();
-               double $$25 = (double)($$2.w() + 1) - $$3.j() * 0.1F;
-               $$1.a(iv.S, $$23, $$24, $$25, 0.0, 0.0, 0.0);
-            }
-         }
-
-         if (this.f($$1.a_($$2.c()))) {
-            for (int $$26 = 0; $$26 < 2; $$26++) {
-               double $$27 = (double)$$2.u() + $$3.j();
-               double $$28 = (double)($$2.v() + 1) - $$3.j() * 0.1F;
-               double $$29 = (double)$$2.w() + $$3.j();
-               $$1.a(iv.S, $$27, $$28, $$29, 0.0, 0.0, 0.0);
-            }
-         }
-      } else {
-         for (int $$6 = 0; $$6 < 3; $$6++) {
-            double $$7 = (double)$$2.u() + $$3.j();
-            double $$8 = (double)$$2.v() + $$3.j() * 0.5 + 0.5;
-            double $$9 = (double)$$2.w() + $$3.j();
-            $$1.a(iv.S, $$7, $$8, $$9, 0.0, 0.0, 0.0);
+   @Override
+   public void a(dez $$0, cpl $$1, gu $$2, bii $$3) {
+      if (!$$1.B) {
+         int $$4 = this.g($$0);
+         if ($$4 == 0) {
+            this.a($$3, $$1, $$2, $$0, $$4);
          }
       }
    }
 
-   protected abstract boolean f(dfa var1);
-
-   @Override
-   public void a(dfa $$0, cpm $$1, gu $$2, bii $$3) {
-      if (!$$3.aW()) {
-         $$3.h($$3.ax() + 1);
-         if ($$3.ax() == 0) {
-            $$3.g(8);
-         }
+   private void a(@Nullable bii $$0, cpl $$1, gu $$2, dez $$3, int $$4) {
+      int $$5 = this.b($$1, $$2);
+      boolean $$6 = $$4 > 0;
+      boolean $$7 = $$5 > 0;
+      if ($$4 != $$5) {
+         dez $$8 = this.a($$3, $$5);
+         $$1.a($$2, $$8, 2);
+         this.a($$1, $$2);
+         $$1.b($$2, $$3, $$8);
       }
 
-      $$3.a($$1.ag().a(), this.d);
-      super.a($$0, $$1, $$2, $$3);
-   }
+      if (!$$7 && $$6) {
+         $$1.a(null, $$2, this.d.i(), aox.e);
+         $$1.a($$0, djj.e, $$2);
+      } else if ($$7 && !$$6) {
+         $$1.a(null, $$2, this.d.j(), aox.e);
+         $$1.a($$0, djj.a, $$2);
+      }
 
-   @Override
-   public void b(dfa $$0, cpm $$1, gu $$2, dfa $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         if (a($$1)) {
-            Optional<ebb> $$5 = ebb.a($$1, $$2, ha.a.a);
-            if ($$5.isPresent()) {
-               $$5.get().b();
-               return;
-            }
-         }
-
-         if (!$$0.a((cpp)$$1, $$2)) {
-            $$1.a($$2, false);
-         }
+      if ($$7) {
+         $$1.a(new gu($$2), this, this.a());
       }
    }
 
-   private static boolean a(cpm $$0) {
-      return $$0.ac() == cpm.h || $$0.ac() == cpm.i;
+   @Override
+   public void a(dez $$0, cpl $$1, gu $$2, dez $$3, boolean $$4) {
+      if (!$$4 && !$$0.a($$3.b())) {
+         if (this.g($$0) > 0) {
+            this.a($$1, $$2);
+         }
+
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   protected void a(cpl $$0, gu $$1) {
+      $$0.a($$1, this);
+      $$0.a($$1.d(), this);
    }
 
    @Override
-   protected void a(cpm $$0, cbn $$1, gu $$2, dfa $$3) {
+   public int a(dez $$0, cor $$1, gu $$2, ha $$3) {
+      return this.g($$0);
    }
 
    @Override
-   public void a(cpm $$0, gu $$1, dfa $$2, cbn $$3) {
-      if (!$$0.r_()) {
-         $$0.a(null, 1009, $$1, 0);
-      }
-
-      super.a($$0, $$1, $$2, $$3);
+   public int b(dez $$0, cor $$1, gu $$2, ha $$3) {
+      return $$3 == ha.b ? this.g($$0) : 0;
    }
 
-   public static boolean a(cpm $$0, gu $$1, ha $$2) {
-      dfa $$3 = $$0.a_($$1);
-      return !$$3.i() ? false : a($$0, $$1).a((cpp)$$0, $$1) || b($$0, $$1, $$2);
+   @Override
+   public boolean f_(dez $$0) {
+      return true;
    }
 
-   private static boolean b(cpm $$0, gu $$1, ha $$2) {
-      if (!a($$0)) {
-         return false;
-      } else {
-         gu.a $$3 = $$1.j();
-         boolean $$4 = false;
-
-         for (ha $$5 : ha.values()) {
-            if ($$0.a_($$3.g($$1).c($$5)).a(csn.co)) {
-               $$4 = true;
-               break;
-            }
-         }
-
-         if (!$$4) {
-            return false;
-         } else {
-            ha.a $$6 = $$2.o().d() ? $$2.i().o() : ha.c.a.b($$0.z);
-            return ebb.a($$0, $$1, $$6).isPresent();
-         }
-      }
+   protected static int a(cpl $$0, egy $$1, Class<? extends bii> $$2) {
+      return $$0.a($$2, $$1, bil.f.and($$0x -> !$$0x.d_())).size();
    }
+
+   protected abstract int b(cpl var1, gu var2);
+
+   protected abstract int g(dez var1);
+
+   protected abstract dez a(dez var1, int var2);
 }

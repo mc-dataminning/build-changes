@@ -33,7 +33,7 @@ public class ep<T> implements ArgumentType<aeq<T>> {
    }
 
    private static <T> hr<T> a(CommandContext<dr> $$0, aeq<? extends hr<T>> $$1) {
-      return ((dr)$$0.getSource()).l().aV().d($$1);
+      return ((dr)$$0.getSource()).l().aU().d($$1);
    }
 
    private static <T> he.c<T> b(CommandContext<dr> $$0, String $$1, aeq<hr<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
@@ -41,15 +41,15 @@ public class ep<T> implements ArgumentType<aeq<T>> {
       return a($$0, $$2).b($$4).orElseThrow(() -> $$3.create($$4.a()));
    }
 
-   public static he.c<dna<?, ?>> a(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
+   public static he.c<dmz<?, ?>> a(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1, jc.as, b);
    }
 
-   public static he.c<duz> b(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
+   public static he.c<duy> b(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1, jc.az, c);
    }
 
-   public static he.c<dwi> c(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
+   public static he.c<dwh> c(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1, jc.aC, d);
    }
 

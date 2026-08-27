@@ -4,7 +4,7 @@ import com.mojang.serialization.MapCodec;
 public enum evf implements ash {
    a("bitmap", evd.a.a),
    b("ttf", evh.a),
-   c("space", ejl.a.a),
+   c("space", ejk.a.a),
    d("unihex", evi.b.a),
    e("reference", evg.a);
 

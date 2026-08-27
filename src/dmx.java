@@ -1,58 +1,48 @@
 import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntListIterator;
+import java.util.stream.IntStream;
 
-public class dmx extends dnn<dpy> {
-   public dmx(Codec<dpy> $$0) {
+public class dmx extends dnm<dpx> {
+   public dmx(Codec<dpx> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dnp<dpy> $$0) {
-      gu $$1 = $$0.e();
-      cqg $$2 = $$0.b();
-      aru $$3 = $$0.d();
-      if ($$1.v() > $$2.t_() - 1) {
-         return false;
-      } else if (!$$2.a_($$1).a(csn.G) && !$$2.a_($$1.d()).a(csn.G)) {
-         return false;
-      } else {
-         boolean $$4 = false;
+   public boolean a(dno<dpx> $$0) {
+      aru $$1 = $$0.d();
+      cqf $$2 = $$0.b();
+      cos $$3 = new cos($$0.e());
+      IntArrayList $$4 = ac.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
+      IntArrayList $$5 = ac.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
+      gu.a $$6 = new gu.a();
+      IntListIterator var8 = $$4.iterator();
 
-         for (ha $$5 : ha.values()) {
-            if ($$5 != ha.a && $$2.a_($$1.a($$5)).a(csn.iC)) {
-               $$4 = true;
-               break;
-            }
-         }
+      while (var8.hasNext()) {
+         Integer $$7 = (Integer)var8.next();
+         IntListIterator var10 = $$5.iterator();
 
-         if (!$$4) {
-            return false;
-         } else {
-            $$2.a($$1, csn.mW.n(), 2);
+         while (var10.hasNext()) {
+            Integer $$8 = (Integer)var10.next();
+            $$6.d($$7, 0, $$8);
+            gu $$9 = $$2.a(dki.a.f, $$6);
+            if ($$2.t($$9) || $$2.a_($$9).k($$2, $$9).c()) {
+               $$2.a($$9, csm.cv.n(), 2);
+               ddo.a($$2, $$1, $$9, ece.b);
+               dez $$10 = csm.cp.n();
 
-            for (int $$6 = 0; $$6 < 200; $$6++) {
-               int $$7 = $$3.a(5) - $$3.a(6);
-               int $$8 = 3;
-               if ($$7 < 2) {
-                  $$8 += $$7 / 2;
-               }
-
-               if ($$8 >= 1) {
-                  gu $$9 = $$1.b($$3.a($$8) - $$3.a($$8), $$7, $$3.a($$8) - $$3.a($$8));
-                  dfa $$10 = $$2.a_($$9);
-                  if ($$10.i() || $$10.a(csn.G) || $$10.a(csn.iC) || $$10.a(csn.dO)) {
-                     for (ha $$11 : ha.values()) {
-                        dfa $$12 = $$2.a_($$9.a($$11));
-                        if ($$12.a(csn.mW)) {
-                           $$2.a($$9, csn.mW.n(), 2);
-                           break;
-                        }
-                     }
+               for (ha $$11 : ha.c.a) {
+                  gu $$12 = $$9.a($$11);
+                  if ($$10.a($$2, $$12)) {
+                     $$2.a($$12, $$10, 2);
                   }
                }
-            }
 
-            return true;
+               return true;
+            }
          }
       }
+
+      return false;
    }
 }

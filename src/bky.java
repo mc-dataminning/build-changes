@@ -1,83 +1,28 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.BiPredicate;
+import java.util.function.Function;
 
-public class bky<E extends bja & byo, T extends biy> extends bkq<E> {
-   private static final int c = 1200;
-   private int d;
-   private bky.a e = bky.a.a;
-
-   public bky() {
-      super(ImmutableMap.of(bsa.n, bsb.c, bsa.o, bsb.a), 1200);
+public class bky {
+   public static <E extends biy> bkq<E> a(int $$0, BiPredicate<E, bii> $$1) {
+      return bob.a((Function<bob.b<E>, ? extends App<bob.c<E>, boe<E>>>)($$2 -> $$2.group($$2.a(brz.s)).apply($$2, $$3 -> ($$4, $$5, $$6) -> {
+               bii $$7 = $$5.cY();
+               bii $$8 = $$2.<bii>a($$3).orElse(null);
+               if ($$7 == null && $$8 == null) {
+                  return false;
+               } else {
+                  bii $$9 = $$7 == null ? $$8 : $$7;
+                  if (a($$5, $$9, $$0) && !$$1.test((E)$$5, $$9)) {
+                     return false;
+                  } else {
+                     $$5.aa();
+                     $$3.b();
+                     return true;
+                  }
+               }
+            })));
    }
 
-   protected boolean a(akk $$0, E $$1) {
-      biy $$2 = b($$1);
-      return $$1.b(cjb.uZ) && bks.b($$1, $$2) && bks.a($$1, $$2, 0);
-   }
-
-   protected boolean a(akk $$0, E $$1, long $$2) {
-      return $$1.dM().a(bsa.o) && this.a($$0, $$1);
-   }
-
-   protected void b(akk $$0, E $$1, long $$2) {
-      biy $$3 = b($$1);
-      this.b($$1, $$3);
-      this.a($$1, $$3);
-   }
-
-   protected void c(akk $$0, E $$1, long $$2) {
-      if ($$1.fl()) {
-         $$1.fr();
-      }
-
-      if ($$1.b(cjb.uZ)) {
-         $$1.b(false);
-         chg.a($$1.fn(), false);
-      }
-   }
-
-   private void a(E $$0, biy $$1) {
-      if (this.e == bky.a.a) {
-         $$0.c(ccg.a($$0, cjb.uZ));
-         this.e = bky.a.b;
-         $$0.b(true);
-      } else if (this.e == bky.a.b) {
-         if (!$$0.fl()) {
-            this.e = bky.a.a;
-         }
-
-         int $$2 = $$0.fp();
-         ciy $$3 = $$0.fn();
-         if ($$2 >= chg.k($$3)) {
-            $$0.fq();
-            this.e = bky.a.c;
-            this.d = 20 + $$0.ee().a(20);
-            $$0.b(false);
-         }
-      } else if (this.e == bky.a.c) {
-         this.d--;
-         if (this.d == 0) {
-            this.e = bky.a.d;
-         }
-      } else if (this.e == bky.a.d) {
-         $$0.a($$1, 1.0F);
-         ciy $$4 = $$0.b(ccg.a($$0, cjb.uZ));
-         chg.a($$4, false);
-         this.e = bky.a.a;
-      }
-   }
-
-   private void b(bja $$0, biy $$1) {
-      $$0.dM().a(bsa.n, new blb($$1, true));
-   }
-
-   private static biy b(biy $$0) {
-      return $$0.dM().c(bsa.o).get();
-   }
-
-   static enum a {
-      a,
-      b,
-      c,
-      d;
+   private static boolean a(biy $$0, bii $$1, int $$2) {
+      return $$1.bv() && $$1.a($$0, (double)$$2) && $$1.dK() == $$0.dK();
    }
 }

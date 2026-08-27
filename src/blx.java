@@ -1,27 +1,37 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
+import javax.annotation.Nullable;
 
 public class blx {
-   private static final int a = 1;
+   public static blz<biy> a(float $$0) {
+      return bob.a((Function<bob.b<biy>, ? extends App<bob.c<biy>, boe<biy>>>)($$1 -> $$1.group($$1.c(brz.m)).apply($$1, $$1x -> ($$2, $$3, $$4) -> {
+               if ($$2.g($$3.dk())) {
+                  return false;
+               } else {
+                  Optional<ehd> $$5 = Optional.ofNullable(a($$2, $$3));
+                  $$5.ifPresent($$2x -> $$1x.a(new bsc($$2x, $$0, 0)));
+                  return true;
+               }
+            })));
+   }
 
-   public static bkr<biy> a(float $$0) {
-      return boc.a(
-         (Function<boc.b<biy>, ? extends App<boc.c<biy>, bof<biy>>>)($$1 -> $$1.group($$1.a(bsa.n), $$1.c(bsa.m), $$1.b(bsa.s))
-               .apply($$1, ($$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
-                     if ($$6.bN()) {
-                        return false;
-                     } else {
-                        bii $$8 = $$1.b($$4);
-                        if ($$8.a($$6, 1.0)) {
-                           $$6.n($$8);
-                        } else {
-                           $$2.a(new blb($$8, true));
-                           $$3.a(new bsd(new blb($$8, false), $$0, 1));
-                        }
+   @Nullable
+   private static ehd a(akk $$0, biy $$1) {
+      aru $$2 = $$1.ee();
+      gu $$3 = $$1.dk();
 
-                        return true;
-                     }
-                  }))
-      );
+      for (int $$4 = 0; $$4 < 10; $$4++) {
+         gu $$5 = $$3.b($$2.a(20) - 10, $$2.a(6) - 3, $$2.a(20) - 10);
+         if (a($$0, $$1, $$5)) {
+            return ehd.c($$5);
+         }
+      }
+
+      return null;
+   }
+
+   public static boolean a(akk $$0, biy $$1, gu $$2) {
+      return $$0.g($$2) && (double)$$0.a(dki.a.e, $$2).v() <= $$1.dr();
    }
 }

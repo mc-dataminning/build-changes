@@ -1,79 +1,56 @@
 import com.mojang.serialization.Codec;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-public class dpa extends dnn<dqo> {
+public class dpa extends dnm<dqo> {
    public dpa(Codec<dqo> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dnp<dqo> $$0) {
-      cqg $$1 = $$0.b();
+   public boolean a(dno<dqo> $$0) {
+      cqf $$1 = $$0.b();
       gu $$2 = $$0.e();
-      if (a($$1, $$2)) {
+      dqo $$3 = $$0.f();
+      aru $$4 = $$0.d();
+      OptionalInt $$5 = a($$1, $$2, $$3);
+      if ($$5.isEmpty()) {
          return false;
       } else {
-         aru $$3 = $$0.d();
-         dqo $$4 = $$0.f();
-         int $$5 = $$4.a();
-         int $$6 = $$4.b();
-         int $$7 = $$4.c();
-         gu.a $$8 = new gu.a();
-
-         for (int $$9 = 0; $$9 < $$5 * $$5; $$9++) {
-            $$8.g($$2).e(arp.a($$3, -$$5, $$5), arp.a($$3, -$$6, $$6), arp.a($$3, -$$5, $$5));
-            if (a($$1, $$8) && !a($$1, (gu)$$8)) {
-               int $$10 = arp.a($$3, 1, $$7);
-               if ($$3.a(6) == 0) {
-                  $$10 *= 2;
-               }
-
-               if ($$3.a(5) == 0) {
-                  $$10 = 1;
-               }
-
-               int $$11 = 17;
-               int $$12 = 25;
-               a($$1, $$3, $$8, $$10, 17, 25);
-            }
-         }
-
-         return true;
+         gu $$6 = $$2.h($$5.getAsInt());
+         hz $$7 = new hz($$3.c, $$3.c, $$3.c);
+         egy $$8 = new egy($$6.b($$7), $$6.a($$7));
+         return gu.a($$8).filter($$2x -> $$4.i() < $$3.d).filter($$1x -> this.b($$1, $$1x)).mapToInt($$1x -> {
+            $$1.a($$1x, csm.kJ.n(), 2);
+            return 1;
+         }).sum() > 0;
       }
    }
 
-   private static boolean a(cpn $$0, gu.a $$1) {
-      do {
-         $$1.e(0, -1, 0);
-         if ($$0.r($$1)) {
-            return false;
-         }
-      } while ($$0.a_($$1).i());
-
-      $$1.e(0, 1, 0);
-      return true;
+   private static OptionalInt a(cqf $$0, gu $$1, dqo $$2) {
+      Predicate<dez> $$3 = $$0x -> $$0x.a(csm.G);
+      Predicate<dez> $$4 = $$0x -> !$$0x.a(csm.G);
+      Optional<djy> $$5 = djy.a($$0, $$1, $$2.b, $$3, $$4);
+      return $$5.<OptionalInt>map(djy::c).orElseGet(OptionalInt::empty);
    }
 
-   public static void a(cpn $$0, aru $$1, gu.a $$2, int $$3, int $$4, int $$5) {
-      for (int $$6 = 1; $$6 <= $$3; $$6++) {
-         if ($$0.t($$2)) {
-            if ($$6 == $$3 || !$$0.t($$2.c())) {
-               $$0.a($$2, csn.oB.n().a(cvz.d, Integer.valueOf(arp.a($$1, $$4, $$5))), 2);
-               break;
+   private boolean b(cqf $$0, gu $$1) {
+      if (!this.a($$0, $$1) && !this.a($$0, $$1.d())) {
+         for (ha $$2 : ha.c.a) {
+            if (this.a($$0, $$1.a($$2))) {
+               return false;
             }
-
-            $$0.a($$2, csn.oC.n(), 2);
          }
 
-         $$2.c(ha.b);
-      }
-   }
-
-   private static boolean a(cpn $$0, gu $$1) {
-      if (!$$0.t($$1)) {
          return true;
       } else {
-         dfa $$2 = $$0.a_($$1.d());
-         return !$$2.a(csn.dW) && !$$2.a(csn.on) && !$$2.a(csn.op);
+         return false;
       }
+   }
+
+   private boolean a(cpm $$0, gu $$1) {
+      dez $$2 = $$0.a_($$1);
+      return $$2.a(csm.G) || $$2.i();
    }
 }

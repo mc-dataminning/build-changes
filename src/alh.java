@@ -136,7 +136,7 @@ public class alh {
                         throw new y(o.a(var7, "Ticking memory connection"));
                      }
 
-                     d.warn("Failed to handle packet for {}", $$1.a(this.e.bf()), var7);
+                     d.warn("Failed to handle packet for {}", $$1.a(this.e.be()), var7);
                      tf $$3 = tf.b("Internal server error");
                      $$1.a(new vc($$3), sp.a(() -> $$1.a($$3)));
                      $$1.o();

@@ -21,7 +21,7 @@ public class aig {
    }
 
    private static int a(dr $$0, Collection<akl> $$1, gu $$2, float $$3) {
-      aeq<cpm> $$4 = $$0.e().ac();
+      aeq<cpl> $$4 = $$0.e().ac();
 
       for (akl $$5 : $$1) {
          $$5.a($$4, $$2, $$3, true, false);

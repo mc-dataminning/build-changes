@@ -1,41 +1,64 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
+import java.util.Map.Entry;
+import org.joml.Vector3f;
 
-public class frh implements fqu.a {
-   private static final int a = 60;
-   private final Set<hx> b = Sets.newHashSet();
+public class frh implements frd.a {
+   private final eql a;
+   private static final int b = 2;
+   private static final float c = 0.09375F;
 
-   frh() {
+   public frh(eql $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void a() {
-      this.b.clear();
-   }
+   public void a(elf $$0, fnu $$1, double $$2, double $$3, double $$4) {
+      cpm $$5 = this.a.r;
+      elj $$6 = $$1.getBuffer(foc.z());
+      gu $$7 = gu.a($$2, 0.0, $$4);
 
-   public void a(hx $$0) {
-      this.b.add($$0);
-   }
+      for (int $$8 = -2; $$8 <= 2; $$8++) {
+         for (int $$9 = -2; $$9 <= 2; $$9++) {
+            dgv $$10 = $$5.x($$7.b($$8 * 16, 0, $$9 * 16));
 
-   public void b(hx $$0) {
-      this.b.remove($$0);
-   }
+            for (Entry<dki.a, dki> $$11 : $$10.e()) {
+               dki.a $$12 = $$11.getKey();
+               cos $$13 = $$10.f();
+               Vector3f $$14 = this.a($$12);
 
-   @Override
-   public void a(elg $$0, fnl $$1, double $$2, double $$3, double $$4) {
-      gu $$5 = gu.a($$2, $$3, $$4);
-      this.b.forEach($$3x -> {
-         if ($$5.a($$3x.q(), 60.0)) {
-            a($$0, $$1, $$3x);
+               for (int $$15 = 0; $$15 < 16; $$15++) {
+                  for (int $$16 = 0; $$16 < 16; $$16++) {
+                     int $$17 = hx.a($$13.e, $$15);
+                     int $$18 = hx.a($$13.f, $$16);
+                     float $$19 = (float)((double)((float)$$5.a($$12, $$17, $$18) + (float)$$12.ordinal() * 0.09375F) - $$3);
+                     fns.b(
+                        $$0,
+                        $$6,
+                        (double)((float)$$17 + 0.25F) - $$2,
+                        (double)$$19,
+                        (double)((float)$$18 + 0.25F) - $$4,
+                        (double)((float)$$17 + 0.75F) - $$2,
+                        (double)($$19 + 0.09375F),
+                        (double)((float)$$18 + 0.75F) - $$4,
+                        $$14.x(),
+                        $$14.y(),
+                        $$14.z(),
+                        1.0F
+                     );
+                  }
+               }
+            }
          }
-      });
+      }
    }
 
-   private static void a(elg $$0, fnl $$1, hx $$2) {
-      int $$3 = 1;
-      gu $$4 = $$2.q();
-      gu $$5 = $$4.b(-1, -1, -1);
-      gu $$6 = $$4.b(1, 1, 1);
-      fqu.a($$0, $$1, $$5, $$6, 0.2F, 1.0F, 0.2F, 0.15F);
+   private Vector3f a(dki.a $$0) {
+      return switch ($$0) {
+         case a -> new Vector3f(1.0F, 1.0F, 0.0F);
+         case c -> new Vector3f(1.0F, 0.0F, 1.0F);
+         case b -> new Vector3f(0.0F, 0.7F, 0.0F);
+         case d -> new Vector3f(0.0F, 0.0F, 0.5F);
+         case e -> new Vector3f(0.0F, 0.3F, 0.3F);
+         case f -> new Vector3f(0.0F, 0.5F, 0.5F);
+      };
    }
 }

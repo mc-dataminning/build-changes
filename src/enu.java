@@ -1,294 +1,273 @@
+import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
-import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
 import java.util.List;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class enu extends gei {
-   static final Logger a = LogUtils.getLogger();
-   static final tf b = tf.c("mco.backup.button.restore");
-   static final tf c = tf.c("mco.backup.changes.tooltip");
-   private static final tf y = tf.c("mco.configure.world.backup");
-   private static final tf z = tf.c("mco.backup.nobackups");
-   private final enx A;
-   List<emc> B = Collections.emptyList();
-   enu.a C;
-   int D = -1;
-   private final int E;
-   private esh F;
-   private esh G;
-   private esh H;
-   Boolean I = false;
-   final emn J;
-   private static final String K = "uploaded";
+public class enu extends ger {
+   private static final aer a = new aer("widget/slot_frame");
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 80;
+   private final eya y;
+   private final elq z;
+   @Nullable
+   private emm A;
+   private final long B;
+   private final tf[] C = new tf[]{tf.c("mco.brokenworld.message.line1"), tf.c("mco.brokenworld.message.line2")};
+   private int D;
+   private int E;
+   private final List<Integer> F = Lists.newArrayList();
+   private int G;
 
-   public enu(enx $$0, emn $$1, int $$2) {
-      super(y);
-      this.A = $$0;
-      this.J = $$1;
-      this.E = $$2;
+   public enu(eya $$0, elq $$1, long $$2, boolean $$3) {
+      super($$3 ? tf.c("mco.brokenworld.minigame.title") : tf.c("mco.brokenworld.title"));
+      this.y = $$0;
+      this.z = $$1;
+      this.B = $$2;
    }
 
    @Override
-   public void aE_() {
-      this.C = new enu.a();
-      (new Thread("Realms-fetch-backups") {
-         @Override
-         public void run() {
-            elw $$0 = elw.a();
+   public void aC_() {
+      this.D = this.g / 2 - 150;
+      this.E = this.g / 2 + 190;
+      this.d(esg.a(te.k, $$0 -> this.D()).a(this.E - 80 + 8, h(13) - 5, 70, 20).a());
+      if (this.A == null) {
+         this.a(this.B);
+      } else {
+         this.C();
+      }
+   }
 
-            try {
-               List<emc> $$1 = $$0.e(enu.this.J.a).a;
-               enu.this.f.execute(() -> {
-                  enu.this.B = $$1;
-                  enu.this.I = enu.this.B.isEmpty();
-                  enu.this.C.v();
+   @Override
+   public tf e() {
+      return th.a(Stream.concat(Stream.of(this.e), Stream.of(this.C)).collect(Collectors.toList()), te.u);
+   }
 
-                  for (emc $$1x : enu.this.B) {
-                     enu.this.C.a($$1x);
+   private void C() {
+      for (Entry<Integer, emt> $$0 : this.A.i.entrySet()) {
+         int $$1 = $$0.getKey();
+         boolean $$2 = $$1 != this.A.n || this.A.m == emm.c.b;
+         esg $$3;
+         if ($$2) {
+            $$3 = esg.a(
+                  tf.c("mco.brokenworld.play"),
+                  $$1x -> {
+                     if (this.A.i.get($$1).l) {
+                        eok $$2x = new eok(
+                           this,
+                           this.A,
+                           tf.c("mco.configure.world.switch.slot"),
+                           tf.c("mco.configure.world.switch.slot.subtitle"),
+                           -6250336,
+                           te.e,
+                           this::f,
+                           () -> {
+                              this.f.a(this);
+                              this.f();
+                           }
+                        );
+                        $$2x.a($$1);
+                        $$2x.a(tf.c("mco.create.world.reset.title"));
+                        this.f.a($$2x);
+                     } else {
+                        this.f.a(new eod(this.y, new eps(this.A.a, $$1, this::f)));
+                     }
                   }
-               });
-            } catch (enj var3) {
-               enu.a.error("Couldn't request backups", var3);
+               )
+               .a(this.a($$1), h(8), 80, 20)
+               .a();
+         } else {
+            $$3 = esg.a(tf.c("mco.brokenworld.download"), $$1x -> {
+               tf $$2x = tf.c("mco.configure.world.restore.download.question.line1");
+               tf $$3x = tf.c("mco.configure.world.restore.download.question.line2");
+               this.f.a(new eoc($$1xx -> {
+                  if ($$1xx) {
+                     this.b($$1);
+                  } else {
+                     this.f.a(this);
+                  }
+               }, eoc.a.b, $$2x, $$3x, true));
+            }).a(this.a($$1), h(8), 80, 20).a();
+         }
+
+         if (this.F.contains($$1)) {
+            $$3.i = false;
+            $$3.b(tf.c("mco.brokenworld.downloaded"));
+         }
+
+         this.d($$3);
+         this.d(esg.a(tf.c("mco.brokenworld.reset"), $$1x -> {
+            eok $$2x = new eok(this, this.A, this::f, () -> {
+               this.f.a(this);
+               this.f();
+            });
+            if ($$1 != this.A.n || this.A.m == emm.c.b) {
+               $$2x.a($$1);
+            }
+
+            this.f.a($$2x);
+         }).a(this.a($$1), h(10), 80, 20).a());
+      }
+   }
+
+   @Override
+   public void c() {
+      this.G++;
+   }
+
+   @Override
+   public void a(erv $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 17, -1);
+
+      for (int $$4 = 0; $$4 < this.C.length; $$4++) {
+         $$0.a(this.i, this.C[$$4], this.g / 2, h(-1) + 3 + $$4 * 12, -6250336);
+      }
+
+      if (this.A != null) {
+         for (Entry<Integer, emt> $$5 : this.A.i.entrySet()) {
+            if ($$5.getValue().k != null && $$5.getValue().j != -1L) {
+               this.a(
+                  $$0,
+                  this.a($$5.getKey()),
+                  h(1) + 5,
+                  $$1,
+                  $$2,
+                  this.A.n == $$5.getKey() && !this.E(),
+                  $$5.getValue().a($$5.getKey()),
+                  $$5.getKey(),
+                  $$5.getValue().j,
+                  $$5.getValue().k,
+                  $$5.getValue().l
+               );
+            } else {
+               this.a(
+                  $$0,
+                  this.a($$5.getKey()),
+                  h(1) + 5,
+                  $$1,
+                  $$2,
+                  this.A.n == $$5.getKey() && !this.E(),
+                  $$5.getValue().a($$5.getKey()),
+                  $$5.getKey(),
+                  -1L,
+                  null,
+                  $$5.getValue().l
+               );
             }
          }
-      }).start();
-      this.F = this.d((esh)esh.a(tf.c("mco.backup.button.download"), $$0 -> this.E()).a(this.g - 135, h(1), 120, 20).a());
-      this.G = this.d((esh)esh.a(tf.c("mco.backup.button.restore"), $$0 -> this.a(this.D)).a(this.g - 135, h(3), 120, 20).a());
-      this.H = this.d((esh)esh.a(tf.c("mco.backup.changes.tooltip"), $$0 -> {
-         this.f.a(new ent(this, this.B.get(this.D)));
-         this.D = -1;
-      }).a(this.g - 135, h(5), 120, 20).a());
-      this.d((esh)esh.a(te.k, $$0 -> this.f.a(this.A)).a(this.g - 100, this.h - 35, 85, 20).a());
-      this.e(this.C);
-      this.b(this.C);
-      this.B();
+      }
    }
 
-   @Override
-   void B() {
-      this.G.j = this.D();
-      this.H.j = this.C();
-   }
-
-   private boolean C() {
-      return this.D == -1 ? false : !this.B.get(this.D).e.isEmpty();
-   }
-
-   private boolean D() {
-      return this.D == -1 ? false : !this.J.j;
+   private int a(int $$0) {
+      return this.D + ($$0 - 1) * 110;
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
       if ($$0 == 256) {
-         this.f.a(this.A);
+         this.D();
          return true;
       } else {
          return super.a($$0, $$1, $$2);
       }
    }
 
-   void a(int $$0) {
-      if ($$0 >= 0 && $$0 < this.B.size() && !this.J.j) {
-         this.D = $$0;
-         Date $$1 = this.B.get($$0).b;
-         String $$2 = DateFormat.getDateTimeInstance(3, 3).format($$1);
-         tf $$3 = epd.a($$1);
-         tf $$4 = tf.a("mco.configure.world.restore.question.line1", $$2, $$3);
-         tf $$5 = tf.c("mco.configure.world.restore.question.line2");
-         this.f.a(new eod($$0x -> {
-            if ($$0x) {
-               this.G();
+   private void D() {
+      this.f.a(this.y);
+   }
+
+   private void a(long $$0) {
+      new Thread(() -> {
+         elv $$1 = elv.a();
+
+         try {
+            this.A = $$1.a($$0);
+            this.C();
+         } catch (eni var5) {
+            b.error("Couldn't get own world", var5);
+            this.f.a(new eoa(var5, this.y));
+         }
+      }).start();
+   }
+
+   public void f() {
+      new Thread(() -> {
+         elv $$0 = elv.a();
+         if (this.A.e == emm.b.a) {
+            this.f.execute(() -> this.f.a(new eod(this, new epm(this.A, this, this.z, true, this.f))));
+         } else {
+            try {
+               emm $$1 = $$0.a(this.B);
+               this.f.execute(() -> this.z.f().a($$1, this));
+            } catch (eni var3) {
+               b.error("Couldn't get own world", var3);
+               this.f.execute(() -> this.f.a(this.y));
+            }
+         }
+      }).start();
+   }
+
+   private void b(int $$0) {
+      elv $$1 = elv.a();
+
+      try {
+         enc $$2 = $$1.b(this.A.a, $$0);
+         enz $$3 = new enz(this, $$2, this.A.a($$0), $$1x -> {
+            if ($$1x) {
+               this.F.add($$0);
+               this.n();
+               this.C();
             } else {
-               this.D = -1;
                this.f.a(this);
             }
-         }, eod.a.a, $$4, $$5, true));
-      }
-   }
-
-   private void E() {
-      tf $$0 = tf.c("mco.configure.world.restore.download.question.line1");
-      tf $$1 = tf.c("mco.configure.world.restore.download.question.line2");
-      this.f.a(new eod($$0x -> {
-         if ($$0x) {
-            this.F();
-         } else {
-            this.f.a(this);
-         }
-      }, eod.a.b, $$0, $$1, true));
-   }
-
-   private void F() {
-      this.f.a(new eoe(this.A.f(), new epk(this.J.a, this.E, this.J.c + " (" + this.J.i.get(this.J.n).a(this.J.n) + ")", this)));
-   }
-
-   private void G() {
-      emc $$0 = this.B.get(this.D);
-      this.D = -1;
-      this.f.a(new eoe(this.A.f(), new epr($$0, this.J.a, this.A)));
-   }
-
-   @Override
-   public void a(erw $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.C.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 12, -1);
-      if (this.I) {
-         $$0.a(this.i, z, 20, this.h / 2 - 10, -1, false);
-      }
-
-      this.F.i = !this.I;
-   }
-
-   class a extends geh<enu.b> {
-      public a() {
-         super(enu.this.g - 150, enu.this.h, 32, enu.this.h - 15, 36);
-      }
-
-      public void a(emc $$0) {
-         this.a((enu.b)(enu.this.new b($$0)));
-      }
-
-      @Override
-      public int b() {
-         return (int)((double)this.e * 0.93);
-      }
-
-      @Override
-      public int a() {
-         return this.k() * 36;
-      }
-
-      @Override
-      public int c() {
-         return this.e - 5;
-      }
-
-      @Override
-      public void a(int $$0) {
-         super.a($$0);
-         this.b($$0);
-      }
-
-      public void b(int $$0) {
-         enu.this.D = $$0;
-         enu.this.B();
-      }
-
-      public void a(@Nullable enu.b $$0) {
-         super.a($$0);
-         enu.this.D = this.i().indexOf($$0);
-         enu.this.B();
-      }
-   }
-
-   class b extends etd.a<enu.b> {
-      private static final int b = 2;
-      private static final int c = 7;
-      private static final ets d = new ets(new aer("backup/changes"), new aer("backup/changes_highlighted"));
-      private static final ets e = new ets(new aer("backup/restore"), new aer("backup/restore_highlighted"));
-      private final emc f;
-      private final List<esf> g = new ArrayList<>();
-      @Nullable
-      private est h;
-      @Nullable
-      private est i;
-
-      public b(emc $$0) {
-         this.f = $$0;
-         this.a($$0);
-         if (!$$0.e.isEmpty()) {
-            this.b();
-         }
-
-         if (!enu.this.J.j) {
-            this.d();
-         }
-      }
-
-      private void a(emc $$0) {
-         int $$1 = enu.this.B.indexOf($$0);
-         if ($$1 != enu.this.B.size() - 1) {
-            emc $$2 = enu.this.B.get($$1 + 1);
-
-            for (String $$3 : $$0.d.keySet()) {
-               if (!$$3.contains("uploaded") && $$2.d.containsKey($$3)) {
-                  if (!$$0.d.get($$3).equals($$2.d.get($$3))) {
-                     this.a($$3);
-                  }
-               } else {
-                  this.a($$3);
-               }
-            }
-         }
-      }
-
-      private void a(String $$0) {
-         if ($$0.contains("uploaded")) {
-            String $$1 = DateFormat.getDateTimeInstance(3, 3).format(this.f.b);
-            this.f.e.put($$0, $$1);
-            this.f.a(true);
-         } else {
-            this.f.e.put($$0, this.f.d.get($$0));
-         }
-      }
-
-      private void b() {
-         int $$0 = 9;
-         int $$1 = 9;
-         int $$2 = enu.this.C.p() - 9 - 28;
-         int $$3 = enu.this.C.g(enu.this.B.indexOf(this.f)) + 2;
-         this.i = new est($$2, $$3, 9, 9, d, $$0x -> enu.this.f.a(new ent(enu.this, this.f)), te.a);
-         this.i.a(etq.a(enu.c));
-         this.g.add(this.i);
-      }
-
-      private void d() {
-         int $$0 = 17;
-         int $$1 = 10;
-         int $$2 = enu.this.C.p() - 17 - 7;
-         int $$3 = enu.this.C.g(enu.this.B.indexOf(this.f)) + 2;
-         this.h = new est($$2, $$3, 17, 10, e, $$0x -> enu.this.a(enu.this.B.indexOf(this.f)), te.a);
-         this.h.a(etq.a(enu.b));
-         this.g.add(this.h);
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         if (this.h != null) {
-            this.h.a($$0, $$1, $$2);
-         }
-
-         if (this.i != null) {
-            this.i.a($$0, $$1, $$2);
-         }
-
-         return true;
-      }
-
-      @Override
-      public void a(erw $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10 = this.f.a() ? -8388737 : 16777215;
-         $$0.a(enu.this.i, tf.a("mco.backup.entry", epd.a(this.f.b)), $$3, $$2 + 1, $$10, false);
-         $$0.a(enu.this.i, this.a(this.f.b), $$3, $$2 + 12, 5000268, false);
-         this.g.forEach($$5x -> {
-            $$5x.f($$2 + 2);
-            $$5x.a($$0, $$6, $$7, $$9);
          });
+         this.f.a($$3);
+      } catch (eni var5) {
+         b.error("Couldn't download world data", var5);
+         this.f.a(new eoa(var5, this));
+      }
+   }
+
+   private boolean E() {
+      return this.A != null && this.A.m == emm.c.b;
+   }
+
+   private void a(erv $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5, String $$6, int $$7, long $$8, @Nullable String $$9, boolean $$10) {
+      aer $$11;
+      if ($$10) {
+         $$11 = enp.a;
+      } else if ($$9 != null && $$8 != -1L) {
+         $$11 = epb.a(String.valueOf($$8), $$9);
+      } else if ($$7 == 1) {
+         $$11 = enp.b;
+      } else if ($$7 == 2) {
+         $$11 = enp.c;
+      } else if ($$7 == 3) {
+         $$11 = enp.d;
+      } else {
+         $$11 = epb.a(String.valueOf(this.A.p), this.A.q);
       }
 
-      private String a(Date $$0) {
-         return DateFormat.getDateTimeInstance(3, 3).format($$0);
+      if (!$$5) {
+         $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
+      } else if ($$5) {
+         float $$17 = 0.9F + 0.1F * arp.b((float)this.G * 0.2F);
+         $$0.a($$17, $$17, $$17, 1.0F);
       }
 
-      @Override
-      public tf a() {
-         return tf.a("narrator.select", this.f.b.toString());
+      $$0.a($$11, $$1 + 3, $$2 + 3, 0.0F, 0.0F, 74, 74, 74, 74);
+      if ($$5) {
+         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      } else {
+         $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
       }
+
+      $$0.a(a, $$1, $$2, 80, 80);
+      $$0.a(this.i, $$6, $$1 + 40, $$2 + 66, -1);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
    }
 }

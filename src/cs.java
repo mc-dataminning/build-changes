@@ -14,7 +14,7 @@ public class cs extends cu<cs.a> {
       return new cs.a($$1, $$3);
    }
 
-   public void a(akl $$0, cmb<?> $$1) {
+   public void a(akl $$0, cma<?> $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -37,7 +37,7 @@ public class cs extends cu<cs.a> {
          return $$0;
       }
 
-      public boolean a(cmb<?> $$0) {
+      public boolean a(cma<?> $$0) {
          return this.a.equals($$0.e());
       }
    }

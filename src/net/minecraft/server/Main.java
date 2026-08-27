@@ -86,9 +86,9 @@ public class Main {
          File $$23 = new File((String)$$17.valueOf($$10));
          afj $$24 = afj.a(new YggdrasilAuthenticationService(Proxy.NO_PROXY), $$23);
          String $$25 = (String)Optional.ofNullable((String)$$17.valueOf($$11)).orElse($$20.a().m);
-         ebx $$26 = ebx.b($$23.toPath());
-         ebx.c $$27 = $$26.c($$25);
-         eby $$28 = $$27.d();
+         ebw $$26 = ebw.b($$23.toPath());
+         ebw.c $$27 = $$26.c($$25);
+         ebx $$28 = $$27.d();
          if ($$28 != null) {
             if ($$28.d()) {
                a.info("This world must be opened in an older version (like 1.6.4) to be safely converted");
@@ -112,29 +112,29 @@ public class Main {
          try {
             afl.c $$31 = a($$20.a(), $$27, $$29, $$30);
             $$32 = ac.<afm>c($$6x -> afl.a($$31, $$5xx -> {
-                  hr<dik> $$6xx = $$5xx.d().d(jc.aI);
+                  hr<dij> $$6xx = $$5xx.d().d(jc.aI);
                   DynamicOps<rk> $$7x = aep.a(rc.a, $$5xx.c());
-                  Pair<ecd, dle.b> $$8x = $$27.a($$7x, $$5xx.b(), $$6xx, $$5xx.c().d());
+                  Pair<ecc, dld.b> $$8x = $$27.a($$7x, $$5xx.b(), $$6xx, $$5xx.c().d());
                   if ($$8x != null) {
-                     return new afl.b<>((ecd)$$8x.getFirst(), ((dle.b)$$8x.getSecond()).b());
+                     return new afl.b<>((ecc)$$8x.getFirst(), ((dld.b)$$8x.getSecond()).b());
                   } else {
-                     cpq $$9x;
-                     dlh $$10x;
-                     dle $$11x;
+                     cpp $$9x;
+                     dlg $$10x;
+                     dld $$11x;
                      if ($$17.has($$4)) {
                         $$9x = MinecraftServer.f;
-                        $$10x = dlh.b;
-                        $$11x = dup.a($$5xx.c());
+                        $$10x = dlg.b;
+                        $$11x = duo.a($$5xx.c());
                      } else {
                         ajj $$12x = $$20.a();
-                        $$9x = new cpq($$12x.m, $$12x.l, $$12x.u, $$12x.k, false, new cpi(), $$5xx.b());
+                        $$9x = new cpp($$12x.m, $$12x.l, $$12x.u, $$12x.k, false, new cph(), $$5xx.b());
                         $$10x = $$17.has($$5) ? $$12x.Y.a(true) : $$12x.Y;
                         $$11x = $$12x.a($$5xx.c());
                      }
 
-                     dle.b $$16x = $$11x.a($$6xx);
+                     dld.b $$16x = $$11x.a($$6xx);
                      Lifecycle $$17x = $$16x.a().add($$5xx.c().d());
-                     return new afl.b<>(new ecb($$9x, $$10x, $$16x.d(), $$17x), $$16x.b());
+                     return new afl.b<>(new eca($$9x, $$10x, $$16x.d(), $$17x), $$16x.b());
                   }
                }, afm::new, ac.f(), $$6x)).get();
          } catch (Exception var36) {
@@ -147,7 +147,7 @@ public class Main {
             a($$27, ast.a(), $$17.has($$7), () -> true, $$35.d(jc.aI));
          }
 
-         ecd $$36 = $$32.d();
+         ecc $$36 = $$32.d();
          $$27.a($$35, $$36);
          final aji $$37 = MinecraftServer.a((Function<Thread, aji>)($$11x -> {
             aji $$12x = new aji($$11x, $$27, $$30, $$32, $$20, ast.a(), $$24, akv::new);
@@ -156,7 +156,7 @@ public class Main {
             $$12x.b((String)$$17.valueOf($$13));
             boolean $$13x = !$$17.has($$2) && !$$17.valuesOf($$16).contains("nogui");
             if ($$13x && !GraphicsEnvironment.isHeadless()) {
-               $$12x.bi();
+               $$12x.bh();
             }
 
             return $$12x;
@@ -183,23 +183,23 @@ public class Main {
       }
    }
 
-   private static afl.c a(ajj $$0, ebx.c $$1, boolean $$2, amx $$3) {
-      cqf $$4 = $$1.e();
-      cqf $$6;
+   private static afl.c a(ajj $$0, ebw.c $$1, boolean $$2, amx $$3) {
+      cqe $$4 = $$1.e();
+      cqe $$6;
       boolean $$5;
       if ($$4 != null) {
          $$5 = false;
          $$6 = $$4;
       } else {
          $$5 = true;
-         $$6 = new cqf($$0.T, cdx.g);
+         $$6 = new cqe($$0.T, cdw.g);
       }
 
       afl.d $$9 = new afl.d($$3, $$6, $$2, $$5);
       return new afl.c($$9, ds.a.b, $$0.B);
    }
 
-   private static void a(ebx.c $$0, DataFixer $$1, boolean $$2, BooleanSupplier $$3, hr<dik> $$4) {
+   private static void a(ebw.c $$0, DataFixer $$1, boolean $$2, BooleanSupplier $$3, hr<dij> $$4) {
       a.info("Forcing world upgrade!");
       bge $$5 = new bge($$0, $$1, $$4, $$2);
       tf $$6 = null;

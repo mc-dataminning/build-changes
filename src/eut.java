@@ -36,14 +36,14 @@ public class eut implements ang, AutoCloseable {
    private static final aek d = aek.a("font");
    private static final Gson e = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
    private final euu f;
-   private final List<ejj> g = new ArrayList<>();
+   private final List<eji> g = new ArrayList<>();
    private final Map<aer, euu> h = new HashMap<>();
-   private final fym i;
+   private final fyv i;
    private Map<aer, aer> j = ImmutableMap.of();
 
-   public eut(fym $$0) {
+   public eut(fyv $$0) {
       this.i = $$0;
-      this.f = ac.a(new euu($$0, a), $$0x -> $$0x.a(Lists.newArrayList(new ejj[]{new eur()})));
+      this.f = ac.a(new euu($$0, a), $$0x -> $$0x.a(Lists.newArrayList(new eji[]{new eur()})));
    }
 
    @Override
@@ -65,7 +65,7 @@ public class eut implements ang, AutoCloseable {
             for (Pair<eut.a, eve> $$6 : $$4x) {
                eut.a $$7 = (eut.a)$$6.getFirst();
                ((eve)$$6.getSecond()).b().ifLeft($$4xx -> {
-                  CompletableFuture<Optional<ejj>> $$5x = this.a($$7, $$4xx, $$0, $$1);
+                  CompletableFuture<Optional<eji>> $$5x = this.a($$7, $$4xx, $$0, $$1);
                   $$5.a($$7, $$5x);
                }).ifRight($$2xx -> $$5.a($$7, $$2xx));
             }
@@ -77,19 +77,19 @@ public class eut implements ang, AutoCloseable {
       return ac.b($$2)
          .thenCompose(
             $$1x -> {
-               List<CompletableFuture<Optional<ejj>>> $$2x = $$1x.stream().flatMap(eut.e::d).collect(Collectors.toCollection(ArrayList::new));
-               ejj $$3x = new eur();
+               List<CompletableFuture<Optional<eji>>> $$2x = $$1x.stream().flatMap(eut.e::d).collect(Collectors.toCollection(ArrayList::new));
+               eji $$3x = new eur();
                $$2x.add(CompletableFuture.completedFuture(Optional.of($$3x)));
                return ac.b($$2x)
                   .thenCompose(
                      $$3xx -> {
-                        Map<aer, List<ejj>> $$4x = this.a($$1x);
+                        Map<aer, List<eji>> $$4x = this.a($$1x);
                         CompletableFuture<?>[] $$5 = $$4x.values()
                            .stream()
                            .map($$2xxx -> CompletableFuture.runAsync(() -> this.a($$2xxx, $$3x), $$1))
                            .toArray(CompletableFuture[]::new);
                         return CompletableFuture.allOf($$5).thenApply($$2xxx -> {
-                           List<ejj> $$3xxx = $$3xx.stream().flatMap(Optional::stream).toList();
+                           List<eji> $$3xxx = $$3xx.stream().flatMap(Optional::stream).toList();
                            return new eut.d($$4x, $$3xxx);
                         });
                      }
@@ -98,7 +98,7 @@ public class eut implements ang, AutoCloseable {
          );
    }
 
-   private CompletableFuture<Optional<ejj>> a(eut.a $$0, eve.a $$1, anm $$2, Executor $$3) {
+   private CompletableFuture<Optional<eji>> a(eut.a $$0, eve.a $$1, anm $$2, Executor $$3) {
       return CompletableFuture.supplyAsync(() -> {
          try {
             return Optional.of($$1.load($$2));
@@ -109,25 +109,25 @@ public class eut implements ang, AutoCloseable {
       }, $$3);
    }
 
-   private Map<aer, List<ejj>> a(List<eut.e> $$0) {
-      Map<aer, List<ejj>> $$1 = new HashMap<>();
+   private Map<aer, List<eji>> a(List<eut.e> $$0) {
+      Map<aer, List<eji>> $$1 = new HashMap<>();
       aqv<aer, eut.e> $$2 = new aqv<>();
       $$0.forEach($$1x -> $$2.a($$1x.a, $$1x));
       $$2.a(($$1x, $$2x) -> $$2x.a($$1::get).ifPresent($$2xx -> $$1.put($$1x, $$2xx)));
       return $$1;
    }
 
-   private void a(List<ejj> $$0, ejj $$1) {
+   private void a(List<eji> $$0, eji $$1) {
       $$0.add(0, $$1);
       IntSet $$2 = new IntOpenHashSet();
 
-      for (ejj $$3 : $$0) {
+      for (eji $$3 : $$0) {
          $$2.addAll($$3.a());
       }
 
       $$2.forEach($$1x -> {
          if ($$1x != 32) {
-            for (ejj $$2x : Lists.reverse($$0)) {
+            for (eji $$2x : Lists.reverse($$0)) {
                if ($$2x.a($$1x) != null) {
                   break;
                }
@@ -141,7 +141,7 @@ public class eut implements ang, AutoCloseable {
       $$1.a("closing");
       this.h.values().forEach(euu::close);
       this.h.clear();
-      this.g.forEach(ejj::close);
+      this.g.forEach(eji::close);
       this.g.clear();
       $$1.b("reloading");
       $$0.a().forEach(($$0x, $$1x) -> {
@@ -152,7 +152,7 @@ public class eut implements ang, AutoCloseable {
       this.g.addAll($$0.b);
       $$1.c();
       $$1.b();
-      if (!this.h.containsKey(this.a(eqm.b))) {
+      if (!this.h.containsKey(this.a(eql.b))) {
          throw new IllegalStateException("Default font failed to load");
       }
    }
@@ -186,18 +186,18 @@ public class eut implements ang, AutoCloseable {
       return this.j.getOrDefault($$0, $$0);
    }
 
-   public eru a() {
-      return new eru($$0 -> this.h.getOrDefault(this.a($$0), this.f), false);
+   public ert a() {
+      return new ert($$0 -> this.h.getOrDefault(this.a($$0), this.f), false);
    }
 
-   public eru b() {
-      return new eru($$0 -> this.h.getOrDefault(this.a($$0), this.f), true);
+   public ert b() {
+      return new ert($$0 -> this.h.getOrDefault(this.a($$0), this.f), true);
    }
 
    @Override
    public void close() {
       this.h.values().forEach(euu::close);
-      this.g.forEach(ejj::close);
+      this.g.forEach(eji::close);
       this.f.close();
    }
 
@@ -208,11 +208,11 @@ public class eut implements ang, AutoCloseable {
       }
    }
 
-   static record b(eut.a a, Either<CompletableFuture<Optional<ejj>>, aer> b) {
+   static record b(eut.a a, Either<CompletableFuture<Optional<eji>>, aer> b) {
 
-      public Optional<List<ejj>> a(Function<aer, List<ejj>> $$0) {
-         return (Optional<List<ejj>>)this.b.map($$0x -> ((Optional)$$0x.join()).map(List::of), $$1 -> {
-            List<ejj> $$2 = $$0.apply($$1);
+      public Optional<List<eji>> a(Function<aer, List<eji>> $$0) {
+         return (Optional<List<eji>>)this.b.map($$0x -> ((Optional)$$0x.join()).map(List::of), $$1 -> {
+            List<eji> $$2 = $$0.apply($$1);
             if ($$2 == null) {
                eut.b.warn("Can't find font {} referenced by builder {}, either because it's missing, failed to load or is part of loading cycle", $$1, this.a);
                return Optional.empty();
@@ -233,7 +233,7 @@ public class eut implements ang, AutoCloseable {
       }
    }
 
-   static record d(Map<aer, List<ejj>> a, List<ejj> b) {
+   static record d(Map<aer, List<eji>> a, List<eji> b) {
    }
 
    static record e(aer a, List<eut.b> b, Set<aer> c) implements aqv.a<aer> {
@@ -247,19 +247,19 @@ public class eut implements ang, AutoCloseable {
          this.c.add($$1.a());
       }
 
-      public void a(eut.a $$0, CompletableFuture<Optional<ejj>> $$1) {
+      public void a(eut.a $$0, CompletableFuture<Optional<eji>> $$1) {
          this.b.add(new eut.b($$0, Either.left($$1)));
       }
 
-      private Stream<CompletableFuture<Optional<ejj>>> d() {
+      private Stream<CompletableFuture<Optional<eji>>> d() {
          return this.b.stream().flatMap($$0 -> $$0.b.left().stream());
       }
 
-      public Optional<List<ejj>> a(Function<aer, List<ejj>> $$0) {
-         List<ejj> $$1 = new ArrayList<>();
+      public Optional<List<eji>> a(Function<aer, List<eji>> $$0) {
+         List<eji> $$1 = new ArrayList<>();
 
          for (eut.b $$2 : this.b) {
-            Optional<List<ejj>> $$3 = $$2.a($$0);
+            Optional<List<eji>> $$3 = $$2.a($$0);
             if (!$$3.isPresent()) {
                return Optional.empty();
             }

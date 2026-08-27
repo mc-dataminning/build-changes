@@ -33,9 +33,9 @@ public class ahq {
    }
 
    private static int a(dr $$0) throws CommandSyntaxException {
-      ccu $$1 = a($$0.h());
+      cct $$1 = a($$0.h());
       if ($$1 != null) {
-         for (ccv $$3 : $$1.h()) {
+         for (ccu $$3 : $$1.h()) {
             $$3.b(new bhv(bhx.x, 1000, 1));
          }
       }
@@ -44,7 +44,7 @@ public class ahq {
    }
 
    private static int a(dr $$0, int $$1) throws CommandSyntaxException {
-      ccu $$2 = a($$0.h());
+      cct $$2 = a($$0.h());
       if ($$2 != null) {
          int $$3 = $$2.l();
          if ($$1 > $$3) {
@@ -63,13 +63,13 @@ public class ahq {
 
    private static int b(dr $$0) {
       $$0.a(() -> tf.b("Spawned a raid captain"), false);
-      ccv $$1 = bim.ay.a((cpm)$$0.e());
+      ccu $$1 = bim.ay.a((cpl)$$0.e());
       if ($$1 == null) {
          $$0.b(tf.b("Pillager failed to spawn"));
          return 0;
       } else {
          $$1.w(true);
-         $$1.a(bin.f, ccu.s());
+         $$1.a(bin.f, cct.s());
          $$1.e($$0.d().c, $$0.d().d, $$0.d().e);
          $$1.a($$0.e(), $$0.e().d_(gu.a($$0.d())), bjc.n, null, null);
          $$0.e().a_($$1);
@@ -80,7 +80,7 @@ public class ahq {
    private static int a(dr $$0, @Nullable tf $$1) {
       if ($$1 != null && $$1.getString().equals("local")) {
          akk $$2 = $$0.e();
-         ehe $$3 = $$0.d().b(5.0, 0.0, 0.0);
+         ehd $$3 = $$0.d().b(5.0, 0.0, 0.0);
          $$2.a(null, $$3.c, $$3.d, $$3.e, aow.tp, aox.g, 2.0F, 1.0F, $$2.z.g());
       }
 
@@ -94,8 +94,8 @@ public class ahq {
          $$0.b(tf.b("Raid already started close by"));
          return -1;
       } else {
-         ccw $$4 = $$2.x().x();
-         ccu $$5 = $$4.a($$2);
+         ccv $$4 = $$2.x().x();
+         cct $$5 = $$4.a($$2);
          if ($$5 != null) {
             $$5.a($$1);
             $$4.c();
@@ -111,7 +111,7 @@ public class ahq {
    private static int c(dr $$0) throws CommandSyntaxException {
       akl $$1 = $$0.h();
       gu $$2 = $$1.dk();
-      ccu $$3 = $$1.x().c($$2);
+      cct $$3 = $$1.x().c($$2);
       if ($$3 != null) {
          $$3.n();
          $$0.a(() -> tf.b("Stopped raid"), false);
@@ -123,7 +123,7 @@ public class ahq {
    }
 
    private static int d(dr $$0) throws CommandSyntaxException {
-      ccu $$1 = a($$0.h());
+      cct $$1 = a($$0.h());
       if ($$1 != null) {
          StringBuilder $$2 = new StringBuilder();
          $$2.append("Found a started raid! ");
@@ -148,7 +148,7 @@ public class ahq {
    }
 
    @Nullable
-   private static ccu a(akl $$0) {
+   private static cct a(akl $$0) {
       return $$0.x().c($$0.dk());
    }
 }

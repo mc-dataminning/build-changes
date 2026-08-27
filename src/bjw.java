@@ -1,6 +1,5 @@
-import javax.annotation.Nullable;
+public interface bjw<T> {
+   void a(T var1);
 
-public interface bjw {
-   @Nullable
-   bii v();
+   T c();
 }

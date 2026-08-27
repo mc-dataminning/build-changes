@@ -13,8 +13,8 @@ public class bgi implements bgj {
    }
 
    @Override
-   public boolean ab_() {
-      return this.c.ab_() && this.d.ab_();
+   public boolean aa_() {
+      return this.c.aa_() && this.d.aa_();
    }
 
    public boolean a(bgj $$0) {
@@ -22,22 +22,22 @@ public class bgi implements bgj {
    }
 
    @Override
-   public ciy a(int $$0) {
+   public cix a(int $$0) {
       return $$0 >= this.c.b() ? this.d.a($$0 - this.c.b()) : this.c.a($$0);
    }
 
    @Override
-   public ciy a(int $$0, int $$1) {
+   public cix a(int $$0, int $$1) {
       return $$0 >= this.c.b() ? this.d.a($$0 - this.c.b(), $$1) : this.c.a($$0, $$1);
    }
 
    @Override
-   public ciy b(int $$0) {
+   public cix b(int $$0) {
       return $$0 >= this.c.b() ? this.d.b($$0 - this.c.b()) : this.c.b($$0);
    }
 
    @Override
-   public void a(int $$0, ciy $$1) {
+   public void a(int $$0, cix $$1) {
       if ($$0 >= this.c.b()) {
          this.d.a($$0 - this.c.b(), $$1);
       } else {
@@ -46,8 +46,8 @@ public class bgi implements bgj {
    }
 
    @Override
-   public int ac_() {
-      return this.c.ac_();
+   public int ab_() {
+      return this.c.ab_();
    }
 
    @Override
@@ -57,24 +57,24 @@ public class bgi implements bgj {
    }
 
    @Override
-   public boolean a(cbn $$0) {
+   public boolean a(cbm $$0) {
       return this.c.a($$0) && this.d.a($$0);
    }
 
    @Override
-   public void d_(cbn $$0) {
+   public void d_(cbm $$0) {
       this.c.d_($$0);
       this.d.d_($$0);
    }
 
    @Override
-   public void c(cbn $$0) {
+   public void c(cbm $$0) {
       this.c.c($$0);
       this.d.c($$0);
    }
 
    @Override
-   public boolean b(int $$0, ciy $$1) {
+   public boolean b(int $$0, cix $$1) {
       return $$0 >= this.c.b() ? this.d.b($$0 - this.c.b(), $$1) : this.c.b($$0, $$1);
    }
 

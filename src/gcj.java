@@ -1,34 +1,35 @@
-import com.mojang.authlib.GameProfile;
-import java.net.SocketAddress;
+import com.google.common.collect.AbstractIterator;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.PeekingIterator;
+import java.util.Comparator;
+import java.util.Iterator;
 
-public class gcj extends anz {
-   private qr a;
+public class gcj<T> extends AbstractIterator<T> {
+   private final PeekingIterator<T> a;
+   private final PeekingIterator<T> b;
+   private final Comparator<T> c;
 
-   public gcj(gck $$0, hl<afa> $$1, eca $$2) {
-      super($$0, $$1, $$2, 8);
-      this.a(10);
+   public gcj(Iterator<T> $$0, Iterator<T> $$1, Comparator<T> $$2) {
+      this.a = Iterators.peekingIterator($$0);
+      this.b = Iterators.peekingIterator($$1);
+      this.c = $$2;
    }
 
-   @Override
-   protected void b(akl $$0) {
-      if (this.b().a($$0.fP())) {
-         this.a = $$0.f(new qr());
+   protected T computeNext() {
+      while (this.a.hasNext() && this.b.hasNext()) {
+         int $$0 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
+         if ($$0 == 0) {
+            this.b.next();
+            return (T)this.a.next();
+         }
+
+         if ($$0 < 0) {
+            this.a.next();
+         } else {
+            this.b.next();
+         }
       }
 
-      super.b($$0);
-   }
-
-   @Override
-   public tf a(SocketAddress $$0, GameProfile $$1) {
-      return (tf)(this.b().a($$1) && this.a($$1.getName()) != null ? tf.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
-   }
-
-   public gck b() {
-      return (gck)super.c();
-   }
-
-   @Override
-   public qr r() {
-      return this.a;
+      return (T)this.endOfData();
    }
 }

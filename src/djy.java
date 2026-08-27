@@ -1,55 +1,181 @@
-public interface djy extends aru {
-   float b = 5.9604645E-8F;
-   double c = 1.110223E-16F;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-   int c(int var1);
-
-   @Override
-   default int f() {
-      return this.c(32);
+public abstract class djy {
+   public static djy.b a(int $$0, int $$1) {
+      return new djy.b($$0 - 1, $$1 + 1);
    }
 
-   @Override
-   default int a(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Bound must be positive");
-      } else if (($$0 & $$0 - 1) == 0) {
-         return (int)((long)$$0 * (long)this.c(31) >> 31);
-      } else {
-         int $$1;
-         int $$2;
-         do {
-            $$1 = this.c(31);
-            $$2 = $$1 % $$0;
-         } while ($$1 - $$2 + ($$0 - 1) < 0);
+   public static djy.b b(int $$0, int $$1) {
+      return new djy.b($$0, $$1);
+   }
 
-         return $$2;
+   public static djy a(int $$0) {
+      return new djy.c($$0, false);
+   }
+
+   public static djy b(int $$0) {
+      return new djy.c($$0 + 1, false);
+   }
+
+   public static djy c(int $$0) {
+      return new djy.c($$0, true);
+   }
+
+   public static djy d(int $$0) {
+      return new djy.c($$0 - 1, true);
+   }
+
+   public static djy a() {
+      return djy.a.a;
+   }
+
+   public static djy a(OptionalInt $$0, OptionalInt $$1) {
+      if ($$0.isPresent() && $$1.isPresent()) {
+         return b($$0.getAsInt(), $$1.getAsInt());
+      } else if ($$0.isPresent()) {
+         return c($$0.getAsInt());
+      } else {
+         return $$1.isPresent() ? a($$1.getAsInt()) : a();
       }
    }
 
-   @Override
-   default long g() {
-      int $$0 = this.c(32);
-      int $$1 = this.c(32);
-      long $$2 = (long)$$0 << 32;
-      return $$2 + (long)$$1;
+   public abstract OptionalInt b();
+
+   public abstract OptionalInt c();
+
+   public abstract OptionalInt d();
+
+   public djy a(OptionalInt $$0) {
+      return a($$0, this.b());
    }
 
-   @Override
-   default boolean h() {
-      return this.c(1) != 0;
+   public djy b(OptionalInt $$0) {
+      return a(this.c(), $$0);
    }
 
-   @Override
-   default float i() {
-      return (float)this.c(24) * 5.9604645E-8F;
+   public static Optional<djy> a(cpr $$0, gu $$1, int $$2, Predicate<dez> $$3, Predicate<dez> $$4) {
+      gu.a $$5 = $$1.j();
+      if (!$$0.a($$1, $$3)) {
+         return Optional.empty();
+      } else {
+         int $$6 = $$1.v();
+         OptionalInt $$7 = a($$0, $$2, $$3, $$4, $$5, $$6, ha.b);
+         OptionalInt $$8 = a($$0, $$2, $$3, $$4, $$5, $$6, ha.a);
+         return Optional.of(a($$8, $$7));
+      }
    }
 
-   @Override
-   default double j() {
-      int $$0 = this.c(26);
-      int $$1 = this.c(27);
-      long $$2 = ((long)$$0 << 27) + (long)$$1;
-      return (double)$$2 * 1.110223E-16F;
+   private static OptionalInt a(cpr $$0, int $$1, Predicate<dez> $$2, Predicate<dez> $$3, gu.a $$4, int $$5, ha $$6) {
+      $$4.q($$5);
+
+      for (int $$7 = 1; $$7 < $$1 && $$0.a($$4, $$2); $$7++) {
+         $$4.c($$6);
+      }
+
+      return $$0.a($$4, $$3) ? OptionalInt.of($$4.v()) : OptionalInt.empty();
+   }
+
+   public static final class a extends djy {
+      static final djy.a a = new djy.a();
+
+      private a() {
+      }
+
+      @Override
+      public OptionalInt b() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt c() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public String toString() {
+         return "C(-)";
+      }
+   }
+
+   public static final class b extends djy {
+      private final int a;
+      private final int b;
+
+      protected b(int $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+         if (this.g() < 0) {
+            throw new IllegalArgumentException("Column of negative height: " + this);
+         }
+      }
+
+      @Override
+      public OptionalInt b() {
+         return OptionalInt.of(this.b);
+      }
+
+      @Override
+      public OptionalInt c() {
+         return OptionalInt.of(this.a);
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.of(this.g());
+      }
+
+      public int e() {
+         return this.b;
+      }
+
+      public int f() {
+         return this.a;
+      }
+
+      public int g() {
+         return this.b - this.a - 1;
+      }
+
+      @Override
+      public String toString() {
+         return "C(" + this.b + "-" + this.a + ")";
+      }
+   }
+
+   public static final class c extends djy {
+      private final int a;
+      private final boolean b;
+
+      public c(int $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public OptionalInt b() {
+         return this.b ? OptionalInt.empty() : OptionalInt.of(this.a);
+      }
+
+      @Override
+      public OptionalInt c() {
+         return this.b ? OptionalInt.of(this.a) : OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public String toString() {
+         return this.b ? "C(" + this.a + "-)" : "C(-" + this.a + ")";
+      }
    }
 }

@@ -1,65 +1,74 @@
-public class gdv implements geb {
-   private static final int a = 1200;
-   private static final tf b = tf.c("tutorial.craft_planks.title");
-   private static final tf c = tf.c("tutorial.craft_planks.description");
-   private final gea d;
-   private eup e;
-   private int f;
+import com.google.common.base.Stopwatch;
+import com.google.common.base.Ticker;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.OptionalLong;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
+import org.slf4j.Logger;
 
-   public gdv(gea $$0) {
-      this.d = $$0;
+public class gdv {
+   public static final gdv a = new gdv(Ticker.systemTicker());
+   private static final Logger b = LogUtils.getLogger();
+   private final Ticker c;
+   private final Map<gdr<gdv.a>, Stopwatch> d = new HashMap<>();
+   private OptionalLong e = OptionalLong.empty();
+
+   protected gdv(Ticker $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(gec.f);
+   public synchronized void a(gdr<gdv.a> $$0) {
+      this.a($$0, (Function<gdr<gdv.a>, Stopwatch>)($$0x -> Stopwatch.createStarted(this.c)));
+   }
+
+   public synchronized void a(gdr<gdv.a> $$0, Stopwatch $$1) {
+      this.a($$0, (Function<gdr<gdv.a>, Stopwatch>)($$1x -> $$1));
+   }
+
+   private synchronized void a(gdr<gdv.a> $$0, Function<gdr<gdv.a>, Stopwatch> $$1) {
+      this.d.computeIfAbsent($$0, $$1);
+   }
+
+   public synchronized void b(gdr<gdv.a> $$0) {
+      Stopwatch $$1 = this.d.get($$0);
+      if ($$1 == null) {
+         b.warn("Attempted to end step for {} before starting it", $$0.b());
       } else {
-         if (this.f == 1) {
-            fmn $$0 = this.d.e().v;
-            if ($$0 != null) {
-               if ($$0.fQ().a(apt.b)) {
-                  this.d.a(gec.f);
-                  return;
+         if ($$1.isRunning()) {
+            $$1.stop();
+         }
+      }
+   }
+
+   public void a(gdo $$0) {
+      $$0.send(gdp.g, $$0x -> {
+         synchronized (this) {
+            this.d.forEach(($$1, $$2) -> {
+               if (!$$2.isRunning()) {
+                  long $$3 = $$2.elapsed(TimeUnit.MILLISECONDS);
+                  $$0x.a((gdr<gdv.a>)$$1, new gdv.a((int)$$3));
+               } else {
+                  b.warn("Measurement {} was discarded since it was still ongoing when the event {} was sent.", $$1.b(), gdp.g.a());
                }
-
-               if (a($$0, apt.b)) {
-                  this.d.a(gec.f);
-                  return;
-               }
-            }
+            });
+            this.e.ifPresent($$1 -> $$0x.a(gdr.B, new gdv.a((int)$$1)));
+            this.d.clear();
          }
-
-         if (this.f >= 1200 && this.e == null) {
-            this.e = new eup(eup.a.e, b, c, false);
-            this.d.e().az().a(this.e);
-         }
-      }
+      });
    }
 
-   @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.c();
-         this.e = null;
-      }
+   public synchronized void a(long $$0) {
+      this.e = OptionalLong.of($$0);
    }
 
-   @Override
-   public void a(ciy $$0) {
-      if ($$0.a(apt.b)) {
-         this.d.a(gec.f);
-      }
-   }
+   public static record a(int b) {
+      public static final Codec<gdv.a> a = Codec.INT.xmap(gdv.a::new, $$0 -> $$0.b);
 
-   public static boolean a(fmn $$0, aqa<cit> $$1) {
-      for (he<cit> $$2 : jb.i.c($$1)) {
-         if ($$0.j().a(apg.b.b($$2.a())) > 0) {
-            return true;
-         }
+      public int a() {
+         return this.b;
       }
-
-      return false;
    }
 }

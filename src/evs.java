@@ -1,111 +1,143 @@
-import java.util.function.Consumer;
+public interface evs {
+   evs a(int var1);
 
-public class evs implements evp {
-   private final evn a;
-   private final evs.a b;
-   private int c = 0;
+   evs a(int var1, int var2);
 
-   public evs(evs.a $$0) {
-      this(0, 0, $$0);
+   evs a(int var1, int var2, int var3, int var4);
+
+   evs b(int var1);
+
+   evs c(int var1);
+
+   evs d(int var1);
+
+   evs e(int var1);
+
+   evs f(int var1);
+
+   evs g(int var1);
+
+   evs a(float var1, float var2);
+
+   evs a(float var1);
+
+   evs b(float var1);
+
+   default evs a() {
+      return this.a(0.0F);
    }
 
-   public evs(int $$0, int $$1, evs.a $$2) {
-      this.a = new evn($$0, $$1);
-      this.b = $$2;
+   default evs b() {
+      return this.a(0.5F);
    }
 
-   public evs a(int $$0) {
-      this.b.a(this.a, $$0);
-      return this;
+   default evs c() {
+      return this.a(1.0F);
    }
 
-   public evr b() {
-      return this.a.b();
+   default evs d() {
+      return this.b(0.0F);
    }
 
-   public evr c() {
-      return this.a.c();
+   default evs e() {
+      return this.b(0.5F);
    }
 
-   public <T extends evq> T a(T $$0, evr $$1) {
-      return this.b.a(this.a, $$0, this.c++, $$1);
+   default evs f() {
+      return this.b(1.0F);
    }
 
-   public <T extends evq> T a(T $$0) {
-      return this.a($$0, this.b());
+   evs g();
+
+   evs.a h();
+
+   static evs i() {
+      return new evs.a();
    }
 
-   public <T extends evq> T a(T $$0, Consumer<evr> $$1) {
-      return this.b.a(this.a, $$0, this.c++, ac.a(this.b(), $$1));
-   }
+   public static class a implements evs {
+      public int a;
+      public int b;
+      public int c;
+      public int d;
+      public float e;
+      public float f;
 
-   @Override
-   public void b(Consumer<evq> $$0) {
-      this.a.b($$0);
-   }
-
-   @Override
-   public void a() {
-      this.a.a();
-   }
-
-   @Override
-   public int k() {
-      return this.a.k();
-   }
-
-   @Override
-   public int h() {
-      return this.a.h();
-   }
-
-   @Override
-   public void e(int $$0) {
-      this.a.e($$0);
-   }
-
-   @Override
-   public void f(int $$0) {
-      this.a.f($$0);
-   }
-
-   @Override
-   public int p() {
-      return this.a.p();
-   }
-
-   @Override
-   public int r() {
-      return this.a.r();
-   }
-
-   public static evs d() {
-      return new evs(evs.a.b);
-   }
-
-   public static evs e() {
-      return new evs(evs.a.a);
-   }
-
-   public static enum a {
-      a,
-      b;
-
-      void a(evn $$0, int $$1) {
-         switch (this) {
-            case a:
-               $$0.a($$1);
-               break;
-            case b:
-               $$0.b($$1);
-         }
+      public a() {
       }
 
-      public <T extends evq> T a(evn $$0, T $$1, int $$2, evr $$3) {
-         return (T)(switch (this) {
-            case a -> $$0.a($$1, 0, $$2, $$3);
-            case b -> $$0.a($$1, $$2, 0, $$3);
-         });
+      public a(evs.a $$0) {
+         this.a = $$0.a;
+         this.b = $$0.b;
+         this.c = $$0.c;
+         this.d = $$0.d;
+         this.e = $$0.e;
+         this.f = $$0.f;
+      }
+
+      public evs.a h(int $$0) {
+         return this.b($$0, $$0);
+      }
+
+      public evs.a b(int $$0, int $$1) {
+         return this.m($$0).n($$1);
+      }
+
+      public evs.a b(int $$0, int $$1, int $$2, int $$3) {
+         return this.i($$0).k($$2).j($$1).l($$3);
+      }
+
+      public evs.a i(int $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public evs.a j(int $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public evs.a k(int $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public evs.a l(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public evs.a m(int $$0) {
+         return this.i($$0).k($$0);
+      }
+
+      public evs.a n(int $$0) {
+         return this.j($$0).l($$0);
+      }
+
+      public evs.a b(float $$0, float $$1) {
+         this.e = $$0;
+         this.f = $$1;
+         return this;
+      }
+
+      public evs.a c(float $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public evs.a d(float $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public evs.a j() {
+         return new evs.a(this);
+      }
+
+      @Override
+      public evs.a h() {
+         return this;
       }
    }
 }

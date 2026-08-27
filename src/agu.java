@@ -42,9 +42,9 @@ public class agu {
    }
 
    private static int a(dr $$0, aka $$1) throws CommandSyntaxException {
-      cot $$2 = $$1.a();
+      cos $$2 = $$1.a();
       akk $$3 = $$0.e();
-      aeq<cpm> $$4 = $$3.ac();
+      aeq<cpl> $$4 = $$3.ac();
       boolean $$5 = $$3.u().contains($$2.a());
       if ($$5) {
          $$0.a(() -> tf.a("commands.forceload.query.success", $$2, $$4.a()), false);
@@ -56,11 +56,11 @@ public class agu {
 
    private static int a(dr $$0) {
       akk $$1 = $$0.e();
-      aeq<cpm> $$2 = $$1.ac();
+      aeq<cpl> $$2 = $$1.ac();
       LongSet $$3 = $$1.u();
       int $$4 = $$3.size();
       if ($$4 > 0) {
-         String $$5 = Joiner.on(", ").join($$3.stream().sorted().map(cot::new).map(cot::toString).iterator());
+         String $$5 = Joiner.on(", ").join($$3.stream().sorted().map(cos::new).map(cos::toString).iterator());
          if ($$4 == 1) {
             $$0.a(() -> tf.a("commands.forceload.list.single", $$2.a(), $$5), false);
          } else {
@@ -75,9 +75,9 @@ public class agu {
 
    private static int b(dr $$0) {
       akk $$1 = $$0.e();
-      aeq<cpm> $$2 = $$1.ac();
+      aeq<cpl> $$2 = $$1.ac();
       LongSet $$3 = $$1.u();
-      $$3.forEach($$1x -> $$1.a(cot.a($$1x), cot.b($$1x), false));
+      $$3.forEach($$1x -> $$1.a(cos.a($$1x), cos.b($$1x), false));
       $$0.a(() -> tf.a("commands.forceload.removed.all", $$2.a()), true);
       return 0;
    }
@@ -97,8 +97,8 @@ public class agu {
             throw b.create(256, $$12);
          } else {
             akk $$13 = $$0.e();
-            aeq<cpm> $$14 = $$13.ac();
-            cot $$15 = null;
+            aeq<cpl> $$14 = $$13.ac();
+            cos $$15 = null;
             int $$16 = 0;
 
             for (int $$17 = $$8; $$17 <= $$10; $$17++) {
@@ -107,21 +107,21 @@ public class agu {
                   if ($$19) {
                      $$16++;
                      if ($$15 == null) {
-                        $$15 = new cot($$17, $$18);
+                        $$15 = new cos($$17, $$18);
                      }
                   }
                }
             }
 
-            cot $$20 = $$15;
+            cos $$20 = $$15;
             if ($$16 == 0) {
                throw ($$3 ? d : e).create();
             } else {
                if ($$16 == 1) {
                   $$0.a(() -> tf.a("commands.forceload." + ($$3 ? "added" : "removed") + ".single", $$20, $$14.a()), true);
                } else {
-                  cot $$21 = new cot($$8, $$9);
-                  cot $$22 = new cot($$10, $$11);
+                  cos $$21 = new cos($$8, $$9);
+                  cos $$22 = new cos($$10, $$11);
                   $$0.a(() -> tf.a("commands.forceload." + ($$3 ? "added" : "removed") + ".multiple", $$20, $$14.a(), $$21, $$22), true);
                }
 

@@ -7,6 +7,6 @@ public class ma extends lr {
 
    @Override
    protected void a(Consumer<lo> $$0) {
-      ls.a(lq.e, cjb.qg).a('#', cjb.tK).a('-', cjb.oE).b("-#-").b("# #").b("###").b("has_string", a(cjb.oE)).a($$0);
+      ls.a(lq.e, cja.qg).a('#', cja.tK).a('-', cja.oE).b("-#-").b("# #").b("###").b("has_string", a(cja.oE)).a($$0);
    }
 }

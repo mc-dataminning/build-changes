@@ -1,29 +1,23 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import java.util.Set;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class efk implements efg {
-   private static final efk b = new efk();
-   public static final Codec<efk> a = Codec.unit(b);
-
-   private efk() {
-   }
+public record efk(float b) implements eff {
+   public static final Codec<efk> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(efk::c)).apply($$0, efk::new));
 
    @Override
-   public efh b() {
-      return efi.h;
+   public efg b() {
+      return efh.e;
    }
 
-   @Override
-   public Set<eep<?>> a() {
-      return ImmutableSet.of(ees.b);
+   public boolean a(ecg $$0) {
+      return $$0.b().i() < this.b;
    }
 
-   public boolean a(ech $$0) {
-      return $$0.a(ees.b);
+   public static eff.a a(float $$0) {
+      return () -> new efk($$0);
    }
 
-   public static efg.a c() {
-      return () -> b;
+   public float c() {
+      return this.b;
    }
 }

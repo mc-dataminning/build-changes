@@ -1,169 +1,144 @@
-public class cud extends csu implements cso {
-   public static final int c = 7;
-   public static final dga d = dfq.av;
-   private static final ehx[] a = new ehx[]{
-      csm.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      csm.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      csm.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      csm.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-      csm.a(0.0, 0.0, 0.0, 16.0, 10.0, 16.0),
-      csm.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0),
-      csm.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0),
-      csm.a(0.0, 0.0, 0.0, 16.0, 16.0, 16.0)
-   };
+import com.google.common.collect.UnmodifiableIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.Map;
 
-   protected cud(dez.d $$0) {
-      super($$0);
-      this.k(this.C.b().a(this.a(), Integer.valueOf(0)));
+public class cud extends csl implements czm {
+   public static final dfq a = cxx.a;
+   public static final dfq b = cxx.b;
+   public static final dfq c = cxx.c;
+   public static final dfq d = cxx.d;
+   public static final dfq e = dfp.C;
+   protected static final Map<ha, dfq> f = cxx.g.entrySet().stream().filter($$0 -> $$0.getKey().o().d()).collect(ac.a());
+   protected final ehw[] g;
+   protected final ehw[] h;
+   private final Object2IntMap<dez> i = new Object2IntOpenHashMap();
+
+   protected cud(float $$0, float $$1, float $$2, float $$3, float $$4, dey.d $$5) {
+      super($$5);
+      this.g = this.a($$0, $$1, $$4, 0.0F, $$4);
+      this.h = this.a($$0, $$1, $$2, 0.0F, $$3);
+      UnmodifiableIterator var7 = this.C.a().iterator();
+
+      while (var7.hasNext()) {
+         dez $$6 = (dez)var7.next();
+         this.g($$6);
+      }
+   }
+
+   protected ehw[] a(float $$0, float $$1, float $$2, float $$3, float $$4) {
+      float $$5 = 8.0F - $$0;
+      float $$6 = 8.0F + $$0;
+      float $$7 = 8.0F - $$1;
+      float $$8 = 8.0F + $$1;
+      ehw $$9 = csl.a((double)$$5, 0.0, (double)$$5, (double)$$6, (double)$$2, (double)$$6);
+      ehw $$10 = csl.a((double)$$7, (double)$$3, 0.0, (double)$$8, (double)$$4, (double)$$8);
+      ehw $$11 = csl.a((double)$$7, (double)$$3, (double)$$7, (double)$$8, (double)$$4, 16.0);
+      ehw $$12 = csl.a(0.0, (double)$$3, (double)$$7, (double)$$8, (double)$$4, (double)$$8);
+      ehw $$13 = csl.a((double)$$7, (double)$$3, (double)$$7, 16.0, (double)$$4, (double)$$8);
+      ehw $$14 = eht.a($$10, $$13);
+      ehw $$15 = eht.a($$11, $$12);
+      ehw[] $$16 = new ehw[]{
+         eht.a(),
+         $$11,
+         $$12,
+         $$15,
+         $$10,
+         eht.a($$11, $$10),
+         eht.a($$12, $$10),
+         eht.a($$15, $$10),
+         $$13,
+         eht.a($$11, $$13),
+         eht.a($$12, $$13),
+         eht.a($$15, $$13),
+         $$14,
+         eht.a($$11, $$14),
+         eht.a($$12, $$14),
+         eht.a($$15, $$14)
+      };
+
+      for (int $$17 = 0; $$17 < 16; $$17++) {
+         $$16[$$17] = eht.a($$9, $$16[$$17]);
+      }
+
+      return $$16;
    }
 
    @Override
-   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
-      return a[this.g($$0)];
+   public boolean c(dez $$0, cor $$1, gu $$2) {
+      return !$$0.c(e);
    }
 
    @Override
-   protected boolean d(dfa $$0, cos $$1, gu $$2) {
-      return $$0.a(csn.cC);
-   }
-
-   protected dga a() {
-      return d;
-   }
-
-   public int b() {
-      return 7;
-   }
-
-   public int g(dfa $$0) {
-      return $$0.c(this.a());
-   }
-
-   public dfa b(int $$0) {
-      return this.n().a(this.a(), Integer.valueOf($$0));
-   }
-
-   public final boolean h(dfa $$0) {
-      return this.g($$0) >= this.b();
+   public ehw a(dez $$0, cor $$1, gu $$2, ehi $$3) {
+      return this.h[this.g($$0)];
    }
 
    @Override
-   public boolean e_(dfa $$0) {
-      return !this.h($$0);
+   public ehw c(dez $$0, cor $$1, gu $$2, ehi $$3) {
+      return this.g[this.g($$0)];
    }
 
-   @Override
-   public void b(dfa $$0, akk $$1, gu $$2, aru $$3) {
-      if ($$1.b($$2, 0) >= 9) {
-         int $$4 = this.g($$0);
-         if ($$4 < this.b()) {
-            float $$5 = a(this, $$1, $$2);
-            if ($$3.a((int)(25.0F / $$5) + 1) == 0) {
-               $$1.a($$2, this.b($$4 + 1), 2);
-            }
+   private static int a(ha $$0) {
+      return 1 << $$0.e();
+   }
+
+   protected int g(dez $$0) {
+      return this.i.computeIntIfAbsent($$0, $$0x -> {
+         int $$1 = 0;
+         if ($$0x.c(a)) {
+            $$1 |= a(ha.c);
          }
-      }
-   }
 
-   public void a(cpm $$0, gu $$1, dfa $$2) {
-      int $$3 = this.g($$2) + this.a($$0);
-      int $$4 = this.b();
-      if ($$3 > $$4) {
-         $$3 = $$4;
-      }
-
-      $$0.a($$1, this.b($$3), 2);
-   }
-
-   protected int a(cpm $$0) {
-      return arp.a($$0.z, 2, 5);
-   }
-
-   protected static float a(csm $$0, cos $$1, gu $$2) {
-      float $$3 = 1.0F;
-      gu $$4 = $$2.d();
-
-      for (int $$5 = -1; $$5 <= 1; $$5++) {
-         for (int $$6 = -1; $$6 <= 1; $$6++) {
-            float $$7 = 0.0F;
-            dfa $$8 = $$1.a_($$4.b($$5, 0, $$6));
-            if ($$8.a(csn.cC)) {
-               $$7 = 1.0F;
-               if ($$8.c(cvf.a) > 0) {
-                  $$7 = 3.0F;
-               }
-            }
-
-            if ($$5 != 0 || $$6 != 0) {
-               $$7 /= 4.0F;
-            }
-
-            $$3 += $$7;
+         if ($$0x.c(b)) {
+            $$1 |= a(ha.f);
          }
-      }
 
-      gu $$9 = $$2.e();
-      gu $$10 = $$2.f();
-      gu $$11 = $$2.g();
-      gu $$12 = $$2.h();
-      boolean $$13 = $$1.a_($$11).a($$0) || $$1.a_($$12).a($$0);
-      boolean $$14 = $$1.a_($$9).a($$0) || $$1.a_($$10).a($$0);
-      if ($$13 && $$14) {
-         $$3 /= 2.0F;
-      } else {
-         boolean $$15 = $$1.a_($$11.e()).a($$0) || $$1.a_($$12.e()).a($$0) || $$1.a_($$12.f()).a($$0) || $$1.a_($$11.f()).a($$0);
-         if ($$15) {
-            $$3 /= 2.0F;
+         if ($$0x.c(c)) {
+            $$1 |= a(ha.d);
          }
+
+         if ($$0x.c(d)) {
+            $$1 |= a(ha.e);
+         }
+
+         return $$1;
+      });
+   }
+
+   @Override
+   public eac c_(dez $$0) {
+      return $$0.c(e) ? ead.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   public boolean a(dez $$0, cor $$1, gu $$2, eas $$3) {
+      return false;
+   }
+
+   @Override
+   public dez a(dez $$0, cyx $$1) {
+      switch ($$1) {
+         case c:
+            return $$0.a(a, $$0.c(c)).a(b, $$0.c(d)).a(c, $$0.c(a)).a(d, $$0.c(b));
+         case d:
+            return $$0.a(a, $$0.c(b)).a(b, $$0.c(c)).a(c, $$0.c(d)).a(d, $$0.c(a));
+         case b:
+            return $$0.a(a, $$0.c(d)).a(b, $$0.c(a)).a(c, $$0.c(b)).a(d, $$0.c(c));
+         default:
+            return $$0;
       }
-
-      return $$3;
    }
 
    @Override
-   public boolean a(dfa $$0, cpp $$1, gu $$2) {
-      return a($$1, $$2) && super.a($$0, $$1, $$2);
-   }
-
-   protected static boolean a(cpp $$0, gu $$1) {
-      return $$0.b($$1, 0) >= 8;
-   }
-
-   @Override
-   public void a(dfa $$0, cpm $$1, gu $$2, bii $$3) {
-      if ($$3 instanceof bzg && $$1.X().b(cpi.c)) {
-         $$1.a($$2, true, $$3);
+   public dez a(dez $$0, cxg $$1) {
+      switch ($$1) {
+         case b:
+            return $$0.a(a, $$0.c(c)).a(c, $$0.c(a));
+         case c:
+            return $$0.a(b, $$0.c(d)).a(d, $$0.c(b));
+         default:
+            return super.a($$0, $$1);
       }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected cpl c() {
-      return cjb.oH;
-   }
-
-   @Override
-   public ciy a(cos $$0, gu $$1, dfa $$2) {
-      return new ciy(this.c());
-   }
-
-   @Override
-   public boolean a(cpp $$0, gu $$1, dfa $$2) {
-      return !this.h($$2);
-   }
-
-   @Override
-   public boolean a(cpm $$0, aru $$1, gu $$2, dfa $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(akk $$0, aru $$1, gu $$2, dfa $$3) {
-      this.a((cpm)$$0, $$2, $$3);
-   }
-
-   @Override
-   protected void a(dfb.a<csm, dfa> $$0) {
-      $$0.a(d);
    }
 }

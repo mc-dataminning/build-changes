@@ -1,100 +1,68 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.google.gson.JsonArray;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
-import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Stream;
 
-public class fpa implements gax {
-   private final dfb<csm, dfa> a;
-   private final List<fpc> b;
+public class fpa {
+   private final aer a;
+   private final List<fpa.b> b;
 
-   public fpa(dfb<csm, dfa> $$0, List<fpc> $$1) {
+   public fpa(aer $$0, List<fpa.b> $$1) {
       this.a = $$0;
-      this.b = $$1;
+      this.b = ImmutableList.copyOf($$1);
    }
 
-   public List<fpc> a() {
-      return this.b;
+   public aer a() {
+      return this.a;
    }
 
-   public Set<fov> b() {
-      Set<fov> $$0 = Sets.newHashSet();
-
-      for (fpc $$1 : this.b) {
-         $$0.add($$1.a());
-      }
-
-      return $$0;
+   public Stream<fpa.b> b() {
+      return this.b.stream();
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof fpa $$1) ? false : Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.a, this.b);
-   }
-
-   @Override
-   public Collection<aer> f() {
-      return this.a().stream().flatMap($$0 -> $$0.a().f().stream()).collect(Collectors.toSet());
-   }
-
-   @Override
-   public void a(Function<aer, gax> $$0) {
-      this.a().forEach($$1 -> $$1.a().a($$0));
-   }
-
-   @Nullable
-   @Override
-   public gam a(gaq $$0, Function<gap, fyl> $$1, gau $$2, aer $$3) {
-      gav.a $$4 = new gav.a();
-
-      for (fpc $$5 : this.a()) {
-         gam $$6 = $$5.a().a($$0, $$1, $$2, $$3);
-         if ($$6 != null) {
-            $$4.a($$5.a(this.a), $$6);
-         }
-      }
-
-      return $$4.a();
-   }
-
-   public static class a implements JsonDeserializer<fpa> {
-      private final fon.a a;
-
-      public a(fon.a $$0) {
-         this.a = $$0;
-      }
-
+   protected static class a implements JsonDeserializer<fpa> {
       public fpa a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return new fpa(this.a.a(), this.a($$2, $$0.getAsJsonArray()));
+         JsonObject $$3 = $$0.getAsJsonObject();
+         aer $$4 = new aer(arg.i($$3, "model"));
+         List<fpa.b> $$5 = this.a($$3);
+         return new fpa($$4, $$5);
       }
 
-      private List<fpc> a(JsonDeserializationContext $$0, JsonArray $$1) {
-         List<fpc> $$2 = Lists.newArrayList();
+      protected List<fpa.b> a(JsonObject $$0) {
+         Map<aer, Float> $$1 = Maps.newLinkedHashMap();
+         JsonObject $$2 = arg.u($$0, "predicate");
 
-         for (JsonElement $$3 : $$1) {
-            $$2.add((fpc)$$0.deserialize($$3, fpc.class));
+         for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
+            $$1.put(new aer($$3.getKey()), arg.e($$3.getValue(), $$3.getKey()));
          }
 
-         return $$2;
+         return $$1.entrySet().stream().map($$0x -> new fpa.b((aer)$$0x.getKey(), (Float)$$0x.getValue())).collect(ImmutableList.toImmutableList());
+      }
+   }
+
+   public static class b {
+      private final aer a;
+      private final float b;
+
+      public b(aer $$0, float $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public aer a() {
+         return this.a;
+      }
+
+      public float b() {
+         return this.b;
       }
    }
 }

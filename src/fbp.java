@@ -1,116 +1,136 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 import java.util.List;
-import java.util.Set;
 
-public class fbp {
-   private final hs a;
-   private final List<cmb<?>> b;
-   private final boolean c;
-   private final Set<cmb<?>> d = Sets.newHashSet();
-   private final Set<cmb<?>> e = Sets.newHashSet();
-   private final Set<cmb<?>> f = Sets.newHashSet();
+public class fbp extends ese {
+   private static final aer b = new aer("recipe_book/slot_many_craftable");
+   private static final aer c = new aer("recipe_book/slot_craftable");
+   private static final aer d = new aer("recipe_book/slot_many_uncraftable");
+   private static final aer e = new aer("recipe_book/slot_uncraftable");
+   private static final float l = 15.0F;
+   private static final int m = 25;
+   public static final int a = 30;
+   private static final tf n = tf.c("gui.recipebook.moreRecipes");
+   private cfn<?> o;
+   private aoz p;
+   private fbq q;
+   private float s;
+   private float t;
+   private int u;
 
-   public fbp(hs $$0, List<cmb<?>> $$1) {
-      this.a = $$0;
-      this.b = ImmutableList.copyOf($$1);
-      if ($$1.size() <= 1) {
-         this.c = true;
-      } else {
-         this.c = a($$0, $$1);
-      }
+   public fbp() {
+      super(0, 0, 25, 25, te.a);
    }
 
-   private static boolean a(hs $$0, List<cmb<?>> $$1) {
-      int $$2 = $$1.size();
-      ciy $$3 = $$1.get(0).a($$0);
+   public void a(fbq $$0, fbn $$1) {
+      this.q = $$0;
+      this.o = (cfn<?>)$$1.d().s.bQ;
+      this.p = $$1.e();
+      List<cma<?>> $$2 = $$0.a(this.p.a(this.o));
 
-      for (int $$4 = 1; $$4 < $$2; $$4++) {
-         ciy $$5 = $$1.get($$4).a($$0);
-         if (!ciy.c($$3, $$5)) {
-            return false;
+      for (cma<?> $$3 : $$2) {
+         if (this.p.d($$3)) {
+            $$1.a($$2);
+            this.t = 15.0F;
+            break;
          }
       }
-
-      return true;
    }
 
-   public hs a() {
-      return this.a;
+   public fbq a() {
+      return this.q;
+   }
+
+   @Override
+   public void b(erv $$0, int $$1, int $$2, float $$3) {
+      if (!eya.p()) {
+         this.s += $$3;
+      }
+
+      aer $$4;
+      if (this.q.c()) {
+         if (this.q.a(this.p.a(this.o)).size() > 1) {
+            $$4 = b;
+         } else {
+            $$4 = c;
+         }
+      } else if (this.q.a(this.p.a(this.o)).size() > 1) {
+         $$4 = d;
+      } else {
+         $$4 = e;
+      }
+
+      boolean $$8 = this.t > 0.0F;
+      if ($$8) {
+         float $$9 = 1.0F + 0.1F * (float)Math.sin((double)(this.t / 15.0F * (float) Math.PI));
+         $$0.c().a();
+         $$0.c().a((float)(this.r() + 8), (float)(this.t() + 12), 0.0F);
+         $$0.c().b($$9, $$9, 1.0F);
+         $$0.c().a((float)(-(this.r() + 8)), (float)(-(this.t() + 12)), 0.0F);
+         this.t -= $$3;
+      }
+
+      $$0.a($$4, this.r(), this.t(), this.f, this.g);
+      List<cma<?>> $$10 = this.g();
+      this.u = arp.d(this.s / 30.0F) % $$10.size();
+      cix $$11 = $$10.get(this.u).a(this.q.a());
+      int $$12 = 4;
+      if (this.q.f() && this.g().size() > 1) {
+         $$0.a($$11, this.r() + $$12 + 1, this.t() + $$12 + 1, 0, 10);
+         $$12--;
+      }
+
+      $$0.b($$11, this.r() + $$12, this.t() + $$12);
+      if ($$8) {
+         $$0.c().b();
+      }
+   }
+
+   private List<cma<?>> g() {
+      List<cma<?>> $$0 = this.q.b(true);
+      if (!this.p.a(this.o)) {
+         $$0.addAll(this.q.b(false));
+      }
+
+      return $$0;
    }
 
    public boolean b() {
-      return !this.f.isEmpty();
+      return this.g().size() == 1;
    }
 
-   public void a(aoz $$0) {
-      for (cmb<?> $$1 : this.b) {
-         if ($$0.b($$1)) {
-            this.f.add($$1);
-         }
-      }
+   public cma<?> e() {
+      List<cma<?>> $$0 = this.g();
+      return $$0.get(this.u);
    }
 
-   public void a(cbr $$0, int $$1, int $$2, aoz $$3) {
-      for (cmb<?> $$4 : this.b) {
-         boolean $$5 = $$4.a($$1, $$2) && $$3.b($$4);
-         if ($$5) {
-            this.e.add($$4);
-         } else {
-            this.e.remove($$4);
-         }
-
-         if ($$5 && $$0.a($$4, null)) {
-            this.d.add($$4);
-         } else {
-            this.d.remove($$4);
-         }
-      }
-   }
-
-   public boolean a(cmb<?> $$0) {
-      return this.d.contains($$0);
-   }
-
-   public boolean c() {
-      return !this.d.isEmpty();
-   }
-
-   public boolean d() {
-      return !this.e.isEmpty();
-   }
-
-   public List<cmb<?>> e() {
-      return this.b;
-   }
-
-   public List<cmb<?>> a(boolean $$0) {
-      List<cmb<?>> $$1 = Lists.newArrayList();
-      Set<cmb<?>> $$2 = $$0 ? this.d : this.e;
-
-      for (cmb<?> $$3 : this.b) {
-         if ($$2.contains($$3)) {
-            $$1.add($$3);
-         }
+   public List<tf> f() {
+      cix $$0 = this.g().get(this.u).a(this.q.a());
+      List<tf> $$1 = Lists.newArrayList(eya.a(eql.O(), $$0));
+      if (this.q.a(this.p.a(this.o)).size() > 1) {
+         $$1.add(n);
       }
 
       return $$1;
    }
 
-   public List<cmb<?>> b(boolean $$0) {
-      List<cmb<?>> $$1 = Lists.newArrayList();
-
-      for (cmb<?> $$2 : this.b) {
-         if (this.e.contains($$2) && this.d.contains($$2) == $$0) {
-            $$1.add($$2);
-         }
+   @Override
+   public void a(evy $$0) {
+      cix $$1 = this.g().get(this.u).a(this.q.a());
+      $$0.a(evx.a, tf.a("narration.recipe", $$1.y()));
+      if (this.q.a(this.p.a(this.o)).size() > 1) {
+         $$0.a(evx.d, tf.c("narration.button.usage.hovered"), tf.c("narration.recipe.usage.more"));
+      } else {
+         $$0.a(evx.d, tf.c("narration.button.usage.hovered"));
       }
-
-      return $$1;
    }
 
-   public boolean f() {
-      return this.c;
+   @Override
+   public int l() {
+      return 25;
+   }
+
+   @Override
+   protected boolean c(int $$0) {
+      return $$0 == 0 || $$0 == 1;
    }
 }

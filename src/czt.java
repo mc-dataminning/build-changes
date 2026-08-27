@@ -1,41 +1,71 @@
-import javax.annotation.Nullable;
+public class czt extends csl {
+   public static final int a = 2;
+   public static final dfz b = dfp.aE;
+   private static final int c = 24000;
+   private static final int d = 12000;
+   private static final int e = 300;
+   private static final ehw f = csl.a(1.0, 0.0, 2.0, 15.0, 16.0, 14.0);
 
-public class czt extends crh {
-   protected czt(dez.d $$0) {
+   public czt(dey.d $$0) {
       super($$0);
+      this.k(this.C.b().a(b, Integer.valueOf(0)));
    }
 
    @Override
-   public dcm a(gu $$0, dfa $$1) {
-      return new ddx($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dcm> dcn<T> a(cpm $$0, dfa $$1, dco<T> $$2) {
-      return a($$0, $$2, dco.B);
+   protected void a(dfa.a<csl, dez> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   protected void a(cpm $$0, gu $$1, cbn $$2) {
-      dcm $$3 = $$0.c_($$1);
-      if ($$3 instanceof ddx) {
-         $$2.a((bgt)$$3);
-         $$2.a(apg.at);
-      }
+   public ehw a(dez $$0, cor $$1, gu $$2, ehi $$3) {
+      return f;
+   }
+
+   public int h(dez $$0) {
+      return $$0.c(b);
+   }
+
+   private boolean n(dez $$0) {
+      return this.h($$0) == 2;
    }
 
    @Override
-   public void a(dfa $$0, cpm $$1, gu $$2, aru $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, aow.wx, aox.e, 1.0F, 1.0F, false);
+   public void a(dez $$0, akk $$1, gu $$2, aru $$3) {
+      if (!this.n($$0)) {
+         $$1.a(null, $$2, aow.wL, aox.e, 0.7F, 0.9F + $$3.i() * 0.2F);
+         $$1.a($$2, $$0.a(b, Integer.valueOf(this.h($$0) + 1)), 2);
+      } else {
+         $$1.a(null, $$2, aow.wM, aox.e, 0.7F, 0.9F + $$3.i() * 0.2F);
+         $$1.b($$2, false);
+         bwv $$4 = bim.aN.a((cpl)$$1);
+         if ($$4 != null) {
+            ehd $$5 = $$2.b();
+            $$4.a(true);
+            $$4.b($$5.a(), $$5.b(), $$5.c(), arp.g($$1.z.i() * 360.0F), 0.0F);
+            $$1.b($$4);
          }
-
-         $$1.a(iv.Z, $$4, $$5 + 1.1, $$6, 0.0, 0.0, 0.0);
       }
+   }
+
+   @Override
+   public void b(dez $$0, cpl $$1, gu $$2, dez $$3, boolean $$4) {
+      boolean $$5 = a($$1, $$2);
+      if (!$$1.r_() && $$5) {
+         $$1.c(3009, $$2, 0);
+      }
+
+      int $$6 = $$5 ? 12000 : 24000;
+      int $$7 = $$6 / 3;
+      $$1.a(djj.i, $$2, djj.a.a($$0));
+      $$1.a($$2, this, $$7 + $$1.z.a(300));
+   }
+
+   @Override
+   public boolean a(dez $$0, cor $$1, gu $$2, eas $$3) {
+      return false;
+   }
+
+   public static boolean a(cor $$0, gu $$1) {
+      return $$0.a_($$1.d()).a(apl.ck);
    }
 }

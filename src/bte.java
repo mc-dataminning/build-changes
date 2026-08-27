@@ -1,47 +1,40 @@
-import java.util.Set;
+import java.util.function.Supplier;
 
-public abstract class bte<E extends biy> {
-   private static final aru a = aru.b();
-   private static final int c = 20;
-   protected static final int b = 16;
-   private static final btl d = btl.b().a(16.0);
-   private static final btl e = btl.b().a(16.0).e();
-   private static final btl f = btl.a().a(16.0);
-   private static final btl g = btl.a().a(16.0).e();
-   private static final btl h = btl.a().a(16.0).d();
-   private static final btl i = btl.a().a(16.0).d().e();
-   private final int j;
-   private long k;
+public class bte<U extends btd<?>> {
+   public static final bte<bso> a = a("dummy", bso::new);
+   public static final bte<bsv> b = a("nearest_items", bsv::new);
+   public static final bte<bsw<biy>> c = a("nearest_living_entities", bsw::new);
+   public static final bte<bta> d = a("nearest_players", bta::new);
+   public static final bte<bsu> e = a("nearest_bed", bsu::new);
+   public static final bte<bss> f = a("hurt_by", bss::new);
+   public static final bte<bth> g = a("villager_hostiles", bth::new);
+   public static final bte<btg> h = a("villager_babies", btg::new);
+   public static final bte<btb> i = a("secondary_pois", btb::new);
+   public static final bte<bsq> j = a("golem_detected", bsq::new);
+   public static final bte<bsz> k = a("piglin_specific_sensor", bsz::new);
+   public static final bte<bsy> l = a("piglin_brute_specific_sensor", bsy::new);
+   public static final bte<bsr> m = a("hoglin_specific_sensor", bsr::new);
+   public static final bte<bsm> n = a("nearest_adult", bsm::new);
+   public static final bte<bsn> o = a("axolotl_attackables", bsn::new);
+   public static final bte<btf> p = a("axolotl_temptations", () -> new btf(bvr.a()));
+   public static final bte<btf> q = a("goat_temptations", () -> new btf(bwf.a()));
+   public static final bte<btf> r = a("frog_temptations", () -> new btf(bvz.a()));
+   public static final bte<btf> s = a("camel_temptations", () -> new btf(bvw.b()));
+   public static final bte<bsp> t = a("frog_attackables", bsp::new);
+   public static final bte<bst> u = a("is_in_water", bst::new);
+   public static final bte<bti> v = a("warden_entity_sensor", bti::new);
+   public static final bte<btf> w = a("sniffer_temptations", () -> new btf(bww.a()));
+   private final Supplier<U> x;
 
-   public bte(int $$0) {
-      this.j = $$0;
-      this.k = (long)a.a($$0);
+   private bte(Supplier<U> $$0) {
+      this.x = $$0;
    }
 
-   public bte() {
-      this(20);
+   public U a() {
+      return this.x.get();
    }
 
-   public final void b(akk $$0, E $$1) {
-      if (--this.k <= 0L) {
-         this.k = (long)this.j;
-         this.a($$0, $$1);
-      }
-   }
-
-   protected abstract void a(akk var1, E var2);
-
-   public abstract Set<bsa<?>> a();
-
-   public static boolean b(biy $$0, biy $$1) {
-      return $$0.dM().b(bsa.o, $$1) ? e.a($$0, $$1) : d.a($$0, $$1);
-   }
-
-   public static boolean c(biy $$0, biy $$1) {
-      return $$0.dM().b(bsa.o, $$1) ? g.a($$0, $$1) : f.a($$0, $$1);
-   }
-
-   public static boolean d(biy $$0, biy $$1) {
-      return $$0.dM().b(bsa.o, $$1) ? i.a($$0, $$1) : h.a($$0, $$1);
+   private static <U extends btd<?>> bte<U> a(String $$0, Supplier<U> $$1) {
+      return hr.a(jb.D, new aer($$0), new bte<>($$1));
    }
 }

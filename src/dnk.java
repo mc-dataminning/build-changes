@@ -1,40 +1,27 @@
 import com.mojang.serialization.Codec;
 
-public class dnk extends dnn<dpq> {
-   public dnk(Codec<dpq> $$0) {
+public class dnk extends dnm<dpx> {
+   public dnk(Codec<dpx> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dnp<dpq> $$0) {
-      gu $$1 = $$0.e();
-      cqg $$2 = $$0.b();
-      dpq $$3 = $$0.f();
+   public boolean a(dno<dpx> $$0) {
+      cqf $$1 = $$0.b();
+      aru $$2 = $$0.d();
+      gu $$3 = $$0.e();
+      float $$4 = (float)$$2.a(3) + 4.0F;
 
-      for (gu $$4 : gu.a($$1.b(-1, -2, -1), $$1.b(1, 2, 1))) {
-         boolean $$5 = $$4.u() == $$1.u();
-         boolean $$6 = $$4.v() == $$1.v();
-         boolean $$7 = $$4.w() == $$1.w();
-         boolean $$8 = Math.abs($$4.v() - $$1.v()) == 2;
-         if ($$5 && $$6 && $$7) {
-            gu $$9 = $$4.i();
-            this.a($$2, $$9, csn.kF.n());
-            $$3.b().ifPresent($$3x -> {
-               dcm $$4x = $$2.c_($$9);
-               if ($$4x instanceof dea $$5x) {
-                  $$5x.a($$3x, $$3.c());
-                  $$4x.e();
+      for (int $$5 = 0; $$4 > 0.5F; $$5--) {
+         for (int $$6 = arp.d(-$$4); $$6 <= arp.f($$4); $$6++) {
+            for (int $$7 = arp.d(-$$4); $$7 <= arp.f($$4); $$7++) {
+               if ((float)($$6 * $$6 + $$7 * $$7) <= ($$4 + 1.0F) * ($$4 + 1.0F)) {
+                  this.a($$1, $$3.b($$6, $$5, $$7), csm.fz.n());
                }
-            });
-         } else if ($$6) {
-            this.a($$2, $$4, csn.a.n());
-         } else if ($$8 && $$5 && $$7) {
-            this.a($$2, $$4, csn.F.n());
-         } else if (($$5 || $$7) && !$$8) {
-            this.a($$2, $$4, csn.F.n());
-         } else {
-            this.a($$2, $$4, csn.a.n());
+            }
          }
+
+         $$4 -= (float)$$2.a(2) + 0.5F;
       }
 
       return true;

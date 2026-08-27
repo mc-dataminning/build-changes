@@ -10,17 +10,17 @@ public class qi {
    private final Consumer<pq> g;
    private final int h;
    private final long i;
-   private final cyy j;
+   private final cyx j;
 
    public qi(String $$0, String $$1, String $$2, int $$3, long $$4, boolean $$5, Consumer<pq> $$6) {
-      this($$0, $$1, $$2, cyy.a, $$3, $$4, $$5, 1, 1, $$6);
+      this($$0, $$1, $$2, cyx.a, $$3, $$4, $$5, 1, 1, $$6);
    }
 
-   public qi(String $$0, String $$1, String $$2, cyy $$3, int $$4, long $$5, boolean $$6, Consumer<pq> $$7) {
+   public qi(String $$0, String $$1, String $$2, cyx $$3, int $$4, long $$5, boolean $$6, Consumer<pq> $$7) {
       this($$0, $$1, $$2, $$3, $$4, $$5, $$6, 1, 1, $$7);
    }
 
-   public qi(String $$0, String $$1, String $$2, cyy $$3, int $$4, long $$5, boolean $$6, int $$7, int $$8, Consumer<pq> $$9) {
+   public qi(String $$0, String $$1, String $$2, cyx $$3, int $$4, long $$5, boolean $$6, int $$7, int $$8, Consumer<pq> $$9) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
@@ -66,7 +66,7 @@ public class qi {
       return this.i;
    }
 
-   public cyy g() {
+   public cyx g() {
       return this.j;
    }
 

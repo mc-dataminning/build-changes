@@ -1,348 +1,735 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Suppliers;
-import com.google.common.collect.Sets;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.text.DecimalFormat;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList.Builder;
+import it.unimi.dsi.fastutil.longs.Long2IntMap;
+import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
+import java.util.HashMap;
 import java.util.List;
-import java.util.OptionalInt;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import java.util.Map;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableObject;
 
-public final class dkm extends dgx {
-   public static final Codec<dkm> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(cqo.a.fieldOf("biome_source").forGetter($$0x -> $$0x.b), dko.b.fieldOf("settings").forGetter($$0x -> $$0x.e))
-            .apply($$0, $$0.stable(dkm::new))
-   );
-   private static final dfa d = csn.a.n();
-   private final he<dko> e;
-   private final Supplier<djv.a> f;
+public class dkm implements dkb.a, dkb.b {
+   private final dkq a;
+   final int b;
+   final int c;
+   final int d;
+   private final int e;
+   private final int f;
+   final int g;
+   final int h;
+   final List<dkm.i> i;
+   final List<dkm.e> j;
+   private final Map<dkb, dkb> k = new HashMap<>();
+   private final Long2IntMap l = new Long2IntOpenHashMap();
+   private final dju m;
+   private final dkb n;
+   private final dkm.c o;
+   private final dlk p;
+   private final dkm.g q;
+   private final dkm.g r;
+   private final dkc.c s;
+   private long t = cos.a;
+   private dlk.a u = new dlk.a(1.0, 0.0);
+   final int v;
+   final int w;
+   final int x;
+   boolean y;
+   boolean z;
+   private int A;
+   int B;
+   private int C;
+   int D;
+   int E;
+   int F;
+   long G;
+   long H;
+   int I;
+   private final dkb.a J = new dkb.a() {
+      @Override
+      public dkb.b a(int $$0) {
+         dkm.this.B = ($$0 + dkm.this.d) * dkm.this.x;
+         dkm.this.G++;
+         dkm.this.E = 0;
+         dkm.this.I = $$0;
+         return dkm.this;
+      }
 
-   public dkm(cqo $$0, he<dko> $$1) {
-      super($$0);
-      this.e = $$1;
-      this.f = Suppliers.memoize(() -> a($$1.a()));
+      @Override
+      public void a(double[] $$0, dkb $$1) {
+         for (int $$2 = 0; $$2 < dkm.this.c + 1; $$2++) {
+            dkm.this.B = ($$2 + dkm.this.d) * dkm.this.x;
+            dkm.this.G++;
+            dkm.this.E = 0;
+            dkm.this.I = $$2;
+            $$0[$$2] = $$1.a(dkm.this);
+         }
+      }
+   };
+
+   public static dkm a(dgv $$0, dkw $$1, dkc.c $$2, dkn $$3, dju.a $$4, dlk $$5) {
+      dkq $$6 = $$3.f().a($$0);
+      cos $$7 = $$0.f();
+      int $$8 = 16 / $$6.b();
+      return new dkm($$8, $$1, $$7.d(), $$7.e(), $$6, $$2, $$3, $$4, $$5);
    }
 
-   private static djv.a a(dko $$0) {
-      djv.b $$1 = new djv.b(-54, csn.H.n());
-      int $$2 = $$0.l();
-      djv.b $$3 = new djv.b($$2, $$0.h());
-      djv.b $$4 = new djv.b(dij.e * 2, csn.a.n());
-      return ($$4x, $$5, $$6) -> $$5 < Math.min(-54, $$2) ? $$1 : $$3;
-   }
+   public dkm(int $$0, dkw $$1, int $$2, int $$3, dkq $$4, dkc.c $$5, dkn $$6, dju.a $$7, dlk $$8) {
+      this.a = $$4;
+      this.w = $$4.b();
+      this.x = $$4.a();
+      this.b = $$0;
+      this.c = arp.a($$4.d(), this.x);
+      this.d = arp.a($$4.c(), this.x);
+      this.e = Math.floorDiv($$2, this.w);
+      this.f = Math.floorDiv($$3, this.w);
+      this.i = Lists.newArrayList();
+      this.j = Lists.newArrayList();
+      this.g = hq.a($$2);
+      this.h = hq.a($$3);
+      this.v = hq.a($$0 * this.w);
+      this.p = $$8;
+      this.s = $$5;
+      this.q = new dkm.g(new dkm.a(), false);
+      this.r = new dkm.g(new dkm.b(), false);
 
-   @Override
-   public CompletableFuture<dgw> a(Executor $$0, dkx $$1, dll $$2, cqe $$3, dgw $$4) {
-      return CompletableFuture.supplyAsync(ac.a("init_biomes", () -> {
-         this.a($$2, $$1, $$3, $$4);
-         return $$4;
-      }), ac.f());
-   }
+      for (int $$9 = 0; $$9 <= this.v; $$9++) {
+         int $$10 = this.g + $$9;
+         int $$11 = hq.c($$10);
 
-   private void a(dll $$0, dkx $$1, cqe $$2, dgw $$3) {
-      dkn $$4 = $$3.a($$3x -> this.a($$3x, $$2, $$0, $$1));
-      cqn $$5 = djx.a($$0.a(this.b), $$3);
-      $$3.a($$5, $$4.a($$1.a(), this.e.a().k()));
-   }
+         for (int $$12 = 0; $$12 <= this.v; $$12++) {
+            int $$13 = this.h + $$12;
+            int $$14 = hq.c($$13);
+            dlk.a $$15 = $$8.a($$11, $$14);
+            this.q.f[$$9][$$12] = $$15.a();
+            this.r.f[$$9][$$12] = $$15.b();
+         }
+      }
 
-   private dkn a(dgw $$0, cqe $$1, dll $$2, dkx $$3) {
-      return dkn.a($$0, $$3, djw.a($$1, $$0.f()), this.e.a(), this.f.get(), $$2);
-   }
-
-   @Override
-   protected Codec<? extends dgx> a() {
-      return c;
-   }
-
-   public he<dko> g() {
-      return this.e;
-   }
-
-   public boolean a(aeq<dko> $$0) {
-      return this.e.a($$0);
-   }
-
-   @Override
-   public int a(int $$0, int $$1, dkj.a $$2, cpo $$3, dkx $$4) {
-      return this.a($$3, $$4, $$0, $$1, null, $$2.e()).orElse($$3.C_());
-   }
-
-   @Override
-   public cpy a(int $$0, int $$1, cpo $$2, dkx $$3) {
-      MutableObject<cpy> $$4 = new MutableObject();
-      this.a($$2, $$3, $$0, $$1, $$4, null);
-      return (cpy)$$4.getValue();
-   }
-
-   @Override
-   public void a(List<String> $$0, dkx $$1, gu $$2) {
-      DecimalFormat $$3 = new DecimalFormat("0.000");
-      dkp $$4 = $$1.a();
-      dkc.e $$5 = new dkc.e($$2.u(), $$2.v(), $$2.w());
-      double $$6 = $$4.j().a($$5);
-      $$0.add(
-         "NoiseRouter T: "
-            + $$3.format($$4.e().a($$5))
-            + " V: "
-            + $$3.format($$4.f().a($$5))
-            + " C: "
-            + $$3.format($$4.g().a($$5))
-            + " E: "
-            + $$3.format($$4.h().a($$5))
-            + " D: "
-            + $$3.format($$4.i().a($$5))
-            + " W: "
-            + $$3.format($$6)
-            + " PV: "
-            + $$3.format((double)dkq.a((float)$$6))
-            + " AS: "
-            + $$3.format($$4.k().a($$5))
-            + " N: "
-            + $$3.format($$4.l().a($$5))
-      );
-   }
-
-   private OptionalInt a(cpo $$0, dkx $$1, int $$2, int $$3, @Nullable MutableObject<cpy> $$4, @Nullable Predicate<dfa> $$5) {
-      dkr $$6 = this.e.a().f().a($$0);
-      int $$7 = $$6.a();
-      int $$8 = $$6.c();
-      int $$9 = arp.a($$8, $$7);
-      int $$10 = arp.a($$6.d(), $$7);
-      if ($$10 <= 0) {
-         return OptionalInt.empty();
+      dko $$16 = $$1.a();
+      dko $$17 = $$16.a(this::a);
+      if (!$$6.b()) {
+         this.m = dju.a($$7);
       } else {
-         dfa[] $$11;
-         if ($$4 == null) {
-            $$11 = null;
+         int $$18 = hx.a($$2);
+         int $$19 = hx.a($$3);
+         this.m = dju.a(this, new cos($$18, $$19), $$17, $$1.d(), $$4.c(), $$4.d(), $$7);
+      }
+
+      Builder<dkm.c> $$20 = ImmutableList.builder();
+      dkb $$21 = dkc.e(dkc.a($$17.l(), dkc.b.a)).a(this::a);
+      $$20.add((dkm.c)$$1x -> this.m.a($$1x, $$21.a($$1x)));
+      if ($$6.c()) {
+         $$20.add(dks.a($$17.m(), $$17.n(), $$17.o(), $$1.e()));
+      }
+
+      this.o = new dtm($$20.build());
+      this.n = $$17.k();
+   }
+
+   protected cqs.f a(dko $$0, List<cqs.d> $$1) {
+      return new cqs.f($$0.e().a(this::a), $$0.f().a(this::a), $$0.g().a(this::a), $$0.h().a(this::a), $$0.i().a(this::a), $$0.j().a(this::a), $$1);
+   }
+
+   @Nullable
+   protected dez e() {
+      return this.o.calculate(this);
+   }
+
+   @Override
+   public int a() {
+      return this.A + this.D;
+   }
+
+   @Override
+   public int b() {
+      return this.B + this.E;
+   }
+
+   @Override
+   public int c() {
+      return this.C + this.F;
+   }
+
+   public int a(int $$0, int $$1) {
+      int $$2 = hq.c(hq.a($$0));
+      int $$3 = hq.c(hq.a($$1));
+      return this.l.computeIfAbsent(aka.a($$2, $$3), this::a);
+   }
+
+   private int a(long $$0) {
+      int $$1 = aka.a($$0);
+      int $$2 = aka.b($$0);
+      int $$3 = this.a.c();
+
+      for (int $$4 = $$3 + this.a.d(); $$4 >= $$3; $$4 -= this.x) {
+         if (this.n.a(new dkb.e($$1, $$4, $$2)) > 0.390625) {
+            return $$4;
+         }
+      }
+
+      return Integer.MAX_VALUE;
+   }
+
+   @Override
+   public dlk d() {
+      return this.p;
+   }
+
+   private void a(boolean $$0, int $$1) {
+      this.A = $$1 * this.w;
+      this.D = 0;
+
+      for (int $$2 = 0; $$2 < this.b + 1; $$2++) {
+         int $$3 = this.f + $$2;
+         this.C = $$3 * this.w;
+         this.F = 0;
+         this.H++;
+
+         for (dkm.i $$4 : this.i) {
+            double[] $$5 = ($$0 ? $$4.e : $$4.f)[$$2];
+            $$4.a($$5, this.J);
+         }
+      }
+
+      this.H++;
+   }
+
+   public void f() {
+      if (this.y) {
+         throw new IllegalStateException("Staring interpolation twice");
+      } else {
+         this.y = true;
+         this.G = 0L;
+         this.a(true, this.e);
+      }
+   }
+
+   public void b(int $$0) {
+      this.a(false, this.e + $$0 + 1);
+      this.A = (this.e + $$0) * this.w;
+   }
+
+   public dkm c(int $$0) {
+      int $$1 = Math.floorMod($$0, this.w);
+      int $$2 = Math.floorDiv($$0, this.w);
+      int $$3 = Math.floorMod($$2, this.w);
+      int $$4 = this.x - 1 - Math.floorDiv($$2, this.w);
+      this.D = $$3;
+      this.E = $$4;
+      this.F = $$1;
+      this.I = $$0;
+      return this;
+   }
+
+   @Override
+   public void a(double[] $$0, dkb $$1) {
+      this.I = 0;
+
+      for (int $$2 = this.x - 1; $$2 >= 0; $$2--) {
+         this.E = $$2;
+
+         for (int $$3 = 0; $$3 < this.w; $$3++) {
+            this.D = $$3;
+
+            for (int $$4 = 0; $$4 < this.w; $$4++) {
+               this.F = $$4;
+               $$0[this.I++] = $$1.a(this);
+            }
+         }
+      }
+   }
+
+   public void b(int $$0, int $$1) {
+      this.i.forEach($$2x -> $$2x.b($$0, $$1));
+      this.z = true;
+      this.B = ($$0 + this.d) * this.x;
+      this.C = (this.f + $$1) * this.w;
+      this.H++;
+
+      for (dkm.e $$2 : this.j) {
+         $$2.e.a($$2.f, this);
+      }
+
+      this.H++;
+      this.z = false;
+   }
+
+   public void a(int $$0, double $$1) {
+      this.E = $$0 - this.B;
+      this.i.forEach($$1x -> $$1x.a($$1));
+   }
+
+   public void b(int $$0, double $$1) {
+      this.D = $$0 - this.A;
+      this.i.forEach($$1x -> $$1x.b($$1));
+   }
+
+   public void c(int $$0, double $$1) {
+      this.F = $$0 - this.C;
+      this.G++;
+      this.i.forEach($$1x -> $$1x.c($$1));
+   }
+
+   public void g() {
+      if (!this.y) {
+         throw new IllegalStateException("Staring interpolation twice");
+      } else {
+         this.y = false;
+      }
+   }
+
+   public void h() {
+      this.i.forEach(dkm.i::l);
+   }
+
+   public dju i() {
+      return this.m;
+   }
+
+   protected int j() {
+      return this.w;
+   }
+
+   protected int k() {
+      return this.x;
+   }
+
+   dlk.a c(int $$0, int $$1) {
+      long $$2 = cos.c($$0, $$1);
+      if (this.t == $$2) {
+         return this.u;
+      } else {
+         this.t = $$2;
+         dlk.a $$3 = this.p.a($$0, $$1);
+         this.u = $$3;
+         return $$3;
+      }
+   }
+
+   protected dkb a(dkb $$0) {
+      return this.k.computeIfAbsent($$0, this::b);
+   }
+
+   private dkb b(dkb $$0) {
+      if ($$0 instanceof dkc.l $$1) {
+         return (dkb)(switch ($$1.j()) {
+            case a -> new dkm.i($$1.k());
+            case b -> new dkm.g($$1.k(), true);
+            case c -> new dkm.d($$1.k());
+            case d -> new dkm.f($$1.k());
+            case e -> new dkm.e($$1.k());
+         });
+      } else {
+         if (this.p != dlk.a()) {
+            if ($$0 == dkc.d.a) {
+               return this.q;
+            }
+
+            if ($$0 == dkc.f.a) {
+               return this.r;
+            }
+         }
+
+         if ($$0 == dkc.b.a) {
+            return this.s;
          } else {
-            $$11 = new dfa[$$6.d()];
-            $$4.setValue(new cpy($$8, $$11));
+            return $$0 instanceof dkc.j $$2 ? $$2.j().a() : $$0;
          }
+      }
+   }
 
-         int $$13 = $$6.b();
-         int $$14 = Math.floorDiv($$2, $$13);
-         int $$15 = Math.floorDiv($$3, $$13);
-         int $$16 = Math.floorMod($$2, $$13);
-         int $$17 = Math.floorMod($$3, $$13);
-         int $$18 = $$14 * $$13;
-         int $$19 = $$15 * $$13;
-         double $$20 = (double)$$16 / (double)$$13;
-         double $$21 = (double)$$17 / (double)$$13;
-         dkn $$22 = new dkn(1, $$1, $$18, $$19, $$6, dkd.b.a, this.e.a(), this.f.get(), dll.a());
-         $$22.f();
-         $$22.b(0);
+   class a implements dkm.h {
+      @Override
+      public dkb k() {
+         return dkc.d.a;
+      }
 
-         for (int $$23 = $$10 - 1; $$23 >= 0; $$23--) {
-            $$22.b($$23, 0);
+      @Override
+      public dkb a(dkb.f $$0) {
+         return this.k().a($$0);
+      }
 
-            for (int $$24 = $$7 - 1; $$24 >= 0; $$24--) {
-               int $$25 = ($$9 + $$23) * $$7 + $$24;
-               double $$26 = (double)$$24 / (double)$$7;
-               $$22.a($$25, $$26);
-               $$22.b($$2, $$20);
-               $$22.c($$3, $$21);
-               dfa $$27 = $$22.e();
-               dfa $$28 = $$27 == null ? this.e.a().g() : $$27;
-               if ($$11 != null) {
-                  int $$29 = $$23 * $$7 + $$24;
-                  $$11[$$29] = $$28;
-               }
+      @Override
+      public double a(dkb.b $$0) {
+         return dkm.this.c($$0.a(), $$0.c()).a();
+      }
 
-               if ($$5 != null && $$5.test($$28)) {
-                  $$22.g();
-                  return OptionalInt.of($$25 + 1);
+      @Override
+      public void a(double[] $$0, dkb.a $$1) {
+         $$1.a($$0, this);
+      }
+
+      @Override
+      public double a() {
+         return 0.0;
+      }
+
+      @Override
+      public double b() {
+         return 1.0;
+      }
+
+      @Override
+      public arj<? extends dkb> c() {
+         return dkc.d.e;
+      }
+   }
+
+   class b implements dkm.h {
+      @Override
+      public dkb k() {
+         return dkc.f.a;
+      }
+
+      @Override
+      public dkb a(dkb.f $$0) {
+         return this.k().a($$0);
+      }
+
+      @Override
+      public double a(dkb.b $$0) {
+         return dkm.this.c($$0.a(), $$0.c()).b();
+      }
+
+      @Override
+      public void a(double[] $$0, dkb.a $$1) {
+         $$1.a($$0, this);
+      }
+
+      @Override
+      public double a() {
+         return Double.NEGATIVE_INFINITY;
+      }
+
+      @Override
+      public double b() {
+         return Double.POSITIVE_INFINITY;
+      }
+
+      @Override
+      public arj<? extends dkb> c() {
+         return dkc.f.e;
+      }
+   }
+
+   @FunctionalInterface
+   public interface c {
+      @Nullable
+      dez calculate(dkb.b var1);
+   }
+
+   static class d implements dkc.m, dkm.h {
+      private final dkb a;
+      private long e = cos.a;
+      private double f;
+
+      d(dkb $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public double a(dkb.b $$0) {
+         int $$1 = $$0.a();
+         int $$2 = $$0.c();
+         long $$3 = cos.c($$1, $$2);
+         if (this.e == $$3) {
+            return this.f;
+         } else {
+            this.e = $$3;
+            double $$4 = this.a.a($$0);
+            this.f = $$4;
+            return $$4;
+         }
+      }
+
+      @Override
+      public void a(double[] $$0, dkb.a $$1) {
+         this.a.a($$0, $$1);
+      }
+
+      @Override
+      public dkb k() {
+         return this.a;
+      }
+
+      @Override
+      public dkc.l.a j() {
+         return dkc.l.a.c;
+      }
+   }
+
+   class e implements dkc.m, dkm.h {
+      final dkb e;
+      final double[] f;
+
+      e(dkb $$0) {
+         this.e = $$0;
+         this.f = new double[dkm.this.w * dkm.this.w * dkm.this.x];
+         dkm.this.j.add(this);
+      }
+
+      @Override
+      public double a(dkb.b $$0) {
+         if ($$0 != dkm.this) {
+            return this.e.a($$0);
+         } else if (!dkm.this.y) {
+            throw new IllegalStateException("Trying to sample interpolator outside the interpolation loop");
+         } else {
+            int $$1 = dkm.this.D;
+            int $$2 = dkm.this.E;
+            int $$3 = dkm.this.F;
+            return $$1 >= 0 && $$2 >= 0 && $$3 >= 0 && $$1 < dkm.this.w && $$2 < dkm.this.x && $$3 < dkm.this.w
+               ? this.f[((dkm.this.x - 1 - $$2) * dkm.this.w + $$1) * dkm.this.w + $$3]
+               : this.e.a($$0);
+         }
+      }
+
+      @Override
+      public void a(double[] $$0, dkb.a $$1) {
+         $$1.a($$0, this);
+      }
+
+      @Override
+      public dkb k() {
+         return this.e;
+      }
+
+      @Override
+      public dkc.l.a j() {
+         return dkc.l.a.e;
+      }
+   }
+
+   class f implements dkc.m, dkm.h {
+      private final dkb e;
+      private long f;
+      private long g;
+      private double h;
+      @Nullable
+      private double[] i;
+
+      f(dkb $$0) {
+         this.e = $$0;
+      }
+
+      @Override
+      public double a(dkb.b $$0) {
+         if ($$0 != dkm.this) {
+            return this.e.a($$0);
+         } else if (this.i != null && this.g == dkm.this.H) {
+            return this.i[dkm.this.I];
+         } else if (this.f == dkm.this.G) {
+            return this.h;
+         } else {
+            this.f = dkm.this.G;
+            double $$1 = this.e.a($$0);
+            this.h = $$1;
+            return $$1;
+         }
+      }
+
+      @Override
+      public void a(double[] $$0, dkb.a $$1) {
+         if (this.i != null && this.g == dkm.this.H) {
+            System.arraycopy(this.i, 0, $$0, 0, $$0.length);
+         } else {
+            this.k().a($$0, $$1);
+            if (this.i != null && this.i.length == $$0.length) {
+               System.arraycopy($$0, 0, this.i, 0, $$0.length);
+            } else {
+               this.i = (double[])$$0.clone();
+            }
+
+            this.g = dkm.this.H;
+         }
+      }
+
+      @Override
+      public dkb k() {
+         return this.e;
+      }
+
+      @Override
+      public dkc.l.a j() {
+         return dkc.l.a.d;
+      }
+   }
+
+   class g implements dkc.m, dkm.h {
+      private final dkb e;
+      final double[][] f;
+
+      g(dkb $$0, boolean $$1) {
+         this.e = $$0;
+         this.f = new double[dkm.this.v + 1][dkm.this.v + 1];
+         if ($$1) {
+            for (int $$2 = 0; $$2 <= dkm.this.v; $$2++) {
+               int $$3 = dkm.this.g + $$2;
+               int $$4 = hq.c($$3);
+
+               for (int $$5 = 0; $$5 <= dkm.this.v; $$5++) {
+                  int $$6 = dkm.this.h + $$5;
+                  int $$7 = hq.c($$6);
+                  this.f[$$2][$$5] = $$0.a(new dkb.e($$4, 0, $$7));
                }
             }
          }
+      }
 
-         $$22.g();
-         return OptionalInt.empty();
+      @Override
+      public double a(dkb.b $$0) {
+         int $$1 = hq.a($$0.a());
+         int $$2 = hq.a($$0.c());
+         int $$3 = $$1 - dkm.this.g;
+         int $$4 = $$2 - dkm.this.h;
+         int $$5 = this.f.length;
+         return $$3 >= 0 && $$4 >= 0 && $$3 < $$5 && $$4 < $$5 ? this.f[$$3][$$4] : this.e.a($$0);
+      }
+
+      @Override
+      public void a(double[] $$0, dkb.a $$1) {
+         $$1.a($$0, this);
+      }
+
+      @Override
+      public dkb k() {
+         return this.e;
+      }
+
+      @Override
+      public dkc.l.a j() {
+         return dkc.l.a.b;
       }
    }
 
-   @Override
-   public void a(akr $$0, cqe $$1, dkx $$2, dgw $$3) {
-      if (!aa.a($$3.f())) {
-         dlg $$4 = new dlg(this, $$0);
-         this.a($$3, $$4, $$2, $$1, $$0.z_(), $$0.B_().d(jc.ap), dll.a($$0));
+   interface h extends dkb {
+      dkb k();
+
+      @Override
+      default double a() {
+         return this.k().a();
+      }
+
+      @Override
+      default double b() {
+         return this.k().b();
       }
    }
 
-   @VisibleForTesting
-   public void a(dgw $$0, dlg $$1, dkx $$2, cqe $$3, cqm $$4, hr<cqk> $$5, dll $$6) {
-      dkn $$7 = $$0.a($$3x -> this.a($$3x, $$3, $$6, $$2));
-      dko $$8 = this.e.a();
-      $$2.c().a($$2, $$4, $$5, $$8.n(), $$1, $$0, $$7, $$8.j());
-   }
+   public class i implements dkc.m, dkm.h {
+      double[][] e;
+      double[][] f;
+      private final dkb g;
+      private double h;
+      private double i;
+      private double j;
+      private double k;
+      private double l;
+      private double m;
+      private double n;
+      private double o;
+      private double p;
+      private double q;
+      private double r;
+      private double s;
+      private double t;
+      private double u;
+      private double v;
 
-   @Override
-   public void a(akr $$0, long $$1, dkx $$2, cqm $$3, cqe $$4, dgw $$5, dkf.a $$6) {
-      cqm $$7 = $$3.a(($$1x, $$2x, $$3x) -> this.b.getNoiseBiome($$1x, $$2x, $$3x, $$2.b()));
-      dli $$8 = new dli(new dkk(dky.a()));
-      int $$9 = 8;
-      cot $$10 = $$5.f();
-      dkn $$11 = $$5.a($$3x -> this.a($$3x, $$4, dll.a($$0), $$2));
-      djv $$12 = $$11.i();
-      dmj $$13 = new dmj(this, $$0.B_(), $$5.z(), $$11, $$2, this.e.a().j());
-      dgv $$14 = ((dhr)$$5).b($$6);
-
-      for (int $$15 = -8; $$15 <= 8; $$15++) {
-         for (int $$16 = -8; $$16 <= 8; $$16++) {
-            cot $$17 = new cot($$10.e + $$15, $$10.f + $$16);
-            dgw $$18 = $$0.a($$17.e, $$17.f);
-            cql $$19 = $$18.a(() -> this.a(this.b.getNoiseBiome(hq.a($$17.d()), 0, hq.a($$17.e()), $$2.b())));
-            Iterable<he<dmm<?>>> $$20 = $$19.a($$6);
-            int $$21 = 0;
-
-            for (he<dmm<?>> $$22 : $$20) {
-               dmm<?> $$23 = $$22.a();
-               $$8.c($$1 + (long)$$21, $$17.e, $$17.f);
-               if ($$23.a($$8)) {
-                  $$23.a($$13, $$5, $$7::a, $$8, $$12, $$17, $$14);
-               }
-
-               $$21++;
-            }
-         }
+      i(dkb $$1) {
+         this.g = $$1;
+         this.e = this.a(dkm.this.c, dkm.this.b);
+         this.f = this.a(dkm.this.c, dkm.this.b);
+         dkm.this.i.add(this);
       }
-   }
 
-   @Override
-   public CompletableFuture<dgw> a(Executor $$0, dll $$1, dkx $$2, cqe $$3, dgw $$4) {
-      dkr $$5 = this.e.a().f().a($$4.z());
-      int $$6 = $$5.c();
-      int $$7 = arp.a($$6, $$5.a());
-      int $$8 = arp.a($$5.d(), $$5.a());
-      if ($$8 <= 0) {
-         return CompletableFuture.completedFuture($$4);
-      } else {
-         int $$9 = $$4.e($$8 * $$5.a() - 1 + $$6);
-         int $$10 = $$4.e($$6);
-         Set<dhi> $$11 = Sets.newHashSet();
+      private double[][] a(int $$0, int $$1) {
+         int $$2 = $$1 + 1;
+         int $$3 = $$0 + 1;
+         double[][] $$4 = new double[$$2][$$3];
 
-         for (int $$12 = $$9; $$12 >= $$10; $$12--) {
-            dhi $$13 = $$4.b($$12);
-            $$13.a();
-            $$11.add($$13);
-         }
-
-         return CompletableFuture.supplyAsync(ac.a("wgen_fill_noise", () -> this.a($$1, $$3, $$2, $$4, $$7, $$8)), ac.f()).whenCompleteAsync(($$1x, $$2x) -> {
-            for (dhi $$3x : $$11) {
-               $$3x.b();
-            }
-         }, $$0);
-      }
-   }
-
-   private dgw a(dll $$0, cqe $$1, dkx $$2, dgw $$3, int $$4, int $$5) {
-      dkn $$6 = $$3.a($$3x -> this.a($$3x, $$1, $$0, $$2));
-      dkj $$7 = $$3.a(dkj.a.c);
-      dkj $$8 = $$3.a(dkj.a.a);
-      cot $$9 = $$3.f();
-      int $$10 = $$9.d();
-      int $$11 = $$9.e();
-      djv $$12 = $$6.i();
-      $$6.f();
-      gu.a $$13 = new gu.a();
-      int $$14 = $$6.j();
-      int $$15 = $$6.k();
-      int $$16 = 16 / $$14;
-      int $$17 = 16 / $$14;
-
-      for (int $$18 = 0; $$18 < $$16; $$18++) {
-         $$6.b($$18);
-
-         for (int $$19 = 0; $$19 < $$17; $$19++) {
-            int $$20 = $$3.ak() - 1;
-            dhi $$21 = $$3.b($$20);
-
-            for (int $$22 = $$5 - 1; $$22 >= 0; $$22--) {
-               $$6.b($$22, $$19);
-
-               for (int $$23 = $$15 - 1; $$23 >= 0; $$23--) {
-                  int $$24 = ($$4 + $$22) * $$15 + $$23;
-                  int $$25 = $$24 & 15;
-                  int $$26 = $$3.e($$24);
-                  if ($$20 != $$26) {
-                     $$20 = $$26;
-                     $$21 = $$3.b($$26);
-                  }
-
-                  double $$27 = (double)$$23 / (double)$$15;
-                  $$6.a($$24, $$27);
-
-                  for (int $$28 = 0; $$28 < $$14; $$28++) {
-                     int $$29 = $$10 + $$18 * $$14 + $$28;
-                     int $$30 = $$29 & 15;
-                     double $$31 = (double)$$28 / (double)$$14;
-                     $$6.b($$29, $$31);
-
-                     for (int $$32 = 0; $$32 < $$14; $$32++) {
-                        int $$33 = $$11 + $$19 * $$14 + $$32;
-                        int $$34 = $$33 & 15;
-                        double $$35 = (double)$$32 / (double)$$14;
-                        $$6.c($$33, $$35);
-                        dfa $$36 = $$6.e();
-                        if ($$36 == null) {
-                           $$36 = this.e.a().g();
-                        }
-
-                        $$36 = this.a($$6, $$29, $$24, $$33, $$36);
-                        if ($$36 != d && !aa.a($$3.f())) {
-                           $$21.a($$30, $$25, $$34, $$36, false);
-                           $$7.a($$30, $$24, $$34, $$36);
-                           $$8.a($$30, $$24, $$34, $$36);
-                           if ($$12.a() && !$$36.u().c()) {
-                              $$13.d($$29, $$24, $$33);
-                              $$3.e($$13);
-                           }
-                        }
-                     }
-                  }
-               }
-            }
+         for (int $$5 = 0; $$5 < $$2; $$5++) {
+            $$4[$$5] = new double[$$3];
          }
 
-         $$6.h();
+         return $$4;
       }
 
-      $$6.g();
-      return $$3;
-   }
+      void b(int $$0, int $$1) {
+         this.h = this.e[$$1][$$0];
+         this.i = this.e[$$1 + 1][$$0];
+         this.j = this.f[$$1][$$0];
+         this.k = this.f[$$1 + 1][$$0];
+         this.l = this.e[$$1][$$0 + 1];
+         this.m = this.e[$$1 + 1][$$0 + 1];
+         this.n = this.f[$$1][$$0 + 1];
+         this.o = this.f[$$1 + 1][$$0 + 1];
+      }
 
-   private dfa a(dkn $$0, int $$1, int $$2, int $$3, dfa $$4) {
-      return $$4;
-   }
+      void a(double $$0) {
+         this.p = arp.d($$0, this.h, this.l);
+         this.q = arp.d($$0, this.j, this.n);
+         this.r = arp.d($$0, this.i, this.m);
+         this.s = arp.d($$0, this.k, this.o);
+      }
 
-   @Override
-   public int d() {
-      return this.e.a().f().d();
-   }
+      void b(double $$0) {
+         this.t = arp.d($$0, this.p, this.q);
+         this.u = arp.d($$0, this.r, this.s);
+      }
 
-   @Override
-   public int e() {
-      return this.e.a().l();
-   }
+      void c(double $$0) {
+         this.v = arp.d($$0, this.t, this.u);
+      }
 
-   @Override
-   public int f() {
-      return this.e.a().f().c();
-   }
+      @Override
+      public double a(dkb.b $$0) {
+         if ($$0 != dkm.this) {
+            return this.g.a($$0);
+         } else if (!dkm.this.y) {
+            throw new IllegalStateException("Trying to sample interpolator outside the interpolation loop");
+         } else {
+            return dkm.this.z
+               ? arp.a(
+                  (double)dkm.this.D / (double)dkm.this.w,
+                  (double)dkm.this.E / (double)dkm.this.x,
+                  (double)dkm.this.F / (double)dkm.this.w,
+                  this.h,
+                  this.j,
+                  this.l,
+                  this.n,
+                  this.i,
+                  this.k,
+                  this.m,
+                  this.o
+               )
+               : this.v;
+         }
+      }
 
-   @Override
-   public void a(akr $$0) {
-      if (!this.e.a().a()) {
-         cot $$1 = $$0.a();
-         he<cqk> $$2 = $$0.s($$1.l().h($$0.aj() - 1));
-         dli $$3 = new dli(new dkk(dky.a()));
-         $$3.a($$0.A(), $$1.d(), $$1.e());
-         cpx.a($$0, $$2, $$1, $$3);
+      @Override
+      public void a(double[] $$0, dkb.a $$1) {
+         if (dkm.this.z) {
+            $$1.a($$0, this);
+         } else {
+            this.k().a($$0, $$1);
+         }
+      }
+
+      @Override
+      public dkb k() {
+         return this.g;
+      }
+
+      private void l() {
+         double[][] $$0 = this.e;
+         this.e = this.f;
+         this.f = $$0;
+      }
+
+      @Override
+      public dkc.l.a j() {
+         return dkc.l.a.a;
       }
    }
 }

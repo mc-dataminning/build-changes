@@ -17,9 +17,9 @@ public class amt implements amz {
    private final Path b;
    private final amb c;
    private final amy d;
-   private final egu e;
+   private final egt e;
 
-   public amt(Path $$0, amb $$1, amy $$2, egu $$3) {
+   public amt(Path $$0, amb $$1, amy $$2, egt $$3) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -46,16 +46,16 @@ public class amt implements amz {
       }
    }
 
-   public static void a(Path $$0, egu $$1, boolean $$2, BiConsumer<Path, amu.c> $$3) throws IOException {
+   public static void a(Path $$0, egt $$1, boolean $$2, BiConsumer<Path, amu.c> $$3) throws IOException {
       amt.a $$4 = new amt.a($$1, $$2);
 
       try (DirectoryStream<Path> $$5 = Files.newDirectoryStream($$0)) {
          for (Path $$6 : $$5) {
             try {
-               List<egv> $$7 = new ArrayList<>();
+               List<egu> $$7 = new ArrayList<>();
                amu.c $$8 = $$4.a($$6, $$7);
                if (!$$7.isEmpty()) {
-                  a.warn("Ignoring potential pack entry: {}", egt.a($$6, $$7));
+                  a.warn("Ignoring potential pack entry: {}", egs.a($$6, $$7));
                } else if ($$8 != null) {
                   $$3.accept($$6, $$8);
                } else {
@@ -71,7 +71,7 @@ public class amt implements amz {
    static class a extends amw<amu.c> {
       private final boolean a;
 
-      protected a(egu $$0, boolean $$1) {
+      protected a(egt $$0, boolean $$1) {
          super($$0);
          this.a = $$1;
       }

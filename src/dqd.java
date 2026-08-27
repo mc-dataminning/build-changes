@@ -1,22 +1,30 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Stream;
 
-public class dqd implements dpr {
+public record dqd(int b, int c, int d, he<duc> e) implements dpq {
    public static final Codec<dqd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.apply2(dqd::new, dph.a.listOf().fieldOf("features").forGetter($$0x -> $$0x.b), dud.b.fieldOf("default").forGetter($$0x -> $$0x.c))
+      $$0 -> $$0.group(
+               aqy.j.fieldOf("tries").orElse(128).forGetter(dqd::a),
+               aqy.i.fieldOf("xz_spread").orElse(7).forGetter(dqd::b),
+               aqy.i.fieldOf("y_spread").orElse(3).forGetter(dqd::c),
+               duc.b.fieldOf("feature").forGetter(dqd::d)
+            )
+            .apply($$0, dqd::new)
    );
-   public final List<dph> b;
-   public final he<dud> c;
 
-   public dqd(List<dph> $$0, he<dud> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public int a() {
+      return this.b;
    }
 
-   @Override
-   public Stream<dna<?, ?>> e() {
-      return Stream.concat(this.b.stream().flatMap($$0 -> $$0.b.a().a()), this.c.a().a());
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public he<duc> d() {
+      return this.e;
    }
 }

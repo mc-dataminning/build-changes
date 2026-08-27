@@ -1,9 +1,9 @@
 public class acr implements ux<aaw> {
-   private final eha a;
+   private final egz a;
    private final bgp b;
    private final int c;
 
-   public acr(bgp $$0, eha $$1, int $$2) {
+   public acr(bgp $$0, egz $$1, int $$2) {
       this.b = $$0;
       this.a = $$1;
       this.c = $$2;
@@ -30,7 +30,7 @@ public class acr implements ux<aaw> {
       return this.b;
    }
 
-   public eha d() {
+   public egz d() {
       return this.a;
    }
 

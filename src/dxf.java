@@ -1,270 +1,215 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.Dynamic;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import org.slf4j.Logger;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
-public class dxf extends dvj {
-   private static final Logger h = LogUtils.getLogger();
-   private static final float i = 0.3F;
-   private static final float j = 0.07F;
-   private static final float k = 0.2F;
-   private final dxf.b l;
-   private final dxf.a m;
+public class dxf extends duy {
+   private static final String[] e = new String[]{
+      "ruined_portal/portal_1",
+      "ruined_portal/portal_2",
+      "ruined_portal/portal_3",
+      "ruined_portal/portal_4",
+      "ruined_portal/portal_5",
+      "ruined_portal/portal_6",
+      "ruined_portal/portal_7",
+      "ruined_portal/portal_8",
+      "ruined_portal/portal_9",
+      "ruined_portal/portal_10"
+   };
+   private static final String[] f = new String[]{"ruined_portal/giant_portal_1", "ruined_portal/giant_portal_2", "ruined_portal/giant_portal_3"};
+   private static final float g = 0.05F;
+   private static final int h = 15;
+   private final List<dxf.a> i;
+   public static final Codec<dxf> d = RecordCodecBuilder.create(
+      $$0 -> $$0.group(a($$0), aqy.a(dxf.a.a.listOf()).fieldOf("setups").forGetter($$0x -> $$0x.i)).apply($$0, dxf::new)
+   );
 
-   public dxf(dyt $$0, gu $$1, dxf.b $$2, dxf.a $$3, aer $$4, dys $$5, cyy $$6, cxh $$7, gu $$8) {
-      super(dvq.J, 0, $$0, $$4, $$4.toString(), a($$7, $$6, $$2, $$8, $$3), $$1);
-      this.l = $$2;
-      this.m = $$3;
+   public dxf(duy.c $$0, List<dxf.a> $$1) {
+      super($$0);
+      this.i = $$1;
    }
 
-   public dxf(dyt $$0, qr $$1) {
-      super(dvq.J, $$1, $$0, $$2 -> a($$0, $$1, $$2));
-      this.l = dxf.b.a($$1.l("VerticalPlacement"));
-      this.m = (dxf.a)dxf.a.a.parse(new Dynamic(rc.a, $$1.c("Properties"))).getOrThrow(true, h::error);
+   public dxf(duy.c $$0, dxf.a $$1) {
+      this($$0, List.of($$1));
    }
 
    @Override
-   protected void a(dvp $$0, qr $$1) {
-      super.a($$0, $$1);
-      $$1.a("Rotation", this.c.d().name());
-      $$1.a("Mirror", this.c.c().name());
-      $$1.a("VerticalPlacement", this.l.a());
-      dxf.a.a.encodeStart(rc.a, this.m).resultOrPartial(h::error).ifPresent($$1x -> $$1.a("Properties", $$1x));
-   }
+   public Optional<duy.b> a(duy.a $$0) {
+      dxe.a $$1 = new dxe.a();
+      dlh $$2 = $$0.f();
+      dxf.a $$3 = null;
+      if (this.i.size() > 1) {
+         float $$4 = 0.0F;
 
-   private static dyo a(dyt $$0, qr $$1, aer $$2) {
-      dys $$3 = $$0.a($$2);
-      gu $$4 = new gu($$3.a().u() / 2, 0, $$3.a().w() / 2);
-      return a(
-         cxh.valueOf($$1.l("Mirror")),
-         cyy.valueOf($$1.l("Rotation")),
-         dxf.b.a($$1.l("VerticalPlacement")),
-         $$4,
-         (dxf.a)dxf.a.a.parse(new Dynamic(rc.a, $$1.c("Properties"))).getOrThrow(true, h::error)
-      );
-   }
+         for (dxf.a $$5 : this.i) {
+            $$4 += $$5.h();
+         }
 
-   private static dyo a(cxh $$0, cyy $$1, dxf.b $$2, gu $$3, dxf.a $$4) {
-      dxu $$5 = $$4.d ? dxu.b : dxu.d;
-      List<dyh> $$6 = Lists.newArrayList();
-      $$6.add(a(csn.ch, 0.3F, csn.a));
-      $$6.add(a($$2, $$4));
-      if (!$$4.b) {
-         $$6.add(a(csn.dW, 0.07F, csn.kJ));
-      }
+         float $$6 = $$2.i();
 
-      dyo $$7 = new dyo().a($$1).a($$0).a($$3).a($$5).a(new dyl($$6)).a(new dxt($$4.c)).a(new dyi(apl.bH)).a(new dyb());
-      if ($$4.g) {
-         $$7.a(dxs.b);
-      }
-
-      return $$7;
-   }
-
-   private static dyh a(dxf.b $$0, dxf.a $$1) {
-      if ($$0 == dxf.b.c) {
-         return a(csn.H, csn.kJ);
+         for (dxf.a $$7 : this.i) {
+            $$6 -= $$7.h() / $$4;
+            if ($$6 < 0.0F) {
+               $$3 = $$7;
+               break;
+            }
+         }
       } else {
-         return $$1.b ? a(csn.H, csn.dW) : a(csn.H, 0.2F, csn.kJ);
+         $$3 = this.i.get(0);
       }
-   }
 
-   @Override
-   public void a(cqg $$0, cqe $$1, dgx $$2, aru $$3, dur $$4, cot $$5, gu $$6) {
-      dur $$7 = this.b.b(this.c, this.d);
-      if ($$4.b($$7.f())) {
-         $$4.b($$7);
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-         this.b($$3, $$0);
-         this.a($$3, $$0);
-         if (this.m.f || this.m.e) {
-            gu.a(this.f()).forEach($$2x -> {
-               if (this.m.f) {
-                  this.a($$3, (cpn)$$0, $$2x);
-               }
-
-               if (this.m.e) {
-                  this.b($$3, $$0, $$2x);
-               }
-            });
-         }
-      }
-   }
-
-   @Override
-   protected void a(String $$0, gu $$1, cqb $$2, aru $$3, dur $$4) {
-   }
-
-   private void a(aru $$0, cpn $$1, gu $$2) {
-      dfa $$3 = $$1.a_($$2);
-      if (!$$3.i() && !$$3.a(csn.ff)) {
-         ha $$4 = a($$0);
-         gu $$5 = $$2.a($$4);
-         dfa $$6 = $$1.a_($$5);
-         if ($$6.i()) {
-            if (csm.a($$3.k($$1, $$2), $$4)) {
-               dfr $$7 = dbg.a($$4.g());
-               $$1.a($$5, csn.ff.n().a($$7, Boolean.valueOf(true)), 3);
-            }
-         }
-      }
-   }
-
-   private void b(aru $$0, cpn $$1, gu $$2) {
-      if ($$0.i() < 0.5F && $$1.a_($$2).a(csn.dW) && $$1.a_($$2.c()).i()) {
-         $$1.a($$2.c(), csn.aH.n().a(cwt.c, Boolean.valueOf(true)), 3);
-      }
-   }
-
-   private void a(aru $$0, cpn $$1) {
-      for (int $$2 = this.f.g() + 1; $$2 < this.f.j(); $$2++) {
-         for (int $$3 = this.f.i() + 1; $$3 < this.f.l(); $$3++) {
-            gu $$4 = new gu($$2, this.f.h(), $$3);
-            if ($$1.a_($$4).a(csn.dW)) {
-               this.c($$0, $$1, $$4.d());
-            }
-         }
-      }
-   }
-
-   private void c(aru $$0, cpn $$1, gu $$2) {
-      gu.a $$3 = $$2.j();
-      this.d($$0, $$1, $$3);
-      int $$4 = 8;
-
-      while ($$4 > 0 && $$0.i() < 0.5F) {
-         $$3.c(ha.a);
-         $$4--;
-         this.d($$0, $$1, $$3);
-      }
-   }
-
-   private void b(aru $$0, cpn $$1) {
-      boolean $$2 = this.l == dxf.b.a || this.l == dxf.b.c;
-      gu $$3 = this.f.f();
-      int $$4 = $$3.u();
-      int $$5 = $$3.w();
-      float[] $$6 = new float[]{1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.9F, 0.9F, 0.8F, 0.7F, 0.6F, 0.4F, 0.2F};
-      int $$7 = $$6.length;
-      int $$8 = (this.f.c() + this.f.e()) / 2;
-      int $$9 = $$0.a(Math.max(1, 8 - $$8 / 2));
-      int $$10 = 3;
-      gu.a $$11 = gu.b.j();
-
-      for (int $$12 = $$4 - $$7; $$12 <= $$4 + $$7; $$12++) {
-         for (int $$13 = $$5 - $$7; $$13 <= $$5 + $$7; $$13++) {
-            int $$14 = Math.abs($$12 - $$4) + Math.abs($$13 - $$5);
-            int $$15 = Math.max(0, $$14 + $$9);
-            if ($$15 < $$7) {
-               float $$16 = $$6[$$15];
-               if ($$0.j() < (double)$$16) {
-                  int $$17 = a($$1, $$12, $$13, this.l);
-                  int $$18 = $$2 ? $$17 : Math.min(this.f.h(), $$17);
-                  $$11.d($$12, $$18, $$13);
-                  if (Math.abs($$18 - this.f.h()) <= 3 && this.a($$1, $$11)) {
-                     this.d($$0, $$1, $$11);
-                     if (this.m.e) {
-                        this.b($$0, $$1, $$11);
-                     }
-
-                     this.c($$0, $$1, $$11.d());
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private boolean a(cpn $$0, gu $$1) {
-      dfa $$2 = $$0.a_($$1);
-      return !$$2.a(csn.a) && !$$2.a(csn.co) && !$$2.a(apl.bH) && (this.l == dxf.b.f || !$$2.a(csn.H));
-   }
-
-   private void d(aru $$0, cpn $$1, gu $$2) {
-      if (!this.m.b && $$0.i() < 0.07F) {
-         $$1.a($$2, csn.kJ.n(), 3);
+      if ($$3 == null) {
+         throw new IllegalStateException();
       } else {
-         $$1.a($$2, csn.dW.n(), 3);
+         dxf.a $$8 = $$3;
+         $$1.d = a($$2, $$8.b());
+         $$1.c = $$8.c();
+         $$1.e = $$8.d();
+         $$1.f = $$8.e();
+         $$1.g = $$8.g();
+         aer $$9;
+         if ($$2.i() < 0.05F) {
+            $$9 = new aer(f[$$2.a(f.length)]);
+         } else {
+            $$9 = new aer(e[$$2.a(e.length)]);
+         }
+
+         dyr $$11 = $$0.e().a($$9);
+         cyx $$12 = ac.a(cyx.values(), $$2);
+         cxg $$13 = $$2.i() < 0.5F ? cxg.a : cxg.c;
+         gu $$14 = new gu($$11.a().u() / 2, 0, $$11.a().w() / 2);
+         dgw $$15 = $$0.b();
+         cpn $$16 = $$0.i();
+         dkw $$17 = $$0.d();
+         gu $$18 = $$0.h().l();
+         duq $$19 = $$11.a($$18, $$12, $$14, $$13);
+         gu $$20 = $$19.f();
+         int $$21 = $$15.a($$20.u(), $$20.w(), dxe.a($$8.a()), $$16, $$17) - 1;
+         int $$22 = a($$2, $$15, $$8.a(), $$1.d, $$21, $$19.d(), $$19, $$16, $$17);
+         gu $$23 = new gu($$18.u(), $$22, $$18.w());
+         return Optional.of(new duy.b($$23, (Consumer<dvq>)($$10 -> {
+            if ($$8.f()) {
+               $$1.b = a($$23, $$0.b().c().getNoiseBiome(hq.a($$23.u()), hq.a($$23.v()), hq.a($$23.w()), $$17.b()));
+            }
+
+            $$10.a(new dxe($$0.e(), $$23, $$8.a(), $$1, $$9, $$11, $$12, $$13, $$14));
+         })));
       }
    }
 
-   private static int a(cpn $$0, int $$1, int $$2, dxf.b $$3) {
-      return $$0.a(a($$3), $$1, $$2) - 1;
+   private static boolean a(dlh $$0, float $$1) {
+      if ($$1 == 0.0F) {
+         return false;
+      } else {
+         return $$1 == 1.0F ? true : $$0.i() < $$1;
+      }
    }
 
-   public static dkj.a a(dxf.b $$0) {
-      return $$0 == dxf.b.c ? dkj.a.c : dkj.a.a;
+   private static boolean a(gu $$0, he<cqj> $$1) {
+      return $$1.a().b($$0);
    }
 
-   private static dyh a(csm $$0, float $$1, csm $$2) {
-      return new dyh(new dyj($$0, $$1), dxq.b, $$2.n());
+   private static int a(aru $$0, dgw $$1, dxe.b $$2, boolean $$3, int $$4, int $$5, duq $$6, cpn $$7, dkw $$8) {
+      int $$9 = $$7.C_() + 15;
+      int $$10;
+      if ($$2 == dxe.b.f) {
+         if ($$3) {
+            $$10 = arp.b($$0, 32, 100);
+         } else if ($$0.i() < 0.5F) {
+            $$10 = arp.b($$0, 27, 29);
+         } else {
+            $$10 = arp.b($$0, 29, 100);
+         }
+      } else if ($$2 == dxe.b.d) {
+         int $$13 = $$4 - $$5;
+         $$10 = a($$0, 70, $$13);
+      } else if ($$2 == dxe.b.e) {
+         int $$15 = $$4 - $$5;
+         $$10 = a($$0, $$9, $$15);
+      } else if ($$2 == dxe.b.b) {
+         $$10 = $$4 - $$5 + arp.b($$0, 2, 8);
+      } else {
+         $$10 = $$4;
+      }
+
+      List<gu> $$19 = ImmutableList.of(new gu($$6.g(), 0, $$6.i()), new gu($$6.j(), 0, $$6.i()), new gu($$6.g(), 0, $$6.l()), new gu($$6.j(), 0, $$6.l()));
+      List<cpx> $$20 = $$19.stream().map($$3x -> $$1.a($$3x.u(), $$3x.w(), $$7, $$8)).collect(Collectors.toList());
+      dki.a $$21 = $$2 == dxe.b.c ? dki.a.c : dki.a.a;
+
+      int $$22;
+      for ($$22 = $$10; $$22 > $$9; $$22--) {
+         int $$23 = 0;
+
+         for (cpx $$24 : $$20) {
+            dez $$25 = $$24.a($$22);
+            if ($$21.e().test($$25)) {
+               if (++$$23 == 3) {
+                  return $$22;
+               }
+            }
+         }
+      }
+
+      return $$22;
    }
 
-   private static dyh a(csm $$0, csm $$1) {
-      return new dyh(new dxv($$0), dxq.b, $$1.n());
+   private static int a(aru $$0, int $$1, int $$2) {
+      return $$1 < $$2 ? arp.b($$0, $$1, $$2) : $$2;
    }
 
-   public static class a {
+   @Override
+   public dvh<?> e() {
+      return dvh.l;
+   }
+
+   public static record a(dxe.b b, float c, float d, boolean e, boolean f, boolean g, boolean h, float i) {
       public static final Codec<dxf.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  Codec.BOOL.fieldOf("cold").forGetter($$0x -> $$0x.b),
-                  Codec.FLOAT.fieldOf("mossiness").forGetter($$0x -> $$0x.c),
-                  Codec.BOOL.fieldOf("air_pocket").forGetter($$0x -> $$0x.d),
-                  Codec.BOOL.fieldOf("overgrown").forGetter($$0x -> $$0x.e),
-                  Codec.BOOL.fieldOf("vines").forGetter($$0x -> $$0x.f),
-                  Codec.BOOL.fieldOf("replace_with_blackstone").forGetter($$0x -> $$0x.g)
+                  dxe.b.g.fieldOf("placement").forGetter(dxf.a::a),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("air_pocket_probability").forGetter(dxf.a::b),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("mossiness").forGetter(dxf.a::c),
+                  Codec.BOOL.fieldOf("overgrown").forGetter(dxf.a::d),
+                  Codec.BOOL.fieldOf("vines").forGetter(dxf.a::e),
+                  Codec.BOOL.fieldOf("can_be_cold").forGetter(dxf.a::f),
+                  Codec.BOOL.fieldOf("replace_with_blackstone").forGetter(dxf.a::g),
+                  aqy.k.fieldOf("weight").forGetter(dxf.a::h)
                )
                .apply($$0, dxf.a::new)
       );
-      public boolean b;
-      public float c;
-      public boolean d;
-      public boolean e;
-      public boolean f;
-      public boolean g;
 
-      public a() {
+      public dxe.b a() {
+         return this.b;
       }
 
-      public a(boolean $$0, float $$1, boolean $$2, boolean $$3, boolean $$4, boolean $$5) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
-         this.g = $$5;
-      }
-   }
-
-   public static enum b implements ash {
-      a("on_land_surface"),
-      b("partly_buried"),
-      c("on_ocean_floor"),
-      d("in_mountain"),
-      e("underground"),
-      f("in_nether");
-
-      public static final ash.a<dxf.b> g = ash.a(dxf.b::values);
-      private final String h;
-
-      private b(String $$0) {
-         this.h = $$0;
+      public float b() {
+         return this.c;
       }
 
-      public String a() {
+      public float c() {
+         return this.d;
+      }
+
+      public boolean d() {
+         return this.e;
+      }
+
+      public boolean e() {
+         return this.f;
+      }
+
+      public boolean f() {
+         return this.g;
+      }
+
+      public boolean g() {
          return this.h;
       }
 
-      public static dxf.b a(String $$0) {
-         return g.a($$0);
-      }
-
-      @Override
-      public String c() {
-         return this.h;
+      public float h() {
+         return this.i;
       }
    }
 }

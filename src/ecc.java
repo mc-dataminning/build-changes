@@ -1,66 +1,94 @@
+import com.mojang.serialization.Lifecycle;
 import java.util.Locale;
-import java.util.UUID;
+import java.util.Set;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 
-public interface ecc extends ece {
-   @Override
-   String g();
+public interface ecc {
+   int c = 19133;
+   int d = 19132;
 
-   void a(boolean var1);
+   cqe F();
 
-   int l();
+   void a(cqe var1);
 
-   void f(int var1);
+   boolean H();
 
-   void e(int var1);
+   Set<String> I();
 
-   int j();
+   Set<String> J();
 
-   @Override
-   default void a(p $$0, cpo $$1) {
-      ece.super.a($$0, $$1);
-      $$0.a("Level name", this::g);
-      $$0.a(
-         "Level game mode", () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Cheats: %b", this.m().b(), this.m().a(), this.n(), this.o())
-      );
-      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.l(), this.k(), this.j(), this.i()));
+   void a(String var1, boolean var2);
+
+   default void a(p $$0) {
+      $$0.a("Known server brands", () -> String.join(", ", this.I()));
+      $$0.a("Removed feature flags", () -> String.join(", ", this.J()));
+      $$0.a("Level was modded", () -> Boolean.toString(this.H()));
+      $$0.a("Level storage version", () -> {
+         int $$0x = this.z();
+         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.i($$0x));
+      });
    }
 
-   int h();
-
-   void a(int var1);
-
-   int v();
-
-   void g(int var1);
-
-   int w();
-
-   void h(int var1);
+   default String i(int $$0) {
+      switch ($$0) {
+         case 19132:
+            return "McRegion";
+         case 19133:
+            return "Anvil";
+         default:
+            return "Unknown?";
+      }
+   }
 
    @Nullable
-   UUID x();
+   qr G();
 
-   void a(UUID var1);
+   void a(@Nullable qr var1);
 
-   cpj m();
+   ecb K();
 
-   void a(dgr.c var1);
+   cpp L();
 
-   dgr.c r();
+   qr a(hs var1, @Nullable qr var2);
 
-   boolean p();
+   boolean n();
 
-   void c(boolean var1);
+   int z();
+
+   String g();
+
+   cpi m();
+
+   void a(cpi var1);
 
    boolean o();
 
-   void a(cpj var1);
+   bgn s();
 
-   egr<MinecraftServer> u();
+   void a(bgn var1);
 
-   void a(long var1);
+   boolean t();
 
-   void b(long var1);
+   void d(boolean var1);
+
+   cph q();
+
+   @Nullable
+   qr y();
+
+   dil.a E();
+
+   void a(dil.a var1);
+
+   dlg A();
+
+   boolean B();
+
+   boolean C();
+
+   Lifecycle D();
+
+   default cdu M() {
+      return this.F().b();
+   }
 }

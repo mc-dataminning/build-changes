@@ -1,65 +1,45 @@
-public class dab extends csm {
-   public static final int a = 6;
-   public static final int b = 64;
-   private static final ha[] c = ha.values();
+public class dab extends csl {
+   private static final ehw a = csl.a(2.0, 13.0, 2.0, 14.0, 16.0, 14.0);
+   private static final int b = 14;
+   private static final int c = 10;
+   private static final int d = 10;
 
-   protected dab(dez.d $$0) {
+   public dab(dey.d $$0) {
       super($$0);
    }
 
    @Override
-   public void b(dfa $$0, cpm $$1, gu $$2, dfa $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2);
+   public boolean a(dez $$0, cpo $$1, gu $$2) {
+      return csl.a($$1, $$2.c(), ha.a) && !$$1.y($$2);
+   }
+
+   @Override
+   public dez a(dez $$0, ha $$1, dez $$2, cpm $$3, gu $$4, gu $$5) {
+      return $$1 == ha.b && !this.a($$0, $$3, $$4) ? csm.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public void a(dez $$0, cpl $$1, gu $$2, aru $$3) {
+      int $$4 = $$2.u();
+      int $$5 = $$2.v();
+      int $$6 = $$2.w();
+      double $$7 = (double)$$4 + $$3.j();
+      double $$8 = (double)$$5 + 0.7;
+      double $$9 = (double)$$6 + $$3.j();
+      $$1.a(iv.at, $$7, $$8, $$9, 0.0, 0.0, 0.0);
+      gu.a $$10 = new gu.a();
+
+      for (int $$11 = 0; $$11 < 14; $$11++) {
+         $$10.d($$4 + arp.a($$3, -10, 10), $$5 - $$3.a(10), $$6 + arp.a($$3, -10, 10));
+         dez $$12 = $$1.a_($$10);
+         if (!$$12.r($$1, $$10)) {
+            $$1.a(iv.ax, (double)$$10.u() + $$3.j(), (double)$$10.v() + $$3.j(), (double)$$10.w() + $$3.j(), 0.0, 0.0, 0.0);
+         }
       }
    }
 
    @Override
-   public void a(dfa $$0, cpm $$1, gu $$2, csm $$3, gu $$4, boolean $$5) {
-      this.a($$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   protected void a(cpm $$0, gu $$1) {
-      if (this.b($$0, $$1)) {
-         $$0.a($$1, csn.aP.n(), 2);
-         $$0.a(null, $$1, aow.xe, aox.e, 1.0F, 1.0F);
-      }
-   }
-
-   private boolean b(cpm $$0, gu $$1) {
-      return gu.a($$1, 6, 65, ($$0x, $$1x) -> {
-         for (ha $$2 : c) {
-            $$1x.accept($$0x.a($$2));
-         }
-      }, $$2 -> {
-         if ($$2.equals($$1)) {
-            return true;
-         } else {
-            dfa $$3 = $$0.a_($$2);
-            ead $$4 = $$0.b_($$2);
-            if (!$$4.a(apq.a)) {
-               return false;
-            } else {
-               if ($$3.b() instanceof css $$6 && !$$6.a(null, $$0, $$2, $$3).b()) {
-                  return true;
-               }
-
-               if ($$3.b() instanceof cwz) {
-                  $$0.a($$2, csn.a.n(), 3);
-               } else {
-                  if (!$$3.a(csn.mc) && !$$3.a(csn.md) && !$$3.a(csn.bw) && !$$3.a(csn.bx)) {
-                     return false;
-                  }
-
-                  dcm $$7 = $$3.t() ? $$0.c_($$2) : null;
-                  a($$3, $$0, $$2, $$7);
-                  $$0.a($$2, csn.a.n(), 3);
-               }
-
-               return true;
-            }
-         }
-      }) > 1;
+   public ehw a(dez $$0, cor $$1, gu $$2, ehi $$3) {
+      return a;
    }
 }

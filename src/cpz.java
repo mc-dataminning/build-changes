@@ -1,112 +1,41 @@
-import com.google.common.base.Suppliers;
+import com.google.common.collect.Lists;
 import java.util.List;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
 
-public class cpz implements cos, cow {
-   protected final int a;
-   protected final int b;
-   protected final dgw[][] c;
-   protected boolean d;
-   protected final cpm e;
-   private final Supplier<he<cqk>> f;
+public class cpz {
+   private final List<cpz.a> a = Lists.newArrayList();
 
-   public cpz(cpm $$0, gu $$1, gu $$2) {
-      this.e = $$0;
-      this.f = Suppliers.memoize(() -> $$0.B_().d(jc.ap).f(cqr.b));
-      this.a = hx.a($$1.u());
-      this.b = hx.a($$1.w());
-      int $$3 = hx.a($$2.u());
-      int $$4 = hx.a($$2.w());
-      this.c = new dgw[$$3 - this.a + 1][$$4 - this.b + 1];
-      dha $$5 = $$0.J();
-      this.d = true;
+   public void a(gu $$0, double $$1) {
+      if ($$1 != 0.0) {
+         this.a.add(new cpz.a($$0, $$1));
+      }
+   }
 
-      for (int $$6 = this.a; $$6 <= $$3; $$6++) {
-         for (int $$7 = this.b; $$7 <= $$4; $$7++) {
-            this.c[$$6 - this.a][$$7 - this.b] = $$5.a($$6, $$7);
+   public double b(gu $$0, double $$1) {
+      if ($$1 == 0.0) {
+         return 0.0;
+      } else {
+         double $$2 = 0.0;
+
+         for (cpz.a $$3 : this.a) {
+            $$2 += $$3.a($$0);
          }
-      }
 
-      for (int $$8 = hx.a($$1.u()); $$8 <= hx.a($$2.u()); $$8++) {
-         for (int $$9 = hx.a($$1.w()); $$9 <= hx.a($$2.w()); $$9++) {
-            dgw $$10 = this.c[$$8 - this.a][$$9 - this.b];
-            if ($$10 != null && !$$10.a($$1.v(), $$2.v())) {
-               this.d = false;
-               return;
-            }
-         }
+         return $$2 * $$1;
       }
    }
 
-   private dgw d(gu $$0) {
-      return this.a(hx.a($$0.u()), hx.a($$0.w()));
-   }
+   static class a {
+      private final gu a;
+      private final double b;
 
-   private dgw a(int $$0, int $$1) {
-      int $$2 = $$0 - this.a;
-      int $$3 = $$1 - this.b;
-      if ($$2 >= 0 && $$2 < this.c.length && $$3 >= 0 && $$3 < this.c[$$2].length) {
-         dgw $$4 = this.c[$$2][$$3];
-         return (dgw)($$4 != null ? $$4 : new dhd(this.e, new cot($$0, $$1), this.f.get()));
-      } else {
-         return new dhd(this.e, new cot($$0, $$1), this.f.get());
+      public a(gu $$0, double $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
-   }
 
-   @Override
-   public dgr w_() {
-      return this.e.w_();
-   }
-
-   @Override
-   public cos c(int $$0, int $$1) {
-      return this.a($$0, $$1);
-   }
-
-   @Override
-   public List<ehx> c(@Nullable bii $$0, egz $$1) {
-      return List.of();
-   }
-
-   @Nullable
-   @Override
-   public dcm c_(gu $$0) {
-      dgw $$1 = this.d($$0);
-      return $$1.c_($$0);
-   }
-
-   @Override
-   public dfa a_(gu $$0) {
-      if (this.r($$0)) {
-         return csn.a.n();
-      } else {
-         dgw $$1 = this.d($$0);
-         return $$1.a_($$0);
+      public double a(gu $$0) {
+         double $$1 = this.a.j($$0);
+         return $$1 == 0.0 ? Double.POSITIVE_INFINITY : this.b / Math.sqrt($$1);
       }
-   }
-
-   @Override
-   public ead b_(gu $$0) {
-      if (this.r($$0)) {
-         return eae.a.g();
-      } else {
-         dgw $$1 = this.d($$0);
-         return $$1.b_($$0);
-      }
-   }
-
-   @Override
-   public int C_() {
-      return this.e.C_();
-   }
-
-   @Override
-   public int D_() {
-      return this.e.D_();
-   }
-
-   public bdh a() {
-      return this.e.ad();
    }
 }

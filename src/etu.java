@@ -8,25 +8,25 @@ public class etu extends ett {
    private static final int j = 1048576;
    private static final int k = 1048576;
 
-   public etu(eru $$0, arw $$1) {
+   public etu(ert $$0, arw $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected void a(erw $$0, int $$1, int $$2, int $$3) {
+   protected void a(erv $$0, int $$1, int $$2, int $$3) {
       this.a($$0, $$1, $$2, $$3, 64);
       this.a($$0, $$1, $$2, $$3, 1024);
       this.a($$0, $$1, $$2, $$3, 16384);
-      this.a($$0, this.a(1048576.0), $$1 + 1, $$3 - this.b(1048576.0) + 1);
+      this.a($$0, c(1048576.0), $$1 + 1, $$3 - d(1048576.0) + 1);
    }
 
-   private void a(erw $$0, int $$1, int $$2, int $$3, int $$4) {
+   private void a(erv $$0, int $$1, int $$2, int $$3, int $$4) {
       this.a($$0, $$1, $$2, $$3 - d((double)$$4), c((double)$$4));
    }
 
-   private void a(erw $$0, int $$1, int $$2, int $$3, String $$4) {
+   private void a(erv $$0, int $$1, int $$2, int $$3, String $$4) {
       this.a($$0, $$4, $$1 + 1, $$3 + 1);
-      $$0.a(fnt.D(), $$1, $$1 + $$2 - 1, $$3, -1);
+      $$0.a(foc.D(), $$1, $$1 + $$2 - 1, $$3, -1);
    }
 
    @Override

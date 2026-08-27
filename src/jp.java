@@ -50,7 +50,7 @@ public class jp implements jm {
       return cg.a.a(bo.a.a().a(bf.c(cj.c.c(30.0))).a(cf.a($$0)).b(), $$1);
    }
 
-   private static dg.a a(bim<?> $$0, cit $$1) {
+   private static dg.a a(bim<?> $$0, cis $$1) {
       return dg.a.a(bo.a.a().a(cp.d.a().a(bo.a.a().a($$0).b()).b()), bz.a.a().a($$1));
    }
 
@@ -58,7 +58,7 @@ public class jp implements jm {
    public void a(hg.b $$0, Consumer<ae> $$1) {
       ae $$2 = ae.a.a()
          .a(
-            cjb.tp,
+            cja.tp,
             tf.c("advancements.adventure.root.title"),
             tf.c("advancements.adventure.root.description"),
             new aer("textures/gui/advancements/backgrounds/adventure.png"),
@@ -73,19 +73,19 @@ public class jp implements jm {
          .a($$1, "adventure/root");
       ae $$3 = ae.a.a()
          .a($$2)
-         .a(csn.bn, tf.c("advancements.adventure.sleep_in_bed.title"), tf.c("advancements.adventure.sleep_in_bed.description"), null, ao.a, true, true, false)
+         .a(csm.bn, tf.c("advancements.adventure.sleep_in_bed.title"), tf.c("advancements.adventure.sleep_in_bed.description"), null, ao.a, true, true, false)
          .a("slept_in_bed", cq.a.d())
          .a($$1, "adventure/sleep_in_bed");
-      a($$1, $$3, cqy.a.b);
+      a($$1, $$3, cqx.a.b);
       ae $$4 = ae.a.a()
          .a($$2)
-         .a(cjb.nL, tf.c("advancements.adventure.trade.title"), tf.c("advancements.adventure.trade.description"), null, ao.a, true, true, false)
+         .a(cja.nL, tf.c("advancements.adventure.trade.title"), tf.c("advancements.adventure.trade.description"), null, ao.a, true, true, false)
          .a("traded", dd.a.d())
          .a($$1, "adventure/trade");
       ae.a.a()
          .a($$4)
          .a(
-            cjb.nL,
+            cja.nL,
             tf.c("advancements.adventure.trade_at_world_height.title"),
             tf.c("advancements.adventure.trade_at_world_height.description"),
             null,
@@ -98,28 +98,28 @@ public class jp implements jm {
          .a($$1, "adventure/trade_at_world_height");
       ae $$5 = d(ae.a.a())
          .a($$2)
-         .a(cjb.om, tf.c("advancements.adventure.kill_a_mob.title"), tf.c("advancements.adventure.kill_a_mob.description"), null, ao.a, true, true, false)
+         .a(cja.om, tf.c("advancements.adventure.kill_a_mob.title"), tf.c("advancements.adventure.kill_a_mob.description"), null, ao.a, true, true, false)
          .a(ap.b)
          .a($$1, "adventure/kill_a_mob");
       d(ae.a.a())
          .a($$5)
-         .a(cjb.or, tf.c("advancements.adventure.kill_all_mobs.title"), tf.c("advancements.adventure.kill_all_mobs.description"), null, ao.b, true, true, false)
+         .a(cja.or, tf.c("advancements.adventure.kill_all_mobs.title"), tf.c("advancements.adventure.kill_all_mobs.description"), null, ao.b, true, true, false)
          .a(ah.a.a(100))
          .a($$1, "adventure/kill_all_mobs");
       ae $$6 = ae.a.a()
          .a($$5)
-         .a(cjb.nG, tf.c("advancements.adventure.shoot_arrow.title"), tf.c("advancements.adventure.shoot_arrow.description"), null, ao.a, true, true, false)
+         .a(cja.nG, tf.c("advancements.adventure.shoot_arrow.title"), tf.c("advancements.adventure.shoot_arrow.description"), null, ao.a, true, true, false)
          .a("shot_arrow", cn.a.a(bc.a.a().a(bd.a.a().a(da.a(apn.j)).a(bo.a.a().a(apo.d)))))
          .a($$1, "adventure/shoot_arrow");
       ae $$7 = ae.a.a()
          .a($$5)
-         .a(cjb.uV, tf.c("advancements.adventure.throw_trident.title"), tf.c("advancements.adventure.throw_trident.description"), null, ao.a, true, true, false)
+         .a(cja.uV, tf.c("advancements.adventure.throw_trident.title"), tf.c("advancements.adventure.throw_trident.description"), null, ao.a, true, true, false)
          .a("shot_trident", cn.a.a(bc.a.a().a(bd.a.a().a(da.a(apn.j)).a(bo.a.a().a(bim.bb)))))
          .a($$1, "adventure/throw_trident");
       ae.a.a()
          .a($$7)
          .a(
-            cjb.uV,
+            cja.uV,
             tf.c("advancements.adventure.very_very_frightening.title"),
             tf.c("advancements.adventure.very_very_frightening.description"),
             null,
@@ -133,7 +133,7 @@ public class jp implements jm {
       ae.a.a()
          .a($$4)
          .a(
-            csn.ef,
+            csm.ef,
             tf.c("advancements.adventure.summon_iron_golem.title"),
             tf.c("advancements.adventure.summon_iron_golem.description"),
             null,
@@ -146,14 +146,14 @@ public class jp implements jm {
          .a($$1, "adventure/summon_iron_golem");
       ae.a.a()
          .a($$6)
-         .a(cjb.nH, tf.c("advancements.adventure.sniper_duel.title"), tf.c("advancements.adventure.sniper_duel.description"), null, ao.b, true, true, false)
+         .a(cja.nH, tf.c("advancements.adventure.sniper_duel.title"), tf.c("advancements.adventure.sniper_duel.description"), null, ao.b, true, true, false)
          .a(ah.a.a(50))
          .a("killed_skeleton", cc.a.a(bo.a.a().a(bim.aJ).a(bf.a(cj.c.b(50.0))), bd.a.a().a(da.a(apn.j))))
          .a($$1, "adventure/sniper_duel");
       ae.a.a()
          .a($$5)
          .a(
-            cjb.uz,
+            cja.uz,
             tf.c("advancements.adventure.totem_of_undying.title"),
             tf.c("advancements.adventure.totem_of_undying.description"),
             null,
@@ -162,17 +162,17 @@ public class jp implements jm {
             true,
             false
          )
-         .a("used_totem", df.a.a(cjb.uz))
+         .a("used_totem", df.a.a(cja.uz))
          .a($$1, "adventure/totem_of_undying");
       ae $$8 = ae.a.a()
          .a($$2)
-         .a(cjb.uZ, tf.c("advancements.adventure.ol_betsy.title"), tf.c("advancements.adventure.ol_betsy.description"), null, ao.a, true, true, false)
-         .a("shot_crossbow", ct.a.a(cjb.uZ))
+         .a(cja.uZ, tf.c("advancements.adventure.ol_betsy.title"), tf.c("advancements.adventure.ol_betsy.description"), null, ao.a, true, true, false)
+         .a("shot_crossbow", ct.a.a(cja.uZ))
          .a($$1, "adventure/ol_betsy");
       ae.a.a()
          .a($$8)
          .a(
-            cjb.uZ,
+            cja.uZ,
             tf.c("advancements.adventure.whos_the_pillager_now.title"),
             tf.c("advancements.adventure.whos_the_pillager_now.description"),
             null,
@@ -186,7 +186,7 @@ public class jp implements jm {
       ae.a.a()
          .a($$8)
          .a(
-            cjb.uZ,
+            cja.uZ,
             tf.c("advancements.adventure.two_birds_one_arrow.title"),
             tf.c("advancements.adventure.two_birds_one_arrow.description"),
             null,
@@ -200,14 +200,14 @@ public class jp implements jm {
          .a($$1, "adventure/two_birds_one_arrow");
       ae.a.a()
          .a($$8)
-         .a(cjb.uZ, tf.c("advancements.adventure.arbalistic.title"), tf.c("advancements.adventure.arbalistic.description"), null, ao.b, true, true, true)
+         .a(cja.uZ, tf.c("advancements.adventure.arbalistic.title"), tf.c("advancements.adventure.arbalistic.description"), null, ao.b, true, true, true)
          .a(ah.a.a(85))
          .a("arbalistic", cb.a.a(cj.d.a(5)))
          .a($$1, "adventure/arbalistic");
       ae $$9 = ae.a.a()
          .a($$2)
          .a(
-            ccu.s(),
+            cct.s(),
             tf.c("advancements.adventure.voluntary_exile.title"),
             tf.c("advancements.adventure.voluntary_exile.description"),
             null,
@@ -221,7 +221,7 @@ public class jp implements jm {
       ae.a.a()
          .a($$9)
          .a(
-            ccu.s(),
+            cct.s(),
             tf.c("advancements.adventure.hero_of_the_village.title"),
             tf.c("advancements.adventure.hero_of_the_village.description"),
             null,
@@ -236,7 +236,7 @@ public class jp implements jm {
       ae.a.a()
          .a($$2)
          .a(
-            csn.pg.k(),
+            csm.pg.k(),
             tf.c("advancements.adventure.honey_block_slide.title"),
             tf.c("advancements.adventure.honey_block_slide.description"),
             null,
@@ -245,18 +245,18 @@ public class jp implements jm {
             true,
             false
          )
-         .a("honey_block_slide", cv.a.a(csn.pg))
+         .a("honey_block_slide", cv.a.a(csm.pg))
          .a($$1, "adventure/honey_block_slide");
       ae.a.a()
          .a($$6)
-         .a(csn.pd.k(), tf.c("advancements.adventure.bullseye.title"), tf.c("advancements.adventure.bullseye.description"), null, ao.b, true, true, false)
+         .a(csm.pd.k(), tf.c("advancements.adventure.bullseye.title"), tf.c("advancements.adventure.bullseye.description"), null, ao.b, true, true, false)
          .a(ah.a.a(50))
          .a("bullseye", dc.a.a(cj.d.a(15), bo.a(bo.a.a().a(bf.a(cj.c.b(30.0))))))
          .a($$1, "adventure/bullseye");
       ae.a.a()
          .a($$3)
          .a(
-            cjb.oN,
+            cja.oN,
             tf.c("advancements.adventure.walk_on_powder_snow_with_leather_boots.title"),
             tf.c("advancements.adventure.walk_on_powder_snow_with_leather_boots.description"),
             null,
@@ -265,12 +265,12 @@ public class jp implements jm {
             true,
             false
          )
-         .a("walk_on_powder_snow_with_leather_boots", cq.a.a(csn.qC, cjb.oN))
+         .a("walk_on_powder_snow_with_leather_boots", cq.a.a(csm.qC, cja.oN))
          .a($$1, "adventure/walk_on_powder_snow_with_leather_boots");
       ae.a.a()
          .a($$2)
          .a(
-            cjb.lB,
+            cja.lB,
             tf.c("advancements.adventure.lightning_rod_with_villager_no_fire.title"),
             tf.c("advancements.adventure.lightning_rod_with_villager_no_fire.description"),
             null,
@@ -284,7 +284,7 @@ public class jp implements jm {
       ae $$10 = ae.a.a()
          .a($$2)
          .a(
-            cjb.qj,
+            cja.qj,
             tf.c("advancements.adventure.spyglass_at_parrot.title"),
             tf.c("advancements.adventure.spyglass_at_parrot.description"),
             null,
@@ -293,12 +293,12 @@ public class jp implements jm {
             true,
             false
          )
-         .a("spyglass_at_parrot", a(bim.at, cjb.qj))
+         .a("spyglass_at_parrot", a(bim.at, cja.qj))
          .a($$1, "adventure/spyglass_at_parrot");
       ae $$11 = ae.a.a()
          .a($$10)
          .a(
-            cjb.qj,
+            cja.qj,
             tf.c("advancements.adventure.spyglass_at_ghast.title"),
             tf.c("advancements.adventure.spyglass_at_ghast.description"),
             null,
@@ -307,12 +307,12 @@ public class jp implements jm {
             true,
             false
          )
-         .a("spyglass_at_ghast", a(bim.Q, cjb.qj))
+         .a("spyglass_at_ghast", a(bim.Q, cja.qj))
          .a($$1, "adventure/spyglass_at_ghast");
       ae.a.a()
          .a($$3)
          .a(
-            cjb.eC,
+            cja.eC,
             tf.c("advancements.adventure.play_jukebox_in_meadows.title"),
             tf.c("advancements.adventure.play_jukebox_in_meadows.description"),
             null,
@@ -321,12 +321,12 @@ public class jp implements jm {
             true,
             false
          )
-         .a("play_jukebox_in_meadows", ca.a.a(ch.a.a().d(cqr.D).a(at.a.a().a(csn.dT)), bz.a.a().a(apt.aq)))
+         .a("play_jukebox_in_meadows", ca.a.a(ch.a.a().d(cqq.D).a(at.a.a().a(csm.dT)), bz.a.a().a(apt.aq)))
          .a($$1, "adventure/play_jukebox_in_meadows");
       ae.a.a()
          .a($$11)
          .a(
-            cjb.qj,
+            cja.qj,
             tf.c("advancements.adventure.spyglass_at_dragon.title"),
             tf.c("advancements.adventure.spyglass_at_dragon.description"),
             null,
@@ -335,12 +335,12 @@ public class jp implements jm {
             true,
             false
          )
-         .a("spyglass_at_dragon", a(bim.C, cjb.qj))
+         .a("spyglass_at_dragon", a(bim.C, cja.qj))
          .a($$1, "adventure/spyglass_at_dragon");
       ae.a.a()
          .a($$2)
          .a(
-            cjb.pL,
+            cja.pL,
             tf.c("advancements.adventure.fall_from_world_height.title"),
             tf.c("advancements.adventure.fall_from_world_height.description"),
             null,
@@ -354,7 +354,7 @@ public class jp implements jm {
       ae.a.a()
          .a($$5)
          .a(
-            csn.qH,
+            csm.qH,
             tf.c("advancements.adventure.kill_mob_near_sculk_catalyst.title"),
             tf.c("advancements.adventure.kill_mob_near_sculk_catalyst.description"),
             null,
@@ -368,7 +368,7 @@ public class jp implements jm {
       ae.a.a()
          .a($$2)
          .a(
-            csn.qD,
+            csm.qD,
             tf.c("advancements.adventure.avoid_vibration.title"),
             tf.c("advancements.adventure.avoid_vibration.description"),
             null,
@@ -381,12 +381,12 @@ public class jp implements jm {
          .a($$1, "adventure/avoid_vibration");
       ae $$12 = c(ae.a.a())
          .a($$2)
-         .a(cjb.wv, tf.c("advancements.adventure.salvage_sherd.title"), tf.c("advancements.adventure.salvage_sherd.description"), null, ao.a, true, true, false)
+         .a(cja.wv, tf.c("advancements.adventure.salvage_sherd.title"), tf.c("advancements.adventure.salvage_sherd.description"), null, ao.a, true, true, false)
          .a($$1, "adventure/salvage_sherd");
       ae.a.a()
          .a($$12)
          .a(
-            ddb.a(new ddb.a(cjb.pX, cjb.wW, cjb.pX, cjb.wU)),
+            dda.a(new dda.a(cja.pX, cja.wW, cja.pX, cja.wU)),
             tf.c("advancements.adventure.craft_decorated_pot_using_only_sherds.title"),
             tf.c("advancements.adventure.craft_decorated_pot_using_only_sherds.description"),
             null,
@@ -403,7 +403,7 @@ public class jp implements jm {
       ae $$13 = b(ae.a.a())
          .a($$2)
          .a(
-            new ciy(cjb.wy),
+            new cix(cja.wy),
             tf.c("advancements.adventure.trim_with_any_armor_pattern.title"),
             tf.c("advancements.adventure.trim_with_any_armor_pattern.description"),
             null,
@@ -416,7 +416,7 @@ public class jp implements jm {
       a(ae.a.a())
          .a($$13)
          .a(
-            new ciy(cjb.wK),
+            new cix(cja.wK),
             tf.c("advancements.adventure.trim_with_all_exclusive_armor_patterns.title"),
             tf.c("advancements.adventure.trim_with_all_exclusive_armor_patterns.description"),
             null,
@@ -430,7 +430,7 @@ public class jp implements jm {
       ae.a.a()
          .a($$2)
          .a(
-            cjb.ef,
+            cja.ef,
             tf.c("advancements.adventure.read_power_from_chiseled_bookshelf.title"),
             tf.c("advancements.adventure.read_power_from_chiseled_bookshelf.description"),
             null,
@@ -440,34 +440,34 @@ public class jp implements jm {
             false
          )
          .a(ap.b)
-         .a("chiseled_bookshelf", a(csn.cm))
-         .a("comparator", b(csn.cm))
+         .a("chiseled_bookshelf", a(csm.cm))
+         .a("comparator", b(csm.cm))
          .a($$1, "adventure/read_power_of_chiseled_bookshelf");
    }
 
-   private static am a(csm $$0) {
-      efg.a[] $$1 = ctu.aC.a().stream().map($$0x -> {
-         cy.a $$1x = cy.a.a().a(ctu.aC, $$0x);
-         at.a $$2 = at.a.a().a(csn.gY).a($$1x);
-         return efe.a(ch.a.a().a($$2), new gu($$0x.g().q()));
-      }).toArray(efg.a[]::new);
-      return ca.a.a(eff.a($$0), eev.a($$1));
+   private static am a(csl $$0) {
+      eff.a[] $$1 = ctt.aC.a().stream().map($$0x -> {
+         cy.a $$1x = cy.a.a().a(ctt.aC, $$0x);
+         at.a $$2 = at.a.a().a(csm.gY).a($$1x);
+         return efd.a(ch.a.a().a($$2), new gu($$0x.g().q()));
+      }).toArray(eff.a[]::new);
+      return ca.a.a(efe.a($$0), eeu.a($$1));
    }
 
-   private static am b(csm $$0) {
-      efg.a[] $$1 = ctu.aC.a().stream().map($$1x -> {
-         cy.a $$2 = cy.a.a().a(ctu.aC, $$1x);
-         eff.a $$3 = new eff.a(csn.gY).a($$2);
-         efg.a $$4 = efe.a(ch.a.a().a(at.a.a().a($$0)), new gu($$1x.q()));
-         return eeu.a($$3, $$4);
-      }).toArray(efg.a[]::new);
-      return ca.a.a(eev.a($$1));
+   private static am b(csl $$0) {
+      eff.a[] $$1 = ctt.aC.a().stream().map($$1x -> {
+         cy.a $$2 = cy.a.a().a(ctt.aC, $$1x);
+         efe.a $$3 = new efe.a(csm.gY).a($$2);
+         eff.a $$4 = efd.a(ch.a.a().a(at.a.a().a($$0)), new gu($$1x.q()));
+         return eet.a($$3, $$4);
+      }).toArray(eff.a[]::new);
+      return ca.a.a(eeu.a($$1));
    }
 
    private static ae.a a(ae.a $$0) {
       $$0.a(ap.a);
-      Map<cit, aer> $$1 = mb.b();
-      Stream.of(cjb.wH, cjb.wF, cjb.wG, cjb.wB, cjb.wK, cjb.wD, cjb.wE, cjb.wI).forEach($$2 -> {
+      Map<cis, aer> $$1 = mb.b();
+      Stream.of(cja.wH, cja.wF, cja.wG, cja.wB, cja.wK, cja.wD, cja.wE, cja.wI).forEach($$2 -> {
          aer $$3 = $$1.get($$2);
          $$0.a("armor_trimmed_" + $$3, cr.a.a($$3));
       });
@@ -485,12 +485,12 @@ public class jp implements jm {
    }
 
    private static ae.a c(ae.a $$0) {
-      $$0.a("desert_pyramid", ci.a.a(ecf.aD));
-      $$0.a("desert_well", ci.a.a(ecf.aC));
-      $$0.a("ocean_ruin_cold", ci.a.a(ecf.aH));
-      $$0.a("ocean_ruin_warm", ci.a.a(ecf.aG));
-      $$0.a("trail_ruins_rare", ci.a.a(ecf.aF));
-      $$0.a("trail_ruins_common", ci.a.a(ecf.aE));
+      $$0.a("desert_pyramid", ci.a.a(ece.aD));
+      $$0.a("desert_well", ci.a.a(ece.aC));
+      $$0.a("ocean_ruin_cold", ci.a.a(ece.aH));
+      $$0.a("ocean_ruin_warm", ci.a.a(ece.aG));
+      $$0.a("trail_ruins_rare", ci.a.a(ece.aF));
+      $$0.a("trail_ruins_common", ci.a.a(ece.aE));
       String[] $$1 = $$0.d().keySet().toArray(String[]::new);
       String $$2 = "has_sherd";
       $$0.a("has_sherd", bx.a.a(bz.a.a().a(apt.aL)));
@@ -498,11 +498,11 @@ public class jp implements jm {
       return $$0;
    }
 
-   protected static void a(Consumer<ae> $$0, ae $$1, cqy.a $$2) {
+   protected static void a(Consumer<ae> $$0, ae $$1, cqx.a $$2) {
       a(ae.a.a(), $$2.a().toList())
          .a($$1)
          .a(
-            cjb.oZ,
+            cja.oZ,
             tf.c("advancements.adventure.adventuring_time.title"),
             tf.c("advancements.adventure.adventuring_time.description"),
             null,
@@ -523,8 +523,8 @@ public class jp implements jm {
       return $$0;
    }
 
-   protected static ae.a a(ae.a $$0, List<aeq<cqk>> $$1) {
-      for (aeq<cqk> $$2 : $$1) {
+   protected static ae.a a(ae.a $$0, List<aeq<cqj>> $$1) {
+      for (aeq<cqj> $$2 : $$1) {
          $$0.a($$2.a().toString(), cq.a.a(ch.a.a($$2)));
       }
 

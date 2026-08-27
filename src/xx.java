@@ -1,6 +1,6 @@
 public record xx(int a, float b) implements ux<wp> {
    public xx(biy $$0) {
-      this($$0.ah(), $$0.eD());
+      this($$0.ah(), $$0.eC());
    }
 
    public xx(si $$0) {

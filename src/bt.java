@@ -18,11 +18,11 @@ public record bt(Optional<Boolean> d) implements bp {
    }
 
    @Override
-   public boolean a(bii $$0, akk $$1, @Nullable ehe $$2) {
+   public boolean a(bii $$0, akk $$1, @Nullable ehd $$2) {
       if (this.d.isEmpty()) {
          return true;
       } else {
-         return $$0 instanceof ccb $$3 ? this.d.get() == $$3.j() : false;
+         return $$0 instanceof cca $$3 ? this.d.get() == $$3.j() : false;
       }
    }
 

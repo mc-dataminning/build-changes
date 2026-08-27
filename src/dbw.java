@@ -1,51 +1,32 @@
-public class dbw extends csm {
-   protected dbw(dez.d $$0) {
-      super($$0);
+public class dbw extends cvj {
+   public dbw(bht $$0, dey.d $$1) {
+      super($$0, 8, $$1);
    }
 
    @Override
-   public void b(dfa $$0, cpm $$1, gu $$2, dfa $$3, boolean $$4) {
-      if ($$1.x_().i()) {
-         $$1.a($$2, csn.aO.n(), 3);
-         $$1.c(2009, $$2, 0);
-         $$1.a(null, $$2, aow.hN, aox.e, 1.0F, (1.0F + $$1.y_().i() * 0.2F) * 0.7F);
+   protected boolean d(dez $$0, cor $$1, gu $$2) {
+      return super.d($$0, $$1, $$2) || $$0.a(csm.dW) || $$0.a(csm.dX) || $$0.a(csm.dY);
+   }
+
+   @Override
+   public void a(dez $$0, cpl $$1, gu $$2, aru $$3) {
+      ehw $$4 = this.a($$0, $$1, $$2, ehi.a());
+      ehd $$5 = $$4.a().f();
+      double $$6 = (double)$$2.u() + $$5.c;
+      double $$7 = (double)$$2.w() + $$5.e;
+
+      for (int $$8 = 0; $$8 < 3; $$8++) {
+         if ($$3.h()) {
+            $$1.a(iv.Z, $$6 + $$3.j() / 5.0, (double)$$2.v() + (0.5 - $$3.j()), $$7 + $$3.j() / 5.0, 0.0, 0.0, 0.0);
+         }
       }
    }
 
    @Override
-   public void a(dfa $$0, cpm $$1, gu $$2, aru $$3) {
-      ha $$4 = ha.b($$3);
-      if ($$4 != ha.b) {
-         gu $$5 = $$2.a($$4);
-         dfa $$6 = $$1.a_($$5);
-         if (!$$0.p() || !$$6.d($$1, $$5, $$4.g())) {
-            double $$7 = (double)$$2.u();
-            double $$8 = (double)$$2.v();
-            double $$9 = (double)$$2.w();
-            if ($$4 == ha.a) {
-               $$8 -= 0.05;
-               $$7 += $$3.j();
-               $$9 += $$3.j();
-            } else {
-               $$8 += $$3.j() * 0.8;
-               if ($$4.o() == ha.a.a) {
-                  $$9 += $$3.j();
-                  if ($$4 == ha.f) {
-                     $$7++;
-                  } else {
-                     $$7 += 0.05;
-                  }
-               } else {
-                  $$7 += $$3.j();
-                  if ($$4 == ha.d) {
-                     $$9++;
-                  } else {
-                     $$9 += 0.05;
-                  }
-               }
-            }
-
-            $$1.a(iv.m, $$7, $$8, $$9, 0.0, 0.0, 0.0);
+   public void a(dez $$0, cpl $$1, gu $$2, bii $$3) {
+      if (!$$1.B && $$1.ai() != bgn.a) {
+         if ($$3 instanceof biy $$4 && !$$4.b($$1.ag().p())) {
+            $$4.b(new bhv(bhx.t, 40));
          }
       }
    }

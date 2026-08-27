@@ -7,9 +7,9 @@ public class acj implements ux<aaw> {
    private final boolean f;
    private final boolean g;
    private final boolean h;
-   private final dcw.a i;
+   private final dcv.a i;
 
-   public acj(gu $$0, String $$1, dcw.a $$2, boolean $$3, boolean $$4, boolean $$5) {
+   public acj(gu $$0, String $$1, dcv.a $$2, boolean $$3, boolean $$4, boolean $$5) {
       this.d = $$0;
       this.e = $$1;
       this.f = $$3;
@@ -21,7 +21,7 @@ public class acj implements ux<aaw> {
    public acj(si $$0) {
       this.d = $$0.e();
       this.e = $$0.r();
-      this.i = $$0.b(dcw.a.class);
+      this.i = $$0.b(dcv.a.class);
       int $$1 = $$0.readByte();
       this.f = ($$1 & 1) != 0;
       this.g = ($$1 & 2) != 0;
@@ -73,7 +73,7 @@ public class acj implements ux<aaw> {
       return this.h;
    }
 
-   public dcw.a h() {
+   public dcv.a h() {
       return this.i;
    }
 }

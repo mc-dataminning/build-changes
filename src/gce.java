@@ -1,54 +1,32 @@
-import java.util.List;
-import java.util.Locale;
-import java.util.function.Function;
-import java.util.stream.Stream;
+public class gce implements gbm {
+   public static final float a = 0.01F;
+   public static final float b = 0.001F;
+   public static final float c = 1.0E-4F;
+   private static final int d = 0;
+   private final fmw e;
+   private final gdg f;
+   private int g = 0;
 
-public interface gce<T> {
-   static <T> gce<T> a() {
-      return new gce<T>() {
-         @Override
-         public List<T> a(String $$0) {
-            return List.of();
-         }
-
-         @Override
-         public List<T> b(String $$0) {
-            return List.of();
-         }
-      };
+   public gce(fmw $$0, gdg $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   static <T> gce<T> a(List<T> $$0, Function<T, Stream<aer>> $$1) {
-      if ($$0.isEmpty()) {
-         return a();
-      } else {
-         final gch<T> $$2 = new gch<>();
-         final gch<T> $$3 = new gch<>();
-
-         for (T $$4 : $$0) {
-            $$1.apply($$4).forEach($$3x -> {
-               $$2.a($$4, $$3x.b().toLowerCase(Locale.ROOT));
-               $$3.a($$4, $$3x.a().toLowerCase(Locale.ROOT));
-            });
+   @Override
+   public void a() {
+      this.g--;
+      if (this.g <= 0 && this.e.bc()) {
+         float $$0 = this.e.dK().z.i();
+         if ($$0 < 1.0E-4F) {
+            this.g = 0;
+            this.f.a((gcc)(new gcf.a(this.e, aow.C)));
+         } else if ($$0 < 0.001F) {
+            this.g = 0;
+            this.f.a((gcc)(new gcf.a(this.e, aow.B)));
+         } else if ($$0 < 0.01F) {
+            this.g = 0;
+            this.f.a((gcc)(new gcf.a(this.e, aow.A)));
          }
-
-         $$2.a();
-         $$3.a();
-         return new gce<T>() {
-            @Override
-            public List<T> a(String $$0) {
-               return $$2.a($$0);
-            }
-
-            @Override
-            public List<T> b(String $$0) {
-               return $$3.a($$0);
-            }
-         };
       }
    }
-
-   List<T> a(String var1);
-
-   List<T> b(String var1);
 }

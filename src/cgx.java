@@ -1,11 +1,113 @@
-public class cgx extends cit {
-   public cgx(cit.a $$0) {
+public class cgx extends cis {
+   public static final int a = 10;
+   private static final int b = 200;
+   private static final double c = Math.sqrt(ali.d) - 1.0;
+
+   public cgx(cis.a $$0) {
       super($$0);
    }
 
    @Override
-   public ciy a(ciy $$0, cpm $$1, biy $$2) {
-      ciy $$3 = super.a($$0, $$1, $$2);
-      return $$2 instanceof cbn && ((cbn)$$2).fR().d ? $$3 : new ciy(cjb.oC);
+   public bgq a(clh $$0) {
+      cbm $$1 = $$0.o();
+      if ($$1 != null && this.a((biy)$$1).c() == ehb.a.b) {
+         $$1.c($$0.p());
+      }
+
+      return bgq.b;
+   }
+
+   @Override
+   public ckq c(cix $$0) {
+      return ckq.j;
+   }
+
+   @Override
+   public int b(cix $$0) {
+      return 200;
+   }
+
+   @Override
+   public void a(cpl $$0, biy $$1, cix $$2, int $$3) {
+      if ($$3 >= 0 && $$1 instanceof cbm $$4) {
+         ehb $$6 = this.a($$1);
+         if ($$6 instanceof egz $$7 && $$6.c() == ehb.a.b) {
+            int $$9 = this.b($$2) - $$3 + 1;
+            boolean $$10 = $$9 % 10 == 5;
+            if ($$10) {
+               gu $$11 = $$7.a();
+               dez $$12 = $$0.a_($$11);
+               bis $$13 = $$1.fm() == bgp.a ? $$4.fk() : $$4.fk().e();
+               if ($$12.z() && $$12.l() != cyq.a) {
+                  this.a($$0, $$7, $$12, $$1.f(0.0F), $$13);
+               }
+
+               aov $$15;
+               if ($$12.b() instanceof csp $$14) {
+                  $$15 = $$14.b();
+               } else {
+                  $$15 = aow.cl;
+               }
+
+               $$0.a($$4, $$11, $$15, aox.e);
+               if (!$$0.r_() && $$0.c_($$11) instanceof dcp $$17) {
+                  boolean $$18 = $$17.a($$0.V(), $$4, $$7.b());
+                  if ($$18) {
+                     bin $$19 = $$2.equals($$4.c(bin.b)) ? bin.b : bin.a;
+                     $$2.a(1, $$1, $$1x -> $$1x.d($$19));
+                  }
+               }
+            }
+
+            return;
+         }
+
+         $$1.fq();
+      } else {
+         $$1.fq();
+      }
+   }
+
+   private ehb a(biy $$0) {
+      return ccf.a($$0, $$0x -> !$$0x.G_() && $$0x.br(), c);
+   }
+
+   private void a(cpl $$0, egz $$1, dez $$2, ehd $$3, bis $$4) {
+      double $$5 = 3.0;
+      int $$6 = $$4 == bis.b ? 1 : -1;
+      int $$7 = $$0.y_().b(7, 12);
+      in $$8 = new in(iv.c, $$2);
+      ha $$9 = $$1.b();
+      cgx.a $$10 = cgx.a.a($$3, $$9);
+      ehd $$11 = $$1.e();
+
+      for (int $$12 = 0; $$12 < $$7; $$12++) {
+         $$0.a(
+            $$8,
+            $$11.c - (double)($$9 == ha.e ? 1.0E-6F : 0.0F),
+            $$11.d,
+            $$11.e - (double)($$9 == ha.c ? 1.0E-6F : 0.0F),
+            $$10.a() * (double)$$6 * 3.0 * $$0.y_().j(),
+            0.0,
+            $$10.c() * (double)$$6 * 3.0 * $$0.y_().j()
+         );
+      }
+   }
+
+   static record a(double a, double b, double c) {
+      private static final double d = 1.0;
+      private static final double e = 0.1;
+
+      public static cgx.a a(ehd $$0, ha $$1) {
+         double $$2 = 0.0;
+
+         return switch ($$1) {
+            case a, b -> new cgx.a($$0.c(), 0.0, -$$0.a());
+            case c -> new cgx.a(1.0, 0.0, -0.1);
+            case d -> new cgx.a(-1.0, 0.0, 0.1);
+            case e -> new cgx.a(-0.1, 0.0, -1.0);
+            case f -> new cgx.a(0.1, 0.0, 1.0);
+         };
+      }
    }
 }

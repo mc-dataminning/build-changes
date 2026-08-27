@@ -35,7 +35,7 @@ public class abq implements ux<aaw> {
       return new abq($$0.ah(), $$1, new abq.d($$2));
    }
 
-   public static abq a(bii $$0, boolean $$1, bgp $$2, ehe $$3) {
+   public static abq a(bii $$0, boolean $$1, bgp $$2, ehd $$3) {
       return new abq($$0.ah(), $$1, new abq.e($$2, $$3));
    }
 
@@ -94,7 +94,7 @@ public class abq implements ux<aaw> {
    public interface c {
       void a(bgp var1);
 
-      void a(bgp var1, ehe var2);
+      void a(bgp var1, ehd var2);
 
       void a();
    }
@@ -128,15 +128,15 @@ public class abq implements ux<aaw> {
 
    static class e implements abq.a {
       private final bgp a;
-      private final ehe b;
+      private final ehd b;
 
-      e(bgp $$0, ehe $$1) {
+      e(bgp $$0, ehd $$1) {
          this.a = $$0;
          this.b = $$1;
       }
 
       private e(si $$0) {
-         this.b = new ehe((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
+         this.b = new ehd((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
          this.a = $$0.b(bgp.class);
       }
 

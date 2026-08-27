@@ -1,47 +1,21 @@
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
+public class fag extends eyy<cfs> {
+   private static final aer x = new aer("textures/gui/container/shulker_box.png");
 
-public class fag extends eyz {
-   public static final float b = 62.500004F;
-   public static final float c = 0.9765628F;
-   private static final Vector3f k = new Vector3f(0.9765628F, 0.9765628F, 0.9765628F);
-   @Nullable
-   private fpz.a l;
-
-   public fag(ddu $$0, boolean $$1, boolean $$2) {
+   public fag(cfs $$0, cbl $$1, tf $$2) {
       super($$0, $$1, $$2);
+      this.k++;
    }
 
    @Override
-   protected void aE_() {
-      super.aE_();
-      this.l = fpz.a(this.f.aP(), this.a);
+   public void a(erv $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
    @Override
-   protected void b(erw $$0, dfa $$1) {
-      super.b($$0, $$1);
-      boolean $$2 = $$1.b() instanceof dah;
-      if (!$$2) {
-         $$0.c().a(0.0F, 35.0F, 0.0F);
-      }
-   }
-
-   @Override
-   protected void a(erw $$0, dfa $$1) {
-      if (this.l != null) {
-         boolean $$2 = $$1.b() instanceof dah;
-         $$0.c().a(0.0F, 31.0F, 0.0F);
-         $$0.c().b(62.500004F, 62.500004F, -62.500004F);
-         gap $$3 = fnz.a(this.a);
-         elk $$4 = $$3.a($$0.d(), this.l::a);
-         this.l.b.k = $$2;
-         this.l.a.a($$0.c(), $$4, 15728880, fyc.d);
-      }
-   }
-
-   @Override
-   protected Vector3f l() {
-      return k;
+   protected void a(erv $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.g - this.c) / 2;
+      int $$5 = (this.h - this.k) / 2;
+      $$0.a(x, $$4, $$5, 0, 0, this.c, this.k);
    }
 }

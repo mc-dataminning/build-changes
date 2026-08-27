@@ -28,9 +28,9 @@ public class aie {
       );
    }
 
-   private static int a(dr $$0, gu $$1, fd $$2, aie.b $$3, @Nullable Predicate<dfe> $$4) throws CommandSyntaxException {
+   private static int a(dr $$0, gu $$1, fd $$2, aie.b $$3, @Nullable Predicate<dfd> $$4) throws CommandSyntaxException {
       akk $$5 = $$0.e();
-      if ($$4 != null && !$$4.test(new dfe($$5, $$1, true))) {
+      if ($$4 != null && !$$4.test(new dfd($$5, $$1, true))) {
          throw a.create();
       } else {
          boolean $$6;
@@ -38,7 +38,7 @@ public class aie {
             $$5.b($$1, true);
             $$6 = !$$2.a().i() || !$$5.a_($$1).i();
          } else {
-            dcm $$7 = $$5.c_($$1);
+            dcl $$7 = $$5.c_($$1);
             bgh.a_($$7);
             $$6 = true;
          }
@@ -55,7 +55,7 @@ public class aie {
 
    public interface a {
       @Nullable
-      fd filter(dur var1, gu var2, fd var3, akk var4);
+      fd filter(duq var1, gu var2, fd var3, akk var4);
    }
 
    public static enum b {

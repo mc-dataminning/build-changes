@@ -1,26 +1,30 @@
-import javax.annotation.Nullable;
+public class bxk extends bxc {
+   private static final int b = 40;
+   private int c;
 
-public interface bxk {
-   boolean a();
+   public bxk(bwz $$0) {
+      super($$0);
+   }
 
-   void b();
+   @Override
+   public void b() {
+      this.a.dK().a(this.a.dp(), this.a.dr(), this.a.dv(), aow.gX, this.a.da(), 2.5F, 0.8F + this.a.ee().i() * 0.3F, false);
+   }
 
-   void c();
+   @Override
+   public void c() {
+      if (this.c++ >= 40) {
+         this.a.fX().a(bxp.f);
+      }
+   }
 
-   void a(bwz var1, gu var2, bhg var3, @Nullable cbn var4);
+   @Override
+   public void d() {
+      this.c = 0;
+   }
 
-   void d();
-
-   void e();
-
-   float f();
-
-   float h();
-
-   bxq<? extends bxk> i();
-
-   @Nullable
-   ehe g();
-
-   float a(bhg var1, float var2);
+   @Override
+   public bxp<bxk> i() {
+      return bxp.h;
+   }
 }

@@ -23,7 +23,7 @@ public class yv implements ux<wp> {
       this.e = $$0;
       this.d = $$1.ah();
       this.f = $$2;
-      ehe $$3 = $$2.a($$1);
+      ehd $$3 = $$2.a($$1);
       this.a = $$3.c;
       this.b = $$3.d;
       this.c = $$3.e;
@@ -67,12 +67,12 @@ public class yv implements ux<wp> {
    }
 
    @Nullable
-   public ehe a(cpm $$0) {
+   public ehd a(cpl $$0) {
       if (this.g) {
          bii $$1 = $$0.a(this.d);
-         return $$1 == null ? new ehe(this.a, this.b, this.c) : this.f.a($$1);
+         return $$1 == null ? new ehd(this.a, this.b, this.c) : this.f.a($$1);
       } else {
-         return new ehe(this.a, this.b, this.c);
+         return new ehd(this.a, this.b, this.c);
       }
    }
 }

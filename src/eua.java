@@ -35,7 +35,7 @@ public interface eua extends etp {
    }
 
    @Nullable
-   default ert a(ewd $$0) {
+   default ers a(ewe $$0) {
       return null;
    }
 
@@ -43,16 +43,16 @@ public interface eua extends etp {
       return false;
    }
 
-   void c_(boolean var1);
+   void b_(boolean var1);
 
-   boolean ax_();
+   boolean aw_();
 
    @Nullable
-   default ert aC_() {
-      return this.ax_() ? ert.a(this) : null;
+   default ers aA_() {
+      return this.aw_() ? ers.a(this) : null;
    }
 
-   default ewh s() {
-      return ewh.a();
+   default ewi s() {
+      return ewi.a();
    }
 }

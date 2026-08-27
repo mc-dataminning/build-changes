@@ -1,133 +1,122 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.Sets;
 import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Set;
+import com.mojang.serialization.Codec;
+import java.util.Objects;
 import java.util.UUID;
-import java.util.stream.Collectors;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
 public class bkc {
    private static final Logger a = LogUtils.getLogger();
-   private final Map<bka, bkb> b = Maps.newHashMap();
-   private final Set<bkb> c = Sets.newHashSet();
-   private final bke d;
+   private final double b;
+   private final bkc.a c;
+   private final Supplier<String> d;
+   private final UUID e;
 
-   public bkc(bke $$0) {
-      this.d = $$0;
+   public bkc(String $$0, double $$1, bkc.a $$2) {
+      this(arp.a(aru.c()), () -> $$0, $$1, $$2);
    }
 
-   private void a(bkb $$0) {
-      if ($$0.a().b()) {
-         this.c.add($$0);
-      }
+   public bkc(UUID $$0, String $$1, double $$2, bkc.a $$3) {
+      this($$0, () -> $$1, $$2, $$3);
    }
 
-   public Set<bkb> a() {
+   public bkc(UUID $$0, Supplier<String> $$1, double $$2, bkc.a $$3) {
+      this.e = $$0;
+      this.d = $$1;
+      this.b = $$2;
+      this.c = $$3;
+   }
+
+   public UUID a() {
+      return this.e;
+   }
+
+   public String b() {
+      return this.d.get();
+   }
+
+   public bkc.a c() {
       return this.c;
    }
 
-   public Collection<bkb> b() {
-      return this.b.values().stream().filter($$0 -> $$0.a().b()).collect(Collectors.toList());
+   public double d() {
+      return this.b;
    }
 
-   @Nullable
-   public bkb a(bka $$0) {
-      return this.b.computeIfAbsent($$0, $$0x -> this.d.a(this::a, $$0x));
-   }
-
-   @Nullable
-   public bkb a(he<bka> $$0) {
-      return this.a($$0.a());
-   }
-
-   public boolean b(bka $$0) {
-      return this.b.get($$0) != null || this.d.c($$0);
-   }
-
-   public boolean b(he<bka> $$0) {
-      return this.b($$0.a());
-   }
-
-   public boolean a(bka $$0, UUID $$1) {
-      bkb $$2 = this.b.get($$0);
-      return $$2 != null ? $$2.a($$1) != null : this.d.b($$0, $$1);
-   }
-
-   public boolean a(he<bka> $$0, UUID $$1) {
-      return this.a($$0.a(), $$1);
-   }
-
-   public double c(bka $$0) {
-      bkb $$1 = this.b.get($$0);
-      return $$1 != null ? $$1.f() : this.d.a($$0);
-   }
-
-   public double d(bka $$0) {
-      bkb $$1 = this.b.get($$0);
-      return $$1 != null ? $$1.b() : this.d.b($$0);
-   }
-
-   public double b(bka $$0, UUID $$1) {
-      bkb $$2 = this.b.get($$0);
-      return $$2 != null ? $$2.a($$1).d() : this.d.a($$0, $$1);
-   }
-
-   public double b(he<bka> $$0, UUID $$1) {
-      return this.b($$0.a(), $$1);
-   }
-
-   public void a(Multimap<bka, bkd> $$0) {
-      $$0.asMap().forEach(($$0x, $$1) -> {
-         bkb $$2 = this.b.get($$0x);
-         if ($$2 != null) {
-            $$1.forEach($$1x -> $$2.b($$1x.a()));
-         }
-      });
-   }
-
-   public void b(Multimap<bka, bkd> $$0) {
-      $$0.forEach(($$0x, $$1) -> {
-         bkb $$2 = this.a($$0x);
-         if ($$2 != null) {
-            $$2.b($$1.a());
-            $$2.b($$1);
-         }
-      });
-   }
-
-   public void a(bkc $$0) {
-      $$0.b.values().forEach($$0x -> {
-         bkb $$1 = this.a($$0x.a());
-         if ($$1 != null) {
-            $$1.a($$0x);
-         }
-      });
-   }
-
-   public qx c() {
-      qx $$0 = new qx();
-
-      for (bkb $$1 : this.b.values()) {
-         $$0.add($$1.g());
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         bkc $$1 = (bkc)$$0;
+         return Objects.equals(this.e, $$1.e);
+      } else {
+         return false;
       }
+   }
 
+   @Override
+   public int hashCode() {
+      return this.e.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "AttributeModifier{amount=" + this.b + ", operation=" + this.c + ", name='" + this.d.get() + "', id=" + this.e + "}";
+   }
+
+   public qr e() {
+      qr $$0 = new qr();
+      $$0.a("Name", this.b());
+      $$0.a("Amount", this.b);
+      $$0.a("Operation", this.c.a());
+      $$0.a("UUID", this.e);
       return $$0;
    }
 
-   public void a(qx $$0) {
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         qr $$2 = $$0.a($$1);
-         String $$3 = $$2.l("Name");
-         ac.a(jb.v.b(aer.a($$3)), $$1x -> {
-            bkb $$2x = this.a($$1x);
-            if ($$2x != null) {
-               $$2x.a($$2);
-            }
-         }, () -> a.warn("Ignoring unknown attribute '{}'", $$3));
+   @Nullable
+   public static bkc a(qr $$0) {
+      try {
+         UUID $$1 = $$0.a("UUID");
+         bkc.a $$2 = bkc.a.a($$0.h("Operation"));
+         return new bkc($$1, $$0.l("Name"), $$0.k("Amount"), $$2);
+      } catch (Exception var3) {
+         a.warn("Unable to create attribute: {}", var3.getMessage());
+         return null;
+      }
+   }
+
+   public static enum a implements ash {
+      a("addition", 0),
+      b("multiply_base", 1),
+      c("multiply_total", 2);
+
+      private static final bkc.a[] e = new bkc.a[]{a, b, c};
+      public static final Codec<bkc.a> d = ash.a(bkc.a::values);
+      private final String f;
+      private final int g;
+
+      private a(String $$0, int $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      public int a() {
+         return this.g;
+      }
+
+      public static bkc.a a(int $$0) {
+         if ($$0 >= 0 && $$0 < e.length) {
+            return e[$$0];
+         } else {
+            throw new IllegalArgumentException("No operation with value " + $$0);
+         }
+      }
+
+      @Override
+      public String c() {
+         return this.f;
       }
    }
 }

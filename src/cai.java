@@ -2,16 +2,17 @@ import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
 
 public class cai {
-   public static bkr<biy> a() {
-      return boc.a(
-         (Function<boc.b<biy>, ? extends App<boc.c<biy>, bof<biy>>>)($$0 -> $$0.group($$0.b(bsa.o), $$0.a(bsa.ag))
-               .apply($$0, ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                     biy $$6 = $$0.b($$1);
-                     if ($$6.ag() == bim.W && $$6.eu()) {
-                        $$2.a(true, (long)cae.d.a($$4.dK().z));
+   public static bkq<biy> a(int $$0) {
+      return bob.a(
+         (Function<bob.b<biy>, ? extends App<bob.c<biy>, boe<biy>>>)($$1 -> $$1.group($$1.b(brz.K), $$1.c(brz.ac), $$1.c(brz.af), $$1.c(brz.ae))
+               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$4x, $$5x, $$6) -> {
+                     byf $$7 = $$1.b($$2);
+                     if (!cad.a($$7.j())) {
+                        return false;
+                     } else {
+                        $$3.a(true, (long)$$0);
+                        return true;
                      }
-
-                     return true;
                   }))
       );
    }

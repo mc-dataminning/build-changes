@@ -1,107 +1,61 @@
 import com.google.common.collect.Maps;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-public class frf implements fqu.a {
-   private final eqm a;
-   private final Map<aeq<cpm>, Map<String, dur>> b = Maps.newIdentityHashMap();
-   private final Map<aeq<cpm>, Map<String, wd.a>> c = Maps.newIdentityHashMap();
-   private static final int d = 500;
+public class frf implements frd.a {
+   private static final float a = 0.02F;
+   private final Map<gu, frf.a> b = Maps.newHashMap();
 
-   public frf(eqm $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public void a(elg $$0, fnl $$1, double $$2, double $$3, double $$4) {
-      epx $$5 = this.a.j.m();
-      aeq<cpm> $$6 = this.a.u.ac();
-      gu $$7 = gu.a($$5.b().c, 0.0, $$5.b().e);
-      elk $$8 = $$1.getBuffer(fnt.x());
-      if (this.b.containsKey($$6)) {
-         for (dur $$9 : this.b.get($$6).values()) {
-            if ($$7.a($$9.f(), 500.0)) {
-               fnj.a(
-                  $$0,
-                  $$8,
-                  (double)$$9.g() - $$2,
-                  (double)$$9.h() - $$3,
-                  (double)$$9.i() - $$4,
-                  (double)($$9.j() + 1) - $$2,
-                  (double)($$9.k() + 1) - $$3,
-                  (double)($$9.l() + 1) - $$4,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F
-               );
-            }
-         }
-      }
-
-      Map<String, wd.a> $$10 = this.c.get($$6);
-      if ($$10 != null) {
-         for (wd.a $$11 : $$10.values()) {
-            dur $$12 = $$11.a();
-            if ($$7.a($$12.f(), 500.0)) {
-               if ($$11.b()) {
-                  fnj.a(
-                     $$0,
-                     $$8,
-                     (double)$$12.g() - $$2,
-                     (double)$$12.h() - $$3,
-                     (double)$$12.i() - $$4,
-                     (double)($$12.j() + 1) - $$2,
-                     (double)($$12.k() + 1) - $$3,
-                     (double)($$12.l() + 1) - $$4,
-                     0.0F,
-                     1.0F,
-                     0.0F,
-                     1.0F,
-                     0.0F,
-                     1.0F,
-                     0.0F
-                  );
-               } else {
-                  fnj.a(
-                     $$0,
-                     $$8,
-                     (double)$$12.g() - $$2,
-                     (double)$$12.h() - $$3,
-                     (double)$$12.i() - $$4,
-                     (double)($$12.j() + 1) - $$2,
-                     (double)($$12.k() + 1) - $$3,
-                     (double)($$12.l() + 1) - $$4,
-                     0.0F,
-                     0.0F,
-                     1.0F,
-                     1.0F,
-                     0.0F,
-                     0.0F,
-                     1.0F
-                  );
-               }
-            }
-         }
-      }
-   }
-
-   public void a(dur $$0, List<wd.a> $$1, aeq<cpm> $$2) {
-      this.b.computeIfAbsent($$2, $$0x -> new HashMap<>()).put($$0.toString(), $$0);
-      Map<String, wd.a> $$3 = this.c.computeIfAbsent($$2, $$0x -> new HashMap<>());
-
-      for (wd.a $$4 : $$1) {
-         $$3.put($$4.a().toString(), $$4);
-      }
+   public void a(gu $$0, int $$1, String $$2, int $$3) {
+      this.b.put($$0, new frf.a($$1, $$2, ac.b() + (long)$$3));
    }
 
    @Override
    public void a() {
       this.b.clear();
-      this.c.clear();
+   }
+
+   @Override
+   public void a(elf $$0, fnu $$1, double $$2, double $$3, double $$4) {
+      long $$5 = ac.b();
+      this.b.entrySet().removeIf($$1x -> $$5 > ((frf.a)$$1x.getValue()).c);
+      this.b.forEach(($$2x, $$3x) -> this.a($$0, $$1, $$2x, $$3x));
+   }
+
+   private void a(elf $$0, fnu $$1, gu $$2, frf.a $$3) {
+      frd.a($$0, $$1, $$2, 0.02F, $$3.a(), $$3.b(), $$3.c(), $$3.d() * 0.75F);
+      if (!$$3.b.isEmpty()) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v() + 1.2;
+         double $$6 = (double)$$2.w() + 0.5;
+         frd.a($$0, $$1, $$3.b, $$4, $$5, $$6, -1, 0.01F, true, 0.0F, true);
+      }
+   }
+
+   static class a {
+      public int a;
+      public String b;
+      public long c;
+
+      public a(int $$0, String $$1, long $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public float a() {
+         return (float)(this.a >> 16 & 0xFF) / 255.0F;
+      }
+
+      public float b() {
+         return (float)(this.a >> 8 & 0xFF) / 255.0F;
+      }
+
+      public float c() {
+         return (float)(this.a & 0xFF) / 255.0F;
+      }
+
+      public float d() {
+         return (float)(this.a >> 24 & 0xFF) / 255.0F;
+      }
    }
 }

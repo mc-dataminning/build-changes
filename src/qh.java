@@ -194,19 +194,19 @@ public class qh {
       if ($$2 <= 48 && $$3 <= 48 && $$4 <= 48) {
          akk $$5 = $$0.e();
          gu $$6 = gu.a($$0.d());
-         gu $$7 = new gu($$6.u(), $$0.e().a(dkj.a.b, $$6).v(), $$6.w() + 3);
-         qe.a($$1.toLowerCase(), $$7, new hz($$2, $$3, $$4), cyy.a, $$5);
+         gu $$7 = new gu($$6.u(), $$0.e().a(dki.a.b, $$6).v(), $$6.w() + 3);
+         qe.a($$1.toLowerCase(), $$7, new hz($$2, $$3, $$4), cyx.a, $$5);
 
          for (int $$8 = 0; $$8 < $$2; $$8++) {
             for (int $$9 = 0; $$9 < $$4; $$9++) {
                gu $$10 = new gu($$7.u() + $$8, $$7.v() + 1, $$7.w() + $$9);
-               csm $$11 = csn.h;
+               csl $$11 = csm.h;
                fd $$12 = new fd($$11.n(), Collections.emptySet(), null);
                $$12.a($$5, $$10, 2);
             }
          }
 
-         qe.a($$7, new gu(1, 0, -1), cyy.a, $$5);
+         qe.a($$7, new gu(1, 0, -1), cyx.a, $$5);
          return 0;
       } else {
          throw new IllegalArgumentException("The structure must be less than 48 blocks big in each axis");
@@ -214,7 +214,7 @@ public class qh {
    }
 
    private static int a(dr $$0, String $$1) throws CommandSyntaxException {
-      eha $$2 = (eha)$$0.h().a(10.0, 1.0F, false);
+      egz $$2 = (egz)$$0.h().a(10.0, 1.0F, false);
       gu $$3 = $$2.a();
       akk $$4 = $$0.e();
       Optional<gu> $$5 = qe.a($$3, 15, $$4);
@@ -226,7 +226,7 @@ public class qh {
          $$0.b(tf.b("Can't find a structure block that contains the targeted pos " + $$3));
          return 0;
       } else {
-         ddz $$6 = (ddz)$$4.c_($$5.get());
+         ddy $$6 = (ddy)$$4.c_($$5.get());
          gu $$7 = $$3.b($$5.get());
          String $$8 = $$7.u() + ", " + $$7.v() + ", " + $$7.w();
          String $$9 = $$6.f();
@@ -275,7 +275,7 @@ public class qh {
    }
 
    private static void a(akk $$0, gu $$1, @Nullable qc $$2) {
-      ddz $$3 = (ddz)$$0.c_($$1);
+      ddy $$3 = (ddy)$$0.c_($$1);
       String $$4 = $$3.f();
       qi $$5 = pt.f($$4);
       pr $$6 = new pr($$5, $$3.w(), $$0);
@@ -285,7 +285,7 @@ public class qh {
       }
 
       a($$5, $$0);
-      egz $$7 = qe.a($$3);
+      egy $$7 = qe.a($$3);
       gu $$8 = gu.a($$7.a, $$7.b, $$7.c);
       pu.a($$6, $$8, px.a);
    }
@@ -308,7 +308,7 @@ public class qh {
    private static int a(dr $$0, int $$1) {
       akk $$2 = $$0.e();
       pu.a($$2);
-      gu $$3 = gu.a($$0.d().c, (double)$$0.e().a(dkj.a.b, gu.a($$0.d())).v(), $$0.d().e);
+      gu $$3 = gu.a($$0.d().c, (double)$$0.e().a(dki.a.b, gu.a($$0.d())).v(), $$0.d().e);
       pu.a($$2, $$3, px.a, arp.a($$1, 0, 1024));
       return 1;
    }
@@ -316,11 +316,11 @@ public class qh {
    private static int a(dr $$0, qi $$1, int $$2) {
       akk $$3 = $$0.e();
       gu $$4 = gu.a($$0.d());
-      int $$5 = $$0.e().a(dkj.a.b, $$4).v();
+      int $$5 = $$0.e().a(dki.a.b, $$4).v();
       gu $$6 = new gu($$4.u(), $$5, $$4.w() + 3);
       pu.a($$3);
       a($$1, $$3);
-      cyy $$7 = qe.a($$2);
+      cyx $$7 = qe.a($$2);
       pr $$8 = new pr($$1, $$7, $$3);
       pu.a($$8, $$6, px.a);
       return 1;
@@ -372,9 +372,9 @@ public class qh {
 
    private static void a(dr $$0, Collection<qi> $$1, int $$2, int $$3) {
       gu $$4 = gu.a($$0.d());
-      gu $$5 = new gu($$4.u(), $$0.e().a(dkj.a.b, $$4).v(), $$4.w() + 3);
+      gu $$5 = new gu($$4.u(), $$0.e().a(dki.a.b, $$4).v(), $$4.w() + 3);
       akk $$6 = $$0.e();
-      cyy $$7 = qe.a($$2);
+      cyx $$7 = qe.a($$2);
       Collection<pr> $$8 = pu.b($$1, $$5, $$7, $$6, px.a, $$3);
       qc $$9 = new qc($$8);
       $$9.a(new qh.a($$6, $$9));
@@ -393,7 +393,7 @@ public class qh {
          a($$2, "Couldn't find any structure block within 15 radius", n.m);
          return 0;
       } else {
-         ddz $$4 = (ddz)$$2.c_($$3);
+         ddy $$4 = (ddy)$$2.c_($$3);
          String $$5 = $$4.f();
          return c($$0, $$5);
       }
@@ -410,7 +410,7 @@ public class qh {
          boolean $$4 = true;
 
          for (gu $$5 : $$3) {
-            ddz $$6 = (ddz)$$2.c_($$5);
+            ddy $$6 = (ddy)$$2.c_($$5);
             String $$7 = $$6.f();
             if (c($$0, $$7) != 0) {
                $$4 = false;

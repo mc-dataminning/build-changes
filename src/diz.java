@@ -1,15 +1,19 @@
-public interface diz<T> {
-   void g(T var1);
+import java.util.UUID;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   void f(T var1);
+public interface diz<T extends diq> {
+   @Nullable
+   T a(int var1);
 
-   void e(T var1);
+   @Nullable
+   T a(UUID var1);
 
-   void d(T var1);
+   Iterable<T> a();
 
-   void c(T var1);
+   <U extends T> void a(dix<T, U> var1, aqg<U> var2);
 
-   void b(T var1);
+   void a(egy var1, Consumer<T> var2);
 
-   void a(T var1);
+   <U extends T> void a(dix<T, U> var1, egy var2, aqg<U> var3);
 }

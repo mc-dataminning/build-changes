@@ -10,7 +10,7 @@ public class etj {
       this.f = $$0;
    }
 
-   public void a(erw $$0, int $$1, eru $$2, int $$3) {
+   public void a(erv $$0, int $$1, ert $$2, int $$3) {
       $$0.c().a();
       $$0.c().a((float)$$1 / 2.0F + 123.0F, 69.0F, 0.0F);
       $$0.c().a(a.f.rotationDegrees(-20.0F));

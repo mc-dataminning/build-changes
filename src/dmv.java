@@ -1,48 +1,29 @@
 import com.mojang.serialization.Codec;
 
-public class dmv extends dnn<dpi> {
+public class dmv extends dnm<dpi> {
    public dmv(Codec<dpi> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dnp<dpi> $$0) {
-      cqg $$1 = $$0.b();
-      dpi $$2 = $$0.f();
+   public boolean a(dno<dpi> $$0) {
+      gu $$1 = $$0.e();
+      cqf $$2 = $$0.b();
       aru $$3 = $$0.d();
-      int $$4 = $$2.a().size();
-      int[] $$5 = new int[$$4];
-      int $$6 = 0;
-
-      for (int $$7 = 0; $$7 < $$4; $$7++) {
-         $$5[$$7] = $$2.a().get($$7).a().a($$3);
-         $$6 += $$5[$$7];
-      }
-
-      if ($$6 == 0) {
+      dpi $$4 = $$0.f();
+      if ($$1.v() < $$2.C_() + 5) {
          return false;
       } else {
-         gu.a $$8 = $$0.e().j();
-         gu.a $$9 = $$8.j().c($$2.b());
+         int $$5 = 2 + $$3.a(2);
+         int $$6 = 2 + $$3.a(2);
 
-         for (int $$10 = 0; $$10 < $$6; $$10++) {
-            if (!$$2.c().test($$1, $$9)) {
-               a($$5, $$6, $$10, $$2.d());
-               break;
-            }
-
-            $$9.c($$2.b());
-         }
-
-         for (int $$11 = 0; $$11 < $$4; $$11++) {
-            int $$12 = $$5[$$11];
-            if ($$12 != 0) {
-               dpi.a $$13 = $$2.a().get($$11);
-
-               for (int $$14 = 0; $$14 < $$12; $$14++) {
-                  $$1.a($$8, $$13.b().a($$3, $$8), 2);
-                  $$8.c($$2.b());
-               }
+         for (gu $$7 : gu.a($$1.b(-$$5, 0, -$$6), $$1.b($$5, 1, $$6))) {
+            int $$8 = $$1.u() - $$7.u();
+            int $$9 = $$1.w() - $$7.w();
+            if ((float)($$8 * $$8 + $$9 * $$9) <= $$3.i() * 10.0F - $$3.i() * 6.0F) {
+               this.a($$2, $$7, $$3, $$4);
+            } else if ((double)$$3.i() < 0.031) {
+               this.a($$2, $$7, $$3, $$4);
             }
          }
 
@@ -50,17 +31,15 @@ public class dmv extends dnn<dpi> {
       }
    }
 
-   private static void a(int[] $$0, int $$1, int $$2, boolean $$3) {
-      int $$4 = $$1 - $$2;
-      int $$5 = $$3 ? 1 : -1;
-      int $$6 = $$3 ? 0 : $$0.length - 1;
-      int $$7 = $$3 ? $$0.length : -1;
+   private boolean a(cpm $$0, gu $$1, aru $$2) {
+      gu $$3 = $$1.d();
+      dez $$4 = $$0.a_($$3);
+      return $$4.a(csm.kE) ? $$2.h() : $$4.d($$0, $$3, ha.b);
+   }
 
-      for (int $$8 = $$6; $$8 != $$7 && $$4 > 0; $$8 += $$5) {
-         int $$9 = $$0[$$8];
-         int $$10 = Math.min($$9, $$4);
-         $$4 -= $$10;
-         $$0[$$8] -= $$10;
+   private void a(cpm $$0, gu $$1, aru $$2, dpi $$3) {
+      if ($$0.t($$1) && this.a($$0, $$1, $$2)) {
+         $$0.a($$1, $$3.b.a($$2, $$1), 4);
       }
    }
 }

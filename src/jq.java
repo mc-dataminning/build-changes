@@ -30,57 +30,57 @@ public class jq implements jm {
       bim.l
    );
    public static final List<bim<?>> b = List.of(bim.bd, bim.O, bim.aN);
-   private static final cit[] c = new cit[]{cjb.ql, cjb.qn, cjb.qo, cjb.qm};
-   private static final cit[] d = new cit[]{cjb.pT, cjb.pU, cjb.pR, cjb.pS};
-   private static final cit[] e = new cit[]{
-      cjb.nF,
-      cjb.oD,
-      cjb.oJ,
-      cjb.pj,
-      cjb.pk,
-      cjb.pm,
-      cjb.pn,
-      cjb.ql,
-      cjb.qm,
-      cjb.qn,
-      cjb.qo,
-      cjb.qp,
-      cjb.qq,
-      cjb.re,
-      cjb.rh,
-      cjb.rl,
-      cjb.rm,
-      cjb.rn,
-      cjb.ro,
-      cjb.rp,
-      cjb.rx,
-      cjb.tl,
-      cjb.tm,
-      cjb.tn,
-      cjb.to,
-      cjb.tq,
-      cjb.tz,
-      cjb.tG,
-      cjb.tH,
-      cjb.tI,
-      cjb.tT,
-      cjb.tU,
-      cjb.um,
-      cjb.uq,
-      cjb.us,
-      cjb.ri,
-      cjb.va,
-      cjb.vv,
-      cjb.vD,
-      cjb.vw
+   private static final cis[] c = new cis[]{cja.ql, cja.qn, cja.qo, cja.qm};
+   private static final cis[] d = new cis[]{cja.pT, cja.pU, cja.pR, cja.pS};
+   private static final cis[] e = new cis[]{
+      cja.nF,
+      cja.oD,
+      cja.oJ,
+      cja.pj,
+      cja.pk,
+      cja.pm,
+      cja.pn,
+      cja.ql,
+      cja.qm,
+      cja.qn,
+      cja.qo,
+      cja.qp,
+      cja.qq,
+      cja.re,
+      cja.rh,
+      cja.rl,
+      cja.rm,
+      cja.rn,
+      cja.ro,
+      cja.rp,
+      cja.rx,
+      cja.tl,
+      cja.tm,
+      cja.tn,
+      cja.to,
+      cja.tq,
+      cja.tz,
+      cja.tG,
+      cja.tH,
+      cja.tI,
+      cja.tT,
+      cja.tU,
+      cja.um,
+      cja.uq,
+      cja.us,
+      cja.ri,
+      cja.va,
+      cja.vv,
+      cja.vD,
+      cja.vw
    };
-   private static final cit[] f = new cit[]{cjb.oa, cjb.ok, cjb.of, cjb.op, cjb.ou, cjb.oz};
+   private static final cis[] f = new cis[]{cja.oa, cja.ok, cja.of, cja.op, cja.ou, cja.oz};
 
    @Override
    public void a(hg.b $$0, Consumer<ae> $$1) {
       ae $$2 = ae.a.a()
          .a(
-            csn.ij,
+            csm.ij,
             tf.c("advancements.husbandry.root.title"),
             tf.c("advancements.husbandry.root.description"),
             new aer("textures/gui/advancements/backgrounds/husbandry.png"),
@@ -93,20 +93,20 @@ public class jq implements jm {
          .a($$1, "husbandry/root");
       ae $$3 = ae.a.a()
          .a($$2)
-         .a(cjb.oI, tf.c("advancements.husbandry.plant_seed.title"), tf.c("advancements.husbandry.plant_seed.description"), null, ao.a, true, true, false)
+         .a(cja.oI, tf.c("advancements.husbandry.plant_seed.title"), tf.c("advancements.husbandry.plant_seed.description"), null, ao.a, true, true, false)
          .a(ap.b)
-         .a("wheat", ca.a.a(csn.cB))
-         .a("pumpkin_stem", ca.a.a(csn.fd))
-         .a("melon_stem", ca.a.a(csn.fe))
-         .a("beetroots", ca.a.a(csn.kD))
-         .a("nether_wart", ca.a.a(csn.fq))
-         .a("torchflower", ca.a.a(csn.kA))
-         .a("pitcher_pod", ca.a.a(csn.kB))
+         .a("wheat", ca.a.a(csm.cB))
+         .a("pumpkin_stem", ca.a.a(csm.fd))
+         .a("melon_stem", ca.a.a(csm.fe))
+         .a("beetroots", ca.a.a(csm.kD))
+         .a("nether_wart", ca.a.a(csm.fq))
+         .a("torchflower", ca.a.a(csm.kA))
+         .a("pitcher_pod", ca.a.a(csm.kB))
          .a($$1, "husbandry/plant_seed");
       ae $$4 = ae.a.a()
          .a($$2)
          .a(
-            cjb.oI,
+            cja.oI,
             tf.c("advancements.husbandry.breed_an_animal.title"),
             tf.c("advancements.husbandry.breed_an_animal.description"),
             null,
@@ -121,19 +121,19 @@ public class jq implements jm {
       a($$4, $$1, a.stream(), b.stream());
       b(ae.a.a())
          .a($$3)
-         .a(cjb.nF, tf.c("advancements.husbandry.balanced_diet.title"), tf.c("advancements.husbandry.balanced_diet.description"), null, ao.b, true, true, false)
+         .a(cja.nF, tf.c("advancements.husbandry.balanced_diet.title"), tf.c("advancements.husbandry.balanced_diet.description"), null, ao.b, true, true, false)
          .a(ah.a.a(100))
          .a($$1, "husbandry/balanced_diet");
       ae.a.a()
          .a($$3)
-         .a(cjb.oA, tf.c("advancements.husbandry.netherite_hoe.title"), tf.c("advancements.husbandry.netherite_hoe.description"), null, ao.b, true, true, false)
+         .a(cja.oA, tf.c("advancements.husbandry.netherite_hoe.title"), tf.c("advancements.husbandry.netherite_hoe.description"), null, ao.b, true, true, false)
          .a(ah.a.a(100))
-         .a("netherite_hoe", bx.a.a(cjb.oA))
+         .a("netherite_hoe", bx.a.a(cja.oA))
          .a($$1, "husbandry/obtain_netherite_hoe");
       ae $$5 = ae.a.a()
          .a($$2)
          .a(
-            cjb.tQ,
+            cja.tQ,
             tf.c("advancements.husbandry.tame_an_animal.title"),
             tf.c("advancements.husbandry.tame_an_animal.description"),
             null,
@@ -148,7 +148,7 @@ public class jq implements jm {
          .a($$2)
          .a(ap.b)
          .a(
-            cjb.qh,
+            cja.qh,
             tf.c("advancements.husbandry.fishy_business.title"),
             tf.c("advancements.husbandry.fishy_business.description"),
             null,
@@ -162,7 +162,7 @@ public class jq implements jm {
          .a($$6)
          .a(ap.b)
          .a(
-            cjb.pR,
+            cja.pR,
             tf.c("advancements.husbandry.tactical_fishing.title"),
             tf.c("advancements.husbandry.tactical_fishing.description"),
             null,
@@ -175,9 +175,9 @@ public class jq implements jm {
       ae $$8 = ae.a.a()
          .a($$7)
          .a(ap.b)
-         .a(jb.i.b(cjb.pV).a(), bs.a.a(bz.a.a().a(cjb.pV).b()))
+         .a(jb.i.b(cja.pV).a(), bs.a.a(bz.a.a().a(cja.pV).b()))
          .a(
-            cjb.pV,
+            cja.pV,
             tf.c("advancements.husbandry.axolotl_in_a_bucket.title"),
             tf.c("advancements.husbandry.axolotl_in_a_bucket.description"),
             null,
@@ -191,7 +191,7 @@ public class jq implements jm {
          .a($$8)
          .a("kill_axolotl_target", bh.a.a(bo.a.a().a(bim.f).b()))
          .a(
-            cjb.pU,
+            cja.pU,
             tf.c("advancements.husbandry.kill_axolotl_target.title"),
             tf.c("advancements.husbandry.kill_axolotl_target.description"),
             null,
@@ -204,7 +204,7 @@ public class jq implements jm {
       e(ae.a.a())
          .a($$5)
          .a(
-            cjb.ql,
+            cja.ql,
             tf.c("advancements.husbandry.complete_catalogue.title"),
             tf.c("advancements.husbandry.complete_catalogue.description"),
             null,
@@ -217,9 +217,9 @@ public class jq implements jm {
          .a($$1, "husbandry/complete_catalogue");
       ae $$9 = ae.a.a()
          .a($$2)
-         .a("safely_harvest_honey", ca.a.a(ch.a.a().a(at.a.a().a(apl.aF)).a(true), bz.a.a().a(cjb.rw)))
+         .a("safely_harvest_honey", ca.a.a(ch.a.a().a(at.a.a().a(apl.aF)).a(true), bz.a.a().a(cja.rw)))
          .a(
-            cjb.vD,
+            cja.vD,
             tf.c("advancements.husbandry.safely_harvest_honey.title"),
             tf.c("advancements.husbandry.safely_harvest_honey.description"),
             null,
@@ -231,19 +231,19 @@ public class jq implements jm {
          .a($$1, "husbandry/safely_harvest_honey");
       ae $$10 = ae.a.a()
          .a($$9)
-         .a(cjb.vA, tf.c("advancements.husbandry.wax_on.title"), tf.c("advancements.husbandry.wax_on.description"), null, ao.a, true, true, false)
-         .a("wax_on", ca.a.a(ch.a.a().a(at.a.a().a(cin.a.get().keySet())), bz.a.a().a(cjb.vA)))
+         .a(cja.vA, tf.c("advancements.husbandry.wax_on.title"), tf.c("advancements.husbandry.wax_on.description"), null, ao.a, true, true, false)
+         .a("wax_on", ca.a.a(ch.a.a().a(at.a.a().a(cim.a.get().keySet())), bz.a.a().a(cja.vA)))
          .a($$1, "husbandry/wax_on");
       ae.a.a()
          .a($$10)
-         .a(cjb.of, tf.c("advancements.husbandry.wax_off.title"), tf.c("advancements.husbandry.wax_off.description"), null, ao.a, true, true, false)
-         .a("wax_off", ca.a.a(ch.a.a().a(at.a.a().a(cin.b.get().keySet())), bz.a.a().a(f)))
+         .a(cja.of, tf.c("advancements.husbandry.wax_off.title"), tf.c("advancements.husbandry.wax_off.description"), null, ao.a, true, true, false)
+         .a("wax_off", ca.a.a(ch.a.a().a(at.a.a().a(cim.b.get().keySet())), bz.a.a().a(f)))
          .a($$1, "husbandry/wax_off");
       ae $$11 = ae.a.a()
          .a($$2)
-         .a(jb.i.b(cjb.pW).a(), bs.a.a(bz.a.a().a(cjb.pW).b()))
+         .a(jb.i.b(cja.pW).a(), bs.a.a(bz.a.a().a(cja.pW).b()))
          .a(
-            cjb.pW,
+            cja.pW,
             tf.c("advancements.husbandry.tadpole_in_a_bucket.title"),
             tf.c("advancements.husbandry.tadpole_in_a_bucket.description"),
             null,
@@ -256,7 +256,7 @@ public class jq implements jm {
       ae $$12 = a(ae.a.a())
          .a($$11)
          .a(
-            cjb.tQ,
+            cja.tQ,
             tf.c("advancements.husbandry.leash_all_frog_variants.title"),
             tf.c("advancements.husbandry.leash_all_frog_variants.description"),
             null,
@@ -268,14 +268,14 @@ public class jq implements jm {
          .a($$1, "husbandry/leash_all_frog_variants");
       ae.a.a()
          .a($$12)
-         .a(cjb.wr, tf.c("advancements.husbandry.froglights.title"), tf.c("advancements.husbandry.froglights.description"), null, ao.b, true, true, false)
-         .a("froglights", bx.a.a(cjb.wq, cjb.ws, cjb.wr))
+         .a(cja.wr, tf.c("advancements.husbandry.froglights.title"), tf.c("advancements.husbandry.froglights.description"), null, ao.b, true, true, false)
+         .a("froglights", bx.a.a(cja.wq, cja.ws, cja.wr))
          .a($$1, "husbandry/froglights");
       ae.a.a()
          .a($$2)
-         .a("silk_touch_nest", as.a.a(csn.pe, bz.a.a().a(new bj(cnj.v, cj.d.b(1))), cj.d.a(3)))
+         .a("silk_touch_nest", as.a.a(csm.pe, bz.a.a().a(new bj(cni.v, cj.d.b(1))), cj.d.a(3)))
          .a(
-            csn.pe,
+            csm.pe,
             tf.c("advancements.husbandry.silk_touch_nest.title"),
             tf.c("advancements.husbandry.silk_touch_nest.description"),
             null,
@@ -288,7 +288,7 @@ public class jq implements jm {
       ae.a.a()
          .a($$2)
          .a(
-            cjb.ni,
+            cja.ni,
             tf.c("advancements.husbandry.ride_a_boat_with_a_goat.title"),
             tf.c("advancements.husbandry.ride_a_boat_with_a_goat.description"),
             null,
@@ -302,7 +302,7 @@ public class jq implements jm {
       ae.a.a()
          .a($$2)
          .a(
-            cjb.qs,
+            cja.qs,
             tf.c("advancements.husbandry.make_a_sign_glow.title"),
             tf.c("advancements.husbandry.make_a_sign_glow.description"),
             null,
@@ -311,12 +311,12 @@ public class jq implements jm {
             true,
             false
          )
-         .a("make_a_sign_glow", ca.a.a(ch.a.a().a(at.a.a().a(apl.aA)), bz.a.a().a(cjb.qs)))
+         .a("make_a_sign_glow", ca.a.a(ch.a.a().a(at.a.a().a(apl.aA)), bz.a.a().a(cja.qs)))
          .a($$1, "husbandry/make_a_sign_glow");
       ae $$13 = ae.a.a()
          .a($$2)
          .a(
-            cjb.re,
+            cja.re,
             tf.c("advancements.husbandry.allay_deliver_item_to_player.title"),
             tf.c("advancements.husbandry.allay_deliver_item_to_player.description"),
             null,
@@ -330,7 +330,7 @@ public class jq implements jm {
       ae.a.a()
          .a($$13)
          .a(
-            cjb.lJ,
+            cja.lJ,
             tf.c("advancements.husbandry.allay_deliver_cake_to_note_block.title"),
             tf.c("advancements.husbandry.allay_deliver_cake_to_note_block.description"),
             null,
@@ -339,12 +339,12 @@ public class jq implements jm {
             true,
             true
          )
-         .a("allay_deliver_cake_to_note_block", ca.a.b(ch.a.a().a(at.a.a().a(csn.aY)), bz.a.a().a(cjb.qN)))
+         .a("allay_deliver_cake_to_note_block", ca.a.b(ch.a.a().a(at.a.a().a(csm.aY)), bz.a.a().a(cja.qN)))
          .a($$1, "husbandry/allay_deliver_cake_to_note_block");
       ae $$14 = ae.a.a()
          .a($$2)
          .a(
-            cjb.jU,
+            cja.jU,
             tf.c("advancements.husbandry.obtain_sniffer_egg.title"),
             tf.c("advancements.husbandry.obtain_sniffer_egg.description"),
             null,
@@ -353,17 +353,17 @@ public class jq implements jm {
             true,
             true
          )
-         .a("obtain_sniffer_egg", bx.a.a(cjb.jU))
+         .a("obtain_sniffer_egg", bx.a.a(cja.jU))
          .a($$1, "husbandry/obtain_sniffer_egg");
       ae $$15 = ae.a.a()
          .a($$14)
-         .a(cjb.uo, tf.c("advancements.husbandry.feed_snifflet.title"), tf.c("advancements.husbandry.feed_snifflet.description"), null, ao.a, true, true, true)
+         .a(cja.uo, tf.c("advancements.husbandry.feed_snifflet.title"), tf.c("advancements.husbandry.feed_snifflet.description"), null, ao.a, true, true, true)
          .a("feed_snifflet", co.a.a(bz.a.a().a(apt.aK), bo.a(bo.a.a().a(bim.aN).a(bm.a.a().e(true)))))
          .a($$1, "husbandry/feed_snifflet");
       ae.a.a()
          .a($$15)
          .a(
-            cjb.up,
+            cja.up,
             tf.c("advancements.husbandry.plant_any_sniffer_seed.title"),
             tf.c("advancements.husbandry.plant_any_sniffer_seed.description"),
             null,
@@ -373,8 +373,8 @@ public class jq implements jm {
             true
          )
          .a(ap.b)
-         .a("torchflower", ca.a.a(csn.kA))
-         .a("pitcher_pod", ca.a.a(csn.kB))
+         .a("torchflower", ca.a.a(csm.kA))
+         .a("pitcher_pod", ca.a.a(csm.kB))
          .a($$1, "husbandry/plant_any_sniffer_seed");
    }
 
@@ -382,7 +382,7 @@ public class jq implements jm {
       return a(ae.a.a(), $$2, $$3)
          .a($$0)
          .a(
-            cjb.tq,
+            cja.tq,
             tf.c("advancements.husbandry.breed_all_animals.title"),
             tf.c("advancements.husbandry.breed_all_animals.description"),
             null,
@@ -396,12 +396,12 @@ public class jq implements jm {
    }
 
    private static ae.a a(ae.a $$0) {
-      jb.ak.h().forEach($$1 -> $$0.a($$1.g().a().toString(), co.a.a(bz.a.a().a(cjb.tQ), bo.a(bo.a.a().a(bim.O).a(bp.a($$1.a()))))));
+      jb.ak.h().forEach($$1 -> $$0.a($$1.g().a().toString(), co.a.a(bz.a.a().a(cja.tQ), bo.a(bo.a.a().a(bim.O).a(bp.a($$1.a()))))));
       return $$0;
    }
 
    private static ae.a b(ae.a $$0) {
-      for (cit $$1 : e) {
+      for (cis $$1 : e) {
          $$0.a(jb.i.b($$1).a(), az.a.a($$1));
       }
 
@@ -415,7 +415,7 @@ public class jq implements jm {
    }
 
    private static ae.a c(ae.a $$0) {
-      for (cit $$1 : d) {
+      for (cis $$1 : d) {
          $$0.a(jb.i.b($$1).a(), bs.a.a(bz.a.a().a($$1).b()));
       }
 
@@ -423,7 +423,7 @@ public class jq implements jm {
    }
 
    private static ae.a d(ae.a $$0) {
-      for (cit $$1 : c) {
+      for (cis $$1 : c) {
          $$0.a(jb.i.b($$1).a(), bu.a.a(Optional.empty(), Optional.empty(), bz.a.a().a($$1).b()));
       }
 

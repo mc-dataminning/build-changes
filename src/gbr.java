@@ -1,28 +1,31 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class gbr implements gbm {
+   private final fmw a;
+   private boolean b;
+   private boolean c = true;
 
-public class gbr {
-   private final List<gbq> a;
-   private final boolean b;
-   @Nullable
-   private final String c;
-
-   public gbr(List<gbq> $$0, boolean $$1, @Nullable String $$2) {
+   public gbr(fmw $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
    }
 
-   public List<gbq> a() {
-      return this.a;
-   }
+   @Override
+   public void a() {
+      cpl $$0 = this.a.dK();
+      dez $$1 = $$0.c(this.a.cG().c(0.0, -0.4F, 0.0).h(1.0E-6)).filter($$0x -> $$0x.a(csm.nd)).findFirst().orElse(null);
+      if ($$1 != null) {
+         if (!this.b && !this.c && $$1.a(csm.nd) && !this.a.G_()) {
+            boolean $$2 = $$1.c(csq.a);
+            if ($$2) {
+               this.a.a(aow.cu, 1.0F, 1.0F);
+            } else {
+               this.a.a(aow.cs, 1.0F, 1.0F);
+            }
+         }
 
-   public boolean b() {
-      return this.b;
-   }
+         this.b = true;
+      } else {
+         this.b = false;
+      }
 
-   @Nullable
-   public String c() {
-      return this.c;
+      this.c = false;
    }
 }

@@ -51,7 +51,7 @@ public class afe implements ang {
       CompletableFuture<Map<aer, List<aqb.a>>> $$6 = CompletableFuture.supplyAsync(() -> this.d.a($$1), $$4);
       CompletableFuture<Map<aer, CompletableFuture<dm>>> $$7 = CompletableFuture.<Map<aer, ank>>supplyAsync(() -> b.a($$1), $$4).thenCompose($$1x -> {
          Map<aer, CompletableFuture<dm>> $$2x = Maps.newHashMap();
-         dr $$3x = new dr(dq.a, ehe.b, ehd.a, null, this.f, "", te.a, null, null);
+         dr $$3x = new dr(dq.a, ehd.b, ehc.a, null, this.f, "", te.a, null, null);
 
          for (Entry<aer, ank> $$4x : $$1x.entrySet()) {
             aer $$5x = $$4x.getKey();

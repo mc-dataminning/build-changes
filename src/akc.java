@@ -122,7 +122,7 @@ public abstract class akc {
                      throw new IllegalStateException();
                   }
 
-                  CompletableFuture<Either<dhh, ajt.a>> $$6 = $$5.b();
+                  CompletableFuture<Either<dhg, ajt.a>> $$6 = $$5.b();
                   $$6.thenAccept($$1x -> this.o.execute(() -> this.m.a(ajx.a(() -> {
                         }, $$4, false))));
                }
@@ -157,23 +157,23 @@ public abstract class akc {
       this.f.b($$0, a($$2), false);
    }
 
-   public <T> void a(akp<T> $$0, cot $$1, int $$2, T $$3) {
+   public <T> void a(akp<T> $$0, cos $$1, int $$2, T $$3) {
       this.a($$1.a(), new ako<>($$0, $$2, $$3));
    }
 
-   public <T> void b(akp<T> $$0, cot $$1, int $$2, T $$3) {
+   public <T> void b(akp<T> $$0, cos $$1, int $$2, T $$3) {
       ako<T> $$4 = new ako<>($$0, $$2, $$3);
       this.b($$1.a(), $$4);
    }
 
-   public <T> void c(akp<T> $$0, cot $$1, int $$2, T $$3) {
+   public <T> void c(akp<T> $$0, cos $$1, int $$2, T $$3) {
       ako<T> $$4 = new ako<>($$0, aju.a(akd.b) - $$2, $$3);
       long $$5 = $$1.a();
       this.a($$5, $$4);
       this.h.a($$5, $$4);
    }
 
-   public <T> void d(akp<T> $$0, cot $$1, int $$2, T $$3) {
+   public <T> void d(akp<T> $$0, cos $$1, int $$2, T $$3) {
       ako<T> $$4 = new ako<>($$0, aju.a(akd.b) - $$2, $$3);
       long $$5 = $$1.a();
       this.b($$5, $$4);
@@ -184,8 +184,8 @@ public abstract class akc {
       return (ase<ako<?>>)this.e.computeIfAbsent($$0, $$0x -> ase.a(4));
    }
 
-   protected void a(cot $$0, boolean $$1) {
-      ako<cot> $$2 = new ako<>(akp.d, ajv.b, $$0);
+   protected void a(cos $$0, boolean $$1) {
+      ako<cos> $$2 = new ako<>(akp.d, ajv.b, $$0);
       long $$3 = $$0.a();
       if ($$1) {
          this.a($$3, $$2);
@@ -197,7 +197,7 @@ public abstract class akc {
    }
 
    public void a(hx $$0, akl $$1) {
-      cot $$2 = $$0.r();
+      cos $$2 = $$0.r();
       long $$3 = $$2.a();
       ((ObjectSet)this.d.computeIfAbsent($$3, $$0x -> new ObjectOpenHashSet())).add($$1);
       this.g.b($$3, 0, true);
@@ -206,7 +206,7 @@ public abstract class akc {
    }
 
    public void b(hx $$0, akl $$1) {
-      cot $$2 = $$0.r();
+      cos $$2 = $$0.r();
       long $$3 = $$2.a();
       ObjectSet<akl> $$4 = (ObjectSet<akl>)this.d.get($$3);
       $$4.remove($$1);
@@ -266,7 +266,7 @@ public abstract class akc {
 
          while (var3.hasNext()) {
             Entry<ase<ako<?>>> $$2 = (Entry<ase<ako<?>>>)var3.next();
-            cot $$3 = new cot($$2.getLongKey());
+            cos $$3 = new cos($$2.getLongKey());
 
             for (ako<?> $$4 : (ase)$$2.getValue()) {
                $$1.write(($$3.e + "\t" + $$3.f + "\t" + $$4.a() + "\t" + $$4.b() + "\t\n").getBytes(StandardCharsets.UTF_8));
@@ -410,7 +410,7 @@ public abstract class akc {
 
             while (var3.hasNext()) {
                it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry $$2 = (it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry)var3.next();
-               cot $$3 = new cot($$2.getLongKey());
+               cos $$3 = new cos($$2.getLongKey());
                String $$4 = Byte.toString($$2.getByteValue());
                $$1.write(($$3.e + "\t" + $$3.f + "\t" + $$4 + "\n").getBytes(StandardCharsets.UTF_8));
             }
@@ -451,7 +451,7 @@ public abstract class akc {
 
       private void a(long $$0, int $$1, boolean $$2, boolean $$3) {
          if ($$2 != $$3) {
-            ako<?> $$4 = new ako<>(akp.c, akc.b, new cot($$0));
+            ako<?> $$4 = new ako<>(akp.c, akc.b, new cos($$0));
             if ($$3) {
                akc.this.l.a(ajx.a(() -> akc.this.o.execute(() -> {
                      if (this.c(this.c($$0))) {
@@ -479,7 +479,7 @@ public abstract class akc {
                int $$2 = this.h.get($$1);
                int $$3 = this.c($$1);
                if ($$2 != $$3) {
-                  akc.this.k.onLevelChange(new cot($$1), () -> this.h.get($$1), $$3, $$1x -> {
+                  akc.this.k.onLevelChange(new cos($$1), () -> this.h.get($$1), $$3, $$1x -> {
                      if ($$1x >= this.h.defaultReturnValue()) {
                         this.h.remove($$1);
                      } else {

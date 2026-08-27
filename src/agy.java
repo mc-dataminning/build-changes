@@ -29,7 +29,7 @@ public class agy {
    private static int a(dr $$0, fv $$1, Collection<akl> $$2, int $$3) throws CommandSyntaxException {
       int $$4 = $$1.a().l();
       int $$5 = $$4 * 100;
-      ciy $$6 = $$1.a($$3, false);
+      cix $$6 = $$1.a($$3, false);
       if ($$3 > $$5) {
          $$0.b(tf.a("commands.give.failed.toomanyitems", $$5, $$6.J()));
          return 0;
@@ -40,11 +40,11 @@ public class agy {
             while ($$8 > 0) {
                int $$9 = Math.min($$4, $$8);
                $$8 -= $$9;
-               ciy $$10 = $$1.a($$9, false);
+               cix $$10 = $$1.a($$9, false);
                boolean $$11 = $$7.fQ().e($$10);
                if ($$11 && $$10.b()) {
                   $$10.f(1);
-                  byg $$13 = $$7.a($$10, false);
+                  byf $$13 = $$7.a($$10, false);
                   if ($$13 != null) {
                      $$13.w();
                   }
@@ -52,7 +52,7 @@ public class agy {
                   $$7.dK().a(null, $$7.dp(), $$7.dr(), $$7.dv(), aow.ma, aox.h, 0.2F, (($$7.ee().i() - $$7.ee().i()) * 0.7F + 1.0F) * 2.0F);
                   $$7.bQ.d();
                } else {
-                  byg $$12 = $$7.a($$10, false);
+                  byf $$12 = $$7.a($$10, false);
                   if ($$12 != null) {
                      $$12.p();
                      $$12.b($$7.cv());

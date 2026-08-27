@@ -1,21 +1,18 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public class ehk extends AbstractDoubleList {
-   private final int a;
-
-   ehk(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Need at least 1 part");
-      } else {
-         this.a = $$0;
-      }
+public final class ehk extends ehw {
+   protected ehk(ehm $$0) {
+      super($$0);
    }
 
-   public double getDouble(int $$0) {
-      return (double)$$0 / (double)this.a;
+   @Override
+   protected DoubleList a(ha.a $$0) {
+      return new ehj(this.a.c($$0));
    }
 
-   public int size() {
-      return this.a + 1;
+   @Override
+   protected int a(ha.a $$0, double $$1) {
+      int $$2 = this.a.c($$0);
+      return arp.a(arp.a($$1 * (double)$$2, -1.0, (double)$$2));
    }
 }

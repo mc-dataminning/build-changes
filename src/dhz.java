@@ -1,109 +1,231 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.DataFixer;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Either;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.List;
-import java.util.Objects;
+import java.util.BitSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class dhz implements diu<bii> {
-   private static final Logger b = LogUtils.getLogger();
-   private static final String c = "Entities";
-   private static final String d = "Position";
-   private final akk e;
-   private final dia f;
-   private final LongSet g = new LongOpenHashSet();
-   private final bfj<Runnable> h;
-   protected final DataFixer a;
+public class dhz implements dhv, AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private final AtomicBoolean b = new AtomicBoolean();
+   private final bfj<bfl.b> c;
+   private final dic d;
+   private final Map<cos, dhz.a> e = Maps.newLinkedHashMap();
+   private final Long2ObjectLinkedOpenHashMap<CompletableFuture<BitSet>> f = new Long2ObjectLinkedOpenHashMap();
+   private static final int g = 1024;
 
-   public dhz(akk $$0, Path $$1, DataFixer $$2, boolean $$3, Executor $$4) {
-      this.e = $$0;
-      this.a = $$2;
-      this.h = bfj.a($$4, "entity-deserializer");
-      this.f = new dia($$1, $$3, "entities");
+   protected dhz(Path $$0, boolean $$1, String $$2) {
+      this.d = new dic($$0, $$1);
+      this.c = new bfj<>(new bfl.a(dhz.b.values().length), ac.g(), "IOWorker-" + $$2);
    }
 
-   @Override
-   public CompletableFuture<dip<bii>> a(cot $$0) {
-      return this.g.contains($$0.a()) ? CompletableFuture.completedFuture(b($$0)) : this.f.a($$0).thenApplyAsync($$1 -> {
-         if ($$1.isEmpty()) {
-            this.g.add($$0.a());
-            return b($$0);
+   public boolean a(cos $$0, int $$1) {
+      cos $$2 = new cos($$0.e - $$1, $$0.f - $$1);
+      cos $$3 = new cos($$0.e + $$1, $$0.f + $$1);
+
+      for (int $$4 = $$2.h(); $$4 <= $$3.h(); $$4++) {
+         for (int $$5 = $$2.i(); $$5 <= $$3.i(); $$5++) {
+            BitSet $$6 = this.a($$4, $$5).join();
+            if (!$$6.isEmpty()) {
+               cos $$7 = cos.a($$4, $$5);
+               int $$8 = Math.max($$2.e - $$7.e, 0);
+               int $$9 = Math.max($$2.f - $$7.f, 0);
+               int $$10 = Math.min($$3.e - $$7.e, 31);
+               int $$11 = Math.min($$3.f - $$7.f, 31);
+
+               for (int $$12 = $$8; $$12 <= $$10; $$12++) {
+                  for (int $$13 = $$9; $$13 <= $$11; $$13++) {
+                     int $$14 = $$13 * 32 + $$12;
+                     if ($$6.get($$14)) {
+                        return true;
+                     }
+                  }
+               }
+            }
+         }
+      }
+
+      return false;
+   }
+
+   private CompletableFuture<BitSet> a(int $$0, int $$1) {
+      long $$2 = cos.c($$0, $$1);
+      synchronized (this.f) {
+         CompletableFuture<BitSet> $$3 = (CompletableFuture<BitSet>)this.f.getAndMoveToFirst($$2);
+         if ($$3 == null) {
+            $$3 = this.b($$0, $$1);
+            this.f.putAndMoveToFirst($$2, $$3);
+            if (this.f.size() > 1024) {
+               this.f.removeLast();
+            }
+         }
+
+         return $$3;
+      }
+   }
+
+   private CompletableFuture<BitSet> b(int $$0, int $$1) {
+      return CompletableFuture.supplyAsync(() -> {
+         cos $$2 = cos.a($$0, $$1);
+         cos $$3 = cos.b($$0, $$1);
+         BitSet $$4 = new BitSet();
+         cos.a($$2, $$3).forEach($$1xx -> {
+            rr $$2x = new rr(new rt(qw.a, "DataVersion"), new rt(qr.b, "blending_data"));
+
+            try {
+               this.a($$1xx, $$2x).join();
+            } catch (Exception var7) {
+               a.warn("Failed to scan chunk {}", $$1xx, var7);
+               return;
+            }
+
+            if ($$2x.d() instanceof qr $$5 && this.a($$5)) {
+               int $$6 = $$1xx.k() * 32 + $$1xx.j();
+               $$4.set($$6);
+            }
+         });
+         return $$4;
+      }, ac.f());
+   }
+
+   private boolean a(qr $$0) {
+      return $$0.b("DataVersion", 99) && $$0.h("DataVersion") >= 3441 ? $$0.b("blending_data", 10) : true;
+   }
+
+   public CompletableFuture<Void> a(cos $$0, @Nullable qr $$1) {
+      return this.a(() -> {
+         dhz.a $$2 = this.e.computeIfAbsent($$0, $$1xx -> new dhz.a($$1));
+         $$2.a = $$1;
+         return Either.left($$2.b);
+      }).thenCompose(Function.identity());
+   }
+
+   public CompletableFuture<Optional<qr>> a(cos $$0) {
+      return this.a(() -> {
+         dhz.a $$1 = this.e.get($$0);
+         if ($$1 != null) {
+            return Either.left(Optional.ofNullable($$1.a));
          } else {
             try {
-               cot $$2 = a($$1.get());
-               if (!Objects.equals($$0, $$2)) {
-                  b.error("Chunk file at {} is in the wrong location. (Expected {}, got {})", new Object[]{$$0, $$0, $$2});
-               }
-            } catch (Exception var6) {
-               b.warn("Failed to parse chunk {} position info", $$0, var6);
+               qr $$2 = this.d.a($$0);
+               return Either.left(Optional.ofNullable($$2));
+            } catch (Exception var4) {
+               a.warn("Failed to read chunk {}", $$0, var4);
+               return Either.right(var4);
             }
-
-            qr $$4 = this.b($$1.get());
-            qx $$5 = $$4.c("Entities", 10);
-            List<bii> $$6 = bim.a($$5, this.e).collect(ImmutableList.toImmutableList());
-            return new dip<>($$0, $$6);
          }
-      }, this.h::a);
+      });
    }
 
-   private static cot a(qr $$0) {
-      int[] $$1 = $$0.n("Position");
-      return new cot($$1[0], $$1[1]);
-   }
-
-   private static void a(qr $$0, cot $$1) {
-      $$0.a("Position", new qv(new int[]{$$1.e, $$1.f}));
-   }
-
-   private static dip<bii> b(cot $$0) {
-      return new dip<>($$0, ImmutableList.of());
+   public CompletableFuture<Void> a(boolean $$0) {
+      CompletableFuture<Void> $$1 = this.a(
+            () -> Either.left(CompletableFuture.allOf(this.e.values().stream().map($$0x -> $$0x.b).toArray(CompletableFuture[]::new)))
+         )
+         .thenCompose(Function.identity());
+      return $$0 ? $$1.thenCompose($$0x -> this.a(() -> {
+            try {
+               this.d.a();
+               return Either.left(null);
+            } catch (Exception var2x) {
+               a.warn("Failed to synchronize chunks", var2x);
+               return Either.right(var2x);
+            }
+         })) : $$1.thenCompose($$0x -> this.a(() -> Either.left(null)));
    }
 
    @Override
-   public void a(dip<bii> $$0) {
-      cot $$1 = $$0.a();
-      if ($$0.c()) {
-         if (this.g.add($$1.a())) {
-            this.f.a($$1, null);
-         }
-      } else {
-         qx $$2 = new qx();
-         $$0.b().forEach($$1x -> {
-            qr $$2x = new qr();
-            if ($$1x.e($$2x)) {
-               $$2.add($$2x);
+   public CompletableFuture<Void> a(cos $$0, rh $$1) {
+      return this.a(() -> {
+         try {
+            dhz.a $$2 = this.e.get($$0);
+            if ($$2 != null) {
+               if ($$2.a != null) {
+                  $$2.a.b($$1);
+               }
+            } else {
+               this.d.a($$0, $$1);
             }
-         });
-         qr $$3 = rd.g(new qr());
-         $$3.a("Entities", $$2);
-         a($$3, $$1);
-         this.f.a($$1, $$3).exceptionally($$1x -> {
-            b.error("Failed to store chunk {}", $$1, $$1x);
-            return null;
-         });
-         this.g.remove($$1.a());
+
+            return Either.left(null);
+         } catch (Exception var4) {
+            a.warn("Failed to bulk scan chunk {}", $$0, var4);
+            return Either.right(var4);
+         }
+      });
+   }
+
+   private <T> CompletableFuture<T> a(Supplier<Either<T, Exception>> $$0) {
+      return this.c.c($$1 -> new bfl.b(dhz.b.a.ordinal(), () -> {
+            if (!this.b.get()) {
+               $$1.a($$0.get());
+            }
+
+            this.b();
+         }));
+   }
+
+   private void a() {
+      if (!this.e.isEmpty()) {
+         Iterator<Entry<cos, dhz.a>> $$0 = this.e.entrySet().iterator();
+         Entry<cos, dhz.a> $$1 = $$0.next();
+         $$0.remove();
+         this.a($$1.getKey(), $$1.getValue());
+         this.b();
+      }
+   }
+
+   private void b() {
+      this.c.a(new bfl.b(dhz.b.b.ordinal(), this::a));
+   }
+
+   private void a(cos $$0, dhz.a $$1) {
+      try {
+         this.d.a($$0, $$1.a);
+         $$1.b.complete(null);
+      } catch (Exception var4) {
+         a.error("Failed to store chunk {}", $$0, var4);
+         $$1.b.completeExceptionally(var4);
       }
    }
 
    @Override
-   public void a(boolean $$0) {
-      this.f.a($$0).join();
-      this.h.a();
-   }
-
-   private qr b(qr $$0) {
-      int $$1 = rd.b($$0, -1);
-      return ass.s.a(this.a, $$0, $$1);
-   }
-
-   @Override
    public void close() throws IOException {
-      this.f.close();
+      if (this.b.compareAndSet(false, true)) {
+         this.c.b($$0 -> new bfl.b(dhz.b.c.ordinal(), () -> $$0.a(asp.a))).join();
+         this.c.close();
+
+         try {
+            this.d.close();
+         } catch (Exception var2) {
+            a.error("Failed to close storage", var2);
+         }
+      }
+   }
+
+   static class a {
+      @Nullable
+      qr a;
+      final CompletableFuture<Void> b = new CompletableFuture<>();
+
+      public a(@Nullable qr $$0) {
+         this.a = $$0;
+      }
+   }
+
+   static enum b {
+      a,
+      b,
+      c;
    }
 }

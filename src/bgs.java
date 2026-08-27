@@ -10,7 +10,7 @@ public class bgs {
       this.c = $$0;
    }
 
-   public boolean a(ciy $$0) {
+   public boolean a(cix $$0) {
       return this.c.isEmpty() || !$$0.b() && $$0.A() && this.c.equals($$0.y().getString());
    }
 

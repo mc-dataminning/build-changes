@@ -1,68 +1,82 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class crx extends csm implements czn {
-   public static final dfr c = dfq.C;
-   private static final ehx a = csm.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
+public class crx extends cru {
+   public static final dft a = cwe.aC;
+   private static final Map<ha, ehw> b = Maps.newEnumMap(
+      ImmutableMap.of(
+         ha.c,
+         csl.a(0.0, 4.0, 5.0, 16.0, 12.0, 16.0),
+         ha.d,
+         csl.a(0.0, 4.0, 0.0, 16.0, 12.0, 11.0),
+         ha.e,
+         csl.a(5.0, 4.0, 0.0, 16.0, 12.0, 16.0),
+         ha.f,
+         csl.a(0.0, 4.0, 0.0, 11.0, 12.0, 16.0)
+      )
+   );
 
-   protected crx(dez.d $$0) {
+   protected crx(dey.d $$0) {
       super($$0);
-      this.k(this.C.b().a(c, Boolean.valueOf(true)));
+      this.k(this.C.b().a(a, ha.c).a(c, Boolean.valueOf(true)));
    }
 
-   protected void a(dfa $$0, cpn $$1, gu $$2) {
-      if (!e($$0, $$1, $$2)) {
-         $$1.a($$2, this, 60 + $$1.y_().a(40));
-      }
+   @Override
+   public ehw a(dez $$0, cor $$1, gu $$2, ehi $$3) {
+      return b.get($$0.c(a));
    }
 
-   protected static boolean e(dfa $$0, cos $$1, gu $$2) {
+   @Override
+   public dez a(dez $$0, cyx $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   public dez a(dez $$0, cxg $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(dfa.a<csl, dez> $$0) {
+      $$0.a(a, c);
+   }
+
+   @Override
+   public dez a(dez $$0, ha $$1, dez $$2, cpm $$3, gu $$4, gu $$5) {
       if ($$0.c(c)) {
-         return true;
-      } else {
-         for (ha $$3 : ha.values()) {
-            if ($$1.b_($$2.a($$3)).a(apq.a)) {
-               return true;
-            }
-         }
-
-         return false;
+         $$3.a($$4, ead.c, ead.c.a($$3));
       }
+
+      return $$1.g() == $$0.c(a) && !$$0.a($$3, $$4) ? csm.a.n() : $$0;
+   }
+
+   @Override
+   public boolean a(dez $$0, cpo $$1, gu $$2) {
+      ha $$3 = $$0.c(a);
+      gu $$4 = $$2.a($$3.g());
+      dez $$5 = $$1.a_($$4);
+      return $$5.d($$1, $$4, $$3);
    }
 
    @Nullable
    @Override
-   public dfa a(clg $$0) {
-      ead $$1 = $$0.q().b_($$0.a());
-      return this.n().a(c, Boolean.valueOf($$1.a(apq.a) && $$1.e() == 8));
-   }
+   public dez a(clf $$0) {
+      dez $$1 = super.a($$0);
+      cpo $$2 = $$0.q();
+      gu $$3 = $$0.a();
+      ha[] $$4 = $$0.f();
 
-   @Override
-   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
-      return a;
-   }
-
-   @Override
-   public dfa a(dfa $$0, ha $$1, dfa $$2, cpn $$3, gu $$4, gu $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, eae.c, eae.c.a($$3));
+      for (ha $$5 : $$4) {
+         if ($$5.o().d()) {
+            $$1 = $$1.a(a, $$5.g());
+            if ($$1.a($$2, $$3)) {
+               return $$1;
+            }
+         }
       }
 
-      return $$1 == ha.a && !this.a($$0, (cpp)$$3, $$4) ? csn.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public boolean a(dfa $$0, cpp $$1, gu $$2) {
-      gu $$3 = $$2.d();
-      return $$1.a_($$3).d($$1, $$3, ha.b);
-   }
-
-   @Override
-   protected void a(dfb.a<csm, dfa> $$0) {
-      $$0.a(c);
-   }
-
-   @Override
-   public ead c_(dfa $$0) {
-      return $$0.c(c) ? eae.c.a(false) : super.c_($$0);
+      return null;
    }
 }

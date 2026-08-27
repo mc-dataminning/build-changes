@@ -1,10 +1,10 @@
 public class apg {
-   public static final apf<csm> a = a("mined", jb.f);
-   public static final apf<cit> b = a("crafted", jb.i);
-   public static final apf<cit> c = a("used", jb.i);
-   public static final apf<cit> d = a("broken", jb.i);
-   public static final apf<cit> e = a("picked_up", jb.i);
-   public static final apf<cit> f = a("dropped", jb.i);
+   public static final apf<csl> a = a("mined", jb.f);
+   public static final apf<cis> b = a("crafted", jb.i);
+   public static final apf<cis> c = a("used", jb.i);
+   public static final apf<cis> d = a("broken", jb.i);
+   public static final apf<cis> e = a("picked_up", jb.i);
+   public static final apf<cis> f = a("dropped", jb.i);
    public static final apf<bim<?>> g = a("killed", jb.h);
    public static final apf<bim<?>> h = a("killed_by", jb.h);
    public static final apf<aer> i = a("custom", jb.n);

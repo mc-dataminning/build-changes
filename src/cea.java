@@ -1,117 +1,88 @@
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
+
 public class cea {
-   private int a = 20;
-   private float b;
-   private float c;
-   private int d;
-   private int e = 20;
+   private final int a;
+   private final float b;
+   private final boolean c;
+   private final boolean d;
+   private final boolean e;
+   private final List<Pair<bhv, Float>> f;
 
-   public cea() {
-      this.b = 5.0F;
-   }
-
-   public void a(int $$0, float $$1) {
-      this.a = Math.min($$0 + this.a, 20);
-      this.b = Math.min(this.b + (float)$$0 * $$1 * 2.0F, (float)this.a);
-   }
-
-   public void a(cit $$0, ciy $$1) {
-      if ($$0.u()) {
-         ceb $$2 = $$0.v();
-         this.a($$2.a(), $$2.b());
-      }
-   }
-
-   public void a(cbn $$0) {
-      bgn $$1 = $$0.dK().ai();
-      this.e = this.a;
-      if (this.c > 4.0F) {
-         this.c -= 4.0F;
-         if (this.b > 0.0F) {
-            this.b = Math.max(this.b - 1.0F, 0.0F);
-         } else if ($$1 != bgn.a) {
-            this.a = Math.max(this.a - 1, 0);
-         }
-      }
-
-      boolean $$2 = $$0.dK().X().b(cpi.j);
-      if ($$2 && this.b > 0.0F && $$0.gb() && this.a >= 20) {
-         this.d++;
-         if (this.d >= 10) {
-            float $$3 = Math.min(this.b, 6.0F);
-            $$0.b($$3 / 6.0F);
-            this.a($$3);
-            this.d = 0;
-         }
-      } else if ($$2 && this.a >= 18 && $$0.gb()) {
-         this.d++;
-         if (this.d >= 80) {
-            $$0.b(1.0F);
-            this.a(6.0F);
-            this.d = 0;
-         }
-      } else if (this.a <= 0) {
-         this.d++;
-         if (this.d >= 80) {
-            if ($$0.et() > 10.0F || $$1 == bgn.d || $$0.et() > 1.0F && $$1 == bgn.c) {
-               $$0.a($$0.dL().i(), 1.0F);
-            }
-
-            this.d = 0;
-         }
-      } else {
-         this.d = 0;
-      }
-   }
-
-   public void a(qr $$0) {
-      if ($$0.b("foodLevel", 99)) {
-         this.a = $$0.h("foodLevel");
-         this.d = $$0.h("foodTickTimer");
-         this.b = $$0.j("foodSaturationLevel");
-         this.c = $$0.j("foodExhaustionLevel");
-      }
-   }
-
-   public void b(qr $$0) {
-      $$0.a("foodLevel", this.a);
-      $$0.a("foodTickTimer", this.d);
-      $$0.a("foodSaturationLevel", this.b);
-      $$0.a("foodExhaustionLevel", this.c);
+   cea(int $$0, float $$1, boolean $$2, boolean $$3, boolean $$4, List<Pair<bhv, Float>> $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
    public int a() {
       return this.a;
    }
 
-   public int b() {
-      return this.e;
-   }
-
-   public boolean c() {
-      return this.a < 20;
-   }
-
-   public void a(float $$0) {
-      this.c = Math.min(this.c + $$0, 40.0F);
-   }
-
-   public float d() {
-      return this.c;
-   }
-
-   public float e() {
+   public float b() {
       return this.b;
    }
 
-   public void a(int $$0) {
-      this.a = $$0;
+   public boolean c() {
+      return this.c;
    }
 
-   public void b(float $$0) {
-      this.b = $$0;
+   public boolean d() {
+      return this.d;
    }
 
-   public void c(float $$0) {
-      this.c = $$0;
+   public boolean e() {
+      return this.e;
+   }
+
+   public List<Pair<bhv, Float>> f() {
+      return this.f;
+   }
+
+   public static class a {
+      private int a;
+      private float b;
+      private boolean c;
+      private boolean d;
+      private boolean e;
+      private final List<Pair<bhv, Float>> f = Lists.newArrayList();
+
+      public cea.a a(int $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public cea.a a(float $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public cea.a a() {
+         this.c = true;
+         return this;
+      }
+
+      public cea.a b() {
+         this.d = true;
+         return this;
+      }
+
+      public cea.a c() {
+         this.e = true;
+         return this;
+      }
+
+      public cea.a a(bhv $$0, float $$1) {
+         this.f.add(Pair.of($$0, $$1));
+         return this;
+      }
+
+      public cea d() {
+         return new cea(this.a, this.b, this.c, this.d, this.e, this.f);
+      }
    }
 }

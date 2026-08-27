@@ -18,7 +18,7 @@ public class ax extends cu<ax.a> {
    }
 
    public void a(akl $$0, Collection<? extends bii> $$1) {
-      List<ech> $$2 = $$1.stream().map($$1x -> bo.b($$0, $$1x)).collect(Collectors.toList());
+      List<ecg> $$2 = $$1.stream().map($$1x -> bo.b($$0, $$1x)).collect(Collectors.toList());
       this.a($$0, $$1x -> $$1x.a($$2));
    }
 
@@ -34,11 +34,11 @@ public class ax extends cu<ax.a> {
          return new ax.a(Optional.empty(), bo.a($$0));
       }
 
-      public boolean a(Collection<? extends ech> $$0) {
+      public boolean a(Collection<? extends ecg> $$0) {
          for (ba $$1 : this.a) {
             boolean $$2 = false;
 
-            for (ech $$3 : $$0) {
+            for (ecg $$3 : $$0) {
                if ($$1.a($$3)) {
                   $$2 = true;
                   break;

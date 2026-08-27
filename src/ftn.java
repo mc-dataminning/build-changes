@@ -1,23 +1,24 @@
-public class ftn extends fsn<bya> {
-   private static final aer a = new aer("textures/entity/lead_knot.png");
-   private final fff<bya> f;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public ftn(fso.a $$0) {
-      super($$0);
-      this.f = new fff<>($$0.a(fhm.aq));
+public final class ftn extends fru<bwk, ffe<bwk>> {
+   private static final Map<bwr, aer> a = ac.a(Maps.newEnumMap(bwr.class), $$0 -> {
+      $$0.put(bwr.a, new aer("textures/entity/horse/horse_white.png"));
+      $$0.put(bwr.b, new aer("textures/entity/horse/horse_creamy.png"));
+      $$0.put(bwr.c, new aer("textures/entity/horse/horse_chestnut.png"));
+      $$0.put(bwr.d, new aer("textures/entity/horse/horse_brown.png"));
+      $$0.put(bwr.e, new aer("textures/entity/horse/horse_black.png"));
+      $$0.put(bwr.f, new aer("textures/entity/horse/horse_gray.png"));
+      $$0.put(bwr.g, new aer("textures/entity/horse/horse_darkbrown.png"));
+   });
+
+   public ftn(fsx.a $$0) {
+      super($$0, new ffe<>($$0.a(fhr.aj)), 1.1F);
+      this.a(new fwu(this));
+      this.a(new fwt(this, $$0.f()));
    }
 
-   public void a(bya $$0, float $$1, float $$2, elg $$3, fnl $$4, int $$5) {
-      $$3.a();
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      this.f.a($$0, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
-      elk $$6 = $$4.getBuffer(this.f.a(a));
-      this.f.a($$3, $$6, $$5, fyc.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public aer a(bya $$0) {
-      return a;
+   public aer a(bwk $$0) {
+      return a.get($$0.q());
    }
 }

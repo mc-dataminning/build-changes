@@ -23,7 +23,7 @@ public class euy {
       this.i = $$8;
    }
 
-   public void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, elk $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
+   public void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, elj $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
       int $$10 = 3;
       float $$11 = $$1 + this.f;
       float $$12 = $$1 + this.g;
@@ -39,14 +39,14 @@ public class euy {
       $$4.a($$3, $$12 + $$17, $$15, 0.0F).a($$5, $$6, $$7, $$8).a(this.c, this.d).b($$9).e();
    }
 
-   public void a(euy.a $$0, Matrix4f $$1, elk $$2, int $$3) {
+   public void a(euy.a $$0, Matrix4f $$1, elj $$2, int $$3) {
       $$2.a($$1, $$0.a, $$0.b, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.b, this.d).b($$3).e();
       $$2.a($$1, $$0.c, $$0.b, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.b, this.e).b($$3).e();
       $$2.a($$1, $$0.c, $$0.d, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.c, this.e).b($$3).e();
       $$2.a($$1, $$0.a, $$0.d, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.c, this.d).b($$3).e();
    }
 
-   public fnt a(eru.a $$0) {
+   public foc a(ert.a $$0) {
       return this.a.a($$0);
    }
 

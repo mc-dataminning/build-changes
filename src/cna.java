@@ -1,11 +1,11 @@
-public class cna extends cnf {
-   public cna(cnf.a $$0, bin... $$1) {
-      super($$0, cng.m, $$1);
+public class cna extends cne {
+   public cna(cne.a $$0, bin... $$1) {
+      super($$0, cnf.l, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 1 + ($$0 - 1) * 10;
+      return 25;
    }
 
    @Override
@@ -14,12 +14,17 @@ public class cna extends cnf {
    }
 
    @Override
-   public int a() {
-      return 4;
+   public boolean b() {
+      return true;
    }
 
    @Override
-   public boolean a(cnf $$0) {
-      return super.a($$0) && $$0 != cnj.I;
+   public boolean c() {
+      return true;
+   }
+
+   @Override
+   public boolean a(cix $$0) {
+      return !$$0.a(cja.uy) && super.a($$0);
    }
 }

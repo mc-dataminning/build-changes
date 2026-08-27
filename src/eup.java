@@ -25,7 +25,7 @@ public class eup implements eun {
    }
 
    @Override
-   public eun.a a(erw $$0, euo $$1, long $$2) {
+   public eun.a a(erv $$0, euo $$1, long $$2) {
       $$0.a(g, 0, 0, this.a(), this.b());
       this.h.a($$0, 6, 6);
       if (this.j == null) {
@@ -76,7 +76,7 @@ public class eup implements eun {
          this.h = $$0;
       }
 
-      public void a(erw $$0, int $$1, int $$2) {
+      public void a(erv $$0, int $$1, int $$2) {
          RenderSystem.enableBlend();
          $$0.a(this.h, $$1, $$2, 20, 20);
       }

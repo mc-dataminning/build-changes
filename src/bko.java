@@ -2,20 +2,14 @@ import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
 
 public class bko {
-   public static bma<bja> a(int $$0, float $$1) {
-      return boc.a(
-         (Function<boc.b<bja>, ? extends App<boc.c<bja>, bof<bja>>>)($$2 -> $$2.group($$2.c(bsa.m), $$2.a(bsa.n), $$2.b(bsa.o), $$2.b(bsa.h))
-               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
-                     biy $$9 = $$2.b($$5);
-                     if ($$9.a($$7, (double)$$0) && $$2.<bsc>b($$6).a($$9)) {
-                        $$4.a(new blb($$9, true));
-                        $$7.E().a(-$$1, 0.0F);
-                        $$7.r(arp.c($$7.dA(), $$7.aW, 0.0F));
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
+   public static bkq<biy> a(brz<?> $$0, int $$1) {
+      return bob.a(
+         (Function<bob.b<biy>, ? extends App<bob.c<biy>, boe<biy>>>)($$2 -> $$2.group($$2.a(brz.o), $$2.c(brz.aw), $$2.b($$0))
+               .apply($$2, $$2.a(() -> "[BecomePassive if " + $$0 + " present]", ($$1xx, $$2x, $$3) -> ($$3x, $$4, $$5) -> {
+                     $$2x.a(true, (long)$$1);
+                     $$1xx.b();
+                     return true;
+                  })))
       );
    }
 }

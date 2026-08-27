@@ -1,8 +1,8 @@
-public record vy(int b, eas c, float d) implements vp {
+public record vy(int b, ear c, float d) implements vp {
    public static final aer a = new aer("debug/path");
 
    public vy(si $$0) {
-      this($$0.readInt(), eas.b($$0), $$0.readFloat());
+      this($$0.readInt(), ear.b($$0), $$0.readFloat());
    }
 
    @Override

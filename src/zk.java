@@ -1,7 +1,7 @@
 public class zk implements ux<wp> {
    private final int a;
 
-   public zk(dgr $$0) {
+   public zk(dgq $$0) {
       this.a = $$0.r();
    }
 

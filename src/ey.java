@@ -17,10 +17,10 @@ public class ey implements ArgumentType<String> {
       return new ey();
    }
 
-   public static eib a(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
+   public static eia a(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
       String $$2 = (String)$$0.getArgument($$1, String.class);
-      eid $$3 = ((dr)$$0.getSource()).l().aF();
-      eib $$4 = $$3.d($$2);
+      eic $$3 = ((dr)$$0.getSource()).l().aF();
+      eia $$4 = $$3.d($$2);
       if ($$4 == null) {
          throw b.create($$2);
       } else {

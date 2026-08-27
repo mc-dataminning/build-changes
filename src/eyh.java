@@ -1,467 +1,286 @@
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.Comparator;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.Reader;
 import java.util.List;
-import java.util.Set;
-import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
 
-public class eyh extends exz implements eyi {
-   static final aer c = new aer("container/slot");
-   static final aer k = new aer("statistics/header");
-   static final aer l = new aer("statistics/sort_up");
-   static final aer m = new aer("statistics/sort_down");
-   private static final tf n = tf.c("multiplayer.downloadingStats");
-   protected final exz a;
-   private eyh.a o;
-   eyh.b p;
-   private eyh.c q;
-   final aph s;
-   @Nullable
-   private etd<?> t;
-   private boolean u = true;
-   private static final int v = 18;
-   private static final int w = 20;
-   private static final int x = 1;
-   private static final int y = 1;
-   private static final int z = 2;
-   private static final int A = 2;
-   private static final int B = 40;
-   private static final int C = 5;
-   private static final int D = 0;
-   private static final int E = -1;
-   private static final int F = 1;
+public class eyh extends eya {
+   private static final Logger a = LogUtils.getLogger();
+   private static final aer b = new aer("textures/misc/vignette.png");
+   private static final tf c = tf.b("============").a(n.p);
+   private static final String k = "           ";
+   private static final String l = "" + n.p + n.q + n.k + n.l;
+   private static final float m = 5.0F;
+   private static final float n = 15.0F;
+   private final boolean o;
+   private final Runnable p;
+   private float q;
+   private List<arc> s;
+   private IntSet t;
+   private int u;
+   private boolean v;
+   private final IntSet w = new IntOpenHashSet();
+   private float x;
+   private final float y;
+   private int z;
+   private final esx A = new esx(false);
 
-   public eyh(exz $$0, aph $$1) {
-      super(tf.c("gui.stats"));
-      this.a = $$0;
-      this.s = $$1;
-   }
-
-   @Override
-   protected void aE_() {
-      this.u = true;
-      this.f.J().b(new abh(abh.a.b));
-   }
-
-   public void l() {
-      this.o = new eyh.a(this.f);
-      this.p = new eyh.b(this.f);
-      this.q = new eyh.c(this.f);
-   }
-
-   @Override
-   public void B() {
-      this.d((esh)esh.a(tf.c("stat.generalButton"), $$0x -> this.a(this.o)).a(this.g / 2 - 120, this.h - 52, 80, 20).a());
-      esh $$0 = this.d((esh)esh.a(tf.c("stat.itemsButton"), $$0x -> this.a(this.p)).a(this.g / 2 - 40, this.h - 52, 80, 20).a());
-      esh $$1 = this.d((esh)esh.a(tf.c("stat.mobsButton"), $$0x -> this.a(this.q)).a(this.g / 2 + 40, this.h - 52, 80, 20).a());
-      this.d((esh)esh.a(te.d, $$0x -> this.f.a(this.a)).a(this.g / 2 - 100, this.h - 28, 200, 20).a());
-      if (this.p.i().isEmpty()) {
-         $$0.i = false;
-      }
-
-      if (this.q.i().isEmpty()) {
-         $$1.i = false;
-      }
-   }
-
-   @Override
-   public void a(erw $$0, int $$1, int $$2, float $$3) {
-      if (this.u) {
-         this.b($$0, $$1, $$2, $$3);
-         $$0.a(this.i, n, this.g / 2, this.h / 2, 16777215);
-         $$0.a(this.i, b[(int)(ac.b() / 150L % (long)b.length)], this.g / 2, this.h / 2 + 9 * 2, 16777215);
+   public eyh(boolean $$0, Runnable $$1) {
+      super(eqd.a);
+      this.o = $$0;
+      this.p = $$1;
+      if (!$$0) {
+         this.y = 0.75F;
       } else {
-         super.a($$0, $$1, $$2, $$3);
-         this.D().a($$0, $$1, $$2, $$3);
-         $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
+         this.y = 0.5F;
+      }
+
+      this.z = 1;
+      this.x = this.y;
+   }
+
+   private float l() {
+      return this.v ? this.y * (5.0F + (float)this.w.size() * 15.0F) * (float)this.z : this.y * (float)this.z;
+   }
+
+   @Override
+   public void c() {
+      this.f.s().a();
+      this.f.ai().a(false);
+      float $$0 = (float)(this.u + this.h + this.h + 24);
+      if (this.q > $$0) {
+         this.C();
       }
    }
 
    @Override
-   public void b(erw $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 265) {
+         this.z = -1;
+      } else if ($$0 == 341 || $$0 == 345) {
+         this.w.add($$0);
+      } else if ($$0 == 32) {
+         this.v = true;
+      }
+
+      this.x = this.l();
+      return super.a($$0, $$1, $$2);
    }
 
    @Override
-   public void C() {
-      if (this.u) {
-         this.l();
-         this.B();
-         this.a(this.o);
-         this.u = false;
+   public boolean b(int $$0, int $$1, int $$2) {
+      if ($$0 == 265) {
+         this.z = 1;
       }
+
+      if ($$0 == 32) {
+         this.v = false;
+      } else if ($$0 == 341 || $$0 == 345) {
+         this.w.remove($$0);
+      }
+
+      this.x = this.l();
+      return super.b($$0, $$1, $$2);
    }
 
    @Override
-   public boolean j() {
-      return !this.u;
+   public void at_() {
+      this.C();
    }
 
-   @Nullable
-   public etd<?> D() {
-      return this.t;
+   private void C() {
+      this.p.run();
    }
 
-   public void a(@Nullable etd<?> $$0) {
-      if (this.t != null) {
-         this.f(this.t);
-      }
-
-      if ($$0 != null) {
-         this.e($$0);
-         this.t = $$0;
-      }
-   }
-
-   static String a(apd<aer> $$0) {
-      return "stat." + $$0.b().toString().replace(':', '.');
-   }
-
-   int a(int $$0) {
-      return 115 + 40 * $$0;
-   }
-
-   void a(erw $$0, int $$1, int $$2, cit $$3) {
-      this.a($$0, $$1 + 1, $$2 + 1, c);
-      $$0.b($$3.ae_(), $$1 + 2, $$2 + 2);
-   }
-
-   void a(erw $$0, int $$1, int $$2, aer $$3) {
-      $$0.a($$3, $$1, $$2, 0, 18, 18);
-   }
-
-   class a extends etd<eyh.a.a> {
-      public a(eqm $$0) {
-         super($$0, eyh.this.g, eyh.this.h, 32, eyh.this.h - 64, 10);
-         ObjectArrayList<apd<aer>> $$1 = new ObjectArrayList(apg.i.iterator());
-         $$1.sort(Comparator.comparing($$0x -> fzr.a(eyh.a($$0x))));
-         ObjectListIterator var4 = $$1.iterator();
-
-         while (var4.hasNext()) {
-            apd<aer> $$2 = (apd<aer>)var4.next();
-            this.b(new eyh.a.a($$2));
-         }
-      }
-
-      class a extends etd.a<eyh.a.a> {
-         private final apd<aer> b;
-         private final tf c;
-
-         a(apd<aer> $$0) {
-            this.b = $$0;
-            this.c = tf.c(eyh.a($$0));
+   @Override
+   protected void aC_() {
+      if (this.s == null) {
+         this.s = Lists.newArrayList();
+         this.t = new IntOpenHashSet();
+         if (this.o) {
+            this.a("texts/end.txt", this::a);
          }
 
-         private String b() {
-            return this.b.a(eyh.this.s.a(this.b));
+         this.a("texts/credits.json", this::b);
+         if (this.o) {
+            this.a("texts/postcredits.txt", this::a);
          }
 
-         @Override
-         public void a(erw $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.b(eyh.this.i, this.c, $$3 + 2, $$2 + 1, $$1 % 2 == 0 ? 16777215 : 9474192);
-            String $$10 = this.b();
-            $$0.b(eyh.this.i, $$10, $$3 + 2 + 213 - eyh.this.i.b($$10), $$2 + 1, $$1 % 2 == 0 ? 16777215 : 9474192);
-         }
-
-         @Override
-         public tf a() {
-            return tf.a("narrator.select", tf.h().b(this.c).b(te.u).f(this.b()));
-         }
+         this.u = this.s.size() * 12;
       }
    }
 
-   class b extends etd<eyh.b.a> {
-      protected final List<apf<csm>> a;
-      protected final List<apf<cit>> m;
-      private final aer[] t = new aer[]{
-         new aer("statistics/block_mined"),
-         new aer("statistics/item_broken"),
-         new aer("statistics/item_crafted"),
-         new aer("statistics/item_used"),
-         new aer("statistics/item_picked_up"),
-         new aer("statistics/item_dropped")
-      };
-      protected int n = -1;
-      protected final Comparator<eyh.b.a> o = new eyh.b.b();
-      @Nullable
-      protected apf<?> p;
-      protected int q;
+   private void a(String $$0, eyh.a $$1) {
+      try (Reader $$2 = this.f.Z().openAsReader(new aer($$0))) {
+         $$1.read($$2);
+      } catch (Exception var8) {
+         a.error("Couldn't load credits", var8);
+      }
+   }
 
-      public b(eqm $$0) {
-         super($$0, eyh.this.g, eyh.this.h, 32, eyh.this.h - 64, 20);
-         this.a = Lists.newArrayList();
-         this.a.add(apg.a);
-         this.m = Lists.newArrayList(new apf[]{apg.d, apg.b, apg.c, apg.e, apg.f});
-         this.a(true, 20);
-         Set<cit> $$1 = Sets.newIdentityHashSet();
+   private void a(Reader $$0) throws IOException {
+      BufferedReader $$1 = new BufferedReader($$0);
+      aru $$2 = aru.a(8124371L);
 
-         for (cit $$2 : jb.i) {
-            boolean $$3 = false;
+      String $$3;
+      while (($$3 = $$1.readLine()) != null) {
+         $$3 = $$3.replaceAll("PLAYERNAME", this.f.V().c());
 
-            for (apf<cit> $$4 : this.m) {
-               if ($$4.a($$2) && eyh.this.s.a($$4.b($$2)) > 0) {
-                  $$3 = true;
-               }
+         int $$4;
+         while (($$4 = $$3.indexOf(l)) != -1) {
+            String $$5 = $$3.substring(0, $$4);
+            String $$6 = $$3.substring($$4 + l.length());
+            $$3 = $$5 + n.p + n.q + "XXXXXXXX".substring(0, $$2.a(4) + 3) + $$6;
+         }
+
+         this.a($$3);
+         this.D();
+      }
+
+      for (int $$7 = 0; $$7 < 8; $$7++) {
+         this.D();
+      }
+   }
+
+   private void b(Reader $$0) {
+      for (JsonElement $$2 : arg.b($$0)) {
+         JsonObject $$3 = $$2.getAsJsonObject();
+         String $$4 = $$3.get("section").getAsString();
+         this.a(c, true);
+         this.a(tf.b($$4).a(n.o), true);
+         this.a(c, true);
+         this.D();
+         this.D();
+
+         for (JsonElement $$6 : $$3.getAsJsonArray("disciplines")) {
+            JsonObject $$7 = $$6.getAsJsonObject();
+            String $$8 = $$7.get("discipline").getAsString();
+            if (StringUtils.isNotEmpty($$8)) {
+               this.a(tf.b($$8).a(n.o), true);
+               this.D();
+               this.D();
             }
 
-            if ($$3) {
-               $$1.add($$2);
-            }
-         }
+            for (JsonElement $$10 : $$7.getAsJsonArray("titles")) {
+               JsonObject $$11 = $$10.getAsJsonObject();
+               String $$12 = $$11.get("title").getAsString();
+               JsonArray $$13 = $$11.getAsJsonArray("names");
+               this.a(tf.b($$12).a(n.h), false);
 
-         for (csm $$5 : jb.f) {
-            boolean $$6 = false;
-
-            for (apf<csm> $$7 : this.a) {
-               if ($$7.a($$5) && eyh.this.s.a($$7.b($$5)) > 0) {
-                  $$6 = true;
-               }
-            }
-
-            if ($$6) {
-               $$1.add($$5.k());
-            }
-         }
-
-         $$1.remove(cjb.a);
-
-         for (cit $$8 : $$1) {
-            this.b(new eyh.b.a($$8));
-         }
-      }
-
-      @Override
-      protected void a(erw $$0, int $$1, int $$2) {
-         if (!this.c.n.b()) {
-            this.n = -1;
-         }
-
-         for (int $$3 = 0; $$3 < this.t.length; $$3++) {
-            aer $$4 = this.n == $$3 ? eyh.c : eyh.k;
-            eyh.this.a($$0, $$1 + eyh.this.a($$3) - 18, $$2 + 1, $$4);
-         }
-
-         if (this.p != null) {
-            int $$5 = eyh.this.a(this.b(this.p)) - 36;
-            aer $$6 = this.q == 1 ? eyh.l : eyh.m;
-            eyh.this.a($$0, $$1 + $$5, $$2 + 1, $$6);
-         }
-
-         for (int $$7 = 0; $$7 < this.t.length; $$7++) {
-            int $$8 = this.n == $$7 ? 1 : 0;
-            eyh.this.a($$0, $$1 + eyh.this.a($$7) - 18 + $$8, $$2 + 1 + $$8, this.t[$$7]);
-         }
-      }
-
-      @Override
-      public int b() {
-         return 375;
-      }
-
-      @Override
-      protected int c() {
-         return this.e / 2 + 140;
-      }
-
-      @Override
-      protected void a(int $$0, int $$1) {
-         this.n = -1;
-
-         for (int $$2 = 0; $$2 < this.t.length; $$2++) {
-            int $$3 = $$0 - eyh.this.a($$2);
-            if ($$3 >= -36 && $$3 <= 0) {
-               this.n = $$2;
-               break;
-            }
-         }
-
-         if (this.n >= 0) {
-            this.a(this.a(this.n));
-            this.c.ai().a(gbo.a(aow.yp, 1.0F));
-         }
-      }
-
-      private apf<?> a(int $$0) {
-         return $$0 < this.a.size() ? this.a.get($$0) : this.m.get($$0 - this.a.size());
-      }
-
-      private int b(apf<?> $$0) {
-         int $$1 = this.a.indexOf($$0);
-         if ($$1 >= 0) {
-            return $$1;
-         } else {
-            int $$2 = this.m.indexOf($$0);
-            return $$2 >= 0 ? $$2 + this.a.size() : -1;
-         }
-      }
-
-      @Override
-      protected void b(erw $$0, int $$1, int $$2) {
-         if ($$2 >= this.g && $$2 <= this.h) {
-            eyh.b.a $$3 = this.r();
-            int $$4 = (this.e - this.b()) / 2;
-            if ($$3 != null) {
-               if ($$1 < $$4 + 40 || $$1 > $$4 + 40 + 20) {
-                  return;
+               for (JsonElement $$14 : $$13) {
+                  String $$15 = $$14.getAsString();
+                  this.a(tf.b("           ").f($$15).a(n.p), false);
                }
 
-               cit $$5 = $$3.b();
-               $$0.a(eyh.this.i, this.a($$5), $$1, $$2);
+               this.D();
+               this.D();
+            }
+         }
+      }
+   }
+
+   private void D() {
+      this.s.add(arc.a);
+   }
+
+   private void a(String $$0) {
+      this.s.addAll(this.f.h.c(tf.b($$0), 256));
+   }
+
+   private void a(tf $$0, boolean $$1) {
+      if ($$1) {
+         this.t.add(this.s.size());
+      }
+
+      this.s.add($$0.f());
+   }
+
+   @Override
+   public void a(erv $$0, int $$1, int $$2, float $$3) {
+      this.q = Math.max(0.0F, this.q + $$3 * this.x);
+      super.a($$0, $$1, $$2, $$3);
+      int $$4 = this.g / 2 - 128;
+      int $$5 = this.h + 50;
+      float $$6 = -this.q;
+      $$0.c().a();
+      $$0.c().a(0.0F, $$6, 0.0F);
+      this.A.a($$0, this.g, 1.0F, $$5);
+      int $$7 = $$5 + 100;
+
+      for (int $$8 = 0; $$8 < this.s.size(); $$8++) {
+         if ($$8 == this.s.size() - 1) {
+            float $$9 = (float)$$7 + $$6 - (float)(this.h / 2 - 6);
+            if ($$9 < 0.0F) {
+               $$0.c().a(0.0F, -$$9, 0.0F);
+            }
+         }
+
+         if ((float)$$7 + $$6 + 12.0F + 8.0F > 0.0F && (float)$$7 + $$6 < (float)this.h) {
+            arc $$10 = this.s.get($$8);
+            if (this.t.contains($$8)) {
+               $$0.a(this.i, $$10, $$4 + 128, $$7, 16777215);
             } else {
-               tf $$6 = null;
-               int $$7 = $$1 - $$4;
-
-               for (int $$8 = 0; $$8 < this.t.length; $$8++) {
-                  int $$9 = eyh.this.a($$8);
-                  if ($$7 >= $$9 - 18 && $$7 <= $$9) {
-                     $$6 = this.a($$8).b();
-                     break;
-                  }
-               }
-
-               if ($$6 != null) {
-                  $$0.a(eyh.this.i, $$6, $$1, $$2);
-               }
-            }
-         }
-      }
-
-      protected tf a(cit $$0) {
-         return $$0.p();
-      }
-
-      protected void a(apf<?> $$0) {
-         if ($$0 != this.p) {
-            this.p = $$0;
-            this.q = -1;
-         } else if (this.q == -1) {
-            this.q = 1;
-         } else {
-            this.p = null;
-            this.q = 0;
-         }
-
-         this.i().sort(this.o);
-      }
-
-      class a extends etd.a<eyh.b.a> {
-         private final cit b;
-
-         a(cit $$0) {
-            this.b = $$0;
-         }
-
-         public cit b() {
-            return this.b;
-         }
-
-         @Override
-         public void a(erw $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            eyh.this.a($$0, $$3 + 40, $$2, this.b);
-
-            for (int $$10 = 0; $$10 < eyh.this.p.a.size(); $$10++) {
-               apd<csm> $$11;
-               if (this.b instanceof cgr) {
-                  $$11 = eyh.this.p.a.get($$10).b(((cgr)this.b).e());
-               } else {
-                  $$11 = null;
-               }
-
-               this.a($$0, $$11, $$3 + eyh.this.a($$10), $$2, $$1 % 2 == 0);
-            }
-
-            for (int $$13 = 0; $$13 < eyh.this.p.m.size(); $$13++) {
-               this.a($$0, eyh.this.p.m.get($$13).b(this.b), $$3 + eyh.this.a($$13 + eyh.this.p.a.size()), $$2, $$1 % 2 == 0);
+               $$0.b(this.i, $$10, $$4, $$7, 16777215);
             }
          }
 
-         protected void a(erw $$0, @Nullable apd<?> $$1, int $$2, int $$3, boolean $$4) {
-            String $$5 = $$1 == null ? "-" : $$1.a(eyh.this.s.a($$1));
-            $$0.b(eyh.this.i, $$5, $$2 - eyh.this.i.b($$5), $$3 + 5, $$4 ? 16777215 : 9474192);
-         }
-
-         @Override
-         public tf a() {
-            return tf.a("narrator.select", this.b.p());
-         }
+         $$7 += 12;
       }
 
-      class b implements Comparator<eyh.b.a> {
-         public int a(eyh.b.a $$0, eyh.b.a $$1) {
-            cit $$2 = $$0.b();
-            cit $$3 = $$1.b();
-            int $$4;
-            int $$5;
-            if (b.this.p == null) {
-               $$4 = 0;
-               $$5 = 0;
-            } else if (b.this.a.contains(b.this.p)) {
-               apf<csm> $$6 = (apf<csm>)b.this.p;
-               $$4 = $$2 instanceof cgr ? eyh.this.s.a($$6, ((cgr)$$2).e()) : -1;
-               $$5 = $$3 instanceof cgr ? eyh.this.s.a($$6, ((cgr)$$3).e()) : -1;
-            } else {
-               apf<cit> $$9 = (apf<cit>)b.this.p;
-               $$4 = eyh.this.s.a($$9, $$2);
-               $$5 = eyh.this.s.a($$9, $$3);
-            }
-
-            return $$4 == $$5 ? b.this.q * Integer.compare(cit.a($$2), cit.a($$3)) : b.this.q * Integer.compare($$4, $$5);
-         }
-      }
+      $$0.c().b();
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR);
+      $$0.a(b, 0, 0, 0, 0.0F, 0.0F, this.g, this.h, this.g, this.h);
+      RenderSystem.disableBlend();
+      RenderSystem.defaultBlendFunc();
    }
 
-   class c extends etd<eyh.c.a> {
-      public c(eqm $$0) {
-         super($$0, eyh.this.g, eyh.this.h, 32, eyh.this.h - 64, 9 * 4);
-
-         for (bim<?> $$1 : jb.h) {
-            if (eyh.this.s.a(apg.g.b($$1)) > 0 || eyh.this.s.a(apg.h.b($$1)) > 0) {
-               this.b(new eyh.c.a($$1));
-            }
-         }
+   @Override
+   public void b(erv $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.g;
+      float $$5 = this.q * 0.5F;
+      int $$6 = 64;
+      float $$7 = this.q / this.y;
+      float $$8 = $$7 * 0.02F;
+      float $$9 = (float)(this.u + this.h + this.h + 24) / this.y;
+      float $$10 = ($$9 - 20.0F - $$7) * 0.005F;
+      if ($$10 < $$8) {
+         $$8 = $$10;
       }
 
-      class a extends etd.a<eyh.c.a> {
-         private final tf b;
-         private final tf c;
-         private final boolean d;
-         private final tf e;
-         private final boolean f;
-
-         public a(bim<?> $$0) {
-            this.b = $$0.h();
-            int $$1 = eyh.this.s.a(apg.g.b($$0));
-            if ($$1 == 0) {
-               this.c = tf.a("stat_type.minecraft.killed.none", this.b);
-               this.d = false;
-            } else {
-               this.c = tf.a("stat_type.minecraft.killed", $$1, this.b);
-               this.d = true;
-            }
-
-            int $$2 = eyh.this.s.a(apg.h.b($$0));
-            if ($$2 == 0) {
-               this.e = tf.a("stat_type.minecraft.killed_by.none", this.b);
-               this.f = false;
-            } else {
-               this.e = tf.a("stat_type.minecraft.killed_by", this.b, $$2);
-               this.f = true;
-            }
-         }
-
-         @Override
-         public void a(erw $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.b(eyh.this.i, this.b, $$3 + 2, $$2 + 1, 16777215);
-            $$0.b(eyh.this.i, this.c, $$3 + 2 + 10, $$2 + 1 + 9, this.d ? 9474192 : 6316128);
-            $$0.b(eyh.this.i, this.e, $$3 + 2 + 10, $$2 + 1 + 9 * 2, this.f ? 9474192 : 6316128);
-         }
-
-         @Override
-         public tf a() {
-            return tf.a("narrator.select", te.a(this.c, this.e));
-         }
+      if ($$8 > 1.0F) {
+         $$8 = 1.0F;
       }
+
+      $$8 *= $$8;
+      $$8 = $$8 * 96.0F / 255.0F;
+      $$0.a($$8, $$8, $$8, 1.0F);
+      $$0.a(d, 0, 0, 0, 0.0F, $$5, $$4, this.h, 64, 64);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+   }
+
+   @Override
+   public void h() {
+      this.f.s().b(aou.c);
+   }
+
+   @Override
+   public aot B() {
+      return aou.c;
+   }
+
+   @FunctionalInterface
+   interface a {
+      void read(Reader var1) throws IOException;
    }
 }

@@ -1,106 +1,261 @@
 import java.util.List;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public class cui extends crz implements czn {
-   public static final aer a = new aer("sherds");
-   private static final ehx b = csm.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
-   private static final dfu c = dfq.R;
-   private static final dfr d = dfq.bw;
-   private static final dfr e = dfq.C;
+public class cui extends csb {
+   public static final dfx<dgd> d = dfp.ah;
+   public static final dfq e = dfp.w;
+   private static final int f = 20;
 
-   protected cui(dez.d $$0) {
-      super($$0);
-      this.k(this.C.b().a(c, ha.c).a(e, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
+   public cui(dey.d $$0) {
+      super(true, $$0);
+      this.k(this.C.b().a(e, Boolean.valueOf(false)).a(d, dgd.a).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public dfa a(dfa $$0, ha $$1, dfa $$2, cpn $$3, gu $$4, gu $$5) {
+   public boolean f_(dez $$0) {
+      return true;
+   }
+
+   @Override
+   public void a(dez $$0, cpl $$1, gu $$2, bii $$3) {
+      if (!$$1.B) {
+         if (!$$0.c(e)) {
+            this.a($$1, $$2, $$0);
+         }
+      }
+   }
+
+   @Override
+   public void a(dez $$0, akk $$1, gu $$2, aru $$3) {
       if ($$0.c(e)) {
-         $$3.a($$4, eae.c, eae.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public dfa a(clg $$0) {
-      ead $$1 = $$0.q().b_($$0.a());
-      return this.n().a(c, $$0.g()).a(e, Boolean.valueOf($$1.a() == eae.c)).a(d, Boolean.valueOf(false));
-   }
-
-   @Override
-   public void a(cpm $$0, gu $$1, dfa $$2, @Nullable biy $$3, ciy $$4) {
-      if ($$0.B) {
-         $$0.a($$1, dco.O).ifPresent($$1x -> $$1x.a($$4));
+         this.a($$1, $$2, $$0);
       }
    }
 
    @Override
-   public boolean a(dfa $$0, cos $$1, gu $$2, eat $$3) {
-      return false;
+   public int a(dez $$0, cor $$1, gu $$2, ha $$3) {
+      return $$0.c(e) ? 15 : 0;
    }
 
    @Override
-   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
-      return b;
+   public int b(dez $$0, cor $$1, gu $$2, ha $$3) {
+      if (!$$0.c(e)) {
+         return 0;
+      } else {
+         return $$3 == ha.b ? 15 : 0;
+      }
+   }
+
+   private void a(cpl $$0, gu $$1, dez $$2) {
+      if (this.a($$2, (cpo)$$0, $$1)) {
+         boolean $$3 = $$2.c(e);
+         boolean $$4 = false;
+         List<cdd> $$5 = this.a($$0, $$1, cdd.class, $$0x -> true);
+         if (!$$5.isEmpty()) {
+            $$4 = true;
+         }
+
+         if ($$4 && !$$3) {
+            dez $$6 = $$2.a(e, Boolean.valueOf(true));
+            $$0.a($$1, $$6, 3);
+            this.b($$0, $$1, $$6, true);
+            $$0.a($$1, this);
+            $$0.a($$1.d(), this);
+            $$0.b($$1, $$2, $$6);
+         }
+
+         if (!$$4 && $$3) {
+            dez $$7 = $$2.a(e, Boolean.valueOf(false));
+            $$0.a($$1, $$7, 3);
+            this.b($$0, $$1, $$7, false);
+            $$0.a($$1, this);
+            $$0.a($$1.d(), this);
+            $$0.b($$1, $$2, $$7);
+         }
+
+         if ($$4) {
+            $$0.a($$1, this, 20);
+         }
+
+         $$0.c($$1, this);
+      }
+   }
+
+   protected void b(cpl $$0, gu $$1, dez $$2, boolean $$3) {
+      cyk $$4 = new cyk($$0, $$1, $$2);
+
+      for (gu $$6 : $$4.a()) {
+         dez $$7 = $$0.a_($$6);
+         $$0.a($$7, $$6, $$7.b(), $$1, false);
+      }
    }
 
    @Override
-   protected void a(dfb.a<csm, dfa> $$0) {
-      $$0.a(c, e, d);
-   }
-
-   @Nullable
-   @Override
-   public dcm a(gu $$0, dfa $$1) {
-      return new ddb($$0, $$1);
+   public void b(dez $$0, cpl $$1, gu $$2, dez $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         dez $$5 = this.a($$0, $$1, $$2, $$4);
+         this.a($$1, $$2, $$5);
+      }
    }
 
    @Override
-   public List<ciy> a(dfa $$0, ecn.a $$1) {
-      dcm $$2 = $$1.b(ees.h);
-      if ($$2 instanceof ddb $$3) {
-         $$1.a(a, $$1x -> $$3.f().a().map(cit::ae_).forEach($$1x));
+   public dgc<dgd> b() {
+      return d;
+   }
+
+   @Override
+   public boolean d_(dez $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(dez $$0, cpl $$1, gu $$2) {
+      if ($$0.c(e)) {
+         List<cdl> $$3 = this.a($$1, $$2, cdl.class, $$0x -> true);
+         if (!$$3.isEmpty()) {
+            return $$3.get(0).A().k();
+         }
+
+         List<cdd> $$4 = this.a($$1, $$2, cdd.class, bil.d);
+         if (!$$4.isEmpty()) {
+            return ced.b((bgj)$$4.get(0));
+         }
+      }
+
+      return 0;
+   }
+
+   private <T extends cdd> List<T> a(cpl $$0, gu $$1, Class<T> $$2, Predicate<bii> $$3) {
+      return $$0.a($$2, this.a($$1), $$3);
+   }
+
+   private egy a(gu $$0) {
+      double $$1 = 0.2;
+      return new egy(
+         (double)$$0.u() + 0.2, (double)$$0.v(), (double)$$0.w() + 0.2, (double)($$0.u() + 1) - 0.2, (double)($$0.v() + 1) - 0.2, (double)($$0.w() + 1) - 0.2
+      );
+   }
+
+   @Override
+   public dez a(dez $$0, cyx $$1) {
+      switch ($$1) {
+         case c:
+            switch ((dgd)$$0.c(d)) {
+               case c:
+                  return $$0.a(d, dgd.d);
+               case d:
+                  return $$0.a(d, dgd.c);
+               case e:
+                  return $$0.a(d, dgd.f);
+               case f:
+                  return $$0.a(d, dgd.e);
+               case g:
+                  return $$0.a(d, dgd.i);
+               case h:
+                  return $$0.a(d, dgd.j);
+               case i:
+                  return $$0.a(d, dgd.g);
+               case j:
+                  return $$0.a(d, dgd.h);
+            }
+         case d:
+            switch ((dgd)$$0.c(d)) {
+               case c:
+                  return $$0.a(d, dgd.e);
+               case d:
+                  return $$0.a(d, dgd.f);
+               case e:
+                  return $$0.a(d, dgd.d);
+               case f:
+                  return $$0.a(d, dgd.c);
+               case g:
+                  return $$0.a(d, dgd.j);
+               case h:
+                  return $$0.a(d, dgd.g);
+               case i:
+                  return $$0.a(d, dgd.h);
+               case j:
+                  return $$0.a(d, dgd.i);
+               case a:
+                  return $$0.a(d, dgd.b);
+               case b:
+                  return $$0.a(d, dgd.a);
+            }
+         case b:
+            switch ((dgd)$$0.c(d)) {
+               case c:
+                  return $$0.a(d, dgd.f);
+               case d:
+                  return $$0.a(d, dgd.e);
+               case e:
+                  return $$0.a(d, dgd.c);
+               case f:
+                  return $$0.a(d, dgd.d);
+               case g:
+                  return $$0.a(d, dgd.h);
+               case h:
+                  return $$0.a(d, dgd.i);
+               case i:
+                  return $$0.a(d, dgd.j);
+               case j:
+                  return $$0.a(d, dgd.g);
+               case a:
+                  return $$0.a(d, dgd.b);
+               case b:
+                  return $$0.a(d, dgd.a);
+            }
+         default:
+            return $$0;
+      }
+   }
+
+   @Override
+   public dez a(dez $$0, cxg $$1) {
+      dgd $$2 = $$0.c(d);
+      switch ($$1) {
+         case b:
+            switch ($$2) {
+               case e:
+                  return $$0.a(d, dgd.f);
+               case f:
+                  return $$0.a(d, dgd.e);
+               case g:
+                  return $$0.a(d, dgd.j);
+               case h:
+                  return $$0.a(d, dgd.i);
+               case i:
+                  return $$0.a(d, dgd.h);
+               case j:
+                  return $$0.a(d, dgd.g);
+               default:
+                  return super.a($$0, $$1);
+            }
+         case c:
+            switch ($$2) {
+               case c:
+                  return $$0.a(d, dgd.d);
+               case d:
+                  return $$0.a(d, dgd.c);
+               case e:
+               case f:
+               default:
+                  break;
+               case g:
+                  return $$0.a(d, dgd.h);
+               case h:
+                  return $$0.a(d, dgd.g);
+               case i:
+                  return $$0.a(d, dgd.j);
+               case j:
+                  return $$0.a(d, dgd.i);
+            }
       }
 
       return super.a($$0, $$1);
    }
 
    @Override
-   public void a(cpm $$0, gu $$1, dfa $$2, cbn $$3) {
-      ciy $$4 = $$3.eR();
-      dfa $$5 = $$2;
-      if ($$4.a(apt.aT) && !cnh.f($$4)) {
-         $$5 = $$2.a(d, Boolean.valueOf(true));
-         $$0.a($$1, $$5, 4);
-      }
-
-      super.a($$0, $$1, $$5, $$3);
-   }
-
-   @Override
-   public ead c_(dfa $$0) {
-      return $$0.c(e) ? eae.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public czz m(dfa $$0) {
-      return $$0.c(d) ? czz.aY : czz.aX;
-   }
-
-   @Override
-   public void a(ciy $$0, @Nullable cos $$1, List<tf> $$2, ckp $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      ddb.a $$4 = ddb.a.b(cgr.a($$0));
-      if (!$$4.equals(ddb.a.a)) {
-         $$2.add(te.a);
-         Stream.of($$4.e(), $$4.c(), $$4.d(), $$4.b()).forEach($$1x -> $$2.add(new ciy($$1x, 1).y().d().a(n.h)));
-      }
-   }
-
-   @Override
-   public ciy a(cos $$0, gu $$1, dfa $$2) {
-      return $$0.c_($$1) instanceof ddb $$3 ? $$3.g() : super.a($$0, $$1, $$2);
+   protected void a(dfa.a<csl, dez> $$0) {
+      $$0.a(d, e, c);
    }
 }

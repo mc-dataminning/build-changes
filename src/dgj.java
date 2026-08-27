@@ -1,23 +1,23 @@
 public enum dgj implements ash {
-   a("straight"),
-   b("inner_left"),
-   c("inner_right"),
-   d("outer_left"),
-   e("outer_right");
+   a("save"),
+   b("load"),
+   c("corner"),
+   d("data");
 
-   private final String f;
+   private final String e;
+   private final tf f;
 
    private dgj(String $$0) {
-      this.f = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.f;
+      this.e = $$0;
+      this.f = tf.c("structure_block.mode_info." + $$0);
    }
 
    @Override
    public String c() {
+      return this.e;
+   }
+
+   public tf a() {
       return this.f;
    }
 }

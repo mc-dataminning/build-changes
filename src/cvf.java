@@ -1,102 +1,88 @@
-import javax.annotation.Nullable;
+public class cvf extends cud {
+   private final ehw[] i;
 
-public class cvf extends csm {
-   public static final dga a = dfq.aQ;
-   protected static final ehx b = csm.a(0.0, 0.0, 0.0, 16.0, 15.0, 16.0);
-   public static final int c = 7;
-
-   protected cvf(dez.d $$0) {
-      super($$0);
-      this.k(this.C.b().a(a, Integer.valueOf(0)));
+   public cvf(dey.d $$0) {
+      super(2.0F, 2.0F, 16.0F, 16.0F, 24.0F, $$0);
+      this.k(
+         this.C
+            .b()
+            .a(a, Boolean.valueOf(false))
+            .a(b, Boolean.valueOf(false))
+            .a(c, Boolean.valueOf(false))
+            .a(d, Boolean.valueOf(false))
+            .a(e, Boolean.valueOf(false))
+      );
+      this.i = this.a(2.0F, 1.0F, 16.0F, 6.0F, 15.0F);
    }
 
    @Override
-   public dfa a(dfa $$0, ha $$1, dfa $$2, cpn $$3, gu $$4, gu $$5) {
-      if ($$1 == ha.b && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public ehw f(dez $$0, cor $$1, gu $$2) {
+      return this.i[this.g($$0)];
    }
 
    @Override
-   public boolean a(dfa $$0, cpp $$1, gu $$2) {
-      dfa $$3 = $$1.a_($$2.c());
-      return !$$3.e() || $$3.b() instanceof cvh || $$3.b() instanceof des;
+   public ehw b(dez $$0, cor $$1, gu $$2, ehi $$3) {
+      return this.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public dfa a(clg $$0) {
-      return !this.n().a((cpp)$$0.q(), $$0.a()) ? csn.j.n() : super.a($$0);
-   }
-
-   @Override
-   public boolean g_(dfa $$0) {
-      return true;
-   }
-
-   @Override
-   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
-      return b;
-   }
-
-   @Override
-   public void a(dfa $$0, akk $$1, gu $$2, aru $$3) {
-      if (!$$0.a($$1, $$2)) {
-         a(null, $$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public void b(dfa $$0, akk $$1, gu $$2, aru $$3) {
-      int $$4 = $$0.c(a);
-      if (!a((cpp)$$1, $$2) && !$$1.q($$2.c())) {
-         if ($$4 > 0) {
-            $$1.a($$2, $$0.a(a, Integer.valueOf($$4 - 1)), 2);
-         } else if (!a((cos)$$1, $$2)) {
-            a(null, $$0, $$1, $$2);
-         }
-      } else if ($$4 < 7) {
-         $$1.a($$2, $$0.a(a, Integer.valueOf(7)), 2);
-      }
-   }
-
-   @Override
-   public void a(cpm $$0, dfa $$1, gu $$2, bii $$3, float $$4) {
-      if (!$$0.B && $$0.z.i() < $$4 - 0.5F && $$3 instanceof biy && ($$3 instanceof cbn || $$0.X().b(cpi.c)) && $$3.df() * $$3.df() * $$3.dg() > 0.512F) {
-         a($$3, $$1, $$0, $$2);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public static void a(@Nullable bii $$0, dfa $$1, cpm $$2, gu $$3) {
-      dfa $$4 = a($$1, csn.j.n(), $$2, $$3);
-      $$2.b($$3, $$4);
-      $$2.a(djk.c, $$3, djk.a.a($$0, $$4));
-   }
-
-   private static boolean a(cos $$0, gu $$1) {
-      return $$0.a_($$1.c()).a(apl.cp);
-   }
-
-   private static boolean a(cpp $$0, gu $$1) {
-      for (gu $$2 : gu.a($$1.b(-4, 0, -4), $$1.b(4, 1, 4))) {
-         if ($$0.b_($$2).a(apq.a)) {
-            return true;
-         }
-      }
-
+   public boolean a(dez $$0, cor $$1, gu $$2, eas $$3) {
       return false;
    }
 
-   @Override
-   protected void a(dfb.a<csm, dfa> $$0) {
-      $$0.a(a);
+   public boolean a(dez $$0, boolean $$1, ha $$2) {
+      csl $$3 = $$0.b();
+      boolean $$4 = this.h($$0);
+      boolean $$5 = $$3 instanceof cvg && cvg.a($$0, $$2);
+      return !j($$0) && $$1 || $$4 || $$5;
+   }
+
+   private boolean h(dez $$0) {
+      return $$0.a(apl.S) && $$0.a(apl.k) == this.n().a(apl.k);
    }
 
    @Override
-   public boolean a(dfa $$0, cos $$1, gu $$2, eat $$3) {
-      return false;
+   public bgq a(dez $$0, cpl $$1, gu $$2, cbm $$3, bgp $$4, egz $$5) {
+      if ($$1.B) {
+         cix $$6 = $$3.b($$4);
+         return $$6.a(cja.tQ) ? bgq.a : bgq.d;
+      } else {
+         return cjc.a($$3, $$1, $$2);
+      }
+   }
+
+   @Override
+   public dez a(clf $$0) {
+      cor $$1 = $$0.q();
+      gu $$2 = $$0.a();
+      eac $$3 = $$0.q().b_($$0.a());
+      gu $$4 = $$2.e();
+      gu $$5 = $$2.h();
+      gu $$6 = $$2.f();
+      gu $$7 = $$2.g();
+      dez $$8 = $$1.a_($$4);
+      dez $$9 = $$1.a_($$5);
+      dez $$10 = $$1.a_($$6);
+      dez $$11 = $$1.a_($$7);
+      return super.a($$0)
+         .a(a, Boolean.valueOf(this.a($$8, $$8.d($$1, $$4, ha.d), ha.d)))
+         .a(b, Boolean.valueOf(this.a($$9, $$9.d($$1, $$5, ha.e), ha.e)))
+         .a(c, Boolean.valueOf(this.a($$10, $$10.d($$1, $$6, ha.c), ha.c)))
+         .a(d, Boolean.valueOf(this.a($$11, $$11.d($$1, $$7, ha.f), ha.f)))
+         .a(e, Boolean.valueOf($$3.a() == ead.c));
+   }
+
+   @Override
+   public dez a(dez $$0, ha $$1, dez $$2, cpm $$3, gu $$4, gu $$5) {
+      if ($$0.c(e)) {
+         $$3.a($$4, ead.c, ead.c.a($$3));
+      }
+
+      return $$1.o().e() == ha.c.a ? $$0.a(f.get($$1), Boolean.valueOf(this.a($$2, $$2.d($$3, $$5, $$1.g()), $$1.g()))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected void a(dfa.a<csl, dez> $$0) {
+      $$0.a(a, b, d, c, e);
    }
 }

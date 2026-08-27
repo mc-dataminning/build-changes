@@ -5,7 +5,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.meta.TypeQualifierDefault;
 
 @Nonnull
-@TypeQualifierDefault({ElementType.FIELD})
+@TypeQualifierDefault({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface eiz {
 }

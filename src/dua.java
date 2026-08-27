@@ -1,23 +1,37 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dua extends dug {
-   private static final dua c = new dua();
-   public static final Codec<dua> a = Codec.unit(() -> c);
+public class dua extends duj {
+   public static final Codec<dua> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
+               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
+               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, dua::new)
+   );
+   private final int c;
+   private final double d;
+   private final double e;
 
-   public static dua a() {
-      return c;
+   private dua(int $$0, double $$1, double $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   public static dua a(int $$0, double $$1, double $$2) {
+      return new dua($$0, $$1, $$2);
    }
 
    @Override
-   public Stream<gu> a_(due $$0, aru $$1, gu $$2) {
-      int $$3 = $$1.a(16) + $$2.u();
-      int $$4 = $$1.a(16) + $$2.w();
-      return Stream.of(new gu($$3, $$2.v(), $$4));
+   protected int a(aru $$0, gu $$1) {
+      double $$2 = cqj.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
+      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
    }
 
    @Override
-   public duh<?> b() {
-      return duh.m;
+   public dug<?> b() {
+      return dug.g;
    }
 }

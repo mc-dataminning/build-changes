@@ -2,10 +2,10 @@ public abstract class ett {
    protected static final int a = 14737632;
    protected static final int b = 60;
    protected static final int c = 1;
-   protected final eru d;
+   protected final ert d;
    protected final arw e;
 
-   protected ett(eru $$0, arw $$1) {
+   protected ett(ert $$0, arw $$1) {
       this.d = $$0;
       this.e = $$1;
    }
@@ -14,9 +14,9 @@ public abstract class ett {
       return Math.min(this.e.a() + 2, $$0);
    }
 
-   public void a(erw $$0, int $$1, int $$2) {
+   public void a(erv $$0, int $$1, int $$2) {
       int $$3 = $$0.b();
-      $$0.a(fnt.D(), $$1, $$3 - 60, $$1 + $$2, $$3, -1873784752);
+      $$0.a(foc.D(), $$1, $$3 - 60, $$1 + $$2, $$3, -1873784752);
       long $$4 = 0L;
       long $$5 = 2147483647L;
       long $$6 = -2147483648L;
@@ -31,13 +31,13 @@ public abstract class ett {
          $$4 += $$11;
          int $$12 = this.b((double)$$11);
          int $$13 = this.a($$11);
-         $$0.a(fnt.D(), $$10, $$3 - $$12, $$10 + 1, $$3, $$13);
+         $$0.a(foc.D(), $$10, $$3 - $$12, $$10 + 1, $$3, $$13);
       }
 
-      $$0.a(fnt.D(), $$1, $$1 + $$2 - 1, $$3 - 60, -1);
-      $$0.a(fnt.D(), $$1, $$1 + $$2 - 1, $$3 - 1, -1);
-      $$0.b(fnt.D(), $$1, $$3 - 60, $$3, -1);
-      $$0.b(fnt.D(), $$1 + $$2 - 1, $$3 - 60, $$3, -1);
+      $$0.a(foc.D(), $$1, $$1 + $$2 - 1, $$3 - 60, -1);
+      $$0.a(foc.D(), $$1, $$1 + $$2 - 1, $$3 - 1, -1);
+      $$0.b(foc.D(), $$1, $$3 - 60, $$3, -1);
+      $$0.b(foc.D(), $$1 + $$2 - 1, $$3 - 60, $$3, -1);
       if ($$8 > 0) {
          String $$14 = this.a((double)$$5) + " min";
          String $$15 = this.a((double)$$4 / (double)$$8) + " avg";
@@ -50,11 +50,11 @@ public abstract class ett {
       this.a($$0, $$1, $$2, $$3);
    }
 
-   protected void a(erw $$0, int $$1, int $$2, int $$3) {
+   protected void a(erv $$0, int $$1, int $$2, int $$3) {
    }
 
-   protected void a(erw $$0, String $$1, int $$2, int $$3) {
-      $$0.a(fnt.D(), $$2, $$3, $$2 + this.d.b($$1) + 1, $$3 + 9, -1873784752);
+   protected void a(erv $$0, String $$1, int $$2, int $$3) {
+      $$0.a(foc.D(), $$2, $$3, $$2 + this.d.b($$1) + 1, $$3 + 9, -1873784752);
       $$0.a(this.d, $$1, $$2 + 1, $$3 + 1, 14737632, false);
    }
 

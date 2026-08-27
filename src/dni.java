@@ -1,32 +1,33 @@
-import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.OptionalInt;
+import java.util.function.Consumer;
 
-public class dni extends dnn<dpp> {
-   public dni(Codec<dpp> $$0) {
-      super($$0);
+public class dni {
+   protected static double a(double $$0, double $$1, double $$2, double $$3) {
+      if ($$0 < $$3) {
+         $$0 = $$3;
+      }
+
+      double $$4 = 0.384;
+      double $$5 = $$0 / $$1 * 0.384;
+      double $$6 = 0.75 * Math.pow($$5, 1.3333333333333333);
+      double $$7 = Math.pow($$5, 0.6666666666666666);
+      double $$8 = 0.3333333333333333 * Math.log($$5);
+      double $$9 = $$2 * ($$6 - $$7 - $$8);
+      $$9 = Math.max($$9, 0.0);
+      return $$9 / 0.384 * $$1;
    }
 
-   @Override
-   public boolean a(dnp<dpp> $$0) {
-      cqg $$1 = $$0.b();
-      gu $$2 = $$0.e();
-      dpp $$3 = $$0.f();
-      aru $$4 = $$0.d();
-      if (!dnj.a($$1, $$2)) {
+   protected static boolean a(cqf $$0, gu $$1, int $$2) {
+      if (b($$0, $$1)) {
          return false;
       } else {
-         int $$5 = $$3.c.a($$4);
-         float $$6 = $$3.i.a($$4);
-         float $$7 = $$3.h.a($$4);
-         int $$8 = $$3.d.a($$4);
-         int $$9 = $$3.d.a($$4);
+         float $$3 = 6.0F;
+         float $$4 = 6.0F / (float)$$2;
 
-         for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
-            for (int $$11 = -$$9; $$11 <= $$9; $$11++) {
-               double $$12 = this.a($$8, $$9, $$10, $$11, $$3);
-               gu $$13 = $$2.b($$10, 0, $$11);
-               this.a($$1, $$4, $$13, $$10, $$11, $$6, $$12, $$5, $$7, $$3);
+         for (float $$5 = 0.0F; $$5 < (float) (Math.PI * 2); $$5 += $$4) {
+            int $$6 = (int)(arp.b($$5) * (float)$$2);
+            int $$7 = (int)(arp.a($$5) * (float)$$2);
+            if (b($$0, $$1.b($$6, 0, $$7))) {
+               return false;
             }
          }
 
@@ -34,140 +35,77 @@ public class dni extends dnn<dpp> {
       }
    }
 
-   private void a(cqg $$0, aru $$1, gu $$2, int $$3, int $$4, float $$5, double $$6, int $$7, float $$8, dpp $$9) {
-      Optional<djz> $$10 = djz.a($$0, $$2, $$9.b, dnj::c, dnj::d);
-      if (!$$10.isEmpty()) {
-         OptionalInt $$11 = $$10.get().b();
-         OptionalInt $$12 = $$10.get().c();
-         if (!$$11.isEmpty() || !$$12.isEmpty()) {
-            boolean $$13 = $$1.i() < $$5;
-            djz $$15;
-            if ($$13 && $$12.isPresent() && this.b($$0, $$2.h($$12.getAsInt()))) {
-               int $$14 = $$12.getAsInt();
-               $$15 = $$10.get().a(OptionalInt.of($$14 - 1));
-               $$0.a($$2.h($$14), csn.G.n(), 2);
-            } else {
-               $$15 = $$10.get();
-            }
+   protected static boolean a(cpm $$0, gu $$1) {
+      return $$0.a($$1, dni::c);
+   }
 
-            OptionalInt $$17 = $$15.c();
-            boolean $$18 = $$1.j() < $$6;
-            int $$22;
-            if ($$11.isPresent() && $$18 && !this.a((cpp)$$0, $$2.h($$11.getAsInt()))) {
-               int $$19 = $$9.g.a($$1);
-               this.a($$0, $$2.h($$11.getAsInt()), $$19, ha.b);
-               int $$20;
-               if ($$17.isPresent()) {
-                  $$20 = Math.min($$7, $$11.getAsInt() - $$17.getAsInt());
-               } else {
-                  $$20 = $$7;
-               }
+   protected static boolean b(cpm $$0, gu $$1) {
+      return $$0.a($$1, dni::e);
+   }
 
-               $$22 = this.a($$1, $$3, $$4, $$8, $$20, $$9);
-            } else {
-               $$22 = 0;
-            }
+   protected static void a(ha $$0, int $$1, boolean $$2, Consumer<dez> $$3) {
+      if ($$1 >= 3) {
+         $$3.accept(a($$0, dfw.e));
 
-            boolean $$24 = $$1.j() < $$6;
-            int $$26;
-            if ($$17.isPresent() && $$24 && !this.a((cpp)$$0, $$2.h($$17.getAsInt()))) {
-               int $$25 = $$9.g.a($$1);
-               this.a($$0, $$2.h($$17.getAsInt()), $$25, ha.a);
-               if ($$11.isPresent()) {
-                  $$26 = Math.max(0, $$22 + arp.b($$1, -$$9.e, $$9.e));
-               } else {
-                  $$26 = this.a($$1, $$3, $$4, $$8, $$7, $$9);
-               }
-            } else {
-               $$26 = 0;
-            }
-
-            int $$36;
-            int $$35;
-            if ($$11.isPresent() && $$17.isPresent() && $$11.getAsInt() - $$22 <= $$17.getAsInt() + $$26) {
-               int $$29 = $$17.getAsInt();
-               int $$30 = $$11.getAsInt();
-               int $$31 = Math.max($$30 - $$22, $$29 + 1);
-               int $$32 = Math.min($$29 + $$26, $$30 - 1);
-               int $$33 = arp.b($$1, $$31, $$32 + 1);
-               int $$34 = $$33 - 1;
-               $$35 = $$30 - $$33;
-               $$36 = $$34 - $$29;
-            } else {
-               $$35 = $$22;
-               $$36 = $$26;
-            }
-
-            boolean $$39 = $$1.h() && $$35 > 0 && $$36 > 0 && $$15.d().isPresent() && $$35 + $$36 == $$15.d().getAsInt();
-            if ($$11.isPresent()) {
-               dnj.a($$0, $$2.h($$11.getAsInt() - 1), ha.a, $$35, $$39);
-            }
-
-            if ($$17.isPresent()) {
-               dnj.a($$0, $$2.h($$17.getAsInt() + 1), ha.b, $$36, $$39);
-            }
+         for (int $$4 = 0; $$4 < $$1 - 3; $$4++) {
+            $$3.accept(a($$0, dfw.d));
          }
+      }
+
+      if ($$1 >= 2) {
+         $$3.accept(a($$0, dfw.c));
+      }
+
+      if ($$1 >= 1) {
+         $$3.accept(a($$0, $$2 ? dfw.a : dfw.b));
       }
    }
 
-   private boolean a(cpp $$0, gu $$1) {
-      return $$0.a_($$1).a(csn.H);
-   }
+   protected static void a(cpm $$0, gu $$1, ha $$2, int $$3, boolean $$4) {
+      if (b($$0.a_($$1.a($$2.g())))) {
+         gu.a $$5 = $$1.j();
+         a($$2, $$3, $$4, $$3x -> {
+            if ($$3x.a(csm.rs)) {
+               $$3x = $$3x.a(cyb.c, Boolean.valueOf($$0.y($$5)));
+            }
 
-   private int a(aru $$0, int $$1, int $$2, float $$3, int $$4, dpp $$5) {
-      if ($$0.i() > $$3) {
-         return 0;
-      } else {
-         int $$6 = Math.abs($$1) + Math.abs($$2);
-         float $$7 = (float)arp.a((double)$$6, 0.0, (double)$$5.l, (double)$$4 / 2.0, 0.0);
-         return (int)a($$0, 0.0F, (float)$$4, $$7, (float)$$5.f);
+            $$0.a($$5, $$3x, 2);
+            $$5.c($$2);
+         });
       }
    }
 
-   private boolean b(cqg $$0, gu $$1) {
-      dfa $$2 = $$0.a_($$1);
-      if (!$$2.a(csn.G) && !$$2.a(csn.rt) && !$$2.a(csn.rs)) {
-         if ($$0.a_($$1.c()).u().a(apq.a)) {
-            return false;
-         } else {
-            for (ha $$3 : ha.c.a) {
-               if (!this.a((cpn)$$0, $$1.a($$3))) {
-                  return false;
-               }
-            }
-
-            return this.a((cpn)$$0, $$1.d());
-         }
+   protected static boolean c(cpm $$0, gu $$1) {
+      dez $$2 = $$0.a_($$1);
+      if ($$2.a(apl.br)) {
+         $$0.a($$1, csm.rt.n(), 2);
+         return true;
       } else {
          return false;
       }
    }
 
-   private boolean a(cpn $$0, gu $$1) {
-      dfa $$2 = $$0.a_($$1);
-      return $$2.a(apl.bd) || $$2.u().a(apq.a);
+   private static dez a(ha $$0, dfw $$1) {
+      return csm.rs.n().a(cyb.a, $$0).a(cyb.b, $$1);
    }
 
-   private void a(cqg $$0, gu $$1, int $$2, ha $$3) {
-      gu.a $$4 = $$1.j();
-
-      for (int $$5 = 0; $$5 < $$2; $$5++) {
-         if (!dnj.c($$0, $$4)) {
-            return;
-         }
-
-         $$4.c($$3);
-      }
+   public static boolean a(dez $$0) {
+      return b($$0) || $$0.a(csm.H);
    }
 
-   private double a(int $$0, int $$1, int $$2, int $$3, dpp $$4) {
-      int $$5 = $$0 - Math.abs($$2);
-      int $$6 = $$1 - Math.abs($$3);
-      int $$7 = Math.min($$5, $$6);
-      return (double)arp.b((float)$$7, 0.0F, (float)$$4.k, $$4.j, 1.0F);
+   public static boolean b(dez $$0) {
+      return $$0.a(csm.rt) || $$0.a(apl.br);
    }
 
-   private static float a(aru $$0, float $$1, float $$2, float $$3, float $$4) {
-      return bfp.a($$0, $$3, $$4, $$1, $$2);
+   public static boolean c(dez $$0) {
+      return $$0.i() || $$0.a(csm.G);
+   }
+
+   public static boolean d(dez $$0) {
+      return !$$0.i() && !$$0.a(csm.G);
+   }
+
+   public static boolean e(dez $$0) {
+      return $$0.i() || $$0.a(csm.G) || $$0.a(csm.H);
    }
 }

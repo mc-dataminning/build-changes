@@ -1,20 +1,32 @@
-public class cxi extends csm implements cso {
-   public cxi(dez.d $$0) {
+public class cxi extends csl {
+   protected static final ehw a = csl.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
+
+   public cxi(dey.d $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(cpp $$0, gu $$1, dfa $$2) {
-      return $$0.a_($$1.c()).i();
+   public ehw c(dez $$0, cor $$1, gu $$2, ehi $$3) {
+      return a;
    }
 
    @Override
-   public boolean a(cpm $$0, aru $$1, gu $$2, dfa $$3) {
-      return true;
+   public ehw b_(dez $$0, cor $$1, gu $$2) {
+      return eht.b();
    }
 
    @Override
-   public void a(akk $$0, aru $$1, gu $$2, dfa $$3) {
-      $$0.B_().c(jc.as).flatMap($$0x -> $$0x.b(ok.n)).ifPresent($$3x -> ((dna)$$3x.a()).a($$0, $$0.k().g(), $$1, $$2.c()));
+   public ehw b(dez $$0, cor $$1, gu $$2, ehi $$3) {
+      return eht.b();
+   }
+
+   @Override
+   public boolean a(dez $$0, cor $$1, gu $$2, eas $$3) {
+      return false;
+   }
+
+   @Override
+   public float b(dez $$0, cor $$1, gu $$2) {
+      return 0.2F;
    }
 }

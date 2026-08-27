@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class ea implements ArgumentType<aer> {
-   private static final Collection<String> a = Stream.of(cpm.h, cpm.i).map($$0 -> $$0.a().toString()).collect(Collectors.toList());
+   private static final Collection<String> a = Stream.of(cpl.h, cpl.i).map($$0 -> $$0.a().toString()).collect(Collectors.toList());
    private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tf.a("argument.dimension.invalid", $$0));
 
    public aer a(StringReader $$0) throws CommandSyntaxException {
@@ -32,7 +32,7 @@ public class ea implements ArgumentType<aer> {
 
    public static akk a(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
       aer $$2 = (aer)$$0.getArgument($$1, aer.class);
-      aeq<cpm> $$3 = aeq.a(jc.aH, $$2);
+      aeq<cpl> $$3 = aeq.a(jc.aH, $$2);
       akk $$4 = ((dr)$$0.getSource()).l().a($$3);
       if ($$4 == null) {
          throw b.create($$2);

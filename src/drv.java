@@ -1,30 +1,40 @@
-import com.mojang.datafixers.Products.P3;
+import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
 import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.List;
 
-public abstract class drv extends drs {
-   protected final long c;
-   protected final dzg.a d;
-   protected final float e;
-   protected final dzg f;
+public class drv extends dru {
+   public static final Codec<drv> g = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, drv::new));
+   protected final List<dez> h;
 
-   protected static <P extends drv> P3<Mu<P>, Long, dzg.a, Float> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
-         dzg.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
-         aqy.k.fieldOf("scale").forGetter($$0x -> $$0x.e)
-      );
+   protected static <P extends drv> P4<Mu<P>, Long, dzf.a, Float, List<dez>> b(Instance<P> $$0) {
+      return a($$0).and(Codec.list(dez.b).fieldOf("states").forGetter($$0x -> $$0x.h));
    }
 
-   protected drv(long $$0, dzg.a $$1, float $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = dzg.b(new dli(new dkk($$0)), $$1);
+   public drv(long $$0, dzf.a $$1, float $$2, List<dez> $$3) {
+      super($$0, $$1, $$2);
+      this.h = $$3;
    }
 
-   protected double a(gu $$0, double $$1) {
-      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
+   @Override
+   protected drs<?> a() {
+      return drs.d;
+   }
+
+   @Override
+   public dez a(aru $$0, gu $$1) {
+      return this.a(this.h, $$1, (double)this.e);
+   }
+
+   protected dez a(List<dez> $$0, gu $$1, double $$2) {
+      double $$3 = this.a($$1, $$2);
+      return this.a($$0, $$3);
+   }
+
+   protected dez a(List<dez> $$0, double $$1) {
+      double $$2 = arp.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
+      return $$0.get((int)($$2 * (double)$$0.size()));
    }
 }

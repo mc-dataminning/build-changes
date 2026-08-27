@@ -1,139 +1,305 @@
-import java.util.Optional;
-import java.util.function.Predicate;
+import com.google.common.base.MoreObjects;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public final class ccg {
-   public static ehc a(bii $$0, Predicate<bii> $$1) {
-      ehe $$2 = $$0.dn();
-      cpm $$3 = $$0.dK();
-      ehe $$4 = $$0.di();
-      return a($$4, $$0, $$1, $$2, $$3);
+public class ccg extends cce {
+   private static final double b = 0.15;
+   @Nullable
+   private bii c;
+   @Nullable
+   private ha d;
+   private int e;
+   private double f;
+   private double g;
+   private double h;
+   @Nullable
+   private UUID i;
+
+   public ccg(bim<? extends ccg> $$0, cpl $$1) {
+      super($$0, $$1);
+      this.af = true;
    }
 
-   public static ehc a(bii $$0, Predicate<bii> $$1, double $$2) {
-      ehe $$3 = $$0.f(0.0F).a($$2);
-      cpm $$4 = $$0.dK();
-      ehe $$5 = $$0.bp();
-      return a($$5, $$0, $$1, $$3, $$4);
+   public ccg(cpl $$0, biy $$1, bii $$2, ha.a $$3) {
+      this(bim.aH, $$0);
+      this.b($$1);
+      gu $$4 = $$1.dk();
+      double $$5 = (double)$$4.u() + 0.5;
+      double $$6 = (double)$$4.v() + 0.5;
+      double $$7 = (double)$$4.w() + 0.5;
+      this.b($$5, $$6, $$7, this.dA(), this.dC());
+      this.c = $$2;
+      this.d = ha.b;
+      this.a($$3);
    }
 
-   private static ehc a(ehe $$0, bii $$1, Predicate<bii> $$2, ehe $$3, cpm $$4) {
-      ehe $$5 = $$0.e($$3);
-      ehc $$6 = $$4.a(new cov($$0, $$5, cov.a.a, cov.b.a, $$1));
-      if ($$6.c() != ehc.a.a) {
-         $$5 = $$6.e();
+   @Override
+   public aox da() {
+      return aox.f;
+   }
+
+   @Override
+   protected void b(qr $$0) {
+      super.b($$0);
+      if (this.c != null) {
+         $$0.a("Target", this.c.cv());
       }
 
-      ehc $$7 = a($$4, $$1, $$0, $$5, $$1.cG().b($$3).g(1.0), $$2);
-      if ($$7 != null) {
-         $$6 = $$7;
+      if (this.d != null) {
+         $$0.a("Dir", this.d.d());
       }
 
-      return $$6;
+      $$0.a("Steps", this.e);
+      $$0.a("TXD", this.f);
+      $$0.a("TYD", this.g);
+      $$0.a("TZD", this.h);
+   }
+
+   @Override
+   protected void a(qr $$0) {
+      super.a($$0);
+      this.e = $$0.h("Steps");
+      this.f = $$0.k("TXD");
+      this.g = $$0.k("TYD");
+      this.h = $$0.k("TZD");
+      if ($$0.b("Dir", 99)) {
+         this.d = ha.a($$0.h("Dir"));
+      }
+
+      if ($$0.b("Target")) {
+         this.i = $$0.a("Target");
+      }
+   }
+
+   @Override
+   protected void a_() {
    }
 
    @Nullable
-   public static ehb a(bii $$0, ehe $$1, ehe $$2, egz $$3, Predicate<bii> $$4, double $$5) {
-      cpm $$6 = $$0.dK();
-      double $$7 = $$5;
-      bii $$8 = null;
-      ehe $$9 = null;
+   private ha j() {
+      return this.d;
+   }
 
-      for (bii $$10 : $$6.a($$0, $$3, $$4)) {
-         egz $$11 = $$10.cG().g((double)$$10.bD());
-         Optional<ehe> $$12 = $$11.b($$1, $$2);
-         if ($$11.d($$1)) {
-            if ($$7 >= 0.0) {
-               $$8 = $$10;
-               $$9 = $$12.orElse($$1);
-               $$7 = 0.0;
+   private void a(@Nullable ha $$0) {
+      this.d = $$0;
+   }
+
+   private void a(@Nullable ha.a $$0) {
+      double $$1 = 0.5;
+      gu $$2;
+      if (this.c == null) {
+         $$2 = this.dk().d();
+      } else {
+         $$1 = (double)this.c.dg() * 0.5;
+         $$2 = gu.a(this.c.dp(), this.c.dr() + $$1, this.c.dv());
+      }
+
+      double $$4 = (double)$$2.u() + 0.5;
+      double $$5 = (double)$$2.v() + $$1;
+      double $$6 = (double)$$2.w() + 0.5;
+      ha $$7 = null;
+      if (!$$2.a(this.di(), 2.0)) {
+         gu $$8 = this.dk();
+         List<ha> $$9 = Lists.newArrayList();
+         if ($$0 != ha.a.a) {
+            if ($$8.u() < $$2.u() && this.dK().t($$8.h())) {
+               $$9.add(ha.f);
+            } else if ($$8.u() > $$2.u() && this.dK().t($$8.g())) {
+               $$9.add(ha.e);
             }
-         } else if ($$12.isPresent()) {
-            ehe $$13 = $$12.get();
-            double $$14 = $$1.g($$13);
-            if ($$14 < $$7 || $$7 == 0.0) {
-               if ($$10.cV() == $$0.cV()) {
-                  if ($$7 == 0.0) {
-                     $$8 = $$10;
-                     $$9 = $$13;
-                  }
-               } else {
-                  $$8 = $$10;
-                  $$9 = $$13;
-                  $$7 = $$14;
+         }
+
+         if ($$0 != ha.a.b) {
+            if ($$8.v() < $$2.v() && this.dK().t($$8.c())) {
+               $$9.add(ha.b);
+            } else if ($$8.v() > $$2.v() && this.dK().t($$8.d())) {
+               $$9.add(ha.a);
+            }
+         }
+
+         if ($$0 != ha.a.c) {
+            if ($$8.w() < $$2.w() && this.dK().t($$8.f())) {
+               $$9.add(ha.d);
+            } else if ($$8.w() > $$2.w() && this.dK().t($$8.e())) {
+               $$9.add(ha.c);
+            }
+         }
+
+         $$7 = ha.b(this.ag);
+         if ($$9.isEmpty()) {
+            for (int $$10 = 5; !this.dK().t($$8.a($$7)) && $$10 > 0; $$10--) {
+               $$7 = ha.b(this.ag);
+            }
+         } else {
+            $$7 = $$9.get(this.ag.a($$9.size()));
+         }
+
+         $$4 = this.dp() + (double)$$7.j();
+         $$5 = this.dr() + (double)$$7.k();
+         $$6 = this.dv() + (double)$$7.l();
+      }
+
+      this.a($$7);
+      double $$11 = $$4 - this.dp();
+      double $$12 = $$5 - this.dr();
+      double $$13 = $$6 - this.dv();
+      double $$14 = Math.sqrt($$11 * $$11 + $$12 * $$12 + $$13 * $$13);
+      if ($$14 == 0.0) {
+         this.f = 0.0;
+         this.g = 0.0;
+         this.h = 0.0;
+      } else {
+         this.f = $$11 / $$14 * 0.15;
+         this.g = $$12 / $$14 * 0.15;
+         this.h = $$13 / $$14 * 0.15;
+      }
+
+      this.au = true;
+      this.e = 10 + this.ag.a(5) * 10;
+   }
+
+   @Override
+   public void dw() {
+      if (this.dK().ai() == bgn.a) {
+         this.ak();
+      }
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      if (!this.dK().B) {
+         if (this.c == null && this.i != null) {
+            this.c = ((akk)this.dK()).a(this.i);
+            if (this.c == null) {
+               this.i = null;
+            }
+         }
+
+         if (this.c == null || !this.c.bv() || this.c instanceof cbm && this.c.G_()) {
+            if (!this.aT()) {
+               this.f(this.dn().b(0.0, -0.04, 0.0));
+            }
+         } else {
+            this.f = arp.a(this.f * 1.025, -1.0, 1.0);
+            this.g = arp.a(this.g * 1.025, -1.0, 1.0);
+            this.h = arp.a(this.h * 1.025, -1.0, 1.0);
+            ehd $$0 = this.dn();
+            this.f($$0.b((this.f - $$0.c) * 0.2, (this.g - $$0.d) * 0.2, (this.h - $$0.e) * 0.2));
+         }
+
+         ehb $$1 = ccf.a(this, this::a);
+         if ($$1.c() != ehb.a.a) {
+            this.a($$1);
+         }
+      }
+
+      this.aO();
+      ehd $$2 = this.dn();
+      this.e(this.dp() + $$2.c, this.dr() + $$2.d, this.dv() + $$2.e);
+      ccf.a(this, 0.5F);
+      if (this.dK().B) {
+         this.dK().a(iv.u, this.dp() - $$2.c, this.dr() - $$2.d + 0.15, this.dv() - $$2.e, 0.0, 0.0, 0.0);
+      } else if (this.c != null && !this.c.dF()) {
+         if (this.e > 0) {
+            this.e--;
+            if (this.e == 0) {
+               this.a(this.d == null ? null : this.d.o());
+            }
+         }
+
+         if (this.d != null) {
+            gu $$3 = this.dk();
+            ha.a $$4 = this.d.o();
+            if (this.dK().a($$3.a(this.d), this)) {
+               this.a($$4);
+            } else {
+               gu $$5 = this.c.dk();
+               if ($$4 == ha.a.a && $$3.u() == $$5.u() || $$4 == ha.a.c && $$3.w() == $$5.w() || $$4 == ha.a.b && $$3.v() == $$5.v()) {
+                  this.a($$4);
                }
             }
          }
       }
-
-      return $$8 == null ? null : new ehb($$8, $$9);
    }
 
-   @Nullable
-   public static ehb a(cpm $$0, bii $$1, ehe $$2, ehe $$3, egz $$4, Predicate<bii> $$5) {
-      return a($$0, $$1, $$2, $$3, $$4, $$5, 0.3F);
+   @Override
+   protected boolean a(bii $$0) {
+      return super.a($$0) && !$$0.af;
    }
 
-   @Nullable
-   public static ehb a(cpm $$0, bii $$1, ehe $$2, ehe $$3, egz $$4, Predicate<bii> $$5, float $$6) {
-      double $$7 = Double.MAX_VALUE;
-      bii $$8 = null;
+   @Override
+   public boolean bM() {
+      return false;
+   }
 
-      for (bii $$9 : $$0.a($$1, $$4, $$5)) {
-         egz $$10 = $$9.cG().g((double)$$6);
-         Optional<ehe> $$11 = $$10.b($$2, $$3);
-         if ($$11.isPresent()) {
-            double $$12 = $$2.g($$11.get());
-            if ($$12 < $$7) {
-               $$8 = $$9;
-               $$7 = $$12;
-            }
+   @Override
+   public boolean a(double $$0) {
+      return $$0 < 16384.0;
+   }
+
+   @Override
+   public float bm() {
+      return 1.0F;
+   }
+
+   @Override
+   protected void a(eha $$0) {
+      super.a($$0);
+      bii $$1 = $$0.a();
+      bii $$2 = this.v();
+      biy $$3 = $$2 instanceof biy ? (biy)$$2 : null;
+      boolean $$4 = $$1.a(this.dL().a(this, $$3), 4.0F);
+      if ($$4) {
+         this.a($$3, $$1);
+         if ($$1 instanceof biy $$5) {
+            $$5.b(new bhv(bhx.y, 200), (bii)MoreObjects.firstNonNull($$2, this));
          }
       }
-
-      return $$8 == null ? null : new ehb($$8);
    }
 
-   public static void a(bii $$0, float $$1) {
-      ehe $$2 = $$0.dn();
-      if ($$2.g() != 0.0) {
-         double $$3 = $$2.h();
-         $$0.r((float)(arp.d($$2.e, $$2.c) * 180.0F / (float)Math.PI) + 90.0F);
-         $$0.s((float)(arp.d($$3, $$2.d) * 180.0F / (float)Math.PI) - 90.0F);
-
-         while ($$0.dC() - $$0.O < -180.0F) {
-            $$0.O -= 360.0F;
-         }
-
-         while ($$0.dC() - $$0.O >= 180.0F) {
-            $$0.O += 360.0F;
-         }
-
-         while ($$0.dA() - $$0.N < -180.0F) {
-            $$0.N -= 360.0F;
-         }
-
-         while ($$0.dA() - $$0.N >= 180.0F) {
-            $$0.N += 360.0F;
-         }
-
-         $$0.s(arp.i($$1, $$0.O, $$0.dC()));
-         $$0.r(arp.i($$1, $$0.N, $$0.dA()));
-      }
+   @Override
+   protected void a(egz $$0) {
+      super.a($$0);
+      ((akk)this.dK()).a(iv.x, this.dp(), this.dr(), this.dv(), 2, 0.2, 0.2, 0.2, 0.0);
+      this.a(aow.vb, 1.0F, 1.0F);
    }
 
-   public static bgp a(biy $$0, cit $$1) {
-      return $$0.eR().a($$1) ? bgp.a : bgp.b;
+   private void m() {
+      this.ak();
+      this.dK().a(djj.o, this.di(), djj.a.a(this));
    }
 
-   public static cbt a(biy $$0, ciy $$1, float $$2) {
-      cgm $$3 = (cgm)($$1.d() instanceof cgm ? $$1.d() : cjb.nH);
-      cbt $$4 = $$3.a($$0.dK(), $$1, $$0);
-      $$4.a($$0, $$2);
-      if ($$1.a(cjb.uw) && $$4 instanceof cbv) {
-         ((cbv)$$4).a($$1);
+   @Override
+   protected void a(ehb $$0) {
+      super.a($$0);
+      this.m();
+   }
+
+   @Override
+   public boolean br() {
+      return true;
+   }
+
+   @Override
+   public boolean a(bhg $$0, float $$1) {
+      if (!this.dK().B) {
+         this.a(aow.vc, 1.0F, 1.0F);
+         ((akk)this.dK()).a(iv.g, this.dp(), this.dr(), this.dv(), 15, 0.2, 0.2, 0.2, 0.0);
+         this.m();
       }
 
-      return $$4;
+      return true;
+   }
+
+   @Override
+   public void a(wq $$0) {
+      super.a($$0);
+      double $$1 = $$0.i();
+      double $$2 = $$0.j();
+      double $$3 = $$0.k();
+      this.o($$1, $$2, $$3);
    }
 }

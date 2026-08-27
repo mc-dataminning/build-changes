@@ -1,8 +1,8 @@
 public class acl implements ux<aaw> {
    private final int a;
-   private final ciy b;
+   private final cix b;
 
-   public acl(int $$0, ciy $$1) {
+   public acl(int $$0, cix $$1) {
       this.a = $$0;
       this.b = $$1.p();
    }
@@ -26,7 +26,7 @@ public class acl implements ux<aaw> {
       return this.a;
    }
 
-   public ciy d() {
+   public cix d() {
       return this.b;
    }
 }

@@ -1,75 +1,30 @@
-import com.google.common.base.Predicates;
-
-public class cux extends csm {
-   public static final dfu a = cwf.aC;
-   public static final dfr b = dfq.h;
-   protected static final ehx c = csm.a(0.0, 0.0, 0.0, 16.0, 13.0, 16.0);
-   protected static final ehx d = csm.a(4.0, 13.0, 4.0, 12.0, 16.0, 12.0);
-   protected static final ehx e = ehu.a(c, d);
-   private static dff f;
-
-   public cux(dez.d $$0) {
+public class cux extends cyt {
+   protected cux(dey.d $$0) {
       super($$0);
-      this.k(this.C.b().a(a, ha.c).a(b, Boolean.valueOf(false)));
+      this.k(this.C.b().a(a, ha.b));
    }
 
    @Override
-   public boolean g_(dfa $$0) {
-      return true;
+   public dez a(clf $$0) {
+      ha $$1 = $$0.k();
+      dez $$2 = $$0.q().a_($$0.a().a($$1.g()));
+      return $$2.a(this) && $$2.c(a) == $$1 ? this.n().a(a, $$1.g()) : this.n().a(a, $$1);
    }
 
    @Override
-   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
-      return $$0.c(b) ? e : c;
-   }
-
-   @Override
-   public dfa a(clg $$0) {
-      return this.n().a(a, $$0.g().g()).a(b, Boolean.valueOf(false));
-   }
-
-   @Override
-   public boolean d_(dfa $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(dfa $$0, cpm $$1, gu $$2) {
-      return $$0.c(b) ? 15 : 0;
-   }
-
-   @Override
-   public dfa a(dfa $$0, cyy $$1) {
-      return $$0.a(a, $$1.a($$0.c(a)));
-   }
-
-   @Override
-   public dfa a(dfa $$0, cxh $$1) {
-      return $$0.a($$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected void a(dfb.a<csm, dfa> $$0) {
-      $$0.a(a, b);
-   }
-
-   public static dff a() {
-      if (f == null) {
-         f = dfg.a()
-            .a("?vvv?", ">???<", ">???<", ">???<", "?^^^?")
-            .a('?', dfe.a(dfj.a))
-            .a('^', dfe.a(dfj.a(csn.fy).a(b, Predicates.equalTo(true)).a(a, Predicates.equalTo(ha.d))))
-            .a('>', dfe.a(dfj.a(csn.fy).a(b, Predicates.equalTo(true)).a(a, Predicates.equalTo(ha.e))))
-            .a('v', dfe.a(dfj.a(csn.fy).a(b, Predicates.equalTo(true)).a(a, Predicates.equalTo(ha.c))))
-            .a('<', dfe.a(dfj.a(csn.fy).a(b, Predicates.equalTo(true)).a(a, Predicates.equalTo(ha.f))))
-            .b();
+   public void a(dez $$0, cpl $$1, gu $$2, aru $$3) {
+      ha $$4 = $$0.c(a);
+      double $$5 = (double)$$2.u() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$6 = (double)$$2.v() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$7 = (double)$$2.w() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$8 = (double)(0.4F - ($$3.i() + $$3.i()) * 0.4F);
+      if ($$3.a(5) == 0) {
+         $$1.a(iv.u, $$5 + (double)$$4.j() * $$8, $$6 + (double)$$4.k() * $$8, $$7 + (double)$$4.l() * $$8, $$3.k() * 0.005, $$3.k() * 0.005, $$3.k() * 0.005);
       }
-
-      return f;
    }
 
    @Override
-   public boolean a(dfa $$0, cos $$1, gu $$2, eat $$3) {
-      return false;
+   protected void a(dfa.a<csl, dez> $$0) {
+      $$0.a(a);
    }
 }

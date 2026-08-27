@@ -1,54 +1,138 @@
-public class cfj<T extends cee> implements cds {
-   public static final cfj<cel> a = a("generic_9x1", cel::a);
-   public static final cfj<cel> b = a("generic_9x2", cel::b);
-   public static final cfj<cel> c = a("generic_9x3", cel::c);
-   public static final cfj<cel> d = a("generic_9x4", cel::d);
-   public static final cfj<cel> e = a("generic_9x5", cel::e);
-   public static final cfj<cel> f = a("generic_9x6", cel::f);
-   public static final cfj<cev> g = a("generic_3x3", cev::new);
-   public static final cfj<ceg> h = a("anvil", ceg::new);
-   public static final cfj<ceh> i = a("beacon", ceh::new);
-   public static final cfj<cei> j = a("blast_furnace", cei::new);
-   public static final cfj<cej> k = a("brewing_stand", cej::new);
-   public static final cfj<cet> l = a("crafting", cet::new);
-   public static final cfj<cew> m = a("enchantment", cew::new);
-   public static final cfj<cey> n = a("furnace", cey::new);
-   public static final cfj<cfa> o = a("grindstone", cfa::new);
-   public static final cfj<cfb> p = a("hopper", cfb::new);
-   public static final cfj<cfg> q = a("lectern", ($$0, $$1) -> new cfg($$0));
-   public static final cfj<cfh> r = a("loom", cfh::new);
-   public static final cfj<cfl> s = a("merchant", cfl::new);
-   public static final cfj<cft> t = a("shulker_box", cft::new);
-   public static final cfj<cfx> u = a("smithing", cfx::new);
-   public static final cfj<cfy> v = a("smoker", cfy::new);
-   public static final cfj<cek> w = a("cartography_table", cek::new);
-   public static final cfj<cga> x = a("stonecutter", cga::new);
-   private final cdv y;
-   private final cfj.a<T> z;
+import javax.annotation.Nullable;
 
-   private static <T extends cee> cfj<T> a(String $$0, cfj.a<T> $$1) {
-      return hr.a(jb.s, $$0, new cfj<>($$1, cdx.f));
-   }
+public class cfj implements bgj {
+   private final coh c;
+   private final hn<cix> d = hn.a(3, cix.b);
+   @Nullable
+   private coi e;
+   private int f;
+   private int g;
 
-   private static <T extends cee> cfj<T> a(String $$0, cfj.a<T> $$1, cdt... $$2) {
-      return hr.a(jb.s, $$0, new cfj<>($$1, cdx.d.a($$2)));
-   }
-
-   private cfj(cfj.a<T> $$0, cdv $$1) {
-      this.z = $$0;
-      this.y = $$1;
-   }
-
-   public T a(int $$0, cbm $$1) {
-      return this.z.create($$0, $$1);
+   public cfj(coh $$0) {
+      this.c = $$0;
    }
 
    @Override
-   public cdv m() {
-      return this.y;
+   public int b() {
+      return this.d.size();
    }
 
-   interface a<T extends cee> {
-      T create(int var1, cbm var2);
+   @Override
+   public boolean aa_() {
+      for (cix $$0 : this.d) {
+         if (!$$0.b()) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   public cix a(int $$0) {
+      return this.d.get($$0);
+   }
+
+   @Override
+   public cix a(int $$0, int $$1) {
+      cix $$2 = this.d.get($$0);
+      if ($$0 == 2 && !$$2.b()) {
+         return bgk.a(this.d, $$0, $$2.L());
+      } else {
+         cix $$3 = bgk.a(this.d, $$0, $$1);
+         if (!$$3.b() && this.d($$0)) {
+            this.f();
+         }
+
+         return $$3;
+      }
+   }
+
+   private boolean d(int $$0) {
+      return $$0 == 0 || $$0 == 1;
+   }
+
+   @Override
+   public cix b(int $$0) {
+      return bgk.a(this.d, $$0);
+   }
+
+   @Override
+   public void a(int $$0, cix $$1) {
+      this.d.set($$0, $$1);
+      if (!$$1.b() && $$1.L() > this.ab_()) {
+         $$1.f(this.ab_());
+      }
+
+      if (this.d($$0)) {
+         this.f();
+      }
+   }
+
+   @Override
+   public boolean a(cbm $$0) {
+      return this.c.ga() == $$0;
+   }
+
+   @Override
+   public void e() {
+      this.f();
+   }
+
+   public void f() {
+      this.e = null;
+      cix $$0;
+      cix $$1;
+      if (this.d.get(0).b()) {
+         $$0 = this.d.get(1);
+         $$1 = cix.b;
+      } else {
+         $$0 = this.d.get(0);
+         $$1 = this.d.get(1);
+      }
+
+      if ($$0.b()) {
+         this.a(2, cix.b);
+         this.g = 0;
+      } else {
+         coj $$4 = this.c.gc();
+         if (!$$4.isEmpty()) {
+            coi $$5 = $$4.a($$0, $$1, this.f);
+            if ($$5 == null || $$5.p()) {
+               this.e = $$5;
+               $$5 = $$4.a($$1, $$0, this.f);
+            }
+
+            if ($$5 != null && !$$5.p()) {
+               this.e = $$5;
+               this.a(2, $$5.f());
+               this.g = $$5.o();
+            } else {
+               this.a(2, cix.b);
+               this.g = 0;
+            }
+         }
+
+         this.c.l(this.a(2));
+      }
+   }
+
+   @Nullable
+   public coi g() {
+      return this.e;
+   }
+
+   public void c(int $$0) {
+      this.f = $$0;
+      this.f();
+   }
+
+   @Override
+   public void a() {
+      this.d.clear();
+   }
+
+   public int h() {
+      return this.g;
    }
 }

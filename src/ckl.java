@@ -1,13 +1,22 @@
-public interface ckl {
-   int a();
+public class ckl extends cis {
+   private final ckk a;
 
-   float b();
+   public ckl(ckk $$0, cis.a $$1) {
+      super($$1.b($$0.a()));
+      this.a = $$0;
+   }
 
-   float c();
+   public ckk i() {
+      return this.a;
+   }
 
-   int d();
+   @Override
+   public int c() {
+      return this.a.e();
+   }
 
-   int e();
-
-   cly f();
+   @Override
+   public boolean a(cix $$0, cix $$1) {
+      return this.a.f().a($$1) || super.a($$0, $$1);
+   }
 }

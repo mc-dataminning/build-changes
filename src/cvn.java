@@ -1,79 +1,44 @@
-public class cvn extends cwh {
-   public static final int a = 3;
-   public static final dga b = dfq.as;
-   private static final int c = 4;
-   private static final int d = 2;
+import java.util.Optional;
 
-   public cvn(dez.d $$0) {
+public class cvn extends cst implements csn {
+   protected static final ehw a = csl.a(4.0, 0.0, 4.0, 12.0, 9.0, 12.0);
+   private static final double b = 0.4;
+   private final csl c;
+   private final aeq<dmz<?, ?>> d;
+
+   protected cvn(dey.d $$0, aeq<dmz<?, ?>> $$1, csl $$2) {
       super($$0);
-      this.k(this.C.b().a(b, Integer.valueOf(0)));
+      this.d = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public void b(dfa $$0, akk $$1, gu $$2, aru $$3) {
-      this.a($$0, $$1, $$2, $$3);
+   public ehw a(dez $$0, cor $$1, gu $$2, ehi $$3) {
+      return a;
    }
 
    @Override
-   public void a(dfa $$0, akk $$1, gu $$2, aru $$3) {
-      if (($$3.a(3) == 0 || this.a($$1, $$2, 4)) && $$1.z($$2) > 11 - $$0.c(b) - $$0.b($$1, $$2) && this.e($$0, $$1, $$2)) {
-         gu.a $$4 = new gu.a();
-
-         for (ha $$5 : ha.values()) {
-            $$4.a($$2, $$5);
-            dfa $$6 = $$1.a_($$4);
-            if ($$6.a(this) && !this.e($$6, $$1, $$4)) {
-               $$1.a($$4, this, arp.a($$3, 20, 40));
-            }
-         }
-      } else {
-         $$1.a($$2, this, arp.a($$3, 20, 40));
-      }
+   protected boolean d(dez $$0, cor $$1, gu $$2) {
+      return $$0.a(apl.aK) || $$0.a(csm.fl) || $$0.a(csm.dY) || super.d($$0, $$1, $$2);
    }
 
-   private boolean e(dfa $$0, cpm $$1, gu $$2) {
-      int $$3 = $$0.c(b);
-      if ($$3 < 3) {
-         $$1.a($$2, $$0.a(b, Integer.valueOf($$3 + 1)), 2);
-         return false;
-      } else {
-         this.d($$0, $$1, $$2);
-         return true;
-      }
+   private Optional<? extends he<dmz<?, ?>>> a(cpo $$0) {
+      return $$0.B_().d(jc.as).b(this.d);
    }
 
    @Override
-   public void a(dfa $$0, cpm $$1, gu $$2, csm $$3, gu $$4, boolean $$5) {
-      if ($$3.n().a(this) && this.a($$1, $$2, 2)) {
-         this.d($$0, $$1, $$2);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   private boolean a(cos $$0, gu $$1, int $$2) {
-      int $$3 = 0;
-      gu.a $$4 = new gu.a();
-
-      for (ha $$5 : ha.values()) {
-         $$4.a($$1, $$5);
-         if ($$0.a_($$4).a(this)) {
-            if (++$$3 >= $$2) {
-               return false;
-            }
-         }
-      }
-
-      return true;
+   public boolean a(cpo $$0, gu $$1, dez $$2) {
+      dez $$3 = $$0.a_($$1.d());
+      return $$3.a(this.c);
    }
 
    @Override
-   protected void a(dfb.a<csm, dfa> $$0) {
-      $$0.a(b);
+   public boolean a(cpl $$0, aru $$1, gu $$2, dez $$3) {
+      return (double)$$1.i() < 0.4;
    }
 
    @Override
-   public ciy a(cos $$0, gu $$1, dfa $$2) {
-      return ciy.b;
+   public void a(akk $$0, aru $$1, gu $$2, dez $$3) {
+      this.a($$0).ifPresent($$3x -> ((dmz)$$3x.a()).a($$0, $$0.k().g(), $$1, $$2));
    }
 }

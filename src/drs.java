@@ -1,17 +1,24 @@
 import com.mojang.serialization.Codec;
 
-public abstract class drs {
-   public static final Codec<drs> a = jb.W.q().dispatch(drs::a, drt::a);
+public class drs<P extends drr> {
+   public static final drs<dsa> a = a("simple_state_provider", dsa.b);
+   public static final drs<dsb> b = a("weighted_state_provider", dsb.b);
+   public static final drs<drw> c = a("noise_threshold_provider", drw.b);
+   public static final drs<drv> d = a("noise_provider", drv.g);
+   public static final drs<drt> e = a("dual_noise_provider", drt.b);
+   public static final drs<dry> f = a("rotated_block_provider", dry.b);
+   public static final drs<drx> g = a("randomized_int_state_provider", drx.b);
+   private final Codec<P> h;
 
-   public static dsb a(dfa $$0) {
-      return new dsb($$0);
+   private static <P extends drr> drs<P> a(String $$0, Codec<P> $$1) {
+      return hr.a(jb.W, $$0, new drs<>($$1));
    }
 
-   public static dsb a(csm $$0) {
-      return new dsb($$0.n());
+   private drs(Codec<P> $$0) {
+      this.h = $$0;
    }
 
-   protected abstract drt<?> a();
-
-   public abstract dfa a(aru var1, gu var2);
+   public Codec<P> a() {
+      return this.h;
+   }
 }

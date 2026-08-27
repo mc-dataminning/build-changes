@@ -1,14 +1,15 @@
-import javax.annotation.Nullable;
-
-public class cih extends cgr {
-   public cih(csm $$0, cit.a $$1) {
-      super($$0, $$1);
+public class cih extends cis implements cjw {
+   public cih(cis.a $$0) {
+      super($$0);
    }
 
-   @Nullable
    @Override
-   protected dfa c(clg $$0) {
-      cbn $$1 = $$0.o();
-      return $$1 != null && !$$1.gn() ? null : super.c($$0);
+   public boolean a(cpl $$0, ddt $$1, boolean $$2, cbm $$3) {
+      if ($$1.a($$0x -> $$0x.a(true), $$2)) {
+         $$0.a(null, $$1.p(), aow.jt, aox.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

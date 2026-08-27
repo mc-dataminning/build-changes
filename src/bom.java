@@ -3,16 +3,15 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class bom {
-   public static <E extends car> bkr<E> a(Function<E, Optional<? extends biy>> $$0) {
-      return boc.a(
-         (Function<boc.b<E>, ? extends App<boc.c<E>, bof<E>>>)($$1 -> $$1.group($$1.c(bsa.ax), $$1.c(bsa.o), $$1.a(bsa.E))
-               .apply($$1, ($$1x, $$2, $$3) -> ($$3x, $$4, $$5) -> {
-                     Optional<? extends biy> $$6 = $$0.apply((E)$$4);
-                     if ($$6.filter($$4::a).isEmpty()) {
+   public static bkq<biy> a() {
+      return bob.a(
+         (Function<bob.b<biy>, ? extends App<bob.c<biy>, boe<biy>>>)($$0 -> $$0.group($$0.a(brz.n), $$0.a(brz.ay), $$0.a(brz.ax), $$0.c(brz.o))
+               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$4x, $$5, $$6) -> {
+                     Optional<gu> $$7 = $$0.<biy>a($$3).map(bii::dk).or(() -> $$0.a($$2));
+                     if ($$7.isEmpty()) {
                         return false;
                      } else {
-                        $$1x.a($$6.get());
-                        $$3.b();
+                        $$1.a(new bks($$7.get()));
                         return true;
                      }
                   }))

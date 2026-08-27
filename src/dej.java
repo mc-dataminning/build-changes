@@ -1,6 +1,6 @@
-public class dej extends deg {
+public class dej extends def {
    @Override
-   protected aeq<dna<?, ?>> a(aru $$0, boolean $$1) {
-      return $$1 ? or.F : or.i;
+   protected aeq<dmz<?, ?>> a(aru $$0, boolean $$1) {
+      return $$1 ? or.K : or.z;
    }
 }

@@ -57,10 +57,10 @@ public class um implements tg {
    private String a(String $$0, dr $$1) {
       MinecraftServer $$2 = $$1.l();
       if ($$2 != null) {
-         eid $$3 = $$2.aF();
-         eia $$4 = $$3.b(this.e);
+         eic $$3 = $$2.aF();
+         ehz $$4 = $$3.b(this.e);
          if ($$4 != null && $$3.b($$0, $$4)) {
-            eic $$5 = $$3.c($$0, $$4);
+            eib $$5 = $$3.c($$0, $$4);
             return Integer.toString($$5.b());
          }
       }

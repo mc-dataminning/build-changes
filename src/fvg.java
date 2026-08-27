@@ -1,17 +1,26 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class fvg extends fud<bzn, fgw<bzn>> {
+   private static final aer a = new aer("textures/entity/strider/strider.png");
+   private static final aer i = new aer("textures/entity/strider/strider_cold.png");
 
-public class fvg extends frl<bwj, fez<bwj>> {
-   private static final Map<bim<?>, aer> a = Maps.newHashMap(
-      ImmutableMap.of(bim.bq, new aer("textures/entity/horse/horse_zombie.png"), bim.aK, new aer("textures/entity/horse/horse_skeleton.png"))
-   );
-
-   public fvg(fso.a $$0, fhl $$1) {
-      super($$0, new fez<>($$0.a($$1)), 1.0F);
+   public fvg(fsx.a $$0) {
+      super($$0, new fgw<>($$0.a(fhr.bx)), 0.5F);
+      this.a(new fxg<>(this, new fgw<>($$0.a(fhr.by)), new aer("textures/entity/strider/strider_saddle.png")));
    }
 
-   public aer a(bwj $$0) {
-      return a.get($$0.ag());
+   public aer a(bzn $$0) {
+      return $$0.p() ? i : a;
+   }
+
+   protected void a(bzn $$0, elf $$1, float $$2) {
+      if ($$0.i_()) {
+         $$1.b(0.5F, 0.5F, 0.5F);
+         this.d = 0.25F;
+      } else {
+         this.d = 0.5F;
+      }
+   }
+
+   protected boolean b(bzn $$0) {
+      return super.a($$0) || $$0.p();
    }
 }

@@ -1,114 +1,183 @@
-import java.util.function.Predicate;
+import java.util.EnumSet;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public abstract class bzb extends bjh implements byt {
-   protected bzb(bim<? extends bzb> $$0, cpm $$1) {
+public abstract class bzb extends bza {
+   @Nullable
+   private gu b;
+   private boolean c;
+   private boolean d;
+
+   protected bzb(bim<? extends bzb> $$0, cpl $$1) {
       super($$0, $$1);
-      this.bJ = 5;
    }
 
    @Override
-   public aox da() {
-      return aox.f;
+   protected void w() {
+      super.w();
+      this.bO.a(4, new bzb.a<>(this, 0.7, 0.595));
    }
 
    @Override
-   public void b_() {
-      this.eO();
-      this.ge();
-      super.b_();
-   }
-
-   protected void ge() {
-      float $$0 = this.bm();
-      if ($$0 > 0.5F) {
-         this.bb += 2;
+   public void b(qr $$0) {
+      super.b($$0);
+      if (this.b != null) {
+         $$0.a("PatrolTarget", rd.a(this.b));
       }
+
+      $$0.a("PatrolLeader", this.c);
+      $$0.a("Patrolling", this.d);
    }
 
    @Override
-   protected boolean S() {
+   public void a(qr $$0) {
+      super.a($$0);
+      if ($$0.e("PatrolTarget")) {
+         this.b = rd.b($$0.p("PatrolTarget"));
+      }
+
+      this.c = $$0.q("PatrolLeader");
+      this.d = $$0.q("Patrolling");
+   }
+
+   public boolean gb() {
       return true;
    }
 
+   @Nullable
    @Override
-   protected aov aL() {
-      return aow.lw;
+   public bjr a(cqa $$0, bgo $$1, bjc $$2, @Nullable bjr $$3, @Nullable qr $$4) {
+      if ($$2 != bjc.p && $$2 != bjc.h && $$2 != bjc.d && $$0.y_().i() < 0.06F && this.gb()) {
+         this.c = true;
+      }
+
+      if (this.ge()) {
+         this.a(bin.f, cct.s());
+         this.a(bin.f, 2.0F);
+      }
+
+      if ($$2 == bjc.p) {
+         this.d = true;
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static boolean b(bim<? extends bzb> $$0, cpm $$1, bjc $$2, gu $$3, aru $$4) {
+      return $$1.a(cpu.b, $$3) > 8 ? false : c($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   protected aov aM() {
-      return aow.lv;
+   public boolean h(double $$0) {
+      return !this.d || $$0 > 16384.0;
    }
 
-   @Override
-   protected aov d(bhg $$0) {
-      return aow.lt;
+   public void i(gu $$0) {
+      this.b = $$0;
+      this.d = true;
    }
 
-   @Override
-   protected aov h_() {
-      return aow.ls;
+   public gu gc() {
+      return this.b;
    }
 
-   @Override
-   public biy.a eE() {
-      return new biy.a(aow.lu, aow.lr);
+   public boolean gd() {
+      return this.b != null;
    }
 
-   @Override
-   public float a(gu $$0, cpp $$1) {
-      return -$$1.v($$0);
+   public void w(boolean $$0) {
+      this.c = $$0;
+      this.d = true;
    }
 
-   public static boolean a(cqb $$0, gu $$1, aru $$2) {
-      if ($$0.a(cpv.a, $$1) > $$2.a(32)) {
-         return false;
-      } else {
-         dij $$3 = $$0.x_();
-         int $$4 = $$3.e();
-         if ($$4 < 15 && $$0.a(cpv.b, $$1) > $$4) {
-            return false;
-         } else {
-            int $$5 = $$0.C().Y() ? $$0.c($$1, 10) : $$0.z($$1);
-            return $$5 <= $$3.d().a($$2);
+   public boolean ge() {
+      return this.c;
+   }
+
+   public boolean gh() {
+      return true;
+   }
+
+   public void gi() {
+      this.b = this.dk().b(-500 + this.ag.a(1000), 0, -500 + this.ag.a(1000));
+      this.d = true;
+   }
+
+   protected boolean gj() {
+      return this.d;
+   }
+
+   protected void x(boolean $$0) {
+      this.d = $$0;
+   }
+
+   public static class a<T extends bzb> extends bpt {
+      private static final int a = 200;
+      private final T b;
+      private final double c;
+      private final double d;
+      private long e;
+
+      public a(T $$0, double $$1, double $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+         this.e = -1L;
+         this.a(EnumSet.of(bpt.a.a));
+      }
+
+      @Override
+      public boolean a() {
+         boolean $$0 = this.b.dK().V() < this.e;
+         return this.b.gj() && this.b.j() == null && !this.b.cO() && this.b.gd() && !$$0;
+      }
+
+      @Override
+      public void c() {
+      }
+
+      @Override
+      public void d() {
+      }
+
+      @Override
+      public void e() {
+         boolean $$0 = this.b.ge();
+         bsh $$1 = this.b.H();
+         if ($$1.l()) {
+            List<bzb> $$2 = this.h();
+            if (this.b.gj() && $$2.isEmpty()) {
+               this.b.x(false);
+            } else if ($$0 && this.b.gc().a(this.b.di(), 10.0)) {
+               this.b.gi();
+            } else {
+               ehd $$3 = ehd.c(this.b.gc());
+               ehd $$4 = this.b.di();
+               ehd $$5 = $$4.d($$3);
+               $$3 = $$5.b(90.0F).a(0.4).e($$3);
+               ehd $$6 = $$3.d($$4).d().a(10.0).e($$4);
+               gu $$7 = gu.a($$6);
+               $$7 = this.b.dK().a(dki.a.f, $$7);
+               if (!$$1.a((double)$$7.u(), (double)$$7.v(), (double)$$7.w(), $$0 ? this.d : this.c)) {
+                  this.i();
+                  this.e = this.b.dK().V() + 200L;
+               } else if ($$0) {
+                  for (bzb $$8 : $$2) {
+                     $$8.i($$7);
+                  }
+               }
+            }
          }
       }
-   }
 
-   public static boolean b(bim<? extends bzb> $$0, cqb $$1, bjc $$2, gu $$3, aru $$4) {
-      return $$1.ai() != bgn.a && a($$1, $$3, $$4) && a($$0, $$1, $$2, $$3, $$4);
-   }
+      private List<bzb> h() {
+         return this.b.dK().a(bzb.class, this.b.cG().g(16.0), $$0 -> $$0.gh() && !$$0.t(this.b));
+      }
 
-   public static boolean c(bim<? extends bzb> $$0, cpn $$1, bjc $$2, gu $$3, aru $$4) {
-      return $$1.ai() != bgn.a && a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public static bke.a gf() {
-      return bja.x().a(bkf.f);
-   }
-
-   @Override
-   public boolean ea() {
-      return true;
-   }
-
-   @Override
-   protected boolean eb() {
-      return true;
-   }
-
-   public boolean f(cbn $$0) {
-      return true;
-   }
-
-   @Override
-   public ciy g(ciy $$0) {
-      if ($$0.d() instanceof cjo) {
-         Predicate<ciy> $$1 = ((cjo)$$0.d()).e();
-         ciy $$2 = cjo.a(this, $$1);
-         return $$2.b() ? new ciy(cjb.nH) : $$2;
-      } else {
-         return ciy.b;
+      private boolean i() {
+         aru $$0 = this.b.ee();
+         gu $$1 = this.b.dK().a(dki.a.f, this.b.dk().b(-8 + $$0.a(16), 0, -8 + $$0.a(16)));
+         return this.b.H().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), this.c);
       }
    }
 }

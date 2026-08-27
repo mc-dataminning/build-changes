@@ -1,42 +1,55 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class czn extends cri {
+   public static final int a = dgf.a();
+   private static final int e = a + 1;
+   public static final dfz b = dfp.ba;
+   protected static final ehw c = csl.a(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
+   protected static final ehw d = csl.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
 
-public interface czn extends css, cxa {
-   @Override
-   default boolean a(@Nullable cbn $$0, cos $$1, gu $$2, dfa $$3, eac $$4) {
-      return $$4 == eae.c;
+   protected czn(czn.a $$0, dey.d $$1) {
+      super($$0, $$1);
+      this.k(this.C.b().a(b, Integer.valueOf(0)));
    }
 
    @Override
-   default boolean a(cpn $$0, gu $$1, dfa $$2, ead $$3) {
-      if (!$$2.c(dfq.C) && $$3.a() == eae.c) {
-         if (!$$0.r_()) {
-            $$0.a($$1, $$2.a(dfq.C, Boolean.valueOf(true)), 3);
-            $$0.a($$1, $$3.a(), $$3.a().a($$0));
-         }
-
-         return true;
-      } else {
-         return false;
-      }
+   public ehw a(dez $$0, cor $$1, gu $$2, ehi $$3) {
+      return this.a() == czn.b.f ? d : c;
    }
 
    @Override
-   default ciy a(@Nullable cbn $$0, cpn $$1, gu $$2, dfa $$3) {
-      if ($$3.c(dfq.C)) {
-         $$1.a($$2, $$3.a(dfq.C, Boolean.valueOf(false)), 3);
-         if (!$$3.a($$1, $$2)) {
-            $$1.b($$2, true);
-         }
-
-         return new ciy(cjb.pL);
-      } else {
-         return ciy.b;
-      }
+   public ehw f(dez $$0, cor $$1, gu $$2) {
+      return eht.a();
    }
 
    @Override
-   default Optional<aov> am_() {
-      return eae.c.j();
+   public dez a(clf $$0) {
+      return this.n().a(b, Integer.valueOf(dgf.a($$0.i())));
+   }
+
+   @Override
+   public dez a(dez $$0, cyx $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), e)));
+   }
+
+   @Override
+   public dez a(dez $$0, cxg $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), e)));
+   }
+
+   @Override
+   protected void a(dfa.a<csl, dez> $$0) {
+      $$0.a(b);
+   }
+
+   public interface a {
+   }
+
+   public static enum b implements czn.a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g;
    }
 }

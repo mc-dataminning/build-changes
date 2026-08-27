@@ -1,37 +1,34 @@
 import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
 
-public class bkw extends bkq<biy> {
-   private final bsa<Integer> c;
+public class bkw extends bkp<bvy> {
+   private static final int c = 60;
+   private static final int d = 100;
+   private int e;
 
-   public bkw(bsa<Integer> $$0) {
-      super(ImmutableMap.of($$0, bsb.a));
-      this.c = $$0;
+   public bkw() {
+      super(ImmutableMap.of(brz.m, bsa.b), 100);
    }
 
-   private Optional<Integer> b(biy $$0) {
-      return $$0.dM().c(this.c);
+   protected boolean a(akk $$0, bvy $$1) {
+      return $$1.an() == bjk.a;
    }
 
-   @Override
-   protected boolean a(long $$0) {
-      return false;
+   protected boolean a(akk $$0, bvy $$1, long $$2) {
+      return this.e < 60;
    }
 
-   @Override
-   protected boolean a(akk $$0, biy $$1, long $$2) {
-      Optional<Integer> $$3 = this.b($$1);
-      return $$3.isPresent() && $$3.get() > 0;
+   protected void b(akk $$0, bvy $$1, long $$2) {
+      if (!$$1.bb()) {
+         $$1.b(bjk.i);
+         this.e = 0;
+      }
    }
 
-   @Override
-   protected void c(akk $$0, biy $$1, long $$2) {
-      Optional<Integer> $$3 = this.b($$1);
-      $$1.dM().a(this.c, $$3.get() - 1);
+   protected void c(akk $$0, bvy $$1, long $$2) {
+      $$1.b(bjk.a);
    }
 
-   @Override
-   protected void b(akk $$0, biy $$1, long $$2) {
-      $$1.dM().b(this.c);
+   protected void d(akk $$0, bvy $$1, long $$2) {
+      this.e++;
    }
 }

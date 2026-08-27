@@ -6,7 +6,7 @@ public class aqs {
    private aqs() {
    }
 
-   public static ehe a(ehe $$0, aqs.a $$1) {
+   public static ehd a(ehd $$0, aqs.a $$1) {
       int $$2 = arp.a($$0.a());
       int $$3 = arp.a($$0.b());
       int $$4 = arp.a($$0.c());
@@ -14,7 +14,7 @@ public class aqs {
       double $$6 = $$0.b() - (double)$$3;
       double $$7 = $$0.c() - (double)$$4;
       double $$8 = 0.0;
-      ehe $$9 = ehe.b;
+      ehd $$9 = ehd.b;
 
       for (int $$10 = 0; $$10 < 6; $$10++) {
          double $$11 = arp.d($$5, c[$$10 + 1], c[$$10]);
@@ -39,6 +39,6 @@ public class aqs {
 
    @FunctionalInterface
    public interface a {
-      ehe fetch(int var1, int var2, int var3);
+      ehd fetch(int var1, int var2, int var3);
    }
 }

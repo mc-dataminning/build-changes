@@ -1,12 +1,17 @@
 public enum dfl implements ash {
-   a("floor"),
-   b("wall"),
-   c("ceiling");
+   a("none"),
+   b("small"),
+   c("large");
 
    private final String d;
 
    private dfl(String $$0) {
       this.d = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.d;
    }
 
    @Override

@@ -1,250 +1,221 @@
-import java.util.Arrays;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Objects;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dcp extends dcg implements bgz {
-   private static final int h = 3;
-   private static final int i = 4;
-   private static final int[] j = new int[]{3};
-   private static final int[] k = new int[]{0, 1, 2, 3};
-   private static final int[] l = new int[]{0, 1, 2, 4};
-   public static final int c = 20;
-   public static final int d = 0;
-   public static final int e = 1;
-   public static final int f = 2;
-   private hn<ciy> m = hn.a(5, ciy.b);
-   int n;
-   private boolean[] r;
-   private cit s;
-   int t;
-   protected final ceo g = new ceo() {
-      @Override
-      public int a(int $$0) {
-         switch ($$0) {
-            case 0:
-               return dcp.this.n;
-            case 1:
-               return dcp.this.t;
-            default:
-               return 0;
-         }
-      }
+public class dcp extends dcl {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = "LootTable";
+   private static final String c = "LootTableSeed";
+   private static final String d = "hit_direction";
+   private static final String e = "item";
+   private static final int f = 10;
+   private static final int g = 40;
+   private static final int h = 10;
+   private int i;
+   private long j;
+   private long k;
+   private cix l = cix.b;
+   @Nullable
+   private ha m;
+   @Nullable
+   private aer n;
+   private long r;
 
-      @Override
-      public void a(int $$0, int $$1) {
-         switch ($$0) {
-            case 0:
-               dcp.this.n = $$1;
-               break;
-            case 1:
-               dcp.this.t = $$1;
-         }
-      }
-
-      @Override
-      public int a() {
-         return 2;
-      }
-   };
-
-   public dcp(gu $$0, dfa $$1) {
-      super(dco.l, $$0, $$1);
+   public dcp(gu $$0, dez $$1) {
+      super(dcn.N, $$0, $$1);
    }
 
-   @Override
-   protected tf g() {
-      return tf.c("container.brewing");
-   }
+   public boolean a(long $$0, cbm $$1, ha $$2) {
+      if (this.m == null) {
+         this.m = $$2;
+      }
 
-   @Override
-   public int b() {
-      return this.m.size();
-   }
+      this.j = $$0 + 40L;
+      if ($$0 >= this.k && this.o instanceof akk) {
+         this.k = $$0 + 10L;
+         this.a($$1);
+         int $$3 = this.i();
+         if (++this.i >= 10) {
+            this.b($$1);
+            return true;
+         } else {
+            this.o.a(this.p(), this.q().b(), 40);
+            int $$4 = this.i();
+            if ($$3 != $$4) {
+               dez $$5 = this.q();
+               dez $$6 = $$5.a(dfp.bv, Integer.valueOf($$4));
+               this.o.a(this.p(), $$6, 3);
+            }
 
-   @Override
-   public boolean ab_() {
-      for (ciy $$0 : this.m) {
-         if (!$$0.b()) {
             return false;
          }
-      }
-
-      return true;
-   }
-
-   public static void a(cpm $$0, gu $$1, dfa $$2, dcp $$3) {
-      ciy $$4 = $$3.m.get(4);
-      if ($$3.t <= 0 && $$4.a(cjb.rz)) {
-         $$3.t = 20;
-         $$4.h(1);
-         a($$0, $$1, $$2);
-      }
-
-      boolean $$5 = a($$3.m);
-      boolean $$6 = $$3.n > 0;
-      ciy $$7 = $$3.m.get(3);
-      if ($$6) {
-         $$3.n--;
-         boolean $$8 = $$3.n == 0;
-         if ($$8 && $$5) {
-            a($$0, $$1, $$3.m);
-            a($$0, $$1, $$2);
-         } else if (!$$5 || !$$7.a($$3.s)) {
-            $$3.n = 0;
-            a($$0, $$1, $$2);
-         }
-      } else if ($$5 && $$3.t > 0) {
-         $$3.t--;
-         $$3.n = 400;
-         $$3.s = $$7.d();
-         a($$0, $$1, $$2);
-      }
-
-      boolean[] $$9 = $$3.f();
-      if (!Arrays.equals($$9, $$3.r)) {
-         $$3.r = $$9;
-         dfa $$10 = $$2;
-         if (!($$2.b() instanceof csp)) {
-            return;
-         }
-
-         for (int $$11 = 0; $$11 < csp.a.length; $$11++) {
-            $$10 = $$10.a(csp.a[$$11], Boolean.valueOf($$9[$$11]));
-         }
-
-         $$0.a($$1, $$10, 2);
+      } else {
+         return false;
       }
    }
 
-   private boolean[] f() {
-      boolean[] $$0 = new boolean[3];
+   public void a(cbm $$0) {
+      if (this.n != null && this.o != null && !this.o.r_() && this.o.n() != null) {
+         eco $$1 = this.o.n().aH().getLootTable(this.n);
+         if ($$0 instanceof akl $$2) {
+            ai.N.a($$2, this.n);
+         }
 
-      for (int $$1 = 0; $$1 < 3; $$1++) {
-         if (!this.m.get($$1).b()) {
-            $$0[$$1] = true;
+         ecm $$3 = new ecm.a((akk)this.o).a(eer.f, ehd.b(this.p)).a($$0.gm()).a(eer.a, $$0).a(eeq.c);
+         ObjectArrayList<cix> $$4 = $$1.a($$3, this.r);
+
+         this.l = switch ($$4.size()) {
+            case 0 -> cix.b;
+            case 1 -> (cix)$$4.get(0);
+            default -> {
+               a.warn("Expected max 1 loot from loot table " + this.n + " got " + $$4.size());
+               yield (cix)$$4.get(0);
+            }
+         };
+         this.n = null;
+         this.e();
+      }
+   }
+
+   private void b(cbm $$0) {
+      if (this.o != null && this.o.n() != null) {
+         this.c($$0);
+         dez $$1 = this.q();
+         this.o.c(3008, this.p(), csl.i($$1));
+         csl $$4;
+         if (this.q().b() instanceof csp $$3) {
+            $$4 = $$3.a();
+         } else {
+            $$4 = csm.a;
+         }
+
+         this.o.a(this.p, $$4.n(), 3);
+      }
+   }
+
+   private void c(cbm $$0) {
+      if (this.o != null && this.o.n() != null) {
+         this.a($$0);
+         if (!this.l.b()) {
+            double $$1 = (double)bim.ad.k();
+            double $$2 = 1.0 - $$1;
+            double $$3 = $$1 / 2.0;
+            ha $$4 = Objects.requireNonNullElse(this.m, ha.b);
+            gu $$5 = this.p.a($$4, 1);
+            double $$6 = (double)$$5.u() + 0.5 * $$2 + $$3;
+            double $$7 = (double)$$5.v() + 0.5 + (double)(bim.ad.l() / 2.0F);
+            double $$8 = (double)$$5.w() + 0.5 * $$2 + $$3;
+            byf $$9 = new byf(this.o, $$6, $$7, $$8, this.l.a(this.o.z.a(21) + 10));
+            $$9.f(ehd.b);
+            this.o.b($$9);
+            this.l = cix.b;
          }
       }
+   }
 
+   public void c() {
+      if (this.o != null) {
+         if (this.i != 0 && this.o.V() >= this.j) {
+            int $$0 = this.i();
+            this.i = Math.max(0, this.i - 2);
+            int $$1 = this.i();
+            if ($$0 != $$1) {
+               this.o.a(this.p(), this.q().a(dfp.bv, Integer.valueOf($$1)), 3);
+            }
+
+            int $$2 = 4;
+            this.j = this.o.V() + 4L;
+         }
+
+         if (this.i == 0) {
+            this.m = null;
+            this.j = 0L;
+            this.k = 0L;
+         } else {
+            this.o.a(this.p(), this.q().b(), (int)(this.j - this.o.V()));
+         }
+      }
+   }
+
+   private boolean d(qr $$0) {
+      if ($$0.b("LootTable", 8)) {
+         this.n = new aer($$0.l("LootTable"));
+         this.r = $$0.i("LootTableSeed");
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private boolean e(qr $$0) {
+      if (this.n == null) {
+         return false;
+      } else {
+         $$0.a("LootTable", this.n.toString());
+         if (this.r != 0L) {
+            $$0.a("LootTableSeed", this.r);
+         }
+
+         return true;
+      }
+   }
+
+   @Override
+   public qr an_() {
+      qr $$0 = super.an_();
+      if (this.m != null) {
+         $$0.a("hit_direction", this.m.ordinal());
+      }
+
+      $$0.a("item", this.l.b(new qr()));
       return $$0;
    }
 
-   private static boolean a(hn<ciy> $$0) {
-      ciy $$1 = $$0.get(3);
-      if ($$1.b()) {
-         return false;
-      } else if (!ckw.a($$1)) {
-         return false;
-      } else {
-         for (int $$2 = 0; $$2 < 3; $$2++) {
-            ciy $$3 = $$0.get($$2);
-            if (!$$3.b() && ckw.a($$3, $$1)) {
-               return true;
-            }
-         }
-
-         return false;
-      }
-   }
-
-   private static void a(cpm $$0, gu $$1, hn<ciy> $$2) {
-      ciy $$3 = $$2.get(3);
-
-      for (int $$4 = 0; $$4 < 3; $$4++) {
-         $$2.set($$4, ckw.d($$3, $$2.get($$4)));
-      }
-
-      $$3.h(1);
-      if ($$3.d().t()) {
-         ciy $$5 = new ciy($$3.d().s());
-         if ($$3.b()) {
-            $$3 = $$5;
-         } else {
-            bgm.a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$5);
-         }
-      }
-
-      $$2.set(3, $$3);
-      $$0.c(1035, $$1, 0);
+   public wx d() {
+      return wx.a(this);
    }
 
    @Override
    public void a(qr $$0) {
-      super.a($$0);
-      this.m = hn.a(this.b(), ciy.b);
-      bgk.b($$0, this.m);
-      this.n = $$0.g("BrewTime");
-      this.t = $$0.f("Fuel");
+      if (!this.d($$0) && $$0.e("item")) {
+         this.l = cix.a($$0.p("item"));
+      }
+
+      if ($$0.e("hit_direction")) {
+         this.m = ha.values()[$$0.h("hit_direction")];
+      }
    }
 
    @Override
    protected void b(qr $$0) {
-      super.b($$0);
-      $$0.a("BrewTime", (short)this.n);
-      bgk.a($$0, this.m);
-      $$0.a("Fuel", (byte)this.t);
-   }
-
-   @Override
-   public ciy a(int $$0) {
-      return $$0 >= 0 && $$0 < this.m.size() ? this.m.get($$0) : ciy.b;
-   }
-
-   @Override
-   public ciy a(int $$0, int $$1) {
-      return bgk.a(this.m, $$0, $$1);
-   }
-
-   @Override
-   public ciy b(int $$0) {
-      return bgk.a(this.m, $$0);
-   }
-
-   @Override
-   public void a(int $$0, ciy $$1) {
-      if ($$0 >= 0 && $$0 < this.m.size()) {
-         this.m.set($$0, $$1);
+      if (!this.e($$0)) {
+         $$0.a("item", this.l.b(new qr()));
       }
    }
 
-   @Override
-   public boolean a(cbn $$0) {
-      return bgj.a(this, $$0);
+   public void a(aer $$0, long $$1) {
+      this.n = $$0;
+      this.r = $$1;
    }
 
-   @Override
-   public boolean b(int $$0, ciy $$1) {
-      if ($$0 == 3) {
-         return ckw.a($$1);
+   private int i() {
+      if (this.i == 0) {
+         return 0;
+      } else if (this.i < 3) {
+         return 1;
       } else {
-         return $$0 == 4 ? $$1.a(cjb.rz) : ($$1.a(cjb.rv) || $$1.a(cjb.uu) || $$1.a(cjb.ux) || $$1.a(cjb.rw)) && this.a($$0).b();
+         return this.i < 6 ? 2 : 3;
       }
    }
 
-   @Override
-   public int[] a(ha $$0) {
-      if ($$0 == ha.b) {
-         return j;
-      } else {
-         return $$0 == ha.a ? k : l;
-      }
+   @Nullable
+   public ha f() {
+      return this.m;
    }
 
-   @Override
-   public boolean a(int $$0, ciy $$1, @Nullable ha $$2) {
-      return this.b($$0, $$1);
-   }
-
-   @Override
-   public boolean b(int $$0, ciy $$1, ha $$2) {
-      return $$0 == 3 ? $$1.a(cjb.rw) : true;
-   }
-
-   @Override
-   public void a() {
-      this.m.clear();
-   }
-
-   @Override
-   protected cee a(int $$0, cbm $$1) {
-      return new cej($$0, $$1, this, this.g);
+   public cix g() {
+      return this.l;
    }
 }

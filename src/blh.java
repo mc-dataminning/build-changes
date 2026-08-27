@@ -1,37 +1,41 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-public class blh {
-   public static bkr<cba> a(float $$0, int $$1) {
-      return boc.a((Function<boc.b<cba>, ? extends App<boc.c<cba>, bof<cba>>>)($$2 -> $$2.group($$2.c(bsa.m)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
-               if ($$3.b($$4.dk())) {
-                  return false;
-               } else {
-                  bty $$6 = $$3.w();
-                  int $$7 = $$6.a(hx.a($$4.dk()));
-                  ehe $$8 = null;
+public class blh extends bkp<caz> {
+   private static final int d = 1200;
+   final float c;
 
-                  for (int $$9 = 0; $$9 < 5; $$9++) {
-                     ehe $$10 = bts.a($$4, 15, 7, $$1xxxx -> (double)(-$$6.a(hx.a($$1xxxx))));
-                     if ($$10 != null) {
-                        int $$11 = $$6.a(hx.a(gu.a($$10)));
-                        if ($$11 < $$7) {
-                           $$8 = $$10;
-                           break;
-                        }
+   public blh(float $$0) {
+      super(ImmutableMap.of(brz.d, bsa.a), 1200);
+      this.c = $$0;
+   }
 
-                        if ($$11 == $$7) {
-                           $$8 = $$10;
-                        }
-                     }
-                  }
+   protected boolean a(akk $$0, caz $$1) {
+      return $$1.dM().g().map($$0x -> $$0x == ccx.b || $$0x == ccx.c || $$0x == ccx.d).orElse(true);
+   }
 
-                  if ($$8 != null) {
-                     $$2x.a(new bsd($$8, $$0, $$1));
-                  }
+   protected boolean a(akk $$0, caz $$1, long $$2) {
+      return $$1.dM().a(brz.d);
+   }
 
-                  return true;
-               }
-            })));
+   protected void b(akk $$0, caz $$1, long $$2) {
+      bkr.a($$1, $$1.dM().c(brz.d).get().b(), this.c, 1);
+   }
+
+   protected void c(akk $$0, caz $$1, long $$2) {
+      Optional<hd> $$3 = $$1.dM().c(brz.d);
+      $$3.ifPresent($$1x -> {
+         gu $$2x = $$1x.b();
+         akk $$3x = $$0.n().a($$1x.a());
+         if ($$3x != null) {
+            btx $$4 = $$3x.w();
+            if ($$4.a($$2x, $$0xx -> true)) {
+               $$4.b($$2x);
+            }
+
+            aav.c($$0, $$2x);
+         }
+      });
+      $$1.dM().b(brz.d);
    }
 }

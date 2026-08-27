@@ -1,166 +1,84 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.io.Reader;
-import java.lang.reflect.Type;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
+public class fon implements ann {
+   private final fom a;
+   private final fop b;
+   private final fnh c;
+   private final foo d;
+   private final aru e = aru.a();
+   private final erm f;
 
-public class fon {
-   private final Map<String, fov> a = Maps.newLinkedHashMap();
-   private fpa b;
-
-   public static fon a(fon.a $$0, Reader $$1) {
-      return arg.a($$0.a, $$1, fon.class);
+   public fon(fom $$0, fnh $$1, erm $$2) {
+      this.a = $$0;
+      this.c = $$1;
+      this.f = $$2;
+      this.b = new fop(this.f);
+      this.d = new foo();
    }
 
-   public static fon a(fon.a $$0, JsonElement $$1) {
-      return (fon)$$0.a.fromJson($$1, fon.class);
-   }
-
-   public fon(Map<String, fov> $$0, fpa $$1) {
-      this.b = $$1;
-      this.a.putAll($$0);
-   }
-
-   public fon(List<fon> $$0) {
-      fon $$1 = null;
-
-      for (fon $$2 : $$0) {
-         if ($$2.c()) {
-            this.a.clear();
-            $$1 = $$2;
-         }
-
-         this.a.putAll($$2.a);
-      }
-
-      if ($$1 != null) {
-         this.b = $$1.b;
-      }
-   }
-
-   @VisibleForTesting
-   public boolean a(String $$0) {
-      return this.a.get($$0) != null;
-   }
-
-   @VisibleForTesting
-   public fov b(String $$0) {
-      fov $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         throw new fon.c();
-      } else {
-         return $$1;
-      }
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof fon $$1 && this.a.equals($$1.a)) {
-            return this.c() ? this.b.equals($$1.b) : !$$1.c();
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return 31 * this.a.hashCode() + (this.c() ? this.b.hashCode() : 0);
-   }
-
-   public Map<String, fov> a() {
+   public fom a() {
       return this.a;
    }
 
-   @VisibleForTesting
-   public Set<fov> b() {
-      Set<fov> $$0 = Sets.newHashSet(this.a.values());
-      if (this.c()) {
-         $$0.addAll(this.b.b());
+   public void a(dez $$0, gu $$1, coo $$2, elf $$3, elj $$4) {
+      if ($$0.l() == cyq.c) {
+         gav $$5 = this.a.b($$0);
+         long $$6 = $$0.a($$1);
+         this.b.a($$2, $$5, $$0, $$1, $$3, $$4, true, this.e, $$6, fyl.d);
       }
-
-      return $$0;
    }
 
-   public boolean c() {
-      return this.b != null;
+   public void a(dez $$0, gu $$1, coo $$2, elf $$3, elj $$4, boolean $$5, aru $$6) {
+      try {
+         cyq $$7 = $$0.l();
+         if ($$7 == cyq.c) {
+            this.b.a($$2, this.a($$0), $$0, $$1, $$3, $$4, $$5, $$6, $$0.a($$1), fyl.d);
+         }
+      } catch (Throwable var11) {
+         o $$9 = o.a(var11, "Tesselating block in world");
+         p $$10 = $$9.a("Block being tesselated");
+         p.a($$10, $$2, $$1, $$0);
+         throw new y($$9);
+      }
    }
 
-   public fpa d() {
+   public void a(gu $$0, coo $$1, elj $$2, dez $$3, eac $$4) {
+      try {
+         this.d.a($$1, $$0, $$2, $$3, $$4);
+      } catch (Throwable var9) {
+         o $$6 = o.a(var9, "Tesselating liquid in world");
+         p $$7 = $$6.a("Block being tesselated");
+         p.a($$7, $$1, $$0, null);
+         throw new y($$6);
+      }
+   }
+
+   public fop b() {
       return this.b;
    }
 
-   public static final class a {
-      protected final Gson a = new GsonBuilder()
-         .registerTypeAdapter(fon.class, new fon.b())
-         .registerTypeAdapter(fow.class, new fow.a())
-         .registerTypeAdapter(fov.class, new fov.a())
-         .registerTypeAdapter(fpa.class, new fpa.a(this))
-         .registerTypeAdapter(fpc.class, new fpc.a())
-         .create();
-      private dfb<csm, dfa> b;
-
-      public dfb<csm, dfa> a() {
-         return this.b;
-      }
-
-      public void a(dfb<csm, dfa> $$0) {
-         this.b = $$0;
-      }
+   public gav a(dez $$0) {
+      return this.a.b($$0);
    }
 
-   public static class b implements JsonDeserializer<fon> {
-      public fon a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         Map<String, fov> $$4 = this.a($$2, $$3);
-         fpa $$5 = this.b($$2, $$3);
-         if (!$$4.isEmpty() || $$5 != null && !$$5.b().isEmpty()) {
-            return new fon($$4, $$5);
-         } else {
-            throw new JsonParseException("Neither 'variants' nor 'multipart' found");
-         }
-      }
-
-      protected Map<String, fov> a(JsonDeserializationContext $$0, JsonObject $$1) {
-         Map<String, fov> $$2 = Maps.newHashMap();
-         if ($$1.has("variants")) {
-            JsonObject $$3 = arg.u($$1, "variants");
-
-            for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
-               $$2.put($$4.getKey(), (fov)$$0.deserialize($$4.getValue(), fov.class));
-            }
-         }
-
-         return $$2;
-      }
-
-      @Nullable
-      protected fpa b(JsonDeserializationContext $$0, JsonObject $$1) {
-         if (!$$1.has("multipart")) {
-            return null;
-         } else {
-            JsonArray $$2 = arg.v($$1, "multipart");
-            return (fpa)$$0.deserialize($$2, fpa.class);
+   public void a(dez $$0, elf $$1, fnu $$2, int $$3, int $$4) {
+      cyq $$5 = $$0.l();
+      if ($$5 != cyq.a) {
+         switch ($$5) {
+            case c:
+               gav $$6 = this.a($$0);
+               int $$7 = this.f.a($$0, null, null, 0);
+               float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
+               float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
+               float $$10 = (float)($$7 & 0xFF) / 255.0F;
+               this.b.a($$1.c(), $$2.getBuffer(fnp.a($$0, false)), $$0, $$6, $$8, $$9, $$10, $$3, $$4);
+               break;
+            case b:
+               this.c.a(new cix($$0.b()), ciu.a, $$1, $$2, $$3, $$4);
          }
       }
    }
 
-   protected class c extends RuntimeException {
+   @Override
+   public void a(anm $$0) {
+      this.d.a();
    }
 }

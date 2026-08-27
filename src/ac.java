@@ -96,7 +96,7 @@ public class ac {
       return Collectors.toMap(Entry::getKey, Entry::getValue);
    }
 
-   public static <T extends Comparable<T>> String a(dgd<T> $$0, Object $$1) {
+   public static <T extends Comparable<T>> String a(dgc<T> $$0, Object $$1) {
       return $$0.a((T)$$1);
    }
 

@@ -1,15 +1,25 @@
-public interface cpt extends cpp {
-   long ah();
+import javax.annotation.Nullable;
 
-   default float an() {
-      return dij.i[this.x_().b(this.ah())];
+public interface cpt {
+   boolean a(gu var1, dez var2, int var3, int var4);
+
+   default boolean a(gu $$0, dez $$1, int $$2) {
+      return this.a($$0, $$1, $$2, 512);
    }
 
-   default float f(float $$0) {
-      return this.x_().a(this.ah());
+   boolean a(gu var1, boolean var2);
+
+   default boolean b(gu $$0, boolean $$1) {
+      return this.a($$0, $$1, null);
    }
 
-   default int ao() {
-      return this.x_().b(this.ah());
+   default boolean a(gu $$0, boolean $$1, @Nullable bii $$2) {
+      return this.a($$0, $$1, $$2, 512);
+   }
+
+   boolean a(gu var1, boolean var2, @Nullable bii var3, int var4);
+
+   default boolean b(bii $$0) {
+      return false;
    }
 }

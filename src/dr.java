@@ -20,7 +20,7 @@ public class dr implements du {
    public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tf.c("permissions.requires.player"));
    public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tf.c("permissions.requires.entity"));
    private final dq c;
-   private final ehe d;
+   private final ehd d;
    private final akk e;
    private final int f;
    private final String g;
@@ -32,12 +32,12 @@ public class dr implements du {
    @Nullable
    private final ResultConsumer<dr> l;
    private final eb.a m;
-   private final ehd n;
+   private final ehc n;
    private final dp o;
    private final asj p;
    private final IntConsumer q;
 
-   public dr(dq $$0, ehe $$1, ehd $$2, akk $$3, int $$4, String $$5, tf $$6, MinecraftServer $$7, @Nullable bii $$8) {
+   public dr(dq $$0, ehd $$1, ehc $$2, akk $$3, int $$4, String $$5, tf $$6, MinecraftServer $$7, @Nullable bii $$8) {
       this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, ($$0x, $$1x, $$2x) -> {
       }, eb.a.a, dp.a, asj.immediate($$7), $$0x -> {
       });
@@ -45,8 +45,8 @@ public class dr implements du {
 
    protected dr(
       dq $$0,
-      ehe $$1,
-      ehd $$2,
+      ehd $$1,
+      ehc $$2,
       akk $$3,
       int $$4,
       String $$5,
@@ -87,13 +87,13 @@ public class dr implements du {
          : new dr(this.c, this.d, this.n, this.e, this.f, $$0.ab().getString(), $$0.H_(), this.i, $$0, this.j, this.l, this.m, this.o, this.p, this.q);
    }
 
-   public dr a(ehe $$0) {
+   public dr a(ehd $$0) {
       return this.d.equals($$0)
          ? this
          : new dr(this.c, $$0, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p, this.q);
    }
 
-   public dr a(ehd $$0) {
+   public dr a(ehc $$0) {
       return this.n.c($$0) ? this : new dr(this.c, this.d, $$0, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p, this.q);
    }
 
@@ -130,8 +130,8 @@ public class dr implements du {
       if ($$0 == this.e) {
          return this;
       } else {
-         double $$1 = dij.a(this.e.x_(), $$0.x_());
-         ehe $$2 = new ehe(this.d.c * $$1, this.d.d, this.d.e * $$1);
+         double $$1 = dii.a(this.e.x_(), $$0.x_());
+         ehd $$2 = new ehd(this.d.c * $$1, this.d.d, this.d.e * $$1);
          return new dr(this.c, $$2, this.n, $$0, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p, this.q);
       }
    }
@@ -140,15 +140,15 @@ public class dr implements du {
       return this.b($$1.a($$0));
    }
 
-   public dr b(ehe $$0) {
-      ehe $$1 = this.m.a(this);
+   public dr b(ehd $$0) {
+      ehd $$1 = this.m.a(this);
       double $$2 = $$0.c - $$1.c;
       double $$3 = $$0.d - $$1.d;
       double $$4 = $$0.e - $$1.e;
       double $$5 = Math.sqrt($$2 * $$2 + $$4 * $$4);
       float $$6 = arp.g((float)(-(arp.d($$3, $$5) * 180.0F / (float)Math.PI)));
       float $$7 = arp.g((float)(arp.d($$4, $$2) * 180.0F / (float)Math.PI) - 90.0F);
-      return this.a(new ehd($$6, $$7));
+      return this.a(new ehc($$6, $$7));
    }
 
    public dr a(dp $$0) {
@@ -176,7 +176,7 @@ public class dr implements du {
       return this.f >= $$0;
    }
 
-   public ehe d() {
+   public ehd d() {
       return this.d;
    }
 
@@ -215,7 +215,7 @@ public class dr implements du {
       return this.k instanceof akl;
    }
 
-   public ehd k() {
+   public ehc k() {
       return this.n;
    }
 
@@ -283,7 +283,7 @@ public class dr implements du {
 
    private void c(tf $$0) {
       tf $$1 = tf.a("chat.type.admin", this.b(), $$0).a(n.h, n.u);
-      if (this.i.aI().b(cpi.o)) {
+      if (this.i.aI().b(cph.o)) {
          for (akl $$2 : this.i.ac().t()) {
             if ($$2 != this.c && this.i.ac().g($$2.fP())) {
                $$2.a($$1);
@@ -291,7 +291,7 @@ public class dr implements du {
          }
       }
 
-      if (this.c != this.i && this.i.aI().b(cpi.l)) {
+      if (this.c != this.i && this.i.aI().b(cph.l)) {
          this.i.a($$1);
       }
    }
@@ -342,17 +342,17 @@ public class dr implements du {
    }
 
    @Override
-   public Set<aeq<cpm>> u() {
+   public Set<aeq<cpl>> u() {
       return this.i.E();
    }
 
    @Override
    public hs v() {
-      return this.i.aV();
+      return this.i.aU();
    }
 
    @Override
-   public cdv w() {
+   public cdu w() {
       return this.e.G();
    }
 }

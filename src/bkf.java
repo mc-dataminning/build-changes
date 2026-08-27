@@ -1,20 +1,103 @@
-public class bkf {
-   public static final bka a = a("generic.max_health", new bkh("attribute.name.generic.max_health", 20.0, 1.0, 1024.0).a(true));
-   public static final bka b = a("generic.follow_range", new bkh("attribute.name.generic.follow_range", 32.0, 0.0, 2048.0));
-   public static final bka c = a("generic.knockback_resistance", new bkh("attribute.name.generic.knockback_resistance", 0.0, 0.0, 1.0));
-   public static final bka d = a("generic.movement_speed", new bkh("attribute.name.generic.movement_speed", 0.7F, 0.0, 1024.0).a(true));
-   public static final bka e = a("generic.flying_speed", new bkh("attribute.name.generic.flying_speed", 0.4F, 0.0, 1024.0).a(true));
-   public static final bka f = a("generic.attack_damage", new bkh("attribute.name.generic.attack_damage", 2.0, 0.0, 2048.0));
-   public static final bka g = a("generic.attack_knockback", new bkh("attribute.name.generic.attack_knockback", 0.0, 0.0, 5.0));
-   public static final bka h = a("generic.attack_speed", new bkh("attribute.name.generic.attack_speed", 4.0, 0.0, 1024.0).a(true));
-   public static final bka i = a("generic.armor", new bkh("attribute.name.generic.armor", 0.0, 0.0, 30.0).a(true));
-   public static final bka j = a("generic.armor_toughness", new bkh("attribute.name.generic.armor_toughness", 0.0, 0.0, 20.0).a(true));
-   public static final bka k = a("generic.luck", new bkh("attribute.name.generic.luck", 0.0, -1024.0, 1024.0).a(true));
-   public static final bka l = a("generic.max_absorption", new bkh("attribute.name.generic.max_absorption", 0.0, 0.0, 2048.0)).a(true);
-   public static final bka m = a("zombie.spawn_reinforcements", new bkh("attribute.name.zombie.spawn_reinforcements", 0.0, 0.0, 1.0));
-   public static final bka n = a("horse.jump_strength", new bkh("attribute.name.horse.jump_strength", 0.7, 0.0, 2.0).a(true));
+import com.google.common.collect.ImmutableMap;
+import com.mojang.logging.LogUtils;
+import java.util.Map;
+import org.slf4j.Logger;
 
-   private static bka a(String $$0, bka $$1) {
-      return hr.a(jb.v, $$0, $$1);
+public class bkf {
+   private static final Logger a = LogUtils.getLogger();
+   private static final Map<bim<? extends biy>, bkd> b = ImmutableMap.builder()
+      .put(bim.b, bvn.p().a())
+      .put(bim.d, biy.dO().a())
+      .put(bim.f, bvq.gh().a())
+      .put(bim.g, bue.p().a())
+      .put(bim.h, buk.gm().a())
+      .put(bim.i, byk.p().a())
+      .put(bim.m, bum.gm().a())
+      .put(bim.l, bvv.p().a())
+      .put(bim.n, byl.p().a())
+      .put(bim.q, buo.p().a())
+      .put(bim.r, bug.p().a())
+      .put(bim.t, buq.p().a())
+      .put(bim.u, bym.p().a())
+      .put(bim.v, bur.ga().a())
+      .put(bim.w, bwh.p().a())
+      .put(bim.y, bzt.ge().a())
+      .put(bim.A, byp.p().a())
+      .put(bim.E, byq.p().a())
+      .put(bim.F, byr.p().a())
+      .put(bim.C, bwz.q().a())
+      .put(bim.G, byt.q().a())
+      .put(bim.N, but.p().a())
+      .put(bim.O, bvy.ga().a())
+      .put(bim.Q, byu.t().a())
+      .put(bim.R, byv.p().a())
+      .put(bim.T, biq.ga().a())
+      .put(bim.U, bwe.q().a())
+      .put(bim.V, byw.ga().a())
+      .put(bim.W, bzw.p().a())
+      .put(bim.Y, bwi.gA().a())
+      .put(bim.Z, bzt.ge().a())
+      .put(bim.aa, byy.q().a())
+      .put(bim.ac, buv.p().a())
+      .put(bim.aj, bwl.gl().a())
+      .put(bim.al, byz.p().a())
+      .put(bim.ao, buq.p().a())
+      .put(bim.ap, bwh.p().a())
+      .put(bim.aq, bux.p().a())
+      .put(bim.as, buy.gl().a())
+      .put(bim.at, buz.gg().a())
+      .put(bim.au, bza.gg().a())
+      .put(bim.av, bva.p().a())
+      .put(bim.aw, cac.gh().a())
+      .put(bim.ax, caf.t().a())
+      .put(bim.ay, bzd.q().a())
+      .put(bim.bt, cbm.fF().a())
+      .put(bim.az, bvb.p().a())
+      .put(bim.aB, bug.p().a())
+      .put(bim.aC, bvd.q().a())
+      .put(bim.aD, bzf.p().a())
+      .put(bim.aE, bug.p().a())
+      .put(bim.aF, bvf.p().a())
+      .put(bim.aG, bzg.p().a())
+      .put(bim.aI, bzh.p().a())
+      .put(bim.aJ, byj.p().a())
+      .put(bim.aK, bwo.p().a())
+      .put(bim.aL, bza.gg().a())
+      .put(bim.aN, bwv.p().a())
+      .put(bim.aO, bvh.p().a())
+      .put(bim.aS, bzl.q().a())
+      .put(bim.aT, bvi.ga().a())
+      .put(bim.aU, byj.p().a())
+      .put(bim.aV, bzn.q().a())
+      .put(bim.aW, bwb.gc().a())
+      .put(bim.ba, bwl.gl().a())
+      .put(bim.bc, bug.p().a())
+      .put(bim.bd, bvk.t().a())
+      .put(bim.be, bzo.p().a())
+      .put(bim.bf, caz.gj().a())
+      .put(bim.bg, bzp.q().a())
+      .put(bim.bi, caq.p().a())
+      .put(bim.bh, bja.x().a())
+      .put(bim.bj, bzq.q().a())
+      .put(bim.bk, bxt.q().a())
+      .put(bim.bl, byj.p().a())
+      .put(bim.bn, bvm.gg().a())
+      .put(bim.bo, bzs.p().a())
+      .put(bim.bp, bzt.ge().a())
+      .put(bim.bq, bws.p().a())
+      .put(bim.br, bzt.ge().a())
+      .put(bim.bs, bzv.gk().a())
+      .build();
+
+   public static bkd a(bim<? extends biy> $$0) {
+      return b.get($$0);
+   }
+
+   public static boolean b(bim<?> $$0) {
+      return b.containsKey($$0);
+   }
+
+   public static void a() {
+      jb.h.s().filter($$0 -> $$0.f() != bjb.h).filter($$0 -> !b((bim<?>)$$0)).map(jb.h::b).forEach($$0 -> ac.a("Entity " + $$0 + " has no attributes"));
    }
 }

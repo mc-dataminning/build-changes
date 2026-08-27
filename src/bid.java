@@ -8,12 +8,12 @@ public abstract class bid extends bjh {
    protected int d;
    protected int e;
 
-   protected bid(bim<? extends bid> $$0, cpm $$1) {
+   protected bid(bim<? extends bid> $$0, cpl $$1) {
       super($$0, $$1);
    }
 
    @Override
-   public bjs a(cqb $$0, bgo $$1, bjc $$2, @Nullable bjs $$3, @Nullable qr $$4) {
+   public bjr a(cqa $$0, bgo $$1, bjc $$2, @Nullable bjr $$3, @Nullable qr $$4) {
       if ($$3 == null) {
          $$3 = new bid.a(true);
       }
@@ -128,7 +128,7 @@ public abstract class bid extends bjh {
 
    @Override
    protected void m() {
-      if (!this.i_() && this.bN() && this.cY() instanceof cdg $$0 && !$$0.a((bii)this)) {
+      if (!this.i_() && this.bN() && this.cY() instanceof cdf $$0 && !$$0.a((bii)this)) {
          this.aa();
       }
    }
@@ -147,7 +147,7 @@ public abstract class bid extends bjh {
       return (int)((float)($$0 / 20) * 0.1F);
    }
 
-   public static class a implements bjs {
+   public static class a implements bjr {
       private int a;
       private final boolean b;
       private final float c;

@@ -57,8 +57,8 @@ public class ob {
    }
 
    private static <C, I extends asn<C>> aqt<C, I> a(I $$0, I $$1, float $$2, float $$3, asn<Float> $$4) {
-      float $$5 = dkq.a(0.4F);
-      float $$6 = dkq.a(0.56666666F);
+      float $$5 = dkp.a(0.4F);
+      float $$6 = dkp.a(0.56666666F);
       float $$7 = ($$5 + $$6) / 2.0F;
       aqt.b<C, I> $$8 = aqt.a($$1, $$4);
       $$8.a($$5, 0.0F);

@@ -22,7 +22,7 @@ public class zb implements ux<wp> {
       $$0.a(this);
    }
 
-   public bii a(cpm $$0) {
+   public bii a(cpl $$0) {
       return $$0.a(this.a);
    }
 

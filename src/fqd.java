@@ -1,41 +1,36 @@
-public class fqd extends fqe<dea> {
-   private static final aer c = new aer("textures/entity/end_gateway_beam.png");
+public class fqd implements fpu<dde> {
+   public static final gay a = new gay(fyt.e, new aer("entity/enchanting_table_book"));
+   private final fec b;
 
-   public fqd(fpm.a $$0) {
-      super($$0);
+   public fqd(fpv.a $$0) {
+      this.b = new fec($$0.a(fhr.m));
    }
 
-   public void a(dea $$0, float $$1, elg $$2, fnl $$3, int $$4, int $$5) {
-      if ($$0.c() || $$0.d()) {
-         float $$6 = $$0.c() ? $$0.a($$1) : $$0.b($$1);
-         double $$7 = $$0.c() ? (double)$$0.k().aj() : 50.0;
-         $$6 = arp.a($$6 * (float) Math.PI);
-         int $$8 = arp.a((double)$$6 * $$7);
-         float[] $$9 = $$0.c() ? chm.c.d() : chm.k.d();
-         long $$10 = $$0.k().V();
-         fph.a($$2, $$3, c, $$1, $$6, $$10, -$$8, $$8 * 2, $$9, 0.15F, 0.175F);
+   public void a(dde $$0, float $$1, elf $$2, fnu $$3, int $$4, int $$5) {
+      $$2.a();
+      $$2.a(0.5F, 0.75F, 0.5F);
+      float $$6 = (float)$$0.a + $$1;
+      $$2.a(0.0F, 0.1F + arp.a($$6 * 0.1F) * 0.01F, 0.0F);
+      float $$7 = $$0.h - $$0.i;
+
+      while ($$7 >= (float) Math.PI) {
+         $$7 -= (float) (Math.PI * 2);
       }
 
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
+      while ($$7 < (float) -Math.PI) {
+         $$7 += (float) (Math.PI * 2);
+      }
 
-   @Override
-   protected float b() {
-      return 1.0F;
-   }
-
-   @Override
-   protected float c() {
-      return 0.0F;
-   }
-
-   @Override
-   protected fnt d() {
-      return fnt.w();
-   }
-
-   @Override
-   public int aH_() {
-      return 256;
+      float $$8 = $$0.i + $$7 * $$1;
+      $$2.a(a.d.rotation(-$$8));
+      $$2.a(a.f.rotationDegrees(80.0F));
+      float $$9 = arp.i($$1, $$0.c, $$0.b);
+      float $$10 = arp.h($$9 + 0.25F) * 1.6F - 0.3F;
+      float $$11 = arp.h($$9 + 0.75F) * 1.6F - 0.3F;
+      float $$12 = arp.i($$1, $$0.g, $$0.f);
+      this.b.a($$6, arp.a($$10, 0.0F, 1.0F), arp.a($$11, 0.0F, 1.0F), $$12);
+      elj $$13 = a.a($$3, foc::c);
+      this.b.b($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$2.b();
    }
 }

@@ -20,21 +20,21 @@ public class pw extends MinecraftServer {
    private static final afj p = new afj(null, ServicesKeySet.EMPTY, null, null);
    private final List<pm> q;
    private final gu r;
-   private static final cpi s = ac.a(new cpi(), $$0 -> {
-      $$0.a(cpi.e).a(false, null);
-      $$0.a(cpi.u).a(false, null);
+   private static final cph s = ac.a(new cph(), $$0 -> {
+      $$0.a(cph.e).a(false, null);
+      $$0.a(cph.u).a(false, null);
    });
-   private static final dlh t = new dlh(0L, false, false);
+   private static final dlg t = new dlg(0L, false, false);
    @Nullable
    private qc u;
 
-   public static pw a(Thread $$0, ebx.c $$1, amx $$2, Collection<pm> $$3, gu $$4) {
+   public static pw a(Thread $$0, ebw.c $$1, amx $$2, Collection<pm> $$3, gu $$4) {
       if ($$3.isEmpty()) {
          throw new IllegalArgumentException("No test batches were given!");
       } else {
          $$2.a();
-         cqf $$5 = new cqf(new cpa(new ArrayList<>($$2.b()), List.of()), cdx.d.a());
-         cpq $$6 = new cpq("Test Level", cpj.b, false, bgn.c, true, s, $$5);
+         cqe $$5 = new cqe(new coz(new ArrayList<>($$2.b()), List.of()), cdw.d.a());
+         cpp $$6 = new cpp("Test Level", cpi.b, false, bgn.c, true, s, $$5);
          afl.d $$7 = new afl.d($$2, $$5, false, true);
          afl.c $$8 = new afl.c($$7, ds.a.b, 4);
 
@@ -42,9 +42,9 @@ public class pw extends MinecraftServer {
             n.debug("Starting resource loading");
             Stopwatch $$9 = Stopwatch.createStarted();
             afm $$10 = ac.<afm>c($$2x -> afl.a($$8, $$1xx -> {
-                  hr<dik> $$2xx = new hm<>(jc.aI, Lifecycle.stable()).l();
-                  dle.b $$3x = $$1xx.c().d(jc.aF).f(dup.b).a().a().a($$2xx);
-                  return new afl.b<>(new ecb($$6, t, $$3x.d(), $$3x.a()), $$3x.b());
+                  hr<dij> $$2xx = new hm<>(jc.aI, Lifecycle.stable()).l();
+                  dld.b $$3x = $$1xx.c().d(jc.aF).f(duo.b).a().a().a($$2xx);
+                  return new afl.b<>(new eca($$6, t, $$3x.d(), $$3x.a()), $$3x.b());
                }, afm::new, ac.f(), $$2x)).get();
             $$9.stop();
             n.debug("Finished resource loading after {} ms", $$9.elapsed(TimeUnit.MILLISECONDS));
@@ -57,7 +57,7 @@ public class pw extends MinecraftServer {
       }
    }
 
-   private pw(Thread $$0, ebx.c $$1, amx $$2, afm $$3, Collection<pm> $$4, gu $$5) {
+   private pw(Thread $$0, ebw.c $$1, amx $$2, afm $$3, Collection<pm> $$4, gu $$5) {
       super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, ast.a(), p, akv::new);
       this.q = Lists.newArrayList($$4);
       this.r = $$5;
@@ -65,7 +65,7 @@ public class pw extends MinecraftServer {
 
    @Override
    public boolean e() {
-      this.a(new anz(this, this.aW(), this.i, 1) {
+      this.a(new anz(this, this.aV(), this.i, 1) {
       });
       this.n_();
       akk $$0 = this.D();
@@ -80,7 +80,7 @@ public class pw extends MinecraftServer {
    public void a(BooleanSupplier $$0) {
       super.a($$0);
       akk $$1 = this.D();
-      if (!this.bg()) {
+      if (!this.bf()) {
          this.b($$1);
       }
 
@@ -111,7 +111,7 @@ public class pw extends MinecraftServer {
 
    @Override
    public void p_() {
-      this.bq();
+      this.bp();
    }
 
    @Override
@@ -135,12 +135,12 @@ public class pw extends MinecraftServer {
    }
 
    private void b(akk $$0) {
-      Collection<pr> $$1 = pu.a(this.q, new gu(0, -60, 0), cyy.a, $$0, px.a, 8);
+      Collection<pr> $$1 = pu.a(this.q, new gu(0, -60, 0), cyx.a, $$0, px.a, 8);
       this.u = new qc($$1);
       n.info("{} tests are now running!", this.u.h());
    }
 
-   private boolean bg() {
+   private boolean bf() {
       return this.u != null;
    }
 

@@ -1,43 +1,52 @@
 import com.mojang.serialization.Codec;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class dpe extends dnn<dpy> {
-   private static final gu a = new gu(8, 3, 8);
-   private static final cot b = new cot(a);
-   private static final int c = 16;
-   private static final int d = 1;
-
-   public dpe(Codec<dpy> $$0) {
+public class dpe extends dpb {
+   public dpe(Codec<dqp> $$0) {
       super($$0);
    }
 
-   private static int a(int $$0, int $$1, int $$2, int $$3) {
-      return Math.max(Math.abs($$0 - $$2), Math.abs($$1 - $$3));
+   @Override
+   protected Set<gu> a(cqf $$0, dqp $$1, aru $$2, gu $$3, Predicate<dez> $$4, int $$5, int $$6) {
+      Set<gu> $$7 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      Set<gu> $$8 = new HashSet<>();
+      gu.a $$9 = new gu.a();
+
+      for (gu $$10 : $$7) {
+         if (!a($$0, $$7, $$10, $$9)) {
+            $$8.add($$10);
+         }
+      }
+
+      for (gu $$11 : $$8) {
+         $$0.a($$11, csm.G.n(), 2);
+      }
+
+      return $$8;
+   }
+
+   private static boolean a(cqf $$0, Set<gu> $$1, gu $$2, gu.a $$3) {
+      return a($$0, $$2, $$3, ha.c) || a($$0, $$2, $$3, ha.f) || a($$0, $$2, $$3, ha.d) || a($$0, $$2, $$3, ha.e) || a($$0, $$2, $$3, ha.a);
+   }
+
+   private static boolean a(cqf $$0, gu $$1, gu.a $$2, ha $$3) {
+      $$2.a($$1, $$3);
+      return !$$0.a_($$2).d($$0, $$2, $$3.g());
    }
 
    @Override
-   public boolean a(dnp<dpy> $$0) {
-      cqg $$1 = $$0.b();
-      cot $$2 = new cot($$0.e());
-      if (a($$2.e, $$2.f, b.e, b.f) > 1) {
-         return true;
-      } else {
-         gu $$3 = a.h($$0.e().v() + a.v());
-         gu.a $$4 = new gu.a();
-
-         for (int $$5 = $$2.e(); $$5 <= $$2.g(); $$5++) {
-            for (int $$6 = $$2.d(); $$6 <= $$2.f(); $$6++) {
-               if (a($$3.u(), $$3.w(), $$6, $$5) <= 16) {
-                  $$4.d($$6, $$3.v(), $$5);
-                  if ($$4.equals($$3)) {
-                     $$1.a($$4, csn.m.n(), 2);
-                  } else {
-                     $$1.a($$4, csn.b.n(), 2);
-                  }
-               }
-            }
+   protected boolean a(cqf $$0, dqp $$1, dgw $$2, aru $$3, gu $$4) {
+      if (super.a($$0, $$1, $$2, $$3, $$4.d())) {
+         dez $$5 = $$0.a_($$4);
+         if ($$5.b(dfp.C) && !$$5.c(dfp.C)) {
+            $$0.a($$4, $$5.a(dfp.C, Boolean.valueOf(true)), 2);
          }
 
          return true;
+      } else {
+         return false;
       }
    }
 }

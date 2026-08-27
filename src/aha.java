@@ -29,8 +29,8 @@ public class aha {
       ($$0, $$1) -> tf.a("commands.item.target.no_changed.known_item", $$0, $$1)
    );
    private static final SuggestionProvider<dr> g = ($$0, $$1) -> {
-      eck $$2 = ((dr)$$0.getSource()).l().aH();
-      return du.a($$2.a(ecm.b), $$1);
+      ecj $$2 = ((dr)$$0.getSource()).l().aH();
+      return du.a($$2.a(ecl.b), $$1);
    };
 
    public static void a(CommandDispatcher<dr> $$0, dl $$1) {
@@ -275,10 +275,10 @@ public class aha {
       );
    }
 
-   private static int a(dr $$0, gu $$1, int $$2, edu $$3) throws CommandSyntaxException {
+   private static int a(dr $$0, gu $$1, int $$2, edt $$3) throws CommandSyntaxException {
       bgj $$4 = a($$0, $$1, a);
       if ($$2 >= 0 && $$2 < $$4.b()) {
-         ciy $$5 = a($$0, $$3, $$4.a($$2));
+         cix $$5 = a($$0, $$3, $$4.a($$2));
          $$4.a($$2, $$5);
          $$0.a(() -> tf.a("commands.item.block.set.success", $$1.u(), $$1.v(), $$1.w(), $$5.J()), true);
          return 1;
@@ -287,13 +287,13 @@ public class aha {
       }
    }
 
-   private static int a(dr $$0, Collection<? extends bii> $$1, int $$2, edu $$3) throws CommandSyntaxException {
-      Map<bii, ciy> $$4 = Maps.newHashMapWithExpectedSize($$1.size());
+   private static int a(dr $$0, Collection<? extends bii> $$1, int $$2, edt $$3) throws CommandSyntaxException {
+      Map<bii, cix> $$4 = Maps.newHashMapWithExpectedSize($$1.size());
 
       for (bii $$5 : $$1) {
-         bjr $$6 = $$5.a_($$2);
-         if ($$6 != bjr.b) {
-            ciy $$7 = a($$0, $$3, $$6.a().p());
+         bjq $$6 = $$5.a_($$2);
+         if ($$6 != bjq.b) {
+            cix $$7 = a($$0, $$3, $$6.a().p());
             if ($$6.a($$7)) {
                $$4.put($$5, $$7);
                if ($$5 instanceof akl) {
@@ -307,7 +307,7 @@ public class aha {
          throw e.create($$2);
       } else {
          if ($$4.size() == 1) {
-            Entry<bii, ciy> $$8 = $$4.entrySet().iterator().next();
+            Entry<bii, cix> $$8 = $$4.entrySet().iterator().next();
             $$0.a(() -> tf.a("commands.item.entity.set.success.single", $$8.getKey().H_(), $$8.getValue().J()), true);
          } else {
             $$0.a(() -> tf.a("commands.item.entity.set.success.multiple", $$4.size()), true);
@@ -317,7 +317,7 @@ public class aha {
       }
    }
 
-   private static int a(dr $$0, gu $$1, int $$2, ciy $$3) throws CommandSyntaxException {
+   private static int a(dr $$0, gu $$1, int $$2, cix $$3) throws CommandSyntaxException {
       bgj $$4 = a($$0, $$1, a);
       if ($$2 >= 0 && $$2 < $$4.b()) {
          $$4.a($$2, $$3);
@@ -329,7 +329,7 @@ public class aha {
    }
 
    private static bgj a(dr $$0, gu $$1, Dynamic3CommandExceptionType $$2) throws CommandSyntaxException {
-      dcm $$3 = $$0.e().c_($$1);
+      dcl $$3 = $$0.e().c_($$1);
       if (!($$3 instanceof bgj)) {
          throw $$2.create($$1.u(), $$1.v(), $$1.w());
       } else {
@@ -337,12 +337,12 @@ public class aha {
       }
    }
 
-   private static int a(dr $$0, Collection<? extends bii> $$1, int $$2, ciy $$3) throws CommandSyntaxException {
+   private static int a(dr $$0, Collection<? extends bii> $$1, int $$2, cix $$3) throws CommandSyntaxException {
       List<bii> $$4 = Lists.newArrayListWithCapacity($$1.size());
 
       for (bii $$5 : $$1) {
-         bjr $$6 = $$5.a_($$2);
-         if ($$6 != bjr.b && $$6.a($$3.p())) {
+         bjq $$6 = $$5.a_($$2);
+         if ($$6 != bjq.b && $$6.a($$3.p())) {
             $$4.add($$5);
             if ($$5 instanceof akl) {
                ((akl)$$5).bQ.d();
@@ -367,7 +367,7 @@ public class aha {
       return a($$0, $$3, $$4, a($$0, $$1, $$2));
    }
 
-   private static int a(dr $$0, gu $$1, int $$2, Collection<? extends bii> $$3, int $$4, edu $$5) throws CommandSyntaxException {
+   private static int a(dr $$0, gu $$1, int $$2, Collection<? extends bii> $$3, int $$4, edt $$5) throws CommandSyntaxException {
       return a($$0, $$3, $$4, a($$0, $$5, a($$0, $$1, $$2)));
    }
 
@@ -375,7 +375,7 @@ public class aha {
       return a($$0, $$3, $$4, a($$0, $$1, $$2));
    }
 
-   private static int a(dr $$0, gu $$1, int $$2, gu $$3, int $$4, edu $$5) throws CommandSyntaxException {
+   private static int a(dr $$0, gu $$1, int $$2, gu $$3, int $$4, edt $$5) throws CommandSyntaxException {
       return a($$0, $$3, $$4, a($$0, $$5, a($$0, $$1, $$2)));
    }
 
@@ -383,7 +383,7 @@ public class aha {
       return a($$0, $$3, $$4, a($$1, $$2));
    }
 
-   private static int a(dr $$0, bii $$1, int $$2, gu $$3, int $$4, edu $$5) throws CommandSyntaxException {
+   private static int a(dr $$0, bii $$1, int $$2, gu $$3, int $$4, edt $$5) throws CommandSyntaxException {
       return a($$0, $$3, $$4, a($$0, $$5, a($$1, $$2)));
    }
 
@@ -391,28 +391,28 @@ public class aha {
       return a($$0, $$3, $$4, a($$1, $$2));
    }
 
-   private static int a(dr $$0, bii $$1, int $$2, Collection<? extends bii> $$3, int $$4, edu $$5) throws CommandSyntaxException {
+   private static int a(dr $$0, bii $$1, int $$2, Collection<? extends bii> $$3, int $$4, edt $$5) throws CommandSyntaxException {
       return a($$0, $$3, $$4, a($$0, $$5, a($$1, $$2)));
    }
 
-   private static ciy a(dr $$0, edu $$1, ciy $$2) {
+   private static cix a(dr $$0, edt $$1, cix $$2) {
       akk $$3 = $$0.e();
-      ecn $$4 = new ecn.a($$3).a(ees.f, $$0.d()).b(ees.a, $$0.f()).a(eer.d);
-      ech $$5 = new ech.a($$4).a(Optional.empty());
-      $$5.b(ech.a($$1));
+      ecm $$4 = new ecm.a($$3).a(eer.f, $$0.d()).b(eer.a, $$0.f()).a(eeq.d);
+      ecg $$5 = new ecg.a($$4).a(Optional.empty());
+      $$5.b(ecg.a($$1));
       return $$1.apply($$2, $$5);
    }
 
-   private static ciy a(bii $$0, int $$1) throws CommandSyntaxException {
-      bjr $$2 = $$0.a_($$1);
-      if ($$2 == bjr.b) {
+   private static cix a(bii $$0, int $$1) throws CommandSyntaxException {
+      bjq $$2 = $$0.a_($$1);
+      if ($$2 == bjq.b) {
          throw d.create($$1);
       } else {
          return $$2.a().p();
       }
    }
 
-   private static ciy a(dr $$0, gu $$1, int $$2) throws CommandSyntaxException {
+   private static cix a(dr $$0, gu $$1, int $$2) throws CommandSyntaxException {
       bgj $$3 = a($$0, $$1, c);
       if ($$2 >= 0 && $$2 < $$3.b()) {
          return $$3.a($$2).p();

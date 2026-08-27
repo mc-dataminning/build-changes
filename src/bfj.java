@@ -140,12 +140,12 @@ public class bfj<T> implements beo, bfi<T>, AutoCloseable, Runnable {
    }
 
    @Override
-   public String bo() {
+   public String bn() {
       return this.g;
    }
 
    @Override
-   public List<bel> bl() {
+   public List<bel> bk() {
       return ImmutableList.of(bel.a(this.g + "-queue-size", bek.c, this::b));
    }
 }

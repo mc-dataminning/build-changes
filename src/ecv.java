@@ -1,25 +1,70 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Consumer;
 
-public class ecv extends edc {
-   public static final Codec<ecv> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, ecv::new));
+public class ecv extends ecs {
+   public static final Codec<ecv> a = a(ecv::new);
 
-   private ecv(int $$0, int $$1, List<efg> $$2, List<edu> $$3) {
-      super($$0, $$1, $$2, $$3);
+   ecv(List<ecz> $$0, List<eff> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public edb a() {
-      return ecy.b;
+   public eda a() {
+      return ecx.i;
    }
 
    @Override
-   public void a(Consumer<ciy> $$0, ech $$1) {
+   protected ecr a(List<? extends ecr> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (ecr)$$0.get(0);
+         case 2 -> {
+            ecr $$1 = $$0.get(0);
+            ecr $$2 = $$0.get(1);
+            yield ($$2x, $$3) -> {
+               $$1.expand($$2x, $$3);
+               $$2.expand($$2x, $$3);
+               return true;
+            };
+         }
+         default -> ($$1x, $$2x) -> {
+         for (ecr $$3 : $$0) {
+            $$3.expand($$1x, $$2x);
+         }
+
+         return true;
+      };
+      };
    }
 
-   public static edc.a<?> b() {
-      return a(ecv::new);
+   public static ecv.a a(ecz.a<?>... $$0) {
+      return new ecv.a($$0);
+   }
+
+   public static class a extends ecz.a<ecv.a> {
+      private final Builder<ecz> a = ImmutableList.builder();
+
+      public a(ecz.a<?>... $$0) {
+         for (ecz.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
+      }
+
+      protected ecv.a a() {
+         return this;
+      }
+
+      @Override
+      public ecv.a b(ecz.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public ecz b() {
+         return new ecv(this.a.build(), this.f());
+      }
    }
 }

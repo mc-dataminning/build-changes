@@ -2,7 +2,7 @@ import com.mojang.blaze3d.platform.TextureUtil;
 import java.nio.file.Path;
 import javax.annotation.Nullable;
 
-public class euv extends fxw implements fxx {
+public class euv extends fyf implements fyg {
    private static final int e = 256;
    private final euw f;
    private final boolean g;
@@ -11,7 +11,7 @@ public class euv extends fxw implements fxx {
    public euv(euw $$0, boolean $$1) {
       this.g = $$1;
       this.h = new euv.a(0, 0, 256, 256);
-      TextureUtil.prepareImage($$1 ? ekh.b.a : ekh.b.d, this.a(), 256, 256);
+      TextureUtil.prepareImage($$1 ? ekg.b.a : ekg.b.d, this.a(), 256, 256);
       this.f = $$0;
    }
 
@@ -25,7 +25,7 @@ public class euv extends fxw implements fxx {
    }
 
    @Nullable
-   public euy a(ejk $$0) {
+   public euy a(ejj $$0) {
       if ($$0.c() != this.g) {
          return null;
       } else {
@@ -78,7 +78,7 @@ public class euv extends fxw implements fxx {
       }
 
       @Nullable
-      euv.a a(ejk $$0) {
+      euv.a a(ejj $$0) {
          if (this.e != null && this.f != null) {
             euv.a $$1 = this.e.a($$0);
             if ($$1 == null) {

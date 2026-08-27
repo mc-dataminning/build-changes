@@ -7,7 +7,7 @@ import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
 public class bht {
-   private final Map<bka, bho> a = Maps.newHashMap();
+   private final Map<bjz, bho> a = Maps.newHashMap();
    private final bhu b;
    private final int c;
    @Nullable
@@ -66,7 +66,7 @@ public class bht {
       return this.c;
    }
 
-   public bht a(bka $$0, String $$1, double $$2, bkd.a $$3) {
+   public bht a(bjz $$0, String $$1, double $$2, bkc.a $$3) {
       this.a.put($$0, new bht.a(UUID.fromString($$1), $$2, $$3));
       return this;
    }
@@ -76,22 +76,22 @@ public class bht {
       return this;
    }
 
-   public Map<bka, bho> h() {
+   public Map<bjz, bho> h() {
       return this.a;
    }
 
-   public void a(bkc $$0) {
-      for (Entry<bka, bho> $$1 : this.a.entrySet()) {
-         bkb $$2 = $$0.a($$1.getKey());
+   public void a(bkb $$0) {
+      for (Entry<bjz, bho> $$1 : this.a.entrySet()) {
+         bka $$2 = $$0.a($$1.getKey());
          if ($$2 != null) {
             $$2.b($$1.getValue().a());
          }
       }
    }
 
-   public void a(bkc $$0, int $$1) {
-      for (Entry<bka, bho> $$2 : this.a.entrySet()) {
-         bkb $$3 = $$0.a($$2.getKey());
+   public void a(bkb $$0, int $$1) {
+      for (Entry<bjz, bho> $$2 : this.a.entrySet()) {
+         bka $$3 = $$0.a($$2.getKey());
          if ($$3 != null) {
             $$3.b($$2.getValue().a());
             $$3.c($$2.getValue().a($$1));
@@ -111,9 +111,9 @@ public class bht {
    class a implements bho {
       private final UUID b;
       private final double c;
-      private final bkd.a d;
+      private final bkc.a d;
 
-      public a(UUID $$0, double $$1, bkd.a $$2) {
+      public a(UUID $$0, double $$1, bkc.a $$2) {
          this.b = $$0;
          this.c = $$1;
          this.d = $$2;
@@ -125,8 +125,8 @@ public class bht {
       }
 
       @Override
-      public bkd a(int $$0) {
-         return new bkd(this.b, bht.this.d() + " " + $$0, this.c * (double)($$0 + 1), this.d);
+      public bkc a(int $$0) {
+         return new bkc(this.b, bht.this.d() + " " + $$0, this.c * (double)($$0 + 1), this.d);
       }
    }
 }

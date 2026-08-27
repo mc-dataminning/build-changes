@@ -1,45 +1,56 @@
-public abstract class fmb extends flo {
-   protected fyl E;
+public class fmb extends fls {
+   private final fmf b;
+   protected boolean a;
 
-   protected fmb(fii $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-   }
-
-   protected fmb(fii $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+   fmb(fin $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fmf $$7) {
       super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   protected void a(fyl $$0) {
-      this.E = $$0;
-   }
-
-   @Override
-   protected float c() {
-      return this.E.c();
+      this.b = $$7;
+      this.d(1.5F);
+      this.b($$7);
    }
 
    @Override
-   protected float d() {
-      return this.E.d();
+   public int a(float $$0) {
+      return this.a ? 240 : super.a($$0);
    }
 
    @Override
-   protected float e() {
-      return this.E.g();
+   public flo b() {
+      return flo.c;
    }
 
    @Override
-   protected float f() {
-      return this.E.h();
+   public void a() {
+      super.a();
+      this.b(this.b);
    }
 
-   public void a(flw $$0) {
-      this.a($$0.a(this.r));
+   public static class a implements fln<iy> {
+      private final fmf a;
+
+      public a(fmf $$0) {
+         this.a = $$0;
+      }
+
+      public flk a(iy $$0, fin $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fmb $$8 = new fmb($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.a = true;
+         return $$8;
+      }
    }
 
-   public void b(flw $$0) {
-      if (!this.o) {
-         this.a($$0.a(this.s, this.t));
+   public static class b implements fln<iy> {
+      private final fmf a;
+
+      public b(fmf $$0) {
+         this.a = $$0;
+      }
+
+      public flk a(iy $$0, fin $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fmb $$8 = new fmb($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         return $$8;
       }
    }
 }

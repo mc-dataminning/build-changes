@@ -4,9 +4,9 @@ public class xm implements ux<wp> {
    private final int c;
    private final int d;
    private final int e;
-   private final ciy f;
+   private final cix f;
 
-   public xm(int $$0, int $$1, int $$2, ciy $$3) {
+   public xm(int $$0, int $$1, int $$2, cix $$3) {
       this.c = $$0;
       this.d = $$1;
       this.e = $$2;
@@ -40,7 +40,7 @@ public class xm implements ux<wp> {
       return this.e;
    }
 
-   public ciy e() {
+   public cix e() {
       return this.f;
    }
 

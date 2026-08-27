@@ -1,11 +1,20 @@
-public class fuy extends ftu<bwc, fgs<bwc>> {
-   private static final aer a = new aer("textures/entity/tadpole/tadpole.png");
+public class fuy extends fto<byj, fgo<byj>> {
+   private static final aer a = new aer("textures/entity/skeleton/skeleton.png");
 
-   public fuy(fso.a $$0) {
-      super($$0, new fgs<>($$0.a(fhm.bz)), 0.14F);
+   public fuy(fsx.a $$0) {
+      this($$0, fhr.bh, fhr.bj, fhr.bk);
    }
 
-   public aer a(bwc $$0) {
+   public fuy(fsx.a $$0, fhq $$1, fhq $$2, fhq $$3) {
+      super($$0, new fgo<>($$0.a($$1)), 0.5F);
+      this.a(new fwv<>(this, new fgo($$0.a($$2)), new fgo($$0.a($$3)), $$0.g()));
+   }
+
+   public aer a(byj $$0) {
       return a;
+   }
+
+   protected boolean b(byj $$0) {
+      return $$0.ga();
    }
 }

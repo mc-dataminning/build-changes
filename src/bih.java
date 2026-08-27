@@ -47,7 +47,7 @@ public abstract class bih extends bii {
    private long aR = -2147483648L;
    private int aS;
    private float aT;
-   private egz aU;
+   private egy aU;
    protected boolean o;
    private boolean aV;
    private boolean aW;
@@ -56,7 +56,7 @@ public abstract class bih extends bii {
    @Nullable
    private bih.j aY;
 
-   public bih(bim<?> $$0, cpm $$1) {
+   public bih(bim<?> $$0, cpl $$1) {
       super($$0, $$1);
       this.af = true;
       this.at = true;
@@ -247,13 +247,13 @@ public abstract class bih extends bii {
    }
 
    @Override
-   public egz k_() {
+   public egy k_() {
       return this.aU;
    }
 
    @Override
-   public eai l_() {
-      return eai.d;
+   public eah l_() {
+      return eah.d;
    }
 
    @Override
@@ -388,7 +388,7 @@ public abstract class bih extends bii {
          double $$3 = this.dp();
          double $$4 = this.dr();
          double $$5 = this.dv();
-         this.aU = new egz($$3 - (double)$$2, $$4, $$5 - (double)$$2, $$3 + (double)$$2, $$4 + (double)$$1, $$5 + (double)$$2);
+         this.aU = new egy($$3 - (double)$$2, $$4, $$5 - (double)$$2, $$3 + (double)$$2, $$4 + (double)$$1, $$5 + (double)$$2);
       } else {
          this.at = true;
       }
@@ -444,18 +444,18 @@ public abstract class bih extends bii {
 
    public static class b extends bih {
       public static final String p = "block_state";
-      private static final adz<dfa> q = aec.a(bih.b.class, aeb.i);
+      private static final adz<dez> q = aec.a(bih.b.class, aeb.i);
       @Nullable
       private bih.b.a r;
 
-      public b(bim<?> $$0, cpm $$1) {
+      public b(bim<?> $$0, cpl $$1) {
          super($$0, $$1);
       }
 
       @Override
       protected void a_() {
          super.a_();
-         this.an.a(q, csn.a.n());
+         this.an.a(q, csm.a.n());
       }
 
       @Override
@@ -466,11 +466,11 @@ public abstract class bih extends bii {
          }
       }
 
-      private dfa o() {
+      private dez o() {
          return this.an.b(q);
       }
 
-      private void c(dfa $$0) {
+      private void c(dez $$0) {
          this.an.b(q, $$0);
       }
 
@@ -496,7 +496,7 @@ public abstract class bih extends bii {
          this.r = new bih.b.a(this.o());
       }
 
-      public static record a(dfa a) {
+      public static record a(dez a) {
       }
    }
 
@@ -537,16 +537,16 @@ public abstract class bih extends bii {
    public static class g extends bih {
       private static final String p = "item";
       private static final String q = "item_display";
-      private static final adz<ciy> r = aec.a(bih.g.class, aeb.h);
+      private static final adz<cix> r = aec.a(bih.g.class, aeb.h);
       private static final adz<Byte> s = aec.a(bih.g.class, aeb.a);
-      private final bjr t = new bjr() {
+      private final bjq t = new bjq() {
          @Override
-         public ciy a() {
+         public cix a() {
             return g.this.o();
          }
 
          @Override
-         public boolean a(ciy $$0) {
+         public boolean a(cix $$0) {
             g.this.a($$0);
             return true;
          }
@@ -554,15 +554,15 @@ public abstract class bih extends bii {
       @Nullable
       private bih.g.a u;
 
-      public g(bim<?> $$0, cpm $$1) {
+      public g(bim<?> $$0, cpl $$1) {
          super($$0, $$1);
       }
 
       @Override
       protected void a_() {
          super.a_();
-         this.an.a(r, ciy.b);
-         this.an.a(s, civ.a.a());
+         this.an.a(r, cix.b);
+         this.an.a(s, ciu.a.a());
       }
 
       @Override
@@ -573,28 +573,28 @@ public abstract class bih extends bii {
          }
       }
 
-      ciy o() {
+      cix o() {
          return this.an.b(r);
       }
 
-      void a(ciy $$0) {
+      void a(cix $$0) {
          this.an.b(r, $$0);
       }
 
-      private void a(civ $$0) {
+      private void a(ciu $$0) {
          this.an.b(s, $$0.a());
       }
 
-      private civ p() {
-         return civ.k.apply(this.an.b(s));
+      private ciu p() {
+         return ciu.k.apply(this.an.b(s));
       }
 
       @Override
       protected void a(qr $$0) {
          super.a($$0);
-         this.a(ciy.a($$0.p("item")));
+         this.a(cix.a($$0.p("item")));
          if ($$0.b("item_display", 8)) {
-            civ.j.decode(rc.a, $$0.c("item_display")).resultOrPartial(ac.a("Display entity", bih.p::error)).ifPresent($$0x -> this.a((civ)$$0x.getFirst()));
+            ciu.j.decode(rc.a, $$0.c("item_display")).resultOrPartial(ac.a("Display entity", bih.p::error)).ifPresent($$0x -> this.a((ciu)$$0x.getFirst()));
          }
       }
 
@@ -602,12 +602,12 @@ public abstract class bih extends bii {
       protected void b(qr $$0) {
          super.b($$0);
          $$0.a("item", this.o().b(new qr()));
-         civ.j.encodeStart(rc.a, this.p()).result().ifPresent($$1 -> $$0.a("item_display", $$1));
+         ciu.j.encodeStart(rc.a, this.p()).result().ifPresent($$1 -> $$0.a("item_display", $$1));
       }
 
       @Override
-      public bjr a_(int $$0) {
-         return $$0 == 0 ? this.t : bjr.b;
+      public bjq a_(int $$0) {
+         return $$0 == 0 ? this.t : bjq.b;
       }
 
       @Nullable
@@ -620,7 +620,7 @@ public abstract class bih extends bii {
          this.u = new bih.g.a(this.o(), this.p());
       }
 
-      public static record a(ciy a, civ b) {
+      public static record a(cix a, ciu b) {
       }
    }
 
@@ -695,7 +695,7 @@ public abstract class bih extends bii {
       @Nullable
       private bih.l.e aT;
 
-      public l(bim<?> $$0, cpm $$1) {
+      public l(bim<?> $$0, cpl $$1) {
          super($$0, $$1);
       }
 

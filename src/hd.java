@@ -4,21 +4,21 @@ import java.util.Objects;
 
 public final class hd {
    public static final Codec<hd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(cpm.g.fieldOf("dimension").forGetter(hd::a), gu.a.fieldOf("pos").forGetter(hd::b)).apply($$0, hd::a)
+      $$0 -> $$0.group(cpl.g.fieldOf("dimension").forGetter(hd::a), gu.a.fieldOf("pos").forGetter(hd::b)).apply($$0, hd::a)
    );
-   private final aeq<cpm> b;
+   private final aeq<cpl> b;
    private final gu c;
 
-   private hd(aeq<cpm> $$0, gu $$1) {
+   private hd(aeq<cpl> $$0, gu $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   public static hd a(aeq<cpm> $$0, gu $$1) {
+   public static hd a(aeq<cpl> $$0, gu $$1) {
       return new hd($$0, $$1);
    }
 
-   public aeq<cpm> a() {
+   public aeq<cpl> a() {
       return this.b;
    }
 

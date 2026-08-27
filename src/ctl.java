@@ -1,60 +1,57 @@
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class ctl extends cyx implements czn {
-   public static final dfr a = dfq.C;
-   protected static final float b = 6.5F;
-   protected static final float c = 9.5F;
-   protected static final ehx d = csm.a(6.5, 0.0, 6.5, 9.5, 16.0, 9.5);
-   protected static final ehx e = csm.a(6.5, 6.5, 0.0, 9.5, 9.5, 16.0);
-   protected static final ehx f = csm.a(0.0, 6.5, 6.5, 16.0, 9.5, 9.5);
+public interface ctl<T extends Enum<T>> {
+   int w_ = 4;
 
-   public ctl(dez.d $$0) {
-      super($$0);
-      this.k(this.C.b().a(a, Boolean.valueOf(false)).a(g, ha.a.b));
-   }
+   Optional<dez> i_(dez var1);
 
-   @Override
-   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
-      switch ((ha.a)$$0.c(g)) {
-         case a:
-         default:
-            return f;
-         case c:
-            return e;
-         case b:
-            return d;
+   float a();
+
+   default void a_(dez $$0, akk $$1, gu $$2, aru $$3) {
+      float $$4 = 0.05688889F;
+      if ($$3.i() < 0.05688889F) {
+         this.c($$0, $$1, $$2, $$3);
       }
    }
 
-   @Nullable
-   @Override
-   public dfa a(clg $$0) {
-      ead $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == eae.c;
-      return super.a($$0).a(a, Boolean.valueOf($$2));
-   }
+   T b();
 
-   @Override
-   public dfa a(dfa $$0, ha $$1, dfa $$2, cpn $$3, gu $$4, gu $$5) {
-      if ($$0.c(a)) {
-         $$3.a($$4, eae.c, eae.c.a($$3));
+   default void c(dez $$0, akk $$1, gu $$2, aru $$3) {
+      int $$4 = this.b().ordinal();
+      int $$5 = 0;
+      int $$6 = 0;
+
+      for (gu $$7 : gu.a($$2, 4, 4, 4)) {
+         int $$8 = $$7.k($$2);
+         if ($$8 > 4) {
+            break;
+         }
+
+         if (!$$7.equals($$2)) {
+            dez $$9 = $$1.a_($$7);
+            csl $$10 = $$9.b();
+            if ($$10 instanceof ctl) {
+               Enum<?> $$11 = ((ctl)$$10).b();
+               if (this.b().getClass() == $$11.getClass()) {
+                  int $$12 = $$11.ordinal();
+                  if ($$12 < $$4) {
+                     return;
+                  }
+
+                  if ($$12 > $$4) {
+                     $$6++;
+                  } else {
+                     $$5++;
+                  }
+               }
+            }
+         }
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected void a(dfb.a<csm, dfa> $$0) {
-      $$0.a(a).a(g);
-   }
-
-   @Override
-   public ead c_(dfa $$0) {
-      return $$0.c(a) ? eae.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public boolean a(dfa $$0, cos $$1, gu $$2, eat $$3) {
-      return false;
+      float $$13 = (float)($$6 + 1) / (float)($$6 + $$5 + 1);
+      float $$14 = $$13 * $$13 * this.a();
+      if ($$3.i() < $$14) {
+         this.i_($$0).ifPresent($$2x -> $$1.b($$2, $$2x));
+      }
    }
 }

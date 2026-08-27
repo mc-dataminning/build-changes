@@ -1,120 +1,146 @@
-import com.mojang.logging.LogUtils;
-import java.util.Objects;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
-
-public class dcv extends dcm implements bgj {
-   public static final int c = 6;
-   private static final Logger d = LogUtils.getLogger();
-   private final hn<ciy> e = hn.a(6, ciy.b);
-   private int f = -1;
-
-   public dcv(gu $$0, dfa $$1) {
-      super(dco.M, $$0, $$1);
-   }
-
-   private void c(int $$0) {
-      if ($$0 >= 0 && $$0 < 6) {
-         this.f = $$0;
-         dfa $$1 = this.q();
-
-         for (int $$2 = 0; $$2 < ctp.b.size(); $$2++) {
-            boolean $$3 = !this.a($$2).b();
-            dfr $$4 = ctp.b.get($$2);
-            $$1 = $$1.a($$4, Boolean.valueOf($$3));
-         }
-
-         Objects.requireNonNull(this.o).a(this.p, $$1, 3);
-         this.o.a(djk.c, this.p, djk.a.a($$1));
-      } else {
-         d.error("Expected slot 0-5, got {}", $$0);
+public class dcv extends dcl {
+   private boolean a;
+   private boolean b;
+   private boolean c;
+   private final col d = new col() {
+      @Override
+      public void a(String $$0) {
+         super.a($$0);
+         dcv.this.e();
       }
-   }
 
-   @Override
-   public void a(qr $$0) {
-      this.e.clear();
-      bgk.b($$0, this.e);
-      this.f = $$0.h("last_interacted_slot");
+      @Override
+      public akk e() {
+         return (akk)dcv.this.o;
+      }
+
+      @Override
+      public void f() {
+         dez $$0 = dcv.this.o.a_(dcv.this.p);
+         this.e().a(dcv.this.p, $$0, $$0, 3);
+      }
+
+      @Override
+      public ehd g() {
+         return ehd.b(dcv.this.p);
+      }
+
+      @Override
+      public dr i() {
+         ha $$0 = dcv.this.q().c(cts.a);
+         return new dr(this, ehd.b(dcv.this.p), new ehc(0.0F, $$0.p()), this.e(), 2, this.n().getString(), this.n(), this.e().n(), null);
+      }
+
+      @Override
+      public boolean j() {
+         return !dcv.this.r();
+      }
+   };
+
+   public dcv(gu $$0, dez $$1) {
+      super(dcn.w, $$0, $$1);
    }
 
    @Override
    protected void b(qr $$0) {
-      bgk.a($$0, this.e, true);
-      $$0.a("last_interacted_slot", this.f);
-   }
-
-   public int f() {
-      return (int)this.e.stream().filter(Predicate.not(ciy::b)).count();
-   }
-
-   @Override
-   public void a() {
-      this.e.clear();
+      super.b($$0);
+      this.d.a($$0);
+      $$0.a("powered", this.d());
+      $$0.a("conditionMet", this.i());
+      $$0.a("auto", this.f());
    }
 
    @Override
-   public int b() {
-      return 6;
+   public void a(qr $$0) {
+      super.a($$0);
+      this.d.b($$0);
+      this.a = $$0.q("powered");
+      this.c = $$0.q("conditionMet");
+      this.b($$0.q("auto"));
    }
 
    @Override
-   public boolean ab_() {
-      return this.e.stream().allMatch(ciy::b);
+   public boolean t() {
+      return true;
    }
 
-   @Override
-   public ciy a(int $$0) {
-      return this.e.get($$0);
+   public col c() {
+      return this.d;
    }
 
-   @Override
-   public ciy a(int $$0, int $$1) {
-      ciy $$2 = Objects.requireNonNullElse(this.e.get($$0), ciy.b);
-      this.e.set($$0, ciy.b);
-      if (!$$2.b()) {
-         this.c($$0);
-      }
-
-      return $$2;
+   public void a(boolean $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public ciy b(int $$0) {
-      return this.a($$0, 1);
+   public boolean d() {
+      return this.a;
    }
 
-   @Override
-   public void a(int $$0, ciy $$1) {
-      if ($$1.a(apt.av)) {
-         this.e.set($$0, $$1);
-         this.c($$0);
-      } else if ($$1.b()) {
-         this.a($$0, 1);
+   public boolean f() {
+      return this.b;
+   }
+
+   public void b(boolean $$0) {
+      boolean $$1 = this.b;
+      this.b = $$0;
+      if (!$$1 && $$0 && !this.a && this.o != null && this.v() != dcv.a.a) {
+         this.x();
       }
    }
 
-   @Override
-   public boolean a(bgj $$0, int $$1, ciy $$2) {
-      return $$0.a_($$2x -> $$2x.b() ? true : ciy.c($$2, $$2x) && $$2x.L() + $$2.L() <= Math.min($$2x.g(), $$0.ac_()));
+   public void g() {
+      dcv.a $$0 = this.v();
+      if ($$0 == dcv.a.b && (this.a || this.b) && this.o != null) {
+         this.x();
+      }
    }
 
-   @Override
-   public int ac_() {
-      return 1;
+   private void x() {
+      csl $$0 = this.q().b();
+      if ($$0 instanceof cts) {
+         this.j();
+         this.o.a(this.p, $$0, 1);
+      }
    }
 
-   @Override
-   public boolean a(cbn $$0) {
-      return bgj.a(this, $$0);
+   public boolean i() {
+      return this.c;
    }
 
-   @Override
-   public boolean b(int $$0, ciy $$1) {
-      return $$1.a(apt.av) && this.a($$0).b();
+   public boolean j() {
+      this.c = true;
+      if (this.w()) {
+         gu $$0 = this.p.a(this.o.a_(this.p).c(cts.a).g());
+         if (this.o.a_($$0).b() instanceof cts) {
+            dcl $$1 = this.o.c_($$0);
+            this.c = $$1 instanceof dcv && ((dcv)$$1).c().k() > 0;
+         } else {
+            this.c = false;
+         }
+      }
+
+      return this.c;
    }
 
-   public int g() {
-      return this.f;
+   public dcv.a v() {
+      dez $$0 = this.q();
+      if ($$0.a(csm.fN)) {
+         return dcv.a.c;
+      } else if ($$0.a(csm.kG)) {
+         return dcv.a.b;
+      } else {
+         return $$0.a(csm.kH) ? dcv.a.a : dcv.a.c;
+      }
+   }
+
+   public boolean w() {
+      dez $$0 = this.o.a_(this.p());
+      return $$0.b() instanceof cts ? $$0.c(cts.b) : false;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

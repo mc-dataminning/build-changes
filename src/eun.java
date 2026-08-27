@@ -2,7 +2,7 @@ public interface eun {
    Object b = new Object();
    int c = 32;
 
-   eun.a a(erw var1, euo var2, long var3);
+   eun.a a(erv var1, euo var2, long var3);
 
    default Object d() {
       return b;
@@ -21,8 +21,8 @@ public interface eun {
    }
 
    public static enum a {
-      a(aow.yw),
-      b(aow.yx);
+      a(aow.yB),
+      b(aow.yC);
 
       private final aov c;
 
@@ -30,8 +30,8 @@ public interface eun {
          this.c = $$0;
       }
 
-      public void a(gcx $$0) {
-         $$0.a(gbo.a(this.c, 1.0F, 1.0F));
+      public void a(gdg $$0) {
+         $$0.a(gbx.a(this.c, 1.0F, 1.0F));
       }
    }
 }

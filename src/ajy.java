@@ -1,23 +1,23 @@
-public abstract class ajy extends dzp {
+public abstract class ajy extends dzo {
    protected ajy(int $$0, int $$1, int $$2) {
       super($$0, $$1, $$2);
    }
 
    @Override
    protected boolean a(long $$0) {
-      return $$0 == cot.a;
+      return $$0 == cos.a;
    }
 
    @Override
    protected void a(long $$0, int $$1, boolean $$2) {
       if (!$$2 || $$1 < this.f - 2) {
-         cot $$3 = new cot($$0);
+         cos $$3 = new cos($$0);
          int $$4 = $$3.e;
          int $$5 = $$3.f;
 
          for (int $$6 = -1; $$6 <= 1; $$6++) {
             for (int $$7 = -1; $$7 <= 1; $$7++) {
-               long $$8 = cot.c($$4 + $$6, $$5 + $$7);
+               long $$8 = cos.c($$4 + $$6, $$5 + $$7);
                if ($$8 != $$0) {
                   this.b($$0, $$8, $$1, $$2);
                }
@@ -29,15 +29,15 @@ public abstract class ajy extends dzp {
    @Override
    protected int a(long $$0, long $$1, int $$2) {
       int $$3 = $$2;
-      cot $$4 = new cot($$0);
+      cos $$4 = new cos($$0);
       int $$5 = $$4.e;
       int $$6 = $$4.f;
 
       for (int $$7 = -1; $$7 <= 1; $$7++) {
          for (int $$8 = -1; $$8 <= 1; $$8++) {
-            long $$9 = cot.c($$5 + $$7, $$6 + $$8);
+            long $$9 = cos.c($$5 + $$7, $$6 + $$8);
             if ($$9 == $$0) {
-               $$9 = cot.a;
+               $$9 = cos.a;
             }
 
             if ($$9 != $$1) {
@@ -58,12 +58,12 @@ public abstract class ajy extends dzp {
 
    @Override
    protected int b(long $$0, long $$1, int $$2) {
-      return $$0 == cot.a ? this.b($$1) : $$2 + 1;
+      return $$0 == cos.a ? this.b($$1) : $$2 + 1;
    }
 
    protected abstract int b(long var1);
 
    public void b(long $$0, int $$1, boolean $$2) {
-      this.a(cot.a, $$0, $$1, $$2);
+      this.a(cos.a, $$0, $$1, $$2);
    }
 }

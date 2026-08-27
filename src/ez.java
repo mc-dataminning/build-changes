@@ -1,15 +1,15 @@
 import com.mojang.brigadier.context.CommandContext;
 
-public class ez extends ex<cxh> {
+public class ez extends ex<cxg> {
    private ez() {
-      super(cxh.d, cxh::values);
+      super(cxg.d, cxg::values);
    }
 
-   public static ex<cxh> a() {
+   public static ex<cxg> a() {
       return new ez();
    }
 
-   public static cxh a(CommandContext<dr> $$0, String $$1) {
-      return (cxh)$$0.getArgument($$1, cxh.class);
+   public static cxg a(CommandContext<dr> $$0, String $$1) {
+      return (cxg)$$0.getArgument($$1, cxg.class);
    }
 }

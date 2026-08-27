@@ -1,104 +1,30 @@
-public interface eld extends elk {
-   elm i();
+import com.google.common.collect.ImmutableMap;
 
-   void f();
-
-   void a(int var1, byte var2);
-
-   void a(int var1, short var2);
-
-   void a(int var1, float var2);
-
-   @Override
-   default elk a(double $$0, double $$1, double $$2) {
-      if (this.i().b() != elm.b.a) {
-         return this;
-      } else if (this.i().a() == elm.a.a && this.i().c() == 3) {
-         this.a(0, (float)$$0);
-         this.a(4, (float)$$1);
-         this.a(8, (float)$$2);
-         this.f();
-         return this;
-      } else {
-         throw new IllegalStateException();
-      }
-   }
-
-   @Override
-   default elk a(int $$0, int $$1, int $$2, int $$3) {
-      elm $$4 = this.i();
-      if ($$4.b() != elm.b.c) {
-         return this;
-      } else if ($$4.a() == elm.a.b && $$4.c() == 4) {
-         this.a(0, (byte)$$0);
-         this.a(1, (byte)$$1);
-         this.a(2, (byte)$$2);
-         this.a(3, (byte)$$3);
-         this.f();
-         return this;
-      } else {
-         throw new IllegalStateException();
-      }
-   }
-
-   @Override
-   default elk a(float $$0, float $$1) {
-      elm $$2 = this.i();
-      if ($$2.b() == elm.b.d && $$2.d() == 0) {
-         if ($$2.a() == elm.a.a && $$2.c() == 2) {
-            this.a(0, $$0);
-            this.a(4, $$1);
-            this.f();
-            return this;
-         } else {
-            throw new IllegalStateException();
-         }
-      } else {
-         return this;
-      }
-   }
-
-   @Override
-   default elk a(int $$0, int $$1) {
-      return this.a((short)$$0, (short)$$1, 1);
-   }
-
-   @Override
-   default elk b(int $$0, int $$1) {
-      return this.a((short)$$0, (short)$$1, 2);
-   }
-
-   default elk a(short $$0, short $$1, int $$2) {
-      elm $$3 = this.i();
-      if ($$3.b() != elm.b.d || $$3.d() != $$2) {
-         return this;
-      } else if ($$3.a() == elm.a.e && $$3.c() == 2) {
-         this.a(0, $$0);
-         this.a(2, $$1);
-         this.f();
-         return this;
-      } else {
-         throw new IllegalStateException();
-      }
-   }
-
-   @Override
-   default elk a(float $$0, float $$1, float $$2) {
-      elm $$3 = this.i();
-      if ($$3.b() != elm.b.b) {
-         return this;
-      } else if ($$3.a() == elm.a.c && $$3.c() == 3) {
-         this.a(0, a($$0));
-         this.a(1, a($$1));
-         this.a(2, a($$2));
-         this.f();
-         return this;
-      } else {
-         throw new IllegalStateException();
-      }
-   }
-
-   static byte a(float $$0) {
-      return (byte)((int)(arp.a($$0, -1.0F, 1.0F) * 127.0F) & 0xFF);
-   }
+public class eld {
+   public static final ell a = new ell(0, ell.a.a, ell.b.a, 3);
+   public static final ell b = new ell(0, ell.a.b, ell.b.c, 4);
+   public static final ell c = new ell(0, ell.a.a, ell.b.d, 2);
+   public static final ell d = new ell(1, ell.a.e, ell.b.d, 2);
+   public static final ell e = new ell(2, ell.a.e, ell.b.d, 2);
+   public static final ell f = new ell(0, ell.a.c, ell.b.b, 3);
+   public static final ell g = new ell(0, ell.a.c, ell.b.e, 1);
+   public static final ell h = c;
+   public static final elk i = new elk(ImmutableMap.builder().put("Position", a).put("UV", h).put("Color", b).build());
+   public static final elk j = new elk(
+      ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV2", e).put("Normal", f).put("Padding", g).build()
+   );
+   public static final elk k = new elk(
+      ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV1", d).put("UV2", e).put("Normal", f).put("Padding", g).build()
+   );
+   public static final elk l = new elk(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).put("UV2", e).build());
+   public static final elk m = new elk(ImmutableMap.builder().put("Position", a).build());
+   public static final elk n = new elk(ImmutableMap.builder().put("Position", a).put("Color", b).build());
+   public static final elk o = new elk(ImmutableMap.builder().put("Position", a).put("Color", b).put("Normal", f).put("Padding", g).build());
+   public static final elk p = new elk(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV2", e).build());
+   public static final elk q = new elk(ImmutableMap.builder().put("Position", a).put("UV0", c).build());
+   public static final elk r = new elk(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).build());
+   public static final elk s = new elk(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).build());
+   public static final elk t = new elk(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV2", e).build());
+   public static final elk u = new elk(ImmutableMap.builder().put("Position", a).put("UV0", c).put("UV2", e).put("Color", b).build());
+   public static final elk v = new elk(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).put("Normal", f).put("Padding", g).build());
 }

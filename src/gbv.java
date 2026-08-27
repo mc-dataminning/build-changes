@@ -1,31 +1,48 @@
-public class gbv implements gbd {
-   public static final float a = 0.01F;
-   public static final float b = 0.001F;
-   public static final float c = 1.0E-4F;
-   private static final int d = 0;
-   private final fmn e;
-   private final gcx f;
-   private int g = 0;
+public class gbv extends gbl {
+   private static final float n = 0.0F;
+   private static final float o = 0.7F;
+   private static final float p = 0.0F;
+   private static final float q = 1.0F;
+   private static final float r = 0.0025F;
+   private final cdd s;
+   private float t = 0.0F;
 
-   public gbv(fmn $$0, gcx $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public gbv(cdd $$0) {
+      super(aow.ni, aox.g, gcc.t());
+      this.s = $$0;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
+      this.f = (double)((float)$$0.dp());
+      this.g = (double)((float)$$0.dr());
+      this.h = (double)((float)$$0.dv());
    }
 
    @Override
-   public void a() {
-      this.g--;
-      if (this.g <= 0 && this.e.bc()) {
-         float $$0 = this.e.dK().z.i();
-         if ($$0 < 1.0E-4F) {
-            this.g = 0;
-            this.f.a((gbt)(new gbw.a(this.e, aow.C)));
-         } else if ($$0 < 0.001F) {
-            this.g = 0;
-            this.f.a((gbt)(new gbw.a(this.e, aow.B)));
-         } else if ($$0 < 0.01F) {
-            this.g = 0;
-            this.f.a((gbt)(new gbw.a(this.e, aow.A)));
+   public boolean s() {
+      return !this.s.aS();
+   }
+
+   @Override
+   public boolean r() {
+      return true;
+   }
+
+   @Override
+   public void q() {
+      if (this.s.dF()) {
+         this.n();
+      } else {
+         this.f = (double)((float)this.s.dp());
+         this.g = (double)((float)this.s.dr());
+         this.h = (double)((float)this.s.dv());
+         float $$0 = (float)this.s.dn().h();
+         if ($$0 >= 0.01F) {
+            this.t = arp.a(this.t + 0.0025F, 0.0F, 1.0F);
+            this.d = arp.i(arp.a($$0, 0.0F, 0.5F), 0.0F, 0.7F);
+         } else {
+            this.t = 0.0F;
+            this.d = 0.0F;
          }
       }
    }

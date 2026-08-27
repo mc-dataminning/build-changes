@@ -15,33 +15,33 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class aki extends dha {
-   private static final List<dhb> b = dhb.a();
+public class aki extends dgz {
+   private static final List<dha> b = dha.a();
    private final akc c;
    final akk d;
    final Thread e;
    final akn f;
    private final aki.b g;
    public final ajv a;
-   private final ebt h;
+   private final ebs h;
    private long i;
    private boolean j = true;
    private boolean k = true;
    private static final int l = 4;
    private final long[] m = new long[4];
-   private final dhb[] n = new dhb[4];
-   private final dgw[] o = new dgw[4];
+   private final dha[] n = new dha[4];
+   private final dgv[] o = new dgv[4];
    @Nullable
    @asq
-   private cpx.d p;
+   private cpw.d p;
 
-   public aki(akk $$0, ebx.c $$1, DataFixer $$2, dyt $$3, Executor $$4, dgx $$5, int $$6, int $$7, boolean $$8, akt $$9, diq $$10, Supplier<ebt> $$11) {
+   public aki(akk $$0, ebw.c $$1, DataFixer $$2, dys $$3, Executor $$4, dgw $$5, int $$6, int $$7, boolean $$8, akt $$9, dip $$10, Supplier<ebs> $$11) {
       this.d = $$0;
       this.g = new aki.b($$0);
       this.e = Thread.currentThread();
       File $$12 = $$1.a($$0.ac()).resolve("data").toFile();
       $$12.mkdirs();
-      this.h = new ebt($$12, $$2);
+      this.h = new ebs($$12, $$2);
       this.a = new ajv($$0, $$1, $$2, $$3, $$4, this.g, this, $$5, $$9, $$10, $$11, $$6, $$8);
       this.f = this.a.e();
       this.c = this.a.j();
@@ -62,7 +62,7 @@ public class aki extends dha {
       return this.a.h();
    }
 
-   private void a(long $$0, dgw $$1, dhb $$2) {
+   private void a(long $$0, dgv $$1, dha $$2) {
       for (int $$3 = 3; $$3 > 0; $$3--) {
          this.m[$$3] = this.m[$$3 - 1];
          this.n[$$3] = this.n[$$3 - 1];
@@ -76,17 +76,17 @@ public class aki extends dha {
 
    @Nullable
    @Override
-   public dgw a(int $$0, int $$1, dhb $$2, boolean $$3) {
+   public dgv a(int $$0, int $$1, dha $$2, boolean $$3) {
       if (Thread.currentThread() != this.e) {
-         return CompletableFuture.<dgw>supplyAsync(() -> this.a($$0, $$1, $$2, $$3), this.g).join();
+         return CompletableFuture.<dgv>supplyAsync(() -> this.a($$0, $$1, $$2, $$3), this.g).join();
       } else {
          bdh $$4 = this.d.ad();
          $$4.d("getChunk");
-         long $$5 = cot.c($$0, $$1);
+         long $$5 = cos.c($$0, $$1);
 
          for (int $$6 = 0; $$6 < 4; $$6++) {
             if ($$5 == this.m[$$6] && $$2 == this.n[$$6]) {
-               dgw $$7 = this.o[$$6];
+               dgv $$7 = this.o[$$6];
                if ($$7 != null || !$$3) {
                   return $$7;
                }
@@ -94,9 +94,9 @@ public class aki extends dha {
          }
 
          $$4.d("getChunkCacheMiss");
-         CompletableFuture<Either<dgw, ajt.a>> $$8 = this.c($$0, $$1, $$2, $$3);
+         CompletableFuture<Either<dgv, ajt.a>> $$8 = this.c($$0, $$1, $$2, $$3);
          this.g.c($$8::isDone);
-         dgw $$9 = (dgw)$$8.join().map($$0x -> $$0x, $$1x -> {
+         dgv $$9 = (dgv)$$8.join().map($$0x -> $$0x, $$1x -> {
             if ($$3) {
                throw (IllegalStateException)ac.b(new IllegalStateException("Chunk not there when requested: " + $$1x));
             } else {
@@ -110,17 +110,17 @@ public class aki extends dha {
 
    @Nullable
    @Override
-   public dhh a(int $$0, int $$1) {
+   public dhg a(int $$0, int $$1) {
       if (Thread.currentThread() != this.e) {
          return null;
       } else {
          this.d.ad().d("getChunkNow");
-         long $$2 = cot.c($$0, $$1);
+         long $$2 = cos.c($$0, $$1);
 
          for (int $$3 = 0; $$3 < 4; $$3++) {
-            if ($$2 == this.m[$$3] && this.n[$$3] == dhb.n) {
-               dgw $$4 = this.o[$$3];
-               return $$4 instanceof dhh ? (dhh)$$4 : null;
+            if ($$2 == this.m[$$3] && this.n[$$3] == dha.n) {
+               dgv $$4 = this.o[$$3];
+               return $$4 instanceof dhg ? (dhg)$$4 : null;
             }
          }
 
@@ -128,15 +128,15 @@ public class aki extends dha {
          if ($$5 == null) {
             return null;
          } else {
-            Either<dgw, ajt.a> $$6 = $$5.b(dhb.n).getNow(null);
+            Either<dgv, ajt.a> $$6 = $$5.b(dha.n).getNow(null);
             if ($$6 == null) {
                return null;
             } else {
-               dgw $$7 = (dgw)$$6.left().orElse(null);
+               dgv $$7 = (dgv)$$6.left().orElse(null);
                if ($$7 != null) {
-                  this.a($$2, $$7, dhb.n);
-                  if ($$7 instanceof dhh) {
-                     return (dhh)$$7;
+                  this.a($$2, $$7, dha.n);
+                  if ($$7 instanceof dhg) {
+                     return (dhg)$$7;
                   }
                }
 
@@ -147,26 +147,26 @@ public class aki extends dha {
    }
 
    private void r() {
-      Arrays.fill(this.m, cot.a);
+      Arrays.fill(this.m, cos.a);
       Arrays.fill(this.n, null);
       Arrays.fill(this.o, null);
    }
 
-   public CompletableFuture<Either<dgw, ajt.a>> b(int $$0, int $$1, dhb $$2, boolean $$3) {
+   public CompletableFuture<Either<dgv, ajt.a>> b(int $$0, int $$1, dha $$2, boolean $$3) {
       boolean $$4 = Thread.currentThread() == this.e;
-      CompletableFuture<Either<dgw, ajt.a>> $$5;
+      CompletableFuture<Either<dgv, ajt.a>> $$5;
       if ($$4) {
          $$5 = this.c($$0, $$1, $$2, $$3);
          this.g.c($$5::isDone);
       } else {
-         $$5 = CompletableFuture.<CompletableFuture<Either<dgw, ajt.a>>>supplyAsync(() -> this.c($$0, $$1, $$2, $$3), this.g).thenCompose($$0x -> $$0x);
+         $$5 = CompletableFuture.<CompletableFuture<Either<dgv, ajt.a>>>supplyAsync(() -> this.c($$0, $$1, $$2, $$3), this.g).thenCompose($$0x -> $$0x);
       }
 
       return $$5;
    }
 
-   private CompletableFuture<Either<dgw, ajt.a>> c(int $$0, int $$1, dhb $$2, boolean $$3) {
-      cot $$4 = new cot($$0, $$1);
+   private CompletableFuture<Either<dgv, ajt.a>> c(int $$0, int $$1, dha $$2, boolean $$3) {
+      cos $$4 = new cos($$0, $$1);
       long $$5 = $$4.a();
       int $$6 = aju.a($$2);
       ajt $$7 = this.b($$5);
@@ -193,15 +193,15 @@ public class aki extends dha {
 
    @Override
    public boolean b(int $$0, int $$1) {
-      ajt $$2 = this.b(new cot($$0, $$1).a());
-      int $$3 = aju.a(dhb.n);
+      ajt $$2 = this.b(new cos($$0, $$1).a());
+      int $$3 = aju.a(dha.n);
       return !this.a($$2, $$3);
    }
 
    @Nullable
    @Override
-   public dhj c(int $$0, int $$1) {
-      long $$2 = cot.c($$0, $$1);
+   public dhi c(int $$0, int $$1) {
+      long $$2 = cos.c($$0, $$1);
       ajt $$3 = this.b($$2);
       if ($$3 == null) {
          return null;
@@ -209,13 +209,13 @@ public class aki extends dha {
          int $$4 = b.size() - 1;
 
          while (true) {
-            dhb $$5 = b.get($$4);
-            Optional<dgw> $$6 = $$3.a($$5).getNow(ajt.a).left();
+            dha $$5 = b.get($$4);
+            Optional<dgv> $$6 = $$3.a($$5).getNow(ajt.a).left();
             if ($$6.isPresent()) {
                return $$6.get();
             }
 
-            if ($$5 == dhb.k.d()) {
+            if ($$5 == dha.k.d()) {
                return null;
             }
 
@@ -224,7 +224,7 @@ public class aki extends dha {
       }
    }
 
-   public cpm c() {
+   public cpl c() {
       return this.d;
    }
 
@@ -250,7 +250,7 @@ public class aki extends dha {
       } else if (!this.d.a($$0)) {
          return false;
       } else {
-         Either<dhh, ajt.a> $$2 = $$1.a().getNow(null);
+         Either<dhg, ajt.a> $$2 = $$1.a().getNow(null);
          return $$2 != null && $$2.left().isPresent();
       }
    }
@@ -291,36 +291,36 @@ public class aki extends dha {
       if ($$2) {
          this.a.l();
       } else {
-         ebu $$3 = this.d.u_();
+         ebt $$3 = this.d.u_();
          bdh $$4 = this.d.ad();
          $$4.a("pollingChunks");
-         int $$5 = this.d.X().c(cpi.n);
+         int $$5 = this.d.X().c(cph.n);
          boolean $$6 = $$3.e() % 400L == 0L;
          $$4.a("naturalSpawnCount");
          int $$7 = this.c.b();
-         cpx.d $$8 = cpx.a($$7, this.d.y(), this::a, new cpw(this.a));
+         cpw.d $$8 = cpw.a($$7, this.d.y(), this::a, new cpv(this.a));
          this.p = $$8;
          $$4.b("filteringLoadedChunks");
          List<aki.a> $$9 = Lists.newArrayListWithCapacity($$7);
 
          for (ajt $$10 : this.a.k()) {
-            dhh $$11 = $$10.d();
+            dhg $$11 = $$10.d();
             if ($$11 != null) {
                $$9.add(new aki.a($$11, $$10));
             }
          }
 
          $$4.b("spawnAndTick");
-         boolean $$12 = this.d.X().b(cpi.e);
+         boolean $$12 = this.d.X().b(cph.e);
          Collections.shuffle($$9);
 
          for (aki.a $$13 : $$9) {
-            dhh $$14 = $$13.a;
-            cot $$15 = $$14.f();
+            dhg $$14 = $$13.a;
+            cos $$15 = $$14.f();
             if (this.d.a($$15) && this.a.c($$15)) {
                $$14.a($$1);
                if ($$12 && (this.j || this.k) && this.d.w_().a($$15)) {
-                  cpx.a(this.d, $$14, $$8, this.k, this.j, $$6);
+                  cpw.a(this.d, $$14, $$8, this.k, this.j, $$6);
                }
 
                if (this.d.a($$15.a())) {
@@ -342,7 +342,7 @@ public class aki extends dha {
       }
    }
 
-   private void a(long $$0, Consumer<dhh> $$1) {
+   private void a(long $$0, Consumer<dhg> $$1) {
       ajt $$2 = this.b($$0);
       if ($$2 != null) {
          $$2.c().getNow(ajt.c).left().ifPresent($$1);
@@ -356,18 +356,18 @@ public class aki extends dha {
 
    @VisibleForTesting
    public int f() {
-      return this.g.bn();
+      return this.g.bm();
    }
 
-   public dgx g() {
+   public dgw g() {
       return this.a.a();
    }
 
-   public dgy h() {
+   public dgx h() {
       return this.a.b();
    }
 
-   public dkx i() {
+   public dkw i() {
       return this.a.c();
    }
 
@@ -379,14 +379,14 @@ public class aki extends dha {
    public void a(gu $$0) {
       int $$1 = hx.a($$0.u());
       int $$2 = hx.a($$0.w());
-      ajt $$3 = this.b(cot.c($$1, $$2));
+      ajt $$3 = this.b(cos.c($$1, $$2));
       if ($$3 != null) {
          $$3.a($$0);
       }
    }
 
    @Override
-   public void a(cpv $$0, hx $$1) {
+   public void a(cpu $$0, hx $$1) {
       this.g.execute(() -> {
          ajt $$2 = this.b($$1.r().a());
          if ($$2 != null) {
@@ -395,16 +395,16 @@ public class aki extends dha {
       });
    }
 
-   public <T> void a(akp<T> $$0, cot $$1, int $$2, T $$3) {
+   public <T> void a(akp<T> $$0, cos $$1, int $$2, T $$3) {
       this.c.c($$0, $$1, $$2, $$3);
    }
 
-   public <T> void b(akp<T> $$0, cot $$1, int $$2, T $$3) {
+   public <T> void b(akp<T> $$0, cos $$1, int $$2, T $$3) {
       this.c.d($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public void a(cot $$0, boolean $$1) {
+   public void a(cos $$0, boolean $$1) {
       this.c.a($$0, $$1);
    }
 
@@ -444,25 +444,25 @@ public class aki extends dha {
       this.k = $$1;
    }
 
-   public String a(cot $$0) {
+   public String a(cos $$0) {
       return this.a.a($$0);
    }
 
-   public ebt k() {
+   public ebs k() {
       return this.h;
    }
 
-   public bty l() {
+   public btx l() {
       return this.a.m();
    }
 
-   public dhw m() {
+   public dhv m() {
       return this.a.p();
    }
 
    @Nullable
    @asq
-   public cpx.d n() {
+   public cpw.d n() {
       return this.p;
    }
 
@@ -470,11 +470,11 @@ public class aki extends dha {
       this.c.e();
    }
 
-   static record a(dhh a, ajt b) {
+   static record a(dhg a, ajt b) {
    }
 
    final class b extends bfg<Runnable> {
-      b(cpm $$0) {
+      b(cpl $$0) {
          super("Chunk source main thread executor for " + $$0.ac().a());
       }
 

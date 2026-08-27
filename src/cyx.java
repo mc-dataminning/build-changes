@@ -1,40 +1,105 @@
-public class cyx extends csm {
-   public static final dfy<ha.a> g = dfq.I;
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-   public cyx(dez.d $$0) {
-      super($$0);
-      this.k(this.n().a(g, ha.a.b));
+public enum cyx implements ash {
+   a("none", h.a),
+   b("clockwise_90", h.u),
+   c("180", h.c),
+   d("counterclockwise_90", h.v);
+
+   public static final Codec<cyx> e = ash.a(cyx::values);
+   private final String f;
+   private final h g;
+
+   private cyx(String $$0, h $$1) {
+      this.f = $$0;
+      this.g = $$1;
    }
 
-   @Override
-   public dfa a(dfa $$0, cyy $$1) {
-      return b($$0, $$1);
-   }
-
-   public static dfa b(dfa $$0, cyy $$1) {
-      switch ($$1) {
-         case d:
-         case b:
-            switch ((ha.a)$$0.c(g)) {
+   public cyx a(cyx $$0) {
+      switch ($$0) {
+         case c:
+            switch (this) {
                case a:
-                  return $$0.a(g, ha.a.c);
+                  return c;
+               case b:
+                  return d;
                case c:
-                  return $$0.a(g, ha.a.a);
-               default:
-                  return $$0;
+                  return a;
+               case d:
+                  return b;
             }
+         case d:
+            switch (this) {
+               case a:
+                  return d;
+               case b:
+                  return a;
+               case c:
+                  return b;
+               case d:
+                  return c;
+            }
+         case b:
+            switch (this) {
+               case a:
+                  return b;
+               case b:
+                  return c;
+               case c:
+                  return d;
+               case d:
+                  return a;
+            }
+         default:
+            return this;
+      }
+   }
+
+   public h a() {
+      return this.g;
+   }
+
+   public ha a(ha $$0) {
+      if ($$0.o() == ha.a.b) {
+         return $$0;
+      } else {
+         switch (this) {
+            case b:
+               return $$0.h();
+            case c:
+               return $$0.g();
+            case d:
+               return $$0.i();
+            default:
+               return $$0;
+         }
+      }
+   }
+
+   public int a(int $$0, int $$1) {
+      switch (this) {
+         case b:
+            return ($$0 + $$1 / 4) % $$1;
+         case c:
+            return ($$0 + $$1 / 2) % $$1;
+         case d:
+            return ($$0 + $$1 * 3 / 4) % $$1;
          default:
             return $$0;
       }
    }
 
-   @Override
-   protected void a(dfb.a<csm, dfa> $$0) {
-      $$0.a(g);
+   public static cyx a(aru $$0) {
+      return ac.a(values(), $$0);
+   }
+
+   public static List<cyx> b(aru $$0) {
+      return ac.b(values(), $$0);
    }
 
    @Override
-   public dfa a(clg $$0) {
-      return this.n().a(g, $$0.k().o());
+   public String c() {
+      return this.f;
    }
 }

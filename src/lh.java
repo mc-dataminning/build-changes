@@ -54,12 +54,12 @@ public class lh {
       return $$2;
    }
 
-   public static lh a(csm $$0) {
+   public static lh a(csl $$0) {
       aer $$1 = G($$0);
       return b($$1);
    }
 
-   public static lh b(csm $$0) {
+   public static lh b(csl $$0) {
       aer $$1 = G($$0);
       return a($$1);
    }
@@ -72,7 +72,7 @@ public class lh {
       return new lh().a(li.a, $$0);
    }
 
-   public static lh c(csm $$0) {
+   public static lh c(csl $$0) {
       return d(li.p, G($$0));
    }
 
@@ -80,7 +80,7 @@ public class lh {
       return d(li.p, $$0);
    }
 
-   public static lh d(csm $$0) {
+   public static lh d(csl $$0) {
       return d(li.q, G($$0));
    }
 
@@ -88,7 +88,7 @@ public class lh {
       return d(li.q, $$0);
    }
 
-   public static lh e(csm $$0) {
+   public static lh e(csl $$0) {
       return d(li.s, G($$0));
    }
 
@@ -96,11 +96,11 @@ public class lh {
       return d(li.s, $$0);
    }
 
-   public static lh f(csm $$0) {
+   public static lh f(csl $$0) {
       return d(li.t, G($$0));
    }
 
-   public static lh g(csm $$0) {
+   public static lh g(csl $$0) {
       return new lh().a(li.P, G($$0)).a(li.y, a($$0, "_stem"));
    }
 
@@ -108,19 +108,19 @@ public class lh {
       return d(li.t, $$0);
    }
 
-   public static lh h(csm $$0) {
+   public static lh h(csl $$0) {
       return d(li.y, G($$0));
    }
 
-   public static lh a(csm $$0, csm $$1) {
+   public static lh a(csl $$0, csl $$1) {
       return new lh().a(li.y, G($$0)).a(li.z, G($$1));
    }
 
-   public static lh i(csm $$0) {
+   public static lh i(csl $$0) {
       return d(li.u, G($$0));
    }
 
-   public static lh j(csm $$0) {
+   public static lh j(csl $$0) {
       return d(li.x, G($$0));
    }
 
@@ -128,7 +128,7 @@ public class lh {
       return d(li.A, $$0);
    }
 
-   public static lh b(csm $$0, csm $$1) {
+   public static lh b(csl $$0, csl $$1) {
       return new lh().a(li.v, G($$0)).a(li.w, a($$1, "_top"));
    }
 
@@ -136,19 +136,19 @@ public class lh {
       return new lh().a($$0, $$1);
    }
 
-   public static lh k(csm $$0) {
+   public static lh k(csl $$0) {
       return new lh().a(li.i, a($$0, "_side")).a(li.d, a($$0, "_top"));
    }
 
-   public static lh l(csm $$0) {
+   public static lh l(csl $$0) {
       return new lh().a(li.i, a($$0, "_side")).a(li.f, a($$0, "_top"));
    }
 
-   public static lh m(csm $$0) {
+   public static lh m(csl $$0) {
       return new lh().a(li.q, a($$0, "_plant")).a(li.i, a($$0, "_side")).a(li.f, a($$0, "_top"));
    }
 
-   public static lh n(csm $$0) {
+   public static lh n(csl $$0) {
       return new lh().a(li.i, G($$0)).a(li.d, a($$0, "_top")).a(li.c, G($$0));
    }
 
@@ -156,24 +156,24 @@ public class lh {
       return new lh().a(li.i, $$0).a(li.d, $$1);
    }
 
-   public static lh o(csm $$0) {
+   public static lh o(csl $$0) {
       return new lh().a(li.b, G($$0)).a(li.i, a($$0, "_side")).a(li.f, a($$0, "_top"));
    }
 
-   public static lh p(csm $$0) {
+   public static lh p(csl $$0) {
       return new lh().a(li.b, G($$0)).a(li.c, a($$0, "_particle"));
    }
 
-   public static lh q(csm $$0) {
+   public static lh q(csl $$0) {
       return new lh().a(li.i, a($$0, "_side")).a(li.f, a($$0, "_top")).a(li.e, a($$0, "_bottom"));
    }
 
-   public static lh r(csm $$0) {
+   public static lh r(csl $$0) {
       aer $$1 = G($$0);
       return new lh().a(li.r, $$1).a(li.i, $$1).a(li.f, a($$0, "_top")).a(li.e, a($$0, "_bottom"));
    }
 
-   public static lh s(csm $$0) {
+   public static lh s(csl $$0) {
       aer $$1 = G($$0);
       return new lh().a(li.b, $$1).a(li.r, $$1).a(li.i, $$1).a(li.d, a($$0, "_top"));
    }
@@ -182,11 +182,11 @@ public class lh {
       return new lh().a(li.f, $$0).a(li.e, $$1);
    }
 
-   public static lh t(csm $$0) {
+   public static lh t(csl $$0) {
       return new lh().a(li.f, a($$0, "_top")).a(li.e, a($$0, "_bottom"));
    }
 
-   public static lh u(csm $$0) {
+   public static lh u(csl $$0) {
       return new lh().a(li.c, G($$0));
    }
 
@@ -194,19 +194,19 @@ public class lh {
       return new lh().a(li.c, $$0);
    }
 
-   public static lh v(csm $$0) {
+   public static lh v(csl $$0) {
       return new lh().a(li.C, a($$0, "_0"));
    }
 
-   public static lh w(csm $$0) {
+   public static lh w(csl $$0) {
       return new lh().a(li.C, a($$0, "_1"));
    }
 
-   public static lh x(csm $$0) {
+   public static lh x(csl $$0) {
       return new lh().a(li.D, G($$0));
    }
 
-   public static lh y(csm $$0) {
+   public static lh y(csl $$0) {
       return new lh().a(li.G, G($$0));
    }
 
@@ -214,31 +214,31 @@ public class lh {
       return new lh().a(li.G, $$0);
    }
 
-   public static lh a(cit $$0) {
+   public static lh a(cis $$0) {
       return new lh().a(li.c, c($$0));
    }
 
-   public static lh z(csm $$0) {
+   public static lh z(csl $$0) {
       return new lh().a(li.i, a($$0, "_side")).a(li.g, a($$0, "_front")).a(li.h, a($$0, "_back"));
    }
 
-   public static lh A(csm $$0) {
+   public static lh A(csl $$0) {
       return new lh().a(li.i, a($$0, "_side")).a(li.g, a($$0, "_front")).a(li.f, a($$0, "_top")).a(li.e, a($$0, "_bottom"));
    }
 
-   public static lh B(csm $$0) {
+   public static lh B(csl $$0) {
       return new lh().a(li.i, a($$0, "_side")).a(li.g, a($$0, "_front")).a(li.f, a($$0, "_top"));
    }
 
-   public static lh C(csm $$0) {
+   public static lh C(csl $$0) {
       return new lh().a(li.i, a($$0, "_side")).a(li.g, a($$0, "_front")).a(li.d, a($$0, "_end"));
    }
 
-   public static lh D(csm $$0) {
+   public static lh D(csl $$0) {
       return new lh().a(li.f, a($$0, "_top"));
    }
 
-   public static lh c(csm $$0, csm $$1) {
+   public static lh c(csl $$0, csl $$1) {
       return new lh()
          .a(li.c, a($$0, "_front"))
          .a(li.o, G($$1))
@@ -249,7 +249,7 @@ public class lh {
          .a(li.m, a($$0, "_front"));
    }
 
-   public static lh d(csm $$0, csm $$1) {
+   public static lh d(csl $$0, csl $$1) {
       return new lh()
          .a(li.c, a($$0, "_front"))
          .a(li.o, G($$1))
@@ -262,53 +262,53 @@ public class lh {
 
    public static lh a(String $$0) {
       return new lh()
-         .a(li.c, a(csn.mg, $$0 + "_north"))
-         .a(li.e, a(csn.mg, $$0 + "_bottom"))
-         .a(li.f, a(csn.mg, $$0 + "_top"))
-         .a(li.j, a(csn.mg, $$0 + "_north"))
-         .a(li.k, a(csn.mg, $$0 + "_south"))
-         .a(li.l, a(csn.mg, $$0 + "_east"))
-         .a(li.m, a(csn.mg, $$0 + "_west"));
+         .a(li.c, a(csm.mg, $$0 + "_north"))
+         .a(li.e, a(csm.mg, $$0 + "_bottom"))
+         .a(li.f, a(csm.mg, $$0 + "_top"))
+         .a(li.j, a(csm.mg, $$0 + "_north"))
+         .a(li.k, a(csm.mg, $$0 + "_south"))
+         .a(li.l, a(csm.mg, $$0 + "_east"))
+         .a(li.m, a(csm.mg, $$0 + "_west"));
    }
 
-   public static lh E(csm $$0) {
+   public static lh E(csl $$0) {
       return new lh().a(li.K, a($$0, "_log_lit")).a(li.C, a($$0, "_fire"));
    }
 
-   public static lh a(csm $$0, boolean $$1) {
+   public static lh a(csl $$0, boolean $$1) {
       return new lh()
-         .a(li.c, a(csn.eh, "_side"))
-         .a(li.e, a(csn.eh, "_bottom"))
-         .a(li.f, a(csn.eh, "_top"))
-         .a(li.i, a(csn.eh, "_side"))
+         .a(li.c, a(csm.eh, "_side"))
+         .a(li.e, a(csm.eh, "_bottom"))
+         .a(li.f, a(csm.eh, "_top"))
+         .a(li.i, a(csm.eh, "_side"))
          .a(li.L, a($$0, $$1 ? "_lit" : ""));
    }
 
    public static lh j(aer $$0) {
       return new lh()
-         .a(li.c, a(csn.ft, "_side"))
-         .a(li.i, a(csn.ft, "_side"))
-         .a(li.f, a(csn.ft, "_top"))
-         .a(li.e, a(csn.ft, "_bottom"))
-         .a(li.M, a(csn.ft, "_inner"))
+         .a(li.c, a(csm.ft, "_side"))
+         .a(li.i, a(csm.ft, "_side"))
+         .a(li.f, a(csm.ft, "_top"))
+         .a(li.e, a(csm.ft, "_bottom"))
+         .a(li.M, a(csm.ft, "_inner"))
          .a(li.N, $$0);
    }
 
    public static lh a(boolean $$0) {
       String $$1 = $$0 ? "_can_summon" : "";
       return new lh()
-         .a(li.c, a(csn.qI, "_bottom"))
-         .a(li.i, a(csn.qI, "_side"))
-         .a(li.f, a(csn.qI, "_top"))
-         .a(li.O, a(csn.qI, $$1 + "_inner_top"))
-         .a(li.e, a(csn.qI, "_bottom"));
+         .a(li.c, a(csm.qI, "_bottom"))
+         .a(li.i, a(csm.qI, "_side"))
+         .a(li.f, a(csm.qI, "_top"))
+         .a(li.O, a(csm.qI, $$1 + "_inner_top"))
+         .a(li.e, a(csm.qI, "_bottom"));
    }
 
-   public static lh b(cit $$0) {
+   public static lh b(cis $$0) {
       return new lh().a(li.H, c($$0));
    }
 
-   public static lh F(csm $$0) {
+   public static lh F(csl $$0) {
       return new lh().a(li.H, G($$0));
    }
 
@@ -324,22 +324,22 @@ public class lh {
       return new lh().a(li.H, $$0).a(li.I, $$1).a(li.J, $$2);
    }
 
-   public static aer G(csm $$0) {
+   public static aer G(csl $$0) {
       aer $$1 = jb.f.b($$0);
       return $$1.d("block/");
    }
 
-   public static aer a(csm $$0, String $$1) {
+   public static aer a(csl $$0, String $$1) {
       aer $$2 = jb.f.b($$0);
       return $$2.a((UnaryOperator<String>)($$1x -> "block/" + $$1x + $$1));
    }
 
-   public static aer c(cit $$0) {
+   public static aer c(cis $$0) {
       aer $$1 = jb.i.b($$0);
       return $$1.d("item/");
    }
 
-   public static aer a(cit $$0, String $$1) {
+   public static aer a(cis $$0, String $$1) {
       aer $$2 = jb.i.b($$0);
       return $$2.a((UnaryOperator<String>)($$1x -> "item/" + $$1x + $$1));
    }

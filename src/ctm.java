@@ -1,57 +1,17 @@
-import java.util.Optional;
-
-public interface ctm<T extends Enum<T>> {
-   int w_ = 4;
-
-   Optional<dfa> i_(dfa var1);
-
-   float a();
-
-   default void a_(dfa $$0, akk $$1, gu $$2, aru $$3) {
-      float $$4 = 0.05688889F;
-      if ($$3.i() < 0.05688889F) {
-         this.c($$0, $$1, $$2, $$3);
-      }
+public class ctm extends cws {
+   public ctm(dey.d $$0) {
+      super($$0);
    }
 
-   T b();
-
-   default void c(dfa $$0, akk $$1, gu $$2, aru $$3) {
-      int $$4 = this.b().ordinal();
-      int $$5 = 0;
-      int $$6 = 0;
-
-      for (gu $$7 : gu.a($$2, 4, 4, 4)) {
-         int $$8 = $$7.k($$2);
-         if ($$8 > 4) {
-            break;
+   @Override
+   public void a(dez $$0, cpl $$1, gu $$2, aru $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$3.a(10) == 0) {
+         gu $$4 = $$2.d();
+         dez $$5 = $$1.a_($$4);
+         if (!a($$5.k($$1, $$4), ha.b)) {
+            ars.a($$1, $$2, $$3, iv.D);
          }
-
-         if (!$$7.equals($$2)) {
-            dfa $$9 = $$1.a_($$7);
-            csm $$10 = $$9.b();
-            if ($$10 instanceof ctm) {
-               Enum<?> $$11 = ((ctm)$$10).b();
-               if (this.b().getClass() == $$11.getClass()) {
-                  int $$12 = $$11.ordinal();
-                  if ($$12 < $$4) {
-                     return;
-                  }
-
-                  if ($$12 > $$4) {
-                     $$6++;
-                  } else {
-                     $$5++;
-                  }
-               }
-            }
-         }
-      }
-
-      float $$13 = (float)($$6 + 1) / (float)($$6 + $$5 + 1);
-      float $$14 = $$13 * $$13 * this.a();
-      if ($$3.i() < $$14) {
-         this.i_($$0).ifPresent($$2x -> $$1.b($$2, $$2x));
       }
    }
 }

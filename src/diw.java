@@ -1,121 +1,63 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectFunction;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongAVLTreeSet;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.LongSortedSet;
-import java.util.Objects;
-import java.util.Spliterators;
-import java.util.PrimitiveIterator.OfLong;
-import java.util.stream.LongStream;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
+import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class diw<T extends dir> {
-   private final Class<T> a;
-   private final Long2ObjectFunction<dje> b;
-   private final Long2ObjectMap<div<T>> c = new Long2ObjectOpenHashMap();
-   private final LongSortedSet d = new LongAVLTreeSet();
+public class diw {
+   private Int2ObjectMap<bii> a = new Int2ObjectLinkedOpenHashMap();
+   private Int2ObjectMap<bii> b = new Int2ObjectLinkedOpenHashMap();
+   @Nullable
+   private Int2ObjectMap<bii> c;
 
-   public diw(Class<T> $$0, Long2ObjectFunction<dje> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   private void a() {
+      if (this.c == this.a) {
+         this.b.clear();
+         ObjectIterator $$1 = Int2ObjectMaps.fastIterable(this.a).iterator();
+
+         while ($$1.hasNext()) {
+            Entry<bii> $$0 = (Entry<bii>)$$1.next();
+            this.b.put($$0.getIntKey(), (bii)$$0.getValue());
+         }
+
+         Int2ObjectMap<bii> $$1x = this.a;
+         this.a = this.b;
+         this.b = $$1x;
+      }
    }
 
-   public void a(egz $$0, aqg<div<T>> $$1) {
-      int $$2 = 2;
-      int $$3 = hx.a($$0.a - 2.0);
-      int $$4 = hx.a($$0.b - 4.0);
-      int $$5 = hx.a($$0.c - 2.0);
-      int $$6 = hx.a($$0.d + 2.0);
-      int $$7 = hx.a($$0.e + 0.0);
-      int $$8 = hx.a($$0.f + 2.0);
+   public void a(bii $$0) {
+      this.a();
+      this.a.put($$0.ah(), $$0);
+   }
 
-      for (int $$9 = $$3; $$9 <= $$6; $$9++) {
-         long $$10 = hx.b($$9, 0, 0);
-         long $$11 = hx.b($$9, -1, -1);
-         LongIterator $$12 = this.d.subSet($$10, $$11 + 1L).iterator();
+   public void b(bii $$0) {
+      this.a();
+      this.a.remove($$0.ah());
+   }
 
-         while ($$12.hasNext()) {
-            long $$13 = $$12.nextLong();
-            int $$14 = hx.c($$13);
-            int $$15 = hx.d($$13);
-            if ($$14 >= $$4 && $$14 <= $$7 && $$15 >= $$5 && $$15 <= $$8) {
-               div<T> $$16 = (div<T>)this.c.get($$13);
-               if ($$16 != null && !$$16.a() && $$16.c().b() && $$1.accept($$16).a()) {
-                  return;
-               }
+   public boolean c(bii $$0) {
+      return this.a.containsKey($$0.ah());
+   }
+
+   public void a(Consumer<bii> $$0) {
+      if (this.c != null) {
+         throw new UnsupportedOperationException("Only one concurrent iteration supported");
+      } else {
+         this.c = this.a;
+
+         try {
+            ObjectIterator var2 = this.a.values().iterator();
+
+            while (var2.hasNext()) {
+               bii $$1 = (bii)var2.next();
+               $$0.accept($$1);
             }
+         } finally {
+            this.c = null;
          }
       }
-   }
-
-   public LongStream a(long $$0) {
-      int $$1 = cot.a($$0);
-      int $$2 = cot.b($$0);
-      LongSortedSet $$3 = this.a($$1, $$2);
-      if ($$3.isEmpty()) {
-         return LongStream.empty();
-      } else {
-         OfLong $$4 = $$3.iterator();
-         return StreamSupport.longStream(Spliterators.spliteratorUnknownSize($$4, 1301), false);
-      }
-   }
-
-   private LongSortedSet a(int $$0, int $$1) {
-      long $$2 = hx.b($$0, 0, $$1);
-      long $$3 = hx.b($$0, -1, $$1);
-      return this.d.subSet($$2, $$3 + 1L);
-   }
-
-   public Stream<div<T>> b(long $$0) {
-      return this.a($$0).<div<T>>mapToObj(this.c::get).filter(Objects::nonNull);
-   }
-
-   private static long f(long $$0) {
-      return cot.c(hx.b($$0), hx.d($$0));
-   }
-
-   public div<T> c(long $$0) {
-      return (div<T>)this.c.computeIfAbsent($$0, this::g);
-   }
-
-   @Nullable
-   public div<T> d(long $$0) {
-      return (div<T>)this.c.get($$0);
-   }
-
-   private div<T> g(long $$0) {
-      long $$1 = f($$0);
-      dje $$2 = (dje)this.b.get($$1);
-      this.d.add($$0);
-      return new div<>(this.a, $$2);
-   }
-
-   public LongSet a() {
-      LongSet $$0 = new LongOpenHashSet();
-      this.c.keySet().forEach($$1 -> $$0.add(f($$1)));
-      return $$0;
-   }
-
-   public void b(egz $$0, aqg<T> $$1) {
-      this.a($$0, $$2 -> $$2.a($$0, $$1));
-   }
-
-   public <U extends T> void a(diy<T, U> $$0, egz $$1, aqg<U> $$2) {
-      this.a($$1, $$3 -> $$3.a($$0, $$1, $$2));
-   }
-
-   public void e(long $$0) {
-      this.c.remove($$0);
-      this.d.remove($$0);
-   }
-
-   @asq
-   public int b() {
-      return this.d.size();
    }
 }

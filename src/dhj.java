@@ -1,7 +1,11 @@
-import java.util.function.BiConsumer;
+import javax.annotation.Nullable;
 
-public interface dhj extends cos {
-   void a(BiConsumer<gu, dfa> var1);
+public interface dhj {
+   @Nullable
+   dhi c(int var1, int var2);
 
-   dzn B();
+   default void a(cpu $$0, hx $$1) {
+   }
+
+   cor q();
 }

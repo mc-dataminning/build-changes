@@ -1,35 +1,44 @@
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Collection;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fyx implements fyp {
-   private static final Logger c = LogUtils.getLogger();
-   public static final Codec<fyx> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(aer.a.fieldOf("resource").forGetter($$0x -> $$0x.d), aer.a.optionalFieldOf("sprite").forGetter($$0x -> $$0x.e)).apply($$0, fyx::new)
-   );
-   private final aer d;
-   private final Optional<aer> e;
+@FunctionalInterface
+public interface fyx {
+   Logger a = LogUtils.getLogger();
 
-   public fyx(aer $$0, Optional<aer> $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   static fyx create(Collection<amm<?>> $$0) {
+      return ($$1, $$2) -> {
+         ano $$3;
+         try {
+            $$3 = $$2.f().a($$0);
+         } catch (Exception var9) {
+            a.error("Unable to parse metadata from {}", $$1, var9);
+            return null;
+         }
+
+         ekg $$7;
+         try (InputStream $$6 = $$2.d()) {
+            $$7 = ekg.a($$6);
+         } catch (IOException var11) {
+            a.error("Using missing texture, unable to load {}", $$1, var11);
+            return null;
+         }
+
+         gaf $$11 = $$3.a(gaf.a).orElse(gaf.e);
+         gah $$12 = $$11.a($$7.a(), $$7.b());
+         if (arp.c($$7.a(), $$12.a()) && arp.c($$7.b(), $$12.b())) {
+            return new fyo($$1, $$12, $$7, $$3);
+         } else {
+            a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
+            $$7.close();
+            return null;
+         }
+      };
    }
 
-   @Override
-   public void a(anm $$0, fyp.a $$1) {
-      aer $$2 = a.a(this.d);
-      Optional<ank> $$3 = $$0.getResource($$2);
-      if ($$3.isPresent()) {
-         $$1.a(this.e.orElse(this.d), $$3.get());
-      } else {
-         c.warn("Missing sprite: {}", $$2);
-      }
-   }
-
-   @Override
-   public fyr a() {
-      return fys.a;
-   }
+   @Nullable
+   fyo loadSprite(aer var1, ank var2);
 }

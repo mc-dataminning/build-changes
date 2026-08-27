@@ -1,27 +1,31 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class cpa {
-   public static final cpa a = new cpa(ImmutableList.of("vanilla"), ImmutableList.of());
-   public static final Codec<cpa> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.STRING.listOf().fieldOf("Enabled").forGetter($$0x -> $$0x.c), Codec.STRING.listOf().fieldOf("Disabled").forGetter($$0x -> $$0x.d))
-            .apply($$0, cpa::new)
-   );
-   private final List<String> c;
-   private final List<String> d;
+public enum cpa implements cor {
+   a;
 
-   public cpa(List<String> $$0, List<String> $$1) {
-      this.c = ImmutableList.copyOf($$0);
-      this.d = ImmutableList.copyOf($$1);
+   @Nullable
+   @Override
+   public dcl c_(gu $$0) {
+      return null;
    }
 
-   public List<String> a() {
-      return this.c;
+   @Override
+   public dez a_(gu $$0) {
+      return csm.a.n();
    }
 
-   public List<String> b() {
-      return this.d;
+   @Override
+   public eac b_(gu $$0) {
+      return ead.a.g();
+   }
+
+   @Override
+   public int C_() {
+      return 0;
+   }
+
+   @Override
+   public int D_() {
+      return 0;
    }
 }

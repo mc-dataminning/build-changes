@@ -1,56 +1,33 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-@Deprecated
 public class bmp {
-   public static bkr<biy> a(float $$0, bgb $$1) {
-      return a($$0, $$1, $$0x -> true);
-   }
+   private static final int a = 300;
 
-   public static bkr<biy> a(bim<?> $$0, float $$1, bgb $$2) {
-      return a($$1, $$2, $$1x -> $$0.equals($$1x.ag()));
-   }
+   public static bkq<biy> a(int $$0, int $$1) {
+      int $$2 = $$0 * 20;
+      MutableInt $$3 = new MutableInt(0);
+      return bob.a(
+         (Function<bob.b<biy>, ? extends App<bob.c<biy>, boe<biy>>>)($$3x -> $$3x.group($$3x.b(brz.C), $$3x.b(brz.D))
+               .apply($$3x, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                     long $$9 = $$3x.<Long>b($$5);
+                     boolean $$10 = $$9 + 300L <= $$8;
+                     if ($$3.getValue() <= $$2 && !$$10) {
+                        gu $$11 = $$3x.<hd>b($$4).b();
+                        if ($$11.a($$7.dk(), (double)$$1)) {
+                           $$3.increment();
+                        }
 
-   private static bkr<biy> a(float $$0, bgb $$1, Predicate<biy> $$2) {
-      float $$3 = $$0 * $$0;
-      bmp.a $$4 = new bmp.a($$1);
-      return boc.a(
-         (Function<boc.b<biy>, ? extends App<boc.c<biy>, bof<biy>>>)($$3x -> $$3x.group($$3x.c(bsa.n), $$3x.b(bsa.h))
-               .apply($$3x, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
-                     Optional<biy> $$9 = $$3x.<bsc>b($$5).a($$2.and($$2xxxx -> $$2xxxx.f((bii)$$7) <= (double)$$3));
-                     if ($$9.isEmpty()) {
-                        return false;
-                     } else if (!$$4.a($$6.z)) {
-                        return false;
+                        return true;
                      } else {
-                        $$4x.a(new blb($$9.get(), true));
+                        $$5.b();
+                        $$4.b();
+                        $$7.dM().a($$6.W(), $$6.V());
+                        $$3.setValue(0);
                         return true;
                      }
                   }))
       );
-   }
-
-   public static final class a {
-      private final bgb a;
-      private int b;
-
-      public a(bgb $$0) {
-         if ($$0.a() <= 1) {
-            throw new IllegalArgumentException();
-         } else {
-            this.a = $$0;
-         }
-      }
-
-      public boolean a(aru $$0) {
-         if (this.b == 0) {
-            this.b = this.a.a($$0) - 1;
-            return false;
-         } else {
-            return --this.b == 0;
-         }
-      }
    }
 }

@@ -15,10 +15,13 @@ public class pn {
    private final int e;
    private final List<pr> f;
    private final List<Pair<pm, Collection<pr>>> g;
-   private final gu.a h;
+   private int h;
+   private egy i;
+   private final gu.a j;
 
-   public pn(Collection<pm> $$0, gu $$1, cyy $$2, akk $$3, px $$4, int $$5) {
-      this.h = $$1.j();
+   public pn(Collection<pm> $$0, gu $$1, cyx $$2, akk $$3, px $$4, int $$5) {
+      this.j = $$1.j();
+      this.i = new egy(this.j);
       this.b = $$1;
       this.c = $$3;
       this.d = $$4;
@@ -80,21 +83,19 @@ public class pn {
 
    private Map<pr, gu> a(Collection<pr> $$0) {
       Map<pr, gu> $$1 = Maps.newHashMap();
-      int $$2 = 0;
-      egz $$3 = new egz(this.h);
 
-      for (pr $$4 : $$0) {
-         gu $$5 = new gu(this.h);
-         ddz $$6 = qe.a($$4.t(), $$5, $$4.u(), 2, this.c, true);
-         egz $$7 = qe.a($$6);
-         $$4.a($$6.p());
-         $$1.put($$4, new gu(this.h));
-         $$3 = $$3.b($$7);
-         this.h.e((int)$$7.b() + 5, 0, 0);
-         if ($$2++ % this.e == this.e - 1) {
-            this.h.e(0, 0, (int)$$3.d() + 6);
-            this.h.p(this.b.u());
-            $$3 = new egz(this.h);
+      for (pr $$2 : $$0) {
+         gu $$3 = new gu(this.j);
+         ddy $$4 = qe.a($$2.t(), $$3, $$2.u(), 2, this.c, true);
+         egy $$5 = qe.a($$4);
+         $$2.a($$4.p());
+         $$1.put($$2, new gu(this.j));
+         this.i = this.i.b($$5);
+         this.j.e((int)$$5.b() + 5, 0, 0);
+         if (this.h++ % this.e == this.e - 1) {
+            this.j.e(0, 0, (int)this.i.d() + 6);
+            this.j.p(this.b.u());
+            this.i = new egy(this.j);
          }
       }
 

@@ -1,45 +1,44 @@
-import java.util.Optional;
-import java.util.function.Function;
-import org.joml.Vector3f;
+public class fex<T extends bii> extends ffc<T> {
+   private final fhs a;
+   private final fhs[] b = new fhs[9];
 
-public abstract class fex<E extends bii> extends feo<E> {
-   private static final Vector3f a = new Vector3f();
+   public fex(fhs $$0) {
+      this.a = $$0;
 
-   public fex() {
-      this(fnt::e);
+      for (int $$1 = 0; $$1 < this.b.length; $$1++) {
+         this.b[$$1] = $$0.b(a($$1));
+      }
    }
 
-   public fex(Function<aer, fnt> $$0) {
-      super($$0);
+   private static String a(int $$0) {
+      return "tentacle" + $$0;
+   }
+
+   public static fhy b() {
+      fia $$0 = new fia();
+      fib $$1 = $$0.a();
+      $$1.a("body", fhx.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), fhu.a(0.0F, 17.6F, 0.0F));
+      aru $$2 = aru.a(1660L);
+
+      for (int $$3 = 0; $$3 < 9; $$3++) {
+         float $$4 = (((float)($$3 % 3) - (float)($$3 / 3 % 2) * 0.5F + 0.25F) / 2.0F * 2.0F - 1.0F) * 5.0F;
+         float $$5 = ((float)($$3 / 3) / 2.0F * 2.0F - 1.0F) * 5.0F;
+         int $$6 = $$2.a(7) + 8;
+         $$1.a(a($$3), fhx.c().a(0, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, (float)$$6, 2.0F), fhu.a($$4, 24.6F, $$5));
+      }
+
+      return fhy.a($$0, 64, 32);
    }
 
    @Override
-   public void a(elg $$0, elk $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      for (int $$6 = 0; $$6 < this.b.length; $$6++) {
+         this.b[$$6].e = 0.2F * arp.a($$3 * 0.3F + (float)$$6) + 0.4F;
+      }
    }
 
-   public abstract fhn a();
-
-   public Optional<fhn> a(String $$0) {
-      return $$0.equals("root") ? Optional.of(this.a()) : this.a().e().filter($$1 -> $$1.a($$0)).findFirst().map($$1 -> $$1.b($$0));
-   }
-
-   protected void a(bie $$0, erd $$1, float $$2) {
-      this.a($$0, $$1, $$2, 1.0F);
-   }
-
-   protected void a(erd $$0, float $$1, float $$2, float $$3, float $$4) {
-      long $$5 = (long)($$1 * 50.0F * $$3);
-      float $$6 = Math.min($$2 * $$4, 1.0F);
-      erf.a(this, $$0, $$5, $$6, a);
-   }
-
-   protected void a(bie $$0, erd $$1, float $$2, float $$3) {
-      $$0.a($$2, $$3);
-      $$0.a($$1x -> erf.a(this, $$1, $$1x.b(), 1.0F, a));
-   }
-
-   protected void a(erd $$0) {
-      erf.a(this, $$0, 0L, 1.0F, a);
+   @Override
+   public fhs a() {
+      return this.a;
    }
 }

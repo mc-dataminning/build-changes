@@ -1,46 +1,56 @@
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 import org.slf4j.Logger;
 
-public class ene extends enc {
-   private static final Logger j = LogUtils.getLogger();
-   public String a = "";
-   public String b = "";
-   public String c = "";
-   public String d = "";
-   public String e = "";
-   @Nullable
-   public String f;
-   public String g = "";
-   public String h = "";
-   public ene.a i = ene.a.a;
+public class ene extends enb {
+   private static final Logger e = LogUtils.getLogger();
+   public List<end> a;
+   public int b;
+   public int c;
+   public int d;
 
-   public static ene a(JsonObject $$0) {
+   public ene() {
+   }
+
+   public ene(int $$0) {
+      this.a = Collections.emptyList();
+      this.b = 0;
+      this.c = $$0;
+      this.d = -1;
+   }
+
+   public boolean a() {
+      return this.b * this.c >= this.d && this.b > 0 && this.d > 0 && this.c > 0;
+   }
+
+   public static ene a(String $$0) {
       ene $$1 = new ene();
+      $$1.a = Lists.newArrayList();
 
       try {
-         $$1.a = eoz.a("id", $$0, "");
-         $$1.b = eoz.a("name", $$0, "");
-         $$1.c = eoz.a("version", $$0, "");
-         $$1.d = eoz.a("author", $$0, "");
-         $$1.e = eoz.a("link", $$0, "");
-         $$1.f = eoz.a("image", $$0, null);
-         $$1.g = eoz.a("trailer", $$0, "");
-         $$1.h = eoz.a("recommendedPlayers", $$0, "");
-         $$1.i = ene.a.valueOf(eoz.a("type", $$0, ene.a.a.name()));
-      } catch (Exception var3) {
-         j.error("Could not parse WorldTemplate: {}", var3.getMessage());
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         if ($$3.get("templates").isJsonArray()) {
+            Iterator<JsonElement> $$4 = $$3.get("templates").getAsJsonArray().iterator();
+
+            while ($$4.hasNext()) {
+               $$1.a.add(end.a($$4.next().getAsJsonObject()));
+            }
+         }
+
+         $$1.b = eoy.a("page", $$3, 0);
+         $$1.c = eoy.a("size", $$3, 0);
+         $$1.d = eoy.a("total", $$3, 0);
+      } catch (Exception var5) {
+         e.error("Could not parse WorldTemplatePaginatedList: {}", var5.getMessage());
       }
 
       return $$1;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e;
    }
 }

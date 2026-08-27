@@ -1,50 +1,25 @@
-public class fay extends exz {
-   private static final int a = 600;
-   private final sg b;
-   private esh c;
-   private int k;
-   private final evs l = evs.d();
+public class fay extends fbb {
+   private static final tf b = tf.c("multiplayerWarning.header").a(n.r);
+   private static final tf c = tf.c("multiplayerWarning.message");
+   private static final tf k = tf.c("multiplayerWarning.check");
+   private static final tf l = b.e().f("\n").b(c);
+   private final eya m;
 
-   public fay(tf $$0, sg $$1) {
-      super($$0);
-      this.b = $$1;
+   public fay(eya $$0) {
+      super(b, c, k, l);
+      this.m = $$0;
    }
 
    @Override
-   public boolean aA_() {
-      return false;
-   }
+   protected void a(int $$0) {
+      this.d(esg.a(te.i, $$0x -> {
+         if (this.a.a()) {
+            this.f.m.v = true;
+            this.f.m.ar();
+         }
 
-   @Override
-   protected void aE_() {
-      this.l.c().b().a(10);
-      this.l.a(new etm(this.e, this.i));
-      this.c = this.l.a(esh.a(te.p, $$0 -> this.b.a(ewt.a)).a());
-      this.c.i = false;
-      this.l.a();
-      this.l.a($$1 -> {
-         esf var10000 = this.d($$1);
-      });
-      this.b();
-   }
-
-   @Override
-   protected void b() {
-      evm.a(this.l, this.s());
-   }
-
-   @Override
-   public void c() {
-      super.c();
-      this.k++;
-      if (this.k == 600) {
-         this.c.i = true;
-      }
-
-      if (this.b.k()) {
-         this.b.d();
-      } else {
-         this.b.p();
-      }
+         this.f.a(new faw(this.m));
+      }).a(this.g / 2 - 155, 100 + $$0, 150, 20).a());
+      this.d(esg.a(te.k, $$0x -> this.f.a(this.m)).a(this.g / 2 - 155 + 160, 100 + $$0, 150, 20).a());
    }
 }

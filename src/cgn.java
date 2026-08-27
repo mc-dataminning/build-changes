@@ -1,78 +1,38 @@
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
-import java.util.Optional;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.Validate;
 
-public class cgn extends chi {
-   protected static final Map<csm, csm> a = new Builder()
-      .put(csn.ao, csn.aw)
-      .put(csn.U, csn.al)
-      .put(csn.au, csn.aC)
-      .put(csn.aa, csn.ak)
-      .put(csn.as, csn.aA)
-      .put(csn.Y, csn.ai)
-      .put(csn.at, csn.aB)
-      .put(csn.Z, csn.aj)
-      .put(csn.aq, csn.ay)
-      .put(csn.W, csn.ag)
-      .put(csn.ar, csn.az)
-      .put(csn.X, csn.ah)
-      .put(csn.ap, csn.ax)
-      .put(csn.V, csn.af)
-      .put(csn.oj, csn.ok)
-      .put(csn.ol, csn.om)
-      .put(csn.os, csn.ot)
-      .put(csn.ou, csn.ov)
-      .put(csn.av, csn.aD)
-      .put(csn.ab, csn.am)
-      .put(csn.ae, csn.an)
-      .build();
+public class cgn extends ckg {
+   private static final String c = "block.minecraft.banner.";
 
-   protected cgn(ckl $$0, float $$1, float $$2, cit.a $$3) {
-      super($$1, $$2, $$0, apl.bz, $$3);
+   public cgn(csl $$0, csl $$1, cis.a $$2) {
+      super($$0, $$1, $$2, ha.a);
+      Validate.isInstanceOf(crc.class, $$0);
+      Validate.isInstanceOf(crc.class, $$1);
+   }
+
+   public static void a(cix $$0, List<tf> $$1) {
+      qr $$2 = cgq.a($$0);
+      if ($$2 != null && $$2.e("Patterns")) {
+         qx $$3 = $$2.c("Patterns", 10);
+
+         for (int $$4 = 0; $$4 < $$3.size() && $$4 < 6; $$4++) {
+            qr $$5 = $$3.a($$4);
+            chl $$6 = chl.a($$5.h("Color"));
+            he<dcc> $$7 = dcc.a($$5.l("Pattern"));
+            if ($$7 != null) {
+               $$7.e().map($$0x -> $$0x.a().e()).ifPresent($$2x -> $$1.add(tf.c("block.minecraft.banner." + $$2x + "." + $$6.b()).a(n.h)));
+            }
+         }
+      }
+   }
+
+   public chl b() {
+      return ((crc)this.e()).a();
    }
 
    @Override
-   public bgq a(cli $$0) {
-      cpm $$1 = $$0.q();
-      gu $$2 = $$0.a();
-      cbn $$3 = $$0.o();
-      dfa $$4 = $$1.a_($$2);
-      Optional<dfa> $$5 = this.b($$4);
-      Optional<dfa> $$6 = dbo.b($$4);
-      Optional<dfa> $$7 = Optional.ofNullable((csm)cin.b.get().get($$4.b())).map($$1x -> $$1x.l($$4));
-      ciy $$8 = $$0.n();
-      Optional<dfa> $$9 = Optional.empty();
-      if ($$5.isPresent()) {
-         $$1.a($$3, $$2, aow.as, aox.e, 1.0F, 1.0F);
-         $$9 = $$5;
-      } else if ($$6.isPresent()) {
-         $$1.a($$3, $$2, aow.at, aox.e, 1.0F, 1.0F);
-         $$1.a($$3, 3005, $$2, 0);
-         $$9 = $$6;
-      } else if ($$7.isPresent()) {
-         $$1.a($$3, $$2, aow.au, aox.e, 1.0F, 1.0F);
-         $$1.a($$3, 3004, $$2, 0);
-         $$9 = $$7;
-      }
-
-      if ($$9.isPresent()) {
-         if ($$3 instanceof akl) {
-            ai.M.a((akl)$$3, $$2, $$8);
-         }
-
-         $$1.a($$2, $$9.get(), 11);
-         $$1.a(djk.c, $$2, djk.a.a($$3, $$9.get()));
-         if ($$3 != null) {
-            $$8.a(1, $$3, $$1x -> $$1x.d($$0.p()));
-         }
-
-         return bgq.a($$1.B);
-      } else {
-         return bgq.d;
-      }
-   }
-
-   private Optional<dfa> b(dfa $$0) {
-      return Optional.ofNullable(a.get($$0.b())).map($$1 -> $$1.n().a(cyx.g, $$0.c(cyx.g)));
+   public void a(cix $$0, @Nullable cpl $$1, List<tf> $$2, cko $$3) {
+      a($$0, $$2);
    }
 }

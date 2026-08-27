@@ -1,23 +1,32 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public interface cko {
+   cko.a a = new cko.a(false, false);
+   cko.a b = new cko.a(true, false);
 
-public class cko extends cgm {
-   public cko(cit.a $$0) {
-      super($$0);
-   }
+   boolean a();
 
-   @Override
-   public ciy ae_() {
-      return ckx.a(super.ae_(), cky.E);
-   }
+   boolean b();
 
-   @Override
-   public void a(ciy $$0, @Nullable cpm $$1, List<tf> $$2, ckp $$3) {
-      ckx.a($$0, $$2, 0.125F);
-   }
+   public static record a(boolean c, boolean d) implements cko {
+      @Override
+      public boolean a() {
+         return this.c;
+      }
 
-   @Override
-   public String j(ciy $$0) {
-      return ckx.d($$0).b(this.a() + ".effect.");
+      @Override
+      public boolean b() {
+         return this.d;
+      }
+
+      public cko.a c() {
+         return new cko.a(this.c, true);
+      }
+
+      public boolean d() {
+         return this.c;
+      }
+
+      public boolean e() {
+         return this.d;
+      }
    }
 }

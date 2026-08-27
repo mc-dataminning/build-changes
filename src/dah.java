@@ -1,44 +1,92 @@
-public class dah extends czm {
-   public static final dga a = dfq.ba;
+import java.util.function.Supplier;
 
-   public dah(dez.d $$0, dgn $$1) {
-      super($$0.a($$1.d()), $$1);
-      this.k(this.C.b().a(a, Integer.valueOf(0)).a(e, Boolean.valueOf(false)));
+public class dah extends cst implements csn {
+   public static final int a = 7;
+   public static final dfz b = dfp.av;
+   protected static final float c = 1.0F;
+   protected static final ehw[] d = new ehw[]{
+      csl.a(7.0, 0.0, 7.0, 9.0, 2.0, 9.0),
+      csl.a(7.0, 0.0, 7.0, 9.0, 4.0, 9.0),
+      csl.a(7.0, 0.0, 7.0, 9.0, 6.0, 9.0),
+      csl.a(7.0, 0.0, 7.0, 9.0, 8.0, 9.0),
+      csl.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0),
+      csl.a(7.0, 0.0, 7.0, 9.0, 12.0, 9.0),
+      csl.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0),
+      csl.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
+   };
+   private final dai e;
+   private final Supplier<cis> f;
+
+   protected dah(dai $$0, Supplier<cis> $$1, dey.d $$2) {
+      super($$2);
+      this.e = $$0;
+      this.f = $$1;
+      this.k(this.C.b().a(b, Integer.valueOf(0)));
    }
 
    @Override
-   public boolean a(dfa $$0, cpp $$1, gu $$2) {
-      return $$1.a_($$2.d()).e();
+   public ehw a(dez $$0, cor $$1, gu $$2, ehi $$3) {
+      return d[$$0.c(b)];
    }
 
    @Override
-   public dfa a(clg $$0) {
-      ead $$1 = $$0.q().b_($$0.a());
-      return this.n().a(a, Integer.valueOf(dgg.a($$0.i() + 180.0F))).a(e, Boolean.valueOf($$1.a() == eae.c));
+   protected boolean d(dez $$0, cor $$1, gu $$2) {
+      return $$0.a(csm.cC);
    }
 
    @Override
-   public dfa a(dfa $$0, ha $$1, dfa $$2, cpn $$3, gu $$4, gu $$5) {
-      return $$1 == ha.a && !this.a($$0, $$3, $$4) ? csn.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public void b(dez $$0, akk $$1, gu $$2, aru $$3) {
+      if ($$1.b($$2, 0) >= 9) {
+         float $$4 = cuc.a(this, $$1, $$2);
+         if ($$3.a((int)(25.0F / $$4) + 1) == 0) {
+            int $$5 = $$0.c(b);
+            if ($$5 < 7) {
+               $$0 = $$0.a(b, Integer.valueOf($$5 + 1));
+               $$1.a($$2, $$0, 2);
+            } else {
+               ha $$6 = ha.c.a.a($$3);
+               gu $$7 = $$2.a($$6);
+               dez $$8 = $$1.a_($$7.d());
+               if ($$1.a_($$7).i() && ($$8.a(csm.cC) || $$8.a(apl.af))) {
+                  $$1.b($$7, this.e.n());
+                  $$1.b($$2, this.e.b().n().a(cwe.aC, $$6));
+               }
+            }
+         }
+      }
    }
 
    @Override
-   public float g(dfa $$0) {
-      return dgg.b($$0.c(a));
+   public cix a(cor $$0, gu $$1, dez $$2) {
+      return new cix(this.f.get());
    }
 
    @Override
-   public dfa a(dfa $$0, cyy $$1) {
-      return $$0.a(a, Integer.valueOf($$1.a($$0.c(a), 16)));
+   public boolean a(cpo $$0, gu $$1, dez $$2) {
+      return $$2.c(b) != 7;
    }
 
    @Override
-   public dfa a(dfa $$0, cxh $$1) {
-      return $$0.a(a, Integer.valueOf($$1.a($$0.c(a), 16)));
+   public boolean a(cpl $$0, aru $$1, gu $$2, dez $$3) {
+      return true;
    }
 
    @Override
-   protected void a(dfb.a<csm, dfa> $$0) {
-      $$0.a(a, e);
+   public void a(akk $$0, aru $$1, gu $$2, dez $$3) {
+      int $$4 = Math.min(7, $$3.c(b) + arp.a($$0.z, 2, 5));
+      dez $$5 = $$3.a(b, Integer.valueOf($$4));
+      $$0.a($$2, $$5, 2);
+      if ($$4 == 7) {
+         $$5.b($$0, $$2, $$0.z);
+      }
+   }
+
+   @Override
+   protected void a(dfa.a<csl, dez> $$0) {
+      $$0.a(b);
+   }
+
+   public dai a() {
+      return this.e;
    }
 }

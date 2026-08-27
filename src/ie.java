@@ -1,21 +1,21 @@
 public class ie extends ig {
    private final ig c = new ig();
-   private final cdg.b d;
+   private final cdf.b d;
    private final boolean e;
 
-   public ie(cdg.b $$0) {
+   public ie(cdf.b $$0) {
       this($$0, false);
    }
 
-   public ie(cdg.b $$0, boolean $$1) {
+   public ie(cdf.b $$0, boolean $$1) {
       this.d = $$0;
       this.e = $$1;
    }
 
    @Override
-   public ciy a(gv $$0, ciy $$1) {
-      ha $$2 = $$0.e().c(cun.a);
-      cpm $$3 = $$0.g();
+   public cix a(gv $$0, cix $$1) {
+      ha $$2 = $$0.e().c(cum.a);
+      cpl $$3 = $$0.g();
       double $$4 = 0.5625 + (double)bim.k.k() / 2.0;
       double $$5 = $$0.a() + (double)$$2.j() * $$4;
       double $$6 = $$0.b() + (double)((float)$$2.k() * 1.125F);
@@ -32,7 +32,7 @@ public class ie extends ig {
          $$9 = 0.0;
       }
 
-      cdg $$12 = (cdg)(this.e ? new cdh($$3, $$5, $$6 + $$9, $$7) : new cdg($$3, $$5, $$6 + $$9, $$7));
+      cdf $$12 = (cdf)(this.e ? new cdg($$3, $$5, $$6 + $$9, $$7) : new cdf($$3, $$5, $$6 + $$9, $$7));
       $$12.a(this.d);
       $$12.r($$2.p());
       $$3.b($$12);

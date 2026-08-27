@@ -1,75 +1,69 @@
-public class cfs extends cfw {
-   private final ces a;
-   private final cbn b;
-   private int c;
+public class cfs extends ced {
+   private static final int k = 27;
+   private final bgj l;
 
-   public cfs(cbn $$0, ces $$1, bgj $$2, int $$3, int $$4, int $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.b = $$0;
-      this.a = $$1;
+   public cfs(int $$0, cbl $$1) {
+      this($$0, $$1, new bgx(27));
    }
 
-   @Override
-   public boolean a(ciy $$0) {
-      return false;
-   }
+   public cfs(int $$0, cbl $$1, bgj $$2) {
+      super(cfi.t, $$0);
+      a($$2, 27);
+      this.l = $$2;
+      $$2.d_($$1.m);
+      int $$3 = 3;
+      int $$4 = 9;
 
-   @Override
-   public ciy a(int $$0) {
-      if (this.f()) {
-         this.c = this.c + Math.min($$0, this.e().L());
-      }
-
-      return super.a($$0);
-   }
-
-   @Override
-   protected void a(ciy $$0, int $$1) {
-      this.c += $$1;
-      this.b_($$0);
-   }
-
-   @Override
-   protected void b(int $$0) {
-      this.c += $$0;
-   }
-
-   @Override
-   protected void b_(ciy $$0) {
-      if (this.c > 0) {
-         $$0.a(this.b.dK(), this.b, this.c);
-      }
-
-      if (this.d instanceof cfq $$1) {
-         $$1.a(this.b, this.a.h());
-      }
-
-      this.c = 0;
-   }
-
-   @Override
-   public void a(cbn $$0, ciy $$1) {
-      this.b_($$1);
-      hn<ciy> $$2 = $$0.dK().q().c(cme.a, this.a, $$0.dK());
-
-      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-         ciy $$4 = this.a.a($$3);
-         ciy $$5 = $$2.get($$3);
-         if (!$$4.b()) {
-            this.a.a($$3, 1);
-            $$4 = this.a.a($$3);
+      for (int $$5 = 0; $$5 < 3; $$5++) {
+         for (int $$6 = 0; $$6 < 9; $$6++) {
+            this.a(new cft($$2, $$6 + $$5 * 9, 8 + $$6 * 18, 18 + $$5 * 18));
          }
+      }
 
-         if (!$$5.b()) {
-            if ($$4.b()) {
-               this.a.a($$3, $$5);
-            } else if (ciy.c($$4, $$5)) {
-               $$5.g($$4.L());
-               this.a.a($$3, $$5);
-            } else if (!this.b.fQ().e($$5)) {
-               this.b.a($$5, false);
+      for (int $$7 = 0; $$7 < 3; $$7++) {
+         for (int $$8 = 0; $$8 < 9; $$8++) {
+            this.a(new cfv($$1, $$8 + $$7 * 9 + 9, 8 + $$8 * 18, 84 + $$7 * 18));
+         }
+      }
+
+      for (int $$9 = 0; $$9 < 9; $$9++) {
+         this.a(new cfv($$1, $$9, 8 + $$9 * 18, 142));
+      }
+   }
+
+   @Override
+   public boolean a(cbm $$0) {
+      return this.l.a($$0);
+   }
+
+   @Override
+   public cix a(cbm $$0, int $$1) {
+      cix $$2 = cix.b;
+      cfv $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.f()) {
+         cix $$4 = $$3.e();
+         $$2 = $$4.p();
+         if ($$1 < this.l.b()) {
+            if (!this.a($$4, this.l.b(), this.i.size(), true)) {
+               return cix.b;
             }
+         } else if (!this.a($$4, 0, this.l.b(), false)) {
+            return cix.b;
+         }
+
+         if ($$4.b()) {
+            $$3.d(cix.b);
+         } else {
+            $$3.d();
          }
       }
+
+      return $$2;
+   }
+
+   @Override
+   public void b(cbm $$0) {
+      super.b($$0);
+      this.l.c($$0);
    }
 }

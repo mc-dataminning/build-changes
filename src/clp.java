@@ -1,15 +1,17 @@
-public class clp extends clk {
-   public clp(aer $$0, String $$1, clq $$2, cly $$3, ciy $$4, float $$5, int $$6) {
-      super(cme.e, $$0, $$1, $$2, $$3, $$4, $$5, $$6);
+public enum clp implements ash {
+   a("food"),
+   b("blocks"),
+   c("misc");
+
+   public static final ash.a<clp> d = ash.a(clp::values);
+   private final String e;
+
+   private clp(String $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public ciy h() {
-      return new ciy(csn.og);
-   }
-
-   @Override
-   public cmd<?> aj_() {
-      return cmd.s;
+   public String c() {
+      return this.e;
    }
 }

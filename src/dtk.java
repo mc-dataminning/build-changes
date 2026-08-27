@@ -1,53 +1,23 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
 
-public class dtk extends dtg {
+public class dtk extends dtf {
    public static final Codec<dtk> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dld.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
-               dld.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dtk::new)
+      $$0 -> $$0.group(bfa.b(dtf.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, dtk::new)
    );
-   private static final Logger b = LogUtils.getLogger();
-   private final dld d;
-   private final dld e;
-   private final int f;
+   private final bfa<dtf> b;
 
-   private dtk(dld $$0, dld $$1, int $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   public static dtk a(dld $$0, dld $$1, int $$2) {
-      return new dtk($$0, $$1, $$2);
+   public dtk(bfa<dtf> $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public int a(aru $$0, dlg $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$3 - $$2 - this.f + 1 <= 0) {
-         b.warn("Empty height range: {}", this);
-         return $$2;
-      } else {
-         int $$4 = arp.a($$0, $$2 + this.f, $$3);
-         int $$5 = arp.a($$0, $$2, $$4 - 1);
-         return arp.a($$0, $$2, $$5 - 1 + this.f);
-      }
+   public int a(aru $$0, dlf $$1) {
+      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0, $$1);
    }
 
    @Override
-   public dth<?> a() {
-      return dth.d;
-   }
-
-   @Override
-   public String toString() {
-      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
+   public dtg<?> a() {
+      return dtg.f;
    }
 }

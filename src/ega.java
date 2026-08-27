@@ -1,4 +1,9 @@
-import com.mojang.serialization.Codec;
+public interface ega extends ech {
+   float b(ecg var1);
 
-public record ega(Codec<? extends egb> a) {
+   default int a(ecg $$0) {
+      return Math.round(this.b($$0));
+   }
+
+   efz b();
 }

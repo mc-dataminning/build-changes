@@ -1,7 +1,7 @@
 public interface dl {
    <T> hg<T> a(aeq<? extends hr<T>> var1);
 
-   static dl a(final hg.b $$0, final cdv $$1) {
+   static dl a(final hg.b $$0, final cdu $$1) {
       return new dl() {
          @Override
          public <T> hg<T> a(aeq<? extends hr<T>> $$0x) {
@@ -10,7 +10,7 @@ public interface dl {
       };
    }
 
-   static dl.a a(final hs $$0, final cdv $$1) {
+   static dl.a a(final hs $$0, final cdu $$1) {
       return new dl.a() {
          dl.b c = dl.b.b;
 

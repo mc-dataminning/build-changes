@@ -38,7 +38,7 @@ public class ahp {
       );
    }
 
-   private static int a(dr $$0, int $$1, boolean $$2, @Nullable cpj $$3) throws CommandSyntaxException {
+   private static int a(dr $$0, int $$1, boolean $$2, @Nullable cpi $$3) throws CommandSyntaxException {
       if ($$0.l().p()) {
          throw b.create($$0.l().M());
       } else if (!$$0.l().a($$3, $$2, $$1)) {

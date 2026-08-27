@@ -1,80 +1,63 @@
-import javax.annotation.Nullable;
+import java.lang.reflect.Constructor;
+import java.util.Arrays;
 
-public class bxp extends bxc {
-   private boolean b;
-   @Nullable
-   private eas c;
-   @Nullable
-   private ehe d;
+public class bxp<T extends bxj> {
+   private static bxp<?>[] l = new bxp[0];
+   public static final bxp<bxf> a = a(bxf.class, "HoldingPattern");
+   public static final bxp<bxn> b = a(bxn.class, "StrafePlayer");
+   public static final bxp<bxh> c = a(bxh.class, "LandingApproach");
+   public static final bxp<bxi> d = a(bxi.class, "Landing");
+   public static final bxp<bxo> e = a(bxo.class, "Takeoff");
+   public static final bxp<bxl> f = a(bxl.class, "SittingFlaming");
+   public static final bxp<bxm> g = a(bxm.class, "SittingScanning");
+   public static final bxp<bxk> h = a(bxk.class, "SittingAttacking");
+   public static final bxp<bxd> i = a(bxd.class, "ChargingPlayer");
+   public static final bxp<bxe> j = a(bxe.class, "Dying");
+   public static final bxp<bxg> k = a(bxg.class, "Hover");
+   private final Class<? extends bxj> m;
+   private final int n;
+   private final String o;
 
-   public bxp(bxa $$0) {
-      super($$0);
+   private bxp(int $$0, Class<? extends bxj> $$1, String $$2) {
+      this.n = $$0;
+      this.m = $$1;
+      this.o = $$2;
    }
 
-   @Override
-   public void c() {
-      if (!this.b && this.c != null) {
-         gu $$0 = this.a.dK().a(dkj.a.f, dnm.a(this.a.p()));
-         if (!$$0.a(this.a.di(), 10.0)) {
-            this.a.fW().a(bxq.a);
-         }
-      } else {
-         this.b = false;
-         this.j();
+   public bxj a(bwz $$0) {
+      try {
+         Constructor<? extends bxj> $$1 = this.a();
+         return $$1.newInstance($$0);
+      } catch (Exception var3) {
+         throw new Error(var3);
       }
    }
 
-   @Override
-   public void d() {
-      this.b = true;
-      this.c = null;
-      this.d = null;
+   protected Constructor<? extends bxj> a() throws NoSuchMethodException {
+      return this.m.getConstructor(bwz.class);
    }
 
-   private void j() {
-      int $$0 = this.a.t();
-      ehe $$1 = this.a.D(1.0F);
-      int $$2 = this.a.r(-$$1.c * 40.0, 105.0, -$$1.e * 40.0);
-      if (this.a.fX() != null && this.a.fX().e() > 0) {
-         $$2 %= 12;
-         if ($$2 < 0) {
-            $$2 += 12;
-         }
-      } else {
-         $$2 -= 12;
-         $$2 &= 7;
-         $$2 += 12;
-      }
-
-      this.c = this.a.a($$0, $$2, null);
-      this.k();
-   }
-
-   private void k() {
-      if (this.c != null) {
-         this.c.a();
-         if (!this.c.c()) {
-            hz $$0 = this.c.g();
-            this.c.a();
-
-            double $$1;
-            do {
-               $$1 = (double)((float)$$0.v() + this.a.ee().i() * 20.0F);
-            } while ($$1 < (double)$$0.v());
-
-            this.d = new ehe((double)$$0.u(), $$1, (double)$$0.w());
-         }
-      }
-   }
-
-   @Nullable
-   @Override
-   public ehe g() {
-      return this.d;
+   public int b() {
+      return this.n;
    }
 
    @Override
-   public bxq<bxp> i() {
-      return bxq.e;
+   public String toString() {
+      return this.o + " (#" + this.n + ")";
+   }
+
+   public static bxp<?> a(int $$0) {
+      return $$0 >= 0 && $$0 < l.length ? l[$$0] : a;
+   }
+
+   public static int c() {
+      return l.length;
+   }
+
+   private static <T extends bxj> bxp<T> a(Class<T> $$0, String $$1) {
+      bxp<T> $$2 = new bxp<>(l.length, $$0, $$1);
+      l = Arrays.copyOf(l, l.length + 1);
+      l[$$2.b()] = $$2;
+      return $$2;
    }
 }

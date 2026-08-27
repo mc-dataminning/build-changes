@@ -1,44 +1,60 @@
 import com.mojang.serialization.Codec;
 
-public class doq extends dnn<dpz> {
-   private static final int a = 7;
-
-   doq(Codec<dpz> $$0) {
+public class doq extends dnm<dqh> {
+   public doq(Codec<dqh> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dnp<dpz> $$0) {
-      cqg $$1 = $$0.b();
-      aru $$2 = $$0.d();
-      dpz $$3 = $$0.f();
-      gu $$4 = $$0.e();
-      int $$5 = $$2.a($$3.c + 1);
-      gu.a $$6 = new gu.a();
+   public boolean a(dno<dqh> $$0) {
+      cqf $$1 = $$0.b();
+      gu $$2 = $$0.e();
+      if (!this.a($$1, $$2)) {
+         return false;
+      } else {
+         dqh $$3 = $$0.f();
+         aru $$4 = $$0.d();
+         czg $$5 = czg.b();
+         int $$6 = $$3.f() + $$3.d();
 
-      for (int $$7 = 0; $$7 < $$5; $$7++) {
-         this.a($$6, $$2, $$4, Math.min($$7, 7));
-         dfa $$8 = $$1.a_($$6);
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
+               $$5.a($$2, $$3.b());
+            }
 
-         for (dpz.a $$9 : $$3.b) {
-            if (doi.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
-               $$1.a($$6, $$9.c, 2);
-               break;
+            boolean $$9 = $$7 < $$3.f();
+
+            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
+               $$5.a($$1, $$2, $$4, $$9);
+            }
+
+            $$5.j();
+         }
+
+         gu $$11 = $$2.d();
+         if ($$4.i() <= $$3.h() && $$1.a_($$11).r($$1, $$11)) {
+            $$1.a($$2, csm.qH.n(), 3);
+         }
+
+         int $$12 = $$3.g().a($$4);
+
+         for (int $$13 = 0; $$13 < $$12; $$13++) {
+            gu $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
+            if ($$1.a_($$14).i() && $$1.a_($$14.d()).d($$1, $$14.d(), ha.b)) {
+               $$1.a($$14, csm.qI.n().a(czf.c, Boolean.valueOf(true)), 3);
             }
          }
+
+         return true;
       }
-
-      return true;
    }
 
-   private void a(gu.a $$0, aru $$1, gu $$2, int $$3) {
-      int $$4 = this.a($$1, $$3);
-      int $$5 = this.a($$1, $$3);
-      int $$6 = this.a($$1, $$3);
-      $$0.a($$2, $$4, $$5, $$6);
-   }
-
-   private int a(aru $$0, int $$1) {
-      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
+   private boolean a(cpm $$0, gu $$1) {
+      dez $$2 = $$0.a_($$1);
+      if ($$2.b() instanceof czb) {
+         return true;
+      } else {
+         return !$$2.i() && (!$$2.a(csm.G) || !$$2.u().b()) ? false : ha.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).r($$0, $$1x));
+      }
    }
 }

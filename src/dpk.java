@@ -1,10 +1,23 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dpk implements dpr {
-   public static final Codec<dpk> a = dfa.b.fieldOf("state").xmap(dpk::new, $$0 -> $$0.b).codec();
-   public final dfa b;
+public class dpk implements dpq {
+   public static final Codec<dpk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(bfv.b(0, 3).fieldOf("reach").forGetter($$0x -> $$0x.b), bfv.b(1, 10).fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, dpk::new)
+   );
+   private final bfv b;
+   private final bfv c;
 
-   public dpk(dfa $$0) {
+   public dpk(bfv $$0, bfv $$1) {
       this.b = $$0;
+      this.c = $$1;
+   }
+
+   public bfv a() {
+      return this.b;
+   }
+
+   public bfv b() {
+      return this.c;
    }
 }

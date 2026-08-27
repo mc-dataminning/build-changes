@@ -2,10 +2,10 @@ import java.util.Objects;
 import javax.annotation.Nullable;
 
 public class zq implements ux<wp> {
-   private final ehz a;
+   private final ehy a;
    private final String b;
 
-   public zq(ehz $$0, @Nullable eia $$1) {
+   public zq(ehy $$0, @Nullable ehz $$1) {
       this.a = $$0;
       if ($$1 == null) {
          this.b = "";
@@ -15,13 +15,13 @@ public class zq implements ux<wp> {
    }
 
    public zq(si $$0) {
-      this.a = $$0.a(ehz.u);
+      this.a = $$0.a(ehy.u);
       this.b = $$0.r();
    }
 
    @Override
    public void a(si $$0) {
-      $$0.a(ehz::a, this.a);
+      $$0.a(ehy::a, this.a);
       $$0.a(this.b);
    }
 
@@ -29,7 +29,7 @@ public class zq implements ux<wp> {
       $$0.a(this);
    }
 
-   public ehz a() {
+   public ehy a() {
       return this.a;
    }
 

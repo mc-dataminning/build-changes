@@ -1,22 +1,10 @@
-public class dbr extends dag implements dbo {
-   private final dbo.a F;
-
-   public dbr(dbo.a $$0, dfa $$1, dez.d $$2) {
-      super($$1, $$2);
-      this.F = $$0;
+public class dbr extends csl {
+   public dbr(dey.d $$0) {
+      super($$0);
    }
 
    @Override
-   public void b(dfa $$0, akk $$1, gu $$2, aru $$3) {
-      this.a_($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public boolean e_(dfa $$0) {
-      return dbo.c($$0.b()).isPresent();
-   }
-
-   public dbo.a g() {
-      return this.F;
+   public void a(dez $$0, cpl $$1, gu $$2, bii $$3) {
+      $$3.a($$0, new ehd(0.25, 0.05F, 0.25));
    }
 }

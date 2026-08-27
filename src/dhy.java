@@ -1,94 +1,109 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.DataFixer;
-import com.mojang.serialization.Codec;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.Optional;
+import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import java.util.concurrent.Executor;
+import org.slf4j.Logger;
 
-public class dhy implements AutoCloseable {
-   public static final int c = 1493;
-   private final dia a;
-   protected final DataFixer d;
-   @Nullable
-   private volatile duu b;
+public class dhy implements dit<bii> {
+   private static final Logger b = LogUtils.getLogger();
+   private static final String c = "Entities";
+   private static final String d = "Position";
+   private final akk e;
+   private final dhz f;
+   private final LongSet g = new LongOpenHashSet();
+   private final bfj<Runnable> h;
+   protected final DataFixer a;
 
-   public dhy(Path $$0, DataFixer $$1, boolean $$2) {
-      this.d = $$1;
-      this.a = new dia($$0, $$2, "chunk");
+   public dhy(akk $$0, Path $$1, DataFixer $$2, boolean $$3, Executor $$4) {
+      this.e = $$0;
+      this.a = $$2;
+      this.h = bfj.a($$4, "entity-deserializer");
+      this.f = new dhz($$1, $$3, "entities");
    }
 
-   public boolean a(cot $$0, int $$1) {
-      return this.a.a($$0, $$1);
-   }
-
-   public qr a(aeq<cpm> $$0, Supplier<ebt> $$1, qr $$2, Optional<aeq<Codec<? extends dgx>>> $$3) {
-      int $$4 = a($$2);
-      if ($$4 < 1493) {
-         $$2 = ass.c.a(this.d, $$2, $$4, 1493);
-         if ($$2.p("Level").q("hasLegacyStructureData")) {
-            duu $$5 = this.a($$0, $$1);
-            $$2 = $$5.a($$2);
-         }
-      }
-
-      a($$2, $$0, $$3);
-      $$2 = ass.c.a(this.d, $$2, Math.max(1493, $$4));
-      if ($$4 < aa.b().d().c()) {
-         rd.g($$2);
-      }
-
-      $$2.r("__context");
-      return $$2;
-   }
-
-   private duu a(aeq<cpm> $$0, Supplier<ebt> $$1) {
-      duu $$2 = this.b;
-      if ($$2 == null) {
-         synchronized (this) {
-            $$2 = this.b;
-            if ($$2 == null) {
-               this.b = $$2 = duu.a($$0, $$1.get());
+   @Override
+   public CompletableFuture<dio<bii>> a(cos $$0) {
+      return this.g.contains($$0.a()) ? CompletableFuture.completedFuture(b($$0)) : this.f.a($$0).thenApplyAsync($$1 -> {
+         if ($$1.isEmpty()) {
+            this.g.add($$0.a());
+            return b($$0);
+         } else {
+            try {
+               cos $$2 = a($$1.get());
+               if (!Objects.equals($$0, $$2)) {
+                  b.error("Chunk file at {} is in the wrong location. (Expected {}, got {})", new Object[]{$$0, $$0, $$2});
+               }
+            } catch (Exception var6) {
+               b.warn("Failed to parse chunk {} position info", $$0, var6);
             }
+
+            qr $$4 = this.b($$1.get());
+            qx $$5 = $$4.c("Entities", 10);
+            List<bii> $$6 = bim.a($$5, this.e).collect(ImmutableList.toImmutableList());
+            return new dio<>($$0, $$6);
          }
+      }, this.h::a);
+   }
+
+   private static cos a(qr $$0) {
+      int[] $$1 = $$0.n("Position");
+      return new cos($$1[0], $$1[1]);
+   }
+
+   private static void a(qr $$0, cos $$1) {
+      $$0.a("Position", new qv(new int[]{$$1.e, $$1.f}));
+   }
+
+   private static dio<bii> b(cos $$0) {
+      return new dio<>($$0, ImmutableList.of());
+   }
+
+   @Override
+   public void a(dio<bii> $$0) {
+      cos $$1 = $$0.a();
+      if ($$0.c()) {
+         if (this.g.add($$1.a())) {
+            this.f.a($$1, null);
+         }
+      } else {
+         qx $$2 = new qx();
+         $$0.b().forEach($$1x -> {
+            qr $$2x = new qr();
+            if ($$1x.e($$2x)) {
+               $$2.add($$2x);
+            }
+         });
+         qr $$3 = rd.g(new qr());
+         $$3.a("Entities", $$2);
+         a($$3, $$1);
+         this.f.a($$1, $$3).exceptionally($$1x -> {
+            b.error("Failed to store chunk {}", $$1, $$1x);
+            return null;
+         });
+         this.g.remove($$1.a());
       }
-
-      return $$2;
    }
 
-   public static void a(qr $$0, aeq<cpm> $$1, Optional<aeq<Codec<? extends dgx>>> $$2) {
-      qr $$3 = new qr();
-      $$3.a("dimension", $$1.a().toString());
-      $$2.ifPresent($$1x -> $$3.a("generator", $$1x.a().toString()));
-      $$0.a("__context", $$3);
+   @Override
+   public void a(boolean $$0) {
+      this.f.a($$0).join();
+      this.h.a();
    }
 
-   public static int a(qr $$0) {
-      return rd.b($$0, -1);
-   }
-
-   public CompletableFuture<Optional<qr>> e(cot $$0) {
-      return this.a.a($$0);
-   }
-
-   public void a(cot $$0, qr $$1) {
-      this.a.a($$0, $$1);
-      if (this.b != null) {
-         this.b.a($$0.a());
-      }
-   }
-
-   public void o() {
-      this.a.a(true).join();
+   private qr b(qr $$0) {
+      int $$1 = rd.b($$0, -1);
+      return ass.s.a(this.a, $$0, $$1);
    }
 
    @Override
    public void close() throws IOException {
-      this.a.close();
-   }
-
-   public dhw p() {
-      return this.a;
+      this.f.close();
    }
 }

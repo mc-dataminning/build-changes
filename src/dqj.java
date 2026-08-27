@@ -1,10 +1,16 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public record dqj(drs b) implements dpr {
-   public static final Codec<dqj> a = RecordCodecBuilder.create($$0 -> $$0.group(drs.a.fieldOf("to_place").forGetter($$0x -> $$0x.b)).apply($$0, dqj::new));
+public class dqj implements dpq {
+   public static final Codec<dqj> a = aqy.b(duc.c).fieldOf("features").xmap(dqj::new, $$0 -> $$0.b).codec();
+   public final hi<duc> b;
 
-   public drs a() {
-      return this.b;
+   public dqj(hi<duc> $$0) {
+      this.b = $$0;
+   }
+
+   @Override
+   public Stream<dmz<?, ?>> e() {
+      return this.b.a().flatMap($$0 -> $$0.a().a());
    }
 }

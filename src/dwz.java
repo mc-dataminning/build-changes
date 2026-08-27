@@ -1,53 +1,48 @@
-public class dwz {
-   private static final aer[] a = new aer[]{
-      new aer("nether_fossils/fossil_1"),
-      new aer("nether_fossils/fossil_2"),
-      new aer("nether_fossils/fossil_3"),
-      new aer("nether_fossils/fossil_4"),
-      new aer("nether_fossils/fossil_5"),
-      new aer("nether_fossils/fossil_6"),
-      new aer("nether_fossils/fossil_7"),
-      new aer("nether_fossils/fossil_8"),
-      new aer("nether_fossils/fossil_9"),
-      new aer("nether_fossils/fossil_10"),
-      new aer("nether_fossils/fossil_11"),
-      new aer("nether_fossils/fossil_12"),
-      new aer("nether_fossils/fossil_13"),
-      new aer("nether_fossils/fossil_14")
-   };
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-   public static void a(dyt $$0, dve $$1, aru $$2, gu $$3) {
-      cyy $$4 = cyy.a($$2);
-      $$1.a(new dwz.a($$0, ac.a(a, $$2), $$3, $$4));
+public class dwz extends duy {
+   public static final Codec<dwz> d = RecordCodecBuilder.create(
+      $$0 -> $$0.group(a($$0), dtf.c.fieldOf("height").forGetter($$0x -> $$0x.e)).apply($$0, dwz::new)
+   );
+   public final dtf e;
+
+   public dwz(duy.c $$0, dtf $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
-   public static class a extends dvj {
-      public a(dyt $$0, aer $$1, gu $$2, cyy $$3) {
-         super(dvq.ac, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
+   @Override
+   public Optional<duy.b> a(duy.a $$0) {
+      dlh $$1 = $$0.f();
+      int $$2 = $$0.h().d() + $$1.a(16);
+      int $$3 = $$0.h().e() + $$1.a(16);
+      int $$4 = $$0.b().e();
+      dlf $$5 = new dlf($$0.b(), $$0.i());
+      int $$6 = this.e.a($$1, $$5);
+      cpx $$7 = $$0.b().a($$2, $$3, $$0.i(), $$0.d());
+      gu.a $$8 = new gu.a($$2, $$6, $$3);
+
+      while ($$6 > $$4) {
+         dez $$9 = $$7.a($$6);
+         dez $$10 = $$7.a(--$$6);
+         if ($$9.i() && ($$10.a(csm.dX) || $$10.d(cpa.a, $$8.q($$6), ha.b))) {
+            break;
+         }
       }
 
-      public a(dyt $$0, qr $$1) {
-         super(dvq.ac, $$1, $$0, $$1x -> a(cyy.valueOf($$1.l("Rot"))));
+      if ($$6 <= $$4) {
+         return Optional.empty();
+      } else {
+         gu $$11 = new gu($$2, $$6, $$3);
+         return Optional.of(new duy.b($$11, (Consumer<dvq>)($$3x -> dwy.a($$0.e(), $$3x, $$1, $$11))));
       }
+   }
 
-      private static dyo a(cyy $$0) {
-         return new dyo().a($$0).a(cxh.a).a(dxu.d);
-      }
-
-      @Override
-      protected void a(dvp $$0, qr $$1) {
-         super.a($$0, $$1);
-         $$1.a("Rot", this.c.d().name());
-      }
-
-      @Override
-      protected void a(String $$0, gu $$1, cqb $$2, aru $$3, dur $$4) {
-      }
-
-      @Override
-      public void a(cqg $$0, cqe $$1, dgx $$2, aru $$3, dur $$4, cot $$5, gu $$6) {
-         $$4.b(this.b.b(this.c, this.d));
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      }
+   @Override
+   public dvh<?> e() {
+      return dvh.i;
    }
 }

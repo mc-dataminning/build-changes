@@ -1,77 +1,62 @@
-import javax.annotation.Nullable;
+public class clg extends clf {
+   private final ha b;
 
-public class clg extends cli {
-   private final gu b;
-   protected boolean a = true;
-
-   public clg(cbn $$0, bgp $$1, ciy $$2, eha $$3) {
-      this($$0.dK(), $$0, $$1, $$2, $$3);
-   }
-
-   public clg(cli $$0) {
-      this($$0.q(), $$0.o(), $$0.p(), $$0.n(), $$0.j());
-   }
-
-   protected clg(cpm $$0, @Nullable cbn $$1, bgp $$2, ciy $$3, eha $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.b = $$4.a().a($$4.b());
-      this.a = $$0.a_($$4.a()).a(this);
-   }
-
-   public static clg a(clg $$0, gu $$1, ha $$2) {
-      return new clg(
-         $$0.q(),
-         $$0.o(),
-         $$0.p(),
-         $$0.n(),
-         new eha(
-            new ehe((double)$$1.u() + 0.5 + (double)$$2.j() * 0.5, (double)$$1.v() + 0.5 + (double)$$2.k() * 0.5, (double)$$1.w() + 0.5 + (double)$$2.l() * 0.5),
-            $$2,
-            $$1,
-            false
-         )
-      );
+   public clg(cpl $$0, gu $$1, ha $$2, cix $$3, ha $$4) {
+      super($$0, null, bgp.a, $$3, new egz(ehd.c($$1), $$4, $$1, false));
+      this.b = $$2;
    }
 
    @Override
    public gu a() {
-      return this.a ? super.a() : this.b;
+      return this.j().a();
    }
 
+   @Override
    public boolean b() {
-      return this.a || this.q().a_(this.a()).a(this);
+      return this.q().a_(this.j().a()).a(this);
    }
 
+   @Override
    public boolean c() {
-      return this.a;
+      return this.b();
    }
 
+   @Override
    public ha d() {
-      return ha.a(this.o())[0];
+      return ha.a;
    }
 
-   public ha e() {
-      return ha.a(this.o(), ha.a.b);
-   }
-
+   @Override
    public ha[] f() {
-      ha[] $$0 = ha.a(this.o());
-      if (this.a) {
-         return $$0;
-      } else {
-         ha $$1 = this.k();
-         int $$2 = 0;
-
-         while ($$2 < $$0.length && $$0[$$2] != $$1.g()) {
-            $$2++;
-         }
-
-         if ($$2 > 0) {
-            System.arraycopy($$0, 0, $$0, 1, $$2);
-            $$0[0] = $$1.g();
-         }
-
-         return $$0;
+      switch (this.b) {
+         case a:
+         default:
+            return new ha[]{ha.a, ha.c, ha.f, ha.d, ha.e, ha.b};
+         case b:
+            return new ha[]{ha.a, ha.b, ha.c, ha.f, ha.d, ha.e};
+         case c:
+            return new ha[]{ha.a, ha.c, ha.f, ha.e, ha.b, ha.d};
+         case d:
+            return new ha[]{ha.a, ha.d, ha.f, ha.e, ha.b, ha.c};
+         case e:
+            return new ha[]{ha.a, ha.e, ha.d, ha.b, ha.c, ha.f};
+         case f:
+            return new ha[]{ha.a, ha.f, ha.d, ha.b, ha.c, ha.e};
       }
+   }
+
+   @Override
+   public ha g() {
+      return this.b.o() == ha.a.b ? ha.c : this.b;
+   }
+
+   @Override
+   public boolean h() {
+      return false;
+   }
+
+   @Override
+   public float i() {
+      return (float)(this.b.e() * 90);
    }
 }

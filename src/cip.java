@@ -1,15 +1,23 @@
-public class cip extends cit implements cjx {
-   public cip(cit.a $$0) {
-      super($$0);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public record cip(he<aov> b, int c, float d) {
+   public static final Codec<cip> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               aov.b.fieldOf("sound_event").forGetter(cip::a), aqy.j.fieldOf("use_duration").forGetter(cip::b), aqy.k.fieldOf("range").forGetter(cip::c)
+            )
+            .apply($$0, cip::new)
+   );
+
+   public he<aov> a() {
+      return this.b;
    }
 
-   @Override
-   public boolean a(cpm $$0, ddu $$1, boolean $$2, cbn $$3) {
-      if ($$1.a($$0x -> $$0x.a(false), $$2)) {
-         $$0.a(null, $$1.p(), aow.lJ, aox.e, 1.0F, 1.0F);
-         return true;
-      } else {
-         return false;
-      }
+   public int b() {
+      return this.c;
+   }
+
+   public float c() {
+      return this.d;
    }
 }

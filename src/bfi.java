@@ -4,7 +4,7 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 
 public interface bfi<Msg> extends AutoCloseable {
-   String bo();
+   String bn();
 
    void a(Msg var1);
 
@@ -32,7 +32,7 @@ public interface bfi<Msg> extends AutoCloseable {
    static <Msg> bfi<Msg> a(final String $$0, final Consumer<Msg> $$1) {
       return new bfi<Msg>() {
          @Override
-         public String bo() {
+         public String bn() {
             return $$0;
          }
 

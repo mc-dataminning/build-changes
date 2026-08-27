@@ -1,18 +1,15 @@
-public class ddi extends ddu {
-   private static final int a = 60;
-   private static final int b = 9;
+public interface ddi extends bgj {
+   ehw c = csl.a(2.0, 11.0, 2.0, 14.0, 16.0, 14.0);
+   ehw x_ = csl.a(0.0, 16.0, 0.0, 16.0, 32.0, 16.0);
+   ehw y_ = eht.a(c, x_);
 
-   public ddi(gu $$0, dfa $$1) {
-      super(dco.i, $$0, $$1);
+   default ehw ap_() {
+      return y_;
    }
 
-   @Override
-   public int c() {
-      return 9;
-   }
+   double G();
 
-   @Override
-   public int d() {
-      return 60;
-   }
+   double H();
+
+   double J();
 }

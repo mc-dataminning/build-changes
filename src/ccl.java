@@ -1,54 +1,82 @@
-public abstract class ccl extends ccm implements ccc {
-   private static final adz<ciy> b = aec.a(ccl.class, aeb.h);
-
-   public ccl(bim<? extends ccl> $$0, cpm $$1) {
+public abstract class ccl extends cce {
+   protected ccl(bim<? extends ccl> $$0, cpl $$1) {
       super($$0, $$1);
    }
 
-   public ccl(bim<? extends ccl> $$0, double $$1, double $$2, double $$3, cpm $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+   protected ccl(bim<? extends ccl> $$0, double $$1, double $$2, double $$3, cpl $$4) {
+      this($$0, $$4);
+      this.e($$1, $$2, $$3);
    }
 
-   public ccl(bim<? extends ccl> $$0, biy $$1, cpm $$2) {
-      super($$0, $$1, $$2);
+   protected ccl(bim<? extends ccl> $$0, biy $$1, cpl $$2) {
+      this($$0, $$1.dp(), $$1.dt() - 0.1F, $$1.dv(), $$2);
+      this.b((bii)$$1);
    }
 
-   public void a(ciy $$0) {
-      if (!$$0.a(this.m()) || $$0.u()) {
-         this.al().b(b, $$0.c(1));
+   @Override
+   public boolean a(double $$0) {
+      double $$1 = this.cG().a() * 4.0;
+      if (Double.isNaN($$1)) {
+         $$1 = 4.0;
       }
-   }
 
-   protected abstract cit m();
-
-   protected ciy o() {
-      return this.al().b(b);
+      $$1 *= 64.0;
+      return $$0 < $$1 * $$1;
    }
 
    @Override
-   public ciy j() {
-      ciy $$0 = this.o();
-      return $$0.b() ? new ciy(this.m()) : $$0;
-   }
+   public void l() {
+      super.l();
+      ehb $$0 = ccf.a(this, this::a);
+      boolean $$1 = false;
+      if ($$0.c() == ehb.a.b) {
+         gu $$2 = ((egz)$$0).a();
+         dez $$3 = this.dK().a_($$2);
+         if ($$3.a(csm.ee)) {
+            this.f($$2);
+            $$1 = true;
+         } else if ($$3.a(csm.kF)) {
+            dcl $$4 = this.dK().c_($$2);
+            if ($$4 instanceof ddz && ddz.a(this)) {
+               ddz.a(this.dK(), $$2, $$3, this, (ddz)$$4);
+            }
 
-   @Override
-   protected void a_() {
-      this.al().a(b, ciy.b);
-   }
-
-   @Override
-   public void b(qr $$0) {
-      super.b($$0);
-      ciy $$1 = this.o();
-      if (!$$1.b()) {
-         $$0.a("Item", $$1.b(new qr()));
+            $$1 = true;
+         }
       }
+
+      if ($$0.c() != ehb.a.a && !$$1) {
+         this.a($$0);
+      }
+
+      this.aO();
+      ehd $$5 = this.dn();
+      double $$6 = this.dp() + $$5.c;
+      double $$7 = this.dr() + $$5.d;
+      double $$8 = this.dv() + $$5.e;
+      this.B();
+      float $$11;
+      if (this.aX()) {
+         for (int $$9 = 0; $$9 < 4; $$9++) {
+            float $$10 = 0.25F;
+            this.dK().a(iv.e, $$6 - $$5.c * 0.25, $$7 - $$5.d * 0.25, $$8 - $$5.e * 0.25, $$5.c, $$5.d, $$5.e);
+         }
+
+         $$11 = 0.8F;
+      } else {
+         $$11 = 0.99F;
+      }
+
+      this.f($$5.a((double)$$11));
+      if (!this.aT()) {
+         ehd $$13 = this.dn();
+         this.o($$13.c, $$13.d - (double)this.p(), $$13.e);
+      }
+
+      this.e($$6, $$7, $$8);
    }
 
-   @Override
-   public void a(qr $$0) {
-      super.a($$0);
-      ciy $$1 = ciy.a($$0.p("Item"));
-      this.a($$1);
+   protected float p() {
+      return 0.03F;
    }
 }

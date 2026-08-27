@@ -1,7 +1,8 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class dlz extends dmb {
+@Deprecated
+public class dlz extends dma {
    public static final Codec<dlz> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dlz::new));
 
    public dlz(hz $$0) {
@@ -9,12 +10,12 @@ class dlz extends dmb {
    }
 
    @Override
-   protected boolean a(dfa $$0) {
-      return $$0.r();
+   protected boolean a(dez $$0) {
+      return $$0.e();
    }
 
    @Override
-   public dlr<?> a() {
-      return dlr.f;
+   public dlq<?> a() {
+      return dlq.e;
    }
 }

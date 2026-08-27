@@ -407,7 +407,7 @@ public class any {
    }
 
    private static File g(MinecraftServer $$0) {
-      return $$0.a(ebv.d).toFile();
+      return $$0.a(ebu.d).toFile();
    }
 
    private static void b(File $$0) {

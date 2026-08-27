@@ -1,21 +1,21 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-@Deprecated
-public class dma extends dmb {
-   public static final Codec<dma> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dma::new));
+public abstract class dma implements dlp {
+   protected final hz f;
 
-   public dma(hz $$0) {
-      super($$0);
+   protected static <P extends dma> P1<Mu<P>, hz> a(Instance<P> $$0) {
+      return $$0.group(hz.v(16).optionalFieldOf("offset", hz.g).forGetter($$0x -> $$0x.f));
    }
 
-   @Override
-   protected boolean a(dfa $$0) {
-      return $$0.e();
+   protected dma(hz $$0) {
+      this.f = $$0;
    }
 
-   @Override
-   public dlr<?> a() {
-      return dlr.e;
+   public final boolean a(cqf $$0, gu $$1) {
+      return this.a($$0.a_($$1.a(this.f)));
    }
+
+   protected abstract boolean a(dez var1);
 }

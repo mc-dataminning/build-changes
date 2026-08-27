@@ -1,4 +1,11 @@
-import com.mojang.serialization.Codec;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public record eft(Codec<? extends efu> a) {
+public interface eft {
+   @Nullable
+   rk a(ecg var1);
+
+   Set<eeo<?>> b();
+
+   efs a();
 }

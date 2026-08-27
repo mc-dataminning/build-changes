@@ -1,88 +1,54 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-
 public class ceb {
-   private final int a;
-   private final float b;
-   private final boolean c;
-   private final boolean d;
-   private final boolean e;
-   private final List<Pair<bhv, Float>> f;
+   public static final cea a = new cea.a().a(4).a(0.3F).d();
+   public static final cea b = new cea.a().a(5).a(0.6F).d();
+   public static final cea c = new cea.a().a(3).a(0.3F).a().d();
+   public static final cea d = new cea.a().a(1).a(0.6F).d();
+   public static final cea e = a(6).d();
+   public static final cea f = new cea.a().a(5).a(0.6F).d();
+   public static final cea g = new cea.a().a(3).a(0.6F).d();
+   public static final cea h = new cea.a().a(2).a(0.3F).a(new bhv(bhx.q, 600, 0), 0.3F).a().d();
+   public static final cea i = new cea.a().a(4).a(0.3F).b().d();
+   public static final cea j = new cea.a().a(2).a(0.1F).d();
+   public static final cea k = new cea.a().a(8).a(0.8F).a().d();
+   public static final cea l = new cea.a().a(6).a(0.6F).a().d();
+   public static final cea m = new cea.a().a(5).a(0.6F).d();
+   public static final cea n = new cea.a().a(6).a(0.8F).a().d();
+   public static final cea o = new cea.a().a(8).a(0.8F).a().d();
+   public static final cea p = new cea.a().a(5).a(0.6F).a().d();
+   public static final cea q = new cea.a().a(6).a(0.8F).d();
+   public static final cea r = new cea.a().a(2).a(0.1F).d();
+   public static final cea s = new cea.a().a(1).a(0.3F).c().d();
+   public static final cea t = new cea.a()
+      .a(4)
+      .a(1.2F)
+      .a(new bhv(bhx.j, 400, 1), 1.0F)
+      .a(new bhv(bhx.k, 6000, 0), 1.0F)
+      .a(new bhv(bhx.l, 6000, 0), 1.0F)
+      .a(new bhv(bhx.v, 2400, 3), 1.0F)
+      .b()
+      .d();
+   public static final cea u = new cea.a().a(4).a(1.2F).a(new bhv(bhx.j, 100, 1), 1.0F).a(new bhv(bhx.v, 2400, 0), 1.0F).b().d();
+   public static final cea v = new cea.a().a(6).a(1.2F).d();
+   public static final cea w = new cea.a().a(6).a(0.1F).d();
+   public static final cea x = new cea.a().a(2).a(0.3F).d();
+   public static final cea y = a(6).d();
+   public static final cea z = new cea.a().a(2).a(0.3F).a().d();
+   public static final cea A = new cea.a().a(2).a(0.3F).a(new bhv(bhx.s, 100, 0), 0.6F).d();
+   public static final cea B = new cea.a().a(3).a(0.3F).a().d();
+   public static final cea C = new cea.a().a(1).a(0.3F).d();
+   public static final cea D = new cea.a().a(1).a(0.1F).a(new bhv(bhx.s, 1200, 1), 1.0F).a(new bhv(bhx.q, 300, 2), 1.0F).a(new bhv(bhx.i, 300, 0), 1.0F).d();
+   public static final cea E = new cea.a().a(8).a(0.3F).d();
+   public static final cea F = new cea.a().a(3).a(0.3F).a().d();
+   public static final cea G = a(10).d();
+   public static final cea H = new cea.a().a(4).a(0.1F).a(new bhv(bhx.q, 600, 0), 0.8F).a().d();
+   public static final cea I = new cea.a().a(2).a(0.1F).d();
+   public static final cea J = new cea.a().a(2).a(0.8F).a(new bhv(bhx.s, 100, 0), 1.0F).d();
+   public static final cea K = a(6).b().d();
+   public static final cea L = new cea.a().a(2).a(0.1F).d();
+   public static final cea M = new cea.a().a(2).a(0.1F).d();
+   public static final cea N = new cea.a().a(1).a(0.1F).d();
 
-   ceb(int $$0, float $$1, boolean $$2, boolean $$3, boolean $$4, List<Pair<bhv, Float>> $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-   }
-
-   public int a() {
-      return this.a;
-   }
-
-   public float b() {
-      return this.b;
-   }
-
-   public boolean c() {
-      return this.c;
-   }
-
-   public boolean d() {
-      return this.d;
-   }
-
-   public boolean e() {
-      return this.e;
-   }
-
-   public List<Pair<bhv, Float>> f() {
-      return this.f;
-   }
-
-   public static class a {
-      private int a;
-      private float b;
-      private boolean c;
-      private boolean d;
-      private boolean e;
-      private final List<Pair<bhv, Float>> f = Lists.newArrayList();
-
-      public ceb.a a(int $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public ceb.a a(float $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public ceb.a a() {
-         this.c = true;
-         return this;
-      }
-
-      public ceb.a b() {
-         this.d = true;
-         return this;
-      }
-
-      public ceb.a c() {
-         this.e = true;
-         return this;
-      }
-
-      public ceb.a a(bhv $$0, float $$1) {
-         this.f.add(Pair.of($$0, $$1));
-         return this;
-      }
-
-      public ceb d() {
-         return new ceb(this.a, this.b, this.c, this.d, this.e, this.f);
-      }
+   private static cea.a a(int $$0) {
+      return new cea.a().a($$0).a(0.6F);
    }
 }

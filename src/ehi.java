@@ -1,20 +1,17 @@
 public interface ehi {
-   ehi a = ($$0, $$1) -> false;
-   ehi b = ($$0, $$1) -> !$$0 && !$$1;
-   ehi c = ($$0, $$1) -> $$1 && !$$0;
-   ehi d = ($$0, $$1) -> !$$0;
-   ehi e = ($$0, $$1) -> $$0 && !$$1;
-   ehi f = ($$0, $$1) -> !$$1;
-   ehi g = ($$0, $$1) -> $$0 != $$1;
-   ehi h = ($$0, $$1) -> !$$0 || !$$1;
-   ehi i = ($$0, $$1) -> $$0 && $$1;
-   ehi j = ($$0, $$1) -> $$0 == $$1;
-   ehi k = ($$0, $$1) -> $$1;
-   ehi l = ($$0, $$1) -> !$$0 || $$1;
-   ehi m = ($$0, $$1) -> $$0;
-   ehi n = ($$0, $$1) -> $$0 || !$$1;
-   ehi o = ($$0, $$1) -> $$0 || $$1;
-   ehi p = ($$0, $$1) -> true;
+   static ehi a() {
+      return ehn.a;
+   }
 
-   boolean apply(boolean var1, boolean var2);
+   static ehi a(bii $$0) {
+      return new ehn($$0);
+   }
+
+   boolean b();
+
+   boolean a(ehw var1, gu var2, boolean var3);
+
+   boolean a(cis var1);
+
+   boolean a(eac var1, eac var2);
 }

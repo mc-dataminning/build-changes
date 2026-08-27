@@ -17,13 +17,13 @@ public class ahl {
                ((RequiredArgumentBuilder)ds.a("name", em.a($$1))
                      .executes(
                         $$0x -> a(
-                              (dr)$$0x.getSource(), em.a($$0x, "name"), ((dr)$$0x.getSource()).d(), ehe.b, 0.0F, 0, false, ((dr)$$0x.getSource()).l().ac().t()
+                              (dr)$$0x.getSource(), em.a($$0x, "name"), ((dr)$$0x.getSource()).d(), ehd.b, 0.0F, 0, false, ((dr)$$0x.getSource()).l().ac().t()
                            )
                      ))
                   .then(
                      ((RequiredArgumentBuilder)ds.a("pos", fp.a())
                            .executes(
-                              $$0x -> a((dr)$$0x.getSource(), em.a($$0x, "name"), fp.a($$0x, "pos"), ehe.b, 0.0F, 0, false, ((dr)$$0x.getSource()).l().ac().t())
+                              $$0x -> a((dr)$$0x.getSource(), em.a($$0x, "name"), fp.a($$0x, "pos"), ehd.b, 0.0F, 0, false, ((dr)$$0x.getSource()).l().ac().t())
                            ))
                         .then(
                            ds.a("delta", fp.a(false))
@@ -111,7 +111,7 @@ public class ahl {
       );
    }
 
-   private static int a(dr $$0, it $$1, ehe $$2, ehe $$3, float $$4, int $$5, boolean $$6, Collection<akl> $$7) throws CommandSyntaxException {
+   private static int a(dr $$0, it $$1, ehd $$2, ehd $$3, float $$4, int $$5, boolean $$6, Collection<akl> $$7) throws CommandSyntaxException {
       int $$8 = 0;
 
       for (akl $$9 : $$7) {

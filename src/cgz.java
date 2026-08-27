@@ -1,135 +1,230 @@
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 
-public class cgz extends cit implements chk {
-   private final eac a;
+public class cgz extends cis {
+   private static final String b = "Items";
+   public static final int a = 64;
+   private static final int c = 4;
+   private static final int d = arp.f(0.4F, 0.4F, 1.0F);
 
-   public cgz(eac $$0, cit.a $$1) {
-      super($$1);
-      this.a = $$0;
+   public cgz(cis.a $$0) {
+      super($$0);
+   }
+
+   public static float d(cix $$0) {
+      return (float)o($$0) / 64.0F;
    }
 
    @Override
-   public bgr<ciy> a(cpm $$0, cbn $$1, bgp $$2) {
-      ciy $$3 = $$1.b($$2);
-      eha $$4 = a($$0, $$1, this.a == eae.a ? cov.b.b : cov.b.a);
-      if ($$4.c() == ehc.a.a) {
-         return bgr.c($$3);
-      } else if ($$4.c() != ehc.a.b) {
-         return bgr.c($$3);
-      } else {
-         gu $$5 = $$4.a();
-         ha $$6 = $$4.b();
-         gu $$7 = $$5.a($$6);
-         if (!$$0.a($$1, $$5) || !$$1.a($$7, $$6, $$3)) {
-            return bgr.d($$3);
-         } else if (this.a == eae.a) {
-            dfa $$8 = $$0.a_($$5);
-            if ($$8.b() instanceof css $$9) {
-               ciy $$10 = $$9.a($$1, $$0, $$5, $$8);
-               if (!$$10.b()) {
-                  $$1.b(apg.c.b(this));
-                  $$9.am_().ifPresent($$1x -> $$1.a($$1x, 1.0F, 1.0F));
-                  $$0.a($$1, djk.y, $$5);
-                  ciy $$11 = cja.a($$3, $$1, $$10);
-                  if (!$$0.B) {
-                     ai.j.a((akl)$$1, $$10);
-                  }
-
-                  return bgr.a($$11, $$0.r_());
-               }
-            }
-
-            return bgr.d($$3);
-         } else {
-            dfa $$12 = $$0.a_($$5);
-            gu $$13 = $$12.b() instanceof cxa && this.a == eae.c ? $$5 : $$7;
-            if (this.a($$1, $$0, $$13, $$4)) {
-               this.a($$1, $$0, $$3, $$13);
-               if ($$1 instanceof akl) {
-                  ai.y.a((akl)$$1, $$13, $$3);
-               }
-
-               $$1.b(apg.c.b(this));
-               return bgr.a(a($$3, $$1), $$0.r_());
-            } else {
-               return bgr.d($$3);
-            }
-         }
-      }
-   }
-
-   public static ciy a(ciy $$0, cbn $$1) {
-      return !$$1.fR().d ? new ciy(cjb.pK) : $$0;
-   }
-
-   @Override
-   public void a(@Nullable cbn $$0, cpm $$1, ciy $$2, gu $$3) {
-   }
-
-   @Override
-   public boolean a(@Nullable cbn $$0, cpm $$1, gu $$2, @Nullable eha $$3) {
-      if (!(this.a instanceof eab $$4)) {
+   public boolean a(cix $$0, cfv $$1, cel $$2, cbm $$3) {
+      if ($$2 != cel.b) {
          return false;
       } else {
-         csm $$7;
-         boolean $$8;
-         dfa $$6;
-         boolean var10000;
-         label82: {
-            $$6 = $$1.a_($$2);
-            $$7 = $$6.b();
-            $$8 = $$6.a(this.a);
-            label70:
-            if (!$$6.i() && !$$8) {
-               if ($$7 instanceof cxa $$9 && $$9.a($$0, $$1, $$2, $$6, this.a)) {
-                  break label70;
-               }
-
-               var10000 = false;
-               break label82;
+         cix $$4 = $$1.e();
+         if ($$4.b()) {
+            this.a($$3);
+            p($$0).ifPresent($$2x -> b($$0, $$1.f($$2x)));
+         } else if ($$4.d().ag_()) {
+            int $$5 = (64 - o($$0)) / k($$4);
+            int $$6 = b($$0, $$1.b($$4.L(), $$5, $$3));
+            if ($$6 > 0) {
+               this.b($$3);
             }
-
-            var10000 = true;
          }
 
-         boolean $$10 = var10000;
-         if (!$$10) {
-            return $$3 != null && this.a($$0, $$1, $$3.a().a($$3.b()), null);
-         } else if ($$1.x_().i() && this.a.a(apq.a)) {
-            int $$11 = $$2.u();
-            int $$12 = $$2.v();
-            int $$13 = $$2.w();
-            $$1.a($$0, $$2, aow.hN, aox.e, 0.5F, 2.6F + ($$1.z.i() - $$1.z.i()) * 0.8F);
+         return true;
+      }
+   }
 
-            for (int $$14 = 0; $$14 < 8; $$14++) {
-               $$1.a(iv.S, (double)$$11 + Math.random(), (double)$$12 + Math.random(), (double)$$13 + Math.random(), 0.0, 0.0, 0.0);
-            }
-
-            return true;
+   @Override
+   public boolean a(cix $$0, cix $$1, cfv $$2, cel $$3, cbm $$4, bjq $$5) {
+      if ($$3 == cel.b && $$2.b($$4)) {
+         if ($$1.b()) {
+            p($$0).ifPresent($$2x -> {
+               this.a($$4);
+               $$5.a($$2x);
+            });
          } else {
-            if ($$7 instanceof cxa $$15 && this.a == eae.c) {
-               $$15.a($$1, $$2, $$6, $$4.a(false));
-               this.a($$0, $$1, $$2);
-               return true;
+            int $$6 = b($$0, $$1);
+            if ($$6 > 0) {
+               this.b($$4);
+               $$1.h($$6);
             }
+         }
 
-            if (!$$1.B && $$8 && !$$6.k()) {
-               $$1.b($$2, true);
-            }
+         return true;
+      } else {
+         return false;
+      }
+   }
 
-            if (!$$1.a($$2, this.a.g().g(), 11) && !$$6.u().b()) {
-               return false;
+   @Override
+   public bgr<cix> a(cpl $$0, cbm $$1, bgp $$2) {
+      cix $$3 = $$1.b($$2);
+      if (a($$3, $$1)) {
+         this.c($$1);
+         $$1.b(apg.c.b(this));
+         return bgr.a($$3, $$0.r_());
+      } else {
+         return bgr.d($$3);
+      }
+   }
+
+   @Override
+   public boolean e(cix $$0) {
+      return o($$0) > 0;
+   }
+
+   @Override
+   public int f(cix $$0) {
+      return Math.min(1 + 12 * o($$0) / 64, 13);
+   }
+
+   @Override
+   public int g(cix $$0) {
+      return d;
+   }
+
+   private static int b(cix $$0, cix $$1) {
+      if (!$$1.b() && $$1.d().ag_()) {
+         qr $$2 = $$0.w();
+         if (!$$2.e("Items")) {
+            $$2.a("Items", new qx());
+         }
+
+         int $$3 = o($$0);
+         int $$4 = k($$1);
+         int $$5 = Math.min($$1.L(), (64 - $$3) / $$4);
+         if ($$5 == 0) {
+            return 0;
+         } else {
+            qx $$6 = $$2.c("Items", 10);
+            Optional<qr> $$7 = a($$1, $$6);
+            if ($$7.isPresent()) {
+               qr $$8 = $$7.get();
+               cix $$9 = cix.a($$8);
+               $$9.g($$5);
+               $$9.b($$8);
+               $$6.remove($$8);
+               $$6.c(0, $$8);
             } else {
-               this.a($$0, $$1, $$2);
-               return true;
+               cix $$10 = $$1.c($$5);
+               qr $$11 = new qr();
+               $$10.b($$11);
+               $$6.c(0, $$11);
             }
+
+            return $$5;
+         }
+      } else {
+         return 0;
+      }
+   }
+
+   private static Optional<qr> a(cix $$0, qx $$1) {
+      return $$0.a(cja.qg)
+         ? Optional.empty()
+         : $$1.stream().filter(qr.class::isInstance).map(qr.class::cast).filter($$1x -> cix.c(cix.a($$1x), $$0)).findFirst();
+   }
+
+   private static int k(cix $$0) {
+      if ($$0.a(cja.qg)) {
+         return 4 + o($$0);
+      } else {
+         if (($$0.a(cja.vC) || $$0.a(cja.vB)) && $$0.u()) {
+            qr $$1 = cgq.a($$0);
+            if ($$1 != null && !$$1.c("Bees", 10).isEmpty()) {
+               return 64;
+            }
+         }
+
+         return 64 / $$0.g();
+      }
+   }
+
+   private static int o(cix $$0) {
+      return q($$0).mapToInt($$0x -> k($$0x) * $$0x.L()).sum();
+   }
+
+   private static Optional<cix> p(cix $$0) {
+      qr $$1 = $$0.w();
+      if (!$$1.e("Items")) {
+         return Optional.empty();
+      } else {
+         qx $$2 = $$1.c("Items", 10);
+         if ($$2.isEmpty()) {
+            return Optional.empty();
+         } else {
+            int $$3 = 0;
+            qr $$4 = $$2.a(0);
+            cix $$5 = cix.a($$4);
+            $$2.c(0);
+            if ($$2.isEmpty()) {
+               $$0.c("Items");
+            }
+
+            return Optional.of($$5);
          }
       }
    }
 
-   protected void a(@Nullable cbn $$0, cpn $$1, gu $$2) {
-      aov $$3 = this.a.a(apq.b) ? aow.cy : aow.cv;
-      $$1.a($$0, $$2, $$3, aox.e, 1.0F, 1.0F);
-      $$1.a($$0, djk.z, $$2);
+   private static boolean a(cix $$0, cbm $$1) {
+      qr $$2 = $$0.w();
+      if (!$$2.e("Items")) {
+         return false;
+      } else {
+         if ($$1 instanceof akl) {
+            qx $$3 = $$2.c("Items", 10);
+
+            for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
+               qr $$5 = $$3.a($$4);
+               cix $$6 = cix.a($$5);
+               $$1.a($$6, true);
+            }
+         }
+
+         $$0.c("Items");
+         return true;
+      }
+   }
+
+   private static Stream<cix> q(cix $$0) {
+      qr $$1 = $$0.v();
+      if ($$1 == null) {
+         return Stream.empty();
+      } else {
+         qx $$2 = $$1.c("Items", 10);
+         return $$2.stream().map(qr.class::cast).map(cix::a);
+      }
+   }
+
+   @Override
+   public Optional<cgd> h(cix $$0) {
+      hn<cix> $$1 = hn.a();
+      q($$0).forEach($$1::add);
+      return Optional.of(new cgc($$1, o($$0)));
+   }
+
+   @Override
+   public void a(cix $$0, cpl $$1, List<tf> $$2, cko $$3) {
+      $$2.add(tf.a("item.minecraft.bundle.fullness", o($$0), 64).a(n.h));
+   }
+
+   @Override
+   public void a(byf $$0) {
+      ciz.a($$0, q($$0.j()));
+   }
+
+   private void a(bii $$0) {
+      $$0.a(aow.cJ, 0.8F, 0.8F + $$0.dK().y_().i() * 0.4F);
+   }
+
+   private void b(bii $$0) {
+      $$0.a(aow.cI, 0.8F, 0.8F + $$0.dK().y_().i() * 0.4F);
+   }
+
+   private void c(bii $$0) {
+      $$0.a(aow.cH, 0.8F, 0.8F + $$0.dK().y_().i() * 0.4F);
    }
 }

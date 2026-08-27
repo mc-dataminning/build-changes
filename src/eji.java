@@ -1,26 +1,15 @@
-import java.util.function.Function;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import javax.annotation.Nullable;
 
-public interface eji {
-   float getAdvance();
-
-   default float a(boolean $$0) {
-      return this.getAdvance() + ($$0 ? this.a() : 0.0F);
+public interface eji extends AutoCloseable {
+   @Override
+   default void close() {
    }
 
-   default float a() {
-      return 1.0F;
+   @Nullable
+   default ejh a(int $$0) {
+      return null;
    }
 
-   default float b() {
-      return 1.0F;
-   }
-
-   euy bake(Function<ejk, euy> var1);
-
-   public interface a extends eji {
-      @Override
-      default euy bake(Function<ejk, euy> $$0) {
-         return euz.a;
-      }
-   }
+   IntSet a();
 }

@@ -3,20 +3,20 @@ import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
 public class ly extends ln {
-   final cmd<?> a;
+   final cmc<?> a;
 
-   public ly(cmd<?> $$0) {
+   public ly(cmc<?> $$0) {
       this.a = $$0;
    }
 
-   public static ly a(cmd<? extends cls> $$0) {
+   public static ly a(cmc<? extends clr> $$0) {
       return new ly($$0);
    }
 
    public void a(Consumer<lo> $$0, final String $$1) {
-      $$0.accept(new ln.a(clr.d) {
+      $$0.accept(new ln.a(clq.d) {
          @Override
-         public cmd<?> c() {
+         public cmc<?> c() {
             return ly.this.a;
          }
 

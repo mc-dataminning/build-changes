@@ -133,7 +133,7 @@ public class aga {
       if ($$1.h().isEmpty()) {
          $$0.a(() -> tf.a("commands.bossbar.get.players.none", $$1.e()), true);
       } else {
-         $$0.a(() -> tf.a("commands.bossbar.get.players.some", $$1.e(), $$1.h().size(), th.b($$1.h(), cbn::H_)), true);
+         $$0.a(() -> tf.a("commands.bossbar.get.players.some", $$1.e(), $$1.h().size(), th.b($$1.h(), cbm::H_)), true);
       }
 
       return $$1.h().size();
@@ -217,7 +217,7 @@ public class aga {
          if ($$1.h().isEmpty()) {
             $$0.a(() -> tf.a("commands.bossbar.set.players.success.none", $$1.e()), true);
          } else {
-            $$0.a(() -> tf.a("commands.bossbar.set.players.success.some", $$1.e(), $$2.size(), th.b($$2, cbn::H_)), true);
+            $$0.a(() -> tf.a("commands.bossbar.set.players.success.some", $$1.e(), $$2.size(), th.b($$2, cbm::H_)), true);
          }
 
          return $$1.h().size();

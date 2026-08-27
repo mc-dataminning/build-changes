@@ -1,12 +1,26 @@
-import com.google.gson.JsonObject;
+import java.util.IllegalFormatException;
 
-public class gaa implements amm<fzz> {
-   public fzz b(JsonObject $$0) {
-      return new fzz(fzz.a.a(arg.a($$0, "hat", "none")));
+public class gaa {
+   private static volatile qm a = qm.a();
+
+   private gaa() {
    }
 
-   @Override
-   public String a() {
-      return "villager";
+   static void a(qm $$0) {
+      a = $$0;
+   }
+
+   public static String a(String $$0, Object... $$1) {
+      String $$2 = a.a($$0);
+
+      try {
+         return String.format($$2, $$1);
+      } catch (IllegalFormatException var4) {
+         return "Format error: " + $$2;
+      }
+   }
+
+   public static boolean a(String $$0) {
+      return a.b($$0);
    }
 }

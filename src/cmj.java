@@ -1,65 +1,48 @@
-public class cmj extends clt {
-   public cmj(aer $$0, clr $$1) {
-      super($$0, $$1);
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+
+public class cmj<T extends clj> implements cmc<T> {
+   private final int x;
+   private final cmj.a<T> y;
+
+   public cmj(cmj.a<T> $$0, int $$1) {
+      this.x = $$1;
+      this.y = $$0;
    }
 
-   public boolean a(ces $$0, cpm $$1) {
-      int $$2 = 0;
-      int $$3 = 0;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         ciy $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if (csm.a($$5.d()) instanceof czl) {
-               $$2++;
-            } else {
-               if (!($$5.d() instanceof chn)) {
-                  return false;
-               }
-
-               $$3++;
-            }
-
-            if ($$3 > 1 || $$2 > 1) {
-               return false;
-            }
-         }
-      }
-
-      return $$2 == 1 && $$3 == 1;
+   public T b(aer $$0, JsonObject $$1) {
+      String $$2 = arg.a($$1, "group", "");
+      clp $$3 = clp.d.a(arg.a($$1, "category", null), clp.c);
+      JsonElement $$4 = (JsonElement)(arg.d($$1, "ingredient") ? arg.v($$1, "ingredient") : arg.u($$1, "ingredient"));
+      clx $$5 = clx.a($$4, false);
+      String $$6 = arg.i($$1, "result");
+      aer $$7 = new aer($$6);
+      cix $$8 = new cix(jb.i.b($$7).orElseThrow(() -> new IllegalStateException("Item: " + $$6 + " does not exist")));
+      float $$9 = arg.a($$1, "experience", 0.0F);
+      int $$10 = arg.a($$1, "cookingtime", this.x);
+      return this.y.create($$0, $$2, $$3, $$5, $$8, $$9, $$10);
    }
 
-   public ciy a(ces $$0, hs $$1) {
-      ciy $$2 = ciy.b;
-      chn $$3 = (chn)cjb.qu;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         ciy $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            cit $$6 = $$5.d();
-            if (csm.a($$6) instanceof czl) {
-               $$2 = $$5;
-            } else if ($$6 instanceof chn) {
-               $$3 = (chn)$$6;
-            }
-         }
-      }
-
-      ciy $$7 = czl.b($$3.d());
-      if ($$2.u()) {
-         $$7.c($$2.v().h());
-      }
-
-      return $$7;
+   public T b(aer $$0, si $$1) {
+      String $$2 = $$1.r();
+      clp $$3 = $$1.b(clp.class);
+      clx $$4 = clx.b($$1);
+      cix $$5 = $$1.q();
+      float $$6 = $$1.readFloat();
+      int $$7 = $$1.m();
+      return this.y.create($$0, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public void a(si $$0, T $$1) {
+      $$0.a($$1.c);
+      $$0.a($$1.g());
+      $$1.d.a($$0);
+      $$0.a($$1.e);
+      $$0.a($$1.f);
+      $$0.c($$1.g);
    }
 
-   @Override
-   public cmd<?> aj_() {
-      return cmd.m;
+   interface a<T extends clj> {
+      T create(aer var1, String var2, clp var3, clx var4, cix var5, float var6, int var7);
    }
 }

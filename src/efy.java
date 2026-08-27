@@ -1,53 +1,35 @@
-import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
 
-public record efy(egb b, egb c) implements egb {
-   public static final Codec<efy> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(egc.a.fieldOf("n").forGetter(efy::c), egc.a.fieldOf("p").forGetter(efy::d)).apply($$0, efy::new)
-   );
+public record efy(float c) implements ega {
+   public static final Codec<efy> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(efy::c)).apply($$0, efy::new));
+   public static final Codec<efy> b = Codec.FLOAT.xmap(efy::new, efy::c);
 
    @Override
-   public ega b() {
-      return egc.d;
+   public efz b() {
+      return egb.b;
    }
 
    @Override
-   public int a(ech $$0) {
-      int $$1 = this.b.a($$0);
-      float $$2 = this.c.b($$0);
-      aru $$3 = $$0.b();
-      int $$4 = 0;
-
-      for (int $$5 = 0; $$5 < $$1; $$5++) {
-         if ($$3.i() < $$2) {
-            $$4++;
-         }
-      }
-
-      return $$4;
-   }
-
-   @Override
-   public float b(ech $$0) {
-      return (float)this.a($$0);
-   }
-
-   public static efy a(int $$0, float $$1) {
-      return new efy(efz.a((float)$$0), efz.a($$1));
-   }
-
-   @Override
-   public Set<eep<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
-   }
-
-   public egb c() {
-      return this.b;
-   }
-
-   public egb d() {
+   public float b(ecg $$0) {
       return this.c;
+   }
+
+   public static efy a(float $$0) {
+      return new efy($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? Float.compare(((efy)$$0).c, this.c) == 0 : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.c != 0.0F ? Float.floatToIntBits(this.c) : 0;
    }
 }

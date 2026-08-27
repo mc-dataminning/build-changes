@@ -5,12 +5,12 @@ import javax.annotation.Nullable;
 
 public class ana extends ams {
    private static final amo b = new amo(tf.c("dataPack.vanilla.description"), aa.b().a(amb.b), Optional.empty());
-   private static final alx c = new alx(cdx.g);
+   private static final alx c = new alx(cdw.g);
    private static final alv d = alv.a(amo.b, b, alx.a, c);
    private static final tf e = tf.c("dataPack.vanilla.name");
    private static final aer f = new aer("minecraft", "datapacks");
 
-   public ana(egu $$0) {
+   public ana(egt $$0) {
       super(amb.b, b(), f, $$0);
    }
 
@@ -36,15 +36,15 @@ public class ana extends ams {
       return amu.a($$0, $$2, false, $$1, amb.b, amu.b.a, amy.d);
    }
 
-   public static amx a(Path $$0, egu $$1) {
+   public static amx a(Path $$0, egt $$1) {
       return new amx(new ana($$1), new amt($$0, amb.b, amy.e, $$1));
    }
 
    public static amx c() {
-      return new amx(new ana(new egu($$0 -> true)));
+      return new amx(new ana(new egt($$0 -> true)));
    }
 
-   public static amx a(ebx.c $$0) {
-      return a($$0.a(ebv.j), $$0.a().e());
+   public static amx a(ebw.c $$0) {
+      return a($$0.a(ebu.j), $$0.a().e());
    }
 }

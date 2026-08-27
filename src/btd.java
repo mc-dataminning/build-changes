@@ -1,37 +1,47 @@
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.Set;
 
-public class btd {
-   private final bja a;
-   private final IntSet b = new IntOpenHashSet();
-   private final IntSet c = new IntOpenHashSet();
+public abstract class btd<E extends biy> {
+   private static final aru a = aru.b();
+   private static final int c = 20;
+   protected static final int b = 16;
+   private static final btk d = btk.b().a(16.0);
+   private static final btk e = btk.b().a(16.0).e();
+   private static final btk f = btk.a().a(16.0);
+   private static final btk g = btk.a().a(16.0).e();
+   private static final btk h = btk.a().a(16.0).d();
+   private static final btk i = btk.a().a(16.0).d().e();
+   private final int j;
+   private long k;
 
-   public btd(bja $$0) {
-      this.a = $$0;
+   public btd(int $$0) {
+      this.j = $$0;
+      this.k = (long)a.a($$0);
    }
 
-   public void a() {
-      this.b.clear();
-      this.c.clear();
+   public btd() {
+      this(20);
    }
 
-   public boolean a(bii $$0) {
-      int $$1 = $$0.ah();
-      if (this.b.contains($$1)) {
-         return true;
-      } else if (this.c.contains($$1)) {
-         return false;
-      } else {
-         this.a.dK().ad().a("hasLineOfSight");
-         boolean $$2 = this.a.E($$0);
-         this.a.dK().ad().c();
-         if ($$2) {
-            this.b.add($$1);
-         } else {
-            this.c.add($$1);
-         }
-
-         return $$2;
+   public final void b(akk $$0, E $$1) {
+      if (--this.k <= 0L) {
+         this.k = (long)this.j;
+         this.a($$0, $$1);
       }
+   }
+
+   protected abstract void a(akk var1, E var2);
+
+   public abstract Set<brz<?>> a();
+
+   public static boolean b(biy $$0, biy $$1) {
+      return $$0.dM().b(brz.o, $$1) ? e.a($$0, $$1) : d.a($$0, $$1);
+   }
+
+   public static boolean c(biy $$0, biy $$1) {
+      return $$0.dM().b(brz.o, $$1) ? g.a($$0, $$1) : f.a($$0, $$1);
+   }
+
+   public static boolean d(biy $$0, biy $$1) {
+      return $$0.dM().b(brz.o, $$1) ? i.a($$0, $$1) : h.a($$0, $$1);
    }
 }

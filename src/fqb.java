@@ -1,30 +1,103 @@
-public class fqb implements fpl<ddy> {
-   private final fsm a;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-   public fqb(fpm.a $$0) {
-      this.a = $$0.c();
+public class fqb implements fpu<dcx> {
+   public static final gay a = new gay(fyt.e, new aer("entity/conduit/base"));
+   public static final gay b = new gay(fyt.e, new aer("entity/conduit/cage"));
+   public static final gay c = new gay(fyt.e, new aer("entity/conduit/wind"));
+   public static final gay d = new gay(fyt.e, new aer("entity/conduit/wind_vertical"));
+   public static final gay e = new gay(fyt.e, new aer("entity/conduit/open_eye"));
+   public static final gay f = new gay(fyt.e, new aer("entity/conduit/closed_eye"));
+   private final fhs g;
+   private final fhs h;
+   private final fhs i;
+   private final fhs j;
+   private final fpt k;
+
+   public fqb(fpv.a $$0) {
+      this.k = $$0.a();
+      this.g = $$0.a(fhr.x);
+      this.h = $$0.a(fhr.z);
+      this.i = $$0.a(fhr.y);
+      this.j = $$0.a(fhr.w);
    }
 
-   public void a(ddy $$0, float $$1, elg $$2, fnl $$3, int $$4, int $$5) {
-      $$2.a();
-      $$2.a(0.5F, 0.0F, 0.5F);
-      coo $$6 = $$0.d();
-      bii $$7 = $$6.a($$0.k(), $$0.k().y_(), $$0.p());
-      if ($$7 != null) {
-         float $$8 = 0.53125F;
-         float $$9 = Math.max($$7.df(), $$7.dg());
-         if ((double)$$9 > 1.0) {
-            $$8 /= $$9;
+   public static fhy b() {
+      fia $$0 = new fia();
+      fib $$1 = $$0.a();
+      $$1.a("eye", fhx.c().a(0, 0).a(-4.0F, -4.0F, 0.0F, 8.0F, 8.0F, 0.0F, new fhw(0.01F)), fhu.a);
+      return fhy.a($$0, 16, 16);
+   }
+
+   public static fhy c() {
+      fia $$0 = new fia();
+      fib $$1 = $$0.a();
+      $$1.a("wind", fhx.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), fhu.a);
+      return fhy.a($$0, 64, 32);
+   }
+
+   public static fhy d() {
+      fia $$0 = new fia();
+      fib $$1 = $$0.a();
+      $$1.a("shell", fhx.c().a(0, 0).a(-3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F), fhu.a);
+      return fhy.a($$0, 32, 16);
+   }
+
+   public static fhy e() {
+      fia $$0 = new fia();
+      fib $$1 = $$0.a();
+      $$1.a("shell", fhx.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fhu.a);
+      return fhy.a($$0, 32, 16);
+   }
+
+   public void a(dcx $$0, float $$1, elf $$2, fnu $$3, int $$4, int $$5) {
+      float $$6 = (float)$$0.a + $$1;
+      if (!$$0.d()) {
+         float $$7 = $$0.a(0.0F);
+         elj $$8 = a.a($$3, foc::c);
+         $$2.a();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         $$2.a(new Quaternionf().rotationY($$7 * (float) (Math.PI / 180.0)));
+         this.i.a($$2, $$8, $$4, $$5);
+         $$2.b();
+      } else {
+         float $$9 = $$0.a($$1) * (180.0F / (float)Math.PI);
+         float $$10 = arp.a($$6 * 0.1F) / 2.0F + 0.5F;
+         $$10 = $$10 * $$10 + $$10;
+         $$2.a();
+         $$2.a(0.5F, 0.3F + $$10 * 0.2F, 0.5F);
+         Vector3f $$11 = new Vector3f(0.5F, 1.0F, 0.5F).normalize();
+         $$2.a(new Quaternionf().rotationAxis($$9 * (float) (Math.PI / 180.0), $$11));
+         this.j.a($$2, b.a($$3, foc::e), $$4, $$5);
+         $$2.b();
+         int $$12 = $$0.a / 66 % 3;
+         $$2.a();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         if ($$12 == 1) {
+            $$2.a(new Quaternionf().rotationX((float) (Math.PI / 2)));
+         } else if ($$12 == 2) {
+            $$2.a(new Quaternionf().rotationZ((float) (Math.PI / 2)));
          }
 
-         $$2.a(0.0F, 0.4F, 0.0F);
-         $$2.a(a.d.rotationDegrees((float)arp.d((double)$$1, $$6.b(), $$6.a()) * 10.0F));
-         $$2.a(0.0F, -0.2F, 0.0F);
-         $$2.a(a.b.rotationDegrees(-30.0F));
-         $$2.b($$8, $$8, $$8);
-         this.a.a($$7, 0.0, 0.0, 0.0, 0.0F, $$1, $$2, $$3, $$4);
+         elj $$13 = ($$12 == 1 ? d : c).a($$3, foc::e);
+         this.h.a($$2, $$13, $$4, $$5);
+         $$2.b();
+         $$2.a();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         $$2.b(0.875F, 0.875F, 0.875F);
+         $$2.a(new Quaternionf().rotationXYZ((float) Math.PI, 0.0F, (float) Math.PI));
+         this.h.a($$2, $$13, $$4, $$5);
+         $$2.b();
+         epw $$14 = this.k.b;
+         $$2.a();
+         $$2.a(0.5F, 0.3F + $$10 * 0.2F, 0.5F);
+         $$2.b(0.5F, 0.5F, 0.5F);
+         float $$15 = -$$14.e();
+         $$2.a(new Quaternionf().rotationYXZ($$15 * (float) (Math.PI / 180.0), $$14.d() * (float) (Math.PI / 180.0), (float) Math.PI));
+         float $$16 = 1.3333334F;
+         $$2.b(1.3333334F, 1.3333334F, 1.3333334F);
+         this.g.a($$2, ($$0.f() ? e : f).a($$3, foc::e), $$4, $$5);
+         $$2.b();
       }
-
-      $$2.b();
    }
 }

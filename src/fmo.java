@@ -1,82 +1,55 @@
-import com.mojang.authlib.GameProfile;
-
 public class fmo extends fmk {
-   private ehe ck = ehe.b;
-   private int cl;
+   private final fmf a;
 
-   public fmo(fii $$0, GameProfile $$1) {
-      super($$0, $$1);
-      this.t(1.0F);
-      this.af = true;
+   fmo(fin $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fmf $$7) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a = $$7;
+      this.j *= 0.3F;
+      this.k = Math.random() * 0.2F + 0.1F;
+      this.l *= 0.3F;
+      this.b(0.01F, 0.01F);
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+      this.b($$7);
+      this.u = 0.0F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
    }
 
    @Override
-   public boolean a(double $$0) {
-      double $$1 = this.cG().a() * 10.0;
-      if (Double.isNaN($$1)) {
-         $$1 = 1.0;
-      }
-
-      $$1 *= 64.0 * cz();
-      return $$0 < $$1 * $$1;
+   public flo b() {
+      return flo.b;
    }
 
    @Override
-   public boolean a(bhg $$0, float $$1) {
-      return true;
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      this.q(false);
-   }
-
-   @Override
-   public void b_() {
-      if (this.bn > 0) {
-         this.a(this.bn, this.bo, this.bp, this.bq, this.br, this.bs);
-         this.bn--;
-      }
-
-      if (this.bu > 0) {
-         this.a(this.bu, this.bt);
-         this.bu--;
-      }
-
-      if (this.cl > 0) {
-         this.g(new ehe((this.ck.c - this.dn().c) / (double)this.cl, (this.ck.d - this.dn().d) / (double)this.cl, (this.ck.e - this.dn().e) / (double)this.cl));
-         this.cl--;
-      }
-
-      this.bT = this.bU;
-      this.eO();
-      float $$1;
-      if (this.aA() && !this.eu()) {
-         $$1 = (float)Math.min(0.1, this.dn().h());
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      int $$0 = 60 - this.t;
+      if (this.t-- <= 0) {
+         this.k();
       } else {
-         $$1 = 0.0F;
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         this.j *= 0.98F;
+         this.k *= 0.98F;
+         this.l *= 0.98F;
+         float $$1 = (float)$$0 * 0.001F;
+         this.b($$1, $$1);
+         this.a(this.a.a($$0 % 4, 4));
+      }
+   }
+
+   public static class a implements fln<iy> {
+      private final fmf a;
+
+      public a(fmf $$0) {
+         this.a = $$0;
       }
 
-      this.bU = this.bU + ($$1 - this.bU) * 0.4F;
-      this.dK().ad().a("push");
-      this.fg();
-      this.dK().ad().c();
-   }
-
-   @Override
-   public void l(double $$0, double $$1, double $$2) {
-      this.ck = new ehe($$0, $$1, $$2);
-      this.cl = this.ag().p() + 1;
-   }
-
-   @Override
-   protected void fK() {
-   }
-
-   @Override
-   public void a(tf $$0) {
-      eqm $$1 = eqm.O();
-      $$1.l.d().a($$0);
+      public flk a(iy $$0, fin $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fmo($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
    }
 }

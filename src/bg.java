@@ -19,8 +19,8 @@ public class bg extends cu<bg.a> {
       return new bg.a(this.a, $$1, $$3, $$4);
    }
 
-   public void a(akl $$0, ehe $$1) {
-      ehe $$2 = $$0.di();
+   public void a(akl $$0, ehd $$1) {
+      ehd $$2 = $$0.di();
       this.a($$0, $$3 -> $$3.a($$0.x(), $$1, $$2));
    }
 
@@ -54,7 +54,7 @@ public class bg extends cu<bg.a> {
          return $$0;
       }
 
-      public boolean a(akk $$0, ehe $$1, ehe $$2) {
+      public boolean a(akk $$0, ehd $$1, ehd $$2) {
          return this.a.isPresent() && !this.a.get().a($$0, $$1.c, $$1.d, $$1.e)
             ? false
             : !this.b.isPresent() || this.b.get().a($$1.c, $$1.d, $$1.e, $$2.c, $$2.d, $$2.e);

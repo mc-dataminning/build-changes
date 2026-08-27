@@ -1,176 +1,204 @@
-public abstract class cbu extends ccf {
-   public double b;
-   public double c;
-   public double d;
+import com.google.common.collect.Sets;
+import java.util.Collection;
+import java.util.Set;
 
-   protected cbu(bim<? extends cbu> $$0, cpm $$1) {
+public class cbu extends cbs {
+   private static final int f = 600;
+   private static final int g = -1;
+   private static final adz<Integer> h = aec.a(cbu.class, aeb.b);
+   private static final byte i = 0;
+   private cku j = ckx.b;
+   private final Set<bhv> k = Sets.newHashSet();
+   private boolean l;
+
+   public cbu(bim<? extends cbu> $$0, cpl $$1) {
       super($$0, $$1);
    }
 
-   public cbu(bim<? extends cbu> $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, cpm $$7) {
-      this($$0, $$7);
-      this.b($$1, $$2, $$3, this.dA(), this.dC());
-      this.ap();
-      double $$8 = Math.sqrt($$4 * $$4 + $$5 * $$5 + $$6 * $$6);
-      if ($$8 != 0.0) {
-         this.b = $$4 / $$8 * 0.1;
-         this.c = $$5 / $$8 * 0.1;
-         this.d = $$6 / $$8 * 0.1;
+   public cbu(cpl $$0, double $$1, double $$2, double $$3) {
+      super(bim.e, $$1, $$2, $$3, $$0);
+   }
+
+   public cbu(cpl $$0, biy $$1) {
+      super(bim.e, $$1, $$0);
+   }
+
+   public void a(cix $$0) {
+      if ($$0.a(cja.uw)) {
+         this.j = ckw.d($$0);
+         Collection<bhv> $$1 = ckw.b($$0);
+         if (!$$1.isEmpty()) {
+            for (bhv $$2 : $$1) {
+               this.k.add(new bhv($$2));
+            }
+         }
+
+         int $$3 = c($$0);
+         if ($$3 == -1) {
+            this.D();
+         } else {
+            this.d($$3);
+         }
+      } else if ($$0.a(cja.nH)) {
+         this.j = ckx.b;
+         this.k.clear();
+         this.an.b(h, -1);
       }
    }
 
-   public cbu(bim<? extends cbu> $$0, biy $$1, double $$2, double $$3, double $$4, cpm $$5) {
-      this($$0, $$1.dp(), $$1.dr(), $$1.dv(), $$2, $$3, $$4, $$5);
-      this.b($$1);
-      this.a($$1.dA(), $$1.dC());
+   public static int c(cix $$0) {
+      qr $$1 = $$0.v();
+      return $$1 != null && $$1.b("CustomPotionColor", 99) ? $$1.h("CustomPotionColor") : -1;
+   }
+
+   private void D() {
+      this.l = false;
+      if (this.j == ckx.b && this.k.isEmpty()) {
+         this.an.b(h, -1);
+      } else {
+         this.an.b(h, ckw.a(ckw.a(this.j, this.k)));
+      }
+   }
+
+   public void a(bhv $$0) {
+      this.k.add($$0);
+      this.al().b(h, ckw.a(ckw.a(this.j, this.k)));
    }
 
    @Override
    protected void a_() {
-   }
-
-   @Override
-   public boolean a(double $$0) {
-      double $$1 = this.cG().a() * 4.0;
-      if (Double.isNaN($$1)) {
-         $$1 = 4.0;
-      }
-
-      $$1 *= 64.0;
-      return $$0 < $$1 * $$1;
+      super.a_();
+      this.an.a(h, -1);
    }
 
    @Override
    public void l() {
-      bii $$0 = this.v();
-      if (this.dK().B || ($$0 == null || !$$0.dF()) && this.dK().A(this.dk())) {
-         super.l();
-         if (this.aa_()) {
-            this.g(1);
-         }
-
-         ehc $$1 = ccg.a(this, this::a);
-         if ($$1.c() != ehc.a.a) {
-            this.a($$1);
-         }
-
-         this.aO();
-         ehe $$2 = this.dn();
-         double $$3 = this.dp() + $$2.c;
-         double $$4 = this.dr() + $$2.d;
-         double $$5 = this.dv() + $$2.e;
-         ccg.a(this, 0.2F);
-         float $$6 = this.o();
-         if (this.aX()) {
-            for (int $$7 = 0; $$7 < 4; $$7++) {
-               float $$8 = 0.25F;
-               this.dK().a(iv.e, $$3 - $$2.c * 0.25, $$4 - $$2.d * 0.25, $$5 - $$2.e * 0.25, $$2.c, $$2.d, $$2.e);
+      super.l();
+      if (this.dK().B) {
+         if (this.b) {
+            if (this.c % 5 == 0) {
+               this.c(1);
             }
-
-            $$6 = 0.8F;
+         } else {
+            this.c(2);
          }
-
-         this.f($$2.b(this.b, this.c, this.d).a((double)$$6));
-         this.dK().a(this.m(), $$3, $$4 + 0.5, $$5, 0.0, 0.0, 0.0);
-         this.e($$3, $$4, $$5);
-      } else {
-         this.ak();
+      } else if (this.b && this.c != 0 && !this.k.isEmpty() && this.c >= 600) {
+         this.dK().a(this, (byte)0);
+         this.j = ckx.b;
+         this.k.clear();
+         this.an.b(h, -1);
       }
    }
 
-   @Override
-   protected boolean a(bii $$0) {
-      return super.a($$0) && !$$0.af;
+   private void c(int $$0) {
+      int $$1 = this.z();
+      if ($$1 != -1 && $$0 > 0) {
+         double $$2 = (double)($$1 >> 16 & 0xFF) / 255.0;
+         double $$3 = (double)($$1 >> 8 & 0xFF) / 255.0;
+         double $$4 = (double)($$1 >> 0 & 0xFF) / 255.0;
+
+         for (int $$5 = 0; $$5 < $$0; $$5++) {
+            this.dK().a(iv.v, this.d(0.5), this.ds(), this.g(0.5), $$2, $$3, $$4);
+         }
+      }
    }
 
-   protected boolean aa_() {
-      return true;
+   public int z() {
+      return this.an.b(h);
    }
 
-   protected it m() {
-      return iv.Z;
-   }
-
-   protected float o() {
-      return 0.95F;
+   private void d(int $$0) {
+      this.l = true;
+      this.an.b(h, $$0);
    }
 
    @Override
    public void b(qr $$0) {
       super.b($$0);
-      $$0.a("power", this.a(new double[]{this.b, this.c, this.d}));
+      if (this.j != ckx.b) {
+         $$0.a("Potion", jb.j.b(this.j).toString());
+      }
+
+      if (this.l) {
+         $$0.a("Color", this.z());
+      }
+
+      if (!this.k.isEmpty()) {
+         qx $$1 = new qx();
+
+         for (bhv $$2 : this.k) {
+            $$1.add($$2.a(new qr()));
+         }
+
+         $$0.a("custom_potion_effects", $$1);
+      }
    }
 
    @Override
    public void a(qr $$0) {
       super.a($$0);
-      if ($$0.b("power", 9)) {
-         qx $$1 = $$0.c("power", 6);
-         if ($$1.size() == 3) {
-            this.b = $$1.h(0);
-            this.c = $$1.h(1);
-            this.d = $$1.h(2);
-         }
+      if ($$0.b("Potion", 8)) {
+         this.j = ckw.c($$0);
       }
-   }
 
-   @Override
-   public boolean br() {
-      return true;
-   }
+      for (bhv $$1 : ckw.b($$0)) {
+         this.a($$1);
+      }
 
-   @Override
-   public float bD() {
-      return 1.0F;
-   }
-
-   @Override
-   public boolean a(bhg $$0, float $$1) {
-      if (this.b($$0)) {
-         return false;
+      if ($$0.b("Color", 99)) {
+         this.d($$0.h("Color"));
       } else {
-         this.bo();
-         bii $$2 = $$0.d();
-         if ($$2 != null) {
-            if (!this.dK().B) {
-               ehe $$3 = $$2.bE();
-               this.f($$3);
-               this.b = $$3.c * 0.1;
-               this.c = $$3.d * 0.1;
-               this.d = $$3.e * 0.1;
-               this.b($$2);
-            }
+         this.D();
+      }
+   }
 
-            return true;
-         } else {
-            return false;
+   @Override
+   protected void a(biy $$0) {
+      super.a($$0);
+      bii $$1 = this.A();
+
+      for (bhv $$2 : this.j.a()) {
+         $$0.b(new bhv($$2.c(), Math.max($$2.a($$0x -> $$0x / 8), 1), $$2.e(), $$2.f(), $$2.g()), $$1);
+      }
+
+      if (!this.k.isEmpty()) {
+         for (bhv $$3 : this.k) {
+            $$0.b($$3, $$1);
          }
       }
    }
 
    @Override
-   public float bm() {
-      return 1.0F;
+   protected cix p() {
+      if (this.k.isEmpty() && this.j == ckx.b) {
+         return new cix(cja.nH);
+      } else {
+         cix $$0 = new cix(cja.uw);
+         ckw.a($$0, this.j);
+         ckw.a($$0, this.k);
+         if (this.l) {
+            $$0.w().a("CustomPotionColor", this.z());
+         }
+
+         return $$0;
+      }
    }
 
    @Override
-   public ux<wp> U() {
-      bii $$0 = this.v();
-      int $$1 = $$0 == null ? 0 : $$0.ah();
-      return new wq(this.ah(), this.cv(), this.dp(), this.dr(), this.dv(), this.dC(), this.dA(), this.ag(), $$1, new ehe(this.b, this.c, this.d), 0.0);
-   }
+   public void b(byte $$0) {
+      if ($$0 == 0) {
+         int $$1 = this.z();
+         if ($$1 != -1) {
+            double $$2 = (double)($$1 >> 16 & 0xFF) / 255.0;
+            double $$3 = (double)($$1 >> 8 & 0xFF) / 255.0;
+            double $$4 = (double)($$1 >> 0 & 0xFF) / 255.0;
 
-   @Override
-   public void a(wq $$0) {
-      super.a($$0);
-      double $$1 = $$0.i();
-      double $$2 = $$0.j();
-      double $$3 = $$0.k();
-      double $$4 = Math.sqrt($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
-      if ($$4 != 0.0) {
-         this.b = $$1 / $$4 * 0.1;
-         this.c = $$2 / $$4 * 0.1;
-         this.d = $$3 / $$4 * 0.1;
+            for (int $$5 = 0; $$5 < 20; $$5++) {
+               this.dK().a(iv.v, this.d(0.5), this.ds(), this.g(0.5), $$2, $$3, $$4);
+            }
+         }
+      } else {
+         super.b($$0);
       }
    }
 }

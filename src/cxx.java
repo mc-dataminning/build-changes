@@ -1,82 +1,84 @@
-import java.util.function.BiFunction;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public class cxx extends csu implements cso {
-   public static final int a = 1;
-   public static final int b = 4;
-   public static final dfu c = dfq.R;
-   public static final dga d = dfq.S;
-   private static final BiFunction<ha, Integer, ehx> e = ac.a(
-      ($$0, $$1) -> {
-         ehx[] $$2 = new ehx[]{
-            csm.a(8.0, 0.0, 8.0, 16.0, 3.0, 16.0),
-            csm.a(8.0, 0.0, 0.0, 16.0, 3.0, 8.0),
-            csm.a(0.0, 0.0, 0.0, 8.0, 3.0, 8.0),
-            csm.a(0.0, 0.0, 8.0, 8.0, 3.0, 16.0)
-         };
-         ehx $$3 = ehu.a();
+public class cxx extends csl {
+   private static final ha[] i = ha.values();
+   public static final dfq a = dfp.L;
+   public static final dfq b = dfp.M;
+   public static final dfq c = dfp.N;
+   public static final dfq d = dfp.O;
+   public static final dfq e = dfp.J;
+   public static final dfq f = dfp.K;
+   public static final Map<ha, dfq> g = ImmutableMap.copyOf(ac.a(Maps.newEnumMap(ha.class), $$0 -> {
+      $$0.put(ha.c, a);
+      $$0.put(ha.f, b);
+      $$0.put(ha.d, c);
+      $$0.put(ha.e, d);
+      $$0.put(ha.b, e);
+      $$0.put(ha.a, f);
+   }));
+   protected final ehw[] h;
 
-         for (int $$4 = 0; $$4 < $$1; $$4++) {
-            int $$5 = Math.floorMod($$4 - $$0.e(), 4);
-            $$3 = ehu.a($$3, $$2[$$5]);
+   protected cxx(float $$0, dey.d $$1) {
+      super($$1);
+      this.h = this.a($$0);
+   }
+
+   private ehw[] a(float $$0) {
+      float $$1 = 0.5F - $$0;
+      float $$2 = 0.5F + $$0;
+      ehw $$3 = csl.a((double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F));
+      ehw[] $$4 = new ehw[i.length];
+
+      for (int $$5 = 0; $$5 < i.length; $$5++) {
+         ha $$6 = i[$$5];
+         $$4[$$5] = eht.a(
+            0.5 + Math.min((double)(-$$0), (double)$$6.j() * 0.5),
+            0.5 + Math.min((double)(-$$0), (double)$$6.k() * 0.5),
+            0.5 + Math.min((double)(-$$0), (double)$$6.l() * 0.5),
+            0.5 + Math.max((double)$$0, (double)$$6.j() * 0.5),
+            0.5 + Math.max((double)$$0, (double)$$6.k() * 0.5),
+            0.5 + Math.max((double)$$0, (double)$$6.l() * 0.5)
+         );
+      }
+
+      ehw[] $$7 = new ehw[64];
+
+      for (int $$8 = 0; $$8 < 64; $$8++) {
+         ehw $$9 = $$3;
+
+         for (int $$10 = 0; $$10 < i.length; $$10++) {
+            if (($$8 & 1 << $$10) != 0) {
+               $$9 = eht.a($$9, $$4[$$10]);
+            }
          }
 
-         return $$3.b();
+         $$7[$$8] = $$9;
       }
-   );
 
-   protected cxx(dez.d $$0) {
-      super($$0);
-      this.k(this.C.b().a(c, ha.c).a(d, Integer.valueOf(1)));
+      return $$7;
    }
 
    @Override
-   public dfa a(dfa $$0, cyy $$1) {
-      return $$0.a(c, $$1.a($$0.c(c)));
+   public boolean c(dez $$0, cor $$1, gu $$2) {
+      return false;
    }
 
    @Override
-   public dfa a(dfa $$0, cxh $$1) {
-      return $$0.a($$1.a($$0.c(c)));
+   public ehw a(dez $$0, cor $$1, gu $$2, ehi $$3) {
+      return this.h[this.h($$0)];
    }
 
-   @Override
-   public boolean a(dfa $$0, clg $$1) {
-      return !$$1.h() && $$1.n().a(this.k()) && $$0.c(d) < 4 ? true : super.a($$0, $$1);
-   }
+   protected int h(dez $$0) {
+      int $$1 = 0;
 
-   @Override
-   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
-      return e.apply($$0.c(c), $$0.c(d));
-   }
-
-   @Override
-   public dfa a(clg $$0) {
-      dfa $$1 = $$0.q().a_($$0.a());
-      return $$1.a(this) ? $$1.a(d, Integer.valueOf(Math.min(4, $$1.c(d) + 1))) : this.n().a(c, $$0.g().g());
-   }
-
-   @Override
-   protected void a(dfb.a<csm, dfa> $$0) {
-      $$0.a(c, d);
-   }
-
-   @Override
-   public boolean a(cpp $$0, gu $$1, dfa $$2) {
-      return true;
-   }
-
-   @Override
-   public boolean a(cpm $$0, aru $$1, gu $$2, dfa $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(akk $$0, aru $$1, gu $$2, dfa $$3) {
-      int $$4 = $$3.c(d);
-      if ($$4 < 4) {
-         $$0.a($$2, $$3.a(d, Integer.valueOf($$4 + 1)), 2);
-      } else {
-         a($$0, $$2, new ciy(this));
+      for (int $$2 = 0; $$2 < i.length; $$2++) {
+         if ($$0.c(g.get(i[$$2]))) {
+            $$1 |= 1 << $$2;
+         }
       }
+
+      return $$1;
    }
 }

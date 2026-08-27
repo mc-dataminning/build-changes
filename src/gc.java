@@ -136,7 +136,7 @@ public class gc {
                   }
                }
 
-               for (cpj $$6 : cpj.values()) {
+               for (cpi $$6 : cpi.values()) {
                   if ($$6.b().toLowerCase(Locale.ROOT).startsWith($$3x)) {
                      if ($$5) {
                         $$1x.suggest("!" + $$6.b());
@@ -157,7 +157,7 @@ public class gc {
                throw b.createWithContext($$0.g(), "gamemode");
             } else {
                String $$3 = $$0.g().readUnquotedString();
-               cpj $$4 = cpj.a($$3, null);
+               cpi $$4 = cpi.a($$3, null);
                if ($$4 == null) {
                   $$0.g().setCursor($$1);
                   throw g.createWithContext($$0.g(), $$3);
@@ -167,7 +167,7 @@ public class gc {
                      if (!($$2x instanceof akl)) {
                         return false;
                      } else {
-                        cpj $$3x = ((akl)$$2x).e.b();
+                        cpi $$3x = ((akl)$$2x).e.b();
                         return $$2 ? $$3x != $$4 : $$3x == $$4;
                      }
                   });
@@ -186,7 +186,7 @@ public class gc {
                if (!($$2x instanceof biy)) {
                   return false;
                } else {
-                  eif $$3 = $$2x.cf();
+                  eie $$3 = $$2x.cf();
                   String $$4 = $$3 == null ? "" : $$3.b();
                   return $$4.equals($$2) != $$1;
                }
@@ -249,7 +249,7 @@ public class gc {
             $$0.a($$2x -> {
                qr $$3 = $$2x.f(new qr());
                if ($$2x instanceof akl) {
-                  ciy $$4 = ((akl)$$2x).fQ().f();
+                  cix $$4 = ((akl)$$2x).fQ().f();
                   if (!$$4.b()) {
                      $$3.a("SelectedItem", $$4.b(new qr()));
                   }
@@ -281,11 +281,11 @@ public class gc {
             $$1.expect('}');
             if (!$$2.isEmpty()) {
                $$0.a($$1x -> {
-                  eid $$2x = $$1x.cK().aF();
+                  eic $$2x = $$1x.cK().aF();
                   String $$3x = $$1x.cx();
 
                   for (Entry<String, cj.d> $$4x : $$2.entrySet()) {
-                     eia $$5 = $$2x.b($$4x.getKey());
+                     ehz $$5 = $$2x.b($$4x.getKey());
                      if ($$5 == null) {
                         return false;
                      }
@@ -294,7 +294,7 @@ public class gc {
                         return false;
                      }
 
-                     eic $$6 = $$2x.c($$3x, $$5);
+                     eib $$6 = $$2x.c($$3x, $$5);
                      int $$7 = $$6.b();
                      if (!$$4x.getValue().d($$7)) {
                         return false;
@@ -395,13 +395,13 @@ public class gc {
                   return false;
                } else {
                   akk $$3 = (akk)$$2x.dK();
-                  efg $$4 = $$3.n().aH().getElement(ecm.a, $$2);
+                  eff $$4 = $$3.n().aH().getElement(ecl.a, $$2);
                   if ($$4 == null) {
                      return false;
                   } else {
-                     ecn $$5 = new ecn.a($$3).a(ees.a, $$2x).a(ees.f, $$2x.di()).a(eer.e);
-                     ech $$6 = new ech.a($$5).a(Optional.empty());
-                     $$6.b(ech.a($$4));
+                     ecm $$5 = new ecm.a($$3).a(eer.a, $$2x).a(eer.f, $$2x.di()).a(eeq.e);
+                     ecg $$6 = new ecg.a($$5).a(Optional.empty());
+                     $$6.b(ecg.a($$4));
                      return $$1 ^ $$4.test($$6);
                   }
                }

@@ -1,18 +1,40 @@
-public class cyw extends csu {
-   protected static final float a = 6.0F;
-   protected static final ehx b = csm.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
+public class cyw extends csl {
+   public static final dfx<ha.a> g = dfp.I;
 
-   protected cyw(dez.d $$0) {
+   public cyw(dey.d $$0) {
       super($$0);
+      this.k(this.n().a(g, ha.a.b));
    }
 
    @Override
-   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
-      return b;
+   public dez a(dez $$0, cyx $$1) {
+      return b($$0, $$1);
+   }
+
+   public static dez b(dez $$0, cyx $$1) {
+      switch ($$1) {
+         case d:
+         case b:
+            switch ((ha.a)$$0.c(g)) {
+               case a:
+                  return $$0.a(g, ha.a.c);
+               case c:
+                  return $$0.a(g, ha.a.a);
+               default:
+                  return $$0;
+            }
+         default:
+            return $$0;
+      }
    }
 
    @Override
-   protected boolean d(dfa $$0, cos $$1, gu $$2) {
-      return $$0.a(apl.aK) || $$0.a(csn.dY) || super.d($$0, $$1, $$2);
+   protected void a(dfa.a<csl, dez> $$0) {
+      $$0.a(g);
+   }
+
+   @Override
+   public dez a(clf $$0) {
+      return this.n().a(g, $$0.k().o());
    }
 }

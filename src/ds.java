@@ -139,7 +139,7 @@ public class ds {
 
    public int a(ParseResults<dr> $$0, String $$1) {
       dr $$2 = (dr)$$0.getContext().getSource();
-      $$2.l().aN().a(() -> "/" + $$1);
+      $$2.l().aM().a(() -> "/" + $$1);
 
       byte var20;
       try {
@@ -186,7 +186,7 @@ public class ds {
 
          var20 = 0;
       } finally {
-         $$2.l().aN().c();
+         $$2.l().aM().c();
       }
 
       return var20;

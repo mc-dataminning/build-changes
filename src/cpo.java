@@ -1,55 +1,199 @@
-public interface cpo {
-   int D_();
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-   int C_();
+public interface cpo extends coo, cov, cqb, cql.a {
+   @Nullable
+   dgv a(int var1, int var2, dha var3, boolean var4);
 
-   default int aj() {
-      return this.C_() + this.D_();
+   @Deprecated
+   boolean b(int var1, int var2);
+
+   int a(dki.a var1, int var2, int var3);
+
+   int v_();
+
+   cql z_();
+
+   default he<cqj> s(gu $$0) {
+      return this.z_().a($$0);
    }
 
-   default int ak() {
-      return this.am() - this.al();
+   default Stream<dez> c(egy $$0) {
+      int $$1 = arp.a($$0.a);
+      int $$2 = arp.a($$0.d);
+      int $$3 = arp.a($$0.b);
+      int $$4 = arp.a($$0.e);
+      int $$5 = arp.a($$0.c);
+      int $$6 = arp.a($$0.f);
+      return this.a($$1, $$3, $$5, $$2, $$4, $$6) ? this.a($$0) : Stream.empty();
    }
 
-   default int al() {
-      return hx.a(this.C_());
+   @Override
+   default int a(gu $$0, cow $$1) {
+      return $$1.getColor(this.s($$0).a(), (double)$$0.u(), (double)$$0.w());
    }
 
-   default int am() {
-      return hx.a(this.aj() - 1) + 1;
+   @Override
+   default he<cqj> getNoiseBiome(int $$0, int $$1, int $$2) {
+      dgv $$3 = this.a(hq.e($$0), hq.e($$2), dha.f, false);
+      return $$3 != null ? $$3.getNoiseBiome($$0, $$1, $$2) : this.a($$0, $$1, $$2);
    }
 
-   default boolean r(gu $$0) {
-      return this.d($$0.v());
+   he<cqj> a(int var1, int var2, int var3);
+
+   boolean r_();
+
+   @Deprecated
+   int t_();
+
+   dii x_();
+
+   @Override
+   default int C_() {
+      return this.x_().n();
    }
 
-   default boolean d(int $$0) {
-      return $$0 < this.C_() || $$0 >= this.aj();
+   @Override
+   default int D_() {
+      return this.x_().o();
    }
 
-   default int e(int $$0) {
-      return this.f(hx.a($$0));
+   default gu a(dki.a $$0, gu $$1) {
+      return new gu($$1.u(), this.a($$0, $$1.u(), $$1.w()), $$1.w());
    }
 
-   default int f(int $$0) {
-      return $$0 - this.al();
+   default boolean t(gu $$0) {
+      return this.a_($$0).i();
    }
 
-   default int g(int $$0) {
-      return $$0 + this.al();
-   }
+   default boolean u(gu $$0) {
+      if ($$0.v() >= this.t_()) {
+         return this.g($$0);
+      } else {
+         gu $$1 = new gu($$0.u(), this.t_(), $$0.w());
+         if (!this.g($$1)) {
+            return false;
+         } else {
+            for (gu var4 = $$1.d(); var4.v() > $$0.v(); var4 = var4.d()) {
+               dez $$2 = this.a_(var4);
+               if ($$2.b(this, var4) > 0 && !$$2.k()) {
+                  return false;
+               }
+            }
 
-   static cpo e(final int $$0, final int $$1) {
-      return new cpo() {
-         @Override
-         public int D_() {
-            return $$1;
+            return true;
          }
+      }
+   }
 
-         @Override
-         public int C_() {
-            return $$0;
+   default float v(gu $$0) {
+      return this.w($$0) - 0.5F;
+   }
+
+   @Deprecated
+   default float w(gu $$0) {
+      float $$1 = (float)this.z($$0) / 15.0F;
+      float $$2 = $$1 / (4.0F - 3.0F * $$1);
+      return arp.i(this.x_().s(), $$2, 1.0F);
+   }
+
+   default dgv x(gu $$0) {
+      return this.a(hx.a($$0.u()), hx.a($$0.w()));
+   }
+
+   default dgv a(int $$0, int $$1) {
+      return this.a($$0, $$1, dha.n, true);
+   }
+
+   default dgv a(int $$0, int $$1, dha $$2) {
+      return this.a($$0, $$1, $$2, true);
+   }
+
+   @Nullable
+   @Override
+   default cor c(int $$0, int $$1) {
+      return this.a($$0, $$1, dha.c, false);
+   }
+
+   default boolean y(gu $$0) {
+      return this.b_($$0).a(apq.a);
+   }
+
+   default boolean d(egy $$0) {
+      int $$1 = arp.a($$0.a);
+      int $$2 = arp.c($$0.d);
+      int $$3 = arp.a($$0.b);
+      int $$4 = arp.c($$0.e);
+      int $$5 = arp.a($$0.c);
+      int $$6 = arp.c($$0.f);
+      gu.a $$7 = new gu.a();
+
+      for (int $$8 = $$1; $$8 < $$2; $$8++) {
+         for (int $$9 = $$3; $$9 < $$4; $$9++) {
+            for (int $$10 = $$5; $$10 < $$6; $$10++) {
+               dez $$11 = this.a_($$7.d($$8, $$9, $$10));
+               if (!$$11.u().c()) {
+                  return true;
+               }
+            }
          }
-      };
+      }
+
+      return false;
+   }
+
+   default int z(gu $$0) {
+      return this.c($$0, this.v_());
+   }
+
+   default int c(gu $$0, int $$1) {
+      return $$0.u() >= -30000000 && $$0.w() >= -30000000 && $$0.u() < 30000000 && $$0.w() < 30000000 ? this.b($$0, $$1) : 15;
+   }
+
+   @Deprecated
+   default boolean f(int $$0, int $$1) {
+      return this.b(hx.a($$0), hx.a($$1));
+   }
+
+   @Deprecated
+   default boolean A(gu $$0) {
+      return this.f($$0.u(), $$0.w());
+   }
+
+   @Deprecated
+   default boolean a(gu $$0, gu $$1) {
+      return this.a($$0.u(), $$0.v(), $$0.w(), $$1.u(), $$1.v(), $$1.w());
+   }
+
+   @Deprecated
+   default boolean a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      return $$4 >= this.C_() && $$1 < this.aj() ? this.b($$0, $$2, $$3, $$5) : false;
+   }
+
+   @Deprecated
+   default boolean b(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = hx.a($$0);
+      int $$5 = hx.a($$2);
+      int $$6 = hx.a($$1);
+      int $$7 = hx.a($$3);
+
+      for (int $$8 = $$4; $$8 <= $$5; $$8++) {
+         for (int $$9 = $$6; $$9 <= $$7; $$9++) {
+            if (!this.b($$8, $$9)) {
+               return false;
+            }
+         }
+      }
+
+      return true;
+   }
+
+   hs B_();
+
+   cdu G();
+
+   default <T> hg<T> a(aeq<? extends hr<? extends T>> $$0) {
+      hr<T> $$1 = this.B_().d($$0);
+      return $$1.p().a(this.G());
    }
 }

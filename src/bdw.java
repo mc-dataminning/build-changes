@@ -10,12 +10,12 @@ import javax.annotation.Nullable;
 public record bdw(
    Instant a, Instant b, Duration c, @Nullable Duration d, List<beg> e, List<beb> f, bed.a g, bef.a h, bee i, bee j, bec.a k, bec.a l, List<bea> m
 ) {
-   public List<Pair<dhb, bei<bea>>> a() {
-      Map<dhb, List<bea>> $$0 = this.m.stream().collect(Collectors.groupingBy(bea::d));
+   public List<Pair<dha, bei<bea>>> a() {
+      Map<dha, List<bea>> $$0 = this.m.stream().collect(Collectors.groupingBy(bea::d));
       return $$0.entrySet()
          .stream()
-         .map($$0x -> Pair.of((dhb)$$0x.getKey(), bei.a((List)$$0x.getValue())))
-         .sorted(Comparator.<Pair<dhb, bei<bea>>, Duration>comparing($$0x -> ((bei)$$0x.getSecond()).f()).reversed())
+         .map($$0x -> Pair.of((dha)$$0x.getKey(), bei.a((List)$$0x.getValue())))
+         .sorted(Comparator.<Pair<dha, bei<bea>>, Duration>comparing($$0x -> ((bei)$$0x.getSecond()).f()).reversed())
          .toList();
    }
 

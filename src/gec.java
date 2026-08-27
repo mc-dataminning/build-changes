@@ -1,36 +1,50 @@
-import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public enum gec {
-   a("movement", gdx::new),
-   b("find_tree", gdw::new),
-   c("punch_tree", gdz::new),
-   d("open_inventory", gdy::new),
-   e("craft_planks", gdv::new),
-   f("none", gdu::new);
+public class gec {
+   private final gej a;
+   private final eqp b;
+   @Nullable
+   private eup c;
 
-   private final String g;
-   private final Function<gea, ? extends geb> h;
-
-   private <T extends geb> gec(String $$0, Function<gea, T> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   public gec(gej $$0, eqp $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public geb a(gea $$0) {
-      return this.h.apply($$0);
-   }
-
-   public String a() {
-      return this.g;
-   }
-
-   public static gec a(String $$0) {
-      for (gec $$1 : values()) {
-         if ($$1.g.equals($$0)) {
-            return $$1;
-         }
+   private void a() {
+      if (this.c != null) {
+         this.a.a(this.c);
       }
 
-      return f;
+      tf $$0 = tf.c("tutorial.bundleInsert.title");
+      tf $$1 = tf.c("tutorial.bundleInsert.description");
+      this.c = new eup(eup.a.g, $$0, $$1, true);
+      this.a.a(this.c, 160);
+   }
+
+   private void b() {
+      if (this.c != null) {
+         this.a.a(this.c);
+         this.c = null;
+      }
+
+      if (!this.b.t) {
+         this.b.t = true;
+         this.b.ar();
+      }
+   }
+
+   public void a(cix $$0, cix $$1, cel $$2) {
+      if (!this.b.t) {
+         if (!$$0.b() && $$1.a(cja.qg)) {
+            if ($$2 == cel.a) {
+               this.a();
+            } else if ($$2 == cel.b) {
+               this.b();
+            }
+         } else if ($$0.a(cja.qg) && !$$1.b() && $$2 == cel.b) {
+            this.b();
+         }
+      }
    }
 }

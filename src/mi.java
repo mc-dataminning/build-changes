@@ -10,7 +10,7 @@ public class mi implements mh.a {
    }
 
    public static qr a(String $$0, qr $$1) {
-      dys $$2 = new dys();
+      dyr $$2 = new dyr();
       int $$3 = rd.b($$1, 500);
       int $$4 = 3563;
       if ($$3 < 3563) {

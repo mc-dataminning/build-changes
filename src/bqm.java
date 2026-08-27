@@ -1,32 +1,79 @@
-public class bqm extends bpl {
-   private final boolean a;
-   private int b;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-   public bqm(bja $$0, boolean $$1) {
-      super($$0);
-      this.d = $$0;
-      this.a = $$1;
+public class bqm extends bpt {
+   public static final int a = 1;
+   protected final bjh b;
+   protected final double c;
+   protected double d;
+   protected double e;
+   protected double f;
+   protected boolean g;
+
+   public bqm(bjh $$0, double $$1) {
+      this.b = $$0;
+      this.c = $$1;
+      this.a(EnumSet.of(bpt.a.a));
    }
 
    @Override
-   public boolean b() {
-      return this.a && this.b > 0 && super.b();
+   public boolean a() {
+      if (!this.h()) {
+         return false;
+      } else {
+         if (this.b.bM()) {
+            gu $$0 = this.a(this.b.dK(), this.b, 5);
+            if ($$0 != null) {
+               this.d = (double)$$0.u();
+               this.e = (double)$$0.v();
+               this.f = (double)$$0.w();
+               return true;
+            }
+         }
+
+         return this.i();
+      }
+   }
+
+   protected boolean h() {
+      return this.b.ef() != null || this.b.dz() || this.b.bM();
+   }
+
+   protected boolean i() {
+      ehd $$0 = bto.a(this.b, 5, 4);
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.d = $$0.c;
+         this.e = $$0.d;
+         this.f = $$0.e;
+         return true;
+      }
+   }
+
+   public boolean k() {
+      return this.g;
    }
 
    @Override
    public void c() {
-      this.b = 20;
-      this.a(true);
+      this.b.H().a(this.d, this.e, this.f, this.c);
+      this.g = true;
    }
 
    @Override
    public void d() {
-      this.a(false);
+      this.g = false;
    }
 
    @Override
-   public void e() {
-      this.b--;
-      super.e();
+   public boolean b() {
+      return !this.b.H().l();
+   }
+
+   @Nullable
+   protected gu a(cor $$0, bii $$1, int $$2) {
+      gu $$3 = $$1.dk();
+      return !$$0.a_($$3).k($$0, $$3).c() ? null : gu.a($$1.dk(), $$2, 1, $$1x -> $$0.b_($$1x).a(apq.a)).orElse(null);
    }
 }

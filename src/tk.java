@@ -227,20 +227,20 @@ public class tk {
    }
 
    public static class c {
-      private final cit a;
+      private final cis a;
       private final int b;
       @Nullable
       private final qr c;
       @Nullable
-      private ciy d;
+      private cix d;
 
-      c(cit $$0, int $$1, @Nullable qr $$2) {
+      c(cis $$0, int $$1, @Nullable qr $$2) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
       }
 
-      public c(ciy $$0) {
+      public c(cix $$0) {
          this($$0.d(), $$0.L(), $$0.v() != null ? $$0.v().h() : null);
       }
 
@@ -263,9 +263,9 @@ public class tk {
          return 31 * $$0 + (this.c != null ? this.c.hashCode() : 0);
       }
 
-      public ciy a() {
+      public cix a() {
          if (this.d == null) {
-            this.d = new ciy(this.a, this.b);
+            this.d = new cix(this.a, this.b);
             if (this.c != null) {
                this.d.c(this.c);
             }
@@ -279,7 +279,7 @@ public class tk {
             return new tk.c(jb.i.a(new aer($$0.getAsString())), 1, null);
          } else {
             JsonObject $$1 = arg.m($$0, "item");
-            cit $$2 = jb.i.a(new aer(arg.i($$1, "id")));
+            cis $$2 = jb.i.a(new aer(arg.i($$1, "id")));
             int $$3 = arg.a($$1, "count", 1);
             if ($$1.has("tag")) {
                String $$4 = arg.i($$1, "tag");
@@ -300,7 +300,7 @@ public class tk {
       private static tk.c a(tf $$0) {
          try {
             qr $$1 = rl.a($$0.getString());
-            return new tk.c(ciy.a($$1));
+            return new tk.c(cix.a($$1));
          } catch (CommandSyntaxException var2) {
             tk.a.warn("Failed to parse item tag: {}", $$0, var2);
             return null;

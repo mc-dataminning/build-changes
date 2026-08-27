@@ -7,18 +7,18 @@ public class etv extends ett {
    private static final int i = 30;
    private static final double j = 33.333333333333336;
 
-   public etv(eru $$0, arw $$1) {
+   public etv(ert $$0, arw $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected void a(erw $$0, int $$1, int $$2, int $$3) {
+   protected void a(erv $$0, int $$1, int $$2, int $$3) {
       this.a($$0, "30 FPS", $$1 + 1, $$3 - 60 + 1);
       this.a($$0, "60 FPS", $$1 + 1, $$3 - 30 + 1);
-      $$0.a(fnt.D(), $$1, $$1 + $$2 - 1, $$3 - 30, -1);
-      int $$4 = eqm.O().m.g().c();
+      $$0.a(foc.D(), $$1, $$1 + $$2 - 1, $$3 - 30, -1);
+      int $$4 = eql.O().m.g().c();
       if ($$4 > 0 && $$4 <= 250) {
-         $$0.a(fnt.D(), $$1, $$1 + $$2 - 1, $$3 - this.b(1.0E9 / (double)$$4) - 1, -16711681);
+         $$0.a(foc.D(), $$1, $$1 + $$2 - 1, $$3 - this.b(1.0E9 / (double)$$4) - 1, -16711681);
       }
    }
 

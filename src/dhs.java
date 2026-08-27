@@ -1,89 +1,18 @@
-import java.util.List;
-import java.util.function.Predicate;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.Map;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.Validate;
 
-public class dhs<T> implements dhn<T> {
-   private final hj<T> a;
+public interface dhs {
    @Nullable
-   private T b;
-   private final dho<T> c;
+   dvg a(duy var1);
 
-   public dhs(hj<T> $$0, dho<T> $$1, List<T> $$2) {
-      this.a = $$0;
-      this.c = $$1;
-      if ($$2.size() > 0) {
-         Validate.isTrue($$2.size() <= 1, "Can't initialize SingleValuePalette with %d values.", (long)$$2.size());
-         this.b = $$2.get(0);
-      }
-   }
+   void a(duy var1, dvg var2);
 
-   public static <A> dhn<A> a(int $$0, hj<A> $$1, dho<A> $$2, List<A> $$3) {
-      return new dhs<>($$1, $$2, $$3);
-   }
+   LongSet b(duy var1);
 
-   @Override
-   public int a(T $$0) {
-      if (this.b != null && this.b != $$0) {
-         return this.c.onResize(1, $$0);
-      } else {
-         this.b = $$0;
-         return 0;
-      }
-   }
+   void a(duy var1, long var2);
 
-   @Override
-   public boolean a(Predicate<T> $$0) {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         return $$0.test(this.b);
-      }
-   }
+   Map<duy, LongSet> h();
 
-   @Override
-   public T a(int $$0) {
-      if (this.b != null && $$0 == 0) {
-         return this.b;
-      } else {
-         throw new IllegalStateException("Missing Palette entry for id " + $$0 + ".");
-      }
-   }
-
-   @Override
-   public void a(si $$0) {
-      this.b = this.a.b($$0.m());
-   }
-
-   @Override
-   public void b(si $$0) {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         $$0.c(this.a.a(this.b));
-      }
-   }
-
-   @Override
-   public int a() {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         return sw.a(this.a.a(this.b));
-      }
-   }
-
-   @Override
-   public int b() {
-      return 1;
-   }
-
-   @Override
-   public dhn<T> c() {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         return this;
-      }
-   }
+   void b(Map<duy, LongSet> var1);
 }

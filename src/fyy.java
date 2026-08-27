@@ -1,21 +1,25 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class fyy implements fyp {
-   public static final Codec<fyy> b = RecordCodecBuilder.create($$0 -> $$0.group(arv.a.fieldOf("pattern").forGetter($$0x -> $$0x.c)).apply($$0, fyy::new));
-   private final arv c;
+public interface fyy {
+   aek a = new aek("textures", ".png");
 
-   public fyy(arv $$0) {
-      this.c = $$0;
+   void a(anm var1, fyy.a var2);
+
+   fza a();
+
+   public interface a {
+      default void a(aer $$0, ank $$1) {
+         this.a($$0, $$2 -> $$2.loadSprite($$0, $$1));
+      }
+
+      void a(aer var1, fyy.b var2);
+
+      void a(Predicate<aer> var1);
    }
 
-   @Override
-   public void a(anm $$0, fyp.a $$1) {
-      $$1.a(this.c.c());
-   }
-
-   @Override
-   public fyr a() {
-      return fys.c;
+   public interface b extends Function<fyx, fyo> {
+      default void a() {
+      }
    }
 }

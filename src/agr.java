@@ -119,7 +119,7 @@ public class agr {
    }
 
    static enum a {
-      a("points", cbn::d, ($$0, $$1) -> {
+      a("points", cbm::d, ($$0, $$1) -> {
          if ($$1 >= $$0.fZ()) {
             return false;
          } else {

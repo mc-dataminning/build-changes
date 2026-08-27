@@ -22,13 +22,13 @@ public class pu {
       $$0.a($$1, 2);
    }
 
-   public static Collection<pr> a(Collection<pm> $$0, gu $$1, cyy $$2, akk $$3, px $$4, int $$5) {
+   public static Collection<pr> a(Collection<pm> $$0, gu $$1, cyx $$2, akk $$3, px $$4, int $$5) {
       pn $$6 = new pn($$0, $$1, $$2, $$3, $$4, $$5);
       $$6.b();
       return $$6.a();
    }
 
-   public static Collection<pr> b(Collection<qi> $$0, gu $$1, cyy $$2, akk $$3, px $$4, int $$5) {
+   public static Collection<pr> b(Collection<qi> $$0, gu $$1, cyx $$2, akk $$3, px $$4, int $$5) {
       return a(a($$0), $$1, $$2, $$3, $$4, $$5);
    }
 
@@ -48,10 +48,10 @@ public class pu {
       $$2.a();
       gu $$4 = $$1.b(-$$3, 0, -$$3);
       gu $$5 = $$1.b($$3, 0, $$3);
-      gu.b($$4, $$5).filter($$1x -> $$0.a_($$1x).a(csn.pa)).forEach($$1x -> {
-         ddz $$2x = (ddz)$$0.c_($$1x);
+      gu.b($$4, $$5).filter($$1x -> $$0.a_($$1x).a(csm.pa)).forEach($$1x -> {
+         ddy $$2x = (ddy)$$0.c_($$1x);
          gu $$3x = $$2x.p();
-         dur $$4x = qe.b($$2x);
+         duq $$4x = qe.b($$2x);
          qe.a($$4x, $$3x.v(), $$0);
       });
    }

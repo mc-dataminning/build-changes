@@ -1,43 +1,66 @@
-import org.joml.Vector3f;
+public class fki extends fmk {
+   private final float a;
+   private final float b;
 
-public class fki extends fkk<io> {
-   private final Vector3f a;
-   private final Vector3f b;
-
-   protected fki(fii $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, io $$7, flw $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
-      float $$9 = this.r.i() * 0.4F + 0.6F;
-      this.a = this.a($$7.c(), $$9);
-      this.b = this.a($$7.d(), $$9);
-   }
-
-   private Vector3f a(Vector3f $$0, float $$1) {
-      return new Vector3f(this.a($$0.x(), $$1), this.a($$0.y(), $$1), this.a($$0.z(), $$1));
-   }
-
-   private void f(float $$0) {
-      float $$1 = ((float)this.s + $$0) / ((float)this.t + 1.0F);
-      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
-      this.v = $$2.x();
-      this.w = $$2.y();
-      this.x = $$2.z();
+   fki(fin $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, cix $$7) {
+      this($$0, $$1, $$2, $$3, $$7);
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.j += $$4;
+      this.k += $$5;
+      this.l += $$6;
    }
 
    @Override
-   public void a(elk $$0, epx $$1, float $$2) {
-      this.f($$2);
-      super.a($$0, $$1, $$2);
+   public flo b() {
+      return flo.a;
    }
 
-   public static class a implements fle<io> {
-      private final flw a;
+   protected fki(fin $$0, double $$1, double $$2, double $$3, cix $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a(eql.O().aq().a($$4, $$0, null, 0).e());
+      this.u = 1.0F;
+      this.D /= 2.0F;
+      this.a = this.r.i() * 3.0F;
+      this.b = this.r.i() * 3.0F;
+   }
 
-      public a(flw $$0) {
-         this.a = $$0;
+   @Override
+   protected float c() {
+      return this.E.a((this.a + 1.0F) / 4.0F);
+   }
+
+   @Override
+   protected float d() {
+      return this.E.a(this.a / 4.0F);
+   }
+
+   @Override
+   protected float e() {
+      return this.E.c(this.b / 4.0F);
+   }
+
+   @Override
+   protected float f() {
+      return this.E.c((this.b + 1.0F) / 4.0F);
+   }
+
+   public static class a implements fln<ir> {
+      public flk a(ir $$0, fin $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fki($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.c());
       }
+   }
 
-      public flb a(io $$0, fii $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fki($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
+   public static class b implements fln<iy> {
+      public flk a(iy $$0, fin $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fki($$1, $$2, $$3, $$4, new cix(cja.qc));
+      }
+   }
+
+   public static class c implements fln<iy> {
+      public flk a(iy $$0, fin $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fki($$1, $$2, $$3, $$4, new cix(cja.pO));
       }
    }
 }

@@ -220,7 +220,7 @@ public class aic {
    private static LiteralArgumentBuilder<dr> a() {
       LiteralArgumentBuilder<dr> $$0 = ds.a("rendertype");
 
-      for (eig.a $$1 : eig.a.values()) {
+      for (eif.a $$1 : eif.a.values()) {
          $$0.then(ds.a($$1.a()).executes($$1x -> a((dr)$$1x.getSource(), ej.a($$1x, "objective"), $$1)));
       }
 
@@ -229,10 +229,10 @@ public class aic {
 
    private static CompletableFuture<Suggestions> a(dr $$0, Collection<String> $$1, SuggestionsBuilder $$2) {
       List<String> $$3 = Lists.newArrayList();
-      eid $$4 = $$0.l().aF();
+      eic $$4 = $$0.l().aF();
 
-      for (eia $$5 : $$4.c()) {
-         if ($$5.c() == eig.b) {
+      for (ehz $$5 : $$4.c()) {
+         if ($$5.c() == eif.b) {
             boolean $$6 = false;
 
             for (String $$7 : $$1) {
@@ -251,26 +251,26 @@ public class aic {
       return du.b($$3, $$2);
    }
 
-   private static int a(dr $$0, String $$1, eia $$2) throws CommandSyntaxException {
-      eid $$3 = $$0.l().aF();
+   private static int a(dr $$0, String $$1, ehz $$2) throws CommandSyntaxException {
+      eic $$3 = $$0.l().aF();
       if (!$$3.b($$1, $$2)) {
          throw f.create($$2.b(), $$1);
       } else {
-         eic $$4 = $$3.c($$1, $$2);
+         eib $$4 = $$3.c($$1, $$2);
          $$0.a(() -> tf.a("commands.scoreboard.players.get.success", $$1, $$4.b(), $$2.e()), false);
          return $$4.b();
       }
    }
 
-   private static int a(dr $$0, Collection<String> $$1, eia $$2, el.a $$3, Collection<String> $$4, eia $$5) throws CommandSyntaxException {
-      eid $$6 = $$0.l().aF();
+   private static int a(dr $$0, Collection<String> $$1, ehz $$2, el.a $$3, Collection<String> $$4, ehz $$5) throws CommandSyntaxException {
+      eic $$6 = $$0.l().aF();
       int $$7 = 0;
 
       for (String $$8 : $$1) {
-         eic $$9 = $$6.c($$8, $$2);
+         eib $$9 = $$6.c($$8, $$2);
 
          for (String $$10 : $$4) {
-            eic $$11 = $$6.c($$10, $$5);
+            eib $$11 = $$6.c($$10, $$5);
             $$3.apply($$9, $$11);
          }
 
@@ -287,15 +287,15 @@ public class aic {
       return $$7;
    }
 
-   private static int a(dr $$0, Collection<String> $$1, eia $$2) throws CommandSyntaxException {
-      if ($$2.c() != eig.b) {
+   private static int a(dr $$0, Collection<String> $$1, ehz $$2) throws CommandSyntaxException {
+      if ($$2.c() != eif.b) {
          throw e.create();
       } else {
-         eid $$3 = $$0.l().aF();
+         eic $$3 = $$0.l().aF();
          int $$4 = 0;
 
          for (String $$5 : $$1) {
-            eic $$6 = $$3.c($$5, $$2);
+            eib $$6 = $$3.c($$5, $$2);
             if ($$6.g()) {
                $$6.a(false);
                $$4++;
@@ -317,7 +317,7 @@ public class aic {
    }
 
    private static int a(dr $$0, Collection<String> $$1) {
-      eid $$2 = $$0.l().aF();
+      eic $$2 = $$0.l().aF();
 
       for (String $$3 : $$1) {
          $$2.d($$3, null);
@@ -332,8 +332,8 @@ public class aic {
       return $$1.size();
    }
 
-   private static int b(dr $$0, Collection<String> $$1, eia $$2) {
-      eid $$3 = $$0.l().aF();
+   private static int b(dr $$0, Collection<String> $$1, ehz $$2) {
+      eic $$3 = $$0.l().aF();
 
       for (String $$4 : $$1) {
          $$3.d($$4, $$2);
@@ -348,11 +348,11 @@ public class aic {
       return $$1.size();
    }
 
-   private static int a(dr $$0, Collection<String> $$1, eia $$2, int $$3) {
-      eid $$4 = $$0.l().aF();
+   private static int a(dr $$0, Collection<String> $$1, ehz $$2, int $$3) {
+      eic $$4 = $$0.l().aF();
 
       for (String $$5 : $$1) {
-         eic $$6 = $$4.c($$5, $$2);
+         eib $$6 = $$4.c($$5, $$2);
          $$6.b($$3);
       }
 
@@ -365,12 +365,12 @@ public class aic {
       return $$3 * $$1.size();
    }
 
-   private static int b(dr $$0, Collection<String> $$1, eia $$2, int $$3) {
-      eid $$4 = $$0.l().aF();
+   private static int b(dr $$0, Collection<String> $$1, ehz $$2, int $$3) {
+      eic $$4 = $$0.l().aF();
       int $$5 = 0;
 
       for (String $$6 : $$1) {
-         eic $$7 = $$4.c($$6, $$2);
+         eib $$7 = $$4.c($$6, $$2);
          $$7.b($$7.b() + $$3);
          $$5 += $$7.b();
       }
@@ -385,12 +385,12 @@ public class aic {
       return $$5;
    }
 
-   private static int c(dr $$0, Collection<String> $$1, eia $$2, int $$3) {
-      eid $$4 = $$0.l().aF();
+   private static int c(dr $$0, Collection<String> $$1, ehz $$2, int $$3) {
+      eic $$4 = $$0.l().aF();
       int $$5 = 0;
 
       for (String $$6 : $$1) {
-         eic $$7 = $$4.c($$6, $$2);
+         eib $$7 = $$4.c($$6, $$2);
          $$7.b($$7.b() - $$3);
          $$5 += $$7.b();
       }
@@ -417,13 +417,13 @@ public class aic {
    }
 
    private static int a(dr $$0, String $$1) {
-      Map<eia, eic> $$2 = $$0.l().aF().c($$1);
+      Map<ehz, eib> $$2 = $$0.l().aF().c($$1);
       if ($$2.isEmpty()) {
          $$0.a(() -> tf.a("commands.scoreboard.players.list.entity.empty", $$1), false);
       } else {
          $$0.a(() -> tf.a("commands.scoreboard.players.list.entity.success", $$1, $$2.size()), false);
 
-         for (Entry<eia, eic> $$3 : $$2.entrySet()) {
+         for (Entry<ehz, eib> $$3 : $$2.entrySet()) {
             $$0.a(() -> tf.a("commands.scoreboard.players.list.entity.entry", $$3.getKey().e(), $$3.getValue().b()), false);
          }
       }
@@ -431,8 +431,8 @@ public class aic {
       return $$2.size();
    }
 
-   private static int a(dr $$0, ehz $$1) throws CommandSyntaxException {
-      eid $$2 = $$0.l().aF();
+   private static int a(dr $$0, ehy $$1) throws CommandSyntaxException {
+      eic $$2 = $$0.l().aF();
       if ($$2.a($$1) == null) {
          throw b.create();
       } else {
@@ -442,8 +442,8 @@ public class aic {
       }
    }
 
-   private static int a(dr $$0, ehz $$1, eia $$2) throws CommandSyntaxException {
-      eid $$3 = $$0.l().aF();
+   private static int a(dr $$0, ehy $$1, ehz $$2) throws CommandSyntaxException {
+      eic $$3 = $$0.l().aF();
       if ($$3.a($$1) == $$2) {
          throw c.create();
       } else {
@@ -453,7 +453,7 @@ public class aic {
       }
    }
 
-   private static int a(dr $$0, eia $$1, tf $$2) {
+   private static int a(dr $$0, ehz $$1, tf $$2) {
       if (!$$1.d().equals($$2)) {
          $$1.a($$2);
          $$0.a(() -> tf.a("commands.scoreboard.objectives.modify.displayname", $$1.b(), $$1.e()), true);
@@ -462,7 +462,7 @@ public class aic {
       return 0;
    }
 
-   private static int a(dr $$0, eia $$1, eig.a $$2) {
+   private static int a(dr $$0, ehz $$1, eif.a $$2) {
       if ($$1.f() != $$2) {
          $$1.a($$2);
          $$0.a(() -> tf.a("commands.scoreboard.objectives.modify.rendertype", $$1.e()), true);
@@ -471,31 +471,31 @@ public class aic {
       return 0;
    }
 
-   private static int a(dr $$0, eia $$1) {
-      eid $$2 = $$0.l().aF();
+   private static int a(dr $$0, ehz $$1) {
+      eic $$2 = $$0.l().aF();
       $$2.j($$1);
       $$0.a(() -> tf.a("commands.scoreboard.objectives.remove.success", $$1.e()), true);
       return $$2.c().size();
    }
 
-   private static int a(dr $$0, String $$1, eig $$2, tf $$3) throws CommandSyntaxException {
-      eid $$4 = $$0.l().aF();
+   private static int a(dr $$0, String $$1, eif $$2, tf $$3) throws CommandSyntaxException {
+      eic $$4 = $$0.l().aF();
       if ($$4.b($$1) != null) {
          throw a.create();
       } else {
          $$4.a($$1, $$2, $$3, $$2.f());
-         eia $$5 = $$4.b($$1);
+         ehz $$5 = $$4.b($$1);
          $$0.a(() -> tf.a("commands.scoreboard.objectives.add.success", $$5.e()), true);
          return $$4.c().size();
       }
    }
 
    private static int b(dr $$0) {
-      Collection<eia> $$1 = $$0.l().aF().c();
+      Collection<ehz> $$1 = $$0.l().aF().c();
       if ($$1.isEmpty()) {
          $$0.a(() -> tf.c("commands.scoreboard.objectives.list.empty"), false);
       } else {
-         $$0.a(() -> tf.a("commands.scoreboard.objectives.list.success", $$1.size(), th.b($$1, eia::e)), false);
+         $$0.a(() -> tf.a("commands.scoreboard.objectives.list.success", $$1.size(), th.b($$1, ehz::e)), false);
       }
 
       return $$1.size();

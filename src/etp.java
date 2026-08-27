@@ -1,5 +1,5 @@
 public interface etp {
-   default int ay_() {
+   default int u() {
       return 0;
    }
 }

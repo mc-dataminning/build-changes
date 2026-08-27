@@ -1,85 +1,73 @@
-import com.google.common.net.HostAndPort;
-import com.mojang.logging.LogUtils;
-import java.net.IDN;
-import org.slf4j.Logger;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.util.Objects;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
 public final class fjp {
-   private static final Logger a = LogUtils.getLogger();
-   private final HostAndPort b;
-   private static final fjp c = new fjp(HostAndPort.fromParts("server.invalid", 25565));
+   private static final int a = 1024;
+   private final fjg b;
+   private final fjm c;
+   private final fjb d;
+   @Nullable
+   private fjl e;
 
-   public fjp(String $$0, int $$1) {
-      this(HostAndPort.fromParts($$0, $$1));
-   }
-
-   private fjp(HostAndPort $$0) {
+   public fjp(fjg $$0, fjm $$1, fjb $$2) {
       this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public String a() {
-      try {
-         return IDN.toASCII(this.b.getHost());
-      } catch (IllegalArgumentException var2) {
-         return "";
-      }
+   public static fjp a(fjm $$0, UserApiService $$1) {
+      fjb $$2 = new fjb(1024);
+      fjg $$3 = fjg.a($$0, $$1);
+      return new fjp($$3, $$0, $$2);
    }
 
-   public int b() {
-      return this.b.getPort();
-   }
-
-   public static fjp a(String $$0) {
-      if ($$0 == null) {
-         return c;
+   public void a(eql $$0, eya $$1, Runnable $$2, boolean $$3) {
+      if (this.e != null) {
+         fjl $$4 = this.e.b();
+         $$0.a(
+            new ewt(
+               $$4x -> {
+                  this.a(null);
+                  if ($$4x) {
+                     $$0.a($$4.a($$1, this));
+                  } else {
+                     $$2.run();
+                  }
+               },
+               tf.c($$3 ? "gui.abuseReport.draft.quittotitle.title" : "gui.abuseReport.draft.title"),
+               tf.c($$3 ? "gui.abuseReport.draft.quittotitle.content" : "gui.abuseReport.draft.content"),
+               tf.c("gui.abuseReport.draft.edit"),
+               tf.c("gui.abuseReport.draft.discard")
+            )
+         );
       } else {
-         try {
-            HostAndPort $$1 = HostAndPort.fromString($$0).withDefaultPort(25565);
-            return $$1.getHost().isEmpty() ? c : new fjp($$1);
-         } catch (IllegalArgumentException var2) {
-            a.info("Failed to parse URL {}", $$0, var2);
-            return c;
-         }
+         $$2.run();
       }
    }
 
-   public static boolean b(String $$0) {
-      try {
-         HostAndPort $$1 = HostAndPort.fromString($$0);
-         String $$2 = $$1.getHost();
-         if (!$$2.isEmpty()) {
-            IDN.toASCII($$2);
-            return true;
-         }
-      } catch (IllegalArgumentException var3) {
-      }
-
-      return false;
+   public fjg a() {
+      return this.b;
    }
 
-   static int c(String $$0) {
-      try {
-         return Integer.parseInt($$0.trim());
-      } catch (Exception var2) {
-         return 25565;
-      }
+   public fjb b() {
+      return this.d;
    }
 
-   @Override
-   public String toString() {
-      return this.b.toString();
+   public boolean a(fjm $$0) {
+      return Objects.equals(this.c, $$0);
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 instanceof fjp ? this.b.equals(((fjp)$$0).b) : false;
-      }
+   public void a(@Nullable fjl $$0) {
+      this.e = $$0;
    }
 
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
+   public boolean c() {
+      return this.e != null;
+   }
+
+   public boolean a(UUID $$0) {
+      return this.c() && this.e.a($$0);
    }
 }

@@ -1,278 +1,131 @@
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Collection;
 import java.util.List;
-import java.util.UUID;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class eoi extends gei {
-   private static final Logger a = LogUtils.getLogger();
-   private static final aer b = new aer("minecraft", "textures/gui/options_background.png");
-   private static final tf c = tf.c("mco.question");
-   static final tf y = tf.c("mco.configure.world.invites.normal.tooltip");
-   static final tf z = tf.c("mco.configure.world.invites.ops.tooltip");
-   static final tf A = tf.c("mco.configure.world.invites.remove.tooltip");
-   private static final int B = -1;
-   private final enx C;
-   final emn D;
-   eoi.b E;
-   int F;
-   int G;
-   private esh H;
-   private esh I;
-   int J = -1;
-   private boolean K;
+public class eoi extends ger {
+   private static final tf a = tf.c("mco.selectServer.popup");
+   private static final tf b = tf.c("mco.selectServer.close");
+   private static final aer c = new aer("popup/background");
+   private static final aer y = new aer("icon/trial_available");
+   private static final ets z = new ets(new aer("widget/cross_button"), new aer("widget/cross_button_highlighted"));
+   private static final int A = 236;
+   private static final int B = 34;
+   private static final int C = 6;
+   private static final int D = 195;
+   private static final int E = 152;
+   private static final int F = 4;
+   private static final int G = 10;
+   private static final int H = 320;
+   private static final int I = 172;
+   private static final int J = 100;
+   private static final int K = 99;
+   private static final int L = 100;
+   private static List<aer> M = List.of();
+   private final eya N;
+   private final boolean O;
+   @Nullable
+   private esg P;
+   private int Q;
+   private int R;
 
-   public eoi(enx $$0, emn $$1) {
-      super(tf.c("mco.configure.world.players.title"));
-      this.C = $$0;
-      this.D = $$1;
+   public eoi(eya $$0, boolean $$1) {
+      super(a);
+      this.N = $$0;
+      this.O = $$1;
+   }
+
+   public static void a(anm $$0) {
+      Collection<aer> $$1 = $$0.b("textures/gui/images", $$0x -> $$0x.a().endsWith(".png")).keySet();
+      M = $$1.stream().filter($$0x -> $$0x.b().equals("realms")).toList();
    }
 
    @Override
-   public void aE_() {
-      this.F = this.g / 2 - 160;
-      this.G = 150;
-      int $$0 = this.g / 2 + 12;
-      this.E = new eoi.b();
-      this.E.f(this.F);
-      this.e(this.E);
-
-      for (emj $$1 : this.D.h) {
-         this.E.a($$1);
-      }
-
-      this.J = -1;
-      this.d(esh.a(tf.c("mco.configure.world.buttons.invite"), $$0x -> this.f.a(new eoc(this.C, this, this.D))).a($$0, h(1), this.G + 10, 20).a());
-      this.H = this.d(esh.a(tf.c("mco.configure.world.invites.remove.tooltip"), $$0x -> this.l(this.J)).a($$0, h(7), this.G + 10, 20).a());
-      this.I = this.d(esh.a(tf.c("mco.configure.world.invites.ops.tooltip"), $$0x -> {
-         if (this.D.h.get(this.J).c()) {
-            this.k(this.J);
-         } else {
-            this.j(this.J);
-         }
-      }).a($$0, h(9), this.G + 10, 20).a());
-      this.d(esh.a(te.k, $$0x -> this.C()).a($$0 + this.G / 2 + 2, h(12), this.G / 2 + 10 - 2, 20).a());
-      this.B();
-   }
-
-   @Override
-   void B() {
-      this.H.j = this.i(this.J);
-      this.I.j = this.i(this.J);
-      this.E.d();
-   }
-
-   private boolean i(int $$0) {
-      return $$0 != -1;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.C();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   private void C() {
-      if (this.K) {
-         this.f.a(this.C.f());
-      } else {
-         this.f.a(this.C);
-      }
-   }
-
-   void j(int $$0) {
-      elw $$1 = elw.a();
-      UUID $$2 = this.D.h.get($$0).b();
-
-      try {
-         this.a($$1.b(this.D.a, $$2));
-      } catch (enj var5) {
-         a.error("Couldn't op the user", var5);
-      }
-
-      this.B();
-   }
-
-   void k(int $$0) {
-      elw $$1 = elw.a();
-      UUID $$2 = this.D.h.get($$0).b();
-
-      try {
-         this.a($$1.c(this.D.a, $$2));
-      } catch (enj var5) {
-         a.error("Couldn't deop the user", var5);
-      }
-
-      this.B();
-   }
-
-   private void a(emf $$0) {
-      for (emj $$1 : this.D.h) {
-         $$1.a($$0.a.contains($$1.a()));
-      }
-   }
-
-   void l(int $$0) {
-      this.B();
-      if ($$0 >= 0 && $$0 < this.D.h.size()) {
-         emj $$1 = this.D.h.get($$0);
-         eny $$2 = new eny($$1x -> {
-            if ($$1x) {
-               elw $$2x = elw.a();
-
-               try {
-                  $$2x.a(this.D.a, $$1.b());
-               } catch (enj var5) {
-                  a.error("Couldn't uninvite user", var5);
+   protected void aC_() {
+      this.N.a(this.f, this.g, this.h);
+      if (this.O) {
+         this.P = this.d(esg.a(tf.c("mco.selectServer.trial"), $$0x -> this.f.a(new ews($$0xx -> {
+               if ($$0xx) {
+                  ac.i().a("https://aka.ms/startjavarealmstrial");
                }
 
-               this.D.h.remove(this.J);
-               this.J = -1;
-               this.B();
+               this.f.a(this);
+            }, "https://aka.ms/startjavarealmstrial", true))).a(this.E() - 10 - 99, this.F() - 10 - 4 - 40, 99, 20).a());
+      }
+
+      this.a(this.d(esg.a(tf.c("mco.selectServer.buy"), $$0x -> this.f.a(new ews($$0xx -> {
+            if ($$0xx) {
+               ac.i().a("https://aka.ms/BuyJavaRealms");
             }
 
-            this.K = true;
             this.f.a(this);
-         }, c, tf.a("mco.configure.world.uninvite.player", $$1.a()));
-         this.f.a($$2);
+         }, "https://aka.ms/BuyJavaRealms", true))).a(this.E() - 10 - 99, this.F() - 10 - 20, 99, 20).a()));
+      ess $$0 = this.d(new ess(this.C() + 4, this.D() + 4, 14, 14, z, $$0x -> this.at_(), b));
+      $$0.a(etq.a(b));
+      int $$1 = 142 - (this.O ? 40 : 20);
+      esq $$2 = new esq(this.E() - 10 - 100, this.D() + 10, 100, $$1, a, this.i);
+      if ($$2.v()) {
+         $$2.d(100 - $$2.f());
+      }
+
+      this.d($$2);
+   }
+
+   @Override
+   public void c() {
+      super.c();
+      if (++this.R > 100) {
+         this.R = 0;
+         this.Q = (this.Q + 1) % M.size();
       }
    }
 
    @Override
-   public void a(erw $$0, int $$1, int $$2, float $$3) {
+   public void a(erv $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.E.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 17, -1);
-      int $$4 = h(12) + 20;
-      $$0.a(0.25F, 0.25F, 0.25F, 1.0F);
-      $$0.a(b, 0, $$4, 0.0F, 0.0F, this.g, this.h - $$4, 32, 32);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      String $$5 = this.D.h != null ? Integer.toString(this.D.h.size()) : "0";
-      $$0.a(this.i, tf.a("mco.configure.world.invited.number", $$5), this.F, h(0), -6250336, false);
-   }
-
-   class a extends etd.a<eoi.a> {
-      private static final int b = 3;
-      private static final int c = 1;
-      private static final int d = 8;
-      private static final int e = 7;
-      private static final ets f = new ets(new aer("player_list/remove_player"), new aer("player_list/remove_player_highlighted"));
-      private static final ets g = new ets(new aer("player_list/make_operator"), new aer("player_list/make_operator_highlighted"));
-      private static final ets h = new ets(new aer("player_list/remove_operator"), new aer("player_list/remove_operator_highlighted"));
-      private final emj i;
-      private final List<esf> j = new ArrayList<>();
-      private final est k;
-      private final est l;
-      private final est m;
-
-      public a(emj $$0) {
-         this.i = $$0;
-         int $$1 = eoi.this.D.h.indexOf(this.i);
-         int $$2 = eoi.this.E.p() - 16 - 9;
-         int $$3 = eoi.this.E.g($$1) + 1;
-         this.k = new est($$2, $$3, 8, 7, f, $$1x -> eoi.this.l($$1), te.a);
-         this.k.a(etq.a(eoi.A));
-         this.j.add(this.k);
-         $$2 += 11;
-         this.l = new est($$2, $$3, 8, 7, g, $$1x -> eoi.this.j($$1), te.a);
-         this.l.a(etq.a(eoi.y));
-         this.j.add(this.l);
-         this.m = new est($$2, $$3, 8, 7, h, $$1x -> eoi.this.k($$1), te.a);
-         this.m.a(etq.a(eoi.z));
-         this.j.add(this.m);
-         this.b();
-      }
-
-      public void b() {
-         this.l.j = !this.i.c();
-         this.m.j = !this.l.j;
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         if (!this.l.a($$0, $$1, $$2)) {
-            this.m.a($$0, $$1, $$2);
-         }
-
-         this.k.a($$0, $$1, $$2);
-         return true;
-      }
-
-      @Override
-      public void a(erw $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10;
-         if (!this.i.d()) {
-            $$10 = -6250336;
-         } else if (this.i.e()) {
-            $$10 = 8388479;
-         } else {
-            $$10 = -1;
-         }
-
-         epd.a($$0, eoi.this.F + 2 + 2, $$2 + 1, 8, this.i.b());
-         $$0.a(eoi.this.i, this.i.a(), eoi.this.F + 3 + 12, $$2 + 1, $$10, false);
-         this.j.forEach($$5x -> {
-            $$5x.f($$2 + 1);
-            $$5x.a($$0, $$6, $$7, $$9);
-         });
-      }
-
-      @Override
-      public tf a() {
-         return tf.a("narrator.select", this.i.a());
+      if (this.P != null) {
+         a($$0, this.P);
       }
    }
 
-   class b extends geh<eoi.a> {
-      public b() {
-         super(eoi.this.G + 10, eoi.h(12) + 20, eoi.h(1), eoi.h(12) + 20, 13);
-      }
+   public static void a(erv $$0, esg $$1) {
+      int $$2 = 8;
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, 110.0F);
+      $$0.a(y, $$1.r() + $$1.l() - 8 - 4, $$1.t() + $$1.i() / 2 - 4, 8, 8);
+      $$0.c().b();
+   }
 
-      public void d() {
-         if (eoi.this.J != -1) {
-            this.d(eoi.this.J).b();
-         }
+   @Override
+   public void b(erv $$0, int $$1, int $$2, float $$3) {
+      this.N.a($$0, -1, -1, $$3);
+      $$0.e();
+      RenderSystem.clear(256, eql.a);
+      this.a($$0);
+      $$0.a(c, this.C(), this.D(), 320, 172);
+      if (!M.isEmpty()) {
+         $$0.a(M.get(this.Q), this.C() + 10, this.D() + 10, 0, 0.0F, 0.0F, 195, 152, 195, 152);
       }
+   }
 
-      public void a(emj $$0) {
-         this.a((eoi.a)(eoi.this.new a($$0)));
-      }
+   private int C() {
+      return (this.g - 320) / 2;
+   }
 
-      @Override
-      public int b() {
-         return (int)((double)this.e * 1.0);
-      }
+   private int D() {
+      return (this.h - 172) / 2;
+   }
 
-      @Override
-      public void a(int $$0) {
-         super.a($$0);
-         this.b($$0);
-      }
+   private int E() {
+      return this.C() + 320;
+   }
 
-      public void b(int $$0) {
-         eoi.this.J = $$0;
-         eoi.this.B();
-      }
+   private int F() {
+      return this.D() + 172;
+   }
 
-      public void a(@Nullable eoi.a $$0) {
-         super.a($$0);
-         eoi.this.J = this.i().indexOf($$0);
-         eoi.this.B();
-      }
-
-      @Override
-      public int c() {
-         return eoi.this.F + this.e - 5;
-      }
-
-      @Override
-      public int a() {
-         return this.k() * 13;
-      }
+   @Override
+   public void at_() {
+      this.f.a(this.N);
    }
 }

@@ -109,7 +109,7 @@ public class pt {
       String $$4 = $$3 + "." + $$0.getName().toLowerCase();
       String $$5 = $$1.e().isEmpty() ? $$4 : $$3 + "." + $$1.e();
       String $$6 = $$1.b();
-      cyy $$7 = qe.a($$1.c());
+      cyx $$7 = qe.a($$1.c());
       return new qi($$6, $$4, $$5, $$7, $$1.a(), $$1.f(), $$1.d(), $$1.h(), $$1.g(), (Consumer<pq>)d($$0));
    }
 

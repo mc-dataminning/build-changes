@@ -1,46 +1,31 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dnv extends dmq {
-   public dnv(Codec<dpt> $$0) {
-      super($$0);
-   }
+public class dnv implements dpq {
+   public static final Codec<dnv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dez.b.fieldOf("valid_base_block").forGetter($$0x -> $$0x.b),
+               dez.b.fieldOf("stem_state").forGetter($$0x -> $$0x.c),
+               dez.b.fieldOf("hat_state").forGetter($$0x -> $$0x.d),
+               dez.b.fieldOf("decor_state").forGetter($$0x -> $$0x.e),
+               dlp.b.fieldOf("replaceable_blocks").forGetter($$0x -> $$0x.f),
+               Codec.BOOL.fieldOf("planted").orElse(false).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, dnv::new)
+   );
+   public final dez b;
+   public final dez c;
+   public final dez d;
+   public final dez e;
+   public final dlp f;
+   public final boolean g;
 
-   @Override
-   protected void a(cpn $$0, aru $$1, gu $$2, int $$3, gu.a $$4, dpt $$5) {
-      int $$6 = $$5.d;
-
-      for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
-         for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
-            boolean $$9 = $$7 == -$$6;
-            boolean $$10 = $$7 == $$6;
-            boolean $$11 = $$8 == -$$6;
-            boolean $$12 = $$8 == $$6;
-            boolean $$13 = $$9 || $$10;
-            boolean $$14 = $$11 || $$12;
-            if (!$$13 || !$$14) {
-               $$4.a($$2, $$7, $$3, $$8);
-               if (!$$0.a_($$4).i($$0, $$4)) {
-                  boolean $$15 = $$9 || $$14 && $$7 == 1 - $$6;
-                  boolean $$16 = $$10 || $$14 && $$7 == $$6 - 1;
-                  boolean $$17 = $$11 || $$13 && $$8 == 1 - $$6;
-                  boolean $$18 = $$12 || $$13 && $$8 == $$6 - 1;
-                  dfa $$19 = $$5.b.a($$1, $$2);
-                  if ($$19.b(cwg.d) && $$19.b(cwg.b) && $$19.b(cwg.a) && $$19.b(cwg.c)) {
-                     $$19 = $$19.a(cwg.d, Boolean.valueOf($$15))
-                        .a(cwg.b, Boolean.valueOf($$16))
-                        .a(cwg.a, Boolean.valueOf($$17))
-                        .a(cwg.c, Boolean.valueOf($$18));
-                  }
-
-                  this.a($$0, $$4, $$19);
-               }
-            }
-         }
-      }
-   }
-
-   @Override
-   protected int a(int $$0, int $$1, int $$2, int $$3) {
-      return $$3 <= 3 ? 0 : $$2;
+   public dnv(dez $$0, dez $$1, dez $$2, dez $$3, dlp $$4, boolean $$5) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 }

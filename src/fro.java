@@ -1,45 +1,107 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-public class fro extends ftp<bxw, fdq> {
-   public static final aer a = new aer("textures/entity/armorstand/wood.png");
+public class fro implements frd.a {
+   private final eql a;
+   private final Map<aeq<cpl>, Map<String, duq>> b = Maps.newIdentityHashMap();
+   private final Map<aeq<cpl>, Map<String, wd.a>> c = Maps.newIdentityHashMap();
+   private static final int d = 500;
 
-   public fro(fso.a $$0) {
-      super($$0, new fdr($$0.a(fhm.b)), 0.0F);
-      this.a(new fwm<>(this, new fdq($$0.a(fhm.c)), new fdq($$0.a(fhm.d)), $$0.g()));
-      this.a(new fwp<>(this, $$0.d()));
-      this.a(new fwf<>(this, $$0.f()));
-      this.a(new fwb<>(this, $$0.f(), $$0.d()));
+   public fro(eql $$0) {
+      this.a = $$0;
    }
 
-   public aer a(bxw $$0) {
-      return a;
-   }
-
-   protected void a(bxw $$0, elg $$1, float $$2, float $$3, float $$4) {
-      $$1.a(a.d.rotationDegrees(180.0F - $$3));
-      float $$5 = (float)($$0.dK().V() - $$0.bJ) + $$4;
-      if ($$5 < 5.0F) {
-         $$1.a(a.d.rotationDegrees(arp.a($$5 / 1.5F * (float) Math.PI) * 3.0F));
-      }
-   }
-
-   protected boolean b(bxw $$0) {
-      double $$1 = this.c.b($$0);
-      float $$2 = $$0.bW() ? 32.0F : 64.0F;
-      return $$1 >= (double)($$2 * $$2) ? false : $$0.cA();
-   }
-
-   @Nullable
-   protected fnt a(bxw $$0, boolean $$1, boolean $$2, boolean $$3) {
-      if (!$$0.t()) {
-         return super.a($$0, $$1, $$2, $$3);
-      } else {
-         aer $$4 = this.a($$0);
-         if ($$2) {
-            return fnt.c($$4, false);
-         } else {
-            return $$1 ? fnt.a($$4, false) : null;
+   @Override
+   public void a(elf $$0, fnu $$1, double $$2, double $$3, double $$4) {
+      epw $$5 = this.a.j.m();
+      aeq<cpl> $$6 = this.a.r.ac();
+      gu $$7 = gu.a($$5.b().c, 0.0, $$5.b().e);
+      elj $$8 = $$1.getBuffer(foc.x());
+      if (this.b.containsKey($$6)) {
+         for (duq $$9 : this.b.get($$6).values()) {
+            if ($$7.a($$9.f(), 500.0)) {
+               fns.a(
+                  $$0,
+                  $$8,
+                  (double)$$9.g() - $$2,
+                  (double)$$9.h() - $$3,
+                  (double)$$9.i() - $$4,
+                  (double)($$9.j() + 1) - $$2,
+                  (double)($$9.k() + 1) - $$3,
+                  (double)($$9.l() + 1) - $$4,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F
+               );
+            }
          }
       }
+
+      Map<String, wd.a> $$10 = this.c.get($$6);
+      if ($$10 != null) {
+         for (wd.a $$11 : $$10.values()) {
+            duq $$12 = $$11.a();
+            if ($$7.a($$12.f(), 500.0)) {
+               if ($$11.b()) {
+                  fns.a(
+                     $$0,
+                     $$8,
+                     (double)$$12.g() - $$2,
+                     (double)$$12.h() - $$3,
+                     (double)$$12.i() - $$4,
+                     (double)($$12.j() + 1) - $$2,
+                     (double)($$12.k() + 1) - $$3,
+                     (double)($$12.l() + 1) - $$4,
+                     0.0F,
+                     1.0F,
+                     0.0F,
+                     1.0F,
+                     0.0F,
+                     1.0F,
+                     0.0F
+                  );
+               } else {
+                  fns.a(
+                     $$0,
+                     $$8,
+                     (double)$$12.g() - $$2,
+                     (double)$$12.h() - $$3,
+                     (double)$$12.i() - $$4,
+                     (double)($$12.j() + 1) - $$2,
+                     (double)($$12.k() + 1) - $$3,
+                     (double)($$12.l() + 1) - $$4,
+                     0.0F,
+                     0.0F,
+                     1.0F,
+                     1.0F,
+                     0.0F,
+                     0.0F,
+                     1.0F
+                  );
+               }
+            }
+         }
+      }
+   }
+
+   public void a(duq $$0, List<wd.a> $$1, aeq<cpl> $$2) {
+      this.b.computeIfAbsent($$2, $$0x -> new HashMap<>()).put($$0.toString(), $$0);
+      Map<String, wd.a> $$3 = this.c.computeIfAbsent($$2, $$0x -> new HashMap<>());
+
+      for (wd.a $$4 : $$1) {
+         $$3.put($$4.a().toString(), $$4);
+      }
+   }
+
+   @Override
+   public void a() {
+      this.b.clear();
+      this.c.clear();
    }
 }

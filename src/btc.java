@@ -1,42 +1,37 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Set;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
 
-public class btc extends bte<cba> {
-   private static final int a = 40;
+public class btc {
+   private final bja a;
+   private final IntSet b = new IntOpenHashSet();
+   private final IntSet c = new IntOpenHashSet();
 
-   public btc() {
-      super(40);
+   public btc(bja $$0) {
+      this.a = $$0;
    }
 
-   protected void a(akk $$0, cba $$1) {
-      aeq<cpm> $$2 = $$0.ac();
-      gu $$3 = $$1.dk();
-      List<hd> $$4 = Lists.newArrayList();
-      int $$5 = 4;
+   public void a() {
+      this.b.clear();
+      this.c.clear();
+   }
 
-      for (int $$6 = -4; $$6 <= 4; $$6++) {
-         for (int $$7 = -2; $$7 <= 2; $$7++) {
-            for (int $$8 = -4; $$8 <= 4; $$8++) {
-               gu $$9 = $$3.b($$6, $$7, $$8);
-               if ($$1.gk().b().e().contains($$0.a_($$9).b())) {
-                  $$4.add(hd.a($$2, $$9));
-               }
-            }
-         }
-      }
-
-      bjz<?> $$10 = $$1.dM();
-      if (!$$4.isEmpty()) {
-         $$10.a(bsa.f, $$4);
+   public boolean a(bii $$0) {
+      int $$1 = $$0.ah();
+      if (this.b.contains($$1)) {
+         return true;
+      } else if (this.c.contains($$1)) {
+         return false;
       } else {
-         $$10.b(bsa.f);
-      }
-   }
+         this.a.dK().ad().a("hasLineOfSight");
+         boolean $$2 = this.a.E($$0);
+         this.a.dK().ad().c();
+         if ($$2) {
+            this.b.add($$1);
+         } else {
+            this.c.add($$1);
+         }
 
-   @Override
-   public Set<bsa<?>> a() {
-      return ImmutableSet.of(bsa.f);
+         return $$2;
+      }
    }
 }

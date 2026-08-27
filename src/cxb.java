@@ -1,33 +1,35 @@
-public class cxb extends cwf {
-   private static final tf a = tf.c("container.loom");
+public class cxb extends csl {
+   private static final int a = 20;
 
-   protected cxb(dez.d $$0) {
+   public cxb(dey.d $$0) {
       super($$0);
    }
 
    @Override
-   public bgq a(dfa $$0, cpm $$1, gu $$2, cbn $$3, bgp $$4, eha $$5) {
-      if ($$1.B) {
-         return bgq.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(apg.ax);
-         return bgq.b;
+   public void a(cpl $$0, gu $$1, dez $$2, bii $$3) {
+      if (!$$3.bS() && $$3 instanceof biy && !cng.j((biy)$$3)) {
+         $$3.a($$0.ag().e(), 1.0F);
       }
+
+      super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public bgt b(dfa $$0, cpm $$1, gu $$2) {
-      return new bgy(($$2x, $$3, $$4) -> new cfh($$2x, $$3, cep.a($$1, $$2)), a);
+   public void a(dez $$0, akk $$1, gu $$2, aru $$3) {
+      csq.b($$1, $$2.c(), $$0);
    }
 
    @Override
-   public dfa a(clg $$0) {
-      return this.n().a(aC, $$0.g().g());
+   public dez a(dez $$0, ha $$1, dez $$2, cpm $$3, gu $$4, gu $$5) {
+      if ($$1 == ha.b && $$2.a(csm.G)) {
+         $$3.a($$4, this, 20);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected void a(dfb.a<csm, dfa> $$0) {
-      $$0.a(aC);
+   public void b(dez $$0, cpl $$1, gu $$2, dez $$3, boolean $$4) {
+      $$1.a($$2, this, 20);
    }
 }

@@ -1,192 +1,181 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.Long2BooleanMap;
+import it.unimi.dsi.fastutil.longs.Long2BooleanOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class duz {
-   public static final Codec<duz> a = jb.U.q().dispatch(duz::e, dvi::codec);
-   public static final Codec<he<duz>> b = aen.a(jc.az, a);
-   protected final duz.c c;
+public class duz {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = -1;
+   private final dhv c;
+   private final hs d;
+   private final hr<cqj> e;
+   private final hr<duy> f;
+   private final dys g;
+   private final aeq<cpl> h;
+   private final dgw i;
+   private final dkw j;
+   private final cpn k;
+   private final cqn l;
+   private final long m;
+   private final DataFixer n;
+   private final Long2ObjectMap<Object2IntMap<duy>> o = new Long2ObjectOpenHashMap();
+   private final Map<duy, Long2BooleanMap> p = new HashMap<>();
 
-   public static <S extends duz> RecordCodecBuilder<S, duz.c> a(Instance<S> $$0) {
-      return duz.c.a.forGetter($$0x -> $$0x.c);
-   }
-
-   public static <S extends duz> Codec<S> a(Function<duz.c, S> $$0) {
-      return RecordCodecBuilder.create($$1 -> $$1.group(a($$1)).apply($$1, $$0));
-   }
-
-   protected duz(duz.c $$0) {
+   public duz(dhv $$0, hs $$1, dys $$2, aeq<cpl> $$3, dgw $$4, dkw $$5, cpn $$6, cqn $$7, long $$8, DataFixer $$9) {
       this.c = $$0;
+      this.d = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.i = $$4;
+      this.j = $$5;
+      this.k = $$6;
+      this.l = $$7;
+      this.m = $$8;
+      this.n = $$9;
+      this.e = $$1.d(jc.ap);
+      this.f = $$1.d(jc.az);
    }
 
-   public hi<cqk> a() {
-      return this.c.b;
-   }
-
-   public Map<bjb, dvg> b() {
-      return this.c.c;
-   }
-
-   public dkf.b c() {
-      return this.c.d;
-   }
-
-   public dvk d() {
-      return this.c.e;
-   }
-
-   public dur a(dur $$0) {
-      return this.d() != dvk.a ? $$0.a(12) : $$0;
-   }
-
-   public dvh a(hs $$0, dgx $$1, cqo $$2, dkx $$3, dyt $$4, long $$5, cot $$6, int $$7, cpo $$8, Predicate<he<cqk>> $$9) {
-      duz.a $$10 = new duz.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$8, $$9);
-      Optional<duz.b> $$11 = this.b($$10);
-      if ($$11.isPresent()) {
-         dvr $$12 = $$11.get().a();
-         dvh $$13 = new dvh(this, $$6, $$7, $$12.a());
-         if ($$13.b()) {
-            return $$13;
+   public dva a(cos $$0, duy $$1, boolean $$2) {
+      long $$3 = $$0.a();
+      Object2IntMap<duy> $$4 = (Object2IntMap<duy>)this.o.get($$3);
+      if ($$4 != null) {
+         return this.a($$4, $$1, $$2);
+      } else {
+         dva $$5 = this.a($$0, $$1, $$2, $$3);
+         if ($$5 != null) {
+            return $$5;
+         } else {
+            boolean $$6 = this.p.computeIfAbsent($$1, $$0x -> new Long2BooleanOpenHashMap()).computeIfAbsent($$3, $$2x -> this.b($$0, $$1));
+            return !$$6 ? dva.b : dva.c;
          }
       }
-
-      return dvh.b;
    }
 
-   protected static Optional<duz.b> a(duz.a $$0, dkj.a $$1, Consumer<dvr> $$2) {
-      cot $$3 = $$0.h();
-      int $$4 = $$3.b();
-      int $$5 = $$3.c();
-      int $$6 = $$0.b().c($$4, $$5, $$1, $$0.i(), $$0.d());
-      return Optional.of(new duz.b(new gu($$4, $$6, $$5), $$2));
+   private boolean b(cos $$0, duy $$1) {
+      return $$1.b(new duy.a(this.d, this.i, this.l, this.j, this.g, this.m, $$0, this.k, $$1.a()::a)).isPresent();
    }
 
-   private static boolean a(duz.b $$0, duz.a $$1) {
-      gu $$2 = $$0.b();
-      return $$1.j.test($$1.b.c().getNoiseBiome(hq.a($$2.u()), hq.a($$2.v()), hq.a($$2.w()), $$1.d.b()));
-   }
+   @Nullable
+   private dva a(cos $$0, duy $$1, boolean $$2, long $$3) {
+      rr $$4 = new rr(new rt(qw.a, "DataVersion"), new rt("Level", "Structures", qr.b, "Starts"), new rt("structures", qr.b, "starts"));
 
-   public void a(cqg $$0, cqe $$1, dgx $$2, aru $$3, dur $$4, cot $$5, dvo $$6) {
-   }
-
-   private static int[] b(duz.a $$0, int $$1, int $$2, int $$3, int $$4) {
-      dgx $$5 = $$0.b();
-      cpo $$6 = $$0.i();
-      dkx $$7 = $$0.d();
-      return new int[]{
-         $$5.c($$1, $$3, dkj.a.a, $$6, $$7),
-         $$5.c($$1, $$3 + $$4, dkj.a.a, $$6, $$7),
-         $$5.c($$1 + $$2, $$3, dkj.a.a, $$6, $$7),
-         $$5.c($$1 + $$2, $$3 + $$4, dkj.a.a, $$6, $$7)
-      };
-   }
-
-   protected static int a(duz.a $$0, int $$1, int $$2) {
-      cot $$3 = $$0.h();
-      int $$4 = $$3.d();
-      int $$5 = $$3.e();
-      return a($$0, $$4, $$5, $$1, $$2);
-   }
-
-   protected static int a(duz.a $$0, int $$1, int $$2, int $$3, int $$4) {
-      int[] $$5 = b($$0, $$1, $$3, $$2, $$4);
-      return Math.min(Math.min($$5[0], $$5[1]), Math.min($$5[2], $$5[3]));
-   }
-
-   @Deprecated
-   protected gu a(duz.a $$0, cyy $$1) {
-      int $$2 = 5;
-      int $$3 = 5;
-      if ($$1 == cyy.b) {
-         $$2 = -5;
-      } else if ($$1 == cyy.c) {
-         $$2 = -5;
-         $$3 = -5;
-      } else if ($$1 == cyy.d) {
-         $$3 = -5;
+      try {
+         this.c.a($$0, $$4).join();
+      } catch (Exception var13) {
+         a.warn("Failed to read chunk {}", $$0, var13);
+         return dva.c;
       }
 
-      cot $$4 = $$0.h();
-      int $$5 = $$4.a(7);
-      int $$6 = $$4.b(7);
-      return new gu($$5, a($$0, $$5, $$6, $$2, $$3), $$6);
-   }
+      if (!($$4.d() instanceof qr $$7)) {
+         return null;
+      } else {
+         int $$8 = dhx.a($$7);
+         if ($$8 <= 1493) {
+            return dva.c;
+         } else {
+            dhx.a($$7, this.h, this.i.b());
 
-   protected abstract Optional<duz.b> a(duz.a var1);
+            qr $$9;
+            try {
+               $$9 = ass.c.a(this.n, $$7, $$8);
+            } catch (Exception var12) {
+               a.warn("Failed to partially datafix chunk {}", $$0, var12);
+               return dva.c;
+            }
 
-   public Optional<duz.b> b(duz.a $$0) {
-      return this.a($$0).filter($$1 -> a($$1, $$0));
-   }
-
-   public abstract dvi<?> e();
-
-   public static record a(hs a, dgx b, cqo c, dkx d, dyt e, dli f, long g, cot h, cpo i, Predicate<he<cqk>> j) {
-
-      public a(hs $$0, dgx $$1, cqo $$2, dkx $$3, dyt $$4, long $$5, cot $$6, cpo $$7, Predicate<he<cqk>> $$8) {
-         this($$0, $$1, $$2, $$3, $$4, a($$5, $$6), $$5, $$6, $$7, $$8);
+            Object2IntMap<duy> $$12 = this.a($$9);
+            if ($$12 == null) {
+               return null;
+            } else {
+               this.a($$3, $$12);
+               return this.a($$12, $$1, $$2);
+            }
+         }
       }
+   }
 
-      private static dli a(long $$0, cot $$1) {
-         dli $$2 = new dli(new dkk(0L));
-         $$2.c($$0, $$1.e, $$1.f);
+   @Nullable
+   private Object2IntMap<duy> a(qr $$0) {
+      if (!$$0.b("structures", 10)) {
+         return null;
+      } else {
+         qr $$1 = $$0.p("structures");
+         if (!$$1.b("starts", 10)) {
+            return null;
+         } else {
+            qr $$2 = $$1.p("starts");
+            if ($$2.g()) {
+               return Object2IntMaps.emptyMap();
+            } else {
+               Object2IntMap<duy> $$3 = new Object2IntOpenHashMap();
+               hr<duy> $$4 = this.d.d(jc.az);
+
+               for (String $$5 : $$2.e()) {
+                  aer $$6 = aer.a($$5);
+                  if ($$6 != null) {
+                     duy $$7 = $$4.a($$6);
+                     if ($$7 != null) {
+                        qr $$8 = $$2.p($$5);
+                        if (!$$8.g()) {
+                           String $$9 = $$8.l("id");
+                           if (!"INVALID".equals($$9)) {
+                              int $$10 = $$8.h("references");
+                              $$3.put($$7, $$10);
+                           }
+                        }
+                     }
+                  }
+               }
+
+               return $$3;
+            }
+         }
+      }
+   }
+
+   private static Object2IntMap<duy> a(Object2IntMap<duy> $$0) {
+      return $$0.isEmpty() ? Object2IntMaps.emptyMap() : $$0;
+   }
+
+   private dva a(Object2IntMap<duy> $$0, duy $$1, boolean $$2) {
+      int $$3 = $$0.getOrDefault($$1, -1);
+      return $$3 == -1 || $$2 && $$3 != 0 ? dva.b : dva.a;
+   }
+
+   public void a(cos $$0, Map<duy, dvg> $$1) {
+      long $$2 = $$0.a();
+      Object2IntMap<duy> $$3 = new Object2IntOpenHashMap();
+      $$1.forEach(($$1x, $$2x) -> {
+         if ($$2x.b()) {
+            $$3.put($$1x, $$2x.f());
+         }
+      });
+      this.a($$2, $$3);
+   }
+
+   private void a(long $$0, Object2IntMap<duy> $$1) {
+      this.o.put($$0, a($$1));
+      this.p.values().forEach($$1x -> $$1x.remove($$0));
+   }
+
+   public void a(cos $$0, duy $$1) {
+      this.o.compute($$0.a(), ($$1x, $$2) -> {
+         if ($$2 == null || $$2.isEmpty()) {
+            $$2 = new Object2IntOpenHashMap();
+         }
+
+         $$2.computeInt($$1, ($$0xx, $$1xx) -> $$1xx == null ? 1 : $$1xx + 1);
          return $$2;
-      }
-   }
-
-   public static record b(gu a, Either<Consumer<dvr>, dvr> b) {
-      public b(gu $$0, Consumer<dvr> $$1) {
-         this($$0, Either.left($$1));
-      }
-
-      public dvr a() {
-         return (dvr)this.b.map($$0 -> {
-            dvr $$1 = new dvr();
-            $$0.accept($$1);
-            return $$1;
-         }, $$0 -> $$0);
-      }
-
-      public gu b() {
-         return this.a;
-      }
-
-      public Either<Consumer<dvr>, dvr> c() {
-         return this.b;
-      }
-   }
-
-   public static record c(hi<cqk> b, Map<bjb, dvg> c, dkf.b d, dvk e) {
-      public static final MapCodec<duz.c> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  ht.a(jc.ap).fieldOf("biomes").forGetter(duz.c::a),
-                  Codec.simpleMap(bjb.i, dvg.a, ash.a(bjb.values())).fieldOf("spawn_overrides").forGetter(duz.c::b),
-                  dkf.b.l.fieldOf("step").forGetter(duz.c::c),
-                  dvk.e.optionalFieldOf("terrain_adaptation", dvk.a).forGetter(duz.c::d)
-               )
-               .apply($$0, duz.c::new)
-      );
-
-      public hi<cqk> a() {
-         return this.b;
-      }
-
-      public Map<bjb, dvg> b() {
-         return this.c;
-      }
-
-      public dkf.b c() {
-         return this.d;
-      }
-
-      public dvk d() {
-         return this.e;
-      }
+      });
    }
 }

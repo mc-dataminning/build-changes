@@ -1,43 +1,30 @@
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
-public class bss extends bte<bzx> {
+public class bss extends btd<biy> {
    @Override
-   public Set<bsa<?>> a() {
-      return ImmutableSet.of(bsa.h, bsa.av, bsa.ap, bsa.ao, bsa.ar, bsa.as, new bsa[0]);
+   public Set<brz<?>> a() {
+      return ImmutableSet.of(brz.x, brz.y);
    }
 
-   protected void a(akk $$0, bzx $$1) {
-      bjz<?> $$2 = $$1.dM();
-      $$2.a(bsa.av, this.b($$0, $$1));
-      Optional<cad> $$3 = Optional.empty();
-      int $$4 = 0;
-      List<bzx> $$5 = Lists.newArrayList();
-      bsc $$6 = $$2.c(bsa.h).orElse(bsc.a());
-
-      for (biy $$7 : $$6.b($$0x -> !$$0x.i_() && ($$0x instanceof cad || $$0x instanceof bzx))) {
-         if ($$7 instanceof cad $$8) {
-            $$4++;
-            if ($$3.isEmpty()) {
-               $$3 = Optional.of($$8);
-            }
+   @Override
+   protected void a(akk $$0, biy $$1) {
+      bjy<?> $$2 = $$1.dM();
+      bhg $$3 = $$1.ev();
+      if ($$3 != null) {
+         $$2.a(brz.x, $$1.ev());
+         bii $$4 = $$3.d();
+         if ($$4 instanceof biy) {
+            $$2.a(brz.y, (biy)$$4);
          }
-
-         if ($$7 instanceof bzx $$9) {
-            $$5.add($$9);
-         }
+      } else {
+         $$2.b(brz.x);
       }
 
-      $$2.a(bsa.ap, $$3);
-      $$2.a(bsa.ao, $$5);
-      $$2.a(bsa.ar, $$4);
-      $$2.a(bsa.as, $$5.size());
-   }
-
-   private Optional<gu> b(akk $$0, bzx $$1) {
-      return gu.a($$1.dk(), 8, 4, $$1x -> $$0.a_($$1x).a(apl.aR));
+      $$2.c(brz.y).ifPresent($$2x -> {
+         if (!$$2x.bv() || $$2x.dK() != $$0) {
+            $$2.b(brz.y);
+         }
+      });
    }
 }

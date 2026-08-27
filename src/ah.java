@@ -30,19 +30,19 @@ public class ah {
 
    public void a(akl $$0) {
       $$0.d(this.b);
-      ecn $$1 = new ecn.a($$0.x()).a(ees.a, $$0).a(ees.f, $$0.di()).a(eer.k);
+      ecm $$1 = new ecm.a($$0.x()).a(eer.a, $$0).a(eer.f, $$0.di()).a(eeq.k);
       boolean $$2 = false;
 
       for (aer $$3 : this.c) {
          ObjectListIterator var8 = $$0.d.aH().getLootTable($$3).a($$1).iterator();
 
          while (var8.hasNext()) {
-            ciy $$4 = (ciy)var8.next();
+            cix $$4 = (cix)var8.next();
             if ($$0.i($$4)) {
                $$0.dK().a(null, $$0.dp(), $$0.dr(), $$0.dv(), aow.ma, aox.h, 0.2F, (($$0.ee().i() - $$0.ee().i()) * 0.7F + 1.0F) * 2.0F);
                $$2 = true;
             } else {
-               byg $$5 = $$0.a($$4, false);
+               byf $$5 = $$0.a($$4, false);
                if ($$5 != null) {
                   $$5.p();
                   $$5.b($$0.cv());

@@ -1,4 +1,4 @@
-public record xu(cot a) implements ux<wp> {
+public record xu(cos a) implements ux<wp> {
    public xu(si $$0) {
       this($$0.f());
    }

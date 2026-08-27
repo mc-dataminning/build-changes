@@ -9,7 +9,7 @@ import java.util.function.IntSupplier;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class akn extends dzs implements AutoCloseable {
+public class akn extends dzr implements AutoCloseable {
    public static final int a = 1000;
    private static final Logger d = LogUtils.getLogger();
    private final bfj<Runnable> e;
@@ -19,7 +19,7 @@ public class akn extends dzs implements AutoCloseable {
    private final int i = 1000;
    private final AtomicBoolean j = new AtomicBoolean();
 
-   public akn(dhk $$0, ajv $$1, boolean $$2, bfj<Runnable> $$3, bfi<ajx.a<Runnable>> $$4) {
+   public akn(dhj $$0, ajv $$1, boolean $$2, bfj<Runnable> $$3, bfi<ajx.a<Runnable>> $$4) {
       super($$0, true, $$2);
       this.g = $$1;
       this.h = $$4;
@@ -41,14 +41,14 @@ public class akn extends dzs implements AutoCloseable {
       this.a(hx.a($$0.u()), hx.a($$0.w()), akn.a.a, ac.a(() -> super.a($$1), () -> "checkBlock " + $$1));
    }
 
-   protected void a(cot $$0) {
+   protected void a(cos $$0) {
       this.a($$0.e, $$0.f, () -> 0, akn.a.a, ac.a(() -> {
          super.b($$0, false);
          super.a($$0, false);
 
          for (int $$1 = this.d(); $$1 < this.e(); $$1++) {
-            super.a(cpv.b, hx.a($$0, $$1), null);
-            super.a(cpv.a, hx.a($$0, $$1), null);
+            super.a(cpu.b, hx.a($$0, $$1), null);
+            super.a(cpu.a, hx.a($$0, $$1), null);
          }
 
          for (int $$2 = this.c.al(); $$2 < this.c.am(); $$2++) {
@@ -63,22 +63,22 @@ public class akn extends dzs implements AutoCloseable {
    }
 
    @Override
-   public void b(cot $$0) {
+   public void b(cos $$0) {
       this.a($$0.e, $$0.f, akn.a.a, ac.a(() -> super.b($$0), () -> "propagateLight " + $$0));
    }
 
    @Override
-   public void a(cot $$0, boolean $$1) {
+   public void a(cos $$0, boolean $$1) {
       this.a($$0.e, $$0.f, akn.a.a, ac.a(() -> super.a($$0, $$1), () -> "enableLight " + $$0 + " " + $$1));
    }
 
    @Override
-   public void a(cpv $$0, hx $$1, @Nullable dhc $$2) {
+   public void a(cpu $$0, hx $$1, @Nullable dhb $$2) {
       this.a($$1.a(), $$1.c(), () -> 0, akn.a.a, ac.a(() -> super.a($$0, $$1, $$2), () -> "queueData " + $$1));
    }
 
    private void a(int $$0, int $$1, akn.a $$2, Runnable $$3) {
-      this.a($$0, $$1, this.g.c(cot.c($$0, $$1)), $$2, $$3);
+      this.a($$0, $$1, this.g.c(cos.c($$0, $$1)), $$2, $$3);
    }
 
    private void a(int $$0, int $$1, IntSupplier $$2, akn.a $$3, Runnable $$4) {
@@ -87,21 +87,21 @@ public class akn extends dzs implements AutoCloseable {
          if (this.f.size() >= 1000) {
             this.f();
          }
-      }, cot.c($$0, $$1), $$2));
+      }, cos.c($$0, $$1), $$2));
    }
 
    @Override
-   public void b(cot $$0, boolean $$1) {
+   public void b(cos $$0, boolean $$1) {
       this.a($$0.e, $$0.f, () -> 0, akn.a.a, ac.a(() -> super.b($$0, $$1), () -> "retainData " + $$0));
    }
 
-   public CompletableFuture<dgw> a(dgw $$0, boolean $$1) {
-      cot $$2 = $$0.f();
+   public CompletableFuture<dgv> a(dgv $$0, boolean $$1) {
+      cos $$2 = $$0.f();
       this.a($$2.e, $$2.f, akn.a.a, ac.a(() -> {
-         dhi[] $$2x = $$0.d();
+         dhh[] $$2x = $$0.d();
 
          for (int $$3 = 0; $$3 < $$0.ak(); $$3++) {
-            dhi $$4 = $$2x[$$3];
+            dhh $$4 = $$2x[$$3];
             if (!$$4.c()) {
                int $$5 = this.c.g($$3);
                super.a(hx.a($$2, $$5), false);
@@ -115,8 +115,8 @@ public class akn extends dzs implements AutoCloseable {
       }, $$1x -> this.a($$2.e, $$2.f, akn.a.b, $$1x));
    }
 
-   public CompletableFuture<dgw> b(dgw $$0, boolean $$1) {
-      cot $$2 = $$0.f();
+   public CompletableFuture<dgv> b(dgv $$0, boolean $$1) {
+      cos $$2 = $$0.f();
       $$0.b(false);
       this.a($$2.e, $$2.f, akn.a.a, ac.a(() -> {
          if (!$$1) {

@@ -1,21 +1,22 @@
-import com.google.common.base.MoreObjects;
+import com.google.common.collect.Lists;
 import java.util.List;
 
-public class fdc {
-   public static final int a = -1;
-   private final List<fda> b;
-   private final int c;
+public class fdc implements fde {
+   private static final tf a = tf.c("spectatorMenu.root.prompt");
+   private final List<fdf> b = Lists.newArrayList();
 
-   public fdc(List<fda> $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public fdc() {
+      this.b.add(new fdi());
+      this.b.add(new fdj());
    }
 
-   public fda a(int $$0) {
-      return $$0 >= 0 && $$0 < this.b.size() ? (fda)MoreObjects.firstNonNull(this.b.get($$0), fcy.a) : fcy.a;
+   @Override
+   public List<fdf> a() {
+      return this.b;
    }
 
-   public int a() {
-      return this.c;
+   @Override
+   public tf b() {
+      return a;
    }
 }

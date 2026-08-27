@@ -1,84 +1,68 @@
 import java.util.EnumSet;
-import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class bpb<T extends biy> extends bpu {
-   protected final bjh a;
-   private final double i;
-   private final double j;
+public class bpb extends bpt {
+   private final bvm a;
    @Nullable
-   protected T b;
-   protected final float c;
-   @Nullable
-   protected eas d;
-   protected final bsi e;
-   protected final Class<T> f;
-   protected final Predicate<biy> g;
-   protected final Predicate<biy> h;
-   private final btl k;
+   private cbm b;
+   private final cpl c;
+   private final float d;
+   private int e;
+   private final btk f;
 
-   public bpb(bjh $$0, Class<T> $$1, float $$2, double $$3, double $$4) {
-      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, bil.e::test);
-   }
-
-   public bpb(bjh $$0, Class<T> $$1, Predicate<biy> $$2, float $$3, double $$4, double $$5, Predicate<biy> $$6) {
+   public bpb(bvm $$0, float $$1) {
       this.a = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.c = $$3;
-      this.i = $$4;
-      this.j = $$5;
-      this.h = $$6;
-      this.e = $$0.H();
-      this.a(EnumSet.of(bpu.a.a));
-      this.k = btl.a().a((double)$$3).a($$6.and($$2));
-   }
-
-   public bpb(bjh $$0, Class<T> $$1, float $$2, double $$3, double $$4, Predicate<biy> $$5) {
-      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, $$5);
+      this.c = $$0.dK();
+      this.d = $$1;
+      this.f = btk.b().a((double)$$1);
+      this.a(EnumSet.of(bpt.a.b));
    }
 
    @Override
    public boolean a() {
-      this.b = this.a
-         .dK()
-         .a(this.a.dK().a(this.f, this.a.cG().c((double)this.c, 3.0, (double)this.c), $$0x -> true), this.k, this.a, this.a.dp(), this.a.dr(), this.a.dv());
-      if (this.b == null) {
-         return false;
-      } else {
-         ehe $$0 = btp.a(this.a, 16, 7, this.b.di());
-         if ($$0 == null) {
-            return false;
-         } else if (this.b.i($$0.c, $$0.d, $$0.e) < this.b.f(this.a)) {
-            return false;
-         } else {
-            this.d = this.e.a($$0.c, $$0.d, $$0.e, 0);
-            return this.d != null;
-         }
-      }
+      this.b = this.c.a(this.f, this.a);
+      return this.b == null ? false : this.a(this.b);
    }
 
    @Override
    public boolean b() {
-      return !this.e.l();
+      if (!this.b.bv()) {
+         return false;
+      } else {
+         return this.a.f((bii)this.b) > (double)(this.d * this.d) ? false : this.e > 0 && this.a(this.b);
+      }
    }
 
    @Override
    public void c() {
-      this.e.a(this.d, this.i);
+      this.a.A(true);
+      this.e = this.a(40 + this.a.ee().a(40));
    }
 
    @Override
    public void d() {
+      this.a.A(false);
       this.b = null;
    }
 
    @Override
    public void e() {
-      if (this.a.f((bii)this.b) < 49.0) {
-         this.a.H().a(this.j);
-      } else {
-         this.a.H().a(this.i);
+      this.a.D().a(this.b.dp(), this.b.dt(), this.b.dv(), 10.0F, (float)this.a.W());
+      this.e--;
+   }
+
+   private boolean a(cbm $$0) {
+      for (bgp $$1 : bgp.values()) {
+         cix $$2 = $$0.b($$1);
+         if (this.a.p() && $$2.a(cja.qL)) {
+            return true;
+         }
+
+         if (this.a.m($$2)) {
+            return true;
+         }
       }
+
+      return false;
    }
 }

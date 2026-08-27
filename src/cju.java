@@ -1,66 +1,55 @@
-public class cju extends cit {
-   public cju(cit.a $$0) {
+import java.util.List;
+import javax.annotation.Nullable;
+
+public class cju extends cis implements chy {
+   public static final int a = 5;
+   public static final float b = 3.0F;
+   public static final String c = "Base";
+
+   public cju(cis.a $$0) {
       super($$0);
+      cum.a(this, cgh.a);
    }
 
    @Override
-   public boolean a(ciy $$0, cpm $$1, dfa $$2, gu $$3, biy $$4) {
-      if (!$$1.B && !$$2.a(apl.aJ)) {
-         $$0.a(1, $$4, $$0x -> $$0x.d(bin.a));
-      }
-
-      return !$$2.a(apl.O)
-            && !$$2.a(csn.bs)
-            && !$$2.a(csn.bt)
-            && !$$2.a(csn.bu)
-            && !$$2.a(csn.bv)
-            && !$$2.a(csn.rF)
-            && !$$2.a(csn.ff)
-            && !$$2.a(csn.fI)
-            && !$$2.a(apl.a)
-         ? super.a($$0, $$1, $$2, $$3, $$4)
-         : true;
+   public String j(cix $$0) {
+      return cgq.a($$0) != null ? this.a() + "." + d($$0).b() : super.j($$0);
    }
 
    @Override
-   public boolean a_(dfa $$0) {
-      return $$0.a(csn.bs) || $$0.a(csn.cw) || $$0.a(csn.fI);
+   public void a(cix $$0, @Nullable cpl $$1, List<tf> $$2, cko $$3) {
+      cgn.a($$0, $$2);
    }
 
    @Override
-   public float a(ciy $$0, dfa $$1) {
-      if ($$1.a(csn.bs) || $$1.a(apl.O)) {
-         return 15.0F;
-      } else if ($$1.a(apl.a)) {
-         return 5.0F;
-      } else {
-         return !$$1.a(csn.ff) && !$$1.a(csn.fg) ? super.a($$0, $$1) : 2.0F;
-      }
+   public ckq c(cix $$0) {
+      return ckq.d;
    }
 
    @Override
-   public bgq a(cli $$0) {
-      cpm $$1 = $$0.q();
-      gu $$2 = $$0.a();
-      dfa $$3 = $$1.a_($$2);
-      if ($$3.b() instanceof cvz $$5 && !$$5.o($$3)) {
-         cbn $$6 = $$0.o();
-         ciy $$7 = $$0.n();
-         if ($$6 instanceof akl) {
-            ai.M.a((akl)$$6, $$2, $$7);
-         }
+   public int b(cix $$0) {
+      return 72000;
+   }
 
-         $$1.a($$6, $$2, aow.ki, aox.e, 1.0F, 1.0F);
-         dfa $$8 = $$5.n($$3);
-         $$1.b($$2, $$8);
-         $$1.a(djk.c, $$2, djk.a.a($$0.o(), $$8));
-         if ($$6 != null) {
-            $$7.a(1, $$6, $$1x -> $$1x.d($$0.p()));
-         }
+   @Override
+   public bgr<cix> a(cpl $$0, cbm $$1, bgp $$2) {
+      cix $$3 = $$1.b($$2);
+      $$1.c($$2);
+      return bgr.b($$3);
+   }
 
-         return bgq.a($$1.B);
-      }
+   @Override
+   public boolean a(cix $$0, cix $$1) {
+      return $$1.a(apt.b) || super.a($$0, $$1);
+   }
 
-      return super.a($$0);
+   public static chl d(cix $$0) {
+      qr $$1 = cgq.a($$0);
+      return $$1 != null ? chl.a($$1.h("Base")) : chl.a;
+   }
+
+   @Override
+   public bin g() {
+      return bin.b;
    }
 }

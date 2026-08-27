@@ -3,7 +3,7 @@ public class abx implements ux<aaw> {
    private final aer b;
    private final boolean c;
 
-   public abx(int $$0, cmb<?> $$1, boolean $$2) {
+   public abx(int $$0, cma<?> $$1, boolean $$2) {
       this.a = $$0;
       this.b = $$1.e();
       this.c = $$2;

@@ -1,42 +1,64 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Consumer;
 
-public class edd extends edc {
-   public static final Codec<edd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(aer.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, edd::new)
-   );
-   private final aer j;
+public class edd extends ecs {
+   public static final Codec<edd> a = a(edd::new);
 
-   private edd(aer $$0, int $$1, int $$2, List<efg> $$3, List<edu> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   edd(List<ecz> $$0, List<eff> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public edb a() {
-      return ecy.d;
+   public eda a() {
+      return ecx.h;
    }
 
    @Override
-   public void a(Consumer<ciy> $$0, ech $$1) {
-      ecp $$2 = $$1.a().getLootTable(this.j);
-      $$2.a($$1, $$0);
+   protected ecr a(List<? extends ecr> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (ecr)$$0.get(0);
+         case 2 -> $$0.get(0).and($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (ecr $$3 : $$0) {
+            if (!$$3.expand($$1, $$2)) {
+               return false;
+            }
+         }
+
+         return true;
+      };
+      };
    }
 
-   @Override
-   public void a(ecq $$0) {
-      ecj<ecp> $$1 = new ecj<>(ecm.c, this.j);
-      if ($$0.a($$1)) {
-         $$0.a("Table " + this.j + " is recursively called");
-      } else {
-         super.a($$0);
-         $$0.b().getElementOptional($$1).ifPresentOrElse($$2 -> $$2.a($$0.a("->{" + this.j + "}", $$1)), () -> $$0.a("Unknown loot table called " + this.j));
+   public static edd.a a(ecz.a<?>... $$0) {
+      return new edd.a($$0);
+   }
+
+   public static class a extends ecz.a<edd.a> {
+      private final Builder<ecz> a = ImmutableList.builder();
+
+      public a(ecz.a<?>... $$0) {
+         for (ecz.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
       }
-   }
 
-   public static edc.a<?> a(aer $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new edd($$0, $$1, $$2, $$3, $$4));
+      protected edd.a a() {
+         return this;
+      }
+
+      @Override
+      public edd.a c(ecz.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public ecz b() {
+         return new edd(this.a.build(), this.f());
+      }
    }
 }

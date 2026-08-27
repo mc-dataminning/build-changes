@@ -1,24 +1,10 @@
-import java.util.List;
-import javax.annotation.Nullable;
-
-public class cgp extends cit {
-   private final aqa<dcd> a;
-
-   public cgp(aqa<dcd> $$0, cit.a $$1) {
-      super($$1);
-      this.a = $$0;
-   }
-
-   public aqa<dcd> b() {
-      return this.a;
+public class cgp extends cgq {
+   public cgp(csl $$0, cis.a $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public void a(ciy $$0, @Nullable cpm $$1, List<tf> $$2, ckp $$3) {
-      $$2.add(this.d().a(n.h));
-   }
-
-   public ts d() {
-      return tf.c(this.a() + ".desc");
+   protected boolean a(clf $$0, dez $$1) {
+      return $$0.q().a($$0.a(), $$1, 26);
    }
 }

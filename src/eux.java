@@ -20,19 +20,19 @@ public class eux {
       this.f();
    }
 
-   public static Supplier<String> a(eqm $$0) {
+   public static Supplier<String> a(eql $$0) {
       return () -> b($$0);
    }
 
-   public static String b(eqm $$0) {
+   public static String b(eql $$0) {
       return n.a($$0.o.a().replaceAll("\\r", ""));
    }
 
-   public static Consumer<String> c(eqm $$0) {
+   public static Consumer<String> c(eql $$0) {
       return $$1 -> a($$0, $$1);
    }
 
-   public static void a(eqm $$0, String $$1) {
+   public static void a(eql $$0, String $$1) {
       $$0.o.a($$1);
    }
 
@@ -45,20 +45,20 @@ public class eux {
    }
 
    public boolean a(int $$0) {
-      if (exz.g($$0)) {
+      if (eya.g($$0)) {
          this.d();
          return true;
-      } else if (exz.f($$0)) {
+      } else if (eya.f($$0)) {
          this.c();
          return true;
-      } else if (exz.e($$0)) {
+      } else if (eya.e($$0)) {
          this.b();
          return true;
-      } else if (exz.d($$0)) {
+      } else if (eya.d($$0)) {
          this.a();
          return true;
       } else {
-         eux.a $$1 = exz.p() ? eux.a.b : eux.a.a;
+         eux.a $$1 = eya.p() ? eux.a.b : eux.a.a;
          if ($$0 == 259) {
             this.a(-1, $$1);
             return true;
@@ -67,22 +67,22 @@ public class eux {
                this.a(1, $$1);
             } else {
                if ($$0 == 263) {
-                  this.a(-1, exz.q(), $$1);
+                  this.a(-1, eya.q(), $$1);
                   return true;
                }
 
                if ($$0 == 262) {
-                  this.a(1, exz.q(), $$1);
+                  this.a(1, eya.q(), $$1);
                   return true;
                }
 
                if ($$0 == 268) {
-                  this.a(exz.q());
+                  this.a(eya.q());
                   return true;
                }
 
                if ($$0 == 269) {
-                  this.b(exz.q());
+                  this.b(eya.q());
                   return true;
                }
             }
@@ -143,7 +143,7 @@ public class eux {
    }
 
    public void b(int $$0, boolean $$1) {
-      this.f = eqy.a(this.a.get(), $$0, this.f, true);
+      this.f = eqx.a(this.a.get(), $$0, this.f, true);
       this.c($$1);
    }
 
@@ -158,7 +158,7 @@ public class eux {
    }
 
    public void d(int $$0) {
-      int $$1 = eqy.a(this.a.get(), $$0, this.f, true);
+      int $$1 = eqx.a(this.a.get(), $$0, this.f, true);
       this.e($$1 - this.f);
    }
 

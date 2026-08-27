@@ -1,92 +1,70 @@
-import java.util.Locale;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public interface dvq {
-   dvq a = a(dwv.a::new, "MSCorridor");
-   dvq b = a(dwv.b::new, "MSCrossing");
-   dvq c = a(dwv.d::new, "MSRoom");
-   dvq d = a(dwv.e::new, "MSStairs");
-   dvq e = a(dwx.a::new, "NeBCr");
-   dvq f = a(dwx.b::new, "NeBEF");
-   dvq g = a(dwx.c::new, "NeBS");
-   dvq h = a(dwx.d::new, "NeCCS");
-   dvq i = a(dwx.e::new, "NeCTB");
-   dvq j = a(dwx.f::new, "NeCE");
-   dvq k = a(dwx.g::new, "NeSCSC");
-   dvq l = a(dwx.h::new, "NeSCLT");
-   dvq m = a(dwx.i::new, "NeSC");
-   dvq n = a(dwx.j::new, "NeSCRT");
-   dvq o = a(dwx.k::new, "NeCSR");
-   dvq p = a(dwx.l::new, "NeMT");
-   dvq q = a(dwx.o::new, "NeRC");
-   dvq r = a(dwx.p::new, "NeSR");
-   dvq s = a(dwx.q::new, "NeStart");
-   dvq t = a(dxj.a::new, "SHCC");
-   dvq u = a(dxj.b::new, "SHFC");
-   dvq v = a(dxj.c::new, "SH5C");
-   dvq w = a(dxj.d::new, "SHLT");
-   dvq x = a(dxj.e::new, "SHLi");
-   dvq y = a(dxj.g::new, "SHPR");
-   dvq z = a(dxj.h::new, "SHPH");
-   dvq A = a(dxj.i::new, "SHRT");
-   dvq B = a(dxj.j::new, "SHRC");
-   dvq C = a(dxj.l::new, "SHSD");
-   dvq D = a(dxj.m::new, "SHStart");
-   dvq E = a(dxj.n::new, "SHS");
-   dvq F = a(dxj.o::new, "SHSSD");
-   dvq G = a(dwt::new, "TeJP");
-   dvq H = a(dxd.a::a, "ORP");
-   dvq I = a(dwq.a::new, "Iglu");
-   dvq J = a(dxf::new, "RUPO");
-   dvq K = a(dxl::new, "TeSH");
-   dvq L = a(dwm::new, "TeDP");
-   dvq M = a(dxb.h::new, "OMB");
-   dvq N = a(dxb.j::new, "OMCR");
-   dvq O = a(dxb.k::new, "OMDXR");
-   dvq P = a(dxb.l::new, "OMDXYR");
-   dvq Q = a(dxb.m::new, "OMDYR");
-   dvq R = a(dxb.n::new, "OMDYZR");
-   dvq S = a(dxb.o::new, "OMDZR");
-   dvq T = a(dxb.p::new, "OMEntry");
-   dvq U = a(dxb.q::new, "OMPenthouse");
-   dvq V = a(dxb.s::new, "OMSimple");
-   dvq W = a(dxb.t::new, "OMSimpleT");
-   dvq X = a(dxb.u::new, "OMWR");
-   dvq Y = a(dwo.a::new, "ECP");
-   dvq Z = a(dxn.i::new, "WMP");
-   dvq aa = a(dwk.a::new, "BTP");
-   dvq ab = a(dxh.a::new, "Shipwreck");
-   dvq ac = a(dwz.a::new, "NeFos");
-   dvq ad = a(duv::new, "jigsaw");
+public class dvq implements dvd {
+   private final List<dvc> a = Lists.newArrayList();
 
-   dvd load(dvp var1, qr var2);
-
-   private static dvq a(dvq $$0, String $$1) {
-      return hr.a(jb.T, $$1.toLowerCase(Locale.ROOT), $$0);
+   @Override
+   public void a(dvc $$0) {
+      this.a.add($$0);
    }
 
-   private static dvq a(dvq.a $$0, String $$1) {
-      return a((dvq)$$0, $$1);
+   @Nullable
+   @Override
+   public dvc a(duq $$0) {
+      return dvc.a(this.a, $$0);
    }
 
-   private static dvq a(dvq.b $$0, String $$1) {
-      return a((dvq)$$0, $$1);
-   }
-
-   public interface a extends dvq {
-      dvd load(qr var1);
-
-      @Override
-      default dvd load(dvp $$0, qr $$1) {
-         return this.load($$1);
+   @Deprecated
+   public void a(int $$0) {
+      for (dvc $$1 : this.a) {
+         $$1.a(0, $$0, 0);
       }
    }
 
-   public interface b extends dvq {
-      dvd load(dyt var1, qr var2);
-
-      @Override
-      default dvd load(dvp $$0, qr $$1) {
-         return this.load($$0.c(), $$1);
+   @Deprecated
+   public int a(int $$0, int $$1, aru $$2, int $$3) {
+      int $$4 = $$0 - $$3;
+      duq $$5 = this.d();
+      int $$6 = $$5.d() + $$1 + 1;
+      if ($$6 < $$4) {
+         $$6 += $$2.a($$4 - $$6);
       }
+
+      int $$7 = $$6 - $$5.k();
+      this.a($$7);
+      return $$7;
+   }
+
+   /** @deprecated */
+   public void a(aru $$0, int $$1, int $$2) {
+      duq $$3 = this.d();
+      int $$4 = $$2 - $$1 + 1 - $$3.d();
+      int $$5;
+      if ($$4 > 1) {
+         $$5 = $$1 + $$0.a($$4);
+      } else {
+         $$5 = $$1;
+      }
+
+      int $$7 = $$5 - $$3.h();
+      this.a($$7);
+   }
+
+   public dvn a() {
+      return new dvn(this.a);
+   }
+
+   public void b() {
+      this.a.clear();
+   }
+
+   public boolean c() {
+      return this.a.isEmpty();
+   }
+
+   public duq d() {
+      return dvc.a(this.a.stream());
    }
 }

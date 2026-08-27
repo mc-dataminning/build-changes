@@ -24,7 +24,7 @@ public class aij {
    private static int a(dr $$0, @Nullable bii $$1, akl $$2) throws CommandSyntaxException {
       if ($$2 == $$1) {
          throw a.create();
-      } else if ($$2.e.b() != cpj.d) {
+      } else if ($$2.e.b() != cpi.d) {
          throw b.create($$2.H_());
       } else {
          $$2.c($$1);

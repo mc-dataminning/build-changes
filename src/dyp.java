@@ -1,15 +1,18 @@
 import java.util.List;
-import javax.annotation.Nullable;
 
-public abstract class dyp {
-   @Nullable
-   public dys.c a(cpp $$0, gu $$1, gu $$2, dys.c $$3, dys.c $$4, dyo $$5) {
-      return $$4;
+public class dyp {
+   private final List<dyo> a;
+
+   public dyp(List<dyo> $$0) {
+      this.a = $$0;
    }
 
-   protected abstract dyr<?> a();
+   public List<dyo> a() {
+      return this.a;
+   }
 
-   public List<dys.c> a(cqb $$0, gu $$1, gu $$2, List<dys.c> $$3, List<dys.c> $$4, dyo $$5) {
-      return $$4;
+   @Override
+   public String toString() {
+      return "ProcessorList[" + this.a + "]";
    }
 }

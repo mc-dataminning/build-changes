@@ -1,30 +1,19 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public record dqe(int b, int c, int d, he<dud> e) implements dpr {
+public class dqe implements dpq {
    public static final Codec<dqe> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               aqy.j.fieldOf("tries").orElse(128).forGetter(dqe::a),
-               aqy.i.fieldOf("xz_spread").orElse(7).forGetter(dqe::b),
-               aqy.i.fieldOf("y_spread").orElse(3).forGetter(dqe::c),
-               dud.b.fieldOf("feature").forGetter(dqe::d)
-            )
-            .apply($$0, dqe::new)
+      $$0 -> $$0.group(Codec.list(dpy.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b)).apply($$0, dqe::new)
    );
+   public final List<dpy.a> b;
 
-   public int a() {
-      return this.b;
+   public dqe(dez $$0, dez $$1) {
+      this(ImmutableList.of(dpy.a(new dxw($$0), $$1)));
    }
 
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public he<dud> d() {
-      return this.e;
+   public dqe(List<dpy.a> $$0) {
+      this.b = $$0;
    }
 }

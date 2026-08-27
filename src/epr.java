@@ -1,13 +1,13 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class epr extends epm {
+public class epr extends epl {
    private static final Logger c = LogUtils.getLogger();
-   private final emc d;
-   private final long e;
-   private final enx f;
+   private final long d;
+   private final end e;
+   private final enw f;
 
-   public epr(emc $$0, long $$1, enx $$2) {
+   public epr(long $$0, end $$1, enw $$2) {
       this.d = $$0;
       this.e = $$1;
       this.f = $$2;
@@ -15,47 +15,32 @@ public class epr extends epm {
 
    @Override
    public void run() {
-      this.b(tf.c("mco.backup.restoring"));
-      elw $$0 = elw.a();
-      int $$1 = 0;
+      elv $$0 = elv.a();
+      this.b(tf.c("mco.minigame.world.starting.screen.title"));
 
-      while ($$1 < 25) {
+      for (int $$1 = 0; $$1 < 25; $$1++) {
          try {
             if (this.c()) {
                return;
             }
 
-            $$0.b(this.e, this.d.a);
-            a(1L);
-            if (this.c()) {
-               return;
+            if ($$0.c(this.d, this.e.a)) {
+               a(this.f);
+               break;
             }
-
-            a(this.f.f());
-            return;
-         } catch (enk var4) {
+         } catch (enj var4) {
             if (this.c()) {
                return;
             }
 
             a((long)var4.c);
-            $$1++;
-         } catch (enj var5) {
+         } catch (Exception var5) {
             if (this.c()) {
                return;
             }
 
-            c.error("Couldn't restore backup", var5);
-            a(new eob(var5, this.f));
-            return;
-         } catch (Exception var6) {
-            if (this.c()) {
-               return;
-            }
-
-            c.error("Couldn't restore backup", var6);
-            this.a(var6);
-            return;
+            c.error("Couldn't start mini game!");
+            this.a(var5);
          }
       }
    }

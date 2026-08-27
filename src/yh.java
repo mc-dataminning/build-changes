@@ -1,12 +1,12 @@
 public class yh implements ux<wp> {
    private final int a;
-   private final cok b;
+   private final coj b;
    private final int c;
    private final int d;
    private final boolean e;
    private final boolean f;
 
-   public yh(int $$0, cok $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
+   public yh(int $$0, coj $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
@@ -17,7 +17,7 @@ public class yh implements ux<wp> {
 
    public yh(si $$0) {
       this.a = $$0.m();
-      this.b = cok.b($$0);
+      this.b = coj.b($$0);
       this.c = $$0.m();
       this.d = $$0.m();
       this.e = $$0.readBoolean();
@@ -42,7 +42,7 @@ public class yh implements ux<wp> {
       return this.a;
    }
 
-   public cok d() {
+   public coj d() {
       return this.b;
    }
 

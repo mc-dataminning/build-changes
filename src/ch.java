@@ -7,7 +7,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 public record ch(
-   Optional<ch.b> b, Optional<aeq<cqk>> c, Optional<aeq<duz>> d, Optional<aeq<cpm>> e, Optional<Boolean> f, Optional<ce> g, Optional<at> h, Optional<bv> i
+   Optional<ch.b> b, Optional<aeq<cqj>> c, Optional<aeq<duy>> d, Optional<aeq<cpl>> e, Optional<Boolean> f, Optional<ce> g, Optional<at> h, Optional<bv> i
 ) {
    public static final Codec<ch> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
@@ -25,9 +25,9 @@ public record ch(
 
    static Optional<ch> a(
       Optional<ch.b> $$0,
-      Optional<aeq<cqk>> $$1,
-      Optional<aeq<duz>> $$2,
-      Optional<aeq<cpm>> $$3,
+      Optional<aeq<cqj>> $$1,
+      Optional<aeq<duy>> $$2,
+      Optional<aeq<cpl>> $$3,
       Optional<Boolean> $$4,
       Optional<ce> $$5,
       Optional<at> $$6,
@@ -48,7 +48,7 @@ public record ch(
          boolean $$5 = $$0.o($$4);
          if (!this.c.isPresent() || $$5 && $$0.s($$4).a(this.c.get())) {
             if (!this.d.isPresent() || $$5 && $$0.a().a($$4, this.d.get()).b()) {
-               if (!this.f.isPresent() || $$5 && this.f.get() == csz.a($$0, $$4)) {
+               if (!this.f.isPresent() || $$5 && this.f.get() == csy.a($$0, $$4)) {
                   if (this.g.isPresent() && !this.g.get().a($$0, $$4)) {
                      return false;
                   } else {
@@ -78,9 +78,9 @@ public record ch(
       private cj.c a;
       private cj.c b;
       private cj.c c;
-      private Optional<aeq<cqk>> d;
-      private Optional<aeq<duz>> e;
-      private Optional<aeq<cpm>> f;
+      private Optional<aeq<cqj>> d;
+      private Optional<aeq<duy>> e;
+      private Optional<aeq<cpl>> f;
       private Optional<Boolean> g;
       private Optional<ce> h;
       private Optional<at> i;
@@ -103,15 +103,15 @@ public record ch(
          return new ch.a();
       }
 
-      public static ch.a a(aeq<cqk> $$0) {
+      public static ch.a a(aeq<cqj> $$0) {
          return a().d($$0);
       }
 
-      public static ch.a b(aeq<cpm> $$0) {
+      public static ch.a b(aeq<cpl> $$0) {
          return a().f($$0);
       }
 
-      public static ch.a c(aeq<duz> $$0) {
+      public static ch.a c(aeq<duy> $$0) {
          return a().e($$0);
       }
 
@@ -134,17 +134,17 @@ public record ch(
          return this;
       }
 
-      public ch.a d(aeq<cqk> $$0) {
+      public ch.a d(aeq<cqj> $$0) {
          this.d = Optional.of($$0);
          return this;
       }
 
-      public ch.a e(aeq<duz> $$0) {
+      public ch.a e(aeq<duy> $$0) {
          this.e = Optional.of($$0);
          return this;
       }
 
-      public ch.a f(aeq<cpm> $$0) {
+      public ch.a f(aeq<cpl> $$0) {
          this.f = Optional.of($$0);
          return this;
       }

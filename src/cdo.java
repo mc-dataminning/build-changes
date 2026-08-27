@@ -1,106 +1,70 @@
-public class cdo extends cdf implements ddj {
-   private boolean f = true;
+public class cdo extends cdd {
+   private final com c = new com() {
+      @Override
+      public void a(cpl $$0, gu $$1, int $$2) {
+         $$0.a(cdo.this, (byte)$$2);
+      }
+   };
+   private final Runnable d;
 
-   public cdo(bim<? extends cdo> $$0, cpm $$1) {
+   public cdo(bim<? extends cdo> $$0, cpl $$1) {
       super($$0, $$1);
+      this.d = this.b($$1);
    }
 
-   public cdo(cpm $$0, double $$1, double $$2, double $$3) {
-      super(bim.X, $$1, $$2, $$3, $$0);
-   }
-
-   @Override
-   public cde.a t() {
-      return cde.a.f;
+   public cdo(cpl $$0, double $$1, double $$2, double $$3) {
+      super(bim.aQ, $$0, $$1, $$2, $$3);
+      this.d = this.b($$0);
    }
 
    @Override
-   public dfa w() {
-      return csn.hc.n();
+   protected cis j() {
+      return cja.na;
+   }
+
+   private Runnable b(cpl $$0) {
+      return $$0 instanceof akk ? () -> this.c.a((akk)$$0, this.dk()) : () -> this.c.a($$0, this.dk());
    }
 
    @Override
-   public int y() {
-      return 1;
+   public cdd.a t() {
+      return cdd.a.e;
    }
 
    @Override
-   public int b() {
-      return 5;
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      boolean $$4 = !$$3;
-      if ($$4 != this.F()) {
-         this.p($$4);
-      }
-   }
-
-   public boolean F() {
-      return this.f;
-   }
-
-   public void p(boolean $$0) {
-      this.f = $$0;
-   }
-
-   @Override
-   public double G() {
-      return this.dp();
-   }
-
-   @Override
-   public double H() {
-      return this.dr() + 0.5;
-   }
-
-   @Override
-   public double J() {
-      return this.dv();
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      if (!this.dK().B && this.bv() && this.F() && this.K()) {
-         this.e();
-      }
-   }
-
-   public boolean K() {
-      if (ddk.a(this.dK(), this)) {
-         return true;
-      } else {
-         for (byg $$1 : this.dK().a(byg.class, this.cG().c(0.25, 0.0, 0.25), bil.a)) {
-            if (ddk.a(this, $$1)) {
-               return true;
-            }
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   protected cit j() {
-      return cjb.ne;
-   }
-
-   @Override
-   protected void b(qr $$0) {
-      super.b($$0);
-      $$0.a("Enabled", this.f);
+   public dez w() {
+      return csm.ct.n();
    }
 
    @Override
    protected void a(qr $$0) {
       super.a($$0);
-      this.f = $$0.e("Enabled") ? $$0.q("Enabled") : true;
+      this.c.a(this.dK(), this.dk(), $$0);
    }
 
    @Override
-   public cee a(int $$0, cbm $$1) {
-      return new cfb($$0, $$1, this);
+   protected void b(qr $$0) {
+      super.b($$0);
+      this.c.a($$0);
+   }
+
+   @Override
+   public void b(byte $$0) {
+      this.c.a(this.dK(), $$0);
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      this.d.run();
+   }
+
+   public com A() {
+      return this.c;
+   }
+
+   @Override
+   public boolean cM() {
+      return true;
    }
 }

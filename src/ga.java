@@ -10,9 +10,9 @@ import javax.annotation.Nullable;
 
 public class ga {
    public static final int a = Integer.MAX_VALUE;
-   public static final BiConsumer<ehe, List<? extends bii>> b = ($$0, $$1) -> {
+   public static final BiConsumer<ehd, List<? extends bii>> b = ($$0, $$1) -> {
    };
-   private static final diy<bii, ?> c = new diy<bii, bii>() {
+   private static final dix<bii, ?> c = new dix<bii, bii>() {
       public bii a(bii $$0) {
          return $$0;
       }
@@ -27,16 +27,16 @@ public class ga {
    private final boolean f;
    private final Predicate<bii> g;
    private final cj.c h;
-   private final Function<ehe, ehe> i;
+   private final Function<ehd, ehd> i;
    @Nullable
-   private final egz j;
-   private final BiConsumer<ehe, List<? extends bii>> k;
+   private final egy j;
+   private final BiConsumer<ehd, List<? extends bii>> k;
    private final boolean l;
    @Nullable
    private final String m;
    @Nullable
    private final UUID n;
-   private final diy<bii, ?> o;
+   private final dix<bii, ?> o;
    private final boolean p;
 
    public ga(
@@ -45,9 +45,9 @@ public class ga {
       boolean $$2,
       Predicate<bii> $$3,
       cj.c $$4,
-      Function<ehe, ehe> $$5,
-      @Nullable egz $$6,
-      BiConsumer<ehe, List<? extends bii>> $$7,
+      Function<ehd, ehd> $$5,
+      @Nullable egy $$6,
+      BiConsumer<ehd, List<? extends bii>> $$7,
       boolean $$8,
       @Nullable String $$9,
       @Nullable UUID $$10,
@@ -65,7 +65,7 @@ public class ga {
       this.l = $$8;
       this.m = $$9;
       this.n = $$10;
-      this.o = (diy<bii, ?>)($$11 == null ? c : $$11);
+      this.o = (dix<bii, ?>)($$11 == null ? c : $$11);
       this.p = $$12;
    }
 
@@ -128,7 +128,7 @@ public class ga {
 
          return Collections.emptyList();
       } else {
-         ehe $$4 = this.i.apply($$0.d());
+         ehd $$4 = this.i.apply($$0.d());
          Predicate<bii> $$5 = this.a($$4);
          if (this.l) {
             return (List<? extends bii>)($$0.f() != null && $$5.test($$0.f()) ? Lists.newArrayList(new bii[]{$$0.f()}) : Collections.emptyList());
@@ -147,7 +147,7 @@ public class ga {
       }
    }
 
-   private void a(List<bii> $$0, akk $$1, ehe $$2, Predicate<bii> $$3) {
+   private void a(List<bii> $$0, akk $$1, ehd $$2, Predicate<bii> $$3) {
       int $$4 = this.f();
       if ($$0.size() < $$4) {
          if (this.j != null) {
@@ -181,7 +181,7 @@ public class ga {
          akl $$2 = $$0.l().ac().a(this.n);
          return (List<akl>)($$2 == null ? Collections.emptyList() : Lists.newArrayList(new akl[]{$$2}));
       } else {
-         ehe $$3 = this.i.apply($$0.d());
+         ehd $$3 = this.i.apply($$0.d());
          Predicate<bii> $$4 = this.a($$3);
          if (this.l) {
             if ($$0.f() instanceof akl $$5 && $$4.test($$5)) {
@@ -212,10 +212,10 @@ public class ga {
       }
    }
 
-   private Predicate<bii> a(ehe $$0) {
+   private Predicate<bii> a(ehd $$0) {
       Predicate<bii> $$1 = this.g;
       if (this.j != null) {
-         egz $$2 = this.j.c($$0);
+         egy $$2 = this.j.c($$0);
          $$1 = $$1.and($$1x -> $$2.c($$1x.cG()));
       }
 
@@ -226,7 +226,7 @@ public class ga {
       return $$1;
    }
 
-   private <T extends bii> List<T> a(ehe $$0, List<T> $$1) {
+   private <T extends bii> List<T> a(ehd $$0, List<T> $$1) {
       if ($$1.size() > 1) {
          this.k.accept($$0, $$1);
       }

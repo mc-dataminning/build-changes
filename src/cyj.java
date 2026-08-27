@@ -1,40 +1,143 @@
-public class cyj extends daj {
-   protected cyj(dez.d $$0) {
-      super($$0);
+public class cyj extends csb {
+   public static final dfx<dgd> d = dfp.ag;
+
+   protected cyj(dey.d $$0) {
+      super(false, $$0);
+      this.k(this.C.b().a(d, dgd.a).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public bgq a(dfa $$0, cpm $$1, gu $$2, cbn $$3, bgp $$4, eha $$5) {
-      ciy $$6 = $$3.b($$4);
-      if ($$6.a(cjb.rg)) {
-         if (!$$1.B) {
-            ha $$7 = $$5.b();
-            ha $$8 = $$7.o() == ha.a.b ? $$3.cD().g() : $$7;
-            $$1.a(null, $$2, aow.tj, aox.e, 1.0F, 1.0F);
-            $$1.a($$2, csn.ef.n().a(ctf.a, $$8), 11);
-            byg $$9 = new byg(
-               $$1, (double)$$2.u() + 0.5 + (double)$$8.j() * 0.65, (double)$$2.v() + 0.1, (double)$$2.w() + 0.5 + (double)$$8.l() * 0.65, new ciy(cjb.rj, 4)
-            );
-            $$9.o(0.05 * (double)$$8.j() + $$1.z.j() * 0.02, 0.05, 0.05 * (double)$$8.l() + $$1.z.j() * 0.02);
-            $$1.b($$9);
-            $$6.a(1, $$3, $$1x -> $$1x.d($$4));
-            $$1.a($$3, djk.M, $$2);
-            $$3.b(apg.c.b(cjb.rg));
-         }
-
-         return bgq.a($$1.B);
-      } else {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected void a(dez $$0, cpl $$1, gu $$2, csl $$3) {
+      if ($$3.n().m() && new cyk($$1, $$2, $$0).b() == 3) {
+         this.a($$1, $$2, $$0, false);
       }
    }
 
    @Override
-   public dai a() {
-      return (dai)csn.fd;
+   public dgc<dgd> b() {
+      return d;
    }
 
    @Override
-   public cro b() {
-      return (cro)csn.fb;
+   public dez a(dez $$0, cyx $$1) {
+      switch ($$1) {
+         case c:
+            switch ((dgd)$$0.c(d)) {
+               case c:
+                  return $$0.a(d, dgd.d);
+               case d:
+                  return $$0.a(d, dgd.c);
+               case e:
+                  return $$0.a(d, dgd.f);
+               case f:
+                  return $$0.a(d, dgd.e);
+               case g:
+                  return $$0.a(d, dgd.i);
+               case h:
+                  return $$0.a(d, dgd.j);
+               case i:
+                  return $$0.a(d, dgd.g);
+               case j:
+                  return $$0.a(d, dgd.h);
+            }
+         case d:
+            switch ((dgd)$$0.c(d)) {
+               case c:
+                  return $$0.a(d, dgd.e);
+               case d:
+                  return $$0.a(d, dgd.f);
+               case e:
+                  return $$0.a(d, dgd.d);
+               case f:
+                  return $$0.a(d, dgd.c);
+               case g:
+                  return $$0.a(d, dgd.j);
+               case h:
+                  return $$0.a(d, dgd.g);
+               case i:
+                  return $$0.a(d, dgd.h);
+               case j:
+                  return $$0.a(d, dgd.i);
+               case a:
+                  return $$0.a(d, dgd.b);
+               case b:
+                  return $$0.a(d, dgd.a);
+            }
+         case b:
+            switch ((dgd)$$0.c(d)) {
+               case c:
+                  return $$0.a(d, dgd.f);
+               case d:
+                  return $$0.a(d, dgd.e);
+               case e:
+                  return $$0.a(d, dgd.c);
+               case f:
+                  return $$0.a(d, dgd.d);
+               case g:
+                  return $$0.a(d, dgd.h);
+               case h:
+                  return $$0.a(d, dgd.i);
+               case i:
+                  return $$0.a(d, dgd.j);
+               case j:
+                  return $$0.a(d, dgd.g);
+               case a:
+                  return $$0.a(d, dgd.b);
+               case b:
+                  return $$0.a(d, dgd.a);
+            }
+         default:
+            return $$0;
+      }
+   }
+
+   @Override
+   public dez a(dez $$0, cxg $$1) {
+      dgd $$2 = $$0.c(d);
+      switch ($$1) {
+         case b:
+            switch ($$2) {
+               case e:
+                  return $$0.a(d, dgd.f);
+               case f:
+                  return $$0.a(d, dgd.e);
+               case g:
+                  return $$0.a(d, dgd.j);
+               case h:
+                  return $$0.a(d, dgd.i);
+               case i:
+                  return $$0.a(d, dgd.h);
+               case j:
+                  return $$0.a(d, dgd.g);
+               default:
+                  return super.a($$0, $$1);
+            }
+         case c:
+            switch ($$2) {
+               case c:
+                  return $$0.a(d, dgd.d);
+               case d:
+                  return $$0.a(d, dgd.c);
+               case e:
+               case f:
+               default:
+                  break;
+               case g:
+                  return $$0.a(d, dgd.h);
+               case h:
+                  return $$0.a(d, dgd.g);
+               case i:
+                  return $$0.a(d, dgd.j);
+               case j:
+                  return $$0.a(d, dgd.i);
+            }
+      }
+
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   protected void a(dfa.a<csl, dez> $$0) {
+      $$0.a(d, c);
    }
 }

@@ -1,10 +1,5 @@
-import java.io.Closeable;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import javax.sound.sampled.AudioFormat;
+import java.util.List;
 
-public interface gcp extends Closeable {
-   AudioFormat a();
-
-   ByteBuffer a(int var1) throws IOException;
+public interface gcp<T> {
+   List<T> search(String var1);
 }

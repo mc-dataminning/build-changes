@@ -1,53 +1,61 @@
-public class fpi implements fpl<dci> {
-   private final fhn a;
-   private final fhn b;
+import com.google.common.base.MoreObjects;
+import com.google.common.base.Splitter;
+import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-   public fpi(fpm.a $$0) {
-      this.a = $$0.a(fhm.i);
-      this.b = $$0.a(fhm.h);
+public class fpi implements fph {
+   private static final Splitter a = Splitter.on('|').omitEmptyStrings();
+   private final String d;
+   private final String e;
+
+   public fpi(String $$0, String $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public static fht b() {
-      fhv $$0 = new fhv();
-      fhw $$1 = $$0.a();
-      $$1.a("main", fhs.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fhp.a);
-      $$1.a("left_leg", fhs.c().a(50, 6).a(0.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fhp.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI / 2)));
-      $$1.a("right_leg", fhs.c().a(50, 18).a(-16.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fhp.b((float) (Math.PI / 2), 0.0F, (float) Math.PI));
-      return fht.a($$0, 64, 64);
-   }
-
-   public static fht c() {
-      fhv $$0 = new fhv();
-      fhw $$1 = $$0.a();
-      $$1.a("main", fhs.c().a(0, 22).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fhp.a);
-      $$1.a("left_leg", fhs.c().a(50, 0).a(0.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fhp.b((float) (Math.PI / 2), 0.0F, 0.0F));
-      $$1.a("right_leg", fhs.c().a(50, 12).a(-16.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fhp.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 2.0)));
-      return fht.a($$0, 64, 64);
-   }
-
-   public void a(dci $$0, float $$1, elg $$2, fnl $$3, int $$4, int $$5) {
-      gap $$6 = fnz.p[$$0.d().a()];
-      cpm $$7 = $$0.k();
-      if ($$7 != null) {
-         dfa $$8 = $$0.q();
-         cup.c<? extends dci> $$9 = cup.a(dco.y, csf::h, csf::g, cto.b, $$8, $$7, $$0.p(), ($$0x, $$1x) -> false);
-         int $$10 = $$9.apply(new fpo<>()).get($$4);
-         this.a($$2, $$3, $$8.c(csf.a) == dfn.a ? this.a : this.b, $$8.c(csf.aC), $$6, $$10, $$5, false);
+   @Override
+   public Predicate<dez> getPredicate(dfa<csl, dez> $$0) {
+      dgc<?> $$1 = $$0.a(this.d);
+      if ($$1 == null) {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown property '%s' on '%s'", this.d, $$0.c()));
       } else {
-         this.a($$2, $$3, this.a, ha.d, $$6, $$4, $$5, false);
-         this.a($$2, $$3, this.b, ha.d, $$6, $$4, $$5, true);
+         String $$2 = this.e;
+         boolean $$3 = !$$2.isEmpty() && $$2.charAt(0) == '!';
+         if ($$3) {
+            $$2 = $$2.substring(1);
+         }
+
+         List<String> $$4 = a.splitToList($$2);
+         if ($$4.isEmpty()) {
+            throw new RuntimeException(String.format(Locale.ROOT, "Empty value '%s' for property '%s' on '%s'", this.e, this.d, $$0.c()));
+         } else {
+            Predicate<dez> $$5;
+            if ($$4.size() == 1) {
+               $$5 = this.a($$0, $$1, $$2);
+            } else {
+               List<Predicate<dez>> $$6 = $$4.stream().map($$2x -> this.a($$0, $$1, $$2x)).collect(Collectors.toList());
+               $$5 = $$1x -> $$6.stream().anyMatch($$1xx -> $$1xx.test($$1x));
+            }
+
+            return $$3 ? $$5.negate() : $$5;
+         }
       }
    }
 
-   private void a(elg $$0, fnl $$1, fhn $$2, ha $$3, gap $$4, int $$5, int $$6, boolean $$7) {
-      $$0.a();
-      $$0.a(0.0F, 0.5625F, $$7 ? -1.0F : 0.0F);
-      $$0.a(a.b.rotationDegrees(90.0F));
-      $$0.a(0.5F, 0.5F, 0.5F);
-      $$0.a(a.f.rotationDegrees(180.0F + $$3.p()));
-      $$0.a(-0.5F, -0.5F, -0.5F);
-      elk $$8 = $$4.a($$1, fnt::c);
-      $$2.a($$0, $$8, $$5, $$6);
-      $$0.b();
+   private Predicate<dez> a(dfa<csl, dez> $$0, dgc<?> $$1, String $$2) {
+      Optional<?> $$3 = $$1.b($$2);
+      if ($$3.isEmpty()) {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown value '%s' for property '%s' on '%s' in '%s'", $$2, this.d, $$0.c(), this.e));
+      } else {
+         return $$2x -> $$2x.c($$1).equals($$3.get());
+      }
+   }
+
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this).add("key", this.d).add("value", this.e).toString();
    }
 }

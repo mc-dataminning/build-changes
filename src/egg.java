@@ -4,28 +4,30 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
 import javax.annotation.Nullable;
 
-public record egg(ech.b c) implements egj {
-   public static final Codec<egg> a = RecordCodecBuilder.create($$0 -> $$0.group(ech.b.e.fieldOf("target").forGetter(egg::c)).apply($$0, egg::new));
-   public static final Codec<egg> b = ech.b.e.xmap(egg::new, egg::c);
+public record egg(String b) implements egi {
+   public static final Codec<egg> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(egg::c)).apply($$0, egg::new));
 
-   public static egj a(ech.b $$0) {
+   public static egi a(String $$0) {
       return new egg($$0);
    }
 
    @Override
-   public egi a() {
-      return egk.c;
+   public egh a() {
+      return egj.b;
    }
 
    @Nullable
    @Override
-   public String a(ech $$0) {
-      bii $$1 = $$0.c(this.c.a());
-      return $$1 != null ? $$1.cx() : null;
+   public String a(ecg $$0) {
+      return this.b;
    }
 
    @Override
-   public Set<eep<?>> b() {
-      return ImmutableSet.of(this.c.a());
+   public Set<eeo<?>> b() {
+      return ImmutableSet.of();
+   }
+
+   public String c() {
+      return this.b;
    }
 }

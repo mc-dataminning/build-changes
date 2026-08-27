@@ -1,4 +1,9 @@
 public enum cem {
    a,
-   b;
+   b,
+   c,
+   d,
+   e,
+   f,
+   g;
 }

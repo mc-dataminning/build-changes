@@ -1,59 +1,118 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public class dmr extends dnn<dqb> {
-   private static final dfa a = csn.mZ.n().a(crr.g, Integer.valueOf(1)).a(crr.h, dfm.a).a(crr.i, Integer.valueOf(0));
-   private static final dfa b = a.a(crr.h, dfm.c).a(crr.i, Integer.valueOf(1));
-   private static final dfa c = a.a(crr.h, dfm.c);
-   private static final dfa d = a.a(crr.h, dfm.b);
+public class dmr extends dnm<dpk> {
+   private static final ImmutableList<csl> a = ImmutableList.of(csm.H, csm.F, csm.kJ, csm.dX, csm.fn, csm.fo, csm.fp, csm.fq, csm.cv, csm.ct);
+   private static final int b = 5;
+   private static final int c = 50;
+   private static final int d = 8;
+   private static final int an = 15;
 
-   public dmr(Codec<dqb> $$0) {
+   public dmr(Codec<dpk> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dnp<dqb> $$0) {
-      int $$1 = 0;
+   public boolean a(dno<dpk> $$0) {
+      int $$1 = $$0.c().e();
       gu $$2 = $$0.e();
-      cqg $$3 = $$0.b();
+      cqf $$3 = $$0.b();
       aru $$4 = $$0.d();
-      dqb $$5 = $$0.f();
-      gu.a $$6 = $$2.j();
-      gu.a $$7 = $$2.j();
-      if ($$3.t($$6)) {
-         if (csn.mZ.n().a($$3, $$6)) {
-            int $$8 = $$4.a(12) + 5;
-            if ($$4.i() < $$5.l) {
-               int $$9 = $$4.a(4) + 1;
+      dpk $$5 = $$0.f();
+      if (!a($$3, $$1, $$2.j())) {
+         return false;
+      } else {
+         int $$6 = $$5.b().a($$4);
+         boolean $$7 = $$4.i() < 0.9F;
+         int $$8 = Math.min($$6, $$7 ? 5 : 8);
+         int $$9 = $$7 ? 50 : 15;
+         boolean $$10 = false;
 
-               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
-                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
-                     int $$12 = $$10 - $$2.u();
-                     int $$13 = $$11 - $$2.w();
-                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-                        $$7.d($$10, $$3.a(dkj.a.b, $$10, $$11) - 1, $$11);
-                        if (b($$3.a_($$7))) {
-                           $$3.a($$7, csn.l.n(), 2);
-                        }
-                     }
-                  }
-               }
-            }
-
-            for (int $$14 = 0; $$14 < $$8 && $$3.t($$6); $$14++) {
-               $$3.a($$6, a, 2);
-               $$6.c(ha.b, 1);
-            }
-
-            if ($$6.v() - $$2.v() >= 3) {
-               $$3.a($$6, b, 2);
-               $$3.a($$6.c(ha.a, 1), c, 2);
-               $$3.a($$6.c(ha.a, 1), d, 2);
+         for (gu $$11 : gu.a($$4, $$9, $$2.u() - $$8, $$2.v(), $$2.w() - $$8, $$2.u() + $$8, $$2.v(), $$2.w() + $$8)) {
+            int $$12 = $$6 - $$11.k($$2);
+            if ($$12 >= 0) {
+               $$10 |= this.a($$3, $$1, $$11, $$12, $$5.a().a($$4));
             }
          }
 
-         $$1++;
+         return $$10;
+      }
+   }
+
+   private boolean a(cpm $$0, int $$1, gu $$2, int $$3, int $$4) {
+      boolean $$5 = false;
+
+      for (gu $$6 : gu.b($$2.u() - $$4, $$2.v(), $$2.w() - $$4, $$2.u() + $$4, $$2.v(), $$2.w() + $$4)) {
+         int $$7 = $$6.k($$2);
+         gu $$8 = a($$0, $$1, $$6) ? a($$0, $$1, $$6.j(), $$7) : a($$0, $$6.j(), $$7);
+         if ($$8 != null) {
+            int $$9 = $$3 - $$7 / 2;
+
+            for (gu.a $$10 = $$8.j(); $$9 >= 0; $$9--) {
+               if (a($$0, $$1, (gu)$$10)) {
+                  this.a($$0, $$10, csm.dZ.n());
+                  $$10.c(ha.b);
+                  $$5 = true;
+               } else {
+                  if (!$$0.a_($$10).a(csm.dZ)) {
+                     break;
+                  }
+
+                  $$10.c(ha.b);
+               }
+            }
+         }
       }
 
-      return $$1 > 0;
+      return $$5;
+   }
+
+   @Nullable
+   private static gu a(cpm $$0, int $$1, gu.a $$2, int $$3) {
+      while ($$2.v() > $$0.C_() + 1 && $$3 > 0) {
+         $$3--;
+         if (a($$0, $$1, $$2)) {
+            return $$2;
+         }
+
+         $$2.c(ha.a);
+      }
+
+      return null;
+   }
+
+   private static boolean a(cpm $$0, int $$1, gu.a $$2) {
+      if (!a($$0, $$1, (gu)$$2)) {
+         return false;
+      } else {
+         dez $$3 = $$0.a_($$2.c(ha.a));
+         $$2.c(ha.b);
+         return !$$3.i() && !a.contains($$3.b());
+      }
+   }
+
+   @Nullable
+   private static gu a(cpm $$0, gu.a $$1, int $$2) {
+      while ($$1.v() < $$0.aj() && $$2 > 0) {
+         $$2--;
+         dez $$3 = $$0.a_($$1);
+         if (a.contains($$3.b())) {
+            return null;
+         }
+
+         if ($$3.i()) {
+            return $$1;
+         }
+
+         $$1.c(ha.b);
+      }
+
+      return null;
+   }
+
+   private static boolean a(cpm $$0, int $$1, gu $$2) {
+      dez $$3 = $$0.a_($$2);
+      return $$3.i() || $$3.a(csm.H) && $$2.v() <= $$1;
    }
 }

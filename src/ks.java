@@ -22,31 +22,31 @@ public class ks implements ji {
 
    @Override
    public CompletableFuture<?> a(jg $$0) {
-      Map<csm, kt> $$1 = Maps.newHashMap();
+      Map<csl, kt> $$1 = Maps.newHashMap();
       Consumer<kt> $$2 = $$1x -> {
-         csm $$2x = $$1x.a();
+         csl $$2x = $$1x.a();
          kt $$3x = $$1.put($$2x, $$1x);
          if ($$3x != null) {
             throw new IllegalStateException("Duplicate blockstate definition for " + $$2x);
          }
       };
       Map<aer, Supplier<JsonElement>> $$3 = Maps.newHashMap();
-      Set<cit> $$4 = Sets.newHashSet();
+      Set<cis> $$4 = Sets.newHashSet();
       BiConsumer<aer, Supplier<JsonElement>> $$5 = ($$1x, $$2x) -> {
          Supplier<JsonElement> $$3x = $$3.put($$1x, $$2x);
          if ($$3x != null) {
             throw new IllegalStateException("Duplicate model definition for " + $$1x);
          }
       };
-      Consumer<cit> $$6 = $$4::add;
+      Consumer<cis> $$6 = $$4::add;
       new kq($$2, $$5, $$6).a();
       new kr($$5).a();
-      List<csm> $$7 = jb.f.s().filter($$1x -> !$$1.containsKey($$1x)).toList();
+      List<csl> $$7 = jb.f.s().filter($$1x -> !$$1.containsKey($$1x)).toList();
       if (!$$7.isEmpty()) {
          throw new IllegalStateException("Missing blockstate definitions for: " + $$7);
       } else {
          jb.f.forEach($$2x -> {
-            cit $$3x = cit.l.get($$2x);
+            cis $$3x = cis.l.get($$2x);
             if ($$3x != null) {
                if ($$4.contains($$3x)) {
                   return;

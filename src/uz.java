@@ -9,7 +9,7 @@ public class uz {
    }
 
    public static <T extends so> void a(ux<T> $$0, T $$1, bfg<?> $$2) throws afc {
-      if (!$$2.bm()) {
+      if (!$$2.bl()) {
          $$2.c(() -> {
             if ($$1.a($$0)) {
                try {

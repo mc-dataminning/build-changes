@@ -81,7 +81,7 @@ public class aik {
       );
    }
 
-   private static int a(dr $$0, ehd $$1, float $$2, float $$3, int $$4, boolean $$5, Collection<? extends bii> $$6) throws CommandSyntaxException {
+   private static int a(dr $$0, ehc $$1, float $$2, float $$3, int $$4, boolean $$5, Collection<? extends bii> $$6) throws CommandSyntaxException {
       akk $$7 = $$0.e();
       int $$8 = $$7.C_();
       if ($$4 < $$8) {
@@ -104,10 +104,10 @@ public class aik {
    }
 
    private static int a(Collection<? extends bii> $$0) {
-      Set<eif> $$1 = Sets.newHashSet();
+      Set<eie> $$1 = Sets.newHashSet();
 
       for (bii $$2 : $$0) {
-         if ($$2 instanceof cbn) {
+         if ($$2 instanceof cbm) {
             $$1.add($$2.cf());
          } else {
             $$1.add(null);
@@ -117,7 +117,7 @@ public class aik {
       return $$1.size();
    }
 
-   private static void a(ehd $$0, double $$1, akk $$2, aru $$3, double $$4, double $$5, double $$6, double $$7, int $$8, aik.a[] $$9, boolean $$10) throws CommandSyntaxException {
+   private static void a(ehc $$0, double $$1, akk $$2, aru $$3, double $$4, double $$5, double $$6, double $$7, int $$8, aik.a[] $$9, boolean $$10) throws CommandSyntaxException {
       boolean $$11 = true;
       double $$12 = Float.MAX_VALUE;
 
@@ -189,12 +189,12 @@ public class aik {
    private static double a(Collection<? extends bii> $$0, akk $$1, aik.a[] $$2, int $$3, boolean $$4) {
       double $$5 = 0.0;
       int $$6 = 0;
-      Map<eif, aik.a> $$7 = Maps.newHashMap();
+      Map<eie, aik.a> $$7 = Maps.newHashMap();
 
       for (bii $$8 : $$0) {
          aik.a $$10;
          if ($$4) {
-            eif $$9 = $$8 instanceof cbn ? $$8.cf() : null;
+            eie $$9 = $$8 instanceof cbm ? $$8.cf() : null;
             if (!$$7.containsKey($$9)) {
                $$7.put($$9, $$2[$$6++]);
             }
@@ -278,7 +278,7 @@ public class aik {
          return $$4;
       }
 
-      public int a(cos $$0, int $$1) {
+      public int a(cor $$0, int $$1) {
          gu.a $$2 = new gu.a(this.a, (double)($$1 + 1), this.b);
          boolean $$3 = $$0.a_($$2).i();
          $$2.c(ha.a);
@@ -298,9 +298,9 @@ public class aik {
          return $$1 + 1;
       }
 
-      public boolean b(cos $$0, int $$1) {
+      public boolean b(cor $$0, int $$1) {
          gu $$2 = gu.a(this.a, (double)(this.a($$0, $$1) - 1), this.b);
-         dfa $$3 = $$0.a_($$2);
+         dez $$3 = $$0.a_($$2);
          return $$2.v() < $$1 && !$$3.k() && !$$3.a(apl.aJ);
       }
 

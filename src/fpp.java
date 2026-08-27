@@ -1,58 +1,88 @@
-public class fpp implements fpl<dcq> {
-   private final ftm a;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
 
-   public fpp(fpm.a $$0) {
-      this.a = $$0.d();
+public class fpp implements fpu<dcb> {
+   private static final int b = 20;
+   private static final int c = 40;
+   private static final int d = 16;
+   public static final String a = "flag";
+   private static final String e = "pole";
+   private static final String f = "bar";
+   private final fhs g;
+   private final fhs h;
+   private final fhs i;
+
+   public fpp(fpv.a $$0) {
+      fhs $$1 = $$0.a(fhr.f);
+      this.g = $$1.b("flag");
+      this.h = $$1.b("pole");
+      this.i = $$1.b("bar");
    }
 
-   public void a(dcq $$0, float $$1, elg $$2, fnl $$3, int $$4, int $$5) {
-      if ($$0.k() != null) {
-         int $$6 = $$0.q().c(dfq.bv);
-         if ($$6 > 0) {
-            ha $$7 = $$0.f();
-            if ($$7 != null) {
-               ciy $$8 = $$0.g();
-               if (!$$8.b()) {
-                  $$2.a();
-                  $$2.a(0.0F, 0.5F, 0.0F);
-                  float[] $$9 = this.a($$7, $$6);
-                  $$2.a($$9[0], $$9[1], $$9[2]);
-                  $$2.a(a.d.rotationDegrees(75.0F));
-                  boolean $$10 = $$7 == ha.f || $$7 == ha.e;
-                  $$2.a(a.d.rotationDegrees((float)(($$10 ? 90 : 0) + 11)));
-                  $$2.b(0.5F, 0.5F, 0.5F);
-                  int $$11 = fnj.a($$0.k(), $$0.q(), $$0.p().a($$7));
-                  this.a.a($$8, civ.i, $$11, fyc.d, $$2, $$3, $$0.k(), 0);
-                  $$2.b();
-               }
-            }
+   public static fhy a() {
+      fia $$0 = new fia();
+      fib $$1 = $$0.a();
+      $$1.a("flag", fhx.c().a(0, 0).a(-10.0F, 0.0F, -2.0F, 20.0F, 40.0F, 1.0F), fhu.a);
+      $$1.a("pole", fhx.c().a(44, 0).a(-1.0F, -30.0F, -1.0F, 2.0F, 42.0F, 2.0F), fhu.a);
+      $$1.a("bar", fhx.c().a(0, 42).a(-10.0F, -32.0F, -1.0F, 20.0F, 2.0F, 2.0F), fhu.a);
+      return fhy.a($$0, 64, 64);
+   }
+
+   public void a(dcb $$0, float $$1, elf $$2, fnu $$3, int $$4, int $$5) {
+      List<Pair<he<dcc>, chl>> $$6 = $$0.c();
+      float $$7 = 0.6666667F;
+      boolean $$8 = $$0.k() == null;
+      $$2.a();
+      long $$9;
+      if ($$8) {
+         $$9 = 0L;
+         $$2.a(0.5F, 0.5F, 0.5F);
+         this.h.k = true;
+      } else {
+         $$9 = $$0.k().V();
+         dez $$11 = $$0.q();
+         if ($$11.b() instanceof crr) {
+            $$2.a(0.5F, 0.5F, 0.5F);
+            float $$12 = -dgf.b($$11.c(crr.a));
+            $$2.a(a.d.rotationDegrees($$12));
+            this.h.k = true;
+         } else {
+            $$2.a(0.5F, -0.16666667F, 0.5F);
+            float $$13 = -$$11.c(dbg.a).p();
+            $$2.a(a.d.rotationDegrees($$13));
+            $$2.a(0.0F, -0.3125F, -0.4375F);
+            this.h.k = false;
          }
       }
+
+      $$2.a();
+      $$2.b(0.6666667F, -0.6666667F, -0.6666667F);
+      elj $$14 = gba.f.a($$3, foc::c);
+      this.h.a($$2, $$14, $$4, $$5);
+      this.i.a($$2, $$14, $$4, $$5);
+      gu $$15 = $$0.p();
+      float $$16 = ((float)Math.floorMod((long)($$15.u() * 7 + $$15.v() * 9 + $$15.w() * 13) + $$9, 100L) + $$1) / 100.0F;
+      this.g.e = (-0.0125F + 0.01F * arp.b((float) (Math.PI * 2) * $$16)) * (float) Math.PI;
+      this.g.c = -32.0F;
+      a($$2, $$3, $$4, $$5, this.g, gba.f, true, $$6);
+      $$2.b();
+      $$2.b();
    }
 
-   private float[] a(ha $$0, int $$1) {
-      float[] $$2 = new float[]{0.5F, 0.0F, 0.5F};
-      float $$3 = (float)$$1 / 10.0F * 0.75F;
-      switch ($$0) {
-         case f:
-            $$2[0] = 0.73F + $$3;
-            break;
-         case e:
-            $$2[0] = 0.25F - $$3;
-            break;
-         case b:
-            $$2[1] = 0.25F + $$3;
-            break;
-         case a:
-            $$2[1] = -0.23F - $$3;
-            break;
-         case c:
-            $$2[2] = 0.25F - $$3;
-            break;
-         case d:
-            $$2[2] = 0.73F + $$3;
-      }
+   public static void a(elf $$0, fnu $$1, int $$2, int $$3, fhs $$4, gay $$5, boolean $$6, List<Pair<he<dcc>, chl>> $$7) {
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, false);
+   }
 
-      return $$2;
+   public static void a(elf $$0, fnu $$1, int $$2, int $$3, fhs $$4, gay $$5, boolean $$6, List<Pair<he<dcc>, chl>> $$7, boolean $$8) {
+      $$4.a($$0, $$5.a($$1, foc::c, $$8), $$2, $$3);
+
+      for (int $$9 = 0; $$9 < 17 && $$9 < $$7.size(); $$9++) {
+         Pair<he<dcc>, chl> $$10 = $$7.get($$9);
+         float[] $$11 = ((chl)$$10.getSecond()).d();
+         ((he)$$10.getFirst())
+            .e()
+            .map($$1x -> $$6 ? foi.a($$1x) : foi.b($$1x))
+            .ifPresent($$6x -> $$4.a($$0, $$6x.a($$1, foc::m), $$2, $$3, $$11[0], $$11[1], $$11[2], 1.0F));
+      }
    }
 }

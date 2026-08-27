@@ -16,7 +16,7 @@ public class agd {
    private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tf.c("commands.clone.overlap"));
    private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> tf.a("commands.clone.toobig", $$0, $$1));
    private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(tf.c("commands.clone.failed"));
-   public static final Predicate<dfe> a = $$0 -> !$$0.a().i();
+   public static final Predicate<dfd> a = $$0 -> !$$0.a().i();
 
    public static void a(CommandDispatcher<dr> $$0, dl $$1) {
       $$0.register(
@@ -82,7 +82,7 @@ public class agd {
       agd.b<CommandContext<dr>, agd.c> $$0,
       agd.b<CommandContext<dr>, agd.c> $$1,
       agd.b<CommandContext<dr>, agd.c> $$2,
-      agd.b<CommandContext<dr>, Predicate<dfe>> $$3,
+      agd.b<CommandContext<dr>, Predicate<dfd>> $$3,
       ArgumentBuilder<dr, ?> $$4
    ) {
       return $$4.then(ds.a("force").executes($$4x -> a((dr)$$4x.getSource(), $$0.apply($$4x), $$1.apply($$4x), $$2.apply($$4x), $$3.apply($$4x), agd.d.a)))
@@ -90,20 +90,20 @@ public class agd {
          .then(ds.a("normal").executes($$4x -> a((dr)$$4x.getSource(), $$0.apply($$4x), $$1.apply($$4x), $$2.apply($$4x), $$3.apply($$4x), agd.d.c)));
    }
 
-   private static int a(dr $$0, agd.c $$1, agd.c $$2, agd.c $$3, Predicate<dfe> $$4, agd.d $$5) throws CommandSyntaxException {
+   private static int a(dr $$0, agd.c $$1, agd.c $$2, agd.c $$3, Predicate<dfd> $$4, agd.d $$5) throws CommandSyntaxException {
       gu $$6 = $$1.b();
       gu $$7 = $$2.b();
-      dur $$8 = dur.a($$6, $$7);
+      duq $$8 = duq.a($$6, $$7);
       gu $$9 = $$3.b();
       gu $$10 = $$9.a($$8.b());
-      dur $$11 = dur.a($$9, $$10);
+      duq $$11 = duq.a($$9, $$10);
       akk $$12 = $$1.a();
       akk $$13 = $$3.a();
       if (!$$5.a() && $$12 == $$13 && $$11.a($$8)) {
          throw b.create();
       } else {
          int $$14 = $$8.c() * $$8.d() * $$8.e();
-         int $$15 = $$0.e().X().c(cpi.x);
+         int $$15 = $$0.e().X().c(cph.x);
          if ($$14 > $$15) {
             throw c.create($$15, $$14);
          } else if ($$12.a($$6, $$7) && $$13.a($$9, $$10)) {
@@ -118,10 +118,10 @@ public class agd {
                   for (int $$23 = $$8.g(); $$23 <= $$8.j(); $$23++) {
                      gu $$24 = new gu($$23, $$22, $$21);
                      gu $$25 = $$24.a((hz)$$20);
-                     dfe $$26 = new dfe($$12, $$24, false);
-                     dfa $$27 = $$26.a();
+                     dfd $$26 = new dfd($$12, $$24, false);
+                     dez $$27 = $$26.a();
                      if ($$4.test($$26)) {
-                        dcm $$28 = $$12.c_($$24);
+                        dcl $$28 = $$12.c_($$24);
                         if ($$28 != null) {
                            qr $$29 = $$28.o();
                            $$17.add(new agd.a($$25, $$27, $$29));
@@ -140,13 +140,13 @@ public class agd {
 
             if ($$5 == agd.d.b) {
                for (gu $$30 : $$19) {
-                  dcm $$31 = $$12.c_($$30);
+                  dcl $$31 = $$12.c_($$30);
                   bgh.a_($$31);
-                  $$12.a($$30, csn.hW.n(), 2);
+                  $$12.a($$30, csm.hW.n(), 2);
                }
 
                for (gu $$32 : $$19) {
-                  $$12.a($$32, csn.a.n(), 3);
+                  $$12.a($$32, csm.a.n(), 3);
                }
             }
 
@@ -157,9 +157,9 @@ public class agd {
             List<agd.a> $$34 = Lists.reverse($$33);
 
             for (agd.a $$35 : $$34) {
-               dcm $$36 = $$13.c_($$35.a);
+               dcl $$36 = $$13.c_($$35.a);
                bgh.a_($$36);
-               $$13.a($$35.a, csn.hW.n(), 2);
+               $$13.a($$35.a, csm.hW.n(), 2);
             }
 
             int $$37 = 0;
@@ -171,7 +171,7 @@ public class agd {
             }
 
             for (agd.a $$39 : $$17) {
-               dcm $$40 = $$13.c_($$39.a);
+               dcl $$40 = $$13.c_($$39.a);
                if ($$39.c != null && $$40 != null) {
                   $$40.a($$39.c);
                   $$40.e();
@@ -200,11 +200,11 @@ public class agd {
 
    static class a {
       public final gu a;
-      public final dfa b;
+      public final dez b;
       @Nullable
       public final qr c;
 
-      public a(gu $$0, dfa $$1, @Nullable qr $$2) {
+      public a(gu $$0, dez $$1, @Nullable qr $$2) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;

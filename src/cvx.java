@@ -1,52 +1,69 @@
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public abstract class cvx extends csm {
-   protected final ha a;
-   protected final boolean b;
-   protected final ehx c;
-
-   protected cvx(dez.d $$0, ha $$1, ehx $$2, boolean $$3) {
-      super($$0);
-      this.a = $$1;
-      this.c = $$2;
-      this.b = $$3;
+public abstract class cvx extends cvw implements csn {
+   protected cvx(dey.d $$0, ha $$1, ehw $$2, boolean $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
-   @Nullable
-   @Override
-   public dfa a(clg $$0) {
-      dfa $$1 = $$0.q().a_($$0.a().a(this.a));
-      return !$$1.a(this.b()) && !$$1.a(this.a()) ? this.a($$0.q()) : this.a().n();
-   }
-
-   public dfa a(cpn $$0) {
-      return this.n();
+   protected dez a(dez $$0, dez $$1) {
+      return $$1;
    }
 
    @Override
-   public boolean a(dfa $$0, cpp $$1, gu $$2) {
-      gu $$3 = $$2.a(this.a.g());
-      dfa $$4 = $$1.a_($$3);
-      return !this.h($$4) ? false : $$4.a(this.b()) || $$4.a(this.a()) || $$4.d($$1, $$3, this.a);
-   }
+   public dez a(dez $$0, ha $$1, dez $$2, cpm $$3, gu $$4, gu $$5) {
+      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+      }
 
-   @Override
-   public void a(dfa $$0, akk $$1, gu $$2, aru $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
+      cvy $$6 = this.b();
+      if ($$1 == this.a && !$$2.a(this) && !$$2.a($$6)) {
+         return this.a($$0, $$6.a($$3));
+      } else {
+         if (this.b) {
+            $$3.a($$4, ead.c, ead.c.a($$3));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 
-   protected boolean h(dfa $$0) {
+   @Override
+   public cix a(cor $$0, gu $$1, dez $$2) {
+      return new cix(this.b());
+   }
+
+   @Override
+   public boolean a(cpo $$0, gu $$1, dez $$2) {
+      Optional<gu> $$3 = this.a($$0, $$1, $$2.b());
+      return $$3.isPresent() && this.b().g($$0.a_($$3.get().a(this.a)));
+   }
+
+   @Override
+   public boolean a(cpl $$0, aru $$1, gu $$2, dez $$3) {
       return true;
    }
 
    @Override
-   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
-      return this.c;
+   public void a(akk $$0, aru $$1, gu $$2, dez $$3) {
+      Optional<gu> $$4 = this.a($$0, $$2, $$3.b());
+      if ($$4.isPresent()) {
+         dez $$5 = $$0.a_($$4.get());
+         ((cvy)$$5.b()).a($$0, $$1, $$4.get(), $$5);
+      }
    }
 
-   protected abstract cvz b();
+   private Optional<gu> a(cor $$0, gu $$1, csl $$2) {
+      return l.a($$0, $$1, $$2, this.a, this.b());
+   }
 
-   protected abstract csm a();
+   @Override
+   public boolean a(dez $$0, clf $$1) {
+      boolean $$2 = super.a($$0, $$1);
+      return $$2 && $$1.n().a(this.b().k()) ? false : $$2;
+   }
+
+   @Override
+   protected csl a() {
+      return this;
+   }
 }

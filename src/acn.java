@@ -3,13 +3,13 @@ public class acn implements ux<aaw> {
    private static final int b = 2;
    private static final int c = 4;
    private final gu d;
-   private final ddz.a e;
-   private final dgk f;
+   private final ddy.a e;
+   private final dgj f;
    private final String g;
    private final gu h;
    private final hz i;
-   private final cxh j;
-   private final cyy k;
+   private final cxg j;
+   private final cyx k;
    private final String l;
    private final boolean m;
    private final boolean n;
@@ -18,7 +18,7 @@ public class acn implements ux<aaw> {
    private final long q;
 
    public acn(
-      gu $$0, ddz.a $$1, dgk $$2, String $$3, gu $$4, hz $$5, cxh $$6, cyy $$7, String $$8, boolean $$9, boolean $$10, boolean $$11, float $$12, long $$13
+      gu $$0, ddy.a $$1, dgj $$2, String $$3, gu $$4, hz $$5, cxg $$6, cyx $$7, String $$8, boolean $$9, boolean $$10, boolean $$11, float $$12, long $$13
    ) {
       this.d = $$0;
       this.e = $$1;
@@ -38,15 +38,15 @@ public class acn implements ux<aaw> {
 
    public acn(si $$0) {
       this.d = $$0.e();
-      this.e = $$0.b(ddz.a.class);
-      this.f = $$0.b(dgk.class);
+      this.e = $$0.b(ddy.a.class);
+      this.f = $$0.b(dgj.class);
       this.g = $$0.r();
       int $$1 = 48;
       this.h = new gu(arp.a($$0.readByte(), -48, 48), arp.a($$0.readByte(), -48, 48), arp.a($$0.readByte(), -48, 48));
       int $$2 = 48;
       this.i = new hz(arp.a($$0.readByte(), 0, 48), arp.a($$0.readByte(), 0, 48), arp.a($$0.readByte(), 0, 48));
-      this.j = $$0.b(cxh.class);
-      this.k = $$0.b(cyy.class);
+      this.j = $$0.b(cxg.class);
+      this.k = $$0.b(cyx.class);
       this.l = $$0.d(128);
       this.p = arp.a($$0.readFloat(), 0.0F, 1.0F);
       this.q = $$0.n();
@@ -97,11 +97,11 @@ public class acn implements ux<aaw> {
       return this.d;
    }
 
-   public ddz.a d() {
+   public ddy.a d() {
       return this.e;
    }
 
-   public dgk e() {
+   public dgj e() {
       return this.f;
    }
 
@@ -117,11 +117,11 @@ public class acn implements ux<aaw> {
       return this.i;
    }
 
-   public cxh i() {
+   public cxg i() {
       return this.j;
    }
 
-   public cyy j() {
+   public cyx j() {
       return this.k;
    }
 

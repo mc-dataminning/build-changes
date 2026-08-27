@@ -2,32 +2,32 @@ import java.util.Set;
 import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class fd implements Predicate<dfe> {
-   private final dfa a;
-   private final Set<dgd<?>> b;
+public class fd implements Predicate<dfd> {
+   private final dez a;
+   private final Set<dgc<?>> b;
    @Nullable
    private final qr c;
 
-   public fd(dfa $$0, Set<dgd<?>> $$1, @Nullable qr $$2) {
+   public fd(dez $$0, Set<dgc<?>> $$1, @Nullable qr $$2) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
    }
 
-   public dfa a() {
+   public dez a() {
       return this.a;
    }
 
-   public Set<dgd<?>> b() {
+   public Set<dgc<?>> b() {
       return this.b;
    }
 
-   public boolean a(dfe $$0) {
-      dfa $$1 = $$0.a();
+   public boolean a(dfd $$0) {
+      dez $$1 = $$0.a();
       if (!$$1.a(this.a.b())) {
          return false;
       } else {
-         for (dgd<?> $$2 : this.b) {
+         for (dgc<?> $$2 : this.b) {
             if ($$1.c($$2) != this.a.c($$2)) {
                return false;
             }
@@ -36,18 +36,18 @@ public class fd implements Predicate<dfe> {
          if (this.c == null) {
             return true;
          } else {
-            dcm $$3 = $$0.b();
+            dcl $$3 = $$0.b();
             return $$3 != null && rd.a(this.c, $$3.m(), true);
          }
       }
    }
 
    public boolean a(akk $$0, gu $$1) {
-      return this.a(new dfe($$0, $$1, false));
+      return this.a(new dfd($$0, $$1, false));
    }
 
    public boolean a(akk $$0, gu $$1, int $$2) {
-      dfa $$3 = csm.b(this.a, $$0, $$1);
+      dez $$3 = csl.b(this.a, $$0, $$1);
       if ($$3.i()) {
          $$3 = this.a;
       }
@@ -56,7 +56,7 @@ public class fd implements Predicate<dfe> {
          return false;
       } else {
          if (this.c != null) {
-            dcm $$4 = $$0.c_($$1);
+            dcl $$4 = $$0.c_($$1);
             if ($$4 != null) {
                $$4.a(this.c);
             }

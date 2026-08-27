@@ -27,16 +27,16 @@ public class eq implements ArgumentType<aer> {
       }
    }
 
-   public static cmb<?> b(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
-      cmc $$2 = ((dr)$$0.getSource()).l().aE();
+   public static cma<?> b(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
+      cmb $$2 = ((dr)$$0.getSource()).l().aE();
       aer $$3 = e($$0, $$1);
-      return (cmb<?>)$$2.a($$3).orElseThrow(() -> c.create($$3));
+      return (cma<?>)$$2.a($$3).orElseThrow(() -> c.create($$3));
    }
 
-   public static efg c(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
+   public static eff c(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
       aer $$2 = e($$0, $$1);
-      eck $$3 = ((dr)$$0.getSource()).l().aH();
-      efg $$4 = $$3.getElement(ecm.a, $$2);
+      ecj $$3 = ((dr)$$0.getSource()).l().aH();
+      eff $$4 = $$3.getElement(ecl.a, $$2);
       if ($$4 == null) {
          throw d.create($$2);
       } else {
@@ -44,10 +44,10 @@ public class eq implements ArgumentType<aer> {
       }
    }
 
-   public static edu d(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
+   public static edt d(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
       aer $$2 = e($$0, $$1);
-      eck $$3 = ((dr)$$0.getSource()).l().aH();
-      edu $$4 = $$3.getElement(ecm.b, $$2);
+      ecj $$3 = ((dr)$$0.getSource()).l().aH();
+      edt $$4 = $$3.getElement(ecl.b, $$2);
       if ($$4 == null) {
          throw e.create($$2);
       } else {

@@ -1,55 +1,118 @@
-public class cdl extends cdf {
-   public cdl(bim<? extends cdl> $$0, cpm $$1) {
+public class cdl extends cdd {
+   static final adz<String> c = aec.a(cdl.class, aeb.e);
+   static final adz<tf> d = aec.a(cdl.class, aeb.f);
+   private final col e = new cdl.a();
+   private static final int f = 4;
+   private int g;
+
+   public cdl(bim<? extends cdl> $$0, cpl $$1) {
       super($$0, $$1);
    }
 
-   public cdl(cpm $$0, double $$1, double $$2, double $$3) {
-      super(bim.p, $$1, $$2, $$3, $$0);
+   public cdl(cpl $$0, double $$1, double $$2, double $$3) {
+      super(bim.s, $$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected cit j() {
-      return cjb.nb;
+   protected cis j() {
+      return cja.na;
    }
 
    @Override
-   public int b() {
-      return 27;
+   protected void a_() {
+      super.a_();
+      this.al().a(c, "");
+      this.al().a(d, te.a);
    }
 
    @Override
-   public cde.a t() {
-      return cde.a.b;
+   protected void a(qr $$0) {
+      super.a($$0);
+      this.e.b($$0);
+      this.al().b(c, this.A().m());
+      this.al().b(d, this.A().l());
    }
 
    @Override
-   public dfa w() {
-      return csn.cv.n().a(cto.b, ha.c);
+   protected void b(qr $$0) {
+      super.b($$0);
+      this.e.a($$0);
    }
 
    @Override
-   public int y() {
-      return 8;
+   public cdd.a t() {
+      return cdd.a.g;
    }
 
    @Override
-   public cee a(int $$0, cbm $$1) {
-      return cel.a($$0, $$1, this);
+   public dez w() {
+      return csm.fN.n();
+   }
+
+   public col A() {
+      return this.e;
    }
 
    @Override
-   public void c(cbn $$0) {
-      this.dK().a(djk.j, this.di(), djk.a.a($$0));
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      if ($$3 && this.ah - this.g >= 4) {
+         this.A().a(this.dK());
+         this.g = this.ah;
+      }
    }
 
    @Override
-   public bgq a(cbn $$0, bgp $$1) {
-      bgq $$2 = this.c_($$0);
-      if ($$2.a()) {
-         this.a(djk.k, $$0);
-         cae.a($$0, true);
+   public bgq a(cbm $$0, bgp $$1) {
+      return this.e.a($$0);
+   }
+
+   @Override
+   public void a(adz<?> $$0) {
+      super.a($$0);
+      if (d.equals($$0)) {
+         try {
+            this.e.c(this.al().b(d));
+         } catch (Throwable var3) {
+         }
+      } else if (c.equals($$0)) {
+         this.e.a(this.al().b(c));
+      }
+   }
+
+   @Override
+   public boolean cM() {
+      return true;
+   }
+
+   public class a extends col {
+      @Override
+      public akk e() {
+         return (akk)cdl.this.dK();
       }
 
-      return $$2;
+      @Override
+      public void f() {
+         cdl.this.al().b(cdl.c, this.m());
+         cdl.this.al().b(cdl.d, this.l());
+      }
+
+      @Override
+      public ehd g() {
+         return cdl.this.di();
+      }
+
+      public cdl h() {
+         return cdl.this;
+      }
+
+      @Override
+      public dr i() {
+         return new dr(this, cdl.this.di(), cdl.this.bF(), this.e(), 2, this.n().getString(), cdl.this.H_(), this.e().n(), cdl.this);
+      }
+
+      @Override
+      public boolean j() {
+         return !cdl.this.dF();
+      }
    }
 }

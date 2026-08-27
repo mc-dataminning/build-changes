@@ -27,7 +27,7 @@ public class ahm {
 
    private static int a(dr $$0) throws CommandSyntaxException {
       MinecraftServer $$1 = $$0.l();
-      if ($$1.aO()) {
+      if ($$1.aN()) {
          throw c.create();
       } else {
          Consumer<bdg> $$2 = $$1x -> a($$0, $$1x);
@@ -40,16 +40,16 @@ public class ahm {
 
    private static int b(dr $$0) throws CommandSyntaxException {
       MinecraftServer $$1 = $$0.l();
-      if (!$$1.aO()) {
+      if (!$$1.aN()) {
          throw b.create();
       } else {
-         $$1.aQ();
+         $$1.aP();
          return 0;
       }
    }
 
    private static void a(dr $$0, Path $$1, MinecraftServer $$2) {
-      String $$3 = String.format(Locale.ROOT, "%s-%s-%s", ac.e(), $$2.aU().g(), aa.b().b());
+      String $$3 = String.format(Locale.ROOT, "%s-%s-%s", ac.e(), $$2.aT().g(), aa.b().b());
 
       String $$4;
       try {

@@ -45,17 +45,17 @@ public class akq extends ajy {
       this.b($$0, this.a($$2), false);
    }
 
-   public <T> void a(akp<T> $$0, cot $$1, int $$2, T $$3) {
+   public <T> void a(akp<T> $$0, cos $$1, int $$2, T $$3) {
       this.a($$1.a(), new ako<>($$0, $$2, $$3));
    }
 
-   public <T> void b(akp<T> $$0, cot $$1, int $$2, T $$3) {
+   public <T> void b(akp<T> $$0, cos $$1, int $$2, T $$3) {
       ako<T> $$4 = new ako<>($$0, $$2, $$3);
       this.b($$1.a(), $$4);
    }
 
    public void a(int $$0) {
-      List<Pair<ako<cot>, Long>> $$1 = new ArrayList<>();
+      List<Pair<ako<cos>, Long>> $$1 = new ArrayList<>();
       ObjectIterator var3 = this.d.long2ObjectEntrySet().iterator();
 
       while (var3.hasNext()) {
@@ -68,12 +68,12 @@ public class akq extends ajy {
          }
       }
 
-      for (Pair<ako<cot>, Long> $$4 : $$1) {
+      for (Pair<ako<cos>, Long> $$4 : $$1) {
          Long $$5 = (Long)$$4.getSecond();
-         ako<cot> $$6 = (ako<cot>)$$4.getFirst();
+         ako<cos> $$6 = (ako<cos>)$$4.getFirst();
          this.b($$5, $$6);
-         cot $$7 = new cot($$5);
-         akp<cot> $$8 = $$6.a();
+         cos $$7 = new cos($$5);
+         akp<cos> $$8 = $$6.a();
          this.a($$8, $$7, $$0, $$7);
       }
    }
@@ -84,7 +84,7 @@ public class akq extends ajy {
       return $$1 != null && !$$1.isEmpty() ? $$1.b().b() : Integer.MAX_VALUE;
    }
 
-   public int a(cot $$0) {
+   public int a(cos $$0) {
       return this.c($$0.a());
    }
 

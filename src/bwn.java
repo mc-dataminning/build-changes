@@ -1,24 +1,44 @@
-import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-public enum bwn {
-   a(0),
-   b(1),
-   c(2),
-   d(3),
-   e(4);
-
-   private static final IntFunction<bwn> f = aqk.a(bwn::a, values(), aqk.a.b);
-   private final int g;
-
-   private bwn(int $$0) {
-      this.g = $$0;
+public class bwn extends bwh {
+   public bwn(bim<? extends bwn> $$0, cpl $$1) {
+      super($$0, $$1);
    }
 
-   public int a() {
-      return this.g;
+   @Override
+   protected aov r() {
+      return aow.nS;
    }
 
-   public static bwn a(int $$0) {
-      return f.apply($$0);
+   @Override
+   protected aov gz() {
+      return aow.nT;
+   }
+
+   @Override
+   protected aov h_() {
+      return aow.nV;
+   }
+
+   @Nullable
+   @Override
+   protected aov gh() {
+      return aow.nW;
+   }
+
+   @Override
+   protected aov d(bhg $$0) {
+      return aow.nX;
+   }
+
+   @Override
+   protected void ga() {
+      this.a(aow.nU, 1.0F, (this.ag.i() - this.ag.i()) * 0.2F + 1.0F);
+   }
+
+   @Nullable
+   @Override
+   public bid a(akk $$0, bid $$1) {
+      return bim.ap.a((cpl)$$0);
    }
 }

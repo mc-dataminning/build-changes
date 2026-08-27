@@ -1,48 +1,65 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class dxr extends dyf {
-   public static final Codec<dxr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
-               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
-               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f),
-               ha.a.e.fieldOf("axis").orElse(ha.a.b).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dxr::new)
-   );
-   private final float b;
-   private final float d;
-   private final int e;
-   private final int f;
-   private final ha.a g;
+public class dxr extends dyo {
+   public static final Codec<dxr> a = Codec.unit(() -> dxr.b);
+   public static final dxr b = new dxr();
+   private final Map<csl, csl> c = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(csm.m, csm.pr);
+      $$0.put(csm.cn, csm.pr);
+      $$0.put(csm.b, csm.pv);
+      $$0.put(csm.eI, csm.pw);
+      $$0.put(csm.eJ, csm.pw);
+      $$0.put(csm.cQ, csm.ps);
+      $$0.put(csm.ni, csm.ps);
+      $$0.put(csm.nk, csm.pD);
+      $$0.put(csm.fj, csm.pA);
+      $$0.put(csm.ng, csm.pA);
+      $$0.put(csm.jI, csm.pu);
+      $$0.put(csm.nw, csm.pu);
+      $$0.put(csm.jE, csm.pE);
+      $$0.put(csm.jD, csm.pE);
+      $$0.put(csm.jK, csm.pz);
+      $$0.put(csm.nu, csm.pz);
+      $$0.put(csm.nK, csm.pB);
+      $$0.put(csm.nI, csm.pB);
+      $$0.put(csm.fP, csm.pt);
+      $$0.put(csm.fQ, csm.pt);
+      $$0.put(csm.eL, csm.py);
+      $$0.put(csm.eK, csm.px);
+      $$0.put(csm.eX, csm.eY);
+   });
 
-   public dxr(float $$0, float $$1, int $$2, int $$3, ha.a $$4) {
-      if ($$2 >= $$3) {
-         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
+   private dxr() {
+   }
+
+   @Override
+   public dyr.c a(cpo $$0, gu $$1, gu $$2, dyr.c $$3, dyr.c $$4, dyn $$5) {
+      csl $$6 = this.c.get($$4.b().b());
+      if ($$6 == null) {
+         return $$4;
       } else {
-         this.b = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
-         this.g = $$4;
+         dez $$7 = $$4.b();
+         dez $$8 = $$6.n();
+         if ($$7.b(daf.a)) {
+            $$8 = $$8.a(daf.a, $$7.c(daf.a));
+         }
+
+         if ($$7.b(daf.b)) {
+            $$8 = $$8.a(daf.b, $$7.c(daf.b));
+         }
+
+         if ($$7.b(czo.a)) {
+            $$8 = $$8.a(czo.a, $$7.c(czo.a));
+         }
+
+         return new dyr.c($$4.a(), $$8, $$4.c());
       }
    }
 
    @Override
-   public boolean a(gu $$0, gu $$1, gu $$2, aru $$3) {
-      ha $$4 = ha.a(ha.b.a, this.g);
-      float $$5 = (float)Math.abs(($$1.u() - $$2.u()) * $$4.j());
-      float $$6 = (float)Math.abs(($$1.v() - $$2.v()) * $$4.k());
-      float $$7 = (float)Math.abs(($$1.w() - $$2.w()) * $$4.l());
-      int $$8 = (int)($$5 + $$6 + $$7);
-      float $$9 = $$3.i();
-      return $$9 <= arp.b(this.b, this.d, arp.g((float)$$8, (float)this.e, (float)this.f));
-   }
-
-   @Override
-   protected dyg<?> a() {
-      return dyg.c;
+   protected dyq<?> a() {
+      return dyq.l;
    }
 }

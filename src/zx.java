@@ -4,10 +4,10 @@ public class zx implements ux<wp> {
    public static final int c = 2;
    private final String d;
    private final tf e;
-   private final eig.a f;
+   private final eif.a f;
    private final int g;
 
-   public zx(eia $$0, int $$1) {
+   public zx(ehz $$0, int $$1) {
       this.d = $$0.b();
       this.e = $$0.d();
       this.f = $$0.f();
@@ -19,10 +19,10 @@ public class zx implements ux<wp> {
       this.g = $$0.readByte();
       if (this.g != 0 && this.g != 2) {
          this.e = te.a;
-         this.f = eig.a.a;
+         this.f = eif.a.a;
       } else {
          this.e = $$0.l();
-         this.f = $$0.b(eig.a.class);
+         this.f = $$0.b(eif.a.class);
       }
    }
 
@@ -52,7 +52,7 @@ public class zx implements ux<wp> {
       return this.g;
    }
 
-   public eig.a f() {
+   public eif.a f() {
       return this.f;
    }
 }

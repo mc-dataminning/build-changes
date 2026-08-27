@@ -6,7 +6,7 @@ class bia extends bhs {
    @Override
    public void a(biy $$0, int $$1) {
       super.a($$0, $$1);
-      if (!$$0.dK().B && $$0 instanceof cbn $$2) {
+      if (!$$0.dK().B && $$0 instanceof cbm $$2) {
          $$2.ga().a($$1 + 1, 1.0F);
       }
    }

@@ -1,13 +1,13 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class eps extends epm {
+public class eps extends epl {
    private static final Logger c = LogUtils.getLogger();
    private final long d;
-   private final ene e;
-   private final enx f;
+   private final int e;
+   private final Runnable f;
 
-   public eps(long $$0, ene $$1, enx $$2) {
+   public eps(long $$0, int $$1, Runnable $$2) {
       this.d = $$0;
       this.e = $$1;
       this.f = $$2;
@@ -15,8 +15,8 @@ public class eps extends epm {
 
    @Override
    public void run() {
-      elw $$0 = elw.a();
-      this.b(tf.c("mco.minigame.world.starting.screen.title"));
+      elv $$0 = elv.a();
+      this.b(tf.c("mco.minigame.world.slot.screen.title"));
 
       for (int $$1 = 0; $$1 < 25; $$1++) {
          try {
@@ -24,11 +24,11 @@ public class eps extends epm {
                return;
             }
 
-            if ($$0.c(this.d, this.e.a)) {
-               a(this.f);
+            if ($$0.a(this.d, this.e)) {
+               this.f.run();
                break;
             }
-         } catch (enk var4) {
+         } catch (enj var4) {
             if (this.c()) {
                return;
             }
@@ -39,7 +39,7 @@ public class eps extends epm {
                return;
             }
 
-            c.error("Couldn't start mini game!");
+            c.error("Couldn't switch world!");
             this.a(var5);
          }
       }

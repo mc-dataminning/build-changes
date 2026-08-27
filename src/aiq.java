@@ -12,7 +12,7 @@ public class aiq {
       LiteralCommandNode<dr> $$1 = $$0.register((LiteralArgumentBuilder)ds.a("teammsg").then(ds.a("message", eg.a()).executes($$0x -> {
          dr $$1x = (dr)$$0x.getSource();
          bii $$2 = $$1x.g();
-         eib $$3 = (eib)$$2.cf();
+         eia $$3 = (eia)$$2.cf();
          if ($$3 == null) {
             throw b.create();
          } else {
@@ -27,7 +27,7 @@ public class aiq {
       $$0.register((LiteralArgumentBuilder)ds.a("tm").redirect($$1));
    }
 
-   private static void a(dr $$0, bii $$1, eib $$2, List<akl> $$3, tu $$4) {
+   private static void a(dr $$0, bii $$1, eia $$2, List<akl> $$3, tu $$4) {
       tf $$5 = $$2.d().c(a);
       tb.a $$6 = tb.a(tb.g, $$0).c($$5);
       tb.a $$7 = tb.a(tb.h, $$0).c($$5);

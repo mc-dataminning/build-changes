@@ -1,14 +1,23 @@
 public enum dfw implements ash {
-   a,
-   b;
+   a("tip_merge"),
+   b("tip"),
+   c("frustum"),
+   d("middle"),
+   e("base");
+
+   private final String f;
+
+   private dfw(String $$0) {
+      this.f = $$0;
+   }
 
    @Override
    public String toString() {
-      return this.c();
+      return this.f;
    }
 
    @Override
    public String c() {
-      return this == a ? "upper" : "lower";
+      return this.f;
    }
 }

@@ -1,49 +1,76 @@
-public class ccd extends cbz {
-   private int e = 1;
-
-   public ccd(bim<? extends ccd> $$0, cpm $$1) {
+public class ccd extends cce {
+   public ccd(bim<? extends ccd> $$0, cpl $$1) {
       super($$0, $$1);
    }
 
-   public ccd(cpm $$0, biy $$1, double $$2, double $$3, double $$4, int $$5) {
-      super(bim.ag, $$1, $$2, $$3, $$4, $$0);
-      this.e = $$5;
+   public ccd(cpl $$0, bwl $$1) {
+      this(bim.ak, $$0);
+      this.b($$1);
+      this.e(
+         $$1.dp() - (double)($$1.df() + 1.0F) * 0.5 * (double)arp.a($$1.aU * (float) (Math.PI / 180.0)),
+         $$1.dt() - 0.1F,
+         $$1.dv() + (double)($$1.df() + 1.0F) * 0.5 * (double)arp.b($$1.aU * (float) (Math.PI / 180.0))
+      );
    }
 
    @Override
-   protected void a(ehc $$0) {
+   public void l() {
+      super.l();
+      ehd $$0 = this.dn();
+      ehb $$1 = ccf.a(this, this::a);
+      this.a($$1);
+      double $$2 = this.dp() + $$0.c;
+      double $$3 = this.dr() + $$0.d;
+      double $$4 = this.dv() + $$0.e;
+      this.B();
+      float $$5 = 0.99F;
+      float $$6 = 0.06F;
+      if (this.dK().a(this.cG()).noneMatch(dey.a::i)) {
+         this.ak();
+      } else if (this.ba()) {
+         this.ak();
+      } else {
+         this.f($$0.a(0.99F));
+         if (!this.aT()) {
+            this.f(this.dn().b(0.0, -0.06F, 0.0));
+         }
+
+         this.e($$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   protected void a(eha $$0) {
+      super.a($$0);
+      if (this.v() instanceof biy $$1) {
+         $$0.a().a(this.dL().a(this, $$1), 1.0F);
+      }
+   }
+
+   @Override
+   protected void a(egz $$0) {
       super.a($$0);
       if (!this.dK().B) {
-         boolean $$1 = this.dK().X().b(cpi.c);
-         this.dK().a(this, this.dp(), this.dr(), this.dv(), (float)this.e, $$1, cpm.a.c);
          this.ak();
       }
    }
 
    @Override
-   protected void a(ehb $$0) {
-      super.a($$0);
-      if (!this.dK().B) {
-         bii $$1 = $$0.a();
-         bii $$2 = this.v();
-         $$1.a(this.dL().a((cbz)this, $$2), 6.0F);
-         if ($$2 instanceof biy) {
-            this.a((biy)$$2, $$1);
-         }
-      }
+   protected void a_() {
    }
 
    @Override
-   public void b(qr $$0) {
-      super.b($$0);
-      $$0.a("ExplosionPower", (byte)this.e);
-   }
-
-   @Override
-   public void a(qr $$0) {
+   public void a(wq $$0) {
       super.a($$0);
-      if ($$0.b("ExplosionPower", 99)) {
-         this.e = $$0.f("ExplosionPower");
+      double $$1 = $$0.i();
+      double $$2 = $$0.j();
+      double $$3 = $$0.k();
+
+      for (int $$4 = 0; $$4 < 7; $$4++) {
+         double $$5 = 0.4 + 0.1 * (double)$$4;
+         this.dK().a(iv.ab, this.dp(), this.dr(), this.dv(), $$1 * $$5, $$2, $$3 * $$5);
       }
+
+      this.o($$1, $$2, $$3);
    }
 }

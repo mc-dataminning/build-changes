@@ -1,29 +1,39 @@
-public class cia extends cit {
-   public cia(cit.a $$0) {
+public class cia extends cis {
+   public cia(cis.a $$0) {
       super($$0);
    }
 
    @Override
-   public boolean i(ciy $$0) {
-      return true;
+   public bgq a(clh $$0) {
+      cpl $$1 = $$0.q();
+      gu $$2 = $$0.a();
+      dez $$3 = $$1.a_($$2);
+      boolean $$4 = false;
+      if (!csy.h($$3) && !csz.g($$3) && !cta.g($$3)) {
+         $$2 = $$2.a($$0.k());
+         if (crz.a($$1, $$2, $$0.g())) {
+            this.a($$1, $$2);
+            $$1.b($$2, crz.a($$1, $$2));
+            $$1.a($$0.o(), djj.i, $$2);
+            $$4 = true;
+         }
+      } else {
+         this.a($$1, $$2);
+         $$1.b($$2, $$3.a(dfp.r, Boolean.valueOf(true)));
+         $$1.a($$0.o(), djj.c, $$2);
+         $$4 = true;
+      }
+
+      if ($$4) {
+         $$0.n().h(1);
+         return bgq.a($$1.B);
+      } else {
+         return bgq.e;
+      }
    }
 
-   @Override
-   public bgr<ciy> a(cpm $$0, cbn $$1, bgp $$2) {
-      ciy $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dp(), $$1.dr(), $$1.dv(), aow.hz, aox.g, 0.5F, 0.4F / ($$0.y_().i() * 0.4F + 0.8F));
-      if (!$$0.B) {
-         ccp $$4 = new ccp($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dC(), $$1.dA(), -20.0F, 0.7F, 1.0F);
-         $$0.b($$4);
-      }
-
-      $$1.b(apg.c.b(this));
-      if (!$$1.fR().d) {
-         $$3.h(1);
-      }
-
-      return bgr.a($$3, $$0.r_());
+   private void a(cpl $$0, gu $$1) {
+      aru $$2 = $$0.y_();
+      $$0.a(null, $$1, aow.hD, aox.e, 1.0F, ($$2.i() - $$2.i()) * 0.2F + 1.0F);
    }
 }

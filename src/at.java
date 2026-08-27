@@ -3,8 +3,8 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Collection;
 import java.util.Optional;
 
-public record at(Optional<aqa<csm>> b, Optional<hi<csm>> c, Optional<cy> d, Optional<cl> e) {
-   private static final Codec<hi<csm>> f = jb.f.r().listOf().xmap(hi::a, $$0 -> $$0.a().toList());
+public record at(Optional<aqa<csl>> b, Optional<hi<csl>> c, Optional<cy> d, Optional<cl> e) {
+   private static final Codec<hi<csl>> f = jb.f.r().listOf().xmap(hi::a, $$0 -> $$0.a().toList());
    public static final Codec<at> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                aqy.a(aqa.a(jc.e), "tag").forGetter(at::a),
@@ -15,7 +15,7 @@ public record at(Optional<aqa<csm>> b, Optional<hi<csm>> c, Optional<cy> d, Opti
             .apply($$0, at::new)
    );
 
-   static Optional<at> a(Optional<aqa<csm>> $$0, Optional<hi<csm>> $$1, Optional<cy> $$2, Optional<cl> $$3) {
+   static Optional<at> a(Optional<aqa<csl>> $$0, Optional<hi<csl>> $$1, Optional<cy> $$2, Optional<cl> $$3) {
       return $$0.isEmpty() && $$1.isEmpty() && $$2.isEmpty() && $$3.isEmpty() ? Optional.empty() : Optional.of(new at($$0, $$1, $$2, $$3));
    }
 
@@ -23,7 +23,7 @@ public record at(Optional<aqa<csm>> b, Optional<hi<csm>> c, Optional<cy> d, Opti
       if (!$$0.o($$1)) {
          return false;
       } else {
-         dfa $$2 = $$0.a_($$1);
+         dez $$2 = $$0.a_($$1);
          if (this.b.isPresent() && !$$2.a(this.b.get())) {
             return false;
          } else if (this.c.isPresent() && !$$2.a(this.c.get())) {
@@ -32,7 +32,7 @@ public record at(Optional<aqa<csm>> b, Optional<hi<csm>> c, Optional<cy> d, Opti
             return false;
          } else {
             if (this.e.isPresent()) {
-               dcm $$3 = $$0.c_($$1);
+               dcl $$3 = $$0.c_($$1);
                if ($$3 == null || !this.e.get().a($$3.m())) {
                   return false;
                }
@@ -43,11 +43,11 @@ public record at(Optional<aqa<csm>> b, Optional<hi<csm>> c, Optional<cy> d, Opti
       }
    }
 
-   public Optional<aqa<csm>> a() {
+   public Optional<aqa<csl>> a() {
       return this.b;
    }
 
-   public Optional<hi<csm>> b() {
+   public Optional<hi<csl>> b() {
       return this.c;
    }
 
@@ -60,8 +60,8 @@ public record at(Optional<aqa<csm>> b, Optional<hi<csm>> c, Optional<cy> d, Opti
    }
 
    public static class a {
-      private Optional<hi<csm>> a = Optional.empty();
-      private Optional<aqa<csm>> b = Optional.empty();
+      private Optional<hi<csl>> a = Optional.empty();
+      private Optional<aqa<csl>> b = Optional.empty();
       private Optional<cy> c = Optional.empty();
       private Optional<cl> d = Optional.empty();
 
@@ -72,17 +72,17 @@ public record at(Optional<aqa<csm>> b, Optional<hi<csm>> c, Optional<cy> d, Opti
          return new at.a();
       }
 
-      public at.a a(csm... $$0) {
-         this.a = Optional.of(hi.a(csm::q, $$0));
+      public at.a a(csl... $$0) {
+         this.a = Optional.of(hi.a(csl::q, $$0));
          return this;
       }
 
-      public at.a a(Collection<csm> $$0) {
-         this.a = Optional.of(hi.a(csm::q, $$0));
+      public at.a a(Collection<csl> $$0) {
+         this.a = Optional.of(hi.a(csl::q, $$0));
          return this;
       }
 
-      public at.a a(aqa<csm> $$0) {
+      public at.a a(aqa<csl> $$0) {
          this.b = Optional.of($$0);
          return this;
       }

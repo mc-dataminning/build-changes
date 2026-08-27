@@ -1,20 +1,11 @@
-public class ftq extends ftu<bwm, ffh<bwm>> {
-   private static final aer a = new aer("textures/entity/llama/creamy.png");
-   private static final aer i = new aer("textures/entity/llama/white.png");
-   private static final aer j = new aer("textures/entity/llama/brown.png");
-   private static final aer k = new aer("textures/entity/llama/gray.png");
-
-   public ftq(fso.a $$0, fhl $$1) {
-      super($$0, new ffh<>($$0.a($$1)), 0.7F);
-      this.a(new fwq(this, $$0.f()));
+public abstract class ftq<T extends byi> extends fud<T, ffh<T>> {
+   protected ftq(fsx.a $$0, ffh<T> $$1, float $$2) {
+      super($$0, $$1, $$2);
+      this.a(new fwk<>(this, $$0.f(), $$0.d()));
    }
 
-   public aer a(bwm $$0) {
-      return switch ($$0.gl()) {
-         case a -> a;
-         case b -> i;
-         case c -> j;
-         case d -> k;
-      };
+   protected void a(T $$0, elf $$1, float $$2) {
+      float $$3 = 0.9375F;
+      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

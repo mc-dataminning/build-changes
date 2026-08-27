@@ -6,7 +6,7 @@ import java.util.Locale;
 import org.joml.Vector3f;
 
 public class io extends iq {
-   public static final Vector3f a = ehe.a(3790560).j();
+   public static final Vector3f a = ehd.a(3790560).j();
    public static final io b = new io(a, ip.a, 1.0F);
    public static final Codec<io> c = RecordCodecBuilder.create(
       $$0 -> $$0.group(

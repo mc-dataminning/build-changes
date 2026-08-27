@@ -9,11 +9,11 @@ public class abm implements ux<aaw> {
    private final int c;
    private final int d;
    private final int e;
-   private final cen f;
-   private final ciy g;
-   private final Int2ObjectMap<ciy> h;
+   private final cem f;
+   private final cix g;
+   private final Int2ObjectMap<cix> h;
 
-   public abm(int $$0, int $$1, int $$2, int $$3, cen $$4, ciy $$5, Int2ObjectMap<ciy> $$6) {
+   public abm(int $$0, int $$1, int $$2, int $$3, cem $$4, cix $$5, Int2ObjectMap<cix> $$6) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -28,8 +28,8 @@ public class abm implements ux<aaw> {
       this.c = $$0.m();
       this.d = $$0.readShort();
       this.e = $$0.readByte();
-      this.f = $$0.b(cen.class);
-      IntFunction<Int2ObjectOpenHashMap<ciy>> $$1 = si.a(Int2ObjectOpenHashMap::new, 128);
+      this.f = $$0.b(cem.class);
+      IntFunction<Int2ObjectOpenHashMap<cix>> $$1 = si.a(Int2ObjectOpenHashMap::new, 128);
       this.h = Int2ObjectMaps.unmodifiable($$0.a($$1, $$0x -> Integer.valueOf($$0x.readShort()), si::q));
       this.g = $$0.q();
    }
@@ -61,15 +61,15 @@ public class abm implements ux<aaw> {
       return this.e;
    }
 
-   public ciy f() {
+   public cix f() {
       return this.g;
    }
 
-   public Int2ObjectMap<ciy> g() {
+   public Int2ObjectMap<cix> g() {
       return this.h;
    }
 
-   public cen h() {
+   public cem h() {
       return this.f;
    }
 

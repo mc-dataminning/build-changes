@@ -1,20 +1,33 @@
-public class fvl extends ftu<car, fha<car>> {
-   private static final aer a = new aer("textures/entity/warden/warden.png");
-   private static final aer i = new aer("textures/entity/warden/warden_bioluminescent_layer.png");
-   private static final aer j = new aer("textures/entity/warden/warden_heart.png");
-   private static final aer k = new aer("textures/entity/warden/warden_pulsating_spots_1.png");
-   private static final aer l = new aer("textures/entity/warden/warden_pulsating_spots_2.png");
+public class fvl extends fuc<cdp> {
+   private final fon f;
 
-   public fvl(fso.a $$0) {
-      super($$0, new fha<>($$0.a(fhm.bL)), 0.9F);
-      this.a(new fxi<>(this, i, ($$0x, $$1, $$2) -> 1.0F, fha::e));
-      this.a(new fxi<>(this, k, ($$0x, $$1, $$2) -> Math.max(0.0F, arp.b($$2 * 0.045F) * 0.25F), fha::f));
-      this.a(new fxi<>(this, l, ($$0x, $$1, $$2) -> Math.max(0.0F, arp.b($$2 * 0.045F + (float) Math.PI) * 0.25F), fha::f));
-      this.a(new fxi<>(this, a, ($$0x, $$1, $$2) -> $$0x.E($$1), fha::c));
-      this.a(new fxi<>(this, j, ($$0x, $$1, $$2) -> $$0x.F($$1), fha::d));
+   public fvl(fsx.a $$0) {
+      super($$0, fhr.bA);
+      this.f = $$0.c();
    }
 
-   public aer a(car $$0) {
-      return a;
+   protected void a(cdp $$0, float $$1, dez $$2, elf $$3, fnu $$4, int $$5) {
+      int $$6 = $$0.B();
+      if ($$6 > -1 && (float)$$6 - $$1 + 1.0F < 10.0F) {
+         float $$7 = 1.0F - ((float)$$6 - $$1 + 1.0F) / 10.0F;
+         $$7 = arp.a($$7, 0.0F, 1.0F);
+         $$7 *= $$7;
+         $$7 *= $$7;
+         float $$8 = 1.0F + $$7 * 0.3F;
+         $$3.b($$8, $$8, $$8);
+      }
+
+      a(this.f, $$2, $$3, $$4, $$5, $$6 > -1 && $$6 / 5 % 2 == 0);
+   }
+
+   public static void a(fon $$0, dez $$1, elf $$2, fnu $$3, int $$4, boolean $$5) {
+      int $$6;
+      if ($$5) {
+         $$6 = fyl.a(fyl.a(1.0F), 10);
+      } else {
+         $$6 = fyl.d;
+      }
+
+      $$0.a($$1, $$2, $$3, $$4, $$6);
    }
 }

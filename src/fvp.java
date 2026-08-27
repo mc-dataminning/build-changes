@@ -1,37 +1,17 @@
-public class fvp extends fsn<ccs> {
-   private static final aer a = new aer("textures/entity/wither/wither_invulnerable.png");
-   private static final aer f = new aer("textures/entity/wither/wither.png");
-   private final fgk g;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public fvp(fso.a $$0) {
-      super($$0);
-      this.g = new fgk($$0.a(fhm.bU));
+public class fvp extends fru<bwi, ffe<bwi>> {
+   private static final Map<bim<?>, aer> a = Maps.newHashMap(
+      ImmutableMap.of(bim.bq, new aer("textures/entity/horse/horse_zombie.png"), bim.aK, new aer("textures/entity/horse/horse_skeleton.png"))
+   );
+
+   public fvp(fsx.a $$0, fhq $$1) {
+      super($$0, new ffe<>($$0.a($$1)), 1.0F);
    }
 
-   public static fht a() {
-      fhv $$0 = new fhv();
-      fhw $$1 = $$0.a();
-      $$1.a("head", fhs.c().a(0, 35).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fhp.a);
-      return fht.a($$0, 64, 64);
-   }
-
-   protected int a(ccs $$0, gu $$1) {
-      return 15;
-   }
-
-   public void a(ccs $$0, float $$1, float $$2, elg $$3, fnl $$4, int $$5) {
-      $$3.a();
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      float $$6 = arp.j($$2, $$0.N, $$0.dA());
-      float $$7 = arp.i($$2, $$0.O, $$0.dC());
-      elk $$8 = $$4.getBuffer(this.g.a(this.a($$0)));
-      this.g.a(0.0F, $$6, $$7);
-      this.g.a($$3, $$8, $$5, fyc.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public aer a(ccs $$0) {
-      return $$0.p() ? a : f;
+   public aer a(bwi $$0) {
+      return a.get($$0.ag());
    }
 }

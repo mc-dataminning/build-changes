@@ -1,15 +1,27 @@
-public class ftd extends ftu<bzx, fey<bzx>> {
-   private static final aer a = new aer("textures/entity/hoglin/hoglin.png");
+public class ftd extends fsw<cbz> {
+   private final ftv a;
 
-   public ftd(fso.a $$0) {
-      super($$0, new fey<>($$0.a(fhm.ah)), 0.7F);
+   public ftd(fsx.a $$0) {
+      super($$0);
+      this.a = $$0.b();
    }
 
-   public aer a(bzx $$0) {
-      return a;
+   public void a(cbz $$0, float $$1, float $$2, elf $$3, fnu $$4, int $$5) {
+      $$3.a();
+      $$3.a(this.c.b());
+      $$3.a(a.d.rotationDegrees(180.0F));
+      if ($$0.m()) {
+         $$3.a(a.f.rotationDegrees(180.0F));
+         $$3.a(a.d.rotationDegrees(180.0F));
+         $$3.a(a.b.rotationDegrees(90.0F));
+      }
+
+      this.a.a($$0.j(), ciu.h, $$5, fyl.d, $$3, $$4, $$0.dK(), $$0.ah());
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   protected boolean b(bzx $$0) {
-      return super.a($$0) || $$0.t();
+   public aer a(cbz $$0) {
+      return fyt.e;
    }
 }

@@ -1,17 +1,19 @@
-public class cxp extends csu {
-   protected static final ehx a = csm.a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0);
+public class cxp {
+   private static final double b = 0.826;
+   public static final double a = 0.1;
 
-   public cxp(dez.d $$0) {
-      super($$0);
+   public static boolean a(dez $$0) {
+      return $$0.i();
    }
 
-   @Override
-   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
-      return a;
-   }
+   public static int a(aru $$0) {
+      double $$1 = 1.0;
 
-   @Override
-   protected boolean d(dfa $$0, cos $$1, gu $$2) {
-      return $$0.a(apl.aK) || $$0.a(csn.dY) || super.d($$0, $$1, $$2);
+      int $$2;
+      for ($$2 = 0; $$0.j() < $$1; $$2++) {
+         $$1 *= 0.826;
+      }
+
+      return $$2;
    }
 }

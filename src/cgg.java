@@ -1,58 +1,22 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Objects;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class cgg {
-   private final String a;
-   @Nullable
-   private dfe b;
-   private boolean c;
-   private boolean d;
+public class cgg extends cis {
+   private final csl a;
 
-   public cgg(String $$0) {
+   public cgg(csl $$0, cis.a $$1) {
+      super($$1);
       this.a = $$0;
    }
 
-   private static boolean a(dfe $$0, @Nullable dfe $$1, boolean $$2) {
-      if ($$1 == null || $$0.a() != $$1.a()) {
-         return false;
-      } else if (!$$2) {
-         return true;
-      } else if ($$0.b() == null && $$1.b() == null) {
-         return true;
-      } else {
-         return $$0.b() != null && $$1.b() != null ? Objects.equals($$0.b().n(), $$1.b().n()) : false;
-      }
+   @Override
+   public String a() {
+      return this.a.f();
    }
 
-   public boolean a(ciy $$0, hr<csm> $$1, dfe $$2) {
-      if (a($$2, this.b, this.d)) {
-         return this.c;
-      } else {
-         this.b = $$2;
-         this.d = false;
-         qr $$3 = $$0.v();
-         if ($$3 != null && $$3.b(this.a, 9)) {
-            qx $$4 = $$3.c(this.a, 8);
-
-            for (int $$5 = 0; $$5 < $$4.size(); $$5++) {
-               String $$6 = $$4.j($$5);
-
-               try {
-                  fe.b $$7 = fe.a($$1.p(), new StringReader($$6));
-                  this.d = this.d | $$7.a();
-                  if ($$7.test($$2)) {
-                     this.c = true;
-                     return true;
-                  }
-               } catch (CommandSyntaxException var9) {
-               }
-            }
-         }
-
-         this.c = false;
-         return false;
-      }
+   @Override
+   public void a(cix $$0, @Nullable cpl $$1, List<tf> $$2, cko $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a.a($$0, $$1, $$2, $$3);
    }
 }

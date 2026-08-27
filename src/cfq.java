@@ -1,30 +1,68 @@
-import java.util.Collections;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public interface cfq {
-   void a(@Nullable cmb<?> var1);
-
+public class cfq implements bgj, cfp {
+   private final hn<cix> c = hn.a(1, cix.b);
    @Nullable
-   cmb<?> d();
+   private cma<?> d;
 
-   default void a(cbn $$0, List<ciy> $$1) {
-      cmb<?> $$2 = this.d();
-      if ($$2 != null) {
-         $$0.a($$2, $$1);
-         if (!$$2.ai_()) {
-            $$0.a(Collections.singleton($$2));
-            this.a(null);
-         }
-      }
+   @Override
+   public int b() {
+      return 1;
    }
 
-   default boolean a(cpm $$0, akl $$1, cmb<?> $$2) {
-      if (!$$2.ai_() && $$0.X().b(cpi.v) && !$$1.F().b($$2)) {
-         return false;
-      } else {
-         this.a($$2);
-         return true;
+   @Override
+   public boolean aa_() {
+      for (cix $$0 : this.c) {
+         if (!$$0.b()) {
+            return false;
+         }
       }
+
+      return true;
+   }
+
+   @Override
+   public cix a(int $$0) {
+      return this.c.get(0);
+   }
+
+   @Override
+   public cix a(int $$0, int $$1) {
+      return bgk.a(this.c, 0);
+   }
+
+   @Override
+   public cix b(int $$0) {
+      return bgk.a(this.c, 0);
+   }
+
+   @Override
+   public void a(int $$0, cix $$1) {
+      this.c.set(0, $$1);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(cbm $$0) {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      this.c.clear();
+   }
+
+   @Override
+   public void a(@Nullable cma<?> $$0) {
+      this.d = $$0;
+   }
+
+   @Nullable
+   @Override
+   public cma<?> d() {
+      return this.d;
    }
 }

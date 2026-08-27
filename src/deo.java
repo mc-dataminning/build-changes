@@ -1,10 +1,11 @@
-public class deo extends deg {
+public class deo extends dee {
    @Override
-   protected aeq<dna<?, ?>> a(aru $$0, boolean $$1) {
-      if ($$0.a(10) == 0) {
-         return $$1 ? or.I : or.n;
-      } else {
-         return $$1 ? or.C : or.g;
-      }
+   protected aeq<dmz<?, ?>> a(aru $$0, boolean $$1) {
+      return or.k;
+   }
+
+   @Override
+   protected aeq<dmz<?, ?>> a(aru $$0) {
+      return $$0.h() ? or.q : or.r;
    }
 }

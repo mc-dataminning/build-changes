@@ -7,7 +7,7 @@ public class bhg {
    @Nullable
    private final bii c;
    @Nullable
-   private final ehe d;
+   private final ehd d;
 
    @Override
    public String toString() {
@@ -22,7 +22,7 @@ public class bhg {
       return this.b != this.c;
    }
 
-   private bhg(he<bhi> $$0, @Nullable bii $$1, @Nullable bii $$2, @Nullable ehe $$3) {
+   private bhg(he<bhi> $$0, @Nullable bii $$1, @Nullable bii $$2, @Nullable ehd $$3) {
       this.a = $$0;
       this.b = $$2;
       this.c = $$1;
@@ -33,7 +33,7 @@ public class bhg {
       this($$0, $$1, $$2, null);
    }
 
-   public bhg(he<bhi> $$0, ehe $$1) {
+   public bhg(he<bhi> $$0, ehd $$1) {
       this($$0, null, null, $$1);
    }
 
@@ -63,7 +63,7 @@ public class bhg {
          return $$5 != null ? tf.a($$6, $$0.H_(), $$5.H_()) : tf.a($$1, $$0.H_());
       } else {
          tf $$2 = this.b == null ? this.c.H_() : this.b.H_();
-         ciy $$4 = this.b instanceof biy $$3 ? $$3.eR() : ciy.b;
+         cix $$4 = this.b instanceof biy $$3 ? $$3.eR() : cix.b;
          return !$$4.b() && $$4.A() ? tf.a($$1 + ".item", $$0.H_(), $$2, $$4.J()) : tf.a($$1, $$0.H_(), $$2);
       }
    }
@@ -75,13 +75,13 @@ public class bhg {
    public boolean f() {
       return switch (this.j().b()) {
          case a -> false;
-         case b -> this.b instanceof biy && !(this.b instanceof cbn);
+         case b -> this.b instanceof biy && !(this.b instanceof cbm);
          case c -> true;
       };
    }
 
    public boolean g() {
-      if (this.d() instanceof cbn $$0 && $$0.fR().d) {
+      if (this.d() instanceof cbm $$0 && $$0.fR().d) {
          return true;
       }
 
@@ -89,7 +89,7 @@ public class bhg {
    }
 
    @Nullable
-   public ehe h() {
+   public ehd h() {
       if (this.d != null) {
          return this.d;
       } else {
@@ -98,7 +98,7 @@ public class bhg {
    }
 
    @Nullable
-   public ehe i() {
+   public ehd i() {
       return this.d;
    }
 

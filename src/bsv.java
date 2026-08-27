@@ -1,56 +1,24 @@
 import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2LongMap;
-import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
-public class bsv extends bte<bja> {
-   private static final int a = 40;
-   private static final int c = 5;
-   private static final int d = 20;
-   private final Long2LongMap e = new Long2LongOpenHashMap();
-   private int f;
-   private long g;
-
-   public bsv() {
-      super(20);
-   }
+public class bsv extends btd<bja> {
+   private static final long c = 32L;
+   private static final long d = 16L;
+   public static final int a = 32;
 
    @Override
-   public Set<bsa<?>> a() {
-      return ImmutableSet.of(bsa.w);
+   public Set<brz<?>> a() {
+      return ImmutableSet.of(brz.K);
    }
 
    protected void a(akk $$0, bja $$1) {
-      if ($$1.i_()) {
-         this.f = 0;
-         this.g = $$0.V() + (long)$$0.y_().a(20);
-         bty $$2 = $$0.w();
-         Predicate<gu> $$3 = $$0x -> {
-            long $$1x = $$0x.a();
-            if (this.e.containsKey($$1x)) {
-               return false;
-            } else if (++this.f >= 5) {
-               return false;
-            } else {
-               this.e.put($$1x, this.g + 40L);
-               return true;
-            }
-         };
-         Set<Pair<he<bub>, gu>> $$4 = $$2.b($$0x -> $$0x.a(buc.n), $$3, $$1.dk(), 48, bty.b.c).collect(Collectors.toSet());
-         eas $$5 = bkj.a($$1, $$4);
-         if ($$5 != null && $$5.j()) {
-            gu $$6 = $$5.l();
-            Optional<he<bub>> $$7 = $$2.c($$6);
-            if ($$7.isPresent()) {
-               $$1.dM().a(bsa.w, $$6);
-            }
-         } else if (this.f < 5) {
-            this.e.long2LongEntrySet().removeIf($$0x -> $$0x.getLongValue() < this.g);
-         }
-      }
+      bjy<?> $$2 = $$1.dM();
+      List<byf> $$3 = $$0.a(byf.class, $$1.cG().c(32.0, 16.0, 32.0), $$0x -> true);
+      $$3.sort(Comparator.comparingDouble($$1::f));
+      Optional<byf> $$4 = $$3.stream().filter($$1x -> $$1.k($$1x.j())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::E).findFirst();
+      $$2.a(brz.K, $$4);
    }
 }

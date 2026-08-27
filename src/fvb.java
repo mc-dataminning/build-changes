@@ -1,12 +1,12 @@
-public class fvb extends frp<cbv> {
-   public static final aer a = new aer("textures/entity/projectiles/arrow.png");
-   public static final aer f = new aer("textures/entity/projectiles/tipped_arrow.png");
+public class fvb extends fud<bvh, fgt<bvh>> {
+   private static final aer a = new aer("textures/entity/snow_golem.png");
 
-   public fvb(fso.a $$0) {
-      super($$0);
+   public fvb(fsx.a $$0) {
+      super($$0, new fgt<>($$0.a(fhr.bp)), 0.5F);
+      this.a(new fxk(this, $$0.c(), $$0.b()));
    }
 
-   public aer a(cbv $$0) {
-      return $$0.z() > 0 ? f : a;
+   public aer a(bvh $$0) {
+      return a;
    }
 }

@@ -1,63 +1,52 @@
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
+public class gcf {
+   public static class a extends gbl {
+      private final fmw n;
 
-public class gcf implements ann {
-   public static final gcf.a<ciy> a = new gcf.a<>();
-   public static final gcf.a<ciy> b = new gcf.a<>();
-   public static final gcf.a<fbp> c = new gcf.a<>();
-   private final Map<gcf.a<?>, gcf.c<?>> d = new HashMap<>();
+      protected a(fmw $$0, aov $$1) {
+         super($$1, aox.i, gcc.t());
+         this.n = $$0;
+         this.i = false;
+         this.j = 0;
+         this.d = 1.0F;
+         this.l = true;
+      }
 
-   @Override
-   public void a(anm $$0) {
-      for (gcf.c<?> $$1 : this.d.values()) {
-         $$1.a();
+      @Override
+      public void q() {
+         if (this.n.dF() || !this.n.bc()) {
+            this.n();
+         }
       }
    }
 
-   public <T> void a(gcf.a<T> $$0, gcf.b<T> $$1) {
-      this.d.put($$0, new gcf.c<>($$1));
-   }
+   public static class b extends gbl {
+      public static final int n = 40;
+      private final fmw o;
+      private int p;
 
-   private <T> gcf.c<T> b(gcf.a<T> $$0) {
-      gcf.c<T> $$1 = (gcf.c<T>)this.d.get($$0);
-      if ($$1 == null) {
-         throw new IllegalStateException("Tree builder not registered");
-      } else {
-         return $$1;
-      }
-   }
-
-   public <T> void a(gcf.a<T> $$0, List<T> $$1) {
-      this.b($$0).a($$1);
-   }
-
-   public <T> gcg<T> a(gcf.a<T> $$0) {
-      return this.b($$0).b;
-   }
-
-   public static class a<T> {
-   }
-
-   public interface b<T> extends Function<List<T>, gcd<T>> {
-   }
-
-   static class c<T> {
-      private final gcf.b<T> a;
-      gcd<T> b = gcd.b();
-
-      c(gcf.b<T> $$0) {
-         this.a = $$0;
+      public b(fmw $$0) {
+         super(aow.z, aox.i, gcc.t());
+         this.o = $$0;
+         this.i = true;
+         this.j = 0;
+         this.d = 1.0F;
+         this.l = true;
       }
 
-      void a(List<T> $$0) {
-         this.b = this.a.apply($$0);
-         this.b.a();
-      }
+      @Override
+      public void q() {
+         if (!this.o.dF() && this.p >= 0) {
+            if (this.o.bc()) {
+               this.p++;
+            } else {
+               this.p -= 2;
+            }
 
-      void a() {
-         this.b.a();
+            this.p = Math.min(this.p, 40);
+            this.d = Math.max(0.0F, Math.min((float)this.p / 40.0F, 1.0F));
+         } else {
+            this.n();
+         }
       }
    }
 }

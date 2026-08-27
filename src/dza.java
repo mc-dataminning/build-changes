@@ -1,11 +1,14 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
 
-public interface dza {
-   Codec<dza> c = jb.q.q().dispatch(dza::a, dzb::codec);
+public interface dza<P extends dyz> {
+   dza<dyx> a = a("clear", dyx.a);
+   dza<dyy> b = a("passthrough", dyy.b);
+   dza<dyw> c = a("append_static", dyw.a);
+   dza<dyv> d = a("append_loot", dyv.a);
 
-   @Nullable
-   qr a(aru var1, @Nullable qr var2);
+   Codec<P> codec();
 
-   dzb<?> a();
+   private static <P extends dyz> dza<P> a(String $$0, Codec<P> $$1) {
+      return hr.a(jb.q, $$0, () -> $$1);
+   }
 }

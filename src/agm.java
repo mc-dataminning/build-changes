@@ -23,7 +23,7 @@ public class agm {
 
    public static int a(dr $$0, bgn $$1) throws CommandSyntaxException {
       MinecraftServer $$2 = $$0.l();
-      if ($$2.aU().s() == $$1) {
+      if ($$2.aT().s() == $$1) {
          throw a.create($$1.e());
       } else {
          $$2.a($$1, true);

@@ -1,35 +1,56 @@
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-public enum bws implements ash {
-   a(0, "white"),
-   b(1, "creamy"),
-   c(2, "chestnut"),
-   d(3, "brown"),
-   e(4, "black"),
-   f(5, "gray"),
-   g(6, "dark_brown");
-
-   public static final Codec<bws> h = ash.a(bws::values);
-   private static final IntFunction<bws> i = aqk.a(bws::a, values(), aqk.a.b);
-   private final int j;
-   private final String k;
-
-   private bws(int $$0, String $$1) {
-      this.j = $$0;
-      this.k = $$1;
+public class bws extends bwi {
+   public bws(bim<? extends bws> $$0, cpl $$1) {
+      super($$0, $$1);
    }
 
-   public int a() {
-      return this.j;
-   }
-
-   public static bws a(int $$0) {
-      return i.apply($$0);
+   public static bkd.a p() {
+      return gA().a(bke.a, 15.0).a(bke.d, 0.2F);
    }
 
    @Override
-   public String c() {
-      return this.k;
+   protected void a(aru $$0) {
+      this.a(bke.n).a(a($$0::j));
+   }
+
+   @Override
+   public bjd eQ() {
+      return bjd.b;
+   }
+
+   @Override
+   protected aov r() {
+      return aow.Bh;
+   }
+
+   @Override
+   protected aov h_() {
+      return aow.Bi;
+   }
+
+   @Override
+   protected aov d(bhg $$0) {
+      return aow.Bj;
+   }
+
+   @Nullable
+   @Override
+   public bid a(akk $$0, bid $$1) {
+      return bim.bq.a((cpl)$$0);
+   }
+
+   @Override
+   public bgq b(cbm $$0, bgp $$1) {
+      return !this.gp() ? bgq.d : super.b($$0, $$1);
+   }
+
+   @Override
+   protected void gq() {
+   }
+
+   @Override
+   protected float a(bij $$0, float $$1) {
+      return $$0.b - (this.i_() ? 0.03125F : 0.28125F) * $$1;
    }
 }

@@ -1,192 +1,147 @@
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class cdh extends cdg implements bir, cdi {
-   private static final int f = 27;
-   private hn<ciy> g = hn.a(27, ciy.b);
+public interface cdh extends bgj, bgt {
+   ehd di();
+
    @Nullable
-   private aer h;
-   private long i;
+   aer A();
 
-   public cdh(bim<? extends cdg> $$0, cpm $$1) {
-      super($$0, $$1);
-   }
+   void a(@Nullable aer var1);
 
-   public cdh(cpm $$0, double $$1, double $$2, double $$3) {
-      this(bim.o, $$0);
-      this.e($$1, $$2, $$3);
-      this.K = $$1;
-      this.L = $$2;
-      this.M = $$3;
-   }
+   long B();
 
-   @Override
-   protected float q() {
-      return 0.15F;
-   }
+   void a(long var1);
+
+   hn<cix> D();
+
+   void E();
+
+   cpl dK();
+
+   boolean dF();
 
    @Override
-   protected int w() {
-      return 1;
+   default boolean aa_() {
+      return this.g();
    }
 
-   @Override
-   protected void b(qr $$0) {
-      super.b($$0);
-      this.c($$0);
-   }
-
-   @Override
-   protected void a(qr $$0) {
-      super.a($$0);
-      this.b_($$0);
-   }
-
-   @Override
-   public void a(bhg $$0) {
-      super.a($$0);
-      this.a($$0, this.dK(), this);
-   }
-
-   @Override
-   public void a(bii.c $$0) {
-      if (!this.dK().B && $$0.a()) {
-         bgm.a(this.dK(), this, this);
-      }
-
-      super.a($$0);
-   }
-
-   @Override
-   public bgq a(cbn $$0, bgp $$1) {
-      if (this.r($$0) && !$$0.fG()) {
-         return super.a($$0, $$1);
+   default void c(qr $$0) {
+      if (this.A() != null) {
+         $$0.a("LootTable", this.A().toString());
+         if (this.B() != 0L) {
+            $$0.a("LootTableSeed", this.B());
+         }
       } else {
-         bgq $$2 = this.c_($$0);
-         if ($$2.a()) {
-            this.a(djk.k, $$0);
-            cae.a($$0, true);
+         bgk.a($$0, this.D());
+      }
+   }
+
+   default void b_(qr $$0) {
+      this.E();
+      if ($$0.b("LootTable", 8)) {
+         this.a(new aer($$0.l("LootTable")));
+         this.a($$0.i("LootTableSeed"));
+      } else {
+         bgk.b($$0, this.D());
+      }
+   }
+
+   default void a(bhg $$0, cpl $$1, bii $$2) {
+      if ($$1.X().b(cph.h)) {
+         bgm.a($$1, $$2, this);
+         if (!$$1.B) {
+            bii $$3 = $$0.c();
+            if ($$3 != null && $$3.ag() == bim.bt) {
+               cad.a((cbm)$$3, true);
+            }
+         }
+      }
+   }
+
+   default bgq c_(cbm $$0) {
+      $$0.a(this);
+      return !$$0.dK().B ? bgq.b : bgq.a;
+   }
+
+   default void f(@Nullable cbm $$0) {
+      MinecraftServer $$1 = this.dK().n();
+      if (this.A() != null && $$1 != null) {
+         eco $$2 = $$1.aH().getLootTable(this.A());
+         if ($$0 != null) {
+            ai.N.a((akl)$$0, this.A());
          }
 
-         return $$2;
+         this.a(null);
+         ecm.a $$3 = new ecm.a((akk)this.dK()).a(eer.f, this.di());
+         if ($$0 != null) {
+            $$3.a($$0.gm()).a(eer.a, $$0);
+         }
+
+         $$2.a(this, $$3.a(eeq.c), this.B());
       }
    }
 
-   @Override
-   public void b(cbn $$0) {
-      $$0.a((bgt)this);
-      if (!$$0.dK().B) {
-         this.a(djk.k, $$0);
-         cae.a($$0, true);
+   default void f() {
+      this.f(null);
+      this.D().clear();
+   }
+
+   default boolean g() {
+      for (cix $$0 : this.D()) {
+         if (!$$0.b()) {
+            return false;
+         }
       }
+
+      return true;
    }
 
-   @Override
-   public cit j() {
-      return switch (this.v()) {
-         case b -> cjb.nl;
-         case c -> cjb.nn;
-         case d -> cjb.np;
-         case e -> cjb.nr;
-         case f -> cjb.nt;
-         case g -> cjb.nv;
-         case h -> cjb.nx;
-         case i -> cjb.nz;
-         default -> cjb.nj;
-      };
-   }
-
-   @Override
-   public void a() {
-      this.f();
-   }
-
-   @Override
-   public int b() {
-      return 27;
-   }
-
-   @Override
-   public ciy a(int $$0) {
-      return this.f_($$0);
-   }
-
-   @Override
-   public ciy a(int $$0, int $$1) {
-      return this.b($$0, $$1);
-   }
-
-   @Override
-   public ciy b(int $$0) {
-      return this.e_($$0);
-   }
-
-   @Override
-   public void a(int $$0, ciy $$1) {
-      this.c($$0, $$1);
-   }
-
-   @Override
-   public bjr a_(int $$0) {
-      return this.g_($$0);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(cbn $$0) {
-      return this.g($$0);
-   }
-
-   @Nullable
-   @Override
-   public cee createMenu(int $$0, cbm $$1, cbn $$2) {
-      if (this.h != null && $$2.G_()) {
-         return null;
+   default cix e_(int $$0) {
+      this.f(null);
+      cix $$1 = this.D().get($$0);
+      if ($$1.b()) {
+         return cix.b;
       } else {
-         this.e($$1.m);
-         return cel.a($$0, $$1, this);
+         this.D().set($$0, cix.b);
+         return $$1;
       }
    }
 
-   public void e(@Nullable cbn $$0) {
-      this.f($$0);
+   default cix f_(int $$0) {
+      this.f(null);
+      return this.D().get($$0);
    }
 
-   @Nullable
-   @Override
-   public aer A() {
-      return this.h;
+   default cix b(int $$0, int $$1) {
+      this.f(null);
+      return bgk.a(this.D(), $$0, $$1);
    }
 
-   @Override
-   public void a(@Nullable aer $$0) {
-      this.h = $$0;
+   default void c(int $$0, cix $$1) {
+      this.f(null);
+      this.D().set($$0, $$1);
+      if (!$$1.b() && $$1.L() > this.ab_()) {
+         $$1.f(this.ab_());
+      }
    }
 
-   @Override
-   public long B() {
-      return this.i;
+   default bjq g_(final int $$0) {
+      return $$0 >= 0 && $$0 < this.b() ? new bjq() {
+         @Override
+         public cix a() {
+            return cdh.this.f_($$0);
+         }
+
+         @Override
+         public boolean a(cix $$0x) {
+            cdh.this.c($$0, $$0);
+            return true;
+         }
+      } : bjq.b;
    }
 
-   @Override
-   public void a(long $$0) {
-      this.i = $$0;
-   }
-
-   @Override
-   public hn<ciy> D() {
-      return this.g;
-   }
-
-   @Override
-   public void E() {
-      this.g = hn.a(this.b(), ciy.b);
-   }
-
-   @Override
-   public void c(cbn $$0) {
-      this.dK().a(djk.j, this.di(), djk.a.a($$0));
+   default boolean g(cbm $$0) {
+      return !this.dF() && this.di().a((ho)$$0.di(), 8.0);
    }
 }

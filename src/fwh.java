@@ -1,24 +1,16 @@
-public abstract class fwh<T extends bii & bjl, M extends feo<T>> extends fww<T, M> {
-   public fwh(fuj<T, M> $$0) {
+public class fwh extends fxf<bum, fee<bum>> {
+   private static final aer a = new aer("textures/entity/cat/cat_collar.png");
+   private final fee<bum> b;
+
+   public fwh(fus<bum, fee<bum>> $$0, fho $$1) {
       super($$0);
+      this.b = new fee<>($$1.a(fhr.o));
    }
 
-   @Override
-   public void a(elg $$0, fnl $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.a()) {
-         float $$10 = (float)$$3.ah + $$6;
-         feo<T> $$11 = this.b();
-         $$11.a($$3, $$4, $$5, $$6);
-         this.c().a($$11);
-         elk $$12 = $$1.getBuffer(fnt.a(this.a(), this.a($$10) % 1.0F, $$10 * 0.01F % 1.0F));
-         $$11.a($$3, $$4, $$5, $$7, $$8, $$9);
-         $$11.a($$0, $$12, $$2, fyc.d, 0.5F, 0.5F, 0.5F, 1.0F);
+   public void a(elf $$0, fnu $$1, int $$2, bum $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.p()) {
+         float[] $$10 = $$3.gk().d();
+         a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$10[0], $$10[1], $$10[2]);
       }
    }
-
-   protected abstract float a(float var1);
-
-   protected abstract aer a();
-
-   protected abstract feo<T> b();
 }

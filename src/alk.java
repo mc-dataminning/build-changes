@@ -1,6 +1,7 @@
 import com.google.common.primitives.Ints;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.exceptions.AuthenticationUnavailableException;
+import com.mojang.authlib.yggdrasil.ProfileResult;
 import com.mojang.logging.LogUtils;
 import java.math.BigInteger;
 import java.net.InetAddress;
@@ -79,7 +80,7 @@ public class alk implements adf, su {
    }
 
    public String f() {
-      String $$0 = this.g.a(this.f.bf());
+      String $$0 = this.g.a(this.f.be());
       return this.j != null ? this.j + " (" + $$0 + ")" : $$0;
    }
 
@@ -161,10 +162,11 @@ public class alk implements adf, su {
             String $$0 = Objects.requireNonNull(alk.this.j, "Player name not initialized");
 
             try {
-               GameProfile $$1 = alk.this.f.am().hasJoinedServer($$0, $$5, this.a());
+               ProfileResult $$1 = alk.this.f.am().hasJoinedServer($$0, $$5, this.a());
                if ($$1 != null) {
-                  alk.b.info("UUID of player {} is {}", $$1.getName(), $$1.getId());
-                  alk.this.b($$1);
+                  GameProfile $$2 = $$1.profile();
+                  alk.b.info("UUID of player {} is {}", $$2.getName(), $$2.getId());
+                  alk.this.b($$2);
                } else if (alk.this.f.O()) {
                   alk.b.warn("Failed to verify username but will let them in anyway!");
                   alk.this.b(alk.b($$0));
@@ -172,7 +174,7 @@ public class alk implements adf, su {
                   alk.this.b(tf.c("multiplayer.disconnect.unverified_username"));
                   alk.b.error("Username '{}' tried to join with an invalid session", $$0);
                }
-            } catch (AuthenticationUnavailableException var3) {
+            } catch (AuthenticationUnavailableException var4) {
                if (alk.this.f.O()) {
                   alk.b.warn("Authentication servers are down but will let them in anyway!");
                   alk.this.b(alk.b($$0));

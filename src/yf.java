@@ -1,7 +1,7 @@
 import com.google.common.collect.Sets;
 import java.util.Set;
 
-public record yf(int a, boolean b, Set<aeq<cpm>> c, int d, int e, int f, boolean g, boolean h, aat i) implements ux<wp> {
+public record yf(int a, boolean b, Set<aeq<cpl>> c, int d, int e, int f, boolean g, boolean h, aat i) implements ux<wp> {
    public yf(si $$0) {
       this(
          $$0.readInt(),
@@ -37,7 +37,7 @@ public record yf(int a, boolean b, Set<aeq<cpm>> c, int d, int e, int f, boolean
       return this.b;
    }
 
-   public Set<aeq<cpm>> e() {
+   public Set<aeq<cpl>> e() {
       return this.c;
    }
 

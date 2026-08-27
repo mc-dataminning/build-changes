@@ -15,7 +15,7 @@ public class cz extends cu<cz.a> {
    }
 
    public void a(akl $$0, bii $$1) {
-      ech $$2 = bo.b($$0, $$1);
+      ecg $$2 = bo.b($$0, $$1);
       this.a($$0, $$1x -> $$1x.a($$2));
    }
 
@@ -31,7 +31,7 @@ public class cz extends cu<cz.a> {
          return new cz.a(Optional.empty(), bo.a($$0));
       }
 
-      public boolean a(ech $$0) {
+      public boolean a(ecg $$0) {
          return this.a.isEmpty() || this.a.get().a($$0);
       }
 

@@ -1,15 +1,28 @@
-public class fsl extends ftu<bys, fen<bys>> {
-   private static final aer a = new aer("textures/entity/endermite.png");
+public class fsl extends fud<bym, fen<bym>> {
+   private static final aer a = new aer("textures/entity/creeper/creeper.png");
 
-   public fsl(fso.a $$0) {
-      super($$0, new fen<>($$0.a(fhm.S)), 0.3F);
+   public fsl(fsx.a $$0) {
+      super($$0, new fen<>($$0.a(fhr.B)), 0.5F);
+      this.a(new fwi(this, $$0.f()));
    }
 
-   protected float a(bys $$0) {
-      return 180.0F;
+   protected void a(bym $$0, elf $$1, float $$2) {
+      float $$3 = $$0.E($$2);
+      float $$4 = 1.0F + arp.a($$3 * 100.0F) * $$3 * 0.01F;
+      $$3 = arp.a($$3, 0.0F, 1.0F);
+      $$3 *= $$3;
+      $$3 *= $$3;
+      float $$5 = (1.0F + $$3 * 0.4F) * $$4;
+      float $$6 = (1.0F + $$3 * 0.1F) / $$4;
+      $$1.b($$5, $$6, $$5);
    }
 
-   public aer b(bys $$0) {
+   protected float a(bym $$0, float $$1) {
+      float $$2 = $$0.E($$1);
+      return (int)($$2 * 10.0F) % 2 == 0 ? 0.0F : arp.a($$2, 0.5F, 1.0F);
+   }
+
+   public aer a(bym $$0) {
       return a;
    }
 }

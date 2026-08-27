@@ -1,18 +1,29 @@
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import java.util.List;
 
-public class emy extends enc {
-   public String a;
-   public long b;
-   public long c;
+public class emy extends enb {
+   public long a;
+   public List<emx> b = Lists.newArrayList();
 
-   public static emy a(JsonObject $$0) {
+   public static emy a(String $$0) {
       emy $$1 = new emy();
+      JsonParser $$2 = new JsonParser();
 
       try {
-         $$1.a = eoz.a("profileUuid", $$0, null);
-         $$1.b = eoz.a("joinTime", $$0, Long.MIN_VALUE);
-         $$1.c = eoz.a("leaveTime", $$0, Long.MIN_VALUE);
-      } catch (Exception var3) {
+         JsonElement $$3 = $$2.parse($$0);
+         JsonObject $$4 = $$3.getAsJsonObject();
+         $$1.a = eoy.a("periodInMillis", $$4, -1L);
+         JsonElement $$5 = $$4.get("playerActivityDto");
+         if ($$5 != null && $$5.isJsonArray()) {
+            for (JsonElement $$7 : $$5.getAsJsonArray()) {
+               emx $$8 = emx.a($$7.getAsJsonObject());
+               $$1.b.add($$8);
+            }
+         }
+      } catch (Exception var10) {
       }
 
       return $$1;

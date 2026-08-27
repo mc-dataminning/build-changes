@@ -1,16 +1,26 @@
 import javax.annotation.Nullable;
 
-public class brg extends brh {
+public class brg extends bqq {
+   public static final float i = 0.001F;
+   protected final float j;
+
    public brg(bjh $$0, double $$1) {
+      this($$0, $$1, 0.001F);
+   }
+
+   public brg(bjh $$0, double $$1, float $$2) {
       super($$0, $$1);
+      this.j = $$2;
    }
 
    @Nullable
    @Override
-   protected ehe h() {
-      ehe $$0 = this.b.f(0.0F);
-      int $$1 = 8;
-      ehe $$2 = btr.a(this.b, 8, 7, $$0.c, $$0.e, (float) (Math.PI / 2), 3, 1);
-      return $$2 != null ? $$2 : btn.a(this.b, 8, 4, -2, $$0.c, $$0.e, (float) (Math.PI / 2));
+   protected ehd h() {
+      if (this.b.ba()) {
+         ehd $$0 = btr.a(this.b, 15, 7);
+         return $$0 == null ? super.h() : $$0;
+      } else {
+         return this.b.ee().i() >= this.j ? btr.a(this.b, 10, 7) : super.h();
+      }
    }
 }

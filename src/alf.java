@@ -60,7 +60,7 @@ public abstract class alf implements vh {
    }
 
    protected void f() {
-      this.b.aN().a("keepAlive");
+      this.b.aM().a("keepAlive");
       long $$0 = ac.b();
       if ($$0 - this.f >= 15000L) {
          if (this.g) {
@@ -73,7 +73,7 @@ public abstract class alf implements vh {
          }
       }
 
-      this.b.aN().c();
+      this.b.aM().c();
    }
 
    public void g() {
@@ -90,7 +90,7 @@ public abstract class alf implements vh {
    }
 
    public void a(ux<?> $$0, @Nullable sp $$1) {
-      boolean $$2 = !this.j || !this.b.bm();
+      boolean $$2 = !this.j || !this.b.bl();
 
       try {
          this.c.a($$0, $$1, $$2);

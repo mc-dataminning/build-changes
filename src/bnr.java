@@ -1,104 +1,33 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class bnr extends bkq<cba> {
-   private static final int c = 80;
-   private long d;
-   private long e;
-   private int f;
-   private Optional<gu> g = Optional.empty();
+public class bnr {
+   private static final int a = 16;
 
-   public bnr() {
-      super(ImmutableMap.of(bsa.n, bsb.b, bsa.m, bsb.b));
-   }
-
-   protected boolean a(akk $$0, cba $$1) {
-      if ($$1.ah % 10 == 0 && (this.e == 0L || this.e + 160L <= (long)$$1.ah)) {
-         if ($$1.t().a_(cjb.qK) <= 0) {
-            return false;
-         } else {
-            this.g = this.b($$0, $$1);
-            return this.g.isPresent();
-         }
-      } else {
-         return false;
-      }
-   }
-
-   protected boolean a(akk $$0, cba $$1, long $$2) {
-      return this.f < 80 && this.g.isPresent();
-   }
-
-   private Optional<gu> b(akk $$0, cba $$1) {
-      gu.a $$2 = new gu.a();
-      Optional<gu> $$3 = Optional.empty();
-      int $$4 = 0;
-
-      for (int $$5 = -1; $$5 <= 1; $$5++) {
-         for (int $$6 = -1; $$6 <= 1; $$6++) {
-            for (int $$7 = -1; $$7 <= 1; $$7++) {
-               $$2.a($$1.dk(), $$5, $$6, $$7);
-               if (this.a($$2, $$0)) {
-                  if ($$0.z.a(++$$4) == 0) {
-                     $$3 = Optional.of($$2.i());
+   public static bkq<biy> a(Predicate<he<bua>> $$0, brz<hd> $$1) {
+      return bob.a((Function<bob.b<biy>, ? extends App<bob.c<biy>, boe<biy>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
+               hd $$6 = $$2.b($$2x);
+               gu $$7 = $$6.b();
+               if ($$3.ac() == $$6.a() && $$7.a($$4.di(), 16.0)) {
+                  akk $$8 = $$3.n().a($$6.a());
+                  if ($$8 == null || !$$8.w().a($$7, $$0)) {
+                     $$2x.b();
+                  } else if (a($$8, $$7, $$4)) {
+                     $$2x.b();
+                     $$3.w().b($$7);
+                     aav.c($$3, $$7);
                   }
+
+                  return true;
+               } else {
+                  return false;
                }
-            }
-         }
-      }
-
-      return $$3;
+            })));
    }
 
-   private boolean a(gu $$0, akk $$1) {
-      dfa $$2 = $$1.a_($$0);
-      csm $$3 = $$2.b();
-      return $$3 instanceof cud && !((cud)$$3).h($$2);
-   }
-
-   protected void b(akk $$0, cba $$1, long $$2) {
-      this.a($$1);
-      $$1.a(bin.a, new ciy(cjb.qK));
-      this.d = $$2;
-      this.f = 0;
-   }
-
-   private void a(cba $$0) {
-      this.g.ifPresent($$1 -> {
-         bkt $$2 = new bkt($$1);
-         $$0.dM().a(bsa.n, $$2);
-         $$0.dM().a(bsa.m, new bsd($$2, 0.5F, 1));
-      });
-   }
-
-   protected void c(akk $$0, cba $$1, long $$2) {
-      $$1.a(bin.a, ciy.b);
-      this.e = (long)$$1.ah;
-   }
-
-   protected void d(akk $$0, cba $$1, long $$2) {
-      gu $$3 = this.g.get();
-      if ($$2 >= this.d && $$3.a($$1.di(), 1.0)) {
-         ciy $$4 = ciy.b;
-         bgx $$5 = $$1.t();
-         int $$6 = $$5.b();
-
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            ciy $$8 = $$5.a($$7);
-            if ($$8.a(cjb.qK)) {
-               $$4 = $$8;
-               break;
-            }
-         }
-
-         if (!$$4.b() && cgt.a($$4, $$0, $$3)) {
-            $$0.c(1505, $$3, 0);
-            this.g = this.b($$0, $$1);
-            this.a($$1);
-            this.d = $$2 + 40L;
-         }
-
-         this.f++;
-      }
+   private static boolean a(akk $$0, gu $$1, biy $$2) {
+      dez $$3 = $$0.a_($$1);
+      return $$3.a(apl.R) && $$3.c(cse.b) && !$$2.fB();
    }
 }

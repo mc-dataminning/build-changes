@@ -1,93 +1,118 @@
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public abstract class eac {
-   public static final hk<ead> c = new hk<>();
-   protected final dfb<eac, ead> d;
-   private ead a;
-   private final he.c<eac> b = jb.d.f(this);
+public final class eac extends dfb<eab, eac> {
+   public static final Codec<eac> a = a(jb.d.q(), eab::g).stable();
+   public static final int b = 9;
+   public static final int g = 8;
 
-   protected eac() {
-      dfb.a<eac, ead> $$0 = new dfb.a<>(this);
-      this.a($$0);
-      this.d = $$0.a(eac::g, ead::new);
-      this.f(this.d.b());
+   public eac(eab $$0, ImmutableMap<dgc<?>, Comparable<?>> $$1, MapCodec<eac> $$2) {
+      super($$0, $$1, $$2);
    }
 
-   protected void a(dfb.a<eac, ead> $$0) {
+   public eab a() {
+      return this.e;
    }
 
-   public dfb<eac, ead> f() {
-      return this.d;
+   public boolean b() {
+      return this.a().c(this);
    }
 
-   protected final void f(ead $$0) {
-      this.a = $$0;
+   public boolean a(eab $$0) {
+      return this.e == $$0 && this.e.c(this);
    }
 
-   public final ead g() {
-      return this.a;
+   public boolean c() {
+      return this.a().b();
    }
 
-   public abstract cit a();
-
-   protected void a(cpm $$0, gu $$1, ead $$2, aru $$3) {
+   public float a(cor $$0, gu $$1) {
+      return this.a().a(this, $$0, $$1);
    }
 
-   protected void b(cpm $$0, gu $$1, ead $$2) {
+   public float d() {
+      return this.a().a(this);
    }
 
-   protected void b(cpm $$0, gu $$1, ead $$2, aru $$3) {
+   public int e() {
+      return this.a().d(this);
+   }
+
+   public boolean b(cor $$0, gu $$1) {
+      for (int $$2 = -1; $$2 <= 1; $$2++) {
+         for (int $$3 = -1; $$3 <= 1; $$3++) {
+            gu $$4 = $$1.b($$2, 0, $$3);
+            eac $$5 = $$0.b_($$4);
+            if (!$$5.a().a(this.a()) && !$$0.a_($$4).i($$0, $$4)) {
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   public void a(cpl $$0, gu $$1) {
+      this.a().b($$0, $$1, this);
+   }
+
+   public void a(cpl $$0, gu $$1, aru $$2) {
+      this.a().a($$0, $$1, this, $$2);
+   }
+
+   public boolean f() {
+      return this.a().i();
+   }
+
+   public void b(cpl $$0, gu $$1, aru $$2) {
+      this.a().b($$0, $$1, this, $$2);
+   }
+
+   public ehd c(cor $$0, gu $$1) {
+      return this.a().a($$0, $$1, this);
+   }
+
+   public dez g() {
+      return this.a().b(this);
    }
 
    @Nullable
-   protected it h() {
-      return null;
+   public it h() {
+      return this.a().h();
    }
 
-   protected abstract boolean a(ead var1, cos var2, gu var3, eac var4, ha var5);
-
-   protected abstract ehe a(cos var1, gu var2, ead var3);
-
-   public abstract int a(cpp var1);
-
-   protected boolean i() {
-      return false;
+   public boolean a(aqa<eab> $$0) {
+      return this.a().k().a($$0);
    }
 
-   protected boolean b() {
-      return false;
+   public boolean a(hi<eab> $$0) {
+      return $$0.a(this.a().k());
    }
 
-   protected abstract float c();
-
-   public abstract float a(ead var1, cos var2, gu var3);
-
-   public abstract float a(ead var1);
-
-   protected abstract dfa b(ead var1);
-
-   public abstract boolean c(ead var1);
-
-   public abstract int d(ead var1);
-
-   public boolean a(eac $$0) {
-      return $$0 == this;
+   public boolean b(eab $$0) {
+      return this.a() == $$0;
    }
 
-   @Deprecated
-   public boolean a(aqa<eac> $$0) {
-      return this.b.a($$0);
+   public float i() {
+      return this.a().c();
    }
 
-   public abstract ehx b(ead var1, cos var2, gu var3);
-
-   public Optional<aov> j() {
-      return Optional.empty();
+   public boolean a(cor $$0, gu $$1, eab $$2, ha $$3) {
+      return this.a().a(this, $$0, $$1, $$2, $$3);
    }
 
-   @Deprecated
-   public he.c<eac> k() {
-      return this.b;
+   public ehw d(cor $$0, gu $$1) {
+      return this.a().b(this, $$0, $$1);
+   }
+
+   public he<eab> j() {
+      return this.e.k();
+   }
+
+   public Stream<aqa<eab>> k() {
+      return this.e.k().c();
    }
 }

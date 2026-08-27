@@ -20,7 +20,7 @@ public record cy(List<cy.c> b) {
       );
    public static final Codec<cy> a = c.xmap(cy::new, cy::b);
 
-   public <S extends dfc<?, S>> boolean a(dfb<?, S> $$0, S $$1) {
+   public <S extends dfb<?, S>> boolean a(dfa<?, S> $$0, S $$1) {
       for (cy.c $$2 : this.b) {
          if (!$$2.a($$0, $$1)) {
             return false;
@@ -30,15 +30,15 @@ public record cy(List<cy.c> b) {
       return true;
    }
 
-   public boolean a(dfa $$0) {
+   public boolean a(dez $$0) {
       return this.a($$0.b().l(), $$0);
    }
 
-   public boolean a(ead $$0) {
+   public boolean a(eac $$0) {
       return this.a($$0.a().f(), $$0);
    }
 
-   public Optional<String> a(dfb<?, ?> $$0) {
+   public Optional<String> a(dfa<?, ?> $$0) {
       for (cy.c $$1 : this.b) {
          Optional<String> $$2 = $$1.a($$0);
          if ($$2.isPresent()) {
@@ -49,7 +49,7 @@ public record cy(List<cy.c> b) {
       return Optional.empty();
    }
 
-   public void a(dfb<?, ?> $$0, Consumer<String> $$1) {
+   public void a(dfa<?, ?> $$0, Consumer<String> $$1) {
       this.b.forEach($$2 -> $$2.a($$0).ifPresent($$1));
    }
 
@@ -71,20 +71,20 @@ public record cy(List<cy.c> b) {
          return new cy.a();
       }
 
-      public cy.a a(dgd<?> $$0, String $$1) {
+      public cy.a a(dgc<?> $$0, String $$1) {
          this.a.add(new cy.c($$0.f(), new cy.b($$1)));
          return this;
       }
 
-      public cy.a a(dgd<Integer> $$0, int $$1) {
+      public cy.a a(dgc<Integer> $$0, int $$1) {
          return this.a($$0, Integer.toString($$1));
       }
 
-      public cy.a a(dgd<Boolean> $$0, boolean $$1) {
+      public cy.a a(dgc<Boolean> $$0, boolean $$1) {
          return this.a($$0, Boolean.toString($$1));
       }
 
-      public <T extends Comparable<T> & ash> cy.a a(dgd<T> $$0, T $$1) {
+      public <T extends Comparable<T> & ash> cy.a a(dgc<T> $$0, T $$1) {
          return this.a($$0, $$1.c());
       }
 
@@ -98,7 +98,7 @@ public record cy(List<cy.c> b) {
       public static final Codec<cy.b> a = Codec.STRING.xmap(cy.b::new, cy.b::a);
 
       @Override
-      public <T extends Comparable<T>> boolean a(dfc<?, ?> $$0, dgd<T> $$1) {
+      public <T extends Comparable<T>> boolean a(dfb<?, ?> $$0, dgc<T> $$1) {
          T $$2 = $$0.c($$1);
          Optional<T> $$3 = $$1.b(this.c);
          return $$3.isPresent() && $$2.compareTo($$3.get()) == 0;
@@ -110,13 +110,13 @@ public record cy(List<cy.c> b) {
    }
 
    static record c(String a, cy.e b) {
-      public <S extends dfc<?, S>> boolean a(dfb<?, S> $$0, S $$1) {
-         dgd<?> $$2 = $$0.a(this.a);
+      public <S extends dfb<?, S>> boolean a(dfa<?, S> $$0, S $$1) {
+         dgc<?> $$2 = $$0.a(this.a);
          return $$2 != null && this.b.a($$1, $$2);
       }
 
-      public Optional<String> a(dfb<?, ?> $$0) {
-         dgd<?> $$1 = $$0.a(this.a);
+      public Optional<String> a(dfa<?, ?> $$0) {
+         dgc<?> $$1 = $$0.a(this.a);
          return $$1 != null ? Optional.empty() : Optional.of(this.a);
       }
    }
@@ -127,7 +127,7 @@ public record cy(List<cy.c> b) {
       );
 
       @Override
-      public <T extends Comparable<T>> boolean a(dfc<?, ?> $$0, dgd<T> $$1) {
+      public <T extends Comparable<T>> boolean a(dfb<?, ?> $$0, dgc<T> $$1) {
          T $$2 = $$0.c($$1);
          if (this.c.isPresent()) {
             Optional<T> $$3 = $$1.b(this.c.get());
@@ -166,6 +166,6 @@ public record cy(List<cy.c> b) {
          }
       });
 
-      <T extends Comparable<T>> boolean a(dfc<?, ?> var1, dgd<T> var2);
+      <T extends Comparable<T>> boolean a(dfb<?, ?> var1, dgc<T> var2);
    }
 }

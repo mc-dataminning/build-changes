@@ -1,36 +1,25 @@
 public enum dge implements ash {
-   a("north_south"),
-   b("east_west"),
-   c("ascending_east"),
-   d("ascending_west"),
-   e("ascending_north"),
-   f("ascending_south"),
-   g("south_east"),
-   h("south_west"),
-   i("north_west"),
-   j("north_east");
+   a("up"),
+   b("side"),
+   c("none");
 
-   private final String k;
+   private final String d;
 
    private dge(String $$0) {
-      this.k = $$0;
-   }
-
-   public String a() {
-      return this.k;
+      this.d = $$0;
    }
 
    @Override
    public String toString() {
-      return this.k;
-   }
-
-   public boolean b() {
-      return this == e || this == c || this == f || this == d;
+      return this.c();
    }
 
    @Override
    public String c() {
-      return this.k;
+      return this.d;
+   }
+
+   public boolean a() {
+      return this != c;
    }
 }

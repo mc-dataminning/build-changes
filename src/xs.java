@@ -25,7 +25,7 @@ public class xs implements ux<wp> {
    }
 
    @Nullable
-   public bii a(cpm $$0) {
+   public bii a(cpl $$0) {
       return $$0.a(this.a);
    }
 

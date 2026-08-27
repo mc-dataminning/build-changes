@@ -36,7 +36,7 @@ public class aji extends MinecraftServer implements afh {
    @Nullable
    private final alo w;
 
-   public aji(Thread $$0, ebx.c $$1, amx $$2, afm $$3, ajk $$4, DataFixer $$5, afj $$6, aku $$7) {
+   public aji(Thread $$0, ebw.c $$1, amx $$2, afm $$3, ajk $$4, DataFixer $$5, afj $$6, aku $$7) {
       super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, $$5, $$6, $$7);
       this.u = $$4;
       this.s = new aom(this);
@@ -115,16 +115,16 @@ public class aji extends MinecraftServer implements afh {
          n.warn("To change this, set \"online-mode\" to \"true\" in the server.properties file.");
       }
 
-      if (this.bj()) {
+      if (this.bi()) {
          this.ap().c();
       }
 
       if (!any.e(this)) {
          return false;
       } else {
-         this.a(new ajh(this, this.aW(), this.i));
+         this.a(new ajh(this, this.aV(), this.i));
          long $$4 = ac.c();
-         ddw.a(this.l, this);
+         ddv.a(this.l, this);
          anv.a(this.U());
          n.info("Preparing level \"{}\"", this.q());
          this.n_();
@@ -132,7 +132,7 @@ public class aji extends MinecraftServer implements afh {
          String $$6 = String.format(Locale.ROOT, "%.3fs", (double)$$5 / 1.0E9);
          n.info("Done ({})! For help, type \"help\"", $$6);
          if ($$1.o != null) {
-            this.aI().a(cpi.y).a($$1.o, this);
+            this.aI().a(cph.y).a($$1.o, this);
          }
 
          if ($$1.p) {
@@ -145,7 +145,7 @@ public class aji extends MinecraftServer implements afh {
             this.t = aor.a(this);
          }
 
-         if (this.bk() > 0L) {
+         if (this.bj() > 0L) {
             Thread $$7 = new Thread(new ajl(this));
             $$7.setUncaughtExceptionHandler(new s(n));
             $$7.setName("Server Watchdog");
@@ -241,7 +241,7 @@ public class aji extends MinecraftServer implements afh {
    @Override
    public void b(BooleanSupplier $$0) {
       super.b($$0);
-      this.bg();
+      this.bf();
    }
 
    @Override
@@ -253,7 +253,7 @@ public class aji extends MinecraftServer implements afh {
       this.q.add(new aev($$0, $$1));
    }
 
-   public void bg() {
+   public void bf() {
       while (!this.q.isEmpty()) {
          aev $$0 = this.q.remove(0);
          this.aC().a($$0.b, $$0.a);
@@ -275,7 +275,7 @@ public class aji extends MinecraftServer implements afh {
       return this.a().x;
    }
 
-   public ajh bh() {
+   public ajh bg() {
       return (ajh)super.ac();
    }
 
@@ -299,7 +299,7 @@ public class aji extends MinecraftServer implements afh {
       return this.aa();
    }
 
-   public void bi() {
+   public void bh() {
       if (this.v == null) {
          this.v = ajo.a(this);
       }
@@ -321,12 +321,12 @@ public class aji extends MinecraftServer implements afh {
    }
 
    @Override
-   public boolean a(akk $$0, gu $$1, cbn $$2) {
-      if ($$0.ac() != cpm.h) {
+   public boolean a(akk $$0, gu $$1, cbm $$2) {
+      if ($$0.ac() != cpl.h) {
          return false;
-      } else if (this.bh().k().c()) {
+      } else if (this.bg().k().c()) {
          return false;
-      } else if (this.bh().g($$2.fP())) {
+      } else if (this.bg().g($$2.fP())) {
          return false;
       } else if (this.ah() <= 0) {
          return false;
@@ -362,7 +362,7 @@ public class aji extends MinecraftServer implements afh {
    @Override
    public void c(int $$0) {
       super.c($$0);
-      this.u.a($$1 -> $$1.U.a(this.aV(), $$0));
+      this.u.a($$1 -> $$1.U.a(this.aU(), $$0));
    }
 
    @Override
@@ -392,17 +392,17 @@ public class aji extends MinecraftServer implements afh {
    }
 
    @Override
-   public boolean bf() {
+   public boolean be() {
       return this.a().X;
    }
 
-   protected boolean bj() {
+   protected boolean bi() {
       boolean $$0 = false;
 
       for (int $$1 = 0; !$$0 && $$1 <= 2; $$1++) {
          if ($$1 > 0) {
             n.warn("Encountered a problem while converting the user banlist, retrying in a few seconds");
-            this.bt();
+            this.bs();
          }
 
          $$0 = any.a((MinecraftServer)this);
@@ -413,7 +413,7 @@ public class aji extends MinecraftServer implements afh {
       for (int var7 = 0; !$$2 && var7 <= 2; var7++) {
          if (var7 > 0) {
             n.warn("Encountered a problem while converting the ip banlist, retrying in a few seconds");
-            this.bt();
+            this.bs();
          }
 
          $$2 = any.b(this);
@@ -424,7 +424,7 @@ public class aji extends MinecraftServer implements afh {
       for (int var8 = 0; !$$3 && var8 <= 2; var8++) {
          if (var8 > 0) {
             n.warn("Encountered a problem while converting the op list, retrying in a few seconds");
-            this.bt();
+            this.bs();
          }
 
          $$3 = any.c(this);
@@ -435,7 +435,7 @@ public class aji extends MinecraftServer implements afh {
       for (int var9 = 0; !$$4 && var9 <= 2; var9++) {
          if (var9 > 0) {
             n.warn("Encountered a problem while converting the whitelist, retrying in a few seconds");
-            this.bt();
+            this.bs();
          }
 
          $$4 = any.d(this);
@@ -446,7 +446,7 @@ public class aji extends MinecraftServer implements afh {
       for (int var10 = 0; !$$5 && var10 <= 2; var10++) {
          if (var10 > 0) {
             n.warn("Encountered a problem while converting the player save files, retrying in a few seconds");
-            this.bt();
+            this.bs();
          }
 
          $$5 = any.a(this);
@@ -455,19 +455,19 @@ public class aji extends MinecraftServer implements afh {
       return $$0 || $$2 || $$3 || $$4 || $$5;
    }
 
-   private void bt() {
+   private void bs() {
       try {
          Thread.sleep(5000L);
       } catch (InterruptedException var2) {
       }
    }
 
-   public long bk() {
+   public long bj() {
       return this.a().C;
    }
 
    @Override
-   public int bd() {
+   public int bc() {
       return this.a().D;
    }
 
@@ -484,14 +484,14 @@ public class aji extends MinecraftServer implements afh {
    }
 
    public void i(boolean $$0) {
-      this.u.a($$1 -> $$1.V.a(this.aV(), $$0));
+      this.u.a($$1 -> $$1.V.a(this.aU(), $$0));
    }
 
    @Override
    public void t() {
       super.t();
       ac.h();
-      ddw.c();
+      ddv.c();
    }
 
    @Override
@@ -510,7 +510,7 @@ public class aji extends MinecraftServer implements afh {
    }
 
    @Override
-   public boolean aS() {
+   public boolean aR() {
       return this.u.a().M;
    }
 
@@ -521,7 +521,7 @@ public class aji extends MinecraftServer implements afh {
 
    @Nullable
    @Override
-   public cpj aX() {
+   public cpi aW() {
       return this.u.a().i ? this.m.m() : null;
    }
 

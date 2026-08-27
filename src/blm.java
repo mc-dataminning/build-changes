@@ -1,32 +1,32 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Collections;
-import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.util.function.Predicate;
 
 public class blm {
-   public static bkr<bjh> a(float $$0) {
-      return boc.a(
-         (Function<boc.b<bjh>, ? extends App<boc.c<bjh>, bof<bjh>>>)($$1 -> $$1.group($$1.c(bsa.m))
-               .apply(
-                  $$1,
-                  $$1x -> ($$2, $$3, $$4) -> {
-                        if ($$2.g($$3.dk())) {
-                           return false;
-                        } else {
-                           gu $$5 = $$3.dk();
-                           List<gu> $$6 = gu.b($$5.b(-1, -1, -1), $$5.b(1, 1, 1)).map(gu::i).collect(Collectors.toList());
-                           Collections.shuffle($$6);
-                           $$6.stream()
-                              .filter($$1xxx -> !$$2.g($$1xxx))
-                              .filter($$2x -> $$2.a($$2x, $$3))
-                              .filter($$2x -> $$2.g($$3))
-                              .findFirst()
-                              .ifPresent($$2x -> $$1x.a(new bsd($$2x, $$0, 0)));
-                           return true;
-                        }
+   public static <T extends biy> bkq<biy> a(bim<? extends T> $$0, int $$1, brz<T> $$2, float $$3, int $$4) {
+      return a($$0, $$1, $$0x -> true, $$0x -> true, $$2, $$3, $$4);
+   }
+
+   public static <E extends biy, T extends biy> bkq<E> a(bim<? extends T> $$0, int $$1, Predicate<E> $$2, Predicate<T> $$3, brz<T> $$4, float $$5, int $$6) {
+      int $$7 = $$1 * $$1;
+      Predicate<biy> $$8 = $$2x -> $$0.equals($$2x.ag()) && $$3.test((T)$$2x);
+      return bob.a(
+         (Function<bob.b<E>, ? extends App<bob.c<E>, boe<E>>>)($$6x -> $$6x.group($$6x.a($$4), $$6x.a(brz.n), $$6x.c(brz.m), $$6x.b(brz.h))
+               .apply($$6x, ($$6xx, $$7x, $$8x, $$9) -> ($$10, $$11, $$12) -> {
+                     bsb $$13 = $$6x.b($$9);
+                     if ($$2.test((E)$$11) && $$13.d($$8)) {
+                        Optional<biy> $$14 = $$13.a($$3xxxx -> $$3xxxx.f((bii)$$11) <= (double)$$7 && $$8.test($$3xxxx));
+                        $$14.ifPresent($$5xxxx -> {
+                           $$6xx.a($$5xxxx);
+                           $$7x.a(new bla($$5xxxx, true));
+                           $$8x.a(new bsc(new bla($$5xxxx, false), $$5, $$6));
+                        });
+                        return true;
+                     } else {
+                        return false;
                      }
-               ))
+                  }))
       );
    }
 }

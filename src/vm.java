@@ -22,9 +22,9 @@ public record vm(vm.a b) implements vp {
       return a;
    }
 
-   public static record a(UUID a, int b, ehe c, @Nullable eas d, @Nullable gu e, @Nullable gu f, int g, Set<String> h, List<gu> i) {
+   public static record a(UUID a, int b, ehd c, @Nullable ear d, @Nullable gu e, @Nullable gu f, int g, Set<String> h, List<gu> i) {
       public a(si $$0) {
-         this($$0.o(), $$0.readInt(), $$0.k(), $$0.c(eas::b), $$0.c(si::e), $$0.c(si::e), $$0.readInt(), $$0.a(HashSet::new, si::r), $$0.a(si::e));
+         this($$0.o(), $$0.readInt(), $$0.k(), $$0.c(ear::b), $$0.c(si::e), $$0.c(si::e), $$0.readInt(), $$0.a(HashSet::new, si::r), $$0.a(si::e));
       }
 
       public void a(si $$0) {
@@ -60,12 +60,12 @@ public record vm(vm.a b) implements vp {
          return this.b;
       }
 
-      public ehe d() {
+      public ehd d() {
          return this.c;
       }
 
       @Nullable
-      public eas e() {
+      public ear e() {
          return this.d;
       }
 

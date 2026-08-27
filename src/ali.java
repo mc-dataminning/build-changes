@@ -57,7 +57,7 @@ public class ali extends alf implements aaw, all, su {
    private double z;
    private double A;
    @Nullable
-   private ehe B;
+   private ehd B;
    private int C;
    private int D;
    private boolean E;
@@ -248,7 +248,7 @@ public class ali extends alf implements aaw, all, su {
                $$18.n();
             }
 
-            $$1.a(bje.b, new ehe($$11, $$12, $$13));
+            $$1.a(bje.b, new ehd($$11, $$12, $$13));
             $$11 = $$6 - $$1.dp();
             $$12 = $$7 - $$1.dr();
             if ($$12 > -0.5 || $$12 < 0.5) {
@@ -282,7 +282,7 @@ public class ali extends alf implements aaw, all, su {
    }
 
    private boolean a(bii $$0) {
-      return $$0.dK().a($$0.cG().g(0.0625).b(0.0, -0.55, 0.0)).allMatch(dez.a::i);
+      return $$0.dK().a($$0.cG().g(0.0625).b(0.0, -0.55, 0.0)).allMatch(dey.a::i);
    }
 
    @Override
@@ -350,27 +350,27 @@ public class ali extends alf implements aaw, all, su {
       } else if (!this.e.gn()) {
          this.e.a(tf.c("advMode.notAllowed"));
       } else {
-         com $$1 = null;
-         dcw $$2 = null;
+         col $$1 = null;
+         dcv $$2 = null;
          gu $$3 = $$0.a();
-         dcm $$4 = this.e.dK().c_($$3);
-         if ($$4 instanceof dcw) {
-            $$2 = (dcw)$$4;
+         dcl $$4 = this.e.dK().c_($$3);
+         if ($$4 instanceof dcv) {
+            $$2 = (dcv)$$4;
             $$1 = $$2.c();
          }
 
          String $$5 = $$0.d();
          boolean $$6 = $$0.e();
          if ($$1 != null) {
-            dcw.a $$7 = $$2.v();
-            dfa $$8 = this.e.dK().a_($$3);
-            ha $$9 = $$8.c(ctt.a);
+            dcv.a $$7 = $$2.v();
+            dez $$8 = this.e.dK().a_($$3);
+            ha $$9 = $$8.c(cts.a);
 
-            dfa $$13 = (switch ($$0.h()) {
-               case a -> csn.kH.n();
-               case b -> csn.kG.n();
-               default -> csn.fN.n();
-            }).a(ctt.a, $$9).a(ctt.b, Boolean.valueOf($$0.f()));
+            dez $$13 = (switch ($$0.h()) {
+               case a -> csm.kH.n();
+               case b -> csm.kG.n();
+               default -> csm.fN.n();
+            }).a(cts.a, $$9).a(cts.b, Boolean.valueOf($$0.f()));
             if ($$13 != $$8) {
                this.e.dK().a($$3, $$13, 2);
                $$4.b($$13);
@@ -404,7 +404,7 @@ public class ali extends alf implements aaw, all, su {
       } else if (!this.e.gn()) {
          this.e.a(tf.c("advMode.notAllowed"));
       } else {
-         com $$1 = $$0.a(this.e.dK());
+         col $$1 = $$0.a(this.e.dK());
          if ($$1 != null) {
             $$1.a($$0.a());
             $$1.a($$0.d());
@@ -430,7 +430,7 @@ public class ali extends alf implements aaw, all, su {
    @Override
    public void a(ace $$0) {
       uz.a($$0, this, this.e.x());
-      if (this.e.bQ instanceof ceg $$1) {
+      if (this.e.bQ instanceof cef $$1) {
          if (!$$1.a(this.e)) {
             g.debug("Player {} interacted with invalid menu {}", this.e, $$1);
             return;
@@ -443,7 +443,7 @@ public class ali extends alf implements aaw, all, su {
    @Override
    public void a(ach $$0) {
       uz.a($$0, this, this.e.x());
-      if (this.e.bQ instanceof ceh $$1) {
+      if (this.e.bQ instanceof ceg $$1) {
          if (!this.e.bQ.a(this.e)) {
             g.debug("Player {} interacted with invalid menu {}", this.e, this.e.bQ);
             return;
@@ -458,8 +458,8 @@ public class ali extends alf implements aaw, all, su {
       uz.a($$0, this, this.e.x());
       if (this.e.gn()) {
          gu $$1 = $$0.a();
-         dfa $$2 = this.e.dK().a_($$1);
-         if (this.e.dK().c_($$1) instanceof ddz $$4) {
+         dez $$2 = this.e.dK().a_($$1);
+         if (this.e.dK().c_($$1) instanceof ddy $$4) {
             $$4.a($$0.e());
             $$4.a($$0.f());
             $$4.a($$0.g());
@@ -474,13 +474,13 @@ public class ali extends alf implements aaw, all, su {
             $$4.a($$0.p());
             if ($$4.g()) {
                String $$5 = $$4.d();
-               if ($$0.d() == ddz.a.b) {
+               if ($$0.d() == ddy.a.b) {
                   if ($$4.D()) {
                      this.e.a(tf.a("structure_block.save_success", $$5), false);
                   } else {
                      this.e.a(tf.a("structure_block.save_failure", $$5), false);
                   }
-               } else if ($$0.d() == ddz.a.c) {
+               } else if ($$0.d() == ddy.a.c) {
                   if (!$$4.F()) {
                      this.e.a(tf.a("structure_block.load_not_found", $$5), false);
                   } else if ($$4.a(this.e.x())) {
@@ -488,7 +488,7 @@ public class ali extends alf implements aaw, all, su {
                   } else {
                      this.e.a(tf.a("structure_block.load_prepare", $$5), false);
                   }
-               } else if ($$0.d() == ddz.a.d) {
+               } else if ($$0.d() == ddy.a.d) {
                   if ($$4.C()) {
                      this.e.a(tf.a("structure_block.size_success", $$5), false);
                   } else {
@@ -510,8 +510,8 @@ public class ali extends alf implements aaw, all, su {
       uz.a($$0, this, this.e.x());
       if (this.e.gn()) {
          gu $$1 = $$0.a();
-         dfa $$2 = this.e.dK().a_($$1);
-         if (this.e.dK().c_($$1) instanceof ddl $$4) {
+         dez $$2 = this.e.dK().a_($$1);
+         if (this.e.dK().c_($$1) instanceof ddk $$4) {
             $$4.a($$0.d());
             $$4.b($$0.e());
             $$4.a(aeq.a(jc.aC, $$0.f()));
@@ -528,7 +528,7 @@ public class ali extends alf implements aaw, all, su {
       uz.a($$0, this, this.e.x());
       if (this.e.gn()) {
          gu $$1 = $$0.a();
-         if (this.e.dK().c_($$1) instanceof ddl $$3) {
+         if (this.e.dK().c_($$1) instanceof ddk $$3) {
             $$3.a(this.e.x(), $$0.d(), $$0.e());
          }
       }
@@ -538,7 +538,7 @@ public class ali extends alf implements aaw, all, su {
    public void a(acg $$0) {
       uz.a($$0, this, this.e.x());
       int $$1 = $$0.a();
-      if (this.e.bQ instanceof cfl $$2) {
+      if (this.e.bQ instanceof cfk $$2) {
          if (!$$2.a(this.e)) {
             g.debug("Player {} interacted with invalid menu {}", this.e, $$2);
             return;
@@ -552,7 +552,7 @@ public class ali extends alf implements aaw, all, su {
    @Override
    public void a(abo $$0) {
       int $$1 = $$0.e();
-      if (cbm.d($$1) || $$1 == 40) {
+      if (cbl.d($$1) || $$1 == 40) {
          List<String> $$2 = Lists.newArrayList();
          Optional<String> $$3 = $$0.d();
          $$3.ifPresent($$2::add);
@@ -563,16 +563,16 @@ public class ali extends alf implements aaw, all, su {
    }
 
    private void a(List<ala> $$0, int $$1) {
-      ciy $$2 = this.e.fQ().a($$1);
-      if ($$2.a(cjb.tg)) {
+      cix $$2 = this.e.fQ().a($$1);
+      if ($$2.a(cja.tg)) {
          this.a($$0, UnaryOperator.identity(), $$2);
       }
    }
 
    private void a(ala $$0, List<ala> $$1, int $$2) {
-      ciy $$3 = this.e.fQ().a($$2);
-      if ($$3.a(cjb.tg)) {
-         ciy $$4 = new ciy(cjb.th);
+      cix $$3 = this.e.fQ().a($$2);
+      if ($$3.a(cja.tg)) {
+         cix $$4 = new cix(cja.th);
          qr $$5 = $$3.v();
          if ($$5 != null) {
             $$4.c($$5.h());
@@ -591,7 +591,7 @@ public class ali extends alf implements aaw, all, su {
       }
    }
 
-   private void a(List<ala> $$0, UnaryOperator<String> $$1, ciy $$2) {
+   private void a(List<ala> $$0, UnaryOperator<String> $$1, cix $$2) {
       qx $$3 = new qx();
       if (this.e.W()) {
          $$0.stream().map($$1x -> ri.a($$1.apply($$1x.b()))).forEach($$3::add);
@@ -632,7 +632,7 @@ public class ali extends alf implements aaw, all, su {
    public void a(aba $$0) {
       uz.a($$0, this, this.e.x());
       if (this.e.l(2)) {
-         dcm $$1 = this.e.dK().c_($$0.d());
+         dcl $$1 = this.e.dK().c_($$0.d());
          qr $$2 = $$1 != null ? $$1.o() : null;
          this.e.c.b(new aam($$0.a(), $$2));
       }
@@ -686,7 +686,7 @@ public class ali extends alf implements aaw, all, su {
                         $$15 = 1;
                      }
 
-                     if (!this.e.L() && (!this.e.dK().X().b(cpi.s) || !this.e.fu())) {
+                     if (!this.e.L() && (!this.e.dK().X().b(cph.s) || !this.e.fu())) {
                         float $$16 = this.e.fu() ? 300.0F : 100.0F;
                         if ($$14 - $$13 > (double)($$16 * (float)$$15) && !this.i()) {
                            g.warn("{} moved too quickly! {},{},{}", new Object[]{this.e.ab().getString(), $$10, $$11, $$12});
@@ -695,7 +695,7 @@ public class ali extends alf implements aaw, all, su {
                         }
                      }
 
-                     egz $$17 = this.e.cG();
+                     egy $$17 = this.e.cG();
                      $$10 = $$2 - this.r;
                      $$11 = $$3 - this.s;
                      $$12 = $$4 - this.t;
@@ -705,7 +705,7 @@ public class ali extends alf implements aaw, all, su {
                      }
 
                      boolean $$19 = this.e.R;
-                     this.e.a(bje.b, new ehe($$10, $$11, $$12));
+                     this.e.a(bje.b, new ehd($$10, $$11, $$12));
                      $$10 = $$2 - this.e.dp();
                      $$11 = $$3 - this.e.dr();
                      if ($$11 > -0.5 || $$11 < 0.5) {
@@ -715,7 +715,7 @@ public class ali extends alf implements aaw, all, su {
                      $$12 = $$4 - this.e.dv();
                      $$14 = $$10 * $$10 + $$11 * $$11 + $$12 * $$12;
                      boolean $$21 = false;
-                     if (!this.e.L() && $$14 > 0.0625 && !this.e.fB() && !this.e.e.e() && this.e.e.b() != cpj.d) {
+                     if (!this.e.L() && $$14 > 0.0625 && !this.e.fB() && !this.e.e.e() && this.e.e.b() != cpi.d) {
                         $$21 = true;
                         g.warn("{} moved wrongly!", this.e.ab().getString());
                      }
@@ -724,7 +724,7 @@ public class ali extends alf implements aaw, all, su {
                         this.e.a($$2, $$3, $$4, $$5, $$6);
                         this.E = $$11 >= -0.03125
                            && !$$19
-                           && this.e.e.b() != cpj.d
+                           && this.e.e.b() != cpi.d
                            && !this.b.Z()
                            && !this.e.fR().c
                            && !this.e.a(bhx.y)
@@ -733,7 +733,7 @@ public class ali extends alf implements aaw, all, su {
                            && this.a((bii)this.e);
                         this.e.x().k().a(this.e);
                         this.e.a(this.e.dp() - $$7, this.e.dr() - $$8, this.e.dv() - $$9, $$0.a());
-                        this.e.a($$0.a(), new ehe(this.e.dp() - $$7, this.e.dr() - $$8, this.e.dv() - $$9));
+                        this.e.a($$0.a(), new ehd(this.e.dp() - $$7, this.e.dr() - $$8, this.e.dv() - $$9));
                         if ($$18) {
                            this.e.n();
                         }
@@ -753,13 +753,13 @@ public class ali extends alf implements aaw, all, su {
       }
    }
 
-   private boolean a(cpp $$0, egz $$1, double $$2, double $$3, double $$4) {
-      egz $$5 = this.e.cG().d($$2 - this.e.dp(), $$3 - this.e.dr(), $$4 - this.e.dv());
-      Iterable<ehx> $$6 = $$0.d(this.e, $$5.h(1.0E-5F));
-      ehx $$7 = ehu.a($$1.h(1.0E-5F));
+   private boolean a(cpo $$0, egy $$1, double $$2, double $$3, double $$4) {
+      egy $$5 = this.e.cG().d($$2 - this.e.dp(), $$3 - this.e.dr(), $$4 - this.e.dv());
+      Iterable<ehw> $$6 = $$0.d(this.e, $$5.h(1.0E-5F));
+      ehw $$7 = eht.a($$1.h(1.0E-5F));
 
-      for (ehx $$8 : $$6) {
-         if (!ehu.c($$8, $$7, ehi.i)) {
+      for (ehw $$8 : $$6) {
+         if (!eht.c($$8, $$7, ehh.i)) {
             return true;
          }
       }
@@ -777,7 +777,7 @@ public class ali extends alf implements aaw, all, su {
       double $$8 = $$5.contains(bjm.c) ? this.e.dv() : 0.0;
       float $$9 = $$5.contains(bjm.d) ? this.e.dA() : 0.0F;
       float $$10 = $$5.contains(bjm.e) ? this.e.dC() : 0.0F;
-      this.B = new ehe($$0, $$1, $$2);
+      this.B = new ehd($$0, $$1, $$2);
       if (++this.C == Integer.MAX_VALUE) {
          this.C = 0;
       }
@@ -796,7 +796,7 @@ public class ali extends alf implements aaw, all, su {
       switch ($$2) {
          case g:
             if (!this.e.G_()) {
-               ciy $$3 = this.e.b(bgp.b);
+               cix $$3 = this.e.b(bgp.b);
                this.e.a(bgp.b, this.e.b(bgp.a));
                this.e.a(bgp.a, $$3);
                this.e.fr();
@@ -829,12 +829,12 @@ public class ali extends alf implements aaw, all, su {
       }
    }
 
-   private static boolean a(akl $$0, ciy $$1) {
+   private static boolean a(akl $$0, cix $$1) {
       if ($$1.b()) {
          return false;
       } else {
-         cit $$2 = $$1.d();
-         return ($$2 instanceof cgr || $$2 instanceof cgz) && !$$0.gl().a($$2);
+         cis $$2 = $$1.d();
+         return ($$2 instanceof cgq || $$2 instanceof cgy) && !$$0.gl().a($$2);
       }
    }
 
@@ -844,14 +844,14 @@ public class ali extends alf implements aaw, all, su {
       this.e.c.a($$0.e());
       akk $$1 = this.e.x();
       bgp $$2 = $$0.a();
-      ciy $$3 = this.e.b($$2);
+      cix $$3 = this.e.b($$2);
       if ($$3.a($$1.G())) {
-         eha $$4 = $$0.d();
-         ehe $$5 = $$4.e();
+         egz $$4 = $$0.d();
+         ehd $$5 = $$4.e();
          gu $$6 = $$4.a();
-         ehe $$7 = ehe.b($$6);
+         ehd $$7 = ehd.b($$6);
          if (!(this.e.bp().g($$7) > d)) {
-            ehe $$8 = $$5.d($$7);
+            ehd $$8 = $$5.d($$7);
             double $$9 = 1.0000001;
             if (Math.abs($$8.a()) < 1.0000001 && Math.abs($$8.b()) < 1.0000001 && Math.abs($$8.c()) < 1.0000001) {
                ha $$10 = $$4.b();
@@ -887,7 +887,7 @@ public class ali extends alf implements aaw, all, su {
       this.a($$0.d());
       akk $$1 = this.e.x();
       bgp $$2 = $$0.a();
-      ciy $$3 = this.e.b($$2);
+      cix $$3 = this.e.b($$2);
       this.e.D();
       if (!$$3.b() && $$3.a($$1.G())) {
          bgq $$4 = this.e.e.a(this.e, $$1, $$3, $$2);
@@ -914,7 +914,7 @@ public class ali extends alf implements aaw, all, su {
    @Override
    public void a(abv $$0) {
       uz.a($$0, this, this.e.x());
-      if (this.e.cZ() instanceof cdg $$2) {
+      if (this.e.cZ() instanceof cdf $$2) {
          $$2.a($$0.a(), $$0.d());
       }
    }
@@ -946,7 +946,7 @@ public class ali extends alf implements aaw, all, su {
    @Override
    public void a(aci $$0) {
       uz.a($$0, this, this.e.x());
-      if ($$0.a() >= 0 && $$0.a() < cbm.g()) {
+      if ($$0.a() >= 0 && $$0.a() < cbl.g()) {
          if (this.e.fQ().l != $$0.a() && this.e.fm() == bgp.a) {
             this.e.fr();
          }
@@ -975,7 +975,7 @@ public class ali extends alf implements aaw, all, su {
                }
 
                CompletableFuture<ala> $$5 = this.a($$2.b());
-               CompletableFuture<tf> $$6 = this.b.be().decorate(this.e, $$2.c());
+               CompletableFuture<tf> $$6 = this.b.bd().decorate(this.e, $$2.c());
                this.P.append($$3 -> CompletableFuture.allOf($$5, $$6).thenAcceptAsync($$3x -> {
                      tu $$4x = $$2.a($$6.join()).a($$5.join().e());
                      this.b($$4x);
@@ -1048,7 +1048,7 @@ public class ali extends alf implements aaw, all, su {
          return Optional.empty();
       } else {
          Optional<tl> $$3 = this.a($$2);
-         if (this.e.A() == cbl.c) {
+         if (this.e.A() == cbk.c) {
             this.b(new aak(tf.c("chat.disabled.options").a(n.m), false));
             return Optional.empty();
          } else {
@@ -1229,13 +1229,13 @@ public class ali extends alf implements aaw, all, su {
             return;
          }
 
-         egz $$3 = $$2.cG();
+         egy $$3 = $$2.cG();
          if ($$3.e(this.e.bp()) < d) {
             $$0.a(new abq.c() {
                private void a(bgp $$0, ali.a $$1x) {
-                  ciy $$2 = ali.this.e.b($$0);
+                  cix $$2 = ali.this.e.b($$0);
                   if ($$2.a($$1.G())) {
-                     ciy $$3 = $$2.p();
+                     cix $$3 = $$2.p();
                      bgq $$4 = $$1.run(ali.this.e, $$2, $$0);
                      if ($$4.a()) {
                         ai.Q.a(ali.this.e, $$3, $$2);
@@ -1248,18 +1248,18 @@ public class ali extends alf implements aaw, all, su {
 
                @Override
                public void a(bgp $$0) {
-                  this.a($$0, cbn::a);
+                  this.a($$0, cbm::a);
                }
 
                @Override
-               public void a(bgp $$0, ehe $$1x) {
+               public void a(bgp $$0, ehd $$1x) {
                   this.a($$0, ($$1xxx, $$2xx, $$3) -> $$2xx.a($$1xxx, $$1, $$3));
                }
 
                @Override
                public void a() {
-                  if (!($$2 instanceof byg) && !($$2 instanceof bio) && !($$2 instanceof cbt) && $$2 != ali.this.e) {
-                     ciy $$0 = ali.this.e.b(bgp.a);
+                  if (!($$2 instanceof byf) && !($$2 instanceof bio) && !($$2 instanceof cbs) && $$2 != ali.this.e) {
+                     cix $$0 = ali.this.e.b(bgp.a);
                      if ($$0.a($$1.G())) {
                         ali.this.e.d($$2);
                      }
@@ -1283,7 +1283,7 @@ public class ali extends alf implements aaw, all, su {
             if (this.e.f) {
                this.e.f = false;
                this.e = this.b.ac().a(this.e, true);
-               ai.v.a(this.e, cpm.j, cpm.h);
+               ai.v.a(this.e, cpl.j, cpl.h);
             } else {
                if (this.e.et() > 0.0F) {
                   return;
@@ -1291,8 +1291,8 @@ public class ali extends alf implements aaw, all, su {
 
                this.e = this.b.ac().a(this.e, false);
                if (this.b.h()) {
-                  this.e.a(cpj.d);
-                  this.e.dK().X().a(cpi.q).a(false, this.b);
+                  this.e.a(cpi.d);
+                  this.e.dK().X().a(cph.q).a(false, this.b);
                }
             }
             break;
@@ -1327,8 +1327,8 @@ public class ali extends alf implements aaw, all, su {
                ObjectIterator var4 = Int2ObjectMaps.fastIterable($$0.g()).iterator();
 
                while (var4.hasNext()) {
-                  Entry<ciy> $$3 = (Entry<ciy>)var4.next();
-                  this.e.bQ.b($$3.getIntKey(), (ciy)$$3.getValue());
+                  Entry<cix> $$3 = (Entry<cix>)var4.next();
+                  this.e.bQ.b($$3.getIntKey(), (cix)$$3.getValue());
                }
 
                this.e.bQ.a($$0.f());
@@ -1347,11 +1347,11 @@ public class ali extends alf implements aaw, all, su {
    public void a(abx $$0) {
       uz.a($$0, this, this.e.x());
       this.e.D();
-      if (!this.e.G_() && this.e.bQ.j == $$0.a() && this.e.bQ instanceof cfo) {
+      if (!this.e.G_() && this.e.bQ.j == $$0.a() && this.e.bQ instanceof cfn) {
          if (!this.e.bQ.a(this.e)) {
             g.debug("Player {} interacted with invalid menu {}", this.e, this.e.bQ);
          } else {
-            this.b.aE().a($$0.d()).ifPresent($$1 -> ((cfo)this.e.bQ).a($$0.e(), (cmb<?>)$$1, this.e));
+            this.b.aE().a($$0.d()).ifPresent($$1 -> ((cfn)this.e.bQ).a($$0.e(), (cma<?>)$$1, this.e));
          }
       }
    }
@@ -1377,16 +1377,16 @@ public class ali extends alf implements aaw, all, su {
       uz.a($$0, this, this.e.x());
       if (this.e.e.e()) {
          boolean $$1 = $$0.a() < 0;
-         ciy $$2 = $$0.d();
+         cix $$2 = $$0.d();
          if (!$$2.a(this.e.dK().G())) {
             return;
          }
 
-         qr $$3 = cgr.a($$2);
+         qr $$3 = cgq.a($$2);
          if (!$$2.b() && $$3 != null && $$3.e("x") && $$3.e("y") && $$3.e("z")) {
-            gu $$4 = dcm.c($$3);
+            gu $$4 = dcl.c($$3);
             if (this.e.dK().o($$4)) {
-               dcm $$5 = this.e.dK().c_($$4);
+               dcl $$5 = this.e.dK().c_($$4);
                if ($$5 != null) {
                   $$5.e($$2);
                }
@@ -1416,7 +1416,7 @@ public class ali extends alf implements aaw, all, su {
       akk $$2 = this.e.x();
       gu $$3 = $$0.a();
       if ($$2.A($$3)) {
-         if (!($$2.c_($$3) instanceof ddu $$5)) {
+         if (!($$2.c_($$3) instanceof ddt $$5)) {
             return;
          }
 
@@ -1456,11 +1456,11 @@ public class ali extends alf implements aaw, all, su {
    public void a(abf $$0) {
       uz.a($$0, this, this.e.x());
       tv.a $$1 = $$0.a();
-      cbq.a $$2 = this.L != null ? this.L.d().b() : null;
-      cbq.a $$3 = $$1.b();
+      cbp.a $$2 = this.L != null ? this.L.d().b() : null;
+      cbp.a $$3 = $$1.b();
       if (!Objects.equals($$2, $$3)) {
          if ($$2 != null && $$3.b().isBefore($$2.b())) {
-            this.b(cbq.a);
+            this.b(cbp.a);
          } else {
             try {
                arz $$4 = this.b.an();
@@ -1470,7 +1470,7 @@ public class ali extends alf implements aaw, all, su {
                }
 
                this.a($$1.a(this.e.fP(), $$4));
-            } catch (cbq.b var6) {
+            } catch (cbp.b var6) {
                g.error("Failed to validate profile key: {}", var6.getMessage());
                this.b(var6.b());
             }

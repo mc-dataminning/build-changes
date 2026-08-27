@@ -1,18 +1,45 @@
-public class frs extends ftu<bul, fdu<bul>> {
-   private static final aer a = new aer("textures/entity/bee/bee_angry.png");
-   private static final aer i = new aer("textures/entity/bee/bee_angry_nectar.png");
-   private static final aer j = new aer("textures/entity/bee/bee.png");
-   private static final aer k = new aer("textures/entity/bee/bee_nectar.png");
+import com.google.common.collect.Lists;
+import java.util.List;
 
-   public frs(fso.a $$0) {
-      super($$0, new fdu<>($$0.a(fhm.j)), 0.4F);
+public class frs implements frd.a {
+   private final List<gu> a = Lists.newArrayList();
+   private final List<Float> b = Lists.newArrayList();
+   private final List<Float> c = Lists.newArrayList();
+   private final List<Float> d = Lists.newArrayList();
+   private final List<Float> e = Lists.newArrayList();
+   private final List<Float> f = Lists.newArrayList();
+
+   public void a(gu $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a.add($$0);
+      this.b.add($$1);
+      this.c.add($$5);
+      this.d.add($$2);
+      this.e.add($$3);
+      this.f.add($$4);
    }
 
-   public aer a(bul $$0) {
-      if ($$0.S_()) {
-         return $$0.gj() ? i : a;
-      } else {
-         return $$0.gj() ? k : j;
+   @Override
+   public void a(elf $$0, fnu $$1, double $$2, double $$3, double $$4) {
+      elj $$5 = $$1.getBuffer(foc.z());
+
+      for (int $$6 = 0; $$6 < this.a.size(); $$6++) {
+         gu $$7 = this.a.get($$6);
+         Float $$8 = this.b.get($$6);
+         float $$9 = $$8 / 2.0F;
+         fns.b(
+            $$0,
+            $$5,
+            (double)((float)$$7.u() + 0.5F - $$9) - $$2,
+            (double)((float)$$7.v() + 0.5F - $$9) - $$3,
+            (double)((float)$$7.w() + 0.5F - $$9) - $$4,
+            (double)((float)$$7.u() + 0.5F + $$9) - $$2,
+            (double)((float)$$7.v() + 0.5F + $$9) - $$3,
+            (double)((float)$$7.w() + 0.5F + $$9) - $$4,
+            this.d.get($$6),
+            this.e.get($$6),
+            this.f.get($$6),
+            this.c.get($$6)
+         );
       }
    }
 }

@@ -3,15 +3,15 @@ import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
 public class lw {
-   private final cly a;
-   private final cly b;
-   private final cly c;
+   private final clx a;
+   private final clx b;
+   private final clx c;
    private final lq d;
-   private final cit e;
+   private final cis e;
    private final ae.a f = ae.a.b();
-   private final cmd<?> g;
+   private final cmc<?> g;
 
-   public lw(cmd<?> $$0, cly $$1, cly $$2, cly $$3, lq $$4, cit $$5) {
+   public lw(cmc<?> $$0, clx $$1, clx $$2, clx $$3, lq $$4, cis $$5) {
       this.d = $$4;
       this.g = $$0;
       this.a = $$1;
@@ -20,8 +20,8 @@ public class lw {
       this.e = $$5;
    }
 
-   public static lw a(cly $$0, cly $$1, cly $$2, lq $$3, cit $$4) {
-      return new lw(cmd.u, $$0, $$1, $$2, $$3, $$4);
+   public static lw a(clx $$0, clx $$1, clx $$2, lq $$3, cis $$4) {
+      return new lw(cmc.u, $$0, $$1, $$2, $$3, $$4);
    }
 
    public lw a(String $$0, am $$1) {
@@ -45,7 +45,7 @@ public class lw {
       }
    }
 
-   public static record a(aer a, cmd<?> b, cly c, cly d, cly e, cit f, ae.a g, aer h) implements lo {
+   public static record a(aer a, cmc<?> b, clx c, clx d, clx e, cis f, ae.a g, aer h) implements lo {
       @Override
       public void a(JsonObject $$0) {
          $$0.add("template", this.c.c());
@@ -62,7 +62,7 @@ public class lw {
       }
 
       @Override
-      public cmd<?> c() {
+      public cmc<?> c() {
          return this.b;
       }
 
@@ -82,23 +82,23 @@ public class lw {
          return this.a;
       }
 
-      public cmd<?> g() {
+      public cmc<?> g() {
          return this.b;
       }
 
-      public cly h() {
+      public clx h() {
          return this.c;
       }
 
-      public cly i() {
+      public clx i() {
          return this.d;
       }
 
-      public cly j() {
+      public clx j() {
          return this.e;
       }
 
-      public cit k() {
+      public cis k() {
          return this.f;
       }
 

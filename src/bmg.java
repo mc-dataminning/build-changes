@@ -1,29 +1,71 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class bmg extends bkq<bja> {
-   private final bfv c;
-   private final float d;
-   private final float e;
-   private final float f;
+public class bmg {
+   private static final int a = 10;
+   private static final int b = 7;
+   private static final int[][] c = new int[][]{{1, 1}, {3, 3}, {5, 5}, {6, 5}, {7, 7}, {10, 7}};
 
-   public bmg(bfv $$0, float $$1, float $$2, float $$3) {
-      super(ImmutableMap.of(bsa.n, bsb.b, bsa.P, bsb.b));
-      if ($$2 > $$3) {
-         throw new IllegalArgumentException("Minimum pitch is larger than maximum pitch! " + $$2 + " > " + $$3);
-      } else {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3 - $$2;
-      }
+   public static blz<bjh> a(float $$0) {
+      return a($$0, true);
    }
 
-   protected void a(akk $$0, bja $$1, long $$2) {
-      aru $$3 = $$1.ee();
-      float $$4 = arp.a($$3.i() * this.f + this.e, -90.0F, 90.0F);
-      float $$5 = arp.g($$1.dA() + 2.0F * $$3.i() * this.d - this.d);
-      ehe $$6 = ehe.a($$4, $$5);
-      $$1.dM().a(bsa.n, new bkt($$1.bp().e($$6)));
-      $$1.dM().a(bsa.P, this.c.a($$3));
+   public static blz<bjh> a(float $$0, boolean $$1) {
+      return a($$0, $$0x -> btr.a($$0x, 10, 7), $$1 ? $$0x -> true : $$0x -> !$$0x.ba());
+   }
+
+   public static bkq<bjh> a(float $$0, int $$1, int $$2) {
+      return a($$0, $$2x -> btr.a($$2x, $$1, $$2), $$0x -> true);
+   }
+
+   public static bkq<bjh> b(float $$0) {
+      return a($$0, $$0x -> a($$0x, 10, 7), $$0x -> true);
+   }
+
+   public static bkq<bjh> c(float $$0) {
+      return a($$0, bmg::a, bii::ba);
+   }
+
+   private static blz<bjh> a(float $$0, Function<bjh, ehd> $$1, Predicate<bjh> $$2) {
+      return bob.a((Function<bob.b<bjh>, ? extends App<bob.c<bjh>, boe<bjh>>>)($$3 -> $$3.group($$3.c(brz.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
+               if (!$$2.test($$5)) {
+                  return false;
+               } else {
+                  Optional<ehd> $$7 = Optional.ofNullable($$1.apply($$5));
+                  $$3x.a($$7.map($$1xxxx -> new bsc($$1xxxx, $$0, 0)));
+                  return true;
+               }
+            })));
+   }
+
+   @Nullable
+   private static ehd a(bjh $$0) {
+      ehd $$1 = null;
+      ehd $$2 = null;
+
+      for (int[] $$3 : c) {
+         if ($$1 == null) {
+            $$2 = bkr.a($$0, $$3[0], $$3[1]);
+         } else {
+            $$2 = $$0.di().e($$0.di().a($$1).d().d((double)$$3[0], (double)$$3[1], (double)$$3[0]));
+         }
+
+         if ($$2 == null || $$0.dK().b_(gu.a($$2)).c()) {
+            return $$1;
+         }
+
+         $$1 = $$2;
+      }
+
+      return $$2;
+   }
+
+   @Nullable
+   private static ehd a(bjh $$0, int $$1, int $$2) {
+      ehd $$3 = $$0.f(0.0F);
+      return btm.a($$0, $$1, $$2, -2, $$3.c, $$3.e, (float) (Math.PI / 2));
    }
 }

@@ -1,40 +1,44 @@
-public class ckg extends cit {
-   public static final int a = 1200;
-   public static final float b = 0.1F;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-   public ckg(cit.a $$0) {
-      super($$0);
+public class ckg extends cgq {
+   protected final csl d;
+   private final ha c;
+
+   public ckg(csl $$0, csl $$1, cis.a $$2, ha $$3) {
+      super($$0, $$2);
+      this.d = $$1;
+      this.c = $$3;
+   }
+
+   protected boolean a(cpo $$0, dez $$1, gu $$2) {
+      return $$1.a($$0, $$2);
+   }
+
+   @Nullable
+   @Override
+   protected dez c(clf $$0) {
+      dez $$1 = this.d.a($$0);
+      dez $$2 = null;
+      cpo $$3 = $$0.q();
+      gu $$4 = $$0.a();
+
+      for (ha $$5 : $$0.f()) {
+         if ($$5 != this.c.g()) {
+            dez $$6 = $$5 == this.c ? this.e().a($$0) : $$1;
+            if ($$6 != null && this.a($$3, $$6, $$4)) {
+               $$2 = $$6;
+               break;
+            }
+         }
+      }
+
+      return $$2 != null && $$3.a($$2, $$4, ehi.a()) ? $$2 : null;
    }
 
    @Override
-   public int b(ciy $$0) {
-      return 1200;
-   }
-
-   @Override
-   public ckr c(ciy $$0) {
-      return ckr.h;
-   }
-
-   @Override
-   public bgr<ciy> a(cpm $$0, cbn $$1, bgp $$2) {
-      $$1.a(aow.xf, 1.0F, 1.0F);
-      $$1.b(apg.c.b(this));
-      return cja.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public ciy a(ciy $$0, cpm $$1, biy $$2) {
-      this.a($$2);
-      return $$0;
-   }
-
-   @Override
-   public void a(ciy $$0, cpm $$1, biy $$2, int $$3) {
-      this.a($$2);
-   }
-
-   private void a(biy $$0) {
-      $$0.a(aow.xg, 1.0F, 1.0F);
+   public void a(Map<csl, cis> $$0, cis $$1) {
+      super.a($$0, $$1);
+      $$0.put(this.d, $$1);
    }
 }

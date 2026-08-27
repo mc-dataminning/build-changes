@@ -6,12 +6,12 @@ public class akp<T> {
    private final long k;
    public static final akp<asp> a = a("start", ($$0, $$1) -> 0);
    public static final akp<asp> b = a("dragon", ($$0, $$1) -> 0);
-   public static final akp<cot> c = a("player", Comparator.comparingLong(cot::a));
-   public static final akp<cot> d = a("forced", Comparator.comparingLong(cot::a));
-   public static final akp<cot> e = a("light", Comparator.comparingLong(cot::a));
+   public static final akp<cos> c = a("player", Comparator.comparingLong(cos::a));
+   public static final akp<cos> d = a("forced", Comparator.comparingLong(cos::a));
+   public static final akp<cos> e = a("light", Comparator.comparingLong(cos::a));
    public static final akp<gu> f = a("portal", hz::i, 300);
    public static final akp<Integer> g = a("post_teleport", Integer::compareTo, 5);
-   public static final akp<cot> h = a("unknown", Comparator.comparingLong(cot::a), 1);
+   public static final akp<cos> h = a("unknown", Comparator.comparingLong(cos::a), 1);
 
    public static <T> akp<T> a(String $$0, Comparator<T> $$1) {
       return new akp<>($$0, $$1, 0L);

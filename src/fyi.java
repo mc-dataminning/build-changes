@@ -1,225 +1,204 @@
-import com.google.common.collect.ImmutableList;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
+import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
 
-public class fyi<T extends fyi.a> {
-   private static final Comparator<fyi.b<?>> a = Comparator.<fyi.b<?>, Integer>comparing($$0 -> -$$0.c)
-      .thenComparing($$0 -> -$$0.b)
-      .thenComparing($$0 -> $$0.a.c());
-   private final int b;
-   private final List<fyi.b<T>> c = new ArrayList<>();
-   private final List<fyi.c<T>> d = new ArrayList<>();
-   private int e;
-   private int f;
-   private final int g;
-   private final int h;
+public class fyi extends fyn {
+   private static final Logger f = LogUtils.getLogger();
+   private static final int g = 64;
+   private static final int h = 64;
+   private static final int i = 32;
+   @Nullable
+   private final File j;
+   private final String k;
+   private final boolean l;
+   @Nullable
+   private final Runnable m;
+   @Nullable
+   private CompletableFuture<?> n;
+   private boolean o;
 
-   public fyi(int $$0, int $$1, int $$2) {
-      this.b = $$2;
-      this.g = $$0;
-      this.h = $$1;
+   public fyi(@Nullable File $$0, String $$1, aer $$2, boolean $$3, @Nullable Runnable $$4) {
+      super($$2);
+      this.j = $$0;
+      this.k = $$1;
+      this.l = $$3;
+      this.m = $$4;
    }
 
-   public int a() {
-      return this.e;
-   }
-
-   public int b() {
-      return this.f;
-   }
-
-   public void a(T $$0) {
-      fyi.b<T> $$1 = new fyi.b<>($$0, this.b);
-      this.c.add($$1);
-   }
-
-   public void c() {
-      List<fyi.b<T>> $$0 = new ArrayList<>(this.c);
-      $$0.sort(a);
-
-      for (fyi.b<T> $$1 : $$0) {
-         if (!this.a($$1)) {
-            throw new fyj($$1.a, $$0.stream().map($$0x -> $$0x.a).collect(ImmutableList.toImmutableList()));
-         }
-      }
-   }
-
-   public void a(fyi.d<T> $$0) {
-      for (fyi.c<T> $$1 : this.d) {
-         $$1.a($$0);
-      }
-   }
-
-   static int a(int $$0, int $$1) {
-      return ($$0 >> $$1) + (($$0 & (1 << $$1) - 1) == 0 ? 0 : 1) << $$1;
-   }
-
-   private boolean a(fyi.b<T> $$0) {
-      for (fyi.c<T> $$1 : this.d) {
-         if ($$1.a($$0)) {
-            return true;
-         }
+   private void a(ekg $$0) {
+      if (this.m != null) {
+         this.m.run();
       }
 
-      return this.b($$0);
-   }
-
-   private boolean b(fyi.b<T> $$0) {
-      int $$1 = arp.c(this.e);
-      int $$2 = arp.c(this.f);
-      int $$3 = arp.c(this.e + $$0.b);
-      int $$4 = arp.c(this.f + $$0.c);
-      boolean $$5 = $$3 <= this.g;
-      boolean $$6 = $$4 <= this.h;
-      if (!$$5 && !$$6) {
-         return false;
-      } else {
-         boolean $$7 = $$5 && $$1 != $$3;
-         boolean $$8 = $$6 && $$2 != $$4;
-         boolean $$9;
-         if ($$7 ^ $$8) {
-            $$9 = $$7;
+      eql.O().execute(() -> {
+         this.o = true;
+         if (!RenderSystem.isOnRenderThread()) {
+            RenderSystem.recordRenderCall(() -> this.b($$0));
          } else {
-            $$9 = $$5 && $$1 <= $$2;
+            this.b($$0);
          }
+      });
+   }
 
-         fyi.c<T> $$11;
-         if ($$9) {
-            if (this.f == 0) {
-               this.f = $$4;
+   private void b(ekg $$0) {
+      TextureUtil.prepareImage(this.a(), $$0.a(), $$0.b());
+      $$0.a(0, 0, 0, true);
+   }
+
+   @Override
+   public void a(anm $$0) throws IOException {
+      eql.O().execute(() -> {
+         if (!this.o) {
+            try {
+               super.a($$0);
+            } catch (IOException var3x) {
+               f.warn("Failed to load texture: {}", this.e, var3x);
             }
 
-            $$11 = new fyi.c<>(this.e, 0, $$3 - this.e, this.f);
-            this.e = $$3;
+            this.o = true;
+         }
+      });
+      if (this.n == null) {
+         ekg $$2;
+         if (this.j != null && this.j.isFile()) {
+            f.debug("Loading http texture from local cache ({})", this.j);
+            FileInputStream $$1 = new FileInputStream(this.j);
+            $$2 = this.a($$1);
          } else {
-            $$11 = new fyi.c<>(0, this.f, this.e, $$4 - this.f);
-            this.f = $$4;
+            $$2 = null;
          }
 
-         $$11.a($$0);
-         this.d.add($$11);
-         return true;
-      }
-   }
-
-   public interface a {
-      int a();
-
-      int b();
-
-      aer c();
-   }
-
-   static record b<T extends fyi.a>(T a, int b, int c) {
-
-      public b(T $$0, int $$1) {
-         this($$0, fyi.a($$0.a(), $$1), fyi.a($$0.b(), $$1));
-      }
-   }
-
-   public static class c<T extends fyi.a> {
-      private final int a;
-      private final int b;
-      private final int c;
-      private final int d;
-      @Nullable
-      private List<fyi.c<T>> e;
-      @Nullable
-      private fyi.b<T> f;
-
-      public c(int $$0, int $$1, int $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      public int a() {
-         return this.a;
-      }
-
-      public int b() {
-         return this.b;
-      }
-
-      public boolean a(fyi.b<T> $$0) {
-         if (this.f != null) {
-            return false;
+         if ($$2 != null) {
+            this.a($$2);
          } else {
-            int $$1 = $$0.b;
-            int $$2 = $$0.c;
-            if ($$1 <= this.c && $$2 <= this.d) {
-               if ($$1 == this.c && $$2 == this.d) {
-                  this.f = $$0;
-                  return true;
-               } else {
-                  if (this.e == null) {
-                     this.e = new ArrayList<>(1);
-                     this.e.add(new fyi.c<>(this.a, this.b, $$1, $$2));
-                     int $$3 = this.c - $$1;
-                     int $$4 = this.d - $$2;
-                     if ($$4 > 0 && $$3 > 0) {
-                        int $$5 = Math.max(this.d, $$3);
-                        int $$6 = Math.max(this.c, $$4);
-                        if ($$5 >= $$6) {
-                           this.e.add(new fyi.c<>(this.a, this.b + $$2, $$1, $$4));
-                           this.e.add(new fyi.c<>(this.a + $$1, this.b, $$3, this.d));
-                        } else {
-                           this.e.add(new fyi.c<>(this.a + $$1, this.b, $$3, $$2));
-                           this.e.add(new fyi.c<>(this.a, this.b + $$2, this.c, $$4));
+            this.n = CompletableFuture.runAsync(() -> {
+               HttpURLConnection $$0x = null;
+               f.debug("Downloading http texture from {} to {}", this.k, this.j);
+
+               try {
+                  $$0x = (HttpURLConnection)new URL(this.k).openConnection(eql.O().X());
+                  $$0x.setDoInput(true);
+                  $$0x.setDoOutput(false);
+                  $$0x.connect();
+                  if ($$0x.getResponseCode() / 100 == 2) {
+                     InputStream $$1x;
+                     if (this.j != null) {
+                        FileUtils.copyInputStreamToFile($$0x.getInputStream(), this.j);
+                        $$1x = new FileInputStream(this.j);
+                     } else {
+                        $$1x = $$0x.getInputStream();
+                     }
+
+                     eql.O().execute(() -> {
+                        ekg $$1xx = this.a($$1x);
+                        if ($$1xx != null) {
+                           this.a($$1xx);
                         }
-                     } else if ($$3 == 0) {
-                        this.e.add(new fyi.c<>(this.a, this.b + $$2, $$1, $$4));
-                     } else if ($$4 == 0) {
-                        this.e.add(new fyi.c<>(this.a + $$1, this.b, $$3, $$2));
-                     }
+                     });
+                     return;
                   }
-
-                  for (fyi.c<T> $$7 : this.e) {
-                     if ($$7.a($$0)) {
-                        return true;
-                     }
+               } catch (Exception var6) {
+                  f.error("Couldn't download http texture", var6);
+                  return;
+               } finally {
+                  if ($$0x != null) {
+                     $$0x.disconnect();
                   }
-
-                  return false;
                }
-            } else {
-               return false;
-            }
+            }, ac.f());
          }
-      }
-
-      public void a(fyi.d<T> $$0) {
-         if (this.f != null) {
-            $$0.load(this.f.a, this.a(), this.b());
-         } else if (this.e != null) {
-            for (fyi.c<T> $$1 : this.e) {
-               $$1.a($$0);
-            }
-         }
-      }
-
-      @Override
-      public String toString() {
-         return "Slot{originX="
-            + this.a
-            + ", originY="
-            + this.b
-            + ", width="
-            + this.c
-            + ", height="
-            + this.d
-            + ", texture="
-            + this.f
-            + ", subSlots="
-            + this.e
-            + "}";
       }
    }
 
-   public interface d<T extends fyi.a> {
-      void load(T var1, int var2, int var3);
+   @Nullable
+   private ekg a(InputStream $$0) {
+      ekg $$1 = null;
+
+      try {
+         $$1 = ekg.a($$0);
+         if (this.l) {
+            $$1 = this.c($$1);
+         }
+      } catch (Exception var4) {
+         f.warn("Error while loading the skin texture", var4);
+      }
+
+      return $$1;
+   }
+
+   @Nullable
+   private ekg c(ekg $$0) {
+      int $$1 = $$0.b();
+      int $$2 = $$0.a();
+      if ($$2 == 64 && ($$1 == 32 || $$1 == 64)) {
+         boolean $$3 = $$1 == 32;
+         if ($$3) {
+            ekg $$4 = new ekg(64, 64, true);
+            $$4.a($$0);
+            $$0.close();
+            $$0 = $$4;
+            $$4.a(0, 32, 64, 32, 0);
+            $$4.a(4, 16, 16, 32, 4, 4, true, false);
+            $$4.a(8, 16, 16, 32, 4, 4, true, false);
+            $$4.a(0, 20, 24, 32, 4, 12, true, false);
+            $$4.a(4, 20, 16, 32, 4, 12, true, false);
+            $$4.a(8, 20, 8, 32, 4, 12, true, false);
+            $$4.a(12, 20, 16, 32, 4, 12, true, false);
+            $$4.a(44, 16, -8, 32, 4, 4, true, false);
+            $$4.a(48, 16, -8, 32, 4, 4, true, false);
+            $$4.a(40, 20, 0, 32, 4, 12, true, false);
+            $$4.a(44, 20, -8, 32, 4, 12, true, false);
+            $$4.a(48, 20, -16, 32, 4, 12, true, false);
+            $$4.a(52, 20, -8, 32, 4, 12, true, false);
+         }
+
+         b($$0, 0, 0, 32, 16);
+         if ($$3) {
+            a($$0, 32, 0, 64, 32);
+         }
+
+         b($$0, 0, 16, 64, 32);
+         b($$0, 16, 48, 48, 64);
+         return $$0;
+      } else {
+         $$0.close();
+         f.warn("Discarding incorrectly sized ({}x{}) skin texture from {}", new Object[]{$$2, $$1, this.k});
+         return null;
+      }
+   }
+
+   private static void a(ekg $$0, int $$1, int $$2, int $$3, int $$4) {
+      for (int $$5 = $$1; $$5 < $$3; $$5++) {
+         for (int $$6 = $$2; $$6 < $$4; $$6++) {
+            int $$7 = $$0.a($$5, $$6);
+            if (($$7 >> 24 & 0xFF) < 128) {
+               return;
+            }
+         }
+      }
+
+      for (int $$8 = $$1; $$8 < $$3; $$8++) {
+         for (int $$9 = $$2; $$9 < $$4; $$9++) {
+            $$0.a($$8, $$9, $$0.a($$8, $$9) & 16777215);
+         }
+      }
+   }
+
+   private static void b(ekg $$0, int $$1, int $$2, int $$3, int $$4) {
+      for (int $$5 = $$1; $$5 < $$3; $$5++) {
+         for (int $$6 = $$2; $$6 < $$4; $$6++) {
+            $$0.a($$5, $$6, $$0.a($$5, $$6) | 0xFF000000);
+         }
+      }
    }
 }

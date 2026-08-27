@@ -1,13 +1,24 @@
-public abstract class fwi<T extends bii, M extends feo<T>> extends fww<T, M> {
-   public fwi(fuj<T, M> $$0) {
+public class fwi extends fwq<bym, fen<bym>> {
+   private static final aer a = new aer("textures/entity/creeper/creeper_armor.png");
+   private final fen<bym> b;
+
+   public fwi(fus<bym, fen<bym>> $$0, fho $$1) {
       super($$0);
+      this.b = new fen<>($$1.a(fhr.C));
    }
 
    @Override
-   public void a(elg $$0, fnl $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      elk $$10 = $$1.getBuffer(this.a());
-      this.c().a($$0, $$10, 15728640, fyc.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   protected float a(float $$0) {
+      return $$0 * 0.01F;
    }
 
-   public abstract fnt a();
+   @Override
+   protected aer a() {
+      return a;
+   }
+
+   @Override
+   protected fet<bym> b() {
+      return this.b;
+   }
 }

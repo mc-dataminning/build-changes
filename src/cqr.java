@@ -1,70 +1,34 @@
-public abstract class cqr {
-   public static final aeq<cqk> a = a("the_void");
-   public static final aeq<cqk> b = a("plains");
-   public static final aeq<cqk> c = a("sunflower_plains");
-   public static final aeq<cqk> d = a("snowy_plains");
-   public static final aeq<cqk> e = a("ice_spikes");
-   public static final aeq<cqk> f = a("desert");
-   public static final aeq<cqk> g = a("swamp");
-   public static final aeq<cqk> h = a("mangrove_swamp");
-   public static final aeq<cqk> i = a("forest");
-   public static final aeq<cqk> j = a("flower_forest");
-   public static final aeq<cqk> k = a("birch_forest");
-   public static final aeq<cqk> l = a("dark_forest");
-   public static final aeq<cqk> m = a("old_growth_birch_forest");
-   public static final aeq<cqk> n = a("old_growth_pine_taiga");
-   public static final aeq<cqk> o = a("old_growth_spruce_taiga");
-   public static final aeq<cqk> p = a("taiga");
-   public static final aeq<cqk> q = a("snowy_taiga");
-   public static final aeq<cqk> r = a("savanna");
-   public static final aeq<cqk> s = a("savanna_plateau");
-   public static final aeq<cqk> t = a("windswept_hills");
-   public static final aeq<cqk> u = a("windswept_gravelly_hills");
-   public static final aeq<cqk> v = a("windswept_forest");
-   public static final aeq<cqk> w = a("windswept_savanna");
-   public static final aeq<cqk> x = a("jungle");
-   public static final aeq<cqk> y = a("sparse_jungle");
-   public static final aeq<cqk> z = a("bamboo_jungle");
-   public static final aeq<cqk> A = a("badlands");
-   public static final aeq<cqk> B = a("eroded_badlands");
-   public static final aeq<cqk> C = a("wooded_badlands");
-   public static final aeq<cqk> D = a("meadow");
-   public static final aeq<cqk> E = a("cherry_grove");
-   public static final aeq<cqk> F = a("grove");
-   public static final aeq<cqk> G = a("snowy_slopes");
-   public static final aeq<cqk> H = a("frozen_peaks");
-   public static final aeq<cqk> I = a("jagged_peaks");
-   public static final aeq<cqk> J = a("stony_peaks");
-   public static final aeq<cqk> K = a("river");
-   public static final aeq<cqk> L = a("frozen_river");
-   public static final aeq<cqk> M = a("beach");
-   public static final aeq<cqk> N = a("snowy_beach");
-   public static final aeq<cqk> O = a("stony_shore");
-   public static final aeq<cqk> P = a("warm_ocean");
-   public static final aeq<cqk> Q = a("lukewarm_ocean");
-   public static final aeq<cqk> R = a("deep_lukewarm_ocean");
-   public static final aeq<cqk> S = a("ocean");
-   public static final aeq<cqk> T = a("deep_ocean");
-   public static final aeq<cqk> U = a("cold_ocean");
-   public static final aeq<cqk> V = a("deep_cold_ocean");
-   public static final aeq<cqk> W = a("frozen_ocean");
-   public static final aeq<cqk> X = a("deep_frozen_ocean");
-   public static final aeq<cqk> Y = a("mushroom_fields");
-   public static final aeq<cqk> Z = a("dripstone_caves");
-   public static final aeq<cqk> aa = a("lush_caves");
-   public static final aeq<cqk> ab = a("deep_dark");
-   public static final aeq<cqk> ac = a("nether_wastes");
-   public static final aeq<cqk> ad = a("warped_forest");
-   public static final aeq<cqk> ae = a("crimson_forest");
-   public static final aeq<cqk> af = a("soul_sand_valley");
-   public static final aeq<cqk> ag = a("basalt_deltas");
-   public static final aeq<cqk> ah = a("the_end");
-   public static final aeq<cqk> ai = a("end_highlands");
-   public static final aeq<cqk> aj = a("end_midlands");
-   public static final aeq<cqk> ak = a("small_end_islands");
-   public static final aeq<cqk> al = a("end_barrens");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-   private static aeq<cqk> a(String $$0) {
-      return aeq.a(jc.ap, new aer($$0));
+public class cqr extends cqn {
+   public static final Codec<cqr> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(cqj.d.fieldOf("biomes").forGetter($$0x -> $$0x.c), Codec.intRange(0, 62).fieldOf("scale").orElse(2).forGetter($$0x -> $$0x.e))
+            .apply($$0, cqr::new)
+   );
+   private final hi<cqj> c;
+   private final int d;
+   private final int e;
+
+   public cqr(hi<cqj> $$0, int $$1) {
+      this.c = $$0;
+      this.d = $$1 + 2;
+      this.e = $$1;
+   }
+
+   @Override
+   protected Stream<he<cqj>> b() {
+      return this.c.a();
+   }
+
+   @Override
+   protected Codec<? extends cqn> a() {
+      return b;
+   }
+
+   @Override
+   public he<cqj> getNoiseBiome(int $$0, int $$1, int $$2, cqs.f $$3) {
+      return this.c.a(Math.floorMod(($$0 >> this.d) + ($$2 >> this.d), this.c.b()));
    }
 }

@@ -1,128 +1,172 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Iterables;
-import java.util.List;
+public class fft extends ffc<buz> {
+   private static final String a = "feather";
+   private final fhs b;
+   private final fhs f;
+   private final fhs g;
+   private final fhs h;
+   private final fhs i;
+   private final fhs j;
+   private final fhs k;
+   private final fhs l;
+   private final fhs m;
 
-public class fft<T extends biy> extends ffb<T> {
-   private static final String a = "ear";
-   private static final String A = "cloak";
-   private static final String B = "left_sleeve";
-   private static final String C = "right_sleeve";
-   private static final String D = "left_pants";
-   private static final String E = "right_pants";
-   private final List<fhn> F;
-   public final fhn b;
-   public final fhn w;
-   public final fhn x;
-   public final fhn y;
-   public final fhn z;
-   private final fhn G;
-   private final fhn H;
-   private final boolean I;
-
-   public fft(fhn $$0, boolean $$1) {
-      super($$0, fnt::i);
-      this.I = $$1;
-      this.H = $$0.b("ear");
-      this.G = $$0.b("cloak");
-      this.b = $$0.b("left_sleeve");
-      this.w = $$0.b("right_sleeve");
-      this.x = $$0.b("left_pants");
-      this.y = $$0.b("right_pants");
-      this.z = $$0.b("jacket");
-      this.F = $$0.e().filter($$0x -> !$$0x.d()).collect(ImmutableList.toImmutableList());
+   public fft(fhs $$0) {
+      this.b = $$0;
+      this.f = $$0.b("body");
+      this.g = $$0.b("tail");
+      this.h = $$0.b("left_wing");
+      this.i = $$0.b("right_wing");
+      this.j = $$0.b("head");
+      this.k = this.j.b("feather");
+      this.l = $$0.b("left_leg");
+      this.m = $$0.b("right_leg");
    }
 
-   public static fhv a(fhr $$0, boolean $$1) {
-      fhv $$2 = ffb.a($$0, 0.0F);
-      fhw $$3 = $$2.a();
-      $$3.a("ear", fhs.c().a(24, 0).a(-3.0F, -6.0F, -1.0F, 6.0F, 6.0F, 1.0F, $$0), fhp.a);
-      $$3.a("cloak", fhs.c().a(0, 0).a(-5.0F, 0.0F, -1.0F, 10.0F, 16.0F, 1.0F, $$0, 1.0F, 0.5F), fhp.a(0.0F, 0.0F, 0.0F));
-      float $$4 = 0.25F;
-      if ($$1) {
-         $$3.a("left_arm", fhs.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, $$0), fhp.a(5.0F, 2.5F, 0.0F));
-         $$3.a("right_arm", fhs.c().a(40, 16).a(-2.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, $$0), fhp.a(-5.0F, 2.5F, 0.0F));
-         $$3.a("left_sleeve", fhs.c().a(48, 48).a(-1.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, $$0.a(0.25F)), fhp.a(5.0F, 2.5F, 0.0F));
-         $$3.a("right_sleeve", fhs.c().a(40, 32).a(-2.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, $$0.a(0.25F)), fhp.a(-5.0F, 2.5F, 0.0F));
-      } else {
-         $$3.a("left_arm", fhs.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), fhp.a(5.0F, 2.0F, 0.0F));
-         $$3.a("left_sleeve", fhs.c().a(48, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.25F)), fhp.a(5.0F, 2.0F, 0.0F));
-         $$3.a("right_sleeve", fhs.c().a(40, 32).a(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.25F)), fhp.a(-5.0F, 2.0F, 0.0F));
-      }
-
-      $$3.a("left_leg", fhs.c().a(16, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), fhp.a(1.9F, 12.0F, 0.0F));
-      $$3.a("left_pants", fhs.c().a(0, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.25F)), fhp.a(1.9F, 12.0F, 0.0F));
-      $$3.a("right_pants", fhs.c().a(0, 32).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.25F)), fhp.a(-1.9F, 12.0F, 0.0F));
-      $$3.a("jacket", fhs.c().a(16, 32).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0.a(0.25F)), fhp.a);
-      return $$2;
+   public static fhy b() {
+      fia $$0 = new fia();
+      fib $$1 = $$0.a();
+      $$1.a("body", fhx.c().a(2, 8).a(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F), fhu.a(0.0F, 16.5F, -3.0F));
+      $$1.a("tail", fhx.c().a(22, 1).a(-1.5F, -1.0F, -1.0F, 3.0F, 4.0F, 1.0F), fhu.a(0.0F, 21.07F, 1.16F));
+      $$1.a("left_wing", fhx.c().a(19, 8).a(-0.5F, 0.0F, -1.5F, 1.0F, 5.0F, 3.0F), fhu.a(1.5F, 16.94F, -2.76F));
+      $$1.a("right_wing", fhx.c().a(19, 8).a(-0.5F, 0.0F, -1.5F, 1.0F, 5.0F, 3.0F), fhu.a(-1.5F, 16.94F, -2.76F));
+      fib $$2 = $$1.a("head", fhx.c().a(2, 2).a(-1.0F, -1.5F, -1.0F, 2.0F, 3.0F, 2.0F), fhu.a(0.0F, 15.69F, -2.76F));
+      $$2.a("head2", fhx.c().a(10, 0).a(-1.0F, -0.5F, -2.0F, 2.0F, 1.0F, 4.0F), fhu.a(0.0F, -2.0F, -1.0F));
+      $$2.a("beak1", fhx.c().a(11, 7).a(-0.5F, -1.0F, -0.5F, 1.0F, 2.0F, 1.0F), fhu.a(0.0F, -0.5F, -1.5F));
+      $$2.a("beak2", fhx.c().a(16, 7).a(-0.5F, 0.0F, -0.5F, 1.0F, 2.0F, 1.0F), fhu.a(0.0F, -1.75F, -2.45F));
+      $$2.a("feather", fhx.c().a(2, 18).a(0.0F, -4.0F, -2.0F, 0.0F, 5.0F, 4.0F), fhu.a(0.0F, -2.15F, 0.15F));
+      fhx $$3 = fhx.c().a(14, 18).a(-0.5F, 0.0F, -0.5F, 1.0F, 2.0F, 1.0F);
+      $$1.a("left_leg", $$3, fhu.a(1.0F, 22.0F, -1.05F));
+      $$1.a("right_leg", $$3, fhu.a(-1.0F, 22.0F, -1.05F));
+      return fhy.a($$0, 32, 32);
    }
 
    @Override
-   protected Iterable<fhn> b() {
-      return Iterables.concat(super.b(), ImmutableList.of(this.x, this.y, this.b, this.w, this.z));
+   public fhs a() {
+      return this.b;
    }
 
-   public void a(elg $$0, elk $$1, int $$2, int $$3) {
-      this.H.a(this.k);
-      this.H.b = 0.0F;
-      this.H.c = 0.0F;
-      this.H.a($$0, $$1, $$2, $$3);
+   public void a(buz $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a(a($$0), $$0.ah, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public void b(elg $$0, elk $$1, int $$2, int $$3) {
-      this.G.a($$0, $$1, $$2, $$3);
+   public void a(buz $$0, float $$1, float $$2, float $$3) {
+      this.a(a($$0));
    }
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      this.x.a(this.q);
-      this.y.a(this.p);
-      this.b.a(this.o);
-      this.w.a(this.n);
-      this.z.a(this.m);
-      if ($$0.c(bin.e).b()) {
-         if ($$0.bW()) {
-            this.G.d = 1.4F;
-            this.G.c = 1.85F;
-         } else {
-            this.G.d = 0.0F;
-            this.G.c = 0.0F;
-         }
-      } else if ($$0.bW()) {
-         this.G.d = 0.3F;
-         this.G.c = 0.8F;
-      } else {
-         this.G.d = -1.1F;
-         this.G.c = -0.85F;
-      }
+   public void a(elf $$0, elj $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7, int $$8) {
+      this.a(fft.a.e);
+      this.a(fft.a.e, $$8, $$4, $$5, 0.0F, $$6, $$7);
+      this.b.a($$0, $$1, $$2, $$3);
    }
 
-   @Override
-   public void d_(boolean $$0) {
-      super.d_($$0);
-      this.b.k = $$0;
-      this.w.k = $$0;
-      this.x.k = $$0;
-      this.y.k = $$0;
-      this.z.k = $$0;
-      this.G.k = $$0;
-      this.H.k = $$0;
-   }
-
-   @Override
-   public void a(bis $$0, elg $$1) {
-      fhn $$2 = this.a($$0);
-      if (this.I) {
-         float $$3 = 0.5F * (float)($$0 == bis.b ? 1 : -1);
-         $$2.b += $$3;
-         $$2.a($$1);
-         $$2.b -= $$3;
-      } else {
-         $$2.a($$1);
+   private void a(fft.a $$0, int $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
+      this.j.e = $$6 * (float) (Math.PI / 180.0);
+      this.j.f = $$5 * (float) (Math.PI / 180.0);
+      this.j.g = 0.0F;
+      this.j.b = 0.0F;
+      this.f.b = 0.0F;
+      this.g.b = 0.0F;
+      this.i.b = -1.5F;
+      this.h.b = 1.5F;
+      switch ($$0) {
+         case c:
+            break;
+         case d:
+            float $$7 = arp.b((float)$$1);
+            float $$8 = arp.a((float)$$1);
+            this.j.b = $$7;
+            this.j.c = 15.69F + $$8;
+            this.j.e = 0.0F;
+            this.j.f = 0.0F;
+            this.j.g = arp.a((float)$$1) * 0.4F;
+            this.f.b = $$7;
+            this.f.c = 16.5F + $$8;
+            this.h.g = -0.0873F - $$4;
+            this.h.b = 1.5F + $$7;
+            this.h.c = 16.94F + $$8;
+            this.i.g = 0.0873F + $$4;
+            this.i.b = -1.5F + $$7;
+            this.i.c = 16.94F + $$8;
+            this.g.b = $$7;
+            this.g.c = 21.07F + $$8;
+            break;
+         case b:
+            this.l.e = this.l.e + arp.b($$2 * 0.6662F) * 1.4F * $$3;
+            this.m.e = this.m.e + arp.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$3;
+         case a:
+         case e:
+         default:
+            float $$9 = $$4 * 0.3F;
+            this.j.c = 15.69F + $$9;
+            this.g.e = 1.015F + arp.b($$2 * 0.6662F) * 0.3F * $$3;
+            this.g.c = 21.07F + $$9;
+            this.f.c = 16.5F + $$9;
+            this.h.g = -0.0873F - $$4;
+            this.h.c = 16.94F + $$9;
+            this.i.g = 0.0873F + $$4;
+            this.i.c = 16.94F + $$9;
+            this.l.c = 22.0F + $$9;
+            this.m.c = 22.0F + $$9;
       }
    }
 
-   public fhn a(aru $$0) {
-      return this.F.get($$0.a(this.F.size()));
+   private void a(fft.a $$0) {
+      this.k.e = -0.2214F;
+      this.f.e = 0.4937F;
+      this.h.e = -0.6981F;
+      this.h.f = (float) -Math.PI;
+      this.i.e = -0.6981F;
+      this.i.f = (float) -Math.PI;
+      this.l.e = -0.0299F;
+      this.m.e = -0.0299F;
+      this.l.c = 22.0F;
+      this.m.c = 22.0F;
+      this.l.g = 0.0F;
+      this.m.g = 0.0F;
+      switch ($$0) {
+         case c:
+            float $$1 = 1.9F;
+            this.j.c = 17.59F;
+            this.g.e = 1.5388988F;
+            this.g.c = 22.97F;
+            this.f.c = 18.4F;
+            this.h.g = -0.0873F;
+            this.h.c = 18.84F;
+            this.i.g = 0.0873F;
+            this.i.c = 18.84F;
+            this.l.c++;
+            this.m.c++;
+            this.l.e++;
+            this.m.e++;
+            break;
+         case d:
+            this.l.g = (float) (-Math.PI / 9);
+            this.m.g = (float) (Math.PI / 9);
+         case b:
+         case e:
+         default:
+            break;
+         case a:
+            this.l.e += (float) (Math.PI * 2.0 / 9.0);
+            this.m.e += (float) (Math.PI * 2.0 / 9.0);
+      }
+   }
+
+   private static fft.a a(buz $$0) {
+      if ($$0.gh()) {
+         return fft.a.d;
+      } else if ($$0.t()) {
+         return fft.a.c;
+      } else {
+         return $$0.gn() ? fft.a.a : fft.a.b;
+      }
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 }

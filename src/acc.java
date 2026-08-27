@@ -1,16 +1,16 @@
 public class acc implements ux<aaw> {
-   private final cfp a;
+   private final cfo a;
    private final boolean b;
    private final boolean c;
 
-   public acc(cfp $$0, boolean $$1, boolean $$2) {
+   public acc(cfo $$0, boolean $$1, boolean $$2) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
    }
 
    public acc(si $$0) {
-      this.a = $$0.b(cfp.class);
+      this.a = $$0.b(cfo.class);
       this.b = $$0.readBoolean();
       this.c = $$0.readBoolean();
    }
@@ -26,7 +26,7 @@ public class acc implements ux<aaw> {
       $$0.a(this);
    }
 
-   public cfp a() {
+   public cfo a() {
       return this.a;
    }
 

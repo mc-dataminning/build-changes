@@ -9,7 +9,7 @@ public class aoc {
    }
 
    public boolean a(int $$0, List<akl> $$1) {
-      int $$2 = (int)$$1.stream().filter(cbn::fT).count();
+      int $$2 = (int)$$1.stream().filter(cbm::fT).count();
       return $$2 >= this.b($$0);
    }
 

@@ -1,41 +1,28 @@
-import java.util.Arrays;
-
-public class eyd extends exr {
-   private ete c;
-
-   private static eqp<?>[] a(eqq $$0) {
-      return new eqp[]{$$0.R(), $$0.S()};
-   }
-
-   public eyd(exz $$0, eqq $$1) {
-      super($$0, $$1, tf.c("options.sounds.title"));
+public class eyd extends exs {
+   public eyd(eya $$0, eqp $$1) {
+      super($$0, $$1, tf.c("options.skinCustomisation.title"));
    }
 
    @Override
-   protected void aE_() {
-      this.c = new ete(this.f, this.g, this.h, 32, this.h - 32, 25);
-      this.c.a(this.b.b(aox.a));
-      this.c.a(this.l());
-      this.c.a(this.b.ao());
-      this.c.a(a(this.b));
-      this.e(this.c);
-      this.d(esh.a(te.d, $$0 -> {
-         this.f.m.aq();
-         this.f.a(this.a);
-      }).a(this.g / 2 - 100, this.h - 27, 200, 20).a());
-   }
+   protected void aC_() {
+      int $$0 = 0;
 
-   private eqp<?>[] l() {
-      return Arrays.stream(aox.values()).filter($$0 -> $$0 != aox.a).map($$0 -> this.b.b($$0)).toArray(eqp[]::new);
-   }
+      for (cbn $$1 : cbn.values()) {
+         this.d(esn.b(this.b.a($$1)).a(this.g / 2 - 155 + $$0 % 2 * 160, this.h / 6 + 24 * ($$0 >> 1), 150, 20, $$1.d(), ($$1x, $$2) -> this.b.a($$1, $$2)));
+         $$0++;
+      }
 
-   @Override
-   public void a(erw $$0, int $$1, int $$2, float $$3) {
-      this.a($$0, this.c, $$1, $$2, $$3);
+      this.d(this.b.s().a(this.b, this.g / 2 - 155 + $$0 % 2 * 160, this.h / 6 + 24 * ($$0 >> 1), 150));
+      if (++$$0 % 2 == 1) {
+         $$0++;
+      }
+
+      this.d(esg.a(te.d, $$0x -> this.f.a(this.a)).a(this.g / 2 - 100, this.h / 6 + 24 * ($$0 >> 1), 200, 20).a());
    }
 
    @Override
-   public void b(erw $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
+   public void a(erv $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
    }
 }

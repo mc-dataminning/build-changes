@@ -76,7 +76,7 @@ public class aho {
          );
    }
 
-   private static int a(dr $$0, Collection<akl> $$1, aer $$2, aox $$3, ehe $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
+   private static int a(dr $$0, Collection<akl> $$1, aer $$2, aox $$3, ehd $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
       he<aov> $$8 = he.a(aov.a($$2));
       double $$9 = (double)arp.k($$8.a().a($$5));
       int $$10 = 0;
@@ -87,7 +87,7 @@ public class aho {
          double $$14 = $$4.d - $$12.dr();
          double $$15 = $$4.e - $$12.dv();
          double $$16 = $$13 * $$13 + $$14 * $$14 + $$15 * $$15;
-         ehe $$17 = $$4;
+         ehd $$17 = $$4;
          float $$18 = $$5;
          if ($$16 > $$9) {
             if ($$7 <= 0.0F) {
@@ -95,7 +95,7 @@ public class aho {
             }
 
             double $$19 = Math.sqrt($$16);
-            $$17 = new ehe($$12.dp() + $$13 / $$19 * 2.0, $$12.dr() + $$14 / $$19 * 2.0, $$12.dv() + $$15 / $$19 * 2.0);
+            $$17 = new ehd($$12.dp() + $$13 / $$19 * 2.0, $$12.dr() + $$14 / $$19 * 2.0, $$12.dv() + $$15 / $$19 * 2.0);
             $$18 = $$7;
          }
 

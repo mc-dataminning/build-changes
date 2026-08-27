@@ -1,28 +1,27 @@
 import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.kinds.K1;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class blj {
-   private static gu a(bja $$0, gu $$1) {
-      aru $$2 = $$0.dK().z;
-      return $$1.b(a($$2), 0, a($$2));
+   public static bkq<biy> a(float $$0, boolean $$1, int $$2) {
+      return a($$0x -> true, $$0, $$1, $$2);
    }
 
-   private static int a(aru $$0) {
-      return $$0.a(3) - 1;
-   }
-
-   public static <E extends bja> bma<E> a(bsa<gu> $$0, int $$1, float $$2) {
-      return boc.a(
-         (Function<boc.b<E>, ? extends App<boc.c<E>, bof<E>>>)($$3 -> $$3.group($$3.b($$0), $$3.c(bsa.o), $$3.c(bsa.m), $$3.a(bsa.n))
-               .apply($$3, ($$3x, $$4, $$5, $$6) -> ($$4x, $$5x, $$6x) -> {
-                     gu $$7 = $$3.b($$3x);
-                     boolean $$8 = $$7.a($$5x.dk(), (double)$$1);
-                     if (!$$8) {
-                        bks.a($$5x, a($$5x, $$7), $$2, $$1);
-                     }
-
-                     return true;
-                  }))
-      );
+   public static <E extends biy> bkq<E> a(Predicate<E> $$0, float $$1, boolean $$2, int $$3) {
+      return bob.a((Function<bob.b<E>, ? extends App<bob.c<E>, boe<E>>>)($$4 -> {
+         bob<E, ? extends boc<? extends K1, bsc>> $$5 = $$2 ? $$4.a(brz.m) : $$4.c(brz.m);
+         return $$4.group($$4.a(brz.n), $$5, $$4.b(brz.K), $$4.a(brz.aO)).apply($$4, ($$4x, $$5x, $$6, $$7) -> ($$8, $$9, $$10) -> {
+               byf $$11 = $$4.b($$6);
+               if ($$4.a($$7).isEmpty() && $$0.test((E)$$9) && $$11.a($$9, (double)$$3) && $$9.dK().w_().a($$11.dk())) {
+                  bsc $$12 = new bsc(new bla($$11, false), $$1, 0);
+                  $$4x.a(new bla($$11, true));
+                  $$5x.a($$12);
+                  return true;
+               } else {
+                  return false;
+               }
+            });
+      }));
    }
 }

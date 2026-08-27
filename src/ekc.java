@@ -1,32 +1,39 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
+import ca.weblite.objc.Client;
+import ca.weblite.objc.NSObject;
+import com.sun.jna.Pointer;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Base64;
+import java.util.Optional;
+import org.lwjgl.glfw.GLFWNativeCocoa;
 
 public class ekc {
-   private static final Vector3f a = new Vector3f(0.2F, 1.0F, -0.7F).normalize();
-   private static final Vector3f b = new Vector3f(-0.2F, 1.0F, 0.7F).normalize();
-   private static final Vector3f c = new Vector3f(0.2F, 1.0F, -0.7F).normalize();
-   private static final Vector3f d = new Vector3f(-0.2F, -1.0F, 0.7F).normalize();
-   private static final Vector3f e = new Vector3f(0.2F, -1.0F, -1.0F).normalize();
-   private static final Vector3f f = new Vector3f(-0.2F, -1.0F, 0.0F).normalize();
+   private static final int a = 16384;
 
-   public static void a(Matrix4f $$0) {
-      RenderSystem.setupLevelDiffuseLighting(c, d, $$0);
+   public static void a(long $$0) {
+      b($$0).filter(ekc::a).ifPresent(ekc::b);
    }
 
-   public static void b(Matrix4f $$0) {
-      RenderSystem.setupLevelDiffuseLighting(a, b, $$0);
+   private static Optional<NSObject> b(long $$0) {
+      long $$1 = GLFWNativeCocoa.glfwGetCocoaWindow($$0);
+      return $$1 != 0L ? Optional.of(new NSObject(new Pointer($$1))) : Optional.empty();
    }
 
-   public static void a() {
-      RenderSystem.setupGuiFlatDiffuseLighting(a, b);
+   private static boolean a(NSObject $$0) {
+      return ((Long)$$0.sendRaw("styleMask", new Object[0]) & 16384L) == 16384L;
    }
 
-   public static void b() {
-      RenderSystem.setupGui3DDiffuseLighting(a, b);
+   private static void b(NSObject $$0) {
+      $$0.send("toggleFullScreen:", new Object[]{Pointer.NULL});
    }
 
-   public static void c() {
-      RenderSystem.setShaderLights(e, f);
+   public static void a(ane<InputStream> $$0) throws IOException {
+      try (InputStream $$1 = $$0.get()) {
+         String $$2 = Base64.getEncoder().encodeToString($$1.readAllBytes());
+         Client $$3 = Client.getInstance();
+         Object $$4 = $$3.sendProxy("NSData", "alloc", new Object[0]).send("initWithBase64Encoding:", new Object[]{$$2});
+         Object $$5 = $$3.sendProxy("NSImage", "alloc", new Object[0]).send("initWithData:", new Object[]{$$4});
+         $$3.sendProxy("NSApplication", "sharedApplication", new Object[0]).send("setApplicationIconImage:", new Object[]{$$5});
+      }
    }
 }

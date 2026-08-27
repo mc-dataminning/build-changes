@@ -1,35 +1,94 @@
-public class fnu {
-   private final long[] a;
-   private int b;
-   private int c;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Sets;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
 
-   public fnu(int $$0) {
-      this.a = new long[$$0];
+public interface fnu {
+   static fnu.a a(ela $$0) {
+      return a(ImmutableMap.of(), $$0);
    }
 
-   public long a(long $$0) {
-      if (this.b < this.a.length) {
-         this.b++;
+   static fnu.a a(Map<foc, ela> $$0, ela $$1) {
+      return new fnu.a($$1, $$0);
+   }
+
+   elj getBuffer(foc var1);
+
+   public static class a implements fnu {
+      protected final ela a;
+      protected final Map<foc, ela> b;
+      protected Optional<foc> c = Optional.empty();
+      protected final Set<ela> d = Sets.newHashSet();
+
+      protected a(ela $$0, Map<foc, ela> $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      this.a[this.c] = $$0;
-      this.c = (this.c + 1) % this.a.length;
-      long $$1 = Long.MAX_VALUE;
-      long $$2 = Long.MIN_VALUE;
-      long $$3 = 0L;
+      @Override
+      public elj getBuffer(foc $$0) {
+         Optional<foc> $$1 = $$0.O();
+         ela $$2 = this.b($$0);
+         if (!Objects.equals(this.c, $$1) || !$$0.N()) {
+            if (this.c.isPresent()) {
+               foc $$3 = this.c.get();
+               if (!this.b.containsKey($$3)) {
+                  this.a($$3);
+               }
+            }
 
-      for (int $$4 = 0; $$4 < this.b; $$4++) {
-         long $$5 = this.a[$$4];
-         $$3 += $$5;
-         $$1 = Math.min($$1, $$5);
-         $$2 = Math.max($$2, $$5);
+            if (this.d.add($$2)) {
+               $$2.a($$0.J(), $$0.I());
+            }
+
+            this.c = $$1;
+         }
+
+         return $$2;
       }
 
-      if (this.b > 2) {
-         $$3 -= $$1 + $$2;
-         return $$3 / (long)(this.b - 2);
-      } else {
-         return $$3 > 0L ? (long)this.b / $$3 : 0L;
+      private ela b(foc $$0) {
+         return this.b.getOrDefault($$0, this.a);
+      }
+
+      public void a() {
+         if (this.c.isPresent()) {
+            foc $$0 = this.c.get();
+            if (!this.b.containsKey($$0)) {
+               this.a($$0);
+            }
+
+            this.c = Optional.empty();
+         }
+      }
+
+      public void b() {
+         this.c.ifPresent($$0x -> {
+            elj $$1 = this.getBuffer($$0x);
+            if ($$1 == this.a) {
+               this.a($$0x);
+            }
+         });
+
+         for (foc $$0 : this.b.keySet()) {
+            this.a($$0);
+         }
+      }
+
+      public void a(foc $$0) {
+         ela $$1 = this.b($$0);
+         boolean $$2 = Objects.equals(this.c, $$0.O());
+         if ($$2 || $$1 != this.a) {
+            if (this.d.remove($$1)) {
+               $$0.a($$1, RenderSystem.getVertexSorting());
+               if ($$2) {
+                  this.c = Optional.empty();
+               }
+            }
+         }
       }
    }
 }

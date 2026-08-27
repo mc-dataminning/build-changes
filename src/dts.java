@@ -1,25 +1,26 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
 public class dts extends duf {
-   public static final Codec<dts> a = RecordCodecBuilder.create($$0 -> $$0.group(dlq.b.fieldOf("predicate").forGetter($$0x -> $$0x.c)).apply($$0, dts::new));
-   private final dlq c;
+   public static final Codec<dts> a = dke.a.c.fieldOf("step").xmap(dts::new, $$0 -> $$0.c).codec();
+   private final dke.a c;
 
-   private dts(dlq $$0) {
+   private dts(dke.a $$0) {
       this.c = $$0;
    }
 
-   public static dts a(dlq $$0) {
+   public static dts a(dke.a $$0) {
       return new dts($$0);
    }
 
    @Override
-   protected boolean a(due $$0, aru $$1, gu $$2) {
-      return this.c.test($$0.d(), $$2);
+   public Stream<gu> a_(dud $$0, aru $$1, gu $$2) {
+      cos $$3 = new cos($$2);
+      return $$0.a($$3, this.c).a($$3);
    }
 
    @Override
-   public duh<?> b() {
-      return duh.a;
+   public dug<?> b() {
+      return dug.o;
    }
 }

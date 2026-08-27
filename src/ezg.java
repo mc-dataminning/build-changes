@@ -1,96 +1,48 @@
-import javax.annotation.Nullable;
+public class ezg extends eyy<cei> {
+   private static final aer x = new aer("container/brewing_stand/fuel_length");
+   private static final aer y = new aer("container/brewing_stand/brew_progress");
+   private static final aer z = new aer("container/brewing_stand/bubbles");
+   private static final aer A = new aer("textures/gui/container/brewing_stand.png");
+   private static final int[] B = new int[]{29, 24, 20, 16, 11, 6, 0};
 
-public class ezg extends eyx<cek> {
-   private static final aer x = new aer("container/cartography_table/error");
-   private static final aer y = new aer("container/cartography_table/scaled_map");
-   private static final aer z = new aer("container/cartography_table/duplicated_map");
-   private static final aer A = new aer("container/cartography_table/map");
-   private static final aer B = new aer("container/cartography_table/locked");
-   private static final aer C = new aer("textures/gui/container/cartography_table.png");
-
-   public ezg(cek $$0, cbm $$1, tf $$2) {
+   public ezg(cei $$0, cbl $$1, tf $$2) {
       super($$0, $$1, $$2);
-      this.m -= 2;
    }
 
    @Override
-   public void a(erw $$0, int $$1, int $$2, float $$3) {
+   protected void aC_() {
+      super.aC_();
+      this.l = (this.c - this.i.a(this.e)) / 2;
+   }
+
+   @Override
+   public void a(erv $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
       this.a($$0, $$1, $$2);
    }
 
    @Override
-   protected void a(erw $$0, float $$1, int $$2, int $$3) {
-      int $$4 = this.t;
-      int $$5 = this.u;
-      $$0.a(C, $$4, $$5, 0, 0, this.c, this.k);
-      ciy $$6 = this.p.b(1).e();
-      boolean $$7 = $$6.a(cjb.tp);
-      boolean $$8 = $$6.a(cjb.qa);
-      boolean $$9 = $$6.a(cjb.fx);
-      ciy $$10 = this.p.b(0).e();
-      boolean $$11 = false;
-      Integer $$12;
-      ebn $$13;
-      if ($$10.a(cjb.rf)) {
-         $$12 = cjf.d($$10);
-         $$13 = cjf.a($$12, this.f.u);
-         if ($$13 != null) {
-            if ($$13.h) {
-               $$11 = true;
-               if ($$8 || $$9) {
-                  $$0.a(x, $$4 + 35, $$5 + 31, 28, 21);
-               }
-            }
+   protected void a(erv $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.g - this.c) / 2;
+      int $$5 = (this.h - this.k) / 2;
+      $$0.a(A, $$4, $$5, 0, 0, this.c, this.k);
+      int $$6 = this.p.l();
+      int $$7 = arp.a((18 * $$6 + 20 - 1) / 20, 0, 18);
+      if ($$7 > 0) {
+         $$0.a(x, 18, 4, 0, 0, $$4 + 60, $$5 + 44, $$7, 4);
+      }
 
-            if ($$8 && $$13.f >= 4) {
-               $$11 = true;
-               $$0.a(x, $$4 + 35, $$5 + 31, 28, 21);
-            }
+      int $$8 = this.p.m();
+      if ($$8 > 0) {
+         int $$9 = (int)(28.0F * (1.0F - (float)$$8 / 400.0F));
+         if ($$9 > 0) {
+            $$0.a(y, 9, 28, 0, 0, $$4 + 97, $$5 + 16, 9, $$9);
          }
-      } else {
-         $$12 = null;
-         $$13 = null;
-      }
 
-      this.a($$0, $$12, $$13, $$7, $$8, $$9, $$11);
-   }
-
-   private void a(erw $$0, @Nullable Integer $$1, @Nullable ebn $$2, boolean $$3, boolean $$4, boolean $$5, boolean $$6) {
-      int $$7 = this.t;
-      int $$8 = this.u;
-      if ($$4 && !$$6) {
-         $$0.a(y, $$7 + 67, $$8 + 13, 66, 66);
-         this.a($$0, $$1, $$2, $$7 + 85, $$8 + 31, 0.226F);
-      } else if ($$3) {
-         $$0.a(z, $$7 + 67 + 16, $$8 + 13, 50, 66);
-         this.a($$0, $$1, $$2, $$7 + 86, $$8 + 16, 0.34F);
-         $$0.c().a();
-         $$0.c().a(0.0F, 0.0F, 1.0F);
-         $$0.a(z, $$7 + 67, $$8 + 13 + 16, 50, 66);
-         this.a($$0, $$1, $$2, $$7 + 70, $$8 + 32, 0.34F);
-         $$0.c().b();
-      } else if ($$5) {
-         $$0.a(A, $$7 + 67, $$8 + 13, 66, 66);
-         this.a($$0, $$1, $$2, $$7 + 71, $$8 + 17, 0.45F);
-         $$0.c().a();
-         $$0.c().a(0.0F, 0.0F, 1.0F);
-         $$0.a(B, $$7 + 118, $$8 + 60, 10, 14);
-         $$0.c().b();
-      } else {
-         $$0.a(A, $$7 + 67, $$8 + 13, 66, 66);
-         this.a($$0, $$1, $$2, $$7 + 71, $$8 + 17, 0.45F);
-      }
-   }
-
-   private void a(erw $$0, @Nullable Integer $$1, @Nullable ebn $$2, int $$3, int $$4, float $$5) {
-      if ($$1 != null && $$2 != null) {
-         $$0.c().a();
-         $$0.c().a((float)$$3, (float)$$4, 1.0F);
-         $$0.c().b($$5, $$5, 1.0F);
-         this.f.j.j().a($$0.c(), $$0.d(), $$1, $$2, true, 15728880);
-         $$0.e();
-         $$0.c().b();
+         $$9 = B[$$8 / 2 % 7];
+         if ($$9 > 0) {
+            $$0.a(z, 12, 29, 0, 29 - $$9, $$4 + 63, $$5 + 14 + 29 - $$9, 12, $$9);
+         }
       }
    }
 }

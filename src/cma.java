@@ -1,60 +1,53 @@
-public class cma extends cmg {
-   public cma(aer $$0, clr $$1) {
-      super(
-         $$0,
-         "",
-         $$1,
-         3,
-         3,
-         hn.a(cly.a, cly.a(cjb.qa), cly.a(cjb.qa), cly.a(cjb.qa), cly.a(cjb.qa), cly.a(cjb.rf), cly.a(cjb.qa), cly.a(cjb.qa), cly.a(cjb.qa), cly.a(cjb.qa)),
-         new ciy(cjb.tp)
-      );
-   }
+public interface cma<C extends bgj> {
+   boolean a(C var1, cpl var2);
 
-   @Override
-   public boolean a(ces $$0, cpm $$1) {
-      if (!super.a($$0, $$1)) {
-         return false;
-      } else {
-         ciy $$2 = a($$0);
-         if ($$2.b()) {
-            return false;
-         } else {
-            ebn $$3 = cjf.a($$2, $$1);
-            if ($$3 == null) {
-               return false;
-            } else {
-               return $$3.f() ? false : $$3.f < 4;
-            }
-         }
-      }
-   }
+   cix a(C var1, hs var2);
 
-   @Override
-   public ciy a(ces $$0, hs $$1) {
-      ciy $$2 = a($$0).c(1);
-      $$2.w().a("map_scale_direction", 1);
-      return $$2;
-   }
+   boolean a(int var1, int var2);
 
-   private static ciy a(ces $$0) {
-      for (int $$1 = 0; $$1 < $$0.b(); $$1++) {
-         ciy $$2 = $$0.a($$1);
-         if ($$2.a(cjb.rf)) {
-            return $$2;
+   cix a(hs var1);
+
+   default hn<cix> a(C $$0) {
+      hn<cix> $$1 = hn.a($$0.b(), cix.b);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         cis $$3 = $$0.a($$2).d();
+         if ($$3.t()) {
+            $$1.set($$2, new cix($$3.s()));
          }
       }
 
-      return ciy.b;
+      return $$1;
    }
 
-   @Override
-   public boolean ai_() {
+   default hn<clx> a() {
+      return hn.a();
+   }
+
+   default boolean ah_() {
+      return false;
+   }
+
+   default boolean i() {
       return true;
    }
 
-   @Override
-   public cmd<?> aj_() {
-      return cmd.f;
+   default String c() {
+      return "";
+   }
+
+   default cix h() {
+      return new cix(csm.cA);
+   }
+
+   aer e();
+
+   cmc<?> ai_();
+
+   cmd<?> f();
+
+   default boolean j() {
+      hn<clx> $$0 = this.a();
+      return $$0.isEmpty() || $$0.stream().anyMatch($$0x -> $$0x.a().length == 0);
    }
 }

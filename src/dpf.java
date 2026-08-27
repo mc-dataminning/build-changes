@@ -1,52 +1,96 @@
 import com.mojang.serialization.Codec;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.Predicate;
 
-public class dpf extends dpc {
-   public dpf(Codec<dqq> $$0) {
+public class dpf extends dnm<dpx> {
+   private static final ha[] a = ha.values();
+
+   public dpf(Codec<dpx> $$0) {
       super($$0);
    }
 
    @Override
-   protected Set<gu> a(cqg $$0, dqq $$1, aru $$2, gu $$3, Predicate<dfa> $$4, int $$5, int $$6) {
-      Set<gu> $$7 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      Set<gu> $$8 = new HashSet<>();
-      gu.a $$9 = new gu.a();
-
-      for (gu $$10 : $$7) {
-         if (!a($$0, $$7, $$10, $$9)) {
-            $$8.add($$10);
-         }
-      }
-
-      for (gu $$11 : $$8) {
-         $$0.a($$11, csn.G.n(), 2);
-      }
-
-      return $$8;
-   }
-
-   private static boolean a(cqg $$0, Set<gu> $$1, gu $$2, gu.a $$3) {
-      return a($$0, $$2, $$3, ha.c) || a($$0, $$2, $$3, ha.f) || a($$0, $$2, $$3, ha.d) || a($$0, $$2, $$3, ha.e) || a($$0, $$2, $$3, ha.a);
-   }
-
-   private static boolean a(cqg $$0, gu $$1, gu.a $$2, ha $$3) {
-      $$2.a($$1, $$3);
-      return !$$0.a_($$2).d($$0, $$2, $$3.g());
-   }
-
-   @Override
-   protected boolean a(cqg $$0, dqq $$1, dgx $$2, aru $$3, gu $$4) {
-      if (super.a($$0, $$1, $$2, $$3, $$4.d())) {
-         dfa $$5 = $$0.a_($$4);
-         if ($$5.b(dfq.C) && !$$5.c(dfq.C)) {
-            $$0.a($$4, $$5.a(dfq.C, Boolean.valueOf(true)), 2);
-         }
-
-         return true;
-      } else {
+   public boolean a(dno<dpx> $$0) {
+      cqf $$1 = $$0.b();
+      gu $$2 = $$0.e();
+      aru $$3 = $$0.d();
+      if (!$$1.t($$2)) {
          return false;
+      } else {
+         dez $$4 = $$1.a_($$2.c());
+         if (!$$4.a(csm.dW) && !$$4.a(csm.kK)) {
+            return false;
+         } else {
+            this.a($$1, $$3, $$2);
+            this.b($$1, $$3, $$2);
+            return true;
+         }
+      }
+   }
+
+   private void a(cpm $$0, aru $$1, gu $$2) {
+      $$0.a($$2, csm.kK.n(), 2);
+      gu.a $$3 = new gu.a();
+      gu.a $$4 = new gu.a();
+
+      for (int $$5 = 0; $$5 < 200; $$5++) {
+         $$3.a($$2, $$1.a(6) - $$1.a(6), $$1.a(2) - $$1.a(5), $$1.a(6) - $$1.a(6));
+         if ($$0.t($$3)) {
+            int $$6 = 0;
+
+            for (ha $$7 : a) {
+               dez $$8 = $$0.a_($$4.a($$3, $$7));
+               if ($$8.a(csm.dW) || $$8.a(csm.kK)) {
+                  $$6++;
+               }
+
+               if ($$6 > 1) {
+                  break;
+               }
+            }
+
+            if ($$6 == 1) {
+               $$0.a($$3, csm.kK.n(), 2);
+            }
+         }
+      }
+   }
+
+   private void b(cpm $$0, aru $$1, gu $$2) {
+      gu.a $$3 = new gu.a();
+
+      for (int $$4 = 0; $$4 < 100; $$4++) {
+         $$3.a($$2, $$1.a(8) - $$1.a(8), $$1.a(2) - $$1.a(7), $$1.a(8) - $$1.a(8));
+         if ($$0.t($$3)) {
+            dez $$5 = $$0.a_($$3.c());
+            if ($$5.a(csm.dW) || $$5.a(csm.kK)) {
+               int $$6 = arp.a($$1, 1, 8);
+               if ($$1.a(6) == 0) {
+                  $$6 *= 2;
+               }
+
+               if ($$1.a(5) == 0) {
+                  $$6 = 1;
+               }
+
+               int $$7 = 17;
+               int $$8 = 25;
+               a($$0, $$1, $$3, $$6, 17, 25);
+            }
+         }
+      }
+   }
+
+   public static void a(cpm $$0, aru $$1, gu.a $$2, int $$3, int $$4, int $$5) {
+      for (int $$6 = 0; $$6 <= $$3; $$6++) {
+         if ($$0.t($$2)) {
+            if ($$6 == $$3 || !$$0.t($$2.d())) {
+               $$0.a($$2, csm.oz.n().a(cvy.d, Integer.valueOf(arp.a($$1, $$4, $$5))), 2);
+               break;
+            }
+
+            $$0.a($$2, csm.oA.n(), 2);
+         }
+
+         $$2.c(ha.a);
       }
    }
 }

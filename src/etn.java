@@ -2,33 +2,33 @@ import com.google.common.collect.Lists;
 import java.util.Iterator;
 import java.util.List;
 
-public class etn implements gcw {
+public class etn implements gdf {
    private static final long a = 3000L;
-   private final eqm b;
+   private final eql b;
    private final List<etn.a> c = Lists.newArrayList();
    private boolean d;
 
-   public etn(eqm $$0) {
+   public etn(eql $$0) {
       this.b = $$0;
    }
 
-   public void a(erw $$0) {
-      if (!this.d && this.b.m.R().c()) {
+   public void a(erv $$0) {
+      if (!this.d && this.b.m.S().c()) {
          this.b.ai().a(this);
          this.d = true;
-      } else if (this.d && !this.b.m.R().c()) {
+      } else if (this.d && !this.b.m.S().c()) {
          this.b.ai().b(this);
          this.d = false;
       }
 
       if (this.d && !this.c.isEmpty()) {
-         ehe $$1 = new ehe(this.b.v.dp(), this.b.v.dt(), this.b.v.dv());
-         ehe $$2 = new ehe(0.0, 0.0, -1.0).a(-this.b.v.dC() * (float) (Math.PI / 180.0)).b(-this.b.v.dA() * (float) (Math.PI / 180.0));
-         ehe $$3 = new ehe(0.0, 1.0, 0.0).a(-this.b.v.dC() * (float) (Math.PI / 180.0)).b(-this.b.v.dA() * (float) (Math.PI / 180.0));
-         ehe $$4 = $$2.c($$3);
+         ehd $$1 = new ehd(this.b.s.dp(), this.b.s.dt(), this.b.s.dv());
+         ehd $$2 = new ehd(0.0, 0.0, -1.0).a(-this.b.s.dC() * (float) (Math.PI / 180.0)).b(-this.b.s.dA() * (float) (Math.PI / 180.0));
+         ehd $$3 = new ehd(0.0, 1.0, 0.0).a(-this.b.s.dC() * (float) (Math.PI / 180.0)).b(-this.b.s.dA() * (float) (Math.PI / 180.0));
+         ehd $$4 = $$2.c($$3);
          int $$5 = 0;
          int $$6 = 0;
-         double $$7 = this.b.m.x().c();
+         double $$7 = this.b.m.y().c();
          Iterator<etn.a> $$8 = this.c.iterator();
 
          while ($$8.hasNext()) {
@@ -45,7 +45,7 @@ public class etn implements gcw {
          for (etn.a $$10 : this.c) {
             int $$11 = 255;
             tf $$12 = $$10.a();
-            ehe $$13 = $$10.c().d($$1).d();
+            ehd $$13 = $$10.c().d($$1).d();
             double $$14 = -$$4.b($$13);
             double $$15 = -$$2.b($$13);
             boolean $$16 = $$15 > 0.5;
@@ -77,28 +77,28 @@ public class etn implements gcw {
    }
 
    @Override
-   public void a(gbt $$0, gcy $$1) {
+   public void a(gcc $$0, gdh $$1) {
       if ($$1.a() != null) {
          tf $$2 = $$1.a();
          if (!this.c.isEmpty()) {
             for (etn.a $$3 : this.c) {
                if ($$3.a().equals($$2)) {
-                  $$3.a(new ehe($$0.h(), $$0.i(), $$0.j()));
+                  $$3.a(new ehd($$0.h(), $$0.i(), $$0.j()));
                   return;
                }
             }
          }
 
-         this.c.add(new etn.a($$2, new ehe($$0.h(), $$0.i(), $$0.j())));
+         this.c.add(new etn.a($$2, new ehd($$0.h(), $$0.i(), $$0.j())));
       }
    }
 
    public static class a {
       private final tf a;
       private long b;
-      private ehe c;
+      private ehd c;
 
-      public a(tf $$0, ehe $$1) {
+      public a(tf $$0, ehd $$1) {
          this.a = $$0;
          this.c = $$1;
          this.b = ac.b();
@@ -112,11 +112,11 @@ public class etn implements gcw {
          return this.b;
       }
 
-      public ehe c() {
+      public ehd c() {
          return this.c;
       }
 
-      public void a(ehe $$0) {
+      public void a(ehd $$0) {
          this.c = $$0;
          this.b = ac.b();
       }

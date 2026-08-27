@@ -1,3 +1,13 @@
+import javax.annotation.Nullable;
+
 public interface bjo {
-   double d();
+   boolean g();
+
+   void a(@Nullable aox var1);
+
+   default aov R_() {
+      return aow.lo;
+   }
+
+   boolean i();
 }

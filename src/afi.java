@@ -5,9 +5,9 @@ import java.util.Set;
 import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 
-public class afi extends eid {
+public class afi extends eic {
    private final MinecraftServer a;
-   private final Set<eia> b = Sets.newHashSet();
+   private final Set<ehz> b = Sets.newHashSet();
    private final List<Runnable> c = Lists.newArrayList();
 
    public afi(MinecraftServer $$0) {
@@ -15,7 +15,7 @@ public class afi extends eid {
    }
 
    @Override
-   public void a(eic $$0) {
+   public void a(eib $$0) {
       super.a($$0);
       if (this.b.contains($$0.d())) {
          this.a.ac().a(new aaa(afi.a.a, $$0.d().b(), $$0.e(), $$0.b()));
@@ -32,7 +32,7 @@ public class afi extends eid {
    }
 
    @Override
-   public void a(String $$0, eia $$1) {
+   public void a(String $$0, ehz $$1) {
       super.a($$0, $$1);
       if (this.b.contains($$1)) {
          this.a.ac().a(new aaa(afi.a.b, $$1.b(), $$0, 0));
@@ -42,8 +42,8 @@ public class afi extends eid {
    }
 
    @Override
-   public void a(ehz $$0, @Nullable eia $$1) {
-      eia $$2 = this.a($$0);
+   public void a(ehy $$0, @Nullable ehz $$1) {
+      ehz $$2 = this.a($$0);
       super.a($$0, $$1);
       if ($$2 != $$1 && $$2 != null) {
          if (this.h($$2) > 0) {
@@ -65,7 +65,7 @@ public class afi extends eid {
    }
 
    @Override
-   public boolean a(String $$0, eib $$1) {
+   public boolean a(String $$0, eia $$1) {
       if (super.a($$0, $$1)) {
          this.a.ac().a(zz.a($$1, $$0, zz.a.a));
          this.a();
@@ -76,20 +76,20 @@ public class afi extends eid {
    }
 
    @Override
-   public void b(String $$0, eib $$1) {
+   public void b(String $$0, eia $$1) {
       super.b($$0, $$1);
       this.a.ac().a(zz.a($$1, $$0, zz.a.b));
       this.a();
    }
 
    @Override
-   public void a(eia $$0) {
+   public void a(ehz $$0) {
       super.a($$0);
       this.a();
    }
 
    @Override
-   public void b(eia $$0) {
+   public void b(ehz $$0) {
       super.b($$0);
       if (this.b.contains($$0)) {
          this.a.ac().a(new zx($$0, 2));
@@ -99,7 +99,7 @@ public class afi extends eid {
    }
 
    @Override
-   public void c(eia $$0) {
+   public void c(ehz $$0) {
       super.c($$0);
       if (this.b.contains($$0)) {
          this.g($$0);
@@ -109,21 +109,21 @@ public class afi extends eid {
    }
 
    @Override
-   public void a(eib $$0) {
+   public void a(eia $$0) {
       super.a($$0);
       this.a.ac().a(zz.a($$0, true));
       this.a();
    }
 
    @Override
-   public void b(eib $$0) {
+   public void b(eia $$0) {
       super.b($$0);
       this.a.ac().a(zz.a($$0, false));
       this.a();
    }
 
    @Override
-   public void c(eib $$0) {
+   public void c(eia $$0) {
       super.c($$0);
       this.a.ac().a(zz.a($$0));
       this.a();
@@ -139,24 +139,24 @@ public class afi extends eid {
       }
    }
 
-   public List<ux<?>> d(eia $$0) {
+   public List<ux<?>> d(ehz $$0) {
       List<ux<?>> $$1 = Lists.newArrayList();
       $$1.add(new zx($$0, 0));
 
-      for (ehz $$2 : ehz.values()) {
+      for (ehy $$2 : ehy.values()) {
          if (this.a($$2) == $$0) {
             $$1.add(new zq($$2, $$0));
          }
       }
 
-      for (eic $$3 : this.i($$0)) {
+      for (eib $$3 : this.i($$0)) {
          $$1.add(new aaa(afi.a.a, $$3.d().b(), $$3.e(), $$3.b()));
       }
 
       return $$1;
    }
 
-   public void e(eia $$0) {
+   public void e(ehz $$0) {
       List<ux<?>> $$1 = this.d($$0);
 
       for (akl $$2 : this.a.ac().t()) {
@@ -168,11 +168,11 @@ public class afi extends eid {
       this.b.add($$0);
    }
 
-   public List<ux<?>> f(eia $$0) {
+   public List<ux<?>> f(ehz $$0) {
       List<ux<?>> $$1 = Lists.newArrayList();
       $$1.add(new zx($$0, 1));
 
-      for (ehz $$2 : ehz.values()) {
+      for (ehy $$2 : ehy.values()) {
          if (this.a($$2) == $$0) {
             $$1.add(new zq($$2, $$0));
          }
@@ -181,7 +181,7 @@ public class afi extends eid {
       return $$1;
    }
 
-   public void g(eia $$0) {
+   public void g(ehz $$0) {
       List<ux<?>> $$1 = this.f($$0);
 
       for (akl $$2 : this.a.ac().t()) {
@@ -193,10 +193,10 @@ public class afi extends eid {
       this.b.remove($$0);
    }
 
-   public int h(eia $$0) {
+   public int h(ehz $$0) {
       int $$1 = 0;
 
-      for (ehz $$2 : ehz.values()) {
+      for (ehy $$2 : ehy.values()) {
          if (this.a($$2) == $$0) {
             $$1++;
          }
@@ -205,17 +205,17 @@ public class afi extends eid {
       return $$1;
    }
 
-   public ebi.a<eie> b() {
-      return new ebi.a<>(this::i, this::a, ass.n);
+   public ebh.a<eid> b() {
+      return new ebh.a<>(this::i, this::a, ass.n);
    }
 
-   private eie i() {
-      eie $$0 = new eie(this);
+   private eid i() {
+      eid $$0 = new eid(this);
       this.a($$0::c);
       return $$0;
    }
 
-   private eie a(qr $$0) {
+   private eid a(qr $$0) {
       return this.i().b($$0);
    }
 

@@ -1,33 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dpn implements dpr {
+public record dpn(drz b, dlp c, bfv d, int e) implements dpq {
    public static final Codec<dpn> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               dfa.b.fieldOf("contents").forGetter($$0x -> $$0x.b),
-               dfa.b.fieldOf("rim").forGetter($$0x -> $$0x.c),
-               bfv.b(0, 16).fieldOf("size").forGetter($$0x -> $$0x.d),
-               bfv.b(0, 16).fieldOf("rim_size").forGetter($$0x -> $$0x.e)
+               drz.a.fieldOf("state_provider").forGetter(dpn::a),
+               dlp.b.fieldOf("target").forGetter(dpn::b),
+               bfv.b(0, 8).fieldOf("radius").forGetter(dpn::c),
+               Codec.intRange(0, 4).fieldOf("half_height").forGetter(dpn::d)
             )
             .apply($$0, dpn::new)
    );
-   private final dfa b;
-   private final dfa c;
-   private final bfv d;
-   private final bfv e;
 
-   public dpn(dfa $$0, dfa $$1, bfv $$2, bfv $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-   }
-
-   public dfa a() {
+   public drz a() {
       return this.b;
    }
 
-   public dfa b() {
+   public dlp b() {
       return this.c;
    }
 
@@ -35,7 +24,7 @@ public class dpn implements dpr {
       return this.d;
    }
 
-   public bfv d() {
+   public int d() {
       return this.e;
    }
 }

@@ -1,42 +1,47 @@
-import java.util.EnumSet;
+public class bqp extends bpt {
+   private final bwi a;
+   private int b;
 
-public class bqp extends bpu {
-   private final bja a;
-   private double b;
-   private double c;
-   private int d;
-
-   public bqp(bja $$0) {
+   public bqp(bwi $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(bpu.a.a, bpu.a.b));
-   }
-
-   @Override
-   public boolean a() {
-      return this.a.ee().i() < 0.02F;
-   }
-
-   @Override
-   public boolean b() {
-      return this.d >= 0;
+      this.a($$0);
    }
 
    @Override
    public void c() {
-      double $$0 = (Math.PI * 2) * this.a.ee().j();
-      this.b = Math.cos($$0);
-      this.c = Math.sin($$0);
-      this.d = 20 + this.a.ee().a(20);
+      this.a.gF();
+      this.h();
+   }
+
+   private void h() {
+      aov $$0 = this.a.gE();
+      if ($$0 != null) {
+         this.a.a($$0);
+      }
+   }
+
+   @Override
+   public boolean b() {
+      return false;
+   }
+
+   @Override
+   public boolean a() {
+      this.b++;
+      if (this.b > 0 && this.a.ee().a(1000) < this.b) {
+         this.a(this.a);
+         return !this.a.eW() && this.a.ee().a(10) == 0;
+      } else {
+         return false;
+      }
+   }
+
+   private void a(bwi $$0) {
+      this.b = -$$0.gL();
    }
 
    @Override
    public boolean K_() {
       return true;
-   }
-
-   @Override
-   public void e() {
-      this.d--;
-      this.a.D().a(this.a.dp() + this.b, this.a.dt(), this.a.dv() + this.c);
    }
 }

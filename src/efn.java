@@ -1,32 +1,60 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.Set;
 
-public record efn(Optional<bz> b) implements efg {
-   public static final Codec<efn> a = RecordCodecBuilder.create($$0 -> $$0.group(aqy.a(bz.a, "predicate").forGetter(efn::c)).apply($$0, efn::new));
+public record efn(Optional<Long> b, ecf c) implements eff {
+   public static final Codec<efn> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aqy.a(Codec.LONG, "period").forGetter(efn::c), ecf.a.fieldOf("value").forGetter(efn::d)).apply($$0, efn::new)
+   );
 
    @Override
-   public efh b() {
-      return efi.k;
+   public efg b() {
+      return efh.r;
    }
 
    @Override
-   public Set<eep<?>> a() {
-      return ImmutableSet.of(ees.i);
+   public Set<eeo<?>> a() {
+      return this.c.a();
    }
 
-   public boolean a(ech $$0) {
-      ciy $$1 = $$0.c(ees.i);
-      return $$1 != null && (this.b.isEmpty() || this.b.get().a($$1));
+   public boolean a(ecg $$0) {
+      akk $$1 = $$0.d();
+      long $$2 = $$1.W();
+      if (this.b.isPresent()) {
+         $$2 %= this.b.get();
+      }
+
+      return this.c.b($$0, (int)$$2);
    }
 
-   public static efg.a a(bz.a $$0) {
-      return () -> new efn($$0.b());
+   public static efn.a a(ecf $$0) {
+      return new efn.a($$0);
    }
 
-   public Optional<bz> c() {
+   public Optional<Long> c() {
       return this.b;
+   }
+
+   public ecf d() {
+      return this.c;
+   }
+
+   public static class a implements eff.a {
+      private Optional<Long> a = Optional.empty();
+      private final ecf b;
+
+      public a(ecf $$0) {
+         this.b = $$0;
+      }
+
+      public efn.a a(long $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public efn a() {
+         return new efn(this.a, this.b);
+      }
    }
 }

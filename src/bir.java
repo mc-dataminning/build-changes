@@ -1,3 +1,3 @@
 public interface bir {
-   void b(cbn var1);
+   void b(cbm var1);
 }

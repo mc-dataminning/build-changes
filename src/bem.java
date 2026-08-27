@@ -17,7 +17,7 @@ public class bem {
    }
 
    public List<bel> a() {
-      Map<String, List<bel>> $$0 = this.b.keySet().stream().flatMap($$0x -> $$0x.bl().stream()).collect(Collectors.groupingBy(bel::d));
+      Map<String, List<bel>> $$0 = this.b.keySet().stream().flatMap($$0x -> $$0x.bk().stream()).collect(Collectors.groupingBy(bel::d));
       return a($$0);
    }
 

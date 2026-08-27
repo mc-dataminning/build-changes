@@ -6,12 +6,12 @@ public class etx extends ett {
    private static final int h = -16711936;
    private static final int i = 50;
 
-   public etx(eru $$0, arw $$1) {
+   public etx(ert $$0, arw $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected void a(erw $$0, int $$1, int $$2, int $$3) {
+   protected void a(erv $$0, int $$1, int $$2, int $$3) {
       this.a($$0, "20 TPS", $$1 + 1, $$3 - 60 + 1);
    }
 

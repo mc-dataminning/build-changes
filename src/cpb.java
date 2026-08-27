@@ -1,31 +1,19 @@
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public enum cpb implements cos {
-   a;
+public class cpb extends cpe {
+   private final bii a;
 
-   @Nullable
-   @Override
-   public dcm c_(gu $$0) {
-      return null;
+   public cpb(bii $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public dfa a_(gu $$0) {
-      return csn.a.n();
+   public Optional<Float> a(cpd $$0, cor $$1, gu $$2, dez $$3, eac $$4) {
+      return super.a($$0, $$1, $$2, $$3, $$4).map($$5 -> this.a.a($$0, $$1, $$2, $$3, $$4, $$5));
    }
 
    @Override
-   public ead b_(gu $$0) {
-      return eae.a.g();
-   }
-
-   @Override
-   public int C_() {
-      return 0;
-   }
-
-   @Override
-   public int D_() {
-      return 0;
+   public boolean a(cpd $$0, cor $$1, gu $$2, dez $$3, float $$4) {
+      return this.a.a($$0, $$1, $$2, $$3, $$4);
    }
 }

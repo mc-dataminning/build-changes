@@ -58,8 +58,8 @@ public class Main {
       $$13.a(a(jo::a, $$11));
       $$13.a(kl::a);
       $$13.a(mb::new);
-      my<csm> $$14 = $$13.a(a(mz::new, $$11));
-      my<cit> $$15 = $$13.a($$2x -> new na($$2x, $$11, $$14.c()));
+      my<csl> $$14 = $$13.a(a(mz::new, $$11));
+      my<cis> $$15 = $$13.a($$2x -> new na($$2x, $$11, $$14.c()));
       $$13.a(a(mk::new, $$11));
       $$13.a(a(ml::new, $$11));
       $$13.a(a(mm::new, $$11));
@@ -82,9 +82,9 @@ public class Main {
       $$13.a(jy::new);
       $$13 = $$9.a($$3, "bundle");
       $$13.a(ma::new);
-      $$13.a($$0x -> ko.a($$0x, tf.c("dataPack.bundle.description"), cdv.a(cdx.b)));
+      $$13.a($$0x -> ko.a($$0x, tf.c("dataPack.bundle.description"), cdu.a(cdw.b)));
       $$13 = $$9.a($$3, "trade_rebalance");
-      $$13.a($$0x -> ko.a($$0x, tf.c("dataPack.trade_rebalance.description"), cdv.a(cdx.c)));
+      $$13.a($$0x -> ko.a($$0x, tf.c("dataPack.trade_rebalance.description"), cdu.a(cdw.c)));
       return $$9;
    }
 }

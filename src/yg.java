@@ -8,11 +8,11 @@ public class yg implements ux<wp> {
    private final byte b;
    private final boolean c;
    @Nullable
-   private final List<ebk> d;
+   private final List<ebj> d;
    @Nullable
-   private final ebn.b e;
+   private final ebm.b e;
 
-   public yg(int $$0, byte $$1, boolean $$2, @Nullable Collection<ebk> $$3, @Nullable ebn.b $$4) {
+   public yg(int $$0, byte $$1, boolean $$2, @Nullable Collection<ebj> $$3, @Nullable ebm.b $$4) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
@@ -25,12 +25,12 @@ public class yg implements ux<wp> {
       this.b = $$0.readByte();
       this.c = $$0.readBoolean();
       this.d = $$0.c($$0x -> $$0x.a((si.a)($$0xx -> {
-            ebk.a $$1x = $$0xx.b(ebk.a.class);
+            ebj.a $$1x = $$0xx.b(ebj.a.class);
             byte $$2x = $$0xx.readByte();
             byte $$3x = $$0xx.readByte();
             byte $$4x = (byte)($$0xx.readByte() & 15);
             tf $$5x = $$0xx.c(si::l);
-            return new ebk($$1x, $$2x, $$3x, $$4x, $$5x);
+            return new ebj($$1x, $$2x, $$3x, $$4x, $$5x);
          })));
       int $$1 = $$0.readUnsignedByte();
       if ($$1 > 0) {
@@ -38,7 +38,7 @@ public class yg implements ux<wp> {
          int $$3 = $$0.readUnsignedByte();
          int $$4 = $$0.readUnsignedByte();
          byte[] $$5 = $$0.b();
-         this.e = new ebn.b($$3, $$4, $$1, $$2, $$5);
+         this.e = new ebm.b($$3, $$4, $$1, $$2, $$5);
       } else {
          this.e = null;
       }
@@ -75,7 +75,7 @@ public class yg implements ux<wp> {
       return this.a;
    }
 
-   public void a(ebn $$0) {
+   public void a(ebm $$0) {
       if (this.d != null) {
          $$0.a(this.d);
       }

@@ -1,79 +1,56 @@
+import com.google.common.collect.Sets;
 import java.util.EnumSet;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Set;
 
-public class bqn extends bpu {
-   public static final int a = 1;
-   protected final bjh b;
-   protected final double c;
-   protected double d;
-   protected double e;
-   protected double f;
-   protected boolean g;
+public class bqn<T extends ccu> extends bpt {
+   private static final int a = 20;
+   private static final float b = 1.0F;
+   private final T c;
+   private int d;
 
-   public bqn(bjh $$0, double $$1) {
-      this.b = $$0;
-      this.c = $$1;
-      this.a(EnumSet.of(bpu.a.a));
+   public bqn(T $$0) {
+      this.c = $$0;
+      this.a(EnumSet.of(bpt.a.a));
    }
 
    @Override
    public boolean a() {
-      if (!this.h()) {
-         return false;
-      } else {
-         if (this.b.bM()) {
-            gu $$0 = this.a(this.b.dK(), this.b, 5);
-            if ($$0 != null) {
-               this.d = (double)$$0.u();
-               this.e = (double)$$0.v();
-               this.f = (double)$$0.w();
-               return true;
-            }
-         }
-
-         return this.i();
-      }
-   }
-
-   protected boolean h() {
-      return this.b.ef() != null || this.b.dz() || this.b.bM();
-   }
-
-   protected boolean i() {
-      ehe $$0 = btp.a(this.b, 5, 4);
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.d = $$0.c;
-         this.e = $$0.d;
-         this.f = $$0.e;
-         return true;
-      }
-   }
-
-   public boolean k() {
-      return this.g;
-   }
-
-   @Override
-   public void c() {
-      this.b.H().a(this.d, this.e, this.f, this.c);
-      this.g = true;
-   }
-
-   @Override
-   public void d() {
-      this.g = false;
+      return this.c.j() == null && !this.c.cO() && this.c.gp() && !this.c.go().a() && !((akk)this.c.dK()).b(this.c.dk());
    }
 
    @Override
    public boolean b() {
-      return !this.b.H().l();
+      return this.c.gp() && !this.c.go().a() && this.c.dK() instanceof akk && !((akk)this.c.dK()).b(this.c.dk());
    }
 
-   @Nullable
-   protected gu a(cos $$0, bii $$1, int $$2) {
-      gu $$3 = $$1.dk();
-      return !$$0.a_($$3).k($$0, $$3).c() ? null : gu.a($$1.dk(), $$2, 1, $$1x -> $$0.b_($$1x).a(apq.a)).orElse(null);
+   @Override
+   public void e() {
+      if (this.c.gp()) {
+         cct $$0 = this.c.go();
+         if (this.c.ah > this.d) {
+            this.d = this.c.ah + 20;
+            this.a($$0);
+         }
+
+         if (!this.c.fW()) {
+            ehd $$1 = bto.a(this.c, 15, 4, ehd.c($$0.t()), (float) (Math.PI / 2));
+            if ($$1 != null) {
+               this.c.H().a($$1.c, $$1.d, $$1.e, 1.0);
+            }
+         }
+      }
+   }
+
+   private void a(cct $$0) {
+      if ($$0.v()) {
+         Set<ccu> $$1 = Sets.newHashSet();
+         List<ccu> $$2 = this.c.dK().a(ccu.class, this.c.cG().g(16.0), $$1x -> !$$1x.gp() && ccv.a($$1x, $$0));
+         $$1.addAll($$2);
+
+         for (ccu $$3 : $$1) {
+            $$0.a($$0.k(), $$3, null, true);
+         }
+      }
    }
 }

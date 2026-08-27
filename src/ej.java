@@ -18,10 +18,10 @@ public class ej implements ArgumentType<String> {
       return new ej();
    }
 
-   public static eia a(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
+   public static ehz a(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
       String $$2 = (String)$$0.getArgument($$1, String.class);
-      eid $$3 = ((dr)$$0.getSource()).l().aF();
-      eia $$4 = $$3.b($$2);
+      eic $$3 = ((dr)$$0.getSource()).l().aF();
+      ehz $$4 = $$3.b($$2);
       if ($$4 == null) {
          throw b.create($$2);
       } else {
@@ -29,8 +29,8 @@ public class ej implements ArgumentType<String> {
       }
    }
 
-   public static eia b(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
-      eia $$2 = a($$0, $$1);
+   public static ehz b(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
+      ehz $$2 = a($$0, $$1);
       if ($$2.c().e()) {
          throw c.create($$2.b());
       } else {

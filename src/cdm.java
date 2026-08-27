@@ -1,118 +1,141 @@
-public class cdm extends cde {
-   static final adz<String> c = aec.a(cdm.class, aeb.e);
-   static final adz<tf> d = aec.a(cdm.class, aeb.f);
-   private final com e = new cdm.a();
-   private static final int f = 4;
-   private int g;
+public class cdm extends cdd {
+   private static final adz<Boolean> e = aec.a(cdm.class, aeb.k);
+   private int f;
+   public double c;
+   public double d;
+   private static final clx g = clx.a(cja.nI, cja.nJ);
 
-   public cdm(bim<? extends cdm> $$0, cpm $$1) {
+   public cdm(bim<? extends cdm> $$0, cpl $$1) {
       super($$0, $$1);
    }
 
-   public cdm(cpm $$0, double $$1, double $$2, double $$3) {
-      super(bim.s, $$0, $$1, $$2, $$3);
+   public cdm(cpl $$0, double $$1, double $$2, double $$3) {
+      super(bim.P, $$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected cit j() {
-      return cjb.na;
+   public cdd.a t() {
+      return cdd.a.c;
    }
 
    @Override
    protected void a_() {
       super.a_();
-      this.al().a(c, "");
-      this.al().a(d, te.a);
+      this.an.a(e, false);
    }
 
    @Override
-   protected void a(qr $$0) {
-      super.a($$0);
-      this.e.b($$0);
-      this.al().b(c, this.A().m());
-      this.al().b(d, this.A().l());
+   public void l() {
+      super.l();
+      if (!this.dK().r_()) {
+         if (this.f > 0) {
+            this.f--;
+         }
+
+         if (this.f <= 0) {
+            this.c = 0.0;
+            this.d = 0.0;
+         }
+
+         this.p(this.f > 0);
+      }
+
+      if (this.A() && this.ag.a(4) == 0) {
+         this.dK().a(iv.S, this.dp(), this.dr() + 0.8, this.dv(), 0.0, 0.0, 0.0);
+      }
+   }
+
+   @Override
+   protected double m() {
+      return (this.aX() ? 3.0 : 4.0) / 20.0;
+   }
+
+   @Override
+   protected cis j() {
+      return cja.nc;
+   }
+
+   @Override
+   protected void c(gu $$0, dez $$1) {
+      double $$2 = 1.0E-4;
+      double $$3 = 0.001;
+      super.c($$0, $$1);
+      ehd $$4 = this.dn();
+      double $$5 = $$4.i();
+      double $$6 = this.c * this.c + this.d * this.d;
+      if ($$6 > 1.0E-4 && $$5 > 0.001) {
+         double $$7 = Math.sqrt($$5);
+         double $$8 = Math.sqrt($$6);
+         this.c = $$4.c / $$7 * $$8;
+         this.d = $$4.e / $$7 * $$8;
+      }
+   }
+
+   @Override
+   protected void p() {
+      double $$0 = this.c * this.c + this.d * this.d;
+      if ($$0 > 1.0E-7) {
+         $$0 = Math.sqrt($$0);
+         this.c /= $$0;
+         this.d /= $$0;
+         ehd $$1 = this.dn().d(0.8, 0.0, 0.8).b(this.c, 0.0, this.d);
+         if (this.aX()) {
+            $$1 = $$1.a(0.1);
+         }
+
+         this.f($$1);
+      } else {
+         this.f(this.dn().d(0.98, 0.0, 0.98));
+      }
+
+      super.p();
+   }
+
+   @Override
+   public bgq a(cbm $$0, bgp $$1) {
+      cix $$2 = $$0.b($$1);
+      if (g.a($$2) && this.f + 3600 <= 32000) {
+         if (!$$0.fR().d) {
+            $$2.h(1);
+         }
+
+         this.f += 3600;
+      }
+
+      if (this.f > 0) {
+         this.c = this.dp() - $$0.dp();
+         this.d = this.dv() - $$0.dv();
+      }
+
+      return bgq.a(this.dK().B);
    }
 
    @Override
    protected void b(qr $$0) {
       super.b($$0);
-      this.e.a($$0);
+      $$0.a("PushX", this.c);
+      $$0.a("PushZ", this.d);
+      $$0.a("Fuel", (short)this.f);
    }
 
    @Override
-   public cde.a t() {
-      return cde.a.g;
-   }
-
-   @Override
-   public dfa w() {
-      return csn.fN.n();
-   }
-
-   public com A() {
-      return this.e;
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3 && this.ah - this.g >= 4) {
-         this.A().a(this.dK());
-         this.g = this.ah;
-      }
-   }
-
-   @Override
-   public bgq a(cbn $$0, bgp $$1) {
-      return this.e.a($$0);
-   }
-
-   @Override
-   public void a(adz<?> $$0) {
+   protected void a(qr $$0) {
       super.a($$0);
-      if (d.equals($$0)) {
-         try {
-            this.e.c(this.al().b(d));
-         } catch (Throwable var3) {
-         }
-      } else if (c.equals($$0)) {
-         this.e.a(this.al().b(c));
-      }
+      this.c = $$0.k("PushX");
+      this.d = $$0.k("PushZ");
+      this.f = $$0.g("Fuel");
+   }
+
+   protected boolean A() {
+      return this.an.b(e);
+   }
+
+   protected void p(boolean $$0) {
+      this.an.b(e, $$0);
    }
 
    @Override
-   public boolean cM() {
-      return true;
-   }
-
-   public class a extends com {
-      @Override
-      public akk e() {
-         return (akk)cdm.this.dK();
-      }
-
-      @Override
-      public void f() {
-         cdm.this.al().b(cdm.c, this.m());
-         cdm.this.al().b(cdm.d, this.l());
-      }
-
-      @Override
-      public ehe g() {
-         return cdm.this.di();
-      }
-
-      public cdm h() {
-         return cdm.this;
-      }
-
-      @Override
-      public dr i() {
-         return new dr(this, cdm.this.di(), cdm.this.bF(), this.e(), 2, this.n().getString(), cdm.this.H_(), this.e().n(), cdm.this);
-      }
-
-      @Override
-      public boolean j() {
-         return !cdm.this.dF();
-      }
+   public dez w() {
+      return csm.cD.n().a(cvo.a, ha.c).a(cvo.b, Boolean.valueOf(this.A()));
    }
 }

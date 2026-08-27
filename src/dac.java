@@ -1,45 +1,41 @@
-public class dac extends csm {
-   private static final ehx a = csm.a(2.0, 13.0, 2.0, 14.0, 16.0, 14.0);
-   private static final int b = 14;
-   private static final int c = 10;
-   private static final int d = 10;
-
-   public dac(dez.d $$0) {
+public abstract class dac extends czv {
+   protected dac(dey.d $$0) {
       super($$0);
    }
 
-   @Override
-   public boolean a(dfa $$0, cpp $$1, gu $$2) {
-      return csm.a($$1, $$2.c(), ha.a) && !$$1.y($$2);
-   }
-
-   @Override
-   public dfa a(dfa $$0, ha $$1, dfa $$2, cpn $$3, gu $$4, gu $$5) {
-      return $$1 == ha.b && !this.a($$0, $$3, $$4) ? csn.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public void a(dfa $$0, cpm $$1, gu $$2, aru $$3) {
-      int $$4 = $$2.u();
-      int $$5 = $$2.v();
-      int $$6 = $$2.w();
-      double $$7 = (double)$$4 + $$3.j();
-      double $$8 = (double)$$5 + 0.7;
-      double $$9 = (double)$$6 + $$3.j();
-      $$1.a(iv.at, $$7, $$8, $$9, 0.0, 0.0, 0.0);
-      gu.a $$10 = new gu.a();
-
-      for (int $$11 = 0; $$11 < 14; $$11++) {
-         $$10.d($$4 + arp.a($$3, -10, 10), $$5 - $$3.a(10), $$6 + arp.a($$3, -10, 10));
-         dfa $$12 = $$1.a_($$10);
-         if (!$$12.r($$1, $$10)) {
-            $$1.a(iv.ax, (double)$$10.u() + $$3.j(), (double)$$10.v() + $$3.j(), (double)$$10.w() + $$3.j(), 0.0, 0.0, 0.0);
-         }
+   private static boolean b(dez $$0, cpo $$1, gu $$2) {
+      gu $$3 = $$2.c();
+      dez $$4 = $$1.a_($$3);
+      if ($$4.a(csm.dN) && $$4.c(czu.b) == 1) {
+         return true;
+      } else if ($$4.u().e() == 8) {
+         return false;
+      } else {
+         int $$5 = dzt.a($$1, $$0, $$2, $$4, $$3, ha.b, $$4.b($$1, $$3));
+         return $$5 < $$1.M();
       }
    }
 
+   private static boolean c(dez $$0, cpo $$1, gu $$2) {
+      gu $$3 = $$2.c();
+      return b($$0, $$1, $$2) && !$$1.b_($$3).a(apq.a);
+   }
+
    @Override
-   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
-      return a;
+   public void b(dez $$0, akk $$1, gu $$2, aru $$3) {
+      if (!b($$0, $$1, $$2)) {
+         $$1.b($$2, csm.j.n());
+      } else {
+         if ($$1.z($$2.c()) >= 9) {
+            dez $$4 = this.n();
+
+            for (int $$5 = 0; $$5 < 4; $$5++) {
+               gu $$6 = $$2.b($$3.a(3) - 1, $$3.a(5) - 3, $$3.a(3) - 1);
+               if ($$1.a_($$6).a(csm.j) && c($$4, $$1, $$6)) {
+                  $$1.b($$6, $$4.a(a, Boolean.valueOf($$1.a_($$6.c()).a(csm.dN))));
+               }
+            }
+         }
+      }
    }
 }

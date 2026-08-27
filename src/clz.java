@@ -1,67 +1,60 @@
-public class clz extends clt {
-   public clz(aer $$0, clr $$1) {
-      super($$0, $$1);
-   }
-
-   public boolean a(ces $$0, cpm $$1) {
-      int $$2 = 0;
-      ciy $$3 = ciy.b;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         ciy $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.a(cjb.rf)) {
-               if (!$$3.b()) {
-                  return false;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cjb.tp)) {
-                  return false;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      return !$$3.b() && $$2 > 0;
-   }
-
-   public ciy a(ces $$0, hs $$1) {
-      int $$2 = 0;
-      ciy $$3 = ciy.b;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         ciy $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.a(cjb.rf)) {
-               if (!$$3.b()) {
-                  return ciy.b;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cjb.tp)) {
-                  return ciy.b;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      return !$$3.b() && $$2 >= 1 ? $$3.c($$2 + 1) : ciy.b;
+public class clz extends cmf {
+   public clz(aer $$0, clq $$1) {
+      super(
+         $$0,
+         "",
+         $$1,
+         3,
+         3,
+         hn.a(clx.a, clx.a(cja.qa), clx.a(cja.qa), clx.a(cja.qa), clx.a(cja.qa), clx.a(cja.rf), clx.a(cja.qa), clx.a(cja.qa), clx.a(cja.qa), clx.a(cja.qa)),
+         new cix(cja.tp)
+      );
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
+   public boolean a(cer $$0, cpl $$1) {
+      if (!super.a($$0, $$1)) {
+         return false;
+      } else {
+         cix $$2 = a($$0);
+         if ($$2.b()) {
+            return false;
+         } else {
+            ebm $$3 = cje.a($$2, $$1);
+            if ($$3 == null) {
+               return false;
+            } else {
+               return $$3.f() ? false : $$3.f < 4;
+            }
+         }
+      }
    }
 
    @Override
-   public cmd<?> aj_() {
-      return cmd.e;
+   public cix a(cer $$0, hs $$1) {
+      cix $$2 = a($$0).c(1);
+      $$2.w().a("map_scale_direction", 1);
+      return $$2;
+   }
+
+   private static cix a(cer $$0) {
+      for (int $$1 = 0; $$1 < $$0.b(); $$1++) {
+         cix $$2 = $$0.a($$1);
+         if ($$2.a(cja.rf)) {
+            return $$2;
+         }
+      }
+
+      return cix.b;
+   }
+
+   @Override
+   public boolean ah_() {
+      return true;
+   }
+
+   @Override
+   public cmc<?> ai_() {
+      return cmc.f;
    }
 }

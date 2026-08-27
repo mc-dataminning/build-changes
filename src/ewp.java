@@ -1,28 +1,91 @@
-public class ewp extends eyb {
-   public ewp(exz $$0, eqq $$1) {
-      super(
-         $$0,
-         $$1,
-         tf.c("options.chat.title"),
-         new eqp[]{
-            $$1.l(),
-            $$1.G(),
-            $$1.H(),
-            $$1.I(),
-            $$1.m(),
-            $$1.o(),
-            $$1.s(),
-            $$1.n(),
-            $$1.w(),
-            $$1.t(),
-            $$1.v(),
-            $$1.u(),
-            $$1.an(),
-            $$1.F(),
-            $$1.Z(),
-            $$1.Q(),
-            $$1.ab()
+import com.mojang.authlib.minecraft.BanDetails;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.time.Duration;
+import java.time.Instant;
+import org.apache.commons.lang3.StringUtils;
+
+public class ewp {
+   private static final tf b = tf.c("gui.banned.title.temporary").a(n.r);
+   private static final tf c = tf.c("gui.banned.title.permanent").a(n.r);
+   public static final tf a = tf.c("gui.banned.name.title").a(n.r);
+   private static final tf d = tf.c("gui.banned.skin.title").a(n.r);
+   private static final tf e = tf.a("gui.banned.skin.description", tf.b("https://aka.ms/mcjavamoderation"));
+
+   public static ews a(BooleanConsumer $$0, BanDetails $$1) {
+      return new ews($$0, a($$1), b($$1), "https://aka.ms/mcjavamoderation", te.m, true);
+   }
+
+   public static ews a(Runnable $$0) {
+      String $$1 = "https://aka.ms/mcjavamoderation";
+      return new ews($$1x -> {
+         if ($$1x) {
+            ac.i().a("https://aka.ms/mcjavamoderation");
          }
-      );
+
+         $$0.run();
+      }, d, e, "https://aka.ms/mcjavamoderation", te.m, true);
+   }
+
+   public static ews a(String $$0, Runnable $$1) {
+      String $$2 = "https://aka.ms/mcjavamoderation";
+      return new ews($$1x -> {
+         if ($$1x) {
+            ac.i().a("https://aka.ms/mcjavamoderation");
+         }
+
+         $$1.run();
+      }, a, tf.a("gui.banned.name.description", tf.b($$0).a(n.o), "https://aka.ms/mcjavamoderation"), "https://aka.ms/mcjavamoderation", te.m, true);
+   }
+
+   private static tf a(BanDetails $$0) {
+      return f($$0) ? b : c;
+   }
+
+   private static tf b(BanDetails $$0) {
+      return tf.a("gui.banned.description", c($$0), d($$0), tf.b("https://aka.ms/mcjavamoderation"));
+   }
+
+   private static tf c(BanDetails $$0) {
+      String $$1 = $$0.reason();
+      String $$2 = $$0.reasonMessage();
+      if (StringUtils.isNumeric($$1)) {
+         int $$3 = Integer.parseInt($$1);
+         fjh $$4 = fjh.a($$3);
+         tf $$5;
+         if ($$4 != null) {
+            $$5 = th.a($$4.a().e(), ub.a.a(true));
+         } else if ($$2 != null) {
+            $$5 = tf.a("gui.banned.description.reason_id_message", $$3, $$2).a(n.r);
+         } else {
+            $$5 = tf.a("gui.banned.description.reason_id", $$3).a(n.r);
+         }
+
+         return tf.a("gui.banned.description.reason", $$5);
+      } else {
+         return tf.c("gui.banned.description.unknownreason");
+      }
+   }
+
+   private static tf d(BanDetails $$0) {
+      if (f($$0)) {
+         tf $$1 = e($$0);
+         return tf.a("gui.banned.description.temporary", tf.a("gui.banned.description.temporary.duration", $$1).a(n.r));
+      } else {
+         return tf.c("gui.banned.description.permanent").a(n.r);
+      }
+   }
+
+   private static tf e(BanDetails $$0) {
+      Duration $$1 = Duration.between(Instant.now(), $$0.expires());
+      long $$2 = $$1.toHours();
+      if ($$2 > 72L) {
+         return te.a($$1.toDays());
+      } else {
+         return $$2 < 1L ? te.c($$1.toMinutes()) : te.b($$1.toHours());
+      }
+   }
+
+   private static boolean f(BanDetails $$0) {
+      return $$0.expires() != null;
    }
 }

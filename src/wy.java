@@ -2,9 +2,9 @@ public class wy implements ux<wp> {
    private final gu a;
    private final int b;
    private final int c;
-   private final csm d;
+   private final csl d;
 
-   public wy(gu $$0, csm $$1, int $$2, int $$3) {
+   public wy(gu $$0, csl $$1, int $$2, int $$3) {
       this.a = $$0;
       this.d = $$1;
       this.b = $$2;
@@ -42,7 +42,7 @@ public class wy implements ux<wp> {
       return this.c;
    }
 
-   public csm f() {
+   public csl f() {
       return this.d;
    }
 }

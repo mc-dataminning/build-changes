@@ -22,13 +22,13 @@ public class pr {
    private boolean j;
    private final Stopwatch k = Stopwatch.createUnstarted();
    private boolean l;
-   private final cyy m;
+   private final cyx m;
    @Nullable
    private Throwable n;
    @Nullable
-   private ddz o;
+   private ddy o;
 
-   public pr(qi $$0, cyy $$1, akk $$2) {
+   public pr(qi $$0, cyx $$1, akk $$2) {
       this.a = $$0;
       this.c = $$2;
       this.e = $$0.c();
@@ -122,19 +122,19 @@ public class pr {
 
    @Nullable
    public hz e() {
-      ddz $$0 = this.C();
+      ddy $$0 = this.C();
       return $$0 == null ? null : $$0.j();
    }
 
    @Nullable
-   public egz f() {
-      ddz $$0 = this.C();
+   public egy f() {
+      ddy $$0 = this.C();
       return $$0 == null ? null : qe.a($$0);
    }
 
    @Nullable
-   private ddz C() {
-      return (ddz)this.c.c_(this.b);
+   private ddy C() {
+      return (ddy)this.c.c_(this.b);
    }
 
    public akk g() {
@@ -205,7 +205,7 @@ public class pr {
       if (this.o == null) {
          throw new IllegalStateException("Expected structure to be initialized, but it was null");
       } else {
-         dur $$0 = qe.b(this.o);
+         duq $$0 = qe.b(this.o);
          qe.a($$0, this.b.v(), this.c);
       }
    }
@@ -232,7 +232,7 @@ public class pr {
       return this.a.b();
    }
 
-   public cyy u() {
+   public cyx u() {
       return this.m;
    }
 

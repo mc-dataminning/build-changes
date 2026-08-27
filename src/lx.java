@@ -4,13 +4,13 @@ import javax.annotation.Nullable;
 
 public class lx {
    private final lq a;
-   private final cly b;
-   private final cly c;
-   private final cly d;
+   private final clx b;
+   private final clx c;
+   private final clx d;
    private final ae.a e = ae.a.b();
-   private final cmd<?> f;
+   private final cmc<?> f;
 
-   public lx(cmd<?> $$0, lq $$1, cly $$2, cly $$3, cly $$4) {
+   public lx(cmc<?> $$0, lq $$1, clx $$2, clx $$3, clx $$4) {
       this.a = $$1;
       this.f = $$0;
       this.b = $$2;
@@ -18,8 +18,8 @@ public class lx {
       this.d = $$4;
    }
 
-   public static lx a(cly $$0, cly $$1, cly $$2, lq $$3) {
-      return new lx(cmd.v, $$3, $$0, $$1, $$2);
+   public static lx a(clx $$0, clx $$1, clx $$2, lq $$3) {
+      return new lx(cmc.v, $$3, $$0, $$1, $$2);
    }
 
    public lx a(String $$0, am $$1) {
@@ -39,7 +39,7 @@ public class lx {
       }
    }
 
-   public static record a(aer a, cmd<?> b, cly c, cly d, cly e, ae.a f, aer g) implements lo {
+   public static record a(aer a, cmc<?> b, clx c, clx d, clx e, ae.a f, aer g) implements lo {
       @Override
       public void a(JsonObject $$0) {
          $$0.add("template", this.c.c());
@@ -53,7 +53,7 @@ public class lx {
       }
 
       @Override
-      public cmd<?> c() {
+      public cmc<?> c() {
          return this.b;
       }
 
@@ -73,19 +73,19 @@ public class lx {
          return this.a;
       }
 
-      public cmd<?> g() {
+      public cmc<?> g() {
          return this.b;
       }
 
-      public cly h() {
+      public clx h() {
          return this.c;
       }
 
-      public cly i() {
+      public clx i() {
          return this.d;
       }
 
-      public cly j() {
+      public clx j() {
          return this.e;
       }
 

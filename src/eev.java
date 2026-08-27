@@ -1,36 +1,47 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
-public class eev extends eex {
-   public static final Codec<eev> a = a(eev::new);
+public record eev(he<cne> b, List<Float> c) implements eff {
+   public static final Codec<eev> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(jb.g.r().fieldOf("enchantment").forGetter(eev::c), Codec.FLOAT.listOf().fieldOf("chances").forGetter(eev::d)).apply($$0, eev::new)
+   );
 
-   eev(List<efg> $$0) {
-      super($$0, efi.b($$0));
+   @Override
+   public efg b() {
+      return efh.l;
    }
 
    @Override
-   public efh b() {
-      return efi.c;
+   public Set<eeo<?>> a() {
+      return ImmutableSet.of(eer.i);
    }
 
-   public static eev.a a(efg.a... $$0) {
-      return new eev.a($$0);
+   public boolean a(ecg $$0) {
+      cix $$1 = $$0.c(eer.i);
+      int $$2 = $$1 != null ? cng.a(this.b.a(), $$1) : 0;
+      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
+      return $$0.b().i() < $$3;
    }
 
-   public static class a extends eex.a {
-      public a(efg.a... $$0) {
-         super($$0);
+   public static eff.a a(cne $$0, float... $$1) {
+      List<Float> $$2 = new ArrayList<>($$1.length);
+
+      for (float $$3 : $$1) {
+         $$2.add($$3);
       }
 
-      @Override
-      public eev.a or(efg.a $$0) {
-         this.a($$0);
-         return this;
-      }
+      return () -> new eev($$0.j(), $$2);
+   }
 
-      @Override
-      protected efg a(List<efg> $$0) {
-         return new eev($$0);
-      }
+   public he<cne> c() {
+      return this.b;
+   }
+
+   public List<Float> d() {
+      return this.c;
    }
 }

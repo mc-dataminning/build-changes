@@ -1,215 +1,105 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
+import java.util.Map;
 
-public class dxg extends duz {
-   private static final String[] e = new String[]{
-      "ruined_portal/portal_1",
-      "ruined_portal/portal_2",
-      "ruined_portal/portal_3",
-      "ruined_portal/portal_4",
-      "ruined_portal/portal_5",
-      "ruined_portal/portal_6",
-      "ruined_portal/portal_7",
-      "ruined_portal/portal_8",
-      "ruined_portal/portal_9",
-      "ruined_portal/portal_10"
+public class dxg {
+   static final gu a = new gu(4, 0, 15);
+   private static final aer[] b = new aer[]{
+      new aer("shipwreck/with_mast"),
+      new aer("shipwreck/sideways_full"),
+      new aer("shipwreck/sideways_fronthalf"),
+      new aer("shipwreck/sideways_backhalf"),
+      new aer("shipwreck/rightsideup_full"),
+      new aer("shipwreck/rightsideup_fronthalf"),
+      new aer("shipwreck/rightsideup_backhalf"),
+      new aer("shipwreck/with_mast_degraded"),
+      new aer("shipwreck/rightsideup_full_degraded"),
+      new aer("shipwreck/rightsideup_fronthalf_degraded"),
+      new aer("shipwreck/rightsideup_backhalf_degraded")
    };
-   private static final String[] f = new String[]{"ruined_portal/giant_portal_1", "ruined_portal/giant_portal_2", "ruined_portal/giant_portal_3"};
-   private static final float g = 0.05F;
-   private static final int h = 15;
-   private final List<dxg.a> i;
-   public static final Codec<dxg> d = RecordCodecBuilder.create(
-      $$0 -> $$0.group(a($$0), aqy.a(dxg.a.a.listOf()).fieldOf("setups").forGetter($$0x -> $$0x.i)).apply($$0, dxg::new)
-   );
+   private static final aer[] c = new aer[]{
+      new aer("shipwreck/with_mast"),
+      new aer("shipwreck/upsidedown_full"),
+      new aer("shipwreck/upsidedown_fronthalf"),
+      new aer("shipwreck/upsidedown_backhalf"),
+      new aer("shipwreck/sideways_full"),
+      new aer("shipwreck/sideways_fronthalf"),
+      new aer("shipwreck/sideways_backhalf"),
+      new aer("shipwreck/rightsideup_full"),
+      new aer("shipwreck/rightsideup_fronthalf"),
+      new aer("shipwreck/rightsideup_backhalf"),
+      new aer("shipwreck/with_mast_degraded"),
+      new aer("shipwreck/upsidedown_full_degraded"),
+      new aer("shipwreck/upsidedown_fronthalf_degraded"),
+      new aer("shipwreck/upsidedown_backhalf_degraded"),
+      new aer("shipwreck/sideways_full_degraded"),
+      new aer("shipwreck/sideways_fronthalf_degraded"),
+      new aer("shipwreck/sideways_backhalf_degraded"),
+      new aer("shipwreck/rightsideup_full_degraded"),
+      new aer("shipwreck/rightsideup_fronthalf_degraded"),
+      new aer("shipwreck/rightsideup_backhalf_degraded")
+   };
+   static final Map<String, aer> d = Map.of("map_chest", ece.H, "treasure_chest", ece.J, "supply_chest", ece.I);
 
-   public dxg(duz.c $$0, List<dxg.a> $$1) {
-      super($$0);
-      this.i = $$1;
+   public static void a(dys $$0, gu $$1, cyx $$2, dvd $$3, aru $$4, boolean $$5) {
+      aer $$6 = ac.a($$5 ? b : c, $$4);
+      $$3.a(new dxg.a($$0, $$6, $$1, $$2, $$5));
    }
 
-   public dxg(duz.c $$0, dxg.a $$1) {
-      this($$0, List.of($$1));
-   }
+   public static class a extends dvi {
+      private final boolean h;
 
-   @Override
-   public Optional<duz.b> a(duz.a $$0) {
-      dxf.a $$1 = new dxf.a();
-      dli $$2 = $$0.f();
-      dxg.a $$3 = null;
-      if (this.i.size() > 1) {
-         float $$4 = 0.0F;
-
-         for (dxg.a $$5 : this.i) {
-            $$4 += $$5.h();
-         }
-
-         float $$6 = $$2.i();
-
-         for (dxg.a $$7 : this.i) {
-            $$6 -= $$7.h() / $$4;
-            if ($$6 < 0.0F) {
-               $$3 = $$7;
-               break;
-            }
-         }
-      } else {
-         $$3 = this.i.get(0);
+      public a(dys $$0, aer $$1, gu $$2, cyx $$3, boolean $$4) {
+         super(dvp.ab, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
+         this.h = $$4;
       }
 
-      if ($$3 == null) {
-         throw new IllegalStateException();
-      } else {
-         dxg.a $$8 = $$3;
-         $$1.d = a($$2, $$8.b());
-         $$1.c = $$8.c();
-         $$1.e = $$8.d();
-         $$1.f = $$8.e();
-         $$1.g = $$8.g();
-         aer $$9;
-         if ($$2.i() < 0.05F) {
-            $$9 = new aer(f[$$2.a(f.length)]);
+      public a(dys $$0, qr $$1) {
+         super(dvp.ab, $$1, $$0, $$1x -> a(cyx.valueOf($$1.l("Rot"))));
+         this.h = $$1.q("isBeached");
+      }
+
+      @Override
+      protected void a(dvo $$0, qr $$1) {
+         super.a($$0, $$1);
+         $$1.a("isBeached", this.h);
+         $$1.a("Rot", this.c.d().name());
+      }
+
+      private static dyn a(cyx $$0) {
+         return new dyn().a($$0).a(cxg.a).a(dxg.a).a(dxt.d);
+      }
+
+      @Override
+      protected void a(String $$0, gu $$1, cqa $$2, aru $$3, duq $$4) {
+         aer $$5 = dxg.d.get($$0);
+         if ($$5 != null) {
+            ddo.a($$2, $$3, $$1.d(), $$5);
+         }
+      }
+
+      @Override
+      public void a(cqf $$0, cqd $$1, dgw $$2, aru $$3, duq $$4, cos $$5, gu $$6) {
+         int $$7 = $$0.aj();
+         int $$8 = 0;
+         hz $$9 = this.b.a();
+         dki.a $$10 = this.h ? dki.a.a : dki.a.c;
+         int $$11 = $$9.u() * $$9.w();
+         if ($$11 == 0) {
+            $$8 = $$0.a($$10, this.d.u(), this.d.w());
          } else {
-            $$9 = new aer(e[$$2.a(e.length)]);
-         }
+            gu $$12 = this.d.b($$9.u() - 1, 0, $$9.w() - 1);
 
-         dys $$11 = $$0.e().a($$9);
-         cyy $$12 = ac.a(cyy.values(), $$2);
-         cxh $$13 = $$2.i() < 0.5F ? cxh.a : cxh.c;
-         gu $$14 = new gu($$11.a().u() / 2, 0, $$11.a().w() / 2);
-         dgx $$15 = $$0.b();
-         cpo $$16 = $$0.i();
-         dkx $$17 = $$0.d();
-         gu $$18 = $$0.h().l();
-         dur $$19 = $$11.a($$18, $$12, $$14, $$13);
-         gu $$20 = $$19.f();
-         int $$21 = $$15.a($$20.u(), $$20.w(), dxf.a($$8.a()), $$16, $$17) - 1;
-         int $$22 = a($$2, $$15, $$8.a(), $$1.d, $$21, $$19.d(), $$19, $$16, $$17);
-         gu $$23 = new gu($$18.u(), $$22, $$18.w());
-         return Optional.of(new duz.b($$23, (Consumer<dvr>)($$10 -> {
-            if ($$8.f()) {
-               $$1.b = a($$23, $$0.b().c().getNoiseBiome(hq.a($$23.u()), hq.a($$23.v()), hq.a($$23.w()), $$17.b()));
+            for (gu $$13 : gu.a(this.d, $$12)) {
+               int $$14 = $$0.a($$10, $$13.u(), $$13.w());
+               $$8 += $$14;
+               $$7 = Math.min($$7, $$14);
             }
 
-            $$10.a(new dxf($$0.e(), $$23, $$8.a(), $$1, $$9, $$11, $$12, $$13, $$14));
-         })));
-      }
-   }
-
-   private static boolean a(dli $$0, float $$1) {
-      if ($$1 == 0.0F) {
-         return false;
-      } else {
-         return $$1 == 1.0F ? true : $$0.i() < $$1;
-      }
-   }
-
-   private static boolean a(gu $$0, he<cqk> $$1) {
-      return $$1.a().b($$0);
-   }
-
-   private static int a(aru $$0, dgx $$1, dxf.b $$2, boolean $$3, int $$4, int $$5, dur $$6, cpo $$7, dkx $$8) {
-      int $$9 = $$7.C_() + 15;
-      int $$10;
-      if ($$2 == dxf.b.f) {
-         if ($$3) {
-            $$10 = arp.b($$0, 32, 100);
-         } else if ($$0.i() < 0.5F) {
-            $$10 = arp.b($$0, 27, 29);
-         } else {
-            $$10 = arp.b($$0, 29, 100);
+            $$8 /= $$11;
          }
-      } else if ($$2 == dxf.b.d) {
-         int $$13 = $$4 - $$5;
-         $$10 = a($$0, 70, $$13);
-      } else if ($$2 == dxf.b.e) {
-         int $$15 = $$4 - $$5;
-         $$10 = a($$0, $$9, $$15);
-      } else if ($$2 == dxf.b.b) {
-         $$10 = $$4 - $$5 + arp.b($$0, 2, 8);
-      } else {
-         $$10 = $$4;
-      }
 
-      List<gu> $$19 = ImmutableList.of(new gu($$6.g(), 0, $$6.i()), new gu($$6.j(), 0, $$6.i()), new gu($$6.g(), 0, $$6.l()), new gu($$6.j(), 0, $$6.l()));
-      List<cpy> $$20 = $$19.stream().map($$3x -> $$1.a($$3x.u(), $$3x.w(), $$7, $$8)).collect(Collectors.toList());
-      dkj.a $$21 = $$2 == dxf.b.c ? dkj.a.c : dkj.a.a;
-
-      int $$22;
-      for ($$22 = $$10; $$22 > $$9; $$22--) {
-         int $$23 = 0;
-
-         for (cpy $$24 : $$20) {
-            dfa $$25 = $$24.a($$22);
-            if ($$21.e().test($$25)) {
-               if (++$$23 == 3) {
-                  return $$22;
-               }
-            }
-         }
-      }
-
-      return $$22;
-   }
-
-   private static int a(aru $$0, int $$1, int $$2) {
-      return $$1 < $$2 ? arp.b($$0, $$1, $$2) : $$2;
-   }
-
-   @Override
-   public dvi<?> e() {
-      return dvi.l;
-   }
-
-   public static record a(dxf.b b, float c, float d, boolean e, boolean f, boolean g, boolean h, float i) {
-      public static final Codec<dxg.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  dxf.b.g.fieldOf("placement").forGetter(dxg.a::a),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("air_pocket_probability").forGetter(dxg.a::b),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("mossiness").forGetter(dxg.a::c),
-                  Codec.BOOL.fieldOf("overgrown").forGetter(dxg.a::d),
-                  Codec.BOOL.fieldOf("vines").forGetter(dxg.a::e),
-                  Codec.BOOL.fieldOf("can_be_cold").forGetter(dxg.a::f),
-                  Codec.BOOL.fieldOf("replace_with_blackstone").forGetter(dxg.a::g),
-                  aqy.k.fieldOf("weight").forGetter(dxg.a::h)
-               )
-               .apply($$0, dxg.a::new)
-      );
-
-      public dxf.b a() {
-         return this.b;
-      }
-
-      public float b() {
-         return this.c;
-      }
-
-      public float c() {
-         return this.d;
-      }
-
-      public boolean d() {
-         return this.e;
-      }
-
-      public boolean e() {
-         return this.f;
-      }
-
-      public boolean f() {
-         return this.g;
-      }
-
-      public boolean g() {
-         return this.h;
-      }
-
-      public float h() {
-         return this.i;
+         int $$15 = this.h ? $$7 - $$9.v() / 2 - $$3.a(3) : $$8;
+         this.d = new gu(this.d.u(), $$15, this.d.w());
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       }
    }
 }

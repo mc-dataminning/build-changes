@@ -1,51 +1,43 @@
-public class gbw {
-   public static class a extends gbc {
-      private final fmn n;
+public class gbw extends gbl {
+   private static final float n = 0.0F;
+   private static final float o = 0.75F;
+   private final cbm p;
+   private final cdd q;
+   private final boolean r;
 
-      protected a(fmn $$0, aov $$1) {
-         super($$1, aox.i, gbt.t());
-         this.n = $$0;
-         this.i = false;
-         this.j = 0;
-         this.d = 1.0F;
-         this.l = true;
-      }
-
-      @Override
-      public void q() {
-         if (this.n.dF() || !this.n.bc()) {
-            this.n();
-         }
-      }
+   public gbw(cbm $$0, cdd $$1, boolean $$2) {
+      super($$2 ? aow.ng : aow.nh, aox.g, gcc.t());
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      this.k = gcc.a.a;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
    }
 
-   public static class b extends gbc {
-      public static final int n = 40;
-      private final fmn o;
-      private int p;
+   @Override
+   public boolean s() {
+      return !this.q.aS();
+   }
 
-      public b(fmn $$0) {
-         super(aow.z, aox.i, gbt.t());
-         this.o = $$0;
-         this.i = true;
-         this.j = 0;
-         this.d = 1.0F;
-         this.l = true;
-      }
+   @Override
+   public boolean r() {
+      return true;
+   }
 
-      @Override
-      public void q() {
-         if (!this.o.dF() && this.p >= 0) {
-            if (this.o.bc()) {
-               this.p++;
-            } else {
-               this.p -= 2;
-            }
-
-            this.p = Math.min(this.p, 40);
-            this.d = Math.max(0.0F, Math.min((float)this.p / 40.0F, 1.0F));
+   @Override
+   public void q() {
+      if (this.q.dF() || !this.p.bN() || this.p.cY() != this.q) {
+         this.n();
+      } else if (this.r != this.p.bc()) {
+         this.d = 0.0F;
+      } else {
+         float $$0 = (float)this.q.dn().h();
+         if ($$0 >= 0.01F) {
+            this.d = arp.b(0.0F, 0.75F, $$0);
          } else {
-            this.n();
+            this.d = 0.0F;
          }
       }
    }

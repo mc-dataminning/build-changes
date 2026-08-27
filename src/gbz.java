@@ -1,33 +1,99 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.function.Function;
-import java.util.function.ToIntFunction;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class gbz<T> implements gcd<T> {
-   protected final Comparator<T> a;
-   protected final gce<T> b;
+public class gbz implements gdi<gbz> {
+   public static final aek a = new aek("sounds", ".ogg");
+   private final aer b;
+   private final bfy c;
+   private final bfy d;
+   private final int e;
+   private final gbz.a f;
+   private final boolean g;
+   private final boolean h;
+   private final int i;
 
-   public gbz(Function<T, Stream<aer>> $$0, List<T> $$1) {
-      ToIntFunction<T> $$2 = ac.e($$1);
-      this.a = Comparator.comparingInt($$2);
-      this.b = gce.a($$1, $$0);
+   public gbz(String $$0, bfy $$1, bfy $$2, int $$3, gbz.a $$4, boolean $$5, boolean $$6, int $$7) {
+      this.b = new aer($$0);
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+   }
+
+   public aer a() {
+      return this.b;
+   }
+
+   public aer b() {
+      return a.a(this.b);
+   }
+
+   public bfy c() {
+      return this.c;
+   }
+
+   public bfy d() {
+      return this.d;
    }
 
    @Override
-   public List<T> search(String $$0) {
-      int $$1 = $$0.indexOf(58);
-      return $$1 == -1 ? this.a($$0) : this.a($$0.substring(0, $$1).trim(), $$0.substring($$1 + 1).trim());
+   public int e() {
+      return this.e;
    }
 
-   protected List<T> a(String $$0) {
-      return this.b.b($$0);
+   public gbz a(aru $$0) {
+      return this;
    }
 
-   protected List<T> a(String $$0, String $$1) {
-      List<T> $$2 = this.b.a($$0);
-      List<T> $$3 = this.b.b($$1);
-      return ImmutableList.copyOf(new gca<T>($$2.iterator(), $$3.iterator(), this.a));
+   @Override
+   public void a(gdd $$0) {
+      if (this.h) {
+         $$0.a(this);
+      }
+   }
+
+   public gbz.a f() {
+      return this.f;
+   }
+
+   public boolean g() {
+      return this.g;
+   }
+
+   public boolean h() {
+      return this.h;
+   }
+
+   public int i() {
+      return this.i;
+   }
+
+   @Override
+   public String toString() {
+      return "Sound[" + this.b + "]";
+   }
+
+   public static enum a {
+      a("file"),
+      b("event");
+
+      private final String c;
+
+      private a(String $$0) {
+         this.c = $$0;
+      }
+
+      @Nullable
+      public static gbz.a a(String $$0) {
+         for (gbz.a $$1 : values()) {
+            if ($$1.c.equals($$0)) {
+               return $$1;
+            }
+         }
+
+         return null;
+      }
    }
 }

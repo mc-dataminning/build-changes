@@ -16,7 +16,7 @@ public class by extends cu<by.a> {
       return new by.a($$1, $$3, $$4, $$5);
    }
 
-   public void a(akl $$0, ciy $$1, int $$2) {
+   public void a(akl $$0, cix $$1, int $$2) {
       this.a($$0, $$2x -> $$2x.a($$1, $$2));
    }
 
@@ -40,7 +40,7 @@ public class by extends cu<by.a> {
          return new by.a($$0, $$1, $$2, cj.d.c);
       }
 
-      public boolean a(ciy $$0, int $$1) {
+      public boolean a(cix $$0, int $$1) {
          if (this.a.isPresent() && !this.a.get().a($$0)) {
             return false;
          } else {

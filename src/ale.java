@@ -24,11 +24,11 @@ public class ale {
       this.g = $$0;
    }
 
-   public void a(dhh $$0) {
+   public void a(dhg $$0) {
       this.f.add($$0.f().a());
    }
 
-   public void a(akl $$0, cot $$1) {
+   public void a(akl $$0, cos $$1) {
       if (!this.f.remove($$1.a()) && $$0.bv()) {
          $$0.c.b(new xu($$1));
       }
@@ -42,13 +42,13 @@ public class ale {
             if (!this.f.isEmpty()) {
                akk $$2 = $$0.x();
                ajv $$3 = $$2.k().a;
-               List<dhh> $$4 = this.a($$3, $$0.dm());
+               List<dhg> $$4 = this.a($$3, $$0.dm());
                if (!$$4.isEmpty()) {
                   ali $$5 = $$0.c;
                   this.j++;
                   $$5.b(new xe());
 
-                  for (dhh $$6 : $$4) {
+                  for (dhg $$6 : $$4) {
                      a($$5, $$2, $$6);
                   }
 
@@ -60,15 +60,15 @@ public class ale {
       }
    }
 
-   private static void a(ali $$0, akk $$1, dhh $$2) {
+   private static void a(ali $$0, akk $$1, dhg $$2) {
       $$0.b(new ya($$2, $$1.s_(), null, null));
-      cot $$3 = $$2.f();
+      cos $$3 = $$2.f();
       aav.a($$1, $$3);
    }
 
-   private List<dhh> a(ajv $$0, cot $$1) {
+   private List<dhg> a(ajv $$0, cos $$1) {
       int $$2 = arp.d(this.i);
-      List<dhh> $$4;
+      List<dhg> $$4;
       if (!this.g && this.f.size() > $$2) {
          $$4 = this.f
             .stream()

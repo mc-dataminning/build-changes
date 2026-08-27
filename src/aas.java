@@ -3,9 +3,9 @@ import java.util.Collection;
 import java.util.List;
 
 public class aas implements ux<wp> {
-   private final List<cmb<?>> a;
+   private final List<cma<?>> a;
 
-   public aas(Collection<cmb<?>> $$0) {
+   public aas(Collection<cma<?>> $$0) {
       this.a = Lists.newArrayList($$0);
    }
 
@@ -22,19 +22,19 @@ public class aas implements ux<wp> {
       $$0.a(this);
    }
 
-   public List<cmb<?>> a() {
+   public List<cma<?>> a() {
       return this.a;
    }
 
-   public static cmb<?> b(si $$0) {
+   public static cma<?> b(si $$0) {
       aer $$1 = $$0.s();
       aer $$2 = $$0.s();
       return jb.u.b($$1).orElseThrow(() -> new IllegalArgumentException("Unknown recipe serializer " + $$1)).a($$2, $$0);
    }
 
-   public static <T extends cmb<?>> void a(si $$0, T $$1) {
-      $$0.a(jb.u.b($$1.aj_()));
+   public static <T extends cma<?>> void a(si $$0, T $$1) {
+      $$0.a(jb.u.b($$1.ai_()));
       $$0.a($$1.e());
-      ((cmd<T>)$$1.aj_()).a($$0, $$1);
+      ((cmc<T>)$$1.ai_()).a($$0, $$1);
    }
 }

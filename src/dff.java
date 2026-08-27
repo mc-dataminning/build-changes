@@ -1,174 +1,96 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.MoreObjects;
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
+import com.google.common.base.Joiner;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.lang.reflect.Array;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 
 public class dff {
-   private final Predicate<dfe>[][][] a;
-   private final int b;
-   private final int c;
-   private final int d;
+   private static final Joiner a = Joiner.on(",");
+   private final List<String[]> b = Lists.newArrayList();
+   private final Map<Character, Predicate<dfd>> c = Maps.newHashMap();
+   private int d;
+   private int e;
 
-   public dff(Predicate<dfe>[][][] $$0) {
-      this.a = $$0;
-      this.b = $$0.length;
-      if (this.b > 0) {
-         this.c = $$0[0].length;
-         if (this.c > 0) {
-            this.d = $$0[0][0].length;
+   private dff() {
+      this.c.put(' ', $$0 -> true);
+   }
+
+   public dff a(String... $$0) {
+      if (!ArrayUtils.isEmpty($$0) && !StringUtils.isEmpty($$0[0])) {
+         if (this.b.isEmpty()) {
+            this.d = $$0.length;
+            this.e = $$0[0].length();
+         }
+
+         if ($$0.length != this.d) {
+            throw new IllegalArgumentException("Expected aisle with height of " + this.d + ", but was given one with a height of " + $$0.length + ")");
          } else {
-            this.d = 0;
-         }
-      } else {
-         this.c = 0;
-         this.d = 0;
-      }
-   }
-
-   public int a() {
-      return this.b;
-   }
-
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   @VisibleForTesting
-   public Predicate<dfe>[][][] d() {
-      return this.a;
-   }
-
-   @Nullable
-   @VisibleForTesting
-   public dff.b a(cpp $$0, gu $$1, ha $$2, ha $$3) {
-      LoadingCache<gu, dfe> $$4 = a($$0, false);
-      return this.a($$1, $$2, $$3, $$4);
-   }
-
-   @Nullable
-   private dff.b a(gu $$0, ha $$1, ha $$2, LoadingCache<gu, dfe> $$3) {
-      for (int $$4 = 0; $$4 < this.d; $$4++) {
-         for (int $$5 = 0; $$5 < this.c; $$5++) {
-            for (int $$6 = 0; $$6 < this.b; $$6++) {
-               if (!this.a[$$6][$$5][$$4].test((dfe)$$3.getUnchecked(a($$0, $$1, $$2, $$4, $$5, $$6)))) {
-                  return null;
+            for (String $$1 : $$0) {
+               if ($$1.length() != this.e) {
+                  throw new IllegalArgumentException(
+                     "Not all rows in the given aisle are the correct width (expected " + this.e + ", found one with " + $$1.length() + ")"
+                  );
                }
-            }
-         }
-      }
 
-      return new dff.b($$0, $$1, $$2, $$3, this.d, this.c, this.b);
-   }
-
-   @Nullable
-   public dff.b a(cpp $$0, gu $$1) {
-      LoadingCache<gu, dfe> $$2 = a($$0, false);
-      int $$3 = Math.max(Math.max(this.d, this.c), this.b);
-
-      for (gu $$4 : gu.a($$1, $$1.b($$3 - 1, $$3 - 1, $$3 - 1))) {
-         for (ha $$5 : ha.values()) {
-            for (ha $$6 : ha.values()) {
-               if ($$6 != $$5 && $$6 != $$5.g()) {
-                  dff.b $$7 = this.a($$4, $$5, $$6, $$2);
-                  if ($$7 != null) {
-                     return $$7;
+               for (char $$2 : $$1.toCharArray()) {
+                  if (!this.c.containsKey($$2)) {
+                     this.c.put($$2, null);
                   }
                }
             }
+
+            this.b.add($$0);
+            return this;
+         }
+      } else {
+         throw new IllegalArgumentException("Empty pattern for aisle");
+      }
+   }
+
+   public static dff a() {
+      return new dff();
+   }
+
+   public dff a(char $$0, Predicate<dfd> $$1) {
+      this.c.put($$0, $$1);
+      return this;
+   }
+
+   public dfe b() {
+      return new dfe(this.c());
+   }
+
+   private Predicate<dfd>[][][] c() {
+      this.d();
+      Predicate<dfd>[][][] $$0 = (Predicate<dfd>[][][])Array.newInstance(Predicate.class, this.b.size(), this.d, this.e);
+
+      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
+         for (int $$2 = 0; $$2 < this.d; $$2++) {
+            for (int $$3 = 0; $$3 < this.e; $$3++) {
+               $$0[$$1][$$2][$$3] = this.c.get(this.b.get($$1)[$$2].charAt($$3));
+            }
          }
       }
 
-      return null;
+      return $$0;
    }
 
-   public static LoadingCache<gu, dfe> a(cpp $$0, boolean $$1) {
-      return CacheBuilder.newBuilder().build(new dff.a($$0, $$1));
-   }
+   private void d() {
+      List<Character> $$0 = Lists.newArrayList();
 
-   protected static gu a(gu $$0, ha $$1, ha $$2, int $$3, int $$4, int $$5) {
-      if ($$1 != $$2 && $$1 != $$2.g()) {
-         hz $$6 = new hz($$1.j(), $$1.k(), $$1.l());
-         hz $$7 = new hz($$2.j(), $$2.k(), $$2.l());
-         hz $$8 = $$6.d($$7);
-         return $$0.b(
-            $$7.u() * -$$4 + $$8.u() * $$3 + $$6.u() * $$5, $$7.v() * -$$4 + $$8.v() * $$3 + $$6.v() * $$5, $$7.w() * -$$4 + $$8.w() * $$3 + $$6.w() * $$5
-         );
-      } else {
-         throw new IllegalArgumentException("Invalid forwards & up combination");
-      }
-   }
-
-   static class a extends CacheLoader<gu, dfe> {
-      private final cpp a;
-      private final boolean b;
-
-      public a(cpp $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      for (Entry<Character, Predicate<dfd>> $$1 : this.c.entrySet()) {
+         if ($$1.getValue() == null) {
+            $$0.add($$1.getKey());
+         }
       }
 
-      public dfe a(gu $$0) {
-         return new dfe(this.a, $$0, this.b);
-      }
-   }
-
-   public static class b {
-      private final gu a;
-      private final ha b;
-      private final ha c;
-      private final LoadingCache<gu, dfe> d;
-      private final int e;
-      private final int f;
-      private final int g;
-
-      public b(gu $$0, ha $$1, ha $$2, LoadingCache<gu, dfe> $$3, int $$4, int $$5, int $$6) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-      }
-
-      public gu a() {
-         return this.a;
-      }
-
-      public ha b() {
-         return this.b;
-      }
-
-      public ha c() {
-         return this.c;
-      }
-
-      public int d() {
-         return this.e;
-      }
-
-      public int e() {
-         return this.f;
-      }
-
-      public int f() {
-         return this.g;
-      }
-
-      public dfe a(int $$0, int $$1, int $$2) {
-         return (dfe)this.d.getUnchecked(dff.a(this.a, this.b(), this.c(), $$0, $$1, $$2));
-      }
-
-      @Override
-      public String toString() {
-         return MoreObjects.toStringHelper(this).add("up", this.c).add("forwards", this.b).add("frontTopLeft", this.a).toString();
+      if (!$$0.isEmpty()) {
+         throw new IllegalStateException("Predicates for character(s) " + a.join($$0) + " are missing");
       }
    }
 }

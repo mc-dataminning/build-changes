@@ -1,47 +1,46 @@
 import com.mojang.serialization.Codec;
 
-public class dnu extends dnn<dpy> {
-   public dnu(Codec<dpy> $$0) {
+public class dnu extends dmp {
+   public dnu(Codec<dps> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dnp<dpy> $$0) {
-      cqg $$1 = $$0.b();
-      gu $$2 = $$0.e();
-      aru $$3 = $$0.d();
-      if (!$$1.t($$2)) {
-         return false;
-      } else {
-         dfa $$4 = $$1.a_($$2.c());
-         if (!$$4.a(csn.dW) && !$$4.a(csn.dZ) && !$$4.a(csn.pr)) {
-            return false;
-         } else {
-            $$1.a($$2, csn.ed.n(), 2);
+   protected void a(cpm $$0, aru $$1, gu $$2, int $$3, gu.a $$4, dps $$5) {
+      int $$6 = $$5.d;
 
-            for (int $$5 = 0; $$5 < 1500; $$5++) {
-               gu $$6 = $$2.b($$3.a(8) - $$3.a(8), -$$3.a(12), $$3.a(8) - $$3.a(8));
-               if ($$1.a_($$6).i()) {
-                  int $$7 = 0;
-
-                  for (ha $$8 : ha.values()) {
-                     if ($$1.a_($$6.a($$8)).a(csn.ed)) {
-                        $$7++;
-                     }
-
-                     if ($$7 > 1) {
-                        break;
-                     }
+      for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
+         for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
+            boolean $$9 = $$7 == -$$6;
+            boolean $$10 = $$7 == $$6;
+            boolean $$11 = $$8 == -$$6;
+            boolean $$12 = $$8 == $$6;
+            boolean $$13 = $$9 || $$10;
+            boolean $$14 = $$11 || $$12;
+            if (!$$13 || !$$14) {
+               $$4.a($$2, $$7, $$3, $$8);
+               if (!$$0.a_($$4).i($$0, $$4)) {
+                  boolean $$15 = $$9 || $$14 && $$7 == 1 - $$6;
+                  boolean $$16 = $$10 || $$14 && $$7 == $$6 - 1;
+                  boolean $$17 = $$11 || $$13 && $$8 == 1 - $$6;
+                  boolean $$18 = $$12 || $$13 && $$8 == $$6 - 1;
+                  dez $$19 = $$5.b.a($$1, $$2);
+                  if ($$19.b(cwf.d) && $$19.b(cwf.b) && $$19.b(cwf.a) && $$19.b(cwf.c)) {
+                     $$19 = $$19.a(cwf.d, Boolean.valueOf($$15))
+                        .a(cwf.b, Boolean.valueOf($$16))
+                        .a(cwf.a, Boolean.valueOf($$17))
+                        .a(cwf.c, Boolean.valueOf($$18));
                   }
 
-                  if ($$7 == 1) {
-                     $$1.a($$6, csn.ed.n(), 2);
-                  }
+                  this.a($$0, $$4, $$19);
                }
             }
-
-            return true;
          }
       }
+   }
+
+   @Override
+   protected int a(int $$0, int $$1, int $$2, int $$3) {
+      return $$3 <= 3 ? 0 : $$2;
    }
 }

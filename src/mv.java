@@ -1,6 +1,6 @@
 import java.util.concurrent.CompletableFuture;
 
-public class mv extends my<byc> {
+public class mv extends my<byb> {
    public mv(jk $$0, CompletableFuture<hg.b> $$1) {
       super($$0, jc.P, $$1);
    }
@@ -9,32 +9,32 @@ public class mv extends my<byc> {
    protected void a(hg.b $$0) {
       this.b(apu.a)
          .a(
-            byd.a,
-            byd.b,
-            byd.c,
-            byd.d,
-            byd.e,
-            byd.f,
-            byd.g,
-            byd.h,
-            byd.i,
-            byd.j,
-            byd.k,
-            byd.l,
-            byd.m,
-            byd.n,
-            byd.o,
-            byd.p,
-            byd.q,
-            byd.r,
-            byd.s,
-            byd.t,
-            byd.u,
-            byd.v,
-            byd.w,
-            byd.x,
-            byd.y,
-            byd.z
+            byc.a,
+            byc.b,
+            byc.c,
+            byc.d,
+            byc.e,
+            byc.f,
+            byc.g,
+            byc.h,
+            byc.i,
+            byc.j,
+            byc.k,
+            byc.l,
+            byc.m,
+            byc.n,
+            byc.o,
+            byc.p,
+            byc.q,
+            byc.r,
+            byc.s,
+            byc.t,
+            byc.u,
+            byc.v,
+            byc.w,
+            byc.x,
+            byc.y,
+            byc.z
          );
    }
 }

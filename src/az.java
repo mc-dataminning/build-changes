@@ -13,7 +13,7 @@ public class az extends cu<az.a> {
       return new az.a($$1, bz.a($$0.get("item")));
    }
 
-   public void a(akl $$0, ciy $$1) {
+   public void a(akl $$0, cix $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -33,11 +33,11 @@ public class az extends cu<az.a> {
          return new az.a(Optional.empty(), Optional.of($$0));
       }
 
-      public static az.a a(cpl $$0) {
+      public static az.a a(cpk $$0) {
          return new az.a(Optional.empty(), bz.a.a().a($$0.k()).b());
       }
 
-      public boolean a(ciy $$0) {
+      public boolean a(cix $$0) {
          return this.a.isEmpty() || this.a.get().a($$0);
       }
 

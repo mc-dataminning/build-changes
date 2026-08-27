@@ -34,8 +34,8 @@ public class Main {
    public static void main(String[] $$0) {
       Stopwatch $$1 = Stopwatch.createStarted(Ticker.systemTicker());
       Stopwatch $$2 = Stopwatch.createStarted(Ticker.systemTicker());
-      gdm.a.a(gdi.z, $$1);
-      gdm.a.a(gdi.A, $$2);
+      gdv.a.a(gdr.z, $$1);
+      gdv.a.a(gdr.A, $$2);
       aa.a();
       aa.d();
       OptionParser $$3 = new OptionParser();
@@ -70,7 +70,7 @@ public class Main {
       OptionSpec<String> $$26 = $$3.accepts("userProperties").withRequiredArg().defaultsTo("{}", new String[0]);
       OptionSpec<String> $$27 = $$3.accepts("profileProperties").withRequiredArg().defaultsTo("{}", new String[0]);
       OptionSpec<String> $$28 = $$3.accepts("assetIndex").withRequiredArg();
-      OptionSpec<String> $$29 = $$3.accepts("userType").withRequiredArg().defaultsTo(erb.a.a.a(), new String[0]);
+      OptionSpec<String> $$29 = $$3.accepts("userType").withRequiredArg().defaultsTo(era.a.a.a(), new String[0]);
       OptionSpec<String> $$30 = $$3.accepts("versionType").withRequiredArg().defaultsTo("release", new String[0]);
       OptionSpec<String> $$31 = $$3.nonOptions();
       OptionSet $$32 = $$3.parse($$0);
@@ -129,29 +129,29 @@ public class Main {
 
       o.h();
       aet.a();
-      gdm.a.a(aet.b.get());
+      gdv.a.a(aet.b.get());
       aet.c();
       ac.l();
       String $$62 = (String)$$29.value($$32);
-      erb.a $$63 = erb.a.a($$62);
+      era.a $$63 = era.a.a($$62);
       if ($$63 == null) {
          a.warn("Unrecognized user type: {}", $$62);
       }
 
-      erb $$64 = new erb((String)$$16.value($$32), $$54, (String)$$20.value($$32), a($$56), a($$57), $$63);
-      fdh $$65 = new fdh(
-         new fdh.d($$64, $$48, $$49, $$35),
-         new ejx($$38, $$39, $$40, $$41, $$42),
-         new fdh.a($$51, $$53, $$52, $$55),
-         new fdh.b($$43, $$46, $$50, $$44, $$45),
-         new fdh.c($$58, $$59, $$60, $$61)
+      era $$64 = new era((String)$$16.value($$32), $$54, (String)$$20.value($$32), a($$56), a($$57), $$63);
+      fdm $$65 = new fdm(
+         new fdm.d($$64, $$48, $$49, $$35),
+         new ejw($$38, $$39, $$40, $$41, $$42),
+         new fdm.a($$51, $$53, $$52, $$55),
+         new fdm.b($$43, $$46, $$50, $$44, $$45),
+         new fdm.c($$58, $$59, $$60, $$61)
       );
       Thread $$66 = new Thread("Client Shutdown Thread") {
          @Override
          public void run() {
-            eqm $$0 = eqm.O();
+            eql $$0 = eql.O();
             if ($$0 != null) {
-               gck $$1 = $$0.T();
+               gct $$1 = $$0.T();
                if ($$1 != null) {
                   $$1.a(true);
                }
@@ -161,27 +161,27 @@ public class Main {
       $$66.setUncaughtExceptionHandler(new r(a));
       Runtime.getRuntime().addShutdownHook($$66);
 
-      final eqm $$67;
+      final eql $$67;
       try {
          Thread.currentThread().setName("Render thread");
          RenderSystem.initRenderThread();
          RenderSystem.beginInitialization();
-         $$67 = new eqm($$65);
+         $$67 = new eql($$65);
          RenderSystem.finishInitialization();
-      } catch (fdi var81) {
+      } catch (fdn var81) {
          a.warn("Failed to create window: ", var81);
          return;
       } catch (Throwable var82) {
          o $$70 = o.a(var82, "Initializing game");
          p $$71 = $$70.a("Initialization");
          arq.a($$71);
-         eqm.a(null, null, $$65.d.b, null, $$70);
-         eqm.c($$70);
+         eql.a(null, null, $$65.d.b, null, $$70);
+         eql.c($$70);
          return;
       }
 
       Thread $$73;
-      if ($$67.aM()) {
+      if ($$67.aL()) {
          $$73 = new Thread("Game thread") {
             @Override
             public void run() {
@@ -208,7 +208,7 @@ public class Main {
          }
       }
 
-      elc.a();
+      elb.a();
 
       try {
          $$67.q();

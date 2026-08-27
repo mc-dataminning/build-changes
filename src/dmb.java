@@ -1,21 +1,18 @@
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.Codec;
 
-public abstract class dmb implements dlq {
-   protected final hz f;
+class dmb implements dlp {
+   public static dmb a = new dmb();
+   public static final Codec<dmb> e = Codec.unit(() -> a);
 
-   protected static <P extends dmb> P1<Mu<P>, hz> a(Instance<P> $$0) {
-      return $$0.group(hz.v(16).optionalFieldOf("offset", hz.g).forGetter($$0x -> $$0x.f));
+   private dmb() {
    }
 
-   protected dmb(hz $$0) {
-      this.f = $$0;
+   public boolean a(cqf $$0, gu $$1) {
+      return true;
    }
 
-   public final boolean a(cqg $$0, gu $$1) {
-      return this.a($$0.a_($$1.a(this.f)));
+   @Override
+   public dlq<?> a() {
+      return dlq.l;
    }
-
-   protected abstract boolean a(dfa var1);
 }

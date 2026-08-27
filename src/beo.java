@@ -1,5 +1,5 @@
 import java.util.List;
 
 public interface beo {
-   List<bel> bl();
+   List<bel> bk();
 }

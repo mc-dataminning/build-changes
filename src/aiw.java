@@ -21,8 +21,8 @@ public class aiw {
       );
    }
 
-   private static int a(dr $$0, Collection<? extends cbn> $$1, int $$2) {
-      for (cbn $$3 : $$1) {
+   private static int a(dr $$0, Collection<? extends cbm> $$1, int $$2) {
+      for (cbm $$3 : $$1) {
          $$3.Y().ifPresent($$1x -> $$1x.a($$2));
       }
 
@@ -35,9 +35,9 @@ public class aiw {
       return $$1.size();
    }
 
-   private static int a(dr $$0, Collection<? extends cbn> $$1) {
-      for (cbn $$2 : $$1) {
-         $$2.Y().ifPresent(cat::b);
+   private static int a(dr $$0, Collection<? extends cbm> $$1) {
+      for (cbm $$2 : $$1) {
+         $$2.Y().ifPresent(cas::b);
       }
 
       if ($$1.size() == 1) {

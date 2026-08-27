@@ -1,17 +1,18 @@
 import com.mojang.serialization.Codec;
 import javax.annotation.Nullable;
 
-public class dyy implements dza {
-   private static final dyy b = new dyy();
-   public static final Codec<dyy> a = Codec.unit(b);
+public class dyy implements dyz {
+   public static final dyy a = new dyy();
+   public static final Codec<dyy> b = Codec.unit(a);
 
+   @Nullable
    @Override
    public qr a(aru $$0, @Nullable qr $$1) {
-      return new qr();
+      return $$1;
    }
 
    @Override
-   public dzb<?> a() {
-      return dzb.a;
+   public dza<?> a() {
+      return dza.b;
    }
 }

@@ -10,7 +10,7 @@ public class yo implements ux<wp> {
    private final float i;
    private final float j;
 
-   public yo(cbk $$0) {
+   public yo(cbj $$0) {
       this.e = $$0.a;
       this.f = $$0.b;
       this.g = $$0.c;

@@ -1,104 +1,58 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.io.DataInput;
-import java.io.DataInputStream;
-import java.io.DataOutput;
-import java.io.DataOutputStream;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.io.BufferedOutputStream;
 import java.io.IOException;
-import java.nio.file.Path;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.zip.DeflaterOutputStream;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
+import java.util.zip.InflaterInputStream;
 import javax.annotation.Nullable;
 
-public final class did implements AutoCloseable {
-   public static final String a = ".mca";
-   private static final int b = 256;
-   private final Long2ObjectLinkedOpenHashMap<dic> c = new Long2ObjectLinkedOpenHashMap();
-   private final Path d;
-   private final boolean e;
+public class did {
+   private static final Int2ObjectMap<did> d = new Int2ObjectOpenHashMap();
+   public static final did a = a(new did(1, $$0 -> new aqz(new GZIPInputStream($$0)), $$0 -> new BufferedOutputStream(new GZIPOutputStream($$0))));
+   public static final did b = a(new did(2, $$0 -> new aqz(new InflaterInputStream($$0)), $$0 -> new BufferedOutputStream(new DeflaterOutputStream($$0))));
+   public static final did c = a(new did(3, $$0 -> $$0, $$0 -> $$0));
+   private final int e;
+   private final did.a<InputStream> f;
+   private final did.a<OutputStream> g;
 
-   did(Path $$0, boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   private did(int $$0, did.a<InputStream> $$1, did.a<OutputStream> $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   private dic b(cot $$0) throws IOException {
-      long $$1 = cot.c($$0.h(), $$0.i());
-      dic $$2 = (dic)this.c.getAndMoveToFirst($$1);
-      if ($$2 != null) {
-         return $$2;
-      } else {
-         if (this.c.size() >= 256) {
-            ((dic)this.c.removeLast()).close();
-         }
-
-         v.c(this.d);
-         Path $$3 = this.d.resolve("r." + $$0.h() + "." + $$0.i() + ".mca");
-         dic $$4 = new dic($$3, this.d, this.e);
-         this.c.putAndMoveToFirst($$1, $$4);
-         return $$4;
-      }
+   private static did a(did $$0) {
+      d.put($$0.e, $$0);
+      return $$0;
    }
 
    @Nullable
-   public qr a(cot $$0) throws IOException {
-      dic $$1 = this.b($$0);
-
-      qr var4;
-      try (DataInputStream $$2 = $$1.a($$0)) {
-         if ($$2 == null) {
-            return null;
-         }
-
-         var4 = rb.a((DataInput)$$2);
-      }
-
-      return var4;
+   public static did a(int $$0) {
+      return (did)d.get($$0);
    }
 
-   public void a(cot $$0, rh $$1) throws IOException {
-      dic $$2 = this.b($$0);
-
-      try (DataInputStream $$3 = $$2.a($$0)) {
-         if ($$3 != null) {
-            rb.a((DataInput)$$3, $$1);
-         }
-      }
+   public static boolean b(int $$0) {
+      return d.containsKey($$0);
    }
 
-   protected void a(cot $$0, @Nullable qr $$1) throws IOException {
-      dic $$2 = this.b($$0);
-      if ($$1 == null) {
-         $$2.d($$0);
-      } else {
-         try (DataOutputStream $$3 = $$2.c($$0)) {
-            rb.a($$1, (DataOutput)$$3);
-         }
-      }
+   public int a() {
+      return this.e;
    }
 
-   @Override
-   public void close() throws IOException {
-      aqx<IOException> $$0 = new aqx<>();
-      ObjectIterator var2 = this.c.values().iterator();
-
-      while (var2.hasNext()) {
-         dic $$1 = (dic)var2.next();
-
-         try {
-            $$1.close();
-         } catch (IOException var5) {
-            $$0.a(var5);
-         }
-      }
-
-      $$0.a();
+   public OutputStream a(OutputStream $$0) throws IOException {
+      return this.g.wrap($$0);
    }
 
-   public void a() throws IOException {
-      ObjectIterator var1 = this.c.values().iterator();
+   public InputStream a(InputStream $$0) throws IOException {
+      return this.f.wrap($$0);
+   }
 
-      while (var1.hasNext()) {
-         dic $$0 = (dic)var1.next();
-         $$0.a();
-      }
+   @FunctionalInterface
+   interface a<O> {
+      O wrap(O var1) throws IOException;
    }
 }

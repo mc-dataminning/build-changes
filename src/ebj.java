@@ -1,116 +1,111 @@
-import java.util.Objects;
+import com.mojang.serialization.Codec;
 import javax.annotation.Nullable;
 
-public class ebj {
-   private final gu a;
-   private final chm b;
-   @Nullable
-   private final tf c;
-
-   public ebj(gu $$0, chm $$1, @Nullable tf $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+public record ebj(ebj.a a, byte b, byte c, byte d, @Nullable tf e) {
+   public byte a() {
+      return this.a.a();
    }
 
-   public static ebj a(qr $$0) {
-      gu $$1 = rd.b($$0.p("Pos"));
-      chm $$2 = chm.a($$0.l("Color"), chm.a);
-      tf $$3 = $$0.e("Name") ? tf.a.a($$0.l("Name")) : null;
-      return new ebj($$1, $$2, $$3);
+   public boolean b() {
+      return this.a.b();
    }
 
-   @Nullable
-   public static ebj a(cos $$0, gu $$1) {
-      if ($$0.c_($$1) instanceof dcc $$3) {
-         chm $$4 = $$3.g();
-         tf $$5 = $$3.ac() ? $$3.ad() : null;
-         return new ebj($$1, $$4, $$5);
-      } else {
-         return null;
-      }
-   }
-
-   public gu a() {
+   public ebj.a c() {
       return this.a;
    }
 
-   public chm b() {
+   public byte d() {
       return this.b;
    }
 
-   public ebk.a c() {
-      switch (this.b) {
-         case a:
-            return ebk.a.k;
-         case b:
-            return ebk.a.l;
-         case c:
-            return ebk.a.m;
-         case d:
-            return ebk.a.n;
-         case e:
-            return ebk.a.o;
-         case f:
-            return ebk.a.p;
-         case g:
-            return ebk.a.q;
-         case h:
-            return ebk.a.r;
-         case i:
-            return ebk.a.s;
-         case j:
-            return ebk.a.t;
-         case k:
-            return ebk.a.u;
-         case l:
-            return ebk.a.v;
-         case m:
-            return ebk.a.w;
-         case n:
-            return ebk.a.x;
-         case o:
-            return ebk.a.y;
-         case p:
-         default:
-            return ebk.a.z;
-      }
-   }
-
-   @Nullable
-   public tf d() {
+   public byte e() {
       return this.c;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         ebj $$1 = (ebj)$$0;
-         return Objects.equals(this.a, $$1.a) && this.b == $$1.b && Objects.equals(this.c, $$1.c);
-      } else {
-         return false;
+   public byte f() {
+      return this.d;
+   }
+
+   @Nullable
+   public tf g() {
+      return this.e;
+   }
+
+   public static enum a implements ash {
+      a("player", false, true),
+      b("frame", true, true),
+      c("red_marker", false, true),
+      d("blue_marker", false, true),
+      e("target_x", true, false),
+      f("target_point", true, false),
+      g("player_off_map", false, true),
+      h("player_off_limits", false, true),
+      i("mansion", true, 5393476, false),
+      j("monument", true, 3830373, false),
+      k("banner_white", true, true),
+      l("banner_orange", true, true),
+      m("banner_magenta", true, true),
+      n("banner_light_blue", true, true),
+      o("banner_yellow", true, true),
+      p("banner_lime", true, true),
+      q("banner_pink", true, true),
+      r("banner_gray", true, true),
+      s("banner_light_gray", true, true),
+      t("banner_cyan", true, true),
+      u("banner_purple", true, true),
+      v("banner_blue", true, true),
+      w("banner_brown", true, true),
+      x("banner_green", true, true),
+      y("banner_red", true, true),
+      z("banner_black", true, true),
+      A("red_x", true, false);
+
+      public static final Codec<ebj.a> B = ash.a(ebj.a::values);
+      private final String C;
+      private final byte D;
+      private final boolean E;
+      private final int F;
+      private final boolean G;
+
+      private a(String $$0, boolean $$1, boolean $$2) {
+         this($$0, $$1, -1, $$2);
       }
-   }
 
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.a, this.b, this.c);
-   }
-
-   public qr e() {
-      qr $$0 = new qr();
-      $$0.a("Pos", rd.a(this.a));
-      $$0.a("Color", this.b.b());
-      if (this.c != null) {
-         $$0.a("Name", tf.a.a(this.c));
+      private a(String $$0, boolean $$1, int $$2, boolean $$3) {
+         this.C = $$0;
+         this.G = $$3;
+         this.D = (byte)this.ordinal();
+         this.E = $$1;
+         this.F = $$2;
       }
 
-      return $$0;
-   }
+      public byte a() {
+         return this.D;
+      }
 
-   public String f() {
-      return "banner-" + this.a.u() + "," + this.a.v() + "," + this.a.w();
+      public boolean b() {
+         return this.E;
+      }
+
+      public boolean d() {
+         return this.F >= 0;
+      }
+
+      public int e() {
+         return this.F;
+      }
+
+      public static ebj.a a(byte $$0) {
+         return values()[arp.a($$0, 0, values().length - 1)];
+      }
+
+      public boolean f() {
+         return this.G;
+      }
+
+      @Override
+      public String c() {
+         return this.C;
+      }
    }
 }

@@ -1,33 +1,33 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bns {
-   private static final int a = 16;
+   private static final int a = 10;
+   private static final int b = 7;
 
-   public static bkr<biy> a(Predicate<he<bub>> $$0, bsa<hd> $$1) {
-      return boc.a((Function<boc.b<biy>, ? extends App<boc.c<biy>, bof<biy>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
-               hd $$6 = $$2.b($$2x);
-               gu $$7 = $$6.b();
-               if ($$3.ac() == $$6.a() && $$7.a($$4.di(), 16.0)) {
-                  akk $$8 = $$3.n().a($$6.a());
-                  if ($$8 == null || !$$8.w().a($$7, $$0)) {
-                     $$2x.b();
-                  } else if (a($$8, $$7, $$4)) {
-                     $$2x.b();
-                     $$3.w().b($$7);
-                     aav.c($$3, $$7);
-                  }
-
-                  return true;
-               } else {
-                  return false;
-               }
-            })));
+   public static blz<bjh> a(float $$0) {
+      return a($$0, 10, 7);
    }
 
-   private static boolean a(akk $$0, gu $$1, biy $$2) {
-      dfa $$3 = $$0.a_($$1);
-      return $$3.a(apl.R) && $$3.c(csf.b) && !$$2.fB();
+   public static blz<bjh> a(float $$0, int $$1, int $$2) {
+      return bob.a((Function<bob.b<bjh>, ? extends App<bob.c<bjh>, boe<bjh>>>)($$3 -> $$3.group($$3.c(brz.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
+               gu $$7 = $$5.dk();
+               ehd $$8;
+               if ($$4.b($$7)) {
+                  $$8 = btr.a($$5, $$1, $$2);
+               } else {
+                  hx $$9 = hx.a($$7);
+                  hx $$10 = bkr.a($$4, $$9, 2);
+                  if ($$10 != $$9) {
+                     $$8 = bto.a($$5, $$1, $$2, ehd.c($$10.q()), (float) (Math.PI / 2));
+                  } else {
+                     $$8 = btr.a($$5, $$1, $$2);
+                  }
+               }
+
+               $$3x.a(Optional.ofNullable($$8).map($$1xxxx -> new bsc($$1xxxx, $$0, 0)));
+               return true;
+            })));
    }
 }

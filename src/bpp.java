@@ -1,86 +1,61 @@
+import com.mojang.datafixers.DataFixUtils;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public class bpp extends bpu {
-   private int a;
-   private final bjh b;
-   @Nullable
-   private cbn c;
-   private bpd d;
+public class bpp extends bpt {
+   private static final int a = 200;
+   private final bui b;
+   private int c;
+   private int d;
 
-   public bpp(bjh $$0) {
+   public bpp(bui $$0) {
       this.b = $$0;
+      this.d = this.a($$0);
+   }
+
+   protected int a(bui $$0) {
+      return b(200 + $$0.ee().a(200) % 20);
    }
 
    @Override
    public boolean a() {
-      List<cdg> $$0 = this.b.dK().a(cdg.class, this.b.cG().g(5.0));
-      boolean $$1 = false;
-
-      for (cdg $$2 : $$0) {
-         bii $$3 = $$2.cN();
-         if ($$3 instanceof cbn && (arp.e(((cbn)$$3).bk) > 0.0F || arp.e(((cbn)$$3).bm) > 0.0F)) {
-            $$1 = true;
-            break;
-         }
+      if (this.b.gg()) {
+         return false;
+      } else if (this.b.gd()) {
+         return true;
+      } else if (this.d > 0) {
+         this.d--;
+         return false;
+      } else {
+         this.d = this.a(this.b);
+         Predicate<bui> $$0 = $$0x -> $$0x.gf() || !$$0x.gd();
+         List<? extends bui> $$1 = this.b.dK().a((Class<? extends bui>)this.b.getClass(), this.b.cG().c(8.0, 8.0, 8.0), $$0);
+         bui $$2 = (bui)DataFixUtils.orElse($$1.stream().filter(bui::gf).findAny(), this.b);
+         $$2.a($$1.stream().filter($$0x -> !$$0x.gd()));
+         return this.b.gd();
       }
-
-      return this.c != null && (arp.e(this.c.bk) > 0.0F || arp.e(this.c.bm) > 0.0F) || $$1;
-   }
-
-   @Override
-   public boolean J_() {
-      return true;
    }
 
    @Override
    public boolean b() {
-      return this.c != null && this.c.bN() && (arp.e(this.c.bk) > 0.0F || arp.e(this.c.bm) > 0.0F);
+      return this.b.gd() && this.b.gh();
    }
 
    @Override
    public void c() {
-      for (cdg $$1 : this.b.dK().a(cdg.class, this.b.cG().g(5.0))) {
-         if ($$1.cN() instanceof cbn $$2) {
-            this.c = $$2;
-            break;
-         }
-      }
-
-      this.a = 0;
-      this.d = bpd.a;
+      this.c = 0;
    }
 
    @Override
    public void d() {
-      this.c = null;
+      this.b.ge();
    }
 
    @Override
    public void e() {
-      boolean $$0 = arp.e(this.c.bk) > 0.0F || arp.e(this.c.bm) > 0.0F;
-      float $$1 = this.d == bpd.b ? ($$0 ? 0.01F : 0.0F) : 0.015F;
-      this.b.a($$1, new ehe((double)this.b.bk, (double)this.b.bl, (double)this.b.bm));
-      this.b.a(bje.a, this.b.dn());
-      if (--this.a <= 0) {
-         this.a = this.a(10);
-         if (this.d == bpd.a) {
-            gu $$2 = this.c.dk().a(this.c.cD().g());
-            $$2 = $$2.b(0, -1, 0);
-            this.b.H().a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 1.0);
-            if (this.b.e((bii)this.c) < 4.0F) {
-               this.a = 0;
-               this.d = bpd.b;
-            }
-         } else if (this.d == bpd.b) {
-            ha $$3 = this.c.cE();
-            gu $$4 = this.c.dk().a($$3, 10);
-            this.b.H().a((double)$$4.u(), (double)($$4.v() - 1), (double)$$4.w(), 1.0);
-            if (this.b.e((bii)this.c) > 12.0F) {
-               this.a = 0;
-               this.d = bpd.a;
-            }
-         }
+      if (--this.c <= 0) {
+         this.c = this.a(10);
+         this.b.gi();
       }
    }
 }

@@ -1,7 +1,7 @@
-public class biq extends bvj {
+public class biq extends bvi {
    private static final adz<Integer> bX = aec.a(biq.class, aeb.b);
 
-   public biq(bim<? extends biq> $$0, cpm $$1) {
+   public biq(bim<? extends biq> $$0, cpl $$1) {
       super($$0, $$1);
    }
 
@@ -77,7 +77,7 @@ public class biq extends bvj {
       return this.an.b(bX);
    }
 
-   public static boolean a(bim<? extends biy> $$0, cqb $$1, bjc $$2, gu $$3, aru $$4) {
-      return $$3.v() <= $$1.t_() - 33 && $$1.b($$3, 0) == 0 && $$1.a_($$3).a(csn.G);
+   public static boolean a(bim<? extends biy> $$0, cqa $$1, bjc $$2, gu $$3, aru $$4) {
+      return $$3.v() <= $$1.t_() - 33 && $$1.b($$3, 0) == 0 && $$1.a_($$3).a(csm.G);
    }
 }

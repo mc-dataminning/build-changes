@@ -1,71 +1,117 @@
-public class czu extends csm {
-   public static final int a = 2;
-   public static final dga b = dfq.aE;
-   private static final int c = 24000;
-   private static final int d = 12000;
-   private static final int e = 300;
-   private static final ehx f = csm.a(1.0, 0.0, 2.0, 15.0, 16.0, 14.0);
+import javax.annotation.Nullable;
 
-   public czu(dez.d $$0) {
+public class czu extends csl {
+   public static final int a = 8;
+   public static final dfz b = dfp.aF;
+   protected static final ehw[] c = new ehw[]{
+      eht.a(),
+      csl.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+      csl.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+      csl.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+      csl.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      csl.a(0.0, 0.0, 0.0, 16.0, 10.0, 16.0),
+      csl.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0),
+      csl.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0),
+      csl.a(0.0, 0.0, 0.0, 16.0, 16.0, 16.0)
+   };
+   public static final int d = 5;
+
+   protected czu(dey.d $$0) {
       super($$0);
-      this.k(this.C.b().a(b, Integer.valueOf(0)));
+      this.k(this.C.b().a(b, Integer.valueOf(1)));
    }
 
    @Override
-   protected void a(dfb.a<csm, dfa> $$0) {
-      $$0.a(b);
+   public boolean a(dez $$0, cor $$1, gu $$2, eas $$3) {
+      switch ($$3) {
+         case a:
+            return $$0.c(b) < 5;
+         case b:
+            return false;
+         case c:
+            return false;
+         default:
+            return false;
+      }
    }
 
    @Override
-   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
-      return f;
-   }
-
-   public int h(dfa $$0) {
-      return $$0.c(b);
-   }
-
-   private boolean n(dfa $$0) {
-      return this.h($$0) == 2;
+   public ehw a(dez $$0, cor $$1, gu $$2, ehi $$3) {
+      return c[$$0.c(b)];
    }
 
    @Override
-   public void a(dfa $$0, akk $$1, gu $$2, aru $$3) {
-      if (!this.n($$0)) {
-         $$1.a(null, $$2, aow.wL, aox.e, 0.7F, 0.9F + $$3.i() * 0.2F);
-         $$1.a($$2, $$0.a(b, Integer.valueOf(this.h($$0) + 1)), 2);
+   public ehw c(dez $$0, cor $$1, gu $$2, ehi $$3) {
+      return c[$$0.c(b) - 1];
+   }
+
+   @Override
+   public ehw b_(dez $$0, cor $$1, gu $$2) {
+      return c[$$0.c(b)];
+   }
+
+   @Override
+   public ehw b(dez $$0, cor $$1, gu $$2, ehi $$3) {
+      return c[$$0.c(b)];
+   }
+
+   @Override
+   public boolean g_(dez $$0) {
+      return true;
+   }
+
+   @Override
+   public float b(dez $$0, cor $$1, gu $$2) {
+      return $$0.c(b) == 8 ? 0.2F : 1.0F;
+   }
+
+   @Override
+   public boolean a(dez $$0, cpo $$1, gu $$2) {
+      dez $$3 = $$1.a_($$2.d());
+      if ($$3.a(apl.cg)) {
+         return false;
       } else {
-         $$1.a(null, $$2, aow.wM, aox.e, 0.7F, 0.9F + $$3.i() * 0.2F);
-         $$1.b($$2, false);
-         bww $$4 = bim.aN.a((cpm)$$1);
-         if ($$4 != null) {
-            ehe $$5 = $$2.b();
-            $$4.a(true);
-            $$4.b($$5.a(), $$5.b(), $$5.c(), arp.g($$1.z.i() * 360.0F), 0.0F);
-            $$1.b($$4);
-         }
+         return $$3.a(apl.ch) ? true : csl.a($$3.k($$1, $$2.d()), ha.b) || $$3.a(this) && $$3.c(b) == 8;
       }
    }
 
    @Override
-   public void b(dfa $$0, cpm $$1, gu $$2, dfa $$3, boolean $$4) {
-      boolean $$5 = a($$1, $$2);
-      if (!$$1.r_() && $$5) {
-         $$1.c(3009, $$2, 0);
-      }
-
-      int $$6 = $$5 ? 12000 : 24000;
-      int $$7 = $$6 / 3;
-      $$1.a(djk.i, $$2, djk.a.a($$0));
-      $$1.a($$2, this, $$7 + $$1.z.a(300));
+   public dez a(dez $$0, ha $$1, dez $$2, cpm $$3, gu $$4, gu $$5) {
+      return !$$0.a($$3, $$4) ? csm.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean a(dfa $$0, cos $$1, gu $$2, eat $$3) {
-      return false;
+   public void b(dez $$0, akk $$1, gu $$2, aru $$3) {
+      if ($$1.a(cpu.b, $$2) > 11) {
+         c($$0, $$1, $$2);
+         $$1.a($$2, false);
+      }
    }
 
-   public static boolean a(cos $$0, gu $$1) {
-      return $$0.a_($$1.d()).a(apl.ck);
+   @Override
+   public boolean a(dez $$0, clf $$1) {
+      int $$2 = $$0.c(b);
+      if (!$$1.n().a(this.k()) || $$2 >= 8) {
+         return $$2 == 1;
+      } else {
+         return $$1.c() ? $$1.k() == ha.b : true;
+      }
+   }
+
+   @Nullable
+   @Override
+   public dez a(clf $$0) {
+      dez $$1 = $$0.q().a_($$0.a());
+      if ($$1.a(this)) {
+         int $$2 = $$1.c(b);
+         return $$1.a(b, Integer.valueOf(Math.min(8, $$2 + 1)));
+      } else {
+         return super.a($$0);
+      }
+   }
+
+   @Override
+   protected void a(dfa.a<csl, dez> $$0) {
+      $$0.a(b);
    }
 }

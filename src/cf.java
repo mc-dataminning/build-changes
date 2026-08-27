@@ -18,7 +18,7 @@ public record cf(cj.d c, Optional<bo> d) implements bp {
    }
 
    @Override
-   public boolean a(bii $$0, akk $$1, @Nullable ehe $$2) {
+   public boolean a(bii $$0, akk $$1, @Nullable ehd $$2) {
       return !($$0 instanceof bix $$3) ? false : this.c.d($$3.m()) && (this.d.isEmpty() || $$3.o().anyMatch($$2x -> this.d.get().a($$1, $$2, $$2x)));
    }
 

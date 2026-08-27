@@ -1,26 +1,95 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-public class dsw<P extends dsv> {
-   public static final dsw<dsu> a = a("straight_trunk_placer", dsu.a);
-   public static final dsw<dsr> b = a("forking_trunk_placer", dsr.a);
-   public static final dsw<dss> c = a("giant_trunk_placer", dss.a);
-   public static final dsw<dst> d = a("mega_jungle_trunk_placer", dst.b);
-   public static final dsw<dsp> e = a("dark_oak_trunk_placer", dsp.a);
-   public static final dsw<dsq> f = a("fancy_trunk_placer", dsq.a);
-   public static final dsw<dsn> g = a("bending_trunk_placer", dsn.a);
-   public static final dsw<dsx> h = a("upwards_branching_trunk_placer", dsx.a);
-   public static final dsw<dso> i = a("cherry_trunk_placer", dso.a);
-   private final Codec<P> j;
+public class dsw extends dsu {
+   public static final Codec<dsw> a = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  bfv.e.fieldOf("extra_branch_steps").forGetter($$0x -> $$0x.b),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("place_branch_per_log_probability").forGetter($$0x -> $$0x.h),
+                  bfv.d.fieldOf("extra_branch_length").forGetter($$0x -> $$0x.i),
+                  ht.a(jc.e).fieldOf("can_grow_through").forGetter($$0x -> $$0x.j)
+               )
+            )
+            .apply($$0, dsw::new)
+   );
+   private final bfv b;
+   private final float h;
+   private final bfv i;
+   private final hi<csl> j;
 
-   private static <P extends dsv> dsw<P> a(String $$0, Codec<P> $$1) {
-      return hr.a(jb.Y, $$0, new dsw<>($$1));
+   public dsw(int $$0, int $$1, int $$2, bfv $$3, float $$4, bfv $$5, hi<csl> $$6) {
+      super($$0, $$1, $$2);
+      this.b = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
    }
 
-   private dsw(Codec<P> $$0) {
-      this.j = $$0;
+   @Override
+   protected dsv<?> a() {
+      return dsv.h;
    }
 
-   public Codec<P> a() {
-      return this.j;
+   @Override
+   public List<drc.a> a(cpr $$0, BiConsumer<gu, dez> $$1, aru $$2, int $$3, gu $$4, dqm $$5) {
+      List<drc.a> $$6 = Lists.newArrayList();
+      gu.a $$7 = new gu.a();
+
+      for (int $$8 = 0; $$8 < $$3; $$8++) {
+         int $$9 = $$4.v() + $$8;
+         if (this.b($$0, $$1, $$2, $$7.d($$4.u(), $$9, $$4.w()), $$5) && $$8 < $$3 - 1 && $$2.i() < this.h) {
+            ha $$10 = ha.c.a.a($$2);
+            int $$11 = this.i.a($$2);
+            int $$12 = Math.max(0, $$11 - this.i.a($$2) - 1);
+            int $$13 = this.b.a($$2);
+            this.a($$0, $$1, $$2, $$3, $$5, $$6, $$7, $$9, $$10, $$12, $$13);
+         }
+
+         if ($$8 == $$3 - 1) {
+            $$6.add(new drc.a($$7.d($$4.u(), $$9 + 1, $$4.w()), 0, false));
+         }
+      }
+
+      return $$6;
+   }
+
+   private void a(cpr $$0, BiConsumer<gu, dez> $$1, aru $$2, int $$3, dqm $$4, List<drc.a> $$5, gu.a $$6, int $$7, ha $$8, int $$9, int $$10) {
+      int $$11 = $$7 + $$9;
+      int $$12 = $$6.u();
+      int $$13 = $$6.w();
+      int $$14 = $$9;
+
+      while ($$14 < $$3 && $$10 > 0) {
+         if ($$14 >= 1) {
+            int $$15 = $$7 + $$14;
+            $$12 += $$8.j();
+            $$13 += $$8.l();
+            $$11 = $$15;
+            if (this.b($$0, $$1, $$2, $$6.d($$12, $$15, $$13), $$4)) {
+               $$11 = $$15 + 1;
+            }
+
+            $$5.add(new drc.a($$6.i(), 0, false));
+         }
+
+         $$14++;
+         $$10--;
+      }
+
+      if ($$11 - $$7 > 1) {
+         gu $$16 = new gu($$12, $$11, $$13);
+         $$5.add(new drc.a($$16, 0, false));
+         $$5.add(new drc.a($$16.c(2), 0, false));
+      }
+   }
+
+   @Override
+   protected boolean a(cpr $$0, gu $$1) {
+      return super.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(this.j));
    }
 }

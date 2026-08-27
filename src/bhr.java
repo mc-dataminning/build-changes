@@ -6,7 +6,7 @@ class bhr extends bht {
    @Override
    public void a(biy $$0, int $$1) {
       super.a($$0, $$1);
-      if ($$0 instanceof cbn $$2) {
+      if ($$0 instanceof cbm $$2) {
          $$2.A(0.005F * (float)($$1 + 1));
       }
    }

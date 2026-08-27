@@ -1,10 +1,22 @@
-public class dbs extends csm {
-   public dbs(dez.d $$0) {
-      super($$0);
+public class dbs extends cvy {
+   protected static final ehw f = csl.a(4.0, 9.0, 4.0, 12.0, 16.0, 12.0);
+
+   public dbs(dey.d $$0) {
+      super($$0, ha.a, f, false, 0.1);
    }
 
    @Override
-   public void a(dfa $$0, cpm $$1, gu $$2, bii $$3) {
-      $$3.a($$0, new ehe(0.25, 0.05F, 0.25));
+   protected int a(aru $$0) {
+      return cxp.a($$0);
+   }
+
+   @Override
+   protected csl a() {
+      return csm.oA;
+   }
+
+   @Override
+   protected boolean g(dez $$0) {
+      return cxp.a($$0);
    }
 }

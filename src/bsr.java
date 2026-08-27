@@ -1,41 +1,43 @@
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-public class bsr extends bte<biy> {
-   private static final int a = 200;
-   private static final int c = 599;
-
-   public bsr() {
-      this(200);
-   }
-
-   public bsr(int $$0) {
-      super($$0);
-   }
-
+public class bsr extends btd<bzw> {
    @Override
-   protected void a(akk $$0, biy $$1) {
-      a($$1);
+   public Set<brz<?>> a() {
+      return ImmutableSet.of(brz.h, brz.av, brz.ap, brz.ao, brz.ar, brz.as, new brz[0]);
    }
 
-   @Override
-   public Set<bsa<?>> a() {
-      return ImmutableSet.of(bsa.g);
-   }
+   protected void a(akk $$0, bzw $$1) {
+      bjy<?> $$2 = $$1.dM();
+      $$2.a(brz.av, this.b($$0, $$1));
+      Optional<cac> $$3 = Optional.empty();
+      int $$4 = 0;
+      List<bzw> $$5 = Lists.newArrayList();
+      bsb $$6 = $$2.c(brz.h).orElse(bsb.a());
 
-   public static void a(biy $$0) {
-      Optional<List<biy>> $$1 = $$0.dM().c(bsa.g);
-      if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.ag().equals(bim.ac));
-         if ($$2) {
-            b($$0);
+      for (biy $$7 : $$6.b($$0x -> !$$0x.i_() && ($$0x instanceof cac || $$0x instanceof bzw))) {
+         if ($$7 instanceof cac $$8) {
+            $$4++;
+            if ($$3.isEmpty()) {
+               $$3 = Optional.of($$8);
+            }
+         }
+
+         if ($$7 instanceof bzw $$9) {
+            $$5.add($$9);
          }
       }
+
+      $$2.a(brz.ap, $$3);
+      $$2.a(brz.ao, $$5);
+      $$2.a(brz.ar, $$4);
+      $$2.a(brz.as, $$5.size());
    }
 
-   public static void b(biy $$0) {
-      $$0.dM().a(bsa.F, true, 599L);
+   private Optional<gu> b(akk $$0, bzw $$1) {
+      return gu.a($$1.dk(), 8, 4, $$1x -> $$0.a_($$1x).a(apl.aR));
    }
 }

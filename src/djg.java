@@ -1,37 +1,43 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class djg implements djo {
-   public static final Codec<djg> a = RecordCodecBuilder.create($$0 -> $$0.group(gu.a.fieldOf("pos").forGetter($$0x -> $$0x.c)).apply($$0, djg::new));
-   final gu c;
+public class djg<T extends djl> {
+   private final T a;
+   @Nullable
+   private hx b;
 
-   public djg(gu $$0) {
-      this.c = $$0;
+   public djg(T $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public Optional<ehe> a(cpm $$0) {
-      return Optional.of(ehe.b(this.c));
+   public void a(akk $$0) {
+      this.c($$0);
    }
 
-   @Override
-   public djp<?> a() {
-      return djp.a;
+   public T a() {
+      return this.a;
    }
 
-   public static class a implements djp<djg> {
-      public djg a(si $$0) {
-         return new djg($$0.e());
-      }
+   public void b(akk $$0) {
+      a($$0, this.b, $$0x -> $$0x.b(this.a));
+   }
 
-      public void a(si $$0, djg $$1) {
-         $$0.a($$1.c);
-      }
+   public void c(akk $$0) {
+      this.a.a().a($$0).map(hx::a).ifPresent($$1 -> {
+         if (this.b == null || !this.b.equals($$1)) {
+            a($$0, this.b, $$0xx -> $$0xx.b(this.a));
+            this.b = $$1;
+            a($$0, this.b, $$0xx -> $$0xx.a(this.a));
+         }
+      });
+   }
 
-      @Override
-      public Codec<djg> a() {
-         return djg.a;
+   private static void a(cpo $$0, @Nullable hx $$1, Consumer<djm> $$2) {
+      if ($$1 != null) {
+         dgv $$3 = $$0.a($$1.a(), $$1.c(), dha.n, false);
+         if ($$3 != null) {
+            $$2.accept($$3.a($$1.b()));
+         }
       }
    }
 }

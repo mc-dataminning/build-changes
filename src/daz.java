@@ -1,131 +1,30 @@
-import javax.annotation.Nullable;
-
-public class daz extends cwf implements czn {
-   public static final dfr a = dfq.u;
-   public static final dfy<dfz> b = dfq.af;
-   public static final dfr c = dfq.w;
-   public static final dfr d = dfq.C;
-   protected static final int e = 3;
-   protected static final ehx f = csm.a(0.0, 0.0, 0.0, 3.0, 16.0, 16.0);
-   protected static final ehx g = csm.a(13.0, 0.0, 0.0, 16.0, 16.0, 16.0);
-   protected static final ehx h = csm.a(0.0, 0.0, 0.0, 16.0, 16.0, 3.0);
-   protected static final ehx i = csm.a(0.0, 0.0, 13.0, 16.0, 16.0, 16.0);
-   protected static final ehx j = csm.a(0.0, 0.0, 0.0, 16.0, 3.0, 16.0);
-   protected static final ehx k = csm.a(0.0, 13.0, 0.0, 16.0, 16.0, 16.0);
-   private final dfp l;
-
-   protected daz(dez.d $$0, dfp $$1) {
-      super($$0.a($$1.d()));
-      this.l = $$1;
-      this.k(this.C.b().a(aC, ha.c).a(a, Boolean.valueOf(false)).a(b, dfz.b).a(c, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
+public class daz extends ctn {
+   public daz(dey.d $$0) {
+      super($$0, () -> dcn.c);
    }
 
    @Override
-   public ehx a(dfa $$0, cos $$1, gu $$2, ehj $$3) {
-      if (!$$0.c(a)) {
-         return $$0.c(b) == dfz.a ? k : j;
-      } else {
-         switch ((ha)$$0.c(aC)) {
-            case c:
-            default:
-               return i;
-            case d:
-               return h;
-            case e:
-               return g;
-            case f:
-               return f;
-         }
-      }
+   public dcl a(gu $$0, dez $$1) {
+      return new dec($$0, $$1);
    }
 
    @Override
-   public boolean a(dfa $$0, cos $$1, gu $$2, eat $$3) {
-      switch ($$3) {
-         case a:
-            return $$0.c(a);
-         case b:
-            return $$0.c(d);
-         case c:
-            return $$0.c(a);
-         default:
-            return false;
-      }
+   protected apd<aer> b() {
+      return apg.i.b(apg.ai);
    }
 
    @Override
-   public bgq a(dfa $$0, cpm $$1, gu $$2, cbn $$3, bgp $$4, eha $$5) {
-      if (!this.l.c()) {
-         return bgq.d;
-      } else {
-         $$0 = $$0.a(a);
-         $$1.a($$2, $$0, 2);
-         if ($$0.c(d)) {
-            $$1.a($$2, eae.c, eae.c.a((cpp)$$1));
-         }
-
-         this.a($$3, $$1, $$2, $$0.c(a));
-         return bgq.a($$1.B);
-      }
-   }
-
-   protected void a(@Nullable cbn $$0, cpm $$1, gu $$2, boolean $$3) {
-      $$1.a($$0, $$2, $$3 ? this.l.h() : this.l.g(), aox.e, 1.0F, $$1.y_().i() * 0.1F + 0.9F);
-      $$1.a($$0, $$3 ? djk.h : djk.d, $$2);
+   public boolean f_(dez $$0) {
+      return true;
    }
 
    @Override
-   public void a(dfa $$0, cpm $$1, gu $$2, csm $$3, gu $$4, boolean $$5) {
-      if (!$$1.B) {
-         boolean $$6 = $$1.B($$2);
-         if ($$6 != $$0.c(c)) {
-            if ($$0.c(a) != $$6) {
-               $$0 = $$0.a(a, Boolean.valueOf($$6));
-               this.a(null, $$1, $$2, $$6);
-            }
-
-            $$1.a($$2, $$0.a(c, Boolean.valueOf($$6)), 2);
-            if ($$0.c(d)) {
-               $$1.a($$2, eae.c, eae.c.a((cpp)$$1));
-            }
-         }
-      }
+   public int a(dez $$0, cor $$1, gu $$2, ha $$3) {
+      return arp.a(dcs.a($$1, $$2), 0, 15);
    }
 
    @Override
-   public dfa a(clg $$0) {
-      dfa $$1 = this.n();
-      ead $$2 = $$0.q().b_($$0.a());
-      ha $$3 = $$0.k();
-      if (!$$0.c() && $$3.o().d()) {
-         $$1 = $$1.a(aC, $$3).a(b, $$0.l().d - (double)$$0.a().v() > 0.5 ? dfz.a : dfz.b);
-      } else {
-         $$1 = $$1.a(aC, $$0.g().g()).a(b, $$3 == ha.b ? dfz.b : dfz.a);
-      }
-
-      if ($$0.q().B($$0.a())) {
-         $$1 = $$1.a(a, Boolean.valueOf(true)).a(c, Boolean.valueOf(true));
-      }
-
-      return $$1.a(d, Boolean.valueOf($$2.a() == eae.c));
-   }
-
-   @Override
-   protected void a(dfb.a<csm, dfa> $$0) {
-      $$0.a(aC, a, b, c, d);
-   }
-
-   @Override
-   public ead c_(dfa $$0) {
-      return $$0.c(d) ? eae.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public dfa a(dfa $$0, ha $$1, dfa $$2, cpn $$3, gu $$4, gu $$5) {
-      if ($$0.c(d)) {
-         $$3.a($$4, eae.c, eae.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public int b(dez $$0, cor $$1, gu $$2, ha $$3) {
+      return $$3 == ha.b ? $$0.b($$1, $$2, $$3) : 0;
    }
 }

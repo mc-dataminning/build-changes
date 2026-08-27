@@ -1,22 +1,21 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bvt extends bkq<bvr> {
-   public bvt() {
-      super(ImmutableMap.of(bsa.M, bsb.a, bsa.y, bsb.a), 200);
-   }
+public class bvt {
+   public static bkq<biy> a() {
+      return bob.a(
+         (Function<bob.b<biy>, ? extends App<bob.c<biy>, boe<biy>>>)($$0 -> $$0.group($$0.b(brz.M), $$0.a(brz.y)).apply($$0, ($$1, $$2) -> ($$3, $$4, $$5) -> {
+                  int $$6 = $$0.<Integer>b($$1);
+                  if ($$6 <= 0) {
+                     $$1.b();
+                     $$2.b();
+                     $$4.dM().f();
+                  } else {
+                     $$1.a($$6 - 1);
+                  }
 
-   protected boolean a(akk $$0, bvr $$1) {
-      return $$1.ba();
-   }
-
-   protected boolean a(akk $$0, bvr $$1, long $$2) {
-      return $$1.ba() && $$1.dM().a(bsa.M);
-   }
-
-   protected void b(akk $$0, bvr $$1, long $$2) {
-      bjz<bvr> $$3 = $$1.dM();
-      $$3.b(bsa.m);
-      $$3.b(bsa.n);
-      $$1.b(new bhv(bhx.j, 200, 0));
+                  return true;
+               }))
+      );
    }
 }

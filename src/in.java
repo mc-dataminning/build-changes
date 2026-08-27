@@ -10,24 +10,24 @@ public class in implements it {
       }
 
       public in a(iu<in> $$0, si $$1) {
-         return new in($$0, $$1.a(csm.o));
+         return new in($$0, $$1.a(csl.o));
       }
    };
    private final iu<in> b;
-   private final dfa c;
+   private final dez c;
 
    public static Codec<in> a(iu<in> $$0) {
-      return dfa.b.xmap($$1 -> new in($$0, $$1), $$0x -> $$0x.c);
+      return dez.b.xmap($$1 -> new in($$0, $$1), $$0x -> $$0x.c);
    }
 
-   public in(iu<in> $$0, dfa $$1) {
+   public in(iu<in> $$0, dez $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
    @Override
    public void a(si $$0) {
-      $$0.a(csm.o, this.c);
+      $$0.a(csl.o, this.c);
    }
 
    @Override
@@ -40,7 +40,7 @@ public class in implements it {
       return this.b;
    }
 
-   public dfa c() {
+   public dez c() {
       return this.c;
    }
 }

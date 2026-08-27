@@ -1,11 +1,39 @@
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class duk extends dug {
-   protected abstract int a(aru var1, gu var2);
+public class duk extends due {
+   public static final Codec<duk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dki.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c),
+               Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter($$0x -> $$0x.d),
+               Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, duk::new)
+   );
+   private final dki.a c;
+   private final int d;
+   private final int e;
+
+   private duk(dki.a $$0, int $$1, int $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   public static duk a(dki.a $$0, int $$1, int $$2) {
+      return new duk($$0, $$1, $$2);
+   }
 
    @Override
-   public Stream<gu> a_(due $$0, aru $$1, gu $$2) {
-      return IntStream.range(0, this.a($$1, $$2)).mapToObj($$1x -> $$2);
+   protected boolean a(dud $$0, aru $$1, gu $$2) {
+      long $$3 = (long)$$0.a(this.c, $$2.u(), $$2.w());
+      long $$4 = $$3 + (long)this.d;
+      long $$5 = $$3 + (long)this.e;
+      return $$4 <= (long)$$2.v() && (long)$$2.v() <= $$5;
+   }
+
+   @Override
+   public dug<?> b() {
+      return dug.c;
    }
 }

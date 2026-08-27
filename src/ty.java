@@ -20,7 +20,7 @@ public class ty {
       };
    }
 
-   public ty.b a(cbq $$0) {
+   public ty.b a(cbp $$0) {
       arz $$1 = $$0.a();
       return ($$2, $$3) -> {
          tz $$4 = this.a();

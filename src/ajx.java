@@ -22,7 +22,7 @@ public class ajx implements ajt.c, AutoCloseable {
    private final bfj<bfl.b> d;
 
    public ajx(List<bfi<?>> $$0, Executor $$1, int $$2) {
-      this.b = $$0.stream().collect(Collectors.toMap(Function.identity(), $$1x -> new ajw<>($$1x.bo() + "_queue", $$2)));
+      this.b = $$0.stream().collect(Collectors.toMap(Function.identity(), $$1x -> new ajw<>($$1x.bn() + "_queue", $$2)));
       this.c = Sets.newHashSet($$0);
       this.d = new bfj<>(new bfl.a(4), $$1, "sorter");
    }
@@ -57,18 +57,18 @@ public class ajx implements ajt.c, AutoCloseable {
    public <T> bfi<ajx.a<T>> a(bfi<T> $$0, boolean $$1) {
       return this.d.<bfi<ajx.a<T>>>b($$2 -> new bfl.b(0, () -> {
             this.b($$0);
-            $$2.a(bfi.a("chunk priority sorter around " + $$0.bo(), $$2xx -> this.a($$0, $$2xx.a, $$2xx.b, $$2xx.c, $$1)));
+            $$2.a(bfi.a("chunk priority sorter around " + $$0.bn(), $$2xx -> this.a($$0, $$2xx.a, $$2xx.b, $$2xx.c, $$1)));
          })).join();
    }
 
    public bfi<ajx.b> a(bfi<Runnable> $$0) {
       return this.d
-         .<bfi<ajx.b>>b($$1 -> new bfl.b(0, () -> $$1.a(bfi.a("chunk priority sorter around " + $$0.bo(), $$1xx -> this.a($$0, $$1xx.b, $$1xx.a, $$1xx.c)))))
+         .<bfi<ajx.b>>b($$1 -> new bfl.b(0, () -> $$1.a(bfi.a("chunk priority sorter around " + $$0.bn(), $$1xx -> this.a($$0, $$1xx.b, $$1xx.a, $$1xx.c)))))
          .join();
    }
 
    @Override
-   public void onLevelChange(cot $$0, IntSupplier $$1, int $$2, IntConsumer $$3) {
+   public void onLevelChange(cos $$0, IntSupplier $$1, int $$2, IntConsumer $$3) {
       this.d.a(new bfl.b(0, () -> {
          int $$4 = $$1.getAsInt();
          this.b.values().forEach($$3xx -> $$3xx.a($$4, $$0, $$2));
@@ -131,7 +131,7 @@ public class ajx implements ajt.c, AutoCloseable {
       return this.b
             .entrySet()
             .stream()
-            .map($$0 -> $$0.getKey().bo() + "=[" + $$0.getValue().c().stream().map($$0x -> $$0x + ":" + new cot($$0x)).collect(Collectors.joining(",")) + "]")
+            .map($$0 -> $$0.getKey().bn() + "=[" + $$0.getValue().c().stream().map($$0x -> $$0x + ":" + new cos($$0x)).collect(Collectors.joining(",")) + "]")
             .collect(Collectors.joining(","))
          + ", s="
          + this.c.size();

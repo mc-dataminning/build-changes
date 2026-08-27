@@ -1,35 +1,110 @@
+import java.util.List;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public abstract class bui extends bjh {
-   protected bui(bim<? extends bui> $$0, cpm $$1) {
+public abstract class bui extends bug {
+   @Nullable
+   private bui b;
+   private int c = 1;
+
+   public bui(bim<? extends bui> $$0, cpl $$1) {
       super($$0, $$1);
    }
 
-   @Nullable
    @Override
-   protected aov r() {
-      return null;
+   protected void w() {
+      super.w();
+      this.bO.a(5, new bpp(this));
+   }
+
+   @Override
+   public int Z() {
+      return this.gc();
+   }
+
+   public int gc() {
+      return super.Z();
+   }
+
+   @Override
+   protected boolean ga() {
+      return !this.gd();
+   }
+
+   public boolean gd() {
+      return this.b != null && this.b.bv();
+   }
+
+   public bui a(bui $$0) {
+      this.b = $$0;
+      $$0.gj();
+      return $$0;
+   }
+
+   public void ge() {
+      this.b.gk();
+      this.b = null;
+   }
+
+   private void gj() {
+      this.c++;
+   }
+
+   private void gk() {
+      this.c--;
+   }
+
+   public boolean gf() {
+      return this.gg() && this.c < this.gc();
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      if (this.gg() && this.dK().z.a(200) == 1) {
+         List<? extends bug> $$0 = this.dK().a((Class<? extends bug>)this.getClass(), this.cG().c(8.0, 8.0, 8.0));
+         if ($$0.size() <= 1) {
+            this.c = 1;
+         }
+      }
+   }
+
+   public boolean gg() {
+      return this.c > 1;
+   }
+
+   public boolean gh() {
+      return this.f(this.b) <= 121.0;
+   }
+
+   public void gi() {
+      if (this.gd()) {
+         this.H().a(this.b, 1.0);
+      }
+   }
+
+   public void a(Stream<? extends bui> $$0) {
+      $$0.limit((long)(this.gc() - this.c)).filter($$0x -> $$0x != this).forEach($$0x -> $$0x.a(this));
    }
 
    @Nullable
    @Override
-   protected aov d(bhg $$0) {
-      return null;
+   public bjr a(cqa $$0, bgo $$1, bjc $$2, @Nullable bjr $$3, @Nullable qr $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$3 == null) {
+         $$3 = new bui.a(this);
+      } else {
+         this.a(((bui.a)$$3).a);
+      }
+
+      return $$3;
    }
 
-   @Nullable
-   @Override
-   protected aov h_() {
-      return null;
-   }
+   public static class a implements bjr {
+      public final bui a;
 
-   @Override
-   public int L() {
-      return 120;
-   }
-
-   @Override
-   public boolean h(double $$0) {
-      return false;
+      public a(bui $$0) {
+         this.a = $$0;
+      }
    }
 }

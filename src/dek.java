@@ -1,6 +1,15 @@
-public class dek extends deg {
+import javax.annotation.Nullable;
+
+public class dek extends dee {
+   @Nullable
    @Override
-   protected aeq<dna<?, ?>> a(aru $$0, boolean $$1) {
-      return $$1 ? or.K : or.z;
+   protected aeq<dmz<?, ?>> a(aru $$0, boolean $$1) {
+      return null;
+   }
+
+   @Nullable
+   @Override
+   protected aeq<dmz<?, ?>> a(aru $$0) {
+      return or.h;
    }
 }

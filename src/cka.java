@@ -1,107 +1,24 @@
-import java.util.List;
-import javax.annotation.Nullable;
-
-public class cka extends cit {
-   private static final n a = n.h;
-   private static final n b = n.j;
-   private static final tf c = tf.c(ac.a("item", new aer("smithing_template.ingredients"))).a(a);
-   private static final tf d = tf.c(ac.a("item", new aer("smithing_template.applies_to"))).a(a);
-   private static final tf e = tf.c(ac.a("upgrade", new aer("netherite_upgrade"))).a(a);
-   private static final tf f = tf.c(ac.a("item", new aer("smithing_template.armor_trim.applies_to"))).a(b);
-   private static final tf g = tf.c(ac.a("item", new aer("smithing_template.armor_trim.ingredients"))).a(b);
-   private static final tf h = tf.c(ac.a("item", new aer("smithing_template.armor_trim.base_slot_description")));
-   private static final tf i = tf.c(ac.a("item", new aer("smithing_template.armor_trim.additions_slot_description")));
-   private static final tf j = tf.c(ac.a("item", new aer("smithing_template.netherite_upgrade.applies_to"))).a(b);
-   private static final tf k = tf.c(ac.a("item", new aer("smithing_template.netherite_upgrade.ingredients"))).a(b);
-   private static final tf r = tf.c(ac.a("item", new aer("smithing_template.netherite_upgrade.base_slot_description")));
-   private static final tf s = tf.c(ac.a("item", new aer("smithing_template.netherite_upgrade.additions_slot_description")));
-   private static final aer t = new aer("item/empty_armor_slot_helmet");
-   private static final aer u = new aer("item/empty_armor_slot_chestplate");
-   private static final aer v = new aer("item/empty_armor_slot_leggings");
-   private static final aer w = new aer("item/empty_armor_slot_boots");
-   private static final aer x = new aer("item/empty_slot_hoe");
-   private static final aer y = new aer("item/empty_slot_axe");
-   private static final aer z = new aer("item/empty_slot_sword");
-   private static final aer A = new aer("item/empty_slot_shovel");
-   private static final aer B = new aer("item/empty_slot_pickaxe");
-   private static final aer C = new aer("item/empty_slot_ingot");
-   private static final aer D = new aer("item/empty_slot_redstone_dust");
-   private static final aer E = new aer("item/empty_slot_quartz");
-   private static final aer F = new aer("item/empty_slot_emerald");
-   private static final aer G = new aer("item/empty_slot_diamond");
-   private static final aer H = new aer("item/empty_slot_lapis_lazuli");
-   private static final aer I = new aer("item/empty_slot_amethyst_shard");
-   private final tf J;
-   private final tf K;
-   private final tf L;
-   private final tf M;
-   private final tf N;
-   private final List<aer> O;
-   private final List<aer> P;
-
-   public cka(tf $$0, tf $$1, tf $$2, tf $$3, tf $$4, List<aer> $$5, List<aer> $$6) {
-      super(new cit.a());
-      this.J = $$0;
-      this.K = $$1;
-      this.L = $$2;
-      this.M = $$3;
-      this.N = $$4;
-      this.O = $$5;
-      this.P = $$6;
-   }
-
-   public static cka a(aeq<cld> $$0) {
-      return a($$0.a());
-   }
-
-   public static cka a(aer $$0) {
-      return new cka(f, g, tf.c(ac.a("trim_pattern", $$0)).a(a), h, i, A(), B());
-   }
-
-   public static cka h() {
-      return new cka(j, k, e, r, s, C(), D());
-   }
-
-   private static List<aer> A() {
-      return List.of(t, u, v, w);
-   }
-
-   private static List<aer> B() {
-      return List.of(C, D, H, E, G, F, I);
-   }
-
-   private static List<aer> C() {
-      return List.of(t, z, u, B, v, y, w, x, A);
-   }
-
-   private static List<aer> D() {
-      return List.of(C);
+public class cka extends cis {
+   public cka(cis.a $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(ciy $$0, @Nullable cpm $$1, List<tf> $$2, ckp $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$2.add(this.L);
-      $$2.add(te.a);
-      $$2.add(d);
-      $$2.add(te.a().b(this.J));
-      $$2.add(c);
-      $$2.add(te.a().b(this.K));
-   }
+   public bgr<cix> a(cpl $$0, cbm $$1, bgp $$2) {
+      cix $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dp(), $$1.dr(), $$1.dv(), aow.wN, aox.g, 0.5F, 0.4F / ($$0.y_().i() * 0.4F + 0.8F));
+      if (!$$0.B) {
+         cci $$4 = new cci($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dC(), $$1.dA(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
+      }
 
-   public tf i() {
-      return this.M;
-   }
+      $$1.b(apg.c.b(this));
+      if (!$$1.fR().d) {
+         $$3.h(1);
+      }
 
-   public tf x() {
-      return this.N;
-   }
-
-   public List<aer> y() {
-      return this.O;
-   }
-
-   public List<aer> z() {
-      return this.P;
+      return bgr.a($$3, $$0.r_());
    }
 }

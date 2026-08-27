@@ -1,91 +1,108 @@
-public class dce {
-   public static final aeq<dcd> a = a("base");
-   public static final aeq<dcd> b = a("square_bottom_left");
-   public static final aeq<dcd> c = a("square_bottom_right");
-   public static final aeq<dcd> d = a("square_top_left");
-   public static final aeq<dcd> e = a("square_top_right");
-   public static final aeq<dcd> f = a("stripe_bottom");
-   public static final aeq<dcd> g = a("stripe_top");
-   public static final aeq<dcd> h = a("stripe_left");
-   public static final aeq<dcd> i = a("stripe_right");
-   public static final aeq<dcd> j = a("stripe_center");
-   public static final aeq<dcd> k = a("stripe_middle");
-   public static final aeq<dcd> l = a("stripe_downright");
-   public static final aeq<dcd> m = a("stripe_downleft");
-   public static final aeq<dcd> n = a("small_stripes");
-   public static final aeq<dcd> o = a("cross");
-   public static final aeq<dcd> p = a("straight_cross");
-   public static final aeq<dcd> q = a("triangle_bottom");
-   public static final aeq<dcd> r = a("triangle_top");
-   public static final aeq<dcd> s = a("triangles_bottom");
-   public static final aeq<dcd> t = a("triangles_top");
-   public static final aeq<dcd> u = a("diagonal_left");
-   public static final aeq<dcd> v = a("diagonal_up_right");
-   public static final aeq<dcd> w = a("diagonal_up_left");
-   public static final aeq<dcd> x = a("diagonal_right");
-   public static final aeq<dcd> y = a("circle");
-   public static final aeq<dcd> z = a("rhombus");
-   public static final aeq<dcd> A = a("half_vertical");
-   public static final aeq<dcd> B = a("half_horizontal");
-   public static final aeq<dcd> C = a("half_vertical_right");
-   public static final aeq<dcd> D = a("half_horizontal_bottom");
-   public static final aeq<dcd> E = a("border");
-   public static final aeq<dcd> F = a("curly_border");
-   public static final aeq<dcd> G = a("gradient");
-   public static final aeq<dcd> H = a("gradient_up");
-   public static final aeq<dcd> I = a("bricks");
-   public static final aeq<dcd> J = a("globe");
-   public static final aeq<dcd> K = a("creeper");
-   public static final aeq<dcd> L = a("skull");
-   public static final aeq<dcd> M = a("flower");
-   public static final aeq<dcd> N = a("mojang");
-   public static final aeq<dcd> O = a("piglin");
+public class dce extends ddo {
+   private hn<cix> c = hn.a(27, cix.b);
+   private final dcy f = new dcy() {
+      @Override
+      protected void a(cpl $$0, gu $$1, dez $$2) {
+         dce.this.a($$2, aow.bk);
+         dce.this.a($$2, true);
+      }
 
-   private static aeq<dcd> a(String $$0) {
-      return aeq.a(jc.c, new aer($$0));
+      @Override
+      protected void b(cpl $$0, gu $$1, dez $$2) {
+         dce.this.a($$2, aow.bj);
+         dce.this.a($$2, false);
+      }
+
+      @Override
+      protected void a(cpl $$0, gu $$1, dez $$2, int $$3, int $$4) {
+      }
+
+      @Override
+      protected boolean a(cbm $$0) {
+         if ($$0.bQ instanceof cek) {
+            bgj $$1 = ((cek)$$0.bQ).l();
+            return $$1 == dce.this;
+         } else {
+            return false;
+         }
+      }
+   };
+
+   public dce(gu $$0, dez $$1) {
+      super(dcn.A, $$0, $$1);
    }
 
-   public static dcd a(hr<dcd> $$0) {
-      hr.a($$0, a, new dcd("b"));
-      hr.a($$0, b, new dcd("bl"));
-      hr.a($$0, c, new dcd("br"));
-      hr.a($$0, d, new dcd("tl"));
-      hr.a($$0, e, new dcd("tr"));
-      hr.a($$0, f, new dcd("bs"));
-      hr.a($$0, g, new dcd("ts"));
-      hr.a($$0, h, new dcd("ls"));
-      hr.a($$0, i, new dcd("rs"));
-      hr.a($$0, j, new dcd("cs"));
-      hr.a($$0, k, new dcd("ms"));
-      hr.a($$0, l, new dcd("drs"));
-      hr.a($$0, m, new dcd("dls"));
-      hr.a($$0, n, new dcd("ss"));
-      hr.a($$0, o, new dcd("cr"));
-      hr.a($$0, p, new dcd("sc"));
-      hr.a($$0, q, new dcd("bt"));
-      hr.a($$0, r, new dcd("tt"));
-      hr.a($$0, s, new dcd("bts"));
-      hr.a($$0, t, new dcd("tts"));
-      hr.a($$0, u, new dcd("ld"));
-      hr.a($$0, v, new dcd("rd"));
-      hr.a($$0, w, new dcd("lud"));
-      hr.a($$0, x, new dcd("rud"));
-      hr.a($$0, y, new dcd("mc"));
-      hr.a($$0, z, new dcd("mr"));
-      hr.a($$0, A, new dcd("vh"));
-      hr.a($$0, B, new dcd("hh"));
-      hr.a($$0, C, new dcd("vhr"));
-      hr.a($$0, D, new dcd("hhb"));
-      hr.a($$0, E, new dcd("bo"));
-      hr.a($$0, F, new dcd("cbo"));
-      hr.a($$0, G, new dcd("gra"));
-      hr.a($$0, H, new dcd("gru"));
-      hr.a($$0, I, new dcd("bri"));
-      hr.a($$0, J, new dcd("glb"));
-      hr.a($$0, K, new dcd("cre"));
-      hr.a($$0, L, new dcd("sku"));
-      hr.a($$0, M, new dcd("flo"));
-      hr.a($$0, N, new dcd("moj"));
-      return hr.a($$0, O, new dcd("pig"));
+   @Override
+   protected void b(qr $$0) {
+      super.b($$0);
+      if (!this.e($$0)) {
+         bgk.a($$0, this.c);
+      }
+   }
+
+   @Override
+   public void a(qr $$0) {
+      super.a($$0);
+      this.c = hn.a(this.b(), cix.b);
+      if (!this.d($$0)) {
+         bgk.b($$0, this.c);
+      }
+   }
+
+   @Override
+   public int b() {
+      return 27;
+   }
+
+   @Override
+   protected hn<cix> f() {
+      return this.c;
+   }
+
+   @Override
+   protected void a(hn<cix> $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   protected tf g() {
+      return tf.c("container.barrel");
+   }
+
+   @Override
+   protected ced a(int $$0, cbl $$1) {
+      return cek.a($$0, $$1, this);
+   }
+
+   @Override
+   public void d_(cbm $$0) {
+      if (!this.q && !$$0.G_()) {
+         this.f.a($$0, this.k(), this.p(), this.q());
+      }
+   }
+
+   @Override
+   public void c(cbm $$0) {
+      if (!this.q && !$$0.G_()) {
+         this.f.b($$0, this.k(), this.p(), this.q());
+      }
+   }
+
+   public void i() {
+      if (!this.q) {
+         this.f.c(this.k(), this.p(), this.q());
+      }
+   }
+
+   void a(dez $$0, boolean $$1) {
+      this.o.a(this.p(), $$0.a(crs.b, Boolean.valueOf($$1)), 3);
+   }
+
+   void a(dez $$0, aov $$1) {
+      hz $$2 = $$0.c(crs.a).q();
+      double $$3 = (double)this.p.u() + 0.5 + (double)$$2.u() / 2.0;
+      double $$4 = (double)this.p.v() + 0.5 + (double)$$2.v() / 2.0;
+      double $$5 = (double)this.p.w() + 0.5 + (double)$$2.w() / 2.0;
+      this.o.a(null, $$3, $$4, $$5, $$1, aox.e, 0.5F, this.o.z.i() * 0.1F + 0.9F);
    }
 }

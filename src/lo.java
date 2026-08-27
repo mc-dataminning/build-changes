@@ -13,7 +13,7 @@ public interface lo {
 
    aer b();
 
-   cmd<?> c();
+   cmc<?> c();
 
    @Nullable
    JsonObject d();

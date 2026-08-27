@@ -1,83 +1,40 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
+import java.util.function.BiFunction;
 
-public class edx extends edt {
-   public static final int a = 0;
-   public static final Codec<edx> b = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and($$0.group(egc.a.fieldOf("count").forGetter($$0x -> $$0x.c), aqy.a(Codec.INT, "limit", Integer.valueOf(0)).forGetter($$0x -> $$0x.d)))
-            .apply($$0, edx::new)
+public class edx implements edt {
+   public static final Codec<edx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(edv.b.listOf().fieldOf("functions").forGetter($$0x -> $$0x.c)).apply($$0, edx::new)
    );
-   private final egb c;
-   private final int d;
+   public static final Codec<edx> b = edv.b.listOf().xmap(edx::new, $$0 -> $$0.c);
+   private final List<edt> c;
+   private final BiFunction<cix, ecg, cix> d;
 
-   edx(List<efg> $$0, egb $$1, int $$2) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
+   private edx(List<edt> $$0) {
+      this.c = $$0;
+      this.d = edv.a($$0);
+   }
+
+   public static edx a(List<edt> $$0) {
+      return new edx(List.copyOf($$0));
+   }
+
+   public cix a(cix $$0, ecg $$1) {
+      return this.d.apply($$0, $$1);
    }
 
    @Override
-   public edv b() {
-      return edw.i;
+   public void a(ecp $$0) {
+      edt.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.b(".function[" + $$1 + "]"));
+      }
    }
 
    @Override
-   public Set<eep<?>> a() {
-      return Sets.union(ImmutableSet.of(ees.d), this.c.a());
-   }
-
-   private boolean c() {
-      return this.d > 0;
-   }
-
-   @Override
-   public ciy a(ciy $$0, ech $$1) {
-      bii $$2 = $$1.c(ees.d);
-      if ($$2 instanceof biy) {
-         int $$3 = cnh.h((biy)$$2);
-         if ($$3 == 0) {
-            return $$0;
-         }
-
-         float $$4 = (float)$$3 * this.c.b($$1);
-         $$0.g(Math.round($$4));
-         if (this.c() && $$0.L() > this.d) {
-            $$0.f(this.d);
-         }
-      }
-
-      return $$0;
-   }
-
-   public static edx.a a(egb $$0) {
-      return new edx.a($$0);
-   }
-
-   public static class a extends edt.a<edx.a> {
-      private final egb a;
-      private int b = 0;
-
-      public a(egb $$0) {
-         this.a = $$0;
-      }
-
-      protected edx.a a() {
-         return this;
-      }
-
-      public edx.a a(int $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      @Override
-      public edu b() {
-         return new edx(this.g(), this.a, this.b);
-      }
+   public edu b() {
+      return edv.C;
    }
 }

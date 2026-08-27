@@ -1,7 +1,7 @@
 public class zi implements ux<wp> {
    private final double a;
 
-   public zi(dgr $$0) {
+   public zi(dgq $$0) {
       this.a = $$0.k();
    }
 

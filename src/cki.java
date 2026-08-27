@@ -1,50 +1,60 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMultimap.Builder;
 
-public class cki extends cit {
-   public static final String a = "effects";
-   public static final int b = 160;
+public class cki extends ckl implements ckr {
+   private final float a;
+   private final Multimap<bjz, bkc> b;
 
-   public cki(cit.a $$0) {
-      super($$0);
+   public cki(ckk $$0, int $$1, float $$2, cis.a $$3) {
+      super($$0, $$3);
+      this.a = (float)$$1 + $$0.c();
+      Builder<bjz, bkc> $$4 = ImmutableMultimap.builder();
+      $$4.put(bke.f, new bkc(m, "Weapon modifier", (double)this.a, bkc.a.a));
+      $$4.put(bke.h, new bkc(n, "Weapon modifier", (double)$$2, bkc.a.a));
+      this.b = $$4.build();
    }
 
-   public static void a(ciy $$0, List<dap.a> $$1) {
-      qr $$2 = $$0.w();
-      dap.a.b.encodeStart(rc.a, $$1).result().ifPresent($$1x -> $$2.a("effects", $$1x));
+   public float h() {
+      return this.a;
    }
 
-   public static void b(ciy $$0, List<dap.a> $$1) {
-      qr $$2 = $$0.w();
-      List<dap.a> $$3 = new ArrayList<>();
-      a($$0, $$3::add);
-      $$3.addAll($$1);
-      dap.a.b.encodeStart(rc.a, $$3).result().ifPresent($$1x -> $$2.a("effects", $$1x));
+   @Override
+   public boolean a(dez $$0, cpl $$1, gu $$2, cbm $$3) {
+      return !$$3.f();
    }
 
-   private static void a(ciy $$0, Consumer<dap.a> $$1) {
-      qr $$2 = $$0.v();
-      if ($$2 != null && $$2.b("effects", 9)) {
-         dap.a.b.parse(rc.a, $$2.c("effects", 10)).result().ifPresent($$1x -> $$1x.forEach($$1));
+   @Override
+   public float a(cix $$0, dez $$1) {
+      if ($$1.a(csm.bs)) {
+         return 15.0F;
+      } else {
+         return $$1.a(apl.bD) ? 1.5F : 1.0F;
       }
    }
 
    @Override
-   public void a(ciy $$0, @Nullable cpm $$1, List<tf> $$2, ckp $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$3.b()) {
-         List<bhv> $$4 = new ArrayList<>();
-         a($$0, $$1x -> $$4.add($$1x.a()));
-         ckx.a($$4, $$2, 1.0F);
-      }
+   public boolean a(cix $$0, biy $$1, biy $$2) {
+      $$0.a(1, $$2, $$0x -> $$0x.d(bin.a));
+      return true;
    }
 
    @Override
-   public ciy a(ciy $$0, cpm $$1, biy $$2) {
-      ciy $$3 = super.a($$0, $$1, $$2);
-      a($$3, $$1x -> $$2.b($$1x.a()));
-      return $$2 instanceof cbn && ((cbn)$$2).fR().d ? $$3 : new ciy(cjb.oC);
+   public boolean a(cix $$0, cpl $$1, dez $$2, gu $$3, biy $$4) {
+      if ($$2.h($$1, $$3) != 0.0F) {
+         $$0.a(2, $$4, $$0x -> $$0x.d(bin.a));
+      }
+
+      return true;
+   }
+
+   @Override
+   public boolean a_(dez $$0) {
+      return $$0.a(csm.bs);
+   }
+
+   @Override
+   public Multimap<bjz, bkc> a(bin $$0) {
+      return $$0 == bin.a ? this.b : super.a($$0);
    }
 }
