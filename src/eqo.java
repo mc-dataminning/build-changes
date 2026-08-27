@@ -1,39 +1,38 @@
-import java.util.function.IntFunction;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public enum eqo implements arz {
-   a(0, "options.graphics.fast"),
-   b(1, "options.graphics.fancy"),
-   c(2, "options.graphics.fabulous");
+public class eqo {
+   private final fja a;
+   private int b = -1;
+   @Nullable
+   private Consumer<qy> c;
 
-   private static final IntFunction<eqo> d = aqs.a(eqo::a, values(), aqs.a.b);
-   private final int e;
-   private final String f;
-
-   private eqo(int $$0, String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public eqo(fja $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public int a() {
-      return this.e;
+   public boolean a(int $$0, @Nullable qy $$1) {
+      if (this.b == $$0 && this.c != null) {
+         this.c.accept($$1);
+         this.c = null;
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   @Override
-   public String b() {
-      return this.f;
+   private int a(Consumer<qy> $$0) {
+      this.c = $$0;
+      return ++this.b;
    }
 
-   @Override
-   public String toString() {
-      return switch (this) {
-         case a -> "fast";
-         case b -> "fancy";
-         case c -> "fabulous";
-      };
+   public void a(int $$0, Consumer<qy> $$1) {
+      int $$2 = this.a($$1);
+      this.a.b(new abw($$2, $$0));
    }
 
-   public static eqo a(int $$0) {
-      return d.apply($$0);
+   public void a(gw $$0, Consumer<qy> $$1) {
+      int $$2 = this.a($$1);
+      this.a.b(new abi($$2, $$0));
    }
 }

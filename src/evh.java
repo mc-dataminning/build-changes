@@ -1,276 +1,115 @@
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import com.mojang.blaze3d.platform.TextureUtil;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
 
-public class evh {
-   private final Supplier<String> a;
-   private final Consumer<String> b;
-   private final Supplier<String> c;
-   private final Consumer<String> d;
-   private final Predicate<String> e;
-   private int f;
-   private int g;
+public class evh extends fyr implements fys {
+   private static final int e = 256;
+   private final evi f;
+   private final boolean g;
+   private final evh.a h;
 
-   public evh(Supplier<String> $$0, Consumer<String> $$1, Supplier<String> $$2, Consumer<String> $$3, Predicate<String> $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f();
+   public evh(evi $$0, boolean $$1) {
+      this.g = $$1;
+      this.h = new evh.a(0, 0, 256, 256);
+      TextureUtil.prepareImage($$1 ? eks.b.a : eks.b.d, this.a(), 256, 256);
+      this.f = $$0;
    }
 
-   public static Supplier<String> a(eqv $$0) {
-      return () -> b($$0);
+   @Override
+   public void a(anv $$0) {
    }
 
-   public static String b(eqv $$0) {
-      return n.a($$0.o.a().replaceAll("\\r", ""));
+   @Override
+   public void close() {
+      this.b();
    }
 
-   public static Consumer<String> c(eqv $$0) {
-      return $$1 -> a($$0, $$1);
+   @Nullable
+   public evk a(ejv $$0) {
+      if ($$0.c() != this.g) {
+         return null;
+      } else {
+         evh.a $$1 = this.h.a($$0);
+         if ($$1 != null) {
+            this.c();
+            $$0.a($$1.a, $$1.b);
+            float $$2 = 256.0F;
+            float $$3 = 256.0F;
+            float $$4 = 0.01F;
+            return new evk(
+               this.f,
+               ((float)$$1.a + 0.01F) / 256.0F,
+               ((float)$$1.a - 0.01F + (float)$$0.a()) / 256.0F,
+               ((float)$$1.b + 0.01F) / 256.0F,
+               ((float)$$1.b - 0.01F + (float)$$0.b()) / 256.0F,
+               $$0.e(),
+               $$0.f(),
+               $$0.g(),
+               $$0.h()
+            );
+         } else {
+            return null;
+         }
+      }
    }
 
-   public static void a(eqv $$0, String $$1) {
-      $$0.o.a($$1);
+   @Override
+   public void a(aey $$0, Path $$1) {
+      String $$2 = $$0.c();
+      TextureUtil.writeAsPNG($$1, $$2, this.a(), 0, 256, 256, $$0x -> ($$0x & 0xFF000000) == 0 ? -16777216 : $$0x);
    }
 
-   public boolean a(char $$0) {
-      if (aa.a($$0)) {
-         this.a(this.a.get(), Character.toString($$0));
+   static class a {
+      final int a;
+      final int b;
+      private final int c;
+      private final int d;
+      @Nullable
+      private evh.a e;
+      @Nullable
+      private evh.a f;
+      private boolean g;
+
+      a(int $$0, int $$1, int $$2, int $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
       }
 
-      return true;
-   }
+      @Nullable
+      evh.a a(ejv $$0) {
+         if (this.e != null && this.f != null) {
+            evh.a $$1 = this.e.a($$0);
+            if ($$1 == null) {
+               $$1 = this.f.a($$0);
+            }
 
-   public boolean a(int $$0) {
-      if (eyk.g($$0)) {
-         this.d();
-         return true;
-      } else if (eyk.f($$0)) {
-         this.c();
-         return true;
-      } else if (eyk.e($$0)) {
-         this.b();
-         return true;
-      } else if (eyk.d($$0)) {
-         this.a();
-         return true;
-      } else {
-         evh.a $$1 = eyk.p() ? evh.a.b : evh.a.a;
-         if ($$0 == 259) {
-            this.a(-1, $$1);
-            return true;
+            return $$1;
+         } else if (this.g) {
+            return null;
          } else {
-            if ($$0 == 261) {
-               this.a(1, $$1);
+            int $$2 = $$0.a();
+            int $$3 = $$0.b();
+            if ($$2 > this.c || $$3 > this.d) {
+               return null;
+            } else if ($$2 == this.c && $$3 == this.d) {
+               this.g = true;
+               return this;
             } else {
-               if ($$0 == 263) {
-                  this.a(-1, eyk.q(), $$1);
-                  return true;
+               int $$4 = this.c - $$2;
+               int $$5 = this.d - $$3;
+               if ($$4 > $$5) {
+                  this.e = new evh.a(this.a, this.b, $$2, this.d);
+                  this.f = new evh.a(this.a + $$2 + 1, this.b, this.c - $$2 - 1, this.d);
+               } else {
+                  this.e = new evh.a(this.a, this.b, this.c, $$3);
+                  this.f = new evh.a(this.a, this.b + $$3 + 1, this.c, this.d - $$3 - 1);
                }
 
-               if ($$0 == 262) {
-                  this.a(1, eyk.q(), $$1);
-                  return true;
-               }
-
-               if ($$0 == 268) {
-                  this.a(eyk.q());
-                  return true;
-               }
-
-               if ($$0 == 269) {
-                  this.b(eyk.q());
-                  return true;
-               }
-            }
-
-            return false;
-         }
-      }
-   }
-
-   private int h(int $$0) {
-      return arx.a($$0, 0, this.a.get().length());
-   }
-
-   private void a(String $$0, String $$1) {
-      if (this.g != this.f) {
-         $$0 = this.c($$0);
-      }
-
-      this.f = arx.a(this.f, 0, $$0.length());
-      String $$2 = new StringBuilder($$0).insert(this.f, $$1).toString();
-      if (this.e.test($$2)) {
-         this.b.accept($$2);
-         this.g = this.f = Math.min($$2.length(), this.f + $$1.length());
-      }
-   }
-
-   public void a(String $$0) {
-      this.a(this.a.get(), $$0);
-   }
-
-   private void c(boolean $$0) {
-      if (!$$0) {
-         this.g = this.f;
-      }
-   }
-
-   public void a(int $$0, boolean $$1, evh.a $$2) {
-      switch ($$2) {
-         case a:
-            this.a($$0, $$1);
-            break;
-         case b:
-            this.b($$0, $$1);
-      }
-   }
-
-   public void b(int $$0) {
-      this.a($$0, false);
-   }
-
-   public void a(int $$0, boolean $$1) {
-      this.f = ac.a(this.a.get(), this.f, $$0);
-      this.c($$1);
-   }
-
-   public void c(int $$0) {
-      this.b($$0, false);
-   }
-
-   public void b(int $$0, boolean $$1) {
-      this.f = erh.a(this.a.get(), $$0, this.f, true);
-      this.c($$1);
-   }
-
-   public void a(int $$0, evh.a $$1) {
-      switch ($$1) {
-         case a:
-            this.e($$0);
-            break;
-         case b:
-            this.d($$0);
-      }
-   }
-
-   public void d(int $$0) {
-      int $$1 = erh.a(this.a.get(), $$0, this.f, true);
-      this.e($$1 - this.f);
-   }
-
-   public void e(int $$0) {
-      String $$1 = this.a.get();
-      if (!$$1.isEmpty()) {
-         String $$2;
-         if (this.g != this.f) {
-            $$2 = this.c($$1);
-         } else {
-            int $$3 = ac.a($$1, this.f, $$0);
-            int $$4 = Math.min($$3, this.f);
-            int $$5 = Math.max($$3, this.f);
-            $$2 = new StringBuilder($$1).delete($$4, $$5).toString();
-            if ($$0 < 0) {
-               this.g = this.f = $$4;
+               return this.e.a($$0);
             }
          }
-
-         this.b.accept($$2);
       }
-   }
-
-   public void a() {
-      String $$0 = this.a.get();
-      this.d.accept(this.b($$0));
-      this.b.accept(this.c($$0));
-   }
-
-   public void b() {
-      this.a(this.a.get(), this.c.get());
-      this.g = this.f;
-   }
-
-   public void c() {
-      this.d.accept(this.b(this.a.get()));
-   }
-
-   public void d() {
-      this.g = 0;
-      this.f = this.a.get().length();
-   }
-
-   private String b(String $$0) {
-      int $$1 = Math.min(this.f, this.g);
-      int $$2 = Math.max(this.f, this.g);
-      return $$0.substring($$1, $$2);
-   }
-
-   private String c(String $$0) {
-      if (this.g == this.f) {
-         return $$0;
-      } else {
-         int $$1 = Math.min(this.f, this.g);
-         int $$2 = Math.max(this.f, this.g);
-         String $$3 = $$0.substring(0, $$1) + $$0.substring($$2);
-         this.g = this.f = $$1;
-         return $$3;
-      }
-   }
-
-   public void e() {
-      this.a(false);
-   }
-
-   public void a(boolean $$0) {
-      this.f = 0;
-      this.c($$0);
-   }
-
-   public void f() {
-      this.b(false);
-   }
-
-   public void b(boolean $$0) {
-      this.f = this.a.get().length();
-      this.c($$0);
-   }
-
-   public int g() {
-      return this.f;
-   }
-
-   public void f(int $$0) {
-      this.c($$0, true);
-   }
-
-   public void c(int $$0, boolean $$1) {
-      this.f = this.h($$0);
-      this.c($$1);
-   }
-
-   public int h() {
-      return this.g;
-   }
-
-   public void g(int $$0) {
-      this.g = this.h($$0);
-   }
-
-   public void a(int $$0, int $$1) {
-      int $$2 = this.a.get().length();
-      this.f = arx.a($$0, 0, $$2);
-      this.g = arx.a($$1, 0, $$2);
-   }
-
-   public boolean i() {
-      return this.f != this.g;
-   }
-
-   public static enum a {
-      a,
-      b;
    }
 }

@@ -1,29 +1,14 @@
-public class abo implements ve<abd> {
-   private final abo.a a;
-
-   public abo(abo.a $$0) {
-      this.a = $$0;
-   }
-
-   public abo(sp $$0) {
-      this.a = $$0.b(abo.a.class);
+public record abo(float a) implements vf<abe> {
+   public abo(sq $$0) {
+      this($$0.readFloat());
    }
 
    @Override
-   public void a(sp $$0) {
+   public void a(sq $$0) {
       $$0.a(this.a);
    }
 
-   public void a(abd $$0) {
+   public void a(abe $$0) {
       $$0.a(this);
-   }
-
-   public abo.a a() {
-      return this.a;
-   }
-
-   public static enum a {
-      a,
-      b;
    }
 }

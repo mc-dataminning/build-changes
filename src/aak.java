@@ -1,40 +1,24 @@
-public class aak implements ve<wx> {
-   private final long a;
-   private final long b;
+public class aak implements vf<wy> {
+   private final tn a;
 
-   public aak(long $$0, long $$1, boolean $$2) {
+   public aak(tn $$0) {
       this.a = $$0;
-      long $$3 = $$1;
-      if (!$$2) {
-         $$3 = -$$1;
-         if ($$3 == 0L) {
-            $$3 = -1L;
-         }
-      }
-
-      this.b = $$3;
    }
 
-   public aak(sp $$0) {
-      this.a = $$0.readLong();
-      this.b = $$0.readLong();
+   public aak(sq $$0) {
+      this.a = $$0.l();
    }
 
    @Override
-   public void a(sp $$0) {
-      $$0.b(this.a);
-      $$0.b(this.b);
+   public void a(sq $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(wx $$0) {
+   public void a(wy $$0) {
       $$0.a(this);
    }
 
-   public long a() {
+   public tn a() {
       return this.a;
-   }
-
-   public long d() {
-      return this.b;
    }
 }

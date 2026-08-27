@@ -1,63 +1,72 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class djg {
-   private Int2ObjectMap<biq> a = new Int2ObjectLinkedOpenHashMap();
-   private Int2ObjectMap<biq> b = new Int2ObjectLinkedOpenHashMap();
-   @Nullable
-   private Int2ObjectMap<biq> c;
+public class djg<T extends djc> {
+   private static final Logger a = LogUtils.getLogger();
+   private final aqu<T> b;
+   private djp c;
 
-   private void a() {
-      if (this.c == this.a) {
-         this.b.clear();
-         ObjectIterator $$1 = Int2ObjectMaps.fastIterable(this.a).iterator();
+   public djg(Class<T> $$0, djp $$1) {
+      this.c = $$1;
+      this.b = new aqu<>($$0);
+   }
 
-         while ($$1.hasNext()) {
-            Entry<biq> $$0 = (Entry<biq>)$$1.next();
-            this.b.put($$0.getIntKey(), (biq)$$0.getValue());
+   public void a(T $$0) {
+      this.b.add($$0);
+   }
+
+   public boolean b(T $$0) {
+      return this.b.remove($$0);
+   }
+
+   public aqp.a a(ehk $$0, aqp<T> $$1) {
+      for (T $$2 : this.b) {
+         if ($$2.cG().c($$0) && $$1.accept($$2).a()) {
+            return aqp.a.b;
          }
-
-         Int2ObjectMap<biq> $$1x = this.a;
-         this.a = this.b;
-         this.b = $$1x;
       }
+
+      return aqp.a.a;
    }
 
-   public void a(biq $$0) {
-      this.a();
-      this.a.put($$0.ah(), $$0);
-   }
-
-   public void b(biq $$0) {
-      this.a();
-      this.a.remove($$0.ah());
-   }
-
-   public boolean c(biq $$0) {
-      return this.a.containsKey($$0.ah());
-   }
-
-   public void a(Consumer<biq> $$0) {
-      if (this.c != null) {
-         throw new UnsupportedOperationException("Only one concurrent iteration supported");
+   public <U extends T> aqp.a a(djj<T, U> $$0, ehk $$1, aqp<? super U> $$2) {
+      Collection<? extends T> $$3 = this.b.a($$0.a());
+      if ($$3.isEmpty()) {
+         return aqp.a.a;
       } else {
-         this.c = this.a;
-
-         try {
-            ObjectIterator var2 = this.a.values().iterator();
-
-            while (var2.hasNext()) {
-               biq $$1 = (biq)var2.next();
-               $$0.accept($$1);
+         for (T $$4 : $$3) {
+            U $$5 = (U)$$0.a($$4);
+            if ($$5 != null && $$4.cG().c($$1) && $$2.accept($$5).a()) {
+               return aqp.a.b;
             }
-         } finally {
-            this.c = null;
          }
+
+         return aqp.a.a;
       }
+   }
+
+   public boolean a() {
+      return this.b.isEmpty();
+   }
+
+   public Stream<T> b() {
+      return this.b.stream();
+   }
+
+   public djp c() {
+      return this.c;
+   }
+
+   public djp a(djp $$0) {
+      djp $$1 = this.c;
+      this.c = $$0;
+      return $$1;
+   }
+
+   @ata
+   public int d() {
+      return this.b.size();
    }
 }

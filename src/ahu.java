@@ -1,118 +1,218 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.FloatArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
+import java.util.Optional;
 
 public class ahu {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("commands.playsound.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tn.c("commands.place.feature.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tn.c("commands.place.jigsaw.failed"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tn.c("commands.place.structure.failed"));
+   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> tn.a("commands.place.template.invalid", $$0));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(tn.c("commands.place.template.failed"));
+   private static final SuggestionProvider<dt> f = ($$0, $$1) -> {
+      dze $$2 = ((dt)$$0.getSource()).e().p();
+      return dw.a($$2.a(), $$1);
+   };
 
    public static void a(CommandDispatcher<dt> $$0) {
-      RequiredArgumentBuilder<dt, aex> $$1 = du.a("sound", es.a()).suggests(gm.c);
-
-      for (apf $$2 : apf.values()) {
-         $$1.then(a($$2));
-      }
-
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("playsound").requires($$0x -> $$0x.c(2))).then($$1));
-   }
-
-   private static LiteralArgumentBuilder<dt> a(apf $$0) {
-      return (LiteralArgumentBuilder<dt>)du.a($$0.a())
-         .then(
-            ((RequiredArgumentBuilder)du.a("targets", ee.d())
-                  .executes($$1 -> a((dt)$$1.getSource(), ee.f($$1, "targets"), es.e($$1, "sound"), $$0, ((dt)$$1.getSource()).d(), 1.0F, 1.0F, 0.0F)))
-               .then(
-                  ((RequiredArgumentBuilder)du.a("pos", fr.a())
-                        .executes($$1 -> a((dt)$$1.getSource(), ee.f($$1, "targets"), es.e($$1, "sound"), $$0, fr.a($$1, "pos"), 1.0F, 1.0F, 0.0F)))
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("place")
+                        .requires($$0x -> $$0x.c(2)))
                      .then(
-                        ((RequiredArgumentBuilder)du.a("volume", FloatArgumentType.floatArg(0.0F))
-                              .executes(
-                                 $$1 -> a(
-                                       (dt)$$1.getSource(),
-                                       ee.f($$1, "targets"),
-                                       es.e($$1, "sound"),
-                                       $$0,
-                                       fr.a($$1, "pos"),
-                                       (Float)$$1.getArgument("volume", Float.class),
-                                       1.0F,
-                                       0.0F
-                                    )
-                              ))
+                        du.a("feature")
                            .then(
-                              ((RequiredArgumentBuilder)du.a("pitch", FloatArgumentType.floatArg(0.0F, 2.0F))
-                                    .executes(
-                                       $$1 -> a(
-                                             (dt)$$1.getSource(),
-                                             ee.f($$1, "targets"),
-                                             es.e($$1, "sound"),
-                                             $$0,
-                                             fr.a($$1, "pos"),
-                                             (Float)$$1.getArgument("volume", Float.class),
-                                             (Float)$$1.getArgument("pitch", Float.class),
-                                             0.0F
-                                          )
-                                    ))
-                                 .then(
-                                    du.a("minVolume", FloatArgumentType.floatArg(0.0F, 1.0F))
-                                       .executes(
-                                          $$1 -> a(
-                                                (dt)$$1.getSource(),
-                                                ee.f($$1, "targets"),
-                                                es.e($$1, "sound"),
-                                                $$0,
-                                                fr.a($$1, "pos"),
-                                                (Float)$$1.getArgument("volume", Float.class),
-                                                (Float)$$1.getArgument("pitch", Float.class),
-                                                (Float)$$1.getArgument("minVolume", Float.class)
-                                             )
-                                       )
-                                 )
+                              ((RequiredArgumentBuilder)du.a("feature", er.a(je.as))
+                                    .executes($$0x -> a((dt)$$0x.getSource(), er.a($$0x, "feature"), gw.a(((dt)$$0x.getSource()).d()))))
+                                 .then(du.a("pos", fk.a()).executes($$0x -> a((dt)$$0x.getSource(), er.a($$0x, "feature"), fk.a($$0x, "pos"))))
                            )
+                     ))
+                  .then(
+                     du.a("jigsaw")
+                        .then(
+                           du.a("pool", er.a(je.aC))
+                              .then(
+                                 du.a("target", es.a())
+                                    .then(
+                                       ((RequiredArgumentBuilder)du.a("max_depth", IntegerArgumentType.integer(1, 7))
+                                             .executes(
+                                                $$0x -> a(
+                                                      (dt)$$0x.getSource(),
+                                                      er.c($$0x, "pool"),
+                                                      es.e($$0x, "target"),
+                                                      IntegerArgumentType.getInteger($$0x, "max_depth"),
+                                                      gw.a(((dt)$$0x.getSource()).d())
+                                                   )
+                                             ))
+                                          .then(
+                                             du.a("position", fk.a())
+                                                .executes(
+                                                   $$0x -> a(
+                                                         (dt)$$0x.getSource(),
+                                                         er.c($$0x, "pool"),
+                                                         es.e($$0x, "target"),
+                                                         IntegerArgumentType.getInteger($$0x, "max_depth"),
+                                                         fk.a($$0x, "position")
+                                                      )
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  ))
+               .then(
+                  du.a("structure")
+                     .then(
+                        ((RequiredArgumentBuilder)du.a("structure", er.a(je.az))
+                              .executes($$0x -> b((dt)$$0x.getSource(), er.b($$0x, "structure"), gw.a(((dt)$$0x.getSource()).d()))))
+                           .then(du.a("pos", fk.a()).executes($$0x -> b((dt)$$0x.getSource(), er.b($$0x, "structure"), fk.a($$0x, "pos"))))
                      )
-               )
-         );
+               ))
+            .then(
+               du.a("template")
+                  .then(
+                     ((RequiredArgumentBuilder)du.a("template", es.a())
+                           .suggests(f)
+                           .executes($$0x -> a((dt)$$0x.getSource(), es.e($$0x, "template"), gw.a(((dt)$$0x.getSource()).d()), czj.a, cxs.a, 1.0F, 0)))
+                        .then(
+                           ((RequiredArgumentBuilder)du.a("pos", fk.a())
+                                 .executes($$0x -> a((dt)$$0x.getSource(), es.e($$0x, "template"), fk.a($$0x, "pos"), czj.a, cxs.a, 1.0F, 0)))
+                              .then(
+                                 ((RequiredArgumentBuilder)du.a("rotation", fc.a())
+                                       .executes(
+                                          $$0x -> a((dt)$$0x.getSource(), es.e($$0x, "template"), fk.a($$0x, "pos"), fc.a($$0x, "rotation"), cxs.a, 1.0F, 0)
+                                       ))
+                                    .then(
+                                       ((RequiredArgumentBuilder)du.a("mirror", fb.a())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (dt)$$0x.getSource(),
+                                                      es.e($$0x, "template"),
+                                                      fk.a($$0x, "pos"),
+                                                      fc.a($$0x, "rotation"),
+                                                      fb.a($$0x, "mirror"),
+                                                      1.0F,
+                                                      0
+                                                   )
+                                             ))
+                                          .then(
+                                             ((RequiredArgumentBuilder)du.a("integrity", FloatArgumentType.floatArg(0.0F, 1.0F))
+                                                   .executes(
+                                                      $$0x -> a(
+                                                            (dt)$$0x.getSource(),
+                                                            es.e($$0x, "template"),
+                                                            fk.a($$0x, "pos"),
+                                                            fc.a($$0x, "rotation"),
+                                                            fb.a($$0x, "mirror"),
+                                                            FloatArgumentType.getFloat($$0x, "integrity"),
+                                                            0
+                                                         )
+                                                   ))
+                                                .then(
+                                                   du.a("seed", IntegerArgumentType.integer())
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (dt)$$0x.getSource(),
+                                                               es.e($$0x, "template"),
+                                                               fk.a($$0x, "pos"),
+                                                               fc.a($$0x, "rotation"),
+                                                               fb.a($$0x, "mirror"),
+                                                               FloatArgumentType.getFloat($$0x, "integrity"),
+                                                               IntegerArgumentType.getInteger($$0x, "seed")
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
+      );
    }
 
-   private static int a(dt $$0, Collection<aks> $$1, aex $$2, apf $$3, ehn $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
-      hg<apd> $$8 = hg.a(apd.a($$2));
-      double $$9 = (double)arx.k($$8.a().a($$5));
-      int $$10 = 0;
-      long $$11 = $$0.e().D_().g();
-
-      for (aks $$12 : $$1) {
-         double $$13 = $$4.c - $$12.dq();
-         double $$14 = $$4.d - $$12.ds();
-         double $$15 = $$4.e - $$12.dw();
-         double $$16 = $$13 * $$13 + $$14 * $$14 + $$15 * $$15;
-         ehn $$17 = $$4;
-         float $$18 = $$5;
-         if ($$16 > $$9) {
-            if ($$7 <= 0.0F) {
-               continue;
-            }
-
-            double $$19 = Math.sqrt($$16);
-            $$17 = new ehn($$12.dq() + $$13 / $$19 * 2.0, $$12.ds() + $$14 / $$19 * 2.0, $$12.dw() + $$15 / $$19 * 2.0);
-            $$18 = $$7;
-         }
-
-         $$12.c.b(new aao($$8, $$3, $$17.a(), $$17.b(), $$17.c(), $$18, $$6, $$11));
-         $$10++;
-      }
-
-      if ($$10 == 0) {
+   public static int a(dt $$0, hg.c<dnl<?, ?>> $$1, gw $$2) throws CommandSyntaxException {
+      aks $$3 = $$0.e();
+      dnl<?, ?> $$4 = $$1.a();
+      cpe $$5 = new cpe($$2);
+      a($$3, new cpe($$5.e - 1, $$5.f - 1), new cpe($$5.e + 1, $$5.f + 1));
+      if (!$$4.a($$3, $$3.k().g(), $$3.D_(), $$2)) {
          throw a.create();
       } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> tm.a("commands.playsound.success.single", $$2, $$1.iterator().next().N_()), true);
-         } else {
-            $$0.a(() -> tm.a("commands.playsound.success.multiple", $$2, $$1.size()), true);
+         String $$6 = $$1.g().a().toString();
+         $$0.a(() -> tn.a("commands.place.feature.success", $$6, $$2.u(), $$2.v(), $$2.w()), true);
+         return 1;
+      }
+   }
+
+   public static int a(dt $$0, hg<dwt> $$1, aey $$2, int $$3, gw $$4) throws CommandSyntaxException {
+      aks $$5 = $$0.e();
+      if (!dwn.a($$5, $$1, $$2, $$3, $$4, false)) {
+         throw b.create();
+      } else {
+         $$0.a(() -> tn.a("commands.place.jigsaw.success", $$4.u(), $$4.v(), $$4.w()), true);
+         return 1;
+      }
+   }
+
+   public static int b(dt $$0, hg.c<dvk> $$1, gw $$2) throws CommandSyntaxException {
+      aks $$3 = $$0.e();
+      dvk $$4 = $$1.a();
+      dhi $$5 = $$3.k().g();
+      dvs $$6 = $$4.a($$0.v(), $$5, $$5.c(), $$3.k().i(), $$3.p(), $$3.A(), new cpe($$2), 0, $$3, $$0x -> true);
+      if (!$$6.b()) {
+         throw c.create();
+      } else {
+         dvc $$7 = $$6.a();
+         cpe $$8 = new cpe(hz.a($$7.g()), hz.a($$7.i()));
+         cpe $$9 = new cpe(hz.a($$7.j()), hz.a($$7.l()));
+         a($$3, $$8, $$9);
+         cpe.a($$8, $$9).forEach($$3x -> $$6.a($$3, $$3.a(), $$5, $$3.D_(), new dvc($$3x.d(), $$3.H_(), $$3x.e(), $$3x.f(), $$3.aj(), $$3x.g()), $$3x));
+         String $$10 = $$1.g().a().toString();
+         $$0.a(() -> tn.a("commands.place.structure.success", $$10, $$2.u(), $$2.v(), $$2.w()), true);
+         return 1;
+      }
+   }
+
+   public static int a(dt $$0, aey $$1, gw $$2, czj $$3, cxs $$4, float $$5, int $$6) throws CommandSyntaxException {
+      aks $$7 = $$0.e();
+      dze $$8 = $$7.p();
+
+      Optional<dzd> $$9;
+      try {
+         $$9 = $$8.b($$1);
+      } catch (z var13) {
+         throw d.create($$1);
+      }
+
+      if ($$9.isEmpty()) {
+         throw d.create($$1);
+      } else {
+         dzd $$12 = $$9.get();
+         a($$7, new cpe($$2), new cpe($$2.a($$12.a())));
+         dyz $$13 = new dyz().a($$4).a($$3);
+         if ($$5 < 1.0F) {
+            $$13.b().a(new dyh($$5)).a(dek.b((long)$$6));
          }
 
-         return $$10;
+         boolean $$14 = $$12.a($$7, $$2, $$2, $$13, dek.b((long)$$6), 2);
+         if (!$$14) {
+            throw e.create();
+         } else {
+            $$0.a(() -> tn.a("commands.place.template.success", $$1, $$2.u(), $$2.v(), $$2.w()), true);
+            return 1;
+         }
+      }
+   }
+
+   private static void a(aks $$0, cpe $$1, cpe $$2) throws CommandSyntaxException {
+      if (cpe.a($$1, $$2).filter($$1x -> !$$0.o($$1x.l())).findAny().isPresent()) {
+         throw fk.a.create();
       }
    }
 }

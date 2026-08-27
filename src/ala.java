@@ -1,11 +1,8 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface ala {
-   void a(cpc var1);
-
-   void a(cpc var1, @Nullable dhk var2);
-
-   void a();
-
-   void b();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ala {
 }

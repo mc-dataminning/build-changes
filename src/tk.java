@@ -1,78 +1,92 @@
-import java.util.Arrays;
-import java.util.Map;
-import java.util.stream.Collectors;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class tk {
-   private final tk.a a;
-   private final String b;
+public record tk(String b, List<tk.a> c, uj d) {
+   public static final Codec<tk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("translation_key").forGetter(tk::a),
+               tk.a.d.listOf().fieldOf("parameters").forGetter(tk::b),
+               uj.b.optionalFieldOf("style", uj.a).forGetter(tk::c)
+            )
+            .apply($$0, tk::new)
+   );
 
-   public tk(tk.a $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public static tk a(String $$0) {
+      return new tk($$0, List.of(tk.a.a, tk.a.c), uj.a);
    }
 
-   public tk.a a() {
-      return this.a;
+   public static tk b(String $$0) {
+      uj $$1 = uj.a.a(n.h).b(true);
+      return new tk($$0, List.of(tk.a.a, tk.a.c), $$1);
    }
 
-   public String b() {
+   public static tk c(String $$0) {
+      uj $$1 = uj.a.a(n.h).b(true);
+      return new tk($$0, List.of(tk.a.b, tk.a.c), $$1);
+   }
+
+   public static tk d(String $$0) {
+      return new tk($$0, List.of(tk.a.b, tk.a.a, tk.a.c), uj.a);
+   }
+
+   public tn a(tn $$0, tj.a $$1) {
+      Object[] $$2 = this.b($$0, $$1);
+      return tn.a(this.b, $$2).c(this.d);
+   }
+
+   private tn[] b(tn $$0, tj.a $$1) {
+      tn[] $$2 = new tn[this.c.size()];
+
+      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+         tk.a $$4 = this.c.get($$3);
+         $$2[$$3] = $$4.a($$0, $$1);
+      }
+
+      return $$2;
+   }
+
+   public String a() {
       return this.b;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         tk $$1 = (tk)$$0;
-         if (this.a != $$1.a) {
-            return false;
-         } else {
-            return this.b != null ? this.b.equals($$1.b) : $$1.b == null;
-         }
-      } else {
-         return false;
-      }
+   public List<tk.a> b() {
+      return this.c;
    }
 
-   @Override
-   public String toString() {
-      return "ClickEvent{action=" + this.a + ", value='" + this.b + "'}";
+   public uj c() {
+      return this.d;
    }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.a.hashCode();
-      return 31 * $$0 + (this.b != null ? this.b.hashCode() : 0);
-   }
+   public static enum a implements asr {
+      a("sender", ($$0, $$1) -> $$1.b()),
+      b("target", ($$0, $$1) -> $$1.c()),
+      c("content", ($$0, $$1) -> $$0);
 
-   public static enum a {
-      a("open_url", true),
-      b("open_file", false),
-      c("run_command", true),
-      d("suggest_command", true),
-      e("change_page", true),
-      f("copy_to_clipboard", true);
+      public static final Codec<tk.a> d = asr.a(tk.a::values);
+      private final String e;
+      private final tk.a.a f;
 
-      private static final Map<String, tk.a> g = Arrays.stream(values()).collect(Collectors.toMap(tk.a::b, $$0 -> (tk.a)$$0));
-      private final boolean h;
-      private final String i;
-
-      private a(String $$0, boolean $$1) {
-         this.i = $$0;
-         this.h = $$1;
+      private a(String $$0, tk.a.a $$1) {
+         this.e = $$0;
+         this.f = $$1;
       }
 
-      public boolean a() {
-         return this.h;
+      public tn a(tn $$0, tj.a $$1) {
+         tn $$2 = this.f.select($$0, $$1);
+         return Objects.requireNonNullElse($$2, tm.a);
       }
 
-      public String b() {
-         return this.i;
+      @Override
+      public String c() {
+         return this.e;
       }
 
-      public static tk.a a(String $$0) {
-         return g.get($$0);
+      public interface a {
+         @Nullable
+         tn select(tn var1, tj.a var2);
       }
    }
 }

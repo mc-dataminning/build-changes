@@ -2,17 +2,21 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class qw extends rl {
+public class qw extends rm {
    private static final int w = 9;
-   public static final rt<qw> a = new rt.a<qw>() {
-      public qw a(DataInput $$0, int $$1, rh $$2) throws IOException {
-         $$2.a(9L);
-         return qw.a($$0.readByte());
+   public static final ru<qw> a = new ru.a<qw>() {
+      public qw a(DataInput $$0, rh $$1) throws IOException {
+         return qw.a(d($$0, $$1));
       }
 
       @Override
-      public ro.b a(DataInput $$0, ro $$1) throws IOException {
-         return $$1.a($$0.readByte());
+      public rp.b a(DataInput $$0, rp $$1, rh $$2) throws IOException {
+         return $$1.a(d($$0, $$2));
+      }
+
+      private static byte d(DataInput $$0, rh $$1) throws IOException {
+         $$1.b(9L);
+         return $$0.readByte();
       }
 
       @Override
@@ -67,7 +71,7 @@ public class qw extends rl {
    }
 
    @Override
-   public rt<qw> c() {
+   public ru<qw> c() {
       return a;
    }
 
@@ -86,7 +90,7 @@ public class qw extends rl {
    }
 
    @Override
-   public void a(rv $$0) {
+   public void a(rw $$0) {
       $$0.a(this);
    }
 
@@ -126,7 +130,7 @@ public class qw extends rl {
    }
 
    @Override
-   public ro.b a(ro $$0) {
+   public rp.b a(rp $$0) {
       return $$0.a(this.x);
    }
 

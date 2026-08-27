@@ -1,31 +1,22 @@
-import java.util.UUID;
+public class ete extends ess {
+   protected final eue a;
 
-public class ete extends bgo {
-   private static final long j = 100L;
-   protected float h;
-   protected long i;
+   public ete(int $$0, int $$1, int $$2, int $$3, eue $$4, ess.c $$5) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, tm.a);
+   }
 
-   public ete(UUID $$0, tm $$1, float $$2, bgo.a $$3, bgo.b $$4, boolean $$5, boolean $$6, boolean $$7) {
-      super($$0, $$1, $$3, $$4);
-      this.h = $$2;
-      this.b = $$2;
-      this.i = ac.b();
-      this.a($$5);
-      this.b($$6);
-      this.c($$7);
+   public ete(int $$0, int $$1, int $$2, int $$3, eue $$4, ess.c $$5, tn $$6) {
+      super($$0, $$1, $$2, $$3, $$6, $$5, o);
+      this.a = $$4;
+   }
+
+   public ete(int $$0, int $$1, eue $$2, ess.c $$3, tn $$4) {
+      this(0, 0, $$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   public void a(float $$0) {
-      this.b = this.k();
-      this.h = $$0;
-      this.i = ac.b();
-   }
-
-   @Override
-   public float k() {
-      long $$0 = ac.b() - this.i;
-      float $$1 = arx.a((float)$$0 / 100.0F, 0.0F, 1.0F);
-      return arx.i($$1, this.b, this.h);
+   public void b(esh $$0, int $$1, int $$2, float $$3) {
+      aey $$4 = this.a.a(this.aD_(), this.o());
+      $$0.a($$4, this.r(), this.t(), this.f, this.g);
    }
 }

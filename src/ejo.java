@@ -1,91 +1,38 @@
-import com.mojang.logging.LogUtils;
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioFormat.Encoding;
+import org.joml.Vector3f;
 import org.lwjgl.openal.AL10;
-import org.lwjgl.openal.ALC10;
-import org.slf4j.Logger;
 
 public class ejo {
-   private static final Logger a = LogUtils.getLogger();
+   private float a = 1.0F;
+   private ehp b;
 
-   private static String a(int $$0) {
-      switch ($$0) {
-         case 40961:
-            return "Invalid name parameter.";
-         case 40962:
-            return "Invalid enumerated parameter value.";
-         case 40963:
-            return "Invalid parameter parameter value.";
-         case 40964:
-            return "Invalid operation.";
-         case 40965:
-            return "Unable to allocate memory.";
-         default:
-            return "An unrecognized error occurred.";
-      }
+   public ejo() {
+      this.b = ehp.b;
    }
 
-   static boolean a(String $$0) {
-      int $$1 = AL10.alGetError();
-      if ($$1 != 0) {
-         a.error("{}: {}", $$0, a($$1));
-         return true;
-      } else {
-         return false;
-      }
+   public void a(ehp $$0) {
+      this.b = $$0;
+      AL10.alListener3f(4100, (float)$$0.c, (float)$$0.d, (float)$$0.e);
    }
 
-   private static String b(int $$0) {
-      switch ($$0) {
-         case 40961:
-            return "Invalid device.";
-         case 40962:
-            return "Invalid context.";
-         case 40963:
-            return "Illegal enum.";
-         case 40964:
-            return "Invalid value.";
-         case 40965:
-            return "Unable to allocate memory.";
-         default:
-            return "An unrecognized error occurred.";
-      }
+   public ehp a() {
+      return this.b;
    }
 
-   static boolean a(long $$0, String $$1) {
-      int $$2 = ALC10.alcGetError($$0);
-      if ($$2 != 0) {
-         a.error("{}{}: {}", new Object[]{$$1, $$0, b($$2)});
-         return true;
-      } else {
-         return false;
-      }
+   public void a(Vector3f $$0, Vector3f $$1) {
+      AL10.alListenerfv(4111, new float[]{$$0.x(), $$0.y(), $$0.z(), $$1.x(), $$1.y(), $$1.z()});
    }
 
-   static int a(AudioFormat $$0) {
-      Encoding $$1 = $$0.getEncoding();
-      int $$2 = $$0.getChannels();
-      int $$3 = $$0.getSampleSizeInBits();
-      if ($$1.equals(Encoding.PCM_UNSIGNED) || $$1.equals(Encoding.PCM_SIGNED)) {
-         if ($$2 == 1) {
-            if ($$3 == 8) {
-               return 4352;
-            }
+   public void a(float $$0) {
+      AL10.alListenerf(4106, $$0);
+      this.a = $$0;
+   }
 
-            if ($$3 == 16) {
-               return 4353;
-            }
-         } else if ($$2 == 2) {
-            if ($$3 == 8) {
-               return 4354;
-            }
+   public float b() {
+      return this.a;
+   }
 
-            if ($$3 == 16) {
-               return 4355;
-            }
-         }
-      }
-
-      throw new IllegalArgumentException("Invalid audio format: " + $$0);
+   public void c() {
+      this.a(ehp.b);
+      this.a(new Vector3f(0.0F, 0.0F, -1.0F), new Vector3f(0.0F, 1.0F, 0.0F));
    }
 }

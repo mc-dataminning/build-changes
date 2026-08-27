@@ -7,7 +7,7 @@ public class bp extends cw<bp.a> {
       return new bp.a($$1, $$3);
    }
 
-   public void a(aks $$0, bho $$1, float $$2, float $$3, boolean $$4) {
+   public void a(akt $$0, bhq $$1, float $$2, float $$3, boolean $$4) {
       this.a($$0, $$5 -> $$5.a($$0, $$1, $$2, $$3, $$4));
    }
 
@@ -31,7 +31,7 @@ public class bp extends cw<bp.a> {
          return al.h.a(new bp.a(Optional.empty(), Optional.of($$0.b())));
       }
 
-      public boolean a(aks $$0, bho $$1, float $$2, float $$3, boolean $$4) {
+      public boolean a(akt $$0, bhq $$1, float $$2, float $$3, boolean $$4) {
          return !this.a.isPresent() || this.a.get().a($$0, $$1, $$2, $$3, $$4);
       }
 

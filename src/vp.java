@@ -1,14 +1,11 @@
-public record vp(akg a) implements ve<vo> {
-   public vp(sp $$0) {
-      this(new akg($$0));
-   }
+public interface vp extends abf {
+   void a(vs var1);
 
-   @Override
-   public void a(sp $$0) {
-      this.a.a($$0);
-   }
+   void a(vt var1);
 
-   public void a(vo $$0) {
-      $$0.a(this);
-   }
+   void a(vr var1);
+
+   void a(vu var1);
+
+   void a(vq var1);
 }

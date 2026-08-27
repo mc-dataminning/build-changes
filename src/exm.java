@@ -1,52 +1,49 @@
-public class exm extends eyk {
-   private static final tm a = tm.c("gui.toMenu");
-   private static final tm b = tm.c("gui.toTitle");
-   private final eyk c;
-   private final tm k;
-   private final tm l;
-   private final ewd m = ewd.d();
+public class exm extends eym {
+   private static final aey a = new aey("textures/gui/demo_background.png");
+   private etl b = etl.a;
+   private etl c = etl.a;
 
-   public exm(eyk $$0, tm $$1, tm $$2) {
-      this($$0, $$1, $$2, a);
-   }
-
-   public exm(eyk $$0, tm $$1, tm $$2, tm $$3) {
-      super($$1);
-      this.c = $$0;
-      this.k = $$2;
-      this.l = $$3;
+   public exm() {
+      super(tn.c("demo.help.title"));
    }
 
    @Override
-   protected void aI_() {
-      this.m.c().b().a(10);
-      this.m.a(new etw(this.e, this.i));
-      this.m.a(new etk(this.k, this.i).j(this.g - 50).b(true));
-      esq $$0;
-      if (this.f.D()) {
-         $$0 = esq.a(this.l, $$0x -> this.f.a(this.c)).a();
-      } else {
-         $$0 = esq.a(b, $$0x -> this.f.a(new eyp())).a();
-      }
-
-      this.m.a($$0);
-      this.m.a();
-      this.m.a(this::d);
-      this.b();
+   protected void aH_() {
+      int $$0 = -16;
+      this.d(ess.a(tn.c("demo.help.buy"), $$0x -> {
+         $$0x.i = false;
+         ac.i().a("https://aka.ms/BuyMinecraftJava");
+      }).a(this.g / 2 - 116, this.h / 2 + 62 + -16, 114, 20).a());
+      this.d(ess.a(tn.c("demo.help.later"), $$0x -> {
+         this.f.a(null);
+         this.f.n.i();
+      }).a(this.g / 2 + 2, this.h / 2 + 62 + -16, 114, 20).a());
+      erb $$1 = this.f.m;
+      this.b = etl.a(
+         this.i,
+         tn.a("demo.help.movementShort", $$1.x.k(), $$1.y.k(), $$1.z.k(), $$1.A.k()),
+         tn.c("demo.help.movementMouse"),
+         tn.a("demo.help.jump", $$1.B.k()),
+         tn.a("demo.help.inventory", $$1.E.k())
+      );
+      this.c = etl.a(this.i, tn.c("demo.help.fullWrapped"), 218);
    }
 
    @Override
-   protected void b() {
-      evx.a(this.m, this.s());
+   public void b(esh $$0, int $$1, int $$2, float $$3) {
+      super.b($$0, $$1, $$2, $$3);
+      int $$4 = (this.g - 248) / 2;
+      int $$5 = (this.h - 166) / 2;
+      $$0.a(a, $$4, $$5, 0, 0, 248, 166);
    }
 
    @Override
-   public tm g() {
-      return tl.a(this.e, this.k);
-   }
-
-   @Override
-   public boolean ay_() {
-      return false;
+   public void a(esh $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      int $$4 = (this.g - 248) / 2 + 10;
+      int $$5 = (this.h - 166) / 2 + 8;
+      $$0.a(this.i, this.e, $$4, $$5, 2039583, false);
+      $$5 = this.b.c($$0, $$4, $$5 + 12, 12, 5197647);
+      this.c.c($$0, $$4, $$5 + 20, 9, 2039583);
    }
 }

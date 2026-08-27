@@ -1,18 +1,39 @@
-public class czf extends ctd {
-   protected static final float a = 6.0F;
-   protected static final eig b = csv.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
+public class czf extends cuw {
+   protected static final float e = 6.0F;
+   protected static final float f = 10.0F;
+   protected static final eii g = csx.a(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
+   protected static final eii h = csx.a(6.0, 6.0, 0.0, 10.0, 10.0, 16.0);
+   protected static final eii i = csx.a(0.0, 6.0, 6.0, 16.0, 10.0, 10.0);
 
-   protected czf(dfi.d $$0) {
+   protected czf(dfk.d $$0) {
       super($$0);
    }
 
    @Override
-   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
-      return b;
+   public eii a(dfl $$0, cpd $$1, gw $$2, ehu $$3) {
+      switch ($$0.c(a).o()) {
+         case a:
+         default:
+            return i;
+         case c:
+            return h;
+         case b:
+            return g;
+      }
    }
 
    @Override
-   protected boolean d(dfj $$0, cpb $$1, gw $$2) {
-      return $$0.a(apt.aK) || $$0.a(csw.dY) || super.d($$0, $$1, $$2);
+   public dfl a(dfl $$0, czj $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   public dfl a(dfl $$0, cxs $$1) {
+      return $$0.a(a, $$1.b($$0.c(a)));
+   }
+
+   @Override
+   public boolean a(dfl $$0, cpd $$1, gw $$2, ebe $$3) {
+      return false;
    }
 }

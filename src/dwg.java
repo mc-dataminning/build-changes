@@ -1,12 +1,25 @@
 import com.mojang.serialization.Codec;
 
-public interface dwg<SP extends dwf> {
-   dwg<dwd> a = a("random_spread", dwd.a);
-   dwg<dwc> b = a("concentric_rings", dwc.a);
+public enum dwg implements asr {
+   a("linear"),
+   b("triangular");
 
-   Codec<SP> codec();
+   public static final Codec<dwg> c = asr.a(dwg::values);
+   private final String d;
 
-   private static <SP extends dwf> dwg<SP> a(String $$0, Codec<SP> $$1) {
-      return ht.a(jd.S, $$0, () -> $$1);
+   private dwg(String $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public String c() {
+      return this.d;
+   }
+
+   public int a(ase $$0, int $$1) {
+      return switch (this) {
+         case a -> $$0.a($$1);
+         case b -> ($$0.a($$1) + $$0.a($$1)) / 2;
+      };
    }
 }

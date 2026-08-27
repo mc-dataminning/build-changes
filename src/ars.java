@@ -1,15 +1,12 @@
-import com.google.common.base.Suppliers;
-import java.util.function.Supplier;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-@Deprecated
-public class ars<T> {
-   private final Supplier<T> a;
-
-   public ars(Supplier<T> $$0) {
-      this.a = Suppliers.memoize($$0::get);
+public record ars<A>(Codec<A> a) {
+   public static <A> ars<A> a(Codec<A> $$0) {
+      return new ars<>($$0);
    }
 
-   public T a() {
-      return this.a.get();
+   public static <A> ars<A> a(MapCodec<A> $$0) {
+      return new ars<>($$0.codec());
    }
 }

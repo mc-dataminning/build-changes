@@ -1,35 +1,8 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public abstract class bup extends bjp {
-   protected bup(biu<? extends bup> $$0, cpv $$1) {
-      super($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   protected apd w() {
-      return null;
-   }
-
-   @Nullable
-   @Override
-   protected apd d(bho $$0) {
-      return null;
-   }
-
-   @Nullable
-   @Override
-   protected apd l_() {
-      return null;
-   }
-
-   @Override
-   public int O() {
-      return 120;
-   }
-
-   @Override
-   public boolean h(double $$0) {
-      return false;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bup {
 }

@@ -1,8 +1,21 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public enum dgx implements asr {
+   a("none"),
+   b("low"),
+   c("tall");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dgx {
+   private final String d;
+
+   private dgx(String $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.c();
+   }
+
+   @Override
+   public String c() {
+      return this.d;
+   }
 }

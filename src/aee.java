@@ -1,8 +1,15 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class aee implements vf<aec> {
+   public aee() {
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface aee {
+   public aee(sq $$0) {
+   }
+
+   @Override
+   public void a(sq $$0) {
+   }
+
+   public void a(aec $$0) {
+      $$0.a(this);
+   }
 }

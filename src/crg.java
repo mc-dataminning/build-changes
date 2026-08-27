@@ -1,84 +1,57 @@
-import com.mojang.datafixers.util.Either;
+import com.google.common.collect.Sets;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class crg extends cqx {
-   private static final MapCodec<hg<cqt>> d = cqt.c.fieldOf("biome");
-   public static final MapCodec<crc.c<hg<cqt>>> b = crc.c.a(d).fieldOf("biomes");
-   private static final MapCodec<hg<crh>> e = crh.b.fieldOf("preset").withLifecycle(Lifecycle.stable());
-   public static final Codec<crg> c = Codec.mapEither(b, e).xmap(crg::new, $$0 -> $$0.f).codec();
-   private final Either<crc.c<hg<cqt>>, hg<crh>> f;
+public class crg extends cqz implements cqx.a {
+   public static final Codec<crg> b = cqv.c.fieldOf("biome").xmap(crg::new, $$0 -> $$0.c).stable().codec();
+   private final hg<cqv> c;
 
-   private crg(Either<crc.c<hg<cqt>>, hg<crh>> $$0) {
-      this.f = $$0;
-   }
-
-   public static crg a(crc.c<hg<cqt>> $$0) {
-      return new crg(Either.left($$0));
-   }
-
-   public static crg a(hg<crh> $$0) {
-      return new crg(Either.right($$0));
-   }
-
-   private crc.c<hg<cqt>> d() {
-      return (crc.c<hg<cqt>>)this.f.map($$0 -> $$0, $$0 -> ((crh)$$0.a()).a());
+   public crg(hg<cqv> $$0) {
+      this.c = $$0;
    }
 
    @Override
-   protected Stream<hg<cqt>> b() {
-      return this.d().a().stream().map(Pair::getSecond);
+   protected Stream<hg<cqv>> b() {
+      return Stream.of(this.c);
    }
 
    @Override
-   protected Codec<? extends cqx> a() {
-      return c;
-   }
-
-   public boolean a(aew<crh> $$0) {
-      Optional<hg<crh>> $$1 = this.f.right();
-      return $$1.isPresent() && $$1.get().a($$0);
+   protected Codec<? extends cqz> a() {
+      return b;
    }
 
    @Override
-   public hg<cqt> getNoiseBiome(int $$0, int $$1, int $$2, crc.f $$3) {
-      return this.a($$3.a($$0, $$1, $$2));
-   }
-
-   @asy
-   public hg<cqt> a(crc.h $$0) {
-      return this.d().a($$0);
+   public hg<cqv> getNoiseBiome(int $$0, int $$1, int $$2, cre.f $$3) {
+      return this.c;
    }
 
    @Override
-   public void a(List<String> $$0, gw $$1, crc.f $$2) {
-      int $$3 = hs.a($$1.u());
-      int $$4 = hs.a($$1.v());
-      int $$5 = hs.a($$1.w());
-      crc.h $$6 = $$2.a($$3, $$4, $$5);
-      float $$7 = crc.a($$6.d());
-      float $$8 = crc.a($$6.e());
-      float $$9 = crc.a($$6.b());
-      float $$10 = crc.a($$6.c());
-      float $$11 = crc.a($$6.g());
-      double $$12 = (double)dkz.a($$11);
-      crj $$13 = new crj();
-      $$0.add(
-         "Biome builder PV: "
-            + crj.a($$12)
-            + " C: "
-            + $$13.b((double)$$7)
-            + " E: "
-            + $$13.c((double)$$8)
-            + " T: "
-            + $$13.d((double)$$9)
-            + " H: "
-            + $$13.e((double)$$10)
-      );
+   public hg<cqv> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.c;
+   }
+
+   @Nullable
+   @Override
+   public Pair<gw, hg<cqv>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<hg<cqv>> $$5, ase $$6, boolean $$7, cre.f $$8) {
+      if ($$5.test(this.c)) {
+         return $$7 ? Pair.of(new gw($$0, $$1, $$2), this.c) : Pair.of(new gw($$0 - $$3 + $$6.a($$3 * 2 + 1), $$1, $$2 - $$3 + $$6.a($$3 * 2 + 1)), this.c);
+      } else {
+         return null;
+      }
+   }
+
+   @Nullable
+   @Override
+   public Pair<gw, hg<cqv>> a(gw $$0, int $$1, int $$2, int $$3, Predicate<hg<cqv>> $$4, cre.f $$5, cqa $$6) {
+      return $$4.test(this.c) ? Pair.of($$0, this.c) : null;
+   }
+
+   @Override
+   public Set<hg<cqv>> a(int $$0, int $$1, int $$2, int $$3, cre.f $$4) {
+      return Sets.newHashSet(Set.of(this.c));
    }
 }

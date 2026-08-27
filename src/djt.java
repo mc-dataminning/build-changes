@@ -1,147 +1,71 @@
-import javax.annotation.Nullable;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Function;
 
-public class djt {
-   public static final djt a = a("block_activate");
-   public static final djt b = a("block_attach");
-   public static final djt c = a("block_change");
-   public static final djt d = a("block_close");
-   public static final djt e = a("block_deactivate");
-   public static final djt f = a("block_destroy");
-   public static final djt g = a("block_detach");
-   public static final djt h = a("block_open");
-   public static final djt i = a("block_place");
-   public static final djt j = a("container_close");
-   public static final djt k = a("container_open");
-   public static final djt l = a("drink");
-   public static final djt m = a("eat");
-   public static final djt n = a("elytra_glide");
-   public static final djt o = a("entity_damage");
-   public static final djt p = a("entity_die");
-   public static final djt q = a("entity_dismount");
-   public static final djt r = a("entity_interact");
-   public static final djt s = a("entity_mount");
-   public static final djt t = a("entity_place");
-   public static final djt u = a("entity_action");
-   public static final djt v = a("equip");
-   public static final djt w = a("explode");
-   public static final djt x = a("flap");
-   public static final djt y = a("fluid_pickup");
-   public static final djt z = a("fluid_place");
-   public static final djt A = a("hit_ground");
-   public static final djt B = a("instrument_play");
-   public static final djt C = a("item_interact_finish");
-   public static final djt D = a("item_interact_start");
-   public static final djt E = a("jukebox_play", 10);
-   public static final djt F = a("jukebox_stop_play", 10);
-   public static final djt G = a("lightning_strike");
-   public static final djt H = a("note_block_play");
-   public static final djt I = a("prime_fuse");
-   public static final djt J = a("projectile_land");
-   public static final djt K = a("projectile_shoot");
-   public static final djt L = a("sculk_sensor_tendrils_clicking");
-   public static final djt M = a("shear");
-   public static final djt N = a("shriek", 32);
-   public static final djt O = a("splash");
-   public static final djt P = a("step");
-   public static final djt Q = a("swim");
-   public static final djt R = a("teleport");
-   public static final djt S = a("unequip");
-   public static final djt T = a("resonate_1");
-   public static final djt U = a("resonate_2");
-   public static final djt V = a("resonate_3");
-   public static final djt W = a("resonate_4");
-   public static final djt X = a("resonate_5");
-   public static final djt Y = a("resonate_6");
-   public static final djt Z = a("resonate_7");
-   public static final djt aa = a("resonate_8");
-   public static final djt ab = a("resonate_9");
-   public static final djt ac = a("resonate_10");
-   public static final djt ad = a("resonate_11");
-   public static final djt ae = a("resonate_12");
-   public static final djt af = a("resonate_13");
-   public static final djt ag = a("resonate_14");
-   public static final djt ah = a("resonate_15");
-   public static final int ai = 16;
-   private final int aj;
-   private final hg.c<djt> ak = jd.b.f(this);
+public class djt implements djz {
+   public static final Codec<djt> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ia.a.fieldOf("source_entity").forGetter(djt::b), Codec.FLOAT.fieldOf("y_offset").orElse(0.0F).forGetter($$0x -> $$0x.d))
+            .apply($$0, ($$0x, $$1) -> new djt(Either.right(Either.left($$0x)), $$1))
+   );
+   private Either<bis, Either<UUID, Integer>> c;
+   final float d;
 
-   public djt(int $$0) {
-      this.aj = $$0;
+   public djt(bis $$0, float $$1) {
+      this(Either.left($$0), $$1);
    }
 
-   public int a() {
-      return this.aj;
-   }
-
-   private static djt a(String $$0) {
-      return a($$0, 16);
-   }
-
-   private static djt a(String $$0, int $$1) {
-      return ht.a(jd.b, $$0, new djt($$1));
+   djt(Either<bis, Either<UUID, Integer>> $$0, float $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public String toString() {
-      return "Game Event{ " + this.b().g().a() + " , " + this.aj + "}";
+   public Optional<ehp> a(cpx $$0) {
+      if (this.c.left().isEmpty()) {
+         this.b($$0);
+      }
+
+      return this.c.left().map($$0x -> $$0x.dj().b(0.0, (double)this.d, 0.0));
    }
 
-   @Deprecated
-   public hg.c<djt> b() {
-      return this.ak;
+   private void b(cpx $$0) {
+      ((Optional)this.c.map(Optional::of, $$1 -> Optional.ofNullable((bis)$$1.map($$1x -> $$0 instanceof aks $$2 ? $$2.a($$1x) : null, $$0::a))))
+         .ifPresent($$0x -> this.c = Either.left($$0x));
    }
 
-   public boolean a(aqi<djt> $$0) {
-      return this.ak.a($$0);
+   private UUID b() {
+      return (UUID)this.c.map(bis::cv, $$0 -> (UUID)$$0.map(Function.identity(), $$0x -> {
+            throw new RuntimeException("Unable to get entityId from uuid");
+         }));
    }
 
-   public static record a(@Nullable biq a, @Nullable dfj b) {
-      public static djt.a a(@Nullable biq $$0) {
-         return new djt.a($$0, null);
-      }
-
-      public static djt.a a(@Nullable dfj $$0) {
-         return new djt.a(null, $$0);
-      }
-
-      public static djt.a a(@Nullable biq $$0, @Nullable dfj $$1) {
-         return new djt.a($$0, $$1);
-      }
+   int c() {
+      return (Integer)this.c.map(bis::ah, $$0 -> (Integer)$$0.map($$0x -> {
+            throw new IllegalStateException("Unable to get entityId from uuid");
+         }, Function.identity()));
    }
 
-   public static final class b implements Comparable<djt.b> {
-      private final djt a;
-      private final ehn b;
-      private final djt.a c;
-      private final djv d;
-      private final double e;
+   @Override
+   public dka<?> a() {
+      return dka.b;
+   }
 
-      public b(djt $$0, ehn $$1, djt.a $$2, djv $$3, ehn $$4) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$1.g($$4);
+   public static class a implements dka<djt> {
+      public djt a(sq $$0) {
+         return new djt(Either.right(Either.right($$0.m())), $$0.readFloat());
       }
 
-      public int a(djt.b $$0) {
-         return Double.compare(this.e, $$0.e);
+      public void a(sq $$0, djt $$1) {
+         $$0.c($$1.c());
+         $$0.a($$1.d);
       }
 
-      public djt a() {
-         return this.a;
-      }
-
-      public ehn b() {
-         return this.b;
-      }
-
-      public djt.a c() {
-         return this.c;
-      }
-
-      public djv d() {
-         return this.d;
+      @Override
+      public Codec<djt> a() {
+         return djt.a;
       }
    }
 }

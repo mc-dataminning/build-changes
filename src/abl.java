@@ -1,21 +1,20 @@
 import java.time.Instant;
-import javax.annotation.Nullable;
 
-public record abl(String a, Instant b, long c, @Nullable tx d, ts.b e) implements ve<abd> {
-   public abl(sp $$0) {
-      this($$0.d(256), $$0.v(), $$0.readLong(), $$0.c(tx::a), new ts.b($$0));
+public record abl(String a, Instant b, long c, dy d, tt.b e) implements vf<abe> {
+   public abl(sq $$0) {
+      this($$0.d(256), $$0.v(), $$0.readLong(), new dy($$0), new tt.b($$0));
    }
 
    @Override
-   public void a(sp $$0) {
+   public void a(sq $$0) {
       $$0.a(this.a, 256);
       $$0.a(this.b);
       $$0.b(this.c);
-      $$0.a(this.d, tx::a);
+      this.d.a($$0);
       this.e.a($$0);
    }
 
-   public void a(abd $$0) {
+   public void a(abe $$0) {
       $$0.a(this);
    }
 
@@ -27,12 +26,11 @@ public record abl(String a, Instant b, long c, @Nullable tx d, ts.b e) implement
       return this.c;
    }
 
-   @Nullable
-   public tx f() {
+   public dy f() {
       return this.d;
    }
 
-   public ts.b g() {
+   public tt.b g() {
       return this.e;
    }
 }

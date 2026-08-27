@@ -1,47 +1,35 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dod extends dnw<dqh> {
-   public dod(Codec<dqh> $$0) {
-      super($$0);
-   }
+public class dod implements dqc {
+   public static final Codec<dod> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               aey.a.listOf().fieldOf("fossil_structures").forGetter($$0x -> $$0x.b),
+               aey.a.listOf().fieldOf("overlay_structures").forGetter($$0x -> $$0x.c),
+               dzc.d.fieldOf("fossil_processors").forGetter($$0x -> $$0x.d),
+               dzc.d.fieldOf("overlay_processors").forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 7).fieldOf("max_empty_corners_allowed").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, dod::new)
+   );
+   public final List<aey> b;
+   public final List<aey> c;
+   public final hg<dzb> d;
+   public final hg<dzb> e;
+   public final int f;
 
-   @Override
-   public boolean a(dny<dqh> $$0) {
-      cqp $$1 = $$0.b();
-      gw $$2 = $$0.e();
-      asc $$3 = $$0.d();
-      if (!$$1.t($$2)) {
-         return false;
+   public dod(List<aey> $$0, List<aey> $$1, hg<dzb> $$2, hg<dzb> $$3, int $$4) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Fossil structure lists need at least one entry");
+      } else if ($$0.size() != $$1.size()) {
+         throw new IllegalArgumentException("Fossil structure lists must be equal lengths");
       } else {
-         dfj $$4 = $$1.a_($$2.c());
-         if (!$$4.a(csw.dW) && !$$4.a(csw.dZ) && !$$4.a(csw.pr)) {
-            return false;
-         } else {
-            $$1.a($$2, csw.ed.n(), 2);
-
-            for (int $$5 = 0; $$5 < 1500; $$5++) {
-               gw $$6 = $$2.b($$3.a(8) - $$3.a(8), -$$3.a(12), $$3.a(8) - $$3.a(8));
-               if ($$1.a_($$6).i()) {
-                  int $$7 = 0;
-
-                  for (hc $$8 : hc.values()) {
-                     if ($$1.a_($$6.a($$8)).a(csw.ed)) {
-                        $$7++;
-                     }
-
-                     if ($$7 > 1) {
-                        break;
-                     }
-                  }
-
-                  if ($$7 == 1) {
-                     $$1.a($$6, csw.ed.n(), 2);
-                  }
-               }
-            }
-
-            return true;
-         }
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
       }
    }
 }

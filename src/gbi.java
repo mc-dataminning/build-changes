@@ -1,67 +1,63 @@
-import java.util.Comparator;
-import java.util.Objects;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
+import org.joml.Quaternionf;
 
-public class gbi {
-   public static final Comparator<gbi> a = Comparator.<gbi, aex>comparing(gbi::a).thenComparing(gbi::b);
-   private final aex b;
-   private final aex c;
-   @Nullable
-   private fom d;
+public enum gbi implements gbp {
+   a(0, 0),
+   b(0, 90),
+   c(0, 180),
+   d(0, 270),
+   e(90, 0),
+   f(90, 90),
+   g(90, 180),
+   h(90, 270),
+   i(180, 0),
+   j(180, 90),
+   k(180, 180),
+   l(180, 270),
+   m(270, 0),
+   n(270, 90),
+   o(270, 180),
+   p(270, 270);
 
-   public gbi(aex $$0, aex $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private static final int q = 360;
+   private static final Map<Integer, gbi> r = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.u, $$0 -> (gbi)$$0));
+   private final j s;
+   private final h t;
+   private final int u;
+
+   private static int b(int $$0, int $$1) {
+      return $$0 * 360 + $$1;
    }
 
-   public aex a() {
-      return this.b;
-   }
+   private gbi(int $$0, int $$1) {
+      this.u = b($$0, $$1);
+      Quaternionf $$2 = new Quaternionf().rotateYXZ((float)(-$$1) * (float) (Math.PI / 180.0), (float)(-$$0) * (float) (Math.PI / 180.0), 0.0F);
+      h $$3 = h.a;
 
-   public aex b() {
-      return this.c;
-   }
-
-   public fze c() {
-      return eqv.O().a(this.a()).apply(this.b());
-   }
-
-   public fom a(Function<aex, fom> $$0) {
-      if (this.d == null) {
-         this.d = $$0.apply(this.b);
+      for (int $$4 = 0; $$4 < $$1; $$4 += 90) {
+         $$3 = $$3.a(h.u);
       }
 
-      return this.d;
-   }
-
-   public elt a(foe $$0, Function<aex, fom> $$1) {
-      return this.c().a($$0.getBuffer(this.a($$1)));
-   }
-
-   public elt a(foe $$0, Function<aex, fom> $$1, boolean $$2) {
-      return this.c().a(fuf.c($$0, this.a($$1), true, $$2));
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         gbi $$1 = (gbi)$$0;
-         return this.b.equals($$1.b) && this.c.equals($$1.c);
-      } else {
-         return false;
+      for (int $$5 = 0; $$5 < $$0; $$5 += 90) {
+         $$3 = $$3.a(h.s);
       }
+
+      this.s = new j(null, $$2, null, null);
+      this.t = $$3;
    }
 
    @Override
-   public int hashCode() {
-      return Objects.hash(this.b, this.c);
+   public j b() {
+      return this.s;
    }
 
-   @Override
-   public String toString() {
-      return "Material{atlasLocation=" + this.b + ", texture=" + this.c + "}";
+   public static gbi a(int $$0, int $$1) {
+      return r.get(b(ary.b($$0, 360), ary.b($$1, 360)));
+   }
+
+   public h a() {
+      return this.t;
    }
 }

@@ -1,66 +1,99 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.List;
-import org.apache.commons.lang3.Validate;
+import javax.annotation.Nullable;
 
-public class gcl implements JsonDeserializer<gck> {
-   private static final bgb a = bfz.a(1.0F);
+public class gcl implements gdu<gcl> {
+   public static final aer a = new aer("sounds", ".ogg");
+   private final aey b;
+   private final bgi c;
+   private final bgi d;
+   private final int e;
+   private final gcl.a f;
+   private final boolean g;
+   private final boolean h;
+   private final int i;
 
-   public gck a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-      JsonObject $$3 = aro.m($$0, "entry");
-      boolean $$4 = aro.a($$3, "replace", false);
-      String $$5 = aro.a($$3, "subtitle", null);
-      List<gcj> $$6 = this.a($$3);
-      return new gck($$6, $$4, $$5);
+   public gcl(String $$0, bgi $$1, bgi $$2, int $$3, gcl.a $$4, boolean $$5, boolean $$6, int $$7) {
+      this.b = new aey($$0);
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
    }
 
-   private List<gcj> a(JsonObject $$0) {
-      List<gcj> $$1 = Lists.newArrayList();
-      if ($$0.has("sounds")) {
-         JsonArray $$2 = aro.v($$0, "sounds");
+   public aey a() {
+      return this.b;
+   }
 
-         for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-            JsonElement $$4 = $$2.get($$3);
-            if (aro.a($$4)) {
-               String $$5 = aro.a($$4, "sound");
-               $$1.add(new gcj($$5, a, a, 1, gcj.a.a, false, false, 16));
-            } else {
-               $$1.add(this.b(aro.m($$4, "sound")));
+   public aey b() {
+      return a.a(this.b);
+   }
+
+   public bgi c() {
+      return this.c;
+   }
+
+   public bgi d() {
+      return this.d;
+   }
+
+   @Override
+   public int e() {
+      return this.e;
+   }
+
+   public gcl a(ase $$0) {
+      return this;
+   }
+
+   @Override
+   public void a(gdp $$0) {
+      if (this.h) {
+         $$0.a(this);
+      }
+   }
+
+   public gcl.a f() {
+      return this.f;
+   }
+
+   public boolean g() {
+      return this.g;
+   }
+
+   public boolean h() {
+      return this.h;
+   }
+
+   public int i() {
+      return this.i;
+   }
+
+   @Override
+   public String toString() {
+      return "Sound[" + this.b + "]";
+   }
+
+   public static enum a {
+      a("file"),
+      b("event");
+
+      private final String c;
+
+      private a(String $$0) {
+         this.c = $$0;
+      }
+
+      @Nullable
+      public static gcl.a a(String $$0) {
+         for (gcl.a $$1 : values()) {
+            if ($$1.c.equals($$0)) {
+               return $$1;
             }
          }
+
+         return null;
       }
-
-      return $$1;
-   }
-
-   private gcj b(JsonObject $$0) {
-      String $$1 = aro.i($$0, "name");
-      gcj.a $$2 = this.a($$0, gcj.a.a);
-      float $$3 = aro.a($$0, "volume", 1.0F);
-      Validate.isTrue($$3 > 0.0F, "Invalid volume", new Object[0]);
-      float $$4 = aro.a($$0, "pitch", 1.0F);
-      Validate.isTrue($$4 > 0.0F, "Invalid pitch", new Object[0]);
-      int $$5 = aro.a($$0, "weight", 1);
-      Validate.isTrue($$5 > 0, "Invalid weight", new Object[0]);
-      boolean $$6 = aro.a($$0, "preload", false);
-      boolean $$7 = aro.a($$0, "stream", false);
-      int $$8 = aro.a($$0, "attenuation_distance", 16);
-      return new gcj($$1, bfz.a($$3), bfz.a($$4), $$5, $$2, $$7, $$6, $$8);
-   }
-
-   private gcj.a a(JsonObject $$0, gcj.a $$1) {
-      gcj.a $$2 = $$1;
-      if ($$0.has("type")) {
-         $$2 = gcj.a.a(aro.i($$0, "type"));
-         Validate.notNull($$2, "Invalid type", new Object[0]);
-      }
-
-      return $$2;
    }
 }

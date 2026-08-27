@@ -1,26 +1,33 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.DSL.TypeReference;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Map;
+import java.util.Objects;
 
-public class azr extends axz {
-   private final Map<String, String> a;
-
-   public azr(Schema $$0, String $$1, TypeReference $$2, String $$3, Map<String, String> $$4) {
-      super($$0, false, $$1, $$2, $$3);
-      this.a = $$4;
+public class azr extends DataFix {
+   public azr(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> $$0x.update(
-               "variant", $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().map($$1 -> $$0xx.createString(this.a.getOrDefault($$1, $$1))).result(), $$0xx)
-            )
-      );
+   protected TypeRewriteRule makeRule() {
+      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(ayz.E.typeName(), DSL.remainderType());
+      if (!Objects.equals($$0, this.getInputSchema().getType(ayz.E))) {
+         throw new IllegalStateException("Team type is not what was expected.");
+      } else {
+         return this.fixTypeEverywhere(
+            "TeamDisplayNameFix",
+            $$0,
+            $$0x -> $$0xx -> $$0xx.mapSecond(
+                     $$0xxx -> $$0xxx.update(
+                           "DisplayName",
+                           $$1 -> (Dynamic)DataFixUtils.orElse($$1.asString().map($$0xxxxx -> tn.a.a(tn.b($$0xxxxx))).map($$0xxx::createString).result(), $$1)
+                        )
+                  )
+         );
+      }
    }
 }

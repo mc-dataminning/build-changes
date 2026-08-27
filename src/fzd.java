@@ -1,143 +1,225 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.Writer;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import com.google.common.collect.ImmutableList;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Map.Entry;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class fzd extends fyp implements fyq, fzg {
-   private static final Logger g = LogUtils.getLogger();
-   @Deprecated
-   public static final aex e = cfk.v;
-   @Deprecated
-   public static final aex f = new aex("textures/atlas/particles.png");
-   private List<fyy> h = List.of();
-   private List<fze.a> i = List.of();
-   private Map<aex, fze> j = Map.of();
-   private final aex k;
-   private final int l;
-   private int m;
-   private int n;
-   private int o;
+public class fzd<T extends fzd.a> {
+   private static final Comparator<fzd.b<?>> a = Comparator.<fzd.b<?>, Integer>comparing($$0 -> -$$0.c)
+      .thenComparing($$0 -> -$$0.b)
+      .thenComparing($$0 -> $$0.a.c());
+   private final int b;
+   private final List<fzd.b<T>> c = new ArrayList<>();
+   private final List<fzd.c<T>> d = new ArrayList<>();
+   private int e;
+   private int f;
+   private final int g;
+   private final int h;
 
-   public fzd(aex $$0) {
-      this.k = $$0;
-      this.l = RenderSystem.maxSupportedTextureSize();
+   public fzd(int $$0, int $$1, int $$2) {
+      this.b = $$2;
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   @Override
-   public void a(anu $$0) {
+   public int a() {
+      return this.e;
    }
 
-   public void a(fyz.a $$0) {
-      g.info("Created: {}x{}x{} {}-atlas", new Object[]{$$0.b(), $$0.c(), $$0.d(), this.k});
-      TextureUtil.prepareImage(this.a(), $$0.d(), $$0.b(), $$0.c());
-      this.m = $$0.b();
-      this.n = $$0.c();
-      this.o = $$0.d();
-      this.f();
-      this.j = Map.copyOf($$0.f());
-      List<fyy> $$1 = new ArrayList<>();
-      List<fze.a> $$2 = new ArrayList<>();
+   public int b() {
+      return this.f;
+   }
 
-      for (fze $$3 : $$0.f().values()) {
-         $$1.add($$3.e());
+   public void a(T $$0) {
+      fzd.b<T> $$1 = new fzd.b<>($$0, this.b);
+      this.c.add($$1);
+   }
 
-         try {
-            $$3.j();
-         } catch (Throwable var9) {
-            o $$5 = o.a(var9, "Stitching texture atlas");
-            p $$6 = $$5.a("Texture being stitched together");
-            $$6.a("Atlas path", this.k);
-            $$6.a("Sprite", $$3);
-            throw new y($$5);
-         }
+   public void c() {
+      List<fzd.b<T>> $$0 = new ArrayList<>(this.c);
+      $$0.sort(a);
 
-         fze.a $$7 = $$3.f();
-         if ($$7 != null) {
-            $$2.add($$7);
+      for (fzd.b<T> $$1 : $$0) {
+         if (!this.a($$1)) {
+            throw new fze($$1.a, $$0.stream().map($$0x -> $$0x.a).collect(ImmutableList.toImmutableList()));
          }
       }
-
-      this.h = List.copyOf($$1);
-      this.i = List.copyOf($$2);
    }
 
-   @Override
-   public void a(aex $$0, Path $$1) throws IOException {
-      String $$2 = $$0.c();
-      TextureUtil.writeAsPNG($$1, $$2, this.a(), this.o, this.m, this.n);
-      a($$1, $$2, this.j);
-   }
-
-   private static void a(Path $$0, String $$1, Map<aex, fze> $$2) {
-      Path $$3 = $$0.resolve($$1 + ".txt");
-
-      try (Writer $$4 = Files.newBufferedWriter($$3)) {
-         for (Entry<aex, fze> $$5 : $$2.entrySet().stream().sorted(Entry.comparingByKey()).toList()) {
-            fze $$6 = $$5.getValue();
-            $$4.write(String.format(Locale.ROOT, "%s\tx=%d\ty=%d\tw=%d\th=%d%n", $$5.getKey(), $$6.a(), $$6.b(), $$6.e().a(), $$6.e().b()));
-         }
-      } catch (IOException var10) {
-         g.warn("Failed to write file {}", $$3, var10);
+   public void a(fzd.d<T> $$0) {
+      for (fzd.c<T> $$1 : this.d) {
+         $$1.a($$0);
       }
    }
 
-   @Override
-   public void d() {
-      this.c();
-
-      for (fze.a $$0 : this.i) {
-         $$0.a();
-      }
+   static int a(int $$0, int $$1) {
+      return ($$0 >> $$1) + (($$0 & (1 << $$1) - 1) == 0 ? 0 : 1) << $$1;
    }
 
-   @Override
-   public void e() {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(this::d);
+   private boolean a(fzd.b<T> $$0) {
+      for (fzd.c<T> $$1 : this.d) {
+         if ($$1.a($$0)) {
+            return true;
+         }
+      }
+
+      return this.b($$0);
+   }
+
+   private boolean b(fzd.b<T> $$0) {
+      int $$1 = ary.c(this.e);
+      int $$2 = ary.c(this.f);
+      int $$3 = ary.c(this.e + $$0.b);
+      int $$4 = ary.c(this.f + $$0.c);
+      boolean $$5 = $$3 <= this.g;
+      boolean $$6 = $$4 <= this.h;
+      if (!$$5 && !$$6) {
+         return false;
       } else {
-         this.d();
+         boolean $$7 = $$5 && $$1 != $$3;
+         boolean $$8 = $$6 && $$2 != $$4;
+         boolean $$9;
+         if ($$7 ^ $$8) {
+            $$9 = $$7;
+         } else {
+            $$9 = $$5 && $$1 <= $$2;
+         }
+
+         fzd.c<T> $$11;
+         if ($$9) {
+            if (this.f == 0) {
+               this.f = $$4;
+            }
+
+            $$11 = new fzd.c<>(this.e, 0, $$3 - this.e, this.f);
+            this.e = $$3;
+         } else {
+            $$11 = new fzd.c<>(0, this.f, this.e, $$4 - this.f);
+            this.f = $$4;
+         }
+
+         $$11.a($$0);
+         this.d.add($$11);
+         return true;
       }
    }
 
-   public fze a(aex $$0) {
-      fze $$1 = this.j.get($$0);
-      return $$1 == null ? this.j.get(fyu.b()) : $$1;
+   public interface a {
+      int a();
+
+      int b();
+
+      aey c();
    }
 
-   public void f() {
-      this.h.forEach(fyy::close);
-      this.i.forEach(fze.a::close);
-      this.h = List.of();
-      this.i = List.of();
-      this.j = Map.of();
+   static record b<T extends fzd.a>(T a, int b, int c) {
+
+      public b(T $$0, int $$1) {
+         this($$0, fzd.a($$0.a(), $$1), fzd.a($$0.b(), $$1));
+      }
    }
 
-   public aex g() {
-      return this.k;
+   public static class c<T extends fzd.a> {
+      private final int a;
+      private final int b;
+      private final int c;
+      private final int d;
+      @Nullable
+      private List<fzd.c<T>> e;
+      @Nullable
+      private fzd.b<T> f;
+
+      public c(int $$0, int $$1, int $$2, int $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      public int a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
+      }
+
+      public boolean a(fzd.b<T> $$0) {
+         if (this.f != null) {
+            return false;
+         } else {
+            int $$1 = $$0.b;
+            int $$2 = $$0.c;
+            if ($$1 <= this.c && $$2 <= this.d) {
+               if ($$1 == this.c && $$2 == this.d) {
+                  this.f = $$0;
+                  return true;
+               } else {
+                  if (this.e == null) {
+                     this.e = new ArrayList<>(1);
+                     this.e.add(new fzd.c<>(this.a, this.b, $$1, $$2));
+                     int $$3 = this.c - $$1;
+                     int $$4 = this.d - $$2;
+                     if ($$4 > 0 && $$3 > 0) {
+                        int $$5 = Math.max(this.d, $$3);
+                        int $$6 = Math.max(this.c, $$4);
+                        if ($$5 >= $$6) {
+                           this.e.add(new fzd.c<>(this.a, this.b + $$2, $$1, $$4));
+                           this.e.add(new fzd.c<>(this.a + $$1, this.b, $$3, this.d));
+                        } else {
+                           this.e.add(new fzd.c<>(this.a + $$1, this.b, $$3, $$2));
+                           this.e.add(new fzd.c<>(this.a, this.b + $$2, this.c, $$4));
+                        }
+                     } else if ($$3 == 0) {
+                        this.e.add(new fzd.c<>(this.a, this.b + $$2, $$1, $$4));
+                     } else if ($$4 == 0) {
+                        this.e.add(new fzd.c<>(this.a + $$1, this.b, $$3, $$2));
+                     }
+                  }
+
+                  for (fzd.c<T> $$7 : this.e) {
+                     if ($$7.a($$0)) {
+                        return true;
+                     }
+                  }
+
+                  return false;
+               }
+            } else {
+               return false;
+            }
+         }
+      }
+
+      public void a(fzd.d<T> $$0) {
+         if (this.f != null) {
+            $$0.load(this.f.a, this.a(), this.b());
+         } else if (this.e != null) {
+            for (fzd.c<T> $$1 : this.e) {
+               $$1.a($$0);
+            }
+         }
+      }
+
+      @Override
+      public String toString() {
+         return "Slot{originX="
+            + this.a
+            + ", originY="
+            + this.b
+            + ", width="
+            + this.c
+            + ", height="
+            + this.d
+            + ", texture="
+            + this.f
+            + ", subSlots="
+            + this.e
+            + "}";
+      }
    }
 
-   public int h() {
-      return this.l;
-   }
-
-   int i() {
-      return this.m;
-   }
-
-   int j() {
-      return this.n;
-   }
-
-   public void b(fyz.a $$0) {
-      this.a(false, $$0.d() > 0);
+   public interface d<T extends fzd.a> {
+      void load(T var1, int var2, int var3);
    }
 }

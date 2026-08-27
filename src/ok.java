@@ -1,5 +1,5 @@
 public class ok {
-   public static void a(nt<dwr> $$0) {
+   public static void a(nt<dwt> $$0) {
       nz.a($$0);
       od.a($$0);
       oc.a($$0);

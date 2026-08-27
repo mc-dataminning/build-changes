@@ -7,26 +7,27 @@ import org.apache.commons.lang3.ArrayUtils;
 
 public class qv extends qx<qw> {
    private static final int b = 24;
-   public static final rt<qv> a = new rt.b<qv>() {
-      public qv a(DataInput $$0, int $$1, rh $$2) throws IOException {
-         $$2.a(24L);
-         int $$3 = $$0.readInt();
-         $$2.a(1L * (long)$$3);
-         byte[] $$4 = new byte[$$3];
-         $$0.readFully($$4);
-         return new qv($$4);
+   public static final ru<qv> a = new ru.b<qv>() {
+      public qv a(DataInput $$0, rh $$1) throws IOException {
+         return new qv(d($$0, $$1));
       }
 
       @Override
-      public ro.b a(DataInput $$0, ro $$1) throws IOException {
+      public rp.b a(DataInput $$0, rp $$1, rh $$2) throws IOException {
+         return $$1.a(d($$0, $$2));
+      }
+
+      private static byte[] d(DataInput $$0, rh $$1) throws IOException {
+         $$1.b(24L);
          int $$2 = $$0.readInt();
+         $$1.b(1L * (long)$$2);
          byte[] $$3 = new byte[$$2];
          $$0.readFully($$3);
-         return $$1.a($$3);
+         return $$3;
       }
 
       @Override
-      public void a(DataInput $$0) throws IOException {
+      public void b(DataInput $$0, rh $$1) throws IOException {
          $$0.skipBytes($$0.readInt() * 1);
       }
 
@@ -78,7 +79,7 @@ public class qv extends qx<qw> {
    }
 
    @Override
-   public rt<qv> c() {
+   public ru<qv> c() {
       return a;
    }
 
@@ -88,7 +89,7 @@ public class qv extends qx<qw> {
    }
 
    @Override
-   public rr d() {
+   public rs d() {
       byte[] $$0 = new byte[this.c.length];
       System.arraycopy(this.c, 0, $$0, 0, this.c.length);
       return new qv($$0);
@@ -105,7 +106,7 @@ public class qv extends qx<qw> {
    }
 
    @Override
-   public void a(rv $$0) {
+   public void a(rw $$0) {
       $$0.a(this);
    }
 
@@ -133,9 +134,9 @@ public class qv extends qx<qw> {
    }
 
    @Override
-   public boolean a(int $$0, rr $$1) {
-      if ($$1 instanceof rl) {
-         this.c[$$0] = ((rl)$$1).i();
+   public boolean a(int $$0, rs $$1) {
+      if ($$1 instanceof rm) {
+         this.c[$$0] = ((rm)$$1).i();
          return true;
       } else {
          return false;
@@ -143,9 +144,9 @@ public class qv extends qx<qw> {
    }
 
    @Override
-   public boolean b(int $$0, rr $$1) {
-      if ($$1 instanceof rl) {
-         this.c = ArrayUtils.add(this.c, $$0, ((rl)$$1).i());
+   public boolean b(int $$0, rs $$1) {
+      if ($$1 instanceof rm) {
+         this.c = ArrayUtils.add(this.c, $$0, ((rm)$$1).i());
          return true;
       } else {
          return false;
@@ -169,7 +170,7 @@ public class qv extends qx<qw> {
    }
 
    @Override
-   public ro.b a(ro $$0) {
+   public rp.b a(rp $$0) {
       return $$0.a(this.c);
    }
 }

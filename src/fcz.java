@@ -1,255 +1,122 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.google.common.collect.ImmutableList.Builder;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.Collection;
 
-public class fcz extends eyk {
-   private final Consumer<Optional<cpr>> a;
-   private fcz.g b;
-   private final Set<fcz.f> c = Sets.newHashSet();
-   private esq k;
-   @Nullable
-   private List<ark> l;
-   private final cpr m;
+public class fcz extends eym {
+   private static final tn a = tn.c("selectWorld.experimental.title");
+   private static final tn b = tn.c("selectWorld.experimental.message");
+   private static final tn c = tn.c("selectWorld.experimental.details");
+   private static final int k = 10;
+   private static final int l = 100;
+   private final BooleanConsumer m;
+   final Collection<and> n;
+   private final ewa o = new ewa().a(10).b(20);
 
-   public fcz(cpr $$0, Consumer<Optional<cpr>> $$1) {
-      super(tm.c("editGamerule.title"));
-      this.m = $$0;
-      this.a = $$1;
+   public fcz(Collection<and> $$0, BooleanConsumer $$1) {
+      super(a);
+      this.n = $$0;
+      this.m = $$1;
    }
 
    @Override
-   protected void aI_() {
-      this.b = new fcz.g(this.m);
-      this.e(this.b);
-      evy.b $$0 = new evy().a(10).d(2);
-      this.k = $$0.a(esq.a(tl.d, $$0x -> this.a.accept(Optional.of(this.m))).a());
-      $$0.a(esq.a(tl.e, $$0x -> this.a.accept(Optional.empty())).a());
-      $$0.a().a($$1 -> {
-         eso var10000 = this.d($$1);
+   public tn g() {
+      return tm.a(super.g(), b);
+   }
+
+   @Override
+   protected void aH_() {
+      super.aH_();
+      ewa.b $$0 = this.o.d(2);
+      ewe $$1 = $$0.b().b();
+      $$0.a(new ety(this.e, this.i), 2, $$1);
+      etm $$2 = $$0.a(new etm(b, this.i).b(true), 2, $$1);
+      $$2.j(310);
+      $$0.a(ess.a(c, $$0x -> this.f.a(new fcz.a())).a(100).a(), 2, $$1);
+      $$0.a(ess.a(tm.i, $$0x -> this.m.accept(true)).a());
+      $$0.a(ess.a(tm.k, $$0x -> this.m.accept(false)).a());
+      this.o.a($$1x -> {
+         esq var10000 = this.d($$1x);
       });
-      $$0.a().b(this.g / 2 - 155, this.h - 28);
-      $$0.a().a();
+      this.o.a();
+      this.b();
+   }
+
+   @Override
+   protected void b() {
+      evz.a(this.o, 0, 0, this.g, this.h, 0.5F, 0.5F);
    }
 
    @Override
    public void az_() {
-      this.a.accept(Optional.empty());
+      this.m.accept(false);
    }
 
-   @Override
-   public void a(esf $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.l = null;
-      this.b.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
-   }
+   class a extends eym {
+      private fcz.a.a b;
 
-   private void l() {
-      this.k.i = this.c.isEmpty();
-   }
-
-   void a(fcz.f $$0) {
-      this.c.add($$0);
-      this.l();
-   }
-
-   void b(fcz.f $$0) {
-      this.c.remove($$0);
-      this.l();
-   }
-
-   public class a extends fcz.d {
-      private final esx<Boolean> d;
-
-      public a(tm $$1, List<ark> $$2, String $$3, cpr.a $$4) {
-         super($$2, $$1);
-         this.d = esx.b($$4.a()).a().a($$1x -> $$1x.b().f("\n").f($$3)).a(10, 5, 44, 20, $$1, ($$1x, $$2x) -> $$4.a($$2x, null));
-         this.b.add(this.d);
+      a() {
+         super(tn.c("selectWorld.experimental.details.title"));
       }
 
       @Override
-      public void a(esf $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         this.a($$0, $$2, $$3);
-         this.d.f($$3 + $$4 - 45);
-         this.d.g($$2);
-         this.d.a($$0, $$6, $$7, $$9);
-      }
-   }
-
-   public class b extends fcz.f {
-      final tm b;
-
-      public b(tm $$1) {
-         super(null);
-         this.b = $$1;
+      public void az_() {
+         this.f.a(fcz.this);
       }
 
       @Override
-      public void a(esf $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         $$0.a(fcz.this.f.h, this.b, $$3 + $$4 / 2, $$2 + 5, 16777215);
+      protected void aH_() {
+         super.aH_();
+         this.d(ess.a(tm.k, $$0 -> this.az_()).a(this.g / 2 - 100, this.h / 4 + 120 + 24, 200, 20).a());
+         this.b = new fcz.a.a(this.f, fcz.this.n);
+         this.e(this.b);
       }
 
       @Override
-      public List<? extends euk> i() {
-         return ImmutableList.of();
+      public void a(esh $$0, int $$1, int $$2, float $$3) {
+         super.a($$0, $$1, $$2, $$3);
+         this.b.a($$0, $$1, $$2, $$3);
+         $$0.a(this.i, this.e, this.g / 2, 10, 16777215);
       }
 
-      @Override
-      public List<? extends ewg> b() {
-         return ImmutableList.of(new ewg() {
-            @Override
-            public ewg.a q() {
-               return ewg.a.b;
+      class a extends eto<fcz.a.b> {
+         public a(eqx $$0, Collection<and> $$1) {
+            super($$0, a.this.g, a.this.h, 32, a.this.h - 64, (9 + 2) * 3);
+
+            for (and $$2 : $$1) {
+               String $$3 = ceg.a(ceg.f, $$2.d());
+               if (!$$3.isEmpty()) {
+                  tn $$4 = tp.a($$2.a().e(), uj.a.a(true));
+                  tn $$5 = tn.a("selectWorld.experimental.details.entry", $$3);
+                  this.b(a.this.new b($$4, $$5, etl.a(a.this.i, $$5, this.b())));
+               }
             }
+         }
 
-            @Override
-            public void b(ewi $$0) {
-               $$0.a(ewh.a, b.this.b);
-            }
-         });
-      }
-   }
-
-   @FunctionalInterface
-   interface c<T extends cpr.g<T>> {
-      fcz.f create(tm var1, List<ark> var2, String var3, T var4);
-   }
-
-   public abstract class d extends fcz.f {
-      private final List<ark> a;
-      protected final List<eso> b = Lists.newArrayList();
-
-      public d(@Nullable List<ark> $$1, tm $$2) {
-         super($$1);
-         this.a = fcz.this.f.h.c($$2, 175);
-      }
-
-      @Override
-      public List<? extends euk> i() {
-         return this.b;
-      }
-
-      @Override
-      public List<? extends ewg> b() {
-         return this.b;
-      }
-
-      protected void a(esf $$0, int $$1, int $$2) {
-         if (this.a.size() == 1) {
-            $$0.a(fcz.this.f.h, this.a.get(0), $$2, $$1 + 5, 16777215, false);
-         } else if (this.a.size() >= 2) {
-            $$0.a(fcz.this.f.h, this.a.get(0), $$2, $$1, 16777215, false);
-            $$0.a(fcz.this.f.h, this.a.get(1), $$2, $$1 + 10, 16777215, false);
+         @Override
+         public int b() {
+            return this.e * 3 / 4;
          }
       }
-   }
 
-   public class e extends fcz.d {
-      private final esz d;
+      class b extends eto.a<fcz.a.b> {
+         private final tn b;
+         private final tn c;
+         private final etl d;
 
-      public e(tm $$1, List<ark> $$2, String $$3, cpr.d $$4) {
-         super($$2, $$1);
-         this.d = new esz(fcz.this.f.h, 10, 5, 44, 20, $$1.e().f("\n").f($$3).f("\n"));
-         this.d.a(Integer.toString($$4.a()));
-         this.d.b($$1x -> {
-            if ($$4.b($$1x)) {
-               this.d.m(14737632);
-               fcz.this.b(this);
-            } else {
-               this.d.m(16711680);
-               fcz.this.a(this);
-            }
-         });
-         this.b.add(this.d);
-      }
+         b(tn $$0, tn $$1, etl $$2) {
+            this.b = $$0;
+            this.c = $$1;
+            this.d = $$2;
+         }
 
-      @Override
-      public void a(esf $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         this.a($$0, $$2, $$3);
-         this.d.f($$3 + $$4 - 45);
-         this.d.g($$2);
-         this.d.a($$0, $$6, $$7, $$9);
-      }
-   }
+         @Override
+         public void a(esh $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.b(a.this.f.h, this.b, $$3, $$2, 16777215);
+            this.d.b($$0, $$3, $$2 + 12, 9, 16777215);
+         }
 
-   public abstract static class f extends esw.a<fcz.f> {
-      @Nullable
-      final List<ark> a;
-
-      public f(@Nullable List<ark> $$0) {
-         this.a = $$0;
-      }
-   }
-
-   public class g extends esw<fcz.f> {
-      public g(final cpr $$1) {
-         super(fcz.this.f, fcz.this.g, fcz.this.h, 43, fcz.this.h - 32, 24);
-         final Map<cpr.b, Map<cpr.e<?>, fcz.f>> $$2 = Maps.newHashMap();
-         cpr.a(new cpr.c() {
-            @Override
-            public void b(cpr.e<cpr.a> $$0, cpr.f<cpr.a> $$1x) {
-               this.a($$0, ($$0x, $$1xxx, $$2xx, $$3) -> fcz.this.new a($$0x, $$1xxx, $$2xx, $$3));
-            }
-
-            @Override
-            public void c(cpr.e<cpr.d> $$0, cpr.f<cpr.d> $$1x) {
-               this.a($$0, ($$0x, $$1xxx, $$2xx, $$3) -> fcz.this.new e($$0x, $$1xxx, $$2xx, $$3));
-            }
-
-            private <T extends cpr.g<T>> void a(cpr.e<T> $$0, fcz.c<T> $$1x) {
-               tm $$2 = tm.c($$0.b());
-               tm $$3 = tm.b($$0.a()).a(n.o);
-               T $$4 = $$1.a($$0);
-               String $$5 = $$4.b();
-               tm $$6 = tm.a("editGamerule.default", tm.b($$5)).a(n.h);
-               String $$7 = $$0.b() + ".description";
-               List<ark> $$10;
-               String $$11;
-               if (gak.a($$7)) {
-                  Builder<ark> $$8 = ImmutableList.builder().add($$3.f());
-                  tm $$9 = tm.c($$7);
-                  fcz.this.i.c($$9, 150).forEach($$8::add);
-                  $$10 = $$8.add($$6.f()).build();
-                  $$11 = $$9.getString() + "\n" + $$6.getString();
-               } else {
-                  $$10 = ImmutableList.of($$3.f(), $$6.f());
-                  $$11 = $$6.getString();
-               }
-
-               $$2.computeIfAbsent($$0.c(), $$0x -> Maps.newHashMap()).put($$0, $$1.create($$2, $$10, $$11, $$4));
-            }
-         });
-         $$2.entrySet()
-            .stream()
-            .sorted(Entry.comparingByKey())
-            .forEach(
-               $$0x -> {
-                  this.b(fcz.this.new b(tm.c(((cpr.b)$$0x.getKey()).a()).a(n.r, n.o)));
-                  ((Map)$$0x.getValue())
-                     .entrySet()
-                     .stream()
-                     .sorted(Entry.comparingByKey(Comparator.comparing(cpr.e::a)))
-                     .forEach($$0xx -> this.b((fcz.f)$$0xx.getValue()));
-               }
-            );
-      }
-
-      @Override
-      public void a(esf $$0, int $$1, int $$2, float $$3) {
-         super.a($$0, $$1, $$2, $$3);
-         fcz.f $$4 = this.r();
-         if ($$4 != null && $$4.a != null) {
-            fcz.this.b($$4.a);
+         @Override
+         public tn a() {
+            return tn.a("narrator.select", tm.a(this.b, this.c));
          }
       }
    }

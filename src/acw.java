@@ -1,28 +1,24 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
+public class acw implements vf<abe> {
+   private final bgz a;
 
-public class acw implements ve<abd> {
-   private final UUID a;
-
-   public acw(UUID $$0) {
+   public acw(bgz $$0) {
       this.a = $$0;
    }
 
-   public acw(sp $$0) {
-      this.a = $$0.o();
+   public acw(sq $$0) {
+      this.a = $$0.b(bgz.class);
    }
 
    @Override
-   public void a(sp $$0) {
+   public void a(sq $$0) {
       $$0.a(this.a);
    }
 
-   public void a(abd $$0) {
+   public void a(abe $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public biq a(akr $$0) {
-      return $$0.a(this.a);
+   public bgz a() {
+      return this.a;
    }
 }

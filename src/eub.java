@@ -1,5 +1,5 @@
-public enum eub {
-   a,
-   b,
-   c;
+public interface eub {
+   default int u() {
+      return 0;
+   }
 }

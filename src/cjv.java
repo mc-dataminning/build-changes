@@ -1,31 +1,35 @@
-import java.util.function.Predicate;
+public class cjv extends ckq {
+   public static final String c = "SkullOwner";
 
-public abstract class cjv extends cja {
-   public static final Predicate<cjf> c = $$0 -> $$0.a(aqb.at);
-   public static final Predicate<cjf> d = c.or($$0 -> $$0.a(cji.tA));
-
-   public cjv(cja.a $$0) {
-      super($$0);
-   }
-
-   public Predicate<cjf> e() {
-      return this.b();
-   }
-
-   public abstract Predicate<cjf> b();
-
-   public static cjf a(bjg $$0, Predicate<cjf> $$1) {
-      if ($$1.test($$0.b(bgx.b))) {
-         return $$0.b(bgx.b);
-      } else {
-         return $$1.test($$0.b(bgx.a)) ? $$0.b(bgx.a) : cjf.b;
-      }
+   public cjv(csx $$0, csx $$1, cjc.a $$2) {
+      super($$0, $$1, $$2, hc.a);
    }
 
    @Override
-   public int c() {
-      return 1;
+   public tn m(cjh $$0) {
+      if ($$0.a(cjk.tt) && $$0.u()) {
+         String $$1 = null;
+         qy $$2 = $$0.v();
+         if ($$2.b("SkullOwner", 8)) {
+            $$1 = $$2.l("SkullOwner");
+         } else if ($$2.b("SkullOwner", 10)) {
+            qy $$3 = $$2.p("SkullOwner");
+            if ($$3.b("Name", 8)) {
+               $$1 = $$3.l("Name");
+            }
+         }
+
+         if ($$1 != null) {
+            return tn.a(this.a() + ".named", $$1);
+         }
+      }
+
+      return super.m($$0);
    }
 
-   public abstract int d();
+   @Override
+   public void b(qy $$0) {
+      super.b($$0);
+      deh.e($$0);
+   }
 }

@@ -1,20 +1,18 @@
-public record wb(gw b, int c, String d, int e) implements vx {
-   public static final aex a = new aex("debug/game_test_add_marker");
+public record wb(djz b, int c) implements vy {
+   public static final aey a = new aey("debug/game_event_listeners");
 
-   public wb(sp $$0) {
-      this($$0.e(), $$0.readInt(), $$0.r(), $$0.readInt());
+   public wb(sq $$0) {
+      this(dka.c($$0), $$0.m());
    }
 
    @Override
-   public void a(sp $$0) {
-      $$0.a(this.b);
-      $$0.p(this.c);
-      $$0.a(this.d);
-      $$0.p(this.e);
+   public void a(sq $$0) {
+      dka.a(this.b, $$0);
+      $$0.c(this.c);
    }
 
    @Override
-   public aex a() {
+   public aey a() {
       return a;
    }
 }

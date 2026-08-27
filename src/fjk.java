@@ -1,200 +1,164 @@
-import com.google.common.collect.Queues;
-import com.mojang.authlib.GameProfile;
-import java.time.Instant;
-import java.util.Deque;
-import java.util.UUID;
-import java.util.function.BooleanSupplier;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.util.List;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
 
 public class fjk {
-   private static final tm a = tm.c("chat.validation_error").a(n.m, n.u);
-   private final eqv b;
-   private final Deque<fjk.a> c = Queues.newArrayDeque();
-   private long d;
-   private long e;
+   private static final Logger a = LogUtils.getLogger();
+   private static final bft<Runnable> b = bft.a(ac.f(), "server-list-io");
+   private static final int c = 16;
+   private final eqx d;
+   private final List<fjj> e = Lists.newArrayList();
+   private final List<fjj> f = Lists.newArrayList();
 
-   public fjk(eqv $$0) {
-      this.b = $$0;
+   public fjk(eqx $$0) {
+      this.d = $$0;
    }
 
    public void a() {
-      if (this.d != 0L) {
-         if (ac.b() >= this.e + this.d) {
-            fjk.a $$0 = this.c.poll();
+      try {
+         this.e.clear();
+         this.f.clear();
+         qy $$0 = rj.b(new File(this.d.p, "servers.dat"));
+         if ($$0 == null) {
+            return;
+         }
 
-            while ($$0 != null && !$$0.a()) {
-               $$0 = this.c.poll();
+         re $$1 = $$0.c("servers", 10);
+
+         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+            qy $$3 = $$1.a($$2);
+            fjj $$4 = fjj.a($$3);
+            if ($$3.q("hidden")) {
+               this.f.add($$4);
+            } else {
+               this.e.add($$4);
             }
          }
+      } catch (Exception var6) {
+         a.error("Couldn't load server list", var6);
       }
-   }
-
-   public void a(double $$0) {
-      long $$1 = (long)($$0 * 1000.0);
-      if ($$1 == 0L && this.d > 0L) {
-         this.c.forEach(fjk.a::a);
-         this.c.clear();
-      }
-
-      this.d = $$1;
    }
 
    public void b() {
-      this.c.remove().a();
-   }
+      try {
+         re $$0 = new re();
 
-   public long c() {
-      return (long)this.c.size();
-   }
+         for (fjj $$1 : this.e) {
+            qy $$2 = $$1.a();
+            $$2.a("hidden", false);
+            $$0.add($$2);
+         }
 
-   public void d() {
-      this.c.forEach(fjk.a::a);
-      this.c.clear();
-   }
+         for (fjj $$3 : this.f) {
+            qy $$4 = $$3.a();
+            $$4.a("hidden", true);
+            $$0.add($$4);
+         }
 
-   public boolean a(tx $$0) {
-      return this.c.removeIf($$1 -> $$0.equals($$1.b()));
-   }
-
-   private boolean e() {
-      return this.d > 0L && ac.b() < this.e + this.d;
-   }
-
-   private void a(@Nullable tx $$0, BooleanSupplier $$1) {
-      if (this.e()) {
-         this.c.add(new fjk.a($$0, $$1));
-      } else {
-         $$1.getAsBoolean();
+         qy $$5 = new qy();
+         $$5.a("servers", $$0);
+         File $$6 = File.createTempFile("servers", ".dat", this.d.p);
+         rj.b($$5, $$6);
+         File $$7 = new File(this.d.p, "servers.dat_old");
+         File $$8 = new File(this.d.p, "servers.dat");
+         ac.a($$8, $$6, $$7);
+      } catch (Exception var6) {
+         a.error("Couldn't save server list", var6);
       }
    }
 
-   public void a(ub $$0, GameProfile $$1, ti.a $$2) {
-      boolean $$3 = this.b.m.ac().c();
-      ub $$4 = $$3 ? $$0.a() : $$0;
-      tm $$5 = $$2.a($$4.c());
-      Instant $$6 = Instant.now();
-      this.a($$0.k(), () -> {
-         boolean $$6x = this.a($$2, $$0, $$5, $$1, $$3, $$6);
-         fiy $$7 = this.b.J();
-         if ($$7 != null) {
-            $$7.a($$0, $$6x);
-         }
-
-         return $$6x;
-      });
+   public fjj a(int $$0) {
+      return this.e.get($$0);
    }
 
-   public void a(UUID $$0, ti.a $$1) {
-      this.a(null, () -> {
-         if (this.b.a($$0)) {
-            return false;
-         } else {
-            tm $$2 = $$1.a(a);
-            this.b.l.d().a($$2, null, eqq.d());
-            this.e = ac.b();
+   @Nullable
+   public fjj a(String $$0) {
+      for (fjj $$1 : this.e) {
+         if ($$1.b.equals($$0)) {
+            return $$1;
+         }
+      }
+
+      for (fjj $$2 : this.f) {
+         if ($$2.b.equals($$0)) {
+            return $$2;
+         }
+      }
+
+      return null;
+   }
+
+   @Nullable
+   public fjj b(String $$0) {
+      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
+         fjj $$2 = this.f.get($$1);
+         if ($$2.b.equals($$0)) {
+            this.f.remove($$1);
+            this.e.add($$2);
+            return $$2;
+         }
+      }
+
+      return null;
+   }
+
+   public void a(fjj $$0) {
+      if (!this.e.remove($$0)) {
+         this.f.remove($$0);
+      }
+   }
+
+   public void a(fjj $$0, boolean $$1) {
+      if ($$1) {
+         this.f.add(0, $$0);
+
+         while (this.f.size() > 16) {
+            this.f.remove(this.f.size() - 1);
+         }
+      } else {
+         this.e.add($$0);
+      }
+   }
+
+   public int c() {
+      return this.e.size();
+   }
+
+   public void a(int $$0, int $$1) {
+      fjj $$2 = this.a($$0);
+      this.e.set($$0, this.a($$1));
+      this.e.set($$1, $$2);
+      this.b();
+   }
+
+   public void a(int $$0, fjj $$1) {
+      this.e.set($$0, $$1);
+   }
+
+   private static boolean a(fjj $$0, List<fjj> $$1) {
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         fjj $$3 = $$1.get($$2);
+         if ($$3.a.equals($$0.a) && $$3.b.equals($$0.b)) {
+            $$1.set($$2, $$0);
             return true;
          }
-      });
+      }
+
+      return false;
    }
 
-   public void a(tm $$0, ti.a $$1) {
-      Instant $$2 = Instant.now();
-      this.a(null, () -> {
-         tm $$3 = $$1.a($$0);
-         this.b.l.d().a($$3);
-         this.a($$1, $$0);
-         this.a($$3, $$2);
-         this.e = ac.b();
-         return true;
-      });
-   }
-
-   private boolean a(ti.a $$0, ub $$1, tm $$2, GameProfile $$3, boolean $$4, Instant $$5) {
-      fjm $$6 = this.a($$1, $$2, $$5);
-      if ($$4 && $$6.a()) {
-         return false;
-      } else if (!this.b.a($$1.f()) && !$$1.i()) {
-         eqq $$7 = $$6.a($$1);
-         tx $$8 = $$1.k();
-         tp $$9 = $$1.n();
-         if ($$9.a()) {
-            this.b.l.d().a($$2, $$8, $$7);
-            this.a($$0, $$1.c());
-         } else {
-            tm $$10 = $$9.b($$1.b());
-            if ($$10 != null) {
-               this.b.l.d().a($$0.a($$10), $$8, $$7);
-               this.a($$0, $$10);
-            }
+   public static void b(fjj $$0) {
+      b.a(() -> {
+         fjk $$1 = new fjk(eqx.O());
+         $$1.a();
+         if (!a($$0, $$1.e)) {
+            a($$0, $$1.f);
          }
 
-         this.a($$1, $$0, $$3, $$6);
-         this.e = ac.b();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private void a(ti.a $$0, tm $$1) {
-      this.b.aV().a($$0.b($$1));
-   }
-
-   private fjm a(ub $$0, tm $$1, Instant $$2) {
-      return this.a($$0.f()) ? fjm.a : fjm.a($$0, $$1, $$2);
-   }
-
-   private void a(ub $$0, ti.a $$1, GameProfile $$2, fjm $$3) {
-      fjl $$4 = this.b.aX().b();
-      $$4.a(fjo.a($$2, $$0, $$3));
-   }
-
-   private void a(tm $$0, Instant $$1) {
-      fjl $$2 = this.b.aX().b();
-      $$2.a(fjo.a($$0, $$1));
-   }
-
-   public void a(tm $$0, boolean $$1) {
-      if (!this.b.m.aa().c() || !this.b.a(this.a($$0))) {
-         if ($$1) {
-            this.b.l.a($$0, false);
-         } else {
-            this.b.l.d().a($$0);
-            this.a($$0, Instant.now());
-         }
-
-         this.b.aV().b($$0);
-      }
-   }
-
-   private UUID a(tm $$0) {
-      String $$1 = aso.a($$0);
-      String $$2 = StringUtils.substringBetween($$1, "<", ">");
-      return $$2 == null ? ac.d : this.b.aK().a($$2);
-   }
-
-   private boolean a(UUID $$0) {
-      if (this.b.R() && this.b.s != null) {
-         UUID $$1 = this.b.s.fQ().getId();
-         return $$1.equals($$0);
-      } else {
-         return false;
-      }
-   }
-
-   static record a(@Nullable tx a, BooleanSupplier b) {
-      public boolean a() {
-         return this.b.getAsBoolean();
-      }
-
-      @Nullable
-      public tx b() {
-         return this.a;
-      }
-
-      public BooleanSupplier c() {
-         return this.b;
-      }
+         $$1.b();
+      });
    }
 }

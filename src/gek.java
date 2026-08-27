@@ -1,8 +1,22 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.time.Duration;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gek {
+public class gek {
+   private final boolean a;
+   @Nullable
+   private final Duration b;
+
+   public gek(boolean $$0, @Nullable Duration $$1) {
+      this.b = $$1;
+      this.a = $$0;
+   }
+
+   public void a(gea $$0) {
+      if (this.b != null) {
+         $$0.send(geb.d, $$0x -> {
+            $$0x.a(ged.x, (int)this.b.toMillis());
+            $$0x.a(ged.y, this.a);
+         });
+      }
+   }
 }

@@ -1,37 +1,31 @@
-public class fgu extends ffz {
-   private static final String a = "plate";
-   private static final String b = "handle";
-   private static final int c = 10;
-   private static final int d = 20;
-   private final fic e;
-   private final fic f;
-   private final fic g;
+public class fgu<T extends bvp> extends fgp<T> {
+   private float j;
 
-   public fgu(fic $$0) {
-      super(fom::c);
-      this.e = $$0;
-      this.f = $$0.b("plate");
-      this.g = $$0.b("handle");
+   public fgu(fie $$0) {
+      super($$0, false, 8.0F, 4.0F, 2.0F, 2.0F, 24);
    }
 
-   public static fii a() {
-      fik $$0 = new fik();
-      fil $$1 = $$0.a();
-      $$1.a("plate", fih.c().a(0, 0).a(-6.0F, -11.0F, -2.0F, 12.0F, 22.0F, 1.0F), fie.a);
-      $$1.a("handle", fih.c().a(26, 0).a(-1.0F, -3.0F, -1.0F, 2.0F, 6.0F, 6.0F), fie.a);
-      return fii.a($$0, 64, 64);
+   public static fik c() {
+      fim $$0 = new fim();
+      fin $$1 = $$0.a();
+      $$1.a("head", fij.c().a(0, 0).a(-3.0F, -4.0F, -4.0F, 6.0F, 6.0F, 6.0F, new fii(0.6F)), fig.a(0.0F, 6.0F, -8.0F));
+      $$1.a("body", fij.c().a(28, 8).a(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F, new fii(1.75F)), fig.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      fij $$2 = fij.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, new fii(0.5F));
+      $$1.a("right_hind_leg", $$2, fig.a(-3.0F, 12.0F, 7.0F));
+      $$1.a("left_hind_leg", $$2, fig.a(3.0F, 12.0F, 7.0F));
+      $$1.a("right_front_leg", $$2, fig.a(-3.0F, 12.0F, -5.0F));
+      $$1.a("left_front_leg", $$2, fig.a(3.0F, 12.0F, -5.0F));
+      return fik.a($$0, 64, 32);
    }
 
-   public fic b() {
-      return this.f;
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a.c = 6.0F + $$0.E($$3) * 9.0F;
+      this.j = $$0.F($$3);
    }
 
-   public fic c() {
-      return this.g;
-   }
-
-   @Override
-   public void a(elp $$0, elt $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.e.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      this.a.e = this.j;
    }
 }

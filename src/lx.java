@@ -12,38 +12,38 @@ import javax.annotation.Nullable;
 
 public class lx extends lr implements lt {
    private final lu b;
-   private final cja c;
+   private final cjc c;
    private final int d;
    private final List<String> e = Lists.newArrayList();
-   private final Map<Character, cmg> f = Maps.newLinkedHashMap();
+   private final Map<Character, cmi> f = Maps.newLinkedHashMap();
    private final Map<String, am<?>> g = new LinkedHashMap<>();
    @Nullable
    private String h;
    private boolean i = true;
 
-   public lx(lu $$0, cpu $$1, int $$2) {
+   public lx(lu $$0, cpw $$1, int $$2) {
       this.b = $$0;
       this.c = $$1.k();
       this.d = $$2;
    }
 
-   public static lx a(lu $$0, cpu $$1) {
+   public static lx a(lu $$0, cpw $$1) {
       return a($$0, $$1, 1);
    }
 
-   public static lx a(lu $$0, cpu $$1, int $$2) {
+   public static lx a(lu $$0, cpw $$1, int $$2) {
       return new lx($$0, $$1, $$2);
    }
 
-   public lx a(Character $$0, aqi<cja> $$1) {
-      return this.a($$0, cmg.a($$1));
+   public lx a(Character $$0, aqj<cjc> $$1) {
+      return this.a($$0, cmi.a($$1));
    }
 
-   public lx a(Character $$0, cpu $$1) {
-      return this.a($$0, cmg.a($$1));
+   public lx a(Character $$0, cpw $$1) {
+      return this.a($$0, cmi.a($$1));
    }
 
-   public lx a(Character $$0, cmg $$1) {
+   public lx a(Character $$0, cmi $$1) {
       if (this.f.containsKey($$0)) {
          throw new IllegalArgumentException("Symbol '" + $$0 + "' is already defined!");
       } else if ($$0 == ' ') {
@@ -79,19 +79,19 @@ public class lx extends lr implements lt {
    }
 
    @Override
-   public cja a() {
+   public cjc a() {
       return this.c;
    }
 
    @Override
-   public void a(lv $$0, aex $$1) {
+   public void a(lv $$0, aey $$1) {
       this.a($$1);
       ae.a $$2 = $$0.a().a("has_the_recipe", cu.a($$1)).a(aj.a.c($$1)).a(ai.a.b);
       this.g.forEach($$2::a);
       $$0.a(new lx.a($$1, this.c, this.d, this.h == null ? "" : this.h, a(this.b), this.e, this.f, $$2.b($$1.d("recipes/" + this.b.a() + "/")), this.i));
    }
 
-   private void a(aex $$0) {
+   private void a(aey $$0) {
       if (this.e.isEmpty()) {
          throw new IllegalStateException("No pattern is defined for shaped recipe " + $$0 + "!");
       } else {
@@ -120,16 +120,16 @@ public class lx extends lr implements lt {
    }
 
    static class a extends lr.a {
-      private final aex a;
-      private final cja b;
+      private final aey a;
+      private final cjc b;
       private final int c;
       private final String d;
       private final List<String> e;
-      private final Map<Character, cmg> f;
+      private final Map<Character, cmi> f;
       private final af g;
       private final boolean h;
 
-      public a(aex $$0, cja $$1, int $$2, String $$3, cly $$4, List<String> $$5, Map<Character, cmg> $$6, af $$7, boolean $$8) {
+      public a(aey $$0, cjc $$1, int $$2, String $$3, cma $$4, List<String> $$5, Map<Character, cmi> $$6, af $$7, boolean $$8) {
          super($$4);
          this.a = $$0;
          this.b = $$1;
@@ -157,7 +157,7 @@ public class lx extends lr implements lt {
          $$0.add("pattern", $$1);
          JsonObject $$3 = new JsonObject();
 
-         for (Entry<Character, cmg> $$4 : this.f.entrySet()) {
+         for (Entry<Character, cmi> $$4 : this.f.entrySet()) {
             $$3.add(String.valueOf($$4.getKey()), $$4.getValue().a(false));
          }
 
@@ -173,12 +173,12 @@ public class lx extends lr implements lt {
       }
 
       @Override
-      public cmm<?> c() {
-         return cmm.a;
+      public cmo<?> c() {
+         return cmo.a;
       }
 
       @Override
-      public aex b() {
+      public aey b() {
          return this.a;
       }
 

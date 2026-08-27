@@ -1,125 +1,54 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Collection;
-import java.util.function.Function;
 
 public class aja {
    public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("title").requires($$0x -> $$0x.c(2)))
-            .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)du.a(
-                                    "targets", ee.d()
-                                 )
-                                 .then(du.a("clear").executes($$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets")))))
-                              .then(du.a("reset").executes($$0x -> b((dt)$$0x.getSource(), ee.f($$0x, "targets")))))
-                           .then(
-                              du.a("title")
-                                 .then(
-                                    du.a("title", ea.a())
-                                       .executes($$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), ea.a($$0x, "title"), "title", aal::new))
-                                 )
-                           ))
-                        .then(
-                           du.a("subtitle")
-                              .then(
-                                 du.a("title", ea.a())
-                                    .executes($$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), ea.a($$0x, "title"), "subtitle", aaj::new))
-                              )
-                        ))
-                     .then(
-                        du.a("actionbar")
-                           .then(
-                              du.a("title", ea.a()).executes($$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), ea.a($$0x, "title"), "actionbar", zm::new))
-                           )
-                     ))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("time").requires($$0x -> $$0x.c(2)))
                   .then(
-                     du.a("times")
-                        .then(
-                           du.a("fadeIn", fd.a())
-                              .then(
-                                 du.a("stay", fd.a())
-                                    .then(
-                                       du.a("fadeOut", fd.a())
-                                          .executes(
-                                             $$0x -> a(
-                                                   (dt)$$0x.getSource(),
-                                                   ee.f($$0x, "targets"),
-                                                   IntegerArgumentType.getInteger($$0x, "fadeIn"),
-                                                   IntegerArgumentType.getInteger($$0x, "stay"),
-                                                   IntegerArgumentType.getInteger($$0x, "fadeOut")
-                                                )
-                                          )
-                                    )
-                              )
-                        )
-                  )
+                     ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("set")
+                                    .then(du.a("day").executes($$0x -> a((dt)$$0x.getSource(), 1000))))
+                                 .then(du.a("noon").executes($$0x -> a((dt)$$0x.getSource(), 6000))))
+                              .then(du.a("night").executes($$0x -> a((dt)$$0x.getSource(), 13000))))
+                           .then(du.a("midnight").executes($$0x -> a((dt)$$0x.getSource(), 18000))))
+                        .then(du.a("time", fd.a()).executes($$0x -> a((dt)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))
+                  ))
+               .then(du.a("add").then(du.a("time", fd.a()).executes($$0x -> b((dt)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))))
+            .then(
+               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("query")
+                        .then(du.a("daytime").executes($$0x -> c((dt)$$0x.getSource(), a(((dt)$$0x.getSource()).e())))))
+                     .then(du.a("gametime").executes($$0x -> c((dt)$$0x.getSource(), (int)(((dt)$$0x.getSource()).e().V() % 2147483647L)))))
+                  .then(du.a("day").executes($$0x -> c((dt)$$0x.getSource(), (int)(((dt)$$0x.getSource()).e().W() / 24000L % 2147483647L))))
             )
       );
    }
 
-   private static int a(dt $$0, Collection<aks> $$1) {
-      xn $$2 = new xn(false);
-
-      for (aks $$3 : $$1) {
-         $$3.c.b($$2);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> tm.a("commands.title.cleared.single", $$1.iterator().next().N_()), true);
-      } else {
-         $$0.a(() -> tm.a("commands.title.cleared.multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
+   private static int a(aks $$0) {
+      return (int)($$0.W() % 24000L);
    }
 
-   private static int b(dt $$0, Collection<aks> $$1) {
-      xn $$2 = new xn(true);
-
-      for (aks $$3 : $$1) {
-         $$3.c.b($$2);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> tm.a("commands.title.reset.single", $$1.iterator().next().N_()), true);
-      } else {
-         $$0.a(() -> tm.a("commands.title.reset.multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
+   private static int c(dt $$0, int $$1) {
+      $$0.a(() -> tn.a("commands.time.query", $$1), false);
+      return $$1;
    }
 
-   private static int a(dt $$0, Collection<aks> $$1, tm $$2, String $$3, Function<tm, ve<?>> $$4) throws CommandSyntaxException {
-      for (aks $$5 : $$1) {
-         $$5.c.b($$4.apply(to.a($$0, $$2, $$5, 0)));
+   public static int a(dt $$0, int $$1) {
+      for (aks $$2 : $$0.l().F()) {
+         $$2.b((long)$$1);
       }
 
-      if ($$1.size() == 1) {
-         $$0.a(() -> tm.a("commands.title.show." + $$3 + ".single", $$1.iterator().next().N_()), true);
-      } else {
-         $$0.a(() -> tm.a("commands.title.show." + $$3 + ".multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
+      $$0.a(() -> tn.a("commands.time.set", $$1), true);
+      return a($$0.e());
    }
 
-   private static int a(dt $$0, Collection<aks> $$1, int $$2, int $$3, int $$4) {
-      aam $$5 = new aam($$2, $$3, $$4);
-
-      for (aks $$6 : $$1) {
-         $$6.c.b($$5);
+   public static int b(dt $$0, int $$1) {
+      for (aks $$2 : $$0.l().F()) {
+         $$2.b($$2.W() + (long)$$1);
       }
 
-      if ($$1.size() == 1) {
-         $$0.a(() -> tm.a("commands.title.times.single", $$1.iterator().next().N_()), true);
-      } else {
-         $$0.a(() -> tm.a("commands.title.times.multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
+      int $$3 = a($$0.e());
+      $$0.a(() -> tn.a("commands.time.set", $$3), true);
+      return $$3;
    }
 }

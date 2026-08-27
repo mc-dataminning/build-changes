@@ -15,10 +15,10 @@ import org.slf4j.Logger;
 public class ke implements jk {
    private static final Logger d = LogUtils.getLogger();
    private final jm.a e;
-   private final Set<aex> f;
+   private final Set<aey> f;
    private final List<ke.a> g;
 
-   public ke(jm $$0, Set<aex> $$1, List<ke.a> $$2) {
+   public ke(jm $$0, Set<aey> $$1, List<ke.a> $$2) {
       this.e = $$0.a(jm.b.a, "loot_tables");
       this.g = $$2;
       this.f = $$1;
@@ -26,10 +26,10 @@ public class ke implements jk {
 
    @Override
    public CompletableFuture<?> a(ji $$0) {
-      final Map<aex, ecy> $$1 = Maps.newHashMap();
-      Map<dlh.a, aex> $$2 = new Object2ObjectOpenHashMap();
+      final Map<aey, eda> $$1 = Maps.newHashMap();
+      Map<dlj.a, aey> $$2 = new Object2ObjectOpenHashMap();
       this.g.forEach($$2x -> $$2x.a().get().generate(($$3x, $$4) -> {
-            aex $$5x = $$2.put(bhd.a($$3x), $$3x);
+            aey $$5x = $$2.put(bhf.a($$3x), $$3x);
             if ($$5x != null) {
                ac.a("Loot table random sequence seed collision on " + $$5x + " and " + $$3x);
             }
@@ -39,29 +39,29 @@ public class ke implements jk {
                throw new IllegalStateException("Duplicate loot table " + $$3x);
             }
          }));
-      ecz $$3 = new ecz(efa.n, new ecu() {
+      edb $$3 = new edb(efc.n, new ecw() {
          @Nullable
          @Override
-         public <T> T getElement(ecs<T> $$0) {
-            return (T)($$0.a() == ecv.c ? $$1.get($$0.b()) : null);
+         public <T> T getElement(ecu<T> $$0) {
+            return (T)($$0.a() == ecx.c ? $$1.get($$0.b()) : null);
          }
       });
 
-      for (aex $$5 : Sets.difference(this.f, $$1.keySet())) {
+      for (aey $$5 : Sets.difference(this.f, $$1.keySet())) {
          $$3.a("Missing built-in table: " + $$5);
       }
 
-      $$1.forEach(($$1x, $$2x) -> $$2x.a($$3.a($$2x.a()).a("{" + $$1x + "}", new ecs<>(ecv.c, $$1x))));
+      $$1.forEach(($$1x, $$2x) -> $$2x.a($$3.a($$2x.a()).a("{" + $$1x + "}", new ecu<>(ecx.c, $$1x))));
       Multimap<String, String> $$6 = $$3.a();
       if (!$$6.isEmpty()) {
          $$6.forEach(($$0x, $$1x) -> d.warn("Found validation problem in {}: {}", $$0x, $$1x));
          throw new IllegalStateException("Failed to validate loot tables, see logs");
       } else {
          return CompletableFuture.allOf($$1.entrySet().stream().map($$1x -> {
-            aex $$2x = (aex)$$1x.getKey();
-            ecy $$3x = (ecy)$$1x.getValue();
+            aey $$2x = (aey)$$1x.getKey();
+            eda $$3x = (eda)$$1x.getValue();
             Path $$4 = this.e.a($$2x);
-            return jk.a($$0, ecy.c, $$3x, $$4);
+            return jk.a($$0, eda.c, $$3x, $$4);
          }).toArray(CompletableFuture[]::new));
       }
    }
@@ -71,6 +71,6 @@ public class ke implements jk {
       return "Loot Tables";
    }
 
-   public static record a(Supplier<kf> a, eez b) {
+   public static record a(Supplier<kf> a, efb b) {
    }
 }

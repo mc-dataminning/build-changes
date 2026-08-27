@@ -1,22 +1,25 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
 
-public interface dma<P extends dlz> {
-   dma<dmf> a = a("matching_blocks", dmf.a);
-   dma<dme> b = a("matching_block_tag", dme.e);
-   dma<dmg> c = a("matching_fluids", dmg.a);
-   dma<dmc> d = a("has_sturdy_face", dmc.a);
-   dma<dmj> e = a("solid", dmj.a);
-   dma<dmi> f = a("replaceable", dmi.a);
-   dma<dmm> g = a("would_survive", dmm.a);
-   dma<dmd> h = a("inside_world_bounds", dmd.a);
-   dma<dly> i = a("any_of", dly.a);
-   dma<dlx> j = a("all_of", dlx.a);
-   dma<dmh> k = a("not", dmh.a);
-   dma<dml> l = a("true", dml.e);
+class dma extends dmd {
+   public static final Codec<dma> a = a(dma::new);
 
-   Codec<P> codec();
+   public dma(List<dmb> $$0) {
+      super($$0);
+   }
 
-   private static <P extends dlz> dma<P> a(String $$0, Codec<P> $$1) {
-      return ht.a(jd.P, $$0, () -> $$1);
+   public boolean a(cqr $$0, gw $$1) {
+      for (dmb $$2 : this.e) {
+         if ($$2.test($$0, $$1)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   @Override
+   public dmc<?> a() {
+      return dmc.i;
    }
 }

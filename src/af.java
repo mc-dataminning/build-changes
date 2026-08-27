@@ -1,10 +1,10 @@
-public record af(aex a, ae b) {
-   public void a(sp $$0) {
+public record af(aey a, ae b) {
+   public void a(sq $$0) {
       $$0.a(this.a);
       this.b.a($$0);
    }
 
-   public static af b(sp $$0) {
+   public static af b(sq $$0) {
       return new af($$0.s(), ae.b($$0));
    }
 

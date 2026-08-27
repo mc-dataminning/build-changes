@@ -1,32 +1,31 @@
-public class zi implements ve<wx> {
-   private final int a;
-   private final byte b;
+public record zi(abb d, byte e) implements vf<wy> {
+   public static final byte a = 1;
+   public static final byte b = 2;
+   public static final byte c = 3;
 
-   public zi(biq $$0, byte $$1) {
-      this.a = $$0.ah();
-      this.b = $$1;
-   }
-
-   public zi(sp $$0) {
-      this.a = $$0.m();
-      this.b = $$0.readByte();
+   public zi(sq $$0) {
+      this(new abb($$0), $$0.readByte());
    }
 
    @Override
-   public void a(sp $$0) {
-      $$0.c(this.a);
-      $$0.k(this.b);
+   public void a(sq $$0) {
+      this.d.a($$0);
+      $$0.k(this.e);
    }
 
-   public void a(wx $$0) {
+   public void a(wy $$0) {
       $$0.a(this);
    }
 
-   public biq a(cpv $$0) {
-      return $$0.a(this.a);
+   public boolean a(byte $$0) {
+      return (this.e & $$0) != 0;
    }
 
-   public byte a() {
-      return this.b;
+   public abb a() {
+      return this.d;
+   }
+
+   public byte d() {
+      return this.e;
    }
 }

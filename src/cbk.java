@@ -1,68 +1,61 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record cbk(String q, Predicate<hg<bui>> r, Predicate<hg<bui>> s, ImmutableSet<cja> t, ImmutableSet<csv> u, @Nullable apd v) {
-   public static final Predicate<hg<bui>> a = $$0 -> $$0.a(aqd.a);
-   public static final cbk b = a("none", bui.a, a, null);
-   public static final cbk c = a("armorer", buj.a, ape.yO);
-   public static final cbk d = a("butcher", buj.b, ape.yP);
-   public static final cbk e = a("cartographer", buj.c, ape.yQ);
-   public static final cbk f = a("cleric", buj.d, ape.yR);
-   public static final cbk g = a("farmer", buj.e, ImmutableSet.of(cji.oI, cji.oH, cji.ur, cji.qK), ImmutableSet.of(csw.cC), ape.yS);
-   public static final cbk h = a("fisherman", buj.f, ape.yT);
-   public static final cbk i = a("fletcher", buj.g, ape.yU);
-   public static final cbk j = a("leatherworker", buj.h, ape.yV);
-   public static final cbk k = a("librarian", buj.i, ape.yW);
-   public static final cbk l = a("mason", buj.j, ape.yX);
-   public static final cbk m = a("nitwit", bui.a, bui.a, null);
-   public static final cbk n = a("shepherd", buj.k, ape.yY);
-   public static final cbk o = a("toolsmith", buj.l, ape.yZ);
-   public static final cbk p = a("weaponsmith", buj.m, ape.za);
+public class cbk {
+   public static final int a = 1;
+   public static final int b = 5;
+   private static final int[] d = new int[]{0, 10, 70, 150, 250};
+   public static final Codec<cbk> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               jd.z.q().fieldOf("type").orElseGet(() -> cbo.c).forGetter($$0x -> $$0x.e),
+               jd.A.q().fieldOf("profession").orElseGet(() -> cbm.b).forGetter($$0x -> $$0x.f),
+               Codec.INT.fieldOf("level").orElse(1).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, cbk::new)
+   );
+   private final cbo e;
+   private final cbm f;
+   private final int g;
 
-   @Override
-   public String toString() {
-      return this.q;
+   public cbk(cbo $$0, cbm $$1, int $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = Math.max(1, $$2);
    }
 
-   private static cbk a(String $$0, aew<bui> $$1, @Nullable apd $$2) {
-      return a($$0, $$1x -> $$1x.a($$1), $$1x -> $$1x.a($$1), $$2);
+   public cbo a() {
+      return this.e;
    }
 
-   private static cbk a(String $$0, Predicate<hg<bui>> $$1, Predicate<hg<bui>> $$2, @Nullable apd $$3) {
-      return a($$0, $$1, $$2, ImmutableSet.of(), ImmutableSet.of(), $$3);
+   public cbm b() {
+      return this.f;
    }
 
-   private static cbk a(String $$0, aew<bui> $$1, ImmutableSet<cja> $$2, ImmutableSet<csv> $$3, @Nullable apd $$4) {
-      return a($$0, $$1x -> $$1x.a($$1), $$1x -> $$1x.a($$1), $$2, $$3, $$4);
+   public int c() {
+      return this.g;
    }
 
-   private static cbk a(String $$0, Predicate<hg<bui>> $$1, Predicate<hg<bui>> $$2, ImmutableSet<cja> $$3, ImmutableSet<csv> $$4, @Nullable apd $$5) {
-      return ht.a(jd.A, new aex($$0), new cbk($$0, $$1, $$2, $$3, $$4, $$5));
+   public cbk a(cbo $$0) {
+      return new cbk($$0, this.f, this.g);
    }
 
-   public String a() {
-      return this.q;
+   public cbk a(cbm $$0) {
+      return new cbk(this.e, $$0, this.g);
    }
 
-   public Predicate<hg<bui>> b() {
-      return this.r;
+   public cbk a(int $$0) {
+      return new cbk(this.e, this.f, $$0);
    }
 
-   public Predicate<hg<bui>> c() {
-      return this.s;
+   public static int b(int $$0) {
+      return d($$0) ? d[$$0 - 1] : 0;
    }
 
-   public ImmutableSet<cja> d() {
-      return this.t;
+   public static int c(int $$0) {
+      return d($$0) ? d[$$0] : 0;
    }
 
-   public ImmutableSet<csv> e() {
-      return this.u;
-   }
-
-   @Nullable
-   public apd f() {
-      return this.v;
+   public static boolean d(int $$0) {
+      return $$0 >= 1 && $$0 < 5;
    }
 }

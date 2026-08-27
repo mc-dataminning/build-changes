@@ -1,51 +1,46 @@
-public class fez<T extends cab> extends fhu<T> {
-   public fez(fic $$0) {
-      super($$0);
+public class fez<T extends bis> extends ffo<T> {
+   private final fie a;
+   private final fie b;
+   private final fie f;
+   private final fie g;
+   private final fie h;
+   private final fie i;
+   private static final int j = 6;
+
+   public fez(fie $$0) {
+      this.a = $$0;
+      this.b = $$0.b("head");
+      this.g = $$0.b("right_hind_leg");
+      this.f = $$0.b("left_hind_leg");
+      this.i = $$0.b("right_front_leg");
+      this.h = $$0.b("left_front_leg");
    }
 
-   public static fii a(fig $$0) {
-      fik $$1 = ffq.a($$0, 0.0F);
-      fil $$2 = $$1.a();
-      $$2.a("left_arm", fih.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), fie.a(5.0F, 2.0F, 0.0F));
-      $$2.a("left_leg", fih.c().a(16, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), fie.a(1.9F, 12.0F, 0.0F));
-      return fii.a($$1, 64, 64);
+   public static fik a(fii $$0) {
+      fim $$1 = new fim();
+      fin $$2 = $$1.a();
+      $$2.a("head", fij.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fig.a(0.0F, 6.0F, 0.0F));
+      $$2.a("body", fij.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), fig.a(0.0F, 6.0F, 0.0F));
+      fij $$3 = fij.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, $$0);
+      $$2.a("right_hind_leg", $$3, fig.a(-2.0F, 18.0F, 4.0F));
+      $$2.a("left_hind_leg", $$3, fig.a(2.0F, 18.0F, 4.0F));
+      $$2.a("right_front_leg", $$3, fig.a(-2.0F, 18.0F, -4.0F));
+      $$2.a("left_front_leg", $$3, fig.a(2.0F, 18.0F, -4.0F));
+      return fik.a($$1, 64, 32);
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      this.s = ffq.a.a;
-      this.r = ffq.a.a;
-      cjf $$4 = $$0.b(bgx.a);
-      if ($$4.a(cji.uV) && $$0.fV()) {
-         if ($$0.fl() == bja.b) {
-            this.s = ffq.a.e;
-         } else {
-            this.r = ffq.a.e;
-         }
-      }
-
-      super.a($$0, $$1, $$2, $$3);
+   @Override
+   public fie a() {
+      return this.a;
    }
 
+   @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if (this.r == ffq.a.e) {
-         this.o.e = this.o.e * 0.5F - (float) Math.PI;
-         this.o.f = 0.0F;
-      }
-
-      if (this.s == ffq.a.e) {
-         this.n.e = this.n.e * 0.5F - (float) Math.PI;
-         this.n.f = 0.0F;
-      }
-
-      if (this.u > 0.0F) {
-         this.n.e = this.a(this.u, this.n.e, (float) (-Math.PI * 4.0 / 5.0)) + this.u * 0.35F * arx.a(0.1F * $$3);
-         this.o.e = this.a(this.u, this.o.e, (float) (-Math.PI * 4.0 / 5.0)) - this.u * 0.35F * arx.a(0.1F * $$3);
-         this.n.g = this.a(this.u, this.n.g, -0.15F);
-         this.o.g = this.a(this.u, this.o.g, 0.15F);
-         this.q.e = this.q.e - this.u * 0.55F * arx.a(0.1F * $$3);
-         this.p.e = this.p.e + this.u * 0.55F * arx.a(0.1F * $$3);
-         this.k.e = 0.0F;
-      }
+      this.b.f = $$4 * (float) (Math.PI / 180.0);
+      this.b.e = $$5 * (float) (Math.PI / 180.0);
+      this.f.e = ary.b($$1 * 0.6662F) * 1.4F * $$2;
+      this.g.e = ary.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.h.e = ary.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.i.e = ary.b($$1 * 0.6662F) * 1.4F * $$2;
    }
 }

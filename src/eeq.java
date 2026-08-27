@@ -1,129 +1,45 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
 
-public class eeq extends eec {
+public class eeq extends eee {
    public static final Codec<eeq> a = RecordCodecBuilder.create(
       $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  Codec.BOOL.fieldOf("replace").orElse(false).forGetter($$0x -> $$0x.b),
-                  arg.b.listOf().fieldOf("lore").forGetter($$0x -> $$0x.c),
-                  arg.a(ecq.b.e, "entity").forGetter($$0x -> $$0x.d)
-               )
-            )
+            .and($$0.group(egn.a.fieldOf("count").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)))
             .apply($$0, eeq::new)
    );
-   private final boolean b;
-   private final List<tm> c;
-   private final Optional<ecq.b> d;
+   private final egm b;
+   private final boolean c;
 
-   public eeq(List<efp> $$0, boolean $$1, List<tm> $$2, Optional<ecq.b> $$3) {
+   private eeq(List<efr> $$0, egm $$1, boolean $$2) {
       super($$0);
       this.b = $$1;
-      this.c = List.copyOf($$2);
-      this.d = $$3;
+      this.c = $$2;
    }
 
    @Override
-   public eee b() {
-      return eef.u;
+   public eeg b() {
+      return eeh.c;
    }
 
    @Override
-   public Set<eey<?>> a() {
-      return this.d.<Set<eey<?>>>map($$0 -> Set.of($$0.a())).orElseGet(Set::of);
+   public Set<efa<?>> a() {
+      return this.b.a();
    }
 
    @Override
-   public cjf a(cjf $$0, ecq $$1) {
-      re $$2 = this.a($$0, !this.c.isEmpty());
-      if ($$2 != null) {
-         if (this.b) {
-            $$2.clear();
-         }
-
-         UnaryOperator<tm> $$3 = eer.a($$1, this.d.orElse(null));
-         this.c.stream().map($$3).map(tm.a::a).map(rp::a).forEach($$2::add);
-      }
-
+   public cjh a(cjh $$0, ecs $$1) {
+      int $$2 = this.c ? $$0.L() : 0;
+      $$0.f(ary.a($$2 + this.b.a($$1), 0, $$0.g()));
       return $$0;
    }
 
-   @Nullable
-   private re a(cjf $$0, boolean $$1) {
-      qy $$2;
-      if ($$0.u()) {
-         $$2 = $$0.v();
-      } else {
-         if (!$$1) {
-            return null;
-         }
-
-         $$2 = new qy();
-         $$0.c($$2);
-      }
-
-      qy $$5;
-      if ($$2.b("display", 10)) {
-         $$5 = $$2.p("display");
-      } else {
-         if (!$$1) {
-            return null;
-         }
-
-         $$5 = new qy();
-         $$2.a("display", $$5);
-      }
-
-      if ($$5.b("Lore", 9)) {
-         return $$5.c("Lore", 8);
-      } else if ($$1) {
-         re $$8 = new re();
-         $$5.a("Lore", $$8);
-         return $$8;
-      } else {
-         return null;
-      }
+   public static eee.a<?> a(egm $$0) {
+      return a($$1 -> new eeq($$1, $$0, false));
    }
 
-   public static eeq.a c() {
-      return new eeq.a();
-   }
-
-   public static class a extends eec.a<eeq.a> {
-      private boolean a;
-      private Optional<ecq.b> b = Optional.empty();
-      private final Builder<tm> c = ImmutableList.builder();
-
-      public eeq.a a(boolean $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public eeq.a a(ecq.b $$0) {
-         this.b = Optional.of($$0);
-         return this;
-      }
-
-      public eeq.a a(tm $$0) {
-         this.c.add($$0);
-         return this;
-      }
-
-      protected eeq.a a() {
-         return this;
-      }
-
-      @Override
-      public eed b() {
-         return new eeq(this.g(), this.a, this.c.build(), this.b);
-      }
+   public static eee.a<?> a(egm $$0, boolean $$1) {
+      return a($$2 -> new eeq($$2, $$0, $$1));
    }
 }

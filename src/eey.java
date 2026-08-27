@@ -1,16 +1,8 @@
-public class eey<T> {
-   private final aex a;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public eey(aex $$0) {
-      this.a = $$0;
-   }
-
-   public aex a() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return "<parameter " + this.a + ">";
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface eey {
 }

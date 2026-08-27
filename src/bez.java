@@ -1,29 +1,8 @@
-public class bez implements bfa {
-   public static final bfa a = new bez();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   public void a() {
-   }
-
-   @Override
-   public void b() {
-   }
-
-   @Override
-   public void c() {
-   }
-
-   @Override
-   public boolean e() {
-      return false;
-   }
-
-   @Override
-   public bdp f() {
-      return bdm.a;
-   }
-
-   @Override
-   public void d() {
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bez {
 }

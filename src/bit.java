@@ -1,71 +1,42 @@
-import com.google.common.base.Predicates;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class bit {
+   public final float a;
+   public final float b;
+   public final boolean c;
 
-public final class bit {
-   public static final Predicate<biq> a = biq::bv;
-   public static final Predicate<biq> b = $$0 -> $$0.bv() && $$0 instanceof bjg;
-   public static final Predicate<biq> c = $$0 -> $$0.bv() && !$$0.bO() && !$$0.bN();
-   public static final Predicate<biq> d = $$0 -> $$0 instanceof bgr && $$0.bv();
-   public static final Predicate<biq> e = $$0 -> !($$0 instanceof cbu) || !$$0.M_() && !((cbu)$$0).f();
-   public static final Predicate<biq> f = $$0 -> !$$0.M_();
-   public static final Predicate<biq> g = f.and(biq::bx);
-
-   private bit() {
+   public bit(float $$0, float $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static Predicate<biq> a(double $$0, double $$1, double $$2, double $$3) {
-      double $$4 = $$3 * $$3;
-      return $$4x -> $$4x != null && $$4x.i($$0, $$1, $$2) <= $$4;
+   public ehk a(ehp $$0) {
+      return this.a($$0.c, $$0.d, $$0.e);
    }
 
-   public static Predicate<biq> a(biq $$0) {
-      eio $$1 = $$0.cf();
-      eio.a $$2 = $$1 == null ? eio.a.a : $$1.l();
-      return (Predicate<biq>)($$2 == eio.a.b ? Predicates.alwaysFalse() : f.and($$3 -> {
-         if (!$$3.bs()) {
-            return false;
-         } else if (!$$0.dL().B || $$3 instanceof cbu && ((cbu)$$3).g()) {
-            eio $$4 = $$3.cf();
-            eio.a $$5 = $$4 == null ? eio.a.a : $$4.l();
-            if ($$5 == eio.a.b) {
-               return false;
-            } else {
-               boolean $$6 = $$1 != null && $$1.a($$4);
-               return ($$2 == eio.a.d || $$5 == eio.a.d) && $$6 ? false : $$2 != eio.a.c && $$5 != eio.a.c || $$6;
-            }
-         } else {
-            return false;
-         }
-      }));
+   public ehk a(double $$0, double $$1, double $$2) {
+      float $$3 = this.a / 2.0F;
+      float $$4 = this.b;
+      return new ehk($$0 - (double)$$3, $$1, $$2 - (double)$$3, $$0 + (double)$$3, $$1 + (double)$$4, $$2 + (double)$$3);
    }
 
-   public static Predicate<biq> b(biq $$0) {
-      return $$1 -> {
-         while ($$1.bN()) {
-            $$1 = $$1.cY();
-            if ($$1 == $$0) {
-               return false;
-            }
-         }
-
-         return true;
-      };
+   public bit a(float $$0) {
+      return this.a($$0, $$0);
    }
 
-   public static class a implements Predicate<biq> {
-      private final cjf a;
+   public bit a(float $$0, float $$1) {
+      return !this.c && ($$0 != 1.0F || $$1 != 1.0F) ? b(this.a * $$0, this.b * $$1) : this;
+   }
 
-      public a(cjf $$0) {
-         this.a = $$0;
-      }
+   public static bit b(float $$0, float $$1) {
+      return new bit($$0, $$1, false);
+   }
 
-      public boolean a(@Nullable biq $$0) {
-         if (!$$0.bv()) {
-            return false;
-         } else {
-            return !($$0 instanceof bjg $$1) ? false : $$1.f(this.a);
-         }
-      }
+   public static bit c(float $$0, float $$1) {
+      return new bit($$0, $$1, true);
+   }
+
+   @Override
+   public String toString() {
+      return "EntityDimensions w=" + this.a + ", h=" + this.b + ", fixed=" + this.c;
    }
 }

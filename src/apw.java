@@ -1,23 +1,32 @@
-public final class apw {
-   public static final aqi<biu<?>> a = a("skeletons");
-   public static final aqi<biu<?>> b = a("raiders");
-   public static final aqi<biu<?>> c = a("beehive_inhabitors");
-   public static final aqi<biu<?>> d = a("arrows");
-   public static final aqi<biu<?>> e = a("impact_projectiles");
-   public static final aqi<biu<?>> f = a("powder_snow_walkable_mobs");
-   public static final aqi<biu<?>> g = a("axolotl_always_hostiles");
-   public static final aqi<biu<?>> h = a("axolotl_hunt_targets");
-   public static final aqi<biu<?>> i = a("freeze_immune_entity_types");
-   public static final aqi<biu<?>> j = a("freeze_hurts_extra_types");
-   public static final aqi<biu<?>> k = a("frog_food");
-   public static final aqi<biu<?>> l = a("fall_damage_immune");
-   public static final aqi<biu<?>> m = a("dismounts_underwater");
-   public static final aqi<biu<?>> n = a("non_controlling_rider");
+public interface apw {
+   aqj<bhs> a = a("damages_helmet");
+   aqj<bhs> b = a("bypasses_armor");
+   aqj<bhs> c = a("bypasses_shield");
+   aqj<bhs> d = a("bypasses_invulnerability");
+   aqj<bhs> e = a("bypasses_cooldown");
+   aqj<bhs> f = a("bypasses_effects");
+   aqj<bhs> g = a("bypasses_resistance");
+   aqj<bhs> h = a("bypasses_enchantments");
+   aqj<bhs> i = a("is_fire");
+   aqj<bhs> j = a("is_projectile");
+   aqj<bhs> k = a("witch_resistant_to");
+   aqj<bhs> l = a("is_explosion");
+   aqj<bhs> m = a("is_fall");
+   aqj<bhs> n = a("is_drowning");
+   aqj<bhs> o = a("is_freezing");
+   aqj<bhs> p = a("is_lightning");
+   aqj<bhs> q = a("no_anger");
+   aqj<bhs> r = a("no_impact");
+   aqj<bhs> s = a("always_most_significant_fall");
+   aqj<bhs> t = a("wither_immune_to");
+   aqj<bhs> u = a("ignites_armor_stands");
+   aqj<bhs> v = a("burns_armor_stands");
+   aqj<bhs> w = a("avoids_guardian_thorns");
+   aqj<bhs> x = a("always_triggers_silverfish");
+   aqj<bhs> y = a("always_hurts_ender_dragons");
+   aqj<bhs> z = a("no_knockback");
 
-   private apw() {
-   }
-
-   private static aqi<biu<?>> a(String $$0) {
-      return aqi.a(je.s, new aex($$0));
+   private static aqj<bhs> a(String $$0) {
+      return aqj.a(je.p, new aey($$0));
    }
 }

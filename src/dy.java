@@ -8,12 +8,12 @@ public record dy(List<dy.a> b) {
    private static final int c = 8;
    private static final int d = 16;
 
-   public dy(sp $$0) {
-      this($$0.a(sp.a(ArrayList::new, 8), dy.a::new));
+   public dy(sq $$0) {
+      this($$0.a(sq.a(ArrayList::new, 8), dy.a::new));
    }
 
    @Nullable
-   public tx a(String $$0) {
+   public ty a(String $$0) {
       for (dy.a $$1 : this.b) {
          if ($$1.a.equals($$0)) {
             return $$1.b;
@@ -23,13 +23,13 @@ public record dy(List<dy.a> b) {
       return null;
    }
 
-   public void a(sp $$0) {
+   public void a(sq $$0) {
       $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   public static dy a(ud<?> $$0, dy.b $$1) {
+   public static dy a(ue<?> $$0, dy.b $$1) {
       List<dy.a> $$2 = $$0.a().stream().map($$1x -> {
-         tx $$2x = $$1.sign($$1x.c());
+         ty $$2x = $$1.sign($$1x.c());
          return $$2x != null ? new dy.a($$1x.a(), $$2x) : null;
       }).filter(Objects::nonNull).toList();
       return new dy($$2);
@@ -39,21 +39,21 @@ public record dy(List<dy.a> b) {
       return this.b;
    }
 
-   public static record a(String a, tx b) {
+   public static record a(String a, ty b) {
 
-      public a(sp $$0) {
-         this($$0.d(16), tx.a($$0));
+      public a(sq $$0) {
+         this($$0.d(16), ty.a($$0));
       }
 
-      public void a(sp $$0) {
+      public void a(sq $$0) {
          $$0.a(this.a, 16);
-         tx.a($$0, this.b);
+         ty.a($$0, this.b);
       }
    }
 
    @FunctionalInterface
    public interface b {
       @Nullable
-      tx sign(String var1);
+      ty sign(String var1);
    }
 }

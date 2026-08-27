@@ -1,27 +1,38 @@
+import com.mojang.serialization.Codec;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 public class ceg {
-   public static final int a = 20;
-   public static final float b = 20.0F;
-   public static final float c = 5.0F;
-   public static final float d = 2.5F;
-   public static final float e = 4.0F;
-   public static final int f = 80;
-   public static final int g = 10;
-   public static final int h = 18;
-   public static final int i = 6;
-   public static final int j = 0;
-   public static final float k = 0.1F;
-   public static final float l = 0.3F;
-   public static final float m = 0.6F;
-   public static final float n = 0.8F;
-   public static final float o = 1.0F;
-   public static final float p = 1.2F;
-   public static final float q = 6.0F;
-   public static final float r = 0.05F;
-   public static final float s = 0.2F;
-   public static final float t = 0.005F;
-   public static final float u = 0.1F;
-   public static final float v = 0.0F;
-   public static final float w = 0.0F;
-   public static final float x = 0.1F;
-   public static final float y = 0.01F;
+   public static final cec a;
+   public static final cec b;
+   public static final cec c;
+   public static final ced d;
+   public static final Codec<cee> e;
+   public static final cee f;
+   public static final cee g;
+
+   public static String a(cee $$0, cee $$1) {
+      return a(d, $$0, $$1);
+   }
+
+   public static String a(ced $$0, cee $$1, cee $$2) {
+      Set<aey> $$3 = $$0.b($$2);
+      Set<aey> $$4 = $$0.b($$1);
+      return $$3.stream().filter($$1x -> !$$4.contains($$1x)).map(aey::toString).collect(Collectors.joining(", "));
+   }
+
+   public static boolean a(cee $$0) {
+      return !$$0.a(f);
+   }
+
+   static {
+      ced.a $$0 = new ced.a("main");
+      a = $$0.a("vanilla");
+      b = $$0.a("bundle");
+      c = $$0.a("trade_rebalance");
+      d = $$0.a();
+      e = d.b();
+      f = cee.a(a);
+      g = f;
+   }
 }

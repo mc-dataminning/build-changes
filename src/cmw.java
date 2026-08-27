@@ -1,15 +1,31 @@
-public class cmw extends clr {
-   public cmw(String $$0, clx $$1, cmg $$2, cjf $$3, float $$4, int $$5) {
-      super(cmn.b, $$0, $$1, $$2, $$3, $$4, $$5);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public class cmw<T extends cmb> implements cmo<T> {
+   private final cmw.a<T> x;
+   private final Codec<T> y;
+
+   public cmw(cmw.a<T> $$0) {
+      this.x = $$0;
+      this.y = RecordCodecBuilder.create($$1 -> $$1.group(cma.e.fieldOf("category").orElse(cma.d).forGetter(cmb::d)).apply($$1, $$0::create));
    }
 
    @Override
-   public cjf g() {
-      return new cjf(csw.cD);
+   public Codec<T> a() {
+      return this.y;
    }
 
-   @Override
-   public cmm<?> an_() {
-      return cmm.p;
+   public T b(sq $$0) {
+      cma $$1 = $$0.b(cma.class);
+      return this.x.create($$1);
+   }
+
+   public void a(sq $$0, T $$1) {
+      $$0.a($$1.d());
+   }
+
+   @FunctionalInterface
+   public interface a<T extends cmb> {
+      T create(cma var1);
    }
 }

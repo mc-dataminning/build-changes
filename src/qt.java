@@ -47,8 +47,8 @@ public abstract class qt {
          }
 
          @Override
-         public ark a(tq $$0) {
-            return $$1 -> $$0.a(($$1x, $$2xxx) -> aso.c($$2xxx, $$1x, $$1) ? Optional.empty() : tq.a, ui.a).isPresent();
+         public arl a(tr $$0) {
+            return $$1 -> $$0.a(($$1x, $$2xxx) -> asq.c($$2xxx, $$1x, $$1) ? Optional.empty() : tr.a, uj.a).isPresent();
          }
       };
    }
@@ -65,7 +65,7 @@ public abstract class qt {
       JsonObject $$2 = (JsonObject)c.fromJson(new InputStreamReader($$0, StandardCharsets.UTF_8), JsonObject.class);
 
       for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
-         String $$4 = d.matcher(aro.a($$3.getValue(), $$3.getKey())).replaceAll("%$1s");
+         String $$4 = d.matcher(arp.a($$3.getValue(), $$3.getKey())).replaceAll("%$1s");
          $$1.accept($$3.getKey(), $$4);
       }
    }
@@ -88,9 +88,9 @@ public abstract class qt {
 
    public abstract boolean b();
 
-   public abstract ark a(tq var1);
+   public abstract arl a(tr var1);
 
-   public List<ark> a(List<tq> $$0) {
+   public List<arl> a(List<tr> $$0) {
       return $$0.stream().map(this::a).collect(ImmutableList.toImmutableList());
    }
 }

@@ -1,15 +1,15 @@
 import javax.annotation.Nullable;
 
-public class dew extends dep {
-   private final float a;
-
-   public dew(float $$0) {
-      this.a = $$0;
+public class dew extends deq {
+   @Nullable
+   @Override
+   protected aex<dnl<?, ?>> a(ase $$0, boolean $$1) {
+      return null;
    }
 
    @Nullable
    @Override
-   protected aew<dnj<?, ?>> a(asc $$0, boolean $$1) {
-      return $$0.i() < this.a ? oy.y : oy.x;
+   protected aex<dnl<?, ?>> a(ase $$0) {
+      return oy.h;
    }
 }

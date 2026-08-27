@@ -11,51 +11,51 @@ import java.util.Collection;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-public class er<T> implements ArgumentType<aew<T>> {
+public class er<T> implements ArgumentType<aex<T>> {
    private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tm.a("commands.place.feature.invalid", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tm.a("commands.place.structure.invalid", $$0));
-   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> tm.a("commands.place.jigsaw.invalid", $$0));
-   final aew<? extends ht<T>> e;
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tn.a("commands.place.feature.invalid", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tn.a("commands.place.structure.invalid", $$0));
+   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> tn.a("commands.place.jigsaw.invalid", $$0));
+   final aex<? extends ht<T>> e;
 
-   public er(aew<? extends ht<T>> $$0) {
+   public er(aex<? extends ht<T>> $$0) {
       this.e = $$0;
    }
 
-   public static <T> er<T> a(aew<? extends ht<T>> $$0) {
+   public static <T> er<T> a(aex<? extends ht<T>> $$0) {
       return new er<>($$0);
    }
 
-   private static <T> aew<T> a(CommandContext<dt> $$0, String $$1, aew<ht<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
-      aew<?> $$4 = (aew<?>)$$0.getArgument($$1, aew.class);
-      Optional<aew<T>> $$5 = $$4.c($$2);
+   private static <T> aex<T> a(CommandContext<dt> $$0, String $$1, aex<ht<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
+      aex<?> $$4 = (aex<?>)$$0.getArgument($$1, aex.class);
+      Optional<aex<T>> $$5 = $$4.c($$2);
       return $$5.orElseThrow(() -> $$3.create($$4));
    }
 
-   private static <T> ht<T> a(CommandContext<dt> $$0, aew<? extends ht<T>> $$1) {
+   private static <T> ht<T> a(CommandContext<dt> $$0, aex<? extends ht<T>> $$1) {
       return ((dt)$$0.getSource()).l().aU().d($$1);
    }
 
-   private static <T> hg.c<T> b(CommandContext<dt> $$0, String $$1, aew<ht<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
-      aew<T> $$4 = a($$0, $$1, $$2, $$3);
+   private static <T> hg.c<T> b(CommandContext<dt> $$0, String $$1, aex<ht<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
+      aex<T> $$4 = a($$0, $$1, $$2, $$3);
       return a($$0, $$2).b($$4).orElseThrow(() -> $$3.create($$4.a()));
    }
 
-   public static hg.c<dnj<?, ?>> a(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
+   public static hg.c<dnl<?, ?>> a(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1, je.as, b);
    }
 
-   public static hg.c<dvi> b(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
+   public static hg.c<dvk> b(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1, je.az, c);
    }
 
-   public static hg.c<dwr> c(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
+   public static hg.c<dwt> c(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1, je.aC, d);
    }
 
-   public aew<T> a(StringReader $$0) throws CommandSyntaxException {
-      aex $$1 = aex.a($$0);
-      return aew.a(this.e, $$1);
+   public aex<T> a(StringReader $$0) throws CommandSyntaxException {
+      aey $$1 = aey.a($$0);
+      return aex.a(this.e, $$1);
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
@@ -67,11 +67,11 @@ public class er<T> implements ArgumentType<aew<T>> {
    }
 
    public static class a<T> implements gi<er<T>, er.a<T>.a> {
-      public void a(er.a<T>.a $$0, sp $$1) {
+      public void a(er.a<T>.a $$0, sq $$1) {
          $$1.b($$0.b);
       }
 
-      public er.a<T>.a a(sp $$0) {
+      public er.a<T>.a a(sq $$0) {
          return new er.a.a($$0.t());
       }
 
@@ -84,9 +84,9 @@ public class er<T> implements ArgumentType<aew<T>> {
       }
 
       public final class a implements gi.a<er<T>> {
-         final aew<? extends ht<T>> b;
+         final aex<? extends ht<T>> b;
 
-         a(aew<? extends ht<T>> $$1) {
+         a(aex<? extends ht<T>> $$1) {
             this.b = $$1;
          }
 

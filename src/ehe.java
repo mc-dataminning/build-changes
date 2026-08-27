@@ -1,4 +1,25 @@
 import java.nio.file.Path;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public record ehe(Path a, Path b) {
+public class ehe extends Exception {
+   private final Path a;
+   private final List<ehg> b;
+
+   public ehe(Path $$0, List<ehg> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   @Override
+   public String getMessage() {
+      return a(this.a, this.b);
+   }
+
+   public static String a(Path $$0, List<ehg> $$1) {
+      return "Failed to validate '"
+         + $$0
+         + "'. Found forbidden symlinks: "
+         + $$1.stream().map($$0x -> $$0x.a() + "->" + $$0x.b()).collect(Collectors.joining(", "));
+   }
 }

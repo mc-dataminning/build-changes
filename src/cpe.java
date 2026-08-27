@@ -1,72 +1,205 @@
-import java.util.function.Predicate;
+import java.util.Spliterators.AbstractSpliterator;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
+import javax.annotation.Nullable;
 
 public class cpe {
-   private final ehn a;
-   private final ehn b;
-   private final cpe.a c;
-   private final cpe.b d;
-   private final ehs e;
+   private static final int g = 1056;
+   public static final long a = c(1875066, 1875066);
+   public static final cpe b = new cpe(0, 0);
+   private static final long h = 32L;
+   private static final long i = 4294967295L;
+   private static final int j = 5;
+   public static final int c = 32;
+   private static final int k = 31;
+   public static final int d = 31;
+   public final int e;
+   public final int f;
+   private static final int l = 1664525;
+   private static final int m = 1013904223;
+   private static final int n = -559038737;
 
-   public cpe(ehn $$0, ehn $$1, cpe.a $$2, cpe.b $$3, biq $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = ehs.a($$4);
+   public cpe(int $$0, int $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public ehn a() {
-      return this.b;
+   public cpe(gw $$0) {
+      this.e = hz.a($$0.u());
+      this.f = hz.a($$0.w());
    }
 
-   public ehn b() {
-      return this.a;
+   public cpe(long $$0) {
+      this.e = (int)$$0;
+      this.f = (int)($$0 >> 32);
    }
 
-   public eig a(dfj $$0, cpb $$1, gw $$2) {
-      return this.c.get($$0, $$1, $$2, this.e);
+   public static cpe a(int $$0, int $$1) {
+      return new cpe($$0 << 5, $$1 << 5);
    }
 
-   public eig a(eam $$0, cpb $$1, gw $$2) {
-      return this.d.a($$0) ? $$0.d($$1, $$2) : eid.a();
+   public static cpe b(int $$0, int $$1) {
+      return new cpe(($$0 << 5) + 31, ($$1 << 5) + 31);
    }
 
-   public static enum a implements cpe.c {
-      a(dfi.a::b),
-      b(dfi.a::a),
-      c(dfi.a::c),
-      d(($$0, $$1, $$2, $$3) -> $$0.a(apt.aP) ? eid.b() : eid.a());
+   public long a() {
+      return c(this.e, this.f);
+   }
 
-      private final cpe.c e;
+   public static long c(int $$0, int $$1) {
+      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
+   }
 
-      private a(cpe.c $$0) {
-         this.e = $$0;
+   public static long a(gw $$0) {
+      return c(hz.a($$0.u()), hz.a($$0.w()));
+   }
+
+   public static int a(long $$0) {
+      return (int)($$0 & 4294967295L);
+   }
+
+   public static int b(long $$0) {
+      return (int)($$0 >>> 32 & 4294967295L);
+   }
+
+   @Override
+   public int hashCode() {
+      return d(this.e, this.f);
+   }
+
+   public static int d(int $$0, int $$1) {
+      int $$2 = 1664525 * $$0 + 1013904223;
+      int $$3 = 1664525 * ($$1 ^ -559038737) + 1013904223;
+      return $$2 ^ $$3;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof cpe $$1) ? false : this.e == $$1.e && this.f == $$1.f;
       }
-
-      @Override
-      public eig get(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
-         return this.e.get($$0, $$1, $$2, $$3);
-      }
    }
 
-   public static enum b {
-      a($$0 -> false),
-      b(eam::b),
-      c($$0 -> !$$0.c()),
-      d($$0 -> $$0.a(apy.a));
-
-      private final Predicate<eam> e;
-
-      private b(Predicate<eam> $$0) {
-         this.e = $$0;
-      }
-
-      public boolean a(eam $$0) {
-         return this.e.test($$0);
-      }
+   public int b() {
+      return this.a(8);
    }
 
-   public interface c {
-      eig get(dfj var1, cpb var2, gw var3, ehs var4);
+   public int c() {
+      return this.b(8);
+   }
+
+   public int d() {
+      return hz.c(this.e);
+   }
+
+   public int e() {
+      return hz.c(this.f);
+   }
+
+   public int f() {
+      return this.a(15);
+   }
+
+   public int g() {
+      return this.b(15);
+   }
+
+   public int h() {
+      return this.e >> 5;
+   }
+
+   public int i() {
+      return this.f >> 5;
+   }
+
+   public int j() {
+      return this.e & 31;
+   }
+
+   public int k() {
+      return this.f & 31;
+   }
+
+   public gw a(int $$0, int $$1, int $$2) {
+      return new gw(this.a($$0), $$1, this.b($$2));
+   }
+
+   public int a(int $$0) {
+      return hz.a(this.e, $$0);
+   }
+
+   public int b(int $$0) {
+      return hz.a(this.f, $$0);
+   }
+
+   public gw c(int $$0) {
+      return new gw(this.b(), $$0, this.c());
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.e + ", " + this.f + "]";
+   }
+
+   public gw l() {
+      return new gw(this.d(), 0, this.e());
+   }
+
+   public int a(cpe $$0) {
+      return Math.max(Math.abs(this.e - $$0.e), Math.abs(this.f - $$0.f));
+   }
+
+   public int b(cpe $$0) {
+      return this.e($$0.e, $$0.f);
+   }
+
+   public int c(long $$0) {
+      return this.e(a($$0), b($$0));
+   }
+
+   private int e(int $$0, int $$1) {
+      int $$2 = $$0 - this.e;
+      int $$3 = $$1 - this.f;
+      return $$2 * $$2 + $$3 * $$3;
+   }
+
+   public static Stream<cpe> a(cpe $$0, int $$1) {
+      return a(new cpe($$0.e - $$1, $$0.f - $$1), new cpe($$0.e + $$1, $$0.f + $$1));
+   }
+
+   public static Stream<cpe> a(final cpe $$0, final cpe $$1) {
+      int $$2 = Math.abs($$0.e - $$1.e) + 1;
+      int $$3 = Math.abs($$0.f - $$1.f) + 1;
+      final int $$4 = $$0.e < $$1.e ? 1 : -1;
+      final int $$5 = $$0.f < $$1.f ? 1 : -1;
+      return StreamSupport.stream(new AbstractSpliterator<cpe>((long)($$2 * $$3), 64) {
+         @Nullable
+         private cpe e;
+
+         @Override
+         public boolean tryAdvance(Consumer<? super cpe> $$0x) {
+            if (this.e == null) {
+               this.e = $$0;
+            } else {
+               int $$1 = this.e.e;
+               int $$2 = this.e.f;
+               if ($$1 == $$1.e) {
+                  if ($$2 == $$1.f) {
+                     return false;
+                  }
+
+                  this.e = new cpe($$0.e, $$2 + $$5);
+               } else {
+                  this.e = new cpe($$1 + $$4, $$2);
+               }
+            }
+
+            $$0.accept(this.e);
+            return true;
+         }
+      }, false);
    }
 }

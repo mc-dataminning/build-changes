@@ -1,158 +1,154 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
 
 public class ahx {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("commands.random.error.range_too_large"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tm.c("commands.random.error.range_too_small"));
-
    public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("random").then(a("value", false))).then(a("roll", true)))
-            .then(
-               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("reset").requires($$0x -> $$0x.c(2)))
-                     .then(
-                        ((LiteralArgumentBuilder)du.a("*").executes($$0x -> a((dt)$$0x.getSource())))
-                           .then(
-                              ((RequiredArgumentBuilder)du.a("seed", IntegerArgumentType.integer())
-                                    .executes($$0x -> a((dt)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "seed"), true, true)))
-                                 .then(
-                                    ((RequiredArgumentBuilder)du.a("includeWorldSeed", BoolArgumentType.bool())
-                                          .executes(
-                                             $$0x -> a(
-                                                   (dt)$$0x.getSource(),
-                                                   IntegerArgumentType.getInteger($$0x, "seed"),
-                                                   BoolArgumentType.getBool($$0x, "includeWorldSeed"),
-                                                   true
-                                                )
-                                          ))
-                                       .then(
-                                          du.a("includeSequenceId", BoolArgumentType.bool())
-                                             .executes(
-                                                $$0x -> a(
-                                                      (dt)$$0x.getSource(),
-                                                      IntegerArgumentType.getInteger($$0x, "seed"),
-                                                      BoolArgumentType.getBool($$0x, "includeWorldSeed"),
-                                                      BoolArgumentType.getBool($$0x, "includeSequenceId")
-                                                   )
-                                             )
-                                       )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a(
+                                    "raid"
                                  )
-                           )
-                     ))
-                  .then(
-                     ((RequiredArgumentBuilder)du.a("sequence", es.a()).suggests(ahx::a).executes($$0x -> a((dt)$$0x.getSource(), es.e($$0x, "sequence"))))
-                        .then(
-                           ((RequiredArgumentBuilder)du.a("seed", IntegerArgumentType.integer())
-                                 .executes($$0x -> a((dt)$$0x.getSource(), es.e($$0x, "sequence"), IntegerArgumentType.getInteger($$0x, "seed"), true, true)))
+                                 .requires($$0x -> $$0x.c(3)))
                               .then(
-                                 ((RequiredArgumentBuilder)du.a("includeWorldSeed", BoolArgumentType.bool())
-                                       .executes(
-                                          $$0x -> a(
-                                                (dt)$$0x.getSource(),
-                                                es.e($$0x, "sequence"),
-                                                IntegerArgumentType.getInteger($$0x, "seed"),
-                                                BoolArgumentType.getBool($$0x, "includeWorldSeed"),
-                                                true
-                                             )
-                                       ))
+                                 du.a("start")
                                     .then(
-                                       du.a("includeSequenceId", BoolArgumentType.bool())
-                                          .executes(
-                                             $$0x -> a(
-                                                   (dt)$$0x.getSource(),
-                                                   es.e($$0x, "sequence"),
-                                                   IntegerArgumentType.getInteger($$0x, "seed"),
-                                                   BoolArgumentType.getBool($$0x, "includeWorldSeed"),
-                                                   BoolArgumentType.getBool($$0x, "includeSequenceId")
-                                                )
-                                          )
+                                       du.a("omenlvl", IntegerArgumentType.integer(0))
+                                          .executes($$0x -> b((dt)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "omenlvl")))
                                     )
-                              )
-                        )
-                  )
-            )
+                              ))
+                           .then(du.a("stop").executes($$0x -> c((dt)$$0x.getSource()))))
+                        .then(du.a("check").executes($$0x -> d((dt)$$0x.getSource()))))
+                     .then(du.a("sound").then(du.a("type", ea.a()).executes($$0x -> a((dt)$$0x.getSource(), ea.a($$0x, "type"))))))
+                  .then(du.a("spawnleader").executes($$0x -> b((dt)$$0x.getSource()))))
+               .then(
+                  du.a("setomen")
+                     .then(
+                        du.a("level", IntegerArgumentType.integer(0)).executes($$0x -> a((dt)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "level")))
+                     )
+               ))
+            .then(du.a("glow").executes($$0x -> a((dt)$$0x.getSource())))
       );
    }
 
-   private static LiteralArgumentBuilder<dt> a(String $$0, boolean $$1) {
-      return (LiteralArgumentBuilder<dt>)du.a($$0)
-         .then(
-            ((RequiredArgumentBuilder)du.a("range", ep.a()).executes($$1x -> a((dt)$$1x.getSource(), ep.b.a($$1x, "range"), null, $$1)))
-               .then(
-                  ((RequiredArgumentBuilder)du.a("sequence", es.a()).suggests(ahx::a).requires($$0x -> $$0x.c(2)))
-                     .executes($$1x -> a((dt)$$1x.getSource(), ep.b.a($$1x, "range"), es.e($$1x, "sequence"), $$1))
-               )
-         );
-   }
-
-   private static CompletableFuture<Suggestions> a(CommandContext<dt> $$0, SuggestionsBuilder $$1) {
-      List<String> $$2 = Lists.newArrayList();
-      ((dt)$$0.getSource()).e().H().a(($$1x, $$2x) -> $$2.add($$1x.toString()));
-      return dw.b($$2, $$1);
-   }
-
-   private static int a(dt $$0, cl.d $$1, @Nullable aex $$2, boolean $$3) throws CommandSyntaxException {
-      asc $$4;
-      if ($$2 != null) {
-         $$4 = $$0.e().a($$2);
-      } else {
-         $$4 = $$0.e().D_();
+   private static int a(dt $$0) throws CommandSyntaxException {
+      cdd $$1 = a($$0.h());
+      if ($$1 != null) {
+         for (cde $$3 : $$1.h()) {
+            $$3.b(new bif(bih.x, 1000, 1));
+         }
       }
 
-      int $$6 = $$1.a().orElse(Integer.MIN_VALUE);
-      int $$7 = $$1.b().orElse(Integer.MAX_VALUE);
-      long $$8 = (long)$$7 - (long)$$6;
-      if ($$8 == 0L) {
-         throw b.create();
-      } else if ($$8 >= 2147483647L) {
-         throw a.create();
-      } else {
-         int $$9 = arx.b($$4, $$6, $$7);
-         if ($$3) {
-            $$0.l().ac().a(tm.a("commands.random.roll", $$0.b(), $$9, $$6, $$7), false);
+      return 1;
+   }
+
+   private static int a(dt $$0, int $$1) throws CommandSyntaxException {
+      cdd $$2 = a($$0.h());
+      if ($$2 != null) {
+         int $$3 = $$2.l();
+         if ($$1 > $$3) {
+            $$0.b(tn.b("Sorry, the max bad omen level you can set is " + $$3));
          } else {
-            $$0.a(() -> tm.a("commands.random.sample.success", $$9), false);
+            int $$4 = $$2.m();
+            $$2.a($$1);
+            $$0.a(() -> tn.b("Changed village's bad omen level from " + $$4 + " to " + $$1), false);
+         }
+      } else {
+         $$0.b(tn.b("No raid found here"));
+      }
+
+      return 1;
+   }
+
+   private static int b(dt $$0) {
+      $$0.a(() -> tn.b("Spawned a raid captain"), false);
+      cde $$1 = biw.ay.a((cpx)$$0.e());
+      if ($$1 == null) {
+         $$0.b(tn.b("Pillager failed to spawn"));
+         return 0;
+      } else {
+         $$1.w(true);
+         $$1.a(bix.f, cdd.s());
+         $$1.e($$0.d().c, $$0.d().d, $$0.d().e);
+         $$1.a($$0.e(), $$0.e().d_(gw.a($$0.d())), bjm.n, null, null);
+         $$0.e().a_($$1);
+         return 1;
+      }
+   }
+
+   private static int a(dt $$0, @Nullable tn $$1) {
+      if ($$1 != null && $$1.getString().equals("local")) {
+         aks $$2 = $$0.e();
+         ehp $$3 = $$0.d().b(5.0, 0.0, 0.0);
+         $$2.a(null, $$3.c, $$3.d, $$3.e, apf.tp, apg.g, 2.0F, 1.0F, $$2.z.g());
+      }
+
+      return 1;
+   }
+
+   private static int b(dt $$0, int $$1) throws CommandSyntaxException {
+      akt $$2 = $$0.h();
+      gw $$3 = $$2.dl();
+      if ($$2.x().d($$3)) {
+         $$0.b(tn.b("Raid already started close by"));
+         return -1;
+      } else {
+         cdf $$4 = $$2.x().x();
+         cdd $$5 = $$4.a($$2);
+         if ($$5 != null) {
+            $$5.a($$1);
+            $$4.c();
+            $$0.a(() -> tn.b("Created a raid in your local village"), false);
+         } else {
+            $$0.b(tn.b("Failed to create a raid in your local village"));
          }
 
-         return $$9;
+         return 1;
       }
    }
 
-   private static int a(dt $$0, aex $$1) throws CommandSyntaxException {
-      $$0.e().H().b($$1);
-      $$0.a(() -> tm.a("commands.random.reset.success", $$1), false);
-      return 1;
+   private static int c(dt $$0) throws CommandSyntaxException {
+      akt $$1 = $$0.h();
+      gw $$2 = $$1.dl();
+      cdd $$3 = $$1.x().c($$2);
+      if ($$3 != null) {
+         $$3.n();
+         $$0.a(() -> tn.b("Stopped raid"), false);
+         return 1;
+      } else {
+         $$0.b(tn.b("No raid here"));
+         return -1;
+      }
    }
 
-   private static int a(dt $$0, aex $$1, int $$2, boolean $$3, boolean $$4) throws CommandSyntaxException {
-      $$0.e().H().a($$1, $$2, $$3, $$4);
-      $$0.a(() -> tm.a("commands.random.reset.success", $$1), false);
-      return 1;
+   private static int d(dt $$0) throws CommandSyntaxException {
+      cdd $$1 = a($$0.h());
+      if ($$1 != null) {
+         StringBuilder $$2 = new StringBuilder();
+         $$2.append("Found a started raid! ");
+         $$0.a(() -> tn.b($$2.toString()), false);
+         StringBuilder $$3 = new StringBuilder();
+         $$3.append("Num groups spawned: ");
+         $$3.append($$1.k());
+         $$3.append(" Bad omen level: ");
+         $$3.append($$1.m());
+         $$3.append(" Num mobs: ");
+         $$3.append($$1.r());
+         $$3.append(" Raid health: ");
+         $$3.append($$1.q());
+         $$3.append(" / ");
+         $$3.append($$1.g());
+         $$0.a(() -> tn.b($$3.toString()), false);
+         return 1;
+      } else {
+         $$0.b(tn.b("Found no started raids"));
+         return 0;
+      }
    }
 
-   private static int a(dt $$0) {
-      int $$1 = $$0.e().H().a();
-      $$0.a(() -> tm.a("commands.random.reset.all.success", $$1), false);
-      return $$1;
-   }
-
-   private static int a(dt $$0, int $$1, boolean $$2, boolean $$3) {
-      bhe $$4 = $$0.e().H();
-      $$4.a($$1, $$2, $$3);
-      int $$5 = $$4.a();
-      $$0.a(() -> tm.a("commands.random.reset.all.success", $$5), false);
-      return $$5;
+   @Nullable
+   private static cdd a(akt $$0) {
+      return $$0.x().c($$0.dl());
    }
 }

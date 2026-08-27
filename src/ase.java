@@ -1,41 +1,65 @@
-public class ase {
-   public static final int a = 240;
-   private final long[] b = new long[240];
-   private int c;
-   private int d;
+import io.netty.util.internal.ThreadLocalRandom;
 
-   public void a(long $$0) {
-      int $$1 = this.b(this.c + this.d);
-      this.b[$$1] = $$0;
-      if (this.d < 240) {
-         this.d++;
-      } else {
-         this.c = this.b(this.c + 1);
+public interface ase {
+   @Deprecated
+   double a = 2.297;
+
+   static ase a() {
+      return a(dlj.a());
+   }
+
+   @Deprecated
+   static ase b() {
+      return new dln(dlj.a());
+   }
+
+   static ase a(long $$0) {
+      return new dkv($$0);
+   }
+
+   static ase c() {
+      return new dlk(ThreadLocalRandom.current().nextLong());
+   }
+
+   ase d();
+
+   dlh e();
+
+   void b(long var1);
+
+   int f();
+
+   int a(int var1);
+
+   default int a(int $$0, int $$1) {
+      return this.a($$1 - $$0 + 1) + $$0;
+   }
+
+   long g();
+
+   boolean h();
+
+   float i();
+
+   double j();
+
+   double k();
+
+   default double a(double $$0, double $$1) {
+      return $$0 + $$1 * (this.j() - this.j());
+   }
+
+   default void b(int $$0) {
+      for (int $$1 = 0; $$1 < $$0; $$1++) {
+         this.f();
       }
    }
 
-   public int a() {
-      return this.b.length;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public long a(int $$0) {
-      if ($$0 >= 0 && $$0 < this.d) {
-         return this.b[this.b(this.c + $$0)];
+   default int b(int $$0, int $$1) {
+      if ($$0 >= $$1) {
+         throw new IllegalArgumentException("bound - origin is non positive");
       } else {
-         throw new IndexOutOfBoundsException($$0 + " out of bounds for length " + this.d);
+         return $$0 + this.a($$1 - $$0);
       }
-   }
-
-   private int b(int $$0) {
-      return $$0 % 240;
-   }
-
-   public void c() {
-      this.c = 0;
-      this.d = 0;
    }
 }

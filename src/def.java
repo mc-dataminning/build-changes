@@ -1,105 +1,193 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
-import com.mojang.authlib.yggdrasil.ProfileResult;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.UUID;
+import java.util.function.UnaryOperator;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class def extends dcv {
-   public static final String a = "SkullOwner";
-   public static final String b = "note_block_sound";
+public class def extends dcx {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 90;
+   private static final int c = 10;
    @Nullable
-   private static aod c;
-   @Nullable
-   private static MinecraftSessionService d;
-   @Nullable
-   private static Executor e;
-   private static final Executor f = $$0 -> {
-      Executor $$1 = e;
-      if ($$1 != null) {
-         $$1.execute($$0);
+   private UUID d;
+   private deg e = this.f();
+   private deg f = this.f();
+   private boolean g;
+
+   public def(gw $$0, dfl $$1) {
+      this(dcz.h, $$0, $$1);
+   }
+
+   public def(dcz $$0, gw $$1, dfl $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   protected deg f() {
+      return new deg();
+   }
+
+   public boolean a(cbw $$0) {
+      if (this.q().b() instanceof czx $$1) {
+         ehp $$2 = $$1.h(this.q());
+         double $$3 = $$0.dq() - ((double)this.p().u() + $$2.c);
+         double $$4 = $$0.dw() - ((double)this.p().w() + $$2.e);
+         float $$5 = $$1.g(this.q());
+         float $$6 = (float)(ary.d($$4, $$3) * 180.0F / (float)Math.PI) - 90.0F;
+         return ary.d($$5, $$6) <= 90.0F;
+      } else {
+         return false;
       }
-   };
-   @Nullable
-   private GameProfile g;
-   @Nullable
-   private aex h;
-   private int i;
-   private boolean j;
-
-   public def(gw $$0, dfj $$1) {
-      super(dcx.p, $$0, $$1);
    }
 
-   public static void a(afp $$0, Executor $$1) {
-      c = $$0.e();
-      d = $$0.b();
-      e = $$1;
+   public deg b(cbw $$0) {
+      return this.a(this.a($$0));
    }
 
-   public static void c() {
-      c = null;
-      d = null;
-      e = null;
+   public deg a(boolean $$0) {
+      return $$0 ? this.e : this.f;
+   }
+
+   public deg g() {
+      return this.e;
+   }
+
+   public deg i() {
+      return this.f;
+   }
+
+   public int c() {
+      return 10;
+   }
+
+   public int d() {
+      return 90;
    }
 
    @Override
    protected void b(qy $$0) {
       super.b($$0);
-      if (this.g != null) {
-         qy $$1 = new qy();
-         rk.a($$1, this.g);
-         $$0.a("SkullOwner", $$1);
-      }
-
-      if (this.h != null) {
-         $$0.a("note_block_sound", this.h.toString());
-      }
+      deg.a.encodeStart(rk.a, this.e).resultOrPartial(a::error).ifPresent($$1 -> $$0.a("front_text", $$1));
+      deg.a.encodeStart(rk.a, this.f).resultOrPartial(a::error).ifPresent($$1 -> $$0.a("back_text", $$1));
+      $$0.a("is_waxed", this.g);
    }
 
    @Override
    public void a(qy $$0) {
       super.a($$0);
-      if ($$0.b("SkullOwner", 10)) {
-         this.a(rk.a($$0.p("SkullOwner")));
-      } else if ($$0.b("ExtraType", 8)) {
-         String $$1 = $$0.l("ExtraType");
-         if (!asq.b($$1)) {
-            this.a(new GameProfile(ac.d, $$1));
+      if ($$0.e("front_text")) {
+         deg.a.parse(rk.a, $$0.p("front_text")).resultOrPartial(a::error).ifPresent($$0x -> this.e = this.a($$0x));
+      }
+
+      if ($$0.e("back_text")) {
+         deg.a.parse(rk.a, $$0.p("back_text")).resultOrPartial(a::error).ifPresent($$0x -> this.f = this.a($$0x));
+      }
+
+      this.g = $$0.q("is_waxed");
+   }
+
+   private deg a(deg $$0) {
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         tn $$2 = this.a($$0.a($$1, false));
+         tn $$3 = this.a($$0.a($$1, true));
+         $$0 = $$0.a($$1, $$2, $$3);
+      }
+
+      return $$0;
+   }
+
+   private tn a(tn $$0) {
+      if (this.o instanceof aks $$1) {
+         try {
+            return tp.a(a(null, $$1, this.p), $$0, null, 0);
+         } catch (CommandSyntaxException var4) {
          }
       }
 
-      if ($$0.b("note_block_sound", 8)) {
-         this.h = aex.a($$0.l("note_block_sound"));
-      }
+      return $$0;
    }
 
-   public static void a(cpv $$0, gw $$1, dfj $$2, def $$3) {
-      if ($$2.b(czx.a) && $$2.c(czx.a)) {
-         $$3.j = true;
-         $$3.i++;
+   public void a(cbw $$0, boolean $$1, List<alj> $$2) {
+      if (!this.w() && $$0.cv().equals(this.v()) && this.o != null) {
+         this.a($$2x -> this.a($$0, $$2, $$2x), $$1);
+         this.a(null);
+         this.o.a(this.p(), this.q(), this.q(), 3);
       } else {
-         $$3.j = false;
+         a.warn("Player {} just tried to change non-editable sign", $$0.ab().getString());
       }
    }
 
-   public float a(float $$0) {
-      return this.j ? (float)this.i + $$0 : (float)this.i;
+   public boolean a(UnaryOperator<deg> $$0, boolean $$1) {
+      deg $$2 = this.a($$1);
+      return this.a($$0.apply($$2), $$1);
    }
 
-   @Nullable
-   public GameProfile d() {
-      return this.g;
+   private deg a(cbw $$0, List<alj> $$1, deg $$2) {
+      for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
+         alj $$4 = $$1.get($$3);
+         uj $$5 = $$2.a($$3, $$0.W()).a();
+         if ($$0.W()) {
+            $$2 = $$2.a($$3, tn.b($$4.b()).b($$5));
+         } else {
+            $$2 = $$2.a($$3, tn.b($$4.d()).b($$5), tn.b($$4.b()).b($$5));
+         }
+      }
+
+      return $$2;
    }
 
-   @Nullable
-   public aex f() {
-      return this.h;
+   public boolean a(deg $$0, boolean $$1) {
+      return $$1 ? this.c($$0) : this.b($$0);
    }
 
-   public xe g() {
-      return xe.a(this);
+   private boolean b(deg $$0) {
+      if ($$0 != this.f) {
+         this.f = $$0;
+         this.x();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private boolean c(deg $$0) {
+      if ($$0 != this.e) {
+         this.e = $$0;
+         this.x();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public boolean a(boolean $$0, cbw $$1) {
+      return this.w() && this.a($$0).b($$1);
+   }
+
+   public boolean a(cbw $$0, cpx $$1, gw $$2, boolean $$3) {
+      boolean $$4 = false;
+
+      for (tn $$5 : this.a($$3).b($$0.W())) {
+         uj $$6 = $$5.a();
+         tl $$7 = $$6.h();
+         if ($$7 != null && $$7.a() == tl.a.c) {
+            $$0.cK().aC().a(a($$0, $$1, $$2), $$7.b());
+            $$4 = true;
+         }
+      }
+
+      return $$4;
+   }
+
+   private static dt a(@Nullable cbw $$0, cpx $$1, gw $$2) {
+      String $$3 = $$0 == null ? "Sign" : $$0.ab().getString();
+      tn $$4 = (tn)($$0 == null ? tn.b("Sign") : $$0.N_());
+      return new dt(ds.a, ehp.b($$2), eho.a, (aks)$$1, 2, $$3, $$4, $$1.n(), $$0);
+   }
+
+   public xf j() {
+      return xf.a(this);
    }
 
    @Override
@@ -107,83 +195,54 @@ public class def extends dcv {
       return this.o();
    }
 
-   public void a(@Nullable GameProfile $$0) {
-      synchronized (this) {
-         this.g = $$0;
-      }
-
-      this.i();
+   @Override
+   public boolean t() {
+      return true;
    }
 
-   private void i() {
-      if (this.g != null && !ac.b(this.g.getName()) && !c(this.g)) {
-         a(this.g.getName()).thenAcceptAsync($$0 -> {
-            this.g = $$0.orElse(this.g);
-            this.e();
-         }, f);
-      } else {
-         this.e();
-      }
+   public void a(@Nullable UUID $$0) {
+      this.d = $$0;
    }
 
    @Nullable
-   public static GameProfile d(qy $$0) {
-      if ($$0.b("SkullOwner", 10)) {
-         return rk.a($$0.p("SkullOwner"));
+   public UUID v() {
+      return this.d;
+   }
+
+   private void x() {
+      this.e();
+      this.o.a(this.p(), this.q(), this.q(), 3);
+   }
+
+   public boolean w() {
+      return this.g;
+   }
+
+   public boolean b(boolean $$0) {
+      if (this.g != $$0) {
+         this.g = $$0;
+         this.x();
+         return true;
       } else {
-         if ($$0.b("SkullOwner", 8)) {
-            String $$1 = $$0.l("SkullOwner");
-            if (!ac.b($$1)) {
-               $$0.r("SkullOwner");
-               a($$0, $$1);
-            }
-         }
-
-         return null;
+         return false;
       }
    }
 
-   public static void e(qy $$0) {
-      String $$1 = $$0.l("SkullOwner");
-      if (!ac.b($$1)) {
-         a($$0, $$1);
+   public boolean b(UUID $$0) {
+      cbw $$1 = this.o.b($$0);
+      return $$1 == null || $$1.i((double)this.p().u(), (double)this.p().v(), (double)this.p().w()) > 64.0;
+   }
+
+   public static void a(cpx $$0, gw $$1, dfl $$2, def $$3) {
+      UUID $$4 = $$3.v();
+      if ($$4 != null) {
+         $$3.a($$3, $$0, $$4);
       }
    }
 
-   private static void a(qy $$0, String $$1) {
-      a($$1).thenAccept($$2 -> $$0.a("SkullOwner", rk.a(new qy(), $$2.orElse(new GameProfile(ac.d, $$1)))));
-   }
-
-   private static CompletableFuture<Optional<GameProfile>> a(String $$0) {
-      aod $$1 = c;
-      return $$1 == null
-         ? CompletableFuture.completedFuture(Optional.empty())
-         : $$1.b($$0)
-            .thenCompose($$0x -> $$0x.isPresent() ? b((GameProfile)$$0x.get()) : CompletableFuture.completedFuture(Optional.empty()))
-            .thenApplyAsync($$0x -> {
-               aod $$1x = c;
-               if ($$1x != null) {
-                  $$0x.ifPresent($$1x::a);
-                  return $$0x;
-               } else {
-                  return Optional.empty();
-               }
-            }, f);
-   }
-
-   private static CompletableFuture<Optional<GameProfile>> b(GameProfile $$0) {
-      return c($$0) ? CompletableFuture.completedFuture(Optional.of($$0)) : CompletableFuture.supplyAsync(() -> {
-         MinecraftSessionService $$1 = d;
-         if ($$1 != null) {
-            ProfileResult $$2 = $$1.fetchProfile($$0.getId(), true);
-            return $$2 == null ? Optional.of($$0) : Optional.of($$2.profile());
-         } else {
-            return Optional.empty();
-         }
-      }, ac.f());
-   }
-
-   private static boolean c(GameProfile $$0) {
-      return $$0.getProperties().containsKey("textures");
+   private void a(def $$0, cpx $$1, UUID $$2) {
+      if ($$0.b($$2)) {
+         $$0.a(null);
+      }
    }
 }

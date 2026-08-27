@@ -1,16 +1,41 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
-import java.util.function.Predicate;
+public class blj implements bla<bji> {
+   private final int a;
+   private final int b;
+   private bkz.a c = bkz.a.a;
+   private long d;
 
-public class blj {
-   public static <E extends bjg> bky<E> a(Predicate<E> $$0, bsh<?> $$1) {
-      return boj.a((Function<boj.b<E>, ? extends App<boj.c<E>, bom<E>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$1xx -> ($$2x, $$3, $$4) -> {
-               if ($$0.test((E)$$3)) {
-                  $$1xx.b();
-                  return true;
-               } else {
-                  return false;
-               }
-            })));
+   public blj(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   @Override
+   public bkz.a a() {
+      return this.c;
+   }
+
+   @Override
+   public final boolean e(aks $$0, bji $$1, long $$2) {
+      this.c = bkz.a.b;
+      int $$3 = this.a + $$0.D_().a(this.b + 1 - this.a);
+      this.d = $$2 + (long)$$3;
+      return true;
+   }
+
+   @Override
+   public final void f(aks $$0, bji $$1, long $$2) {
+      if ($$2 > this.d) {
+         this.g($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public final void g(aks $$0, bji $$1, long $$2) {
+      this.c = bkz.a.a;
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
    }
 }

@@ -1,78 +1,55 @@
-import com.mojang.serialization.Dynamic;
+public interface cpz {
+   int I_();
 
-public final class cpz {
-   private final String a;
-   private final cps b;
-   private final boolean c;
-   private final bgv d;
-   private final boolean e;
-   private final cpr f;
-   private final cqo g;
+   int H_();
 
-   public cpz(String $$0, cps $$1, boolean $$2, bgv $$3, boolean $$4, cpr $$5, cqo $$6) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
+   default int aj() {
+      return this.H_() + this.I_();
    }
 
-   public static cpz a(Dynamic<?> $$0, cqo $$1) {
-      cps $$2 = cps.a($$0.get("GameType").asInt(0));
-      return new cpz(
-         $$0.get("LevelName").asString(""),
-         $$2,
-         $$0.get("hardcore").asBoolean(false),
-         $$0.get("Difficulty").asNumber().map($$0x -> bgv.a($$0x.byteValue())).result().orElse(bgv.c),
-         $$0.get("allowCommands").asBoolean($$2 == cps.b),
-         new cpr($$0.get("GameRules")),
-         $$1
-      );
+   default int ak() {
+      return this.am() - this.al();
    }
 
-   public String a() {
-      return this.a;
+   default int al() {
+      return hz.a(this.H_());
    }
 
-   public cps b() {
-      return this.b;
+   default int am() {
+      return hz.a(this.aj() - 1) + 1;
    }
 
-   public boolean c() {
-      return this.c;
+   default boolean r(gw $$0) {
+      return this.d($$0.v());
    }
 
-   public bgv d() {
-      return this.d;
+   default boolean d(int $$0) {
+      return $$0 < this.H_() || $$0 >= this.aj();
    }
 
-   public boolean e() {
-      return this.e;
+   default int e(int $$0) {
+      return this.f(hz.a($$0));
    }
 
-   public cpr f() {
-      return this.f;
+   default int f(int $$0) {
+      return $$0 - this.al();
    }
 
-   public cqo g() {
-      return this.g;
+   default int g(int $$0) {
+      return $$0 + this.al();
    }
 
-   public cpz a(cps $$0) {
-      return new cpz(this.a, $$0, this.c, this.d, this.e, this.f, this.g);
-   }
+   static cpz e(final int $$0, final int $$1) {
+      return new cpz() {
+         @Override
+         public int I_() {
+            return $$1;
+         }
 
-   public cpz a(bgv $$0) {
-      return new cpz(this.a, this.b, this.c, $$0, this.e, this.f, this.g);
-   }
-
-   public cpz a(cqo $$0) {
-      return new cpz(this.a, this.b, this.c, this.d, this.e, this.f, $$0);
-   }
-
-   public cpz h() {
-      return new cpz(this.a, this.b, this.c, this.d, this.e, this.f.b(), this.g);
+         @Override
+         public int H_() {
+            return $$0;
+         }
+      };
    }
 }

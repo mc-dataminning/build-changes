@@ -1,80 +1,56 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.concurrent.TimeUnit;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.slf4j.Logger;
+public class dnx extends dny<dqj> {
+   public static final int a = 4;
+   public static final int b = 4;
+   public static final int c = 1;
+   public static final float d = 0.5F;
+   private static final gw an = gw.b;
+   private final boolean ao;
 
-public class dnx {
-   private static final Logger a = LogUtils.getLogger();
-   private static final LoadingCache<akr, dnx.b> b = CacheBuilder.newBuilder()
-      .weakKeys()
-      .expireAfterAccess(5L, TimeUnit.MINUTES)
-      .build(new CacheLoader<akr, dnx.b>() {
-         public dnx.b a(akr $$0) {
-            return new dnx.b(Object2IntMaps.synchronize(new Object2IntOpenHashMap()), new MutableInt(0));
-         }
-      });
-
-   public static void a(akr $$0) {
-      try {
-         ((dnx.b)b.get($$0)).b().increment();
-      } catch (Exception var2) {
-         a.error("Failed to increment chunk count", var2);
-      }
+   public static gw a(gw $$0) {
+      return an.a((ib)$$0);
    }
 
-   public static void a(akr $$0, dnj<?, ?> $$1, Optional<dum> $$2) {
-      try {
-         ((dnx.b)b.get($$0)).a().computeInt(new dnx.a($$1, $$2), ($$0x, $$1x) -> $$1x == null ? 1 : $$1x + 1);
-      } catch (Exception var4) {
-         a.error("Failed to increment feature count", var4);
-      }
+   public dnx(boolean $$0) {
+      super(dqj.a);
+      this.ao = $$0;
    }
 
-   public static void a() {
-      b.invalidateAll();
-      a.debug("Cleared feature counts");
-   }
+   @Override
+   public boolean a(doa<dqj> $$0) {
+      gw $$1 = $$0.e();
+      cqr $$2 = $$0.b();
 
-   public static void b() {
-      a.debug("Logging feature counts:");
-      b.asMap()
-         .forEach(
-            ($$0, $$1) -> {
-               String $$2 = $$0.ac().a().toString();
-               boolean $$3 = $$0.n().v();
-               ht<dum> $$4 = $$0.G_().d(je.ay);
-               String $$5 = ($$3 ? "running" : "dead") + " " + $$2;
-               Integer $$6 = $$1.b().getValue();
-               a.debug($$5 + " total_chunks: " + $$6);
-               $$1.a()
-                  .forEach(
-                     ($$3x, $$4x) -> a.debug(
-                           $$5
-                              + " "
-                              + String.format(Locale.ROOT, "%10d ", $$4x)
-                              + String.format(Locale.ROOT, "%10f ", (double)$$4x.intValue() / (double)$$6.intValue())
-                              + $$3x.b().flatMap($$4::c).<aex>map(aew::a)
-                              + " "
-                              + $$3x.a().b()
-                              + " "
-                              + $$3x.a()
-                        )
-                  );
+      for (gw $$3 : gw.a(new gw($$1.u() - 4, $$1.v() - 1, $$1.w() - 4), new gw($$1.u() + 4, $$1.v() + 32, $$1.w() + 4))) {
+         boolean $$4 = $$3.a($$1, 2.5);
+         if ($$4 || $$3.a($$1, 3.5)) {
+            if ($$3.v() < $$1.v()) {
+               if ($$4) {
+                  this.a($$2, $$3, csy.F.n());
+               } else if ($$3.v() < $$1.v()) {
+                  this.a($$2, $$3, csy.fz.n());
+               }
+            } else if ($$3.v() > $$1.v()) {
+               this.a($$2, $$3, csy.a.n());
+            } else if (!$$4) {
+               this.a($$2, $$3, csy.F.n());
+            } else if (this.ao) {
+               this.a($$2, new gw($$3), csy.fx.n());
+            } else {
+               this.a($$2, new gw($$3), csy.a.n());
             }
-         );
-   }
+         }
+      }
 
-   static record a(dnj<?, ?> a, Optional<dum> b) {
-   }
+      for (int $$5 = 0; $$5 < 4; $$5++) {
+         this.a($$2, $$1.b($$5), csy.F.n());
+      }
 
-   static record b(Object2IntMap<dnx.a> a, MutableInt b) {
+      gw $$6 = $$1.b(2);
+
+      for (hc $$7 : hc.c.a) {
+         this.a($$2, $$6.a($$7), csy.cq.n().a(dbx.a, $$7));
+      }
+
+      return true;
    }
 }

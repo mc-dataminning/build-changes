@@ -1,22 +1,21 @@
-public record wn(gw b, float c, float d, float e, float f, float g) implements vx {
-   public static final aex a = new aex("debug/worldgen_attempt");
+import java.util.HashSet;
+import java.util.Set;
 
-   public wn(sp $$0) {
-      this($$0.e(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat());
+public record wn(Set<hz> b, Set<hz> c) implements vy {
+   public static final aey a = new aey("debug/village_sections");
+
+   public wn(sq $$0) {
+      this($$0.a(HashSet::new, sq::g), $$0.a(HashSet::new, sq::g));
    }
 
    @Override
-   public void a(sp $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
+   public void a(sq $$0) {
+      $$0.a(this.b, sq::a);
+      $$0.a(this.c, sq::a);
    }
 
    @Override
-   public aex a() {
+   public aey a() {
       return a;
    }
 }

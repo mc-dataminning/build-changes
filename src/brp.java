@@ -1,99 +1,16 @@
-import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class brp extends bqb {
-   private final bqb a;
-   private final int b;
-   private boolean c;
-
-   public brp(int $$0, bqb $$1) {
-      this.b = $$0;
-      this.a = $$1;
+public class brp extends brq {
+   public brp(bjr $$0, double $$1) {
+      super($$0, $$1);
    }
 
-   public boolean a(brp $$0) {
-      return this.P_() && $$0.i() < this.i();
-   }
-
+   @Nullable
    @Override
-   public boolean a() {
-      return this.a.a();
-   }
-
-   @Override
-   public boolean b() {
-      return this.a.b();
-   }
-
-   @Override
-   public boolean P_() {
-      return this.a.P_();
-   }
-
-   @Override
-   public void c() {
-      if (!this.c) {
-         this.c = true;
-         this.a.c();
-      }
-   }
-
-   @Override
-   public void d() {
-      if (this.c) {
-         this.c = false;
-         this.a.d();
-      }
-   }
-
-   @Override
-   public boolean Q_() {
-      return this.a.Q_();
-   }
-
-   @Override
-   protected int a(int $$0) {
-      return this.a.a($$0);
-   }
-
-   @Override
-   public void e() {
-      this.a.e();
-   }
-
-   @Override
-   public void a(EnumSet<bqb.a> $$0) {
-      this.a.a($$0);
-   }
-
-   @Override
-   public EnumSet<bqb.a> j() {
-      return this.a.j();
-   }
-
-   public boolean h() {
-      return this.c;
-   }
-
-   public int i() {
-      return this.b;
-   }
-
-   public bqb k() {
-      return this.a;
-   }
-
-   @Override
-   public boolean equals(@Nullable Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? this.a.equals(((brp)$$0).a) : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
+   protected ehp h() {
+      ehp $$0 = this.b.f(0.0F);
+      int $$1 = 8;
+      ehp $$2 = bua.a(this.b, 8, 7, $$0.c, $$0.e, (float) (Math.PI / 2), 3, 1);
+      return $$2 != null ? $$2 : btw.a(this.b, 8, 4, -2, $$0.c, $$0.e, (float) (Math.PI / 2));
    }
 }

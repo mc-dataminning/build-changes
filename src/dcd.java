@@ -1,12 +1,10 @@
-public class dcd extends cwh {
-   public static final eig d = csv.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
-
-   public dcd(dfi.d $$0) {
-      super($$0, hc.a, d, false);
+public class dcd extends csx {
+   public dcd(dfk.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected cwi b() {
-      return (cwi)csw.oz;
+   public void a(dfl $$0, cpx $$1, gw $$2, bis $$3) {
+      $$3.a($$0, new ehp(0.25, 0.05F, 0.25));
    }
 }

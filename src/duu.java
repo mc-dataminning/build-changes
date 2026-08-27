@@ -1,39 +1,24 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class duu extends duo {
-   public static final Codec<duu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dks.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c),
-               Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter($$0x -> $$0x.d),
-               Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, duu::new)
-   );
-   private final dks.a c;
-   private final int d;
-   private final int e;
+public class duu extends duq {
+   public static final Codec<duu> a = arh.j.fieldOf("chance").xmap(duu::new, $$0 -> $$0.c).codec();
+   private final int c;
 
-   private duu(dks.a $$0, int $$1, int $$2) {
+   private duu(int $$0) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
    }
 
-   public static duu a(dks.a $$0, int $$1, int $$2) {
-      return new duu($$0, $$1, $$2);
-   }
-
-   @Override
-   protected boolean a(dun $$0, asc $$1, gw $$2) {
-      long $$3 = (long)$$0.a(this.c, $$2.u(), $$2.w());
-      long $$4 = $$3 + (long)this.d;
-      long $$5 = $$3 + (long)this.e;
-      return $$4 <= (long)$$2.v() && (long)$$2.v() <= $$5;
+   public static duu a(int $$0) {
+      return new duu($$0);
    }
 
    @Override
-   public duq<?> b() {
-      return duq.c;
+   protected boolean a(dup $$0, ase $$1, gw $$2) {
+      return $$1.i() < 1.0F / (float)this.c;
+   }
+
+   @Override
+   public dus<?> b() {
+      return dus.b;
    }
 }

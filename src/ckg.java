@@ -1,10 +1,7 @@
-public class ckg extends cja {
-   public ckg(cja.a $$0) {
-      super($$0);
-   }
+public interface ckg {
+   boolean a(cpx var1, def var2, boolean var3, cbw var4);
 
-   @Override
-   public boolean i(cjf $$0) {
-      return true;
+   default boolean a(deg $$0, cbw $$1) {
+      return $$0.a($$1);
    }
 }

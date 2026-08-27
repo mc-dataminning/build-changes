@@ -1,46 +1,24 @@
-public class fwp extends fxp<fnd, fgi<fnd>> {
-   public fwp(fvc<fnd, fgi<fnd>> $$0) {
-      super($$0);
+public class fwp<T extends bji, M extends fgk<T>> extends fya<T, M> {
+   private final fth a;
+
+   public fwp(ftj.a $$0, fuk<T, M> $$1) {
+      super($$1);
+      this.a = $$0.a();
    }
 
-   public void a(elp $$0, foe $$1, int $$2, fnd $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.cd() && $$3.a(cbv.a)) {
-         gae $$10 = $$3.b();
-         if ($$10.c() != null) {
-            cjf $$11 = $$3.c(biv.e);
-            if (!$$11.a(cji.nh)) {
-               $$0.a();
-               $$0.a(0.0F, 0.0F, 0.125F);
-               double $$12 = arx.d((double)$$6, $$3.bY, $$3.cb) - arx.d((double)$$6, $$3.K, $$3.dq());
-               double $$13 = arx.d((double)$$6, $$3.bZ, $$3.cc) - arx.d((double)$$6, $$3.L, $$3.ds());
-               double $$14 = arx.d((double)$$6, $$3.ca, $$3.cd) - arx.d((double)$$6, $$3.M, $$3.dw());
-               float $$15 = arx.j($$6, $$3.aV, $$3.aU);
-               double $$16 = (double)arx.a($$15 * (float) (Math.PI / 180.0));
-               double $$17 = (double)(-arx.b($$15 * (float) (Math.PI / 180.0)));
-               float $$18 = (float)$$13 * 10.0F;
-               $$18 = arx.a($$18, -6.0F, 32.0F);
-               float $$19 = (float)($$12 * $$16 + $$14 * $$17) * 100.0F;
-               $$19 = arx.a($$19, 0.0F, 150.0F);
-               float $$20 = (float)($$12 * $$17 - $$14 * $$16) * 100.0F;
-               $$20 = arx.a($$20, -20.0F, 20.0F);
-               if ($$19 < 0.0F) {
-                  $$19 = 0.0F;
-               }
+   @Override
+   protected int a(T $$0) {
+      return $$0.eN();
+   }
 
-               float $$21 = arx.i($$6, $$3.bV, $$3.bW);
-               $$18 += arx.a(arx.i($$6, $$3.X, $$3.Y) * 6.0F) * 32.0F * $$21;
-               if ($$3.bW()) {
-                  $$18 += 25.0F;
-               }
-
-               $$0.a(a.b.rotationDegrees(6.0F + $$19 / 2.0F + $$18));
-               $$0.a(a.f.rotationDegrees($$20 / 2.0F));
-               $$0.a(a.d.rotationDegrees(180.0F - $$20 / 2.0F));
-               elt $$22 = $$1.getBuffer(fom.c($$10.c()));
-               this.c().b($$0, $$22, $$2, fyv.d);
-               $$0.b();
-            }
-         }
-      }
+   @Override
+   protected void a(elr $$0, fog $$1, int $$2, bis $$3, float $$4, float $$5, float $$6, float $$7) {
+      float $$8 = ary.c($$4 * $$4 + $$6 * $$6);
+      cce $$9 = new cce($$3.dL(), $$3.dq(), $$3.ds(), $$3.dw());
+      $$9.r((float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI));
+      $$9.s((float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI));
+      $$9.N = $$9.dB();
+      $$9.O = $$9.dD();
+      this.a.a($$9, 0.0, 0.0, 0.0, 0.0F, $$7, $$0, $$1, $$2);
    }
 }

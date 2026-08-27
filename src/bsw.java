@@ -1,13 +1,19 @@
 import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
 import java.util.Set;
 
-public class bsw extends btl<bjg> {
+public class bsw extends btn<bin> {
    @Override
-   protected void a(akr $$0, bjg $$1) {
+   public Set<bsj<?>> a() {
+      return ImmutableSet.of(bsj.J, bsj.h);
    }
 
-   @Override
-   public Set<bsh<?>> a() {
-      return ImmutableSet.of();
+   protected void a(aks $$0, bin $$1) {
+      $$1.dN().c(bsj.h).ifPresent($$1x -> this.a($$1, $$1x));
+   }
+
+   private void a(bin $$0, bsl $$1) {
+      Optional<bin> $$2 = $$1.a($$1x -> $$1x.ag() == $$0.ag() && !$$1x.m_()).map(bin.class::cast);
+      $$0.dN().a(bsj.J, $$2);
    }
 }

@@ -1,10 +1,20 @@
-import com.mojang.serialization.Codec;
-import java.util.Optional;
-
 public interface djx {
-   Codec<djx> b = jd.w.q().dispatch(djx::a, djy::a);
+   djz a();
 
-   Optional<ehn> a(cpv var1);
+   int b();
 
-   djy<?> a();
+   boolean a(aks var1, djv var2, djv.a var3, ehp var4);
+
+   default djx.a c() {
+      return djx.a.a;
+   }
+
+   public static enum a {
+      a,
+      b;
+   }
+
+   public interface b<T extends djx> {
+      T d();
+   }
 }

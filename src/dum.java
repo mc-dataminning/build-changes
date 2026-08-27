@@ -1,57 +1,37 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
-import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public record dum(hg<dnj<?, ?>> e, List<dup> f) {
+public class dum extends duv {
    public static final Codec<dum> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dnj.b.fieldOf("feature").forGetter($$0x -> $$0x.e), dup.b.listOf().fieldOf("placement").forGetter($$0x -> $$0x.f)).apply($$0, dum::new)
+      $$0 -> $$0.group(
+               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
+               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
+               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, dum::new)
    );
-   public static final Codec<hg<dum>> b = aet.a(je.ay, a);
-   public static final Codec<hk<dum>> c = hv.a(je.ay, a);
-   public static final Codec<List<hk<dum>>> d = hv.a(je.ay, a, true).listOf();
+   private final int c;
+   private final double d;
+   private final double e;
 
-   public boolean a(cqp $$0, dhg $$1, asc $$2, gw $$3) {
-      return this.a(new dun($$0, $$1, Optional.empty()), $$2, $$3);
+   private dum(int $$0, double $$1, double $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public boolean b(cqp $$0, dhg $$1, asc $$2, gw $$3) {
-      return this.a(new dun($$0, $$1, Optional.of(this)), $$2, $$3);
-   }
-
-   private boolean a(dun $$0, asc $$1, gw $$2) {
-      Stream<gw> $$3 = Stream.of($$2);
-
-      for (dup $$4 : this.f) {
-         $$3 = $$3.flatMap($$3x -> $$4.a_($$0, $$1, $$3x));
-      }
-
-      dnj<?, ?> $$5 = this.e.a();
-      MutableBoolean $$6 = new MutableBoolean();
-      $$3.forEach($$4 -> {
-         if ($$5.a($$0.d(), $$0.f(), $$1, $$4)) {
-            $$6.setTrue();
-         }
-      });
-      return $$6.isTrue();
-   }
-
-   public Stream<dnj<?, ?>> a() {
-      return this.e.a().a();
+   public static dum a(int $$0, double $$1, double $$2) {
+      return new dum($$0, $$1, $$2);
    }
 
    @Override
-   public String toString() {
-      return "Placed " + this.e;
+   protected int a(ase $$0, gw $$1) {
+      double $$2 = cqv.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
+      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
    }
 
-   public hg<dnj<?, ?>> b() {
-      return this.e;
-   }
-
-   public List<dup> c() {
-      return this.f;
+   @Override
+   public dus<?> b() {
+      return dus.g;
    }
 }

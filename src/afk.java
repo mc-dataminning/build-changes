@@ -1,97 +1,61 @@
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.datafixers.util.Pair;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.IOException;
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import java.util.concurrent.Executor;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class afk implements ano {
+public class afk extends anz {
    private static final Logger a = LogUtils.getLogger();
-   private static final aeq b = new aeq("functions", ".mcfunction");
-   private volatile Map<aex, dp> c = ImmutableMap.of();
-   private final aqj<dp> d = new aqj<>(this::a, "tags/functions");
-   private volatile Map<aex, Collection<dp>> e = Map.of();
-   private final int f;
-   private final CommandDispatcher<dt> g;
+   private static final Gson b = new GsonBuilder().create();
+   private Map<aey, af> c = Map.of();
+   private ak d = new ak();
+   private final ecv e;
 
-   public Optional<dp> a(aex $$0) {
-      return Optional.ofNullable(this.c.get($$0));
+   public afk(ecv $$0) {
+      super(b, "advancements");
+      this.e = $$0;
    }
 
-   public Map<aex, dp> a() {
-      return this.c;
-   }
-
-   public Collection<dp> b(aex $$0) {
-      return this.e.getOrDefault($$0, List.of());
-   }
-
-   public Iterable<aex> b() {
-      return this.e.keySet();
-   }
-
-   public afk(int $$0, CommandDispatcher<dt> $$1) {
-      this.f = $$0;
-      this.g = $$1;
-   }
-
-   @Override
-   public CompletableFuture<Void> a(ano.a $$0, anu $$1, bdp $$2, bdp $$3, Executor $$4, Executor $$5) {
-      CompletableFuture<Map<aex, List<aqj.a>>> $$6 = CompletableFuture.supplyAsync(() -> this.d.a($$1), $$4);
-      CompletableFuture<Map<aex, CompletableFuture<dp>>> $$7 = CompletableFuture.<Map<aex, ans>>supplyAsync(() -> b.a($$1), $$4).thenCompose($$1x -> {
-         Map<aex, CompletableFuture<dp>> $$2x = Maps.newHashMap();
-         dt $$3x = new dt(ds.a, ehn.b, ehm.a, null, this.f, "", tl.a, null, null);
-
-         for (Entry<aex, ans> $$4x : $$1x.entrySet()) {
-            aex $$5x = $$4x.getKey();
-            aex $$6x = b.b($$5x);
-            $$2x.put($$6x, CompletableFuture.supplyAsync(() -> {
-               List<String> $$3xx = a($$4x.getValue());
-               return dp.a($$6x, this.g, $$3x, $$3xx);
-            }, $$4));
+   protected void a(Map<aey, JsonElement> $$0, anv $$1, bdr $$2) {
+      Builder<aey, af> $$3 = ImmutableMap.builder();
+      $$0.forEach(($$1x, $$2x) -> {
+         try {
+            JsonObject $$3x = arp.m($$2x, "advancement");
+            ae $$4x = ae.a($$3x, new bg($$1x, this.e));
+            $$3.put($$1x, new af($$1x, $$4x));
+         } catch (Exception var6) {
+            a.error("Parsing error loading custom advancement {}: {}", $$1x, var6.getMessage());
          }
-
-         CompletableFuture<?>[] $$7x = $$2x.values().toArray(new CompletableFuture[0]);
-         return CompletableFuture.allOf($$7x).handle(($$1xx, $$2xx) -> $$2x);
       });
-      return $$6.thenCombine($$7, Pair::of).thenCompose($$0::a).thenAcceptAsync($$0x -> {
-         Map<aex, CompletableFuture<dp>> $$1x = (Map<aex, CompletableFuture<dp>>)$$0x.getSecond();
-         Builder<aex, dp> $$2x = ImmutableMap.builder();
-         $$1x.forEach(($$1xx, $$2xx) -> $$2xx.handle(($$2xxx, $$3x) -> {
-               if ($$3x != null) {
-                  a.error("Failed to load function {}", $$1xx, $$3x);
-               } else {
-                  $$2x.put($$1xx, $$2xxx);
-               }
+      this.c = $$3.buildOrThrow();
+      ak $$4 = new ak();
+      $$4.a(this.c.values());
 
-               return null;
-            }).join());
-         this.c = $$2x.build();
-         this.e = this.d.a((Map<aex, List<aqj.a>>)$$0x.getFirst());
-      }, $$5);
+      for (ag $$5 : $$4.b()) {
+         if ($$5.b().b().d().isPresent()) {
+            as.a($$5);
+         }
+      }
+
+      this.d = $$4;
    }
 
-   private static List<String> a(ans $$0) {
-      try {
-         List var2;
-         try (BufferedReader $$1 = $$0.e()) {
-            var2 = $$1.lines().toList();
-         }
+   @Nullable
+   public af a(aey $$0) {
+      return this.c.get($$0);
+   }
 
-         return var2;
-      } catch (IOException var6) {
-         throw new CompletionException(var6);
-      }
+   public ak a() {
+      return this.d;
+   }
+
+   public Collection<af> b() {
+      return this.c.values();
    }
 }

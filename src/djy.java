@@ -1,26 +1,34 @@
-import com.mojang.serialization.Codec;
+public interface djy {
+   djy a = new djy() {
+      @Override
+      public boolean a() {
+         return true;
+      }
 
-public interface djy<T extends djx> {
-   djy<djp> a = a("block", new djp.a());
-   djy<djr> b = a("entity", new djr.a());
+      @Override
+      public void a(djx $$0) {
+      }
 
-   T b(sp var1);
+      @Override
+      public void b(djx $$0) {
+      }
 
-   void a(sp var1, T var2);
+      @Override
+      public boolean a(djv $$0, ehp $$1, djv.a $$2, djy.a $$3) {
+         return false;
+      }
+   };
 
-   Codec<T> a();
+   boolean a();
 
-   static <S extends djy<T>, T extends djx> S a(String $$0, S $$1) {
-      return ht.a(jd.w, $$0, $$1);
-   }
+   void a(djx var1);
 
-   static djx c(sp $$0) {
-      aex $$1 = $$0.s();
-      return jd.w.b($$1).orElseThrow(() -> new IllegalArgumentException("Unknown position source type " + $$1)).b($$0);
-   }
+   void b(djx var1);
 
-   static <T extends djx> void a(T $$0, sp $$1) {
-      $$1.a(jd.w.b($$0.a()));
-      ((djy<T>)$$0.a()).a($$1, $$0);
+   boolean a(djv var1, ehp var2, djv.a var3, djy.a var4);
+
+   @FunctionalInterface
+   public interface a {
+      void visit(djx var1, ehp var2);
    }
 }

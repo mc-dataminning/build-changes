@@ -10,14 +10,14 @@ public class mo implements mn.a {
    }
 
    public static qy a(String $$0, qy $$1) {
-      dzb $$2 = new dzb();
-      int $$3 = rk.b($$1, 500);
+      dzd $$2 = new dzd();
+      int $$3 = rl.b($$1, 500);
       int $$4 = 3563;
       if ($$3 < 3563) {
          a.warn("SNBT Too old, do not forget to update: {} < {}: {}", new Object[]{$$3, 3563, $$0});
       }
 
-      qy $$5 = ata.f.a(atb.a(), $$1, $$3);
+      qy $$5 = atc.f.a(atd.a(), $$1, $$3);
       $$2.a(jd.f.p(), $$5);
       return $$2.a(new qy());
    }

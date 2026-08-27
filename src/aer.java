@@ -1,81 +1,33 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 
-public class aer<E> implements Codec<hk<E>> {
-   private final aew<? extends ht<E>> a;
-   private final Codec<hg<E>> b;
-   private final Codec<List<hg<E>>> c;
-   private final Codec<Either<aqi<E>, List<hg<E>>>> d;
+public class aer {
+   private final String a;
+   private final String b;
 
-   private static <E> Codec<List<hg<E>>> a(Codec<hg<E>> $$0, boolean $$1) {
-      Codec<List<hg<E>>> $$2 = arg.a($$0.listOf(), arg.c(hg::f));
-      return $$1
-         ? $$2
-         : Codec.either($$2, $$0)
-            .xmap($$0x -> (List)$$0x.map($$0xx -> $$0xx, List::of), $$0x -> $$0x.size() == 1 ? Either.right((hg)$$0x.get(0)) : Either.left($$0x));
-   }
-
-   public static <E> Codec<hk<E>> a(aew<? extends ht<E>> $$0, Codec<hg<E>> $$1, boolean $$2) {
-      return new aer<>($$0, $$1, $$2);
-   }
-
-   private aer(aew<? extends ht<E>> $$0, Codec<hg<E>> $$1, boolean $$2) {
+   public aer(String $$0, String $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = a($$1, $$2);
-      this.d = Codec.either(aqi.b($$0), this.c);
    }
 
-   public <T> DataResult<Pair<hk<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
-      if ($$0 instanceof aev<T> $$2) {
-         Optional<hh<E>> $$3 = $$2.b(this.a);
-         if ($$3.isPresent()) {
-            hh<E> $$4 = $$3.get();
-            return this.d.decode($$0, $$1).map($$1x -> $$1x.mapFirst($$1xx -> (hk)$$1xx.map($$4::b, hk::a)));
-         }
-      }
-
-      return this.a($$0, $$1);
+   public static aer a(String $$0) {
+      return new aer($$0, ".json");
    }
 
-   public <T> DataResult<T> a(hk<E> $$0, DynamicOps<T> $$1, T $$2) {
-      if ($$1 instanceof aev<T> $$3) {
-         Optional<hj<E>> $$4 = $$3.a(this.a);
-         if ($$4.isPresent()) {
-            if (!$$0.a($$4.get())) {
-               return DataResult.error(() -> "HolderSet " + $$0 + " is not valid in current registry set");
-            }
-
-            return this.d.encode($$0.c().mapRight(List::copyOf), $$1, $$2);
-         }
-      }
-
-      return this.b($$0, $$1, $$2);
+   public aey a(aey $$0) {
+      return $$0.c(this.a + "/" + $$0.a() + this.b);
    }
 
-   private <T> DataResult<Pair<hk<E>, T>> a(DynamicOps<T> $$0, T $$1) {
-      return this.b.listOf().decode($$0, $$1).flatMap($$0x -> {
-         List<hg.a<E>> $$1x = new ArrayList<>();
-
-         for (hg<E> $$2 : (List)$$0x.getFirst()) {
-            if (!($$2 instanceof hg.a<E> $$3)) {
-               return DataResult.error(() -> "Can't decode element " + $$2 + " without registry");
-            }
-
-            $$1x.add($$3);
-         }
-
-         return DataResult.success(new Pair(hk.a($$1x), $$0x.getSecond()));
-      });
+   public aey b(aey $$0) {
+      String $$1 = $$0.a();
+      return $$0.c($$1.substring(this.a.length() + 1, $$1.length() - this.b.length()));
    }
 
-   private <T> DataResult<T> b(hk<E> $$0, DynamicOps<T> $$1, T $$2) {
-      return this.c.encode($$0.a().toList(), $$1, $$2);
+   public Map<aey, ant> a(anv $$0) {
+      return $$0.b(this.a, $$0x -> $$0x.a().endsWith(this.b));
+   }
+
+   public Map<aey, List<ant>> b(anv $$0) {
+      return $$0.c(this.a, $$0x -> $$0x.a().endsWith(this.b));
    }
 }

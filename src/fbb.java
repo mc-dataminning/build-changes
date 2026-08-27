@@ -1,5 +1,24 @@
-import org.joml.Vector2ic;
+import org.joml.Matrix4f;
 
-public interface fbb {
-   Vector2ic a(int var1, int var2, int var3, int var4, int var5, int var6);
+public class fbb implements fbc {
+   private final arl a;
+
+   public fbb(arl $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public int a(esf $$0) {
+      return $$0.a(this.a);
+   }
+
+   @Override
+   public int a() {
+      return 10;
+   }
+
+   @Override
+   public void a(esf $$0, int $$1, int $$2, Matrix4f $$3, fog.a $$4) {
+      $$0.a(this.a, (float)$$1, (float)$$2, -1, true, $$3, $$4, esf.a.a, 0, 15728880);
+   }
 }

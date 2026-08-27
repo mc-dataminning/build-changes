@@ -1,170 +1,89 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class agl {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tm.a("commands.datapack.unknown", $$0));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tm.a("commands.datapack.enable.failed", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tm.a("commands.datapack.disable.failed", $$0));
-   private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(
-      ($$0, $$1) -> tm.a("commands.datapack.enable.failed.no_flags", $$0, $$1)
-   );
-   private static final SuggestionProvider<dt> e = ($$0, $$1) -> dw.b(
-         ((dt)$$0.getSource()).l().aB().d().stream().map(StringArgumentType::escapeIfRequired), $$1
-      );
-   private static final SuggestionProvider<dt> f = ($$0, $$1) -> {
-      anf $$2 = ((dt)$$0.getSource()).l().aB();
-      Collection<String> $$3 = $$2.d();
-      cec $$4 = ((dt)$$0.getSource()).w();
-      return dw.b(
-         $$2.c().stream().filter($$1x -> $$1x.d().a($$4)).map(anc::f).filter($$1x -> !$$3.contains($$1x)).map(StringArgumentType::escapeIfRequired), $$1
-      );
-   };
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tn.c("commands.damage.invulnerable"));
 
-   public static void a(CommandDispatcher<dt> $$0) {
+   public static void a(CommandDispatcher<dt> $$0, dn $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("datapack").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("damage").requires($$0x -> $$0x.c(2)))
+            .then(
+               du.a("target", ee.a())
                   .then(
-                     du.a("enable")
+                     ((RequiredArgumentBuilder)du.a("amount", FloatArgumentType.floatArg(0.0F))
+                           .executes(
+                              $$0x -> a(
+                                    (dt)$$0x.getSource(), ee.a($$0x, "target"), FloatArgumentType.getFloat($$0x, "amount"), ((dt)$$0x.getSource()).e().ag().n()
+                                 )
+                           ))
                         .then(
-                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)du.a(
-                                             "name", StringArgumentType.string()
+                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)du.a("damageType", eq.a($$1, je.p))
+                                    .executes(
+                                       $$0x -> a(
+                                             (dt)$$0x.getSource(),
+                                             ee.a($$0x, "target"),
+                                             FloatArgumentType.getFloat($$0x, "amount"),
+                                             new bhq(eq.a($$0x, "damageType", je.p))
                                           )
-                                          .suggests(f)
-                                          .executes(
-                                             $$0x -> a(
-                                                   (dt)$$0x.getSource(), a($$0x, "name", true), ($$0xx, $$1) -> $$1.i().a($$0xx, $$1, $$0xxx -> $$0xxx, false)
-                                                )
-                                          ))
+                                    ))
+                                 .then(
+                                    du.a("at")
                                        .then(
-                                          du.a("after")
-                                             .then(
-                                                du.a("existing", StringArgumentType.string())
-                                                   .suggests(e)
-                                                   .executes(
-                                                      $$0x -> a(
-                                                            (dt)$$0x.getSource(),
-                                                            a($$0x, "name", true),
-                                                            ($$1, $$2) -> $$1.add($$1.indexOf(a($$0x, "existing", false)) + 1, $$2)
-                                                         )
+                                          du.a("location", fr.a())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (dt)$$0x.getSource(),
+                                                      ee.a($$0x, "target"),
+                                                      FloatArgumentType.getFloat($$0x, "amount"),
+                                                      new bhq(eq.a($$0x, "damageType", je.p), fr.a($$0x, "location"))
                                                    )
                                              )
-                                       ))
+                                       )
+                                 ))
+                              .then(
+                                 du.a("by")
                                     .then(
-                                       du.a("before")
+                                       ((RequiredArgumentBuilder)du.a("entity", ee.a())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (dt)$$0x.getSource(),
+                                                      ee.a($$0x, "target"),
+                                                      FloatArgumentType.getFloat($$0x, "amount"),
+                                                      new bhq(eq.a($$0x, "damageType", je.p), ee.a($$0x, "entity"))
+                                                   )
+                                             ))
                                           .then(
-                                             du.a("existing", StringArgumentType.string())
-                                                .suggests(e)
-                                                .executes(
-                                                   $$0x -> a(
-                                                         (dt)$$0x.getSource(),
-                                                         a($$0x, "name", true),
-                                                         ($$1, $$2) -> $$1.add($$1.indexOf(a($$0x, "existing", false)), $$2)
+                                             du.a("from")
+                                                .then(
+                                                   du.a("cause", ee.a())
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (dt)$$0x.getSource(),
+                                                               ee.a($$0x, "target"),
+                                                               FloatArgumentType.getFloat($$0x, "amount"),
+                                                               new bhq(eq.a($$0x, "damageType", je.p), ee.a($$0x, "entity"), ee.a($$0x, "cause"))
+                                                            )
                                                       )
                                                 )
                                           )
-                                    ))
-                                 .then(du.a("last").executes($$0x -> a((dt)$$0x.getSource(), a($$0x, "name", true), List::add))))
-                              .then(du.a("first").executes($$0x -> a((dt)$$0x.getSource(), a($$0x, "name", true), ($$0xx, $$1) -> $$0xx.add(0, $$1))))
+                                    )
+                              )
                         )
-                  ))
-               .then(
-                  du.a("disable").then(du.a("name", StringArgumentType.string()).suggests(e).executes($$0x -> a((dt)$$0x.getSource(), a($$0x, "name", false))))
-               ))
-            .then(
-               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("list").executes($$0x -> a((dt)$$0x.getSource())))
-                     .then(du.a("available").executes($$0x -> b((dt)$$0x.getSource()))))
-                  .then(du.a("enabled").executes($$0x -> c((dt)$$0x.getSource())))
+                  )
             )
       );
    }
 
-   private static int a(dt $$0, anc $$1, agl.a $$2) throws CommandSyntaxException {
-      anf $$3 = $$0.l().aB();
-      List<anc> $$4 = Lists.newArrayList($$3.f());
-      $$2.apply($$4, $$1);
-      $$0.a(() -> tm.a("commands.datapack.modify.enable", $$1.a(true)), true);
-      ahz.a($$4.stream().map(anc::f).collect(Collectors.toList()), $$0);
-      return $$4.size();
-   }
-
-   private static int a(dt $$0, anc $$1) {
-      anf $$2 = $$0.l().aB();
-      List<anc> $$3 = Lists.newArrayList($$2.f());
-      $$3.remove($$1);
-      $$0.a(() -> tm.a("commands.datapack.modify.disable", $$1.a(true)), true);
-      ahz.a($$3.stream().map(anc::f).collect(Collectors.toList()), $$0);
-      return $$3.size();
-   }
-
-   private static int a(dt $$0) {
-      return c($$0) + b($$0);
-   }
-
-   private static int b(dt $$0) {
-      anf $$1 = $$0.l().aB();
-      $$1.a();
-      Collection<anc> $$2 = $$1.f();
-      Collection<anc> $$3 = $$1.c();
-      cec $$4 = $$0.w();
-      List<anc> $$5 = $$3.stream().filter($$2x -> !$$2.contains($$2x) && $$2x.d().a($$4)).toList();
-      if ($$5.isEmpty()) {
-         $$0.a(() -> tm.c("commands.datapack.list.available.none"), false);
+   private static int a(dt $$0, bis $$1, float $$2, bhq $$3) throws CommandSyntaxException {
+      if ($$1.a($$3, $$2)) {
+         $$0.a(() -> tn.a("commands.damage.success", $$2, $$1.N_()), true);
+         return 1;
       } else {
-         $$0.a(() -> tm.a("commands.datapack.list.available.success", $$5.size(), to.b($$5, $$0xx -> $$0xx.a(false))), false);
+         throw a.create();
       }
-
-      return $$5.size();
-   }
-
-   private static int c(dt $$0) {
-      anf $$1 = $$0.l().aB();
-      $$1.a();
-      Collection<? extends anc> $$2 = $$1.f();
-      if ($$2.isEmpty()) {
-         $$0.a(() -> tm.c("commands.datapack.list.enabled.none"), false);
-      } else {
-         $$0.a(() -> tm.a("commands.datapack.list.enabled.success", $$2.size(), to.b($$2, $$0xx -> $$0xx.a(true))), false);
-      }
-
-      return $$2.size();
-   }
-
-   private static anc a(CommandContext<dt> $$0, String $$1, boolean $$2) throws CommandSyntaxException {
-      String $$3 = StringArgumentType.getString($$0, $$1);
-      anf $$4 = ((dt)$$0.getSource()).l().aB();
-      anc $$5 = $$4.c($$3);
-      if ($$5 == null) {
-         throw a.create($$3);
-      } else {
-         boolean $$6 = $$4.f().contains($$5);
-         if ($$2 && $$6) {
-            throw b.create($$3);
-         } else if (!$$2 && !$$6) {
-            throw c.create($$3);
-         } else {
-            cec $$7 = ((dt)$$0.getSource()).w();
-            cec $$8 = $$5.d();
-            if (!$$8.a($$7)) {
-               throw d.create($$3, cee.a($$7, $$8));
-            } else {
-               return $$5;
-            }
-         }
-      }
-   }
-
-   interface a {
-      void apply(List<anc> var1, anc var2) throws CommandSyntaxException;
    }
 }

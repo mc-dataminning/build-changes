@@ -20,15 +20,15 @@ public abstract class ne<T> implements jk {
    private final CompletableFuture<hi.b> g;
    private final CompletableFuture<Void> h = new CompletableFuture<>();
    private final CompletableFuture<ne.c<T>> i;
-   protected final aew<? extends ht<T>> f;
-   private final Map<aex, aqf> j = Maps.newLinkedHashMap();
+   protected final aex<? extends ht<T>> f;
+   private final Map<aey, aqg> j = Maps.newLinkedHashMap();
 
-   protected ne(jm $$0, aew<? extends ht<T>> $$1, CompletableFuture<hi.b> $$2) {
+   protected ne(jm $$0, aex<? extends ht<T>> $$1, CompletableFuture<hi.b> $$2) {
       this($$0, $$1, $$2, CompletableFuture.completedFuture(ne.c.empty()));
    }
 
-   protected ne(jm $$0, aew<? extends ht<T>> $$1, CompletableFuture<hi.b> $$2, CompletableFuture<ne.c<T>> $$3) {
-      this.e = $$0.a(jm.b.a, aqk.a($$1));
+   protected ne(jm $$0, aex<? extends ht<T>> $$1, CompletableFuture<hi.b> $$2, CompletableFuture<ne.c<T>> $$3) {
+      this.e = $$0.a(jm.b.a, aql.a($$1));
       this.f = $$1;
       this.i = $$3;
       this.g = $$2;
@@ -55,18 +55,18 @@ public abstract class ne<T> implements jk {
          .thenCompose(
             $$1 -> {
                hi.c<T> $$2 = $$1.a.b(this.f);
-               Predicate<aex> $$3 = $$1x -> $$2.a(aew.a(this.f, $$1x)).isPresent();
-               Predicate<aex> $$4 = $$1x -> this.j.containsKey($$1x) || $$1.b.contains(aqi.a(this.f, $$1x));
+               Predicate<aey> $$3 = $$1x -> $$2.a(aex.a(this.f, $$1x)).isPresent();
+               Predicate<aey> $$4 = $$1x -> this.j.containsKey($$1x) || $$1.b.contains(aqj.a(this.f, $$1x));
                return CompletableFuture.allOf(
                   this.j
                      .entrySet()
                      .stream()
                      .map(
                         $$3x -> {
-                           aex $$4x = (aex)$$3x.getKey();
-                           aqf $$5 = (aqf)$$3x.getValue();
-                           List<aqg> $$6 = $$5.b();
-                           List<aqg> $$7 = $$6.stream().filter($$2xx -> !$$2xx.a($$3, $$4)).toList();
+                           aey $$4x = (aey)$$3x.getKey();
+                           aqg $$5 = (aqg)$$3x.getValue();
+                           List<aqh> $$6 = $$5.b();
+                           List<aqh> $$7 = $$6.stream().filter($$2xx -> !$$2xx.a($$3, $$4)).toList();
                            if (!$$7.isEmpty()) {
                               throw new IllegalArgumentException(
                                  String.format(
@@ -77,7 +77,7 @@ public abstract class ne<T> implements jk {
                                  )
                               );
                            } else {
-                              JsonElement $$8 = (JsonElement)aqh.a.encodeStart(JsonOps.INSTANCE, new aqh($$6, false)).getOrThrow(false, d::error);
+                              JsonElement $$8 = (JsonElement)aqi.a.encodeStart(JsonOps.INSTANCE, new aqi($$6, false)).getOrThrow(false, d::error);
                               Path $$9 = this.e.a($$4x);
                               return jk.a($$0, $$8, $$9);
                            }
@@ -89,13 +89,13 @@ public abstract class ne<T> implements jk {
          );
    }
 
-   protected ne.b<T> b(aqi<T> $$0) {
-      aqf $$1 = this.c($$0);
+   protected ne.b<T> b(aqj<T> $$0) {
+      aqg $$1 = this.c($$0);
       return new ne.b<>($$1);
    }
 
-   protected aqf c(aqi<T> $$0) {
-      return this.j.computeIfAbsent($$0.b(), $$0x -> aqf.a());
+   protected aqg c(aqj<T> $$0) {
+      return this.j.computeIfAbsent($$0.b(), $$0x -> aqg.a());
    }
 
    public CompletableFuture<ne.c<T>> c() {
@@ -111,49 +111,49 @@ public abstract class ne<T> implements jk {
    }
 
    protected static class b<T> {
-      private final aqf a;
+      private final aqg a;
 
-      protected b(aqf $$0) {
+      protected b(aqg $$0) {
          this.a = $$0;
       }
 
-      public final ne.b<T> a(aew<T> $$0) {
+      public final ne.b<T> a(aex<T> $$0) {
          this.a.a($$0.a());
          return this;
       }
 
       @SafeVarargs
-      public final ne.b<T> a(aew<T>... $$0) {
-         for (aew<T> $$1 : $$0) {
+      public final ne.b<T> a(aex<T>... $$0) {
+         for (aex<T> $$1 : $$0) {
             this.a.a($$1.a());
          }
 
          return this;
       }
 
-      public ne.b<T> a(aex $$0) {
+      public ne.b<T> a(aey $$0) {
          this.a.b($$0);
          return this;
       }
 
-      public ne.b<T> b(aqi<T> $$0) {
+      public ne.b<T> b(aqj<T> $$0) {
          this.a.c($$0.b());
          return this;
       }
 
-      public ne.b<T> b(aex $$0) {
+      public ne.b<T> b(aey $$0) {
          this.a.d($$0);
          return this;
       }
    }
 
    @FunctionalInterface
-   public interface c<T> extends Function<aqi<T>, Optional<aqf>> {
+   public interface c<T> extends Function<aqj<T>, Optional<aqg>> {
       static <T> ne.c<T> empty() {
          return $$0 -> Optional.empty();
       }
 
-      default boolean contains(aqi<T> $$0) {
+      default boolean contains(aqj<T> $$0) {
          return this.apply($$0).isPresent();
       }
    }

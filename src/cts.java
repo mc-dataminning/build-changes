@@ -1,46 +1,29 @@
-public class cts extends cwh implements csx, ctq {
-   public cts(dfi.d $$0) {
-      super($$0, hc.a, r_, false);
-      this.k(this.C.b().a(s_, Boolean.valueOf(false)));
+import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
+
+public interface cts {
+   eii r_ = csx.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+   dgc s_ = dgb.D;
+
+   static bha a(@Nullable bis $$0, dfl $$1, cpx $$2, gw $$3) {
+      if ($$1.c(s_)) {
+         csx.a($$2, $$3, new cjh(cjk.vw, 1));
+         float $$4 = ary.b($$2.z, 0.8F, 1.2F);
+         $$2.a(null, $$3, apf.dx, apg.e, 1.0F, $$4);
+         dfl $$5 = $$1.a(s_, Boolean.valueOf(false));
+         $$2.a($$3, $$5, 2);
+         $$2.a(djv.c, $$3, djv.a.a($$0, $$5));
+         return bha.a($$2.B);
+      } else {
+         return bha.d;
+      }
    }
 
-   @Override
-   protected cwi b() {
-      return (cwi)csw.ru;
+   static boolean h_(dfl $$0) {
+      return $$0.b(s_) && $$0.c(s_);
    }
 
-   @Override
-   protected dfj a(dfj $$0, dfj $$1) {
-      return $$1.a(s_, $$0.c(s_));
-   }
-
-   @Override
-   public cjf a(cpb $$0, gw $$1, dfj $$2) {
-      return new cjf(cji.vw);
-   }
-
-   @Override
-   public bgy a(dfj $$0, cpv $$1, gw $$2, cbu $$3, bgx $$4, ehj $$5) {
-      return ctq.a($$3, $$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(dfk.a<csv, dfj> $$0) {
-      $$0.a(s_);
-   }
-
-   @Override
-   public boolean a(cpy $$0, gw $$1, dfj $$2) {
-      return !$$2.c(s_);
-   }
-
-   @Override
-   public boolean a(cpv $$0, asc $$1, gw $$2, dfj $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(akr $$0, asc $$1, gw $$2, dfj $$3) {
-      $$0.a($$2, $$3.a(s_, Boolean.valueOf(true)), 2);
+   static ToIntFunction<dfl> h_(int $$0) {
+      return $$1 -> $$1.c(dgb.D) ? $$0 : 0;
    }
 }

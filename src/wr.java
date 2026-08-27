@@ -1,18 +1,12 @@
-public record wr() implements ve<wq> {
-   public wr(sp $$0) {
-      this();
-   }
-
+public interface wr extends vi {
    @Override
-   public void a(sp $$0) {
+   default sp b() {
+      return sp.e;
    }
 
-   public void a(wq $$0) {
-      $$0.a(this);
-   }
+   void a(ws var1);
 
-   @Override
-   public so c() {
-      return so.b;
-   }
+   void a(wt var1);
+
+   void a(wu var1);
 }

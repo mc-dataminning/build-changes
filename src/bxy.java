@@ -1,45 +1,80 @@
-import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class bxy {
-   private static final Logger a = LogUtils.getLogger();
-   private final bxh b;
-   private final bxr[] c = new bxr[bxx.c()];
+public class bxy extends bxl {
+   private boolean b;
    @Nullable
-   private bxr d;
+   private ebd c;
+   @Nullable
+   private ehp d;
 
-   public bxy(bxh $$0) {
-      this.b = $$0;
-      this.a(bxx.k);
+   public bxy(bxj $$0) {
+      super($$0);
    }
 
-   public void a(bxx<?> $$0) {
-      if (this.d == null || $$0 != this.d.i()) {
-         if (this.d != null) {
-            this.d.e();
+   @Override
+   public void c() {
+      if (!this.b && this.c != null) {
+         gw $$0 = this.a.dL().a(dku.a.f, dnx.a(this.a.s()));
+         if (!$$0.a(this.a.dj(), 10.0)) {
+            this.a.ga().a(bxz.a);
          }
-
-         this.d = this.b((bxx<bxr>)$$0);
-         if (!this.b.dL().B) {
-            this.b.al().b(bxh.b, $$0.b());
-         }
-
-         a.debug("Dragon is now in phase {} on the {}", $$0, this.b.dL().B ? "client" : "server");
-         this.d.d();
+      } else {
+         this.b = false;
+         this.j();
       }
    }
 
-   public bxr a() {
+   @Override
+   public void d() {
+      this.b = true;
+      this.c = null;
+      this.d = null;
+   }
+
+   private void j() {
+      int $$0 = this.a.y();
+      ehp $$1 = this.a.D(1.0F);
+      int $$2 = this.a.r(-$$1.c * 40.0, 105.0, -$$1.e * 40.0);
+      if (this.a.gb() != null && this.a.gb().e() > 0) {
+         $$2 %= 12;
+         if ($$2 < 0) {
+            $$2 += 12;
+         }
+      } else {
+         $$2 -= 12;
+         $$2 &= 7;
+         $$2 += 12;
+      }
+
+      this.c = this.a.a($$0, $$2, null);
+      this.k();
+   }
+
+   private void k() {
+      if (this.c != null) {
+         this.c.a();
+         if (!this.c.c()) {
+            ib $$0 = this.c.g();
+            this.c.a();
+
+            double $$1;
+            do {
+               $$1 = (double)((float)$$0.v() + this.a.ef().i() * 20.0F);
+            } while ($$1 < (double)$$0.v());
+
+            this.d = new ehp((double)$$0.u(), $$1, (double)$$0.w());
+         }
+      }
+   }
+
+   @Nullable
+   @Override
+   public ehp g() {
       return this.d;
    }
 
-   public <T extends bxr> T b(bxx<T> $$0) {
-      int $$1 = $$0.b();
-      if (this.c[$$1] == null) {
-         this.c[$$1] = $$0.a(this.b);
-      }
-
-      return (T)this.c[$$1];
+   @Override
+   public bxz<bxy> i() {
+      return bxz.e;
    }
 }

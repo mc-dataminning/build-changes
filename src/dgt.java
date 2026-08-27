@@ -1,23 +1,21 @@
-public enum dgt implements asp {
-   a("save"),
-   b("load"),
-   c("corner"),
-   d("data");
+public enum dgt implements asr {
+   a("top"),
+   b("bottom"),
+   c("double");
 
-   private final String e;
-   private final tm f;
+   private final String d;
 
    private dgt(String $$0) {
-      this.e = $$0;
-      this.f = tm.c("structure_block.mode_info." + $$0);
+      this.d = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.d;
    }
 
    @Override
    public String c() {
-      return this.e;
-   }
-
-   public tm a() {
-      return this.f;
+      return this.d;
    }
 }

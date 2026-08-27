@@ -1,29 +1,35 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class agr {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tn.b("Source is not a mob"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tn.b("Path not found"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tn.b("Target not reached"));
+
    public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("defaultgamemode").requires($$0x -> $$0x.c(2)))
-            .then(du.a("gamemode", ef.a()).executes($$0x -> a((dt)$$0x.getSource(), ef.a($$0x, "gamemode"))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("debugpath").requires($$0x -> $$0x.c(2)))
+            .then(du.a("to", fk.a()).executes($$0x -> a((dt)$$0x.getSource(), fk.a($$0x, "to"))))
       );
    }
 
-   private static int a(dt $$0, cps $$1) {
-      int $$2 = 0;
-      MinecraftServer $$3 = $$0.l();
-      $$3.a($$1);
-      cps $$4 = $$3.aW();
-      if ($$4 != null) {
-         for (aks $$5 : $$3.ac().t()) {
-            if ($$5.a($$4)) {
-               $$2++;
-            }
+   private static int a(dt $$0, gw $$1) throws CommandSyntaxException {
+      if (!($$0.f() instanceof bjk $$3)) {
+         throw a.create();
+      } else {
+         bsr $$4 = new bsq($$3, $$0.e());
+         ebd $$5 = $$4.a($$1, 0);
+         abd.a($$0.e(), $$3, $$5, $$4.q());
+         if ($$5 == null) {
+            throw b.create();
+         } else if (!$$5.j()) {
+            throw c.create();
+         } else {
+            $$0.a(() -> tn.b("Made path"), true);
+            return 1;
          }
       }
-
-      $$0.a(() -> tm.a("commands.defaultgamemode.success", $$1.d()), true);
-      return $$2;
    }
 }

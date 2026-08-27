@@ -1,8 +1,22 @@
-import javax.annotation.Nullable;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelHandler.Sharable;
+import io.netty.handler.codec.EncoderException;
+import io.netty.handler.codec.MessageToByteEncoder;
 
-@FunctionalInterface
-public interface th {
-   th a = ($$0, $$1) -> $$1;
+@Sharable
+public class th extends MessageToByteEncoder<ByteBuf> {
+   public static final int a = 3;
 
-   tm decorate(@Nullable aks var1, tm var2);
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) {
+      int $$3 = $$1.readableBytes();
+      int $$4 = te.a($$3);
+      if ($$4 > 3) {
+         throw new EncoderException("unable to fit " + $$3 + " into 3");
+      } else {
+         $$2.ensureWritable($$4 + $$3);
+         te.a($$2, $$3);
+         $$2.writeBytes($$1, $$1.readerIndex(), $$3);
+      }
+   }
 }

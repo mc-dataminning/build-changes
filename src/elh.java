@@ -1,8 +1,11 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface elh {
+   int a();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@ejj
-@eji
-interface elh {
+   void b();
+
+   elf c();
+
+   elf d();
+
+   void e();
 }

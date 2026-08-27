@@ -1,68 +1,82 @@
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
-import java.util.Optional;
+import java.util.List;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import net.minecraft.server.MinecraftServer;
 
-public class uu implements tn {
-   private static final Logger c = LogUtils.getLogger();
-   private final String d;
+public class uu implements to {
+   private static final String b = "*";
+   private final String c;
    @Nullable
-   private final gc e;
-   protected final Optional<tm> b;
-
-   public uu(String $$0, Optional<tm> $$1) {
-      this.d = $$0;
-      this.b = $$1;
-      this.e = a($$0);
-   }
+   private final gc d;
+   private final String e;
 
    @Nullable
    private static gc a(String $$0) {
-      gc $$1 = null;
-
       try {
-         gd $$2 = new gd(new StringReader($$0));
-         $$1 = $$2.t();
-      } catch (CommandSyntaxException var3) {
-         c.warn("Invalid selector component: {}: {}", $$0, var3.getMessage());
+         return new gd(new StringReader($$0)).t();
+      } catch (CommandSyntaxException var2) {
+         return null;
       }
+   }
 
-      return $$1;
+   public uu(String $$0, String $$1) {
+      this.c = $$0;
+      this.d = a($$0);
+      this.e = $$1;
    }
 
    public String a() {
-      return this.d;
+      return this.c;
    }
 
    @Nullable
    public gc b() {
+      return this.d;
+   }
+
+   public String c() {
       return this.e;
    }
 
-   public Optional<tm> c() {
-      return this.b;
-   }
+   private String a(dt $$0) throws CommandSyntaxException {
+      if (this.d != null) {
+         List<? extends bis> $$1 = this.d.b($$0);
+         if (!$$1.isEmpty()) {
+            if ($$1.size() != 1) {
+               throw ee.a.create();
+            }
 
-   @Override
-   public tz a(@Nullable dt $$0, @Nullable biq $$1, int $$2) throws CommandSyntaxException {
-      if ($$0 != null && this.e != null) {
-         Optional<? extends tm> $$3 = to.a($$0, this.b, $$1, $$2);
-         return to.a(this.e.b($$0), $$3, biq::N_);
-      } else {
-         return tm.h();
+            return $$1.get(0).cx();
+         }
       }
+
+      return this.c;
+   }
+
+   private String a(String $$0, dt $$1) {
+      MinecraftServer $$2 = $$1.l();
+      if ($$2 != null) {
+         eio $$3 = $$2.aF();
+         eil $$4 = $$3.b(this.e);
+         if ($$4 != null && $$3.b($$0, $$4)) {
+            ein $$5 = $$3.c($$0, $$4);
+            return Integer.toString($$5.b());
+         }
+      }
+
+      return "";
    }
 
    @Override
-   public <T> Optional<T> a(tq.b<T> $$0, ui $$1) {
-      return $$0.accept($$1, this.d);
-   }
-
-   @Override
-   public <T> Optional<T> a(tq.a<T> $$0) {
-      return $$0.accept(this.d);
+   public ua a(@Nullable dt $$0, @Nullable bis $$1, int $$2) throws CommandSyntaxException {
+      if ($$0 == null) {
+         return tn.h();
+      } else {
+         String $$3 = this.a($$0);
+         String $$4 = $$1 != null && $$3.equals("*") ? $$1.cx() : $$3;
+         return tn.b(this.a($$4, $$0));
+      }
    }
 
    @Override
@@ -70,7 +84,7 @@ public class uu implements tn {
       if (this == $$0) {
          return true;
       } else {
-         if ($$0 instanceof uu $$1 && this.d.equals($$1.d) && this.b.equals($$1.b)) {
+         if ($$0 instanceof uu $$1 && this.c.equals($$1.c) && this.e.equals($$1.e)) {
             return true;
          }
 
@@ -80,12 +94,12 @@ public class uu implements tn {
 
    @Override
    public int hashCode() {
-      int $$0 = this.d.hashCode();
-      return 31 * $$0 + this.b.hashCode();
+      int $$0 = this.c.hashCode();
+      return 31 * $$0 + this.e.hashCode();
    }
 
    @Override
    public String toString() {
-      return "pattern{" + this.d + "}";
+      return "score{name='" + this.c + "', objective='" + this.e + "'}";
    }
 }

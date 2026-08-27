@@ -1,61 +1,108 @@
-import java.util.Map;
-import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
 public class fox {
-   private Map<dfj, gbf> a = Map.of();
-   private final gbl b;
+   protected final foe a;
+   protected final cpx b;
+   protected int c;
+   protected int d;
+   protected int e;
+   private int g;
+   public fre.b[] f;
 
-   public fox(gbl $$0) {
-      this.b = $$0;
+   public fox(fre $$0, cpx $$1, int $$2, foe $$3) {
+      this.a = $$3;
+      this.b = $$1;
+      this.a($$2);
+      this.a($$0);
    }
 
-   public fze a(dfj $$0) {
-      return this.b($$0).e();
-   }
+   protected void a(fre $$0) {
+      if (!eqx.O().bl()) {
+         throw new IllegalStateException("createSections called from wrong thread: " + Thread.currentThread().getName());
+      } else {
+         int $$1 = this.d * this.c * this.e;
+         this.f = new fre.b[$$1];
 
-   public gbf b(dfj $$0) {
-      gbf $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         $$1 = this.b.a();
+         for (int $$2 = 0; $$2 < this.d; $$2++) {
+            for (int $$3 = 0; $$3 < this.c; $$3++) {
+               for (int $$4 = 0; $$4 < this.e; $$4++) {
+                  int $$5 = this.a($$2, $$3, $$4);
+                  this.f[$$5] = $$0.new b($$5, $$2 * 16, this.b.H_() + $$3 * 16, $$4 * 16);
+               }
+            }
+         }
       }
-
-      return $$1;
    }
 
-   public gbl a() {
+   public void a() {
+      for (fre.b $$0 : this.f) {
+         $$0.e();
+      }
+   }
+
+   private int a(int $$0, int $$1, int $$2) {
+      return ($$2 * this.c + $$1) * this.d + $$0;
+   }
+
+   protected void a(int $$0) {
+      int $$1 = $$0 * 2 + 1;
+      this.d = $$1;
+      this.c = this.b.ak();
+      this.e = $$1;
+      this.g = $$0;
+   }
+
+   public int b() {
+      return this.g;
+   }
+
+   public cpz c() {
       return this.b;
    }
 
-   public void a(Map<dfj, gbf> $$0) {
-      this.a = $$0;
-   }
+   public void a(double $$0, double $$1) {
+      int $$2 = ary.c($$0);
+      int $$3 = ary.c($$1);
 
-   public static gbm c(dfj $$0) {
-      return a(jd.f.b($$0.b()), $$0);
-   }
+      for (int $$4 = 0; $$4 < this.d; $$4++) {
+         int $$5 = this.d * 16;
+         int $$6 = $$2 - 8 - $$5 / 2;
+         int $$7 = $$6 + Math.floorMod($$4 * 16 - $$6, $$5);
 
-   public static gbm a(aex $$0, dfj $$1) {
-      return new gbm($$0, b($$1.C()));
-   }
+         for (int $$8 = 0; $$8 < this.e; $$8++) {
+            int $$9 = this.e * 16;
+            int $$10 = $$3 - 8 - $$9 / 2;
+            int $$11 = $$10 + Math.floorMod($$8 * 16 - $$10, $$9);
 
-   public static String b(Map<dgm<?>, Comparable<?>> $$0) {
-      StringBuilder $$1 = new StringBuilder();
-
-      for (Entry<dgm<?>, Comparable<?>> $$2 : $$0.entrySet()) {
-         if ($$1.length() != 0) {
-            $$1.append(',');
+            for (int $$12 = 0; $$12 < this.c; $$12++) {
+               int $$13 = this.b.H_() + $$12 * 16;
+               fre.b $$14 = this.f[this.a($$4, $$12, $$8)];
+               gw $$15 = $$14.f();
+               if ($$7 != $$15.u() || $$13 != $$15.v() || $$11 != $$15.w()) {
+                  $$14.a($$7, $$13, $$11);
+               }
+            }
          }
-
-         dgm<?> $$3 = $$2.getKey();
-         $$1.append($$3.f());
-         $$1.append('=');
-         $$1.append(a($$3, $$2.getValue()));
       }
-
-      return $$1.toString();
    }
 
-   private static <T extends Comparable<T>> String a(dgm<T> $$0, Comparable<?> $$1) {
-      return $$0.a((T)$$1);
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      int $$4 = Math.floorMod($$0, this.d);
+      int $$5 = Math.floorMod($$1 - this.b.al(), this.c);
+      int $$6 = Math.floorMod($$2, this.e);
+      fre.b $$7 = this.f[this.a($$4, $$5, $$6)];
+      $$7.a($$3);
+   }
+
+   @Nullable
+   protected fre.b a(gw $$0) {
+      int $$1 = ary.a($$0.v() - this.b.H_(), 16);
+      if ($$1 >= 0 && $$1 < this.c) {
+         int $$2 = ary.b(ary.a($$0.u(), 16), this.d);
+         int $$3 = ary.b(ary.a($$0.w(), 16), this.e);
+         return this.f[this.a($$2, $$1, $$3)];
+      } else {
+         return null;
+      }
    }
 }

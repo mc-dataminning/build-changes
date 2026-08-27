@@ -1,49 +1,79 @@
-import javax.annotation.Nullable;
+public class cvy extends cws {
+   public static final int a = 3;
+   public static final dgl b = dgb.as;
+   private static final int c = 4;
+   private static final int d = 2;
 
-public class cvy extends crq {
-   protected cvy(dfi.d $$0) {
+   public cvy(dfk.d $$0) {
       super($$0);
+      this.k(this.C.b().a(b, Integer.valueOf(0)));
    }
 
    @Override
-   public dcv a(gw $$0, dfj $$1) {
-      return new ddq($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dcv> dcw<T> a(cpv $$0, dfj $$1, dcx<T> $$2) {
-      return a($$0, $$2, dcx.a);
+   public void b(dfl $$0, aks $$1, gw $$2, ase $$3) {
+      this.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected void a(cpv $$0, gw $$1, cbu $$2) {
-      dcv $$3 = $$0.c_($$1);
-      if ($$3 instanceof ddq) {
-         $$2.a((bhb)$$3);
-         $$2.a(apo.am);
-      }
-   }
+   public void a(dfl $$0, aks $$1, gw $$2, ase $$3) {
+      if (($$3.a(3) == 0 || this.a($$1, $$2, 4)) && $$1.z($$2) > 11 - $$0.c(b) - $$0.b($$1, $$2) && this.e($$0, $$1, $$2)) {
+         gw.a $$4 = new gw.a();
 
-   @Override
-   public void a(dfj $$0, cpv $$1, gw $$2, asc $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, ape.iR, apf.e, 1.0F, 1.0F, false);
+         for (hc $$5 : hc.values()) {
+            $$4.a($$2, $$5);
+            dfl $$6 = $$1.a_($$4);
+            if ($$6.a(this) && !this.e($$6, $$1, $$4)) {
+               $$1.a($$4, this, ary.a($$3, 20, 40));
+            }
          }
-
-         hc $$7 = $$0.c(a);
-         hc.a $$8 = $$7.o();
-         double $$9 = 0.52;
-         double $$10 = $$3.j() * 0.6 - 0.3;
-         double $$11 = $$8 == hc.a.a ? (double)$$7.j() * 0.52 : $$10;
-         double $$12 = $$3.j() * 6.0 / 16.0;
-         double $$13 = $$8 == hc.a.c ? (double)$$7.l() * 0.52 : $$10;
-         $$1.a(ix.Z, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
-         $$1.a(ix.C, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+      } else {
+         $$1.a($$2, this, ary.a($$3, 20, 40));
       }
+   }
+
+   private boolean e(dfl $$0, cpx $$1, gw $$2) {
+      int $$3 = $$0.c(b);
+      if ($$3 < 3) {
+         $$1.a($$2, $$0.a(b, Integer.valueOf($$3 + 1)), 2);
+         return false;
+      } else {
+         this.d($$0, $$1, $$2);
+         return true;
+      }
+   }
+
+   @Override
+   public void a(dfl $$0, cpx $$1, gw $$2, csx $$3, gw $$4, boolean $$5) {
+      if ($$3.n().a(this) && this.a($$1, $$2, 2)) {
+         this.d($$0, $$1, $$2);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   private boolean a(cpd $$0, gw $$1, int $$2) {
+      int $$3 = 0;
+      gw.a $$4 = new gw.a();
+
+      for (hc $$5 : hc.values()) {
+         $$4.a($$1, $$5);
+         if ($$0.a_($$4).a(this)) {
+            if (++$$3 >= $$2) {
+               return false;
+            }
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   protected void a(dfm.a<csx, dfl> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   public cjh a(cpd $$0, gw $$1, dfl $$2) {
+      return cjh.b;
    }
 }

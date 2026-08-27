@@ -1,16 +1,36 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.serialization.Codec;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public interface dyw<P extends dyv> {
-   dyw<dxz> a = a("always_true", dxz.a);
-   dyw<dye> b = a("block_match", dye.a);
-   dyw<dyg> c = a("blockstate_match", dyg.a);
-   dyw<dzd> d = a("tag_match", dzd.a);
-   dyw<dys> e = a("random_block_match", dys.a);
-   dyw<dyt> f = a("random_blockstate_match", dyt.a);
+public class dyw extends dza {
+   public static final Codec<dyw> a = dys.b.listOf().fieldOf("rules").xmap(dyw::new, $$0 -> $$0.b).codec();
+   private final ImmutableList<dys> b;
 
-   Codec<P> codec();
+   public dyw(List<? extends dys> $$0) {
+      this.b = ImmutableList.copyOf($$0);
+   }
 
-   static <P extends dyv> dyw<P> a(String $$0, Codec<P> $$1) {
-      return ht.a(jd.p, $$0, () -> $$1);
+   @Nullable
+   @Override
+   public dzd.c a(cqa $$0, gw $$1, gw $$2, dzd.c $$3, dzd.c $$4, dyz $$5) {
+      ase $$6 = ase.a(ary.a($$4.a()));
+      dfl $$7 = $$0.a_($$4.a());
+      UnmodifiableIterator var9 = this.b.iterator();
+
+      while (var9.hasNext()) {
+         dys $$8 = (dys)var9.next();
+         if ($$8.a($$4.b(), $$7, $$3.a(), $$4.a(), $$2, $$6)) {
+            return new dzd.c($$4.a(), $$8.a(), $$8.a($$6, $$4.c()));
+         }
+      }
+
+      return $$4;
+   }
+
+   @Override
+   protected dzc<?> a() {
+      return dzc.i;
    }
 }

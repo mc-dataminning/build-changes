@@ -1,54 +1,73 @@
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+public class aaw implements vf<wy> {
+   private final int a;
+   private final double b;
+   private final double c;
+   private final double d;
+   private final byte e;
+   private final byte f;
+   private final boolean g;
 
-public class aaw implements ve<wx> {
-   private final boolean a;
-   private final List<af> b;
-   private final Set<aex> c;
-   private final Map<aex, ah> d;
-
-   public aaw(boolean $$0, Collection<af> $$1, Set<aex> $$2, Map<aex, ah> $$3) {
-      this.a = $$0;
-      this.b = List.copyOf($$1);
-      this.c = Set.copyOf($$2);
-      this.d = Map.copyOf($$3);
+   public aaw(bis $$0) {
+      this.a = $$0.ah();
+      ehp $$1 = $$0.dk();
+      this.b = $$1.c;
+      this.c = $$1.d;
+      this.d = $$1.e;
+      this.e = (byte)((int)($$0.dB() * 256.0F / 360.0F));
+      this.f = (byte)((int)($$0.dD() * 256.0F / 360.0F));
+      this.g = $$0.aA();
    }
 
-   public aaw(sp $$0) {
-      this.a = $$0.readBoolean();
-      this.b = $$0.a(af::b);
-      this.c = $$0.a(Sets::newLinkedHashSetWithExpectedSize, sp::s);
-      this.d = $$0.a(sp::s, ah::b);
+   public aaw(sq $$0) {
+      this.a = $$0.m();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readByte();
+      this.f = $$0.readByte();
+      this.g = $$0.readBoolean();
    }
 
    @Override
-   public void a(sp $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
-      $$0.a(this.c, sp::a);
-      $$0.a(this.d, sp::a, ($$0x, $$1) -> $$1.a($$0x));
+   public void a(sq $$0) {
+      $$0.c(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.k(this.e);
+      $$0.k(this.f);
+      $$0.a(this.g);
    }
 
-   public void a(wx $$0) {
+   public void a(wy $$0) {
       $$0.a(this);
    }
 
-   public List<af> a() {
+   public int a() {
+      return this.a;
+   }
+
+   public double d() {
       return this.b;
    }
 
-   public Set<aex> d() {
+   public double e() {
       return this.c;
    }
 
-   public Map<aex, ah> e() {
+   public double f() {
       return this.d;
    }
 
-   public boolean f() {
-      return this.a;
+   public byte g() {
+      return this.e;
+   }
+
+   public byte h() {
+      return this.f;
+   }
+
+   public boolean i() {
+      return this.g;
    }
 }

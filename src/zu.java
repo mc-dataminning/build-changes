@@ -1,32 +1,24 @@
-public class zu implements ve<wx> {
+public class zu implements vf<wy> {
    private final int a;
-   private final int b;
 
-   public zu(int $$0, int $$1) {
+   public zu(int $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   public zu(sp $$0) {
-      this.a = $$0.m();
-      this.b = $$0.m();
+   public zu(sq $$0) {
+      this.a = $$0.readByte();
    }
 
    @Override
-   public void a(sp $$0) {
-      $$0.c(this.a);
-      $$0.c(this.b);
+   public void a(sq $$0) {
+      $$0.k(this.a);
    }
 
-   public void a(wx $$0) {
+   public void a(wy $$0) {
       $$0.a(this);
    }
 
    public int a() {
       return this.a;
-   }
-
-   public int d() {
-      return this.b;
    }
 }

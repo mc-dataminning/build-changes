@@ -1,13 +1,46 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import org.slf4j.Logger;
 
-public abstract class anz<T> implements ano {
-   @Override
-   public final CompletableFuture<Void> a(ano.a $$0, anu $$1, bdp $$2, bdp $$3, Executor $$4, Executor $$5) {
-      return CompletableFuture.<T>supplyAsync(() -> this.b($$1, $$2), $$4).thenCompose($$0::a).thenAcceptAsync($$2x -> this.a((T)$$2x, $$1, $$3), $$5);
+public abstract class anz extends aoa<Map<aey, JsonElement>> {
+   private static final Logger a = LogUtils.getLogger();
+   private final Gson b;
+   private final String c;
+
+   public anz(Gson $$0, String $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   protected abstract T b(anu var1, bdp var2);
+   protected Map<aey, JsonElement> a(anv $$0, bdr $$1) {
+      Map<aey, JsonElement> $$2 = new HashMap<>();
+      a($$0, this.c, this.b, $$2);
+      return $$2;
+   }
 
-   protected abstract void a(T var1, anu var2, bdp var3);
+   public static void a(anv $$0, String $$1, Gson $$2, Map<aey, JsonElement> $$3) {
+      aer $$4 = aer.a($$1);
+
+      for (Entry<aey, ant> $$5 : $$4.a($$0).entrySet()) {
+         aey $$6 = $$5.getKey();
+         aey $$7 = $$4.b($$6);
+
+         try (Reader $$8 = $$5.getValue().e()) {
+            JsonElement $$9 = arp.a($$2, $$8, JsonElement.class);
+            JsonElement $$10 = $$3.put($$7, $$9);
+            if ($$10 != null) {
+               throw new IllegalStateException("Duplicate data file ignored with ID " + $$7);
+            }
+         } catch (IllegalArgumentException | IOException | JsonParseException var14) {
+            a.error("Couldn't parse data file {} from {}", new Object[]{$$7, $$6, var14});
+         }
+      }
+   }
 }

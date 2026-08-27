@@ -1,57 +1,57 @@
-import com.mojang.serialization.Codec;
+public class bjj extends bis {
+   private static final String b = "data";
+   private qy c = new qy();
 
-public enum bjj implements asp {
-   a("monster", 70, false, false, 128),
-   b("creature", 10, true, true, 128),
-   c("ambient", 15, true, false, 128),
-   d("axolotls", 5, true, false, 128),
-   e("underground_water_creature", 5, true, false, 128),
-   f("water_creature", 5, true, false, 128),
-   g("water_ambient", 20, true, false, 64),
-   h("misc", -1, true, true, 128);
-
-   public static final Codec<bjj> i = asp.a(bjj::values);
-   private final int j;
-   private final boolean k;
-   private final boolean l;
-   private final String m;
-   private final int n = 32;
-   private final int o;
-
-   private bjj(String $$0, int $$1, boolean $$2, boolean $$3, int $$4) {
-      this.m = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
-      this.o = $$4;
-   }
-
-   public String a() {
-      return this.m;
+   public bjj(biw<?> $$0, cpx $$1) {
+      super($$0, $$1);
+      this.af = true;
    }
 
    @Override
-   public String c() {
-      return this.m;
+   public void l() {
    }
 
-   public int b() {
-      return this.j;
+   @Override
+   protected void a_() {
    }
 
-   public boolean d() {
-      return this.k;
+   @Override
+   protected void a(qy $$0) {
+      this.c = $$0.p("data");
    }
 
-   public boolean e() {
-      return this.l;
+   @Override
+   protected void b(qy $$0) {
+      $$0.a("data", this.c.h());
    }
 
-   public int f() {
-      return this.o;
+   @Override
+   public vf<wy> di() {
+      throw new IllegalStateException("Markers should never be sent");
    }
 
-   public int g() {
-      return 32;
+   @Override
+   protected boolean r(bis $$0) {
+      return false;
+   }
+
+   @Override
+   protected boolean bC() {
+      return false;
+   }
+
+   @Override
+   protected void p(bis $$0) {
+      throw new IllegalStateException("Should never addPassenger without checking couldAcceptPassenger()");
+   }
+
+   @Override
+   public eat q_() {
+      return eat.d;
+   }
+
+   @Override
+   public boolean p_() {
+      return true;
    }
 }

@@ -1,7 +1,69 @@
-public interface ejb<T> {
-   void a(eiz<T> var1);
+import it.unimi.dsi.fastutil.Hash.Strategy;
+import java.util.Comparator;
+import javax.annotation.Nullable;
 
-   boolean a(gw var1, T var2);
+public record ejb<T>(T d, gw e, long f, ejf g, long h) {
+   public static final Comparator<ejb<?>> a = ($$0, $$1) -> {
+      int $$2 = Long.compare($$0.f, $$1.f);
+      if ($$2 != 0) {
+         return $$2;
+      } else {
+         $$2 = $$0.g.compareTo($$1.g);
+         return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
+      }
+   };
+   public static final Comparator<ejb<?>> b = ($$0, $$1) -> {
+      int $$2 = $$0.g.compareTo($$1.g);
+      return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
+   };
+   public static final Strategy<ejb<?>> c = new Strategy<ejb<?>>() {
+      public int a(ejb<?> $$0) {
+         return 31 * $$0.b().hashCode() + $$0.a().hashCode();
+      }
 
-   int a();
+      public boolean a(@Nullable ejb<?> $$0, @Nullable ejb<?> $$1) {
+         if ($$0 == $$1) {
+            return true;
+         } else {
+            return $$0 != null && $$1 != null ? $$0.a() == $$1.a() && $$0.b().equals($$1.b()) : false;
+         }
+      }
+   };
+
+   public ejb(T $$0, gw $$1, long $$2, long $$3) {
+      this($$0, $$1, $$2, ejf.d, $$3);
+   }
+
+   public ejb(T d, gw e, long f, ejf g, long h) {
+      e = e.i();
+      this.d = d;
+      this.e = e;
+      this.f = f;
+      this.g = g;
+      this.h = h;
+   }
+
+   public static <T> ejb<T> a(T $$0, gw $$1) {
+      return new ejb<>($$0, $$1, 0L, ejf.d, 0L);
+   }
+
+   public T a() {
+      return this.d;
+   }
+
+   public gw b() {
+      return this.e;
+   }
+
+   public long c() {
+      return this.f;
+   }
+
+   public ejf d() {
+      return this.g;
+   }
+
+   public long e() {
+      return this.h;
+   }
 }

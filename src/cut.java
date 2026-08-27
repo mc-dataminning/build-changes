@@ -1,170 +1,106 @@
-public abstract class cut extends cwo {
-   protected static final eig b = csv.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
-   public static final dga c = dfz.w;
+import java.util.List;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-   protected cut(dfi.d $$0) {
+public class cut extends csk implements czy {
+   public static final aey a = new aey("sherds");
+   private static final eii b = csx.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+   private static final dgf c = dgb.R;
+   private static final dgc d = dgb.bw;
+   private static final dgc e = dgb.C;
+
+   protected cut(dfk.d $$0) {
       super($$0);
+      this.k(this.C.b().a(c, hc.c).a(e, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
+   public dfl a(dfl $$0, hc $$1, dfl $$2, cpy $$3, gw $$4, gw $$5) {
+      if ($$0.c(e)) {
+         $$3.a($$4, eap.c, eap.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public dfl a(clp $$0) {
+      eao $$1 = $$0.q().b_($$0.a());
+      return this.n().a(c, $$0.g()).a(e, Boolean.valueOf($$1.a() == eap.c)).a(d, Boolean.valueOf(false));
+   }
+
+   @Override
+   public void a(cpx $$0, gw $$1, dfl $$2, @Nullable bji $$3, cjh $$4) {
+      if ($$0.B) {
+         $$0.a($$1, dcz.O).ifPresent($$1x -> $$1x.a($$4));
+      }
+   }
+
+   @Override
+   public boolean a(dfl $$0, cpd $$1, gw $$2, ebe $$3) {
+      return false;
+   }
+
+   @Override
+   public eii a(dfl $$0, cpd $$1, gw $$2, ehu $$3) {
       return b;
    }
 
    @Override
-   public boolean a(dfj $$0, cpy $$1, gw $$2) {
-      gw $$3 = $$2.d();
-      return this.a($$1, $$3, $$1.a_($$3));
+   protected void a(dfm.a<csx, dfl> $$0) {
+      $$0.a(c, e, d);
    }
 
-   protected boolean a(cpy $$0, gw $$1, dfj $$2) {
-      return $$2.a($$0, $$1, hc.b, dax.c);
+   @Nullable
+   @Override
+   public dcx a(gw $$0, dfl $$1) {
+      return new ddm($$0, $$1);
    }
 
    @Override
-   public void a(dfj $$0, akr $$1, gw $$2, asc $$3) {
-      if (!this.b((cpy)$$1, $$2, $$0)) {
-         boolean $$4 = $$0.c(c);
-         boolean $$5 = this.a((cpv)$$1, $$2, $$0);
-         if ($$4 && !$$5) {
-            $$1.a($$2, $$0.a(c, Boolean.valueOf(false)), 2);
-         } else if (!$$4) {
-            $$1.a($$2, $$0.a(c, Boolean.valueOf(true)), 2);
-            if (!$$5) {
-               $$1.a($$2, this, this.g($$0), ejd.b);
-            }
-         }
+   public List<cjh> a(dfl $$0, ecy.a $$1) {
+      dcx $$2 = $$1.b(efd.h);
+      if ($$2 instanceof ddm $$3) {
+         $$1.a(a, $$1x -> $$3.f().a().map(cjc::ai_).forEach($$1x));
+      }
+
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public void a(cpx $$0, gw $$1, dfl $$2, cbw $$3) {
+      cjh $$4 = $$3.eS();
+      dfl $$5 = $$2;
+      if ($$4.a(aqc.aT) && !cns.f($$4)) {
+         $$5 = $$2.a(d, Boolean.valueOf(true));
+         $$0.a($$1, $$5, 4);
+      }
+
+      super.a($$0, $$1, $$5, $$3);
+   }
+
+   @Override
+   public eao c_(dfl $$0) {
+      return $$0.c(e) ? eap.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   public dak m(dfl $$0) {
+      return $$0.c(d) ? dak.aY : dak.aX;
+   }
+
+   @Override
+   public void a(cjh $$0, @Nullable cpd $$1, List<tn> $$2, cky $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      ddm.a $$4 = ddm.a.b(cha.a($$0));
+      if (!$$4.equals(ddm.a.a)) {
+         $$2.add(tm.a);
+         Stream.of($$4.e(), $$4.c(), $$4.d(), $$4.b()).forEach($$1x -> $$2.add(new cjh($$1x, 1).y().d().a(n.h)));
       }
    }
 
    @Override
-   public int b(dfj $$0, cpb $$1, gw $$2, hc $$3) {
-      return $$0.b($$1, $$2, $$3);
+   public cjh a(cpd $$0, gw $$1, dfl $$2) {
+      return $$0.c_($$1) instanceof ddm $$3 ? $$3.g() : super.a($$0, $$1, $$2);
    }
-
-   @Override
-   public int a(dfj $$0, cpb $$1, gw $$2, hc $$3) {
-      if (!$$0.c(c)) {
-         return 0;
-      } else {
-         return $$0.c(aC) == $$3 ? this.b($$1, $$2, $$0) : 0;
-      }
-   }
-
-   @Override
-   public void a(dfj $$0, cpv $$1, gw $$2, csv $$3, gw $$4, boolean $$5) {
-      if ($$0.a((cpy)$$1, $$2)) {
-         this.c($$1, $$2, $$0);
-      } else {
-         dcv $$6 = $$0.t() ? $$1.c_($$2) : null;
-         a($$0, $$1, $$2, $$6);
-         $$1.a($$2, false);
-
-         for (hc $$7 : hc.values()) {
-            $$1.a($$2.a($$7), this);
-         }
-      }
-   }
-
-   protected void c(cpv $$0, gw $$1, dfj $$2) {
-      if (!this.b((cpy)$$0, $$1, $$2)) {
-         boolean $$3 = $$2.c(c);
-         boolean $$4 = this.a($$0, $$1, $$2);
-         if ($$3 != $$4 && !$$0.L().b($$1, this)) {
-            ejd $$5 = ejd.c;
-            if (this.c((cpb)$$0, $$1, $$2)) {
-               $$5 = ejd.a;
-            } else if ($$3) {
-               $$5 = ejd.b;
-            }
-
-            $$0.a($$1, this, this.g($$2), $$5);
-         }
-      }
-   }
-
-   public boolean b(cpy $$0, gw $$1, dfj $$2) {
-      return false;
-   }
-
-   protected boolean a(cpv $$0, gw $$1, dfj $$2) {
-      return this.b($$0, $$1, $$2) > 0;
-   }
-
-   protected int b(cpv $$0, gw $$1, dfj $$2) {
-      hc $$3 = $$2.c(aC);
-      gw $$4 = $$1.a($$3);
-      int $$5 = $$0.c($$4, $$3);
-      if ($$5 >= 15) {
-         return $$5;
-      } else {
-         dfj $$6 = $$0.a_($$4);
-         return Math.max($$5, $$6.a(csw.cw) ? $$6.c(cyw.e) : 0);
-      }
-   }
-
-   protected int a(cql $$0, gw $$1, dfj $$2) {
-      hc $$3 = $$2.c(aC);
-      hc $$4 = $$3.h();
-      hc $$5 = $$3.i();
-      boolean $$6 = this.a();
-      return Math.max($$0.a($$1.a($$4), $$4, $$6), $$0.a($$1.a($$5), $$5, $$6));
-   }
-
-   @Override
-   public boolean f_(dfj $$0) {
-      return true;
-   }
-
-   @Override
-   public dfj a(cln $$0) {
-      return this.n().a(aC, $$0.g().g());
-   }
-
-   @Override
-   public void a(cpv $$0, gw $$1, dfj $$2, bjg $$3, cjf $$4) {
-      if (this.a($$0, $$1, $$2)) {
-         $$0.a($$1, this, 1);
-      }
-   }
-
-   @Override
-   public void b(dfj $$0, cpv $$1, gw $$2, dfj $$3, boolean $$4) {
-      this.d($$1, $$2, $$0);
-   }
-
-   @Override
-   public void a(dfj $$0, cpv $$1, gw $$2, dfj $$3, boolean $$4) {
-      if (!$$4 && !$$0.a($$3.b())) {
-         super.a($$0, $$1, $$2, $$3, $$4);
-         this.d($$1, $$2, $$0);
-      }
-   }
-
-   protected void d(cpv $$0, gw $$1, dfj $$2) {
-      hc $$3 = $$2.c(aC);
-      gw $$4 = $$1.a($$3.g());
-      $$0.a($$4, this, $$1);
-      $$0.a($$4, this, $$3);
-   }
-
-   protected boolean a() {
-      return false;
-   }
-
-   protected int b(cpb $$0, gw $$1, dfj $$2) {
-      return 15;
-   }
-
-   public static boolean h(dfj $$0) {
-      return $$0.b() instanceof cut;
-   }
-
-   public boolean c(cpb $$0, gw $$1, dfj $$2) {
-      hc $$3 = $$2.c(aC).g();
-      dfj $$4 = $$0.a_($$1.a($$3));
-      return h($$4) && $$4.c(aC) != $$3;
-   }
-
-   protected abstract int g(dfj var1);
 }

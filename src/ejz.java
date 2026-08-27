@@ -1,3 +1,8 @@
-public interface ejz {
-   void execute();
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@ejl
+@ejk
+interface ejz {
 }

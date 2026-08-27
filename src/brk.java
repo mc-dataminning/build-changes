@@ -1,40 +1,48 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class brk extends bqb {
-   private final cbc a;
+public class brk extends bqd {
+   private final byw a;
+   @Nullable
+   private bji b;
 
-   public brk(cbc $$0) {
+   public brk(byw $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(bqb.a.c, bqb.a.a));
+      this.a(EnumSet.of(bqd.a.a));
    }
 
    @Override
    public boolean a() {
-      if (!this.a.bv()) {
-         return false;
-      } else if (this.a.aX()) {
-         return false;
-      } else if (!this.a.aA()) {
-         return false;
-      } else if (this.a.T) {
-         return false;
-      } else {
-         cbu $$0 = this.a.gd();
-         if ($$0 == null) {
-            return false;
-         } else {
-            return this.a.f($$0) > 16.0 ? false : $$0.bS != null;
-         }
-      }
+      bji $$0 = this.a.q();
+      return this.a.t() > 0 || $$0 != null && this.a.f((bis)$$0) < 9.0;
    }
 
    @Override
    public void c() {
       this.a.L().n();
+      this.b = this.a.q();
    }
 
    @Override
    public void d() {
-      this.a.f(null);
+      this.b = null;
+   }
+
+   @Override
+   public boolean Q_() {
+      return true;
+   }
+
+   @Override
+   public void e() {
+      if (this.b == null) {
+         this.a.b(-1);
+      } else if (this.a.f((bis)this.b) > 49.0) {
+         this.a.b(-1);
+      } else if (!this.a.M().a(this.b)) {
+         this.a.b(-1);
+      } else {
+         this.a.b(1);
+      }
    }
 }

@@ -1,82 +1,68 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
-public class eem extends eec {
+public class eem extends eee {
    public static final Codec<eem> a = RecordCodecBuilder.create(
       $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  arg.a(Codec.unboundedMap(jd.g.r(), egl.a), "enchantments", Map.of()).forGetter($$0x -> $$0x.b),
-                  Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)
-               )
-            )
+            .and($$0.group(jd.l.r().fieldOf("type").forGetter($$0x -> $$0x.b), edj.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.c)))
             .apply($$0, eem::new)
    );
-   private final Map<hg<cno>, egk> b;
-   private final boolean c;
+   private final hg<dcz<?>> b;
+   private final List<edl> c;
 
-   eem(List<efp> $$0, Map<hg<cno>, egk> $$1, boolean $$2) {
+   eem(List<efr> $$0, hg<dcz<?>> $$1, List<edl> $$2) {
       super($$0);
-      this.b = Map.copyOf($$1);
-      this.c = $$2;
+      this.b = $$1;
+      this.c = List.copyOf($$2);
    }
 
    @Override
-   public eee b() {
-      return eef.f;
+   public eeg b() {
+      return eeh.p;
    }
 
    @Override
-   public Set<eey<?>> a() {
-      return this.b.values().stream().flatMap($$0 -> $$0.a().stream()).collect(ImmutableSet.toImmutableSet());
-   }
-
-   @Override
-   public cjf a(cjf $$0, ecq $$1) {
-      Object2IntMap<cno> $$2 = new Object2IntOpenHashMap();
-      this.b.forEach(($$2x, $$3) -> $$2.put((cno)$$2x.a(), $$3.a($$1)));
-      if ($$0.d() == cji.qb) {
-         cjf $$3 = new cjf(cji.tC);
-         $$2.forEach(($$1x, $$2x) -> cib.a($$3, new cnr($$1x, $$2x)));
-         return $$3;
+   public cjh a(cjh $$0, ecs $$1) {
+      if ($$0.b()) {
+         return $$0;
       } else {
-         Map<cno, Integer> $$4 = cnq.a($$0);
-         if (this.c) {
-            $$2.forEach(($$1x, $$2x) -> a($$4, $$1x, Math.max($$4.getOrDefault($$1x, 0) + $$2x, 0)));
+         hp<cjh> $$2 = hp.a();
+         this.c.forEach($$2x -> $$2x.expand($$1, $$2xx -> $$2xx.a(eda.a($$1.d(), $$2::add), $$1)));
+         qy $$3 = new qy();
+         bgu.a($$3, $$2);
+         qy $$4 = cha.a($$0);
+         if ($$4 == null) {
+            $$4 = $$3;
          } else {
-            $$2.forEach(($$1x, $$2x) -> a($$4, $$1x, Math.max($$2x, 0)));
+            $$4.a($$3);
          }
 
-         cnq.a($$4, $$0);
+         cha.a($$0, this.b.a(), $$4);
          return $$0;
       }
    }
 
-   private static void a(Map<cno, Integer> $$0, cno $$1, int $$2) {
-      if ($$2 == 0) {
-         $$0.remove($$1);
-      } else {
-         $$0.put($$1, $$2);
+   @Override
+   public void a(edb $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.b(".entry[" + $$1 + "]"));
       }
    }
 
-   public static class a extends eec.a<eem.a> {
-      private final Builder<hg<cno>, egk> a = ImmutableMap.builder();
-      private final boolean b;
+   public static eem.a a(dcz<?> $$0) {
+      return new eem.a($$0);
+   }
 
-      public a() {
-         this(false);
-      }
+   public static class a extends eee.a<eem.a> {
+      private final Builder<edl> a = ImmutableList.builder();
+      private final dcz<?> b;
 
-      public a(boolean $$0) {
+      public a(dcz<?> $$0) {
          this.b = $$0;
       }
 
@@ -84,14 +70,14 @@ public class eem extends eec {
          return this;
       }
 
-      public eem.a a(cno $$0, egk $$1) {
-         this.a.put($$0.j(), $$1);
+      public eem.a a(edl.a<?> $$0) {
+         this.a.add($$0.b());
          return this;
       }
 
       @Override
-      public eed b() {
-         return new eem(this.g(), this.a.build(), this.b);
+      public eef b() {
+         return new eem(this.g(), this.b.a(), this.a.build());
       }
    }
 }

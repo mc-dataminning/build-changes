@@ -1,5 +1,90 @@
+import it.unimi.dsi.fastutil.Hash.Strategy;
+import java.util.Optional;
+import java.util.function.Consumer;
 import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public interface eja<T> {
-   rr b(long var1, Function<T, String> var3);
+public record eja<T>(T b, gw c, int d, ejf e) {
+   private static final String f = "i";
+   private static final String g = "x";
+   private static final String h = "y";
+   private static final String i = "z";
+   private static final String j = "t";
+   private static final String k = "p";
+   public static final Strategy<eja<?>> a = new Strategy<eja<?>>() {
+      public int a(eja<?> $$0) {
+         return 31 * $$0.b().hashCode() + $$0.a().hashCode();
+      }
+
+      public boolean a(@Nullable eja<?> $$0, @Nullable eja<?> $$1) {
+         if ($$0 == $$1) {
+            return true;
+         } else {
+            return $$0 != null && $$1 != null ? $$0.a() == $$1.a() && $$0.b().equals($$1.b()) : false;
+         }
+      }
+   };
+
+   public static <T> void a(re $$0, Function<String, Optional<T>> $$1, cpe $$2, Consumer<eja<T>> $$3) {
+      long $$4 = $$2.a();
+
+      for (int $$5 = 0; $$5 < $$0.size(); $$5++) {
+         qy $$6 = $$0.a($$5);
+         a($$6, $$1).ifPresent($$2x -> {
+            if (cpe.a($$2x.b()) == $$4) {
+               $$3.accept($$2x);
+            }
+         });
+      }
+   }
+
+   public static <T> Optional<eja<T>> a(qy $$0, Function<String, Optional<T>> $$1) {
+      return $$1.apply($$0.l("i")).map($$1x -> {
+         gw $$2 = new gw($$0.h("x"), $$0.h("y"), $$0.h("z"));
+         return new eja<>((T)$$1x, $$2, $$0.h("t"), ejf.a($$0.h("p")));
+      });
+   }
+
+   private static qy a(String $$0, gw $$1, int $$2, ejf $$3) {
+      qy $$4 = new qy();
+      $$4.a("i", $$0);
+      $$4.a("x", $$1.u());
+      $$4.a("y", $$1.v());
+      $$4.a("z", $$1.w());
+      $$4.a("t", $$2);
+      $$4.a("p", $$3.a());
+      return $$4;
+   }
+
+   public static <T> qy a(ejb<T> $$0, Function<T, String> $$1, long $$2) {
+      return a($$1.apply($$0.a()), $$0.b(), (int)($$0.c() - $$2), $$0.d());
+   }
+
+   public qy a(Function<T, String> $$0) {
+      return a($$0.apply(this.b), this.c, this.d, this.e);
+   }
+
+   public ejb<T> a(long $$0, long $$1) {
+      return new ejb<>(this.b, this.c, $$0 + (long)this.d, this.e, $$1);
+   }
+
+   public static <T> eja<T> a(T $$0, gw $$1) {
+      return new eja<>($$0, $$1, 0, ejf.d);
+   }
+
+   public T a() {
+      return this.b;
+   }
+
+   public gw b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public ejf d() {
+      return this.e;
+   }
 }

@@ -1,71 +1,46 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
-class fqz {
-   private final Map<gw, dcv> a;
-   @Nullable
-   private final List<dhy<dfj>> b;
-   private final boolean c;
-   private final dhq d;
+public class fqz<T extends dem> implements fqg<T> {
+   public static final aey a = new aey("textures/environment/end_sky.png");
+   public static final aey b = new aey("textures/entity/end_portal.png");
 
-   fqz(dhq $$0) {
-      this.d = $$0;
-      this.c = $$0.F().af();
-      this.a = ImmutableMap.copyOf($$0.G());
-      if ($$0 instanceof dhm) {
-         this.b = null;
-      } else {
-         dhr[] $$1 = $$0.d();
-         this.b = new ArrayList<>($$1.length);
+   public fqz(fqh.a $$0) {
+   }
 
-         for (dhr $$2 : $$1) {
-            this.b.add($$2.c() ? null : $$2.h().d());
-         }
+   public void a(T $$0, float $$1, elr $$2, fog $$3, int $$4, int $$5) {
+      Matrix4f $$6 = $$2.c().a();
+      this.a($$0, $$6, $$3.getBuffer(this.d()));
+   }
+
+   private void a(T $$0, Matrix4f $$1, elv $$2) {
+      float $$3 = this.c();
+      float $$4 = this.b();
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, hc.d);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, hc.c);
+      this.a($$0, $$1, $$2, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, hc.f);
+      this.a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, hc.e);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$3, $$3, 0.0F, 0.0F, 1.0F, 1.0F, hc.a);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$4, $$4, 1.0F, 1.0F, 0.0F, 0.0F, hc.b);
+   }
+
+   private void a(T $$0, Matrix4f $$1, elv $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, hc $$11) {
+      if ($$0.a($$11)) {
+         $$2.a($$1, $$3, $$5, $$7).e();
+         $$2.a($$1, $$4, $$5, $$8).e();
+         $$2.a($$1, $$4, $$6, $$9).e();
+         $$2.a($$1, $$3, $$6, $$10).e();
       }
    }
 
-   @Nullable
-   public dcv a(gw $$0) {
-      return this.a.get($$0);
+   protected float b() {
+      return 0.75F;
    }
 
-   public dfj b(gw $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      if (this.c) {
-         dfj $$4 = null;
-         if ($$2 == 60) {
-            $$4 = csw.hW.n();
-         }
+   protected float c() {
+      return 0.375F;
+   }
 
-         if ($$2 == 70) {
-            $$4 = dkj.a($$1, $$3);
-         }
-
-         return $$4 == null ? csw.a.n() : $$4;
-      } else if (this.b == null) {
-         return csw.a.n();
-      } else {
-         try {
-            int $$5 = this.d.e($$2);
-            if ($$5 >= 0 && $$5 < this.b.size()) {
-               dhy<dfj> $$6 = this.b.get($$5);
-               if ($$6 != null) {
-                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
-               }
-            }
-
-            return csw.a.n();
-         } catch (Throwable var8) {
-            o $$8 = o.a(var8, "Getting block state");
-            p $$9 = $$8.a("Block being got");
-            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
-            throw new y($$8);
-         }
-      }
+   protected foo d() {
+      return foo.v();
    }
 }

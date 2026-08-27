@@ -1,7 +1,684 @@
-import java.util.function.BiConsumer;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
+import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.shorts.ShortListIterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface dhs extends cpb {
-   void a(BiConsumer<gw, dfj> var1);
+public class dhs extends dhh {
+   static final Logger n = LogUtils.getLogger();
+   private static final den o = new den() {
+      @Override
+      public void a() {
+      }
 
-   dzw B();
+      @Override
+      public boolean b() {
+         return true;
+      }
+
+      @Override
+      public gw c() {
+         return gw.b;
+      }
+
+      @Override
+      public String d() {
+         return "<null>";
+      }
+   };
+   private final Map<gw, dhs.d> p = Maps.newHashMap();
+   private boolean q;
+   final cpx r;
+   @Nullable
+   private Supplier<akl> s;
+   @Nullable
+   private dhs.c t;
+   private final Int2ObjectMap<djy> u;
+   private final eiw<csx> v;
+   private final eiw<ean> w;
+
+   public dhs(cpx $$0, cpe $$1) {
+      this($$0, $$1, dif.a, new eiw<>(), new eiw<>(), 0L, null, null, null);
+   }
+
+   public dhs(cpx $$0, cpe $$1, dif $$2, eiw<csx> $$3, eiw<ean> $$4, long $$5, @Nullable dht[] $$6, @Nullable dhs.c $$7, @Nullable dlx $$8) {
+      super($$1, $$2, $$0, $$0.G_().d(je.ap), $$5, $$6, $$8);
+      this.r = $$0;
+      this.u = new Int2ObjectOpenHashMap();
+
+      for (dku.a $$9 : dku.a.values()) {
+         if (dhm.n.h().contains($$9)) {
+            this.h.put($$9, new dku(this, $$9));
+         }
+      }
+
+      this.t = $$7;
+      this.v = $$3;
+      this.w = $$4;
+   }
+
+   public dhs(aks $$0, dic $$1, @Nullable dhs.c $$2) {
+      this($$0, $$1.f(), $$1.r(), $$1.G(), $$1.H(), $$1.u(), $$1.d(), $$2, $$1.t());
+
+      for (dcx $$3 : $$1.D().values()) {
+         this.a($$3);
+      }
+
+      this.j.putAll($$1.F());
+
+      for (int $$4 = 0; $$4 < $$1.n().length; $$4++) {
+         this.b[$$4] = $$1.n()[$$4];
+      }
+
+      this.a($$1.g());
+      this.b($$1.h());
+
+      for (Entry<dku.a, dku> $$5 : $$1.e()) {
+         if (dhm.n.h().contains($$5.getKey())) {
+            this.a($$5.getKey(), $$5.getValue().a());
+         }
+      }
+
+      this.i = $$1.i;
+      this.b($$1.v());
+      this.c = true;
+   }
+
+   @Override
+   public eje<csx> o() {
+      return this.v;
+   }
+
+   @Override
+   public eje<ean> p() {
+      return this.w;
+   }
+
+   @Override
+   public dhh.a q() {
+      return new dhh.a(this.v, this.w);
+   }
+
+   @Override
+   public djy a(int $$0) {
+      return this.r instanceof aks $$1 ? (djy)this.u.computeIfAbsent($$0, $$2 -> new dju($$1, $$0, this::c)) : super.a($$0);
+   }
+
+   @Override
+   public dfl a_(gw $$0) {
+      int $$1 = $$0.u();
+      int $$2 = $$0.v();
+      int $$3 = $$0.w();
+      if (this.r.af()) {
+         dfl $$4 = null;
+         if ($$2 == 60) {
+            $$4 = csy.hW.n();
+         }
+
+         if ($$2 == 70) {
+            $$4 = dkl.a($$1, $$3);
+         }
+
+         return $$4 == null ? csy.a.n() : $$4;
+      } else {
+         try {
+            int $$5 = this.e($$2);
+            if ($$5 >= 0 && $$5 < this.m.length) {
+               dht $$6 = this.m[$$5];
+               if (!$$6.c()) {
+                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
+               }
+            }
+
+            return csy.a.n();
+         } catch (Throwable var8) {
+            o $$8 = o.a(var8, "Getting block state");
+            p $$9 = $$8.a("Block being got");
+            $$9.a("Location", () -> p.a(this, $$1, $$2, $$3));
+            throw new y($$8);
+         }
+      }
+   }
+
+   @Override
+   public eao b_(gw $$0) {
+      return this.a($$0.u(), $$0.v(), $$0.w());
+   }
+
+   public eao a(int $$0, int $$1, int $$2) {
+      try {
+         int $$3 = this.e($$1);
+         if ($$3 >= 0 && $$3 < this.m.length) {
+            dht $$4 = this.m[$$3];
+            if (!$$4.c()) {
+               return $$4.b($$0 & 15, $$1 & 15, $$2 & 15);
+            }
+         }
+
+         return eap.a.g();
+      } catch (Throwable var7) {
+         o $$6 = o.a(var7, "Getting fluid state");
+         p $$7 = $$6.a("Block being got");
+         $$7.a("Location", () -> p.a(this, $$0, $$1, $$2));
+         throw new y($$6);
+      }
+   }
+
+   @Nullable
+   @Override
+   public dfl a(gw $$0, dfl $$1, boolean $$2) {
+      int $$3 = $$0.v();
+      dht $$4 = this.b(this.e($$3));
+      boolean $$5 = $$4.c();
+      if ($$5 && $$1.i()) {
+         return null;
+      } else {
+         int $$6 = $$0.u() & 15;
+         int $$7 = $$3 & 15;
+         int $$8 = $$0.w() & 15;
+         dfl $$9 = $$4.a($$6, $$7, $$8, $$1);
+         if ($$9 == $$1) {
+            return null;
+         } else {
+            csx $$10 = $$1.b();
+            this.h.get(dku.a.e).a($$6, $$3, $$8, $$1);
+            this.h.get(dku.a.f).a($$6, $$3, $$8, $$1);
+            this.h.get(dku.a.d).a($$6, $$3, $$8, $$1);
+            this.h.get(dku.a.b).a($$6, $$3, $$8, $$1);
+            boolean $$11 = $$4.c();
+            if ($$5 != $$11) {
+               this.r.J().p().a($$0, $$11);
+            }
+
+            if (eaf.a(this, $$0, $$9, $$1)) {
+               bdr $$12 = this.r.ad();
+               $$12.a("updateSkyLightSources");
+               this.i.a(this, $$6, $$3, $$8);
+               $$12.b("queueCheckLight");
+               this.r.J().p().a($$0);
+               $$12.c();
+            }
+
+            boolean $$13 = $$9.t();
+            if (!this.r.B) {
+               $$9.b(this.r, $$0, $$1, $$2);
+            } else if (!$$9.a($$10) && $$13) {
+               this.d($$0);
+            }
+
+            if (!$$4.a($$6, $$7, $$8).a($$10)) {
+               return null;
+            } else {
+               if (!this.r.B) {
+                  $$1.a(this.r, $$0, $$9, $$2);
+               }
+
+               if ($$1.t()) {
+                  dcx $$14 = this.a($$0, dhs.b.c);
+                  if ($$14 == null) {
+                     $$14 = ((cvl)$$10).a($$0, $$1);
+                     if ($$14 != null) {
+                        this.b($$14);
+                     }
+                  } else {
+                     $$14.b($$1);
+                     this.c($$14);
+                  }
+               }
+
+               this.c = true;
+               return $$9;
+            }
+         }
+      }
+   }
+
+   @Deprecated
+   @Override
+   public void a(bis $$0) {
+   }
+
+   @Nullable
+   private dcx j(gw $$0) {
+      dfl $$1 = this.a_($$0);
+      return !$$1.t() ? null : ((cvl)$$1.b()).a($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public dcx c_(gw $$0) {
+      return this.a($$0, dhs.b.c);
+   }
+
+   @Nullable
+   public dcx a(gw $$0, dhs.b $$1) {
+      dcx $$2 = this.k.get($$0);
+      if ($$2 == null) {
+         qy $$3 = this.j.remove($$0);
+         if ($$3 != null) {
+            dcx $$4 = this.a($$0, $$3);
+            if ($$4 != null) {
+               return $$4;
+            }
+         }
+      }
+
+      if ($$2 == null) {
+         if ($$1 == dhs.b.a) {
+            $$2 = this.j($$0);
+            if ($$2 != null) {
+               this.b($$2);
+            }
+         }
+      } else if ($$2.r()) {
+         this.k.remove($$0);
+         return null;
+      }
+
+      return $$2;
+   }
+
+   public void b(dcx $$0) {
+      this.a($$0);
+      if (this.K()) {
+         if (this.r instanceof aks $$1) {
+            this.b($$0, $$1);
+         }
+
+         this.c($$0);
+      }
+   }
+
+   private boolean K() {
+      return this.q || this.r.w_();
+   }
+
+   boolean k(gw $$0) {
+      if (!this.r.B_().a($$0)) {
+         return false;
+      } else {
+         return !(this.r instanceof aks $$1) ? true : this.D().a(akl.c) && $$1.c(cpe.a($$0));
+      }
+   }
+
+   @Override
+   public void a(dcx $$0) {
+      gw $$1 = $$0.p();
+      if (this.a_($$1).t()) {
+         $$0.a(this.r);
+         $$0.s();
+         dcx $$2 = this.k.put($$1.i(), $$0);
+         if ($$2 != null && $$2 != $$0) {
+            $$2.at_();
+         }
+      }
+   }
+
+   @Nullable
+   @Override
+   public qy g(gw $$0) {
+      dcx $$1 = this.c_($$0);
+      if ($$1 != null && !$$1.r()) {
+         qy $$2 = $$1.m();
+         $$2.a("keepPacked", false);
+         return $$2;
+      } else {
+         qy $$3 = this.j.get($$0);
+         if ($$3 != null) {
+            $$3 = $$3.h();
+            $$3.a("keepPacked", true);
+         }
+
+         return $$3;
+      }
+   }
+
+   @Override
+   public void d(gw $$0) {
+      if (this.K()) {
+         dcx $$1 = this.k.remove($$0);
+         if ($$1 != null) {
+            if (this.r instanceof aks $$2) {
+               this.a($$1, $$2);
+            }
+
+            $$1.at_();
+         }
+      }
+
+      this.l($$0);
+   }
+
+   private <T extends dcx> void a(T $$0, aks $$1) {
+      csx $$2 = $$0.q().b();
+      if ($$2 instanceof cvl) {
+         djx $$3 = ((cvl)$$2).a($$1, $$0);
+         if ($$3 != null) {
+            int $$4 = hz.a($$0.p().v());
+            djy $$5 = this.a($$4);
+            $$5.b($$3);
+         }
+      }
+   }
+
+   private void c(int $$0) {
+      this.u.remove($$0);
+   }
+
+   private void l(gw $$0) {
+      dhs.d $$1 = this.p.remove($$0);
+      if ($$1 != null) {
+         $$1.a(o);
+      }
+   }
+
+   public void E() {
+      if (this.t != null) {
+         this.t.run(this);
+         this.t = null;
+      }
+   }
+
+   public boolean C() {
+      return false;
+   }
+
+   public void a(sq $$0, qy $$1, Consumer<yh.b> $$2) {
+      this.I();
+
+      for (dht $$3 : this.m) {
+         $$3.a($$0);
+      }
+
+      for (dku.a $$4 : dku.a.values()) {
+         String $$5 = $$4.a();
+         if ($$1.b($$5, 12)) {
+            this.a($$4, $$1.o($$5));
+         }
+      }
+
+      this.A();
+      $$2.accept(($$0x, $$1x, $$2x) -> {
+         dcx $$3 = this.a($$0x, dhs.b.a);
+         if ($$3 != null && $$2x != null && $$3.u() == $$1x) {
+            $$3.a($$2x);
+         }
+      });
+   }
+
+   public void a(sq $$0) {
+      for (dht $$1 : this.m) {
+         $$1.b($$0);
+      }
+   }
+
+   public void c(boolean $$0) {
+      this.q = $$0;
+   }
+
+   public cpx F() {
+      return this.r;
+   }
+
+   public Map<gw, dcx> G() {
+      return this.k;
+   }
+
+   public void H() {
+      cpe $$0 = this.f();
+
+      for (int $$1 = 0; $$1 < this.b.length; $$1++) {
+         if (this.b[$$1] != null) {
+            ShortListIterator $$7 = this.b[$$1].iterator();
+
+            while ($$7.hasNext()) {
+               Short $$2 = (Short)$$7.next();
+               gw $$3 = dic.a($$2, this.g($$1), $$0);
+               dfl $$4 = this.a_($$3);
+               eao $$5 = $$4.u();
+               if (!$$5.c()) {
+                  $$5.a(this.r, $$3);
+               }
+
+               if (!($$4.b() instanceof cxk)) {
+                  dfl $$6 = csx.b($$4, this.r, $$3);
+                  this.r.a($$3, $$6, 20);
+               }
+            }
+
+            this.b[$$1].clear();
+         }
+      }
+
+      UnmodifiableIterator var9 = ImmutableList.copyOf(this.j.keySet()).iterator();
+
+      while (var9.hasNext()) {
+         gw $$7 = (gw)var9.next();
+         this.c_($$7);
+      }
+
+      this.j.clear();
+      this.f.a(this);
+   }
+
+   @Nullable
+   private dcx a(gw $$0, qy $$1) {
+      dfl $$2 = this.a_($$0);
+      dcx $$3;
+      if ("DUMMY".equals($$1.l("id"))) {
+         if ($$2.t()) {
+            $$3 = ((cvl)$$2.b()).a($$0, $$2);
+         } else {
+            $$3 = null;
+            n.warn("Tried to load a DUMMY block entity @ {} but found not block entity block {} at location", $$0, $$2);
+         }
+      } else {
+         $$3 = dcx.a($$0, $$2, $$1);
+      }
+
+      if ($$3 != null) {
+         $$3.a(this.r);
+         this.b($$3);
+      } else {
+         n.warn("Tried to load a block entity for block {} but failed at location {}", $$2, $$0);
+      }
+
+      return $$3;
+   }
+
+   public void c(long $$0) {
+      this.v.a($$0);
+      this.w.a($$0);
+   }
+
+   public void a(aks $$0) {
+      $$0.l().a(this.d, this.v);
+      $$0.m().a(this.d, this.w);
+   }
+
+   public void b(aks $$0) {
+      $$0.l().a(this.d);
+      $$0.m().a(this.d);
+   }
+
+   @Override
+   public dhm j() {
+      return dhm.n;
+   }
+
+   public akl D() {
+      return this.s == null ? akl.b : this.s.get();
+   }
+
+   public void b(Supplier<akl> $$0) {
+      this.s = $$0;
+   }
+
+   public void I() {
+      this.k.values().forEach(dcx::at_);
+      this.k.clear();
+      this.p.values().forEach($$0 -> $$0.a(o));
+      this.p.clear();
+   }
+
+   public void J() {
+      this.k.values().forEach($$0 -> {
+         if (this.r instanceof aks $$2) {
+            this.b($$0, $$2);
+         }
+
+         this.c($$0);
+      });
+   }
+
+   private <T extends dcx> void b(T $$0, aks $$1) {
+      csx $$2 = $$0.q().b();
+      if ($$2 instanceof cvl) {
+         djx $$3 = ((cvl)$$2).a($$1, $$0);
+         if ($$3 != null) {
+            this.a(hz.a($$0.p().v())).a($$3);
+         }
+      }
+   }
+
+   private <T extends dcx> void c(T $$0) {
+      dfl $$1 = $$0.q();
+      dcy<T> $$2 = $$1.a(this.r, (dcz<T>)$$0.u());
+      if ($$2 == null) {
+         this.l($$0.p());
+      } else {
+         this.p.compute($$0.p(), ($$2x, $$3) -> {
+            den $$4 = this.a($$0, $$2);
+            if ($$3 != null) {
+               $$3.a($$4);
+               return (dhs.d)$$3;
+            } else if (this.K()) {
+               dhs.d $$5 = new dhs.d($$4);
+               this.r.a($$5);
+               return $$5;
+            } else {
+               return null;
+            }
+         });
+      }
+   }
+
+   private <T extends dcx> den a(T $$0, dcy<T> $$1) {
+      return new dhs.a<>($$0, $$1);
+   }
+
+   class a<T extends dcx> implements den {
+      private final T b;
+      private final dcy<T> c;
+      private boolean d;
+
+      a(T $$0, dcy<T> $$1) {
+         this.b = $$0;
+         this.c = $$1;
+      }
+
+      @Override
+      public void a() {
+         if (!this.b.r() && this.b.l()) {
+            gw $$0 = this.b.p();
+            if (dhs.this.k($$0)) {
+               try {
+                  bdr $$1 = dhs.this.r.ad();
+                  $$1.a(this::d);
+                  dfl $$2 = dhs.this.a_($$0);
+                  if (this.b.u().a($$2)) {
+                     this.c.tick(dhs.this.r, this.b.p(), $$2, this.b);
+                     this.d = false;
+                  } else if (!this.d) {
+                     this.d = true;
+                     dhs.n.warn("Block entity {} @ {} state {} invalid for ticking:", new Object[]{LogUtils.defer(this::d), LogUtils.defer(this::c), $$2});
+                  }
+
+                  $$1.c();
+               } catch (Throwable var5) {
+                  o $$4 = o.a(var5, "Ticking block entity");
+                  p $$5 = $$4.a("Block entity being ticked");
+                  this.b.a($$5);
+                  throw new y($$4);
+               }
+            }
+         }
+      }
+
+      @Override
+      public boolean b() {
+         return this.b.r();
+      }
+
+      @Override
+      public gw c() {
+         return this.b.p();
+      }
+
+      @Override
+      public String d() {
+         return dcz.a(this.b.u()).toString();
+      }
+
+      @Override
+      public String toString() {
+         return "Level ticker for " + this.d() + "@" + this.c();
+      }
+   }
+
+   public static enum b {
+      a,
+      b,
+      c;
+   }
+
+   @FunctionalInterface
+   public interface c {
+      void run(dhs var1);
+   }
+
+   class d implements den {
+      private den b;
+
+      d(den $$0) {
+         this.b = $$0;
+      }
+
+      void a(den $$0) {
+         this.b = $$0;
+      }
+
+      @Override
+      public void a() {
+         this.b.a();
+      }
+
+      @Override
+      public boolean b() {
+         return this.b.b();
+      }
+
+      @Override
+      public gw c() {
+         return this.b.c();
+      }
+
+      @Override
+      public String d() {
+         return this.b.d();
+      }
+
+      @Override
+      public String toString() {
+         return this.b + " <wrapped>";
+      }
+   }
 }

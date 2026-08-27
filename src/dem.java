@@ -1,15 +1,13 @@
-public class dem extends ddc {
-   public dem(gw $$0, dfj $$1) {
-      super(dcx.c, $$0, $$1);
+public class dem extends dcx {
+   protected dem(dcz<?> $$0, gw $$1, dfl $$2) {
+      super($$0, $$1, $$2);
    }
 
-   @Override
-   protected void a(cpv $$0, gw $$1, dfj $$2, int $$3, int $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$3 != $$4) {
-         csv $$5 = $$2.b();
-         $$0.a($$1, $$5);
-         $$0.a($$1.d(), $$5);
-      }
+   public dem(gw $$0, dfl $$1) {
+      this(dcz.n, $$0, $$1);
+   }
+
+   public boolean a(hc $$0) {
+      return $$0.o() == hc.a.b;
    }
 }

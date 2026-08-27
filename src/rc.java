@@ -7,34 +7,31 @@ import org.apache.commons.lang3.ArrayUtils;
 
 public class rc extends qx<rd> {
    private static final int b = 24;
-   public static final rt<rc> a = new rt.b<rc>() {
-      public rc a(DataInput $$0, int $$1, rh $$2) throws IOException {
-         $$2.a(24L);
-         int $$3 = $$0.readInt();
-         $$2.a(4L * (long)$$3);
-         int[] $$4 = new int[$$3];
-
-         for (int $$5 = 0; $$5 < $$3; $$5++) {
-            $$4[$$5] = $$0.readInt();
-         }
-
-         return new rc($$4);
+   public static final ru<rc> a = new ru.b<rc>() {
+      public rc a(DataInput $$0, rh $$1) throws IOException {
+         return new rc(d($$0, $$1));
       }
 
       @Override
-      public ro.b a(DataInput $$0, ro $$1) throws IOException {
+      public rp.b a(DataInput $$0, rp $$1, rh $$2) throws IOException {
+         return $$1.a(d($$0, $$2));
+      }
+
+      private static int[] d(DataInput $$0, rh $$1) throws IOException {
+         $$1.b(24L);
          int $$2 = $$0.readInt();
+         $$1.b(4L * (long)$$2);
          int[] $$3 = new int[$$2];
 
          for (int $$4 = 0; $$4 < $$2; $$4++) {
             $$3[$$4] = $$0.readInt();
          }
 
-         return $$1.a($$3);
+         return $$3;
       }
 
       @Override
-      public void a(DataInput $$0) throws IOException {
+      public void b(DataInput $$0, rh $$1) throws IOException {
          $$0.skipBytes($$0.readInt() * 4);
       }
 
@@ -89,7 +86,7 @@ public class rc extends qx<rd> {
    }
 
    @Override
-   public rt<rc> c() {
+   public ru<rc> c() {
       return a;
    }
 
@@ -119,7 +116,7 @@ public class rc extends qx<rd> {
    }
 
    @Override
-   public void a(rv $$0) {
+   public void a(rw $$0) {
       $$0.a(this);
    }
 
@@ -143,9 +140,9 @@ public class rc extends qx<rd> {
    }
 
    @Override
-   public boolean a(int $$0, rr $$1) {
-      if ($$1 instanceof rl) {
-         this.c[$$0] = ((rl)$$1).g();
+   public boolean a(int $$0, rs $$1) {
+      if ($$1 instanceof rm) {
+         this.c[$$0] = ((rm)$$1).g();
          return true;
       } else {
          return false;
@@ -153,9 +150,9 @@ public class rc extends qx<rd> {
    }
 
    @Override
-   public boolean b(int $$0, rr $$1) {
-      if ($$1 instanceof rl) {
-         this.c = ArrayUtils.add(this.c, $$0, ((rl)$$1).g());
+   public boolean b(int $$0, rs $$1) {
+      if ($$1 instanceof rm) {
+         this.c = ArrayUtils.add(this.c, $$0, ((rm)$$1).g());
          return true;
       } else {
          return false;
@@ -179,7 +176,7 @@ public class rc extends qx<rd> {
    }
 
    @Override
-   public ro.b a(ro $$0) {
+   public rp.b a(rp $$0) {
       return $$0.a(this.c);
    }
 }

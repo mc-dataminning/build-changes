@@ -1,30 +1,20 @@
-public class bko extends bkh {
-   private final double b;
-   private final double c;
+public class bko {
+   public static final bkj a = a("generic.max_health", new bkq("attribute.name.generic.max_health", 20.0, 1.0, 1024.0).a(true));
+   public static final bkj b = a("generic.follow_range", new bkq("attribute.name.generic.follow_range", 32.0, 0.0, 2048.0));
+   public static final bkj c = a("generic.knockback_resistance", new bkq("attribute.name.generic.knockback_resistance", 0.0, 0.0, 1.0));
+   public static final bkj d = a("generic.movement_speed", new bkq("attribute.name.generic.movement_speed", 0.7F, 0.0, 1024.0).a(true));
+   public static final bkj e = a("generic.flying_speed", new bkq("attribute.name.generic.flying_speed", 0.4F, 0.0, 1024.0).a(true));
+   public static final bkj f = a("generic.attack_damage", new bkq("attribute.name.generic.attack_damage", 2.0, 0.0, 2048.0));
+   public static final bkj g = a("generic.attack_knockback", new bkq("attribute.name.generic.attack_knockback", 0.0, 0.0, 5.0));
+   public static final bkj h = a("generic.attack_speed", new bkq("attribute.name.generic.attack_speed", 4.0, 0.0, 1024.0).a(true));
+   public static final bkj i = a("generic.armor", new bkq("attribute.name.generic.armor", 0.0, 0.0, 30.0).a(true));
+   public static final bkj j = a("generic.armor_toughness", new bkq("attribute.name.generic.armor_toughness", 0.0, 0.0, 20.0).a(true));
+   public static final bkj k = a("generic.luck", new bkq("attribute.name.generic.luck", 0.0, -1024.0, 1024.0).a(true));
+   public static final bkj l = a("generic.max_absorption", new bkq("attribute.name.generic.max_absorption", 0.0, 0.0, 2048.0)).a(true);
+   public static final bkj m = a("zombie.spawn_reinforcements", new bkq("attribute.name.zombie.spawn_reinforcements", 0.0, 0.0, 1.0));
+   public static final bkj n = a("horse.jump_strength", new bkq("attribute.name.horse.jump_strength", 0.7, 0.0, 2.0).a(true));
 
-   public bko(String $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1);
-      this.b = $$2;
-      this.c = $$3;
-      if ($$2 > $$3) {
-         throw new IllegalArgumentException("Minimum value cannot be bigger than maximum value!");
-      } else if ($$1 < $$2) {
-         throw new IllegalArgumentException("Default value cannot be lower than minimum value!");
-      } else if ($$1 > $$3) {
-         throw new IllegalArgumentException("Default value cannot be bigger than maximum value!");
-      }
-   }
-
-   public double d() {
-      return this.b;
-   }
-
-   public double e() {
-      return this.c;
-   }
-
-   @Override
-   public double a(double $$0) {
-      return Double.isNaN($$0) ? this.b : arx.a($$0, this.b, this.c);
+   private static bkj a(String $$0, bkj $$1) {
+      return ht.a(jd.v, $$0, $$1);
    }
 }

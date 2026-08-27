@@ -21,7 +21,7 @@ public class qq implements ArgumentType<qp> {
       if ($$2.isPresent()) {
          return $$2.get();
       } else {
-         Message $$3 = tm.b("No such test: " + $$1);
+         Message $$3 = tn.b("No such test: " + $$1);
          throw new CommandSyntaxException(new SimpleCommandExceptionType($$3), $$3);
       }
    }

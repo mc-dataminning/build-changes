@@ -1,107 +1,89 @@
-public class cxx extends csv {
-   public static final dgh<hc.a> a = dfz.H;
-   protected static final int b = 2;
-   protected static final eig c = csv.a(0.0, 0.0, 6.0, 16.0, 16.0, 10.0);
-   protected static final eig d = csv.a(6.0, 0.0, 0.0, 10.0, 16.0, 16.0);
+import java.util.Optional;
 
-   public cxx(dfi.d $$0) {
+public class cxx extends ctf implements csz {
+   protected static final float a = 3.0F;
+   protected static final eii b = csx.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
+   private final aex<dnl<?, ?>> c;
+
+   public cxx(dfk.d $$0, aex<dnl<?, ?>> $$1) {
       super($$0);
-      this.k(this.C.b().a(a, hc.a.a));
+      this.c = $$1;
    }
 
    @Override
-   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
-      switch ((hc.a)$$0.c(a)) {
-         case c:
-            return d;
-         case a:
-         default:
-            return c;
-      }
+   public eii a(dfl $$0, cpd $$1, gw $$2, ehu $$3) {
+      return b;
    }
 
    @Override
-   public void b(dfj $$0, akr $$1, gw $$2, asc $$3) {
-      if ($$1.C_().j() && $$1.X().b(cpr.e) && $$3.a(2000) < $$1.ai().a()) {
-         while ($$1.a_($$2).a(this)) {
-            $$2 = $$2.d();
-         }
+   public void b(dfl $$0, aks $$1, gw $$2, ase $$3) {
+      if ($$3.a(25) == 0) {
+         int $$4 = 5;
+         int $$5 = 4;
 
-         if ($$1.a_($$2).a($$1, $$2, biu.bs)) {
-            biq $$4 = biu.bs.a($$1, $$2.c(), bjk.d);
-            if ($$4 != null) {
-               $$4.as();
+         for (gw $$6 : gw.a($$2.b(-4, -1, -4), $$2.b(4, 1, 4))) {
+            if ($$1.a_($$6).a(this)) {
+               if (--$$4 <= 0) {
+                  return;
+               }
             }
          }
+
+         gw $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
+
+         for (int $$8 = 0; $$8 < 4; $$8++) {
+            if ($$1.t($$7) && $$0.a($$1, $$7)) {
+               $$2 = $$7;
+            }
+
+            $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
+         }
+
+         if ($$1.t($$7) && $$0.a($$1, $$7)) {
+            $$1.a($$7, $$0, 2);
+         }
       }
    }
 
    @Override
-   public dfj a(dfj $$0, hc $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
-      hc.a $$6 = $$1.o();
-      hc.a $$7 = $$0.c(a);
-      boolean $$8 = $$7 != $$6 && $$6.d();
-      return !$$8 && !$$2.a(this) && !new ebk($$3, $$4, $$7).c() ? csw.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected boolean d(dfl $$0, cpd $$1, gw $$2) {
+      return $$0.i($$1, $$2);
    }
 
    @Override
-   public void a(dfj $$0, cpv $$1, gw $$2, biq $$3) {
-      if ($$3.cs()) {
-         $$3.f($$2);
-      }
+   public boolean a(dfl $$0, cqa $$1, gw $$2) {
+      gw $$3 = $$2.d();
+      dfl $$4 = $$1.a_($$3);
+      return $$4.a(apu.aZ) ? true : $$1.b($$2, 0) < 13 && this.d($$4, $$1, $$3);
    }
 
-   @Override
-   public void a(dfj $$0, cpv $$1, gw $$2, asc $$3) {
-      if ($$3.a(100) == 0) {
-         $$1.a((double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, ape.sU, apf.e, 0.5F, $$3.i() * 0.4F + 0.8F, false);
-      }
-
-      for (int $$4 = 0; $$4 < 4; $$4++) {
-         double $$5 = (double)$$2.u() + $$3.j();
-         double $$6 = (double)$$2.v() + $$3.j();
-         double $$7 = (double)$$2.w() + $$3.j();
-         double $$8 = ((double)$$3.i() - 0.5) * 0.5;
-         double $$9 = ((double)$$3.i() - 0.5) * 0.5;
-         double $$10 = ((double)$$3.i() - 0.5) * 0.5;
-         int $$11 = $$3.a(2) * 2 - 1;
-         if (!$$1.a_($$2.g()).a(this) && !$$1.a_($$2.h()).a(this)) {
-            $$5 = (double)$$2.u() + 0.5 + 0.25 * (double)$$11;
-            $$8 = (double)($$3.i() * 2.0F * (float)$$11);
+   public boolean a(aks $$0, gw $$1, dfl $$2, ase $$3) {
+      Optional<? extends hg<dnl<?, ?>>> $$4 = $$0.G_().d(je.as).b(this.c);
+      if ($$4.isEmpty()) {
+         return false;
+      } else {
+         $$0.a($$1, false);
+         if ($$4.get().a().a($$0, $$0.k().g(), $$3, $$1)) {
+            return true;
          } else {
-            $$7 = (double)$$2.w() + 0.5 + 0.25 * (double)$$11;
-            $$10 = (double)($$3.i() * 2.0F * (float)$$11);
+            $$0.a($$1, $$2, 3);
+            return false;
          }
-
-         $$1.a(ix.X, $$5, $$6, $$7, $$8, $$9, $$10);
       }
    }
 
    @Override
-   public cjf a(cpb $$0, gw $$1, dfj $$2) {
-      return cjf.b;
+   public boolean a(cqa $$0, gw $$1, dfl $$2) {
+      return true;
    }
 
    @Override
-   public dfj a(dfj $$0, czh $$1) {
-      switch ($$1) {
-         case d:
-         case b:
-            switch ((hc.a)$$0.c(a)) {
-               case c:
-                  return $$0.a(a, hc.a.a);
-               case a:
-                  return $$0.a(a, hc.a.c);
-               default:
-                  return $$0;
-            }
-         default:
-            return $$0;
-      }
+   public boolean a(cpx $$0, ase $$1, gw $$2, dfl $$3) {
+      return (double)$$1.i() < 0.4;
    }
 
    @Override
-   protected void a(dfk.a<csv, dfj> $$0) {
-      $$0.a(a);
+   public void a(aks $$0, ase $$1, gw $$2, dfl $$3) {
+      this.a($$0, $$2, $$3, $$1);
    }
 }

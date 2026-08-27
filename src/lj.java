@@ -12,39 +12,39 @@ import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 public class lj {
-   private final Optional<aex> a;
+   private final Optional<aey> a;
    private final Set<lm> b;
    private final Optional<String> c;
 
-   public lj(Optional<aex> $$0, Optional<String> $$1, lm... $$2) {
+   public lj(Optional<aey> $$0, Optional<String> $$1, lm... $$2) {
       this.a = $$0;
       this.c = $$1;
       this.b = ImmutableSet.copyOf($$2);
    }
 
-   public aex a(csv $$0, ll $$1, BiConsumer<aex, Supplier<JsonElement>> $$2) {
+   public aey a(csx $$0, ll $$1, BiConsumer<aey, Supplier<JsonElement>> $$2) {
       return this.a(li.a($$0, this.c.orElse("")), $$1, $$2);
    }
 
-   public aex a(csv $$0, String $$1, ll $$2, BiConsumer<aex, Supplier<JsonElement>> $$3) {
+   public aey a(csx $$0, String $$1, ll $$2, BiConsumer<aey, Supplier<JsonElement>> $$3) {
       return this.a(li.a($$0, $$1 + this.c.orElse("")), $$2, $$3);
    }
 
-   public aex b(csv $$0, String $$1, ll $$2, BiConsumer<aex, Supplier<JsonElement>> $$3) {
+   public aey b(csx $$0, String $$1, ll $$2, BiConsumer<aey, Supplier<JsonElement>> $$3) {
       return this.a(li.a($$0, $$1), $$2, $$3);
    }
 
-   public aex a(aex $$0, ll $$1, BiConsumer<aex, Supplier<JsonElement>> $$2) {
+   public aey a(aey $$0, ll $$1, BiConsumer<aey, Supplier<JsonElement>> $$2) {
       return this.a($$0, $$1, $$2, this::a);
    }
 
-   public aex a(aex $$0, ll $$1, BiConsumer<aex, Supplier<JsonElement>> $$2, lj.a $$3) {
-      Map<lm, aex> $$4 = this.a($$1);
+   public aey a(aey $$0, ll $$1, BiConsumer<aey, Supplier<JsonElement>> $$2, lj.a $$3) {
+      Map<lm, aey> $$4 = this.a($$1);
       $$2.accept($$0, () -> $$3.create($$0, $$4));
       return $$0;
    }
 
-   public JsonObject a(aex $$0, Map<lm, aex> $$1) {
+   public JsonObject a(aey $$0, Map<lm, aey> $$1) {
       JsonObject $$2 = new JsonObject();
       this.a.ifPresent($$1x -> $$2.addProperty("parent", $$1x.toString()));
       if (!$$1.isEmpty()) {
@@ -56,11 +56,11 @@ public class lj {
       return $$2;
    }
 
-   private Map<lm, aex> a(ll $$0) {
+   private Map<lm, aey> a(ll $$0) {
       return Streams.concat(new Stream[]{this.b.stream(), $$0.a()}).collect(ImmutableMap.toImmutableMap(Function.identity(), $$0::a));
    }
 
    public interface a {
-      JsonObject create(aex var1, Map<lm, aex> var2);
+      JsonObject create(aey var1, Map<lm, aey> var2);
    }
 }

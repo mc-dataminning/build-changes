@@ -1,85 +1,119 @@
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.exceptions.MinecraftClientHttpException;
-import com.mojang.authlib.minecraft.UserApiService;
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
-import com.mojang.datafixers.util.Unit;
+import com.mojang.authlib.GameProfile;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
 
-public interface fjq {
-   static fjq a(fjw $$0, UserApiService $$1) {
+public interface fjq extends fjp {
+   static fjq.a a(GameProfile $$0, uc $$1, fjo $$2) {
+      return new fjq.a($$0, $$1, $$2);
+   }
+
+   static fjq.b a(tn $$0, Instant $$1) {
       return new fjq.b($$0, $$1);
    }
 
-   CompletableFuture<Unit> a(UUID var1, fjy var2, AbuseReport var3);
+   tn b();
 
-   boolean a();
-
-   default AbuseReportLimits b() {
-      return AbuseReportLimits.DEFAULTS;
+   default tn c() {
+      return this.b();
    }
 
-   public static class a extends ul {
-      public a(tm $$0, Throwable $$1) {
-         super($$0, $$1);
+   boolean a(UUID var1);
+
+   public static record a(GameProfile c, uc d, fjo e) implements fjq {
+      public static final Codec<fjq.a> b = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  arh.u.fieldOf("profile").forGetter(fjq.a::f), uc.a.forGetter(fjq.a::g), fjo.d.optionalFieldOf("trust_level", fjo.a).forGetter(fjq.a::h)
+               )
+               .apply($$0, fjq.a::new)
+      );
+      private static final DateTimeFormatter f = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
+
+      @Override
+      public tn b() {
+         if (!this.d.n().a()) {
+            tn $$0 = this.d.n().b(this.d.b());
+            return (tn)($$0 != null ? $$0 : tn.h());
+         } else {
+            return this.d.c();
+         }
+      }
+
+      @Override
+      public tn c() {
+         tn $$0 = this.b();
+         tn $$1 = this.i();
+         return tn.a("gui.chatSelection.message.narrate", this.c.getName(), $$0, $$1);
+      }
+
+      public tn d() {
+         tn $$0 = this.i();
+         return tn.a("gui.chatSelection.heading", this.c.getName(), $$0);
+      }
+
+      private tn i() {
+         LocalDateTime $$0 = LocalDateTime.ofInstant(this.d.d(), ZoneOffset.systemDefault());
+         return tn.b($$0.format(f)).a(n.u, n.h);
+      }
+
+      @Override
+      public boolean a(UUID $$0) {
+         return this.d.a($$0);
+      }
+
+      public UUID e() {
+         return this.c.getId();
+      }
+
+      @Override
+      public fjp.a a() {
+         return fjp.a.a;
+      }
+
+      public GameProfile f() {
+         return this.c;
+      }
+
+      public uc g() {
+         return this.d;
+      }
+
+      public fjo h() {
+         return this.e;
       }
    }
 
-   public static record b(fjw a, UserApiService b) implements fjq {
-      private static final tm c = tm.c("gui.abuseReport.send.service_unavailable");
-      private static final tm d = tm.c("gui.abuseReport.send.http_error");
-      private static final tm e = tm.c("gui.abuseReport.send.json_error");
+   public static record b(tn c, Instant d) implements fjq {
+      public static final Codec<fjq.b> b = RecordCodecBuilder.create(
+         $$0 -> $$0.group(arh.b.fieldOf("message").forGetter(fjq.b::d), arh.m.fieldOf("time_stamp").forGetter(fjq.b::e)).apply($$0, fjq.b::new)
+      );
 
       @Override
-      public CompletableFuture<Unit> a(UUID $$0, fjy $$1, AbuseReport $$2) {
-         return CompletableFuture.supplyAsync(() -> {
-            AbuseReportRequest $$3 = new AbuseReportRequest(1, $$0, $$2, this.a.b(), this.a.c(), this.a.d(), $$1.a());
-
-            try {
-               this.b.reportAbuse($$3);
-               return Unit.INSTANCE;
-            } catch (MinecraftClientHttpException var7) {
-               tm $$5 = this.a(var7);
-               throw new CompletionException(new fjq.a($$5, var7));
-            } catch (MinecraftClientException var8) {
-               tm $$7 = this.a(var8);
-               throw new CompletionException(new fjq.a($$7, var8));
-            }
-         }, ac.g());
+      public tn b() {
+         return this.c;
       }
 
       @Override
-      public boolean a() {
-         return this.b.canSendReports();
-      }
-
-      private tm a(MinecraftClientHttpException $$0) {
-         return tm.a("gui.abuseReport.send.error_message", $$0.getMessage());
-      }
-
-      private tm a(MinecraftClientException $$0) {
-         return switch ($$0.getType()) {
-            case SERVICE_UNAVAILABLE -> c;
-            case HTTP_ERROR -> d;
-            case JSON_ERROR -> e;
-            default -> throw new IncompatibleClassChangeError();
-         };
+      public boolean a(UUID $$0) {
+         return false;
       }
 
       @Override
-      public AbuseReportLimits b() {
-         return this.b.getAbuseReportLimits();
+      public fjp.a a() {
+         return fjp.a.b;
       }
 
-      public fjw c() {
-         return this.a;
+      public tn d() {
+         return this.c;
       }
 
-      public UserApiService d() {
-         return this.b;
+      public Instant e() {
+         return this.d;
       }
    }
 }

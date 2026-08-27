@@ -1,79 +1,77 @@
-public class daw extends csv {
-   public static final dgj a = dfz.aw;
-   protected static final float b = 6.0F;
-   protected static final eig c = csv.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
+import javax.annotation.Nullable;
 
-   protected daw(dfi.d $$0) {
+public class daw extends csk implements cwb {
+   public static final dgj<dgv> a = dgb.bj;
+
+   protected daw(dfk.d $$0) {
       super($$0);
-      this.k(this.C.b().a(a, Integer.valueOf(0)));
+      this.k(this.C.b().a(a, dgv.b));
    }
 
    @Override
-   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
-      return c;
+   public dcx a(gw $$0, dfl $$1) {
+      return new dek($$0, $$1);
    }
 
    @Override
-   public void a(dfj $$0, akr $$1, gw $$2, asc $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
-   }
-
-   @Override
-   public void b(dfj $$0, akr $$1, gw $$2, asc $$3) {
-      if ($$1.t($$2.c())) {
-         int $$4 = 1;
-
-         while ($$1.a_($$2.c($$4)).a(this)) {
-            $$4++;
-         }
-
-         if ($$4 < 3) {
-            int $$5 = $$0.c(a);
-            if ($$5 == 15) {
-               $$1.b($$2.c(), this.n());
-               $$1.a($$2, $$0.a(a, Integer.valueOf(0)), 4);
-            } else {
-               $$1.a($$2, $$0.a(a, Integer.valueOf($$5 + 1)), 4);
-            }
-         }
-      }
-   }
-
-   @Override
-   public dfj a(dfj $$0, hc $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
-      if (!$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public boolean a(dfj $$0, cpy $$1, gw $$2) {
-      dfj $$3 = $$1.a_($$2.d());
-      if ($$3.a(this)) {
-         return true;
+   public bha a(dfl $$0, cpx $$1, gw $$2, cbw $$3, bgz $$4, ehl $$5) {
+      dcx $$6 = $$1.c_($$2);
+      if ($$6 instanceof dek) {
+         return ((dek)$$6).a($$3) ? bha.a($$1.B) : bha.d;
       } else {
-         if ($$3.a(apt.af) || $$3.a(apt.H)) {
-            gw $$4 = $$2.d();
-
-            for (hc $$5 : hc.c.a) {
-               dfj $$6 = $$1.a_($$4.a($$5));
-               eam $$7 = $$1.b_($$4.a($$5));
-               if ($$7.a(apy.a) || $$6.a(csw.kI)) {
-                  return true;
-               }
-            }
-         }
-
-         return false;
+         return bha.d;
       }
    }
 
    @Override
-   protected void a(dfk.a<csv, dfj> $$0) {
+   public void a(cpx $$0, gw $$1, dfl $$2, @Nullable bji $$3, cjh $$4) {
+      if (!$$0.B) {
+         if ($$3 != null) {
+            dcx $$5 = $$0.c_($$1);
+            if ($$5 instanceof dek) {
+               ((dek)$$5).a($$3);
+            }
+         }
+      }
+   }
+
+   @Override
+   public czc b_(dfl $$0) {
+      return czc.c;
+   }
+
+   @Override
+   protected void a(dfm.a<csx, dfl> $$0) {
       $$0.a(a);
+   }
+
+   @Override
+   public void a(dfl $$0, cpx $$1, gw $$2, csx $$3, gw $$4, boolean $$5) {
+      if ($$1 instanceof aks) {
+         if ($$1.c_($$2) instanceof dek $$7) {
+            boolean $$8 = $$1.B($$2);
+            boolean $$9 = $$7.G();
+            if ($$8 && !$$9) {
+               $$7.c(true);
+               this.a((aks)$$1, $$7);
+            } else if (!$$8 && $$9) {
+               $$7.c(false);
+            }
+         }
+      }
+   }
+
+   private void a(aks $$0, dek $$1) {
+      switch ($$1.y()) {
+         case a:
+            $$1.b(false);
+            break;
+         case b:
+            $$1.a($$0, false);
+            break;
+         case c:
+            $$1.E();
+         case d:
+      }
    }
 }

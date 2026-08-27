@@ -1,22 +1,41 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import java.util.Collection;
+import java.util.List;
 
-public record aba(aew<dis> a, aew<cpv> b, long c, cps d, @Nullable cps e, boolean f, boolean g, Optional<hf> h, int i) {
-   public aba(sp $$0) {
-      this(
-         $$0.a(je.au), $$0.a(je.aH), $$0.readLong(), cps.a($$0.readByte()), cps.b($$0.readByte()), $$0.readBoolean(), $$0.readBoolean(), $$0.b(sp::h), $$0.m()
-      );
+public class aba implements vf<wy> {
+   private final List<cmm<?>> a;
+
+   public aba(Collection<cmm<?>> $$0) {
+      this.a = Lists.newArrayList($$0);
    }
 
-   public void a(sp $$0) {
-      $$0.b(this.a);
-      $$0.b(this.b);
-      $$0.b(this.c);
-      $$0.k(this.d.a());
-      $$0.k(cps.a(this.e));
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h, sp::a);
-      $$0.c(this.i);
+   public aba(sq $$0) {
+      this.a = $$0.a(aba::b);
+   }
+
+   @Override
+   public void a(sq $$0) {
+      $$0.a(this.a, aba::a);
+   }
+
+   public void a(wy $$0) {
+      $$0.a(this);
+   }
+
+   public List<cmm<?>> a() {
+      return this.a;
+   }
+
+   private static cmm<?> b(sq $$0) {
+      aey $$1 = $$0.s();
+      aey $$2 = $$0.s();
+      cml<?> $$3 = jd.u.b($$1).orElseThrow(() -> new IllegalArgumentException("Unknown recipe serializer " + $$1)).a($$0);
+      return new cmm<>($$2, $$3);
+   }
+
+   public static <T extends cml<?>> void a(sq $$0, cmm<?> $$1) {
+      $$0.a(jd.u.b($$1.b().an_()));
+      $$0.a($$1.a());
+      ((cmo<cml<?>>)$$1.b().an_()).a($$0, $$1.b());
    }
 }

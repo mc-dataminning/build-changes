@@ -1,22 +1,17 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
 
-public class cas<E extends cak> {
-   public static bky<bjg> a(int $$0) {
-      return boj.a(
-         (Function<boj.b<bjg>, ? extends App<boj.c<bjg>, bom<bjg>>>)($$1 -> $$1.group($$1.b(bsh.ac), $$1.a(bsh.K))
-               .apply($$1, ($$2, $$3) -> ($$4, $$5, $$6) -> {
-                     if (!$$5.eT().b()) {
+public class cas {
+   public static bla<bji> a(int $$0) {
+      return bol.a(
+         (Function<bol.b<bji>, ? extends App<bol.c<bji>, boo<bji>>>)($$1 -> $$1.group($$1.b(bsj.K), $$1.c(bsj.ac), $$1.c(bsj.af), $$1.c(bsj.ae))
+               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$4x, $$5x, $$6) -> {
+                     byp $$7 = $$1.b($$2);
+                     if (!can.a($$7.q())) {
                         return false;
                      } else {
-                        Optional<byn> $$7 = $$1.a($$3);
-                        if ($$7.isPresent() && $$7.get().a($$5, (double)$$0)) {
-                           return false;
-                        } else {
-                           $$2.b();
-                           return true;
-                        }
+                        $$3.a(true, (long)$$0);
+                        return true;
                      }
                   }))
       );

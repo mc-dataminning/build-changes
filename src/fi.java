@@ -18,16 +18,16 @@ import java.util.function.Function;
 import javax.annotation.Nullable;
 
 public class fi {
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("argument.block.tag.disallowed"));
-   public static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tm.a("argument.block.id.invalid", $$0));
-   public static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> tm.a("argument.block.property.unknown", $$0, $$1));
-   public static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(($$0, $$1) -> tm.a("argument.block.property.duplicate", $$1, $$0));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tn.c("argument.block.tag.disallowed"));
+   public static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tn.a("argument.block.id.invalid", $$0));
+   public static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> tn.a("argument.block.property.unknown", $$0, $$1));
+   public static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(($$0, $$1) -> tn.a("argument.block.property.duplicate", $$1, $$0));
    public static final Dynamic3CommandExceptionType e = new Dynamic3CommandExceptionType(
-      ($$0, $$1, $$2) -> tm.a("argument.block.property.invalid", $$0, $$2, $$1)
+      ($$0, $$1, $$2) -> tn.a("argument.block.property.invalid", $$0, $$2, $$1)
    );
-   public static final Dynamic2CommandExceptionType f = new Dynamic2CommandExceptionType(($$0, $$1) -> tm.a("argument.block.property.novalue", $$0, $$1));
-   public static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(tm.c("argument.block.property.unclosed"));
-   public static final DynamicCommandExceptionType h = new DynamicCommandExceptionType($$0 -> tm.a("arguments.block.tag.unknown", $$0));
+   public static final Dynamic2CommandExceptionType f = new Dynamic2CommandExceptionType(($$0, $$1) -> tn.a("argument.block.property.novalue", $$0, $$1));
+   public static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(tn.c("argument.block.property.unclosed"));
+   public static final DynamicCommandExceptionType h = new DynamicCommandExceptionType($$0 -> tn.a("arguments.block.tag.unknown", $$0));
    private static final char i = '[';
    private static final char j = '{';
    private static final char k = ']';
@@ -35,35 +35,35 @@ public class fi {
    private static final char m = ',';
    private static final char n = '#';
    private static final Function<SuggestionsBuilder, CompletableFuture<Suggestions>> o = SuggestionsBuilder::buildFuture;
-   private final hi<csv> p;
+   private final hi<csx> p;
    private final StringReader q;
    private final boolean r;
    private final boolean s;
-   private final Map<dgm<?>, Comparable<?>> t = Maps.newHashMap();
+   private final Map<dgo<?>, Comparable<?>> t = Maps.newHashMap();
    private final Map<String, String> u = Maps.newHashMap();
-   private aex v = new aex("");
+   private aey v = new aey("");
    @Nullable
-   private dfk<csv, dfj> w;
+   private dfm<csx, dfl> w;
    @Nullable
-   private dfj x;
+   private dfl x;
    @Nullable
    private qy y;
    @Nullable
-   private hk<csv> z;
+   private hk<csx> z;
    private Function<SuggestionsBuilder, CompletableFuture<Suggestions>> A = o;
 
-   private fi(hi<csv> $$0, StringReader $$1, boolean $$2, boolean $$3) {
+   private fi(hi<csx> $$0, StringReader $$1, boolean $$2, boolean $$3) {
       this.p = $$0;
       this.q = $$1;
       this.r = $$2;
       this.s = $$3;
    }
 
-   public static fi.a a(hi<csv> $$0, String $$1, boolean $$2) throws CommandSyntaxException {
+   public static fi.a a(hi<csx> $$0, String $$1, boolean $$2) throws CommandSyntaxException {
       return a($$0, new StringReader($$1), $$2);
    }
 
-   public static fi.a a(hi<csv> $$0, StringReader $$1, boolean $$2) throws CommandSyntaxException {
+   public static fi.a a(hi<csx> $$0, StringReader $$1, boolean $$2) throws CommandSyntaxException {
       int $$3 = $$1.getCursor();
 
       try {
@@ -76,11 +76,11 @@ public class fi {
       }
    }
 
-   public static Either<fi.a, fi.b> b(hi<csv> $$0, String $$1, boolean $$2) throws CommandSyntaxException {
+   public static Either<fi.a, fi.b> b(hi<csx> $$0, String $$1, boolean $$2) throws CommandSyntaxException {
       return b($$0, new StringReader($$1), $$2);
    }
 
-   public static Either<fi.a, fi.b> b(hi<csv> $$0, StringReader $$1, boolean $$2) throws CommandSyntaxException {
+   public static Either<fi.a, fi.b> b(hi<csx> $$0, StringReader $$1, boolean $$2) throws CommandSyntaxException {
       int $$3 = $$1.getCursor();
 
       try {
@@ -93,7 +93,7 @@ public class fi {
       }
    }
 
-   public static CompletableFuture<Suggestions> a(hi<csv> $$0, SuggestionsBuilder $$1, boolean $$2, boolean $$3) {
+   public static CompletableFuture<Suggestions> a(hi<csx> $$0, SuggestionsBuilder $$1, boolean $$2, boolean $$3) {
       StringReader $$4 = new StringReader($$1.getInput());
       $$4.setCursor($$1.getStart());
       fi $$5 = new fi($$0, $$4, $$2, $$3);
@@ -154,7 +154,7 @@ public class fi {
    private CompletableFuture<Suggestions> c(SuggestionsBuilder $$0) {
       String $$1 = $$0.getRemaining().toLowerCase(Locale.ROOT);
 
-      for (dgm<?> $$2 : this.x.B()) {
+      for (dgo<?> $$2 : this.x.B()) {
          if (!this.t.containsKey($$2) && $$2.f().startsWith($$1)) {
             $$0.suggest($$2.f() + "=");
          }
@@ -166,8 +166,8 @@ public class fi {
    private CompletableFuture<Suggestions> d(SuggestionsBuilder $$0) {
       String $$1 = $$0.getRemaining().toLowerCase(Locale.ROOT);
       if (this.z != null) {
-         for (hg<csv> $$2 : this.z) {
-            for (dgm<?> $$3 : $$2.a().l().d()) {
+         for (hg<csx> $$2 : this.z) {
+            for (dgo<?> $$3 : $$2.a().l().d()) {
                if (!this.u.containsKey($$3.f()) && $$3.f().startsWith($$1)) {
                   $$0.suggest($$3.f() + "=");
                }
@@ -191,7 +191,7 @@ public class fi {
          return this.x.t();
       } else {
          if (this.z != null) {
-            for (hg<csv> $$0 : this.z) {
+            for (hg<csx> $$0 : this.z) {
                if ($$0.a().n().t()) {
                   return true;
                }
@@ -222,7 +222,7 @@ public class fi {
       return $$0.buildFuture();
    }
 
-   private static <T extends Comparable<T>> SuggestionsBuilder a(SuggestionsBuilder $$0, dgm<T> $$1) {
+   private static <T extends Comparable<T>> SuggestionsBuilder a(SuggestionsBuilder $$0, dgo<T> $$1) {
       for (T $$2 : $$1.a()) {
          if ($$2 instanceof Integer $$3) {
             $$0.suggest($$3);
@@ -237,15 +237,15 @@ public class fi {
    private CompletableFuture<Suggestions> a(SuggestionsBuilder $$0, String $$1) {
       boolean $$2 = false;
       if (this.z != null) {
-         for (hg<csv> $$3 : this.z) {
-            csv $$4 = $$3.a();
-            dgm<?> $$5 = $$4.l().a($$1);
+         for (hg<csx> $$3 : this.z) {
+            csx $$4 = $$3.a();
+            dgo<?> $$5 = $$4.l().a($$1);
             if ($$5 != null) {
                a($$0, $$5);
             }
 
             if (!$$2) {
-               for (dgm<?> $$6 : $$4.l().d()) {
+               for (dgo<?> $$6 : $$4.l().d()) {
                   if (!this.u.containsKey($$6.f())) {
                      $$2 = true;
                      break;
@@ -268,8 +268,8 @@ public class fi {
          boolean $$1 = false;
          boolean $$2 = false;
 
-         for (hg<csv> $$3 : this.z) {
-            csv $$4 = $$3.a();
+         for (hg<csx> $$3 : this.z) {
+            csx $$4 = $$3.a();
             $$1 |= !$$4.l().d().isEmpty();
             $$2 |= $$4.n().t();
             if ($$1 && $$2) {
@@ -304,11 +304,11 @@ public class fi {
    }
 
    private CompletableFuture<Suggestions> j(SuggestionsBuilder $$0) {
-      return dw.a(this.p.e().map(aqi::b), $$0, String.valueOf('#'));
+      return dw.a(this.p.e().map(aqj::b), $$0, String.valueOf('#'));
    }
 
    private CompletableFuture<Suggestions> k(SuggestionsBuilder $$0) {
-      return dw.a(this.p.c().map(aew::a), $$0);
+      return dw.a(this.p.c().map(aex::a), $$0);
    }
 
    private CompletableFuture<Suggestions> l(SuggestionsBuilder $$0) {
@@ -319,8 +319,8 @@ public class fi {
 
    private void c() throws CommandSyntaxException {
       int $$0 = this.q.getCursor();
-      this.v = aex.a(this.q);
-      csv $$1 = this.p.a(aew.a(je.e, this.v)).orElseThrow(() -> {
+      this.v = aey.a(this.q);
+      csx $$1 = this.p.a(aex.a(je.e, this.v)).orElseThrow(() -> {
          this.q.setCursor($$0);
          return b.createWithContext(this.q, this.v.toString());
       }).a();
@@ -335,8 +335,8 @@ public class fi {
          int $$0 = this.q.getCursor();
          this.q.expect('#');
          this.A = this::j;
-         aex $$1 = aex.a(this.q);
-         this.z = this.p.a(aqi.a(je.e, $$1)).orElseThrow(() -> {
+         aey $$1 = aey.a(this.q);
+         this.z = this.p.a(aqj.a(je.e, $$1)).orElseThrow(() -> {
             this.q.setCursor($$0);
             return h.createWithContext(this.q, $$1.toString());
          });
@@ -352,7 +352,7 @@ public class fi {
          this.q.skipWhitespace();
          int $$0 = this.q.getCursor();
          String $$1 = this.q.readString();
-         dgm<?> $$2 = this.w.a($$1);
+         dgo<?> $$2 = this.w.a($$1);
          if ($$2 == null) {
             this.q.setCursor($$0);
             throw c.createWithContext(this.q, this.v.toString(), $$1);
@@ -450,10 +450,10 @@ public class fi {
    }
 
    private void g() throws CommandSyntaxException {
-      this.y = new rs(this.q).f();
+      this.y = new rt(this.q).f();
    }
 
-   private <T extends Comparable<T>> void a(dgm<T> $$0, String $$1, int $$2) throws CommandSyntaxException {
+   private <T extends Comparable<T>> void a(dgo<T> $$0, String $$1, int $$2) throws CommandSyntaxException {
       Optional<T> $$3 = $$0.b($$1);
       if ($$3.isPresent()) {
          this.x = this.x.a($$0, $$3.get());
@@ -464,14 +464,14 @@ public class fi {
       }
    }
 
-   public static String a(dfj $$0) {
+   public static String a(dfl $$0) {
       StringBuilder $$1 = new StringBuilder($$0.c().e().map($$0x -> $$0x.a().toString()).orElse("air"));
       if (!$$0.B().isEmpty()) {
          $$1.append('[');
          boolean $$2 = false;
 
          for (UnmodifiableIterator var3 = $$0.C().entrySet().iterator(); var3.hasNext(); $$2 = true) {
-            Entry<dgm<?>, Comparable<?>> $$3 = (Entry<dgm<?>, Comparable<?>>)var3.next();
+            Entry<dgo<?>, Comparable<?>> $$3 = (Entry<dgo<?>, Comparable<?>>)var3.next();
             if ($$2) {
                $$1.append(',');
             }
@@ -485,15 +485,15 @@ public class fi {
       return $$1.toString();
    }
 
-   private static <T extends Comparable<T>> void a(StringBuilder $$0, dgm<T> $$1, Comparable<?> $$2) {
+   private static <T extends Comparable<T>> void a(StringBuilder $$0, dgo<T> $$1, Comparable<?> $$2) {
       $$0.append($$1.f());
       $$0.append('=');
       $$0.append($$1.a((T)$$2));
    }
 
-   public static record a(dfj a, Map<dgm<?>, Comparable<?>> b, @Nullable qy c) {
+   public static record a(dfl a, Map<dgo<?>, Comparable<?>> b, @Nullable qy c) {
    }
 
-   public static record b(hk<csv> a, Map<String, String> b, @Nullable qy c) {
+   public static record b(hk<csx> a, Map<String, String> b, @Nullable qy c) {
    }
 }

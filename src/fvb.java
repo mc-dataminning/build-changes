@@ -1,11 +1,39 @@
-public class fvb extends fun<bzn, fgq> {
-   private static final aex a = new aex("textures/entity/illager/ravager.png");
+public class fvb extends fup<bvm, fff<bvm>> {
+   private static final aey a = new aey("textures/entity/fish/pufferfish.png");
+   private int i = 3;
+   private final fff<bvm> j;
+   private final fff<bvm> k;
+   private final fff<bvm> l = this.a();
 
-   public fvb(fth.a $$0) {
-      super($$0, new fgq($$0.a(fib.aZ)), 1.1F);
+   public fvb(ftj.a $$0) {
+      super($$0, new fgm<>($$0.a(fid.aV)), 0.2F);
+      this.k = new fgn<>($$0.a(fid.aW));
+      this.j = new fgo<>($$0.a(fid.aX));
    }
 
-   public aex a(bzn $$0) {
+   public aey a(bvm $$0) {
       return a;
+   }
+
+   public void a(bvm $$0, float $$1, float $$2, elr $$3, fog $$4, int $$5) {
+      int $$6 = $$0.gf();
+      if ($$6 != this.i) {
+         if ($$6 == 0) {
+            this.f = this.j;
+         } else if ($$6 == 1) {
+            this.f = this.k;
+         } else {
+            this.f = this.l;
+         }
+      }
+
+      this.i = $$6;
+      this.d = 0.1F + 0.1F * (float)$$6;
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   protected void a(bvm $$0, elr $$1, float $$2, float $$3, float $$4) {
+      $$1.a(0.0F, ary.b($$2 * 0.05F) * 0.08F, 0.0F);
+      super.a($$0, $$1, $$2, $$3, $$4);
    }
 }

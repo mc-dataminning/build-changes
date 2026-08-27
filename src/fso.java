@@ -1,11 +1,15 @@
-public class fso extends fun<bwd, fen<bwd>> {
-   private static final aex a = new aex("textures/entity/camel/camel.png");
+public class fso extends fup<byu, fem<byu>> {
+   private static final aey a = new aey("textures/entity/blaze.png");
 
-   public fso(fth.a $$0, fia $$1) {
-      super($$0, new fen<>($$0.a($$1)), 0.7F);
+   public fso(ftj.a $$0) {
+      super($$0, new fem<>($$0.a(fid.l)), 0.5F);
    }
 
-   public aex a(bwd $$0) {
+   protected int a(byu $$0, gw $$1) {
+      return 15;
+   }
+
+   public aey a(byu $$0) {
       return a;
    }
 }

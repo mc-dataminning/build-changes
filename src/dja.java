@@ -1,24 +1,24 @@
-import java.util.UUID;
+import java.util.List;
 import java.util.stream.Stream;
 
-public interface dja {
-   int ah();
+public class dja<T> {
+   private final cpe a;
+   private final List<T> b;
 
-   UUID cv();
+   public dja(cpe $$0, List<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   gw dl();
+   public cpe a() {
+      return this.a;
+   }
 
-   ehi cG();
+   public Stream<T> b() {
+      return this.b.stream();
+   }
 
-   void a(djb var1);
-
-   Stream<? extends dja> cR();
-
-   Stream<? extends dja> cS();
-
-   void b(biq.c var1);
-
-   boolean dJ();
-
-   boolean dK();
+   public boolean c() {
+      return this.b.isEmpty();
+   }
 }

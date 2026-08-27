@@ -1,74 +1,112 @@
-import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
-import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleListIterator;
 import java.util.List;
 
 public class dzr {
-   private final dzs[] a;
-   private final double b;
+   private static final double a = 1.0181268882175227;
+   private static final double b = 0.3333333333333333;
    private final double c;
+   private final dzs d;
+   private final dzs e;
+   private final double f;
+   private final dzr.a g;
 
-   public dzr(asc $$0, List<Integer> $$1) {
-      this($$0, new IntRBTreeSet($$1));
+   @Deprecated
+   public static dzr a(ase $$0, dzr.a $$1) {
+      return new dzr($$0, $$1, false);
    }
 
-   private dzr(asc $$0, IntSortedSet $$1) {
-      if ($$1.isEmpty()) {
-         throw new IllegalArgumentException("Need some octaves!");
+   public static dzr a(ase $$0, int $$1, double... $$2) {
+      return b($$0, new dzr.a($$1, new DoubleArrayList($$2)));
+   }
+
+   public static dzr b(ase $$0, dzr.a $$1) {
+      return new dzr($$0, $$1, true);
+   }
+
+   private dzr(ase $$0, dzr.a $$1, boolean $$2) {
+      int $$3 = $$1.c;
+      DoubleList $$4 = $$1.d;
+      this.g = $$1;
+      if ($$2) {
+         this.d = dzs.b($$0, $$3, $$4);
+         this.e = dzs.b($$0, $$3, $$4);
       } else {
-         int $$2 = -$$1.firstInt();
-         int $$3 = $$1.lastInt();
-         int $$4 = $$2 + $$3 + 1;
-         if ($$4 < 1) {
-            throw new IllegalArgumentException("Total number of octaves needs to be >= 1");
-         } else {
-            dzs $$5 = new dzs($$0);
-            int $$6 = $$3;
-            this.a = new dzs[$$4];
-            if ($$3 >= 0 && $$3 < $$4 && $$1.contains(0)) {
-               this.a[$$3] = $$5;
-            }
+         this.d = dzs.a($$0, $$3, $$4);
+         this.e = dzs.a($$0, $$3, $$4);
+      }
 
-            for (int $$7 = $$3 + 1; $$7 < $$4; $$7++) {
-               if ($$7 >= 0 && $$1.contains($$6 - $$7)) {
-                  this.a[$$7] = new dzs($$0);
-               } else {
-                  $$0.b(262);
-               }
-            }
+      int $$5 = Integer.MAX_VALUE;
+      int $$6 = Integer.MIN_VALUE;
+      DoubleListIterator $$7 = $$4.iterator();
 
-            if ($$3 > 0) {
-               long $$8 = (long)($$5.a($$5.b, $$5.c, $$5.d) * 9.223372E18F);
-               asc $$9 = new dlr(new dkt($$8));
-
-               for (int $$10 = $$6 - 1; $$10 >= 0; $$10--) {
-                  if ($$10 < $$4 && $$1.contains($$6 - $$10)) {
-                     this.a[$$10] = new dzs($$9);
-                  } else {
-                     $$9.b(262);
-                  }
-               }
-            }
-
-            this.c = Math.pow(2.0, (double)$$3);
-            this.b = 1.0 / (Math.pow(2.0, (double)$$4) - 1.0);
+      while ($$7.hasNext()) {
+         int $$8 = $$7.nextIndex();
+         double $$9 = $$7.nextDouble();
+         if ($$9 != 0.0) {
+            $$5 = Math.min($$5, $$8);
+            $$6 = Math.max($$6, $$8);
          }
       }
+
+      this.c = 0.16666666666666666 / a($$6 - $$5);
+      this.f = (this.d.a() + this.e.a()) * this.c;
    }
 
-   public double a(double $$0, double $$1, boolean $$2) {
-      double $$3 = 0.0;
-      double $$4 = this.c;
-      double $$5 = this.b;
+   public double a() {
+      return this.f;
+   }
 
-      for (dzs $$6 : this.a) {
-         if ($$6 != null) {
-            $$3 += $$6.a($$0 * $$4 + ($$2 ? $$6.b : 0.0), $$1 * $$4 + ($$2 ? $$6.c : 0.0)) * $$5;
-         }
+   private static double a(int $$0) {
+      return 0.1 * (1.0 + 1.0 / (double)($$0 + 1));
+   }
 
-         $$4 /= 2.0;
-         $$5 *= 2.0;
+   public double a(double $$0, double $$1, double $$2) {
+      double $$3 = $$0 * 1.0181268882175227;
+      double $$4 = $$1 * 1.0181268882175227;
+      double $$5 = $$2 * 1.0181268882175227;
+      return (this.d.a($$0, $$1, $$2) + this.e.a($$3, $$4, $$5)) * this.c;
+   }
+
+   public dzr.a b() {
+      return this.g;
+   }
+
+   @VisibleForTesting
+   public void a(StringBuilder $$0) {
+      $$0.append("NormalNoise {");
+      $$0.append("first: ");
+      this.d.a($$0);
+      $$0.append(", second: ");
+      this.e.a($$0);
+      $$0.append("}");
+   }
+
+   public static record a(int c, DoubleList d) {
+      public static final Codec<dzr.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("firstOctave").forGetter(dzr.a::a), Codec.DOUBLE.listOf().fieldOf("amplitudes").forGetter(dzr.a::b))
+               .apply($$0, dzr.a::new)
+      );
+      public static final Codec<hg<dzr.a>> b = aeu.a(je.ax, a);
+
+      public a(int $$0, List<Double> $$1) {
+         this($$0, new DoubleArrayList($$1));
       }
 
-      return $$3;
+      public a(int $$0, double $$1, double... $$2) {
+         this($$0, ac.a(new DoubleArrayList($$2), $$1x -> $$1x.add(0, $$1)));
+      }
+
+      public int a() {
+         return this.c;
+      }
+
+      public DoubleList b() {
+         return this.d;
+      }
    }
 }

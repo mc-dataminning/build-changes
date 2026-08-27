@@ -1,645 +1,285 @@
 import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Optional;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.mutable.MutableBoolean;
-import org.apache.commons.lang3.mutable.MutableInt;
 
-public class ezo extends eyk {
-   private static final int a = 114;
-   private static final int b = 128;
-   private static final int c = 192;
-   private static final int k = 192;
-   private static final tm l = tm.c("book.editTitle");
-   private static final tm m = tm.c("book.finalizeWarning");
-   private static final ark n = ark.forward("_", ui.a.a(n.a));
-   private static final ark o = ark.forward("_", ui.a.a(n.h));
-   private final cbu p;
-   private final cjf q;
-   private boolean s;
-   private boolean t;
-   private int u;
-   private int v;
-   private final List<String> w = Lists.newArrayList();
-   private String x = "";
-   private final evh y = new evh(this::N, this::b, this::l, this::a, $$0x -> $$0x.length() < 1024 && this.i.b($$0x, 114) <= 128);
-   private final evh z = new evh(() -> this.x, $$0x -> this.x = $$0x, this::l, this::a, $$0x -> $$0x.length() < 16);
-   private long A;
-   private int B = -1;
-   private fap C;
-   private fap D;
-   private esq E;
-   private esq F;
-   private esq G;
-   private esq H;
-   private final bgx I;
+public class ezo extends ezk<ceq> {
+   private static final aey x = new aey("textures/gui/container/beacon.png");
+   static final aey y = new aey("container/beacon/button_disabled");
+   static final aey z = new aey("container/beacon/button_selected");
+   static final aey A = new aey("container/beacon/button_highlighted");
+   static final aey B = new aey("container/beacon/button");
+   static final aey C = new aey("container/beacon/confirm");
+   static final aey D = new aey("container/beacon/cancel");
+   private static final tn E = tn.c("block.minecraft.beacon.primary");
+   private static final tn F = tn.c("block.minecraft.beacon.secondary");
+   private final List<ezo.a> G = Lists.newArrayList();
    @Nullable
-   private ezo.a J = ezo.a.a;
-   private tm K = tl.a;
-   private final tm L;
+   bid H;
+   @Nullable
+   bid I;
 
-   public ezo(cbu $$0, cjf $$1, bgx $$2) {
-      super(eqn.a);
-      this.p = $$0;
-      this.q = $$1;
-      this.I = $$2;
-      qy $$3 = $$1.v();
-      if ($$3 != null) {
-         ezp.a($$3, this.w::add);
-      }
+   public ezo(final ceq $$0, cbv $$1, tn $$2) {
+      super($$0, $$1, $$2);
+      this.c = 230;
+      this.k = 219;
+      $$0.a(new cez() {
+         @Override
+         public void a(cen $$0x, int $$1, cjh $$2) {
+         }
 
-      if (this.w.isEmpty()) {
-         this.w.add("");
-      }
-
-      this.L = tm.a("book.byAuthor", $$0.ab()).a(n.i);
+         @Override
+         public void a(cen $$0x, int $$1, int $$2) {
+            ezo.this.H = $$0.m();
+            ezo.this.I = $$0.n();
+         }
+      });
    }
 
-   private void a(String $$0) {
-      if (this.f != null) {
-         evh.a(this.f, $$0);
-      }
-   }
-
-   private String l() {
-      return this.f != null ? evh.b(this.f) : "";
-   }
-
-   private int D() {
-      return this.w.size();
+   private <T extends esq & ezo.a> void a(T $$0) {
+      this.d($$0);
+      this.G.add($$0);
    }
 
    @Override
-   public void c() {
-      super.c();
-      this.u++;
+   protected void aH_() {
+      super.aH_();
+      this.G.clear();
+      this.a(new ezo.c(this.t + 164, this.u + 107));
+      this.a(new ezo.b(this.t + 190, this.u + 107));
+
+      for (int $$0 = 0; $$0 <= 2; $$0++) {
+         int $$1 = dcs.a[$$0].length;
+         int $$2 = $$1 * 22 + ($$1 - 1) * 2;
+
+         for (int $$3 = 0; $$3 < $$1; $$3++) {
+            bid $$4 = dcs.a[$$0][$$3];
+            ezo.d $$5 = new ezo.d(this.t + 76 + $$3 * 24 - $$2 / 2, this.u + 22 + $$0 * 25, $$4, true, $$0);
+            $$5.i = false;
+            this.a($$5);
+         }
+      }
+
+      int $$6 = 3;
+      int $$7 = dcs.a[3].length + 1;
+      int $$8 = $$7 * 22 + ($$7 - 1) * 2;
+
+      for (int $$9 = 0; $$9 < $$7 - 1; $$9++) {
+         bid $$10 = dcs.a[3][$$9];
+         ezo.d $$11 = new ezo.d(this.t + 167 + $$9 * 24 - $$8 / 2, this.u + 47, $$10, false, 3);
+         $$11.i = false;
+         this.a($$11);
+      }
+
+      ezo.d $$12 = new ezo.g(this.t + 167 + ($$7 - 1) * 24 - $$8 / 2, this.u + 47, dcs.a[0][0]);
+      $$12.j = false;
+      this.a($$12);
    }
 
    @Override
-   protected void aI_() {
-      this.P();
-      this.F = this.d((esq)esq.a(tm.c("book.signButton"), $$0x -> {
-         this.t = true;
-         this.G();
-      }).a(this.g / 2 - 100, 196, 98, 20).a());
-      this.E = this.d((esq)esq.a(tl.d, $$0x -> {
-         this.f.a(null);
-         this.c(false);
-      }).a(this.g / 2 + 2, 196, 98, 20).a());
-      this.G = this.d((esq)esq.a(tm.c("book.finalizeButton"), $$0x -> {
-         if (this.t) {
-            this.c(true);
-            this.f.a(null);
-         }
-      }).a(this.g / 2 - 100, 196, 98, 20).a());
-      this.H = this.d((esq)esq.a(tl.e, $$0x -> {
-         if (this.t) {
-            this.t = false;
-         }
-
-         this.G();
-      }).a(this.g / 2 + 2, 196, 98, 20).a());
-      int $$0 = (this.g - 192) / 2;
-      int $$1 = 2;
-      this.C = this.d(new fap($$0 + 116, 159, true, $$0x -> this.F(), true));
-      this.D = this.d(new fap($$0 + 43, 159, false, $$0x -> this.E(), true));
-      this.G();
+   public void D() {
+      super.D();
+      this.F();
    }
 
-   private void E() {
-      if (this.v > 0) {
-         this.v--;
-      }
-
-      this.G();
-      this.Q();
-   }
-
-   private void F() {
-      if (this.v < this.D() - 1) {
-         this.v++;
-      } else {
-         this.I();
-         if (this.v < this.D() - 1) {
-            this.v++;
-         }
-      }
-
-      this.G();
-      this.Q();
-   }
-
-   private void G() {
-      this.D.j = !this.t && this.v > 0;
-      this.C.j = !this.t;
-      this.E.j = !this.t;
-      this.F.j = !this.t;
-      this.H.j = this.t;
-      this.G.j = this.t;
-      this.G.i = !ac.b(this.x);
-   }
-
-   private void H() {
-      ListIterator<String> $$0 = this.w.listIterator(this.w.size());
-
-      while ($$0.hasPrevious() && $$0.previous().isEmpty()) {
-         $$0.remove();
-      }
-   }
-
-   private void c(boolean $$0) {
-      if (this.s) {
-         this.H();
-         this.e($$0);
-         int $$1 = this.I == bgx.a ? this.p.fR().l : 40;
-         this.f.J().b(new abu($$1, this.w, $$0 ? Optional.of(this.x.trim()) : Optional.empty()));
-      }
-   }
-
-   private void e(boolean $$0) {
-      re $$1 = new re();
-      this.w.stream().map(rp::a).forEach($$1::add);
-      if (!this.w.isEmpty()) {
-         this.q.a("pages", $$1);
-      }
-
-      if ($$0) {
-         this.q.a("author", rp.a(this.p.fQ().getName()));
-         this.q.a("title", rp.a(this.x.trim()));
-      }
-   }
-
-   private void I() {
-      if (this.D() < 100) {
-         this.w.add("");
-         this.s = true;
-      }
+   void F() {
+      int $$0 = this.p.l();
+      this.G.forEach($$1 -> $$1.a($$0));
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (super.a($$0, $$1, $$2)) {
-         return true;
-      } else if (this.t) {
-         return this.d($$0, $$1, $$2);
-      } else {
-         boolean $$3 = this.c($$0, $$1, $$2);
-         if ($$3) {
-            this.P();
-            return true;
-         } else {
-            return false;
-         }
-      }
+   protected void b(esh $$0, int $$1, int $$2) {
+      $$0.a(this.i, E, 62, 10, 14737632);
+      $$0.a(this.i, F, 169, 10, 14737632);
    }
 
    @Override
-   public boolean a(char $$0, int $$1) {
-      if (super.a($$0, $$1)) {
-         return true;
-      } else if (this.t) {
-         boolean $$2 = this.z.a($$0);
-         if ($$2) {
-            this.G();
-            this.s = true;
-            return true;
-         } else {
-            return false;
-         }
-      } else if (aa.a($$0)) {
-         this.y.a(Character.toString($$0));
-         this.P();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private boolean c(int $$0, int $$1, int $$2) {
-      if (eyk.g($$0)) {
-         this.y.d();
-         return true;
-      } else if (eyk.f($$0)) {
-         this.y.c();
-         return true;
-      } else if (eyk.e($$0)) {
-         this.y.b();
-         return true;
-      } else if (eyk.d($$0)) {
-         this.y.a();
-         return true;
-      } else {
-         evh.a $$3 = eyk.p() ? evh.a.b : evh.a.a;
-         switch ($$0) {
-            case 257:
-            case 335:
-               this.y.a("\n");
-               return true;
-            case 259:
-               this.y.a(-1, $$3);
-               return true;
-            case 261:
-               this.y.a(1, $$3);
-               return true;
-            case 262:
-               this.y.a(1, eyk.q(), $$3);
-               return true;
-            case 263:
-               this.y.a(-1, eyk.q(), $$3);
-               return true;
-            case 264:
-               this.K();
-               return true;
-            case 265:
-               this.J();
-               return true;
-            case 266:
-               this.D.c();
-               return true;
-            case 267:
-               this.C.c();
-               return true;
-            case 268:
-               this.L();
-               return true;
-            case 269:
-               this.M();
-               return true;
-            default:
-               return false;
-         }
-      }
-   }
-
-   private void J() {
-      this.a(-1);
-   }
-
-   private void K() {
-      this.a(1);
-   }
-
-   private void a(int $$0) {
-      int $$1 = this.y.g();
-      int $$2 = this.O().a($$1, $$0);
-      this.y.c($$2, eyk.q());
-   }
-
-   private void L() {
-      if (eyk.p()) {
-         this.y.a(eyk.q());
-      } else {
-         int $$0 = this.y.g();
-         int $$1 = this.O().a($$0);
-         this.y.c($$1, eyk.q());
-      }
-   }
-
-   private void M() {
-      if (eyk.p()) {
-         this.y.b(eyk.q());
-      } else {
-         ezo.a $$0 = this.O();
-         int $$1 = this.y.g();
-         int $$2 = $$0.b($$1);
-         this.y.c($$2, eyk.q());
-      }
-   }
-
-   private boolean d(int $$0, int $$1, int $$2) {
-      switch ($$0) {
-         case 257:
-         case 335:
-            if (!this.x.isEmpty()) {
-               this.c(true);
-               this.f.a(null);
-            }
-
-            return true;
-         case 259:
-            this.z.e(-1);
-            this.G();
-            this.s = true;
-            return true;
-         default:
-            return false;
-      }
-   }
-
-   private String N() {
-      return this.v >= 0 && this.v < this.w.size() ? this.w.get(this.v) : "";
-   }
-
-   private void b(String $$0) {
-      if (this.v >= 0 && this.v < this.w.size()) {
-         this.w.set(this.v, $$0);
-         this.s = true;
-         this.P();
-      }
+   protected void a(esh $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.g - this.c) / 2;
+      int $$5 = (this.h - this.k) / 2;
+      $$0.a(x, $$4, $$5, 0, 0, this.c, this.k);
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, 100.0F);
+      $$0.a(new cjh(cjk.nV), $$4 + 20, $$5 + 109);
+      $$0.a(new cjh(cjk.nL), $$4 + 41, $$5 + 109);
+      $$0.a(new cjh(cjk.nK), $$4 + 41 + 22, $$5 + 109);
+      $$0.a(new cjh(cjk.nU), $$4 + 42 + 44, $$5 + 109);
+      $$0.a(new cjh(cjk.nQ), $$4 + 42 + 66, $$5 + 109);
+      $$0.c().b();
    }
 
    @Override
-   public void a(esf $$0, int $$1, int $$2, float $$3) {
+   public void a(esh $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.a(null);
-      int $$4 = (this.g - 192) / 2;
-      int $$5 = 2;
-      if (this.t) {
-         boolean $$6 = this.u / 6 % 2 == 0;
-         ark $$7 = ark.composite(ark.forward(this.x, ui.a), $$6 ? n : o);
-         int $$8 = this.i.a(l);
-         $$0.a(this.i, l, $$4 + 36 + (114 - $$8) / 2, 34, 0, false);
-         int $$9 = this.i.a($$7);
-         $$0.a(this.i, $$7, $$4 + 36 + (114 - $$9) / 2, 50, 0, false);
-         int $$10 = this.i.a(this.L);
-         $$0.a(this.i, this.L, $$4 + 36 + (114 - $$10) / 2, 60, 0, false);
-         $$0.a(this.i, m, $$4 + 36, 82, 114, 0);
-      } else {
-         int $$11 = this.i.a(this.K);
-         $$0.a(this.i, this.K, $$4 - $$11 + 192 - 44, 18, 0, false);
-         ezo.a $$12 = this.O();
+      this.a($$0, $$1, $$2);
+   }
 
-         for (ezo.b $$13 : $$12.f) {
-            $$0.a(this.i, $$13.c, $$13.d, $$13.e, -16777216, false);
-         }
+   interface a {
+      void a(int var1);
+   }
 
-         this.a($$0, $$12.g);
-         this.a($$0, $$12.c, $$12.d);
+   class b extends ezo.f {
+      public b(int $$0, int $$1) {
+         super($$0, $$1, ezo.D, tm.e);
+      }
+
+      @Override
+      public void c() {
+         ezo.this.f.s.q();
+      }
+
+      @Override
+      public void a(int $$0) {
       }
    }
 
-   @Override
-   public void b(esf $$0, int $$1, int $$2, float $$3) {
-      super.b($$0, $$1, $$2, $$3);
-      $$0.a(ezp.l, (this.g - 192) / 2, 2, 0, 0, 192, 192);
-   }
+   class c extends ezo.f {
+      public c(int $$0, int $$1) {
+         super($$0, $$1, ezo.C, tm.d);
+      }
 
-   private void a(esf $$0, ezo.c $$1, boolean $$2) {
-      if (this.u / 6 % 2 == 0) {
-         $$1 = this.b($$1);
-         if (!$$2) {
-            $$0.a($$1.a, $$1.b - 1, $$1.a + 1, $$1.b + 9, -16777216);
-         } else {
-            $$0.a(this.i, "_", $$1.a, $$1.b, 0, false);
-         }
+      @Override
+      public void c() {
+         ezo.this.f.J().b(new aco(Optional.ofNullable(ezo.this.H), Optional.ofNullable(ezo.this.I)));
+         ezo.this.f.s.q();
+      }
+
+      @Override
+      public void a(int $$0) {
+         this.i = ezo.this.p.o() && ezo.this.H != null;
       }
    }
 
-   private void a(esf $$0, foj[] $$1) {
-      for (foj $$2 : $$1) {
-         int $$3 = $$2.a();
-         int $$4 = $$2.b();
-         int $$5 = $$3 + $$2.c();
-         int $$6 = $$4 + $$2.d();
-         $$0.a(fom.E(), $$3, $$4, $$5, $$6, -16776961);
-      }
-   }
+   class d extends ezo.e {
+      private final boolean c;
+      protected final int a;
+      private bid d;
+      private fzg l;
 
-   private ezo.c a(ezo.c $$0) {
-      return new ezo.c($$0.a - (this.g - 192) / 2 - 36, $$0.b - 32);
-   }
-
-   private ezo.c b(ezo.c $$0) {
-      return new ezo.c($$0.a + (this.g - 192) / 2 + 36, $$0.b + 32);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (super.a($$0, $$1, $$2)) {
-         return true;
-      } else {
-         if ($$2 == 0) {
-            long $$3 = ac.b();
-            ezo.a $$4 = this.O();
-            int $$5 = $$4.a(this.i, this.a(new ezo.c((int)$$0, (int)$$1)));
-            if ($$5 >= 0) {
-               if ($$5 != this.B || $$3 - this.A >= 250L) {
-                  this.y.c($$5, eyk.q());
-               } else if (!this.y.i()) {
-                  this.b($$5);
-               } else {
-                  this.y.d();
-               }
-
-               this.P();
-            }
-
-            this.B = $$5;
-            this.A = $$3;
-         }
-
-         return true;
-      }
-   }
-
-   private void b(int $$0) {
-      String $$1 = this.N();
-      this.y.a(erh.a($$1, -1, $$0, false), erh.a($$1, 1, $$0, false));
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      if (super.a($$0, $$1, $$2, $$3, $$4)) {
-         return true;
-      } else {
-         if ($$2 == 0) {
-            ezo.a $$5 = this.O();
-            int $$6 = $$5.a(this.i, this.a(new ezo.c((int)$$0, (int)$$1)));
-            this.y.c($$6, true);
-            this.P();
-         }
-
-         return true;
-      }
-   }
-
-   private ezo.a O() {
-      if (this.J == null) {
-         this.J = this.R();
-         this.K = tm.a("book.pageIndicator", this.v + 1, this.D());
+      public d(int $$0, int $$1, bid $$2, boolean $$3, int $$4) {
+         super($$0, $$1);
+         this.c = $$3;
+         this.a = $$4;
+         this.a($$2);
       }
 
-      return this.J;
-   }
+      protected void a(bid $$0) {
+         this.d = $$0;
+         this.l = eqx.O().aE().a($$0);
+         this.a(euc.a(this.b($$0), null));
+      }
 
-   private void P() {
-      this.J = null;
-   }
+      protected ua b(bid $$0) {
+         return tn.c($$0.d());
+      }
 
-   private void Q() {
-      this.y.f();
-      this.P();
-   }
-
-   private ezo.a R() {
-      String $$0 = this.N();
-      if ($$0.isEmpty()) {
-         return ezo.a.a;
-      } else {
-         int $$1 = this.y.g();
-         int $$2 = this.y.h();
-         IntList $$3 = new IntArrayList();
-         List<ezo.b> $$4 = Lists.newArrayList();
-         MutableInt $$5 = new MutableInt();
-         MutableBoolean $$6 = new MutableBoolean();
-         erh $$7 = this.i.b();
-         $$7.a($$0, 114, ui.a, true, ($$5x, $$6x, $$7x) -> {
-            int $$8x = $$5.getAndIncrement();
-            String $$9x = $$0.substring($$6x, $$7x);
-            $$6.setValue($$9x.endsWith("\n"));
-            String $$10 = StringUtils.stripEnd($$9x, " \n");
-            int $$11 = $$8x * 9;
-            ezo.c $$12 = this.b(new ezo.c(0, $$11));
-            $$3.add($$6x);
-            $$4.add(new ezo.b($$5x, $$10, $$12.a, $$12.b));
-         });
-         int[] $$8 = $$3.toIntArray();
-         boolean $$9 = $$1 == $$0.length();
-         ezo.c $$10;
-         if ($$9 && $$6.isTrue()) {
-            $$10 = new ezo.c(0, $$4.size() * 9);
-         } else {
-            int $$11 = a($$8, $$1);
-            int $$12 = this.i.b($$0.substring($$8[$$11], $$1));
-            $$10 = new ezo.c($$12, $$11 * 9);
-         }
-
-         List<foj> $$14 = Lists.newArrayList();
-         if ($$1 != $$2) {
-            int $$15 = Math.min($$1, $$2);
-            int $$16 = Math.max($$1, $$2);
-            int $$17 = a($$8, $$15);
-            int $$18 = a($$8, $$16);
-            if ($$17 == $$18) {
-               int $$19 = $$17 * 9;
-               int $$20 = $$8[$$17];
-               $$14.add(this.a($$0, $$7, $$15, $$16, $$19, $$20));
+      @Override
+      public void c() {
+         if (!this.a()) {
+            if (this.c) {
+               ezo.this.H = this.d;
             } else {
-               int $$21 = $$17 + 1 > $$8.length ? $$0.length() : $$8[$$17 + 1];
-               $$14.add(this.a($$0, $$7, $$15, $$21, $$17 * 9, $$8[$$17]));
-
-               for (int $$22 = $$17 + 1; $$22 < $$18; $$22++) {
-                  int $$23 = $$22 * 9;
-                  String $$24 = $$0.substring($$8[$$22], $$8[$$22 + 1]);
-                  int $$25 = (int)$$7.a($$24);
-                  $$14.add(this.a(new ezo.c(0, $$23), new ezo.c($$25, $$23 + 9)));
-               }
-
-               $$14.add(this.a($$0, $$7, $$8[$$18], $$16, $$18 * 9, $$8[$$18]));
+               ezo.this.I = this.d;
             }
+
+            ezo.this.F();
          }
+      }
 
-         return new ezo.a($$0, $$10, $$9, $$8, $$4.toArray(new ezo.b[0]), $$14.toArray(new foj[0]));
+      @Override
+      protected void a(esh $$0) {
+         $$0.a(this.r() + 2, this.t() + 2, 0, 18, 18, this.l);
+      }
+
+      @Override
+      public void a(int $$0) {
+         this.i = this.a < $$0;
+         this.b(this.d == (this.c ? ezo.this.H : ezo.this.I));
+      }
+
+      @Override
+      protected ua aE_() {
+         return this.b(this.d);
       }
    }
 
-   static int a(int[] $$0, int $$1) {
-      int $$2 = Arrays.binarySearch($$0, $$1);
-      return $$2 < 0 ? -($$2 + 2) : $$2;
-   }
+   abstract static class e extends esk implements ezo.a {
+      private boolean a;
 
-   private foj a(String $$0, erh $$1, int $$2, int $$3, int $$4, int $$5) {
-      String $$6 = $$0.substring($$5, $$2);
-      String $$7 = $$0.substring($$5, $$3);
-      ezo.c $$8 = new ezo.c((int)$$1.a($$6), $$4);
-      ezo.c $$9 = new ezo.c((int)$$1.a($$7), $$4 + 9);
-      return this.a($$8, $$9);
-   }
-
-   private foj a(ezo.c $$0, ezo.c $$1) {
-      ezo.c $$2 = this.b($$0);
-      ezo.c $$3 = this.b($$1);
-      int $$4 = Math.min($$2.a, $$3.a);
-      int $$5 = Math.max($$2.a, $$3.a);
-      int $$6 = Math.min($$2.b, $$3.b);
-      int $$7 = Math.max($$2.b, $$3.b);
-      return new foj($$4, $$6, $$5 - $$4, $$7 - $$6);
-   }
-
-   static class a {
-      static final ezo.a a = new ezo.a("", new ezo.c(0, 0), true, new int[]{0}, new ezo.b[]{new ezo.b(ui.a, "", 0, 0)}, new foj[0]);
-      private final String b;
-      final ezo.c c;
-      final boolean d;
-      private final int[] e;
-      final ezo.b[] f;
-      final foj[] g;
-
-      public a(String $$0, ezo.c $$1, boolean $$2, int[] $$3, ezo.b[] $$4, foj[] $$5) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
-         this.g = $$5;
+      protected e(int $$0, int $$1) {
+         super($$0, $$1, 22, 22, tm.a);
       }
 
-      public int a(esd $$0, ezo.c $$1) {
-         int $$2 = $$1.b / 9;
-         if ($$2 < 0) {
-            return 0;
-         } else if ($$2 >= this.f.length) {
-            return this.b.length();
+      protected e(int $$0, int $$1, tn $$2) {
+         super($$0, $$1, 22, 22, $$2);
+      }
+
+      @Override
+      public void b(esh $$0, int $$1, int $$2, float $$3) {
+         aey $$4;
+         if (!this.i) {
+            $$4 = ezo.y;
+         } else if (this.a) {
+            $$4 = ezo.z;
+         } else if (this.o()) {
+            $$4 = ezo.A;
          } else {
-            ezo.b $$3 = this.f[$$2];
-            return this.e[$$2] + $$0.b().a($$3.b, $$1.a, $$3.a);
+            $$4 = ezo.B;
          }
+
+         $$0.a($$4, this.r(), this.t(), this.f, this.g);
+         this.a($$0);
       }
 
-      public int a(int $$0, int $$1) {
-         int $$2 = ezo.a(this.e, $$0);
-         int $$3 = $$2 + $$1;
-         int $$6;
-         if (0 <= $$3 && $$3 < this.e.length) {
-            int $$4 = $$0 - this.e[$$2];
-            int $$5 = this.f[$$3].b.length();
-            $$6 = this.e[$$3] + Math.min($$4, $$5);
+      protected abstract void a(esh var1);
+
+      public boolean a() {
+         return this.a;
+      }
+
+      public void b(boolean $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public void a(ewk $$0) {
+         this.c($$0);
+      }
+   }
+
+   abstract static class f extends ezo.e {
+      private final aey a;
+
+      protected f(int $$0, int $$1, aey $$2, tn $$3) {
+         super($$0, $$1, $$3);
+         this.a = $$2;
+      }
+
+      @Override
+      protected void a(esh $$0) {
+         $$0.a(this.a, this.r() + 2, this.t() + 2, 18, 18);
+      }
+   }
+
+   class g extends ezo.d {
+      public g(int $$0, int $$1, bid $$2) {
+         super($$0, $$1, $$2, false, 3);
+      }
+
+      @Override
+      protected ua b(bid $$0) {
+         return tn.c($$0.d()).f(" II");
+      }
+
+      @Override
+      public void a(int $$0) {
+         if (ezo.this.H != null) {
+            this.j = true;
+            this.a(ezo.this.H);
+            super.a($$0);
          } else {
-            $$6 = $$0;
+            this.j = false;
          }
-
-         return $$6;
-      }
-
-      public int a(int $$0) {
-         int $$1 = ezo.a(this.e, $$0);
-         return this.e[$$1];
-      }
-
-      public int b(int $$0) {
-         int $$1 = ezo.a(this.e, $$0);
-         return this.e[$$1] + this.f[$$1].b.length();
-      }
-   }
-
-   static class b {
-      final ui a;
-      final String b;
-      final tm c;
-      final int d;
-      final int e;
-
-      public b(ui $$0, String $$1, int $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.d = $$2;
-         this.e = $$3;
-         this.c = tm.b($$1).b($$0);
-      }
-   }
-
-   static class c {
-      public final int a;
-      public final int b;
-
-      c(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
       }
    }
 }

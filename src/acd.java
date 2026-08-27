@@ -1,40 +1,24 @@
-public class acd implements ve<abd> {
+public class acd implements vf<abe> {
    private final int a;
-   private final aex b;
-   private final boolean c;
 
-   public acd(int $$0, cmk<?> $$1, boolean $$2) {
+   public acd(int $$0) {
       this.a = $$0;
-      this.b = $$1.a();
-      this.c = $$2;
    }
 
-   public acd(sp $$0) {
-      this.a = $$0.readByte();
-      this.b = $$0.s();
-      this.c = $$0.readBoolean();
+   public acd(sq $$0) {
+      this.a = $$0.m();
    }
 
    @Override
-   public void a(sp $$0) {
-      $$0.k(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
+   public void a(sq $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(abd $$0) {
+   public void a(abe $$0) {
       $$0.a(this);
    }
 
    public int a() {
       return this.a;
-   }
-
-   public aex d() {
-      return this.b;
-   }
-
-   public boolean e() {
-      return this.c;
    }
 }

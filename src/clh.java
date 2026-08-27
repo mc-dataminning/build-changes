@@ -1,100 +1,54 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.UnaryOperator;
-import org.slf4j.Logger;
-
 public class clh {
-   public static final Codec<clh> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(cli.b.fieldOf("material").forGetter(clh::b), clk.b.fieldOf("pattern").forGetter(clh::a)).apply($$0, clh::new)
-   );
-   private static final Logger c = LogUtils.getLogger();
-   public static final String b = "Trim";
-   private static final tm d = tm.c(ac.a("item", new aex("smithing_template.upgrade"))).a(n.h);
-   private final hg<cli> e;
-   private final hg<clk> f;
-   private final Function<cgq, aex> g;
-   private final Function<cgq, aex> h;
+   public static aex<cle> a = aex.a(je.V, new aey("empty"));
+   public static final cle b = a(a, new cle());
+   public static final cle c = a("water", new cle());
+   public static final cle d = a("mundane", new cle());
+   public static final cle e = a("thick", new cle());
+   public static final cle f = a("awkward", new cle());
+   public static final cle g = a("night_vision", new cle(new bif(bih.p, 3600)));
+   public static final cle h = a("long_night_vision", new cle("night_vision", new bif(bih.p, 9600)));
+   public static final cle i = a("invisibility", new cle(new bif(bih.n, 3600)));
+   public static final cle j = a("long_invisibility", new cle("invisibility", new bif(bih.n, 9600)));
+   public static final cle k = a("leaping", new cle(new bif(bih.h, 3600)));
+   public static final cle l = a("long_leaping", new cle("leaping", new bif(bih.h, 9600)));
+   public static final cle m = a("strong_leaping", new cle("leaping", new bif(bih.h, 1800, 1)));
+   public static final cle n = a("fire_resistance", new cle(new bif(bih.l, 3600)));
+   public static final cle o = a("long_fire_resistance", new cle("fire_resistance", new bif(bih.l, 9600)));
+   public static final cle p = a("swiftness", new cle(new bif(bih.a, 3600)));
+   public static final cle q = a("long_swiftness", new cle("swiftness", new bif(bih.a, 9600)));
+   public static final cle r = a("strong_swiftness", new cle("swiftness", new bif(bih.a, 1800, 1)));
+   public static final cle s = a("slowness", new cle(new bif(bih.b, 1800)));
+   public static final cle t = a("long_slowness", new cle("slowness", new bif(bih.b, 4800)));
+   public static final cle u = a("strong_slowness", new cle("slowness", new bif(bih.b, 400, 3)));
+   public static final cle v = a("turtle_master", new cle("turtle_master", new bif(bih.b, 400, 3), new bif(bih.k, 400, 2)));
+   public static final cle w = a("long_turtle_master", new cle("turtle_master", new bif(bih.b, 800, 3), new bif(bih.k, 800, 2)));
+   public static final cle x = a("strong_turtle_master", new cle("turtle_master", new bif(bih.b, 400, 5), new bif(bih.k, 400, 3)));
+   public static final cle y = a("water_breathing", new cle(new bif(bih.m, 3600)));
+   public static final cle z = a("long_water_breathing", new cle("water_breathing", new bif(bih.m, 9600)));
+   public static final cle A = a("healing", new cle(new bif(bih.f, 1)));
+   public static final cle B = a("strong_healing", new cle("healing", new bif(bih.f, 1, 1)));
+   public static final cle C = a("harming", new cle(new bif(bih.g, 1)));
+   public static final cle D = a("strong_harming", new cle("harming", new bif(bih.g, 1, 1)));
+   public static final cle E = a("poison", new cle(new bif(bih.s, 900)));
+   public static final cle F = a("long_poison", new cle("poison", new bif(bih.s, 1800)));
+   public static final cle G = a("strong_poison", new cle("poison", new bif(bih.s, 432, 1)));
+   public static final cle H = a("regeneration", new cle(new bif(bih.j, 900)));
+   public static final cle I = a("long_regeneration", new cle("regeneration", new bif(bih.j, 1800)));
+   public static final cle J = a("strong_regeneration", new cle("regeneration", new bif(bih.j, 450, 1)));
+   public static final cle K = a("strength", new cle(new bif(bih.e, 3600)));
+   public static final cle L = a("long_strength", new cle("strength", new bif(bih.e, 9600)));
+   public static final cle M = a("strong_strength", new cle("strength", new bif(bih.e, 1800, 1)));
+   public static final cle N = a("weakness", new cle(new bif(bih.r, 1800)));
+   public static final cle O = a("long_weakness", new cle("weakness", new bif(bih.r, 4800)));
+   public static final cle P = a("luck", new cle("luck", new bif(bih.z, 6000)));
+   public static final cle Q = a("slow_falling", new cle(new bif(bih.B, 1800)));
+   public static final cle R = a("long_slow_falling", new cle("slow_falling", new bif(bih.B, 4800)));
 
-   public clh(hg<cli> $$0, hg<clk> $$1) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = ac.b($$1x -> {
-         aex $$2 = $$1.a().a();
-         String $$3 = this.c($$1x);
-         return $$2.a((UnaryOperator<String>)($$1xx -> "trims/models/armor/" + $$1xx + "_leggings_" + $$3));
-      });
-      this.h = ac.b($$1x -> {
-         aex $$2 = $$1.a().a();
-         String $$3 = this.c($$1x);
-         return $$2.a((UnaryOperator<String>)($$1xx -> "trims/models/armor/" + $$1xx + "_" + $$3));
-      });
+   private static cle a(String $$0, cle $$1) {
+      return ht.a(jd.j, $$0, $$1);
    }
 
-   private String c(cgq $$0) {
-      Map<cgr, String> $$1 = this.e.a().d();
-      return $$0 instanceof cgr && $$1.containsKey($$0) ? $$1.get($$0) : this.e.a().a();
-   }
-
-   public boolean a(hg<clk> $$0, hg<cli> $$1) {
-      return $$0 == this.f && $$1 == this.e;
-   }
-
-   public hg<clk> a() {
-      return this.f;
-   }
-
-   public hg<cli> b() {
-      return this.e;
-   }
-
-   public aex a(cgq $$0) {
-      return this.g.apply($$0);
-   }
-
-   public aex b(cgq $$0) {
-      return this.h.apply($$0);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return !($$0 instanceof clh $$1) ? false : $$1.f == this.f && $$1.e == this.e;
-   }
-
-   public static boolean a(hu $$0, cjf $$1, clh $$2) {
-      if ($$1.a(aqb.aH)) {
-         $$1.w().a("Trim", (rr)a.encodeStart(aev.a(rj.a, $$0), $$2).result().orElseThrow());
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public static Optional<clh> a(hu $$0, cjf $$1, boolean $$2) {
-      if ($$1.a(aqb.aH) && $$1.v() != null && $$1.v().e("Trim")) {
-         qy $$3 = $$1.b("Trim");
-         clh $$4 = (clh)a.parse(aev.a(rj.a, $$0), $$3).resultOrPartial($$1x -> {
-            if (!$$2) {
-               c.warn($$1x);
-            }
-         }).orElse(null);
-         return Optional.ofNullable($$4);
-      } else {
-         return Optional.empty();
-      }
-   }
-
-   public static void a(cjf $$0, hu $$1, List<tm> $$2) {
-      Optional<clh> $$3 = a($$1, $$0, true);
-      if ($$3.isPresent()) {
-         clh $$4 = $$3.get();
-         $$2.add(d);
-         $$2.add(tl.a().b($$4.a().a().a($$4.b())));
-         $$2.add(tl.a().b($$4.b().a().e()));
-      }
+   private static cle a(aex<cle> $$0, cle $$1) {
+      return ht.a(jd.j, $$0, $$1);
    }
 }

@@ -1,136 +1,109 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import javax.annotation.Nullable;
+import com.mojang.authlib.GameProfile;
+import com.mojang.datafixers.util.Pair;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
 
-public abstract class fnt {
-   private static final Object2ObjectMap<aex, fnt> a = ac.a(new Object2ObjectArrayMap(), $$0 -> {
-      fnt.c $$1 = new fnt.c();
-      $$0.defaultReturnValue($$1);
-      $$0.put(diq.e, $$1);
-      $$0.put(diq.f, new fnt.b());
-      $$0.put(diq.g, new fnt.a());
-   });
-   private final float[] b = new float[4];
-   private final float c;
-   private final boolean d;
-   private final fnt.d e;
-   private final boolean f;
-   private final boolean g;
+public class fnt implements anw {
+   private static final dee[] a = Arrays.stream(chv.values())
+      .sorted(Comparator.comparingInt(chv::a))
+      .map($$0 -> new dee($$0, gw.b, csy.kP.n()))
+      .toArray(dee[]::new);
+   private static final dee b = new dee(gw.b, csy.kP.n());
+   private final dde c = new dde(gw.b, csy.cv.n());
+   private final dde d = new deo(gw.b, csy.gV.n());
+   private final ddr e = new ddr(gw.b, csy.fG.n());
+   private final dcn f = new dcn(gw.b, csy.iJ.n());
+   private final dct g = new dct(gw.b, csy.bn.n());
+   private final ddj h = new ddj(gw.b, csy.mX.n());
+   private final ddm i = new ddm(gw.b, csy.so.n());
+   private fgw j;
+   private fhk k;
+   private Map<czz.a, fhc> l;
+   private final fqf m;
+   private final fia n;
 
-   public fnt(float $$0, boolean $$1, fnt.d $$2, boolean $$3, boolean $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
+   public fnt(fqf $$0, fia $$1) {
+      this.m = $$0;
+      this.n = $$1;
    }
 
-   public static fnt a(dis $$0) {
-      return (fnt)a.get($$0.r());
+   @Override
+   public void a(anv $$0) {
+      this.j = new fgw(this.n.a(fid.bd));
+      this.k = new fhk(this.n.a(fid.bC));
+      this.l = fqv.a(this.n);
    }
 
-   @Nullable
-   public float[] a(float $$0, float $$1) {
-      float $$2 = 0.4F;
-      float $$3 = arx.b($$0 * (float) (Math.PI * 2)) - 0.0F;
-      float $$4 = -0.0F;
-      if ($$3 >= -0.4F && $$3 <= 0.4F) {
-         float $$5 = ($$3 - -0.0F) / 0.4F * 0.5F + 0.5F;
-         float $$6 = 1.0F - (1.0F - arx.a($$5 * (float) Math.PI)) * 0.99F;
-         $$6 *= $$6;
-         this.b[0] = $$5 * 0.3F + 0.7F;
-         this.b[1] = $$5 * $$5 * 0.7F + 0.2F;
-         this.b[2] = $$5 * $$5 * 0.0F + 0.2F;
-         this.b[3] = $$6;
-         return this.b;
+   public void a(cjh $$0, cje $$1, elr $$2, fog $$3, int $$4, int $$5) {
+      cjc $$6 = $$0.d();
+      if ($$6 instanceof cha) {
+         csx $$7 = ((cha)$$6).e();
+         if ($$7 instanceof cru $$8) {
+            qy $$9 = $$0.v();
+            GameProfile $$10 = $$9 != null ? deh.d($$9) : null;
+            fhc $$11 = this.l.get($$8.a());
+            foo $$12 = fqv.a($$8.a(), $$10);
+            fqv.a(null, 180.0F, 0.0F, $$2, $$3, $$4, $$11, $$12);
+         } else {
+            dfl $$13 = $$7.n();
+            dcx $$14;
+            if ($$7 instanceof cro) {
+               this.f.a($$0, ((cro)$$7).a());
+               $$14 = this.f;
+            } else if ($$7 instanceof csq) {
+               this.g.a(((csq)$$7).a());
+               $$14 = this.g;
+            } else if ($$13.a(csy.mX)) {
+               $$14 = this.h;
+            } else if ($$13.a(csy.cv)) {
+               $$14 = this.c;
+            } else if ($$13.a(csy.fG)) {
+               $$14 = this.e;
+            } else if ($$13.a(csy.gV)) {
+               $$14 = this.d;
+            } else if ($$13.a(csy.so)) {
+               this.i.a($$0);
+               $$14 = this.i;
+            } else {
+               if (!($$7 instanceof czw)) {
+                  return;
+               }
+
+               chv $$21 = czw.b($$6);
+               if ($$21 == null) {
+                  $$14 = b;
+               } else {
+                  $$14 = a[$$21.a()];
+               }
+            }
+
+            this.m.a($$14, $$2, $$3, $$4, $$5);
+         }
       } else {
-         return null;
+         if ($$0.a(cjk.uy)) {
+            boolean $$25 = cha.a($$0) != null;
+            $$2.a();
+            $$2.b(1.0F, -1.0F, -1.0F);
+            gbk $$26 = $$25 ? gbm.g : gbm.h;
+            elv $$27 = $$26.c().a(fuh.c($$3, this.j.a($$26.a()), true, $$0.B()));
+            this.j.c().a($$2, $$27, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+            if ($$25) {
+               List<Pair<hg<dco>, chv>> $$28 = dcn.a(cke.d($$0), dcn.a($$0));
+               fqb.a($$2, $$3, $$4, $$5, this.j.b(), $$26, false, $$28, $$0.B());
+            } else {
+               this.j.b().a($$2, $$27, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+            }
+
+            $$2.b();
+         } else if ($$0.a(cjk.uV)) {
+            $$2.a();
+            $$2.b(1.0F, -1.0F, -1.0F);
+            elv $$29 = fuh.c($$3, this.k.a(fhk.a), false, $$0.B());
+            this.k.a($$2, $$29, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+            $$2.b();
+         }
       }
-   }
-
-   public float a() {
-      return this.c;
-   }
-
-   public boolean b() {
-      return this.d;
-   }
-
-   public abstract ehn a(ehn var1, float var2);
-
-   public abstract boolean a(int var1, int var2);
-
-   public fnt.d c() {
-      return this.e;
-   }
-
-   public boolean d() {
-      return this.f;
-   }
-
-   public boolean e() {
-      return this.g;
-   }
-
-   public static class a extends fnt {
-      public a() {
-         super(Float.NaN, false, fnt.d.c, true, false);
-      }
-
-      @Override
-      public ehn a(ehn $$0, float $$1) {
-         return $$0.a(0.15F);
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return false;
-      }
-
-      @Nullable
-      @Override
-      public float[] a(float $$0, float $$1) {
-         return null;
-      }
-   }
-
-   public static class b extends fnt {
-      public b() {
-         super(Float.NaN, true, fnt.d.a, false, true);
-      }
-
-      @Override
-      public ehn a(ehn $$0, float $$1) {
-         return $$0;
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return true;
-      }
-   }
-
-   public static class c extends fnt {
-      public static final int a = 192;
-
-      public c() {
-         super(192.0F, true, fnt.d.b, false, false);
-      }
-
-      @Override
-      public ehn a(ehn $$0, float $$1) {
-         return $$0.d((double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.91F + 0.09F));
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return false;
-      }
-   }
-
-   public static enum d {
-      a,
-      b,
-      c;
    }
 }

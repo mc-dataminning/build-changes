@@ -1,56 +1,70 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public abstract class epv implements Runnable {
-   protected static final int a = 25;
+public class epv extends epx {
    private static final Logger b = LogUtils.getLogger();
-   private boolean c = false;
+   private static final tn c = tn.c("mco.download.preparing");
+   private final long d;
+   private final int e;
+   private final eym f;
+   private final String g;
 
-   protected static void a(long $$0) {
-      try {
-         Thread.sleep($$0 * 1000L);
-      } catch (InterruptedException var3) {
-         Thread.currentThread().interrupt();
-         b.error("", var3);
+   public epv(long $$0, int $$1, String $$2, eym $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$3;
+      this.g = $$2;
+   }
+
+   @Override
+   public void run() {
+      emh $$0 = emh.a();
+      int $$1 = 0;
+
+      while ($$1 < 25) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            eno $$2 = $$0.b(this.d, this.e);
+            a(1L);
+            if (this.d()) {
+               return;
+            }
+
+            a(new eok(this.f, $$2, this.g, $$0x -> {
+            }));
+            return;
+         } catch (env var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+            $$1++;
+         } catch (enu var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't download world data", var5);
+            a(new eol(var5, this.f));
+            return;
+         } catch (Exception var6) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't download world data", var6);
+            this.a(var6);
+            return;
+         }
       }
    }
 
-   public static void a(eyk $$0) {
-      eqv $$1 = eqv.O();
-      $$1.execute(() -> $$1.a($$0));
-   }
-
-   protected void a(tm $$0) {
-      this.b();
-      eqv $$1 = eqv.O();
-      $$1.execute(() -> $$1.a(new eoj($$0, new ema(new eyp()))));
-   }
-
-   protected void a(Exception $$0) {
-      if ($$0 instanceof ens $$1) {
-         this.a($$1.a.b());
-      } else {
-         this.a(tm.b($$0.getMessage()));
-      }
-   }
-
-   protected void a(ens $$0) {
-      this.a($$0.a.b());
-   }
-
-   public abstract tm a();
-
-   public boolean d() {
-      return this.c;
-   }
-
-   public void c() {
-   }
-
-   public void e() {
-   }
-
-   public void b() {
-      this.c = true;
+   @Override
+   public tn a() {
+      return c;
    }
 }

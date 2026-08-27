@@ -1,25 +1,52 @@
-public class fxm<T extends cbu> extends fxp<T, fgi<T>> {
-   private final fgd a;
+public class fxm<T extends bvg> extends fxr<T, fey<T>> {
+   private final fpa a;
 
-   public fxm(fvc<T, fgi<T>> $$0, fhy $$1) {
+   public fxm(fve<T, fey<T>> $$0, fpa $$1) {
       super($$0);
-      this.a = new fgd($$1.a(fib.aA));
+      this.a = $$1;
    }
 
-   public void a(elp $$0, foe $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, true);
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, false);
+   public void a(elr $$0, fog $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.m_()) {
+         eqx $$10 = eqx.O();
+         boolean $$11 = $$10.b($$3) && $$3.cd();
+         if (!$$3.cd() || $$11) {
+            dfl $$12 = $$3.t().a();
+            int $$13 = fuk.c($$3, 0.0F);
+            gbh $$14 = this.a.a($$12);
+            $$0.a();
+            $$0.a(0.2F, -0.35F, 0.5F);
+            $$0.a(a.d.rotationDegrees(-48.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
+            $$0.b();
+            $$0.a();
+            $$0.a(0.2F, -0.35F, 0.5F);
+            $$0.a(a.d.rotationDegrees(42.0F));
+            $$0.a(0.1F, 0.0F, -0.6F);
+            $$0.a(a.d.rotationDegrees(-48.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
+            $$0.b();
+            $$0.a();
+            this.c().d().a($$0);
+            $$0.a(0.0F, -0.7F, -0.2F);
+            $$0.a(a.d.rotationDegrees(-78.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
+            $$0.b();
+         }
+      }
    }
 
-   private void a(elp $$0, foe $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8) {
-      qy $$9 = $$8 ? $$3.gi() : $$3.gj();
-      biu.a($$9.l("id")).filter($$0x -> $$0x == biu.at).ifPresent($$10 -> {
-         $$0.a();
-         $$0.a($$8 ? 0.4F : -0.4F, $$3.bW() ? -1.3F : -1.5F, 0.0F);
-         bvh.b $$11 = bvh.b.a($$9.h("Variant"));
-         elt $$12 = $$1.getBuffer(this.a.a(fut.a($$11)));
-         this.a.a($$0, $$12, $$2, fyv.d, $$4, $$5, $$6, $$7, $$3.ah);
-         $$0.b();
-      });
+   private void a(elr $$0, fog $$1, int $$2, boolean $$3, dfl $$4, int $$5, gbh $$6) {
+      if ($$3) {
+         this.a.b().a($$0.c(), $$1.getBuffer(foo.q(fzf.e)), $$4, $$6, 0.0F, 0.0F, 0.0F, $$2, $$5);
+      } else {
+         this.a.a($$4, $$0, $$1, $$2, $$5);
+      }
    }
 }

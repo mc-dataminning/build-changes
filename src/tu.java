@@ -1,72 +1,77 @@
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import it.unimi.dsi.fastutil.objects.ObjectList;
-import java.util.Optional;
+import java.util.BitSet;
+import java.util.Objects;
 import javax.annotation.Nullable;
 
 public class tu {
-   private final int a;
-   private final ObjectList<tv> b = new ObjectArrayList();
+   private final tw[] a;
+   private int b;
+   private int c;
    @Nullable
-   private tx c;
+   private ty d;
 
    public tu(int $$0) {
-      this.a = $$0;
+      this.a = new tw[$$0];
+   }
 
-      for (int $$1 = 0; $$1 < $$0; $$1++) {
-         this.b.add(null);
+   public boolean a(ty $$0, boolean $$1) {
+      if (Objects.equals($$0, this.d)) {
+         return false;
+      } else {
+         this.d = $$0;
+         this.a($$1 ? new tw($$0, true) : null);
+         return true;
       }
    }
 
-   public void a(tx $$0) {
-      if (!$$0.equals(this.c)) {
-         this.b.add(new tv($$0, true));
-         this.c = $$0;
+   private void a(@Nullable tw $$0) {
+      int $$1 = this.b;
+      this.b = ($$1 + 1) % this.a.length;
+      this.c++;
+      this.a[$$1] = $$0;
+   }
+
+   public void a(ty $$0) {
+      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
+         tw $$2 = this.a[$$1];
+         if ($$2 != null && $$2.c() && $$0.equals($$2.b())) {
+            this.a[$$1] = null;
+            break;
+         }
       }
    }
 
    public int a() {
-      return this.b.size();
+      int $$0 = this.c;
+      this.c = 0;
+      return $$0;
    }
 
-   public boolean a(int $$0) {
-      int $$1 = this.b.size() - this.a;
-      if ($$0 >= 0 && $$0 <= $$1) {
-         this.b.removeElements(0, $$0);
-         return true;
-      } else {
-         return false;
-      }
-   }
+   public tu.a b() {
+      int $$0 = this.a();
+      BitSet $$1 = new BitSet(this.a.length);
+      ObjectList<ty> $$2 = new ObjectArrayList(this.a.length);
 
-   public Optional<ts> a(ts.b $$0) {
-      if (!this.a($$0.a())) {
-         return Optional.empty();
-      } else {
-         ObjectList<tx> $$1 = new ObjectArrayList($$0.b().cardinality());
-         if ($$0.b().length() > this.a) {
-            return Optional.empty();
-         } else {
-            for (int $$2 = 0; $$2 < this.a; $$2++) {
-               boolean $$3 = $$0.b().get($$2);
-               tv $$4 = (tv)this.b.get($$2);
-               if ($$3) {
-                  if ($$4 == null) {
-                     return Optional.empty();
-                  }
-
-                  this.b.set($$2, $$4.a());
-                  $$1.add($$4.b());
-               } else {
-                  if ($$4 != null && !$$4.c()) {
-                     return Optional.empty();
-                  }
-
-                  this.b.set($$2, null);
-               }
-            }
-
-            return Optional.of(new ts($$1));
+      for (int $$3 = 0; $$3 < this.a.length; $$3++) {
+         int $$4 = (this.b + $$3) % this.a.length;
+         tw $$5 = this.a[$$4];
+         if ($$5 != null) {
+            $$1.set($$3, true);
+            $$2.add($$5.b());
+            this.a[$$4] = $$5.a();
          }
       }
+
+      tt $$6 = new tt($$2);
+      tt.b $$7 = new tt.b($$0, $$1);
+      return new tu.a($$6, $$7);
+   }
+
+   public int c() {
+      return this.c;
+   }
+
+   public static record a(tt a, tt.b b) {
    }
 }

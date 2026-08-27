@@ -1,146 +1,55 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
+import com.google.gson.JsonElement;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.mutable.MutableInt;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.JsonOps;
+import java.util.Optional;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class ecx {
-   public static final Codec<ecx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               edh.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.b),
-               arg.a(efr.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.c),
-               arg.a(eef.b.listOf(), "functions", List.of()).forGetter($$0x -> $$0x.e),
-               egl.a.fieldOf("rolls").forGetter($$0x -> $$0x.g),
-               egl.a.fieldOf("bonus_rolls").orElse(egi.a(0.0F)).forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, ecx::new)
-   );
-   private final List<edj> b;
-   private final List<efp> c;
-   private final Predicate<ecq> d;
-   private final List<eed> e;
-   private final BiFunction<cjf, ecq, cjf> f;
-   private final egk g;
-   private final egk h;
+public class ecx<T> {
+   private static final Logger d = LogUtils.getLogger();
+   public static final ecx<efr> a = new ecx<>(eft.a, "predicates", c());
+   public static final ecx<eef> b = new ecx<>(eeh.b, "item_modifiers", c());
+   public static final ecx<eda> c = new ecx<>(eda.c, "loot_tables", d());
+   private final Codec<T> e;
+   private final String f;
+   private final ecx.a<T> g;
 
-   ecx(List<edj> $$0, List<efp> $$1, List<eed> $$2, egk $$3, egk $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = efr.a($$1);
-      this.e = $$2;
-      this.f = eef.a($$2);
-      this.g = $$3;
-      this.h = $$4;
+   private ecx(Codec<T> $$0, String $$1, ecx.a<T> $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   private void b(Consumer<cjf> $$0, ecq $$1) {
-      asc $$2 = $$1.b();
-      List<edi> $$3 = Lists.newArrayList();
-      MutableInt $$4 = new MutableInt();
-
-      for (edj $$5 : this.b) {
-         $$5.expand($$1, $$3x -> {
-            int $$4x = $$3x.a($$1.c());
-            if ($$4x > 0) {
-               $$3.add($$3x);
-               $$4.add($$4x);
-            }
-         });
-      }
-
-      int $$6 = $$3.size();
-      if ($$4.intValue() != 0 && $$6 != 0) {
-         if ($$6 == 1) {
-            $$3.get(0).a($$0, $$1);
-         } else {
-            int $$7 = $$2.a($$4.intValue());
-
-            for (edi $$8 : $$3) {
-               $$7 -= $$8.a($$1.c());
-               if ($$7 < 0) {
-                  $$8.a($$0, $$1);
-                  return;
-               }
-            }
-         }
-      }
+   public String a() {
+      return this.f;
    }
 
-   public void a(Consumer<cjf> $$0, ecq $$1) {
-      if (this.d.test($$1)) {
-         Consumer<cjf> $$2 = eed.a(this.f, $$0, $$1);
-         int $$3 = this.g.a($$1) + arx.d(this.h.b($$1) * $$1.c());
-
-         for (int $$4 = 0; $$4 < $$3; $$4++) {
-            this.b($$2, $$1);
-         }
-      }
+   public void a(edb $$0, ecu<T> $$1, T $$2) {
+      this.g.run($$0, $$1, $$2);
    }
 
-   public void a(ecz $$0) {
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.b(".condition[" + $$1 + "]"));
-      }
-
-      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
-         this.e.get($$2).a($$0.b(".functions[" + $$2 + "]"));
-      }
-
-      for (int $$3 = 0; $$3 < this.b.size(); $$3++) {
-         this.b.get($$3).a($$0.b(".entries[" + $$3 + "]"));
-      }
-
-      this.g.a($$0.b(".rolls"));
-      this.h.a($$0.b(".bonusRolls"));
+   public Optional<T> a(aey $$0, JsonElement $$1) {
+      DataResult<T> $$2 = this.e.parse(JsonOps.INSTANCE, $$1);
+      $$2.error().ifPresent($$1x -> d.error("Couldn't parse element {}:{} - {}", new Object[]{this.f, $$0, $$1x.message()}));
+      return $$2.result();
    }
 
-   public static ecx.a a() {
-      return new ecx.a();
+   public static Stream<ecx<?>> b() {
+      return Stream.of(a, b, c);
    }
 
-   public static class a implements eea<ecx.a>, efi<ecx.a> {
-      private final Builder<edj> a = ImmutableList.builder();
-      private final Builder<efp> b = ImmutableList.builder();
-      private final Builder<eed> c = ImmutableList.builder();
-      private egk d = egi.a(1.0F);
-      private egk e = egi.a(0.0F);
+   private static <T extends ect> ecx.a<T> c() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.a().f + ":" + $$1.b() + "}", $$1));
+   }
 
-      public ecx.a a(egk $$0) {
-         this.d = $$0;
-         return this;
-      }
+   private static ecx.a<eda> d() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.a().f + ":" + $$1.b() + "}", $$1));
+   }
 
-      public ecx.a a() {
-         return this;
-      }
-
-      public ecx.a b(egk $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public ecx.a a(edj.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      public ecx.a a(efp.a $$0) {
-         this.b.add($$0.build());
-         return this;
-      }
-
-      public ecx.a a(eed.a $$0) {
-         this.c.add($$0.b());
-         return this;
-      }
-
-      public ecx b() {
-         return new ecx(this.a.build(), this.b.build(), this.c.build(), this.d, this.e);
-      }
+   @FunctionalInterface
+   public interface a<T> {
+      void run(edb var1, ecu<T> var2, T var3);
    }
 }

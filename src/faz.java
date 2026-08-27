@@ -1,24 +1,26 @@
-import org.joml.Matrix4f;
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
 
-public class faz implements fba {
-   private final ark a;
+public class faz implements fbd {
+   private final esq a;
 
-   public faz(ark $$0) {
+   public faz(esq $$0) {
       this.a = $$0;
    }
 
    @Override
-   public int a(esd $$0) {
-      return $$0.a(this.a);
-   }
+   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      Vector2i $$6 = new Vector2i();
+      $$6.x = this.a.r() + 3;
+      $$6.y = this.a.t() + this.a.i() + 3 + 1;
+      if ($$6.y + $$5 + 3 > $$1) {
+         $$6.y = this.a.t() - $$5 - 3 - 1;
+      }
 
-   @Override
-   public int a() {
-      return 10;
-   }
+      if ($$6.x + $$4 > $$0) {
+         $$6.x = Math.max(this.a.r() + this.a.l() - $$4 - 3, 4);
+      }
 
-   @Override
-   public void a(esd $$0, int $$1, int $$2, Matrix4f $$3, foe.a $$4) {
-      $$0.a(this.a, (float)$$1, (float)$$2, -1, true, $$3, $$4, esd.a.a, 0, 15728880);
+      return $$6;
    }
 }

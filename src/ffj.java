@@ -1,41 +1,44 @@
-public class ffj<T extends bwm> extends fgn<T> {
-   public ffj(fic $$0) {
-      super($$0, true, 19.0F, 1.0F, 2.5F, 2.0F, 24);
-   }
+public class ffj<T extends bis> extends ffo<T> {
+   private final fie a;
+   private final fie[] b = new fie[9];
 
-   public static fii c() {
-      fik $$0 = new fik();
-      fil $$1 = $$0.a();
-      fil $$2 = $$1.a(
-         "head",
-         fih.c()
-            .a(2, 61)
-            .a("right ear", -6.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
-            .a(2, 61)
-            .a()
-            .a("left ear", 2.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
-            .a(23, 52)
-            .a("goatee", -0.5F, -3.0F, -14.0F, 0.0F, 7.0F, 5.0F),
-         fie.a(1.0F, 14.0F, 0.0F)
-      );
-      $$2.a("left_horn", fih.c().a(12, 55).a(-0.01F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), fie.a(0.0F, 0.0F, 0.0F));
-      $$2.a("right_horn", fih.c().a(12, 55).a(-2.99F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), fie.a(0.0F, 0.0F, 0.0F));
-      $$2.a("nose", fih.c().a(34, 46).a(-3.0F, -4.0F, -8.0F, 5.0F, 7.0F, 10.0F), fie.a(0.0F, -8.0F, -8.0F, 0.9599F, 0.0F, 0.0F));
-      $$1.a("body", fih.c().a(1, 1).a(-4.0F, -17.0F, -7.0F, 9.0F, 11.0F, 16.0F).a(0, 28).a(-5.0F, -18.0F, -8.0F, 11.0F, 14.0F, 11.0F), fie.a(0.0F, 24.0F, 0.0F));
-      $$1.a("left_hind_leg", fih.c().a(36, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), fie.a(1.0F, 14.0F, 4.0F));
-      $$1.a("right_hind_leg", fih.c().a(49, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), fie.a(-3.0F, 14.0F, 4.0F));
-      $$1.a("left_front_leg", fih.c().a(49, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), fie.a(1.0F, 14.0F, -6.0F));
-      $$1.a("right_front_leg", fih.c().a(35, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), fie.a(-3.0F, 14.0F, -6.0F));
-      return fii.a($$0, 64, 64);
-   }
+   public ffj(fie $$0) {
+      this.a = $$0;
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a.b("left_horn").k = $$0.gd();
-      this.a.b("right_horn").k = $$0.gj();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      float $$6 = $$0.go();
-      if ($$6 != 0.0F) {
-         this.a.e = $$6;
+      for (int $$1 = 0; $$1 < this.b.length; $$1++) {
+         this.b[$$1] = $$0.b(a($$1));
       }
+   }
+
+   private static String a(int $$0) {
+      return "tentacle" + $$0;
+   }
+
+   public static fik b() {
+      fim $$0 = new fim();
+      fin $$1 = $$0.a();
+      $$1.a("body", fij.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), fig.a(0.0F, 17.6F, 0.0F));
+      ase $$2 = ase.a(1660L);
+
+      for (int $$3 = 0; $$3 < 9; $$3++) {
+         float $$4 = (((float)($$3 % 3) - (float)($$3 / 3 % 2) * 0.5F + 0.25F) / 2.0F * 2.0F - 1.0F) * 5.0F;
+         float $$5 = ((float)($$3 / 3) / 2.0F * 2.0F - 1.0F) * 5.0F;
+         int $$6 = $$2.a(7) + 8;
+         $$1.a(a($$3), fij.c().a(0, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, (float)$$6, 2.0F), fig.a($$4, 24.6F, $$5));
+      }
+
+      return fik.a($$0, 64, 32);
+   }
+
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      for (int $$6 = 0; $$6 < this.b.length; $$6++) {
+         this.b[$$6].e = 0.2F * ary.a($$3 * 0.3F + (float)$$6) + 0.4F;
+      }
+   }
+
+   @Override
+   public fie a() {
+      return this.a;
    }
 }

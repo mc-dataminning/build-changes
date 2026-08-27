@@ -1,14 +1,24 @@
-public interface adl extends abe {
-   @Override
-   default so b() {
-      return so.d;
+public class adl implements vf<adg> {
+   private final tn a;
+
+   public adl(tn $$0) {
+      this.a = $$0;
    }
 
-   void a(adn var1);
+   public adl(sq $$0) {
+      this.a = tn.a.b($$0.d(262144));
+   }
 
-   void a(ado var1);
+   @Override
+   public void a(sq $$0) {
+      $$0.a(this.a);
+   }
 
-   void a(adm var1);
+   public void a(adg $$0) {
+      $$0.a(this);
+   }
 
-   void a(adp var1);
+   public tn a() {
+      return this.a;
+   }
 }

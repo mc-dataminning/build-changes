@@ -4,49 +4,31 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.UUID;
 import org.slf4j.Logger;
 
-public class ena extends enl {
-   private static final Logger c = LogUtils.getLogger();
-   public long a;
-   public List<UUID> b;
+public class ena extends enn {
+   private static final Logger b = LogUtils.getLogger();
+   public List<emy> a;
 
-   public static ena a(JsonObject $$0) {
+   public static ena a(String $$0) {
       ena $$1 = new ena();
+      $$1.a = Lists.newArrayList();
 
       try {
-         $$1.a = epi.a("serverId", $$0, -1L);
-         String $$2 = epi.a("playerList", $$0, null);
-         if ($$2 != null) {
-            JsonElement $$3 = JsonParser.parseString($$2);
-            if ($$3.isJsonArray()) {
-               $$1.b = a($$3.getAsJsonArray());
-            } else {
-               $$1.b = Lists.newArrayList();
-            }
-         } else {
-            $$1.b = Lists.newArrayList();
-         }
-      } catch (Exception var4) {
-         c.error("Could not parse RealmsServerPlayerList: {}", var4.getMessage());
-      }
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         if ($$3.get("servers").isJsonArray()) {
+            JsonArray $$4 = $$3.get("servers").getAsJsonArray();
+            Iterator<JsonElement> $$5 = $$4.iterator();
 
-      return $$1;
-   }
-
-   private static List<UUID> a(JsonArray $$0) {
-      List<UUID> $$1 = new ArrayList<>($$0.size());
-
-      for (JsonElement $$2 : $$0) {
-         if ($$2.isJsonObject()) {
-            UUID $$3 = epi.a("playerId", $$2.getAsJsonObject(), null);
-            if ($$3 != null) {
-               $$1.add($$3);
+            while ($$5.hasNext()) {
+               $$1.a.add(emy.a($$5.next().getAsJsonObject()));
             }
          }
+      } catch (Exception var6) {
+         b.error("Could not parse McoServerList: {}", var6.getMessage());
       }
 
       return $$1;

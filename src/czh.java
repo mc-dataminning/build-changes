@@ -1,105 +1,18 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+public class czh extends ctf {
+   protected static final float a = 6.0F;
+   protected static final eii b = csx.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
-public enum czh implements asp {
-   a("none", h.a),
-   b("clockwise_90", h.u),
-   c("180", h.c),
-   d("counterclockwise_90", h.v);
-
-   public static final Codec<czh> e = asp.a(czh::values);
-   private final String f;
-   private final h g;
-
-   private czh(String $$0, h $$1) {
-      this.f = $$0;
-      this.g = $$1;
-   }
-
-   public czh a(czh $$0) {
-      switch ($$0) {
-         case c:
-            switch (this) {
-               case a:
-                  return c;
-               case b:
-                  return d;
-               case c:
-                  return a;
-               case d:
-                  return b;
-            }
-         case d:
-            switch (this) {
-               case a:
-                  return d;
-               case b:
-                  return a;
-               case c:
-                  return b;
-               case d:
-                  return c;
-            }
-         case b:
-            switch (this) {
-               case a:
-                  return b;
-               case b:
-                  return c;
-               case c:
-                  return d;
-               case d:
-                  return a;
-            }
-         default:
-            return this;
-      }
-   }
-
-   public h a() {
-      return this.g;
-   }
-
-   public hc a(hc $$0) {
-      if ($$0.o() == hc.a.b) {
-         return $$0;
-      } else {
-         switch (this) {
-            case b:
-               return $$0.h();
-            case c:
-               return $$0.g();
-            case d:
-               return $$0.i();
-            default:
-               return $$0;
-         }
-      }
-   }
-
-   public int a(int $$0, int $$1) {
-      switch (this) {
-         case b:
-            return ($$0 + $$1 / 4) % $$1;
-         case c:
-            return ($$0 + $$1 / 2) % $$1;
-         case d:
-            return ($$0 + $$1 * 3 / 4) % $$1;
-         default:
-            return $$0;
-      }
-   }
-
-   public static czh a(asc $$0) {
-      return ac.a(values(), $$0);
-   }
-
-   public static List<czh> b(asc $$0) {
-      return ac.b(values(), $$0);
+   protected czh(dfk.d $$0) {
+      super($$0);
    }
 
    @Override
-   public String c() {
-      return this.f;
+   public eii a(dfl $$0, cpd $$1, gw $$2, ehu $$3) {
+      return b;
+   }
+
+   @Override
+   protected boolean d(dfl $$0, cpd $$1, gw $$2) {
+      return $$0.a(apu.aK) || $$0.a(csy.dY) || super.d($$0, $$1, $$2);
    }
 }

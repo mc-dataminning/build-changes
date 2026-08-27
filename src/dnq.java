@@ -1,47 +1,67 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 
-public class dnq extends dnw<dpx> {
-   public dnq(Codec<dpx> $$0) {
+public class dnq extends dny<dpy> {
+   private static final ImmutableList<csx> a = ImmutableList.of(csy.F, csy.fn, csy.fo, csy.fp, csy.fq, csy.cv, csy.ct);
+   private static final hc[] b = hc.values();
+   private static final double c = 0.9;
+
+   public dnq(Codec<dpy> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dny<dpx> $$0) {
-      dpx $$1 = $$0.f();
-      gw $$2 = $$0.e();
-      cqp $$3 = $$0.b();
-      asc $$4 = $$0.d();
-      boolean $$5 = false;
-      int $$6 = $$2.v();
-      int $$7 = $$6 + $$1.d();
-      int $$8 = $$6 - $$1.d() - 1;
-      int $$9 = $$1.c().a($$4);
-      gw.a $$10 = new gw.a();
+   public boolean a(doa<dpy> $$0) {
+      boolean $$1 = false;
+      ase $$2 = $$0.d();
+      cqr $$3 = $$0.b();
+      dpy $$4 = $$0.f();
+      gw $$5 = $$0.e();
+      boolean $$6 = $$2.j() < 0.9;
+      int $$7 = $$6 ? $$4.d().a($$2) : 0;
+      int $$8 = $$6 ? $$4.d().a($$2) : 0;
+      boolean $$9 = $$6 && $$7 != 0 && $$8 != 0;
+      int $$10 = $$4.c().a($$2);
+      int $$11 = $$4.c().a($$2);
+      int $$12 = Math.max($$10, $$11);
 
-      for (gw $$11 : gw.a($$2.b(-$$9, 0, -$$9), $$2.b($$9, 0, $$9))) {
-         int $$12 = $$11.u() - $$2.u();
-         int $$13 = $$11.w() - $$2.w();
-         if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-            $$5 |= this.a($$1, $$3, $$4, $$7, $$8, $$10.g($$11));
+      for (gw $$13 : gw.a($$5, $$10, 0, $$11)) {
+         if ($$13.k($$5) > $$12) {
+            break;
+         }
+
+         if (a($$3, $$13, $$4)) {
+            if ($$9) {
+               $$1 = true;
+               this.a($$3, $$13, $$4.b());
+            }
+
+            gw $$14 = $$13.b($$7, 0, $$8);
+            if (a($$3, $$14, $$4)) {
+               $$1 = true;
+               this.a($$3, $$14, $$4.a());
+            }
          }
       }
 
-      return $$5;
+      return $$1;
    }
 
-   protected boolean a(dpx $$0, cqp $$1, asc $$2, int $$3, int $$4, gw.a $$5) {
-      boolean $$6 = false;
-
-      for (int $$7 = $$3; $$7 > $$4; $$7--) {
-         $$5.q($$7);
-         if ($$0.b().test($$1, $$5)) {
-            dfj $$8 = $$0.a().a($$1, $$2, $$5);
-            $$1.a($$5, $$8, 2);
-            this.a($$1, $$5);
-            $$6 = true;
+   private static boolean a(cpy $$0, gw $$1, dpy $$2) {
+      dfl $$3 = $$0.a_($$1);
+      if ($$3.a($$2.a().b())) {
+         return false;
+      } else if (a.contains($$3.b())) {
+         return false;
+      } else {
+         for (hc $$4 : b) {
+            boolean $$5 = $$0.a_($$1.a($$4)).i();
+            if ($$5 && $$4 != hc.b || !$$5 && $$4 == hc.b) {
+               return false;
+            }
          }
-      }
 
-      return $$6;
+         return true;
+      }
    }
 }

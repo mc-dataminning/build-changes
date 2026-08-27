@@ -2,15 +2,15 @@ import com.google.gson.JsonObject;
 
 public class by implements ao<by.a> {
    @Override
-   public void a(aff $$0, ao.a<by.a> $$1) {
+   public void a(afg $$0, ao.a<by.a> $$1) {
    }
 
    @Override
-   public void b(aff $$0, ao.a<by.a> $$1) {
+   public void b(afg $$0, ao.a<by.a> $$1) {
    }
 
    @Override
-   public void a(aff $$0) {
+   public void a(afg $$0) {
    }
 
    public by.a b(JsonObject $$0, bg $$1) {

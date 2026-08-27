@@ -4,21 +4,21 @@ import java.util.Objects;
 
 public final class hf {
    public static final Codec<hf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(cpv.g.fieldOf("dimension").forGetter(hf::a), gw.a.fieldOf("pos").forGetter(hf::b)).apply($$0, hf::a)
+      $$0 -> $$0.group(cpx.g.fieldOf("dimension").forGetter(hf::a), gw.a.fieldOf("pos").forGetter(hf::b)).apply($$0, hf::a)
    );
-   private final aew<cpv> b;
+   private final aex<cpx> b;
    private final gw c;
 
-   private hf(aew<cpv> $$0, gw $$1) {
+   private hf(aex<cpx> $$0, gw $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   public static hf a(aew<cpv> $$0, gw $$1) {
+   public static hf a(aex<cpx> $$0, gw $$1) {
       return new hf($$0, $$1);
    }
 
-   public aew<cpv> a() {
+   public aex<cpx> a() {
       return this.b;
    }
 

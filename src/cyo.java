@@ -1,13 +1,26 @@
-import java.util.Map;
-import java.util.function.Predicate;
+public class cyo extends cuo {
+   private static final eii[] a = new eii[]{
+      csx.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+      csx.a(0.0, 0.0, 0.0, 16.0, 3.0, 16.0),
+      csx.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+      csx.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
+      csx.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+      csx.a(0.0, 0.0, 0.0, 16.0, 7.0, 16.0),
+      csx.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      csx.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0)
+   };
 
-public class cyo extends cxb {
-   public cyo(dfi.d $$0, Predicate<cqt.c> $$1, Map<cja, id> $$2) {
-      super($$0, $$1, $$2);
+   public cyo(dfk.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected void d(dfj $$0, cpv $$1, gw $$2) {
-      e(csw.fu.n().a(e, $$0.c(e)), $$1, $$2);
+   protected cpw c() {
+      return cjk.tm;
+   }
+
+   @Override
+   public eii a(dfl $$0, cpd $$1, gw $$2, ehu $$3) {
+      return a[this.g($$0)];
    }
 }

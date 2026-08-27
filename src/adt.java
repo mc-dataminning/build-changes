@@ -1,5 +1,7 @@
-public record adt(aex a) implements adr {
+public record adt() implements adr {
+   public static final adt a = new adt();
+
    @Override
-   public void a(sp $$0) {
+   public void a(sq $$0) {
    }
 }

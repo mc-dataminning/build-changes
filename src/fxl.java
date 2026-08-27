@@ -1,25 +1,46 @@
-public class fxl extends fxp<bvg, fgc<bvg>> {
-   private final foa a;
+public class fxl extends fxr<bwv, ffy<bwv>> {
+   private static final aey[] a = new aey[]{
+      new aey("textures/entity/llama/decor/white.png"),
+      new aey("textures/entity/llama/decor/orange.png"),
+      new aey("textures/entity/llama/decor/magenta.png"),
+      new aey("textures/entity/llama/decor/light_blue.png"),
+      new aey("textures/entity/llama/decor/yellow.png"),
+      new aey("textures/entity/llama/decor/lime.png"),
+      new aey("textures/entity/llama/decor/pink.png"),
+      new aey("textures/entity/llama/decor/gray.png"),
+      new aey("textures/entity/llama/decor/light_gray.png"),
+      new aey("textures/entity/llama/decor/cyan.png"),
+      new aey("textures/entity/llama/decor/purple.png"),
+      new aey("textures/entity/llama/decor/blue.png"),
+      new aey("textures/entity/llama/decor/brown.png"),
+      new aey("textures/entity/llama/decor/green.png"),
+      new aey("textures/entity/llama/decor/red.png"),
+      new aey("textures/entity/llama/decor/black.png")
+   };
+   private static final aey b = new aey("textures/entity/llama/decor/trader_llama.png");
+   private final ffy<bwv> c;
 
-   public fxl(fvc<bvg, fgc<bvg>> $$0, foa $$1) {
+   public fxl(fve<bwv, ffy<bwv>> $$0, fia $$1) {
       super($$0);
-      this.a = $$1;
+      this.c = new ffy<>($$1.a(fid.as));
    }
 
-   public void a(elp $$0, foe $$1, int $$2, bvg $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      cjf $$10 = $$3.c(biv.a);
-      if ($$3.y() && !$$3.gv()) {
-         float $$11 = -0.6F;
-         float $$12 = 1.4F;
-         if ($$3.gj()) {
-            $$11 -= 0.2F * arx.a($$7 * 0.6F) + 0.2F;
-            $$12 -= 0.09F * arx.a($$7 * 0.6F);
+   public void a(elr $$0, fog $$1, int $$2, bwv $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      chv $$10 = $$3.gq();
+      aey $$11;
+      if ($$10 != null) {
+         $$11 = a[$$10.a()];
+      } else {
+         if (!$$3.gm()) {
+            return;
          }
 
-         $$0.a();
-         $$0.a(0.1F, $$12, $$11);
-         this.a.a($$3, $$10, cjc.h, false, $$0, $$1, $$2);
-         $$0.b();
+         $$11 = b;
       }
+
+      this.c().a(this.c);
+      this.c.a($$3, $$4, $$5, $$7, $$8, $$9);
+      elv $$14 = $$1.getBuffer(foo.e($$11));
+      this.c.a($$0, $$14, $$2, fyx.d, 1.0F, 1.0F, 1.0F, 1.0F);
    }
 }

@@ -6,19 +6,16 @@ import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 
 public class auo extends DataFix {
-   public auo(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public auo(Schema $$0) {
+      super($$0, false);
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(ayx.c);
-      Type<?> $$1 = $$0.findFieldType("Level");
-      OpticFinder<?> $$2 = DSL.fieldFinder("Level", $$1);
-      return this.fixTypeEverywhereTyped(
-         "ChunkLightRemoveFix",
-         $$0,
-         this.getOutputSchema().getType(ayx.c),
-         $$1x -> $$1x.updateTyped($$2, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> $$0xxx.remove("isLightOn")))
-      );
+      Type<?> $$0 = this.getInputSchema().getType(ayz.c);
+      OpticFinder<?> $$1 = $$0.findField("sections");
+      return this.fixTypeEverywhereTyped("ChunkDeleteLightFix for " + this.getOutputSchema().getVersionKey(), $$0, $$1x -> {
+         $$1x = $$1x.update(DSL.remainderFinder(), $$0xx -> $$0xx.remove("isLightOn"));
+         return $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> $$0xxx.remove("BlockLight").remove("SkyLight")));
+      });
    }
 }

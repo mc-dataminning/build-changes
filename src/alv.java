@@ -1,33 +1,36 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
+public class alv implements aec {
+   private static final tn a = tn.c("multiplayer.status.request_handled");
+   private final aeb b;
+   private final so c;
+   private boolean d;
 
-public interface alv {
-   alv a = new alv() {
-      @Override
-      public void a() {
+   public alv(aeb $$0, so $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   @Override
+   public void a(tn $$0) {
+   }
+
+   @Override
+   public boolean c() {
+      return this.c.k();
+   }
+
+   @Override
+   public void a(aee $$0) {
+      if (this.d) {
+         this.c.a(a);
+      } else {
+         this.d = true;
+         this.c.a(new aea(this.b));
       }
+   }
 
-      @Override
-      public void b() {
-      }
-
-      @Override
-      public CompletableFuture<ali> a(String $$0) {
-         return CompletableFuture.completedFuture(ali.a($$0));
-      }
-
-      @Override
-      public CompletableFuture<List<ali>> a(List<String> $$0) {
-         return CompletableFuture.completedFuture($$0.stream().map(ali::a).collect(ImmutableList.toImmutableList()));
-      }
-   };
-
-   void a();
-
-   void b();
-
-   CompletableFuture<ali> a(String var1);
-
-   CompletableFuture<List<ali>> a(List<String> var1);
+   @Override
+   public void a(aed $$0) {
+      this.c.a(new adz($$0.a()));
+      this.c.a(a);
+   }
 }

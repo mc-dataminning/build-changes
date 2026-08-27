@@ -1,41 +1,58 @@
-import com.mojang.authlib.yggdrasil.ProfileResult;
-import java.util.Date;
-import java.util.UUID;
+import com.google.gson.annotations.SerializedName;
+import com.mojang.logging.LogUtils;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import org.slf4j.Logger;
 
 public class epm {
-   private static final tm a = tm.c("mco.util.time.now");
-   private static final int b = 60;
-   private static final int c = 3600;
-   private static final int d = 86400;
+   private static final String a = "realms_persistence.json";
+   private static final emp b = new emp();
+   private static final Logger c = LogUtils.getLogger();
 
-   public static tm a(long $$0) {
-      if ($$0 < 0L) {
-         return a;
-      } else {
-         long $$1 = $$0 / 1000L;
-         if ($$1 < 60L) {
-            return tm.a("mco.time.secondsAgo", $$1);
-         } else if ($$1 < 3600L) {
-            long $$2 = $$1 / 60L;
-            return tm.a("mco.time.minutesAgo", $$2);
-         } else if ($$1 < 86400L) {
-            long $$3 = $$1 / 3600L;
-            return tm.a("mco.time.hoursAgo", $$3);
-         } else {
-            long $$4 = $$1 / 86400L;
-            return tm.a("mco.time.daysAgo", $$4);
+   public epm.a a() {
+      return b();
+   }
+
+   public void a(epm.a $$0) {
+      b($$0);
+   }
+
+   public static epm.a b() {
+      Path $$0 = c();
+
+      try {
+         String $$1 = Files.readString($$0, StandardCharsets.UTF_8);
+         epm.a $$2 = b.a($$1, epm.a.class);
+         if ($$2 != null) {
+            return $$2;
          }
+      } catch (NoSuchFileException var3) {
+      } catch (Exception var4) {
+         c.warn("Failed to read Realms storage {}", $$0, var4);
+      }
+
+      return new epm.a();
+   }
+
+   public static void b(epm.a $$0) {
+      Path $$1 = c();
+
+      try {
+         Files.writeString($$1, b.a($$0), StandardCharsets.UTF_8);
+      } catch (Exception var3) {
       }
    }
 
-   public static tm a(Date $$0) {
-      return a(System.currentTimeMillis() - $$0.getTime());
+   private static Path c() {
+      return eqx.O().p.toPath().resolve("realms_persistence.json");
    }
 
-   public static void a(esf $$0, int $$1, int $$2, int $$3, UUID $$4) {
-      eqv $$5 = eqv.O();
-      ProfileResult $$6 = $$5.ak().fetchProfile($$4, false);
-      gae $$7 = $$6 != null ? $$5.al().b($$6.profile()) : fzw.a($$4);
-      etp.a($$0, $$7.a(), $$1, $$2, $$3);
+   public static class a implements enh {
+      @SerializedName("newsLink")
+      public String a;
+      @SerializedName("hasUnreadNews")
+      public boolean b;
    }
 }

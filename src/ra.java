@@ -2,25 +2,26 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class ra implements rr {
+public class ra implements rs {
    private static final int c = 8;
-   public static final rt<ra> a = new rt<ra>() {
-      public ra a(DataInput $$0, int $$1, rh $$2) {
-         $$2.a(8L);
+   public static final ru<ra> a = new ru<ra>() {
+      public ra a(DataInput $$0, rh $$1) {
+         $$1.b(8L);
          return ra.b;
       }
 
       @Override
-      public ro.b a(DataInput $$0, ro $$1) {
+      public rp.b a(DataInput $$0, rp $$1, rh $$2) {
+         $$2.b(8L);
          return $$1.a();
       }
 
       @Override
-      public void a(DataInput $$0, int $$1) {
+      public void a(DataInput $$0, int $$1, rh $$2) {
       }
 
       @Override
-      public void a(DataInput $$0) {
+      public void b(DataInput $$0, rh $$1) {
       }
 
       @Override
@@ -58,7 +59,7 @@ public class ra implements rr {
    }
 
    @Override
-   public rt<ra> c() {
+   public ru<ra> c() {
       return a;
    }
 
@@ -72,12 +73,12 @@ public class ra implements rr {
    }
 
    @Override
-   public void a(rv $$0) {
+   public void a(rw $$0) {
       $$0.a(this);
    }
 
    @Override
-   public ro.b a(ro $$0) {
+   public rp.b a(rp $$0) {
       return $$0.a();
    }
 }

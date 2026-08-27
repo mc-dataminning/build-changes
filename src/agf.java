@@ -1,46 +1,33 @@
-import com.mojang.authlib.GameProfile;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
-import javax.annotation.Nullable;
 
 public class agf {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("commands.ban.failed"));
-
    public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("ban").requires($$0x -> $$0x.c(3)))
-            .then(
-               ((RequiredArgumentBuilder)du.a("targets", eg.a()).executes($$0x -> a((dt)$$0x.getSource(), eg.a($$0x, "targets"), null)))
-                  .then(du.a("reason", ei.a()).executes($$0x -> a((dt)$$0x.getSource(), eg.a($$0x, "targets"), ei.a($$0x, "reason"))))
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("banlist").requires($$0x -> $$0x.c(3)))
+                  .executes($$0x -> {
+                     aoi $$1 = ((dt)$$0x.getSource()).l().ac();
+                     return a((dt)$$0x.getSource(), Lists.newArrayList(Iterables.concat($$1.f().d(), $$1.g().d())));
+                  }))
+               .then(du.a("ips").executes($$0x -> a((dt)$$0x.getSource(), ((dt)$$0x.getSource()).l().ac().g().d()))))
+            .then(du.a("players").executes($$0x -> a((dt)$$0x.getSource(), ((dt)$$0x.getSource()).l().ac().f().d())))
       );
    }
 
-   private static int a(dt $$0, Collection<GameProfile> $$1, @Nullable tm $$2) throws CommandSyntaxException {
-      aon $$3 = $$0.l().ac().f();
-      int $$4 = 0;
+   private static int a(dt $$0, Collection<? extends aod<?>> $$1) {
+      if ($$1.isEmpty()) {
+         $$0.a(() -> tn.c("commands.banlist.none"), false);
+      } else {
+         $$0.a(() -> tn.a("commands.banlist.list", $$1.size()), false);
 
-      for (GameProfile $$5 : $$1) {
-         if (!$$3.a($$5)) {
-            aoo $$6 = new aoo($$5, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
-            $$3.a($$6);
-            $$4++;
-            $$0.a(() -> tm.a("commands.ban.success", tm.b($$5.getName()), $$6.d()), true);
-            aks $$7 = $$0.l().ac().a($$5.getId());
-            if ($$7 != null) {
-               $$7.c.b(tm.c("multiplayer.disconnect.banned"));
-            }
+         for (aod<?> $$2 : $$1) {
+            $$0.a(() -> tn.a("commands.banlist.entry", $$2.e(), $$2.b(), $$2.d()), false);
          }
       }
 
-      if ($$4 == 0) {
-         throw a.create();
-      } else {
-         return $$4;
-      }
+      return $$1.size();
    }
 }

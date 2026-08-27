@@ -1,28 +1,39 @@
-public class xs implements ve<wx> {
+import java.util.List;
+
+public class xs implements vf<wy> {
    private final int a;
    private final int b;
-   private final int c;
+   private final List<cjh> c;
+   private final cjh d;
 
-   public xs(int $$0, int $$1, int $$2) {
+   public xs(int $$0, int $$1, hp<cjh> $$2, cjh $$3) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
+      this.c = hp.a($$2.size(), cjh.b);
+
+      for (int $$4 = 0; $$4 < $$2.size(); $$4++) {
+         this.c.set($$4, $$2.get($$4).p());
+      }
+
+      this.d = $$3.p();
    }
 
-   public xs(sp $$0) {
+   public xs(sq $$0) {
       this.a = $$0.readUnsignedByte();
-      this.b = $$0.readShort();
-      this.c = $$0.readShort();
+      this.b = $$0.m();
+      this.c = $$0.a(hp::a, sq::q);
+      this.d = $$0.q();
    }
 
    @Override
-   public void a(sp $$0) {
+   public void a(sq $$0) {
       $$0.k(this.a);
-      $$0.l(this.b);
-      $$0.l(this.c);
+      $$0.c(this.b);
+      $$0.a(this.c, sq::a);
+      $$0.a(this.d);
    }
 
-   public void a(wx $$0) {
+   public void a(wy $$0) {
       $$0.a(this);
    }
 
@@ -30,11 +41,15 @@ public class xs implements ve<wx> {
       return this.a;
    }
 
-   public int d() {
-      return this.b;
+   public List<cjh> d() {
+      return this.c;
    }
 
-   public int e() {
-      return this.c;
+   public cjh e() {
+      return this.d;
+   }
+
+   public int f() {
+      return this.b;
    }
 }

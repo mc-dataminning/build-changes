@@ -7,11 +7,11 @@ public class pt {
    private final String b;
    private final Collection<qp> c;
    @Nullable
-   private final Consumer<akr> d;
+   private final Consumer<aks> d;
    @Nullable
-   private final Consumer<akr> e;
+   private final Consumer<aks> e;
 
-   public pt(String $$0, Collection<qp> $$1, @Nullable Consumer<akr> $$2, @Nullable Consumer<akr> $$3) {
+   public pt(String $$0, Collection<qp> $$1, @Nullable Consumer<aks> $$2, @Nullable Consumer<aks> $$3) {
       if ($$1.isEmpty()) {
          throw new IllegalArgumentException("A GameTestBatch must include at least one TestFunction!");
       } else {
@@ -30,13 +30,13 @@ public class pt {
       return this.c;
    }
 
-   public void a(akr $$0) {
+   public void a(aks $$0) {
       if (this.d != null) {
          this.d.accept($$0);
       }
    }
 
-   public void b(akr $$0) {
+   public void b(aks $$0) {
       if (this.e != null) {
          this.e.accept($$0);
       }

@@ -1,30 +1,28 @@
-import java.util.Collections;
-import java.util.List;
-import javax.annotation.Nullable;
-
-public interface cfx {
-   void a(@Nullable cmk<?> var1);
-
-   @Nullable
-   cmk<?> d();
-
-   default void a(cbu $$0, List<cjf> $$1) {
-      cmk<?> $$2 = this.d();
-      if ($$2 != null) {
-         $$0.a($$2, $$1);
-         if (!$$2.b().am_()) {
-            $$0.a(Collections.singleton($$2));
-            this.a(null);
-         }
-      }
+public abstract class cfx<C extends bgt> extends cen {
+   public cfx(cfs<?> $$0, int $$1) {
+      super($$0, $$1);
    }
 
-   default boolean a(cpv $$0, aks $$1, cmk<?> $$2) {
-      if (!$$2.b().am_() && $$0.X().b(cpr.v) && !$$1.G().b($$2)) {
-         return false;
-      } else {
-         this.a($$2);
-         return true;
-      }
+   public void a(boolean $$0, cmm<?> $$1, akt $$2) {
+      new aeo<>(this).a($$2, (cmm<? extends cml<C>>)$$1, $$0);
    }
+
+   public abstract void a(cca var1);
+
+   @Override
+   public abstract void l();
+
+   public abstract boolean a(cmm<? extends cml<C>> var1);
+
+   public abstract int m();
+
+   public abstract int n();
+
+   public abstract int o();
+
+   public abstract int p();
+
+   public abstract cfy t();
+
+   public abstract boolean e(int var1);
 }

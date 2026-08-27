@@ -39,14 +39,14 @@ public class hy {
    }
 
    public float e() {
-      return arx.g(this.a);
+      return ary.g(this.a);
    }
 
    public float f() {
-      return arx.g(this.b);
+      return ary.g(this.b);
    }
 
    public float g() {
-      return arx.g(this.c);
+      return ary.g(this.c);
    }
 }

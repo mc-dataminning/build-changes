@@ -1,81 +1,12 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
 
-public class ect implements ano, ecu {
-   private static final Logger b = LogUtils.getLogger();
-   private static final Gson c = new GsonBuilder().create();
-   public static final ecs<ecy> a = new ecs<>(ecv.c, eco.a);
-   private Map<ecs<?>, ?> d = Map.of();
-   private Multimap<ecv<?>, aex> e = ImmutableMultimap.of();
-
-   @Override
-   public final CompletableFuture<Void> a(ano.a $$0, anu $$1, bdp $$2, bdp $$3, Executor $$4, Executor $$5) {
-      Map<ecv<?>, Map<aex, ?>> $$6 = new HashMap<>();
-      CompletableFuture<?>[] $$7 = ecv.b().map($$3x -> a($$3x, $$1, $$4, $$6)).toArray(CompletableFuture[]::new);
-      return CompletableFuture.allOf($$7).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$6), $$5);
+public interface ect {
+   default Set<efa<?>> a() {
+      return ImmutableSet.of();
    }
 
-   private static <T> CompletableFuture<?> a(ecv<T> $$0, anu $$1, Executor $$2, Map<ecv<?>, Map<aex, ?>> $$3) {
-      Map<aex, T> $$4 = new HashMap<>();
-      $$3.put($$0, $$4);
-      return CompletableFuture.runAsync(() -> {
-         Map<aex, JsonElement> $$3x = new HashMap<>();
-         any.a($$1, $$0.a(), c, $$3x);
-         $$3x.forEach(($$2xx, $$3xx) -> $$0.a($$2xx, $$3xx).ifPresent($$2xxx -> $$4.put($$2xx, (T)$$2xxx)));
-      }, $$2);
-   }
-
-   private void a(Map<ecv<?>, Map<aex, ?>> $$0) {
-      Object $$1 = $$0.get(ecv.c).remove(eco.a);
-      if ($$1 != null) {
-         b.warn("Datapack tried to redefine {} loot table, ignoring", eco.a);
-      }
-
-      Builder<ecs<?>, Object> $$2 = ImmutableMap.builder();
-      com.google.common.collect.ImmutableMultimap.Builder<ecv<?>, aex> $$3 = ImmutableMultimap.builder();
-      $$0.forEach(($$2x, $$3x) -> $$3x.forEach(($$3xx, $$4x) -> {
-            $$2.put(new ecs($$2x, $$3xx), $$4x);
-            $$3.put($$2x, $$3xx);
-         }));
-      $$2.put(a, ecy.a);
-      final Map<ecs<?>, ?> $$4 = $$2.build();
-      ecz $$5 = new ecz(efa.n, new ecu() {
-         @Nullable
-         @Override
-         public <T> T getElement(ecs<T> $$0) {
-            return (T)$$4.get($$0);
-         }
-      });
-      $$4.forEach(($$1x, $$2x) -> a($$5, $$1x, $$2x));
-      $$5.a().forEach(($$0x, $$1x) -> b.warn("Found loot table element validation problem in {}: {}", $$0x, $$1x));
-      this.d = $$4;
-      this.e = $$3.build();
-   }
-
-   private static <T> void a(ecz $$0, ecs<T> $$1, Object $$2) {
-      $$1.a().a($$0, $$1, (T)$$2);
-   }
-
-   @Nullable
-   @Override
-   public <T> T getElement(ecs<T> $$0) {
-      return (T)this.d.get($$0);
-   }
-
-   public Collection<aex> a(ecv<?> $$0) {
-      return this.e.get($$0);
+   default void a(edb $$0) {
+      $$0.a(this);
    }
 }

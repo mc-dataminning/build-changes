@@ -1,4 +1,4 @@
-// 1.20.2 Pre-release 2	2026-08-28T00:30:35.4651545	vanilla/Loot Tables
+// 1.20.2 Pre-Release 3	2026-08-28T00:32:45.4902774	vanilla/Loot Tables
 16627d78901fd7f72f23ebcc81e717877a2d5c67 data\minecraft\loot_tables\blocks\spruce_hanging_sign.json
 1fc86ccb339e075dc1ef8949f3f32cf0b63e6610 data\minecraft\loot_tables\blocks\deepslate.json
 747b419c8834a94b61e4bdd0a39e0f199bb60578 data\minecraft\loot_tables\archaeology\trail_ruins_common.json
@@ -347,8 +347,8 @@ d58ffd08c8a9c03b4dbb838401bf6a73a0936144 data\minecraft\loot_tables\entities\wan
 96db04d5b23be4f1b46aa69052e5389cf06da2c0 data\minecraft\loot_tables\blocks\bamboo_mosaic_stairs.json
 36445552a97265c9c2f3d12ac3883aef680d3923 data\minecraft\loot_tables\blocks\orange_terracotta.json
 5bbb628bdaff5a42c7c4c07af66ad983ee7ea675 data\minecraft\loot_tables\blocks\acacia_door.json
-37864a05c49621cb59b72e1cebd506f8f08553cf data\minecraft\loot_tables\gameplay\hero_of_the_village\cartographer_gift.json
 1d41bf4bacd242683117997dd8bac1e8761ff8e6 data\minecraft\loot_tables\blocks\spruce_sign.json
+37864a05c49621cb59b72e1cebd506f8f08553cf data\minecraft\loot_tables\gameplay\hero_of_the_village\cartographer_gift.json
 88da0d4429d083546d8e2a8099c3f780fb692bca data\minecraft\loot_tables\blocks\potted_warped_fungus.json
 9ac303dd63a20dab54662f7c1dcc56d0993395b1 data\minecraft\loot_tables\blocks\snow.json
 616c273ae200d421040a8f89aa829e1112b8bdf5 data\minecraft\loot_tables\blocks\deepslate_tile_wall.json
@@ -761,8 +761,8 @@ b308b3258a8e1fcbb0724a0e680e43780bb877ef data\minecraft\loot_tables\blocks\dead_
 a26ebbb8ff24e73c4bc7a98de20186e3c2b3b305 data\minecraft\loot_tables\blocks\polished_granite_slab.json
 69b9f1639063c2c51a19f5244c78e759605e0248 data\minecraft\loot_tables\entities\sheep\white.json
 b4e977718f68a9c592e1a21041451a9d94d54ac6 data\minecraft\loot_tables\blocks\blue_banner.json
-60eab0dbcfc13370159e0edde267bd6830a5e980 data\minecraft\loot_tables\entities\chicken.json
 e386969f22b97a642671c15327451ffb156abf3e data\minecraft\loot_tables\blocks\acacia_slab.json
+60eab0dbcfc13370159e0edde267bd6830a5e980 data\minecraft\loot_tables\entities\chicken.json
 1d6a5c5c1285cc95c7c55fc9d85f266bc686d26e data\minecraft\loot_tables\blocks\white_candle.json
 2a0670a0f9d88a471067c9e09071c441d544e6e8 data\minecraft\loot_tables\blocks\orange_tulip.json
 fff7828b72f8a4eba6d739ad85d8f9f12cbc90e1 data\minecraft\loot_tables\blocks\stripped_crimson_stem.json

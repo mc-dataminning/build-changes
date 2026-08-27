@@ -1,112 +1,44 @@
-import com.mojang.logging.LogUtils;
-import java.lang.management.ManagementFactory;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
+import com.google.gson.stream.JsonReader;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import java.io.Closeable;
+import java.io.EOFException;
+import java.io.IOException;
+import java.io.Reader;
 import javax.annotation.Nullable;
-import javax.management.Attribute;
-import javax.management.AttributeList;
-import javax.management.DynamicMBean;
-import javax.management.InstanceAlreadyExistsException;
-import javax.management.MBeanAttributeInfo;
-import javax.management.MBeanInfo;
-import javax.management.MBeanNotificationInfo;
-import javax.management.MBeanRegistrationException;
-import javax.management.MalformedObjectNameException;
-import javax.management.NotCompliantMBeanException;
-import javax.management.ObjectName;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
 
-public final class bdf implements DynamicMBean {
-   private static final Logger a = LogUtils.getLogger();
-   private final MinecraftServer b;
-   private final MBeanInfo c;
-   private final Map<String, bdf.a> d = Stream.of(
-         new bdf.a("tickTimes", this::b, "Historical tick times (ms)", long[].class),
-         new bdf.a("averageTickTime", this::a, "Current average tick time (ms)", long.class)
-      )
-      .collect(Collectors.toMap($$0x -> $$0x.a, Function.identity()));
+public interface bdf<T> extends Closeable {
+   static <T> bdf<T> a(final Codec<T> $$0, Reader $$1) {
+      final JsonReader $$2 = new JsonReader($$1);
+      $$2.setLenient(true);
+      return new bdf<T>() {
+         @Nullable
+         @Override
+         public T a() throws IOException {
+            try {
+               if (!$$2.hasNext()) {
+                  return null;
+               } else {
+                  JsonElement $$0 = JsonParser.parseReader($$2);
+                  return ac.a($$0.parse(JsonOps.INSTANCE, $$0), IOException::new);
+               }
+            } catch (JsonParseException var2) {
+               throw new IOException(var2);
+            } catch (EOFException var3) {
+               return null;
+            }
+         }
 
-   private bdf(MinecraftServer $$0) {
-      this.b = $$0;
-      MBeanAttributeInfo[] $$1 = this.d.values().stream().map(bdf.a::a).toArray(MBeanAttributeInfo[]::new);
-      this.c = new MBeanInfo(bdf.class.getSimpleName(), "metrics for dedicated server", $$1, null, null, new MBeanNotificationInfo[0]);
-   }
-
-   public static void a(MinecraftServer $$0) {
-      try {
-         ManagementFactory.getPlatformMBeanServer().registerMBean(new bdf($$0), new ObjectName("net.minecraft.server:type=Server"));
-      } catch (InstanceAlreadyExistsException | MBeanRegistrationException | NotCompliantMBeanException | MalformedObjectNameException var2) {
-         a.warn("Failed to initialise server as JMX bean", var2);
-      }
-   }
-
-   private float a() {
-      return this.b.aL();
-   }
-
-   private long[] b() {
-      return this.b.k;
+         @Override
+         public void close() throws IOException {
+            $$2.close();
+         }
+      };
    }
 
    @Nullable
-   @Override
-   public Object getAttribute(String $$0) {
-      bdf.a $$1 = this.d.get($$0);
-      return $$1 == null ? null : $$1.b.get();
-   }
-
-   @Override
-   public void setAttribute(Attribute $$0) {
-   }
-
-   @Override
-   public AttributeList getAttributes(String[] $$0) {
-      List<Attribute> $$1 = Arrays.stream($$0)
-         .map(this.d::get)
-         .filter(Objects::nonNull)
-         .map($$0x -> new Attribute($$0x.a, $$0x.b.get()))
-         .collect(Collectors.toList());
-      return new AttributeList($$1);
-   }
-
-   @Override
-   public AttributeList setAttributes(AttributeList $$0) {
-      return new AttributeList();
-   }
-
-   @Nullable
-   @Override
-   public Object invoke(String $$0, Object[] $$1, String[] $$2) {
-      return null;
-   }
-
-   @Override
-   public MBeanInfo getMBeanInfo() {
-      return this.c;
-   }
-
-   static final class a {
-      final String a;
-      final Supplier<Object> b;
-      private final String c;
-      private final Class<?> d;
-
-      a(String $$0, Supplier<Object> $$1, String $$2, Class<?> $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      private MBeanAttributeInfo a() {
-         return new MBeanAttributeInfo(this.a, this.d.getSimpleName(), this.c, true, false, false);
-      }
-   }
+   T a() throws IOException;
 }

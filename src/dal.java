@@ -1,45 +1,60 @@
-public class dal extends csv {
-   private static final eig a = csv.a(2.0, 13.0, 2.0, 14.0, 16.0, 14.0);
-   private static final int b = 14;
-   private static final int c = 10;
-   private static final int d = 10;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public dal(dfi.d $$0) {
+public class dal extends csk {
+   protected dal(dfk.d $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dfj $$0, cpy $$1, gw $$2) {
-      return csv.a($$1, $$2.c(), hc.a) && !$$1.y($$2);
+   public dcx a(gw $$0, dfl $$1) {
+      return new dej($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dcx> dcy<T> a(cpx $$0, dfl $$1, dcz<T> $$2) {
+      return a($$2, dcz.j, $$0.B ? dej::a : dej::b);
    }
 
    @Override
-   public dfj a(dfj $$0, hc $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
-      return $$1 == hc.b && !this.a($$0, $$3, $$4) ? csw.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public void a(dfj $$0, cpv $$1, gw $$2, asc $$3) {
-      int $$4 = $$2.u();
-      int $$5 = $$2.v();
-      int $$6 = $$2.w();
-      double $$7 = (double)$$4 + $$3.j();
-      double $$8 = (double)$$5 + 0.7;
-      double $$9 = (double)$$6 + $$3.j();
-      $$1.a(ix.at, $$7, $$8, $$9, 0.0, 0.0, 0.0);
-      gw.a $$10 = new gw.a();
-
-      for (int $$11 = 0; $$11 < 14; $$11++) {
-         $$10.d($$4 + arx.a($$3, -10, 10), $$5 - $$3.a(10), $$6 + arx.a($$3, -10, 10));
-         dfj $$12 = $$1.a_($$10);
-         if (!$$12.r($$1, $$10)) {
-            $$1.a(ix.ax, (double)$$10.u() + $$3.j(), (double)$$10.v() + $$3.j(), (double)$$10.w() + $$3.j(), 0.0, 0.0, 0.0);
-         }
+   public void a(dfl $$0, aks $$1, gw $$2, cjh $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         int $$5 = 15 + $$1.z.a(15) + $$1.z.a(15);
+         this.a($$1, $$2, $$5);
       }
    }
 
    @Override
-   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
-      return a;
+   public czc b_(dfl $$0) {
+      return czc.c;
+   }
+
+   @Override
+   public void a(cjh $$0, @Nullable cpd $$1, List<tn> $$2, cky $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      Optional<tn> $$4 = this.a($$0);
+      if ($$4.isPresent()) {
+         $$2.add($$4.get());
+      } else {
+         $$2.add(tm.a);
+         $$2.add(tn.c("block.minecraft.spawner.desc1").a(n.h));
+         $$2.add(tm.a().b(tn.c("block.minecraft.spawner.desc2").a(n.j)));
+      }
+   }
+
+   private Optional<tn> a(cjh $$0) {
+      qy $$1 = cha.a($$0);
+      if ($$1 != null && $$1.b("SpawnData", 10)) {
+         String $$2 = $$1.p("SpawnData").p("entity").l("id");
+         aey $$3 = aey.a($$2);
+         if ($$3 != null) {
+            return jd.h.b($$3).map($$0x -> tn.c($$0x.g()).a(n.h));
+         }
+      }
+
+      return Optional.empty();
    }
 }

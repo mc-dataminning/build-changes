@@ -1,127 +1,40 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public abstract class bsb extends bqb {
-   private static final int a = 0;
-   private static final int b = 1;
-   private static final int c = 2;
-   protected final bji e;
-   protected final boolean f;
-   private final boolean d;
-   private int i;
-   private int j;
-   private int k;
-   @Nullable
-   protected bjg g;
-   protected int h = 60;
+public class bsb extends bsd {
+   private final bkd a;
+   private bji b;
+   private int c;
 
-   public bsb(bji $$0, boolean $$1) {
-      this($$0, $$1, false);
-   }
-
-   public bsb(bji $$0, boolean $$1, boolean $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.d = $$2;
+   public bsb(bkd $$0) {
+      super($$0, false);
+      this.a = $$0;
+      this.a(EnumSet.of(bqd.a.d));
    }
 
    @Override
-   public boolean b() {
-      bjg $$0 = this.e.q();
-      if ($$0 == null) {
-         $$0 = this.g;
-      }
-
-      if ($$0 == null) {
-         return false;
-      } else if (!this.e.c($$0)) {
-         return false;
-      } else {
-         eio $$1 = this.e.cf();
-         eio $$2 = $$0.cf();
-         if ($$1 != null && $$2 == $$1) {
+   public boolean a() {
+      if (this.a.s() && !this.a.gd()) {
+         bji $$0 = this.a.O_();
+         if ($$0 == null) {
             return false;
          } else {
-            double $$3 = this.l();
-            if (this.e.f($$0) > $$3 * $$3) {
-               return false;
-            } else {
-               if (this.f) {
-                  if (this.e.M().a($$0)) {
-                     this.k = 0;
-                  } else if (++this.k > b(this.h)) {
-                     return false;
-                  }
-               }
-
-               this.e.h($$0);
-               return true;
-            }
+            this.b = $$0.ei();
+            int $$1 = $$0.ej();
+            return $$1 != this.c && this.a(this.b, btu.a) && this.a.a(this.b, $$0);
          }
+      } else {
+         return false;
       }
-   }
-
-   protected double l() {
-      return this.e.b(bkm.b);
    }
 
    @Override
    public void c() {
-      this.i = 0;
-      this.j = 0;
-      this.k = 0;
-   }
-
-   @Override
-   public void d() {
-      this.e.h(null);
-      this.g = null;
-   }
-
-   protected boolean a(@Nullable bjg $$0, bts $$1) {
-      if ($$0 == null) {
-         return false;
-      } else if (!$$1.a(this.e, $$0)) {
-         return false;
-      } else if (!this.e.a($$0.dl())) {
-         return false;
-      } else {
-         if (this.d) {
-            if (--this.j <= 0) {
-               this.i = 0;
-            }
-
-            if (this.i == 0) {
-               this.i = this.a($$0) ? 1 : 2;
-            }
-
-            if (this.i == 2) {
-               return false;
-            }
-         }
-
-         return true;
+      this.e.h(this.b);
+      bji $$0 = this.a.O_();
+      if ($$0 != null) {
+         this.c = $$0.ej();
       }
-   }
 
-   private boolean a(bjg $$0) {
-      this.j = b(10 + this.e.ef().a(5));
-      ebb $$1 = this.e.L().a($$0, 0);
-      if ($$1 == null) {
-         return false;
-      } else {
-         eaz $$2 = $$1.d();
-         if ($$2 == null) {
-            return false;
-         } else {
-            int $$3 = $$2.a - $$0.dp();
-            int $$4 = $$2.c - $$0.dv();
-            return (double)($$3 * $$3 + $$4 * $$4) <= 2.25;
-         }
-      }
-   }
-
-   public bsb c(int $$0) {
-      this.h = $$0;
-      return this;
+      super.c();
    }
 }

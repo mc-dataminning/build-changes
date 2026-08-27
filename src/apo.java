@@ -1,98 +1,39 @@
-public class apo {
-   public static final apn<csv> a = a("mined", jd.f);
-   public static final apn<cja> b = a("crafted", jd.i);
-   public static final apn<cja> c = a("used", jd.i);
-   public static final apn<cja> d = a("broken", jd.i);
-   public static final apn<cja> e = a("picked_up", jd.i);
-   public static final apn<cja> f = a("dropped", jd.i);
-   public static final apn<biu<?>> g = a("killed", jd.h);
-   public static final apn<biu<?>> h = a("killed_by", jd.h);
-   public static final apn<aex> i = a("custom", jd.n);
-   public static final aex j = a("leave_game", apm.b);
-   public static final aex k = a("play_time", apm.e);
-   public static final aex l = a("total_world_time", apm.e);
-   public static final aex m = a("time_since_death", apm.e);
-   public static final aex n = a("time_since_rest", apm.e);
-   public static final aex o = a("sneak_time", apm.e);
-   public static final aex p = a("walk_one_cm", apm.d);
-   public static final aex q = a("crouch_one_cm", apm.d);
-   public static final aex r = a("sprint_one_cm", apm.d);
-   public static final aex s = a("walk_on_water_one_cm", apm.d);
-   public static final aex t = a("fall_one_cm", apm.d);
-   public static final aex u = a("climb_one_cm", apm.d);
-   public static final aex v = a("fly_one_cm", apm.d);
-   public static final aex w = a("walk_under_water_one_cm", apm.d);
-   public static final aex x = a("minecart_one_cm", apm.d);
-   public static final aex y = a("boat_one_cm", apm.d);
-   public static final aex z = a("pig_one_cm", apm.d);
-   public static final aex A = a("horse_one_cm", apm.d);
-   public static final aex B = a("aviate_one_cm", apm.d);
-   public static final aex C = a("swim_one_cm", apm.d);
-   public static final aex D = a("strider_one_cm", apm.d);
-   public static final aex E = a("jump", apm.b);
-   public static final aex F = a("drop", apm.b);
-   public static final aex G = a("damage_dealt", apm.c);
-   public static final aex H = a("damage_dealt_absorbed", apm.c);
-   public static final aex I = a("damage_dealt_resisted", apm.c);
-   public static final aex J = a("damage_taken", apm.c);
-   public static final aex K = a("damage_blocked_by_shield", apm.c);
-   public static final aex L = a("damage_absorbed", apm.c);
-   public static final aex M = a("damage_resisted", apm.c);
-   public static final aex N = a("deaths", apm.b);
-   public static final aex O = a("mob_kills", apm.b);
-   public static final aex P = a("animals_bred", apm.b);
-   public static final aex Q = a("player_kills", apm.b);
-   public static final aex R = a("fish_caught", apm.b);
-   public static final aex S = a("talked_to_villager", apm.b);
-   public static final aex T = a("traded_with_villager", apm.b);
-   public static final aex U = a("eat_cake_slice", apm.b);
-   public static final aex V = a("fill_cauldron", apm.b);
-   public static final aex W = a("use_cauldron", apm.b);
-   public static final aex X = a("clean_armor", apm.b);
-   public static final aex Y = a("clean_banner", apm.b);
-   public static final aex Z = a("clean_shulker_box", apm.b);
-   public static final aex aa = a("interact_with_brewingstand", apm.b);
-   public static final aex ab = a("interact_with_beacon", apm.b);
-   public static final aex ac = a("inspect_dropper", apm.b);
-   public static final aex ad = a("inspect_hopper", apm.b);
-   public static final aex ae = a("inspect_dispenser", apm.b);
-   public static final aex af = a("play_noteblock", apm.b);
-   public static final aex ag = a("tune_noteblock", apm.b);
-   public static final aex ah = a("pot_flower", apm.b);
-   public static final aex ai = a("trigger_trapped_chest", apm.b);
-   public static final aex aj = a("open_enderchest", apm.b);
-   public static final aex ak = a("enchant_item", apm.b);
-   public static final aex al = a("play_record", apm.b);
-   public static final aex am = a("interact_with_furnace", apm.b);
-   public static final aex an = a("interact_with_crafting_table", apm.b);
-   public static final aex ao = a("open_chest", apm.b);
-   public static final aex ap = a("sleep_in_bed", apm.b);
-   public static final aex aq = a("open_shulker_box", apm.b);
-   public static final aex ar = a("open_barrel", apm.b);
-   public static final aex as = a("interact_with_blast_furnace", apm.b);
-   public static final aex at = a("interact_with_smoker", apm.b);
-   public static final aex au = a("interact_with_lectern", apm.b);
-   public static final aex av = a("interact_with_campfire", apm.b);
-   public static final aex aw = a("interact_with_cartography_table", apm.b);
-   public static final aex ax = a("interact_with_loom", apm.b);
-   public static final aex ay = a("interact_with_stonecutter", apm.b);
-   public static final aex az = a("bell_ring", apm.b);
-   public static final aex aA = a("raid_trigger", apm.b);
-   public static final aex aB = a("raid_win", apm.b);
-   public static final aex aC = a("interact_with_anvil", apm.b);
-   public static final aex aD = a("interact_with_grindstone", apm.b);
-   public static final aex aE = a("target_hit", apm.b);
-   public static final aex aF = a("interact_with_smithing_table", apm.b);
+import java.util.IdentityHashMap;
+import java.util.Iterator;
+import java.util.Map;
 
-   private static aex a(String $$0, apm $$1) {
-      aex $$2 = new aex($$0);
-      ht.a(jd.n, $$0, $$2);
-      i.a($$2, $$1);
-      return $$2;
+public class apo<T> implements Iterable<apm<T>> {
+   private final ht<T> a;
+   private final Map<T, apm<T>> b = new IdentityHashMap<>();
+   private final tn c;
+
+   public apo(ht<T> $$0, tn $$1) {
+      this.a = $$0;
+      this.c = $$1;
    }
 
-   private static <T> apn<T> a(String $$0, ht<T> $$1) {
-      tm $$2 = tm.c("stat_type.minecraft." + $$0);
-      return ht.a(jd.y, $$0, new apn<>($$1, $$2));
+   public boolean a(T $$0) {
+      return this.b.containsKey($$0);
+   }
+
+   public apm<T> a(T $$0, apn $$1) {
+      return this.b.computeIfAbsent($$0, $$1x -> new apm<>(this, (T)$$1x, $$1));
+   }
+
+   public ht<T> a() {
+      return this.a;
+   }
+
+   @Override
+   public Iterator<apm<T>> iterator() {
+      return this.b.values().iterator();
+   }
+
+   public apm<T> b(T $$0) {
+      return this.a($$0, apn.b);
+   }
+
+   public tn b() {
+      return this.c;
    }
 }

@@ -18,7 +18,7 @@ public class qn implements ArgumentType<String> {
       if (qa.b($$1)) {
          return $$1;
       } else {
-         Message $$2 = tm.b("No such test class: " + $$1);
+         Message $$2 = tn.b("No such test class: " + $$1);
          throw new CommandSyntaxException(new SimpleCommandExceptionType($$2), $$2);
       }
    }

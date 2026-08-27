@@ -1,55 +1,61 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.types.templates.List.ListType;
 import com.mojang.serialization.Dynamic;
-import java.util.Set;
+import java.util.Optional;
 
 public class azw extends DataFix {
-   private static final Set<String> a = ImmutableSet.of(
-      "minecraft:andesite_wall",
-      "minecraft:brick_wall",
-      "minecraft:cobblestone_wall",
-      "minecraft:diorite_wall",
-      "minecraft:end_stone_brick_wall",
-      "minecraft:granite_wall",
-      new String[]{
-         "minecraft:mossy_cobblestone_wall",
-         "minecraft:mossy_stone_brick_wall",
-         "minecraft:nether_brick_wall",
-         "minecraft:prismarine_wall",
-         "minecraft:red_nether_brick_wall",
-         "minecraft:red_sandstone_wall",
-         "minecraft:sandstone_wall",
-         "minecraft:stone_brick_wall"
-      }
-   );
+   private static final int a = 2;
+   private static final int[] b = new int[]{0, 10, 50, 100, 150};
+
+   public static int a(int $$0) {
+      return b[ary.a($$0 - 1, 0, b.length - 1)];
+   }
 
    public azw(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
    public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("WallPropertyFix", this.getInputSchema().getType(ayx.u), $$0 -> $$0.update(DSL.remainderFinder(), azw::a));
+      Type<?> $$0 = this.getInputSchema().getChoiceType(ayz.x, "minecraft:villager");
+      OpticFinder<?> $$1 = DSL.namedChoice("minecraft:villager", $$0);
+      OpticFinder<?> $$2 = $$0.findField("Offers");
+      Type<?> $$3 = $$2.type();
+      OpticFinder<?> $$4 = $$3.findField("Recipes");
+      ListType<?> $$5 = (ListType<?>)$$4.type();
+      OpticFinder<?> $$6 = $$5.getElement().finder();
+      return this.fixTypeEverywhereTyped("Villager level and xp rebuild", this.getInputSchema().getType(ayz.x), $$5x -> $$5x.updateTyped($$1, $$0, $$3xx -> {
+            Dynamic<?> $$4xx = (Dynamic<?>)$$3xx.get(DSL.remainderFinder());
+            int $$5xx = $$4xx.get("VillagerData").get("level").asInt(0);
+            Typed<?> $$6x = $$3xx;
+            if ($$5xx == 0 || $$5xx == 1) {
+               int $$7 = $$3xx.getOptionalTyped($$2).flatMap($$1xxx -> $$1xxx.getOptionalTyped($$4)).map($$1xxx -> $$1xxx.getAllTyped($$6).size()).orElse(0);
+               $$5xx = ary.a($$7 / 2, 1, 5);
+               if ($$5xx > 1) {
+                  $$6x = a($$3xx, $$5xx);
+               }
+            }
+
+            Optional<Number> $$8 = $$4xx.get("Xp").asNumber().result();
+            if ($$8.isEmpty()) {
+               $$6x = b($$6x, $$5xx);
+            }
+
+            return $$6x;
+         }));
    }
 
-   private static String a(String $$0) {
-      return "true".equals($$0) ? "low" : "none";
+   private static Typed<?> a(Typed<?> $$0, int $$1) {
+      return $$0.update(DSL.remainderFinder(), $$1x -> $$1x.update("VillagerData", $$1xx -> $$1xx.set("level", $$1xx.createInt($$1))));
    }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0, String $$1) {
-      return $$0.update($$1, $$0x -> (Dynamic)DataFixUtils.orElse($$0x.asString().result().map(azw::a).map($$0x::createString), $$0x));
-   }
-
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      boolean $$1 = $$0.get("Name").asString().result().filter(a::contains).isPresent();
-      return !$$1 ? $$0 : $$0.update("Properties", $$0x -> {
-         Dynamic<?> $$1x = a($$0x, "east");
-         $$1x = a((Dynamic<T>)$$1x, "west");
-         $$1x = a((Dynamic<T>)$$1x, "north");
-         return a((Dynamic<T>)$$1x, "south");
-      });
+   private static Typed<?> b(Typed<?> $$0, int $$1) {
+      int $$2 = a($$1);
+      return $$0.update(DSL.remainderFinder(), $$1x -> $$1x.set("Xp", $$1x.createInt($$2)));
    }
 }

@@ -1,42 +1,37 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dun extends dlp {
-   private final cqp a;
-   private final dhg b;
-   private final Optional<dum> c;
+public class dun extends duv {
+   public static final Codec<dun> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.DOUBLE.fieldOf("noise_level").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("below_noise").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("above_noise").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, dun::new)
+   );
+   private final double c;
+   private final int d;
+   private final int e;
 
-   public dun(cqp $$0, dhg $$1, Optional<dum> $$2) {
-      super($$1, $$0);
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   private dun(double $$0, int $$1, int $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public int a(dks.a $$0, int $$1, int $$2) {
-      return this.a.a($$0, $$1, $$2);
+   public static dun a(double $$0, int $$1, int $$2) {
+      return new dun($$0, $$1, $$2);
    }
 
-   public dhe a(cpc $$0, dko.a $$1) {
-      return ((dia)this.a.a($$0.e, $$0.f)).b($$1);
+   @Override
+   protected int a(ase $$0, gw $$1) {
+      double $$2 = cqv.e.a((double)$$1.u() / 200.0, (double)$$1.w() / 200.0, false);
+      return $$2 < this.c ? this.d : this.e;
    }
 
-   public dfj a(gw $$0) {
-      return this.a.a_($$0);
-   }
-
-   public int c() {
-      return this.a.H_();
-   }
-
-   public cqp d() {
-      return this.a;
-   }
-
-   public Optional<dum> e() {
-      return this.c;
-   }
-
-   public dhg f() {
-      return this.b;
+   @Override
+   public dus<?> b() {
+      return dus.h;
    }
 }

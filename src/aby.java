@@ -1,24 +1,40 @@
-public class aby implements ve<abd> {
-   private final boolean a;
+public class aby implements vf<abe> {
+   private final gw a;
+   private final int b;
+   private final boolean c;
 
-   public aby(boolean $$0) {
+   public aby(gw $$0, int $$1, boolean $$2) {
       this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public void a(abd $$0) {
-      $$0.a(this);
-   }
-
-   public aby(sp $$0) {
-      this.a = $$0.readBoolean();
+   public aby(sq $$0) {
+      this.a = $$0.e();
+      this.b = $$0.m();
+      this.c = $$0.readBoolean();
    }
 
    @Override
-   public void a(sp $$0) {
+   public void a(sq $$0) {
       $$0.a(this.a);
+      $$0.c(this.b);
+      $$0.a(this.c);
    }
 
-   public boolean a() {
+   public void a(abe $$0) {
+      $$0.a(this);
+   }
+
+   public gw a() {
       return this.a;
+   }
+
+   public int d() {
+      return this.b;
+   }
+
+   public boolean e() {
+      return this.c;
    }
 }

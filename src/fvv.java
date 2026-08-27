@@ -1,33 +1,23 @@
-public class fvv extends fum<cdx> {
-   private final foy f;
+public class fvv extends fti<cda> {
+   public static final aey a = new aey("textures/entity/trident.png");
+   private final fhk f;
 
-   public fvv(fth.a $$0) {
-      super($$0, fib.bA);
-      this.f = $$0.c();
+   public fvv(ftj.a $$0) {
+      super($$0);
+      this.f = new fhk($$0.a(fid.bC));
    }
 
-   protected void a(cdx $$0, float $$1, dfj $$2, elp $$3, foe $$4, int $$5) {
-      int $$6 = $$0.H();
-      if ($$6 > -1 && (float)$$6 - $$1 + 1.0F < 10.0F) {
-         float $$7 = 1.0F - ((float)$$6 - $$1 + 1.0F) / 10.0F;
-         $$7 = arx.a($$7, 0.0F, 1.0F);
-         $$7 *= $$7;
-         $$7 *= $$7;
-         float $$8 = 1.0F + $$7 * 0.3F;
-         $$3.b($$8, $$8, $$8);
-      }
-
-      a(this.f, $$2, $$3, $$4, $$5, $$6 > -1 && $$6 / 5 % 2 == 0);
+   public void a(cda $$0, float $$1, float $$2, elr $$3, fog $$4, int $$5) {
+      $$3.a();
+      $$3.a(a.d.rotationDegrees(ary.i($$2, $$0.N, $$0.dB()) - 90.0F));
+      $$3.a(a.f.rotationDegrees(ary.i($$2, $$0.O, $$0.dD()) + 90.0F));
+      elv $$6 = fuh.c($$4, this.f.a(this.a($$0)), false, $$0.F());
+      this.f.a($$3, $$6, $$5, fyx.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public static void a(foy $$0, dfj $$1, elp $$2, foe $$3, int $$4, boolean $$5) {
-      int $$6;
-      if ($$5) {
-         $$6 = fyv.a(fyv.a(1.0F), 10);
-      } else {
-         $$6 = fyv.d;
-      }
-
-      $$0.a($$1, $$2, $$3, $$4, $$6);
+   public aey a(cda $$0) {
+      return a;
    }
 }

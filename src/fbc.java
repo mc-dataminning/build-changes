@@ -1,27 +1,25 @@
-import org.joml.Vector2i;
-import org.joml.Vector2ic;
+import org.joml.Matrix4f;
 
-public class fbc implements fbb {
-   public static final fbb a = new fbc();
-
-   private fbc() {
+public interface fbc {
+   static fbc a(arl $$0) {
+      return new fbb($$0);
    }
 
-   @Override
-   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      Vector2i $$6 = new Vector2i($$2, $$3).add(12, -12);
-      this.a($$0, $$1, $$6, $$4, $$5);
-      return $$6;
+   static fbc a(cgn $$0) {
+      if ($$0 instanceof cgm) {
+         return new fba((cgm)$$0);
+      } else {
+         throw new IllegalArgumentException("Unknown TooltipComponent");
+      }
    }
 
-   private void a(int $$0, int $$1, Vector2i $$2, int $$3, int $$4) {
-      if ($$2.x + $$3 > $$0) {
-         $$2.x = Math.max($$2.x - 24 - $$3, 4);
-      }
+   int a();
 
-      int $$5 = $$4 + 3;
-      if ($$2.y + $$5 > $$1) {
-         $$2.y = $$1 - $$5;
-      }
+   int a(esf var1);
+
+   default void a(esf $$0, int $$1, int $$2, Matrix4f $$3, fog.a $$4) {
+   }
+
+   default void a(esf $$0, int $$1, int $$2, esh $$3) {
    }
 }

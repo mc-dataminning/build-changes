@@ -1,18 +1,41 @@
-public class apc {
-   private static final int h = 20;
-   private static final int i = 600;
-   private static final int j = 12000;
-   private static final int k = 24000;
-   private static final int l = 6000;
-   public static final apb a = new apb(ape.ot, 20, 600, true);
-   public static final apb b = new apb(ape.nY, 12000, 24000, false);
-   public static final apb c = new apb(ape.nZ, 0, 0, true);
-   public static final apb d = new apb(ape.oq, 0, 0, true);
-   public static final apb e = new apb(ape.or, 6000, 24000, true);
-   public static final apb f = a(ape.oS);
-   public static final apb g = a(ape.os);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public static apb a(hg<apd> $$0) {
-      return new apb($$0, 12000, 24000, false);
+public class apc {
+   public static final Codec<apc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ape.b.fieldOf("sound").forGetter($$0x -> $$0x.b),
+               Codec.INT.fieldOf("min_delay").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("max_delay").forGetter($$0x -> $$0x.d),
+               Codec.BOOL.fieldOf("replace_current_music").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, apc::new)
+   );
+   private final hg<ape> b;
+   private final int c;
+   private final int d;
+   private final boolean e;
+
+   public apc(hg<ape> $$0, int $$1, int $$2, boolean $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+   }
+
+   public hg<ape> a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public boolean d() {
+      return this.e;
    }
 }

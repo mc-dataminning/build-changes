@@ -10,7 +10,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class fw implements ArgumentType<fx> {
    private static final Collection<String> a = Arrays.asList("stick", "minecraft:stick", "stick{foo=bar}");
-   private final hi<cja> b;
+   private final hi<cjc> b;
 
    public fw(dn $$0) {
       this.b = $$0.a(je.D);

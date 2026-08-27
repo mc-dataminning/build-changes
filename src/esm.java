@@ -1,128 +1,171 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+public abstract class esm extends esq implements etu, eum {
+   private static final eue a = new eue(new aey("widget/text_field"), new aey("widget/text_field_highlighted"));
+   private static final aey b = new aey("widget/scroller");
+   private static final int c = 4;
+   private static final int d = 8;
+   private double e;
+   private boolean l;
 
-public abstract class esm extends eso {
-   private static final aex a = new aex("widget/slider");
-   private static final aex d = new aex("widget/slider_highlighted");
-   private static final aex e = new aex("widget/slider_handle");
-   private static final aex l = new aex("widget/slider_handle_highlighted");
-   protected static final int b = 2;
-   private static final int m = 8;
-   private static final int n = 4;
-   protected double c;
-   private boolean o;
-
-   public esm(int $$0, int $$1, int $$2, int $$3, tm $$4, double $$5) {
+   public esm(int $$0, int $$1, int $$2, int $$3, tn $$4) {
       super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
-   }
-
-   private aex e() {
-      return this.aD_() && !this.o ? d : a;
-   }
-
-   private aex f() {
-      return !this.h && !this.o ? e : l;
    }
 
    @Override
-   protected tz aF_() {
-      return tm.a("gui.narrate.slider", this.m());
-   }
-
-   @Override
-   public void a(ewi $$0) {
-      $$0.a(ewh.a, this.aF_());
-      if (this.i) {
-         if (this.aD_()) {
-            $$0.a(ewh.d, tm.c("narration.slider.usage.focused"));
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (!this.j) {
+         return false;
+      } else {
+         boolean $$3 = this.c($$0, $$1);
+         boolean $$4 = this.e()
+            && $$0 >= (double)(this.r() + this.f)
+            && $$0 <= (double)(this.r() + this.f + 8)
+            && $$1 >= (double)this.t()
+            && $$1 < (double)(this.t() + this.g);
+         if ($$4 && $$2 == 0) {
+            this.l = true;
+            return true;
          } else {
-            $$0.a(ewh.d, tm.c("narration.slider.usage.hovered"));
+            return $$3 || $$4;
          }
       }
    }
 
    @Override
-   public void b(esf $$0, int $$1, int $$2, float $$3) {
-      eqv $$4 = eqv.O();
-      $$0.a(1.0F, 1.0F, 1.0F, this.k);
-      RenderSystem.enableBlend();
-      RenderSystem.defaultBlendFunc();
-      RenderSystem.enableDepthTest();
-      $$0.a(this.e(), this.r(), this.t(), this.l(), this.i());
-      $$0.a(this.f(), this.r() + (int)(this.c * (double)(this.f - 8)), this.t(), 8, this.i());
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      int $$5 = this.i ? 16777215 : 10526880;
-      this.a($$0, $$4.h, 2, $$5 | arx.f(this.k * 255.0F) << 24);
+   public boolean b(double $$0, double $$1, int $$2) {
+      if ($$2 == 0) {
+         this.l = false;
+      }
+
+      return super.b($$0, $$1, $$2);
    }
 
    @Override
-   public void a(double $$0, double $$1) {
-      this.a($$0);
-   }
-
-   @Override
-   public void b_(boolean $$0) {
-      super.b_($$0);
-      if (!$$0) {
-         this.o = false;
-      } else {
-         eqs $$1 = eqv.O().aU();
-         if ($$1 == eqs.b || $$1 == eqs.d) {
-            this.o = true;
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      if (this.j && this.aC_() && this.l) {
+         if ($$1 < (double)this.t()) {
+            this.a(0.0);
+         } else if ($$1 > (double)(this.t() + this.g)) {
+            this.a((double)this.d());
+         } else {
+            int $$5 = this.w();
+            double $$6 = (double)Math.max(1, this.d() / (this.g - $$5));
+            this.a(this.e + $$4 * $$6);
          }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      if (!this.j) {
+         return false;
+      } else {
+         this.a(this.e - $$3 * this.h());
+         return true;
       }
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
-      if (ewn.a($$0)) {
-         this.o = !this.o;
-         return true;
-      } else {
-         if (this.o) {
-            boolean $$3 = $$0 == 263;
-            if ($$3 || $$0 == 262) {
-               float $$4 = $$3 ? -1.0F : 1.0F;
-               this.b(this.c + (double)($$4 / (float)(this.f - 8)));
-               return true;
-            }
+      boolean $$3 = $$0 == 265;
+      boolean $$4 = $$0 == 264;
+      if ($$3 || $$4) {
+         double $$5 = this.e;
+         this.a(this.e + (double)($$3 ? -1 : 1) * this.h());
+         if ($$5 != this.e) {
+            return true;
          }
+      }
 
-         return false;
+      return super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void b(esh $$0, int $$1, int $$2, float $$3) {
+      if (this.j) {
+         this.b($$0);
+         $$0.c(this.r() + 1, this.t() + 1, this.r() + this.f - 1, this.t() + this.g - 1);
+         $$0.c().a();
+         $$0.c().a(0.0, -this.e, 0.0);
+         this.c($$0, $$1, $$2, $$3);
+         $$0.c().b();
+         $$0.f();
+         this.a($$0);
       }
    }
 
-   private void a(double $$0) {
-      this.b(($$0 - (double)(this.r() + 4)) / (double)(this.f - 8));
+   private int w() {
+      return ary.a((int)((float)(this.g * this.g) / (float)this.x()), 32, this.g);
    }
 
-   private void b(double $$0) {
-      double $$1 = this.c;
-      this.c = arx.a($$0, 0.0, 1.0);
-      if ($$1 != this.c) {
-         this.a();
+   protected void a(esh $$0) {
+      if (this.e()) {
+         this.c($$0);
       }
-
-      this.b();
    }
 
-   @Override
-   protected void b(double $$0, double $$1, double $$2, double $$3) {
-      this.a($$0);
-      super.b($$0, $$1, $$2, $$3);
+   protected int a() {
+      return 4;
    }
 
-   @Override
-   public void a(gdq $$0) {
+   protected int b() {
+      return this.a() * 2;
    }
 
-   @Override
-   public void b(double $$0, double $$1) {
-      super.a(eqv.O().ai());
+   protected double c() {
+      return this.e;
    }
 
-   protected abstract void b();
+   protected void a(double $$0) {
+      this.e = ary.a($$0, 0.0, (double)this.d());
+   }
 
-   @Override
-   protected abstract void a();
+   protected int d() {
+      return Math.max(0, this.x() - (this.g - 4));
+   }
+
+   private int x() {
+      return this.g() + 4;
+   }
+
+   protected void b(esh $$0) {
+      this.a($$0, this.r(), this.t(), this.l(), this.i());
+   }
+
+   protected void a(esh $$0, int $$1, int $$2, int $$3, int $$4) {
+      aey $$5 = a.a(this.aD_(), this.aC_());
+      $$0.a($$5, $$1, $$2, $$3, $$4);
+   }
+
+   private void c(esh $$0) {
+      int $$1 = this.w();
+      int $$2 = this.r() + this.f;
+      int $$3 = Math.max(this.t(), (int)this.e * (this.g - $$1) / this.d() + this.t());
+      $$0.a(b, $$2, $$3, 8, $$1);
+   }
+
+   protected boolean a(int $$0, int $$1) {
+      return (double)$$1 - this.e >= (double)this.t() && (double)$$0 - this.e <= (double)(this.t() + this.g);
+   }
+
+   protected boolean c(double $$0, double $$1) {
+      return $$0 >= (double)this.r() && $$0 < (double)(this.r() + this.f) && $$1 >= (double)this.t() && $$1 < (double)(this.t() + this.g);
+   }
+
+   protected boolean e() {
+      return this.g() > this.i();
+   }
+
+   public int f() {
+      return 8;
+   }
+
+   protected abstract int g();
+
+   protected abstract double h();
+
+   protected abstract void c(esh var1, int var2, int var3, float var4);
 }

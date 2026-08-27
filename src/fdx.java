@@ -1,9 +1,8 @@
-public class fdx extends RuntimeException {
-   public fdx(String $$0) {
-      super($$0);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public fdx(String $$0, Throwable $$1) {
-      super($$0, $$1);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fdx {
 }

@@ -1,9 +1,5 @@
-import java.util.List;
+public interface cez {
+   void a(cen var1, int var2, cjh var3);
 
-public interface cez extends bgr, cgg {
-   int f();
-
-   int g();
-
-   List<cjf> h();
+   void a(cen var1, int var2, int var3);
 }

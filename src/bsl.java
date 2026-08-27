@@ -1,8 +1,60 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.google.common.collect.Iterables;
+import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface bsl {
+public class bsl {
+   private static final bsl a = new bsl();
+   private final List<bji> b;
+   private final Predicate<bji> c;
+
+   private bsl() {
+      this.b = List.of();
+      this.c = $$0 -> false;
+   }
+
+   public bsl(bji $$0, List<bji> $$1) {
+      this.b = $$1;
+      Object2BooleanOpenHashMap<bji> $$2 = new Object2BooleanOpenHashMap($$1.size());
+      Predicate<bji> $$3 = $$1x -> btn.b($$0, $$1x);
+      this.c = $$2x -> $$2.computeIfAbsent($$2x, $$3);
+   }
+
+   public static bsl a() {
+      return a;
+   }
+
+   public Optional<bji> a(Predicate<bji> $$0) {
+      for (bji $$1 : this.b) {
+         if ($$0.test($$1) && this.c.test($$1)) {
+            return Optional.of($$1);
+         }
+      }
+
+      return Optional.empty();
+   }
+
+   public Iterable<bji> b(Predicate<bji> $$0) {
+      return Iterables.filter(this.b, $$1 -> $$0.test($$1) && this.c.test($$1));
+   }
+
+   public Stream<bji> c(Predicate<bji> $$0) {
+      return this.b.stream().filter($$1 -> $$0.test($$1) && this.c.test($$1));
+   }
+
+   public boolean a(bji $$0) {
+      return this.b.contains($$0) && this.c.test($$0);
+   }
+
+   public boolean d(Predicate<bji> $$0) {
+      for (bji $$1 : this.b) {
+         if ($$0.test($$1) && this.c.test($$1)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
 }

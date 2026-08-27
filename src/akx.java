@@ -1,113 +1,42 @@
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2ByteMap;
-import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Comparator;
 
-public class akx extends ake {
-   public static final int a = 33;
-   private static final int c = 4;
-   protected final Long2ByteMap b = new Long2ByteOpenHashMap();
-   private final Long2ObjectOpenHashMap<asm<akv<?>>> d = new Long2ObjectOpenHashMap();
+public class akx<T> {
+   private final String i;
+   private final Comparator<T> j;
+   private final long k;
+   public static final akx<asz> a = a("start", ($$0, $$1) -> 0);
+   public static final akx<asz> b = a("dragon", ($$0, $$1) -> 0);
+   public static final akx<cpe> c = a("player", Comparator.comparingLong(cpe::a));
+   public static final akx<cpe> d = a("forced", Comparator.comparingLong(cpe::a));
+   public static final akx<cpe> e = a("light", Comparator.comparingLong(cpe::a));
+   public static final akx<gw> f = a("portal", ib::i, 300);
+   public static final akx<Integer> g = a("post_teleport", Integer::compareTo, 5);
+   public static final akx<cpe> h = a("unknown", Comparator.comparingLong(cpe::a), 1);
 
-   public akx() {
-      super(34, 16, 256);
-      this.b.defaultReturnValue((byte)33);
+   public static <T> akx<T> a(String $$0, Comparator<T> $$1) {
+      return new akx<>($$0, $$1, 0L);
    }
 
-   private asm<akv<?>> g(long $$0) {
-      return (asm<akv<?>>)this.d.computeIfAbsent($$0, $$0x -> asm.a(4));
+   public static <T> akx<T> a(String $$0, Comparator<T> $$1, int $$2) {
+      return new akx<>($$0, $$1, (long)$$2);
    }
 
-   private int a(asm<akv<?>> $$0) {
-      return $$0.isEmpty() ? 34 : $$0.b().b();
-   }
-
-   public void a(long $$0, akv<?> $$1) {
-      asm<akv<?>> $$2 = this.g($$0);
-      int $$3 = this.a($$2);
-      $$2.add($$1);
-      if ($$1.b() < $$3) {
-         this.b($$0, $$1.b(), true);
-      }
-   }
-
-   public void b(long $$0, akv<?> $$1) {
-      asm<akv<?>> $$2 = this.g($$0);
-      $$2.remove($$1);
-      if ($$2.isEmpty()) {
-         this.d.remove($$0);
-      }
-
-      this.b($$0, this.a($$2), false);
-   }
-
-   public <T> void a(akw<T> $$0, cpc $$1, int $$2, T $$3) {
-      this.a($$1.a(), new akv<>($$0, $$2, $$3));
-   }
-
-   public <T> void b(akw<T> $$0, cpc $$1, int $$2, T $$3) {
-      akv<T> $$4 = new akv<>($$0, $$2, $$3);
-      this.b($$1.a(), $$4);
-   }
-
-   public void a(int $$0) {
-      List<Pair<akv<cpc>, Long>> $$1 = new ArrayList<>();
-      ObjectIterator var3 = this.d.long2ObjectEntrySet().iterator();
-
-      while (var3.hasNext()) {
-         Entry<asm<akv<?>>> $$2 = (Entry<asm<akv<?>>>)var3.next();
-
-         for (akv<?> $$3 : (asm)$$2.getValue()) {
-            if ($$3.a() == akw.c) {
-               $$1.add(Pair.of($$3, $$2.getLongKey()));
-            }
-         }
-      }
-
-      for (Pair<akv<cpc>, Long> $$4 : $$1) {
-         Long $$5 = (Long)$$4.getSecond();
-         akv<cpc> $$6 = (akv<cpc>)$$4.getFirst();
-         this.b($$5, $$6);
-         cpc $$7 = new cpc($$5);
-         akw<cpc> $$8 = $$6.a();
-         this.a($$8, $$7, $$0, $$7);
-      }
+   protected akx(String $$0, Comparator<T> $$1, long $$2) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
    }
 
    @Override
-   protected int b(long $$0) {
-      asm<akv<?>> $$1 = (asm<akv<?>>)this.d.get($$0);
-      return $$1 != null && !$$1.isEmpty() ? $$1.b().b() : Integer.MAX_VALUE;
+   public String toString() {
+      return this.i;
    }
 
-   public int a(cpc $$0) {
-      return this.c($$0.a());
+   public Comparator<T> a() {
+      return this.j;
    }
 
-   @Override
-   protected int c(long $$0) {
-      return this.b.get($$0);
-   }
-
-   @Override
-   protected void a(long $$0, int $$1) {
-      if ($$1 >= 33) {
-         this.b.remove($$0);
-      } else {
-         this.b.put($$0, (byte)$$1);
-      }
-   }
-
-   public void a() {
-      this.b(Integer.MAX_VALUE);
-   }
-
-   public String d(long $$0) {
-      asm<akv<?>> $$1 = (asm<akv<?>>)this.d.get($$0);
-      return $$1 != null && !$$1.isEmpty() ? $$1.b().toString() : "no_ticket";
+   public long b() {
+      return this.k;
    }
 }

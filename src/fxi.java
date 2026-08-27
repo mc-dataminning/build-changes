@@ -1,39 +1,27 @@
-public class fxi<T extends bjg, M extends ffd<T> & fee> extends fxp<T, M> {
-   private final foa a;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-   public fxi(fvc<T, M> $$0, foa $$1) {
+public class fxi extends fxr<bvf, ffu<bvf>> {
+   private static final Map<bvf.a, aey> a = ImmutableMap.of(
+      bvf.a.b,
+      new aey("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
+      bvf.a.c,
+      new aey("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
+      bvf.a.d,
+      new aey("textures/entity/iron_golem/iron_golem_crackiness_high.png")
+   );
+
+   public fxi(fve<bvf, ffu<bvf>> $$0) {
       super($$0);
-      this.a = $$1;
    }
 
-   public void a(elp $$0, foe $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      boolean $$10 = $$3.fl() == bja.b;
-      cjf $$11 = $$10 ? $$3.eT() : $$3.eS();
-      cjf $$12 = $$10 ? $$3.eS() : $$3.eT();
-      if (!$$11.b() || !$$12.b()) {
-         $$0.a();
-         if (this.c().e) {
-            float $$13 = 0.5F;
-            $$0.a(0.0F, 0.75F, 0.0F);
-            $$0.b(0.5F, 0.5F, 0.5F);
+   public void a(elr $$0, fog $$1, int $$2, bvf $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.cd()) {
+         bvf.a $$10 = $$3.t();
+         if ($$10 != bvf.a.a) {
+            aey $$11 = a.get($$10);
+            a(this.c(), $$11, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
          }
-
-         this.a($$3, $$12, cjc.c, bja.b, $$0, $$1, $$2);
-         this.a($$3, $$11, cjc.b, bja.a, $$0, $$1, $$2);
-         $$0.b();
-      }
-   }
-
-   protected void a(bjg $$0, cjf $$1, cjc $$2, bja $$3, elp $$4, foe $$5, int $$6) {
-      if (!$$1.b()) {
-         $$4.a();
-         this.c().a($$3, $$4);
-         $$4.a(a.b.rotationDegrees(-90.0F));
-         $$4.a(a.d.rotationDegrees(180.0F));
-         boolean $$7 = $$3 == bja.a;
-         $$4.a((float)($$7 ? -1 : 1) / 16.0F, 0.125F, -0.625F);
-         this.a.a($$0, $$1, $$2, $$7, $$4, $$5, $$6);
-         $$4.b();
       }
    }
 }

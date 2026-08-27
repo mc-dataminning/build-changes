@@ -1,271 +1,281 @@
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import com.mojang.datafixers.types.templates.Hook.HookFunction;
 import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.Reader;
-import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
-import java.nio.channels.FileLock;
-import java.nio.channels.ReadableByteChannel;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import java.util.zip.GZIPInputStream;
-import java.util.zip.GZIPOutputStream;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.Map;
+import java.util.function.Supplier;
 import org.slf4j.Logger;
 
-public class bdb {
-   static final Logger a = LogUtils.getLogger();
-   private static final int b = 4096;
-   private static final String c = ".gz";
-   private final Path d;
-   private final String e;
+public class bdb extends Schema {
+   private static final Logger b = LogUtils.getLogger();
+   static final Map<String, String> c = (Map<String, String>)DataFixUtils.make(Maps.newHashMap(), $$0 -> {
+      $$0.put("minecraft:furnace", "Furnace");
+      $$0.put("minecraft:lit_furnace", "Furnace");
+      $$0.put("minecraft:chest", "Chest");
+      $$0.put("minecraft:trapped_chest", "Chest");
+      $$0.put("minecraft:ender_chest", "EnderChest");
+      $$0.put("minecraft:jukebox", "RecordPlayer");
+      $$0.put("minecraft:dispenser", "Trap");
+      $$0.put("minecraft:dropper", "Dropper");
+      $$0.put("minecraft:sign", "Sign");
+      $$0.put("minecraft:mob_spawner", "MobSpawner");
+      $$0.put("minecraft:noteblock", "Music");
+      $$0.put("minecraft:brewing_stand", "Cauldron");
+      $$0.put("minecraft:enhanting_table", "EnchantTable");
+      $$0.put("minecraft:command_block", "CommandBlock");
+      $$0.put("minecraft:beacon", "Beacon");
+      $$0.put("minecraft:skull", "Skull");
+      $$0.put("minecraft:daylight_detector", "DLDetector");
+      $$0.put("minecraft:hopper", "Hopper");
+      $$0.put("minecraft:banner", "Banner");
+      $$0.put("minecraft:flower_pot", "FlowerPot");
+      $$0.put("minecraft:repeating_command_block", "CommandBlock");
+      $$0.put("minecraft:chain_command_block", "CommandBlock");
+      $$0.put("minecraft:standing_sign", "Sign");
+      $$0.put("minecraft:wall_sign", "Sign");
+      $$0.put("minecraft:piston_head", "Piston");
+      $$0.put("minecraft:daylight_detector_inverted", "DLDetector");
+      $$0.put("minecraft:unpowered_comparator", "Comparator");
+      $$0.put("minecraft:powered_comparator", "Comparator");
+      $$0.put("minecraft:wall_banner", "Banner");
+      $$0.put("minecraft:standing_banner", "Banner");
+      $$0.put("minecraft:structure_block", "Structure");
+      $$0.put("minecraft:end_portal", "Airportal");
+      $$0.put("minecraft:end_gateway", "EndGateway");
+      $$0.put("minecraft:shield", "Banner");
+   });
+   protected static final HookFunction a = new HookFunction() {
+      public <T> T apply(DynamicOps<T> $$0, T $$1) {
+         return bdb.a(new Dynamic($$0, $$1), bdb.c, "ArmorStand");
+      }
+   };
 
-   private bdb(Path $$0, String $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public bdb(int $$0, Schema $$1) {
+      super($$0, $$1);
    }
 
-   public static bdb a(Path $$0, String $$1) throws IOException {
-      Files.createDirectories($$0);
-      return new bdb($$0, $$1);
+   protected static TypeTemplate a(Schema $$0) {
+      return DSL.optionalFields("Equipment", DSL.list(ayz.t.in($$0)));
    }
 
-   public bdb.d a() throws IOException {
-      bdb.d var2;
-      try (Stream<Path> $$0 = Files.list(this.d)) {
-         var2 = new bdb.d($$0.filter($$0x -> Files.isRegularFile($$0x)).map(this::a).filter(Objects::nonNull).toList());
-      }
-
-      return var2;
+   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
+      $$0.register($$1, $$2, () -> a($$0));
    }
 
-   @Nullable
-   private bdb.b a(Path $$0) {
-      String $$1 = $$0.getFileName().toString();
-      int $$2 = $$1.indexOf(46);
-      if ($$2 == -1) {
-         return null;
-      } else {
-         bdb.c $$3 = bdb.c.a($$1.substring(0, $$2));
-         if ($$3 != null) {
-            String $$4 = $$1.substring($$2);
-            if ($$4.equals(this.e)) {
-               return new bdb.e($$0, $$3);
-            }
-
-            if ($$4.equals(this.e + ".gz")) {
-               return new bdb.a($$0, $$3);
-            }
-         }
-
-         return null;
-      }
+   protected static void b(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
+      $$0.register($$1, $$2, () -> DSL.optionalFields("inTile", ayz.y.in($$0)));
    }
 
-   static void a(Path $$0, Path $$1) throws IOException {
-      if (Files.exists($$1)) {
-         throw new IOException("Compressed target file already exists: " + $$1);
-      } else {
-         try (FileChannel $$2 = FileChannel.open($$0, StandardOpenOption.WRITE, StandardOpenOption.READ)) {
-            FileLock $$3 = $$2.tryLock();
-            if ($$3 == null) {
-               throw new IOException("Raw log file is already locked, cannot compress: " + $$0);
-            }
-
-            a($$2, $$1);
-            $$2.truncate(0L);
-         }
-
-         Files.delete($$0);
-      }
+   protected static void c(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
+      $$0.register($$1, $$2, () -> DSL.optionalFields("DisplayTile", ayz.y.in($$0)));
    }
 
-   private static void a(ReadableByteChannel $$0, Path $$1) throws IOException {
-      try (OutputStream $$2 = new GZIPOutputStream(Files.newOutputStream($$1))) {
-         byte[] $$3 = new byte[4096];
-         ByteBuffer $$4 = ByteBuffer.wrap($$3);
-
-         while ($$0.read($$4) >= 0) {
-            $$4.flip();
-            $$2.write($$3, 0, $$4.limit());
-            $$4.clear();
-         }
-      }
+   protected static void d(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
+      $$0.register($$1, $$2, () -> DSL.optionalFields("Items", DSL.list(ayz.t.in($$0))));
    }
 
-   public bdb.e a(LocalDate $$0) throws IOException {
-      int $$1 = 1;
-      Set<bdb.c> $$2 = this.a().c();
-
-      bdb.c $$3;
-      do {
-         $$3 = new bdb.c($$0, $$1++);
-      } while ($$2.contains($$3));
-
-      bdb.e $$4 = new bdb.e(this.d.resolve($$3.b(this.e)), $$3);
-      Files.createFile($$4.c());
-      return $$4;
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = Maps.newHashMap();
+      $$0.register($$1, "Item", $$1x -> DSL.optionalFields("Item", ayz.t.in($$0)));
+      $$0.registerSimple($$1, "XPOrb");
+      b($$0, $$1, "ThrownEgg");
+      $$0.registerSimple($$1, "LeashKnot");
+      $$0.registerSimple($$1, "Painting");
+      $$0.register($$1, "Arrow", $$1x -> DSL.optionalFields("inTile", ayz.y.in($$0)));
+      $$0.register($$1, "TippedArrow", $$1x -> DSL.optionalFields("inTile", ayz.y.in($$0)));
+      $$0.register($$1, "SpectralArrow", $$1x -> DSL.optionalFields("inTile", ayz.y.in($$0)));
+      b($$0, $$1, "Snowball");
+      b($$0, $$1, "Fireball");
+      b($$0, $$1, "SmallFireball");
+      b($$0, $$1, "ThrownEnderpearl");
+      $$0.registerSimple($$1, "EyeOfEnderSignal");
+      $$0.register($$1, "ThrownPotion", $$1x -> DSL.optionalFields("inTile", ayz.y.in($$0), "Potion", ayz.t.in($$0)));
+      b($$0, $$1, "ThrownExpBottle");
+      $$0.register($$1, "ItemFrame", $$1x -> DSL.optionalFields("Item", ayz.t.in($$0)));
+      b($$0, $$1, "WitherSkull");
+      $$0.registerSimple($$1, "PrimedTnt");
+      $$0.register($$1, "FallingSand", $$1x -> DSL.optionalFields("Block", ayz.y.in($$0), "TileEntityData", ayz.s.in($$0)));
+      $$0.register($$1, "FireworksRocketEntity", $$1x -> DSL.optionalFields("FireworksItem", ayz.t.in($$0)));
+      $$0.registerSimple($$1, "Boat");
+      $$0.register($$1, "Minecart", () -> DSL.optionalFields("DisplayTile", ayz.y.in($$0), "Items", DSL.list(ayz.t.in($$0))));
+      c($$0, $$1, "MinecartRideable");
+      $$0.register($$1, "MinecartChest", $$1x -> DSL.optionalFields("DisplayTile", ayz.y.in($$0), "Items", DSL.list(ayz.t.in($$0))));
+      c($$0, $$1, "MinecartFurnace");
+      c($$0, $$1, "MinecartTNT");
+      $$0.register($$1, "MinecartSpawner", () -> DSL.optionalFields("DisplayTile", ayz.y.in($$0), ayz.B.in($$0)));
+      $$0.register($$1, "MinecartHopper", $$1x -> DSL.optionalFields("DisplayTile", ayz.y.in($$0), "Items", DSL.list(ayz.t.in($$0))));
+      c($$0, $$1, "MinecartCommandBlock");
+      a($$0, $$1, "ArmorStand");
+      a($$0, $$1, "Creeper");
+      a($$0, $$1, "Skeleton");
+      a($$0, $$1, "Spider");
+      a($$0, $$1, "Giant");
+      a($$0, $$1, "Zombie");
+      a($$0, $$1, "Slime");
+      a($$0, $$1, "Ghast");
+      a($$0, $$1, "PigZombie");
+      $$0.register($$1, "Enderman", $$1x -> DSL.optionalFields("carried", ayz.y.in($$0), a($$0)));
+      a($$0, $$1, "CaveSpider");
+      a($$0, $$1, "Silverfish");
+      a($$0, $$1, "Blaze");
+      a($$0, $$1, "LavaSlime");
+      a($$0, $$1, "EnderDragon");
+      a($$0, $$1, "WitherBoss");
+      a($$0, $$1, "Bat");
+      a($$0, $$1, "Witch");
+      a($$0, $$1, "Endermite");
+      a($$0, $$1, "Guardian");
+      a($$0, $$1, "Pig");
+      a($$0, $$1, "Sheep");
+      a($$0, $$1, "Cow");
+      a($$0, $$1, "Chicken");
+      a($$0, $$1, "Squid");
+      a($$0, $$1, "Wolf");
+      a($$0, $$1, "MushroomCow");
+      a($$0, $$1, "SnowMan");
+      a($$0, $$1, "Ozelot");
+      a($$0, $$1, "VillagerGolem");
+      $$0.register(
+         $$1, "EntityHorse", $$1x -> DSL.optionalFields("Items", DSL.list(ayz.t.in($$0)), "ArmorItem", ayz.t.in($$0), "SaddleItem", ayz.t.in($$0), a($$0))
+      );
+      a($$0, $$1, "Rabbit");
+      $$0.register(
+         $$1,
+         "Villager",
+         $$1x -> DSL.optionalFields(
+               "Inventory",
+               DSL.list(ayz.t.in($$0)),
+               "Offers",
+               DSL.optionalFields("Recipes", DSL.list(DSL.optionalFields("buy", ayz.t.in($$0), "buyB", ayz.t.in($$0), "sell", ayz.t.in($$0)))),
+               a($$0)
+            )
+      );
+      $$0.registerSimple($$1, "EnderCrystal");
+      $$0.registerSimple($$1, "AreaEffectCloud");
+      $$0.registerSimple($$1, "ShulkerBullet");
+      a($$0, $$1, "Shulker");
+      return $$1;
    }
 
-   public static record a(Path a, bdb.c b) implements bdb.b {
-      @Nullable
-      @Override
-      public Reader a() throws IOException {
-         return !Files.exists(this.a) ? null : new BufferedReader(new InputStreamReader(new GZIPInputStream(Files.newInputStream(this.a))));
-      }
-
-      @Override
-      public bdb.a b() {
-         return this;
-      }
-
-      @Override
-      public Path c() {
-         return this.a;
-      }
-
-      @Override
-      public bdb.c d() {
-         return this.b;
-      }
+   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = Maps.newHashMap();
+      d($$0, $$1, "Furnace");
+      d($$0, $$1, "Chest");
+      $$0.registerSimple($$1, "EnderChest");
+      $$0.register($$1, "RecordPlayer", $$1x -> DSL.optionalFields("RecordItem", ayz.t.in($$0)));
+      d($$0, $$1, "Trap");
+      d($$0, $$1, "Dropper");
+      $$0.registerSimple($$1, "Sign");
+      $$0.register($$1, "MobSpawner", $$1x -> ayz.B.in($$0));
+      $$0.registerSimple($$1, "Music");
+      $$0.registerSimple($$1, "Piston");
+      d($$0, $$1, "Cauldron");
+      $$0.registerSimple($$1, "EnchantTable");
+      $$0.registerSimple($$1, "Airportal");
+      $$0.registerSimple($$1, "Control");
+      $$0.registerSimple($$1, "Beacon");
+      $$0.registerSimple($$1, "Skull");
+      $$0.registerSimple($$1, "DLDetector");
+      d($$0, $$1, "Hopper");
+      $$0.registerSimple($$1, "Comparator");
+      $$0.register($$1, "FlowerPot", $$1x -> DSL.optionalFields("Item", DSL.or(DSL.constType(DSL.intType()), ayz.z.in($$0))));
+      $$0.registerSimple($$1, "Banner");
+      $$0.registerSimple($$1, "Structure");
+      $$0.registerSimple($$1, "EndGateway");
+      return $$1;
    }
 
-   public interface b {
-      Path c();
-
-      bdb.c d();
-
-      @Nullable
-      Reader a() throws IOException;
-
-      bdb.a b() throws IOException;
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      $$0.registerType(false, ayz.a, DSL::remainder);
+      $$0.registerType(false, ayz.b, () -> DSL.optionalFields("Inventory", DSL.list(ayz.t.in($$0)), "EnderItems", DSL.list(ayz.t.in($$0))));
+      $$0.registerType(
+         false,
+         ayz.c,
+         () -> DSL.fields(
+               "Level",
+               DSL.optionalFields(
+                  "Entities",
+                  DSL.list(ayz.w.in($$0)),
+                  "TileEntities",
+                  DSL.list(DSL.or(ayz.s.in($$0), DSL.remainder())),
+                  "TileTicks",
+                  DSL.list(DSL.fields("i", ayz.y.in($$0)))
+               )
+            )
+      );
+      $$0.registerType(true, ayz.s, () -> DSL.taggedChoiceLazy("id", DSL.string(), $$2));
+      $$0.registerType(true, ayz.w, () -> DSL.optionalFields("Riding", ayz.w.in($$0), ayz.x.in($$0)));
+      $$0.registerType(false, ayz.v, () -> DSL.constType(bah.a()));
+      $$0.registerType(true, ayz.x, () -> DSL.taggedChoiceLazy("id", DSL.string(), $$1));
+      $$0.registerType(
+         true,
+         ayz.t,
+         () -> DSL.hook(
+               DSL.optionalFields(
+                  "id",
+                  DSL.or(DSL.constType(DSL.intType()), ayz.z.in($$0)),
+                  "tag",
+                  DSL.optionalFields(
+                     "EntityTag",
+                     ayz.w.in($$0),
+                     "BlockEntityTag",
+                     ayz.s.in($$0),
+                     "CanDestroy",
+                     DSL.list(ayz.y.in($$0)),
+                     "CanPlaceOn",
+                     DSL.list(ayz.y.in($$0)),
+                     "Items",
+                     DSL.list(ayz.t.in($$0))
+                  )
+               ),
+               a,
+               HookFunction.IDENTITY
+            )
+      );
+      $$0.registerType(false, ayz.e, DSL::remainder);
+      $$0.registerType(false, ayz.y, () -> DSL.or(DSL.constType(DSL.intType()), DSL.constType(bah.a())));
+      $$0.registerType(false, ayz.z, () -> DSL.constType(bah.a()));
+      $$0.registerType(false, ayz.g, DSL::remainder);
+      $$0.registerType(false, ayz.h, DSL::remainder);
+      $$0.registerType(false, ayz.i, DSL::remainder);
+      $$0.registerType(false, ayz.j, DSL::remainder);
+      $$0.registerType(false, ayz.k, DSL::remainder);
+      $$0.registerType(false, ayz.l, DSL::remainder);
+      $$0.registerType(false, ayz.m, DSL::remainder);
+      $$0.registerType(
+         false, ayz.o, () -> DSL.optionalFields("data", DSL.optionalFields("Objectives", DSL.list(ayz.D.in($$0)), "Teams", DSL.list(ayz.E.in($$0))))
+      );
+      $$0.registerType(false, ayz.n, () -> DSL.optionalFields("data", DSL.optionalFields("Features", DSL.compoundList(ayz.C.in($$0)))));
+      $$0.registerType(false, ayz.C, DSL::remainder);
+      $$0.registerType(false, ayz.D, DSL::remainder);
+      $$0.registerType(false, ayz.E, DSL::remainder);
+      $$0.registerType(true, ayz.B, DSL::remainder);
+      $$0.registerType(false, ayz.q, DSL::remainder);
+      $$0.registerType(false, ayz.I, DSL::remainder);
+      $$0.registerType(false, ayz.r, () -> DSL.optionalFields("Entities", DSL.list(ayz.w.in($$0))));
    }
 
-   public static record c(LocalDate a, int b) {
-      private static final DateTimeFormatter c = DateTimeFormatter.BASIC_ISO_DATE;
-
-      @Nullable
-      public static bdb.c a(String $$0) {
-         int $$1 = $$0.indexOf("-");
-         if ($$1 == -1) {
-            return null;
-         } else {
-            String $$2 = $$0.substring(0, $$1);
-            String $$3 = $$0.substring($$1 + 1);
-
-            try {
-               return new bdb.c(LocalDate.parse($$2, c), Integer.parseInt($$3));
-            } catch (DateTimeParseException | NumberFormatException var5) {
-               return null;
-            }
-         }
-      }
-
-      @Override
-      public String toString() {
-         return c.format(this.a) + "-" + this.b;
-      }
-
-      public String b(String $$0) {
-         return this + $$0;
-      }
-   }
-
-   public static class d implements Iterable<bdb.b> {
-      private final List<bdb.b> a;
-
-      d(List<bdb.b> $$0) {
-         this.a = new ArrayList<>($$0);
-      }
-
-      public bdb.d a(LocalDate $$0, int $$1) {
-         this.a.removeIf($$2 -> {
-            bdb.c $$3 = $$2.d();
-            LocalDate $$4 = $$3.a().plusDays((long)$$1);
-            if (!$$0.isBefore($$4)) {
-               try {
-                  Files.delete($$2.c());
-                  return true;
-               } catch (IOException var6) {
-                  bdb.a.warn("Failed to delete expired event log file: {}", $$2.c(), var6);
+   protected static <T> T a(Dynamic<T> $$0, Map<String, String> $$1, String $$2) {
+      return (T)$$0.update("tag", $$3 -> $$3.update("BlockEntityTag", $$2xx -> {
+            String $$3x = $$0.get("id").asString().result().map(bah::a).orElse("minecraft:air");
+            if (!"minecraft:air".equals($$3x)) {
+               String $$4 = $$1.get($$3x);
+               if ($$4 != null) {
+                  return $$2xx.set("id", $$0.createString($$4));
                }
+
+               b.warn("Unable to resolve BlockEntity for ItemStack: {}", $$3x);
             }
 
-            return false;
-         });
-         return this;
-      }
-
-      public bdb.d a() {
-         ListIterator<bdb.b> $$0 = this.a.listIterator();
-
-         while ($$0.hasNext()) {
-            bdb.b $$1 = $$0.next();
-
-            try {
-               $$0.set($$1.b());
-            } catch (IOException var4) {
-               bdb.a.warn("Failed to compress event log file: {}", $$1.c(), var4);
-            }
-         }
-
-         return this;
-      }
-
-      @Override
-      public Iterator<bdb.b> iterator() {
-         return this.a.iterator();
-      }
-
-      public Stream<bdb.b> b() {
-         return this.a.stream();
-      }
-
-      public Set<bdb.c> c() {
-         return this.a.stream().map(bdb.b::d).collect(Collectors.toSet());
-      }
-   }
-
-   public static record e(Path a, bdb.c b) implements bdb.b {
-      public FileChannel e() throws IOException {
-         return FileChannel.open(this.a, StandardOpenOption.WRITE, StandardOpenOption.READ);
-      }
-
-      @Nullable
-      @Override
-      public Reader a() throws IOException {
-         return Files.exists(this.a) ? Files.newBufferedReader(this.a) : null;
-      }
-
-      @Override
-      public bdb.a b() throws IOException {
-         Path $$0 = this.a.resolveSibling(this.a.getFileName().toString() + ".gz");
-         bdb.a(this.a, $$0);
-         return new bdb.a($$0, this.b);
-      }
-
-      @Override
-      public Path c() {
-         return this.a;
-      }
-
-      @Override
-      public bdb.c d() {
-         return this.b;
-      }
+            return $$2xx;
+         }).update("EntityTag", $$2xx -> {
+            String $$3x = $$0.get("id").asString("");
+            return "minecraft:armor_stand".equals(bah.a($$3x)) ? $$2xx.set("id", $$0.createString($$2)) : $$2xx;
+         })).getValue();
    }
 }

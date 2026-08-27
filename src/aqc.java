@@ -1,10 +1,108 @@
-public class aqc {
-   public static final aqi<byj> a = a("placeable");
+public final class aqc {
+   public static final aqj<cjc> a = a("wool");
+   public static final aqj<cjc> b = a("planks");
+   public static final aqj<cjc> c = a("stone_bricks");
+   public static final aqj<cjc> d = a("wooden_buttons");
+   public static final aqj<cjc> e = a("stone_buttons");
+   public static final aqj<cjc> f = a("buttons");
+   public static final aqj<cjc> g = a("wool_carpets");
+   public static final aqj<cjc> h = a("wooden_doors");
+   public static final aqj<cjc> i = a("wooden_stairs");
+   public static final aqj<cjc> j = a("wooden_slabs");
+   public static final aqj<cjc> k = a("wooden_fences");
+   public static final aqj<cjc> l = a("fence_gates");
+   public static final aqj<cjc> m = a("wooden_pressure_plates");
+   public static final aqj<cjc> n = a("wooden_trapdoors");
+   public static final aqj<cjc> o = a("doors");
+   public static final aqj<cjc> p = a("saplings");
+   public static final aqj<cjc> q = a("logs_that_burn");
+   public static final aqj<cjc> r = a("logs");
+   public static final aqj<cjc> s = a("dark_oak_logs");
+   public static final aqj<cjc> t = a("oak_logs");
+   public static final aqj<cjc> u = a("birch_logs");
+   public static final aqj<cjc> v = a("acacia_logs");
+   public static final aqj<cjc> w = a("cherry_logs");
+   public static final aqj<cjc> x = a("jungle_logs");
+   public static final aqj<cjc> y = a("spruce_logs");
+   public static final aqj<cjc> z = a("mangrove_logs");
+   public static final aqj<cjc> A = a("crimson_stems");
+   public static final aqj<cjc> B = a("warped_stems");
+   public static final aqj<cjc> C = a("bamboo_blocks");
+   public static final aqj<cjc> D = a("wart_blocks");
+   public static final aqj<cjc> E = a("banners");
+   public static final aqj<cjc> F = a("sand");
+   public static final aqj<cjc> G = a("smelts_to_glass");
+   public static final aqj<cjc> H = a("stairs");
+   public static final aqj<cjc> I = a("slabs");
+   public static final aqj<cjc> J = a("walls");
+   public static final aqj<cjc> K = a("anvil");
+   public static final aqj<cjc> L = a("rails");
+   public static final aqj<cjc> M = a("leaves");
+   public static final aqj<cjc> N = a("trapdoors");
+   public static final aqj<cjc> O = a("small_flowers");
+   public static final aqj<cjc> P = a("beds");
+   public static final aqj<cjc> Q = a("fences");
+   public static final aqj<cjc> R = a("tall_flowers");
+   public static final aqj<cjc> S = a("flowers");
+   public static final aqj<cjc> T = a("piglin_repellents");
+   public static final aqj<cjc> U = a("piglin_loved");
+   public static final aqj<cjc> V = a("ignored_by_piglin_babies");
+   public static final aqj<cjc> W = a("piglin_food");
+   public static final aqj<cjc> X = a("fox_food");
+   public static final aqj<cjc> Y = a("gold_ores");
+   public static final aqj<cjc> Z = a("iron_ores");
+   public static final aqj<cjc> aa = a("diamond_ores");
+   public static final aqj<cjc> ab = a("redstone_ores");
+   public static final aqj<cjc> ac = a("lapis_ores");
+   public static final aqj<cjc> ad = a("coal_ores");
+   public static final aqj<cjc> ae = a("emerald_ores");
+   public static final aqj<cjc> af = a("copper_ores");
+   public static final aqj<cjc> ag = a("non_flammable_wood");
+   public static final aqj<cjc> ah = a("soul_fire_base_blocks");
+   public static final aqj<cjc> ai = a("candles");
+   public static final aqj<cjc> aj = a("dirt");
+   public static final aqj<cjc> ak = a("terracotta");
+   public static final aqj<cjc> al = a("completes_find_tree_tutorial");
+   public static final aqj<cjc> am = a("boats");
+   public static final aqj<cjc> an = a("chest_boats");
+   public static final aqj<cjc> ao = a("fishes");
+   public static final aqj<cjc> ap = a("signs");
+   public static final aqj<cjc> aq = a("music_discs");
+   public static final aqj<cjc> ar = a("creeper_drop_music_discs");
+   public static final aqj<cjc> as = a("coals");
+   public static final aqj<cjc> at = a("arrows");
+   public static final aqj<cjc> au = a("lectern_books");
+   public static final aqj<cjc> av = a("bookshelf_books");
+   public static final aqj<cjc> aw = a("beacon_payment_items");
+   public static final aqj<cjc> ax = a("stone_tool_materials");
+   public static final aqj<cjc> ay = a("stone_crafting_materials");
+   public static final aqj<cjc> az = a("freeze_immune_wearables");
+   public static final aqj<cjc> aA = a("axolotl_tempt_items");
+   public static final aqj<cjc> aB = a("dampens_vibrations");
+   public static final aqj<cjc> aC = a("cluster_max_harvestables");
+   public static final aqj<cjc> aD = a("compasses");
+   public static final aqj<cjc> aE = a("hanging_signs");
+   public static final aqj<cjc> aF = a("creeper_igniters");
+   public static final aqj<cjc> aG = a("noteblock_top_instruments");
+   public static final aqj<cjc> aH = a("trimmable_armor");
+   public static final aqj<cjc> aI = a("trim_materials");
+   public static final aqj<cjc> aJ = a("trim_templates");
+   public static final aqj<cjc> aK = a("sniffer_food");
+   public static final aqj<cjc> aL = a("decorated_pot_sherds");
+   public static final aqj<cjc> aM = a("decorated_pot_ingredients");
+   public static final aqj<cjc> aN = a("swords");
+   public static final aqj<cjc> aO = a("axes");
+   public static final aqj<cjc> aP = a("hoes");
+   public static final aqj<cjc> aQ = a("pickaxes");
+   public static final aqj<cjc> aR = a("shovels");
+   public static final aqj<cjc> aS = a("tools");
+   public static final aqj<cjc> aT = a("breaks_decorated_pots");
+   public static final aqj<cjc> aU = a("villager_plantable_seeds");
 
    private aqc() {
    }
 
-   private static aqi<byj> a(String $$0) {
-      return aqi.a(je.P, new aex($$0));
+   private static aqj<cjc> a(String $$0) {
+      return aqj.a(je.D, new aey($$0));
    }
 }

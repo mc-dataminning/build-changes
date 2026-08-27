@@ -1,61 +1,75 @@
-import java.util.Set;
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
-
-public final class fif {
-   @Nullable
-   private final String a;
-   private final Vector3f b;
-   private final Vector3f c;
-   private final fig d;
-   private final boolean e;
-   private final fim f;
-   private final fim g;
-   private final Set<hc> h;
-
-   protected fif(
-      @Nullable String $$0,
-      float $$1,
-      float $$2,
-      float $$3,
-      float $$4,
-      float $$5,
-      float $$6,
-      float $$7,
-      float $$8,
-      fig $$9,
-      boolean $$10,
-      float $$11,
-      float $$12,
-      Set<hc> $$13
-   ) {
-      this.a = $$0;
-      this.f = new fim($$1, $$2);
-      this.b = new Vector3f($$3, $$4, $$5);
-      this.c = new Vector3f($$6, $$7, $$8);
-      this.d = $$9;
-      this.e = $$10;
-      this.g = new fim($$11, $$12);
-      this.h = $$13;
-   }
-
-   public fic.a a(int $$0, int $$1) {
-      return new fic.a(
-         (int)this.f.a(),
-         (int)this.f.b(),
-         this.b.x(),
-         this.b.y(),
-         this.b.z(),
-         this.c.x(),
-         this.c.y(),
-         this.c.z(),
-         this.d.b,
-         this.d.c,
-         this.d.d,
-         this.e,
-         (float)$$0 * this.g.a(),
-         (float)$$1 * this.g.b(),
-         this.h
-      );
-   }
+public class fif {
+   public static final String a = "left_fin";
+   public static final String b = "right_fin";
+   public static final String c = "top_fin";
+   public static final String d = "bottom_fin";
+   public static final String e = "tail_fin";
+   public static final String f = "left_blue_fin";
+   public static final String g = "right_blue_fin";
+   public static final String h = "left_arm";
+   public static final String i = "right_arm";
+   public static final String j = "left_wing";
+   public static final String k = "right_wing";
+   public static final String l = "left_wing_base";
+   public static final String m = "right_wing_base";
+   public static final String n = "left_wing_tip";
+   public static final String o = "right_wing_tip";
+   public static final String p = "left_ear";
+   public static final String q = "right_ear";
+   public static final String r = "left_leg";
+   public static final String s = "right_leg";
+   public static final String t = "left_hind_leg";
+   public static final String u = "right_hind_leg";
+   public static final String v = "left_mid_leg";
+   public static final String w = "right_mid_leg";
+   public static final String x = "left_front_leg";
+   public static final String y = "right_front_leg";
+   public static final String z = "left_hind_foot";
+   public static final String A = "right_hind_foot";
+   public static final String B = "left_front_foot";
+   public static final String C = "right_front_foot";
+   public static final String D = "left_hind_leg_tip";
+   public static final String E = "right_hind_leg_tip";
+   public static final String F = "left_front_leg_tip";
+   public static final String G = "right_front_leg_tip";
+   public static final String H = "left_lid";
+   public static final String I = "right_lid";
+   public static final String J = "left_chest";
+   public static final String K = "right_chest";
+   public static final String L = "left_horn";
+   public static final String M = "right_horn";
+   public static final String N = "left_eye";
+   public static final String O = "right_eye";
+   public static final String P = "jaw";
+   public static final String Q = "nose";
+   public static final String R = "arms";
+   public static final String S = "tail";
+   public static final String T = "cube";
+   public static final String U = "beak";
+   public static final String V = "back_fin";
+   public static final String W = "mane";
+   public static final String X = "neck";
+   public static final String Y = "mouth";
+   public static final String Z = "head";
+   public static final String aa = "hat";
+   public static final String ab = "body";
+   public static final String ac = "hat_rim";
+   public static final String ad = "jacket";
+   public static final String ae = "top_gills";
+   public static final String af = "left_gills";
+   public static final String ag = "right_gills";
+   public static final String ah = "root";
+   public static final String ai = "croaking_body";
+   public static final String aj = "tongue";
+   public static final String ak = "tongue_r1";
+   public static final String al = "left_hand";
+   public static final String am = "right_hand";
+   public static final String an = "left_foot";
+   public static final String ao = "right_foot";
+   public static final String ap = "eyes";
+   public static final String aq = "right_tendril";
+   public static final String ar = "left_tendril";
+   public static final String as = "right_ribcage";
+   public static final String at = "left_ribcage";
+   public static final String au = "bone";
 }

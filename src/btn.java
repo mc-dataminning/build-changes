@@ -1,47 +1,47 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
-public class btn extends btl<bjp> {
-   public static final int a = 10;
-   private static final bts c = bts.b().a(10.0).d();
-   private final cmg d;
+public abstract class btn<E extends bji> {
+   private static final ase a = ase.b();
+   private static final int c = 20;
+   protected static final int b = 16;
+   private static final btu d = btu.b().a(16.0);
+   private static final btu e = btu.b().a(16.0).e();
+   private static final btu f = btu.a().a(16.0);
+   private static final btu g = btu.a().a(16.0).e();
+   private static final btu h = btu.a().a(16.0).d();
+   private static final btu i = btu.a().a(16.0).d().e();
+   private final int j;
+   private long k;
 
-   public btn(cmg $$0) {
-      this.d = $$0;
+   public btn(int $$0) {
+      this.j = $$0;
+      this.k = (long)a.a($$0);
    }
 
-   protected void a(akr $$0, bjp $$1) {
-      bkg<?> $$2 = $$1.dN();
-      List<cbu> $$3 = $$0.v()
-         .stream()
-         .filter(bit.f)
-         .filter($$1x -> c.a($$1, $$1x))
-         .filter($$1x -> $$1.a($$1x, 10.0))
-         .filter(this::a)
-         .filter($$1x -> !$$1.x($$1x))
-         .sorted(Comparator.comparingDouble($$1::f))
-         .collect(Collectors.toList());
-      if (!$$3.isEmpty()) {
-         cbu $$4 = $$3.get(0);
-         $$2.a(bsh.N, $$4);
-      } else {
-         $$2.b(bsh.N);
+   public btn() {
+      this(20);
+   }
+
+   public final void b(aks $$0, E $$1) {
+      if (--this.k <= 0L) {
+         this.k = (long)this.j;
+         this.a($$0, $$1);
       }
    }
 
-   private boolean a(cbu $$0) {
-      return this.a($$0.eS()) || this.a($$0.eT());
+   protected abstract void a(aks var1, E var2);
+
+   public abstract Set<bsj<?>> a();
+
+   public static boolean b(bji $$0, bji $$1) {
+      return $$0.dN().b(bsj.o, $$1) ? e.a($$0, $$1) : d.a($$0, $$1);
    }
 
-   private boolean a(cjf $$0) {
-      return this.d.a($$0);
+   public static boolean c(bji $$0, bji $$1) {
+      return $$0.dN().b(bsj.o, $$1) ? g.a($$0, $$1) : f.a($$0, $$1);
    }
 
-   @Override
-   public Set<bsh<?>> a() {
-      return ImmutableSet.of(bsh.N);
+   public static boolean d(bji $$0, bji $$1) {
+      return $$0.dN().b(bsj.o, $$1) ? i.a($$0, $$1) : h.a($$0, $$1);
    }
 }

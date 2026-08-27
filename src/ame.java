@@ -1,85 +1,26 @@
-import com.google.common.collect.Lists;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import javax.annotation.Nullable;
 
-public class ame implements ami {
-   private final ami c;
-   private final List<ami> d;
+public class ame {
+   private static final ame a = new ame(Map.of());
+   private final Map<amv<?>, ?> b;
 
-   public ame(ami $$0, List<ami> $$1) {
-      this.c = $$0;
-      List<ami> $$2 = new ArrayList<>($$1.size() + 1);
-      $$2.addAll(Lists.reverse($$1));
-      $$2.add($$0);
-      this.d = List.copyOf($$2);
+   private ame(Map<amv<?>, ?> $$0) {
+      this.b = $$0;
    }
 
-   @Nullable
-   @Override
-   public anm<InputStream> a(String... $$0) {
-      return this.c.a($$0);
+   public <T> T a(amv<T> $$0) {
+      return (T)this.b.get($$0);
    }
 
-   @Nullable
-   @Override
-   public anm<InputStream> a(amj $$0, aex $$1) {
-      for (ami $$2 : this.d) {
-         anm<InputStream> $$3 = $$2.a($$0, $$1);
-         if ($$3 != null) {
-            return $$3;
-         }
-      }
-
-      return null;
+   public static ame a() {
+      return a;
    }
 
-   @Override
-   public void a(amj $$0, String $$1, String $$2, ami.a $$3) {
-      Map<aex, anm<InputStream>> $$4 = new HashMap<>();
-
-      for (ami $$5 : this.d) {
-         $$5.a($$0, $$1, $$2, $$4::putIfAbsent);
-      }
-
-      $$4.forEach($$3);
+   public static <T> ame a(amv<T> $$0, T $$1) {
+      return new ame(Map.of($$0, $$1));
    }
 
-   @Override
-   public Set<String> a(amj $$0) {
-      Set<String> $$1 = new HashSet<>();
-
-      for (ami $$2 : this.d) {
-         $$1.addAll($$2.a($$0));
-      }
-
-      return $$1;
-   }
-
-   @Nullable
-   @Override
-   public <T> T a(amu<T> $$0) throws IOException {
-      return this.c.a($$0);
-   }
-
-   @Override
-   public String a() {
-      return this.c.a();
-   }
-
-   @Override
-   public boolean b() {
-      return this.c.b();
-   }
-
-   @Override
-   public void close() {
-      this.d.forEach(ami::close);
+   public static <T1, T2> ame a(amv<T1> $$0, T1 $$1, amv<T2> $$2, T2 $$3) {
+      return new ame(Map.of($$0, $$1, $$2, (T1)$$3));
    }
 }

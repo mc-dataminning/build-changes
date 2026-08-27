@@ -1,57 +1,138 @@
-public class cft extends cgd {
-   private final cfr a;
-   private final cbu b;
-   private int c;
-   private final cos h;
+import javax.annotation.Nullable;
 
-   public cft(cbu $$0, cos $$1, cfr $$2, int $$3, int $$4, int $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.b = $$0;
-      this.h = $$1;
-      this.a = $$2;
+public class cft implements bgt {
+   private final cou c;
+   private final hp<cjh> d = hp.a(3, cjh.b);
+   @Nullable
+   private cov e;
+   private int f;
+   private int g;
+
+   public cft(cou $$0) {
+      this.c = $$0;
    }
 
    @Override
-   public boolean a(cjf $$0) {
-      return false;
+   public int b() {
+      return this.d.size();
    }
 
    @Override
-   public cjf a(int $$0) {
-      if (this.f()) {
-         this.c = this.c + Math.min($$0, this.e().L());
+   public boolean af_() {
+      for (cjh $$0 : this.d) {
+         if (!$$0.b()) {
+            return false;
+         }
       }
 
-      return super.a($$0);
+      return true;
    }
 
    @Override
-   protected void a(cjf $$0, int $$1) {
-      this.c += $$1;
-      this.b_($$0);
+   public cjh a(int $$0) {
+      return this.d.get($$0);
    }
 
    @Override
-   protected void b_(cjf $$0) {
-      $$0.a(this.b.dL(), this.b, this.c);
-      this.c = 0;
-   }
-
-   @Override
-   public void a(cbu $$0, cjf $$1) {
-      this.b_($$1);
-      cot $$2 = this.a.g();
-      if ($$2 != null) {
-         cjf $$3 = this.a.a(0);
-         cjf $$4 = this.a.a(1);
-         if ($$2.b($$3, $$4) || $$2.b($$4, $$3)) {
-            this.h.a($$2);
-            $$0.a(apo.T);
-            this.a.a(0, $$3);
-            this.a.a(1, $$4);
+   public cjh a(int $$0, int $$1) {
+      cjh $$2 = this.d.get($$0);
+      if ($$0 == 2 && !$$2.b()) {
+         return bgu.a(this.d, $$0, $$2.L());
+      } else {
+         cjh $$3 = bgu.a(this.d, $$0, $$1);
+         if (!$$3.b() && this.d($$0)) {
+            this.f();
          }
 
-         this.h.t(this.h.t() + $$2.o());
+         return $$3;
       }
+   }
+
+   private boolean d(int $$0) {
+      return $$0 == 0 || $$0 == 1;
+   }
+
+   @Override
+   public cjh b(int $$0) {
+      return bgu.a(this.d, $$0);
+   }
+
+   @Override
+   public void a(int $$0, cjh $$1) {
+      this.d.set($$0, $$1);
+      if (!$$1.b() && $$1.L() > this.ag_()) {
+         $$1.f(this.ag_());
+      }
+
+      if (this.d($$0)) {
+         this.f();
+      }
+   }
+
+   @Override
+   public boolean a(cbw $$0) {
+      return this.c.gd() == $$0;
+   }
+
+   @Override
+   public void e() {
+      this.f();
+   }
+
+   public void f() {
+      this.e = null;
+      cjh $$0;
+      cjh $$1;
+      if (this.d.get(0).b()) {
+         $$0 = this.d.get(1);
+         $$1 = cjh.b;
+      } else {
+         $$0 = this.d.get(0);
+         $$1 = this.d.get(1);
+      }
+
+      if ($$0.b()) {
+         this.a(2, cjh.b);
+         this.g = 0;
+      } else {
+         cow $$4 = this.c.gf();
+         if (!$$4.isEmpty()) {
+            cov $$5 = $$4.a($$0, $$1, this.f);
+            if ($$5 == null || $$5.p()) {
+               this.e = $$5;
+               $$5 = $$4.a($$1, $$0, this.f);
+            }
+
+            if ($$5 != null && !$$5.p()) {
+               this.e = $$5;
+               this.a(2, $$5.f());
+               this.g = $$5.o();
+            } else {
+               this.a(2, cjh.b);
+               this.g = 0;
+            }
+         }
+
+         this.c.l(this.a(2));
+      }
+   }
+
+   @Nullable
+   public cov g() {
+      return this.e;
+   }
+
+   public void c(int $$0) {
+      this.f = $$0;
+      this.f();
+   }
+
+   @Override
+   public void a() {
+      this.d.clear();
+   }
+
+   public int h() {
+      return this.g;
    }
 }

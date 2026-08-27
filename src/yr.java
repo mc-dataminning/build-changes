@@ -1,24 +1,56 @@
-public class yr implements ve<wx> {
-   private final bgx a;
+public class yr implements vf<wy> {
+   private final double a;
+   private final double b;
+   private final double c;
+   private final float d;
+   private final float e;
 
-   public yr(bgx $$0) {
-      this.a = $$0;
+   public yr(bis $$0) {
+      this.a = $$0.dq();
+      this.b = $$0.ds();
+      this.c = $$0.dw();
+      this.d = $$0.dB();
+      this.e = $$0.dD();
    }
 
-   public yr(sp $$0) {
-      this.a = $$0.b(bgx.class);
+   public yr(sq $$0) {
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readFloat();
+      this.e = $$0.readFloat();
    }
 
    @Override
-   public void a(sp $$0) {
+   public void a(sq $$0) {
       $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
    }
 
-   public void a(wx $$0) {
+   public void a(wy $$0) {
       $$0.a(this);
    }
 
-   public bgx a() {
+   public double a() {
       return this.a;
+   }
+
+   public double d() {
+      return this.b;
+   }
+
+   public double e() {
+      return this.c;
+   }
+
+   public float f() {
+      return this.d;
+   }
+
+   public float g() {
+      return this.e;
    }
 }

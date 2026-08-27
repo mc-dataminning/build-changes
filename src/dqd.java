@@ -1,40 +1,53 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dqd implements dqa {
-   public static final Codec<dqd> a = RecordCodecBuilder.create(
+public class dqd implements dqc {
+   public static final Codec<Double> a = Codec.doubleRange(0.0, 1.0);
+   public static final Codec<dqd> b = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").orElse(30).forGetter($$0x -> $$0x.b),
-               bgd.b(1, 60).fieldOf("column_radius").forGetter($$0x -> $$0x.c),
-               bgb.a(0.0F, 20.0F).fieldOf("height_scale").forGetter($$0x -> $$0x.d),
-               Codec.floatRange(0.1F, 1.0F).fieldOf("max_column_radius_to_cave_height_ratio").forGetter($$0x -> $$0x.e),
-               bgb.a(0.1F, 10.0F).fieldOf("stalactite_bluntness").forGetter($$0x -> $$0x.f),
-               bgb.a(0.1F, 10.0F).fieldOf("stalagmite_bluntness").forGetter($$0x -> $$0x.g),
-               bgb.a(0.0F, 2.0F).fieldOf("wind_speed").forGetter($$0x -> $$0x.h),
-               Codec.intRange(0, 100).fieldOf("min_radius_for_wind").forGetter($$0x -> $$0x.i),
-               Codec.floatRange(0.0F, 5.0F).fieldOf("min_bluntness_for_wind").forGetter($$0x -> $$0x.j)
+               dkr.i.fieldOf("blocks").forGetter($$0x -> $$0x.c),
+               dkt.a.fieldOf("layers").forGetter($$0x -> $$0x.d),
+               dks.a.fieldOf("crack").forGetter($$0x -> $$0x.e),
+               a.fieldOf("use_potential_placements_chance").orElse(0.35).forGetter($$0x -> $$0x.f),
+               a.fieldOf("use_alternate_layer0_chance").orElse(0.0).forGetter($$0x -> $$0x.g),
+               Codec.BOOL.fieldOf("placements_require_layer0_alternate").orElse(true).forGetter($$0x -> $$0x.h),
+               bgf.b(1, 20).fieldOf("outer_wall_distance").orElse(bgl.a(4, 5)).forGetter($$0x -> $$0x.i),
+               bgf.b(1, 20).fieldOf("distribution_points").orElse(bgl.a(3, 4)).forGetter($$0x -> $$0x.j),
+               bgf.b(0, 10).fieldOf("point_offset").orElse(bgl.a(1, 2)).forGetter($$0x -> $$0x.k),
+               Codec.INT.fieldOf("min_gen_offset").orElse(-16).forGetter($$0x -> $$0x.l),
+               Codec.INT.fieldOf("max_gen_offset").orElse(16).forGetter($$0x -> $$0x.n),
+               a.fieldOf("noise_multiplier").orElse(0.05).forGetter($$0x -> $$0x.o),
+               Codec.INT.fieldOf("invalid_blocks_threshold").forGetter($$0x -> $$0x.p)
             )
             .apply($$0, dqd::new)
    );
-   public final int b;
-   public final bgd c;
-   public final bgb d;
-   public final float e;
-   public final bgb f;
-   public final bgb g;
-   public final bgb h;
-   public final int i;
-   public final float j;
+   public final dkr c;
+   public final dkt d;
+   public final dks e;
+   public final double f;
+   public final double g;
+   public final boolean h;
+   public final bgf i;
+   public final bgf j;
+   public final bgf k;
+   public final int l;
+   public final int n;
+   public final double o;
+   public final int p;
 
-   public dqd(int $$0, bgd $$1, bgb $$2, float $$3, bgb $$4, bgb $$5, bgb $$6, int $$7, float $$8) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
+   public dqd(dkr $$0, dkt $$1, dks $$2, double $$3, double $$4, boolean $$5, bgf $$6, bgf $$7, bgf $$8, int $$9, int $$10, double $$11, int $$12) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+      this.j = $$7;
+      this.k = $$8;
+      this.l = $$9;
+      this.n = $$10;
+      this.o = $$11;
+      this.p = $$12;
    }
 }

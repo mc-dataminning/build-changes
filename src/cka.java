@@ -1,19 +1,20 @@
-public class cka extends cjb {
-   private final aks a;
-
-   public cka(aks $$0) {
-      this.a = $$0;
+public class cka extends cjc {
+   public cka(cjc.a $$0) {
+      super($$0);
    }
 
    @Override
-   protected void b(cja $$0, int $$1) {
-      super.b($$0, $$1);
-      this.a.c.b(new xu($$0, $$1));
-   }
+   public bha a(cjh $$0, cbw $$1, bji $$2, bgz $$3) {
+      if ($$2 instanceof bjy $$4 && $$2.bv() && !$$4.i() && $$4.g()) {
+         if (!$$1.dL().B) {
+            $$4.a(apg.g);
+            $$2.dL().a($$2, djv.v, $$2.dj());
+            $$0.h(1);
+         }
 
-   @Override
-   protected void c(cja $$0) {
-      super.c($$0);
-      this.a.c.b(new xu($$0, 0));
+         return bha.a($$1.dL().B);
+      }
+
+      return bha.d;
    }
 }

@@ -1,97 +1,30 @@
-import com.google.common.collect.Queues;
-import java.util.Deque;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
+import com.google.common.collect.ImmutableMap;
 
 public class elp {
-   private final Deque<elp.a> a = ac.a(Queues.newArrayDeque(), $$0 -> {
-      Matrix4f $$1 = new Matrix4f();
-      Matrix3f $$2 = new Matrix3f();
-      $$0.add(new elp.a($$1, $$2));
-   });
-
-   public void a(double $$0, double $$1, double $$2) {
-      this.a((float)$$0, (float)$$1, (float)$$2);
-   }
-
-   public void a(float $$0, float $$1, float $$2) {
-      elp.a $$3 = this.a.getLast();
-      $$3.a.translate($$0, $$1, $$2);
-   }
-
-   public void b(float $$0, float $$1, float $$2) {
-      elp.a $$3 = this.a.getLast();
-      $$3.a.scale($$0, $$1, $$2);
-      if ($$0 == $$1 && $$1 == $$2) {
-         if ($$0 > 0.0F) {
-            return;
-         }
-
-         $$3.b.scale(-1.0F);
-      }
-
-      float $$4 = 1.0F / $$0;
-      float $$5 = 1.0F / $$1;
-      float $$6 = 1.0F / $$2;
-      float $$7 = arx.j($$4 * $$5 * $$6);
-      $$3.b.scale($$7 * $$4, $$7 * $$5, $$7 * $$6);
-   }
-
-   public void a(Quaternionf $$0) {
-      elp.a $$1 = this.a.getLast();
-      $$1.a.rotate($$0);
-      $$1.b.rotate($$0);
-   }
-
-   public void a(Quaternionf $$0, float $$1, float $$2, float $$3) {
-      elp.a $$4 = this.a.getLast();
-      $$4.a.rotateAround($$0, $$1, $$2, $$3);
-      $$4.b.rotate($$0);
-   }
-
-   public void a() {
-      elp.a $$0 = this.a.getLast();
-      this.a.addLast(new elp.a(new Matrix4f($$0.a), new Matrix3f($$0.b)));
-   }
-
-   public void b() {
-      this.a.removeLast();
-   }
-
-   public elp.a c() {
-      return this.a.getLast();
-   }
-
-   public boolean d() {
-      return this.a.size() == 1;
-   }
-
-   public void e() {
-      elp.a $$0 = this.a.getLast();
-      $$0.a.identity();
-      $$0.b.identity();
-   }
-
-   public void a(Matrix4f $$0) {
-      this.a.getLast().a.mul($$0);
-   }
-
-   public static final class a {
-      final Matrix4f a;
-      final Matrix3f b;
-
-      a(Matrix4f $$0, Matrix3f $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public Matrix4f a() {
-         return this.a;
-      }
-
-      public Matrix3f b() {
-         return this.b;
-      }
-   }
+   public static final elx a = new elx(0, elx.a.a, elx.b.a, 3);
+   public static final elx b = new elx(0, elx.a.b, elx.b.c, 4);
+   public static final elx c = new elx(0, elx.a.a, elx.b.d, 2);
+   public static final elx d = new elx(1, elx.a.e, elx.b.d, 2);
+   public static final elx e = new elx(2, elx.a.e, elx.b.d, 2);
+   public static final elx f = new elx(0, elx.a.c, elx.b.b, 3);
+   public static final elx g = new elx(0, elx.a.c, elx.b.e, 1);
+   public static final elx h = c;
+   public static final elw i = new elw(ImmutableMap.builder().put("Position", a).put("UV", h).put("Color", b).build());
+   public static final elw j = new elw(
+      ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV2", e).put("Normal", f).put("Padding", g).build()
+   );
+   public static final elw k = new elw(
+      ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV1", d).put("UV2", e).put("Normal", f).put("Padding", g).build()
+   );
+   public static final elw l = new elw(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).put("UV2", e).build());
+   public static final elw m = new elw(ImmutableMap.builder().put("Position", a).build());
+   public static final elw n = new elw(ImmutableMap.builder().put("Position", a).put("Color", b).build());
+   public static final elw o = new elw(ImmutableMap.builder().put("Position", a).put("Color", b).put("Normal", f).put("Padding", g).build());
+   public static final elw p = new elw(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV2", e).build());
+   public static final elw q = new elw(ImmutableMap.builder().put("Position", a).put("UV0", c).build());
+   public static final elw r = new elw(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).build());
+   public static final elw s = new elw(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).build());
+   public static final elw t = new elw(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV2", e).build());
+   public static final elw u = new elw(ImmutableMap.builder().put("Position", a).put("UV0", c).put("UV2", e).put("Color", b).build());
+   public static final elw v = new elw(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).put("Normal", f).put("Padding", g).build());
 }

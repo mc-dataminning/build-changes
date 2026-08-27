@@ -1,186 +1,94 @@
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.file.DirectoryStream;
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class anc {
-   private static final Logger a = LogUtils.getLogger();
-   private final String b;
-   private final anc.c c;
-   private final tm d;
-   private final anc.a e;
-   private final anc.b f;
-   private final boolean g;
-   private final boolean h;
-   private final ang i;
+public class anc implements ani {
+   static final Logger a = LogUtils.getLogger();
+   private final Path b;
+   private final amk c;
+   private final anh d;
+   private final ehf e;
 
-   @Nullable
-   public static anc a(String $$0, tm $$1, boolean $$2, anc.c $$3, amj $$4, anc.b $$5, ang $$6) {
-      int $$7 = aa.b().a($$4);
-      anc.a $$8 = a($$0, $$3, $$7);
-      return $$8 != null ? a($$0, $$1, $$2, $$3, $$8, $$5, false, $$6) : null;
-   }
-
-   public static anc a(String $$0, tm $$1, boolean $$2, anc.c $$3, anc.a $$4, anc.b $$5, boolean $$6, ang $$7) {
-      return new anc($$0, $$2, $$3, $$1, $$4, $$5, $$6, $$7);
-   }
-
-   private anc(String $$0, boolean $$1, anc.c $$2, tm $$3, anc.a $$4, anc.b $$5, boolean $$6, ang $$7) {
+   public anc(Path $$0, amk $$1, anh $$2, ehf $$3) {
       this.b = $$0;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.g = $$1;
-      this.f = $$5;
-      this.h = $$6;
-      this.i = $$7;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   @Nullable
-   public static anc.a a(String $$0, anc.c $$1, int $$2) {
+   private static String a(Path $$0) {
+      return $$0.getFileName().toString();
+   }
+
+   @Override
+   public void a(Consumer<and> $$0) {
       try {
-         anc.a var11;
-         try (ami $$3 = $$1.a($$0)) {
-            amw $$4 = $$3.a(amw.b);
-            if ($$4 == null) {
-               a.warn("Missing metadata in pack {}", $$0);
-               return null;
+         v.c(this.b);
+         a(this.b, this.e, false, ($$1, $$2) -> {
+            String $$3 = a($$1);
+            and $$4 = and.a("file/" + $$3, tn.b($$3), false, $$2, this.c, and.b.a, this.d);
+            if ($$4 != null) {
+               $$0.accept($$4);
             }
-
-            amf $$5 = $$3.a(amf.a);
-            cec $$6 = $$5 != null ? $$5.a() : cec.a();
-            arq<Integer> $$7 = a($$0, $$4);
-            and $$8 = and.a($$7, $$2);
-            amh $$9 = $$3.a(amh.a);
-            List<String> $$10 = $$9 != null ? $$9.a($$2) : List.of();
-            var11 = new anc.a($$4.a(), $$8, $$6, $$10);
-         }
-
-         return var11;
-      } catch (Exception var14) {
-         a.warn("Failed to read pack {} metadata", $$0, var14);
-         return null;
+         });
+      } catch (IOException var3) {
+         a.warn("Failed to list packs in {}", this.b, var3);
       }
    }
 
-   private static arq<Integer> a(String $$0, amw $$1) {
-      int $$2 = $$1.b();
-      if ($$1.c().isEmpty()) {
-         return new arq<>($$2);
-      } else {
-         arq<Integer> $$3 = $$1.c().get();
-         if (!$$3.a($$2)) {
-            a.warn("Pack {} declared support for versions {} but declared main format is {}, defaulting to {}", new Object[]{$$0, $$3, $$2, $$2});
-            return new arq<>($$2);
-         } else {
-            return $$3;
-         }
-      }
-   }
+   public static void a(Path $$0, ehf $$1, boolean $$2, BiConsumer<Path, and.c> $$3) throws IOException {
+      anc.a $$4 = new anc.a($$1, $$2);
 
-   public tm a() {
-      return this.d;
-   }
-
-   public tm b() {
-      return this.e.a();
-   }
-
-   public tm a(boolean $$0) {
-      return to.a(this.i.a(tm.b(this.b)))
-         .a($$1 -> $$1.a($$0 ? n.k : n.m).a(StringArgumentType.escapeIfRequired(this.b)).a(new tr(tr.a.a, tm.h().b(this.d).f("\n").b(this.e.a))));
-   }
-
-   public and c() {
-      return this.e.b();
-   }
-
-   public cec d() {
-      return this.e.c();
-   }
-
-   public ami e() {
-      return this.c.a(this.b, this.e);
-   }
-
-   public String f() {
-      return this.b;
-   }
-
-   public boolean g() {
-      return this.g;
-   }
-
-   public boolean h() {
-      return this.h;
-   }
-
-   public anc.b i() {
-      return this.f;
-   }
-
-   public ang j() {
-      return this.i;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof anc $$1) ? false : this.b.equals($$1.b);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
-   }
-
-   public static record a(tm a, and b, cec c, List<String> d) {
-   }
-
-   public static enum b {
-      a,
-      b;
-
-      public <T> int a(List<T> $$0, T $$1, Function<T, anc> $$2, boolean $$3) {
-         anc.b $$4 = $$3 ? this.a() : this;
-         if ($$4 == b) {
-            int $$5;
-            for ($$5 = 0; $$5 < $$0.size(); $$5++) {
-               anc $$6 = $$2.apply($$0.get($$5));
-               if (!$$6.h() || $$6.i() != this) {
-                  break;
+      try (DirectoryStream<Path> $$5 = Files.newDirectoryStream($$0)) {
+         for (Path $$6 : $$5) {
+            try {
+               List<ehg> $$7 = new ArrayList<>();
+               and.c $$8 = $$4.a($$6, $$7);
+               if (!$$7.isEmpty()) {
+                  a.warn("Ignoring potential pack entry: {}", ehe.a($$6, $$7));
+               } else if ($$8 != null) {
+                  $$3.accept($$6, $$8);
+               } else {
+                  a.info("Found non-pack entry '{}', ignoring", $$6);
                }
+            } catch (IOException var11) {
+               a.warn("Failed to read properties of '{}', ignoring", $$6, var11);
             }
-
-            $$0.add($$5, $$1);
-            return $$5;
-         } else {
-            int $$7;
-            for ($$7 = $$0.size() - 1; $$7 >= 0; $$7--) {
-               anc $$8 = $$2.apply($$0.get($$7));
-               if (!$$8.h() || $$8.i() != this) {
-                  break;
-               }
-            }
-
-            $$0.add($$7 + 1, $$1);
-            return $$7 + 1;
          }
-      }
-
-      public anc.b a() {
-         return this == a ? b : a;
       }
    }
 
-   public interface c {
-      ami a(String var1);
+   static class a extends anf<and.c> {
+      private final boolean a;
 
-      ami a(String var1, anc.a var2);
+      protected a(ehf $$0, boolean $$1) {
+         super($$0);
+         this.a = $$1;
+      }
+
+      @Nullable
+      protected and.c a(Path $$0) {
+         FileSystem $$1 = $$0.getFileSystem();
+         if ($$1 != FileSystems.getDefault() && !($$1 instanceof ams)) {
+            anc.a.info("Can't open pack archive at {}", $$0);
+            return null;
+         } else {
+            return new amh.a($$0, this.a);
+         }
+      }
+
+      protected and.c b(Path $$0) {
+         return new aml.a($$0, this.a);
+      }
    }
 }

@@ -1,19 +1,10 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public class avd extends axz {
-   public avd(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityArmorStandSilentFix", ayx.x, "ArmorStand");
-   }
-
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.get("Silent").asBoolean(false) && !$$0.get("Marker").asBoolean(false) ? $$0.remove("Silent") : $$0;
-   }
-
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
-   }
+public class avd {
+   public static final Map<String, String> a = ImmutableMap.builder()
+      .put("minecraft:cactus_green", "minecraft:green_dye")
+      .put("minecraft:rose_red", "minecraft:red_dye")
+      .put("minecraft:dandelion_yellow", "minecraft:yellow_dye")
+      .build();
 }

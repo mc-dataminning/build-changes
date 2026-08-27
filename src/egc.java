@@ -1,4 +1,8 @@
-import com.mojang.serialization.Codec;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public record egc(Codec<? extends egd> a) {
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface egc {
 }

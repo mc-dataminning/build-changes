@@ -1,59 +1,39 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
-import java.util.Collection;
+import com.google.common.collect.Maps;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 public class cdj {
-   private final List<cdg> a = Lists.newArrayList();
-   private int b;
+   public static final int a = 2000;
+   public static final int b = 7000;
+   public static final cdj c = a("empty").a(0, cdh.b).a();
+   public static final cdj d = a("simple").a(5000, cdh.c).a(11000, cdh.e).a();
+   public static final cdj e = a("villager_baby").a(10, cdh.b).a(3000, cdh.d).a(6000, cdh.b).a(10000, cdh.d).a(12000, cdh.e).a();
+   public static final cdj f = a("villager_default").a(10, cdh.b).a(2000, cdh.c).a(9000, cdh.f).a(11000, cdh.b).a(12000, cdh.e).a();
+   private final Map<cdh, cdl> g = Maps.newHashMap();
 
-   public ImmutableList<cdg> a() {
-      return ImmutableList.copyOf(this.a);
+   protected static cdk a(String $$0) {
+      cdj $$1 = ht.a(jd.E, $$0, new cdj());
+      return new cdk($$1);
    }
 
-   public cdj a(int $$0, float $$1) {
-      this.a.add(new cdg($$0, $$1));
-      this.b();
-      return this;
-   }
-
-   public cdj a(Collection<cdg> $$0) {
-      this.a.addAll($$0);
-      this.b();
-      return this;
-   }
-
-   private void b() {
-      Int2ObjectSortedMap<cdg> $$0 = new Int2ObjectAVLTreeMap();
-      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
-      this.a.clear();
-      this.a.addAll($$0.values());
-      this.b = 0;
-   }
-
-   public float a(int $$0) {
-      if (this.a.size() <= 0) {
-         return 0.0F;
-      } else {
-         cdg $$1 = this.a.get(this.b);
-         cdg $$2 = this.a.get(this.a.size() - 1);
-         boolean $$3 = $$0 < $$1.a();
-         int $$4 = $$3 ? 0 : this.b;
-         float $$5 = $$3 ? $$2.b() : $$1.b();
-
-         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
-            cdg $$7 = this.a.get($$6);
-            if ($$7.a() > $$0) {
-               break;
-            }
-
-            this.b = $$6;
-            $$5 = $$7.b();
-         }
-
-         return $$5;
+   protected void a(cdh $$0) {
+      if (!this.g.containsKey($$0)) {
+         this.g.put($$0, new cdl());
       }
+   }
+
+   protected cdl b(cdh $$0) {
+      return this.g.get($$0);
+   }
+
+   protected List<cdl> c(cdh $$0) {
+      return this.g.entrySet().stream().filter($$1 -> $$1.getKey() != $$0).map(Entry::getValue).collect(Collectors.toList());
+   }
+
+   public cdh a(int $$0) {
+      return this.g.entrySet().stream().max(Comparator.comparingDouble($$1 -> (double)$$1.getValue().a($$0))).map(Entry::getKey).orElse(cdh.b);
    }
 }

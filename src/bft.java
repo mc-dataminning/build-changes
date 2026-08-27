@@ -1,111 +1,151 @@
-import com.google.common.collect.Queues;
-import java.util.Locale;
-import java.util.Queue;
+import com.google.common.collect.ImmutableList;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.Int2BooleanFunction;
+import java.util.List;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.Executor;
+import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface bft<T, F> {
-   @Nullable
-   F a();
+public class bft<T> implements bey, bfs<T>, AutoCloseable, Runnable {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 1;
+   private static final int c = 2;
+   private final AtomicInteger d = new AtomicInteger(0);
+   private final bfv<? super T, ? extends Runnable> e;
+   private final Executor f;
+   private final String g;
 
-   boolean a(T var1);
+   public static bft<Runnable> a(Executor $$0, String $$1) {
+      return new bft<>(new bfv.c<>(new ConcurrentLinkedQueue<>()), $$0, $$1);
+   }
 
-   boolean b();
+   public bft(bfv<? super T, ? extends Runnable> $$0, Executor $$1, String $$2) {
+      this.f = $$1;
+      this.e = $$0;
+      this.g = $$2;
+      bew.a.a(this);
+   }
 
-   int c();
+   private boolean d() {
+      int $$0;
+      do {
+         $$0 = this.d.get();
+         if (($$0 & 3) != 0) {
+            return false;
+         }
+      } while (!this.d.compareAndSet($$0, $$0 | 2));
 
-   public static final class a implements bft<bft.b, Runnable> {
-      private final Queue<Runnable>[] a;
-      private final AtomicInteger b = new AtomicInteger();
+      return true;
+   }
 
-      public a(int $$0) {
-         this.a = new Queue[$$0];
+   private void e() {
+      int $$0;
+      do {
+         $$0 = this.d.get();
+      } while (!this.d.compareAndSet($$0, $$0 & -3));
+   }
 
-         for (int $$1 = 0; $$1 < $$0; $$1++) {
-            this.a[$$1] = Queues.newConcurrentLinkedQueue();
+   private boolean f() {
+      return (this.d.get() & 1) != 0 ? false : !this.e.b();
+   }
+
+   @Override
+   public void close() {
+      int $$0;
+      do {
+         $$0 = this.d.get();
+      } while (!this.d.compareAndSet($$0, $$0 | 1));
+   }
+
+   private boolean g() {
+      return (this.d.get() & 2) != 0;
+   }
+
+   private boolean h() {
+      if (!this.g()) {
+         return false;
+      } else {
+         Runnable $$0 = this.e.a();
+         if ($$0 == null) {
+            return false;
+         } else {
+            ac.a(this.g, $$0).run();
+            return true;
          }
       }
+   }
 
-      @Nullable
-      public Runnable d() {
-         for (Queue<Runnable> $$0 : this.a) {
-            Runnable $$1 = $$0.poll();
-            if ($$1 != null) {
-               this.b.decrementAndGet();
-               return $$1;
+   @Override
+   public void run() {
+      try {
+         this.a($$0 -> $$0 == 0);
+      } finally {
+         this.e();
+         this.i();
+      }
+   }
+
+   public void a() {
+      try {
+         this.a($$0 -> true);
+      } finally {
+         this.e();
+         this.i();
+      }
+   }
+
+   @Override
+   public void a(T $$0) {
+      this.e.a($$0);
+      this.i();
+   }
+
+   private void i() {
+      if (this.f() && this.d()) {
+         try {
+            this.f.execute(this);
+         } catch (RejectedExecutionException var4) {
+            try {
+               this.f.execute(this);
+            } catch (RejectedExecutionException var3) {
+               a.error("Cound not schedule mailbox", var3);
             }
          }
-
-         return null;
-      }
-
-      public boolean a(bft.b $$0) {
-         int $$1 = $$0.a;
-         if ($$1 < this.a.length && $$1 >= 0) {
-            this.a[$$1].add($$0);
-            this.b.incrementAndGet();
-            return true;
-         } else {
-            throw new IndexOutOfBoundsException(String.format(Locale.ROOT, "Priority %d not supported. Expected range [0-%d]", $$1, this.a.length - 1));
-         }
-      }
-
-      @Override
-      public boolean b() {
-         return this.b.get() == 0;
-      }
-
-      @Override
-      public int c() {
-         return this.b.get();
       }
    }
 
-   public static final class b implements Runnable {
-      final int a;
-      private final Runnable b;
+   private int a(Int2BooleanFunction $$0) {
+      int $$1 = 0;
 
-      public b(int $$0, Runnable $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      while ($$0.get($$1) && this.h()) {
+         $$1++;
       }
 
-      @Override
-      public void run() {
-         this.b.run();
-      }
-
-      public int a() {
-         return this.a;
-      }
+      return $$1;
    }
 
-   public static final class c<T> implements bft<T, T> {
-      private final Queue<T> a;
+   public int b() {
+      return this.e.c();
+   }
 
-      public c(Queue<T> $$0) {
-         this.a = $$0;
-      }
+   public boolean c() {
+      return this.g() && !this.e.b();
+   }
 
-      @Nullable
-      @Override
-      public T a() {
-         return this.a.poll();
-      }
+   @Override
+   public String toString() {
+      return this.g + " " + this.d.get() + " " + this.e.b();
+   }
 
-      @Override
-      public boolean a(T $$0) {
-         return this.a.add($$0);
-      }
+   @Override
+   public String bn() {
+      return this.g;
+   }
 
-      @Override
-      public boolean b() {
-         return this.a.isEmpty();
-      }
-
-      @Override
-      public int c() {
-         return this.a.size();
-      }
+   @Override
+   public List<bev> bk() {
+      return ImmutableList.of(bev.a(this.g + "-queue-size", beu.c, this::b));
    }
 }

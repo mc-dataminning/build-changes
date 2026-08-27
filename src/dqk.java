@@ -1,13 +1,53 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dqk implements dqa {
-   public static final Codec<dqk> k = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l)).apply($$0, dqk::new)
+public class dqk implements dqc {
+   public static final Codec<dqk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.list(dqk.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b),
+               Codec.intRange(0, 64).fieldOf("size").forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("discard_chance_on_air_exposure").forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, dqk::new)
    );
-   public final float l;
+   public final List<dqk.a> b;
+   public final int c;
+   public final float d;
 
-   public dqk(float $$0) {
-      this.l = $$0;
+   public dqk(List<dqk.a> $$0, int $$1, float $$2) {
+      this.c = $$1;
+      this.b = $$0;
+      this.d = $$2;
+   }
+
+   public dqk(List<dqk.a> $$0, int $$1) {
+      this($$0, $$1, 0.0F);
+   }
+
+   public dqk(dyx $$0, dfl $$1, int $$2, float $$3) {
+      this(ImmutableList.of(new dqk.a($$0, $$1)), $$2, $$3);
+   }
+
+   public dqk(dyx $$0, dfl $$1, int $$2) {
+      this(ImmutableList.of(new dqk.a($$0, $$1)), $$2, 0.0F);
+   }
+
+   public static dqk.a a(dyx $$0, dfl $$1) {
+      return new dqk.a($$0, $$1);
+   }
+
+   public static class a {
+      public static final Codec<dqk.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(dyx.c.fieldOf("target").forGetter($$0x -> $$0x.b), dfl.b.fieldOf("state").forGetter($$0x -> $$0x.c)).apply($$0, dqk.a::new)
+      );
+      public final dyx b;
+      public final dfl c;
+
+      a(dyx $$0, dfl $$1) {
+         this.b = $$0;
+         this.c = $$1;
+      }
    }
 }

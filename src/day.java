@@ -1,46 +1,79 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+public class day extends csx {
+   public static final dgl a = dgb.aw;
+   protected static final float b = 6.0F;
+   protected static final eii c = csx.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
 
-public interface day {
-   List<day.a> a();
-
-   static List<day> b() {
-      return jd.i.s().map(day::a).filter(Objects::nonNull).collect(Collectors.toList());
+   protected day(dfk.d $$0) {
+      super($$0);
+      this.k(this.C.b().a(a, Integer.valueOf(0)));
    }
 
-   @Nullable
-   static day a(cpu $$0) {
-      if ($$0.k() instanceof cgy $$1) {
-         csv var6 = $$1.e();
-         if (var6 instanceof day) {
-            return (day)var6;
+   @Override
+   public eii a(dfl $$0, cpd $$1, gw $$2, ehu $$3) {
+      return c;
+   }
+
+   @Override
+   public void a(dfl $$0, aks $$1, gw $$2, ase $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
+      }
+   }
+
+   @Override
+   public void b(dfl $$0, aks $$1, gw $$2, ase $$3) {
+      if ($$1.t($$2.c())) {
+         int $$4 = 1;
+
+         while ($$1.a_($$2.c($$4)).a(this)) {
+            $$4++;
+         }
+
+         if ($$4 < 3) {
+            int $$5 = $$0.c(a);
+            if ($$5 == 15) {
+               $$1.b($$2.c(), this.n());
+               $$1.a($$2, $$0.a(a, Integer.valueOf(0)), 4);
+            } else {
+               $$1.a($$2, $$0.a(a, Integer.valueOf($$5 + 1)), 4);
+            }
          }
       }
-
-      cja $$2 = $$0.k();
-      return $$2 instanceof day ? (day)$$2 : null;
    }
 
-   public static record a(bib c, int d) {
-      public static final Codec<day.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(jd.e.q().fieldOf("id").forGetter(day.a::b), Codec.INT.optionalFieldOf("duration", 160).forGetter(day.a::c)).apply($$0, day.a::new)
-      );
-      public static final Codec<List<day.a>> b = a.listOf();
-
-      public bid a() {
-         return new bid(this.c, this.d);
+   @Override
+   public dfl a(dfl $$0, hc $$1, dfl $$2, cpy $$3, gw $$4, gw $$5) {
+      if (!$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
       }
 
-      public bib b() {
-         return this.c;
-      }
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
 
-      public int c() {
-         return this.d;
+   @Override
+   public boolean a(dfl $$0, cqa $$1, gw $$2) {
+      dfl $$3 = $$1.a_($$2.d());
+      if ($$3.a(this)) {
+         return true;
+      } else {
+         if ($$3.a(apu.af) || $$3.a(apu.H)) {
+            gw $$4 = $$2.d();
+
+            for (hc $$5 : hc.c.a) {
+               dfl $$6 = $$1.a_($$4.a($$5));
+               eao $$7 = $$1.b_($$4.a($$5));
+               if ($$7.a(apz.a) || $$6.a(csy.kI)) {
+                  return true;
+               }
+            }
+         }
+
+         return false;
       }
+   }
+
+   @Override
+   protected void a(dfm.a<csx, dfl> $$0) {
+      $$0.a(a);
    }
 }

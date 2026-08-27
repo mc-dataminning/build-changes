@@ -1,24 +1,24 @@
-public class adk implements ve<adf> {
-   private final tm a;
+public class adk implements vf<adg> {
+   private final int a;
 
-   public adk(tm $$0) {
+   public adk(int $$0) {
       this.a = $$0;
    }
 
-   public adk(sp $$0) {
-      this.a = tm.a.b($$0.d(262144));
+   public adk(sq $$0) {
+      this.a = $$0.m();
    }
 
    @Override
-   public void a(sp $$0) {
-      $$0.a(this.a);
+   public void a(sq $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(adf $$0) {
+   public void a(adg $$0) {
       $$0.a(this);
    }
 
-   public tm a() {
+   public int a() {
       return this.a;
    }
 }

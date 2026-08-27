@@ -1,6 +1,192 @@
+import java.util.Optional;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public interface bkd {
+public abstract class bkd extends but implements bjq {
+   protected static final aeg<Byte> bT = aej.a(bkd.class, aei.a);
+   protected static final aeg<Optional<UUID>> bU = aej.a(bkd.class, aei.q);
+   private boolean bW;
+
+   protected bkd(biw<? extends bkd> $$0, cpx $$1) {
+      super($$0, $$1);
+      this.t();
+   }
+
+   @Override
+   protected void a_() {
+      super.a_();
+      this.an.a(bT, (byte)0);
+      this.an.a(bU, Optional.empty());
+   }
+
+   @Override
+   public void b(qy $$0) {
+      super.b($$0);
+      if (this.d() != null) {
+         $$0.a("Owner", this.d());
+      }
+
+      $$0.a("Sitting", this.bW);
+   }
+
+   @Override
+   public void a(qy $$0) {
+      super.a($$0);
+      UUID $$1;
+      if ($$0.b("Owner")) {
+         $$1 = $$0.a("Owner");
+      } else {
+         String $$2 = $$0.l("Owner");
+         $$1 = aoh.a(this.cK(), $$2);
+      }
+
+      if ($$1 != null) {
+         try {
+            this.b($$1);
+            this.x(true);
+         } catch (Throwable var4) {
+            this.x(false);
+         }
+      }
+
+      this.bW = $$0.q("Sitting");
+      this.y(this.bW);
+   }
+
+   @Override
+   public boolean a(cbw $$0) {
+      return !this.fR();
+   }
+
+   protected void w(boolean $$0) {
+      iv $$1 = ix.M;
+      if (!$$0) {
+         $$1 = ix.Z;
+      }
+
+      for (int $$2 = 0; $$2 < 7; $$2++) {
+         double $$3 = this.ag.k() * 0.02;
+         double $$4 = this.ag.k() * 0.02;
+         double $$5 = this.ag.k() * 0.02;
+         this.dL().a($$1, this.d(1.0), this.dt() + 0.5, this.g(1.0), $$3, $$4, $$5);
+      }
+   }
+
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 7) {
+         this.w(true);
+      } else if ($$0 == 6) {
+         this.w(false);
+      } else {
+         super.b($$0);
+      }
+   }
+
+   public boolean s() {
+      return (this.an.b(bT) & 4) != 0;
+   }
+
+   public void x(boolean $$0) {
+      byte $$1 = this.an.b(bT);
+      if ($$0) {
+         this.an.b(bT, (byte)($$1 | 4));
+      } else {
+         this.an.b(bT, (byte)($$1 & -5));
+      }
+
+      this.t();
+   }
+
+   protected void t() {
+   }
+
+   public boolean y() {
+      return (this.an.b(bT) & 1) != 0;
+   }
+
+   public void y(boolean $$0) {
+      byte $$1 = this.an.b(bT);
+      if ($$0) {
+         this.an.b(bT, (byte)($$1 | 1));
+      } else {
+         this.an.b(bT, (byte)($$1 & -2));
+      }
+   }
+
    @Nullable
-   biq v();
+   @Override
+   public UUID d() {
+      return this.an.b(bU).orElse(null);
+   }
+
+   public void b(@Nullable UUID $$0) {
+      this.an.b(bU, Optional.ofNullable($$0));
+   }
+
+   public void f(cbw $$0) {
+      this.x(true);
+      this.b($$0.cv());
+      if ($$0 instanceof akt) {
+         al.x.a((akt)$$0, this);
+      }
+   }
+
+   @Override
+   public boolean c(bji $$0) {
+      return this.j($$0) ? false : super.c($$0);
+   }
+
+   public boolean j(bji $$0) {
+      return $$0 == this.O_();
+   }
+
+   public boolean a(bji $$0, bji $$1) {
+      return true;
+   }
+
+   @Override
+   public eiq cf() {
+      if (this.s()) {
+         bji $$0 = this.O_();
+         if ($$0 != null) {
+            return $$0.cf();
+         }
+      }
+
+      return super.cf();
+   }
+
+   @Override
+   public boolean s(bis $$0) {
+      if (this.s()) {
+         bji $$1 = this.O_();
+         if ($$0 == $$1) {
+            return true;
+         }
+
+         if ($$1 != null) {
+            return $$1.s($$0);
+         }
+      }
+
+      return super.s($$0);
+   }
+
+   @Override
+   public void a(bhq $$0) {
+      if (!this.dL().B && this.dL().X().b(cpt.m) && this.O_() instanceof akt) {
+         this.O_().a(this.eJ().a());
+      }
+
+      super.a($$0);
+   }
+
+   public boolean gd() {
+      return this.bW;
+   }
+
+   public void z(boolean $$0) {
+      this.bW = $$0;
+   }
 }

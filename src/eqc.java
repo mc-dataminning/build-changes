@@ -1,14 +1,14 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class eqc extends epv {
+public class eqc extends epx {
    private static final Logger b = LogUtils.getLogger();
-   private static final tm c = tm.c("mco.minigame.world.slot.screen.title");
-   private final long d;
-   private final int e;
-   private final Runnable f;
+   private static final tn c = tn.c("mco.backup.restoring");
+   private final emn d;
+   private final long e;
+   private final eoh f;
 
-   public eqc(long $$0, int $$1, Runnable $$2) {
+   public eqc(emn $$0, long $$1, eoh $$2) {
       this.d = $$0;
       this.e = $$1;
       this.f = $$2;
@@ -16,37 +16,52 @@ public class eqc extends epv {
 
    @Override
    public void run() {
-      emf $$0 = emf.a();
+      emh $$0 = emh.a();
+      int $$1 = 0;
 
-      for (int $$1 = 0; $$1 < 25; $$1++) {
+      while ($$1 < 25) {
          try {
             if (this.d()) {
                return;
             }
 
-            if ($$0.a(this.d, this.e)) {
-               this.f.run();
-               break;
+            $$0.b(this.e, this.d.a);
+            a(1L);
+            if (this.d()) {
+               return;
             }
-         } catch (ent var4) {
+
+            a(this.f.f());
+            return;
+         } catch (env var4) {
             if (this.d()) {
                return;
             }
 
             a((long)var4.c);
-         } catch (Exception var5) {
+            $$1++;
+         } catch (enu var5) {
             if (this.d()) {
                return;
             }
 
-            b.error("Couldn't switch world!");
-            this.a(var5);
+            b.error("Couldn't restore backup", var5);
+            a(new eol(var5, this.f));
+            return;
+         } catch (Exception var6) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't restore backup", var6);
+            this.a(var6);
+            return;
          }
       }
    }
 
    @Override
-   public tm a() {
+   public tn a() {
       return c;
    }
 }

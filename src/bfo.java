@@ -1,146 +1,48 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Queues;
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.locks.LockSupport;
-import java.util.function.BooleanSupplier;
-import java.util.function.Supplier;
-import org.slf4j.Logger;
+import java.util.Optional;
 
-public abstract class bfo<R extends Runnable> implements bew, bfq<R>, Executor {
-   private final String b;
-   private static final Logger c = LogUtils.getLogger();
-   private final Queue<R> d = Queues.newConcurrentLinkedQueue();
-   private int e;
+public class bfo<E extends bfm> {
+   private final int a;
+   private final ImmutableList<E> b;
 
-   protected bfo(String $$0) {
-      this.b = $$0;
-      beu.a.a(this);
+   bfo(List<? extends E> $$0) {
+      this.b = ImmutableList.copyOf($$0);
+      this.a = bfn.a($$0);
    }
 
-   protected abstract R f(Runnable var1);
-
-   protected abstract boolean e(R var1);
-
-   public boolean bl() {
-      return Thread.currentThread() == this.au();
+   public static <E extends bfm> bfo<E> c() {
+      return new bfo<>(ImmutableList.of());
    }
 
-   protected abstract Thread au();
-
-   protected boolean at() {
-      return !this.bl();
+   @SafeVarargs
+   public static <E extends bfm> bfo<E> a(E... $$0) {
+      return new bfo<>(ImmutableList.copyOf($$0));
    }
 
-   public int bm() {
-      return this.d.size();
+   public static <E extends bfm> bfo<E> a(List<E> $$0) {
+      return new bfo<>($$0);
    }
 
-   @Override
-   public String bn() {
+   public boolean d() {
+      return this.b.isEmpty();
+   }
+
+   public Optional<E> b(ase $$0) {
+      if (this.a == 0) {
+         return Optional.empty();
+      } else {
+         int $$1 = $$0.a(this.a);
+         return bfn.a(this.b, $$1);
+      }
+   }
+
+   public List<E> e() {
       return this.b;
    }
 
-   public <V> CompletableFuture<V> a(Supplier<V> $$0) {
-      return this.at() ? CompletableFuture.supplyAsync($$0, this) : CompletableFuture.completedFuture($$0.get());
-   }
-
-   private CompletableFuture<Void> a(Runnable $$0) {
-      return CompletableFuture.supplyAsync(() -> {
-         $$0.run();
-         return null;
-      }, this);
-   }
-
-   public CompletableFuture<Void> g(Runnable $$0) {
-      if (this.at()) {
-         return this.a($$0);
-      } else {
-         $$0.run();
-         return CompletableFuture.completedFuture(null);
-      }
-   }
-
-   public void h(Runnable $$0) {
-      if (!this.bl()) {
-         this.a($$0).join();
-      } else {
-         $$0.run();
-      }
-   }
-
-   public void i(R $$0) {
-      this.d.add($$0);
-      LockSupport.unpark(this.au());
-   }
-
-   @Override
-   public void execute(Runnable $$0) {
-      if (this.at()) {
-         this.i(this.f($$0));
-      } else {
-         $$0.run();
-      }
-   }
-
-   public void c(Runnable $$0) {
-      this.execute($$0);
-   }
-
-   protected void bo() {
-      this.d.clear();
-   }
-
-   protected void bp() {
-      while (this.x()) {
-      }
-   }
-
-   public boolean x() {
-      R $$0 = this.d.peek();
-      if ($$0 == null) {
-         return false;
-      } else if (this.e == 0 && !this.e($$0)) {
-         return false;
-      } else {
-         this.d(this.d.remove());
-         return true;
-      }
-   }
-
-   public void c(BooleanSupplier $$0) {
-      this.e++;
-
-      try {
-         while (!$$0.getAsBoolean()) {
-            if (!this.x()) {
-               this.bq();
-            }
-         }
-      } finally {
-         this.e--;
-      }
-   }
-
-   protected void bq() {
-      Thread.yield();
-      LockSupport.parkNanos("waiting for tasks", 100000L);
-   }
-
-   protected void d(R $$0) {
-      try {
-         $$0.run();
-      } catch (Exception var3) {
-         c.error(LogUtils.FATAL_MARKER, "Error executing task on {}", this.bn(), var3);
-         throw var3;
-      }
-   }
-
-   @Override
-   public List<bet> bk() {
-      return ImmutableList.of(bet.a(this.b + "-pending-tasks", bes.b, this::bm));
+   public static <E extends bfm> Codec<bfo<E>> c(Codec<E> $$0) {
+      return $$0.listOf().xmap(bfo::a, bfo::e);
    }
 }

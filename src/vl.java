@@ -1,24 +1,24 @@
-public class vl implements ve<vh> {
-   private final int a;
+public class vl implements vf<vi> {
+   private final long a;
 
-   public vl(int $$0) {
+   public vl(long $$0) {
       this.a = $$0;
    }
 
-   public vl(sp $$0) {
-      this.a = $$0.readInt();
+   public vl(sq $$0) {
+      this.a = $$0.readLong();
    }
 
    @Override
-   public void a(sp $$0) {
-      $$0.p(this.a);
+   public void a(sq $$0) {
+      $$0.b(this.a);
    }
 
-   public void a(vh $$0) {
+   public void a(vi $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public long a() {
       return this.a;
    }
 }

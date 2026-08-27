@@ -1,62 +1,40 @@
+import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.List;
 
-public class dsh extends dsb {
-   public static final Codec<dsh> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dsb.a.fieldOf("source").forGetter($$0x -> $$0x.c),
-               Codec.STRING.fieldOf("property").forGetter($$0x -> $$0x.d),
-               bgd.c.fieldOf("values").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dsh::new)
-   );
-   private final dsb c;
-   private final String d;
-   @Nullable
-   private dgj e;
-   private final bgd f;
+public class dsh extends dsg {
+   public static final Codec<dsh> g = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, dsh::new));
+   protected final List<dfl> h;
 
-   public dsh(dsb $$0, dgj $$1, bgd $$2) {
-      this.c = $$0;
-      this.e = $$1;
-      this.d = $$1.f();
-      this.f = $$2;
-      Collection<Integer> $$3 = $$1.a();
-
-      for (int $$4 = $$2.a(); $$4 <= $$2.b(); $$4++) {
-         if (!$$3.contains($$4)) {
-            throw new IllegalArgumentException("Property value out of range: " + $$1.f() + ": " + $$4);
-         }
-      }
+   protected static <P extends dsh> P4<Mu<P>, Long, dzr.a, Float, List<dfl>> b(Instance<P> $$0) {
+      return a($$0).and(Codec.list(dfl.b).fieldOf("states").forGetter($$0x -> $$0x.h));
    }
 
-   public dsh(dsb $$0, String $$1, bgd $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.f = $$2;
+   public dsh(long $$0, dzr.a $$1, float $$2, List<dfl> $$3) {
+      super($$0, $$1, $$2);
+      this.h = $$3;
    }
 
    @Override
-   protected dsc<?> a() {
-      return dsc.g;
+   protected dse<?> a() {
+      return dse.d;
    }
 
    @Override
-   public dfj a(asc $$0, gw $$1) {
-      dfj $$2 = this.c.a($$0, $$1);
-      if (this.e == null || !$$2.b(this.e)) {
-         this.e = a($$2, this.d);
-      }
-
-      return $$2.a(this.e, Integer.valueOf(this.f.a($$0)));
+   public dfl a(ase $$0, gw $$1) {
+      return this.a(this.h, $$1, (double)this.e);
    }
 
-   private static dgj a(dfj $$0, String $$1) {
-      Collection<dgm<?>> $$2 = $$0.B();
-      Optional<dgj> $$3 = $$2.stream().filter($$1x -> $$1x.f().equals($$1)).filter($$0x -> $$0x instanceof dgj).map($$0x -> (dgj)$$0x).findAny();
-      return $$3.orElseThrow(() -> new IllegalArgumentException("Illegal property: " + $$1));
+   protected dfl a(List<dfl> $$0, gw $$1, double $$2) {
+      double $$3 = this.a($$1, $$2);
+      return this.a($$0, $$3);
+   }
+
+   protected dfl a(List<dfl> $$0, double $$1) {
+      double $$2 = ary.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
+      return $$0.get((int)($$2 * (double)$$0.size()));
    }
 }

@@ -1,28 +1,28 @@
-public class aad implements ve<wx> {
+public class aad implements vf<wy> {
    private final float a;
    private final int b;
-   private final float c;
+   private final int c;
 
-   public aad(float $$0, int $$1, float $$2) {
+   public aad(float $$0, int $$1, int $$2) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
    }
 
-   public aad(sp $$0) {
+   public aad(sq $$0) {
       this.a = $$0.readFloat();
+      this.c = $$0.m();
       this.b = $$0.m();
-      this.c = $$0.readFloat();
    }
 
    @Override
-   public void a(sp $$0) {
+   public void a(sq $$0) {
       $$0.a(this.a);
+      $$0.c(this.c);
       $$0.c(this.b);
-      $$0.a(this.c);
    }
 
-   public void a(wx $$0) {
+   public void a(wy $$0) {
       $$0.a(this);
    }
 
@@ -34,7 +34,7 @@ public class aad implements ve<wx> {
       return this.b;
    }
 
-   public float e() {
+   public int e() {
       return this.c;
    }
 }

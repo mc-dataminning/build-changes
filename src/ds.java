@@ -1,7 +1,7 @@
 public interface ds {
    ds a = new ds() {
       @Override
-      public void a(tm $$0) {
+      public void a(tn $$0) {
       }
 
       @Override
@@ -20,7 +20,7 @@ public interface ds {
       }
    };
 
-   void a(tm var1);
+   void a(tn var1);
 
    boolean j_();
 

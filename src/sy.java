@@ -1,24 +1,15 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import io.netty.util.Attribute;
 
-public class sy extends sn {
-   private static final Logger j = LogUtils.getLogger();
-   private static final tm k = tm.c("disconnect.exceeded_packet_rate");
-   private final int l;
-
-   public sy(int $$0) {
-      super(vf.a);
-      this.l = $$0;
-   }
-
-   @Override
-   protected void e() {
-      super.e();
-      float $$0 = this.q();
-      if ($$0 > (float)this.l) {
-         j.warn("Player exceeded rate-limit (sent {} packets per second)", $$0);
-         this.a(new vj(k), sw.a(() -> this.a(k)));
-         this.o();
+public interface sy {
+   static void a(Attribute<sp.a<?>> $$0, vf<?> $$1) {
+      sp $$2 = $$1.c();
+      if ($$2 != null) {
+         sp.a<?> $$3 = (sp.a<?>)$$0.get();
+         sp $$4 = $$3.a();
+         if ($$2 != $$4) {
+            sp.a<?> $$5 = $$2.b($$3.b());
+            $$0.set($$5);
+         }
       }
    }
 }

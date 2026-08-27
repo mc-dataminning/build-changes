@@ -1,37 +1,36 @@
-public class gex extends gfb {
-   private final tm a;
-   private etj b = etj.a;
-   private final eyk c;
-   private int y;
+import java.util.function.Function;
 
-   public gex(eyk $$0, tm $$1, tm $$2) {
-      super($$1);
-      this.c = $$0;
-      this.a = $$2;
+public enum gex {
+   a("movement", ges::new),
+   b("find_tree", ger::new),
+   c("punch_tree", geu::new),
+   d("open_inventory", get::new),
+   e("craft_planks", geq::new),
+   f("none", gep::new);
+
+   private final String g;
+   private final Function<gev, ? extends gew> h;
+
+   private <T extends gew> gex(String $$0, Function<gev, T> $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   @Override
-   public void aI_() {
-      this.f.ac().a();
-      this.b = etj.a(this.i, this.a, this.g - 50);
-      this.y = this.b.a() * 9;
-      this.d(esq.a(tl.k, $$0 -> this.f.a(this.c)).a(this.g / 2 - 100, this.h / 2 + this.y / 2 + 9, 200, 20).a());
+   public gew a(gev $$0) {
+      return this.h.apply($$0);
    }
 
-   @Override
-   public tm g() {
-      return tm.h().b(this.e).f(": ").b(this.a);
+   public String a() {
+      return this.g;
    }
 
-   @Override
-   public void az_() {
-      eqv.O().a(this.c);
-   }
+   public static gex a(String $$0) {
+      for (gex $$1 : values()) {
+         if ($$1.g.equals($$0)) {
+            return $$1;
+         }
+      }
 
-   @Override
-   public void a(esf $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, this.h / 2 - this.y / 2 - 9 * 2, 11184810);
-      this.b.a($$0, this.g / 2, this.h / 2 - this.y / 2);
+      return f;
    }
 }

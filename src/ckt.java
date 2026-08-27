@@ -1,22 +1,23 @@
-public class ckt extends cja {
-   private final cks a;
-
-   public ckt(cks $$0, cja.a $$1) {
-      super($$1.b($$0.a()));
-      this.a = $$0;
-   }
-
-   public cks i() {
-      return this.a;
+public class ckt extends cjw {
+   public ckt(cjc.a $$0) {
+      super($$0);
    }
 
    @Override
-   public int c() {
-      return this.a.e();
-   }
+   public bhb<cjh> a(cpx $$0, cbw $$1, bgz $$2) {
+      cjh $$3 = $$1.b($$2);
+      if (!$$0.B) {
+         ccz $$4 = new ccz($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dD(), $$1.dB(), -20.0F, 0.5F, 1.0F);
+         $$0.b($$4);
+      }
 
-   @Override
-   public boolean a(cjf $$0, cjf $$1) {
-      return this.a.f().a($$1) || super.a($$0, $$1);
+      $$1.b(app.c.b(this));
+      if (!$$1.fS().d) {
+         $$3.h(1);
+      }
+
+      return bhb.a($$3, $$0.w_());
    }
 }

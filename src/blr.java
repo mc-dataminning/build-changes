@@ -1,27 +1,41 @@
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.K1;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-public class blr {
-   public static bky<bjg> a(float $$0, boolean $$1, int $$2) {
-      return a($$0x -> true, $$0, $$1, $$2);
+public class blr extends bkz<cbj> {
+   private static final int d = 1200;
+   final float c;
+
+   public blr(float $$0) {
+      super(ImmutableMap.of(bsj.d, bsk.a), 1200);
+      this.c = $$0;
    }
 
-   public static <E extends bjg> bky<E> a(Predicate<E> $$0, float $$1, boolean $$2, int $$3) {
-      return boj.a((Function<boj.b<E>, ? extends App<boj.c<E>, bom<E>>>)($$4 -> {
-         boj<E, ? extends bok<? extends K1, bsk>> $$5 = $$2 ? $$4.a(bsh.m) : $$4.c(bsh.m);
-         return $$4.group($$4.a(bsh.n), $$5, $$4.b(bsh.K), $$4.a(bsh.aO)).apply($$4, ($$4x, $$5x, $$6, $$7) -> ($$8, $$9, $$10) -> {
-               byn $$11 = $$4.b($$6);
-               if ($$4.a($$7).isEmpty() && $$0.test((E)$$9) && $$11.a($$9, (double)$$3) && $$9.dL().B_().a($$11.dl())) {
-                  bsk $$12 = new bsk(new bli($$11, false), $$1, 0);
-                  $$4x.a(new bli($$11, true));
-                  $$5x.a($$12);
-                  return true;
-               } else {
-                  return false;
-               }
-            });
-      }));
+   protected boolean a(aks $$0, cbj $$1) {
+      return $$1.dN().g().map($$0x -> $$0x == cdh.b || $$0x == cdh.c || $$0x == cdh.d).orElse(true);
+   }
+
+   protected boolean a(aks $$0, cbj $$1, long $$2) {
+      return $$1.dN().a(bsj.d);
+   }
+
+   protected void b(aks $$0, cbj $$1, long $$2) {
+      blb.a($$1, $$1.dN().c(bsj.d).get().b(), this.c, 1);
+   }
+
+   protected void c(aks $$0, cbj $$1, long $$2) {
+      Optional<hf> $$3 = $$1.dN().c(bsj.d);
+      $$3.ifPresent($$1x -> {
+         gw $$2x = $$1x.b();
+         aks $$3x = $$0.n().a($$1x.a());
+         if ($$3x != null) {
+            buh $$4 = $$3x.w();
+            if ($$4.a($$2x, $$0xx -> true)) {
+               $$4.b($$2x);
+            }
+
+            abd.c($$0, $$2x);
+         }
+      });
+      $$1.dN().b(bsj.d);
    }
 }

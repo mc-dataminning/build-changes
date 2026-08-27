@@ -1,70 +1,8 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class dwa implements dvn {
-   private final List<dvm> a = Lists.newArrayList();
-
-   @Override
-   public void a(dvm $$0) {
-      this.a.add($$0);
-   }
-
-   @Nullable
-   @Override
-   public dvm a(dva $$0) {
-      return dvm.a(this.a, $$0);
-   }
-
-   @Deprecated
-   public void a(int $$0) {
-      for (dvm $$1 : this.a) {
-         $$1.a(0, $$0, 0);
-      }
-   }
-
-   @Deprecated
-   public int a(int $$0, int $$1, asc $$2, int $$3) {
-      int $$4 = $$0 - $$3;
-      dva $$5 = this.d();
-      int $$6 = $$5.d() + $$1 + 1;
-      if ($$6 < $$4) {
-         $$6 += $$2.a($$4 - $$6);
-      }
-
-      int $$7 = $$6 - $$5.k();
-      this.a($$7);
-      return $$7;
-   }
-
-   /** @deprecated */
-   public void a(asc $$0, int $$1, int $$2) {
-      dva $$3 = this.d();
-      int $$4 = $$2 - $$1 + 1 - $$3.d();
-      int $$5;
-      if ($$4 > 1) {
-         $$5 = $$1 + $$0.a($$4);
-      } else {
-         $$5 = $$1;
-      }
-
-      int $$7 = $$5 - $$3.h();
-      this.a($$7);
-   }
-
-   public dvx a() {
-      return new dvx(this.a);
-   }
-
-   public void b() {
-      this.a.clear();
-   }
-
-   public boolean c() {
-      return this.a.isEmpty();
-   }
-
-   public dva d() {
-      return dvm.a(this.a.stream());
+public record dwa(anv a, hu b, dze c) {
+   public static dwa a(aks $$0) {
+      MinecraftServer $$1 = $$0.n();
+      return new dwa($$1.aX(), $$1.aU(), $$1.aS());
    }
 }

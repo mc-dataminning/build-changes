@@ -1,68 +1,117 @@
-public class cxe {
-   public static final int a = 1000;
-   public static final int b = 1001;
-   public static final int c = 1002;
-   public static final int d = 1003;
-   public static final int e = 1004;
-   public static final int f = 1009;
-   public static final int g = 1010;
-   public static final int h = 1011;
-   public static final int i = 1015;
-   public static final int j = 1016;
-   public static final int k = 1017;
-   public static final int l = 1018;
-   public static final int m = 1019;
-   public static final int n = 1020;
-   public static final int o = 1021;
-   public static final int p = 1022;
-   public static final int q = 1023;
-   public static final int r = 1024;
-   public static final int s = 1025;
-   public static final int t = 1026;
-   public static final int u = 1027;
-   public static final int v = 1028;
-   public static final int w = 1029;
-   public static final int x = 1030;
-   public static final int y = 1031;
-   public static final int z = 1032;
-   public static final int A = 1033;
-   public static final int B = 1034;
-   public static final int C = 1035;
-   public static final int D = 1038;
-   public static final int E = 1039;
-   public static final int F = 1040;
-   public static final int G = 1041;
-   public static final int H = 1042;
-   public static final int I = 1043;
-   public static final int J = 1044;
-   public static final int K = 1045;
-   public static final int L = 1046;
-   public static final int M = 1047;
-   public static final int N = 1048;
-   public static final int O = 1500;
-   public static final int P = 1501;
-   public static final int Q = 1502;
-   public static final int R = 1503;
-   public static final int S = 1504;
-   public static final int T = 1505;
-   public static final int U = 2000;
-   public static final int V = 2001;
-   public static final int W = 2002;
-   public static final int X = 2003;
-   public static final int Y = 2004;
-   public static final int Z = 2005;
-   public static final int aa = 2006;
-   public static final int ab = 2007;
-   public static final int ac = 2008;
-   public static final int ad = 2009;
-   public static final int ae = 3000;
-   public static final int af = 3001;
-   public static final int ag = 3002;
-   public static final int ah = 3003;
-   public static final int ai = 3004;
-   public static final int aj = 3005;
-   public static final int ak = 3006;
-   public static final int al = 3007;
-   public static final int am = 3008;
-   public static final int an = 3009;
+import java.util.OptionalInt;
+
+public class cxe extends csx implements czy {
+   public static final int a = 7;
+   public static final dgl b = dgb.aC;
+   public static final dgc c = dgb.v;
+   public static final dgc d = dgb.C;
+   private static final int e = 1;
+
+   public cxe(dfk.d $$0) {
+      super($$0);
+      this.k(this.C.b().a(b, Integer.valueOf(7)).a(c, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
+   }
+
+   @Override
+   public eii b_(dfl $$0, cpd $$1, gw $$2) {
+      return eif.a();
+   }
+
+   @Override
+   public boolean e_(dfl $$0) {
+      return $$0.c(b) == 7 && !$$0.c(c);
+   }
+
+   @Override
+   public void b(dfl $$0, aks $$1, gw $$2, ase $$3) {
+      if (this.h($$0)) {
+         c($$0, $$1, $$2);
+         $$1.a($$2, false);
+      }
+   }
+
+   protected boolean h(dfl $$0) {
+      return !$$0.c(c) && $$0.c(b) == 7;
+   }
+
+   @Override
+   public void a(dfl $$0, aks $$1, gw $$2, ase $$3) {
+      $$1.a($$2, a($$0, $$1, $$2), 3);
+   }
+
+   @Override
+   public int g(dfl $$0, cpd $$1, gw $$2) {
+      return 1;
+   }
+
+   @Override
+   public dfl a(dfl $$0, hc $$1, dfl $$2, cpy $$3, gw $$4, gw $$5) {
+      if ($$0.c(d)) {
+         $$3.a($$4, eap.c, eap.c.a($$3));
+      }
+
+      int $$6 = o($$2) + 1;
+      if ($$6 != 1 || $$0.c(b) != $$6) {
+         $$3.a($$4, this, 1);
+      }
+
+      return $$0;
+   }
+
+   private static dfl a(dfl $$0, cpy $$1, gw $$2) {
+      int $$3 = 7;
+      gw.a $$4 = new gw.a();
+
+      for (hc $$5 : hc.values()) {
+         $$4.a($$2, $$5);
+         $$3 = Math.min($$3, o($$1.a_($$4)) + 1);
+         if ($$3 == 1) {
+            break;
+         }
+      }
+
+      return $$0.a(b, Integer.valueOf($$3));
+   }
+
+   private static int o(dfl $$0) {
+      return n($$0).orElse(7);
+   }
+
+   public static OptionalInt n(dfl $$0) {
+      if ($$0.a(apu.t)) {
+         return OptionalInt.of(0);
+      } else {
+         return $$0.b(b) ? OptionalInt.of($$0.c(b)) : OptionalInt.empty();
+      }
+   }
+
+   @Override
+   public eao c_(dfl $$0) {
+      return $$0.c(d) ? eap.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   public void a(dfl $$0, cpx $$1, gw $$2, ase $$3) {
+      if ($$1.q($$2.c())) {
+         if ($$3.a(15) == 1) {
+            gw $$4 = $$2.d();
+            dfl $$5 = $$1.a_($$4);
+            if (!$$5.p() || !$$5.d($$1, $$4, hc.b)) {
+               asb.a($$1, $$2, $$3, ix.m);
+            }
+         }
+      }
+   }
+
+   @Override
+   protected void a(dfm.a<csx, dfl> $$0) {
+      $$0.a(b, c, d);
+   }
+
+   @Override
+   public dfl a(clp $$0) {
+      eao $$1 = $$0.q().b_($$0.a());
+      dfl $$2 = this.n().a(c, Boolean.valueOf(true)).a(d, Boolean.valueOf($$1.a() == eap.c));
+      return a($$2, $$0.q(), $$0.a());
+   }
 }

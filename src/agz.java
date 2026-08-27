@@ -1,85 +1,42 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 public class agz {
-   private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> tm.a("commands.fill.toobig", $$0, $$1));
-   static final ff b = new ff(csw.a.n(), Collections.emptySet(), null);
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tm.c("commands.fill.failed"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tn.c("argument.pos.unloaded"));
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> tn.a("commands.fillbiome.toobig", $$0, $$1));
 
    public static void a(CommandDispatcher<dt> $$0, dn $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("fill").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("fillbiome").requires($$0x -> $$0x.c(2)))
             .then(
                du.a("from", fk.a())
                   .then(
                      du.a("to", fk.a())
                         .then(
-                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)du.a(
-                                                "block", fh.a($$1)
-                                             )
-                                             .executes(
-                                                $$0x -> a((dt)$$0x.getSource(), dva.a(fk.a($$0x, "from"), fk.a($$0x, "to")), fh.a($$0x, "block"), agz.a.a, null)
-                                             ))
-                                          .then(
-                                             ((LiteralArgumentBuilder)du.a("replace")
-                                                   .executes(
-                                                      $$0x -> a(
-                                                            (dt)$$0x.getSource(),
-                                                            dva.a(fk.a($$0x, "from"), fk.a($$0x, "to")),
-                                                            fh.a($$0x, "block"),
-                                                            agz.a.a,
-                                                            null
-                                                         )
-                                                   ))
-                                                .then(
-                                                   du.a("filter", fg.a($$1))
-                                                      .executes(
-                                                         $$0x -> a(
-                                                               (dt)$$0x.getSource(),
-                                                               dva.a(fk.a($$0x, "from"), fk.a($$0x, "to")),
-                                                               fh.a($$0x, "block"),
-                                                               agz.a.a,
-                                                               fg.a($$0x, "filter")
-                                                            )
-                                                      )
-                                                )
-                                          ))
-                                       .then(
-                                          du.a("keep")
-                                             .executes(
-                                                $$0x -> a(
-                                                      (dt)$$0x.getSource(),
-                                                      dva.a(fk.a($$0x, "from"), fk.a($$0x, "to")),
-                                                      fh.a($$0x, "block"),
-                                                      agz.a.a,
-                                                      $$0xx -> $$0xx.c().t($$0xx.d())
-                                                   )
-                                             )
-                                       ))
-                                    .then(
-                                       du.a("outline")
-                                          .executes(
-                                             $$0x -> a((dt)$$0x.getSource(), dva.a(fk.a($$0x, "from"), fk.a($$0x, "to")), fh.a($$0x, "block"), agz.a.b, null)
-                                          )
-                                    ))
-                                 .then(
-                                    du.a("hollow")
-                                       .executes(
-                                          $$0x -> a((dt)$$0x.getSource(), dva.a(fk.a($$0x, "from"), fk.a($$0x, "to")), fh.a($$0x, "block"), agz.a.c, null)
-                                       )
-                                 ))
+                           ((RequiredArgumentBuilder)du.a("biome", eq.a($$1, je.ap))
+                                 .executes($$0x -> a((dt)$$0x.getSource(), fk.a($$0x, "from"), fk.a($$0x, "to"), eq.a($$0x, "biome", je.ap), $$0xx -> true)))
                               .then(
-                                 du.a("destroy")
-                                    .executes($$0x -> a((dt)$$0x.getSource(), dva.a(fk.a($$0x, "from"), fk.a($$0x, "to")), fh.a($$0x, "block"), agz.a.d, null))
+                                 du.a("replace")
+                                    .then(
+                                       du.a("filter", et.a($$1, je.ap))
+                                          .executes(
+                                             $$0x -> a(
+                                                   (dt)$$0x.getSource(),
+                                                   fk.a($$0x, "from"),
+                                                   fk.a($$0x, "to"),
+                                                   eq.a($$0x, "biome", je.ap),
+                                                   et.a($$0x, "filter", je.ap)::test
+                                                )
+                                          )
+                                    )
                               )
                         )
                   )
@@ -87,76 +44,62 @@ public class agz {
       );
    }
 
-   private static int a(dt $$0, dva $$1, ff $$2, agz.a $$3, @Nullable Predicate<dfn> $$4) throws CommandSyntaxException {
-      int $$5 = $$1.c() * $$1.d() * $$1.e();
-      int $$6 = $$0.e().X().c(cpr.x);
-      if ($$5 > $$6) {
-         throw a.create($$6, $$5);
-      } else {
-         List<gw> $$7 = Lists.newArrayList();
-         akr $$8 = $$0.e();
-         int $$9 = 0;
+   private static int a(int $$0) {
+      return hs.c(hs.a($$0));
+   }
 
-         for (gw $$10 : gw.b($$1.g(), $$1.h(), $$1.i(), $$1.j(), $$1.k(), $$1.l())) {
-            if ($$4 == null || $$4.test(new dfn($$8, $$10, true))) {
-               ff $$11 = $$3.e.filter($$1, $$10, $$2, $$8);
-               if ($$11 != null) {
-                  dcv $$12 = $$8.c_($$10);
-                  bgp.a_($$12);
-                  if ($$11.a($$8, $$10, 2)) {
-                     $$7.add($$10.i());
-                     $$9++;
-                  }
+   private static gw a(gw $$0) {
+      return new gw(a($$0.u()), a($$0.v()), a($$0.w()));
+   }
+
+   private static cqy a(MutableInt $$0, dhh $$1, dvc $$2, hg<cqv> $$3, Predicate<hg<cqv>> $$4) {
+      return ($$5, $$6, $$7, $$8) -> {
+         int $$9 = hs.c($$5);
+         int $$10 = hs.c($$6);
+         int $$11 = hs.c($$7);
+         hg<cqv> $$12 = $$1.getNoiseBiome($$5, $$6, $$7);
+         if ($$2.c($$9, $$10, $$11) && $$4.test($$12)) {
+            $$0.increment();
+            return $$3;
+         } else {
+            return $$12;
+         }
+      };
+   }
+
+   private static int a(dt $$0, gw $$1, gw $$2, hg.c<cqv> $$3, Predicate<hg<cqv>> $$4) throws CommandSyntaxException {
+      gw $$5 = a($$1);
+      gw $$6 = a($$2);
+      dvc $$7 = dvc.a($$5, $$6);
+      int $$8 = $$7.c() * $$7.d() * $$7.e();
+      int $$9 = $$0.e().X().c(cpt.x);
+      if ($$8 > $$9) {
+         throw b.create($$9, $$8);
+      } else {
+         aks $$10 = $$0.e();
+         List<dhh> $$11 = new ArrayList<>();
+
+         for (int $$12 = hz.a($$7.i()); $$12 <= hz.a($$7.l()); $$12++) {
+            for (int $$13 = hz.a($$7.g()); $$13 <= hz.a($$7.j()); $$13++) {
+               dhh $$14 = $$10.a($$13, $$12, dhm.n, false);
+               if ($$14 == null) {
+                  throw a.create();
                }
+
+               $$11.add($$14);
             }
          }
 
-         for (gw $$13 : $$7) {
-            csv $$14 = $$8.a_($$13).b();
-            $$8.b($$13, $$14);
+         MutableInt $$15 = new MutableInt(0);
+
+         for (dhh $$16 : $$11) {
+            $$16.a(a($$15, $$16, $$7, $$3, $$4), $$10.k().i().b());
+            $$16.a(true);
          }
 
-         if ($$9 == 0) {
-            throw c.create();
-         } else {
-            int $$15 = $$9;
-            $$0.a(() -> tm.a("commands.fill.success", $$15), true);
-            return $$9;
-         }
-      }
-   }
-
-   static enum a {
-      a(($$0, $$1, $$2, $$3) -> $$2),
-      b(
-         ($$0, $$1, $$2, $$3) -> $$1.u() != $$0.g()
-                  && $$1.u() != $$0.j()
-                  && $$1.v() != $$0.h()
-                  && $$1.v() != $$0.k()
-                  && $$1.w() != $$0.i()
-                  && $$1.w() != $$0.l()
-               ? null
-               : $$2
-      ),
-      c(
-         ($$0, $$1, $$2, $$3) -> $$1.u() != $$0.g()
-                  && $$1.u() != $$0.j()
-                  && $$1.v() != $$0.h()
-                  && $$1.v() != $$0.k()
-                  && $$1.w() != $$0.i()
-                  && $$1.w() != $$0.l()
-               ? agz.b
-               : $$2
-      ),
-      d(($$0, $$1, $$2, $$3) -> {
-         $$3.b($$1, true);
-         return $$2;
-      });
-
-      public final aik.a e;
-
-      private a(aik.a $$0) {
-         this.e = $$0;
+         $$10.k().a.a($$11);
+         $$0.a(() -> tn.a("commands.fillbiome.success.count", $$15.getValue(), $$7.g(), $$7.h(), $$7.i(), $$7.j(), $$7.k(), $$7.l()), true);
+         return $$15.getValue();
       }
    }
 }

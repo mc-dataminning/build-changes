@@ -1,23 +1,15 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
 
-public class avf extends axz {
-   public avf(Schema $$0) {
-      super($$0, false, "EntityBrushableBlockFieldsRenameFix", ayx.s, "minecraft:brushable_block");
+public class avf extends ayb {
+   public avf(Schema $$0, boolean $$1) {
+      super($$0, $$1, "EntityArmorStandSilentFix", ayz.x, "ArmorStand");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {
-      return this.a(this.a($$0, "loot_table", "LootTable"), "loot_table_seed", "LootTableSeed");
-   }
-
-   private Dynamic<?> a(Dynamic<?> $$0, String $$1, String $$2) {
-      Optional<? extends Dynamic<?>> $$3 = $$0.get($$1).result();
-      Optional<? extends Dynamic<?>> $$4 = $$3.map($$3x -> $$0.remove($$1).set($$2, $$3x));
-      return (Dynamic<?>)DataFixUtils.orElse($$4, $$0);
+      return $$0.get("Silent").asBoolean(false) && !$$0.get("Marker").asBoolean(false) ? $$0.remove("Silent") : $$0;
    }
 
    @Override

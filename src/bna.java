@@ -3,46 +3,21 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class bna {
-   public static bky<bjp> a(bsh<gw> $$0, float $$1, int $$2, boolean $$3) {
-      return a($$0, $$1, $$2, $$3, ehn::c);
-   }
-
-   public static bmh<bjp> b(bsh<? extends biq> $$0, float $$1, int $$2, boolean $$3) {
-      return a($$0, $$1, $$2, $$3, biq::dj);
-   }
-
-   private static <T> bmh<bjp> a(bsh<T> $$0, float $$1, int $$2, boolean $$3, Function<T, ehn> $$4) {
-      return boj.a(
-         (Function<boj.b<bjp>, ? extends App<boj.c<bjp>, bom<bjp>>>)($$5 -> $$5.group($$5.a(bsh.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                  Optional<bsk> $$10 = $$5.a($$5x);
-                  if ($$10.isPresent() && !$$3) {
-                     return false;
-                  } else {
-                     ehn $$11 = $$8.dj();
-                     ehn $$12 = $$4.apply($$5.b($$6));
-                     if (!$$11.a((hq)$$12, (double)$$2)) {
+   public static bla<bji> a(biw<?> $$0, int $$1) {
+      int $$2 = $$1 * $$1;
+      return bol.a(
+         (Function<bol.b<bji>, ? extends App<bol.c<bji>, boo<bji>>>)($$2x -> $$2x.group($$2x.a(bsj.n), $$2x.c(bsj.q), $$2x.b(bsj.h))
+               .apply($$2x, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<bji> $$9 = $$2x.<bsl>b($$5).a($$3xx -> $$3xx.f((bis)$$7) <= (double)$$2 && $$0.equals($$3xx.ag()));
+                     if ($$9.isEmpty()) {
                         return false;
                      } else {
-                        if ($$10.isPresent() && $$10.get().b() == $$1) {
-                           ehn $$13 = $$10.get().a().a().d($$11);
-                           ehn $$14 = $$12.d($$11);
-                           if ($$13.b($$14) < 0.0) {
-                              return false;
-                           }
-                        }
-
-                        for (int $$15 = 0; $$15 < 10; $$15++) {
-                           ehn $$16 = btz.b($$8, 16, 7, $$12);
-                           if ($$16 != null) {
-                              $$5x.a(new bsk($$16, $$1, 0));
-                              break;
-                           }
-                        }
-
+                        bji $$10 = $$9.get();
+                        $$4.a($$10);
+                        $$3.a(new blk($$10, true));
                         return true;
                      }
-                  }
-               }))
+                  }))
       );
    }
 }

@@ -1,527 +1,452 @@
-import com.google.common.base.Strings;
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.Message;
-import com.mojang.brigadier.ParseResults;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.context.CommandContextBuilder;
-import com.mojang.brigadier.context.ParsedArgument;
-import com.mojang.brigadier.context.SuggestionContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.Suggestion;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import com.mojang.brigadier.tree.CommandNode;
-import com.mojang.brigadier.tree.LiteralCommandNode;
-import java.util.Collection;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Stream;
+import java.util.ListIterator;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class est {
-   private static final Pattern a = Pattern.compile("(\\s+)");
-   private static final ui b = ui.a.a(n.m);
-   private static final ui c = ui.a.a(n.h);
-   private static final List<ui> d = Stream.of(n.l, n.o, n.k, n.n, n.g).map(ui.a::a).collect(ImmutableList.toImmutableList());
-   final eqv e;
-   private final eyk f;
-   final esz g;
-   final esd h;
-   private final boolean i;
-   private final boolean j;
-   final int k;
-   final int l;
-   final boolean m;
-   final int n;
-   private final List<ark> o = Lists.newArrayList();
-   private int p;
-   private int q;
-   @Nullable
-   private ParseResults<dw> r;
-   @Nullable
-   private CompletableFuture<Suggestions> s;
-   @Nullable
-   private est.a t;
-   private boolean u;
-   boolean v;
-   private boolean w = true;
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 100;
+   private static final int c = -1;
+   private static final int d = 4;
+   private static final int e = 4;
+   private static final int f = 40;
+   private static final int g = 60;
+   private static final tn h = tn.c("chat.deleted_marker").a(n.h, n.u);
+   private final eqx i;
+   private final aqq<String> j = new aqq<>(100);
+   private final List<eqr> k = Lists.newArrayList();
+   private final List<eqr.a> l = Lists.newArrayList();
+   private int m;
+   private boolean n;
+   private final List<est.a> o = new ArrayList<>();
 
-   public est(eqv $$0, eyk $$1, esz $$2, esd $$3, boolean $$4, boolean $$5, int $$6, int $$7, boolean $$8, int $$9) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
-      this.j = $$5;
-      this.k = $$6;
-      this.l = $$7;
-      this.m = $$8;
-      this.n = $$9;
-      $$2.a(this::a);
+   public est(eqx $$0) {
+      this.i = $$0;
+      this.j.addAll($$0.ba().a());
    }
 
-   public void a(boolean $$0) {
-      this.u = $$0;
-      if (!$$0) {
-         this.t = null;
+   public void a() {
+      if (!this.o.isEmpty()) {
+         this.k();
       }
    }
 
-   public void b(boolean $$0) {
-      this.w = $$0;
-   }
+   public void a(esh $$0, int $$1, int $$2, int $$3) {
+      if (!this.j()) {
+         int $$4 = this.i();
+         int $$5 = this.l.size();
+         if ($$5 > 0) {
+            boolean $$6 = this.m();
+            float $$7 = (float)this.g();
+            int $$8 = ary.f((float)this.e() / $$7);
+            int $$9 = $$0.b();
+            $$0.c().a();
+            $$0.c().b($$7, $$7, 1.0F);
+            $$0.c().a(4.0F, 0.0F, 0.0F);
+            int $$10 = ary.d((float)($$9 - 40) / $$7);
+            int $$11 = this.d(this.c((double)$$2), this.d((double)$$3));
+            double $$12 = this.i.m.m().c() * 0.9F + 0.1F;
+            double $$13 = this.i.m.o().c();
+            double $$14 = this.i.m.n().c();
+            int $$15 = this.n();
+            int $$16 = (int)Math.round(-8.0 * ($$14 + 1.0) + 4.0 * $$14);
+            int $$17 = 0;
 
-   public boolean a(int $$0, int $$1, int $$2) {
-      boolean $$3 = this.t != null;
-      if ($$3 && this.t.b($$0, $$1, $$2)) {
-         return true;
-      } else if (this.f.t() != this.g || $$0 != 258 || this.w && !$$3) {
-         return false;
-      } else {
-         this.c(true);
-         return true;
-      }
-   }
+            for (int $$18 = 0; $$18 + this.m < this.l.size() && $$18 < $$4; $$18++) {
+               int $$19 = $$18 + this.m;
+               eqr.a $$20 = this.l.get($$19);
+               if ($$20 != null) {
+                  int $$21 = $$1 - $$20.a();
+                  if ($$21 < 200 || $$6) {
+                     double $$22 = $$6 ? 1.0 : b($$21);
+                     int $$23 = (int)(255.0 * $$22 * $$12);
+                     int $$24 = (int)(255.0 * $$22 * $$13);
+                     $$17++;
+                     if ($$23 > 3) {
+                        int $$25 = 0;
+                        int $$26 = $$10 - $$18 * $$15;
+                        int $$27 = $$26 + $$16;
+                        $$0.c().a();
+                        $$0.c().a(0.0F, 0.0F, 50.0F);
+                        $$0.a(-4, $$26 - $$15, 0 + $$8 + 4 + 4, $$26, $$24 << 24);
+                        eqs $$28 = $$20.c();
+                        if ($$28 != null) {
+                           int $$29 = $$28.e() | $$23 << 24;
+                           $$0.a(-4, $$26 - $$15, -2, $$26, $$29);
+                           if ($$19 == $$11 && $$28.f() != null) {
+                              int $$30 = this.a($$20);
+                              int $$31 = $$27 + 9;
+                              this.a($$0, $$30, $$31, $$28.f());
+                           }
+                        }
 
-   public boolean a(double $$0) {
-      return this.t != null && this.t.a(arx.a($$0, -1.0, 1.0));
-   }
-
-   public boolean a(double $$0, double $$1, int $$2) {
-      return this.t != null && this.t.a((int)$$0, (int)$$1, $$2);
-   }
-
-   public void c(boolean $$0) {
-      if (this.s != null && this.s.isDone()) {
-         Suggestions $$1 = this.s.join();
-         if (!$$1.isEmpty()) {
-            int $$2 = 0;
-
-            for (Suggestion $$3 : $$1.getList()) {
-               $$2 = Math.max($$2, this.h.b($$3.getText()));
-            }
-
-            int $$4 = arx.a(this.g.p($$1.getRange().getStart()), 0, this.g.p(0) + this.g.h() - $$2);
-            int $$5 = this.m ? this.f.h - 12 : 72;
-            this.t = new est.a($$4, $$5, $$2, this.a($$1), $$0);
-         }
-      }
-   }
-
-   public boolean a() {
-      return this.t != null;
-   }
-
-   public tm b() {
-      if (this.t != null && this.t.h) {
-         return this.w ? tm.c("narration.suggestion.usage.cycle.hidable") : tm.c("narration.suggestion.usage.cycle.fixed");
-      } else {
-         return this.w ? tm.c("narration.suggestion.usage.fill.hidable") : tm.c("narration.suggestion.usage.fill.fixed");
-      }
-   }
-
-   public void c() {
-      this.t = null;
-   }
-
-   private List<Suggestion> a(Suggestions $$0) {
-      String $$1 = this.g.a().substring(0, this.g.f());
-      int $$2 = a($$1);
-      String $$3 = $$1.substring($$2).toLowerCase(Locale.ROOT);
-      List<Suggestion> $$4 = Lists.newArrayList();
-      List<Suggestion> $$5 = Lists.newArrayList();
-
-      for (Suggestion $$6 : $$0.getList()) {
-         if (!$$6.getText().startsWith($$3) && !$$6.getText().startsWith("minecraft:" + $$3)) {
-            $$5.add($$6);
-         } else {
-            $$4.add($$6);
-         }
-      }
-
-      $$4.addAll($$5);
-      return $$4;
-   }
-
-   public void d() {
-      String $$0 = this.g.a();
-      if (this.r != null && !this.r.getReader().getString().equals($$0)) {
-         this.r = null;
-      }
-
-      if (!this.v) {
-         this.g.c(null);
-         this.t = null;
-      }
-
-      this.o.clear();
-      StringReader $$1 = new StringReader($$0);
-      boolean $$2 = $$1.canRead() && $$1.peek() == '/';
-      if ($$2) {
-         $$1.skip();
-      }
-
-      boolean $$3 = this.i || $$2;
-      int $$4 = this.g.f();
-      if ($$3) {
-         CommandDispatcher<dw> $$5 = this.e.s.cn.r();
-         if (this.r == null) {
-            this.r = $$5.parse($$1, this.e.s.cn.i());
-         }
-
-         int $$6 = this.j ? $$1.getCursor() : 1;
-         if ($$4 >= $$6 && (this.t == null || !this.v)) {
-            this.s = $$5.getCompletionSuggestions(this.r, $$4);
-            this.s.thenRun(() -> {
-               if (this.s.isDone()) {
-                  this.f();
-               }
-            });
-         }
-      } else {
-         String $$7 = $$0.substring(0, $$4);
-         int $$8 = a($$7);
-         Collection<String> $$9 = this.e.s.cn.i().x();
-         this.s = dw.b($$9, new SuggestionsBuilder($$7, $$8));
-      }
-   }
-
-   private static int a(String $$0) {
-      if (Strings.isNullOrEmpty($$0)) {
-         return 0;
-      } else {
-         int $$1 = 0;
-         Matcher $$2 = a.matcher($$0);
-
-         while ($$2.find()) {
-            $$1 = $$2.end();
-         }
-
-         return $$1;
-      }
-   }
-
-   private static ark a(CommandSyntaxException $$0) {
-      tm $$1 = to.a($$0.getRawMessage());
-      String $$2 = $$0.getContext();
-      return $$2 == null ? $$1.f() : tm.a("command.context.parse_error", $$1, $$0.getCursor(), $$2).f();
-   }
-
-   private void f() {
-      boolean $$0 = false;
-      if (this.g.f() == this.g.a().length()) {
-         if (this.s.join().isEmpty() && !this.r.getExceptions().isEmpty()) {
-            int $$1 = 0;
-
-            for (Entry<CommandNode<dw>, CommandSyntaxException> $$2 : this.r.getExceptions().entrySet()) {
-               CommandSyntaxException $$3 = $$2.getValue();
-               if ($$3.getType() == CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect()) {
-                  $$1++;
-               } else {
-                  this.o.add(a($$3));
-               }
-            }
-
-            if ($$1 > 0) {
-               this.o.add(a(CommandSyntaxException.BUILT_IN_EXCEPTIONS.dispatcherUnknownCommand().create()));
-            }
-         } else if (this.r.getReader().canRead()) {
-            $$0 = true;
-         }
-      }
-
-      this.p = 0;
-      this.q = this.f.g;
-      if (this.o.isEmpty() && !this.a(n.h) && $$0) {
-         this.o.add(a(du.a(this.r)));
-      }
-
-      this.t = null;
-      if (this.u && this.e.m.G().c()) {
-         this.c(false);
-      }
-   }
-
-   private boolean a(n $$0) {
-      CommandContextBuilder<dw> $$1 = this.r.getContext();
-      SuggestionContext<dw> $$2 = $$1.findSuggestionContext(this.g.f());
-      Map<CommandNode<dw>, String> $$3 = this.e.s.cn.r().getSmartUsage($$2.parent, this.e.s.cn.i());
-      List<ark> $$4 = Lists.newArrayList();
-      int $$5 = 0;
-      ui $$6 = ui.a.a($$0);
-
-      for (Entry<CommandNode<dw>, String> $$7 : $$3.entrySet()) {
-         if (!($$7.getKey() instanceof LiteralCommandNode)) {
-            $$4.add(ark.forward($$7.getValue(), $$6));
-            $$5 = Math.max($$5, this.h.b($$7.getValue()));
-         }
-      }
-
-      if (!$$4.isEmpty()) {
-         this.o.addAll($$4);
-         this.p = arx.a(this.g.p($$2.startPos), 0, this.g.p(0) + this.g.h() - $$5);
-         this.q = $$5;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private ark a(String $$0, int $$1) {
-      return this.r != null ? a(this.r, $$0, $$1) : ark.forward($$0, ui.a);
-   }
-
-   @Nullable
-   static String a(String $$0, String $$1) {
-      return $$1.startsWith($$0) ? $$1.substring($$0.length()) : null;
-   }
-
-   private static ark a(ParseResults<dw> $$0, String $$1, int $$2) {
-      List<ark> $$3 = Lists.newArrayList();
-      int $$4 = 0;
-      int $$5 = -1;
-      CommandContextBuilder<dw> $$6 = $$0.getContext().getLastChild();
-
-      for (ParsedArgument<dw, ?> $$7 : $$6.getArguments().values()) {
-         if (++$$5 >= d.size()) {
-            $$5 = 0;
-         }
-
-         int $$8 = Math.max($$7.getRange().getStart() - $$2, 0);
-         if ($$8 >= $$1.length()) {
-            break;
-         }
-
-         int $$9 = Math.min($$7.getRange().getEnd() - $$2, $$1.length());
-         if ($$9 > 0) {
-            $$3.add(ark.forward($$1.substring($$4, $$8), c));
-            $$3.add(ark.forward($$1.substring($$8, $$9), d.get($$5)));
-            $$4 = $$9;
-         }
-      }
-
-      if ($$0.getReader().canRead()) {
-         int $$10 = Math.max($$0.getReader().getCursor() - $$2, 0);
-         if ($$10 < $$1.length()) {
-            int $$11 = Math.min($$10 + $$0.getReader().getRemainingLength(), $$1.length());
-            $$3.add(ark.forward($$1.substring($$4, $$10), c));
-            $$3.add(ark.forward($$1.substring($$10, $$11), b));
-            $$4 = $$11;
-         }
-      }
-
-      $$3.add(ark.forward($$1.substring($$4), c));
-      return ark.composite($$3);
-   }
-
-   public void a(esf $$0, int $$1, int $$2) {
-      if (!this.b($$0, $$1, $$2)) {
-         this.a($$0);
-      }
-   }
-
-   public boolean b(esf $$0, int $$1, int $$2) {
-      if (this.t != null) {
-         this.t.a($$0, $$1, $$2);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public void a(esf $$0) {
-      int $$1 = 0;
-
-      for (ark $$2 : this.o) {
-         int $$3 = this.m ? this.f.h - 14 - 13 - 12 * $$1 : 72 + 12 * $$1;
-         $$0.a(this.p - 1, $$3, this.p + this.q + 1, $$3 + 12, this.n);
-         $$0.b(this.h, $$2, this.p, $$3 + 2, -1);
-         $$1++;
-      }
-   }
-
-   public tm e() {
-      return (tm)(this.t != null ? tl.r.e().b(this.t.b()) : tl.a);
-   }
-
-   public class a {
-      private final foj b;
-      private final String c;
-      private final List<Suggestion> d;
-      private int e;
-      private int f;
-      private ehm g = ehm.a;
-      boolean h;
-      private int i;
-
-      a(int $$1, int $$2, int $$3, List<Suggestion> $$4, boolean $$5) {
-         int $$6 = $$1 - (est.this.g.g() ? 0 : 1);
-         int $$7 = est.this.m ? $$2 - 3 - Math.min($$4.size(), est.this.l) * 12 : $$2 - (est.this.g.g() ? 1 : 0);
-         this.b = new foj($$6, $$7, $$3 + 1, Math.min($$4.size(), est.this.l) * 12);
-         this.c = est.this.g.a();
-         this.i = $$5 ? -1 : 0;
-         this.d = $$4;
-         this.b(0);
-      }
-
-      public void a(esf $$0, int $$1, int $$2) {
-         int $$3 = Math.min(this.d.size(), est.this.l);
-         int $$4 = -5592406;
-         boolean $$5 = this.e > 0;
-         boolean $$6 = this.d.size() > this.e + $$3;
-         boolean $$7 = $$5 || $$6;
-         boolean $$8 = this.g.i != (float)$$1 || this.g.j != (float)$$2;
-         if ($$8) {
-            this.g = new ehm((float)$$1, (float)$$2);
-         }
-
-         if ($$7) {
-            $$0.a(this.b.a(), this.b.b() - 1, this.b.a() + this.b.c(), this.b.b(), est.this.n);
-            $$0.a(this.b.a(), this.b.b() + this.b.d(), this.b.a() + this.b.c(), this.b.b() + this.b.d() + 1, est.this.n);
-            if ($$5) {
-               for (int $$9 = 0; $$9 < this.b.c(); $$9++) {
-                  if ($$9 % 2 == 0) {
-                     $$0.a(this.b.a() + $$9, this.b.b() - 1, this.b.a() + $$9 + 1, this.b.b(), -1);
+                        $$0.c().a(0.0F, 0.0F, 50.0F);
+                        $$0.b(this.i.h, $$20.b(), 0, $$27, 16777215 + ($$23 << 24));
+                        $$0.c().b();
+                     }
                   }
                }
+            }
+
+            long $$32 = this.i.aW().c();
+            if ($$32 > 0L) {
+               int $$33 = (int)(128.0 * $$12);
+               int $$34 = (int)(255.0 * $$13);
+               $$0.c().a();
+               $$0.c().a(0.0F, (float)$$10, 50.0F);
+               $$0.a(-2, 0, $$8 + 4, 9, $$34 << 24);
+               $$0.c().a(0.0F, 0.0F, 50.0F);
+               $$0.b(this.i.h, tn.a("chat.queue", $$32), 0, 1, 16777215 + ($$33 << 24));
+               $$0.c().b();
             }
 
             if ($$6) {
-               for (int $$10 = 0; $$10 < this.b.c(); $$10++) {
-                  if ($$10 % 2 == 0) {
-                     $$0.a(this.b.a() + $$10, this.b.b() + this.b.d(), this.b.a() + $$10 + 1, this.b.b() + this.b.d() + 1, -1);
-                  }
+               int $$35 = this.n();
+               int $$36 = $$5 * $$35;
+               int $$37 = $$17 * $$35;
+               int $$38 = this.m * $$37 / $$5 - $$10;
+               int $$39 = $$37 * $$37 / $$36;
+               if ($$36 != $$37) {
+                  int $$40 = $$38 > 0 ? 170 : 96;
+                  int $$41 = this.n ? 13382451 : 3355562;
+                  int $$42 = $$8 + 4;
+                  $$0.a($$42, -$$38, $$42 + 2, -$$38 - $$39, 100, $$41 + ($$40 << 24));
+                  $$0.a($$42 + 2, -$$38, $$42 + 1, -$$38 - $$39, 100, 13421772 + ($$40 << 24));
                }
             }
-         }
 
-         boolean $$11 = false;
-
-         for (int $$12 = 0; $$12 < $$3; $$12++) {
-            Suggestion $$13 = this.d.get($$12 + this.e);
-            $$0.a(this.b.a(), this.b.b() + 12 * $$12, this.b.a() + this.b.c(), this.b.b() + 12 * $$12 + 12, est.this.n);
-            if ($$1 > this.b.a() && $$1 < this.b.a() + this.b.c() && $$2 > this.b.b() + 12 * $$12 && $$2 < this.b.b() + 12 * $$12 + 12) {
-               if ($$8) {
-                  this.b($$12 + this.e);
-               }
-
-               $$11 = true;
-            }
-
-            $$0.b(est.this.h, $$13.getText(), this.b.a() + 1, this.b.b() + 2 + 12 * $$12, $$12 + this.e == this.f ? -256 : -5592406);
-         }
-
-         if ($$11) {
-            Message $$14 = this.d.get(this.f).getTooltip();
-            if ($$14 != null) {
-               $$0.a(est.this.h, to.a($$14), $$1, $$2);
-            }
+            $$0.c().b();
          }
       }
+   }
 
-      public boolean a(int $$0, int $$1, int $$2) {
-         if (!this.b.b($$0, $$1)) {
-            return false;
-         } else {
-            int $$3 = ($$1 - this.b.b()) / 12 + this.e;
-            if ($$3 >= 0 && $$3 < this.d.size()) {
-               this.b($$3);
-               this.a();
-            }
+   private void a(esh $$0, int $$1, int $$2, eqs.a $$3) {
+      int $$4 = $$2 - $$3.d - 1;
+      $$3.a($$0, $$1, $$4);
+   }
 
-            return true;
-         }
+   private int a(eqr.a $$0) {
+      return this.i.h.a($$0.b()) + 4;
+   }
+
+   private boolean j() {
+      return this.i.m.l().c() == cbu.c;
+   }
+
+   private static double b(int $$0) {
+      double $$1 = (double)$$0 / 200.0;
+      $$1 = 1.0 - $$1;
+      $$1 *= 10.0;
+      $$1 = ary.a($$1, 0.0, 1.0);
+      return $$1 * $$1;
+   }
+
+   public void a(boolean $$0) {
+      this.i.aW().d();
+      this.o.clear();
+      this.l.clear();
+      this.k.clear();
+      if ($$0) {
+         this.j.clear();
+         this.j.addAll(this.i.ba().a());
+      }
+   }
+
+   public void a(tn $$0) {
+      this.a($$0, null, this.i.U() ? eqs.b() : eqs.a());
+   }
+
+   public void a(tn $$0, @Nullable ty $$1, @Nullable eqs $$2) {
+      this.a($$0, $$2);
+      this.a($$0, $$1, this.i.l.e(), $$2, false);
+   }
+
+   private void a(tn $$0, @Nullable eqs $$1) {
+      String $$2 = $$0.getString().replaceAll("\r", "\\\\r").replaceAll("\n", "\\\\n");
+      String $$3 = x.a($$1, eqs::h);
+      if ($$3 != null) {
+         a.info("[{}] [CHAT] {}", $$3, $$2);
+      } else {
+         a.info("[CHAT] {}", $$2);
+      }
+   }
+
+   private void a(tn $$0, @Nullable ty $$1, int $$2, @Nullable eqs $$3, boolean $$4) {
+      int $$5 = ary.a((double)this.e() / this.g());
+      if ($$3 != null && $$3.f() != null) {
+         $$5 -= $$3.f().c + 4 + 2;
       }
 
-      public boolean a(double $$0) {
-         int $$1 = (int)(est.this.e.n.e() * (double)est.this.e.aM().o() / (double)est.this.e.aM().m());
-         int $$2 = (int)(est.this.e.n.f() * (double)est.this.e.aM().p() / (double)est.this.e.aM().n());
-         if (this.b.b($$1, $$2)) {
-            this.e = arx.a((int)((double)this.e - $$0), 0, Math.max(this.d.size() - est.this.l, 0));
-            return true;
-         } else {
-            return false;
-         }
-      }
+      List<arl> $$6 = esx.a($$0, $$5, this.i.h);
+      boolean $$7 = this.m();
 
-      public boolean b(int $$0, int $$1, int $$2) {
-         if ($$0 == 265) {
-            this.a(-1);
-            this.h = false;
-            return true;
-         } else if ($$0 == 264) {
+      for (int $$8 = 0; $$8 < $$6.size(); $$8++) {
+         arl $$9 = $$6.get($$8);
+         if ($$7 && this.m > 0) {
+            this.n = true;
             this.a(1);
-            this.h = false;
-            return true;
-         } else if ($$0 == 258) {
-            if (this.h) {
-               this.a(eyk.q() ? -1 : 1);
+         }
+
+         boolean $$10 = $$8 == $$6.size() - 1;
+         this.l.add(0, new eqr.a($$2, $$9, $$3, $$10));
+      }
+
+      while (this.l.size() > 100) {
+         this.l.remove(this.l.size() - 1);
+      }
+
+      if (!$$4) {
+         this.k.add(0, new eqr($$2, $$0, $$1, $$3));
+
+         while (this.k.size() > 100) {
+            this.k.remove(this.k.size() - 1);
+         }
+      }
+   }
+
+   private void k() {
+      int $$0 = this.i.l.e();
+      this.o.removeIf($$1 -> $$0 >= $$1.b() ? this.b($$1.a()) == null : false);
+   }
+
+   public void a(ty $$0) {
+      est.a $$1 = this.b($$0);
+      if ($$1 != null) {
+         this.o.add($$1);
+      }
+   }
+
+   @Nullable
+   private est.a b(ty $$0) {
+      int $$1 = this.i.l.e();
+      ListIterator<eqr> $$2 = this.k.listIterator();
+
+      while ($$2.hasNext()) {
+         eqr $$3 = $$2.next();
+         if ($$0.equals($$3.c())) {
+            int $$4 = $$3.a() + 60;
+            if ($$1 >= $$4) {
+               $$2.set(this.a($$3));
+               this.l();
+               return null;
             }
 
-            this.a();
-            return true;
-         } else if ($$0 == 256) {
-            est.this.c();
-            return true;
-         } else {
+            return new est.a($$0, $$4);
+         }
+      }
+
+      return null;
+   }
+
+   private eqr a(eqr $$0) {
+      return new eqr($$0.a(), h, null, eqs.a());
+   }
+
+   public void b() {
+      this.d();
+      this.l();
+   }
+
+   private void l() {
+      this.l.clear();
+
+      for (int $$0 = this.k.size() - 1; $$0 >= 0; $$0--) {
+         eqr $$1 = this.k.get($$0);
+         this.a($$1.b(), $$1.c(), $$1.a(), $$1.d(), true);
+      }
+   }
+
+   public aqq<String> c() {
+      return this.j;
+   }
+
+   public void a(String $$0) {
+      if (!$$0.equals(this.j.peekLast())) {
+         if (this.j.size() >= 100) {
+            this.j.removeFirst();
+         }
+
+         this.j.addLast($$0);
+      }
+
+      if ($$0.startsWith("/")) {
+         this.i.ba().a($$0);
+      }
+   }
+
+   public void d() {
+      this.m = 0;
+      this.n = false;
+   }
+
+   public void a(int $$0) {
+      this.m += $$0;
+      int $$1 = this.l.size();
+      if (this.m > $$1 - this.i()) {
+         this.m = $$1 - this.i();
+      }
+
+      if (this.m <= 0) {
+         this.m = 0;
+         this.n = false;
+      }
+   }
+
+   public boolean a(double $$0, double $$1) {
+      if (this.m() && !this.i.m.Z && !this.j()) {
+         fjm $$2 = this.i.aW();
+         if ($$2.c() == 0L) {
             return false;
+         } else {
+            double $$3 = $$0 - 2.0;
+            double $$4 = (double)this.i.aM().p() - $$1 - 40.0;
+            if ($$3 <= (double)ary.a((double)this.e() / this.g()) && $$4 < 0.0 && $$4 > (double)ary.a(-9.0 * this.g())) {
+               $$2.b();
+               return true;
+            } else {
+               return false;
+            }
+         }
+      } else {
+         return false;
+      }
+   }
+
+   @Nullable
+   public uj b(double $$0, double $$1) {
+      double $$2 = this.c($$0);
+      double $$3 = this.d($$1);
+      int $$4 = this.e($$2, $$3);
+      if ($$4 >= 0 && $$4 < this.l.size()) {
+         eqr.a $$5 = this.l.get($$4);
+         return this.i.h.b().a($$5.b(), ary.a($$2));
+      } else {
+         return null;
+      }
+   }
+
+   @Nullable
+   public eqs c(double $$0, double $$1) {
+      double $$2 = this.c($$0);
+      double $$3 = this.d($$1);
+      int $$4 = this.d($$2, $$3);
+      if ($$4 >= 0 && $$4 < this.l.size()) {
+         eqr.a $$5 = this.l.get($$4);
+         eqs $$6 = $$5.c();
+         if ($$6 != null && this.a($$2, $$5, $$6)) {
+            return $$6;
          }
       }
 
-      public void a(int $$0) {
-         this.b(this.f + $$0);
-         int $$1 = this.e;
-         int $$2 = this.e + est.this.l - 1;
-         if (this.f < $$1) {
-            this.e = arx.a(this.f, 0, Math.max(this.d.size() - est.this.l, 0));
-         } else if (this.f > $$2) {
-            this.e = arx.a(this.f + est.this.k - est.this.l, 0, Math.max(this.d.size() - est.this.l, 0));
+      return null;
+   }
+
+   private boolean a(double $$0, eqr.a $$1, eqs $$2) {
+      if ($$0 < 0.0) {
+         return true;
+      } else {
+         eqs.a $$3 = $$2.f();
+         if ($$3 == null) {
+            return false;
+         } else {
+            int $$4 = this.a($$1);
+            int $$5 = $$4 + $$3.c;
+            return $$0 >= (double)$$4 && $$0 <= (double)$$5;
          }
       }
+   }
 
-      public void b(int $$0) {
-         this.f = $$0;
-         if (this.f < 0) {
-            this.f = this.f + this.d.size();
+   private double c(double $$0) {
+      return $$0 / this.g() - 4.0;
+   }
+
+   private double d(double $$0) {
+      double $$1 = (double)this.i.aM().p() - $$0 - 40.0;
+      return $$1 / (this.g() * (double)this.n());
+   }
+
+   private int d(double $$0, double $$1) {
+      int $$2 = this.e($$0, $$1);
+      if ($$2 == -1) {
+         return -1;
+      } else {
+         while ($$2 >= 0) {
+            if (this.l.get($$2).d()) {
+               return $$2;
+            }
+
+            $$2--;
          }
 
-         if (this.f >= this.d.size()) {
-            this.f = this.f - this.d.size();
+         return $$2;
+      }
+   }
+
+   private int e(double $$0, double $$1) {
+      if (this.m() && !this.i.m.Z && !this.j()) {
+         if (!($$0 < -4.0) && !($$0 > (double)ary.a((double)this.e() / this.g()))) {
+            int $$2 = Math.min(this.i(), this.l.size());
+            if ($$1 >= 0.0 && $$1 < (double)$$2) {
+               int $$3 = ary.a($$1 + (double)this.m);
+               if ($$3 >= 0 && $$3 < this.l.size()) {
+                  return $$3;
+               }
+            }
+
+            return -1;
+         } else {
+            return -1;
          }
-
-         Suggestion $$1 = this.d.get(this.f);
-         est.this.g.c(est.a(est.this.g.a(), $$1.apply(this.c)));
-         if (this.i != this.f) {
-            est.this.e.aV().c(this.b());
-         }
+      } else {
+         return -1;
       }
+   }
 
-      public void a() {
-         Suggestion $$0 = this.d.get(this.f);
-         est.this.v = true;
-         est.this.g.a($$0.apply(this.c));
-         int $$1 = $$0.getRange().getStart() + $$0.getText().length();
-         est.this.g.k($$1);
-         est.this.g.o($$1);
-         this.b(this.f);
-         est.this.v = false;
-         this.h = true;
-      }
+   private boolean m() {
+      return this.i.y instanceof exd;
+   }
 
-      tm b() {
-         this.i = this.f;
-         Suggestion $$0 = this.d.get(this.f);
-         Message $$1 = $$0.getTooltip();
-         return $$1 != null
-            ? tm.a("narration.suggestion.tooltip", this.f + 1, this.d.size(), $$0.getText(), $$1)
-            : tm.a("narration.suggestion", this.f + 1, this.d.size(), $$0.getText());
-      }
+   public int e() {
+      return a(this.i.m.u().c());
+   }
+
+   public int f() {
+      return b(this.m() ? this.i.m.w().c() : this.i.m.v().c());
+   }
+
+   public double g() {
+      return this.i.m.t().c();
+   }
+
+   public static int a(double $$0) {
+      int $$1 = 320;
+      int $$2 = 40;
+      return ary.a($$0 * 280.0 + 40.0);
+   }
+
+   public static int b(double $$0) {
+      int $$1 = 180;
+      int $$2 = 20;
+      return ary.a($$0 * 160.0 + 20.0);
+   }
+
+   public static double h() {
+      int $$0 = 180;
+      int $$1 = 20;
+      return 70.0 / (double)(b(1.0) - 20);
+   }
+
+   public int i() {
+      return this.f() / this.n();
+   }
+
+   private int n() {
+      return (int)(9.0 * (this.i.m.n().c() + 1.0));
+   }
+
+   static record a(ty a, int b) {
    }
 }

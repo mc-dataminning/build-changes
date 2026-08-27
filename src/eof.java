@@ -1,376 +1,224 @@
 import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
 import java.util.List;
-import java.util.function.Supplier;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class eof extends gfb {
-   private static final aex a = new aex("realm_status/expired");
-   private static final aex b = new aex("realm_status/expires_soon");
-   private static final aex c = new aex("realm_status/open");
-   private static final aex y = new aex("realm_status/closed");
-   private static final Logger z = LogUtils.getLogger();
-   private static final tm A = tm.c("mco.configure.worlds.title");
-   private static final tm B = tm.c("mco.configure.world.title");
-   private static final tm C = tm.c("mco.selectServer.expired");
-   private static final tm D = tm.c("mco.selectServer.expires.soon");
-   private static final tm E = tm.c("mco.selectServer.expires.day");
-   private static final tm F = tm.c("mco.selectServer.open");
-   private static final tm G = tm.c("mco.selectServer.closed");
-   private static final int H = 80;
-   private static final int I = 5;
+public class eof extends gfd {
+   private static final aey a = new aey("widget/slot_frame");
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 80;
+   private final eym y;
    @Nullable
-   private tm J;
-   private final ema K;
-   @Nullable
-   private emw L;
-   private final long M;
-   private int N;
-   private int O;
-   private esq P;
-   private esq Q;
-   private esq R;
-   private esq S;
-   private esq T;
-   private esq U;
-   private esq V;
-   private boolean W;
-   private int X;
-   private final List<eny> Y = Lists.newArrayList();
+   private emy z;
+   private final long A;
+   private final tn[] B = new tn[]{tn.c("mco.brokenworld.message.line1"), tn.c("mco.brokenworld.message.line2")};
+   private int C;
+   private final List<Integer> D = Lists.newArrayList();
+   private int E;
 
-   public eof(ema $$0, long $$1) {
-      super(B);
-      this.K = $$0;
-      this.M = $$1;
+   public eof(eym $$0, long $$1, boolean $$2) {
+      super($$2 ? tn.c("mco.brokenworld.minigame.title") : tn.c("mco.brokenworld.title"));
+      this.y = $$0;
+      this.A = $$1;
    }
 
    @Override
-   public void aI_() {
-      if (this.L == null) {
-         this.a(this.M);
-      }
-
-      this.N = this.g / 2 - 187;
-      this.O = this.g / 2 + 190;
-      this.P = this.d(esq.a(tm.c("mco.configure.world.buttons.players"), $$0x -> this.f.a(new eor(this, this.L))).a(this.a(0, 3), h(0), 100, 20).a());
-      this.Q = this.d(esq.a(tm.c("mco.configure.world.buttons.settings"), $$0x -> this.f.a(new eox(this, this.L.d()))).a(this.a(1, 3), h(0), 100, 20).a());
-      this.R = this.d(
-         esq.a(tm.c("mco.configure.world.buttons.subscription"), $$0x -> this.f.a(new eoz(this, this.L.d(), this.K))).a(this.a(2, 3), h(0), 100, 20).a()
-      );
-      this.Y.clear();
-
-      for (int $$0 = 1; $$0 < 5; $$0++) {
-         this.Y.add(this.a($$0));
-      }
-
-      this.V = this.d(
-         esq.a(tm.c("mco.configure.world.buttons.switchminigame"), $$0x -> this.f.a(new eow(tm.c("mco.template.title.minigame"), this::a, emw.c.b)))
-            .a(this.b(0), h(13) - 5, 100, 20)
-            .a()
-      );
-      this.S = this.d(
-         esq.a(tm.c("mco.configure.world.buttons.options"), $$0x -> this.f.a(new eoy(this, this.L.i.get(this.L.n).d(), this.L.m, this.L.n)))
-            .a(this.b(0), h(13) - 5, 90, 20)
-            .a()
-      );
-      this.T = this.d(esq.a(tm.c("mco.configure.world.backup"), $$0x -> this.f.a(new eoc(this, this.L.d(), this.L.n))).a(this.b(1), h(13) - 5, 90, 20).a());
-      this.U = this.d(
-         esq.a(tm.c("mco.configure.world.buttons.resetworld"), $$0x -> this.f.a(eou.b(this, this.L.d(), () -> this.f.execute(() -> this.f.a(this.f())))))
-            .a(this.b(2), h(13) - 5, 90, 20)
-            .a()
-      );
-      this.d(esq.a(tl.k, $$0x -> this.D()).a(this.O - 80 + 8, h(13) - 5, 70, 20).a());
-      this.T.i = true;
-      if (this.L == null) {
-         this.I();
-         this.H();
-         this.P.i = false;
-         this.Q.i = false;
-         this.R.i = false;
+   public void aH_() {
+      this.C = this.g / 2 - 150;
+      this.d(ess.a(tm.k, $$0 -> this.az_()).a((this.g - 150) / 2, h(13) - 5, 150, 20).a());
+      if (this.z == null) {
+         this.a(this.A);
       } else {
-         this.E();
-         if (this.G()) {
-            this.H();
-         } else {
-            this.I();
-         }
+         this.D();
       }
    }
 
-   private eny a(int $$0) {
-      int $$1 = this.c($$0);
-      int $$2 = h(5) + 5;
-      eny $$3 = new eny($$1, $$2, 80, 80, () -> this.L, $$0x -> this.J = $$0x, $$0, $$1x -> {
-         eny.b $$2x = ((eny)$$1x).a();
-         if ($$2x != null) {
-            switch ($$2x.c) {
-               case a:
-                  break;
-               case c:
-                  this.a(this.L);
-                  break;
-               case b:
-                  if ($$2x.b) {
-                     this.F();
-                  } else if ($$2x.a) {
-                     this.b($$0, this.L);
+   @Override
+   public tn g() {
+      return tp.a(Stream.concat(Stream.of(this.e), Stream.of(this.B)).collect(Collectors.toList()), tm.u);
+   }
+
+   private void D() {
+      for (Entry<Integer, enf> $$0 : this.z.i.entrySet()) {
+         int $$1 = $$0.getKey();
+         boolean $$2 = $$1 != this.z.n || this.z.m == emy.c.b;
+         ess $$3;
+         if ($$2) {
+            $$3 = ess.a(tn.c("mco.brokenworld.play"), $$1x -> this.f.a(new eoo(this.y, new eqe(this.z.a, $$1, this::e)))).a(this.a($$1), h(8), 80, 20).a();
+            $$3.i = !this.z.i.get($$1).l;
+         } else {
+            $$3 = ess.a(tn.c("mco.brokenworld.download"), $$1x -> {
+               tn $$2x = tn.c("mco.configure.world.restore.download.question.line1");
+               tn $$3x = tn.c("mco.configure.world.restore.download.question.line2");
+               this.f.a(new eon($$1xx -> {
+                  if ($$1xx) {
+                     this.b($$1);
                   } else {
-                     this.a($$0, this.L);
+                     this.f.a(this);
                   }
-                  break;
-               default:
-                  throw new IllegalStateException("Unknown action " + $$2x.c);
-            }
+               }, eon.a.b, $$2x, $$3x, true));
+            }).a(this.a($$1), h(8), 80, 20).a();
          }
-      });
-      return this.d($$3);
-   }
 
-   private int b(int $$0) {
-      return this.N + $$0 * 95;
-   }
+         if (this.D.contains($$1)) {
+            $$3.i = false;
+            $$3.b(tn.c("mco.brokenworld.downloaded"));
+         }
 
-   private int a(int $$0, int $$1) {
-      return this.g / 2 - ($$1 * 105 - 5) / 2 + $$0 * 105;
+         this.d($$3);
+      }
    }
 
    @Override
    public void c() {
-      super.c();
-      this.X--;
-      if (this.X < 0) {
-         this.X = 0;
-      }
-
-      this.Y.forEach(eny::b);
+      this.E++;
    }
 
    @Override
-   public void a(esf $$0, int $$1, int $$2, float $$3) {
+   public void a(esh $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.J = null;
-      $$0.a(this.i, A, this.g / 2, h(4), -1);
-      if (this.L == null) {
-         $$0.a(this.i, this.e, this.g / 2, 17, -1);
-      } else {
-         String $$4 = this.L.b();
-         int $$5 = this.i.b($$4);
-         int $$6 = this.L.e == emw.b.a ? -6250336 : 8388479;
-         int $$7 = this.i.a(this.e);
-         $$0.a(this.i, this.e, this.g / 2, 12, -1);
-         $$0.a(this.i, $$4, this.g / 2, 24, $$6);
-         int $$8 = Math.min(this.a(2, 3) + 80 - 11, this.g / 2 + $$5 / 2 + $$7 / 2 + 10);
-         this.a($$0, $$8, 7, $$1, $$2);
-         if (this.G()) {
-            $$0.a(this.i, tm.a("mco.configure.world.minigame", this.L.c()), this.N + 80 + 20 + 10, h(13), -1, false);
+      $$0.a(this.i, this.e, this.g / 2, 17, -1);
+
+      for (int $$4 = 0; $$4 < this.B.length; $$4++) {
+         $$0.a(this.i, this.B[$$4], this.g / 2, h(-1) + 3 + $$4 * 12, -6250336);
+      }
+
+      if (this.z != null) {
+         for (Entry<Integer, enf> $$5 : this.z.i.entrySet()) {
+            if ($$5.getValue().k != null && $$5.getValue().j != -1L) {
+               this.a(
+                  $$0,
+                  this.a($$5.getKey()),
+                  h(1) + 5,
+                  $$1,
+                  $$2,
+                  this.z.n == $$5.getKey() && !this.E(),
+                  $$5.getValue().a($$5.getKey()),
+                  $$5.getKey(),
+                  $$5.getValue().j,
+                  $$5.getValue().k,
+                  $$5.getValue().l
+               );
+            } else {
+               this.a(
+                  $$0,
+                  this.a($$5.getKey()),
+                  h(1) + 5,
+                  $$1,
+                  $$2,
+                  this.z.n == $$5.getKey() && !this.E(),
+                  $$5.getValue().a($$5.getKey()),
+                  $$5.getKey(),
+                  -1L,
+                  null,
+                  $$5.getValue().l
+               );
+            }
          }
-
-         if (this.J != null) {
-            $$0.a(this.i, this.J, $$1, $$2);
-         }
       }
    }
 
-   private int c(int $$0) {
-      return this.N + ($$0 - 1) * 98;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.D();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   private void D() {
-      if (this.W) {
-         this.K.f();
-      }
-
-      this.f.a(this.K);
+   private int a(int $$0) {
+      return this.C + ($$0 - 1) * 110;
    }
 
    private void a(long $$0) {
       new Thread(() -> {
-         emf $$1 = emf.a();
+         emh $$1 = emh.a();
 
          try {
-            emw $$2 = $$1.a($$0);
-            this.f.execute(() -> {
-               this.L = $$2;
-               this.E();
-               if (this.G()) {
-                  this.b(this.V);
-               } else {
-                  this.b(this.S);
-                  this.b(this.T);
-                  this.b(this.U);
-               }
-            });
-         } catch (ens var5) {
-            z.error("Couldn't get own world", var5);
-            this.f.execute(() -> this.f.a(new eoj(var5, this.K)));
+            this.z = $$1.a($$0);
+            this.D();
+         } catch (enu var5) {
+            b.error("Couldn't get own world", var5);
+            this.f.a(new eol(var5, this.y));
          }
       }).start();
    }
 
-   private void E() {
-      this.P.i = !this.L.j;
-      this.Q.i = !this.L.j;
-      this.R.i = true;
-      this.V.i = !this.L.j;
-      this.S.i = !this.L.j;
-      this.U.i = !this.L.j;
-   }
-
-   private void a(emw $$0) {
-      if (this.L.e == emw.b.b) {
-         this.K.a($$0, new eof(this.K.h(), this.M));
-      } else {
-         this.a(true, new eof(this.K.h(), this.M));
-      }
-   }
-
-   private void F() {
-      eow $$0 = new eow(tm.c("mco.template.title.minigame"), this::a, emw.c.b);
-      $$0.a(tm.c("mco.minigame.world.info.line1"), tm.c("mco.minigame.world.info.line2"));
-      this.f.a($$0);
-   }
-
-   private void a(int $$0, emw $$1) {
-      tm $$2 = tm.c("mco.configure.world.slot.switch.question.line1");
-      tm $$3 = tm.c("mco.configure.world.slot.switch.question.line2");
-      this.f.a(new eol($$2x -> {
-         if ($$2x) {
-            this.f.a(new eom(this.K, new eqc($$1.a, $$0, () -> this.f.execute(() -> this.f.a(this.f())))));
-         } else {
-            this.f.a(this);
-         }
-      }, eol.a.b, $$2, $$3, true));
-   }
-
-   private void b(int $$0, emw $$1) {
-      tm $$2 = tm.c("mco.configure.world.slot.switch.question.line1");
-      tm $$3 = tm.c("mco.configure.world.slot.switch.question.line2");
-      this.f.a(new eol($$2x -> {
-         if ($$2x) {
-            eou $$3x = eou.a(this, $$0, $$1, () -> this.f.execute(() -> this.f.a(this.f())));
-            this.f.a($$3x);
-         } else {
-            this.f.a(this);
-         }
-      }, eol.a.b, $$2, $$3, true));
-   }
-
-   private void a(esf $$0, int $$1, int $$2, int $$3, int $$4) {
-      if (this.L.j) {
-         this.a($$0, $$1, $$2, $$3, $$4, a, () -> C);
-      } else if (this.L.e == emw.b.a) {
-         this.a($$0, $$1, $$2, $$3, $$4, y, () -> G);
-      } else if (this.L.e == emw.b.b) {
-         if (this.L.l < 7) {
-            this.a($$0, $$1, $$2, $$3, $$4, b, () -> {
-               if (this.L.l <= 0) {
-                  return D;
-               } else {
-                  return (tm)(this.L.l == 1 ? E : tm.a("mco.selectServer.expires.days", this.L.l));
-               }
-            });
-         } else {
-            this.a($$0, $$1, $$2, $$3, $$4, c, () -> F);
-         }
-      }
-   }
-
-   private void a(esf $$0, int $$1, int $$2, int $$3, int $$4, aex $$5, Supplier<tm> $$6) {
-      $$0.a($$5, $$1, $$2, 10, 28);
-      if ($$3 >= $$1 && $$3 <= $$1 + 9 && $$4 >= $$2 && $$4 <= $$2 + 27) {
-         this.J = $$6.get();
-      }
-   }
-
-   private boolean G() {
-      return this.L != null && this.L.m == emw.c.b;
-   }
-
-   private void H() {
-      this.a(this.S);
-      this.a(this.T);
-      this.a(this.U);
-   }
-
-   private void a(esq $$0) {
-      $$0.j = false;
-   }
-
-   private void b(esq $$0) {
-      $$0.j = true;
-   }
-
-   private void I() {
-      this.a(this.V);
-   }
-
-   public void a(end $$0) {
-      end $$1 = this.L.i.get(this.L.n);
-      $$0.j = $$1.j;
-      $$0.k = $$1.k;
-      emf $$2 = emf.a();
-
-      try {
-         $$2.a(this.L.a, this.L.n, $$0);
-         this.L.i.put(this.L.n, $$0);
-      } catch (ens var5) {
-         z.error("Couldn't save slot settings", var5);
-         this.f.a(new eoj(var5, this));
-         return;
-      }
-
-      this.f.a(this);
-   }
-
-   public void a(String $$0, String $$1) {
-      String $$2 = ac.b($$1) ? null : $$1;
-      emf $$3 = emf.a();
-
-      try {
-         $$3.b(this.L.a, $$0, $$2);
-         this.L.a($$0);
-         this.L.b($$2);
-      } catch (ens var6) {
-         z.error("Couldn't save settings", var6);
-         this.f.a(new eoj(var6, this));
-         return;
-      }
-
-      this.f.a(this);
-   }
-
-   public void a(boolean $$0, eyk $$1) {
-      this.f.a(new eom($$1, new epw(this.L, this, this.K, $$0, this.f)));
-   }
-
-   public void a(eyk $$0) {
-      this.f.a(new eom($$0, new epr(this.L, this)));
-   }
-
    public void e() {
-      this.W = true;
+      new Thread(() -> {
+         emh $$0 = emh.a();
+         if (this.z.e == emy.b.a) {
+            this.f.execute(() -> this.f.a(new eoo(this, new epy(this.z, this, true, this.f))));
+         } else {
+            try {
+               emy $$1 = $$0.a(this.A);
+               this.f.execute(() -> emc.a($$1, this));
+            } catch (enu var3) {
+               b.error("Couldn't get own world", var3);
+               this.f.execute(() -> this.f.a(this.y));
+            }
+         }
+      }).start();
    }
 
-   private void a(@Nullable enn $$0) {
-      if ($$0 != null && enn.a.b == $$0.i) {
-         this.f.a(new eom(this.K, new eqb(this.L.a, $$0, this.f())));
-      } else {
-         this.f.a(this);
+   private void b(int $$0) {
+      emh $$1 = emh.a();
+
+      try {
+         eno $$2 = $$1.b(this.z.a, $$0);
+         eok $$3 = new eok(this, $$2, this.z.a($$0), $$1x -> {
+            if ($$1x) {
+               this.D.add($$0);
+               this.n();
+               this.D();
+            } else {
+               this.f.a(this);
+            }
+         });
+         this.f.a($$3);
+      } catch (enu var5) {
+         b.error("Couldn't download world data", var5);
+         this.f.a(new eol(var5, this));
       }
    }
 
-   public eof f() {
-      return new eof(this.K, this.M);
+   @Override
+   public void az_() {
+      this.f.a(this.y);
+   }
+
+   private boolean E() {
+      return this.z != null && this.z.m == emy.c.b;
+   }
+
+   private void a(esh $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5, String $$6, int $$7, long $$8, @Nullable String $$9, boolean $$10) {
+      aey $$11;
+      if ($$10) {
+         $$11 = eoa.a;
+      } else if ($$9 != null && $$8 != -1L) {
+         $$11 = epn.a(String.valueOf($$8), $$9);
+      } else if ($$7 == 1) {
+         $$11 = eoa.b;
+      } else if ($$7 == 2) {
+         $$11 = eoa.c;
+      } else if ($$7 == 3) {
+         $$11 = eoa.d;
+      } else {
+         $$11 = epn.a(String.valueOf(this.z.p), this.z.q);
+      }
+
+      if (!$$5) {
+         $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
+      } else if ($$5) {
+         float $$17 = 0.9F + 0.1F * ary.b((float)this.E * 0.2F);
+         $$0.a($$17, $$17, $$17, 1.0F);
+      }
+
+      $$0.a($$11, $$1 + 3, $$2 + 3, 0.0F, 0.0F, 74, 74, 74, 74);
+      if ($$5) {
+         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      } else {
+         $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
+      }
+
+      $$0.a(a, $$1, $$2, 80, 80);
+      $$0.a(this.i, $$6, $$1 + 40, $$2 + 66, -1);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
    }
 }

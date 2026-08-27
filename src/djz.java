@@ -1,8 +1,10 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface djz {
+public interface djz {
+   Codec<djz> b = jd.w.q().dispatch(djz::a, dka::a);
+
+   Optional<ehp> a(cpx var1);
+
+   dka<?> a();
 }

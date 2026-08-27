@@ -4,13 +4,13 @@ import java.util.Map;
 
 public class mc {
    private final lu a;
-   private final cmg b;
-   private final cmg c;
-   private final cmg d;
+   private final cmi b;
+   private final cmi c;
+   private final cmi d;
    private final Map<String, am<?>> e = new LinkedHashMap<>();
-   private final cmm<?> f;
+   private final cmo<?> f;
 
-   public mc(cmm<?> $$0, lu $$1, cmg $$2, cmg $$3, cmg $$4) {
+   public mc(cmo<?> $$0, lu $$1, cmi $$2, cmi $$3, cmi $$4) {
       this.a = $$1;
       this.f = $$0;
       this.b = $$2;
@@ -18,8 +18,8 @@ public class mc {
       this.d = $$4;
    }
 
-   public static mc a(cmg $$0, cmg $$1, cmg $$2, lu $$3) {
-      return new mc(cmm.v, $$3, $$0, $$1, $$2);
+   public static mc a(cmi $$0, cmi $$1, cmi $$2, lu $$3) {
+      return new mc(cmo.v, $$3, $$0, $$1, $$2);
    }
 
    public mc a(String $$0, am<?> $$1) {
@@ -27,20 +27,20 @@ public class mc {
       return this;
    }
 
-   public void a(lv $$0, aex $$1) {
+   public void a(lv $$0, aey $$1) {
       this.a($$1);
       ae.a $$2 = $$0.a().a("has_the_recipe", cu.a($$1)).a(aj.a.c($$1)).a(ai.a.b);
       this.e.forEach($$2::a);
       $$0.a(new mc.a($$1, this.f, this.b, this.c, this.d, $$2.b($$1.d("recipes/" + this.a.a() + "/"))));
    }
 
-   private void a(aex $$0) {
+   private void a(aey $$0) {
       if (this.e.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0);
       }
    }
 
-   public static record a(aex a, cmm<?> b, cmg c, cmg d, cmg e, af f) implements ls {
+   public static record a(aey a, cmo<?> b, cmi c, cmi d, cmi e, af f) implements ls {
       @Override
       public void a(JsonObject $$0) {
          $$0.add("template", this.c.a(true));
@@ -49,24 +49,24 @@ public class mc {
       }
 
       @Override
-      public aex b() {
+      public aey b() {
          return this.a;
       }
 
       @Override
-      public cmm<?> c() {
+      public cmo<?> c() {
          return this.b;
       }
 
-      public cmg e() {
+      public cmi e() {
          return this.c;
       }
 
-      public cmg f() {
+      public cmi f() {
          return this.d;
       }
 
-      public cmg g() {
+      public cmi g() {
          return this.e;
       }
 

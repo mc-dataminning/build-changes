@@ -1,48 +1,58 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
+import java.util.Collection;
+import java.util.function.Function;
 
 public class ajb {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("commands.trigger.failed.unprimed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tm.c("commands.trigger.failed.invalid"));
-
    public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)du.a("trigger")
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("title").requires($$0x -> $$0x.c(2)))
             .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)du.a("objective", el.a())
-                        .suggests(($$0x, $$1) -> a((dt)$$0x.getSource(), $$1))
-                        .executes($$0x -> a((dt)$$0x.getSource(), a(((dt)$$0x.getSource()).h(), el.a($$0x, "objective")))))
-                     .then(
-                        du.a("add")
-                           .then(
-                              du.a("value", IntegerArgumentType.integer())
-                                 .executes(
-                                    $$0x -> a(
-                                          (dt)$$0x.getSource(),
-                                          a(((dt)$$0x.getSource()).h(), el.a($$0x, "objective")),
-                                          IntegerArgumentType.getInteger($$0x, "value")
-                                       )
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)du.a(
+                                    "targets", ee.d()
                                  )
+                                 .then(du.a("clear").executes($$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets")))))
+                              .then(du.a("reset").executes($$0x -> b((dt)$$0x.getSource(), ee.f($$0x, "targets")))))
+                           .then(
+                              du.a("title")
+                                 .then(
+                                    du.a("title", ea.a())
+                                       .executes($$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), ea.a($$0x, "title"), "title", aam::new))
+                                 )
+                           ))
+                        .then(
+                           du.a("subtitle")
+                              .then(
+                                 du.a("title", ea.a())
+                                    .executes($$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), ea.a($$0x, "title"), "subtitle", aak::new))
+                              )
+                        ))
+                     .then(
+                        du.a("actionbar")
+                           .then(
+                              du.a("title", ea.a()).executes($$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), ea.a($$0x, "title"), "actionbar", zn::new))
                            )
                      ))
                   .then(
-                     du.a("set")
+                     du.a("times")
                         .then(
-                           du.a("value", IntegerArgumentType.integer())
-                              .executes(
-                                 $$0x -> b(
-                                       (dt)$$0x.getSource(),
-                                       a(((dt)$$0x.getSource()).h(), el.a($$0x, "objective")),
-                                       IntegerArgumentType.getInteger($$0x, "value")
+                           du.a("fadeIn", fd.a())
+                              .then(
+                                 du.a("stay", fd.a())
+                                    .then(
+                                       du.a("fadeOut", fd.a())
+                                          .executes(
+                                             $$0x -> a(
+                                                   (dt)$$0x.getSource(),
+                                                   ee.f($$0x, "targets"),
+                                                   IntegerArgumentType.getInteger($$0x, "fadeIn"),
+                                                   IntegerArgumentType.getInteger($$0x, "stay"),
+                                                   IntegerArgumentType.getInteger($$0x, "fadeOut")
+                                                )
+                                          )
                                     )
                               )
                         )
@@ -51,61 +61,65 @@ public class ajb {
       );
    }
 
-   public static CompletableFuture<Suggestions> a(dt $$0, SuggestionsBuilder $$1) {
-      biq $$2 = $$0.f();
-      List<String> $$3 = Lists.newArrayList();
-      if ($$2 != null) {
-         eim $$4 = $$0.l().aF();
-         String $$5 = $$2.cx();
+   private static int a(dt $$0, Collection<akt> $$1) {
+      xo $$2 = new xo(false);
 
-         for (eij $$6 : $$4.c()) {
-            if ($$6.c() == eip.b && $$4.b($$5, $$6)) {
-               eil $$7 = $$4.c($$5, $$6);
-               if (!$$7.g()) {
-                  $$3.add($$6.b());
-               }
-            }
-         }
+      for (akt $$3 : $$1) {
+         $$3.c.b($$2);
       }
 
-      return dw.b($$3, $$1);
-   }
-
-   private static int a(dt $$0, eil $$1, int $$2) {
-      $$1.a($$2);
-      $$0.a(() -> tm.a("commands.trigger.add.success", $$1.d().e(), $$2), true);
-      return $$1.b();
-   }
-
-   private static int b(dt $$0, eil $$1, int $$2) {
-      $$1.b($$2);
-      $$0.a(() -> tm.a("commands.trigger.set.success", $$1.d().e(), $$2), true);
-      return $$2;
-   }
-
-   private static int a(dt $$0, eil $$1) {
-      $$1.a(1);
-      $$0.a(() -> tm.a("commands.trigger.simple.success", $$1.d().e()), true);
-      return $$1.b();
-   }
-
-   private static eil a(aks $$0, eij $$1) throws CommandSyntaxException {
-      if ($$1.c() != eip.b) {
-         throw b.create();
+      if ($$1.size() == 1) {
+         $$0.a(() -> tn.a("commands.title.cleared.single", $$1.iterator().next().N_()), true);
       } else {
-         eim $$2 = $$0.gg();
-         String $$3 = $$0.cx();
-         if (!$$2.b($$3, $$1)) {
-            throw a.create();
-         } else {
-            eil $$4 = $$2.c($$3, $$1);
-            if ($$4.g()) {
-               throw a.create();
-            } else {
-               $$4.a(true);
-               return $$4;
-            }
-         }
+         $$0.a(() -> tn.a("commands.title.cleared.multiple", $$1.size()), true);
       }
+
+      return $$1.size();
+   }
+
+   private static int b(dt $$0, Collection<akt> $$1) {
+      xo $$2 = new xo(true);
+
+      for (akt $$3 : $$1) {
+         $$3.c.b($$2);
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> tn.a("commands.title.reset.single", $$1.iterator().next().N_()), true);
+      } else {
+         $$0.a(() -> tn.a("commands.title.reset.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
+   }
+
+   private static int a(dt $$0, Collection<akt> $$1, tn $$2, String $$3, Function<tn, vf<?>> $$4) throws CommandSyntaxException {
+      for (akt $$5 : $$1) {
+         $$5.c.b($$4.apply(tp.a($$0, $$2, $$5, 0)));
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> tn.a("commands.title.show." + $$3 + ".single", $$1.iterator().next().N_()), true);
+      } else {
+         $$0.a(() -> tn.a("commands.title.show." + $$3 + ".multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
+   }
+
+   private static int a(dt $$0, Collection<akt> $$1, int $$2, int $$3, int $$4) {
+      aan $$5 = new aan($$2, $$3, $$4);
+
+      for (akt $$6 : $$1) {
+         $$6.c.b($$5);
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> tn.a("commands.title.times.single", $$1.iterator().next().N_()), true);
+      } else {
+         $$0.a(() -> tn.a("commands.title.times.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 }

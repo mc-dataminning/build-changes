@@ -1,32 +1,29 @@
-public class abp implements ve<abd> {
-   private final int a;
-   private final String b;
+public class abp implements vf<abe> {
+   private final abp.a a;
 
-   public abp(int $$0, String $$1) {
+   public abp(abp.a $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   public abp(sp $$0) {
-      this.a = $$0.m();
-      this.b = $$0.d(32500);
+   public abp(sq $$0) {
+      this.a = $$0.b(abp.a.class);
    }
 
    @Override
-   public void a(sp $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b, 32500);
+   public void a(sq $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(abd $$0) {
+   public void a(abe $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public abp.a a() {
       return this.a;
    }
 
-   public String d() {
-      return this.b;
+   public static enum a {
+      a,
+      b;
    }
 }

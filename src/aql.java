@@ -1,69 +1,45 @@
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.HashMap;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 import java.util.stream.Collectors;
 
-public class aql {
-   public static Map<aew<? extends ht<?>>, aql.a> a(hn<afg> $$0) {
-      return hx.b($$0)
-         .map($$0x -> Pair.of($$0x.a(), a($$0x.b())))
-         .filter($$0x -> !((aql.a)$$0x.getSecond()).a())
-         .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
+public class aql implements anp {
+   private static final Map<aex<? extends ht<?>>, String> a = Map.of(
+      je.e, "tags/blocks", je.s, "tags/entity_types", je.w, "tags/fluids", je.z, "tags/game_events", je.D, "tags/items"
+   );
+   private final hu b;
+   private List<aql.a<?>> c = List.of();
+
+   public aql(hu $$0) {
+      this.b = $$0;
    }
 
-   private static <T> aql.a a(ht<T> $$0) {
-      Map<aex, IntList> $$1 = new HashMap<>();
-      $$0.i().forEach($$2 -> {
-         hk<T> $$3 = (hk<T>)$$2.getSecond();
-         IntList $$4 = new IntArrayList($$3.b());
-
-         for (hg<T> $$5 : $$3) {
-            if ($$5.f() != hg.b.a) {
-               throw new IllegalStateException("Can't serialize unregistered value " + $$5);
-            }
-
-            $$4.add($$0.a($$5.a()));
-         }
-
-         $$1.put(((aqi)$$2.getFirst()).b(), $$4);
-      });
-      return new aql.a($$1);
+   public List<aql.a<?>> a() {
+      return this.c;
    }
 
-   public static <T> void a(aew<? extends ht<T>> $$0, ht<T> $$1, aql.a $$2, aql.b<T> $$3) {
-      $$2.a.forEach(($$3x, $$4) -> {
-         aqi<T> $$5 = aqi.a($$0, $$3x);
-         List<hg<T>> $$6 = $$4.intStream().mapToObj($$1::c).flatMap(Optional::stream).collect(Collectors.toUnmodifiableList());
-         $$3.accept($$5, $$6);
-      });
+   public static String a(aex<? extends ht<?>> $$0) {
+      String $$1 = a.get($$0);
+      return $$1 != null ? $$1 : "tags/" + $$0.a().a();
    }
 
-   public static final class a {
-      final Map<aex, IntList> a;
-
-      a(Map<aex, IntList> $$0) {
-         this.a = $$0;
-      }
-
-      public void a(sp $$0) {
-         $$0.a(this.a, sp::a, sp::a);
-      }
-
-      public static aql.a b(sp $$0) {
-         return new aql.a($$0.a(sp::s, sp::a));
-      }
-
-      public boolean a() {
-         return this.a.isEmpty();
-      }
+   @Override
+   public CompletableFuture<Void> a(anp.a $$0, anv $$1, bdr $$2, bdr $$3, Executor $$4, Executor $$5) {
+      List<? extends CompletableFuture<? extends aql.a<?>>> $$6 = this.b.b().map($$2x -> this.a($$1, $$4, $$2x)).toList();
+      return CompletableFuture.allOf($$6.toArray(CompletableFuture[]::new))
+         .thenCompose($$0::a)
+         .thenAcceptAsync($$1x -> this.c = $$6.stream().map(CompletableFuture::join).collect(Collectors.toUnmodifiableList()), $$5);
    }
 
-   @FunctionalInterface
-   public interface b<T> {
-      void accept(aqi<T> var1, List<hg<T>> var2);
+   private <T> CompletableFuture<aql.a<T>> a(anv $$0, Executor $$1, hu.d<T> $$2) {
+      aex<? extends ht<T>> $$3 = $$2.a();
+      ht<T> $$4 = $$2.b();
+      aqk<hg<T>> $$5 = new aqk<>($$2x -> $$4.b(aex.a($$3, $$2x)), a($$3));
+      return CompletableFuture.supplyAsync(() -> new aql.a<>($$3, $$5.b($$0)), $$1);
+   }
+
+   public static record a<T>(aex<? extends ht<T>> a, Map<aey, Collection<hg<T>>> b) {
    }
 }

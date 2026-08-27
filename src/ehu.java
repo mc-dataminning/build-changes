@@ -1,18 +1,17 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-
-public final class ehu extends eig {
-   protected ehu(ehw $$0) {
-      super($$0);
+public interface ehu {
+   static ehu a() {
+      return ehz.a;
    }
 
-   @Override
-   protected DoubleList a(hc.a $$0) {
-      return new eht(this.a.c($$0));
+   static ehu a(bis $$0) {
+      return new ehz($$0);
    }
 
-   @Override
-   protected int a(hc.a $$0, double $$1) {
-      int $$2 = this.a.c($$0);
-      return arx.a(arx.a($$1 * (double)$$2, -1.0, (double)$$2));
-   }
+   boolean b();
+
+   boolean a(eii var1, gw var2, boolean var3);
+
+   boolean a(cjc var1);
+
+   boolean a(eao var1, eao var2);
 }

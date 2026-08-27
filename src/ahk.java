@@ -1,29 +1,28 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.List;
-import java.util.function.Function;
+import java.util.Collection;
 
 public class ahk {
    public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("list").executes($$0x -> a((dt)$$0x.getSource())))
-            .then(du.a("uuids").executes($$0x -> b((dt)$$0x.getSource())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("kill").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((dt)$$0x.getSource(), ImmutableList.of(((dt)$$0x.getSource()).g()))))
+            .then(du.a("targets", ee.b()).executes($$0x -> a((dt)$$0x.getSource(), ee.b($$0x, "targets"))))
       );
    }
 
-   private static int a(dt $$0) {
-      return a($$0, cbu::N_);
-   }
+   private static int a(dt $$0, Collection<? extends bis> $$1) {
+      for (bis $$2 : $$1) {
+         $$2.aj();
+      }
 
-   private static int b(dt $$0) {
-      return a($$0, $$0x -> tm.a("commands.list.nameAndId", $$0x.ab(), $$0x.fQ().getId()));
-   }
+      if ($$1.size() == 1) {
+         $$0.a(() -> tn.a("commands.kill.success.single", $$1.iterator().next().N_()), true);
+      } else {
+         $$0.a(() -> tn.a("commands.kill.success.multiple", $$1.size()), true);
+      }
 
-   private static int a(dt $$0, Function<aks, tm> $$1) {
-      aoh $$2 = $$0.l().ac();
-      List<aks> $$3 = $$2.t();
-      tm $$4 = to.b($$3, $$1);
-      $$0.a(() -> tm.a("commands.list.players", $$3.size(), $$2.n(), $$4), false);
-      return $$3.size();
+      return $$1.size();
    }
 }

@@ -1,94 +1,144 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.UnmodifiableIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.Map;
 
-public class cup extends csi {
-   public static final dgj a = dfz.aT;
-   public static final dga b = dfz.p;
-   protected static final eig c = csv.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0);
+public class cup extends csx implements czy {
+   public static final dgc a = cyj.a;
+   public static final dgc b = cyj.b;
+   public static final dgc c = cyj.c;
+   public static final dgc d = cyj.d;
+   public static final dgc e = dgb.C;
+   protected static final Map<hc, dgc> f = cyj.g.entrySet().stream().filter($$0 -> $$0.getKey().o().d()).collect(ac.a());
+   protected final eii[] g;
+   protected final eii[] h;
+   private final Object2IntMap<dfl> i = new Object2IntOpenHashMap();
 
-   public cup(dfi.d $$0) {
-      super($$0);
-      this.k(this.C.b().a(a, Integer.valueOf(0)).a(b, Boolean.valueOf(false)));
-   }
+   protected cup(float $$0, float $$1, float $$2, float $$3, float $$4, dfk.d $$5) {
+      super($$5);
+      this.g = this.a($$0, $$1, $$4, 0.0F, $$4);
+      this.h = this.a($$0, $$1, $$2, 0.0F, $$3);
+      UnmodifiableIterator var7 = this.C.a().iterator();
 
-   @Override
-   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
-      return c;
-   }
-
-   @Override
-   public boolean g_(dfj $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(dfj $$0, cpb $$1, gw $$2, hc $$3) {
-      return $$0.c(a);
-   }
-
-   private static void d(dfj $$0, cpv $$1, gw $$2) {
-      int $$3 = $$1.a(cqe.a, $$2) - $$1.A_();
-      float $$4 = $$1.a(1.0F);
-      boolean $$5 = $$0.c(b);
-      if ($$5) {
-         $$3 = 15 - $$3;
-      } else if ($$3 > 0) {
-         float $$6 = $$4 < (float) Math.PI ? 0.0F : (float) (Math.PI * 2);
-         $$4 += ($$6 - $$4) * 0.2F;
-         $$3 = Math.round((float)$$3 * arx.b($$4));
-      }
-
-      $$3 = arx.a($$3, 0, 15);
-      if ($$0.c(a) != $$3) {
-         $$1.a($$2, $$0.a(a, Integer.valueOf($$3)), 3);
+      while (var7.hasNext()) {
+         dfl $$6 = (dfl)var7.next();
+         this.g($$6);
       }
    }
 
+   protected eii[] a(float $$0, float $$1, float $$2, float $$3, float $$4) {
+      float $$5 = 8.0F - $$0;
+      float $$6 = 8.0F + $$0;
+      float $$7 = 8.0F - $$1;
+      float $$8 = 8.0F + $$1;
+      eii $$9 = csx.a((double)$$5, 0.0, (double)$$5, (double)$$6, (double)$$2, (double)$$6);
+      eii $$10 = csx.a((double)$$7, (double)$$3, 0.0, (double)$$8, (double)$$4, (double)$$8);
+      eii $$11 = csx.a((double)$$7, (double)$$3, (double)$$7, (double)$$8, (double)$$4, 16.0);
+      eii $$12 = csx.a(0.0, (double)$$3, (double)$$7, (double)$$8, (double)$$4, (double)$$8);
+      eii $$13 = csx.a((double)$$7, (double)$$3, (double)$$7, 16.0, (double)$$4, (double)$$8);
+      eii $$14 = eif.a($$10, $$13);
+      eii $$15 = eif.a($$11, $$12);
+      eii[] $$16 = new eii[]{
+         eif.a(),
+         $$11,
+         $$12,
+         $$15,
+         $$10,
+         eif.a($$11, $$10),
+         eif.a($$12, $$10),
+         eif.a($$15, $$10),
+         $$13,
+         eif.a($$11, $$13),
+         eif.a($$12, $$13),
+         eif.a($$15, $$13),
+         $$14,
+         eif.a($$11, $$14),
+         eif.a($$12, $$14),
+         eif.a($$15, $$14)
+      };
+
+      for (int $$17 = 0; $$17 < 16; $$17++) {
+         $$16[$$17] = eif.a($$9, $$16[$$17]);
+      }
+
+      return $$16;
+   }
+
    @Override
-   public bgy a(dfj $$0, cpv $$1, gw $$2, cbu $$3, bgx $$4, ehj $$5) {
-      if ($$3.gd()) {
-         if ($$1.B) {
-            return bgy.a;
-         } else {
-            dfj $$6 = $$0.a(b);
-            $$1.a($$2, $$6, 2);
-            $$1.a(djt.c, $$2, djt.a.a($$3, $$6));
-            d($$6, $$1, $$2);
-            return bgy.b;
+   public boolean c(dfl $$0, cpd $$1, gw $$2) {
+      return !$$0.c(e);
+   }
+
+   @Override
+   public eii a(dfl $$0, cpd $$1, gw $$2, ehu $$3) {
+      return this.h[this.g($$0)];
+   }
+
+   @Override
+   public eii c(dfl $$0, cpd $$1, gw $$2, ehu $$3) {
+      return this.g[this.g($$0)];
+   }
+
+   private static int a(hc $$0) {
+      return 1 << $$0.e();
+   }
+
+   protected int g(dfl $$0) {
+      return this.i.computeIntIfAbsent($$0, $$0x -> {
+         int $$1 = 0;
+         if ($$0x.c(a)) {
+            $$1 |= a(hc.c);
          }
-      } else {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+
+         if ($$0x.c(b)) {
+            $$1 |= a(hc.f);
+         }
+
+         if ($$0x.c(c)) {
+            $$1 |= a(hc.d);
+         }
+
+         if ($$0x.c(d)) {
+            $$1 |= a(hc.e);
+         }
+
+         return $$1;
+      });
+   }
+
+   @Override
+   public eao c_(dfl $$0) {
+      return $$0.c(e) ? eap.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   public boolean a(dfl $$0, cpd $$1, gw $$2, ebe $$3) {
+      return false;
+   }
+
+   @Override
+   public dfl a(dfl $$0, czj $$1) {
+      switch ($$1) {
+         case c:
+            return $$0.a(a, $$0.c(c)).a(b, $$0.c(d)).a(c, $$0.c(a)).a(d, $$0.c(b));
+         case d:
+            return $$0.a(a, $$0.c(b)).a(b, $$0.c(c)).a(c, $$0.c(d)).a(d, $$0.c(a));
+         case b:
+            return $$0.a(a, $$0.c(d)).a(b, $$0.c(a)).a(c, $$0.c(b)).a(d, $$0.c(c));
+         default:
+            return $$0;
       }
    }
 
    @Override
-   public cza b_(dfj $$0) {
-      return cza.c;
-   }
-
-   @Override
-   public boolean f_(dfj $$0) {
-      return true;
-   }
-
-   @Override
-   public dcv a(gw $$0, dfj $$1) {
-      return new ddj($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dcv> dcw<T> a(cpv $$0, dfj $$1, dcx<T> $$2) {
-      return !$$0.B && $$0.C_().g() ? a($$2, dcx.q, cup::a) : null;
-   }
-
-   private static void a(cpv $$0, gw $$1, dfj $$2, ddj $$3) {
-      if ($$0.V() % 20L == 0L) {
-         d($$2, $$0, $$1);
+   public dfl a(dfl $$0, cxs $$1) {
+      switch ($$1) {
+         case b:
+            return $$0.a(a, $$0.c(c)).a(c, $$0.c(a));
+         case c:
+            return $$0.a(b, $$0.c(d)).a(d, $$0.c(b));
+         default:
+            return super.a($$0, $$1);
       }
-   }
-
-   @Override
-   protected void a(dfk.a<csv, dfj> $$0) {
-      $$0.a(a, b);
    }
 }

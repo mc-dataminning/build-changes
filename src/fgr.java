@@ -1,43 +1,70 @@
-public class fgr<T extends biq> extends ffm<T> {
-   private static final String a = "body_front";
-   private static final String b = "body_back";
-   private final fic f;
-   private final fic g;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 
-   public fgr(fic $$0) {
-      this.f = $$0;
-      this.g = $$0.b("body_back");
+public class fgr extends ffx<cdp> {
+   private static final String a = "left_paddle";
+   private static final String b = "right_paddle";
+   private static final String f = "bottom";
+   private final fie g;
+   private final fie h;
+   private final ImmutableList<fie> i;
+
+   public fgr(fie $$0) {
+      this.g = $$0.b("left_paddle");
+      this.h = $$0.b("right_paddle");
+      this.i = this.a($$0).build();
    }
 
-   public static fii b() {
-      fik $$0 = new fik();
-      fil $$1 = $$0.a();
-      int $$2 = 20;
-      fil $$3 = $$1.a("body_front", fih.c().a(0, 0).a(-1.5F, -2.5F, 0.0F, 3.0F, 5.0F, 8.0F), fie.a(0.0F, 20.0F, 0.0F));
-      fil $$4 = $$1.a("body_back", fih.c().a(0, 13).a(-1.5F, -2.5F, 0.0F, 3.0F, 5.0F, 8.0F), fie.a(0.0F, 20.0F, 8.0F));
-      $$1.a("head", fih.c().a(22, 0).a(-1.0F, -2.0F, -3.0F, 2.0F, 4.0F, 3.0F), fie.a(0.0F, 20.0F, 0.0F));
-      $$4.a("back_fin", fih.c().a(20, 10).a(0.0F, -2.5F, 0.0F, 0.0F, 5.0F, 6.0F), fie.a(0.0F, 0.0F, 8.0F));
-      $$3.a("top_front_fin", fih.c().a(2, 1).a(0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 3.0F), fie.a(0.0F, -4.5F, 5.0F));
-      $$4.a("top_back_fin", fih.c().a(0, 2).a(0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 4.0F), fie.a(0.0F, -4.5F, -1.0F));
-      $$1.a("right_fin", fih.c().a(-4, 0).a(-2.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), fie.a(-1.5F, 21.5F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 4)));
-      $$1.a("left_fin", fih.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), fie.a(1.5F, 21.5F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 4)));
-      return fii.a($$0, 32, 32);
+   protected Builder<fie> a(fie $$0) {
+      Builder<fie> $$1 = new Builder();
+      $$1.add(new fie[]{$$0.b("bottom"), this.g, this.h});
+      return $$1;
    }
 
-   @Override
-   public fic a() {
-      return this.f;
+   public static void a(fin $$0) {
+      $$0.a(
+         "bottom",
+         fij.c().a(0, 0).a(-14.0F, -11.0F, -4.0F, 28.0F, 20.0F, 4.0F).a(0, 0).a(-14.0F, -9.0F, -8.0F, 28.0F, 16.0F, 4.0F),
+         fig.a(0.0F, -2.1F, 1.0F, 1.5708F, 0.0F, 0.0F)
+      );
+      int $$1 = 20;
+      int $$2 = 7;
+      int $$3 = 6;
+      float $$4 = -5.0F;
+      $$0.a(
+         "left_paddle",
+         fij.c().a(0, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         fig.a(3.0F, -4.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
+      );
+      $$0.a(
+         "right_paddle",
+         fij.c().a(40, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         fig.a(3.0F, -4.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
+      );
    }
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = 1.0F;
-      float $$7 = 1.0F;
-      if (!$$0.aX()) {
-         $$6 = 1.3F;
-         $$7 = 1.7F;
+   public static fik b() {
+      fim $$0 = new fim();
+      fin $$1 = $$0.a();
+      a($$1);
+      return fik.a($$0, 128, 64);
+   }
+
+   public void a(cdp $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      a($$0, 0, this.g, $$1);
+      a($$0, 1, this.h, $$1);
+   }
+
+   public ImmutableList<fie> c() {
+      return this.i;
+   }
+
+   private static void a(cdp $$0, int $$1, fie $$2, float $$3) {
+      float $$4 = $$0.a($$1, $$3);
+      $$2.e = ary.b((float) (-Math.PI / 3), (float) (-Math.PI / 12), (ary.a(-$$4) + 1.0F) / 2.0F);
+      $$2.f = ary.b((float) (-Math.PI / 4), (float) (Math.PI / 4), (ary.a(-$$4 + 1.0F) + 1.0F) / 2.0F);
+      if ($$1 == 1) {
+         $$2.f = (float) Math.PI - $$2.f;
       }
-
-      this.g.f = -$$6 * 0.25F * arx.a($$7 * 0.6F * $$3);
    }
 }

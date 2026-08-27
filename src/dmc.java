@@ -1,26 +1,22 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dmc implements dlz {
-   private final ib e;
-   private final hc f;
-   public static final Codec<dmc> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ib.v(16).optionalFieldOf("offset", ib.g).forGetter($$0x -> $$0x.e), hc.g.fieldOf("direction").forGetter($$0x -> $$0x.f))
-            .apply($$0, dmc::new)
-   );
+public interface dmc<P extends dmb> {
+   dmc<dmh> a = a("matching_blocks", dmh.a);
+   dmc<dmg> b = a("matching_block_tag", dmg.e);
+   dmc<dmi> c = a("matching_fluids", dmi.a);
+   dmc<dme> d = a("has_sturdy_face", dme.a);
+   dmc<dml> e = a("solid", dml.a);
+   dmc<dmk> f = a("replaceable", dmk.a);
+   dmc<dmo> g = a("would_survive", dmo.a);
+   dmc<dmf> h = a("inside_world_bounds", dmf.a);
+   dmc<dma> i = a("any_of", dma.a);
+   dmc<dlz> j = a("all_of", dlz.a);
+   dmc<dmj> k = a("not", dmj.a);
+   dmc<dmn> l = a("true", dmn.e);
 
-   public dmc(ib $$0, hc $$1) {
-      this.e = $$0;
-      this.f = $$1;
-   }
+   Codec<P> codec();
 
-   public boolean a(cqp $$0, gw $$1) {
-      gw $$2 = $$1.a(this.e);
-      return $$0.a_($$2).d($$0, $$2, this.f);
-   }
-
-   @Override
-   public dma<?> a() {
-      return dma.d;
+   private static <P extends dmb> dmc<P> a(String $$0, Codec<P> $$1) {
+      return ht.a(jd.P, $$0, () -> $$1);
    }
 }

@@ -1,67 +1,13 @@
-import java.util.function.Consumer;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+public class fmf extends fmw {
+   private final fmr a;
 
-public class fmf extends fmu {
-   private static final Vector3f a = new Vector3f(0.5F, 0.5F, 0.5F).normalize();
-   private static final Vector3f b = new Vector3f(-1.0F, -1.0F, 0.0F);
-   private static final float F = 1.0472F;
-   private int G;
-
-   fmf(fix $$0, double $$1, double $$2, double $$3, int $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.D = 0.85F;
-      this.G = $$4;
-      this.t = 30;
-      this.u = 0.0F;
-      this.j = 0.0;
-      this.k = 0.1;
-      this.l = 0.0;
-   }
-
-   @Override
-   public float b(float $$0) {
-      return this.D * arx.a(((float)this.s + $$0) / (float)this.t * 0.75F, 0.0F, 1.0F);
-   }
-
-   @Override
-   public void a(elt $$0, eqg $$1, float $$2) {
-      if (this.G <= 0) {
-         this.y = 1.0F - arx.a(((float)this.s + $$2) / (float)this.t, 0.0F, 1.0F);
-         this.a($$0, $$1, $$2, $$0x -> $$0x.mul(new Quaternionf().rotationX(-1.0472F)));
-         this.a($$0, $$1, $$2, $$0x -> $$0x.mul(new Quaternionf().rotationYXZ((float) -Math.PI, 1.0472F, 0.0F)));
-      }
-   }
-
-   private void a(elt $$0, eqg $$1, float $$2, Consumer<Quaternionf> $$3) {
-      ehn $$4 = $$1.b();
-      float $$5 = (float)(arx.d((double)$$2, this.d, this.g) - $$4.a());
-      float $$6 = (float)(arx.d((double)$$2, this.e, this.h) - $$4.b());
-      float $$7 = (float)(arx.d((double)$$2, this.f, this.i) - $$4.c());
-      Quaternionf $$8 = new Quaternionf().setAngleAxis(0.0F, a.x(), a.y(), a.z());
-      $$3.accept($$8);
-      $$8.transform(b);
-      Vector3f[] $$9 = new Vector3f[]{
-         new Vector3f(-1.0F, -1.0F, 0.0F), new Vector3f(-1.0F, 1.0F, 0.0F), new Vector3f(1.0F, 1.0F, 0.0F), new Vector3f(1.0F, -1.0F, 0.0F)
-      };
-      float $$10 = this.b($$2);
-
-      for (int $$11 = 0; $$11 < 4; $$11++) {
-         Vector3f $$12 = $$9[$$11];
-         $$12.rotate($$8);
-         $$12.mul($$10);
-         $$12.add($$5, $$6, $$7);
-      }
-
-      int $$13 = this.a($$2);
-      this.a($$0, $$9[0], this.d(), this.f(), $$13);
-      this.a($$0, $$9[1], this.d(), this.e(), $$13);
-      this.a($$0, $$9[2], this.c(), this.e(), $$13);
-      this.a($$0, $$9[3], this.c(), this.f(), $$13);
-   }
-
-   private void a(elt $$0, Vector3f $$1, float $$2, float $$3, int $$4) {
-      $$0.a((double)$$1.x(), (double)$$1.y(), (double)$$1.z()).a($$2, $$3).a(this.v, this.w, this.x, this.y).b($$4).e();
+   fmf(fiz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fmr $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.a = $$7;
+      this.d(1.5F);
+      this.n = false;
+      this.b($$7);
    }
 
    @Override
@@ -70,30 +16,24 @@ public class fmf extends fmu {
    }
 
    @Override
-   public fly b() {
-      return fly.c;
+   public fma b() {
+      return fma.c;
    }
 
    @Override
    public void a() {
-      if (this.G > 0) {
-         this.G--;
-      } else {
-         super.a();
-      }
+      super.a();
+      this.b(this.a);
    }
 
-   public static class a implements flx<iz> {
-      private final fmp a;
-
-      public a(fmp $$0) {
-         this.a = $$0;
-      }
-
-      public flu a(iz $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fmf $$8 = new fmf($$1, $$2, $$3, $$4, $$0.c());
-         $$8.a(this.a);
+   public static record a(fmr a) implements flz<iy> {
+      public flw a(iy $$0, fiz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fmf $$8 = new fmf($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
          $$8.e(1.0F);
+         $$8.b($$5, $$6, $$7);
+         $$8.A = $$0.c();
+         $$8.z = $$0.c();
+         $$8.a($$1.z.a(12) + 8);
          return $$8;
       }
    }

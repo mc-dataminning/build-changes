@@ -1,14 +1,14 @@
 public class gy implements gx {
-   private final akr a;
+   private final aks a;
    private final gw b;
 
-   public gy(akr $$0, gw $$1) {
+   public gy(aks $$0, gw $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
    @Override
-   public akr g() {
+   public aks g() {
       return this.a;
    }
 
@@ -33,12 +33,12 @@ public class gy implements gx {
    }
 
    @Override
-   public dfj e() {
+   public dfl e() {
       return this.a.a_(this.b);
    }
 
    @Override
-   public <T extends dcv> T f() {
+   public <T extends dcx> T f() {
       return (T)this.a.c_(this.b);
    }
 }

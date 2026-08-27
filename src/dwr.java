@@ -1,112 +1,81 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import java.util.List;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableObject;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class dwr {
-   private static final int c = Integer.MIN_VALUE;
-   private static final MutableObject<Codec<hg<dwr>>> d = new MutableObject();
-   public static final Codec<dwr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               arg.a(d::getValue).fieldOf("fallback").forGetter(dwr::a),
-               Codec.mapPair(dwp.e.fieldOf("element"), Codec.intRange(1, 150).fieldOf("weight")).codec().listOf().fieldOf("elements").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, dwr::new)
-   );
-   public static final Codec<hg<dwr>> b = ac.a(aet.a(je.aC, a), d::setValue);
-   private final List<Pair<dwp, Integer>> e;
-   private final ObjectArrayList<dwp> f;
-   private final hg<dwr> g;
-   private int h = Integer.MIN_VALUE;
+public abstract class dwr {
+   public static final Codec<dwr> e = jd.ai.q().dispatch("element_type", dwr::a, dws::codec);
+   private static final hg<dzb> a = hg.a(new dzb(List.of()));
+   @Nullable
+   private volatile dwt.a b;
 
-   public dwr(hg<dwr> $$0, List<Pair<dwp, Integer>> $$1) {
-      this.e = $$1;
-      this.f = new ObjectArrayList();
-
-      for (Pair<dwp, Integer> $$2 : $$1) {
-         dwp $$3 = (dwp)$$2.getFirst();
-
-         for (int $$4 = 0; $$4 < $$2.getSecond(); $$4++) {
-            this.f.add($$3);
-         }
-      }
-
-      this.g = $$0;
+   protected static <E extends dwr> RecordCodecBuilder<E, dwt.a> d() {
+      return dwt.a.c.fieldOf("projection").forGetter(dwr::e);
    }
 
-   public dwr(hg<dwr> $$0, List<Pair<Function<dwr.a, ? extends dwp>, Integer>> $$1, dwr.a $$2) {
-      this.e = Lists.newArrayList();
-      this.f = new ObjectArrayList();
-
-      for (Pair<Function<dwr.a, ? extends dwp>, Integer> $$3 : $$1) {
-         dwp $$4 = (dwp)((Function)$$3.getFirst()).apply($$2);
-         this.e.add(Pair.of($$4, (Integer)$$3.getSecond()));
-
-         for (int $$5 = 0; $$5 < $$3.getSecond(); $$5++) {
-            this.f.add($$4);
-         }
-      }
-
-      this.g = $$0;
+   protected dwr(dwt.a $$0) {
+      this.b = $$0;
    }
 
-   public int a(dzc $$0) {
-      if (this.h == Integer.MIN_VALUE) {
-         this.h = this.f.stream().filter($$0x -> $$0x != dwi.b).mapToInt($$1 -> $$1.a($$0, gw.b, czh.a).d()).max().orElse(0);
-      }
+   public abstract ib a(dze var1, czj var2);
 
-      return this.h;
+   public abstract List<dzd.c> a(dze var1, gw var2, czj var3, ase var4);
+
+   public abstract dvc a(dze var1, gw var2, czj var3);
+
+   public abstract boolean a(dze var1, cqr var2, cqp var3, dhi var4, gw var5, gw var6, czj var7, dvc var8, ase var9, boolean var10);
+
+   public abstract dws<?> a();
+
+   public void a(cpy $$0, dzd.c $$1, gw $$2, czj $$3, ase $$4, dvc $$5) {
    }
 
-   public hg<dwr> a() {
-      return this.g;
+   public dwr a(dwt.a $$0) {
+      this.b = $$0;
+      return this;
    }
 
-   public dwp a(asc $$0) {
-      return (dwp)this.f.get($$0.a(this.f.size()));
+   public dwt.a e() {
+      dwt.a $$0 = this.b;
+      if ($$0 == null) {
+         throw new IllegalStateException();
+      } else {
+         return $$0;
+      }
    }
 
-   public List<dwp> b(asc $$0) {
-      return ac.a(this.f, $$0);
+   public int f() {
+      return 1;
    }
 
-   public int b() {
-      return this.f.size();
+   public static Function<dwt.a, dwk> g() {
+      return $$0 -> dwk.b;
    }
 
-   public static enum a implements asp {
-      a("terrain_matching", ImmutableList.of(new dyi(dks.a.a, -1))),
-      b("rigid", ImmutableList.of());
+   public static Function<dwt.a, dwo> a(String $$0) {
+      return $$1 -> new dwo(Either.left(new aey($$0)), a, $$1);
+   }
 
-      public static final asp.a<dwr.a> c = asp.a(dwr.a::values);
-      private final String d;
-      private final ImmutableList<dyy> e;
+   public static Function<dwt.a, dwo> a(String $$0, hg<dzb> $$1) {
+      return $$2 -> new dwo(Either.left(new aey($$0)), $$1, $$2);
+   }
 
-      private a(String $$0, ImmutableList<dyy> $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
+   public static Function<dwt.a, dwq> b(String $$0) {
+      return $$1 -> new dwq(Either.left(new aey($$0)), a, $$1);
+   }
 
-      public String a() {
-         return this.d;
-      }
+   public static Function<dwt.a, dwq> b(String $$0, hg<dzb> $$1) {
+      return $$2 -> new dwq(Either.left(new aey($$0)), $$1, $$2);
+   }
 
-      public static dwr.a a(String $$0) {
-         return c.a($$0);
-      }
+   public static Function<dwt.a, dwl> a(hg<duo> $$0) {
+      return $$1 -> new dwl($$0, $$1);
+   }
 
-      public ImmutableList<dyy> b() {
-         return this.e;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
+   public static Function<dwt.a, dwp> a(List<Function<dwt.a, ? extends dwr>> $$0) {
+      return $$1 -> new dwp($$0.stream().map($$1x -> (dwr)$$1x.apply($$1)).collect(Collectors.toList()), $$1);
    }
 }

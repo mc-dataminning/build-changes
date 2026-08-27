@@ -1,23 +1,19 @@
 import com.google.gson.annotations.SerializedName;
-import java.util.Locale;
 
-public class eng extends enl implements enf {
-   @SerializedName("regionName")
+public class eng extends enn implements enh {
+   @SerializedName("seed")
    private final String a;
-   @SerializedName("ping")
-   private final int b;
+   @SerializedName("worldTemplateId")
+   private final long b;
+   @SerializedName("levelType")
+   private final int c;
+   @SerializedName("generateStructures")
+   private final boolean d;
 
-   public eng(String $$0, int $$1) {
+   public eng(String $$0, long $$1, int $$2, boolean $$3) {
       this.a = $$0;
       this.b = $$1;
-   }
-
-   public int a() {
-      return this.b;
-   }
-
-   @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "%s --> %.2f ms", this.a, (float)this.b);
+      this.c = $$2;
+      this.d = $$3;
    }
 }

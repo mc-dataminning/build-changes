@@ -1,146 +1,35 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Arrays;
-import java.util.List;
+public class etj {
+   public static final aey a = new aey("textures/gui/title/minecraft.png");
+   public static final aey b = new aey("textures/gui/title/minceraft.png");
+   public static final aey c = new aey("textures/gui/title/edition.png");
+   public static final int d = 256;
+   public static final int e = 44;
+   private static final int g = 256;
+   private static final int h = 64;
+   private static final int i = 128;
+   private static final int j = 14;
+   private static final int k = 128;
+   private static final int l = 16;
+   public static final int f = 30;
+   private static final int m = 7;
+   private final boolean n = (double)ase.a().i() < 1.0E-4;
+   private final boolean o;
 
-public interface etj {
-   etj a = new etj() {
-      @Override
-      public int a(esf $$0, int $$1, int $$2) {
-         return $$2;
-      }
-
-      @Override
-      public int a(esf $$0, int $$1, int $$2, int $$3, int $$4) {
-         return $$2;
-      }
-
-      @Override
-      public int b(esf $$0, int $$1, int $$2, int $$3, int $$4) {
-         return $$2;
-      }
-
-      @Override
-      public int c(esf $$0, int $$1, int $$2, int $$3, int $$4) {
-         return $$2;
-      }
-
-      @Override
-      public void a(esf $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      }
-
-      @Override
-      public int a() {
-         return 0;
-      }
-
-      @Override
-      public int b() {
-         return 0;
-      }
-   };
-
-   static etj a(esd $$0, tq $$1, int $$2) {
-      return b($$0, $$0.c($$1, $$2).stream().map($$1x -> new etj.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   public etj(boolean $$0) {
+      this.o = $$0;
    }
 
-   static etj a(esd $$0, tq $$1, int $$2, int $$3) {
-      return b($$0, $$0.c($$1, $$2).stream().limit((long)$$3).map($$1x -> new etj.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   public void a(esh $$0, int $$1, float $$2) {
+      this.a($$0, $$1, $$2, 30);
    }
 
-   static etj a(esd $$0, tm... $$1) {
-      return b($$0, Arrays.stream($$1).map(tm::f).map($$1x -> new etj.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
-   }
-
-   static etj a(esd $$0, List<tm> $$1) {
-      return b($$0, $$1.stream().map(tm::f).map($$1x -> new etj.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
-   }
-
-   static etj b(final esd $$0, final List<etj.a> $$1) {
-      return $$1.isEmpty() ? a : new etj() {
-         private final int d = $$1.stream().mapToInt($$0x -> $$0x.b).max().orElse(0);
-
-         @Override
-         public int a(esf $$0x, int $$1x, int $$2) {
-            return this.a($$0, $$1, $$2, 9, 16777215);
-         }
-
-         @Override
-         public int a(esf $$0x, int $$1x, int $$2, int $$3, int $$4) {
-            int $$5 = $$2;
-
-            for (etj.a $$6 : $$1) {
-               $$0.b($$0, $$6.a, $$1 - $$6.b / 2, $$5, $$4);
-               $$5 += $$3;
-            }
-
-            return $$5;
-         }
-
-         @Override
-         public int b(esf $$0x, int $$1x, int $$2, int $$3, int $$4) {
-            int $$5 = $$2;
-
-            for (etj.a $$6 : $$1) {
-               $$0.b($$0, $$6.a, $$1, $$5, $$4);
-               $$5 += $$3;
-            }
-
-            return $$5;
-         }
-
-         @Override
-         public int c(esf $$0x, int $$1x, int $$2, int $$3, int $$4) {
-            int $$5 = $$2;
-
-            for (etj.a $$6 : $$1) {
-               $$0.a($$0, $$6.a, $$1, $$5, $$4, false);
-               $$5 += $$3;
-            }
-
-            return $$5;
-         }
-
-         @Override
-         public void a(esf $$0x, int $$1x, int $$2, int $$3, int $$4, int $$5) {
-            int $$6 = $$1.stream().mapToInt($$0xx -> $$0xx.b).max().orElse(0);
-            if ($$6 > 0) {
-               $$0.a($$1 - $$6 / 2 - $$4, $$2 - $$4, $$1 + $$6 / 2 + $$4, $$2 + $$1.size() * $$3 + $$4, $$5);
-            }
-         }
-
-         @Override
-         public int a() {
-            return $$1.size();
-         }
-
-         @Override
-         public int b() {
-            return this.d;
-         }
-      };
-   }
-
-   int a(esf var1, int var2, int var3);
-
-   int a(esf var1, int var2, int var3, int var4, int var5);
-
-   int b(esf var1, int var2, int var3, int var4, int var5);
-
-   int c(esf var1, int var2, int var3, int var4, int var5);
-
-   void a(esf var1, int var2, int var3, int var4, int var5, int var6);
-
-   int a();
-
-   int b();
-
-   public static class a {
-      final ark a;
-      final int b;
-
-      a(ark $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   public void a(esh $$0, int $$1, float $$2, int $$3) {
+      $$0.a(1.0F, 1.0F, 1.0F, this.o ? 1.0F : $$2);
+      int $$4 = $$1 / 2 - 128;
+      $$0.a(this.n ? b : a, $$4, $$3, 0.0F, 0.0F, 256, 44, 256, 64);
+      int $$5 = $$1 / 2 - 64;
+      int $$6 = $$3 + 44 - 7;
+      $$0.a(c, $$5, $$6, 0.0F, 0.0F, 128, 14, 128, 16);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
    }
 }

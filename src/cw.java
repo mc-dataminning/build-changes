@@ -9,15 +9,15 @@ import java.util.Set;
 import java.util.function.Predicate;
 
 public abstract class cw<T extends cw.a> implements ao<T> {
-   private final Map<aff, Set<ao.a<T>>> a = Maps.newIdentityHashMap();
+   private final Map<afg, Set<ao.a<T>>> a = Maps.newIdentityHashMap();
 
    @Override
-   public final void a(aff $$0, ao.a<T> $$1) {
+   public final void a(afg $$0, ao.a<T> $$1) {
       this.a.computeIfAbsent($$0, $$0x -> Sets.newHashSet()).add($$1);
    }
 
    @Override
-   public final void b(aff $$0, ao.a<T> $$1) {
+   public final void b(afg $$0, ao.a<T> $$1) {
       Set<ao.a<T>> $$2 = this.a.get($$0);
       if ($$2 != null) {
          $$2.remove($$1);
@@ -28,7 +28,7 @@ public abstract class cw<T extends cw.a> implements ao<T> {
    }
 
    @Override
-   public final void a(aff $$0) {
+   public final void a(afg $$0) {
       this.a.remove($$0);
    }
 
@@ -39,11 +39,11 @@ public abstract class cw<T extends cw.a> implements ao<T> {
       return this.b($$0, $$2, $$1);
    }
 
-   protected void a(aks $$0, Predicate<T> $$1) {
-      aff $$2 = $$0.O();
+   protected void a(akt $$0, Predicate<T> $$1) {
+      afg $$2 = $$0.O();
       Set<ao.a<T>> $$3 = this.a.get($$2);
       if ($$3 != null && !$$3.isEmpty()) {
-         ecq $$4 = bq.b($$0, $$0);
+         ecs $$4 = bq.b($$0, $$0);
          List<ao.a<T>> $$5 = null;
 
          for (ao.a<T> $$6 : $$3) {

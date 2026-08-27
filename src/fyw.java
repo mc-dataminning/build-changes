@@ -1,39 +1,50 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import com.google.common.collect.ImmutableList;
 import javax.annotation.Nullable;
 
-public class fyw extends fyx {
+public final class fyw {
+   private static final int a = 16;
+   private static final int b = 16;
+   private static final String c = "missingno";
+   private static final aey d = new aey("missingno");
+   private static final anx e = new anx.a().a(gar.a, new gar(ImmutableList.of(new gaq(0, -1)), 16, 16, 1, false)).a();
    @Nullable
-   private CompletableFuture<fyx.a> f;
+   private static fyt f;
 
-   public fyw(anu $$0, aex $$1, Executor $$2) {
-      super($$1);
-      this.f = CompletableFuture.supplyAsync(() -> fyx.a.a($$0, $$1), $$2);
-   }
+   private static eks a(int $$0, int $$1) {
+      eks $$2 = new eks($$0, $$1, false);
+      int $$3 = -16777216;
+      int $$4 = -524040;
 
-   @Override
-   protected fyx.a b(anu $$0) {
-      if (this.f != null) {
-         fyx.a $$1 = this.f.join();
-         this.f = null;
-         return $$1;
-      } else {
-         return fyx.a.a($$0, this.e);
+      for (int $$5 = 0; $$5 < $$1; $$5++) {
+         for (int $$6 = 0; $$6 < $$0; $$6++) {
+            if ($$5 < $$1 / 2 ^ $$6 < $$0 / 2) {
+               $$2.a($$6, $$5, -524040);
+            } else {
+               $$2.a($$6, $$5, -16777216);
+            }
+         }
       }
+
+      return $$2;
    }
 
-   public CompletableFuture<Void> d() {
-      return this.f == null ? CompletableFuture.completedFuture(null) : this.f.thenApply($$0 -> null);
+   public static fza a() {
+      eks $$0 = a(16, 16);
+      return new fza(d, new gat(16, 16), $$0, e);
    }
 
-   @Override
-   public void a(fzf $$0, anu $$1, aex $$2, Executor $$3) {
-      this.f = CompletableFuture.supplyAsync(() -> fyx.a.a($$1, this.e), ac.f());
-      this.f.thenRunAsync(() -> $$0.a(this.e, this), a($$3));
+   public static aey b() {
+      return d;
    }
 
-   private static Executor a(Executor $$0) {
-      return $$1 -> $$0.execute(() -> RenderSystem.recordRenderCall($$1::run));
+   public static fyt c() {
+      if (f == null) {
+         eks $$0 = a(16, 16);
+         $$0.i();
+         f = new fyt($$0);
+         eqx.O().Y().a(d, f);
+      }
+
+      return f;
    }
 }

@@ -1,24 +1,40 @@
-public class aal implements ve<wx> {
-   private final tm a;
+public class aal implements vf<wy> {
+   private final long a;
+   private final long b;
 
-   public aal(tm $$0) {
+   public aal(long $$0, long $$1, boolean $$2) {
       this.a = $$0;
+      long $$3 = $$1;
+      if (!$$2) {
+         $$3 = -$$1;
+         if ($$3 == 0L) {
+            $$3 = -1L;
+         }
+      }
+
+      this.b = $$3;
    }
 
-   public aal(sp $$0) {
-      this.a = $$0.l();
+   public aal(sq $$0) {
+      this.a = $$0.readLong();
+      this.b = $$0.readLong();
    }
 
    @Override
-   public void a(sp $$0) {
-      $$0.a(this.a);
+   public void a(sq $$0) {
+      $$0.b(this.a);
+      $$0.b(this.b);
    }
 
-   public void a(wx $$0) {
+   public void a(wy $$0) {
       $$0.a(this);
    }
 
-   public tm a() {
+   public long a() {
       return this.a;
+   }
+
+   public long d() {
+      return this.b;
    }
 }

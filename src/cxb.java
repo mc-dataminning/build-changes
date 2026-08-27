@@ -1,84 +1,69 @@
-import java.util.Map;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class cxb extends cro {
-   public static final int c = 1;
-   public static final int d = 3;
-   public static final dgj e = dfz.aK;
-   private static final int h = 6;
-   private static final double i = 3.0;
-   public static final Predicate<cqt.c> f = $$0 -> $$0 == cqt.c.b;
-   public static final Predicate<cqt.c> g = $$0 -> $$0 == cqt.c.c;
-   private final Predicate<cqt.c> j;
+public class cxb extends csx implements czy {
+   public static final dgc a = dgb.j;
+   public static final dgc b = dgb.C;
+   protected static final eii c = eif.a(csx.a(5.0, 0.0, 5.0, 11.0, 7.0, 11.0), csx.a(6.0, 7.0, 6.0, 10.0, 9.0, 10.0));
+   protected static final eii d = eif.a(csx.a(5.0, 1.0, 5.0, 11.0, 8.0, 11.0), csx.a(6.0, 8.0, 6.0, 10.0, 10.0, 10.0));
 
-   public cxb(dfi.d $$0, Predicate<cqt.c> $$1, Map<cja, id> $$2) {
-      super($$0, $$2);
-      this.j = $$1;
-      this.k(this.C.b().a(e, Integer.valueOf(1)));
+   public cxb(dfk.d $$0) {
+      super($$0);
+      this.k(this.C.b().a(a, Boolean.valueOf(false)).a(b, Boolean.valueOf(false)));
    }
 
+   @Nullable
    @Override
-   public boolean d(dfj $$0) {
-      return $$0.c(e) == 3;
-   }
+   public dfl a(clp $$0) {
+      eao $$1 = $$0.q().b_($$0.a());
 
-   @Override
-   protected boolean a(eal $$0) {
-      return $$0 == ean.c && this.j == f;
-   }
-
-   @Override
-   protected double b(dfj $$0) {
-      return (6.0 + (double)$$0.c(e).intValue() * 3.0) / 16.0;
-   }
-
-   @Override
-   public void a(dfj $$0, cpv $$1, gw $$2, biq $$3) {
-      if (!$$1.B && $$3.bM() && this.a($$0, $$2, $$3)) {
-         $$3.ay();
-         if ($$3.a($$1, $$2)) {
-            this.d($$0, $$1, $$2);
+      for (hc $$2 : $$0.f()) {
+         if ($$2.o() == hc.a.b) {
+            dfl $$3 = this.n().a(a, Boolean.valueOf($$2 == hc.b));
+            if ($$3.a((cqa)$$0.q(), $$0.a())) {
+               return $$3.a(b, Boolean.valueOf($$1.a() == eap.c));
+            }
          }
       }
-   }
 
-   protected void d(dfj $$0, cpv $$1, gw $$2) {
-      e($$0, $$1, $$2);
-   }
-
-   public static void e(dfj $$0, cpv $$1, gw $$2) {
-      int $$3 = $$0.c(e) - 1;
-      dfj $$4 = $$3 == 0 ? csw.ft.n() : $$0.a(e, Integer.valueOf($$3));
-      $$1.b($$2, $$4);
-      $$1.a(djt.c, $$2, djt.a.a($$4));
+      return null;
    }
 
    @Override
-   public void a(dfj $$0, cpv $$1, gw $$2, cqt.c $$3) {
-      if (ctp.a($$1, $$3) && $$0.c(e) != 3 && this.j.test($$3)) {
-         dfj $$4 = $$0.a(e);
-         $$1.b($$2, $$4);
-         $$1.a(djt.c, $$2, djt.a.a($$4));
+   public eii a(dfl $$0, cpd $$1, gw $$2, ehu $$3) {
+      return $$0.c(a) ? d : c;
+   }
+
+   @Override
+   protected void a(dfm.a<csx, dfl> $$0) {
+      $$0.a(a, b);
+   }
+
+   @Override
+   public boolean a(dfl $$0, cqa $$1, gw $$2) {
+      hc $$3 = h($$0).g();
+      return csx.a($$1, $$2.a($$3), $$3.g());
+   }
+
+   protected static hc h(dfl $$0) {
+      return $$0.c(a) ? hc.a : hc.b;
+   }
+
+   @Override
+   public dfl a(dfl $$0, hc $$1, dfl $$2, cpy $$3, gw $$4, gw $$5) {
+      if ($$0.c(b)) {
+         $$3.a($$4, eap.c, eap.c.a($$3));
       }
+
+      return h($$0).g() == $$1 && !$$0.a($$3, $$4) ? csy.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public int a(dfj $$0, cpv $$1, gw $$2) {
-      return $$0.c(e);
+   public eao c_(dfl $$0) {
+      return $$0.c(b) ? eap.c.a(false) : super.c_($$0);
    }
 
    @Override
-   protected void a(dfk.a<csv, dfj> $$0) {
-      $$0.a(e);
-   }
-
-   @Override
-   protected void a(dfj $$0, cpv $$1, gw $$2, eal $$3) {
-      if (!this.d($$0)) {
-         dfj $$4 = $$0.a(e, Integer.valueOf($$0.c(e) + 1));
-         $$1.b($$2, $$4);
-         $$1.a(djt.c, $$2, djt.a.a($$4));
-         $$1.c(1047, $$2, 0);
-      }
+   public boolean a(dfl $$0, cpd $$1, gw $$2, ebe $$3) {
+      return false;
    }
 }

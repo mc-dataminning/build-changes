@@ -1,70 +1,36 @@
-import com.mojang.logging.LogUtils;
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.primitives.Floats;
+import it.unimi.dsi.fastutil.ints.IntArrays;
+import org.joml.Vector3f;
 
-public class elz {
-   private static final Logger a = LogUtils.getLogger();
-   @Nullable
-   private static CompletableFuture<elz.a> b;
+public interface elz {
+   elz a = a(0.0F, 0.0F, 0.0F);
+   elz b = a((elz.a)($$0 -> -$$0.z()));
 
-   public static CompletableFuture<elz.a> a() {
-      if (b == null || a(b)) {
-         b = b();
-      }
-
-      return b;
+   static elz a(float $$0, float $$1, float $$2) {
+      return a(new Vector3f($$0, $$1, $$2));
    }
 
-   private static boolean a(CompletableFuture<elz.a> $$0) {
-      elz.a $$1 = $$0.getNow(null);
-      return $$1 != null && $$1.b() != null;
+   static elz a(Vector3f $$0) {
+      return a($$0::distanceSquared);
    }
 
-   private static CompletableFuture<elz.a> b() {
-      return CompletableFuture.supplyAsync(() -> {
-         emf $$0 = emf.a();
+   static elz a(elz.a $$0) {
+      return $$1 -> {
+         float[] $$2 = new float[$$1.length];
+         int[] $$3 = new int[$$1.length];
 
-         try {
-            if ($$0.f() != emf.a.a) {
-               return new elz.a(elz.b.b);
-            } else {
-               return !$$0.e() ? new elz.a(elz.b.c) : new elz.a(elz.b.a);
-            }
-         } catch (ens var2) {
-            a.error("Couldn't connect to realms", var2);
-            return var2.a.a() == 401 ? new elz.a(elz.b.d) : new elz.a(var2);
+         for (int $$4 = 0; $$4 < $$1.length; $$3[$$4] = $$4++) {
+            $$2[$$4] = $$0.apply($$1[$$4]);
          }
-      }, ac.g());
+
+         IntArrays.mergeSort($$3, ($$1x, $$2x) -> Floats.compare($$2[$$2x], $$2[$$1x]));
+         return $$3;
+      };
    }
 
-   public static record a(elz.b a, @Nullable ens b) {
-      public a(elz.b $$0) {
-         this($$0, null);
-      }
+   int[] sort(Vector3f[] var1);
 
-      public a(ens $$0) {
-         this(elz.b.e, $$0);
-      }
-
-      @Nullable
-      public eyk a(eyk $$0) {
-         return (eyk)(switch (this.a) {
-            case a -> null;
-            case b -> new eoe($$0);
-            case c -> new eop($$0);
-            case d -> new eoj(tm.c("mco.error.invalid.session.title"), tm.c("mco.error.invalid.session.message"), $$0);
-            case e -> new eoj(Objects.requireNonNull(this.b), $$0);
-         });
-      }
-   }
-
-   public static enum b {
-      a,
-      b,
-      c,
-      d,
-      e;
+   public interface a {
+      float apply(Vector3f var1);
    }
 }

@@ -1,5 +1,5 @@
-public record vy(aex a) implements vx {
-   @Override
-   public void a(sp $$0) {
-   }
+public interface vy {
+   void a(sq var1);
+
+   aey a();
 }

@@ -1,67 +1,125 @@
-import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class brf extends bqb {
-   private final bwq a;
-   private final double b;
-   private double c;
-   private double d;
-   private double e;
+public class brf extends bqq {
+   private final csx g;
+   private final bjk h;
+   private int i;
+   private static final int j = 20;
 
-   public brf(bwq $$0, double $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.a(EnumSet.of(bqb.a.a));
+   public brf(csx $$0, bjr $$1, double $$2, int $$3) {
+      super($$1, $$2, 24, $$3);
+      this.g = $$0;
+      this.h = $$1;
    }
 
    @Override
    public boolean a() {
-      if (!this.a.gs() && this.a.bO()) {
-         ehn $$0 = btw.a(this.a, 5, 4);
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.c = $$0.c;
-            this.d = $$0.d;
-            this.e = $$0.e;
-            return true;
-         }
+      if (!this.h.dL().X().b(cpt.c)) {
+         return false;
+      } else if (this.c > 0) {
+         this.c--;
+         return false;
+      } else if (this.n()) {
+         this.c = b(20);
+         return true;
       } else {
+         this.c = this.a(this.a);
          return false;
       }
    }
 
    @Override
-   public void c() {
-      this.a.L().a(this.c, this.d, this.e, this.b);
+   public void d() {
+      super.d();
+      this.h.ab = 1.0F;
    }
 
    @Override
-   public boolean b() {
-      return !this.a.gs() && !this.a.L().l() && this.a.bO();
+   public void c() {
+      super.c();
+      this.i = 0;
+   }
+
+   public void a(cpy $$0, gw $$1) {
+   }
+
+   public void a(cpx $$0, gw $$1) {
    }
 
    @Override
    public void e() {
-      if (!this.a.gs() && this.a.ef().a(this.a(50)) == 0) {
-         biq $$0 = this.a.cQ();
-         if ($$0 == null) {
-            return;
-         }
-
-         if ($$0 instanceof cbu $$1) {
-            int $$2 = this.a.gy();
-            int $$3 = this.a.gE();
-            if ($$3 > 0 && this.a.ef().a($$3) < $$2) {
-               this.a.h($$1);
-               return;
+      super.e();
+      cpx $$0 = this.h.dL();
+      gw $$1 = this.h.dl();
+      gw $$2 = this.a($$1, $$0);
+      ase $$3 = this.h.ef();
+      if (this.m() && $$2 != null) {
+         if (this.i > 0) {
+            ehp $$4 = this.h.do();
+            this.h.o($$4.c, 0.3, $$4.e);
+            if (!$$0.B) {
+               double $$5 = 0.08;
+               ((aks)$$0)
+                  .a(
+                     new it(ix.O, new cjh(cjk.qd)),
+                     (double)$$2.u() + 0.5,
+                     (double)$$2.v() + 0.7,
+                     (double)$$2.w() + 0.5,
+                     3,
+                     ((double)$$3.i() - 0.5) * 0.08,
+                     ((double)$$3.i() - 0.5) * 0.08,
+                     ((double)$$3.i() - 0.5) * 0.08,
+                     0.15F
+                  );
             }
-
-            this.a.v(5);
          }
 
-         this.a.bA();
-         this.a.gJ();
-         this.a.dL().a(this.a, (byte)6);
+         if (this.i % 2 == 0) {
+            ehp $$6 = this.h.do();
+            this.h.o($$6.c, -0.3, $$6.e);
+            if (this.i % 6 == 0) {
+               this.a((cpy)$$0, this.e);
+            }
+         }
+
+         if (this.i > 60) {
+            $$0.a($$2, false);
+            if (!$$0.B) {
+               for (int $$7 = 0; $$7 < 20; $$7++) {
+                  double $$8 = $$3.k() * 0.02;
+                  double $$9 = $$3.k() * 0.02;
+                  double $$10 = $$3.k() * 0.02;
+                  ((aks)$$0).a(ix.W, (double)$$2.u() + 0.5, (double)$$2.v(), (double)$$2.w() + 0.5, 1, $$8, $$9, $$10, 0.15F);
+               }
+
+               this.a($$0, $$2);
+            }
+         }
+
+         this.i++;
       }
+   }
+
+   @Nullable
+   private gw a(gw $$0, cpd $$1) {
+      if ($$1.a_($$0).a(this.g)) {
+         return $$0;
+      } else {
+         gw[] $$2 = new gw[]{$$0.d(), $$0.g(), $$0.h(), $$0.e(), $$0.f(), $$0.d().d()};
+
+         for (gw $$3 : $$2) {
+            if ($$1.a_($$3).a(this.g)) {
+               return $$3;
+            }
+         }
+
+         return null;
+      }
+   }
+
+   @Override
+   protected boolean a(cqa $$0, gw $$1) {
+      dhh $$2 = $$0.a(hz.a($$1.u()), hz.a($$1.w()), dhm.n, false);
+      return $$2 == null ? false : $$2.a_($$1).a(this.g) && $$2.a_($$1.c()).i() && $$2.a_($$1.b(2)).i();
    }
 }

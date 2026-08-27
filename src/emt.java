@@ -1,13 +1,10 @@
+import com.google.common.collect.Lists;
 import com.google.gson.annotations.SerializedName;
+import java.util.List;
 
-public class emt extends enl implements enf {
-   @SerializedName("name")
-   public String a;
-   @SerializedName("description")
-   public String b;
-
-   public emt(String $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+public class emt extends enn implements enh {
+   @SerializedName("pingResults")
+   public List<eni> a = Lists.newArrayList();
+   @SerializedName("worldIds")
+   public List<Long> b = Lists.newArrayList();
 }

@@ -1,24 +1,40 @@
-public class acj implements ve<abd> {
-   private final aex a;
+public class acj implements vf<abe> {
+   private final cfy a;
+   private final boolean b;
+   private final boolean c;
 
-   public acj(cmk<?> $$0) {
-      this.a = $$0.a();
+   public acj(cfy $$0, boolean $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public acj(sp $$0) {
-      this.a = $$0.s();
+   public acj(sq $$0) {
+      this.a = $$0.b(cfy.class);
+      this.b = $$0.readBoolean();
+      this.c = $$0.readBoolean();
    }
 
    @Override
-   public void a(sp $$0) {
+   public void a(sq $$0) {
       $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
-   public void a(abd $$0) {
+   public void a(abe $$0) {
       $$0.a(this);
    }
 
-   public aex a() {
+   public cfy a() {
       return this.a;
+   }
+
+   public boolean d() {
+      return this.b;
+   }
+
+   public boolean e() {
+      return this.c;
    }
 }

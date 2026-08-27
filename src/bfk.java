@@ -1,52 +1,48 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 
-public interface bfk {
-   bfj a();
-
-   static <T> bfk.b<T> a(T $$0, int $$1) {
-      return new bfk.b<>($$0, bfj.a($$1));
+public class bfk<E> extends bfo<bfm.b<E>> {
+   public static <E> Codec<bfk<E>> a(Codec<E> $$0) {
+      return bfm.b.a($$0).listOf().xmap(bfk::new, bfo::e);
    }
 
-   public static class a implements bfk {
-      private final bfj a;
-
-      public a(int $$0) {
-         this.a = bfj.a($$0);
-      }
-
-      public a(bfj $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public bfj a() {
-         return this.a;
-      }
+   public static <E> Codec<bfk<E>> b(Codec<E> $$0) {
+      return arh.a(bfm.b.a($$0).listOf()).xmap(bfk::new, bfo::e);
    }
 
-   public static class b<T> implements bfk {
-      private final T a;
-      private final bfj b;
+   bfk(List<? extends bfm.b<E>> $$0) {
+      super($$0);
+   }
 
-      b(T $$0, bfj $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   public static <E> bfk.a<E> a() {
+      return new bfk.a<>();
+   }
+
+   public static <E> bfk<E> b() {
+      return new bfk<>(List.of());
+   }
+
+   public static <E> bfk<E> a(E $$0) {
+      return new bfk<>(List.of(bfm.a($$0, 1)));
+   }
+
+   public Optional<E> a(ase $$0) {
+      return this.b($$0).map(bfm.b::b);
+   }
+
+   public static class a<E> {
+      private final Builder<bfm.b<E>> a = ImmutableList.builder();
+
+      public bfk.a<E> a(E $$0, int $$1) {
+         this.a.add(bfm.a($$0, $$1));
+         return this;
       }
 
-      public T b() {
-         return this.a;
-      }
-
-      @Override
-      public bfj a() {
-         return this.b;
-      }
-
-      public static <E> Codec<bfk.b<E>> a(Codec<E> $$0) {
-         return RecordCodecBuilder.create(
-            $$1 -> $$1.group($$0.fieldOf("data").forGetter(bfk.b::b), bfj.a.fieldOf("weight").forGetter(bfk.b::a)).apply($$1, bfk.b::new)
-         );
+      public bfk<E> a() {
+         return new bfk<>(this.a.build());
       }
    }
 }

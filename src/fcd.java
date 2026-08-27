@@ -1,15 +1,5 @@
-import java.util.Set;
+import java.util.List;
 
-public class fcd extends fbs {
-   private static final tm i = tm.c("gui.recipebook.toggleRecipes.smeltable");
-
-   @Override
-   protected tm d() {
-      return i;
-   }
-
-   @Override
-   protected Set<cja> b() {
-      return dck.f().keySet();
-   }
+public interface fcd {
+   void a(List<cmm<?>> var1);
 }

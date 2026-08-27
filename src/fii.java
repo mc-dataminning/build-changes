@@ -1,17 +1,24 @@
 public class fii {
-   private final fik a;
-   private final fij b;
+   public static final fii a = new fii(0.0F);
+   final float b;
+   final float c;
+   final float d;
 
-   private fii(fik $$0, fij $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public fii(float $$0, float $$1, float $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public fic a() {
-      return this.a.a().a(this.b.a, this.b.b);
+   public fii(float $$0) {
+      this($$0, $$0, $$0);
    }
 
-   public static fii a(fik $$0, int $$1, int $$2) {
-      return new fii($$0, new fij($$1, $$2));
+   public fii a(float $$0) {
+      return new fii(this.b + $$0, this.c + $$0, this.d + $$0);
+   }
+
+   public fii a(float $$0, float $$1, float $$2) {
+      return new fii(this.b + $$0, this.c + $$1, this.d + $$2);
    }
 }

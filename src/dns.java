@@ -1,111 +1,47 @@
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
 
-public class dns {
-   protected static double a(double $$0, double $$1, double $$2, double $$3) {
-      if ($$0 < $$3) {
-         $$0 = $$3;
-      }
-
-      double $$4 = 0.384;
-      double $$5 = $$0 / $$1 * 0.384;
-      double $$6 = 0.75 * Math.pow($$5, 1.3333333333333333);
-      double $$7 = Math.pow($$5, 0.6666666666666666);
-      double $$8 = 0.3333333333333333 * Math.log($$5);
-      double $$9 = $$2 * ($$6 - $$7 - $$8);
-      $$9 = Math.max($$9, 0.0);
-      return $$9 / 0.384 * $$1;
+public class dns extends dny<dpz> {
+   public dns(Codec<dpz> $$0) {
+      super($$0);
    }
 
-   protected static boolean a(cqp $$0, gw $$1, int $$2) {
-      if (b($$0, $$1)) {
-         return false;
-      } else {
-         float $$3 = 6.0F;
-         float $$4 = 6.0F / (float)$$2;
+   @Override
+   public boolean a(doa<dpz> $$0) {
+      dpz $$1 = $$0.f();
+      gw $$2 = $$0.e();
+      cqr $$3 = $$0.b();
+      ase $$4 = $$0.d();
+      boolean $$5 = false;
+      int $$6 = $$2.v();
+      int $$7 = $$6 + $$1.d();
+      int $$8 = $$6 - $$1.d() - 1;
+      int $$9 = $$1.c().a($$4);
+      gw.a $$10 = new gw.a();
 
-         for (float $$5 = 0.0F; $$5 < (float) (Math.PI * 2); $$5 += $$4) {
-            int $$6 = (int)(arx.b($$5) * (float)$$2);
-            int $$7 = (int)(arx.a($$5) * (float)$$2);
-            if (b($$0, $$1.b($$6, 0, $$7))) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-   }
-
-   protected static boolean a(cpw $$0, gw $$1) {
-      return $$0.a($$1, dns::c);
-   }
-
-   protected static boolean b(cpw $$0, gw $$1) {
-      return $$0.a($$1, dns::e);
-   }
-
-   protected static void a(hc $$0, int $$1, boolean $$2, Consumer<dfj> $$3) {
-      if ($$1 >= 3) {
-         $$3.accept(a($$0, dgg.e));
-
-         for (int $$4 = 0; $$4 < $$1 - 3; $$4++) {
-            $$3.accept(a($$0, dgg.d));
+      for (gw $$11 : gw.a($$2.b(-$$9, 0, -$$9), $$2.b($$9, 0, $$9))) {
+         int $$12 = $$11.u() - $$2.u();
+         int $$13 = $$11.w() - $$2.w();
+         if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
+            $$5 |= this.a($$1, $$3, $$4, $$7, $$8, $$10.g($$11));
          }
       }
 
-      if ($$1 >= 2) {
-         $$3.accept(a($$0, dgg.c));
+      return $$5;
+   }
+
+   protected boolean a(dpz $$0, cqr $$1, ase $$2, int $$3, int $$4, gw.a $$5) {
+      boolean $$6 = false;
+
+      for (int $$7 = $$3; $$7 > $$4; $$7--) {
+         $$5.q($$7);
+         if ($$0.b().test($$1, $$5)) {
+            dfl $$8 = $$0.a().a($$1, $$2, $$5);
+            $$1.a($$5, $$8, 2);
+            this.a($$1, $$5);
+            $$6 = true;
+         }
       }
 
-      if ($$1 >= 1) {
-         $$3.accept(a($$0, $$2 ? dgg.a : dgg.b));
-      }
-   }
-
-   protected static void a(cpw $$0, gw $$1, hc $$2, int $$3, boolean $$4) {
-      if (b($$0.a_($$1.a($$2.g())))) {
-         gw.a $$5 = $$1.j();
-         a($$2, $$3, $$4, $$3x -> {
-            if ($$3x.a(csw.rs)) {
-               $$3x = $$3x.a(cyl.c, Boolean.valueOf($$0.y($$5)));
-            }
-
-            $$0.a($$5, $$3x, 2);
-            $$5.c($$2);
-         });
-      }
-   }
-
-   protected static boolean c(cpw $$0, gw $$1) {
-      dfj $$2 = $$0.a_($$1);
-      if ($$2.a(apt.br)) {
-         $$0.a($$1, csw.rt.n(), 2);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private static dfj a(hc $$0, dgg $$1) {
-      return csw.rs.n().a(cyl.a, $$0).a(cyl.b, $$1);
-   }
-
-   public static boolean a(dfj $$0) {
-      return b($$0) || $$0.a(csw.H);
-   }
-
-   public static boolean b(dfj $$0) {
-      return $$0.a(csw.rt) || $$0.a(apt.br);
-   }
-
-   public static boolean c(dfj $$0) {
-      return $$0.i() || $$0.a(csw.G);
-   }
-
-   public static boolean d(dfj $$0) {
-      return !$$0.i() && !$$0.a(csw.G);
-   }
-
-   public static boolean e(dfj $$0) {
-      return $$0.i() || $$0.a(csw.G) || $$0.a(csw.H);
+      return $$6;
    }
 }

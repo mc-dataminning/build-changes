@@ -1,4 +1,4 @@
-// 1.20.2 Pre-release 2	2026-08-28T00:30:35.4433578	vanilla/Model Definitions
+// 1.20.2 Pre-Release 3	2026-08-28T00:32:45.4694361	vanilla/Model Definitions
 85eef47cc497a4ed9c6f57929bcaa6fbf0137caa assets\minecraft\models\block\cherry_trapdoor_open.json
 7f8c744a8192c2170705d5883fb064210e3d2c93 assets\minecraft\models\item\shulker_shell.json
 8c796e9df7e05371423917450a3dea834bdaa2fe assets\minecraft\models\block\light_07.json
@@ -2705,8 +2705,8 @@ ce18c963f6e99dc9666e1ef3e60d34e0c261e132 assets\minecraft\models\block\magenta_c
 a324a3a39b4f6b9f06b10539e1af35f3fbf48999 assets\minecraft\models\item\spruce_log.json
 bbecaa7629473fa7615403878dd276e8a63251f7 assets\minecraft\blockstates\lime_bed.json
 0ff045f281c9dc8d1a39b6c931b24aafcdd31fac assets\minecraft\models\block\spruce_stairs.json
-9b360053d956ae5b3ab1f3e8eab86689a40b4810 assets\minecraft\models\item\recovery_compass_04.json
 ff9d56d7c367fdfdddaae384b8e5ed4b849cb506 assets\minecraft\models\item\diamond_helmet_netherite_trim.json
+9b360053d956ae5b3ab1f3e8eab86689a40b4810 assets\minecraft\models\item\recovery_compass_04.json
 6e590c8f30f02b92ad3473b82f2373bb24ce766b assets\minecraft\models\block\warped_slab_top.json
 559fbd1bb727a25f3a6bdcdad86cc0d86864f13a assets\minecraft\models\item\clock_22.json
 6e50550450d36372a163117bbe1a6a3ba55fa47a assets\minecraft\models\item\quartz_stairs.json

@@ -1,22 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class dmf extends dmk {
-   private final hk<csv> e;
-   public static final Codec<dmf> a = RecordCodecBuilder.create($$0 -> a($$0).and(hv.a(je.e).fieldOf("blocks").forGetter($$0x -> $$0x.e)).apply($$0, dmf::new));
+public class dmf implements dmb {
+   public static final Codec<dmf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ib.v(16).optionalFieldOf("offset", gw.b).forGetter($$0x -> $$0x.e)).apply($$0, dmf::new)
+   );
+   private final ib e;
 
-   public dmf(ib $$0, hk<csv> $$1) {
-      super($$0);
-      this.e = $$1;
+   public dmf(ib $$0) {
+      this.e = $$0;
+   }
+
+   public boolean a(cqr $$0, gw $$1) {
+      return !$$0.r($$1.a(this.e));
    }
 
    @Override
-   protected boolean a(dfj $$0) {
-      return $$0.a(this.e);
-   }
-
-   @Override
-   public dma<?> a() {
-      return dma.a;
+   public dmc<?> a() {
+      return dmc.h;
    }
 }

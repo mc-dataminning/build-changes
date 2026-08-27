@@ -18,13 +18,13 @@ public class gl<A extends ArgumentType<?>> implements gi<A, gl<A>.a> {
       return new gl<>($$0);
    }
 
-   public void a(gl<A>.a $$0, sp $$1) {
+   public void a(gl<A>.a $$0, sq $$1) {
    }
 
    public void a(gl<A>.a $$0, JsonObject $$1) {
    }
 
-   public gl<A>.a a(sp $$0) {
+   public gl<A>.a a(sq $$0) {
       return this.a;
    }
 

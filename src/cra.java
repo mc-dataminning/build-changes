@@ -1,70 +1,10 @@
-public abstract class cra {
-   public static final aew<cqt> a = a("the_void");
-   public static final aew<cqt> b = a("plains");
-   public static final aew<cqt> c = a("sunflower_plains");
-   public static final aew<cqt> d = a("snowy_plains");
-   public static final aew<cqt> e = a("ice_spikes");
-   public static final aew<cqt> f = a("desert");
-   public static final aew<cqt> g = a("swamp");
-   public static final aew<cqt> h = a("mangrove_swamp");
-   public static final aew<cqt> i = a("forest");
-   public static final aew<cqt> j = a("flower_forest");
-   public static final aew<cqt> k = a("birch_forest");
-   public static final aew<cqt> l = a("dark_forest");
-   public static final aew<cqt> m = a("old_growth_birch_forest");
-   public static final aew<cqt> n = a("old_growth_pine_taiga");
-   public static final aew<cqt> o = a("old_growth_spruce_taiga");
-   public static final aew<cqt> p = a("taiga");
-   public static final aew<cqt> q = a("snowy_taiga");
-   public static final aew<cqt> r = a("savanna");
-   public static final aew<cqt> s = a("savanna_plateau");
-   public static final aew<cqt> t = a("windswept_hills");
-   public static final aew<cqt> u = a("windswept_gravelly_hills");
-   public static final aew<cqt> v = a("windswept_forest");
-   public static final aew<cqt> w = a("windswept_savanna");
-   public static final aew<cqt> x = a("jungle");
-   public static final aew<cqt> y = a("sparse_jungle");
-   public static final aew<cqt> z = a("bamboo_jungle");
-   public static final aew<cqt> A = a("badlands");
-   public static final aew<cqt> B = a("eroded_badlands");
-   public static final aew<cqt> C = a("wooded_badlands");
-   public static final aew<cqt> D = a("meadow");
-   public static final aew<cqt> E = a("cherry_grove");
-   public static final aew<cqt> F = a("grove");
-   public static final aew<cqt> G = a("snowy_slopes");
-   public static final aew<cqt> H = a("frozen_peaks");
-   public static final aew<cqt> I = a("jagged_peaks");
-   public static final aew<cqt> J = a("stony_peaks");
-   public static final aew<cqt> K = a("river");
-   public static final aew<cqt> L = a("frozen_river");
-   public static final aew<cqt> M = a("beach");
-   public static final aew<cqt> N = a("snowy_beach");
-   public static final aew<cqt> O = a("stony_shore");
-   public static final aew<cqt> P = a("warm_ocean");
-   public static final aew<cqt> Q = a("lukewarm_ocean");
-   public static final aew<cqt> R = a("deep_lukewarm_ocean");
-   public static final aew<cqt> S = a("ocean");
-   public static final aew<cqt> T = a("deep_ocean");
-   public static final aew<cqt> U = a("cold_ocean");
-   public static final aew<cqt> V = a("deep_cold_ocean");
-   public static final aew<cqt> W = a("frozen_ocean");
-   public static final aew<cqt> X = a("deep_frozen_ocean");
-   public static final aew<cqt> Y = a("mushroom_fields");
-   public static final aew<cqt> Z = a("dripstone_caves");
-   public static final aew<cqt> aa = a("lush_caves");
-   public static final aew<cqt> ab = a("deep_dark");
-   public static final aew<cqt> ac = a("nether_wastes");
-   public static final aew<cqt> ad = a("warped_forest");
-   public static final aew<cqt> ae = a("crimson_forest");
-   public static final aew<cqt> af = a("soul_sand_valley");
-   public static final aew<cqt> ag = a("basalt_deltas");
-   public static final aew<cqt> ah = a("the_end");
-   public static final aew<cqt> ai = a("end_highlands");
-   public static final aew<cqt> aj = a("end_midlands");
-   public static final aew<cqt> ak = a("small_end_islands");
-   public static final aew<cqt> al = a("end_barrens");
+import com.mojang.serialization.Codec;
 
-   private static aew<cqt> a(String $$0) {
-      return aew.a(je.ap, new aex($$0));
+public class cra {
+   public static Codec<? extends cqz> a(ht<Codec<? extends cqz>> $$0) {
+      ht.a($$0, "fixed", crg.b);
+      ht.a($$0, "multi_noise", cri.c);
+      ht.a($$0, "checkerboard", crd.b);
+      return ht.a($$0, "the_end", crm.b);
    }
 }

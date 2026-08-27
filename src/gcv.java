@@ -1,67 +1,35 @@
-import java.util.List;
-import java.util.Locale;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import com.google.common.collect.AbstractIterator;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.PeekingIterator;
+import java.util.Comparator;
+import java.util.Iterator;
 
-public interface gcv<T> {
-   static <T> gcv<T> a() {
-      return $$0 -> List.of();
+public class gcv<T> extends AbstractIterator<T> {
+   private final PeekingIterator<T> a;
+   private final PeekingIterator<T> b;
+   private final Comparator<T> c;
+
+   public gcv(Iterator<T> $$0, Iterator<T> $$1, Comparator<T> $$2) {
+      this.a = Iterators.peekingIterator($$0);
+      this.b = Iterators.peekingIterator($$1);
+      this.c = $$2;
    }
 
-   static <T> gcv<T> a(List<T> $$0, Function<T, Stream<String>> $$1) {
-      // $VF: Couldn't be decompiled
-      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-      // java.lang.NullPointerException: Cannot invoke "org.jetbrains.java.decompiler.struct.gen.VarType.equals(Object)" because "curType" is null
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.setLambdaGenericTypes(NewExprent.java:668)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.toJava(NewExprent.java:401)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.getCastedExprent(ExprProcessor.java:1018)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.ExitExprent.toJava(ExitExprent.java:86)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.listToJava(ExprProcessor.java:895)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.BasicBlockStatement.toJava(BasicBlockStatement.java:90)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.SequenceStatement.toJava(SequenceStatement.java:107)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.IfStatement.toJava(IfStatement.java:261)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.RootStatement.toJava(RootStatement.java:36)
-      //   at org.jetbrains.java.decompiler.main.ClassWriter.writeMethod(ClassWriter.java:1283)
-      //
-      // Bytecode:
-      // 00: aload 0
-      // 01: invokeinterface java/util/List.isEmpty ()Z 1
-      // 06: ifeq 0d
-      // 09: invokestatic gcv.a ()Lgcv;
-      // 0c: areturn
-      // 0d: new gda
-      // 10: dup
-      // 11: invokespecial gda.<init> ()V
-      // 14: astore 2
-      // 15: aload 0
-      // 16: invokeinterface java/util/List.iterator ()Ljava/util/Iterator; 1
-      // 1b: astore 3
-      // 1c: aload 3
-      // 1d: invokeinterface java/util/Iterator.hasNext ()Z 1
-      // 22: ifeq 48
-      // 25: aload 3
-      // 26: invokeinterface java/util/Iterator.next ()Ljava/lang/Object; 1
-      // 2b: astore 4
-      // 2d: aload 1
-      // 2e: aload 4
-      // 30: invokeinterface java/util/function/Function.apply (Ljava/lang/Object;)Ljava/lang/Object; 2
-      // 35: checkcast java/util/stream/Stream
-      // 38: aload 2
-      // 39: aload 4
-      // 3b: invokedynamic accept (Lgda;Ljava/lang/Object;)Ljava/util/function/Consumer; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)V, gcv.a (Lgda;Ljava/lang/Object;Ljava/lang/String;)V, (Ljava/lang/String;)V ]
-      // 40: invokeinterface java/util/stream/Stream.forEach (Ljava/util/function/Consumer;)V 2
-      // 45: goto 1c
-      // 48: aload 2
-      // 49: invokevirtual gda.a ()V
-      // 4c: aload 2
-      // 4d: dup
-      // 4e: invokestatic java/util/Objects.requireNonNull (Ljava/lang/Object;)Ljava/lang/Object;
-      // 51: pop
-      // 52: invokedynamic search (Lgda;)Lgcv; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/String;)Ljava/util/List;, gda.a (Ljava/lang/String;)Ljava/util/List;, (Ljava/lang/String;)Ljava/util/List; ]
-      // 57: areturn
-   }
+   protected T computeNext() {
+      while (this.a.hasNext() && this.b.hasNext()) {
+         int $$0 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
+         if ($$0 == 0) {
+            this.b.next();
+            return (T)this.a.next();
+         }
 
-   List<T> search(String var1);
+         if ($$0 < 0) {
+            this.a.next();
+         } else {
+            this.b.next();
+         }
+      }
+
+      return (T)this.endOfData();
+   }
 }

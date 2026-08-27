@@ -1,40 +1,59 @@
-public class aci implements ve<abd> {
-   private final cfw a;
-   private final boolean b;
-   private final boolean c;
+public class aci implements vf<abe> {
+   private static final int a = 1;
+   private static final int b = 2;
+   private final float c;
+   private final float d;
+   private final boolean e;
+   private final boolean f;
 
-   public aci(cfw $$0, boolean $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public aci(float $$0, float $$1, boolean $$2, boolean $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public aci(sp $$0) {
-      this.a = $$0.b(cfw.class);
-      this.b = $$0.readBoolean();
-      this.c = $$0.readBoolean();
+   public aci(sq $$0) {
+      this.c = $$0.readFloat();
+      this.d = $$0.readFloat();
+      byte $$1 = $$0.readByte();
+      this.e = ($$1 & 1) > 0;
+      this.f = ($$1 & 2) > 0;
    }
 
    @Override
-   public void a(sp $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
+   public void a(sq $$0) {
       $$0.a(this.c);
+      $$0.a(this.d);
+      byte $$1 = 0;
+      if (this.e) {
+         $$1 = (byte)($$1 | 1);
+      }
+
+      if (this.f) {
+         $$1 = (byte)($$1 | 2);
+      }
+
+      $$0.k($$1);
    }
 
-   public void a(abd $$0) {
+   public void a(abe $$0) {
       $$0.a(this);
    }
 
-   public cfw a() {
-      return this.a;
+   public float a() {
+      return this.c;
    }
 
-   public boolean d() {
-      return this.b;
+   public float d() {
+      return this.d;
    }
 
    public boolean e() {
-      return this.c;
+      return this.e;
+   }
+
+   public boolean f() {
+      return this.f;
    }
 }

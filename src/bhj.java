@@ -1,4 +1,9 @@
 import javax.annotation.Nullable;
 
-public record bhj(bho a, float b, @Nullable bht c, float d) {
+public interface bhj extends bgt {
+   int[] a(hc var1);
+
+   boolean a(int var1, cjh var2, @Nullable hc var3);
+
+   boolean b(int var1, cjh var2, hc var3);
 }

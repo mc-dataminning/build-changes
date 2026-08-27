@@ -1,36 +1,31 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-public class zg implements ve<wx> {
-   private final int a;
-   private final bib b;
+public class zg implements vf<wy> {
+   private final IntList a;
 
-   public zg(int $$0, bib $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public zg(IntList $$0) {
+      this.a = new IntArrayList($$0);
    }
 
-   public zg(sp $$0) {
-      this.a = $$0.m();
-      this.b = $$0.a(jd.e);
+   public zg(int... $$0) {
+      this.a = new IntArrayList($$0);
+   }
+
+   public zg(sq $$0) {
+      this.a = $$0.a();
    }
 
    @Override
-   public void a(sp $$0) {
-      $$0.c(this.a);
-      $$0.a(jd.e, this.b);
+   public void a(sq $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(wx $$0) {
+   public void a(wy $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public biq a(cpv $$0) {
-      return $$0.a(this.a);
-   }
-
-   @Nullable
-   public bib a() {
-      return this.b;
+   public IntList a() {
+      return this.a;
    }
 }

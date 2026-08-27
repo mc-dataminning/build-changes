@@ -1,301 +1,116 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
-import java.util.Collections;
+import java.util.Set;
 
 public class aiv {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("commands.team.add.duplicate"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tm.c("commands.team.empty.unchanged"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tm.c("commands.team.option.name.unchanged"));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(tm.c("commands.team.option.color.unchanged"));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(tm.c("commands.team.option.friendlyfire.alreadyEnabled"));
-   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(tm.c("commands.team.option.friendlyfire.alreadyDisabled"));
-   private static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(tm.c("commands.team.option.seeFriendlyInvisibles.alreadyEnabled"));
-   private static final SimpleCommandExceptionType h = new SimpleCommandExceptionType(tm.c("commands.team.option.seeFriendlyInvisibles.alreadyDisabled"));
-   private static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(tm.c("commands.team.option.nametagVisibility.unchanged"));
-   private static final SimpleCommandExceptionType j = new SimpleCommandExceptionType(tm.c("commands.team.option.deathMessageVisibility.unchanged"));
-   private static final SimpleCommandExceptionType k = new SimpleCommandExceptionType(tm.c("commands.team.option.collisionRule.unchanged"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tn.c("commands.tag.add.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tn.c("commands.tag.remove.failed"));
 
    public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a(
-                                    "team"
-                                 )
-                                 .requires($$0x -> $$0x.c(2)))
-                              .then(
-                                 ((LiteralArgumentBuilder)du.a("list").executes($$0x -> a((dt)$$0x.getSource())))
-                                    .then(du.a("team", fa.a()).executes($$0x -> c((dt)$$0x.getSource(), fa.a($$0x, "team"))))
-                              ))
-                           .then(
-                              du.a("add")
-                                 .then(
-                                    ((RequiredArgumentBuilder)du.a("team", StringArgumentType.word())
-                                          .executes($$0x -> a((dt)$$0x.getSource(), StringArgumentType.getString($$0x, "team"))))
-                                       .then(
-                                          du.a("displayName", ea.a())
-                                             .executes($$0x -> a((dt)$$0x.getSource(), StringArgumentType.getString($$0x, "team"), ea.a($$0x, "displayName")))
-                                       )
-                                 )
-                           ))
-                        .then(du.a("remove").then(du.a("team", fa.a()).executes($$0x -> b((dt)$$0x.getSource(), fa.a($$0x, "team"))))))
-                     .then(du.a("empty").then(du.a("team", fa.a()).executes($$0x -> a((dt)$$0x.getSource(), fa.a($$0x, "team"))))))
-                  .then(
-                     du.a("join")
-                        .then(
-                           ((RequiredArgumentBuilder)du.a("team", fa.a())
-                                 .executes($$0x -> a((dt)$$0x.getSource(), fa.a($$0x, "team"), Collections.singleton(((dt)$$0x.getSource()).g().cx()))))
-                              .then(du.a("members", ev.b()).suggests(ev.a).executes($$0x -> a((dt)$$0x.getSource(), fa.a($$0x, "team"), ev.c($$0x, "members"))))
-                        )
-                  ))
-               .then(du.a("leave").then(du.a("members", ev.b()).suggests(ev.a).executes($$0x -> a((dt)$$0x.getSource(), ev.c($$0x, "members"))))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("tag").requires($$0x -> $$0x.c(2)))
             .then(
-               du.a("modify")
-                  .then(
-                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)du.a(
-                                                   "team", fa.a()
-                                                )
-                                                .then(
-                                                   du.a("displayName")
-                                                      .then(
-                                                         du.a("displayName", ea.a())
-                                                            .executes($$0x -> a((dt)$$0x.getSource(), fa.a($$0x, "team"), ea.a($$0x, "displayName")))
-                                                      )
-                                                ))
-                                             .then(
-                                                du.a("color")
-                                                   .then(
-                                                      du.a("value", dz.a()).executes($$0x -> a((dt)$$0x.getSource(), fa.a($$0x, "team"), dz.a($$0x, "value")))
-                                                   )
-                                             ))
-                                          .then(
-                                             du.a("friendlyFire")
-                                                .then(
-                                                   du.a("allowed", BoolArgumentType.bool())
-                                                      .executes($$0x -> b((dt)$$0x.getSource(), fa.a($$0x, "team"), BoolArgumentType.getBool($$0x, "allowed")))
-                                                )
-                                          ))
-                                       .then(
-                                          du.a("seeFriendlyInvisibles")
-                                             .then(
-                                                du.a("allowed", BoolArgumentType.bool())
-                                                   .executes($$0x -> a((dt)$$0x.getSource(), fa.a($$0x, "team"), BoolArgumentType.getBool($$0x, "allowed")))
-                                             )
-                                       ))
-                                    .then(
-                                       ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("nametagVisibility")
-                                                   .then(du.a("never").executes($$0x -> a((dt)$$0x.getSource(), fa.a($$0x, "team"), eio.b.b))))
-                                                .then(du.a("hideForOtherTeams").executes($$0x -> a((dt)$$0x.getSource(), fa.a($$0x, "team"), eio.b.c))))
-                                             .then(du.a("hideForOwnTeam").executes($$0x -> a((dt)$$0x.getSource(), fa.a($$0x, "team"), eio.b.d))))
-                                          .then(du.a("always").executes($$0x -> a((dt)$$0x.getSource(), fa.a($$0x, "team"), eio.b.a)))
-                                    ))
-                                 .then(
-                                    ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("deathMessageVisibility")
-                                                .then(du.a("never").executes($$0x -> b((dt)$$0x.getSource(), fa.a($$0x, "team"), eio.b.b))))
-                                             .then(du.a("hideForOtherTeams").executes($$0x -> b((dt)$$0x.getSource(), fa.a($$0x, "team"), eio.b.c))))
-                                          .then(du.a("hideForOwnTeam").executes($$0x -> b((dt)$$0x.getSource(), fa.a($$0x, "team"), eio.b.d))))
-                                       .then(du.a("always").executes($$0x -> b((dt)$$0x.getSource(), fa.a($$0x, "team"), eio.b.a)))
-                                 ))
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)du.a("targets", ee.b())
+                        .then(
+                           du.a("add")
                               .then(
-                                 ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("collisionRule")
-                                             .then(du.a("never").executes($$0x -> a((dt)$$0x.getSource(), fa.a($$0x, "team"), eio.a.b))))
-                                          .then(du.a("pushOwnTeam").executes($$0x -> a((dt)$$0x.getSource(), fa.a($$0x, "team"), eio.a.d))))
-                                       .then(du.a("pushOtherTeams").executes($$0x -> a((dt)$$0x.getSource(), fa.a($$0x, "team"), eio.a.c))))
-                                    .then(du.a("always").executes($$0x -> a((dt)$$0x.getSource(), fa.a($$0x, "team"), eio.a.a)))
-                              ))
+                                 du.a("name", StringArgumentType.word())
+                                    .executes($$0x -> a((dt)$$0x.getSource(), ee.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
+                              )
+                        ))
+                     .then(
+                        du.a("remove")
                            .then(
-                              du.a("prefix").then(du.a("prefix", ea.a()).executes($$0x -> b((dt)$$0x.getSource(), fa.a($$0x, "team"), ea.a($$0x, "prefix"))))
-                           ))
-                        .then(du.a("suffix").then(du.a("suffix", ea.a()).executes($$0x -> c((dt)$$0x.getSource(), fa.a($$0x, "team"), ea.a($$0x, "suffix")))))
-                  )
+                              du.a("name", StringArgumentType.word())
+                                 .suggests(($$0x, $$1) -> dw.b(a(ee.b($$0x, "targets")), $$1))
+                                 .executes($$0x -> b((dt)$$0x.getSource(), ee.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
+                           )
+                     ))
+                  .then(du.a("list").executes($$0x -> a((dt)$$0x.getSource(), ee.b($$0x, "targets"))))
             )
       );
    }
 
-   private static int a(dt $$0, Collection<String> $$1) {
-      eim $$2 = $$0.l().aF();
+   private static Collection<String> a(Collection<? extends bis> $$0) {
+      Set<String> $$1 = Sets.newHashSet();
 
-      for (String $$3 : $$1) {
-         $$2.f($$3);
+      for (bis $$2 : $$0) {
+         $$1.addAll($$2.ai());
+      }
+
+      return $$1;
+   }
+
+   private static int a(dt $$0, Collection<? extends bis> $$1, String $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (bis $$4 : $$1) {
+         if ($$4.a($$2)) {
+            $$3++;
+         }
+      }
+
+      if ($$3 == 0) {
+         throw a.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> tn.a("commands.tag.add.success.single", $$2, $$1.iterator().next().N_()), true);
+         } else {
+            $$0.a(() -> tn.a("commands.tag.add.success.multiple", $$2, $$1.size()), true);
+         }
+
+         return $$3;
+      }
+   }
+
+   private static int b(dt $$0, Collection<? extends bis> $$1, String $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (bis $$4 : $$1) {
+         if ($$4.b($$2)) {
+            $$3++;
+         }
+      }
+
+      if ($$3 == 0) {
+         throw b.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> tn.a("commands.tag.remove.success.single", $$2, $$1.iterator().next().N_()), true);
+         } else {
+            $$0.a(() -> tn.a("commands.tag.remove.success.multiple", $$2, $$1.size()), true);
+         }
+
+         return $$3;
+      }
+   }
+
+   private static int a(dt $$0, Collection<? extends bis> $$1) {
+      Set<String> $$2 = Sets.newHashSet();
+
+      for (bis $$3 : $$1) {
+         $$2.addAll($$3.ai());
       }
 
       if ($$1.size() == 1) {
-         $$0.a(() -> tm.a("commands.team.leave.success.single", $$1.iterator().next()), true);
+         bis $$4 = $$1.iterator().next();
+         if ($$2.isEmpty()) {
+            $$0.a(() -> tn.a("commands.tag.list.single.empty", $$4.N_()), false);
+         } else {
+            $$0.a(() -> tn.a("commands.tag.list.single.success", $$4.N_(), $$2.size(), tp.a($$2)), false);
+         }
+      } else if ($$2.isEmpty()) {
+         $$0.a(() -> tn.a("commands.tag.list.multiple.empty", $$1.size()), false);
       } else {
-         $$0.a(() -> tm.a("commands.team.leave.success.multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
-   }
-
-   private static int a(dt $$0, eik $$1, Collection<String> $$2) {
-      eim $$3 = $$0.l().aF();
-
-      for (String $$4 : $$2) {
-         $$3.a($$4, $$1);
-      }
-
-      if ($$2.size() == 1) {
-         $$0.a(() -> tm.a("commands.team.join.success.single", $$2.iterator().next(), $$1.d()), true);
-      } else {
-         $$0.a(() -> tm.a("commands.team.join.success.multiple", $$2.size(), $$1.d()), true);
+         $$0.a(() -> tn.a("commands.tag.list.multiple.success", $$1.size(), $$2.size(), tp.a($$2)), false);
       }
 
       return $$2.size();
-   }
-
-   private static int a(dt $$0, eik $$1, eio.b $$2) throws CommandSyntaxException {
-      if ($$1.j() == $$2) {
-         throw i.create();
-      } else {
-         $$1.a($$2);
-         $$0.a(() -> tm.a("commands.team.option.nametagVisibility.success", $$1.d(), $$2.b()), true);
-         return 0;
-      }
-   }
-
-   private static int b(dt $$0, eik $$1, eio.b $$2) throws CommandSyntaxException {
-      if ($$1.k() == $$2) {
-         throw j.create();
-      } else {
-         $$1.b($$2);
-         $$0.a(() -> tm.a("commands.team.option.deathMessageVisibility.success", $$1.d(), $$2.b()), true);
-         return 0;
-      }
-   }
-
-   private static int a(dt $$0, eik $$1, eio.a $$2) throws CommandSyntaxException {
-      if ($$1.l() == $$2) {
-         throw k.create();
-      } else {
-         $$1.a($$2);
-         $$0.a(() -> tm.a("commands.team.option.collisionRule.success", $$1.d(), $$2.a()), true);
-         return 0;
-      }
-   }
-
-   private static int a(dt $$0, eik $$1, boolean $$2) throws CommandSyntaxException {
-      if ($$1.i() == $$2) {
-         if ($$2) {
-            throw g.create();
-         } else {
-            throw h.create();
-         }
-      } else {
-         $$1.b($$2);
-         $$0.a(() -> tm.a("commands.team.option.seeFriendlyInvisibles." + ($$2 ? "enabled" : "disabled"), $$1.d()), true);
-         return 0;
-      }
-   }
-
-   private static int b(dt $$0, eik $$1, boolean $$2) throws CommandSyntaxException {
-      if ($$1.h() == $$2) {
-         if ($$2) {
-            throw e.create();
-         } else {
-            throw f.create();
-         }
-      } else {
-         $$1.a($$2);
-         $$0.a(() -> tm.a("commands.team.option.friendlyfire." + ($$2 ? "enabled" : "disabled"), $$1.d()), true);
-         return 0;
-      }
-   }
-
-   private static int a(dt $$0, eik $$1, tm $$2) throws CommandSyntaxException {
-      if ($$1.c().equals($$2)) {
-         throw c.create();
-      } else {
-         $$1.a($$2);
-         $$0.a(() -> tm.a("commands.team.option.name.success", $$1.d()), true);
-         return 0;
-      }
-   }
-
-   private static int a(dt $$0, eik $$1, n $$2) throws CommandSyntaxException {
-      if ($$1.n() == $$2) {
-         throw d.create();
-      } else {
-         $$1.a($$2);
-         $$0.a(() -> tm.a("commands.team.option.color.success", $$1.d(), $$2.g()), true);
-         return 0;
-      }
-   }
-
-   private static int a(dt $$0, eik $$1) throws CommandSyntaxException {
-      eim $$2 = $$0.l().aF();
-      Collection<String> $$3 = Lists.newArrayList($$1.g());
-      if ($$3.isEmpty()) {
-         throw b.create();
-      } else {
-         for (String $$4 : $$3) {
-            $$2.b($$4, $$1);
-         }
-
-         $$0.a(() -> tm.a("commands.team.empty.success", $$3.size(), $$1.d()), true);
-         return $$3.size();
-      }
-   }
-
-   private static int b(dt $$0, eik $$1) {
-      eim $$2 = $$0.l().aF();
-      $$2.d($$1);
-      $$0.a(() -> tm.a("commands.team.remove.success", $$1.d()), true);
-      return $$2.g().size();
-   }
-
-   private static int a(dt $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, tm.b($$1));
-   }
-
-   private static int a(dt $$0, String $$1, tm $$2) throws CommandSyntaxException {
-      eim $$3 = $$0.l().aF();
-      if ($$3.d($$1) != null) {
-         throw a.create();
-      } else {
-         eik $$4 = $$3.e($$1);
-         $$4.a($$2);
-         $$0.a(() -> tm.a("commands.team.add.success", $$4.d()), true);
-         return $$3.g().size();
-      }
-   }
-
-   private static int c(dt $$0, eik $$1) {
-      Collection<String> $$2 = $$1.g();
-      if ($$2.isEmpty()) {
-         $$0.a(() -> tm.a("commands.team.list.members.empty", $$1.d()), false);
-      } else {
-         $$0.a(() -> tm.a("commands.team.list.members.success", $$1.d(), $$2.size(), to.a($$2)), false);
-      }
-
-      return $$2.size();
-   }
-
-   private static int a(dt $$0) {
-      Collection<eik> $$1 = $$0.l().aF().g();
-      if ($$1.isEmpty()) {
-         $$0.a(() -> tm.c("commands.team.list.teams.empty"), false);
-      } else {
-         $$0.a(() -> tm.a("commands.team.list.teams.success", $$1.size(), to.b($$1, eik::d)), false);
-      }
-
-      return $$1.size();
-   }
-
-   private static int b(dt $$0, eik $$1, tm $$2) {
-      $$1.b($$2);
-      $$0.a(() -> tm.a("commands.team.option.prefix.success", $$2), false);
-      return 1;
-   }
-
-   private static int c(dt $$0, eik $$1, tm $$2) {
-      $$1.c($$2);
-      $$0.a(() -> tm.a("commands.team.option.suffix.success", $$2), false);
-      return 1;
    }
 }

@@ -1,46 +1,24 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.Function;
+import com.mojang.serialization.Dynamic;
 
-public abstract class auc extends DataFix {
-   private final String a;
-
-   public auc(Schema $$0, String $$1) {
-      super($$0, false);
-      this.a = $$1;
+public class auc extends ath {
+   public auc(Schema $$0) {
+      super($$0, ayz.s);
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(ayx.y);
-      Type<Pair<String, String>> $$1 = DSL.named(ayx.y.typeName(), baf.a());
-      if (!Objects.equals($$0, $$1)) {
-         throw new IllegalStateException("block type is not what was expected.");
-      } else {
-         TypeRewriteRule $$2 = this.fixTypeEverywhere(this.a + " for block", $$1, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
-         TypeRewriteRule $$3 = this.fixTypeEverywhereTyped(
-            this.a + " for block_state", this.getInputSchema().getType(ayx.u), $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> {
-                  Optional<String> $$1x = $$0xx.get("Name").asString().result();
-                  return $$1x.isPresent() ? $$0xx.set("Name", $$0xx.createString(this.a($$1x.get()))) : $$0xx;
-               })
-         );
-         return TypeRewriteRule.seq($$2, $$3);
-      }
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped("BlockEntityUUIDFix", this.getInputSchema().getType(this.a), $$0 -> {
+         $$0 = this.a($$0, "minecraft:conduit", this::c);
+         return this.a($$0, "minecraft:skull", this::b);
+      });
    }
 
-   protected abstract String a(String var1);
+   private Dynamic<?> b(Dynamic<?> $$0) {
+      return $$0.get("Owner").get().map($$0x -> a($$0x, "Id", "Id").orElse($$0x)).map($$1 -> $$0.remove("Owner").set("SkullOwner", $$1)).result().orElse($$0);
+   }
 
-   public static DataFix a(Schema $$0, String $$1, final Function<String, String> $$2) {
-      return new auc($$0, $$1) {
-         @Override
-         protected String a(String $$0) {
-            return $$2.apply($$0);
-         }
-      };
+   private Dynamic<?> c(Dynamic<?> $$0) {
+      return b($$0, "target_uuid", "Target").orElse($$0);
    }
 }

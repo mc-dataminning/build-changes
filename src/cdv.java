@@ -1,106 +1,118 @@
-public class cdv extends cdm implements dds {
-   private boolean f = true;
+public class cdv extends cdn {
+   static final aeg<String> c = aej.a(cdv.class, aei.e);
+   static final aeg<tn> d = aej.a(cdv.class, aei.f);
+   private final coy e = new cdv.a();
+   private static final int f = 4;
+   private int g;
 
-   public cdv(biu<? extends cdv> $$0, cpv $$1) {
+   public cdv(biw<? extends cdv> $$0, cpx $$1) {
       super($$0, $$1);
    }
 
-   public cdv(cpv $$0, double $$1, double $$2, double $$3) {
-      super(biu.X, $$1, $$2, $$3, $$0);
+   public cdv(cpx $$0, double $$1, double $$2, double $$3) {
+      super(biw.s, $$0, $$1, $$2, $$3);
    }
 
    @Override
-   public cdl.a z() {
-      return cdl.a.f;
+   protected cjc q() {
+      return cjk.na;
    }
 
    @Override
-   public dfj B() {
-      return csw.hc.n();
-   }
-
-   @Override
-   public int E() {
-      return 1;
-   }
-
-   @Override
-   public int b() {
-      return 5;
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      boolean $$4 = !$$3;
-      if ($$4 != this.L()) {
-         this.p($$4);
-      }
-   }
-
-   public boolean L() {
-      return this.f;
-   }
-
-   public void p(boolean $$0) {
-      this.f = $$0;
-   }
-
-   @Override
-   public double M() {
-      return this.dq();
-   }
-
-   @Override
-   public double N() {
-      return this.ds() + 0.5;
-   }
-
-   @Override
-   public double O() {
-      return this.dw();
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      if (!this.dL().B && this.bv() && this.L() && this.P()) {
-         this.e();
-      }
-   }
-
-   public boolean P() {
-      if (ddt.a(this.dL(), this)) {
-         return true;
-      } else {
-         for (byn $$1 : this.dL().a(byn.class, this.cG().c(0.25, 0.0, 0.25), bit.a)) {
-            if (ddt.a(this, $$1)) {
-               return true;
-            }
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   protected cja q() {
-      return cji.ne;
-   }
-
-   @Override
-   protected void b(qy $$0) {
-      super.b($$0);
-      $$0.a("Enabled", this.f);
+   protected void a_() {
+      super.a_();
+      this.al().a(c, "");
+      this.al().a(d, tm.a);
    }
 
    @Override
    protected void a(qy $$0) {
       super.a($$0);
-      this.f = $$0.e("Enabled") ? $$0.q("Enabled") : true;
+      this.e.b($$0);
+      this.al().b(c, this.G().m());
+      this.al().b(d, this.G().l());
    }
 
    @Override
-   public cel a(int $$0, cbt $$1) {
-      return new cfi($$0, $$1, this);
+   protected void b(qy $$0) {
+      super.b($$0);
+      this.e.a($$0);
+   }
+
+   @Override
+   public cdn.a z() {
+      return cdn.a.g;
+   }
+
+   @Override
+   public dfl B() {
+      return csy.fN.n();
+   }
+
+   public coy G() {
+      return this.e;
+   }
+
+   @Override
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      if ($$3 && this.ah - this.g >= 4) {
+         this.G().a(this.dL());
+         this.g = this.ah;
+      }
+   }
+
+   @Override
+   public bha a(cbw $$0, bgz $$1) {
+      return this.e.a($$0);
+   }
+
+   @Override
+   public void a(aeg<?> $$0) {
+      super.a($$0);
+      if (d.equals($$0)) {
+         try {
+            this.e.c(this.al().b(d));
+         } catch (Throwable var3) {
+         }
+      } else if (c.equals($$0)) {
+         this.e.a(this.al().b(c));
+      }
+   }
+
+   @Override
+   public boolean cM() {
+      return true;
+   }
+
+   public class a extends coy {
+      @Override
+      public aks e() {
+         return (aks)cdv.this.dL();
+      }
+
+      @Override
+      public void f() {
+         cdv.this.al().b(cdv.c, this.m());
+         cdv.this.al().b(cdv.d, this.l());
+      }
+
+      @Override
+      public ehp g() {
+         return cdv.this.dj();
+      }
+
+      public cdv h() {
+         return cdv.this;
+      }
+
+      @Override
+      public dt i() {
+         return new dt(this, cdv.this.dj(), cdv.this.bF(), this.e(), 2, this.n().getString(), cdv.this.N_(), this.e().n(), cdv.this);
+      }
+
+      @Override
+      public boolean j() {
+         return !cdv.this.dG();
+      }
    }
 }

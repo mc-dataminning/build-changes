@@ -1,60 +1,71 @@
+import com.google.common.collect.Maps;
+import java.util.List;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class cjz extends cgy {
-   public cjz(csv $$0, cja.a $$1) {
-      super($$0, $$1);
+public class cjz extends cjc {
+   private static final Map<ape, cjz> a = Maps.newHashMap();
+   private final int b;
+   private final ape c;
+   private final int d;
+
+   protected cjz(int $$0, ape $$1, cjc.a $$2, int $$3) {
+      super($$2);
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$3 * 20;
+      a.put(this.c, this);
    }
 
-   @Nullable
    @Override
-   public cln b(cln $$0) {
-      gw $$1 = $$0.a();
-      cpv $$2 = $$0.q();
-      dfj $$3 = $$2.a_($$1);
-      csv $$4 = this.e();
-      if (!$$3.a($$4)) {
-         return czk.a($$2, $$1) == 7 ? null : $$0;
+   public bha a(clr $$0) {
+      cpx $$1 = $$0.q();
+      gw $$2 = $$0.a();
+      dfl $$3 = $$1.a_($$2);
+      if ($$3.a(csy.dT) && !$$3.c(cwx.a)) {
+         cjh $$4 = $$0.n();
+         if (!$$1.B) {
+            cbw $$5 = $$0.o();
+            if ($$1.c_($$2) instanceof ddx $$6) {
+               $$6.b($$4.p());
+               $$1.a(djv.c, $$2, djv.a.a($$5, $$3));
+            }
+
+            $$4.h(1);
+            if ($$5 != null) {
+               $$5.a(app.al);
+            }
+         }
+
+         return bha.a($$1.B);
       } else {
-         hc $$5;
-         if ($$0.h()) {
-            $$5 = $$0.m() ? $$0.k().g() : $$0.k();
-         } else {
-            $$5 = $$0.k() == hc.b ? $$0.g() : hc.b;
-         }
-
-         int $$7 = 0;
-         gw.a $$8 = $$1.j().c($$5);
-
-         while ($$7 < 7) {
-            if (!$$2.B && !$$2.j($$8)) {
-               cbu $$9 = $$0.o();
-               int $$10 = $$2.aj();
-               if ($$9 instanceof aks && $$8.v() >= $$10) {
-                  ((aks)$$9).b(tm.a("build.tooHigh", $$10 - 1).a(n.m), true);
-               }
-               break;
-            }
-
-            $$3 = $$2.a_($$8);
-            if (!$$3.a(this.e())) {
-               if ($$3.a($$0)) {
-                  return cln.a($$0, $$8, $$5);
-               }
-               break;
-            }
-
-            $$8.c($$5);
-            if ($$5.o().d()) {
-               $$7++;
-            }
-         }
-
-         return null;
+         return bha.d;
       }
    }
 
+   public int h() {
+      return this.b;
+   }
+
    @Override
-   protected boolean d() {
-      return false;
+   public void a(cjh $$0, @Nullable cpx $$1, List<tn> $$2, cky $$3) {
+      $$2.add(this.i().a(n.h));
+   }
+
+   public ua i() {
+      return tn.c(this.a() + ".desc");
+   }
+
+   @Nullable
+   public static cjz a(ape $$0) {
+      return a.get($$0);
+   }
+
+   public ape x() {
+      return this.c;
+   }
+
+   public int y() {
+      return this.d;
    }
 }

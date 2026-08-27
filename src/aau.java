@@ -1,28 +1,27 @@
-public class aau implements ve<wx> {
-   private final int a;
-   private final int b;
-   private final int c;
+import javax.annotation.Nullable;
 
-   public aau(int $$0, int $$1, int $$2) {
+public class aau implements vf<wy> {
+   private final int a;
+   @Nullable
+   private final qy b;
+
+   public aau(int $$0, @Nullable qy $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
    }
 
-   public aau(sp $$0) {
+   public aau(sq $$0) {
       this.a = $$0.m();
-      this.b = $$0.m();
-      this.c = $$0.m();
+      this.b = $$0.p();
    }
 
    @Override
-   public void a(sp $$0) {
+   public void a(sq $$0) {
       $$0.c(this.a);
-      $$0.c(this.b);
-      $$0.c(this.c);
+      $$0.a((rs)this.b);
    }
 
-   public void a(wx $$0) {
+   public void a(wy $$0) {
       $$0.a(this);
    }
 
@@ -30,11 +29,13 @@ public class aau implements ve<wx> {
       return this.a;
    }
 
-   public int d() {
+   @Nullable
+   public qy d() {
       return this.b;
    }
 
-   public int e() {
-      return this.c;
+   @Override
+   public boolean b() {
+      return true;
    }
 }

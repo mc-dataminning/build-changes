@@ -10,24 +10,24 @@ import java.util.Optional;
 import java.util.Map.Entry;
 import javax.annotation.Nullable;
 
-public record cm(Map<hg<bib>, cm.b> b) {
+public record cm(Map<hg<bid>, cm.b> b) {
    public static final Codec<cm> a = Codec.unboundedMap(jd.e.r(), cm.b.a).xmap(cm::new, cm::b);
 
-   public boolean a(biq $$0) {
-      if ($$0 instanceof bjg $$1 && this.a($$1.es())) {
+   public boolean a(bis $$0) {
+      if ($$0 instanceof bji $$1 && this.a($$1.es())) {
          return true;
       }
 
       return false;
    }
 
-   public boolean a(bjg $$0) {
+   public boolean a(bji $$0) {
       return this.a($$0.es());
    }
 
-   public boolean a(Map<bib, bid> $$0) {
-      for (Entry<hg<bib>, cm.b> $$1 : this.b.entrySet()) {
-         bid $$2 = $$0.get($$1.getKey().a());
+   public boolean a(Map<bid, bif> $$0) {
+      for (Entry<hg<bid>, cm.b> $$1 : this.b.entrySet()) {
+         bif $$2 = $$0.get($$1.getKey().a());
          if (!$$1.getValue().a($$2)) {
             return false;
          }
@@ -45,18 +45,18 @@ public record cm(Map<hg<bib>, cm.b> b) {
    }
 
    public static class a {
-      private final Builder<hg<bib>, cm.b> a = ImmutableMap.builder();
+      private final Builder<hg<bid>, cm.b> a = ImmutableMap.builder();
 
       public static cm.a a() {
          return new cm.a();
       }
 
-      public cm.a a(bib $$0) {
+      public cm.a a(bid $$0) {
          this.a.put($$0.j(), new cm.b());
          return this;
       }
 
-      public cm.a a(bib $$0, cm.b $$1) {
+      public cm.a a(bid $$0, cm.b $$1) {
          this.a.put($$0.j(), $$1);
          return this;
       }
@@ -69,10 +69,10 @@ public record cm(Map<hg<bib>, cm.b> b) {
    public static record b(cl.d b, cl.d c, Optional<Boolean> d, Optional<Boolean> e) {
       public static final Codec<cm.b> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  arg.a(cl.d.d, "amplifier", cl.d.c).forGetter(cm.b::a),
-                  arg.a(cl.d.d, "duration", cl.d.c).forGetter(cm.b::b),
-                  arg.a(Codec.BOOL, "ambient").forGetter(cm.b::c),
-                  arg.a(Codec.BOOL, "visible").forGetter(cm.b::d)
+                  arh.a(cl.d.d, "amplifier", cl.d.c).forGetter(cm.b::a),
+                  arh.a(cl.d.d, "duration", cl.d.c).forGetter(cm.b::b),
+                  arh.a(Codec.BOOL, "ambient").forGetter(cm.b::c),
+                  arh.a(Codec.BOOL, "visible").forGetter(cm.b::d)
                )
                .apply($$0, cm.b::new)
       );
@@ -81,7 +81,7 @@ public record cm(Map<hg<bib>, cm.b> b) {
          this(cl.d.c, cl.d.c, Optional.empty(), Optional.empty());
       }
 
-      public boolean a(@Nullable bid $$0) {
+      public boolean a(@Nullable bif $$0) {
          if ($$0 == null) {
             return false;
          } else if (!this.b.d($$0.e())) {

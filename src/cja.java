@@ -1,383 +1,87 @@
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Multimap;
-import com.mojang.logging.LogUtils;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.UUID;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class cja implements cdz, cpu {
-   private static final Logger a = LogUtils.getLogger();
-   public static final Map<csv, cja> l = Maps.newHashMap();
-   protected static final UUID m = UUID.fromString("CB3F55D3-645C-4F38-A497-9C13A33DB5CF");
-   protected static final UUID n = UUID.fromString("FA233E1C-4180-4865-B01B-BCCE9785ACA3");
-   public static final int o = 64;
-   public static final int p = 32;
-   public static final int q = 13;
-   private final hg.c<cja> b = jd.i.f(this);
-   private final cjw c;
-   private final int d;
-   private final int e;
-   private final boolean f;
-   @Nullable
-   private final cja g;
-   @Nullable
-   private String h;
-   @Nullable
-   private final cei i;
-   private final cec j;
+public class cja extends cjc {
+   private static final String a = "instrument";
+   private final aqj<ciz> b;
 
-   public static int a(cja $$0) {
-      return $$0 == null ? 0 : jd.i.a($$0);
-   }
-
-   public static cja b(int $$0) {
-      return jd.i.a($$0);
-   }
-
-   @Deprecated
-   public static cja a(csv $$0) {
-      return l.getOrDefault($$0, cji.a);
-   }
-
-   public cja(cja.a $$0) {
-      this.c = $$0.d;
-      this.g = $$0.c;
-      this.e = $$0.b;
-      this.d = $$0.a;
-      this.i = $$0.e;
-      this.f = $$0.f;
-      this.j = $$0.g;
-      if (aa.aT) {
-         String $$1 = this.getClass().getSimpleName();
-         if (!$$1.endsWith("Item")) {
-            a.error("Item classes should end with Item and {} doesn't.", $$1);
-         }
-      }
-   }
-
-   @Deprecated
-   public hg.c<cja> j() {
-      return this.b;
-   }
-
-   public void a(cpv $$0, bjg $$1, cjf $$2, int $$3) {
-   }
-
-   public void a(byn $$0) {
-   }
-
-   public void b(qy $$0) {
-   }
-
-   public boolean a(dfj $$0, cpv $$1, gw $$2, cbu $$3) {
-      return true;
+   public cja(cjc.a $$0, aqj<ciz> $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public cja k() {
-      return this;
-   }
-
-   public bgy a(clp $$0) {
-      return bgy.d;
-   }
-
-   public float a(cjf $$0, dfj $$1) {
-      return 1.0F;
-   }
-
-   public bgz<cjf> a(cpv $$0, cbu $$1, bgx $$2) {
-      if (this.u()) {
-         cjf $$3 = $$1.b($$2);
-         if ($$1.t(this.v().d())) {
-            $$1.c($$2);
-            return bgz.b($$3);
-         } else {
-            return bgz.d($$3);
-         }
-      } else {
-         return bgz.c($$1.b($$2));
+   public void a(cjh $$0, @Nullable cpx $$1, List<tn> $$2, cky $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      Optional<aex<ciz>> $$4 = this.d($$0).flatMap(hg::e);
+      if ($$4.isPresent()) {
+         ua $$5 = tn.c(ac.a("instrument", $$4.get().a()));
+         $$2.add($$5.a(n.h));
       }
    }
 
-   public cjf a(cjf $$0, cpv $$1, bjg $$2) {
-      return this.u() ? $$2.a($$1, $$0) : $$0;
+   public static cjh a(cjc $$0, hg<ciz> $$1) {
+      cjh $$2 = new cjh($$0);
+      a($$2, $$1);
+      return $$2;
    }
 
-   public final int l() {
-      return this.d;
+   public static void a(cjh $$0, aqj<ciz> $$1, ase $$2) {
+      Optional<hg<ciz>> $$3 = jd.am.b($$1).flatMap($$1x -> $$1x.a($$2));
+      $$3.ifPresent($$1x -> a($$0, $$1x));
    }
 
-   public final int n() {
-      return this.e;
-   }
-
-   public boolean o() {
-      return this.e > 0;
-   }
-
-   public boolean e(cjf $$0) {
-      return $$0.j();
-   }
-
-   public int f(cjf $$0) {
-      return Math.round(13.0F - (float)$$0.k() * 13.0F / (float)this.e);
-   }
-
-   public int g(cjf $$0) {
-      float $$1 = Math.max(0.0F, ((float)this.e - (float)$$0.k()) / (float)this.e);
-      return arx.h($$1 / 3.0F, 1.0F, 1.0F);
-   }
-
-   public boolean a(cjf $$0, cgd $$1, cet $$2, cbu $$3) {
-      return false;
-   }
-
-   public boolean a(cjf $$0, cjf $$1, cgd $$2, cet $$3, cbu $$4, bjy $$5) {
-      return false;
-   }
-
-   public boolean a(cjf $$0, bjg $$1, bjg $$2) {
-      return false;
-   }
-
-   public boolean a(cjf $$0, cpv $$1, dfj $$2, gw $$3, bjg $$4) {
-      return false;
-   }
-
-   public boolean a_(dfj $$0) {
-      return false;
-   }
-
-   public bgy a(cjf $$0, cbu $$1, bjg $$2, bgx $$3) {
-      return bgy.d;
-   }
-
-   public tm p() {
-      return tm.c(this.a());
+   private static void a(cjh $$0, hg<ciz> $$1) {
+      qy $$2 = $$0.w();
+      $$2.a("instrument", $$1.e().orElseThrow(() -> new IllegalStateException("Invalid instrument")).a().toString());
    }
 
    @Override
-   public String toString() {
-      return jd.i.b(this).a();
-   }
-
-   protected String q() {
-      if (this.h == null) {
-         this.h = ac.a("item", jd.i.b(this));
-      }
-
-      return this.h;
-   }
-
-   public String a() {
-      return this.q();
-   }
-
-   public String j(cjf $$0) {
-      return this.a();
-   }
-
-   public boolean r() {
-      return true;
-   }
-
-   @Nullable
-   public final cja s() {
-      return this.g;
-   }
-
-   public boolean t() {
-      return this.g != null;
-   }
-
-   public void a(cjf $$0, cpv $$1, biq $$2, int $$3, boolean $$4) {
-   }
-
-   public void b(cjf $$0, cpv $$1, cbu $$2) {
-   }
-
-   public boolean ah_() {
-      return false;
-   }
-
-   public cky c(cjf $$0) {
-      return $$0.d().u() ? cky.b : cky.a;
-   }
-
-   public int b(cjf $$0) {
-      if ($$0.d().u()) {
-         return this.v().e() ? 16 : 32;
+   public bhb<cjh> a(cpx $$0, cbw $$1, bgz $$2) {
+      cjh $$3 = $$1.b($$2);
+      Optional<? extends hg<ciz>> $$4 = this.d($$3);
+      if ($$4.isPresent()) {
+         ciz $$5 = $$4.get().a();
+         $$1.c($$2);
+         a($$0, $$1, $$5);
+         $$1.gm().a(this, $$5.b());
+         $$1.b(app.c.b(this));
+         return bhb.b($$3);
       } else {
-         return 0;
+         return bhb.d($$3);
       }
-   }
-
-   public void a(cjf $$0, cpv $$1, bjg $$2, int $$3) {
-   }
-
-   public void a(cjf $$0, @Nullable cpv $$1, List<tm> $$2, ckw $$3) {
-   }
-
-   public Optional<cgl> h(cjf $$0) {
-      return Optional.empty();
-   }
-
-   public tm m(cjf $$0) {
-      return tm.c(this.j($$0));
-   }
-
-   public boolean i(cjf $$0) {
-      return $$0.E();
-   }
-
-   public cjw n(cjf $$0) {
-      if (!$$0.E()) {
-         return this.c;
-      } else {
-         switch (this.c) {
-            case a:
-            case b:
-               return cjw.c;
-            case c:
-               return cjw.d;
-            case d:
-            default:
-               return this.c;
-         }
-      }
-   }
-
-   public boolean d_(cjf $$0) {
-      return this.l() == 1 && this.o();
-   }
-
-   protected static ehj a(cpv $$0, cbu $$1, cpe.b $$2) {
-      float $$3 = $$1.dD();
-      float $$4 = $$1.dB();
-      ehn $$5 = $$1.bp();
-      float $$6 = arx.b(-$$4 * (float) (Math.PI / 180.0) - (float) Math.PI);
-      float $$7 = arx.a(-$$4 * (float) (Math.PI / 180.0) - (float) Math.PI);
-      float $$8 = -arx.b(-$$3 * (float) (Math.PI / 180.0));
-      float $$9 = arx.a(-$$3 * (float) (Math.PI / 180.0));
-      float $$10 = $$7 * $$8;
-      float $$12 = $$6 * $$8;
-      double $$13 = 5.0;
-      ehn $$14 = $$5.b((double)$$10 * 5.0, (double)$$9 * 5.0, (double)$$12 * 5.0);
-      return $$0.a(new cpe($$5, $$14, cpe.a.b, $$2, $$1));
-   }
-
-   public int c() {
-      return 0;
-   }
-
-   public boolean a(cjf $$0, cjf $$1) {
-      return false;
-   }
-
-   public Multimap<bkh, bkk> a(biv $$0) {
-      return ImmutableMultimap.of();
-   }
-
-   public boolean l(cjf $$0) {
-      return false;
-   }
-
-   public cjf ai_() {
-      return new cjf(this);
-   }
-
-   public boolean u() {
-      return this.i != null;
-   }
-
-   @Nullable
-   public cei v() {
-      return this.i;
-   }
-
-   public apd aj_() {
-      return ape.iV;
-   }
-
-   public apd ak_() {
-      return ape.iW;
-   }
-
-   public boolean w() {
-      return this.f;
-   }
-
-   public boolean a(bho $$0) {
-      return !this.f || !$$0.a(apv.i);
-   }
-
-   public boolean al_() {
-      return true;
    }
 
    @Override
-   public cec m() {
-      return this.j;
+   public int b(cjh $$0) {
+      Optional<? extends hg<ciz>> $$1 = this.d($$0);
+      return $$1.<Integer>map($$0x -> ((ciz)$$0x.a()).b()).orElse(0);
    }
 
-   public static class a {
-      int a = 64;
-      int b;
-      @Nullable
-      cja c;
-      cjw d = cjw.a;
-      @Nullable
-      cei e;
-      boolean f;
-      cec g = cee.f;
-
-      public cja.a a(cei $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public cja.a a(int $$0) {
-         if (this.b > 0) {
-            throw new RuntimeException("Unable to have damage AND stack.");
-         } else {
-            this.a = $$0;
-            return this;
+   private Optional<? extends hg<ciz>> d(cjh $$0) {
+      qy $$1 = $$0.v();
+      if ($$1 != null && $$1.b("instrument", 8)) {
+         aey $$2 = aey.a($$1.l("instrument"));
+         if ($$2 != null) {
+            return jd.am.b(aex.a(je.B, $$2));
          }
       }
 
-      public cja.a b(int $$0) {
-         return this.b == 0 ? this.c($$0) : this;
-      }
+      Iterator<hg<ciz>> $$3 = jd.am.c(this.b).iterator();
+      return $$3.hasNext() ? Optional.of($$3.next()) : Optional.empty();
+   }
 
-      public cja.a c(int $$0) {
-         this.b = $$0;
-         this.a = 1;
-         return this;
-      }
+   @Override
+   public cla c(cjh $$0) {
+      return cla.i;
+   }
 
-      public cja.a a(cja $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public cja.a a(cjw $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public cja.a a() {
-         this.f = true;
-         return this;
-      }
-
-      public cja.a a(cea... $$0) {
-         this.g = cee.d.a($$0);
-         return this;
-      }
+   private static void a(cpx $$0, cbw $$1, ciz $$2) {
+      ape $$3 = $$2.a().a();
+      float $$4 = $$2.c() / 16.0F;
+      $$0.a($$1, $$1, $$3, apg.c, $$4, 1.0F);
+      $$0.a(djv.B, $$1.dj(), djv.a.a($$1));
    }
 }

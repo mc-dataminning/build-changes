@@ -1,49 +1,62 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Collection;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record dsj(dsb b, List<dsj.a> c) {
-   public static final Codec<dsj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dsb.a.fieldOf("fallback").forGetter(dsj::a), dsj.a.a.listOf().fieldOf("rules").forGetter(dsj::b)).apply($$0, dsj::new)
+public class dsj extends dsd {
+   public static final Codec<dsj> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dsd.a.fieldOf("source").forGetter($$0x -> $$0x.c),
+               Codec.STRING.fieldOf("property").forGetter($$0x -> $$0x.d),
+               bgf.c.fieldOf("values").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, dsj::new)
    );
+   private final dsd c;
+   private final String d;
+   @Nullable
+   private dgl e;
+   private final bgf f;
 
-   public static dsj a(dsb $$0) {
-      return new dsj($$0, List.of());
-   }
+   public dsj(dsd $$0, dgl $$1, bgf $$2) {
+      this.c = $$0;
+      this.e = $$1;
+      this.d = $$1.f();
+      this.f = $$2;
+      Collection<Integer> $$3 = $$1.a();
 
-   public static dsj a(csv $$0) {
-      return a(dsb.a($$0));
-   }
-
-   public dfj a(cqp $$0, asc $$1, gw $$2) {
-      for (dsj.a $$3 : this.c) {
-         if ($$3.a().test($$0, $$2)) {
-            return $$3.b().a($$1, $$2);
+      for (int $$4 = $$2.a(); $$4 <= $$2.b(); $$4++) {
+         if (!$$3.contains($$4)) {
+            throw new IllegalArgumentException("Property value out of range: " + $$1.f() + ": " + $$4);
          }
       }
-
-      return this.b.a($$1, $$2);
    }
 
-   public dsb a() {
-      return this.b;
+   public dsj(dsd $$0, String $$1, bgf $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.f = $$2;
    }
 
-   public List<dsj.a> b() {
-      return this.c;
+   @Override
+   protected dse<?> a() {
+      return dse.g;
    }
 
-   public static record a(dlz b, dsb c) {
-      public static final Codec<dsj.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(dlz.b.fieldOf("if_true").forGetter(dsj.a::a), dsb.a.fieldOf("then").forGetter(dsj.a::b)).apply($$0, dsj.a::new)
-      );
-
-      public dlz a() {
-         return this.b;
+   @Override
+   public dfl a(ase $$0, gw $$1) {
+      dfl $$2 = this.c.a($$0, $$1);
+      if (this.e == null || !$$2.b(this.e)) {
+         this.e = a($$2, this.d);
       }
 
-      public dsb b() {
-         return this.c;
-      }
+      return $$2.a(this.e, Integer.valueOf(this.f.a($$0)));
+   }
+
+   private static dgl a(dfl $$0, String $$1) {
+      Collection<dgo<?>> $$2 = $$0.B();
+      Optional<dgl> $$3 = $$2.stream().filter($$1x -> $$1x.f().equals($$1)).filter($$0x -> $$0x instanceof dgl).map($$0x -> (dgl)$$0x).findAny();
+      return $$3.orElseThrow(() -> new IllegalArgumentException("Illegal property: " + $$1));
    }
 }

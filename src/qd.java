@@ -17,35 +17,35 @@ import org.slf4j.Logger;
 public class qd extends MinecraftServer {
    private static final Logger n = LogUtils.getLogger();
    private static final int o = 20;
-   private static final afp p = new afp(null, ServicesKeySet.EMPTY, null, null);
+   private static final afq p = new afq(null, ServicesKeySet.EMPTY, null, null);
    private final List<pt> q;
    private final gw r;
-   private static final cpr s = ac.a(new cpr(), $$0 -> {
-      $$0.a(cpr.e).a(false, null);
-      $$0.a(cpr.u).a(false, null);
+   private static final cpt s = ac.a(new cpt(), $$0 -> {
+      $$0.a(cpt.e).a(false, null);
+      $$0.a(cpt.u).a(false, null);
    });
-   private static final dlq t = new dlq(0L, false, false);
+   private static final dls t = new dls(0L, false, false);
    @Nullable
    private qj u;
 
-   public static qd a(Thread $$0, ecg.c $$1, anf $$2, Collection<pt> $$3, gw $$4) {
+   public static qd a(Thread $$0, eci.c $$1, ang $$2, Collection<pt> $$3, gw $$4) {
       if ($$3.isEmpty()) {
          throw new IllegalArgumentException("No test batches were given!");
       } else {
          $$2.a();
-         cqo $$5 = new cqo(new cpj(new ArrayList<>($$2.b()), List.of()), cee.d.a());
-         cpz $$6 = new cpz("Test Level", cps.b, false, bgv.c, true, s, $$5);
-         afr.d $$7 = new afr.d($$2, $$5, false, true);
-         afr.c $$8 = new afr.c($$7, du.a.b, 4);
+         cqq $$5 = new cqq(new cpl(new ArrayList<>($$2.b()), List.of()), ceg.d.a());
+         cqb $$6 = new cqb("Test Level", cpu.b, false, bgx.c, true, s, $$5);
+         afs.d $$7 = new afs.d($$2, $$5, false, true);
+         afs.c $$8 = new afs.c($$7, du.a.b, 4);
 
          try {
             n.debug("Starting resource loading");
             Stopwatch $$9 = Stopwatch.createStarted();
-            afs $$10 = ac.<afs>c($$2x -> afr.a($$8, $$1xx -> {
-                  ht<dit> $$2xx = new ho<>(je.aI, Lifecycle.stable()).l();
-                  dln.b $$3x = $$1xx.c().d(je.aF).f(duy.b).a().a().a($$2xx);
-                  return new afr.b<>(new eck($$6, t, $$3x.d(), $$3x.a()), $$3x.b());
-               }, afs::new, ac.f(), $$2x)).get();
+            aft $$10 = ac.<aft>c($$2x -> afs.a($$8, $$1xx -> {
+                  ht<div> $$2xx = new ho<>(je.aI, Lifecycle.stable()).l();
+                  dlp.b $$3x = $$1xx.c().d(je.aF).f(dva.b).a().a().a($$2xx);
+                  return new afs.b<>(new ecm($$6, t, $$3x.d(), $$3x.a()), $$3x.b());
+               }, aft::new, ac.f(), $$2x)).get();
             $$9.stop();
             n.debug("Finished resource loading after {} ms", $$9.elapsed(TimeUnit.MILLISECONDS));
             return new qd($$0, $$1, $$2, $$10, $$3, $$4);
@@ -57,18 +57,18 @@ public class qd extends MinecraftServer {
       }
    }
 
-   private qd(Thread $$0, ecg.c $$1, anf $$2, afs $$3, Collection<pt> $$4, gw $$5) {
-      super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, atb.a(), p, alc::new);
+   private qd(Thread $$0, eci.c $$1, ang $$2, aft $$3, Collection<pt> $$4, gw $$5) {
+      super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, atd.a(), p, ald::new);
       this.q = Lists.newArrayList($$4);
       this.r = $$5;
    }
 
    @Override
    public boolean e() {
-      this.a(new aoh(this, this.aV(), this.i, 1) {
+      this.a(new aoi(this, this.aV(), this.i, 1) {
       });
       this.s_();
-      akr $$0 = this.D();
+      aks $$0 = this.D();
       $$0.a(this.r, 0.0F);
       int $$1 = 20000000;
       $$0.a(20000000, 20000000, false, false);
@@ -79,7 +79,7 @@ public class qd extends MinecraftServer {
    @Override
    public void a(BooleanSupplier $$0) {
       super.a($$0);
-      akr $$1 = this.D();
+      aks $$1 = this.D();
       if (!this.bf()) {
          this.b($$1);
       }
@@ -134,8 +134,8 @@ public class qd extends MinecraftServer {
       System.exit(1);
    }
 
-   private void b(akr $$0) {
-      Collection<py> $$1 = qb.a(this.q, new gw(0, -60, 0), czh.a, $$0, qe.a, 8);
+   private void b(aks $$0) {
+      Collection<py> $$1 = qb.a(this.q, new gw(0, -60, 0), czj.a, $$0, qe.a, 8);
       this.u = new qj($$1);
       n.info("{} tests are now running!", this.u.h());
    }

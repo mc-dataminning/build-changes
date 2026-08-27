@@ -6,24 +6,24 @@ import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import java.util.Arrays;
 import java.util.Collection;
 
-public class ea implements ArgumentType<tm> {
+public class ea implements ArgumentType<tn> {
    private static final Collection<String> b = Arrays.asList("\"hello world\"", "\"\"", "\"{\"text\":\"hello world\"}", "[\"\"]");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tm.a("argument.component.invalid", $$0));
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tn.a("argument.component.invalid", $$0));
 
    private ea() {
    }
 
-   public static tm a(CommandContext<dt> $$0, String $$1) {
-      return (tm)$$0.getArgument($$1, tm.class);
+   public static tn a(CommandContext<dt> $$0, String $$1) {
+      return (tn)$$0.getArgument($$1, tn.class);
    }
 
    public static ea a() {
       return new ea();
    }
 
-   public tm a(StringReader $$0) throws CommandSyntaxException {
+   public tn a(StringReader $$0) throws CommandSyntaxException {
       try {
-         tm $$1 = tm.a.a($$0);
+         tn $$1 = tn.a.a($$0);
          if ($$1 == null) {
             throw a.createWithContext($$0, "empty");
          } else {

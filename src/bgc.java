@@ -1,14 +1,44 @@
 import com.mojang.serialization.Codec;
 
-public interface bgc<P extends bgb> {
-   bgc<bfz> a = a("constant", bfz.b);
-   bgc<bgi> b = a("uniform", bgi.a);
-   bgc<bfx> c = a("clamped_normal", bfx.a);
-   bgc<bgh> d = a("trapezoid", bgh.a);
+public class bgc extends bgf {
+   public static final bgc a = new bgc(0);
+   public static final Codec<bgc> b = arh.e(Codec.INT, Codec.INT.fieldOf("value").codec()).xmap(bgc::new, bgc::d);
+   private final int f;
 
-   Codec<P> codec();
+   public static bgc a(int $$0) {
+      return $$0 == 0 ? a : new bgc($$0);
+   }
 
-   static <P extends bgb> bgc<P> a(String $$0, Codec<P> $$1) {
-      return ht.a(jd.M, $$0, () -> $$1);
+   private bgc(int $$0) {
+      this.f = $$0;
+   }
+
+   public int d() {
+      return this.f;
+   }
+
+   @Override
+   public int a(ase $$0) {
+      return this.f;
+   }
+
+   @Override
+   public int a() {
+      return this.f;
+   }
+
+   @Override
+   public int b() {
+      return this.f;
+   }
+
+   @Override
+   public bgg<?> c() {
+      return bgg.a;
+   }
+
+   @Override
+   public String toString() {
+      return Integer.toString(this.f);
    }
 }

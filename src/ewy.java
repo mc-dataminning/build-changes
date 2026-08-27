@@ -1,57 +1,54 @@
-public class ewy extends eyk {
-   private final eyk c;
-   protected final ewy.a a;
-   private final tm k;
-   private final boolean l;
-   private etj m = etj.a;
-   protected int b;
-   private ess n;
+public class ewy extends eyo {
+   private static era<?>[] a(erb $$0) {
+      return new era[]{
+         $$0.ao(),
+         $$0.S(),
+         $$0.q(),
+         $$0.E(),
+         $$0.o(),
+         $$0.U(),
+         $$0.m(),
+         $$0.n(),
+         $$0.x(),
+         $$0.y(),
+         $$0.Y(),
+         $$0.Z(),
+         $$0.af(),
+         $$0.ag(),
+         $$0.ah(),
+         $$0.ak(),
+         $$0.ai(),
+         $$0.aj(),
+         $$0.b(),
+         $$0.a(),
+         $$0.p(),
+         $$0.r()
+      };
+   }
 
-   public ewy(eyk $$0, ewy.a $$1, tm $$2, tm $$3, boolean $$4) {
-      super($$2);
-      this.c = $$0;
-      this.a = $$1;
-      this.k = $$3;
-      this.l = $$4;
+   public ewy(eym $$0, erb $$1) {
+      super($$0, $$1, tn.c("options.accessibility.title"), a($$1));
    }
 
    @Override
-   protected void aI_() {
-      super.aI_();
-      this.m = etj.a(this.i, this.k, this.g - 50);
-      int $$0 = (this.m.a() + 1) * 9;
-      this.d(esq.a(tm.c("selectWorld.backupJoinConfirmButton"), $$0x -> this.a.proceed(true, this.n.a())).a(this.g / 2 - 155, 100 + $$0, 150, 20).a());
-      this.d(esq.a(tm.c("selectWorld.backupJoinSkipButton"), $$0x -> this.a.proceed(false, this.n.a())).a(this.g / 2 - 155 + 160, 100 + $$0, 150, 20).a());
-      this.d(esq.a(tl.e, $$0x -> this.f.a(this.c)).a(this.g / 2 - 155 + 80, 124 + $$0, 150, 20).a());
-      this.n = new ess(this.g / 2 - 155 + 80, 76 + $$0, 150, 20, tm.c("selectWorld.backupEraseCache"), false);
-      if (this.l) {
-         this.d(this.n);
+   protected void aH_() {
+      super.aH_();
+      esq $$0 = this.k.b(this.b.q());
+      if ($$0 != null && !this.f.aa().b().contains("high_contrast")) {
+         $$0.i = false;
+         $$0.a(euc.a(tn.c("options.accessibility.high_contrast.error.tooltip")));
       }
    }
 
    @Override
-   public void a(esf $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 50, 16777215);
-      this.m.a($$0, this.g / 2, 70);
-   }
+   protected void f() {
+      this.d(ess.a(tn.c("options.accessibility.link"), $$0 -> this.f.a(new exe($$0x -> {
+            if ($$0x) {
+               ac.i().a("https://aka.ms/MinecraftJavaAccessibility");
+            }
 
-   @Override
-   public boolean ay_() {
-      return false;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.f.a(this.c);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   public interface a {
-      void proceed(boolean var1, boolean var2);
+            this.f.a(this);
+         }, "https://aka.ms/MinecraftJavaAccessibility", true))).a(this.g / 2 - 155, this.h - 27, 150, 20).a());
+      this.d(ess.a(tm.d, $$0 -> this.f.a(this.a)).a(this.g / 2 + 5, this.h - 27, 150, 20).a());
    }
 }

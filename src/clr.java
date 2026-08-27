@@ -1,68 +1,71 @@
-public abstract class clr implements cmj<bgr> {
-   protected final cmn<?> a;
-   protected final clx b;
-   protected final String c;
-   protected final cmg d;
-   protected final cjf e;
-   protected final float f;
-   protected final int g;
+import javax.annotation.Nullable;
 
-   public clr(cmn<?> $$0, String $$1, clx $$2, cmg $$3, cjf $$4, float $$5, int $$6) {
-      this.a = $$0;
+public class clr {
+   @Nullable
+   private final cbw a;
+   private final bgz b;
+   private final ehl c;
+   private final cpx d;
+   private final cjh e;
+
+   public clr(cbw $$0, bgz $$1, ehl $$2) {
+      this($$0.dL(), $$0, $$1, $$0.b($$1), $$2);
+   }
+
+   protected clr(cpx $$0, @Nullable cbw $$1, bgz $$2, cjh $$3, ehl $$4) {
+      this.a = $$1;
       this.b = $$2;
-      this.c = $$1;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
+      this.c = $$4;
+      this.e = $$3;
+      this.d = $$0;
    }
 
-   @Override
-   public boolean a(bgr $$0, cpv $$1) {
-      return this.d.a($$0.a(0));
-   }
-
-   @Override
-   public cjf a(bgr $$0, hu $$1) {
-      return this.e.p();
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public hp<cmg> a() {
-      hp<cmg> $$0 = hp.a();
-      $$0.add(this.d);
-      return $$0;
-   }
-
-   public float b() {
-      return this.f;
-   }
-
-   @Override
-   public cjf a(hu $$0) {
-      return this.e;
-   }
-
-   @Override
-   public String c() {
+   protected final ehl j() {
       return this.c;
    }
 
-   public int d() {
-      return this.g;
+   public gw a() {
+      return this.c.a();
    }
 
-   @Override
-   public cmn<?> e() {
+   public hc k() {
+      return this.c.b();
+   }
+
+   public ehp l() {
+      return this.c.e();
+   }
+
+   public boolean m() {
+      return this.c.d();
+   }
+
+   public cjh n() {
+      return this.e;
+   }
+
+   @Nullable
+   public cbw o() {
       return this.a;
    }
 
-   public clx f() {
+   public bgz p() {
       return this.b;
+   }
+
+   public cpx q() {
+      return this.d;
+   }
+
+   public hc g() {
+      return this.a == null ? hc.c : this.a.cD();
+   }
+
+   public boolean h() {
+      return this.a != null && this.a.fH();
+   }
+
+   public float i() {
+      return this.a == null ? 0.0F : this.a.dB();
    }
 }

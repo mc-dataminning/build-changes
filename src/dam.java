@@ -1,41 +1,65 @@
-public abstract class dam extends daf {
-   protected dam(dfi.d $$0) {
+public class dam extends csx {
+   public static final int a = 6;
+   public static final int b = 64;
+   private static final hc[] c = hc.values();
+
+   protected dam(dfk.d $$0) {
       super($$0);
    }
 
-   private static boolean b(dfj $$0, cpy $$1, gw $$2) {
-      gw $$3 = $$2.c();
-      dfj $$4 = $$1.a_($$3);
-      if ($$4.a(csw.dN) && $$4.c(dae.b) == 1) {
-         return true;
-      } else if ($$4.u().e() == 8) {
-         return false;
-      } else {
-         int $$5 = ead.a($$1, $$0, $$2, $$4, $$3, hc.b, $$4.b($$1, $$3));
-         return $$5 < $$1.M();
+   @Override
+   public void b(dfl $$0, cpx $$1, gw $$2, dfl $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$1, $$2);
       }
-   }
-
-   private static boolean c(dfj $$0, cpy $$1, gw $$2) {
-      gw $$3 = $$2.c();
-      return b($$0, $$1, $$2) && !$$1.b_($$3).a(apy.a);
    }
 
    @Override
-   public void b(dfj $$0, akr $$1, gw $$2, asc $$3) {
-      if (!b($$0, $$1, $$2)) {
-         $$1.b($$2, csw.j.n());
-      } else {
-         if ($$1.z($$2.c()) >= 9) {
-            dfj $$4 = this.n();
+   public void a(dfl $$0, cpx $$1, gw $$2, csx $$3, gw $$4, boolean $$5) {
+      this.a($$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
 
-            for (int $$5 = 0; $$5 < 4; $$5++) {
-               gw $$6 = $$2.b($$3.a(3) - 1, $$3.a(5) - 3, $$3.a(3) - 1);
-               if ($$1.a_($$6).a(csw.j) && c($$4, $$1, $$6)) {
-                  $$1.b($$6, $$4.a(a, Boolean.valueOf($$1.a_($$6.c()).a(csw.dN))));
+   protected void a(cpx $$0, gw $$1) {
+      if (this.b($$0, $$1)) {
+         $$0.a($$1, csy.aP.n(), 2);
+         $$0.a(null, $$1, apf.xj, apg.e, 1.0F, 1.0F);
+      }
+   }
+
+   private boolean b(cpx $$0, gw $$1) {
+      return gw.a($$1, 6, 65, ($$0x, $$1x) -> {
+         for (hc $$2 : c) {
+            $$1x.accept($$0x.a($$2));
+         }
+      }, $$2 -> {
+         if ($$2.equals($$1)) {
+            return true;
+         } else {
+            dfl $$3 = $$0.a_($$2);
+            eao $$4 = $$0.b_($$2);
+            if (!$$4.a(apz.a)) {
+               return false;
+            } else {
+               if ($$3.b() instanceof ctd $$6 && !$$6.a(null, $$0, $$2, $$3).b()) {
+                  return true;
                }
+
+               if ($$3.b() instanceof cxk) {
+                  $$0.a($$2, csy.a.n(), 3);
+               } else {
+                  if (!$$3.a(csy.mc) && !$$3.a(csy.md) && !$$3.a(csy.bw) && !$$3.a(csy.bx)) {
+                     return false;
+                  }
+
+                  dcx $$7 = $$3.t() ? $$0.c_($$2) : null;
+                  a($$3, $$0, $$2, $$7);
+                  $$0.a($$2, csy.a.n(), 3);
+               }
+
+               return true;
             }
          }
-      }
+      }) > 1;
    }
 }

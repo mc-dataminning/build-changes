@@ -58,8 +58,8 @@ public class Main {
       $$13.a(a(jq::a, $$11));
       $$13.a(kp::a);
       $$13.a(mg::new);
-      ne<csv> $$14 = $$13.a(a(ng::new, $$11));
-      ne<cja> $$15 = $$13.a($$2x -> new nh($$2x, $$11, $$14.c()));
+      ne<csx> $$14 = $$13.a(a(ng::new, $$11));
+      ne<cjc> $$15 = $$13.a($$2x -> new nh($$2x, $$11, $$14.c()));
       $$13.a(a(mq::new, $$11));
       $$13.a(a(mr::new, $$11));
       $$13.a(a(ms::new, $$11));
@@ -82,9 +82,9 @@ public class Main {
       $$13.a(ka::new);
       $$13 = $$9.a($$3, "bundle");
       $$13.a(mf::new);
-      $$13.a($$0x -> ks.a($$0x, tm.c("dataPack.bundle.description"), cec.a(cee.b)));
+      $$13.a($$0x -> ks.a($$0x, tn.c("dataPack.bundle.description"), cee.a(ceg.b)));
       $$13 = $$9.a($$3, "trade_rebalance");
-      $$13.a($$0x -> ks.a($$0x, tm.c("dataPack.trade_rebalance.description"), cec.a(cee.c)));
+      $$13.a($$0x -> ks.a($$0x, tn.c("dataPack.trade_rebalance.description"), cee.a(ceg.c)));
       $$13.a(ki::a);
       $$13.a(a(nf::new, $$11));
       return $$9;

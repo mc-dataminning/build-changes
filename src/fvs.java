@@ -1,40 +1,26 @@
-public class fvs<T extends biq & ccj> extends ftg<T> {
-   private static final float a = 12.25F;
-   private final fuf f;
-   private final float g;
-   private final boolean h;
+public class fvs extends fup<bzx, fhi<bzx>> {
+   private static final aey a = new aey("textures/entity/strider/strider.png");
+   private static final aey i = new aey("textures/entity/strider/strider_cold.png");
 
-   public fvs(fth.a $$0, float $$1, boolean $$2) {
-      super($$0);
-      this.f = $$0.b();
-      this.g = $$1;
-      this.h = $$2;
+   public fvs(ftj.a $$0) {
+      super($$0, new fhi<>($$0.a(fid.bx)), 0.5F);
+      this.a(new fxs<>(this, new fhi<>($$0.a(fid.by)), new aey("textures/entity/strider/strider_saddle.png")));
    }
 
-   public fvs(fth.a $$0) {
-      this($$0, 1.0F, false);
+   public aey a(bzx $$0) {
+      return $$0.s() ? i : a;
    }
 
-   @Override
-   protected int a(T $$0, gw $$1) {
-      return this.h ? 15 : super.a($$0, $$1);
-   }
-
-   @Override
-   public void a(T $$0, float $$1, float $$2, elp $$3, foe $$4, int $$5) {
-      if ($$0.ah >= 2 || !(this.c.b.g().f($$0) < 12.25)) {
-         $$3.a();
-         $$3.b(this.g, this.g, this.g);
-         $$3.a(this.c.b());
-         $$3.a(a.d.rotationDegrees(180.0F));
-         this.f.a($$0.q(), cjc.h, $$5, fyv.d, $$3, $$4, $$0.dL(), $$0.ah());
-         $$3.b();
-         super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected void a(bzx $$0, elr $$1, float $$2) {
+      if ($$0.m_()) {
+         $$1.b(0.5F, 0.5F, 0.5F);
+         this.d = 0.25F;
+      } else {
+         this.d = 0.5F;
       }
    }
 
-   @Override
-   public aex a(biq $$0) {
-      return fzd.e;
+   protected boolean b(bzx $$0) {
+      return super.a($$0) || $$0.s();
    }
 }

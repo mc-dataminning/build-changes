@@ -1,86 +1,70 @@
-import java.util.List;
+import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class bpw extends bqb {
-   private int a;
-   private final bjp b;
-   @Nullable
-   private cbu c;
-   private bpk d;
+public class bpw extends bqd {
+   protected final bjr a;
+   private double b;
+   private double c;
+   private double d;
+   private final double e;
+   private final cpx f;
 
-   public bpw(bjp $$0) {
-      this.b = $$0;
+   public bpw(bjr $$0, double $$1) {
+      this.a = $$0;
+      this.e = $$1;
+      this.f = $$0.dL();
+      this.a(EnumSet.of(bqd.a.a));
    }
 
    @Override
    public boolean a() {
-      List<cdn> $$0 = this.b.dL().a(cdn.class, this.b.cG().g(5.0));
-      boolean $$1 = false;
-
-      for (cdn $$2 : $$0) {
-         biq $$3 = $$2.cN();
-         if ($$3 instanceof cbu && (arx.e(((cbu)$$3).bk) > 0.0F || arx.e(((cbu)$$3).bm) > 0.0F)) {
-            $$1 = true;
-            break;
-         }
+      if (this.a.q() != null) {
+         return false;
+      } else if (!this.f.N()) {
+         return false;
+      } else if (!this.a.bM()) {
+         return false;
+      } else if (!this.f.g(this.a.dl())) {
+         return false;
+      } else {
+         return !this.a.c(bix.f).b() ? false : this.h();
       }
-
-      return this.c != null && (arx.e(this.c.bk) > 0.0F || arx.e(this.c.bm) > 0.0F) || $$1;
    }
 
-   @Override
-   public boolean P_() {
-      return true;
+   protected boolean h() {
+      ehp $$0 = this.i();
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.b = $$0.c;
+         this.c = $$0.d;
+         this.d = $$0.e;
+         return true;
+      }
    }
 
    @Override
    public boolean b() {
-      return this.c != null && this.c.bN() && (arx.e(this.c.bk) > 0.0F || arx.e(this.c.bm) > 0.0F);
+      return !this.a.L().l();
    }
 
    @Override
    public void c() {
-      for (cdn $$1 : this.b.dL().a(cdn.class, this.b.cG().g(5.0))) {
-         if ($$1.cN() instanceof cbu $$2) {
-            this.c = $$2;
-            break;
+      this.a.L().a(this.b, this.c, this.d, this.e);
+   }
+
+   @Nullable
+   protected ehp i() {
+      ase $$0 = this.a.ef();
+      gw $$1 = this.a.dl();
+
+      for (int $$2 = 0; $$2 < 10; $$2++) {
+         gw $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
+         if (!this.f.g($$3) && this.a.h($$3) < 0.0F) {
+            return ehp.c($$3);
          }
       }
 
-      this.a = 0;
-      this.d = bpk.a;
-   }
-
-   @Override
-   public void d() {
-      this.c = null;
-   }
-
-   @Override
-   public void e() {
-      boolean $$0 = arx.e(this.c.bk) > 0.0F || arx.e(this.c.bm) > 0.0F;
-      float $$1 = this.d == bpk.b ? ($$0 ? 0.01F : 0.0F) : 0.015F;
-      this.b.a($$1, new ehn((double)this.b.bk, (double)this.b.bl, (double)this.b.bm));
-      this.b.a(bjm.a, this.b.do());
-      if (--this.a <= 0) {
-         this.a = this.a(10);
-         if (this.d == bpk.a) {
-            gw $$2 = this.c.dl().a(this.c.cD().g());
-            $$2 = $$2.b(0, -1, 0);
-            this.b.L().a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 1.0);
-            if (this.b.e((biq)this.c) < 4.0F) {
-               this.a = 0;
-               this.d = bpk.b;
-            }
-         } else if (this.d == bpk.b) {
-            hc $$3 = this.c.cE();
-            gw $$4 = this.c.dl().a($$3, 10);
-            this.b.L().a((double)$$4.u(), (double)($$4.v() - 1), (double)$$4.w(), 1.0);
-            if (this.b.e((biq)this.c) > 12.0F) {
-               this.a = 0;
-               this.d = bpk.a;
-            }
-         }
-      }
+      return null;
    }
 }

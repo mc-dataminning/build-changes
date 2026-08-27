@@ -1,95 +1,53 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+public class fqd implements fqg<dct> {
+   private final fie a;
+   private final fie b;
 
-public class fqd implements anv {
-   private Map<dcx<?>, fqe<?>> d = ImmutableMap.of();
-   private final esd e;
-   private final fhy f;
-   public cpv a;
-   public eqg b;
-   public ehl c;
-   private final Supplier<foy> g;
-   private final Supplier<fuf> h;
-   private final Supplier<ftf> i;
-
-   public fqd(esd $$0, fhy $$1, Supplier<foy> $$2, Supplier<fuf> $$3, Supplier<ftf> $$4) {
-      this.h = $$3;
-      this.i = $$4;
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public fqd(fqh.a $$0) {
+      this.a = $$0.a(fid.i);
+      this.b = $$0.a(fid.h);
    }
 
-   @Nullable
-   public <E extends dcv> fqe<E> a(E $$0) {
-      return (fqe<E>)this.d.get($$0.u());
+   public static fik b() {
+      fim $$0 = new fim();
+      fin $$1 = $$0.a();
+      $$1.a("main", fij.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fig.a);
+      $$1.a("left_leg", fij.c().a(50, 6).a(0.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fig.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI / 2)));
+      $$1.a("right_leg", fij.c().a(50, 18).a(-16.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fig.b((float) (Math.PI / 2), 0.0F, (float) Math.PI));
+      return fik.a($$0, 64, 64);
    }
 
-   public void a(cpv $$0, eqg $$1, ehl $$2) {
-      if (this.a != $$0) {
-         this.a($$0);
-      }
-
-      this.b = $$1;
-      this.c = $$2;
+   public static fik c() {
+      fim $$0 = new fim();
+      fin $$1 = $$0.a();
+      $$1.a("main", fij.c().a(0, 22).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fig.a);
+      $$1.a("left_leg", fij.c().a(50, 0).a(0.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fig.b((float) (Math.PI / 2), 0.0F, 0.0F));
+      $$1.a("right_leg", fij.c().a(50, 12).a(-16.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fig.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 2.0)));
+      return fik.a($$0, 64, 64);
    }
 
-   public <E extends dcv> void a(E $$0, float $$1, elp $$2, foe $$3) {
-      fqe<E> $$4 = this.a($$0);
-      if ($$4 != null) {
-         if ($$0.l() && $$0.u().a($$0.q())) {
-            if ($$4.a($$0, this.b.b())) {
-               a($$0, () -> a($$4, $$0, $$1, $$2, $$3));
-            }
-         }
-      }
-   }
-
-   private static <T extends dcv> void a(fqe<T> $$0, T $$1, float $$2, elp $$3, foe $$4) {
-      cpv $$5 = $$1.k();
-      int $$6;
-      if ($$5 != null) {
-         $$6 = foc.a($$5, $$1.p());
+   public void a(dct $$0, float $$1, elr $$2, fog $$3, int $$4, int $$5) {
+      gbk $$6 = fov.p[$$0.d().a()];
+      cpx $$7 = $$0.k();
+      if ($$7 != null) {
+         dfl $$8 = $$0.q();
+         cva.c<? extends dct> $$9 = cva.a(dcz.y, csq::h, csq::g, ctz.b, $$8, $$7, $$0.p(), ($$0x, $$1x) -> false);
+         int $$10 = $$9.apply(new fqj<>()).get($$4);
+         this.a($$2, $$3, $$8.c(csq.a) == dfy.a ? this.a : this.b, $$8.c(csq.aC), $$6, $$10, $$5, false);
       } else {
-         $$6 = 15728880;
-      }
-
-      $$0.a($$1, $$2, $$3, $$4, $$6, fyv.d);
-   }
-
-   public <E extends dcv> boolean a(E $$0, elp $$1, foe $$2, int $$3, int $$4) {
-      fqe<E> $$5 = this.a($$0);
-      if ($$5 == null) {
-         return true;
-      } else {
-         a($$0, () -> $$5.a($$0, 0.0F, $$1, $$2, $$3, $$4));
-         return false;
+         this.a($$2, $$3, this.a, hc.d, $$6, $$4, $$5, false);
+         this.a($$2, $$3, this.b, hc.d, $$6, $$4, $$5, true);
       }
    }
 
-   private static void a(dcv $$0, Runnable $$1) {
-      try {
-         $$1.run();
-      } catch (Throwable var5) {
-         o $$3 = o.a(var5, "Rendering Block Entity");
-         p $$4 = $$3.a("Block Entity Details");
-         $$0.a($$4);
-         throw new y($$3);
-      }
-   }
-
-   public void a(@Nullable cpv $$0) {
-      this.a = $$0;
-      if ($$0 == null) {
-         this.b = null;
-      }
-   }
-
-   @Override
-   public void a(anu $$0) {
-      fqf.a $$1 = new fqf.a(this, this.g.get(), this.h.get(), this.i.get(), this.f, this.e);
-      this.d = fqg.a($$1);
+   private void a(elr $$0, fog $$1, fie $$2, hc $$3, gbk $$4, int $$5, int $$6, boolean $$7) {
+      $$0.a();
+      $$0.a(0.0F, 0.5625F, $$7 ? -1.0F : 0.0F);
+      $$0.a(a.b.rotationDegrees(90.0F));
+      $$0.a(0.5F, 0.5F, 0.5F);
+      $$0.a(a.f.rotationDegrees(180.0F + $$3.p()));
+      $$0.a(-0.5F, -0.5F, -0.5F);
+      elv $$8 = $$4.a($$1, foo::c);
+      $$2.a($$0, $$8, $$5, $$6);
+      $$0.b();
    }
 }

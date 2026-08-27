@@ -1,57 +1,24 @@
-import javax.annotation.Nullable;
+public class vm implements vf<vi> {
+   private final int a;
 
-public class vm implements ve<vh> {
-   public static final int a = 40;
-   private final String b;
-   private final String c;
-   private final boolean d;
-   @Nullable
-   private final tm e;
-
-   public vm(String $$0, String $$1, boolean $$2, @Nullable tm $$3) {
-      if ($$1.length() > 40) {
-         throw new IllegalArgumentException("Hash is too long (max 40, was " + $$1.length() + ")");
-      } else {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-      }
+   public vm(int $$0) {
+      this.a = $$0;
    }
 
-   public vm(sp $$0) {
-      this.b = $$0.r();
-      this.c = $$0.d(40);
-      this.d = $$0.readBoolean();
-      this.e = $$0.c(sp::l);
+   public vm(sq $$0) {
+      this.a = $$0.readInt();
    }
 
    @Override
-   public void a(sp $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e, sp::a);
+   public void a(sq $$0) {
+      $$0.p(this.a);
    }
 
-   public void a(vh $$0) {
+   public void a(vi $$0) {
       $$0.a(this);
    }
 
-   public String a() {
-      return this.b;
-   }
-
-   public String d() {
-      return this.c;
-   }
-
-   public boolean e() {
-      return this.d;
-   }
-
-   @Nullable
-   public tm f() {
-      return this.e;
+   public int a() {
+      return this.a;
    }
 }

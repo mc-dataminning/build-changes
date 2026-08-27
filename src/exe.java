@@ -1,165 +1,73 @@
-import com.mojang.logging.LogUtils;
-import io.netty.channel.ChannelFuture;
-import java.net.InetSocketAddress;
-import java.util.Optional;
-import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class exe extends eyk {
-   private static final AtomicInteger c = new AtomicInteger(0);
-   static final Logger k = LogUtils.getLogger();
-   private static final long l = 2000L;
-   public static final tm a = tm.c("connect.aborted");
-   public static final tm b = tm.a("disconnect.genericReason", tm.c("disconnect.unknownHost"));
-   @Nullable
-   volatile sn m;
-   @Nullable
-   ChannelFuture n;
-   volatile boolean o;
-   final eyk p;
-   private tm q = tm.c("connect.connecting");
-   private long s = -1L;
-   final tm t;
+public class exe extends exf {
+   private static final tn k = tn.c("chat.copy");
+   private static final tn l = tn.c("chat.link.warning");
+   private final String m;
+   private final boolean n;
 
-   private exe(eyk $$0, tm $$1) {
-      super(eqn.a);
-      this.p = $$0;
-      this.t = $$1;
+   public exe(BooleanConsumer $$0, String $$1, boolean $$2) {
+      this($$0, c($$2), tn.b($$1), $$1, $$2 ? tm.e : tm.g, $$2);
    }
 
-   public static void a(eyk $$0, eqv $$1, fki $$2, fjh $$3, boolean $$4) {
-      if ($$1.y instanceof exe) {
-         k.error("Attempt to connect while already connecting");
-      } else {
-         exe $$5 = new exe($$0, $$4 ? fnn.a : tl.q);
-         $$1.z();
-         $$1.aR();
-         $$1.a(fjw.a($$3 != null ? $$3.b : $$2.a()));
-         $$1.aZ().a(fno.c.b, $$3.b, $$3.a);
-         $$1.a($$5);
-         $$5.a($$1, $$2, $$3);
-      }
+   public exe(BooleanConsumer $$0, tn $$1, String $$2, boolean $$3) {
+      this($$0, $$1, $$2, $$3 ? tm.e : tm.g, $$3);
    }
 
-   private void a(final eqv $$0, final fki $$1, @Nullable final fjh $$2) {
-      k.info("Connecting to {}, {}", $$1.a(), $$1.b());
-      Thread $$3 = new Thread("Server Connector #" + c.incrementAndGet()) {
-         @Override
-         public void run() {
-            InetSocketAddress $$0 = null;
-
-            try {
-               if (exe.this.o) {
-                  return;
-               }
-
-               Optional<InetSocketAddress> $$1 = fkk.a.a($$1).map(fkh::d);
-               if (exe.this.o) {
-                  return;
-               }
-
-               if ($$1.isEmpty()) {
-                  $$0.execute(() -> $$0.a(new exm(exe.this.p, exe.this.t, exe.b)));
-                  return;
-               }
-
-               $$0 = $$1.get();
-               sn $$2;
-               synchronized (exe.this) {
-                  if (exe.this.o) {
-                     return;
-                  }
-
-                  $$2 = new sn(vf.b);
-                  $$2.a($$0.aN().l());
-                  exe.this.n = sn.a($$0, $$0.m.av(), $$2);
-               }
-
-               exe.this.n.syncUninterruptibly();
-               synchronized (exe.this) {
-                  if (exe.this.o) {
-                     $$2.a(exe.a);
-                     return;
-                  }
-
-                  exe.this.m = $$2;
-               }
-
-               exe.this.m.a($$0.getHostName(), $$0.getPort(), new fiw(exe.this.m, $$0, $$2, exe.this.p, false, null, exe.this::a));
-               exe.this.m.a(new adn($$0.V().c(), $$0.V().b()));
-            } catch (Exception var9) {
-               if (exe.this.o) {
-                  return;
-               }
-
-               Exception $$6;
-               if (var9.getCause() instanceof Exception $$5) {
-                  $$6 = $$5;
-               } else {
-                  $$6 = var9;
-               }
-
-               exe.k.error("Couldn't connect to server", var9);
-               String $$8 = $$0 == null
-                  ? $$6.getMessage()
-                  : $$6.getMessage().replaceAll($$0.getHostName() + ":" + $$0.getPort(), "").replaceAll($$0.toString(), "");
-               $$0.execute(() -> $$0.a(new exm(exe.this.p, exe.this.t, tm.a("disconnect.genericReason", $$8))));
-            }
-         }
-      };
-      $$3.setUncaughtExceptionHandler(new r(k));
-      $$3.start();
+   public exe(BooleanConsumer $$0, tn $$1, String $$2, tn $$3, boolean $$4) {
+      this($$0, $$1, a($$4, $$2), $$2, $$3, $$4);
    }
 
-   private void a(tm $$0) {
-      this.q = $$0;
+   public exe(BooleanConsumer $$0, tn $$1, tn $$2, String $$3, tn $$4, boolean $$5) {
+      super($$0, $$1, $$2);
+      this.a = (tn)($$5 ? tn.c("chat.link.open") : tm.f);
+      this.b = $$4;
+      this.n = !$$5;
+      this.m = $$3;
+   }
+
+   protected static ua a(boolean $$0, String $$1) {
+      return c($$0).b(tm.u).b(tn.b($$1));
+   }
+
+   protected static ua c(boolean $$0) {
+      return tn.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
    }
 
    @Override
-   public void c() {
-      if (this.m != null) {
-         if (this.m.k()) {
-            this.m.d();
-         } else {
-            this.m.p();
-         }
-      }
+   protected void a(int $$0) {
+      this.d(ess.a(this.a, $$0x -> this.c.accept(true)).a(this.g / 2 - 50 - 105, $$0, 100, 20).a());
+      this.d(ess.a(k, $$0x -> {
+         this.k();
+         this.c.accept(false);
+      }).a(this.g / 2 - 50, $$0, 100, 20).a());
+      this.d(ess.a(this.b, $$0x -> this.c.accept(false)).a(this.g / 2 - 50 + 105, $$0, 100, 20).a());
+   }
+
+   public void k() {
+      this.f.o.a(this.m);
    }
 
    @Override
-   public boolean ay_() {
-      return false;
-   }
-
-   @Override
-   protected void aI_() {
-      this.d(esq.a(tl.e, $$0 -> {
-         synchronized (this) {
-            this.o = true;
-            if (this.n != null) {
-               this.n.cancel(true);
-               this.n = null;
-            }
-
-            if (this.m != null) {
-               this.m.a(a);
-            }
-         }
-
-         this.f.a(this.p);
-      }).a(this.g / 2 - 100, this.h / 4 + 120 + 12, 200, 20).a());
-   }
-
-   @Override
-   public void a(esf $$0, int $$1, int $$2, float $$3) {
+   public void a(esh $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      long $$4 = ac.b();
-      if ($$4 - this.s > 2000L) {
-         this.s = $$4;
-         this.f.aV().c(tm.c("narrator.joining"));
+      if (this.n) {
+         $$0.a(this.i, l, this.g / 2, 110, 16764108);
       }
+   }
 
-      $$0.a(this.i, this.q, this.g / 2, this.h / 2 - 50, 16777215);
+   public static void a(String $$0, eym $$1, boolean $$2) {
+      eqx $$3 = eqx.O();
+      $$3.a(new exe($$3x -> {
+         if ($$3x) {
+            ac.i().a($$0);
+         }
+
+         $$3.a($$1);
+      }, $$0, $$2));
+   }
+
+   public static ess.c b(String $$0, eym $$1, boolean $$2) {
+      return $$3 -> a($$0, $$1, $$2);
    }
 }

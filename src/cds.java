@@ -1,55 +1,89 @@
-public class cds extends cdm {
-   public cds(biu<? extends cds> $$0, cpv $$1) {
-      super($$0, $$1);
+import java.util.function.Function;
+import javax.annotation.Nullable;
+
+public class cds {
+   public static int[][] a(hc $$0) {
+      hc $$1 = $$0.h();
+      hc $$2 = $$1.g();
+      hc $$3 = $$0.g();
+      return new int[][]{
+         {$$1.j(), $$1.l()},
+         {$$2.j(), $$2.l()},
+         {$$3.j() + $$1.j(), $$3.l() + $$1.l()},
+         {$$3.j() + $$2.j(), $$3.l() + $$2.l()},
+         {$$0.j() + $$1.j(), $$0.l() + $$1.l()},
+         {$$0.j() + $$2.j(), $$0.l() + $$2.l()},
+         {$$3.j(), $$3.l()},
+         {$$0.j(), $$0.l()}
+      };
    }
 
-   public cds(cpv $$0, double $$1, double $$2, double $$3) {
-      super(biu.p, $$1, $$2, $$3, $$0);
+   public static boolean a(double $$0) {
+      return !Double.isInfinite($$0) && $$0 < 1.0;
    }
 
-   @Override
-   protected cja q() {
-      return cji.nb;
-   }
-
-   @Override
-   public int b() {
-      return 27;
-   }
-
-   @Override
-   public cdl.a z() {
-      return cdl.a.b;
-   }
-
-   @Override
-   public dfj B() {
-      return csw.cv.n().a(ctx.b, hc.c);
-   }
-
-   @Override
-   public int E() {
-      return 8;
-   }
-
-   @Override
-   public cel a(int $$0, cbt $$1) {
-      return ces.a($$0, $$1, this);
-   }
-
-   @Override
-   public void c(cbu $$0) {
-      this.dL().a(djt.j, this.dj(), djt.a.a($$0));
-   }
-
-   @Override
-   public bgy a(cbu $$0, bgx $$1) {
-      bgy $$2 = this.c_($$0);
-      if ($$2.a()) {
-         this.a(djt.k, $$0);
-         cal.a($$0, true);
+   public static boolean a(cph $$0, bji $$1, ehk $$2) {
+      for (eii $$4 : $$0.e($$1, $$2)) {
+         if (!$$4.c()) {
+            return false;
+         }
       }
 
-      return $$2;
+      return $$0.B_().a($$2);
+   }
+
+   public static boolean a(cph $$0, ehp $$1, bji $$2, bju $$3) {
+      return a($$0, $$2, $$2.e($$3).c($$1));
+   }
+
+   public static eii a(cpd $$0, gw $$1) {
+      dfl $$2 = $$0.a_($$1);
+      return !$$2.a(apu.aO) && (!($$2.b() instanceof dbk) || !$$2.c(dbk.a)) ? $$2.k($$0, $$1) : eif.a();
+   }
+
+   public static double a(gw $$0, int $$1, Function<gw, eii> $$2) {
+      gw.a $$3 = $$0.j();
+      int $$4 = 0;
+
+      while ($$4 < $$1) {
+         eii $$5 = $$2.apply($$3);
+         if (!$$5.c()) {
+            return (double)($$0.v() + $$4) + $$5.b(hc.a.b);
+         }
+
+         $$4++;
+         $$3.c(hc.b);
+      }
+
+      return Double.POSITIVE_INFINITY;
+   }
+
+   @Nullable
+   public static ehp a(biw<?> $$0, cph $$1, gw $$2, boolean $$3) {
+      if ($$3 && $$0.a($$1.a_($$2))) {
+         return null;
+      } else {
+         double $$4 = $$1.a(a((cpd)$$1, $$2), () -> a((cpd)$$1, $$2.d()));
+         if (!a($$4)) {
+            return null;
+         } else if ($$3 && $$4 <= 0.0 && $$0.a($$1.a_($$2.d()))) {
+            return null;
+         } else {
+            ehp $$5 = ehp.a($$2, $$4);
+            ehk $$6 = $$0.n().a($$5);
+
+            for (eii $$8 : $$1.e(null, $$6)) {
+               if (!$$8.c()) {
+                  return null;
+               }
+            }
+
+            if ($$0 != biw.bt || !$$1.a_($$2).a(apu.ci) && !$$1.a_($$2.c()).a(apu.ci)) {
+               return !$$1.B_().a($$6) ? null : $$5;
+            } else {
+               return null;
+            }
+         }
+      }
    }
 }

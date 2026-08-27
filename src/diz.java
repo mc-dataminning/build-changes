@@ -1,4 +1,8 @@
-@FunctionalInterface
-public interface diz {
-   void onChunkStatusChange(cpc var1, akk var2);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface diz {
 }

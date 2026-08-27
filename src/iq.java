@@ -6,12 +6,12 @@ import java.util.Locale;
 import org.joml.Vector3f;
 
 public class iq extends is {
-   public static final Vector3f a = ehn.a(3790560).j();
+   public static final Vector3f a = ehp.a(3790560).j();
    public static final iq b = new iq(a, ir.a, 1.0F);
    public static final Codec<iq> c = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               arg.d.fieldOf("fromColor").forGetter($$0x -> $$0x.g),
-               arg.d.fieldOf("toColor").forGetter($$0x -> $$0x.i),
+               arh.d.fieldOf("fromColor").forGetter($$0x -> $$0x.g),
+               arh.d.fieldOf("toColor").forGetter($$0x -> $$0x.i),
                Codec.FLOAT.fieldOf("scale").forGetter($$0x -> $$0x.h)
             )
             .apply($$0, iq::new)
@@ -25,7 +25,7 @@ public class iq extends is {
          return new iq($$2, $$4, $$3);
       }
 
-      public iq a(iw<iq> $$0, sp $$1) {
+      public iq a(iw<iq> $$0, sq $$1) {
          Vector3f $$2 = is.b($$1);
          float $$3 = $$1.readFloat();
          Vector3f $$4 = is.b($$1);
@@ -48,7 +48,7 @@ public class iq extends is {
    }
 
    @Override
-   public void a(sp $$0) {
+   public void a(sq $$0) {
       super.a($$0);
       $$0.a(this.i.x());
       $$0.a(this.i.y());

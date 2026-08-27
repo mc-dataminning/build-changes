@@ -1,25 +1,49 @@
-public class fkr extends fmu {
-   fkr(fix $$0, double $$1, double $$2, double $$3, dfj $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.a(eqv.O().an().a().a($$4));
-      this.u = 0.0F;
-      this.t = 80;
-      this.n = false;
+public class fkr extends fmw {
+   private final fmr a;
+
+   fkr(fiz $$0, double $$1, double $$2, double $$3, double $$4, fmr $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a = $$5;
+      this.t = 4;
+      float $$6 = this.r.i() * 0.6F + 0.4F;
+      this.v = $$6;
+      this.w = $$6;
+      this.x = $$6;
+      this.D = 1.0F - (float)$$4 * 0.5F;
+      this.b($$5);
    }
 
    @Override
-   public fly b() {
-      return fly.a;
+   public int a(float $$0) {
+      return 15728880;
    }
 
    @Override
-   public float b(float $$0) {
-      return 0.5F;
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.a);
+      }
    }
 
-   public static class a implements flx<ip> {
-      public flu a(ip $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fkr($$1, $$2, $$3, $$4, $$0.c());
+   @Override
+   public fma b() {
+      return fma.d;
+   }
+
+   public static class a implements flz<ja> {
+      private final fmr a;
+
+      public a(fmr $$0) {
+         this.a = $$0;
+      }
+
+      public flw a(ja $$0, fiz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fkr($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }
 }

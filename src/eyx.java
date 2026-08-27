@@ -1,257 +1,186 @@
-import com.google.common.collect.Lists;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.List;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 public class eyx {
-   private static final aex a = new aex("advancements/title_box");
-   private static final int b = 26;
-   private static final int c = 0;
-   private static final int d = 200;
-   private static final int e = 26;
-   private static final int f = 8;
-   private static final int g = 5;
-   private static final int h = 26;
-   private static final int i = 3;
-   private static final int j = 5;
-   private static final int k = 32;
-   private static final int l = 9;
-   private static final int m = 163;
-   private static final int[] n = new int[]{0, 10, -10, 25, -25};
-   private final eyv o;
-   private final ag p;
-   private final aq q;
-   private final ark r;
-   private final int s;
-   private final List<ark> t;
-   private final eqv u;
+   private final eqx a;
+   private final ezb b;
+   private final eyy c;
+   private final int d;
+   private final ag e;
+   private final aq f;
+   private final cjh g;
+   private final tn h;
+   private final eyz i;
+   private final Map<af, eyz> j = Maps.newLinkedHashMap();
+   private double k;
+   private double l;
+   private int m = Integer.MAX_VALUE;
+   private int n = Integer.MAX_VALUE;
+   private int o = Integer.MIN_VALUE;
+   private int p = Integer.MIN_VALUE;
+   private float q;
+   private boolean r;
+
+   public eyx(eqx $$0, ezb $$1, eyy $$2, int $$3, ag $$4, aq $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$5.c();
+      this.h = $$5.a();
+      this.i = new eyz(this, $$0, $$4, $$5);
+      this.a(this.i, $$4.b());
+   }
+
+   public eyy a() {
+      return this.c;
+   }
+
+   public int b() {
+      return this.d;
+   }
+
+   public ag c() {
+      return this.e;
+   }
+
+   public tn d() {
+      return this.h;
+   }
+
+   public aq e() {
+      return this.f;
+   }
+
+   public void a(esh $$0, int $$1, int $$2, boolean $$3) {
+      this.c.a($$0, $$1, $$2, $$3, this.d);
+   }
+
+   public void a(esh $$0, int $$1, int $$2) {
+      this.c.a($$0, $$1, $$2, this.d, this.g);
+   }
+
+   public void b(esh $$0, int $$1, int $$2) {
+      if (!this.r) {
+         this.k = (double)(117 - (this.o + this.m) / 2);
+         this.l = (double)(56 - (this.p + this.n) / 2);
+         this.r = true;
+      }
+
+      $$0.c($$1, $$2, $$1 + 234, $$2 + 113);
+      $$0.c().a();
+      $$0.c().a((float)$$1, (float)$$2, 0.0F);
+      aey $$3 = Objects.requireNonNullElse(this.f.d(), fzh.a);
+      int $$4 = ary.a(this.k);
+      int $$5 = ary.a(this.l);
+      int $$6 = $$4 % 16;
+      int $$7 = $$5 % 16;
+
+      for (int $$8 = -1; $$8 <= 15; $$8++) {
+         for (int $$9 = -1; $$9 <= 8; $$9++) {
+            $$0.a($$3, $$6 + 16 * $$8, $$7 + 16 * $$9, 0.0F, 0.0F, 16, 16, 16, 16);
+         }
+      }
+
+      this.i.a($$0, $$4, $$5, true);
+      this.i.a($$0, $$4, $$5, false);
+      this.i.a($$0, $$4, $$5);
+      $$0.c().b();
+      $$0.f();
+   }
+
+   public void a(esh $$0, int $$1, int $$2, int $$3, int $$4) {
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, -200.0F);
+      $$0.a(0, 0, 234, 113, ary.d(this.q * 255.0F) << 24);
+      boolean $$5 = false;
+      int $$6 = ary.a(this.k);
+      int $$7 = ary.a(this.l);
+      if ($$1 > 0 && $$1 < 234 && $$2 > 0 && $$2 < 113) {
+         for (eyz $$8 : this.j.values()) {
+            if ($$8.a($$6, $$7, $$1, $$2)) {
+               $$5 = true;
+               $$8.a($$0, $$6, $$7, this.q, $$3, $$4);
+               break;
+            }
+         }
+      }
+
+      $$0.c().b();
+      if ($$5) {
+         this.q = ary.a(this.q + 0.02F, 0.0F, 0.3F);
+      } else {
+         this.q = ary.a(this.q - 0.04F, 0.0F, 1.0F);
+      }
+   }
+
+   public boolean a(int $$0, int $$1, double $$2, double $$3) {
+      return this.c.a($$0, $$1, this.d, $$2, $$3);
+   }
+
    @Nullable
-   private eyx v;
-   private final List<eyx> w = Lists.newArrayList();
-   @Nullable
-   private ah x;
-   private final int y;
-   private final int z;
+   public static eyx a(eqx $$0, ezb $$1, int $$2, ag $$3) {
+      Optional<aq> $$4 = $$3.a().d();
+      if ($$4.isEmpty()) {
+         return null;
+      } else {
+         for (eyy $$5 : eyy.values()) {
+            if ($$2 < $$5.a()) {
+               return new eyx($$0, $$1, $$5, $$2, $$3, $$4.get());
+            }
 
-   public eyx(eyv $$0, eqv $$1, ag $$2, aq $$3) {
-      this.o = $$0;
-      this.p = $$2;
-      this.q = $$3;
-      this.u = $$1;
-      this.r = qt.a().a($$1.h.a($$3.a(), 163));
-      this.y = arx.d($$3.f() * 28.0F);
-      this.z = arx.d($$3.g() * 27.0F);
-      int $$4 = $$2.a().g().a();
-      int $$5 = String.valueOf($$4).length();
-      int $$6 = $$4 > 1 ? $$1.h.b("  ") + $$1.h.b("0") * $$5 * 2 + $$1.h.b("/") : 0;
-      int $$7 = 29 + $$1.h.a(this.r) + $$6;
-      this.t = qt.a().a(this.a(to.a($$3.b().e(), ui.a.a($$3.e().b())), $$7));
-
-      for (ark $$8 : this.t) {
-         $$7 = Math.max($$7, $$1.h.a($$8));
-      }
-
-      this.s = $$7 + 3 + 5;
-   }
-
-   private static float a(erh $$0, List<tq> $$1) {
-      return (float)$$1.stream().mapToDouble($$0::a).max().orElse(0.0);
-   }
-
-   private List<tq> a(tm $$0, int $$1) {
-      erh $$2 = this.u.h.b();
-      List<tq> $$3 = null;
-      float $$4 = Float.MAX_VALUE;
-
-      for (int $$5 : n) {
-         List<tq> $$6 = $$2.b($$0, $$1 - $$5, ui.a);
-         float $$7 = Math.abs(a($$2, $$6) - (float)$$1);
-         if ($$7 <= 10.0F) {
-            return $$6;
+            $$2 -= $$5.a();
          }
 
-         if ($$7 < $$4) {
-            $$4 = $$7;
-            $$3 = $$6;
-         }
+         return null;
+      }
+   }
+
+   public void a(double $$0, double $$1) {
+      if (this.o - this.m > 234) {
+         this.k = ary.a(this.k + $$0, (double)(-(this.o - 234)), 0.0);
       }
 
-      return $$3;
+      if (this.p - this.n > 113) {
+         this.l = ary.a(this.l + $$1, (double)(-(this.p - 113)), 0.0);
+      }
+   }
+
+   public void a(ag $$0) {
+      Optional<aq> $$1 = $$0.a().d();
+      if (!$$1.isEmpty()) {
+         eyz $$2 = new eyz(this, this.a, $$0, $$1.get());
+         this.a($$2, $$0.b());
+      }
+   }
+
+   private void a(eyz $$0, af $$1) {
+      this.j.put($$1, $$0);
+      int $$2 = $$0.d();
+      int $$3 = $$2 + 28;
+      int $$4 = $$0.c();
+      int $$5 = $$4 + 27;
+      this.m = Math.min(this.m, $$2);
+      this.o = Math.max(this.o, $$3);
+      this.n = Math.min(this.n, $$4);
+      this.p = Math.max(this.p, $$5);
+
+      for (eyz $$6 : this.j.values()) {
+         $$6.b();
+      }
    }
 
    @Nullable
-   private eyx a(ag $$0) {
-      do {
-         $$0 = $$0.c();
-      } while ($$0 != null && $$0.a().d().isEmpty());
-
-      return $$0 != null && !$$0.a().d().isEmpty() ? this.o.a($$0.b()) : null;
+   public eyz a(af $$0) {
+      return this.j.get($$0);
    }
 
-   public void a(esf $$0, int $$1, int $$2, boolean $$3) {
-      if (this.v != null) {
-         int $$4 = $$1 + this.v.y + 13;
-         int $$5 = $$1 + this.v.y + 26 + 4;
-         int $$6 = $$2 + this.v.z + 13;
-         int $$7 = $$1 + this.y + 13;
-         int $$8 = $$2 + this.z + 13;
-         int $$9 = $$3 ? -16777216 : -1;
-         if ($$3) {
-            $$0.a($$5, $$4, $$6 - 1, $$9);
-            $$0.a($$5 + 1, $$4, $$6, $$9);
-            $$0.a($$5, $$4, $$6 + 1, $$9);
-            $$0.a($$7, $$5 - 1, $$8 - 1, $$9);
-            $$0.a($$7, $$5 - 1, $$8, $$9);
-            $$0.a($$7, $$5 - 1, $$8 + 1, $$9);
-            $$0.b($$5 - 1, $$8, $$6, $$9);
-            $$0.b($$5 + 1, $$8, $$6, $$9);
-         } else {
-            $$0.a($$5, $$4, $$6, $$9);
-            $$0.a($$7, $$5, $$8, $$9);
-            $$0.b($$5, $$8, $$6, $$9);
-         }
-      }
-
-      for (eyx $$10 : this.w) {
-         $$10.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   public void a(esf $$0, int $$1, int $$2) {
-      if (!this.q.j() || this.x != null && this.x.a()) {
-         float $$3 = this.x == null ? 0.0F : this.x.c();
-         eyy $$4;
-         if ($$3 >= 1.0F) {
-            $$4 = eyy.a;
-         } else {
-            $$4 = eyy.b;
-         }
-
-         $$0.a($$4.a(this.q.e()), $$1 + this.y + 3, $$2 + this.z, 26, 26);
-         $$0.b(this.q.c(), $$1 + this.y + 8, $$2 + this.z + 5);
-      }
-
-      for (eyx $$6 : this.w) {
-         $$6.a($$0, $$1, $$2);
-      }
-   }
-
-   public int a() {
-      return this.s;
-   }
-
-   public void a(ah $$0) {
-      this.x = $$0;
-   }
-
-   public void a(eyx $$0) {
-      this.w.add($$0);
-   }
-
-   public void a(esf $$0, int $$1, int $$2, float $$3, int $$4, int $$5) {
-      boolean $$6 = $$4 + $$1 + this.y + this.s + 26 >= this.o.f().g;
-      tm $$7 = this.x == null ? null : this.x.d();
-      int $$8 = $$7 == null ? 0 : this.u.h.a($$7);
-      boolean $$9 = 113 - $$2 - this.z - 26 <= 6 + this.t.size() * 9;
-      float $$10 = this.x == null ? 0.0F : this.x.c();
-      int $$11 = arx.d($$10 * (float)this.s);
-      eyy $$12;
-      eyy $$13;
-      eyy $$14;
-      if ($$10 >= 1.0F) {
-         $$11 = this.s / 2;
-         $$12 = eyy.a;
-         $$13 = eyy.a;
-         $$14 = eyy.a;
-      } else if ($$11 < 2) {
-         $$11 = this.s / 2;
-         $$12 = eyy.b;
-         $$13 = eyy.b;
-         $$14 = eyy.b;
-      } else if ($$11 > this.s - 2) {
-         $$11 = this.s / 2;
-         $$12 = eyy.a;
-         $$13 = eyy.a;
-         $$14 = eyy.b;
-      } else {
-         $$12 = eyy.a;
-         $$13 = eyy.b;
-         $$14 = eyy.b;
-      }
-
-      int $$24 = this.s - $$11;
-      RenderSystem.enableBlend();
-      int $$25 = $$2 + this.z;
-      int $$26;
-      if ($$6) {
-         $$26 = $$1 + this.y - this.s + 26 + 6;
-      } else {
-         $$26 = $$1 + this.y;
-      }
-
-      int $$28 = 32 + this.t.size() * 9;
-      if (!this.t.isEmpty()) {
-         if ($$9) {
-            $$0.a(a, $$26, $$25 + 26 - $$28, this.s, $$28);
-         } else {
-            $$0.a(a, $$26, $$25, this.s, $$28);
-         }
-      }
-
-      $$0.a($$12.a(), 200, 26, 0, 0, $$26, $$25, $$11, 26);
-      $$0.a($$13.a(), 200, 26, 200 - $$24, 0, $$26 + $$11, $$25, $$24, 26);
-      $$0.a($$14.a(this.q.e()), $$1 + this.y + 3, $$2 + this.z, 26, 26);
-      if ($$6) {
-         $$0.b(this.u.h, this.r, $$26 + 5, $$2 + this.z + 9, -1);
-         if ($$7 != null) {
-            $$0.b(this.u.h, $$7, $$1 + this.y - $$8, $$2 + this.z + 9, -1);
-         }
-      } else {
-         $$0.b(this.u.h, this.r, $$1 + this.y + 32, $$2 + this.z + 9, -1);
-         if ($$7 != null) {
-            $$0.b(this.u.h, $$7, $$1 + this.y + this.s - $$8 - 5, $$2 + this.z + 9, -1);
-         }
-      }
-
-      if ($$9) {
-         for (int $$29 = 0; $$29 < this.t.size(); $$29++) {
-            $$0.a(this.u.h, this.t.get($$29), $$26 + 5, $$25 + 26 - $$28 + 7 + $$29 * 9, -5592406, false);
-         }
-      } else {
-         for (int $$30 = 0; $$30 < this.t.size(); $$30++) {
-            $$0.a(this.u.h, this.t.get($$30), $$26 + 5, $$2 + this.z + 9 + 17 + $$30 * 9, -5592406, false);
-         }
-      }
-
-      $$0.b(this.q.c(), $$1 + this.y + 8, $$2 + this.z + 5);
-   }
-
-   public boolean a(int $$0, int $$1, int $$2, int $$3) {
-      if (!this.q.j() || this.x != null && this.x.a()) {
-         int $$4 = $$0 + this.y;
-         int $$5 = $$4 + 26;
-         int $$6 = $$1 + this.z;
-         int $$7 = $$6 + 26;
-         return $$2 >= $$4 && $$2 <= $$5 && $$3 >= $$6 && $$3 <= $$7;
-      } else {
-         return false;
-      }
-   }
-
-   public void b() {
-      if (this.v == null && this.p.c() != null) {
-         this.v = this.a(this.p);
-         if (this.v != null) {
-            this.v.a(this);
-         }
-      }
-   }
-
-   public int c() {
-      return this.z;
-   }
-
-   public int d() {
-      return this.y;
+   public ezb f() {
+      return this.b;
    }
 }

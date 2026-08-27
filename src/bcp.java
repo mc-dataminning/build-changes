@@ -1,17 +1,18 @@
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bcp extends baf {
+public class bcp extends bah {
    public bcp(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
    public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$1.put("minecraft:brushable_block", $$1.remove("minecraft:suspicious_sand"));
-      $$0.registerSimple($$1, "minecraft:calibrated_sculk_sensor");
+      $$0.register($$1, "minecraft:decorated_pot", () -> DSL.optionalFields("shards", DSL.list(ayz.z.in($$0))));
+      $$0.register($$1, "minecraft:suspicious_sand", () -> DSL.optionalFields("item", ayz.t.in($$0)));
       return $$1;
    }
 }

@@ -1,32 +1,26 @@
-public class brq extends bql {
-   private final cab b;
-   private int c;
+import javax.annotation.Nullable;
 
-   public brq(cab $$0, double $$1, boolean $$2) {
-      super($$0, $$1, $$2);
-      this.b = $$0;
+public class brq extends bra {
+   public static final float i = 0.001F;
+   protected final float j;
+
+   public brq(bjr $$0, double $$1) {
+      this($$0, $$1, 0.001F);
    }
 
-   @Override
-   public void c() {
-      super.c();
-      this.c = 0;
+   public brq(bjr $$0, double $$1, float $$2) {
+      super($$0, $$1);
+      this.j = $$2;
    }
 
+   @Nullable
    @Override
-   public void d() {
-      super.d();
-      this.b.v(false);
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.c++;
-      if (this.c >= 5 && this.k() < this.l() / 2) {
-         this.b.v(true);
+   protected ehp h() {
+      if (this.b.ba()) {
+         ehp $$0 = bub.a(this.b, 15, 7);
+         return $$0 == null ? super.h() : $$0;
       } else {
-         this.b.v(false);
+         return this.b.ef().i() >= this.j ? bub.a(this.b, 10, 7) : super.h();
       }
    }
 }

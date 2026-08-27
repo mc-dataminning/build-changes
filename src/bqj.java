@@ -1,86 +1,48 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class bqj extends bqb {
-   public static final float a = 0.02F;
-   protected final bji b;
-   @Nullable
-   protected biq c;
-   protected final float d;
-   private int h;
-   protected final float e;
-   private final boolean i;
-   protected final Class<? extends bjg> f;
-   protected final bts g;
+public class bqj extends bqd {
+   private final bjk a;
+   private bji b;
+   private final float c;
 
-   public bqj(bji $$0, Class<? extends bjg> $$1, float $$2) {
-      this($$0, $$1, $$2, 0.02F);
-   }
-
-   public bqj(bji $$0, Class<? extends bjg> $$1, float $$2, float $$3) {
-      this($$0, $$1, $$2, $$3, false);
-   }
-
-   public bqj(bji $$0, Class<? extends bjg> $$1, float $$2, float $$3, boolean $$4) {
-      this.b = $$0;
-      this.f = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.i = $$4;
-      this.a(EnumSet.of(bqb.a.b));
-      if ($$1 == cbu.class) {
-         this.g = bts.b().a((double)$$2).a($$1x -> bit.b($$0).test($$1x));
-      } else {
-         this.g = bts.b().a((double)$$2);
-      }
+   public bqj(bjk $$0, float $$1) {
+      this.a = $$0;
+      this.c = $$1;
+      this.a(EnumSet.of(bqd.a.c, bqd.a.a));
    }
 
    @Override
    public boolean a() {
-      if (this.b.ef().i() >= this.e) {
+      if (this.a.cO()) {
          return false;
       } else {
-         if (this.b.q() != null) {
-            this.c = this.b.q();
-         }
-
-         if (this.f == cbu.class) {
-            this.c = this.b.dL().a(this.g, this.b, this.b.dq(), this.b.du(), this.b.dw());
+         this.b = this.a.q();
+         if (this.b == null) {
+            return false;
          } else {
-            this.c = this.b
-               .dL()
-               .a(this.b.dL().a(this.f, this.b.cG().c((double)this.d, 3.0, (double)this.d), $$0 -> true), this.g, this.b, this.b.dq(), this.b.du(), this.b.dw());
+            double $$0 = this.a.f(this.b);
+            if ($$0 < 4.0 || $$0 > 16.0) {
+               return false;
+            } else {
+               return !this.a.aA() ? false : this.a.ef().a(b(5)) == 0;
+            }
          }
-
-         return this.c != null;
       }
    }
 
    @Override
    public boolean b() {
-      if (!this.c.bv()) {
-         return false;
-      } else {
-         return this.b.f(this.c) > (double)(this.d * this.d) ? false : this.h > 0;
-      }
+      return !this.a.aA();
    }
 
    @Override
    public void c() {
-      this.h = this.a(40 + this.b.ef().a(40));
-   }
-
-   @Override
-   public void d() {
-      this.c = null;
-   }
-
-   @Override
-   public void e() {
-      if (this.c.bv()) {
-         double $$0 = this.i ? this.b.du() : this.c.du();
-         this.b.G().a(this.c.dq(), $$0, this.c.dw());
-         this.h--;
+      ehp $$0 = this.a.do();
+      ehp $$1 = new ehp(this.b.dq() - this.a.dq(), 0.0, this.b.dw() - this.a.dw());
+      if ($$1.g() > 1.0E-7) {
+         $$1 = $$1.d().a(0.4).e($$0.a(0.2));
       }
+
+      this.a.o($$1.c, (double)this.c, $$1.e);
    }
 }

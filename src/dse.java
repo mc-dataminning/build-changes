@@ -1,30 +1,24 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public abstract class dse extends dsb {
-   protected final long c;
-   protected final dzp.a d;
-   protected final float e;
-   protected final dzp f;
+public class dse<P extends dsd> {
+   public static final dse<dsm> a = a("simple_state_provider", dsm.b);
+   public static final dse<dsn> b = a("weighted_state_provider", dsn.b);
+   public static final dse<dsi> c = a("noise_threshold_provider", dsi.b);
+   public static final dse<dsh> d = a("noise_provider", dsh.g);
+   public static final dse<dsf> e = a("dual_noise_provider", dsf.b);
+   public static final dse<dsk> f = a("rotated_block_provider", dsk.b);
+   public static final dse<dsj> g = a("randomized_int_state_provider", dsj.b);
+   private final Codec<P> h;
 
-   protected static <P extends dse> P3<Mu<P>, Long, dzp.a, Float> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
-         dzp.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
-         arg.k.fieldOf("scale").forGetter($$0x -> $$0x.e)
-      );
+   private static <P extends dsd> dse<P> a(String $$0, Codec<P> $$1) {
+      return ht.a(jd.W, $$0, new dse<>($$1));
    }
 
-   protected dse(long $$0, dzp.a $$1, float $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = dzp.b(new dlr(new dkt($$0)), $$1);
+   private dse(Codec<P> $$0) {
+      this.h = $$0;
    }
 
-   protected double a(gw $$0, double $$1) {
-      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
+   public Codec<P> a() {
+      return this.h;
    }
 }

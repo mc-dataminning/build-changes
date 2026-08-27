@@ -1,86 +1,57 @@
-import java.util.List;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class bqd extends bqy {
-   private static final int i = 2;
-   private static final int j = 32;
-   private static final int k = 10;
-   private static final int l = 7;
+public abstract class bqd {
+   private final EnumSet<bqd.a> a = EnumSet.noneOf(bqd.a.class);
 
-   public bqd(bjp $$0, double $$1) {
-      super($$0, $$1, 240, false);
+   public abstract boolean a();
+
+   public boolean b() {
+      return this.a();
    }
 
-   @Nullable
+   public boolean P_() {
+      return true;
+   }
+
+   public void c() {
+   }
+
+   public void d() {
+   }
+
+   public boolean Q_() {
+      return false;
+   }
+
+   public void e() {
+   }
+
+   public void a(EnumSet<bqd.a> $$0) {
+      this.a.clear();
+      this.a.addAll($$0);
+   }
+
    @Override
-   protected ehn h() {
-      float $$0 = this.b.dL().z.i();
-      if (this.b.dL().z.i() < 0.3F) {
-         return this.k();
-      } else {
-         ehn $$1;
-         if ($$0 < 0.7F) {
-            $$1 = this.l();
-            if ($$1 == null) {
-               $$1 = this.m();
-            }
-         } else {
-            $$1 = this.m();
-            if ($$1 == null) {
-               $$1 = this.l();
-            }
-         }
-
-         return $$1 == null ? this.k() : $$1;
-      }
+   public String toString() {
+      return this.getClass().getSimpleName();
    }
 
-   @Nullable
-   private ehn k() {
-      return btz.a(this.b, 10, 7);
+   public EnumSet<bqd.a> j() {
+      return this.a;
    }
 
-   @Nullable
-   private ehn l() {
-      akr $$0 = (akr)this.b.dL();
-      List<cbh> $$1 = $$0.a(biu.bf, this.b.cG().g(32.0), this::a);
-      if ($$1.isEmpty()) {
-         return null;
-      } else {
-         cbh $$2 = $$1.get(this.b.dL().z.a($$1.size()));
-         ehn $$3 = $$2.dj();
-         return btz.a(this.b, 10, 7, $$3);
-      }
+   protected int a(int $$0) {
+      return this.Q_() ? $$0 : b($$0);
    }
 
-   @Nullable
-   private ehn m() {
-      hz $$0 = this.n();
-      if ($$0 == null) {
-         return null;
-      } else {
-         gw $$1 = this.a($$0);
-         return $$1 == null ? null : btz.a(this.b, 10, 7, ehn.c($$1));
-      }
+   protected static int b(int $$0) {
+      return ary.e($$0, 2);
    }
 
-   @Nullable
-   private hz n() {
-      akr $$0 = (akr)this.b.dL();
-      List<hz> $$1 = hz.a(hz.a(this.b), 2).filter($$1x -> $$0.b($$1x) == 0).collect(Collectors.toList());
-      return $$1.isEmpty() ? null : $$1.get($$0.z.a($$1.size()));
-   }
-
-   @Nullable
-   private gw a(hz $$0) {
-      akr $$1 = (akr)this.b.dL();
-      buf $$2 = $$1.w();
-      List<gw> $$3 = $$2.c($$0x -> true, $$0.q(), 8, buf.b.b).map(bug::f).collect(Collectors.toList());
-      return $$3.isEmpty() ? null : $$3.get($$1.z.a($$3.size()));
-   }
-
-   private boolean a(cbh $$0) {
-      return $$0.a(this.b.dL().V());
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

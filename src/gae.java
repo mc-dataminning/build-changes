@@ -1,37 +1,9 @@
-import javax.annotation.Nullable;
+public class gae extends gaj {
+   public gae(fzh $$0) {
+      super($$0, new aey("textures/atlas/mob_effects.png"), new aey("mob_effects"));
+   }
 
-public record gae(aex a, @Nullable String b, @Nullable aex c, @Nullable aex d, gae.a e, boolean f) {
-   public static enum a {
-      a("slim"),
-      b("default");
-
-      private final String c;
-
-      private a(String $$0) {
-         this.c = $$0;
-      }
-
-      public static gae.a a(@Nullable String $$0) {
-         if ($$0 == null) {
-            return b;
-         } else {
-            byte var2 = -1;
-            switch ($$0.hashCode()) {
-               case 3533117:
-                  if ($$0.equals("slim")) {
-                     var2 = 0;
-                  }
-               default:
-                  return switch (var2) {
-                     case 0 -> a;
-                     default -> b;
-                  };
-            }
-         }
-      }
-
-      public String a() {
-         return this.c;
-      }
+   public fzg a(bid $$0) {
+      return this.a(jd.e.b($$0));
    }
 }

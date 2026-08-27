@@ -1,21 +1,16 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dqg extends dps {
-   public static final Codec<dqg> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dsb.a.fieldOf("state_provider").forGetter($$0x -> $$0x.b),
-               arg.j.fieldOf("spread_width").forGetter($$0x -> $$0x.d),
-               arg.j.fieldOf("spread_height").forGetter($$0x -> $$0x.e)
-            )
+public class dqg implements dqc {
+   public static final Codec<dqg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.intRange(0, diu.c).fieldOf("height").forGetter($$0x -> $$0x.b), dfl.b.fieldOf("state").forGetter($$0x -> $$0x.c))
             .apply($$0, dqg::new)
    );
-   public final int d;
-   public final int e;
+   public final int b;
+   public final dfl c;
 
-   public dqg(dsb $$0, int $$1, int $$2) {
-      super($$0);
-      this.d = $$1;
-      this.e = $$2;
+   public dqg(int $$0, dfl $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 }

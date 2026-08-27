@@ -1,47 +1,82 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.logging.LogUtils;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
+import java.util.Collections;
 
 public class ahz {
-   private static final Logger a = LogUtils.getLogger();
-
-   public static void a(Collection<String> $$0, dt $$1) {
-      $$1.l().a($$0).exceptionally($$1x -> {
-         a.warn("Failed to execute reload", $$1x);
-         $$1.b(tm.c("commands.reload.failure"));
-         return null;
-      });
-   }
-
-   private static Collection<String> a(anf $$0, ecm $$1, Collection<String> $$2) {
-      $$0.a();
-      Collection<String> $$3 = Lists.newArrayList($$2);
-      Collection<String> $$4 = $$1.F().a().b();
-
-      for (String $$5 : $$0.b()) {
-         if (!$$4.contains($$5) && !$$3.contains($$5)) {
-            $$3.add($$5);
-         }
-      }
-
-      return $$3;
-   }
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tn.c("commands.recipe.give.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tn.c("commands.recipe.take.failed"));
 
    public static void a(CommandDispatcher<dt> $$0) {
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("reload").requires($$0x -> $$0x.c(2))).executes($$0x -> {
-         dt $$1 = (dt)$$0x.getSource();
-         MinecraftServer $$2 = $$1.l();
-         anf $$3 = $$2.aB();
-         ecm $$4 = $$2.aT();
-         Collection<String> $$5 = $$3.d();
-         Collection<String> $$6 = a($$3, $$4, $$5);
-         $$1.a(() -> tm.c("commands.reload.success"), true);
-         a($$6, $$1);
-         return 0;
-      }));
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("recipe").requires($$0x -> $$0x.c(2)))
+               .then(
+                  du.a("give")
+                     .then(
+                        ((RequiredArgumentBuilder)du.a("targets", ee.d())
+                              .then(
+                                 du.a("recipe", es.a())
+                                    .suggests(gm.b)
+                                    .executes($$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), Collections.singleton(es.b($$0x, "recipe"))))
+                              ))
+                           .then(du.a("*").executes($$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), ((dt)$$0x.getSource()).l().aE().b())))
+                     )
+               ))
+            .then(
+               du.a("take")
+                  .then(
+                     ((RequiredArgumentBuilder)du.a("targets", ee.d())
+                           .then(
+                              du.a("recipe", es.a())
+                                 .suggests(gm.b)
+                                 .executes($$0x -> b((dt)$$0x.getSource(), ee.f($$0x, "targets"), Collections.singleton(es.b($$0x, "recipe"))))
+                           ))
+                        .then(du.a("*").executes($$0x -> b((dt)$$0x.getSource(), ee.f($$0x, "targets"), ((dt)$$0x.getSource()).l().aE().b())))
+                  )
+            )
+      );
+   }
+
+   private static int a(dt $$0, Collection<akt> $$1, Collection<cmm<?>> $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (akt $$4 : $$1) {
+         $$3 += $$4.a($$2);
+      }
+
+      if ($$3 == 0) {
+         throw a.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> tn.a("commands.recipe.give.success.single", $$2.size(), $$1.iterator().next().N_()), true);
+         } else {
+            $$0.a(() -> tn.a("commands.recipe.give.success.multiple", $$2.size(), $$1.size()), true);
+         }
+
+         return $$3;
+      }
+   }
+
+   private static int b(dt $$0, Collection<akt> $$1, Collection<cmm<?>> $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (akt $$4 : $$1) {
+         $$3 += $$4.b($$2);
+      }
+
+      if ($$3 == 0) {
+         throw b.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> tn.a("commands.recipe.take.success.single", $$2.size(), $$1.iterator().next().N_()), true);
+         } else {
+            $$0.a(() -> tn.a("commands.recipe.take.success.multiple", $$2.size(), $$1.size()), true);
+         }
+
+         return $$3;
+      }
    }
 }

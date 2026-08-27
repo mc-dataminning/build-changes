@@ -1,92 +1,80 @@
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+public abstract class ddk {
+   private static final int a = 5;
+   private int b;
 
-public class ddk extends dcv {
-   public static final String a = "sherds";
-   private ddk.a b = ddk.a.a;
+   protected abstract void a(cpx var1, gw var2, dfl var3);
 
-   public ddk(gw $$0, dfj $$1) {
-      super(dcx.O, $$0, $$1);
+   protected abstract void b(cpx var1, gw var2, dfl var3);
+
+   protected abstract void a(cpx var1, gw var2, dfl var3, int var4, int var5);
+
+   protected abstract boolean a(cbw var1);
+
+   public void a(cbw $$0, cpx $$1, gw $$2, dfl $$3) {
+      int $$4 = this.b++;
+      if ($$4 == 0) {
+         this.a($$1, $$2, $$3);
+         $$1.a($$0, djv.k, $$2);
+         d($$1, $$2, $$3);
+      }
+
+      this.a($$1, $$2, $$3, $$4, this.b);
    }
 
-   @Override
-   protected void b(qy $$0) {
-      super.b($$0);
-      this.b.a($$0);
+   public void b(cbw $$0, cpx $$1, gw $$2, dfl $$3) {
+      int $$4 = this.b--;
+      if (this.b == 0) {
+         this.b($$1, $$2, $$3);
+         $$1.a($$0, djv.j, $$2);
+      }
+
+      this.a($$1, $$2, $$3, $$4, this.b);
    }
 
-   @Override
-   public void a(qy $$0) {
-      super.a($$0);
-      this.b = ddk.a.b($$0);
+   private int a(cpx $$0, gw $$1) {
+      int $$2 = $$1.u();
+      int $$3 = $$1.v();
+      int $$4 = $$1.w();
+      float $$5 = 5.0F;
+      ehk $$6 = new ehk(
+         (double)((float)$$2 - 5.0F),
+         (double)((float)$$3 - 5.0F),
+         (double)((float)$$4 - 5.0F),
+         (double)((float)($$2 + 1) + 5.0F),
+         (double)((float)($$3 + 1) + 5.0F),
+         (double)((float)($$4 + 1) + 5.0F)
+      );
+      return $$0.a(djj.a(cbw.class), $$6, this::a).size();
    }
 
-   public xe c() {
-      return xe.a(this);
+   public void c(cpx $$0, gw $$1, dfl $$2) {
+      int $$3 = this.a($$0, $$1);
+      int $$4 = this.b;
+      if ($$4 != $$3) {
+         boolean $$5 = $$3 != 0;
+         boolean $$6 = $$4 != 0;
+         if ($$5 && !$$6) {
+            this.a($$0, $$1, $$2);
+            $$0.a(null, djv.k, $$1);
+         } else if (!$$5) {
+            this.b($$0, $$1, $$2);
+            $$0.a(null, djv.j, $$1);
+         }
+
+         this.b = $$3;
+      }
+
+      this.a($$0, $$1, $$2, $$4, $$3);
+      if ($$3 > 0) {
+         d($$0, $$1, $$2);
+      }
    }
 
-   @Override
-   public qy as_() {
-      return this.o();
-   }
-
-   public hc d() {
-      return this.q().c(dfz.R);
-   }
-
-   public ddk.a f() {
+   public int a() {
       return this.b;
    }
 
-   public void a(cjf $$0) {
-      this.b = ddk.a.b(cgy.a($$0));
-   }
-
-   public cjf g() {
-      return a(this.b);
-   }
-
-   public static cjf a(ddk.a $$0) {
-      cjf $$1 = cji.eg.ai_();
-      qy $$2 = $$0.a(new qy());
-      cgy.a($$1, dcx.O, $$2);
-      return $$1;
-   }
-
-   public static record a(cja b, cja c, cja d, cja e) {
-      public static final ddk.a a = new ddk.a(cji.pX, cji.pX, cji.pX, cji.pX);
-
-      public qy a(qy $$0) {
-         if (this.equals(a)) {
-            return $$0;
-         } else {
-            re $$1 = new re();
-            this.a().forEach($$1x -> $$1.add(rp.a(jd.i.b($$1x).toString())));
-            $$0.a("sherds", $$1);
-            return $$0;
-         }
-      }
-
-      public Stream<cja> a() {
-         return Stream.of(this.b, this.c, this.d, this.e);
-      }
-
-      public static ddk.a b(@Nullable qy $$0) {
-         if ($$0 != null && $$0.b("sherds", 9)) {
-            re $$1 = $$0.c("sherds", 8);
-            return new ddk.a(a($$1, 0), a($$1, 1), a($$1, 2), a($$1, 3));
-         } else {
-            return a;
-         }
-      }
-
-      private static cja a(re $$0, int $$1) {
-         if ($$1 >= $$0.size()) {
-            return cji.pX;
-         } else {
-            rr $$2 = $$0.k($$1);
-            return jd.i.a(aex.a($$2.r_()));
-         }
-      }
+   private static void d(cpx $$0, gw $$1, dfl $$2) {
+      $$0.a($$1, $$2.b(), 5);
    }
 }

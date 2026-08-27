@@ -17,8 +17,8 @@ import javax.annotation.Nullable;
 public class qa {
    private static final Collection<qp> a = Lists.newArrayList();
    private static final Set<String> b = Sets.newHashSet();
-   private static final Map<String, Consumer<akr>> c = Maps.newHashMap();
-   private static final Map<String, Consumer<akr>> d = Maps.newHashMap();
+   private static final Map<String, Consumer<aks>> c = Maps.newHashMap();
+   private static final Map<String, Consumer<aks>> d = Maps.newHashMap();
    private static final Collection<qp> e = Sets.newHashSet();
 
    public static void a(Class<?> $$0) {
@@ -43,11 +43,11 @@ public class qa {
       a($$0, pn.class, pn::a, d);
    }
 
-   private static <T extends Annotation> void a(Method $$0, Class<T> $$1, Function<T, String> $$2, Map<String, Consumer<akr>> $$3) {
+   private static <T extends Annotation> void a(Method $$0, Class<T> $$1, Function<T, String> $$2, Map<String, Consumer<aks>> $$3) {
       T $$4 = $$0.getAnnotation($$1);
       if ($$4 != null) {
          String $$5 = $$2.apply($$4);
-         Consumer<akr> $$6 = $$3.putIfAbsent($$5, (Consumer<akr>)d($$0));
+         Consumer<aks> $$6 = $$3.putIfAbsent($$5, (Consumer<aks>)d($$0));
          if ($$6 != null) {
             throw new RuntimeException("Hey, there should only be one " + $$1 + " method per batch. Batch '" + $$5 + "' has more than one!");
          }
@@ -71,12 +71,12 @@ public class qa {
    }
 
    @Nullable
-   public static Consumer<akr> c(String $$0) {
+   public static Consumer<aks> c(String $$0) {
       return c.get($$0);
    }
 
    @Nullable
-   public static Consumer<akr> d(String $$0) {
+   public static Consumer<aks> d(String $$0) {
       return d.get($$0);
    }
 
@@ -109,7 +109,7 @@ public class qa {
       String $$4 = $$3 + "." + $$0.getName().toLowerCase();
       String $$5 = $$1.e().isEmpty() ? $$4 : $$3 + "." + $$1.e();
       String $$6 = $$1.b();
-      czh $$7 = ql.a($$1.c());
+      czj $$7 = ql.a($$1.c());
       return new qp($$6, $$4, $$5, $$7, $$1.a(), $$1.f(), $$1.d(), $$1.h(), $$1.g(), (Consumer<px>)d($$0));
    }
 

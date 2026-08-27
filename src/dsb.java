@@ -1,17 +1,18 @@
 import com.mojang.serialization.Codec;
 
-public abstract class dsb {
-   public static final Codec<dsb> a = jd.W.q().dispatch(dsb::a, dsc::a);
+public class dsb<P extends dsa> {
+   public static final dsb<drz> a = a("mangrove_root_placer", drz.c);
+   private final Codec<P> b;
 
-   public static dsk a(dfj $$0) {
-      return new dsk($$0);
+   private static <P extends dsa> dsb<P> a(String $$0, Codec<P> $$1) {
+      return ht.a(jd.Z, $$0, new dsb<>($$1));
    }
 
-   public static dsk a(csv $$0) {
-      return new dsk($$0.n());
+   private dsb(Codec<P> $$0) {
+      this.b = $$0;
    }
 
-   protected abstract dsc<?> a();
-
-   public abstract dfj a(asc var1, gw var2);
+   public Codec<P> a() {
+      return this.b;
+   }
 }

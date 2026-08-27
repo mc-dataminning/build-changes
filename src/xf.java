@@ -1,32 +1,40 @@
-public class xf implements ve<wx> {
-   private final gw a;
-   private final int b;
-   private final int c;
-   private final csv d;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   public xf(gw $$0, csv $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.d = $$1;
-      this.b = $$2;
-      this.c = $$3;
+public class xf implements vf<wy> {
+   private final gw a;
+   private final dcz<?> b;
+   @Nullable
+   private final qy c;
+
+   public static xf a(dcx $$0, Function<dcx, qy> $$1) {
+      return new xf($$0.p(), $$0.u(), $$1.apply($$0));
    }
 
-   public xf(sp $$0) {
+   public static xf a(dcx $$0) {
+      return a($$0, dcx::as_);
+   }
+
+   private xf(gw $$0, dcz<?> $$1, qy $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2.g() ? null : $$2;
+   }
+
+   public xf(sq $$0) {
       this.a = $$0.e();
-      this.b = $$0.readUnsignedByte();
-      this.c = $$0.readUnsignedByte();
-      this.d = $$0.a(jd.f);
+      this.b = $$0.a(jd.l);
+      this.c = $$0.p();
    }
 
    @Override
-   public void a(sp $$0) {
+   public void a(sq $$0) {
       $$0.a(this.a);
-      $$0.k(this.b);
-      $$0.k(this.c);
-      $$0.a(jd.f, this.d);
+      $$0.a(jd.l, this.b);
+      $$0.a((rs)this.c);
    }
 
-   public void a(wx $$0) {
+   public void a(wy $$0) {
       $$0.a(this);
    }
 
@@ -34,15 +42,12 @@ public class xf implements ve<wx> {
       return this.a;
    }
 
-   public int d() {
+   public dcz<?> d() {
       return this.b;
    }
 
-   public int e() {
+   @Nullable
+   public qy e() {
       return this.c;
-   }
-
-   public csv f() {
-      return this.d;
    }
 }

@@ -1,31 +1,33 @@
-public record we(we.a b) implements vx {
-   public static final aex a = new aex("debug/hive");
+import java.util.List;
 
-   public we(sp $$0) {
-      this(new we.a($$0));
+public record we(int b, gw c, List<we.a> d) implements vy {
+   public static final aey a = new aey("debug/goal_selector");
+
+   public we(sq $$0) {
+      this($$0.readInt(), $$0.e(), $$0.a(we.a::new));
    }
 
    @Override
-   public void a(sp $$0) {
-      this.b.a($$0);
+   public void a(sq $$0) {
+      $$0.p(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d, ($$0x, $$1) -> $$1.a($$0x));
    }
 
    @Override
-   public aex a() {
+   public aey a() {
       return a;
    }
 
-   public static record a(gw a, String b, int c, int d, boolean e) {
-      public a(sp $$0) {
-         this($$0.e(), $$0.r(), $$0.readInt(), $$0.readInt(), $$0.readBoolean());
+   public static record a(int a, boolean b, String c) {
+      public a(sq $$0) {
+         this($$0.readInt(), $$0.readBoolean(), $$0.d(255));
       }
 
-      public void a(sp $$0) {
-         $$0.a(this.a);
+      public void a(sq $$0) {
+         $$0.p(this.a);
          $$0.a(this.b);
-         $$0.p(this.c);
-         $$0.p(this.d);
-         $$0.a(this.e);
+         $$0.a(this.c);
       }
    }
 }

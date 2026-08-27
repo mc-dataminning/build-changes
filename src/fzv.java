@@ -1,69 +1,8 @@
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class fzv extends ana {
-   private static final amw c = new amw(tm.c("resourcePack.vanilla.description"), aa.b().a(amj.a), Optional.empty());
-   private static final amd d = amd.a(amw.b, c);
-   private static final tm e = tm.c("resourcePack.vanilla.name");
-   public static final String b = "high_contrast";
-   private static final Map<String, tm> f = Map.of(
-      "programmer_art", tm.c("resourcePack.programmer_art.name"), "high_contrast", tm.c("resourcePack.high_contrast.name")
-   );
-   private static final aex g = new aex("minecraft", "resourcepacks");
-   @Nullable
-   private final Path h;
-
-   public fzv(Path $$0, ehd $$1) {
-      super(amj.a, b($$0), g, $$1);
-      this.h = this.a($$0);
-   }
-
-   @Nullable
-   private Path a(Path $$0) {
-      if (aa.aT && $$0.getFileSystem() == FileSystems.getDefault()) {
-         Path $$1 = $$0.getParent().resolve("resourcepacks");
-         if (Files.isDirectory($$1)) {
-            return $$1;
-         }
-      }
-
-      return null;
-   }
-
-   private static aml b(Path $$0) {
-      amm $$1 = new amm().a(d).a("minecraft", "realms");
-      return $$1.b().a().a(amj.a, $$0).c();
-   }
-
-   @Override
-   protected tm a(String $$0) {
-      tm $$1 = f.get($$0);
-      return (tm)($$1 != null ? $$1 : tm.b($$0));
-   }
-
-   @Nullable
-   @Override
-   protected anc a(ami $$0) {
-      return anc.a("vanilla", e, true, b($$0), amj.a, anc.b.b, ang.c);
-   }
-
-   @Nullable
-   @Override
-   protected anc a(String $$0, anc.c $$1, tm $$2) {
-      return anc.a($$0, $$2, false, $$1, amj.a, anc.b.a, ang.c);
-   }
-
-   @Override
-   protected void a(BiConsumer<String, Function<String, anc>> $$0) {
-      super.a($$0);
-      if (this.h != null) {
-         this.a(this.h, $$0);
-      }
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fzv {
 }

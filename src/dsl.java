@@ -1,29 +1,49 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dsl extends dsb {
-   public static final Codec<dsl> b = bfi.b(dfj.b).comapFlatMap(dsl::a, $$0 -> $$0.c).fieldOf("entries").codec();
-   private final bfi<dfj> c;
+public record dsl(dsd b, List<dsl.a> c) {
+   public static final Codec<dsl> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dsd.a.fieldOf("fallback").forGetter(dsl::a), dsl.a.a.listOf().fieldOf("rules").forGetter(dsl::b)).apply($$0, dsl::new)
+   );
 
-   private static DataResult<dsl> a(bfi<dfj> $$0) {
-      return $$0.d() ? DataResult.error(() -> "WeightedStateProvider with no states") : DataResult.success(new dsl($$0));
+   public static dsl a(dsd $$0) {
+      return new dsl($$0, List.of());
    }
 
-   public dsl(bfi<dfj> $$0) {
-      this.c = $$0;
+   public static dsl a(csx $$0) {
+      return a(dsd.a($$0));
    }
 
-   public dsl(bfi.a<dfj> $$0) {
-      this($$0.a());
+   public dfl a(cqr $$0, ase $$1, gw $$2) {
+      for (dsl.a $$3 : this.c) {
+         if ($$3.a().test($$0, $$2)) {
+            return $$3.b().a($$1, $$2);
+         }
+      }
+
+      return this.b.a($$1, $$2);
    }
 
-   @Override
-   protected dsc<?> a() {
-      return dsc.b;
+   public dsd a() {
+      return this.b;
    }
 
-   @Override
-   public dfj a(asc $$0, gw $$1) {
-      return this.c.a($$0).orElseThrow(IllegalStateException::new);
+   public List<dsl.a> b() {
+      return this.c;
+   }
+
+   public static record a(dmb b, dsd c) {
+      public static final Codec<dsl.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(dmb.b.fieldOf("if_true").forGetter(dsl.a::a), dsd.a.fieldOf("then").forGetter(dsl.a::b)).apply($$0, dsl.a::new)
+      );
+
+      public dmb a() {
+         return this.b;
+      }
+
+      public dsd b() {
+         return this.c;
+      }
    }
 }

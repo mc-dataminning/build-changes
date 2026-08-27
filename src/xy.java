@@ -1,24 +1,14 @@
-public record xy(tm a, ti.b b) implements ve<wx> {
-   public xy(sp $$0) {
-      this($$0.l(), new ti.b($$0));
+public record xy(ty.a a) implements vf<wy> {
+   public xy(sq $$0) {
+      this(ty.a.a($$0));
    }
 
    @Override
-   public void a(sp $$0) {
-      $$0.a(this.a);
-      this.b.a($$0);
+   public void a(sq $$0) {
+      ty.a.a($$0, this.a);
    }
 
-   public void a(wx $$0) {
+   public void a(wy $$0) {
       $$0.a(this);
-   }
-
-   @Override
-   public boolean b() {
-      return true;
-   }
-
-   public ti.b d() {
-      return this.b;
    }
 }

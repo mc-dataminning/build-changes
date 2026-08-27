@@ -1,32 +1,56 @@
-public class acb implements ve<abd> {
-   private final boolean a;
-   private final boolean b;
+public class acb implements vf<abe> {
+   private final double a;
+   private final double b;
+   private final double c;
+   private final float d;
+   private final float e;
 
-   public acb(boolean $$0, boolean $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public acb(bis $$0) {
+      this.a = $$0.dq();
+      this.b = $$0.ds();
+      this.c = $$0.dw();
+      this.d = $$0.dB();
+      this.e = $$0.dD();
    }
 
-   public acb(sp $$0) {
-      this.a = $$0.readBoolean();
-      this.b = $$0.readBoolean();
+   public acb(sq $$0) {
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readFloat();
+      this.e = $$0.readFloat();
    }
 
    @Override
-   public void a(sp $$0) {
+   public void a(sq $$0) {
       $$0.a(this.a);
       $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
    }
 
-   public void a(abd $$0) {
+   public void a(abe $$0) {
       $$0.a(this);
    }
 
-   public boolean a() {
+   public double a() {
       return this.a;
    }
 
-   public boolean d() {
+   public double d() {
       return this.b;
+   }
+
+   public double e() {
+      return this.c;
+   }
+
+   public float f() {
+      return this.d;
+   }
+
+   public float g() {
+      return this.e;
    }
 }

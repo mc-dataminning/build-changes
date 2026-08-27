@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface eat {
+public enum eat {
+   a,
+   b,
+   c,
+   d,
+   e;
 }

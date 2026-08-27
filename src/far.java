@@ -1,47 +1,33 @@
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
+public class far extends ess {
+   private static final aey a = new aey("widget/page_forward_highlighted");
+   private static final aey b = new aey("widget/page_forward");
+   private static final aey c = new aey("widget/page_backward_highlighted");
+   private static final aey d = new aey("widget/page_backward");
+   private final boolean s;
+   private final boolean t;
 
-public class far extends ezk {
-   public static final float b = 62.500004F;
-   public static final float c = 0.9765628F;
-   private static final Vector3f k = new Vector3f(0.9765628F, 0.9765628F, 0.9765628F);
-   @Nullable
-   private fqs.a l;
-
-   public far(ded $$0, boolean $$1, boolean $$2) {
-      super($$0, $$1, $$2);
+   public far(int $$0, int $$1, boolean $$2, ess.c $$3, boolean $$4) {
+      super($$0, $$1, 23, 13, tm.a, $$3, o);
+      this.s = $$2;
+      this.t = $$4;
    }
 
    @Override
-   protected void aI_() {
-      super.aI_();
-      this.l = fqs.a(this.f.aP(), this.a);
-   }
-
-   @Override
-   protected void b(esf $$0, dfj $$1) {
-      super.b($$0, $$1);
-      boolean $$2 = $$1.b() instanceof daq;
-      if (!$$2) {
-         $$0.c().a(0.0F, 35.0F, 0.0F);
+   public void b(esh $$0, int $$1, int $$2, float $$3) {
+      aey $$4;
+      if (this.s) {
+         $$4 = this.o() ? a : b;
+      } else {
+         $$4 = this.o() ? c : d;
       }
+
+      $$0.a($$4, this.r(), this.t(), 23, 13);
    }
 
    @Override
-   protected void a(esf $$0, dfj $$1) {
-      if (this.l != null) {
-         boolean $$2 = $$1.b() instanceof daq;
-         $$0.c().a(0.0F, 31.0F, 0.0F);
-         $$0.c().b(62.500004F, 62.500004F, -62.500004F);
-         gbi $$3 = fot.a(this.a);
-         elt $$4 = $$3.a($$0.d(), this.l::a);
-         this.l.b.k = $$2;
-         this.l.a.a($$0.c(), $$4, 15728880, fyv.d);
+   public void a(gds $$0) {
+      if (this.t) {
+         $$0.a(gcj.a(apf.ce, 1.0F));
       }
-   }
-
-   @Override
-   protected Vector3f l() {
-      return k;
    }
 }

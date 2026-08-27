@@ -1,22 +1,79 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import org.slf4j.Logger;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Keyable;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.Objects;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-@FunctionalInterface
 public interface asr {
-   Logger a = LogUtils.getLogger();
+   int W = 16;
 
-   static asr immediate(Executor $$0) {
-      return $$1 -> $$1.submit($$0).exceptionally($$0xx -> {
-            a.error("Task failed", $$0xx);
-            return null;
-         });
+   String c();
+
+   static <E extends Enum<E> & asr> asr.a<E> a(Supplier<E[]> $$0) {
+      return a($$0, $$0x -> $$0x);
    }
 
-   void append(asr.a var1);
+   static <E extends Enum<E> & asr> asr.a<E> a(Supplier<E[]> $$0, Function<String, String> $$1) {
+      E[] $$2 = (E[])$$0.get();
+      if ($$2.length > 16) {
+         Map<String, E> $$3 = Arrays.stream($$2).collect(Collectors.toMap($$1x -> $$1.apply(((asr)$$1x).c()), $$0x -> (E)$$0x));
+         return new asr.a<>($$2, $$1x -> $$1x == null ? null : $$3.get($$1x));
+      } else {
+         return new asr.a<>($$2, $$2x -> {
+            for (E $$3x : $$2) {
+               if ($$1.apply($$3x.c()).equals($$2x)) {
+                  return $$3x;
+               }
+            }
 
-   public interface a {
-      CompletableFuture<?> submit(Executor var1);
+            return null;
+         });
+      }
+   }
+
+   static Keyable a(final asr[] $$0) {
+      return new Keyable() {
+         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
+            return Arrays.stream($$0).map(asr::c).map($$0::createString);
+         }
+      };
+   }
+
+   @Deprecated
+   public static class a<E extends Enum<E> & asr> implements Codec<E> {
+      private final Codec<E> a;
+      private final Function<String, E> b;
+
+      public a(E[] $$0, Function<String, E> $$1) {
+         this.a = arh.b(
+            arh.b($$0x -> ((asr)$$0x).c(), $$1), arh.a($$0x -> ((Enum)$$0x).ordinal(), $$1x -> $$1x >= 0 && $$1x < $$0.length ? $$0[$$1x] : null, -1)
+         );
+         this.b = $$1;
+      }
+
+      public <T> DataResult<Pair<E, T>> decode(DynamicOps<T> $$0, T $$1) {
+         return this.a.decode($$0, $$1);
+      }
+
+      public <T> DataResult<T> a(E $$0, DynamicOps<T> $$1, T $$2) {
+         return this.a.encode($$0, $$1, $$2);
+      }
+
+      @Nullable
+      public E a(@Nullable String $$0) {
+         return this.b.apply($$0);
+      }
+
+      public E a(@Nullable String $$0, E $$1) {
+         return Objects.requireNonNullElse(this.a($$0), $$1);
+      }
    }
 }

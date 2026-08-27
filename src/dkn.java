@@ -1,111 +1,105 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class dkn extends dhg {
-   public static final Codec<dkn> c = RecordCodecBuilder.create($$0 -> $$0.group(dtl.a.fieldOf("settings").forGetter(dkn::g)).apply($$0, $$0.stable(dkn::new)));
-   private final dtl d;
+public interface dkn {
+   Codec<dkn> b = dko.b;
+   Codec<hg<dkn>> c = aeu.a(je.at, b);
+   Codec<dkn> d = c.xmap(dko.j::new, $$0 -> (hg)($$0 instanceof dko.j $$1 ? $$1.j() : new hg.a<>($$0)));
 
-   public dkn(dtl $$0) {
-      super(new cre($$0.d()), ac.b($$0::a));
-      this.d = $$0;
+   double a(dkn.b var1);
+
+   void a(double[] var1, dkn.a var2);
+
+   dkn a(dkn.f var1);
+
+   double a();
+
+   double b();
+
+   ars<? extends dkn> c();
+
+   default dkn a(double $$0, double $$1) {
+      return new dko.g(this, $$0, $$1);
    }
 
-   @Override
-   public dhh a(hi<dvo> $$0, dlg $$1, long $$2) {
-      Stream<hg<dvo>> $$3 = this.d.c().map(hk::a).orElseGet(() -> $$0.b().map($$0xx -> $$0xx));
-      return dhh.a($$1, $$2, this.b, $$3);
+   default dkn d() {
+      return dko.a(this, dko.k.a.a);
    }
 
-   @Override
-   protected Codec<? extends dhg> a() {
-      return c;
+   default dkn e() {
+      return dko.a(this, dko.k.a.b);
    }
 
-   public dtl g() {
-      return this.d;
+   default dkn f() {
+      return dko.a(this, dko.k.a.c);
    }
 
-   @Override
-   public void a(aky $$0, cqn $$1, dlg $$2, dhf $$3) {
+   default dkn g() {
+      return dko.a(this, dko.k.a.d);
    }
 
-   @Override
-   public int a(cpx $$0) {
-      return $$0.H_() + Math.min($$0.I_(), this.d.f().size());
+   default dkn h() {
+      return dko.a(this, dko.k.a.e);
    }
 
-   @Override
-   public CompletableFuture<dhf> a(Executor $$0, dlu $$1, dlg $$2, cqn $$3, dhf $$4) {
-      List<dfj> $$5 = this.d.f();
-      gw.a $$6 = new gw.a();
-      dks $$7 = $$4.a(dks.a.c);
-      dks $$8 = $$4.a(dks.a.a);
+   default dkn i() {
+      return dko.a(this, dko.k.a.f);
+   }
 
-      for (int $$9 = 0; $$9 < Math.min($$4.I_(), $$5.size()); $$9++) {
-         dfj $$10 = $$5.get($$9);
-         if ($$10 != null) {
-            int $$11 = $$4.H_() + $$9;
+   public interface a {
+      dkn.b a(int var1);
 
-            for (int $$12 = 0; $$12 < 16; $$12++) {
-               for (int $$13 = 0; $$13 < 16; $$13++) {
-                  $$4.a($$6.d($$12, $$11, $$13), $$10, false);
-                  $$7.a($$12, $$11, $$13, $$10);
-                  $$8.a($$12, $$11, $$13, $$10);
-               }
-            }
-         }
+      void a(double[] var1, dkn var2);
+   }
+
+   public interface b {
+      int a();
+
+      int b();
+
+      int c();
+
+      default dlw d() {
+         return dlw.a();
+      }
+   }
+
+   public static record c(hg<dzr.a> b, @Nullable dzr c) {
+      public static final Codec<dkn.c> a = dzr.a.b.xmap($$0 -> new dkn.c($$0, null), dkn.c::b);
+
+      public c(hg<dzr.a> $$0) {
+         this($$0, null);
       }
 
-      return CompletableFuture.completedFuture($$4);
-   }
-
-   @Override
-   public int a(int $$0, int $$1, dks.a $$2, cpx $$3, dlg $$4) {
-      List<dfj> $$5 = this.d.f();
-
-      for (int $$6 = Math.min($$5.size(), $$3.aj()) - 1; $$6 >= 0; $$6--) {
-         dfj $$7 = $$5.get($$6);
-         if ($$7 != null && $$2.e().test($$7)) {
-            return $$3.H_() + $$6 + 1;
-         }
+      public double a(double $$0, double $$1, double $$2) {
+         return this.c == null ? 0.0 : this.c.a($$0, $$1, $$2);
       }
 
-      return $$3.H_();
+      public double a() {
+         return this.c == null ? 2.0 : this.c.a();
+      }
    }
 
-   @Override
-   public cqh a(int $$0, int $$1, cpx $$2, dlg $$3) {
-      return new cqh($$2.H_(), this.d.f().stream().limit((long)$$2.I_()).map($$0x -> $$0x == null ? csw.a.n() : $$0x).toArray(dfj[]::new));
+   public interface d extends dkn {
+      @Override
+      default void a(double[] $$0, dkn.a $$1) {
+         $$1.a($$0, this);
+      }
+
+      @Override
+      default dkn a(dkn.f $$0) {
+         return $$0.apply(this);
+      }
    }
 
-   @Override
-   public void a(List<String> $$0, dlg $$1, gw $$2) {
+   public static record e(int a, int b, int c) implements dkn.b {
    }
 
-   @Override
-   public void a(aky $$0, long $$1, dlg $$2, cqv $$3, cqn $$4, dhf $$5, dko.a $$6) {
-   }
+   public interface f {
+      dkn apply(dkn var1);
 
-   @Override
-   public void a(aky $$0) {
-   }
-
-   @Override
-   public int f() {
-      return 0;
-   }
-
-   @Override
-   public int d() {
-      return 384;
-   }
-
-   @Override
-   public int e() {
-      return -63;
+      default dkn.c a(dkn.c $$0) {
+         return $$0;
+      }
    }
 }

@@ -6,7 +6,7 @@ import java.util.Locale;
 
 public class jb implements iv {
    public static final Codec<jb> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(djx.b.fieldOf("destination").forGetter($$0x -> $$0x.c), Codec.INT.fieldOf("arrival_in_ticks").forGetter($$0x -> $$0x.d))
+      $$0 -> $$0.group(djz.b.fieldOf("destination").forGetter($$0x -> $$0x.c), Codec.INT.fieldOf("arrival_in_ticks").forGetter($$0x -> $$0x.d))
             .apply($$0, jb::new)
    );
    public static final iv.a<jb> b = new iv.a<jb>() {
@@ -20,32 +20,32 @@ public class jb implements iv {
          $$1.expect(' ');
          int $$5 = $$1.readInt();
          gw $$6 = gw.a((double)$$2, (double)$$3, (double)$$4);
-         return new jb(new djp($$6), $$5);
+         return new jb(new djr($$6), $$5);
       }
 
-      public jb a(iw<jb> $$0, sp $$1) {
-         djx $$2 = djy.c($$1);
+      public jb a(iw<jb> $$0, sq $$1) {
+         djz $$2 = dka.c($$1);
          int $$3 = $$1.m();
          return new jb($$2, $$3);
       }
    };
-   private final djx c;
+   private final djz c;
    private final int d;
 
-   public jb(djx $$0, int $$1) {
+   public jb(djz $$0, int $$1) {
       this.c = $$0;
       this.d = $$1;
    }
 
    @Override
-   public void a(sp $$0) {
-      djy.a(this.c, $$0);
+   public void a(sq $$0) {
+      dka.a(this.c, $$0);
       $$0.c(this.d);
    }
 
    @Override
    public String a() {
-      ehn $$0 = this.c.a(null).get();
+      ehp $$0 = this.c.a(null).get();
       double $$1 = $$0.a();
       double $$2 = $$0.b();
       double $$3 = $$0.c();
@@ -57,7 +57,7 @@ public class jb implements iv {
       return ix.P;
    }
 
-   public djx c() {
+   public djz c() {
       return this.c;
    }
 

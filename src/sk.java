@@ -1,6 +1,3 @@
-public interface sk extends sv {
-   @Override
-   default vf a() {
-      return vf.b;
-   }
+public interface sk extends sw {
+   void a(adz var1);
 }

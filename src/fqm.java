@@ -1,98 +1,112 @@
-import java.util.EnumSet;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import java.util.Calendar;
 
-public class fqm implements fqe<ddk> {
-   private static final String a = "neck";
-   private static final String b = "front";
-   private static final String c = "back";
-   private static final String d = "left";
-   private static final String e = "right";
-   private static final String f = "top";
-   private static final String g = "bottom";
-   private final fic h;
-   private final fic i;
-   private final fic j;
-   private final fic k;
-   private final fic l;
-   private final fic m;
-   private final fic n;
-   private final gbi o = Objects.requireNonNull(fot.c(ddl.a));
+public class fqm<T extends dcx & ddz> implements fqg<T> {
+   private static final String a = "bottom";
+   private static final String b = "lid";
+   private static final String c = "lock";
+   private final fie d;
+   private final fie e;
+   private final fie f;
+   private final fie g;
+   private final fie h;
+   private final fie i;
+   private final fie j;
+   private final fie k;
+   private final fie l;
+   private boolean m;
 
-   public fqm(fqf.a $$0) {
-      fic $$1 = $$0.a(fib.E);
-      this.h = $$1.b("neck");
-      this.m = $$1.b("top");
-      this.n = $$1.b("bottom");
-      fic $$2 = $$0.a(fib.F);
-      this.i = $$2.b("front");
-      this.j = $$2.b("back");
-      this.k = $$2.b("left");
-      this.l = $$2.b("right");
-   }
-
-   public static fii b() {
-      fik $$0 = new fik();
-      fil $$1 = $$0.a();
-      fig $$2 = new fig(0.2F);
-      fig $$3 = new fig(-0.1F);
-      $$1.a(
-         "neck",
-         fih.c().a(0, 0).a(4.0F, 17.0F, 4.0F, 8.0F, 3.0F, 8.0F, $$3).a(0, 5).a(5.0F, 20.0F, 5.0F, 6.0F, 1.0F, 6.0F, $$2),
-         fie.a(0.0F, 37.0F, 16.0F, (float) Math.PI, 0.0F, 0.0F)
-      );
-      fih $$4 = fih.c().a(-14, 13).a(0.0F, 0.0F, 0.0F, 14.0F, 0.0F, 14.0F);
-      $$1.a("top", $$4, fie.a(1.0F, 16.0F, 1.0F, 0.0F, 0.0F, 0.0F));
-      $$1.a("bottom", $$4, fie.a(1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F));
-      return fii.a($$0, 32, 32);
-   }
-
-   public static fii c() {
-      fik $$0 = new fik();
-      fil $$1 = $$0.a();
-      fih $$2 = fih.c().a(1, 0).a(0.0F, 0.0F, 0.0F, 14.0F, 16.0F, 0.0F, EnumSet.of(hc.c));
-      $$1.a("back", $$2, fie.a(15.0F, 16.0F, 1.0F, 0.0F, 0.0F, (float) Math.PI));
-      $$1.a("left", $$2, fie.a(1.0F, 16.0F, 1.0F, 0.0F, (float) (-Math.PI / 2), (float) Math.PI));
-      $$1.a("right", $$2, fie.a(15.0F, 16.0F, 15.0F, 0.0F, (float) (Math.PI / 2), (float) Math.PI));
-      $$1.a("front", $$2, fie.a(1.0F, 16.0F, 15.0F, (float) Math.PI, 0.0F, 0.0F));
-      return fii.a($$0, 16, 16);
-   }
-
-   @Nullable
-   private static gbi a(cja $$0) {
-      gbi $$1 = fot.c(ddl.a($$0));
-      if ($$1 == null) {
-         $$1 = fot.c(ddl.a(cji.pX));
+   public fqm(fqh.a $$0) {
+      Calendar $$1 = Calendar.getInstance();
+      if ($$1.get(2) + 1 == 12 && $$1.get(5) >= 24 && $$1.get(5) <= 26) {
+         this.m = true;
       }
 
-      return $$1;
+      fie $$2 = $$0.a(fid.r);
+      this.e = $$2.b("bottom");
+      this.d = $$2.b("lid");
+      this.f = $$2.b("lock");
+      fie $$3 = $$0.a(fid.I);
+      this.h = $$3.b("bottom");
+      this.g = $$3.b("lid");
+      this.i = $$3.b("lock");
+      fie $$4 = $$0.a(fid.J);
+      this.k = $$4.b("bottom");
+      this.j = $$4.b("lid");
+      this.l = $$4.b("lock");
    }
 
-   public void a(ddk $$0, float $$1, elp $$2, foe $$3, int $$4, int $$5) {
-      $$2.a();
-      hc $$6 = $$0.d();
-      $$2.a(0.5, 0.0, 0.5);
-      $$2.a(a.d.rotationDegrees(180.0F - $$6.p()));
-      $$2.a(-0.5, 0.0, -0.5);
-      elt $$7 = this.o.a($$3, fom::c);
-      this.h.a($$2, $$7, $$4, $$5);
-      this.m.a($$2, $$7, $$4, $$5);
-      this.n.a($$2, $$7, $$4, $$5);
-      ddk.a $$8 = $$0.f();
-      this.a(this.i, $$2, $$3, $$4, $$5, a($$8.e()));
-      this.a(this.j, $$2, $$3, $$4, $$5, a($$8.b()));
-      this.a(this.k, $$2, $$3, $$4, $$5, a($$8.c()));
-      this.a(this.l, $$2, $$3, $$4, $$5, a($$8.d()));
-      $$2.b();
+   public static fik b() {
+      fim $$0 = new fim();
+      fin $$1 = $$0.a();
+      $$1.a("bottom", fij.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 14.0F, 10.0F, 14.0F), fig.a);
+      $$1.a("lid", fij.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 14.0F, 5.0F, 14.0F), fig.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", fij.c().a(0, 0).a(7.0F, -2.0F, 14.0F, 2.0F, 4.0F, 1.0F), fig.a(0.0F, 9.0F, 1.0F));
+      return fik.a($$0, 64, 64);
    }
 
-   private void a(fic $$0, elp $$1, foe $$2, int $$3, int $$4, @Nullable gbi $$5) {
-      if ($$5 == null) {
-         $$5 = a(cji.pX);
-      }
+   public static fik c() {
+      fim $$0 = new fim();
+      fin $$1 = $$0.a();
+      $$1.a("bottom", fij.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), fig.a);
+      $$1.a("lid", fij.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), fig.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", fij.c().a(0, 0).a(15.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), fig.a(0.0F, 9.0F, 1.0F));
+      return fik.a($$0, 64, 64);
+   }
 
-      if ($$5 != null) {
-         $$0.a($$1, $$5.a($$2, fom::c), $$3, $$4);
+   public static fik d() {
+      fim $$0 = new fim();
+      fin $$1 = $$0.a();
+      $$1.a("bottom", fij.c().a(0, 19).a(0.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), fig.a);
+      $$1.a("lid", fij.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), fig.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", fij.c().a(0, 0).a(0.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), fig.a(0.0F, 9.0F, 1.0F));
+      return fik.a($$0, 64, 64);
+   }
+
+   @Override
+   public void a(T $$0, float $$1, elr $$2, fog $$3, int $$4, int $$5) {
+      cpx $$6 = $$0.k();
+      boolean $$7 = $$6 != null;
+      dfl $$8 = $$7 ? $$0.q() : csy.cv.n().a(ctz.b, hc.d);
+      dgd $$9 = $$8.b(ctz.c) ? $$8.c(ctz.c) : dgd.a;
+      if ($$8.b() instanceof crr<?> $$11) {
+         boolean $$12 = $$9 != dgd.a;
+         $$2.a();
+         float $$13 = $$8.c(ctz.b).p();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         $$2.a(a.d.rotationDegrees(-$$13));
+         $$2.a(-0.5F, -0.5F, -0.5F);
+         cva.c<? extends dde> $$14;
+         if ($$7) {
+            $$14 = $$11.a($$8, $$6, $$0.p(), true);
+         } else {
+            $$14 = cva.b::b;
+         }
+
+         float $$16 = $$14.apply(ctz.a($$0)).get($$1);
+         $$16 = 1.0F - $$16;
+         $$16 = 1.0F - $$16 * $$16 * $$16;
+         int $$17 = $$14.apply(new fqj<>()).applyAsInt($$4);
+         gbk $$18 = fov.a($$0, $$9, this.m);
+         elv $$19 = $$18.a($$3, foo::d);
+         if ($$12) {
+            if ($$9 == dgd.b) {
+               this.a($$2, $$19, this.g, this.i, this.h, $$16, $$17, $$5);
+            } else {
+               this.a($$2, $$19, this.j, this.l, this.k, $$16, $$17, $$5);
+            }
+         } else {
+            this.a($$2, $$19, this.d, this.f, this.e, $$16, $$17, $$5);
+         }
+
+         $$2.b();
       }
+   }
+
+   private void a(elr $$0, elv $$1, fie $$2, fie $$3, fie $$4, float $$5, int $$6, int $$7) {
+      $$2.e = -($$5 * (float) (Math.PI / 2));
+      $$3.e = $$2.e;
+      $$2.a($$0, $$1, $$6, $$7);
+      $$3.a($$0, $$1, $$6, $$7);
+      $$4.a($$0, $$1, $$6, $$7);
    }
 }

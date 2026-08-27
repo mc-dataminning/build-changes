@@ -1,181 +1,159 @@
-import com.google.common.collect.Lists;
-import com.mojang.authlib.GameProfile;
 import com.mojang.logging.LogUtils;
-import io.netty.bootstrap.Bootstrap;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelException;
-import io.netty.channel.ChannelHandler;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelOption;
-import io.netty.channel.EventLoopGroup;
-import io.netty.channel.socket.nio.NioSocketChannel;
-import java.net.InetSocketAddress;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.io.IOException;
+import java.util.Base64;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
 public class fjj {
-   private static final Logger a = LogUtils.getLogger();
-   private static final tm b = tm.c("multiplayer.status.cannot_connect").a($$0 -> $$0.a(-65536));
-   private final List<sn> c = Collections.synchronizedList(Lists.newArrayList());
+   private static final Logger k = LogUtils.getLogger();
+   private static final int l = 1024;
+   public String a;
+   public String b;
+   public tn c;
+   public tn d;
+   @Nullable
+   public aeb.b e;
+   public long f;
+   public int g = aa.b().e();
+   public tn h = tn.b(aa.b().c());
+   public boolean i;
+   public List<tn> j = Collections.emptyList();
+   private fjj.a m = fjj.a.c;
+   @Nullable
+   private byte[] n;
+   private fjj.b o;
+   private boolean p;
 
-   public void a(final fjh $$0, final Runnable $$1) throws UnknownHostException {
-      final fki $$2 = fki.a($$0.b);
-      Optional<InetSocketAddress> $$3 = fkk.a.a($$2).map(fkh::d);
-      if ($$3.isEmpty()) {
-         this.a(exe.b, $$0);
-      } else {
-         final InetSocketAddress $$4 = $$3.get();
-         final sn $$5 = sn.a($$4, false, null);
-         this.c.add($$5);
-         $$0.d = tm.c("multiplayer.status.pinging");
-         $$0.f = -1L;
-         $$0.j = Collections.emptyList();
-         adx $$6 = new adx() {
-            private boolean g;
-            private boolean h;
-            private long i;
+   public fjj(String $$0, String $$1, fjj.b $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.o = $$2;
+   }
 
-            @Override
-            public void a(adz $$0x) {
-               if (this.h) {
-                  $$5.a(tm.c("multiplayer.status.unrequested"));
-               } else {
-                  this.h = true;
-                  aea $$1 = $$0.a();
-                  $$0.d = $$1.a();
-                  $$1.c().ifPresentOrElse($$1xxx -> {
-                     $$0.h = tm.b($$1xxx.b());
-                     $$0.g = $$1xxx.c();
-                  }, () -> {
-                     $$0.h = tm.c("multiplayer.status.old");
-                     $$0.g = 0;
-                  });
-                  $$1.b().ifPresentOrElse($$1xxx -> {
-                     $$0.c = fjj.a($$1xxx.b(), $$1xxx.a());
-                     $$0.e = $$1xxx;
-                     if (!$$1xxx.c().isEmpty()) {
-                        List<tm> $$2xx = new ArrayList<>($$1xxx.c().size());
+   public qy a() {
+      qy $$0 = new qy();
+      $$0.a("name", this.a);
+      $$0.a("ip", this.b);
+      if (this.n != null) {
+         $$0.a("icon", Base64.getEncoder().encodeToString(this.n));
+      }
 
-                        for (GameProfile $$3 : $$1xxx.c()) {
-                           $$2xx.add(tm.b($$3.getName()));
-                        }
+      if (this.m == fjj.a.a) {
+         $$0.a("acceptTextures", true);
+      } else if (this.m == fjj.a.b) {
+         $$0.a("acceptTextures", false);
+      }
 
-                        if ($$1xxx.c().size() < $$1xxx.b()) {
-                           $$2xx.add(tm.a("multiplayer.status.and_more", $$1xxx.b() - $$1xxx.c().size()));
-                        }
+      return $$0;
+   }
 
-                        $$0.j = $$2xx;
-                     } else {
-                        $$0.j = List.of();
-                     }
-                  }, () -> $$0.c = tm.c("multiplayer.status.unknown").a(n.i));
-                  $$1.d().ifPresent($$2xx -> {
-                     if (!Arrays.equals($$2xx.a(), $$0.c())) {
-                        $$0.a($$2xx.a());
-                        $$1.run();
-                     }
-                  });
-                  this.i = ac.b();
-                  $$5.a(new aec(this.i));
-                  this.g = true;
-               }
-            }
+   public fjj.a b() {
+      return this.m;
+   }
 
-            @Override
-            public void a(ady $$0x) {
-               long $$1 = this.i;
-               long $$2 = ac.b();
-               $$0.f = $$2 - $$1;
-               $$5.a(tm.c("multiplayer.status.finished"));
-            }
+   public void a(fjj.a $$0) {
+      this.m = $$0;
+   }
 
-            @Override
-            public void a(tm $$0x) {
-               if (!this.g) {
-                  fjj.this.a($$0, $$0);
-                  fjj.this.a($$4, $$2, $$0);
-               }
-            }
-
-            @Override
-            public boolean c() {
-               return $$5.k();
-            }
-         };
-
+   public static fjj a(qy $$0) {
+      fjj $$1 = new fjj($$0.l("name"), $$0.l("ip"), fjj.b.c);
+      if ($$0.b("icon", 8)) {
          try {
-            $$5.a($$2.a(), $$2.b(), $$6);
-            $$5.a(new aed());
-         } catch (Throwable var9) {
-            a.error("Failed to ping server {}", $$2, var9);
+            byte[] $$2 = Base64.getDecoder().decode($$0.l("icon"));
+            $$1.a(b($$2));
+         } catch (IllegalArgumentException var3) {
+            k.warn("Malformed base64 server icon", var3);
          }
+      }
+
+      if ($$0.b("acceptTextures", 1)) {
+         if ($$0.q("acceptTextures")) {
+            $$1.a(fjj.a.a);
+         } else {
+            $$1.a(fjj.a.b);
+         }
+      } else {
+         $$1.a(fjj.a.c);
+      }
+
+      return $$1;
+   }
+
+   @Nullable
+   public byte[] c() {
+      return this.n;
+   }
+
+   public void a(@Nullable byte[] $$0) {
+      this.n = $$0;
+   }
+
+   public boolean d() {
+      return this.o == fjj.b.a;
+   }
+
+   public boolean e() {
+      return this.o == fjj.b.b;
+   }
+
+   public void a(boolean $$0) {
+      this.p = $$0;
+   }
+
+   public boolean f() {
+      return this.p;
+   }
+
+   public void a(fjj $$0) {
+      this.b = $$0.b;
+      this.a = $$0.a;
+      this.n = $$0.n;
+   }
+
+   public void b(fjj $$0) {
+      this.a($$0);
+      this.a($$0.b());
+      this.o = $$0.o;
+      this.p = $$0.p;
+   }
+
+   @Nullable
+   public static byte[] b(@Nullable byte[] $$0) {
+      if ($$0 != null) {
+         try {
+            asc $$1 = asc.a($$0);
+            if ($$1.a() <= 1024 && $$1.b() <= 1024) {
+               return $$0;
+            }
+         } catch (IOException var2) {
+            k.warn("Failed to decode server icon", var2);
+         }
+      }
+
+      return null;
+   }
+
+   public static enum a {
+      a("enabled"),
+      b("disabled"),
+      c("prompt");
+
+      private final tn d;
+
+      private a(String $$0) {
+         this.d = tn.c("addServer.resourcePack." + $$0);
+      }
+
+      public tn a() {
+         return this.d;
       }
    }
 
-   void a(tm $$0, fjh $$1) {
-      a.error("Can't ping {}: {}", $$1.b, $$0.getString());
-      $$1.d = b;
-      $$1.c = tl.a;
-   }
-
-   void a(InetSocketAddress $$0, final fki $$1, final fjh $$2) {
-      ((Bootstrap)((Bootstrap)((Bootstrap)new Bootstrap().group((EventLoopGroup)sn.g.get())).handler(new ChannelInitializer<Channel>() {
-         protected void initChannel(Channel $$0) {
-            try {
-               $$0.config().setOption(ChannelOption.TCP_NODELAY, true);
-            } catch (ChannelException var3) {
-            }
-
-            $$0.pipeline().addLast(new ChannelHandler[]{new fjc($$1, ($$1xx, $$2xx, $$3, $$4, $$5) -> {
-               $$2.g = -1;
-               $$2.h = tm.b($$2xx);
-               $$2.d = tm.b($$3);
-               $$2.c = fjj.a($$4, $$5);
-               $$2.e = new aea.b($$5, $$4, List.of());
-            })});
-         }
-      })).channel(NioSocketChannel.class)).connect($$0.getAddress(), $$0.getPort());
-   }
-
-   public static tm a(int $$0, int $$1) {
-      tm $$2 = tm.b(Integer.toString($$0)).a(n.h);
-      tm $$3 = tm.b(Integer.toString($$1)).a(n.h);
-      return tm.a("multiplayer.status.player_count", $$2, $$3).a(n.i);
-   }
-
-   public void a() {
-      synchronized (this.c) {
-         Iterator<sn> $$0 = this.c.iterator();
-
-         while ($$0.hasNext()) {
-            sn $$1 = $$0.next();
-            if ($$1.k()) {
-               $$1.d();
-            } else {
-               $$0.remove();
-               $$1.p();
-            }
-         }
-      }
-   }
-
-   public void b() {
-      synchronized (this.c) {
-         Iterator<sn> $$0 = this.c.iterator();
-
-         while ($$0.hasNext()) {
-            sn $$1 = $$0.next();
-            if ($$1.k()) {
-               $$0.remove();
-               $$1.a(tm.c("multiplayer.status.cancelled"));
-            }
-         }
-      }
+   public static enum b {
+      a,
+      b,
+      c;
    }
 }

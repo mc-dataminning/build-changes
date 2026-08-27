@@ -1,31 +1,65 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class cmu extends cmd {
+   public cmu(cma $$0) {
+      super($$0);
+   }
 
-public class cmu<T extends clz> implements cmm<T> {
-   private final cmu.a<T> x;
-   private final Codec<T> y;
+   public boolean a(cfb $$0, cpx $$1) {
+      int $$2 = 0;
+      int $$3 = 0;
 
-   public cmu(cmu.a<T> $$0) {
-      this.x = $$0;
-      this.y = RecordCodecBuilder.create($$1 -> $$1.group(cly.e.fieldOf("category").orElse(cly.d).forGetter(clz::d)).apply($$1, $$0::create));
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cjh $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if (csx.a($$5.d()) instanceof czw) {
+               $$2++;
+            } else {
+               if (!($$5.d() instanceof chw)) {
+                  return false;
+               }
+
+               $$3++;
+            }
+
+            if ($$3 > 1 || $$2 > 1) {
+               return false;
+            }
+         }
+      }
+
+      return $$2 == 1 && $$3 == 1;
+   }
+
+   public cjh a(cfb $$0, hu $$1) {
+      cjh $$2 = cjh.b;
+      chw $$3 = (chw)cjk.qu;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cjh $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            cjc $$6 = $$5.d();
+            if (csx.a($$6) instanceof czw) {
+               $$2 = $$5;
+            } else if ($$6 instanceof chw) {
+               $$3 = (chw)$$6;
+            }
+         }
+      }
+
+      cjh $$7 = czw.b($$3.d());
+      if ($$2.u()) {
+         $$7.c($$2.v().h());
+      }
+
+      return $$7;
    }
 
    @Override
-   public Codec<T> a() {
-      return this.y;
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= 2;
    }
 
-   public T b(sp $$0) {
-      cly $$1 = $$0.b(cly.class);
-      return this.x.create($$1);
-   }
-
-   public void a(sp $$0, T $$1) {
-      $$0.a($$1.d());
-   }
-
-   @FunctionalInterface
-   public interface a<T extends clz> {
-      T create(cly var1);
+   @Override
+   public cmo<?> an_() {
+      return cmo.m;
    }
 }

@@ -1,40 +1,28 @@
-public class acx implements ve<abd> {
-   private final ehj a;
-   private final bgx b;
-   private final int c;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   public acx(bgx $$0, ehj $$1, int $$2) {
-      this.b = $$0;
-      this.a = $$1;
-      this.c = $$2;
+public class acx implements vf<abe> {
+   private final UUID a;
+
+   public acx(UUID $$0) {
+      this.a = $$0;
    }
 
-   public acx(sp $$0) {
-      this.b = $$0.b(bgx.class);
-      this.a = $$0.x();
-      this.c = $$0.m();
+   public acx(sq $$0) {
+      this.a = $$0.o();
    }
 
    @Override
-   public void a(sp $$0) {
-      $$0.a(this.b);
+   public void a(sq $$0) {
       $$0.a(this.a);
-      $$0.c(this.c);
    }
 
-   public void a(abd $$0) {
+   public void a(abe $$0) {
       $$0.a(this);
    }
 
-   public bgx a() {
-      return this.b;
-   }
-
-   public ehj d() {
-      return this.a;
-   }
-
-   public int e() {
-      return this.c;
+   @Nullable
+   public bis a(aks $$0) {
+      return $$0.a(this.a);
    }
 }

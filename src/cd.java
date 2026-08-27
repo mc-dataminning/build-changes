@@ -14,11 +14,11 @@ public class cd extends cw<cd.a> {
       return new cd.a($$1, $$3, $$4);
    }
 
-   public void a(aks $$0, Collection<biq> $$1) {
-      List<ecq> $$2 = Lists.newArrayList();
-      Set<biu<?>> $$3 = Sets.newHashSet();
+   public void a(akt $$0, Collection<bis> $$1) {
+      List<ecs> $$2 = Lists.newArrayList();
+      Set<biw<?>> $$3 = Sets.newHashSet();
 
-      for (biq $$4 : $$1) {
+      for (bis $$4 : $$1) {
          $$3.add($$4.ag());
          $$2.add(bq.b($$0, $$4));
       }
@@ -44,16 +44,16 @@ public class cd extends cw<cd.a> {
          return al.G.a(new cd.a(Optional.empty(), List.of(), $$0));
       }
 
-      public boolean a(Collection<ecq> $$0, int $$1) {
+      public boolean a(Collection<ecs> $$0, int $$1) {
          if (!this.a.isEmpty()) {
-            List<ecq> $$2 = Lists.newArrayList($$0);
+            List<ecs> $$2 = Lists.newArrayList($$0);
 
             for (bc $$3 : this.a) {
                boolean $$4 = false;
-               Iterator<ecq> $$5 = $$2.iterator();
+               Iterator<ecs> $$5 = $$2.iterator();
 
                while ($$5.hasNext()) {
-                  ecq $$6 = $$5.next();
+                  ecs $$6 = $$5.next();
                   if ($$3.a($$6)) {
                      $$5.remove();
                      $$4 = true;

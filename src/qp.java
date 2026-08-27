@@ -10,17 +10,17 @@ public class qp {
    private final Consumer<px> g;
    private final int h;
    private final long i;
-   private final czh j;
+   private final czj j;
 
    public qp(String $$0, String $$1, String $$2, int $$3, long $$4, boolean $$5, Consumer<px> $$6) {
-      this($$0, $$1, $$2, czh.a, $$3, $$4, $$5, 1, 1, $$6);
+      this($$0, $$1, $$2, czj.a, $$3, $$4, $$5, 1, 1, $$6);
    }
 
-   public qp(String $$0, String $$1, String $$2, czh $$3, int $$4, long $$5, boolean $$6, Consumer<px> $$7) {
+   public qp(String $$0, String $$1, String $$2, czj $$3, int $$4, long $$5, boolean $$6, Consumer<px> $$7) {
       this($$0, $$1, $$2, $$3, $$4, $$5, $$6, 1, 1, $$7);
    }
 
-   public qp(String $$0, String $$1, String $$2, czh $$3, int $$4, long $$5, boolean $$6, int $$7, int $$8, Consumer<px> $$9) {
+   public qp(String $$0, String $$1, String $$2, czj $$3, int $$4, long $$5, boolean $$6, int $$7, int $$8, Consumer<px> $$9) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
@@ -66,7 +66,7 @@ public class qp {
       return this.i;
    }
 
-   public czh g() {
+   public czj g() {
       return this.j;
    }
 

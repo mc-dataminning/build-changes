@@ -1,37 +1,18 @@
-public class ffx<T extends biq> extends ffm<T> {
-   private static final String a = "main";
-   private final fic b;
+import java.util.function.Function;
 
-   public ffx(fic $$0) {
-      this.b = $$0;
+public abstract class ffx<E extends bis> extends fff<E> {
+   public ffx() {
+      this(foo::e);
    }
 
-   public static fii b() {
-      fik $$0 = new fik();
-      fil $$1 = $$0.a();
-      int $$2 = 2;
-      $$1.a(
-         "main",
-         fih.c()
-            .a(0, 0)
-            .a(-4.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .a(0.0F, -4.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .a(0.0F, 0.0F, -4.0F, 2.0F, 2.0F, 2.0F)
-            .a(0.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .a(2.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .a(0.0F, 2.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .a(0.0F, 0.0F, 2.0F, 2.0F, 2.0F, 2.0F),
-         fie.a
-      );
-      return fii.a($$0, 64, 32);
+   public ffx(Function<aey, foo> $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+   public void a(elr $$0, elv $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.d().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
    }
 
-   @Override
-   public fic a() {
-      return this.b;
-   }
+   public abstract Iterable<fie> d();
 }

@@ -1,99 +1,58 @@
-import javax.annotation.Nullable;
+public class gcj extends gbw {
+   public gcj(ape $$0, apg $$1, float $$2, float $$3, ase $$4, gw $$5) {
+      this($$0, $$1, $$2, $$3, $$4, (double)$$5.u() + 0.5, (double)$$5.v() + 0.5, (double)$$5.w() + 0.5);
+   }
 
-public class gcj implements gds<gcj> {
-   public static final aeq a = new aeq("sounds", ".ogg");
-   private final aex b;
-   private final bgg c;
-   private final bgg d;
-   private final int e;
-   private final gcj.a f;
-   private final boolean g;
-   private final boolean h;
-   private final int i;
+   public static gcj a(ape $$0, float $$1) {
+      return a($$0, $$1, 0.25F);
+   }
 
-   public gcj(String $$0, bgg $$1, bgg $$2, int $$3, gcj.a $$4, boolean $$5, boolean $$6, int $$7) {
-      this.b = new aex($$0);
-      this.c = $$1;
+   public static gcj a(hg<ape> $$0, float $$1) {
+      return a($$0.a(), $$1);
+   }
+
+   public static gcj a(ape $$0, float $$1, float $$2) {
+      return new gcj($$0.a(), apg.a, $$2, $$1, gco.t(), false, 0, gco.a.a, 0.0, 0.0, 0.0, true);
+   }
+
+   public static gcj a(ape $$0) {
+      return new gcj($$0.a(), apg.b, 1.0F, 1.0F, gco.t(), false, 0, gco.a.a, 0.0, 0.0, 0.0, true);
+   }
+
+   public static gcj a(ape $$0, ehp $$1) {
+      return new gcj($$0, apg.c, 4.0F, 1.0F, gco.t(), false, 0, gco.a.b, $$1.c, $$1.d, $$1.e);
+   }
+
+   public static gcj b(ape $$0, float $$1, float $$2) {
+      return new gcj($$0.a(), apg.i, $$2, $$1, gco.t(), false, 0, gco.a.a, 0.0, 0.0, 0.0, true);
+   }
+
+   public static gcj b(ape $$0) {
+      return b($$0, 1.0F, 1.0F);
+   }
+
+   public static gcj a(ape $$0, ase $$1, double $$2, double $$3, double $$4) {
+      return new gcj($$0, apg.i, 1.0F, 1.0F, $$1, false, 0, gco.a.b, $$2, $$3, $$4);
+   }
+
+   public gcj(ape $$0, apg $$1, float $$2, float $$3, ase $$4, double $$5, double $$6, double $$7) {
+      this($$0, $$1, $$2, $$3, $$4, false, 0, gco.a.b, $$5, $$6, $$7);
+   }
+
+   private gcj(ape $$0, apg $$1, float $$2, float $$3, ase $$4, boolean $$5, int $$6, gco.a $$7, double $$8, double $$9, double $$10) {
+      this($$0.a(), $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, false);
+   }
+
+   public gcj(aey $$0, apg $$1, float $$2, float $$3, ase $$4, boolean $$5, int $$6, gco.a $$7, double $$8, double $$9, double $$10, boolean $$11) {
+      super($$0, $$1, $$4);
       this.d = $$2;
       this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-   }
-
-   public aex a() {
-      return this.b;
-   }
-
-   public aex b() {
-      return a.a(this.b);
-   }
-
-   public bgg c() {
-      return this.c;
-   }
-
-   public bgg d() {
-      return this.d;
-   }
-
-   @Override
-   public int e() {
-      return this.e;
-   }
-
-   public gcj a(asc $$0) {
-      return this;
-   }
-
-   @Override
-   public void a(gdn $$0) {
-      if (this.h) {
-         $$0.a(this);
-      }
-   }
-
-   public gcj.a f() {
-      return this.f;
-   }
-
-   public boolean g() {
-      return this.g;
-   }
-
-   public boolean h() {
-      return this.h;
-   }
-
-   public int i() {
-      return this.i;
-   }
-
-   @Override
-   public String toString() {
-      return "Sound[" + this.b + "]";
-   }
-
-   public static enum a {
-      a("file"),
-      b("event");
-
-      private final String c;
-
-      private a(String $$0) {
-         this.c = $$0;
-      }
-
-      @Nullable
-      public static gcj.a a(String $$0) {
-         for (gcj.a $$1 : values()) {
-            if ($$1.c.equals($$0)) {
-               return $$1;
-            }
-         }
-
-         return null;
-      }
+      this.f = $$8;
+      this.g = $$9;
+      this.h = $$10;
+      this.i = $$5;
+      this.j = $$6;
+      this.k = $$7;
+      this.l = $$11;
    }
 }

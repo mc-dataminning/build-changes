@@ -1,63 +1,27 @@
-import java.util.Optional;
+import java.util.List;
 
-public record xw(int a, int b, int c, int d, Optional<ehn> e) implements ve<wx> {
-   public xw(biq $$0, bho $$1) {
-      this($$0.ah(), $$0.dL().G_().d(je.p).a($$1.j()), $$1.d() != null ? $$1.d().ah() : -1, $$1.c() != null ? $$1.c().ah() : -1, Optional.ofNullable($$1.i()));
-   }
-
-   public xw(sp $$0) {
-      this($$0.m(), $$0.m(), b($$0), b($$0), $$0.b((sp.a<ehn>)($$0x -> new ehn($$0x.readDouble(), $$0x.readDouble(), $$0x.readDouble()))));
-   }
-
-   private static void a(sp $$0, int $$1) {
-      $$0.c($$1 + 1);
-   }
-
-   private static int b(sp $$0) {
-      return $$0.m() - 1;
+public record xw(xw.a a, List<String> b) implements vf<wy> {
+   public xw(sq $$0) {
+      this($$0.b(xw.a.class), $$0.a(sq::r));
    }
 
    @Override
-   public void a(sp $$0) {
-      $$0.c(this.a);
-      $$0.c(this.b);
-      a($$0, this.c);
-      a($$0, this.d);
-      $$0.a(this.e, ($$0x, $$1) -> {
-         $$0x.a($$1.a());
-         $$0x.a($$1.b());
-         $$0x.a($$1.c());
-      });
+   public void a(sq $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b, sq::a);
    }
 
-   public void a(wx $$0) {
+   public void a(wy $$0) {
       $$0.a(this);
    }
 
-   public bho a(cpv $$0) {
-      hg<bhq> $$1 = $$0.G_().d(je.p).c(this.b).get();
-      if (this.e.isPresent()) {
-         return new bho($$1, this.e.get());
-      } else {
-         biq $$2 = $$0.a(this.c);
-         biq $$3 = $$0.a(this.d);
-         return new bho($$1, $$3, $$2);
-      }
-   }
-
-   public int d() {
+   public List<String> d() {
       return this.b;
    }
 
-   public int e() {
-      return this.c;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   public Optional<ehn> g() {
-      return this.e;
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

@@ -11,9 +11,9 @@ public interface ls {
       return $$0;
    }
 
-   aex b();
+   aey b();
 
-   cmm<?> c();
+   cmo<?> c();
 
    @Nullable
    af d();

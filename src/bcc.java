@@ -4,7 +4,7 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bcc extends baf {
+public class bcc extends bah {
    public bcc(int $$0, Schema $$1) {
       super($$0, $$1);
    }
@@ -12,23 +12,10 @@ public class bcc extends baf {
    public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
       super.registerTypes($$0, $$1, $$2);
       $$0.registerType(
-         false,
-         ayx.c,
+         true,
+         ayz.B,
          () -> DSL.optionalFields(
-               "entities",
-               DSL.list(ayx.w.in($$0)),
-               "block_entities",
-               DSL.list(DSL.or(ayx.s.in($$0), DSL.remainder())),
-               "block_ticks",
-               DSL.list(DSL.fields("i", ayx.y.in($$0))),
-               "sections",
-               DSL.list(
-                  DSL.optionalFields(
-                     "biomes", DSL.optionalFields("palette", DSL.list(ayx.G.in($$0))), "block_states", DSL.optionalFields("palette", DSL.list(ayx.u.in($$0)))
-                  )
-               ),
-               "structures",
-               DSL.optionalFields("starts", DSL.compoundList(ayx.C.in($$0)))
+               "SpawnPotentials", DSL.list(DSL.fields("data", DSL.fields("entity", ayz.w.in($$0)))), "SpawnData", DSL.fields("entity", ayz.w.in($$0))
             )
       );
    }

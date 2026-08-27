@@ -3,22 +3,22 @@ import java.util.Optional;
 
 public class cu extends cw<cu.a> {
    public cu.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
-      aex $$3 = new aex(aro.i($$0, "recipe"));
+      aey $$3 = new aey(arp.i($$0, "recipe"));
       return new cu.a($$1, $$3);
    }
 
-   public void a(aks $$0, cmk<?> $$1) {
+   public void a(akt $$0, cmm<?> $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public static am<cu.a> a(aex $$0) {
+   public static am<cu.a> a(aey $$0) {
       return al.f.a(new cu.a(Optional.empty(), $$0));
    }
 
    public static class a extends at {
-      private final aex a;
+      private final aey a;
 
-      public a(Optional<bc> $$0, aex $$1) {
+      public a(Optional<bc> $$0, aey $$1) {
          super($$0);
          this.a = $$1;
       }
@@ -30,7 +30,7 @@ public class cu extends cw<cu.a> {
          return $$0;
       }
 
-      public boolean a(cmk<?> $$0) {
+      public boolean a(cmm<?> $$0) {
          return this.a.equals($$0.a());
       }
    }

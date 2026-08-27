@@ -1,95 +1,76 @@
-import com.google.common.collect.Lists;
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
 import java.util.function.BiConsumer;
+import java.util.function.Function;
 
-public class dtg extends dte {
-   public static final Codec<dtg> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  bgd.e.fieldOf("extra_branch_steps").forGetter($$0x -> $$0x.b),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("place_branch_per_log_probability").forGetter($$0x -> $$0x.h),
-                  bgd.d.fieldOf("extra_branch_length").forGetter($$0x -> $$0x.i),
-                  hv.a(je.e).fieldOf("can_grow_through").forGetter($$0x -> $$0x.j)
-               )
-            )
-            .apply($$0, dtg::new)
-   );
-   private final bgd b;
-   private final float h;
-   private final bgd i;
-   private final hk<csv> j;
+public abstract class dtg {
+   public static final Codec<dtg> c = jd.Y.q().dispatch(dtg::a, dth::a);
+   private static final int a = 32;
+   private static final int b = 24;
+   public static final int d = 80;
+   protected final int e;
+   protected final int f;
+   protected final int g;
 
-   public dtg(int $$0, int $$1, int $$2, bgd $$3, float $$4, bgd $$5, hk<csv> $$6) {
-      super($$0, $$1, $$2);
-      this.b = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
+   protected static <P extends dtg> P3<Mu<P>, Integer, Integer, Integer> a(Instance<P> $$0) {
+      return $$0.group(
+         Codec.intRange(0, 32).fieldOf("base_height").forGetter($$0x -> $$0x.e),
+         Codec.intRange(0, 24).fieldOf("height_rand_a").forGetter($$0x -> $$0x.f),
+         Codec.intRange(0, 24).fieldOf("height_rand_b").forGetter($$0x -> $$0x.g)
+      );
    }
 
-   @Override
-   protected dtf<?> a() {
-      return dtf.h;
+   public dtg(int $$0, int $$1, int $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   @Override
-   public List<drm.a> a(cqb $$0, BiConsumer<gw, dfj> $$1, asc $$2, int $$3, gw $$4, dqw $$5) {
-      List<drm.a> $$6 = Lists.newArrayList();
-      gw.a $$7 = new gw.a();
+   protected abstract dth<?> a();
 
-      for (int $$8 = 0; $$8 < $$3; $$8++) {
-         int $$9 = $$4.v() + $$8;
-         if (this.b($$0, $$1, $$2, $$7.d($$4.u(), $$9, $$4.w()), $$5) && $$8 < $$3 - 1 && $$2.i() < this.h) {
-            hc $$10 = hc.c.a.a($$2);
-            int $$11 = this.i.a($$2);
-            int $$12 = Math.max(0, $$11 - this.i.a($$2) - 1);
-            int $$13 = this.b.a($$2);
-            this.a($$0, $$1, $$2, $$3, $$5, $$6, $$7, $$9, $$10, $$12, $$13);
-         }
+   public abstract List<dro.a> a(cqd var1, BiConsumer<gw, dfl> var2, ase var3, int var4, gw var5, dqy var6);
 
-         if ($$8 == $$3 - 1) {
-            $$6.add(new drm.a($$7.d($$4.u(), $$9 + 1, $$4.w()), 0, false));
-         }
-      }
-
-      return $$6;
+   public int a(ase $$0) {
+      return this.e + $$0.a(this.f + 1) + $$0.a(this.g + 1);
    }
 
-   private void a(cqb $$0, BiConsumer<gw, dfj> $$1, asc $$2, int $$3, dqw $$4, List<drm.a> $$5, gw.a $$6, int $$7, hc $$8, int $$9, int $$10) {
-      int $$11 = $$7 + $$9;
-      int $$12 = $$6.u();
-      int $$13 = $$6.w();
-      int $$14 = $$9;
+   private static boolean c(cqd $$0, gw $$1) {
+      return $$0.a($$1, $$0x -> dny.b($$0x) && !$$0x.a(csy.i) && !$$0x.a(csy.fl));
+   }
 
-      while ($$14 < $$3 && $$10 > 0) {
-         if ($$14 >= 1) {
-            int $$15 = $$7 + $$14;
-            $$12 += $$8.j();
-            $$13 += $$8.l();
-            $$11 = $$15;
-            if (this.b($$0, $$1, $$2, $$6.d($$12, $$15, $$13), $$4)) {
-               $$11 = $$15 + 1;
-            }
-
-            $$5.add(new drm.a($$6.i(), 0, false));
-         }
-
-         $$14++;
-         $$10--;
-      }
-
-      if ($$11 - $$7 > 1) {
-         gw $$16 = new gw($$12, $$11, $$13);
-         $$5.add(new drm.a($$16, 0, false));
-         $$5.add(new drm.a($$16.c(2), 0, false));
+   protected static void a(cqd $$0, BiConsumer<gw, dfl> $$1, ase $$2, gw $$3, dqy $$4) {
+      if ($$4.k || !c($$0, $$3)) {
+         $$1.accept($$3, $$4.c.a($$2, $$3));
       }
    }
 
-   @Override
-   protected boolean a(cqb $$0, gw $$1) {
-      return super.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(this.j));
+   protected boolean b(cqd $$0, BiConsumer<gw, dfl> $$1, ase $$2, gw $$3, dqy $$4) {
+      return this.a($$0, $$1, $$2, $$3, $$4, Function.identity());
+   }
+
+   protected boolean a(cqd $$0, BiConsumer<gw, dfl> $$1, ase $$2, gw $$3, dqy $$4, Function<dfl, dfl> $$5) {
+      if (this.a($$0, $$3)) {
+         $$1.accept($$3, $$5.apply($$4.b.a($$2, $$3)));
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected void a(cqd $$0, BiConsumer<gw, dfl> $$1, ase $$2, gw.a $$3, dqy $$4) {
+      if (this.b($$0, $$3)) {
+         this.b($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   protected boolean a(cqd $$0, gw $$1) {
+      return dpk.c($$0, $$1);
+   }
+
+   public boolean b(cqd $$0, gw $$1) {
+      return this.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(apu.t));
    }
 }

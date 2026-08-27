@@ -1,14 +1,15 @@
-public class cir extends ckf {
-   public cir(csv $$0, csv $$1, cja.a $$2) {
-      super($$2, $$0, $$1, hc.b);
+public class cir extends cjc implements ckg {
+   public cir(cjc.a $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean a(cpy $$0, dfj $$1, gw $$2) {
-      if ($$1.b() instanceof dbs $$3 && !$$3.b($$1, $$0, $$2)) {
+   public boolean a(cpx $$0, def $$1, boolean $$2, cbw $$3) {
+      if ($$1.a($$0x -> $$0x.a(true), $$2)) {
+         $$0.a(null, $$1.p(), apf.jt, apg.e, 1.0F, 1.0F);
+         return true;
+      } else {
          return false;
       }
-
-      return super.a($$0, $$1, $$2);
    }
 }

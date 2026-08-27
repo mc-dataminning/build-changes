@@ -1,27 +1,48 @@
-public class exo extends eyk {
-   private final tm a;
+public class exo extends eym {
+   private static final tn a = tn.c("gui.toMenu");
+   private static final tn b = tn.c("gui.toTitle");
+   private final eym c;
+   private final tn k;
+   private final tn l;
+   private final ewf m = ewf.d();
 
-   public exo(tm $$0, tm $$1) {
-      super($$0);
-      this.a = $$1;
+   public exo(eym $$0, tn $$1, tn $$2) {
+      this($$0, $$1, $$2, a);
+   }
+
+   public exo(eym $$0, tn $$1, tn $$2, tn $$3) {
+      super($$1);
+      this.c = $$0;
+      this.k = $$2;
+      this.l = $$3;
    }
 
    @Override
-   protected void aI_() {
-      super.aI_();
-      this.d(esq.a(tl.e, $$0 -> this.f.a(null)).a(this.g / 2 - 100, 140, 200, 20).a());
+   protected void aH_() {
+      this.m.c().b().a(10);
+      this.m.a(new ety(this.e, this.i));
+      this.m.a(new etm(this.k, this.i).j(this.g - 50).b(true));
+      ess $$0;
+      if (this.f.D()) {
+         $$0 = ess.a(this.l, $$0x -> this.f.a(this.c)).a();
+      } else {
+         $$0 = ess.a(b, $$0x -> this.f.a(new eyr())).a();
+      }
+
+      this.m.a($$0);
+      this.m.a();
+      this.m.a(this::d);
+      this.b();
    }
 
    @Override
-   public void a(esf $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 90, 16777215);
-      $$0.a(this.i, this.a, this.g / 2, 110, 16777215);
+   protected void b() {
+      evz.a(this.m, this.s());
    }
 
    @Override
-   public void b(esf $$0, int $$1, int $$2, float $$3) {
-      $$0.b(0, 0, this.g, this.h, -12574688, -11530224);
+   public tn g() {
+      return tm.a(this.e, this.k);
    }
 
    @Override

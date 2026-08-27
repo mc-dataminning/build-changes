@@ -1,212 +1,104 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.OptionalDynamic;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
+import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.io.DataInput;
+import java.io.DataInputStream;
+import java.io.DataOutput;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import java.util.function.BooleanSupplier;
-import java.util.function.Function;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dio<R> implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "Sections";
-   private final dij d;
-   private final Long2ObjectMap<Optional<R>> e = new Long2ObjectOpenHashMap();
-   private final LongLinkedOpenHashSet f = new LongLinkedOpenHashSet();
-   private final Function<Runnable, Codec<R>> g;
-   private final Function<Runnable, R> h;
-   private final DataFixer i;
-   private final ata j;
-   private final hu k;
-   protected final cpx c;
+public final class dio implements AutoCloseable {
+   public static final String a = ".mca";
+   private static final int b = 256;
+   private final Long2ObjectLinkedOpenHashMap<din> c = new Long2ObjectLinkedOpenHashMap();
+   private final Path d;
+   private final boolean e;
 
-   public dio(Path $$0, Function<Runnable, Codec<R>> $$1, Function<Runnable, R> $$2, DataFixer $$3, ata $$4, boolean $$5, hu $$6, cpx $$7) {
-      this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.j = $$4;
-      this.k = $$6;
-      this.c = $$7;
-      this.d = new dij($$0, $$5, $$0.getFileName().toString());
+   dio(Path $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   protected void a(BooleanSupplier $$0) {
-      while (this.a() && $$0.getAsBoolean()) {
-         cpc $$1 = hz.a(this.f.firstLong()).r();
-         this.d($$1);
+   private din b(cpe $$0) throws IOException {
+      long $$1 = cpe.c($$0.h(), $$0.i());
+      din $$2 = (din)this.c.getAndMoveToFirst($$1);
+      if ($$2 != null) {
+         return $$2;
+      } else {
+         if (this.c.size() >= 256) {
+            ((din)this.c.removeLast()).close();
+         }
+
+         v.c(this.d);
+         Path $$3 = this.d.resolve("r." + $$0.h() + "." + $$0.i() + ".mca");
+         din $$4 = new din($$3, this.d, this.e);
+         this.c.putAndMoveToFirst($$1, $$4);
+         return $$4;
       }
-   }
-
-   public boolean a() {
-      return !this.f.isEmpty();
    }
 
    @Nullable
-   protected Optional<R> c(long $$0) {
-      return (Optional<R>)this.e.get($$0);
+   public qy a(cpe $$0) throws IOException {
+      din $$1 = this.b($$0);
+
+      qy var4;
+      try (DataInputStream $$2 = $$1.a($$0)) {
+         if ($$2 == null) {
+            return null;
+         }
+
+         var4 = rj.a((DataInput)$$2);
+      }
+
+      return var4;
    }
 
-   protected Optional<R> d(long $$0) {
-      if (this.e($$0)) {
-         return Optional.empty();
+   public void a(cpe $$0, rp $$1) throws IOException {
+      din $$2 = this.b($$0);
+
+      try (DataInputStream $$3 = $$2.a($$0)) {
+         if ($$3 != null) {
+            rj.a((DataInput)$$3, $$1, rh.a());
+         }
+      }
+   }
+
+   protected void a(cpe $$0, @Nullable qy $$1) throws IOException {
+      din $$2 = this.b($$0);
+      if ($$1 == null) {
+         $$2.d($$0);
       } else {
-         Optional<R> $$1 = this.c($$0);
-         if ($$1 != null) {
-            return $$1;
-         } else {
-            this.b(hz.a($$0).r());
-            $$1 = this.c($$0);
-            if ($$1 == null) {
-               throw (IllegalStateException)ac.b(new IllegalStateException());
-            } else {
-               return $$1;
-            }
-         }
-      }
-   }
-
-   protected boolean e(long $$0) {
-      int $$1 = hz.c(hz.c($$0));
-      return this.c.d($$1);
-   }
-
-   protected R f(long $$0) {
-      if (this.e($$0)) {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("sectionPos out of bounds"));
-      } else {
-         Optional<R> $$1 = this.d($$0);
-         if ($$1.isPresent()) {
-            return $$1.get();
-         } else {
-            R $$2 = this.h.apply(() -> this.a($$0));
-            this.e.put($$0, Optional.of($$2));
-            return $$2;
-         }
-      }
-   }
-
-   private void b(cpc $$0) {
-      Optional<qy> $$1 = this.c($$0).join();
-      aev<rr> $$2 = aev.a(rj.a, this.k);
-      this.a($$0, $$2, $$1.orElse(null));
-   }
-
-   private CompletableFuture<Optional<qy>> c(cpc $$0) {
-      return this.d.a($$0).exceptionally($$1 -> {
-         if ($$1 instanceof IOException $$2) {
-            a.error("Error reading chunk {} data from disk", $$0, $$2);
-            return Optional.empty();
-         } else {
-            throw new CompletionException($$1);
-         }
-      });
-   }
-
-   private <T> void a(cpc $$0, DynamicOps<T> $$1, @Nullable T $$2) {
-      if ($$2 == null) {
-         for (int $$3 = this.c.al(); $$3 < this.c.am(); $$3++) {
-            this.e.put(a($$0, $$3), Optional.empty());
-         }
-      } else {
-         Dynamic<T> $$4 = new Dynamic($$1, $$2);
-         int $$5 = a($$4);
-         int $$6 = aa.b().d().c();
-         boolean $$7 = $$5 != $$6;
-         Dynamic<T> $$8 = this.j.a(this.i, $$4, $$5, $$6);
-         OptionalDynamic<T> $$9 = $$8.get("Sections");
-
-         for (int $$10 = this.c.al(); $$10 < this.c.am(); $$10++) {
-            long $$11 = a($$0, $$10);
-            Optional<R> $$12 = $$9.get(Integer.toString($$10)).result().flatMap($$1x -> this.g.apply(() -> this.a($$11)).parse($$1x).resultOrPartial(a::error));
-            this.e.put($$11, $$12);
-            $$12.ifPresent($$2x -> {
-               this.b($$11);
-               if ($$7) {
-                  this.a($$11);
-               }
-            });
-         }
-      }
-   }
-
-   private void d(cpc $$0) {
-      aev<rr> $$1 = aev.a(rj.a, this.k);
-      Dynamic<rr> $$2 = this.a($$0, $$1);
-      rr $$3 = (rr)$$2.getValue();
-      if ($$3 instanceof qy) {
-         this.d.a($$0, (qy)$$3);
-      } else {
-         a.error("Expected compound tag, got {}", $$3);
-      }
-   }
-
-   private <T> Dynamic<T> a(cpc $$0, DynamicOps<T> $$1) {
-      Map<T, T> $$2 = Maps.newHashMap();
-
-      for (int $$3 = this.c.al(); $$3 < this.c.am(); $$3++) {
-         long $$4 = a($$0, $$3);
-         this.f.remove($$4);
-         Optional<R> $$5 = (Optional<R>)this.e.get($$4);
-         if ($$5 != null && !$$5.isEmpty()) {
-            DataResult<T> $$6 = this.g.apply(() -> this.a($$4)).encodeStart($$1, $$5.get());
-            String $$7 = Integer.toString($$3);
-            $$6.resultOrPartial(a::error).ifPresent($$3x -> $$2.put((T)$$1.createString($$7), (T)$$3x));
-         }
-      }
-
-      return new Dynamic(
-         $$1, $$1.createMap(ImmutableMap.of($$1.createString("Sections"), $$1.createMap($$2), $$1.createString("DataVersion"), $$1.createInt(aa.b().d().c())))
-      );
-   }
-
-   private static long a(cpc $$0, int $$1) {
-      return hz.b($$0.e, $$1, $$0.f);
-   }
-
-   protected void b(long $$0) {
-   }
-
-   protected void a(long $$0) {
-      Optional<R> $$1 = (Optional<R>)this.e.get($$0);
-      if ($$1 != null && !$$1.isEmpty()) {
-         this.f.add($$0);
-      } else {
-         a.warn("No data for position: {}", hz.a($$0));
-      }
-   }
-
-   private static int a(Dynamic<?> $$0) {
-      return $$0.get("DataVersion").asInt(1945);
-   }
-
-   public void a(cpc $$0) {
-      if (this.a()) {
-         for (int $$1 = this.c.al(); $$1 < this.c.am(); $$1++) {
-            long $$2 = a($$0, $$1);
-            if (this.f.contains($$2)) {
-               this.d($$0);
-               return;
-            }
+         try (DataOutputStream $$3 = $$2.c($$0)) {
+            rj.a($$1, (DataOutput)$$3);
          }
       }
    }
 
    @Override
    public void close() throws IOException {
-      this.d.close();
+      arg<IOException> $$0 = new arg<>();
+      ObjectIterator var2 = this.c.values().iterator();
+
+      while (var2.hasNext()) {
+         din $$1 = (din)var2.next();
+
+         try {
+            $$1.close();
+         } catch (IOException var5) {
+            $$0.a(var5);
+         }
+      }
+
+      $$0.a();
+   }
+
+   public void a() throws IOException {
+      ObjectIterator var1 = this.c.values().iterator();
+
+      while (var1.hasNext()) {
+         din $$0 = (din)var1.next();
+         $$0.a();
+      }
    }
 }

@@ -1,35 +1,41 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public record clk(aex c, hg<cja> d, tm e, boolean f) {
+public record clk(String c, hg<cjc> d, float e, Map<cgt, String> f, tn g) {
    public static final Codec<clk> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               aex.a.fieldOf("asset_id").forGetter(clk::a),
-               aeu.a(je.D).fieldOf("template_item").forGetter(clk::b),
-               arg.b.fieldOf("description").forGetter(clk::c),
-               Codec.BOOL.fieldOf("decal").orElse(false).forGetter(clk::d)
+               arh.x.fieldOf("asset_name").forGetter(clk::a),
+               aev.a(je.D).fieldOf("ingredient").forGetter(clk::b),
+               Codec.FLOAT.fieldOf("item_model_index").forGetter(clk::c),
+               Codec.unboundedMap(cgt.h, Codec.STRING).optionalFieldOf("override_armor_materials", Map.of()).forGetter(clk::d),
+               arh.b.fieldOf("description").forGetter(clk::e)
             )
             .apply($$0, clk::new)
    );
-   public static final Codec<hg<clk>> b = aet.a(je.aE, a);
+   public static final Codec<hg<clk>> b = aeu.a(je.aD, a);
 
-   public tm a(hg<cli> $$0) {
-      return this.e.e().c($$0.a().e().a());
+   public static clk a(String $$0, cjc $$1, float $$2, tn $$3, Map<cgt, String> $$4) {
+      return new clk($$0, jd.i.d($$1), $$2, $$4, $$3);
    }
 
-   public aex a() {
+   public String a() {
       return this.c;
    }
 
-   public hg<cja> b() {
+   public hg<cjc> b() {
       return this.d;
    }
 
-   public tm c() {
+   public float c() {
       return this.e;
    }
 
-   public boolean d() {
+   public Map<cgt, String> d() {
       return this.f;
+   }
+
+   public tn e() {
+      return this.g;
    }
 }

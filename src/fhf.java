@@ -1,49 +1,54 @@
-import java.util.Arrays;
+public class fhf<T extends bis> extends ffo<T> {
+   private static final String a = "upper_body";
+   private final fie b;
+   private final fie f;
+   private final fie g;
+   private final fie h;
+   private final fie i;
 
-public class fhf<T extends biq> extends ffm<T> {
-   private final fic[] a = new fic[8];
-   private final fic b;
-
-   public fhf(fic $$0) {
+   public fhf(fie $$0) {
       this.b = $$0;
-      Arrays.setAll(this.a, $$1 -> $$0.b(a($$1)));
+      this.g = $$0.b("head");
+      this.h = $$0.b("left_arm");
+      this.i = $$0.b("right_arm");
+      this.f = $$0.b("upper_body");
    }
 
-   private static String a(int $$0) {
-      return "tentacle" + $$0;
-   }
-
-   public static fii b() {
-      fik $$0 = new fik();
-      fil $$1 = $$0.a();
-      fig $$2 = new fig(0.02F);
-      int $$3 = -16;
-      $$1.a("body", fih.c().a(0, 0).a(-6.0F, -8.0F, -6.0F, 12.0F, 16.0F, 12.0F, $$2), fie.a(0.0F, 8.0F, 0.0F));
-      int $$4 = 8;
-      fih $$5 = fih.c().a(48, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 18.0F, 2.0F);
-
-      for (int $$6 = 0; $$6 < 8; $$6++) {
-         double $$7 = (double)$$6 * Math.PI * 2.0 / 8.0;
-         float $$8 = (float)Math.cos($$7) * 5.0F;
-         float $$9 = 15.0F;
-         float $$10 = (float)Math.sin($$7) * 5.0F;
-         $$7 = (double)$$6 * Math.PI * -2.0 / 8.0 + (Math.PI / 2);
-         float $$11 = (float)$$7;
-         $$1.a(a($$6), $$5, fie.a($$8, 15.0F, $$10, 0.0F, $$11, 0.0F));
-      }
-
-      return fii.a($$0, 64, 32);
+   public static fik b() {
+      fim $$0 = new fim();
+      fin $$1 = $$0.a();
+      float $$2 = 4.0F;
+      fii $$3 = new fii(-0.5F);
+      $$1.a("head", fij.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$3), fig.a(0.0F, 4.0F, 0.0F));
+      fij $$4 = fij.c().a(32, 0).a(-1.0F, 0.0F, -1.0F, 12.0F, 2.0F, 2.0F, $$3);
+      $$1.a("left_arm", $$4, fig.a(5.0F, 6.0F, 1.0F, 0.0F, 0.0F, 1.0F));
+      $$1.a("right_arm", $$4, fig.a(-5.0F, 6.0F, -1.0F, 0.0F, (float) Math.PI, -1.0F));
+      $$1.a("upper_body", fij.c().a(0, 16).a(-5.0F, -10.0F, -5.0F, 10.0F, 10.0F, 10.0F, $$3), fig.a(0.0F, 13.0F, 0.0F));
+      $$1.a("lower_body", fij.c().a(0, 36).a(-6.0F, -12.0F, -6.0F, 12.0F, 12.0F, 12.0F, $$3), fig.a(0.0F, 24.0F, 0.0F));
+      return fik.a($$0, 64, 64);
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      for (fic $$6 : this.a) {
-         $$6.e = $$3;
-      }
+      this.g.f = $$4 * (float) (Math.PI / 180.0);
+      this.g.e = $$5 * (float) (Math.PI / 180.0);
+      this.f.f = $$4 * (float) (Math.PI / 180.0) * 0.25F;
+      float $$6 = ary.a(this.f.f);
+      float $$7 = ary.b(this.f.f);
+      this.h.f = this.f.f;
+      this.i.f = this.f.f + (float) Math.PI;
+      this.h.b = $$7 * 5.0F;
+      this.h.d = -$$6 * 5.0F;
+      this.i.b = -$$7 * 5.0F;
+      this.i.d = $$6 * 5.0F;
    }
 
    @Override
-   public fic a() {
+   public fie a() {
       return this.b;
+   }
+
+   public fie c() {
+      return this.g;
    }
 }

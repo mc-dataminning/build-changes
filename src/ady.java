@@ -1,24 +1,8 @@
-public class ady implements ve<sj> {
-   private final long a;
-
-   public ady(long $$0) {
-      this.a = $$0;
-   }
-
-   public ady(sp $$0) {
-      this.a = $$0.readLong();
-   }
-
+public interface ady extends sk, sl {
    @Override
-   public void a(sp $$0) {
-      $$0.b(this.a);
+   default sp b() {
+      return sp.c;
    }
 
-   public void a(sj $$0) {
-      $$0.a(this);
-   }
-
-   public long a() {
-      return this.a;
-   }
+   void a(aea var1);
 }

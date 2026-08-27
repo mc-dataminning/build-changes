@@ -10,8 +10,8 @@ public class bw extends cw<bw.a> {
       return new bw.a($$1, $$3, $$4, $$5);
    }
 
-   public void a(aks $$0, cjf $$1, cci $$2, Collection<cjf> $$3) {
-      ecq $$4 = bq.b($$0, (biq)($$2.t() != null ? $$2.t() : $$2));
+   public void a(akt $$0, cjh $$1, cck $$2, Collection<cjh> $$3) {
+      ecs $$4 = bq.b($$0, (bis)($$2.t() != null ? $$2.t() : $$2));
       this.a($$0, $$3x -> $$3x.a($$1, $$4, $$3));
    }
 
@@ -31,7 +31,7 @@ public class bw extends cw<bw.a> {
          return al.D.a(new bw.a(Optional.empty(), $$0, bq.a($$1), $$2));
       }
 
-      public boolean a(cjf $$0, ecq $$1, Collection<cjf> $$2) {
+      public boolean a(cjh $$0, ecs $$1, Collection<cjh> $$2) {
          if (this.a.isPresent() && !this.a.get().a($$0)) {
             return false;
          } else if (this.b.isPresent() && !this.b.get().a($$1)) {
@@ -39,12 +39,12 @@ public class bw extends cw<bw.a> {
          } else {
             if (this.c.isPresent()) {
                boolean $$3 = false;
-               biq $$4 = $$1.c(efb.a);
-               if ($$4 instanceof byn $$5 && this.c.get().a($$5.q())) {
+               bis $$4 = $$1.c(efd.a);
+               if ($$4 instanceof byp $$5 && this.c.get().a($$5.q())) {
                   $$3 = true;
                }
 
-               for (cjf $$6 : $$2) {
+               for (cjh $$6 : $$2) {
                   if (this.c.get().a($$6)) {
                      $$3 = true;
                      break;

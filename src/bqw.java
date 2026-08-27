@@ -1,42 +1,79 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class bqw extends bqb {
-   private final bji a;
-   private double b;
-   private double c;
-   private int d;
+public class bqw extends bqd {
+   public static final int a = 1;
+   protected final bjr b;
+   protected final double c;
+   protected double d;
+   protected double e;
+   protected double f;
+   protected boolean g;
 
-   public bqw(bji $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(bqb.a.a, bqb.a.b));
+   public bqw(bjr $$0, double $$1) {
+      this.b = $$0;
+      this.c = $$1;
+      this.a(EnumSet.of(bqd.a.a));
    }
 
    @Override
    public boolean a() {
-      return this.a.ef().i() < 0.02F;
+      if (!this.h()) {
+         return false;
+      } else {
+         if (this.b.bM()) {
+            gw $$0 = this.a(this.b.dL(), this.b, 5);
+            if ($$0 != null) {
+               this.d = (double)$$0.u();
+               this.e = (double)$$0.v();
+               this.f = (double)$$0.w();
+               return true;
+            }
+         }
+
+         return this.i();
+      }
    }
 
-   @Override
-   public boolean b() {
-      return this.d >= 0;
+   protected boolean h() {
+      return this.b.eg() != null || this.b.dA() || this.b.bM();
+   }
+
+   protected boolean i() {
+      ehp $$0 = bty.a(this.b, 5, 4);
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.d = $$0.c;
+         this.e = $$0.d;
+         this.f = $$0.e;
+         return true;
+      }
+   }
+
+   public boolean k() {
+      return this.g;
    }
 
    @Override
    public void c() {
-      double $$0 = (Math.PI * 2) * this.a.ef().j();
-      this.b = Math.cos($$0);
-      this.c = Math.sin($$0);
-      this.d = 20 + this.a.ef().a(20);
+      this.b.L().a(this.d, this.e, this.f, this.c);
+      this.g = true;
    }
 
    @Override
-   public boolean Q_() {
-      return true;
+   public void d() {
+      this.g = false;
    }
 
    @Override
-   public void e() {
-      this.d--;
-      this.a.G().a(this.a.dq() + this.b, this.a.du(), this.a.dw() + this.c);
+   public boolean b() {
+      return !this.b.L().l();
+   }
+
+   @Nullable
+   protected gw a(cpd $$0, bis $$1, int $$2) {
+      gw $$3 = $$1.dl();
+      return !$$0.a_($$3).k($$0, $$3).c() ? null : gw.a($$1.dl(), $$2, 1, $$1x -> $$0.b_($$1x).a(apz.a)).orElse(null);
    }
 }

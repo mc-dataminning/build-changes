@@ -1,24 +1,34 @@
-public class aco implements ve<abd> {
-   private final int a;
+import java.util.Optional;
 
-   public aco(int $$0) {
+public class aco implements vf<abe> {
+   private final Optional<bid> a;
+   private final Optional<bid> b;
+
+   public aco(Optional<bid> $$0, Optional<bid> $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
-   public aco(sp $$0) {
-      this.a = $$0.readShort();
+   public aco(sq $$0) {
+      this.a = $$0.b((sq.a<bid>)($$0x -> $$0x.a(jd.e)));
+      this.b = $$0.b((sq.a<bid>)($$0x -> $$0x.a(jd.e)));
    }
 
    @Override
-   public void a(sp $$0) {
-      $$0.l(this.a);
+   public void a(sq $$0) {
+      $$0.a(this.a, ($$0x, $$1) -> $$0x.a(jd.e, $$1));
+      $$0.a(this.b, ($$0x, $$1) -> $$0x.a(jd.e, $$1));
    }
 
-   public void a(abd $$0) {
+   public void a(abe $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public Optional<bid> a() {
       return this.a;
+   }
+
+   public Optional<bid> d() {
+      return this.b;
    }
 }

@@ -1,121 +1,82 @@
-public class ext extends eyc {
-   private static final tm c = tm.c("options.languageAccuracyWarning").a(n.h);
-   private ext.a k;
-   final gam l;
+import javax.annotation.Nullable;
 
-   public ext(eyk $$0, eqz $$1, gam $$2) {
-      super($$0, $$1, tm.c("options.language.title"));
+public class ext extends eym {
+   private static final int a = 80;
+   private static final int b = 120;
+   private static final int c = 360;
+   @Nullable
+   private final tn k;
+   private final tn l;
+   private final Runnable m;
+   @Nullable
+   private etl n;
+   private ess o;
+   private int p;
+
+   public static ext a(tn $$0, tn $$1, Runnable $$2) {
+      return new ext($$0, null, $$1, $$2, 0);
+   }
+
+   public static ext a(tn $$0, tn $$1, tn $$2, Runnable $$3) {
+      return new ext($$0, $$1, $$2, $$3, 20);
+   }
+
+   protected ext(tn $$0, @Nullable tn $$1, tn $$2, Runnable $$3, int $$4) {
+      super($$0);
+      this.k = $$1;
       this.l = $$2;
+      this.m = $$3;
+      this.p = $$4;
    }
 
    @Override
-   protected void aI_() {
-      this.k = new ext.a(this.f);
-      this.e(this.k);
-      this.d(this.b.M().a(this.b, this.g / 2 - 155, this.h - 38, 150));
-      this.d(esq.a(tl.d, $$0 -> this.l()).a(this.g / 2 - 155 + 160, this.h - 38, 150, 20).a());
-      super.aI_();
-   }
-
-   void l() {
-      ext.a.a $$0 = this.k.f();
-      if ($$0 != null && !$$0.b.equals(this.l.a())) {
-         this.l.a($$0.b);
-         this.b.ad = $$0.b;
-         this.f.k();
-         this.b.ar();
+   protected void aH_() {
+      super.aH_();
+      if (this.k != null) {
+         this.n = etl.a(this.i, this.k, 360);
       }
 
-      this.f.a(this.a);
+      int $$0 = 150;
+      int $$1 = 20;
+      int $$2 = this.n != null ? this.n.a() : 1;
+      int $$3 = Math.max($$2, 5) * 9;
+      int $$4 = Math.min(120 + $$3, this.h - 40);
+      this.o = this.d(ess.a(this.l, $$0x -> this.az_()).a((this.g - 150) / 2, $$4, 150, 20).a());
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (ewn.a($$0)) {
-         ext.a.a $$3 = this.k.f();
-         if ($$3 != null) {
-            $$3.b();
-            this.l();
-            return true;
-         }
+   public void c() {
+      if (this.p > 0) {
+         this.p--;
       }
 
-      return super.a($$0, $$1, $$2);
+      this.o.i = this.p == 0;
    }
 
    @Override
-   public void a(esf $$0, int $$1, int $$2, float $$3) {
+   public void a(esh $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.k.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 16, 16777215);
-      $$0.a(this.i, c, this.g / 2, this.h - 56, -8355712);
+      $$0.a(this.i, this.e, this.g / 2, 80, 16777215);
+      if (this.n == null) {
+         String $$4 = exx.a(ac.b());
+         $$0.a(this.i, $$4, this.g / 2, 120, 10526880);
+      } else {
+         this.n.a($$0, this.g / 2, 120);
+      }
    }
 
    @Override
-   public void b(esf $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
+   public boolean ay_() {
+      return this.n != null && this.o.i;
    }
 
-   class a extends etm<ext.a.a> {
-      public a(eqv $$0) {
-         super($$0, ext.this.g, ext.this.h, 32, ext.this.h - 65 + 4, 18);
-         String $$1 = ext.this.l.a();
-         ext.this.l.b().forEach(($$1x, $$2) -> {
-            ext.a.a $$3 = new ext.a.a($$1x, $$2);
-            this.b($$3);
-            if ($$1.equals($$1x)) {
-               this.a($$3);
-            }
-         });
-         if (this.f() != null) {
-            this.e(this.f());
-         }
-      }
+   @Override
+   public void az_() {
+      this.m.run();
+   }
 
-      @Override
-      protected int c() {
-         return super.c() + 20;
-      }
-
-      @Override
-      public int b() {
-         return super.b() + 50;
-      }
-
-      public class a extends etm.a<ext.a.a> {
-         final String b;
-         private final tm c;
-         private long d;
-
-         public a(String $$1, gal $$2) {
-            this.b = $$1;
-            this.c = $$2.a();
-         }
-
-         @Override
-         public void a(esf $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.a(ext.this.i, this.c, a.this.e / 2, $$2 + 1, 16777215);
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            this.b();
-            if (ac.b() - this.d < 250L) {
-               ext.this.l();
-            }
-
-            this.d = ac.b();
-            return true;
-         }
-
-         void b() {
-            a.this.a(this);
-         }
-
-         @Override
-         public tm a() {
-            return tm.a("narrator.select", this.c);
-         }
-      }
+   @Override
+   public tn g() {
+      return tm.a(this.e, this.k != null ? this.k : tm.a);
    }
 }

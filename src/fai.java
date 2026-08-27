@@ -1,50 +1,47 @@
-public abstract class fai<T extends cfl> extends ezi<T> implements cex {
-   private final aex x;
+public class fai extends ezk<cfl> {
+   private static final aey x = new aey("container/horse/chest_slots");
+   private static final aey y = new aey("container/horse/saddle_slot");
+   private static final aey z = new aey("container/horse/llama_armor_slot");
+   private static final aey A = new aey("container/horse/armor_slot");
+   private static final aey B = new aey("textures/gui/container/horse.png");
+   private final bws C;
+   private float D;
+   private float E;
 
-   public fai(T $$0, cbt $$1, tm $$2, aex $$3) {
-      super($$0, $$1, $$2);
-      this.x = $$3;
-   }
-
-   protected void F() {
-   }
-
-   @Override
-   protected void aI_() {
-      super.aI_();
-      this.F();
-      this.p.a(this);
+   public fai(cfl $$0, cbv $$1, bws $$2) {
+      super($$0, $$1, $$2.N_());
+      this.C = $$2;
    }
 
    @Override
-   public void aA_() {
-      super.aA_();
-      this.p.b(this);
+   protected void a(esh $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.g - this.c) / 2;
+      int $$5 = (this.h - this.k) / 2;
+      $$0.a(B, $$4, $$5, 0, 0, this.c, this.k);
+      if (this.C instanceof bwr $$6 && $$6.t()) {
+         $$0.a(x, 90, 54, 0, 0, $$4 + 79, $$5 + 17, $$6.gl() * 18, 54);
+      }
+
+      if (this.C.g()) {
+         $$0.a(y, $$4 + 7, $$5 + 35 - 18, 18, 18);
+      }
+
+      if (this.C.gM()) {
+         if (this.C instanceof bwv) {
+            $$0.a(z, $$4 + 7, $$5 + 35, 18, 18);
+         } else {
+            $$0.a(A, $$4 + 7, $$5 + 35, 18, 18);
+         }
+      }
+
+      faj.a($$0, $$4 + 26, $$5 + 18, $$4 + 78, $$5 + 70, 17, 0.25F, this.D, this.E, this.C);
    }
 
    @Override
-   public void a(esf $$0, int $$1, int $$2, float $$3) {
+   public void a(esh $$0, int $$1, int $$2, float $$3) {
+      this.D = (float)$$1;
+      this.E = (float)$$2;
       super.a($$0, $$1, $$2, $$3);
-      this.d($$0, $$1, $$2, $$3);
       this.a($$0, $$1, $$2);
-   }
-
-   protected void d(esf $$0, int $$1, int $$2, float $$3) {
-   }
-
-   @Override
-   protected void a(esf $$0, float $$1, int $$2, int $$3) {
-      $$0.a(this.x, this.t, this.u, 0, 0, this.c, this.k);
-      this.c($$0, this.t, this.u);
-   }
-
-   protected abstract void c(esf var1, int var2, int var3);
-
-   @Override
-   public void a(cel $$0, int $$1, int $$2) {
-   }
-
-   @Override
-   public void a(cel $$0, int $$1, cjf $$2) {
    }
 }

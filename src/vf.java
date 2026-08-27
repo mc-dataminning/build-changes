@@ -1,8 +1,16 @@
-public enum vf {
-   a,
-   b;
+import javax.annotation.Nullable;
 
-   public vf a() {
-      return this == b ? a : b;
+public interface vf<T extends sw> {
+   void a(sq var1);
+
+   void a(T var1);
+
+   default boolean b() {
+      return false;
+   }
+
+   @Nullable
+   default sp c() {
+      return null;
    }
 }

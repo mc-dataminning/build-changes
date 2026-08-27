@@ -1,24 +1,8 @@
-public class aec implements ve<abf> {
-   private final long a;
-
-   public aec(long $$0) {
-      this.a = $$0;
-   }
-
-   public aec(sp $$0) {
-      this.a = $$0.readLong();
-   }
-
+public interface aec extends abf, abg {
    @Override
-   public void a(sp $$0) {
-      $$0.b(this.a);
+   default sp b() {
+      return sp.c;
    }
 
-   public void a(abf $$0) {
-      $$0.a(this);
-   }
-
-   public long a() {
-      return this.a;
-   }
+   void a(aee var1);
 }

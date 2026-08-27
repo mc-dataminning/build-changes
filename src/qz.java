@@ -2,18 +2,22 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class qz extends rl {
+public class qz extends rm {
    private static final int c = 16;
    public static final qz a = new qz(0.0);
-   public static final rt<qz> b = new rt.a<qz>() {
-      public qz a(DataInput $$0, int $$1, rh $$2) throws IOException {
-         $$2.a(16L);
-         return qz.a($$0.readDouble());
+   public static final ru<qz> b = new ru.a<qz>() {
+      public qz a(DataInput $$0, rh $$1) throws IOException {
+         return qz.a(d($$0, $$1));
       }
 
       @Override
-      public ro.b a(DataInput $$0, ro $$1) throws IOException {
-         return $$1.a($$0.readDouble());
+      public rp.b a(DataInput $$0, rp $$1, rh $$2) throws IOException {
+         return $$1.a(d($$0, $$2));
+      }
+
+      private static double d(DataInput $$0, rh $$1) throws IOException {
+         $$1.b(16L);
+         return $$0.readDouble();
       }
 
       @Override
@@ -62,7 +66,7 @@ public class qz extends rl {
    }
 
    @Override
-   public rt<qz> c() {
+   public ru<qz> c() {
       return b;
    }
 
@@ -82,7 +86,7 @@ public class qz extends rl {
    }
 
    @Override
-   public void a(rv $$0) {
+   public void a(rw $$0) {
       $$0.a(this);
    }
 
@@ -93,17 +97,17 @@ public class qz extends rl {
 
    @Override
    public int g() {
-      return arx.a(this.w);
+      return ary.a(this.w);
    }
 
    @Override
    public short h() {
-      return (short)(arx.a(this.w) & 65535);
+      return (short)(ary.a(this.w) & 65535);
    }
 
    @Override
    public byte i() {
-      return (byte)(arx.a(this.w) & 0xFF);
+      return (byte)(ary.a(this.w) & 0xFF);
    }
 
    @Override
@@ -122,7 +126,7 @@ public class qz extends rl {
    }
 
    @Override
-   public ro.b a(ro $$0) {
+   public rp.b a(rp $$0) {
       return $$0.a(this.w);
    }
 }

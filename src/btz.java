@@ -1,58 +1,33 @@
-import java.util.function.ToDoubleFunction;
-import javax.annotation.Nullable;
-
 public class btz {
-   @Nullable
-   public static ehn a(bjp $$0, int $$1, int $$2) {
-      return a($$0, $$1, $$2, $$0::h);
+   public static boolean a(bjk $$0) {
+      return $$0.L() instanceof bsq;
    }
 
-   @Nullable
-   public static ehn a(bjp $$0, int $$1, int $$2, ToDoubleFunction<gw> $$3) {
-      boolean $$4 = btx.a($$0, $$1);
-      return bua.a(() -> {
-         gw $$4x = bua.a($$0.ef(), $$1, $$2);
-         gw $$5 = a($$0, $$1, $$4, $$4x);
-         return $$5 == null ? null : a($$0, $$5);
-      }, $$3);
+   public static boolean a(bjr $$0, int $$1) {
+      return $$0.fP() && $$0.fM().a($$0.dj(), (double)($$0.fN() + (float)$$1) + 1.0);
    }
 
-   @Nullable
-   public static ehn a(bjp $$0, int $$1, int $$2, ehn $$3) {
-      ehn $$4 = $$3.a($$0.dq(), $$0.ds(), $$0.dw());
-      boolean $$5 = btx.a($$0, $$1);
-      return a($$0, $$1, $$2, $$4, $$5);
+   public static boolean a(gw $$0, bjr $$1) {
+      return $$0.v() < $$1.dL().H_() || $$0.v() > $$1.dL().aj();
    }
 
-   @Nullable
-   public static ehn b(bjp $$0, int $$1, int $$2, ehn $$3) {
-      ehn $$4 = $$0.dj().d($$3);
-      boolean $$5 = btx.a($$0, $$1);
-      return a($$0, $$1, $$2, $$4, $$5);
+   public static boolean a(boolean $$0, bjr $$1, gw $$2) {
+      return $$0 && !$$1.a($$2);
    }
 
-   @Nullable
-   private static ehn a(bjp $$0, int $$1, int $$2, ehn $$3, boolean $$4) {
-      return bua.a($$0, () -> {
-         gw $$5 = bua.a($$0.ef(), $$1, $$2, 0, $$3.c, $$3.e, (float) (Math.PI / 2));
-         if ($$5 == null) {
-            return null;
-         } else {
-            gw $$6 = a($$0, $$1, $$4, $$5);
-            return $$6 == null ? null : a($$0, $$6);
-         }
-      });
+   public static boolean a(bsr $$0, gw $$1) {
+      return !$$0.a($$1);
    }
 
-   @Nullable
-   public static gw a(bjp $$0, gw $$1) {
-      $$1 = bua.a($$1, $$0.dL().aj(), $$1x -> btx.c($$0, $$1x));
-      return !btx.a($$0, $$1) && !btx.b($$0, $$1) ? $$1 : null;
+   public static boolean a(bjr $$0, gw $$1) {
+      return $$0.dL().b_($$1).a(apz.a);
    }
 
-   @Nullable
-   public static gw a(bjp $$0, int $$1, boolean $$2, gw $$3) {
-      gw $$4 = bua.a($$0, $$1, $$0.ef(), $$3);
-      return !btx.a($$4, $$0) && !btx.a($$2, $$0, $$4) && !btx.a($$0.L(), $$4) ? $$4 : null;
+   public static boolean b(bjr $$0, gw $$1) {
+      return $$0.a(ebi.a($$0.dL(), $$1.j())) != 0.0F;
+   }
+
+   public static boolean c(bjr $$0, gw $$1) {
+      return $$0.dL().a_($$1).e();
    }
 }

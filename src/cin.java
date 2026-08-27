@@ -1,33 +1,36 @@
-public class cin<T extends biq & bjd> extends cja {
-   private final biu<T> a;
-   private final int b;
-
-   public cin(cja.a $$0, biu<T> $$1, int $$2) {
+public class cin extends cjc implements clb {
+   public cin(cjc.a $$0) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
    }
 
    @Override
-   public bgz<cjf> a(cpv $$0, cbu $$1, bgx $$2) {
-      cjf $$3 = $$1.b($$2);
-      if ($$0.B) {
-         return bgz.c($$3);
-      } else {
-         biq $$4 = $$1.cZ();
-         if ($$1.bN() && $$4 instanceof bjd $$5 && $$4.ag() == this.a && $$5.a()) {
-            $$3.a(this.b, $$1, $$1x -> $$1x.d($$2));
-            if ($$3.b()) {
-               cjf $$6 = new cjf(cji.qh);
-               $$6.c($$3.v());
-               return bgz.a($$6);
-            }
-
-            return bgz.a($$3);
+   public bhb<cjh> a(cpx $$0, cbw $$1, bgz $$2) {
+      cjh $$3 = $$1.b($$2);
+      if ($$1.ck != null) {
+         if (!$$0.B) {
+            int $$4 = $$1.ck.a($$3);
+            $$3.a($$4, $$1, $$1x -> $$1x.d($$2));
          }
 
-         $$1.b(apo.c.b(this));
-         return bgz.c($$3);
+         $$0.a(null, $$1.dq(), $$1.ds(), $$1.dw(), apf.hP, apg.g, 1.0F, 0.4F / ($$0.D_().i() * 0.4F + 0.8F));
+         $$1.a(djv.C);
+      } else {
+         $$0.a(null, $$1.dq(), $$1.ds(), $$1.dw(), apf.hR, apg.g, 0.5F, 0.4F / ($$0.D_().i() * 0.4F + 0.8F));
+         if (!$$0.B) {
+            int $$5 = cns.c($$3);
+            int $$6 = cns.b($$3);
+            $$0.b(new cck($$1, $$0, $$6, $$5));
+         }
+
+         $$1.b(app.c.b(this));
+         $$1.a(djv.D);
       }
+
+      return bhb.a($$3, $$0.w_());
+   }
+
+   @Override
+   public int c() {
+      return 1;
    }
 }

@@ -1,14 +1,17 @@
-public class chs extends cgy {
-   public chs(csv $$0, cja.a $$1) {
-      super($$0, $$1);
+import java.util.List;
+import javax.annotation.Nullable;
+
+public class chs extends cjc {
+   public chs(cjc.a $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean a(cln $$0, dfj $$1) {
-      cpv $$2 = $$0.q();
-      gw $$3 = $$0.a().c();
-      dfj $$4 = $$2.y($$3) ? csw.G.n() : csw.a.n();
-      $$2.a($$3, $$4, 27);
-      return super.a($$0, $$1);
+   public void a(cjh $$0, @Nullable cpx $$1, List<tn> $$2, cky $$3) {
+      $$2.add(this.d().a(n.h));
+   }
+
+   public ua d() {
+      return tn.c(this.a() + ".desc");
    }
 }

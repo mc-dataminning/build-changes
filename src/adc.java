@@ -1,44 +1,29 @@
-public record adc(int a, String b, int c, adb d) implements ve<add> {
-   private static final int e = 255;
+public enum adc {
+   a,
+   b;
 
-   @Deprecated
-   public adc(int a, String b, int c, adb d) {
-      this.a = a;
-      this.b = b;
-      this.c = c;
-      this.d = d;
+   private static final int c = 1;
+   private static final int d = 2;
+
+   public static adc a(int $$0) {
+      return switch ($$0) {
+         case 1 -> a;
+         case 2 -> b;
+         default -> throw new IllegalArgumentException("Unknown connection intent: " + $$0);
+      };
    }
 
-   public adc(sp $$0) {
-      this($$0.m(), $$0.d(255), $$0.readUnsignedShort(), adb.a($$0.m()));
+   public int a() {
+      return switch (this) {
+         case a -> 1;
+         case b -> 2;
+      };
    }
 
-   @Override
-   public void a(sp $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b);
-      $$0.l(this.c);
-      $$0.c(this.d.a());
-   }
-
-   public void a(add $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public so c() {
-      return this.d.b();
-   }
-
-   public String d() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   public adb f() {
-      return this.d;
+   public sp b() {
+      return switch (this) {
+         case a -> sp.c;
+         case b -> sp.d;
+      };
    }
 }

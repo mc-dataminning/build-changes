@@ -1,32 +1,43 @@
-public class yt implements ve<wx> {
-   private final gw a;
-   private final boolean b;
+import javax.annotation.Nullable;
 
-   public yt(gw $$0, boolean $$1) {
+public class yt implements vf<wy> {
+   private final int a;
+   private final cfs<?> b;
+   private final tn c;
+
+   public yt(int $$0, cfs<?> $$1, tn $$2) {
       this.a = $$0;
       this.b = $$1;
+      this.c = $$2;
    }
 
-   public yt(sp $$0) {
-      this.a = $$0.e();
-      this.b = $$0.readBoolean();
+   public yt(sq $$0) {
+      this.a = $$0.m();
+      this.b = $$0.a(jd.s);
+      this.c = $$0.l();
    }
 
    @Override
-   public void a(sp $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
+   public void a(sq $$0) {
+      $$0.c(this.a);
+      $$0.a(jd.s, this.b);
+      $$0.a(this.c);
    }
 
-   public void a(wx $$0) {
+   public void a(wy $$0) {
       $$0.a(this);
    }
 
-   public gw a() {
+   public int a() {
       return this.a;
    }
 
-   public boolean d() {
+   @Nullable
+   public cfs<?> d() {
       return this.b;
+   }
+
+   public tn e() {
+      return this.c;
    }
 }

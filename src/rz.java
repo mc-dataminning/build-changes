@@ -1,148 +1,77 @@
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.Set;
 
-public class rz implements ro {
-   private String a = "";
-   @Nullable
-   private rr b;
-   private final Deque<Consumer<rr>> c = new ArrayDeque<>();
+public class rz extends sa {
+   private int a;
+   private final Set<ru<?>> b;
+   private final Deque<sc> c = new ArrayDeque<>();
 
-   @Nullable
-   public rr d() {
-      return this.b;
-   }
+   public rz(sb... $$0) {
+      this.a = $$0.length;
+      Builder<ru<?>> $$1 = ImmutableSet.builder();
+      sc $$2 = sc.a();
 
-   protected int e() {
-      return this.c.size();
-   }
-
-   private void a(rr $$0) {
-      this.c.getLast().accept($$0);
-   }
-
-   @Override
-   public ro.b a() {
-      this.a(ra.b);
-      return ro.b.a;
-   }
-
-   @Override
-   public ro.b a(String $$0) {
-      this.a(rp.a($$0));
-      return ro.b.a;
-   }
-
-   @Override
-   public ro.b a(byte $$0) {
-      this.a(qw.a($$0));
-      return ro.b.a;
-   }
-
-   @Override
-   public ro.b a(short $$0) {
-      this.a(rm.a($$0));
-      return ro.b.a;
-   }
-
-   @Override
-   public ro.b a(int $$0) {
-      this.a(rd.a($$0));
-      return ro.b.a;
-   }
-
-   @Override
-   public ro.b a(long $$0) {
-      this.a(rg.a($$0));
-      return ro.b.a;
-   }
-
-   @Override
-   public ro.b a(float $$0) {
-      this.a(rb.a($$0));
-      return ro.b.a;
-   }
-
-   @Override
-   public ro.b a(double $$0) {
-      this.a(qz.a($$0));
-      return ro.b.a;
-   }
-
-   @Override
-   public ro.b a(byte[] $$0) {
-      this.a(new qv($$0));
-      return ro.b.a;
-   }
-
-   @Override
-   public ro.b a(int[] $$0) {
-      this.a(new rc($$0));
-      return ro.b.a;
-   }
-
-   @Override
-   public ro.b a(long[] $$0) {
-      this.a(new rf($$0));
-      return ro.b.a;
-   }
-
-   @Override
-   public ro.b a(rt<?> $$0, int $$1) {
-      return ro.b.a;
-   }
-
-   @Override
-   public ro.a b(rt<?> $$0, int $$1) {
-      this.c($$0);
-      return ro.a.a;
-   }
-
-   @Override
-   public ro.a a(rt<?> $$0) {
-      return ro.a.a;
-   }
-
-   @Override
-   public ro.a a(rt<?> $$0, String $$1) {
-      this.a = $$1;
-      this.c($$0);
-      return ro.a.a;
-   }
-
-   private void c(rt<?> $$0) {
-      if ($$0 == re.a) {
-         re $$1 = new re();
-         this.a($$1);
-         this.c.addLast($$1::add);
-      } else if ($$0 == qy.b) {
-         qy $$2 = new qy();
-         this.a($$2);
-         this.c.addLast($$1 -> $$2.a(this.a, $$1));
+      for (sb $$3 : $$0) {
+         $$2.a($$3);
+         $$1.add($$3.b());
       }
+
+      this.c.push($$2);
+      $$1.add(qy.b);
+      this.b = $$1.build();
    }
 
    @Override
-   public ro.b b() {
-      this.c.removeLast();
-      return ro.b.a;
+   public rp.b b(ru<?> $$0) {
+      return $$0 != qy.b ? rp.b.c : super.b($$0);
    }
 
    @Override
-   public ro.b b(rt<?> $$0) {
-      if ($$0 == re.a) {
-         re $$1 = new re();
-         this.b = $$1;
-         this.c.addLast($$1::add);
-      } else if ($$0 == qy.b) {
-         qy $$2 = new qy();
-         this.b = $$2;
-         this.c.addLast($$1 -> $$2.a(this.a, $$1));
+   public rp.a a(ru<?> $$0) {
+      sc $$1 = this.c.element();
+      if (this.e() > $$1.b()) {
+         return super.a($$0);
+      } else if (this.a <= 0) {
+         return rp.a.d;
       } else {
-         this.c.addLast($$0x -> this.b = $$0x);
+         return !this.b.contains($$0) ? rp.a.b : super.a($$0);
+      }
+   }
+
+   @Override
+   public rp.a a(ru<?> $$0, String $$1) {
+      sc $$2 = this.c.element();
+      if (this.e() > $$2.b()) {
+         return super.a($$0, $$1);
+      } else if ($$2.c().remove($$1, $$0)) {
+         this.a--;
+         return super.a($$0, $$1);
+      } else {
+         if ($$0 == qy.b) {
+            sc $$3 = $$2.d().get($$1);
+            if ($$3 != null) {
+               this.c.push($$3);
+               return super.a($$0, $$1);
+            }
+         }
+
+         return rp.a.b;
+      }
+   }
+
+   @Override
+   public rp.b b() {
+      if (this.e() == this.c.element().b()) {
+         this.c.pop();
       }
 
-      return ro.b.a;
+      return super.b();
+   }
+
+   public int c() {
+      return this.a;
    }
 }

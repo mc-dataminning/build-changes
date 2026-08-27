@@ -1,32 +1,24 @@
-public class zn implements ve<wx> {
-   private final double a;
-   private final double b;
+public class zn implements vf<wy> {
+   private final tn a;
 
-   public zn(dha $$0) {
-      this.a = $$0.a();
-      this.b = $$0.b();
+   public zn(tn $$0) {
+      this.a = $$0;
    }
 
-   public zn(sp $$0) {
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
+   public zn(sq $$0) {
+      this.a = $$0.l();
    }
 
    @Override
-   public void a(sp $$0) {
+   public void a(sq $$0) {
       $$0.a(this.a);
-      $$0.a(this.b);
    }
 
-   public void a(wx $$0) {
+   public void a(wy $$0) {
       $$0.a(this);
    }
 
-   public double a() {
-      return this.b;
-   }
-
-   public double d() {
+   public tn a() {
       return this.a;
    }
 }

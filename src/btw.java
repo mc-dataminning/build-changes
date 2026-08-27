@@ -2,37 +2,24 @@ import javax.annotation.Nullable;
 
 public class btw {
    @Nullable
-   public static ehn a(bjp $$0, int $$1, int $$2) {
-      boolean $$3 = btx.a($$0, $$1);
-      return bua.a($$0, () -> {
-         gw $$4 = bua.a($$0.ef(), $$1, $$2);
-         return a($$0, $$1, $$3, $$4);
-      });
+   public static ehp a(bjr $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      boolean $$7 = btz.a($$0, $$1);
+      return buc.a($$0, () -> a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
    }
 
    @Nullable
-   public static ehn a(bjp $$0, int $$1, int $$2, ehn $$3, double $$4) {
-      ehn $$5 = $$3.a($$0.dq(), $$0.ds(), $$0.dw());
-      boolean $$6 = btx.a($$0, $$1);
-      return bua.a($$0, () -> {
-         gw $$6x = bua.a($$0.ef(), $$1, $$2, 0, $$5.c, $$5.e, $$4);
-         return $$6x == null ? null : a($$0, $$1, $$6, $$6x);
-      });
-   }
-
-   @Nullable
-   public static ehn a(bjp $$0, int $$1, int $$2, ehn $$3) {
-      ehn $$4 = $$0.dj().d($$3);
-      boolean $$5 = btx.a($$0, $$1);
-      return bua.a($$0, () -> {
-         gw $$5x = bua.a($$0.ef(), $$1, $$2, 0, $$4.c, $$4.e, (float) (Math.PI / 2));
-         return $$5x == null ? null : a($$0, $$1, $$5, $$5x);
-      });
-   }
-
-   @Nullable
-   private static gw a(bjp $$0, int $$1, boolean $$2, gw $$3) {
-      gw $$4 = bua.a($$0, $$1, $$0.ef(), $$3);
-      return !btx.a($$4, $$0) && !btx.a($$2, $$0, $$4) && !btx.a($$0.L(), $$4) && !btx.b($$0, $$4) ? $$4 : null;
+   public static gw a(bjr $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6, boolean $$7) {
+      gw $$8 = buc.a($$0.ef(), $$1, $$2, $$3, $$4, $$5, $$6);
+      if ($$8 == null) {
+         return null;
+      } else {
+         gw $$9 = buc.a($$0, $$1, $$0.ef(), $$8);
+         if (!btz.a($$9, $$0) && !btz.a($$7, $$0, $$9)) {
+            $$9 = buc.a($$9, $$0.dL().aj(), $$1x -> btz.c($$0, $$1x));
+            return btz.b($$0, $$9) ? null : $$9;
+         } else {
+            return null;
+         }
+      }
    }
 }

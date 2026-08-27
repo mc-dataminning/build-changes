@@ -1,70 +1,53 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class ept extends epv {
+public class ept extends epx {
    private static final Logger b = LogUtils.getLogger();
-   private static final tm c = tm.c("mco.download.preparing");
-   private final long d;
-   private final int e;
-   private final eyk f;
-   private final String g;
+   private static final tn c = tn.c("mco.configure.world.closing");
+   private final emy d;
+   private final eoh e;
 
-   public ept(long $$0, int $$1, String $$2, eyk $$3) {
+   public ept(emy $$0, eoh $$1) {
       this.d = $$0;
       this.e = $$1;
-      this.f = $$3;
-      this.g = $$2;
    }
 
    @Override
    public void run() {
-      emf $$0 = emf.a();
-      int $$1 = 0;
+      emh $$0 = emh.a();
 
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            enm $$2 = $$0.b(this.d, this.e);
-            a(1L);
-            if (this.d()) {
-               return;
-            }
-
-            a(new eoi(this.f, $$2, this.g, $$0x -> {
-            }));
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         if (this.d()) {
             return;
-         } catch (ent var4) {
+         }
+
+         try {
+            boolean $$2 = $$0.g(this.d.a);
+            if ($$2) {
+               this.e.e();
+               this.d.e = emy.b.a;
+               a(this.e);
+               break;
+            }
+         } catch (env var4) {
             if (this.d()) {
                return;
             }
 
             a((long)var4.c);
-            $$1++;
-         } catch (ens var5) {
+         } catch (Exception var5) {
             if (this.d()) {
                return;
             }
 
-            b.error("Couldn't download world data", var5);
-            a(new eoj(var5, this.f));
-            return;
-         } catch (Exception var6) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't download world data", var6);
-            this.a(var6);
-            return;
+            b.error("Failed to close server", var5);
+            this.a(var5);
          }
       }
    }
 
    @Override
-   public tm a() {
+   public tn a() {
       return c;
    }
 }

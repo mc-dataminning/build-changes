@@ -1,65 +1,57 @@
+import com.google.common.collect.Streams;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.List;
 import java.util.Optional;
-import java.util.Set;
+import java.util.stream.Stream;
 
-public class avc extends DataFix {
-   private static final Set<String> a = Set.of("minecraft:potion", "minecraft:splash_potion", "minecraft:lingering_potion", "minecraft:tipped_arrow");
+public class avc extends ayb {
+   private static final String a = tn.a.a(tm.a);
+   private static final String[] b = new String[]{
+      "Text1", "Text2", "Text3", "Text4", "FilteredText1", "FilteredText2", "FilteredText3", "FilteredText4", "Color", "GlowingText"
+   };
 
-   public avc(Schema $$0) {
-      super($$0, false);
+   public avc(Schema $$0, String $$1, String $$2) {
+      super($$0, false, $$1, ayz.s, $$2);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Schema $$0 = this.getInputSchema();
-      Type<?> $$1 = this.getInputSchema().getType(ayx.t);
-      OpticFinder<Pair<String, String>> $$2 = DSL.fieldFinder("id", DSL.named(ayx.z.typeName(), baf.a()));
-      OpticFinder<?> $$3 = $$1.findField("tag");
-      return TypeRewriteRule.seq(
-         this.fixTypeEverywhereTyped("EffectDurationEntity", $$0.getType(ayx.x), $$0x -> $$0x.update(DSL.remainderFinder(), this::c)),
-         new TypeRewriteRule[]{
-            this.fixTypeEverywhereTyped("EffectDurationPlayer", $$0.getType(ayx.b), $$0x -> $$0x.update(DSL.remainderFinder(), this::c)),
-            this.fixTypeEverywhereTyped("EffectDurationItem", $$1, $$2x -> {
-               Optional<Pair<String, String>> $$3x = $$2x.getOptional($$2);
-               if ($$3x.filter(a::contains).isPresent()) {
-                  Optional<? extends Typed<?>> $$4 = $$2x.getOptionalTyped($$3);
-                  if ($$4.isPresent()) {
-                     Dynamic<?> $$5 = (Dynamic<?>)$$4.get().get(DSL.remainderFinder());
-                     Typed<?> $$6 = $$4.get().set(DSL.remainderFinder(), $$5.update("CustomPotionEffects", this::b));
-                     return $$2x.set($$3, $$6);
-                  }
-               }
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      $$0 = $$0.update("front_text", avc::b);
+      $$0 = $$0.update("back_text", avc::b);
 
-               return $$2x;
-            })
+      for (String $$1 : b) {
+         $$0 = $$0.remove($$1);
+      }
+
+      return $$0;
+   }
+
+   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      boolean $$1 = $$0.get("_filtered_correct").asBoolean(false);
+      if ($$1) {
+         return $$0.remove("_filtered_correct");
+      } else {
+         Optional<Stream<Dynamic<T>>> $$2 = $$0.get("filtered_messages").asStreamOpt().result();
+         if ($$2.isEmpty()) {
+            return $$0;
+         } else {
+            Dynamic<T> $$3 = $$0.createString(a);
+            List<Dynamic<T>> $$4 = $$0.get("messages").asStreamOpt().result().orElse(Stream.of()).toList();
+            List<Dynamic<T>> $$5 = Streams.mapWithIndex($$2.get(), ($$2x, $$3x) -> {
+               Dynamic<T> $$4x = $$3x < (long)$$4.size() ? $$4.get((int)$$3x) : $$3;
+               return $$2x.equals($$3) ? $$4x : $$2x;
+            }).toList();
+            return $$5.stream().allMatch($$1x -> $$1x.equals($$3))
+               ? $$0.remove("filtered_messages")
+               : $$0.set("filtered_messages", $$0.createList($$5.stream()));
          }
-      );
+      }
    }
 
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update("FactorCalculationData", $$1 -> {
-         int $$2 = $$1.get("effect_changed_timestamp").asInt(-1);
-         $$1 = $$1.remove("effect_changed_timestamp");
-         int $$3 = $$0.get("Duration").asInt(-1);
-         int $$4 = $$2 - $$3;
-         return $$1.set("ticks_active", $$1.createInt($$4));
-      });
-   }
-
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      return $$0.createList($$0.asStream().map(this::a));
-   }
-
-   private Dynamic<?> c(Dynamic<?> $$0) {
-      $$0 = $$0.update("Effects", this::b);
-      $$0 = $$0.update("ActiveEffects", this::b);
-      return $$0.update("CustomPotionEffects", this::b);
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), avc::a);
    }
 }

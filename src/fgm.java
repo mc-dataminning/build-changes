@@ -1,35 +1,42 @@
-public class fgm<T extends biq> extends ffm<T> {
-   private final fic a;
-   private final fic b;
-   private final fic f;
+public class fgm<T extends bis> extends ffo<T> {
+   private final fie a;
+   private final fie b;
+   private final fie f;
 
-   public fgm(fic $$0) {
+   public fgm(fie $$0) {
       this.a = $$0;
-      this.b = $$0.b("left_fin");
-      this.f = $$0.b("right_fin");
+      this.b = $$0.b("left_blue_fin");
+      this.f = $$0.b("right_blue_fin");
    }
 
-   public static fii b() {
-      fik $$0 = new fik();
-      fil $$1 = $$0.a();
-      int $$2 = 23;
-      $$1.a("body", fih.c().a(0, 27).a(-1.5F, -2.0F, -1.5F, 3.0F, 2.0F, 3.0F), fie.a(0.0F, 23.0F, 0.0F));
-      $$1.a("right_eye", fih.c().a(24, 6).a(-1.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), fie.a(0.0F, 20.0F, 0.0F));
-      $$1.a("left_eye", fih.c().a(28, 6).a(0.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), fie.a(0.0F, 20.0F, 0.0F));
-      $$1.a("back_fin", fih.c().a(-3, 0).a(-1.5F, 0.0F, 0.0F, 3.0F, 0.0F, 3.0F), fie.a(0.0F, 22.0F, 1.5F));
-      $$1.a("right_fin", fih.c().a(25, 0).a(-1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), fie.a(-1.5F, 22.0F, -1.5F));
-      $$1.a("left_fin", fih.c().a(25, 0).a(0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), fie.a(1.5F, 22.0F, -1.5F));
-      return fii.a($$0, 32, 32);
+   public static fik b() {
+      fim $$0 = new fim();
+      fin $$1 = $$0.a();
+      int $$2 = 22;
+      $$1.a("body", fij.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fig.a(0.0F, 22.0F, 0.0F));
+      $$1.a("right_blue_fin", fij.c().a(24, 0).a(-2.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), fig.a(-4.0F, 15.0F, -2.0F));
+      $$1.a("left_blue_fin", fij.c().a(24, 3).a(0.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), fig.a(4.0F, 15.0F, -2.0F));
+      $$1.a("top_front_fin", fij.c().a(15, 17).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), fig.a(0.0F, 14.0F, -4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("top_middle_fin", fij.c().a(14, 16).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 1.0F), fig.a(0.0F, 14.0F, 0.0F));
+      $$1.a("top_back_fin", fij.c().a(23, 18).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), fig.a(0.0F, 14.0F, 4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_front_fin", fij.c().a(5, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fig.a(-4.0F, 22.0F, -4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$1.a("left_front_fin", fij.c().a(1, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fig.a(4.0F, 22.0F, -4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("bottom_front_fin", fij.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), fig.a(0.0F, 22.0F, -4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("bottom_middle_fin", fij.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), fig.a(0.0F, 22.0F, 0.0F));
+      $$1.a("bottom_back_fin", fij.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), fig.a(0.0F, 22.0F, 4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_back_fin", fij.c().a(9, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fig.a(-4.0F, 22.0F, 4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("left_back_fin", fij.c().a(9, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fig.a(4.0F, 22.0F, 4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      return fik.a($$0, 32, 32);
    }
 
    @Override
-   public fic a() {
+   public fie a() {
       return this.a;
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.f.g = -0.2F + 0.4F * arx.a($$3 * 0.2F);
-      this.b.g = 0.2F - 0.4F * arx.a($$3 * 0.2F);
+      this.f.g = -0.2F + 0.4F * ary.a($$3 * 0.2F);
+      this.b.g = 0.2F - 0.4F * ary.a($$3 * 0.2F);
    }
 }

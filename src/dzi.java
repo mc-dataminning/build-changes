@@ -1,18 +1,22 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class dzi implements dzj {
-   public static final dzi a = new dzi();
-   public static final Codec<dzi> b = Codec.unit(a);
+public class dzi implements dzl {
+   public static final Codec<dzi> a = RecordCodecBuilder.create($$0 -> $$0.group(qy.a.fieldOf("data").forGetter($$0x -> $$0x.b)).apply($$0, dzi::new));
+   private final qy b;
 
-   @Nullable
-   @Override
-   public qy a(asc $$0, @Nullable qy $$1) {
-      return $$1;
+   public dzi(qy $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public dzk<?> a() {
-      return dzk.b;
+   public qy a(ase $$0, @Nullable qy $$1) {
+      return $$1 == null ? this.b.h() : $$1.a(this.b);
+   }
+
+   @Override
+   public dzm<?> a() {
+      return dzm.c;
    }
 }

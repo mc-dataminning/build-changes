@@ -1,29 +1,34 @@
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.DataResult;
+import java.util.List;
 
-public class fzn implements fzi {
-   public static final Codec<fzn> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("source").forGetter($$0x -> $$0x.c), Codec.STRING.fieldOf("prefix").forGetter($$0x -> $$0x.d)).apply($$0, fzn::new)
-   );
-   private final String c;
-   private final String d;
+public class fzn {
+   private static final BiMap<aey, fzm> i = HashBiMap.create();
+   public static final fzm a = a("single", fzs.b);
+   public static final fzm b = a("directory", fzp.b);
+   public static final fzm c = a("filter", fzt.b);
+   public static final fzm d = a("unstitch", fzu.b);
+   public static final fzm e = a("paletted_permutations", fzr.b);
+   public static Codec<fzm> f = aey.a.flatXmap($$0 -> {
+      fzm $$1 = (fzm)i.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$0);
+   }, $$0 -> {
+      aey $$1 = (aey)i.inverse().get($$0);
+      return $$0 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$1);
+   });
+   public static Codec<fzk> g = f.dispatch(fzk::a, fzm::a);
+   public static Codec<List<fzk>> h = g.listOf().fieldOf("sources").codec();
 
-   public fzn(String $$0, String $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   @Override
-   public void a(anu $$0, fzi.a $$1) {
-      aeq $$2 = new aeq("textures/" + this.c, ".png");
-      $$2.a($$0).forEach(($$2x, $$3) -> {
-         aex $$4 = $$2.b($$2x).d(this.d);
-         $$1.a($$4, $$3);
-      });
-   }
-
-   @Override
-   public fzk a() {
-      return fzl.b;
+   private static fzm a(String $$0, Codec<? extends fzk> $$1) {
+      fzm $$2 = new fzm($$1);
+      aey $$3 = new aey($$0);
+      fzm $$4 = (fzm)i.putIfAbsent($$3, $$2);
+      if ($$4 != null) {
+         throw new IllegalStateException("Duplicate registration " + $$3);
+      } else {
+         return $$2;
+      }
    }
 }

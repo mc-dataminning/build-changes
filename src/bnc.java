@@ -3,40 +3,46 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class bnc {
-   public static bmh<cbh> a(bsh<hf> $$0, float $$1, int $$2, int $$3, int $$4) {
-      return boj.a(
-         (Function<boj.b<cbh>, ? extends App<boj.c<cbh>, bom<cbh>>>)($$5 -> $$5.group($$5.a(bsh.E), $$5.c(bsh.m), $$5.b($$0))
-               .apply($$5, ($$6, $$7, $$8) -> ($$9, $$10, $$11) -> {
-                     hf $$12 = $$5.b($$8);
-                     Optional<Long> $$13 = $$5.a($$6);
-                     if ($$12.a() == $$9.ac() && (!$$13.isPresent() || $$9.V() - $$13.get() <= (long)$$4)) {
-                        if ($$12.b().k($$10.dl()) > $$3) {
-                           ehn $$14 = null;
-                           int $$15 = 0;
-                           int $$16 = 1000;
+   public static bla<bjr> a(bsj<gw> $$0, float $$1, int $$2, boolean $$3) {
+      return a($$0, $$1, $$2, $$3, ehp::c);
+   }
 
-                           while ($$14 == null || gw.a($$14).k($$10.dl()) > $$3) {
-                              $$14 = btw.a($$10, 15, 7, ehn.c($$12.b()), (float) (Math.PI / 2));
-                              if (++$$15 == 1000) {
-                                 $$10.a($$0);
-                                 $$8.b();
-                                 $$6.a($$11);
-                                 return true;
-                              }
-                           }
+   public static bmj<bjr> b(bsj<? extends bis> $$0, float $$1, int $$2, boolean $$3) {
+      return a($$0, $$1, $$2, $$3, bis::dj);
+   }
 
-                           $$7.a(new bsk($$14, $$1, $$2));
-                        } else if ($$12.b().k($$10.dl()) > $$2) {
-                           $$7.a(new bsk($$12.b(), $$1, $$2));
-                        }
+   private static <T> bmj<bjr> a(bsj<T> $$0, float $$1, int $$2, boolean $$3, Function<T, ehp> $$4) {
+      return bol.a(
+         (Function<bol.b<bjr>, ? extends App<bol.c<bjr>, boo<bjr>>>)($$5 -> $$5.group($$5.a(bsj.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                  Optional<bsm> $$10 = $$5.a($$5x);
+                  if ($$10.isPresent() && !$$3) {
+                     return false;
+                  } else {
+                     ehp $$11 = $$8.dj();
+                     ehp $$12 = $$4.apply($$5.b($$6));
+                     if (!$$11.a((hq)$$12, (double)$$2)) {
+                        return false;
                      } else {
-                        $$10.a($$0);
-                        $$8.b();
-                        $$6.a($$11);
-                     }
+                        if ($$10.isPresent() && $$10.get().b() == $$1) {
+                           ehp $$13 = $$10.get().a().a().d($$11);
+                           ehp $$14 = $$12.d($$11);
+                           if ($$13.b($$14) < 0.0) {
+                              return false;
+                           }
+                        }
 
-                     return true;
-                  }))
+                        for (int $$15 = 0; $$15 < 10; $$15++) {
+                           ehp $$16 = bub.b($$8, 16, 7, $$12);
+                           if ($$16 != null) {
+                              $$5x.a(new bsm($$16, $$1, 0));
+                              break;
+                           }
+                        }
+
+                        return true;
+                     }
+                  }
+               }))
       );
    }
 }

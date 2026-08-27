@@ -51,31 +51,31 @@ public class ln {
       return this;
    }
 
-   public aex a(csv $$0, BiConsumer<aex, Supplier<JsonElement>> $$1) {
+   public aey a(csx $$0, BiConsumer<aey, Supplier<JsonElement>> $$1) {
       return this.A.a($$0, this.z, $$1);
    }
 
-   public aex a(csv $$0, String $$1, BiConsumer<aex, Supplier<JsonElement>> $$2) {
+   public aey a(csx $$0, String $$1, BiConsumer<aey, Supplier<JsonElement>> $$2) {
       return this.A.a($$0, $$1, this.z, $$2);
    }
 
-   private static ln.a a(Function<csv, ll> $$0, lj $$1) {
+   private static ln.a a(Function<csx, ll> $$0, lj $$1) {
       return $$2 -> new ln($$0.apply($$2), $$1);
    }
 
-   public static ln a(aex $$0) {
+   public static ln a(aey $$0) {
       return new ln(ll.b($$0), lk.c);
    }
 
    @FunctionalInterface
    public interface a {
-      ln get(csv var1);
+      ln get(csx var1);
 
-      default aex create(csv $$0, BiConsumer<aex, Supplier<JsonElement>> $$1) {
+      default aey create(csx $$0, BiConsumer<aey, Supplier<JsonElement>> $$1) {
          return this.get($$0).a($$0, $$1);
       }
 
-      default aex createWithSuffix(csv $$0, String $$1, BiConsumer<aex, Supplier<JsonElement>> $$2) {
+      default aey createWithSuffix(csx $$0, String $$1, BiConsumer<aey, Supplier<JsonElement>> $$2) {
          return this.get($$0).a($$0, $$1, $$2);
       }
 

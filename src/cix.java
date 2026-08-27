@@ -1,23 +1,19 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class cix extends cjc {
+   private static final String a = "textures/entity/horse/";
+   private final int b;
+   private final String c;
 
-public record cix(hg<apd> b, int c, float d) {
-   public static final Codec<cix> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               apd.b.fieldOf("sound_event").forGetter(cix::a), arg.j.fieldOf("use_duration").forGetter(cix::b), arg.k.fieldOf("range").forGetter(cix::c)
-            )
-            .apply($$0, cix::new)
-   );
+   public cix(int $$0, String $$1, cjc.a $$2) {
+      super($$2);
+      this.b = $$0;
+      this.c = "textures/entity/horse/armor/horse_armor_" + $$1 + ".png";
+   }
 
-   public hg<apd> a() {
+   public aey h() {
+      return new aey(this.c);
+   }
+
+   public int i() {
       return this.b;
-   }
-
-   public int b() {
-      return this.c;
-   }
-
-   public float c() {
-      return this.d;
    }
 }

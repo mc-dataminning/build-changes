@@ -1,14 +1,7 @@
-import java.util.function.Consumer;
+import com.mojang.authlib.GameProfile;
 
-public interface alh {
-   void a(Consumer<ve<?>> var1);
-
-   alh.a a();
-
-   public static record a(String a) {
-      @Override
-      public String toString() {
-         return this.a;
-      }
+public record alh(GameProfile a, int b, akh c) {
+   public static alh a(GameProfile $$0) {
+      return new alh($$0, 0, akh.a());
    }
 }

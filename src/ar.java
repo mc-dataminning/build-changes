@@ -5,12 +5,12 @@ public enum ar {
 
    private final String d;
    private final n e;
-   private final tm f;
+   private final tn f;
 
    private ar(String $$0, n $$1) {
       this.d = $$0;
       this.e = $$1;
-      this.f = tm.c("advancements.toast." + $$0);
+      this.f = tn.c("advancements.toast." + $$0);
    }
 
    public String a() {
@@ -31,7 +31,7 @@ public enum ar {
       return this.e;
    }
 
-   public tm c() {
+   public tn c() {
       return this.f;
    }
 }

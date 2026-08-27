@@ -1,37 +1,29 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
-import javax.annotation.Nullable;
 
 public class bmf {
-   public static bmh<bjg> a(float $$0) {
-      return boj.a((Function<boj.b<bjg>, ? extends App<boj.c<bjg>, bom<bjg>>>)($$1 -> $$1.group($$1.c(bsh.m)).apply($$1, $$1x -> ($$2, $$3, $$4) -> {
-               if ($$2.g($$3.dl())) {
-                  return false;
-               } else {
-                  Optional<ehn> $$5 = Optional.ofNullable(a($$2, $$3));
-                  $$5.ifPresent($$2x -> $$1x.a(new bsk($$2x, $$0, 0)));
-                  return true;
-               }
-            })));
+   public static bmj<bjk> a(int $$0) {
+      return bol.a(
+         (Function<bol.b<bjk>, ? extends App<bol.c<bjk>, boo<bjk>>>)($$1 -> $$1.group($$1.a(bsj.n), $$1.b(bsj.o), $$1.c(bsj.p), $$1.b(bsj.h))
+               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     bji $$9 = $$1.b($$3);
+                     if (!a($$7) && $$7.i($$9) && $$1.<bsl>b($$5).a($$9)) {
+                        $$2.a(new blk($$9, true));
+                        $$7.a(bgz.a);
+                        $$7.C($$9);
+                        $$4.a(true, (long)$$0);
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 
-   @Nullable
-   private static ehn a(akr $$0, bjg $$1) {
-      asc $$2 = $$1.ef();
-      gw $$3 = $$1.dl();
-
-      for (int $$4 = 0; $$4 < 10; $$4++) {
-         gw $$5 = $$3.b($$2.a(20) - 10, $$2.a(6) - 3, $$2.a(20) - 10);
-         if (a($$0, $$1, $$5)) {
-            return ehn.c($$5);
-         }
-      }
-
-      return null;
-   }
-
-   public static boolean a(akr $$0, bjg $$1, gw $$2) {
-      return $$0.g($$2) && (double)$$0.a(dks.a.e, $$2).v() <= $$1.ds();
+   private static boolean a(bjk $$0) {
+      return $$0.b($$1 -> {
+         cjc $$2 = $$1.d();
+         return $$2 instanceof cjx && $$0.a((cjx)$$2);
+      });
    }
 }

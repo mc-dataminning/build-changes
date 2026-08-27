@@ -1,29 +1,31 @@
-public class gcd extends gbv {
-   private final biq n;
+public class gcd implements gby {
+   private final fni a;
+   private boolean b;
+   private boolean c = true;
 
-   public gcd(apd $$0, apf $$1, float $$2, float $$3, biq $$4, long $$5) {
-      super($$0, $$1, asc.a($$5));
-      this.d = $$2;
-      this.e = $$3;
-      this.n = $$4;
-      this.f = (double)((float)this.n.dq());
-      this.g = (double)((float)this.n.ds());
-      this.h = (double)((float)this.n.dw());
+   public gcd(fni $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public boolean s() {
-      return !this.n.aS();
-   }
+   public void a() {
+      cpx $$0 = this.a.dL();
+      dfl $$1 = $$0.c(this.a.cG().c(0.0, -0.4F, 0.0).h(1.0E-6)).filter($$0x -> $$0x.a(csy.nd)).findFirst().orElse(null);
+      if ($$1 != null) {
+         if (!this.b && !this.c && $$1.a(csy.nd) && !this.a.M_()) {
+            boolean $$2 = $$1.c(ctc.a);
+            if ($$2) {
+               this.a.a(apf.cu, 1.0F, 1.0F);
+            } else {
+               this.a.a(apf.cs, 1.0F, 1.0F);
+            }
+         }
 
-   @Override
-   public void q() {
-      if (this.n.dG()) {
-         this.n();
+         this.b = true;
       } else {
-         this.f = (double)((float)this.n.dq());
-         this.g = (double)((float)this.n.ds());
-         this.h = (double)((float)this.n.dw());
+         this.b = false;
       }
+
+      this.c = false;
    }
 }

@@ -1,52 +1,136 @@
-public abstract class ccg extends ccb implements ccj {
-   private static final aef<cjf> e = aei.a(ccg.class, aeh.h);
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   public ccg(biu<? extends ccg> $$0, cpv $$1) {
+public class ccg extends bis implements bkf {
+   public static final int b = 20;
+   public static final int c = 2;
+   public static final int d = 14;
+   private int e;
+   private boolean f;
+   private int g = 22;
+   private boolean h;
+   @Nullable
+   private bji i;
+   @Nullable
+   private UUID j;
+
+   public ccg(biw<? extends ccg> $$0, cpx $$1) {
       super($$0, $$1);
    }
 
-   public ccg(biu<? extends ccg> $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, cpv $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   public ccg(biu<? extends ccg> $$0, bjg $$1, double $$2, double $$3, double $$4, cpv $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public void a(cjf $$0) {
-      if (!$$0.a(cji.tf) || $$0.u()) {
-         this.al().b(e, $$0.c(1));
-      }
-   }
-
-   protected cjf w() {
-      return this.al().b(e);
-   }
-
-   @Override
-   public cjf q() {
-      cjf $$0 = this.w();
-      return $$0.b() ? new cjf(cji.tf) : $$0;
+   public ccg(cpx $$0, double $$1, double $$2, double $$3, float $$4, int $$5, bji $$6) {
+      this(biw.H, $$0);
+      this.e = $$5;
+      this.a($$6);
+      this.r($$4 * (180.0F / (float)Math.PI));
+      this.e($$1, $$2, $$3);
    }
 
    @Override
    protected void a_() {
-      this.al().a(e, cjf.b);
+   }
+
+   public void a(@Nullable bji $$0) {
+      this.i = $$0;
+      this.j = $$0 == null ? null : $$0.cv();
+   }
+
+   @Nullable
+   public bji q() {
+      if (this.i == null && this.j != null && this.dL() instanceof aks) {
+         bis $$0 = ((aks)this.dL()).a(this.j);
+         if ($$0 instanceof bji) {
+            this.i = (bji)$$0;
+         }
+      }
+
+      return this.i;
    }
 
    @Override
-   public void b(qy $$0) {
-      super.b($$0);
-      cjf $$1 = this.w();
-      if (!$$1.b()) {
-         $$0.a("Item", $$1.b(new qy()));
+   protected void a(qy $$0) {
+      this.e = $$0.h("Warmup");
+      if ($$0.b("Owner")) {
+         this.j = $$0.a("Owner");
       }
    }
 
    @Override
-   public void a(qy $$0) {
-      super.a($$0);
-      cjf $$1 = cjf.a($$0.p("Item"));
-      this.a($$1);
+   protected void b(qy $$0) {
+      $$0.a("Warmup", this.e);
+      if (this.j != null) {
+         $$0.a("Owner", this.j);
+      }
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      if (this.dL().B) {
+         if (this.h) {
+            this.g--;
+            if (this.g == 14) {
+               for (int $$0 = 0; $$0 < 12; $$0++) {
+                  double $$1 = this.dq() + (this.ag.j() * 2.0 - 1.0) * (double)this.df() * 0.5;
+                  double $$2 = this.ds() + 0.05 + this.ag.j();
+                  double $$3 = this.dw() + (this.ag.j() * 2.0 - 1.0) * (double)this.df() * 0.5;
+                  double $$4 = (this.ag.j() * 2.0 - 1.0) * 0.3;
+                  double $$5 = 0.3 + this.ag.j() * 0.3;
+                  double $$6 = (this.ag.j() * 2.0 - 1.0) * 0.3;
+                  this.dL().a(ix.g, $$1, $$2 + 1.0, $$3, $$4, $$5, $$6);
+               }
+            }
+         }
+      } else if (--this.e < 0) {
+         if (this.e == -8) {
+            for (bji $$8 : this.dL().a(bji.class, this.cG().c(0.2, 0.0, 0.2))) {
+               this.c($$8);
+            }
+         }
+
+         if (!this.f) {
+            this.dL().a(this, (byte)4);
+            this.f = true;
+         }
+
+         if (--this.g < 0) {
+            this.ak();
+         }
+      }
+   }
+
+   private void c(bji $$0) {
+      bji $$1 = this.q();
+      if ($$0.bv() && !$$0.cq() && $$0 != $$1) {
+         if ($$1 == null) {
+            $$0.a(this.dM().o(), 6.0F);
+         } else {
+            if ($$1.s($$0)) {
+               return;
+            }
+
+            $$0.a(this.dM().c(this, $$1), 6.0F);
+         }
+      }
+   }
+
+   @Override
+   public void b(byte $$0) {
+      super.b($$0);
+      if ($$0 == 4) {
+         this.h = true;
+         if (!this.aS()) {
+            this.dL().a(this.dq(), this.ds(), this.dw(), apf.hu, this.da(), 1.0F, this.ag.i() * 0.2F + 0.85F, false);
+         }
+      }
+   }
+
+   public float a(float $$0) {
+      if (!this.h) {
+         return 0.0F;
+      } else {
+         int $$1 = this.g - 2;
+         return $$1 <= 0 ? 1.0F : 1.0F - ((float)$$1 - $$0) / 20.0F;
+      }
    }
 }

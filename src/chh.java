@@ -1,230 +1,113 @@
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
+public class chh extends cjc {
+   public static final int a = 10;
+   private static final int b = 200;
+   private static final double c = Math.sqrt(alr.d) - 1.0;
 
-public class chh extends cja {
-   private static final String b = "Items";
-   public static final int a = 64;
-   private static final int c = 4;
-   private static final int d = arx.f(0.4F, 0.4F, 1.0F);
-
-   public chh(cja.a $$0) {
+   public chh(cjc.a $$0) {
       super($$0);
    }
 
-   public static float d(cjf $$0) {
-      return (float)o($$0) / 64.0F;
-   }
-
    @Override
-   public boolean a(cjf $$0, cgd $$1, cet $$2, cbu $$3) {
-      if ($$2 != cet.b) {
-         return false;
-      } else {
-         cjf $$4 = $$1.e();
-         if ($$4.b()) {
-            this.a($$3);
-            p($$0).ifPresent($$2x -> b($$0, $$1.f($$2x)));
-         } else if ($$4.d().al_()) {
-            int $$5 = (64 - o($$0)) / k($$4);
-            int $$6 = b($$0, $$1.b($$4.L(), $$5, $$3));
-            if ($$6 > 0) {
-               this.b($$3);
-            }
-         }
-
-         return true;
+   public bha a(clr $$0) {
+      cbw $$1 = $$0.o();
+      if ($$1 != null && this.a((bji)$$1).c() == ehn.a.b) {
+         $$1.c($$0.p());
       }
+
+      return bha.b;
    }
 
    @Override
-   public boolean a(cjf $$0, cjf $$1, cgd $$2, cet $$3, cbu $$4, bjy $$5) {
-      if ($$3 == cet.b && $$2.b($$4)) {
-         if ($$1.b()) {
-            p($$0).ifPresent($$2x -> {
-               this.a($$4);
-               $$5.a($$2x);
-            });
-         } else {
-            int $$6 = b($$0, $$1);
-            if ($$6 > 0) {
-               this.b($$4);
-               $$1.h($$6);
-            }
-         }
-
-         return true;
-      } else {
-         return false;
-      }
+   public cla c(cjh $$0) {
+      return cla.j;
    }
 
    @Override
-   public bgz<cjf> a(cpv $$0, cbu $$1, bgx $$2) {
-      cjf $$3 = $$1.b($$2);
-      if (a($$3, $$1)) {
-         this.c($$1);
-         $$1.b(apo.c.b(this));
-         return bgz.a($$3, $$0.w_());
-      } else {
-         return bgz.d($$3);
-      }
+   public int b(cjh $$0) {
+      return 200;
    }
 
    @Override
-   public boolean e(cjf $$0) {
-      return o($$0) > 0;
-   }
+   public void a(cpx $$0, bji $$1, cjh $$2, int $$3) {
+      if ($$3 >= 0 && $$1 instanceof cbw $$4) {
+         ehn $$6 = this.a($$1);
+         if ($$6 instanceof ehl $$7 && $$6.c() == ehn.a.b) {
+            int $$9 = this.b($$2) - $$3 + 1;
+            boolean $$10 = $$9 % 10 == 5;
+            if ($$10) {
+               gw $$11 = $$7.a();
+               dfl $$12 = $$0.a_($$11);
+               bjc $$13 = $$1.fn() == bgz.a ? $$4.fl() : $$4.fl().e();
+               if ($$12.z() && $$12.l() != czc.a) {
+                  this.a($$0, $$7, $$12, $$1.f(0.0F), $$13);
+               }
 
-   @Override
-   public int f(cjf $$0) {
-      return Math.min(1 + 12 * o($$0) / 64, 13);
-   }
+               ape $$15;
+               if ($$12.b() instanceof ctb $$14) {
+                  $$15 = $$14.b();
+               } else {
+                  $$15 = apf.cl;
+               }
 
-   @Override
-   public int g(cjf $$0) {
-      return d;
-   }
-
-   private static int b(cjf $$0, cjf $$1) {
-      if (!$$1.b() && $$1.d().al_()) {
-         qy $$2 = $$0.w();
-         if (!$$2.e("Items")) {
-            $$2.a("Items", new re());
-         }
-
-         int $$3 = o($$0);
-         int $$4 = k($$1);
-         int $$5 = Math.min($$1.L(), (64 - $$3) / $$4);
-         if ($$5 == 0) {
-            return 0;
-         } else {
-            re $$6 = $$2.c("Items", 10);
-            Optional<qy> $$7 = a($$1, $$6);
-            if ($$7.isPresent()) {
-               qy $$8 = $$7.get();
-               cjf $$9 = cjf.a($$8);
-               $$9.g($$5);
-               $$9.b($$8);
-               $$6.remove($$8);
-               $$6.c(0, $$8);
-            } else {
-               cjf $$10 = $$1.c($$5);
-               qy $$11 = new qy();
-               $$10.b($$11);
-               $$6.c(0, $$11);
+               $$0.a($$4, $$11, $$15, apg.e);
+               if (!$$0.w_() && $$0.c_($$11) instanceof ddb $$17) {
+                  boolean $$18 = $$17.a($$0.V(), $$4, $$7.b());
+                  if ($$18) {
+                     bix $$19 = $$2.equals($$4.c(bix.b)) ? bix.b : bix.a;
+                     $$2.a(1, $$1, $$1x -> $$1x.d($$19));
+                  }
+               }
             }
 
-            return $$5;
-         }
-      } else {
-         return 0;
-      }
-   }
-
-   private static Optional<qy> a(cjf $$0, re $$1) {
-      return $$0.a(cji.qg)
-         ? Optional.empty()
-         : $$1.stream().filter(qy.class::isInstance).map(qy.class::cast).filter($$1x -> cjf.c(cjf.a($$1x), $$0)).findFirst();
-   }
-
-   private static int k(cjf $$0) {
-      if ($$0.a(cji.qg)) {
-         return 4 + o($$0);
-      } else {
-         if (($$0.a(cji.vC) || $$0.a(cji.vB)) && $$0.u()) {
-            qy $$1 = cgy.a($$0);
-            if ($$1 != null && !$$1.c("Bees", 10).isEmpty()) {
-               return 64;
-            }
+            return;
          }
 
-         return 64 / $$0.g();
-      }
-   }
-
-   private static int o(cjf $$0) {
-      return q($$0).mapToInt($$0x -> k($$0x) * $$0x.L()).sum();
-   }
-
-   private static Optional<cjf> p(cjf $$0) {
-      qy $$1 = $$0.w();
-      if (!$$1.e("Items")) {
-         return Optional.empty();
+         $$1.fr();
       } else {
-         re $$2 = $$1.c("Items", 10);
-         if ($$2.isEmpty()) {
-            return Optional.empty();
-         } else {
-            int $$3 = 0;
-            qy $$4 = $$2.a(0);
-            cjf $$5 = cjf.a($$4);
-            $$2.c(0);
-            if ($$2.isEmpty()) {
-               $$0.c("Items");
-            }
-
-            return Optional.of($$5);
-         }
+         $$1.fr();
       }
    }
 
-   private static boolean a(cjf $$0, cbu $$1) {
-      qy $$2 = $$0.w();
-      if (!$$2.e("Items")) {
-         return false;
-      } else {
-         if ($$1 instanceof aks) {
-            re $$3 = $$2.c("Items", 10);
+   private ehn a(bji $$0) {
+      return ccp.a($$0, $$0x -> !$$0x.M_() && $$0x.br(), c);
+   }
 
-            for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-               qy $$5 = $$3.a($$4);
-               cjf $$6 = cjf.a($$5);
-               $$1.a($$6, true);
-            }
-         }
+   private void a(cpx $$0, ehl $$1, dfl $$2, ehp $$3, bjc $$4) {
+      double $$5 = 3.0;
+      int $$6 = $$4 == bjc.b ? 1 : -1;
+      int $$7 = $$0.D_().b(7, 12);
+      ip $$8 = new ip(ix.c, $$2);
+      hc $$9 = $$1.b();
+      chh.a $$10 = chh.a.a($$3, $$9);
+      ehp $$11 = $$1.e();
 
-         $$0.c("Items");
-         return true;
+      for (int $$12 = 0; $$12 < $$7; $$12++) {
+         $$0.a(
+            $$8,
+            $$11.c - (double)($$9 == hc.e ? 1.0E-6F : 0.0F),
+            $$11.d,
+            $$11.e - (double)($$9 == hc.c ? 1.0E-6F : 0.0F),
+            $$10.a() * (double)$$6 * 3.0 * $$0.D_().j(),
+            0.0,
+            $$10.c() * (double)$$6 * 3.0 * $$0.D_().j()
+         );
       }
    }
 
-   private static Stream<cjf> q(cjf $$0) {
-      qy $$1 = $$0.v();
-      if ($$1 == null) {
-         return Stream.empty();
-      } else {
-         re $$2 = $$1.c("Items", 10);
-         return $$2.stream().map(qy.class::cast).map(cjf::a);
+   static record a(double a, double b, double c) {
+      private static final double d = 1.0;
+      private static final double e = 0.1;
+
+      public static chh.a a(ehp $$0, hc $$1) {
+         double $$2 = 0.0;
+
+         return switch ($$1) {
+            case a, b -> new chh.a($$0.c(), 0.0, -$$0.a());
+            case c -> new chh.a(1.0, 0.0, -0.1);
+            case d -> new chh.a(-1.0, 0.0, 0.1);
+            case e -> new chh.a(-0.1, 0.0, -1.0);
+            case f -> new chh.a(0.1, 0.0, 1.0);
+         };
       }
-   }
-
-   @Override
-   public Optional<cgl> h(cjf $$0) {
-      hp<cjf> $$1 = hp.a();
-      q($$0).forEach($$1::add);
-      return Optional.of(new cgk($$1, o($$0)));
-   }
-
-   @Override
-   public void a(cjf $$0, cpv $$1, List<tm> $$2, ckw $$3) {
-      $$2.add(tm.a("item.minecraft.bundle.fullness", o($$0), 64).a(n.h));
-   }
-
-   @Override
-   public void a(byn $$0) {
-      cjh.a($$0, q($$0.q()));
-   }
-
-   private void a(biq $$0) {
-      $$0.a(ape.cJ, 0.8F, 0.8F + $$0.dL().D_().i() * 0.4F);
-   }
-
-   private void b(biq $$0) {
-      $$0.a(ape.cI, 0.8F, 0.8F + $$0.dL().D_().i() * 0.4F);
-   }
-
-   private void c(biq $$0) {
-      $$0.a(ape.cH, 0.8F, 0.8F + $$0.dL().D_().i() * 0.4F);
    }
 }

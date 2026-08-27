@@ -1,73 +1,195 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class doo extends dnw<dqf> {
+public class doo extends dny<dqf> {
    public doo(Codec<dqf> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dny<dqf> $$0) {
-      cqp $$1 = $$0.b();
+   public boolean a(doa<dqf> $$0) {
+      cqr $$1 = $$0.b();
       gw $$2 = $$0.e();
-      asc $$3 = $$0.d();
-      dqf $$4 = $$0.f();
-      if (!c($$1.a_($$2))) {
+      dqf $$3 = $$0.f();
+      ase $$4 = $$0.d();
+      if (!dnu.a($$1, $$2)) {
          return false;
       } else {
-         List<hc> $$5 = $$4.a($$3);
-         if (a($$1, $$2, $$1.a_($$2), $$4, $$3, $$5)) {
-            return true;
-         } else {
-            gw.a $$6 = $$2.j();
-
-            for (hc $$7 : $$5) {
-               $$6.g($$2);
-               List<hc> $$8 = $$4.a($$3, $$7.g());
-
-               for (int $$9 = 0; $$9 < $$4.c; $$9++) {
-                  $$6.a($$2, $$7);
-                  dfj $$10 = $$1.a_($$6);
-                  if (!c($$10) && !$$10.a($$4.b)) {
-                     break;
-                  }
-
-                  if (a($$1, $$6, $$10, $$4, $$3, $$8)) {
-                     return true;
-                  }
+         Optional<dkk> $$5 = dkk.a($$1, $$2, $$3.b, dnu::c, dnu::a);
+         if (!$$5.isEmpty() && $$5.get() instanceof dkk.b) {
+            dkk.b $$6 = (dkk.b)$$5.get();
+            if ($$6.g() < 4) {
+               return false;
+            } else {
+               int $$7 = (int)((float)$$6.g() * $$3.e);
+               int $$8 = ary.a($$7, $$3.c.a(), $$3.c.b());
+               int $$9 = ary.b($$4, $$3.c.a(), $$8);
+               doo.a $$10 = a($$2.h($$6.e() - 1), false, $$4, $$9, $$3.f, $$3.d);
+               doo.a $$11 = a($$2.h($$6.f() + 1), true, $$4, $$9, $$3.g, $$3.d);
+               doo.b $$12;
+               if ($$10.a($$3) && $$11.a($$3)) {
+                  $$12 = new doo.b($$2.v(), $$4, $$3.h);
+               } else {
+                  $$12 = doo.b.a();
                }
-            }
 
+               boolean $$14 = $$10.a($$1, $$12);
+               boolean $$15 = $$11.a($$1, $$12);
+               if ($$14) {
+                  $$10.a($$1, $$4, $$12);
+               }
+
+               if ($$15) {
+                  $$11.a($$1, $$4, $$12);
+               }
+
+               return true;
+            }
+         } else {
             return false;
          }
       }
    }
 
-   public static boolean a(cqp $$0, gw $$1, dfj $$2, dqf $$3, asc $$4, List<hc> $$5) {
-      gw.a $$6 = $$1.j();
+   private static doo.a a(gw $$0, boolean $$1, ase $$2, int $$3, bgd $$4, bgd $$5) {
+      return new doo.a($$0, $$1, $$3, (double)$$4.a($$2), (double)$$5.a($$2));
+   }
 
-      for (hc $$7 : $$5) {
-         dfj $$8 = $$0.a_($$6.a($$1, $$7));
-         if ($$8.a($$3.h)) {
-            dfj $$9 = $$3.b.c($$2, $$0, $$1, $$7);
-            if ($$9 == null) {
-               return false;
+   private void a(cqr $$0, gw $$1, dkk.b $$2, doo.b $$3) {
+      $$0.a($$3.a($$1.h($$2.e() - 1)), csy.cz.n(), 2);
+      $$0.a($$3.a($$1.h($$2.f() + 1)), csy.ch.n(), 2);
+
+      for (gw.a $$4 = $$1.h($$2.f() + 2).j(); $$4.v() < $$2.e() - 1; $$4.c(hc.b)) {
+         gw $$5 = $$3.a($$4);
+         if (dnu.a($$0, $$5) || $$0.a_($$5).a(csy.rt)) {
+            $$0.a($$5, csy.gM.n(), 2);
+         }
+      }
+   }
+
+   static final class a {
+      private gw a;
+      private final boolean b;
+      private int c;
+      private final double d;
+      private final double e;
+
+      a(gw $$0, boolean $$1, int $$2, double $$3, double $$4) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
+
+      private int a() {
+         return this.a(0.0F);
+      }
+
+      private int b() {
+         return this.b ? this.a.v() : this.a.v() - this.a();
+      }
+
+      private int c() {
+         return !this.b ? this.a.v() : this.a.v() + this.a();
+      }
+
+      boolean a(cqr $$0, doo.b $$1) {
+         while (this.c > 1) {
+            gw.a $$2 = this.a.j();
+            int $$3 = Math.min(10, this.a());
+
+            for (int $$4 = 0; $$4 < $$3; $$4++) {
+               if ($$0.a_($$2).a(csy.H)) {
+                  return false;
+               }
+
+               if (dnu.a($$0, $$1.a($$2), this.c)) {
+                  this.a = $$2;
+                  return true;
+               }
+
+               $$2.c(this.b ? hc.a : hc.b);
             }
 
-            $$0.a($$1, $$9, 3);
-            $$0.x($$1).e($$1);
-            if ($$4.i() < $$3.g) {
-               $$3.b.b().a($$9, $$0, $$1, $$7, $$4, true);
-            }
+            this.c /= 2;
+         }
 
-            return true;
+         return false;
+      }
+
+      private int a(float $$0) {
+         return (int)dnu.a((double)$$0, (double)this.c, this.e, this.d);
+      }
+
+      void a(cqr $$0, ase $$1, doo.b $$2) {
+         for (int $$3 = -this.c; $$3 <= this.c; $$3++) {
+            for (int $$4 = -this.c; $$4 <= this.c; $$4++) {
+               float $$5 = ary.c((float)($$3 * $$3 + $$4 * $$4));
+               if (!($$5 > (float)this.c)) {
+                  int $$6 = this.a($$5);
+                  if ($$6 > 0) {
+                     if ((double)$$1.i() < 0.2) {
+                        $$6 = (int)((float)$$6 * ary.b($$1, 0.8F, 1.0F));
+                     }
+
+                     gw.a $$7 = this.a.b($$3, 0, $$4).j();
+                     boolean $$8 = false;
+                     int $$9 = this.b ? $$0.a(dku.a.a, $$7.u(), $$7.w()) : Integer.MAX_VALUE;
+
+                     for (int $$10 = 0; $$10 < $$6 && $$7.v() < $$9; $$10++) {
+                        gw $$11 = $$2.a($$7);
+                        if (dnu.b($$0, $$11)) {
+                           $$8 = true;
+                           csx $$12 = csy.rt;
+                           $$0.a($$11, $$12.n(), 2);
+                        } else if ($$8 && $$0.a_($$11).a(apu.bd)) {
+                           break;
+                        }
+
+                        $$7.c(this.b ? hc.b : hc.a);
+                     }
+                  }
+               }
+            }
          }
       }
 
-      return false;
+      boolean a(dqf $$0) {
+         return this.c >= $$0.i && this.d >= (double)$$0.j;
+      }
    }
 
-   private static boolean c(dfj $$0) {
-      return $$0.i() || $$0.a(csw.G);
+   static final class b {
+      private final int a;
+      @Nullable
+      private final ehp b;
+
+      b(int $$0, ase $$1, bgd $$2) {
+         this.a = $$0;
+         float $$3 = $$2.a($$1);
+         float $$4 = ary.b($$1, 0.0F, (float) Math.PI);
+         this.b = new ehp((double)(ary.b($$4) * $$3), 0.0, (double)(ary.a($$4) * $$3));
+      }
+
+      private b() {
+         this.a = 0;
+         this.b = null;
+      }
+
+      static doo.b a() {
+         return new doo.b();
+      }
+
+      gw a(gw $$0) {
+         if (this.b == null) {
+            return $$0;
+         } else {
+            int $$1 = this.a - $$0.v();
+            ehp $$2 = this.b.a((double)$$1);
+            return $$0.b(ary.a($$2.c), 0, ary.a($$2.e));
+         }
+      }
    }
 }

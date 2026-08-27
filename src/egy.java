@@ -1,26 +1,29 @@
-@FunctionalInterface
-public interface egy<T> {
-   void handle(T var1, eha<T> var2, long var3);
+import net.minecraft.server.MinecraftServer;
 
-   public abstract static class a<T, C extends egy<T>> {
-      private final aex a;
-      private final Class<?> b;
+public class egy implements eha<MinecraftServer> {
+   final aey a;
 
-      public a(aex $$0, Class<?> $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   public egy(aey $$0) {
+      this.a = $$0;
+   }
+
+   public void a(MinecraftServer $$0, ehc<MinecraftServer> $$1, long $$2) {
+      afm $$3 = $$0.aA();
+      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.d()));
+   }
+
+   public static class a extends eha.a<MinecraftServer, egy> {
+      public a() {
+         super(new aey("function"), egy.class);
       }
 
-      public aex a() {
-         return this.a;
+      public void a(qy $$0, egy $$1) {
+         $$0.a("Name", $$1.a.toString());
       }
 
-      public Class<?> b() {
-         return this.b;
+      public egy a(qy $$0) {
+         aey $$1 = new aey($$0.l("Name"));
+         return new egy($$1);
       }
-
-      public abstract void a(qy var1, C var2);
-
-      public abstract C b(qy var1);
    }
 }

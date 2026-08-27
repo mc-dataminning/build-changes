@@ -11,11 +11,11 @@ import java.util.function.Predicate;
 public record ai(String[][] b) {
    public static final ai a = new ai(new String[0][]);
 
-   public ai(sp $$0) {
+   public ai(sq $$0) {
       this(b($$0));
    }
 
-   private static String[][] b(sp $$0) {
+   private static String[][] b(sq $$0) {
       String[][] $$1 = new String[$$0.m()][];
 
       for (int $$2 = 0; $$2 < $$1.length; $$2++) {
@@ -29,7 +29,7 @@ public record ai(String[][] b) {
       return $$1;
    }
 
-   public void a(sp $$0) {
+   public void a(sq $$0) {
       $$0.c(this.b.length);
 
       for (String[] $$1 : this.b) {
@@ -94,7 +94,7 @@ public record ai(String[][] b) {
       Set<String> $$3 = new ObjectOpenHashSet();
 
       for (int $$4 = 0; $$4 < $$0.size(); $$4++) {
-         JsonArray $$5 = aro.n($$0.get($$4), "requirements[" + $$4 + "]");
+         JsonArray $$5 = arp.n($$0.get($$4), "requirements[" + $$4 + "]");
          if ($$5.isEmpty() && $$1.isEmpty()) {
             throw new JsonSyntaxException("Requirement entry cannot be empty");
          }
@@ -102,7 +102,7 @@ public record ai(String[][] b) {
          $$2[$$4] = new String[$$5.size()];
 
          for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
-            String $$7 = aro.a($$5.get($$6), "requirements[" + $$4 + "][" + $$6 + "]");
+            String $$7 = arp.a($$5.get($$6), "requirements[" + $$4 + "][" + $$6 + "]");
             $$2[$$4][$$6] = $$7;
             $$3.add($$7);
          }

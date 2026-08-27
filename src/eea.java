@@ -1,22 +1,40 @@
-import java.util.Arrays;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.authlib.GameProfile;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Set;
 
-public interface eea<T extends eea<T>> {
-   T b(eed.a var1);
+public class eea extends eee {
+   public static final Codec<eea> a = RecordCodecBuilder.create($$0 -> a($$0).and(ecs.b.e.fieldOf("entity").forGetter($$0x -> $$0x.b)).apply($$0, eea::new));
+   private final ecs.b b;
 
-   default <E> T a(Iterable<E> $$0, Function<E, eed.a> $$1) {
-      T $$2 = this.c();
+   public eea(List<efr> $$0, ecs.b $$1) {
+      super($$0);
+      this.b = $$1;
+   }
 
-      for (E $$3 : $$0) {
-         $$2 = $$2.b($$1.apply($$3));
+   @Override
+   public eeg b() {
+      return eeh.v;
+   }
+
+   @Override
+   public Set<efa<?>> a() {
+      return ImmutableSet.of(this.b.a());
+   }
+
+   @Override
+   public cjh a(cjh $$0, ecs $$1) {
+      if ($$0.a(cjk.tt) && $$1.c(this.b.a()) instanceof cbw $$2) {
+         GameProfile $$3 = $$2.fQ();
+         $$0.w().a("SkullOwner", rl.a(new qy(), $$3));
       }
 
-      return $$2;
+      return $$0;
    }
 
-   default <E> T a(E[] $$0, Function<E, eed.a> $$1) {
-      return this.a(Arrays.asList($$0), $$1);
+   public static eee.a<?> a(ecs.b $$0) {
+      return a($$1 -> new eea($$1, $$0));
    }
-
-   T c();
 }

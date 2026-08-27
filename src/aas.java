@@ -1,32 +1,24 @@
-public class aas implements ve<wx> {
-   private final tm a;
-   private final tm b;
-
-   public aas(tm $$0, tm $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public aas(sp $$0) {
-      this.a = $$0.l();
-      this.b = $$0.l();
+public record aas(tn a, boolean b) implements vf<wy> {
+   public aas(sq $$0) {
+      this($$0.l(), $$0.readBoolean());
    }
 
    @Override
-   public void a(sp $$0) {
+   public void a(sq $$0) {
       $$0.a(this.a);
       $$0.a(this.b);
    }
 
-   public void a(wx $$0) {
+   public void a(wy $$0) {
       $$0.a(this);
    }
 
-   public tm a() {
-      return this.a;
+   @Override
+   public boolean b() {
+      return true;
    }
 
-   public tm d() {
+   public boolean d() {
       return this.b;
    }
 }

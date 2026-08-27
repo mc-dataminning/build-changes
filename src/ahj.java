@@ -1,26 +1,24 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import java.util.Collection;
 
 public class ahj {
    public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("kill").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((dt)$$0x.getSource(), ImmutableList.of(((dt)$$0x.getSource()).g()))))
-            .then(du.a("targets", ee.b()).executes($$0x -> a((dt)$$0x.getSource(), ee.b($$0x, "targets"))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("kick").requires($$0x -> $$0x.c(3)))
+            .then(
+               ((RequiredArgumentBuilder)du.a("targets", ee.d())
+                     .executes($$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), tn.c("multiplayer.disconnect.kicked"))))
+                  .then(du.a("reason", ei.a()).executes($$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), ei.a($$0x, "reason"))))
+            )
       );
    }
 
-   private static int a(dt $$0, Collection<? extends biq> $$1) {
-      for (biq $$2 : $$1) {
-         $$2.aj();
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> tm.a("commands.kill.success.single", $$1.iterator().next().N_()), true);
-      } else {
-         $$0.a(() -> tm.a("commands.kill.success.multiple", $$1.size()), true);
+   private static int a(dt $$0, Collection<akt> $$1, tn $$2) {
+      for (akt $$3 : $$1) {
+         $$3.c.b($$2);
+         $$0.a(() -> tn.a("commands.kick.success", $$3.N_(), $$2), true);
       }
 
       return $$1.size();

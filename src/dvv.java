@@ -1,7 +1,20 @@
-@FunctionalInterface
-public interface dvv<C extends dqa> {
-   void generatePieces(dwa var1, dvv.a<C> var2);
+import com.mojang.serialization.Codec;
 
-   public static record a<C extends dqa>(C a, dhg b, dzc c, cpc d, cpx e, dlr f, long g) {
+public enum dvv implements asr {
+   a("none"),
+   b("bury"),
+   c("beard_thin"),
+   d("beard_box");
+
+   public static final Codec<dvv> e = asr.a(dvv::values);
+   private final String f;
+
+   private dvv(String $$0) {
+      this.f = $$0;
+   }
+
+   @Override
+   public String c() {
+      return this.f;
    }
 }

@@ -1,52 +1,59 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class eqb extends epv {
+public abstract class eqb extends epx {
    private static final Logger b = LogUtils.getLogger();
-   private static final tm c = tm.c("mco.minigame.world.starting.screen.title");
-   private final long d;
-   private final enn e;
-   private final eof f;
+   private final long c;
+   private final tn d;
+   private final Runnable e;
 
-   public eqb(long $$0, enn $$1, eof $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public eqb(long $$0, tn $$1, Runnable $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
+
+   protected abstract void a(emh var1, long var2) throws enu;
 
    @Override
    public void run() {
-      emf $$0 = emf.a();
+      emh $$0 = emh.a();
+      int $$1 = 0;
 
-      for (int $$1 = 0; $$1 < 25; $$1++) {
+      while ($$1 < 25) {
          try {
             if (this.d()) {
                return;
             }
 
-            if ($$0.c(this.d, this.e.a)) {
-               a(this.f);
-               break;
+            this.a($$0, this.c);
+            if (this.d()) {
+               return;
             }
-         } catch (ent var4) {
+
+            this.e.run();
+            return;
+         } catch (env var4) {
             if (this.d()) {
                return;
             }
 
             a((long)var4.c);
+            $$1++;
          } catch (Exception var5) {
             if (this.d()) {
                return;
             }
 
-            b.error("Couldn't start mini game!");
+            b.error("Couldn't reset world");
             this.a(var5);
+            return;
          }
       }
    }
 
    @Override
-   public tm a() {
-      return c;
+   public tn a() {
+      return this.d;
    }
 }

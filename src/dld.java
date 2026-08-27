@@ -1,95 +1,71 @@
-public class dld implements cpi {
-   private int a;
+public class dld {
+   public static final aex<dzr.a> a = a("temperature");
+   public static final aex<dzr.a> b = a("vegetation");
+   public static final aex<dzr.a> c = a("continentalness");
+   public static final aex<dzr.a> d = a("erosion");
+   public static final aex<dzr.a> e = a("temperature_large");
+   public static final aex<dzr.a> f = a("vegetation_large");
+   public static final aex<dzr.a> g = a("continentalness_large");
+   public static final aex<dzr.a> h = a("erosion_large");
+   public static final aex<dzr.a> i = a("ridge");
+   public static final aex<dzr.a> j = a("offset");
+   public static final aex<dzr.a> k = a("aquifer_barrier");
+   public static final aex<dzr.a> l = a("aquifer_fluid_level_floodedness");
+   public static final aex<dzr.a> m = a("aquifer_lava");
+   public static final aex<dzr.a> n = a("aquifer_fluid_level_spread");
+   public static final aex<dzr.a> o = a("pillar");
+   public static final aex<dzr.a> p = a("pillar_rareness");
+   public static final aex<dzr.a> q = a("pillar_thickness");
+   public static final aex<dzr.a> r = a("spaghetti_2d");
+   public static final aex<dzr.a> s = a("spaghetti_2d_elevation");
+   public static final aex<dzr.a> t = a("spaghetti_2d_modulator");
+   public static final aex<dzr.a> u = a("spaghetti_2d_thickness");
+   public static final aex<dzr.a> v = a("spaghetti_3d_1");
+   public static final aex<dzr.a> w = a("spaghetti_3d_2");
+   public static final aex<dzr.a> x = a("spaghetti_3d_rarity");
+   public static final aex<dzr.a> y = a("spaghetti_3d_thickness");
+   public static final aex<dzr.a> z = a("spaghetti_roughness");
+   public static final aex<dzr.a> A = a("spaghetti_roughness_modulator");
+   public static final aex<dzr.a> B = a("cave_entrance");
+   public static final aex<dzr.a> C = a("cave_layer");
+   public static final aex<dzr.a> D = a("cave_cheese");
+   public static final aex<dzr.a> E = a("ore_veininess");
+   public static final aex<dzr.a> F = a("ore_vein_a");
+   public static final aex<dzr.a> G = a("ore_vein_b");
+   public static final aex<dzr.a> H = a("ore_gap");
+   public static final aex<dzr.a> I = a("noodle");
+   public static final aex<dzr.a> J = a("noodle_thickness");
+   public static final aex<dzr.a> K = a("noodle_ridge_a");
+   public static final aex<dzr.a> L = a("noodle_ridge_b");
+   public static final aex<dzr.a> M = a("jagged");
+   public static final aex<dzr.a> N = a("surface");
+   public static final aex<dzr.a> O = a("surface_secondary");
+   public static final aex<dzr.a> P = a("clay_bands_offset");
+   public static final aex<dzr.a> Q = a("badlands_pillar");
+   public static final aex<dzr.a> R = a("badlands_pillar_roof");
+   public static final aex<dzr.a> S = a("badlands_surface");
+   public static final aex<dzr.a> T = a("iceberg_pillar");
+   public static final aex<dzr.a> U = a("iceberg_pillar_roof");
+   public static final aex<dzr.a> V = a("iceberg_surface");
+   public static final aex<dzr.a> W = a("surface_swamp");
+   public static final aex<dzr.a> X = a("calcite");
+   public static final aex<dzr.a> Y = a("gravel");
+   public static final aex<dzr.a> Z = a("powder_snow");
+   public static final aex<dzr.a> aa = a("packed_ice");
+   public static final aex<dzr.a> ab = a("ice");
+   public static final aex<dzr.a> ac = a("soul_sand_layer");
+   public static final aex<dzr.a> ad = a("gravel_layer");
+   public static final aex<dzr.a> ae = a("patch");
+   public static final aex<dzr.a> af = a("netherrack");
+   public static final aex<dzr.a> ag = a("nether_wart");
+   public static final aex<dzr.a> ah = a("nether_state_selector");
 
-   @Override
-   public int a(akr $$0, boolean $$1, boolean $$2) {
-      if (!$$1) {
-         return 0;
-      } else if (!$$0.X().b(cpr.G)) {
-         return 0;
-      } else {
-         asc $$3 = $$0.z;
-         this.a--;
-         if (this.a > 0) {
-            return 0;
-         } else {
-            this.a = this.a + 12000 + $$3.a(1200);
-            long $$4 = $$0.W() / 24000L;
-            if ($$4 < 5L || !$$0.N()) {
-               return 0;
-            } else if ($$3.a(5) != 0) {
-               return 0;
-            } else {
-               int $$5 = $$0.v().size();
-               if ($$5 < 1) {
-                  return 0;
-               } else {
-                  cbu $$6 = $$0.v().get($$3.a($$5));
-                  if ($$6.M_()) {
-                     return 0;
-                  } else if ($$0.a($$6.dl(), 2)) {
-                     return 0;
-                  } else {
-                     int $$7 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
-                     int $$8 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
-                     gw.a $$9 = $$6.dl().j().e($$7, 0, $$8);
-                     int $$10 = 10;
-                     if (!$$0.b($$9.u() - 10, $$9.w() - 10, $$9.u() + 10, $$9.w() + 10)) {
-                        return 0;
-                     } else {
-                        hg<cqt> $$11 = $$0.s($$9);
-                        if ($$11.a(aps.af)) {
-                           return 0;
-                        } else {
-                           int $$12 = 0;
-                           int $$13 = (int)Math.ceil((double)$$0.d_($$9).b()) + 1;
-
-                           for (int $$14 = 0; $$14 < $$13; $$14++) {
-                              $$12++;
-                              $$9.q($$0.a(dks.a.f, $$9).v());
-                              if ($$14 == 0) {
-                                 if (!this.a($$0, $$9, $$3, true)) {
-                                    break;
-                                 }
-                              } else {
-                                 this.a($$0, $$9, $$3, false);
-                              }
-
-                              $$9.p($$9.u() + $$3.a(5) - $$3.a(5));
-                              $$9.r($$9.w() + $$3.a(5) - $$3.a(5));
-                           }
-
-                           return $$12;
-                        }
-                     }
-                  }
-               }
-            }
-         }
-      }
+   private static aex<dzr.a> a(String $$0) {
+      return aex.a(je.ax, new aey($$0));
    }
 
-   private boolean a(akr $$0, gw $$1, asc $$2, boolean $$3) {
-      dfj $$4 = $$0.a_($$1);
-      if (!cqg.a($$0, $$1, $$4, $$4.u(), biu.ay)) {
-         return false;
-      } else if (!bzj.b(biu.ay, $$0, bjk.p, $$1, $$2)) {
-         return false;
-      } else {
-         bzj $$5 = biu.ay.a((cpv)$$0);
-         if ($$5 != null) {
-            if ($$3) {
-               $$5.w(true);
-               $$5.gl();
-            }
-
-            $$5.e((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
-            $$5.a($$0, $$0.d_($$1), bjk.p, null, null);
-            $$0.a_($$5);
-            return true;
-         } else {
-            return false;
-         }
-      }
+   public static dzr a(hh<dzr.a> $$0, dlh $$1, aex<dzr.a> $$2) {
+      hg<dzr.a> $$3 = $$0.b($$2);
+      return dzr.b($$1.a($$3.e().orElseThrow().a()), $$3.a());
    }
 }

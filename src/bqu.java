@@ -1,79 +1,49 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class bqu extends bqb {
-   public static final int a = 1;
-   protected final bjp b;
-   protected final double c;
-   protected double d;
-   protected double e;
-   protected double f;
-   protected boolean g;
+public class bqu extends bqd {
+   private static final btu b = btu.b().a(6.0);
+   public static final int a = 400;
+   private final bvf c;
+   private cbj d;
+   private int e;
 
-   public bqu(bjp $$0, double $$1) {
-      this.b = $$0;
-      this.c = $$1;
-      this.a(EnumSet.of(bqb.a.a));
+   public bqu(bvf $$0) {
+      this.c = $$0;
+      this.a(EnumSet.of(bqd.a.a, bqd.a.b));
    }
 
    @Override
    public boolean a() {
-      if (!this.h()) {
+      if (!this.c.dL().N()) {
+         return false;
+      } else if (this.c.ef().a(8000) != 0) {
          return false;
       } else {
-         if (this.b.bM()) {
-            gw $$0 = this.a(this.b.dL(), this.b, 5);
-            if ($$0 != null) {
-               this.d = (double)$$0.u();
-               this.e = (double)$$0.v();
-               this.f = (double)$$0.w();
-               return true;
-            }
-         }
-
-         return this.i();
+         this.d = this.c.dL().a(cbj.class, b, this.c, this.c.dq(), this.c.ds(), this.c.dw(), this.c.cG().c(6.0, 2.0, 6.0));
+         return this.d != null;
       }
-   }
-
-   protected boolean h() {
-      return this.b.eg() != null || this.b.dA() || this.b.bM();
-   }
-
-   protected boolean i() {
-      ehn $$0 = btw.a(this.b, 5, 4);
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.d = $$0.c;
-         this.e = $$0.d;
-         this.f = $$0.e;
-         return true;
-      }
-   }
-
-   public boolean k() {
-      return this.g;
-   }
-
-   @Override
-   public void c() {
-      this.b.L().a(this.d, this.e, this.f, this.c);
-      this.g = true;
-   }
-
-   @Override
-   public void d() {
-      this.g = false;
    }
 
    @Override
    public boolean b() {
-      return !this.b.L().l();
+      return this.e > 0;
    }
 
-   @Nullable
-   protected gw a(cpb $$0, biq $$1, int $$2) {
-      gw $$3 = $$1.dl();
-      return !$$0.a_($$3).k($$0, $$3).c() ? null : gw.a($$1.dl(), $$2, 1, $$1x -> $$0.b_($$1x).a(apy.a)).orElse(null);
+   @Override
+   public void c() {
+      this.e = this.a(400);
+      this.c.w(true);
+   }
+
+   @Override
+   public void d() {
+      this.c.w(false);
+      this.d = null;
+   }
+
+   @Override
+   public void e() {
+      this.c.G().a(this.d, 30.0F, 30.0F);
+      this.e--;
    }
 }

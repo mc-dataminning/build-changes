@@ -1,23 +1,23 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cqq {
-   public static final Codec<cqq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(apd.b.fieldOf("sound").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("tick_chance").forGetter($$0x -> $$0x.c)).apply($$0, cqq::new)
+public record cqq(cpl d, cee e) {
+   public static final String a = "enabled_features";
+   public static final Codec<cqq> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(cpl.b.optionalFieldOf("DataPacks", cpl.a).forGetter(cqq::a), ceg.e.optionalFieldOf("enabled_features", ceg.g).forGetter(cqq::b))
+            .apply($$0, cqq::new)
    );
-   private final hg<apd> b;
-   private final double c;
+   public static final cqq c = new cqq(cpl.a, ceg.g);
 
-   public cqq(hg<apd> $$0, double $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public cqq a(cee $$0) {
+      return new cqq(this.d, this.e.b($$0));
    }
 
-   public hg<apd> a() {
-      return this.b;
+   public cpl a() {
+      return this.d;
    }
 
-   public double b() {
-      return this.c;
+   public cee b() {
+      return this.e;
    }
 }

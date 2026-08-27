@@ -1,9 +1,14 @@
 import com.mojang.serialization.Codec;
 
-public abstract class dyo {
-   public static final Codec<dyo> c = jd.r.q().dispatch("predicate_type", dyo::a, dyp::codec);
+public class dyo extends dza {
+   public static final Codec<dyo> a = Codec.unit(() -> dyo.b);
+   public static final dyo b = new dyo();
 
-   public abstract boolean a(gw var1, gw var2, gw var3, asc var4);
+   private dyo() {
+   }
 
-   protected abstract dyp<?> a();
+   @Override
+   protected dzc<?> a() {
+      return dzc.j;
+   }
 }

@@ -1,23 +1,22 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class ckv extends cjc {
+   private final cku a;
 
-public class ckv extends cgt {
-   public ckv(cja.a $$0) {
-      super($$0);
+   public ckv(cku $$0, cjc.a $$1) {
+      super($$1.b($$0.a()));
+      this.a = $$0;
+   }
+
+   public cku i() {
+      return this.a;
    }
 
    @Override
-   public cjf ai_() {
-      return cle.a(super.ai_(), clf.E);
+   public int c() {
+      return this.a.e();
    }
 
    @Override
-   public void a(cjf $$0, @Nullable cpv $$1, List<tm> $$2, ckw $$3) {
-      cle.a($$0, $$2, 0.125F);
-   }
-
-   @Override
-   public String j(cjf $$0) {
-      return cle.d($$0).b(this.a() + ".effect.");
+   public boolean a(cjh $$0, cjh $$1) {
+      return this.a.f().a($$1) || super.a($$0, $$1);
    }
 }

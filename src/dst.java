@@ -1,23 +1,59 @@
 import com.mojang.serialization.Codec;
 
-public class dst<P extends dss> {
-   public static final dst<dsu> a = a("trunk_vine", dsu.a);
-   public static final dst<dsr> b = a("leave_vine", dsr.a);
-   public static final dst<dsq> c = a("cocoa", dsq.a);
-   public static final dst<dsp> d = a("beehive", dsp.a);
-   public static final dst<dsn> e = a("alter_ground", dsn.a);
-   public static final dst<dso> f = a("attached_to_leaves", dso.a);
-   private final Codec<P> g;
+public class dst extends dsu {
+   public static final Codec<dst> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(dst::new, $$0 -> $$0.b).codec();
+   private final float b;
 
-   private static <P extends dss> dst<P> a(String $$0, Codec<P> $$1) {
-      return ht.a(jd.aa, $$0, new dst<>($$1));
+   @Override
+   protected dsv<?> a() {
+      return dsv.b;
    }
 
-   private dst(Codec<P> $$0) {
-      this.g = $$0;
+   public dst(float $$0) {
+      this.b = $$0;
    }
 
-   public Codec<P> a() {
-      return this.g;
+   @Override
+   public void a(dsu.a $$0) {
+      ase $$1 = $$0.b();
+      $$0.d().forEach($$2 -> {
+         if ($$1.i() < this.b) {
+            gw $$3 = $$2.g();
+            if ($$0.a($$3)) {
+               a($$3, dbr.c, $$0);
+            }
+         }
+
+         if ($$1.i() < this.b) {
+            gw $$4 = $$2.h();
+            if ($$0.a($$4)) {
+               a($$4, dbr.e, $$0);
+            }
+         }
+
+         if ($$1.i() < this.b) {
+            gw $$5 = $$2.e();
+            if ($$0.a($$5)) {
+               a($$5, dbr.d, $$0);
+            }
+         }
+
+         if ($$1.i() < this.b) {
+            gw $$6 = $$2.f();
+            if ($$0.a($$6)) {
+               a($$6, dbr.b, $$0);
+            }
+         }
+      });
+   }
+
+   private static void a(gw $$0, dgc $$1, dsu.a $$2) {
+      $$2.a($$0, $$1);
+      int $$3 = 4;
+
+      for (gw var4 = $$0.d(); $$2.a(var4) && $$3 > 0; $$3--) {
+         $$2.a(var4, $$1);
+         var4 = var4.d();
+      }
    }
 }

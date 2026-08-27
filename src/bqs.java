@@ -1,49 +1,55 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class bqs extends bqb {
-   private static final bts b = bts.b().a(6.0);
-   public static final int a = 400;
-   private final bvd c;
-   private cbh d;
-   private int e;
+public class bqs extends bqd {
+   private final bjr a;
+   @Nullable
+   private bji b;
+   private double c;
+   private double d;
+   private double e;
+   private final double f;
+   private final float g;
 
-   public bqs(bvd $$0) {
-      this.c = $$0;
-      this.a(EnumSet.of(bqb.a.a, bqb.a.b));
+   public bqs(bjr $$0, double $$1, float $$2) {
+      this.a = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.a(EnumSet.of(bqd.a.a));
    }
 
    @Override
    public boolean a() {
-      if (!this.c.dL().N()) {
+      this.b = this.a.q();
+      if (this.b == null) {
          return false;
-      } else if (this.c.ef().a(8000) != 0) {
+      } else if (this.b.f(this.a) > (double)(this.g * this.g)) {
          return false;
       } else {
-         this.d = this.c.dL().a(cbh.class, b, this.c, this.c.dq(), this.c.ds(), this.c.dw(), this.c.cG().c(6.0, 2.0, 6.0));
-         return this.d != null;
+         ehp $$0 = bty.a(this.a, 16, 7, this.b.dj(), (float) (Math.PI / 2));
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.c = $$0.c;
+            this.d = $$0.d;
+            this.e = $$0.e;
+            return true;
+         }
       }
    }
 
    @Override
    public boolean b() {
-      return this.e > 0;
-   }
-
-   @Override
-   public void c() {
-      this.e = this.a(400);
-      this.c.w(true);
+      return !this.a.L().l() && this.b.bv() && this.b.f(this.a) < (double)(this.g * this.g);
    }
 
    @Override
    public void d() {
-      this.c.w(false);
-      this.d = null;
+      this.b = null;
    }
 
    @Override
-   public void e() {
-      this.c.G().a(this.d, 30.0F, 30.0F);
-      this.e--;
+   public void c() {
+      this.a.L().a(this.c, this.d, this.e, this.f);
    }
 }

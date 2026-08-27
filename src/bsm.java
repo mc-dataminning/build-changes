@@ -1,41 +1,35 @@
-public class bsm extends bsp {
-   public bsm(bji $$0, cpv $$1) {
-      super($$0, $$1);
+public class bsm {
+   private final bmm a;
+   private final float b;
+   private final int c;
+
+   public bsm(gw $$0, float $$1, int $$2) {
+      this(new blc($$0), $$1, $$2);
    }
 
-   @Override
-   protected ebd a(int $$0) {
-      this.o = new eav(false);
-      this.o.a(true);
-      return new ebd(this.o, $$0);
+   public bsm(ehp $$0, float $$1, int $$2) {
+      this(new blc(gw.a($$0)), $$1, $$2);
    }
 
-   @Override
-   protected boolean a() {
-      return true;
+   public bsm(bis $$0, float $$1, int $$2) {
+      this(new blk($$0, false), $$1, $$2);
    }
 
-   @Override
-   protected ehn b() {
-      return new ehn(this.a.dq(), this.a.e(0.5), this.a.dw());
+   public bsm(bmm $$0, float $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   protected double a(ehn $$0) {
-      return $$0.d;
+   public bmm a() {
+      return this.a;
    }
 
-   @Override
-   protected boolean a(ehn $$0, ehn $$1) {
-      return this.a.bb() ? a(this.a, $$0, $$1, false) : false;
+   public float b() {
+      return this.b;
    }
 
-   @Override
-   public boolean a(gw $$0) {
-      return !this.b.a_($$0.d()).i();
-   }
-
-   @Override
-   public void a(boolean $$0) {
+   public int c() {
+      return this.c;
    }
 }

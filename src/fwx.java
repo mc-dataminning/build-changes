@@ -1,13 +1,28 @@
-public class fwx<T extends byw> extends fxp<T, fez<T>> {
-   private static final aex a = new aex("textures/entity/zombie/drowned_outer_layer.png");
-   private final fez<T> b;
-
-   public fwx(fvc<T, fez<T>> $$0, fhy $$1) {
+public class fwx extends fxr<fnf, fgk<fnf>> {
+   public fwx(fve<fnf, fgk<fnf>> $$0) {
       super($$0);
-      this.b = new fez<>($$1.a(fib.O));
    }
 
-   public void a(elp $$0, foe $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, 1.0F, 1.0F, 1.0F);
+   public void a(elr $$0, fog $$1, int $$2, fnf $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ("deadmau5".equals($$3.ab().getString()) && !$$3.cd()) {
+         elv $$10 = $$1.getBuffer(foo.c($$3.b().a()));
+         int $$11 = fuk.c($$3, 0.0F);
+
+         for (int $$12 = 0; $$12 < 2; $$12++) {
+            float $$13 = ary.i($$6, $$3.N, $$3.dB()) - ary.i($$6, $$3.aV, $$3.aU);
+            float $$14 = ary.i($$6, $$3.O, $$3.dD());
+            $$0.a();
+            $$0.a(a.d.rotationDegrees($$13));
+            $$0.a(a.b.rotationDegrees($$14));
+            $$0.a(0.375F * (float)($$12 * 2 - 1), 0.0F, 0.0F);
+            $$0.a(0.0F, -0.375F, 0.0F);
+            $$0.a(a.b.rotationDegrees(-$$14));
+            $$0.a(a.d.rotationDegrees(-$$13));
+            float $$15 = 1.3333334F;
+            $$0.b(1.3333334F, 1.3333334F, 1.3333334F);
+            this.c().a($$0, $$10, $$2, $$11);
+            $$0.b();
+         }
+      }
    }
 }

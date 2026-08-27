@@ -1,247 +1,97 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Queues;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.Collection;
-import java.util.Deque;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
-import java.util.function.IntConsumer;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
+import java.util.concurrent.Executor;
+import org.slf4j.Logger;
 
-public class afl {
-   private static final tm a = tm.c("commands.debug.function.noRecursion");
-   private static final aex b = new aex("tick");
-   private static final aex c = new aex("load");
-   final MinecraftServer d;
-   @Nullable
-   private afl.a e;
-   private List<dp> f = ImmutableList.of();
-   private boolean g;
-   private afk h;
+public class afl implements anp {
+   private static final Logger a = LogUtils.getLogger();
+   private static final aer b = new aer("functions", ".mcfunction");
+   private volatile Map<aey, dp> c = ImmutableMap.of();
+   private final aqk<dp> d = new aqk<>(this::a, "tags/functions");
+   private volatile Map<aey, Collection<dp>> e = Map.of();
+   private final int f;
+   private final CommandDispatcher<dt> g;
 
-   public afl(MinecraftServer $$0, afk $$1) {
-      this.d = $$0;
-      this.h = $$1;
-      this.b($$1);
+   public Optional<dp> a(aey $$0) {
+      return Optional.ofNullable(this.c.get($$0));
    }
 
-   public int a() {
-      return this.d.aI().c(cpr.w);
+   public Map<aey, dp> a() {
+      return this.c;
    }
 
-   public CommandDispatcher<dt> b() {
-      return this.d.aC().a();
+   public Collection<dp> b(aey $$0) {
+      return this.e.getOrDefault($$0, List.of());
    }
 
-   public void c() {
-      if (this.g) {
-         this.g = false;
-         Collection<dp> $$0 = this.h.b(c);
-         this.a($$0, c);
-      }
-
-      this.a(this.f, b);
+   public Iterable<aey> b() {
+      return this.e.keySet();
    }
 
-   private void a(Collection<dp> $$0, aex $$1) {
-      this.d.aM().a($$1::toString);
-
-      for (dp $$2 : $$0) {
-         this.a($$2, this.d());
-      }
-
-      this.d.aM().c();
+   public afl(int $$0, CommandDispatcher<dt> $$1) {
+      this.f = $$0;
+      this.g = $$1;
    }
 
-   public int a(dp $$0, dt $$1) {
-      try {
-         return this.a($$0, $$1, null, null);
-      } catch (dv var4) {
-         return 0;
-      }
-   }
+   @Override
+   public CompletableFuture<Void> a(anp.a $$0, anv $$1, bdr $$2, bdr $$3, Executor $$4, Executor $$5) {
+      CompletableFuture<Map<aey, List<aqk.a>>> $$6 = CompletableFuture.supplyAsync(() -> this.d.a($$1), $$4);
+      CompletableFuture<Map<aey, CompletableFuture<dp>>> $$7 = CompletableFuture.<Map<aey, ant>>supplyAsync(() -> b.a($$1), $$4).thenCompose($$1x -> {
+         Map<aey, CompletableFuture<dp>> $$2x = Maps.newHashMap();
+         dt $$3x = new dt(ds.a, ehp.b, eho.a, null, this.f, "", tm.a, null, null);
 
-   public int a(dp $$0, dt $$1, @Nullable afl.c $$2, @Nullable qy $$3) throws dv {
-      dp $$4 = $$0.a($$3, this.b(), $$1);
-      if (this.e != null) {
-         if ($$2 != null) {
-            this.e.a(a.getString());
-            return 0;
-         } else {
-            this.e.a($$4, $$1);
-            return 0;
-         }
-      } else {
-         int var6;
-         try {
-            this.e = new afl.a($$2);
-            var6 = this.e.b($$4, $$1);
-         } finally {
-            this.e = null;
+         for (Entry<aey, ant> $$4x : $$1x.entrySet()) {
+            aey $$5x = $$4x.getKey();
+            aey $$6x = b.b($$5x);
+            $$2x.put($$6x, CompletableFuture.supplyAsync(() -> {
+               List<String> $$3xx = a($$4x.getValue());
+               return dp.a($$6x, this.g, $$3x, $$3xx);
+            }, $$4));
          }
 
-         return var6;
-      }
-   }
-
-   public void a(afk $$0) {
-      this.h = $$0;
-      this.b($$0);
-   }
-
-   private void b(afk $$0) {
-      this.f = ImmutableList.copyOf($$0.b(b));
-      this.g = true;
-   }
-
-   public dt d() {
-      return this.d.aD().a(2).a();
-   }
-
-   public Optional<dp> a(aex $$0) {
-      return this.h.a($$0);
-   }
-
-   public Collection<dp> b(aex $$0) {
-      return this.h.b($$0);
-   }
-
-   public Iterable<aex> e() {
-      return this.h.a().keySet();
-   }
-
-   public Iterable<aex> f() {
-      return this.h.b();
-   }
-
-   class a {
-      private int b;
-      @Nullable
-      private final afl.c c;
-      private final Deque<afl.b> d = Queues.newArrayDeque();
-      private final List<afl.b> e = Lists.newArrayList();
-      boolean f = false;
-
-      a(@Nullable afl.c $$0) {
-         this.c = $$0;
-      }
-
-      void a(dp $$0, dt $$1) {
-         int $$2 = afl.this.a();
-         dt $$3 = this.a($$1);
-         if (this.d.size() + this.e.size() < $$2) {
-            this.e.add(new afl.b($$3, this.b, new dp.e($$0)));
-         }
-      }
-
-      private dt a(dt $$0) {
-         IntConsumer $$1 = $$0.p();
-         return $$1 instanceof afl.a.a ? $$0 : $$0.a(new afl.a.a($$1));
-      }
-
-      int b(dp $$0, dt $$1) {
-         int $$2 = afl.this.a();
-         dt $$3 = this.a($$1);
-         int $$4 = 0;
-         dp.d[] $$5 = $$0.b();
-
-         for (int $$6 = $$5.length - 1; $$6 >= 0; $$6--) {
-            this.d.push(new afl.b($$3, 0, $$5[$$6]));
-         }
-
-         while (!this.d.isEmpty()) {
-            try {
-               afl.b $$7 = this.d.removeFirst();
-               afl.this.d.aM().a($$7::toString);
-               this.b = $$7.b;
-               $$7.a(afl.this, this.d, $$2, this.c);
-               if (!this.f) {
-                  if (!this.e.isEmpty()) {
-                     Lists.reverse(this.e).forEach(this.d::addFirst);
-                  }
+         CompletableFuture<?>[] $$7x = $$2x.values().toArray(new CompletableFuture[0]);
+         return CompletableFuture.allOf($$7x).handle(($$1xx, $$2xx) -> $$2x);
+      });
+      return $$6.thenCombine($$7, Pair::of).thenCompose($$0::a).thenAcceptAsync($$0x -> {
+         Map<aey, CompletableFuture<dp>> $$1x = (Map<aey, CompletableFuture<dp>>)$$0x.getSecond();
+         Builder<aey, dp> $$2x = ImmutableMap.builder();
+         $$1x.forEach(($$1xx, $$2xx) -> $$2xx.handle(($$2xxx, $$3x) -> {
+               if ($$3x != null) {
+                  a.error("Failed to load function {}", $$1xx, $$3x);
                } else {
-                  while (!this.d.isEmpty() && this.d.peek().b >= this.b) {
-                     this.d.removeFirst();
-                  }
-
-                  this.f = false;
+                  $$2x.put($$1xx, $$2xxx);
                }
 
-               this.e.clear();
-            } finally {
-               afl.this.d.aM().c();
-            }
-
-            if (++$$4 >= $$2) {
-               return $$4;
-            }
-         }
-
-         return $$4;
-      }
-
-      public void a(String $$0) {
-         if (this.c != null) {
-            this.c.b(this.b, $$0);
-         }
-      }
-
-      class a implements IntConsumer {
-         private final IntConsumer b;
-
-         a(IntConsumer $$0) {
-            this.b = $$0;
-         }
-
-         @Override
-         public void accept(int $$0) {
-            this.b.accept($$0);
-            a.this.f = true;
-         }
-      }
+               return null;
+            }).join());
+         this.c = $$2x.build();
+         this.e = this.d.a((Map<aey, List<aqk.a>>)$$0x.getFirst());
+      }, $$5);
    }
 
-   public static class b {
-      private final dt a;
-      final int b;
-      private final dp.d c;
-
-      public b(dt $$0, int $$1, dp.d $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      public void a(afl $$0, Deque<afl.b> $$1, int $$2, @Nullable afl.c $$3) {
-         try {
-            this.c.execute($$0, this.a, $$1, $$2, this.b, $$3);
-         } catch (CommandSyntaxException var6) {
-            if ($$3 != null) {
-               $$3.b(this.b, var6.getRawMessage().getString());
-            }
-         } catch (Exception var7) {
-            if ($$3 != null) {
-               $$3.b(this.b, var7.getMessage());
-            }
+   private static List<String> a(ant $$0) {
+      try {
+         List var2;
+         try (BufferedReader $$1 = $$0.e()) {
+            var2 = $$1.lines().toList();
          }
+
+         return var2;
+      } catch (IOException var6) {
+         throw new CompletionException(var6);
       }
-
-      @Override
-      public String toString() {
-         return this.c.toString();
-      }
-   }
-
-   public interface c {
-      void a(int var1, String var2);
-
-      void a(int var1, String var2, int var3);
-
-      void b(int var1, String var2);
-
-      void a(int var1, aex var2, int var3);
    }
 }

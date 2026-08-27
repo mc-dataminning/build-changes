@@ -1,38 +1,49 @@
-import java.util.concurrent.Executor;
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ald implements ala {
-   private final ala a;
-   private final bfr<Runnable> b;
+public class ald implements alb {
+   private static final Logger a = LogUtils.getLogger();
+   private final int b;
+   private int c;
+   private long d;
+   private long e = Long.MAX_VALUE;
 
-   private ald(ala $$0, Executor $$1) {
-      this.a = $$0;
-      this.b = bfr.a($$1, "progressListener");
-   }
-
-   public static ald a(ala $$0, Executor $$1) {
-      ald $$2 = new ald($$0, $$1);
-      $$2.a();
-      return $$2;
-   }
-
-   @Override
-   public void a(cpc $$0) {
-      this.b.a(() -> this.a.a($$0));
+   public ald(int $$0) {
+      int $$1 = $$0 * 2 + 1;
+      this.b = $$1 * $$1;
    }
 
    @Override
-   public void a(cpc $$0, @Nullable dhk $$1) {
-      this.b.a(() -> this.a.a($$0, $$1));
+   public void a(cpe $$0) {
+      this.e = ac.b();
+      this.d = this.e;
+   }
+
+   @Override
+   public void a(cpe $$0, @Nullable dhm $$1) {
+      if ($$1 == dhm.n) {
+         this.c++;
+      }
+
+      int $$2 = this.c();
+      if (ac.b() > this.e) {
+         this.e += 500L;
+         a.info(tn.a("menu.preparingSpawn", ary.a($$2, 0, 100)).getString());
+      }
    }
 
    @Override
    public void a() {
-      this.b.a(this.a::a);
    }
 
    @Override
    public void b() {
-      this.b.a(this.a::b);
+      a.info("Time elapsed: {} ms", ac.b() - this.d);
+      this.e = Long.MAX_VALUE;
+   }
+
+   public int c() {
+      return ary.d((float)this.c * 100.0F / (float)this.b);
    }
 }

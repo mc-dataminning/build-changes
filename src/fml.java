@@ -1,55 +1,43 @@
-public class fml extends fmc {
-   private final fmp b;
-   protected boolean a;
+public class fml extends fmw {
+   private final fmr a;
 
-   fml(fix $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fmp $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.b = $$7;
-      this.d(1.5F);
+   protected fml(fiz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fmr $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.u = 0.225F;
+      this.B = 1.0F;
+      this.a = $$7;
+      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.D = 0.1F * (this.r.i() * this.r.i() * 1.0F + 1.0F);
+      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
       this.b($$7);
    }
 
    @Override
-   public int a(float $$0) {
-      return this.a ? 240 : super.a($$0);
-   }
-
-   @Override
-   public fly b() {
-      return fly.c;
+   public fma b() {
+      return fma.b;
    }
 
    @Override
    public void a() {
       super.a();
-      this.b(this.b);
+      this.b(this.a);
+      this.j *= 0.95F;
+      this.k *= 0.9F;
+      this.l *= 0.95F;
    }
 
-   public static class a implements flx<ja> {
-      private final fmp a;
+   public static class a implements flz<ja> {
+      private final fmr a;
 
-      public a(fmp $$0) {
+      public a(fmr $$0) {
          this.a = $$0;
       }
 
-      public flu a(ja $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public flw a(ja $$0, fiz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          fml $$8 = new fml($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         $$8.a = true;
-         return $$8;
-      }
-   }
-
-   public static class b implements flx<ja> {
-      private final fmp a;
-
-      public b(fmp $$0) {
-         this.a = $$0;
-      }
-
-      public flu a(ja $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fml $$8 = new fml($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
+         $$8.a(0.923F, 0.964F, 0.999F);
          return $$8;
       }
    }

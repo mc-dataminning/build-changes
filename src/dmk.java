@@ -1,21 +1,20 @@
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class dmk implements dlz {
-   protected final ib f;
+class dmk extends dmm {
+   public static final Codec<dmk> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dmk::new));
 
-   protected static <P extends dmk> P1<Mu<P>, ib> a(Instance<P> $$0) {
-      return $$0.group(ib.v(16).optionalFieldOf("offset", ib.g).forGetter($$0x -> $$0x.f));
+   public dmk(ib $$0) {
+      super($$0);
    }
 
-   protected dmk(ib $$0) {
-      this.f = $$0;
+   @Override
+   protected boolean a(dfl $$0) {
+      return $$0.r();
    }
 
-   public final boolean a(cqp $$0, gw $$1) {
-      return this.a($$0.a_($$1.a(this.f)));
+   @Override
+   public dmc<?> a() {
+      return dmc.f;
    }
-
-   protected abstract boolean a(dfj var1);
 }

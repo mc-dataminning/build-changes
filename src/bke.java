@@ -1,5 +1,6 @@
-public interface bke<T> {
-   void a(T var1);
+import javax.annotation.Nullable;
 
-   T c();
+public interface bke {
+   @Nullable
+   bji q();
 }

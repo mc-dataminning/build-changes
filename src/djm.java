@@ -1,133 +1,45 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import org.slf4j.Logger;
+import java.util.UUID;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class djm<T extends dja> {
-   static final Logger a = LogUtils.getLogger();
-   final dji<T> b;
-   final djc<T> c;
-   final djf<T> d;
-   private final LongSet e = new LongOpenHashSet();
-   private final djj<T> f;
+public class djm<T extends djc> implements djl<T> {
+   private final dje<T> a;
+   private final djh<T> b;
 
-   public djm(Class<T> $$0, dji<T> $$1) {
-      this.c = new djc<>();
-      this.d = new djf<>($$0, $$0x -> this.e.contains($$0x) ? djn.c : djn.b);
+   public djm(dje<T> $$0, djh<T> $$1) {
+      this.a = $$0;
       this.b = $$1;
-      this.f = new djk<>(this.c, this.d);
    }
 
-   public void a(cpc $$0) {
-      long $$1 = $$0.a();
-      this.e.add($$1);
-      this.d.b($$1).forEach($$0x -> {
-         djn $$1x = $$0x.a(djn.c);
-         if (!$$1x.a()) {
-            $$0x.b().filter($$0xx -> !$$0xx.dK()).forEach(this.b::e);
-         }
-      });
+   @Nullable
+   @Override
+   public T a(int $$0) {
+      return this.a.a($$0);
    }
 
-   public void b(cpc $$0) {
-      long $$1 = $$0.a();
-      this.e.remove($$1);
-      this.d.b($$1).forEach($$0x -> {
-         djn $$1x = $$0x.a(djn.b);
-         if ($$1x.a()) {
-            $$0x.b().filter($$0xx -> !$$0xx.dK()).forEach(this.b::d);
-         }
-      });
+   @Nullable
+   @Override
+   public T a(UUID $$0) {
+      return this.a.a($$0);
    }
 
-   public djj<T> a() {
-      return this.f;
+   @Override
+   public Iterable<T> a() {
+      return this.a.a();
    }
 
-   public void a(T $$0) {
-      this.c.a($$0);
-      long $$1 = hz.c($$0.dl());
-      dje<T> $$2 = this.d.c($$1);
-      $$2.a($$0);
-      $$0.a(new djm.a($$0, $$1, $$2));
-      this.b.g($$0);
-      this.b.c($$0);
-      if ($$0.dK() || $$2.c().a()) {
-         this.b.e($$0);
-      }
+   @Override
+   public <U extends T> void a(djj<T, U> $$0, aqp<U> $$1) {
+      this.a.a($$0, $$1);
    }
 
-   @asy
-   public int b() {
-      return this.c.b();
+   @Override
+   public void a(ehk $$0, Consumer<T> $$1) {
+      this.b.b($$0, aqp.forConsumer($$1));
    }
 
-   void a(long $$0, dje<T> $$1) {
-      if ($$1.a()) {
-         this.d.e($$0);
-      }
-   }
-
-   @asy
-   public String c() {
-      return this.c.b() + "," + this.d.b() + "," + this.e.size();
-   }
-
-   class a implements djb {
-      private final T c;
-      private long d;
-      private dje<T> e;
-
-      a(T $$0, long $$1, dje<T> $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-      }
-
-      @Override
-      public void a() {
-         gw $$0 = this.c.dl();
-         long $$1 = hz.c($$0);
-         if ($$1 != this.d) {
-            djn $$2 = this.e.c();
-            if (!this.e.b(this.c)) {
-               djm.a.warn("Entity {} wasn't found in section {} (moving to {})", new Object[]{this.c, hz.a(this.d), $$1});
-            }
-
-            djm.this.a(this.d, this.e);
-            dje<T> $$3 = djm.this.d.c($$1);
-            $$3.a(this.c);
-            this.e = $$3;
-            this.d = $$1;
-            djm.this.b.a(this.c);
-            if (!this.c.dK()) {
-               boolean $$4 = $$2.a();
-               boolean $$5 = $$3.c().a();
-               if ($$4 && !$$5) {
-                  djm.this.b.d(this.c);
-               } else if (!$$4 && $$5) {
-                  djm.this.b.e(this.c);
-               }
-            }
-         }
-      }
-
-      @Override
-      public void a(biq.c $$0) {
-         if (!this.e.b(this.c)) {
-            djm.a.warn("Entity {} wasn't found in section {} (destroying due to {})", new Object[]{this.c, hz.a(this.d), $$0});
-         }
-
-         djn $$1 = this.e.c();
-         if ($$1.a() || this.c.dK()) {
-            djm.this.b.d(this.c);
-         }
-
-         djm.this.b.b(this.c);
-         djm.this.b.f(this.c);
-         djm.this.c.b(this.c);
-         this.c.a(a);
-         djm.this.a(this.d, this.e);
-      }
+   @Override
+   public <U extends T> void a(djj<T, U> $$0, ehk $$1, aqp<U> $$2) {
+      this.b.a($$0, $$1, $$2);
    }
 }

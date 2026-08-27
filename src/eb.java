@@ -20,7 +20,7 @@ public class eb implements ArgumentType<qy> {
    }
 
    public qy a(StringReader $$0) throws CommandSyntaxException {
-      return new rs($$0).f();
+      return new rt($$0).f();
    }
 
    public Collection<String> getExamples() {

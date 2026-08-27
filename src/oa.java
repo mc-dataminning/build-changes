@@ -1,20 +1,20 @@
 import com.google.common.collect.ImmutableList;
 
 public class oa {
-   public static final aew<dwr> a = a("empty");
+   public static final aex<dwt> a = a("empty");
 
-   public static aew<dwr> a(String $$0) {
-      return aew.a(je.aC, new aex($$0));
+   public static aex<dwt> a(String $$0) {
+      return aex.a(je.aC, new aey($$0));
    }
 
-   public static void a(nt<dwr> $$0, String $$1, dwr $$2) {
+   public static void a(nt<dwt> $$0, String $$1, dwt $$2) {
       $$0.a(a($$1), $$2);
    }
 
-   public static void a(nt<dwr> $$0) {
-      hh<dwr> $$1 = $$0.a(je.aC);
-      hg<dwr> $$2 = $$1.b(a);
-      $$0.a(a, new dwr($$2, ImmutableList.of(), dwr.a.b));
+   public static void a(nt<dwt> $$0) {
+      hh<dwt> $$1 = $$0.a(je.aC);
+      hg<dwt> $$2 = $$1.b(a);
+      $$0.a(a, new dwt($$2, ImmutableList.of(), dwt.a.b));
       np.a($$0);
       ny.a($$0);
       ok.a($$0);

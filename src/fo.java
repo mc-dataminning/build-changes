@@ -8,7 +8,7 @@ import java.util.Collection;
 
 public class fo implements ArgumentType<fm> {
    private static final Collection<String> b = Arrays.asList("0 0", "~ ~", "~-5 ~5");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("argument.rotation.incomplete"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tn.c("argument.rotation.incomplete"));
 
    public static fo a() {
       return new fo();

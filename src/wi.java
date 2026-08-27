@@ -1,17 +1,19 @@
-public record wi(gw b) implements vx {
-   public static final aex a = new aex("debug/poi_removed");
+public record wi(gw b, String c, int d) implements vy {
+   public static final aey a = new aey("debug/poi_added");
 
-   public wi(sp $$0) {
-      this($$0.e());
+   public wi(sq $$0) {
+      this($$0.e(), $$0.r(), $$0.readInt());
    }
 
    @Override
-   public void a(sp $$0) {
+   public void a(sq $$0) {
       $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.p(this.d);
    }
 
    @Override
-   public aex a() {
+   public aey a() {
       return a;
    }
 }

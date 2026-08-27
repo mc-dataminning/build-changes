@@ -23,37 +23,37 @@ public class kw implements jk {
 
    @Override
    public CompletableFuture<?> a(ji $$0) {
-      Map<csv, kx> $$1 = Maps.newHashMap();
+      Map<csx, kx> $$1 = Maps.newHashMap();
       Consumer<kx> $$2 = $$1x -> {
-         csv $$2x = $$1x.a();
+         csx $$2x = $$1x.a();
          kx $$3x = $$1.put($$2x, $$1x);
          if ($$3x != null) {
             throw new IllegalStateException("Duplicate blockstate definition for " + $$2x);
          }
       };
-      Map<aex, Supplier<JsonElement>> $$3 = Maps.newHashMap();
-      Set<cja> $$4 = Sets.newHashSet();
-      BiConsumer<aex, Supplier<JsonElement>> $$5 = ($$1x, $$2x) -> {
+      Map<aey, Supplier<JsonElement>> $$3 = Maps.newHashMap();
+      Set<cjc> $$4 = Sets.newHashSet();
+      BiConsumer<aey, Supplier<JsonElement>> $$5 = ($$1x, $$2x) -> {
          Supplier<JsonElement> $$3x = $$3.put($$1x, $$2x);
          if ($$3x != null) {
             throw new IllegalStateException("Duplicate model definition for " + $$1x);
          }
       };
-      Consumer<cja> $$6 = $$4::add;
+      Consumer<cjc> $$6 = $$4::add;
       new ku($$2, $$5, $$6).a();
       new kv($$5).a();
-      List<csv> $$7 = jd.f.g().stream().filter($$0x -> true).map(Entry::getValue).filter($$1x -> !$$1.containsKey($$1x)).toList();
+      List<csx> $$7 = jd.f.g().stream().filter($$0x -> true).map(Entry::getValue).filter($$1x -> !$$1.containsKey($$1x)).toList();
       if (!$$7.isEmpty()) {
          throw new IllegalStateException("Missing blockstate definitions for: " + $$7);
       } else {
          jd.f.forEach($$2x -> {
-            cja $$3x = cja.l.get($$2x);
+            cjc $$3x = cjc.l.get($$2x);
             if ($$3x != null) {
                if ($$4.contains($$3x)) {
                   return;
                }
 
-               aex $$4x = li.a($$3x);
+               aey $$4x = li.a($$3x);
                if (!$$3.containsKey($$4x)) {
                   $$3.put($$4x, new lh(li.a($$2x)));
                }

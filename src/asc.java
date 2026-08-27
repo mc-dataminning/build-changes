@@ -1,65 +1,29 @@
-import io.netty.util.internal.ThreadLocalRandom;
+import java.io.ByteArrayInputStream;
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
-public interface asc {
-   @Deprecated
-   double a = 2.297;
+public record asc(int a, int b) {
+   private static final long c = -8552249625308161526L;
+   private static final int d = 1229472850;
+   private static final int e = 13;
 
-   static asc a() {
-      return a(dlh.a());
-   }
-
-   @Deprecated
-   static asc b() {
-      return new dll(dlh.a());
-   }
-
-   static asc a(long $$0) {
-      return new dkt($$0);
-   }
-
-   static asc c() {
-      return new dli(ThreadLocalRandom.current().nextLong());
-   }
-
-   asc d();
-
-   dlf e();
-
-   void b(long var1);
-
-   int f();
-
-   int a(int var1);
-
-   default int a(int $$0, int $$1) {
-      return this.a($$1 - $$0 + 1) + $$0;
-   }
-
-   long g();
-
-   boolean h();
-
-   float i();
-
-   double j();
-
-   double k();
-
-   default double a(double $$0, double $$1) {
-      return $$0 + $$1 * (this.j() - this.j());
-   }
-
-   default void b(int $$0) {
-      for (int $$1 = 0; $$1 < $$0; $$1++) {
-         this.f();
-      }
-   }
-
-   default int b(int $$0, int $$1) {
-      if ($$0 >= $$1) {
-         throw new IllegalArgumentException("bound - origin is non positive");
+   public static asc a(InputStream $$0) throws IOException {
+      DataInputStream $$1 = new DataInputStream($$0);
+      if ($$1.readLong() != -8552249625308161526L) {
+         throw new IOException("Bad PNG Signature");
+      } else if ($$1.readInt() != 13) {
+         throw new IOException("Bad length for IHDR chunk!");
+      } else if ($$1.readInt() != 1229472850) {
+         throw new IOException("Bad type for IHDR chunk!");
       } else {
-         return $$0 + this.a($$1 - $$0);
+         int $$2 = $$1.readInt();
+         int $$3 = $$1.readInt();
+         return new asc($$2, $$3);
       }
+   }
+
+   public static asc a(byte[] $$0) throws IOException {
+      return a(new ByteArrayInputStream($$0));
    }
 }

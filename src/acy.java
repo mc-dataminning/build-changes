@@ -1,32 +1,40 @@
-public class acy implements ve<abd> {
-   private final bgx a;
-   private final int b;
+public class acy implements vf<abe> {
+   private final ehl a;
+   private final bgz b;
+   private final int c;
 
-   public acy(bgx $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public acy(bgz $$0, ehl $$1, int $$2) {
+      this.b = $$0;
+      this.a = $$1;
+      this.c = $$2;
    }
 
-   public acy(sp $$0) {
-      this.a = $$0.b(bgx.class);
-      this.b = $$0.m();
+   public acy(sq $$0) {
+      this.b = $$0.b(bgz.class);
+      this.a = $$0.x();
+      this.c = $$0.m();
    }
 
    @Override
-   public void a(sp $$0) {
+   public void a(sq $$0) {
+      $$0.a(this.b);
       $$0.a(this.a);
-      $$0.c(this.b);
+      $$0.c(this.c);
    }
 
-   public void a(abd $$0) {
+   public void a(abe $$0) {
       $$0.a(this);
    }
 
-   public bgx a() {
+   public bgz a() {
+      return this.b;
+   }
+
+   public ehl d() {
       return this.a;
    }
 
-   public int d() {
-      return this.b;
+   public int e() {
+      return this.c;
    }
 }

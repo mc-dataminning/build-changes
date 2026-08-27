@@ -1,27 +1,24 @@
 import com.google.common.collect.ImmutableSet;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-public abstract class btf extends btl<bjg> {
-   protected abstract boolean a(bjg var1, bjg var2);
-
-   protected abstract bsh<bjg> b();
-
-   @Override
-   public Set<bsh<?>> a() {
-      return ImmutableSet.of(this.b());
-   }
+public class btf extends btn<bjk> {
+   private static final long c = 32L;
+   private static final long d = 16L;
+   public static final int a = 32;
 
    @Override
-   protected void a(akr $$0, bjg $$1) {
-      $$1.dN().a(this.b(), this.b($$1));
+   public Set<bsj<?>> a() {
+      return ImmutableSet.of(bsj.K);
    }
 
-   private Optional<bjg> b(bjg $$0) {
-      return this.a($$0).flatMap($$1 -> $$1.a($$1x -> this.a($$0, $$1x)));
-   }
-
-   protected Optional<bsj> a(bjg $$0) {
-      return $$0.dN().c(bsh.h);
+   protected void a(aks $$0, bjk $$1) {
+      bki<?> $$2 = $$1.dN();
+      List<byp> $$3 = $$0.a(byp.class, $$1.cG().c(32.0, 16.0, 32.0), $$0x -> true);
+      $$3.sort(Comparator.comparingDouble($$1::f));
+      Optional<byp> $$4 = $$3.stream().filter($$1x -> $$1.k($$1x.q())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::E).findFirst();
+      $$2.a(bsj.K, $$4);
    }
 }

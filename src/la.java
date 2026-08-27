@@ -12,12 +12,12 @@ import java.util.TreeMap;
 import java.util.stream.Stream;
 
 public class la implements kx {
-   private final csv a;
+   private final csx a;
    private final List<ld> b;
-   private final Set<dgm<?>> c = Sets.newHashSet();
+   private final Set<dgo<?>> c = Sets.newHashSet();
    private final List<lb> d = Lists.newArrayList();
 
-   private la(csv $$0, List<ld> $$1) {
+   private la(csx $$0, List<ld> $$1) {
       this.a = $$0;
       this.b = $$1;
    }
@@ -60,19 +60,19 @@ public class la implements kx {
    }
 
    @Override
-   public csv a() {
+   public csx a() {
       return this.a;
    }
 
-   public static la a(csv $$0) {
+   public static la a(csx $$0) {
       return new la($$0, ImmutableList.of(ld.a()));
    }
 
-   public static la a(csv $$0, ld $$1) {
+   public static la a(csx $$0, ld $$1) {
       return new la($$0, ImmutableList.of($$1));
    }
 
-   public static la a(csv $$0, ld... $$1) {
+   public static la a(csx $$0, ld... $$1) {
       return new la($$0, ImmutableList.copyOf($$1));
    }
 }

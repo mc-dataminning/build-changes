@@ -1,95 +1,50 @@
-public class fak extends ezp implements fam<cfn> {
-   private final cfn q;
-   private final cex s = new cex() {
-      @Override
-      public void a(cel $$0, int $$1, cjf $$2) {
-         fak.this.J();
-      }
+public abstract class fak<T extends cfn> extends ezk<T> implements cez {
+   private final aey x;
 
-      @Override
-      public void a(cel $$0, int $$1, int $$2) {
-         if ($$1 == 0) {
-            fak.this.K();
-         }
-      }
-   };
-
-   public fak(cfn $$0, cbt $$1, tm $$2) {
-      this.q = $$0;
+   public fak(T $$0, cbv $$1, tn $$2, aey $$3) {
+      super($$0, $$1, $$2);
+      this.x = $$3;
    }
 
-   public cfn I() {
-      return this.q;
-   }
-
-   @Override
-   protected void aI_() {
-      super.aI_();
-      this.q.a(this.s);
-   }
-
-   @Override
-   public void az_() {
-      this.f.s.q();
-      super.az_();
-   }
-
-   @Override
-   public void aA_() {
-      super.aA_();
-      this.q.b(this.s);
-   }
-
-   @Override
-   protected void l() {
-      if (this.f.s.gd()) {
-         this.d(esq.a(tl.d, $$0 -> this.az_()).a(this.g / 2 - 100, 196, 98, 20).a());
-         this.d(esq.a(tm.c("lectern.take_book"), $$0 -> this.c(3)).a(this.g / 2 + 2, 196, 98, 20).a());
-      } else {
-         super.l();
-      }
-   }
-
-   @Override
    protected void F() {
-      this.c(1);
    }
 
    @Override
-   protected void G() {
-      this.c(2);
+   protected void aH_() {
+      super.aH_();
+      this.F();
+      this.p.a(this);
    }
 
    @Override
-   protected boolean b(int $$0) {
-      if ($$0 != this.q.m()) {
-         this.c(100 + $$0);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private void c(int $$0) {
-      this.f.q.a(this.q.j, $$0);
+   public void h() {
+      super.h();
+      this.p.b(this);
    }
 
    @Override
-   public boolean j() {
-      return false;
+   public void a(esh $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.d($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
-   void J() {
-      cjf $$0 = this.q.l();
-      this.a(ezp.a.a($$0));
-   }
-
-   void K() {
-      this.a(this.q.m());
+   protected void d(esh $$0, int $$1, int $$2, float $$3) {
    }
 
    @Override
-   protected void H() {
-      this.f.s.q();
+   protected void a(esh $$0, float $$1, int $$2, int $$3) {
+      $$0.a(this.x, this.t, this.u, 0, 0, this.c, this.k);
+      this.c($$0, this.t, this.u);
+   }
+
+   protected abstract void c(esh var1, int var2, int var3);
+
+   @Override
+   public void a(cen $$0, int $$1, int $$2) {
+   }
+
+   @Override
+   public void a(cen $$0, int $$1, cjh $$2) {
    }
 }

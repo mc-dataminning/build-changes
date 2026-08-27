@@ -1,51 +1,136 @@
-public enum fnv {
-   a(new fnv.b(fnv.a.f, fnv.a.e, fnv.a.a), new fnv.b(fnv.a.f, fnv.a.e, fnv.a.d), new fnv.b(fnv.a.c, fnv.a.e, fnv.a.d), new fnv.b(fnv.a.c, fnv.a.e, fnv.a.a)),
-   b(new fnv.b(fnv.a.f, fnv.a.b, fnv.a.d), new fnv.b(fnv.a.f, fnv.a.b, fnv.a.a), new fnv.b(fnv.a.c, fnv.a.b, fnv.a.a), new fnv.b(fnv.a.c, fnv.a.b, fnv.a.d)),
-   c(new fnv.b(fnv.a.c, fnv.a.b, fnv.a.d), new fnv.b(fnv.a.c, fnv.a.e, fnv.a.d), new fnv.b(fnv.a.f, fnv.a.e, fnv.a.d), new fnv.b(fnv.a.f, fnv.a.b, fnv.a.d)),
-   d(new fnv.b(fnv.a.f, fnv.a.b, fnv.a.a), new fnv.b(fnv.a.f, fnv.a.e, fnv.a.a), new fnv.b(fnv.a.c, fnv.a.e, fnv.a.a), new fnv.b(fnv.a.c, fnv.a.b, fnv.a.a)),
-   e(new fnv.b(fnv.a.f, fnv.a.b, fnv.a.d), new fnv.b(fnv.a.f, fnv.a.e, fnv.a.d), new fnv.b(fnv.a.f, fnv.a.e, fnv.a.a), new fnv.b(fnv.a.f, fnv.a.b, fnv.a.a)),
-   f(new fnv.b(fnv.a.c, fnv.a.b, fnv.a.a), new fnv.b(fnv.a.c, fnv.a.e, fnv.a.a), new fnv.b(fnv.a.c, fnv.a.e, fnv.a.d), new fnv.b(fnv.a.c, fnv.a.b, fnv.a.d));
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import javax.annotation.Nullable;
 
-   private static final fnv[] g = ac.a(new fnv[6], $$0 -> {
-      $$0[fnv.a.e] = a;
-      $$0[fnv.a.b] = b;
-      $$0[fnv.a.d] = c;
-      $$0[fnv.a.a] = d;
-      $$0[fnv.a.f] = e;
-      $$0[fnv.a.c] = f;
+public abstract class fnv {
+   private static final Object2ObjectMap<aey, fnv> a = ac.a(new Object2ObjectArrayMap(), $$0 -> {
+      fnv.c $$1 = new fnv.c();
+      $$0.defaultReturnValue($$1);
+      $$0.put(dis.e, $$1);
+      $$0.put(dis.f, new fnv.b());
+      $$0.put(dis.g, new fnv.a());
    });
-   private final fnv.b[] h;
+   private final float[] b = new float[4];
+   private final float c;
+   private final boolean d;
+   private final fnv.d e;
+   private final boolean f;
+   private final boolean g;
 
-   public static fnv a(hc $$0) {
-      return g[$$0.d()];
+   public fnv(float $$0, boolean $$1, fnv.d $$2, boolean $$3, boolean $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
-   private fnv(fnv.b... $$0) {
-      this.h = $$0;
+   public static fnv a(diu $$0) {
+      return (fnv)a.get($$0.r());
    }
 
-   public fnv.b a(int $$0) {
-      return this.h[$$0];
-   }
-
-   public static final class a {
-      public static final int a = hc.d.d();
-      public static final int b = hc.b.d();
-      public static final int c = hc.f.d();
-      public static final int d = hc.c.d();
-      public static final int e = hc.a.d();
-      public static final int f = hc.e.d();
-   }
-
-   public static class b {
-      public final int a;
-      public final int b;
-      public final int c;
-
-      b(int $$0, int $$1, int $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+   @Nullable
+   public float[] a(float $$0, float $$1) {
+      float $$2 = 0.4F;
+      float $$3 = ary.b($$0 * (float) (Math.PI * 2)) - 0.0F;
+      float $$4 = -0.0F;
+      if ($$3 >= -0.4F && $$3 <= 0.4F) {
+         float $$5 = ($$3 - -0.0F) / 0.4F * 0.5F + 0.5F;
+         float $$6 = 1.0F - (1.0F - ary.a($$5 * (float) Math.PI)) * 0.99F;
+         $$6 *= $$6;
+         this.b[0] = $$5 * 0.3F + 0.7F;
+         this.b[1] = $$5 * $$5 * 0.7F + 0.2F;
+         this.b[2] = $$5 * $$5 * 0.0F + 0.2F;
+         this.b[3] = $$6;
+         return this.b;
+      } else {
+         return null;
       }
+   }
+
+   public float a() {
+      return this.c;
+   }
+
+   public boolean b() {
+      return this.d;
+   }
+
+   public abstract ehp a(ehp var1, float var2);
+
+   public abstract boolean a(int var1, int var2);
+
+   public fnv.d c() {
+      return this.e;
+   }
+
+   public boolean d() {
+      return this.f;
+   }
+
+   public boolean e() {
+      return this.g;
+   }
+
+   public static class a extends fnv {
+      public a() {
+         super(Float.NaN, false, fnv.d.c, true, false);
+      }
+
+      @Override
+      public ehp a(ehp $$0, float $$1) {
+         return $$0.a(0.15F);
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return false;
+      }
+
+      @Nullable
+      @Override
+      public float[] a(float $$0, float $$1) {
+         return null;
+      }
+   }
+
+   public static class b extends fnv {
+      public b() {
+         super(Float.NaN, true, fnv.d.a, false, true);
+      }
+
+      @Override
+      public ehp a(ehp $$0, float $$1) {
+         return $$0;
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return true;
+      }
+   }
+
+   public static class c extends fnv {
+      public static final int a = 192;
+
+      public c() {
+         super(192.0F, true, fnv.d.b, false, false);
+      }
+
+      @Override
+      public ehp a(ehp $$0, float $$1) {
+         return $$0.d((double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.91F + 0.09F));
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return false;
+      }
+   }
+
+   public static enum d {
+      a,
+      b,
+      c;
    }
 }

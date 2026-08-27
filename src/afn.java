@@ -1,17 +1,9 @@
-public interface afn extends afm {
-   ajp a();
+public interface afn {
+   String aa();
 
-   String b();
+   String G();
 
-   int d();
+   int H();
 
-   String f();
-
-   String[] J();
-
-   String q();
-
-   String s();
-
-   String a(String var1);
+   int I();
 }

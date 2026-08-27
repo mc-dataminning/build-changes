@@ -1,10 +1,11 @@
-public class dex extends dep {
+public class dex extends deq {
    @Override
-   protected aew<dnj<?, ?>> a(asc $$0, boolean $$1) {
-      if ($$0.a(10) == 0) {
-         return $$1 ? oy.I : oy.n;
-      } else {
-         return $$1 ? oy.C : oy.g;
-      }
+   protected aex<dnl<?, ?>> a(ase $$0, boolean $$1) {
+      return oy.o;
+   }
+
+   @Override
+   protected aex<dnl<?, ?>> a(ase $$0) {
+      return oy.p;
    }
 }

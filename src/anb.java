@@ -1,94 +1,93 @@
 import com.mojang.logging.LogUtils;
 import java.io.IOException;
-import java.nio.file.DirectoryStream;
-import java.nio.file.FileSystem;
-import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 
-public class anb implements anh {
-   static final Logger a = LogUtils.getLogger();
-   private final Path b;
-   private final amj c;
-   private final ang d;
-   private final ehd e;
+public abstract class anb implements ani {
+   private static final Logger b = LogUtils.getLogger();
+   public static final String a = "vanilla";
+   private final amk c;
+   private final amm d;
+   private final aey e;
+   private final ehf f;
 
-   public anb(Path $$0, amj $$1, ang $$2, ehd $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-   }
-
-   private static String a(Path $$0) {
-      return $$0.getFileName().toString();
+   public anb(amk $$0, amm $$1, aey $$2, ehf $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
    @Override
-   public void a(Consumer<anc> $$0) {
-      try {
-         v.c(this.b);
-         a(this.b, this.e, false, ($$1, $$2) -> {
-            String $$3 = a($$1);
-            anc $$4 = anc.a("file/" + $$3, tm.b($$3), false, $$2, this.c, anc.b.a, this.d);
-            if ($$4 != null) {
-               $$0.accept($$4);
-            }
-         });
-      } catch (IOException var3) {
-         a.warn("Failed to list packs in {}", this.b, var3);
+   public void a(Consumer<and> $$0) {
+      and $$1 = this.a(this.d);
+      if ($$1 != null) {
+         $$0.accept($$1);
       }
+
+      this.b($$0);
    }
 
-   public static void a(Path $$0, ehd $$1, boolean $$2, BiConsumer<Path, anc.c> $$3) throws IOException {
-      anb.a $$4 = new anb.a($$1, $$2);
+   @Nullable
+   protected abstract and a(amj var1);
 
-      try (DirectoryStream<Path> $$5 = Files.newDirectoryStream($$0)) {
-         for (Path $$6 : $$5) {
-            try {
-               List<ehe> $$7 = new ArrayList<>();
-               anc.c $$8 = $$4.a($$6, $$7);
-               if (!$$7.isEmpty()) {
-                  a.warn("Ignoring potential pack entry: {}", ehc.a($$6, $$7));
-               } else if ($$8 != null) {
-                  $$3.accept($$6, $$8);
-               } else {
-                  a.info("Found non-pack entry '{}', ignoring", $$6);
-               }
-            } catch (IOException var11) {
-               a.warn("Failed to read properties of '{}', ignoring", $$6, var11);
-            }
+   protected abstract tn a(String var1);
+
+   public amm a() {
+      return this.d;
+   }
+
+   private void b(Consumer<and> $$0) {
+      Map<String, Function<String, and>> $$1 = new HashMap<>();
+      this.a($$1::put);
+      $$1.forEach(($$1x, $$2) -> {
+         and $$3 = $$2.apply($$1x);
+         if ($$3 != null) {
+            $$0.accept($$3);
+         }
+      });
+   }
+
+   protected void a(BiConsumer<String, Function<String, and>> $$0) {
+      this.d.a(this.c, this.e, $$1 -> this.a($$1, $$0));
+   }
+
+   protected void a(@Nullable Path $$0, BiConsumer<String, Function<String, and>> $$1) {
+      if ($$0 != null && Files.isDirectory($$0)) {
+         try {
+            anc.a($$0, this.f, true, ($$1x, $$2) -> $$1.accept(a($$1x), $$1xx -> this.a($$1xx, $$2, this.a($$1xx))));
+         } catch (IOException var4) {
+            b.warn("Failed to discover packs in {}", $$0, var4);
          }
       }
    }
 
-   static class a extends ane<anc.c> {
-      private final boolean a;
+   private static String a(Path $$0) {
+      return StringUtils.removeEnd($$0.getFileName().toString(), ".zip");
+   }
 
-      protected a(ehd $$0, boolean $$1) {
-         super($$0);
-         this.a = $$1;
-      }
+   @Nullable
+   protected abstract and a(String var1, and.c var2, tn var3);
 
-      @Nullable
-      protected anc.c a(Path $$0) {
-         FileSystem $$1 = $$0.getFileSystem();
-         if ($$1 != FileSystems.getDefault() && !($$1 instanceof amr)) {
-            anb.a.info("Can't open pack archive at {}", $$0);
-            return null;
-         } else {
-            return new amg.a($$0, this.a);
+   protected static and.c b(final amj $$0) {
+      return new and.c() {
+         @Override
+         public amj a(String $$0x) {
+            return $$0;
          }
-      }
 
-      protected anc.c b(Path $$0) {
-         return new amk.a($$0, this.a);
-      }
+         @Override
+         public amj a(String $$0x, and.a $$1) {
+            return $$0;
+         }
+      };
    }
 }

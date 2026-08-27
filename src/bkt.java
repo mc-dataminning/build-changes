@@ -1,38 +1,77 @@
-import com.mojang.datafixers.kinds.App;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.server.MinecraftServer;
 
-public class bkt {
-   public static bky<cbh> a() {
-      return boj.a(
-         (Function<boj.b<cbh>, ? extends App<boj.c<cbh>, bom<cbh>>>)($$0 -> $$0.group($$0.b(bsh.d), $$0.a(bsh.c))
-               .apply(
-                  $$0,
-                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                        hf $$6 = $$0.b($$1);
-                        if (!$$6.b().a($$4.dj(), 2.0) && !$$4.gn()) {
-                           return false;
-                        } else {
-                           $$1.b();
-                           $$2.a($$6);
-                           $$3.a($$4, (byte)14);
-                           if ($$4.go().b() != cbk.b) {
-                              return true;
-                           } else {
-                              MinecraftServer $$7 = $$3.n();
-                              Optional.ofNullable($$7.a($$6.a()))
-                                 .flatMap($$1xx -> $$1xx.w().c($$6.b()))
-                                 .flatMap($$0xxx -> jd.A.s().filter($$1xx -> $$1xx.b().test($$0xxx)).findFirst())
-                                 .ifPresent($$2xx -> {
-                                    $$4.a($$4.go().a($$2xx));
-                                    $$4.c($$3);
-                                 });
-                              return true;
-                           }
-                        }
-                     }
-               ))
-      );
+public class bkt extends bkz<but> {
+   private static final int c = 3;
+   private static final int d = 60;
+   private static final int e = 110;
+   private final biw<? extends but> f;
+   private final float g;
+   private long h;
+
+   public bkt(biw<? extends but> $$0, float $$1) {
+      super(ImmutableMap.of(bsj.h, bsk.a, bsj.r, bsk.b, bsj.m, bsk.c, bsj.n, bsk.c, bsj.Y, bsk.b), 110);
+      this.f = $$0;
+      this.g = $$1;
+   }
+
+   protected boolean a(aks $$0, but $$1) {
+      return $$1.gh() && this.c($$1).isPresent();
+   }
+
+   protected void a(aks $$0, but $$1, long $$2) {
+      but $$3 = this.c($$1).get();
+      $$1.dN().a(bsj.r, $$3);
+      $$3.dN().a(bsj.r, $$1);
+      blb.a($$1, $$3, this.g);
+      int $$4 = 60 + $$1.ef().a(50);
+      this.h = $$2 + (long)$$4;
+   }
+
+   protected boolean b(aks $$0, but $$1, long $$2) {
+      if (!this.b($$1)) {
+         return false;
+      } else {
+         but $$3 = this.a($$1);
+         return $$3.bv() && $$1.a($$3) && blb.a($$1.dN(), $$3) && $$2 <= this.h && !$$1.ga() && !$$3.ga();
+      }
+   }
+
+   protected void c(aks $$0, but $$1, long $$2) {
+      but $$3 = this.a($$1);
+      blb.a($$1, $$3, this.g);
+      if ($$1.a($$3, 3.0)) {
+         if ($$2 >= this.h) {
+            $$1.a($$0, $$3);
+            $$1.dN().b(bsj.r);
+            $$3.dN().b(bsj.r);
+         }
+      }
+   }
+
+   protected void d(aks $$0, but $$1, long $$2) {
+      $$1.dN().b(bsj.r);
+      $$1.dN().b(bsj.m);
+      $$1.dN().b(bsj.n);
+      this.h = 0L;
+   }
+
+   private but a(but $$0) {
+      return (but)$$0.dN().c(bsj.r).get();
+   }
+
+   private boolean b(but $$0) {
+      bki<?> $$1 = $$0.dN();
+      return $$1.a(bsj.r) && $$1.c(bsj.r).get().ag() == this.f;
+   }
+
+   private Optional<? extends but> c(but $$0) {
+      return $$0.dN().c(bsj.h).get().a($$1 -> {
+         if ($$1.ag() == this.f && $$1 instanceof but $$2 && $$0.a($$2) && !$$2.ga()) {
+            return true;
+         }
+
+         return false;
+      }).map(but.class::cast);
    }
 }

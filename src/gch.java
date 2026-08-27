@@ -1,58 +1,49 @@
-public class gch extends gbu {
-   public gch(apd $$0, apf $$1, float $$2, float $$3, asc $$4, gw $$5) {
-      this($$0, $$1, $$2, $$3, $$4, (double)$$5.u() + 0.5, (double)$$5.v() + 0.5, (double)$$5.w() + 0.5);
+public class gch extends gbx {
+   private static final float n = 0.0F;
+   private static final float o = 0.7F;
+   private static final float p = 0.0F;
+   private static final float q = 1.0F;
+   private static final float r = 0.0025F;
+   private final cdn s;
+   private float t = 0.0F;
+
+   public gch(cdn $$0) {
+      super(apf.ni, apg.g, gco.t());
+      this.s = $$0;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
+      this.f = (double)((float)$$0.dq());
+      this.g = (double)((float)$$0.ds());
+      this.h = (double)((float)$$0.dw());
    }
 
-   public static gch a(apd $$0, float $$1) {
-      return a($$0, $$1, 0.25F);
+   @Override
+   public boolean s() {
+      return !this.s.aS();
    }
 
-   public static gch a(hg<apd> $$0, float $$1) {
-      return a($$0.a(), $$1);
+   @Override
+   public boolean r() {
+      return true;
    }
 
-   public static gch a(apd $$0, float $$1, float $$2) {
-      return new gch($$0.a(), apf.a, $$2, $$1, gcm.t(), false, 0, gcm.a.a, 0.0, 0.0, 0.0, true);
-   }
-
-   public static gch a(apd $$0) {
-      return new gch($$0.a(), apf.b, 1.0F, 1.0F, gcm.t(), false, 0, gcm.a.a, 0.0, 0.0, 0.0, true);
-   }
-
-   public static gch a(apd $$0, ehn $$1) {
-      return new gch($$0, apf.c, 4.0F, 1.0F, gcm.t(), false, 0, gcm.a.b, $$1.c, $$1.d, $$1.e);
-   }
-
-   public static gch b(apd $$0, float $$1, float $$2) {
-      return new gch($$0.a(), apf.i, $$2, $$1, gcm.t(), false, 0, gcm.a.a, 0.0, 0.0, 0.0, true);
-   }
-
-   public static gch b(apd $$0) {
-      return b($$0, 1.0F, 1.0F);
-   }
-
-   public static gch a(apd $$0, asc $$1, double $$2, double $$3, double $$4) {
-      return new gch($$0, apf.i, 1.0F, 1.0F, $$1, false, 0, gcm.a.b, $$2, $$3, $$4);
-   }
-
-   public gch(apd $$0, apf $$1, float $$2, float $$3, asc $$4, double $$5, double $$6, double $$7) {
-      this($$0, $$1, $$2, $$3, $$4, false, 0, gcm.a.b, $$5, $$6, $$7);
-   }
-
-   private gch(apd $$0, apf $$1, float $$2, float $$3, asc $$4, boolean $$5, int $$6, gcm.a $$7, double $$8, double $$9, double $$10) {
-      this($$0.a(), $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, false);
-   }
-
-   public gch(aex $$0, apf $$1, float $$2, float $$3, asc $$4, boolean $$5, int $$6, gcm.a $$7, double $$8, double $$9, double $$10, boolean $$11) {
-      super($$0, $$1, $$4);
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$8;
-      this.g = $$9;
-      this.h = $$10;
-      this.i = $$5;
-      this.j = $$6;
-      this.k = $$7;
-      this.l = $$11;
+   @Override
+   public void q() {
+      if (this.s.dG()) {
+         this.n();
+      } else {
+         this.f = (double)((float)this.s.dq());
+         this.g = (double)((float)this.s.ds());
+         this.h = (double)((float)this.s.dw());
+         float $$0 = (float)this.s.do().h();
+         if ($$0 >= 0.01F) {
+            this.t = ary.a(this.t + 0.0025F, 0.0F, 1.0F);
+            this.d = ary.i(ary.a($$0, 0.0F, 0.5F), 0.0F, 0.7F);
+         } else {
+            this.t = 0.0F;
+            this.d = 0.0F;
+         }
+      }
    }
 }

@@ -1,16 +1,16 @@
-public class coc extends cno {
-   public coc(cno.a $$0, biv... $$1) {
-      super($$0, cnp.m, $$1);
+public class coc extends cnq {
+   public coc(cnq.a $$0, bix... $$1) {
+      super($$0, cnr.e, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 12 + ($$0 - 1) * 20;
+      return 10 * $$0;
    }
 
    @Override
    public int b(int $$0) {
-      return 50;
+      return this.a($$0) + 30;
    }
 
    @Override

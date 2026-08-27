@@ -1,18 +1,14 @@
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
 
-public class auz extends DataFix {
-   private static final String a = "minecraft:decorated_pot";
-
-   public auz(Schema $$0) {
-      super($$0, true);
+public class auz extends ayb {
+   public auz(Schema $$0, boolean $$1) {
+      super($$0, $$1, "Colorless shulker entity fix", ayz.x, "minecraft:shulker");
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getChoiceType(ayx.s, "minecraft:decorated_pot");
-      Type<?> $$1 = this.getOutputSchema().getChoiceType(ayx.s, "minecraft:decorated_pot");
-      return this.convertUnchecked("DecoratedPotFieldRenameFix", $$0, $$1);
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), $$0x -> $$0x.get("Color").asInt(0) == 10 ? $$0x.set("Color", $$0x.createByte((byte)16)) : $$0x);
    }
 }

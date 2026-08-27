@@ -1,24 +1,24 @@
-public class vk implements ve<vh> {
-   private final long a;
+public class vk implements vf<vi> {
+   private final tn a;
 
-   public vk(long $$0) {
+   public vk(tn $$0) {
       this.a = $$0;
    }
 
-   public vk(sp $$0) {
-      this.a = $$0.readLong();
+   public vk(sq $$0) {
+      this.a = $$0.l();
    }
 
    @Override
-   public void a(sp $$0) {
-      $$0.b(this.a);
+   public void a(sq $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(vh $$0) {
+   public void a(vi $$0) {
       $$0.a(this);
    }
 
-   public long a() {
+   public tn a() {
       return this.a;
    }
 }

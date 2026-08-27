@@ -1,27 +1,32 @@
-import java.util.List;
+public class xv implements vf<wy> {
+   private final cjc a;
+   private final int b;
 
-public record xv(xv.a a, List<String> b) implements ve<wx> {
-   public xv(sp $$0) {
-      this($$0.b(xv.a.class), $$0.a(sp::r));
+   public xv(cjc $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public xv(sq $$0) {
+      this.a = $$0.a(jd.i);
+      this.b = $$0.m();
    }
 
    @Override
-   public void a(sp $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b, sp::a);
+   public void a(sq $$0) {
+      $$0.a(jd.i, this.a);
+      $$0.c(this.b);
    }
 
-   public void a(wx $$0) {
+   public void a(wy $$0) {
       $$0.a(this);
    }
 
-   public List<String> d() {
-      return this.b;
+   public cjc a() {
+      return this.a;
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   public int d() {
+      return this.b;
    }
 }

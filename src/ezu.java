@@ -1,90 +1,82 @@
-public class ezu extends ezi<cfa> implements fcc {
-   private static final aex x = new aex("textures/gui/container/crafting_table.png");
-   private final fbw y = new fbw();
-   private boolean z;
+public class ezu extends ezj {
+   private final ddh m;
+   private esz<ddh.a> n;
+   private esz<Boolean> o;
+   private esz<Boolean> p;
+   private ddh.a q = ddh.a.c;
+   private boolean s;
+   private boolean t;
 
-   public ezu(cfa $$0, cbt $$1, tm $$2) {
-      super($$0, $$1, $$2);
+   public ezu(ddh $$0) {
+      this.m = $$0;
    }
 
    @Override
-   protected void aI_() {
-      super.aI_();
-      this.z = this.g < 379;
-      this.y.a(this.g, this.h, this.f, this.z, this.p);
-      this.t = this.y.a(this.g, this.c);
-      this.d(new etc(this.t + 5, this.h / 2 - 49, 20, 18, fbw.a, $$0 -> {
-         this.y.f();
-         this.t = this.y.a(this.g, this.c);
-         $$0.b(this.t + 5, this.h / 2 - 49);
-      }));
-      this.e(this.y);
-      this.c(this.y);
-      this.l = 29;
+   coy l() {
+      return this.m.c();
    }
 
    @Override
-   public void D() {
-      super.D();
-      this.y.h();
+   int D() {
+      return 135;
    }
 
    @Override
-   public void a(esf $$0, int $$1, int $$2, float $$3) {
-      if (this.y.g() && this.z) {
-         this.b($$0, $$1, $$2, $$3);
-         this.y.a($$0, $$1, $$2, $$3);
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-         this.y.a($$0, $$1, $$2, $$3);
-         this.y.a($$0, this.t, this.u, true, $$3);
-      }
-
-      this.a($$0, $$1, $$2);
-      this.y.a($$0, this.t, this.u, $$1, $$2);
+   protected void aH_() {
+      super.aH_();
+      this.n = this.d(esz.<ddh.a>a($$0 -> {
+         return switch ($$0) {
+            case a -> tn.c("advMode.mode.sequence");
+            case b -> tn.c("advMode.mode.auto");
+            case c -> tn.c("advMode.mode.redstone");
+         };
+      }).a(ddh.a.values()).a().a(this.q).a(this.g / 2 - 50 - 100 - 4, 165, 100, 20, tn.c("advMode.mode"), ($$0, $$1) -> this.q = $$1));
+      this.o = this.d(
+         esz.a(tn.c("advMode.mode.conditional"), tn.c("advMode.mode.unconditional"))
+            .a()
+            .a(this.s)
+            .a(this.g / 2 - 50, 165, 100, 20, tn.c("advMode.type"), ($$0, $$1) -> this.s = $$1)
+      );
+      this.p = this.d(
+         esz.a(tn.c("advMode.mode.autoexec.bat"), tn.c("advMode.mode.redstoneTriggered"))
+            .a()
+            .a(this.t)
+            .a(this.g / 2 + 50 + 4, 165, 100, 20, tn.c("advMode.triggering"), ($$0, $$1) -> this.t = $$1)
+      );
+      this.e(false);
    }
 
-   @Override
-   protected void a(esf $$0, float $$1, int $$2, int $$3) {
-      int $$4 = this.t;
-      int $$5 = (this.h - this.k) / 2;
-      $$0.a(x, $$4, $$5, 0, 0, this.c, this.k);
+   private void e(boolean $$0) {
+      this.c.i = $$0;
+      this.l.i = $$0;
+      this.n.i = $$0;
+      this.o.i = $$0;
+      this.p.i = $$0;
    }
 
-   @Override
-   protected boolean a(int $$0, int $$1, int $$2, int $$3, double $$4, double $$5) {
-      return (!this.z || !this.y.g()) && super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.y.a($$0, $$1, $$2)) {
-         this.a(this.y);
-         return true;
-      } else {
-         return this.z && this.y.g() ? true : super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
-      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.c) || $$1 >= (double)($$3 + this.k);
-      return this.y.a($$0, $$1, this.t, this.u, this.c, this.k, $$4) && $$5;
-   }
-
-   @Override
-   protected void a(cgd $$0, int $$1, int $$2, ceu $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.y.a($$0);
-   }
-
-   @Override
    public void F() {
-      this.y.i();
+      coy $$0 = this.m.c();
+      this.a.a($$0.m());
+      boolean $$1 = $$0.o();
+      this.q = this.m.v();
+      this.s = this.m.w();
+      this.t = this.m.f();
+      this.l.a($$1);
+      this.n.a(this.q);
+      this.o.a(this.s);
+      this.p.a(this.t);
+      this.c($$1);
+      this.e(true);
    }
 
    @Override
-   public fbw G() {
-      return this.y;
+   public void a(eqx $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.e(true);
+   }
+
+   @Override
+   protected void a(coy $$0) {
+      this.f.J().b(new acq(gw.a($$0.g()), this.a.a(), this.q, $$0.o(), this.s, this.t));
    }
 }

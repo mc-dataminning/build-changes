@@ -1,67 +1,45 @@
-import java.util.List;
+import javax.annotation.Nullable;
 import org.joml.Vector3f;
 
-public class byx extends bze {
-   public static final float b = biu.A.k() / biu.V.k();
-   private static final int e = 1200;
-   private static final int bT = 50;
-   private static final int bU = 6000;
-   private static final int bV = 2;
-   private static final int bW = 1200;
+public interface byx extends bzo {
+   void b(boolean var1);
 
-   public byx(biu<? extends byx> $$0, cpv $$1) {
-      super($$0, $$1);
-      this.fI();
-      if (this.d != null) {
-         this.d.c(400);
-      }
-   }
+   void a(bji var1, cjh var2, cco var3, float var4);
 
-   public static bkl.a s() {
-      return bze.gd().a(bkm.d, 0.3F).a(bkm.f, 8.0).a(bkm.a, 80.0);
-   }
+   @Nullable
+   bji q();
 
-   @Override
-   public int t() {
-      return 60;
-   }
+   void a();
 
-   @Override
-   protected apd w() {
-      return this.ba() ? ape.gH : ape.gI;
-   }
-
-   @Override
-   protected apd d(bho $$0) {
-      return this.ba() ? ape.gN : ape.gO;
-   }
-
-   @Override
-   protected apd l_() {
-      return this.ba() ? ape.gK : ape.gL;
-   }
-
-   @Override
-   protected apd y() {
-      return ape.gM;
-   }
-
-   @Override
-   protected void X() {
-      super.X();
-      if ((this.ah + this.ah()) % 1200 == 0) {
-         bid $$0 = new bid(bif.d, 6000, 2);
-         List<aks> $$1 = bie.a((akr)this.dL(), this, this.dj(), 50.0, $$0, 1200);
-         $$1.forEach($$0x -> $$0x.c.b(new yc(yc.k, this.aS() ? 0.0F : 1.0F)));
+   default void b(bji $$0, float $$1) {
+      bgz $$2 = ccp.a($$0, cjk.uZ);
+      cjh $$3 = $$0.b($$2);
+      if ($$0.b(cjk.uZ)) {
+         chp.a($$0.dL(), $$0, $$2, $$3, $$1, (float)(14 - $$0.dL().ai().a() * 4));
       }
 
-      if (!this.fP()) {
-         this.a(this.dl(), 16);
-      }
+      this.a();
    }
 
-   @Override
-   protected Vector3f a(biq $$0, bir $$1, float $$2) {
-      return new Vector3f(0.0F, $$1.b + 0.353125F * $$2, 0.0F);
+   default void a(bji $$0, bji $$1, cco $$2, float $$3, float $$4) {
+      double $$5 = $$1.dq() - $$0.dq();
+      double $$6 = $$1.dw() - $$0.dw();
+      double $$7 = Math.sqrt($$5 * $$5 + $$6 * $$6);
+      double $$8 = $$1.e(0.3333333333333333) - $$2.ds() + $$7 * 0.2F;
+      Vector3f $$9 = this.a($$0, new ehp($$5, $$8, $$6), $$3);
+      $$2.c((double)$$9.x(), (double)$$9.y(), (double)$$9.z(), $$4, (float)(14 - $$0.dL().ai().a() * 4));
+      $$0.a(apf.fq, 1.0F, 1.0F / ($$0.ef().i() * 0.4F + 0.8F));
+   }
+
+   default Vector3f a(bji $$0, ehp $$1, float $$2) {
+      Vector3f $$3 = $$1.j().normalize();
+      Vector3f $$4 = new Vector3f($$3).cross(new Vector3f(0.0F, 1.0F, 0.0F));
+      if ((double)$$4.lengthSquared() <= 1.0E-7) {
+         ehp $$5 = $$0.i(1.0F);
+         $$4 = new Vector3f($$3).cross($$5.j());
+      }
+
+      Vector3f $$6 = new Vector3f($$3).rotateAxis((float) (Math.PI / 2), $$4.x, $$4.y, $$4.z);
+      return new Vector3f($$3).rotateAxis($$2 * (float) (Math.PI / 180.0), $$6.x, $$6.y, $$6.z);
    }
 }

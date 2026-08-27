@@ -2,18 +2,22 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class rb extends rl {
+public class rb extends rm {
    private static final int c = 12;
    public static final rb a = new rb(0.0F);
-   public static final rt<rb> b = new rt.a<rb>() {
-      public rb a(DataInput $$0, int $$1, rh $$2) throws IOException {
-         $$2.a(12L);
-         return rb.a($$0.readFloat());
+   public static final ru<rb> b = new ru.a<rb>() {
+      public rb a(DataInput $$0, rh $$1) throws IOException {
+         return rb.a(d($$0, $$1));
       }
 
       @Override
-      public ro.b a(DataInput $$0, ro $$1) throws IOException {
-         return $$1.a($$0.readFloat());
+      public rp.b a(DataInput $$0, rp $$1, rh $$2) throws IOException {
+         return $$1.a(d($$0, $$2));
+      }
+
+      private static float d(DataInput $$0, rh $$1) throws IOException {
+         $$1.b(12L);
+         return $$0.readFloat();
       }
 
       @Override
@@ -62,7 +66,7 @@ public class rb extends rl {
    }
 
    @Override
-   public rt<rb> c() {
+   public ru<rb> c() {
       return b;
    }
 
@@ -81,7 +85,7 @@ public class rb extends rl {
    }
 
    @Override
-   public void a(rv $$0) {
+   public void a(rw $$0) {
       $$0.a(this);
    }
 
@@ -92,17 +96,17 @@ public class rb extends rl {
 
    @Override
    public int g() {
-      return arx.d(this.w);
+      return ary.d(this.w);
    }
 
    @Override
    public short h() {
-      return (short)(arx.d(this.w) & 65535);
+      return (short)(ary.d(this.w) & 65535);
    }
 
    @Override
    public byte i() {
-      return (byte)(arx.d(this.w) & 0xFF);
+      return (byte)(ary.d(this.w) & 0xFF);
    }
 
    @Override
@@ -121,7 +125,7 @@ public class rb extends rl {
    }
 
    @Override
-   public ro.b a(ro $$0) {
+   public rp.b a(rp $$0) {
       return $$0.a(this.w);
    }
 }

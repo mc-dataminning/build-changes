@@ -192,21 +192,21 @@ public class qo {
 
    private static int a(dt $$0, String $$1, int $$2, int $$3, int $$4) {
       if ($$2 <= 48 && $$3 <= 48 && $$4 <= 48) {
-         akr $$5 = $$0.e();
+         aks $$5 = $$0.e();
          gw $$6 = gw.a($$0.d());
-         gw $$7 = new gw($$6.u(), $$0.e().a(dks.a.b, $$6).v(), $$6.w() + 3);
-         ql.a($$1.toLowerCase(), $$7, new ib($$2, $$3, $$4), czh.a, $$5);
+         gw $$7 = new gw($$6.u(), $$0.e().a(dku.a.b, $$6).v(), $$6.w() + 3);
+         ql.a($$1.toLowerCase(), $$7, new ib($$2, $$3, $$4), czj.a, $$5);
 
          for (int $$8 = 0; $$8 < $$2; $$8++) {
             for (int $$9 = 0; $$9 < $$4; $$9++) {
                gw $$10 = new gw($$7.u() + $$8, $$7.v() + 1, $$7.w() + $$9);
-               csv $$11 = csw.h;
+               csx $$11 = csy.h;
                ff $$12 = new ff($$11.n(), Collections.emptySet(), null);
                $$12.a($$5, $$10, 2);
             }
          }
 
-         ql.a($$7, new gw(1, 0, -1), czh.a, $$5);
+         ql.a($$7, new gw(1, 0, -1), czj.a, $$5);
          return 0;
       } else {
          throw new IllegalArgumentException("The structure must be less than 48 blocks big in each axis");
@@ -214,39 +214,39 @@ public class qo {
    }
 
    private static int a(dt $$0, String $$1) throws CommandSyntaxException {
-      ehj $$2 = (ehj)$$0.h().a(10.0, 1.0F, false);
+      ehl $$2 = (ehl)$$0.h().a(10.0, 1.0F, false);
       gw $$3 = $$2.a();
-      akr $$4 = $$0.e();
+      aks $$4 = $$0.e();
       Optional<gw> $$5 = ql.a($$3, 15, $$4);
       if ($$5.isEmpty()) {
          $$5 = ql.a($$3, 200, $$4);
       }
 
       if ($$5.isEmpty()) {
-         $$0.b(tm.b("Can't find a structure block that contains the targeted pos " + $$3));
+         $$0.b(tn.b("Can't find a structure block that contains the targeted pos " + $$3));
          return 0;
       } else {
-         dei $$6 = (dei)$$4.c_($$5.get());
+         dek $$6 = (dek)$$4.c_($$5.get());
          gw $$7 = $$3.b($$5.get());
          String $$8 = $$7.u() + ", " + $$7.v() + ", " + $$7.w();
          String $$9 = $$6.f();
-         tm $$10 = tm.b($$8)
+         tn $$10 = tn.b($$8)
             .b(
-               ui.a
+               uj.a
                   .a(true)
                   .a(n.k)
-                  .a(new tr(tr.a.a, tm.b("Click to copy to clipboard")))
-                  .a(new tk(tk.a.f, "final BlockPos " + $$1 + " = new BlockPos(" + $$8 + ");"))
+                  .a(new ts(ts.a.a, tn.b("Click to copy to clipboard")))
+                  .a(new tl(tl.a.f, "final BlockPos " + $$1 + " = new BlockPos(" + $$8 + ");"))
             );
-         $$0.a(() -> tm.b("Position relative to " + $$9 + ": ").b($$10), false);
-         abc.a($$4, new gw($$3), $$8, -2147418368, 10000);
+         $$0.a(() -> tn.b("Position relative to " + $$9 + ": ").b($$10), false);
+         abd.a($$4, new gw($$3), $$8, -2147418368, 10000);
          return 1;
       }
    }
 
    private static int a(dt $$0) {
       gw $$1 = gw.a($$0.d());
-      akr $$2 = $$0.e();
+      aks $$2 = $$0.e();
       gw $$3 = ql.b($$1, 15, $$2);
       if ($$3 == null) {
          a($$2, "Couldn't find any structure block within 15 radius", n.m);
@@ -260,7 +260,7 @@ public class qo {
 
    private static int b(dt $$0) {
       gw $$1 = gw.a($$0.d());
-      akr $$2 = $$0.e();
+      aks $$2 = $$0.e();
       Collection<gw> $$3 = ql.c($$1, 200, $$2);
       if ($$3.isEmpty()) {
          a($$2, "Couldn't find any structure blocks within 200 block radius", n.m);
@@ -274,8 +274,8 @@ public class qo {
       }
    }
 
-   private static void a(akr $$0, gw $$1, @Nullable qj $$2) {
-      dei $$3 = (dei)$$0.c_($$1);
+   private static void a(aks $$0, gw $$1, @Nullable qj $$2) {
+      dek $$3 = (dek)$$0.c_($$1);
       String $$4 = $$3.f();
       qp $$5 = qa.f($$4);
       py $$6 = new py($$5, $$3.w(), $$0);
@@ -285,12 +285,12 @@ public class qo {
       }
 
       a($$5, $$0);
-      ehi $$7 = ql.a($$3);
+      ehk $$7 = ql.a($$3);
       gw $$8 = gw.a($$7.a, $$7.b, $$7.c);
       qb.a($$6, $$8, qe.a);
    }
 
-   static void a(akr $$0, qj $$1) {
+   static void a(aks $$0, qj $$1) {
       if ($$1.i()) {
          a($$0, "GameTest done! " + $$1.h() + " tests were run", n.p);
          if ($$1.d()) {
@@ -306,28 +306,28 @@ public class qo {
    }
 
    private static int a(dt $$0, int $$1) {
-      akr $$2 = $$0.e();
+      aks $$2 = $$0.e();
       qb.a($$2);
-      gw $$3 = gw.a($$0.d().c, (double)$$0.e().a(dks.a.b, gw.a($$0.d())).v(), $$0.d().e);
-      qb.a($$2, $$3, qe.a, arx.a($$1, 0, 1024));
+      gw $$3 = gw.a($$0.d().c, (double)$$0.e().a(dku.a.b, gw.a($$0.d())).v(), $$0.d().e);
+      qb.a($$2, $$3, qe.a, ary.a($$1, 0, 1024));
       return 1;
    }
 
    private static int a(dt $$0, qp $$1, int $$2) {
-      akr $$3 = $$0.e();
+      aks $$3 = $$0.e();
       gw $$4 = gw.a($$0.d());
-      int $$5 = $$0.e().a(dks.a.b, $$4).v();
+      int $$5 = $$0.e().a(dku.a.b, $$4).v();
       gw $$6 = new gw($$4.u(), $$5, $$4.w() + 3);
       qb.a($$3);
       a($$1, $$3);
-      czh $$7 = ql.a($$2);
+      czj $$7 = ql.a($$2);
       py $$8 = new py($$1, $$7, $$3);
       qb.a($$8, $$6, qe.a);
       return 1;
    }
 
-   private static void a(qp $$0, akr $$1) {
-      Consumer<akr> $$2 = qa.c($$0.e());
+   private static void a(qp $$0, aks $$1) {
+      Consumer<aks> $$2 = qa.c($$0.e());
       if ($$2 != null) {
          $$2.accept($$1);
       }
@@ -372,9 +372,9 @@ public class qo {
 
    private static void a(dt $$0, Collection<qp> $$1, int $$2, int $$3) {
       gw $$4 = gw.a($$0.d());
-      gw $$5 = new gw($$4.u(), $$0.e().a(dks.a.b, $$4).v(), $$4.w() + 3);
-      akr $$6 = $$0.e();
-      czh $$7 = ql.a($$2);
+      gw $$5 = new gw($$4.u(), $$0.e().a(dku.a.b, $$4).v(), $$4.w() + 3);
+      aks $$6 = $$0.e();
+      czj $$7 = ql.a($$2);
       Collection<py> $$8 = qb.b($$1, $$5, $$7, $$6, qe.a, $$3);
       qj $$9 = new qj($$8);
       $$9.a(new qo.a($$6, $$9));
@@ -382,18 +382,18 @@ public class qo {
    }
 
    private static void b(dt $$0, String $$1) {
-      $$0.a(() -> tm.b($$1), false);
+      $$0.a(() -> tn.b($$1), false);
    }
 
    private static int c(dt $$0) {
       gw $$1 = gw.a($$0.d());
-      akr $$2 = $$0.e();
+      aks $$2 = $$0.e();
       gw $$3 = ql.b($$1, 15, $$2);
       if ($$3 == null) {
          a($$2, "Couldn't find any structure block within 15 radius", n.m);
          return 0;
       } else {
-         dei $$4 = (dei)$$2.c_($$3);
+         dek $$4 = (dek)$$2.c_($$3);
          String $$5 = $$4.f();
          return c($$0, $$5);
       }
@@ -401,7 +401,7 @@ public class qo {
 
    private static int d(dt $$0) {
       gw $$1 = gw.a($$0.d());
-      akr $$2 = $$0.e();
+      aks $$2 = $$0.e();
       Collection<gw> $$3 = ql.c($$1, 200, $$2);
       if ($$3.isEmpty()) {
          a($$2, "Couldn't find any structure blocks within 200 block radius", n.m);
@@ -410,7 +410,7 @@ public class qo {
          boolean $$4 = true;
 
          for (gw $$5 : $$3) {
-            dei $$6 = (dei)$$2.c_($$5);
+            dek $$6 = (dek)$$2.c_($$5);
             String $$7 = $$6.f();
             if (c($$0, $$7) != 0) {
                $$4 = false;
@@ -423,7 +423,7 @@ public class qo {
 
    private static int c(dt $$0, String $$1) {
       Path $$2 = Paths.get(ql.b);
-      aex $$3 = new aex("minecraft", $$1);
+      aey $$3 = new aey("minecraft", $$1);
       Path $$4 = $$0.e().p().a($$3, ".nbt");
       Path $$5 = ml.a(ji.a, $$4, $$1, $$2);
       if ($$5 == null) {
@@ -445,7 +445,7 @@ public class qo {
 
    private static int d(dt $$0, String $$1) {
       Path $$2 = Paths.get(ql.b, $$1 + ".snbt");
-      aex $$3 = new aex("minecraft", $$1);
+      aey $$3 = new aey("minecraft", $$1);
       Path $$4 = $$0.e().p().a($$3, ".nbt");
 
       try {
@@ -454,7 +454,7 @@ public class qo {
          Files.createDirectories($$4.getParent());
 
          try (OutputStream $$7 = Files.newOutputStream($$4)) {
-            ri.a(rk.a($$6), $$7);
+            rj.a(rl.a($$6), $$7);
          }
 
          b($$0, "Imported to " + $$4.toAbsolutePath());
@@ -465,15 +465,15 @@ public class qo {
       }
    }
 
-   private static void a(akr $$0, String $$1, n $$2) {
-      $$0.a($$0x -> true).forEach($$2x -> $$2x.a(tm.b($$2 + $$1)));
+   private static void a(aks $$0, String $$1, n $$2) {
+      $$0.a($$0x -> true).forEach($$2x -> $$2x.a(tn.b($$2 + $$1)));
    }
 
    static class a implements pz {
-      private final akr a;
+      private final aks a;
       private final qj b;
 
-      public a(akr $$0, qj $$1) {
+      public a(aks $$0, qj $$1) {
          this.a = $$0;
          this.b = $$1;
       }

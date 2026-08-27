@@ -1,69 +1,82 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class eel extends eec {
+public class eel extends eee {
+   private static final Codec<Pair<hg<dco>, chv>> b = Codec.mapPair(jd.al.r().fieldOf("pattern"), chv.q.fieldOf("color")).codec();
    public static final Codec<eel> a = RecordCodecBuilder.create(
       $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  aex.a.fieldOf("name").forGetter($$0x -> $$0x.b),
-                  arg.a(Codec.LONG, "seed", 0L).forGetter($$0x -> $$0x.c),
-                  jd.l.r().fieldOf("type").forGetter($$0x -> $$0x.d)
-               )
-            )
+            .and($$0.group(b.listOf().fieldOf("patterns").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("append").forGetter($$0x -> $$0x.d)))
             .apply($$0, eel::new)
    );
-   private final aex b;
-   private final long c;
-   private final hg<dcx<?>> d;
+   private final List<Pair<hg<dco>, chv>> c;
+   private final boolean d;
 
-   private eel(List<efp> $$0, aex $$1, long $$2, hg<dcx<?>> $$3) {
+   eel(List<efr> $$0, List<Pair<hg<dco>, chv>> $$1, boolean $$2) {
       super($$0);
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public eee b() {
-      return eef.s;
-   }
+   protected cjh a(cjh $$0, ecs $$1) {
+      qy $$2 = cha.a($$0);
+      if ($$2 == null) {
+         $$2 = new qy();
+      }
 
-   @Override
-   public cjf a(cjf $$0, ecq $$1) {
-      if ($$0.b()) {
-         return $$0;
+      dco.a $$3 = new dco.a();
+      this.c.forEach($$3::a);
+      re $$4 = $$3.a();
+      re $$5;
+      if (this.d) {
+         $$5 = $$2.c("Patterns", 10).e();
+         $$5.addAll($$4);
       } else {
-         qy $$2 = cgy.a($$0);
-         if ($$2 == null) {
-            $$2 = new qy();
-         }
-
-         $$2.a("LootTable", this.b.toString());
-         if (this.c != 0L) {
-            $$2.a("LootTableSeed", this.c);
-         }
-
-         cgy.a($$0, this.d.a(), $$2);
-         return $$0;
+         $$5 = $$4;
       }
+
+      $$2.a("Patterns", $$5);
+      cha.a($$0, dcz.t, $$2);
+      return $$0;
    }
 
    @Override
-   public void a(ecz $$0) {
-      super.a($$0);
-      ecs<ecy> $$1 = new ecs<>(ecv.c, this.b);
-      if ($$0.b().getElementOptional($$1).isEmpty()) {
-         $$0.a("Missing loot table used for container: " + this.b);
+   public eeg b() {
+      return eeh.y;
+   }
+
+   public static eel.a a(boolean $$0) {
+      return new eel.a($$0);
+   }
+
+   public static class a extends eee.a<eel.a> {
+      private final Builder<Pair<hg<dco>, chv>> a = ImmutableList.builder();
+      private final boolean b;
+
+      a(boolean $$0) {
+         this.b = $$0;
       }
-   }
 
-   public static eec.a<?> a(dcx<?> $$0, aex $$1) {
-      return a($$2 -> new eel($$2, $$1, 0L, $$0.a()));
-   }
+      protected eel.a a() {
+         return this;
+      }
 
-   public static eec.a<?> a(dcx<?> $$0, aex $$1, long $$2) {
-      return a($$3 -> new eel($$3, $$1, $$2, $$0.a()));
+      @Override
+      public eef b() {
+         return new eel(this.g(), this.a.build(), this.b);
+      }
+
+      public eel.a a(aex<dco> $$0, chv $$1) {
+         return this.a(jd.al.f($$0), $$1);
+      }
+
+      public eel.a a(hg<dco> $$0, chv $$1) {
+         this.a.add(Pair.of($$0, $$1));
+         return this;
+      }
    }
 }

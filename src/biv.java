@@ -1,74 +1,71 @@
-public enum biv implements asp {
-   a(biv.a.a, 0, 0, "mainhand"),
-   b(biv.a.a, 1, 5, "offhand"),
-   c(biv.a.b, 0, 1, "feet"),
-   d(biv.a.b, 1, 2, "legs"),
-   e(biv.a.b, 2, 3, "chest"),
-   f(biv.a.b, 3, 4, "head");
+import com.google.common.base.Predicates;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   public static final asp.a<biv> g = asp.a(biv::values);
-   private final biv.a h;
-   private final int i;
-   private final int j;
-   private final String k;
+public final class biv {
+   public static final Predicate<bis> a = bis::bv;
+   public static final Predicate<bis> b = $$0 -> $$0.bv() && $$0 instanceof bji;
+   public static final Predicate<bis> c = $$0 -> $$0.bv() && !$$0.bO() && !$$0.bN();
+   public static final Predicate<bis> d = $$0 -> $$0 instanceof bgt && $$0.bv();
+   public static final Predicate<bis> e = $$0 -> !($$0 instanceof cbw) || !$$0.M_() && !((cbw)$$0).f();
+   public static final Predicate<bis> f = $$0 -> !$$0.M_();
+   public static final Predicate<bis> g = f.and(bis::bx);
 
-   private biv(biv.a $$0, int $$1, int $$2, String $$3) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
-      this.k = $$3;
+   private biv() {
    }
 
-   public biv.a a() {
-      return this.h;
+   public static Predicate<bis> a(double $$0, double $$1, double $$2, double $$3) {
+      double $$4 = $$3 * $$3;
+      return $$4x -> $$4x != null && $$4x.i($$0, $$1, $$2) <= $$4;
    }
 
-   public int b() {
-      return this.i;
+   public static Predicate<bis> a(bis $$0) {
+      eiq $$1 = $$0.cf();
+      eiq.a $$2 = $$1 == null ? eiq.a.a : $$1.l();
+      return (Predicate<bis>)($$2 == eiq.a.b ? Predicates.alwaysFalse() : f.and($$3 -> {
+         if (!$$3.bs()) {
+            return false;
+         } else if (!$$0.dL().B || $$3 instanceof cbw && ((cbw)$$3).g()) {
+            eiq $$4 = $$3.cf();
+            eiq.a $$5 = $$4 == null ? eiq.a.a : $$4.l();
+            if ($$5 == eiq.a.b) {
+               return false;
+            } else {
+               boolean $$6 = $$1 != null && $$1.a($$4);
+               return ($$2 == eiq.a.d || $$5 == eiq.a.d) && $$6 ? false : $$2 != eiq.a.c && $$5 != eiq.a.c || $$6;
+            }
+         } else {
+            return false;
+         }
+      }));
    }
 
-   public int a(int $$0) {
-      return $$0 + this.i;
+   public static Predicate<bis> b(bis $$0) {
+      return $$1 -> {
+         while ($$1.bN()) {
+            $$1 = $$1.cY();
+            if ($$1 == $$0) {
+               return false;
+            }
+         }
+
+         return true;
+      };
    }
 
-   public int d() {
-      return this.j;
-   }
+   public static class a implements Predicate<bis> {
+      private final cjh a;
 
-   public String e() {
-      return this.k;
-   }
-
-   public boolean f() {
-      return this.h == biv.a.b;
-   }
-
-   @Override
-   public String c() {
-      return this.k;
-   }
-
-   public static biv a(String $$0) {
-      biv $$1 = g.a($$0);
-      if ($$1 != null) {
-         return $$1;
-      } else {
-         throw new IllegalArgumentException("Invalid slot '" + $$0 + "'");
+      public a(cjh $$0) {
+         this.a = $$0;
       }
-   }
 
-   public static biv a(biv.a $$0, int $$1) {
-      for (biv $$2 : values()) {
-         if ($$2.a() == $$0 && $$2.b() == $$1) {
-            return $$2;
+      public boolean a(@Nullable bis $$0) {
+         if (!$$0.bv()) {
+            return false;
+         } else {
+            return !($$0 instanceof bji $$1) ? false : $$1.f(this.a);
          }
       }
-
-      throw new IllegalArgumentException("Invalid slot '" + $$0 + "': " + $$1);
-   }
-
-   public static enum a {
-      a,
-      b;
    }
 }

@@ -1,36 +1,43 @@
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class dgj extends dgm<Integer> {
-   private final ImmutableSet<Integer> a;
-   private final int b;
-   private final int c;
+public class dgj<T extends Enum<T> & asr> extends dgo<T> {
+   private final ImmutableSet<T> a;
+   private final Map<String, T> b = Maps.newHashMap();
 
-   protected dgj(String $$0, int $$1, int $$2) {
-      super($$0, Integer.class);
-      if ($$1 < 0) {
-         throw new IllegalArgumentException("Min value of " + $$0 + " must be 0 or greater");
-      } else if ($$2 <= $$1) {
-         throw new IllegalArgumentException("Max value of " + $$0 + " must be greater than min (" + $$1 + ")");
-      } else {
-         this.b = $$1;
-         this.c = $$2;
-         Set<Integer> $$3 = Sets.newHashSet();
+   protected dgj(String $$0, Class<T> $$1, Collection<T> $$2) {
+      super($$0, $$1);
+      this.a = ImmutableSet.copyOf($$2);
 
-         for (int $$4 = $$1; $$4 <= $$2; $$4++) {
-            $$3.add($$4);
+      for (T $$3 : $$2) {
+         String $$4 = $$3.c();
+         if (this.b.containsKey($$4)) {
+            throw new IllegalArgumentException("Multiple values have the same name '" + $$4 + "'");
          }
 
-         this.a = ImmutableSet.copyOf($$3);
+         this.b.put($$4, $$3);
       }
    }
 
    @Override
-   public Collection<Integer> a() {
+   public Collection<T> a() {
       return this.a;
+   }
+
+   @Override
+   public Optional<T> b(String $$0) {
+      return Optional.ofNullable(this.b.get($$0));
+   }
+
+   public String a(T $$0) {
+      return $$0.c();
    }
 
    @Override
@@ -38,8 +45,8 @@ public class dgj extends dgm<Integer> {
       if (this == $$0) {
          return true;
       } else {
-         if ($$0 instanceof dgj $$1 && super.equals($$0)) {
-            return this.a.equals($$1.a);
+         if ($$0 instanceof dgj<?> $$1 && super.equals($$0)) {
+            return this.a.equals($$1.a) && this.b.equals($$1.b);
          }
 
          return false;
@@ -48,24 +55,24 @@ public class dgj extends dgm<Integer> {
 
    @Override
    public int b() {
-      return 31 * super.b() + this.a.hashCode();
+      int $$0 = super.b();
+      $$0 = 31 * $$0 + this.a.hashCode();
+      return 31 * $$0 + this.b.hashCode();
    }
 
-   public static dgj a(String $$0, int $$1, int $$2) {
-      return new dgj($$0, $$1, $$2);
+   public static <T extends Enum<T> & asr> dgj<T> a(String $$0, Class<T> $$1) {
+      return a($$0, $$1, $$0x -> true);
    }
 
-   @Override
-   public Optional<Integer> b(String $$0) {
-      try {
-         Integer $$1 = Integer.valueOf($$0);
-         return $$1 >= this.b && $$1 <= this.c ? Optional.of($$1) : Optional.empty();
-      } catch (NumberFormatException var3) {
-         return Optional.empty();
-      }
+   public static <T extends Enum<T> & asr> dgj<T> a(String $$0, Class<T> $$1, Predicate<T> $$2) {
+      return a($$0, $$1, Arrays.<T>stream($$1.getEnumConstants()).filter($$2).collect(Collectors.toList()));
    }
 
-   public String a(Integer $$0) {
-      return $$0.toString();
+   public static <T extends Enum<T> & asr> dgj<T> a(String $$0, Class<T> $$1, T... $$2) {
+      return a($$0, $$1, Lists.newArrayList($$2));
+   }
+
+   public static <T extends Enum<T> & asr> dgj<T> a(String $$0, Class<T> $$1, Collection<T> $$2) {
+      return new dgj<>($$0, $$1, $$2);
    }
 }

@@ -1,54 +1,54 @@
 import java.util.concurrent.CompletableFuture;
 
-public class mq extends ne<dcm> {
+public class mq extends ne<dco> {
    public mq(jm $$0, CompletableFuture<hi.b> $$1) {
       super($$0, je.c, $$1);
    }
 
    @Override
    protected void a(hi.b $$0) {
-      this.b(apr.a)
+      this.b(aps.a)
          .a(
-            dcn.b,
-            dcn.c,
-            dcn.d,
-            dcn.e,
-            dcn.f,
-            dcn.g,
-            dcn.h,
-            dcn.i,
-            dcn.j,
-            dcn.k,
-            dcn.l,
-            dcn.m,
-            dcn.n,
-            dcn.o,
-            dcn.p,
-            dcn.q,
-            dcn.r,
-            dcn.s,
-            dcn.t,
-            dcn.u,
-            dcn.v,
-            dcn.w,
-            dcn.x,
-            dcn.y,
-            dcn.z,
-            dcn.A,
-            dcn.B,
-            dcn.C,
-            dcn.D,
-            dcn.E,
-            dcn.F,
-            dcn.G,
-            dcn.H,
-            dcn.I
+            dcp.b,
+            dcp.c,
+            dcp.d,
+            dcp.e,
+            dcp.f,
+            dcp.g,
+            dcp.h,
+            dcp.i,
+            dcp.j,
+            dcp.k,
+            dcp.l,
+            dcp.m,
+            dcp.n,
+            dcp.o,
+            dcp.p,
+            dcp.q,
+            dcp.r,
+            dcp.s,
+            dcp.t,
+            dcp.u,
+            dcp.v,
+            dcp.w,
+            dcp.x,
+            dcp.y,
+            dcp.z,
+            dcp.A,
+            dcp.B,
+            dcp.C,
+            dcp.D,
+            dcp.E,
+            dcp.F,
+            dcp.G,
+            dcp.H,
+            dcp.I
          );
-      this.b(apr.b).a(dcn.M);
-      this.b(apr.c).a(dcn.K);
-      this.b(apr.d).a(dcn.L);
-      this.b(apr.e).a(dcn.N);
-      this.b(apr.f).a(dcn.J);
-      this.b(apr.g).a(dcn.O);
+      this.b(aps.b).a(dcp.M);
+      this.b(aps.c).a(dcp.K);
+      this.b(aps.d).a(dcp.L);
+      this.b(aps.e).a(dcp.N);
+      this.b(aps.f).a(dcp.J);
+      this.b(aps.g).a(dcp.O);
    }
 }

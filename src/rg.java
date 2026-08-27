@@ -2,17 +2,21 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class rg extends rl {
+public class rg extends rm {
    private static final int b = 16;
-   public static final rt<rg> a = new rt.a<rg>() {
-      public rg a(DataInput $$0, int $$1, rh $$2) throws IOException {
-         $$2.a(16L);
-         return rg.a($$0.readLong());
+   public static final ru<rg> a = new ru.a<rg>() {
+      public rg a(DataInput $$0, rh $$1) throws IOException {
+         return rg.a(d($$0, $$1));
       }
 
       @Override
-      public ro.b a(DataInput $$0, ro $$1) throws IOException {
-         return $$1.a($$0.readLong());
+      public rp.b a(DataInput $$0, rp $$1, rh $$2) throws IOException {
+         return $$1.a(d($$0, $$2));
+      }
+
+      private static long d(DataInput $$0, rh $$1) throws IOException {
+         $$1.b(16L);
+         return $$0.readLong();
       }
 
       @Override
@@ -61,7 +65,7 @@ public class rg extends rl {
    }
 
    @Override
-   public rt<rg> c() {
+   public ru<rg> c() {
       return a;
    }
 
@@ -80,7 +84,7 @@ public class rg extends rl {
    }
 
    @Override
-   public void a(rv $$0) {
+   public void a(rw $$0) {
       $$0.a(this);
    }
 
@@ -120,7 +124,7 @@ public class rg extends rl {
    }
 
    @Override
-   public ro.b a(ro $$0) {
+   public rp.b a(rp $$0) {
       return $$0.a(this.c);
    }
 

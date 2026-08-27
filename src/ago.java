@@ -1,58 +1,195 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UncheckedIOException;
+import java.io.Writer;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Collection;
+import java.util.Locale;
 import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
 public class ago {
+   private static final Logger a = LogUtils.getLogger();
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tn.c("commands.debug.notRunning"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tn.c("commands.debug.alreadyRunning"));
+
    public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("debugconfig").requires($$0x -> $$0x.c(3)))
-               .then(du.a("config").then(du.a("target", ee.c()).executes($$0x -> a((dt)$$0x.getSource(), ee.e($$0x, "target"))))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("debug").requires($$0x -> $$0x.c(3)))
+                  .then(du.a("start").executes($$0x -> a((dt)$$0x.getSource()))))
+               .then(du.a("stop").executes($$0x -> b((dt)$$0x.getSource()))))
             .then(
-               du.a("unconfig")
-                  .then(
-                     du.a("target", fe.a())
-                        .suggests(($$0x, $$1) -> dw.b(a(((dt)$$0x.getSource()).l()), $$1))
-                        .executes($$0x -> a((dt)$$0x.getSource(), fe.a($$0x, "target")))
-                  )
+               ((LiteralArgumentBuilder)du.a("function").requires($$0x -> $$0x.c(3)))
+                  .then(du.a("name", fv.a()).suggests(ahc.a).executes($$0x -> a((dt)$$0x.getSource(), fv.a($$0x, "name"))))
             )
       );
    }
 
-   private static Iterable<String> a(MinecraftServer $$0) {
-      Set<String> $$1 = new HashSet<>();
-
-      for (sn $$2 : $$0.ad().e()) {
-         if ($$2.m() instanceof alo $$3) {
-            $$1.add($$3.k().getId().toString());
-         }
+   private static int a(dt $$0) throws CommandSyntaxException {
+      MinecraftServer $$1 = $$0.l();
+      if ($$1.aZ()) {
+         throw c.create();
+      } else {
+         $$1.ba();
+         $$0.a(() -> tn.c("commands.debug.started"), true);
+         return 0;
       }
-
-      return $$1;
    }
 
-   private static int a(dt $$0, aks $$1) {
-      GameProfile $$2 = $$1.fQ();
-      $$1.c.o();
-      $$0.a(() -> tm.b("Switched player " + $$2.getName() + "(" + $$2.getId() + ") to config mode"), false);
-      return 1;
+   private static int b(dt $$0) throws CommandSyntaxException {
+      MinecraftServer $$1 = $$0.l();
+      if (!$$1.aZ()) {
+         throw b.create();
+      } else {
+         bdq $$2 = $$1.bb();
+         double $$3 = (double)$$2.g() / (double)asw.a;
+         double $$4 = (double)$$2.f() / $$3;
+         $$0.a(() -> tn.a("commands.debug.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2.f(), String.format(Locale.ROOT, "%.2f", $$4)), true);
+         return (int)$$4;
+      }
    }
 
-   private static int a(dt $$0, UUID $$1) {
-      for (sn $$2 : $$0.l().ad().e()) {
-         sv var5 = $$2.m();
-         if (var5 instanceof alo) {
-            alo $$3 = (alo)var5;
-            if ($$3.k().getId().equals($$1)) {
-               $$3.n();
+   private static int a(dt $$0, Collection<dp> $$1) {
+      int $$2 = 0;
+      MinecraftServer $$3 = $$0.l();
+      String $$4 = "debug-trace-" + ac.e() + ".txt";
+
+      try {
+         Path $$5 = $$3.c("debug").toPath();
+         Files.createDirectories($$5);
+
+         try (Writer $$6 = Files.newBufferedWriter($$5.resolve($$4), StandardCharsets.UTF_8)) {
+            PrintWriter $$7 = new PrintWriter($$6);
+
+            for (dp $$8 : $$1) {
+               $$7.println($$8.a());
+               ago.a $$9 = new ago.a($$7);
+
+               try {
+                  $$2 += $$0.l().aA().a($$8, $$0.a($$9).b(2), $$9, null);
+               } catch (dv var13) {
+                  $$0.b(var13.a());
+               }
             }
          }
+      } catch (IOException | UncheckedIOException var15) {
+         a.warn("Tracing failed", var15);
+         $$0.b(tn.c("commands.debug.function.traceFailed"));
       }
 
-      $$0.b(tm.b("Can't find player to unconfig"));
-      return 0;
+      int $$12 = $$2;
+      if ($$1.size() == 1) {
+         $$0.a(() -> tn.a("commands.debug.function.success.single", $$12, $$1.iterator().next().a(), $$4), true);
+      } else {
+         $$0.a(() -> tn.a("commands.debug.function.success.multiple", $$12, $$1.size(), $$4), true);
+      }
+
+      return $$2;
+   }
+
+   static class a implements afm.c, ds {
+      public static final int b = 1;
+      private final PrintWriter c;
+      private int d;
+      private boolean e;
+
+      a(PrintWriter $$0) {
+         this.c = $$0;
+      }
+
+      private void a(int $$0) {
+         this.b($$0);
+         this.d = $$0;
+      }
+
+      private void b(int $$0) {
+         for (int $$1 = 0; $$1 < $$0 + 1; $$1++) {
+            this.c.write("    ");
+         }
+      }
+
+      private void e() {
+         if (this.e) {
+            this.c.println();
+            this.e = false;
+         }
+      }
+
+      @Override
+      public void a(int $$0, String $$1) {
+         this.e();
+         this.a($$0);
+         this.c.print("[C] ");
+         this.c.print($$1);
+         this.e = true;
+      }
+
+      @Override
+      public void a(int $$0, String $$1, int $$2) {
+         if (this.e) {
+            this.c.print(" -> ");
+            this.c.println($$2);
+            this.e = false;
+         } else {
+            this.a($$0);
+            this.c.print("[R = ");
+            this.c.print($$2);
+            this.c.print("] ");
+            this.c.println($$1);
+         }
+      }
+
+      @Override
+      public void a(int $$0, aey $$1, int $$2) {
+         this.e();
+         this.a($$0);
+         this.c.print("[F] ");
+         this.c.print($$1);
+         this.c.print(" size=");
+         this.c.println($$2);
+      }
+
+      @Override
+      public void b(int $$0, String $$1) {
+         this.e();
+         this.a($$0 + 1);
+         this.c.print("[E] ");
+         this.c.print($$1);
+      }
+
+      @Override
+      public void a(tn $$0) {
+         this.e();
+         this.b(this.d + 1);
+         this.c.print("[M] ");
+         this.c.println($$0.getString());
+      }
+
+      @Override
+      public boolean j_() {
+         return true;
+      }
+
+      @Override
+      public boolean v_() {
+         return true;
+      }
+
+      @Override
+      public boolean T_() {
+         return false;
+      }
+
+      @Override
+      public boolean k_() {
+         return true;
+      }
    }
 }

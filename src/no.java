@@ -2,110 +2,110 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
 public class no {
-   public static void a(nt<dwr> $$0) {
-      hh<dyz> $$1 = $$0.a(je.aA);
-      hg<dyz> $$2 = $$1.b(ob.t);
-      hh<dwr> $$3 = $$0.a(je.aC);
-      hg<dwr> $$4 = $$3.b(oa.a);
+   public static void a(nt<dwt> $$0) {
+      hh<dzb> $$1 = $$0.a(je.aA);
+      hg<dzb> $$2 = $$1.b(ob.t);
+      hh<dwt> $$3 = $$0.a(je.aC);
+      hg<dwt> $$4 = $$3.b(oa.a);
       oa.a(
          $$0,
          "bastion/units/center_pieces",
-         new dwr(
+         new dwt(
             $$4,
             ImmutableList.of(
-               Pair.of(dwp.b("bastion/units/center_pieces/center_0", $$2), 1),
-               Pair.of(dwp.b("bastion/units/center_pieces/center_1", $$2), 1),
-               Pair.of(dwp.b("bastion/units/center_pieces/center_2", $$2), 1)
+               Pair.of(dwr.b("bastion/units/center_pieces/center_0", $$2), 1),
+               Pair.of(dwr.b("bastion/units/center_pieces/center_1", $$2), 1),
+               Pair.of(dwr.b("bastion/units/center_pieces/center_2", $$2), 1)
             ),
-            dwr.a.b
+            dwt.a.b
          )
       );
       oa.a(
          $$0,
          "bastion/units/pathways",
-         new dwr(
+         new dwt(
             $$4,
-            ImmutableList.of(Pair.of(dwp.b("bastion/units/pathways/pathway_0", $$2), 1), Pair.of(dwp.b("bastion/units/pathways/pathway_wall_0", $$2), 1)),
-            dwr.a.b
+            ImmutableList.of(Pair.of(dwr.b("bastion/units/pathways/pathway_0", $$2), 1), Pair.of(dwr.b("bastion/units/pathways/pathway_wall_0", $$2), 1)),
+            dwt.a.b
          )
       );
       oa.a(
          $$0,
          "bastion/units/walls/wall_bases",
-         new dwr(
+         new dwt(
             $$4,
-            ImmutableList.of(Pair.of(dwp.b("bastion/units/walls/wall_base", $$2), 1), Pair.of(dwp.b("bastion/units/walls/connected_wall", $$2), 1)),
-            dwr.a.b
+            ImmutableList.of(Pair.of(dwr.b("bastion/units/walls/wall_base", $$2), 1), Pair.of(dwr.b("bastion/units/walls/connected_wall", $$2), 1)),
+            dwt.a.b
          )
       );
       oa.a(
          $$0,
          "bastion/units/stages/stage_0",
-         new dwr(
+         new dwt(
             $$4,
             ImmutableList.of(
-               Pair.of(dwp.b("bastion/units/stages/stage_0_0", $$2), 1),
-               Pair.of(dwp.b("bastion/units/stages/stage_0_1", $$2), 1),
-               Pair.of(dwp.b("bastion/units/stages/stage_0_2", $$2), 1),
-               Pair.of(dwp.b("bastion/units/stages/stage_0_3", $$2), 1)
+               Pair.of(dwr.b("bastion/units/stages/stage_0_0", $$2), 1),
+               Pair.of(dwr.b("bastion/units/stages/stage_0_1", $$2), 1),
+               Pair.of(dwr.b("bastion/units/stages/stage_0_2", $$2), 1),
+               Pair.of(dwr.b("bastion/units/stages/stage_0_3", $$2), 1)
             ),
-            dwr.a.b
+            dwt.a.b
          )
       );
       oa.a(
          $$0,
          "bastion/units/stages/stage_1",
-         new dwr(
+         new dwt(
             $$4,
             ImmutableList.of(
-               Pair.of(dwp.b("bastion/units/stages/stage_1_0", $$2), 1),
-               Pair.of(dwp.b("bastion/units/stages/stage_1_1", $$2), 1),
-               Pair.of(dwp.b("bastion/units/stages/stage_1_2", $$2), 1),
-               Pair.of(dwp.b("bastion/units/stages/stage_1_3", $$2), 1)
+               Pair.of(dwr.b("bastion/units/stages/stage_1_0", $$2), 1),
+               Pair.of(dwr.b("bastion/units/stages/stage_1_1", $$2), 1),
+               Pair.of(dwr.b("bastion/units/stages/stage_1_2", $$2), 1),
+               Pair.of(dwr.b("bastion/units/stages/stage_1_3", $$2), 1)
             ),
-            dwr.a.b
+            dwt.a.b
          )
       );
-      oa.a($$0, "bastion/units/stages/rot/stage_1", new dwr($$4, ImmutableList.of(Pair.of(dwp.b("bastion/units/stages/rot/stage_1_0", $$2), 1)), dwr.a.b));
+      oa.a($$0, "bastion/units/stages/rot/stage_1", new dwt($$4, ImmutableList.of(Pair.of(dwr.b("bastion/units/stages/rot/stage_1_0", $$2), 1)), dwt.a.b));
       oa.a(
          $$0,
          "bastion/units/stages/stage_2",
-         new dwr(
-            $$4, ImmutableList.of(Pair.of(dwp.b("bastion/units/stages/stage_2_0", $$2), 1), Pair.of(dwp.b("bastion/units/stages/stage_2_1", $$2), 1)), dwr.a.b
+         new dwt(
+            $$4, ImmutableList.of(Pair.of(dwr.b("bastion/units/stages/stage_2_0", $$2), 1), Pair.of(dwr.b("bastion/units/stages/stage_2_1", $$2), 1)), dwt.a.b
          )
       );
       oa.a(
          $$0,
          "bastion/units/stages/stage_3",
-         new dwr(
+         new dwt(
             $$4,
             ImmutableList.of(
-               Pair.of(dwp.b("bastion/units/stages/stage_3_0", $$2), 1),
-               Pair.of(dwp.b("bastion/units/stages/stage_3_1", $$2), 1),
-               Pair.of(dwp.b("bastion/units/stages/stage_3_2", $$2), 1),
-               Pair.of(dwp.b("bastion/units/stages/stage_3_3", $$2), 1)
+               Pair.of(dwr.b("bastion/units/stages/stage_3_0", $$2), 1),
+               Pair.of(dwr.b("bastion/units/stages/stage_3_1", $$2), 1),
+               Pair.of(dwr.b("bastion/units/stages/stage_3_2", $$2), 1),
+               Pair.of(dwr.b("bastion/units/stages/stage_3_3", $$2), 1)
             ),
-            dwr.a.b
+            dwt.a.b
          )
       );
-      oa.a($$0, "bastion/units/fillers/stage_0", new dwr($$4, ImmutableList.of(Pair.of(dwp.b("bastion/units/fillers/stage_0", $$2), 1)), dwr.a.b));
-      oa.a($$0, "bastion/units/edges", new dwr($$4, ImmutableList.of(Pair.of(dwp.b("bastion/units/edges/edge_0", $$2), 1)), dwr.a.b));
-      oa.a($$0, "bastion/units/wall_units", new dwr($$4, ImmutableList.of(Pair.of(dwp.b("bastion/units/wall_units/unit_0", $$2), 1)), dwr.a.b));
-      oa.a($$0, "bastion/units/edge_wall_units", new dwr($$4, ImmutableList.of(Pair.of(dwp.b("bastion/units/wall_units/edge_0_large", $$2), 1)), dwr.a.b));
+      oa.a($$0, "bastion/units/fillers/stage_0", new dwt($$4, ImmutableList.of(Pair.of(dwr.b("bastion/units/fillers/stage_0", $$2), 1)), dwt.a.b));
+      oa.a($$0, "bastion/units/edges", new dwt($$4, ImmutableList.of(Pair.of(dwr.b("bastion/units/edges/edge_0", $$2), 1)), dwt.a.b));
+      oa.a($$0, "bastion/units/wall_units", new dwt($$4, ImmutableList.of(Pair.of(dwr.b("bastion/units/wall_units/unit_0", $$2), 1)), dwt.a.b));
+      oa.a($$0, "bastion/units/edge_wall_units", new dwt($$4, ImmutableList.of(Pair.of(dwr.b("bastion/units/wall_units/edge_0_large", $$2), 1)), dwt.a.b));
       oa.a(
          $$0,
          "bastion/units/ramparts",
-         new dwr(
+         new dwt(
             $$4,
             ImmutableList.of(
-               Pair.of(dwp.b("bastion/units/ramparts/ramparts_0", $$2), 1),
-               Pair.of(dwp.b("bastion/units/ramparts/ramparts_1", $$2), 1),
-               Pair.of(dwp.b("bastion/units/ramparts/ramparts_2", $$2), 1)
+               Pair.of(dwr.b("bastion/units/ramparts/ramparts_0", $$2), 1),
+               Pair.of(dwr.b("bastion/units/ramparts/ramparts_1", $$2), 1),
+               Pair.of(dwr.b("bastion/units/ramparts/ramparts_2", $$2), 1)
             ),
-            dwr.a.b
+            dwt.a.b
          )
       );
-      oa.a($$0, "bastion/units/large_ramparts", new dwr($$4, ImmutableList.of(Pair.of(dwp.b("bastion/units/ramparts/ramparts_0", $$2), 1)), dwr.a.b));
-      oa.a($$0, "bastion/units/rampart_plates", new dwr($$4, ImmutableList.of(Pair.of(dwp.b("bastion/units/rampart_plates/plate_0", $$2), 1)), dwr.a.b));
+      oa.a($$0, "bastion/units/large_ramparts", new dwt($$4, ImmutableList.of(Pair.of(dwr.b("bastion/units/ramparts/ramparts_0", $$2), 1)), dwt.a.b));
+      oa.a($$0, "bastion/units/rampart_plates", new dwt($$4, ImmutableList.of(Pair.of(dwr.b("bastion/units/rampart_plates/plate_0", $$2), 1)), dwt.a.b));
    }
 }

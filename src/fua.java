@@ -1,11 +1,12 @@
-public abstract class fua<T extends byq> extends fun<T, ffr<T>> {
-   protected fua(fth.a $$0, ffr<T> $$1, float $$2) {
-      super($$0, $$1, $$2);
-      this.a(new fwu<>(this, $$0.f(), $$0.d()));
+public abstract class fua<T extends bjk, M extends ffs<T>> extends fup<T, M> {
+   public fua(ftj.a $$0, M $$1, float $$2) {
+      this($$0, $$1, $$2, 1.0F, 1.0F, 1.0F);
    }
 
-   protected void a(T $$0, elp $$1, float $$2) {
-      float $$3 = 0.9375F;
-      $$1.b(0.9375F, 0.9375F, 0.9375F);
+   public fua(ftj.a $$0, M $$1, float $$2, float $$3, float $$4, float $$5) {
+      super($$0, $$1, $$2);
+      this.a(new fww<>(this, $$0.f(), $$3, $$4, $$5, $$0.d()));
+      this.a(new fxa<>(this, $$0.f()));
+      this.a(new fxk<>(this, $$0.d()));
    }
 }

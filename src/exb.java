@@ -1,224 +1,91 @@
-import javax.annotation.Nullable;
+import com.mojang.authlib.minecraft.BanDetails;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.time.Duration;
+import java.time.Instant;
 import org.apache.commons.lang3.StringUtils;
 
-public class exb extends eyk {
-   public static final double a = 7.0;
-   private static final tm c = tm.c("chat_screen.usage");
-   private static final int k = 210;
-   private String l = "";
-   private int m = -1;
-   protected esz b;
-   private String n;
-   est o;
+public class exb {
+   private static final tn b = tn.c("gui.banned.title.temporary").a(n.r);
+   private static final tn c = tn.c("gui.banned.title.permanent").a(n.r);
+   public static final tn a = tn.c("gui.banned.name.title").a(n.r);
+   private static final tn d = tn.c("gui.banned.skin.title").a(n.r);
+   private static final tn e = tn.a("gui.banned.skin.description", tn.b("https://aka.ms/mcjavamoderation"));
 
-   public exb(String $$0) {
-      super(tm.c("chat_screen.title"));
-      this.n = $$0;
+   public static exe a(BooleanConsumer $$0, BanDetails $$1) {
+      return new exe($$0, a($$1), b($$1), "https://aka.ms/mcjavamoderation", tm.m, true);
    }
 
-   @Override
-   protected void aI_() {
-      this.m = this.f.l.d().c().size();
-      this.b = new esz(this.f.i, 4, this.h - 12, this.g - 4, 12, tm.c("chat.editBox")) {
-         @Override
-         protected tz aF_() {
-            return super.aF_().b(exb.this.o.e());
-         }
-      };
-      this.b.l(256);
-      this.b.d(false);
-      this.b.a(this.n);
-      this.b.b(this::b);
-      this.b.f(false);
-      this.e(this.b);
-      this.o = new est(this.f, this, this.b, this.i, false, false, 1, 10, true, -805306368);
-      this.o.b(false);
-      this.o.d();
-      this.c(this.b);
-   }
-
-   @Override
-   public void a(eqv $$0, int $$1, int $$2) {
-      String $$3 = this.b.a();
-      this.b($$0, $$1, $$2);
-      this.c($$3);
-      this.o.d();
-   }
-
-   @Override
-   public void aA_() {
-      this.f.l.d().d();
-   }
-
-   private void b(String $$0) {
-      String $$1 = this.b.a();
-      this.o.a(!$$1.equals(this.n));
-      this.o.d();
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.o.a($$0, $$1, $$2)) {
-         return true;
-      } else if (super.a($$0, $$1, $$2)) {
-         return true;
-      } else if ($$0 == 256) {
-         this.f.a(null);
-         return true;
-      } else if ($$0 == 257 || $$0 == 335) {
-         if (this.b(this.b.a(), true)) {
-            this.f.a(null);
+   public static exe a(Runnable $$0) {
+      String $$1 = "https://aka.ms/mcjavamoderation";
+      return new exe($$1x -> {
+         if ($$1x) {
+            ac.i().a("https://aka.ms/mcjavamoderation");
          }
 
-         return true;
-      } else if ($$0 == 265) {
-         this.a(-1);
-         return true;
-      } else if ($$0 == 264) {
-         this.a(1);
-         return true;
-      } else if ($$0 == 266) {
-         this.f.l.d().a(this.f.l.d().i() - 1);
-         return true;
-      } else if ($$0 == 267) {
-         this.f.l.d().a(-this.f.l.d().i() + 1);
-         return true;
-      } else {
-         return false;
-      }
+         $$0.run();
+      }, d, e, "https://aka.ms/mcjavamoderation", tm.m, true);
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      $$3 = arx.a($$3, -1.0, 1.0);
-      if (this.o.a($$3)) {
-         return true;
-      } else {
-         if (!q()) {
-            $$3 *= 7.0;
+   public static exe a(String $$0, Runnable $$1) {
+      String $$2 = "https://aka.ms/mcjavamoderation";
+      return new exe($$1x -> {
+         if ($$1x) {
+            ac.i().a("https://aka.ms/mcjavamoderation");
          }
 
-         this.f.l.d().a((int)$$3);
-         return true;
-      }
+         $$1.run();
+      }, a, tn.a("gui.banned.name.description", tn.b($$0).a(n.o), "https://aka.ms/mcjavamoderation"), "https://aka.ms/mcjavamoderation", tm.m, true);
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.o.a((double)((int)$$0), (double)((int)$$1), $$2)) {
-         return true;
-      } else {
-         if ($$2 == 0) {
-            esr $$3 = this.f.l.d();
-            if ($$3.a($$0, $$1)) {
-               return true;
-            }
-
-            ui $$4 = this.a($$0, $$1);
-            if ($$4 != null && this.a($$4)) {
-               this.n = this.b.a();
-               return true;
-            }
-         }
-
-         return this.b.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
-      }
+   private static tn a(BanDetails $$0) {
+      return f($$0) ? b : c;
    }
 
-   @Override
-   protected void a(String $$0, boolean $$1) {
-      if ($$1) {
-         this.b.a($$0);
-      } else {
-         this.b.b($$0);
-      }
+   private static tn b(BanDetails $$0) {
+      return tn.a("gui.banned.description", c($$0), d($$0), tn.b("https://aka.ms/mcjavamoderation"));
    }
 
-   public void a(int $$0) {
-      int $$1 = this.m + $$0;
-      int $$2 = this.f.l.d().c().size();
-      $$1 = arx.a($$1, 0, $$2);
-      if ($$1 != this.m) {
-         if ($$1 == $$2) {
-            this.m = $$2;
-            this.b.a(this.l);
+   private static tn c(BanDetails $$0) {
+      String $$1 = $$0.reason();
+      String $$2 = $$0.reasonMessage();
+      if (StringUtils.isNumeric($$1)) {
+         int $$3 = Integer.parseInt($$1);
+         fjt $$4 = fjt.a($$3);
+         tn $$5;
+         if ($$4 != null) {
+            $$5 = tp.a($$4.a().e(), uj.a.a(true));
+         } else if ($$2 != null) {
+            $$5 = tn.a("gui.banned.description.reason_id_message", $$3, $$2).a(n.r);
          } else {
-            if (this.m == $$2) {
-               this.l = this.b.a();
-            }
-
-            this.b.a(this.f.l.d().c().get($$1));
-            this.o.a(false);
-            this.m = $$1;
+            $$5 = tn.a("gui.banned.description.reason_id", $$3).a(n.r);
          }
-      }
-   }
 
-   @Override
-   public void a(esf $$0, int $$1, int $$2, float $$3) {
-      $$0.a(2, this.h - 14, this.g - 2, this.h - 2, this.f.m.a(Integer.MIN_VALUE));
-      this.b.a($$0, $$1, $$2, $$3);
-      super.a($$0, $$1, $$2, $$3);
-      this.o.a($$0, $$1, $$2);
-      eqq $$4 = this.f.l.d().c((double)$$1, (double)$$2);
-      if ($$4 != null && $$4.g() != null) {
-         $$0.b(this.i, this.i.c($$4.g(), 210), $$1, $$2);
+         return tn.a("gui.banned.description.reason", $$5);
       } else {
-         ui $$5 = this.a((double)$$1, (double)$$2);
-         if ($$5 != null && $$5.i() != null) {
-            $$0.a(this.i, $$5, $$1, $$2);
-         }
+         return tn.c("gui.banned.description.unknownreason");
       }
    }
 
-   @Override
-   public void b(esf $$0, int $$1, int $$2, float $$3) {
-   }
-
-   @Override
-   public boolean j() {
-      return false;
-   }
-
-   private void c(String $$0) {
-      this.b.a($$0);
-   }
-
-   @Override
-   protected void a(ewi $$0) {
-      $$0.a(ewh.a, this.m());
-      $$0.a(ewh.d, c);
-      String $$1 = this.b.a();
-      if (!$$1.isEmpty()) {
-         $$0.a().a(ewh.a, tm.a("chat_screen.message", $$1));
-      }
-   }
-
-   @Nullable
-   private ui a(double $$0, double $$1) {
-      return this.f.l.d().b($$0, $$1);
-   }
-
-   public boolean b(String $$0, boolean $$1) {
-      $$0 = this.a($$0);
-      if ($$0.isEmpty()) {
-         return true;
+   private static tn d(BanDetails $$0) {
+      if (f($$0)) {
+         tn $$1 = e($$0);
+         return tn.a("gui.banned.description.temporary", tn.a("gui.banned.description.temporary.duration", $$1).a(n.r));
       } else {
-         if ($$1) {
-            this.f.l.d().a($$0);
-         }
-
-         if ($$0.startsWith("/")) {
-            this.f.s.cn.c($$0.substring(1));
-         } else {
-            this.f.s.cn.b($$0);
-         }
-
-         return true;
+         return tn.c("gui.banned.description.permanent").a(n.r);
       }
    }
 
-   public String a(String $$0) {
-      return asq.e(StringUtils.normalizeSpace($$0.trim()));
+   private static tn e(BanDetails $$0) {
+      Duration $$1 = Duration.between(Instant.now(), $$0.expires());
+      long $$2 = $$1.toHours();
+      if ($$2 > 72L) {
+         return tm.a($$1.toDays());
+      } else {
+         return $$2 < 1L ? tm.c($$1.toMinutes()) : tm.b($$1.toHours());
+      }
+   }
+
+   private static boolean f(BanDetails $$0) {
+      return $$0.expires() != null;
    }
 }

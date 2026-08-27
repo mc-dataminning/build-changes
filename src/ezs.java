@@ -1,82 +1,48 @@
-public class ezs extends ezh {
-   private final ddf m;
-   private esx<ddf.a> n;
-   private esx<Boolean> o;
-   private esx<Boolean> p;
-   private ddf.a q = ddf.a.c;
-   private boolean s;
-   private boolean t;
+public class ezs extends ezk<ces> {
+   private static final aey x = new aey("container/brewing_stand/fuel_length");
+   private static final aey y = new aey("container/brewing_stand/brew_progress");
+   private static final aey z = new aey("container/brewing_stand/bubbles");
+   private static final aey A = new aey("textures/gui/container/brewing_stand.png");
+   private static final int[] B = new int[]{29, 24, 20, 16, 11, 6, 0};
 
-   public ezs(ddf $$0) {
-      this.m = $$0;
+   public ezs(ces $$0, cbv $$1, tn $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   cow l() {
-      return this.m.c();
+   protected void aH_() {
+      super.aH_();
+      this.l = (this.c - this.i.a(this.e)) / 2;
    }
 
    @Override
-   int D() {
-      return 135;
+   public void a(esh $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
    @Override
-   protected void aI_() {
-      super.aI_();
-      this.n = this.d(esx.<ddf.a>a($$0 -> {
-         return switch ($$0) {
-            case a -> tm.c("advMode.mode.sequence");
-            case b -> tm.c("advMode.mode.auto");
-            case c -> tm.c("advMode.mode.redstone");
-         };
-      }).a(ddf.a.values()).a().a(this.q).a(this.g / 2 - 50 - 100 - 4, 165, 100, 20, tm.c("advMode.mode"), ($$0, $$1) -> this.q = $$1));
-      this.o = this.d(
-         esx.a(tm.c("advMode.mode.conditional"), tm.c("advMode.mode.unconditional"))
-            .a()
-            .a(this.s)
-            .a(this.g / 2 - 50, 165, 100, 20, tm.c("advMode.type"), ($$0, $$1) -> this.s = $$1)
-      );
-      this.p = this.d(
-         esx.a(tm.c("advMode.mode.autoexec.bat"), tm.c("advMode.mode.redstoneTriggered"))
-            .a()
-            .a(this.t)
-            .a(this.g / 2 + 50 + 4, 165, 100, 20, tm.c("advMode.triggering"), ($$0, $$1) -> this.t = $$1)
-      );
-      this.e(false);
-   }
+   protected void a(esh $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.g - this.c) / 2;
+      int $$5 = (this.h - this.k) / 2;
+      $$0.a(A, $$4, $$5, 0, 0, this.c, this.k);
+      int $$6 = this.p.l();
+      int $$7 = ary.a((18 * $$6 + 20 - 1) / 20, 0, 18);
+      if ($$7 > 0) {
+         $$0.a(x, 18, 4, 0, 0, $$4 + 60, $$5 + 44, $$7, 4);
+      }
 
-   private void e(boolean $$0) {
-      this.c.i = $$0;
-      this.l.i = $$0;
-      this.n.i = $$0;
-      this.o.i = $$0;
-      this.p.i = $$0;
-   }
+      int $$8 = this.p.m();
+      if ($$8 > 0) {
+         int $$9 = (int)(28.0F * (1.0F - (float)$$8 / 400.0F));
+         if ($$9 > 0) {
+            $$0.a(y, 9, 28, 0, 0, $$4 + 97, $$5 + 16, 9, $$9);
+         }
 
-   public void F() {
-      cow $$0 = this.m.c();
-      this.a.a($$0.m());
-      boolean $$1 = $$0.o();
-      this.q = this.m.v();
-      this.s = this.m.w();
-      this.t = this.m.f();
-      this.l.a($$1);
-      this.n.a(this.q);
-      this.o.a(this.s);
-      this.p.a(this.t);
-      this.c($$1);
-      this.e(true);
-   }
-
-   @Override
-   public void a(eqv $$0, int $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      this.e(true);
-   }
-
-   @Override
-   protected void a(cow $$0) {
-      this.f.J().b(new acp(gw.a($$0.g()), this.a.a(), this.q, $$0.o(), this.s, this.t));
+         $$9 = B[$$8 / 2 % 7];
+         if ($$9 > 0) {
+            $$0.a(z, 12, 29, 0, 29 - $$9, $$4 + 63, $$5 + 14 + 29 - $$9, 12, $$9);
+         }
+      }
    }
 }

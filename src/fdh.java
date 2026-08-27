@@ -1,274 +1,173 @@
-import java.io.IOException;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.OptionalLong;
+import java.util.function.BooleanSupplier;
 import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class fdh {
-   private static final tm a = tm.c("selectWorld.newWorld");
-   private final List<Consumer<fdh>> b = new ArrayList<>();
-   private String c = a.getString();
-   private fdh.a d = fdh.a.a;
-   private bgv e = bgv.c;
-   @Nullable
-   private Boolean f;
-   private String g;
-   private boolean h;
-   private boolean i;
-   private final Path j;
-   private String k;
-   private fdg l;
-   private fdh.b m;
-   private final List<fdh.b> n = new ArrayList<>();
-   private final List<fdh.b> o = new ArrayList<>();
-   private cpr p = new cpr();
+class fdh {
+   private static final int a = 44;
+   private final List<fdh.c> b;
 
-   public fdh(Path $$0, fdg $$1, Optional<aew<dux>> $$2, OptionalLong $$3) {
-      this.j = $$0;
-      this.l = $$1;
-      this.m = new fdh.b(a($$1, $$2).orElse(null));
-      this.r();
-      this.g = $$3.isPresent() ? Long.toString($$3.getAsLong()) : "";
-      this.h = $$1.b().c();
-      this.i = $$1.b().d();
-      this.k = this.c(this.c);
-   }
-
-   public void a(Consumer<fdh> $$0) {
-      this.b.add($$0);
+   fdh(List<fdh.c> $$0) {
+      this.b = $$0;
    }
 
    public void a() {
-      boolean $$0 = this.j();
-      if ($$0 != this.l.b().d()) {
-         this.l = this.l.a($$1x -> $$1x.a($$0));
+      this.b.forEach(fdh.c::a);
+   }
+
+   public static fdh.a a(int $$0) {
+      return new fdh.a($$0);
+   }
+
+   public static class a {
+      final int a;
+      private final List<fdh.d> b = new ArrayList<>();
+      int c;
+      int d = 4;
+      int e;
+      Optional<fdh.b> f = Optional.empty();
+
+      public a(int $$0) {
+         this.a = $$0;
       }
 
-      boolean $$1 = this.i();
-      if ($$1 != this.l.b().c()) {
-         this.l = this.l.a($$1x -> $$1x.b($$1));
+      void a() {
+         this.e++;
       }
 
-      for (Consumer<fdh> $$2 : this.b) {
-         $$2.accept(this);
+      public fdh.d a(tn $$0, BooleanSupplier $$1, Consumer<Boolean> $$2) {
+         fdh.d $$3 = new fdh.d($$0, $$1, $$2, 44);
+         this.b.add($$3);
+         return $$3;
+      }
+
+      public fdh.a a(int $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public fdh.a b(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public fdh a(Consumer<ewd> $$0) {
+         ewa $$1 = new ewa().b(this.d);
+         $$1.a(ewg.a(this.a - 44), 0, 0);
+         $$1.a(ewg.a(44), 0, 1);
+         List<fdh.c> $$2 = new ArrayList<>();
+         this.e = 0;
+
+         for (fdh.d $$3 : this.b) {
+            $$2.add($$3.a(this, $$1, 0));
+         }
+
+         $$1.a();
+         $$0.accept($$1);
+         fdh $$4 = new fdh($$2);
+         $$4.a();
+         return $$4;
+      }
+
+      public fdh.a a(int $$0, boolean $$1) {
+         this.f = Optional.of(new fdh.b($$0, $$1));
+         return this;
       }
    }
 
-   public void a(String $$0) {
-      this.c = $$0;
-      this.k = this.c($$0);
-      this.a();
+   static record b(int a, boolean b) {
    }
 
-   private String c(String $$0) {
-      String $$1 = $$0.trim();
-
-      try {
-         return v.a(this.j, !$$1.isEmpty() ? $$1 : a.getString(), "");
-      } catch (Exception var5) {
-         try {
-            return v.a(this.j, "World", "");
-         } catch (IOException var4) {
-            throw new RuntimeException("Could not create save folder", var4);
+   static record c(esz<Boolean> a, BooleanSupplier b, @Nullable BooleanSupplier c) {
+      public void a() {
+         this.a.a(this.b.getAsBoolean());
+         if (this.c != null) {
+            this.a.i = this.c.getAsBoolean();
          }
       }
-   }
 
-   public String b() {
-      return this.c;
-   }
-
-   public String c() {
-      return this.k;
-   }
-
-   public void a(fdh.a $$0) {
-      this.d = $$0;
-      this.a();
-   }
-
-   public fdh.a d() {
-      return this.l() ? fdh.a.d : this.d;
-   }
-
-   public void a(bgv $$0) {
-      this.e = $$0;
-      this.a();
-   }
-
-   public bgv e() {
-      return this.f() ? bgv.d : this.e;
-   }
-
-   public boolean f() {
-      return this.d() == fdh.a.b;
-   }
-
-   public void a(boolean $$0) {
-      this.f = $$0;
-      this.a();
-   }
-
-   public boolean g() {
-      if (this.l()) {
-         return true;
-      } else if (this.f()) {
-         return false;
-      } else {
-         return this.f == null ? this.d() == fdh.a.c : this.f;
-      }
-   }
-
-   public void b(String $$0) {
-      this.g = $$0;
-      this.l = this.l.a($$0x -> $$0x.a(dlq.a(this.h())));
-      this.a();
-   }
-
-   public String h() {
-      return this.g;
-   }
-
-   public void b(boolean $$0) {
-      this.h = $$0;
-      this.a();
-   }
-
-   public boolean i() {
-      return this.l() ? false : this.h;
-   }
-
-   public void c(boolean $$0) {
-      this.i = $$0;
-      this.a();
-   }
-
-   public boolean j() {
-      return !this.l() && !this.f() ? this.i : false;
-   }
-
-   public void a(fdg $$0) {
-      this.l = $$0;
-      this.r();
-      this.a();
-   }
-
-   public fdg k() {
-      return this.l;
-   }
-
-   public void a(fdg.a $$0) {
-      this.l = this.l.a($$0);
-      this.a();
-   }
-
-   protected boolean a(cqo $$0) {
-      cqo $$1 = this.l.g();
-      if ($$1.a().a().equals($$0.a().a()) && $$1.b().equals($$0.b())) {
-         this.l = new fdg(this.l.b(), this.l.c(), this.l.d(), this.l.e(), this.l.f(), $$0);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public boolean l() {
-      return this.l.d().c();
-   }
-
-   public void a(fdh.b $$0) {
-      this.m = $$0;
-      hg<dux> $$1 = $$0.c();
-      if ($$1 != null) {
-         this.a(($$1x, $$2) -> $$1.a().a());
-      }
-   }
-
-   public fdh.b m() {
-      return this.m;
-   }
-
-   @Nullable
-   public fdd n() {
-      hg<dux> $$0 = this.m().c();
-      return $$0 != null ? fdd.a.get($$0.e()) : null;
-   }
-
-   public List<fdh.b> o() {
-      return this.n;
-   }
-
-   public List<fdh.b> p() {
-      return this.o;
-   }
-
-   private void r() {
-      ht<dux> $$0 = this.k().a().d(je.aF);
-      this.n.clear();
-      this.n.addAll(a($$0, aqm.a).orElseGet(() -> $$0.h().map(fdh.b::new).toList()));
-      this.o.clear();
-      this.o.addAll(a($$0, aqm.b).orElse(this.n));
-      hg<dux> $$1 = this.m.c();
-      if ($$1 != null) {
-         this.m = a(this.k(), $$1.e()).map(fdh.b::new).orElse(this.n.get(0));
-      }
-   }
-
-   private static Optional<hg<dux>> a(fdg $$0, Optional<aew<dux>> $$1) {
-      return $$1.flatMap($$1x -> $$0.a().d(je.aF).b($$1x));
-   }
-
-   private static Optional<List<fdh.b>> a(ht<dux> $$0, aqi<dux> $$1) {
-      return $$0.b($$1).map($$0x -> $$0x.a().map(fdh.b::new).toList()).filter($$0x -> !$$0x.isEmpty());
-   }
-
-   public void a(cpr $$0) {
-      this.p = $$0;
-      this.a();
-   }
-
-   public cpr q() {
-      return this.p;
-   }
-
-   public static enum a {
-      a("survival", cps.a),
-      b("hardcore", cps.a),
-      c("creative", cps.b),
-      d("spectator", cps.d);
-
-      public final cps e;
-      public final tm f;
-      private final tm g;
-
-      private a(String $$0, cps $$1) {
-         this.e = $$1;
-         this.f = tm.c("selectWorld.gameMode." + $$0);
-         this.g = tm.c("selectWorld.gameMode." + $$0 + ".info");
+      public esz<Boolean> b() {
+         return this.a;
       }
 
-      public tm a() {
-         return this.g;
-      }
-   }
-
-   public static record b(@Nullable hg<dux> a) {
-      private static final tm b = tm.c("generator.custom");
-
-      public tm a() {
-         return Optional.ofNullable(this.a).flatMap(hg::e).map($$0 -> tm.c($$0.a().f("generator"))).orElse(b);
-      }
-
-      public boolean b() {
-         return Optional.ofNullable(this.a).flatMap(hg::e).filter($$0 -> $$0.equals(duy.d)).isPresent();
+      public BooleanSupplier c() {
+         return this.b;
       }
 
       @Nullable
-      public hg<dux> c() {
-         return this.a;
+      public BooleanSupplier d() {
+         return this.c;
+      }
+   }
+
+   public static class d {
+      private final tn a;
+      private final BooleanSupplier b;
+      private final Consumer<Boolean> c;
+      @Nullable
+      private tn d;
+      @Nullable
+      private BooleanSupplier e;
+      private final int f;
+
+      d(tn $$0, BooleanSupplier $$1, Consumer<Boolean> $$2, int $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.f = $$3;
+      }
+
+      public fdh.d a(BooleanSupplier $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public fdh.d a(tn $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      fdh.c a(fdh.a $$0, ewa $$1, int $$2) {
+         $$0.a();
+         ety $$3 = new ety(this.a, eqx.O().h).e();
+         $$1.a($$3, $$0.e, $$2, $$1.b().a(0.0F, 0.5F).b($$0.c));
+         Optional<fdh.b> $$4 = $$0.f;
+         esz.a<Boolean> $$5 = esz.b(this.b.getAsBoolean());
+         $$5.a();
+         boolean $$6 = this.d != null && $$4.isEmpty();
+         if ($$6) {
+            euc $$7 = euc.a(this.d);
+            $$5.a($$1x -> $$7);
+         }
+
+         if (this.d != null && !$$6) {
+            $$5.a($$0x -> tm.a(this.a, $$0x.b(), this.d));
+         } else {
+            $$5.a($$0x -> tm.a(this.a, $$0x.b()));
+         }
+
+         esz<Boolean> $$8 = $$5.a(0, 0, this.f, 20, tn.h(), ($$0x, $$1x) -> this.c.accept($$1x));
+         if (this.e != null) {
+            $$8.i = this.e.getAsBoolean();
+         }
+
+         $$1.a($$8, $$0.e, $$2 + 1, $$1.b().c());
+         if (this.d != null) {
+            $$4.ifPresent($$3x -> {
+               tn $$4x = this.d.e().a(n.h);
+               esf $$5x = eqx.O().h;
+               etm $$6x = new etm($$4x, $$5x);
+               $$6x.j($$0.a - $$0.c - this.f);
+               $$6x.k($$3x.a());
+               $$0.a();
+               int $$7 = $$3x.b ? 9 * $$3x.a - $$6x.i() : 0;
+               $$1.a($$6x, $$0.e, $$2, $$1.b().c(-$$0.d).e($$7));
+            });
+         }
+
+         return new fdh.c($$8, this.b, this.e);
       }
    }
 }

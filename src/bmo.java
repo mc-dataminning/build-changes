@@ -1,71 +1,88 @@
-import com.mojang.datafixers.kinds.App;
+import com.google.common.collect.ImmutableMap;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.function.ToDoubleFunction;
 
-public class bmo {
-   private static final int a = 10;
-   private static final int b = 7;
-   private static final int[][] c = new int[][]{{1, 1}, {3, 3}, {5, 5}, {6, 5}, {7, 7}, {10, 7}};
+public class bmo extends bkz<bwo> {
+   public static final int c = 200;
+   public static final float d = 1.65F;
+   private final Function<bwo, bgl> e;
+   private final btu f;
+   private final float g;
+   private final ToDoubleFunction<bwo> h;
+   private ehp i;
+   private final Function<bwo, ape> j;
+   private final Function<bwo, ape> k;
 
-   public static bmh<bjp> a(float $$0) {
-      return a($$0, true);
+   public bmo(Function<bwo, bgl> $$0, btu $$1, float $$2, ToDoubleFunction<bwo> $$3, Function<bwo, ape> $$4, Function<bwo, ape> $$5) {
+      super(ImmutableMap.of(bsj.U, bsk.b, bsj.V, bsk.a), 200);
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.j = $$4;
+      this.k = $$5;
+      this.i = ehp.b;
    }
 
-   public static bmh<bjp> a(float $$0, boolean $$1) {
-      return a($$0, $$0x -> btz.a($$0x, 10, 7), $$1 ? $$0x -> true : $$0x -> !$$0x.ba());
+   protected boolean a(aks $$0, bwo $$1) {
+      return $$1.dN().a(bsj.V);
    }
 
-   public static bky<bjp> a(float $$0, int $$1, int $$2) {
-      return a($$0, $$2x -> btz.a($$2x, $$1, $$2), $$0x -> true);
+   protected boolean a(aks $$0, bwo $$1, long $$2) {
+      return $$1.dN().a(bsj.V);
    }
 
-   public static bky<bjp> b(float $$0) {
-      return a($$0, $$0x -> a($$0x, 10, 7), $$0x -> true);
+   protected void b(aks $$0, bwo $$1, long $$2) {
+      gw $$3 = $$1.dl();
+      bki<?> $$4 = $$1.dN();
+      ehp $$5 = $$4.c(bsj.V).get();
+      this.i = new ehp((double)$$3.u() - $$5.a(), 0.0, (double)$$3.w() - $$5.c()).d();
+      $$4.a(bsj.m, new bsm($$5, this.g, 0));
    }
 
-   public static bky<bjp> c(float $$0) {
-      return a($$0, bmo::a, biq::ba);
-   }
-
-   private static bmh<bjp> a(float $$0, Function<bjp, ehn> $$1, Predicate<bjp> $$2) {
-      return boj.a((Function<boj.b<bjp>, ? extends App<boj.c<bjp>, bom<bjp>>>)($$3 -> $$3.group($$3.c(bsh.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
-               if (!$$2.test($$5)) {
-                  return false;
-               } else {
-                  Optional<ehn> $$7 = Optional.ofNullable($$1.apply($$5));
-                  $$3x.a($$7.map($$1xxxx -> new bsk($$1xxxx, $$0, 0)));
-                  return true;
-               }
-            })));
-   }
-
-   @Nullable
-   private static ehn a(bjp $$0) {
-      ehn $$1 = null;
-      ehn $$2 = null;
-
-      for (int[] $$3 : c) {
-         if ($$1 == null) {
-            $$2 = bkz.a($$0, $$3[0], $$3[1]);
-         } else {
-            $$2 = $$0.dj().e($$0.dj().a($$1).d().d((double)$$3[0], (double)$$3[1], (double)$$3[0]));
+   protected void c(aks $$0, bwo $$1, long $$2) {
+      List<bji> $$3 = $$0.a(bji.class, this.f, $$1, $$1.cG());
+      bki<?> $$4 = $$1.dN();
+      if (!$$3.isEmpty()) {
+         bji $$5 = $$3.get(0);
+         $$5.a($$0.ag().c((bji)$$1), (float)$$1.b(bko.f));
+         int $$6 = $$1.a(bih.a) ? $$1.b(bih.a).e() + 1 : 0;
+         int $$7 = $$1.a(bih.b) ? $$1.b(bih.b).e() + 1 : 0;
+         float $$8 = 0.25F * (float)($$6 - $$7);
+         float $$9 = ary.a($$1.fe() * 1.65F, 0.2F, 3.0F) + $$8;
+         float $$10 = $$5.f($$0.ag().b((bji)$$1)) ? 0.5F : 1.0F;
+         $$5.q((double)($$10 * $$9) * this.h.applyAsDouble($$1), this.i.a(), this.i.c());
+         this.b($$0, $$1);
+         $$0.a(null, $$1, this.j.apply($$1), apg.g, 1.0F, 1.0F);
+      } else if (this.c($$0, $$1)) {
+         $$0.a(null, $$1, this.j.apply($$1), apg.g, 1.0F, 1.0F);
+         boolean $$11 = $$1.gk();
+         if ($$11) {
+            $$0.a(null, $$1, this.k.apply($$1), apg.g, 1.0F, 1.0F);
          }
 
-         if ($$2 == null || $$0.dL().b_(gw.a($$2)).c()) {
-            return $$1;
+         this.b($$0, $$1);
+      } else {
+         Optional<bsm> $$12 = $$4.c(bsj.m);
+         Optional<ehp> $$13 = $$4.c(bsj.V);
+         boolean $$14 = $$12.isEmpty() || $$13.isEmpty() || $$12.get().a().a().a($$13.get(), 0.25);
+         if ($$14) {
+            this.b($$0, $$1);
          }
-
-         $$1 = $$2;
       }
-
-      return $$2;
    }
 
-   @Nullable
-   private static ehn a(bjp $$0, int $$1, int $$2) {
-      ehn $$3 = $$0.f(0.0F);
-      return btu.a($$0, $$1, $$2, -2, $$3.c, $$3.e, (float) (Math.PI / 2));
+   private boolean c(aks $$0, bwo $$1) {
+      ehp $$2 = $$1.do().d(1.0, 0.0, 1.0).d();
+      gw $$3 = gw.a($$1.dj().e($$2));
+      return $$0.a_($$3).a(apu.ce) || $$0.a_($$3.c()).a(apu.ce);
+   }
+
+   protected void b(aks $$0, bwo $$1) {
+      $$0.a($$1, (byte)59);
+      $$1.dN().a(bsj.U, this.e.apply($$1).a($$0.z));
+      $$1.dN().b(bsj.V);
    }
 }

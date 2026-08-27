@@ -1,90 +1,37 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.util.List;
-import java.util.Map;
+import com.mojang.serialization.Codec;
 
-public class cmo extends cmb {
-   public cmo(cly $$0) {
-      super($$0);
-   }
+public interface cmo<T extends cml<?>> {
+   cmo<cmr> a = a("crafting_shaped", new cmr.a());
+   cmo<cms> b = a("crafting_shapeless", new cms.a());
+   cmo<clu> c = a("crafting_special_armordye", new cmw<>(clu::new));
+   cmo<clx> d = a("crafting_special_bookcloning", new cmw<>(clx::new));
+   cmo<cmj> e = a("crafting_special_mapcloning", new cmw<>(cmj::new));
+   cmo<cmk> f = a("crafting_special_mapextending", new cmw<>(cmk::new));
+   cmo<cmf> g = a("crafting_special_firework_rocket", new cmw<>(cmf::new));
+   cmo<cmh> h = a("crafting_special_firework_star", new cmw<>(cmh::new));
+   cmo<cmg> i = a("crafting_special_firework_star_fade", new cmw<>(cmg::new));
+   cmo<cnf> j = a("crafting_special_tippedarrow", new cmw<>(cnf::new));
+   cmo<clv> k = a("crafting_special_bannerduplicate", new cmw<>(clv::new));
+   cmo<cmt> l = a("crafting_special_shielddecoration", new cmw<>(cmt::new));
+   cmo<cmu> m = a("crafting_special_shulkerboxcoloring", new cmw<>(cmu::new));
+   cmo<cne> n = a("crafting_special_suspiciousstew", new cmw<>(cne::new));
+   cmo<cmq> o = a("crafting_special_repairitem", new cmw<>(cmq::new));
+   cmo<cmy> p = a("smelting", new cmv<>(cmy::new, 200));
+   cmo<clw> q = a("blasting", new cmv<>(clw::new, 100));
+   cmo<cnc> r = a("smoking", new cmv<>(cnc::new, 100));
+   cmo<cly> s = a("campfire_cooking", new cmv<>(cly::new, 100));
+   cmo<cnd> t = a("stonecutting", new cmx.a<>(cnd::new));
+   cmo<cna> u = a("smithing_transform", new cna.a());
+   cmo<cnb> v = a("smithing_trim", new cnb.a());
+   cmo<cme> w = a("crafting_decorated_pot", new cmw<>(cme::new));
 
-   public boolean a(cez $$0, cpv $$1) {
-      List<cjf> $$2 = Lists.newArrayList();
+   Codec<T> a();
 
-      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
-         cjf $$4 = $$0.a($$3);
-         if (!$$4.b()) {
-            $$2.add($$4);
-            if ($$2.size() > 1) {
-               cjf $$5 = $$2.get(0);
-               if (!$$4.a($$5.d()) || $$5.L() != 1 || $$4.L() != 1 || !$$5.d().o()) {
-                  return false;
-               }
-            }
-         }
-      }
+   T a(sq var1);
 
-      return $$2.size() == 2;
-   }
+   void a(sq var1, T var2);
 
-   public cjf a(cez $$0, hu $$1) {
-      List<cjf> $$2 = Lists.newArrayList();
-
-      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
-         cjf $$4 = $$0.a($$3);
-         if (!$$4.b()) {
-            $$2.add($$4);
-            if ($$2.size() > 1) {
-               cjf $$5 = $$2.get(0);
-               if (!$$4.a($$5.d()) || $$5.L() != 1 || $$4.L() != 1 || !$$5.d().o()) {
-                  return cjf.b;
-               }
-            }
-         }
-      }
-
-      if ($$2.size() == 2) {
-         cjf $$6 = $$2.get(0);
-         cjf $$7 = $$2.get(1);
-         if ($$6.a($$7.d()) && $$6.L() == 1 && $$7.L() == 1 && $$6.d().o()) {
-            cja $$8 = $$6.d();
-            int $$9 = $$8.n() - $$6.k();
-            int $$10 = $$8.n() - $$7.k();
-            int $$11 = $$9 + $$10 + $$8.n() * 5 / 100;
-            int $$12 = $$8.n() - $$11;
-            if ($$12 < 0) {
-               $$12 = 0;
-            }
-
-            cjf $$13 = new cjf($$6.d());
-            $$13.b($$12);
-            Map<cno, Integer> $$14 = Maps.newHashMap();
-            Map<cno, Integer> $$15 = cnq.a($$6);
-            Map<cno, Integer> $$16 = cnq.a($$7);
-            jd.g.s().filter(cno::c).forEach($$3x -> {
-               int $$4 = Math.max($$15.getOrDefault($$3x, 0), $$16.getOrDefault($$3x, 0));
-               if ($$4 > 0) {
-                  $$14.put($$3x, $$4);
-               }
-            });
-            if (!$$14.isEmpty()) {
-               cnq.a($$14, $$13);
-            }
-
-            return $$13;
-         }
-      }
-
-      return cjf.b;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
-   }
-
-   @Override
-   public cmm<?> an_() {
-      return cmm.o;
+   static <S extends cmo<T>, T extends cml<?>> S a(String $$0, S $$1) {
+      return ht.a(jd.u, $$0, $$1);
    }
 }

@@ -1,127 +1,60 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+public class dlg implements cpk {
+   private int a;
 
-public final class dlg {
-   final dlf a;
-   private final hh<dzp.a> b;
-   private final dky c;
-   private final crc.f d;
-   private final dlk e;
-   private final dlf f;
-   private final dlf g;
-   private final Map<aew<dzp.a>, dzp> h;
-   private final Map<aex, dlf> i;
-
-   public static dlg a(hh.a $$0, aew<dkx> $$1, long $$2) {
-      return a($$0.b(je.aw).b($$1).a(), $$0.b(je.ax), $$2);
-   }
-
-   public static dlg a(dkx $$0, hh<dzp.a> $$1, long $$2) {
-      return new dlg($$0, $$1, $$2);
-   }
-
-   private dlg(dkx $$0, hh<dzp.a> $$1, final long $$2) {
-      this.a = $$0.d().a($$2).e();
-      this.b = $$1;
-      this.f = this.a.a(new aex("aquifer")).e();
-      this.g = this.a.a(new aex("ore")).e();
-      this.h = new ConcurrentHashMap<>();
-      this.i = new ConcurrentHashMap<>();
-      this.e = new dlk(this, $$0.g(), $$0.l(), this.a);
-      final boolean $$3 = $$0.n();
-
-      class a implements dkl.f {
-         private final Map<dkl, dkl> d = new HashMap<>();
-
-         private asc a(long $$0) {
-            return new dkt($$2 + $$0);
-         }
-
-         @Override
-         public dkl.c a(dkl.c $$0) {
-            hg<dzp.a> $$1 = $$0.b();
-            if ($$3) {
-               if ($$1.a(dlb.a)) {
-                  dzp $$2 = dzp.a(this.a(0L), new dzp.a(-7, 1.0, 1.0));
-                  return new dkl.c($$1, $$2);
-               }
-
-               if ($$1.a(dlb.b)) {
-                  dzp $$3 = dzp.a(this.a(1L), new dzp.a(-7, 1.0, 1.0));
-                  return new dkl.c($$1, $$3);
-               }
-
-               if ($$1.a(dlb.j)) {
-                  dzp $$4 = dzp.b(dlg.this.a.a(dlb.j.a()), new dzp.a(0, 0.0));
-                  return new dkl.c($$1, $$4);
-               }
-            }
-
-            dzp $$5 = dlg.this.a($$1.e().orElseThrow());
-            return new dkl.c($$1, $$5);
-         }
-
-         private dkl a(dkl $$0) {
-            if ($$0 instanceof dzm $$1) {
-               asc $$2 = $$3 ? this.a(0L) : dlg.this.a.a(new aex("terrain"));
-               return $$1.a($$2);
+   @Override
+   public int a(aks $$0, boolean $$1, boolean $$2) {
+      if (!$$1) {
+         return 0;
+      } else if (!$$0.X().b(cpt.A)) {
+         return 0;
+      } else {
+         ase $$3 = $$0.z;
+         this.a--;
+         if (this.a > 0) {
+            return 0;
+         } else {
+            this.a = this.a + (60 + $$3.a(60)) * 20;
+            if ($$0.A_() < 5 && $$0.C_().g()) {
+               return 0;
             } else {
-               return (dkl)($$0 instanceof dkm.i ? new dkm.i($$2) : $$0);
-            }
-         }
+               int $$4 = 0;
 
-         @Override
-         public dkl apply(dkl $$0) {
-            return this.d.computeIfAbsent($$0, this::a);
+               for (akt $$5 : $$0.v()) {
+                  if (!$$5.M_()) {
+                     gw $$6 = $$5.dl();
+                     if (!$$0.C_().g() || $$6.v() >= $$0.y_() && $$0.g($$6)) {
+                        bgy $$7 = $$0.d_($$6);
+                        if ($$7.a($$3.i() * 3.0F)) {
+                           apl $$8 = $$5.F();
+                           int $$9 = ary.a($$8.a(app.i.b(app.n)), 1, Integer.MAX_VALUE);
+                           int $$10 = 24000;
+                           if ($$3.a($$9) >= 72000) {
+                              gw $$11 = $$6.b(20 + $$3.a(15)).g(-10 + $$3.a(21)).e(-10 + $$3.a(21));
+                              dfl $$12 = $$0.a_($$11);
+                              eao $$13 = $$0.b_($$11);
+                              if (cqi.a($$0, $$11, $$12, $$13, biw.au)) {
+                                 bkb $$14 = null;
+                                 int $$15 = 1 + $$3.a($$7.a().a() + 1);
+
+                                 for (int $$16 = 0; $$16 < $$15; $$16++) {
+                                    bzm $$17 = biw.au.a((cpx)$$0);
+                                    if ($$17 != null) {
+                                       $$17.a($$11, 0.0F, 0.0F);
+                                       $$14 = $$17.a($$0, $$7, bjm.a, $$14, null);
+                                       $$0.a_($$17);
+                                       $$4++;
+                                    }
+                                 }
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
+
+               return $$4;
+            }
          }
       }
-
-      this.c = $$0.i().a(new a());
-      dkl.f $$4 = new dkl.f() {
-         private final Map<dkl, dkl> b = new HashMap<>();
-
-         private dkl a(dkl $$0) {
-            if ($$0 instanceof dkm.j $$1) {
-               return $$1.j().a();
-            } else {
-               return $$0 instanceof dkm.l $$2 ? $$2.k() : $$0;
-            }
-         }
-
-         @Override
-         public dkl apply(dkl $$0) {
-            return this.b.computeIfAbsent($$0, this::a);
-         }
-      };
-      this.d = new crc.f(this.c.e().a($$4), this.c.f().a($$4), this.c.g().a($$4), this.c.h().a($$4), this.c.i().a($$4), this.c.j().a($$4), $$0.k());
-   }
-
-   public dzp a(aew<dzp.a> $$0) {
-      return this.h.computeIfAbsent($$0, $$1 -> dlb.a(this.b, this.a, $$0));
-   }
-
-   public dlf a(aex $$0) {
-      return this.i.computeIfAbsent($$0, $$1 -> this.a.a($$0).e());
-   }
-
-   public dky a() {
-      return this.c;
-   }
-
-   public crc.f b() {
-      return this.d;
-   }
-
-   public dlk c() {
-      return this.e;
-   }
-
-   public dlf d() {
-      return this.f;
-   }
-
-   public dlf e() {
-      return this.g;
    }
 }

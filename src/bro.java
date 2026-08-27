@@ -1,26 +1,41 @@
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class bro extends bqy {
-   public static final float i = 0.001F;
-   protected final float j;
-
-   public bro(bjp $$0, double $$1) {
-      this($$0, $$1, 0.001F);
-   }
-
-   public bro(bjp $$0, double $$1, float $$2) {
-      super($$0, $$1);
-      this.j = $$2;
-   }
-
+public class bro<T extends bjk> extends bqd {
+   private final T a;
+   private final cjh b;
+   private final Predicate<? super T> c;
    @Nullable
+   private final ape d;
+
+   public bro(T $$0, cjh $$1, @Nullable ape $$2, Predicate<? super T> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = $$2;
+      this.c = $$3;
+   }
+
    @Override
-   protected ehn h() {
-      if (this.b.ba()) {
-         ehn $$0 = btz.a(this.b, 15, 7);
-         return $$0 == null ? super.h() : $$0;
-      } else {
-         return this.b.ef().i() >= this.j ? btz.a(this.b, 10, 7) : super.h();
+   public boolean a() {
+      return this.c.test(this.a);
+   }
+
+   @Override
+   public boolean b() {
+      return this.a.fm();
+   }
+
+   @Override
+   public void c() {
+      this.a.a(bix.a, this.b.p());
+      this.a.c(bgz.a);
+   }
+
+   @Override
+   public void d() {
+      this.a.a(bix.a, cjh.b);
+      if (this.d != null) {
+         this.a.a(this.d, 1.0F, this.a.ef().i() * 0.2F + 0.9F);
       }
    }
 }

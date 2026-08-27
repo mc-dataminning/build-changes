@@ -14,77 +14,103 @@ import java.util.UUID;
 import java.util.Map.Entry;
 import javax.annotation.Nullable;
 
-public class qy implements rr {
+public class qy implements rs {
    public static final Codec<qy> a = Codec.PASSTHROUGH.comapFlatMap($$0 -> {
-      rr $$1 = (rr)$$0.convert(rj.a).getValue();
+      rs $$1 = (rs)$$0.convert(rk.a).getValue();
       return $$1 instanceof qy ? DataResult.success((qy)$$1) : DataResult.error(() -> "Not a compound tag: " + $$1);
-   }, $$0 -> new Dynamic(rj.a, $$0));
+   }, $$0 -> new Dynamic(rk.a, $$0));
    private static final int c = 48;
    private static final int w = 32;
-   public static final rt<qy> b = new rt.b<qy>() {
-      public qy a(DataInput $$0, int $$1, rh $$2) throws IOException {
-         $$2.a(48L);
-         if ($$1 > 512) {
-            throw new RuntimeException("Tried to read NBT tag with too high complexity, depth > 512");
-         } else {
-            Map<String, rr> $$3 = Maps.newHashMap();
+   public static final ru<qy> b = new ru.b<qy>() {
+      public qy a(DataInput $$0, rh $$1) throws IOException {
+         $$1.b();
 
-            byte $$4;
-            while (($$4 = qy.a($$0, $$2)) != 0) {
-               String $$5 = qy.b($$0, $$2);
-               $$2.a((long)(28 + 2 * $$5.length()));
-               rr $$6 = qy.a(ru.a($$4), $$5, $$0, $$1 + 1, $$2);
-               if ($$3.put($$5, $$6) == null) {
-                  $$2.a(36L);
-               }
-            }
-
-            return new qy($$3);
+         qy var3;
+         try {
+            var3 = d($$0, $$1);
+         } finally {
+            $$1.c();
          }
+
+         return var3;
+      }
+
+      private static qy d(DataInput $$0, rh $$1) throws IOException {
+         $$1.b(48L);
+         Map<String, rs> $$2 = Maps.newHashMap();
+
+         byte $$3;
+         while (($$3 = $$0.readByte()) != 0) {
+            String $$4 = $$0.readUTF();
+            $$1.b(28L + 2L * (long)$$4.length());
+            rs $$5 = qy.a(rv.a($$3), $$4, $$0, $$1);
+            if ($$2.put($$4, $$5) == null) {
+               $$1.b(36L);
+            }
+         }
+
+         return new qy($$2);
       }
 
       @Override
-      public ro.b a(DataInput $$0, ro $$1) throws IOException {
-         byte $$2;
-         label33:
-         while (($$2 = $$0.readByte()) != 0) {
-            rt<?> $$3 = ru.a($$2);
-            switch ($$1.a($$3)) {
+      public rp.b a(DataInput $$0, rp $$1, rh $$2) throws IOException {
+         $$2.b();
+
+         rp.b var4;
+         try {
+            var4 = c($$0, $$1, $$2);
+         } finally {
+            $$2.c();
+         }
+
+         return var4;
+      }
+
+      private static rp.b c(DataInput $$0, rp $$1, rh $$2) throws IOException {
+         $$2.b(48L);
+
+         byte $$3;
+         label35:
+         while (($$3 = $$0.readByte()) != 0) {
+            ru<?> $$4 = rv.a($$3);
+            switch ($$1.a($$4)) {
                case d:
-                  return ro.b.c;
+                  return rp.b.c;
                case c:
-                  rp.a($$0);
-                  $$3.a($$0);
-                  break label33;
+                  rq.a($$0);
+                  $$4.b($$0, $$2);
+                  break label35;
                case b:
-                  rp.a($$0);
-                  $$3.a($$0);
+                  rq.a($$0);
+                  $$4.b($$0, $$2);
                   break;
                default:
-                  String $$4 = $$0.readUTF();
-                  switch ($$1.a($$3, $$4)) {
+                  String $$5 = $$0.readUTF();
+                  $$2.b(28L + 2L * (long)$$5.length());
+                  switch ($$1.a($$4, $$5)) {
                      case d:
-                        return ro.b.c;
+                        return rp.b.c;
                      case c:
-                        $$3.a($$0);
-                        break label33;
+                        $$4.b($$0, $$2);
+                        break label35;
                      case b:
-                        $$3.a($$0);
+                        $$4.b($$0, $$2);
                         break;
                      default:
-                        switch ($$3.a($$0, $$1)) {
+                        $$2.b(36L);
+                        switch ($$4.a($$0, $$1, $$2)) {
                            case c:
-                              return ro.b.c;
+                              return rp.b.c;
                            case b:
                         }
                   }
             }
          }
 
-         if ($$2 != 0) {
-            while (($$2 = $$0.readByte()) != 0) {
-               rp.a($$0);
-               ru.a($$2).a($$0);
+         if ($$3 != 0) {
+            while (($$3 = $$0.readByte()) != 0) {
+               rq.a($$0);
+               rv.a($$3).b($$0, $$2);
             }
          }
 
@@ -92,11 +118,28 @@ public class qy implements rr {
       }
 
       @Override
-      public void a(DataInput $$0) throws IOException {
-         byte $$1;
-         while (($$1 = $$0.readByte()) != 0) {
-            rp.a($$0);
-            ru.a($$1).a($$0);
+      public void a(DataInput $$0, int $$1, rh $$2) throws IOException {
+         $$2.b();
+
+         try {
+            ru.b.super.a($$0, $$1, $$2);
+         } finally {
+            $$2.c();
+         }
+      }
+
+      @Override
+      public void b(DataInput $$0, rh $$1) throws IOException {
+         $$1.b();
+
+         byte $$2;
+         try {
+            while (($$2 = $$0.readByte()) != 0) {
+               rq.a($$0);
+               rv.a($$2).b($$0, $$1);
+            }
+         } finally {
+            $$1.c();
          }
       }
 
@@ -110,9 +153,9 @@ public class qy implements rr {
          return "TAG_Compound";
       }
    };
-   private final Map<String, rr> x;
+   private final Map<String, rs> x;
 
-   protected qy(Map<String, rr> $$0) {
+   protected qy(Map<String, rs> $$0) {
       this.x = $$0;
    }
 
@@ -123,7 +166,7 @@ public class qy implements rr {
    @Override
    public void a(DataOutput $$0) throws IOException {
       for (String $$1 : this.x.keySet()) {
-         rr $$2 = this.x.get($$1);
+         rs $$2 = this.x.get($$1);
          a($$1, $$2, $$0);
       }
 
@@ -134,7 +177,7 @@ public class qy implements rr {
    public int a() {
       int $$0 = 48;
 
-      for (Entry<String, rr> $$1 : this.x.entrySet()) {
+      for (Entry<String, rs> $$1 : this.x.entrySet()) {
          $$0 += 28 + 2 * $$1.getKey().length();
          $$0 += 36;
          $$0 += $$1.getValue().a();
@@ -153,7 +196,7 @@ public class qy implements rr {
    }
 
    @Override
-   public rt<qy> c() {
+   public ru<qy> c() {
       return b;
    }
 
@@ -162,7 +205,7 @@ public class qy implements rr {
    }
 
    @Nullable
-   public rr a(String $$0, rr $$1) {
+   public rs a(String $$0, rs $$1) {
       return this.x.put($$0, $$1);
    }
 
@@ -171,7 +214,7 @@ public class qy implements rr {
    }
 
    public void a(String $$0, short $$1) {
-      this.x.put($$0, rm.a($$1));
+      this.x.put($$0, rn.a($$1));
    }
 
    public void a(String $$0, int $$1) {
@@ -183,15 +226,15 @@ public class qy implements rr {
    }
 
    public void a(String $$0, UUID $$1) {
-      this.x.put($$0, rk.a($$1));
+      this.x.put($$0, rl.a($$1));
    }
 
    public UUID a(String $$0) {
-      return rk.a(this.c($$0));
+      return rl.a(this.c($$0));
    }
 
    public boolean b(String $$0) {
-      rr $$1 = this.c($$0);
+      rs $$1 = this.c($$0);
       return $$1 != null && $$1.c() == rc.a && ((rc)$$1).g().length == 4;
    }
 
@@ -204,7 +247,7 @@ public class qy implements rr {
    }
 
    public void a(String $$0, String $$1) {
-      this.x.put($$0, rp.a($$1));
+      this.x.put($$0, rq.a($$1));
    }
 
    public void a(String $$0, byte[] $$1) {
@@ -236,12 +279,12 @@ public class qy implements rr {
    }
 
    @Nullable
-   public rr c(String $$0) {
+   public rs c(String $$0) {
       return this.x.get($$0);
    }
 
    public byte d(String $$0) {
-      rr $$1 = this.x.get($$0);
+      rs $$1 = this.x.get($$0);
       return $$1 == null ? 0 : $$1.b();
    }
 
@@ -261,7 +304,7 @@ public class qy implements rr {
    public byte f(String $$0) {
       try {
          if (this.b($$0, 99)) {
-            return ((rl)this.x.get($$0)).i();
+            return ((rm)this.x.get($$0)).i();
          }
       } catch (ClassCastException var3) {
       }
@@ -272,7 +315,7 @@ public class qy implements rr {
    public short g(String $$0) {
       try {
          if (this.b($$0, 99)) {
-            return ((rl)this.x.get($$0)).h();
+            return ((rm)this.x.get($$0)).h();
          }
       } catch (ClassCastException var3) {
       }
@@ -283,7 +326,7 @@ public class qy implements rr {
    public int h(String $$0) {
       try {
          if (this.b($$0, 99)) {
-            return ((rl)this.x.get($$0)).g();
+            return ((rm)this.x.get($$0)).g();
          }
       } catch (ClassCastException var3) {
       }
@@ -294,7 +337,7 @@ public class qy implements rr {
    public long i(String $$0) {
       try {
          if (this.b($$0, 99)) {
-            return ((rl)this.x.get($$0)).f();
+            return ((rm)this.x.get($$0)).f();
          }
       } catch (ClassCastException var3) {
       }
@@ -305,7 +348,7 @@ public class qy implements rr {
    public float j(String $$0) {
       try {
          if (this.b($$0, 99)) {
-            return ((rl)this.x.get($$0)).k();
+            return ((rm)this.x.get($$0)).k();
          }
       } catch (ClassCastException var3) {
       }
@@ -316,7 +359,7 @@ public class qy implements rr {
    public double k(String $$0) {
       try {
          if (this.b($$0, 99)) {
-            return ((rl)this.x.get($$0)).j();
+            return ((rm)this.x.get($$0)).j();
          }
       } catch (ClassCastException var3) {
       }
@@ -417,7 +460,7 @@ public class qy implements rr {
       return this.x.isEmpty();
    }
 
-   private o a(String $$0, rt<?> $$1, ClassCastException $$2) {
+   private o a(String $$0, ru<?> $$1, ClassCastException $$2) {
       o $$3 = o.a($$2, "Reading NBT data");
       p $$4 = $$3.a("Corrupt NBT tag", 1);
       $$4.a("Tag type found", () -> this.x.get($$0).c().a());
@@ -427,7 +470,7 @@ public class qy implements rr {
    }
 
    public qy h() {
-      Map<String, rr> $$0 = Maps.newHashMap(Maps.transformValues(this.x, rr::d));
+      Map<String, rs> $$0 = Maps.newHashMap(Maps.transformValues(this.x, rs::d));
       return new qy($$0);
    }
 
@@ -441,7 +484,7 @@ public class qy implements rr {
       return this.x.hashCode();
    }
 
-   private static void a(String $$0, rr $$1, DataOutput $$2) throws IOException {
+   private static void a(String $$0, rs $$1, DataOutput $$2) throws IOException {
       $$2.writeByte($$1.b());
       if ($$1.b() != 0) {
          $$2.writeUTF($$0);
@@ -449,29 +492,21 @@ public class qy implements rr {
       }
    }
 
-   static byte a(DataInput $$0, rh $$1) throws IOException {
-      return $$0.readByte();
-   }
-
-   static String b(DataInput $$0, rh $$1) throws IOException {
-      return $$0.readUTF();
-   }
-
-   static rr a(rt<?> $$0, String $$1, DataInput $$2, int $$3, rh $$4) {
+   static rs a(ru<?> $$0, String $$1, DataInput $$2, rh $$3) {
       try {
-         return $$0.b($$2, $$3, $$4);
-      } catch (IOException var8) {
-         o $$6 = o.a(var8, "Loading NBT data");
-         p $$7 = $$6.a("NBT Tag");
-         $$7.a("Tag name", $$1);
-         $$7.a("Tag type", $$0.a());
-         throw new y($$6);
+         return $$0.c($$2, $$3);
+      } catch (IOException var7) {
+         o $$5 = o.a(var7, "Loading NBT data");
+         p $$6 = $$5.a("NBT Tag");
+         $$6.a("Tag name", $$1);
+         $$6.a("Tag type", $$0.a());
+         throw new y($$5);
       }
    }
 
    public qy a(qy $$0) {
       for (String $$1 : $$0.x.keySet()) {
-         rr $$2 = $$0.x.get($$1);
+         rs $$2 = $$0.x.get($$1);
          if ($$2.b() == 10) {
             if (this.b($$1, 10)) {
                qy $$3 = this.p($$1);
@@ -488,23 +523,23 @@ public class qy implements rr {
    }
 
    @Override
-   public void a(rv $$0) {
+   public void a(rw $$0) {
       $$0.a(this);
    }
 
-   protected Map<String, rr> i() {
+   protected Map<String, rs> i() {
       return Collections.unmodifiableMap(this.x);
    }
 
    @Override
-   public ro.b a(ro $$0) {
-      for (Entry<String, rr> $$1 : this.x.entrySet()) {
-         rr $$2 = $$1.getValue();
-         rt<?> $$3 = $$2.c();
-         ro.a $$4 = $$0.a($$3);
+   public rp.b a(rp $$0) {
+      for (Entry<String, rs> $$1 : this.x.entrySet()) {
+         rs $$2 = $$1.getValue();
+         ru<?> $$3 = $$2.c();
+         rp.a $$4 = $$0.a($$3);
          switch ($$4) {
             case d:
-               return ro.b.c;
+               return rp.b.c;
             case c:
                return $$0.b();
             case b:
@@ -513,16 +548,16 @@ public class qy implements rr {
                $$4 = $$0.a($$3, $$1.getKey());
                switch ($$4) {
                   case d:
-                     return ro.b.c;
+                     return rp.b.c;
                   case c:
                      return $$0.b();
                   case b:
                      break;
                   default:
-                     ro.b $$5 = $$2.a($$0);
+                     rp.b $$5 = $$2.a($$0);
                      switch ($$5) {
                         case c:
-                           return ro.b.c;
+                           return rp.b.c;
                         case b:
                            return $$0.b();
                      }

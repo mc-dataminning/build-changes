@@ -1,78 +1,54 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-public class aax implements ve<wx> {
-   private final int a;
-   private final List<aax.a> b;
+public class aax implements vf<wy> {
+   private final boolean a;
+   private final List<af> b;
+   private final Set<aey> c;
+   private final Map<aey, ah> d;
 
-   public aax(int $$0, Collection<bki> $$1) {
+   public aax(boolean $$0, Collection<af> $$1, Set<aey> $$2, Map<aey, ah> $$3) {
       this.a = $$0;
-      this.b = Lists.newArrayList();
-
-      for (bki $$2 : $$1) {
-         this.b.add(new aax.a($$2.a(), $$2.b(), $$2.c()));
-      }
+      this.b = List.copyOf($$1);
+      this.c = Set.copyOf($$2);
+      this.d = Map.copyOf($$3);
    }
 
-   public aax(sp $$0) {
-      this.a = $$0.m();
-      this.b = $$0.a((sp.a<aax.a>)($$0x -> {
-         aex $$1 = $$0x.s();
-         bkh $$2 = jd.v.a($$1);
-         double $$3 = $$0x.readDouble();
-         List<bkk> $$4 = $$0x.a((sp.a<bkk>)($$0xx -> new bkk($$0xx.o(), "Unknown synced attribute modifier", $$0xx.readDouble(), bkk.a.a($$0xx.readByte()))));
-         return new aax.a($$2, $$3, $$4);
-      }));
+   public aax(sq $$0) {
+      this.a = $$0.readBoolean();
+      this.b = $$0.a(af::b);
+      this.c = $$0.a(Sets::newLinkedHashSetWithExpectedSize, sq::s);
+      this.d = $$0.a(sq::s, ah::b);
    }
 
    @Override
-   public void a(sp $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b, ($$0x, $$1) -> {
-         $$0x.a(jd.v.b($$1.a()));
-         $$0x.a($$1.b());
-         $$0x.a($$1.c(), ($$0xx, $$1x) -> {
-            $$0xx.a($$1x.a());
-            $$0xx.a($$1x.d());
-            $$0xx.k($$1x.c().a());
-         });
-      });
+   public void a(sq $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
+      $$0.a(this.c, sq::a);
+      $$0.a(this.d, sq::a, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   public void a(wx $$0) {
+   public void a(wy $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.a;
-   }
-
-   public List<aax.a> d() {
+   public List<af> a() {
       return this.b;
    }
 
-   public static class a {
-      private final bkh a;
-      private final double b;
-      private final Collection<bkk> c;
+   public Set<aey> d() {
+      return this.c;
+   }
 
-      public a(bkh $$0, double $$1, Collection<bkk> $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
+   public Map<aey, ah> e() {
+      return this.d;
+   }
 
-      public bkh a() {
-         return this.a;
-      }
-
-      public double b() {
-         return this.b;
-      }
-
-      public Collection<bkk> c() {
-         return this.c;
-      }
+   public boolean f() {
+      return this.a;
    }
 }

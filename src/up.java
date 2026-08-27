@@ -1,32 +1,37 @@
-import java.util.Optional;
-import java.util.function.Supplier;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.List;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class up implements tn {
-   private final String b;
-   @Nullable
-   private Supplier<tm> c;
-
+public record up(String a, @Nullable gc b) implements uo {
    public up(String $$0) {
-      this.b = $$0;
+      this($$0, a($$0));
    }
 
-   private tm b() {
-      if (this.c == null) {
-         this.c = uq.a.apply(this.b);
+   @Nullable
+   private static gc a(String $$0) {
+      try {
+         gd $$1 = new gd(new StringReader($$0));
+         return $$1.t();
+      } catch (CommandSyntaxException var2) {
+         return null;
       }
-
-      return this.c.get();
    }
 
    @Override
-   public <T> Optional<T> a(tq.a<T> $$0) {
-      return this.b().a($$0);
+   public Stream<qy> getData(dt $$0) throws CommandSyntaxException {
+      if (this.b != null) {
+         List<? extends bis> $$1 = this.b.b($$0);
+         return $$1.stream().map(cn::b);
+      } else {
+         return Stream.empty();
+      }
    }
 
    @Override
-   public <T> Optional<T> a(tq.b<T> $$0, ui $$1) {
-      return this.b().a($$0, $$1);
+   public String toString() {
+      return "entity=" + this.a;
    }
 
    @Override
@@ -34,7 +39,7 @@ public class up implements tn {
       if (this == $$0) {
          return true;
       } else {
-         if ($$0 instanceof up $$1 && this.b.equals($$1.b)) {
+         if ($$0 instanceof up $$1 && this.a.equals($$1.a)) {
             return true;
          }
 
@@ -44,15 +49,6 @@ public class up implements tn {
 
    @Override
    public int hashCode() {
-      return this.b.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return "keybind{" + this.b + "}";
-   }
-
-   public String a() {
-      return this.b;
+      return this.a.hashCode();
    }
 }

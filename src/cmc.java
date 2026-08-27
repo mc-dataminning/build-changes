@@ -1,49 +1,19 @@
-public class cmc extends cmb {
-   public cmc(cly $$0) {
-      super($$0);
-   }
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-   public boolean a(cez $$0, cpv $$1) {
-      if (!this.a($$0.f(), $$0.g())) {
-         return false;
-      } else {
-         for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
-            cjf $$3 = $$0.a($$2);
-            switch ($$2) {
-               case 1:
-               case 3:
-               case 5:
-               case 7:
-                  if (!$$3.a(aqb.aM)) {
-                     return false;
-                  }
-                  break;
-               case 2:
-               case 4:
-               case 6:
-               default:
-                  if (!$$3.a(cji.a)) {
-                     return false;
-                  }
-            }
-         }
-
-         return true;
-      }
-   }
-
-   public cjf a(cez $$0, hu $$1) {
-      ddk.a $$2 = new ddk.a($$0.a(1).d(), $$0.a(3).d(), $$0.a(5).d(), $$0.a(7).d());
-      return ddk.a($$2);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 == 3 && $$1 == 3;
-   }
-
-   @Override
-   public cmm<?> an_() {
-      return cmm.w;
-   }
+public class cmc {
+   private static final Codec<cjc> c = arh.a(
+      jd.i.q(),
+      (Function<cjc, DataResult<cjc>>)($$0 -> $$0 == cjk.a ? DataResult.error(() -> "Crafting result must not be minecraft:air") : DataResult.success($$0))
+   );
+   public static final Codec<cjh> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(c.fieldOf("item").forGetter(cjh::d), arh.a(arh.j, "count", Integer.valueOf(1)).forGetter(cjh::L)).apply($$0, cjh::new)
+   );
+   static final Codec<cjh> b = arh.<cjc>a(
+         jd.i.q(),
+         (Function<cjc, DataResult<cjc>>)($$0 -> $$0 == cjk.a ? DataResult.error(() -> "Empty ingredient not allowed here") : DataResult.success($$0))
+      )
+      .xmap(cjh::new, cjh::d);
 }

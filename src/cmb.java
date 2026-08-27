@@ -1,22 +1,8 @@
-public abstract class cmb implements clz {
-   private final cly a;
-
-   public cmb(cly $$0) {
-      this.a = $$0;
-   }
-
+public interface cmb extends cml<cfb> {
    @Override
-   public boolean am_() {
-      return true;
+   default cmp<?> e() {
+      return cmp.a;
    }
 
-   @Override
-   public cjf a(hu $$0) {
-      return cjf.b;
-   }
-
-   @Override
-   public cly d() {
-      return this.a;
-   }
+   cma d();
 }

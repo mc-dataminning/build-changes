@@ -1,45 +1,66 @@
 import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Comparator;
+import java.util.Set;
+import java.util.function.BiConsumer;
 
-public class dsu extends dss {
-   public static final Codec<dsu> a = Codec.unit(() -> dsu.b);
-   public static final dsu b = new dsu();
+public abstract class dsu {
+   public static final Codec<dsu> h = jd.aa.q().dispatch(dsu::a, dsv::a);
 
-   @Override
-   protected dst<?> a() {
-      return dst.a;
-   }
+   protected abstract dsv<?> a();
 
-   @Override
-   public void a(dss.a $$0) {
-      asc $$1 = $$0.b();
-      $$0.c().forEach($$2 -> {
-         if ($$1.a(3) > 0) {
-            gw $$3 = $$2.g();
-            if ($$0.a($$3)) {
-               $$0.a($$3, dbp.c);
-            }
-         }
+   public abstract void a(dsu.a var1);
 
-         if ($$1.a(3) > 0) {
-            gw $$4 = $$2.h();
-            if ($$0.a($$4)) {
-               $$0.a($$4, dbp.e);
-            }
-         }
+   public static final class a {
+      private final cqd a;
+      private final BiConsumer<gw, dfl> b;
+      private final ase c;
+      private final ObjectArrayList<gw> d;
+      private final ObjectArrayList<gw> e;
+      private final ObjectArrayList<gw> f;
 
-         if ($$1.a(3) > 0) {
-            gw $$5 = $$2.e();
-            if ($$0.a($$5)) {
-               $$0.a($$5, dbp.d);
-            }
-         }
+      public a(cqd $$0, BiConsumer<gw, dfl> $$1, ase $$2, Set<gw> $$3, Set<gw> $$4, Set<gw> $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.f = new ObjectArrayList($$5);
+         this.d = new ObjectArrayList($$3);
+         this.e = new ObjectArrayList($$4);
+         this.d.sort(Comparator.comparingInt(ib::v));
+         this.e.sort(Comparator.comparingInt(ib::v));
+         this.f.sort(Comparator.comparingInt(ib::v));
+      }
 
-         if ($$1.a(3) > 0) {
-            gw $$6 = $$2.f();
-            if ($$0.a($$6)) {
-               $$0.a($$6, dbp.b);
-            }
-         }
-      });
+      public void a(gw $$0, dgc $$1) {
+         this.a($$0, csy.ff.n().a($$1, Boolean.valueOf(true)));
+      }
+
+      public void a(gw $$0, dfl $$1) {
+         this.b.accept($$0, $$1);
+      }
+
+      public boolean a(gw $$0) {
+         return this.a.a($$0, dfk.a::i);
+      }
+
+      public cqd a() {
+         return this.a;
+      }
+
+      public ase b() {
+         return this.c;
+      }
+
+      public ObjectArrayList<gw> c() {
+         return this.d;
+      }
+
+      public ObjectArrayList<gw> d() {
+         return this.e;
+      }
+
+      public ObjectArrayList<gw> e() {
+         return this.f;
+      }
    }
 }

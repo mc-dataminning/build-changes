@@ -1,24 +1,129 @@
-public enum dgb implements asp {
-   a("single"),
-   b("left"),
-   c("right");
-
-   private final String d;
-
-   private dgb(String $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public String c() {
-      return this.d;
-   }
-
-   public dgb a() {
-      return switch (this) {
-         case a -> a;
-         case b -> c;
-         case c -> b;
-      };
-   }
+public class dgb {
+   public static final dgc a = dgc.a("attached");
+   public static final dgc b = dgc.a("bottom");
+   public static final dgc c = dgc.a("conditional");
+   public static final dgc d = dgc.a("disarmed");
+   public static final dgc e = dgc.a("drag");
+   public static final dgc f = dgc.a("enabled");
+   public static final dgc g = dgc.a("extended");
+   public static final dgc h = dgc.a("eye");
+   public static final dgc i = dgc.a("falling");
+   public static final dgc j = dgc.a("hanging");
+   public static final dgc k = dgc.a("has_bottle_0");
+   public static final dgc l = dgc.a("has_bottle_1");
+   public static final dgc m = dgc.a("has_bottle_2");
+   public static final dgc n = dgc.a("has_record");
+   public static final dgc o = dgc.a("has_book");
+   public static final dgc p = dgc.a("inverted");
+   public static final dgc q = dgc.a("in_wall");
+   public static final dgc r = dgc.a("lit");
+   public static final dgc s = dgc.a("locked");
+   public static final dgc t = dgc.a("occupied");
+   public static final dgc u = dgc.a("open");
+   public static final dgc v = dgc.a("persistent");
+   public static final dgc w = dgc.a("powered");
+   public static final dgc x = dgc.a("short");
+   public static final dgc y = dgc.a("signal_fire");
+   public static final dgc z = dgc.a("snowy");
+   public static final dgc A = dgc.a("triggered");
+   public static final dgc B = dgc.a("unstable");
+   public static final dgc C = dgc.a("waterlogged");
+   public static final dgc D = dgc.a("berries");
+   public static final dgc E = dgc.a("bloom");
+   public static final dgc F = dgc.a("shrieking");
+   public static final dgc G = dgc.a("can_summon");
+   public static final dgj<hc.a> H = dgj.a("axis", hc.a.class, hc.a.a, hc.a.c);
+   public static final dgj<hc.a> I = dgj.a("axis", hc.a.class);
+   public static final dgc J = dgc.a("up");
+   public static final dgc K = dgc.a("down");
+   public static final dgc L = dgc.a("north");
+   public static final dgc M = dgc.a("east");
+   public static final dgc N = dgc.a("south");
+   public static final dgc O = dgc.a("west");
+   public static final dgf P = dgf.a("facing", hc.c, hc.f, hc.d, hc.e, hc.b, hc.a);
+   public static final dgf Q = dgf.a("facing", $$0 -> $$0 != hc.b);
+   public static final dgf R = dgf.a("facing", hc.c.a);
+   public static final dgl S = dgl.a("flower_amount", 1, 4);
+   public static final dgj<he> T = dgj.a("orientation", he.class);
+   public static final dgj<dfw> U = dgj.a("face", dfw.class);
+   public static final dgj<dfz> V = dgj.a("attachment", dfz.class);
+   public static final dgj<dgx> W = dgj.a("east", dgx.class);
+   public static final dgj<dgx> X = dgj.a("north", dgx.class);
+   public static final dgj<dgx> Y = dgj.a("south", dgx.class);
+   public static final dgj<dgx> Z = dgj.a("west", dgx.class);
+   public static final dgj<dgq> aa = dgj.a("east", dgq.class);
+   public static final dgj<dgq> ab = dgj.a("north", dgq.class);
+   public static final dgj<dgq> ac = dgj.a("south", dgq.class);
+   public static final dgj<dgq> ad = dgj.a("west", dgq.class);
+   public static final dgj<dgh> ae = dgj.a("half", dgh.class);
+   public static final dgj<dgk> af = dgj.a("half", dgk.class);
+   public static final dgj<dgp> ag = dgj.a("shape", dgp.class);
+   public static final dgj<dgp> ah = dgj.a("shape", dgp.class, $$0 -> $$0 != dgp.j && $$0 != dgp.i && $$0 != dgp.g && $$0 != dgp.h);
+   public static final int ai = 1;
+   public static final int aj = 2;
+   public static final int ak = 3;
+   public static final int al = 4;
+   public static final int am = 5;
+   public static final int an = 7;
+   public static final int ao = 15;
+   public static final int ap = 25;
+   public static final dgl aq = dgl.a("age", 0, 1);
+   public static final dgl ar = dgl.a("age", 0, 2);
+   public static final dgl as = dgl.a("age", 0, 3);
+   public static final dgl at = dgl.a("age", 0, 4);
+   public static final dgl au = dgl.a("age", 0, 5);
+   public static final dgl av = dgl.a("age", 0, 7);
+   public static final dgl aw = dgl.a("age", 0, 15);
+   public static final dgl ax = dgl.a("age", 0, 25);
+   public static final dgl ay = dgl.a("bites", 0, 6);
+   public static final dgl az = dgl.a("candles", 1, 4);
+   public static final dgl aA = dgl.a("delay", 1, 4);
+   public static final int aB = 7;
+   public static final dgl aC = dgl.a("distance", 1, 7);
+   public static final dgl aD = dgl.a("eggs", 1, 4);
+   public static final dgl aE = dgl.a("hatch", 0, 2);
+   public static final dgl aF = dgl.a("layers", 1, 8);
+   public static final int aG = 0;
+   public static final int aH = 1;
+   public static final int aI = 3;
+   public static final int aJ = 8;
+   public static final dgl aK = dgl.a("level", 1, 3);
+   public static final dgl aL = dgl.a("level", 0, 8);
+   public static final dgl aM = dgl.a("level", 1, 8);
+   public static final dgl aN = dgl.a("honey_level", 0, 5);
+   public static final int aO = 15;
+   public static final dgl aP = dgl.a("level", 0, 15);
+   public static final dgl aQ = dgl.a("moisture", 0, 7);
+   public static final dgl aR = dgl.a("note", 0, 24);
+   public static final dgl aS = dgl.a("pickles", 1, 4);
+   public static final dgl aT = dgl.a("power", 0, 15);
+   public static final dgl aU = dgl.a("stage", 0, 1);
+   public static final int aV = 7;
+   public static final dgl aW = dgl.a("distance", 0, 7);
+   public static final int aX = 0;
+   public static final int aY = 4;
+   public static final dgl aZ = dgl.a("charges", 0, 4);
+   public static final dgl ba = dgl.a("rotation", 0, dgr.a());
+   public static final dgj<dfy> bb = dgj.a("part", dfy.class);
+   public static final dgj<dgd> bc = dgj.a("type", dgd.class);
+   public static final dgj<dge> bd = dgj.a("mode", dge.class);
+   public static final dgj<dgg> be = dgj.a("hinge", dgg.class);
+   public static final dgj<dgm> bf = dgj.a("instrument", dgm.class);
+   public static final dgj<dgn> bg = dgj.a("type", dgn.class);
+   public static final dgj<dgt> bh = dgj.a("type", dgt.class);
+   public static final dgj<dgu> bi = dgj.a("shape", dgu.class);
+   public static final dgj<dgv> bj = dgj.a("mode", dgv.class);
+   public static final dgj<dfx> bk = dgj.a("leaves", dfx.class);
+   public static final dgj<dgw> bl = dgj.a("tilt", dgw.class);
+   public static final dgf bm = dgf.a("vertical_direction", hc.b, hc.a);
+   public static final dgj<dgi> bn = dgj.a("thickness", dgi.class);
+   public static final dgj<dgs> bo = dgj.a("sculk_sensor_phase", dgs.class);
+   public static final dgc bp = dgc.a("slot_0_occupied");
+   public static final dgc bq = dgc.a("slot_1_occupied");
+   public static final dgc br = dgc.a("slot_2_occupied");
+   public static final dgc bs = dgc.a("slot_3_occupied");
+   public static final dgc bt = dgc.a("slot_4_occupied");
+   public static final dgc bu = dgc.a("slot_5_occupied");
+   public static final dgl bv = dgl.a("dusted", 0, 3);
+   public static final dgc bw = dgc.a("cracked");
 }

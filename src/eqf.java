@@ -1,30 +1,39 @@
-import java.util.function.IntFunction;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public enum eqf implements arz {
-   a(0, "options.off"),
-   b(1, "options.attack.crosshair"),
-   c(2, "options.attack.hotbar");
+public class eqf extends epx {
+   private static final Logger b = LogUtils.getLogger();
+   private static final tn c = tn.c("mco.create.world.wait");
+   private final String d;
+   private final String e;
+   private final long f;
+   private final eym g;
 
-   private static final IntFunction<eqf> d = aqs.a(eqf::a, values(), aqs.a.b);
-   private final int e;
-   private final String f;
-
-   private eqf(int $$0, String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public eqf(long $$0, String $$1, String $$2, eym $$3) {
+      this.f = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.g = $$3;
    }
 
    @Override
-   public int a() {
-      return this.e;
+   public void run() {
+      emh $$0 = emh.a();
+
+      try {
+         $$0.a(this.f, this.d, this.e);
+         a(this.g);
+      } catch (enu var3) {
+         b.error("Couldn't create world", var3);
+         this.a(var3);
+      } catch (Exception var4) {
+         b.error("Could not create world", var4);
+         this.a(var4);
+      }
    }
 
    @Override
-   public String b() {
-      return this.f;
-   }
-
-   public static eqf a(int $$0) {
-      return d.apply($$0);
+   public tn a() {
+      return c;
    }
 }

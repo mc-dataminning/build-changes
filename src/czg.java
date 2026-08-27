@@ -1,40 +1,20 @@
-public class czg extends csv {
-   public static final dgh<hc.a> g = dfz.I;
-
-   public czg(dfi.d $$0) {
+public class czg extends csx implements csz {
+   public czg(dfk.d $$0) {
       super($$0);
-      this.k(this.n().a(g, hc.a.b));
    }
 
    @Override
-   public dfj a(dfj $$0, czh $$1) {
-      return b($$0, $$1);
-   }
-
-   public static dfj b(dfj $$0, czh $$1) {
-      switch ($$1) {
-         case d:
-         case b:
-            switch ((hc.a)$$0.c(g)) {
-               case a:
-                  return $$0.a(g, hc.a.c);
-               case c:
-                  return $$0.a(g, hc.a.a);
-               default:
-                  return $$0;
-            }
-         default:
-            return $$0;
-      }
+   public boolean a(cqa $$0, gw $$1, dfl $$2) {
+      return $$0.a_($$1.d()).i();
    }
 
    @Override
-   protected void a(dfk.a<csv, dfj> $$0) {
-      $$0.a(g);
+   public boolean a(cpx $$0, ase $$1, gw $$2, dfl $$3) {
+      return true;
    }
 
    @Override
-   public dfj a(cln $$0) {
-      return this.n().a(g, $$0.k().o());
+   public void a(aks $$0, ase $$1, gw $$2, dfl $$3) {
+      $$0.b($$2.d(), csy.rF.n());
    }
 }

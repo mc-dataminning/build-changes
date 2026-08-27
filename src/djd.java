@@ -1,14 +1,15 @@
-import java.io.IOException;
-import java.util.concurrent.CompletableFuture;
+public interface djd {
+   djd a = new djd() {
+      @Override
+      public void a() {
+      }
 
-public interface djd<T> extends AutoCloseable {
-   CompletableFuture<diy<T>> a(cpc var1);
+      @Override
+      public void a(bis.c $$0) {
+      }
+   };
 
-   void a(diy<T> var1);
+   void a();
 
-   void a(boolean var1);
-
-   @Override
-   default void close() throws IOException {
-   }
+   void a(bis.c var1);
 }

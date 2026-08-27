@@ -1,80 +1,118 @@
-import com.google.common.collect.Lists;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import com.mojang.logging.LogUtils;
+import java.io.PrintStream;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import org.slf4j.Logger;
 
-public class afa extends IOException {
-   private final List<afa.a> a = Lists.newArrayList();
-   private final String b;
+public class afa {
+   public static final PrintStream a = System.out;
+   private static volatile boolean c;
+   private static final Logger d = LogUtils.getLogger();
+   public static final AtomicLong b = new AtomicLong(-1L);
 
-   public afa(String $$0) {
-      this.a.add(new afa.a());
-      this.b = $$0;
-   }
-
-   public afa(String $$0, Throwable $$1) {
-      super($$1);
-      this.a.add(new afa.a());
-      this.b = $$0;
-   }
-
-   public void a(String $$0) {
-      this.a.get(0).a($$0);
-   }
-
-   public void b(String $$0) {
-      this.a.get(0).a = $$0;
-      this.a.add(0, new afa.a());
-   }
-
-   @Override
-   public String getMessage() {
-      return "Invalid " + this.a.get(this.a.size() - 1) + ": " + this.b;
-   }
-
-   public static afa a(Exception $$0) {
-      if ($$0 instanceof afa) {
-         return (afa)$$0;
-      } else {
-         String $$1 = $$0.getMessage();
-         if ($$0 instanceof FileNotFoundException) {
-            $$1 = "File not found";
-         }
-
-         return new afa($$1, $$0);
-      }
-   }
-
-   public static class a {
-      @Nullable
-      String a;
-      private final List<String> b = Lists.newArrayList();
-
-      a() {
-      }
-
-      void a(String $$0) {
-         this.b.add(0, $$0);
-      }
-
-      @Nullable
-      public String a() {
-         return this.a;
-      }
-
-      public String b() {
-         return StringUtils.join(this.b, "->");
-      }
-
-      @Override
-      public String toString() {
-         if (this.a != null) {
-            return this.b.isEmpty() ? this.a : this.a + " " + this.b();
+   public static void a() {
+      if (!c) {
+         c = true;
+         Instant $$0 = Instant.now();
+         if (jd.ap.e().isEmpty()) {
+            throw new IllegalStateException("Unable to load registries");
          } else {
-            return this.b.isEmpty() ? "(Unknown file)" : "(Unknown file) " + this.b();
+            cvt.a();
+            cug.a();
+            if (biw.a(biw.bt) == null) {
+               throw new IllegalStateException("Failed loading EntityTypes");
+            } else {
+               clf.a();
+               ge.a();
+               ij.c();
+               id.b();
+               jd.a();
+               cho.a();
+               d();
+               b.set(Duration.between($$0, Instant.now()).toMillis());
+            }
          }
       }
+   }
+
+   private static <T> void a(Iterable<T> $$0, Function<T, String> $$1, Set<String> $$2) {
+      qt $$3 = qt.a();
+      $$0.forEach($$3x -> {
+         String $$4 = $$1.apply((T)$$3x);
+         if (!$$3.b($$4)) {
+            $$2.add($$4);
+         }
+      });
+   }
+
+   private static void a(final Set<String> $$0) {
+      final qt $$1 = qt.a();
+      cpt.a(new cpt.c() {
+         @Override
+         public <T extends cpt.g<T>> void a(cpt.e<T> $$0x, cpt.f<T> $$1x) {
+            if (!$$1.b($$0.b())) {
+               $$0.add($$0.a());
+            }
+         }
+      });
+   }
+
+   public static Set<String> b() {
+      Set<String> $$0 = new TreeSet<>();
+      a(jd.v, bkj::c, $$0);
+      a(jd.h, biw::g, $$0);
+      a(jd.e, bid::d, $$0);
+      a(jd.i, cjc::a, $$0);
+      a(jd.g, cnq::g, $$0);
+      a(jd.f, csx::f, $$0);
+      a(jd.n, $$0x -> "stat." + $$0x.toString().replace(':', '.'), $$0);
+      a($$0);
+      return $$0;
+   }
+
+   public static void a(Supplier<String> $$0) {
+      if (!c) {
+         throw b($$0);
+      }
+   }
+
+   private static RuntimeException b(Supplier<String> $$0) {
+      try {
+         String $$1 = $$0.get();
+         return new IllegalArgumentException("Not bootstrapped (called from " + $$1 + ")");
+      } catch (Exception var3) {
+         RuntimeException $$3 = new IllegalArgumentException("Not bootstrapped (failed to resolve location)");
+         $$3.addSuppressed(var3);
+         return $$3;
+      }
+   }
+
+   public static void c() {
+      a(() -> "validate");
+      if (aa.aT) {
+         b().forEach($$0 -> d.error("Missing translations: {}", $$0));
+         du.b();
+      }
+
+      bkp.a();
+   }
+
+   private static void d() {
+      if (d.isDebugEnabled()) {
+         System.setErr(new afd("STDERR", System.err));
+         System.setOut(new afd("STDOUT", a));
+      } else {
+         System.setErr(new aff("STDERR", System.err));
+         System.setOut(new aff("STDOUT", a));
+      }
+   }
+
+   public static void a(String $$0) {
+      a.println($$0);
    }
 }

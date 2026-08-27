@@ -14,7 +14,7 @@ import org.joml.Quaternionf;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
 
-public enum hc implements asp {
+public enum hc implements asr {
    a(0, 1, -1, "down", hc.b.b, hc.a.b, new ib(0, -1, 0)),
    b(1, 0, -1, "up", hc.b.a, hc.a.b, new ib(0, 1, 0)),
    c(2, 3, 2, "north", hc.b.b, hc.a.c, new ib(0, 0, -1)),
@@ -22,8 +22,8 @@ public enum hc implements asp {
    e(4, 5, 1, "west", hc.b.b, hc.a.a, new ib(-1, 0, 0)),
    f(5, 4, 3, "east", hc.b.a, hc.a.a, new ib(1, 0, 0));
 
-   public static final asp.a<hc> g = asp.a(hc::values);
-   public static final Codec<hc> h = arg.a(g, hc::a);
+   public static final asr.a<hc> g = asr.a(hc::values);
+   public static final Codec<hc> h = arh.a(g, hc::a);
    private final int i;
    private final int j;
    private final int k;
@@ -45,13 +45,13 @@ public enum hc implements asp {
       this.o = $$6;
    }
 
-   public static hc[] a(biq $$0) {
+   public static hc[] a(bis $$0) {
       float $$1 = $$0.g(1.0F) * (float) (Math.PI / 180.0);
       float $$2 = -$$0.h(1.0F) * (float) (Math.PI / 180.0);
-      float $$3 = arx.a($$1);
-      float $$4 = arx.b($$1);
-      float $$5 = arx.a($$2);
-      float $$6 = arx.b($$2);
+      float $$3 = ary.a($$1);
+      float $$4 = ary.b($$1);
+      float $$5 = ary.a($$2);
+      float $$6 = ary.b($$2);
       boolean $$7 = $$5 > 0.0F;
       boolean $$8 = $$3 < 0.0F;
       boolean $$9 = $$6 > 0.0F;
@@ -86,7 +86,7 @@ public enum hc implements asp {
       return a($$3.x(), $$3.y(), $$3.z());
    }
 
-   public static Collection<hc> a(asc $$0) {
+   public static Collection<hc> a(ase $$0) {
       return ac.b(values(), $$0);
    }
 
@@ -117,7 +117,7 @@ public enum hc implements asp {
       return this.n;
    }
 
-   public static hc a(biq $$0, hc.a $$1) {
+   public static hc a(bis $$0, hc.a $$1) {
       return switch ($$1) {
          case a -> f.a($$0.h(1.0F)) ? f : e;
          case c -> d.a($$0.h(1.0F)) ? d : c;
@@ -235,11 +235,11 @@ public enum hc implements asp {
    }
 
    public static hc a(int $$0) {
-      return q[arx.a($$0 % q.length)];
+      return q[ary.a($$0 % q.length)];
    }
 
    public static hc b(int $$0) {
-      return r[arx.a($$0 % r.length)];
+      return r[ary.a($$0 % r.length)];
    }
 
    @Nullable
@@ -272,7 +272,7 @@ public enum hc implements asp {
    }
 
    public static hc a(double $$0) {
-      return b(arx.a($$0 / 90.0 + 0.5) & 3);
+      return b(ary.a($$0 / 90.0 + 0.5) & 3);
    }
 
    public static hc a(hc.a $$0, hc.b $$1) {
@@ -287,7 +287,7 @@ public enum hc implements asp {
       return (float)((this.k & 3) * 90);
    }
 
-   public static hc b(asc $$0) {
+   public static hc b(ase $$0) {
       return ac.a(p, $$0);
    }
 
@@ -340,12 +340,12 @@ public enum hc implements asp {
 
    public boolean a(float $$0) {
       float $$1 = $$0 * (float) (Math.PI / 180.0);
-      float $$2 = -arx.a($$1);
-      float $$3 = arx.b($$1);
+      float $$2 = -ary.a($$1);
+      float $$3 = ary.b($$1);
       return (float)this.o.u() * $$2 + (float)this.o.w() * $$3 > 0.0F;
    }
 
-   public static enum a implements asp, Predicate<hc> {
+   public static enum a implements asr, Predicate<hc> {
       a("x") {
          @Override
          public int a(int $$0, int $$1, int $$2) {
@@ -381,7 +381,7 @@ public enum hc implements asp {
       };
 
       public static final hc.a[] d = values();
-      public static final asp.a<hc.a> e = asp.a(hc.a::values);
+      public static final asr.a<hc.a> e = asr.a(hc.a::values);
       private final String f;
 
       a(String $$0) {
@@ -410,7 +410,7 @@ public enum hc implements asp {
          return this.f;
       }
 
-      public static hc.a a(asc $$0) {
+      public static hc.a a(ase $$0) {
          return ac.a(d, $$0);
       }
 
@@ -477,11 +477,11 @@ public enum hc implements asp {
          this.d = $$1;
       }
 
-      public hc a(asc $$0) {
+      public hc a(ase $$0) {
          return ac.a(this.c, $$0);
       }
 
-      public hc.a b(asc $$0) {
+      public hc.a b(ase $$0) {
          return ac.a(this.d, $$0);
       }
 
@@ -498,7 +498,7 @@ public enum hc implements asp {
          return Arrays.stream(this.c);
       }
 
-      public List<hc> c(asc $$0) {
+      public List<hc> c(ase $$0) {
          return ac.b(this.c, $$0);
       }
    }

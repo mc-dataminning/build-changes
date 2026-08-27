@@ -1,3 +1,6 @@
-public interface abf extends sv {
-   void a(aec var1);
+public interface abf extends ta {
+   @Override
+   default boolean d() {
+      return false;
+   }
 }

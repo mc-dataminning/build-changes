@@ -1,135 +1,211 @@
 import javax.annotation.Nullable;
 
-public abstract class ddy extends dcp {
-   public static final String d = "LootTable";
-   public static final String e = "LootTableSeed";
-   @Nullable
-   protected aex h;
-   protected long i;
-
-   protected ddy(dcx<?> $$0, gw $$1, dfj $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   public static void a(cpb $$0, asc $$1, gw $$2, aex $$3) {
-      dcv $$4 = $$0.c_($$2);
-      if ($$4 instanceof ddy) {
-         ((ddy)$$4).a($$3, $$1.g());
+public class ddy extends dcx implements bgr, bhd {
+   public static final int a = 0;
+   public static final int b = 1;
+   public static final int c = 0;
+   public static final int d = 1;
+   private final bgt e = new bgt() {
+      @Override
+      public int b() {
+         return 1;
       }
-   }
 
-   protected boolean d(qy $$0) {
-      if ($$0.b("LootTable", 8)) {
-         this.h = new aex($$0.l("LootTable"));
-         this.i = $$0.i("LootTableSeed");
-         return true;
-      } else {
+      @Override
+      public boolean af_() {
+         return ddy.this.g.b();
+      }
+
+      @Override
+      public cjh a(int $$0) {
+         return $$0 == 0 ? ddy.this.g : cjh.b;
+      }
+
+      @Override
+      public cjh a(int $$0, int $$1) {
+         if ($$0 == 0) {
+            cjh $$2 = ddy.this.g.a($$1);
+            if (ddy.this.g.b()) {
+               ddy.this.j();
+            }
+
+            return $$2;
+         } else {
+            return cjh.b;
+         }
+      }
+
+      @Override
+      public cjh b(int $$0) {
+         if ($$0 == 0) {
+            cjh $$1 = ddy.this.g;
+            ddy.this.g = cjh.b;
+            ddy.this.j();
+            return $$1;
+         } else {
+            return cjh.b;
+         }
+      }
+
+      @Override
+      public void a(int $$0, cjh $$1) {
+      }
+
+      @Override
+      public int ag_() {
+         return 1;
+      }
+
+      @Override
+      public void e() {
+         ddy.this.e();
+      }
+
+      @Override
+      public boolean a(cbw $$0) {
+         return bgt.a(ddy.this, $$0) && ddy.this.f();
+      }
+
+      @Override
+      public boolean b(int $$0, cjh $$1) {
          return false;
       }
-   }
 
-   protected boolean e(qy $$0) {
-      if (this.h == null) {
-         return false;
-      } else {
-         $$0.a("LootTable", this.h.toString());
-         if (this.i != 0L) {
-            $$0.a("LootTableSeed", this.i);
+      @Override
+      public void a() {
+      }
+   };
+   private final cex f = new cex() {
+      @Override
+      public int a(int $$0) {
+         return $$0 == 0 ? ddy.this.h : 0;
+      }
+
+      @Override
+      public void a(int $$0, int $$1) {
+         if ($$0 == 0) {
+            ddy.this.a($$1);
          }
-
-         return true;
-      }
-   }
-
-   public void e(@Nullable cbu $$0) {
-      if (this.h != null && this.o.n() != null) {
-         ecy $$1 = this.o.n().aH().getLootTable(this.h);
-         if ($$0 instanceof aks) {
-            al.N.a((aks)$$0, this.h);
-         }
-
-         this.h = null;
-         ecw.a $$2 = new ecw.a((akr)this.o).a(efb.f, ehn.b(this.p));
-         if ($$0 != null) {
-            $$2.a($$0.gn()).a(efb.a, $$0);
-         }
-
-         $$1.a(this, $$2.a(efa.c), this.i);
-      }
-   }
-
-   public void a(aex $$0, long $$1) {
-      this.h = $$0;
-      this.i = $$1;
-   }
-
-   @Override
-   public boolean af_() {
-      this.e(null);
-      return this.f().stream().allMatch(cjf::b);
-   }
-
-   @Override
-   public cjf a(int $$0) {
-      this.e(null);
-      return this.f().get($$0);
-   }
-
-   @Override
-   public cjf a(int $$0, int $$1) {
-      this.e(null);
-      cjf $$2 = bgs.a(this.f(), $$0, $$1);
-      if (!$$2.b()) {
-         this.e();
       }
 
-      return $$2;
-   }
-
-   @Override
-   public cjf b(int $$0) {
-      this.e(null);
-      return bgs.a(this.f(), $$0);
-   }
-
-   @Override
-   public void a(int $$0, cjf $$1) {
-      this.e(null);
-      this.f().set($$0, $$1);
-      if ($$1.L() > this.ag_()) {
-         $$1.f(this.ag_());
+      @Override
+      public int a() {
+         return 1;
       }
+   };
+   cjh g = cjh.b;
+   int h;
+   private int i;
 
+   public ddy(gw $$0, dfl $$1) {
+      super(dcz.D, $$0, $$1);
+   }
+
+   public cjh c() {
+      return this.g;
+   }
+
+   public boolean f() {
+      return this.g.a(cjk.tg) || this.g.a(cjk.th);
+   }
+
+   public void a(cjh $$0) {
+      this.a($$0, null);
+   }
+
+   void j() {
+      this.h = 0;
+      this.i = 0;
+      cxf.a(null, this.k(), this.p(), this.q(), false);
+   }
+
+   public void a(cjh $$0, @Nullable cbw $$1) {
+      this.g = this.b($$0, $$1);
+      this.h = 0;
+      this.i = cld.k(this.g);
       this.e();
    }
 
+   void a(int $$0) {
+      int $$1 = ary.a($$0, 0, this.i - 1);
+      if ($$1 != this.h) {
+         this.h = $$1;
+         this.e();
+         cxf.a(this.k(), this.p(), this.q());
+      }
+   }
+
+   public int g() {
+      return this.h;
+   }
+
+   public int i() {
+      float $$0 = this.i > 1 ? (float)this.g() / ((float)this.i - 1.0F) : 1.0F;
+      return ary.d($$0 * 14.0F) + (this.f() ? 1 : 0);
+   }
+
+   private cjh b(cjh $$0, @Nullable cbw $$1) {
+      if (this.o instanceof aks && $$0.a(cjk.th)) {
+         cld.a($$0, this.a($$1), $$1);
+      }
+
+      return $$0;
+   }
+
+   private dt a(@Nullable cbw $$0) {
+      String $$1;
+      tn $$2;
+      if ($$0 == null) {
+         $$1 = "Lectern";
+         $$2 = tn.b("Lectern");
+      } else {
+         $$1 = $$0.ab().getString();
+         $$2 = $$0.N_();
+      }
+
+      ehp $$5 = ehp.b(this.p);
+      return new dt(ds.a, $$5, eho.a, (aks)this.o, 2, $$1, $$2, this.o.n(), $$0);
+   }
+
    @Override
-   public boolean a(cbu $$0) {
-      return bgr.a(this, $$0);
+   public boolean t() {
+      return true;
+   }
+
+   @Override
+   public void a(qy $$0) {
+      super.a($$0);
+      if ($$0.b("Book", 10)) {
+         this.g = this.b(cjh.a($$0.p("Book")), null);
+      } else {
+         this.g = cjh.b;
+      }
+
+      this.i = cld.k(this.g);
+      this.h = ary.a($$0.h("Page"), 0, this.i - 1);
+   }
+
+   @Override
+   protected void b(qy $$0) {
+      super.b($$0);
+      if (!this.c().b()) {
+         $$0.a("Book", this.c().b(new qy()));
+         $$0.a("Page", this.h);
+      }
    }
 
    @Override
    public void a() {
-      this.f().clear();
+      this.a(cjh.b);
    }
 
-   protected abstract hp<cjf> f();
-
-   protected abstract void a(hp<cjf> var1);
-
    @Override
-   public boolean d(cbu $$0) {
-      return super.d($$0) && (this.h == null || !$$0.M_());
+   public cen createMenu(int $$0, cbv $$1, cbw $$2) {
+      return new cfp($$0, this.e, this.f);
    }
 
-   @Nullable
    @Override
-   public cel createMenu(int $$0, cbt $$1, cbu $$2) {
-      if (this.d($$2)) {
-         this.e($$1.m);
-         return this.a($$0, $$1);
-      } else {
-         return null;
-      }
+   public tn N_() {
+      return tn.c("container.lectern");
    }
 }

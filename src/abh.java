@@ -1,32 +1,24 @@
-public class abh implements ve<abd> {
+public class abh implements vf<abe> {
    private final int a;
-   private final gw b;
 
-   public abh(int $$0, gw $$1) {
+   public abh(int $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   public abh(sp $$0) {
+   public abh(sq $$0) {
       this.a = $$0.m();
-      this.b = $$0.e();
    }
 
    @Override
-   public void a(sp $$0) {
+   public void a(sq $$0) {
       $$0.c(this.a);
-      $$0.a(this.b);
    }
 
-   public void a(abd $$0) {
+   public void a(abe $$0) {
       $$0.a(this);
    }
 
    public int a() {
       return this.a;
-   }
-
-   public gw d() {
-      return this.b;
    }
 }

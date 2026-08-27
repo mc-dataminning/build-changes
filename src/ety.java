@@ -1,61 +1,56 @@
-public class ety extends eso {
-   private static final euc a = new euc(
-      new aex("widget/tab_selected"), new aex("widget/tab"), new aex("widget/tab_selected_highlighted"), new aex("widget/tab_highlighted")
-   );
-   private static final int b = 3;
-   private static final int c = 1;
-   private static final int d = 1;
-   private static final int e = 4;
-   private static final int l = 2;
-   private final eur m;
-   private final euq n;
+public class ety extends esp {
+   private float a = 0.5F;
 
-   public ety(eur $$0, euq $$1, int $$2, int $$3) {
-      super(0, 0, $$2, $$3, $$1.a());
-      this.m = $$0;
-      this.n = $$1;
+   public ety(tn $$0, esf $$1) {
+      this(0, 0, $$1.a($$0.f()), 9, $$0, $$1);
+   }
+
+   public ety(int $$0, int $$1, tn $$2, esf $$3) {
+      this(0, 0, $$0, $$1, $$2, $$3);
+   }
+
+   public ety(int $$0, int $$1, int $$2, int $$3, tn $$4, esf $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.i = false;
+   }
+
+   public ety i(int $$0) {
+      super.a($$0);
+      return this;
+   }
+
+   private ety b(float $$0) {
+      this.a = $$0;
+      return this;
+   }
+
+   public ety e() {
+      return this.b(0.0F);
+   }
+
+   public ety f() {
+      return this.b(0.5F);
+   }
+
+   public ety g() {
+      return this.b(1.0F);
    }
 
    @Override
-   public void b(esf $$0, int $$1, int $$2, float $$3) {
-      $$0.a(a.a(this.b(), this.n()), this.r(), this.t(), this.f, this.g);
-      esd $$4 = eqv.O().h;
-      int $$5 = this.i ? -1 : -6250336;
-      this.a($$0, $$4, $$5);
-      if (this.b()) {
-         this.b($$0, $$4, $$5);
-      }
+   public void b(esh $$0, int $$1, int $$2, float $$3) {
+      tn $$4 = this.m();
+      esf $$5 = this.a();
+      int $$6 = this.l();
+      int $$7 = $$5.a($$4);
+      int $$8 = this.r() + Math.round(this.a * (float)($$6 - $$7));
+      int $$9 = this.t() + (this.i() - 9) / 2;
+      arl $$10 = $$7 > $$6 ? this.a($$4, $$6) : $$4.f();
+      $$0.b($$5, $$10, $$8, $$9, this.b());
    }
 
-   public void a(esf $$0, esd $$1, int $$2) {
-      int $$3 = this.r() + 1;
-      int $$4 = this.t() + (this.b() ? 0 : 3);
-      int $$5 = this.r() + this.l() - 1;
-      int $$6 = this.t() + this.i();
-      a($$0, $$1, this.m(), $$3, $$4, $$5, $$6, $$2);
-   }
-
-   private void b(esf $$0, esd $$1, int $$2) {
-      int $$3 = Math.min($$1.a(this.m()), this.l() - 4);
-      int $$4 = this.r() + (this.l() - $$3) / 2;
-      int $$5 = this.t() + this.i() - 2;
-      $$0.a($$4, $$5, $$4 + $$3, $$5 + 1, $$2);
-   }
-
-   @Override
-   protected void a(ewi $$0) {
-      $$0.a(ewh.a, tm.a("gui.narrate.tab", this.n.a()));
-   }
-
-   @Override
-   public void a(gdq $$0) {
-   }
-
-   public euq a() {
-      return this.n;
-   }
-
-   public boolean b() {
-      return this.m.a() == this.n;
+   private arl a(tn $$0, int $$1) {
+      esf $$2 = this.a();
+      tr $$3 = $$2.a($$0, $$1 - $$2.a(tm.t));
+      return qt.a().a(tr.a($$3, tm.t));
    }
 }

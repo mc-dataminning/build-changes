@@ -1,79 +1,80 @@
-public class cvw extends cwq {
-   public static final int a = 3;
-   public static final dgj b = dfz.as;
-   private static final int c = 4;
-   private static final int d = 2;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public cvw(dfi.d $$0) {
-      super($$0);
-      this.k(this.C.b().a(b, Integer.valueOf(0)));
+public class cvw extends csx {
+   private static final Map<csx, csx> c = Maps.newHashMap();
+   public static final float a = 3.0F;
+   protected static final eii b = csx.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
+   private final csx d;
+
+   public cvw(csx $$0, dfk.d $$1) {
+      super($$1);
+      this.d = $$0;
+      c.put($$0, this);
    }
 
    @Override
-   public void b(dfj $$0, akr $$1, gw $$2, asc $$3) {
-      this.a($$0, $$1, $$2, $$3);
+   public eii a(dfl $$0, cpd $$1, gw $$2, ehu $$3) {
+      return b;
    }
 
    @Override
-   public void a(dfj $$0, akr $$1, gw $$2, asc $$3) {
-      if (($$3.a(3) == 0 || this.a($$1, $$2, 4)) && $$1.z($$2) > 11 - $$0.c(b) - $$0.b($$1, $$2) && this.e($$0, $$1, $$2)) {
-         gw.a $$4 = new gw.a();
+   public czc b_(dfl $$0) {
+      return czc.c;
+   }
 
-         for (hc $$5 : hc.values()) {
-            $$4.a($$2, $$5);
-            dfj $$6 = $$1.a_($$4);
-            if ($$6.a(this) && !this.e($$6, $$1, $$4)) {
-               $$1.a($$4, this, arx.a($$3, 20, 40));
+   @Override
+   public bha a(dfl $$0, cpx $$1, gw $$2, cbw $$3, bgz $$4, ehl $$5) {
+      cjh $$6 = $$3.b($$4);
+      cjc $$7 = $$6.d();
+      dfl $$8 = ($$7 instanceof cha ? c.getOrDefault(((cha)$$7).e(), csy.a) : csy.a).n();
+      boolean $$9 = $$8.a(csy.a);
+      boolean $$10 = this.g();
+      if ($$9 != $$10) {
+         if ($$10) {
+            $$1.a($$2, $$8, 3);
+            $$3.a(app.ah);
+            if (!$$3.fS().d) {
+               $$6.h(1);
             }
-         }
-      } else {
-         $$1.a($$2, this, arx.a($$3, 20, 40));
-      }
-   }
-
-   private boolean e(dfj $$0, cpv $$1, gw $$2) {
-      int $$3 = $$0.c(b);
-      if ($$3 < 3) {
-         $$1.a($$2, $$0.a(b, Integer.valueOf($$3 + 1)), 2);
-         return false;
-      } else {
-         this.d($$0, $$1, $$2);
-         return true;
-      }
-   }
-
-   @Override
-   public void a(dfj $$0, cpv $$1, gw $$2, csv $$3, gw $$4, boolean $$5) {
-      if ($$3.n().a(this) && this.a($$1, $$2, 2)) {
-         this.d($$0, $$1, $$2);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   private boolean a(cpb $$0, gw $$1, int $$2) {
-      int $$3 = 0;
-      gw.a $$4 = new gw.a();
-
-      for (hc $$5 : hc.values()) {
-         $$4.a($$1, $$5);
-         if ($$0.a_($$4).a(this)) {
-            if (++$$3 >= $$2) {
-               return false;
+         } else {
+            cjh $$11 = new cjh(this.d);
+            if ($$6.b()) {
+               $$3.a($$4, $$11);
+            } else if (!$$3.i($$11)) {
+               $$3.a($$11, false);
             }
+
+            $$1.a($$2, csy.fR.n(), 3);
          }
+
+         $$1.a($$3, djv.c, $$2);
+         return bha.a($$1.B);
+      } else {
+         return bha.b;
       }
-
-      return true;
    }
 
    @Override
-   protected void a(dfk.a<csv, dfj> $$0) {
-      $$0.a(b);
+   public cjh a(cpd $$0, gw $$1, dfl $$2) {
+      return this.g() ? super.a($$0, $$1, $$2) : new cjh(this.d);
+   }
+
+   private boolean g() {
+      return this.d == csy.a;
    }
 
    @Override
-   public cjf a(cpb $$0, gw $$1, dfj $$2) {
-      return cjf.b;
+   public dfl a(dfl $$0, hc $$1, dfl $$2, cpy $$3, gw $$4, gw $$5) {
+      return $$1 == hc.a && !$$0.a($$3, $$4) ? csy.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public csx a() {
+      return this.d;
+   }
+
+   @Override
+   public boolean a(dfl $$0, cpd $$1, gw $$2, ebe $$3) {
+      return false;
    }
 }

@@ -1,34 +1,11 @@
-public class bla implements bmk {
-   private final gw a;
-   private final ehn b;
+public interface bla<E extends bji> {
+   bkz.a a();
 
-   public bla(gw $$0) {
-      this.a = $$0.i();
-      this.b = ehn.b($$0);
-   }
+   boolean e(aks var1, E var2, long var3);
 
-   public bla(ehn $$0) {
-      this.a = gw.a($$0);
-      this.b = $$0;
-   }
+   void f(aks var1, E var2, long var3);
 
-   @Override
-   public ehn a() {
-      return this.b;
-   }
+   void g(aks var1, E var2, long var3);
 
-   @Override
-   public gw b() {
-      return this.a;
-   }
-
-   @Override
-   public boolean a(bjg $$0) {
-      return true;
-   }
-
-   @Override
-   public String toString() {
-      return "BlockPosTracker{blockPos=" + this.a + ", centerPosition=" + this.b + "}";
-   }
+   String b();
 }

@@ -1,3 +1,7 @@
-public interface tb extends sv {
-   void e();
+import io.netty.handler.codec.EncoderException;
+
+public class tb extends EncoderException {
+   public tb(Throwable $$0) {
+      super($$0);
+   }
 }

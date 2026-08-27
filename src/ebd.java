@@ -1,133 +1,201 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
 public class ebd {
-   private static final float a = 1.5F;
-   private final eaz[] b = new eaz[32];
-   private final int c;
-   private final eba d;
-   private static final boolean e = false;
-   private final eaw f = new eaw();
+   private final List<ebb> a;
+   @Nullable
+   private ebd.a b;
+   private int c;
+   private final gw d;
+   private final float e;
+   private final boolean f;
 
-   public ebd(eba $$0, int $$1) {
-      this.d = $$0;
-      this.c = $$1;
+   public ebd(List<ebb> $$0, gw $$1, boolean $$2) {
+      this.a = $$0;
+      this.d = $$1;
+      this.e = $$0.isEmpty() ? Float.MAX_VALUE : this.a.get(this.a.size() - 1).c(this.d);
+      this.f = $$2;
+   }
+
+   public void a() {
+      this.c++;
+   }
+
+   public boolean b() {
+      return this.c <= 0;
+   }
+
+   public boolean c() {
+      return this.c >= this.a.size();
    }
 
    @Nullable
-   public ebb a(cqi $$0, bji $$1, Set<gw> $$2, float $$3, int $$4, float $$5) {
-      this.f.a();
-      this.d.a($$0, $$1);
-      eaz $$6 = this.d.a();
-      if ($$6 == null) {
-         return null;
+   public ebb d() {
+      return !this.a.isEmpty() ? this.a.get(this.a.size() - 1) : null;
+   }
+
+   public ebb a(int $$0) {
+      return this.a.get($$0);
+   }
+
+   public void b(int $$0) {
+      if (this.a.size() > $$0) {
+         this.a.subList($$0, this.a.size()).clear();
+      }
+   }
+
+   public void a(int $$0, ebb $$1) {
+      this.a.set($$0, $$1);
+   }
+
+   public int e() {
+      return this.a.size();
+   }
+
+   public int f() {
+      return this.c;
+   }
+
+   public void c(int $$0) {
+      this.c = $$0;
+   }
+
+   public ehp a(bis $$0, int $$1) {
+      ebb $$2 = this.a.get($$1);
+      double $$3 = (double)$$2.a + (double)((int)($$0.df() + 1.0F)) * 0.5;
+      double $$4 = (double)$$2.b;
+      double $$5 = (double)$$2.c + (double)((int)($$0.df() + 1.0F)) * 0.5;
+      return new ehp($$3, $$4, $$5);
+   }
+
+   public gw d(int $$0) {
+      return this.a.get($$0).a();
+   }
+
+   public ehp a(bis $$0) {
+      return this.a($$0, this.c);
+   }
+
+   public gw g() {
+      return this.a.get(this.c).a();
+   }
+
+   public ebb h() {
+      return this.a.get(this.c);
+   }
+
+   @Nullable
+   public ebb i() {
+      return this.c > 0 ? this.a.get(this.c - 1) : null;
+   }
+
+   public boolean a(@Nullable ebd $$0) {
+      if ($$0 == null) {
+         return false;
+      } else if ($$0.a.size() != this.a.size()) {
+         return false;
       } else {
-         Map<ebf, gw> $$7 = $$2.stream().collect(Collectors.toMap($$0x -> this.d.a((double)$$0x.u(), (double)$$0x.v(), (double)$$0x.w()), Function.identity()));
-         ebb $$8 = this.a($$0.a(), $$6, $$7, $$3, $$4, $$5);
-         this.d.b();
-         return $$8;
+         for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
+            ebb $$2 = this.a.get($$1);
+            ebb $$3 = $$0.a.get($$1);
+            if ($$2.a != $$3.a || $$2.b != $$3.b || $$2.c != $$3.c) {
+               return false;
+            }
+         }
+
+         return true;
       }
+   }
+
+   public boolean j() {
+      return this.f;
+   }
+
+   @ata
+   void a(ebb[] $$0, ebb[] $$1, Set<ebh> $$2) {
+      this.b = new ebd.a($$0, $$1, $$2);
    }
 
    @Nullable
-   private ebb a(bdp $$0, eaz $$1, Map<ebf, gw> $$2, float $$3, int $$4, float $$5) {
-      $$0.a("find_path");
-      $$0.a(bes.a);
-      Set<ebf> $$6 = $$2.keySet();
-      $$1.e = 0.0F;
-      $$1.f = this.a($$1, $$6);
-      $$1.g = $$1.f;
-      this.f.a();
-      this.f.a($$1);
-      Set<eaz> $$7 = ImmutableSet.of();
-      int $$8 = 0;
-      Set<ebf> $$9 = Sets.newHashSetWithExpectedSize($$6.size());
-      int $$10 = (int)((float)this.c * $$5);
-
-      while (!this.f.e()) {
-         if (++$$8 >= $$10) {
-            break;
-         }
-
-         eaz $$11 = this.f.c();
-         $$11.i = true;
-
-         for (ebf $$12 : $$6) {
-            if ($$11.d($$12) <= (float)$$4) {
-               $$12.e();
-               $$9.add($$12);
-            }
-         }
-
-         if (!$$9.isEmpty()) {
-            break;
-         }
-
-         if (!($$11.a($$1) >= $$3)) {
-            int $$13 = this.d.a(this.b, $$11);
-
-            for (int $$14 = 0; $$14 < $$13; $$14++) {
-               eaz $$15 = this.b[$$14];
-               float $$16 = this.a($$11, $$15);
-               $$15.j = $$11.j + $$16;
-               float $$17 = $$11.e + $$16 + $$15.k;
-               if ($$15.j < $$3 && (!$$15.c() || $$17 < $$15.e)) {
-                  $$15.h = $$11;
-                  $$15.e = $$17;
-                  $$15.f = this.a($$15, $$6) * 1.5F;
-                  if ($$15.c()) {
-                     this.f.a($$15, $$15.e + $$15.f);
-                  } else {
-                     $$15.g = $$15.e + $$15.f;
-                     this.f.a($$15);
-                  }
-               }
-            }
-         }
-      }
-
-      Optional<ebb> $$18 = !$$9.isEmpty()
-         ? $$9.stream().map($$1x -> this.a($$1x.d(), $$2.get($$1x), true)).min(Comparator.comparingInt(ebb::e))
-         : $$6.stream().map($$1x -> this.a($$1x.d(), $$2.get($$1x), false)).min(Comparator.comparingDouble(ebb::m).thenComparingInt(ebb::e));
-      $$0.c();
-      return $$18.isEmpty() ? null : $$18.get();
+   public ebd.a k() {
+      return this.b;
    }
 
-   protected float a(eaz $$0, eaz $$1) {
-      return $$0.a($$1);
+   public void a(sq $$0) {
+      if (this.b != null && !this.b.c.isEmpty()) {
+         $$0.a(this.f);
+         $$0.p(this.c);
+         $$0.a(this.d);
+         $$0.a(this.a, ($$0x, $$1) -> $$1.a($$0x));
+         this.b.a($$0);
+      }
    }
 
-   private float a(eaz $$0, Set<ebf> $$1) {
-      float $$2 = Float.MAX_VALUE;
-
-      for (ebf $$3 : $$1) {
-         float $$4 = $$0.a($$3);
-         $$3.a($$4, $$0);
-         $$2 = Math.min($$4, $$2);
-      }
-
-      return $$2;
+   public static ebd b(sq $$0) {
+      boolean $$1 = $$0.readBoolean();
+      int $$2 = $$0.readInt();
+      gw $$3 = $$0.e();
+      List<ebb> $$4 = $$0.a(ebb::b);
+      ebd.a $$5 = ebd.a.b($$0);
+      ebd $$6 = new ebd($$4, $$3, $$1);
+      $$6.b = $$5;
+      $$6.c = $$2;
+      return $$6;
    }
 
-   private ebb a(eaz $$0, gw $$1, boolean $$2) {
-      List<eaz> $$3 = Lists.newArrayList();
-      eaz $$4 = $$0;
-      $$3.add(0, $$0);
+   @Override
+   public String toString() {
+      return "Path(length=" + this.a.size() + ")";
+   }
 
-      while ($$4.h != null) {
-         $$4 = $$4.h;
-         $$3.add(0, $$4);
+   public gw l() {
+      return this.d;
+   }
+
+   public float m() {
+      return this.e;
+   }
+
+   static ebb[] c(sq $$0) {
+      ebb[] $$1 = new ebb[$$0.m()];
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         $$1[$$2] = ebb.b($$0);
       }
 
-      return new ebb($$3, $$1, $$2);
+      return $$1;
+   }
+
+   static void a(sq $$0, ebb[] $$1) {
+      $$0.c($$1.length);
+
+      for (ebb $$2 : $$1) {
+         $$2.a($$0);
+      }
+   }
+
+   public ebd n() {
+      ebd $$0 = new ebd(this.a, this.d, this.f);
+      $$0.b = this.b;
+      $$0.c = this.c;
+      return $$0;
+   }
+
+   public static record a(ebb[] a, ebb[] b, Set<ebh> c) {
+
+      public void a(sq $$0) {
+         $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
+         ebd.a($$0, this.a);
+         ebd.a($$0, this.b);
+      }
+
+      public static ebd.a b(sq $$0) {
+         HashSet<ebh> $$1 = $$0.a(HashSet::new, ebh::c);
+         ebb[] $$2 = ebd.c($$0);
+         ebb[] $$3 = ebd.c($$0);
+         return new ebd.a($$2, $$3, $$1);
+      }
    }
 }

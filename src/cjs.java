@@ -1,18 +1,23 @@
-public class cjs extends cgy {
-   public cjs(csv $$0, cja.a $$1) {
-      super($$0, $$1);
+public class cjs extends cjc {
+   public cjs(cjc.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bgy a(clp $$0) {
-      return bgy.d;
-   }
+   public bha a(cjh $$0, cbw $$1, bji $$2, bgz $$3) {
+      if ($$0.A() && !($$2 instanceof cbw)) {
+         if (!$$1.dL().B && $$2.bv()) {
+            $$2.b($$0.y());
+            if ($$2 instanceof bjk) {
+               ((bjk)$$2).fI();
+            }
 
-   @Override
-   public bgz<cjf> a(cpv $$0, cbu $$1, bgx $$2) {
-      ehj $$3 = a($$0, $$1, cpe.b.b);
-      ehj $$4 = $$3.a($$3.a().c());
-      bgy $$5 = super.a(new clp($$1, $$2, $$4));
-      return new bgz<>($$5, $$1.b($$2));
+            $$0.h(1);
+         }
+
+         return bha.a($$1.dL().B);
+      } else {
+         return bha.d;
+      }
    }
 }

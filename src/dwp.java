@@ -1,81 +1,81 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Function;
 import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.util.stream.Stream;
 
-public abstract class dwp {
-   public static final Codec<dwp> e = jd.ai.q().dispatch("element_type", dwp::a, dwq::codec);
-   private static final hg<dyz> a = hg.a(new dyz(List.of()));
-   @Nullable
-   private volatile dwr.a b;
+public class dwp extends dwr {
+   public static final Codec<dwp> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dwr.e.listOf().fieldOf("elements").forGetter($$0x -> $$0x.b), d()).apply($$0, dwp::new)
+   );
+   private final List<dwr> b;
 
-   protected static <E extends dwp> RecordCodecBuilder<E, dwr.a> d() {
-      return dwr.a.c.fieldOf("projection").forGetter(dwp::e);
-   }
-
-   protected dwp(dwr.a $$0) {
-      this.b = $$0;
-   }
-
-   public abstract ib a(dzc var1, czh var2);
-
-   public abstract List<dzb.c> a(dzc var1, gw var2, czh var3, asc var4);
-
-   public abstract dva a(dzc var1, gw var2, czh var3);
-
-   public abstract boolean a(dzc var1, cqp var2, cqn var3, dhg var4, gw var5, gw var6, czh var7, dva var8, asc var9, boolean var10);
-
-   public abstract dwq<?> a();
-
-   public void a(cpw $$0, dzb.c $$1, gw $$2, czh $$3, asc $$4, dva $$5) {
-   }
-
-   public dwp a(dwr.a $$0) {
-      this.b = $$0;
-      return this;
-   }
-
-   public dwr.a e() {
-      dwr.a $$0 = this.b;
-      if ($$0 == null) {
-         throw new IllegalStateException();
+   public dwp(List<dwr> $$0, dwt.a $$1) {
+      super($$1);
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Elements are empty");
       } else {
-         return $$0;
+         this.b = $$0;
+         this.b($$1);
       }
    }
 
-   public int f() {
-      return 1;
+   @Override
+   public ib a(dze $$0, czj $$1) {
+      int $$2 = 0;
+      int $$3 = 0;
+      int $$4 = 0;
+
+      for (dwr $$5 : this.b) {
+         ib $$6 = $$5.a($$0, $$1);
+         $$2 = Math.max($$2, $$6.u());
+         $$3 = Math.max($$3, $$6.v());
+         $$4 = Math.max($$4, $$6.w());
+      }
+
+      return new ib($$2, $$3, $$4);
    }
 
-   public static Function<dwr.a, dwi> g() {
-      return $$0 -> dwi.b;
+   @Override
+   public List<dzd.c> a(dze $$0, gw $$1, czj $$2, ase $$3) {
+      return this.b.get(0).a($$0, $$1, $$2, $$3);
    }
 
-   public static Function<dwr.a, dwm> a(String $$0) {
-      return $$1 -> new dwm(Either.left(new aex($$0)), a, $$1);
+   @Override
+   public dvc a(dze $$0, gw $$1, czj $$2) {
+      Stream<dvc> $$3 = this.b.stream().filter($$0x -> $$0x != dwk.b).map($$3x -> $$3x.a($$0, $$1, $$2));
+      return dvc.b($$3::iterator).orElseThrow(() -> new IllegalStateException("Unable to calculate boundingbox for ListPoolElement"));
    }
 
-   public static Function<dwr.a, dwm> a(String $$0, hg<dyz> $$1) {
-      return $$2 -> new dwm(Either.left(new aex($$0)), $$1, $$2);
+   @Override
+   public boolean a(dze $$0, cqr $$1, cqp $$2, dhi $$3, gw $$4, gw $$5, czj $$6, dvc $$7, ase $$8, boolean $$9) {
+      for (dwr $$10 : this.b) {
+         if (!$$10.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   public static Function<dwr.a, dwo> b(String $$0) {
-      return $$1 -> new dwo(Either.left(new aex($$0)), a, $$1);
+   @Override
+   public dws<?> a() {
+      return dws.b;
    }
 
-   public static Function<dwr.a, dwo> b(String $$0, hg<dyz> $$1) {
-      return $$2 -> new dwo(Either.left(new aex($$0)), $$1, $$2);
+   @Override
+   public dwr a(dwt.a $$0) {
+      super.a($$0);
+      this.b($$0);
+      return this;
    }
 
-   public static Function<dwr.a, dwj> a(hg<dum> $$0) {
-      return $$1 -> new dwj($$0, $$1);
+   @Override
+   public String toString() {
+      return "List[" + this.b.stream().map(Object::toString).collect(Collectors.joining(", ")) + "]";
    }
 
-   public static Function<dwr.a, dwn> a(List<Function<dwr.a, ? extends dwp>> $$0) {
-      return $$1 -> new dwn($$0.stream().map($$1x -> (dwp)$$1x.apply($$1)).collect(Collectors.toList()), $$1);
+   private void b(dwt.a $$0) {
+      this.b.forEach($$1 -> $$1.a($$0));
    }
 }

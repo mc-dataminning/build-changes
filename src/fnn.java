@@ -1,75 +1,36 @@
-import java.util.concurrent.locks.ReentrantLock;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Set;
+import java.util.function.LongSupplier;
+import java.util.function.Supplier;
 
-public class fnn {
-   public static final tm a = tm.c("quickplay.error.title");
-   private static final tm b = tm.c("quickplay.error.invalid_identifier");
-   private static final tm c = tm.c("quickplay.error.realm_connect");
-   private static final tm d = tm.c("quickplay.error.realm_permission");
-   private static final tm e = tm.c("gui.toTitle");
-   private static final tm f = tm.c("gui.toWorld");
-   private static final tm g = tm.c("gui.toRealms");
+public class fnn implements bex {
+   private final foe a;
+   private final Set<bev> b = new ObjectOpenHashSet();
+   private final bfd c = new bfd();
 
-   public static void a(eqv $$0, fdw.c $$1, emf $$2) {
-      String $$3 = $$1.c();
-      String $$4 = $$1.d();
-      String $$5 = $$1.e();
-      if (!ac.b($$3)) {
-         a($$0, $$3);
-      } else if (!ac.b($$4)) {
-         b($$0, $$4);
-      } else if (!ac.b($$5)) {
-         a($$0, $$2, $$5);
+   public fnn(LongSupplier $$0, foe $$1) {
+      this.a = $$1;
+      this.b.add(bfe.a($$0));
+      this.a();
+   }
+
+   private void a() {
+      this.b.addAll(bfe.a());
+      this.b.add(bev.a("totalChunks", beu.f, this.a, foe::i));
+      this.b.add(bev.a("renderedChunks", beu.f, this.a, foe::k));
+      this.b.add(bev.a("lastViewDistance", beu.f, this.a, foe::j));
+      fre $$0 = this.a.h();
+      this.b.add(bev.a("toUpload", beu.g, $$0, fre::c));
+      this.b.add(bev.a("freeBufferCount", beu.g, $$0, fre::d));
+      this.b.add(bev.a("toBatchCount", beu.g, $$0, fre::b));
+      if (elk.a().isPresent()) {
+         this.b.add(bev.a("gpuUtilization", beu.i, eqx.O(), eqx::v));
       }
    }
 
-   private static void a(eqv $$0, String $$1) {
-      if (!$$0.l().b($$1)) {
-         eyk $$2 = new fde(new eyp());
-         $$0.a(new exm($$2, a, b, f));
-      } else {
-         $$0.d(new exq(tm.c("selectWorld.data_read")));
-         $$0.y().a(new eyp(), $$1);
-      }
-   }
-
-   private static void b(eqv $$0, String $$1) {
-      fji $$2 = new fji($$0);
-      $$2.a();
-      fjh $$3 = $$2.a($$1);
-      if ($$3 == null) {
-         $$3 = new fjh(gak.a("selectServer.defaultName"), $$1, fjh.b.c);
-         $$2.a($$3, true);
-         $$2.b();
-      }
-
-      fki $$4 = fki.a($$1);
-      exe.a(new fbg(new eyp()), $$0, $$4, $$3, true);
-   }
-
-   private static void a(eqv $$0, emf $$1, String $$2) {
-      long $$3;
-      emy $$4;
-      try {
-         $$3 = Long.parseLong($$2);
-         $$4 = $$1.b();
-      } catch (NumberFormatException var9) {
-         eyk $$6 = new ema(new eyp());
-         $$0.a(new exm($$6, a, b, g));
-         return;
-      } catch (ens var10) {
-         eyk $$8 = new eyp();
-         $$0.a(new exm($$8, a, c, e));
-         return;
-      }
-
-      emw $$11 = $$4.a.stream().filter($$1x -> $$1x.a == $$3).findFirst().orElse(null);
-      if ($$11 == null) {
-         eyk $$12 = new ema(new eyp());
-         $$0.a(new exm($$12, a, d, g));
-      } else {
-         eyp $$13 = new eyp();
-         epu $$14 = new epu(new ema($$13), $$13, $$11, new ReentrantLock());
-         $$0.a(new eom($$13, $$14));
-      }
+   @Override
+   public Set<bev> a(Supplier<bdp> $$0) {
+      this.b.addAll(this.c.a($$0));
+      return this.b;
    }
 }

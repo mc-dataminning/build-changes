@@ -1,34 +1,11 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.Optional;
 
-public class cpq extends ebr {
-   public static final String a = "chunks";
-   private static final String b = "Forced";
-   private final LongSet c;
-
-   public static ebr.a<cpq> a() {
-      return new ebr.a<>(cpq::new, cpq::b, ata.i);
+public class cpq {
+   public Optional<Float> a(cpp $$0, cpd $$1, gw $$2, dfl $$3, eao $$4) {
+      return $$3.i() && $$4.c() ? Optional.empty() : Optional.of(Math.max($$3.b().d(), $$4.i()));
    }
 
-   private cpq(LongSet $$0) {
-      this.c = $$0;
-   }
-
-   public cpq() {
-      this(new LongOpenHashSet());
-   }
-
-   public static cpq b(qy $$0) {
-      return new cpq(new LongOpenHashSet($$0.o("Forced")));
-   }
-
-   @Override
-   public qy a(qy $$0) {
-      $$0.a("Forced", this.c.toLongArray());
-      return $$0;
-   }
-
-   public LongSet b() {
-      return this.c;
+   public boolean a(cpp $$0, cpd $$1, gw $$2, dfl $$3, float $$4) {
+      return true;
    }
 }

@@ -1,31 +1,47 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dof implements dqa {
-   public static final Codec<dof> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dfj.b.fieldOf("valid_base_block").forGetter($$0x -> $$0x.b),
-               dfj.b.fieldOf("stem_state").forGetter($$0x -> $$0x.c),
-               dfj.b.fieldOf("hat_state").forGetter($$0x -> $$0x.d),
-               dfj.b.fieldOf("decor_state").forGetter($$0x -> $$0x.e),
-               dlz.b.fieldOf("replaceable_blocks").forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("planted").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dof::new)
-   );
-   public final dfj b;
-   public final dfj c;
-   public final dfj d;
-   public final dfj e;
-   public final dlz f;
-   public final boolean g;
+public class dof extends dny<dqj> {
+   public dof(Codec<dqj> $$0) {
+      super($$0);
+   }
 
-   public dof(dfj $$0, dfj $$1, dfj $$2, dfj $$3, dlz $$4, boolean $$5) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+   @Override
+   public boolean a(doa<dqj> $$0) {
+      cqr $$1 = $$0.b();
+      gw $$2 = $$0.e();
+      ase $$3 = $$0.d();
+      if (!$$1.t($$2)) {
+         return false;
+      } else {
+         dfl $$4 = $$1.a_($$2.c());
+         if (!$$4.a(csy.dW) && !$$4.a(csy.dZ) && !$$4.a(csy.pr)) {
+            return false;
+         } else {
+            $$1.a($$2, csy.ed.n(), 2);
+
+            for (int $$5 = 0; $$5 < 1500; $$5++) {
+               gw $$6 = $$2.b($$3.a(8) - $$3.a(8), -$$3.a(12), $$3.a(8) - $$3.a(8));
+               if ($$1.a_($$6).i()) {
+                  int $$7 = 0;
+
+                  for (hc $$8 : hc.values()) {
+                     if ($$1.a_($$6.a($$8)).a(csy.ed)) {
+                        $$7++;
+                     }
+
+                     if ($$7 > 1) {
+                        break;
+                     }
+                  }
+
+                  if ($$7 == 1) {
+                     $$1.a($$6, csy.ed.n(), 2);
+                  }
+               }
+            }
+
+            return true;
+         }
+      }
    }
 }

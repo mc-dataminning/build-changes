@@ -1,106 +1,58 @@
-public class cwm extends cwj {
-   private static final double b = 0.13;
-   private static final double c = 0.08;
-   private static final double d = 0.05;
-   private static final int e = 20;
-   protected static final eig a = csv.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
+import javax.annotation.Nullable;
 
-   public cwm(dfi.d $$0) {
+public class cwm extends csx implements czy {
+   private static final dgc b = dgb.C;
+   protected static final eii a = csx.a(2.0, 10.0, 2.0, 14.0, 16.0, 14.0);
+
+   protected cwm(dfk.d $$0) {
       super($$0);
-   }
-
-   private static boolean c(biq $$0) {
-      return $$0 instanceof bjg || $$0 instanceof cdl || $$0 instanceof byo || $$0 instanceof cdn;
+      this.k(this.C.b().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public eig c(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
+   protected void a(dfm.a<csx, dfl> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   public eao c_(dfl $$0) {
+      return $$0.c(b) ? eap.c.a(false) : super.c_($$0);
+   }
+
+   @Nullable
+   @Override
+   public dfl a(clp $$0) {
+      dfl $$1 = super.a($$0);
+      if ($$1 != null) {
+         eao $$2 = $$0.q().b_($$0.a());
+         return $$1.a(b, Boolean.valueOf($$2.a() == eap.c));
+      } else {
+         return null;
+      }
+   }
+
+   @Override
+   public boolean a(dfl $$0, cqa $$1, gw $$2) {
+      gw $$3 = $$2.c();
+      dfl $$4 = $$1.a_($$3);
+      return $$4.d($$1, $$3, hc.a);
+   }
+
+   @Override
+   public eii a(dfl $$0, cpd $$1, gw $$2, ehu $$3) {
       return a;
    }
 
    @Override
-   public void a(cpv $$0, dfj $$1, gw $$2, biq $$3, float $$4) {
-      $$3.a(ape.kY, 1.0F, 1.0F);
-      if (!$$0.B) {
-         $$0.a($$3, (byte)54);
-      }
-
-      if ($$3.a($$4, 0.2F, $$0.ag().k())) {
-         $$3.a(this.aH.g(), this.aH.a() * 0.5F, this.aH.b() * 0.75F);
-      }
-   }
-
-   @Override
-   public void a(dfj $$0, cpv $$1, gw $$2, biq $$3) {
-      if (this.a($$2, $$3)) {
-         this.a($$3, $$2);
-         this.d($$3);
-         this.a($$1, $$3);
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   private boolean a(gw $$0, biq $$1) {
-      if ($$1.aA()) {
-         return false;
-      } else if ($$1.ds() > (double)$$0.v() + 0.9375 - 1.0E-7) {
-         return false;
-      } else if ($$1.do().d >= -0.08) {
-         return false;
+   public dfl a(dfl $$0, hc $$1, dfl $$2, cpy $$3, gw $$4, gw $$5) {
+      if ($$1 == hc.b && !this.a($$0, $$3, $$4)) {
+         return csy.a.n();
       } else {
-         double $$2 = Math.abs((double)$$0.u() + 0.5 - $$1.dq());
-         double $$3 = Math.abs((double)$$0.w() + 0.5 - $$1.dw());
-         double $$4 = 0.4375 + (double)($$1.df() / 2.0F);
-         return $$2 + 1.0E-7 > $$4 || $$3 + 1.0E-7 > $$4;
-      }
-   }
-
-   private void a(biq $$0, gw $$1) {
-      if ($$0 instanceof aks && $$0.dL().V() % 20L == 0L) {
-         al.J.a((aks)$$0, $$0.dL().a_($$1));
-      }
-   }
-
-   private void d(biq $$0) {
-      ehn $$1 = $$0.do();
-      if ($$1.d < -0.13) {
-         double $$2 = -0.05 / $$1.d;
-         $$0.f(new ehn($$1.c * $$2, -0.05, $$1.e * $$2));
-      } else {
-         $$0.f(new ehn($$1.c, -0.05, $$1.e));
-      }
-
-      $$0.n();
-   }
-
-   private void a(cpv $$0, biq $$1) {
-      if (c($$1)) {
-         if ($$0.z.a(5) == 0) {
-            $$1.a(ape.kY, 1.0F, 1.0F);
+         if ($$0.c(b)) {
+            $$3.a($$4, eap.c, eap.c.a($$3));
          }
 
-         if (!$$0.B && $$0.z.a(5) == 0) {
-            $$0.a($$1, (byte)53);
-         }
-      }
-   }
-
-   public static void a(biq $$0) {
-      a($$0, 5);
-   }
-
-   public static void b(biq $$0) {
-      a($$0, 10);
-   }
-
-   private static void a(biq $$0, int $$1) {
-      if ($$0.dL().B) {
-         dfj $$2 = csw.pg.n();
-
-         for (int $$3 = 0; $$3 < $$1; $$3++) {
-            $$0.dL().a(new ip(ix.c, $$2), $$0.dq(), $$0.ds(), $$0.dw(), 0.0, 0.0, 0.0);
-         }
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 }

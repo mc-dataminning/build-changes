@@ -1,77 +1,68 @@
-import java.util.function.Predicate;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class bpl extends bps {
-   private static final int g = 240;
-   private final Predicate<bgv> h;
-   protected int a;
-   protected int b = -1;
-   protected int c = -1;
+public class bpl extends bqd {
+   private final bvw a;
+   @Nullable
+   private cbw b;
+   private final cpx c;
+   private final float d;
+   private int e;
+   private final btu f;
 
-   public bpl(bji $$0, Predicate<bgv> $$1) {
-      super($$0);
-      this.h = $$1;
-   }
-
-   public bpl(bji $$0, int $$1, Predicate<bgv> $$2) {
-      this($$0, $$2);
-      this.c = $$1;
-   }
-
-   protected int f() {
-      return Math.max(240, this.c);
+   public bpl(bvw $$0, float $$1) {
+      this.a = $$0;
+      this.c = $$0.dL();
+      this.d = $$1;
+      this.f = btu.b().a((double)$$1);
+      this.a(EnumSet.of(bqd.a.b));
    }
 
    @Override
    public boolean a() {
-      if (!super.a()) {
+      this.b = this.c.a(this.f, this.a);
+      return this.b == null ? false : this.a(this.b);
+   }
+
+   @Override
+   public boolean b() {
+      if (!this.b.bv()) {
          return false;
       } else {
-         return !this.d.dL().X().b(cpr.c) ? false : this.a(this.d.dL().ai()) && !this.h();
+         return this.a.f((bis)this.b) > (double)(this.d * this.d) ? false : this.e > 0 && this.a(this.b);
       }
    }
 
    @Override
    public void c() {
-      super.c();
-      this.a = 0;
-   }
-
-   @Override
-   public boolean b() {
-      return this.a <= this.f() && !this.h() && this.e.a(this.d.dj(), 2.0) && this.a(this.d.dL().ai());
+      this.a.A(true);
+      this.e = this.a(40 + this.a.ef().a(40));
    }
 
    @Override
    public void d() {
-      super.d();
-      this.d.dL().a(this.d.ah(), this.e, -1);
+      this.a.A(false);
+      this.b = null;
    }
 
    @Override
    public void e() {
-      super.e();
-      if (this.d.ef().a(20) == 0) {
-         this.d.dL().c(1019, this.e, 0);
-         if (!this.d.aF) {
-            this.d.a(this.d.fn());
+      this.a.G().a(this.b.dq(), this.b.du(), this.b.dw(), 10.0F, (float)this.a.Y());
+      this.e--;
+   }
+
+   private boolean a(cbw $$0) {
+      for (bgz $$1 : bgz.values()) {
+         cjh $$2 = $$0.b($$1);
+         if (this.a.s() && $$2.a(cjk.qL)) {
+            return true;
+         }
+
+         if (this.a.m($$2)) {
+            return true;
          }
       }
 
-      this.a++;
-      int $$0 = (int)((float)this.a / (float)this.f() * 10.0F);
-      if ($$0 != this.b) {
-         this.d.dL().a(this.d.ah(), this.e, $$0);
-         this.b = $$0;
-      }
-
-      if (this.a == this.f() && this.a(this.d.dL().ai())) {
-         this.d.dL().a(this.e, false);
-         this.d.dL().c(1021, this.e, 0);
-         this.d.dL().c(2001, this.e, csv.i(this.d.dL().a_(this.e)));
-      }
-   }
-
-   private boolean a(bgv $$0) {
-      return this.h.test($$0);
+      return false;
    }
 }

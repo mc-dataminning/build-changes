@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface ade extends abf {
+   @Override
+   default sp b() {
+      return sp.a;
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ade {
+   void a(add var1);
 }

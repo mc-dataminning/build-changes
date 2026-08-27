@@ -1,23 +1,55 @@
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.google.gson.annotations.SerializedName;
+import java.util.UUID;
 
-public class emu extends enl {
-   private static final Logger b = LogUtils.getLogger();
-   public String a;
+public class emu extends enn implements enh {
+   @SerializedName("name")
+   private String a;
+   @SerializedName("uuid")
+   private UUID b;
+   @SerializedName("operator")
+   private boolean c;
+   @SerializedName("accepted")
+   private boolean d;
+   @SerializedName("online")
+   private boolean e;
 
-   public static emu a(String $$0) {
-      emu $$1 = new emu();
+   public String a() {
+      return this.a;
+   }
 
-      try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         $$1.a = epi.a("newsLink", $$3, null);
-      } catch (Exception var4) {
-         b.error("Could not parse RealmsNews: {}", var4.getMessage());
-      }
+   public void a(String $$0) {
+      this.a = $$0;
+   }
 
-      return $$1;
+   public UUID b() {
+      return this.b;
+   }
+
+   public void a(UUID $$0) {
+      this.b = $$0;
+   }
+
+   public boolean c() {
+      return this.c;
+   }
+
+   public void a(boolean $$0) {
+      this.c = $$0;
+   }
+
+   public boolean d() {
+      return this.d;
+   }
+
+   public void b(boolean $$0) {
+      this.d = $$0;
+   }
+
+   public boolean e() {
+      return this.e;
+   }
+
+   public void c(boolean $$0) {
+      this.e = $$0;
    }
 }

@@ -1,25 +1,40 @@
-import java.util.Arrays;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.function.Function;
 
-public class bgf implements bgg {
-   private final bgg[] a;
+public abstract class bgf {
+   private static final Codec<Either<Integer, bgf>> a = Codec.either(Codec.INT, jd.N.q().dispatch(bgf::c, bgg::codec));
+   public static final Codec<bgf> c = a.xmap(
+      $$0 -> (bgf)$$0.map(bgc::a, $$0x -> $$0x), $$0 -> $$0.c() == bgg.a ? Either.left(((bgc)$$0).d()) : Either.right($$0)
+   );
+   public static final Codec<bgf> d = b(0, Integer.MAX_VALUE);
+   public static final Codec<bgf> e = b(1, Integer.MAX_VALUE);
 
-   public bgf(bgg... $$0) {
-      this.a = $$0;
+   public static Codec<bgf> b(int $$0, int $$1) {
+      return a($$0, $$1, c);
    }
 
-   @Override
-   public float a(asc $$0) {
-      float $$1 = 1.0F;
-
-      for (bgg $$2 : this.a) {
-         $$1 *= $$2.a($$0);
-      }
-
-      return $$1;
+   public static <T extends bgf> Codec<T> a(int $$0, int $$1, Codec<T> $$2) {
+      return arh.a(
+         $$2,
+         (Function<T, DataResult<T>>)($$2x -> {
+            if ($$2x.a() < $$0) {
+               return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2x.a() + "-" + $$2x.b() + "]");
+            } else {
+               return $$2x.b() > $$1
+                  ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2x.a() + "-" + $$2x.b() + "]")
+                  : DataResult.success($$2x);
+            }
+         })
+      );
    }
 
-   @Override
-   public String toString() {
-      return "MultipliedFloats" + Arrays.toString((Object[])this.a);
-   }
+   public abstract int a(ase var1);
+
+   public abstract int a();
+
+   public abstract int b();
+
+   public abstract bgg<?> c();
 }

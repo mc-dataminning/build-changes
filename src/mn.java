@@ -81,10 +81,10 @@ public class mn implements jk {
          mn.c var10;
          try (BufferedReader $$2 = Files.newBufferedReader($$0)) {
             String $$3 = IOUtils.toString($$2);
-            qy $$4 = this.a($$1, rk.a($$3));
+            qy $$4 = this.a($$1, rl.a($$3));
             ByteArrayOutputStream $$5 = new ByteArrayOutputStream();
             HashingOutputStream $$6 = new HashingOutputStream(Hashing.sha1(), $$5);
-            ri.a($$4, $$6);
+            rj.a($$4, $$6);
             byte[] $$7 = $$5.toByteArray();
             HashCode $$8 = $$6.hash();
             var10 = new mn.c($$1, $$7, $$8);

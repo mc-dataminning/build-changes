@@ -1,19 +1,58 @@
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
+import net.minecraft.server.MinecraftServer;
 
 public class agp {
    public static void a(CommandDispatcher<dt> $$0) {
-      LiteralArgumentBuilder<dt> $$1 = (LiteralArgumentBuilder<dt>)du.a("debugmobspawning").requires($$0x -> $$0x.c(2));
-
-      for (bjj $$2 : bjj.values()) {
-         $$1.then(du.a($$2.a()).then(du.a("at", fk.a()).executes($$1x -> a((dt)$$1x.getSource(), $$2, fk.a($$1x, "at")))));
-      }
-
-      $$0.register($$1);
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("debugconfig").requires($$0x -> $$0x.c(3)))
+               .then(du.a("config").then(du.a("target", ee.c()).executes($$0x -> a((dt)$$0x.getSource(), ee.e($$0x, "target"))))))
+            .then(
+               du.a("unconfig")
+                  .then(
+                     du.a("target", fe.a())
+                        .suggests(($$0x, $$1) -> dw.b(a(((dt)$$0x.getSource()).l()), $$1))
+                        .executes($$0x -> a((dt)$$0x.getSource(), fe.a($$0x, "target")))
+                  )
+            )
+      );
    }
 
-   private static int a(dt $$0, bjj $$1, gw $$2) {
-      cqg.a($$1, $$0.e(), $$2);
+   private static Iterable<String> a(MinecraftServer $$0) {
+      Set<String> $$1 = new HashSet<>();
+
+      for (so $$2 : $$0.ad().e()) {
+         if ($$2.m() instanceof alp $$3) {
+            $$1.add($$3.k().getId().toString());
+         }
+      }
+
+      return $$1;
+   }
+
+   private static int a(dt $$0, akt $$1) {
+      GameProfile $$2 = $$1.fQ();
+      $$1.c.o();
+      $$0.a(() -> tn.b("Switched player " + $$2.getName() + "(" + $$2.getId() + ") to config mode"), false);
       return 1;
+   }
+
+   private static int a(dt $$0, UUID $$1) {
+      for (so $$2 : $$0.l().ad().e()) {
+         sw var5 = $$2.m();
+         if (var5 instanceof alp) {
+            alp $$3 = (alp)var5;
+            if ($$3.k().getId().equals($$1)) {
+               $$3.n();
+            }
+         }
+      }
+
+      $$0.b(tn.b("Can't find player to unconfig"));
+      return 0;
    }
 }

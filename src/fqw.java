@@ -1,41 +1,30 @@
-public class fqw extends fqx<dej> {
-   private static final aex c = new aex("textures/entity/end_gateway_beam.png");
+public class fqw implements fqg<dej> {
+   private final fth a;
 
-   public fqw(fqf.a $$0) {
-      super($$0);
+   public fqw(fqh.a $$0) {
+      this.a = $$0.c();
    }
 
-   public void a(dej $$0, float $$1, elp $$2, foe $$3, int $$4, int $$5) {
-      if ($$0.c() || $$0.d()) {
-         float $$6 = $$0.c() ? $$0.a($$1) : $$0.b($$1);
-         double $$7 = $$0.c() ? (double)$$0.k().aj() : 50.0;
-         $$6 = arx.a($$6 * (float) Math.PI);
-         int $$8 = arx.a((double)$$6 * $$7);
-         float[] $$9 = $$0.c() ? cht.c.d() : cht.k.d();
-         long $$10 = $$0.k().V();
-         fqa.a($$2, $$3, c, $$1, $$6, $$10, -$$8, $$8 * 2, $$9, 0.15F, 0.175F);
+   public void a(dej $$0, float $$1, elr $$2, fog $$3, int $$4, int $$5) {
+      $$2.a();
+      $$2.a(0.5F, 0.0F, 0.5F);
+      coz $$6 = $$0.d();
+      bis $$7 = $$6.a($$0.k(), $$0.k().D_(), $$0.p());
+      if ($$7 != null) {
+         float $$8 = 0.53125F;
+         float $$9 = Math.max($$7.df(), $$7.dg());
+         if ((double)$$9 > 1.0) {
+            $$8 /= $$9;
+         }
+
+         $$2.a(0.0F, 0.4F, 0.0F);
+         $$2.a(a.d.rotationDegrees((float)ary.d((double)$$1, $$6.b(), $$6.a()) * 10.0F));
+         $$2.a(0.0F, -0.2F, 0.0F);
+         $$2.a(a.b.rotationDegrees(-30.0F));
+         $$2.b($$8, $$8, $$8);
+         this.a.a($$7, 0.0, 0.0, 0.0, 0.0F, $$1, $$2, $$3, $$4);
       }
 
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected float b() {
-      return 1.0F;
-   }
-
-   @Override
-   protected float c() {
-      return 0.0F;
-   }
-
-   @Override
-   protected fom d() {
-      return fom.w();
-   }
-
-   @Override
-   public int aL_() {
-      return 256;
+      $$2.b();
    }
 }

@@ -20,7 +20,7 @@ public class jn implements jk {
    @Override
    public CompletableFuture<?> a(ji $$0) {
       return this.f.thenCompose($$1 -> {
-         Set<aex> $$2 = new HashSet<>();
+         Set<aey> $$2 = new HashSet<>();
          List<CompletableFuture<?>> $$3 = new ArrayList<>();
          Consumer<af> $$4 = $$3x -> {
             if (!$$2.add($$3x.a())) {

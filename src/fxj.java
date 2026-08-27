@@ -1,46 +1,24 @@
-public class fxj extends fxp<bwt, ffw<bwt>> {
-   private static final aex[] a = new aex[]{
-      new aex("textures/entity/llama/decor/white.png"),
-      new aex("textures/entity/llama/decor/orange.png"),
-      new aex("textures/entity/llama/decor/magenta.png"),
-      new aex("textures/entity/llama/decor/light_blue.png"),
-      new aex("textures/entity/llama/decor/yellow.png"),
-      new aex("textures/entity/llama/decor/lime.png"),
-      new aex("textures/entity/llama/decor/pink.png"),
-      new aex("textures/entity/llama/decor/gray.png"),
-      new aex("textures/entity/llama/decor/light_gray.png"),
-      new aex("textures/entity/llama/decor/cyan.png"),
-      new aex("textures/entity/llama/decor/purple.png"),
-      new aex("textures/entity/llama/decor/blue.png"),
-      new aex("textures/entity/llama/decor/brown.png"),
-      new aex("textures/entity/llama/decor/green.png"),
-      new aex("textures/entity/llama/decor/red.png"),
-      new aex("textures/entity/llama/decor/black.png")
-   };
-   private static final aex b = new aex("textures/entity/llama/decor/trader_llama.png");
-   private final ffw<bwt> c;
+public class fxj extends fxr<bvf, ffu<bvf>> {
+   private final fpa a;
 
-   public fxj(fvc<bwt, ffw<bwt>> $$0, fhy $$1) {
+   public fxj(fve<bvf, ffu<bvf>> $$0, fpa $$1) {
       super($$0);
-      this.c = new ffw<>($$1.a(fib.as));
+      this.a = $$1;
    }
 
-   public void a(elp $$0, foe $$1, int $$2, bwt $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      cht $$10 = $$3.gq();
-      aex $$11;
-      if ($$10 != null) {
-         $$11 = a[$$10.a()];
-      } else {
-         if (!$$3.gm()) {
-            return;
-         }
-
-         $$11 = b;
+   public void a(elr $$0, fog $$1, int $$2, bvf $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.gd() != 0) {
+         $$0.a();
+         fie $$10 = this.c().c();
+         $$10.a($$0);
+         $$0.a(-1.1875F, 1.0625F, -0.9375F);
+         $$0.a(0.5F, 0.5F, 0.5F);
+         float $$11 = 0.5F;
+         $$0.b(0.5F, 0.5F, 0.5F);
+         $$0.a(a.b.rotationDegrees(-90.0F));
+         $$0.a(-0.5F, -0.5F, -0.5F);
+         this.a.a(csy.bT.n(), $$0, $$1, $$2, fyx.d);
+         $$0.b();
       }
-
-      this.c().a(this.c);
-      this.c.a($$3, $$4, $$5, $$7, $$8, $$9);
-      elt $$14 = $$1.getBuffer(fom.e($$11));
-      this.c.a($$0, $$14, $$2, fyv.d, 1.0F, 1.0F, 1.0F, 1.0F);
    }
 }

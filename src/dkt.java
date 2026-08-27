@@ -1,77 +1,26 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.concurrent.atomic.AtomicLong;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dkt implements dkh {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private final AtomicLong h = new AtomicLong();
-   private final dku i = new dku(this);
+public class dkt {
+   private static final Codec<Double> f = Codec.doubleRange(0.01, 50.0);
+   public static final Codec<dkt> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               f.fieldOf("filling").orElse(1.7).forGetter($$0x -> $$0x.b),
+               f.fieldOf("inner_layer").orElse(2.2).forGetter($$0x -> $$0x.c),
+               f.fieldOf("middle_layer").orElse(3.2).forGetter($$0x -> $$0x.d),
+               f.fieldOf("outer_layer").orElse(4.2).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, dkt::new)
+   );
+   public final double b;
+   public final double c;
+   public final double d;
+   public final double e;
 
-   public dkt(long $$0) {
-      this.b($$0);
-   }
-
-   @Override
-   public asc d() {
-      return new dkt(this.g());
-   }
-
-   @Override
-   public dlf e() {
-      return new dkt.a(this.g());
-   }
-
-   @Override
-   public void b(long $$0) {
-      if (!this.h.compareAndSet(this.h.get(), ($$0 ^ 25214903917L) & 281474976710655L)) {
-         throw ass.a("LegacyRandomSource", null);
-      } else {
-         this.i.a();
-      }
-   }
-
-   @Override
-   public int c(int $$0) {
-      long $$1 = this.h.get();
-      long $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
-      if (!this.h.compareAndSet($$1, $$2)) {
-         throw ass.a("LegacyRandomSource", null);
-      } else {
-         return (int)($$2 >> 48 - $$0);
-      }
-   }
-
-   @Override
-   public double k() {
-      return this.i.b();
-   }
-
-   public static class a implements dlf {
-      private final long a;
-
-      public a(long $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public asc a(int $$0, int $$1, int $$2) {
-         long $$3 = arx.b($$0, $$1, $$2);
-         long $$4 = $$3 ^ this.a;
-         return new dkt($$4);
-      }
-
-      @Override
-      public asc a(String $$0) {
-         int $$1 = $$0.hashCode();
-         return new dkt((long)$$1 ^ this.a);
-      }
-
-      @VisibleForTesting
-      @Override
-      public void a(StringBuilder $$0) {
-         $$0.append("LegacyPositionalRandomFactory{").append(this.a).append("}");
-      }
+   public dkt(double $$0, double $$1, double $$2, double $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 }

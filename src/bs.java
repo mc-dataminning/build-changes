@@ -3,13 +3,13 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import java.util.Optional;
 
-public record bs(hk<biu<?>> b) {
-   public static final Codec<bs> a = Codec.either(aqi.b(je.s), jd.h.r())
+public record bs(hk<biw<?>> b) {
+   public static final Codec<bs> a = Codec.either(aqj.b(je.s), jd.h.r())
       .flatComapMap(
          $$0 -> (bs)$$0.map($$0x -> new bs(jd.h.a($$0x)), $$0x -> new bs(hk.a($$0x))),
          $$0 -> {
-            hk<biu<?>> $$1 = $$0.a();
-            Optional<aqi<biu<?>>> $$2 = $$1.d();
+            hk<biw<?>> $$1 = $$0.a();
+            Optional<aqj<biw<?>>> $$2 = $$1.d();
             if ($$2.isPresent()) {
                return DataResult.success(Either.left($$2.get()));
             } else {
@@ -20,19 +20,19 @@ public record bs(hk<biu<?>> b) {
          }
       );
 
-   public static bs a(biu<?> $$0) {
+   public static bs a(biw<?> $$0) {
       return new bs(hk.a($$0.r()));
    }
 
-   public static bs a(aqi<biu<?>> $$0) {
+   public static bs a(aqj<biw<?>> $$0) {
       return new bs(jd.h.a($$0));
    }
 
-   public boolean b(biu<?> $$0) {
+   public boolean b(biw<?> $$0) {
       return $$0.a(this.b);
    }
 
-   public hk<biu<?>> a() {
+   public hk<biw<?>> a() {
       return this.b;
    }
 }

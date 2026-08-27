@@ -1,21 +1,21 @@
 public class oq {
-   public static final aew<dnj<?, ?>> a = ot.a("seagrass_short");
-   public static final aew<dnj<?, ?>> b = ot.a("seagrass_slightly_less_short");
-   public static final aew<dnj<?, ?>> c = ot.a("seagrass_mid");
-   public static final aew<dnj<?, ?>> d = ot.a("seagrass_tall");
-   public static final aew<dnj<?, ?>> e = ot.a("sea_pickle");
-   public static final aew<dnj<?, ?>> f = ot.a("seagrass_simple");
-   public static final aew<dnj<?, ?>> g = ot.a("kelp");
-   public static final aew<dnj<?, ?>> h = ot.a("warm_ocean_vegetation");
+   public static final aex<dnl<?, ?>> a = ot.a("seagrass_short");
+   public static final aex<dnl<?, ?>> b = ot.a("seagrass_slightly_less_short");
+   public static final aex<dnl<?, ?>> c = ot.a("seagrass_mid");
+   public static final aex<dnl<?, ?>> d = ot.a("seagrass_tall");
+   public static final aex<dnl<?, ?>> e = ot.a("sea_pickle");
+   public static final aex<dnl<?, ?>> f = ot.a("seagrass_simple");
+   public static final aex<dnl<?, ?>> g = ot.a("kelp");
+   public static final aex<dnl<?, ?>> h = ot.a("warm_ocean_vegetation");
 
-   public static void a(nt<dnj<?, ?>> $$0) {
-      ot.a($$0, a, dnw.M, new dqk(0.3F));
-      ot.a($$0, b, dnw.M, new dqk(0.4F));
-      ot.a($$0, c, dnw.M, new dqk(0.6F));
-      ot.a($$0, d, dnw.M, new dqk(0.8F));
-      ot.a($$0, e, dnw.R, new dpv(20));
-      ot.a($$0, f, dnw.S, new dqs(dsb.a(csw.bw)));
-      ot.a($$0, g, dnw.N);
-      ot.a($$0, h, dnw.ag, new dqt(hk.a(pi.a(dnw.O, dqa.m), pi.a(dnw.Q, dqa.m), pi.a(dnw.P, dqa.m))));
+   public static void a(nt<dnl<?, ?>> $$0) {
+      ot.a($$0, a, dny.M, new dqm(0.3F));
+      ot.a($$0, b, dny.M, new dqm(0.4F));
+      ot.a($$0, c, dny.M, new dqm(0.6F));
+      ot.a($$0, d, dny.M, new dqm(0.8F));
+      ot.a($$0, e, dny.R, new dpx(20));
+      ot.a($$0, f, dny.S, new dqu(dsd.a(csy.bw)));
+      ot.a($$0, g, dny.N);
+      ot.a($$0, h, dny.ag, new dqv(hk.a(pi.a(dny.O, dqc.m), pi.a(dny.Q, dqc.m), pi.a(dny.P, dqc.m))));
    }
 }

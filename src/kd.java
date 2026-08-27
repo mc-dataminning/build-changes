@@ -10,40 +10,40 @@ import java.util.stream.Collectors;
 
 public abstract class kd implements kf {
    protected static final bq.a a = bq.a.a().a(bo.a.a().a(true));
-   private static final Set<biu<?>> b = ImmutableSet.of(biu.bt, biu.d, biu.ac, biu.aO, biu.bf);
-   private final cec c;
-   private final cec d;
-   private final Map<biu<?>, Map<aex, ecy.a>> e = Maps.newHashMap();
+   private static final Set<biw<?>> b = ImmutableSet.of(biw.bt, biw.d, biw.ac, biw.aO, biw.bf);
+   private final cee c;
+   private final cee d;
+   private final Map<biw<?>, Map<aey, eda.a>> e = Maps.newHashMap();
 
-   protected kd(cec $$0) {
+   protected kd(cee $$0) {
       this($$0, $$0);
    }
 
-   protected kd(cec $$0, cec $$1) {
+   protected kd(cee $$0, cee $$1) {
       this.c = $$0;
       this.d = $$1;
    }
 
-   protected static ecy.a a(cpu $$0) {
-      return ecy.b().a(ecx.a().a(egi.a(1.0F)).a(edg.a($$0))).a(ecx.a().a(egi.a(1.0F)).a(edm.a(biu.aF.j())));
+   protected static eda.a a(cpw $$0) {
+      return eda.b().a(ecz.a().a(egk.a(1.0F)).a(edi.a($$0))).a(ecz.a().a(egk.a(1.0F)).a(edo.a(biw.aF.j())));
    }
 
    public abstract void a();
 
    @Override
-   public void generate(BiConsumer<aex, ecy.a> $$0) {
+   public void generate(BiConsumer<aey, eda.a> $$0) {
       this.a();
-      Set<aex> $$1 = Sets.newHashSet();
+      Set<aey> $$1 = Sets.newHashSet();
       jd.h
          .h()
          .forEach(
             $$2 -> {
-               biu<?> $$3 = $$2.a();
+               biw<?> $$3 = $$2.a();
                if ($$3.a(this.c)) {
                   if (a($$3)) {
-                     Map<aex, ecy.a> $$4 = this.e.remove($$3);
-                     aex $$5 = $$3.j();
-                     if (!$$5.equals(eco.a) && $$3.a(this.d) && ($$4 == null || !$$4.containsKey($$5))) {
+                     Map<aey, eda.a> $$4 = this.e.remove($$3);
+                     aey $$5 = $$3.j();
+                     if (!$$5.equals(ecq.a) && $$3.a(this.d) && ($$4 == null || !$$4.containsKey($$5))) {
                         throw new IllegalStateException(String.format(Locale.ROOT, "Missing loottable '%s' for '%s'", $$5, $$2.g().a()));
                      }
 
@@ -57,13 +57,13 @@ public abstract class kd implements kf {
                         });
                      }
                   } else {
-                     Map<aex, ecy.a> $$6 = this.e.remove($$3);
+                     Map<aey, eda.a> $$6 = this.e.remove($$3);
                      if ($$6 != null) {
                         throw new IllegalStateException(
                            String.format(
                               Locale.ROOT,
                               "Weird loottables '%s' for '%s', not a LivingEntity so should not have loot",
-                              $$6.keySet().stream().map(aex::toString).collect(Collectors.joining(",")),
+                              $$6.keySet().stream().map(aey::toString).collect(Collectors.joining(",")),
                               $$2.g().a()
                            )
                         );
@@ -77,23 +77,23 @@ public abstract class kd implements kf {
       }
    }
 
-   private static boolean a(biu<?> $$0) {
-      return b.contains($$0) || $$0.f() != bjj.h;
+   private static boolean a(biw<?> $$0) {
+      return b.contains($$0) || $$0.f() != bjl.h;
    }
 
-   protected efp.a b() {
-      return efj.a(bf.a.a().b(bq.a.a().a(biu.O)));
+   protected efr.a b() {
+      return efl.a(bf.a.a().b(bq.a.a().a(biw.O)));
    }
 
-   protected efp.a a(bvc $$0) {
-      return efj.a(bf.a.a().b(bq.a.a().a(biu.O).a(br.a($$0))));
+   protected efr.a a(bve $$0) {
+      return efl.a(bf.a.a().b(bq.a.a().a(biw.O).a(br.a($$0))));
    }
 
-   protected void a(biu<?> $$0, ecy.a $$1) {
+   protected void a(biw<?> $$0, eda.a $$1) {
       this.a($$0, $$0.j(), $$1);
    }
 
-   protected void a(biu<?> $$0, aex $$1, ecy.a $$2) {
+   protected void a(biw<?> $$0, aey $$1, eda.a $$2) {
       this.e.computeIfAbsent($$0, $$0x -> new HashMap<>()).put($$1, $$2);
    }
 }

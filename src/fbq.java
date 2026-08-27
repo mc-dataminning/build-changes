@@ -1,236 +1,255 @@
-public class fbq extends etm<fbq.a> {
-   static final aex a = new aex("transferable_list/select_highlighted");
-   static final aex m = new aex("transferable_list/select");
-   static final aex n = new aex("transferable_list/unselect_highlighted");
-   static final aex o = new aex("transferable_list/unselect");
-   static final aex p = new aex("transferable_list/move_up_highlighted");
-   static final aex q = new aex("transferable_list/move_up");
-   static final aex s = new aex("transferable_list/move_down_highlighted");
-   static final aex t = new aex("transferable_list/move_down");
-   static final tm u = tm.c("pack.incompatible");
-   static final tm v = tm.c("pack.incompatible.confirm.title");
-   private final tm w;
-   final fbp x;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-   public fbq(eqv $$0, fbp $$1, int $$2, int $$3, tm $$4) {
-      super($$0, $$2, $$3, 32, $$3 - 55 + 4, 36);
-      this.x = $$1;
-      this.w = $$4;
-      this.k = false;
-      this.a(true, (int)(9.0F * 1.5F));
+public class fbq {
+   private final ang a;
+   final List<and> b;
+   final List<and> c;
+   final Function<and, aey> d;
+   final Runnable e;
+   private final Consumer<ang> f;
+
+   public fbq(Runnable $$0, Function<and, aey> $$1, ang $$2, Consumer<ang> $$3) {
+      this.e = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = Lists.newArrayList($$2.f());
+      Collections.reverse(this.b);
+      this.c = Lists.newArrayList($$2.c());
+      this.c.removeAll(this.b);
+      this.f = $$3;
    }
 
-   @Override
-   protected void a(esf $$0, int $$1, int $$2) {
-      tm $$3 = tm.h().b(this.w).a(n.t, n.r);
-      $$0.a(this.c.h, $$3, $$1 + this.e / 2 - this.c.h.a($$3) / 2, Math.min(this.g + 3, $$2), 16777215, false);
+   public Stream<fbq.a> a() {
+      return this.c.stream().map($$0 -> new fbq.d($$0));
    }
 
-   @Override
-   public int b() {
-      return this.e;
+   public Stream<fbq.a> b() {
+      return this.b.stream().map($$0 -> new fbq.c($$0));
    }
 
-   @Override
-   protected int c() {
-      return this.i - 6;
+   void e() {
+      this.a.a(Lists.reverse(this.b).stream().map(and::f).collect(ImmutableList.toImmutableList()));
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.f() != null) {
-         switch ($$0) {
-            case 32:
-            case 257:
-               this.f().d();
-               return true;
-            default:
-               if (eyk.q()) {
-                  switch ($$0) {
-                     case 264:
-                        this.f().g();
-                        return true;
-                     case 265:
-                        this.f().f();
-                        return true;
-                  }
-               }
-         }
+   public void c() {
+      this.e();
+      this.f.accept(this.a);
+   }
+
+   public void d() {
+      this.a.a();
+      this.b.retainAll(this.a.c());
+      this.c.clear();
+      this.c.addAll(this.a.c());
+      this.c.removeAll(this.b);
+   }
+
+   public interface a {
+      aey a();
+
+      ane b();
+
+      String c();
+
+      tn d();
+
+      tn e();
+
+      anh f();
+
+      default tn g() {
+         return this.f().a(this.e());
       }
 
-      return super.a($$0, $$1, $$2);
+      boolean h();
+
+      boolean i();
+
+      void j();
+
+      void k();
+
+      void l();
+
+      void m();
+
+      boolean n();
+
+      default boolean o() {
+         return !this.n();
+      }
+
+      default boolean p() {
+         return this.n() && !this.i();
+      }
+
+      boolean q();
+
+      boolean r();
    }
 
-   public static class a extends etm.a<fbq.a> {
-      private static final int b = 157;
-      private static final int c = 157;
-      private static final String d = "...";
-      private final fbq e;
-      protected final eqv a;
-      private final fbo.a f;
-      private final ark g;
-      private final etj h;
-      private final ark i;
-      private final etj j;
+   abstract class b implements fbq.a {
+      private final and b;
 
-      public a(eqv $$0, fbq $$1, fbo.a $$2) {
-         this.a = $$0;
-         this.f = $$2;
-         this.e = $$1;
-         this.g = a($$0, $$2.d());
-         this.h = b($$0, $$2.g());
-         this.i = a($$0, fbq.u);
-         this.j = b($$0, $$2.b().b());
+      public b(and $$0) {
+         this.b = $$0;
       }
 
-      private static ark a(eqv $$0, tm $$1) {
-         int $$2 = $$0.h.a($$1);
-         if ($$2 > 157) {
-            tq $$3 = tq.a($$0.h.a($$1, 157 - $$0.h.b("...")), tq.e("..."));
-            return qt.a().a($$3);
-         } else {
-            return $$1.f();
-         }
-      }
+      protected abstract List<and> s();
 
-      private static etj b(eqv $$0, tm $$1) {
-         return etj.a($$0.h, $$1, 157, 2);
+      protected abstract List<and> t();
+
+      @Override
+      public aey a() {
+         return fbq.this.d.apply(this.b);
       }
 
       @Override
-      public tm a() {
-         return tm.a("narrator.select", this.f.d());
+      public ane b() {
+         return this.b.c();
       }
 
       @Override
-      public void a(esf $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         and $$10 = this.f.b();
-         if (!$$10.a()) {
-            $$0.a($$3 - 1, $$2 - 1, $$3 + $$4 - 3, $$2 + $$5 + 1, -8978432);
-         }
-
-         $$0.a(this.f.a(), $$3, $$2, 0.0F, 0.0F, 32, 32, 32, 32);
-         ark $$11 = this.g;
-         etj $$12 = this.h;
-         if (this.e() && (this.a.m.V().c() || $$8 || this.e.f() == this && this.e.aD_())) {
-            $$0.a($$3, $$2, $$3 + 32, $$2 + 32, -1601138544);
-            int $$13 = $$6 - $$3;
-            int $$14 = $$7 - $$2;
-            if (!this.f.b().a()) {
-               $$11 = this.i;
-               $$12 = this.j;
-            }
-
-            if (this.f.o()) {
-               if ($$13 < 32) {
-                  $$0.a(fbq.a, $$3, $$2, 32, 32);
-               } else {
-                  $$0.a(fbq.m, $$3, $$2, 32, 32);
-               }
-            } else {
-               if (this.f.p()) {
-                  if ($$13 < 16) {
-                     $$0.a(fbq.n, $$3, $$2, 32, 32);
-                  } else {
-                     $$0.a(fbq.o, $$3, $$2, 32, 32);
-                  }
-               }
-
-               if (this.f.q()) {
-                  if ($$13 < 32 && $$13 > 16 && $$14 < 16) {
-                     $$0.a(fbq.p, $$3, $$2, 32, 32);
-                  } else {
-                     $$0.a(fbq.q, $$3, $$2, 32, 32);
-                  }
-               }
-
-               if (this.f.r()) {
-                  if ($$13 < 32 && $$13 > 16 && $$14 > 16) {
-                     $$0.a(fbq.s, $$3, $$2, 32, 32);
-                  } else {
-                     $$0.a(fbq.t, $$3, $$2, 32, 32);
-                  }
-               }
-            }
-         }
-
-         $$0.b(this.a.h, $$11, $$3 + 32 + 2, $$2 + 1, 16777215);
-         $$12.b($$0, $$3 + 32 + 2, $$2 + 12, 10, -8355712);
-      }
-
-      public String b() {
-         return this.f.c();
-      }
-
-      private boolean e() {
-         return !this.f.h() || !this.f.i();
-      }
-
-      public void d() {
-         if (this.f.o() && this.h()) {
-            this.e.x.a(this.e);
-         } else if (this.f.p()) {
-            this.f.k();
-            this.e.x.a(this.e);
-         }
-      }
-
-      void f() {
-         if (this.f.q()) {
-            this.f.l();
-         }
-      }
-
-      void g() {
-         if (this.f.r()) {
-            this.f.m();
-         }
-      }
-
-      private boolean h() {
-         if (this.f.b().a()) {
-            this.f.j();
-            return true;
-         } else {
-            tm $$0 = this.f.b().c();
-            this.a.a(new exd($$0x -> {
-               this.a.a(this.e.x);
-               if ($$0x) {
-                  this.f.j();
-               }
-            }, fbq.v, $$0));
-            return false;
-         }
+      public String c() {
+         return this.b.f();
       }
 
       @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         double $$3 = $$0 - (double)this.e.o();
-         double $$4 = $$1 - (double)this.e.h(this.e.i().indexOf(this));
-         if (this.e() && $$3 <= 32.0) {
-            this.e.x.l();
-            if (this.f.o()) {
-               this.h();
-               return true;
-            }
+      public tn d() {
+         return this.b.a();
+      }
 
-            if ($$3 < 16.0 && this.f.p()) {
-               this.f.k();
-               return true;
-            }
+      @Override
+      public tn e() {
+         return this.b.b();
+      }
 
-            if ($$3 > 16.0 && $$4 < 16.0 && this.f.q()) {
-               this.f.l();
-               return true;
-            }
+      @Override
+      public anh f() {
+         return this.b.j();
+      }
 
-            if ($$3 > 16.0 && $$4 > 16.0 && this.f.r()) {
-               this.f.m();
-               return true;
-            }
+      @Override
+      public boolean h() {
+         return this.b.h();
+      }
+
+      @Override
+      public boolean i() {
+         return this.b.g();
+      }
+
+      protected void u() {
+         this.s().remove(this.b);
+         this.b.i().a(this.t(), this.b, Function.identity(), true);
+         fbq.this.e.run();
+         fbq.this.e();
+         this.v();
+      }
+
+      private void v() {
+         if (this.b.f().equals("high_contrast")) {
+            era<Boolean> $$0 = eqx.O().m.q();
+            $$0.a(!$$0.c());
          }
+      }
 
+      protected void a(int $$0) {
+         List<and> $$1 = this.s();
+         int $$2 = $$1.indexOf(this.b);
+         $$1.remove($$2);
+         $$1.add($$2 + $$0, this.b);
+         fbq.this.e.run();
+      }
+
+      @Override
+      public boolean q() {
+         List<and> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 > 0 && !$$0.get($$1 - 1).h();
+      }
+
+      @Override
+      public void l() {
+         this.a(-1);
+      }
+
+      @Override
+      public boolean r() {
+         List<and> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 >= 0 && $$1 < $$0.size() - 1 && !$$0.get($$1 + 1).h();
+      }
+
+      @Override
+      public void m() {
+         this.a(1);
+      }
+   }
+
+   class c extends fbq.b {
+      public c(and $$0) {
+         super($$0);
+      }
+
+      @Override
+      protected List<and> s() {
+         return fbq.this.b;
+      }
+
+      @Override
+      protected List<and> t() {
+         return fbq.this.c;
+      }
+
+      @Override
+      public boolean n() {
+         return true;
+      }
+
+      @Override
+      public void j() {
+      }
+
+      @Override
+      public void k() {
+         this.u();
+      }
+   }
+
+   class d extends fbq.b {
+      public d(and $$0) {
+         super($$0);
+      }
+
+      @Override
+      protected List<and> s() {
+         return fbq.this.c;
+      }
+
+      @Override
+      protected List<and> t() {
+         return fbq.this.b;
+      }
+
+      @Override
+      public boolean n() {
          return false;
+      }
+
+      @Override
+      public void j() {
+         this.u();
+      }
+
+      @Override
+      public void k() {
       }
    }
 }

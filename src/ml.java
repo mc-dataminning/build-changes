@@ -75,7 +75,7 @@ public class ml implements jk {
          Path var6;
          try (InputStream $$4 = Files.newInputStream($$1)) {
             Path $$5 = $$3.resolve($$2 + ".snbt");
-            a($$0, $$5, rk.c(ri.a($$4)));
+            a($$0, $$5, rl.c(rj.a($$4)));
             d.info("Converted {} from NBT to SNBT", $$2);
             var6 = $$5;
          }

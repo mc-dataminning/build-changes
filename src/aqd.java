@@ -1,12 +1,10 @@
 public class aqd {
-   public static final aqi<bui> a = a("acquirable_job_site");
-   public static final aqi<bui> b = a("village");
-   public static final aqi<bui> c = a("bee_home");
+   public static final aqj<byl> a = a("placeable");
 
    private aqd() {
    }
 
-   private static aqi<bui> a(String $$0) {
-      return aqi.a(je.S, new aex($$0));
+   private static aqj<byl> a(String $$0) {
+      return aqj.a(je.P, new aey($$0));
    }
 }

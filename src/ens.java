@@ -1,12 +1,15 @@
-public class ens extends Exception {
-   public final emh a;
+import java.lang.Thread.UncaughtExceptionHandler;
+import org.slf4j.Logger;
 
-   public ens(emh $$0) {
+public class ens implements UncaughtExceptionHandler {
+   private final Logger a;
+
+   public ens(Logger $$0) {
       this.a = $$0;
    }
 
    @Override
-   public String getMessage() {
-      return this.a.c();
+   public void uncaughtException(Thread $$0, Throwable $$1) {
+      this.a.error("Caught previously unhandled exception", $$1);
    }
 }

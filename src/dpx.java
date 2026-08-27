@@ -1,30 +1,18 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dpx(dsj b, dlz c, bgd d, int e) implements dqa {
-   public static final Codec<dpx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dsj.a.fieldOf("state_provider").forGetter(dpx::a),
-               dlz.b.fieldOf("target").forGetter(dpx::b),
-               bgd.b(0, 8).fieldOf("radius").forGetter(dpx::c),
-               Codec.intRange(0, 4).fieldOf("half_height").forGetter(dpx::d)
-            )
-            .apply($$0, dpx::new)
-   );
+public class dpx implements dqc {
+   public static final Codec<dpx> a = bgf.b(0, 256).fieldOf("count").xmap(dpx::new, dpx::a).codec();
+   private final bgf b;
 
-   public dsj a() {
+   public dpx(int $$0) {
+      this.b = bgc.a($$0);
+   }
+
+   public dpx(bgf $$0) {
+      this.b = $$0;
+   }
+
+   public bgf a() {
       return this.b;
-   }
-
-   public dlz b() {
-      return this.c;
-   }
-
-   public bgd c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
    }
 }

@@ -7,61 +7,85 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
-public class re extends qx<rr> {
+public class re extends qx<rs> {
    private static final int b = 37;
-   public static final rt<re> a = new rt.b<re>() {
-      public re a(DataInput $$0, int $$1, rh $$2) throws IOException {
-         $$2.a(37L);
-         if ($$1 > 512) {
-            throw new RuntimeException("Tried to read NBT tag with too high complexity, depth > 512");
+   public static final ru<re> a = new ru.b<re>() {
+      public re a(DataInput $$0, rh $$1) throws IOException {
+         $$1.b();
+
+         re var3;
+         try {
+            var3 = d($$0, $$1);
+         } finally {
+            $$1.c();
+         }
+
+         return var3;
+      }
+
+      private static re d(DataInput $$0, rh $$1) throws IOException {
+         $$1.b(37L);
+         byte $$2 = $$0.readByte();
+         int $$3 = $$0.readInt();
+         if ($$2 == 0 && $$3 > 0) {
+            throw new RuntimeException("Missing type on ListTag");
          } else {
-            byte $$3 = $$0.readByte();
-            int $$4 = $$0.readInt();
-            if ($$3 == 0 && $$4 > 0) {
-               throw new RuntimeException("Missing type on ListTag");
-            } else {
-               $$2.a(4L * (long)$$4);
-               rt<?> $$5 = ru.a($$3);
-               List<rr> $$6 = Lists.newArrayListWithCapacity($$4);
+            $$1.b(4L * (long)$$3);
+            ru<?> $$4 = rv.a($$2);
+            List<rs> $$5 = Lists.newArrayListWithCapacity($$3);
 
-               for (int $$7 = 0; $$7 < $$4; $$7++) {
-                  $$6.add($$5.b($$0, $$1 + 1, $$2));
-               }
-
-               return new re($$6, $$3);
+            for (int $$6 = 0; $$6 < $$3; $$6++) {
+               $$5.add($$4.c($$0, $$1));
             }
+
+            return new re($$5, $$2);
          }
       }
 
       @Override
-      public ro.b a(DataInput $$0, ro $$1) throws IOException {
-         rt<?> $$2 = ru.a($$0.readByte());
-         int $$3 = $$0.readInt();
-         switch ($$1.a($$2, $$3)) {
+      public rp.b a(DataInput $$0, rp $$1, rh $$2) throws IOException {
+         $$2.b();
+
+         rp.b var4;
+         try {
+            var4 = c($$0, $$1, $$2);
+         } finally {
+            $$2.c();
+         }
+
+         return var4;
+      }
+
+      private static rp.b c(DataInput $$0, rp $$1, rh $$2) throws IOException {
+         $$2.b(37L);
+         ru<?> $$3 = rv.a($$0.readByte());
+         int $$4 = $$0.readInt();
+         switch ($$1.a($$3, $$4)) {
             case c:
-               return ro.b.c;
+               return rp.b.c;
             case b:
-               $$2.a($$0, $$3);
+               $$3.a($$0, $$4, $$2);
                return $$1.b();
             default:
-               int $$4 = 0;
+               $$2.b(4L * (long)$$4);
+               int $$5 = 0;
 
                while (true) {
                   label41: {
-                     if ($$4 < $$3) {
-                        switch ($$1.b($$2, $$4)) {
+                     if ($$5 < $$4) {
+                        switch ($$1.b($$3, $$5)) {
                            case d:
-                              return ro.b.c;
+                              return rp.b.c;
                            case c:
-                              $$2.a($$0);
+                              $$3.b($$0, $$2);
                               break;
                            case b:
-                              $$2.a($$0);
+                              $$3.b($$0, $$2);
                               break label41;
                            default:
-                              switch ($$2.a($$0, $$1)) {
+                              switch ($$3.a($$0, $$1, $$2)) {
                                  case c:
-                                    return ro.b.c;
+                                    return rp.b.c;
                                  case b:
                                     break;
                                  default:
@@ -70,24 +94,41 @@ public class re extends qx<rr> {
                         }
                      }
 
-                     int $$5 = $$3 - 1 - $$4;
-                     if ($$5 > 0) {
-                        $$2.a($$0, $$5);
+                     int $$6 = $$4 - 1 - $$5;
+                     if ($$6 > 0) {
+                        $$3.a($$0, $$6, $$2);
                      }
 
                      return $$1.b();
                   }
 
-                  $$4++;
+                  $$5++;
                }
          }
       }
 
       @Override
-      public void a(DataInput $$0) throws IOException {
-         rt<?> $$1 = ru.a($$0.readByte());
-         int $$2 = $$0.readInt();
-         $$1.a($$0, $$2);
+      public void a(DataInput $$0, int $$1, rh $$2) throws IOException {
+         $$2.b();
+
+         try {
+            ru.b.super.a($$0, $$1, $$2);
+         } finally {
+            $$2.c();
+         }
+      }
+
+      @Override
+      public void b(DataInput $$0, rh $$1) throws IOException {
+         $$1.b();
+
+         try {
+            ru<?> $$2 = rv.a($$0.readByte());
+            int $$3 = $$0.readInt();
+            $$2.a($$0, $$3, $$1);
+         } finally {
+            $$1.c();
+         }
       }
 
       @Override
@@ -100,10 +141,10 @@ public class re extends qx<rr> {
          return "TAG_List";
       }
    };
-   private final List<rr> c;
+   private final List<rs> c;
    private byte w;
 
-   re(List<rr> $$0, byte $$1) {
+   re(List<rs> $$0, byte $$1) {
       this.c = $$0;
       this.w = $$1;
    }
@@ -123,7 +164,7 @@ public class re extends qx<rr> {
       $$0.writeByte(this.w);
       $$0.writeInt(this.c.size());
 
-      for (rr $$1 : this.c) {
+      for (rs $$1 : this.c) {
          $$1.a($$0);
       }
    }
@@ -133,7 +174,7 @@ public class re extends qx<rr> {
       int $$0 = 37;
       $$0 += 4 * this.c.size();
 
-      for (rr $$1 : this.c) {
+      for (rs $$1 : this.c) {
          $$0 += $$1.a();
       }
 
@@ -146,7 +187,7 @@ public class re extends qx<rr> {
    }
 
    @Override
-   public rt<re> c() {
+   public ru<re> c() {
       return a;
    }
 
@@ -162,8 +203,8 @@ public class re extends qx<rr> {
    }
 
    @Override
-   public rr c(int $$0) {
-      rr $$1 = this.c.remove($$0);
+   public rs c(int $$0) {
+      rs $$1 = this.c.remove($$0);
       this.g();
       return $$1;
    }
@@ -175,7 +216,7 @@ public class re extends qx<rr> {
 
    public qy a(int $$0) {
       if ($$0 >= 0 && $$0 < this.c.size()) {
-         rr $$1 = this.c.get($$0);
+         rs $$1 = this.c.get($$0);
          if ($$1.b() == 10) {
             return (qy)$$1;
          }
@@ -186,7 +227,7 @@ public class re extends qx<rr> {
 
    public re b(int $$0) {
       if ($$0 >= 0 && $$0 < this.c.size()) {
-         rr $$1 = this.c.get($$0);
+         rs $$1 = this.c.get($$0);
          if ($$1.b() == 9) {
             return (re)$$1;
          }
@@ -197,9 +238,9 @@ public class re extends qx<rr> {
 
    public short d(int $$0) {
       if ($$0 >= 0 && $$0 < this.c.size()) {
-         rr $$1 = this.c.get($$0);
+         rs $$1 = this.c.get($$0);
          if ($$1.b() == 2) {
-            return ((rm)$$1).h();
+            return ((rn)$$1).h();
          }
       }
 
@@ -208,7 +249,7 @@ public class re extends qx<rr> {
 
    public int e(int $$0) {
       if ($$0 >= 0 && $$0 < this.c.size()) {
-         rr $$1 = this.c.get($$0);
+         rs $$1 = this.c.get($$0);
          if ($$1.b() == 3) {
             return ((rd)$$1).g();
          }
@@ -219,7 +260,7 @@ public class re extends qx<rr> {
 
    public int[] f(int $$0) {
       if ($$0 >= 0 && $$0 < this.c.size()) {
-         rr $$1 = this.c.get($$0);
+         rs $$1 = this.c.get($$0);
          if ($$1.b() == 11) {
             return ((rc)$$1).g();
          }
@@ -230,7 +271,7 @@ public class re extends qx<rr> {
 
    public long[] g(int $$0) {
       if ($$0 >= 0 && $$0 < this.c.size()) {
-         rr $$1 = this.c.get($$0);
+         rs $$1 = this.c.get($$0);
          if ($$1.b() == 12) {
             return ((rf)$$1).g();
          }
@@ -241,7 +282,7 @@ public class re extends qx<rr> {
 
    public double h(int $$0) {
       if ($$0 >= 0 && $$0 < this.c.size()) {
-         rr $$1 = this.c.get($$0);
+         rs $$1 = this.c.get($$0);
          if ($$1.b() == 6) {
             return ((qz)$$1).j();
          }
@@ -252,7 +293,7 @@ public class re extends qx<rr> {
 
    public float i(int $$0) {
       if ($$0 >= 0 && $$0 < this.c.size()) {
-         rr $$1 = this.c.get($$0);
+         rs $$1 = this.c.get($$0);
          if ($$1.b() == 5) {
             return ((rb)$$1).k();
          }
@@ -263,7 +304,7 @@ public class re extends qx<rr> {
 
    public String j(int $$0) {
       if ($$0 >= 0 && $$0 < this.c.size()) {
-         rr $$1 = this.c.get($$0);
+         rs $$1 = this.c.get($$0);
          return $$1.b() == 8 ? $$1.r_() : $$1.toString();
       } else {
          return "";
@@ -275,13 +316,13 @@ public class re extends qx<rr> {
       return this.c.size();
    }
 
-   public rr k(int $$0) {
+   public rs k(int $$0) {
       return this.c.get($$0);
    }
 
    @Override
-   public rr d(int $$0, rr $$1) {
-      rr $$2 = this.k($$0);
+   public rs d(int $$0, rs $$1) {
+      rs $$2 = this.k($$0);
       if (!this.a($$0, $$1)) {
          throw new UnsupportedOperationException(String.format(Locale.ROOT, "Trying to add tag of type %d to list of %d", $$1.b(), this.w));
       } else {
@@ -290,14 +331,14 @@ public class re extends qx<rr> {
    }
 
    @Override
-   public void c(int $$0, rr $$1) {
+   public void c(int $$0, rs $$1) {
       if (!this.b($$0, $$1)) {
          throw new UnsupportedOperationException(String.format(Locale.ROOT, "Trying to add tag of type %d to list of %d", $$1.b(), this.w));
       }
    }
 
    @Override
-   public boolean a(int $$0, rr $$1) {
+   public boolean a(int $$0, rs $$1) {
       if (this.a($$1)) {
          this.c.set($$0, $$1);
          return true;
@@ -307,7 +348,7 @@ public class re extends qx<rr> {
    }
 
    @Override
-   public boolean b(int $$0, rr $$1) {
+   public boolean b(int $$0, rs $$1) {
       if (this.a($$1)) {
          this.c.add($$0, $$1);
          return true;
@@ -316,7 +357,7 @@ public class re extends qx<rr> {
       }
    }
 
-   private boolean a(rr $$0) {
+   private boolean a(rs $$0) {
       if ($$0.b() == 0) {
          return false;
       } else if (this.w == 0) {
@@ -328,8 +369,8 @@ public class re extends qx<rr> {
    }
 
    public re e() {
-      Iterable<rr> $$0 = (Iterable<rr>)(ru.a(this.w).d() ? this.c : Iterables.transform(this.c, rr::d));
-      List<rr> $$1 = Lists.newArrayList($$0);
+      Iterable<rs> $$0 = (Iterable<rs>)(rv.a(this.w).d() ? this.c : Iterables.transform(this.c, rs::d));
+      List<rs> $$1 = Lists.newArrayList($$0);
       return new re($$1, this.w);
    }
 
@@ -344,7 +385,7 @@ public class re extends qx<rr> {
    }
 
    @Override
-   public void a(rv $$0) {
+   public void a(rw $$0) {
       $$0.a(this);
    }
 
@@ -360,26 +401,26 @@ public class re extends qx<rr> {
    }
 
    @Override
-   public ro.b a(ro $$0) {
-      switch ($$0.a(ru.a(this.w), this.c.size())) {
+   public rp.b a(rp $$0) {
+      switch ($$0.a(rv.a(this.w), this.c.size())) {
          case c:
-            return ro.b.c;
+            return rp.b.c;
          case b:
             return $$0.b();
          default:
             int $$1 = 0;
 
             while ($$1 < this.c.size()) {
-               rr $$2 = this.c.get($$1);
+               rs $$2 = this.c.get($$1);
                switch ($$0.b($$2.c(), $$1)) {
                   case d:
-                     return ro.b.c;
+                     return rp.b.c;
                   case c:
                      return $$0.b();
                   default:
                      switch ($$2.a($$0)) {
                         case c:
-                           return ro.b.c;
+                           return rp.b.c;
                         case b:
                            return $$0.b();
                      }

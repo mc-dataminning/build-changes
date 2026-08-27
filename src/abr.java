@@ -1,32 +1,18 @@
-public class abr implements ve<abd> {
-   private final int a;
-   private final int b;
-
-   public abr(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public void a(abd $$0) {
-      $$0.a(this);
-   }
-
-   public abr(sp $$0) {
-      this.a = $$0.readByte();
-      this.b = $$0.readByte();
+public record abr() implements vf<abe> {
+   public abr(sq $$0) {
+      this();
    }
 
    @Override
-   public void a(sp $$0) {
-      $$0.k(this.a);
-      $$0.k(this.b);
+   public void a(sq $$0) {
    }
 
-   public int a() {
-      return this.a;
+   public void a(abe $$0) {
+      $$0.a(this);
    }
 
-   public int d() {
-      return this.b;
+   @Override
+   public sp c() {
+      return sp.e;
    }
 }

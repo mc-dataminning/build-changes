@@ -1,15 +1,15 @@
-public interface dds extends bgr {
-   eig c = csv.a(2.0, 11.0, 2.0, 14.0, 16.0, 14.0);
-   eig x_ = csv.a(0.0, 16.0, 0.0, 16.0, 32.0, 16.0);
-   eig y_ = eid.a(c, x_);
-
-   default eig au_() {
-      return y_;
+public class dds extends dcm {
+   public dds(gw $$0, dfl $$1) {
+      super(dcz.a, $$0, $$1, cmp.b);
    }
 
-   double M();
+   @Override
+   protected tn g() {
+      return tn.c("container.furnace");
+   }
 
-   double N();
-
-   double O();
+   @Override
+   protected cen a(int $$0, cbv $$1) {
+      return new cfh($$0, $$1, this, this.n);
+   }
 }

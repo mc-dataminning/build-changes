@@ -1,27 +1,70 @@
-public class dbw extends ctd {
-   protected static final eig a = csv.a(1.0, 0.0, 1.0, 15.0, 1.5, 15.0);
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   protected dbw(dfi.d $$0) {
-      super($$0);
+public class dbw extends cru {
+   public static final dgf b = cwq.aC;
+   private static final Map<hc, eii> c = Maps.newEnumMap(
+      ImmutableMap.of(
+         hc.c,
+         csx.a(4.0, 4.0, 8.0, 12.0, 12.0, 16.0),
+         hc.d,
+         csx.a(4.0, 4.0, 0.0, 12.0, 12.0, 8.0),
+         hc.f,
+         csx.a(0.0, 4.0, 4.0, 8.0, 12.0, 12.0),
+         hc.e,
+         csx.a(8.0, 4.0, 4.0, 16.0, 12.0, 12.0)
+      )
+   );
+
+   protected dbw(czz.a $$0, dfk.d $$1) {
+      super($$0, $$1);
+      this.k(this.n().a(b, hc.c));
    }
 
    @Override
-   public void a(dfj $$0, cpv $$1, gw $$2, biq $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$1 instanceof akr && $$3 instanceof cdn) {
-         $$1.a(new gw($$2), true, $$3);
+   public String f() {
+      return this.k().a();
+   }
+
+   @Override
+   public eii a(dfl $$0, cpd $$1, gw $$2, ehu $$3) {
+      return c.get($$0.c(b));
+   }
+
+   @Override
+   public dfl a(clp $$0) {
+      dfl $$1 = super.a($$0);
+      cpd $$2 = $$0.q();
+      gw $$3 = $$0.a();
+      hc[] $$4 = $$0.f();
+
+      for (hc $$5 : $$4) {
+         if ($$5.o().d()) {
+            hc $$6 = $$5.g();
+            $$1 = $$1.a(b, $$6);
+            if (!$$2.a_($$3.a($$5)).a($$0)) {
+               return $$1;
+            }
+         }
       }
+
+      return null;
    }
 
    @Override
-   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
-      return a;
+   public dfl a(dfl $$0, czj $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   protected boolean d(dfj $$0, cpb $$1, gw $$2) {
-      eam $$3 = $$1.b_($$2);
-      eam $$4 = $$1.b_($$2.c());
-      return ($$3.a() == ean.c || $$0.b() instanceof cwq) && $$4.a() == ean.a;
+   public dfl a(dfl $$0, cxs $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dfm.a<csx, dfl> $$0) {
+      super.a($$0);
+      $$0.a(b);
    }
 }

@@ -1,5 +1,3 @@
 public interface bjx {
-   void a(apf var1);
-
-   boolean a();
+   void a(bue var1, bis var2);
 }

@@ -1,61 +1,28 @@
-import com.mojang.datafixers.DataFixUtils;
-import java.util.List;
-import java.util.function.Predicate;
+import java.util.EnumSet;
 
-public class bpx extends bqb {
-   private static final int a = 200;
-   private final buq b;
-   private int c;
-   private int d;
+public class bpx extends bqd {
+   private final bjk a;
 
-   public bpx(buq $$0) {
-      this.b = $$0;
-      this.d = this.a($$0);
-   }
-
-   protected int a(buq $$0) {
-      return b(200 + $$0.ef().a(200) % 20);
+   public bpx(bjk $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(bqd.a.c));
+      $$0.L().a(true);
    }
 
    @Override
    public boolean a() {
-      if (this.b.gj()) {
-         return false;
-      } else if (this.b.gg()) {
-         return true;
-      } else if (this.d > 0) {
-         this.d--;
-         return false;
-      } else {
-         this.d = this.a(this.b);
-         Predicate<buq> $$0 = $$0x -> $$0x.gi() || !$$0x.gg();
-         List<? extends buq> $$1 = this.b.dL().a((Class<? extends buq>)this.b.getClass(), this.b.cG().c(8.0, 8.0, 8.0), $$0);
-         buq $$2 = (buq)DataFixUtils.orElse($$1.stream().filter(buq::gi).findAny(), this.b);
-         $$2.a($$1.stream().filter($$0x -> !$$0x.gg()));
-         return this.b.gg();
-      }
+      return this.a.aX() && this.a.b(apz.a) > this.a.de() || this.a.bl();
    }
 
    @Override
-   public boolean b() {
-      return this.b.gg() && this.b.gk();
-   }
-
-   @Override
-   public void c() {
-      this.c = 0;
-   }
-
-   @Override
-   public void d() {
-      this.b.gh();
+   public boolean Q_() {
+      return true;
    }
 
    @Override
    public void e() {
-      if (--this.c <= 0) {
-         this.c = this.a(10);
-         this.b.gl();
+      if (this.a.ef().i() < 0.8F) {
+         this.a.K().a();
       }
    }
 }

@@ -1,19 +1,18 @@
-public record wg(int b, ebb c, float d) implements vx {
-   public static final aex a = new aex("debug/path");
+public record wg(long b, gw c) implements vy {
+   public static final aey a = new aey("debug/neighbors_update");
 
-   public wg(sp $$0) {
-      this($$0.readInt(), ebb.b($$0), $$0.readFloat());
+   public wg(sq $$0) {
+      this($$0.n(), $$0.e());
    }
 
    @Override
-   public void a(sp $$0) {
-      $$0.p(this.b);
-      this.c.a($$0);
-      $$0.a(this.d);
+   public void a(sq $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public aex a() {
+   public aey a() {
       return a;
    }
 }

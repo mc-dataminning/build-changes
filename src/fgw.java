@@ -1,58 +1,37 @@
-import com.google.common.collect.ImmutableList;
+public class fgw extends fgb {
+   private static final String a = "plate";
+   private static final String b = "handle";
+   private static final int c = 10;
+   private static final int d = 20;
+   private final fie e;
+   private final fie f;
+   private final fie g;
 
-public class fgw<T extends bzo> extends ffv<T> {
-   private static final String a = "lid";
-   private static final String b = "base";
-   private final fic f;
-   private final fic g;
-   private final fic h;
-
-   public fgw(fic $$0) {
-      super(fom::f);
-      this.g = $$0.b("lid");
-      this.f = $$0.b("base");
-      this.h = $$0.b("head");
+   public fgw(fie $$0) {
+      super(foo::c);
+      this.e = $$0;
+      this.f = $$0.b("plate");
+      this.g = $$0.b("handle");
    }
 
-   public static fii a() {
-      fik $$0 = new fik();
-      fil $$1 = $$0.a();
-      $$1.a("lid", fih.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 12.0F, 16.0F), fie.a(0.0F, 24.0F, 0.0F));
-      $$1.a("base", fih.c().a(0, 28).a(-8.0F, -8.0F, -8.0F, 16.0F, 8.0F, 16.0F), fie.a(0.0F, 24.0F, 0.0F));
-      $$1.a("head", fih.c().a(0, 52).a(-3.0F, 0.0F, -3.0F, 6.0F, 6.0F, 6.0F), fie.a(0.0F, 12.0F, 0.0F));
-      return fii.a($$0, 64, 64);
+   public static fik a() {
+      fim $$0 = new fim();
+      fin $$1 = $$0.a();
+      $$1.a("plate", fij.c().a(0, 0).a(-6.0F, -11.0F, -2.0F, 12.0F, 22.0F, 1.0F), fig.a);
+      $$1.a("handle", fij.c().a(26, 0).a(-1.0F, -3.0F, -1.0F, 2.0F, 6.0F, 6.0F), fig.a);
+      return fik.a($$0, 64, 64);
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = $$3 - (float)$$0.ah;
-      float $$7 = (0.5F + $$0.E($$6)) * (float) Math.PI;
-      float $$8 = -1.0F + arx.a($$7);
-      float $$9 = 0.0F;
-      if ($$7 > (float) Math.PI) {
-         $$9 = arx.a($$3 * 0.1F) * 0.7F;
-      }
-
-      this.g.a(0.0F, 16.0F + arx.a($$7) * 8.0F + $$9, 0.0F);
-      if ($$0.E($$6) > 0.3F) {
-         this.g.f = $$8 * $$8 * $$8 * $$8 * (float) Math.PI * 0.125F;
-      } else {
-         this.g.f = 0.0F;
-      }
-
-      this.h.e = $$5 * (float) (Math.PI / 180.0);
-      this.h.f = ($$0.aW - 180.0F - $$0.aU) * (float) (Math.PI / 180.0);
+   public fie b() {
+      return this.f;
    }
 
-   @Override
-   public Iterable<fic> d() {
-      return ImmutableList.of(this.f, this.g);
-   }
-
-   public fic b() {
+   public fie c() {
       return this.g;
    }
 
-   public fic c() {
-      return this.h;
+   @Override
+   public void a(elr $$0, elv $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.e.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 }

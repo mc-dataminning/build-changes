@@ -1,151 +1,213 @@
+import java.util.List;
+import java.util.Map;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class cha extends cja {
-   public static final int a = 3;
-   public static final int b = 1;
-   public static final int c = 3;
+public class cha extends cjc {
+   public static final String a = "BlockEntityTag";
+   public static final String b = "BlockStateTag";
+   @Deprecated
+   private final csx c;
 
-   public cha(cja.a $$0) {
-      super($$0);
+   public cha(csx $$0, cjc.a $$1) {
+      super($$1);
+      this.c = $$0;
    }
 
    @Override
-   public bgy a(clp $$0) {
-      cpv $$1 = $$0.q();
-      gw $$2 = $$0.a();
-      gw $$3 = $$2.a($$0.k());
-      if (a($$0.n(), $$1, $$2)) {
-         if (!$$1.B) {
-            $$0.o().a(djt.C);
-            $$1.c(1505, $$2, 0);
-         }
-
-         return bgy.a($$1.B);
+   public bha a(clr $$0) {
+      bha $$1 = this.a(new clp($$0));
+      if (!$$1.a() && this.u()) {
+         bha $$2 = this.a($$0.q(), $$0.o(), $$0.p()).a();
+         return $$2 == bha.b ? bha.c : $$2;
       } else {
-         dfj $$4 = $$1.a_($$2);
-         boolean $$5 = $$4.d($$1, $$2, $$0.k());
-         if ($$5 && a($$0.n(), $$1, $$3, $$0.k())) {
-            if (!$$1.B) {
-               $$0.o().a(djt.C);
-               $$1.c(1505, $$3, 0);
-            }
+         return $$1;
+      }
+   }
 
-            return bgy.a($$1.B);
+   public bha a(clp $$0) {
+      if (!this.e().a($$0.q().G())) {
+         return bha.e;
+      } else if (!$$0.b()) {
+         return bha.e;
+      } else {
+         clp $$1 = this.b($$0);
+         if ($$1 == null) {
+            return bha.e;
          } else {
-            return bgy.d;
+            dfl $$2 = this.c($$1);
+            if ($$2 == null) {
+               return bha.e;
+            } else if (!this.a($$1, $$2)) {
+               return bha.e;
+            } else {
+               gw $$3 = $$1.a();
+               cpx $$4 = $$1.q();
+               cbw $$5 = $$1.o();
+               cjh $$6 = $$1.n();
+               dfl $$7 = $$4.a_($$3);
+               if ($$7.a($$2.b())) {
+                  $$7 = this.a($$3, $$4, $$6, $$7);
+                  this.a($$3, $$4, $$5, $$6, $$7);
+                  $$7.b().a($$4, $$3, $$7, $$5, $$6);
+                  if ($$5 instanceof akt) {
+                     al.y.a((akt)$$5, $$3, $$6);
+                  }
+               }
+
+               dak $$8 = $$7.w();
+               $$4.a($$5, $$3, this.a($$7), apg.e, ($$8.a() + 1.0F) / 2.0F, $$8.b() * 0.8F);
+               $$4.a(djv.i, $$3, djv.a.a($$5, $$7));
+               if ($$5 == null || !$$5.fS().d) {
+                  $$6.h(1);
+               }
+
+               return bha.a($$4.B);
+            }
          }
       }
    }
 
-   public static boolean a(cjf $$0, cpv $$1, gw $$2) {
-      dfj $$3 = $$1.a_($$2);
-      if ($$3.b() instanceof csx $$4 && $$4.a($$1, $$2, $$3)) {
-         if ($$1 instanceof akr) {
-            if ($$4.a($$1, $$1.z, $$2, $$3)) {
-               $$4.a((akr)$$1, $$1.z, $$2, $$3);
-            }
-
-            $$0.h(1);
-         }
-
-         return true;
-      }
-
-      return false;
+   protected ape a(dfl $$0) {
+      return $$0.w().e();
    }
 
-   public static boolean a(cjf $$0, cpv $$1, gw $$2, @Nullable hc $$3) {
-      if ($$1.a_($$2).a(csw.G) && $$1.b_($$2).e() == 8) {
-         if (!($$1 instanceof akr)) {
-            return true;
-         } else {
-            asc $$4 = $$1.D_();
+   @Nullable
+   public clp b(clp $$0) {
+      return $$0;
+   }
 
-            label78:
-            for (int $$5 = 0; $$5 < 128; $$5++) {
-               gw $$6 = $$2;
-               dfj $$7 = csw.bw.n();
+   protected boolean a(gw $$0, cpx $$1, @Nullable cbw $$2, cjh $$3, dfl $$4) {
+      return a($$1, $$2, $$0, $$3);
+   }
 
-               for (int $$8 = 0; $$8 < $$5 / 16; $$8++) {
-                  $$6 = $$6.b($$4.a(3) - 1, ($$4.a(3) - 1) * $$4.a(3) / 2, $$4.a(3) - 1);
-                  if ($$1.a_($$6).r($$1, $$6)) {
-                     continue label78;
-                  }
+   @Nullable
+   protected dfl c(clp $$0) {
+      dfl $$1 = this.e().a($$0);
+      return $$1 != null && this.b($$0, $$1) ? $$1 : null;
+   }
+
+   private dfl a(gw $$0, cpx $$1, cjh $$2, dfl $$3) {
+      dfl $$4 = $$3;
+      qy $$5 = $$2.v();
+      if ($$5 != null) {
+         qy $$6 = $$5.p("BlockStateTag");
+         dfm<csx, dfl> $$7 = $$3.b().l();
+
+         for (String $$8 : $$6.e()) {
+            dgo<?> $$9 = $$7.a($$8);
+            if ($$9 != null) {
+               String $$10 = $$6.c($$8).r_();
+               $$4 = a($$4, $$9, $$10);
+            }
+         }
+      }
+
+      if ($$4 != $$3) {
+         $$1.a($$0, $$4, 2);
+      }
+
+      return $$4;
+   }
+
+   private static <T extends Comparable<T>> dfl a(dfl $$0, dgo<T> $$1, String $$2) {
+      return $$1.b($$2).map($$2x -> $$0.a($$1, $$2x)).orElse($$0);
+   }
+
+   protected boolean b(clp $$0, dfl $$1) {
+      cbw $$2 = $$0.o();
+      ehu $$3 = $$2 == null ? ehu.a() : ehu.a($$2);
+      return (!this.d() || $$1.a((cqa)$$0.q(), $$0.a())) && $$0.q().a($$1, $$0.a(), $$3);
+   }
+
+   protected boolean d() {
+      return true;
+   }
+
+   protected boolean a(clp $$0, dfl $$1) {
+      return $$0.q().a($$0.a(), $$1, 11);
+   }
+
+   public static boolean a(cpx $$0, @Nullable cbw $$1, gw $$2, cjh $$3) {
+      MinecraftServer $$4 = $$0.n();
+      if ($$4 == null) {
+         return false;
+      } else {
+         qy $$5 = a($$3);
+         if ($$5 != null) {
+            dcx $$6 = $$0.c_($$2);
+            if ($$6 != null) {
+               if (!$$0.B && $$6.t() && ($$1 == null || !$$1.go())) {
+                  return false;
                }
 
-               hg<cqt> $$9 = $$1.s($$6);
-               if ($$9.a(aps.ab)) {
-                  if ($$5 == 0 && $$3 != null && $$3.o().d()) {
-                     $$7 = jd.f.b(apt.aq).flatMap($$1x -> $$1x.a($$1.z)).map($$0x -> ((csv)$$0x.a()).n()).orElse($$7);
-                     if ($$7.b(csh.a)) {
-                        $$7 = $$7.a(csh.a, $$3);
-                     }
-                  } else if ($$4.a(4) == 0) {
-                     $$7 = jd.f.b(apt.ao).flatMap($$1x -> $$1x.a($$1.z)).map($$0x -> ((csv)$$0x.a()).n()).orElse($$7);
-                  }
-               }
-
-               if ($$7.a(apt.aq, $$0x -> $$0x.b(csh.a))) {
-                  for (int $$10 = 0; !$$7.a((cpy)$$1, $$6) && $$10 < 4; $$10++) {
-                     $$7 = $$7.a(csh.a, hc.c.a.a($$4));
-                  }
-               }
-
-               if ($$7.a((cpy)$$1, $$6)) {
-                  dfj $$11 = $$1.a_($$6);
-                  if ($$11.a(csw.G) && $$1.b_($$6).e() == 8) {
-                     $$1.a($$6, $$7, 3);
-                  } else if ($$11.a(csw.bw) && $$4.a(10) == 0) {
-                     ((csx)csw.bw).a((akr)$$1, $$4, $$6, $$11);
-                  }
+               qy $$7 = $$6.o();
+               qy $$8 = $$7.h();
+               $$7.a($$5);
+               if (!$$7.equals($$8)) {
+                  $$6.a($$7);
+                  $$6.e();
+                  return true;
                }
             }
-
-            $$0.h(1);
-            return true;
          }
-      } else {
+
          return false;
       }
    }
 
-   public static void a(cpw $$0, gw $$1, int $$2) {
-      if ($$2 == 0) {
-         $$2 = 15;
-      }
+   @Override
+   public String a() {
+      return this.e().f();
+   }
 
-      dfj $$3 = $$0.a_($$1);
-      if (!$$3.i()) {
-         double $$4 = 0.5;
-         double $$5;
-         if ($$3.a(csw.G)) {
-            $$2 *= 3;
-            $$5 = 1.0;
-            $$4 = 3.0;
-         } else if ($$3.i($$0, $$1)) {
-            $$1 = $$1.c();
-            $$2 *= 3;
-            $$4 = 3.0;
-            $$5 = 1.0;
-         } else {
-            $$5 = $$3.j($$0, $$1).c(hc.a.b);
-         }
+   @Override
+   public void a(cjh $$0, @Nullable cpx $$1, List<tn> $$2, cky $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.e().a($$0, $$1, $$2, $$3);
+   }
 
-         $$0.a(ix.K, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, 0.0, 0.0, 0.0);
-         asc $$8 = $$0.D_();
+   public csx e() {
+      return this.c;
+   }
 
-         for (int $$9 = 0; $$9 < $$2; $$9++) {
-            double $$10 = $$8.k() * 0.02;
-            double $$11 = $$8.k() * 0.02;
-            double $$12 = $$8.k() * 0.02;
-            double $$13 = 0.5 - $$4;
-            double $$14 = (double)$$1.u() + $$13 + $$8.j() * $$4 * 2.0;
-            double $$15 = (double)$$1.v() + $$8.j() * $$5;
-            double $$16 = (double)$$1.w() + $$13 + $$8.j() * $$4 * 2.0;
-            if (!$$0.a_(gw.a($$14, $$15, $$16).d()).i()) {
-               $$0.a(ix.K, $$14, $$15, $$16, $$10, $$11, $$12);
-            }
+   public void a(Map<csx, cjc> $$0, cjc $$1) {
+      $$0.put(this.e(), $$1);
+   }
+
+   @Override
+   public boolean al_() {
+      return !(this.c instanceof czw);
+   }
+
+   @Override
+   public void a(byp $$0) {
+      if (this.c instanceof czw) {
+         cjh $$1 = $$0.q();
+         qy $$2 = a($$1);
+         if ($$2 != null && $$2.b("Items", 9)) {
+            re $$3 = $$2.c("Items", 10);
+            cjj.a($$0, $$3.stream().map(qy.class::cast).map(cjh::a));
          }
       }
+   }
+
+   @Nullable
+   public static qy a(cjh $$0) {
+      return $$0.b("BlockEntityTag");
+   }
+
+   public static void a(cjh $$0, dcz<?> $$1, qy $$2) {
+      if ($$2.g()) {
+         $$0.c("BlockEntityTag");
+      } else {
+         dcx.a($$2, $$1);
+         $$0.a("BlockEntityTag", $$2);
+      }
+   }
+
+   @Override
+   public cee m() {
+      return this.e().m();
    }
 }

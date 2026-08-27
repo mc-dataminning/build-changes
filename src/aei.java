@@ -1,294 +1,164 @@
-import com.mojang.logging.LogUtils;
-import io.netty.handler.codec.DecoderException;
-import io.netty.handler.codec.EncoderException;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.concurrent.locks.ReadWriteLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.UUID;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.ObjectUtils;
-import org.slf4j.Logger;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
 public class aei {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Object2IntMap<Class<? extends biq>> b = new Object2IntOpenHashMap();
-   private static final int c = 254;
-   private final biq d;
-   private final Int2ObjectMap<aei.a<?>> e = new Int2ObjectOpenHashMap();
-   private final ReadWriteLock f = new ReentrantReadWriteLock();
-   private boolean g;
+   private static final aqx<aeh<?>> C = aqx.c(16);
+   public static final aeh<Byte> a = aeh.a(($$0, $$1) -> $$0.k($$1), sq::readByte);
+   public static final aeh<Integer> b = aeh.a(sq::c, sq::m);
+   public static final aeh<Long> c = aeh.a(sq::a, sq::n);
+   public static final aeh<Float> d = aeh.a(sq::a, sq::readFloat);
+   public static final aeh<String> e = aeh.a(sq::a, sq::r);
+   public static final aeh<tn> f = aeh.a(sq::a, sq::l);
+   public static final aeh<Optional<tn>> g = aeh.b(sq::a, sq::l);
+   public static final aeh<cjh> h = new aeh<cjh>() {
+      public void a(sq $$0, cjh $$1) {
+         $$0.a($$1);
+      }
 
-   public aei(biq $$0) {
-      this.d = $$0;
-   }
+      public cjh b(sq $$0) {
+         return $$0.q();
+      }
 
-   public static <T> aef<T> a(Class<? extends biq> $$0, aeg<T> $$1) {
-      if (a.isDebugEnabled()) {
-         try {
-            Class<?> $$2 = Class.forName(Thread.currentThread().getStackTrace()[2].getClassName());
-            if (!$$2.equals($$0)) {
-               a.debug("defineId called for: {} from {}", new Object[]{$$0, $$2, new RuntimeException()});
-            }
-         } catch (ClassNotFoundException var5) {
+      public cjh a(cjh $$0) {
+         return $$0.p();
+      }
+   };
+   public static final aeh<dfl> i = aeh.a(csx.o);
+   public static final aeh<Optional<dfl>> j = new aeh.a<Optional<dfl>>() {
+      public void a(sq $$0, Optional<dfl> $$1) {
+         if ($$1.isPresent()) {
+            $$0.c(csx.i($$1.get()));
+         } else {
+            $$0.c(0);
          }
       }
 
-      int $$3;
-      if (b.containsKey($$0)) {
-         $$3 = b.getInt($$0) + 1;
-      } else {
-         int $$4 = 0;
-         Class<?> $$5 = $$0;
-
-         while ($$5 != biq.class) {
-            $$5 = $$5.getSuperclass();
-            if (b.containsKey($$5)) {
-               $$4 = b.getInt($$5) + 1;
-               break;
-            }
-         }
-
-         $$3 = $$4;
+      public Optional<dfl> b(sq $$0) {
+         int $$1 = $$0.m();
+         return $$1 == 0 ? Optional.empty() : Optional.of(csx.a($$1));
+      }
+   };
+   public static final aeh<Boolean> k = aeh.a(sq::a, sq::readBoolean);
+   public static final aeh<iv> l = new aeh.a<iv>() {
+      public void a(sq $$0, iv $$1) {
+         $$0.a(jd.k, $$1.b());
+         $$1.a($$0);
       }
 
-      if ($$3 > 254) {
-         throw new IllegalArgumentException("Data value id is too big with " + $$3 + "! (Max is 254)");
-      } else {
-         b.put($$0, $$3);
-         return $$1.a($$3);
-      }
-   }
-
-   public <T> void a(aef<T> $$0, T $$1) {
-      int $$2 = $$0.a();
-      if ($$2 > 254) {
-         throw new IllegalArgumentException("Data value id is too big with " + $$2 + "! (Max is 254)");
-      } else if (this.e.containsKey($$2)) {
-         throw new IllegalArgumentException("Duplicate id value for " + $$2 + "!");
-      } else if (aeh.b($$0.b()) < 0) {
-         throw new IllegalArgumentException("Unregistered serializer " + $$0.b() + " for " + $$2 + "!");
-      } else {
-         this.c($$0, $$1);
-      }
-   }
-
-   private <T> void c(aef<T> $$0, T $$1) {
-      aei.a<T> $$2 = new aei.a<>($$0, $$1);
-      this.f.writeLock().lock();
-      this.e.put($$0.a(), $$2);
-      this.f.writeLock().unlock();
-   }
-
-   public <T> boolean a(aef<T> $$0) {
-      return this.e.containsKey($$0.a());
-   }
-
-   private <T> aei.a<T> c(aef<T> $$0) {
-      this.f.readLock().lock();
-
-      aei.a<T> $$1;
-      try {
-         $$1 = (aei.a<T>)this.e.get($$0.a());
-      } catch (Throwable var9) {
-         o $$3 = o.a(var9, "Getting synched entity data");
-         p $$4 = $$3.a("Synched entity data");
-         $$4.a("Data ID", $$0);
-         throw new y($$3);
-      } finally {
-         this.f.readLock().unlock();
+      public iv b(sq $$0) {
+         return this.a($$0, $$0.a(jd.k));
       }
 
-      return $$1;
-   }
-
-   public <T> T b(aef<T> $$0) {
-      return this.c($$0).b();
-   }
-
-   public <T> void b(aef<T> $$0, T $$1) {
-      this.a($$0, $$1, false);
-   }
-
-   public <T> void a(aef<T> $$0, T $$1, boolean $$2) {
-      aei.a<T> $$3 = this.c($$0);
-      if ($$2 || ObjectUtils.notEqual($$1, $$3.b())) {
-         $$3.a($$1);
-         this.d.a($$0);
-         $$3.a(true);
-         this.g = true;
+      private <T extends iv> T a(sq $$0, iw<T> $$1) {
+         return $$1.d().b($$1, $$0);
       }
-   }
+   };
+   public static final aeh<hy> m = new aeh.a<hy>() {
+      public void a(sq $$0, hy $$1) {
+         $$0.a($$1.b());
+         $$0.a($$1.c());
+         $$0.a($$1.d());
+      }
 
-   public boolean a() {
-      return this.g;
+      public hy b(sq $$0) {
+         return new hy($$0.readFloat(), $$0.readFloat(), $$0.readFloat());
+      }
+   };
+   public static final aeh<gw> n = aeh.a(sq::a, sq::e);
+   public static final aeh<Optional<gw>> o = aeh.b(sq::a, sq::e);
+   public static final aeh<hc> p = aeh.a(hc.class);
+   public static final aeh<Optional<UUID>> q = aeh.b(sq::a, sq::o);
+   public static final aeh<Optional<hf>> r = aeh.b(sq::a, sq::h);
+   public static final aeh<qy> s = new aeh<qy>() {
+      public void a(sq $$0, qy $$1) {
+         $$0.a((rs)$$1);
+      }
+
+      public qy b(sq $$0) {
+         return $$0.p();
+      }
+
+      public qy a(qy $$0) {
+         return $$0.h();
+      }
+   };
+   public static final aeh<cbk> t = new aeh.a<cbk>() {
+      public void a(sq $$0, cbk $$1) {
+         $$0.a(jd.z, $$1.a());
+         $$0.a(jd.A, $$1.b());
+         $$0.c($$1.c());
+      }
+
+      public cbk b(sq $$0) {
+         return new cbk($$0.a(jd.z), $$0.a(jd.A), $$0.m());
+      }
+   };
+   public static final aeh<OptionalInt> u = new aeh.a<OptionalInt>() {
+      public void a(sq $$0, OptionalInt $$1) {
+         $$0.c($$1.orElse(-1) + 1);
+      }
+
+      public OptionalInt b(sq $$0) {
+         int $$1 = $$0.m();
+         return $$1 == 0 ? OptionalInt.empty() : OptionalInt.of($$1 - 1);
+      }
+   };
+   public static final aeh<bju> v = aeh.a(bju.class);
+   public static final aeh<bux> w = aeh.a(jd.aj);
+   public static final aeh<bve> x = aeh.a(jd.ak);
+   public static final aeh<hg<byl>> y = aeh.a(jd.m.t());
+   public static final aeh<bxf.a> z = aeh.a(bxf.a.class);
+   public static final aeh<Vector3f> A = aeh.a(sq::a, sq::i);
+   public static final aeh<Quaternionf> B = aeh.a(sq::a, sq::j);
+
+   public static void a(aeh<?> $$0) {
+      C.c($$0);
    }
 
    @Nullable
-   public List<aei.b<?>> b() {
-      List<aei.b<?>> $$0 = null;
-      if (this.g) {
-         this.f.readLock().lock();
-         ObjectIterator var2 = this.e.values().iterator();
-
-         while (var2.hasNext()) {
-            aei.a<?> $$1 = (aei.a<?>)var2.next();
-            if ($$1.c()) {
-               $$1.a(false);
-               if ($$0 == null) {
-                  $$0 = new ArrayList<>();
-               }
-
-               $$0.add($$1.e());
-            }
-         }
-
-         this.f.readLock().unlock();
-      }
-
-      this.g = false;
-      return $$0;
+   public static aeh<?> a(int $$0) {
+      return C.a($$0);
    }
 
-   @Nullable
-   public List<aei.b<?>> c() {
-      List<aei.b<?>> $$0 = null;
-      this.f.readLock().lock();
-      ObjectIterator var2 = this.e.values().iterator();
-
-      while (var2.hasNext()) {
-         aei.a<?> $$1 = (aei.a<?>)var2.next();
-         if (!$$1.d()) {
-            if ($$0 == null) {
-               $$0 = new ArrayList<>();
-            }
-
-            $$0.add($$1.e());
-         }
-      }
-
-      this.f.readLock().unlock();
-      return $$0;
+   public static int b(aeh<?> $$0) {
+      return C.a($$0);
    }
 
-   public void a(List<aei.b<?>> $$0) {
-      this.f.writeLock().lock();
-
-      try {
-         for (aei.b<?> $$1 : $$0) {
-            aei.a<?> $$2 = (aei.a<?>)this.e.get($$1.a);
-            if ($$2 != null) {
-               this.a($$2, $$1);
-               this.d.a($$2.a());
-            }
-         }
-      } finally {
-         this.f.writeLock().unlock();
-      }
-
-      this.d.a($$0);
+   private aei() {
    }
 
-   private <T> void a(aei.a<T> $$0, aei.b<?> $$1) {
-      if (!Objects.equals($$1.b(), $$0.a.b())) {
-         throw new IllegalStateException(
-            String.format(
-               Locale.ROOT,
-               "Invalid entity data item type for field %d on entity %s: old=%s(%s), new=%s(%s)",
-               $$0.a.a(),
-               this.d,
-               $$0.b,
-               $$0.b.getClass(),
-               $$1.c,
-               $$1.c.getClass()
-            )
-         );
-      } else {
-         $$0.a((T)$$1.c);
-      }
-   }
-
-   public boolean d() {
-      return this.e.isEmpty();
-   }
-
-   public static class a<T> {
-      final aef<T> a;
-      T b;
-      private final T c;
-      private boolean d;
-
-      public a(aef<T> $$0, T $$1) {
-         this.a = $$0;
-         this.c = $$1;
-         this.b = $$1;
-      }
-
-      public aef<T> a() {
-         return this.a;
-      }
-
-      public void a(T $$0) {
-         this.b = $$0;
-      }
-
-      public T b() {
-         return this.b;
-      }
-
-      public boolean c() {
-         return this.d;
-      }
-
-      public void a(boolean $$0) {
-         this.d = $$0;
-      }
-
-      public boolean d() {
-         return this.c.equals(this.b);
-      }
-
-      public aei.b<T> e() {
-         return aei.b.a(this.a, this.b);
-      }
-   }
-
-   public static record b<T>(int a, aeg<T> b, T c) {
-
-      public static <T> aei.b<T> a(aef<T> $$0, T $$1) {
-         aeg<T> $$2 = $$0.b();
-         return new aei.b<>($$0.a(), $$2, $$2.a($$1));
-      }
-
-      public void a(sp $$0) {
-         int $$1 = aeh.b(this.b);
-         if ($$1 < 0) {
-            throw new EncoderException("Unknown serializer type " + this.b);
-         } else {
-            $$0.k(this.a);
-            $$0.c($$1);
-            this.b.a($$0, this.c);
-         }
-      }
-
-      public static aei.b<?> a(sp $$0, int $$1) {
-         int $$2 = $$0.m();
-         aeg<?> $$3 = aeh.a($$2);
-         if ($$3 == null) {
-            throw new DecoderException("Unknown serializer type " + $$2);
-         } else {
-            return a($$0, $$1, $$3);
-         }
-      }
-
-      private static <T> aei.b<T> a(sp $$0, int $$1, aeg<T> $$2) {
-         return new aei.b<>($$1, $$2, $$2.a($$0));
-      }
+   static {
+      a(a);
+      a(b);
+      a(c);
+      a(d);
+      a(e);
+      a(f);
+      a(g);
+      a(h);
+      a(k);
+      a(m);
+      a(n);
+      a(o);
+      a(p);
+      a(q);
+      a(i);
+      a(j);
+      a(s);
+      a(l);
+      a(t);
+      a(u);
+      a(v);
+      a(w);
+      a(x);
+      a(r);
+      a(y);
+      a(z);
+      a(A);
+      a(B);
    }
 }

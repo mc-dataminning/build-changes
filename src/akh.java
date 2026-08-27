@@ -1,42 +1,22 @@
-public record akh(int a, int b) {
-   private static final long c = 32L;
-   private static final long d = 4294967295L;
+public record akh(String b, int c, cbu d, boolean e, int f, bjc g, boolean h, boolean i) {
+   public static final int a = 16;
 
-   public cpc a() {
-      return new cpc(hz.a(this.a), hz.a(this.b));
+   public akh(sq $$0) {
+      this($$0.d(16), $$0.readByte(), $$0.b(cbu.class), $$0.readBoolean(), $$0.readUnsignedByte(), $$0.b(bjc.class), $$0.readBoolean(), $$0.readBoolean());
    }
 
-   public long b() {
-      return a(this.a, this.b);
+   public void a(sq $$0) {
+      $$0.a(this.b);
+      $$0.k(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.k(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
+      $$0.a(this.i);
    }
 
-   public static long a(int $$0, int $$1) {
-      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
-   }
-
-   public static int a(long $$0) {
-      return (int)($$0 & 4294967295L);
-   }
-
-   public static int b(long $$0) {
-      return (int)($$0 >>> 32 & 4294967295L);
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.a + ", " + this.b + "]";
-   }
-
-   @Override
-   public int hashCode() {
-      return cpc.d(this.a, this.b);
-   }
-
-   public int c() {
-      return this.a;
-   }
-
-   public int d() {
-      return this.b;
+   public static akh a() {
+      return new akh("en_us", 2, cbu.a, true, 0, cbw.bB, false, false);
    }
 }

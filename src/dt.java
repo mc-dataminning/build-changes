@@ -17,47 +17,47 @@ import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 
 public class dt implements dw {
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tm.c("permissions.requires.player"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tm.c("permissions.requires.entity"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tn.c("permissions.requires.player"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tn.c("permissions.requires.entity"));
    private final ds c;
-   private final ehn d;
-   private final akr e;
+   private final ehp d;
+   private final aks e;
    private final int f;
    private final String g;
-   private final tm h;
+   private final tn h;
    private final MinecraftServer i;
    private final boolean j;
    @Nullable
-   private final biq k;
+   private final bis k;
    @Nullable
    private final ResultConsumer<dt> l;
    private final ed.a m;
-   private final ehm n;
+   private final eho n;
    private final dr o;
-   private final asr p;
+   private final ast p;
    private final IntConsumer q;
 
-   public dt(ds $$0, ehn $$1, ehm $$2, akr $$3, int $$4, String $$5, tm $$6, MinecraftServer $$7, @Nullable biq $$8) {
+   public dt(ds $$0, ehp $$1, eho $$2, aks $$3, int $$4, String $$5, tn $$6, MinecraftServer $$7, @Nullable bis $$8) {
       this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, ($$0x, $$1x, $$2x) -> {
-      }, ed.a.a, dr.a, asr.immediate($$7), $$0x -> {
+      }, ed.a.a, dr.a, ast.immediate($$7), $$0x -> {
       });
    }
 
    protected dt(
       ds $$0,
-      ehn $$1,
-      ehm $$2,
-      akr $$3,
+      ehp $$1,
+      eho $$2,
+      aks $$3,
       int $$4,
       String $$5,
-      tm $$6,
+      tn $$6,
       MinecraftServer $$7,
-      @Nullable biq $$8,
+      @Nullable bis $$8,
       boolean $$9,
       @Nullable ResultConsumer<dt> $$10,
       ed.a $$11,
       dr $$12,
-      asr $$13,
+      ast $$13,
       IntConsumer $$14
    ) {
       this.c = $$0;
@@ -81,19 +81,19 @@ public class dt implements dw {
       return this.c == $$0 ? this : new dt($$0, this.d, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p, this.q);
    }
 
-   public dt a(biq $$0) {
+   public dt a(bis $$0) {
       return this.k == $$0
          ? this
          : new dt(this.c, this.d, this.n, this.e, this.f, $$0.ab().getString(), $$0.N_(), this.i, $$0, this.j, this.l, this.m, this.o, this.p, this.q);
    }
 
-   public dt a(ehn $$0) {
+   public dt a(ehp $$0) {
       return this.d.equals($$0)
          ? this
          : new dt(this.c, $$0, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p, this.q);
    }
 
-   public dt a(ehm $$0) {
+   public dt a(eho $$0) {
       return this.n.c($$0) ? this : new dt(this.c, this.d, $$0, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p, this.q);
    }
 
@@ -126,32 +126,32 @@ public class dt implements dw {
       return $$0 == this.m ? this : new dt(this.c, this.d, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, $$0, this.o, this.p, this.q);
    }
 
-   public dt a(akr $$0) {
+   public dt a(aks $$0) {
       if ($$0 == this.e) {
          return this;
       } else {
-         double $$1 = dis.a(this.e.C_(), $$0.C_());
-         ehn $$2 = new ehn(this.d.c * $$1, this.d.d, this.d.e * $$1);
+         double $$1 = diu.a(this.e.C_(), $$0.C_());
+         ehp $$2 = new ehp(this.d.c * $$1, this.d.d, this.d.e * $$1);
          return new dt(this.c, $$2, this.n, $$0, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p, this.q);
       }
    }
 
-   public dt a(biq $$0, ed.a $$1) {
+   public dt a(bis $$0, ed.a $$1) {
       return this.b($$1.a($$0));
    }
 
-   public dt b(ehn $$0) {
-      ehn $$1 = this.m.a(this);
+   public dt b(ehp $$0) {
+      ehp $$1 = this.m.a(this);
       double $$2 = $$0.c - $$1.c;
       double $$3 = $$0.d - $$1.d;
       double $$4 = $$0.e - $$1.e;
       double $$5 = Math.sqrt($$2 * $$2 + $$4 * $$4);
-      float $$6 = arx.g((float)(-(arx.d($$3, $$5) * 180.0F / (float)Math.PI)));
-      float $$7 = arx.g((float)(arx.d($$4, $$2) * 180.0F / (float)Math.PI) - 90.0F);
-      return this.a(new ehm($$6, $$7));
+      float $$6 = ary.g((float)(-(ary.d($$3, $$5) * 180.0F / (float)Math.PI)));
+      float $$7 = ary.g((float)(ary.d($$4, $$2) * 180.0F / (float)Math.PI) - 90.0F);
+      return this.a(new eho($$6, $$7));
    }
 
-   public dt a(dr $$0, asr $$1) {
+   public dt a(dr $$0, ast $$1) {
       return $$0 == this.o && $$1 == this.p
          ? this
          : new dt(this.c, this.d, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, $$0, $$1, this.q);
@@ -161,7 +161,7 @@ public class dt implements dw {
       return $$0 == this.q ? this : new dt(this.c, this.d, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p, $$0);
    }
 
-   public tm b() {
+   public tn b() {
       return this.h;
    }
 
@@ -174,20 +174,20 @@ public class dt implements dw {
       return this.f >= $$0;
    }
 
-   public ehn d() {
+   public ehp d() {
       return this.d;
    }
 
-   public akr e() {
+   public aks e() {
       return this.e;
    }
 
    @Nullable
-   public biq f() {
+   public bis f() {
       return this.k;
    }
 
-   public biq g() throws CommandSyntaxException {
+   public bis g() throws CommandSyntaxException {
       if (this.k == null) {
          throw b.create();
       } else {
@@ -195,25 +195,25 @@ public class dt implements dw {
       }
    }
 
-   public aks h() throws CommandSyntaxException {
-      biq var2 = this.k;
-      if (var2 instanceof aks) {
-         return (aks)var2;
+   public akt h() throws CommandSyntaxException {
+      bis var2 = this.k;
+      if (var2 instanceof akt) {
+         return (akt)var2;
       } else {
          throw a.create();
       }
    }
 
    @Nullable
-   public aks i() {
-      return this.k instanceof aks $$0 ? $$0 : null;
+   public akt i() {
+      return this.k instanceof akt $$0 ? $$0 : null;
    }
 
    public boolean j() {
-      return this.k instanceof aks;
+      return this.k instanceof akt;
    }
 
-   public ehm k() {
+   public eho k() {
       return this.n;
    }
 
@@ -229,7 +229,7 @@ public class dt implements dw {
       return this.o;
    }
 
-   public asr o() {
+   public ast o() {
       return this.p;
    }
 
@@ -237,14 +237,14 @@ public class dt implements dw {
       return this.q;
    }
 
-   public boolean a(aks $$0) {
-      aks $$1 = this.i();
+   public boolean a(akt $$0) {
+      akt $$1 = this.i();
       return $$0 == $$1 ? false : $$1 != null && $$1.W() || $$0.W();
    }
 
-   public void a(ua $$0, boolean $$1, ti.a $$2) {
+   public void a(ub $$0, boolean $$1, tj.a $$2) {
       if (!this.j) {
-         aks $$3 = this.i();
+         akt $$3 = this.i();
          if ($$3 != null) {
             $$3.a($$0, $$1, $$2);
          } else {
@@ -253,9 +253,9 @@ public class dt implements dw {
       }
    }
 
-   public void a(tm $$0) {
+   public void a(tn $$0) {
       if (!this.j) {
-         aks $$1 = this.i();
+         akt $$1 = this.i();
          if ($$1 != null) {
             $$1.a($$0);
          } else {
@@ -264,11 +264,11 @@ public class dt implements dw {
       }
    }
 
-   public void a(Supplier<tm> $$0, boolean $$1) {
+   public void a(Supplier<tn> $$0, boolean $$1) {
       boolean $$2 = this.c.j_() && !this.j;
       boolean $$3 = $$1 && this.c.T_() && !this.j;
       if ($$2 || $$3) {
-         tm $$4 = $$0.get();
+         tn $$4 = $$0.get();
          if ($$2) {
             this.c.a($$4);
          }
@@ -279,24 +279,24 @@ public class dt implements dw {
       }
    }
 
-   private void c(tm $$0) {
-      tm $$1 = tm.a("chat.type.admin", this.b(), $$0).a(n.h, n.u);
-      if (this.i.aI().b(cpr.o)) {
-         for (aks $$2 : this.i.ac().t()) {
+   private void c(tn $$0) {
+      tn $$1 = tn.a("chat.type.admin", this.b(), $$0).a(n.h, n.u);
+      if (this.i.aI().b(cpt.o)) {
+         for (akt $$2 : this.i.ac().t()) {
             if ($$2 != this.c && this.i.ac().f($$2.fQ())) {
                $$2.a($$1);
             }
          }
       }
 
-      if (this.c != this.i && this.i.aI().b(cpr.l)) {
+      if (this.c != this.i && this.i.aI().b(cpt.l)) {
          this.i.a($$1);
       }
    }
 
-   public void b(tm $$0) {
+   public void b(tn $$0) {
       if (this.c.v_() && !this.j) {
-         this.c.a(tm.h().b($$0).a(n.m));
+         this.c.a(tn.h().b($$0).a(n.m));
       }
    }
 
@@ -317,12 +317,12 @@ public class dt implements dw {
    }
 
    @Override
-   public Stream<aex> s() {
-      return jd.c.s().map(apd::a);
+   public Stream<aey> s() {
+      return jd.c.s().map(ape::a);
    }
 
    @Override
-   public Stream<aex> t() {
+   public Stream<aey> t() {
       return this.i.aE().d();
    }
 
@@ -332,7 +332,7 @@ public class dt implements dw {
    }
 
    @Override
-   public CompletableFuture<Suggestions> a(aew<? extends ht<?>> $$0, dw.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
+   public CompletableFuture<Suggestions> a(aex<? extends ht<?>> $$0, dw.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
       return this.v().c($$0).map($$2x -> {
          this.a($$2x, $$1, $$2);
          return $$2.buildFuture();
@@ -340,7 +340,7 @@ public class dt implements dw {
    }
 
    @Override
-   public Set<aew<cpv>> u() {
+   public Set<aex<cpx>> u() {
       return this.i.E();
    }
 
@@ -350,7 +350,7 @@ public class dt implements dw {
    }
 
    @Override
-   public cec w() {
+   public cee w() {
       return this.e.G();
    }
 }

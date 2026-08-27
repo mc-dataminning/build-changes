@@ -1,24 +1,24 @@
-public class ack implements ve<abd> {
-   private final String a;
+public class ack implements vf<abe> {
+   private final aey a;
 
-   public ack(String $$0) {
-      this.a = $$0;
+   public ack(cmm<?> $$0) {
+      this.a = $$0.a();
    }
 
-   public ack(sp $$0) {
-      this.a = $$0.r();
+   public ack(sq $$0) {
+      this.a = $$0.s();
    }
 
    @Override
-   public void a(sp $$0) {
+   public void a(sq $$0) {
       $$0.a(this.a);
    }
 
-   public void a(abd $$0) {
+   public void a(abe $$0) {
       $$0.a(this);
    }
 
-   public String a() {
+   public aey a() {
       return this.a;
    }
 }

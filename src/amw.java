@@ -1,27 +1,28 @@
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.mojang.serialization.JsonOps;
 
-public record amw(tm c, int d, Optional<arq<Integer>> e) {
-   public static final Codec<amw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               arg.b.fieldOf("description").forGetter(amw::a),
-               Codec.INT.fieldOf("pack_format").forGetter(amw::b),
-               arq.a(Codec.INT).optionalFieldOf("supported_formats").forGetter(amw::c)
-            )
-            .apply($$0, amw::new)
-   );
-   public static final amv<amw> b = amv.a("pack", a);
+public interface amw<T> extends amv<T> {
+   JsonObject a(T var1);
 
-   public tm a() {
-      return this.c;
-   }
+   static <T> amw<T> a(final String $$0, final Codec<T> $$1) {
+      return new amw<T>() {
+         @Override
+         public String a() {
+            return $$0;
+         }
 
-   public int b() {
-      return this.d;
-   }
+         @Override
+         public T a(JsonObject $$0x) {
+            return ac.a($$1.parse(JsonOps.INSTANCE, $$0), JsonParseException::new);
+         }
 
-   public Optional<arq<Integer>> c() {
-      return this.e;
+         @Override
+         public JsonObject a(T $$0x) {
+            return ac.<JsonElement, IllegalArgumentException>a($$1.encodeStart(JsonOps.INSTANCE, $$0), IllegalArgumentException::new).getAsJsonObject();
+         }
+      };
    }
 }

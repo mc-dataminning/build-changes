@@ -1,35 +1,14 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-public record ali(String b, tp c) {
-   public static final ali a = a("");
+public interface ali {
+   void a(Consumer<vf<?>> var1);
 
-   public static ali a(String $$0) {
-      return new ali($$0, tp.c);
-   }
+   ali.a a();
 
-   public static ali b(String $$0) {
-      return new ali($$0, tp.b);
-   }
-
-   @Nullable
-   public String a() {
-      return this.c.a(this.b);
-   }
-
-   public String b() {
-      return Objects.requireNonNullElse(this.a(), "");
-   }
-
-   public boolean c() {
-      return !this.c.a();
-   }
-
-   public String d() {
-      return this.b;
-   }
-
-   public tp e() {
-      return this.c;
+   public static record a(String a) {
+      @Override
+      public String toString() {
+         return this.a;
+      }
    }
 }

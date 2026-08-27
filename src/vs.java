@@ -1,24 +1,24 @@
-public class vs implements ve<vo> {
-   private final int a;
+public class vs implements vf<vp> {
+   private final long a;
 
-   public vs(int $$0) {
+   public vs(long $$0) {
       this.a = $$0;
    }
 
-   public vs(sp $$0) {
-      this.a = $$0.readInt();
-   }
-
-   @Override
-   public void a(sp $$0) {
-      $$0.p(this.a);
-   }
-
-   public void a(vo $$0) {
+   public void a(vp $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public vs(sq $$0) {
+      this.a = $$0.readLong();
+   }
+
+   @Override
+   public void a(sq $$0) {
+      $$0.b(this.a);
+   }
+
+   public long a() {
       return this.a;
    }
 }

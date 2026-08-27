@@ -1,80 +1,61 @@
-import javax.annotation.Nullable;
+public class bxw extends bxm {
+   private static final int b = 100;
+   private static final int c = 10;
+   private static final int d = 20;
+   private static final int e = 150;
+   private static final btu f = btu.a().a(150.0);
+   private final btu g;
+   private int h;
 
-public class bxw extends bxj {
-   private boolean b;
-   @Nullable
-   private ebb c;
-   @Nullable
-   private ehn d;
-
-   public bxw(bxh $$0) {
+   public bxw(bxj $$0) {
       super($$0);
+      this.g = btu.a().a(20.0).a($$1 -> Math.abs($$1.ds() - $$0.ds()) <= 10.0);
    }
 
    @Override
    public void c() {
-      if (!this.b && this.c != null) {
-         gw $$0 = this.a.dL().a(dks.a.f, dnv.a(this.a.s()));
-         if (!$$0.a(this.a.dj(), 10.0)) {
-            this.a.ga().a(bxx.a);
+      this.h++;
+      bji $$0 = this.a.dL().a(this.g, this.a, this.a.dq(), this.a.ds(), this.a.dw());
+      if ($$0 != null) {
+         if (this.h > 25) {
+            this.a.ga().a(bxz.h);
+         } else {
+            ehp $$1 = new ehp($$0.dq() - this.a.dq(), 0.0, $$0.dw() - this.a.dw()).d();
+            ehp $$2 = new ehp((double)ary.a(this.a.dB() * (float) (Math.PI / 180.0)), 0.0, (double)(-ary.b(this.a.dB() * (float) (Math.PI / 180.0)))).d();
+            float $$3 = (float)$$2.b($$1);
+            float $$4 = (float)(Math.acos((double)$$3) * 180.0F / (float)Math.PI) + 0.5F;
+            if ($$4 < 0.0F || $$4 > 10.0F) {
+               double $$5 = $$0.dq() - this.a.e.dq();
+               double $$6 = $$0.dw() - this.a.e.dw();
+               double $$7 = ary.a(ary.d(180.0 - ary.d($$5, $$6) * 180.0F / (float)Math.PI - (double)this.a.dB()), -100.0, 100.0);
+               this.a.bW *= 0.8F;
+               float $$8 = (float)Math.sqrt($$5 * $$5 + $$6 * $$6) + 1.0F;
+               float $$9 = $$8;
+               if ($$8 > 40.0F) {
+                  $$8 = 40.0F;
+               }
+
+               this.a.bW += (float)$$7 * (0.7F / $$8 / $$9);
+               this.a.r(this.a.dB() + this.a.bW);
+            }
          }
-      } else {
-         this.b = false;
-         this.j();
+      } else if (this.h >= 100) {
+         $$0 = this.a.dL().a(f, this.a, this.a.dq(), this.a.ds(), this.a.dw());
+         this.a.ga().a(bxz.e);
+         if ($$0 != null) {
+            this.a.ga().a(bxz.i);
+            this.a.ga().b(bxz.i).a(new ehp($$0.dq(), $$0.ds(), $$0.dw()));
+         }
       }
    }
 
    @Override
    public void d() {
-      this.b = true;
-      this.c = null;
-      this.d = null;
-   }
-
-   private void j() {
-      int $$0 = this.a.y();
-      ehn $$1 = this.a.D(1.0F);
-      int $$2 = this.a.r(-$$1.c * 40.0, 105.0, -$$1.e * 40.0);
-      if (this.a.gb() != null && this.a.gb().e() > 0) {
-         $$2 %= 12;
-         if ($$2 < 0) {
-            $$2 += 12;
-         }
-      } else {
-         $$2 -= 12;
-         $$2 &= 7;
-         $$2 += 12;
-      }
-
-      this.c = this.a.a($$0, $$2, null);
-      this.k();
-   }
-
-   private void k() {
-      if (this.c != null) {
-         this.c.a();
-         if (!this.c.c()) {
-            ib $$0 = this.c.g();
-            this.c.a();
-
-            double $$1;
-            do {
-               $$1 = (double)((float)$$0.v() + this.a.ef().i() * 20.0F);
-            } while ($$1 < (double)$$0.v());
-
-            this.d = new ehn((double)$$0.u(), $$1, (double)$$0.w());
-         }
-      }
-   }
-
-   @Nullable
-   @Override
-   public ehn g() {
-      return this.d;
+      this.h = 0;
    }
 
    @Override
-   public bxx<bxw> i() {
-      return bxx.e;
+   public bxz<bxw> i() {
+      return bxz.g;
    }
 }

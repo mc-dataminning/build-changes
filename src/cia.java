@@ -1,30 +1,24 @@
-public class cia extends chk {
-   public cia(cja.a $$0) {
+public class cia extends cjc {
+   public cia(cjc.a $$0) {
       super($$0);
    }
 
    @Override
-   public bgz<cjf> a(cpv $$0, cbu $$1, bgx $$2) {
-      cjf $$3 = $$1.b($$2);
-      if ($$0.B) {
-         return bgz.a($$3);
-      } else {
-         if (!$$1.fS().d) {
-            $$3.h(1);
-         }
-
-         $$1.b(apo.c.b(this));
-         $$1.dL().a(null, $$1, ape.yx, $$1.da(), 1.0F, 1.0F);
-         cjf $$4 = cjm.a($$0, $$1.dp(), $$1.dv(), (byte)0, true, false);
-         if ($$3.b()) {
-            return bgz.b($$4);
-         } else {
-            if (!$$1.fR().e($$4.p())) {
-               $$1.a($$4, false);
-            }
-
-            return bgz.b($$3);
-         }
+   public bhb<cjh> a(cpx $$0, cbw $$1, bgz $$2) {
+      cjh $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dq(), $$1.ds(), $$1.dw(), apf.gG, apg.h, 0.5F, 0.4F / ($$0.D_().i() * 0.4F + 0.8F));
+      if (!$$0.B) {
+         ccw $$4 = new ccw($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dD(), $$1.dB(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
       }
+
+      $$1.b(app.c.b(this));
+      if (!$$1.fS().d) {
+         $$3.h(1);
+      }
+
+      return bhb.a($$3, $$0.w_());
    }
 }

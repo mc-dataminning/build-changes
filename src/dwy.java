@@ -1,31 +1,52 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.Set;
 
-public class dwy extends dvi {
+public class dwy extends dvj {
    public static final Codec<dwy> d = a(dwy::new);
 
-   public dwy(dvi.c $$0) {
-      super($$0);
+   public dwy(dvk.c $$0) {
+      super(dwx::new, 21, 21, $$0);
    }
 
    @Override
-   public Optional<dvi.b> a(dvi.a $$0) {
-      czh $$1 = czh.a($$0.f());
-      gw $$2 = this.a($$0, $$1);
-      return $$2.v() < 60 ? Optional.empty() : Optional.of(new dvi.b($$2, (Consumer<dwa>)($$3 -> this.a($$3, $$2, $$1, $$0))));
+   public void a(cqr $$0, cqp $$1, dhi $$2, ase $$3, dvc $$4, cpe $$5, dvz $$6) {
+      Set<gw> $$7 = aso.a(ib::i);
+
+      for (dvo $$8 : $$6.c()) {
+         if ($$8 instanceof dwx $$9) {
+            $$7.addAll($$9.b());
+            a($$4, $$0, $$9.c());
+         }
+      }
+
+      ObjectArrayList<gw> $$10 = new ObjectArrayList($$7.stream().toList());
+      ase $$11 = ase.a($$0.A()).e().a($$6.b().f());
+      ac.b($$10, $$11);
+      int $$12 = Math.min($$7.size(), $$11.b(5, 8));
+      ObjectListIterator var12 = $$10.iterator();
+
+      while (var12.hasNext()) {
+         gw $$13 = (gw)var12.next();
+         if ($$12 > 0) {
+            $$12--;
+            a($$4, $$0, $$13);
+         } else if ($$4.b($$13)) {
+            $$0.a($$13, csy.I.n(), 2);
+         }
+      }
    }
 
-   private void a(dwa $$0, gw $$1, czh $$2, dvi.a $$3) {
-      List<dvm> $$4 = Lists.newArrayList();
-      dwx.a($$3.e(), $$1, $$2, $$4, $$3.f());
-      $$4.forEach($$0::a);
+   private static void a(dvc $$0, cqr $$1, gw $$2) {
+      if ($$0.b($$2)) {
+         $$1.a($$2, csy.J.n(), 2);
+         $$1.a($$2, dcz.N).ifPresent($$1x -> $$1x.a(ecq.aD, $$2.a()));
+      }
    }
 
    @Override
-   public dvr<?> e() {
-      return dvr.c;
+   public dvt<?> e() {
+      return dvt.b;
    }
 }

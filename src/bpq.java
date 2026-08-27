@@ -1,34 +1,50 @@
 import java.util.EnumSet;
 
-public class bpq extends bqb {
-   private final bji a;
-   private final cpv b;
+public class bpq extends bqq {
+   private final buw g;
 
-   public bpq(bji $$0, cpv $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.a(EnumSet.of(bqb.a.c));
+   public bpq(buw $$0, double $$1, int $$2) {
+      super($$0, $$1, $$2, 6);
+      this.g = $$0;
+      this.f = -2;
+      this.a(EnumSet.of(bqd.a.c, bqd.a.a));
    }
 
    @Override
    public boolean a() {
-      boolean $$0 = this.a.aB || this.a.aA;
-      if ($$0 && this.a.ag().a(apw.f)) {
-         gw $$1 = this.a.dl().c();
-         dfj $$2 = this.b.a_($$1);
-         return $$2.a(csw.qC) || $$2.k(this.b, $$1) == eid.a();
-      } else {
-         return false;
-      }
+      return this.g.s() && !this.g.gd() && !this.g.gl() && super.a();
    }
 
    @Override
-   public boolean Q_() {
-      return true;
+   public void c() {
+      super.c();
+      this.g.y(false);
+   }
+
+   @Override
+   protected int a(bjr $$0) {
+      return 40;
+   }
+
+   @Override
+   public void d() {
+      super.d();
+      this.g.A(false);
    }
 
    @Override
    public void e() {
-      this.a.K().a();
+      super.e();
+      this.g.y(false);
+      if (!this.m()) {
+         this.g.A(false);
+      } else if (!this.g.gl()) {
+         this.g.A(true);
+      }
+   }
+
+   @Override
+   protected boolean a(cqa $$0, gw $$1) {
+      return $$0.t($$1.c()) && $$0.a_($$1).a(apu.R);
    }
 }

@@ -1,58 +1,47 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
-public record efh(aex b) implements efp {
-   private static final Logger c = LogUtils.getLogger();
-   public static final Codec<efh> a = RecordCodecBuilder.create($$0 -> $$0.group(aex.a.fieldOf("name").forGetter(efh::c)).apply($$0, efh::new));
-
-   @Override
-   public efq b() {
-      return efr.q;
-   }
+public record efh(hg<cnq> b, List<Float> c) implements efr {
+   public static final Codec<efh> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(jd.g.r().fieldOf("enchantment").forGetter(efh::c), Codec.FLOAT.listOf().fieldOf("chances").forGetter(efh::d)).apply($$0, efh::new)
+   );
 
    @Override
-   public void a(ecz $$0) {
-      ecs<efp> $$1 = new ecs<>(ecv.a, this.b);
-      if ($$0.a($$1)) {
-         $$0.a("Condition " + this.b + " is recursively called");
-      } else {
-         efp.super.a($$0);
-         $$0.b()
-            .getElementOptional($$1)
-            .ifPresentOrElse($$2 -> $$2.a($$0.a(".{" + this.b + "}", $$1)), () -> $$0.a("Unknown condition table called " + this.b));
+   public efs b() {
+      return eft.l;
+   }
+
+   @Override
+   public Set<efa<?>> a() {
+      return ImmutableSet.of(efd.i);
+   }
+
+   public boolean a(ecs $$0) {
+      cjh $$1 = $$0.c(efd.i);
+      int $$2 = $$1 != null ? cns.a(this.b.a(), $$1) : 0;
+      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
+      return $$0.b().i() < $$3;
+   }
+
+   public static efr.a a(cnq $$0, float... $$1) {
+      List<Float> $$2 = new ArrayList<>($$1.length);
+
+      for (float $$3 : $$1) {
+         $$2.add($$3);
       }
+
+      return () -> new efh($$0.j(), $$2);
    }
 
-   public boolean a(ecq $$0) {
-      efp $$1 = $$0.a().getElement(ecv.a, this.b);
-      if ($$1 == null) {
-         c.warn("Tried using unknown condition table called {}", this.b);
-         return false;
-      } else {
-         ecq.c<?> $$2 = ecq.a($$1);
-         if ($$0.b($$2)) {
-            boolean var4;
-            try {
-               var4 = $$1.test($$0);
-            } finally {
-               $$0.c($$2);
-            }
-
-            return var4;
-         } else {
-            c.warn("Detected infinite loop in loot tables");
-            return false;
-         }
-      }
-   }
-
-   public static efp.a a(aex $$0) {
-      return () -> new efh($$0);
-   }
-
-   public aex c() {
+   public hg<cnq> c() {
       return this.b;
+   }
+
+   public List<Float> d() {
+      return this.c;
    }
 }

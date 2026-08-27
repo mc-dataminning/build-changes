@@ -1,62 +1,13 @@
-import com.mojang.logging.LogUtils;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
 
-public class dtr extends dtp {
-   public static final Codec<dtr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dlm.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
-               dlm.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
-               Codec.INT.optionalFieldOf("plateau", 0).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dtr::new)
+public abstract class dtr {
+   private static final Codec<Either<dlo, dtr>> a = Codec.either(dlo.a, jd.O.q().dispatch(dtr::a, dts::codec));
+   public static final Codec<dtr> c = a.xmap(
+      $$0 -> (dtr)$$0.map(dtq::a, $$0x -> $$0x), $$0 -> $$0.a() == dts.a ? Either.left(((dtq)$$0).b()) : Either.right($$0)
    );
-   private static final Logger b = LogUtils.getLogger();
-   private final dlm d;
-   private final dlm e;
-   private final int f;
 
-   private dtr(dlm $$0, dlm $$1, int $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
+   public abstract int a(ase var1, dlr var2);
 
-   public static dtr a(dlm $$0, dlm $$1, int $$2) {
-      return new dtr($$0, $$1, $$2);
-   }
-
-   public static dtr a(dlm $$0, dlm $$1) {
-      return a($$0, $$1, 0);
-   }
-
-   @Override
-   public int a(asc $$0, dlp $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$2 > $$3) {
-         b.warn("Empty height range: {}", this);
-         return $$2;
-      } else {
-         int $$4 = $$3 - $$2;
-         if (this.f >= $$4) {
-            return arx.b($$0, $$2, $$3);
-         } else {
-            int $$5 = ($$4 - this.f) / 2;
-            int $$6 = $$4 - $$5;
-            return $$2 + arx.b($$0, 0, $$6) + arx.b($$0, 0, $$5);
-         }
-      }
-   }
-
-   @Override
-   public dtq<?> a() {
-      return dtq.e;
-   }
-
-   @Override
-   public String toString() {
-      return this.f == 0 ? "triangle (" + this.d + "-" + this.e + ")" : "trapezoid(" + this.f + ") in [" + this.d + "-" + this.e + "]";
-   }
+   public abstract dts<?> a();
 }

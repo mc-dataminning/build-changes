@@ -1,35 +1,60 @@
-public class ftj extends ftg<cce> {
-   private static final aex a = new aex("textures/entity/illager/evoker_fangs.png");
-   private final ffe<cce> f;
+@FunctionalInterface
+public interface ftj<T extends bis> {
+   fti<T> create(ftj.a var1);
 
-   public ftj(fth.a $$0) {
-      super($$0);
-      this.f = new ffe<>($$0.a(fib.W));
-   }
+   public static class a {
+      private final fth a;
+      private final fuh b;
+      private final fpa c;
+      private final foc d;
+      private final anv e;
+      private final fia f;
+      private final esf g;
 
-   public void a(cce $$0, float $$1, float $$2, elp $$3, foe $$4, int $$5) {
-      float $$6 = $$0.a($$2);
-      if ($$6 != 0.0F) {
-         float $$7 = 2.0F;
-         if ($$6 > 0.9F) {
-            $$7 *= (1.0F - $$6) / 0.1F;
-         }
-
-         $$3.a();
-         $$3.a(a.d.rotationDegrees(90.0F - $$0.dB()));
-         $$3.b(-$$7, -$$7, $$7);
-         float $$8 = 0.03125F;
-         $$3.a(0.0, -0.626, 0.0);
-         $$3.b(0.5F, 0.5F, 0.5F);
-         this.f.a($$0, $$6, 0.0F, 0.0F, $$0.dB(), $$0.dD());
-         elt $$9 = $$4.getBuffer(this.f.a(a));
-         this.f.a($$3, $$9, $$5, fyv.d, 1.0F, 1.0F, 1.0F, 1.0F);
-         $$3.b();
-         super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      public a(fth $$0, fuh $$1, fpa $$2, foc $$3, anv $$4, fia $$5, esf $$6) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
       }
-   }
 
-   public aex a(cce $$0) {
-      return a;
+      public fth a() {
+         return this.a;
+      }
+
+      public fuh b() {
+         return this.b;
+      }
+
+      public fpa c() {
+         return this.c;
+      }
+
+      public foc d() {
+         return this.d;
+      }
+
+      public anv e() {
+         return this.e;
+      }
+
+      public fia f() {
+         return this.f;
+      }
+
+      public gbn g() {
+         return this.c.a().a();
+      }
+
+      public fie a(fic $$0) {
+         return this.f.a($$0);
+      }
+
+      public esf h() {
+         return this.g;
+      }
    }
 }

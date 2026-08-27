@@ -1,73 +1,86 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
+import com.google.common.collect.Lists;
+import java.util.BitSet;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public record ym(int a, boolean b, Set<aew<cpv>> c, int d, int e, int f, boolean g, boolean h, boolean i, aba j) implements ve<wx> {
-   public ym(sp $$0) {
-      this(
-         $$0.readInt(),
-         $$0.readBoolean(),
-         $$0.a(Sets::newHashSetWithExpectedSize, $$0x -> $$0x.a(je.aH)),
-         $$0.m(),
-         $$0.m(),
-         $$0.m(),
-         $$0.readBoolean(),
-         $$0.readBoolean(),
-         $$0.readBoolean(),
-         new aba($$0)
-      );
+public class ym {
+   private final BitSet a;
+   private final BitSet b;
+   private final BitSet c;
+   private final BitSet d;
+   private final List<byte[]> e;
+   private final List<byte[]> f;
+
+   public ym(cpe $$0, ead $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      this.a = new BitSet();
+      this.b = new BitSet();
+      this.c = new BitSet();
+      this.d = new BitSet();
+      this.e = Lists.newArrayList();
+      this.f = Lists.newArrayList();
+
+      for (int $$4 = 0; $$4 < $$1.c(); $$4++) {
+         if ($$2 == null || $$2.get($$4)) {
+            this.a($$0, $$1, cqg.a, $$4, this.a, this.c, this.e);
+         }
+
+         if ($$3 == null || $$3.get($$4)) {
+            this.a($$0, $$1, cqg.b, $$4, this.b, this.d, this.f);
+         }
+      }
    }
 
-   @Override
-   public void a(sp $$0) {
-      $$0.p(this.a);
+   public ym(sq $$0, int $$1, int $$2) {
+      this.a = $$0.y();
+      this.b = $$0.y();
+      this.c = $$0.y();
+      this.d = $$0.y();
+      this.e = $$0.a((sq.a<byte[]>)($$0x -> $$0x.a(2048)));
+      this.f = $$0.a((sq.a<byte[]>)($$0x -> $$0x.a(2048)));
+   }
+
+   public void a(sq $$0) {
+      $$0.a(this.a);
       $$0.a(this.b);
-      $$0.a(this.c, sp::b);
-      $$0.c(this.d);
-      $$0.c(this.e);
-      $$0.c(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
-      $$0.a(this.i);
-      this.j.a($$0);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e, sq::a);
+      $$0.a(this.f, sq::a);
    }
 
-   public void a(wx $$0) {
-      $$0.a(this);
+   private void a(cpe $$0, ead $$1, cqg $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
+      dhn $$7 = $$1.a($$2).a(hz.a($$0, $$1.d() + $$3));
+      if ($$7 != null) {
+         if ($$7.d()) {
+            $$5.set($$3);
+         } else {
+            $$4.set($$3);
+            $$6.add($$7.b().a());
+         }
+      }
    }
 
-   public boolean d() {
-      return this.b;
+   public BitSet a() {
+      return this.a;
    }
 
-   public Set<aew<cpv>> e() {
+   public BitSet b() {
       return this.c;
    }
 
-   public int f() {
-      return this.d;
-   }
-
-   public int g() {
+   public List<byte[]> c() {
       return this.e;
    }
 
-   public int h() {
+   public BitSet d() {
+      return this.b;
+   }
+
+   public BitSet e() {
+      return this.d;
+   }
+
+   public List<byte[]> f() {
       return this.f;
-   }
-
-   public boolean i() {
-      return this.g;
-   }
-
-   public boolean j() {
-      return this.h;
-   }
-
-   public boolean k() {
-      return this.i;
-   }
-
-   public aba l() {
-      return this.j;
    }
 }

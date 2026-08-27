@@ -149,14 +149,14 @@ public class lk {
    }
 
    private static lj a(String $$0, lm... $$1) {
-      return new lj(Optional.of(new aex("minecraft", "block/" + $$0)), Optional.empty(), $$1);
+      return new lj(Optional.of(new aey("minecraft", "block/" + $$0)), Optional.empty(), $$1);
    }
 
    private static lj b(String $$0, lm... $$1) {
-      return new lj(Optional.of(new aex("minecraft", "item/" + $$0)), Optional.empty(), $$1);
+      return new lj(Optional.of(new aey("minecraft", "item/" + $$0)), Optional.empty(), $$1);
    }
 
    private static lj a(String $$0, String $$1, lm... $$2) {
-      return new lj(Optional.of(new aex("minecraft", "block/" + $$0)), Optional.of($$1), $$2);
+      return new lj(Optional.of(new aey("minecraft", "block/" + $$0)), Optional.of($$1), $$2);
    }
 }

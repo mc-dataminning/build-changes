@@ -14,7 +14,7 @@ public class ks implements jk {
       this.d = $$0;
    }
 
-   public <T> ks a(amv<T> $$0, T $$1) {
+   public <T> ks a(amw<T> $$0, T $$1) {
       this.e.put($$0.a(), () -> $$0.a($$1));
       return this;
    }
@@ -31,11 +31,11 @@ public class ks implements jk {
       return "Pack Metadata";
    }
 
-   public static ks a(jm $$0, tm $$1) {
-      return new ks($$0).a(amw.b, new amw($$1, t.a.a(amj.b), Optional.empty()));
+   public static ks a(jm $$0, tn $$1) {
+      return new ks($$0).a(amx.b, new amx($$1, t.a.a(amk.b), Optional.empty()));
    }
 
-   public static ks a(jm $$0, tm $$1, cec $$2) {
-      return a($$0, $$1).a(amf.a, new amf($$2));
+   public static ks a(jm $$0, tn $$1, cee $$2) {
+      return a($$0, $$1).a(amg.a, new amg($$2));
    }
 }

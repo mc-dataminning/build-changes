@@ -1,8 +1,12 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class enu extends Exception {
+   public final emj a;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface enu {
+   public enu(emj $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public String getMessage() {
+      return this.a.c();
+   }
 }

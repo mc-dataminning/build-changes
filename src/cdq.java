@@ -1,89 +1,192 @@
-import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class cdq {
-   public static int[][] a(hc $$0) {
-      hc $$1 = $$0.h();
-      hc $$2 = $$1.g();
-      hc $$3 = $$0.g();
-      return new int[][]{
-         {$$1.j(), $$1.l()},
-         {$$2.j(), $$2.l()},
-         {$$3.j() + $$1.j(), $$3.l() + $$1.l()},
-         {$$3.j() + $$2.j(), $$3.l() + $$2.l()},
-         {$$0.j() + $$1.j(), $$0.l() + $$1.l()},
-         {$$0.j() + $$2.j(), $$0.l() + $$2.l()},
-         {$$3.j(), $$3.l()},
-         {$$0.j(), $$0.l()}
+public class cdq extends cdp implements bjb, cdr {
+   private static final int f = 27;
+   private hp<cjh> g = hp.a(27, cjh.b);
+   @Nullable
+   private aey h;
+   private long i;
+
+   public cdq(biw<? extends cdp> $$0, cpx $$1) {
+      super($$0, $$1);
+   }
+
+   public cdq(cpx $$0, double $$1, double $$2, double $$3) {
+      this(biw.o, $$0);
+      this.e($$1, $$2, $$3);
+      this.K = $$1;
+      this.L = $$2;
+      this.M = $$3;
+   }
+
+   @Override
+   protected float w() {
+      return 0.15F;
+   }
+
+   @Override
+   protected int B() {
+      return 1;
+   }
+
+   @Override
+   protected void b(qy $$0) {
+      super.b($$0);
+      this.c($$0);
+   }
+
+   @Override
+   protected void a(qy $$0) {
+      super.a($$0);
+      this.b_($$0);
+   }
+
+   @Override
+   public void a(bhq $$0) {
+      super.a($$0);
+      this.a($$0, this.dL(), this);
+   }
+
+   @Override
+   public void a(bis.c $$0) {
+      if (!this.dL().B && $$0.a()) {
+         bgw.a(this.dL(), this, this);
+      }
+
+      super.a($$0);
+   }
+
+   @Override
+   public bha a(cbw $$0, bgz $$1) {
+      if (this.r($$0) && !$$0.fH()) {
+         return super.a($$0, $$1);
+      } else {
+         bha $$2 = this.c_($$0);
+         if ($$2.a()) {
+            this.a(djv.k, $$0);
+            can.a($$0, true);
+         }
+
+         return $$2;
+      }
+   }
+
+   @Override
+   public void b(cbw $$0) {
+      $$0.a((bhd)this);
+      if (!$$0.dL().B) {
+         this.a(djv.k, $$0);
+         can.a($$0, true);
+      }
+   }
+
+   @Override
+   public cjc q() {
+      return switch (this.A()) {
+         case b -> cjk.nl;
+         case c -> cjk.nn;
+         case d -> cjk.np;
+         case e -> cjk.nr;
+         case f -> cjk.nt;
+         case g -> cjk.nv;
+         case h -> cjk.nx;
+         case i -> cjk.nz;
+         default -> cjk.nj;
       };
    }
 
-   public static boolean a(double $$0) {
-      return !Double.isInfinite($$0) && $$0 < 1.0;
+   @Override
+   public void a() {
+      this.f();
    }
 
-   public static boolean a(cpf $$0, bjg $$1, ehi $$2) {
-      for (eig $$4 : $$0.e($$1, $$2)) {
-         if (!$$4.c()) {
-            return false;
-         }
-      }
-
-      return $$0.B_().a($$2);
+   @Override
+   public int b() {
+      return 27;
    }
 
-   public static boolean a(cpf $$0, ehn $$1, bjg $$2, bjs $$3) {
-      return a($$0, $$2, $$2.e($$3).c($$1));
+   @Override
+   public cjh a(int $$0) {
+      return this.f_($$0);
    }
 
-   public static eig a(cpb $$0, gw $$1) {
-      dfj $$2 = $$0.a_($$1);
-      return !$$2.a(apt.aO) && (!($$2.b() instanceof dbi) || !$$2.c(dbi.a)) ? $$2.k($$0, $$1) : eid.a();
+   @Override
+   public cjh a(int $$0, int $$1) {
+      return this.b($$0, $$1);
    }
 
-   public static double a(gw $$0, int $$1, Function<gw, eig> $$2) {
-      gw.a $$3 = $$0.j();
-      int $$4 = 0;
+   @Override
+   public cjh b(int $$0) {
+      return this.e_($$0);
+   }
 
-      while ($$4 < $$1) {
-         eig $$5 = $$2.apply($$3);
-         if (!$$5.c()) {
-            return (double)($$0.v() + $$4) + $$5.b(hc.a.b);
-         }
+   @Override
+   public void a(int $$0, cjh $$1) {
+      this.c($$0, $$1);
+   }
 
-         $$4++;
-         $$3.c(hc.b);
-      }
+   @Override
+   public bka a_(int $$0) {
+      return this.g_($$0);
+   }
 
-      return Double.POSITIVE_INFINITY;
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(cbw $$0) {
+      return this.g($$0);
    }
 
    @Nullable
-   public static ehn a(biu<?> $$0, cpf $$1, gw $$2, boolean $$3) {
-      if ($$3 && $$0.a($$1.a_($$2))) {
+   @Override
+   public cen createMenu(int $$0, cbv $$1, cbw $$2) {
+      if (this.h != null && $$2.M_()) {
          return null;
       } else {
-         double $$4 = $$1.a(a((cpb)$$1, $$2), () -> a((cpb)$$1, $$2.d()));
-         if (!a($$4)) {
-            return null;
-         } else if ($$3 && $$4 <= 0.0 && $$0.a($$1.a_($$2.d()))) {
-            return null;
-         } else {
-            ehn $$5 = ehn.a($$2, $$4);
-            ehi $$6 = $$0.n().a($$5);
-
-            for (eig $$8 : $$1.e(null, $$6)) {
-               if (!$$8.c()) {
-                  return null;
-               }
-            }
-
-            if ($$0 != biu.bt || !$$1.a_($$2).a(apt.ci) && !$$1.a_($$2.c()).a(apt.ci)) {
-               return !$$1.B_().a($$6) ? null : $$5;
-            } else {
-               return null;
-            }
-         }
+         this.e($$1.m);
+         return ceu.a($$0, $$1, this);
       }
+   }
+
+   public void e(@Nullable cbw $$0) {
+      this.f($$0);
+   }
+
+   @Nullable
+   @Override
+   public aey G() {
+      return this.h;
+   }
+
+   @Override
+   public void a(@Nullable aey $$0) {
+      this.h = $$0;
+   }
+
+   @Override
+   public long H() {
+      return this.i;
+   }
+
+   @Override
+   public void a(long $$0) {
+      this.i = $$0;
+   }
+
+   @Override
+   public hp<cjh> I() {
+      return this.g;
+   }
+
+   @Override
+   public void K() {
+      this.g = hp.a(this.b(), cjh.b);
+   }
+
+   @Override
+   public void c(cbw $$0) {
+      this.dL().a(djv.j, this.dj(), djv.a.a($$0));
    }
 }

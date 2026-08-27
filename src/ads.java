@@ -1,7 +1,5 @@
-public record ads() implements adq {
-   public static final ads a = new ads();
+public interface ads {
+   aey a();
 
-   @Override
-   public void a(sp $$0) {
-   }
+   void a(sq var1);
 }

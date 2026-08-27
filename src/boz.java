@@ -1,59 +1,19 @@
-public class boz implements bpa {
-   private final bji a;
-   private static final int b = 15;
-   private static final int c = 10;
-   private static final int d = 10;
-   private int e;
-   private float f;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-   public boz(bji $$0) {
-      this.a = $$0;
-   }
+public class boz {
+   private static final bgf a = bgl.a(100, 200);
 
-   public void a() {
-      if (this.f()) {
-         this.a.aU = this.a.dB();
-         this.c();
-         this.f = this.a.aW;
-         this.e = 0;
-      } else {
-         if (this.e()) {
-            if (Math.abs(this.a.aW - this.f) > 15.0F) {
-               this.e = 0;
-               this.f = this.a.aW;
-               this.b();
-            } else {
-               this.e++;
-               if (this.e > 10) {
-                  this.d();
-               }
-            }
-         }
-      }
-   }
-
-   private void b() {
-      this.a.aU = arx.c(this.a.aU, this.a.aW, (float)this.a.Z());
-   }
-
-   private void c() {
-      this.a.aW = arx.c(this.a.aW, this.a.aU, (float)this.a.Z());
-   }
-
-   private void d() {
-      int $$0 = this.e - 10;
-      float $$1 = arx.a((float)$$0 / 10.0F, 0.0F, 1.0F);
-      float $$2 = (float)this.a.Z() * (1.0F - $$1);
-      this.a.aU = arx.c(this.a.aU, this.a.aW, $$2);
-   }
-
-   private boolean e() {
-      return !(this.a.cQ() instanceof bji);
-   }
-
-   private boolean f() {
-      double $$0 = this.a.dq() - this.a.K;
-      double $$1 = this.a.dw() - this.a.M;
-      return $$0 * $$0 + $$1 * $$1 > 2.5000003E-7F;
+   public static bla<bji> a() {
+      return bol.a(
+         (Function<bol.b<bji>, ? extends App<bol.c<bji>, boo<bji>>>)($$0 -> $$0.group($$0.a(bsj.aA), $$0.a(bsj.m), $$0.c(bsj.aF), $$0.b(bsj.B), $$0.c(bsj.ay))
+               .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> ($$3x, $$4x, $$5) -> {
+                     $$0x.a(asz.a);
+                     $$2.a(asz.a, (long)a.a($$3x.D_()));
+                     $$1.b();
+                     $$4x.b(bju.m);
+                     return true;
+                  }))
+      );
    }
 }

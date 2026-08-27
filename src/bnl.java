@@ -1,42 +1,29 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.BiConsumer;
+import java.util.function.BiPredicate;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bnl {
-   private static final int a = 200;
+   public static bla<bji> a(int $$0, BiPredicate<bji, bji> $$1) {
+      return bol.a(
+         (Function<bol.b<bji>, ? extends App<bol.c<bji>, boo<bji>>>)($$2 -> $$2.group($$2.b(bsj.o), $$2.a(bsj.aa), $$2.c(bsj.ah), $$2.a(bsj.ai))
+               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$7, $$8, $$9) -> {
+                     bji $$10 = $$2.b($$3);
+                     if (!$$10.ev()) {
+                        return false;
+                     } else {
+                        if ($$1.test($$8, $$10)) {
+                           $$6.a(true, (long)$$0);
+                        }
 
-   public static <E extends bji> bky<E> a(BiConsumer<E, bjg> $$0) {
-      return a($$0x -> false, $$0, true);
-   }
+                        $$5.a($$10.dl(), (long)$$0);
+                        if ($$10.ag() != biw.bt || $$7.X().b(cpt.J)) {
+                           $$3.b();
+                           $$4.b();
+                        }
 
-   public static <E extends bji> bky<E> a(Predicate<bjg> $$0) {
-      return a($$0, ($$0x, $$1) -> {
-      }, true);
-   }
-
-   public static <E extends bji> bky<E> a() {
-      return a($$0 -> false, ($$0, $$1) -> {
-      }, true);
-   }
-
-   public static <E extends bji> bky<E> a(Predicate<bjg> $$0, BiConsumer<E, bjg> $$1, boolean $$2) {
-      return boj.a(
-         (Function<boj.b<E>, ? extends App<boj.c<E>, bom<E>>>)($$3 -> $$3.group($$3.b(bsh.o), $$3.a(bsh.E)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                  bjg $$9 = $$3.b($$4);
-                  if ($$7.c($$9) && (!$$2 || !a($$7, $$3.a($$5))) && $$9.bv() && $$9.dL() == $$7.dL() && !$$0.test($$9)) {
-                     return true;
-                  } else {
-                     $$1.accept((E)$$7, $$9);
-                     $$4.b();
-                     return true;
-                  }
-               }))
+                        return true;
+                     }
+                  }))
       );
-   }
-
-   private static boolean a(bjg $$0, Optional<Long> $$1) {
-      return $$1.isPresent() && $$0.dL().V() - $$1.get() > 200L;
    }
 }

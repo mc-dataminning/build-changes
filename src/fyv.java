@@ -1,59 +1,133 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+public class fyv {
+   private static final int a = 96;
+   private static final float[] b = ac.a(new float[256], $$0 -> {
+      for (int $$1 = 0; $$1 < $$0.length; $$1++) {
+         $$0[$$1] = (float)Math.pow((double)((float)$$1 / 255.0F), 2.2);
+      }
+   });
 
-public class fyv implements AutoCloseable {
-   private static final int e = 16;
-   public static final int a = 0;
-   public static final int b = 3;
-   public static final int c = 10;
-   public static final int d = a(0, 10);
-   private final fyr f = new fyr(16, 16, false);
+   private fyv() {
+   }
 
-   public fyv() {
-      ekq $$0 = this.f.e();
+   public static eks[] a(eks[] $$0, int $$1) {
+      if ($$1 + 1 <= $$0.length) {
+         return $$0;
+      } else {
+         eks[] $$2 = new eks[$$1 + 1];
+         $$2[0] = $$0[0];
+         boolean $$3 = a($$2[0]);
 
-      for (int $$1 = 0; $$1 < 16; $$1++) {
-         for (int $$2 = 0; $$2 < 16; $$2++) {
-            if ($$1 < 8) {
-               $$0.a($$2, $$1, -1308622593);
+         for (int $$4 = 1; $$4 <= $$1; $$4++) {
+            if ($$4 < $$0.length) {
+               $$2[$$4] = $$0[$$4];
             } else {
-               int $$3 = (int)((1.0F - (float)$$2 / 15.0F * 0.75F) * 255.0F);
-               $$0.a($$2, $$1, $$3 << 24 | 16777215);
+               eks $$5 = $$2[$$4 - 1];
+               eks $$6 = new eks($$5.a() >> 1, $$5.b() >> 1, false);
+               int $$7 = $$6.a();
+               int $$8 = $$6.b();
+
+               for (int $$9 = 0; $$9 < $$7; $$9++) {
+                  for (int $$10 = 0; $$10 < $$8; $$10++) {
+                     $$6.a(
+                        $$9,
+                        $$10,
+                        a(
+                           $$5.a($$9 * 2 + 0, $$10 * 2 + 0),
+                           $$5.a($$9 * 2 + 1, $$10 * 2 + 0),
+                           $$5.a($$9 * 2 + 0, $$10 * 2 + 1),
+                           $$5.a($$9 * 2 + 1, $$10 * 2 + 1),
+                           $$3
+                        )
+                     );
+                  }
+               }
+
+               $$2[$$4] = $$6;
+            }
+         }
+
+         return $$2;
+      }
+   }
+
+   private static boolean a(eks $$0) {
+      for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
+         for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
+            if ($$0.a($$1, $$2) >> 24 == 0) {
+               return true;
             }
          }
       }
 
-      RenderSystem.activeTexture(33985);
-      this.f.c();
-      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), false, true, false, false);
-      RenderSystem.activeTexture(33984);
+      return false;
    }
 
-   @Override
-   public void close() {
-      this.f.close();
+   private static int a(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      if ($$4) {
+         float $$5 = 0.0F;
+         float $$6 = 0.0F;
+         float $$7 = 0.0F;
+         float $$8 = 0.0F;
+         if ($$0 >> 24 != 0) {
+            $$5 += a($$0 >> 24);
+            $$6 += a($$0 >> 16);
+            $$7 += a($$0 >> 8);
+            $$8 += a($$0 >> 0);
+         }
+
+         if ($$1 >> 24 != 0) {
+            $$5 += a($$1 >> 24);
+            $$6 += a($$1 >> 16);
+            $$7 += a($$1 >> 8);
+            $$8 += a($$1 >> 0);
+         }
+
+         if ($$2 >> 24 != 0) {
+            $$5 += a($$2 >> 24);
+            $$6 += a($$2 >> 16);
+            $$7 += a($$2 >> 8);
+            $$8 += a($$2 >> 0);
+         }
+
+         if ($$3 >> 24 != 0) {
+            $$5 += a($$3 >> 24);
+            $$6 += a($$3 >> 16);
+            $$7 += a($$3 >> 8);
+            $$8 += a($$3 >> 0);
+         }
+
+         $$5 /= 4.0F;
+         $$6 /= 4.0F;
+         $$7 /= 4.0F;
+         $$8 /= 4.0F;
+         int $$9 = (int)(Math.pow((double)$$5, 0.45454545454545453) * 255.0);
+         int $$10 = (int)(Math.pow((double)$$6, 0.45454545454545453) * 255.0);
+         int $$11 = (int)(Math.pow((double)$$7, 0.45454545454545453) * 255.0);
+         int $$12 = (int)(Math.pow((double)$$8, 0.45454545454545453) * 255.0);
+         if ($$9 < 96) {
+            $$9 = 0;
+         }
+
+         return $$9 << 24 | $$10 << 16 | $$11 << 8 | $$12;
+      } else {
+         int $$13 = a($$0, $$1, $$2, $$3, 24);
+         int $$14 = a($$0, $$1, $$2, $$3, 16);
+         int $$15 = a($$0, $$1, $$2, $$3, 8);
+         int $$16 = a($$0, $$1, $$2, $$3, 0);
+         return $$13 << 24 | $$14 << 16 | $$15 << 8 | $$16;
+      }
    }
 
-   public void a() {
-      RenderSystem.setupOverlayColor(this.f::a, 16);
+   private static int a(int $$0, int $$1, int $$2, int $$3, int $$4) {
+      float $$5 = a($$0 >> $$4);
+      float $$6 = a($$1 >> $$4);
+      float $$7 = a($$2 >> $$4);
+      float $$8 = a($$3 >> $$4);
+      float $$9 = (float)((double)((float)Math.pow((double)($$5 + $$6 + $$7 + $$8) * 0.25, 0.45454545454545453)));
+      return (int)((double)$$9 * 255.0);
    }
 
-   public static int a(float $$0) {
-      return (int)($$0 * 15.0F);
-   }
-
-   public static int a(boolean $$0) {
-      return $$0 ? 3 : 10;
-   }
-
-   public static int a(int $$0, int $$1) {
-      return $$0 | $$1 << 16;
-   }
-
-   public static int a(float $$0, boolean $$1) {
-      return a(a($$0), a($$1));
-   }
-
-   public void b() {
-      RenderSystem.teardownOverlayColor();
+   private static float a(int $$0) {
+      return b[$$0 & 0xFF];
    }
 }

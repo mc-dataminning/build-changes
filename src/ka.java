@@ -21,7 +21,7 @@ public class ka implements jk {
    private static <T> JsonElement a(ht<T> $$0) {
       JsonObject $$1 = new JsonObject();
       if ($$0 instanceof hb) {
-         aex $$2 = ((hb)$$0).a();
+         aey $$2 = ((hb)$$0).a();
          $$1.addProperty("default", $$2.toString());
       }
 

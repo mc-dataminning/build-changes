@@ -1,45 +1,59 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Ordering;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
-public class frw implements frn.a {
-   private static final int a = 160;
-   private static final float b = 0.04F;
-   private final eqv c;
-   private Collection<gw> d = Lists.newArrayList();
+public class frw implements frp.a {
+   private final eqx a;
+   private final Map<Long, Map<gw, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
 
-   public frw(eqv $$0) {
-      this.c = $$0;
+   frw(eqx $$0) {
+      this.a = $$0;
    }
 
-   public void a(Collection<gw> $$0) {
-      this.d = $$0;
+   public void a(long $$0, gw $$1) {
+      Map<gw, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
+      int $$3 = $$2.getOrDefault($$1, 0);
+      $$2.put($$1, $$3 + 1);
    }
 
    @Override
-   public void a(elp $$0, foe $$1, double $$2, double $$3, double $$4) {
-      gw $$5 = this.b().c();
+   public void a(elr $$0, fog $$1, double $$2, double $$3, double $$4) {
+      long $$5 = this.a.r.V();
+      int $$6 = 200;
+      double $$7 = 0.0025;
+      Set<gw> $$8 = Sets.newHashSet();
+      Map<gw, Integer> $$9 = Maps.newHashMap();
+      elv $$10 = $$1.getBuffer(foo.x());
+      Iterator<Entry<Long, Map<gw, Integer>>> $$11 = this.b.entrySet().iterator();
 
-      for (gw $$6 : this.d) {
-         if ($$5.a($$6, 160.0)) {
-            a($$0, $$1, $$6);
+      while ($$11.hasNext()) {
+         Entry<Long, Map<gw, Integer>> $$12 = $$11.next();
+         Long $$13 = $$12.getKey();
+         Map<gw, Integer> $$14 = $$12.getValue();
+         long $$15 = $$5 - $$13;
+         if ($$15 > 200L) {
+            $$11.remove();
+         } else {
+            for (Entry<gw, Integer> $$16 : $$14.entrySet()) {
+               gw $$17 = $$16.getKey();
+               Integer $$18 = $$16.getValue();
+               if ($$8.add($$17)) {
+                  ehk $$19 = new ehk(gw.b).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
+                  foe.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
+                  $$9.put($$17, $$18);
+               }
+            }
          }
       }
-   }
 
-   private static void a(elp $$0, foe $$1, gw $$2) {
-      frn.a($$0, $$1, $$2.b(-1, -1, -1), $$2.b(1, 1, 1), 1.0F, 0.0F, 0.0F, 0.15F);
-      int $$3 = -65536;
-      a($$0, $$1, "Raid center", $$2, -65536);
-   }
-
-   private static void a(elp $$0, foe $$1, String $$2, gw $$3, int $$4) {
-      double $$5 = (double)$$3.u() + 0.5;
-      double $$6 = (double)$$3.v() + 1.3;
-      double $$7 = (double)$$3.w() + 0.5;
-      frn.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
-   }
-
-   private eqg b() {
-      return this.c.j.m();
+      for (Entry<gw, Integer> $$20 : $$9.entrySet()) {
+         gw $$21 = $$20.getKey();
+         Integer $$22 = $$20.getValue();
+         frp.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
+      }
    }
 }

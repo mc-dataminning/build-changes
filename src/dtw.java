@@ -1,17 +1,23 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dtw(List<dkw.c> a) implements dkw.c {
-   @Nullable
+public class dtw extends dtr {
+   public static final Codec<dtw> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(bfk.b(dtr.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, dtw::new)
+   );
+   private final bfk<dtr> b;
+
+   public dtw(bfk<dtr> $$0) {
+      this.b = $$0;
+   }
+
    @Override
-   public dfj calculate(dkl.b $$0) {
-      for (dkw.c $$1 : this.a) {
-         dfj $$2 = $$1.calculate($$0);
-         if ($$2 != null) {
-            return $$2;
-         }
-      }
+   public int a(ase $$0, dlr $$1) {
+      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0, $$1);
+   }
 
-      return null;
+   @Override
+   public dts<?> a() {
+      return dts.f;
    }
 }

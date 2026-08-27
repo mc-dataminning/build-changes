@@ -1,16 +1,17 @@
-public class gbx extends gbz {
-   public gbx(bus $$0) {
-      super($$0, ape.bB, apf.g);
-      this.j = 0;
+public abstract class gbx extends gbw implements gcp {
+   private boolean n;
+
+   protected gbx(ape $$0, apg $$1, ase $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected gbv o() {
-      return new gby(this.n);
+   public boolean m() {
+      return this.n;
    }
 
-   @Override
-   protected boolean p() {
-      return !this.n.X_();
+   protected final void n() {
+      this.n = true;
+      this.i = false;
    }
 }

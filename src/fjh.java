@@ -1,140 +1,101 @@
-import com.mojang.logging.LogUtils;
-import java.util.Base64;
-import java.util.Collections;
-import java.util.List;
+import com.google.common.base.Suppliers;
+import com.mojang.authlib.GameProfile;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
 public class fjh {
-   private static final Logger k = LogUtils.getLogger();
-   public String a;
-   public String b;
-   public tm c;
-   public tm d;
+   private final GameProfile a;
+   private final Supplier<gag> b;
+   private cpu c = cpu.e;
+   private int d;
    @Nullable
-   public aea.b e;
-   public long f;
-   public int g = aa.b().e();
-   public tm h = tm.b(aa.b().c());
-   public boolean i;
-   public List<tm> j = Collections.emptyList();
-   private fjh.a l = fjh.a.c;
+   private tn e;
    @Nullable
-   private byte[] m;
-   private fjh.b n;
-   private boolean o;
+   private ud f;
+   private ui g;
 
-   public fjh(String $$0, String $$1, fjh.b $$2) {
+   public fjh(GameProfile $$0, boolean $$1) {
       this.a = $$0;
-      this.b = $$1;
-      this.n = $$2;
+      this.g = b($$1);
+      Supplier<Supplier<gag>> $$2 = Suppliers.memoize(() -> a($$0));
+      this.b = () -> $$2.get().get();
    }
 
-   public qy a() {
-      qy $$0 = new qy();
-      $$0.a("name", this.a);
-      $$0.a("ip", this.b);
-      if (this.m != null) {
-         $$0.a("icon", Base64.getEncoder().encodeToString(this.m));
-      }
-
-      if (this.l == fjh.a.a) {
-         $$0.a("acceptTextures", true);
-      } else if (this.l == fjh.a.b) {
-         $$0.a("acceptTextures", false);
-      }
-
-      return $$0;
+   private static Supplier<gag> a(GameProfile $$0) {
+      eqx $$1 = eqx.O();
+      gah $$2 = $$1.al();
+      CompletableFuture<gag> $$3 = $$2.c($$0);
+      boolean $$4 = !$$1.b($$0.getId());
+      gag $$5 = fzy.a($$0);
+      return () -> {
+         gag $$3x = $$3.getNow($$5);
+         return $$4 && !$$3x.f() ? $$5 : $$3x;
+      };
    }
 
-   public fjh.a b() {
-      return this.l;
-   }
-
-   public void a(fjh.a $$0) {
-      this.l = $$0;
-   }
-
-   public static fjh a(qy $$0) {
-      fjh $$1 = new fjh($$0.l("name"), $$0.l("ip"), fjh.b.c);
-      if ($$0.b("icon", 8)) {
-         try {
-            $$1.a(Base64.getDecoder().decode($$0.l("icon")));
-         } catch (IllegalArgumentException var3) {
-            k.warn("Malformed base64 server icon", var3);
-         }
-      }
-
-      if ($$0.b("acceptTextures", 1)) {
-         if ($$0.q("acceptTextures")) {
-            $$1.a(fjh.a.a);
-         } else {
-            $$1.a(fjh.a.b);
-         }
-      } else {
-         $$1.a(fjh.a.c);
-      }
-
-      return $$1;
+   public GameProfile a() {
+      return this.a;
    }
 
    @Nullable
-   public byte[] c() {
-      return this.m;
+   public ud b() {
+      return this.f;
    }
 
-   public void a(@Nullable byte[] $$0) {
-      this.m = $$0;
+   public ui c() {
+      return this.g;
    }
 
    public boolean d() {
-      return this.n == fjh.b.a;
+      return this.f != null;
    }
 
-   public boolean e() {
-      return this.n == fjh.b.b;
+   protected void a(ud $$0) {
+      this.f = $$0;
+      this.g = $$0.a(cbz.b);
    }
 
-   public void a(boolean $$0) {
-      this.o = $$0;
+   protected void a(boolean $$0) {
+      this.f = null;
+      this.g = b($$0);
    }
 
-   public boolean f() {
-      return this.o;
+   private static ui b(boolean $$0) {
+      return $$0 ? ui.c : ui.b;
    }
 
-   public void a(fjh $$0) {
-      this.b = $$0.b;
-      this.a = $$0.a;
-      this.m = $$0.m;
+   public cpu e() {
+      return this.c;
    }
 
-   public void b(fjh $$0) {
-      this.a($$0);
-      this.a($$0.b());
-      this.n = $$0.n;
-      this.o = $$0.o;
+   protected void a(cpu $$0) {
+      this.c = $$0;
    }
 
-   public static enum a {
-      a("enabled"),
-      b("disabled"),
-      c("prompt");
-
-      private final tm d;
-
-      private a(String $$0) {
-         this.d = tm.c("addServer.resourcePack." + $$0);
-      }
-
-      public tm a() {
-         return this.d;
-      }
+   public int f() {
+      return this.d;
    }
 
-   public static enum b {
-      a,
-      b,
-      c;
+   protected void a(int $$0) {
+      this.d = $$0;
+   }
+
+   public gag g() {
+      return this.b.get();
+   }
+
+   @Nullable
+   public eim h() {
+      return eqx.O().r.I().g(this.a().getName());
+   }
+
+   public void a(@Nullable tn $$0) {
+      this.e = $$0;
+   }
+
+   @Nullable
+   public tn i() {
+      return this.e;
    }
 }

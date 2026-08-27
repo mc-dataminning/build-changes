@@ -1,42 +1,23 @@
-import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public record egn(egk b, egk c) implements egk {
-   public static final Codec<egn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(egl.a.fieldOf("min").forGetter(egn::c), egl.a.fieldOf("max").forGetter(egn::d)).apply($$0, egn::new)
+public class egn {
+   private static final Codec<egm> f = jd.J.q().dispatch(egm::b, egl::a);
+   public static final Codec<egm> a = arh.a(
+      (Supplier<Codec<egm>>)(() -> {
+         Codec<egm> $$0 = arh.e(f, egp.a);
+         return Codec.either(egk.b, $$0)
+            .xmap($$0x -> (egm)$$0x.map(Function.identity(), Function.identity()), $$0x -> $$0x instanceof egk $$1 ? Either.left($$1) : Either.right($$0x));
+      })
    );
+   public static final egl b = a("constant", egk.a);
+   public static final egl c = a("uniform", egp.a);
+   public static final egl d = a("binomial", egj.a);
+   public static final egl e = a("score", ego.a);
 
-   @Override
-   public egj b() {
-      return egl.c;
-   }
-
-   public static egn a(float $$0, float $$1) {
-      return new egn(egi.a($$0), egi.a($$1));
-   }
-
-   @Override
-   public int a(ecq $$0) {
-      return arx.a($$0.b(), this.b.a($$0), this.c.a($$0));
-   }
-
-   @Override
-   public float b(ecq $$0) {
-      return arx.a($$0.b(), this.b.b($$0), this.c.b($$0));
-   }
-
-   @Override
-   public Set<eey<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
-   }
-
-   public egk c() {
-      return this.b;
-   }
-
-   public egk d() {
-      return this.c;
+   private static egl a(String $$0, Codec<? extends egm> $$1) {
+      return ht.a(jd.J, new aey($$0), new egl($$1));
    }
 }

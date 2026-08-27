@@ -1,24 +1,5 @@
-public class chy extends cja {
-   public chy(cja.a $$0) {
-      super($$0);
-   }
-
-   @Override
-   public bgz<cjf> a(cpv $$0, cbu $$1, bgx $$2) {
-      cjf $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dq(), $$1.ds(), $$1.dw(), ape.gG, apf.h, 0.5F, 0.4F / ($$0.D_().i() * 0.4F + 0.8F));
-      if (!$$0.B) {
-         ccu $$4 = new ccu($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dD(), $$1.dB(), 0.0F, 1.5F, 1.0F);
-         $$0.b($$4);
-      }
-
-      $$1.b(apo.c.b(this));
-      if (!$$1.fS().d) {
-         $$3.h(1);
-      }
-
-      return bgz.a($$3, $$0.w_());
+public class chy extends cix implements chz {
+   public chy(int $$0, String $$1, cjc.a $$2) {
+      super($$0, $$1, $$2);
    }
 }

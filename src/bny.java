@@ -1,104 +1,34 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bny extends bkx<cbh> {
-   private static final int c = 80;
-   private long d;
-   private long e;
-   private int f;
-   private Optional<gw> g = Optional.empty();
+public class bny {
+   public static bla<bji> a(csx $$0) {
+      return bol.a(
+         (Function<bol.b<bji>, ? extends App<bol.c<bji>, boo<bji>>>)($$1 -> $$1.group($$1.c(bsj.o), $$1.b(bsj.m), $$1.b(bsj.X))
+               .apply($$1, ($$1x, $$2, $$3) -> ($$2x, $$3x, $$4) -> {
+                     if (!$$3x.aX() && $$3x.aA()) {
+                        gw $$5 = $$3x.dl().d();
 
-   public bny() {
-      super(ImmutableMap.of(bsh.n, bsi.b, bsh.m, bsi.b));
-   }
+                        for (hc $$6 : hc.c.a) {
+                           gw $$7 = $$5.a($$6);
+                           if ($$2x.a_($$7).k($$2x, $$7).a(hc.b).c() && $$2x.b_($$7).b(eap.c)) {
+                              gw $$8 = $$7.c();
+                              if ($$2x.a_($$8).i()) {
+                                 dfl $$9 = $$0.n();
+                                 $$2x.a($$8, $$9, 3);
+                                 $$2x.a(djv.i, $$8, djv.a.a($$3x, $$9));
+                                 $$2x.a(null, $$3x, apf.iI, apg.e, 1.0F, 1.0F);
+                                 $$3.b();
+                                 return true;
+                              }
+                           }
+                        }
 
-   protected boolean a(akr $$0, cbh $$1) {
-      if ($$1.ah % 10 == 0 && (this.e == 0L || this.e + 160L <= (long)$$1.ah)) {
-         if ($$1.y().a_(cji.qK) <= 0) {
-            return false;
-         } else {
-            this.g = this.b($$0, $$1);
-            return this.g.isPresent();
-         }
-      } else {
-         return false;
-      }
-   }
-
-   protected boolean a(akr $$0, cbh $$1, long $$2) {
-      return this.f < 80 && this.g.isPresent();
-   }
-
-   private Optional<gw> b(akr $$0, cbh $$1) {
-      gw.a $$2 = new gw.a();
-      Optional<gw> $$3 = Optional.empty();
-      int $$4 = 0;
-
-      for (int $$5 = -1; $$5 <= 1; $$5++) {
-         for (int $$6 = -1; $$6 <= 1; $$6++) {
-            for (int $$7 = -1; $$7 <= 1; $$7++) {
-               $$2.a($$1.dl(), $$5, $$6, $$7);
-               if (this.a($$2, $$0)) {
-                  if ($$0.z.a(++$$4) == 0) {
-                     $$3 = Optional.of($$2.i());
-                  }
-               }
-            }
-         }
-      }
-
-      return $$3;
-   }
-
-   private boolean a(gw $$0, akr $$1) {
-      dfj $$2 = $$1.a_($$0);
-      csv $$3 = $$2.b();
-      return $$3 instanceof cum && !((cum)$$3).h($$2);
-   }
-
-   protected void b(akr $$0, cbh $$1, long $$2) {
-      this.a($$1);
-      $$1.a(biv.a, new cjf(cji.qK));
-      this.d = $$2;
-      this.f = 0;
-   }
-
-   private void a(cbh $$0) {
-      this.g.ifPresent($$1 -> {
-         bla $$2 = new bla($$1);
-         $$0.dN().a(bsh.n, $$2);
-         $$0.dN().a(bsh.m, new bsk($$2, 0.5F, 1));
-      });
-   }
-
-   protected void c(akr $$0, cbh $$1, long $$2) {
-      $$1.a(biv.a, cjf.b);
-      this.e = (long)$$1.ah;
-   }
-
-   protected void d(akr $$0, cbh $$1, long $$2) {
-      gw $$3 = this.g.get();
-      if ($$2 >= this.d && $$3.a($$1.dj(), 1.0)) {
-         cjf $$4 = cjf.b;
-         bhf $$5 = $$1.y();
-         int $$6 = $$5.b();
-
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            cjf $$8 = $$5.a($$7);
-            if ($$8.a(cji.qK)) {
-               $$4 = $$8;
-               break;
-            }
-         }
-
-         if (!$$4.b() && cha.a($$4, $$0, $$3)) {
-            $$0.c(1505, $$3, 0);
-            this.g = this.b($$0, $$1);
-            this.a($$1);
-            this.d = $$2 + 40L;
-         }
-
-         this.f++;
-      }
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 }

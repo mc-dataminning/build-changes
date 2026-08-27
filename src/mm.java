@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 public class mm {
    public static void a(String[] $$0) throws IOException {
       aa.a(t.a);
-      aez.a();
+      afa.a();
 
       for (String $$1 : $$0) {
          a($$1);
@@ -20,9 +20,9 @@ public class mm {
          $$1.filter($$0x -> $$0x.toString().endsWith(".snbt")).forEach($$0x -> {
             try {
                String $$1x = Files.readString($$0x);
-               qy $$2 = rk.a($$1x);
+               qy $$2 = rl.a($$1x);
                qy $$3 = mo.a($$0x.toString(), $$2);
-               ml.a(ji.a, $$0x, rk.c($$3));
+               ml.a(ji.a, $$0x, rl.c($$3));
             } catch (IOException | CommandSyntaxException var4) {
                throw new RuntimeException(var4);
             }

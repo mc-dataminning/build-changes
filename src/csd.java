@@ -1,60 +1,53 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public class csd extends csv implements czw {
-   public static final dga a = dfz.C;
+public class csd extends cro {
+   public static final dgl a = dgb.ba;
+   private static final Map<chv, csx> b = Maps.newHashMap();
+   private static final eii c = csx.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
 
-   protected csd(dfi.d $$0) {
-      super($$0);
-      this.k(this.n().a(a, Boolean.valueOf(false)));
+   public csd(chv $$0, dfk.d $$1) {
+      super($$0, $$1);
+      this.k(this.C.b().a(a, Integer.valueOf(0)));
+      b.put($$0, this);
    }
 
    @Override
-   public boolean c(dfj $$0, cpb $$1, gw $$2) {
-      return true;
+   public boolean a(dfl $$0, cqa $$1, gw $$2) {
+      return $$1.a_($$2.d()).e();
    }
 
    @Override
-   public cza b_(dfj $$0) {
-      return cza.a;
+   public eii a(dfl $$0, cpd $$1, gw $$2, ehu $$3) {
+      return c;
    }
 
    @Override
-   public float b(dfj $$0, cpb $$1, gw $$2) {
-      return 1.0F;
+   public dfl a(clp $$0) {
+      return this.n().a(a, Integer.valueOf(dgr.a($$0.i() + 180.0F)));
    }
 
    @Override
-   public dfj a(dfj $$0, hc $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
-      if ($$0.c(a)) {
-         $$3.a($$4, ean.c, ean.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public dfl a(dfl $$0, hc $$1, dfl $$2, cpy $$3, gw $$4, gw $$5) {
+      return $$1 == hc.a && !$$0.a($$3, $$4) ? csy.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public eam c_(dfj $$0) {
-      return $$0.c(a) ? ean.c.a(false) : super.c_($$0);
-   }
-
-   @Nullable
-   @Override
-   public dfj a(cln $$0) {
-      return this.n().a(a, Boolean.valueOf($$0.q().b_($$0.a()).a() == ean.c));
+   public dfl a(dfl $$0, czj $$1) {
+      return $$0.a(a, Integer.valueOf($$1.a($$0.c(a), 16)));
    }
 
    @Override
-   protected void a(dfk.a<csv, dfj> $$0) {
+   public dfl a(dfl $$0, cxs $$1) {
+      return $$0.a(a, Integer.valueOf($$1.a($$0.c(a), 16)));
+   }
+
+   @Override
+   protected void a(dfm.a<csx, dfl> $$0) {
       $$0.a(a);
    }
 
-   @Override
-   public cjf a(@Nullable cbu $$0, cpw $$1, gw $$2, dfj $$3) {
-      return $$0 != null && $$0.f() ? czw.super.a($$0, $$1, $$2, $$3) : cjf.b;
-   }
-
-   @Override
-   public boolean a(@Nullable cbu $$0, cpb $$1, gw $$2, dfj $$3, eal $$4) {
-      return $$0 != null && $$0.f() ? czw.super.a($$0, $$1, $$2, $$3, $$4) : false;
+   public static csx a(chv $$0) {
+      return b.getOrDefault($$0, csy.iJ);
    }
 }

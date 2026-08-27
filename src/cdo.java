@@ -1,32 +1,66 @@
 import javax.annotation.Nullable;
 
-public class cdo extends cdn implements biz, cdp {
-   private static final int f = 27;
-   private hp<cjf> g = hp.a(27, cjf.b);
+public abstract class cdo extends cdn implements cdr {
+   private hp<cjh> c = hp.a(36, cjh.b);
    @Nullable
-   private aex h;
-   private long i;
+   private aey d;
+   private long e;
 
-   public cdo(biu<? extends cdn> $$0, cpv $$1) {
+   protected cdo(biw<?> $$0, cpx $$1) {
       super($$0, $$1);
    }
 
-   public cdo(cpv $$0, double $$1, double $$2, double $$3) {
-      this(biu.o, $$0);
-      this.e($$1, $$2, $$3);
-      this.K = $$1;
-      this.L = $$2;
-      this.M = $$3;
+   protected cdo(biw<?> $$0, double $$1, double $$2, double $$3, cpx $$4) {
+      super($$0, $$4, $$1, $$2, $$3);
    }
 
    @Override
-   protected float w() {
-      return 0.15F;
+   public void a(bhq $$0) {
+      super.a($$0);
+      this.a($$0, this.dL(), this);
    }
 
    @Override
-   protected int B() {
-      return 1;
+   public cjh a(int $$0) {
+      return this.f_($$0);
+   }
+
+   @Override
+   public cjh a(int $$0, int $$1) {
+      return this.b($$0, $$1);
+   }
+
+   @Override
+   public cjh b(int $$0) {
+      return this.e_($$0);
+   }
+
+   @Override
+   public void a(int $$0, cjh $$1) {
+      this.c($$0, $$1);
+   }
+
+   @Override
+   public bka a_(int $$0) {
+      return this.g_($$0);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(cbw $$0) {
+      return this.g($$0);
+   }
+
+   @Override
+   public void a(bis.c $$0) {
+      if (!this.dL().B && $$0.a()) {
+         bgw.a(this.dL(), this, this);
+      }
+
+      super.a($$0);
    }
 
    @Override
@@ -42,57 +76,23 @@ public class cdo extends cdn implements biz, cdp {
    }
 
    @Override
-   public void a(bho $$0) {
-      super.a($$0);
-      this.a($$0, this.dL(), this);
+   public bha a(cbw $$0, bgz $$1) {
+      return this.c_($$0);
    }
 
    @Override
-   public void a(biq.c $$0) {
-      if (!this.dL().B && $$0.a()) {
-         bgu.a(this.dL(), this, this);
+   protected void v() {
+      float $$0 = 0.98F;
+      if (this.d == null) {
+         int $$1 = 15 - cen.b(this);
+         $$0 += (float)$$1 * 0.001F;
       }
 
-      super.a($$0);
-   }
-
-   @Override
-   public bgy a(cbu $$0, bgx $$1) {
-      if (this.r($$0) && !$$0.fH()) {
-         return super.a($$0, $$1);
-      } else {
-         bgy $$2 = this.c_($$0);
-         if ($$2.a()) {
-            this.a(djt.k, $$0);
-            cal.a($$0, true);
-         }
-
-         return $$2;
+      if (this.aX()) {
+         $$0 *= 0.95F;
       }
-   }
 
-   @Override
-   public void b(cbu $$0) {
-      $$0.a((bhb)this);
-      if (!$$0.dL().B) {
-         this.a(djt.k, $$0);
-         cal.a($$0, true);
-      }
-   }
-
-   @Override
-   public cja q() {
-      return switch (this.A()) {
-         case b -> cji.nl;
-         case c -> cji.nn;
-         case d -> cji.np;
-         case e -> cji.nr;
-         case f -> cji.nt;
-         case g -> cji.nv;
-         case h -> cji.nx;
-         case i -> cji.nz;
-         default -> cji.nj;
-      };
+      this.f(this.do().d((double)$$0, 0.0, (double)$$0));
    }
 
    @Override
@@ -100,93 +100,52 @@ public class cdo extends cdn implements biz, cdp {
       this.f();
    }
 
-   @Override
-   public int b() {
-      return 27;
-   }
-
-   @Override
-   public cjf a(int $$0) {
-      return this.f_($$0);
-   }
-
-   @Override
-   public cjf a(int $$0, int $$1) {
-      return this.b($$0, $$1);
-   }
-
-   @Override
-   public cjf b(int $$0) {
-      return this.e_($$0);
-   }
-
-   @Override
-   public void a(int $$0, cjf $$1) {
-      this.c($$0, $$1);
-   }
-
-   @Override
-   public bjy a_(int $$0) {
-      return this.g_($$0);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(cbu $$0) {
-      return this.g($$0);
+   public void a(aey $$0, long $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
    @Nullable
    @Override
-   public cel createMenu(int $$0, cbt $$1, cbu $$2) {
-      if (this.h != null && $$2.M_()) {
+   public cen createMenu(int $$0, cbv $$1, cbw $$2) {
+      if (this.d != null && $$2.M_()) {
          return null;
       } else {
-         this.e($$1.m);
-         return ces.a($$0, $$1, this);
+         this.f($$1.m);
+         return this.a($$0, $$1);
       }
    }
 
-   public void e(@Nullable cbu $$0) {
-      this.f($$0);
-   }
+   protected abstract cen a(int var1, cbv var2);
 
    @Nullable
    @Override
-   public aex G() {
-      return this.h;
+   public aey G() {
+      return this.d;
    }
 
    @Override
-   public void a(@Nullable aex $$0) {
-      this.h = $$0;
+   public void a(@Nullable aey $$0) {
+      this.d = $$0;
    }
 
    @Override
    public long H() {
-      return this.i;
+      return this.e;
    }
 
    @Override
    public void a(long $$0) {
-      this.i = $$0;
+      this.e = $$0;
    }
 
    @Override
-   public hp<cjf> I() {
-      return this.g;
+   public hp<cjh> I() {
+      return this.c;
    }
 
    @Override
    public void K() {
-      this.g = hp.a(this.b(), cjf.b);
-   }
-
-   @Override
-   public void c(cbu $$0) {
-      this.dL().a(djt.j, this.dj(), djt.a.a($$0));
+      this.c = hp.a(this.b(), cjh.b);
    }
 }

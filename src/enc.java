@@ -1,43 +1,54 @@
+import com.google.common.collect.Lists;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import javax.annotation.Nullable;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import org.slf4j.Logger;
 
-public class enc {
-   private static final String a = "translationKey";
-   private static final String b = "args";
-   private final String c;
-   @Nullable
-   private final Object[] d;
-
-   private enc(String $$0, @Nullable Object[] $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   public tm a(tm $$0) {
-      if (!gak.a(this.c)) {
-         return $$0;
-      } else {
-         return this.d == null ? tm.c(this.c) : tm.a(this.c, this.d);
-      }
-   }
+public class enc extends enn {
+   private static final Logger c = LogUtils.getLogger();
+   public long a;
+   public List<UUID> b;
 
    public static enc a(JsonObject $$0) {
-      String $$1 = epi.a("translationKey", $$0);
-      JsonElement $$2 = $$0.get("args");
-      String[] $$5;
-      if ($$2 != null && !$$2.isJsonNull()) {
-         JsonArray $$4 = $$2.getAsJsonArray();
-         $$5 = new String[$$4.size()];
+      enc $$1 = new enc();
 
-         for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
-            $$5[$$6] = $$4.get($$6).getAsString();
+      try {
+         $$1.a = epk.a("serverId", $$0, -1L);
+         String $$2 = epk.a("playerList", $$0, null);
+         if ($$2 != null) {
+            JsonElement $$3 = JsonParser.parseString($$2);
+            if ($$3.isJsonArray()) {
+               $$1.b = a($$3.getAsJsonArray());
+            } else {
+               $$1.b = Lists.newArrayList();
+            }
+         } else {
+            $$1.b = Lists.newArrayList();
          }
-      } else {
-         $$5 = null;
+      } catch (Exception var4) {
+         c.error("Could not parse RealmsServerPlayerList: {}", var4.getMessage());
       }
 
-      return new enc($$1, $$5);
+      return $$1;
+   }
+
+   private static List<UUID> a(JsonArray $$0) {
+      List<UUID> $$1 = new ArrayList<>($$0.size());
+
+      for (JsonElement $$2 : $$0) {
+         if ($$2.isJsonObject()) {
+            UUID $$3 = epk.a("playerId", $$2.getAsJsonObject(), null);
+            if ($$3 != null) {
+               $$1.add($$3);
+            }
+         }
+      }
+
+      return $$1;
    }
 }

@@ -1,20 +1,21 @@
 import com.mojang.serialization.Codec;
 
-public class dsk extends dsb {
-   public static final Codec<dsk> b = dfj.b.fieldOf("state").xmap(dsk::new, $$0 -> $$0.c).codec();
-   private final dfj c;
+public class dsk extends dsd {
+   public static final Codec<dsk> b = dfl.b.fieldOf("state").xmap(dfk.a::b, csx::n).xmap(dsk::new, $$0 -> $$0.c).codec();
+   private final csx c;
 
-   protected dsk(dfj $$0) {
+   public dsk(csx $$0) {
       this.c = $$0;
    }
 
    @Override
-   protected dsc<?> a() {
-      return dsc.a;
+   protected dse<?> a() {
+      return dse.f;
    }
 
    @Override
-   public dfj a(asc $$0, gw $$1) {
-      return this.c;
+   public dfl a(ase $$0, gw $$1) {
+      hc.a $$2 = hc.a.a($$0);
+      return this.c.n().a(czi.g, $$2);
    }
 }

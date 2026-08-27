@@ -1,4 +1,8 @@
-public class gen implements geu {
-   public gen(get $$0) {
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gen {
 }

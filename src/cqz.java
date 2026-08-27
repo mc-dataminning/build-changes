@@ -1,245 +1,141 @@
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalInt;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class cqz {
-   public static final Codec<cqz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.INT.fieldOf("fog_color").forGetter($$0x -> $$0x.b),
-               Codec.INT.fieldOf("water_color").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("water_fog_color").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("sky_color").forGetter($$0x -> $$0x.e),
-               Codec.INT.optionalFieldOf("foliage_color").forGetter($$0x -> $$0x.f),
-               Codec.INT.optionalFieldOf("grass_color").forGetter($$0x -> $$0x.g),
-               cqz.b.d.optionalFieldOf("grass_color_modifier", cqz.b.a).forGetter($$0x -> $$0x.h),
-               cqs.a.optionalFieldOf("particle").forGetter($$0x -> $$0x.i),
-               apd.b.optionalFieldOf("ambient_sound").forGetter($$0x -> $$0x.j),
-               cqr.a.optionalFieldOf("mood_sound").forGetter($$0x -> $$0x.k),
-               cqq.a.optionalFieldOf("additions_sound").forGetter($$0x -> $$0x.l),
-               apb.a.optionalFieldOf("music").forGetter($$0x -> $$0x.m)
-            )
-            .apply($$0, cqz::new)
-   );
-   private final int b;
-   private final int c;
-   private final int d;
-   private final int e;
-   private final Optional<Integer> f;
-   private final Optional<Integer> g;
-   private final cqz.b h;
-   private final Optional<cqs> i;
-   private final Optional<hg<apd>> j;
-   private final Optional<cqr> k;
-   private final Optional<cqq> l;
-   private final Optional<apb> m;
+public abstract class cqz implements cqy {
+   public static final Codec<cqz> a = jd.ac.q().dispatchStable(cqz::a, Function.identity());
+   private final Supplier<Set<hg<cqv>>> b = Suppliers.memoize(() -> this.b().distinct().collect(ImmutableSet.toImmutableSet()));
 
-   cqz(
-      int $$0,
-      int $$1,
-      int $$2,
-      int $$3,
-      Optional<Integer> $$4,
-      Optional<Integer> $$5,
-      cqz.b $$6,
-      Optional<cqs> $$7,
-      Optional<hg<apd>> $$8,
-      Optional<cqr> $$9,
-      Optional<cqq> $$10,
-      Optional<apb> $$11
-   ) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-      this.l = $$10;
-      this.m = $$11;
+   protected cqz() {
    }
 
-   public int a() {
-      return this.b;
+   protected abstract Codec<? extends cqz> a();
+
+   protected abstract Stream<hg<cqv>> b();
+
+   public Set<hg<cqv>> c() {
+      return this.b.get();
    }
 
-   public int b() {
-      return this.c;
-   }
+   public Set<hg<cqv>> a(int $$0, int $$1, int $$2, int $$3, cre.f $$4) {
+      int $$5 = hs.a($$0 - $$3);
+      int $$6 = hs.a($$1 - $$3);
+      int $$7 = hs.a($$2 - $$3);
+      int $$8 = hs.a($$0 + $$3);
+      int $$9 = hs.a($$1 + $$3);
+      int $$10 = hs.a($$2 + $$3);
+      int $$11 = $$8 - $$5 + 1;
+      int $$12 = $$9 - $$6 + 1;
+      int $$13 = $$10 - $$7 + 1;
+      Set<hg<cqv>> $$14 = Sets.newHashSet();
 
-   public int c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
-   }
-
-   public Optional<Integer> e() {
-      return this.f;
-   }
-
-   public Optional<Integer> f() {
-      return this.g;
-   }
-
-   public cqz.b g() {
-      return this.h;
-   }
-
-   public Optional<cqs> h() {
-      return this.i;
-   }
-
-   public Optional<hg<apd>> i() {
-      return this.j;
-   }
-
-   public Optional<cqr> j() {
-      return this.k;
-   }
-
-   public Optional<cqq> k() {
-      return this.l;
-   }
-
-   public Optional<apb> l() {
-      return this.m;
-   }
-
-   public static class a {
-      private OptionalInt a = OptionalInt.empty();
-      private OptionalInt b = OptionalInt.empty();
-      private OptionalInt c = OptionalInt.empty();
-      private OptionalInt d = OptionalInt.empty();
-      private Optional<Integer> e = Optional.empty();
-      private Optional<Integer> f = Optional.empty();
-      private cqz.b g = cqz.b.a;
-      private Optional<cqs> h = Optional.empty();
-      private Optional<hg<apd>> i = Optional.empty();
-      private Optional<cqr> j = Optional.empty();
-      private Optional<cqq> k = Optional.empty();
-      private Optional<apb> l = Optional.empty();
-
-      public cqz.a a(int $$0) {
-         this.a = OptionalInt.of($$0);
-         return this;
-      }
-
-      public cqz.a b(int $$0) {
-         this.b = OptionalInt.of($$0);
-         return this;
-      }
-
-      public cqz.a c(int $$0) {
-         this.c = OptionalInt.of($$0);
-         return this;
-      }
-
-      public cqz.a d(int $$0) {
-         this.d = OptionalInt.of($$0);
-         return this;
-      }
-
-      public cqz.a e(int $$0) {
-         this.e = Optional.of($$0);
-         return this;
-      }
-
-      public cqz.a f(int $$0) {
-         this.f = Optional.of($$0);
-         return this;
-      }
-
-      public cqz.a a(cqz.b $$0) {
-         this.g = $$0;
-         return this;
-      }
-
-      public cqz.a a(cqs $$0) {
-         this.h = Optional.of($$0);
-         return this;
-      }
-
-      public cqz.a a(hg<apd> $$0) {
-         this.i = Optional.of($$0);
-         return this;
-      }
-
-      public cqz.a a(cqr $$0) {
-         this.j = Optional.of($$0);
-         return this;
-      }
-
-      public cqz.a a(cqq $$0) {
-         this.k = Optional.of($$0);
-         return this;
-      }
-
-      public cqz.a a(@Nullable apb $$0) {
-         this.l = Optional.ofNullable($$0);
-         return this;
-      }
-
-      public cqz a() {
-         return new cqz(
-            this.a.orElseThrow(() -> new IllegalStateException("Missing 'fog' color.")),
-            this.b.orElseThrow(() -> new IllegalStateException("Missing 'water' color.")),
-            this.c.orElseThrow(() -> new IllegalStateException("Missing 'water fog' color.")),
-            this.d.orElseThrow(() -> new IllegalStateException("Missing 'sky' color.")),
-            this.e,
-            this.f,
-            this.g,
-            this.h,
-            this.i,
-            this.j,
-            this.k,
-            this.l
-         );
-      }
-   }
-
-   public static enum b implements asp {
-      a("none") {
-         @Override
-         public int a(double $$0, double $$1, int $$2) {
-            return $$2;
+      for (int $$15 = 0; $$15 < $$13; $$15++) {
+         for (int $$16 = 0; $$16 < $$11; $$16++) {
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               int $$18 = $$5 + $$16;
+               int $$19 = $$6 + $$17;
+               int $$20 = $$7 + $$15;
+               $$14.add(this.getNoiseBiome($$18, $$19, $$20, $$4));
+            }
          }
-      },
-      b("dark_forest") {
-         @Override
-         public int a(double $$0, double $$1, int $$2) {
-            return ($$2 & 16711422) + 2634762 >> 1;
+      }
+
+      return $$14;
+   }
+
+   @Nullable
+   public Pair<gw, hg<cqv>> a(int $$0, int $$1, int $$2, int $$3, Predicate<hg<cqv>> $$4, ase $$5, cre.f $$6) {
+      return this.a($$0, $$1, $$2, $$3, 1, $$4, $$5, false, $$6);
+   }
+
+   @Nullable
+   public Pair<gw, hg<cqv>> a(gw $$0, int $$1, int $$2, int $$3, Predicate<hg<cqv>> $$4, cre.f $$5, cqa $$6) {
+      Set<hg<cqv>> $$7 = this.c().stream().filter($$4).collect(Collectors.toUnmodifiableSet());
+      if ($$7.isEmpty()) {
+         return null;
+      } else {
+         int $$8 = Math.floorDiv($$1, $$2);
+         int[] $$9 = ary.a($$0.v(), $$6.H_() + 1, $$6.aj(), $$3).toArray();
+
+         for (gw.a $$10 : gw.a(gw.b, $$8, hc.f, hc.d)) {
+            int $$11 = $$0.u() + $$10.u() * $$2;
+            int $$12 = $$0.w() + $$10.w() * $$2;
+            int $$13 = hs.a($$11);
+            int $$14 = hs.a($$12);
+
+            for (int $$15 : $$9) {
+               int $$16 = hs.a($$15);
+               hg<cqv> $$17 = this.getNoiseBiome($$13, $$16, $$14, $$5);
+               if ($$7.contains($$17)) {
+                  return Pair.of(new gw($$11, $$15, $$12), $$17);
+               }
+            }
          }
-      },
-      c("swamp") {
-         @Override
-         public int a(double $$0, double $$1, int $$2) {
-            double $$3 = cqt.e.a($$0 * 0.0225, $$1 * 0.0225, false);
-            return $$3 < -0.1 ? 5011004 : 6975545;
+
+         return null;
+      }
+   }
+
+   @Nullable
+   public Pair<gw, hg<cqv>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<hg<cqv>> $$5, ase $$6, boolean $$7, cre.f $$8) {
+      int $$9 = hs.a($$0);
+      int $$10 = hs.a($$2);
+      int $$11 = hs.a($$3);
+      int $$12 = hs.a($$1);
+      Pair<gw, hg<cqv>> $$13 = null;
+      int $$14 = 0;
+      int $$15 = $$7 ? 0 : $$11;
+      int $$16 = $$15;
+
+      while ($$16 <= $$11) {
+         for (int $$17 = aa.aq ? 0 : -$$16; $$17 <= $$16; $$17 += $$4) {
+            boolean $$18 = Math.abs($$17) == $$16;
+
+            for (int $$19 = -$$16; $$19 <= $$16; $$19 += $$4) {
+               if ($$7) {
+                  boolean $$20 = Math.abs($$19) == $$16;
+                  if (!$$20 && !$$18) {
+                     continue;
+                  }
+               }
+
+               int $$21 = $$9 + $$19;
+               int $$22 = $$10 + $$17;
+               hg<cqv> $$23 = this.getNoiseBiome($$21, $$12, $$22, $$8);
+               if ($$5.test($$23)) {
+                  if ($$13 == null || $$6.a($$14 + 1) == 0) {
+                     gw $$24 = new gw(hs.c($$21), $$1, hs.c($$22));
+                     if ($$7) {
+                        return Pair.of($$24, $$23);
+                     }
+
+                     $$13 = Pair.of($$24, $$23);
+                  }
+
+                  $$14++;
+               }
+            }
          }
-      };
 
-      private final String e;
-      public static final Codec<cqz.b> d = asp.a(cqz.b::values);
-
-      public abstract int a(double var1, double var3, int var5);
-
-      b(String $$0) {
-         this.e = $$0;
+         $$16 += $$4;
       }
 
-      public String a() {
-         return this.e;
-      }
+      return $$13;
+   }
 
-      @Override
-      public String c() {
-         return this.e;
-      }
+   @Override
+   public abstract hg<cqv> getNoiseBiome(int var1, int var2, int var3, cre.f var4);
+
+   public void a(List<String> $$0, gw $$1, cre.f $$2) {
    }
 }

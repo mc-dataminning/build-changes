@@ -1,82 +1,74 @@
+import com.google.common.hash.Hashing;
 import javax.annotation.Nullable;
 
-public class exr extends eyk {
-   private static final int a = 80;
-   private static final int b = 120;
-   private static final int c = 360;
+public class exr implements AutoCloseable {
+   private static final aey a = new aey("textures/misc/unknown_server.png");
+   private static final int b = 64;
+   private static final int c = 64;
+   private final fzh d;
+   private final aey e;
    @Nullable
-   private final tm k;
-   private final tm l;
-   private final Runnable m;
-   @Nullable
-   private etj n;
-   private esq o;
-   private int p;
+   private fyt f;
+   private boolean g;
 
-   public static exr a(tm $$0, tm $$1, Runnable $$2) {
-      return new exr($$0, null, $$1, $$2, 0);
+   private exr(fzh $$0, aey $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public static exr a(tm $$0, tm $$1, tm $$2, Runnable $$3) {
-      return new exr($$0, $$1, $$2, $$3, 20);
+   public static exr a(fzh $$0, String $$1) {
+      return new exr($$0, new aey("minecraft", "worlds/" + ac.a($$1, aey::b) + "/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
    }
 
-   protected exr(tm $$0, @Nullable tm $$1, tm $$2, Runnable $$3, int $$4) {
-      super($$0);
-      this.k = $$1;
-      this.l = $$2;
-      this.m = $$3;
-      this.p = $$4;
+   public static exr b(fzh $$0, String $$1) {
+      return new exr($$0, new aey("minecraft", "servers/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
    }
 
-   @Override
-   protected void aI_() {
-      super.aI_();
-      if (this.k != null) {
-         this.n = etj.a(this.i, this.k, 360);
-      }
+   public void a(eks $$0) {
+      if ($$0.a() == 64 && $$0.b() == 64) {
+         try {
+            this.c();
+            if (this.f == null) {
+               this.f = new fyt($$0);
+            } else {
+               this.f.a($$0);
+               this.f.d();
+            }
 
-      int $$0 = 150;
-      int $$1 = 20;
-      int $$2 = this.n != null ? this.n.a() : 1;
-      int $$3 = Math.max($$2, 5) * 9;
-      int $$4 = Math.min(120 + $$3, this.h - 40);
-      this.o = this.d(esq.a(this.l, $$0x -> this.az_()).a((this.g - 150) / 2, $$4, 150, 20).a());
-   }
-
-   @Override
-   public void c() {
-      if (this.p > 0) {
-         this.p--;
-      }
-
-      this.o.i = this.p == 0;
-   }
-
-   @Override
-   public void a(esf $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 80, 16777215);
-      if (this.n == null) {
-         String $$4 = exv.a(ac.b());
-         $$0.a(this.i, $$4, this.g / 2, 120, 10526880);
+            this.d.a(this.e, this.f);
+         } catch (Throwable var3) {
+            $$0.close();
+            this.a();
+            throw var3;
+         }
       } else {
-         this.n.a($$0, this.g / 2, 120);
+         $$0.close();
+         throw new IllegalArgumentException("Icon must be 64x64, but was " + $$0.a() + "x" + $$0.b());
       }
    }
 
-   @Override
-   public boolean ay_() {
-      return this.n != null && this.o.i;
+   public void a() {
+      this.c();
+      if (this.f != null) {
+         this.d.c(this.e);
+         this.f.close();
+         this.f = null;
+      }
+   }
+
+   public aey b() {
+      return this.f != null ? this.e : a;
    }
 
    @Override
-   public void az_() {
-      this.m.run();
+   public void close() {
+      this.a();
+      this.g = true;
    }
 
-   @Override
-   public tm g() {
-      return tl.a(this.e, this.k != null ? this.k : tl.a);
+   private void c() {
+      if (this.g) {
+         throw new IllegalStateException("Icon already closed");
+      }
    }
 }

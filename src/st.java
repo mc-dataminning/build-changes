@@ -1,55 +1,53 @@
 import com.mojang.logging.LogUtils;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToByteEncoder;
+import io.netty.handler.codec.ByteToMessageDecoder;
 import io.netty.util.Attribute;
 import io.netty.util.AttributeKey;
 import java.io.IOException;
+import java.util.List;
 import org.slf4j.Logger;
 
-public class st extends MessageToByteEncoder<ve<?>> {
+public class st extends ByteToMessageDecoder implements sy {
    private static final Logger a = LogUtils.getLogger();
-   private final AttributeKey<so.a<?>> b;
+   private final AttributeKey<sp.a<?>> b;
 
-   public st(AttributeKey<so.a<?>> $$0) {
+   public st(AttributeKey<sp.a<?>> $$0) {
       this.b = $$0;
    }
 
-   protected void a(ChannelHandlerContext $$0, ve<?> $$1, ByteBuf $$2) throws Exception {
-      Attribute<so.a<?>> $$3 = $$0.channel().attr(this.b);
-      so.a<?> $$4 = (so.a<?>)$$3.get();
-      if ($$4 == null) {
-         throw new RuntimeException("ConnectionProtocol unknown: " + $$1);
-      } else {
-         int $$5 = $$4.a($$1);
-         if (a.isDebugEnabled()) {
-            a.debug(sn.d, "OUT: [{}:{}] {}", new Object[]{$$4.a().a(), $$5, $$1.getClass().getName()});
-         }
-
-         if ($$5 == -1) {
-            throw new IOException("Can't serialize unregistered packet");
+   protected void decode(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) throws Exception {
+      int $$3 = $$1.readableBytes();
+      if ($$3 != 0) {
+         Attribute<sp.a<?>> $$4 = $$0.channel().attr(this.b);
+         sp.a<?> $$5 = (sp.a<?>)$$4.get();
+         sq $$6 = new sq($$1);
+         int $$7 = $$6.m();
+         vf<?> $$8 = $$5.a($$7, $$6);
+         if ($$8 == null) {
+            throw new IOException("Bad packet id " + $$7);
          } else {
-            sp $$6 = new sp($$2);
-            $$6.c($$5);
-
-            try {
-               int $$7 = $$6.writerIndex();
-               $$1.a($$6);
-               int $$8 = $$6.writerIndex() - $$7;
-               if ($$8 > 8388608) {
-                  throw new IllegalArgumentException("Packet too big (is " + $$8 + ", should be less than 8388608): " + $$1);
+            bdx.e.a($$5.a(), $$7, $$0.channel().remoteAddress(), $$3);
+            if ($$6.readableBytes() > 0) {
+               throw new IOException(
+                  "Packet "
+                     + $$5.a().a()
+                     + "/"
+                     + $$7
+                     + " ("
+                     + $$8.getClass().getSimpleName()
+                     + ") was larger than I expected, found "
+                     + $$6.readableBytes()
+                     + " bytes extra whilst reading packet "
+                     + $$7
+               );
+            } else {
+               $$2.add($$8);
+               if (a.isDebugEnabled()) {
+                  a.debug(so.c, " IN: [{}:{}] {}", new Object[]{$$5.a().a(), $$7, $$8.getClass().getName()});
                }
 
-               bdv.e.b($$4.a(), $$5, $$0.channel().remoteAddress(), $$8);
-            } catch (Throwable var13) {
-               a.error("Error receiving packet {}", $$5, var13);
-               if ($$1.b()) {
-                  throw new ta(var13);
-               }
-
-               throw var13;
-            } finally {
-               sx.a($$3, $$1);
+               sy.a($$4, $$8);
             }
          }
       }

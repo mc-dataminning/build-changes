@@ -1,64 +1,42 @@
 import java.util.EnumSet;
-import java.util.function.Predicate;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class bru<T extends bjg> extends bsb {
-   private static final int i = 10;
-   protected final Class<T> a;
-   protected final int b;
+public class bru extends bsd {
+   private final bvf a;
    @Nullable
-   protected bjg c;
-   protected bts d;
+   private bji b;
+   private final btu c = btu.a().a(64.0);
 
-   public bru(bji $$0, Class<T> $$1, boolean $$2) {
-      this($$0, $$1, 10, $$2, false, null);
-   }
-
-   public bru(bji $$0, Class<T> $$1, boolean $$2, Predicate<bjg> $$3) {
-      this($$0, $$1, 10, $$2, false, $$3);
-   }
-
-   public bru(bji $$0, Class<T> $$1, boolean $$2, boolean $$3) {
-      this($$0, $$1, 10, $$2, $$3, null);
-   }
-
-   public bru(bji $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable Predicate<bjg> $$5) {
-      super($$0, $$3, $$4);
-      this.a = $$1;
-      this.b = b($$2);
-      this.a(EnumSet.of(bqb.a.d));
-      this.d = bts.a().a(this.l()).a($$5);
+   public bru(bvf $$0) {
+      super($$0, false, true);
+      this.a = $$0;
+      this.a(EnumSet.of(bqd.a.d));
    }
 
    @Override
    public boolean a() {
-      if (this.b > 0 && this.e.ef().a(this.b) != 0) {
-         return false;
-      } else {
-         this.h();
-         return this.c != null;
-      }
-   }
+      ehk $$0 = this.a.cG().c(10.0, 8.0, 10.0);
+      List<? extends bji> $$1 = this.a.dL().a(cbj.class, this.c, this.a, $$0);
+      List<cbw> $$2 = this.a.dL().a(this.c, this.a, $$0);
 
-   protected ehi a(double $$0) {
-      return this.e.cG().c($$0, 4.0, $$0);
-   }
+      for (bji $$3 : $$1) {
+         cbj $$4 = (cbj)$$3;
 
-   protected void h() {
-      if (this.a != cbu.class && this.a != aks.class) {
-         this.c = this.e.dL().a(this.e.dL().a(this.a, this.a(this.l()), $$0 -> true), this.d, this.e, this.e.dq(), this.e.du(), this.e.dw());
-      } else {
-         this.c = this.e.dL().a(this.d, this.e, this.e.dq(), this.e.du(), this.e.dw());
+         for (cbw $$5 : $$2) {
+            int $$6 = $$4.g($$5);
+            if ($$6 <= -100) {
+               this.b = $$5;
+            }
+         }
       }
+
+      return this.b == null ? false : !(this.b instanceof cbw) || !this.b.M_() && !((cbw)this.b).f();
    }
 
    @Override
    public void c() {
-      this.e.h(this.c);
+      this.a.h(this.b);
       super.c();
-   }
-
-   public void a(@Nullable bjg $$0) {
-      this.c = $$0;
    }
 }

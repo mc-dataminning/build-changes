@@ -1,37 +1,29 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+public enum djp {
+   a(false, false),
+   b(true, false),
+   c(true, true);
 
-public class djp implements djx {
-   public static final Codec<djp> a = RecordCodecBuilder.create($$0 -> $$0.group(gw.a.fieldOf("pos").forGetter($$0x -> $$0x.c)).apply($$0, djp::new));
-   final gw c;
+   private final boolean d;
+   private final boolean e;
 
-   public djp(gw $$0) {
-      this.c = $$0;
+   private djp(boolean $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   @Override
-   public Optional<ehn> a(cpv $$0) {
-      return Optional.of(ehn.b(this.c));
+   public boolean a() {
+      return this.e;
    }
 
-   @Override
-   public djy<?> a() {
-      return djy.a;
+   public boolean b() {
+      return this.d;
    }
 
-   public static class a implements djy<djp> {
-      public djp a(sp $$0) {
-         return new djp($$0.e());
-      }
-
-      public void a(sp $$0, djp $$1) {
-         $$0.a($$1.c);
-      }
-
-      @Override
-      public Codec<djp> a() {
-         return djp.a;
+   public static djp a(akl $$0) {
+      if ($$0.a(akl.d)) {
+         return c;
+      } else {
+         return $$0.a(akl.b) ? b : a;
       }
    }
 }

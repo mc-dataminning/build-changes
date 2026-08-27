@@ -1,408 +1,183 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class bin extends biq implements bkd {
-   private static final Logger d = LogUtils.getLogger();
-   private static final int e = 5;
-   private static final aef<Float> f = aei.a(bin.class, aeh.d);
-   private static final aef<Integer> g = aei.a(bin.class, aeh.b);
-   private static final aef<Boolean> h = aei.a(bin.class, aeh.k);
-   private static final aef<iv> i = aei.a(bin.class, aeh.l);
-   private static final float j = 32.0F;
-   private static final float k = 0.5F;
-   private static final float l = 3.0F;
-   public static final float b = 6.0F;
-   public static final float c = 0.5F;
-   private static final String m = "effects";
-   private clc n = clf.b;
-   private final List<bid> o = Lists.newArrayList();
-   private final Map<biq, Integer> p = Maps.newHashMap();
-   private int q = 600;
-   private int r = 20;
-   private int s = 20;
-   private boolean t;
-   private int u;
-   private float v;
-   private float aE;
-   @Nullable
-   private bjg aF;
-   @Nullable
-   private UUID aG;
+public abstract class bin extends bjr {
+   private static final aeg<Boolean> bT = aej.a(bin.class, aei.k);
+   public static final int b = -24000;
+   private static final int bU = 40;
+   protected int c;
+   protected int d;
+   protected int e;
 
-   public bin(biu<? extends bin> $$0, cpv $$1) {
+   protected bin(biw<? extends bin> $$0, cpx $$1) {
       super($$0, $$1);
-      this.af = true;
    }
 
-   public bin(cpv $$0, double $$1, double $$2, double $$3) {
-      this(biu.c, $$0);
-      this.e($$1, $$2, $$3);
+   @Override
+   public bkb a(cqm $$0, bgy $$1, bjm $$2, @Nullable bkb $$3, @Nullable qy $$4) {
+      if ($$3 == null) {
+         $$3 = new bin.a(true);
+      }
+
+      bin.a $$5 = (bin.a)$$3;
+      if ($$5.c() && $$5.a() > 0 && $$0.D_().i() <= $$5.d()) {
+         this.c_(-24000);
+      }
+
+      $$5.b();
+      return super.a($$0, $$1, $$2, $$3, $$4);
    }
+
+   @Nullable
+   public abstract bin a(aks var1, bin var2);
 
    @Override
    protected void a_() {
-      this.al().a(g, 0);
-      this.al().a(f, 3.0F);
-      this.al().a(h, false);
-      this.al().a(i, ix.v);
+      super.a_();
+      this.an.a(bT, false);
    }
 
-   public void a(float $$0) {
-      if (!this.dL().B) {
-         this.al().b(f, arx.a($$0, 0.0F, 32.0F));
-      }
+   public boolean V_() {
+      return false;
    }
 
-   @Override
-   public void i_() {
-      double $$0 = this.dq();
-      double $$1 = this.ds();
-      double $$2 = this.dw();
-      super.i_();
-      this.e($$0, $$1, $$2);
-   }
-
-   public float h() {
-      return this.al().b(f);
-   }
-
-   public void a(clc $$0) {
-      this.n = $$0;
-      if (!this.t) {
-         this.w();
-      }
-   }
-
-   private void w() {
-      if (this.n == clf.b && this.o.isEmpty()) {
-         this.al().b(g, 0);
-      } else {
-         this.al().b(g, cle.a(cle.a(this.n, this.o)));
-      }
-   }
-
-   public void a(bid $$0) {
-      this.o.add($$0);
-      if (!this.t) {
-         this.w();
-      }
-   }
-
-   public int i() {
-      return this.al().b(g);
-   }
-
-   public void a(int $$0) {
-      this.t = true;
-      this.al().b(g, $$0);
-   }
-
-   public iv j() {
-      return this.al().b(i);
-   }
-
-   public void a(iv $$0) {
-      this.al().b(i, $$0);
-   }
-
-   protected void a(boolean $$0) {
-      this.al().b(h, $$0);
-   }
-
-   public boolean k() {
-      return this.al().b(h);
-   }
-
-   public int m() {
-      return this.q;
-   }
-
-   public void b(int $$0) {
-      this.q = $$0;
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      boolean $$0 = this.k();
-      float $$1 = this.h();
+   public int h() {
       if (this.dL().B) {
-         if ($$0 && this.ag.h()) {
-            return;
-         }
-
-         iv $$2 = this.j();
-         int $$3;
-         float $$4;
-         if ($$0) {
-            $$3 = 2;
-            $$4 = 0.2F;
-         } else {
-            $$3 = arx.f((float) Math.PI * $$1 * $$1);
-            $$4 = $$1;
-         }
-
-         for (int $$7 = 0; $$7 < $$3; $$7++) {
-            float $$8 = this.ag.i() * (float) (Math.PI * 2);
-            float $$9 = arx.c(this.ag.i()) * $$4;
-            double $$10 = this.dq() + (double)(arx.b($$8) * $$9);
-            double $$11 = this.ds();
-            double $$12 = this.dw() + (double)(arx.a($$8) * $$9);
-            double $$14;
-            double $$15;
-            double $$16;
-            if ($$2.b() == ix.v) {
-               int $$13 = $$0 && this.ag.h() ? 16777215 : this.i();
-               $$14 = (double)((float)($$13 >> 16 & 0xFF) / 255.0F);
-               $$15 = (double)((float)($$13 >> 8 & 0xFF) / 255.0F);
-               $$16 = (double)((float)($$13 & 0xFF) / 255.0F);
-            } else if ($$0) {
-               $$14 = 0.0;
-               $$15 = 0.0;
-               $$16 = 0.0;
-            } else {
-               $$14 = (0.5 - this.ag.j()) * 0.15;
-               $$15 = 0.01F;
-               $$16 = (0.5 - this.ag.j()) * 0.15;
-            }
-
-            this.dL().b($$2, $$10, $$11, $$12, $$14, $$15, $$16);
-         }
+         return this.an.b(bT) ? -1 : 1;
       } else {
-         if (this.ah >= this.r + this.q) {
-            this.ak();
-            return;
-         }
-
-         boolean $$23 = this.ah < this.r;
-         if ($$0 != $$23) {
-            this.a($$23);
-         }
-
-         if ($$23) {
-            return;
-         }
-
-         if (this.aE != 0.0F) {
-            $$1 += this.aE;
-            if ($$1 < 0.5F) {
-               this.ak();
-               return;
-            }
-
-            this.a($$1);
-         }
-
-         if (this.ah % 5 == 0) {
-            this.p.entrySet().removeIf($$0x -> this.ah >= (Integer)$$0x.getValue());
-            List<bid> $$24 = Lists.newArrayList();
-
-            for (bid $$25 : this.n.a()) {
-               $$24.add(new bid($$25.c(), $$25.a($$0x -> $$0x / 4), $$25.e(), $$25.f(), $$25.g()));
-            }
-
-            $$24.addAll(this.o);
-            if ($$24.isEmpty()) {
-               this.p.clear();
-            } else {
-               List<bjg> $$26 = this.dL().a(bjg.class, this.cG());
-               if (!$$26.isEmpty()) {
-                  for (bjg $$27 : $$26) {
-                     if (!this.p.containsKey($$27) && $$27.fx()) {
-                        double $$28 = $$27.dq() - this.dq();
-                        double $$29 = $$27.dw() - this.dw();
-                        double $$30 = $$28 * $$28 + $$29 * $$29;
-                        if ($$30 <= (double)($$1 * $$1)) {
-                           this.p.put($$27, this.ah + this.s);
-
-                           for (bid $$31 : $$24) {
-                              if ($$31.c().a()) {
-                                 $$31.c().a(this, this.s(), $$27, $$31.e(), 0.5);
-                              } else {
-                                 $$27.b(new bid($$31), this);
-                              }
-                           }
-
-                           if (this.v != 0.0F) {
-                              $$1 += this.v;
-                              if ($$1 < 0.5F) {
-                                 this.ak();
-                                 return;
-                              }
-
-                              this.a($$1);
-                           }
-
-                           if (this.u != 0) {
-                              this.q = this.q + this.u;
-                              if (this.q <= 0) {
-                                 this.ak();
-                                 return;
-                              }
-                           }
-                        }
-                     }
-                  }
-               }
-            }
-         }
+         return this.c;
       }
    }
 
-   public float o() {
-      return this.v;
-   }
+   public void a(int $$0, boolean $$1) {
+      int $$2 = this.h();
+      $$2 += $$0 * 20;
+      if ($$2 > 0) {
+         $$2 = 0;
+      }
 
-   public void b(float $$0) {
-      this.v = $$0;
-   }
-
-   public float p() {
-      return this.aE;
-   }
-
-   public void c(float $$0) {
-      this.aE = $$0;
-   }
-
-   public int q() {
-      return this.u;
-   }
-
-   public void c(int $$0) {
-      this.u = $$0;
-   }
-
-   public int r() {
-      return this.r;
-   }
-
-   public void d(int $$0) {
-      this.r = $$0;
-   }
-
-   public void a(@Nullable bjg $$0) {
-      this.aF = $$0;
-      this.aG = $$0 == null ? null : $$0.cv();
-   }
-
-   @Nullable
-   public bjg s() {
-      if (this.aF == null && this.aG != null && this.dL() instanceof akr) {
-         biq $$0 = ((akr)this.dL()).a(this.aG);
-         if ($$0 instanceof bjg) {
-            this.aF = (bjg)$$0;
+      int $$4 = $$2 - $$2;
+      this.c_($$2);
+      if ($$1) {
+         this.d += $$4;
+         if (this.e == 0) {
+            this.e = 40;
          }
       }
 
-      return this.aF;
+      if (this.h() == 0) {
+         this.c_(this.d);
+      }
    }
 
-   @Override
-   protected void a(qy $$0) {
-      this.ah = $$0.h("Age");
-      this.q = $$0.h("Duration");
-      this.r = $$0.h("WaitTime");
-      this.s = $$0.h("ReapplicationDelay");
-      this.u = $$0.h("DurationOnUse");
-      this.v = $$0.j("RadiusOnUse");
-      this.aE = $$0.j("RadiusPerTick");
-      this.a($$0.j("Radius"));
-      if ($$0.b("Owner")) {
-         this.aG = $$0.a("Owner");
-      }
+   public void b_(int $$0) {
+      this.a($$0, false);
+   }
 
-      if ($$0.b("Particle", 8)) {
-         try {
-            this.a(eo.a(new StringReader($$0.l("Particle")), jd.k.p()));
-         } catch (CommandSyntaxException var5) {
-            d.warn("Couldn't load custom particle {}", $$0.l("Particle"), var5);
-         }
-      }
-
-      if ($$0.b("Color", 99)) {
-         this.a($$0.h("Color"));
-      }
-
-      if ($$0.b("Potion", 8)) {
-         this.a(cle.c($$0));
-      }
-
-      if ($$0.b("effects", 9)) {
-         re $$2 = $$0.c("effects", 10);
-         this.o.clear();
-
-         for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-            bid $$4 = bid.b($$2.a($$3));
-            if ($$4 != null) {
-               this.a($$4);
-            }
-         }
+   public void c_(int $$0) {
+      int $$1 = this.h();
+      this.c = $$0;
+      if ($$1 < 0 && $$0 >= 0 || $$1 >= 0 && $$0 < 0) {
+         this.an.b(bT, $$0 < 0);
+         this.m();
       }
    }
 
    @Override
-   protected void b(qy $$0) {
-      $$0.a("Age", this.ah);
-      $$0.a("Duration", this.q);
-      $$0.a("WaitTime", this.r);
-      $$0.a("ReapplicationDelay", this.s);
-      $$0.a("DurationOnUse", this.u);
-      $$0.a("RadiusOnUse", this.v);
-      $$0.a("RadiusPerTick", this.aE);
-      $$0.a("Radius", this.h());
-      $$0.a("Particle", this.j().a());
-      if (this.aG != null) {
-         $$0.a("Owner", this.aG);
-      }
-
-      if (this.t) {
-         $$0.a("Color", this.i());
-      }
-
-      if (this.n != clf.b) {
-         $$0.a("Potion", jd.j.b(this.n).toString());
-      }
-
-      if (!this.o.isEmpty()) {
-         re $$1 = new re();
-
-         for (bid $$2 : this.o) {
-            $$1.add($$2.a(new qy()));
-         }
-
-         $$0.a("effects", $$1);
-      }
+   public void b(qy $$0) {
+      super.b($$0);
+      $$0.a("Age", this.h());
+      $$0.a("ForcedAge", this.d);
    }
 
    @Override
-   public void a(aef<?> $$0) {
-      if (f.equals($$0)) {
+   public void a(qy $$0) {
+      super.a($$0);
+      this.c_($$0.h("Age"));
+      this.d = $$0.h("ForcedAge");
+   }
+
+   @Override
+   public void a(aeg<?> $$0) {
+      if (bT.equals($$0)) {
          this.i_();
       }
 
       super.a($$0);
    }
 
-   public clc t() {
-      return this.n;
+   @Override
+   public void b_() {
+      super.b_();
+      if (this.dL().B) {
+         if (this.e > 0) {
+            if (this.e % 4 == 0) {
+               this.dL().a(ix.K, this.d(1.0), this.dt() + 0.5, this.g(1.0), 0.0, 0.0, 0.0);
+            }
+
+            this.e--;
+         }
+      } else if (this.bv()) {
+         int $$0 = this.h();
+         if ($$0 < 0) {
+            this.c_(++$$0);
+         } else if ($$0 > 0) {
+            this.c_(--$$0);
+         }
+      }
+   }
+
+   protected void m() {
+      if (!this.m_() && this.bN() && this.cY() instanceof cdp $$0 && !$$0.a((bis)this)) {
+         this.aa();
+      }
    }
 
    @Override
-   public ear q_() {
-      return ear.d;
+   public boolean m_() {
+      return this.h() < 0;
    }
 
    @Override
-   public bir a(bjs $$0) {
-      return bir.b(this.h() * 2.0F, 0.5F);
+   public void a(boolean $$0) {
+      this.c_($$0 ? -24000 : 0);
+   }
+
+   public static int d_(int $$0) {
+      return (int)((float)($$0 / 20) * 0.1F);
+   }
+
+   public static class a implements bkb {
+      private int a;
+      private final boolean b;
+      private final float c;
+
+      private a(boolean $$0, float $$1) {
+         this.b = $$0;
+         this.c = $$1;
+      }
+
+      public a(boolean $$0) {
+         this($$0, 0.05F);
+      }
+
+      public a(float $$0) {
+         this(true, $$0);
+      }
+
+      public int a() {
+         return this.a;
+      }
+
+      public void b() {
+         this.a++;
+      }
+
+      public boolean c() {
+         return this.b;
+      }
+
+      public float d() {
+         return this.c;
+      }
    }
 }

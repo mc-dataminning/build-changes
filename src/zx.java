@@ -1,40 +1,32 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+public class zx implements vf<wy> {
+   private final gw a;
+   private final float b;
 
-public class zx implements ve<wx> {
-   private final eii a;
-   private final String b;
-
-   public zx(eii $$0, @Nullable eij $$1) {
+   public zx(gw $$0, float $$1) {
       this.a = $$0;
-      if ($$1 == null) {
-         this.b = "";
-      } else {
-         this.b = $$1.b();
-      }
+      this.b = $$1;
    }
 
-   public zx(sp $$0) {
-      this.a = $$0.a(eii.u);
-      this.b = $$0.r();
+   public zx(sq $$0) {
+      this.a = $$0.e();
+      this.b = $$0.readFloat();
    }
 
    @Override
-   public void a(sp $$0) {
-      $$0.a(eii::a, this.a);
+   public void a(sq $$0) {
+      $$0.a(this.a);
       $$0.a(this.b);
    }
 
-   public void a(wx $$0) {
+   public void a(wy $$0) {
       $$0.a(this);
    }
 
-   public eii a() {
+   public gw a() {
       return this.a;
    }
 
-   @Nullable
-   public String d() {
-      return Objects.equals(this.b, "") ? null : this.b;
+   public float d() {
+      return this.b;
    }
 }

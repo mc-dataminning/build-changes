@@ -1,27 +1,27 @@
-public class ftp extends fun<bvb, fff<bvb>> {
-   private static final aex a = new aex("textures/entity/fox/fox.png");
-   private static final aex i = new aex("textures/entity/fox/fox_sleep.png");
-   private static final aex j = new aex("textures/entity/fox/snow_fox.png");
-   private static final aex k = new aex("textures/entity/fox/snow_fox_sleep.png");
+public class ftp extends fti<ccj> {
+   private final fuh a;
 
-   public ftp(fth.a $$0) {
-      super($$0, new fff<>($$0.a(fib.X)), 0.4F);
-      this.a(new fxc(this, $$0.d()));
+   public ftp(ftj.a $$0) {
+      super($$0);
+      this.a = $$0.b();
    }
 
-   protected void a(bvb $$0, elp $$1, float $$2, float $$3, float $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$0.gj() || $$0.gd()) {
-         float $$5 = -arx.i($$4, $$0.O, $$0.dD());
-         $$1.a(a.b.rotationDegrees($$5));
+   public void a(ccj $$0, float $$1, float $$2, elr $$3, fog $$4, int $$5) {
+      $$3.a();
+      $$3.a(this.c.b());
+      $$3.a(a.d.rotationDegrees(180.0F));
+      if ($$0.s()) {
+         $$3.a(a.f.rotationDegrees(180.0F));
+         $$3.a(a.d.rotationDegrees(180.0F));
+         $$3.a(a.b.rotationDegrees(90.0F));
       }
+
+      this.a.a($$0.q(), cje.h, $$5, fyx.d, $$3, $$4, $$0.dL(), $$0.ah());
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public aex a(bvb $$0) {
-      if ($$0.t() == bvb.v.a) {
-         return $$0.fC() ? i : a;
-      } else {
-         return $$0.fC() ? k : j;
-      }
+   public aey a(ccj $$0) {
+      return fzf.e;
    }
 }

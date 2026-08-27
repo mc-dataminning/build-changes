@@ -1,468 +1,176 @@
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class eys extends eyk implements eyt {
-   static final aex c = new aex("container/slot");
-   static final aex k = new aex("statistics/header");
-   static final aex l = new aex("statistics/sort_up");
-   static final aex m = new aex("statistics/sort_down");
-   private static final tm n = tm.c("multiplayer.downloadingStats");
-   static final tm o = tm.c("stats.none");
-   protected final eyk a;
-   private eys.a p;
-   eys.b q;
-   private eys.c s;
-   final app t;
-   @Nullable
-   private etm<?> u;
-   private boolean v = true;
-   private static final int w = 18;
-   private static final int x = 20;
-   private static final int y = 1;
-   private static final int z = 1;
-   private static final int A = 2;
-   private static final int B = 2;
-   private static final int C = 40;
-   private static final int D = 5;
-   private static final int E = 0;
-   private static final int F = -1;
-   private static final int G = 1;
+public class eys extends eye {
+   private static final tn c = tn.c("options.graphics.fabulous").a(n.u);
+   private static final tn k = tn.a("options.graphics.warning.message", c, c);
+   private static final tn l = tn.c("options.graphics.warning.title").a(n.m);
+   private static final tn m = tn.c("options.graphics.warning.accept");
+   private static final tn n = tn.c("options.graphics.warning.cancel");
+   private etp o;
+   private final foa p;
+   private final int q;
 
-   public eys(eyk $$0, app $$1) {
-      super(tm.c("gui.stats"));
-      this.a = $$0;
-      this.t = $$1;
-   }
-
-   @Override
-   protected void aI_() {
-      this.v = true;
-      this.f.J().b(new abo(abo.a.b));
-   }
-
-   public void l() {
-      this.p = new eys.a(this.f);
-      this.q = new eys.b(this.f);
-      this.s = new eys.c(this.f);
-   }
-
-   @Override
-   public void D() {
-      this.d((esq)esq.a(tm.c("stat.generalButton"), $$0x -> this.a(this.p)).a(this.g / 2 - 120, this.h - 52, 80, 20).a());
-      esq $$0 = this.d((esq)esq.a(tm.c("stat.itemsButton"), $$0x -> this.a(this.q)).a(this.g / 2 - 40, this.h - 52, 80, 20).a());
-      esq $$1 = this.d((esq)esq.a(tm.c("stat.mobsButton"), $$0x -> this.a(this.s)).a(this.g / 2 + 40, this.h - 52, 80, 20).a());
-      this.d((esq)esq.a(tl.d, $$0x -> this.f.a(this.a)).a(this.g / 2 - 100, this.h - 28, 200, 20).a());
-      if (this.q.i().isEmpty()) {
-         $$0.i = false;
-      }
-
-      if (this.s.i().isEmpty()) {
-         $$1.i = false;
-      }
-   }
-
-   @Override
-   public void a(esf $$0, int $$1, int $$2, float $$3) {
-      if (this.v) {
-         this.b($$0, $$1, $$2, $$3);
-         $$0.a(this.i, n, this.g / 2, this.h / 2, 16777215);
-         $$0.a(this.i, b[(int)(ac.b() / 150L % (long)b.length)], this.g / 2, this.h / 2 + 9 * 2, 16777215);
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-         this.F().a($$0, $$1, $$2, $$3);
-         $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
-      }
-   }
-
-   @Override
-   public void b(esf $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
-   }
-
-   @Override
-   public void E() {
-      if (this.v) {
-         this.l();
-         this.D();
-         this.a(this.p);
-         this.v = false;
-      }
-   }
-
-   @Override
-   public boolean j() {
-      return !this.v;
-   }
-
-   @Nullable
-   public etm<?> F() {
-      return this.u;
-   }
-
-   public void a(@Nullable etm<?> $$0) {
-      if (this.u != null) {
-         this.f(this.u);
-      }
-
-      if ($$0 != null) {
-         this.e($$0);
-         this.u = $$0;
-      }
-   }
-
-   static String a(apl<aex> $$0) {
-      return "stat." + $$0.b().toString().replace(':', '.');
-   }
-
-   int a(int $$0) {
-      return 115 + 40 * $$0;
-   }
-
-   void a(esf $$0, int $$1, int $$2, cja $$3) {
-      this.a($$0, $$1 + 1, $$2 + 1, c);
-      $$0.b($$3.ai_(), $$1 + 2, $$2 + 2);
-   }
-
-   void a(esf $$0, int $$1, int $$2, aex $$3) {
-      $$0.a($$3, $$1, $$2, 0, 18, 18);
-   }
-
-   class a extends etm<eys.a.a> {
-      public a(eqv $$0) {
-         super($$0, eys.this.g, eys.this.h, 32, eys.this.h - 64, 10);
-         ObjectArrayList<apl<aex>> $$1 = new ObjectArrayList(apo.i.iterator());
-         $$1.sort(Comparator.comparing($$0x -> gak.a(eys.a($$0x))));
-         ObjectListIterator var4 = $$1.iterator();
-
-         while (var4.hasNext()) {
-            apl<aex> $$2 = (apl<aex>)var4.next();
-            this.b(new eys.a.a($$2));
-         }
-      }
-
-      class a extends etm.a<eys.a.a> {
-         private final apl<aex> b;
-         private final tm c;
-
-         a(apl<aex> $$0) {
-            this.b = $$0;
-            this.c = tm.c(eys.a($$0));
-         }
-
-         private String b() {
-            return this.b.a(eys.this.t.a(this.b));
-         }
-
-         @Override
-         public void a(esf $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.b(eys.this.i, this.c, $$3 + 2, $$2 + 1, $$1 % 2 == 0 ? 16777215 : 9474192);
-            String $$10 = this.b();
-            $$0.b(eys.this.i, $$10, $$3 + 2 + 213 - eys.this.i.b($$10), $$2 + 1, $$1 % 2 == 0 ? 16777215 : 9474192);
-         }
-
-         @Override
-         public tm a() {
-            return tm.a("narrator.select", tm.h().b(this.c).b(tl.u).f(this.b()));
-         }
-      }
-   }
-
-   class b extends etm<eys.b.a> {
-      protected final List<apn<csv>> a;
-      protected final List<apn<cja>> m;
-      private final aex[] t = new aex[]{
-         new aex("statistics/block_mined"),
-         new aex("statistics/item_broken"),
-         new aex("statistics/item_crafted"),
-         new aex("statistics/item_used"),
-         new aex("statistics/item_picked_up"),
-         new aex("statistics/item_dropped")
+   private static era<?>[] a(erb $$0) {
+      return new era[]{
+         $$0.i(),
+         $$0.d(),
+         $$0.k(),
+         $$0.e(),
+         $$0.j(),
+         $$0.g(),
+         $$0.K(),
+         $$0.X(),
+         $$0.am(),
+         $$0.A(),
+         $$0.al(),
+         $$0.h(),
+         $$0.W(),
+         $$0.an(),
+         $$0.z(),
+         $$0.L(),
+         $$0.af(),
+         $$0.f(),
+         $$0.ag(),
+         $$0.ab(),
+         $$0.ai(),
+         $$0.aj()
       };
-      protected int n = -1;
-      protected final Comparator<eys.b.a> o = new eys.b.b();
-      @Nullable
-      protected apn<?> p;
-      protected int q;
+   }
 
-      public b(eqv $$0) {
-         super($$0, eys.this.g, eys.this.h, 32, eys.this.h - 64, 20);
-         this.a = Lists.newArrayList();
-         this.a.add(apo.a);
-         this.m = Lists.newArrayList(new apn[]{apo.d, apo.b, apo.c, apo.e, apo.f});
-         this.a(true, 20);
-         Set<cja> $$1 = Sets.newIdentityHashSet();
-
-         for (cja $$2 : jd.i) {
-            boolean $$3 = false;
-
-            for (apn<cja> $$4 : this.m) {
-               if ($$4.a($$2) && eys.this.t.a($$4.b($$2)) > 0) {
-                  $$3 = true;
-               }
-            }
-
-            if ($$3) {
-               $$1.add($$2);
-            }
-         }
-
-         for (csv $$5 : jd.f) {
-            boolean $$6 = false;
-
-            for (apn<csv> $$7 : this.a) {
-               if ($$7.a($$5) && eys.this.t.a($$7.b($$5)) > 0) {
-                  $$6 = true;
-               }
-            }
-
-            if ($$6) {
-               $$1.add($$5.k());
-            }
-         }
-
-         $$1.remove(cji.a);
-
-         for (cja $$8 : $$1) {
-            this.b(new eys.b.a($$8));
-         }
+   public eys(eym $$0, erb $$1) {
+      super($$0, $$1, tn.c("options.videoTitle"));
+      this.p = $$0.f.ah();
+      this.p.i();
+      if ($$1.i().c() == eqq.c) {
+         this.p.e();
       }
 
-      @Override
-      protected void a(esf $$0, int $$1, int $$2) {
-         if (!this.c.n.b()) {
-            this.n = -1;
-         }
+      this.q = $$1.z().c();
+   }
 
-         for (int $$3 = 0; $$3 < this.t.length; $$3++) {
-            aex $$4 = this.n == $$3 ? eys.c : eys.k;
-            eys.this.a($$0, $$1 + eys.this.a($$3) - 18, $$2 + 1, $$4);
-         }
-
-         if (this.p != null) {
-            int $$5 = eys.this.a(this.b(this.p)) - 36;
-            aex $$6 = this.q == 1 ? eys.l : eys.m;
-            eys.this.a($$0, $$1 + $$5, $$2 + 1, $$6);
-         }
-
-         for (int $$7 = 0; $$7 < this.t.length; $$7++) {
-            int $$8 = this.n == $$7 ? 1 : 0;
-            eys.this.a($$0, $$1 + eys.this.a($$7) - 18 + $$8, $$2 + 1 + $$8, this.t[$$7]);
-         }
+   @Override
+   protected void aH_() {
+      this.o = new etp(this.f, this.g, this.h, 32, this.h - 32, 25);
+      int $$0 = -1;
+      ekv $$1 = this.f.aM();
+      ekq $$2 = $$1.t();
+      int $$3;
+      if ($$2 == null) {
+         $$3 = -1;
+      } else {
+         Optional<eku> $$4 = $$1.f();
+         $$3 = $$4.<Integer>map($$2::a).orElse(-1);
       }
 
-      @Override
-      public int b() {
-         return 375;
-      }
-
-      @Override
-      protected int c() {
-         return this.e / 2 + 140;
-      }
-
-      @Override
-      protected void a(int $$0, int $$1) {
-         this.n = -1;
-
-         for (int $$2 = 0; $$2 < this.t.length; $$2++) {
-            int $$3 = $$0 - eys.this.a($$2);
-            if ($$3 >= -36 && $$3 <= 0) {
-               this.n = $$2;
-               break;
-            }
-         }
-
-         if (this.n >= 0) {
-            this.a(this.a(this.n));
-            this.c.ai().a(gch.a(ape.yu, 1.0F));
-         }
-      }
-
-      private apn<?> a(int $$0) {
-         return $$0 < this.a.size() ? this.a.get($$0) : this.m.get($$0 - this.a.size());
-      }
-
-      private int b(apn<?> $$0) {
-         int $$1 = this.a.indexOf($$0);
-         if ($$1 >= 0) {
-            return $$1;
+      era<Integer> $$6 = new era<>("options.fullscreen.resolution", era.a(), ($$1x, $$2x) -> {
+         if ($$2 == null) {
+            return tn.c("options.fullscreen.unavailable");
+         } else if ($$2x == -1) {
+            return erb.a($$1x, tn.c("options.fullscreen.current"));
          } else {
-            int $$2 = this.m.indexOf($$0);
-            return $$2 >= 0 ? $$2 + this.a.size() : -1;
+            eku $$3x = $$2.a($$2x);
+            return erb.a($$1x, tn.a("options.fullscreen.entry", $$3x.a(), $$3x.b(), $$3x.f(), $$3x.c() + $$3x.d() + $$3x.e()));
          }
+      }, new era.f(-1, $$2 != null ? $$2.e() - 1 : -1), $$3, $$2x -> {
+         if ($$2 != null) {
+            $$1.a($$2x == -1 ? Optional.empty() : Optional.of($$2.a($$2x)));
+         }
+      });
+      this.o.a($$6);
+      this.o.a(this.b.B());
+      this.o.a(a(this.b));
+      this.e(this.o);
+      this.d(ess.a(tm.d, $$1x -> {
+         this.f.m.ar();
+         $$1.g();
+         this.f.a(this.a);
+      }).a(this.g / 2 - 100, this.h - 27, 200, 20).a());
+   }
+
+   @Override
+   public void h() {
+      if (this.b.z().c() != this.q) {
+         this.f.b(this.b.z().c());
+         this.f.P();
       }
 
-      @Override
-      protected void b(esf $$0, int $$1, int $$2) {
-         if ($$2 >= this.g && $$2 <= this.h) {
-            eys.b.a $$3 = this.r();
-            int $$4 = (this.e - this.b()) / 2;
-            if ($$3 != null) {
-               if ($$1 < $$4 + 40 || $$1 > $$4 + 40 + 20) {
-                  return;
-               }
+      super.h();
+   }
 
-               cja $$5 = $$3.b();
-               $$0.a(eys.this.i, this.a($$5), $$1, $$2);
-            } else {
-               tm $$6 = null;
-               int $$7 = $$1 - $$4;
-
-               for (int $$8 = 0; $$8 < this.t.length; $$8++) {
-                  int $$9 = eys.this.a($$8);
-                  if ($$7 >= $$9 - 18 && $$7 <= $$9) {
-                     $$6 = this.a($$8).b();
-                     break;
-                  }
-               }
-
-               if ($$6 != null) {
-                  $$0.a(eys.this.i, $$6, $$1, $$2);
-               }
-            }
-         }
-      }
-
-      protected tm a(cja $$0) {
-         return $$0.p();
-      }
-
-      protected void a(apn<?> $$0) {
-         if ($$0 != this.p) {
-            this.p = $$0;
-            this.q = -1;
-         } else if (this.q == -1) {
-            this.q = 1;
-         } else {
-            this.p = null;
-            this.q = 0;
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      int $$3 = this.b.am().c();
+      if (super.a($$0, $$1, $$2)) {
+         if (this.b.am().c() != $$3) {
+            this.f.a();
          }
 
-         this.i().sort(this.o);
-      }
-
-      class a extends etm.a<eys.b.a> {
-         private final cja b;
-
-         a(cja $$0) {
-            this.b = $$0;
-         }
-
-         public cja b() {
-            return this.b;
-         }
-
-         @Override
-         public void a(esf $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            eys.this.a($$0, $$3 + 40, $$2, this.b);
-
-            for (int $$10 = 0; $$10 < eys.this.q.a.size(); $$10++) {
-               apl<csv> $$11;
-               if (this.b instanceof cgy) {
-                  $$11 = eys.this.q.a.get($$10).b(((cgy)this.b).e());
-               } else {
-                  $$11 = null;
-               }
-
-               this.a($$0, $$11, $$3 + eys.this.a($$10), $$2, $$1 % 2 == 0);
+         if (this.p.g()) {
+            List<tn> $$4 = Lists.newArrayList(new tn[]{k, tm.r});
+            String $$5 = this.p.j();
+            if ($$5 != null) {
+               $$4.add(tm.r);
+               $$4.add(tn.a("options.graphics.warning.renderer", $$5).a(n.h));
             }
 
-            for (int $$13 = 0; $$13 < eys.this.q.m.size(); $$13++) {
-               this.a($$0, eys.this.q.m.get($$13).b(this.b), $$3 + eys.this.a($$13 + eys.this.q.a.size()), $$2, $$1 % 2 == 0);
-            }
-         }
-
-         protected void a(esf $$0, @Nullable apl<?> $$1, int $$2, int $$3, boolean $$4) {
-            tm $$5 = (tm)($$1 == null ? eys.o : tm.b($$1.a(eys.this.t.a($$1))));
-            $$0.b(eys.this.i, $$5, $$2 - eys.this.i.a($$5), $$3 + 5, $$4 ? 16777215 : 9474192);
-         }
-
-         @Override
-         public tm a() {
-            return tm.a("narrator.select", this.b.p());
-         }
-      }
-
-      class b implements Comparator<eys.b.a> {
-         public int a(eys.b.a $$0, eys.b.a $$1) {
-            cja $$2 = $$0.b();
-            cja $$3 = $$1.b();
-            int $$4;
-            int $$5;
-            if (b.this.p == null) {
-               $$4 = 0;
-               $$5 = 0;
-            } else if (b.this.a.contains(b.this.p)) {
-               apn<csv> $$6 = (apn<csv>)b.this.p;
-               $$4 = $$2 instanceof cgy ? eys.this.t.a($$6, ((cgy)$$2).e()) : -1;
-               $$5 = $$3 instanceof cgy ? eys.this.t.a($$6, ((cgy)$$3).e()) : -1;
-            } else {
-               apn<cja> $$9 = (apn<cja>)b.this.p;
-               $$4 = eys.this.t.a($$9, $$2);
-               $$5 = eys.this.t.a($$9, $$3);
+            String $$6 = this.p.l();
+            if ($$6 != null) {
+               $$4.add(tm.r);
+               $$4.add(tn.a("options.graphics.warning.vendor", $$6).a(n.h));
             }
 
-            return $$4 == $$5 ? b.this.q * Integer.compare(cja.a($$2), cja.a($$3)) : b.this.q * Integer.compare($$4, $$5);
+            String $$7 = this.p.k();
+            if ($$7 != null) {
+               $$4.add(tm.r);
+               $$4.add(tn.a("options.graphics.warning.version", $$7).a(n.h));
+            }
+
+            this.f.a(new eyi(l, $$4, ImmutableList.of(new eyi.a(m, $$0x -> {
+               this.b.i().a(eqq.c);
+               eqx.O().f.f();
+               this.p.e();
+               this.f.a(this);
+            }), new eyi.a(n, $$0x -> {
+               this.p.f();
+               this.f.a(this);
+            }))));
          }
+
+         return true;
+      } else {
+         return false;
       }
    }
 
-   class c extends etm<eys.c.a> {
-      public c(eqv $$0) {
-         super($$0, eys.this.g, eys.this.h, 32, eys.this.h - 64, 9 * 4);
-
-         for (biu<?> $$1 : jd.h) {
-            if (eys.this.t.a(apo.g.b($$1)) > 0 || eys.this.t.a(apo.h.b($$1)) > 0) {
-               this.b(new eys.c.a($$1));
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      if (eym.p()) {
+         era<Integer> $$4 = this.b.am();
+         int $$5 = $$4.c() + (int)Math.signum($$3);
+         if ($$5 != 0) {
+            $$4.a($$5);
+            if ($$4.c() == $$5) {
+               this.f.a();
+               return true;
             }
          }
+
+         return false;
+      } else {
+         return super.a($$0, $$1, $$2, $$3);
       }
+   }
 
-      class a extends etm.a<eys.c.a> {
-         private final tm b;
-         private final tm c;
-         private final boolean d;
-         private final tm e;
-         private final boolean f;
+   @Override
+   public void a(esh $$0, int $$1, int $$2, float $$3) {
+      this.a($$0, this.o, $$1, $$2, $$3);
+   }
 
-         public a(biu<?> $$0) {
-            this.b = $$0.h();
-            int $$1 = eys.this.t.a(apo.g.b($$0));
-            if ($$1 == 0) {
-               this.c = tm.a("stat_type.minecraft.killed.none", this.b);
-               this.d = false;
-            } else {
-               this.c = tm.a("stat_type.minecraft.killed", $$1, this.b);
-               this.d = true;
-            }
-
-            int $$2 = eys.this.t.a(apo.h.b($$0));
-            if ($$2 == 0) {
-               this.e = tm.a("stat_type.minecraft.killed_by.none", this.b);
-               this.f = false;
-            } else {
-               this.e = tm.a("stat_type.minecraft.killed_by", this.b, $$2);
-               this.f = true;
-            }
-         }
-
-         @Override
-         public void a(esf $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.b(eys.this.i, this.b, $$3 + 2, $$2 + 1, 16777215);
-            $$0.b(eys.this.i, this.c, $$3 + 2 + 10, $$2 + 1 + 9, this.d ? 9474192 : 6316128);
-            $$0.b(eys.this.i, this.e, $$3 + 2 + 10, $$2 + 1 + 9 * 2, this.f ? 9474192 : 6316128);
-         }
-
-         @Override
-         public tm a() {
-            return tm.a("narrator.select", tl.a(this.c, this.e));
-         }
-      }
+   @Override
+   public void b(esh $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 }
