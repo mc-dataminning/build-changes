@@ -62,7 +62,7 @@ public class cyq extends cwc implements ddq {
                   $$13.a(jx.aU, (double)$$2.u() + 0.5, (double)$$2.v() + 1.2, (double)$$2.w() + 0.5, 7, 0.0, 0.0, 0.0, 0.0);
                }
 
-               $$1.c($$2, this);
+               $$6.e();
             } else {
                $$1.a(null, $$2, ars.fW, art.e, 1.0F, 1.0F);
                $$6.a(dhl.b.b);
