@@ -224,17 +224,17 @@
   "complianceLevel": 1,
   "downloads": {
     "client": {
-      "sha1": "93079d0d5608af9e10283be6be89b67a772d0c8f",
-      "size": 38120256,
-      "url": "https://piston-data.mojang.com/v1/objects/93079d0d5608af9e10283be6be89b67a772d0c8f/client.jar"
+      "sha1": "dfd8debabea6621ec0396ecb7bdcc0f868956792",
+      "size": 38113444,
+      "url": "https://piston-data.mojang.com/v1/objects/dfd8debabea6621ec0396ecb7bdcc0f868956792/client.jar"
     },
     "server": {
-      "sha1": "f48ed6831e21ca9a94c508d7fef3e80d2fc7836e",
-      "size": 60418522,
-      "url": "https://piston-data.mojang.com/v1/objects/f48ed6831e21ca9a94c508d7fef3e80d2fc7836e/server.jar"
+      "sha1": "f731aaf0a0f6be00b5aaba1fabbd75ce750e92e4",
+      "size": 60417568,
+      "url": "https://piston-data.mojang.com/v1/objects/f731aaf0a0f6be00b5aaba1fabbd75ce750e92e4/server.jar"
     }
   },
-  "id": "26.1-pre-2",
+  "id": "26.1-pre-3",
   "javaVersion": {
     "component": "java-runtime-epsilon",
     "majorVersion": 25
@@ -350,13 +350,13 @@
     {
       "downloads": {
         "artifact": {
-          "path": "com/mojang/authlib/7.0.62/authlib-7.0.62.jar",
-          "sha1": "17e2759e9a92c1be617bbffc49fd89d101387e2a",
-          "size": 115707,
-          "url": "https://libraries.minecraft.net/com/mojang/authlib/7.0.62/authlib-7.0.62.jar"
+          "path": "com/mojang/authlib/7.0.63/authlib-7.0.63.jar",
+          "sha1": "54895b4e25e8b9b4cbbbe25f24eccf2b71b1ac2b",
+          "size": 115699,
+          "url": "https://libraries.minecraft.net/com/mojang/authlib/7.0.63/authlib-7.0.63.jar"
         }
       },
-      "name": "com.mojang:authlib:7.0.62"
+      "name": "com.mojang:authlib:7.0.63"
     },
     {
       "downloads": {
@@ -1888,7 +1888,7 @@
   },
   "mainClass": "net.minecraft.client.main.Main",
   "minimumLauncherVersion": 21,
-  "releaseTime": "2026-03-13T12:55:35+00:00",
-  "time": "2026-03-13T12:55:35+00:00",
+  "releaseTime": "2026-03-17T13:37:33+00:00",
+  "time": "2026-03-17T13:37:33+00:00",
   "type": "snapshot"
 }
