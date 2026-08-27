@@ -1,4 +1,4 @@
-// 23w51a	2026-08-28T01:19:14.4729777	vanilla/Recipes
+// 23w51b	2026-08-28T01:22:11.3730273	vanilla/Recipes
 fcfdc9d188686aa9eafd86b47b47a47055023e15 data\minecraft\recipes\dark_oak_button.json
 0ff2446b90c74aeceb49e6294b129a44b80f5954 data\minecraft\advancements\recipes\building_blocks\waxed_exposed_cut_copper_slab_from_waxed_exposed_copper_stonecutting.json
 c84ca62bfbdf8c247dcc6584f32854fba23a88cf data\minecraft\advancements\recipes\misc\gold_ingot_from_smelting_gold_ore.json
@@ -815,8 +815,8 @@ f713b412140583ad6b542ae49e265d73ecc202a8 data\minecraft\advancements\recipes\mis
 6f27750c1eb32d4ade55d5a40e0033f68b3503f7 data\minecraft\recipes\red_glazed_terracotta.json
 8c484ab01699d26659310230dab194ba0b242b82 data\minecraft\advancements\recipes\building_blocks\polished_blackstone.json
 be74bcfb4d419cac69c883b93a15a90b7273a120 data\minecraft\recipes\netherite_axe_smithing.json
-8634bce4cf07e6634e1157bfd4af49b197607e42 data\minecraft\advancements\recipes\redstone\oak_trapdoor.json
 a541e64ee1ac7dfa0a9581f42b85dc038f31e10c data\minecraft\recipes\cherry_pressure_plate.json
+8634bce4cf07e6634e1157bfd4af49b197607e42 data\minecraft\advancements\recipes\redstone\oak_trapdoor.json
 6d647a33da040e59e84da411274e7ecd9ffad393 data\minecraft\advancements\recipes\misc\slime_ball.json
 7e4f02abb2fbda3bed2efc2f24ecad7be0f2593d data\minecraft\advancements\recipes\decorations\light_gray_candle.json
 e981f4be46fff9c623b2a0a16c1b4d47992ade6b data\minecraft\recipes\mossy_stone_bricks_from_vine.json

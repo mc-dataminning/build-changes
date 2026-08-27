@@ -6,11 +6,14 @@ import java.util.Map.Entry;
 import javax.annotation.Nullable;
 
 public class bly {
-   public static final bly a = new bly(Map.of());
-   private final Map<blx, List<emc>> b;
+   private final Map<blx, List<emc>> a;
 
    bly(Map<blx, List<emc>> $$0) {
-      this.b = $$0;
+      this.a = $$0;
+   }
+
+   public static bly a(float $$0, float $$1) {
+      return a().a($$0, $$1);
    }
 
    public static bly.a a() {
@@ -20,7 +23,7 @@ public class bly {
    public bly a(float $$0, float $$1, float $$2) {
       Map<blx, List<emc>> $$3 = new EnumMap<>(blx.class);
 
-      for (Entry<blx, List<emc>> $$4 : this.b.entrySet()) {
+      for (Entry<blx, List<emc>> $$4 : this.a.entrySet()) {
          $$3.put($$4.getKey(), a($$4.getValue(), $$0, $$1, $$2));
       }
 
@@ -39,7 +42,7 @@ public class bly {
 
    @Nullable
    public emc a(blx $$0, int $$1, float $$2) {
-      List<emc> $$3 = this.b.get($$0);
+      List<emc> $$3 = this.a.get($$0);
       return $$1 >= 0 && $$1 < $$3.size() ? a($$3.get($$1), $$2) : null;
    }
 
@@ -53,7 +56,7 @@ public class bly {
    }
 
    public emc c(blx $$0, int $$1, float $$2) {
-      List<emc> $$3 = this.b.get($$0);
+      List<emc> $$3 = this.a.get($$0);
       if ($$3.isEmpty()) {
          throw new IllegalStateException("Had no attachment points of type: " + $$0);
       } else {

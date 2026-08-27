@@ -1,4 +1,4 @@
-// 23w51a	2026-08-28T01:19:14.4384641	vanilla/Tags for minecraft:item
+// 23w51b	2026-08-28T01:22:11.3248552	vanilla/Tags for minecraft:item
 71180030d3ebe73ed7aa07473fb200e0aa359909 data\minecraft\tags\items\candles.json
 a91a14b0d844c2e8beb882a51072178e0667620c data\minecraft\tags\items\jungle_logs.json
 3e070569b31d1100ac334efd44a58e52df25df1a data\minecraft\tags\items\flowers.json
@@ -23,8 +23,8 @@ a99c319e7583b7c567fddf608bde6dff744103b2 data\minecraft\tags\items\walls.json
 1ae902776b0942fb7f6424ba52eb2150950f973c data\minecraft\tags\items\acacia_logs.json
 c3344f6e568a707914a420dacbf9b082a8ff1787 data\minecraft\tags\items\stone_bricks.json
 74f68e22bf93a751191e1ec35390adcf191a2880 data\minecraft\tags\items\fences.json
-bdb1ff9fc8b24f737e3d121d711574e8d779a3ff data\minecraft\tags\items\beacon_payment_items.json
 30cba093322f9f2391402da95a9ae4b07afeea00 data\minecraft\tags\items\stone_crafting_materials.json
+bdb1ff9fc8b24f737e3d121d711574e8d779a3ff data\minecraft\tags\items\beacon_payment_items.json
 4b024c07991b0127a93c4927165b70cbc739df3f data\minecraft\tags\items\stairs.json
 002a1f0e0b109cd883572ac23180e47312fdd8bb data\minecraft\tags\items\tall_flowers.json
 002646611f726ba21cc4b5060d0258c405ae2291 data\minecraft\tags\items\lectern_books.json

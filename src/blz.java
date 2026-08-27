@@ -1,6 +1,6 @@
 public record blz(float a, float b, float c, bly d, boolean e) {
    private blz(float $$0, float $$1, boolean $$2) {
-      this($$0, $$1, c($$1), bly.a, $$2);
+      this($$0, $$1, c($$1), bly.a($$0, $$1), $$2);
    }
 
    private static float c(float $$0) {

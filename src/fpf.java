@@ -37,7 +37,7 @@ public record fpf(String a, @Nullable fpf.a b) {
 
    private static String g() {
       StringBuilder $$0 = new StringBuilder();
-      $$0.append("23w51a");
+      $$0.append("23w51b");
       if (evr.e().a()) {
          $$0.append(" (modded)");
       }
