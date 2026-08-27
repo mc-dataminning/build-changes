@@ -162,32 +162,43 @@
   "complianceLevel": 1,
   "downloads": {
     "client": {
-      "sha1": "0744654aaa3a0851d64d0030591dee239b28fce0",
-      "size": 31152421,
-      "url": "https://piston-data.mojang.com/v1/objects/0744654aaa3a0851d64d0030591dee239b28fce0/client.jar"
+      "sha1": "2bf71fd99b95ee8768de52d415c81eac0b02d10a",
+      "size": 31152169,
+      "url": "https://piston-data.mojang.com/v1/objects/2bf71fd99b95ee8768de52d415c81eac0b02d10a/client.jar"
     },
     "client_mappings": {
-      "sha1": "bf22f899a55456f00963f624ecd605d18f3441a0",
+      "sha1": "918dd613787ce4a139a658afc3f2a5f1a323e3dd",
       "size": 11779170,
-      "url": "https://piston-data.mojang.com/v1/objects/bf22f899a55456f00963f624ecd605d18f3441a0/client.txt"
+      "url": "https://piston-data.mojang.com/v1/objects/918dd613787ce4a139a658afc3f2a5f1a323e3dd/client.txt"
     },
     "server": {
-      "sha1": "d62fa16c3bbb5c6809cbd45cd60f3396a9d543a3",
-      "size": 56327949,
-      "url": "https://piston-data.mojang.com/v1/objects/d62fa16c3bbb5c6809cbd45cd60f3396a9d543a3/server.jar"
+      "sha1": "7870d0bcde81c7e239f8fc9fc5838db432b555e3",
+      "size": 56329164,
+      "url": "https://piston-data.mojang.com/v1/objects/7870d0bcde81c7e239f8fc9fc5838db432b555e3/server.jar"
     },
     "server_mappings": {
-      "sha1": "6750efdbe3ba904eb6eaaeef58f4b632df1c34ea",
+      "sha1": "f2f7b517dd953d974b5d0419b241bbc2cb505faa",
       "size": 8678489,
-      "url": "https://piston-data.mojang.com/v1/objects/6750efdbe3ba904eb6eaaeef58f4b632df1c34ea/server.txt"
+      "url": "https://piston-data.mojang.com/v1/objects/f2f7b517dd953d974b5d0419b241bbc2cb505faa/server.txt"
     }
   },
-  "id": "1.21.11-pre5",
+  "id": "1.21.11-rc1",
   "javaVersion": {
     "component": "java-runtime-delta",
     "majorVersion": 21
   },
   "libraries": [
+    {
+      "downloads": {
+        "artifact": {
+          "path": "at/yawk/lz4/lz4-java/1.8.1/lz4-java-1.8.1.jar",
+          "sha1": "1f30a180ee04ccd53339a716aec13cae60a013b5",
+          "size": 683071,
+          "url": "https://libraries.minecraft.net/at/yawk/lz4/lz4-java/1.8.1/lz4-java-1.8.1.jar"
+        }
+      },
+      "name": "at.yawk.lz4:lz4-java:1.8.1"
+    },
     {
       "downloads": {
         "artifact": {
@@ -1802,17 +1813,6 @@
     {
       "downloads": {
         "artifact": {
-          "path": "org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.jar",
-          "sha1": "4b986a99445e49ea5fbf5d149c4b63f6ed6c6780",
-          "size": 682804,
-          "url": "https://libraries.minecraft.net/org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.jar"
-        }
-      },
-      "name": "org.lz4:lz4-java:1.8.0"
-    },
-    {
-      "downloads": {
-        "artifact": {
           "path": "org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar",
           "sha1": "d9e58ac9c7779ba3bf8142aff6c830617a7fe60f",
           "size": 69908,
@@ -1836,7 +1836,7 @@
   },
   "mainClass": "net.minecraft.client.main.Main",
   "minimumLauncherVersion": 21,
-  "releaseTime": "2025-12-03T13:14:25+00:00",
-  "time": "2025-12-03T13:14:25+00:00",
+  "releaseTime": "2025-12-04T15:20:43+00:00",
+  "time": "2025-12-04T15:20:43+00:00",
   "type": "snapshot"
 }
