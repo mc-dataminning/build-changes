@@ -28,7 +28,7 @@ public interface frv extends fru {
    public static record a(GameProfile c, wi d, frt e) implements frv {
       public static final Codec<frv.a> b = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  avu.u.fieldOf("profile").forGetter(frv.a::f), wi.a.forGetter(frv.a::g), frt.d.optionalFieldOf("trust_level", frt.a).forGetter(frv.a::h)
+                  avu.v.fieldOf("profile").forGetter(frv.a::f), wi.a.forGetter(frv.a::g), frt.d.optionalFieldOf("trust_level", frt.a).forGetter(frv.a::h)
                )
                .apply($$0, frv.a::new)
       );
@@ -90,7 +90,7 @@ public interface frv extends fru {
 
    public static record b(vs c, Instant d) implements frv {
       public static final Codec<frv.b> b = RecordCodecBuilder.create(
-         $$0 -> $$0.group(vu.a.fieldOf("message").forGetter(frv.b::d), avu.m.fieldOf("time_stamp").forGetter(frv.b::e)).apply($$0, frv.b::new)
+         $$0 -> $$0.group(vu.a.fieldOf("message").forGetter(frv.b::d), avu.n.fieldOf("time_stamp").forGetter(frv.b::e)).apply($$0, frv.b::new)
       );
 
       @Override

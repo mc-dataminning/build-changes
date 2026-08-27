@@ -11,7 +11,7 @@ public class vw {
    public static final wp d = wp.a.a(n.i).a(new vy(vy.a.a, vs.c("chat.filtered")));
    static final Codec<vw> e = Codec.unit(c);
    static final Codec<vw> f = Codec.unit(b);
-   static final Codec<vw> g = avu.s.xmap(vw::new, vw::d);
+   static final Codec<vw> g = avu.t.xmap(vw::new, vw::d);
    private static final char h = '#';
    private final BitSet i;
    private final vw.a j;

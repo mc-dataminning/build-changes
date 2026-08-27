@@ -10,7 +10,7 @@ public class cne {
       $$0.put(cnc.a.a, 1);
       $$0.put(cnc.a.e, 3);
    }), 15, atp.at, 0.0F, 0.0F, () -> csp.a(cpt.qC), List.of(new cnd.a(new ajc("leather"), "", true), new cnd.a(new ajc("leather"), "_overlay", false)));
-   public static final il<cnd> b = a("chain", ac.a(new EnumMap<>(cnc.a.class), $$0 -> {
+   public static final il<cnd> b = a("chainmail", ac.a(new EnumMap<>(cnc.a.class), $$0 -> {
       $$0.put(cnc.a.d, 1);
       $$0.put(cnc.a.c, 4);
       $$0.put(cnc.a.b, 5);

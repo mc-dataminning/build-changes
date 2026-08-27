@@ -7,7 +7,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 public record we(byte[] c) {
-   public static final Codec<we> a = avu.n.xmap(we::new, we::b);
+   public static final Codec<we> a = avu.o.xmap(we::new, we::b);
    public static final int b = 256;
 
    public we(byte[] c) {

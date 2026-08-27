@@ -53,7 +53,7 @@ public class aja<T> extends aiu<T> {
    }
 
    public static <E, O> RecordCodecBuilder<O, im<E>> c(ajb<? extends ix<? extends E>> $$0) {
-      return avu.b(
+      return avu.a(
             (Function<DynamicOps<?>, DataResult<E>>)($$1 -> $$1 instanceof aja<?> $$2
                   ? $$2.b.a($$0).map($$0xx -> DataResult.success($$0xx.b(), $$0xx.c())).orElseGet(() -> DataResult.error(() -> "Unknown registry: " + $$0))
                   : DataResult.error(() -> "Not a registry ops"))
@@ -63,7 +63,7 @@ public class aja<T> extends aiu<T> {
 
    public static <E, O> RecordCodecBuilder<O, il.c<E>> d(ajb<E> $$0) {
       ajb<? extends ix<E>> $$1 = ajb.a($$0.b());
-      return avu.b(
+      return avu.a(
             (Function<DynamicOps<?>, DataResult<E>>)($$2 -> $$2 instanceof aja<?> $$3
                   ? $$3.b
                      .a($$1)

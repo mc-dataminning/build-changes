@@ -8,7 +8,7 @@ public class dzb extends dzd {
       $$0 -> $$0.group(
                awe.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
                egu.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
-               avu.k.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
+               avu.l.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
             )
             .and(b($$0))
             .apply($$0, dzb::new)

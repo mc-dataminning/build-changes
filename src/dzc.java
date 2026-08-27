@@ -13,7 +13,7 @@ public abstract class dzc extends dyz {
       return $$0.group(
          Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
          egu.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
-         avu.k.fieldOf("scale").forGetter($$0x -> $$0x.e)
+         avu.l.fieldOf("scale").forGetter($$0x -> $$0x.e)
       );
    }
 

@@ -67,7 +67,7 @@ public class fwa {
 
    static record a(fwa.b b, Instant c, cwb d) {
       public static final Codec<fwa.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(fwa.b.a.forGetter(fwa.a::a), avu.m.fieldOf("lastPlayedTime").forGetter(fwa.a::b), cwb.f.fieldOf("gamemode").forGetter(fwa.a::c))
+         $$0 -> $$0.group(fwa.b.a.forGetter(fwa.a::a), avu.n.fieldOf("lastPlayedTime").forGetter(fwa.a::b), cwb.f.fieldOf("gamemode").forGetter(fwa.a::c))
                .apply($$0, fwa.a::new)
       );
 
@@ -87,7 +87,7 @@ public class fwa {
    static record b(fwa.c b, String c, String d) {
       public static final MapCodec<fwa.b> a = RecordCodecBuilder.mapCodec(
          $$0 -> $$0.group(
-                  fwa.c.d.fieldOf("type").forGetter(fwa.b::a), avu.o.fieldOf("id").forGetter(fwa.b::b), Codec.STRING.fieldOf("name").forGetter(fwa.b::c)
+                  fwa.c.d.fieldOf("type").forGetter(fwa.b::a), avu.p.fieldOf("id").forGetter(fwa.b::b), Codec.STRING.fieldOf("name").forGetter(fwa.b::c)
                )
                .apply($$0, fwa.b::new)
       );

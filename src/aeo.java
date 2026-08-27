@@ -6,14 +6,14 @@ public class aeo implements xz<aai> {
    private static final int e = 8;
    private final int f;
    private final il<bnq> g;
-   private final byte h;
+   private final int h;
    private final int i;
    private final byte j;
 
    public aeo(int $$0, bns $$1, boolean $$2) {
       this.f = $$0;
       this.g = $$1.b();
-      this.h = (byte)($$1.d() & 0xFF);
+      this.h = $$1.d();
       this.i = $$1.c();
       byte $$3 = 0;
       if ($$1.e()) {
@@ -38,7 +38,7 @@ public class aeo implements xz<aai> {
    private aeo(vd $$0) {
       this.f = $$0.l();
       this.g = xo.b(ki.Q).decode($$0);
-      this.h = $$0.readByte();
+      this.h = $$0.l();
       this.i = $$0.l();
       this.j = $$0.readByte();
    }
@@ -46,7 +46,7 @@ public class aeo implements xz<aai> {
    private void a(vd $$0) {
       $$0.c(this.f);
       xo.b(ki.Q).encode($$0, this.g);
-      $$0.k(this.h);
+      $$0.c(this.h);
       $$0.c(this.i);
       $$0.k(this.j);
    }
@@ -68,7 +68,7 @@ public class aeo implements xz<aai> {
       return this.g;
    }
 
-   public byte f() {
+   public int f() {
       return this.h;
    }
 

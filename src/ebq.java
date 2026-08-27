@@ -1,7 +1,7 @@
 import com.mojang.serialization.Codec;
 
 public class ebq extends ebm {
-   public static final Codec<ebq> a = avu.j.fieldOf("chance").xmap(ebq::new, $$0 -> $$0.c).codec();
+   public static final Codec<ebq> a = avu.k.fieldOf("chance").xmap(ebq::new, $$0 -> $$0.c).codec();
    private final int c;
 
    private ebq(int $$0) {

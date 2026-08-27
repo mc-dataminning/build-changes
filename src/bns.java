@@ -5,25 +5,26 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.ints.Int2IntFunction;
 import java.util.Optional;
-import java.util.function.Function;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
 public class bns implements Comparable<bns> {
-   private static final Logger c = LogUtils.getLogger();
+   private static final Logger e = LogUtils.getLogger();
    public static final int a = -1;
-   public static final Codec<bns> b = RecordCodecBuilder.create(
+   public static final int b = 0;
+   public static final int c = 127;
+   public static final Codec<bns> d = RecordCodecBuilder.create(
       $$0 -> $$0.group(kh.d.r().fieldOf("id").forGetter(bns::b), bns.b.a.forGetter(bns::k)).apply($$0, bns::new)
    );
-   private final il<bnq> d;
-   private int e;
-   private int f;
-   private boolean g;
-   private boolean h;
+   private final il<bnq> f;
+   private int g;
+   private int h;
    private boolean i;
+   private boolean j;
+   private boolean k;
    @Nullable
-   private bns j;
-   private final bns.a k = new bns.a();
+   private bns l;
+   private final bns.a m = new bns.a();
 
    public bns(il<bnq> $$0) {
       this($$0, 0, 0);
@@ -46,17 +47,17 @@ public class bns implements Comparable<bns> {
    }
 
    public bns(il<bnq> $$0, int $$1, int $$2, boolean $$3, boolean $$4, boolean $$5, @Nullable bns $$6) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
+      this.f = $$0;
+      this.g = $$1;
+      this.h = awm.a($$2, 0, 127);
+      this.i = $$3;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
    }
 
    public bns(bns $$0) {
-      this.d = $$0.d;
+      this.f = $$0.f;
       this.a($$0);
    }
 
@@ -65,60 +66,60 @@ public class bns implements Comparable<bns> {
    }
 
    private bns.b k() {
-      return new bns.b(this.d(), this.c(), this.e(), this.f(), this.g(), Optional.ofNullable(this.j).map(bns::k));
+      return new bns.b(this.d(), this.c(), this.e(), this.f(), this.g(), Optional.ofNullable(this.l).map(bns::k));
    }
 
    public float a(box $$0, float $$1) {
-      return this.k.a($$0, $$1);
+      return this.m.a($$0, $$1);
    }
 
    void a(bns $$0) {
-      this.e = $$0.e;
-      this.f = $$0.f;
       this.g = $$0.g;
       this.h = $$0.h;
       this.i = $$0.i;
+      this.j = $$0.j;
+      this.k = $$0.k;
    }
 
    public boolean b(bns $$0) {
-      if (!this.d.equals($$0.d)) {
-         c.warn("This method should only be called for matching effects!");
+      if (!this.f.equals($$0.f)) {
+         e.warn("This method should only be called for matching effects!");
       }
 
       boolean $$1 = false;
-      if ($$0.f > this.f) {
+      if ($$0.h > this.h) {
          if ($$0.e(this)) {
-            bns $$2 = this.j;
-            this.j = new bns(this);
-            this.j.j = $$2;
+            bns $$2 = this.l;
+            this.l = new bns(this);
+            this.l.l = $$2;
          }
 
-         this.f = $$0.f;
-         this.e = $$0.e;
-         $$1 = true;
-      } else if (this.e($$0)) {
-         if ($$0.f == this.f) {
-            this.e = $$0.e;
-            $$1 = true;
-         } else if (this.j == null) {
-            this.j = new bns($$0);
-         } else {
-            this.j.b($$0);
-         }
-      }
-
-      if (!$$0.g && this.g || $$1) {
+         this.h = $$0.h;
          this.g = $$0.g;
          $$1 = true;
+      } else if (this.e($$0)) {
+         if ($$0.h == this.h) {
+            this.g = $$0.g;
+            $$1 = true;
+         } else if (this.l == null) {
+            this.l = new bns($$0);
+         } else {
+            this.l.b($$0);
+         }
       }
 
-      if ($$0.h != this.h) {
-         this.h = $$0.h;
+      if (!$$0.i && this.i || $$1) {
+         this.i = $$0.i;
          $$1 = true;
       }
 
-      if ($$0.i != this.i) {
-         this.i = $$0.i;
+      if ($$0.j != this.j) {
+         this.j = $$0.j;
+         $$1 = true;
+      }
+
+      if ($$0.k != this.k) {
+         this.k = $$0.k;
          $$1 = true;
       }
 
@@ -126,98 +127,98 @@ public class bns implements Comparable<bns> {
    }
 
    private boolean e(bns $$0) {
-      return !this.a() && (this.e < $$0.e || $$0.a());
+      return !this.a() && (this.g < $$0.g || $$0.a());
    }
 
    public boolean a() {
-      return this.e == -1;
+      return this.g == -1;
    }
 
    public boolean a(int $$0) {
-      return !this.a() && this.e <= $$0;
+      return !this.a() && this.g <= $$0;
    }
 
    public int a(Int2IntFunction $$0) {
-      return !this.a() && this.e != 0 ? $$0.applyAsInt(this.e) : this.e;
+      return !this.a() && this.g != 0 ? $$0.applyAsInt(this.g) : this.g;
    }
 
    public il<bnq> b() {
-      return this.d;
-   }
-
-   public int c() {
-      return this.e;
-   }
-
-   public int d() {
       return this.f;
    }
 
-   public boolean e() {
+   public int c() {
       return this.g;
    }
 
-   public boolean f() {
+   public int d() {
       return this.h;
    }
 
-   public boolean g() {
+   public boolean e() {
       return this.i;
+   }
+
+   public boolean f() {
+      return this.j;
+   }
+
+   public boolean g() {
+      return this.k;
    }
 
    public boolean a(box $$0, Runnable $$1) {
       if (this.l()) {
-         int $$2 = this.a() ? $$0.ag : this.e;
-         if (this.d.a().a($$2, this.f) && !this.d.a().a($$0, this.f)) {
-            $$0.e(this.d);
+         int $$2 = this.a() ? $$0.ag : this.g;
+         if (this.f.a().a($$2, this.h) && !this.f.a().a($$0, this.h)) {
+            $$0.e(this.f);
          }
 
          this.m();
-         if (this.e == 0 && this.j != null) {
-            this.a(this.j);
-            this.j = this.j.j;
+         if (this.g == 0 && this.l != null) {
+            this.a(this.l);
+            this.l = this.l.l;
             $$1.run();
          }
       }
 
-      this.k.b(this);
+      this.m.b(this);
       return this.l();
    }
 
    private boolean l() {
-      return this.a() || this.e > 0;
+      return this.a() || this.g > 0;
    }
 
    private int m() {
-      if (this.j != null) {
-         this.j.m();
+      if (this.l != null) {
+         this.l.m();
       }
 
-      return this.e = this.a((Int2IntFunction)($$0 -> $$0 - 1));
+      return this.g = this.a((Int2IntFunction)($$0 -> $$0 - 1));
    }
 
    public void a(box $$0) {
-      this.d.a().b($$0, this.f);
+      this.f.a().b($$0, this.h);
    }
 
    public String h() {
-      return this.d.a().d();
+      return this.f.a().d();
    }
 
    @Override
    public String toString() {
       String $$0;
-      if (this.f > 0) {
-         $$0 = this.h() + " x " + (this.f + 1) + ", Duration: " + this.n();
+      if (this.h > 0) {
+         $$0 = this.h() + " x " + (this.h + 1) + ", Duration: " + this.n();
       } else {
          $$0 = this.h() + ", Duration: " + this.n();
       }
 
-      if (!this.h) {
+      if (!this.j) {
          $$0 = $$0 + ", Particles: false";
       }
 
-      if (!this.i) {
+      if (!this.k) {
          $$0 = $$0 + ", Show Icon: false";
       }
 
@@ -225,7 +226,7 @@ public class bns implements Comparable<bns> {
    }
 
    private String n() {
-      return this.a() ? "infinite" : Integer.toString(this.e);
+      return this.a() ? "infinite" : Integer.toString(this.g);
    }
 
    @Override
@@ -233,25 +234,25 @@ public class bns implements Comparable<bns> {
       if (this == $$0) {
          return true;
       } else {
-         return !($$0 instanceof bns $$1) ? false : this.e == $$1.e && this.f == $$1.f && this.g == $$1.g && this.d.equals($$1.d);
+         return !($$0 instanceof bns $$1) ? false : this.g == $$1.g && this.h == $$1.h && this.i == $$1.i && this.f.equals($$1.f);
       }
    }
 
    @Override
    public int hashCode() {
-      int $$0 = this.d.hashCode();
-      $$0 = 31 * $$0 + this.e;
-      $$0 = 31 * $$0 + this.f;
-      return 31 * $$0 + (this.g ? 1 : 0);
+      int $$0 = this.f.hashCode();
+      $$0 = 31 * $$0 + this.g;
+      $$0 = 31 * $$0 + this.h;
+      return 31 * $$0 + (this.i ? 1 : 0);
    }
 
    public tv i() {
-      return ac.a(b.encodeStart(tm.a, this), IllegalStateException::new);
+      return ac.a(d.encodeStart(tm.a, this), IllegalStateException::new);
    }
 
    @Nullable
    public static bns a(sy $$0) {
-      return (bns)b.parse(tm.a, $$0).resultOrPartial(c::error).orElse(null);
+      return (bns)d.parse(tm.a, $$0).resultOrPartial(e::error).orElse(null);
    }
 
    public int c(bns $$0) {
@@ -267,15 +268,15 @@ public class bns implements Comparable<bns> {
    }
 
    public boolean a(il<bnq> $$0) {
-      return this.d.equals($$0);
+      return this.f.equals($$0);
    }
 
    public void d(bns $$0) {
-      this.k.a($$0.k);
+      this.m.a($$0.m);
    }
 
    public void j() {
-      this.k.a(this);
+      this.m.a(this);
    }
 
    static class a {
@@ -325,11 +326,11 @@ public class bns implements Comparable<bns> {
    }
 
    static record b(int b, int c, boolean d, boolean e, boolean f, Optional<bns.b> g) {
-      private static final Codec<Integer> h = avu.a(Codec.BYTE.xmap(Byte::intValue, Integer::byteValue), Codec.checkRange(0, 127));
-      public static final MapCodec<bns.b> a = avu.a(
-         (Function<Codec<bns.b>, MapCodec<bns.b>>)($$0 -> RecordCodecBuilder.mapCodec(
+      public static final MapCodec<bns.b> a = avu.b(
+         "MobEffectInstance.Details",
+         $$0 -> RecordCodecBuilder.mapCodec(
                $$1 -> $$1.group(
-                        avu.a(h, "amplifier", Integer.valueOf(0)).forGetter(bns.b::a),
+                        avu.a(avu.i, "amplifier", Integer.valueOf(0)).forGetter(bns.b::a),
                         avu.a(Codec.INT, "duration", Integer.valueOf(0)).forGetter(bns.b::b),
                         avu.a(Codec.BOOL, "ambient", false).forGetter(bns.b::c),
                         avu.a(Codec.BOOL, "show_particles", true).forGetter(bns.b::d),
@@ -337,7 +338,7 @@ public class bns implements Comparable<bns> {
                         avu.a($$0, "hidden_effect").forGetter(bns.b::f)
                      )
                      .apply($$1, bns.b::a)
-            ))
+            )
       );
 
       private static bns.b a(int $$0, int $$1, boolean $$2, boolean $$3, Optional<Boolean> $$4, Optional<bns.b> $$5) {

@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class awu {
    public static final Codec<awu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(avu.l.optionalFieldOf("namespace").forGetter($$0x -> $$0x.b), avu.l.optionalFieldOf("path").forGetter($$0x -> $$0x.d))
+      $$0 -> $$0.group(avu.m.optionalFieldOf("namespace").forGetter($$0x -> $$0x.b), avu.m.optionalFieldOf("path").forGetter($$0x -> $$0x.d))
             .apply($$0, awu::new)
    );
    private final Optional<Pattern> b;

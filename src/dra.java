@@ -99,7 +99,7 @@ public interface dra {
          $$0 -> $$0.group(
                   dqy.a.optionalFieldOf("event").forGetter($$0x -> Optional.ofNullable($$0x.c)),
                   dqz.a.fieldOf("selector").forGetter(dra.a::a),
-                  avu.i.fieldOf("event_delay").orElse(0).forGetter(dra.a::c)
+                  avu.j.fieldOf("event_delay").orElse(0).forGetter(dra.a::c)
                )
                .apply($$0, ($$0x, $$1, $$2) -> new dra.a((dqy)$$0x.orElse(null), $$1, $$2, true))
       );

@@ -8,7 +8,7 @@ public record cic(PrivateKey b, cid c, Instant d) {
       $$0 -> $$0.group(
                avk.g.fieldOf("private_key").forGetter(cic::b),
                cid.c.fieldOf("public_key").forGetter(cic::c),
-               avu.m.fieldOf("refreshed_after").forGetter(cic::d)
+               avu.n.fieldOf("refreshed_after").forGetter(cic::d)
             )
             .apply($$0, cic::new)
    );

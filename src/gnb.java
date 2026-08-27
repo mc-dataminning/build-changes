@@ -24,7 +24,7 @@ public record gnb<T>(String F, String G, Codec<T> H, gnb.a<T> I) {
    public static final gnb<Boolean> j = a("server_modded", "serverModded");
    public static final gnb<gnb.c> k = a("server_type", "serverType", gnb.c.d, ($$0, $$1, $$2) -> $$0.addProperty($$1, $$2.c()));
    public static final gnb<Boolean> l = a("opt_in", "isOptional");
-   public static final gnb<Instant> m = a("event_timestamp_utc", "eventTimestampUtc", avu.m, ($$0, $$1, $$2) -> $$0.addProperty($$1, J.format($$2)));
+   public static final gnb<Instant> m = a("event_timestamp_utc", "eventTimestampUtc", avu.n, ($$0, $$1, $$2) -> $$0.addProperty($$1, J.format($$2)));
    public static final gnb<gnb.b> n = a("game_mode", "playerGameMode", gnb.b.f, ($$0, $$1, $$2) -> $$0.addProperty($$1, $$2.a()));
    public static final gnb<String> o = b("realms_map_content", "realmsMapContent");
    public static final gnb<Integer> p = c("seconds_since_load", "secondsSinceLoad");

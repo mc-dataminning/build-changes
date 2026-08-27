@@ -8,9 +8,9 @@ import javax.annotation.Nullable;
 
 public class aur {
    private static final Codec<aur> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(avu.p.fieldOf("id").forGetter(aur::a), Codec.BOOL.optionalFieldOf("required", true).forGetter($$0x -> $$0x.e)).apply($$0, aur::new)
+      $$0 -> $$0.group(avu.q.fieldOf("id").forGetter(aur::a), Codec.BOOL.optionalFieldOf("required", true).forGetter($$0x -> $$0x.e)).apply($$0, aur::new)
    );
-   public static final Codec<aur> a = Codec.either(avu.p, b)
+   public static final Codec<aur> a = Codec.either(avu.q, b)
       .xmap($$0 -> (aur)$$0.map($$0x -> new aur($$0x, true), $$0x -> $$0x), $$0 -> $$0.e ? Either.left($$0.a()) : Either.right($$0));
    private final ajc c;
    private final boolean d;

@@ -102,8 +102,8 @@ public class cxp {
             $$0 -> $$0.group(
                      kh.g.q().fieldOf("type").forGetter($$0x -> $$0x.b),
                      bkw.a.fieldOf("weight").forGetter(bkx.a::a),
-                     avu.j.fieldOf("minCount").forGetter($$0x -> $$0x.c),
-                     avu.j.fieldOf("maxCount").forGetter($$0x -> $$0x.d)
+                     avu.k.fieldOf("minCount").forGetter($$0x -> $$0x.c),
+                     avu.k.fieldOf("maxCount").forGetter($$0x -> $$0x.d)
                   )
                   .apply($$0, cxp.c::new)
          ),

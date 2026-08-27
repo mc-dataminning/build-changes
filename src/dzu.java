@@ -9,7 +9,7 @@ public class dzu extends eac {
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  avu.j.optionalFieldOf("min_height_for_leaves", 1).forGetter($$0x -> $$0x.b), blq.b(1, 64).fieldOf("bend_length").forGetter($$0x -> $$0x.h)
+                  avu.k.optionalFieldOf("min_height_for_leaves", 1).forGetter($$0x -> $$0x.b), blq.b(1, 64).fieldOf("bend_length").forGetter($$0x -> $$0x.h)
                )
             )
             .apply($$0, dzu::new)

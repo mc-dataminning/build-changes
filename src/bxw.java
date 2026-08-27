@@ -211,7 +211,7 @@ public class bxw {
 
    static record b(UUID c, bxx d, int e) {
       public static final Codec<bxw.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(je.a.fieldOf("Target").forGetter(bxw.b::b), bxx.n.fieldOf("Type").forGetter(bxw.b::c), avu.j.fieldOf("Value").forGetter(bxw.b::d))
+         $$0 -> $$0.group(je.a.fieldOf("Target").forGetter(bxw.b::b), bxx.n.fieldOf("Type").forGetter(bxw.b::c), avu.k.fieldOf("Value").forGetter(bxw.b::d))
                .apply($$0, bxw.b::new)
       );
       public static final Codec<List<bxw.b>> b = a.listOf();

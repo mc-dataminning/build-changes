@@ -37,7 +37,7 @@ public record fsd(String a, @Nullable fsd.a b) {
 
    private static String g() {
       StringBuilder $$0 = new StringBuilder();
-      $$0.append("24w04a");
+      $$0.append("24w05b");
       if (eyk.e().a()) {
          $$0.append(" (modded)");
       }

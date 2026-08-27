@@ -40,7 +40,7 @@ public final class cpq {
             .apply($$0, ($$0x, $$1) -> new cpq($$0x, 1, $$1))
    );
    public static final Codec<cpq> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(p.fieldOf("item").forGetter(cpq::d), avu.a(avu.j, "count", Integer.valueOf(1)).forGetter(cpq::M)).apply($$0, cpq::new)
+      $$0 -> $$0.group(p.fieldOf("item").forGetter(cpq::d), avu.a(avu.k, "count", Integer.valueOf(1)).forGetter(cpq::M)).apply($$0, cpq::new)
    );
    public static final Codec<cpq> d = p.xmap(cpq::new, cpq::d);
    public static final MapCodec<cpq> e = RecordCodecBuilder.mapCodec(

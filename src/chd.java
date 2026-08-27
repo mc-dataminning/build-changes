@@ -27,7 +27,7 @@ public class chd {
    private int g = awm.b(awt.a(), 0, 2);
    int h;
    private static final Codec<Pair<UUID, Integer>> i = RecordCodecBuilder.create(
-      $$0 -> $$0.group(je.a.fieldOf("uuid").forGetter(Pair::getFirst), avu.i.fieldOf("anger").forGetter(Pair::getSecond)).apply($$0, Pair::of)
+      $$0 -> $$0.group(je.a.fieldOf("uuid").forGetter(Pair::getFirst), avu.j.fieldOf("anger").forGetter(Pair::getSecond)).apply($$0, Pair::of)
    );
    private final Predicate<bof> j;
    @VisibleForTesting

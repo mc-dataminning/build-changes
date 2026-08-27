@@ -44,7 +44,7 @@ public class akz {
                                                 )
                                           ))
                                        .then(
-                                          ((RequiredArgumentBuilder)dv.a("amplifier", IntegerArgumentType.integer(0, 255))
+                                          ((RequiredArgumentBuilder)dv.a("amplifier", IntegerArgumentType.integer(0, 127))
                                                 .executes(
                                                    $$0x -> a(
                                                          (du)$$0x.getSource(),
@@ -74,7 +74,7 @@ public class akz {
                                  ((LiteralArgumentBuilder)dv.a("infinite")
                                        .executes($$0x -> a((du)$$0x.getSource(), eh.b($$0x, "targets"), et.f($$0x, "effect"), -1, 0, true)))
                                     .then(
-                                       ((RequiredArgumentBuilder)dv.a("amplifier", IntegerArgumentType.integer(0, 255))
+                                       ((RequiredArgumentBuilder)dv.a("amplifier", IntegerArgumentType.integer(0, 127))
                                              .executes(
                                                 $$0x -> a(
                                                       (du)$$0x.getSource(),

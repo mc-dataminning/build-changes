@@ -30,7 +30,7 @@ public class eri implements erg {
 
    public static record a(Map<Integer, Float> c) implements fdl {
       public static final MapCodec<eri.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.unboundedMap(avu.w, Codec.FLOAT).fieldOf("advances").forGetter(eri.a::c)).apply($$0, eri.a::new)
+         $$0 -> $$0.group(Codec.unboundedMap(avu.x, Codec.FLOAT).fieldOf("advances").forGetter(eri.a::c)).apply($$0, eri.a::new)
       );
 
       @Override

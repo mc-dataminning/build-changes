@@ -19,7 +19,7 @@ public abstract class edd {
          jf.v(16).optionalFieldOf("locate_offset", jf.g).forGetter(edd::f),
          edd.c.e.optionalFieldOf("frequency_reduction_method", edd.c.a).forGetter(edd::g),
          Codec.floatRange(0.0F, 1.0F).optionalFieldOf("frequency", 1.0F).forGetter(edd::h),
-         avu.i.fieldOf("salt").forGetter(edd::i),
+         avu.j.fieldOf("salt").forGetter(edd::i),
          edd.a.a.optionalFieldOf("exclusion_zone").forGetter(edd::j)
       );
    }

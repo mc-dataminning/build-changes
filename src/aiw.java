@@ -14,7 +14,7 @@ public class aiw<E> implements Codec<ip<E>> {
    private final Codec<Either<aut<E>, List<il<E>>>> d;
 
    private static <E> Codec<List<il<E>>> a(Codec<il<E>> $$0, boolean $$1) {
-      Codec<List<il<E>>> $$2 = avu.a($$0.listOf(), avu.c(il::f));
+      Codec<List<il<E>>> $$2 = avu.a($$0.listOf(), avu.b(il::f));
       return $$1
          ? $$2
          : Codec.either($$2, $$0)

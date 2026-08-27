@@ -121,7 +121,7 @@ public class aqp implements AutoCloseable {
          $$0 -> $$0.group(
                   je.d.fieldOf("id").forGetter(aqp.e::a),
                   Codec.STRING.fieldOf("url").forGetter(aqp.e::b),
-                  avu.m.fieldOf("time").forGetter(aqp.e::c),
+                  avu.n.fieldOf("time").forGetter(aqp.e::c),
                   Codec.STRING.optionalFieldOf("hash").forGetter(aqp.e::d),
                   Codec.mapEither(Codec.STRING.fieldOf("error"), aqp.d.a.fieldOf("file")).forGetter(aqp.e::e)
                )

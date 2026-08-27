@@ -4,7 +4,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 public record cpi(il<ato> b, int c, float d) {
    public static final Codec<cpi> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               ato.b.fieldOf("sound_event").forGetter(cpi::a), avu.j.fieldOf("use_duration").forGetter(cpi::b), avu.k.fieldOf("range").forGetter(cpi::c)
+               ato.b.fieldOf("sound_event").forGetter(cpi::a), avu.k.fieldOf("use_duration").forGetter(cpi::b), avu.l.fieldOf("range").forGetter(cpi::c)
             )
             .apply($$0, cpi::new)
    );

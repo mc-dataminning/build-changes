@@ -446,7 +446,7 @@ public class fdp implements erg {
 
    static record g(int b, int c, fdp.c d) {
       private static final Codec<fdp.g> e = RecordCodecBuilder.create(
-         $$0 -> $$0.group(avu.w.fieldOf("from").forGetter(fdp.g::a), avu.w.fieldOf("to").forGetter(fdp.g::b), fdp.c.a.forGetter(fdp.g::c))
+         $$0 -> $$0.group(avu.x.fieldOf("from").forGetter(fdp.g::a), avu.x.fieldOf("to").forGetter(fdp.g::b), fdp.c.a.forGetter(fdp.g::c))
                .apply($$0, fdp.g::new)
       );
       public static final Codec<fdp.g> a = avu.a(

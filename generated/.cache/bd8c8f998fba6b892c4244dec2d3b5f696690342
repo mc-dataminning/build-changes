@@ -1,4 +1,4 @@
-// 24w05a	2026-08-28T01:31:40.6499087	update_1_21/Loot Tables
+// 24w05b	2026-08-28T01:34:31.1385648	update_1_21/Loot Tables
 c039afceb56d77e5979e6c8771accd9816cf7ac8 data\minecraft\datapacks\update_1_21\data\minecraft\loot_tables\chests\trial_chambers\supply.json
 53f871c6c8ca4081ae149472a78499146707f386 data\minecraft\datapacks\update_1_21\data\minecraft\loot_tables\blocks\oxidized_chiseled_copper.json
 21b50bd2134983076beaad75e6cacdbf9e7b06e8 data\minecraft\datapacks\update_1_21\data\minecraft\loot_tables\blocks\copper_trapdoor.json
@@ -45,8 +45,8 @@ d6441383998963fb0b9310b4fbbe2c9688cdc9d0 data\minecraft\datapacks\update_1_21\da
 0f65ab9e1b81caac325293fd5c3cdf1810912f86 data\minecraft\datapacks\update_1_21\data\minecraft\loot_tables\blocks\waxed_copper_door.json
 b6d3d84f17bc241c75c4da6029baa15a260cdd58 data\minecraft\datapacks\update_1_21\data\minecraft\loot_tables\dispensers\trial_chambers\corridor.json
 9f05cc0d560515835a7c8fef640e9994850b8c6b data\minecraft\datapacks\update_1_21\data\minecraft\loot_tables\blocks\tuff_brick_slab.json
-8999cb5ca0996fa79065deab0509926ce1e456a2 data\minecraft\datapacks\update_1_21\data\minecraft\loot_tables\blocks\oxidized_copper_door.json
 ecd3be4ad35617b82f739da99ec367957cfacec3 data\minecraft\datapacks\update_1_21\data\minecraft\loot_tables\blocks\exposed_copper_door.json
+8999cb5ca0996fa79065deab0509926ce1e456a2 data\minecraft\datapacks\update_1_21\data\minecraft\loot_tables\blocks\oxidized_copper_door.json
 4d5b6625ebb5e8e1569ca0ecef56e34624eebd58 data\minecraft\datapacks\update_1_21\data\minecraft\loot_tables\blocks\copper_grate.json
 51a45bf91567b84e6bccf7fac7f49d2e9f76b129 data\minecraft\datapacks\update_1_21\data\minecraft\loot_tables\blocks\waxed_oxidized_copper_grate.json
 da8164da5b973070d27f1b1faa2a443057280888 data\minecraft\datapacks\update_1_21\data\minecraft\loot_tables\blocks\waxed_weathered_copper_grate.json

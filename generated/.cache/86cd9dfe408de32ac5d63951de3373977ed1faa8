@@ -1,4 +1,4 @@
-// 24w05a	2026-08-28T01:31:40.6381981	vanilla/Tags for minecraft:block
+// 24w05b	2026-08-28T01:34:31.1287213	vanilla/Tags for minecraft:block
 882f7161808179f92ed953b9200fdaf74eec6c36 data\minecraft\tags\blocks\infiniburn_overworld.json
 84150f9be2fa26f9202962b031c722718dd23ca0 data\minecraft\tags\blocks\stone_ore_replaceables.json
 60f661a9b26b7f6b1910e5390a40644354fe0919 data\minecraft\tags\blocks\frogs_spawnable_on.json
@@ -97,16 +97,16 @@ f8376cab397acf16d638e5a8595dc07d123925c5 data\minecraft\tags\blocks\planks.json
 5338100e594200c9c08cc4228d31ae3b14f5bdd1 data\minecraft\tags\blocks\buttons.json
 d5aebde1fd1141df86b6ed4ace3f720504b32ab2 data\minecraft\tags\blocks\soul_fire_base_blocks.json
 c2be2e0fe32ef15e0f55b691a324afc166447e17 data\minecraft\tags\blocks\snaps_goat_horn.json
-ed3052eb0c49103d4cdd5f410d09b189a33c80b9 data\minecraft\tags\blocks\concrete_powder.json
 f70b5535522ee5d34a48303062041db7eb2fa4f1 data\minecraft\tags\blocks\features_cannot_replace.json
+ed3052eb0c49103d4cdd5f410d09b189a33c80b9 data\minecraft\tags\blocks\concrete_powder.json
 71f3b79e3c514d631454464911d07563b93b71c4 data\minecraft\tags\blocks\wool_carpets.json
 e2feff85afb7e4871204d6f5d72b8760e2780187 data\minecraft\tags\blocks\shulker_boxes.json
 5a1da22b7562d3101cd95b2874ef21e709215ca8 data\minecraft\tags\blocks\beds.json
 b39b9a730fa6d6ce0d57bcbb88a249b6617d6822 data\minecraft\tags\blocks\infiniburn_nether.json
 f835cdeac806ff176e388bdfc26f543b95288939 data\minecraft\tags\blocks\invalid_spawn_inside.json
 d7741a7bcdab6fbdbc9c931e88576a038a1562ed data\minecraft\tags\blocks\wither_immune.json
-0f12416e29c47a8dd09b45231993f21c8a0215c6 data\minecraft\tags\blocks\azalea_grows_on.json
 0b23673eb8a737774894657816f7c63d548a34a0 data\minecraft\tags\blocks\foxes_spawnable_on.json
+0f12416e29c47a8dd09b45231993f21c8a0215c6 data\minecraft\tags\blocks\azalea_grows_on.json
 d5aebde1fd1141df86b6ed4ace3f720504b32ab2 data\minecraft\tags\blocks\wither_summon_base_blocks.json
 3970b76be7ae4036da7a0d208370acfa1fc1577c data\minecraft\tags\blocks\birch_logs.json
 f5d73120ea1f55d3d12d51ade52c0d39eb6a758b data\minecraft\tags\blocks\infiniburn_end.json
@@ -133,8 +133,8 @@ da1d12f678963493519caaff63a76241b220579f data\minecraft\tags\blocks\axolotls_spa
 12567916f0340a8d2a6baf0d253dcc8f8b4817b5 data\minecraft\tags\blocks\overworld_natural_logs.json
 0cc76a2a135e15e63ba435b9ae22e215cc9637fb data\minecraft\tags\blocks\replaceable.json
 6434eab593808ccdda380aa89dbf4977e908d7b4 data\minecraft\tags\blocks\mangrove_roots_can_grow_through.json
-fef1644c33bdd401b55824ed29a4df7cd9464fd0 data\minecraft\tags\blocks\wool.json
 042f4a31ec358e6815cd7410f054de80cc7c8fb7 data\minecraft\tags\blocks\cherry_logs.json
+fef1644c33bdd401b55824ed29a4df7cd9464fd0 data\minecraft\tags\blocks\wool.json
 35fe618c61441f3d81e2e483e2ab88847ac90a63 data\minecraft\tags\blocks\ceiling_hanging_signs.json
 65111dce44b1fa957a52d1cce0ae3f4eebfe803f data\minecraft\tags\blocks\frog_prefer_jump_to.json
 64b66f0912167ef1fa6a5673e31b46d65e27c9af data\minecraft\tags\blocks\dragon_immune.json
@@ -152,8 +152,8 @@ f28dc9f2c7d071fef84fb760a59427d564938731 data\minecraft\tags\blocks\diamond_ores
 7ff1531dc7f287a36682c786f864934ac10ba0dc data\minecraft\tags\blocks\portals.json
 51ce2bcc8e2afb893169c1f8562e87206632ea5a data\minecraft\tags\blocks\sword_efficient.json
 3e070569b31d1100ac334efd44a58e52df25df1a data\minecraft\tags\blocks\flowers.json
-76ac0bd2e48021aef9ecffd104321ebc03c694eb data\minecraft\tags\blocks\standing_signs.json
 88e03262431177ee3001a61830532ea6b37dfcce data\minecraft\tags\blocks\wall_signs.json
+76ac0bd2e48021aef9ecffd104321ebc03c694eb data\minecraft\tags\blocks\standing_signs.json
 5b7a16c4ba8e702114347cf2a688167b9789cd58 data\minecraft\tags\blocks\wall_post_override.json
 74f68e22bf93a751191e1ec35390adcf191a2880 data\minecraft\tags\blocks\fences.json
 19f48b0aa7f4f0432b1625d6afe2e73994b2e6ca data\minecraft\tags\blocks\mangrove_logs.json

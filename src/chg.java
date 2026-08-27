@@ -9,9 +9,9 @@ import java.util.function.Predicate;
 public class chg {
    public static final Codec<chg> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               avu.i.fieldOf("ticks_since_last_warning").orElse(0).forGetter($$0x -> $$0x.g),
-               avu.i.fieldOf("warning_level").orElse(0).forGetter($$0x -> $$0x.h),
-               avu.i.fieldOf("cooldown_ticks").orElse(0).forGetter($$0x -> $$0x.i)
+               avu.j.fieldOf("ticks_since_last_warning").orElse(0).forGetter($$0x -> $$0x.g),
+               avu.j.fieldOf("warning_level").orElse(0).forGetter($$0x -> $$0x.h),
+               avu.j.fieldOf("cooldown_ticks").orElse(0).forGetter($$0x -> $$0x.i)
             )
             .apply($$0, chg::new)
    );

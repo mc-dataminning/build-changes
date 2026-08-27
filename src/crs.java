@@ -5,7 +5,7 @@ import java.util.Map;
 public record crs(String c, il<cpl> d, float e, Map<il<cnd>, String> f, vs g) {
    public static final Codec<crs> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               avu.x.fieldOf("asset_name").forGetter(crs::a),
+               avu.y.fieldOf("asset_name").forGetter(crs::a),
                aiz.a(ki.F).fieldOf("ingredient").forGetter(crs::b),
                Codec.FLOAT.fieldOf("item_model_index").forGetter(crs::c),
                Codec.unboundedMap(cnd.a, Codec.STRING).optionalFieldOf("override_armor_materials", Map.of()).forGetter(crs::d),

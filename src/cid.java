@@ -34,7 +34,7 @@ public record cid(cid.a d) {
       private static final int e = 4096;
       public static final Codec<cid.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  avu.m.fieldOf("expires_at").forGetter(cid.a::b), avk.f.fieldOf("key").forGetter(cid.a::c), avu.n.fieldOf("signature_v2").forGetter(cid.a::d)
+                  avu.n.fieldOf("expires_at").forGetter(cid.a::b), avk.f.fieldOf("key").forGetter(cid.a::c), avu.o.fieldOf("signature_v2").forGetter(cid.a::d)
                )
                .apply($$0, cid.a::new)
       );

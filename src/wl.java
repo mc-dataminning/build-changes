@@ -12,7 +12,7 @@ public record wl(String b, Instant c, long d, vz e) {
    public static final MapCodec<wl> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
                Codec.STRING.fieldOf("content").forGetter(wl::a),
-               avu.m.fieldOf("time_stamp").forGetter(wl::b),
+               avu.n.fieldOf("time_stamp").forGetter(wl::b),
                Codec.LONG.fieldOf("salt").forGetter(wl::c),
                vz.a.optionalFieldOf("last_seen", vz.b).forGetter(wl::d)
             )

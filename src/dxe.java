@@ -5,8 +5,8 @@ public class dxe extends dwq {
    public static final Codec<dxe> c = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                dyz.a.fieldOf("state_provider").forGetter($$0x -> $$0x.b),
-               avu.j.fieldOf("spread_width").forGetter($$0x -> $$0x.d),
-               avu.j.fieldOf("spread_height").forGetter($$0x -> $$0x.e)
+               avu.k.fieldOf("spread_width").forGetter($$0x -> $$0x.d),
+               avu.k.fieldOf("spread_height").forGetter($$0x -> $$0x.e)
             )
             .apply($$0, dxe::new)
    );

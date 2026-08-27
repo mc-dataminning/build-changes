@@ -175,7 +175,7 @@ public class eeu extends ecg {
                   Codec.BOOL.fieldOf("vines").forGetter(eeu.a::e),
                   Codec.BOOL.fieldOf("can_be_cold").forGetter(eeu.a::f),
                   Codec.BOOL.fieldOf("replace_with_blackstone").forGetter(eeu.a::g),
-                  avu.k.fieldOf("weight").forGetter(eeu.a::h)
+                  avu.l.fieldOf("weight").forGetter(eeu.a::h)
                )
                .apply($$0, eeu.a::new)
       );

@@ -26,7 +26,7 @@ public class dtm extends dto {
          $$0 -> $$0.group(
                   blo.c.fieldOf("distance_factor").forGetter($$0x -> $$0x.b),
                   blo.c.fieldOf("thickness").forGetter($$0x -> $$0x.c),
-                  avu.i.fieldOf("width_smoothness").forGetter($$0x -> $$0x.d),
+                  avu.j.fieldOf("width_smoothness").forGetter($$0x -> $$0x.d),
                   blo.c.fieldOf("horizontal_radius_factor").forGetter($$0x -> $$0x.e),
                   Codec.FLOAT.fieldOf("vertical_radius_default_factor").forGetter($$0x -> $$0x.f),
                   Codec.FLOAT.fieldOf("vertical_radius_center_factor").forGetter($$0x -> $$0x.g)

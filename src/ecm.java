@@ -30,7 +30,7 @@ public record ecm(List<ecm.a> c, edd d) {
 
    public static record a(il<ecg> b, int c) {
       public static final Codec<ecm.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(ecg.b.fieldOf("structure").forGetter(ecm.a::a), avu.j.fieldOf("weight").forGetter(ecm.a::b)).apply($$0, ecm.a::new)
+         $$0 -> $$0.group(ecg.b.fieldOf("structure").forGetter(ecm.a::a), avu.k.fieldOf("weight").forGetter(ecm.a::b)).apply($$0, ecm.a::new)
       );
 
       public il<ecg> a() {

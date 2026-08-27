@@ -3,6 +3,7 @@ import com.google.common.base.Suppliers;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableMap.Builder;
+import com.google.common.primitives.UnsignedBytes;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
@@ -108,34 +109,39 @@ public class avu {
 
       return $$1;
    });
-   public static final Codec<Integer> i = a(0, Integer.MAX_VALUE, $$0 -> "Value must be non-negative: " + $$0);
-   public static final Codec<Integer> j = a(1, Integer.MAX_VALUE, $$0 -> "Value must be positive: " + $$0);
-   public static final Codec<Float> k = a(0.0F, Float.MAX_VALUE, $$0 -> "Value must be positive: " + $$0);
-   public static final Codec<Pattern> l = Codec.STRING.comapFlatMap($$0 -> {
+   public static final Codec<Integer> i = Codec.BYTE
+      .flatComapMap(
+         UnsignedBytes::toInt,
+         $$0 -> $$0 > 255 ? DataResult.error(() -> "Unsigned byte was too large: " + $$0 + " > 255") : DataResult.success($$0.byteValue())
+      );
+   public static final Codec<Integer> j = a(0, Integer.MAX_VALUE, $$0 -> "Value must be non-negative: " + $$0);
+   public static final Codec<Integer> k = a(1, Integer.MAX_VALUE, $$0 -> "Value must be positive: " + $$0);
+   public static final Codec<Float> l = a(0.0F, Float.MAX_VALUE, $$0 -> "Value must be positive: " + $$0);
+   public static final Codec<Pattern> m = Codec.STRING.comapFlatMap($$0 -> {
       try {
          return DataResult.success(Pattern.compile($$0));
       } catch (PatternSyntaxException var2) {
          return DataResult.error(() -> "Invalid regex pattern '" + $$0 + "': " + var2.getMessage());
       }
    }, Pattern::pattern);
-   public static final Codec<Instant> m = a(DateTimeFormatter.ISO_INSTANT).xmap(Instant::from, Function.identity());
-   public static final Codec<byte[]> n = Codec.STRING.comapFlatMap($$0 -> {
+   public static final Codec<Instant> n = a(DateTimeFormatter.ISO_INSTANT).xmap(Instant::from, Function.identity());
+   public static final Codec<byte[]> o = Codec.STRING.comapFlatMap($$0 -> {
       try {
          return DataResult.success(Base64.getDecoder().decode($$0));
       } catch (IllegalArgumentException var2) {
          return DataResult.error(() -> "Malformed base64 string");
       }
    }, $$0 -> Base64.getEncoder().encodeToString($$0));
-   public static final Codec<String> o = Codec.STRING
+   public static final Codec<String> p = Codec.STRING
       .comapFlatMap($$0 -> DataResult.success(StringEscapeUtils.unescapeJava($$0)), StringEscapeUtils::escapeJava);
-   public static final Codec<avu.g> p = Codec.STRING
+   public static final Codec<avu.g> q = Codec.STRING
       .comapFlatMap(
          $$0 -> $$0.startsWith("#") ? ajc.b($$0.substring(1)).map($$0x -> new avu.g($$0x, true)) : ajc.b($$0).map($$0x -> new avu.g($$0x, false)), avu.g::c
       );
-   public static final Function<Optional<Long>, OptionalLong> q = $$0 -> $$0.map(OptionalLong::of).orElseGet(OptionalLong::empty);
-   public static final Function<OptionalLong, Optional<Long>> r = $$0 -> $$0.isPresent() ? Optional.of($$0.getAsLong()) : Optional.empty();
-   public static final Codec<BitSet> s = Codec.LONG_STREAM.xmap($$0 -> BitSet.valueOf($$0.toArray()), $$0 -> Arrays.stream($$0.toLongArray()));
-   private static final Codec<Property> y = RecordCodecBuilder.create(
+   public static final Function<Optional<Long>, OptionalLong> r = $$0 -> $$0.map(OptionalLong::of).orElseGet(OptionalLong::empty);
+   public static final Function<OptionalLong, Optional<Long>> s = $$0 -> $$0.isPresent() ? Optional.of($$0.getAsLong()) : Optional.empty();
+   public static final Codec<BitSet> t = Codec.LONG_STREAM.xmap($$0 -> BitSet.valueOf($$0.toArray()), $$0 -> Arrays.stream($$0.toLongArray()));
+   private static final Codec<Property> z = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                Codec.STRING.fieldOf("name").forGetter(Property::name),
                Codec.STRING.fieldOf("value").forGetter(Property::value),
@@ -144,7 +150,7 @@ public class avu {
             .apply($$0, ($$0x, $$1, $$2) -> new Property($$0x, $$1, (String)$$2.orElse(null)))
    );
    @VisibleForTesting
-   public static final Codec<PropertyMap> t = Codec.either(Codec.unboundedMap(Codec.STRING, Codec.STRING.listOf()), y.listOf()).xmap($$0 -> {
+   public static final Codec<PropertyMap> u = Codec.either(Codec.unboundedMap(Codec.STRING, Codec.STRING.listOf()), z.listOf()).xmap($$0 -> {
       PropertyMap $$1 = new PropertyMap();
       $$0.ifLeft($$1x -> $$1x.forEach(($$1xx, $$2) -> {
             for (String $$3 : $$2) {
@@ -157,23 +163,23 @@ public class avu {
       });
       return $$1;
    }, $$0 -> Either.right($$0.values().stream().toList()));
-   private static final MapCodec<GameProfile> z = RecordCodecBuilder.mapCodec(
+   private static final MapCodec<GameProfile> A = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(je.e.fieldOf("id").forGetter(GameProfile::getId), Codec.STRING.fieldOf("name").forGetter(GameProfile::getName))
             .apply($$0, GameProfile::new)
    );
-   public static final Codec<GameProfile> u = RecordCodecBuilder.create(
-      $$0 -> $$0.group(z.forGetter(Function.identity()), t.optionalFieldOf("properties", new PropertyMap()).forGetter(GameProfile::getProperties))
+   public static final Codec<GameProfile> v = RecordCodecBuilder.create(
+      $$0 -> $$0.group(A.forGetter(Function.identity()), u.optionalFieldOf("properties", new PropertyMap()).forGetter(GameProfile::getProperties))
             .apply($$0, ($$0x, $$1) -> {
                $$1.forEach(($$1x, $$2) -> $$0x.getProperties().put($$1x, $$2));
                return $$0x;
             })
    );
-   public static final Codec<String> v = a(Codec.STRING, $$0 -> $$0.isEmpty() ? DataResult.error(() -> "Expected non-empty string") : DataResult.success($$0));
-   public static final Codec<Integer> w = Codec.STRING.comapFlatMap($$0 -> {
+   public static final Codec<String> w = a(Codec.STRING, $$0 -> $$0.isEmpty() ? DataResult.error(() -> "Expected non-empty string") : DataResult.success($$0));
+   public static final Codec<Integer> x = Codec.STRING.comapFlatMap($$0 -> {
       int[] $$1 = $$0.codePoints().toArray();
       return $$1.length != 1 ? DataResult.error(() -> "Expected one codepoint, got: " + $$0) : DataResult.success($$1[0]);
    }, Character::toString);
-   public static Codec<String> x = a(
+   public static Codec<String> y = a(
       Codec.STRING, $$0 -> !ajc.g($$0) ? DataResult.error(() -> "Invalid string to use as a resource path element: " + $$0) : DataResult.success($$0)
    );
 
@@ -348,8 +354,8 @@ public class avu {
       return new avu.c<>($$0, $$1);
    }
 
-   public static <T> MapCodec<T> a(Function<Codec<T>, MapCodec<T>> $$0) {
-      return new avu.d<>($$0);
+   public static <T> MapCodec<T> b(String $$0, Function<Codec<T>, MapCodec<T>> $$1) {
+      return new avu.d<>($$0, $$1);
    }
 
    public static <A> Codec<A> a(Supplier<Codec<A>> $$0) {
@@ -364,7 +370,7 @@ public class avu {
       return a($$0, $$1).xmap($$1x -> $$1x.orElse($$2), $$1x -> Objects.equals($$1x, $$2) ? Optional.empty() : Optional.of($$1x));
    }
 
-   public static <E> MapCodec<E> b(final Function<DynamicOps<?>, DataResult<E>> $$0) {
+   public static <E> MapCodec<E> a(final Function<DynamicOps<?>, DataResult<E>> $$0) {
       class a extends MapCodec<E> {
          public <T> RecordBuilder<T> encode(E $$0x, DynamicOps<T> $$1, RecordBuilder<T> $$2) {
             return $$2;
@@ -386,7 +392,7 @@ public class avu {
       return new a();
    }
 
-   public static <E, L extends Collection<E>, T> Function<L, DataResult<L>> c(Function<E, T> $$0) {
+   public static <E, L extends Collection<E>, T> Function<L, DataResult<L>> b(Function<E, T> $$0) {
       return $$1 -> {
          Iterator<E> $$2 = $$1.iterator();
          if ($$2.hasNext()) {
@@ -428,7 +434,7 @@ public class avu {
    }
 
    public static MapCodec<OptionalLong> a(MapCodec<Optional<Long>> $$0) {
-      return $$0.xmap(q, r);
+      return $$0.xmap(r, s);
    }
 
    public static Codec<String> b(int $$0, int $$1) {
@@ -567,22 +573,24 @@ public class avu {
    }
 
    static class d<T> extends MapCodec<T> {
-      private final Supplier<MapCodec<T>> a;
+      private final String a;
+      private final Supplier<MapCodec<T>> b;
 
-      d(Function<Codec<T>, MapCodec<T>> $$0) {
-         this.a = Suppliers.memoize(() -> $$0.apply(this.codec()));
+      d(String $$0, Function<Codec<T>, MapCodec<T>> $$1) {
+         this.a = $$0;
+         this.b = Suppliers.memoize(() -> $$1.apply(this.codec()));
       }
 
       public <S> RecordBuilder<S> encode(T $$0, DynamicOps<S> $$1, RecordBuilder<S> $$2) {
-         return this.a.get().encode($$0, $$1, $$2);
+         return this.b.get().encode($$0, $$1, $$2);
       }
 
       public <S> DataResult<T> decode(DynamicOps<S> $$0, MapLike<S> $$1) {
-         return this.a.get().decode($$0, $$1);
+         return this.b.get().decode($$0, $$1);
       }
 
       public <S> Stream<S> keys(DynamicOps<S> $$0) {
-         return this.a.get().keys($$0);
+         return this.b.get().keys($$0);
       }
 
       public String toString() {
